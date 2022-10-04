@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C8BBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:14:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91787C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oT2Gi8AhWQJmxVKaN1FZw8aYBEbWJlp99zVdogahOl4=; b=ZuEcP01IBTiwE6sk9qY2fXTE5d
-	jFqEg04BHNnKMhWGb1pkPsBZmphW9iOz5WMY+kkZPOWVEcjfJKN3lt9ytyCiwmM/Q566lCcMvbHBi
-	9ut29YjAax5jsb5nI4DL8PWkVSv7hOmV9oNtoyY9gPmBcU6CpMEPR1L4Fze/Txe+cs9dWpbn+KAOl
-	uWATZ8teErbPLCayUpsMUSpbvOyFt+sZvJ6P5h5CIK/UpKUkoSzYg5puEoY6ay3EvQOG34Eh0Rs88
-	usof6oAebBpM5BA0/LrbSbdKqa0qqmRTHkVXt+rFgz1bTggAFCT00wdL2vdv5GJ9UkV/HQH3sNuYY
-	Ob3IG3Gw==;
+	bh=E/p2RgiEeNYzdFVMuGHIRymiP+okodEm7ce8FkPN/fM=; b=kfGDwv2IcjDGyH8pU97gIUlwS2
+	zlV7SM5rWaWqPiHMJDSihenlbWpYAlLmgV1Jy0Mfea4WI4mxSfih76azBjyeN45YPst0fM2iDTT9d
+	KpJMzoNuJJB7EW13C4bLbNEETrUlc4G5z4ljZrHtZPoSaFEaFcGnHKFZus3gWJrB6HSkyw7pfrsJB
+	CZYBfMDxtjrQdXidUscGqjzjZ3YPC0xVaedAiirgtLsPMDzJ56LgKR5zHfnoYQUC4xFk4RkGKakSG
+	a0mjqNzY3CujkxZ/dgfy98+rHPGUTURnMLW38+717VmX0NBh8omfHxZIgoPYa1H9GXYFCxwqUXtuY
+	2Pr7MVtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofewA-009Jv3-Lw; Tue, 04 Oct 2022 10:14:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1off46-009LUG-VS; Tue, 04 Oct 2022 10:22:18 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofew8-009Jtw-GJ; Tue, 04 Oct 2022 10:14:05 +0000
-X-UUID: a971455217d54fd18ede926922edd938-20221004
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oT2Gi8AhWQJmxVKaN1FZw8aYBEbWJlp99zVdogahOl4=;
-	b=jmMVg24q+oWO6xqF79JF5DBPrq6VLSSrFpsG87fB+ajvDG5sS6Y784qq4OV8dyJuv/iXlnja9bRw1vddD4Ki0ElVJjjwzBDEHAPL70tgOB3lkuGHN5Fw/222roukU2pTLYlg4DiX/ZzJAjY15ix1sLw04ohkIQyQJp/Mz0oL98M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:48ee237f-654f-407e-b7e7-5bdea9f545d9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:889777b8-daef-48a8-8c50-40026d6a74c2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a971455217d54fd18ede926922edd938-20221004
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1789510658; Tue, 04 Oct 2022 03:13:59 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 4 Oct 2022 17:33:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 4 Oct 2022 17:33:21 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
-	<roy-cw.yeh@mediatek.com>
-Subject: [PATCH v1 2/6] dts: arm64: mt8195: add MMSYS and MUTEX configuration for VPPSYS
-Date: Tue, 4 Oct 2022 17:33:15 +0800
-Message-ID: <20221004093319.5069-3-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221004093319.5069-1-moudy.ho@mediatek.com>
-References: <20221004093319.5069-1-moudy.ho@mediatek.com>
+	id 1off3w-009LQv-26; Tue, 04 Oct 2022 10:22:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1664878927; x=1696414927;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=tYiX0livaZV54Tpug1MQVrKJH6mQ7IQHkmnz80pYNMc=;
+  b=byhlVbwm5/inJ6r9SaNghyx1SGXJET5zISNRwPYYBvc1FGa0ao+ouSyV
+   lxKObIAGJ53WlMMYn0unUAkYi2ff2TFZQ5+TJHtFwV6DcJq6KYrrfIRCg
+   tITLIrJMYkqEJ6LgPodi/ib+FfmvZEUOsSki+GT8dDftECHhOy7+XTc0m
+   YcOJBjiDGtlCczusohJ1y92tJ92wKRzJblexf8aPvHejZiUaFPvYMcI0i
+   KRX5IajSWN2zltAgqhWshB3ZHa070wakKIApyDjsOtxzeFfB+lFn66Zt6
+   DKh6Nz8KwHsbei3OlUKe4I3FKWvt0btsh5Yd3ncW4HAi/0ayMaalPNF8H
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="389167471"
+X-IronPort-AV: E=Sophos;i="5.93,367,1654585200"; 
+   d="scan'208";a="389167471"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Oct 2022 03:22:00 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="657081017"
+X-IronPort-AV: E=Sophos;i="5.93,367,1654585200"; 
+   d="scan'208";a="657081017"
+Received: from kmreisi-mobl.ger.corp.intel.com ([10.252.39.196])
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Oct 2022 03:21:55 -0700
+Date: Tue, 4 Oct 2022 13:21:52 +0300 (EEST)
+From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
+To: Irui Wang <irui.wang@mediatek.com>
+cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Rob Herring <robh+dt@kernel.org>, 
+    Matthias Brugger <matthias.bgg@gmail.com>, 
+    Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+    Tzung-Bi Shih <tzungbi@chromium.org>, 
+    angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com, 
+    Tiffany Lin <tiffany.lin@mediatek.com>, 
+    Yunfei Dong <yunfei.dong@mediatek.com>, 
+    Maoguang Meng <maoguang.meng@mediatek.com>, 
+    Longfei Wang <longfei.wang@mediatek.com>, 
+    Project_Global_Chrome_Upstream_Group@mediatek.com, 
+    linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+    LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+    linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v6, 6/8] media: mediatek: vcodec: Refactor encoder clock
+ on/off function
+In-Reply-To: <20221001031737.18266-7-irui.wang@mediatek.com>
+Message-ID: <3645b24f-436e-d6a5-27cd-287712eab22@linux.intel.com>
+References: <20221001031737.18266-1-irui.wang@mediatek.com> <20221001031737.18266-7-irui.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_031404_582403_522204CE 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20221004_032208_120923_4730D02C 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,66 +89,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+On Sat, 1 Oct 2022, Irui Wang wrote:
 
-Compatible names of VPPSYS0 and VPPSYS1 should be renamed to
-"mediatek,mt8195-mmsys" to match the description of the binding file.
-Also, add two nodes for MT8195 VPPSYS0/1 MUTEX.
+> when enable multi-core encoding, encoder cores use their own clock,
+> refactor clock management functions with used encoder hardware id.
+> 
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> ---
+>  .../mediatek/vcodec/mtk_vcodec_enc_pm.c       | 89 ++++++++++++++++---
+>  .../mediatek/vcodec/mtk_vcodec_enc_pm.h       |  6 +-
+>  .../platform/mediatek/vcodec/venc_drv_if.c    |  4 +-
+>  3 files changed, 84 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
+> index 213c3f50e9eb..2f83aade779a 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
+> @@ -60,7 +60,9 @@ EXPORT_SYMBOL_GPL(mtk_vcodec_init_enc_clk);
+>  static int mtk_enc_core_power_on(struct mtk_vcodec_ctx *ctx)
+>  {
+>  	struct mtk_venc_hw_dev *sub_core;
+> +	struct mtk_vcodec_clk *clk;
+>  	int ret, i;
+> +	int j = 0;
+>  
+>  	/* multi-core encoding need power on all available cores */
+>  	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
+> @@ -73,12 +75,27 @@ static int mtk_enc_core_power_on(struct mtk_vcodec_ctx *ctx)
+>  			mtk_v4l2_err("power on sub_core[%d] fail %d", i, ret);
+>  			goto pm_on_fail;
+>  		}
+> +
+> +		clk = &sub_core->pm.venc_clk;
+> +		for (j = 0; j < clk->clk_num; j++) {
+> +			ret = clk_prepare(clk->clk_info[j].vcodec_clk);
+> +			if (ret) {
+> +				mtk_v4l2_err("prepare clk [%s] fail %d",
+> +					     clk->clk_info[j].clk_name, ret);
+> +				goto pm_on_fail;
+> +			}
+> +		}
+>  	}
+>  	return ret;
+>  
+>  pm_on_fail:
+>  	for (i -= 1; i >= 0; i--) {
+>  		sub_core = (struct mtk_venc_hw_dev *)ctx->dev->enc_hw_dev[i];
+> +
+> +		clk = &sub_core->pm.venc_clk;
+> +		for (j -= 1; j >= 0; j--)
+> +			clk_unprepare(clk->clk_info[j].vcodec_clk);
+> +
+>  		pm_runtime_put_sync(&sub_core->plat_dev->dev);
 
-Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+There's more than one thing wrong here.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 905d1a90b406..7f54fa7d0185 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1477,11 +1477,20 @@
- 		};
- 
- 		vppsys0: clock-controller@14000000 {
--			compatible = "mediatek,mt8195-vppsys0";
-+			compatible = "mediatek,mt8195-mmsys";
- 			reg = <0 0x14000000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		vpp0-mutex@1400f000 {
-+			compatible = "mediatek,mt8195-vpp-mutex";
-+			reg = <0 0x1400f000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xf000 0x1000>;
-+			clocks = <&vppsys0 CLK_VPP0_MUTEX>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
-+		};
-+
- 		smi_sub_common_vpp0_vpp1_2x1: smi@14010000 {
- 			compatible = "mediatek,mt8195-smi-sub-common";
- 			reg = <0 0x14010000 0 0x1000>;
-@@ -1582,11 +1591,20 @@
- 		};
- 
- 		vppsys1: clock-controller@14f00000 {
--			compatible = "mediatek,mt8195-vppsys1";
-+			compatible = "mediatek,mt8195-mmsys";
- 			reg = <0 0x14f00000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		vpp1-mutex@14f01000 {
-+			compatible = "mediatek,mt8195-vpp-mutex";
-+			reg = <0 0x14f01000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x1000 0x1000>;
-+			clocks = <&vppsys1 CLK_VPP1_DISP_MUTEX>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
-+		};
-+
- 		larb5: larb@14f02000 {
- 			compatible = "mediatek,mt8195-smi-larb";
- 			reg = <0 0x14f02000 0 0x1000>;
+pm_runtime_put_sync() won't be called for the ith entry when the later 
+goto pm_on_fail is taken because the loop decrements i right at the 
+start.
+
+Similarly, i and j will mismatch for the ith entry because i was 
+decremented.
+
+Third, j does not start from clk->clk_num - 1 for the other entries 
+(for those lower "i"s).
+
+
 -- 
-2.18.0
+ i.
 
 
