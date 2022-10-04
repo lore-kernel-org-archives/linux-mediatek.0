@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F265CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEAAEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9NnJ2y92GJMi7+hDy6aQyM+iw6IEpz+rI/MPlh6YM0g=; b=ZQrorUdfSy//juufZgc8m9qaGd
-	PBfqL+IWo8K5UQZP9RRFuZsdFrYvvkFSPYvjKGLU9MGVdtC/E7zPTwgUEr0XyNnFb2760mAEUXRpH
-	hk4NLjhcZlMvJTOsVhJM4jEJ5tGB3/XtXe8waMoGaAh2YCiprSsb88eDu2b4+OnBt4MN34rdWoknw
-	m+mtWJHBHJ7vtyMjahMhf+ITwcDjTwdO7PJq15uFMvMHlfWrQW+lD7f83Z93d+i59UV3GuUxntWRy
-	31aYALI39t4J+06hQZ8IJHcGJzW0B/MnVfFAPMkfGds/ZgO49OH+/yon8O9QlGN6IOBK5d5WFSTNK
-	7WX5tXGg==;
+	bh=6dCqPZFjYFrlhQSz6nX7yCSN67+UN7JnjbCCMl4w43E=; b=zMXUEY9YRdxdYTM86IFfkxJsIc
+	Sfd+reUU0MD3msXX3618g8lEA6vxY9zkisP2WGncqTQTwD0hBiBWoRi5yLii1Q38Nwam/jDW7XLEK
+	ENIRYcAc+HHAXZSs6mjrVb8lWUzG6Sk6AWN0ImRbdkbH1FqGRwtDCLkAJVY/qUxFUFQ5DCZ0z59n/
+	0SBr2Rgwdp2nqvezGodf5H8DXNAkB3dxHAo/CfjYwsNIAyToluTyoabCMq+iXQbtYipXibCAiFqM6
+	pI8JAf5W4yFmpDDZwPWi1CNYvoaesNctsXNtTMD2p65mZWLVtgyn8E1jT+IDcKjK2/BeKGdAGpPL6
+	1rrZN54w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeNH-0099gx-El; Tue, 04 Oct 2022 09:38:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ofePs-009AiU-19; Tue, 04 Oct 2022 09:40:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeMp-0099Y8-TN; Tue, 04 Oct 2022 09:37:46 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1CBA76601A43;
-	Tue,  4 Oct 2022 10:37:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664876253;
-	bh=JcZcxWfPtp/23nmDfJdl1YuwXmFYJ/qI2LMQEzf65QY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jlgya9Zm/Vh1dYsussQ09jXNPAVV7p5mi6CrthUPRTS66JwOHH4vw2kaX4ywJOZS7
-	 FUi+1nbCXT25mqTzWAYQ9rejTXihRRsruHF8zZ6W9UqWxpg6r+6xKOUESiQSSavu0B
-	 wq/wzmAdtxqAtGE2mzCdE5WO0ymyEh5E2/5SUcPJmlAypeBPK3C73CBNJ9eGAsV9c/
-	 jpR+Ludyx80EHeEw9I9QkPzqPUHjQRLIPWi+Zestm8RRNCx1cPEGXEhdkUswQUo8m5
-	 axNrCUrXrZkIuk/UDp5g5YXGg1WTETU0AueVDqnD+wN0lhkrOJzwurhzeCpxK+gVrP
-	 ASlLz5i5h8bAQ==
-Message-ID: <0d017f04-cad3-fa76-5d2d-daaa052f2e62@collabora.com>
-Date: Tue, 4 Oct 2022 11:37:30 +0200
+	id 1ofePp-009AgR-Iv; Tue, 04 Oct 2022 09:40:42 +0000
+X-UUID: 27e8e28a05d2482a8c034fff331cb542-20221004
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=6dCqPZFjYFrlhQSz6nX7yCSN67+UN7JnjbCCMl4w43E=;
+	b=Cu26uCM8R5D7ywcOi2HWnuc0oVDRBojhblVo0kuI2i2LiKs09sxkKVoeN2I/PRBIt6FY4DrJmxlTe/p1BQUwahWY5OCwCChvocYP59/ySb1XWd2aXT1AmP4w8JHZ51hximbTA8k+QxGlHGEnnkB0tCnUn+WZz7XOLQSTw3uCCLg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:b322be83-ddde-4a5a-ae9a-73277f20c3e9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e89a0c1f-b96c-4512-b576-5860f4fb25e5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 27e8e28a05d2482a8c034fff331cb542-20221004
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yongqiang.niu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1656629184; Tue, 04 Oct 2022 02:40:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 4 Oct 2022 17:39:58 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 4 Oct 2022 17:39:58 +0800
+Message-ID: <af7eb0cacf8657937460287dd3ff9091f9a10f30.camel@mediatek.com>
+Subject: Re: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support
+ flow
+From: yongqiang.niu <yongqiang.niu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>
+Date: Tue, 4 Oct 2022 17:39:57 +0800
+In-Reply-To: <6bcf2f53-ffd1-5159-47a5-b3d7db548158@collabora.com>
+References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
+	 <20220930160638.7588-4-yongqiang.niu@mediatek.com>
+	 <6bcf2f53-ffd1-5159-47a5-b3d7db548158@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 04/12] ASoC: mediatek: mt8188: support adda in platform
- driver
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
- robh+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20220930145701.18790-1-trevor.wu@mediatek.com>
- <20220930145701.18790-5-trevor.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220930145701.18790-5-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_023745_156681_CBF89916 
-X-CRM114-Status: GOOD (  23.32  )
+X-CRM114-CacheID: sfid-20221004_024041_683883_FAD79661 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,272 +85,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/09/22 16:56, Trevor Wu ha scritto:
-> Add mt8188 adda dai driver support.
+On Mon, 2022-10-03 at 16:54 +0200, AngeloGioacchino Del Regno wrote:
+> Il 30/09/22 18:06, Yongqiang Niu ha scritto:
+> > add gce ddr enable control flow when gce suspend/resume
+> > 
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >   drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
+> >   1 file changed, 22 insertions(+)
+> > 
+> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > index 04eb44d89119..2db82ff838ed 100644
+> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > @@ -94,6 +94,18 @@ struct gce_plat {
+> >   	u32 gce_num;
+> >   };
+> >   
+> > +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
+> > +{
+> > +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
+> > +
+> > +	if (enable)
+> > +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
+> > GCE_GCTL_VALUE);
 > 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->   sound/soc/mediatek/mt8188/mt8188-dai-adda.c | 639 ++++++++++++++++++++
->   1 file changed, 639 insertions(+)
->   create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+> My only concern here is about the previous value stored in the
+> GCE_GCTL_VALUE
+> register, as you're overwriting it in its entirety with
+> GCE_DDR_EN | GCE_CTRL_BY_SW.
 > 
-> diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-> new file mode 100644
-> index 000000000000..ba8f622bb107
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-> @@ -0,0 +1,639 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * MediaTek ALSA SoC Audio DAI ADDA Control
-> + *
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
-> + *         Trevor Wu <trevor.wu@mediatek.com>
-> + *         Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/regmap.h>
-> +#include "mt8188-afe-clk.h"
-> +#include "mt8188-afe-common.h"
-> +#include "mt8188-reg.h"
-> +
-> +#define ADDA_HIRES_THRES 48000
-> +
-> +enum {
-> +	SUPPLY_SEQ_CLOCK_SEL,
-> +	SUPPLY_SEQ_ADDA_DL_ON,
-> +	SUPPLY_SEQ_ADDA_MTKAIF_CFG,
-> +	SUPPLY_SEQ_ADDA_UL_ON,
-> +	SUPPLY_SEQ_ADDA_AFE_ON,
-> +};
-> +
-> +enum {
-> +	MTK_AFE_ADDA_DL_RATE_8K = 0,
-> +	MTK_AFE_ADDA_DL_RATE_11K = 1,
-> +	MTK_AFE_ADDA_DL_RATE_12K = 2,
-> +	MTK_AFE_ADDA_DL_RATE_16K = 3,
-> +	MTK_AFE_ADDA_DL_RATE_22K = 4,
-> +	MTK_AFE_ADDA_DL_RATE_24K = 5,
-> +	MTK_AFE_ADDA_DL_RATE_32K = 6,
-> +	MTK_AFE_ADDA_DL_RATE_44K = 7,
-> +	MTK_AFE_ADDA_DL_RATE_48K = 8,
-> +	MTK_AFE_ADDA_DL_RATE_96K = 9,
-> +	MTK_AFE_ADDA_DL_RATE_192K = 10,
-> +};
-> +
-> +enum {
-> +	MTK_AFE_ADDA_UL_RATE_8K = 0,
-> +	MTK_AFE_ADDA_UL_RATE_16K = 1,
-> +	MTK_AFE_ADDA_UL_RATE_32K = 2,
-> +	MTK_AFE_ADDA_UL_RATE_48K = 3,
-> +	MTK_AFE_ADDA_UL_RATE_96K = 4,
-> +	MTK_AFE_ADDA_UL_RATE_192K = 5,
-> +};
-> +
-> +enum {
-> +	DELAY_DATA_MISO1 = 0,
-> +	DELAY_DATA_MISO0 = 1,
-> +};
-> +
-> +struct mtk_dai_adda_priv {
-> +	unsigned int dl_rate;
-> +	unsigned int ul_rate;
-> +};
-> +
+> Can you guarantee that this register is not pre-initialized with some
+> value,
+> and that these are the only bits to be `1` in this register?
+> 
+> Otherwise, you will have to readl and modify the bits instead... by
+> the way,
+> if this register doesn't get any changes during runtime, you may
+> cache it
+> at probe time to avoid reading it for every suspend/resume operation.
+> 
+> Regards,
+> Angelo
+> 
+> 
 
-..snip..
+0x48[2:0] means control by software
+0x48[18:16] means ddr enable 
+0x48[2:0] is pre-condition of 0x48[18:16].
+if we want set 0x48[18:16] ddr enable, 0x48[2:0] must be set at same
+time.
+and only these bits is useful, other bits is useless bits
 
-> +
-> +static int mt8188_adda_mtkaif_init(struct mtk_base_afe *afe)
-> +{
-> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-> +	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-> +	int delay_data;
-> +	int delay_cycle;
-> +	unsigned int mask = 0;
-> +	unsigned int val = 0;
-> +
-> +	/* set rx protocol 2 & mtkaif_rxif_clkinv_adc inverse */
-> +	mask = (MTKAIF_RXIF_CLKINV_ADC | MTKAIF_RXIF_PROTOCOL2);
-> +	val = (MTKAIF_RXIF_CLKINV_ADC | MTKAIF_RXIF_PROTOCOL2);
-> +
-> +	regmap_update_bits(afe->regmap, AFE_ADDA_MTKAIF_CFG0, mask, val);
-
-This should be
-	regmap_set_bits(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
-			MTKAIF_RXIF_CLKINV_ADC | MTKAIF_RXIF_PROTOCOL2);
-> +
-> +	mask = RG_RX_PROTOCOL2;
-> +	val = RG_RX_PROTOCOL2;
-> +	regmap_update_bits(afe->regmap, AFE_AUD_PAD_TOP, mask, val);
-
-regmap_set_bits() again
-
-> +
-> +	if (!param->mtkaif_calibration_ok) {
-> +		dev_info(afe->dev, "%s(), calibration fail\n",  __func__);
-> +		return 0;
-> +	}
-> +
-> +	/* set delay for ch1, ch2 */
-> +	if (param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] >=
-> +	    param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1]) {
-> +		delay_data = DELAY_DATA_MISO1;
-> +		delay_cycle =
-> +			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] -
-> +			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1];
-> +	} else {
-> +		delay_data = DELAY_DATA_MISO0;
-> +		delay_cycle =
-> +			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] -
-> +			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0];
-> +	}
-> +
-> +	val = 0;
-> +	mask = (MTKAIF_RXIF_DELAY_DATA | MTKAIF_RXIF_DELAY_CYCLE_MASK);
-> +	val |= MTKAIF_RXIF_DELAY_CYCLE(delay_cycle) &
-> +	       MTKAIF_RXIF_DELAY_CYCLE_MASK;
-
-	val = FIELD_PREP(MTKAIF_RXIF_DELAY_CYCLE_MASK, delay_cycle);
-
-> +	val |= delay_data << MTKAIF_RXIF_DELAY_DATA_SHIFT;
-
-	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_DATA, delay_data);
-
-Can you please use bitfield access macros across the entire file (and the others)?
-This will both increase human readability and add compile-time checks on register
-fields.
-
-> +	regmap_update_bits(afe->regmap, AFE_ADDA_MTKAIF_RX_CFG2, mask, val);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_adda_mtkaif_cfg_event(struct snd_soc_dapm_widget *w,
-> +				     struct snd_kcontrol *kcontrol,
-> +				     int event)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +
-> +	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-> +		__func__, w->name, event);
-> +
-> +	switch (event) {
-> +	case SND_SOC_DAPM_PRE_PMU:
-> +		mt8188_adda_mtkaif_init(afe);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_adda_dl_event(struct snd_soc_dapm_widget *w,
-> +			     struct snd_kcontrol *kcontrol,
-> +			     int event)
-> +{
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +
-> +	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-> +		__func__, w->name, event);
-> +
-> +	switch (event) {
-> +	case SND_SOC_DAPM_POST_PMD:
-> +		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
-> +		usleep_range(125, 135);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void mtk_adda_ul_mictype(struct mtk_base_afe *afe, bool dmic)
-> +{
-> +	unsigned int reg = AFE_ADDA_UL_SRC_CON0;
-> +	unsigned int val = 0;
-> +	unsigned int mask;
-> +
-> +	mask = (UL_SDM3_LEVEL_CTL | UL_MODE_3P25M_CH1_CTL |
-> +		UL_MODE_3P25M_CH2_CTL);
-
-	val = (UL_SDM3_LEVEL_CTL | UL_MODE_3P25M_CH1_CTL | UL_MODE_3P25M_CH2_CTL);
-
-> +
-> +	/* turn on dmic, ch1, ch2 */
-> +	if (dmic)
-		regmap_set_bits(afe->regmap, reg, val);
-	else
-		regmap_clear_bits(afe->regmap, reg, val);
-
-
-> +		val = mask;
-> +
-> +	regmap_update_bits(afe->regmap, reg, mask, val);
-> +}
-> +
-
-..snip..
-
-> +
-> +static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
-> +				     struct snd_soc_dapm_widget *sink)
-> +{
-> +	struct snd_soc_dapm_widget *w = source;
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-> +	struct mtk_dai_adda_priv *adda_priv;
-> +
-> +	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
-> +
-> +	if (!adda_priv) {
-> +		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
-> +		return 0;
-
-		return -EINVAL?
-
-> +	}
-> +
-> +	return (adda_priv->ul_rate > ADDA_HIRES_THRES) ? 1 : 0;
-
-	return !!(adda_priv->ul_rate > ADDA_HIRES_THRES);
-
-> +}
-> +
-> +static int mtk_afe_dac_hires_connect(struct snd_soc_dapm_widget *source,
-> +				     struct snd_soc_dapm_widget *sink)
-> +{
-> +	struct snd_soc_dapm_widget *w = source;
-> +	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-> +	struct mtk_dai_adda_priv *adda_priv;
-> +
-> +	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
-> +
-> +	if (!adda_priv) {
-> +		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
-> +		return 0;
-
-same here
-
-> +	}
-> +
-> +	return (adda_priv->dl_rate > ADDA_HIRES_THRES) ? 1 : 0;
-> +}
-> +
-
-..snip..
-
-Regards,
-Angelo
+we need set 0x48[18:16] to 0 disable gce access ddr when suspend.
+and  set 0x48[18:16] to 0x7 enable gce access ddr when resume, there
+will be cmdq client send task to process.
+this control flow should controlled in suspend/resume flow.
 
 
 
