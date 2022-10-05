@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86832C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 11:45:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D70BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 11:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8hLDzEimJnt0JEICQzW/RTVmaSOcB+cnJU9SOjYDEQo=; b=uIUAMl9x2uYfA1beIPvpIfY+Jh
-	v/ecInkiP9LTka019RWubf9fee4JeSvtS10tCKh8sxA7Idz+FLIZ+ai0mGbBKouE6mNkGiot30lST
-	ruWnLXA3wQtQBMMwvPyfIWFDUORT4n9IOTzQqUuI8hyfBUPY3PQyVS9rd2zZOKElscJbYoJSmggvY
-	J3oY5xlVAGS0ev73UvZseNF8rtmFmnq9Hf27NR4yFPc+DrGImmHdhGgdkMQ3rogmZNbB4tiFUNhyI
-	1C6Zf6tfCmqIumnsX6/lSl/qejbSTwFcGXaw89eFAdFekA4+s1hScngMe5Z89dkZ+VIJABXAYc38+
-	Vm4DiAJA==;
+	bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=; b=WKbgOcwSbe52O9qudFMqLOZ3qV
+	x+hKHDJqOWYki0ugX6yJaFL1xk1k3e0BBGxxpM5V4KhHYBJpqpoWJAIZEdtp63DEgEuM2mm46GRg3
+	KSPUFmdT8+jPM1jVdhI40d/o9ZdzuSfFT5W/lBA1NKhz1C5kA7TTUVVd1k/br8l+Ky2P92VvvdPyT
+	muJjs7u5YZzcqmhlv1JQ86K9rttsvqgxTSZ0Ba0gsw9YItwXiDKQmKx2Ci8KGLyFV+i8nwhKRpAhJ
+	KBjfhEoJNQill3yTu3PbFjd8LUBG+4e6rai+owRrHwLttlMNKtiz44+/3lnuShv8TboGdZV21Pio/
+	pTbv8Plw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og2pu-00Dt4r-NU; Wed, 05 Oct 2022 11:45:14 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1og2qC-00DtDu-3j; Wed, 05 Oct 2022 11:45:32 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og2pe-00DswJ-AX; Wed, 05 Oct 2022 11:44:59 +0000
-Received: by mail-pg1-x534.google.com with SMTP id e129so15037301pgc.9;
-        Wed, 05 Oct 2022 04:44:55 -0700 (PDT)
+	id 1og2pk-00DszG-Ju; Wed, 05 Oct 2022 11:45:06 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 2so9483976pgl.7;
+        Wed, 05 Oct 2022 04:45:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=8hLDzEimJnt0JEICQzW/RTVmaSOcB+cnJU9SOjYDEQo=;
-        b=dkstLcB4qT8u80g25Ulu4vSdJ9OeiwxLxyJgB2UFAaPg/Xhk/3paEAHVsM1FO76lTx
-         HRLAQzg3H+UzCBq8JE7ObheXjYFN/AfPeiBLui/S2K2BCKCRO948orlpJDZovmcRjQ7/
-         xjRAar4Fu9Pe92fmZYdJMJc5q0vPHlzseaYq+/gbNkEo4wNF0hLI4vrhVRHGrruhlAp4
-         8IwWuHvghAHAs0MuXNLwqyXDv1Qo6E4XuRLWO71XyYDnJeGCNUd2SCMNFWHcG3aVDZOy
-         jbceYf2C5EBMKybezEGR43r2P9jv1igACt4YBWnemviL6H6k63uesQBOpnJQ+XhPgxuB
-         sO8w==
+        bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=;
+        b=CG94Zo2W31qd1uuT/LO/cTuqQ3x/Uc6a0fPRmlx72wBTAzOnQUU/b4l3CvIGBZkWJ1
+         IxdQBWeov6BkXdonw+seOfJ1qLLJPygp8lKofjrj9eVlNOiMCa9J0+mt9LwtJBH6cpSg
+         KytMrOK2OHPkYfpUABaHXOMXGswwRno6ClQ2POc0TOZqxYCVx3kaetNxt1qhxp0eRpug
+         9cvahLuDjTZ5ahFePWoOV/0SBVEXSmzU237nWxMK520KutEQuIMWf+SIZSf4iDdRiLNy
+         wRM0sSzrhj9EPbQIPZr0YT0nwG6m8CdK0uC3UofxNQust/dF1IpAdKobH+2PG5QpdHcD
+         fHcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=8hLDzEimJnt0JEICQzW/RTVmaSOcB+cnJU9SOjYDEQo=;
-        b=pVowWtmZHr2+GW2EQzOGSa+uLLH1Pf5k7diyHQ2Mn21jic1v0gJtVu+OgnYL7KiiaJ
-         usD0D2qAneGUa8xdp0l2cnA6/PU3M/sj/X0yWg/LeFHJNKDnRHe+alqueCFC/tZHYBhb
-         cqoQT6ltyiIZ3+mvWZxsrjDRquUerE2lQDhCqe/lgnT4gdrtnBG/Qn/g0A1YhilxQLz0
-         zDxinpb+3ylxx0vYpzS2WDNtdib0gc9wNttKwHYT0y+mN6640nVNuzJa4w1h3jrXQFWE
-         SMXVhqjHajJ5YQnYHSttma7GlJXrx+84c3fg+pFypXtAZSqdHJV8k+IJkTrQmp04tMMQ
-         fOnA==
-X-Gm-Message-State: ACrzQf17K9IFqonRx8JofbRMkRD5xqj6yFAs4jAp97jyitG9oVp9vj3Y
-	HjuGKeKI/7fgnKjVs9tPDfo=
-X-Google-Smtp-Source: AMsMyM7opPIXFtREokZuT9dKhOxHwWombpjA4KcLpIjgA6WR8FzyQWYIR70rFnD3s8CO4UH8M0URQA==
-X-Received: by 2002:a62:e911:0:b0:555:8c06:c9eb with SMTP id j17-20020a62e911000000b005558c06c9ebmr31915818pfh.52.1664970295432;
-        Wed, 05 Oct 2022 04:44:55 -0700 (PDT)
+        bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=;
+        b=0lNgabpjSZz9GaEOEKCVcvS8Jc7Nf7eL0NmYPuUaRgStsS4+2BKaryXZJKgH9b9/B7
+         HmDYg+6Zt432TM9GRnk9kBVx9bT23QDDr/0yRjAsBzBUAY2H4nour5OzbeWsCiqbbIh9
+         VLredII7DahdhrHlsCTzKtPvq2SFKzDBZcDhySl5XoKlyMuRuGitcQCSRyLZrLqDzMoz
+         roL4+JM4iMsd7LAV2aCVi/u1l/6T+FoFJqfC7SYWWjdyHH6fV+7/F9jcYU1S63/1r1zP
+         AeuyjAKeOD9KXUAS2ywOntEnQieTQ911rTExC0S72WmRkWgVZkY5xaRnH5YlfEf0AzLg
+         V6SA==
+X-Gm-Message-State: ACrzQf2TrYIrEYHKVLDV7VXpIIkewcjdVzycrZeWdra1P4hdrzpXam90
+	j9yK9JnPDUbSD/m1UUbPUao=
+X-Google-Smtp-Source: AMsMyM4CWVTFfBMi+tu1SyhPlOdgJq5al1FRad3mezBpCzOjOXdMnj60RgHoDo3muf4wAym6ASIAMA==
+X-Received: by 2002:a63:fa17:0:b0:43c:3f26:48e3 with SMTP id y23-20020a63fa17000000b0043c3f2648e3mr27437883pgh.66.1664970304121;
+        Wed, 05 Oct 2022 04:45:04 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-73-126-108.emome-ip.hinet.net. [42.73.126.108])
-        by smtp.gmail.com with ESMTPSA id y23-20020a17090264d700b00176e2fa216csm10477447pli.52.2022.10.05.04.44.51
+        by smtp.gmail.com with ESMTPSA id y23-20020a17090264d700b00176e2fa216csm10477447pli.52.2022.10.05.04.45.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Oct 2022 04:44:54 -0700 (PDT)
+        Wed, 05 Oct 2022 04:45:03 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: pavel@ucw.cz,
 	robh+dt@kernel.org,
@@ -77,17 +77,17 @@ Cc: chiaen_wu@richtek.com,
 	linux-iio@vger.kernel.org,
 	szunichen@gmail.com,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v13 1/5] dt-bindings: leds: mt6370: Add MediaTek MT6370 current sink type LED indicator
-Date: Wed,  5 Oct 2022 19:43:54 +0800
-Message-Id: <d59807369c2ad245245514c49d9f91d47c8a5851.1664991040.git.chiaen_wu@richtek.com>
+Subject: [PATCH v13 2/5] dt-bindings: leds: Add MediaTek MT6370 flashlight
+Date: Wed,  5 Oct 2022 19:43:55 +0800
+Message-Id: <9397c7dc2f598aaf715090905518c9d7d8a8ba40.1664991040.git.chiaen_wu@richtek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1664991040.git.chiaen_wu@richtek.com>
 References: <cover.1664991040.git.chiaen_wu@richtek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_044458_384769_F138B59B 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20221005_044504_707596_0C4251C2 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,49 +102,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+From: Alice Chen <alice_chen@richtek.com>
 
-Add MediaTek MT6370 current sink type LED indicator binding documentation.
+Add MediaTek MT6370 flashlight binding documentation.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: Alice Chen <alice_chen@richtek.com>
 Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
+ .../bindings/leds/mediatek,mt6370-flashlight.yaml  | 41 ++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
 
-v13
-- Remove 'allOf' property
-- Add '$ref' and 'unevaluatedProperties: false' in 'multi-led'
----
- .../bindings/leds/mediatek,mt6370-indicator.yaml   | 82 ++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
 new file mode 100644
-index 0000000..7a41647
+index 0000000..e9d02ed
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-@@ -0,0 +1,82 @@
++++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+@@ -0,0 +1,41 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
++$id: http://devicetree.org/schemas/leds/mediatek,mt6370-flashlight.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: LED driver for MT6370 PMIC from MediaTek Integrated.
++title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
 +
 +maintainers:
 +  - Alice Chen <alice_chen@richtek.com>
 +
 +description: |
 +  This module is part of the MT6370 MFD device.
-+  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
-+
-+  - $ref: leds-class-multicolor.yaml#
++  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
 +
 +properties:
 +  compatible:
-+    const: mediatek,mt6370-indicator
++    const: mediatek,mt6370-flashlight
 +
 +  "#address-cells":
 +    const: 1
@@ -153,53 +146,14 @@ index 0000000..7a41647
 +    const: 0
 +
 +patternProperties:
-+  "^multi-led@[0-3]$":
-+    type: object
-+    $ref: leds-class-multicolor.yaml#
-+    unevaluatedProperties: false
-+
-+    properties:
-+      reg:
-+        enum: [0, 1, 2, 3]
-+
-+      "#address-cells":
-+        const: 1
-+
-+      "#size-cells":
-+        const: 0
-+
-+    patternProperties:
-+      "^led@[0-2]$":
-+        type: object
-+        $ref: common.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          reg:
-+            enum: [0, 1, 2]
-+
-+        required:
-+          - reg
-+          - color
-+
-+    required:
-+      - reg
-+      - color
-+      - "#address-cells"
-+      - "#size-cells"
-+
-+  "^led@[0-3]$":
++  "^led@[0-1]$":
 +    type: object
 +    $ref: common.yaml#
 +    unevaluatedProperties: false
 +
 +    properties:
 +      reg:
-+        enum: [0, 1, 2, 3]
-+
-+    required:
-+      - reg
-+      - color
++        enum: [0, 1]
 +
 +required:
 +  - compatible
