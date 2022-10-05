@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0333AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 16:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7ABC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 16:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nV8sn5fckcM1r2PSkDjQFkbKbz4kB84l0Mkh4PCptDc=; b=itkPBp5KRQ7C77kl6vKA+QwD9Q
-	skL3f5V/GIpzjNgav3xutGWcSTWm2hbI5iU68+Gbq1mqqTZYQpyl5XSJ3jfLdxSJ3AfOWH3Aapdj2
-	KuJN/B2VTxYkRn7VQ5y+jWule0GIpHRIhSSLfnKsNXfmvqCWjgFXzVVMP56g+yMVC+cTA326yHDhj
-	+G0ZtOnqqsc6Q0C91J4mM2OcoQoXN/MnuSF/lDI3go+jqqP86SDkKWK/d8XyqE0TPE60UdbuPDrm+
-	j4UNYnhD0h7kLqtwYfcduRf2Ips2jhNVeqKBVNkfWXUD423K3xo5w5n0Ay1LdghoP2ky+nNcNrpLQ
-	XrKQz9CQ==;
+	bh=fsDytsrXABRiHHLdkomit3W/4SQyAKiKJzv17uaMpSE=; b=lz6ylG7LYzhRuHP/GSG8b9voHW
+	UdL9aCVE2dFQRnLUXWHlctB3tIGaYRcQeuMGx/0G5N0cH2REynj2sq+l6Vz66LRXsxW5q45NL2dgY
+	+t8v+gYq/KS3fybaRmpskW+MW50E487YffvBn47C8y9HPb6nOcb9dyHfaY5IluHBkR8KHhdhc3sTK
+	w2Y/KDd0BtbRQegw5VZQoESdkDTmIh1PFgzYe6JYG7svuK2rT0TFUN+pdwoV1s93tqujAmln+S2FN
+	qO4RAoFG8kNI7VULDnfYydfzSB5H968y2PBwvdPHIaAqb1kzdg8SoaLRPpaK128EGPLt1Hl6+f8YI
+	rdOztoyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og6qo-00F0ac-B7; Wed, 05 Oct 2022 16:02:26 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1og7Ul-00FDJi-Ff; Wed, 05 Oct 2022 16:43:43 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og6qm-00F0Zu-7Y
-	for linux-mediatek@lists.infradead.org; Wed, 05 Oct 2022 16:02:25 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 25so15928230lft.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Oct 2022 09:02:23 -0700 (PDT)
+	id 1og7LG-00F8uE-Km
+	for linux-mediatek@lists.infradead.org; Wed, 05 Oct 2022 16:33:58 +0000
+Received: by mail-lf1-x133.google.com with SMTP id a29so3227620lfo.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Oct 2022 09:33:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=nV8sn5fckcM1r2PSkDjQFkbKbz4kB84l0Mkh4PCptDc=;
-        b=biOadCqVTkYihS9A1lwozegpbBCWdVtjyxKTngIIPs12kKTrrqxLkyqBFwbV9Zi5Vp
-         mWjjRHPwcQ1Lfv3PSm/ifX0D44ssDjl9q9WkvYgoCXuee+OugiTH4468hnvddQMr82T1
-         wpsSWEGM8XCqZVMy6x8Fjw1PaJ8uf1gzeILv/SdgXSJVbAFOOmyB3+jy9QQIMv3aMGb4
-         aYm0Q9vGLXxgaCxbPw9SeSAy/HYYRBnIfb+yGu1EMRPlJa922+Ha7nNXJm8RlD13ptH9
-         bxnW3Gv/CODYMekSycuKsZYNqkPe1O9nvGFB7YSyiWC5qqAGhzCZKTKI6XHt5WSTay0/
-         v2dw==
+        bh=fsDytsrXABRiHHLdkomit3W/4SQyAKiKJzv17uaMpSE=;
+        b=f79WZ1CmFqHwvH+p6fcw9MAZwCeE4Y0jytRrvpG5oNagbKEN/cGNhxlPfDTgAilmIL
+         LRJwD/J5nWGLRSi7njSfd3FVREwQ5CEX8IOzVdF8u0kyJJ57IRIkLXOTvPecNi3A9V9c
+         Tz6NWbOT3Cj04sVi1gyeZRh0uso8A2pmY0qHVA+8lFrgZB7eBS4xucXwtn0L7zGYI9fF
+         C8gxBR7Zms4ORtGFCduxQONtzzsoZa2j+6tbzxtCyXlvoRLjKxFUjNKeC8uYEs2nSqUA
+         WNq3lUsL8gxqYu3m7vVS+ON5miMOz0ikYD84TvhHaFFINKRHkJrfywUbvmNlradLvDPa
+         qE/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=nV8sn5fckcM1r2PSkDjQFkbKbz4kB84l0Mkh4PCptDc=;
-        b=iirMJkX5TBtVBUyZhgERuWocy67Ih+YkGNAMlyz1z7hETapXQWQMNUtei2ZxFqt4aE
-         tuLjD4+pvFXZYKXt+6i9rdfR+3QaxCr4UxDGe7b9YelYpsGIqD5XYkWuYkHJf5s0pG1z
-         G7SMKFH2cjE3R/+aoxo658VETEpH8v2BDlGYP59x1ZeK/u45FWvVxVjMROuOSQzDKZHF
-         nnvwTqRydoHA2rPTxEVCwcQ40Mtfk6YbP2b7UI2lbqXs0nu8qhNUeV0zn29nHsQAaNnI
-         Wf+D9glOaExqjSuXMrYBWSY6I0+wTk+qo6sius5ucrjrKYVfQtHPtqH/YzwfD7WS0fQA
-         SkKA==
-X-Gm-Message-State: ACrzQf2E9dzQu4ywgdZWztB4rkkMwu+OAo68POCR99oAtRsklGVAFrBM
-	/S8J6yxcD7O2IdDfmXAbLiACNQ==
-X-Google-Smtp-Source: AMsMyM5OSRk7h6UVPriBwCMY+CnAJExrUJsFeU6ZP8I38AN34glsQMeVrQOJadHtOCXG6lkgJT58Ew==
-X-Received: by 2002:a05:6512:3996:b0:4a2:1c8c:c9a1 with SMTP id j22-20020a056512399600b004a21c8cc9a1mr213297lfu.230.1664985742272;
-        Wed, 05 Oct 2022 09:02:22 -0700 (PDT)
+        bh=fsDytsrXABRiHHLdkomit3W/4SQyAKiKJzv17uaMpSE=;
+        b=4E+7nA98fZ91SCdNSYHMz+6EKPvSM/2ruiDKIwMglJGTmu+wKeH3rSMnvow3if4OGY
+         U3nXQkb4Lo6TZjjC8mWEsLQxShS5jypE5oqIasFa5v0EZ3t/Q7++l/iW3napelF6zU5T
+         HtflbjHmZzVLjp2A9cl8J4joICaDHCn2rmD+OEuBeb82uEGKAWSW8C/uU5TWSDyqHqMF
+         k8eCYJhglVdA98HpQSQoVXdwkiHT19RutDKY7WoKo4BmiS8PhYWI2CWBSV6jijuvSB/o
+         FmhmWEkdXtFxexkwelcfPX+Pk4GjND/YVe4ohxaseC1k2PyWWs0Zkg2smWjtM3mVsaN/
+         Zf5g==
+X-Gm-Message-State: ACrzQf2sT9ufFPx4k8KsGeqihfr2nhyUenGz1THOBurFgbe88PRYEE1g
+	Zm/hoN4xEO+JA9g1mDHWiNmk6A==
+X-Google-Smtp-Source: AMsMyM6R1rJ0EDep0X30zwEZyQnjfv12SmZCyEK74LSEbsUR/NHwNWRbzWm06v352s5lwPYFNRhPig==
+X-Received: by 2002:a05:6512:6d4:b0:4a2:5045:db6a with SMTP id u20-20020a05651206d400b004a25045db6amr249061lff.199.1664987630856;
+        Wed, 05 Oct 2022 09:33:50 -0700 (PDT)
 Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id j15-20020a056512108f00b0049f87fb416dsm2396484lfg.12.2022.10.05.09.02.20
+        by smtp.gmail.com with ESMTPSA id k16-20020a05651210d000b0048cf43c3a85sm2388561lfg.238.2022.10.05.09.33.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Oct 2022 09:02:21 -0700 (PDT)
-Message-ID: <cdb4e9f7-c7b3-3a1f-bf61-e42bdb021570@linaro.org>
-Date: Wed, 5 Oct 2022 18:02:20 +0200
+        Wed, 05 Oct 2022 09:33:50 -0700 (PDT)
+Message-ID: <1f3ebf6f-117f-62a7-8e02-3e8a3bcf7e9f@linaro.org>
+Date: Wed, 5 Oct 2022 18:33:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 3/5] dt-bindings: regulator: Add binding schema for
- mt6357 regulators
+Subject: Re: [PATCH 3/5] dt-bindings: watchdog: mediatek: Convert mtk-wdt to
+ json-schema
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, Lee Jones <lee@kernel.org>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Chen Zhong <chen.zhong@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
- linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>
-References: <20221005-mt6357-support-v2-0-f17ba2d2d0a9@baylibre.com>
- <20221005-mt6357-support-v2-3-f17ba2d2d0a9@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ wim@linux-watchdog.org
+Cc: linux@roeck-us.net, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ allen-kh.cheng@mediatek.com, seiya.wang@mediatek.com,
+ tinghan.shen@mediatek.com, linux-watchdog@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20221005113517.70628-1-angelogioacchino.delregno@collabora.com>
+ <20221005113517.70628-4-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221005-mt6357-support-v2-3-f17ba2d2d0a9@baylibre.com>
+In-Reply-To: <20221005113517.70628-4-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_090224_394403_2994B289 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20221005_093354_848150_2522B41F 
+X-CRM114-Status: UNSURE (   6.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,59 +100,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/10/2022 16:57, Alexandre Mergnat wrote:
-> From: Fabien Parent <fparent@baylibre.com>
+On 05/10/2022 13:35, AngeloGioacchino Del Regno wrote:
+> Convert the MediaTek watchdog bindings to schema.
 > 
-> Add YAML schema for the MediaTek MT6357 regulators.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->  .../regulator/mediatek,mt6357-regulator.yaml       | 284 +++++++++++++++++++++
->  1 file changed, 284 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
-> new file mode 100644
-> index 000000000000..83ce2cf287dd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
-> @@ -0,0 +1,284 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6357-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6357 Regulators
-> +
-> +maintainers:
-> +  - Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The email might be not correct.
+There is already work in progress:
 
-> +  - Alexandre Mergnat <amergnat@baylibre.com>
-> +
-> +description: |
-> +  The MT6357 PMIC provides 5 BUCK and 29 LDO.
-> +  Regulators and nodes are named according to the regulator type:
-> +  buck-<name> and ldo-<name>.
-> +  MT6357 regulators node should be sub node of the MT6397 MFD node.
-> +
-> +patternProperties:
-> +  "^buck-v(core|modem|pa|proc|s1)$":
-> +    type: object
-> +    $ref: "regulator.yaml#"
-
-Drop quotes.
-
-> +
-> +    properties:
-> +      regulator-name:
-> +        pattern: "^v(core|modem|pa|proc|s1)$"
-
-Why enforcing particular name of the regulator?
-
-Both comments apply to all other cases.
+https://lore.kernel.org/all/20220422121017.23920-3-allen-kh.cheng@mediatek.com/
 
 Best regards,
 Krzysztof
