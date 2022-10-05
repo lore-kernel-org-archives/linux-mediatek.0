@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C408C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 17:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 738ECC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 17:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6AdrG61fFuk3qFrjsmnmW/v2lHEYSKDOmlc3Uttj2I=; b=ylCFu7JUj3Xjq2reBVOdDEYMKF
-	smmSIyzq61B6Tqg5OuP1bkOGOS7c9FHe3oC99g7dirlCnSwbe9/H61jhN/YwP4MlrHiBd+5PNAGDW
-	36+Ms6IvUvbE1zlCQLz+uDB9j/kqhzrmWBR8DAQ7Auc0TXvvylor4dh5eo3x/aeA7aLX3vn70GCdH
-	b/gsr33WmqduNRhNVNHozCUoBiKK2H8W5IKLirWUzE/EsNw4yv0x17onSar1f/TZq+rJxg9lKBwGL
-	dVIikw761HJqO33vaTGMpKze/WS/9nP5WxV42u7X8XJDWoUGuMCYrNLSqoT3ADZkpg6mr0Aviecv6
-	5HhpCEHg==;
+	bh=37hxz4e7MZTSus9DgCYcgdpnTvx3nmTcodX/mKNlM0U=; b=hQmQR+MTOXRsz651LDmHxS8AXR
+	LwBe4MP9KnVguqgAeQhDB4qccsBo6CMKTayuBW71zoxQeaD5HSLbPJY6xDmz19yn0Tr9NMNhMlxl6
+	/amxuq1Qc7szyic5lzlx6oiobwM7PSxEZD+rFF7Aby5uOCMp+3DCfm/ssoqaA2R8hfH0b416zYP1L
+	YEStrM+UQMQBKrYUNbkfu2H3FXQNNx4IiOPn2KnD6TMtJ1+XhuFXlWivUSo5cnPx9lHJCR/ASHxfg
+	RDrS0Np103SKsercgTCiDNBUFWVlRwWl60Vxmp4AMcQVYAkOO7C9voWWYhSQHUes4LiHcGqCWDln9
+	iiE1vwdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og8Ra-00FS03-Tr; Wed, 05 Oct 2022 17:44:30 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1og8Rk-00FS5Q-T6; Wed, 05 Oct 2022 17:44:40 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og8RP-00FRuE-R6; Wed, 05 Oct 2022 17:44:21 +0000
-Received: by mail-wr1-x430.google.com with SMTP id j7so21660598wrr.3;
-        Wed, 05 Oct 2022 10:44:17 -0700 (PDT)
+	id 1og8RR-00FRuT-H9; Wed, 05 Oct 2022 17:44:22 +0000
+Received: by mail-wm1-x336.google.com with SMTP id o5so11258900wms.1;
+        Wed, 05 Oct 2022 10:44:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=J6AdrG61fFuk3qFrjsmnmW/v2lHEYSKDOmlc3Uttj2I=;
-        b=jiMuHvxyLhrd3kGwgfpUsnOt7hf+tBiYex6HV/Mo3+9CfzkqQDf6kj0FOvI6w7IOgx
-         8rOazqdOFH/IK4kOu/nGAE0Gwd6tz9zqFRiK5SfaUIJXNPBb+cLIiRxK/dzP8zBDbTh0
-         bmJ+RXjS9uoWTvXUf6lO8s7sgUeuSv5Q/CzCWgz4PuqV+33o4K14FqNUgpr5tuaGFjwD
-         9rRwMirpE+krkiGstEYsvIXsCx1PSUOdPjdDtnA1aNLOvgETT45mqxJRkjIucnOTEr7r
-         HS1oYEmDw5gNgzR4CYmaL+LIiOyijjWsOWxkmgiROpWTPe/B7erVlKS7bcDDlOvOR1Yh
-         +pww==
+        bh=37hxz4e7MZTSus9DgCYcgdpnTvx3nmTcodX/mKNlM0U=;
+        b=gJgcSlgc9UD7DCckOxia+yPqEKqLXHTyIXduivBZ0+CjGOBbDsNbTC9rrDhn5nJZ09
+         t9jKCOba2V7nDw+B7pssKvHQmwhW4WrplzVQbPHKk+O7wINCniLHhglE72B2fWamCAMq
+         LTAZfJPFqvUETC5EehzXjbjOBIFHPly7OqwU/Vye1gjQbVAAC4guhpIOVWeU1+J2fRzz
+         wVtRsWa2yDa3QsKojXjiWFd3Y+78H6hiOUkbJKC26/lyV0YAaUvjcjjwxQGYkAVm/u72
+         pgorn7YJtvKtUc2tmDlDoKiuIHqXwIydOATH3wkF7bCDdZS7igCCxD2PI6/9xf0c6t1B
+         CPKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=J6AdrG61fFuk3qFrjsmnmW/v2lHEYSKDOmlc3Uttj2I=;
-        b=6k9wVFgTGndWN7SCRc3MlZY0Ecg6iZCtys4Id3Mms+WqRSgSOMRq6YGvTdW9q9tCQ8
-         Ee5GX/9a9a8mCv8aLEdjbT68Yi03A2P4Xn8VPBiqikFv54/f+9H5ZUf597vcVO3M+tBB
-         i3YsFxP37Gwl+a4b07chqrVVJvHVDoAVjoUeZeifd66XQsWoif5YsOxxjtucduCAaosN
-         WECjsAPIy1AKvW5BKqEnvll5KoxHFJr3S2fI70HrdDnBBJyjTfAvURuWtQi1MZIyNR/J
-         ooaP36yu97OC8Tip6HepZ3+SMEJC5UmVl2kEiODGqSEChsc+N3GExF89c91xS7gRJbGB
-         SUpA==
-X-Gm-Message-State: ACrzQf1M8nEo5hnOMN6cx6/gjE2FbttN+Exk49Vm7z9lQX43MbmtC/9Z
-	t2+/RNBZncW/LrWUrj+jaL0=
-X-Google-Smtp-Source: AMsMyM7LORL+FOnuDtH5sB3TJMSNlDx7UAQ83NOa0L/mNBleJUp+Cs/QLwJCYNTum2QiG1rzKE0y+A==
-X-Received: by 2002:a5d:474b:0:b0:22e:3180:f748 with SMTP id o11-20020a5d474b000000b0022e3180f748mr520389wrs.504.1664991856242;
-        Wed, 05 Oct 2022 10:44:16 -0700 (PDT)
+        bh=37hxz4e7MZTSus9DgCYcgdpnTvx3nmTcodX/mKNlM0U=;
+        b=gPKqjMQEFERoSqo1GY8lBKmcoTMz/PBUhwSiDmCDceKxBnoAPXtTpjyFz/1qvz1Ksj
+         kbkOl6rRcgKVmwnPHZSYY+HJQcbtJ2esU/ahBHeqkVzRlG8qq/WQJ6DMzJ6SAw8UnrGE
+         gFAXafSIKsFaU7+mQnEsvMn/axc5AQO0Gs/MLo6CSft81x7IYSoSP6HX5yAlrYGLCz0p
+         g08XchlXqFiz9gRB0RDjgIWsHJSGNuXENPSQSgPM/NQA+Mb84wrSYbc0Jo2e5K3WJhJS
+         CMAFjmtM7aC4+s9gBue6EY0f/DpSAJKCrpg0oRPEJAUTEswJjS4MvUbi7xyhFuaxvUTO
+         Ub8Q==
+X-Gm-Message-State: ACrzQf152cWh3O7CslILEUrtXonil3aQ9jYDlReOGDOyY+qb5HJLawsk
+	yZNDbEDkLWWO8dDG5r3NYv4=
+X-Google-Smtp-Source: AMsMyM7Zu9Qhq56CkvYbcjimwNpc6IeE5Q0+iaHY4uiTqFUh8hTy2KFZeo9ruEIIOAWerocVKz6kSQ==
+X-Received: by 2002:a05:600c:4e94:b0:3b4:baf8:cf18 with SMTP id f20-20020a05600c4e9400b003b4baf8cf18mr4208439wmq.170.1664991858108;
+        Wed, 05 Oct 2022 10:44:18 -0700 (PDT)
 Received: from localhost.localdomain ([95.183.227.98])
-        by smtp.gmail.com with ESMTPSA id c6-20020a5d4146000000b0022a403954c3sm16075491wrq.42.2022.10.05.10.44.14
+        by smtp.gmail.com with ESMTPSA id c6-20020a5d4146000000b0022a403954c3sm16075491wrq.42.2022.10.05.10.44.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Oct 2022 10:44:15 -0700 (PDT)
+        Wed, 05 Oct 2022 10:44:17 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
@@ -74,17 +74,17 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 01/10] arm64: dts: mediatek: mt6779: Remove syscon compatible from pin controller
-Date: Wed,  5 Oct 2022 20:43:34 +0300
-Message-Id: <20221005174343.24240-2-y.oudjana@protonmail.com>
+Subject: [PATCH v2 02/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Improve description
+Date: Wed,  5 Oct 2022 20:43:35 +0300
+Message-Id: <20221005174343.24240-3-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221005174343.24240-1-y.oudjana@protonmail.com>
 References: <20221005174343.24240-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_104419_897174_9866FD3D 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20221005_104421_598699_A24BA97B 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,32 +101,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Remove syscon compatible string from pin controller to follow
-DT bindings and pass checks. Adding the syscon compatible to
-the DT bindings documentation instead causes a different check
-error due to the syscon document specifying a maximum of 1 item
-in the reg property, while this has 9. Nothing is using the pin
-controller as a syscon at the moment so it should be a safe
-thing to do.
+The current description mentions having to put the pin controller
+node under a syscon node, but this is not the case in the current
+MT6779 device tree. It seems that this is not actually needed, so
+replace the current description with something more generic that
+describes the use of the hardware block.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6779.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml          | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-index 9bdf5145966c..a6fa5212da4e 100644
---- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-@@ -160,7 +160,7 @@ infracfg_ao: clock-controller@10001000 {
- 		};
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+index 8c79fcef7c52..c6290bcdded6 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+@@ -9,10 +9,9 @@ title: Mediatek MT6779 Pin Controller
+ maintainers:
+   - Andy Teng <andy.teng@mediatek.com>
  
- 		pio: pinctrl@10005000 {
--			compatible = "mediatek,mt6779-pinctrl", "syscon";
-+			compatible = "mediatek,mt6779-pinctrl";
- 			reg = <0 0x10005000 0 0x1000>,
- 			      <0 0x11c20000 0 0x1000>,
- 			      <0 0x11d10000 0 0x1000>,
+-description: |+
+-  The pin controller node should be the child of a syscon node with the
+-  required property:
+-  - compatible: "syscon"
++description:
++  The MediaTek pin controller on MT6779 is used to control pin
++  functions, pull up/down resistance and drive strength options.
+ 
+ properties:
+   compatible:
 -- 
 2.38.0
 
