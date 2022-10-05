@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F329C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 07:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3759C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 07:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PI8V11iT32Q2jycjSqRqVQTX4d7OUvBcmL01MKyGhek=; b=Bzrtw+fIUYVf3EDU2luw0LK7GB
-	EsA6/8FUb1uRBvVhuKVXCRPmMsk3YXkDd00RhfhqAblGaMohgdYjFKzMGlV876iIPrdxlFBl+JTbS
-	Y+KUCT0ztqQXDFzBLJgU/GD3yOoEDe3EK3LiKxHUjWHOGIllMMOOCmsnP1/W9wZdvH4KH7O/xXhLR
-	2ZAbBV/eIfFa617kReddjdif8gkTjgoReAoYhCXKY2mSF+P4b/Hw69QKI7UxWv+0OQG6gKg83VZ77
-	lE+ZMhvw4KpnAUfDiVFHSBNVz7QwwIfymQPG4bS88zNTa+WetoKC5pw+iV3OlOCKBUKJDpwq0u+1n
-	bJU8Tz5Q==;
+	bh=D2ARNbWjWzrWSLd7BzhUTLcCyzjmT3yUMhwTkpGSXDA=; b=PCK1lGKqzCxAbNcUSn3BfEk8MG
+	UEpigkxYcuzTq0oTrvJuF61JHs842r4EsH1Cs+hCWY2r5pFwwhgXf25FLCep5fFM5c21zaIFtHz9l
+	dxRHlY2Iqp7qHJH8srhypxwOEa/e8yr0Le14GYVkFo+LYjTmo0HoUwCsbLRDZzSlG0J2MC1Dee8ew
+	8GlWii+Nglcje+ZCkJrtZ3130oTZIXwGRipeCK/6LoW2w01sMZ9WXwmoON/vRab69p6Du4yXP/Mnq
+	+inaGBwjguo0+CgRI4V2H73PBueJWfeHsExj1ocmwtMGpvV8GD0uonoX0Kj5kuQTGPoh0QMH8qj+S
+	h1zTagfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofz0V-00Cr4c-RL; Wed, 05 Oct 2022 07:39:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ofzHa-00Cvtl-DA; Wed, 05 Oct 2022 07:57:34 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofz0L-00Cr0D-Gd; Wed, 05 Oct 2022 07:39:46 +0000
-X-UUID: fef8f5782d9f4a5494c435d8dda1399d-20221005
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=PI8V11iT32Q2jycjSqRqVQTX4d7OUvBcmL01MKyGhek=;
-	b=mw+qhw6kSEYudPk/0CJBJoABZWHa6Os5USGIwcfWV5Nq6SePlaOU0hem2qvDpgxPKgQvBjZPGf9MGug+UiSActLg9oYDrUNE9zNwJXSX16EvXOVREMRWtHNL9RzR2klgY1B5eh+Hhvu4Fhe92MHCUO8ZmBEZ37THCi4K+ba3qhw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:5799d8dc-b9dd-41e6-8fd4-96d35473672e,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:b524ed69-c578-4abf-baf4-d93ecc5e701f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: fef8f5782d9f4a5494c435d8dda1399d-20221005
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 87133747; Wed, 05 Oct 2022 00:39:35 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 5 Oct 2022 15:08:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 5 Oct 2022 15:08:57 +0800
-Message-ID: <ac0a8cadf18291575d5fc798f0d6b99f5c3a4258.camel@mediatek.com>
-Subject: Re: [PATCH v5 3/6] soc: mediatek: add mtk-mmsys support for mt8195
- vdosys0
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
- Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 5 Oct 2022 15:08:57 +0800
-In-Reply-To: <0e67041f-a61d-1e34-2ce4-6a199c2c9f8e@collabora.com>
-References: <20220927152704.12018-1-jason-jh.lin@mediatek.com>
-	 <20220927152704.12018-4-jason-jh.lin@mediatek.com>
-	 <0e67041f-a61d-1e34-2ce4-6a199c2c9f8e@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ofzHP-00CvrW-Tn
+	for linux-mediatek@lists.infradead.org; Wed, 05 Oct 2022 07:57:25 +0000
+Received: by mail-lf1-x130.google.com with SMTP id b2so13493599lfp.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Oct 2022 00:57:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=D2ARNbWjWzrWSLd7BzhUTLcCyzjmT3yUMhwTkpGSXDA=;
+        b=iCaQ5UjcHDNNPJYrlcmZHhEPHRd+reQ0eq2/8cdYJl0qEH2pPsz/HIGTbIjSdHM/wT
+         YuwBAUuaOKD1iTOHehb0jBNUDbI199fFOp826jQxaOXYQ9dAMbh52D3y3+7LyO1TtkvW
+         iMAlSe4eRyRhDYwG+LXh8jlU7ypmbdQUgh5SVdjGR3AJMeRI4iU7fTZxGEi92C68GayW
+         pA2fkAW7SfgZSavya0NQKeCpsZ0rTzxItOy00KnyFAkcN5+YF770DK9SA8Rw+OVITKPD
+         qQLfIHURg4h+pL4xKLw6Yfb1Vo8WgrkJ5A4PxsePTfdXufvorKBv+evGctOokFsmp0Gh
+         yoHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=D2ARNbWjWzrWSLd7BzhUTLcCyzjmT3yUMhwTkpGSXDA=;
+        b=BE/Ue/hTu6ybudJurJb+64HGW0QJpZrt1JZXDX8gH9jyW8oHwpsgugXnb1Ho9YpRon
+         CTpllBQBudKSzZl08qpKpk39l42e5ZT8BQa49Pt87MSYSr6zZTflXMzkz/YFjkG9xqak
+         SccjYdVKl12m82zakHalxF94GbqX/nBsmr0yyiy5nI+jLfNRQN0C9yUtHGpZH4Z0qp2c
+         L0rjvfDjyUwTW4HSzBBdWjKe87JD3E72bR/EUqSNCeA7guk2H8cQXhEPpVjvf0nH9hmh
+         fef9MHIZWjWu2cOXaTvwaB+N95gRbNcLx063OSv/aOGiz65xnE6Jg39eqrNkX77KIeEQ
+         1MmQ==
+X-Gm-Message-State: ACrzQf3QnQ6BfRcr88lP/OPrF9vMKcyvXGRWChjSNDSaXc7kJnKJ1aqk
+	WArlsczPNf/jZWdimcOC3iiYHQ==
+X-Google-Smtp-Source: AMsMyM6EyDGQavd2wdukmVY8QwvLxO38/5hzfrh/8YLOQNbUIA620QQPwUeain0Cr1kIDxEJeYPs6g==
+X-Received: by 2002:a19:f809:0:b0:4a2:2db5:8c41 with SMTP id a9-20020a19f809000000b004a22db58c41mr5387256lff.179.1664956639977;
+        Wed, 05 Oct 2022 00:57:19 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id br32-20020a056512402000b0049465afdd38sm2259888lfb.108.2022.10.05.00.57.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 Oct 2022 00:57:19 -0700 (PDT)
+Message-ID: <2665abdb-cc0b-dd88-a545-a76ac05d7448@linaro.org>
+Date: Wed, 5 Oct 2022 09:57:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v1 2/6] dts: arm64: mt8195: add MMSYS and MUTEX
+ configuration for VPPSYS
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+References: <20221004093319.5069-1-moudy.ho@mediatek.com>
+ <20221004093319.5069-3-moudy.ho@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221004093319.5069-3-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_003945_564374_F008C5EF 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20221005_005724_051976_238F33C6 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +100,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
-
-Do you have any comment for this binding?
-
-Can you help us review the soc/mediatek related patches?
-
-Regards,
-Jason-JH.Lin
-
-On Wed, 2022-09-28 at 10:14 +0200, AngeloGioacchino Del Regno wrote:
-> Il 27/09/22 17:27, Jason-JH.Lin ha scritto:
-> > 1. Add mt8195 driver data with compatible "mediatek-mt8195-
-> > vdosys0".
-> > 2. Add mt8195 routing table settings of vdosys0.
-> > 
-> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+On 04/10/2022 11:33, Moudy Ho wrote:
+> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
+> Compatible names of VPPSYS0 and VPPSYS1 should be renamed to
+> "mediatek,mt8195-mmsys" to match the description of the binding file.
+> Also, add two nodes for MT8195 VPPSYS0/1 MUTEX.
 > 
+> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 22 ++++++++++++++++++++--
+>  1 file changed, 20 insertions(+), 2 deletions(-)
 > 
-> 
--- 
-Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..7f54fa7d0185 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1477,11 +1477,20 @@
+>  		};
+>  
+>  		vppsys0: clock-controller@14000000 {
+> -			compatible = "mediatek,mt8195-vppsys0";
+> +			compatible = "mediatek,mt8195-mmsys";
+
+This does not look like matching bindings. Last patch for bindings was
+requiring this to be prepended with vdosys0 and followed with syscon.
+
+Best regards,
+Krzysztof
 
 
