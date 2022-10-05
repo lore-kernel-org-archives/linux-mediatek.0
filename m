@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2B63C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 09:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3717FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 09:34:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bFcEY/E5BYvHxMQ2XfH4xnysOEBmImdGkFLvik4AJzY=; b=ztfwxc/q+Swo7c44VEGqbjM2Bn
-	rh6cDeS4ekuXc3iiPEXHo0hiD5abkeAaN39HWHWF/U9+HPZfDDw+lhOZh45cIKpZGupq+kVWevF9T
-	+hUn+ePAiqyWzVyWtkKvZi4iJDLnVxNPK3Yx+qZ1kVVXj5/cXEjaKpUdIlmKhGueS4SOJvH/nbf83
-	cBOTgXulcpxq8SW/uUKrU2feHcYRXtHjLABZjfoVqhl8OFpk2zQ+WHYrTx0RpDvz8snhmMQAB378X
-	ZdsBe+X8Qd0V7MFdJGUmC0kjXS4ba5uSmM9O5QtF18rbAPqZ9abBVFqFMi57WRNRGIa+nANXVy0eW
-	I8x+p6nA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EOymTzDeMT8KnkkH2CbCN0RSUPtqrInGVZj1LUNm0dc=; b=N4FW+vSusQFzP4i25DfeNvHDcJ
+	yLrGooj4nJGNLdFpEAHG/Rb1Bq8OX6ZyJcvhlQC3tTrn7TSZ+AmELmO+6WJNMRuW+iQvT8yMOdLta
+	hLT4lVEPnkB2U0MW0aN8Fb1UEY+nW0bZGvjEAo25+BVE2/xsWIlYJAvPOLIkWr/heJi6gjXETi4Yg
+	yNa7779lGcqdgto+1eGSd5Qd69/hFdO+9FTPNbv3lb8LjFtG9J4RjZiabI1OJfiTcPaWxzYmBT7ht
+	z8jL4djh7kPR3n5dx44TR3AuvIfDcFX14QyBXJMGMUSBKPTrHR+zS69ItnHORFNKddkyx+GiNjjGA
+	3RBqEzuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og0Gm-00DEm7-Pi; Wed, 05 Oct 2022 09:00:48 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1og0nK-00DMlQ-4C; Wed, 05 Oct 2022 09:34:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1og0Gb-00DEjC-Mm; Wed, 05 Oct 2022 09:00:38 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id mg6so4851032qvb.10;
-        Wed, 05 Oct 2022 02:00:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=bFcEY/E5BYvHxMQ2XfH4xnysOEBmImdGkFLvik4AJzY=;
-        b=NfktDo+qa9/7Fig1UFcwkllp7+G2MauCZZFqmWko49enFuBXZ3593ko1wv7CxmGth5
-         IxcBl9GuukJuweb/CzTJn8J5oPT4FbpaxtMsFaBZ1DHcxMtA9HnGk5CQpvwuo7i158si
-         FaW5qM++a1yxZMAJePJfBEmEF9em50T2irPY2F6VnGXv1F7W40LYnZADH1mw6V/3dBlH
-         peGG5IKyuBlDoAg1peFHKMRKowh/JcEHHRGb4hMMEaO8Eyt1/nbyC63tuH74drGPiZu1
-         BQS+gVZ3OtFJoiNlnbuGuYkhKiDvML5A+LC88XNbCWRo+iVexBDB+/P9d+RIA9uKndJg
-         KtAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=bFcEY/E5BYvHxMQ2XfH4xnysOEBmImdGkFLvik4AJzY=;
-        b=2vBTR46Mf5g+1aamZheZ1/sWWxT2eUZ1FoN+5x9f3XVwJwmGxlh9tU2zhALKTTf51a
-         Vtb0JV3pb6nhrkHfxbLdPldkbETrxiMdzPG/2Gxw4x4KEUkng8PxfQjWnhf7AgppVUcG
-         Xuysu5b4R923wCOrL6RYiJeAxVywB5QI05oCcVSV9vmfoaNrR5GShcaY+lYANxgAEraY
-         K/F7bFUJQvidKA9ldWNT5LcX1vxJKx1SFZG7UdoBE0NKm5AtbKhHiKoL9qh5w1PRo/F/
-         crqn+nb2NVMgURCdKc2/MCA55rIspuV6zMnvUrkgitRDMcWJk0wAFwG2XglJhAPr/i+3
-         0DRw==
-X-Gm-Message-State: ACrzQf1pmr5ZljqHd/7b0kBWd4je9khHWamwkM8PMrRi+ML8MlMzSRo7
-	5AvBrBXCIcHqNoMhDyfmBKeTungVAGCUWG0rp5k=
-X-Google-Smtp-Source: AMsMyM61Fj/fnFajeEN/tYSRNQs/vmZAUDDJZEH4jGw49cuWKOzFSPdDHaD2R2YLYYw+nq+O3/FkvKSTAx/Jj6tMc4c=
-X-Received: by 2002:ad4:5be1:0:b0:496:a686:2bec with SMTP id
- k1-20020ad45be1000000b00496a6862becmr22619975qvc.85.1664960434585; Wed, 05
- Oct 2022 02:00:34 -0700 (PDT)
-MIME-Version: 1.0
-References: <9dda705a8d67826306f6c6129722d3ad8edc96fc.1664816175.git.chiaen_wu@richtek.com>
- <CAL_Jsq+YeZRizJFYuU7RPTcFRe1cDjLgsTidisJ_P5PNC4eKiw@mail.gmail.com>
- <CABtFH5Ld91S65RiDu4iSpFhAMiFWaQdj-yDRM79=WUkArpA0JA@mail.gmail.com> <9004b427-66b7-f783-9258-4f6b893899ef@linaro.org>
-In-Reply-To: <9004b427-66b7-f783-9258-4f6b893899ef@linaro.org>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Wed, 5 Oct 2022 16:59:58 +0800
-Message-ID: <CABtFH5LLxjaWHFLRGjVb9x1a_SJoHzD_GsOqn-e9uQAJ6mOocg@mail.gmail.com>
-Subject: Re: [PATCH v2] dt-bindings: mfd: mt6370: fix the interrupt order of
- the charger in the example
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, 
-	matthias.bgg@gmail.com, sre@kernel.org, chiaen_wu@richtek.com, 
-	cy_huang@richtek.com, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	id 1og0n9-00DMgU-4u; Wed, 05 Oct 2022 09:34:16 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 98BBD66022E4;
+	Wed,  5 Oct 2022 10:34:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664962449;
+	bh=pRg0SkW5d5gHVASYVoiFL+t/7J8p0XFnGA9gDu1F/Lg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WJEbR58ZP3OCHhAFbRm6aXrr7djjEr+MKGpCNj5rEbflgnRDXMTgxtzqyoQXTEXyL
+	 XKRXZx9b04xz9104Pa9sLLxBp3oSEjV9K8GzBglt/aLjU2+FGMGx9I5ZJiHf1IgkSN
+	 oteWdNodt8bW7wZjkX9UDFRrceYaf+faRkS57UB70fq6TmfrZSR4wgtCPQt/Hzf6hE
+	 ki4yp+4lU7doa58WMzS1TPp1ir+TzZATOmoyGU5QEIgUOrQuTIA00r/z9C9YU/G16b
+	 M5VdOnISiqaK4TLS4Bx8Pjx9Mf4yPPJTEF5C81V/c3IBjsuIBL4wsFYQqI+Wqwc609
+	 oDEle3kRlmX+Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	tinghan.shen@mediatek.com,
+	seiya.wang@mediatek.com,
+	angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Subject: [PATCH] arm64: dts: mediatek: mt8195: Fix CPUs capacity-dmips-mhz
+Date: Wed,  5 Oct 2022 11:34:03 +0200
+Message-Id: <20221005093404.33102-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_020037_759083_EEC50E76 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20221005_023415_339243_ED88F4CA 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,28 +76,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 5, 2022 at 4:33 PM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-...
->
-> Eh, my patch was merged in July... and yours from September still does
-> not use updated multi-led bindings. Was it even tested before sending?
->
-> Best regards,
-> Krzysztof
->
+The capacity-dmips-mhz parameter was miscalculated: this SoC runs
+the first (Cortex-A55) cluster at a maximum of 2000MHz and the
+second (Cortex-A78) cluster at a maximum of 3000MHz.
 
-Hi Krzysztof,
+In order to calculate the right capacity-dmips-mhz, the following
+test was performed:
+1. CPUFREQ governor was set to 'performance' on both clusters
+2. Ran dhrystone with 500000000 iterations for 10 times on each cluster
+3. Calculate the mean result for each cluster
+4. Calculate DMIPS/MHz: dmips_mhz = dmips_per_second / cpu_mhz
+5. Scale results to 1024:
+   result_c0 = (dmips_mhz_c0 - min_dmips_mhz(c0, c1)) /
+               (max_dmips_mhz(c0, c1) - min_dmips_mhz(c0, c1)) * 1024
 
-I must apologize for checking our patches are based on v5.19 (I also
-forgot to apply your patch before checking patches......), not the
-v6.0-rc series at that time.
-I will update the latest code and check my patch again and again
-before submitting the patch next time.
-I'm very sorry for this mistake.......
+The mean results for this SoC are:
+Cluster 0 (LITTLE): 11990400 Dhry/s
+Cluster 1 (BIG): 59809036 Dhry/s
 
+The calculated scaled results are:
+Cluster 0: 307,934312801831 (rounded to 308)
+Cluster 1: 1024
+
+Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 905d1a90b406..0b85b5874a4f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -36,7 +36,7 @@ cpu0: cpu@0 {
+ 			enable-method = "psci";
+ 			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+-			capacity-dmips-mhz = <578>;
++			capacity-dmips-mhz = <308>;
+ 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+ 			next-level-cache = <&l2_0>;
+ 			#cooling-cells = <2>;
+@@ -49,7 +49,7 @@ cpu1: cpu@100 {
+ 			enable-method = "psci";
+ 			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+-			capacity-dmips-mhz = <578>;
++			capacity-dmips-mhz = <308>;
+ 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+ 			next-level-cache = <&l2_0>;
+ 			#cooling-cells = <2>;
+@@ -62,7 +62,7 @@ cpu2: cpu@200 {
+ 			enable-method = "psci";
+ 			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+-			capacity-dmips-mhz = <578>;
++			capacity-dmips-mhz = <308>;
+ 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+ 			next-level-cache = <&l2_0>;
+ 			#cooling-cells = <2>;
+@@ -75,7 +75,7 @@ cpu3: cpu@300 {
+ 			enable-method = "psci";
+ 			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+-			capacity-dmips-mhz = <578>;
++			capacity-dmips-mhz = <308>;
+ 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+ 			next-level-cache = <&l2_0>;
+ 			#cooling-cells = <2>;
 -- 
-Best Regards,
-ChiaEn Wu
+2.37.2
+
 
