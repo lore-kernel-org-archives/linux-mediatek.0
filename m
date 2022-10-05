@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58FC1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 02:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197CFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 03:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gy2ytux/w9C0XwgNd3GjCzaa+hUjmK54OfaiP6kcO8Y=; b=ThNq4zK+K8nSS0WlQbsH789Su/
-	z/wcsAxjlObx9Q1sV28MXKRaRjSuP7Qz0cuveVudNGikKWbflAbsaw5ssWmxBEJP50qzA6kL8WrPR
-	X8tiqhzSk/0xoCMZ4GPepFbTX5Q3Ze225foiq15qH6HAhCcSgROJjDJAYXx7ljwu6jGEAPPsgIEqV
-	j1nr0TIABXSI5fHVVCEBXmNmH2WwJr0FxF6uQk0LPzb8/YVZglsFk3SGIPbfWiVFt/r68JG8u/3Pr
-	aLr7qlYuZZXTTTXAhitmwqqSqYZ/KVT8b964yChi6EGnefpX6vaSjDcmlhO4PyuxceBVillHoi5wd
-	qdgnYBPQ==;
+	bh=XPq/6dFASRqc6e2yem5OrGISl6cnYLvjFfIK/0fW3eA=; b=Rsa51lRNPuiSYKS2PilawY76tC
+	YOcGsMYEynYG09CFMAvVdYJE9c414ZcL5sw6pQR2H5DxfBBVXmcR1quGlfNgGsw1gZxoJDyJoK0ha
+	FitNYuEvS/NXaNqbv0lNVhk3rnDJRPNrRdJmGAv9e9SSvAX8mRV/qVaxI/dICGA2zHKRD9VO6rhmb
+	kyg+mHX9RWx8Nq4uh+I2TI8mPW/dmQVOVyqkskoHB2OmR7REvOFOvAm4UDEPpXgz9iopvfjD17ari
+	2sPzmnputEQJDSdZhj93ephTQUyVihDs1ZHbBF7p80lEEDyblVK1JPtHYgoK/vVhn5wDYR5oM6GtF
+	DDicoqUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oftlC-00Byt4-Jm; Wed, 05 Oct 2022 02:03:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ofvHI-00CG6a-Iq; Wed, 05 Oct 2022 03:41:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oftl9-00Bys0-Et; Wed, 05 Oct 2022 02:03:45 +0000
-X-UUID: 092afcd10596413493a878dee0b4a4ca-20221004
+	id 1ofvHE-00CG61-Df; Wed, 05 Oct 2022 03:40:59 +0000
+X-UUID: ef55ce0be7f944dead336dc3fec4bc3c-20221004
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=gy2ytux/w9C0XwgNd3GjCzaa+hUjmK54OfaiP6kcO8Y=;
-	b=cO4F98n9Z4Yc82zW8McCfo9Lmx6W0A/emsk8HeQLBOwcJk/UO45fc3nA+TKZSmQm8V2OJgdREtLTNSjx4voEitqoFSfPnXhTZeacuIg+VUkzkljwIx5Vg3L7/GGzvbcg4iYNRobz3kvv0q0dYwCopJoCgW5pWUK8D0usQaSWC+8=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=XPq/6dFASRqc6e2yem5OrGISl6cnYLvjFfIK/0fW3eA=;
+	b=SCh6/H0dGyq73xADrJ9g1XlF71iDpk+sw1pP5/dq88BM8KGIKqIQkLYrzYBxqKIVuadjxtl6giL8GDNfqsZ4dwLzydMx4n8+6TbBQZ7coRWBmVCtgvdtj4VZ6qcNhIpOkyyAebQi9jRj+1krlxGgjnfwtTe3s3JiAiQkmAZwvho=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:ce1c2fa0-9774-4c3e-a750-9e0809f82ee4,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:3e3b3915-058b-4f20-b442-a1faf51ca557,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:136a40fe-ee8c-4ff7-afe9-644435e96625,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:048ee569-c578-4abf-baf4-d93ecc5e701f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 092afcd10596413493a878dee0b4a4ca-20221004
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: ef55ce0be7f944dead336dc3fec4bc3c-20221004
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 118260088; Tue, 04 Oct 2022 19:03:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 1184503492; Tue, 04 Oct 2022 20:40:04 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 5 Oct 2022 09:53:34 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ 15.2.792.15; Wed, 5 Oct 2022 10:59:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 5 Oct 2022 09:53:34 +0800
-Message-ID: <f6d231ca6e8fbd4e9340e6fff363b29e405efba1.camel@mediatek.com>
-Subject: Re: [PATCH v1 2/6] dts: arm64: mt8195: add MMSYS and MUTEX
- configuration for VPPSYS
+ Transport; Wed, 5 Oct 2022 10:59:28 +0800
+Message-ID: <b965deb07fb14141531fe6b921dee1f60d4cb923.camel@mediatek.com>
+Subject: Re: [PATCH v1 5/6] soc: mediatek: mutex: Add mtk_mutex_set_mod
+ support to set MOD1
 From: moudy ho <moudy.ho@mediatek.com>
-To: Allen-KH Cheng =?UTF-8?Q?=28=E7=A8=8B=E5=86=A0=E5=8B=B3=29?=
-	<Allen-KH.Cheng@mediatek.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "Roy-CW Yeh
- =?UTF-8?Q?=28=E8=91=89=E4=B8=AD=E7=91=8B=29?=" <Roy-CW.Yeh@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 5 Oct 2022 09:53:34 +0800
-In-Reply-To: <c80af435ec4fec9419c47a73c0bda112ef62c76d.camel@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
+	<roy-cw.yeh@mediatek.com>
+Date: Wed, 5 Oct 2022 10:59:27 +0800
+In-Reply-To: <42ab09ef-427d-f2dd-c480-f3e11f4aaa79@collabora.com>
 References: <20221004093319.5069-1-moudy.ho@mediatek.com>
-	 <20221004093319.5069-3-moudy.ho@mediatek.com>
-	 <c80af435ec4fec9419c47a73c0bda112ef62c76d.camel@mediatek.com>
+	 <20221004093319.5069-6-moudy.ho@mediatek.com>
+	 <42ab09ef-427d-f2dd-c480-f3e11f4aaa79@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_190343_524828_215D45BD 
-X-CRM114-Status: GOOD (  20.44  )
+X-CRM114-CacheID: sfid-20221004_204056_737884_1A81B932 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,107 +86,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-10-04 at 19:46 +0800, Allen-KH Cheng (程冠勳) wrote:
-> Hi Moudy,
-> 
-> On Tue, 2022-10-04 at 17:33 +0800, Moudy Ho wrote:
+On Tue, 2022-10-04 at 14:38 +0200, AngeloGioacchino Del Regno wrote:
+> Il 04/10/22 11:33, Moudy Ho ha scritto:
 > > From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 > > 
-> > Compatible names of VPPSYS0 and VPPSYS1 should be renamed to
-> > "mediatek,mt8195-mmsys" to match the description of the binding
-> > file.
-> > Also, add two nodes for MT8195 VPPSYS0/1 MUTEX.
+> > Add mtk_mutex_set_mod support to set MOD1
 > > 
 > > Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
 > > ---
-> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 22
-> > ++++++++++++++++++++--
-> >  1 file changed, 20 insertions(+), 2 deletions(-)
+> >   drivers/soc/mediatek/mtk-mutex.c | 27 +++++++++++++++++++--------
+> >   1 file changed, 19 insertions(+), 8 deletions(-)
 > > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > index 905d1a90b406..7f54fa7d0185 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -1477,11 +1477,20 @@
-> >  		};
-> >  
-> >  		vppsys0: clock-controller@14000000 {
-> > -			compatible = "mediatek,mt8195-vppsys0";
-> > +			compatible = "mediatek,mt8195-mmsys";
-> >  			reg = <0 0x14000000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce1
-> > SUBSYS_1400XXXX 0 0x1000>;
-> >  			#clock-cells = <1>;
-> >  		};
-> >  
+> > diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> > b/drivers/soc/mediatek/mtk-mutex.c
+> > index c1a33d52038e..5dcbd61fe42c 100644
+> > --- a/drivers/soc/mediatek/mtk-mutex.c
+> > +++ b/drivers/soc/mediatek/mtk-mutex.c
+> > @@ -23,6 +23,7 @@
+> >   #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
+> >   #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 *
+> > (n))
+> >   #define DISP_REG_MUTEX_MOD(mutex_mod_reg, n)	(mutex_mod_reg
+> > + 0x20 * (n))
+> > +#define DISP_REG_MUTEX_MOD1(mutex_mod_reg, n)	((mutex_mod_reg
+> > ) + 0x20 * (n) + 0x4)
+> >   #define DISP_REG_MUTEX_SOF(mutex_sof_reg, n)	(mutex_sof_reg
+> > + 0x20 * (n))
+> >   #define DISP_REG_MUTEX_MOD2(n)			(0x34 + 0x20 *
+> > (n))
+> >   
+> > @@ -750,14 +751,24 @@ int mtk_mutex_write_mod(struct mtk_mutex
+> > *mutex,
+> >   		return -EINVAL;
+> >   	}
+> >   
+> > -	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+> > -				    mutex->id);
+> > -	reg = readl_relaxed(mtx->regs + offset);
+> > -
+> > -	if (clear)
+> > -		reg &= ~BIT(mtx->data->mutex_table_mod[idx]);
+> > -	else
+> > -		reg |= BIT(mtx->data->mutex_table_mod[idx]);
+> > +	if (mtx->data->mutex_table_mod[idx] < 32) {
 > 
-> I run "ARCH=arm64 make dtbs check" and some of the tests failed.
+> What if we do...
 > 
-> The node name should be 'syscon' from mediatek/mediatek,mmsys.yaml.
+> 	u8 id_offset = 0;
 > 
+> 	/*
+> 	 * Some SoCs may have multiple MUTEX_MOD registers as more than
+> 32 mods
+> 	 * are present, hence requiring multiple 32-bits registers.
+> 	 *
+> 	 * The mutex_table_mod fully represents that by defining the
+> number of
+> 	 * the mod sequentially, later used as a bit number, which can
+> be more
+> 	 * than 0..31.
+> 	 *
+> 	 * In order to retain compatibility with older SoCs, we perform
+> R/W on
+> 	 * the single 32 bits registers, but this requires us to
+> translate the
+> 	 * mutex ID bit accordingly.
+> 	 */
+> 	if (mtx->data->mutex_table_mod[idx] < 32) {
+> 		reg_offset = DISP_REG_MUTEX_MOD0(mtx->data-
+> >mutex_mod_reg,
+> 						 mutex->id);
+> 	} else {
+> 		reg_offset = DISP_REG_MUTEX_MOD1(mtx->data-
+> >mutex_mod_reg,
+> 						 mutex->id);
+> 		id_offset = 32;
+> 	}
 > 
-> > +		vpp0-mutex@1400f000 {
-> > +			compatible = "mediatek,mt8195-vpp-mutex";
-> > +			reg = <0 0x1400f000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce1
-> > SUBSYS_1400XXXX 0xf000 0x1000>;
-> > +			clocks = <&vppsys0 CLK_VPP0_MUTEX>;
-> > +			power-domains = <&spm
-> > MT8195_POWER_DOMAIN_VPPSYS0>;
-> > +		};
-> > +
+> 	reg = readl_relaxed(mtx->regs + offset);
+> 	if (clear)
+> 		reg &= ~BIT(mtx->data->mutex_table_mod[idx] -
+> id_offset);
+> 	else
+> 		reg |= BIT(mtx->data->mutex_table_mod[idx] -
+> id_offset);
 > 
-> 'interrupts' is a required property from mediatek/mediatek,mutex.yaml
+> 	writel_relaxed(reg, mtx->regs + offset);
 > 
+> ...like this, we give good documentation and also keep the code
+> "short" :-)
 > 
-> >  		smi_sub_common_vpp0_vpp1_2x1: smi@14010000 {
-> >  			compatible = "mediatek,mt8195-smi-sub-common";
-> >  			reg = <0 0x14010000 0 0x1000>;
-> > @@ -1582,11 +1591,20 @@
-> >  		};
-> >  
-> >  		vppsys1: clock-controller@14f00000 {
-> > -			compatible = "mediatek,mt8195-vppsys1";
-> > +			compatible = "mediatek,mt8195-mmsys";
-> >  			reg = <0 0x14f00000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce1
-> > SUBSYS_14f0XXXX 0 0x1000>;
+> Regards,
+> Angelo
 > 
-> Node name: syscon.
-> 
-> >  			#clock-cells = <1>;
-> >  		};
-> >  
-> > +		vpp1-mutex@14f01000 {
-> > +			compatible = "mediatek,mt8195-vpp-mutex";
-> > +			reg = <0 0x14f01000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce1
-> > SUBSYS_14f0XXXX 0x1000 0x1000>;
-> > +			clocks = <&vppsys1 CLK_VPP1_DISP_MUTEX>;
-> > +			power-domains = <&spm
-> > MT8195_POWER_DOMAIN_VPPSYS1>;
-> > +		};
-> > +
-> 
-> 'interrupts' is a required property
-> 
-> Thanks,
-> Allen
 > 
 
-Hi Allen,
+Hi Angelo,
 
-Apologies for the failed test, I'll check again by adding dtsb_check
-instead of just dt_binding_check .
+Thanks for helping with outstanding comments and cleaning up the code,
+I'll follow this guide to improve accordingly.
 
-Thanks & Regards,
+Regards,
 Moudy
 
-> >  		larb5: larb@14f02000 {
-> >  			compatible = "mediatek,mt8195-smi-larb";
-> >  			reg = <0 0x14f02000 0 0x1000>;
-> 
+> > +		offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+> > +					    mutex->id);
+> > +		reg = readl_relaxed(mtx->regs + offset);
+> > +		if (clear)
+> > +			reg &= ~BIT(mtx->data->mutex_table_mod[idx]);
+> > +		else
+> > +			reg |= BIT(mtx->data->mutex_table_mod[idx]);
+> > +
+> > +	} else {
+> > +		offset = DISP_REG_MUTEX_MOD1(mtx->data->mutex_mod_reg,
+> > +					     mutex->id);
+> > +		reg = readl_relaxed(mtx->regs + offset);
+> > +		if (clear)
+> > +			reg &= ~BIT(mtx->data->mutex_table_mod[idx] -
+> > 32);
+> > +		else
+> > +			reg |= BIT(mtx->data->mutex_table_mod[idx] -
+> > 32);
+> > +	}
+> >   
+> >   	writel_relaxed(reg, mtx->regs + offset);
+> >   
 > 
 > 
 
