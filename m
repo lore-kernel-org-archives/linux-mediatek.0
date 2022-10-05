@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134D3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 23:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F38AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 01:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3sn2oEeuS42RU8W07X+sW//BjBn+Qu6g7RCC/G3jwAc=; b=Ei6oGxzA5dYTABxshkofLkn/Y5
-	P6oNbZ4gSU0julk/G1fd7bzT/IOvQWBlizuwaIOFVbK1iIYL5NUNA5R0rJt0EiMHG4JZzIuCYI1X5
-	gDhIo+hnSAbf+W82Pbt5Z9qTKYzI7xRdZMA+SL06LOLpqaTuUMxhXH3+u6uXiyHKBjPD7+CgJiJlQ
-	RX/TdghUpwN8ZVcYWGQQSHe191wZ7IzZEA5XKN1eetGxXm+rvpyyfUUlD2UmpRagU+Xzmvs2V2O7R
-	URbMVMgWFW+nYuPzmduiXskEoc8zVlpNp4IA9LFBEQOdynE4TQWmt6KyVVSEdr8ZmiIXgyxpsmtEw
-	u/D0uxYQ==;
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1Zpx8ktdjjHpYduYxQiQRtdAtox4riwpxd3rRhS3FUY=; b=yWS0zxD4wZj0EVEAkPQiz8Qa94
+	ofXv6J7fttlVq5ayO0kVIxlX7kwRFHyBRO8YUbFTwpgRygLbRX9O6X+VIRm44ztW+hBtidyCL2pnN
+	0xHi2Pym0b6eIhOkfKwZoy94Qdon+0my7T1LLYi4ReMd4j3Qo+Zi/naLgS+zUwy7vJF/nK78l6o/8
+	5UC61PDwmSEKTTYJNXGjD8Eyd9rAK2CZXRh+i5/yB3lQkxmO8cniWkTEqxPTtGVuASHSt9J5IJnVS
+	JuBZ9yQuYZG2ttKEEA6UXjuTtzv3E0wiSIsLgWuu0FNaeJF2VWh1g3S3FNEBtygIkcMpxSqLlBK/V
+	f0z3/xWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofrhX-00BZq6-IS; Tue, 04 Oct 2022 23:51:51 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oftXK-00BvtT-Aa; Wed, 05 Oct 2022 01:49:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofrhU-00BZm1-8y; Tue, 04 Oct 2022 23:51:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1664927508; x=1696463508;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=j5j93ep56qWM4Aggptg3rLl2Drpk5XL00qe9ecX3sk8=;
-  b=LmqQ80kuYckyLqPujnZscScL/aA1yFvIYA2hBQYhNweErOoRNf+tMkmY
-   1Hcbf5miqzW+Osk/m4481GbVIyUjLTo91iR1pYGx+iX7Fg/GI55t3tEy1
-   1Pos4OUpToL6nyoxZV51UAt8uDaYWLCjr2LQsFdaeGhcjviculbPcqouS
-   7fdcgkjYGnheBeBFTiHoLeZI0GPArq494swln6H7YbzSR0bmf81QvJJc7
-   9YuLU2BwciyqYMsnvQYc1Eu6JWkkUs9/2uo0zjw7oF7PiEBkt5TzPr6yC
-   kQlts0v3mh8+XOYDcGwSufolUxvno7VlNZT7Abspte1D4QoTHxteDatuN
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10490"; a="300652989"
-X-IronPort-AV: E=Sophos;i="5.95,159,1661842800"; 
-   d="scan'208";a="300652989"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Oct 2022 16:51:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10490"; a="713229064"
-X-IronPort-AV: E=Sophos;i="5.95,159,1661842800"; 
-   d="scan'208";a="713229064"
-Received: from lkp-server01.sh.intel.com (HELO d4f44333118a) ([10.239.97.150])
-  by FMSMGA003.fm.intel.com with ESMTP; 04 Oct 2022 16:51:42 -0700
-Received: from kbuild by d4f44333118a with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ofrhN-0000ft-1y;
-	Tue, 04 Oct 2022 23:51:41 +0000
-Date: Wed, 05 Oct 2022 07:51:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: netdev@vger.kernel.org, loongarch@lists.linux.dev,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
- bpf@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- 4d80748d16c82a9c2c4ea5feea96e476de3cd876
-Message-ID: <633cc6f0.nUuOxmXokJvNe3YF%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1oftXF-00Bvqj-MZ; Wed, 05 Oct 2022 01:49:24 +0000
+X-UUID: 6be8d8f8e79b4aaa9ae167d5f88c3b21-20221004
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=1Zpx8ktdjjHpYduYxQiQRtdAtox4riwpxd3rRhS3FUY=;
+	b=Wy+Q1I1HW6sRkoPE7ScEiePch1/GY8+fdwd5ntS49vnOFiNDKXo9WgB7VQhQKUn8sSL7s3JXDRsQOD0Ce3gmZnmpXLqXfa+7MQFEgcgJ/VyHT/1MFKs2Z9UqTTUZTnZuZ9MCP9I0PcVSd/6F9OnEsmpEVhTZw3gQjFpzwW+G+Os=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:b46ac1fb-f797-41fc-8549-b7751064b89a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:89e73ffe-ee8c-4ff7-afe9-644435e96625,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6be8d8f8e79b4aaa9ae167d5f88c3b21-20221004
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1275286131; Tue, 04 Oct 2022 18:49:14 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 5 Oct 2022 09:48:37 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 5 Oct 2022 09:48:37 +0800
+Message-ID: <c7bcc52c1530de4b3e8d96b6adc3322e5755378c.camel@mediatek.com>
+Subject: Re: [PATCH v1 4/6] soc: mediatek: mmsys: add config api for RSZ
+ switching and DCM
+From: moudy ho <moudy.ho@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
+	<roy-cw.yeh@mediatek.com>
+Date: Wed, 5 Oct 2022 09:48:37 +0800
+In-Reply-To: <4471ec11-40f6-3d93-e6a7-c746a427e8ca@collabora.com>
+References: <20221004093319.5069-1-moudy.ho@mediatek.com>
+	 <20221004093319.5069-5-moudy.ho@mediatek.com>
+	 <4471ec11-40f6-3d93-e6a7-c746a427e8ca@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_165148_365371_D3999CA5 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221004_184921_905742_E519A714 
+X-CRM114-Status: GOOD (  27.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,171 +86,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: 4d80748d16c82a9c2c4ea5feea96e476de3cd876  Add linux-next specific files for 20221004
+On Tue, 2022-10-04 at 14:17 +0200, AngeloGioacchino Del Regno wrote:
+> Il 04/10/22 11:33, Moudy Ho ha scritto:
+> > From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+> > 
+> > Due to MT8195 HW design, some RSZs have additional settings that
+> > need to be configured in MMSYS.
+> > 
+> > Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+> 
+> Hello Moudy,
+> 
+> please remember that you have to add your Signed-off-by tag to all of
+> the commits
+> that you're sending, even if you're not the author, otherwise they
+> are not
+> acceptable.
+> 
 
-Error/Warning reports:
+Hi Angelo,
 
-https://lore.kernel.org/linux-mm/202209150141.WgbAKqmX-lkp@intel.com
-https://lore.kernel.org/linux-mm/202209251400.1TMn7RdE-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210010718.2kaVANGb-lkp@intel.com
-https://lore.kernel.org/llvm/202209200834.EFwaTsIj-lkp@intel.com
-https://lore.kernel.org/llvm/202209220019.Yr2VuXhg-lkp@intel.com
+Thanks for the reminder, I'll add the required tags and resend the
+entire patch.
 
-Error/Warning: (recently discovered and may have been fixed)
+Regards,
+Moudy
+> > ---
+> >   drivers/soc/mediatek/mt8195-mmsys.h    |  8 ++++++
+> >   drivers/soc/mediatek/mtk-mmsys.c       | 40
+> > ++++++++++++++++++++++++++
+> >   include/linux/soc/mediatek/mtk-mmsys.h |  4 +++
+> >   3 files changed, 52 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
+> > b/drivers/soc/mediatek/mt8195-mmsys.h
+> > index abfe94a30248..e0cf13d09763 100644
+> > --- a/drivers/soc/mediatek/mt8195-mmsys.h
+> > +++ b/drivers/soc/mediatek/mt8195-mmsys.h
+> > @@ -75,6 +75,14 @@
+> >   #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		
+> > (2 << 16)
+> >   #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			
+> > (3 << 16)
+> >   
+> > +/* VPPSYS1 */
+> > +#define MT8195_SVPP1_HW_DCM_1ST_DIS0				
+> > 0x150
+> > +#define MT8195_SVPP1_HW_DCM_1ST_DIS1				
+> > 0x160
+> > +#define MT8195_SVPP1_HW_DCM_2ND_DIS0				
+> > 0x1a0
+> > +#define MT8195_SVPP1_HW_DCM_2ND_DIS1				
+> > 0x1b0
+> > +#define MT8195_SVPP2_BUF_BF_RSZ_SWITCH				
+> > 0xf48
+> > +#define MT8195_SVPP3_BUF_BF_RSZ_SWITCH				
+> > 0xf74
+> > +
+> >   static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[]
+> > = {
+> >   	{
+> >   		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > b/drivers/soc/mediatek/mtk-mmsys.c
+> > index c4d15f99f853..c98cfcb7db38 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -261,6 +261,46 @@ void mtk_mmsys_ddp_dpi_fmt_config(struct
+> > device *dev, u32 val)
+> >   }
+> >   EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_dpi_fmt_config);
+> >   
+> > +void mtk_mmsys_merge_config(struct device *dev, u32 id, bool
+> > enable)
+> 
+> void mtk_mmsys_merge_config(struct device *dev, u32 svpp_id, bool
+> enable)
+> 
+> or
+> 
+> void mtk_mmsys_vpp_merge_config(struct device *dev, u32 id, bool
+> enable)
+> 
+> ...adding that "svpp" or "vpp" word makes the function easier to
+> understand :-)
+> 
+> > +{
+> > +	u32 reg;
+> > +
+> > +	switch (id) {
+> > +	case 2:
+> > +		reg = MT8195_SVPP2_BUF_BF_RSZ_SWITCH;
+> > +		break;
+> > +	case 3:
+> > +		reg = MT8195_SVPP3_BUF_BF_RSZ_SWITCH;
+> > +		break;
+> > +	default:
+> > +		dev_err(dev, "Invalid id %d\n", id);
+> > +		return;
+> > +	}
+> > +
+> > +	mtk_mmsys_update_bits(dev_get_drvdata(dev), reg, ~0, enable);
+> > +}
+> > +EXPORT_SYMBOL_GPL(mtk_mmsys_merge_config);
+> > +
+> > +void mtk_mmsys_rsz_dcm_config(struct device *dev, bool enable)
+> 
+> ...would be the same here, but only about the function name, so I'd
+> go with
+> changing the name for both.
+> 
+> > +{
+> > +	u32 val = 0;
+> > +
+> > +	if (enable)
+> > +		val = BIT(25);
+> 
+> No magic bits please, add a definition for them
+> 
+> > +	mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > +			      MT8195_SVPP1_HW_DCM_1ST_DIS0, BIT(25),
+> > val);
+> > +	mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > +			      MT8195_SVPP1_HW_DCM_2ND_DIS0, BIT(25),
+> > val);
+> > +
+> > +	if (enable)
+> > +		val = (BIT(4) | BIT(5));
+> 
+> same here
+> 
+> > +	mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > +			      MT8195_SVPP1_HW_DCM_1ST_DIS1, (BIT(4) |
+> > BIT(5)), val);
+> > +	mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > +			      MT8195_SVPP1_HW_DCM_2ND_DIS1, (BIT(4) |
+> > BIT(5)), val);
+> > +}
+> > +EXPORT_SYMBOL_GPL(mtk_mmsys_rsz_dcm_config);
+> > +
+> >   static int mtk_mmsys_reset_update(struct reset_controller_dev
+> > *rcdev, unsigned long id,
+> >   				  bool assert)
+> >   {
+> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
+> > b/include/linux/soc/mediatek/mtk-mmsys.h
+> > index d2b02bb43768..2d5c7fe920b0 100644
+> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> > @@ -67,4 +67,8 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+> >   
+> >   void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val);
+> >   
+> > +void mtk_mmsys_merge_config(struct device *dev, u32 id, bool
+> > enable);
+> > +
+> > +void mtk_mmsys_rsz_dcm_config(struct device *dev, bool enable);
+> > +
+> >   #endif /* __MTK_MMSYS_H */
+> 
+> 
 
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/fsl-edma.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/idma64.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/qcom/hdma.ko] undefined!
-ERROR: modpost: "devm_memremap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_memunmap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_platform_ioremap_resource" [drivers/char/xillybus/xillybus_of.ko] undefined!
-ERROR: modpost: "devm_platform_ioremap_resource" [drivers/clk/xilinx/clk-xlnx-clock-wizard.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-arch/arm64/kernel/alternative.c:199:6: warning: no previous prototype for 'apply_alternatives_vdso' [-Wmissing-prototypes]
-arch/arm64/kernel/alternative.c:295:14: warning: no previous prototype for 'alt_cb_patch_nops' [-Wmissing-prototypes]
-arch/loongarch/kernel/traps.c:250 die() warn: variable dereferenced before check 'regs' (see line 244)
-arch/loongarch/mm/init.c:166:24: warning: variable 'new' set but not used [-Wunused-but-set-variable]
-drivers/platform/loongarch/loongson-laptop.c:377 loongson_laptop_get_brightness() warn: impossible condition '(level < 0) => (0-255 < 0)'
-drivers/spi/spi.c:4215:33: warning: use of uninitialized value '((int *)_38 = PHI <&x(2), _91(3)>)[11]' [CWE-457] [-Wanalyzer-use-of-uninitialized-value]
-include/linux/compiler_types.h:357:45: error: call to '__compiletime_assert_417' declared with attribute error: FIELD_GET: mask is not constant
-kernel/bpf/memalloc.c:500 bpf_mem_alloc_destroy() error: potentially dereferencing uninitialized 'c'.
-net/dsa/port.c:1684 dsa_port_phylink_create() warn: passing zero to 'PTR_ERR'
-pahole: .tmp_vmlinux.btf: No such file or directory
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arm-randconfig-c002-20221002
-|   `-- drivers-spi-spi.c:warning:use-of-uninitialized-value-((int-)_38-PHI-x()-_91()-)-CWE
-|-- arm64-allyesconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-r004-20221002
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-r016-20221003
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- i386-randconfig-m021-20221003
-|   `-- net-dsa-port.c-dsa_port_phylink_create()-warn:passing-zero-to-PTR_ERR
-|-- loongarch-buildonly-randconfig-r006-20221003
-|   `-- arch-loongarch-mm-init.c:warning:variable-new-set-but-not-used
-|-- loongarch-randconfig-m031-20221002
-|   `-- arch-loongarch-mm-init.c:warning:variable-new-set-but-not-used
-|-- loongarch-randconfig-m041-20221002
-|   |-- arch-loongarch-kernel-traps.c-die()-warn:variable-dereferenced-before-check-regs-(see-line-)
-|   |-- arch-loongarch-mm-init.c:warning:variable-new-set-but-not-used
-|   |-- drivers-platform-loongarch-loongson-laptop.c-loongson_laptop_get_brightness()-warn:impossible-condition-(level-)-(-)
-|   `-- kernel-bpf-memalloc.c-bpf_mem_alloc_destroy()-error:potentially-dereferencing-uninitialized-c-.
-|-- loongarch-randconfig-r001-20221002
-|   `-- arch-loongarch-mm-init.c:warning:variable-new-set-but-not-used
-|-- m68k-randconfig-r004-20221003
-|   `-- pahole:.tmp_vmlinux.btf:No-such-file-or-directory
-|-- s390-allmodconfig
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-fsl-edma.ko-undefined
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-idma64.ko-undefined
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-qcom-hdma.ko-undefined
-|   |-- ERROR:devm_memremap-drivers-misc-open-dice.ko-undefined
-|   |-- ERROR:devm_memunmap-drivers-misc-open-dice.ko-undefined
-|   |-- ERROR:devm_platform_ioremap_resource-drivers-char-xillybus-xillybus_of.ko-undefined
-|   |-- ERROR:devm_platform_ioremap_resource-drivers-clk-xilinx-clk-xlnx-clock-wizard.ko-undefined
-|   |-- ERROR:ioremap-drivers-tty-ipwireless-ipwireless.ko-undefined
-|   |-- ERROR:iounmap-drivers-net-ethernet-pcnet_cs.ko-undefined
-|   `-- ERROR:iounmap-drivers-tty-ipwireless-ipwireless.ko-undefined
-`-- x86_64-randconfig-a012-20221003
-    `-- include-linux-compiler_types.h:error:call-to-__compiletime_assert_NNN-declared-with-attribute-error:FIELD_GET:mask-is-not-constant
-clang_recent_errors
-|-- arm-randconfig-r022-20221003
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|-- mips-randconfig-r003-20221002
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|-- s390-randconfig-r021-20221002
-|   |-- manage.c:(.text):undefined-reference-to-__tsan_memcpy
-|   |-- s39-linux-ld:setup.c:(.init.text):undefined-reference-to-__tsan_memcpy
-|   |-- s39-linux-ld:trace.c:(.init.text):undefined-reference-to-__tsan_memcpy
-|   |-- trace.c:(.init.text):undefined-reference-to-__tsan_memcpy
-|   `-- workqueue.c:(.init.text):undefined-reference-to-__tsan_memcpy
-|-- s390-randconfig-r026-20221002
-|   `-- ERROR:devm_ioremap_resource-drivers-dma-idma64.ko-undefined
-`-- x86_64-buildonly-randconfig-r005-20221003
-    |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-virtual-virtual_link_hwss.c:warning:no-previous-prototype-for-function-virtual_disable_link_output
-    `-- drivers-iommu-ipmmu-vmsa.c:warning:unused-variable-ipmmu_of_ids
-
-elapsed time: 726m
-
-configs tested: 58
-configs skipped: 3
-
-gcc tested configs:
-powerpc                           allnoconfig
-arc                                 defconfig
-alpha                               defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                          rhel-8.3-func
-x86_64                              defconfig
-x86_64                    rhel-8.3-kselftests
-sh                               allmodconfig
-s390                                defconfig
-s390                             allmodconfig
-riscv                randconfig-r042-20221003
-arc                  randconfig-r043-20221003
-x86_64                               rhel-8.3
-arc                              allyesconfig
-i386                                defconfig
-arm                                 defconfig
-alpha                            allyesconfig
-i386                 randconfig-a011-20221003
-x86_64                           rhel-8.3-syz
-i386                 randconfig-a012-20221003
-s390                 randconfig-r044-20221003
-mips                             allyesconfig
-s390                             allyesconfig
-m68k                             allmodconfig
-x86_64                         rhel-8.3-kunit
-powerpc                          allmodconfig
-i386                 randconfig-a013-20221003
-m68k                             allyesconfig
-i386                 randconfig-a015-20221003
-x86_64                           rhel-8.3-kvm
-i386                 randconfig-a014-20221003
-x86_64                           allyesconfig
-ia64                             allmodconfig
-x86_64               randconfig-a011-20221003
-arm                              allyesconfig
-x86_64               randconfig-a012-20221003
-arm64                            allyesconfig
-x86_64               randconfig-a013-20221003
-x86_64               randconfig-a015-20221003
-x86_64               randconfig-a014-20221003
-x86_64               randconfig-a016-20221003
-i386                             allyesconfig
-
-clang tested configs:
-hexagon              randconfig-r045-20221003
-i386                 randconfig-a004-20221003
-hexagon              randconfig-r041-20221003
-i386                 randconfig-a003-20221003
-i386                 randconfig-a002-20221003
-i386                 randconfig-a001-20221003
-i386                 randconfig-a006-20221003
-i386                 randconfig-a005-20221003
-x86_64               randconfig-a002-20221003
-x86_64               randconfig-a001-20221003
-x86_64               randconfig-a004-20221003
-x86_64               randconfig-a006-20221003
-x86_64               randconfig-a003-20221003
-x86_64               randconfig-a005-20221003
-x86_64                          rhel-8.3-rust
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
