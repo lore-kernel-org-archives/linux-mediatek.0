@@ -4,85 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9148C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 11:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB11C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 11:10:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CbeeFZ+x3aHj+XaOJLuyuhdGWHomvDtrnGAOISq7ELg=; b=EjSJT/o9cP1p6N110U5J0Oemwl
-	CdPy1WaAZECucm79Gxad0dweHrqW6JgLoJpz78vMNLGt772MasxVB5PeGdWMmTRo4kzncmSu21u2e
-	qs5Daj2z2mwOIaEzl+oTiWOTC2lRCqvFA5AcsBXlI6LA8aLxwQckJhRGB/QJX1vt1AI1SDhmOWZKx
-	Vk1QkgmqkS4zsN2uZAEPC4I/dvI+nGRwB5eS1VF3lRdwpTIOvyTb4PeKJfChZC1cXJyqj3VXclZ/2
-	QZP/2SjALgg8/8D2dQirzh0C4k8WlCpupV36yNDJIntBcEm+y3AGKF9qHoFhHrYlmT3HyxvJyoiye
-	SK+WmJ0A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wFK1uKTUOAkzTvMlphed7epH9gF2qVFBzp5PoxItuo0=; b=LSRlEWL1NkZFZrEhfZggGCStTx
+	B3BDkuiZIxxNC1mlsMgOAyrOeXCJW1DXo66IG8CRGedBokhsRfhp3V4dgNQEFrUByEItVigPdzh9a
+	VyHfisN/Q3+NNR7oYeaPhEH4IIum7kd862uxbImaOsDP74mAFqyG+A38DBdpAr8PoGXhUYJY24MJQ
+	+i8w0zhI24RVlE98FYh4rFUDZVVLnxzR6RBPyxDbZzqcerFnk2qtJnIPW0hf7YKXZ4pgN4S82juJB
+	OClS5tQgLMXnh5D5qAYmN2dSwS83K3eVQQrEPHUXa8CGQX7dJMsnGwtUhbJZx2dQdCaebu77/uByu
+	N6BRGKzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogOk2-001kal-As; Thu, 06 Oct 2022 11:08:38 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1ogOlI-001l7j-0p; Thu, 06 Oct 2022 11:09:56 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogOjy-001kVm-LG
-	for linux-mediatek@lists.infradead.org; Thu, 06 Oct 2022 11:08:36 +0000
-Received: by mail-wm1-x333.google.com with SMTP id h129-20020a1c2187000000b003c1e11f54d2so310562wmh.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Oct 2022 04:08:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=CbeeFZ+x3aHj+XaOJLuyuhdGWHomvDtrnGAOISq7ELg=;
-        b=Ck8AReTJ9PME9fyJ5bXtOD/KlktSnDb4/OtXx1sJS7huduv7GfLAMWSXKqcIN17UF3
-         R7/9ZR5n+M7+mdAm6920py5T4bhkLTORzDBj9I6CIxG5KCWswu7G7S1x119Bj+UzzPJl
-         9jnWMDHTL3WMjbMDNwEFczA8NZPaJ2FObPXXb6h8xz8DBDDSIUXoPRwhWsJQ3HG5VgWm
-         Avb9Kj4Ip+Jjb2+EbMMGAovxT+wEkgjSWxnw/wkEO5QwGvHYPdg3BTs3tl//OaryYvFo
-         C9iHLk5rpOlH14SYUmLC0aIORmgGLquwwfnn96p5hI+L54qSvraQLI3PeV3Eq5PVcqwj
-         U15Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CbeeFZ+x3aHj+XaOJLuyuhdGWHomvDtrnGAOISq7ELg=;
-        b=O9sLUPQpXDSlKKjp0vRV7h0vmXiAqNqx6BPg5x8hYTx6gVa2/9n0Fn4zd4HztIItXi
-         1Z7+eXgf1dJdVTwKdfwxTk+4tJ5OJ7rr+s+HsXf+hIHWG5PLiNrbxXAmxfwnaYFaEC5q
-         5qFzhf1WpWD6lbEX+30NlIq+pKAqEsyxYeJY5X0zSxmnq8YpyAU77jYr1h1yoIJ4pSkV
-         7vuMicfYKQzssgL410qVYFs+X6wzBYuE1PSHc27vVRueftC+1a3T2ki6i1LsUEG8dEW/
-         sf4n38o7xferdIWdwc+djqlX7UYn3L0s5Nsyhgi4GoAmR4yIAez8wW+4e23x5gaNYSZT
-         2MTQ==
-X-Gm-Message-State: ACrzQf04jgsSFjakRvzYwDh8Sjgd/6mgLy+zF/WeXLxWhYuwyUqYbNyy
-	kJwxkutt2qA/fcasNk+oEDWK0A==
-X-Google-Smtp-Source: AMsMyM476u1+t4iuw4iTs7clnDHL2LOAoA/r6b7hlBpiXlWfhv4Cgr5efpX+4UWm4OsdqnRY4ViAxQ==
-X-Received: by 2002:a05:600c:524b:b0:3b4:8c0c:f3b6 with SMTP id fc11-20020a05600c524b00b003b48c0cf3b6mr6717571wmb.50.1665054501394;
-        Thu, 06 Oct 2022 04:08:21 -0700 (PDT)
-Received: from [192.168.0.20] (210.145.15.109.rev.sfr.net. [109.15.145.210])
-        by smtp.gmail.com with ESMTPSA id c21-20020a05600c0a5500b003b4e009deb2sm5928180wmq.41.2022.10.06.04.08.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Oct 2022 04:08:20 -0700 (PDT)
-Message-ID: <cdebdf53-d691-41b6-bb8e-f66bb6f56e56@baylibre.com>
-Date: Thu, 6 Oct 2022 13:08:19 +0200
+	id 1ogOl5-001l1P-S5; Thu, 06 Oct 2022 11:09:45 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5A61766022F9;
+	Thu,  6 Oct 2022 12:09:39 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665054579;
+	bh=HaMjBUnn0XP2R6tqIgzWDxijRENloQ+oZZWaIxT+XMY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=S2XPIqIl4XEBq6BBtHS99Mn2AoFFc3pEx/KdumCdajL2VmOl3rb9C3ZR2yOlk1ohK
+	 sde1jTKKH/VMrsPwr6Xo87H+UMccKSW9IH9c82dF3JdDick1uv7FV7BuVesSsiYIcZ
+	 yceziv4oW/eeB9RwRPCPhRu8BA8oXWQNJqU4wgz+pqlPW2SZ+hbajlc57DrTa4aE9H
+	 S6Qxlc+AKDF6LMQ2OO8FkrLJiV3u0ubg0SS72pzltyAXEN047IbmT1QHSdHyN2SKdw
+	 kP+SgBt3oKCPoW3Df//T/Yp3UNBNWs0EmSP1TiTgTWKaegS/7vFXQKFO82ayI6+g34
+	 1YZ8DMvB7UpGw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] soc: mediatek: mtk-devapc: Switch to devm_clk_get_enabled()
+Date: Thu,  6 Oct 2022 13:09:35 +0200
+Message-Id: <20221006110935.59695-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Subject: Re: [PATCH v3] arm64: dts: mediatek: mt8183: disable thermal zones
- without trips.
-Content-Language: en-US
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221004101130.17256-1-aouledameur@baylibre.com>
- <17f3fd40-70c1-2e8d-8002-dfe9690aed88@linaro.org>
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-In-Reply-To: <17f3fd40-70c1-2e8d-8002-dfe9690aed88@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_040834_725478_B9C1CBB0 
-X-CRM114-Status: GOOD (  24.42  )
+X-CRM114-CacheID: sfid-20221006_040944_066525_E827085F 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,106 +71,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+This driver does exactly devm_clk_get() and clk_prepare_enable() right
+after, which is exactly what devm_clk_get_enabled() does: clean that
+up by switching to the latter.
 
-Thank you for your feedback.
+This commit brings no functional changes.
 
-On 10/4/22 12:47, Daniel Lezcano wrote:
->
-> Hi Amjad,
->
-> On 04/10/2022 12:11, Amjad Ouled-Ameur wrote:
->> Thermal zones without trip point are not registered by thermal core.
->>
->> tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
->> only.
->>
->> Disable the zones above and keep only cpu_thermal enabled.
->
-> It does not make sense to disable the thermal zones. Either the thermal zones are needed or they are not. Keeping them for debug purpose is not desired.
-As Matthias Brugger mentioned in previous versions, DTS should describe the HW as it is, the sensors are in the HW.
->
-> Alternatively to removal, you can:
->
->  - remove 'sustainable-power'
->  - add a passive trip point, optionally a hot trip point and a critical trip point
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-devapc.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-Why removing "sustainable-power" instead of simply disabling the device ? Especially that, if a user needs to use the sensor
+diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+index fc13334db1b1..bad139cb117e 100644
+--- a/drivers/soc/mediatek/mtk-devapc.c
++++ b/drivers/soc/mediatek/mtk-devapc.c
+@@ -276,19 +276,14 @@ static int mtk_devapc_probe(struct platform_device *pdev)
+ 	if (!devapc_irq)
+ 		return -EINVAL;
+ 
+-	ctx->infra_clk = devm_clk_get(&pdev->dev, "devapc-infra-clock");
++	ctx->infra_clk = devm_clk_get_enabled(&pdev->dev, "devapc-infra-clock");
+ 	if (IS_ERR(ctx->infra_clk))
+ 		return -EINVAL;
+ 
+-	if (clk_prepare_enable(ctx->infra_clk))
+-		return -EINVAL;
+-
+ 	ret = devm_request_irq(&pdev->dev, devapc_irq, devapc_violation_irq,
+ 			       IRQF_TRIGGER_NONE, "devapc", ctx);
+-	if (ret) {
+-		clk_disable_unprepare(ctx->infra_clk);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	platform_set_drvdata(pdev, ctx);
+ 
+@@ -303,8 +298,6 @@ static int mtk_devapc_remove(struct platform_device *pdev)
+ 
+ 	stop_devapc(ctx);
+ 
+-	clk_disable_unprepare(ctx->infra_clk);
+-
+ 	return 0;
+ }
+ 
+-- 
+2.37.2
 
-in the future, they might not be able to find the right sustainable-power ; thus I think it should remain the way it is.
-
-As to adding tripping points, MediaTek does not have ones to add for now for those sensors.
-
-
-Regards,
-
-Amjad
-
->
-> The passive trip point will allow the userspace to set a value in order to get notified about the devices temperature (writable trip point). The hot temperature will send a notification to userspace so it can take a last chance decision to drop the temperature before the critical temperature.
->
-> The passive trip point temperature could be a high temperature.
->
-> The mitigation is also managed from userspace as a whole.
->
->
->> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
->>   1 file changed, 6 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> index 9d32871973a2..53f7a0fbaa88 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> @@ -1191,6 +1191,7 @@ tzts1: tzts1 {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 1>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->> @@ -1200,6 +1201,7 @@ tzts2: tzts2 {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 2>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->> @@ -1209,6 +1211,7 @@ tzts3: tzts3 {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 3>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->> @@ -1218,6 +1221,7 @@ tzts4: tzts4 {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 4>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->> @@ -1227,6 +1231,7 @@ tzts5: tzts5 {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 5>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->> @@ -1236,6 +1241,7 @@ tztsABB: tztsABB {
->>                   polling-delay = <0>;
->>                   thermal-sensors = <&thermal 6>;
->>                   sustainable-power = <5000>;
->> +                status = "disabled";
->>                   trips {};
->>                   cooling-maps {};
->>               };
->
->
 
