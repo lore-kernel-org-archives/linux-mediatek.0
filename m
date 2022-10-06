@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B264EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Oct 2022 20:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941D4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 01:45:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rt+AhVJM/WD/S1OtbW4jlJjaydZsMafyYWttWa5f9W4=; b=kT0Lp9KtVBjWGwiGwY6aiRKqAG
-	rgneYdyhxya5Ka48P2/Iqyti3Kswd7jKkNv2HU4wtafszBFz/nqHp621t8zZWswtJI1n3+qJMdvm2
-	01Vpl25AjjTGBhwqb3lDEIKtlCwbwEIIxxQm84bUMRxlVLMRjGbe7ytsj5gdX2ZA6oefq3g/HL0Rk
-	vtQ/g7MsYKWq0rGz/36JF5/CDyfs1rsXTXMXhrjeYQ9l+Msy0Btom4o69mE6egW6ql+jzWRZSQ4zA
-	/qPTXm4bGd14689p5d4ZNYCFjOcccNmS4pYCl4AANE6T54Q0yIa5GnhYHcKozGkdt2KsmtYAGZ3m/
-	hv5Ap9bw==;
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i9WWBc8AgT+qWmWIUrtTH/9MaL3rSQ0+cKCWP1pOwcM=; b=19oZM1kYujok2tF1nf22hYF86u
+	Z4cjwHgMUFweu+hhgiUp98iNzVKX+gxph3MG3MK3EEeyTK87M8EnhIvr7CK0x2eh/1b8cboDyqXJ9
+	GSp5NAQkCQ0mbikciVqwAm1HBQBzOthft3O1v4bJm/mnzWT5ILdm3Krw4t4Np0hllIjzJwSUirBAG
+	rKU5k/tCZFRy0/b1ApShkV3cLYC9Qjiom2VW/7d4+sRmIZXgPMF0vm/WdHztkOaWAkHj4AwYfIOvx
+	Lmi+6DLItwroo0Rk/WpzSPgR1sQPxP7pSwjMcuNa62t4V/eWJ4gCmz89h33DUWRKl1oFkcF16ZZ5I
+	qt4JJoGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogBTa-00G6MG-3J; Wed, 05 Oct 2022 20:58:46 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1ogFwO-00Gqrz-5k; Thu, 06 Oct 2022 01:44:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogBTU-00G6Ko-77; Wed, 05 Oct 2022 20:58:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665003520; x=1696539520;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=5wlRgmXMX0YGl2ggsHILuTzXon7D/FQk/Yadywfyb3M=;
-  b=EGwRzcJo0Q4HeYB79Vy79dsK639+/1RzPJIj8aYCUixeYJROE7F4w2qk
-   Bt4yQmq+BI322VnmAbBSECEvhRCH9q6qfm5+d5nOCZzc/Cj5+CdW9/j3w
-   PNc5xTLuYFlictPU6DWkANHXM9msTFrnknVMrSvhwGgHuN7fkxw6vs4JB
-   ILVRAprcd4g0xCms/zU6LHeG/V8WzXbmJl1EPcMzFusXJErq6SsndmAg/
-   1J3U5vDMD/tIxLNu+4x3xp0Qedr3R18DwGVKyavvKyofleRYG2wSv76Ss
-   A0ENWzXjqdyoWczIivAmga9bCwwGqZ3Am5JzOrZk5jP8W4AdIORYUBEpq
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10491"; a="304849647"
-X-IronPort-AV: E=Sophos;i="5.95,161,1661842800"; 
-   d="scan'208";a="304849647"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Oct 2022 13:58:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10491"; a="953343839"
-X-IronPort-AV: E=Sophos;i="5.95,161,1661842800"; 
-   d="scan'208";a="953343839"
-Received: from lkp-server01.sh.intel.com (HELO d4f44333118a) ([10.239.97.150])
-  by fmsmga005.fm.intel.com with ESMTP; 05 Oct 2022 13:58:32 -0700
-Received: from kbuild by d4f44333118a with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ogBTM-0001d5-07;
-	Wed, 05 Oct 2022 20:58:32 +0000
-Date: Thu, 06 Oct 2022 04:58:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: loongarch@lists.linux.dev, linux-wireless@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-ext4@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kvm@vger.kernel.org, iommu@lists.linux.dev,
- dri-devel@lists.freedesktop.org, bpf@vger.kernel.org,
- amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- 67ae4f7434cee86ee318d46fb10b8a9840ad2e81
-Message-ID: <633deff4.q8bW3fyM79Uz0A/F%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1ogFwC-00GqnA-DP; Thu, 06 Oct 2022 01:44:38 +0000
+X-UUID: be95bf511306402099362e2c68fe5889-20221005
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=i9WWBc8AgT+qWmWIUrtTH/9MaL3rSQ0+cKCWP1pOwcM=;
+	b=AhBW68x6WgauEajqKJiEYqaTCIyfHvXSrjPqMpj9LH8TOoi//o1T6NaS6SBjuFAb+lvFN7daNsVCJrQyzstdDBWEsa+NZo7S6c5+kzZmboSrYf/SKBz2QLgee5/X2bhC5Em7BTL/a9Rv5Hv/L0xrB4SZ349YZ4OL0mdRikNNWLs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:09abbd97-16ff-4d89-a164-ac26d2acdb82,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:c7d7a585-5312-4339-9a65-dc27c4b243b8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: be95bf511306402099362e2c68fe5889-20221005
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 894617831; Wed, 05 Oct 2022 18:44:23 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 6 Oct 2022 09:13:46 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 6 Oct 2022 09:13:46 +0800
+Message-ID: <ad18266e7c3234506c850cbefd6c222c359faab3.camel@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: mediatek: vcodec: Add the platform
+ compatible to schema
+From: Irui Wang <irui.wang@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Maoguang Meng <maoguang.meng@mediatek.com>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Mauro Carvalho
+ Chehab" <mchehab@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<devicetree@vger.kernel.org>
+Date: Thu, 6 Oct 2022 09:13:45 +0800
+In-Reply-To: <166479591681.1661748.6265395941647267106.robh@kernel.org>
+References: <20221001030752.14486-1-irui.wang@mediatek.com>
+	 <166479591681.1661748.6265395941647267106.robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_135840_369486_6FA34FFB 
-X-CRM114-Status: UNSURE (   6.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221005_184436_492269_EF437CAB 
+X-CRM114-Status: GOOD (  21.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,266 +86,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: 67ae4f7434cee86ee318d46fb10b8a9840ad2e81  Add linux-next specific files for 20221005
+Dear Rob,
 
-Error/Warning reports:
+Thanks for your reviewing.
 
-https://lore.kernel.org/linux-mm/202209060229.dVuyxjBv-lkp@intel.com
-https://lore.kernel.org/llvm/202209220019.Yr2VuXhg-lkp@intel.com
-https://lore.kernel.org/llvm/202210041553.k9dc1Joc-lkp@intel.com
-https://lore.kernel.org/llvm/202210060148.UXBijOcS-lkp@intel.com
+On Mon, 2022-10-03 at 08:24 -0500, Rob Herring wrote:
+> On Sat, 01 Oct 2022 11:07:52 +0800, Irui Wang wrote:
+> > There are venc node warnings when running dtbs_check, the clock-
+> > names
+> > was unexpected, missing properties '#address-cells' and '#size-
+> > cells'.
+> > Add the corresponding platform compatible to schema.
+> > 
+> > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> > ---
+> >  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12
+> > +++++++++++-
+> >  1 file changed, 11 insertions(+), 1 deletion(-)
+> > 
+> 
+> Running 'make dtbs_check' with the schema in this patch gives the
+> following warnings. Consider if they are expected or the schema is
+> incorrect. These may not be new warnings.
+> 
+> Note that it is not yet a requirement to have 0 warnings for
+> dtbs_check.
+> This will change in the future.
+> 
+> Full log is available here: https://patchwork.ozlabs.org/patch/
 
-Error/Warning: (recently discovered and may have been fixed)
+Yes, it's not a new warning, the 'clock-names' in mt8192.dtsi was
+already unexpected without the patch's schema, we will fix it in the
+future patch.
 
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/fsl-edma.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/idma64.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/qcom/hdma.ko] undefined!
-ERROR: modpost: "devm_memremap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_memunmap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_platform_ioremap_resource" [drivers/char/xillybus/xillybus_of.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-arch/arm64/kernel/alternative.c:199:6: warning: no previous prototype for 'apply_alternatives_vdso' [-Wmissing-prototypes]
-arch/arm64/kernel/alternative.c:295:14: warning: no previous prototype for 'alt_cb_patch_nops' [-Wmissing-prototypes]
-arch/loongarch/kernel/traps.c:250 die() warn: variable dereferenced before check 'regs' (see line 244)
-arch/loongarch/mm/init.c:166:24: warning: variable 'new' set but not used [-Wunused-but-set-variable]
-drivers/gpu/drm/amd/amdgpu/../display/dc/virtual/virtual_link_hwss.c:40:6: warning: no previous prototype for 'virtual_disable_link_output' [-Wmissing-prototypes]
-drivers/gpu/drm/bridge/ite-it6505.c:2712 it6505_extcon_work() warn: pm_runtime_get_sync() also returns 1 on success
-drivers/platform/loongarch/loongson-laptop.c:377 loongson_laptop_get_brightness() warn: impossible condition '(level < 0) => (0-255 < 0)'
-drivers/vfio/pci/vfio_pci_core.c:775 vfio_pci_ioctl_get_region_info() warn: potential spectre issue 'pdev->resource' [w]
-drivers/vfio/pci/vfio_pci_core.c:855 vfio_pci_ioctl_get_region_info() warn: potential spectre issue 'vdev->region' [r]
-fs/ext4/super.c:1744:19: warning: 'deprecated_msg' defined but not used [-Wunused-const-variable=]
-include/linux/compiler_types.h:357:45: error: call to '__compiletime_assert_417' declared with attribute error: FIELD_GET: mask is not constant
-kernel/bpf/memalloc.c:500 bpf_mem_alloc_destroy() error: potentially dereferencing uninitialized 'c'.
-net/mac80211/iface.c:251 ieee80211_can_powered_addr_change() warn: inconsistent returns '&local->mtx'.
+Thanks
+Best Regards
+> 
+> 
+> vcodec@17020000: clock-names:0: 'venc_sel' was expected
+> 	arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb
+> 	arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb
+> 	arch/arm64/boot/dts/mediatek/mt8192-evb.dtb
+> 
 
-Unverified Error/Warning (likely false positive, please contact us if interested):
-
-ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/ghash_s390.ko] undefined!
-ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/sha512_s390.ko] undefined!
-ERROR: modpost: "__tsan_memcpy" [fs/binfmt_misc.ko] undefined!
-ERROR: modpost: "__tsan_memcpy" [fs/pstore/ramoops.ko] undefined!
-ERROR: modpost: "__tsan_memset" [arch/s390/crypto/ghash_s390.ko] undefined!
-ERROR: modpost: "__tsan_memset" [arch/s390/crypto/sha512_s390.ko] undefined!
-ERROR: modpost: "__tsan_memset" [fs/autofs/autofs4.ko] undefined!
-ERROR: modpost: "__tsan_memset" [fs/binfmt_misc.ko] undefined!
-ERROR: modpost: "__tsan_memset" [fs/cramfs/cramfs.ko] undefined!
-ERROR: modpost: "__tsan_memset" [fs/pstore/ramoops.ko] undefined!
-s390x-linux-ld: self.c:(.text+0xf6): undefined reference to `__tsan_memcpy'
-thread_self.c:(.text+0xe4): undefined reference to `__tsan_memcpy'
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- alpha-allyesconfig
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-virtual-virtual_link_hwss.c:warning:no-previous-prototype-for-virtual_disable_link_output
-|-- alpha-randconfig-s042-20221002
-|   |-- drivers-thermal-broadcom-ns-thermal.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-void-data-got-void-noderef-__iomem-assigned-pvtmon
-|   |-- drivers-thermal-broadcom-ns-thermal.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-noderef-__iomem-pvtmon-got-void
-|   |-- drivers-thermal-broadcom-ns-thermal.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-noderef-__iomem-pvtmon-got-void-devdata
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   `-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|-- arc-randconfig-s051-20221002
-|   |-- drivers-gpu-drm-tiny-simpledrm.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-vaddr-got-void-noderef-__iomem-screen_base
-|   |-- drivers-gpu-drm-vkms-vkms_formats.c:sparse:sparse:cast-to-restricted-__le16
-|   |-- drivers-gpu-drm-vkms-vkms_formats.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-unsigned-short-usertype-got-restricted-__le16-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:cast-removes-address-space-__percpu-of-expression
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:incorrect-type-in-assignment-(different-address-spaces)-expected-void-noderef-__percpu-assigned-pptr-got-void
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:incorrect-type-in-assignment-(different-address-spaces)-expected-void-ptr_to_pptr-got-void-noderef-__percpu-assigned-pptr
-|   |-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-void-noderef-__percpu-__pdata-got-void
-|   |-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-void-noderef-__percpu-__pdata-got-void-pptr
-|   `-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-pptr-got-void-noderef-__percpu
-|-- arc-randconfig-s053-20221002
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:cast-removes-address-space-__percpu-of-expression
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:incorrect-type-in-assignment-(different-address-spaces)-expected-void-noderef-__percpu-assigned-pptr-got-void
-|   |-- kernel-bpf-hashtab.c:sparse:sparse:incorrect-type-in-assignment-(different-address-spaces)-expected-void-ptr_to_pptr-got-void-noderef-__percpu-assigned-pptr
-|   |-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-void-noderef-__percpu-__pdata-got-void
-|   |-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-void-noderef-__percpu-__pdata-got-void-pptr
-|   `-- kernel-bpf-memalloc.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)-expected-void-pptr-got-void-noderef-__percpu
-|-- arm64-allyesconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-c023-20221005
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-clang_recent_errors
-|-- arm-randconfig-r016-20221003
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-virtual-virtual_link_hwss.c:warning:no-previous-prototype-for-function-virtual_disable_link_output
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|-- arm-randconfig-r033-20221002
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- arm64-buildonly-randconfig-r002-20221003
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
-|   `-- ld.lld:error:assignment-to-symbol-__efistub_kernel_size-does-not-converge
-|-- hexagon-randconfig-r013-20221002
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmnewmap
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmsetvec
-|   `-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-memset
-|-- hexagon-randconfig-r025-20221003
-|   |-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmnewmap
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmsetvec
-|   `-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-memset
-|-- hexagon-randconfig-r031-20221002
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|-- hexagon-randconfig-r041-20221003
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- hexagon-randconfig-r045-20221002
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a002-20221003
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a005-20221003
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a006-20221003
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-r001-20221003
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- mips-loongson1c_defconfig
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- mips-randconfig-r006-20221002
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- powerpc-allyesconfig
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-virtual-virtual_link_hwss.c:warning:no-previous-prototype-for-function-virtual_disable_link_output
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-
-elapsed time: 729m
-
-configs tested: 94
-configs skipped: 3
-
-gcc tested configs:
-i386                                defconfig
-arc                                 defconfig
-x86_64                          rhel-8.3-func
-s390                             allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                             i386_defconfig
-um                           x86_64_defconfig
-alpha                               defconfig
-s390                                defconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-x86_64                           rhel-8.3-syz
-mips                             allyesconfig
-s390                             allyesconfig
-x86_64                         rhel-8.3-kunit
-x86_64                              defconfig
-x86_64                           rhel-8.3-kvm
-arm                            pleb_defconfig
-alpha                             allnoconfig
-powerpc                      chrp32_defconfig
-i386                             allyesconfig
-arc                          axs101_defconfig
-x86_64                               rhel-8.3
-riscv                             allnoconfig
-arc                    vdk_hs38_smp_defconfig
-arm                                 defconfig
-powerpc                 linkstation_defconfig
-i386                 randconfig-a014-20221003
-sh                             espt_defconfig
-sh                               allmodconfig
-csky                              allnoconfig
-x86_64                           allyesconfig
-i386                 randconfig-a011-20221003
-arc                               allnoconfig
-arm                           h3600_defconfig
-x86_64               randconfig-a011-20221003
-i386                 randconfig-a012-20221003
-arm64                            allyesconfig
-s390                       zfcpdump_defconfig
-sparc64                             defconfig
-x86_64               randconfig-a015-20221003
-i386                 randconfig-a013-20221003
-sh                   sh7770_generic_defconfig
-m68k                             allmodconfig
-x86_64               randconfig-a014-20221003
-arm                              allyesconfig
-powerpc                       maple_defconfig
-arc                              allyesconfig
-sh                             shx3_defconfig
-ia64                             allmodconfig
-m68k                            q40_defconfig
-i386                 randconfig-a015-20221003
-x86_64               randconfig-a012-20221003
-arm                       imx_v6_v7_defconfig
-i386                 randconfig-a016-20221003
-mips                            ar7_defconfig
-alpha                            allyesconfig
-x86_64               randconfig-a013-20221003
-arm                          gemini_defconfig
-m68k                                defconfig
-x86_64               randconfig-a016-20221003
-m68k                             allyesconfig
-i386                          randconfig-c001
-mips                          rb532_defconfig
-riscv                randconfig-r042-20221003
-arc                  randconfig-r043-20221003
-arc                  randconfig-r043-20221002
-s390                 randconfig-r044-20221003
-riscv                            allyesconfig
-
-clang tested configs:
-x86_64               randconfig-a003-20221003
-x86_64               randconfig-a002-20221003
-x86_64               randconfig-a001-20221003
-x86_64               randconfig-a004-20221003
-x86_64               randconfig-a006-20221003
-arm                        neponset_defconfig
-x86_64               randconfig-a005-20221003
-i386                 randconfig-a003-20221003
-i386                 randconfig-a002-20221003
-i386                 randconfig-a001-20221003
-i386                 randconfig-a004-20221003
-riscv                          rv32_defconfig
-i386                 randconfig-a005-20221003
-hexagon              randconfig-r041-20221003
-x86_64                        randconfig-k001
-riscv                randconfig-r042-20221002
-i386                 randconfig-a006-20221003
-hexagon              randconfig-r041-20221002
-s390                 randconfig-r044-20221002
-mips                     loongson1c_defconfig
-hexagon              randconfig-r045-20221002
-powerpc                 mpc8272_ads_defconfig
-hexagon              randconfig-r045-20221003
-powerpc                          allyesconfig
-x86_64                          rhel-8.3-rust
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
