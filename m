@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49206C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E62C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJFcVmT0A6ku9BwxUJ+axOJLJsqd2oD5QuHm3zqRaWs=; b=Z3zZS3BrlIzlV3fzVEjdDquDMV
-	QgG3r0ZNZviGTdGp7Q3vDVq1HprzPSK1n9ixm2RUFo4DgmB86FpjMRRNYMl305VPoHmANRwdCSBUx
-	TiiJ8UxsVkFsnl0NjVO2B34LxV52RTnmlxbc+coeVAWIQ3AjT0x/syrXogna/eJuuQ2xywGpr3fVQ
-	JbRIM+0m9l7Y181c46z3vCcxWs0z8Mg/5aD0iNh2vjT25K0SYemycbLwxOEMT52nEJGPq8TVvLNC9
-	VkA9XoeQirm24MwvBTu4ktS/7WB0ptF86ZN09HhEweP+xC8DI9BStqgs0oRbENnWSVPRUNIdjY9HJ
-	AXfI4Esw==;
+	bh=c1YUsSec42NZr0uNUmwzdZCJ/cJRubpYY6BaXUzZ9Jw=; b=OSYyII+hErIkTsKrd95WbSCLzg
+	i46EzM7ZxCBYnWl9e8MImM7GP4XTBfQN7PfS22cd9gkGgfN0k7V/RsyaEKQ4DPNlAGG/H+Gdn9OIg
+	a3Cvb6qpNXjDkB/J4yV846U7EQJBJdw9HsW7k0xuxnG0bQDesjBRO5A02BCigoZqUEelyt7oEjdou
+	vSHOSld5OZ2ZaP9YulnrMr4k4pDWHQjzN5bsazUnU6NPJKOWg5KXgLjAKY5iwH66rOqPBb6zzYrS0
+	Wv+fc1oNkw4k6/MzVC0lYwskrYWwCZ2281Mcawq84y86rfxbXZly/7VhSvM0zZ44eMplaaF2kYSnv
+	LT6arCtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogPw7-002EsL-3k; Thu, 06 Oct 2022 12:25:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ogPxb-002FjB-9q; Thu, 06 Oct 2022 12:26:43 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogPvi-002EeZ-Tq; Thu, 06 Oct 2022 12:24:48 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36EC166022F9;
-	Thu,  6 Oct 2022 13:24:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665059081;
-	bh=BuajQsmdky1pSKHSsbY4UXSTa/ucDnsntUDGuRTR5Dw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NW+OCQ/VMKeFUq6aNI6w1YFB06kED9jdPOT2bcWZI9OeL9mUJErbD4BzStCnAkfpu
-	 idj3em16pahptosz4k448Q+sGqtLTlRwV+k7O8X+jNcQBG9ue2uYlcm9sLgNGgJGFu
-	 +NGIQGuDpt0CB3hHPothcvaVK4kOB86wPaneekFzqJsIRGoBTulZiMeYMnwo7tyP/V
-	 TmGwN1mE6Oqkz+ItcP07PSJF04MXaP8B+OAh4HrbtUsKU/Vo8MVmJQlI4YQV6OvDF6
-	 AYw9ZSMp2APKSfL/C4Hnn3TQbiead9GCci/PJWTtGMui5jeNxTYs2CIL2zrJBj5SzU
-	 2r9Id2o1y5VIQ==
-Message-ID: <ef96bf71-7bce-7874-2e0e-f4ff6ab8f792@collabora.com>
-Date: Thu, 6 Oct 2022 14:24:38 +0200
+	id 1ogPxO-002EU1-Rk; Thu, 06 Oct 2022 12:26:32 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id A97F418844A7;
+	Thu,  6 Oct 2022 12:24:17 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 9148025001FA;
+	Thu,  6 Oct 2022 12:24:17 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 7014B9EC0005; Thu,  6 Oct 2022 12:24:17 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 3/8] arm64: dts: mediatek: mt7986: Fix watchdog compatible
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- nfraprado@collabora.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
- <20221006120715.24815-4-allen-kh.cheng@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221006120715.24815-4-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Date: Thu, 06 Oct 2022 14:24:17 +0200
+From: netdev@kapio-technology.com
+To: davem@davemloft.net, kuba@kernel.org
+Cc: netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Andrew
+ Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Vladimir
+ Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
+ <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
+ <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
+ <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>, Ido Schimmel
+ <idosch@nvidia.com>, Florent Fourcot <florent.fourcot@wifirst.fr>, Hans
+ Schultz <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit
+ Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v6 net-next 8/9] net: dsa: mv88e6xxx: add blackhole ATU
+ entries
+In-Reply-To: <20220928150256.115248-9-netdev@kapio-technology.com>
+References: <20220928150256.115248-1-netdev@kapio-technology.com>
+ <20220928150256.115248-9-netdev@kapio-technology.com>
+User-Agent: Gigahost Webmail
+Message-ID: <b5cdf29e7b5a5f7fa4ab1df4c5fd6e62@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_052447_136800_4CD6304C 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221006_052631_098260_83584EBA 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,15 +84,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/10/22 14:07, Allen-KH Cheng ha scritto:
-> MT7986's watchdog embeds a reset controller and needs only the
-> mediatek,mt7986-wdt compatible string as the MT6589 one is there
-> for watchdogs that don't have any reset controller capability.
+On 2022-09-28 17:02, Hans Schultz wrote:
+> From: "Hans J. Schultz" <netdev@kapio-technology.com>
 > 
-> Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Blackhole FDB entries can now be added, deleted or replaced in the
+> driver ATU.
+> 
+> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+> ---
+>  drivers/net/dsa/mv88e6xxx/chip.c | 78 ++++++++++++++++++++++++++++++--
+>  1 file changed, 74 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mv88e6xxx/chip.c 
+> b/drivers/net/dsa/mv88e6xxx/chip.c
+> index 71843fe87f77..a17f30e5d4a6 100644
+> --- a/drivers/net/dsa/mv88e6xxx/chip.c
+> +++ b/drivers/net/dsa/mv88e6xxx/chip.c
+> @@ -2735,6 +2735,72 @@ static int mv88e6xxx_vlan_msti_set(struct 
+> dsa_switch *ds,
+>  	return err;
+>  }
+> 
+> +struct mv88e6xxx_vid_search_ctx {
+> +	u16 vid_search;
+> +	u16 fid_found;
+> +};
+> +
+> +static int mv88e6xxx_find_fid_on_matching_vid(struct mv88e6xxx_chip 
+> *chip,
+> +					      const struct mv88e6xxx_vtu_entry *entry,
+> +					      void *priv)
+> +{
+> +	struct mv88e6xxx_vid_search_ctx *ctx = priv;
+> +
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+FYI: I have already made updates to this part to use mv88e6xxx_vtu_get() 
+instead of the walk, which also fixes a problem when vid=0 in this 
+implementation.
 
