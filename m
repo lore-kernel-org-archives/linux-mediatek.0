@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 076B8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 18:44:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0C9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 19:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=00Rx/FKCWoUiV/UmVC88jaENpGru3BhSDILkeicJ5uI=; b=FI4ox4Lp7QNiENrd2+zE5+fJaX
-	goqSRJBHSfm+I6qaKdzX5aKrwCBKEcMd2FMdcXQZM5Nbf/8lixUF0G/zJMa7O5uxSrXGkasdLkKv3
-	cinCyVCw9718Zg9cgCroWvbNXGYDUISFD+tC9AlnFutfUSFIByuQqqXn9cWdUJfDND9iu8JgIvv4Z
-	Y3S4dhytwGNevcf2JdAy59H/bkMgEmmWSPITVwEqw7poUH2Vy5SES7MwEnbB9A0FRnQcZxRmxLqEs
-	nRdW8dfl4iyDpHuHYLJl6PNiTEhqbI3eppoYncbURRBbVlcFD0AsSj8UmVhOJHoiU4M+cUUr4czHU
-	wnI+OYGQ==;
+	bh=3uOkqH8wHIIwG3lpTmOvwfF29077xeAWMGdj9Sqlpxw=; b=X90hqKSb/7EoMTWm4I/dyzDh2H
+	nCLkLo6gCCIyLHLVuVWG5BFkx2L2Eo5O4h86acy7GTw7p2x34eqftWpP9FwoAbruDheVVhHMf6dK1
+	Ut1OWB51AGoWuUiLv8n4w7RqS3YOczYuE7BCPC1cA/5g1mrqqic8MPs8VL+CnxqRb32W5ykA5uzZn
+	k5upqzO83nHodoZZ9GFx74PDI98YRWjtPwZWM3E2aAEMQ6k73H1YsqIMQxyM6MRU1IuxLdHm7psya
+	l9qSeXraL8nLQeISUSWa/bBJENwVHwvw0RiLX3CcLArcugNwIOVJGluhz7HljpqkjaEbGEAH7xYRS
+	inUwKegg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogVrF-004XYl-0e; Thu, 06 Oct 2022 18:44:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ogWK0-004fSW-He; Thu, 06 Oct 2022 19:14:16 +0000
+Received: from mail-oo1-f54.google.com ([209.85.161.54])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogVr3-004XSC-C1; Thu, 06 Oct 2022 18:44:22 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6DFE6602312;
-	Thu,  6 Oct 2022 19:44:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665081857;
-	bh=cg5NSP17rilsGIpsqKknfp2eLMs+z2DEvknKPSu0pN0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lobjwQM1LwYW2az1hlQhzcZHJKqP90wNCxOGrmgivOv8Q26SNG5CSZC3iyeA2x3Ec
-	 L9kLYXVh6aC/G7uYzugRMo7kLdC18hB0HM3/c809hmSUlY7YPoGjs75cPFTbgVkvBi
-	 Cym83YvcvctQmz3c+w6uyVtx6GvMeYELxQsuRjd+sUXZuZ9x/4KmYvByjYJ+qoDFUy
-	 74jnEIZ8LA9yj9VAZLGiIiB417nZbri6QzRNNKRuei+2HTInlVMrUM9+X1anUAzQ1r
-	 NZyCHUd1FljpE1oCZH66640CjbRp+nTS5WyjxZC03EzdcorqDJ8+H+iSVz3hfrUp4i
-	 BhCIhbtaxfWFQ==
-Date: Thu, 6 Oct 2022 14:44:13 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 2/2] arm64: dts: mt8192: Add vcodec lat and core nodes
-Message-ID: <20221006184413.kelie7eppmjwptnc@notapiano>
-References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
- <20220930112237.14411-3-allen-kh.cheng@mediatek.com>
+	id 1ogWJy-004fQX-GF; Thu, 06 Oct 2022 19:14:15 +0000
+Received: by mail-oo1-f54.google.com with SMTP id g2-20020a4ac4c2000000b0047f703cbe86so2058698ooq.11;
+        Thu, 06 Oct 2022 12:14:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3uOkqH8wHIIwG3lpTmOvwfF29077xeAWMGdj9Sqlpxw=;
+        b=T/COY8Jndhs4/haTdzwzfKh1qp0vvutcm00jNNEGjGL6/9SQbgg+CSy/P41ff0WhVU
+         L0A+pbs0D+unDi0Cyxe1LaXdurgI9z4NUzlYuNwNwinNCjr+MVS7UZEFO/iyLwXwQZ9h
+         C2mcrE9MtrLmZDB6rQO8cjXFzYu0LZBy9zbJ+VA8aqyVXNGvH8IC/EV05JA05RwMplep
+         d48wKi04c+W1hvwyDssPiVkn7vDeSf66BON5ucH1CZ4aQSuq/ii1Ktj9kMoUKy5CIdNi
+         uBwwKM5971O/wIqCaJGBmEPjGOXxSQj6M6hC4Um3boYvH3rk7csehKtI9Q3sgLp6uemc
+         zeTA==
+X-Gm-Message-State: ACrzQf0v0sA2fJdU1A+3t9KUrfRbK9wry9ng3ZQmkgs+Owsnbe+KykxO
+	uSdSMMy9r2vtpX8DaiwP3A==
+X-Google-Smtp-Source: AMsMyM71fwoUSf9tYFfjBz2mhmMUwcP7xYkN22Uv0oapeMLU2C9RJk3TElcPHKa3Anb+dB7iYTEPuA==
+X-Received: by 2002:a9d:30d1:0:b0:654:1288:7cb2 with SMTP id r17-20020a9d30d1000000b0065412887cb2mr605971otg.43.1665083652496;
+        Thu, 06 Oct 2022 12:14:12 -0700 (PDT)
+Received: from robh_at_kernel.org ([2607:fb90:8a65:c536:245:842:a3a4:9017])
+        by smtp.gmail.com with ESMTPSA id f13-20020a056830204d00b006594674d4ddsm195126otp.44.2022.10.06.12.14.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Oct 2022 12:14:11 -0700 (PDT)
+Received: (nullmailer pid 45552 invoked by uid 1000);
+	Thu, 06 Oct 2022 19:14:08 -0000
+Date: Thu, 6 Oct 2022 14:14:08 -0500
+From: Rob Herring <robh@kernel.org>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Teng <andy.teng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Yassine Oudjana <y.oudjana@protonmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 02/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Improve description
+Message-ID: <166508364780.45491.15443497028230774224.robh@kernel.org>
+References: <20221005174343.24240-1-y.oudjana@protonmail.com>
+ <20221005174343.24240-3-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220930112237.14411-3-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20221005174343.24240-3-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_114421_573475_C538ECEA 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221006_121414_561175_B26507E8 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Fri, Sep 30, 2022 at 07:22:37PM +0800, Allen-KH Cheng wrote:
-> Add vcodec lat and core nodes for mt8192 SoC.
+On Wed, 05 Oct 2022 20:43:35 +0300, Yassine Oudjana wrote:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> The current description mentions having to put the pin controller
+> node under a syscon node, but this is not the case in the current
+> MT6779 device tree. It seems that this is not actually needed, so
+> replace the current description with something more generic that
+> describes the use of the hardware block.
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>  .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml          | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-Nícolas
+Reviewed-by: Rob Herring <robh@kernel.org>
 
