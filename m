@@ -4,171 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4160C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 11:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4289C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 11:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kzAyMF01dYjwqCVUKXX4icIFqnZIj2MpzsJ6CDxZGHk=; b=x3AVWyAzIhF3OlFE22/rcqxgGT
-	GoTpiIoV4lcWbNqEMjGcRkvaXsLunShRoJN28WG/QKJo3wpnX83ulFJrvn1faIDbwFpjYd9BcA/SI
-	RwIvCBmSHTj1CJN7wuTkdO1+EEarNBPD+I4DRtZOCu4Ui83GFWbTMvxqWWznYAqBy/1NLZVi3uCMI
-	xTvv+R01n76iusHJb60lyMMt38BBDyKquLJZRll1Gv4WG2m2w9UnxvzZ9HmX72cldcryg634FNbKg
-	JFikj6Us49JwXEPw2QEZ9frxZ8srjEQjJ9RA4Q+lyV73MmyHy4liMDX82Z5GteYke3217Qt2p3sfl
-	hGnK2B+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5IXP7qmO/aF//5hsdj+rC3jLA4OsZAjJO+4Cr6JrCxw=; b=02+JRjaWqPYRRF4NQVH2Rjj8FL
+	5k+5M7/qPfcKoWo641iatLksT/EnqYpxP72Ecg//BScWJQOuUMk2dgz7atpgvt7HRZx9OIc+gnkLO
+	h13bv3n7QDpFSP5cfBDrGQpAek8FDVNmBJiKMHBfWX2xYXUWNUmD6ZR0WjhZMLsvUFNUp0orYsLTz
+	tX2UYDcBEFoUwhDl4f9Gft+pVGSIHHmDK2L3pyMeWnltO3MwzR1J2j38yZKisLNMuOOaNYpwkIKsY
+	CgfYJvAfm+fSkxbbpShW75UdbMTFqXsjmNsA1lzg5ExcMJz2zijWJ653zxBowpySsLjdC41h9TSKA
+	S6hu82xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogPSo-0024eq-N8; Thu, 06 Oct 2022 11:54:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ogPWS-00262R-Gt; Thu, 06 Oct 2022 11:58:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogPSc-0024aI-FC; Thu, 06 Oct 2022 11:54:44 +0000
-X-UUID: 29c8ce9cd95644aebfbb010713383dbf-20221006
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=kzAyMF01dYjwqCVUKXX4icIFqnZIj2MpzsJ6CDxZGHk=;
-	b=OKb/YhW4SL0LbSmL9Cf1z09veMThJEH0V2x2K1x9vSRGl1q/l3d3b8WYbAdi3PxZzHJUda01g/v33pSDYF9CEvtdkULeKgPorWghhUeQl3uIR9P9dKvs5tWoRuAXbP3xcdF7xbI0lZ2rbmD2X9z0fS8p+U8hIuOAtmjb0gH8+dU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:4fdcebaa-8345-4b23-bee9-953a0587bb50,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:0bea1be1-2948-402a-a6e4-b5d31fe11eb7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 29c8ce9cd95644aebfbb010713383dbf-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <johnson.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 242174515; Thu, 06 Oct 2022 04:54:36 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 6 Oct 2022 19:24:01 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 6 Oct 2022 19:24:01 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dh4E7kinF8JUcJ3nk6ZbExPKtlbsI9hyTy2ysahpsT3N/PVX1z8iR3T6q6tpwQ+70gOb3W6gnM+lZHd0kjDr+btINiQ5A1MC0VNE1KkLm5LUASdF5Rc3AuTd9MFC1FtR/QVELmcH2vHXsK+zM3pZtnMadXMLtAEU7LYfnHHeUT2Qh4YTWrOLfdNTnTj11CUelzrh0frCLp/kDgEVkPsM9hwDPn60N+8eqjWqNWKsW/h+JCYXA0ivP/v0a2XVIL2rgFiPXX1JoK4KrhhhWtk+j/pyjKPSPPlqrHdgDqhm2MGtClBzNX6s2J6IvVIA3iecP50VoPwVPAH07Dy0my4RQA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kzAyMF01dYjwqCVUKXX4icIFqnZIj2MpzsJ6CDxZGHk=;
- b=gfp4G3Fiie2T+oIUvnIBfc8udWEOTRSr+AVvhFDWS2jp9Ll7214TjGq/JXzhzVdMmh2pD7AZ7xOxEfmm/l7LXgwzcU0L7qbvrtJOW39m/v8NXhWEKrO7fp/+NhC5bz8EtVuIGBDAvGEfo90/EvHdz91CTcIikiWUml2pIHXs8p+dizAqaGQQausZa3z2WyQR7xyqUeB/oVPdKW7JtPRauv+UIWAogpZJ2I08V6FYlFtvDYjk65wtuvGuXffbeueTZuYCkh5AlM6kGvt8PXtoKzMrzCyuRrBj+9WAwMzlgCSu1c+9GetbX2hKvNTHkYSRoh0f0bnaw8dJ4YOxFfs9rg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kzAyMF01dYjwqCVUKXX4icIFqnZIj2MpzsJ6CDxZGHk=;
- b=HU9+0arfUWPLI31xToY/s1DLcGqtO7zf9avnalI7BWKwsX0DGak27vuAGxlwzDSe9T2yGG0Vp5vQqqLaKhBj7mOznDRNDHOVgh/g9Aqdz7ZwZvboshhk/I7OGERIYnIgfMepkBJEdm7R/Jn00+EWdvfWi5PaF92XwoM6FMQ++e4=
-Received: from TY0PR03MB6274.apcprd03.prod.outlook.com (2603:1096:400:142::9)
- by KL1PR03MB5761.apcprd03.prod.outlook.com (2603:1096:820:76::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5709.10; Thu, 6 Oct
- 2022 11:23:55 +0000
-Received: from TY0PR03MB6274.apcprd03.prod.outlook.com
- ([fe80::691d:c9be:8a6f:5e85]) by TY0PR03MB6274.apcprd03.prod.outlook.com
- ([fe80::691d:c9be:8a6f:5e85%9]) with mapi id 15.20.5709.010; Thu, 6 Oct 2022
- 11:23:55 +0000
-From: =?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	=?utf-8?B?S3Vhbi1Ic2luIExlZSAo5p2O5Yag5pawKQ==?=
-	<Kuan-Hsin.Lee@mediatek.com>, "sboyd@kernel.org" <sboyd@kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	=?utf-8?B?WXUtQ2hhbmcgV2FuZyAo546L54Wc5qifKQ==?=
-	<Yu-Chang.Wang@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "linux-clk@vger.kernel.org"
-	<linux-clk@vger.kernel.org>, =?utf-8?B?RWR3YXJkLUpXIFlhbmcgKOaliuWTsue2rSk=?=
-	<Edward-JW.Yang@mediatek.com>
-Subject: Re: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
-Thread-Topic: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
-Thread-Index: AQHY0/lIndFmLtg+lkiFTv0K/xrn3K32YQCAgAH2s4CACOyWAA==
-Date: Thu, 6 Oct 2022 11:23:54 +0000
-Message-ID: <5b84c81d0d7f71bb83fcbef860433e4704ae5c72.camel@mediatek.com>
-References: <20220929114624.16809-1-johnson.wang@mediatek.com>
-	 <20220929114624.16809-3-johnson.wang@mediatek.com>
-	 <ed723cb2-ba79-55d7-7869-abf153e4af0a@collabora.com>
-	 <20220930190703.GA657929-robh@kernel.org>
-In-Reply-To: <20220930190703.GA657929-robh@kernel.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY0PR03MB6274:EE_|KL1PR03MB5761:EE_
-x-ms-office365-filtering-correlation-id: 12b63d05-4c81-4a4a-5f59-08daa78d411e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: bL/5Zp2xEkyPhnknmE4yTNr/3VwVEV8eM/Rm3mSEm8XIf5HbZjDM+c89ScySxX7lIL3SxEc7P9IKXcHyQVbb5R33uRJrl/qoh2+S9MA1EcbYviC3gG77X0O5ycTgu/Pj25OmbiK0uaEeyaaVju8VKo3mhcGl5tL5Mvy+84NsiynH5MeCB/nRVPXq0vzAJWsdj9R0pvn4ngtgFN5ubetSInaR52oo45KA+ifJj5w//B3NjWlhKUVI/j2WuO7KuaVeVP8NQrxQxHKTMkR9inL9/N5hVAu4M4WUGjOqgGtVDRpLQMlkaMqz3BV4mLWnLRaAGnA2uyuMUGDvbUvjQSJ4UpP7G7JpCMwu8CRjVEi6UPdf3UXM6yjO8Kc/3ymrPIuJEVLHlzu2JrPDjDEGfzv0zVLoIly0ZfGJvmULblPyOK8FJdYQfTPgfbbWjC5+ronGf6k6GRRzj1NVKdF4jg7wZJyTPX1ttiZr9gP1sniws85RudacmNMbIo1L2UWqxk3ozEWjYQWzP+Y4hhAttJz4QopwoGvC74nANAzzsBu0UhWpskVFe9DjUUXX2vQTcWLEAxaTRXaACRlHLspokEdZ7GSXakQa0dXZl0KOWNB82AheGtq7tEklOkDpnGmfa0pn04+ceR1Np8p3d9lFQn7q6PEhgZwAQNG44VkqOWpcA6O/SgPeWZakZKScecSQm2ZfhuBjKEgPFxi9327letr3yQQ9lVjk5/HotG9VYdY26GQTIly6rDLYeYlQ289bqCKrcvAvH9cj0dwxIA8jIMyWj20iLgmsRtjbv9H3Rr/n3tv3N4FfKKyI9WYh6dRXHyxktvQlW8AryCVAvBkr/i9soQ==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR03MB6274.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(136003)(39860400002)(396003)(346002)(376002)(451199015)(36756003)(110136005)(54906003)(6506007)(8936002)(26005)(85182001)(6512007)(41300700001)(966005)(86362001)(2906002)(2616005)(6486002)(71200400001)(38100700002)(66446008)(66476007)(66556008)(316002)(5660300002)(66946007)(76116006)(83380400001)(64756008)(186003)(122000001)(478600001)(4326008)(8676002)(107886003)(38070700005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dVRCeXVYb0cyUi9taG9SVHZiSDFIZjg5NTdha082YzhkYXZNTzhrVWkxLzNH?=
- =?utf-8?B?NStpRndxM1NyVS91NDlBdWdCZW5mREtLdWxiLzJKaDFaYkdUZHZURzM3amlv?=
- =?utf-8?B?Z2t2TUlOUVlLaWp4SGRQWnFmd2h5SXR3QkQzZFF6TDU5Y3FkNkhUeVo0QW9w?=
- =?utf-8?B?R0YxeTQzako4dUZWMWc0YXhFU2MvaXJ4bWZOSGlqQ2RSUHZ4M3k0WUhGd1Q1?=
- =?utf-8?B?NGRVWlFYQXFnTVRSR0RNakFxSWloUkFvT0hkZ2MrWThJRE5GcEdJekwyMDBp?=
- =?utf-8?B?cUpaMkttZHVJcXgzbmFDME5zSkFrU1Vha3Q4ZEcveVQ5cnhVSUJhVkJpYWVv?=
- =?utf-8?B?ZGcvZFFBVkZuSnFuSXM1aWp3bG5EOGMwbjdYSVZ1YzExYkdoR1FubktQMEhi?=
- =?utf-8?B?ZE90aDAxSFc4YnVodExSUnJzeFEzQlg1SytwOHpUdVF1VngrekRzZEZnQlo5?=
- =?utf-8?B?Wko3RFhLMy85ZDhudmN3TUk0TFEzL3ZyOG1IOTMvNHRFZW9ROW9tVWY5UnA5?=
- =?utf-8?B?YWRzc0FXK00rSXRxL0taM1VNQU93OXc2T0k3dW1PcHJlY2VBM1dYU1Q4cjlR?=
- =?utf-8?B?TmRPRGppLyt6b0NBZVA4b0NGeEUzMFo2NU92YW9xUzBhTStlWnBkYmxPTUNv?=
- =?utf-8?B?NnFQeDRZRHBCS0tLVXc5ZXlTeXpUQXlpV2VSanZrRWtxRjZjU1R1b1VnNUd2?=
- =?utf-8?B?TWRUS3hFc21FSG1JRU1UM3NDajJ5eHRxSUhUL0tHNDh5QXNuT0R0VW1EeGRC?=
- =?utf-8?B?bzhjUzJRNzdNTW5OM0pBb0YzaGRidVR1bUxzaUFxakdVRy9BejcwZXdDMWI4?=
- =?utf-8?B?cExLTWR1Yzh3TFFiT0crKzMzMWJtT0x1cFZhMUJwdi9QaUZ6bXl3WVl2dUxM?=
- =?utf-8?B?WkVRVll3NTl1eHNxdUpMKzJHQVU0NVhIVW9iblBXdXlTUnFkbVNFd2lpOVZX?=
- =?utf-8?B?eTJ0cmd5L09GRjJZZUdxRFI5a29La2ZnMkZQQ3h6V2ZQOGRqMjJpbHN6WDJK?=
- =?utf-8?B?dHFyZlFIVmFUZ2U0ZEU0V1c5eUR1bXVuY1RyUzl4c2VOWUFPc2t3dkRwbmFy?=
- =?utf-8?B?OStQVFBnNDJheVBrTDZ2eXZUS3VYMXJHNTduRi8vYmZtdUgzNzdUVUx5c1FW?=
- =?utf-8?B?TVRndXF0dkJjZ2NjazJuTFZBU2RyZWlWaC85emRhRGVQWE5UK2dSbXl0VGla?=
- =?utf-8?B?UTh6WVlObFBqaldiZEhJVGNOMnFyeHVldE5WMTVpdUxUNllSOEd4QTZzSHR6?=
- =?utf-8?B?VEFBMjhDdDR3aVExclhrTnNKcE9vMVpGbi9JenBSaXBpeEt4eU1xbGUrVldX?=
- =?utf-8?B?U0s1Y1ZlWEJZUmtPRmRGRW9xdXUyTytyY1VEOVI5QUg4UlczZXZNWmR1YmRP?=
- =?utf-8?B?eC9zdE1GN0tRZ0xDNmhydnNQYXVFUU5MQXcyNW0zdE9EN1NCSkFDWHBnMU1F?=
- =?utf-8?B?aVdkeHJNcnY3WDVoN080NStWb2U1aVgyM0pvbGo2RVc1U1lyQitiZTdaVGRK?=
- =?utf-8?B?UUpLSGViSEJkZTNKRkJTR0JNODdRVi82S3VmQWo4cnFnN1BMamlJaTgycHJi?=
- =?utf-8?B?ZGFRdEs2cWJ6S0lKaVZvaWs3cUJ1YTR6NDVUMWpXZG8ybWV0bG9Nb2tXTmlE?=
- =?utf-8?B?WC8zVTIvamdIYnZyOEpNYzZhZ0VycTc5dU5VQUpGSTNDN2F3cEpEMzZ3Q2tL?=
- =?utf-8?B?cUhGWWhFTGpzc3NxYmszZnc1cVdSbEFRK1Noek1paW4zUDVxbnpmS1JHMUl3?=
- =?utf-8?B?dFNCZTNsNjFMUzhhYjR2dnA1MSsyMG1PVE5TMGo4NDFSZDg1MENjVVlob25v?=
- =?utf-8?B?RERkdC8rUE14dUhXUVE0QWlZeDV5dUtrczJWNjlRTHZrNWhHd3FNOVRna2dW?=
- =?utf-8?B?TUViUVhQOHE3bExISXRkMjlDZzYzQ0JjVkQ1V0RDeHRHenVxeFhQUG1uNVo1?=
- =?utf-8?B?WlNUblkwZkRsT0F3TUQ2ajhUbDk1UGJ0eXdJWVhMVXM5Q1VtNkVsaXU1eVVU?=
- =?utf-8?B?L3pJUjlHb0xXUWp2NVQ3RmpBZUZMVlpTN0xJZHdVMjc3aVVPWFpGSkd6TGVV?=
- =?utf-8?B?aUV2NitnN1dPR29GcjhUK1dldTVmYnc3bXZvSjBnYlYxS0lwMmhRSlc2WWdo?=
- =?utf-8?B?SzFnc0QxeC92c3lsR2d0czUySng4ejhUMDJ3aTFFUk1vOXNzVlhvMG14Z0oz?=
- =?utf-8?B?N2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <31D7FB9ECAECC94DA24232568D6D65FE@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1ogPWH-0025w3-0d; Thu, 06 Oct 2022 11:58:31 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F3BA166022F9;
+	Thu,  6 Oct 2022 12:58:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665057504;
+	bh=MV6gkw/usZ0HIx4r3l8+AwPedwSunrhou+wAhQ0kQoY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=GxAwQVP3FoSWjRP1D3xfkybu8tpseMHA6KRT1y3xorVHHcsuChOmgIut/1aS64TlB
+	 svvHSbxkojS5W5xuQkHNPZYNvAAK1muzONzJVTKZV53O+Y6nvDly0+WB0czbwZnYK8
+	 IjjQGvhpCUe9eS8j/Y+QMQW7GKoMHiJzGT5revrGyE1uvXr20HoDWZ/Mf8pgC78jtt
+	 bonQwI/czkm9FDLN8VuR6iv0ui697cl3S3LV1z5nttw6mtgVLePCBh6YLbXxNOK7ze
+	 6qgmECPURsMbhUEuBTRXjPzdwRBvp7e/9ABbGTfyEZHZK7In7Ap9dEL1Bq45xFpU17
+	 vIXavmewhYoig==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wenst@chromium.org,
+	alyssa.rosenzweig@collabora.com,
+	nfraprado@collabora.com,
+	dmitry.osipenko@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [RESEND PATCH v3] soc: mediatek: Introduce mediatek-regulator-coupler driver
+Date: Thu,  6 Oct 2022 13:58:16 +0200
+Message-Id: <20221006115816.66853-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR03MB6274.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12b63d05-4c81-4a4a-5f59-08daa78d411e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Oct 2022 11:23:55.0146
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OUqJPoqVv/F9hTl6CbKV6lvzRUwqiX1T+Ip89b8NAUEhAEEcZQY1JCm0C3uiij68VSl6iZUoPTcgQW44D7Kb9HqRbSothsmN/mC9Lm9S040=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB5761
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_045442_544754_CE3F96A8 
-X-CRM114-Status: GOOD (  20.88  )
+X-CRM114-CacheID: sfid-20221006_045829_421459_63BD453C 
+X-CRM114-Status: GOOD (  29.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -183,78 +74,243 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIyLTA5LTMwIGF0IDE0OjA3IC0wNTAwLCBSb2IgSGVycmluZyB3cm90ZToNCj4g
-T24gVGh1LCBTZXAgMjksIDIwMjIgYXQgMDM6MDc6NDlQTSArMDIwMCwgQW5nZWxvR2lvYWNjaGlu
-byBEZWwgUmVnbm8NCj4gd3JvdGU6DQo+ID4gSWwgMjkvMDkvMjIgMTM6NDYsIEpvaG5zb24gV2Fu
-ZyBoYSBzY3JpdHRvOg0KPiA+ID4gQWRkIHRoZSBuZXcgYmluZGluZyBkb2N1bWVudGF0aW9uIGZv
-ciBNZWRpYVRlayBmcmVxdWVuY3kgaG9wcGluZw0KPiA+ID4gYW5kIHNwcmVhZCBzcGVjdHJ1bSBj
-bG9ja2luZyBjb250cm9sLg0KPiA+ID4gDQo+ID4gPiBDby1kZXZlbG9wZWQtYnk6IEVkd2FyZC1K
-VyBZYW5nIDxlZHdhcmQtancueWFuZ0BtZWRpYXRlay5jb20+DQo+ID4gPiBTaWduZWQtb2ZmLWJ5
-OiBFZHdhcmQtSlcgWWFuZyA8ZWR3YXJkLWp3LnlhbmdAbWVkaWF0ZWsuY29tPg0KPiA+ID4gU2ln
-bmVkLW9mZi1ieTogSm9obnNvbiBXYW5nIDxqb2huc29uLndhbmdAbWVkaWF0ZWsuY29tPg0KPiA+
-ID4gLS0tDQo+ID4gPiAgIC4uLi9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbXQ4MTg2LWZoY3RsLnlh
-bWwgICB8IDUzDQo+ID4gPiArKysrKysrKysrKysrKysrKysrDQo+ID4gPiAgIDEgZmlsZSBjaGFu
-Z2VkLCA1MyBpbnNlcnRpb25zKCspDQo+ID4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NA0KPiA+ID4g
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxt
-dDgxODYtDQo+ID4gPiBmaGN0bC55YW1sDQo+ID4gPiANCj4gPiA+IGRpZmYgLS1naXQNCj4gPiA+
-IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRl
-ayxtdDgxODYtDQo+ID4gPiBmaGN0bC55YW1sDQo+ID4gPiBiL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbXQ4MTg2LQ0KPiA+ID4gZmhjdGwu
-eWFtbA0KPiA+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQNCj4gPiA+IGluZGV4IDAwMDAwMDAwMDAw
-MC4uMjU4ZGZmN2NlNmJjDQo+ID4gPiAtLS0gL2Rldi9udWxsDQo+ID4gPiArKysNCj4gPiA+IGIv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxt
-dDgxODYtDQo+ID4gPiBmaGN0bC55YW1sDQo+ID4gPiBAQCAtMCwwICsxLDUzIEBADQo+ID4gPiAr
-IyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjAgT1IgQlNELTItQ2xhdXNlKQ0KPiA+
-ID4gKyVZQU1MIDEuMg0KPiA+ID4gKy0tLQ0KPiA+ID4gKyRpZDogDQo+ID4gPiBodHRwczovL3Vy
-bGRlZmVuc2UuY29tL3YzL19faHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvYXJtL21lZGlh
-dGVrL21lZGlhdGVrLG10ODE4Ni1maGN0bC55YW1sKl9fO0l3ISFDVFJOS0E5d01nMEFSYncheFZ0
-NzNmOFBhUUtwaDhuMGZmR0hIbVFJeGR6b29VdEdyMHhETlZxeV82VjB2d2NzNWstRkxybWtCM1Ba
-dXBTdTFjaUMkDQo+ID4gPiAgDQo+ID4gPiArJHNjaGVtYTogDQo+ID4gPiBodHRwczovL3VybGRl
-ZmVuc2UuY29tL3YzL19faHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlh
-bWwqX187SXchIUNUUk5LQTl3TWcwQVJidyF4VnQ3M2Y4UGFRS3BoOG4wZmZHSEhtUUl4ZHpvb1V0
-R3IweEROVnF5XzZWMHZ3Y3M1ay1GTHJta0IzUFp1bFh3QkFDayQNCj4gPiA+ICANCj4gPiA+ICsN
-Cj4gPiA+ICt0aXRsZTogTWVkaWFUZWsgZnJlcXVlbmN5IGhvcHBpbmcgYW5kIHNwcmVhZCBzcGVj
-dHJ1bSBjbG9ja2luZw0KPiA+ID4gY29udHJvbA0KPiA+ID4gKw0KPiA+ID4gK21haW50YWluZXJz
-Og0KPiA+ID4gKyAgLSBFZHdhcmQtSlcgWWFuZyA8ZWR3YXJkLWp3LnlhbmdAbWVkaWF0ZWsuY29t
-Pg0KPiA+ID4gKw0KPiA+ID4gK2Rlc2NyaXB0aW9uOiB8DQo+ID4gPiArICBGcmVxdWVuY3kgaG9w
-cGluZyBjb250cm9sIChGSENUTCkgaXMgYSBwaWVjZSBvZiBoYXJkd2FyZSB0aGF0DQo+ID4gPiBj
-b250cm9sDQo+ID4gPiArICBzb21lIFBMTHMgdG8gYWRvcHQgImhvcHBpbmciIG1lY2hhbmlzbSB0
-byBhZGp1c3QgdGhlaXINCj4gPiA+IGZyZXF1ZW5jeS4NCj4gPiA+ICsgIFNwcmVhZCBzcGVjdHJ1
-bSBjbG9ja2luZyAoU1NDKSBpcyBhbm90aGVyIGZ1bmN0aW9uIHByb3ZpZGVkIGJ5DQo+ID4gPiB0
-aGlzIGhhcmR3YXJlLg0KPiA+ID4gKw0KPiA+ID4gK3Byb3BlcnRpZXM6DQo+ID4gPiArICBjb21w
-YXRpYmxlOg0KPiA+ID4gKyAgICBjb25zdDogbWVkaWF0ZWssbXQ4MTg2LWZoY3RsDQo+ID4gPiAr
-DQo+ID4gPiArICByZWc6DQo+ID4gPiArICAgIG1heEl0ZW1zOiAxDQo+ID4gPiArDQo+ID4gPiAr
-ICBjbG9ja3M6DQo+ID4gPiArICAgIGRlc2NyaXB0aW9uOiBQaGFuZGxlcyBvZiB0aGUgUExMIHdp
-dGggRkhDVEwgaGFyZHdhcmUNCj4gPiA+IGNhcGFiaWxpdHkuDQo+ID4gPiArICAgIG1pbkl0ZW1z
-OiAxDQo+ID4gPiArICAgIG1heEl0ZW1zOiAzMA0KPiA+ID4gKw0KPiA+ID4gKyAgbWVkaWF0ZWss
-aG9wcGluZy1zc2MtcGVyY2VudDoNCj4gPiA+ICsgICAgZGVzY3JpcHRpb246IFRoZSBwZXJjZW50
-YWdlIG9mIHNwcmVhZCBzcGVjdHJ1bSBjbG9ja2luZyBmb3INCj4gPiA+IG9uZSBQTEwuDQo+ID4g
-PiArICAgIG1pbkl0ZW1zOiAxDQo+ID4gPiArICAgIG1heEl0ZW1zOiAzMA0KPiA+ID4gKyAgICBp
-dGVtczoNCj4gPiA+ICsgICAgICBkZWZhdWx0OiAwDQo+ID4gPiArICAgICAgbWluaW11bTogMA0K
-PiA+ID4gKyAgICAgIG1heGltdW06IDgNCj4gPiA+ICsNCj4gPiA+ICtyZXF1aXJlZDoNCj4gPiA+
-ICsgIC0gY29tcGF0aWJsZQ0KPiA+ID4gKyAgLSByZWcNCj4gPiA+ICsgIC0gY2xvY2tzDQo+ID4g
-PiArDQo+ID4gPiArYWRkaXRpb25hbFByb3BlcnRpZXM6IGZhbHNlDQo+ID4gPiArDQo+ID4gPiAr
-ZXhhbXBsZXM6DQo+ID4gPiArICAtIHwNCj4gPiA+ICsgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdz
-L2Nsb2NrL210ODE4Ni1jbGsuaD4NCj4gPiA+ICsgICAgZmhjdGw6IGZoY3RsQDEwMDBjZTAwIHsN
-Cj4gPiA+ICsgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTg2LWZoY3RsIjsNCj4g
-PiA+ICsgICAgICAgIHJlZyA9IDwweDEwMDBjMDAwIDB4ZTAwPjsNCj4gPiA+ICsgICAgICAgIGNs
-b2NrcyA9IDwmYXBtaXhlZHN5cyBDTEtfQVBNSVhFRF9NU0RDUExMPjsNCj4gPiA+ICsgICAgICAg
-IG1lZGlhdGVrLGhvcHBpbmctc3NjLXBlcmNlbnQgPSA8Mz47DQo+ID4gPiArICAgIH07DQo+ID4g
-DQo+ID4gDQo+ID4gLi4uLiBhIG1vcmUgcmVhbGlzdGljIGV4YW1wbGU6DQo+IA0KPiBPbmUgb3Ig
-MiBjZWxscyBpcyByZWFsbHkgb3V0c2lkZSB0aGUgc2NvcGUgb2YgdGhlIGJpbmRpbmcgYXMgZWl0
-aGVyDQo+IGlzIA0KPiB2YWxpZC4gSWYgdGhlIHBhcmVudCBidXMgb25seSBoYXMgMzItYml0cyBv
-ZiBhZGRyZXNzIHNwYWNlLCB0aGVyZSdzIA0KPiBsaXR0bGUgcmVhc29uIHRvIHVzZSAyIGNlbGxz
-Lg0KPiANCg0KSGkgUm9iLA0KDQpUaGFua3MgZm9yIHRoZSBleHBsYW5hdGlvbi4NCg0KVGhlbiBJ
-IHdpbGwga2VlcCB0aGlzIGV4YW1wbGUgdGhlIHNhbWUgaW4gdGhlIG5leHQgdmVyc2lvbi4NCg0K
-QlJzLA0KSm9obnNvbiBXYW5nDQo+ID4gDQo+ID4gICAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9j
-bG9jay9tdDgxODYtY2xrLmg+DQo+ID4gDQo+ID4gICAgIHNvYyB7DQo+ID4gICAgICAgICAjYWRk
-cmVzcy1jZWxscyA9IDwyPjsNCj4gPiAgICAgICAgICNzaXplLWNlbGxzID0gPDI+Ow0KPiA+IA0K
-PiA+ICAgICAgICAgZmhjdGw6IGZoY3RsQDEwMDBjZTAwIHsNCj4gPiAgICAgICAgICAgICBjb21w
-YXRpYmxlID0gIm1lZGlhdGVrLG10ODE4Ni1maGN0bCI7DQo+ID4gICAgICAgICAgICAgcmVnID0g
-PDAgMHgxMDAwYzAwMCAwIDB4ZTAwPjsNCj4gPiAgICAgICAgICAgICBjbG9ja3MgPSA8JmFwbWl4
-ZWRzeXMgQ0xLX0FQTUlYRURfTVNEQ1BMTD47DQo+ID4gICAgICAgICAgICAgbWVkaWF0ZWssaG9w
-cGluZy1zc2MtcGVyY2VudCA9IDwzPjsNCj4gPiAgICAgICAgIH07DQo+ID4gICAgIH07DQo+ID4g
-DQo+ID4gQWZ0ZXIgd2hpY2guLi4NCj4gPiANCj4gPiBSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNj
-aGlubyBEZWwgUmVnbm8gPA0KPiA+IGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3Jh
-LmNvbT4NCj4gPiANCg==
+This driver currently deals with GPU-SRAM regulator coupling, ensuring
+that the SRAM voltage is always between a specific range of distance to
+the GPU voltage, depending on the SoC, necessary in order to achieve
+system stability across the full range of supported GPU frequencies.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+---
+
+This driver was successfully tested for more than 3 months.
+GPU DVFS works correctly with no stability issues.
+
+Changes in RESEND,v3:
+ Rebased over next-20221005
+
+Changes in v3:
+ - Added braces to else-if branch
+
+Changes in v2:
+ - Added check for n_coupled
+ - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
+
+Context:
+This driver is the last of the pieces of a bigger puzzle, aiming to finally
+enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
+SoCs on the fully open source graphics stack (Panfrost driver).
+
+No devicetree bindings are provided because this does not require any
+driver-specific binding at all.
+
+Last but not least: it was chosen to have this driver enabled for
+( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
+choice because, once the DVFS mechanism will be fully working, using one
+of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
+to unstabilities and system crashes.
+For COMPILE_TEST, choice is given for obvious reasons.
+
+ drivers/soc/mediatek/Kconfig                 |   5 +
+ drivers/soc/mediatek/Makefile                |   1 +
+ drivers/soc/mediatek/mtk-regulator-coupler.c | 159 +++++++++++++++++++
+ 3 files changed, 165 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mtk-regulator-coupler.c
+
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 40d0cc600cae..30b5afc0e51d 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -44,6 +44,11 @@ config MTK_PMIC_WRAP
+ 	  on different MediaTek SoCs. The PMIC wrapper is a proprietary
+ 	  hardware to connect the PMIC.
+ 
++config MTK_REGULATOR_COUPLER
++	bool "MediaTek SoC Regulator Coupler" if COMPILE_TEST
++	default ARCH_MEDIATEK
++	depends on REGULATOR
++
+ config MTK_SCPSYS
+ 	bool "MediaTek SCPSYS Support"
+ 	default ARCH_MEDIATEK
+diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+index 0e9e703c931a..8c0ddacbcde8 100644
+--- a/drivers/soc/mediatek/Makefile
++++ b/drivers/soc/mediatek/Makefile
+@@ -3,6 +3,7 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
+ obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
+ obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+ obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
++obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
+ obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+ obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
+ obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
+diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
+new file mode 100644
+index 000000000000..ad2ed42aa697
+--- /dev/null
++++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
+@@ -0,0 +1,159 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Voltage regulators coupler for MediaTek SoCs
++ *
++ * Copyright (C) 2022 Collabora, Ltd.
++ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ */
++
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#include <linux/init.h>
++#include <linux/kernel.h>
++#include <linux/of.h>
++#include <linux/regulator/coupler.h>
++#include <linux/regulator/driver.h>
++#include <linux/regulator/machine.h>
++#include <linux/suspend.h>
++
++#define to_mediatek_coupler(x)	container_of(x, struct mediatek_regulator_coupler, coupler)
++
++struct mediatek_regulator_coupler {
++	struct regulator_coupler coupler;
++	struct regulator_dev *vsram_rdev;
++};
++
++/*
++ * We currently support only couples of not more than two vregs and
++ * modify the vsram voltage only when changing voltage of vgpu.
++ *
++ * This function is limited to the GPU<->SRAM voltages relationships.
++ */
++static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
++					      struct regulator_dev *rdev,
++					      suspend_state_t state)
++{
++	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
++	int max_spread = rdev->constraints->max_spread[0];
++	int vsram_min_uV = mrc->vsram_rdev->constraints->min_uV;
++	int vsram_max_uV = mrc->vsram_rdev->constraints->max_uV;
++	int vsram_target_min_uV, vsram_target_max_uV;
++	int min_uV = 0;
++	int max_uV = INT_MAX;
++	int ret;
++
++	/*
++	 * If the target device is on, setting the SRAM voltage directly
++	 * is not supported as it scales through its coupled supply voltage.
++	 *
++	 * An exception is made in case the use_count is zero: this means
++	 * that this is the first time we power up the SRAM regulator, which
++	 * implies that the target device has yet to perform initialization
++	 * and setting a voltage at that time is harmless.
++	 */
++	if (rdev == mrc->vsram_rdev) {
++		if (rdev->use_count == 0)
++			return regulator_do_balance_voltage(rdev, state, true);
++
++		return -EPERM;
++	}
++
++	ret = regulator_check_consumers(rdev, &min_uV, &max_uV, state);
++	if (ret < 0)
++		return ret;
++
++	if (min_uV == 0) {
++		ret = regulator_get_voltage_rdev(rdev);
++		if (ret < 0)
++			return ret;
++		min_uV = ret;
++	}
++
++	ret = regulator_check_voltage(rdev, &min_uV, &max_uV);
++	if (ret < 0)
++		return ret;
++
++	/*
++	 * If we're asked to set a voltage less than VSRAM min_uV, set
++	 * the minimum allowed voltage on VSRAM, as in this case it is
++	 * safe to ignore the max_spread parameter.
++	 */
++	vsram_target_min_uV = max(vsram_min_uV, min_uV + max_spread);
++	vsram_target_max_uV = min(vsram_max_uV, vsram_target_min_uV + max_spread);
++
++	/* Make sure we're not out of range */
++	vsram_target_min_uV = min(vsram_target_min_uV, vsram_max_uV);
++
++	pr_debug("Setting voltage %d-%duV on %s (minuV %d)\n",
++		 vsram_target_min_uV, vsram_target_max_uV,
++		 rdev_get_name(mrc->vsram_rdev), min_uV);
++
++	ret = regulator_set_voltage_rdev(mrc->vsram_rdev, vsram_target_min_uV,
++					 vsram_target_max_uV, state);
++	if (ret)
++		return ret;
++
++	/* The sram voltage is now balanced: update the target vreg voltage */
++	return regulator_do_balance_voltage(rdev, state, true);
++}
++
++static int mediatek_regulator_attach(struct regulator_coupler *coupler,
++				     struct regulator_dev *rdev)
++{
++	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
++	const char *rdev_name = rdev_get_name(rdev);
++
++	/*
++	 * If we're getting a coupling of more than two regulators here and
++	 * this means that this is surely not a GPU<->SRAM couple: in that
++	 * case, we may want to use another coupler implementation, if any,
++	 * or the generic one: the regulator core will keep walking through
++	 * the list of couplers when any .attach_regulator() cb returns 1.
++	 */
++	if (rdev->coupling_desc.n_coupled > 2)
++		return 1;
++
++	if (strstr(rdev_name, "sram")) {
++		if (mrc->vsram_rdev)
++			return -EINVAL;
++		mrc->vsram_rdev = rdev;
++	} else if (!strstr(rdev_name, "vgpu") && !strstr(rdev_name, "Vgpu")) {
++		return 1;
++	}
++
++	return 0;
++}
++
++static int mediatek_regulator_detach(struct regulator_coupler *coupler,
++				     struct regulator_dev *rdev)
++{
++	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
++
++	if (rdev == mrc->vsram_rdev)
++		mrc->vsram_rdev = NULL;
++
++	return 0;
++}
++
++static struct mediatek_regulator_coupler mediatek_coupler = {
++	.coupler = {
++		.attach_regulator = mediatek_regulator_attach,
++		.detach_regulator = mediatek_regulator_detach,
++		.balance_voltage = mediatek_regulator_balance_voltage,
++	},
++};
++
++static int mediatek_regulator_coupler_init(void)
++{
++	if (!of_machine_is_compatible("mediatek,mt8183") &&
++	    !of_machine_is_compatible("mediatek,mt8186") &&
++	    !of_machine_is_compatible("mediatek,mt8192"))
++		return 0;
++
++	return regulator_coupler_register(&mediatek_coupler.coupler);
++}
++arch_initcall(mediatek_regulator_coupler_init);
++
++MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
++MODULE_DESCRIPTION("MediaTek Regulator Coupler driver");
++MODULE_LICENSE("GPL");
+-- 
+2.37.2
+
 
