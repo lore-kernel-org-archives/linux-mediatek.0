@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0540AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:44:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926A0C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6wRO0Ski3oiIKQo95bwnitVyc5U6gggiNVVs48nENCY=; b=p2EXNbOxKOx5/57h7le+tFRo09
-	2yx1qQFzPmeejWRIFL9keXONIj8A5qh/1sDidugCOqmiwijdHj7HGVI65nxEXQdwK4YFDwcW0C4k4
-	cPMQxKGoVQgcPDuwOmu1ie5qLY0s5NqH9RXOQUwtyotflpTBg9JGe0lqBtuW8QzzViV6IJSP/N3kC
-	MXipMIwCt/V9kJjhroefElAMhWYJaoPn0UT6c+95P9u4WS+ImYnJU49NJi6lCMms/5HEMw5M+keJs
-	5Y9BHOotuZZlquiOPgSa6XZxWYVxGtQsZR8cApl9FORZjFrDXnWUB5+k/q1Sf+BEfeNTtbMpp2L7F
-	FsAcK9Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pgsPdAVsWAGQ8DTV+PVJ9sF2aJYyJ9DYvgdrKtsZc18=; b=fQ6d5mxV2IH47wEsq1wI+JZ3qx
+	8n6cuc1XNEmNRrs8MVa6Zkelr94+1YNNOeoUFJJEqM3HV+udsJCSN65ZFo/9zxu7f+zu+sNUq1q8y
+	/AyiFKYft7WPTHE0UkV6DD1u+AR0WyP3iWj9mdM6eWHJSY08noBgNpkPENGppHjBNdCKpImDySQlt
+	1jbTbeOd2cfhGO+z3N0iYNMMg+XuQXLPEM8f+VQNouQa4Gwh9HNHYLV50NhgAJHCyurbEVvssL53s
+	+pNm1YpXArOJuqzL/yMldjZzKUsLbKStbdGnaPio/kQAIYDAYaJC/Z9cdUOowJeSc9GNnOO+KPrrd
+	F5PkpNOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogQEL-002Ojr-Kg; Thu, 06 Oct 2022 12:44:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ogQJF-002Qmh-2g; Thu, 06 Oct 2022 12:49:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogQE9-002Ogq-Lp; Thu, 06 Oct 2022 12:43:51 +0000
-X-UUID: 2702bb6605574642a4fbe6b7014dc865-20221006
+	id 1ogQJB-002Qjz-GG; Thu, 06 Oct 2022 12:49:04 +0000
+X-UUID: 86f5dffa9593400bb4164378549667ec-20221006
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=6wRO0Ski3oiIKQo95bwnitVyc5U6gggiNVVs48nENCY=;
-	b=EjtVCQVYf2doyl76KIN9MJg6E0Pax5ORPmseaUWcHAvgzsVZ4vRqAaTnKWq3MDjAOtLz9i0OLkFP66CrlhiYLbaGJRfVNc0QkpIwqkE73H3Jskmn1nCmWjVo4wzn0yRgPmIqcRpmJFgxpdHeP0flNf5US/TMD4TxcLeWPgAttVo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pgsPdAVsWAGQ8DTV+PVJ9sF2aJYyJ9DYvgdrKtsZc18=;
+	b=mZxlBlEtkefrqWpl4X9PJgfY0gZGCcVvjlxka+iJkN6+S/WmF2yvbUQQj4L8kF1sb3WfsrVqmp428C+qGRDgwn1/Zf329/0Hcq+QNlIgzqUbJztmL/zH68x8bSK0UvhPK5PUbiNgwv5iw/l+pN6PaPFbe9dx4LucWv7N3RqO7pg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:9eb9bd17-ce9e-4db7-86fd-8f15db77c3f8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:9665bab8-daef-48a8-8c50-40026d6a74c2,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:355c0ac9-f751-48c3-952a-22b0dff80248,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:d9bd1ce1-2948-402a-a6e4-b5d31fe11eb7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 2702bb6605574642a4fbe6b7014dc865-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <roger.lu@mediatek.com>)
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 86f5dffa9593400bb4164378549667ec-20221006
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1276565488; Thu, 06 Oct 2022 05:43:46 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1816768936; Thu, 06 Oct 2022 05:48:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 6 Oct 2022 19:43:10 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 6 Oct 2022 19:43:10 +0800
-Message-ID: <3540598ae0383394e0ebdc684a048fdfb94d2810.camel@mediatek.com>
-Subject: Re: [PATCH 4/8] soc: mediatek: mtk-svs: delete superfluous platform
- data entries
-From: Roger Lu <roger.lu@mediatek.com>
-To: <matthias.bgg@kernel.org>, <jia-wei.chang@mediatek.com>
-CC: <nfraprado@collabora.com>, <khilman@baylibre.com>,
+ 15.2.792.15; Thu, 6 Oct 2022 20:07:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 6 Oct 2022 20:07:20 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	<nfraprado@collabora.com>
+CC: <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<angelogioacchino.delregno@collabora.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-Date: Thu, 6 Oct 2022 19:43:10 +0800
-In-Reply-To: <20220928155519.31977-5-matthias.bgg@kernel.org>
-References: <20220928155519.31977-1-matthias.bgg@kernel.org>
-	 <20220928155519.31977-5-matthias.bgg@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH 5/8] dt-bindings: watchdog: mediatek: Convert mtk-wdt to json-schema
+Date: Thu, 6 Oct 2022 20:07:12 +0800
+Message-ID: <20221006120715.24815-6-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
+References: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_054349_753381_75D362A1 
-X-CRM114-Status: GOOD (  22.35  )
+X-CRM114-CacheID: sfid-20221006_054901_603836_8506D133 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,156 +83,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias Sir,
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Wed, 2022-09-28 at 17:55 +0200, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> The platform name and efuse parsing function pointer are only used while
-> probing the device. Use them from the svs_platform_data struct instead.
-> 
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
-> 
->  drivers/soc/mediatek/mtk-svs.c | 22 ++++++++++++----------
->  1 file changed, 12 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 8342627f8dea..482cc8d7e7cf 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -311,14 +311,12 @@ static const u32 svs_regs_v2[] = {
->  
->  /**
->   * struct svs_platform - svs platform control
-> - * @name: svs platform name
->   * @base: svs platform register base
->   * @dev: svs platform device
->   * @main_clk: main clock for svs bank
->   * @pbank: svs bank pointer needing to be protected by spin_lock section
->   * @banks: svs banks that svs platform supports
->   * @rst: svs platform reset control
-> - * @efuse_parsing: svs platform efuse parsing function pointer
->   * @efuse_max: total number of svs efuse
->   * @tefuse_max: total number of thermal efuse
->   * @regs: svs platform registers map
-> @@ -327,14 +325,12 @@ static const u32 svs_regs_v2[] = {
->   * @tefuse: thermal efuse data received from NVMEM framework
->   */
->  struct svs_platform {
-> -	char *name;
->  	void __iomem *base;
->  	struct device *dev;
->  	struct clk *main_clk;
->  	struct svs_bank *pbank;
->  	struct svs_bank *banks;
->  	struct reset_control *rst;
-> -	bool (*efuse_parsing)(struct svs_platform *svsp);
->  	size_t efuse_max;
->  	size_t tefuse_max;
->  	const u32 *regs;
-> @@ -2009,7 +2005,7 @@ static bool svs_is_efuse_data_correct(struct
-> svs_platform *svsp)
->  	svsp->efuse_max /= sizeof(u32);
->  	nvmem_cell_put(cell);
->  
-> -	return svsp->efuse_parsing(svsp);
-> +	return true;
->  }
+Convert the MediaTek watchdog bindings to schema.
 
-Based on the current coding design, I think this function can be removed. We can
-rename/refactor `svs_thermal_efuse_get_data()` to `svs_get_efuse_data()` as
-below. Is this acceptable? Thanks.
+The original binding only had 4 without a fallback but there is a reset
+controller on the "mediatek,mt7986-wdt", "mediatek,mt8186-wdt" and
+"mediatek,mt8195-wdt". Since there is no reset controller for the mt6589,
+we remove "mediatek,mt6589-wdt" as a fallback.
 
-int svs_get_efuse_data(struct svs_platform *svsp, const char *nvmem_cell_name)
-{
-        struct nvmem_cell *cell;
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ .../bindings/watchdog/mediatek,mtk-wdt.yaml   | 78 +++++++++++++++++++
+ .../devicetree/bindings/watchdog/mtk-wdt.txt  | 42 ----------
+ 2 files changed, 78 insertions(+), 42 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+ delete mode 100644 Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
 
-        /* Thermal efuse parsing */
-        cell = nvmem_cell_get(svsp->dev, nvmem_cell_name);
-        if (IS_ERR_OR_NULL(cell)) {
-                dev_err(svsp->dev, "no \"%s\"? %ld\n", nvmem_cell_name,
-PTR_ERR(cell));
-                return PTR_ERR(cell);
-        }
-
-        svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-        if (IS_ERR(svsp->tefuse)) {
-                dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-                        PTR_ERR(svsp->tefuse));
-                nvmem_cell_put(cell);
-                return PTR_ERR(svsp->tefuse);
-        }
-
-        svsp->tefuse_max /= sizeof(u32);
-        nvmem_cell_put(cell);
-
-        return 0;
-}
-
->  
->  static struct device *svs_get_subsys_device(struct svs_platform *svsp,
-> @@ -2338,9 +2334,7 @@ static int svs_probe(struct platform_device *pdev)
->  		return -ENOMEM;
->  
->  	svsp->dev = &pdev->dev;
-> -	svsp->name = svsp_data->name;
->  	svsp->banks = svsp_data->banks;
-> -	svsp->efuse_parsing = svsp_data->efuse_parsing;
->  	svsp->regs = svsp_data->regs;
->  	svsp->bank_max = svsp_data->bank_max;
->  
-> @@ -2351,6 +2345,12 @@ static int svs_probe(struct platform_device *pdev)
->  	if (!svs_is_efuse_data_correct(svsp)) {
->  		dev_notice(svsp->dev, "efuse data isn't correct\n");
->  		ret = -EPERM;
-> +		goto svs_probe_free_efuse;
-> +	}
-> +
-
-Remove `svs_is_efuse_data_correct()` and add below get-efuse-data function.
-
-	ret = svs_get_efuse_data(svsp, "svs-calibration-data");
-	if (ret)
-		goto svs_probe_free_efuse;
-
-> +	if (!svsp_data->efuse_parsing(svsp)) {
-> +		dev_notice(svsp->dev, "efuse data parsing failed\n");
-> +		ret = -EPERM;
->  		goto svs_probe_free_resource;
->  	}
->  
-> @@ -2367,7 +2367,7 @@ static int svs_probe(struct platform_device *pdev)
->  	}
->  
->  	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> -					IRQF_ONESHOT, svsp->name, svsp);
-> +					IRQF_ONESHOT, svsp_data->name, svsp);
->  	if (ret) {
->  		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
->  			svsp_irq, ret);
-> @@ -2416,11 +2416,13 @@ static int svs_probe(struct platform_device *pdev)
->  	clk_disable_unprepare(svsp->main_clk);
->  
->  svs_probe_free_resource:
-
-For current coding design, I suggest we rename the goto-label to
-`svs_probe_free_tefuse` to identify the resource we free.
-
-> -	if (!IS_ERR_OR_NULL(svsp->efuse))
-> -		kfree(svsp->efuse);
->  	if (!IS_ERR_OR_NULL(svsp->tefuse))
->  		kfree(svsp->tefuse);
->  
-> +svs_probe_free_efuse:
-> +	if (!IS_ERR_OR_NULL(svsp->efuse))
-> +		kfree(svsp->efuse);
-> +
->  	return ret;
->  }
->  
-
-Sincerely,
-Roger Lu.
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+new file mode 100644
+index 000000000000..34c634d3eb67
+--- /dev/null
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/watchdog/mediatek,mtk-wdt.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SoCs Watchdog timer
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description:
++  The watchdog supports a pre-timeout interrupt that fires
++  timeout-sec/2 before the expiry.
++
++allOf:
++  - $ref: watchdog.yaml#
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt2712-wdt
++              - mediatek,mt6589-wdt
++              - mediatek,mt7986-wdt
++              - mediatek,mt8183-wdt
++              - mediatek,mt8186-wdt
++              - mediatek,mt8192-wdt
++              - mediatek,mt8195-wdt
++      - items:
++          - enum:
++              - mediatek,mt2701-wdt
++              - mediatek,mt6582-wdt
++              - mediatek,mt6797-wdt
++              - mediatek,mt7622-wdt
++              - mediatek,mt7623-wdt
++              - mediatek,mt7629-wdt
++              - mediatek,mt8516-wdt
++          - const: mediatek,mt6589-wdt
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    items:
++      - description: Watchdog pre-timeout (bark) interrupt
++
++  mediatek,disable-extrst:
++    description: Disable sending output reset signal
++    type: boolean
++
++  '#reset-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        watchdog: watchdog@10007000 {
++            compatible = "mediatek,mt8183-wdt";
++            reg = <0 0x10007000 0 0x100>;
++            interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
++            mediatek,disable-extrst;
++            timeout-sec = <10>;
++            #reset-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+deleted file mode 100644
+index 762c62e428ef..000000000000
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ /dev/null
+@@ -1,42 +0,0 @@
+-Mediatek SoCs Watchdog timer
+-
+-The watchdog supports a pre-timeout interrupt that fires timeout-sec/2
+-before the expiry.
+-
+-Required properties:
+-
+-- compatible should contain:
+-	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
+-	"mediatek,mt2712-wdt": for MT2712
+-	"mediatek,mt6582-wdt", "mediatek,mt6589-wdt": for MT6582
+-	"mediatek,mt6589-wdt": for MT6589
+-	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
+-	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+-	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+-	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+-	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
+-	"mediatek,mt8183-wdt": for MT8183
+-	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
+-	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+-	"mediatek,mt8192-wdt": for MT8192
+-	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
+-
+-- reg : Specifies base physical address and size of the registers.
+-
+-Optional properties:
+-- mediatek,disable-extrst: disable send output reset signal
+-- interrupts: Watchdog pre-timeout (bark) interrupt.
+-- timeout-sec: contains the watchdog timeout in seconds.
+-- #reset-cells: Should be 1.
+-
+-Example:
+-
+-watchdog: watchdog@10007000 {
+-	compatible = "mediatek,mt8183-wdt",
+-		     "mediatek,mt6589-wdt";
+-	mediatek,disable-extrst;
+-	reg = <0 0x10007000 0 0x100>;
+-	interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
+-	timeout-sec = <10>;
+-	#reset-cells = <1>;
+-};
+-- 
+2.18.0
 
 
