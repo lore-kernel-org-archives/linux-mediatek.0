@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A32C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 16:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD664C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 18:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oyQcrxZYCAvggulovd4FRHdXOU2WjZQVKRd7NG1+zj8=; b=vOIren6PIYBqGQe1tamcJhBRUj
-	jjP/7+iP3jEQ8df2LtSBJ+FrPfDmfDOu8mJ0f1XEb8BSOF+ei5itxB/fP4f136+IgCfu/AeSXywHJ
-	TRdG2m267Zy47uc81Mj4cLMvfI0H10iJ9FZPqwp0HpQfqd0Zc9ezCZXPogamiqEIQQ0vJUJgzZblE
-	+NUX62jA13yShGCQ6A4CmXgNGjdb/vnVRbYK62yFG0u73h+4/cASteeJ1yshNod/vNKPPXeaoL5cr
-	h+OuKUtVrdjnPT2RbgyPCjhSLbvyzxGZUNdIdxEJt9w1c9O6uSTIbX/fVmRUWqYJMzDipgpbiH8P6
-	TJ+noQKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DPvMVkgPdsNf80rz7k0a5WRJw4bKxleUIlz2BgflFH8=; b=C0id7varzzf2LThWqEVfG/d0iZ
+	mZY2DEPa8uSnBUrLzPbx+eX7MM4TQcB75XjeQJySQmoBYSvQMJp2WZogQRBlZ/PtUk9SA5mf1USYK
+	KVp0Zx79hN7V2xPa/qAHfMAzHvCxgoWSHBstW7ky7L+mLIZCuG6SQ/BOEvoBAU2cTUTtTFXKvg9a+
+	8GkKfpJOtdmayOikX33g/udIzarneN5GILYYq+Lilfz58cndR0rMpl8TfDBbwuoj+9HRyDKl+Ot4X
+	1B2PQxwlT0f2K1Kt/QIS4IhgDyFUbMntRaMSAz9YqmZ5Vmjx6Az/ojuSxrCIAlnVLKvG9gxzgqD+k
+	iLHyETkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogTYA-003kHl-6e; Thu, 06 Oct 2022 16:16:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ogVNJ-004Old-4R; Thu, 06 Oct 2022 18:13:37 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogTY7-003kFR-KF
-	for linux-mediatek@lists.infradead.org; Thu, 06 Oct 2022 16:16:40 +0000
-X-UUID: e32609b8e4cf49a28a3614eb85d0d807-20221006
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oyQcrxZYCAvggulovd4FRHdXOU2WjZQVKRd7NG1+zj8=;
-	b=p8N6h9I1xEIzT+RLRfn+ixVQ/U+pJQIb1WaPlfiZNrSTmi+u5GgLCpMmeRRkcYbHOJ8TCORE0js6QNmZ1IRyfnXOJhVMJQNt+ej4cSSJdxWC4As3hUqzAHWiqqH5bj/ivSm4f5K7o6E6l2pK2vb+ACNzn8LAXN9Ew4B0Op7LNig=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:15749c87-5d1b-416e-bf01-c7058533c027,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:98e376fe-ee8c-4ff7-afe9-644435e96625,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e32609b8e4cf49a28a3614eb85d0d807-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 511452679; Thu, 06 Oct 2022 09:16:31 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 6 Oct 2022 23:15:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 6 Oct 2022 23:15:55 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v1] media: platform: mtk-mdp3: fix error handling in mdp_probe()
-Date: Thu, 6 Oct 2022 23:15:53 +0800
-Message-ID: <20221006151553.28083-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ogVN9-004OWF-3N; Thu, 06 Oct 2022 18:13:28 +0000
+Received: by mail-pl1-x636.google.com with SMTP id l1so2391569pld.13;
+        Thu, 06 Oct 2022 11:12:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DPvMVkgPdsNf80rz7k0a5WRJw4bKxleUIlz2BgflFH8=;
+        b=qiwpMb5sCiOOvdw8s4nYdgUGzTk18rO6iLScxPrheyllF+geonkIrPRddQ6cwQH4pc
+         mB31K9yGLj9S2eo7MR0SU+fSAXJ3hsUt4TXENovPuH6MdzIFYUfaq1Hj7DVs18//KA0C
+         M3g5hGc9hKHGOu0mCOG53waM9tBhEjYXP2fhISS5LvZXZhKnaoy2kIiqvVaoNDqkwEyR
+         SlWRvwgs6Syh4pSkYwYdR+4JsVyvYTop8YUKW1f15xKfWuuk9VyXUsLYcGZODsR/s6Zs
+         7zMdK6aIVUGuNgMslpPJjZ4HxeoGBhyNGFTFnrHsm10DfX2Zck2RB/TBS/n/St8xniwW
+         VQTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DPvMVkgPdsNf80rz7k0a5WRJw4bKxleUIlz2BgflFH8=;
+        b=ot5e3L3EipDgFs7mZa9TQW+5YbvnXpZ8B4q+dl6MYcDOfAC170zZN4UV9FlfN0OtZK
+         ij2EyVGXpGI7QWPhLasD0b6FUmpYid+boA1oL2qN75gaV8nvgHALmxpadtDKzIzco3nG
+         TJA2tJoYey62+71fwQNSaf8F8ecVvNPXqYf8xqjXGjFeDTamYVKqwBNuIrDu7avRF7sR
+         5ZhdTFrr6/5jiXHwU7IVU3hLJlypovTQVtJf34YsyWhHwkft2LgZEl9R6T8JlrhgwoMr
+         4rekzdBk1TGz5bcrVKJIBbu4C1j1eawRuGQUTgYaQKQY/qxZbxehVIWursXAVmB154gy
+         h4sw==
+X-Gm-Message-State: ACrzQf2rpK3oFlNktbrYualDng/DAysvGvuuGOeTs6yuHcGsUvP/thKf
+	W95PZjGHms7aj3mU2EnSiFk=
+X-Google-Smtp-Source: AMsMyM4KyrcrFHmKtPHVDrezSvqbeuuip0f3OCMsAV0JwH2L8T6IIqzdzWEOKogxHO36cFnHopaWAA==
+X-Received: by 2002:a17:90b:3b47:b0:202:d9d4:23f7 with SMTP id ot7-20020a17090b3b4700b00202d9d423f7mr11794193pjb.56.1665079975573;
+        Thu, 06 Oct 2022 11:12:55 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id w191-20020a627bc8000000b00560e5da42d5sm9068974pfc.201.2022.10.06.11.12.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Oct 2022 11:12:54 -0700 (PDT)
+Date: Thu, 6 Oct 2022 11:12:53 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>, nfraprado@collabora.com,
+	angelogioacchino.delregno@collabora.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 7/8] watchdog: mtk_wdt: Add support for MT6795 Helio X10
+ watchdog and toprgu
+Message-ID: <20221006181253.GA761987@roeck-us.net>
+References: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
+ <20221006120715.24815-8-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221006120715.24815-8-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_091639_682243_DFA304F9 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20221006_111327_185211_0E5AD546 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +96,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adjust label "err_return" order to avoid double freeing, and
-add two labels for easy traceability.
+On Thu, Oct 06, 2022 at 08:07:14PM +0800, Allen-KH Cheng wrote:
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Add support for the toprgu reset controller and watchdog for the
+> MediaTek MT6795 SoC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- .../media/platform/mediatek/mdp3/mtk-mdp3-core.c  | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index c413e59d4286..2d1f6ae9f080 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -196,27 +196,27 @@ static int mdp_probe(struct platform_device *pdev)
- 	mm_pdev = __get_pdev_by_id(pdev, MDP_INFRA_MMSYS);
- 	if (!mm_pdev) {
- 		ret = -ENODEV;
--		goto err_return;
-+		goto err_destroy_device;
- 	}
- 	mdp->mdp_mmsys = &mm_pdev->dev;
- 
- 	mm_pdev = __get_pdev_by_id(pdev, MDP_INFRA_MUTEX);
- 	if (WARN_ON(!mm_pdev)) {
- 		ret = -ENODEV;
--		goto err_return;
-+		goto err_destroy_device;
- 	}
- 	for (i = 0; i < MDP_PIPE_MAX; i++) {
- 		mdp->mdp_mutex[i] = mtk_mutex_get(&mm_pdev->dev);
- 		if (!mdp->mdp_mutex[i]) {
- 			ret = -ENODEV;
--			goto err_return;
-+			goto err_free_mutex;
- 		}
- 	}
- 
- 	ret = mdp_comp_config(mdp);
- 	if (ret) {
- 		dev_err(dev, "Failed to config mdp components\n");
--		goto err_return;
-+		goto err_free_mutex;
- 	}
- 
- 	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME, WQ_FREEZABLE, 0);
-@@ -287,11 +287,12 @@ static int mdp_probe(struct platform_device *pdev)
- 	destroy_workqueue(mdp->job_wq);
- err_deinit_comp:
- 	mdp_comp_destroy(mdp);
--err_return:
-+err_free_mutex:
- 	for (i = 0; i < MDP_PIPE_MAX; i++)
--		if (mdp)
--			mtk_mutex_put(mdp->mdp_mutex[i]);
-+		mtk_mutex_put(mdp->mdp_mutex[i]);
-+err_destroy_device:
- 	kfree(mdp);
-+err_return:
- 	dev_dbg(dev, "Errno %d\n", ret);
- 	return ret;
- }
--- 
-2.18.0
-
+> ---
+>  drivers/watchdog/mtk_wdt.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index e97787536792..5fa42b7d4b4d 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -10,6 +10,7 @@
+>   */
+>  
+>  #include <dt-bindings/reset/mt2712-resets.h>
+> +#include <dt-bindings/reset/mediatek,mt6795-resets.h>
+>  #include <dt-bindings/reset/mt7986-resets.h>
+>  #include <dt-bindings/reset/mt8183-resets.h>
+>  #include <dt-bindings/reset/mt8186-resets.h>
+> @@ -78,6 +79,10 @@ static const struct mtk_wdt_data mt2712_data = {
+>  	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+>  };
+>  
+> +static const struct mtk_wdt_data mt6795_data = {
+> +	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
+> +};
+> +
+>  static const struct mtk_wdt_data mt7986_data = {
+>  	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
+>  };
+> @@ -426,6 +431,7 @@ static int mtk_wdt_resume(struct device *dev)
+>  static const struct of_device_id mtk_wdt_dt_ids[] = {
+>  	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+>  	{ .compatible = "mediatek,mt6589-wdt" },
+> +	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
+>  	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+>  	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+>  	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
+> -- 
+> 2.18.0
+> 
 
