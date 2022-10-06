@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E191C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B727C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 12:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6vAJZH97nFCnsszkn6O/Og4SwfVVfv6A7f2tvFI9L8k=; b=Dr5fisARce5F7NrE+967rkVY8c
-	zuYgqldMnSsMwsqQcMAJRdSTopLFW7GEBtpH6JBtg0KeckcNzJOPFrt5DcTJp3wDE0f3iNtzedcD9
-	a+Ygl/+ph2swbRctwQLC7OSBpmphY9Yf8RyxoHwqQhUnz2hNk3uLRzrllq5GSulDr+lTQozi0XATe
-	+vlVSbEJ8LYqPZGbWZZJiROgS5K41jKRC1DxgAZIxq0kKmNj+ar/Ek3n7Et6BR0OQgIp/Ck9rSuDn
-	zDhZroxcyMoUorseeA3lQFYBDLUq5vl2C/XK69r5PgCth1+WoKH+9Jk8mFZcpzzWRvdBM3bmdaW7z
-	n37090YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F+ItVpsQsYklgVUHiymvIh93EUItJezlQHGjky0UkYs=; b=lesV0fK4LJyDDNZBAEErge/RRr
+	vwpgVk84fSQ+Ofo5qqAd1uC+Y37Bus+/QS6GWt9+ieftf5KmRN5iNCrftz77qNgyDn8O+FvvVZOmu
+	pXWZOz9Kby5UP9X9scX6Vz+3Sq18dCtdWXsECXYzm6Uz9jvsKbpKlB0of/7WoxK6fqZz3hkKmHipf
+	N0IxpHkHiAD6lZFzx7XIcyaGW7bb9A2Wydnarz7vEeKSH10VCjGVfdXI4LbPTG8jzRmoQnnflOLCF
+	SiI32YchfXJ0iS91bNR3j7qf6vLvBMEOdWncFehWo3tRkR92gpLww+0OgNl/cxN/NNnnabc4mrfql
+	VF3oYxRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogQ2q-002Izz-UG; Thu, 06 Oct 2022 12:32:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ogQ5L-002KD6-Ig; Thu, 06 Oct 2022 12:34:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogQ2o-002Ixk-98; Thu, 06 Oct 2022 12:32:07 +0000
-X-UUID: 86ffe5379d144e0cbd2a16cca7d9a588-20221006
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6vAJZH97nFCnsszkn6O/Og4SwfVVfv6A7f2tvFI9L8k=;
-	b=ezDBaj5eW44/ceclyZRht7zL+uO2YfPb/dGXTgA5uEkT2YGy+FoHb/cZCY8kORVmQf1Ac7uvL5R+njhl/8eHkSG0UkjLv24nzHNkvo+nziMJUwTK8sR1jwAo5qvxTi7p8RGfi8XCjLtQKLTq4T546lERTlZqHy1kLfAYZ+BHwoM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:bc096e48-6c61-45b3-b65e-aef3a7d447fd,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:41781ce1-2948-402a-a6e4-b5d31fe11eb7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 86ffe5379d144e0cbd2a16cca7d9a588-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1987574503; Thu, 06 Oct 2022 05:29:54 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 6 Oct 2022 20:07:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 6 Oct 2022 20:07:22 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	<nfraprado@collabora.com>
-CC: <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH 7/8] watchdog: mtk_wdt: Add support for MT6795 Helio X10 watchdog and toprgu
-Date: Thu, 6 Oct 2022 20:07:14 +0800
-Message-ID: <20221006120715.24815-8-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
-References: <20221006120715.24815-1-allen-kh.cheng@mediatek.com>
+	id 1ogQ4i-002Jwp-8q; Thu, 06 Oct 2022 12:34:06 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DCC9D6602301;
+	Thu,  6 Oct 2022 13:34:01 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665059642;
+	bh=qkkpSsxIMeDT9BV02FWV/AHFBaKuCtwlZphzAFH4cCk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=VEqNn94fof5Ie5QMY9/ws1jnX2t+w8B3WepGN2ReqqHvTu1tuCGr3C1tuVN/L44Tt
+	 IefnVUZahCnaLb/Yw6SuWHxXVm/PPPalZIjralwVQcDt954qmQWdSSo5v2obAR0klS
+	 FTif35BrPjVadDfbrcYit4ANdFzOybiWe61HWCCLDoSYHZ5OZ4iReEF+5epu2xXC+8
+	 rTNYuZFjk3XCBLhbExuBMufffoMehrPAuSnvWf6kiqRRsaHNhsE42CU+Bfufd65C8+
+	 gQ7lWMMLPU+OM8zMF+JgEfK/lMRSzlAFb7q6VBNbfIDzD4LtzSWDK4JqHjErf6y3vV
+	 O+YzNBdP0G6hg==
+Message-ID: <8fd7c872-fadb-5dc2-6bc1-5b59a9a3b133@collabora.com>
+Date: Thu, 6 Oct 2022 14:33:59 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of
+ MediaTek frequency hopping
+Content-Language: en-US
+To: =?UTF-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?S3Vhbi1Ic2luIExlZSAo5p2O5Yag5pawKQ==?=
+ <Kuan-Hsin.Lee@mediatek.com>, "sboyd@kernel.org" <sboyd@kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?WXUtQ2hhbmcgV2FuZyAo546L54Wc5qifKQ==?=
+ <Yu-Chang.Wang@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ =?UTF-8?B?RWR3YXJkLUpXIFlhbmcgKOaliuWTsue2rSk=?=
+ <Edward-JW.Yang@mediatek.com>
+References: <20220929114624.16809-1-johnson.wang@mediatek.com>
+ <20220929114624.16809-3-johnson.wang@mediatek.com>
+ <ed723cb2-ba79-55d7-7869-abf153e4af0a@collabora.com>
+ <20220930190703.GA657929-robh@kernel.org>
+ <5b84c81d0d7f71bb83fcbef860433e4704ae5c72.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <5b84c81d0d7f71bb83fcbef860433e4704ae5c72.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_053206_366029_89178741 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20221006_053404_648951_1B9D9C6D 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,50 +92,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 06/10/22 13:23, Johnson Wang (王聖鑫) ha scritto:
+> On Fri, 2022-09-30 at 14:07 -0500, Rob Herring wrote:
+>> On Thu, Sep 29, 2022 at 03:07:49PM +0200, AngeloGioacchino Del Regno
+>> wrote:
+>>> Il 29/09/22 13:46, Johnson Wang ha scritto:
+>>>> Add the new binding documentation for MediaTek frequency hopping
+>>>> and spread spectrum clocking control.
+>>>>
+>>>> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>>> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+>>>> ---
+>>>>    .../arm/mediatek/mediatek,mt8186-fhctl.yaml   | 53
+>>>> +++++++++++++++++++
+>>>>    1 file changed, 53 insertions(+)
+>>>>    create mode 100644
+>>>> Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+>>>> fhctl.yaml
+>>>>
+>>>> diff --git
+>>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+>>>> fhctl.yaml
+>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+>>>> fhctl.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..258dff7ce6bc
+>>>> --- /dev/null
+>>>> +++
+>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-
+>>>> fhctl.yaml
+>>>> @@ -0,0 +1,53 @@
+>>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id:
+>>>> https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-fhctl.yaml*__;Iw!!CTRNKA9wMg0ARbw!xVt73f8PaQKph8n0ffGHHmQIxdzooUtGr0xDNVqy_6V0vwcs5k-FLrmkB3PZupSu1ciC$
+>>>>   
+>>>> +$schema:
+>>>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xVt73f8PaQKph8n0ffGHHmQIxdzooUtGr0xDNVqy_6V0vwcs5k-FLrmkB3PZulXwBACk$
+>>>>   
+>>>> +
+>>>> +title: MediaTek frequency hopping and spread spectrum clocking
+>>>> control
+>>>> +
+>>>> +maintainers:
+>>>> +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>>> +
+>>>> +description: |
+>>>> +  Frequency hopping control (FHCTL) is a piece of hardware that
+>>>> control
+>>>> +  some PLLs to adopt "hopping" mechanism to adjust their
+>>>> frequency.
+>>>> +  Spread spectrum clocking (SSC) is another function provided by
+>>>> this hardware.
+>>>> +
+>>>> +properties:
+>>>> +  compatible:
+>>>> +    const: mediatek,mt8186-fhctl
+>>>> +
+>>>> +  reg:
+>>>> +    maxItems: 1
+>>>> +
+>>>> +  clocks:
+>>>> +    description: Phandles of the PLL with FHCTL hardware
+>>>> capability.
+>>>> +    minItems: 1
+>>>> +    maxItems: 30
+>>>> +
+>>>> +  mediatek,hopping-ssc-percent:
+>>>> +    description: The percentage of spread spectrum clocking for
+>>>> one PLL.
+>>>> +    minItems: 1
+>>>> +    maxItems: 30
+>>>> +    items:
+>>>> +      default: 0
+>>>> +      minimum: 0
+>>>> +      maximum: 8
+>>>> +
+>>>> +required:
+>>>> +  - compatible
+>>>> +  - reg
+>>>> +  - clocks
+>>>> +
+>>>> +additionalProperties: false
+>>>> +
+>>>> +examples:
+>>>> +  - |
+>>>> +    #include <dt-bindings/clock/mt8186-clk.h>
+>>>> +    fhctl: fhctl@1000ce00 {
+>>>> +        compatible = "mediatek,mt8186-fhctl";
+>>>> +        reg = <0x1000c000 0xe00>;
+>>>> +        clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
+>>>> +        mediatek,hopping-ssc-percent = <3>;
+>>>> +    };
+>>>
+>>>
+>>> .... a more realistic example:
+>>
+>> One or 2 cells is really outside the scope of the binding as either
+>> is
+>> valid. If the parent bus only has 32-bits of address space, there's
+>> little reason to use 2 cells.
+>>
+> 
+> Hi Rob,
+> 
+> Thanks for the explanation.
+> 
+> Then I will keep this example the same in the next version.
 
-Add support for the toprgu reset controller and watchdog for the
-MediaTek MT6795 SoC.
+That was just to have it 1:1 with how it'll be written in the devicetree....
+....in any case, Johnson, there's a discrepancy in the iospace:
+1000ce00 vs 0c1000c000 - that has to be fixed anyway.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- drivers/watchdog/mtk_wdt.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Cheers,
+Angelo
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index e97787536792..5fa42b7d4b4d 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include <dt-bindings/reset/mt2712-resets.h>
-+#include <dt-bindings/reset/mediatek,mt6795-resets.h>
- #include <dt-bindings/reset/mt7986-resets.h>
- #include <dt-bindings/reset/mt8183-resets.h>
- #include <dt-bindings/reset/mt8186-resets.h>
-@@ -78,6 +79,10 @@ static const struct mtk_wdt_data mt2712_data = {
- 	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
- };
- 
-+static const struct mtk_wdt_data mt6795_data = {
-+	.toprgu_sw_rst_num = MT6795_TOPRGU_SW_RST_NUM,
-+};
-+
- static const struct mtk_wdt_data mt7986_data = {
- 	.toprgu_sw_rst_num = MT7986_TOPRGU_SW_RST_NUM,
- };
-@@ -426,6 +431,7 @@ static int mtk_wdt_resume(struct device *dev)
- static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
- 	{ .compatible = "mediatek,mt6589-wdt" },
-+	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
- 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
--- 
-2.18.0
+> 
+> BRs,
+> Johnson Wang
+>>>
+>>>      #include <dt-bindings/clock/mt8186-clk.h>
+>>>
+>>>      soc {
+>>>          #address-cells = <2>;
+>>>          #size-cells = <2>;
+>>>
+>>>          fhctl: fhctl@1000ce00 {
+>>>              compatible = "mediatek,mt8186-fhctl";
+>>>              reg = <0 0x1000c000 0 0xe00>;
+>>>              clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
+>>>              mediatek,hopping-ssc-percent = <3>;
+>>>          };
+>>>      };
+>>>
+>>> After which...
+>>>
+>>> Reviewed-by: AngeloGioacchino Del Regno <
+>>> angelogioacchino.delregno@collabora.com>
+>>>
 
 
