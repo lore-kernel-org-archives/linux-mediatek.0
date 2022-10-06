@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C202DC433FE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F86C433F5
 	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 04:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U/TQbV5m104HfRcT9S9HCCZ0p5prmyu9kaPPLbaRReM=; b=nm7LqLHD0JV0+LYZTFwHoPdx/T
-	ucoLkw7PXfQxtmEtz+hhgol6d34Bzt1/yOHMWG5yTERfXoFrTu5xlLDfXodGiC3BlVIgxt6pAu/Ip
-	Nmb/SXUNgHosGjHSMUSe/6T+Q189WIo/FneM8uFPpseDtNTpqUV40IRcYajiWv6jXEDCfs8HTeK0b
-	GgVUpEBJ7bFBDUsPeeU8pojRWm2AK8ZYTzPdccsyuHdyobP9Ihn3iBL+ujbMkf6a6iYZyrhY1Q+Fw
-	9CDgltzcjDz+APS3KDDqtbbTst4hMI1d70GbC8+F8t4JX28OZ0c0/fVSe2yWnZbRdofxWhUDpgsYQ
-	+gBKDKMw==;
+	bh=oeUlVgx+QgZwWz9wCjYV71PSLvTf5NrW0pJ9W294SgA=; b=n9SBms3q00F+XlIFGHDFNpuAwA
+	/1zmfc4SDrMDP9BZE5xULtR3xrm5HQNF1Bd6xtfF+vtYCzhvNjvq/oBllJJmLtkapLnR70snoIHZO
+	SfPeclrDwVkcd/6ksg+bVBK+ZfJyru0Gdi9y+38dH8yW4ZROgGs1qHfFTSImJuyjhVJzhuhp8ww+D
+	3qjVYrbu2HNfeX2XBTvyBTcaSb65HoDcN7HXNh1sWq5tFnovdyJjxoLreitsB/v9tkQzZIexWsoWw
+	Mga3pG40YOxa2C9t8GBb28lECozu3pHv/ZWLv03cpRBUe22rfmalr6OeNoatwNBR4UgUqRZvoWaTA
+	Ruv5Vs1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogIbu-00HNux-0Z; Thu, 06 Oct 2022 04:35:50 +0000
+	id 1ogIbt-00HNuj-CI; Thu, 06 Oct 2022 04:35:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogIbq-00HNsN-14; Thu, 06 Oct 2022 04:35:47 +0000
-X-UUID: c283cbee9a8e430c9d76e8c214cfaca7-20221005
+	id 1ogIbq-00HNsP-5K; Thu, 06 Oct 2022 04:35:47 +0000
+X-UUID: c6a18642edf046c3a38581fd1712a9e1-20221005
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=U/TQbV5m104HfRcT9S9HCCZ0p5prmyu9kaPPLbaRReM=;
-	b=ORKzjQc3lUBmt1dwt0lVvyeLPzGA83TML3T762iU+iGFMiQZWmhNTdgaJ9O4+H2QY7AQE6P2hk/Zh8sLAYYAq8RbLGXnwZIinJvOPKmhN2zFOIJTQEpUTuHbiHqgg4xnttVxj3aMNjTkbVSV2SXVt2nEmtgPGDfjqY6YeH4BSKI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:7f52a57b-00f0-4e65-acc0-62fea2b126da,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.11,REQID:7f52a57b-00f0-4e65-acc0-62fea2b126da,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:39a5ff1,CLOUDID:cf27acb8-daef-48a8-8c50-40026d6a74c2,B
-	ulkID:221006123530RR69JIBD,BulkQuantity:1,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: c283cbee9a8e430c9d76e8c214cfaca7-20221005
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oeUlVgx+QgZwWz9wCjYV71PSLvTf5NrW0pJ9W294SgA=;
+	b=SlfHEHHwaCAPwhYdq4R97XUehV+hyssq9Bj/yxW6tGK6Y/ZCrwlg8pPl1IaACNrFnsXveEcI91Pkr08xG+20Ws2TqtqJ/HG6R/fYadivcv+g9YgnlRPtvfa3wbu+dC3+TMDo00Qr2bNdh9CjqL5kRr/tz28UGmX6rGrY/8fYbHM=;
+X-CID-P-RULE: Spam_GS6885AD
+X-CID-O-INFO: VERSION:1.1.11,REQID:1714fd6a-6732-49d0-a46b-e5c3c2b30b72,IP:0,U
+	RL:0,TC:0,Content:59,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS6885AD,AC
+	TION:quarantine,TS:159
+X-CID-INFO: VERSION:1.1.11,REQID:1714fd6a-6732-49d0-a46b-e5c3c2b30b72,IP:0,URL
+	:0,TC:0,Content:59,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_US65DF41,ACTI
+	ON:quarantine,TS:159
+X-CID-META: VersionHash:39a5ff1,CLOUDID:a0eaab85-5312-4339-9a65-dc27c4b243b8,B
+	ulkID:221006123502A2191ENS,BulkQuantity:2,Recheck:0,SF:38|28|17|19|48|801,
+	TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: c6a18642edf046c3a38581fd1712a9e1-20221005
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <yongqiang.niu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1889882058; Wed, 05 Oct 2022 21:35:37 -0700
+	with ESMTP id 1039781455; Wed, 05 Oct 2022 21:35:35 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 6 Oct 2022 12:35:00 +0800
+ Thu, 6 Oct 2022 12:34:59 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 6 Oct 2022 12:35:00 +0800
+ Transport; Thu, 6 Oct 2022 12:34:58 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
 CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
@@ -57,9 +57,9 @@ CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
 	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v9, 3/4] mailbox: mtk-cmdq: add gce ddr enable support flow
-Date: Thu, 6 Oct 2022 12:34:55 +0800
-Message-ID: <20221006043456.8754-4-yongqiang.niu@mediatek.com>
+Subject: [PATCH v9, 1/4] mailbox: mtk-cmdq: Use GCE_CTRL_BY_SW definition instead of number
+Date: Thu, 6 Oct 2022 12:34:53 +0800
+Message-ID: <20221006043456.8754-2-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221006043456.8754-1-yongqiang.niu@mediatek.com>
 References: <20221006043456.8754-1-yongqiang.niu@mediatek.com>
@@ -68,8 +68,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_213546_097483_0AD5ABA4 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20221005_213546_223304_0137CF74 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,79 +84,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add gce ddr enable control flow when gce suspend/resume
-
-when all cmdq instruction task has been processed done,
-we need set this gce ddr enable to disable status to tell
-cmdq hardware gce there is none task need process, and the hardware
-can go into idle mode and no access ddr anymore, then the spm can go
-into suspend.
-
-the original issue is gce still access ddr when cmdq suspend function
-call, but there is no task run.
-so, we need control gce access ddr with this flow.
-when cmdq suspend function, there is no task need process, we can
-disable gce access ddr, to make sure system go into suspend success.
+Use GCE_CTRL_BY_SW definition instead of number
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/mailbox/mtk-cmdq-mailbox.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 04eb44d89119..2db82ff838ed 100644
+index 9465f9081515..c3cb24f51699 100644
 --- a/drivers/mailbox/mtk-cmdq-mailbox.c
 +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -94,6 +94,18 @@ struct gce_plat {
- 	u32 gce_num;
- };
+@@ -38,6 +38,7 @@
+ #define CMDQ_THR_PRIORITY		0x40
  
-+static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
-+{
-+	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-+
-+	if (enable)
-+		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-+	else
+ #define GCE_GCTL_VALUE			0x48
++#define GCE_CTRL_BY_SW				GENMASK(2, 0)
+ 
+ #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
+ #define CMDQ_THR_ENABLED		0x1
+@@ -129,7 +130,8 @@ static void cmdq_init(struct cmdq *cmdq)
+ 
+ 	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
+ 	if (cmdq->control_by_sw)
+-		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
 +		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
 +
-+	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-+}
-+
- u8 cmdq_get_shift_pa(struct mbox_chan *chan)
- {
- 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
-@@ -319,6 +331,9 @@ static int cmdq_suspend(struct device *dev)
- 	if (task_running)
- 		dev_warn(dev, "exist running task(s) in suspend\n");
- 
-+	if (cmdq->sw_ddr_en)
-+		cmdq_sw_ddr_enable(cmdq, false);
-+
- 	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
- 
- 	return 0;
-@@ -330,6 +345,10 @@ static int cmdq_resume(struct device *dev)
- 
- 	WARN_ON(clk_bulk_prepare(cmdq->gce_num, cmdq->clocks));
- 	cmdq->suspended = false;
-+
-+	if (cmdq->sw_ddr_en)
-+		cmdq_sw_ddr_enable(cmdq, true);
-+
- 	return 0;
- }
- 
-@@ -337,6 +356,9 @@ static int cmdq_remove(struct platform_device *pdev)
- {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
- 
-+	if (cmdq->sw_ddr_en)
-+		cmdq_sw_ddr_enable(cmdq, false);
-+
- 	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
- 	return 0;
- }
+ 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
+ 	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
+ 		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
 -- 
 2.25.1
 
