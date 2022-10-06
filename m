@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B03C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 14:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 929CEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 15:13:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=97WAAh8OYbPwE1VraZizCnXFTwIUHTAOrn+MgxKsawo=; b=uUlr59hCOgY6/Qe/jeZ1i5G2Qg
-	G5gOXhq135CWOF7P6XswF1pha+1lK5mxh+L+aBUGQvz9L6jciXyL9DkZh1guaXX+vZVBA/ekQp871
-	cxux1cDs3rDNDlXVOBxvYcTz3ZXzwPx7t7rrX/h2otIE33qZvpB3tGiW0OA7Vfsfu10OorKSi+f8m
-	n4/HcDVxB3kWGFqQblk69FYWi1rimzbjaJl8Xk1ugLOPy0UhQ/ws7HnHledC21Y340VrdZaZhjoio
-	Xug+BY9eX2XhpJqlcputx0LB0bgDkb5gjlA/dLKcH6atVg+dbFhx4rtTqTKsJCOcUNbRlDUYLhCgu
-	tH8siB+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XIEKHeBnDpf8qnQLc78wkKjbYdk1bbgIcbqYREQemf4=; b=TJPAtIKTQugLejE7F74ocAh87S
+	q6mIXI5vmgvE4ub9NwUo8fUyzfqFfy+pbxDR2Dhr4vMvrVVnLGGmYKMFE/pBusxExbnpEQ6rbw/Qw
+	obZakPfnDzezZ6qAdIk89sFyqQCp7tH8tpXGG6kDo8T96FHV4TqqdsprDT63fFc9O4XQ+mVtSSL+Q
+	gG/Qho94qyLO5PYrIW7ekQVDTRT7bThIZXIOrt3ffhnD85Hf7EEgDGxPO9FSmUQL/CvBUU8DuT4jn
+	zwWkLHT5Ch+X+EIyHtPgFFlxZsdX+503XvqPCNqIO6/wrNSF2pBS7/AvyOoQxLD3A0+u3UwrnnV9M
+	DJZn5mdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogSH9-0039YW-DI; Thu, 06 Oct 2022 14:55:03 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ogSYp-003GNE-Qd; Thu, 06 Oct 2022 15:13:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogSGx-0039UF-Rc; Thu, 06 Oct 2022 14:54:53 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DC2A7660230B;
-	Thu,  6 Oct 2022 15:54:44 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665068085;
-	bh=IQCnEzZigQHrzB+nUt6kW9RUJVaUj1MUSMnLbLmGB0E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MFT/RB+BGh/FNY5GSkl5jKp9sP9xwE84tbkDIOznCxPf+FMu2zIXC/XDwxCXoFQL4
-	 Rj/Ks/ayPrkbV+sZvxmJx3TmX8M9Pmt/hn73r1si5bLJlhhBN8RAluuFResJGsb9cO
-	 3xQ3segLKiVnCr9/iPon1OvfkZuz32JitZ7y53uznY7vd8qIy89mDVQ3nNqIUS3gih
-	 RnRoVUvdkMqaPM1Zo67ctZvYkHNfnI+howMIGp3+vWPqebhwtYMllBoeMyRlAwPuXN
-	 hEolg09ECduKr0XDPVPbnCCXWgfg14CkF0Lz1dvaNuhXdVV+ZTYIFcdo+mRYzWQZ2j
-	 T1nUxIrBYM13w==
-Message-ID: <6dbfaee8-8c72-85b5-495d-dcb62f18c154@collabora.com>
-Date: Thu, 6 Oct 2022 16:54:42 +0200
+	id 1ogSQK-003D5B-7F; Thu, 06 Oct 2022 15:04:34 +0000
+X-UUID: f3b243668758412f9ae2a7ca61bc47d1-20221006
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XIEKHeBnDpf8qnQLc78wkKjbYdk1bbgIcbqYREQemf4=;
+	b=K8qrRa403rjLLFBBYGnan4dRdQrEBLigGtSaUz245NgPNoVmojK2ppZ0wu6tmS23jnMBC2LeQ4axuWG+fdnEljlx+qWGmCdjcAQS8sfvVw9AdMYl0/m6Nz6I9CPXXjp7RhdH4zHRCBDuD1aeG72Xf5SX0Q6oDrfgFbi4lcRkvl8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:73f9e241-4d4f-42a7-b4e3-a1d2e6257dbe,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:2f58bcb8-daef-48a8-8c50-40026d6a74c2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: f3b243668758412f9ae2a7ca61bc47d1-20221006
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1908692917; Thu, 06 Oct 2022 08:04:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 6 Oct 2022 22:43:52 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 6 Oct 2022 22:43:52 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
+	<eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 1/2] phy: core: add debugfs root
+Date: Thu, 6 Oct 2022 22:43:30 +0800
+Message-ID: <20221006144331.12526-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 2/2] phy: mediatek: tphy: add debugfs files
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- Eddie Hung <eddie.hung@mediatek.com>,
- Tianping Fang <tianping.fang@mediatek.com>
-References: <20220929080926.1272-1-chunfeng.yun@mediatek.com>
- <20220929080926.1272-2-chunfeng.yun@mediatek.com>
- <09bc1393-dd30-3c96-3309-f822994f4aab@collabora.com>
- <6ca1eb83b7a776fd6b7e58e6940eab5ce5f7fb63.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <6ca1eb83b7a776fd6b7e58e6940eab5ce5f7fb63.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_075452_162090_F54B3FA1 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20221006_080432_481854_BDA8AF9F 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,120 +81,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/10/22 16:42, Chunfeng Yun ha scritto:
-> On Thu, 2022-09-29 at 11:02 +0200, AngeloGioacchino Del Regno wrote:
->> Il 29/09/22 10:09, Chunfeng Yun ha scritto:
->>> These debugfs files are mainly used to make eye diagram test
->>> easier,
->>> especially helpful to do HQA test for a new IC without efuse
->>> enabled.
->>>
->>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>> ---
->>> v2: add CONFIG_PHY_MTK_TPHY_DEBUGFS suggested by AngeloGioacchino
->>> ---
->>>    drivers/phy/mediatek/Kconfig        |   5 +
->>>    drivers/phy/mediatek/phy-mtk-tphy.c | 403
->>> +++++++++++++++++++++++++++-
->>>    2 files changed, 407 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/phy/mediatek/Kconfig
->>> b/drivers/phy/mediatek/Kconfig
->>> index 3125ecb5d119..e9fdfe9f519f 100644
->>> --- a/drivers/phy/mediatek/Kconfig
->>> +++ b/drivers/phy/mediatek/Kconfig
->>> @@ -27,6 +27,11 @@ config PHY_MTK_TPHY
->>>    	  multi-ports is first version, otherwise is second version,
->>>    	  so you can easily distinguish them by banks layout.
->>>    
->>> +config PHY_MTK_TPHY_DEBUGFS
->>> +	bool "Add T-PHY Debugfs Files"
->>> +	help
->>> +	  Say Y here to add debugfs files mainly for T-PHY HQA test.
->>> +
->>>    config PHY_MTK_UFS
->>>    	tristate "MediaTek UFS M-PHY driver"
->>>    	depends on ARCH_MEDIATEK || COMPILE_TEST
->>> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
->>> b/drivers/phy/mediatek/phy-mtk-tphy.c
->>> index e906a82791bd..d9509e1314a4 100644
->>> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
->>> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
->>> @@ -7,6 +7,7 @@
->>>    
->>>    #include <dt-bindings/phy/phy.h>
->>>    #include <linux/clk.h>
->>> +#include <linux/debugfs.h>
->>>    #include <linux/delay.h>
->>>    #include <linux/iopoll.h>
->>>    #include <linux/mfd/syscon.h>
->>> @@ -264,6 +265,8 @@
->>>    
->>>    #define TPHY_CLKS_CNT	2
->>>    
->>> +#define USER_BUF_LEN(count) min_t(size_t, 8, (count))
->>> +
->>>    enum mtk_phy_version {
->>>    	MTK_PHY_V1 = 1,
->>>    	MTK_PHY_V2,
->>> @@ -310,6 +313,7 @@ struct mtk_phy_instance {
->>>    	struct clk_bulk_data clks[TPHY_CLKS_CNT];
->>>    	u32 index;
->>>    	u32 type;
->>> +	struct dentry *dbgfs;
->>
->> Unused when !IS_ENABLED(CONFIG_PHY_MTK_TPHY_DEBUGFS)
-> Yes, it will be NULL.
-> 
+Add a debugfs root for phy class, then phy drivers can add debugfs files
+under this folder.
 
-I was meaning that you should ifdef that out...
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2~v3: no changes
+---
+ drivers/phy/phy-core.c  | 6 ++++++
+ include/linux/phy/phy.h | 2 ++
+ 2 files changed, 8 insertions(+)
 
-Regards,
-Angelo
-
->>
->>>    	struct regmap *type_sw;
->>>    	u32 type_sw_reg;
->>>    	u32 type_sw_index;
->>> @@ -332,10 +336,389 @@ struct mtk_tphy {
->>>    	const struct mtk_phy_pdata *pdata;
->>>    	struct mtk_phy_instance **phys;
->>>    	int nphys;
->>> +	struct dentry *dbgfs_root;
->>
->> Same here
->>
->>>    	int src_ref_clk; /* MHZ, reference clock for slew rate
->>> calibrate */
->>>    	int src_coef; /* coefficient for slew rate calibrate */
->>>    };
->>>    
->>> +#if IS_ENABLED(CONFIG_PHY_MTK_TPHY_DEBUGFS)
->>> +
->>
->> ..snip..
->>
->>> +
->>> +static void tphy_debufs_init(struct mtk_tphy *tphy, struct
->>> mtk_phy_instance *inst)
->>
->> Please fix typo "debufs" -> "debugfs",
-> Will fix it, thanks a lot
-> 
->> here and everywhere else.
->>
->> Apart from that, it looks good to me.
->>
->> Regards,
->> Angelo
-> 
-
+diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+index d93ddf1262c5..2f9f69190519 100644
+--- a/drivers/phy/phy-core.c
++++ b/drivers/phy/phy-core.c
+@@ -11,6 +11,7 @@
+ #include <linux/export.h>
+ #include <linux/module.h>
+ #include <linux/err.h>
++#include <linux/debugfs.h>
+ #include <linux/device.h>
+ #include <linux/slab.h>
+ #include <linux/of.h>
+@@ -1204,6 +1205,9 @@ void devm_of_phy_provider_unregister(struct device *dev,
+ }
+ EXPORT_SYMBOL_GPL(devm_of_phy_provider_unregister);
+ 
++struct dentry *phy_debug_root;
++EXPORT_SYMBOL_GPL(phy_debug_root);
++
+ /**
+  * phy_release() - release the phy
+  * @dev: the dev member within phy
+@@ -1233,6 +1237,8 @@ static int __init phy_core_init(void)
+ 
+ 	phy_class->dev_release = phy_release;
+ 
++	phy_debug_root = debugfs_create_dir("phy", NULL);
++
+ 	return 0;
+ }
+ device_initcall(phy_core_init);
+diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
+index b1413757fcc3..c398749d49b9 100644
+--- a/include/linux/phy/phy.h
++++ b/include/linux/phy/phy.h
+@@ -205,6 +205,8 @@ struct phy_lookup {
+ #define devm_of_phy_provider_register_full(dev, children, xlate) \
+ 	__devm_of_phy_provider_register(dev, children, THIS_MODULE, xlate)
+ 
++extern struct dentry *phy_debug_root;
++
+ static inline void phy_set_drvdata(struct phy *phy, void *data)
+ {
+ 	dev_set_drvdata(&phy->dev, data);
 -- 
-AngeloGioacchino Del Regno
-Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+2.18.0
 
 
