@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2292BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 04:45:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A9FCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Oct 2022 07:41:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NZWxLXQ17WP/R85ToaTl8qMRc3BR0Gqh4CJuSbllU70=; b=gL1plBYvHsSHYrKLevSLSbijlz
-	MCA1O0ag9W9rvLMT3Amf38LlZiR7QMr+Ah3YVYJTbxVZE/Qqgb8OKYODgnx9TDu3uXcIpYd9t0n+a
-	RSlJpX/d/L+Mo9OI4POFLm2zEzYEFF9xJB1Z+31Zy7grfqbnsT8KPVEPori75mauCSI6JLRV40ic4
-	sI9v46taf5lJykrjK/4aLLG8Z6QpZbn7LIe61C1Z08wCE2js3JPrWrf7sY94kS0zKbqZI4t8F4YVo
-	zYv05G8QqHZaBhrxIfBH8gkJA37t/+7Je07PNR0kMNRR0NV4G1D2bxxCmcfJXDZteD0qjNnoWfRU1
-	Lj+Buo+g==;
+	bh=czZIXcSril+0S5W4kqc0onDmBGjrVJmOKnFUKeX4tsk=; b=Lxmjc8r1rb5BJYJyEDbQ1nT7fD
+	it4FTH3ru2jF4vFTzTBowB+f7eZtyR4YE5BnxZIMpD/iGUYwEet7fv9C0/kfMnh4i35DR9b/uBohH
+	LpQQgA0O6kxnxQavNKyBn80lqKoWEjV6gK6GBh22v0JdaHNsfkFNup30UmL67PJR3rXPINexblXkK
+	CcMI0VZyTqv91xbOScgJs3muEdbmctwiwUgamZISCgr/4B40wnIqkE/rruGzaVEbffOmnAJgxFr+0
+	Xfit1xGNtPuWnZO/FXPwzgMJSsGMHMt9t3BjtdfVtL5SirzvB3OSbtdCT3oxTNi1bEYy2EYmd5s6S
+	0XUcfmlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogIlU-00HRy8-ND; Thu, 06 Oct 2022 04:45:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ogLVD-000SMR-1u; Thu, 06 Oct 2022 07:41:07 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogIlS-00HRwi-02; Thu, 06 Oct 2022 04:45:43 +0000
-X-UUID: 3c1db0caa5ec4c82a5899522a65c5a83-20221005
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NZWxLXQ17WP/R85ToaTl8qMRc3BR0Gqh4CJuSbllU70=;
-	b=moe5lA8diHPnZ7FYG6r0AuWtr6ilTwNWeAo6hMBEU3WJN4aLefvGfLp8oovX45GcCf4zZiUdbQwQJwodNrbPVSBRhrkouP5xMe9/o4Lt/vK284MowKrpmrkPkGSly3TymO/14C5F8WkaffYV5p9j+YfNxZcjM0fY6Eyj13lc5IU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:49657bab-ad50-4bba-b6f3-777907ff277d,IP:0,U
-	RL:0,TC:0,Content:33,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:33
-X-CID-META: VersionHash:39a5ff1,CLOUDID:ca6bacb8-daef-48a8-8c50-40026d6a74c2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3c1db0caa5ec4c82a5899522a65c5a83-20221005
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 220371904; Wed, 05 Oct 2022 21:45:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 6 Oct 2022 12:35:01 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 6 Oct 2022 12:35:00 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v9, 4/4] mailbox: mtk-cmdq: add MT8186 support
-Date: Thu, 6 Oct 2022 12:34:56 +0800
-Message-ID: <20221006043456.8754-5-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221006043456.8754-1-yongqiang.niu@mediatek.com>
-References: <20221006043456.8754-1-yongqiang.niu@mediatek.com>
+	id 1ogLV0-000SGq-LI
+	for linux-mediatek@lists.infradead.org; Thu, 06 Oct 2022 07:40:57 +0000
+Received: by mail-wr1-x432.google.com with SMTP id a10so1295781wrm.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Oct 2022 00:40:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=czZIXcSril+0S5W4kqc0onDmBGjrVJmOKnFUKeX4tsk=;
+        b=6qjVyGLzJP2d40EpuWNyVT7l6T1hqaLdgmVpPaEvxGoI3eNCRgjZbGBoV/FQXGFiob
+         p1/snStTlv9rq/9KQBEnbttDzx9aV9UFcCtCpTruw0x3LnutL5LIoByYqspkjd4myhFG
+         o66132ZmNOgdoO+IlS/KPAboWUZ4rxmqEi5tZR2IqESw7F5zea9zC2XndyD0QwNfiMW+
+         /nwbOLPLYFu+/Cky/cDEFK7gRRN0k+BrwlpQEh4ZaKLwj5dIr4NcKkO8p5HwaacjzsA6
+         gZ0TzxilJw76mVoMKbn+T6w4zrLCe+y6EPNId2yu4f5oz1jz2r47ME95GEpCEBO05Q/r
+         AVKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=czZIXcSril+0S5W4kqc0onDmBGjrVJmOKnFUKeX4tsk=;
+        b=n6LHiIQdCiZr/2Et1Eb5NguIqIhnTygxlZsuZeeKGIk6zf1qF1tOZAgYVbALQbJIIo
+         70AsB6sMj+A9AQWq75uQ2Nldbs9xiZlK4EhXn17znKQr18erTND1xH3JfNnzTu3MGh3x
+         Wp42//IB2qCvzwP0I/lRNlnlutCn46/Gg4MyrlxIKS6/NY9RBqGj4A5ZQpqfqKTYb/nF
+         G2LHUl3EEJLwBUOcxH1L0YoHXsTuWiyYnh+csaxL35+a0hYNkpbpU52GpqGPAUoY9Fdc
+         hV6hi0x5D6+ja+vI+pyLBPRYc967tk9iaDjKo5oxetBkaIfWeftZV48bXMWefgF5zeVE
+         wvfA==
+X-Gm-Message-State: ACrzQf3a5hKWRVE8Uz7aNUz8h4tq6nlE/Fuj3sdx9g886FMSYDDzS5EK
+	/t0++pCf9neFAfH4eqC8kZ4vHw==
+X-Google-Smtp-Source: AMsMyM6xxcX+Jw879ZvGrzE2zvbkaNBbDJ39qRVbXxY0XUtG9zHNqjzwrFb8JpJ5s9D9VO54lzi4fg==
+X-Received: by 2002:a5d:404b:0:b0:22e:331e:1cba with SMTP id w11-20020a5d404b000000b0022e331e1cbamr2019320wrp.488.1665042051756;
+        Thu, 06 Oct 2022 00:40:51 -0700 (PDT)
+Received: from localhost ([82.66.159.240])
+        by smtp.gmail.com with ESMTPSA id j6-20020a05600c190600b003a601a1c2f7sm4346819wmq.19.2022.10.06.00.40.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Oct 2022 00:40:51 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Lee Jones <lee@kernel.org>,
+ Mark Brown <broonie@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, Fabien Parent
+ <fparent@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>
+Subject: Re: [PATCH v2 5/5] Input: mtk-pmic-keys: add MT6357 support
+In-Reply-To: <20221005-mt6357-support-v2-5-f17ba2d2d0a9@baylibre.com>
+References: <20221005-mt6357-support-v2-0-f17ba2d2d0a9@baylibre.com>
+ <20221005-mt6357-support-v2-5-f17ba2d2d0a9@baylibre.com>
+Date: Thu, 06 Oct 2022 09:40:50 +0200
+Message-ID: <87czb5o0vx.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_214542_061796_18E61AD3 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221006_004054_723320_C77FAB1B 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,37 +94,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add MT8186 cmdq support
+On Wed, Oct 05, 2022 at 16:57, Alexandre Mergnat <amergnat@baylibre.com> wrote:
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+> From: Fabien Parent <fparent@baylibre.com>
+>
+> Add PMIC Keys support on MT6357 SoC.
+>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 2db82ff838ed..98eed8d22688 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -691,9 +691,18 @@ static const struct gce_plat gce_plat_v6 = {
- 	.gce_num = 2
- };
- 
-+static const struct gce_plat gce_plat_v7 = {
-+	.thread_nr = 24,
-+	.shift = 3,
-+	.control_by_sw = true,
-+	.sw_ddr_en = true,
-+	.gce_num = 1
-+};
-+
- static const struct of_device_id cmdq_of_ids[] = {
- 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
- 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
-+	{.compatible = "mediatek,mt8186-gce", .data = (void *)&gce_plat_v7},
- 	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
- 	{.compatible = "mediatek,mt8192-gce", .data = (void *)&gce_plat_v5},
- 	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_v6},
--- 
-2.25.1
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 
+> ---
+>  drivers/input/keyboard/mtk-pmic-keys.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+>
+> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+> index 9b34da0ec260..2a63e0718eb6 100644
+> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+> @@ -10,6 +10,7 @@
+>  #include <linux/kernel.h>
+>  #include <linux/mfd/mt6323/registers.h>
+>  #include <linux/mfd/mt6331/registers.h>
+> +#include <linux/mfd/mt6357/registers.h>
+>  #include <linux/mfd/mt6358/registers.h>
+>  #include <linux/mfd/mt6397/core.h>
+>  #include <linux/mfd/mt6397/registers.h>
+> @@ -90,6 +91,19 @@ static const struct mtk_pmic_regs mt6331_regs = {
+>  	.rst_lprst_mask = MTK_PMIC_MT6331_RST_DU_MASK,
+>  };
+>  
+> +static const struct mtk_pmic_regs mt6357_regs = {
+> +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+> +		MTK_PMIC_KEYS_REGS(MT6357_TOPSTATUS,
+> +				   0x2, MT6357_PSC_TOP_INT_CON0, 0x5,
+> +				   MTK_PMIC_PWRKEY_RST),
+> +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
+> +		MTK_PMIC_KEYS_REGS(MT6357_TOPSTATUS,
+> +				   0x8, MT6357_PSC_TOP_INT_CON0, 0xa,
+> +				   MTK_PMIC_HOMEKEY_INDEX),
+> +	.pmic_rst_reg = MT6357_TOP_RST_MISC,
+> +	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+> +};
+> +
+>  static const struct mtk_pmic_regs mt6358_regs = {
+>  	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+>  		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
+> @@ -276,6 +290,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+>  	}, {
+>  		.compatible = "mediatek,mt6331-keys",
+>  		.data = &mt6331_regs,
+> +	}, {
+> +		.compatible = "mediatek,mt6357-keys",
+> +		.data = &mt6357_regs,
+>  	}, {
+>  		.compatible = "mediatek,mt6358-keys",
+>  		.data = &mt6358_regs,
+>
+> -- 
+> b4 0.10.1
 
