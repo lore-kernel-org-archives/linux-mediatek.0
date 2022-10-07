@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4621C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 08:53:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A0FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 08:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IwjHNZZzUlSgb1XCxw7m+/nnNZYdvWdc29BruIAjm5s=; b=f48ly7GKX/GyivjM0stNXx36J7
-	WYrpaV65EUypZPDNQnQyTljQbQWVwl6iWaowvo7xJUIT7HTj7ebnhQikc89PHrDUO1vLDHf93baVs
-	2eBE9IpMoyJscKP7Wf2Ri/VoUa+klLB9Y81Vy4h94mxTevBCOhukcHJAf4RnlqCK69fyLgCjf+IQ7
-	x4dt2xIr2CM8duetrWI60tSMQSpbdHQjhDRg/BCajY+5E91lGTzibjnLROdNSHBYiqJyga9Wy150L
-	VXAcjQkn2m3z4KmPPsZCF9X3vEWp4gl+LP8Ah1yzkKjTtmkUbD+6h05yogUtSJxHO4NVd/1gJTS6U
-	PpVTtTJw==;
+	bh=6e3F5D71cF/bG9VASeTMXoElF2aklDuCThZrSRDCupY=; b=d5qcy53uP6xr0A9PhMNcqwDNQw
+	+YR2xdPOwsCWMF7USRB9ameCarzR+8t0rIeXnrXb/chLJ2w58zOg2vMAnY4zVUy/Gals9bS4awdRZ
+	VThdTGf/KCKUs8Djm2E48M1MX0nhPO5qIKRWFdHUsUo8SYLD4s9IclXcaBsR6LIz1TFRAAhHBgAUM
+	t76W3lk7suR4TQyQsbpcqrbgpXbWzXVBoBIpmU93tr1nJHT5ouBKppKiyE996+RHdbgDyICA4+12F
+	uOOHGGRWylauYScxTHq2tozbDFBYVlG1yOg7NcPIQMw10EeY8UuUl+Egw6Af7V6IGY+BF3EO1qIDX
+	/fKxLpHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogj6c-0089Gu-FE; Fri, 07 Oct 2022 08:53:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ogj9b-008A6O-BI; Fri, 07 Oct 2022 08:56:23 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogj6R-0089Dq-58; Fri, 07 Oct 2022 08:53:09 +0000
+	id 1ogj9I-008A0F-Qp; Fri, 07 Oct 2022 08:56:06 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1C0C26602329;
-	Fri,  7 Oct 2022 09:53:02 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 33E2A6602329;
+	Fri,  7 Oct 2022 09:56:02 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665132782;
-	bh=vtFElDx7m6ery3R7WHMzjFgwq5qcoN9DS+Yyj6A964Q=;
+	s=mail; t=1665132962;
+	bh=z2yoDJUQzSqyLq/HCRimKaAJVGrSi/DMVz+hMd0IFT8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EmbYq3a7kp/at3p3BEgiwkClYB6r+EffnRkLhd+qYZ2v8ZLBw9/1gPg8YsB6bpsf2
-	 YmMi2o8kRfkKaY6n4tag1dm1eCpmi22oLDcH2kz0cvdoOssXHK/hrqQ1WKiXnVRCPV
-	 /b2ZnYBhkoT42lzIz6tP4zfRPJMNvILVGCDZFZxQqJxS3/fMgAhvGQZUYIDEbcLbim
-	 X334vqTnhHGxUYetu35zF/BoDKZVLSzCKVzLodY6B2VxxM9crQop0+90E9L2HfgG2F
-	 N+lufwLLz1yV/B2/zlJaF8BqFi/QCJQgyxZbPQ7YsnyO72f1UznvmbKzD3zOjXOQ3a
-	 eacY+QdgD+eEg==
-Message-ID: <f12144d1-d37a-2bd7-5c28-4b15b84818ef@collabora.com>
-Date: Fri, 7 Oct 2022 10:52:59 +0200
+	b=klepZAq2fMI72AUgwsk46OGgVGu9kbEfpaqp5Ey6NRvxVkvR3YtwWj0ne70XK6FBG
+	 95UmzYhSP5aOtbgLLJCqEXVxrGh4jWd17tB1HCsedMtwh17iO68MFIG4IeCrPE5SIB
+	 bXKBNxzVNsPXBQIcLSG9f+a3IyWb76wmRwbB1khJbjQF7X0zctwcVPdVNJxQZcuAn4
+	 6srNwS5E0yaVEQ/KTTxUAMPkesFm7AI0Tis4Da/qaFDbnGLZwjxwbQQh5vXd8g82kU
+	 EwMu0rIDWqgXuIciHxIGIs1/Pevc0Z8grqlwyv9QaLltsecCOyM2YJmURXoAbMb4Yy
+	 DxiGZY4k1FVeg==
+Message-ID: <c88ccdd5-ff6a-1d16-03a2-fe8cb776f99d@collabora.com>
+Date: Fri, 7 Oct 2022 10:55:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 0/4] MT8195 Acer Tomato - Audio support
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5EzD_CvZHv_HOd4cRB_3qzUDUYwvOBN1qkkdP4ygo862w@mail.gmail.com>
+Subject: Re: [PATCH v2 5/5] arm64: dts: mediatek: asurada: Add aliases for i2c
+ and mmc
 Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221006212528.103790-1-nfraprado@collabora.com>
+ <20221006212528.103790-6-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EzD_CvZHv_HOd4cRB_3qzUDUYwvOBN1qkkdP4ygo862w@mail.gmail.com>
+In-Reply-To: <20221006212528.103790-6-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221007_015307_450332_C751BB33 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20221007_015605_014120_C2337133 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +80,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/10/22 10:42, Chen-Yu Tsai ha scritto:
-> Hi,
+Il 06/10/22 23:25, Nícolas F. R. A. Prado ha scritto:
+> Add aliases for the i2c and mmc nodes on the Asurada platform DT to
+> ensure that we get stable ids for those devices on userspace.
 > 
-> On Thu, Sep 22, 2022 at 5:49 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> This series enables full support for audio, with DSP, on the Cherry
->> Chromebooks.
->> Related ALSA UCM2 configuration was already merged in its upstream
->> repository [1]: this is fully tested and working as-is since all of
->> the required fixes for MT8195 SOF drivers were picked and are present
->> since `next-20220908`.
->>
->> [1]: https://github.com/alsa-project/alsa-ucm-conf/commit/a59c3b1a57de8eb424c4f754bb031265e856260e
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > 
-> While trying this patch, I get the following error:
-> 
-> # modprobe mt8195-mt6359
-> [   44.985107] mt6359-sound mt6359-sound: ASoC: sink widget AIF1TX overwritten
-> [   44.994393] dmic-codec dmic-codec: GPIO lookup for consumer dmicen
-> [   45.000636] dmic-codec dmic-codec: using device tree for GPIO lookup
-> [   45.007165] of_get_named_gpiod_flags: can't parse 'dmicen-gpios'
-> property of node '/dmic-codec[0]'
-> [   45.016177] of_get_named_gpiod_flags: can't parse 'dmicen-gpio'
-> property of node '/dmic-codec[0]'
-> [   45.025084] dmic-codec dmic-codec: using lookup tables for GPIO lookup
-> [   45.031666] dmic-codec dmic-codec: No GPIO consumer dmicen found
-> [   45.041434] sof-audio-of-mt8195 10803000.dsp: Topology: ABI 3:22:1
-> Kernel ABI 3:23:0
-> [   45.050185] mt8195_mt6359 mt8195-sound: ASoC: Parent card not yet
-> available, widget card binding deferred
-> [   45.060566] sof-audio-of-mt8195 10803000.dsp: ipc tx error for
-> 0x30010000 (msg/reply size: 96/20): -22
-> [   45.069965] sof-audio-of-mt8195 10803000.dsp: Failed to setup widget AFE3.IN
-> [   45.077575] sof-audio-of-mt8195 10803000.dsp: error: tplg component
-> load failed -22
-> [   45.085291] sof-audio-of-mt8195 10803000.dsp: error: failed to load
-> DSP topology -22
-> [   45.093062] sof-audio-of-mt8195 10803000.dsp: ASoC: error at
-> snd_soc_component_probe on 10803000.dsp: -22
-> [   45.102880] mt8195_mt6359 mt8195-sound: ASoC: failed to instantiate card -22
-> [   45.123915] mt8195_mt6359: probe of mt8195-sound failed with error -22
-> 
-> Any ideas?
 
-We have to recheck if the firmware that was sent upstream is the right one for
-Tomato's dts topology variant, I think.
-That's surely a firmware issue that you're seeing, anyway.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-sof-mt8195.ri
 
-Cheers,
-Angelo
 
