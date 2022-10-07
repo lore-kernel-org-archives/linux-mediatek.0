@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6FA9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 09:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F510C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 09:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WPdNUPQIbyzCDHptPhLZjzwPgPWTVb2ay1+lXqB7L74=; b=xO+ju87FJL/3hkVlfr2vb8QUSR
-	FW/NowcLare/KiW0XcMxiPZDBEfDa7TQdZ87Z4L0hoerS6jGq9DHfYUeIquJTlvAxGmAtahBnx4WA
-	od/FIjF//5Xxfocxv0do4DuUxCP7XaWytRXaiBTuy/3ZCdbUDoN2IPwuB1IcEW7wP2GXQICI0sOEA
-	+Y4SXLTVyBm6QkY+xPmCQM3exX0pLKv6EvKypNlIjT7C4TBxWYRgHkUk/8ZCmu7UomOdQ1lsoS3s4
-	W3WQSxPQ18bfVy2HU2dSS2H517Veku0dh9Ni2263CYChnqnhO4xMLDfIRoHR3vQrW8KqxYKeQy/cx
-	QtLEymzA==;
+	bh=NrsOOHJKQckev5SMzUy0VhCEQURlG7/SyAHua25KXPY=; b=4yidiWcTUrW2q62MS5YuvFEN6A
+	sfSA0KmfvMSz7+jUkR2P2Js1W6i91N43r+ChII8q1d1SHLOyVVBz6mVdDCzfC1sDmT1zspO2bmpMk
+	rIoz7TcB8hF/wFxrBDpAwErz+yoqtlt0EltVAYDx86qR99IRSDHml9eZ5kQeCCZFYd9ZmKtCvGIw2
+	y1MOZJlh9IaRa7lMNqub7wTgAhr0B0Mpv2Q7hWUzV/kO9yihd8CdnCQMnmELAUBAgKSk0b2C712se
+	nMbAhjLDhdJ+hMks22q1nYNmg7Ex5G4PgP9t7qBCMP69WjKv9fW+xcJ18iQTVtxsynrvPebmSU6Ta
+	ISvDEtRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogjW6-008H04-LK; Fri, 07 Oct 2022 09:19:38 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1ogjZT-008HnI-5o; Fri, 07 Oct 2022 09:23:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogjVv-008Gx8-JM; Fri, 07 Oct 2022 09:19:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665134367; x=1696670367;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=hoHyGOlZw7mT9PchNcyohGTzSrqH9AYZczrdE0VAU4M=;
-  b=ZQi5L7JuW6PZWD4jHniZwJBkhVntKSsn0zE4I9Tgs/KtY5TMFx+Zs1Uv
-   9QmHNuCH2QhOcSTsZCRdhlNJ6/Er0X1NStIm8Lsi6V+0oTtaefFnZPtJ3
-   6V0qqVEFwpF+/l6n1PlQWnlqUZwpylLKzGvnV115UBJuJtyQla14DkAdg
-   4CAwUKTTZmMsolakdks0T20mjK10fiX7pvXs0WOcwOBvwjHW0Ov0FvtAp
-   udgJ7VglVLiLCkt6NON2abcxFk7fnIgPEiEYhtpNLxIGct3oT3CePpU62
-   YqmuA+tDUraMokryfGd65W7LNQJoay+8jbAucyPb19LH4lBnYyPfzQoi+
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10492"; a="304693023"
-X-IronPort-AV: E=Sophos;i="5.95,166,1661842800"; 
-   d="scan'208";a="304693023"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2022 02:19:24 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10492"; a="620197894"
-X-IronPort-AV: E=Sophos;i="5.95,166,1661842800"; 
-   d="scan'208";a="620197894"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga007.jf.intel.com with ESMTP; 07 Oct 2022 02:19:20 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1ogjVm-003Xxs-1k;
-	Fri, 07 Oct 2022 12:19:18 +0300
-Date: Fri, 7 Oct 2022 12:19:18 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, jic23@kernel.org, lars@metafoo.de,
-	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, szunichen@gmail.com
-Subject: Re: [PATCH v13 5/5] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-Message-ID: <Yz/vFml0mwaF0+f9@smile.fi.intel.com>
-References: <cover.1664991040.git.chiaen_wu@richtek.com>
- <1bcd19dbd09650ddac7b96b0fe2932698be2731e.1664991040.git.chiaen_wu@richtek.com>
- <Yz11bkxz9lK4wOHE@smile.fi.intel.com>
- <CABtFH5J2r=Qq1kNb=yp6Hf7=oKJH9qeiwsO+4ejy5m9N+ZODXg@mail.gmail.com>
+	id 1ogjZP-008HkZ-HH
+	for linux-mediatek@lists.infradead.org; Fri, 07 Oct 2022 09:23:05 +0000
+X-UUID: de9c31f7bb104e928eb40a5c3d98540d-20221007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NrsOOHJKQckev5SMzUy0VhCEQURlG7/SyAHua25KXPY=;
+	b=R/4P/+7oWI2hZO2wphliEmgVUXfJh9niBAAX/344tSM9n04BK4x9Dz0UpbjiPUPzhAttRIj53mpE+2KIr1ICTvQAsEqyN+k2DyywDj0J2JtiIbB+cU4vFowZOtJSPt4F1waG1TgmHnftjnwrlt0t+/Yy0QBf2TlNEBQw+Qvb9gI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:1707f604-67ac-456e-b96b-7ae9f27d26e0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:a78290fe-ee8c-4ff7-afe9-644435e96625,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: de9c31f7bb104e928eb40a5c3d98540d-20221007
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1115771353; Fri, 07 Oct 2022 02:22:55 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 7 Oct 2022 17:22:31 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 7 Oct 2022 17:22:31 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v1 2/2] media: platform: mtk-mdp3: extend shared memory structure to 4-byte aligned
+Date: Fri, 7 Oct 2022 17:22:30 +0800
+Message-ID: <20221007092230.11893-3-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221007092230.11893-1-moudy.ho@mediatek.com>
+References: <20221007092230.11893-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CABtFH5J2r=Qq1kNb=yp6Hf7=oKJH9qeiwsO+4ejy5m9N+ZODXg@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221007_021927_715698_59A00615 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20221007_022303_601689_8F35BEB2 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +81,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 07, 2022 at 09:28:17AM +0800, ChiaEn Wu wrote:
-> On Wed, Oct 5, 2022 at 8:15 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
+The communication between MDP3 kernel driver and SCP is pass through
+a shared memory, and the data structure is defined in the "mtk-img-ipi.h".
+However, there is a 4-byte read limit in further SCP hardware, so the
+data structure should be in 4-byte aligned.
 
-...
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      | 76 +++++++++----------
+ 1 file changed, 38 insertions(+), 38 deletions(-)
 
-> > > +config LEDS_MT6370_FLASH
-> > > +     tristate "Flash LED Support for MediaTek MT6370 PMIC"
-> >
-> > > +     depends on LEDS_CLASS && OF
-> >
-> > Why do you have OF dependency?
-> >
-> 
-> Hi Andy,
-> The original idea is to use the "fwnode_property_*" related function.
-> But this side may only consider just "Build Pass" (?)
-
-Yes, you increase a compile test coverage by dropping that dependency.
-
-> I will remove "OF" in the v14 patch.
-
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+index 3e66ebaee2da..c7f231f8ea3e 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+@@ -51,14 +51,14 @@ struct img_sw_addr {
+ 
+ struct img_plane_format {
+ 	u32 size;
+-	u16 stride;
++	u32 stride;
+ } __packed;
+ 
+ struct img_pix_format {
+-	u16 width;
+-	u16 height;
++	u32 width;
++	u32 height;
+ 	u32 colorformat; /* enum mdp_color */
+-	u16 ycbcr_prof; /* enum mdp_ycbcr_profile */
++	u32 ycbcr_prof; /* enum mdp_ycbcr_profile */
+ 	struct img_plane_format plane_fmt[IMG_MAX_PLANES];
+ } __packed;
+ 
+@@ -72,10 +72,10 @@ struct img_image_buffer {
+ #define IMG_SUBPIXEL_SHIFT	20
+ 
+ struct img_crop {
+-	s16 left;
+-	s16 top;
+-	u16 width;
+-	u16 height;
++	s32 left;
++	s32 top;
++	u32 width;
++	u32 height;
+ 	u32 left_subpix;
+ 	u32 top_subpix;
+ 	u32 width_subpix;
+@@ -90,24 +90,24 @@ struct img_crop {
+ 
+ struct img_input {
+ 	struct img_image_buffer buffer;
+-	u16 flags; /* HDR, DRE, dither */
++	u32 flags; /* HDR, DRE, dither */
+ } __packed;
+ 
+ struct img_output {
+ 	struct img_image_buffer buffer;
+ 	struct img_crop crop;
+-	s16 rotation;
+-	u16 flags; /* H-flip, sharpness, dither */
++	s32 rotation;
++	u32 flags; /* H-flip, sharpness, dither */
+ } __packed;
+ 
+ struct img_ipi_frameparam {
+ 	u32 index;
+ 	u32 frame_no;
+ 	struct img_timeval timestamp;
+-	u8 type; /* enum mdp_stream_type */
+-	u8 state;
+-	u8 num_inputs;
+-	u8 num_outputs;
++	u32 type; /* enum mdp_stream_type */
++	u32 state;
++	u32 num_inputs;
++	u32 num_outputs;
+ 	u64 drv_data;
+ 	struct img_input inputs[IMG_MAX_HW_INPUTS];
+ 	struct img_output outputs[IMG_MAX_HW_OUTPUTS];
+@@ -123,51 +123,51 @@ struct img_sw_buffer {
+ } __packed;
+ 
+ struct img_ipi_param {
+-	u8 usage;
++	u32 usage;
+ 	struct img_sw_buffer frm_param;
+ } __packed;
+ 
+ struct img_frameparam {
+ 	struct list_head list_entry;
+ 	struct img_ipi_frameparam frameparam;
+-};
++} __packed;
+ 
+ /* ISP-MDP generic output information */
+ 
+ struct img_comp_frame {
+-	u32 output_disable:1;
+-	u32 bypass:1;
+-	u16 in_width;
+-	u16 in_height;
+-	u16 out_width;
+-	u16 out_height;
++	u32 output_disable;
++	u32 bypass;
++	u32 in_width;
++	u32 in_height;
++	u32 out_width;
++	u32 out_height;
+ 	struct img_crop crop;
+-	u16 in_total_width;
+-	u16 out_total_width;
++	u32 in_total_width;
++	u32 out_total_width;
+ } __packed;
+ 
+ struct img_region {
+-	s16 left;
+-	s16 right;
+-	s16 top;
+-	s16 bottom;
++	s32 left;
++	s32 right;
++	s32 top;
++	s32 bottom;
+ } __packed;
+ 
+ struct img_offset {
+-	s16 left;
+-	s16 top;
++	s32 left;
++	s32 top;
+ 	u32 left_subpix;
+ 	u32 top_subpix;
+ } __packed;
+ 
+ struct img_comp_subfrm {
+-	u32 tile_disable:1;
++	u32 tile_disable;
+ 	struct img_region in;
+ 	struct img_region out;
+ 	struct img_offset luma;
+ 	struct img_offset chroma;
+-	s16 out_vertical; /* Output vertical index */
+-	s16 out_horizontal; /* Output horizontal index */
++	s32 out_vertical; /* Output vertical index */
++	s32 out_horizontal; /* Output horizontal index */
+ } __packed;
+ 
+ #define IMG_MAX_SUBFRAMES	14
+@@ -250,8 +250,8 @@ struct isp_data {
+ } __packed;
+ 
+ struct img_compparam {
+-	u16 type; /* enum mdp_comp_type */
+-	u16 id; /* enum mtk_mdp_comp_id */
++	u32 type; /* enum mdp_comp_id */
++	u32 id; /* engine alias_id */
+ 	u32 input;
+ 	u32 outputs[IMG_MAX_HW_OUTPUTS];
+ 	u32 num_outputs;
+@@ -273,12 +273,12 @@ struct img_mux {
+ 	u32 reg;
+ 	u32 value;
+ 	u32 subsys_id;
+-};
++} __packed;
+ 
+ struct img_mmsys_ctrl {
+ 	struct img_mux sets[IMG_MAX_COMPONENTS * 2];
+ 	u32 num_sets;
+-};
++} __packed;
+ 
+ struct img_config {
+ 	struct img_compparam components[IMG_MAX_COMPONENTS];
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.18.0
 
 
