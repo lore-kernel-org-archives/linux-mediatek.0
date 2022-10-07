@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 905D3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 03:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03CCDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 03:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XEZo6MeD7iZ0GlWlMoZRRlpTW9x8DYLfvSsVWsMRYz8=; b=3pdw1HM0a93QZm7fTZkDpf97Xs
-	2NKWM2X6v1x4kVdGhY4faV0BQOWt6Nd27dCJ6qT2al4VZAOUTmigZVapU7dHCktBZyRaXOBqYb0y1
-	42JVErcXeHiqoWNQiQB4pWjnISM986NCJsR6fIE3VkKOeX8vXWnT/seysAQ94V/wa87MFUp2loVPL
-	dT7relFlKX4jRssYKpEuVguYBxnyfE0PZnzX9Oni9mbGXNqBQ8Ca20OTRgbRB9wtQZs6qdjDuQNxg
-	HXbDYexQHreKr+FTBF+163yTQIxJgzhzrgrtCYawi3r4O/liwB+pC4P8IwLVkN9nymEhZc9BxrGNZ
-	RE/Gky7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RerK2rBiuhYMfubodkZfB/ZpDqYK/wxKKL/JNwD3Q+M=; b=nSIpbpxMjIX0p4kDA0/mNxLCNM
+	hVTBjRIfB3kWNwj6nY2N07mQWjFR97BFBnkZOwE/AKKPBhh+liak5TiCnc9cPnUo+3CXYrWwZM1Lb
+	orzhWWgYSX1GE/+kHD3JMjvzI5FRNPEJ5mu0cvOqBTOTdwaC6Uh8IU3jGEMNiFGv4o/4+eQIrszXW
+	zD+5ywQMGZMG7/KdiBCCVJ/+S3N6CmP5+wumcJSWgxx0MA77Wgo0oE7FmBFpJcirJ3J0wznL1T7DG
+	BiKhvhaPxmQKYeuZ1c3z3UbotnsLXPGXSa4ngb4m7BMTM6xSxbgxgv1cF0Wz6dF5IIz2JcQOT5Ise
+	zbgFADeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogeBn-006uUE-5W; Fri, 07 Oct 2022 03:38:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ogeOl-0071Wp-Pn; Fri, 07 Oct 2022 03:51:43 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogeBk-006uSJ-9z
-	for linux-mediatek@lists.infradead.org; Fri, 07 Oct 2022 03:38:18 +0000
-X-UUID: 01a3f8af996e4670bc1acfa0ff4b56cb-20221006
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XEZo6MeD7iZ0GlWlMoZRRlpTW9x8DYLfvSsVWsMRYz8=;
-	b=WUX2dznsKOPm30Q4Ms8tjlQXU22y3MNqlIifVSfqlZmmbd4xfB00tI5gEE+nXD7f0eWkEgRVydeMMRbFFghqRhEddoulcveP5SRxDI2aqcrqkAwH2h5TMRu7U0sv4GlLQ4lvmE4XgjE6T2NIm7SXGo84GQdgnijHO75K6IBPMak=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:0607d34c-2227-409e-a8dd-ae83fd09db4b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:66172de1-2948-402a-a6e4-b5d31fe11eb7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 01a3f8af996e4670bc1acfa0ff4b56cb-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 199851064; Thu, 06 Oct 2022 20:38:13 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 7 Oct 2022 11:17:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 7 Oct 2022 11:17:38 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v1 0/6] Add support for multiple chips
-Date: Fri, 7 Oct 2022 11:17:31 +0800
-Message-ID: <20221007031737.5125-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ogeOj-0071UA-FV
+	for linux-mediatek@lists.infradead.org; Fri, 07 Oct 2022 03:51:42 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id n186so3883007vsc.9
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Oct 2022 20:51:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RerK2rBiuhYMfubodkZfB/ZpDqYK/wxKKL/JNwD3Q+M=;
+        b=dlmBPgiOtRxGkbv7rjlv2SMcccR1EQVBHJ2axjdsJ02yrr5hKaM36d+WvZWaDEzGGt
+         0Ip2I6qxqD35xFWKvcjWIRq3XMC3cSpvesLHz4hwsf8JP/9SIqaaTetF/Ruw2KzYi6+x
+         O/+bfdw6x86sDV0ciAF9kUjgj1XrBkcTYu3P0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RerK2rBiuhYMfubodkZfB/ZpDqYK/wxKKL/JNwD3Q+M=;
+        b=mAv9fanUFOnnX2bvMtiMiIhXfRWUAittR/JX7uMVdJ8Xw+CeVtWvpg7YPos+9DoAYS
+         4SheTJDBDyKZF58O6ENz5mp1K5ivLODrJoBi4swWUa/sZ0KKheq0tT2NuAdpUu7t0t8E
+         cLKtMfz+/B7zO5SZXTn+mDgaa+/iVXOjYM9emt/fiHlxCyfH1LXVOU6os1Tzuk5wRvKp
+         htfO8rU7Bt2q4WZgsLSKj15jz4tJ+lHbx3tUlfIdHI6Al3//o/3Y+qtTBN13YKMF2BQR
+         rZZmKvVOxrgYoz5oWPo8YOtYDaoEteHqzkaaGXA5tF451vEFAALqJVrIkbejTkt8hDhD
+         wSvA==
+X-Gm-Message-State: ACrzQf37tndY9hJQ6Ddq6q/QYVivQpBVwILLv8Ot1MuCKN/PhscUVmp9
+	dlPapLkG3mCbKPACHM4Fr/Gk+Au0ivF0MC+ZCDuVlA==
+X-Google-Smtp-Source: AMsMyM6DZCU3H5d9leQfxkyqeLDM36598wR9p8zY1m3Q8gko7dMPnHiaV3d9xfcbyRe5ChJLBf+e8d8wNaErE59zoxY=
+X-Received: by 2002:a67:ac09:0:b0:39a:eab8:a3a6 with SMTP id
+ v9-20020a67ac09000000b0039aeab8a3a6mr1621057vse.9.1665114699289; Thu, 06 Oct
+ 2022 20:51:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221006212528.103790-1-nfraprado@collabora.com> <20221006212528.103790-6-nfraprado@collabora.com>
+In-Reply-To: <20221006212528.103790-6-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 7 Oct 2022 11:51:28 +0800
+Message-ID: <CAGXv+5GmJOYnfLsovO_+piuJ1ry1R0ZQqALRGK3MNp=nUO-TNw@mail.gmail.com>
+Subject: Re: [PATCH v2 5/5] arm64: dts: mediatek: asurada: Add aliases for i2c
+ and mmc
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_203816_356438_6B311860 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221006_205141_568849_953C3FDE 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +87,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Oct 7, 2022 at 5:25 AM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> Add aliases for the i2c and mmc nodes on the Asurada platform DT to
+> ensure that we get stable ids for those devices on userspace.
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+>
+> ---
+>
+> Changes in v2:
+> - Added this commit
+>
+>  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm6=
+4/boot/dts/mediatek/mt8192-asurada.dtsi
+> index dac2d4f5e670..758ca42a6156 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> @@ -11,6 +11,18 @@
+>
+>  / {
+>         aliases {
+> +               i2c0 =3D &i2c0;
+> +               i2c1 =3D &i2c1;
+> +               i2c2 =3D &i2c2;
+> +               i2c3 =3D &i2c3;
+> +               i2c4 =3D &i2c4;
+> +               i2c5 =3D &i2c5;
+> +               i2c6 =3D &i2c6;
+> +               i2c7 =3D &i2c7;
+> +               i2c8 =3D &i2c8;
+> +               i2c9 =3D &i2c9;
 
-This series are based on following series:
-MDP3:
-    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=682204
-    [2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=682891
-    [3] https://patchwork.kernel.org/project/linux-mediatek/list/?series=683526
+You should only add aliases for interfaces that are actually enabled.
 
-To support multiple chips, a chip configuration header file needs to be created
-and the relevant information split and moved into it.
+Also, I think we can disable i2c6. None of the current products use it.
 
-Moudy Ho (6):
-  media: platform: mtk-mdp3: add chip configuration header file
-  media: platform: mtk-mdp3: chip config split about component settings
-  media: platform: mtk-mdp3: chip config split about subcomponents
-  media: platform: mtk-mdp3: chip config split about color format
-  media: platform: mtk-mdp3: chip config split about resolution
-    limitations
-  media: platform: mtk-mdp3: chip config split about pipe info
+ChenYu
 
- .../media/platform/mediatek/mdp3/mt8183_mdp.h | 409 ++++++++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  42 +-
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 160 ++++---
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  24 +-
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  48 +-
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  13 +
- .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  10 +-
- .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 283 +-----------
- .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |   7 +-
- 9 files changed, 603 insertions(+), 393 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183_mdp.h
-
--- 
-2.18.0
-
+> +               mmc0 =3D &mmc0;
+> +               mmc1 =3D &mmc1;
+>                 serial0 =3D &uart0;
+>         };
+>
+> --
+> 2.37.3
+>
 
