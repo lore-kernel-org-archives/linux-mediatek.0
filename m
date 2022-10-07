@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B2DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 03:59:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 708ACC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Oct 2022 04:00:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NPGzumvZbzCKq7uiigKd2WFnENdblbzpuUXJwRZvZD0=; b=qzkjzGg6BDAT/lULq5/InNX1R4
-	ClZPYMwQx9iNbptcAsFNsA9QGs6Q3wv2xTW0SuNa/bnccWyL08NctxQ+uS6qs7/nAGpOmgsja3oJp
-	wLYrmv9Cy0IIy6ncH/VBnP//EtzeH0tugTf+w899SpcFm0i9QyQ4wVGVelEEepqp6sBd2NzjmPx8/
-	B/ch9nlF8PHpxbbxLjXB6eHEmL2RA45tVofgns9d3XFyZyI0NfsY1PhMYqsW01BAIETHDDLZNiFF1
-	9xMmyWYRTwrJAW94XKWuxord7EZpbP56UokGcYPXDKk6jYKd84rsotVtpX8mefhBbK5TzgDc/sXNC
-	BDuPpDGw==;
+	bh=VgL7hxnv0RzTrpLQ0F4LudwNhyqKu2RANC8skmVfqik=; b=13kR23j4+zznFKs9ouCFR+byM+
+	5veQLcmBgabhYVXmTgN2fCrSt06TqmGARyksjC1ikYlNEIsgcklc/k8SJhuTEVtHx2wrBkORmwigh
+	HgUoQFMPqs+viYL56nB+QLxLcepwK5ZmCYiMf54JbgF5yDyX+BkaZ1i+cPgeM6yW+qpelzok4bvIt
+	SLU1AaCOzSg05pass1h1zXsiNMWFsmb9aCGZk387tDAnXCD7kzlbDomLl7eyfVDRANh88yZTSHt/U
+	Bmc2VGTEXE8QlMio/b5otuyJWE/Tp1HqRyZ/yz+M26ziESnZTjnwkQIu/q76qSJKjXXjYJSbtpvF5
+	ulC6FAlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogeVp-00743A-Ka; Fri, 07 Oct 2022 03:59:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ogeWi-0074DE-L4; Fri, 07 Oct 2022 03:59:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogeVl-00742I-U3
-	for linux-mediatek@lists.infradead.org; Fri, 07 Oct 2022 03:59:00 +0000
-X-UUID: 429d2d8005a94c98964d1c345fe665fe-20221006
+	id 1ogeWg-0074By-2V
+	for linux-mediatek@lists.infradead.org; Fri, 07 Oct 2022 03:59:55 +0000
+X-UUID: fd6dad7c0ad5453dab85568e0cc213e4-20221006
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NPGzumvZbzCKq7uiigKd2WFnENdblbzpuUXJwRZvZD0=;
-	b=BvVCpOF/620HtXS0SV3Wxqae/vrdeFGbzdV+hYyuWMBYAWQ5tlzsgfeHc6SjQrSnIo4LmYCKngrhGTiWd+q9mI2Uafg2tg8D776H8YFg/v3Eyi+AXWpHRm6ienkgagsMetmophF2imal5E/i1zh0j9CnUMBQXAqEwrI1FwozCqM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VgL7hxnv0RzTrpLQ0F4LudwNhyqKu2RANC8skmVfqik=;
+	b=DAJfTPxrmkitq/OflSmOdw3qh57S6ksaAkSMzH9MRHp55V0Nq2LL+X2yqs81KUBa9CE03pa05jG01vPfilFW7lBKwEeOrQS4Zp1+R089rQUy/0w8QhQZybeuBpBH+P4dIdpFzhXI02mOR0x+CfP8kzX9a/miz+12yahNxDbhpVE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:dac3caf4-b2c6-4344-9bba-ef419e8d2540,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:82069fae-542c-4d6f-97da-8e22c31dbcc8,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:ba6bcbb8-daef-48a8-8c50-40026d6a74c2,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:be6fcbb8-daef-48a8-8c50-40026d6a74c2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 429d2d8005a94c98964d1c345fe665fe-20221006
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: fd6dad7c0ad5453dab85568e0cc213e4-20221006
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2085183361; Thu, 06 Oct 2022 20:58:45 -0700
+	with ESMTP id 1394495521; Thu, 06 Oct 2022 20:59:14 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -55,9 +55,9 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v1 4/6] media: platform: mtk-mdp3: chip config split about color format
-Date: Fri, 7 Oct 2022 11:17:35 +0800
-Message-ID: <20221007031737.5125-5-moudy.ho@mediatek.com>
+Subject: [PATCH v1 6/6] media: platform: mtk-mdp3: chip config split about pipe info
+Date: Fri, 7 Oct 2022 11:17:37 +0800
+Message-ID: <20221007031737.5125-7-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221007031737.5125-1-moudy.ho@mediatek.com>
 References: <20221007031737.5125-1-moudy.ho@mediatek.com>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_205857_993572_D42C3C58 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20221006_205954_131338_851CB3A7 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,689 +81,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to differences in hardware design, the supported
-color formats will vary and should be moved and
-integrated into the chip configuration header file.
+In MDP3, a pipe is used to represent a data path which
+consisting of different components and MUTEX, as shown in
+the following diagram:
+
+                     +----------------------------+
+                     |           MUTEX [*1]       |
+                     +----------------------------+
+                        S ^ S ^  S ^  S ^  S ^
+                        | | | |  | |  | |  | |
+                        | | | |  | |  | |  | |
+         +--------------+ | | |  | |  | |  | +-------------+
+         | +--------------+ | |  | |  | |  +-------------+ |
+         | |         +------+ |  | |  | +------+         | |
+         | |         | +------+  | |  +------+ |         | |
+         | |         | |         | |         | |         | |
+         | |         | |         | |         | |         | |
+         v E         v E         v E         v E         v E
+      +-------+    +-----+    +-------+    +-----+    +-------+
+B>--->| RDMA0 |>-->| PQ  |>-->| RSZ0  |>-->| PQ  |>-->| WROT0 |>-->B
+      +-------+    +-----+    +-------+    +-----+    +-------+
+
+[*1] MUTEX is SOF/EOF signal controller
+[*2] S = Start of frame (SOF)
+[*3] E = End of frame (EOF)
+[*4] B = frame buffer
+
+More pipes will be introduced in future chip for applications such as
+higher frame rate frequency, which should move the relevant information
+into the chip configuration header file.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../media/platform/mediatek/mdp3/mt8183_mdp.h | 225 +++++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   2 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   2 +
- .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  10 +-
- .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 262 ++----------------
- .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |   7 +-
- 6 files changed, 259 insertions(+), 249 deletions(-)
+ .../media/platform/mediatek/mdp3/mt8183_mdp.h |  7 ++++
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 38 +++++++++++++++----
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 15 +++++---
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  7 ++++
+ 4 files changed, 54 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/mdp3/mt8183_mdp.h b/drivers/media/platform/mediatek/mdp3/mt8183_mdp.h
-index 59132fce3494..9679af0aab25 100644
+index 4459b6b3937b..d9914e02fb09 100644
 --- a/drivers/media/platform/mediatek/mdp3/mt8183_mdp.h
 +++ b/drivers/media/platform/mediatek/mdp3/mt8183_mdp.h
-@@ -155,4 +155,229 @@ static const struct mdp_comp_data mt8183_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
- 	},
+@@ -21,6 +21,13 @@ static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+ 	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
  };
  
-+/*
-+ * All 10-bit related formats are not added in the basic format list,
-+ * please add the corresponding format settings before use.
-+ */
-+static const struct mdp_format mt8183_formats[] = {
-+	{
-+		.pixelformat	= V4L2_PIX_FMT_GREY,
-+		.mdp_color	= MDP_COLOR_GREY,
-+		.depth		= { 8 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB565X,
-+		.mdp_color	= MDP_COLOR_BGR565,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB565,
-+		.mdp_color	= MDP_COLOR_RGB565,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB24,
-+		.mdp_color	= MDP_COLOR_RGB888,
-+		.depth		= { 24 },
-+		.row_depth	= { 24 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_BGR24,
-+		.mdp_color	= MDP_COLOR_BGR888,
-+		.depth		= { 24 },
-+		.row_depth	= { 24 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_ABGR32,
-+		.mdp_color	= MDP_COLOR_BGRA8888,
-+		.depth		= { 32 },
-+		.row_depth	= { 32 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_ARGB32,
-+		.mdp_color	= MDP_COLOR_ARGB8888,
-+		.depth		= { 32 },
-+		.row_depth	= { 32 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_UYVY,
-+		.mdp_color	= MDP_COLOR_UYVY,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_VYUY,
-+		.mdp_color	= MDP_COLOR_VYUY,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUYV,
-+		.mdp_color	= MDP_COLOR_YUYV,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVYU,
-+		.mdp_color	= MDP_COLOR_YVYU,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUV420,
-+		.mdp_color	= MDP_COLOR_I420,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVU420,
-+		.mdp_color	= MDP_COLOR_YV12,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV12,
-+		.mdp_color	= MDP_COLOR_NV12,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV21,
-+		.mdp_color	= MDP_COLOR_NV21,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV16,
-+		.mdp_color	= MDP_COLOR_NV16,
-+		.depth		= { 16 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV61,
-+		.mdp_color	= MDP_COLOR_NV61,
-+		.depth		= { 16 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV24,
-+		.mdp_color	= MDP_COLOR_NV24,
-+		.depth		= { 24 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV42,
-+		.mdp_color	= MDP_COLOR_NV42,
-+		.depth		= { 24 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_MT21C,
-+		.mdp_color	= MDP_COLOR_420_BLK_UFO,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 4,
-+		.halign		= 5,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_MM21,
-+		.mdp_color	= MDP_COLOR_420_BLK,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 4,
-+		.halign		= 5,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV12M,
-+		.mdp_color	= MDP_COLOR_NV12,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV21M,
-+		.mdp_color	= MDP_COLOR_NV21,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV16M,
-+		.mdp_color	= MDP_COLOR_NV16,
-+		.depth		= { 8, 8 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV61M,
-+		.mdp_color	= MDP_COLOR_NV61,
-+		.depth		= { 8, 8 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUV420M,
-+		.mdp_color	= MDP_COLOR_I420,
-+		.depth		= { 8, 2, 2 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVU420M,
-+		.mdp_color	= MDP_COLOR_YV12,
-+		.depth		= { 8, 2, 2 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}
++static const struct mdp_pipe_info mt8183_pipe_info[] = {
++	{MDP_PIPE_IMGI, 0},
++	{MDP_PIPE_RDMA0, 1},
++	{MDP_PIPE_WPEI, 2},
++	{MDP_PIPE_WPEI2, 3}
 +};
 +
- #endif  // __MT8183_MDP_H__
+ static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+ 	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+ 	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index dcd77f65b0e3..0ce291760acb 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -36,6 +36,18 @@ static bool is_output_disabled(const struct img_compparam *param, u32 count)
+ 		true;
+ }
+ 
++static int mdp_get_pipe_idx(const struct mtk_mdp_driver_data *data,
++			    enum mdp_pipe_id pipe_id)
++{
++	int i;
++
++	for (i = 0; i < data->pipe_info_len; i++)
++		if (pipe_id == data->pipe_info[i].pipe_id)
++			return i;
++
++	return -ENODEV;
++}
++
+ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 				   struct mdp_cmdq_cmd *cmd,
+ 				   s32 *mutex_id, u32 count)
+@@ -50,16 +62,20 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
+ 	/* Decide which mutex to use based on the current pipeline */
+ 	switch (path->comps[0].comp->public_id) {
+ 	case MDP_COMP_RDMA0:
+-		*mutex_id = MDP_PIPE_RDMA0;
++		index = mdp_get_pipe_idx(data, MDP_PIPE_RDMA0);
++		*mutex_id = data->pipe_info[index].mutex_id;
+ 		break;
+ 	case MDP_COMP_ISP_IMGI:
+-		*mutex_id = MDP_PIPE_IMGI;
++		index = mdp_get_pipe_idx(data, MDP_PIPE_IMGI);
++		*mutex_id = data->pipe_info[index].mutex_id;
+ 		break;
+ 	case MDP_COMP_WPEI:
+-		*mutex_id = MDP_PIPE_WPEI;
++		index = mdp_get_pipe_idx(data, MDP_PIPE_WPEI);
++		*mutex_id = data->pipe_info[index].mutex_id;
+ 		break;
+ 	case MDP_COMP_WPEI2:
+-		*mutex_id = MDP_PIPE_WPEI2;
++		index = mdp_get_pipe_idx(data, MDP_PIPE_WPEI2);
++		*mutex_id = data->pipe_info[index].mutex_id;
+ 		break;
+ 	default:
+ 		dev_err(dev, "Unknown pipeline and no mutex is assigned");
+@@ -286,11 +302,13 @@ static void mdp_auto_release_work(struct work_struct *work)
+ {
+ 	struct mdp_cmdq_cmd *cmd;
+ 	struct mdp_dev *mdp;
++	int idx;
+ 
+ 	cmd = container_of(work, struct mdp_cmdq_cmd, auto_release_work);
+ 	mdp = cmd->mdp;
+ 
+-	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
++	idx = mdp_get_pipe_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
++	mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[idx].mutex_id]);
+ 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
+ 			    cmd->num_comps);
+ 
+@@ -310,6 +328,7 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+ 	struct cmdq_cb_data *data;
+ 	struct mdp_dev *mdp;
+ 	struct device *dev;
++	int idx;
+ 
+ 	if (!mssg) {
+ 		pr_info("%s:no callback data\n", __func__);
+@@ -335,7 +354,8 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+ 	INIT_WORK(&cmd->auto_release_work, mdp_auto_release_work);
+ 	if (!queue_work(mdp->clock_wq, &cmd->auto_release_work)) {
+ 		dev_err(dev, "%s:queue_work fail!\n", __func__);
+-		mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
++		idx = mdp_get_pipe_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
++		mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[idx].mutex_id]);
+ 		mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
+ 				    cmd->num_comps);
+ 
+@@ -387,7 +407,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 		goto err_free_comps;
+ 	}
+ 
+-	ret = mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
++	i = mdp_get_pipe_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
++	ret = mtk_mutex_prepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
+ 	if (ret) {
+ 		dev_err(dev, "Fail to enable mutex clk\n");
+ 		goto err_free_path;
+@@ -453,7 +474,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
+ 			    cmd->num_comps);
+ err_free_path:
+-	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
++	i = mdp_get_pipe_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
++	mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
+ 	kfree(path);
+ err_free_comps:
+ 	kfree(comps);
 diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 65c2e52e8d19..3e865e3cf64f 100644
+index 58e6fa23ef0c..3aa5a8f2db56 100644
 --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
 +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
 @@ -24,6 +24,8 @@ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
  	.mdp_mutex_table_idx = mt8183_mutex_idx,
  	.comp_data = mt8183_mdp_comp_data,
  	.comp_data_len = ARRAY_SIZE(mt8183_mdp_comp_data),
-+	.format = mt8183_formats,
-+	.format_len = ARRAY_SIZE(mt8183_formats),
- };
++	.pipe_info = mt8183_pipe_info,
++	.pipe_info_len = ARRAY_SIZE(mt8183_pipe_info),
+ 	.format = mt8183_formats,
+ 	.format_len = ARRAY_SIZE(mt8183_formats),
+ 	.def_limit = &mt8183_mdp_def_limit,
+@@ -165,7 +167,7 @@ static int mdp_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct mdp_dev *mdp;
+ 	struct platform_device *mm_pdev;
+-	int ret, i;
++	int ret, i, mutex_id;
  
- static const struct of_device_id mdp_of_ids[] = {
+ 	mdp = kzalloc(sizeof(*mdp), GFP_KERNEL);
+ 	if (!mdp) {
+@@ -188,9 +190,12 @@ static int mdp_probe(struct platform_device *pdev)
+ 		ret = -ENODEV;
+ 		goto err_destroy_device;
+ 	}
+-	for (i = 0; i < MDP_PIPE_MAX; i++) {
+-		mdp->mdp_mutex[i] = mtk_mutex_get(&mm_pdev->dev);
+-		if (!mdp->mdp_mutex[i]) {
++	for (i = 0; i < mdp->mdp_data->pipe_info_len; i++) {
++		mutex_id = mdp->mdp_data->pipe_info[i].mutex_id;
++		if (mdp->mdp_mutex[mutex_id])
++			continue;
++		mdp->mdp_mutex[mutex_id] = mtk_mutex_get(&mm_pdev->dev);
++		if (!mdp->mdp_mutex[mutex_id]) {
+ 			ret = -ENODEV;
+ 			goto err_free_mutex;
+ 		}
+@@ -271,7 +276,7 @@ static int mdp_probe(struct platform_device *pdev)
+ err_deinit_comp:
+ 	mdp_comp_destroy(mdp);
+ err_free_mutex:
+-	for (i = 0; i < MDP_PIPE_MAX; i++)
++	for (i = 0; i < mdp->mdp_data->pipe_info_len; i++)
+ 		mtk_mutex_put(mdp->mdp_mutex[i]);
+ err_destroy_device:
+ 	kfree(mdp);
 diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index b83b2c517730..982438a9ab02 100644
+index 52f87e59ba9e..30f22bee89e6 100644
 --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
 +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
 @@ -57,6 +57,8 @@ struct mtk_mdp_driver_data {
  	const u32 *mdp_mutex_table_idx;
  	const struct mdp_comp_data *comp_data;
  	unsigned int comp_data_len;
-+	const struct mdp_format *format;
-+	unsigned int format_len;
++	const struct mdp_pipe_info *pipe_info;
++	unsigned int pipe_info_len;
+ 	const struct mdp_format *format;
+ 	unsigned int format_len;
+ 	const struct mdp_limit *def_limit;
+@@ -91,6 +93,11 @@ struct mdp_dev {
+ 	atomic_t				job_count;
  };
  
- struct mdp_dev {
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-index 5f74ea3b7a52..7c14679ffd78 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-@@ -277,7 +277,9 @@ static int mdp_m2m_querycap(struct file *file, void *fh,
- static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
- 				   struct v4l2_fmtdesc *f)
- {
--	return mdp_enum_fmt_mplane(f);
-+	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
++struct mdp_pipe_info {
++	enum mdp_pipe_id pipe_id;
++	u32 mutex_id;
++};
 +
-+	return mdp_enum_fmt_mplane(ctx->mdp_dev, f);
- }
- 
- static int mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
-@@ -307,7 +309,7 @@ static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 	const struct mdp_format *fmt;
- 	struct vb2_queue *vq;
- 
--	fmt = mdp_try_fmt_mplane(f, &ctx->curr_param, ctx->id);
-+	fmt = mdp_try_fmt_mplane(ctx->mdp_dev, f, &ctx->curr_param, ctx->id);
- 	if (!fmt)
- 		return -EINVAL;
- 
-@@ -346,7 +348,7 @@ static int mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- {
- 	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
- 
--	if (!mdp_try_fmt_mplane(f, &ctx->curr_param, ctx->id))
-+	if (!mdp_try_fmt_mplane(ctx->mdp_dev, f, &ctx->curr_param, ctx->id))
- 		return -EINVAL;
- 
- 	return 0;
-@@ -589,7 +591,7 @@ static int mdp_m2m_open(struct file *file)
- 	ctx->fh.m2m_ctx = ctx->m2m_ctx;
- 
- 	ctx->curr_param.ctx = ctx;
--	ret = mdp_frameparam_init(&ctx->curr_param);
-+	ret = mdp_frameparam_init(mdp, &ctx->curr_param);
- 	if (ret) {
- 		dev_err(dev, "Failed to initialize mdp parameter\n");
- 		goto err_release_m2m_ctx;
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
-index 4e84a37ecdfc..cd6afbf53797 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
-@@ -11,231 +11,6 @@
- #include "mtk-mdp3-regs.h"
- #include "mtk-mdp3-m2m.h"
- 
--/*
-- * All 10-bit related formats are not added in the basic format list,
-- * please add the corresponding format settings before use.
-- */
--static const struct mdp_format mdp_formats[] = {
--	{
--		.pixelformat	= V4L2_PIX_FMT_GREY,
--		.mdp_color	= MDP_COLOR_GREY,
--		.depth		= { 8 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_RGB565X,
--		.mdp_color	= MDP_COLOR_BGR565,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_RGB565,
--		.mdp_color	= MDP_COLOR_RGB565,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_RGB24,
--		.mdp_color	= MDP_COLOR_RGB888,
--		.depth		= { 24 },
--		.row_depth	= { 24 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_BGR24,
--		.mdp_color	= MDP_COLOR_BGR888,
--		.depth		= { 24 },
--		.row_depth	= { 24 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_ABGR32,
--		.mdp_color	= MDP_COLOR_BGRA8888,
--		.depth		= { 32 },
--		.row_depth	= { 32 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_ARGB32,
--		.mdp_color	= MDP_COLOR_ARGB8888,
--		.depth		= { 32 },
--		.row_depth	= { 32 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_UYVY,
--		.mdp_color	= MDP_COLOR_UYVY,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_VYUY,
--		.mdp_color	= MDP_COLOR_VYUY,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YUYV,
--		.mdp_color	= MDP_COLOR_YUYV,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YVYU,
--		.mdp_color	= MDP_COLOR_YVYU,
--		.depth		= { 16 },
--		.row_depth	= { 16 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YUV420,
--		.mdp_color	= MDP_COLOR_I420,
--		.depth		= { 12 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YVU420,
--		.mdp_color	= MDP_COLOR_YV12,
--		.depth		= { 12 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV12,
--		.mdp_color	= MDP_COLOR_NV12,
--		.depth		= { 12 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV21,
--		.mdp_color	= MDP_COLOR_NV21,
--		.depth		= { 12 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV16,
--		.mdp_color	= MDP_COLOR_NV16,
--		.depth		= { 16 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV61,
--		.mdp_color	= MDP_COLOR_NV61,
--		.depth		= { 16 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV24,
--		.mdp_color	= MDP_COLOR_NV24,
--		.depth		= { 24 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV42,
--		.mdp_color	= MDP_COLOR_NV42,
--		.depth		= { 24 },
--		.row_depth	= { 8 },
--		.num_planes	= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_MT21C,
--		.mdp_color	= MDP_COLOR_420_BLK_UFO,
--		.depth		= { 8, 4 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 4,
--		.halign		= 5,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_MM21,
--		.mdp_color	= MDP_COLOR_420_BLK,
--		.depth		= { 8, 4 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 4,
--		.halign		= 5,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV12M,
--		.mdp_color	= MDP_COLOR_NV12,
--		.depth		= { 8, 4 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV21M,
--		.mdp_color	= MDP_COLOR_NV21,
--		.depth		= { 8, 4 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV16M,
--		.mdp_color	= MDP_COLOR_NV16,
--		.depth		= { 8, 8 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_NV61M,
--		.mdp_color	= MDP_COLOR_NV61,
--		.depth		= { 8, 8 },
--		.row_depth	= { 8, 8 },
--		.num_planes	= 2,
--		.walign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YUV420M,
--		.mdp_color	= MDP_COLOR_I420,
--		.depth		= { 8, 2, 2 },
--		.row_depth	= { 8, 4, 4 },
--		.num_planes	= 3,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}, {
--		.pixelformat	= V4L2_PIX_FMT_YVU420M,
--		.mdp_color	= MDP_COLOR_YV12,
--		.depth		= { 8, 2, 2 },
--		.row_depth	= { 8, 4, 4 },
--		.num_planes	= 3,
--		.walign		= 1,
--		.halign		= 1,
--		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
--	}
--};
--
- static const struct mdp_limit mdp_def_limit = {
- 	.out_limit = {
- 		.wmin	= 16,
-@@ -255,32 +30,34 @@ static const struct mdp_limit mdp_def_limit = {
- 	.v_scale_down_max = 128,
- };
- 
--static const struct mdp_format *mdp_find_fmt(u32 pixelformat, u32 type)
-+static const struct mdp_format *mdp_find_fmt(const struct mtk_mdp_driver_data *mdp_data,
-+					     u32 pixelformat, u32 type)
- {
- 	u32 i, flag;
- 
- 	flag = V4L2_TYPE_IS_OUTPUT(type) ? MDP_FMT_FLAG_OUTPUT :
- 					MDP_FMT_FLAG_CAPTURE;
--	for (i = 0; i < ARRAY_SIZE(mdp_formats); ++i) {
--		if (!(mdp_formats[i].flags & flag))
-+	for (i = 0; i < mdp_data->format_len; ++i) {
-+		if (!(mdp_data->format[i].flags & flag))
- 			continue;
--		if (mdp_formats[i].pixelformat == pixelformat)
--			return &mdp_formats[i];
-+		if (mdp_data->format[i].pixelformat == pixelformat)
-+			return &mdp_data->format[i];
- 	}
- 	return NULL;
- }
- 
--static const struct mdp_format *mdp_find_fmt_by_index(u32 index, u32 type)
-+static const struct mdp_format *mdp_find_fmt_by_index(const struct mtk_mdp_driver_data *mdp_data,
-+						      u32 index, u32 type)
- {
- 	u32 i, flag, num = 0;
- 
- 	flag = V4L2_TYPE_IS_OUTPUT(type) ? MDP_FMT_FLAG_OUTPUT :
- 					MDP_FMT_FLAG_CAPTURE;
--	for (i = 0; i < ARRAY_SIZE(mdp_formats); ++i) {
--		if (!(mdp_formats[i].flags & flag))
-+	for (i = 0; i < mdp_data->format_len; ++i) {
-+		if (!(mdp_data->format[i].flags & flag))
- 			continue;
- 		if (index == num)
--			return &mdp_formats[i];
-+			return &mdp_data->format[i];
- 		num++;
- 	}
- 	return NULL;
-@@ -354,11 +131,11 @@ static int mdp_clamp_align(s32 *x, int min, int max, unsigned int align)
- 	return 0;
- }
- 
--int mdp_enum_fmt_mplane(struct v4l2_fmtdesc *f)
-+int mdp_enum_fmt_mplane(struct mdp_dev *mdp, struct v4l2_fmtdesc *f)
- {
- 	const struct mdp_format *fmt;
- 
--	fmt = mdp_find_fmt_by_index(f->index, f->type);
-+	fmt = mdp_find_fmt_by_index(mdp->mdp_data, f->index, f->type);
- 	if (!fmt)
- 		return -EINVAL;
- 
-@@ -366,7 +143,8 @@ int mdp_enum_fmt_mplane(struct v4l2_fmtdesc *f)
- 	return 0;
- }
- 
--const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
-+const struct mdp_format *mdp_try_fmt_mplane(struct mdp_dev *mdp,
-+					    struct v4l2_format *f,
- 					    struct mdp_frameparam *param,
- 					    u32 ctx_id)
- {
-@@ -378,9 +156,9 @@ const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
- 	u32 org_w, org_h;
- 	unsigned int i;
- 
--	fmt = mdp_find_fmt(pix_mp->pixelformat, f->type);
-+	fmt = mdp_find_fmt(mdp->mdp_data, pix_mp->pixelformat, f->type);
- 	if (!fmt) {
--		fmt = mdp_find_fmt_by_index(0, f->type);
-+		fmt = mdp_find_fmt_by_index(mdp->mdp_data, 0, f->type);
- 		if (!fmt) {
- 			dev_dbg(dev, "%d: pixelformat %c%c%c%c invalid", ctx_id,
- 				(pix_mp->pixelformat & 0xff),
-@@ -699,7 +477,7 @@ void mdp_set_dst_config(struct img_output *out,
- 	mdp_set_orientation(out, frame->rotation, frame->hflip, frame->vflip);
- }
- 
--int mdp_frameparam_init(struct mdp_frameparam *param)
-+int mdp_frameparam_init(struct mdp_dev *mdp, struct mdp_frameparam *param)
- {
- 	struct mdp_frame *frame;
- 
-@@ -712,7 +490,7 @@ int mdp_frameparam_init(struct mdp_frameparam *param)
- 
- 	frame = &param->output;
- 	frame->format.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
--	frame->mdp_fmt = mdp_try_fmt_mplane(&frame->format, param, 0);
-+	frame->mdp_fmt = mdp_try_fmt_mplane(mdp, &frame->format, param, 0);
- 	frame->ycbcr_prof =
- 		mdp_map_ycbcr_prof_mplane(&frame->format,
- 					  frame->mdp_fmt->mdp_color);
-@@ -721,7 +499,7 @@ int mdp_frameparam_init(struct mdp_frameparam *param)
- 	param->num_captures = 1;
- 	frame = &param->captures[0];
- 	frame->format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
--	frame->mdp_fmt = mdp_try_fmt_mplane(&frame->format, param, 0);
-+	frame->mdp_fmt = mdp_try_fmt_mplane(mdp, &frame->format, param, 0);
- 	frame->ycbcr_prof =
- 		mdp_map_ycbcr_prof_mplane(&frame->format,
- 					  frame->mdp_fmt->mdp_color);
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
-index f995e536d45f..1a26c1bcfd8d 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
-@@ -353,8 +353,9 @@ struct mdp_frameparam {
- 	enum v4l2_quantization		quant;
- };
- 
--int mdp_enum_fmt_mplane(struct v4l2_fmtdesc *f);
--const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
-+int mdp_enum_fmt_mplane(struct mdp_dev *mdp, struct v4l2_fmtdesc *f);
-+const struct mdp_format *mdp_try_fmt_mplane(struct mdp_dev *mdp,
-+					    struct v4l2_format *f,
- 					    struct mdp_frameparam *param,
- 					    u32 ctx_id);
- enum mdp_ycbcr_profile mdp_map_ycbcr_prof_mplane(struct v4l2_format *f,
-@@ -368,6 +369,6 @@ void mdp_set_src_config(struct img_input *in,
- 			struct mdp_frame *frame, struct vb2_buffer *vb);
- void mdp_set_dst_config(struct img_output *out,
- 			struct mdp_frame *frame, struct vb2_buffer *vb);
--int mdp_frameparam_init(struct mdp_frameparam *param);
-+int mdp_frameparam_init(struct mdp_dev *mdp, struct mdp_frameparam *param);
- 
- #endif  /* __MTK_MDP3_REGS_H__ */
+ int mdp_vpu_get_locked(struct mdp_dev *mdp);
+ void mdp_vpu_put_locked(struct mdp_dev *mdp);
+ int mdp_vpu_register(struct mdp_dev *mdp);
 -- 
 2.18.0
 
