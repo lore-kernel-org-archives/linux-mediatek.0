@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6F7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Oct 2022 22:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38452C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 04:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s4uKGLVoIsnIr2GGIUA54OTHEodxsnC2qk/wxdx/2ak=; b=4mdkP5tHD6IM70dPjnN7PEtH/o
-	jymWNLJtySoR/vVnwxkOJu6zRwL+8aEEPJASXHpqcJf/f/3mBfREmvLZfC6waKaL5R2fIjcS+0Bo4
-	+uDWarsdRS8iNDu8LwT+JwMQ2RrpeR3i4KYPLDYlyXqAX3QlF5VyfSNvNDLa+WHQqzEPDDpgoU+yK
-	qykeQHLKi1yK9HYHhJO0ZPHI/ZxJgPcXfWDfh3ZYKyNQd++/j2mulMY2lsKIQ1FXTk8yRLYjH5hPj
-	rdU3TJSvt8gfs06HoaszyS6n1rvv3s3gLeTMJEMAaPxfIXFUuE8kXh1xeMNID7ws7qqfDyHTd/ZHR
-	ZayxoROg==;
+	bh=ZfYCZFJ4/yPzUuuycev/29H8k+cUPjNLZ6E8iaeVWjY=; b=y/1cY7xivCdJm1bwFpdFeI4RJI
+	mOEdFYpWPsLtYsza43NL7uvDrgaFA4GZPeU8AKmQgcHu1JHOS1D4jx7rNx9P/SaYWQI/t0QhvCwWS
+	VuO3iN8Sdpo2IpdDBMsfIkZJqob6rEV4KWDTljOCAD/CUiMths6Rr9v77e2Jg+zv1x3rZfzg8tBjt
+	s/OMsMScQXqcl+6312irbtxaBmCuBvSJJAJPXSXizevPglYPmyHrUNQ6L+q2tbkozfhw+K44H6ySe
+	3dKTSEPKrBPxtpoVGfxX/usHR2A8Wof6868guygFTKzFpBwkQMudGy1SLr/lcZ8GhZ/CTZkSvaWXq
+	Qcw8JNUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oheew-00GJTj-5c; Sun, 09 Oct 2022 22:20:34 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ohkq6-00H1zO-JN; Mon, 10 Oct 2022 04:56:30 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oheel-00GJQ3-7S; Sun, 09 Oct 2022 22:20:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E4E2FB80DD2;
-	Sun,  9 Oct 2022 22:20:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C74C4C433C1;
-	Sun,  9 Oct 2022 22:20:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1665354020;
-	bh=5wnxw6C7mEaBmctzT+ji9b0d4mmzMnevfMMXcjoG3Xg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Bmmg8Pa08vDOskyMYO+KQDnzqVb6fqcYzsF8TB9TIS0i5IRoZMhCj8+lRnholcWro
-	 ppmNF3y4uRAAeYesgNkg7L9jMnLQdnuEMHd2p2Co+ahKdHrlh115+fH6xxB6wNkSGv
-	 CwzWESI4HJ/0NL9JpZJO0rQ9fylfgHCR6J9wQf/2QN4bqmU0XXy403Wrqmmptdvuwr
-	 eWmxGF3z3NfJksqSIbImjW2PwqVpKsVreomeBK+JP31Wzn+LjQjYF7oeaoNhHzaJuo
-	 f7DaxqXrOK+o4Vkl3jQFDvFYTJRGlCFf2gd4nj9q1R46wHhXzs/5ZucPJAFI5V30VY
-	 9KDPe1n/+WJwQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Sean Wang <sean.wang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	johannes.berg@intel.com,
-	deren.wu@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
+	id 1ohkpk-00H1mR-7Z; Mon, 10 Oct 2022 04:56:09 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5811418843CD;
+	Mon, 10 Oct 2022 04:56:03 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 1C041250556A;
+	Mon, 10 Oct 2022 04:56:03 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 0)
+	id 0EB5F9EC0001; Mon, 10 Oct 2022 04:56:03 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id CCB289120FED;
+	Sun,  9 Oct 2022 17:41:35 +0000 (UTC)
+From: "Hans J. Schultz" <netdev@kapio-technology.com>
+To: davem@davemloft.net,
+	kuba@kernel.org
+Cc: netdev@vger.kernel.org,
+	"Hans J. Schultz" <netdev@kapio-technology.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>,
+	Petr Machata <petrm@nvidia.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 23/46] wifi: mt76: mt7921: reset msta->airtime_ac while clearing up hw value
-Date: Sun,  9 Oct 2022 18:18:48 -0400
-Message-Id: <20221009221912.1217372-23-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221009221912.1217372-1-sashal@kernel.org>
-References: <20221009221912.1217372-1-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH v7 net-next 8/9] net: dsa: mv88e6xxx: add blackhole ATU entries
+Date: Sun,  9 Oct 2022 19:40:51 +0200
+Message-Id: <20221009174052.1927483-9-netdev@kapio-technology.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221009174052.1927483-1-netdev@kapio-technology.com>
+References: <20221009174052.1927483-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Organization: Westermo Network Technologies AB
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221009_152023_434189_3826E452 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20221009_215608_456926_CA3F1491 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,36 +103,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Blackhole FDB entries can now be added, deleted or replaced in the
+driver ATU.
 
-[ Upstream commit 1bf66dc31032ff5292f4d5b76436653f269fcfbd ]
-
-We should reset mstat->airtime_ac along with clear up the entries in the
-hardware WLAN table for the Rx and Rx accumulative airtime. Otherwsie, the
-value msta->airtime_ac - [tx, rx]_last may be a negative and that is not
-the actual airtime the device took in the last run.
-
-Reported-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/dsa/mv88e6xxx/chip.c | 60 +++++++++++++++++++++++++++++---
+ 1 file changed, 56 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 6cb65391427f..7b48df301079 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -627,6 +627,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
+index 71843fe87f77..3c4ebb2a5301 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.c
++++ b/drivers/net/dsa/mv88e6xxx/chip.c
+@@ -2735,6 +2735,56 @@ static int mv88e6xxx_vlan_msti_set(struct dsa_switch *ds,
+ 	return err;
+ }
  
- 	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+	memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
++static int mv88e6xxx_blackhole_fdb_loadpurge(struct dsa_switch *ds,
++					     const unsigned char *addr, u16 vid, u8 state)
++{
++	struct mv88e6xxx_chip *chip = ds->priv;
++	struct mv88e6xxx_atu_entry entry;
++	struct mv88e6xxx_vtu_entry vlan;
++
++	u16 fid = 0;
++	int err;
++
++	if (vid == 0) {
++		fid = MV88E6XXX_FID_BRIDGED;
++	} else {
++		mv88e6xxx_reg_lock(chip);
++		err = mv88e6xxx_vtu_get(chip, vid, &vlan);
++		mv88e6xxx_reg_unlock(chip);
++		if (err)
++			return err;
++
++		/* switchdev expects -EOPNOTSUPP to honor software VLANs */
++		if (!vlan.valid)
++			return -EOPNOTSUPP;
++
++		fid = vlan.fid;
++	}
++
++	ether_addr_copy(entry.mac, addr);
++	entry.portvec = MV88E6XXX_G1_ATU_DATA_PORT_VECTOR_NO_EGRESS;
++	entry.state = state;
++	entry.trunk = false;
++
++	mv88e6xxx_reg_lock(chip);
++	err = mv88e6xxx_g1_atu_loadpurge(chip, fid, &entry);
++	mv88e6xxx_reg_unlock(chip);
++
++	return err;
++}
++
++int mv88e6xxx_blackhole_fdb_add(struct dsa_switch *ds, const unsigned char *addr, u16 vid)
++{
++	return mv88e6xxx_blackhole_fdb_loadpurge(ds, addr, vid,
++						 MV88E6XXX_G1_ATU_DATA_STATE_UC_STATIC);
++}
++
++int mv88e6xxx_blackhole_fdb_del(struct dsa_switch *ds, const unsigned char *addr, u16 vid)
++{
++	return mv88e6xxx_blackhole_fdb_loadpurge(ds, addr, vid,
++						 MV88E6XXX_G1_ATU_DATA_STATE_UC_UNUSED);
++}
++
+ static int mv88e6xxx_port_fdb_add(struct dsa_switch *ds, int port,
+ 				  const unsigned char *addr, u16 vid,
+ 				  u16 fdb_flags, struct dsa_db db)
+@@ -2742,9 +2792,10 @@ static int mv88e6xxx_port_fdb_add(struct dsa_switch *ds, int port,
+ 	struct mv88e6xxx_chip *chip = ds->priv;
+ 	int err;
  
- 	mt7921_mcu_sta_update(dev, sta, vif, true, MT76_STA_INFO_STATE_ASSOC);
+-	/* Ignore entries with flags set */
+-	if (fdb_flags)
++	if (fdb_flags & DSA_FDB_FLAG_LOCKED)
+ 		return 0;
++	if (fdb_flags & DSA_FDB_FLAG_BLACKHOLE)
++		return mv88e6xxx_blackhole_fdb_add(ds, addr, vid);
  
+ 	if (mv88e6xxx_port_is_locked(chip, port))
+ 		mv88e6xxx_atu_locked_entry_find_purge(ds, port, addr, vid);
+@@ -2765,9 +2816,10 @@ static int mv88e6xxx_port_fdb_del(struct dsa_switch *ds, int port,
+ 	bool locked_found = false;
+ 	int err = 0;
+ 
+-	/* Ignore entries with flags set */
+-	if (fdb_flags)
++	if (fdb_flags & DSA_FDB_FLAG_LOCKED)
+ 		return 0;
++	if (fdb_flags & DSA_FDB_FLAG_BLACKHOLE)
++		return mv88e6xxx_blackhole_fdb_del(ds, addr, vid);
+ 
+ 	if (mv88e6xxx_port_is_locked(chip, port))
+ 		locked_found = mv88e6xxx_atu_locked_entry_find_purge(ds, port, addr, vid);
 -- 
-2.35.1
+2.34.1
 
 
