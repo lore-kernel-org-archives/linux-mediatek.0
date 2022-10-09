@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350DAC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Oct 2022 17:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130D7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Oct 2022 22:11:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KJzgQngL/7s3fyVuoAXWpFLlHfzof3+kS+4LVVt5xqQ=; b=VYy2wwjzfIXdndaGmpZoqo0kDc
-	rAfA9jsGjy3V/hc2HKSAFT12fuPWhMtnKdjcwAC62AGud+E2JtqRRsqGSPBKJtLBkEFQNsjjkFfXb
-	Viz6zazmj5nop0/mEbfrfZgMrxsoYIRtLDV9gyo9wvlNEbBSbsfVSQbeZZmPkvW8f1ODAHnXz5EBy
-	U6eUPJB06j95CWaYgYxVI2VPOv0BAYCjLNaIni42pFBrNj1h358jpfz1nHpCiJTscE7f+gkD55EtM
-	xp/R0D223FGABR1qANfcpMZOrekaeMsJ1WK4dqSHJbDMtbYN+tMwgpymltHhm1hQ0gNw26a8yn1Fv
-	5r0U6Z9Q==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vX2oWPlNmqiaYD2VduM5OwUs4h3HdZ+zfY5ddAJeqt0=; b=QImnbuZZU5Y4qSvggnLMUquuPl
+	tDG1GDUaQfVpLapzQ/LR+REaz0VnpjgI+rKg8Vvj1vDojuPpFkcDVBUbulGSeg9+SOiwqfi2L3wCR
+	3dgqQL7CDWaMJxwP5wLtVWmiUMmH8qjx6XN7rUytjJNiMddZTbkH365f12Efy43cTLaL5IM/tKBIC
+	p5IRJ8CbYXB2vUUCtTALfqXeXf1eOQBa3Y/u5BsBZikBseDQh0SHApNw4nG47Q2eAC3QwFfVY3w5b
+	8dJ8m6mUwnsMrkSAM47fwFVEYijykqCI49iJKrHsNYtQdqJHt/pxU0TYDPBx1lSQWz/Amz4rvHrzk
+	p7/HZQBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohaL5-00FxLF-9g; Sun, 09 Oct 2022 17:43:47 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oheVz-00GGha-3z; Sun, 09 Oct 2022 22:11:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohaKo-00FwAt-Ux; Sun, 09 Oct 2022 17:43:33 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id AC8BE18843E0;
-	Sun,  9 Oct 2022 17:41:22 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 9E18225052CE;
-	Sun,  9 Oct 2022 17:41:22 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 8C6E99EC0005; Sun,  9 Oct 2022 17:41:22 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id AC4469120FED;
-	Sun,  9 Oct 2022 17:41:21 +0000 (UTC)
-From: "Hans J. Schultz" <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	"Hans J. Schultz" <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>,
-	Petr Machata <petrm@nvidia.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>,
-	linux-kernel@vger.kernel.org,
+	id 1oheVo-00GGem-DG; Sun, 09 Oct 2022 22:11:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id EEF3560CBB;
+	Sun,  9 Oct 2022 22:11:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5177BC433C1;
+	Sun,  9 Oct 2022 22:11:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1665353467;
+	bh=Ltf1k6nZbq/4KQz6xsOUMvd7H8pKv9s2/hbk21ToTPs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mFGwaHuiCdUPufA3+pk12DdJJdaFnnMX2FMzvPLv9D+OZbj7Gj9/PgF8XGvcTKsCQ
+	 sEG3j6JYWYn8IIZDsW1vbqxjRHG0a5TuL/u5z+BWBE7Kf3mBpJk4vucfpKaI+iDRpU
+	 ayK6uZRIhmbIrJZN07UEcGw5ZpoMgVBfU8qR2yWISYX8rlOOAfzx5EX+CxiEM/s4Cm
+	 wrTZYyCkSVn21/1UuejTYmZ4bQSo6O/jpAHZU7fK63y288tXcRFmNXVRwzrEglg/KF
+	 EPmzpuUVw+k0ZUZppq6GAfE/jkuqWJKCFB8dYhWhdY2FgDdcmYjccQyxRpEWlPyhzY
+	 2yyoRU7nniGkQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Sean Wang <sean.wang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Sasha Levin <sashal@kernel.org>,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	kvalo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	deren.wu@mediatek.com,
+	johannes.berg@intel.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH v7 net-next 0/9] Extend locked port feature with FDB locked flag (MAC-Auth/MAB)
-Date: Sun,  9 Oct 2022 19:40:43 +0200
-Message-Id: <20221009174052.1927483-1-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.0 41/77] wifi: mt76: mt7921: reset msta->airtime_ac while clearing up hw value
+Date: Sun,  9 Oct 2022 18:07:18 -0400
+Message-Id: <20221009220754.1214186-41-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221009220754.1214186-1-sashal@kernel.org>
+References: <20221009220754.1214186-1-sashal@kernel.org>
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
+X-stable: review
+X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221009_104331_325100_9662AF8E 
-X-CRM114-Status: GOOD (  26.34  )
+X-CRM114-CacheID: sfid-20221009_151108_561702_41934D0C 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,148 +89,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch set extends the locked port feature for devices
-that are behind a locked port, but do not have the ability to
-authorize themselves as a supplicant using IEEE 802.1X.
-Such devices can be printers, meters or anything related to
-fixed installations. Instead of 802.1X authorization, devices
-can get access based on their MAC addresses being whitelisted.
+From: Sean Wang <sean.wang@mediatek.com>
 
-For an authorization daemon to detect that a device is trying
-to get access through a locked port, the bridge will add the
-MAC address of the device to the FDB with a locked flag to it.
-Thus the authorization daemon can catch the FDB add event and
-check if the MAC address is in the whitelist and if so replace
-the FDB entry without the locked flag enabled, and thus open
-the port for the device.
+[ Upstream commit 1bf66dc31032ff5292f4d5b76436653f269fcfbd ]
 
-This feature is known as MAC-Auth or MAC Authentication Bypass
-(MAB) in Cisco terminology, where the full MAB concept involves
-additional Cisco infrastructure for authorization. There is no
-real authentication process, as the MAC address of the device
-is the only input the authorization daemon, in the general
-case, has to base the decision if to unlock the port or not.
+We should reset mstat->airtime_ac along with clear up the entries in the
+hardware WLAN table for the Rx and Rx accumulative airtime. Otherwsie, the
+value msta->airtime_ac - [tx, rx]_last may be a negative and that is not
+the actual airtime the device took in the last run.
 
-With this patch set, an implementation of the offloaded case is
-supplied for the mv88e6xxx driver. When a packet ingresses on
-a locked port, an ATU miss violation event will occur. When
-handling such ATU miss violation interrupts, the MAC address of
-the device is added to the FDB with a zero destination port
-vector (DPV) and the MAC address is communicated through the
-switchdev layer to the bridge, so that a FDB entry with the
-locked flag enabled can be added.
+Reported-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Log:
-        v3:     Added timers and lists in the driver (mv88e6xxx)
-                to keep track of and remove locked entries.
-
-        v4:     Leave out enforcing a limit to the number of
-                locked entries in the bridge.
-                Removed the timers in the driver and use the
-                worker only. Add locked FDB flag to all drivers
-                using port_fdb_add() from the dsa api and let
-                all drivers ignore entries with this flag set.
-                Change how to get the ageing timeout of locked
-                entries. See global1_atu.c and switchdev.c.
-                Use struct mv88e6xxx_port for locked entries
-                variables instead of struct dsa_port.
-
-        v5:     Added 'mab' flag to enable MAB/MacAuth feature,
-                in a similar way to the locked feature flag.
-
-                In these implementations for the mv88e6xxx, the
-                switchport must be configured with learning on.
-
-                To tell userspace about the behavior of the
-                locked entries in the driver, a 'blackhole'
-                FDB flag has been added, which locked FDB
-                entries coming from the driver gets. Also the
-                'sticky' flag comes with those locked entries,
-                as the drivers locked entries cannot roam.
-
-                Fixed issues with taking mutex locks, and added
-                a function to read the fid, that supports all
-                versions of the chipset family.
-
-        v6:     Added blackhole FDB flag instead of using sticky
-                flag, as the blackhole flag corresponds to the
-                behaviour of the zero-DPV locked entries in the
-                driver.
-
-                Userspace can add blackhole FDB entries with:
-                # bridge fdb add MAC dev br0 blackhole
-
-                Added FDB flags towards driver in DSA layer as u16.
-
-	v7:	Remove locked port and mab flags from DSA flags
-		inherit list as it messes with the learning
-		setting and those flags are not naturally meant
-		for enheriting, but should be set explicitly.
-
-		Fix blackhole implementation, selftests a.o small
-		fixes.
-
-Hans J. Schultz (9):
-  net: bridge: add locked entry fdb flag to extend locked port feature
-  net: bridge: add blackhole fdb entry flag
-  net: switchdev: add support for offloading of the FDB locked flag
-  net: switchdev: support offloading of the FDB blackhole flag
-  drivers: net: dsa: add fdb entry flags to drivers
-  net: dsa: mv88e6xxx: allow reading FID when handling ATU violations
-  net: dsa: mv88e6xxx: mac-auth/MAB implementation
-  net: dsa: mv88e6xxx: add blackhole ATU entries
-  selftests: forwarding: add test of MAC-Auth Bypass to locked port
-    tests
-
- drivers/net/dsa/b53/b53_common.c              |  12 +-
- drivers/net/dsa/b53/b53_priv.h                |   4 +-
- drivers/net/dsa/hirschmann/hellcreek.c        |  12 +-
- drivers/net/dsa/lan9303-core.c                |  12 +-
- drivers/net/dsa/lantiq_gswip.c                |  12 +-
- drivers/net/dsa/microchip/ksz9477.c           |   8 +-
- drivers/net/dsa/microchip/ksz9477.h           |   8 +-
- drivers/net/dsa/microchip/ksz_common.c        |  14 +-
- drivers/net/dsa/mt7530.c                      |  12 +-
- drivers/net/dsa/mv88e6xxx/Makefile            |   1 +
- drivers/net/dsa/mv88e6xxx/chip.c              | 140 ++++++++-
- drivers/net/dsa/mv88e6xxx/chip.h              |  19 ++
- drivers/net/dsa/mv88e6xxx/global1.h           |   1 +
- drivers/net/dsa/mv88e6xxx/global1_atu.c       |  72 ++++-
- drivers/net/dsa/mv88e6xxx/port.c              |  15 +-
- drivers/net/dsa/mv88e6xxx/port.h              |   6 +
- drivers/net/dsa/mv88e6xxx/switchdev.c         | 284 ++++++++++++++++++
- drivers/net/dsa/mv88e6xxx/switchdev.h         |  37 +++
- drivers/net/dsa/ocelot/felix.c                |  12 +-
- drivers/net/dsa/qca/qca8k-common.c            |  12 +-
- drivers/net/dsa/qca/qca8k.h                   |   4 +-
- drivers/net/dsa/sja1105/sja1105_main.c        |  18 +-
- include/linux/if_bridge.h                     |   1 +
- include/net/dsa.h                             |   7 +-
- include/net/switchdev.h                       |   2 +
- include/uapi/linux/if_link.h                  |   1 +
- include/uapi/linux/neighbour.h                |  11 +-
- net/bridge/br.c                               |   5 +-
- net/bridge/br_fdb.c                           |  77 ++++-
- net/bridge/br_input.c                         |  20 +-
- net/bridge/br_netlink.c                       |  12 +-
- net/bridge/br_private.h                       |   5 +-
- net/bridge/br_switchdev.c                     |   4 +-
- net/core/rtnetlink.c                          |   9 +
- net/dsa/dsa_priv.h                            |  10 +-
- net/dsa/port.c                                |  32 +-
- net/dsa/slave.c                               |  16 +-
- net/dsa/switch.c                              |  24 +-
- .../selftests/drivers/net/dsa/Makefile        |   1 +
- .../testing/selftests/net/forwarding/Makefile |   1 +
- .../net/forwarding/bridge_blackhole_fdb.sh    | 134 +++++++++
- .../net/forwarding/bridge_locked_port.sh      | 101 ++++++-
- tools/testing/selftests/net/forwarding/lib.sh |  17 ++
- 43 files changed, 1086 insertions(+), 119 deletions(-)
- create mode 100644 drivers/net/dsa/mv88e6xxx/switchdev.c
- create mode 100644 drivers/net/dsa/mv88e6xxx/switchdev.h
- create mode 100755 tools/testing/selftests/net/forwarding/bridge_blackhole_fdb.sh
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 1438a9f8d1fd..33bd64fe5c74 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -752,6 +752,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 
+ 	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
++	memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
+ 
+ 	mt7921_mcu_sta_update(dev, sta, vif, true, MT76_STA_INFO_STATE_ASSOC);
+ 
 -- 
-2.34.1
+2.35.1
 
 
