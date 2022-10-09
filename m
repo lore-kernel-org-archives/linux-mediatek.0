@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA13AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Oct 2022 10:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A027C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Oct 2022 10:17:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QXyT5YJN3+YDge821n8shwosjTB85QzSw4HLxnCUVGs=; b=ftbJjHiFLMCiKk
-	tqaPkNGArbb7TcVlOlhDffiV/SZKyq8zBNGSsGJGqrCk6wIM3erWIYUvMOkA3yIph66YzYRBXEz7O
-	hpMwfThZ+8E+daRCoTmxojxWKm71I57+zK/tsYl+sDeVsiqh3Ulpsn6uw569RkHtTkLC1iBrL6UFs
-	DM04Hreat1pB5DxOaWnCejM2hgMB1lJo/FHuehA8HTJ1hnABitWueNmMtifauOyGPkcxj3yHrJ8Ou
-	Dr3+5i575z5FkBL20056wPRFuFQa8twhWx7juPScjVw/0V28WxQDsvFqCnHGndDqgo71HpF2azGcL
-	ZNDwc+7T7AXfabCU7/oQ==;
+	List-Owner; bh=UvX5JZ3bRps1L5sLKCfsTQTlmDO/mXO5YN2RtdaxIBM=; b=AAclPnZBlx5B6O
+	59B9YXR1BewGrs2SObQXw3f+7rJuuDXBhmcIY+TubpRfYBYX/DWryrRi7lk6lAxTemjw9AOZeaEg8
+	pFd9gSAFfD2fC5e8ecjULt5CY2bqkrCv6/hPpcMjIKSqOVnsl15p9JT57Q6grGGmxYhrWy+sr2Yo0
+	r4/z4wDjal1EVkwOY/HOxqIQgxxl1lHRVQNubMKQqK4x5cwhtykQNRaugCY7Y3/8yZA/Km9KOdVYT
+	GXMqraclS8Ikc6CeF2PO7UCUz4NwWTI+7jlOAXk9u97fgGLi6NJTfUyG6NxEC88fZCmNAKMbDmYIe
+	wSx5n/4azLLuNEnQfrRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohTMm-00FHWV-Fq; Sun, 09 Oct 2022 10:17:04 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1ohTMv-00FHZ7-Oy; Sun, 09 Oct 2022 10:17:13 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohTMU-00FHTN-5W; Sun, 09 Oct 2022 10:16:47 +0000
+	id 1ohTMU-00FHTQ-5T; Sun, 09 Oct 2022 10:16:48 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout4.routing.net (Postfix) with ESMTP id 7197D100760;
-	Sun,  9 Oct 2022 10:16:40 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 0F4C25FF91;
+	Sun,  9 Oct 2022 10:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1665310600;
+	s=20200217; t=1665310601;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=QXyT5YJN3+YDge821n8shwosjTB85QzSw4HLxnCUVGs=;
-	b=U2yzhoSTMA3GyM1JtA1oLJCzofHTxU8KUHrqOAxhzydQlvcMEW/FsGUg+0c8QAYnb7tme8
-	kY6LyVSZo9T3yvqo9Hf+hsAsynu4HYYHJW4fGaXnkCvwov1zfkSF09vfLaKQ4MQ5m2Af7e
-	7P3BPuacBCysuRDxt+aAwoqm115uWdU=
+	bh=UvX5JZ3bRps1L5sLKCfsTQTlmDO/mXO5YN2RtdaxIBM=;
+	b=MOdHhfKXcvq4XKXfTBYUtQIVY8JT5DNuGCzThIZ4oxr311CtMPUbYozvXeGiWbpVX/01dF
+	iYHVXAWanNasveWEuBgthHPS5D73E2LQJgKaGA+mT+7a9bQv50gBET3+8A9/yaAHYJiQAb
+	QsePUUY3LBmUHTm2krLE2XgpbhzA41Q=
 Received: from frank-G5.. (fttx-pool-217.61.145.235.bambit.de [217.61.145.235])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id AF9C410072A;
-	Sun,  9 Oct 2022 10:16:39 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 646791005FA;
+	Sun,  9 Oct 2022 10:16:40 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/2] dt-bindings: i2c: update bindings for mt7986 soc
-Date: Sun,  9 Oct 2022 12:16:30 +0200
-Message-Id: <20221009101631.82380-2-linux@fw-web.de>
+Subject: [PATCH 2/2] i2c: mediatek: add mt7986 support
+Date: Sun,  9 Oct 2022 12:16:31 +0200
+Message-Id: <20221009101631.82380-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221009101631.82380-1-linux@fw-web.de>
 References: <20221009101631.82380-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 2c477d1d-b694-4206-b5ee-c08fdc400734
+X-Mail-ID: a3c6661a-5cf1-4138-9773-e2eb642628db
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221009_031646_416093_D81D652A 
-X-CRM114-Status: UNSURE (   8.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221009_031646_415979_90307A56 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +71,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add i2c compatible for MT7986 SOC.
+Add i2c support for MT7986 SoC.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-index 4e730fb7be56..421563bf576c 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
-@@ -23,6 +23,7 @@ properties:
-       - const: mediatek,mt6577-i2c
-       - const: mediatek,mt6589-i2c
-       - const: mediatek,mt7622-i2c
-+      - const: mediatek,mt7986-i2c
-       - const: mediatek,mt8168-i2c
-       - const: mediatek,mt8173-i2c
-       - const: mediatek,mt8183-i2c
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index fc7bfd98156b..d80e59340d97 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -431,6 +431,19 @@ static const struct mtk_i2c_compatible mt8168_compat = {
+ 	.max_dma_support = 33,
+ };
+ 
++static const struct mtk_i2c_compatible mt7986_compat = {
++	.quirks = &mt7622_i2c_quirks,
++	.regs = mt_i2c_regs_v1,
++	.pmic_i2c = 0,
++	.dcm = 1,
++	.auto_restart = 1,
++	.aux_len_reg = 1,
++	.timing_adjust = 0,
++	.dma_sync = 1,
++	.ltiming_adjust = 0,
++	.max_dma_support = 32,
++};
++
+ static const struct mtk_i2c_compatible mt8173_compat = {
+ 	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+@@ -503,6 +516,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
+ 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
+ 	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
+ 	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
++	{ .compatible = "mediatek,mt7986-i2c", .data = &mt7986_compat },
+ 	{ .compatible = "mediatek,mt8168-i2c", .data = &mt8168_compat },
+ 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
+ 	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
 -- 
 2.34.1
 
