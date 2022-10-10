@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1CAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 12:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3D2BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 12:55:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JiWA6kHWtRuUAXCAiamR4bH09VAD/TvgSAgJfQ4BY9w=; b=d+FolPfE/eAVvWDAkCJ6b6PJM2
-	SZa/bPzdZ2OfH/oyKywXutPYg8lc1seenKCg7d9y4twSI1LBM48wIE2zw4t8fjhFDWSRtfC/+kYTW
-	WAP3fzVytTINagRFjtGx1pgd3w6K7bEql1j1R5a4AvyHVM+XExUdboWuPPAT238wKIZSvwnaEr2hN
-	GCg0oUtM2gfRjGqbcmJI1Z3dGve/+aG/zwldgdXmLhafp+V9nHvozwEK+7coY9IdeEdZwo31gzYzz
-	XEbgR8UNGSeAcEZ7NH0Ljh4udFVmDRVZYrI5ty3I0GKLb2Hl6S88CY/vS94qS95c+EFlbkgOu9kr0
-	QzkXgz6Q==;
+	bh=vZ4L3eGmqKYAclKSwyEel3UxVWUej6QJpYaCconox5E=; b=PWxd8P3L3AGBdSauMRRhCZsUEe
+	D0H0ZmpKhxuLMoCaoR4UHl3HSCAQ0Oa4+iKvttSmBfwUErTt3VAqr4KzYRm/suWFHXnXTZC1+fc45
+	impeZtzxgQDiBHqopQPoevWy39J9ZHjnvymaXPQjlDMdl06RCdlX8mXSqsGKU+btD+rpnBOE9B70I
+	uDkkemq/xJRhz+Tq4t2hTc9gBvqPFIqs29pQmqGQEIdpElL3UUse2d217IOaVPbncOagn9K7IwxOu
+	3KnF9CFaF/IQeZ/qJArB+pRV77uZ+ZJGukzMLaAmSa/vTCZ6D5ke8OYEbqb8jR6IxvJ81hFe6nxkC
+	cPWuqQSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohsIl-000tgq-H3; Mon, 10 Oct 2022 12:54:35 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1ohsJ8-000trp-Lm; Mon, 10 Oct 2022 12:54:58 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohsIV-000tYC-4e
-	for linux-mediatek@lists.infradead.org; Mon, 10 Oct 2022 12:54:23 +0000
-Received: by mail-wr1-x429.google.com with SMTP id bp11so4147571wrb.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Oct 2022 05:54:18 -0700 (PDT)
+	id 1ohsIX-000tZ8-Qx
+	for linux-mediatek@lists.infradead.org; Mon, 10 Oct 2022 12:54:25 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id b4so16925674wrs.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Oct 2022 05:54:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=JiWA6kHWtRuUAXCAiamR4bH09VAD/TvgSAgJfQ4BY9w=;
-        b=7Yqq0fO9BcR/DpMIbJLThhP6IJRa+aJ8BKXJ0Q5KDgAHFcWSdCz/0Y/vz886juBNBw
-         mrIeMLB3QuYE3B72AEcS+y0EyFZrHcUvT5oZGCcsZDWCApBULlMM6dRTNKT92x4cKoLT
-         9MC7m3zjvDLEumIJ/vW3JAyltzGnuTSc2CVBKa81g/UlpBQ2LVDjzfPs7Oq+hJQpQEjm
-         Gwl351kZDheFpvWyNSDuqagNmJLzfKXq8Y4pP3t52ZdZUxVyMGK1p6OpsFcarLuFc/MP
-         vypGc4WzngZ8+Vh1Hm0uKK3ubItBnqc0VHuk4ApLdNHdTlEkomEpf3VpX6wg/HzYdRFf
-         lA8w==
+        bh=vZ4L3eGmqKYAclKSwyEel3UxVWUej6QJpYaCconox5E=;
+        b=rgdAIwlkpvnub0RaiX4fefvk5wCulG8vp0BP+WcJrCUzbBspaWp2GtmBMF2ij7UeLB
+         Vp5SkCMp1ZSqvsLBcT4POcX4auHkHhOq7FB0ywft1Pa/l7hKPZ+xAzRMLY6gPjWTVmA8
+         xg6qQ+G78hQntai3/+GlX8xjMlTDLggQNzZLhq/MikBC1eNglLYCGniTx9YWcfTmpEMI
+         BnWGwWk0ysejp7Jm80d3IzfhR6Sa65sJSw+Ed18KeOvxIf+WX0CQS4j0RsvYxNFruZXH
+         IrLWWQz5qw+moFKHLqvUzIyQ636wdqjcZ/l4qvx0+BS5yg6A1E/UbL96D6wQaMYh7aSC
+         CN8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JiWA6kHWtRuUAXCAiamR4bH09VAD/TvgSAgJfQ4BY9w=;
-        b=nvtWrzMFeeVuwP/AEQfA/lncnmjO9rhCmrd86wBT8ug6803nbCaGHgZDZNSbuBEUyT
-         w9vsbQKphyN+Dzpccnr2PldYN6QEXRStoClnusiBqECrxWhvp73zOSjicsQ1RG37WlpU
-         Wo/ljhJ8DpL/U44uXxGx/niDA8rj9A4OGv9EEwWmRl+UqCpS4VciCTiiq2+OIh5vgExy
-         VFeGyGZ2pOpf0NrJPewqzoqAcua7f9dUI2CHi9ijI2vlnrapzcYE/DBy2H5hCQb/hHUG
-         7ynMBYp2keqD5kMj8VBB5ZK7ikvMtVf/OIzziLMrHO94o/gpmm/kfArlOujDmh7XeKaW
-         hMKQ==
-X-Gm-Message-State: ACrzQf0cpfBYk0C/7Zg56EpDIhIbKLmZ0OQjvExO3XGf3IPTb+MYVcqA
-	hWOCRAFhh6R9dViYYIorxTuR8Q==
-X-Google-Smtp-Source: AMsMyM6880sYfZrxIAWJa+diFOgETjzDlaOButRK4kAJaLHH3yBgeNnvUUvDG5kDgRyEQdEPlTuzXw==
-X-Received: by 2002:a5d:4688:0:b0:22e:340d:7108 with SMTP id u8-20020a5d4688000000b0022e340d7108mr11371980wrq.67.1665406457198;
-        Mon, 10 Oct 2022 05:54:17 -0700 (PDT)
+        bh=vZ4L3eGmqKYAclKSwyEel3UxVWUej6QJpYaCconox5E=;
+        b=QGrFH0Gyq8qPaFQJZZMOpUhXGs/55aixQW1BUOXg9jlPs9FV4ci6i+tj6QPYCpr8Sm
+         lMY1I2iwssfHMDQueMUIC/XdACNY3WZSmJvdmA0PQWg6G3SC0VeBbEgCCtkmWliup5RY
+         nhDTcKU+3fC4/47BfXB3fBc/HjHoP5s9McB5ePf7cClRwVGtIPbo7zNKVf54OyDxz3P+
+         N8Cz3p6gHZ5mp4wF/woITJblon7f6MbOcu86tNchvQU/xYQRtXfnW66MCJ1CH/kAMJYC
+         GVN6Dpp1yeLUyzFriOPlXEliE++fyBwRuEcVOtpXOIeS/+H1W4KPx7r4c1MrDPtcvW2T
+         Ydaw==
+X-Gm-Message-State: ACrzQf3PP/8qf/Rcek/GNwhObrhvdC7fZDf0eYhZv4Kvir67lGbUhNPd
+	SOBaR7soRK1j7mFZpM95o+b9AA==
+X-Google-Smtp-Source: AMsMyM6jeFIQqxlWum39mAdlhTnkevmmnxlbs7XGdKPUqz8uSEIoAoVBL7h0xE0OUAXWWR6OqM8iUQ==
+X-Received: by 2002:a5d:674f:0:b0:22e:3d59:cf0f with SMTP id l15-20020a5d674f000000b0022e3d59cf0fmr11451686wrw.304.1665406459794;
+        Mon, 10 Oct 2022 05:54:19 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id v24-20020a1cf718000000b003a6125562e1sm9767020wmh.46.2022.10.10.05.54.16
+        by smtp.googlemail.com with ESMTPSA id v24-20020a1cf718000000b003a6125562e1sm9767020wmh.46.2022.10.10.05.54.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Oct 2022 05:54:16 -0700 (PDT)
+        Mon, 10 Oct 2022 05:54:19 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 10 Oct 2022 14:54:07 +0200
-Subject: [PATCH v3 1/3] dt-bindings: iommu: mediatek: add binding documentation for
- MT8365 SoC
+Date: Mon, 10 Oct 2022 14:54:09 +0200
+Subject: [PATCH v3 3/3] iommu/mediatek: add support for MT8365 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221001-iommu-support-v3-1-c7b3059b0d16@baylibre.com>
+Message-Id: <20221001-iommu-support-v3-3-c7b3059b0d16@baylibre.com>
 References: <20221001-iommu-support-v3-0-c7b3059b0d16@baylibre.com>
 In-Reply-To: <20221001-iommu-support-v3-0-c7b3059b0d16@baylibre.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>,
@@ -79,24 +78,24 @@ Cc: iommu@lists.linux.dev, AngeloGioacchino Del Regno <angelogioacchino.delregno
  Markus Schneider-Pargmann <msp@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>,
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6167; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=0bul7pwX38ptniWp0yTLJj2guSWhjZD2stSL5ozvHW0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjRBX2FYjdbWGZUfXjqVR47k6xjBbfmiAmLx0BN+nV
- 4WB7lCSJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY0QV9gAKCRArRkmdfjHURQySD/
- 0Sm8jCUCEHCU7DBO3HQwC+UP2zhpUqq24CRuPfamefm40KQgaSpU6PBIQRT+BU+53po19xkRwukDzI
- jSbtZTmLtsM97ZXqE+ZSLMQU/WG8Ba1IHQeG/CA6vYh5R00ANLfyJ6BKJ1oBXDAJifsIRreNcd6mM6
- nNNJOZ4ghy0mb4Ej86C+OQB9/zFAb8EL2hP/ZCu519i7ESvZrHOjqOjvppd6sFnRYlpKlHF/WquS4O
- t38lx/F6qX7EWNuBfVuiuAr2QVP+40by1QpmXMiY2THkCFtdegP29w6qYV7NA6av3z+FcnoQSr2eqm
- lTBJEBj+cU0l791MPYB2Q68jRpKXYiNUG5/8RbYXhxyfCuQ3ehuh9mf3Iv3cHhIbLmEunCdcZK+J72
- 9gswrnUAp0qll83cXjw/o3W8GYFm1DxAO0zPt5itS6taHDQpm69t26ag0EySVTAaFx5CDCVfy+DzcG
- nRX783xv076Sm0CMGj4L6ebTvOqL/Vz+DThmkxT80e7KTDzMSpqzuWwpUZEivPb9xS4FWW6ddyV4+E
- FIkjFz9D1kUnM4HDTYQCELu/gyc44Ovi44VDSo9KX/TGlmZwWoifA6+AmSlBHILazbNjNZiyrFHiiz
- ItD8re0O2jNWsMhKh5SWyTO4ylrmnRw6rv0qmK0tvkS97GHlY+88uYD1oaCA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1965; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=cCyHI5RY2bhm2xuqZZiDh/1knZLz2wwqAtcDhxPnQwM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjRBX2YK800J3vnj2EsuGIXwS9BVe1DVrvkohAErig
+ dhZktjuJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY0QV9gAKCRArRkmdfjHURe/sEA
+ CqnQVlGZAtTO0mYLapEecmZMAnuNd/teKEJA8sNJsOZRnbBG0YUkf6TAt8LhIl+iuHeAM2CKth1FHx
+ CJ1Zq4fdOAHjzYHc4z2qtkH0lhTGqqFv5xqz6NLWf8w8/MzplFOiyTlSAPJY7Ombcs6ZCoZiF4fSOh
+ 7NfKlgQbESF62kYa1+JVBHZCnFljcMVtJpDL+BrtJd+ec9G+tU0sg1O/ojEyr1NgmJI3c41HVBIm06
+ MG6HmMXV0m2uCkj+bxbbhN4qrAaX/ZkmC5YKk349IxlG9/Rp2F4jpl0FD3HRC7WUCH2lhvFSKNLROj
+ 7uVkGx5NeZv2/xjKLaoJzUfy4ylMkNxaJDSXI5TLFwl0R/DbY6JAyluQ+/SAp88dLQpnTLVcv2CL1S
+ ov1LgNIq5KsSfhhSj9CknfVJ1PS5X5xNtwtEvPc0E8LvvUDmOuY5I/q6TMOYEi/kA4j6cBJ5eYbRNX
+ 6JowXJLr7o9SRuqEgWmMacKQnsNwpE40pJqfNLJFhYESCIrvQwZ9TwCLXLgkSFJqW7YFYqiwXyael9
+ FZ9jPNXcb090aJKlNKujeQw2Y0jBzRRMcBjLpuq4NzAVJCHnY14IJ/EGK2O1drZr2k7KavWCBOC2VQ
+ s4I8rbJJE4AmsYYN8WMAOJKWU+x7cSujgWPZs0VBausgpWGQrlaoQkCjRawg==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_055419_208662_02A4F3C1 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20221010_055421_930883_BBC73FFD 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,132 +112,56 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Fabien Parent <fparent@baylibre.com>
 
-Add IOMMU binding documentation for the MT8365 SoC.
+Add IOMMU support for MT8365 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Tested-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../devicetree/bindings/iommu/mediatek,iommu.yaml  |  2 +
- .../dt-bindings/memory/mediatek,mt8365-larb-port.h | 90 ++++++++++++++++++++++
- 2 files changed, 92 insertions(+)
+ drivers/iommu/mtk_iommu.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index fee0241b5098..4b8cf3ce6963 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -81,6 +81,7 @@ properties:
-           - mediatek,mt8195-iommu-vdo        # generation two
-           - mediatek,mt8195-iommu-vpp        # generation two
-           - mediatek,mt8195-iommu-infra      # generation two
-+          - mediatek,mt8365-m4u  # generation two
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 35e9731c3441..50ee1f833c2b 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -170,6 +170,7 @@ enum mtk_iommu_plat {
+ 	M4U_MT8186,
+ 	M4U_MT8192,
+ 	M4U_MT8195,
++	M4U_MT8365,
+ };
  
-       - description: mt7623 generation one
-         items:
-@@ -130,6 +131,7 @@ properties:
-       dt-binding/memory/mt8186-memory-port.h for mt8186,
-       dt-binding/memory/mt8192-larb-port.h for mt8192.
-       dt-binding/memory/mt8195-memory-port.h for mt8195.
-+      dt-binding/memory/mt8365-larb-port.h for mt8365.
+ struct mtk_iommu_iova_region {
+@@ -1528,6 +1529,17 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
+ 			   {4, MTK_INVALID_LARBID, MTK_INVALID_LARBID, MTK_INVALID_LARBID, 6}},
+ };
  
-   power-domains:
-     maxItems: 1
-diff --git a/include/dt-bindings/memory/mediatek,mt8365-larb-port.h b/include/dt-bindings/memory/mediatek,mt8365-larb-port.h
-new file mode 100644
-index 000000000000..56d5a5dd519e
---- /dev/null
-+++ b/include/dt-bindings/memory/mediatek,mt8365-larb-port.h
-@@ -0,0 +1,90 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Yong Wu <yong.wu@mediatek.com>
-+ */
-+#ifndef _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
++static const struct mtk_iommu_plat_data mt8365_data = {
++	.m4u_plat	= M4U_MT8365,
++	.flags		= RESET_AXI | HAS_INT_ID_PORT_WIDTH_6,
++	.inv_sel_reg	= REG_MMU_INV_SEL_GEN1,
++	.banks_num	= 1,
++	.banks_enable	= {true},
++	.iova_region	= single_domain,
++	.iova_region_nr	= ARRAY_SIZE(single_domain),
++	.larbid_remap	= {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
++};
 +
-+#include <dt-bindings/memory/mtk-memory-port.h>
-+
-+#define M4U_LARB0_ID			0
-+#define M4U_LARB1_ID			1
-+#define M4U_LARB2_ID			2
-+#define M4U_LARB3_ID			3
-+
-+/* larb0 */
-+#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(M4U_LARB0_ID, 0)
-+#define M4U_PORT_DISP_OVL0_2L		MTK_M4U_ID(M4U_LARB0_ID, 1)
-+#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 2)
-+#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(M4U_LARB0_ID, 3)
-+#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 4)
-+#define M4U_PORT_MDP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 5)
-+#define M4U_PORT_MDP_WROT1		MTK_M4U_ID(M4U_LARB0_ID, 6)
-+#define M4U_PORT_MDP_WROT0		MTK_M4U_ID(M4U_LARB0_ID, 7)
-+#define M4U_PORT_MDP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 8)
-+#define M4U_PORT_DISP_FAKE0		MTK_M4U_ID(M4U_LARB0_ID, 9)
-+#define M4U_PORT_APU_READ		MTK_M4U_ID(M4U_LARB0_ID, 10)
-+#define M4U_PORT_APU_WRITE		MTK_M4U_ID(M4U_LARB0_ID, 11)
-+
-+/* larb1 */
-+#define M4U_PORT_VENC_RCPU		MTK_M4U_ID(M4U_LARB1_ID, 0)
-+#define M4U_PORT_VENC_REC		MTK_M4U_ID(M4U_LARB1_ID, 1)
-+#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(M4U_LARB1_ID, 2)
-+#define M4U_PORT_VENC_SV_COMV		MTK_M4U_ID(M4U_LARB1_ID, 3)
-+#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(M4U_LARB1_ID, 4)
-+#define M4U_PORT_VENC_NBM_RDMA		MTK_M4U_ID(M4U_LARB1_ID, 5)
-+#define M4U_PORT_VENC_NBM_RDMA_LITE	MTK_M4U_ID(M4U_LARB1_ID, 6)
-+#define M4U_PORT_JPGENC_Y_RDMA		MTK_M4U_ID(M4U_LARB1_ID, 7)
-+#define M4U_PORT_JPGENC_C_RDMA		MTK_M4U_ID(M4U_LARB1_ID, 8)
-+#define M4U_PORT_JPGENC_Q_TABLE		MTK_M4U_ID(M4U_LARB1_ID, 9)
-+#define M4U_PORT_JPGENC_BSDMA		MTK_M4U_ID(M4U_LARB1_ID, 10)
-+#define M4U_PORT_JPGDEC_WDMA		MTK_M4U_ID(M4U_LARB1_ID, 11)
-+#define M4U_PORT_JPGDEC_BSDMA		MTK_M4U_ID(M4U_LARB1_ID, 12)
-+#define M4U_PORT_VENC_NBM_WDMA		MTK_M4U_ID(M4U_LARB1_ID, 13)
-+#define M4U_PORT_VENC_NBM_WDMA_LITE	MTK_M4U_ID(M4U_LARB1_ID, 14)
-+#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(M4U_LARB1_ID, 15)
-+#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(M4U_LARB1_ID, 16)
-+#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(M4U_LARB1_ID, 17)
-+#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(M4U_LARB1_ID, 18)
-+
-+/* larb2 */
-+#define M4U_PORT_CAM_IMGO		MTK_M4U_ID(M4U_LARB2_ID, 0)
-+#define M4U_PORT_CAM_RRZO		MTK_M4U_ID(M4U_LARB2_ID, 1)
-+#define M4U_PORT_CAM_AAO		MTK_M4U_ID(M4U_LARB2_ID, 2)
-+#define M4U_PORT_CAM_LCS		MTK_M4U_ID(M4U_LARB2_ID, 3)
-+#define M4U_PORT_CAM_ESFKO		MTK_M4U_ID(M4U_LARB2_ID, 4)
-+#define M4U_PORT_CAM_CAM_SV0		MTK_M4U_ID(M4U_LARB2_ID, 5)
-+#define M4U_PORT_CAM_CAM_SV1		MTK_M4U_ID(M4U_LARB2_ID, 6)
-+#define M4U_PORT_CAM_LSCI		MTK_M4U_ID(M4U_LARB2_ID, 7)
-+#define M4U_PORT_CAM_LSCI_D		MTK_M4U_ID(M4U_LARB2_ID, 8)
-+#define M4U_PORT_CAM_AFO		MTK_M4U_ID(M4U_LARB2_ID, 9)
-+#define M4U_PORT_CAM_SPARE		MTK_M4U_ID(M4U_LARB2_ID, 10)
-+#define M4U_PORT_CAM_BPCI		MTK_M4U_ID(M4U_LARB2_ID, 11)
-+#define M4U_PORT_CAM_BPCI_D		MTK_M4U_ID(M4U_LARB2_ID, 12)
-+#define M4U_PORT_CAM_UFDI		MTK_M4U_ID(M4U_LARB2_ID, 13)
-+#define M4U_PORT_CAM_IMGI		MTK_M4U_ID(M4U_LARB2_ID, 14)
-+#define M4U_PORT_CAM_IMG2O		MTK_M4U_ID(M4U_LARB2_ID, 15)
-+#define M4U_PORT_CAM_IMG3O		MTK_M4U_ID(M4U_LARB2_ID, 16)
-+#define M4U_PORT_CAM_WPE0_I		MTK_M4U_ID(M4U_LARB2_ID, 17)
-+#define M4U_PORT_CAM_WPE1_I		MTK_M4U_ID(M4U_LARB2_ID, 18)
-+#define M4U_PORT_CAM_WPE_O		MTK_M4U_ID(M4U_LARB2_ID, 19)
-+#define M4U_PORT_CAM_FD0_I		MTK_M4U_ID(M4U_LARB2_ID, 20)
-+#define M4U_PORT_CAM_FD1_I		MTK_M4U_ID(M4U_LARB2_ID, 21)
-+#define M4U_PORT_CAM_FD0_O		MTK_M4U_ID(M4U_LARB2_ID, 22)
-+#define M4U_PORT_CAM_FD1_O		MTK_M4U_ID(M4U_LARB2_ID, 23)
-+
-+/* larb3 */
-+#define M4U_PORT_HW_VDEC_MC_EXT		MTK_M4U_ID(M4U_LARB3_ID, 0)
-+#define M4U_PORT_HW_VDEC_UFO_EXT	MTK_M4U_ID(M4U_LARB3_ID, 1)
-+#define M4U_PORT_HW_VDEC_PP_EXT		MTK_M4U_ID(M4U_LARB3_ID, 2)
-+#define M4U_PORT_HW_VDEC_PRED_RD_EXT	MTK_M4U_ID(M4U_LARB3_ID, 3)
-+#define M4U_PORT_HW_VDEC_PRED_WR_EXT	MTK_M4U_ID(M4U_LARB3_ID, 4)
-+#define M4U_PORT_HW_VDEC_PPWRAP_EXT	MTK_M4U_ID(M4U_LARB3_ID, 5)
-+#define M4U_PORT_HW_VDEC_TILE_EXT	MTK_M4U_ID(M4U_LARB3_ID, 6)
-+#define M4U_PORT_HW_VDEC_VLD_EXT	MTK_M4U_ID(M4U_LARB3_ID, 7)
-+#define M4U_PORT_HW_VDEC_VLD2_EXT	MTK_M4U_ID(M4U_LARB3_ID, 8)
-+#define M4U_PORT_HW_VDEC_AVC_MV_EXT	MTK_M4U_ID(M4U_LARB3_ID, 9)
-+#define M4U_PORT_HW_VDEC_RG_CTRL_DMA_EXT MTK_M4U_ID(M4U_LARB3_ID, 10)
-+
-+#endif
+ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+ 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
+@@ -1540,6 +1552,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
+ 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
+ 	{ .compatible = "mediatek,mt8195-iommu-vpp",   .data = &mt8195_data_vpp},
++	{ .compatible = "mediatek,mt8365-m4u", .data = &mt8365_data},
+ 	{}
+ };
+ 
 
 -- 
 b4 0.10.1
