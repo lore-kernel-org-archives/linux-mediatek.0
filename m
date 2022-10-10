@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A7F7C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB56C4167E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DrZ2w9Zy+vhSRXUDQDtzA1D4HEJ1iz/FWktENIxO+SU=; b=uAx166dxlUANolyI5q5ZGkzmIK
-	bghobO2+BQA/+qvU/CzCjRFlEzGQSM/xB0nUsN7EgHCu5kxD7D9ZiPNlmV7WOqXeRw4vm/URr3Rj1
-	to+eJ1o5MCQcl0Eg+akIyvfBbLTsbmG1jBy4VF7dte/ZaQOuFf51gK38HoNaykPKJ8+JtcGOlaR/c
-	/ursY51HMIiCnuQwZSHhvASCEhQNjZ94NDOfQLq6i14nVHjDNl1CIP8pMua7V/WGFb38y2kbr0BAt
-	8C9FUENf/vS5/lfVPlLII4nmCCdp5BVgH/CGp0Z+d4wEa5WrxK1C8Z8BT6P3PMFYaiNdoh6kAJKBs
-	aSTaXxsg==;
+	bh=FMc8z7c41y6NCGpGzWHFPWG5ivc9uj3CRCMkY8fG9Gs=; b=gC4bP6T6tAXgBXo6KMwK9iiPpr
+	cRkZZrQwmkj39tXPWSHPf+VnGXP6JdcRDpt/MtB6OMZ5MbvXbfmVrB7VTcFiKmN3YabkT3ezo8ekG
+	8jw4FVaEDgSh0RDAmUefLtdeedlftsTrDVcejzjzlCtpajjENeZcMKH4TGP3qDOE8gVXv4zkIe0hL
+	cBXUHK6JFVqlpkTnnuYhk8IiRRWs30mX3VejGhvl84PWFRfpK3I/FD07YgmE50jDcmXsoR6TMDvxk
+	uJBtJgyubqdUnxUXJ5yhTC3e1ng1RJaLRWUDG2rQBKJN6y3+Nrkd8YwmyytZsL6PgEXzuDgRyeWrW
+	JRQJtadA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzB4-0022tR-Lq; Mon, 10 Oct 2022 20:15:06 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1ohzBD-00230h-Pb; Mon, 10 Oct 2022 20:15:15 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzB0-0022r2-SR; Mon, 10 Oct 2022 20:15:04 +0000
+	id 1ohzB9-0022ve-Jm; Mon, 10 Oct 2022 20:15:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665432902; x=1696968902;
+  t=1665432911; x=1696968911;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=b/f5qnk86K8IvDMxiisJG/aX+sY4tlL8aHadR4IA4AY=;
-  b=gdr9Tv6GJ3d9Ea/JZ3py6M/FTtBexMkD4Y2xo98wnHU/zadS8LZV/8X2
-   897ch0fdg2CzKbfbbwLrVf2Se/OOy3dC6wPtSnGHhY+hM79HUTthWMaQp
-   HD8Cch2hzAJ8XUUPd6lTJbed7+ND275KNjY3bQkKzO65WCOCdCGFmUJGE
-   pHaxuHFd9m+WEez+wCNZNey/FFiuhMsS9yoyyGwxTNDi03l9tFjjQ83BN
-   BatHe9yXoWKiYOShxlSQvmi+7Qw6+kpVTho9pGWNUlcio3Q5yAdZt03Ij
-   7MdoqEay093Da+tMS0eePNUxkfmkmMTa1erF0ki1kazr0W+3TzfI3ZvcU
+  bh=kjXzGbYDAGDzUThAUri+8VVRFkkuppwpSy0/gaNxk3U=;
+  b=C/1i3ob18WW0WH6wswTHjghMprYU7CCRv45ZDeNZtklGyEjmA6el03JI
+   +l+m2NnHOhQHmVLJb1c2Qwwy8ru33X3pnYd9P449+zkMZLWRmizaOX/1E
+   kuEgyM5henKnRlof5MEwoa7wt5WoxwZYeg3VPIeHlVl9BMWcygd1IuIMv
+   VfcZ2CClOedlAZuwKqPEV/znjF//yHkyKxVaSLUENaBdM1Gx7B3Dz9J3j
+   lC2bZfNxpuN8PkzN/coLvEUSiG062IQUjra8A+/Iahq8+FSc1AehDXZI2
+   NDM/NgZQ/KO2pvAZ3uQOstq7XmeU13eg3FVFKQTApDDB58BPKp3FXS+lq
    Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="301936326"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="287590362"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="301936326"
+   d="scan'208";a="287590362"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:01 -0700
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="603862738"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="603862769"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="603862738"
+   d="scan'208";a="603862769"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga006.jf.intel.com with ESMTP; 10 Oct 2022 13:14:50 -0700
+  by orsmga006.jf.intel.com with ESMTP; 10 Oct 2022 13:14:59 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 5DBF01E0; Mon, 10 Oct 2022 23:15:11 +0300 (EEST)
+	id 778C82B0; Mon, 10 Oct 2022 23:15:11 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Marc Zyngier <maz@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -150,17 +150,17 @@ Cc: Thierry Reding <thierry.reding@gmail.com>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: [PATCH v2 01/36] gpiolib: tegra186: Add missed header(s)
-Date: Mon, 10 Oct 2022 23:14:17 +0300
-Message-Id: <20221010201453.77401-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
+Date: Mon, 10 Oct 2022 23:14:18 +0300
+Message-Id: <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_131502_957837_0CB7534F 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20221010_131511_734561_64B8E9E5 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,28 +182,38 @@ While at it, sort headers alphabetically.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/gpio/gpio-tegra186.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpio/gpiolib-cdev.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpio/gpio-tegra186.c b/drivers/gpio/gpio-tegra186.c
-index 54d9fa7da9c1..fdc5bdcd5638 100644
---- a/drivers/gpio/gpio-tegra186.c
-+++ b/drivers/gpio/gpio-tegra186.c
-@@ -7,12 +7,13 @@
-  */
- 
+diff --git a/drivers/gpio/gpiolib-cdev.c b/drivers/gpio/gpiolib-cdev.c
+index f8041d4898d1..60a60e2d60c5 100644
+--- a/drivers/gpio/gpiolib-cdev.c
++++ b/drivers/gpio/gpiolib-cdev.c
+@@ -10,8 +10,9 @@
+ #include <linux/device.h>
+ #include <linux/err.h>
+ #include <linux/file.h>
+-#include <linux/gpio.h>
  #include <linux/gpio/driver.h>
++#include <linux/gpio.h>
 +#include <linux/hte.h>
  #include <linux/interrupt.h>
- #include <linux/irq.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
--#include <linux/hte.h>
+ #include <linux/irqreturn.h>
+ #include <linux/kernel.h>
+@@ -20,11 +21,12 @@
+ #include <linux/mutex.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/poll.h>
 +#include <linux/seq_file.h>
+ #include <linux/spinlock.h>
+ #include <linux/timekeeping.h>
+ #include <linux/uaccess.h>
+ #include <linux/workqueue.h>
+-#include <linux/hte.h>
++
+ #include <uapi/linux/gpio.h>
  
- #include <dt-bindings/gpio/tegra186-gpio.h>
- #include <dt-bindings/gpio/tegra194-gpio.h>
+ #include "gpiolib.h"
 -- 
 2.35.1
 
