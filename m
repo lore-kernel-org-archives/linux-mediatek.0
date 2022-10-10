@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBB3C43219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 12:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1535C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 13:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=02DHLrzLJP8kPkxHoMJSCUYhnTM9XF5dBkLVhcluWS8=; b=J6TkriF4vN8cnmoSLcS3BigIw7
-	qOOk41SWXC+RIXDh0MUTr4HodHTC+UkVEx7BoHzloAp7uS7Zwy/N8PHX6fPJVhwr6E4Kvx655HDb7
-	/gEKkhAM62XW+dtOeqsmYk+CxMcV2hNSB93vGXVUSVcZnxeKOAkv3MagLIZCG5R6Vy8hJCSZMhXHQ
-	7DJVbGsOpX+6bDgeJ9eC7UCrLuGEV1+nBUYExWrCcQhydZj2YlTvrGXs0s9KjLfjAdBko7XConTR1
-	0DiXT8dS6w0O0eAumPW+BYusERjkdV/Si9JErxJXVkgJ/CG3Cc0LdRq4eGhxc1sbJyJjbH2h79qVj
-	pq5hMXSg==;
+	bh=jfVkBTG8SNv9Tulxii1+DdNRE/eocOHXxVG3G/nIC5M=; b=aiEgtCIG0LAntYU9IHbg7EGyeN
+	ERDCVQJ4CgZbPPl1xn+c8A2JJrmwpm23jxLCECsRhrgHDoieTPoBRWdotZzoeQkPPxFMzWv59r0CM
+	ejkiyoAM3kkh/X3u/CXkIALyI0ipnlSOQWsiXpb5pzJ6z+HDIMVquYLGblRD/9VTsmRZs7s4aYann
+	MwpZQlLaUBceRMW7PH4vIaYyvfbgFCt7TcpEd8yWzBMsXkgDbBg/HmRd1aHpEDHT27XX0uiECXNRY
+	06at5tMR1b54qJoa+nYxkD8fszQmvTauCjveu/PKzcSNt2CvgEZffOi7TfoNr4Hccp9iblfRx7p6o
+	AIyzIqzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohsM6-000vFk-Sg; Mon, 10 Oct 2022 12:58:02 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1ohsPv-000wTs-AA; Mon, 10 Oct 2022 13:01:59 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohsM4-000vEV-0M; Mon, 10 Oct 2022 12:58:01 +0000
-Received: by mail-oi1-f182.google.com with SMTP id y72so5878061oia.3;
-        Mon, 10 Oct 2022 05:57:58 -0700 (PDT)
+	id 1ohsPs-000wRq-B5; Mon, 10 Oct 2022 13:01:57 +0000
+Received: by mail-oi1-f177.google.com with SMTP id w196so6244202oiw.8;
+        Mon, 10 Oct 2022 06:01:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=02DHLrzLJP8kPkxHoMJSCUYhnTM9XF5dBkLVhcluWS8=;
-        b=jh/WnWZ1OMjpc/UVy6BfJCb5X8u/ED9RDDWokvrRQnubySCC9CEQ3J19oqqxvMP1Ef
-         8oghDhsTjuYV+0PQYGLWvRYrDvPjinsGH/Drdnmn71DHuorKeW8V7rlWq85/jZ5gVmmB
-         zC3KZHNAsn2coDcW0WZWaacxo8+T+S7ho47mdiTdanva2B/qvCfckg/vSkF7FctPPQga
-         z2NsNx/ugpWwmyNTYBRAQVeD7kbcZ3vk/TwR6Fb6XPa41+mXlUIsw4z8zMAIsVU56tfc
-         q8pSAO1SBW2YFjgrJe/9BGmOSBoU8+nifnKCKoFhT0tgxxYSootqVk5eplpFL31Q91hK
-         aCdQ==
-X-Gm-Message-State: ACrzQf3AEKp5qLhtSpqlYeEEJEZG4+N49R5QC7SVqDr/6k4RMnOvpB3k
-	/ES3MAvY2MQ1m0dGN+DUTA==
-X-Google-Smtp-Source: AMsMyM4hDBKrNCy/IKcknD8z6j4T3aIcEYZni5TT/Sd0AwEdQJZodfTyV2Z5vEFV6hYchEOk+ypASg==
-X-Received: by 2002:a05:6808:1511:b0:354:28c8:d034 with SMTP id u17-20020a056808151100b0035428c8d034mr9038170oiw.208.1665406677472;
-        Mon, 10 Oct 2022 05:57:57 -0700 (PDT)
+        bh=jfVkBTG8SNv9Tulxii1+DdNRE/eocOHXxVG3G/nIC5M=;
+        b=o8zvFohZDrFudrf6KAXWLuqroLoBLJGkXb3wSLUgR7qmUwJU4/PTvMGumawrBACh5V
+         kUIt2OD8mMaN73ZyvxgTSXWG+nv1CRJbL/CLtkjLMNj6qBmcAh0MRU/NkdjqZGmq0+AZ
+         Hy5ItcCR4HUX7t8V+BDqTPlxhbet+A+EoTdv+X6wBRQbV5dqXzzBm5cF4VwEZSA0Sv/p
+         aS1wWlx+nIml+nyrK5oVuO+ecqMUfWx4ywpYsLoVhVjtc+DDvlf7PTPKDDHdsNwy0I/h
+         1aal1ZqHlcrhkz8nKPjxgw7k8ag+EBMoD95XLairkYVss6dN8TGt9kRk9KJq8HegkzfX
+         kyEw==
+X-Gm-Message-State: ACrzQf18+1TyyvQMM2fXOl+/pUAVsll0QDDkP2RRDvz+lU1CyZiQtkjq
+	M/MLqdBzFbQtqP5cF8NYcA==
+X-Google-Smtp-Source: AMsMyM5lgFvJ9fLliV+V4FcCSGJENE49rAo3hL62foOpnMFIQYg3mQbq65Qw1Gm/4qIDH33vBplIxw==
+X-Received: by 2002:a05:6808:2118:b0:350:3c8e:404d with SMTP id r24-20020a056808211800b003503c8e404dmr9122517oiw.227.1665406914045;
+        Mon, 10 Oct 2022 06:01:54 -0700 (PDT)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id r2-20020a4a3702000000b004806f494d2fsm1260498oor.11.2022.10.10.05.57.56
+        by smtp.gmail.com with ESMTPSA id w1-20020a9d6381000000b006339b36127dsm4803925otk.3.2022.10.10.06.01.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Oct 2022 05:57:56 -0700 (PDT)
-Received: (nullmailer pid 475796 invoked by uid 1000);
-	Mon, 10 Oct 2022 12:57:58 -0000
-Date: Mon, 10 Oct 2022 07:57:58 -0500
+        Mon, 10 Oct 2022 06:01:52 -0700 (PDT)
+Received: (nullmailer pid 480632 invoked by uid 1000);
+	Mon, 10 Oct 2022 13:01:53 -0000
+Date: Mon, 10 Oct 2022 08:01:53 -0500
 From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Yassine Oudjana <yassine.oudjana@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Andy Teng <andy.teng@mediatek.com>, Yassine Oudjana <y.oudjana@protonmail.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 05/10] dt-bindings: pinctrl: mediatek,pinctrl-mt6795:
- Fix interrupt count
-Message-ID: <20221010125758.GA468288-robh@kernel.org>
-References: <20221007125904.55371-1-y.oudjana@protonmail.com>
- <20221007125904.55371-6-y.oudjana@protonmail.com>
- <0769c6c8-567d-68c0-323a-9aaee1241e13@linaro.org>
- <6c889c7e-4c5a-a201-e37c-bf95b6826584@collabora.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: Add compatible for Mediatek MT7986
+Message-ID: <166540691329.480578.14649778257492089320.robh@kernel.org>
+References: <20221008165627.114782-1-linux@fw-web.de>
+ <20221008165627.114782-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6c889c7e-4c5a-a201-e37c-bf95b6826584@collabora.com>
+In-Reply-To: <20221008165627.114782-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_055800_078956_A8B32D7B 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20221010_060156_409954_F1AA849D 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +74,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 10, 2022 at 01:47:18PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 10/10/22 13:13, Krzysztof Kozlowski ha scritto:
-> > On 07/10/2022 08:58, Yassine Oudjana wrote:
-> > > From: Yassine Oudjana <y.oudjana@protonmail.com>
-> > > 
-> > > The document currently states a maximum of 1 interrupt, but the DT
-> > > has 2 specified causing a dtbs_check error. Replace the maximum limit
-> > > with a minimum and add per-interrupt descriptions to pass the check.
-> > > 
-> > > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> > > ---
-> > >   .../devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml | 5 ++++-
-> > >   1 file changed, 4 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
-> > > index 73ae6e11410b..a3a3f7fb9605 100644
-> > > --- a/Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
-> > > +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
-> > > @@ -47,7 +47,10 @@ properties:
-> > >     interrupts:
-> > >       description: The interrupt outputs to sysirq.
-> > > -    maxItems: 1
-> > > +    minItems: 1
-> > > +    items:
-> > > +      - description: EINT interrupt
-> > > +      - description: EINT event_b interrupt
-> > 
-> > Is second interrupt really optional or you just wanted to silence the
-> > warning?
-> > 
+On Sat, 08 Oct 2022 18:56:26 +0200, Frank Wunderlich wrote:
+> From: Sam Shih <sam.shih@mediatek.com>
 > 
-> The event_b interrupt exists (and fires on certain events, if configured to do so),
-> but it's currently unused.
+> This commit adds dt-binding documentation of mmc for Mediatek MT7986 SoC
+> Platform.
 > 
-> It's really optional.
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Optional for DT means may or may not be wired up in the h/w, not what 
-some OS 'currently' uses.
-
-However, you can't really add new required properties or entries to an 
-existing DT without breaking compatibility. Maybe that is not yet a 
-concern.
-
-Rob
+Acked-by: Rob Herring <robh@kernel.org>
 
