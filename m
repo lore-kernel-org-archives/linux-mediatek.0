@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB67C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055CAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:24:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jj3p0hXc76/KoE2FqSAThGvDRTsmQQ8NTYH8Sidhzd4=; b=P1EX21kr8Tc8db7HweIZWZmF6k
-	zhI4YGiZb4uLhlJ2aQtM6hzA+buiDpnsOPYxnSj1qZZzXWxtzOokvh5MKEN0ejzUogwA/jtsjHrrX
-	zR3393vFedoC4dniECpeMlVPpC2+owS7xb4w5l/zJj2TFYHbPXOmcxU7L8mUlIZCzPyiIf5Rf2zny
-	GPYdFo9WRfgpqsy+ypTGOoL6AgceINQ1WWZPaXUWZ/4iOx7O0LGlrOUo2YBJ7IpxqIYH+KGMh6Vv3
-	CUmBH1O556M84gGbvWW3SeQQUd6aor7dNWNig0VuREGKujFDi0/UpQKzFGRJnJqZ22DU7yba6TAdr
-	My83lFdQ==;
+	bh=aC3WUcpwAbWV6YMUys2JKe2SJjWj13nkfndbGWzGsbI=; b=akyyEO/0ly6bS+H0drUKg98ELj
+	entEiBfttEb8dYF6L4S2RG4UOzG3AbheYvxP4Kq4/4Pi6/N1/4vaSvFJZS6OwJLUV6Sj61CJNxCsS
+	E3DV448NwWdL9i9jODjo+Yd3byrL3rB/6q1w7QTv2VUJ09KiKqsJi+s9UsUCwvCvL+lcMTel+b5WP
+	D1ZIWCh0IYhTSTqDaCPl8SWl0QZC5lNMDPNXH0Drkqz7NPXwNbT4NJ67LgYOp6t4WVghdUsPb/mFF
+	TdAxarYyqQwHpyXEZu8xzhPrAxGcuf7w50YJgeOQ+9PqURpbE/NlFBbaULNZSX7VKo1R4TUOGovpa
+	uty2Uvig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzJX-0028jX-On; Mon, 10 Oct 2022 20:23:51 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1ohzJe-0028o5-6U; Mon, 10 Oct 2022 20:23:58 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzBn-0023Xv-0i; Mon, 10 Oct 2022 20:15:53 +0000
+	id 1ohzBp-0023ac-21; Mon, 10 Oct 2022 20:15:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665432950; x=1696968950;
+  t=1665432953; x=1696968953;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=NQX2BVWLlvVYkedYPDWHm8jdtnPz/k4sPUqYMIaGnls=;
-  b=c1n1XjUiezbazczyq3nalucqTargsa/+bSiauF/jUerkX+FCPcMhDXYF
-   ecRzGHSwI0rIFlmcn4YY+Dqeq0DruV0xazg/KqqGweg6evmzT0CrNgbAX
-   F3wtepphrrQbLwAmvtNI3cxjmBnBss53p0IXBjUUBucuooe+ma5ReWX0p
-   hbdJSDfa81MsOlJ/ydMoklWA4w9tCin+Qceui0s4TbTUiEmR3UF7Bny+a
-   u91ZVZtnkZP+SqQeF/7XkNt9FPa70cwhoJUTNmR54vmrmaUBKHSpt423J
-   EUPhIWXGs0rXzgEEpidJpX1gDl6Ogp97zhyADmJ9UyoTCJvkp8d3va6ID
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="330799121"
+  bh=HiJ3kShFlkDP9iaZndKWubW2yhoVYrH5epJitLVO3NM=;
+  b=R/hA9uyHV130iJU6Ggjo28meAhLNwTb7ACvWwX6Mt6wuyp8MwvxTXlmr
+   Rsf7ZjT0nBV92GIaGLPaFvFWsLi54HAhV6te5mPBNVw/gRoDlpYJme0Ak
+   rccwlLBmr5feE5vE+NCToiNCSRj3gND8OX+313GAUpF6Axj7fDaZWp1Px
+   L53BidkWJucodSQhPh48lQ/PvDZazsr2RwK0Gb/o5blJo5GueCiDLbwXh
+   4aQV1kv5SwS6HppndBOeLlXdFlV993i02Wnu6VRg3u2gtDxinfC/H21Ir
+   iMXB06VBzKadO/eyz7eN1MMdPKlctLa1b5HT/Wp2/vz7wLUwZ6Rvy0RUy
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="390634185"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="330799121"
+   d="scan'208";a="390634185"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:47 -0700
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="603863035"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="603863072"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="603863035"
+   d="scan'208";a="603863072"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga006.jf.intel.com with ESMTP; 10 Oct 2022 13:15:35 -0700
+  by orsmga006.jf.intel.com with ESMTP; 10 Oct 2022 13:15:39 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 31B363CB; Mon, 10 Oct 2022 23:15:14 +0300 (EEST)
+	id 601BCBC6; Mon, 10 Oct 2022 23:15:14 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Marc Zyngier <maz@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -150,17 +150,17 @@ Cc: Thierry Reding <thierry.reding@gmail.com>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: [PATCH v2 32/36] pinctrl: cherryview: Add missed header(s)
-Date: Mon, 10 Oct 2022 23:14:48 +0300
-Message-Id: <20221010201453.77401-33-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 35/36] pinctrl: intel: Add missed header(s)
+Date: Mon, 10 Oct 2022 23:14:51 +0300
+Message-Id: <20221010201453.77401-36-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_131551_179443_3F6219AC 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20221010_131553_162511_59B99F4B 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,30 +182,30 @@ While at it, sort headers alphabetically.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/intel/pinctrl-cherryview.c | 6 ++++--
+ drivers/pinctrl/intel/pinctrl-intel.c | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/intel/pinctrl-cherryview.c b/drivers/pinctrl/intel/pinctrl-cherryview.c
-index 5c4fd16e5b01..11b81213922d 100644
---- a/drivers/pinctrl/intel/pinctrl-cherryview.c
-+++ b/drivers/pinctrl/intel/pinctrl-cherryview.c
-@@ -16,12 +16,14 @@
- #include <linux/kernel.h>
+diff --git a/drivers/pinctrl/intel/pinctrl-intel.c b/drivers/pinctrl/intel/pinctrl-intel.c
+index 52ecd66ce357..b85140eaa9c4 100644
+--- a/drivers/pinctrl/intel/pinctrl-intel.c
++++ b/drivers/pinctrl/intel/pinctrl-intel.c
+@@ -14,12 +14,14 @@
  #include <linux/module.h>
  #include <linux/platform_device.h>
+ #include <linux/property.h>
 +#include <linux/seq_file.h>
- #include <linux/types.h>
+ #include <linux/time.h>
  
+-#include <linux/pinctrl/pinctrl.h>
+-#include <linux/pinctrl/pinmux.h>
 +#include <linux/pinctrl/consumer.h>
-+#include <linux/pinctrl/pinconf-generic.h>
-+#include <linux/pinctrl/pinconf.h>
- #include <linux/pinctrl/pinctrl.h>
- #include <linux/pinctrl/pinmux.h>
--#include <linux/pinctrl/pinconf.h>
--#include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinconf-generic.h>
++#include <linux/pinctrl/pinctrl.h>
++#include <linux/pinctrl/pinmux.h>
  
+ #include "../core.h"
  #include "pinctrl-intel.h"
- 
 -- 
 2.35.1
 
