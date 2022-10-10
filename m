@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608A6C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C87ECC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Oct 2022 20:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6ymuehXsvXlRO15tCLv3j8TigOmEQmjWp0VzSgWwVGk=; b=4rQrDKFnlbjaMhxXOpjFnTtOtj
-	/+Y6qjEGf1kgmEGIf6eRKScYJiaJ4QA47qo05/EFb9gX+wwxaQAld5AWKle9uTWx0b3xti/Wz5WFZ
-	knhTTYEqLPTPfkB8zpyJ2JALlQm7UhKSXFUZNJREWOsEmUY0Oq95k0FEuaSHjM9q0bOSBgWusNC9v
-	IHFk3orhh48KBdm29Y+ogwwVisqu1dOUtJj9Rj6dCws9htDpVkDxF0qgOheTq3tB2wex+ZXEhtkEA
-	Aekc9B8V4cb+RPlWCb1zqABLwc9q2Qns7nm7a2TzUCiR2+WL7k9KuYo4CJUt7VRpDILnwS/dP/y2l
-	MkI8A0qQ==;
+	bh=0FGDFrAcmfDI+r5B7oFIHNYCJTYEZ7MHJFBpndhfgL0=; b=Es3uMyor7zj+wYjXAAkGFyK5u4
+	MMsd7BE/CcGCGnWZZHxUJIhe7B4V3+pCZ7WCZj+SgnqhwbTYlLdkAhH3LvCu7lhiKNd32Eh/VnCby
+	69IQsiwSRIAtwbK6/J9dBfNEEGngvc3HaT3Ve9EaXsWTVWVC3k5rKmA7Oe3cefhLNsbOaXAOXA/7a
+	r0PwCITD+HuvtG02yt5IxBCgaGfm4xWD52dzZjsQwrKOl6k7WVsLZ7IA0+wTER47a98R31lK+G19M
+	wTpmGvzMEW5g6vN9KiGSW3pXcSAiKqHrnGlBl2AO3CcX7OFO75EIsO89MhxDV5NiDma9kiaRujX6e
+	A/TvMCaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzEp-0025lN-Au; Mon, 10 Oct 2022 20:18:59 +0000
+	id 1ohzEx-0025qx-Uh; Mon, 10 Oct 2022 20:19:08 +0000
 Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohzBX-0023Hf-RG; Mon, 10 Oct 2022 20:15:38 +0000
+	id 1ohzBY-0023Jj-46; Mon, 10 Oct 2022 20:15:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665432935; x=1696968935;
+  t=1665432936; x=1696968936;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=D50Fpx/QUeI7xzc5HEtIUNC+GJQEBGOhEZ+fp/HQeyE=;
-  b=atgl4WNsZGDHm6lWPjPvxaOWm/M0V9ZDikL4iF+ZLAGVwQpY6QyuUr9b
-   aI1ofOPCAodxQE83y5MAFcG4hi51xbsvLc2KcQRAf+zqAWIKh9+4DoBFZ
-   RuBXVA7SPiSlH2B2XTPKESmIry7hXtkrMns+F6s8fnd4WZe0spas5p2C0
-   hdjRrPJ1juwoPwTrwlG9ZeD/gtjfW9dlu7I46A0fpwWyWNdgo4wzK66Pi
-   JEWHEeXyobsZcP9DllpE4dNH+xCAyVfiS0fjo5yLyWzLzQKJn46poTium
-   m+IE5lmtGwKF+TvhqD8iiKla3dsTw0GjdJpJ5WR2o4lNGuA2rBaTeYJLZ
+  bh=eZ0nLr7k71p8hXdbh21/wdsvbcpSOALoNnQYnblRInI=;
+  b=jdRe6wM/lNrfhqsvswd0AxhvQwPAlvD6L9vaWKaSooRpniDAdmKIrnSJ
+   W1aG6k7yXxqD/X965o64il1RIEMcyhZ5hnab/gIvw7ycXGjznMSV6xWuq
+   aRrqb7b0CEqptEe+CID56xVjT7VPjbtwlFSzWAa3hMhZa1G/RyL5RX5RI
+   hIzD39gaWoZGRufin3KaQaZAr70Xo2Jrv3xuTesh+HrnagdA+k5n2usUb
+   M0/G1DhQbMzmh5+Op83ixWeSz240UPktbfIw7fE0ezKx2/EE4uIw3q7Gp
+   98hANAlEl0o7yJ6wOXi5xSo1vuZ1S8gR4xqFE16Z2wLKY7hVuETGwHQea
    Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="305381670"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="305381687"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="305381670"
+   d="scan'208";a="305381687"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:32 -0700
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:15:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="715240789"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="715240800"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="715240789"
+   d="scan'208";a="715240800"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by FMSMGA003.fm.intel.com with ESMTP; 10 Oct 2022 13:15:21 -0700
+  by FMSMGA003.fm.intel.com with ESMTP; 10 Oct 2022 13:15:23 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 48E2074F; Mon, 10 Oct 2022 23:15:13 +0300 (EEST)
+	id 66097766; Mon, 10 Oct 2022 23:15:13 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Marc Zyngier <maz@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -150,17 +150,17 @@ Cc: Thierry Reding <thierry.reding@gmail.com>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: [PATCH v2 17/36] pinctrl: ocelot: Add missed header(s)
-Date: Mon, 10 Oct 2022 23:14:33 +0300
-Message-Id: <20221010201453.77401-18-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 19/36] pinctrl: renesas: Add missed header(s)
+Date: Mon, 10 Oct 2022 23:14:35 +0300
+Message-Id: <20221010201453.77401-20-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_131535_987956_87A623AC 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20221010_131536_288971_45A791DC 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,35 +182,80 @@ While at it, sort headers alphabetically.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/pinctrl-ocelot.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/pinctrl/renesas/pinctrl-rzg2l.c | 7 +++++--
+ drivers/pinctrl/renesas/pinctrl-rzv2m.c | 4 +++-
+ drivers/pinctrl/renesas/pinctrl.c       | 8 +++++---
+ 3 files changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-ocelot.c b/drivers/pinctrl/pinctrl-ocelot.c
-index 647e91490bac..a9343c242cd5 100644
---- a/drivers/pinctrl/pinctrl-ocelot.c
-+++ b/drivers/pinctrl/pinctrl-ocelot.c
-@@ -13,15 +13,17 @@
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzg2l.c b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
+index a43824fd9505..a08eee092430 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzg2l.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
+@@ -8,16 +8,19 @@
+ #include <linux/bitops.h>
+ #include <linux/clk.h>
+ #include <linux/gpio/driver.h>
+-#include <linux/io.h>
+ #include <linux/interrupt.h>
++#include <linux/io.h>
+ #include <linux/module.h>
  #include <linux/of_device.h>
  #include <linux/of_irq.h>
- #include <linux/of_platform.h>
--#include <linux/pinctrl/pinctrl.h>
--#include <linux/pinctrl/pinmux.h>
--#include <linux/pinctrl/pinconf.h>
--#include <linux/pinctrl/pinconf-generic.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/slab.h>
- 
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/pinctrl/pinconf-generic.h>
-+#include <linux/pinctrl/pinconf.h>
-+#include <linux/pinctrl/pinctrl.h>
-+#include <linux/pinctrl/pinmux.h>
++#include <linux/seq_file.h>
++#include <linux/spinlock.h>
 +
++#include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/spinlock.h>
+ 
+ #include <dt-bindings/pinctrl/rzg2l-pinctrl.h>
+ 
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzv2m.c b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
+index e8c18198bebd..061f16c77304 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzv2m.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
+@@ -15,11 +15,13 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
++#include <linux/spinlock.h>
++
++#include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/spinlock.h>
+ 
+ #include <dt-bindings/pinctrl/rzv2m-pinctrl.h>
+ 
+diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
+index b438d24c13b5..b74147800319 100644
+--- a/drivers/pinctrl/renesas/pinctrl.c
++++ b/drivers/pinctrl/renesas/pinctrl.c
+@@ -12,14 +12,16 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
++#include <linux/seq_file.h>
++#include <linux/slab.h>
++#include <linux/spinlock.h>
++
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/machine.h>
+-#include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinconf-generic.h>
++#include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/slab.h>
+-#include <linux/spinlock.h>
+ 
  #include "core.h"
- #include "pinconf.h"
- #include "pinmux.h"
+ #include "../core.h"
 -- 
 2.35.1
 
