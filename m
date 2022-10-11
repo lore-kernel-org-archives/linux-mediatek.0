@@ -4,155 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D8E7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 00:02:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A17C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 02:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HDvDPLCLAPPvF5TVvL+FWbJtEqmbYVODvwDkJg3SqIo=; b=ZxcG/vFaud6h0DRCXZvrtNqFKy
-	YIHXdpHz+SnFeoXH9xgH8octNQ3QpzGpU415eI6O6olu2JQcnO9ZqO0LoiO2YgsRzHMwiZblz3o+B
-	+8i0U831Snyv8unFu+GkaRuYlMXuK0diofaHfw3qOPPHtDCQYNCR+sA1eePzw4+i5K6JGNLqAG9I4
-	Bz8tug0qb5ldh02ZAY68tZZw+aZMp30RBqiEfZwBkoGknb3PIUobbB21T8Ff7SxhW5RtilhoEYIbp
-	iEOVdeg3wKPfDGWVsjRaPSIpUutfmgrY73Fr3zbz4P4xH8kunfYhCisp8hwctRcNMpqhl1rpukw/4
-	Ud3Jf+YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CxXP6CzobnL6sVNisn2kNutVrGf5dAauzM+XPwU5cAc=; b=eGdL5K7B0pk+o2mDf69We5s2o0
+	OWKH67O0RpX1Q2a8ZdxXfI8v2lfN4JJu5fZSOVkGGlNta0tdsg9EzY7Pi9IMaW4McSiK1H8GPJYUd
+	eF4YxCFoNoOC8EqUUPMOU57Vx+ccTaE1tztRdd+iiAHh1jqrth7jt5LIc91aN2D05cYeSBBN69aOK
+	pNxXW4g1Ga3nl/nTLWgVsNX2jtgRyJnb4Dt4ykV4H7ZpI2Dl70xTK/dp82kFsiG3uzF6gsX5SvwrC
+	ZQUKhuOOmJ0Rwa7Pl60wat2x23g6/zGv4s4FwxWFsoCd0dPq90u780JJpGWqRusC6zOMuEyT3wwHm
+	nfVjMZzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi2il-002g5e-4s; Tue, 11 Oct 2022 00:02:07 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1oi56E-0031px-Uu; Tue, 11 Oct 2022 02:34:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi2ih-002g44-1f; Tue, 11 Oct 2022 00:02:04 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id g28so12039933pfk.8;
-        Mon, 10 Oct 2022 17:02:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HDvDPLCLAPPvF5TVvL+FWbJtEqmbYVODvwDkJg3SqIo=;
-        b=BMj8f33/fyuY4YUgfzIsC8MB079NtlG/lc5y1lSPpCGAsz+jvSYZCTpuRzKVZGf2GY
-         nZi6ZRgOudbzROz6pHhHElsWmoKQQy847SVQHPP6Lzs+V2eA/brEnXLuDstKnq7MW7Ih
-         TzHZfV7XKs3PD0GAaAkJAXCvXBlxf5lB+KS3lhnFICm9Tq4yaQhhQQax921FRXOWW/if
-         /toe/pDvQON4HdgY5CGmbYgif/tTyjDjkjRdKQFAulnURnCwp8NMFdEBa3NYmPI0A+fB
-         fhamlfjudZxMTaB+1mSMxDuObe1ocZe7cQbErJKQBTAEur2a0QkUbRoT5VJEglEdMX1y
-         d2HQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HDvDPLCLAPPvF5TVvL+FWbJtEqmbYVODvwDkJg3SqIo=;
-        b=DONS1knPqoifxZtB+wVfgQujlLdjtOqwX/R38EvY0jBimsRrkgQc96ytHbOqa3zceZ
-         b4RBeT6y8aBL1WLjsHNE7H4bEe/3Ub5xnF4pFtxaf8uGAVkHEFGnXl1E+lYbweCUCNA4
-         3nso93NwstKJJaYmqoKxqiXFEq7D9nXzQA7xFMS1CKgAq1wUkfSCTe065CelCP4ImrcF
-         i1fzgz4RBquDUgSO3wa1fW4LPQQ6xsn4CRf8uN8mlX4cMWsXbxDz4thO9YzR2VmCbDtR
-         OFbWqDtEj1Ecan0zVtxgrl45sFCYaHMZMJMhRnYUAYl39C1B7R6I13W1pKrdYncYVKDv
-         vlqw==
-X-Gm-Message-State: ACrzQf1/DPyf/UOoW7nVRBtPpsPGNbEAhl6Wz+heq5TAxXFfbx7Wgbq3
-	Ky/3bmNrmTHg9QDxXB2AE9k=
-X-Google-Smtp-Source: AMsMyM7Y6pAnL5W1EJS9G7oSUu8S6FVrr9k2c5r6QKOELR9o0pNGH3yk7s3YJUqb5vMyZxDtzUjxCg==
-X-Received: by 2002:a63:4949:0:b0:442:b733:2fae with SMTP id y9-20020a634949000000b00442b7332faemr18227721pgk.424.1665446520354;
-        Mon, 10 Oct 2022 17:02:00 -0700 (PDT)
-Received: from sol (110-174-58-111.static.tpgi.com.au. [110.174.58.111])
-        by smtp.gmail.com with ESMTPSA id v29-20020aa799dd000000b0056258a3606csm7454081pfi.215.2022.10.10.17.01.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Oct 2022 17:01:59 -0700 (PDT)
-Date: Tue, 11 Oct 2022 08:01:27 +0800
-From: Kent Gibson <warthog618@gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Phil Edworthy <phil.edworthy@renesas.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Fabien Dessenne <fabien.dessenne@foss.st.com>,
-	Prathamesh Shete <pshete@nvidia.com>,
-	Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
-	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-media@vger.kernel.org, linux-actions@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
-	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-omap@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
-	Damien Le Moal <damien.lemoal@wdc.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Haojian Zhuang <haojian.zhuang@linaro.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Andy Gross <agross@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Tomasz Figa <tomasz.figa@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
-Message-ID: <Y0SyVwjDl7NGfTPn@sol>
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
+	id 1oi56C-0031pQ-OX
+	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 02:34:30 +0000
+X-UUID: 02868b2457f140b3aba93c8880dc17d4-20221010
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=CxXP6CzobnL6sVNisn2kNutVrGf5dAauzM+XPwU5cAc=;
+	b=bEQRRGuJo47tAq44Qf+ExrlWkzc4cILvjdl5NzZU+RcHq6mVTf6Otu6/ouOEySRXQS6eTkO2mGOueFyFkYXKXCPpy2T95UZSSp0FEQYD4KEleNNJaogDXj882u01w4H/9rxuv17j3dnQbbPQqSsOrQWJfp6eQcxc0kDITIpOn9g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:9307e026-dfb1-448f-8f50-9511b29d1ea7,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:91b9d3fe-ee8c-4ff7-afe9-644435e96625,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 02868b2457f140b3aba93c8880dc17d4-20221010
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1443729617; Mon, 10 Oct 2022 19:34:21 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 11 Oct 2022 10:03:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 11 Oct 2022 10:03:44 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: prevent unexpected nss setting from eeprom
+Date: Tue, 11 Oct 2022 10:03:43 +0800
+Message-ID: <efa6ba9cd8ad5124f58e05155cc05008b14c5edf.1665453585.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_170203_114665_8A452A2F 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20221010_193428_820994_3B399B2E 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,61 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 10, 2022 at 11:14:18PM +0300, Andy Shevchenko wrote:
-> Do not imply that some of the generic headers may be always included.
-> Instead, include explicitly what we are direct user of.
-> 
-> While at it, sort headers alphabetically.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->  drivers/gpio/gpiolib-cdev.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpio/gpiolib-cdev.c b/drivers/gpio/gpiolib-cdev.c
-> index f8041d4898d1..60a60e2d60c5 100644
-> --- a/drivers/gpio/gpiolib-cdev.c
-> +++ b/drivers/gpio/gpiolib-cdev.c
-> @@ -10,8 +10,9 @@
->  #include <linux/device.h>
->  #include <linux/err.h>
->  #include <linux/file.h>
-> -#include <linux/gpio.h>
->  #include <linux/gpio/driver.h>
-> +#include <linux/gpio.h>
-> +#include <linux/hte.h>
+Add a check to prevent unexpected nss configuration from eeprom.
 
-Ok with the hte re-order.
+Fixes: 4d8053df67c5 ("wifi: mt76: mt7915: rework eeprom tx paths and streams init")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-But moving the gpio subsystem header after the gpio/driver is not
-alphabetical ('.' precedes '/') and it read better and made more sense
-to me the way it was.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index e2482c65d639..6c5155223087 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -191,7 +191,6 @@ void mt7915_eeprom_parse_hw_cap(struct mt7915_dev *dev,
+ 		path = 4;
+ 
+ 	/* read tx/rx stream */
+-	nss = path;
+ 	if (dev->dbdc_support) {
+ 		if (is_mt7915(&dev->mt76)) {
+ 			nss = FIELD_GET(MT_EE_WIFI_CONF3_TX_PATH_B0,
+@@ -206,6 +205,11 @@ void mt7915_eeprom_parse_hw_cap(struct mt7915_dev *dev,
+ 
+ 		if (!is_mt7986(&dev->mt76))
+ 			nss_max = 2;
++
++		if (!nss)
++			nss = nss_max;
++	} else {
++		nss = path;
+ 	}
+ 
+ 	nss = min_t(u8, min_t(u8, nss_max, nss), path);
+-- 
+2.36.1
 
->  #include <linux/interrupt.h>
->  #include <linux/irqreturn.h>
->  #include <linux/kernel.h>
-> @@ -20,11 +21,12 @@
->  #include <linux/mutex.h>
->  #include <linux/pinctrl/consumer.h>
->  #include <linux/poll.h>
-> +#include <linux/seq_file.h>
-
-I wasn't aware that we use anything from seq_file.
-What am I missing?
-
-Cheers,
-Kent.
-
->  #include <linux/spinlock.h>
->  #include <linux/timekeeping.h>
->  #include <linux/uaccess.h>
->  #include <linux/workqueue.h>
-> -#include <linux/hte.h>
-> +
->  #include <uapi/linux/gpio.h>
->  
->  #include "gpiolib.h"
-> -- 
-> 2.35.1
-> 
 
