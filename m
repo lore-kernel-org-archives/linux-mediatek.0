@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99583C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:53:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ACA8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:55:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zy7eyP7l3yeYse+Pu27ubEIpK6eJwoJJn/ew0pn1xNI=; b=1vI6LEABvo/ajO8kOyNe35/VaM
-	YXGba39eW6eaPtoGuwSoqGVwxvDzuKO/fh5MAjdKj+K5nGliZcbXtt5BmxOHj8kuFj9C4BnBjK2vZ
-	5aBqGWrU/sHU6/c1x9b8J7t1v9ViIpeFyTHBwbbmSIpQP7ww1dPedFIfEK2yfpcnEpbOwPsDhsgkb
-	m3s4YL+bKZonHUF57i2q0ZNNvvjpjSJCMuZ6X3k8ILcyPi5sHwQ3sY9ICwfjb80EGfiHDepDq0FIJ
-	UKLMUMMdZYh+fyuqP8NUhuKWZXqXqJCJUZLKs5YaVZDiP+BOVbDsLq0uNmJicOVphhU4CQZ34j9NL
-	VcK2eWrw==;
+	bh=+nPf7uaPe/Ru5kjAGraHVr3aXjZ7avm6WNOpRyV48SM=; b=riITIAkWUvvxxSDy7/RZrcIgmQ
+	65H/NF+qQc0XZlq9T1yG+YrRhyYIbVSIK/cZK9qiqIFlG2Gaps+aFx4aPvOG5QbFAmQkxBgWIAiRe
+	DqVFxzVARuksHkVUHdMWcVBSEoNP4zFSujpDnBiCh4731Hhta0sznLqzeq49N2pHbYId8b5+ayLAa
+	OBBQavoK31/gV2j9tsG/7DvXkxWEZqAKsIYEwaQIb/f36Ia/w4QpUR/7Y9wLRCNkrdYbFqSTlesy5
+	poGoDcAiaZ9ovfcsOSatgR6bDSnshaM8O86MKC2cEcNk3yaMdzzHz6KLY8CZL016sWauFt7kt+5UO
+	0zN0aREA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBwk-003tJZ-2O; Tue, 11 Oct 2022 09:53:10 +0000
+	id 1oiByp-003tdf-8B; Tue, 11 Oct 2022 09:55:19 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBwY-003tHu-MJ; Tue, 11 Oct 2022 09:53:00 +0000
+	id 1oiByd-003tan-SZ; Tue, 11 Oct 2022 09:55:09 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C122A6602343;
-	Tue, 11 Oct 2022 10:52:55 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C395E6602356;
+	Tue, 11 Oct 2022 10:55:05 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665481976;
-	bh=2HHv5N/MSAggEBwsg7Pu4p7erSqosVMsiDYpnlW1NDY=;
+	s=mail; t=1665482106;
+	bh=zzsgbQRjWMGmMw0Zwxx8nmOt4OzG96FB3zeBCswPAU4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LkLEA8zbHkZDcirGS61AtjoJsjZYT+XDGl+PKSQVmffxeh2apTrT4SWNL44Tg0s7T
-	 GPSnyi4Thfe2dwoKh6Fg35xyoqypg0mXcQq5cy59797VzeQmE77PaMsTODys7qZF5p
-	 yf2drXYpM2Q3E489fj92oc6l271UmgtkWxZHdW6/M7ReX+s5g8tvrs5/6SGzwNjJBc
-	 lKNM5J6jVE+zpkNEUB0D8Ipug8gV6nQ6mW9zaVT3124Rhb6mLExpg9h7Uh+a7S+uVA
-	 qiyCK5Izx0w0sPNO8Hd+X6VLABm4UOeWUCZ9oUvJ2296nAm1pqHx9Lv4A8gvDFDXnT
-	 Eq36C/yZflL/w==
-Message-ID: <68ab0f05-e74a-e091-0109-09b57b90c652@collabora.com>
-Date: Tue, 11 Oct 2022 11:52:53 +0200
+	b=k9zNn0cDHZf9/3U+Osh0Wvyqrhe8wq3LHEF3HdzAY7N9+4zdFxmEGc1vmnlERpLdf
+	 g8x9lJlZ4yVJcvwx4Fgu1D66k5OWszccrggKryMmRQM2Fy881D1W9kjjF0SWfVaN5l
+	 b3v+66UkaoYsfjPUA8SMyqcg42ciZsz4psVPIE+LdLIaCq1Q1rYNAqfafZpmnCAppl
+	 gfNFppESg0v303wVuW3pCSN2oPkeXJ1kbX7344XWajKv5um+sNacVl1dKoylCcbQHE
+	 gOxFWrtXQtH79STLYUc3x81qx3wXz89fxc/AiUUwEFr2AeXjtxD2URCtn7jYRgTsFP
+	 POsLfOvUJ5eew==
+Message-ID: <54d3b706-6f5b-d5ec-82ca-45b9f4995d13@collabora.com>
+Date: Tue, 11 Oct 2022 11:55:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v14 3/3] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
+Subject: Re: [PATCH v3 2/3] iommu/mediatek: add support for 6-bit encoded port
+ IDs
 Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, pavel@ucw.cz, matthias.bgg@gmail.com,
- jic23@kernel.org, lars@metafoo.de, andriy.shevchenko@linux.intel.com
-Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
- linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, szunichen@gmail.com
-References: <cover.1665488982.git.chiaen_wu@richtek.com>
- <657f73ae257925ebc68dc825998384ad79d31e1f.1665488982.git.chiaen_wu@richtek.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Fabien Parent <fparent@baylibre.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+ linux-mediatek@lists.infradead.org
+References: <20221001-iommu-support-v3-0-c7b3059b0d16@baylibre.com>
+ <20221001-iommu-support-v3-2-c7b3059b0d16@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <657f73ae257925ebc68dc825998384ad79d31e1f.1665488982.git.chiaen_wu@richtek.com>
+In-Reply-To: <20221001-iommu-support-v3-2-c7b3059b0d16@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_025258_990092_9BAC9AD7 
-X-CRM114-Status: GOOD (  22.76  )
+X-CRM114-CacheID: sfid-20221011_025508_078612_01C5130D 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,67 +83,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/10/22 06:05, ChiaEn Wu ha scritto:
-> From: Alice Chen <alice_chen@richtek.com>
+Il 10/10/22 14:54, Alexandre Mergnat ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> The MediaTek MT6370 is a highly-integrated smart power management IC,
-> which includes a single cell Li-Ion/Li-Polymer switching battery
-> charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
-> LED current sources, a RGB LED driver, a backlight WLED driver,
-> a display bias driver and a general LDO for portable devices.
+> Until now the port ID was always encoded as a 5-bit data. On MT8365,
+> the port ID is encoded as a 6-bit data. This requires to add extra
+> macro F_MMU_INT_ID_LARB_ID_EXT, and F_MMU_INT_ID_PORT_ID_EXT in order
+> to support 6-bit encoded port IDs.
 > 
-> Add support for the MT6370 Flash LED driver. Flash LED in MT6370
-> has 2 channels and support torch/strobe mode.
-> 
-> Signed-off-by: Alice Chen <alice_chen@richtek.com>
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
+>   drivers/iommu/mtk_iommu.c | 17 +++++++++++++++--
+>   1 file changed, 15 insertions(+), 2 deletions(-)
 > 
-> v14
-> - Remove unused 'depend on OF' in Kconfig
-> ---
->   drivers/leds/flash/Kconfig             |  14 +
->   drivers/leds/flash/Makefile            |   1 +
->   drivers/leds/flash/leds-mt6370-flash.c | 631 +++++++++++++++++++++++++++++++++
->   3 files changed, 646 insertions(+)
->   create mode 100644 drivers/leds/flash/leds-mt6370-flash.c
-> 
-> diff --git a/drivers/leds/flash/Kconfig b/drivers/leds/flash/Kconfig
-> index d3eb689..0dd955c 100644
-> --- a/drivers/leds/flash/Kconfig
-> +++ b/drivers/leds/flash/Kconfig
-> @@ -61,6 +61,20 @@ config LEDS_MT6360
->   	  Independent current sources supply for each flash LED support torch
->   	  and strobe mode.
->   
-> +config LEDS_MT6370_FLASH
-> +	tristate "Flash LED Support for MediaTek MT6370 PMIC"
-> +	depends on LEDS_CLASS
-> +	depends on LEDS_CLASS_FLASH || !LEDS_CLASS_FLASH
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 5a4e00e4bbbc..35e9731c3441 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -108,8 +108,12 @@
+>   #define F_MMU_INT_ID_SUB_COMM_ID(a)		(((a) >> 7) & 0x3)
+>   #define F_MMU_INT_ID_COMM_ID_EXT(a)		(((a) >> 10) & 0x7)
+>   #define F_MMU_INT_ID_SUB_COMM_ID_EXT(a)		(((a) >> 7) & 0x7)
+> +/* Macro for 5 bits lenght port ID field (default) */
 
-This dependency makes no sense, as the options in the Kconfig you're putting
-this into gets parsed only `if LEDS_CLASS_FLASH`.
-Please remove that.
+Typo: s/lenght/length/g
 
-> +	depends on V4L2_FLASH_LED_CLASS || !V4L2_FLASH_LED_CLASS
+>   #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
+>   #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
+> +/* Macro for 6 bits lenght port ID field */
 
-Well, if it depends on that being either y, m or n, it means that it does
-not depend on that at all. Remove.
+Same here.
 
-After which,
+After fixing that:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +	depends on MFD_MT6370
-> +	help
-> +	  Support 2 channels and torch/strobe mode.
-> +	  Say Y here to enable support for
-> +	  MT6370_FLASH_LED device.
-> +
-> +	  This driver can also be built as a module. If so, the module
-> +	  will be called "leds-mt6370-flash".
-> +
->   config LEDS_RT4505
->   	tristate "LED support for RT4505 flashlight controller"
->   	depends on I2C && OF
 
 
