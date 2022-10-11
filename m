@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E44DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 845FFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LQcZWTuomJs8azzuENO1ysYr7YvhPJHACpEofFQ3Mqw=; b=AVvu/QSODaxjEyn4gfeIehDhUJ
-	edAy2/uPIpvgA7KJBAFpAd4FOO9zknSXBma+DVDqKFI4buUz4LtpA0Fa2QsWK7TTeJYv5akeEt8hx
-	9h72b1NvHouDCkbwB5zkB90REWXmNCXoWCS9HPZtZWSx4G15YlCNqaEcrG3V4KADHoonS41ELlaXN
-	bqZOu5aiu1Och69LKhLTPJu1fz5wpuyLmXUT+2orFbysykVjIYgRZsvrSz/VW+X9olGVFMlFPfVa+
-	yKowdOQwghBWIW4dojoXCZx8zaNrxe0C+bIdqZuAzwTGVdRp3TWUvLhhWilgvGeNUhyPEs+gItfSb
-	JNzchZ9A==;
+	bh=ngnUas4KPpGz4tldkFYchtKZ57A7hV6S1kjjkq5iBk4=; b=MXooH/5crxO2FnBndkvjxDz+TB
+	gcsU9788Ro3SWxrKoTW5g3kNbMeemKJH1DoduFtCfG3tAd4zOrYYn4W//UZxohHk3OZbPRFSolgF/
+	VTBVqkw3bEQ2uPwcENFlPrDu8G40ijXpTMxenuVkpRxPrnAS4UJ+XxgKN5Vh2lbE+AlUORqXVYpJ3
+	kbfVVApPER7C7xV5KtqYBYcaE3AVlGVSugKW9MgO4SBzNLiawPK4PyyPMiT3RSucWFu8RNaP4vxKE
+	C5n3dbm5isXTlYQDJLqvqPIw8AtM6yGyTo9Nmen4zmeJ9zUsvyFybE+UW6mJOID0k2OtlvG42GxLc
+	C4GhILqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBDs-003o3X-Qz; Tue, 11 Oct 2022 09:06:48 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1oiBEl-003oGe-MJ; Tue, 11 Oct 2022 09:07:43 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBDo-003o2R-UP; Tue, 11 Oct 2022 09:06:46 +0000
+	id 1oiBEi-003oDJ-3O; Tue, 11 Oct 2022 09:07:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665479204; x=1697015204;
+  t=1665479260; x=1697015260;
   h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=EDe69pp5/h3Ee30GI4SHuwJ5qjyCZy1LPPLfzPY94CE=;
-  b=Vs7ILluKmrH7pe+dWRvgYy6MABycJztutg0yMMCAUt0QqOiCpBeHHG5B
-   w/WWxkpD6Anh2Geagbhe7VKMBiMirL4hpZQjusZjKS7teptHKb3Fw2Ui5
-   /n4Xxwy8GuY0yVPEiSYoD+BnB5Umbi4YmG36aYq/eiO7QyGeuV7bDvYNZ
-   uhZoU3f5pY6XsxlE8jzynoZ1IJabKSM+2ZLrC7EpC0SU58vc4vUI+T0NR
-   UL+8vcgVsTv0sH8wqlQ3NuCB11zDvogCt3YKh+Qb2ZiSSkqqc6xS5tiII
-   BL5ooRiHasEB3undgpqUI0NDf/czrd8Q8nlLHbL8EK2J4je/SK8fOGgQV
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="304441287"
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=U6Q0eqDO5XKNfPO1gS4tfAxW8aSXRLRmUbuizVaigrU=;
+  b=lw8jjEhd6+TyBYMlbYlDGXv+nH9A++2anLzruHHk0YbrPtkTGx5F8JdO
+   ctwCSCznRRGEs2hCCe1xy1wdUgapzItzoX3Y+12TDmECL1NtfucgQ76HV
+   q8PIUhNhVW8RlkuZgrXVEf5FKLqUW/wIpgwHdLc2jIdfkRyYF5CQyhTl6
+   bdiQogUQFTY1DLrPvv441ZYxdJGYkhCT1ZyDdIvG3mtLNSJ9B3uSbBwjZ
+   1SurAMVbncDYd3etHWuNFQY0vZImWkq4psouygKBcYUkykw7XFVvyyEdP
+   GP7yyW04bVMGzxXsuO3dwNboKuODrN2jKRYNmGvuv05ZTqPdFnPbLyhaZ
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="306075933"
 X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="304441287"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 02:06:43 -0700
+   d="scan'208";a="306075933"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 02:07:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="659467328"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="871436201"
 X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="659467328"
+   d="scan'208";a="871436201"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga001.jf.intel.com with ESMTP; 11 Oct 2022 02:06:21 -0700
+  by fmsmga006.fm.intel.com with ESMTP; 11 Oct 2022 02:07:11 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oiBDL-005Eh1-1p;
-	Tue, 11 Oct 2022 12:06:15 +0300
-Date: Tue, 11 Oct 2022 12:06:15 +0300
+	id 1oiBEA-005EiK-07;
+	Tue, 11 Oct 2022 12:07:06 +0300
+Date: Tue, 11 Oct 2022 12:07:05 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Emil Renner Berthing <emil.renner.berthing@canonical.com>
-Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Basavaraj Natikar <bnatikar@amd.com>, Marc Zyngier <maz@kernel.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
 	Kent Gibson <warthog618@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Billy Tsai <billy_tsai@aspeedtech.com>,
@@ -136,19 +137,21 @@ Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v2 25/36] pinctrl: starfive: Add missed header(s)
-Message-ID: <Y0UyB8n52Nma8UWz@smile.fi.intel.com>
+Subject: Re: [PATCH v2 36/36] pinctrl: Clean up headers
+Message-ID: <Y0UyOWALxSFai2w6@smile.fi.intel.com>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-26-andriy.shevchenko@linux.intel.com>
- <CAJM55Z_ApPowttZrjn_0dUs81H4FfByDfv=fbhvmHquipULANg@mail.gmail.com>
+ <20221010201453.77401-37-andriy.shevchenko@linux.intel.com>
+ <d63088d7-202b-a550-01e5-345a22de5f7d@amd.com>
+ <CAMuHMdUfdQnisexfs4yLjeKs-LUPY1HjChrgeNjNL1qSErir9Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAJM55Z_ApPowttZrjn_0dUs81H4FfByDfv=fbhvmHquipULANg@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAMuHMdUfdQnisexfs4yLjeKs-LUPY1HjChrgeNjNL1qSErir9Q@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_020645_015586_5ED252B6 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20221011_020740_195700_9E9150A3 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,25 +166,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 10:31:33AM +0200, Emil Renner Berthing wrote:
-> On Mon, 10 Oct 2022 at 22:26, Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
+On Tue, Oct 11, 2022 at 10:46:30AM +0200, Geert Uytterhoeven wrote:
+> On Tue, Oct 11, 2022 at 9:31 AM Basavaraj Natikar <bnatikar@amd.com> wrote:
+> > On 10/11/2022 1:44 AM, Andy Shevchenko wrote:
+
+> > > +++ b/drivers/pinctrl/core.h
+
+> > > -#include <linux/pinctrl/pinconf.h>
 > >
-> > Do not imply that some of the generic headers may be always included.
-> > Instead, include explicitly what we are direct user of.
-> >
-> > While at it, sort headers alphabetically.
+> > Removing pinconf.h from the core.h may cause build failure in other files
+> > because where-ever core.h is included to use “struct pinconf_ops”, there
+> > is a need to include pinconf.h.
 > 
-> The patch is fine, but I don't see any sorting other than just adding
-> the headers at the appropriate place.
-
-I will amend commit message here.
-
-> In any case
+> I can confirm adding
 > 
-> Acked-by: Emil Renner Berthing <emil.renner.berthing@canonical.com>
+>     #include <linux/pinctrl/pinconf.h>
+> 
+> to drivers/pinctrl/renesas/pinctrl-rzn1.c and drivers/pinctrl/pinctrl-single.c
+> fixes the issues I was seeing with shmobile_defconfig and (out-of-tree)
+> renesas_defconfig.
 
-Thank you!
+I will add this, thank you for reporting.
 
 -- 
 With Best Regards,
