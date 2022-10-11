@@ -4,71 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B8CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 18:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08FBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 20:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pf/C879KZL4yXl4ct6n2O2UzAQd2JpHcWI4pnxBifIw=; b=fRMn+w8gJP5IlTf1NWwcnX5sUE
-	LyYoeaXq4LCJP/w8KZrpeMA5gOJuOunTPnjL6AIZXApSbQtrFTxqrw2fRNBUDc5JAlqF2cYDkdQC9
-	duswsvkAXtFEFYkrf5llFyaiA8NT+a+s+cPdhtex4IatmWiss4avWyACfzYbWGsT2krwpufx+UF2/
-	Dw/YnWQyKi+KkQyQ8adrO6IxFUfRKGQrtoFqAgXeWi7bh+SFmheqeg+v3DAceAPHY9tdCP7/6aSEQ
-	66tl2mtkI0FZOSgntP/a3hN2XKGwxAQ+YJU97pUMDkF3ZeHP3Y1WMSqhFc9tiZQcewxAW1uO2WXFQ
-	z4kzjorg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=; b=i4jRy37E4nGfSalicvuYeaSz/X
+	HRqX1CTc4E+P6r6SiHHr2+8Xi1I83yxfHw9ZvisDfvuUOt4C6ouhFqX9/HAH/pIsyhjPuIlcT46R7
+	SOcnzqmPD0ktfZGTOjBiqVewKnZTP9d2Z1uzmGxJ9y4MXZ/ec5dnFRjWkLzXZjnQ4jSvJenQu0NMl
+	3rxXEb0uqAUqfiRB6OtSATeVhveQQKxBeGMftDB6bjYiT1kAS0trRXE9Q7RDEZZ16bfOpAT5lUrDz
+	9eCWHAoLopSY0LEi1nDsVmy/Df+1L2LUQQyXuAoiKc21L/7YARjWRSLFrjYwTVtOItkTiPCJGMxI/
+	kjh0BdNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiJzy-005Rni-G7; Tue, 11 Oct 2022 18:29:02 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1oiMIa-005qtR-51; Tue, 11 Oct 2022 20:56:24 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiJzt-005Rmt-Lv
-	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 18:28:59 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id 203so17454217ybc.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Oct 2022 11:28:54 -0700 (PDT)
+	id 1oiMIW-005qrR-5E; Tue, 11 Oct 2022 20:56:21 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 70so13513239pjo.4;
+        Tue, 11 Oct 2022 13:56:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pf/C879KZL4yXl4ct6n2O2UzAQd2JpHcWI4pnxBifIw=;
-        b=S94UX1DQ5BEDs6CY8SEHgtOp4gEtf9GbzjK9t+2gLOBFmIUgDdPYWtRK973LJSmOxo
-         4DPkUoVuhi9C9suPuJ9FTdcxLcr2VgSKwam2D3qZtALGIbrWWphWH3Arwaj5WtScghmH
-         ulRW58y62mg3+W3AO5PnsIDYfTSKzXPdAvxNM=
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=;
+        b=DlfaPAoLX/0Jb1SsUAFBMfuYimfDeLB1Gs+lotFCf5wX/xRNwwaeEjZ5ki70F0YSfL
+         rO7wa9sBAK38Fitsjr8wWeGaTbB17rWj/5uv6Qggo2NMYLqZ3T8nbfHPEpUJcQu2bQ5S
+         2uJcOyvVHU3GCMrUVyQTjgWU857w+EEMu3KOOXzRP0sBYb9WpwXPa+bHwKfdWnDYL1IZ
+         sjB2VBMKHp8LTg0LYEtI3ZlOLTHkYjnwE1T4zHOamUMrxkhqgzXrSXOnblYNQPKxo6AV
+         GmstnP6z2i66RfbJJQ1IzTNkzjBUrVnp0pu77wz8fvzBSAWlB5mtP7EKE8gyxWRookcL
+         WWLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Pf/C879KZL4yXl4ct6n2O2UzAQd2JpHcWI4pnxBifIw=;
-        b=wtBY0IhrNNd93kiv25031HEvXEx3FoAYwo0yYehgUnio1FfRcybjgGyA4yZ617Wj5n
-         2GhAft9gSZZxIaAA3cMo4jp/r80OMMZFi21VaymBjZdXV1UK+2cLjTOtjXR0F7hNHGn+
-         AuQJHeoA0vAAoseyv1koNgjtERiGTUnHWlnZHhdhH7BnAiYlU7A0l50p5nD1brwiROBM
-         eNOU/akJuMNZxU81iT6Bmi0HtKOJJNqALS5+6L6XkWtYGDR3msp0z8HliBwn1wijhhmp
-         MhUXw5u2spTu+pPAIAiCr+ThY6SM7HePIGAFEs0WJQ6JKC50yo0Bqd8juG9xR70xNQ8k
-         h1hw==
-X-Gm-Message-State: ACrzQf0TXnY1K8bfqxHbRHbMVx6jREM3TZ1qDSeX/gq4EZw2g4a24q1R
-	LuXxfJ+2i634hFmr9d8xtDL3dfDrLzPADdgjlW8fLDccesxzeg==
-X-Google-Smtp-Source: AMsMyM5OSUW1/aQvZ2FIcCsUfIRHn1CdcbRJRrN0S1X7fvnc8KLZcrmVo1c+jg+rZEaDVsOl2lTIuCCJJnL59sQpCBA=
-X-Received: by 2002:a05:6902:15cf:b0:67c:1ee7:149 with SMTP id
- l15-20020a05690215cf00b0067c1ee70149mr24751187ybu.594.1665512933894; Tue, 11
- Oct 2022 11:28:53 -0700 (PDT)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=;
+        b=y/1Lcs6ul8QJnPV2x1rvywwulTWE9P8k5Z2alc+hnzKgtbyFZQDL1pkSgmu/AGvS1h
+         jBTz65fNrGd9iFQKtOraHB8jyVUKA55+xkDuNoS4x2FzS3ik8tXEvMKms+QZHzOtwgJt
+         NCM0Wz+ealmy2Ed5hq6hL078ZHYMRXMEYVrXHtFx4W3AQ4Cfgdelivlk8ZaK3bw/MGlJ
+         vAjeKIWrGJValtbt1onO6Ozf55LJOq2u9oHIxOPlhlf/E1rwtLRBPb7apiSZRoyD1E4D
+         TzvJfZfq8iAA06FZyJtocznz7eOMmwR8rUBOjJABL7Ad7zASiQKcSvk0cPUwbbb5Vqz9
+         Q/vA==
+X-Gm-Message-State: ACrzQf0fjxYenOzpb2F1mf10z5IyJnKq1U2kEe8pX2lYSXcB0l4xKKGs
+	rPqkmFcH64Fl7hEvlkrG88Q=
+X-Google-Smtp-Source: AMsMyM5pIEdsgeht0NOYcyruIBhuS4NISKYBTrmuG1I0+RU2v1LFNfTy+oB9jcY4eA/I6+ThSmPvTg==
+X-Received: by 2002:a17:90b:1bc9:b0:20d:75b8:ee5d with SMTP id oa9-20020a17090b1bc900b0020d75b8ee5dmr1171628pjb.147.1665521776548;
+        Tue, 11 Oct 2022 13:56:16 -0700 (PDT)
+Received: from ?IPV6:2600:8802:b00:4a48:7467:a6d1:4211:7f63? ([2600:8802:b00:4a48:7467:a6d1:4211:7f63])
+        by smtp.gmail.com with ESMTPSA id k207-20020a6284d8000000b00537eacc8fa6sm9403022pfd.40.2022.10.11.13.56.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Oct 2022 13:56:15 -0700 (PDT)
+Message-ID: <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
+Date: Tue, 11 Oct 2022 13:56:09 -0700
 MIME-Version: 1.0
-References: <20221010150157.1864492-1-greenjustin@google.com> <664e32dc-3f91-48ae-64a1-6dcecc9dfb5b@collabora.com>
-In-Reply-To: <664e32dc-3f91-48ae-64a1-6dcecc9dfb5b@collabora.com>
-From: Justin Green <greenjustin@chromium.org>
-Date: Tue, 11 Oct 2022 14:28:43 -0400
-Message-ID: <CAHC42Rf7o61NF3LNQkm4BFcBHMKEP2np3sZMvM7KYczCsurHKA@mail.gmail.com>
-Subject: Re: [RESEND PATCH v2] drm/mediatek: Add AFBC support to Mediatek DRM driver
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	jason-jh.lin@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
-	airlied@linux.ie, matthias.bgg@gmail.com, wenst@chromium.org, 
-	justin.yeh@mediatek.com, daniel@ffwll.ch
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.2
+Subject: Re: [rft, PATCH v2 00/36] pinctrl: Clean up and add missed headers
+Content-Language: en-US
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Kent Gibson <warthog618@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Billy Tsai <billy_tsai@aspeedtech.com>, Thomas Gleixner
+ <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Mika Westerberg <mika.westerberg@linux.intel.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Phil Edworthy <phil.edworthy@renesas.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Fabien Dessenne <fabien.dessenne@foss.st.com>,
+ Prathamesh Shete <pshete@nvidia.com>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
+ linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
+ Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
+ Damien Le Moal <damien.lemoal@wdc.com>, Tony Lindgren <tony@atomide.com>,
+ Haojian Zhuang <haojian.zhuang@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@somainline.org>,
+ Tomasz Figa <tomasz.figa@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Emil Renner Berthing <kernel@esmil.dk>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_112857_782569_BE0BF1BF 
-X-CRM114-Status: GOOD (  35.52  )
+X-CRM114-CacheID: sfid-20221011_135620_273293_6C659586 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,284 +159,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
-Thanks for the suggestions! I'll upload another patch with those changes.
 
-Re the pitch register math, would it be acceptable to define separate
-macros for the LSB and MSB to abstract away the magic numbers? For
-example:
-#define OVL_PITCH_MSB(n)                        ((n >> 16) & GENMASK(15, 0))
-#define OVL_PITCH_LSB(n)                        (n & GENMASK(15, 0))
 
-Regards,
-Justin
+On 10/10/2022 1:14 PM, Andy Shevchenko wrote:
+> Currently the header inclusion inside the pinctrl headers seems more arbitrary
+> than logical. This series is basically out of two parts:
+> - add missed headers to the pin control drivers / users
+> - clean up the headers of pin control subsystem
+> 
+> The idea is to have this series to be pulled after -rc1 by the GPIO and
+> pin control subsystems, so all new drivers will utilize cleaned up headers
+> of the pin control.
+> 
+> Please, review and comment.
 
-On Tue, Oct 11, 2022 at 5:09 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 10/10/22 17:01, Justin Green ha scritto:
-> > From: Justin Green <greenjustin@chromium.org>
-> >
-> > Add AFBC support to Mediatek DRM driver and enable on MT8195.
-> >
-> > Tested on MT8195 and confirmed both correct video output and improved DRAM
-> > bandwidth performance.
-> >
-> > v2:
-> > Marked mtk_ovl_set_afbc as static, reflowed some lines to fit column
-> > limit.
-> >
-> > Signed-off-by: Justin Green <greenjustin@chromium.org>
->
-> Hello Justin,
-> thanks for the patch!
->
-> However, there's something to improve...
->
-> > ---
-> >   drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 108 ++++++++++++++++++++---
-> >   drivers/gpu/drm/mediatek/mtk_drm_plane.c |  37 +++++++-
-> >   drivers/gpu/drm/mediatek/mtk_drm_plane.h |   8 ++
-> >   3 files changed, 140 insertions(+), 13 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > index 002b0f6cae1a..1724ea85a840 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
->
-> ..snip..
->
-> > @@ -208,6 +231,8 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
-> >   {
-> >       struct drm_plane_state *state = &mtk_state->base;
-> >       unsigned int rotation = 0;
-> > +     unsigned long long modifier;
-> > +     unsigned int fourcc;
-> >
-> >       rotation = drm_rotation_simplify(state->rotation,
-> >                                        DRM_MODE_ROTATE_0 |
-> > @@ -226,6 +251,30 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
-> >       if (state->fb->format->is_yuv && rotation != 0)
-> >               return -EINVAL;
-> >
-> > +     if (state->fb->modifier) {
-> > +             struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
->
-> Since you're introducing modifier and fourcc for this branch only, you
-> may as well just declare them here instead, but either way is fine.
->
-> > +
-> > +             if (!ovl->data->supports_afbc)
-> > +                     return -EINVAL;
-> > +
-> > +             modifier = state->fb->modifier;
-> > +
-> > +             if (modifier != DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> > +                                                     AFBC_FORMAT_MOD_SPLIT |
-> > +                                                     AFBC_FORMAT_MOD_SPARSE))
-> > +                     return -EINVAL;
-> > +
-> > +             fourcc = state->fb->format->format;
-> > +             if (fourcc != DRM_FORMAT_BGRA8888 &&
-> > +                 fourcc != DRM_FORMAT_ABGR8888 &&
-> > +                 fourcc != DRM_FORMAT_ARGB8888 &&
-> > +                 fourcc != DRM_FORMAT_XRGB8888 &&
-> > +                 fourcc != DRM_FORMAT_XBGR8888 &&
-> > +                 fourcc != DRM_FORMAT_RGB888 &&
-> > +                 fourcc != DRM_FORMAT_BGR888)
-> > +                     return -EINVAL;
-> > +     }
-> > +
-> >       state->rotation = rotation;
-> >
-> >       return 0;
-> > @@ -310,11 +359,14 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
-> >       struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-> >       struct mtk_plane_pending_state *pending = &state->pending;
-> >       unsigned int addr = pending->addr;
-> > -     unsigned int pitch = pending->pitch & 0xffff;
-> > +     unsigned int hdr_addr = pending->hdr_addr;
-> > +     unsigned int pitch = pending->pitch;
-> > +     unsigned int hdr_pitch = pending->hdr_pitch;
-> >       unsigned int fmt = pending->format;
-> >       unsigned int offset = (pending->y << 16) | pending->x;
-> >       unsigned int src_size = (pending->height << 16) | pending->width;
-> >       unsigned int con;
-> > +     bool is_afbc = pending->modifier;
-> >
-> >       if (!pending->enable) {
-> >               mtk_ovl_layer_off(dev, idx, cmdq_pkt);
-> > @@ -335,16 +387,39 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
-> >               addr += pending->pitch - 1;
-> >       }
-> >
-> > -     mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> > -                           DISP_REG_OVL_CON(idx));
-> > -     mtk_ddp_write_relaxed(cmdq_pkt, pitch, &ovl->cmdq_reg, ovl->regs,
-> > -                           DISP_REG_OVL_PITCH(idx));
-> > -     mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> > -                           DISP_REG_OVL_SRC_SIZE(idx));
-> > -     mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> > -                           DISP_REG_OVL_OFFSET(idx));
-> > -     mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> > -                           DISP_REG_OVL_ADDR(ovl, idx));
-> > +     mtk_ovl_set_afbc(dev, cmdq_pkt, idx, is_afbc);
-> > +     if (!is_afbc) {
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_CON(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, pitch & 0xFFFF, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_PITCH(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_SRC_SIZE(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_OFFSET(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_ADDR(ovl, idx));
-> > +     } else {
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_ADDR(ovl, idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_HDR_ADDR(ovl, idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_SRC_SIZE(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt,
-> > +                                   OVL_PITCH_MSB_2ND_SUBBUF | ((pitch >> 16) & 0xFFFF),
->
-> I say that this would be more readable if you use bitfield macros instead but,
-> anyway, that magic "16" number must get a definition.
-> I have the same comment about the GENMASK(15, 0) (== 0xffff), but I know that
-> doesn't come from you... would still be nice to also add a definition, which
-> is anyway "practically mandatory" if you use FIELD_PREP(mask, val).
->
-> > +                                   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, pitch & 0xFFFF, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_PITCH(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_HDR_PITCH(ovl, idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_CON(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_OFFSET(idx));
-> > +             mtk_ddp_write_relaxed(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
-> > +                                   DISP_REG_OVL_CLIP(idx));
-> > +     }
->
-> In any case - are you use that we *must* program the registers in this exact
-> sequence?
->
-> Here, the OVL layer is supposed to be OFF (OVL_SRC_CON == 0, OVL_RDMA_CTRL == 0)
-> so the contents of the registers that you're modifying should not matter at all
-> until the layer is turned on.
->
-> Note that, in case it doesn't matter, this gets greatly simplified, exactly as:
->
-> at the top -- after DISP_REG_OVL_PITCH_MSB(n):
-> #define OVL_SRC_PITCH_MSB       GENMASK(3, 0)
->
-> after DISP_REG_OVL_PITCH(n):
-> #define OVL_SRC_PITCH_LSB       GENMASK(15, 0)
->
->         mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_CON(idx));
->         mtk_ddp_write_relaxed(cmdq_pkt, FIELD_PREP(OVL_SRC_PITCH_LSB, pitch),
->                               &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
->         mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_SRC_SIZE(idx));
->         mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_OFFSET(idx));
->         mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_ADDR(ovl, idx));
->
->         if (is_afbc) {
->                 pitch_msb = FIELD_PREP(OVL_SRC_PITCH_MSB, (pitch >> 16));
->                 pitch_msb |= FIELD_PREP(OVL_PITCH_MSB_2ND_SUBBUF, 1);
->                 mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
->                                       DISP_REG_OVL_HDR_ADDR(ovl, idx));
->                 mtk_ddp_write_relaxed(cmdq_pkt, val, &ovl->cmdq_reg, ovl->regs,
->                                       DISP_REG_OVL_PITCH_MSB(idx));
->                 mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
->                                       DISP_REG_OVL_HDR_PITCH(ovl, idx));
->                 mtk_ddp_write_relaxed(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
->                                       DISP_REG_OVL_CLIP(idx));
->         }
->
-> >
-> >       mtk_ovl_layer_on(dev, idx, cmdq_pkt);
-> >   }
-> > @@ -492,6 +567,15 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
->
-> ..snip..
->
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > index 5c0d9ce69931..734d2554b2b8 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > @@ -12,6 +12,7 @@
-> >   #include <drm/drm_framebuffer.h>
-> >   #include <drm/drm_gem_atomic_helper.h>
-> >   #include <drm/drm_plane_helper.h>
-> > +#include <linux/align.h>
-> >
-> >   #include "mtk_drm_crtc.h"
-> >   #include "mtk_drm_ddp_comp.h"
-> > @@ -52,6 +53,7 @@ static void mtk_plane_reset(struct drm_plane *plane)
-> >
-> >       state->base.plane = plane;
-> >       state->pending.format = DRM_FORMAT_RGB565;
-> > +     state->pending.modifier = 0;
-> >   }
-> >
-> >   static struct drm_plane_state *mtk_plane_duplicate_state(struct drm_plane *plane)
-> > @@ -120,21 +122,52 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
-> >       struct drm_gem_object *gem;
-> >       struct mtk_drm_gem_obj *mtk_gem;
-> >       unsigned int pitch, format;
-> > +     unsigned long long modifier;
-> >       dma_addr_t addr;
-> > +     dma_addr_t hdr_addr = 0;
-> > +     unsigned int hdr_pitch = 0;
-> >
-> >       gem = fb->obj[0];
-> >       mtk_gem = to_mtk_gem_obj(gem);
-> >       addr = mtk_gem->dma_addr;
-> >       pitch = fb->pitches[0];
-> >       format = fb->format->format;
-> > +     modifier = fb->modifier;
-> >
-> > -     addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> > -     addr += (new_state->src.y1 >> 16) * pitch;
-> > +     if (!modifier) {
-> > +             addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> > +             addr += (new_state->src.y1 >> 16) * pitch;
-> > +     } else {
-> > +             int width_in_blocks = ALIGN(fb->width, AFBC_DATA_BLOCK_WIDTH)
-> > +                                   / AFBC_DATA_BLOCK_WIDTH;
-> > +             int height_in_blocks = ALIGN(fb->height, AFBC_DATA_BLOCK_HEIGHT)
-> > +                                    / AFBC_DATA_BLOCK_HEIGHT;
-> > +             int x_offset_in_blocks = (new_state->src.x1 >> 16) / AFBC_DATA_BLOCK_WIDTH;
-> > +             int y_offset_in_blocks = (new_state->src.y1 >> 16) / AFBC_DATA_BLOCK_HEIGHT;
-> > +             int hdr_size;
-> > +
-> > +             hdr_pitch = width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
-> > +             pitch = width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
-> > +                     AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
-> > +
-> > +             hdr_size = ALIGN(hdr_pitch * height_in_blocks, AFBC_HEADER_ALIGNMENT);
-> > +
-> > +             hdr_addr = addr + hdr_pitch * y_offset_in_blocks +
-> > +                        AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
-> > +             // The data plane is offset by 1 additional block.
->
-> C-style comments please.
->
-> > +             addr = addr + hdr_size +
-> > +                    pitch * y_offset_in_blocks +
-> > +                    AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
-> > +                    fb->format->cpp[0] * (x_offset_in_blocks + 1);
-> > +     }
-> >
->
-> Regards,
-> Angelo
->
+Did you really need to split this on a per-driver basis as opposed to 
+just a treewide drivers/pinctrl, drivers/media and drivers/gpiolib patch 
+set?
+
+36 patches seems needlessly high when 4 patches could have achieve the 
+same outcome.
+-- 
+Florian
 
