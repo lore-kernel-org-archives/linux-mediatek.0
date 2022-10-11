@@ -4,147 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08FBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 20:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F714C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 22:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=; b=i4jRy37E4nGfSalicvuYeaSz/X
-	HRqX1CTc4E+P6r6SiHHr2+8Xi1I83yxfHw9ZvisDfvuUOt4C6ouhFqX9/HAH/pIsyhjPuIlcT46R7
-	SOcnzqmPD0ktfZGTOjBiqVewKnZTP9d2Z1uzmGxJ9y4MXZ/ec5dnFRjWkLzXZjnQ4jSvJenQu0NMl
-	3rxXEb0uqAUqfiRB6OtSATeVhveQQKxBeGMftDB6bjYiT1kAS0trRXE9Q7RDEZZ16bfOpAT5lUrDz
-	9eCWHAoLopSY0LEi1nDsVmy/Df+1L2LUQQyXuAoiKc21L/7YARjWRSLFrjYwTVtOItkTiPCJGMxI/
-	kjh0BdNg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LU58/FgjDPCb4/HIjKdV8bVA1BTPcHJFbY4JeAoNkso=; b=He1YMWmva69S16YyE0GmAHfDMt
+	BOFvnKkvTzMWct5hHdDhTAVTX/H6ctTvTJgGSMX/YbeiRTcUoseq+CULHJaK6K8AKJuPZ0t3wUG+2
+	jAfJcu860pQ9XG+iwdAd1NhGVKle1RTKId3RwZTvqSaYoKDG6WdI/rM61OciNMaXDgiIsahbhFiKW
+	9qmylttYGp7b028BSB32Bpl4mwAJvH9q+nHLbEjL6xKJUPqwWyYWC5rEHVjK4++YIpTTa0riBChpg
+	E2sSLDOJvC6r16Llz/grGlMWbwcUwKNAabM4XsO0K6kwKRiD5wElRx7Lrdey/5h5fTzdEWqus6+i6
+	MmlXZOAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiMIa-005qtR-51; Tue, 11 Oct 2022 20:56:24 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1oiNbF-0060M9-Ed; Tue, 11 Oct 2022 22:19:45 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiMIW-005qrR-5E; Tue, 11 Oct 2022 20:56:21 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id 70so13513239pjo.4;
-        Tue, 11 Oct 2022 13:56:17 -0700 (PDT)
+	id 1oiNbD-0060L5-2U; Tue, 11 Oct 2022 22:19:44 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id y1so7647108pfr.3;
+        Tue, 11 Oct 2022 15:19:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=;
-        b=DlfaPAoLX/0Jb1SsUAFBMfuYimfDeLB1Gs+lotFCf5wX/xRNwwaeEjZ5ki70F0YSfL
-         rO7wa9sBAK38Fitsjr8wWeGaTbB17rWj/5uv6Qggo2NMYLqZ3T8nbfHPEpUJcQu2bQ5S
-         2uJcOyvVHU3GCMrUVyQTjgWU857w+EEMu3KOOXzRP0sBYb9WpwXPa+bHwKfdWnDYL1IZ
-         sjB2VBMKHp8LTg0LYEtI3ZlOLTHkYjnwE1T4zHOamUMrxkhqgzXrSXOnblYNQPKxo6AV
-         GmstnP6z2i66RfbJJQ1IzTNkzjBUrVnp0pu77wz8fvzBSAWlB5mtP7EKE8gyxWRookcL
-         WWLA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LU58/FgjDPCb4/HIjKdV8bVA1BTPcHJFbY4JeAoNkso=;
+        b=Dda1Fo3vZibxh0267Q/K8n/G26/3vL5nhVEgDWa9oYWXyuyC4vlceQEYklqjoiFI4m
+         gslkJAQ7VUfiP6NWf9UdkGkWRRYyRU7Nn+Id5vDYUsqCGLm0SPQxfU1EV+iIPUyq2mWp
+         wpsKsVXsWeV9Fg7fGNPWKn2HU/71UeeHZfP3K5CcPvMWx+ccJy2pCEfgszE9AnjWaJAG
+         6Ag1CSNBmbwAJK04xIhZlgh6wP6oPLOunmRxgiKCunebfNahGFzRi7iG5VmtPrBRCDER
+         MQHZF6v8IpvLGcQdEbNPhM6hIYjSRqq1h4JXSURjSJKnSDh5RHGiD/CqtT9IPFTB8F4D
+         h+1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AcPVh42qVgkJBf4RM2Ey0P8OhTX4x5A+uHddaUsQ6Co=;
-        b=y/1Lcs6ul8QJnPV2x1rvywwulTWE9P8k5Z2alc+hnzKgtbyFZQDL1pkSgmu/AGvS1h
-         jBTz65fNrGd9iFQKtOraHB8jyVUKA55+xkDuNoS4x2FzS3ik8tXEvMKms+QZHzOtwgJt
-         NCM0Wz+ealmy2Ed5hq6hL078ZHYMRXMEYVrXHtFx4W3AQ4Cfgdelivlk8ZaK3bw/MGlJ
-         vAjeKIWrGJValtbt1onO6Ozf55LJOq2u9oHIxOPlhlf/E1rwtLRBPb7apiSZRoyD1E4D
-         TzvJfZfq8iAA06FZyJtocznz7eOMmwR8rUBOjJABL7Ad7zASiQKcSvk0cPUwbbb5Vqz9
-         Q/vA==
-X-Gm-Message-State: ACrzQf0fjxYenOzpb2F1mf10z5IyJnKq1U2kEe8pX2lYSXcB0l4xKKGs
-	rPqkmFcH64Fl7hEvlkrG88Q=
-X-Google-Smtp-Source: AMsMyM5pIEdsgeht0NOYcyruIBhuS4NISKYBTrmuG1I0+RU2v1LFNfTy+oB9jcY4eA/I6+ThSmPvTg==
-X-Received: by 2002:a17:90b:1bc9:b0:20d:75b8:ee5d with SMTP id oa9-20020a17090b1bc900b0020d75b8ee5dmr1171628pjb.147.1665521776548;
-        Tue, 11 Oct 2022 13:56:16 -0700 (PDT)
-Received: from ?IPV6:2600:8802:b00:4a48:7467:a6d1:4211:7f63? ([2600:8802:b00:4a48:7467:a6d1:4211:7f63])
-        by smtp.gmail.com with ESMTPSA id k207-20020a6284d8000000b00537eacc8fa6sm9403022pfd.40.2022.10.11.13.56.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 11 Oct 2022 13:56:15 -0700 (PDT)
-Message-ID: <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
-Date: Tue, 11 Oct 2022 13:56:09 -0700
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LU58/FgjDPCb4/HIjKdV8bVA1BTPcHJFbY4JeAoNkso=;
+        b=oFxkiq54c0fqvAy0P6Pmdg3cSkoJPFdrrp6lCcTeX96RGgCdxSusZ/36T3nozfz80+
+         u39brCy+B0nTLF1L/bTBoU42JWpqIwJB+gA7kWC5ET/IziI7hvOo2cEZircDZ1wkO4UD
+         ZrkMaPU9B+gMkV/379FUqt7trQLofK10XlM49SP4nPst646b7xQp6cW6fQseLVDgkeFU
+         ShDqVgvqpJY6a74Hp8s86l6UJga3+jO/vmepFoxcRaIwRUgkQ3/l9PB8KV61gLa40+BW
+         DgQcVxOmNCI1ZF9uOIk/FmJPG6QXCZC/H3j+Y5K1F9sthybxQK3rqNk4o/3hGXWNHooB
+         FuQw==
+X-Gm-Message-State: ACrzQf0ZHJ9VIo7VNpeC6Qaz8bqcrFVLGoBRG9ca1a7FvcaMc+/fb0Af
+	4tWKxEXtYd60VyUhBuDgK5M=
+X-Google-Smtp-Source: AMsMyM60TYBBYpvAQZQVq5swUJ8AxjHR56drU7Zo5/27UWyvFpAAvSntAJdq/H+P2tFIcHRfyOgvxA==
+X-Received: by 2002:a63:814a:0:b0:460:9253:bf8e with SMTP id t71-20020a63814a000000b004609253bf8emr15238664pgd.469.1665526779242;
+        Tue, 11 Oct 2022 15:19:39 -0700 (PDT)
+Received: from dtor-ws.mtv.corp.google.com ([2620:15c:9d:2:becc:db10:eb45:dc35])
+        by smtp.gmail.com with ESMTPSA id l6-20020a17090ab70600b0020d39ffe987sm60151pjr.50.2022.10.11.15.19.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Oct 2022 15:19:38 -0700 (PDT)
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Daniel Thompson <daniel.thompson@linaro.org>,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org
+Subject: [PATCH 0/7] gpiolib: more quirks to handle legacy names
+Date: Tue, 11 Oct 2022 15:19:28 -0700
+Message-Id: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com>
+X-Mailer: git-send-email 2.38.0.rc1.362.ged0d419d3c-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.2
-Subject: Re: [rft, PATCH v2 00/36] pinctrl: Clean up and add missed headers
-Content-Language: en-US
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Kent Gibson <warthog618@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Billy Tsai <billy_tsai@aspeedtech.com>, Thomas Gleixner
- <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Samuel Holland <samuel@sholland.org>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Phil Edworthy <phil.edworthy@renesas.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Fabien Dessenne <fabien.dessenne@foss.st.com>,
- Prathamesh Shete <pshete@nvidia.com>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
- linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
- Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
- Damien Le Moal <damien.lemoal@wdc.com>, Tony Lindgren <tony@atomide.com>,
- Haojian Zhuang <haojian.zhuang@linaro.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>,
- Konrad Dybcio <konrad.dybcio@somainline.org>,
- Tomasz Figa <tomasz.figa@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Emil Renner Berthing <kernel@esmil.dk>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+X-Mailer: b4 0.11.0-dev-5166b
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_135620_273293_6C659586 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20221011_151943_132832_D7FF3828 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,26 +93,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 10/10/2022 1:14 PM, Andy Shevchenko wrote:
-> Currently the header inclusion inside the pinctrl headers seems more arbitrary
-> than logical. This series is basically out of two parts:
-> - add missed headers to the pin control drivers / users
-> - clean up the headers of pin control subsystem
-> 
-> The idea is to have this series to be pulled after -rc1 by the GPIO and
-> pin control subsystems, so all new drivers will utilize cleaned up headers
-> of the pin control.
-> 
-> Please, review and comment.
-
-Did you really need to split this on a per-driver basis as opposed to 
-just a treewide drivers/pinctrl, drivers/media and drivers/gpiolib patch 
-set?
-
-36 patches seems needlessly high when 4 patches could have achieve the 
-same outcome.
--- 
-Florian
+In preparation to converting several drivers to gpiod API, and to keep=0D
+existing DTS working, this series adds additional quirks to locate=0D
+gpio lines with legacy names.=0D
+=0D
+Additionally the quirk handling has been reworked (once again) to pull=0D
+all simple renames (ones that do not involve change of indices or other=0D
+complex manipulations) into a single quirk with a table containing=0D
+transformations. This should make adding new quirks easier.=0D
+When using legacy names gpiolib will emit a message to nudge users to=0D
+update DTSes (when possible).=0D
+=0D
+Note that the last patch requires the following change from the OF tree:=0D
+=0D
+        88269151be67 ("of: base: make of_device_compatible_match() accept c=
+onst device node")=0D
+=0D
+The change is also available in mainline - it has been merged in 6.1=0D
+merge window.=0D
+=0D
+Thanks.=0D
+=0D
+To: Linus Walleij <linus.walleij@linaro.org>=0D
+To: Bartosz Golaszewski <brgl@bgdev.pl>=0D
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>=0D
+Cc: Daniel Thompson <daniel.thompson@linaro.org>=0D
+Cc: linux-gpio@vger.kernel.org=0D
+Cc: linux-kernel@vger.kernel.org=0D
+Cc: linux-arm-kernel@lists.infradead.org=0D
+Cc: linux-mediatek@lists.infradead.org=0D
+=0D
+---=0D
+Dmitry Torokhov (7):=0D
+      gpiolib: of: add a quirk for legacy names in Mediatek mt2701-cs42448=
+=0D
+      gpiolib: of: consolidate simple renames into a single quirk=0D
+      gpiolib: of: add quirk for locating reset lines with legacy bindings=
+=0D
+      gpiolib: of: add a quirk for reset line for Marvell NFC controller=0D
+      gpiolib: of: add a quirk for reset line for Cirrus CS42L56 codec=0D
+      gpiolib: of: factor out code overriding gpio line polarity=0D
+      gpiolib: of: add quirk for phy reset polarity for Freescale Ethernet=
+=0D
+=0D
+ drivers/gpio/gpiolib-of.c | 294 +++++++++++++++++++++++++++---------------=
+----=0D
+ 1 file changed, 171 insertions(+), 123 deletions(-)=0D
+---=0D
+base-commit: cd9fd78f5c11b5e165d9317ef11e613f4aef4dd1=0D
+change-id: 20221011-gpiolib-quirks-d452ed31d24e=0D
+=0D
+Best regards,=0D
+Dmitry=0D
+=0D
 
