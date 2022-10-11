@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB33C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05BF2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fmaW+SPGguSuzLYiI/8/dUWUIRc8zLgHUTUp8nLBCOY=; b=We2BKSrNTME/rqYa3ig1O9XmsC
-	nOD86AOjVXrFpezlD3pGw/NM5cFSWSh8WMgPDbEw0QAgXmxomNCf9vHrymgiBI2mpUxlYJzlhuewU
-	hP51u0LwpNQ3pfwkfoPNAaExYf3UAP333udTP5oFRlNssI2fB046rBiK8aJgahBm7HrG8b9E4TIZE
-	IeTLAOtja2QfWDtmOpBLAt0yRiIU2twdhFKJKR47ltWf+NC5pvLPRntcm9d3oqE4w+SH+QJd4/OYG
-	I0vnNnqk0j2SWd/0bhEr5YJBXhPDTpdlc1YLppeWFu+Ktc2ppEcCdakJPvuFmiRj5LeA8xXzfYmao
-	HqoPWecA==;
+	bh=v5ymJ3fw0fv1V9p0VTDFDOtHXr8KzREKrs2F+r+ez6k=; b=EiMNLkq9zdzqhjod5T94rRYj7c
+	LteGtNwzRZxHWaJvPRgFLiJzO6ELJb6GwT/TvLU0oLI5xUzYRWEvgENHmA+teD+GHv04nBG2nsjIL
+	BhpxfRgRDacq/BQJ8fShf+pwZGjHARq1Gi0yEH7+CqJTWKiUSYqzz9E1CP/fXnnMWp/AXwU+I3cj7
+	+4HEAK7cliCN6XO91IiooJRFov+WQXNEW63h2NijHrsnxgvH84lH7HJvh3h3HiNQCNhRfKEONH1l9
+	S1PXSMQrMYBoJvulUosbTI0vIPwbL7720XHS43TFBLRbUAiVthn6bt+fxBXn6T12JW2J4XcSIJmbW
+	UWkuvJ0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBGp-003ofi-Ua; Tue, 11 Oct 2022 09:09:51 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oiBba-003qo9-Q7; Tue, 11 Oct 2022 09:31:18 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBGm-003oeF-86
-	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 09:09:50 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A15746602357;
-	Tue, 11 Oct 2022 10:09:42 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665479383;
-	bh=7c9btVfUMqJ329O4RZC3no8wkRy+lLOPgY1jlkkTnFM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dgNQK77CL9C0HDHwPSOWtGsyXKQOO4upM597SuvKfEjIpf+aPfkmEyB/2qKr48Ed5
-	 HC+xAoVBcLuHAQr58T0QFYo2TtDsXjwP7WFpW+AQx6YdZK/R5NP27cHIN9CDvuNnkg
-	 iRc8R3QXgN3zR+oMZCMaF+9nG5H8DU2sXYBiQNMSMu5f531rElT7Q+50H0Gy8NdjFr
-	 +Vh0Zmf0xYeujMklXpTva9VYcuNie0VFR61j8mgDY8PXHbUw3Odj9RQO9zENm3UoMk
-	 /m4J+pNJqRrU7G4w1G0bn0K9pfIWWFo92Ln4V+lH3a2ufD2ysV35dNXYVkEH3NSMq2
-	 /Ez4WAPrlBxkA==
-Message-ID: <664e32dc-3f91-48ae-64a1-6dcecc9dfb5b@collabora.com>
-Date: Tue, 11 Oct 2022 11:09:39 +0200
+	id 1oiBbM-003qlJ-1h
+	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 09:31:09 +0000
+Received: by mail-wr1-x429.google.com with SMTP id bu30so20651346wrb.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Oct 2022 02:31:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language:subject
+         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=v5ymJ3fw0fv1V9p0VTDFDOtHXr8KzREKrs2F+r+ez6k=;
+        b=dBXChz0+CbfhV4rRHl/Psu/i3ZCFZFSNicjw08/5xLYflUCIR9xG47+wVLeGC3w7Cq
+         LYoB64ncsMp6YivMLmEwwNOHYhrAVSgJXvDqBDuBnnlgxWLbuBIvVyUIdwwn+m0NFY3N
+         VCAIgjReMIMoubH1QWli7ODAc76uaPCe6EDnU+GRgTdWjw0WPSWXnvsAiptOFo/8ol3v
+         u3it42e9IzTBO1IMRg3uAn73LcQlZVv5L2lIRIdxqZKQYlqqhkLGDS4GQZj1fwQkA2X7
+         7eFr5j8T4k/Q1iwHDGGKlvdXwIWy9OOC7MJcTUMAcmeARYSCLhXYf0RK28lSkylZVi8h
+         lgHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language:subject
+         :references:cc:to:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=v5ymJ3fw0fv1V9p0VTDFDOtHXr8KzREKrs2F+r+ez6k=;
+        b=sFaS94Rp+XtUUHxw4kX/yZtdwNbJFOYKnc1sbwlgYCWWot+xvEWa8EwdLYK79WulHd
+         l0H+M2Kh2TxINR22VjSz4DKt71BSBd4tjmf5Jxf89JbOLba3VgEGDqRayodKnXQHCdlt
+         L2kYrwH9mdfSNderss0Fjw6kTIc+jdRRC4FE9iEUh+jYr9tlEXCzw4TMxtELdNTQ0CQa
+         TDh+KdfVxBLgzCgJZuupe+wH9uU6L43aKZ9rCnDW/TROFRI8cMWEr/b7UA7vp8bssdgo
+         x4WvEMGe8pbGFVEMYijlWwqpjGPI2a6jeUNWeD6oMXbtLJPdZtYpE/JCd3X979BbsGpK
+         Y09A==
+X-Gm-Message-State: ACrzQf2H5HcaZxtXr9VbXA7T+5l8QUC3a39/ZgbjcqqjmZnoL+VZcJUl
+	PLamo72LNsS9H6QPnISG4AguJw==
+X-Google-Smtp-Source: AMsMyM7EhdgMIUJ+Lnz1ixYjljGlwW0w51lXQIMByy+9RG0YV/WE9uusWVlxHHuorrU1+egDfdI99w==
+X-Received: by 2002:a5d:5950:0:b0:22d:d0b5:a9b2 with SMTP id e16-20020a5d5950000000b0022dd0b5a9b2mr14645205wri.452.1665480660520;
+        Tue, 11 Oct 2022 02:31:00 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id w9-20020a1cf609000000b003b332a7b898sm12000596wmc.45.2022.10.11.02.30.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Oct 2022 02:30:59 -0700 (PDT)
+Message-ID: <972ba839-2fd3-2b45-3477-0c7e3d32f149@baylibre.com>
+Date: Tue, 11 Oct 2022 11:30:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [RESEND PATCH v2] drm/mediatek: Add AFBC support to Mediatek DRM
- driver
-To: Justin Green <greenjustin@chromium.org>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: jason-jh.lin@mediatek.com, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com,
- wenst@chromium.org, justin.yeh@mediatek.com, daniel@ffwll.ch
-References: <20221010150157.1864492-1-greenjustin@google.com>
+ Thunderbird/102.2.2
+To: krzysztof.kozlowski@linaro.org
+Cc: amergnat@baylibre.com, broonie@kernel.org, chen.zhong@mediatek.com,
+ devicetree@vger.kernel.org, dmitry.torokhov@gmail.com, fparent@baylibre.com,
+ krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, lgirdwood@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, robh+dt@kernel.org, robh@kernel.org
+References: <cdb4e9f7-c7b3-3a1f-bf61-e42bdb021570@linaro.org>
+Subject: Re: [PATCH v2 3/5] dt-bindings: regulator: Add binding schema for
+ mt6357 regulators
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221010150157.1864492-1-greenjustin@google.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <cdb4e9f7-c7b3-3a1f-bf61-e42bdb021570@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_020948_605281_1FBAE321 
-X-CRM114-Status: GOOD (  27.95  )
+X-CRM114-CacheID: sfid-20221011_023104_327177_4AE4A314 
+X-CRM114-Status: UNSURE (   7.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,269 +98,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/10/22 17:01, Justin Green ha scritto:
-> From: Justin Green <greenjustin@chromium.org>
-> 
-> Add AFBC support to Mediatek DRM driver and enable on MT8195.
-> 
-> Tested on MT8195 and confirmed both correct video output and improved DRAM
-> bandwidth performance.
-> 
-> v2:
-> Marked mtk_ovl_set_afbc as static, reflowed some lines to fit column
-> limit.
-> 
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
+Hi Krzysztof,
 
-Hello Justin,
-thanks for the patch!
+Thanks for your review !
 
-However, there's something to improve...
+ >> +
+ >> +    properties:
+ >> +      regulator-name:
+ >> +        pattern: "^v(core|modem|pa|proc|s1)$"
+ >
+ > Why enforcing particular name of the regulator?
 
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 108 ++++++++++++++++++++---
->   drivers/gpu/drm/mediatek/mtk_drm_plane.c |  37 +++++++-
->   drivers/gpu/drm/mediatek/mtk_drm_plane.h |   8 ++
->   3 files changed, 140 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 002b0f6cae1a..1724ea85a840 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+The regulator names are forced to match with the datasheet names.
 
-..snip..
+I think it's a good practice to increase visibility between HW & SW.
 
-> @@ -208,6 +231,8 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
->   {
->   	struct drm_plane_state *state = &mtk_state->base;
->   	unsigned int rotation = 0;
-> +	unsigned long long modifier;
-> +	unsigned int fourcc;
->   
->   	rotation = drm_rotation_simplify(state->rotation,
->   					 DRM_MODE_ROTATE_0 |
-> @@ -226,6 +251,30 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
->   	if (state->fb->format->is_yuv && rotation != 0)
->   		return -EINVAL;
->   
-> +	if (state->fb->modifier) {
-> +		struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+Also, that keep consistency with other Mediatek PMIC schema.
 
-Since you're introducing modifier and fourcc for this branch only, you
-may as well just declare them here instead, but either way is fine.
 
-> +
-> +		if (!ovl->data->supports_afbc)
-> +			return -EINVAL;
-> +
-> +		modifier = state->fb->modifier;
-> +
-> +		if (modifier != DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> +							AFBC_FORMAT_MOD_SPLIT |
-> +							AFBC_FORMAT_MOD_SPARSE))
-> +			return -EINVAL;
-> +
-> +		fourcc = state->fb->format->format;
-> +		if (fourcc != DRM_FORMAT_BGRA8888 &&
-> +		    fourcc != DRM_FORMAT_ABGR8888 &&
-> +		    fourcc != DRM_FORMAT_ARGB8888 &&
-> +		    fourcc != DRM_FORMAT_XRGB8888 &&
-> +		    fourcc != DRM_FORMAT_XBGR8888 &&
-> +		    fourcc != DRM_FORMAT_RGB888 &&
-> +		    fourcc != DRM_FORMAT_BGR888)
-> +			return -EINVAL;
-> +	}
-> +
->   	state->rotation = rotation;
->   
->   	return 0;
-> @@ -310,11 +359,14 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
->   	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
->   	struct mtk_plane_pending_state *pending = &state->pending;
->   	unsigned int addr = pending->addr;
-> -	unsigned int pitch = pending->pitch & 0xffff;
-> +	unsigned int hdr_addr = pending->hdr_addr;
-> +	unsigned int pitch = pending->pitch;
-> +	unsigned int hdr_pitch = pending->hdr_pitch;
->   	unsigned int fmt = pending->format;
->   	unsigned int offset = (pending->y << 16) | pending->x;
->   	unsigned int src_size = (pending->height << 16) | pending->width;
->   	unsigned int con;
-> +	bool is_afbc = pending->modifier;
->   
->   	if (!pending->enable) {
->   		mtk_ovl_layer_off(dev, idx, cmdq_pkt);
-> @@ -335,16 +387,39 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
->   		addr += pending->pitch - 1;
->   	}
->   
-> -	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_CON(idx));
-> -	mtk_ddp_write_relaxed(cmdq_pkt, pitch, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_PITCH(idx));
-> -	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_SRC_SIZE(idx));
-> -	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_OFFSET(idx));
-> -	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> -			      DISP_REG_OVL_ADDR(ovl, idx));
-> +	mtk_ovl_set_afbc(dev, cmdq_pkt, idx, is_afbc);
-> +	if (!is_afbc) {
-> +		mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_CON(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, pitch & 0xFFFF, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_PITCH(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_SRC_SIZE(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_OFFSET(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_ADDR(ovl, idx));
-> +	} else {
-> +		mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_ADDR(ovl, idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_HDR_ADDR(ovl, idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_SRC_SIZE(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt,
-> +				      OVL_PITCH_MSB_2ND_SUBBUF | ((pitch >> 16) & 0xFFFF),
+Best regards,
 
-I say that this would be more readable if you use bitfield macros instead but,
-anyway, that magic "16" number must get a definition.
-I have the same comment about the GENMASK(15, 0) (== 0xffff), but I know that
-doesn't come from you... would still be nice to also add a definition, which
-is anyway "practically mandatory" if you use FIELD_PREP(mask, val).
-
-> +				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, pitch & 0xFFFF, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_PITCH(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_HDR_PITCH(ovl, idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_CON(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_OFFSET(idx));
-> +		mtk_ddp_write_relaxed(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
-> +				      DISP_REG_OVL_CLIP(idx));
-> +	}
-
-In any case - are you use that we *must* program the registers in this exact
-sequence?
-
-Here, the OVL layer is supposed to be OFF (OVL_SRC_CON == 0, OVL_RDMA_CTRL == 0)
-so the contents of the registers that you're modifying should not matter at all
-until the layer is turned on.
-
-Note that, in case it doesn't matter, this gets greatly simplified, exactly as:
-
-at the top -- after DISP_REG_OVL_PITCH_MSB(n):
-#define OVL_SRC_PITCH_MSB	GENMASK(3, 0)
-
-after DISP_REG_OVL_PITCH(n):
-#define OVL_SRC_PITCH_LSB	GENMASK(15, 0)
-
-	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
-			      DISP_REG_OVL_CON(idx));
-	mtk_ddp_write_relaxed(cmdq_pkt, FIELD_PREP(OVL_SRC_PITCH_LSB, pitch),
-			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
-	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
-			      DISP_REG_OVL_SRC_SIZE(idx));
-	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
-			      DISP_REG_OVL_OFFSET(idx));
-	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
-			      DISP_REG_OVL_ADDR(ovl, idx));
-
-	if (is_afbc) {
-		pitch_msb = FIELD_PREP(OVL_SRC_PITCH_MSB, (pitch >> 16));
-		pitch_msb |= FIELD_PREP(OVL_PITCH_MSB_2ND_SUBBUF, 1);
-		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-				      DISP_REG_OVL_HDR_ADDR(ovl, idx));
-		mtk_ddp_write_relaxed(cmdq_pkt, val, &ovl->cmdq_reg, ovl->regs,
-				      DISP_REG_OVL_PITCH_MSB(idx));
-		mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
-				      DISP_REG_OVL_HDR_PITCH(ovl, idx));
-		mtk_ddp_write_relaxed(cmdq_pkt, 0, &ovl->cmdq_reg, ovl->regs,
-				      DISP_REG_OVL_CLIP(idx));
-	}
-
->   
->   	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
->   }
-> @@ -492,6 +567,15 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
-
-..snip..
-
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> index 5c0d9ce69931..734d2554b2b8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -12,6 +12,7 @@
->   #include <drm/drm_framebuffer.h>
->   #include <drm/drm_gem_atomic_helper.h>
->   #include <drm/drm_plane_helper.h>
-> +#include <linux/align.h>
->   
->   #include "mtk_drm_crtc.h"
->   #include "mtk_drm_ddp_comp.h"
-> @@ -52,6 +53,7 @@ static void mtk_plane_reset(struct drm_plane *plane)
->   
->   	state->base.plane = plane;
->   	state->pending.format = DRM_FORMAT_RGB565;
-> +	state->pending.modifier = 0;
->   }
->   
->   static struct drm_plane_state *mtk_plane_duplicate_state(struct drm_plane *plane)
-> @@ -120,21 +122,52 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
->   	struct drm_gem_object *gem;
->   	struct mtk_drm_gem_obj *mtk_gem;
->   	unsigned int pitch, format;
-> +	unsigned long long modifier;
->   	dma_addr_t addr;
-> +	dma_addr_t hdr_addr = 0;
-> +	unsigned int hdr_pitch = 0;
->   
->   	gem = fb->obj[0];
->   	mtk_gem = to_mtk_gem_obj(gem);
->   	addr = mtk_gem->dma_addr;
->   	pitch = fb->pitches[0];
->   	format = fb->format->format;
-> +	modifier = fb->modifier;
->   
-> -	addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> -	addr += (new_state->src.y1 >> 16) * pitch;
-> +	if (!modifier) {
-> +		addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> +		addr += (new_state->src.y1 >> 16) * pitch;
-> +	} else {
-> +		int width_in_blocks = ALIGN(fb->width, AFBC_DATA_BLOCK_WIDTH)
-> +				      / AFBC_DATA_BLOCK_WIDTH;
-> +		int height_in_blocks = ALIGN(fb->height, AFBC_DATA_BLOCK_HEIGHT)
-> +				       / AFBC_DATA_BLOCK_HEIGHT;
-> +		int x_offset_in_blocks = (new_state->src.x1 >> 16) / AFBC_DATA_BLOCK_WIDTH;
-> +		int y_offset_in_blocks = (new_state->src.y1 >> 16) / AFBC_DATA_BLOCK_HEIGHT;
-> +		int hdr_size;
-> +
-> +		hdr_pitch = width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
-> +		pitch = width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
-> +			AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
-> +
-> +		hdr_size = ALIGN(hdr_pitch * height_in_blocks, AFBC_HEADER_ALIGNMENT);
-> +
-> +		hdr_addr = addr + hdr_pitch * y_offset_in_blocks +
-> +			   AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
-> +		// The data plane is offset by 1 additional block.
-
-C-style comments please.
-
-> +		addr = addr + hdr_size +
-> +		       pitch * y_offset_in_blocks +
-> +		       AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
-> +		       fb->format->cpp[0] * (x_offset_in_blocks + 1);
-> +	}
->   
-
-Regards,
-Angelo
+Alexandre
 
 
