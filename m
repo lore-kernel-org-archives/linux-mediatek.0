@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78169C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 12:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69B4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 13:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e760Z98fooWYXgKv2mStQBuvOT9dfR5fB4EuC4xMjkE=; b=eXry4nFBtxVD1ZgoS63a06WZTa
-	hGSijDftBoU2Q7oxdKmAbZIEKXMr3tMUskFLsEiPh/ynvYiPTqBISSwHzM6Mf2sQl5++ff8V4YKS9
-	zhT9vgXAO3iJvQ1GtM8CiD8jRHa/wGKwDmibec9v+G6jN+Y9r5GFH7fJnDtUnXzxdAifX7NJIvRO7
-	WiSn5IZV+3zdWwvqjo859OP0K00P8vzGNBzNEqxlc9HP+lbfGxB9lj6VlWlB67Ct6h6pOfooCxcmD
-	b4zQkvRfTTfXr+8eRZmNsmVXo+ZFz6pfzjtsvlpN02XNOhm8U4dxep9Bjvigpx2yS1vISjN66eDic
-	6n8Rbnsw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HYcauRdlkmW+b2GSci9HKA4fj91sa06crdNJeuuxDJU=; b=M+lO/BkOtlA+vSc8Ki5usqnzAS
+	ld0aL+mDUH4PKqgpyOQoj3tn/POleXvGoP+/Ry7H9n/7l9rECIA5Jtz/MsYzxQkA3Z9r855Ni+ulu
+	VJyNKgCpQr00yXB/efKUSfUia7CmdCOlcivE8eyNg3NHlJxHx+hKOPK3lnzqQHcqxfIvme5aCMS0W
+	NhovTtvGEQffx3vHzlOg0MOfTEq3ldDKSILTq4tfb0+mxOVYmZTVocMafHBYk6+IOygJK3GDkXLXs
+	M768Rg2ixhRAAgSHolIqSLcRi0ViAj5bdwU5HUb7gzSsy3/bAYanLOxqrK+iLqAgDjlzj58xd8ZGE
+	mZt/psgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiEi6-004G9B-Ej; Tue, 11 Oct 2022 12:50:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oiFMI-004LUR-49; Tue, 11 Oct 2022 13:31:46 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiEi2-004G8P-NN; Tue, 11 Oct 2022 12:50:13 +0000
-X-UUID: 39895827a2074e5c8745e57277070829-20221011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=e760Z98fooWYXgKv2mStQBuvOT9dfR5fB4EuC4xMjkE=;
-	b=Z0Vfh4PBdMzM+s9qYvpuEjgEGX20ikHUm63cCpxlSUxHdbBVEqdrRpHi4UL9JMrx4LLB0ZkGfz2NzlxJ/0PYxfGpAZe6VocoOrqTjwDofcmyqk908FAyv4sNBiHQhB0lphrGf605/6XlV8hU0iDp1Cn7Zae56gMHMewTwknQiC4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:9f4f99ae-7421-4ae4-97d0-79343db72115,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:476ee9fe-ee8c-4ff7-afe9-644435e96625,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 39895827a2074e5c8745e57277070829-20221011
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 152669731; Tue, 11 Oct 2022 05:50:01 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 11 Oct 2022 20:49:26 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 11 Oct 2022 20:49:26 +0800
-Message-ID: <ff0d6c368d15c36aed1c09e8f0010a0847116fc8.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/7] dts: arm64: mt8195: add MMSYS and MUTEX
- configuration for VPPSYS
-From: moudy ho <moudy.ho@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
-	<roy-cw.yeh@mediatek.com>
-Date: Tue, 11 Oct 2022 20:49:26 +0800
-In-Reply-To: <1d2613aa-3225-a2b6-521a-b2df70a30ed5@linaro.org>
-References: <20221011070356.682-1-moudy.ho@mediatek.com>
-	 <20221011070356.682-4-moudy.ho@mediatek.com>
-	 <1d2613aa-3225-a2b6-521a-b2df70a30ed5@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oiFM6-004LSh-GY; Tue, 11 Oct 2022 13:31:36 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3C31F6602343;
+	Tue, 11 Oct 2022 14:31:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665495091;
+	bh=YIDLbypIschps2IdMEivbgC0X3XT1Np+1ZTSQYgwLaA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=fnH6+oLoqHSIBSxTtNxFzgzdknpvd7fIeN+GuoOBkBt+iV2PZw4S16FqQLLG3AayR
+	 xQtK48qvM1T/NQhw8ETVnh6qC8nF3qkZhYRSTTU8329UcnOw70pnRrj6hlfriHeyjY
+	 QaY4g/H2rMfIMQK9xreLd7kGVtDFsZHtQYdHRhswVER2raw9c3yQ2iXlfeFzQuNwJL
+	 P7bpw4HV4Ex+3IzDTY9K0ytnmARHru2kCUFW30UBhZfxp3RYJ2Kf7sWAL1dQm721sI
+	 Yt4WBXbiRZjTd97LJpMTB24y8oEeyCORa+vB0nmcfVH93NSKiBqj3blAUQ90sboMbn
+	 kraPfSlNNLXMA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: sboyd@kernel.org
+Cc: mturquette@baylibre.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chun-jie.chen@mediatek.com,
+	miles.chen@mediatek.com,
+	wenst@chromium.org,
+	maxime@cerno.tech,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] clk: mediatek: clk-mux: Add .determine_rate() callback
+Date: Tue, 11 Oct 2022 15:31:25 +0200
+Message-Id: <20221011133125.311763-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_055010_802603_6233FC97 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20221011_063134_910259_1BDEE409 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,69 +77,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-10-11 at 08:23 -0400, Krzysztof Kozlowski wrote:
-> On 11/10/2022 03:03, Moudy Ho wrote:
-> > From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
-> > 
-> > Compatible names, node names, and GCE client registers for
-> > VPPSYS0 and VPPSYS1 should be renamed or added to match
-> > the binding file requirements.
-> > Also, add two nodes for MT8195 VPPSYS MUTEX.
-> > 
-> > Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> 
-> Use subject prefixes matching the subsystem (git log --oneline --
-> ...).
-> 
+Since commit 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests
+to the parent"), the clk_rate_request is .. as the title says, not
+forwarded anymore to the parent: this produces an issue with the
+MediaTek clock MUX driver during GPU DVFS on MT8195, but not on
+MT8192 or others.
 
-Hi Krzysztof,
+This is because, differently from others, like MT8192 where all of
+the clocks in the MFG parents tree are of mtk_mux type, but in the
+parent tree of MT8195's MFG clock, we have one mtk_mux clock and
+one (clk framework generic) mux clock, like so:
 
-Thanks for the correction to the prefix order, it will be fix in the
-next version.
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 30
-> > ++++++++++++++++++++----
-> >  1 file changed, 26 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > index 905d1a90b406..3e73bd58e54d 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -1476,12 +1476,23 @@
-> >  			#clock-cells = <1>;
-> >  		};
-> >  
-> > -		vppsys0: clock-controller@14000000 {
-> > -			compatible = "mediatek,mt8195-vppsys0";
-> > +		vppsys0: syscon@14000000 {
-> > +			compatible = "mediatek,mt8195-vppsys0",
-> > +				     "mediatek,mt8195-mmsys", "syscon";
-> 
-> No. You change multiple pieces in one patch, some of them have much
-> bigger impact, like adding compatibles.
-> 
-> Split and describe *why* you are changing it.
-> 
-> >  			reg = <0 0x14000000 0 0x1000>;
-> > +			mediatek,gce-client-reg = <&gce1
-> > SUBSYS_1400XXXX 0 0x1000>;
-> >  			#clock-cells = <1>;
-> >  		};
-> >  
-> > +		mutex@1400f000 {
-> > +			compatible = "mediatek,mt8195-vpp-mutex";
-> 
-> And you add some new nodes in a cleanup patch...
-> 
-> Best regards,
-> Krzysztof
-> 
+names: mfg_bg3d -> mfg_ck_fast_ref -> top_mfg_core_tmp (or) mfgpll
+types: mtk_gate ->      mux        ->     mtk_mux      (or) mtk_pll
 
-Sorry for the mix-up, I'll split this into two patches.
+To solve this issue and also keep the GPU DVFS clocks code working
+as expected, wire up a .determine_rate() callback for the mtk_mux
+ops; for that, the standard clk_mux_determine_rate_flags() was used
+as it was possible to.
 
-Thanks,
-Moudy
+This commit was successfully tested on MT6795 Xperia M5, MT8173 Elm,
+MT8192 Spherion and MT8195 Tomato; no regressions were seen.
+
+For the sake of some more documentation about this issue here's the
+trace of it:
+
+[   12.211587] ------------[ cut here ]------------
+[   12.211589] WARNING: CPU: 6 PID: 78 at drivers/clk/clk.c:1462 clk_core_init_rate_req+0x84/0x90
+[   12.211593] Modules linked in: stp crct10dif_ce mtk_adsp_common llc rfkill snd_sof_xtensa_dsp
+               panfrost(+) sbs_battery cros_ec_lid_angle cros_ec_sensors snd_sof_of
+               cros_ec_sensors_core hid_multitouch cros_usbpd_logger snd_sof gpu_sched
+               snd_sof_utils fuse ipv6
+[   12.211614] CPU: 6 PID: 78 Comm: kworker/u16:2 Tainted: G        W          6.0.0-next-20221011+ #58
+[   12.211616] Hardware name: Acer Tomato (rev2) board (DT)
+[   12.211617] Workqueue: devfreq_wq devfreq_monitor
+[   12.211620] pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   12.211622] pc : clk_core_init_rate_req+0x84/0x90
+[   12.211625] lr : clk_core_forward_rate_req+0xa4/0xe4
+[   12.211627] sp : ffff80000893b8e0
+[   12.211628] x29: ffff80000893b8e0 x28: ffffdddf92f9b000 x27: ffff46a2c0e8bc05
+[   12.211632] x26: ffff46a2c1041200 x25: 0000000000000000 x24: 00000000173eed80
+[   12.211636] x23: ffff80000893b9c0 x22: ffff80000893b940 x21: 0000000000000000
+[   12.211641] x20: ffff46a2c1039f00 x19: ffff46a2c1039f00 x18: 0000000000000000
+[   12.211645] x17: 0000000000000038 x16: 000000000000d904 x15: 0000000000000003
+[   12.211649] x14: ffffdddf9357ce48 x13: ffffdddf935e71c8 x12: 000000000004803c
+[   12.211653] x11: 00000000a867d7ad x10: 00000000a867d7ad x9 : ffffdddf90c28df4
+[   12.211657] x8 : ffffdddf9357a980 x7 : 0000000000000000 x6 : 0000000000000004
+[   12.211661] x5 : ffffffffffffffc8 x4 : 00000000173eed80 x3 : ffff80000893b940
+[   12.211665] x2 : 00000000173eed80 x1 : ffff80000893b940 x0 : 0000000000000000
+[   12.211669] Call trace:
+[   12.211670]  clk_core_init_rate_req+0x84/0x90
+[   12.211673]  clk_core_round_rate_nolock+0xe8/0x10c
+[   12.211675]  clk_mux_determine_rate_flags+0x174/0x1f0
+[   12.211677]  clk_mux_determine_rate+0x1c/0x30
+[   12.211680]  clk_core_determine_round_nolock+0x74/0x130
+[   12.211682]  clk_core_round_rate_nolock+0x58/0x10c
+[   12.211684]  clk_core_round_rate_nolock+0xf4/0x10c
+[   12.211686]  clk_core_set_rate_nolock+0x194/0x2ac
+[   12.211688]  clk_set_rate+0x40/0x94
+[   12.211691]  _opp_config_clk_single+0x38/0xa0
+[   12.211693]  _set_opp+0x1b0/0x500
+[   12.211695]  dev_pm_opp_set_rate+0x120/0x290
+[   12.211697]  panfrost_devfreq_target+0x3c/0x50 [panfrost]
+[   12.211705]  devfreq_set_target+0x8c/0x2d0
+[   12.211707]  devfreq_update_target+0xcc/0xf4
+[   12.211708]  devfreq_monitor+0x40/0x1d0
+[   12.211710]  process_one_work+0x294/0x664
+[   12.211712]  worker_thread+0x7c/0x45c
+[   12.211713]  kthread+0x104/0x110
+[   12.211716]  ret_from_fork+0x10/0x20
+[   12.211718] irq event stamp: 7102
+[   12.211719] hardirqs last  enabled at (7101): [<ffffdddf904ea5a0>] finish_task_switch.isra.0+0xec/0x2f0
+[   12.211723] hardirqs last disabled at (7102): [<ffffdddf91794b74>] el1_dbg+0x24/0x90
+[   12.211726] softirqs last  enabled at (6716): [<ffffdddf90410be4>] __do_softirq+0x414/0x588
+[   12.211728] softirqs last disabled at (6507): [<ffffdddf904171d8>] ____do_softirq+0x18/0x24
+[   12.211730] ---[ end trace 0000000000000000 ]---
+
+Fixes: 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests to the parent")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/clk-mt8186-mfg.c      |  5 ++--
+ drivers/clk/mediatek/clk-mt8186-topckgen.c | 27 ++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mux.c             | 10 ++++++++
+ 3 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt8186-mfg.c b/drivers/clk/mediatek/clk-mt8186-mfg.c
+index f1f92216f894..0142d741053a 100644
+--- a/drivers/clk/mediatek/clk-mt8186-mfg.c
++++ b/drivers/clk/mediatek/clk-mt8186-mfg.c
+@@ -16,8 +16,9 @@ static const struct mtk_gate_regs mfg_cg_regs = {
+ 	.sta_ofs = 0x0,
+ };
+ 
+-#define GATE_MFG(_id, _name, _parent, _shift)			\
+-	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_MFG(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, CLK_SET_RATE_PARENT)
+ 
+ static const struct mtk_gate mfg_clks[] = {
+ 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "top_mfg", 0),
+diff --git a/drivers/clk/mediatek/clk-mt8186-topckgen.c b/drivers/clk/mediatek/clk-mt8186-topckgen.c
+index d7f2c4663c85..f6387c2eb5cf 100644
+--- a/drivers/clk/mediatek/clk-mt8186-topckgen.c
++++ b/drivers/clk/mediatek/clk-mt8186-topckgen.c
+@@ -689,6 +689,28 @@ static const struct of_device_id of_match_clk_mt8186_topck[] = {
+ 	{}
+ };
+ 
++/* Register mux notifier for MFG mux */
++static int clk_mt8186_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
++{
++	struct mtk_mux_nb *mfg_mux_nb;
++	int i;
++
++	mfg_mux_nb = devm_kzalloc(dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
++	if (!mfg_mux_nb)
++		return -ENOMEM;
++
++	for (i = 0; i < ARRAY_SIZE(top_mtk_muxes); i++)
++		if (top_mtk_muxes[i].id == CLK_TOP_MFG)
++			break;
++	if (i == ARRAY_SIZE(top_mtk_muxes))
++		return -EINVAL;
++
++	mfg_mux_nb->ops = top_mtk_muxes[i].ops;
++	mfg_mux_nb->bypass_index = 0; /* Bypass to 26M crystal */
++
++	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
++}
++
+ static int clk_mt8186_topck_probe(struct platform_device *pdev)
+ {
+ 	struct clk_hw_onecell_data *clk_data;
+@@ -730,6 +752,11 @@ static int clk_mt8186_topck_probe(struct platform_device *pdev)
+ 	if (r)
+ 		goto unregister_composite_muxes;
+ 
++	r = clk_mt8186_reg_mfg_mux_notifier(&pdev->dev,
++					    clk_data->hws[CLK_TOP_MFG]->clk);
++	if (r)
++		goto unregister_composite_divs;
++
+ 	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+ 	if (r)
+ 		goto unregister_composite_divs;
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index 4421e4859257..ba1720b9e231 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -129,9 +129,18 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
+ 	return 0;
+ }
+ 
++static int mtk_clk_mux_determine_rate(struct clk_hw *hw,
++				      struct clk_rate_request *req)
++{
++	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
++
++	return clk_mux_determine_rate_flags(hw, req, mux->data->flags);
++}
++
+ const struct clk_ops mtk_mux_clr_set_upd_ops = {
+ 	.get_parent = mtk_clk_mux_get_parent,
+ 	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
++	.determine_rate = mtk_clk_mux_determine_rate,
+ };
+ EXPORT_SYMBOL_GPL(mtk_mux_clr_set_upd_ops);
+ 
+@@ -141,6 +150,7 @@ const struct clk_ops mtk_mux_gate_clr_set_upd_ops  = {
+ 	.is_enabled = mtk_clk_mux_is_enabled,
+ 	.get_parent = mtk_clk_mux_get_parent,
+ 	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
++	.determine_rate = mtk_clk_mux_determine_rate,
+ };
+ EXPORT_SYMBOL_GPL(mtk_mux_gate_clr_set_upd_ops);
+ 
+-- 
+2.37.2
 
 
