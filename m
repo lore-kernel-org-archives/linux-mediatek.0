@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFBBBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 08:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B01C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 08:32:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/lX+/OOwDGA/EkvK0KhDO9ADs/gc/7w2DlDG3ggMBVQ=; b=Hha1oN7gqCit2r/OczX7MM+t6j
-	en4IDUH9l5ryZ6614dHRCdXIn6mzYj9wIZ2PNwxvWG5lvTp+gHdpTpIg9bug8B9NL+9WBj9IPZaYt
-	E5sX+7gOFGYOG7M9HRXA0U6HBXTK8o/IQOXpjJpug3k3/wGGxhUgTzoP0n+6HCY97SZyGvsxFNybq
-	EU9VPsu2GxJ5k5oc0VVr/6m1B+F03LZ2LvxPgsS89SslmCx9hNen+BceQJNITKbqtjD7HwYSAyDbZ
-	hX5YXnkDKLJADBKsNcFJM5IPZ7O+7vot2uOhzOOXK2JjwGrOOUwHmrljdqEsyhIRs5GTfl9VFuJvR
-	gX5Gg5FQ==;
+	bh=suNkJ2gh7pPN1oyqI64kbmW+brydF4+SF1qphpgiy1g=; b=XrjCUZ70qFRpVuhmBKYCSy4Pz+
+	jt/isvKftGt57chLgfGludFvEtjt0ktXv8CnkPthO14+gDZYjsm2ASdAWmpyPqyZ4oCOnzcGIwM5r
+	WD2U32edKRW+/LBLrcnOoXlatABrE5nocsL9A8ka7JZxJN6cBsIPStXIu/AInEu5Jqpba4D9FGsAb
+	LQkx0MdtCyM/0D40+aD28Dan4z11697ciM3tcNg6Sz+eTjQUBN3mptiusvGaEGFUmdHNOawK6u+yC
+	1GFIVUnXqoplONKU/LUfG+hBas2nMh4hK3PgRwVbbikmZ1GHG4cVUTfTEU8xm7eXC/lLyPJf5KNhy
+	4BKSMxRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiAM1-003fTG-U0; Tue, 11 Oct 2022 08:11:09 +0000
-Received: from mail-qk1-f179.google.com ([209.85.222.179])
+	id 1oiAgN-003ils-5w; Tue, 11 Oct 2022 08:32:11 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiALv-003fRf-7B; Tue, 11 Oct 2022 08:11:07 +0000
-Received: by mail-qk1-f179.google.com with SMTP id m6so2932547qkm.4;
-        Tue, 11 Oct 2022 01:10:58 -0700 (PDT)
+	id 1oiAgG-003iiS-S9
+	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 08:32:07 +0000
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id CD6E33F487
+	for <linux-mediatek@lists.infradead.org>; Tue, 11 Oct 2022 08:32:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1665477122;
+	bh=suNkJ2gh7pPN1oyqI64kbmW+brydF4+SF1qphpgiy1g=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type;
+	b=GEpv88zdDeOxPK3xTuo13M9BSOFkq1Rtmpzx5WqlaPf28UiHsb41SCsUiyDRNfdSM
+	 FPL9FQDmv/RvlmOAJm/G9kLBqjKRJoDexQyomsaNetIL4KyoIOHk49zgQ/xBVKUMVT
+	 vBjc+9plY0bx3dnoo8VElZJffLZZv9HKZ8WoSf+qzw5Fkrosbebxz3mBoL6BkW/wuc
+	 DZPAb3z8w8ll0b+w81vBHvDNh9SukhneWGpcMOffIpWHs7lEyP47SPTIgYux/kccZf
+	 gZRUpwF8VBHoC9gemblMZ2VZFxkhA5OB+L6OAQnu7fkbLzGGe1mbXbNL+MBwxU+3NF
+	 GFpOnhjIdMVTw==
+Received: by mail-qv1-f71.google.com with SMTP id dn14-20020a056214094e00b004b1a231394eso7572550qvb.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Oct 2022 01:32:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/lX+/OOwDGA/EkvK0KhDO9ADs/gc/7w2DlDG3ggMBVQ=;
-        b=wdbNY5ZC2uRgQEAQTlSEjMFXhS1M+A3AmzJWHYMgX2H0DWDZgNep+kNACMwMqHk95u
-         SnWWpuvEWED+2BPmVpXAoLcm8jhWEv7L8ok1Bvhfi6aKWXkOe2+RcDhEbF7kFRKskJ9e
-         JrypVesQKezONoZ8aVBj2oNAXoGLGk4sLcZZ7QPDMIHI7dIgbHFGylVu6Xuxt4QgMIgj
-         f3F/ingzf9gRhXLsLsh9wRCsFGAQ/pgR4LJBnCX6vgtJxvnfp7AMoTyiaBS2ooKgJ1c2
-         9VQsGBcrDKxtucNREO3yZKELyvrNDQplgLRzQc688MzZLc1zr186eaLc0r3xg8LSUXZd
-         ovGg==
-X-Gm-Message-State: ACrzQf16j9Ab3KD1RUsnH+lCxZ1UKd5di7FdFwAhmT94uYErbllCQcHQ
-	7L7dCZb+tVGqjv4gOeHW3IqNl5iVEjtr0EC5
-X-Google-Smtp-Source: AMsMyM5zgpWeHlbtaYtplNumeIgKfF16rGGy6NfsIJF3ozb1ThEW1S3Vogv3B9uYzp+AXR2izQjWLg==
-X-Received: by 2002:a37:bc3:0:b0:6ee:7931:9e5a with SMTP id 186-20020a370bc3000000b006ee79319e5amr1800871qkl.105.1665475857723;
-        Tue, 11 Oct 2022 01:10:57 -0700 (PDT)
-Received: from mail-yb1-f174.google.com (mail-yb1-f174.google.com. [209.85.219.174])
-        by smtp.gmail.com with ESMTPSA id v23-20020ac87497000000b0039764587192sm8166026qtq.57.2022.10.11.01.10.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 11 Oct 2022 01:10:54 -0700 (PDT)
-Received: by mail-yb1-f174.google.com with SMTP id 207so15639693ybn.1;
-        Tue, 11 Oct 2022 01:10:53 -0700 (PDT)
-X-Received: by 2002:a25:4fc2:0:b0:6be:afb4:d392 with SMTP id
- d185-20020a254fc2000000b006beafb4d392mr20469390ybb.604.1665475852958; Tue, 11
- Oct 2022 01:10:52 -0700 (PDT)
+        bh=suNkJ2gh7pPN1oyqI64kbmW+brydF4+SF1qphpgiy1g=;
+        b=7tSME3sYKlnJ+TSJjaPA+DKZyR2Fwxvgr9zteCp5va4LjrBKf4hQ4zCW4CMF90+dW0
+         K8GuMY4Avswd4eisDDLuCoDlXE8+uq1XYAvw3flHKHGV32IQ0YMJBDq4kO/9TtvGazyF
+         m+TGZuo5efbz3OTvXwOqKxVrUSqRQwuXhX6IrYwPKP+ZUBZfvm+Mhlt0vdbigJuuvr2Y
+         4WfHxhIAbXKmnq68NqzKr0nGkijh36c9hIXiZGepVrFS1+bOsRcvKkhsfi/Hycic1mXJ
+         OxXrZWmmQzC3j87A0E55hKYU9U2PXPsZWgx9nqZEZEa1pDalvSzUIwYxGjTXaBJlwFbI
+         DPOQ==
+X-Gm-Message-State: ACrzQf0doLX0kyjVU+7jfceLL1xvjlQPaHraOTIN9FooR0mdVOu3y0PB
+	x8ZJ3aM7OjwFbPUGpQw2Om/CpJK1qZIRXsCZBvyL3XeiLc7asFbevO9svqRd4Cs2ghKo+sJ5/Nr
+	cI765nEHL0szxq13l/6KaSQZq+Cb1TUXwpRaZWc8bVU1nFrcInQMGzgU6oSY3UFZIBA==
+X-Received: by 2002:a05:620a:410f:b0:6cf:c34b:3c64 with SMTP id j15-20020a05620a410f00b006cfc34b3c64mr15570241qko.52.1665477109291;
+        Tue, 11 Oct 2022 01:31:49 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7DFTDHgNX/wrj8IAoSXEmta8ySJnv0knkcfflaxkZri8xCwukQw9Ji8irmUndHqkaXm0MlF8+pHua64xb11kk=
+X-Received: by 2002:a05:620a:410f:b0:6cf:c34b:3c64 with SMTP id
+ j15-20020a05620a410f00b006cfc34b3c64mr15570191qko.52.1665477109055; Tue, 11
+ Oct 2022 01:31:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <20221010201453.77401-20-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20221010201453.77401-20-andriy.shevchenko@linux.intel.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 11 Oct 2022 10:10:37 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUMLEpZrEU0EviCRqRB9tX4iNGAVx2XPR5KbCMGWZetAQ@mail.gmail.com>
-Message-ID: <CAMuHMdUMLEpZrEU0EviCRqRB9tX4iNGAVx2XPR5KbCMGWZetAQ@mail.gmail.com>
-Subject: Re: [PATCH v2 19/36] pinctrl: renesas: Add missed header(s)
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <20221010201453.77401-26-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20221010201453.77401-26-andriy.shevchenko@linux.intel.com>
+From: Emil Renner Berthing <emil.renner.berthing@canonical.com>
+Date: Tue, 11 Oct 2022 10:31:33 +0200
+Message-ID: <CAJM55Z_ApPowttZrjn_0dUs81H4FfByDfv=fbhvmHquipULANg@mail.gmail.com>
+Subject: Re: [PATCH v2 25/36] pinctrl: starfive: Add missed header(s)
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>, 
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Billy Tsai <billy_tsai@aspeedtech.com>, 
@@ -69,6 +81,7 @@ Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gib
 	Claudiu Beznea <claudiu.beznea@microchip.com>, Samuel Holland <samuel@sholland.org>, 
 	Horatiu Vultur <horatiu.vultur@microchip.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
 	Bjorn Andersson <bjorn.andersson@linaro.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, 
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
 	Phil Edworthy <phil.edworthy@renesas.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
@@ -114,8 +127,8 @@ Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gib
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_011103_286047_9B7CCE6D 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20221011_013205_066722_42CC8C65 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,26 +143,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 10, 2022 at 10:15 PM Andy Shevchenko
+On Mon, 10 Oct 2022 at 22:26, Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
+>
 > Do not imply that some of the generic headers may be always included.
 > Instead, include explicitly what we are direct user of.
 >
 > While at it, sort headers alphabetically.
->
+
+The patch is fine, but I don't see any sorting other than just adding
+the headers at the appropriate place.
+In any case
+
+Acked-by: Emil Renner Berthing <emil.renner.berthing@canonical.com>
+
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> ---
+>  drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
+> index 5b544fb7f3d8..6a8a9cfe8965 100644
+> --- a/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
+> +++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
+> @@ -15,8 +15,10 @@
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/reset.h>
+> +#include <linux/seq_file.h>
+>  #include <linux/spinlock.h>
+>
+> +#include <linux/pinctrl/consumer.h>
+>  #include <linux/pinctrl/pinctrl.h>
+>  #include <linux/pinctrl/pinmux.h>
+>
+> --
+> 2.35.1
+>
+>
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
