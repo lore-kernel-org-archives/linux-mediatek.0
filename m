@@ -4,73 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DBEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 02:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F7D9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 02:56:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yzZMTZnWRT6Z2eNvdPaZmSr5b+GMs7+C7GPXCnnqRyo=; b=jJpcIY7O2KR0pTpK6K18wrw7gZ
-	4Dllqd8QTcdddJza4rx1EevkZuhhde9/FQ2f2tViJrVAla8xLrbmGgjdMhKnLK7ee2BiRGLVa7Doz
-	d9Z3UPJuLTH2Rx1W8CQ4LhyyK5v7b8ASxy1JRDKWbaB/bcoQgYpXzVHKuo5rm9WwRhSfMxKOzHM0S
-	iv+suSf/Wm0t4pFItK1KDf2LhoyHL0fcP3Z2lGbkJuTXDygdjDV2OXzYzVfEjZ9fALCYZAMfk7zZ4
-	TkTUYoGIm0oG96jelBPTUOtNkZ175ZPOu4X8ivnp7BLRLN7XQA4DrOLrMzRAICa8K+aNAMMHkG0Pm
-	pyB5iR2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eY6/yimYvoONiMO8pWSoqGtMa9qBuMUAo/bdP9lOba0=; b=fI39BLBEa8fdoRnOthZCc4xEwU
+	1vkOeOC4pOZQ3rXvZWvvbOsHAOTsJSBR8XcomZSm1Kpn4GEM+Zm09sxs7ybV6EF2JG1UUt7q6V5pI
+	yRoEi/dqym6PqQ2LSRHmL4t+AOpmGbhzv218r4TZmgLssfeRF3pTHXm9lFRoVE5bsxCu3CIhoLfS4
+	eZewPP6P+DLtDW6APzBfONk+qevoiCPj0qkOYXp5zTFWgA8MhCfbcptRU+dyui+2fqYvG44HRmiqg
+	SK6A/cNwAksi8mO/9P0X7pcMLoFYGt/ec0ZsSfFyR9x80picC4nuBKAnxMnqmrhQpQx61rRwaK6PV
+	oKlctzqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi5Ez-0032WK-0b; Tue, 11 Oct 2022 02:43:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oi5Rm-0033b2-BE; Tue, 11 Oct 2022 02:56:46 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi5Ew-0032VP-EA
-	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 02:43:31 +0000
-X-UUID: dbf6d42cbf3b42f78a3ff21bd444a849-20221010
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=yzZMTZnWRT6Z2eNvdPaZmSr5b+GMs7+C7GPXCnnqRyo=;
-	b=frgcPBDtR4Eu5FOVXYULoALR1Wyy5QkEmNbkSX3hdJ1xrsw7qEo4DH1Pz66076g0x3ewb2Rx162duWNSIgx/7hyv2IFSwK8rLDtqKUh2CP5kGIGNSpiZy8LiLwWSOwGZIfl9SZG8d6WVQTgvl8LRP+mZjVw3bo4BEyzfv4ykT+g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:49ae7150-530f-4635-89e0-0675036fd067,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:c5047de1-2948-402a-a6e4-b5d31fe11eb7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: dbf6d42cbf3b42f78a3ff21bd444a849-20221010
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 512599918; Mon, 10 Oct 2022 19:43:17 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 11 Oct 2022 10:02:44 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 11 Oct 2022 10:02:44 +0800
-Message-ID: <1da5fa8c9b22dcc8ada4e4e32a910dd552cc17d4.camel@mediatek.com>
-Subject: Re: [PATCH v1 1/6] media: platform: mtk-mdp3: add chip
- configuration header file
-From: moudy ho <moudy.ho@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 11 Oct 2022 10:02:43 +0800
-In-Reply-To: <9e14ae09-6100-a55f-7aa7-6ed9edb49e09@collabora.com>
-References: <20221007031737.5125-1-moudy.ho@mediatek.com>
-	 <20221007031737.5125-2-moudy.ho@mediatek.com>
-	 <9e14ae09-6100-a55f-7aa7-6ed9edb49e09@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oi5Rh-0033Z1-Vb
+	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 02:56:44 +0000
+Received: by mail-pl1-x632.google.com with SMTP id i6so6922592pli.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Oct 2022 19:56:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=eY6/yimYvoONiMO8pWSoqGtMa9qBuMUAo/bdP9lOba0=;
+        b=St4FezU9O7eQJTgTbgQ3mlkvzUgcaFOmGoS6fdofTzsS1eKPT2mljImssPXI+Y1Rqc
+         WAtcVBQFwcJWAI1Xn0kmEDfsOWpPTM1rwy9e0/jweWYZhcW3bSRihweGkMgkFrf49L/S
+         ougV8x2YLvsuSHJVWbHPxAjymhZlrdBRSfbPMetPXI3d8528oLanaqszgIjsyWcJxCec
+         RplspHGcXRVrZHhm3YLHBP2MThUZYt1l+u3w6nNEbK/gAalPObii9Y23LTB9h+xo5MZL
+         Q2olX6pqHr7fnJjbkDUcbicgWKLEOHuxY/ZmaY8NhBASe9hAP1FfwULvv+vyB/p7aAJi
+         dcZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eY6/yimYvoONiMO8pWSoqGtMa9qBuMUAo/bdP9lOba0=;
+        b=3lB6T9TuVqxtQ6Dx3RQ0lQDbW7VtopwzuHBW9osDIogBnUq0jL1/IMpp8rti2t4lAo
+         8gDP82aeZliUPAR+d2yMQ8AjjxdBt+GaIYbaue9W9gHrFl98e/h7hRrfKNkgS8oYM2h9
+         s4fccI7I1OO74UyNT0Fxl6VuYPNqbuodwVvhc8oUXvwJij1guYYQjLVw08A8fNC0zA7x
+         16jK7XGiGQ/PelgfNf+0eSByX/+M1sNrSq4nQiGUwgNBh0S3ekxh3SLmhFczVtDWsAZi
+         3OVYHtiIfOAYGMoHLMoN8L6cBLr+ZsVbV9tAg38bTh6IH3poqQoHGwKHQznvVQeviiUm
+         DrIg==
+X-Gm-Message-State: ACrzQf20z0ZLmmQ1LzZtuBO8F86UBtk/pjPMdOdpoZAzmf1dHQ7lsd4W
+	X7XKdPkNPz4tua5qDfUd5LKKPQ==
+X-Google-Smtp-Source: AMsMyM5hXN0QiS8uqUcGpHD6JFZFALVhwI9j6zQ14TE/WoAuVWWVc4TcEEwMdmsILP6ZiXwLtzx0bQ==
+X-Received: by 2002:a17:90a:ad82:b0:20c:feb2:bceb with SMTP id s2-20020a17090aad8200b0020cfeb2bcebmr15457131pjq.93.1665456999661;
+        Mon, 10 Oct 2022 19:56:39 -0700 (PDT)
+Received: from localhost ([122.172.86.128])
+        by smtp.gmail.com with ESMTPSA id z17-20020aa79911000000b005623df48a39sm7942588pff.13.2022.10.10.19.56.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Oct 2022 19:56:39 -0700 (PDT)
+Date: Tue, 11 Oct 2022 08:26:36 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+	Kent Gibson <warthog618@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mika Westerberg <mika.westerberg@linux.intel.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Phil Edworthy <phil.edworthy@renesas.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Fabien Dessenne <fabien.dessenne@foss.st.com>,
+	Prathamesh Shete <pshete@nvidia.com>,
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-media@vger.kernel.org, linux-actions@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+	linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
+	Damien Le Moal <damien.lemoal@wdc.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Haojian Zhuang <haojian.zhuang@linaro.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Tomasz Figa <tomasz.figa@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>
+Subject: Re: [PATCH v2 22/36] pinctrl: spear: Add missed header(s)
+Message-ID: <20221011025636.glm7wxtg4oo6c2j2@vireshk-i7>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+ <20221010201453.77401-23-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221010201453.77401-23-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_194330_514035_542A013D 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20221010_195642_028002_3B33C001 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,52 +169,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-10-07 at 11:07 +0200, AngeloGioacchino Del Regno wrote:
-> Il 07/10/22 05:17, Moudy Ho ha scritto:
-> > In order to be compatible with more MDP3 chip settings in the
-> > future,
-> > move the chip-related configuration to a separate header file.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >   .../media/platform/mediatek/mdp3/mt8183_mdp.h | 35
-> > +++++++++++++++++++
+On 10-10-22, 23:14, Andy Shevchenko wrote:
+> Do not imply that some of the generic headers may be always included.
+> Instead, include explicitly what we are direct user of.
 > 
-> What if we choose a better name format for the chip header?
-> Would mdp3-plat-mt8183.h work for you?
+> While at it, sort headers alphabetically.
 > 
-> Aside from that, the changes look good... but anyway, what this
-> driver
-> really needs is an abstraction of `mtk-img-ipi.h` since, as you know,
-> new
-> SoCs are using a different firmware and even a different architecture
-> for
-> the MCU.
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+>  drivers/pinctrl/spear/pinctrl-spear.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> Is that planned?
-> 
-> I think that such change would perfectly fit inside of this series.
-> 
-> Regards,
-> Angelo
-> 
+> diff --git a/drivers/pinctrl/spear/pinctrl-spear.c b/drivers/pinctrl/spear/pinctrl-spear.c
+> index e0543c1ad641..18de2e70ea50 100644
+> --- a/drivers/pinctrl/spear/pinctrl-spear.c
+> +++ b/drivers/pinctrl/spear/pinctrl-spear.c
+> @@ -19,11 +19,13 @@
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+>  #include <linux/of_gpio.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/seq_file.h>
+> +#include <linux/slab.h>
+> +
+>  #include <linux/pinctrl/machine.h>
+>  #include <linux/pinctrl/pinctrl.h>
+>  #include <linux/pinctrl/pinmux.h>
+> -#include <linux/platform_device.h>
+> -#include <linux/slab.h>
+>  
+>  #include "pinctrl-spear.h"
 
-Hi Angelo,
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Thanks for all your advice, I will add another patch for SCP shared
-memory header separation by chip, and integrate the following series
-with the same purpose here.
-[1] 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=683671
-
-Sincerely,
-Moudy
-> >   .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 27 ++------------
-> >   2 files changed, 37 insertions(+), 25 deletions(-)
-> >   create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mt8183_mdp.h
-> > 
-> 
-> 
-
+-- 
+viresh
 
