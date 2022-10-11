@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81707C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 15:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C88CBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 15:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ojwkKCJrS9JITxJusSpSWx4qDmUdujhVF1lmlME+nNs=; b=mdhDAdOJFYsP4uvz5hjmhRuRCG
-	aQq9QAHJ1xCmsTbZiwWVd0tYs5Rv2KewV71eiugsl6QtiWS6ExuiuYTUbMXAM65k/DFjIJ3Urfd3K
-	K5WqmVEyQhahigdPgMDMlQly9VcdZzcjGBTC9MEEohssSTqgGZOUKp/WfudYkd4e9YJs/WXZZGurg
-	nYJIg9RvL27czBApCgLu0FcSdLJa7tWDo0fcvWq7nmbzinb423054qhDkfr+nmfu7P/9u/oEeoc+e
-	EP/nGrBC45Sl9FzKmIp1y6isnJ+G55Uxgmj3MC4y9+DlexqNfa/cliMwf+DrmHLJnMoKTchC9DmIa
-	7o2QzyMw==;
+	bh=fw2npG3IwtEm/w8QXxOQSUwsleWjDKebVbGzc+CuTkQ=; b=N8rcBF0ZTZT3WcOwlaxM/mTtKo
+	d5QM7yC27kBNoB3E6IFoiWRVn0a0G5GUaKatRZCCCEJX69xW869sEruAgVfq+NpNBmyyc5SkTNAMn
+	FB2WI5wkKllk12TI3dsQ5qEigCuyQNSEwKvqTEcrohufhpPur33w4AAZeRZ1Bp9qkZeUDaHMXdN3o
+	Mghu+JekWrQ2FEzB8d5uhrYkmusk396VDwwZR6qbhi6nMCebo3hkPpApnjtJ5w7xYJ/8ZTSY+gFLW
+	XWXxeawnZc/cQ+EHlw99/YcD2S+ijVFi1bGQ8Q2Ktu60HqqaRNMn9LSHd9GWibWRE8rxhTZDa/L6T
+	So7yVQ+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiHSI-004vQK-Si; Tue, 11 Oct 2022 15:46:06 +0000
+	id 1oiHZZ-004yLZ-UD; Tue, 11 Oct 2022 15:53:37 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiGdd-004Z7o-LQ; Tue, 11 Oct 2022 14:53:49 +0000
+	id 1oiGdv-004ZIz-4B; Tue, 11 Oct 2022 14:54:04 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2D485611C9;
-	Tue, 11 Oct 2022 14:53:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A36DAC433D6;
-	Tue, 11 Oct 2022 14:53:43 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AA853611E3;
+	Tue, 11 Oct 2022 14:54:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 862D9C43142;
+	Tue, 11 Oct 2022 14:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1665500024;
-	bh=Kzc8xt/Xu3IH1bDLX176iPWnf7vIctAK/HShGrpIkFI=;
+	s=k20201202; t=1665500042;
+	bh=in2WENQ3DnZ5Wbx8A8rV5WBddompOUq8UbqsLWOkxjk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZuWoivwDdoMKqCEebRDxgooEsty/0J8kXfeyMsjN3dE6mFjHNSgT+N7iLz6KydIKi
-	 RLeEqmbdxCjY5fG+Tjn742sXxwM5842y8SOVW5XyEKARW3Xru9m1XZnJz13OeOjzMg
-	 toOop2b5qfU9aLUGaaef9A0AzHUfqf+iuFscwQZ7m6SPGZpr5eMnvPoNurR9hRl5TE
-	 ycUVWthbDY9ELBw93U8lY5FirVTxpoGIp8TiYMEXwiJjz8BMzdPO5YayQ3Oo3kBOnt
-	 hTAsA547hz1+siqimrlJDexCZzd80piJ7wUXDbGyJE2vxGFCgga6k1Dc6FfwIc3KwR
-	 yrjw/KNdlOI5Q==
+	b=oxQyINalp3s14334abYuAms81/3/CdA3hpYU1lBX0zlWD9zgv5lujWqtGAtL3OEAq
+	 PyS8fMZznuDkcLXWuo6BC56Wq/gJhsbA45nGqCmWTpys+Emh+W76/R4Uh8EEGXw9D0
+	 apQ8GR5BYEu+7p+uyzLN5H9KDb1S6n4iMooSutPp71JYE2zxIo+ah5ciSnCFxgC0je
+	 yFdW5A+a13HJau+HyWgustAiWpW4riotvEHf/o3A0/x0p3Q6iq3D45Wehmq8j1zePa
+	 X5nkBsUZjfLk5b/Dms1zBD2bcUwLbNUkPkaSSdPr+tQwzXBopVEwnnz5hq00XtnAQc
+	 evUaEwEduGvKw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -51,19 +51,19 @@ Cc: Jean Delvare <jdelvare@suse.de>,
 	Sasha Levin <sashal@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 03/13] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
-Date: Tue, 11 Oct 2022 10:53:28 -0400
-Message-Id: <20221011145338.1624591-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 02/11] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
+Date: Tue, 11 Oct 2022 10:53:49 -0400
+Message-Id: <20221011145358.1624959-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221011145338.1624591-1-sashal@kernel.org>
-References: <20221011145338.1624591-1-sashal@kernel.org>
+In-Reply-To: <20221011145358.1624959-1-sashal@kernel.org>
+References: <20221011145358.1624959-1-sashal@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_075345_832177_A2AA90C2 
+X-CRM114-CacheID: sfid-20221011_075403_284788_058FD82D 
 X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,10 +121,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  3 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 2114b563478c..9a859a605d80 100644
+index a7d0667338f2..2bb92efd01a8 100644
 --- a/drivers/soc/mediatek/Kconfig
 +++ b/drivers/soc/mediatek/Kconfig
-@@ -28,6 +28,7 @@ config MTK_INFRACFG
+@@ -15,6 +15,7 @@ config MTK_INFRACFG
  config MTK_PMIC_WRAP
  	tristate "MediaTek PMIC Wrapper Support"
  	depends on RESET_CONTROLLER
@@ -132,7 +132,7 @@ index 2114b563478c..9a859a605d80 100644
  	select REGMAP
  	help
  	  Say yes here to add support for MediaTek PMIC Wrapper found
-@@ -37,6 +38,7 @@ config MTK_PMIC_WRAP
+@@ -24,6 +25,7 @@ config MTK_PMIC_WRAP
  config MTK_SCPSYS
  	bool "MediaTek SCPSYS Support"
  	default ARCH_MEDIATEK
@@ -141,10 +141,10 @@ index 2114b563478c..9a859a605d80 100644
  	select MTK_INFRACFG
  	select PM_GENERIC_DOMAINS if PM
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index c725315cf6a8..0085c24cff8c 100644
+index 011a40b5fb49..0e7dc2f01296 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -2046,7 +2046,7 @@ static int pwrap_probe(struct platform_device *pdev)
+@@ -1672,7 +1672,7 @@ static int pwrap_probe(struct platform_device *pdev)
  static struct platform_driver pwrap_drv = {
  	.driver = {
  		.name = "mt-pmic-pwrap",
@@ -154,10 +154,10 @@ index c725315cf6a8..0085c24cff8c 100644
  	.probe = pwrap_probe,
  };
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 75f25f08245f..71f28998fb63 100644
+index ef54f1638d20..06543e41d015 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -1063,7 +1063,7 @@ static struct platform_driver scpsys_drv = {
+@@ -1071,7 +1071,7 @@ static struct platform_driver scpsys_drv = {
  		.name = "mtk-scpsys",
  		.suppress_bind_attrs = true,
  		.owner = THIS_MODULE,
