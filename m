@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBF7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:05:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E44DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 09:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rXLt+W6HaeMXhId3Ra6AFK+xRes+Vt+ObEwMlbLU6fM=; b=pF/gTL8NQDTO5T3lXlSB77JSYk
-	kJLtbTcxuuRCXdhWfISXS+NnGB2MKnUN1HdV5Y6w0GaknAGrR1sjIVccIwI7bCSHDQX+2ZadgKVSp
-	7PNGV+f/2uWL5j9eZcYjSsDDIO6g97IVra18kKb3ozIOc//3wwvomcW5049W34zIXAQSoyIETyExU
-	+zMsNnW7ECeTOTSsyBifm/qGsaYCALlKT1hQ97s29f8E/S7iD2z/FhBn+/S0aSWjR7NZTgJW0N8+4
-	5J2M/kDsQ+P+qi+Pm7iqoGlkbg5AnGxKrbCrecVDseLjZFsjpAMnVDfrHch+PIkgzxwMna9+GR8oe
-	p/0kM2fg==;
+	bh=LQcZWTuomJs8azzuENO1ysYr7YvhPJHACpEofFQ3Mqw=; b=AVvu/QSODaxjEyn4gfeIehDhUJ
+	edAy2/uPIpvgA7KJBAFpAd4FOO9zknSXBma+DVDqKFI4buUz4LtpA0Fa2QsWK7TTeJYv5akeEt8hx
+	9h72b1NvHouDCkbwB5zkB90REWXmNCXoWCS9HPZtZWSx4G15YlCNqaEcrG3V4KADHoonS41ELlaXN
+	bqZOu5aiu1Och69LKhLTPJu1fz5wpuyLmXUT+2orFbysykVjIYgRZsvrSz/VW+X9olGVFMlFPfVa+
+	yKowdOQwghBWIW4dojoXCZx8zaNrxe0C+bIdqZuAzwTGVdRp3TWUvLhhWilgvGeNUhyPEs+gItfSb
+	JNzchZ9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBCE-003nft-KJ; Tue, 11 Oct 2022 09:05:06 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1oiBDs-003o3X-Qz; Tue, 11 Oct 2022 09:06:48 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiBCA-003neX-Ew; Tue, 11 Oct 2022 09:05:03 +0000
+	id 1oiBDo-003o2R-UP; Tue, 11 Oct 2022 09:06:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665479102; x=1697015102;
+  t=1665479204; x=1697015204;
   h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=ph4t/XlDBkX7oHU07HBNp4WniF3GSEowp5Yspa5Yt60=;
-  b=LI6AdDcCB2LUyjk0ezqAJl6iEXxV5IybxZebiLnXzDTA86Aq2eNy9QoN
-   Ganw8uTIg3oL1y1koBaFeusG2UtRzcNPMJu58r8OfAcbN7+lMtc0vzYBW
-   HgO1J+dMyDZICbCA2LwisbxMoLgZB2ROo3QLN18+W3ayJ+g3HATcfmDzi
-   2jvQLWq9obI3wf9Wu2OWS8i3q5mzlZCAY6oMvPrJIyJF3xKx5IkeZbY82
-   dCtV2OcQOTGVl8o6Ys/PxjefbNlFgVoeLBuxljg4IkSe6TqlQiOkl7LWq
-   M1X0Lq7EggvG2ksYhE5ypp7tpQXLd+2gQ4H6FNh1UYY/wAv4ydfif90uB
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="303191735"
+   mime-version:in-reply-to;
+  bh=EDe69pp5/h3Ee30GI4SHuwJ5qjyCZy1LPPLfzPY94CE=;
+  b=Vs7ILluKmrH7pe+dWRvgYy6MABycJztutg0yMMCAUt0QqOiCpBeHHG5B
+   w/WWxkpD6Anh2Geagbhe7VKMBiMirL4hpZQjusZjKS7teptHKb3Fw2Ui5
+   /n4Xxwy8GuY0yVPEiSYoD+BnB5Umbi4YmG36aYq/eiO7QyGeuV7bDvYNZ
+   uhZoU3f5pY6XsxlE8jzynoZ1IJabKSM+2ZLrC7EpC0SU58vc4vUI+T0NR
+   UL+8vcgVsTv0sH8wqlQ3NuCB11zDvogCt3YKh+Qb2ZiSSkqqc6xS5tiII
+   BL5ooRiHasEB3undgpqUI0NDf/czrd8Q8nlLHbL8EK2J4je/SK8fOGgQV
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="304441287"
 X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="303191735"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 02:05:01 -0700
+   d="scan'208";a="304441287"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 02:06:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="621337854"
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="659467328"
 X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="621337854"
+   d="scan'208";a="659467328"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga007.jf.intel.com with ESMTP; 11 Oct 2022 02:04:39 -0700
+  by orsmga001.jf.intel.com with ESMTP; 11 Oct 2022 02:06:21 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oiBBh-005EeG-1H;
-	Tue, 11 Oct 2022 12:04:33 +0300
-Date: Tue, 11 Oct 2022 12:04:33 +0300
+	id 1oiBDL-005Eh1-1p;
+	Tue, 11 Oct 2022 12:06:15 +0300
+Date: Tue, 11 Oct 2022 12:06:15 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Basavaraj Natikar <bnatikar@amd.com>
+To: Emil Renner Berthing <emil.renner.berthing@canonical.com>
 Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
 	Kent Gibson <warthog618@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -136,20 +136,19 @@ Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
 	Emil Renner Berthing <kernel@esmil.dk>,
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v2 36/36] pinctrl: Clean up headers
-Message-ID: <Y0UxoV+zn5MadWbm@smile.fi.intel.com>
+Subject: Re: [PATCH v2 25/36] pinctrl: starfive: Add missed header(s)
+Message-ID: <Y0UyB8n52Nma8UWz@smile.fi.intel.com>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-37-andriy.shevchenko@linux.intel.com>
- <d63088d7-202b-a550-01e5-345a22de5f7d@amd.com>
+ <20221010201453.77401-26-andriy.shevchenko@linux.intel.com>
+ <CAJM55Z_ApPowttZrjn_0dUs81H4FfByDfv=fbhvmHquipULANg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <d63088d7-202b-a550-01e5-345a22de5f7d@amd.com>
+In-Reply-To: <CAJM55Z_ApPowttZrjn_0dUs81H4FfByDfv=fbhvmHquipULANg@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_020502_540189_66C3DCF1 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20221011_020645_015586_5ED252B6 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,26 +163,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 01:00:11PM +0530, Basavaraj Natikar wrote:
-> On 10/11/2022 1:44 AM, Andy Shevchenko wrote:
-
-...
-
-> > --- a/drivers/pinctrl/core.h
-> > +++ b/drivers/pinctrl/core.h
-
-> > -#include <linux/pinctrl/pinconf.h>
+On Tue, Oct 11, 2022 at 10:31:33AM +0200, Emil Renner Berthing wrote:
+> On Mon, 10 Oct 2022 at 22:26, Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> >
+> > Do not imply that some of the generic headers may be always included.
+> > Instead, include explicitly what we are direct user of.
+> >
+> > While at it, sort headers alphabetically.
 > 
-> Removing pinconf.h from the core.h may cause build failure in other files
-> because where-ever core.h is included to use “struct pinconf_ops”, there
-> is a need to include pinconf.h.
+> The patch is fine, but I don't see any sorting other than just adding
+> the headers at the appropriate place.
 
-Yes, I compiled only few drivers with the core changes. Still I got a few
-reports by LKP. Thank you for spotting this!
+I will amend commit message here.
 
-> With that fixed,
+> In any case
 > 
-> Reviewed-by: Basavaraj Natikar <Basavaraj.Natikar@amd.com>
+> Acked-by: Emil Renner Berthing <emil.renner.berthing@canonical.com>
 
 Thank you!
 
