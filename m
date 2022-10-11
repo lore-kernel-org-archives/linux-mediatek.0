@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FCEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 13:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 14:13:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wYF4xCbFegyijE3LOCnwYg0uHMeolZhxRBFWZDfuDj0=; b=CzZTYaWcVNwTPwh7LfmUb8pd3E
-	5gFWDz9bgdACCI5D5Rh9+miA0xNYkyUS2lYM7E0G9yZya6BKANwZQJpSM0XmHpszGVBk6tarU3YRW
-	kXvCZlzBdk+ZJmzp6HbQjk7H2bcI0WA9QMbVyzXyn/PvSUwmdLPKp0vZYKh3DJ11EK+kBthhncLgD
-	V8PvxsPDNWuFIP2D/iyBcKYl04g+QjkcpVWsaVqZT+9EFyqpIlGKZao07DJ8Jj+WSmm7fUtkVfa5/
-	OHZQsLdBJfYk12VD1T77SccZ2Jz/SZHWuXu+Liku55EXe6MPcU9soc8nahXP4jgdBb4u9KWiRzB3D
-	alyKQGvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=czRWuspWIHlagJO4TEuyucASTDboV9sDSZyO/JWLXqc=; b=YMPoLiDJt+ehGl66qyboahDL/5
+	uobCwESseWBNztCa512sYGszUNO1AGmgeWZ18Ru4hK2r8rtySf6ApuAeOZ3J2/4lcHZFT86l1zdUY
+	VlRCkw7A7IJzWBKe3dIndwRAXJmtMtOFyiqE1e98G3IXnrnZrLYFtu18Oz82v78qWFELHbB0Jp8t0
+	k6/OlXK1sPqw8FptOA4/ARzaxWQbR3AWBhsJeSBnLF4z7BI9JmRgcV1dH+GondEJZPEF4Gsk6IFqY
+	O9Pu1wOIhxzjuaXadLYm1WIY/GVMuZOCi5SOd9CTY/HYns5OYxsUzOP3I5BThXdKDAPQgo9KfZl92
+	evAqXevg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiFjy-004OyK-OT; Tue, 11 Oct 2022 13:56:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oiG0d-004SfD-3F; Tue, 11 Oct 2022 14:13:27 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiFjl-004Ovt-8b; Tue, 11 Oct 2022 13:56:05 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D8866601A43;
-	Tue, 11 Oct 2022 14:55:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665496555;
-	bh=gITz5oEiVH+xz+695kfnNG3WumCJbobjiIQticIikwU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Pmz1OqPRb9CydwWha7oK9LIJxTJBzuRL+owUWohDxXYU7FvdWoo41QiN15epsxvMr
-	 6A7nvVO9do79m1C1T2SLLcG1powbwqQZGDhLm1ebY39Ril73kVUPc+gIxWmwucjUD6
-	 w1NZOoMImOv8tzn0H6/Z0W/wQ9SaTbc+a+E9i7tmnhvYprbVGVrJNbHvsmgLFfO9gL
-	 me2hgv2X0q2qdf4gzhax/67/I1u6VEFf0qH1iBRDrk6c4hmZu095k+QPvy//pZFQAX
-	 8GhUw8BvxSX1BE/F+4B3e59vt9VcjvaM/9r0cqLeyQeJ6m0JmKiqYT37a72+UngfJ1
-	 Ja36uePFxPk4Q==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sboyd@kernel.org
-Cc: mturquette@baylibre.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chun-jie.chen@mediatek.com,
-	miles.chen@mediatek.com,
-	wenst@chromium.org,
-	maxime@cerno.tech,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] clk: mediatek: clk-mux: Add .determine_rate() callback
-Date: Tue, 11 Oct 2022 15:55:48 +0200
-Message-Id: <20221011135548.318323-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
+	id 1oiG0Q-004SbK-11; Tue, 11 Oct 2022 14:13:15 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id w2so13687155pfb.0;
+        Tue, 11 Oct 2022 07:13:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=czRWuspWIHlagJO4TEuyucASTDboV9sDSZyO/JWLXqc=;
+        b=Ce+BVV5v8U7whmYd/FcwKuyV+liXHdnCihvE4vxDmi/zFRXHgG5BsKzJlkvJm3ymzp
+         i0kk+obd9ehg5kvdXpvifSYQKkIBJbAwLGSIa8MzHAOItPx5O2ghaGpv98wheUqfKMtx
+         xYK29jqCSGAVqjF4MPQoXzVWPbY3qWyTm0lvTcEBlWPddeF6YcST3WGeI8+5CF6qMkzB
+         /lDnL0m98oNEh6bOyWy8Twswwetn33Cy9kGtv+34nK50zqhZaf/wZPS7BxRAs1neYTBy
+         /bZWo8ysVbEXrzMM/+HfoBHs8qu8Q0eGt0b+IXToEUouhHiAP9GLUrTwNKB7EENxNPMI
+         wO2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=czRWuspWIHlagJO4TEuyucASTDboV9sDSZyO/JWLXqc=;
+        b=XoUpIoLC7D2AywtWr+JDuZU50nOBAtAvOdbEhH033ZuxseChuXu8s5I/IQzdPq7iCT
+         uc36WQHJcyVJfirx9B5C50EQfI2+0nrQBCoknY2qcuHPxEns1V+b1YNOeSwb++Ebiwzp
+         V249Rtev8kAZT0WhP5h3kGO4ZACQEnYmNEHp1Okf3oUawq6s6vn3TjJv9CkMjiVPrYA0
+         wNRYOVB+UtZDuFtAQXygay4raXcnYyQQ22EBYAtQThvr9q6bcjOIhYJxYXGQliy81Th/
+         hpGmj72v/Rgoskmp2LUsEsl5kv/1ADvuOsVsufSh2U/dgC0sbJZe6MO67WprhRnkWaW6
+         DMLQ==
+X-Gm-Message-State: ACrzQf2zHhAvX/DTi38G75OPLIgKJqnz+7p1wGgfJbXnPOsu63C64MWN
+	4pE34Hty4555A9yFVtQHwyA=
+X-Google-Smtp-Source: AMsMyM6A7bmN99+8aFFd/V9x8yL+08obUJvhZG8B8wKWgbvIl/Bh1jOgBftu0u99farGA2SFP/OdqQ==
+X-Received: by 2002:a63:8643:0:b0:462:9b02:a0c1 with SMTP id x64-20020a638643000000b004629b02a0c1mr8758435pgd.536.1665497593024;
+        Tue, 11 Oct 2022 07:13:13 -0700 (PDT)
+Received: from sol (110-174-58-111.static.tpgi.com.au. [110.174.58.111])
+        by smtp.gmail.com with ESMTPSA id q17-20020aa79831000000b00563ce1905f4sm1492741pfl.5.2022.10.11.07.13.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Oct 2022 07:13:12 -0700 (PDT)
+Date: Tue, 11 Oct 2022 22:13:02 +0800
+From: Kent Gibson <warthog618@gmail.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>, linux-gpio@vger.kernel.org,
+	linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+	alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
+Message-ID: <Y0V57gI75ik4ki3A@sol>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+ <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
+ <Y0SyVwjDl7NGfTPn@sol>
+ <CAHp75Vf4oS8g0zxgismtLrzsJ7AE-bdMEq+GAzx2=Mwnhuk3UA@mail.gmail.com>
+ <Y0V0IXF3sASTGdMU@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y0V0IXF3sASTGdMU@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_065601_587360_A8F7E059 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20221011_071314_127764_C957923A 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,124 +100,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests
-to the parent"), the clk_rate_request is .. as the title says, not
-forwarded anymore to the parent: this produces an issue with the
-MediaTek clock MUX driver during GPU DVFS on MT8195, but not on
-MT8192 or others.
+On Tue, Oct 11, 2022 at 04:48:17PM +0300, Andy Shevchenko wrote:
+> On Tue, Oct 11, 2022 at 11:05:42AM +0300, Andy Shevchenko wrote:
+> > On Tue, Oct 11, 2022 at 3:02 AM Kent Gibson <warthog618@gmail.com> wrote:
+> > > On Mon, Oct 10, 2022 at 11:14:18PM +0300, Andy Shevchenko wrote:
+> 
+> ...
+> 
+> > > > -#include <linux/gpio.h>
+> > > >  #include <linux/gpio/driver.h>
+> > > > +#include <linux/gpio.h>
+> > > > +#include <linux/hte.h>
+> > >
+> > > Ok with the hte re-order.
+> > >
+> > > But moving the gpio subsystem header after the gpio/driver is not
+> > > alphabetical ('.' precedes '/') and it read better and made more sense
+> > > to me the way it was.
+> > 
+> > I see, I guess this is vim sort vs shell sort. Strange, they should
+> > follow the locale settings...
+> 
+> I have checked, the shell and vim sort gave the same result as in this patch.
+> 
 
-This is because, differently from others, like MT8192 where all of
-the clocks in the MFG parents tree are of mtk_mux type, but in the
-parent tree of MT8195's MFG clock, we have one mtk_mux clock and
-one (clk framework generic) mux clock, like so:
+The original order (sans hte.h) was done by VSCode Sort Lines Ascending,
+and that still returns the same result.  That matches what I would
+expect to see given the content of the text.
 
-names: mfg_bg3d -> mfg_ck_fast_ref -> top_mfg_core_tmp (or) mfgpll
-types: mtk_gate ->      mux        ->     mtk_mux      (or) mtk_pll
+And for me vim also gives the original order.
 
-To solve this issue and also keep the GPU DVFS clocks code working
-as expected, wire up a .determine_rate() callback for the mtk_mux
-ops; for that, the standard clk_mux_determine_rate_flags() was used
-as it was possible to.
+Just to confirm - is '.' 0x2e and '/' 0x2f in your universe?
 
-This commit was successfully tested on MT6795 Xperia M5, MT8173 Elm,
-MT8192 Spherion and MT8195 Tomato; no regressions were seen.
+Cheers,
+Kent.
 
-For the sake of some more documentation about this issue here's the
-trace of it:
 
-[   12.211587] ------------[ cut here ]------------
-[   12.211589] WARNING: CPU: 6 PID: 78 at drivers/clk/clk.c:1462 clk_core_init_rate_req+0x84/0x90
-[   12.211593] Modules linked in: stp crct10dif_ce mtk_adsp_common llc rfkill snd_sof_xtensa_dsp
-               panfrost(+) sbs_battery cros_ec_lid_angle cros_ec_sensors snd_sof_of
-               cros_ec_sensors_core hid_multitouch cros_usbpd_logger snd_sof gpu_sched
-               snd_sof_utils fuse ipv6
-[   12.211614] CPU: 6 PID: 78 Comm: kworker/u16:2 Tainted: G        W          6.0.0-next-20221011+ #58
-[   12.211616] Hardware name: Acer Tomato (rev2) board (DT)
-[   12.211617] Workqueue: devfreq_wq devfreq_monitor
-[   12.211620] pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[   12.211622] pc : clk_core_init_rate_req+0x84/0x90
-[   12.211625] lr : clk_core_forward_rate_req+0xa4/0xe4
-[   12.211627] sp : ffff80000893b8e0
-[   12.211628] x29: ffff80000893b8e0 x28: ffffdddf92f9b000 x27: ffff46a2c0e8bc05
-[   12.211632] x26: ffff46a2c1041200 x25: 0000000000000000 x24: 00000000173eed80
-[   12.211636] x23: ffff80000893b9c0 x22: ffff80000893b940 x21: 0000000000000000
-[   12.211641] x20: ffff46a2c1039f00 x19: ffff46a2c1039f00 x18: 0000000000000000
-[   12.211645] x17: 0000000000000038 x16: 000000000000d904 x15: 0000000000000003
-[   12.211649] x14: ffffdddf9357ce48 x13: ffffdddf935e71c8 x12: 000000000004803c
-[   12.211653] x11: 00000000a867d7ad x10: 00000000a867d7ad x9 : ffffdddf90c28df4
-[   12.211657] x8 : ffffdddf9357a980 x7 : 0000000000000000 x6 : 0000000000000004
-[   12.211661] x5 : ffffffffffffffc8 x4 : 00000000173eed80 x3 : ffff80000893b940
-[   12.211665] x2 : 00000000173eed80 x1 : ffff80000893b940 x0 : 0000000000000000
-[   12.211669] Call trace:
-[   12.211670]  clk_core_init_rate_req+0x84/0x90
-[   12.211673]  clk_core_round_rate_nolock+0xe8/0x10c
-[   12.211675]  clk_mux_determine_rate_flags+0x174/0x1f0
-[   12.211677]  clk_mux_determine_rate+0x1c/0x30
-[   12.211680]  clk_core_determine_round_nolock+0x74/0x130
-[   12.211682]  clk_core_round_rate_nolock+0x58/0x10c
-[   12.211684]  clk_core_round_rate_nolock+0xf4/0x10c
-[   12.211686]  clk_core_set_rate_nolock+0x194/0x2ac
-[   12.211688]  clk_set_rate+0x40/0x94
-[   12.211691]  _opp_config_clk_single+0x38/0xa0
-[   12.211693]  _set_opp+0x1b0/0x500
-[   12.211695]  dev_pm_opp_set_rate+0x120/0x290
-[   12.211697]  panfrost_devfreq_target+0x3c/0x50 [panfrost]
-[   12.211705]  devfreq_set_target+0x8c/0x2d0
-[   12.211707]  devfreq_update_target+0xcc/0xf4
-[   12.211708]  devfreq_monitor+0x40/0x1d0
-[   12.211710]  process_one_work+0x294/0x664
-[   12.211712]  worker_thread+0x7c/0x45c
-[   12.211713]  kthread+0x104/0x110
-[   12.211716]  ret_from_fork+0x10/0x20
-[   12.211718] irq event stamp: 7102
-[   12.211719] hardirqs last  enabled at (7101): [<ffffdddf904ea5a0>] finish_task_switch.isra.0+0xec/0x2f0
-[   12.211723] hardirqs last disabled at (7102): [<ffffdddf91794b74>] el1_dbg+0x24/0x90
-[   12.211726] softirqs last  enabled at (6716): [<ffffdddf90410be4>] __do_softirq+0x414/0x588
-[   12.211728] softirqs last disabled at (6507): [<ffffdddf904171d8>] ____do_softirq+0x18/0x24
-[   12.211730] ---[ end trace 0000000000000000 ]---
-
-Fixes: 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests to the parent")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-
-Changes in v2:
- - Removed changes not relevant to this commit (ugh, sorry!)
-
- drivers/clk/mediatek/clk-mux.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-index 4421e4859257..ba1720b9e231 100644
---- a/drivers/clk/mediatek/clk-mux.c
-+++ b/drivers/clk/mediatek/clk-mux.c
-@@ -129,9 +129,18 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
- 	return 0;
- }
- 
-+static int mtk_clk_mux_determine_rate(struct clk_hw *hw,
-+				      struct clk_rate_request *req)
-+{
-+	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-+
-+	return clk_mux_determine_rate_flags(hw, req, mux->data->flags);
-+}
-+
- const struct clk_ops mtk_mux_clr_set_upd_ops = {
- 	.get_parent = mtk_clk_mux_get_parent,
- 	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
-+	.determine_rate = mtk_clk_mux_determine_rate,
- };
- EXPORT_SYMBOL_GPL(mtk_mux_clr_set_upd_ops);
- 
-@@ -141,6 +150,7 @@ const struct clk_ops mtk_mux_gate_clr_set_upd_ops  = {
- 	.is_enabled = mtk_clk_mux_is_enabled,
- 	.get_parent = mtk_clk_mux_get_parent,
- 	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
-+	.determine_rate = mtk_clk_mux_determine_rate,
- };
- EXPORT_SYMBOL_GPL(mtk_mux_gate_clr_set_upd_ops);
- 
--- 
-2.37.2
 
 
