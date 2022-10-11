@@ -4,129 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8ADFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 14:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71BAC43217
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 14:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OFHrkYK+hji/ysVZidllcxpJYPEyvD0DLXFwwsHNiMw=; b=y498ZvZAzAtZ6M3oqK+tyOZBQL
-	qLXrYSFCbmOuq8wno2cAzBffyT8dbwtgtR1iIKAMj6kkxzbv208sGtDvoDhOxeeBjR3t0too9r0Nk
-	V0RwbPxoZOiyiuPfOJpwpaC2Ylag2h9YjqHLj+jKnuhkOUyPMoMobUVRVL399o2B3JTO5WWJxJ4Id
-	qu22vudl6Wpvs41lN9wFmPq+s1h2n5WamsMT2XqosF7OtR0v5wV8tUvQTI3/X9g2tDhXXhGLnuB2Y
-	hyqaAu6d0nJlaYaHc/lZbU1JUwtKNna6zB5bXj4UsgcZf0wM1bBmIz+JRg3Sxuv+zzNccGCX4bvt6
-	fHWg2jFg==;
+	bh=Pr6MmXemHt31oqD25zt77+MJybHTsSXdJgIADz/xKss=; b=Rze/c9pH/xDLrq1+Nhrw9gS/jB
+	z9P9INCxIZiECTMTr3FPxSQv+DdPleM0aTJJAuWocLBBxuXMEE9txYBt0hjso0t98V6MbohpSyz0c
+	L5QR3lRbajHg3a7p5fJhIG6v/E4RUrggwnTs4uopEu2gOYWevFKz7ooXEg87hJQ96xDxQvKilS3Yu
+	LQbdfi6piXkkPupiVZEVubNgqWxKKU7YUIEgRRiOJGvwBVNv1h9IWeFxe59R6H39QJI02TTthdlx9
+	YFxGhIV46V22knMuscZKC8DxIv0NMGci92nvI0yePfzIn+KaGlNrBWSBedOV5OEJ+938LR1+eiGEe
+	qTniEFaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiGa5-004XDU-NZ; Tue, 11 Oct 2022 14:50:05 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oiGag-004XPO-1j; Tue, 11 Oct 2022 14:50:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiGa1-004XBJ-7A; Tue, 11 Oct 2022 14:50:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oiGaN-004XHY-A4; Tue, 11 Oct 2022 14:50:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3DECE660235B;
-	Tue, 11 Oct 2022 15:49:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665499795;
-	bh=WjWfvO7t5fdyGrI6m+hgGbT3QH4QBKj79I/hqKmON7Y=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JOT+AnjvhQZ3vD+INlRyJUZGm23CWRspXdxuJNoFNT/2BU3BDi5IDkH2Yrh9cl34H
-	 N8tYn0ib9h2NSJZ2wAIfZfryQVLEoNCgFUyUgtoeB3uep2/6DEsQ7yGEO0febOyHvI
-	 hMQps4hKjRpiDfHJVubm1kSgDODcE0fxz35XL3pmTQUoBsYWlj52rSQaBN3or/Qysa
-	 Nnl5TlEZJvEM/mGOVrA3G338yKAO4fX3D/W0mLbDZJMGmbluyKM/eYT4wVNA1RFmtD
-	 w5vR7Uu6LnwTML9dH9/oGV1Cci4KZACKsyC/Ihfwo8y3IRLkhbhb0iRzW5ZY4Zwh1d
-	 X736PHBsaUIKg==
-Message-ID: <74cdcd93-a528-ec8c-0808-0d698b86e47d@collabora.com>
-Date: Tue, 11 Oct 2022 16:49:48 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C91BF611C3;
+	Tue, 11 Oct 2022 14:50:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A56F1C433D6;
+	Tue, 11 Oct 2022 14:50:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1665499822;
+	bh=rAXd2onfjOSk4anOXOv14ePB/k3EyDw064ac0HUno90=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=lmk81D1qv01dhmq8xVLCd3y27SXoueFkWDAMl7s8MehhrwfDsR4he0lQhFFifZj95
+	 sOOOQ0gK6M34WUKNPoT2XcRfJSIQJm8p0MLlsRH8Q0cVpn7a9/w0KlB1Hz+84SATVb
+	 SI+ck+WgXqptHpLqW3iH5PlBcZ/4LGbZxaDpgQeC86RHJaacJwM6hC/FgPb1Ufk/eQ
+	 1F6L2MzCmHa8gHN0EChHetlUJuxreyLkFlLRFym8Zkp4Lq2DaQpBJEEH2vGZOVttPr
+	 Sg7y6Hsn9iTi33/lsn5xb1yZLXUg7J5Wzdyajx8goync7mD/2px8zMMd/OVfbUS8L/
+	 S13A4KjsW/EuQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Jean Delvare <jdelvare@suse.de>,
+	kernel test robot <lkp@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chenglin Xu <chenglin.xu@mediatek.com>,
+	Sasha Levin <sashal@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.0 04/46] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
+Date: Tue, 11 Oct 2022 10:49:32 -0400
+Message-Id: <20221011145015.1622882-4-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221011145015.1622882-1-sashal@kernel.org>
+References: <20221011145015.1622882-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 14/36] pinctrl: mediatek: Add missed header(s)
-Content-Language: en-US
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Kent Gibson <warthog618@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Billy Tsai <billy_tsai@aspeedtech.com>, Thomas Gleixner
- <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- Chen-Yu Tsai <wenst@chromium.org>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Samuel Holland <samuel@sholland.org>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Phil Edworthy <phil.edworthy@renesas.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Fabien Dessenne <fabien.dessenne@foss.st.com>,
- Prathamesh Shete <pshete@nvidia.com>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
- linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Florian Fainelli <f.fainelli@gmail.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
- Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
- Damien Le Moal <damien.lemoal@wdc.com>, Tony Lindgren <tony@atomide.com>,
- Haojian Zhuang <haojian.zhuang@linaro.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>,
- Konrad Dybcio <konrad.dybcio@somainline.org>,
- Tomasz Figa <tomasz.figa@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Emil Renner Berthing <kernel@esmil.dk>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-15-andriy.shevchenko@linux.intel.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221010201453.77401-15-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_075001_634343_9C514BD0 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20221011_075023_449226_EC3724C5 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,31 +79,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/10/22 22:14, Andy Shevchenko ha scritto:
-> Do not imply that some of the generic headers may be always included.
-> Instead, include explicitly what we are direct user of.
-> 
-> While at it, sort headers alphabetically.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->   drivers/pinctrl/mediatek/pinctrl-moore.c | 3 +++
->   drivers/pinctrl/mediatek/pinctrl-paris.c | 5 +++++
->   2 files changed, 8 insertions(+)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> index 526faaebaf77..9474ada5addb 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-> @@ -9,6 +9,9 @@
->    */
->   
->   #include <linux/gpio/driver.h>
-> +
+From: Jean Delvare <jdelvare@suse.de>
 
-Apart from this blank line that I deem unnecessary....
+[ Upstream commit 2778caedb5667239823a29148dfc48b26a8b3c2a ]
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+With the following configuration options:
+CONFIG_OF is not set
+CONFIG_MTK_PMIC_WRAP=y
+CONFIG_MTK_SCPSYS=y
+we get the following build warnings:
 
+  CC      drivers/soc/mediatek/mtk-pmic-wrap.o
+drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: ‘of_pwrap_match_tbl’ defined but not used [-Wunused-const-variable=]
+drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: ‘of_slave_match_tbl’ defined but not used [-Wunused-const-variable=]
+  CC      drivers/soc/mediatek/mtk-scpsys.o
+drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: ‘of_scpsys_match_tbl’ defined but not used [-Wunused-const-variable=]
+
+Looking at the code, both drivers can only bind to OF-defined device
+nodes, so these drivers are useless without OF and should therefore
+depend on it.
+
+Also drop of_match_ptr() from both drivers. We already know what it
+will resolve to, so we might as well save cpp some work.
+
+Developers or QA teams who wish to test-build the code can still do
+so by enabling CONFIG_OF, which is available on all architectures and
+has no dependencies.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/all/202207240252.ZY5hSCNB-lkp@intel.com/
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>
+Link: https://lore.kernel.org/r/20220730144833.0a0d9825@endymion.delvare
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/soc/mediatek/Kconfig         | 2 ++
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 2 +-
+ drivers/soc/mediatek/mtk-scpsys.c    | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 3c3eedea35f7..73e63920b1b9 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -37,6 +37,7 @@ config MTK_INFRACFG
+ config MTK_PMIC_WRAP
+ 	tristate "MediaTek PMIC Wrapper Support"
+ 	depends on RESET_CONTROLLER
++	depends on OF
+ 	select REGMAP
+ 	help
+ 	  Say yes here to add support for MediaTek PMIC Wrapper found
+@@ -46,6 +47,7 @@ config MTK_PMIC_WRAP
+ config MTK_SCPSYS
+ 	bool "MediaTek SCPSYS Support"
+ 	default ARCH_MEDIATEK
++	depends on OF
+ 	select REGMAP
+ 	select MTK_INFRACFG
+ 	select PM_GENERIC_DOMAINS if PM
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index d8cb0f833645..eb82ae06697f 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -2316,7 +2316,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ static struct platform_driver pwrap_drv = {
+ 	.driver = {
+ 		.name = "mt-pmic-pwrap",
+-		.of_match_table = of_match_ptr(of_pwrap_match_tbl),
++		.of_match_table = of_pwrap_match_tbl,
+ 	},
+ 	.probe = pwrap_probe,
+ };
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index ca75b14931ec..7a668888111c 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -1141,7 +1141,7 @@ static struct platform_driver scpsys_drv = {
+ 		.name = "mtk-scpsys",
+ 		.suppress_bind_attrs = true,
+ 		.owner = THIS_MODULE,
+-		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
++		.of_match_table = of_scpsys_match_tbl,
+ 	},
+ };
+ builtin_platform_driver(scpsys_drv);
+-- 
+2.35.1
 
 
