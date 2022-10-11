@@ -4,88 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F9AEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 16:18:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC3A2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 16:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zM2oTYjcq0Qi5LWjerDCXLFWkDZ6bBojudGD3He1B4o=; b=y8Ozpq9K3jDYKEbJ4pqYqINNZm
-	D21qfasfLG4yn2pkwKod1Tola+SWOU8rPloxoPoCQboxlk5EF2iuA5/NLa9Qv/1iyb/3c5zZ1B7Xr
-	5P4Ay+sT1DYjDKYdL4gmEH7BrE0Y0ue+q6h2nLM5ZE/paYvYLLZWFI3XffsJ3VL9LcovM4TbAaxPt
-	jINfOP4cHMbQUgkaqWGnGtWl80jIt+vqPwXoP/MCAW9ZALK/vZCaqR7yf//18LiAO8UeHB7Zn2a0L
-	1p22ujxeVZ8JL8qRXk6J08kaksjq4dad9Ja4pf7rqbP2GUvt9lCTBviz4cHBDITZSVp+fmTDZzIUi
-	+SGSAgAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GWYVEJdoqXnCQWtfT0bzkIP+70WLbsk9ZN19JnMQZx0=; b=YpaYBg/1rtLZeo5I6G6/hpbjUW
+	o8G9/QSjzQAKE2pFJOd8BY2YPYpYh+UpRclPZL69AuPYkLDXzM7nHrfp59mioFEKv5f1THOLPxlFL
+	jP9Nh+ZYkqhh+NnSz19hFCjUwKfdF1MJeCnsm/M5jjI4ce3ILsMJjmd+5kzB8ZkQBuKrO9dbpQjwE
+	k19EQIn8uPWN5Fy597NMr7qsOw+UNWA5Y1FNQrfAvMSXWhQsiFZndeKdxYbdREPCUrANIbV1VVy0N
+	QVYohxF0gZRFY6weYK1Tr3UcbSNLzD2Ig0UqZBiiv7Hl8B+NMr5aN8Fwx6IVkyjJIX1pP+mIQ+kF8
+	Jc5L90Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiHxz-0059VQ-JP; Tue, 11 Oct 2022 16:18:51 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oiHzc-005Agy-Sn; Tue, 11 Oct 2022 16:20:32 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiHQy-004usp-A4; Tue, 11 Oct 2022 15:44:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665503084; x=1697039084;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+ptjxKpKMe9ZpYpWkzy6xCUEZZDC37TWs3lCOeMWbyI=;
-  b=E9w8nzHNkFWiOgm49apidWLyZU3FlJ/1ngIrtNjIsSmEVU1zl7ZVeigy
-   n2UOfnU0IimMPuiEcASZG9N4Iqp1TUZLiRXW0WQjCz69JnCXdlMJDtYAP
-   6EridFneeB8OYOQaNebBB57D7ucJhg4O9LV4vq8Lgox6KqDaZylYiuiUv
-   0lGHip0UE872bStL5yPvz6bFtF5sbeetCHFqskYVO0IEC1L0pgOcf/pUz
-   ampspyufh87s9rWimTWfaBOVoFdyvz4S4dafR5wa+StwHrHMDkrPji2wf
-   +SAeqJ3Di5R5Je8a/Wod5N8CzOvLJ2/O5PXuGrfRAqtJ99qVhQ3BeF55a
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="302148752"
-X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="302148752"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 08:44:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="715553658"
-X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
-   d="scan'208";a="715553658"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by FMSMGA003.fm.intel.com with ESMTP; 11 Oct 2022 08:44:36 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oiHQo-005OPV-2A;
-	Tue, 11 Oct 2022 18:44:34 +0300
-Date: Tue, 11 Oct 2022 18:44:34 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Kent Gibson <warthog618@gmail.com>, Bartosz Golaszewski <brgl@bgdev.pl>,
-	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-media@vger.kernel.org, linux-actions@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
-	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-omap@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
-Message-ID: <Y0WPYuZ/9//jxwQ2@smile.fi.intel.com>
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
- <Y0SyVwjDl7NGfTPn@sol>
- <CAHp75Vf4oS8g0zxgismtLrzsJ7AE-bdMEq+GAzx2=Mwnhuk3UA@mail.gmail.com>
- <Y0V0IXF3sASTGdMU@smile.fi.intel.com>
- <Y0V57gI75ik4ki3A@sol>
- <Y0V9eJX7a0fe6EfX@smile.fi.intel.com>
- <CAMuHMdUhSKuJ3N5zf_+ad_dFu6kSmVTqRpgFUWtd54S9ryw=ew@mail.gmail.com>
- <Y0WJcXzkkK4oGbrR@smile.fi.intel.com>
+	id 1oiHnd-00544x-F6
+	for linux-mediatek@lists.infradead.org; Tue, 11 Oct 2022 16:08:12 +0000
+Received: by mail-qt1-x832.google.com with SMTP id jr1so513114qtb.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Oct 2022 09:08:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=GWYVEJdoqXnCQWtfT0bzkIP+70WLbsk9ZN19JnMQZx0=;
+        b=knWzrFxaglSBiHlwLMrZK+zOgKEtnU3K72eEGnOpfBMOKDwTCB1o5DFjMAX/q0UhNY
+         QtDdN11oGw+99XS3Ki30jbEV3wnK3M/RZFgBzC756EJj6Qzp7bRwpx0xVlVivFLLMSoT
+         OeFfvcAMzeUvMG2gk+zcXMcyojW/wbwfJ302GKQQDum8iO4SLMQHN5VVV6Lek8K2nrim
+         ey4zQ7XwZHcjBefqfLYDvCN8aZemyW2QsFCvMONV+AY8yi+43sfWfso0dPvhCbF12v5/
+         Zm2LP1ZxvniRrJK8KUjh3/YEL2QeZJReWqzdLohiEOSis5AiXvm/BDGrcU0o48e583KX
+         k3Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=GWYVEJdoqXnCQWtfT0bzkIP+70WLbsk9ZN19JnMQZx0=;
+        b=paoa2FPuFW+90XKkmpNVsOHIGl1gaMX0dNOuq+3DJlJQlQRuccM5jrTj8Y03Wa0eXU
+         0yBRfuzdEUVXWb9riDzo+mXv1UTqDkvYHEl6ORw8UkV7m/LMWv+Se4uRAJy1Tl1ndNKa
+         8j3RXdQSBI9g+l1GLOarXHzQcl7VWlPtiQMelBhPIyZ6N/Xd34CtYjkuZp7IXpqvHfi8
+         MsBOuXY0DEHIXYUQ1yRq5zh3r8EwgVXYpoMBmHrKZPEoBiX2IlqUmqg1yrG7uYLE6nJ7
+         H9/xincWds8HjkKN+LMUmhbi3HwK7uxDvmxs9foRdLRePp/UHGg/oiknsYmr11uFjSqB
+         zOiw==
+X-Gm-Message-State: ACrzQf1p82CvmYeV57znEBj3V8jwXomBa4zj1plpMNtXX/C8/mCJVVak
+	F3iND+7+NtO12ah+j6UN5Boqpw==
+X-Google-Smtp-Source: AMsMyM4tb/82A1JDAzYalVciziTjce/S19vvHsKcNbs5jARqscG7vKxacamXR2e1H5XtfAKSXhInbA==
+X-Received: by 2002:ac8:7d49:0:b0:399:d201:840b with SMTP id h9-20020ac87d49000000b00399d201840bmr9746570qtb.309.1665504487275;
+        Tue, 11 Oct 2022 09:08:07 -0700 (PDT)
+Received: from [192.168.1.57] (cpe-72-225-192-120.nyc.res.rr.com. [72.225.192.120])
+        by smtp.gmail.com with ESMTPSA id w8-20020ac84d08000000b00399813f4d5bsm5725686qtv.72.2022.10.11.09.08.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Oct 2022 09:08:06 -0700 (PDT)
+Message-ID: <a9e5197d-78aa-4395-23bc-d7c3141f109a@linaro.org>
+Date: Tue, 11 Oct 2022 12:05:51 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y0WJcXzkkK4oGbrR@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.2
+Subject: Re: [PATCH v2 20/36] pinctrl: samsung: Add missed header(s)
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Kent Gibson <warthog618@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Billy Tsai <billy_tsai@aspeedtech.com>, Thomas Gleixner
+ <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Mika Westerberg <mika.westerberg@linux.intel.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Phil Edworthy <phil.edworthy@renesas.com>,
+ Fabien Dessenne <fabien.dessenne@foss.st.com>,
+ Prathamesh Shete <pshete@nvidia.com>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ alsa-devel@alsa-project.org, patches@opensource.cirrus.com,
+ linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Florian Fainelli <f.fainelli@gmail.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>,
+ Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
+ Damien Le Moal <damien.lemoal@wdc.com>, Tony Lindgren <tony@atomide.com>,
+ Haojian Zhuang <haojian.zhuang@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@somainline.org>,
+ Tomasz Figa <tomasz.figa@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Emil Renner Berthing <kernel@esmil.dk>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+ <20221010201453.77401-21-andriy.shevchenko@linux.intel.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221010201453.77401-21-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_084444_397072_DD977969 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20221011_090809_553920_5FAA128F 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,18 +160,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 06:19:13PM +0300, Andy Shevchenko wrote:
-> On Tue, Oct 11, 2022 at 04:39:46PM +0200, Geert Uytterhoeven wrote:
+On 10/10/2022 16:14, Andy Shevchenko wrote:
+> Do not imply that some of the generic headers may be always included.
+> Instead, include explicitly what we are direct user of.
+> 
+> While at it, sort headers alphabetically.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+>  drivers/pinctrl/samsung/pinctrl-samsung.c | 11 ++++++-----
 
-...
 
-After all this patch is not needed. However, during checking of the necessity
-of this patch I realized that seq_file is used in a few GPIO drivers without
-any actual users, so I will prepare clean up series for that as well.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
--- 
-With Best Regards,
-Andy Shevchenko
-
+Best regards,
+Krzysztof
 
 
