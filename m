@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A717C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 08:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFBBBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 08:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jGyomjq7ozY4Q7akXL/Pfyv8X5Aj6pujM8b1a5l18ro=; b=ynjgOMosrldbs53C06XAPA/mCm
-	wEHoQMpBaFSKHHYGRMfp8eSpvEj7I6KAC/8nHy/NCxLa2+BY6rrXB466C7UGN5UyDPxO6o/AxqoQi
-	rfi476YYi5u2E+Va3DzrsRHSCOyARkvDBDMhmqiX/ncX7jeITReB7htVQNXRnUmdQatme5boddcGS
-	Ts3m2PIhG8Oiy2NmQVmWF+wkcm3zNVl6sJAhkyDRTHbhZaOHyX27OByu7JggqzTnSi7afjyehAFRi
-	0WhsFjkISh62FueMBQ6dTIZY8/Q5T1jHKxrbdMI9XGQWDccrpM/Sxar+VGpvCD8gk9ogHL1dNT5A9
-	lGXe8j0w==;
+	bh=/lX+/OOwDGA/EkvK0KhDO9ADs/gc/7w2DlDG3ggMBVQ=; b=Hha1oN7gqCit2r/OczX7MM+t6j
+	en4IDUH9l5ryZ6614dHRCdXIn6mzYj9wIZ2PNwxvWG5lvTp+gHdpTpIg9bug8B9NL+9WBj9IPZaYt
+	E5sX+7gOFGYOG7M9HRXA0U6HBXTK8o/IQOXpjJpug3k3/wGGxhUgTzoP0n+6HCY97SZyGvsxFNybq
+	EU9VPsu2GxJ5k5oc0VVr/6m1B+F03LZ2LvxPgsS89SslmCx9hNen+BceQJNITKbqtjD7HwYSAyDbZ
+	hX5YXnkDKLJADBKsNcFJM5IPZ7O+7vot2uOhzOOXK2JjwGrOOUwHmrljdqEsyhIRs5GTfl9VFuJvR
+	gX5Gg5FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiAHU-003f1D-2s; Tue, 11 Oct 2022 08:06:28 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1oiAM1-003fTG-U0; Tue, 11 Oct 2022 08:11:09 +0000
+Received: from mail-qk1-f179.google.com ([209.85.222.179])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiAHP-003eys-9e; Tue, 11 Oct 2022 08:06:24 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id z18so8505003qvn.6;
-        Tue, 11 Oct 2022 01:06:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=jGyomjq7ozY4Q7akXL/Pfyv8X5Aj6pujM8b1a5l18ro=;
-        b=KOtVn1MyCyveoDiOyhPS4b+kccEhBn5uycP8wq1nxcQaoVO7ujP/OY5Ywr26ZnhCam
-         JtV49vXZAkHxc9fQhnFZ0yR5qa3H1k6BdicVcmNeApeNekWkjySS1eI7a345vma1iB5u
-         m0hpdgw4rj+ZcUPoYHTwGBEZDDkn60NhzkSfKSFxnPmncP0SZs0DSM0BTPcBCa0Y7kT+
-         OJDRY26vA+5llcDmHVjT/wbShwFCBj2+8IX1jMumA781Wi5bVtrpUwScLhBWATEJPXxO
-         rA3UjsbwHJCPXoxP8zsPzOmD/iX/cV77mwqa0OtltmMedasLu6ChGyGJ30OpeSGXY/hO
-         eF4Q==
+	id 1oiALv-003fRf-7B; Tue, 11 Oct 2022 08:11:07 +0000
+Received: by mail-qk1-f179.google.com with SMTP id m6so2932547qkm.4;
+        Tue, 11 Oct 2022 01:10:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=jGyomjq7ozY4Q7akXL/Pfyv8X5Aj6pujM8b1a5l18ro=;
-        b=JN+1Xgl51ybb2pbhazZVwCwpiPI55xawcxv9bdh3zbKz/9XU9MLQy3EYZ5QFMkqAqR
-         y7Ml3D6TML3nAOxsU/PYRFw6te+Ho+71Vxv1nV2voLFg4hRITnnySloiZZ+f8f/8kakH
-         qPnYIZRtovjk8rNo9Cuoqqy2cNrX8EtB9POIhR3Unn+9uIwvD2jcgqsOSqlIvjVjR4TS
-         fFf4a0VEqy1aP4cWwzxb0uwg6jFrzrZ4ghGCCVAlHWZ8/qqMwYWNYHM16/7SGPHukYRX
-         NesrFLsI0uSthOkf/Aj0MUZB1DUKuoHezXWQn8zzF3Ir/aSGTHQxkxdcsihnioC6jK74
-         rZPg==
-X-Gm-Message-State: ACrzQf2ysX+RkK4GS52cvUpNG0w9DD2SO5pO5XjxAebtNo1XSx7BCsBq
-	DOdT5DwHPquSuS1jJiscMzyaa6f09MZL3yor7S4=
-X-Google-Smtp-Source: AMsMyM6bBfvn1Kn2m3jyePvTWTQZr99mPqgEF96ov5+b6DzzOQAB1TTkjSwFdYjW5mK99JzXiScvlDmHriUb73Md/f4=
-X-Received: by 2002:a05:6214:29ee:b0:4b1:c1d2:6635 with SMTP id
- jv14-20020a05621429ee00b004b1c1d26635mr18081815qvb.82.1665475580262; Tue, 11
- Oct 2022 01:06:20 -0700 (PDT)
+        bh=/lX+/OOwDGA/EkvK0KhDO9ADs/gc/7w2DlDG3ggMBVQ=;
+        b=wdbNY5ZC2uRgQEAQTlSEjMFXhS1M+A3AmzJWHYMgX2H0DWDZgNep+kNACMwMqHk95u
+         SnWWpuvEWED+2BPmVpXAoLcm8jhWEv7L8ok1Bvhfi6aKWXkOe2+RcDhEbF7kFRKskJ9e
+         JrypVesQKezONoZ8aVBj2oNAXoGLGk4sLcZZ7QPDMIHI7dIgbHFGylVu6Xuxt4QgMIgj
+         f3F/ingzf9gRhXLsLsh9wRCsFGAQ/pgR4LJBnCX6vgtJxvnfp7AMoTyiaBS2ooKgJ1c2
+         9VQsGBcrDKxtucNREO3yZKELyvrNDQplgLRzQc688MzZLc1zr186eaLc0r3xg8LSUXZd
+         ovGg==
+X-Gm-Message-State: ACrzQf16j9Ab3KD1RUsnH+lCxZ1UKd5di7FdFwAhmT94uYErbllCQcHQ
+	7L7dCZb+tVGqjv4gOeHW3IqNl5iVEjtr0EC5
+X-Google-Smtp-Source: AMsMyM5zgpWeHlbtaYtplNumeIgKfF16rGGy6NfsIJF3ozb1ThEW1S3Vogv3B9uYzp+AXR2izQjWLg==
+X-Received: by 2002:a37:bc3:0:b0:6ee:7931:9e5a with SMTP id 186-20020a370bc3000000b006ee79319e5amr1800871qkl.105.1665475857723;
+        Tue, 11 Oct 2022 01:10:57 -0700 (PDT)
+Received: from mail-yb1-f174.google.com (mail-yb1-f174.google.com. [209.85.219.174])
+        by smtp.gmail.com with ESMTPSA id v23-20020ac87497000000b0039764587192sm8166026qtq.57.2022.10.11.01.10.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Oct 2022 01:10:54 -0700 (PDT)
+Received: by mail-yb1-f174.google.com with SMTP id 207so15639693ybn.1;
+        Tue, 11 Oct 2022 01:10:53 -0700 (PDT)
+X-Received: by 2002:a25:4fc2:0:b0:6be:afb4:d392 with SMTP id
+ d185-20020a254fc2000000b006beafb4d392mr20469390ybb.604.1665475852958; Tue, 11
+ Oct 2022 01:10:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <20221010201453.77401-3-andriy.shevchenko@linux.intel.com> <Y0SyVwjDl7NGfTPn@sol>
-In-Reply-To: <Y0SyVwjDl7NGfTPn@sol>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 11 Oct 2022 11:05:42 +0300
-Message-ID: <CAHp75Vf4oS8g0zxgismtLrzsJ7AE-bdMEq+GAzx2=Mwnhuk3UA@mail.gmail.com>
-Subject: Re: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
-To: Kent Gibson <warthog618@gmail.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier <maz@kernel.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Billy Tsai <billy_tsai@aspeedtech.com>, Thomas Gleixner <tglx@linutronix.de>, 
-	Linus Walleij <linus.walleij@linaro.org>, 
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <20221010201453.77401-20-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20221010201453.77401-20-andriy.shevchenko@linux.intel.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 11 Oct 2022 10:10:37 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdUMLEpZrEU0EviCRqRB9tX4iNGAVx2XPR5KbCMGWZetAQ@mail.gmail.com>
+Message-ID: <CAMuHMdUMLEpZrEU0EviCRqRB9tX4iNGAVx2XPR5KbCMGWZetAQ@mail.gmail.com>
+Subject: Re: [PATCH v2 19/36] pinctrl: renesas: Add missed header(s)
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Billy Tsai <billy_tsai@aspeedtech.com>, 
+	Thomas Gleixner <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>, 
 	Mika Westerberg <mika.westerberg@linux.intel.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
 	Claudiu Beznea <claudiu.beznea@microchip.com>, Samuel Holland <samuel@sholland.org>, 
 	Horatiu Vultur <horatiu.vultur@microchip.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
 	Bjorn Andersson <bjorn.andersson@linaro.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, 
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
 	Phil Edworthy <phil.edworthy@renesas.com>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
@@ -119,8 +114,8 @@ Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier <maz@kerne
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_010623_383064_A881DC0A 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20221011_011103_286047_9B7CCE6D 
+X-CRM114-Status: GOOD (  17.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,39 +130,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 3:02 AM Kent Gibson <warthog618@gmail.com> wrote:
-> On Mon, Oct 10, 2022 at 11:14:18PM +0300, Andy Shevchenko wrote:
-
-...
-
-> > -#include <linux/gpio.h>
-> >  #include <linux/gpio/driver.h>
-> > +#include <linux/gpio.h>
-> > +#include <linux/hte.h>
+On Mon, Oct 10, 2022 at 10:15 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> Do not imply that some of the generic headers may be always included.
+> Instead, include explicitly what we are direct user of.
 >
-> Ok with the hte re-order.
+> While at it, sort headers alphabetically.
 >
-> But moving the gpio subsystem header after the gpio/driver is not
-> alphabetical ('.' precedes '/') and it read better and made more sense
-> to me the way it was.
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-I see, I guess this is vim sort vs shell sort. Strange, they should
-follow the locale settings...
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-...
+Gr{oetje,eeting}s,
 
-> > +#include <linux/seq_file.h>
->
-> I wasn't aware that we use anything from seq_file.
-> What am I missing?
-
-I will recheck, because in v6.0 I don't see anything, but LKP was not
-okay with something IIRC.
-
-
-
+                        Geert
 
 --
-With Best Regards,
-Andy Shevchenko
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
