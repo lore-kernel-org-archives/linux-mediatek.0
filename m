@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AB6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 10:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96ADBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 10:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IF1lyTj657Ib1k58iymz6y8lpEzBDXiL9Hcq5Rkjqp4=; b=34XfB1wHpQrOKnl5UQQOJ4fREa
-	K1sYIZWSoDt9vP/zNC/X/RTStlFac45RIOMsWxA0RFmPRhllGtBZJS6XTnqhfRnfIb5I6RmaeXgYb
-	LC+f5mJ0VeS2RAIaLTSuZjP/hKMS/4q1alPTzPEvnUReTTns864C0E8krwBNW9y58biPTNpJzKE12
-	kIcLlyWlbd0rFsQFYDw60lsoj32oAK+bIUESLzHfmgr9yRLNRJ/6kjwV6VfHnZDiJHjgdQhZIKEEY
-	Scpio6QH19pBwUcvcaPsIkklaw1CZsKE3NLvMbJdL7pPID/9SVPiGYeG+t0fJfWDMi/w2X0GxHvJa
-	J8CPfCew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AcvorbeO7IeezbFs7GQqmszANLwT9CFP0PPWa4yQhSY=; b=Co3tHC4EkQ4pOCqwNf7Eg7BfMa
+	+X66ITGUaJZqsDhSAUdbB8mRMa8G841rlc+gcfYbzHytfK0chjD2DRqesT9hwnT0kQFM4avY/g0sd
+	vfYL6eE0LYVxTOVHm5jLt5UvDyoo5OU/PPf1wPvmUGz3xim6fZeYZsrTjrmEmKzS4jRYbUyHc/wBQ
+	0aAMJhoN7ACzItjuNfQfJF/ZiX4KbV/T/8DvVq4AOBOQ4aK1qBMUyMR0NNCOeQlEYza9zstptDidJ
+	m4B5RWYgNPKuO8boC5bVsEY5FFPYBcFCUvq8r//B/6L0H05MusZi0OlrO6Q+lIqWUJWVD/coZePTx
+	ErrngQ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiCD7-003y59-89; Tue, 11 Oct 2022 10:10:05 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oiCcj-0041Fy-Ea; Tue, 11 Oct 2022 10:36:33 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiCCL-003xkR-De; Tue, 11 Oct 2022 10:09:18 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1oiCcX-0041Dv-V9; Tue, 11 Oct 2022 10:36:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A30756602356;
-	Tue, 11 Oct 2022 11:09:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665482956;
-	bh=KheL8efT8Q96RJOrwtrfyrYEayKrb6iY+HjU4M1eBgc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jqKA6J73hIKrKBEqpcEJcrdREuyXUU5x/u6yBt8FzQAFAQ09wq0+7LIIaHtSrknfn
-	 yx8RoLy+0ftvaDrzjzI/aww7kiVRy65tFqrhu22T9zn5qv42su1GjwVIF8xHBq9yaI
-	 uzTafVxfA6HQq90mcefcqHKzXemNg9UTeOjyl1qDX59BpwTigHsXW4CiZ9VhYbvYwT
-	 USWMdHktLCCpH02ReXVpJCUTgLjMEKO485KYWOciySUC90pQVvtYkHvt4lI+K+RfWt
-	 KDI2/Ee0kmOhg0+E8Lhmj0o3a7WaTsh5/Lzm69miFYeCt4F88Dm2ZyDdr93DxnPdDY
-	 bjN2Nu3hcvQBA==
-Message-ID: <a7831463-c4a3-d89e-3f33-fbf00441b517@collabora.com>
-Date: Tue, 11 Oct 2022 12:09:13 +0200
+	by ams.source.kernel.org (Postfix) with ESMTPS id 02BDFB8124F;
+	Tue, 11 Oct 2022 10:36:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86D46C433C1;
+	Tue, 11 Oct 2022 10:36:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1665484577;
+	bh=AcvorbeO7IeezbFs7GQqmszANLwT9CFP0PPWa4yQhSY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XScz9NDzzIDweBEQWQD6uEatQsLYoKNf0V2UUAz2Ok8Vh+bpNmD5bHaErD5CDQJ0z
+	 +A8MwfoSbbgfkfVagPurQwVWzBaBDkBr1Po5IklakKfXI7qc2a3O4dRXyfWvke+eZz
+	 vu+HXDH+Mltm90I8gKbr6jDua8NFm3FQxU5FKz9mgA1+CC3Jy/591280vpYuUb3aee
+	 l3DAZh3esPC9S+P+5u+hZOnHi1Jf8mGdnImnKZFGH+1K/VCZDwsum4QOIOKICYbp+a
+	 ChGvxntxgOXD0nEEABwPgkmunMwXZx70XwQYwJDjfvsxqnveR6VRg5XFUfcWRGfbzq
+	 EK8gnpHkbj2zw==
+Date: Tue, 11 Oct 2022 11:36:10 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: krzysztof.kozlowski@linaro.org, chen.zhong@mediatek.com,
+	devicetree@vger.kernel.org, dmitry.torokhov@gmail.com,
+	fparent@baylibre.com, krzysztof.kozlowski+dt@linaro.org,
+	lee@kernel.org, lgirdwood@gmail.com,
+	linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com, robh+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH v2 3/5] dt-bindings: regulator: Add binding schema for
+ mt6357 regulators
+Message-ID: <Y0VHGh/GavvuZY2A@sirena.org.uk>
+References: <cdb4e9f7-c7b3-3a1f-bf61-e42bdb021570@linaro.org>
+ <972ba839-2fd3-2b45-3477-0c7e3d32f149@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 6/7] soc: mediatek: mutex: Add mtk_mutex_set_mod
- support to set MOD1
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
-References: <20221011070356.682-1-moudy.ho@mediatek.com>
- <20221011070356.682-7-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221011070356.682-7-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Qy+sdSDVmD8xz5a1"
+Content-Disposition: inline
+In-Reply-To: <972ba839-2fd3-2b45-3477-0c7e3d32f149@baylibre.com>
+X-Cookie: I had pancake makeup for brunch!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_030917_637621_E679152A 
-X-CRM114-Status: UNSURE (   7.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221011_033622_189254_A9DD71C5 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,15 +79,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/10/22 09:03, Moudy Ho ha scritto:
-> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
-> 
-> Add mtk_mutex_set_mod support to set MOD1
-> 
-> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--Qy+sdSDVmD8xz5a1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Tue, Oct 11, 2022 at 11:30:58AM +0200, Alexandre Mergnat wrote:
 
+> > Why enforcing particular name of the regulator?
+
+> The regulator names are forced to match with the datasheet names.
+
+> I think it's a good practice to increase visibility between HW & SW.
+
+> Also, that keep consistency with other Mediatek PMIC schema.
+
+No, this is bad practice which completely misses the point of what the
+names are for and the other Mediatek drivers are broken.
+
+--Qy+sdSDVmD8xz5a1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmNFRxkACgkQJNaLcl1U
+h9DNVAf+IAfeWJtE4IzcYAbU8KiaUeVALAXjWr2ios39H9Rp6rmG3HbUm0Hn4YQ7
+z6mOZsA/dxM0GBcC+0E4GaJBb9nPdNcsm5he5cnG53JCzLZEli8b5hd+d4vrhtai
+PSNcNlwd5gr4bBnISeOXqsmHy1VvwkGpJuo84sA4Rre//0tocfPmJX8i+tINms4k
+MfSgehyBSxsGwFFwxo8sxFrR/mP1zsTe+XQKZ/pPaQHI/2/OfxSuUzn8qtCI3g1X
+ySN2o41nmq+Jg7CWmAXQnQuTa5b3CBGW0bCRb6x728A/+VSHaNKp4fU4VcfalpeW
+LDQ7MYIWTvgZK3ffGffopei5AOipng==
+=QZoS
+-----END PGP SIGNATURE-----
+
+--Qy+sdSDVmD8xz5a1--
 
