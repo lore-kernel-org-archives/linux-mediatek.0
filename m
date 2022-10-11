@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D95C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 07:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BEEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 07:05:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vgyP3iJSMe9TwBKbKheoFtjDlfAFaGgHy8h/DUtQK6k=; b=Dlf0hokfcQ8a65UbPZbgAkDVHb
-	qtW25DEeoXphrLwJK/CnL0MftndXKRwrjjOF6dVRHmEosvb8tUVO03ErMxEQPM54PZK1PzZHxwC+f
-	e0HL2iyJe5dMd+CfDVjOuJS6w+bQzV1H71lZuTPUG5n7GLKtjf/QzLkVINRKFrcydieqxIhwkskbM
-	mCLagpp02UCgJBVSeSH2C70OTLdJF7q/nKqqdjt9BUPwyl8f8B8zqNemOU4ZYRlChoxW0TH10iPpu
-	UCLa/o3PzqK1splM0r3iXHaMZ8mpI0ooG1YGEf+GDeT2TGcxQ+v8Mp5MhKmAR1U+wEsH8v16jCLlL
-	va8Bve0Q==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HAnStwuh/USxxVw5ovj/NYfBOPW/SyClHWgRtGSt3Mw=; b=bSR3SOUh9dKn9PeVjXnZd9PPMU
+	YK0ycWtaI5K0U4hzq1irqYb2rGzENSYSqqO9n+2Z/ijIp+0Z/zRTJpNn68J4JKfiFr03NEbNTpwsP
+	fMDKIG4gu06JYm4eE8vmD2igJQo5TE2b41RxEjJHXLzWIWuSmtW10f9BZKEfiuUQ4VU2ySjH3gkL4
+	Ux1O2sVOoEM8/U6thZv6HdscgpIX+NKGLokiTKVmCs7FBePXK02FlS4JRhEOzK27giIlprtXweyAU
+	ZdecsxPfpCK4dCO1XmBiaVvBP5Z+M6lFcZlXYid8K/CCILtlrauyk2vykw3QEZ2eylDjeGeM1f8nD
+	x8LChPXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi9Jw-003Wcy-4q; Tue, 11 Oct 2022 07:04:56 +0000
+	id 1oi9Jw-003WdD-Sx; Tue, 11 Oct 2022 07:04:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi9Jb-003WWc-4c; Tue, 11 Oct 2022 07:04:36 +0000
-X-UUID: 0b22ea992bfd49ff84eba9c74e6670ad-20221011
+	id 1oi9Ja-003WXB-Qv; Tue, 11 Oct 2022 07:04:36 +0000
+X-UUID: c6619bcec5f44e7da9844a9b4ecc97d0-20221011
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=vgyP3iJSMe9TwBKbKheoFtjDlfAFaGgHy8h/DUtQK6k=;
-	b=sXh6vLHT52FSryzxa0SZw6NMmKLeFS9NmpyERvqyikVoI6pc8CvinNlzTx3zKB1SGgLKS8tuzzMb4PSDU779l3Z975RmRya22DNPFrO+QX6yXyoXrX6HWnFegs5kAJfDcSQBtZOlSyTnGuCzf5J9cbAMX3DafxnzsN0+70gbVg0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HAnStwuh/USxxVw5ovj/NYfBOPW/SyClHWgRtGSt3Mw=;
+	b=clz78d1vGlJujUIZvYqwBRp2B0IY6BzUUtdlMpvoSAaao4GvA+F/Mkt6Fstfh3FvAuTHf3ghwF1lekaNUTIOPDNCvO/zSvzZXuFO5flTtJkP2pPp/AE3Gk6AISEFe3zGTZ40X8PVwSmtUFfck8OqMuyXGU8dyaHzt3OD1+h1SAo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:0201792d-daa7-4e71-b498-a2068bc198cf,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.11,REQID:0201792d-daa7-4e71-b498-a2068bc198cf,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:39a5ff1,CLOUDID:f63187e1-2948-402a-a6e4-b5d31fe11eb7,B
-	ulkID:221011150405ATPYTWQ8,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 0b22ea992bfd49ff84eba9c74e6670ad-20221011
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.11,REQID:3b57e6ab-f911-4732-8b5c-4a7af0f7e228,IP:0,U
+	RL:0,TC:0,Content:34,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:34
+X-CID-META: VersionHash:39a5ff1,CLOUDID:a4f91501-cdeb-479d-93af-53f947adce9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c6619bcec5f44e7da9844a9b4ecc97d0-20221011
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 580160139; Tue, 11 Oct 2022 00:04:02 -0700
+	with ESMTP id 807654056; Tue, 11 Oct 2022 00:04:06 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 11 Oct 2022 15:03:57 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 11 Oct 2022 15:03:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 11 Oct 2022 15:03:56 +0800
+ Transport; Tue, 11 Oct 2022 15:03:58 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
@@ -58,18 +55,20 @@ To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<chunkuang.hu@kernel.org>
 CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v2 0/7] add support for MT8195 VPPSYS on MMSYS and MUTEX
-Date: Tue, 11 Oct 2022 15:03:49 +0800
-Message-ID: <20221011070356.682-1-moudy.ho@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
+	<roy-cw.yeh@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v2 7/7] soc: mediatek: mutex: support MT8195 VPPSYS
+Date: Tue, 11 Oct 2022 15:03:56 +0800
+Message-ID: <20221011070356.682-8-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221011070356.682-1-moudy.ho@mediatek.com>
+References: <20221011070356.682-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_000435_208434_50B9EE3D 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20221011_000434_898260_9A84C38A 
+X-CRM114-Status: GOOD (  10.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +83,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes since v1:
-- Depend on :
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=681097
-- Add compatible names to VPPSYS0 and VPPSYS1 in MMSYS binding file.
-- Fix VPPSYS's MMSYS and MUTEX dts to pass the dtsb_check.
-- Rename mtk_mmsys_merge_config() and mtk_mmsys_rsz_dcm_config() to
-  mtk_mmsys_vpp_rsz_merge_config() and mtk_mmsys_vpp_rsz_dcm_config().
-- Clean up mtk_mmsys_vpp_rsz_dcm_config().
-- Add a comment to mtk_mutex_write_mod() and clean it up for use in more
-  than 32 mods.
+From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Hi,
+Add MT8195 VPPSYS0 and VPPSYS1 mutex info to driver data
 
-This series add support for MT8195's two VPPSYS(Video Processor Pipe Subsystem),
-under which there will be corresponding MMSYS and MUTEX settings that
-need to be configured.
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c       | 102 +++++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk-mutex.h |  35 +++++++++
+ 2 files changed, 137 insertions(+)
 
-Moudy Ho (1):
-  dt-bindings: arm: mediatek: mmsys: Add support for MT8195 VPPSYS
-
-Roy-CW.Yeh (6):
-  dt-bindings: soc: mediatek: Add support for MT8195 VPPSYS
-  dts: arm64: mt8195: add MMSYS and MUTEX configuration for VPPSYS
-  soc: mediatek: mmsys: add support for MT8195 VPPSYS
-  soc: mediatek: mmsys: add config api for RSZ switching and DCM
-  soc: mediatek: mutex: Add mtk_mutex_set_mod support to set MOD1
-  soc: mediatek: mutex: support MT8195 VPPSYS
-
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |   5 +-
- .../bindings/soc/mediatek/mediatek,mutex.yaml |   1 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  30 +++-
- drivers/soc/mediatek/mt8195-mmsys.h           |  13 ++
- drivers/soc/mediatek/mtk-mmsys.c              |  64 +++++++++
- drivers/soc/mediatek/mtk-mmsys.h              |   1 +
- drivers/soc/mediatek/mtk-mutex.c              | 135 +++++++++++++++++-
- include/linux/soc/mediatek/mtk-mmsys.h        |   4 +
- include/linux/soc/mediatek/mtk-mutex.h        |  35 +++++
- 9 files changed, 276 insertions(+), 12 deletions(-)
-
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index a2be15a5c93a..86b9372080c4 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -131,6 +131,53 @@
+ #define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
+ #define MT8195_MUTEX_MOD_DISP_PWM0		27
+ 
++/* VPPSYS0 */
++#define MT8195_MUTEX_MOD_MDP_RDMA0             0
++#define MT8195_MUTEX_MOD_MDP_FG0               1
++#define MT8195_MUTEX_MOD_MDP_STITCH0           2
++#define MT8195_MUTEX_MOD_MDP_HDR0              3
++#define MT8195_MUTEX_MOD_MDP_AAL0              4
++#define MT8195_MUTEX_MOD_MDP_RSZ0              5
++#define MT8195_MUTEX_MOD_MDP_TDSHP0            6
++#define MT8195_MUTEX_MOD_MDP_COLOR0            7
++#define MT8195_MUTEX_MOD_MDP_OVL0              8
++#define MT8195_MUTEX_MOD_MDP_PAD0              9
++#define MT8195_MUTEX_MOD_MDP_TCC0              10
++#define MT8195_MUTEX_MOD_MDP_WROT0             11
++
++/* VPPSYS1 */
++#define MT8195_MUTEX_MOD_MDP_TCC1              3
++#define MT8195_MUTEX_MOD_MDP_RDMA1             4
++#define MT8195_MUTEX_MOD_MDP_RDMA2             5
++#define MT8195_MUTEX_MOD_MDP_RDMA3             6
++#define MT8195_MUTEX_MOD_MDP_FG1               7
++#define MT8195_MUTEX_MOD_MDP_FG2               8
++#define MT8195_MUTEX_MOD_MDP_FG3               9
++#define MT8195_MUTEX_MOD_MDP_HDR1              10
++#define MT8195_MUTEX_MOD_MDP_HDR2              11
++#define MT8195_MUTEX_MOD_MDP_HDR3              12
++#define MT8195_MUTEX_MOD_MDP_AAL1              13
++#define MT8195_MUTEX_MOD_MDP_AAL2              14
++#define MT8195_MUTEX_MOD_MDP_AAL3              15
++#define MT8195_MUTEX_MOD_MDP_RSZ1              16
++#define MT8195_MUTEX_MOD_MDP_RSZ2              17
++#define MT8195_MUTEX_MOD_MDP_RSZ3              18
++#define MT8195_MUTEX_MOD_MDP_TDSHP1            19
++#define MT8195_MUTEX_MOD_MDP_TDSHP2            20
++#define MT8195_MUTEX_MOD_MDP_TDSHP3            21
++#define MT8195_MUTEX_MOD_MDP_MERGE2            22
++#define MT8195_MUTEX_MOD_MDP_MERGE3            23
++#define MT8195_MUTEX_MOD_MDP_COLOR1            24
++#define MT8195_MUTEX_MOD_MDP_COLOR2            25
++#define MT8195_MUTEX_MOD_MDP_COLOR3            26
++#define MT8195_MUTEX_MOD_MDP_OVL1              27
++#define MT8195_MUTEX_MOD_MDP_PAD1              28
++#define MT8195_MUTEX_MOD_MDP_PAD2              29
++#define MT8195_MUTEX_MOD_MDP_PAD3              30
++#define MT8195_MUTEX_MOD_MDP_WROT1             31
++#define MT8195_MUTEX_MOD_MDP_WROT2             32
++#define MT8195_MUTEX_MOD_MDP_WROT3             33
++
+ #define MT8365_MUTEX_MOD_DISP_OVL0		7
+ #define MT8365_MUTEX_MOD_DISP_OVL0_2L		8
+ #define MT8365_MUTEX_MOD_DISP_RDMA0		9
+@@ -375,6 +422,52 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DP_INTF0] = MT8195_MUTEX_MOD_DISP_DP_INTF0,
+ };
+ 
++static const unsigned int mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
++	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
++	[MUTEX_MOD_IDX_MDP_RDMA1] = MT8195_MUTEX_MOD_MDP_RDMA1,
++	[MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
++	[MUTEX_MOD_IDX_MDP_RDMA3] = MT8195_MUTEX_MOD_MDP_RDMA3,
++	[MUTEX_MOD_IDX_MDP_STITCH0] = MT8195_MUTEX_MOD_MDP_STITCH0,
++	[MUTEX_MOD_IDX_MDP_FG0] = MT8195_MUTEX_MOD_MDP_FG0,
++	[MUTEX_MOD_IDX_MDP_FG1] = MT8195_MUTEX_MOD_MDP_FG1,
++	[MUTEX_MOD_IDX_MDP_FG2] = MT8195_MUTEX_MOD_MDP_FG2,
++	[MUTEX_MOD_IDX_MDP_FG3] = MT8195_MUTEX_MOD_MDP_FG3,
++	[MUTEX_MOD_IDX_MDP_HDR0] = MT8195_MUTEX_MOD_MDP_HDR0,
++	[MUTEX_MOD_IDX_MDP_HDR1] = MT8195_MUTEX_MOD_MDP_HDR1,
++	[MUTEX_MOD_IDX_MDP_HDR2] = MT8195_MUTEX_MOD_MDP_HDR2,
++	[MUTEX_MOD_IDX_MDP_HDR3] = MT8195_MUTEX_MOD_MDP_HDR3,
++	[MUTEX_MOD_IDX_MDP_AAL0] = MT8195_MUTEX_MOD_MDP_AAL0,
++	[MUTEX_MOD_IDX_MDP_AAL1] = MT8195_MUTEX_MOD_MDP_AAL1,
++	[MUTEX_MOD_IDX_MDP_AAL2] = MT8195_MUTEX_MOD_MDP_AAL2,
++	[MUTEX_MOD_IDX_MDP_AAL3] = MT8195_MUTEX_MOD_MDP_AAL3,
++	[MUTEX_MOD_IDX_MDP_RSZ0] = MT8195_MUTEX_MOD_MDP_RSZ0,
++	[MUTEX_MOD_IDX_MDP_RSZ1] = MT8195_MUTEX_MOD_MDP_RSZ1,
++	[MUTEX_MOD_IDX_MDP_RSZ2] = MT8195_MUTEX_MOD_MDP_RSZ2,
++	[MUTEX_MOD_IDX_MDP_RSZ3] = MT8195_MUTEX_MOD_MDP_RSZ3,
++	[MUTEX_MOD_IDX_MDP_MERGE2] = MT8195_MUTEX_MOD_MDP_MERGE2,
++	[MUTEX_MOD_IDX_MDP_MERGE3] = MT8195_MUTEX_MOD_MDP_MERGE3,
++	[MUTEX_MOD_IDX_MDP_TDSHP0] = MT8195_MUTEX_MOD_MDP_TDSHP0,
++	[MUTEX_MOD_IDX_MDP_TDSHP1] = MT8195_MUTEX_MOD_MDP_TDSHP1,
++	[MUTEX_MOD_IDX_MDP_TDSHP2] = MT8195_MUTEX_MOD_MDP_TDSHP2,
++	[MUTEX_MOD_IDX_MDP_TDSHP3] = MT8195_MUTEX_MOD_MDP_TDSHP3,
++	[MUTEX_MOD_IDX_MDP_COLOR0] = MT8195_MUTEX_MOD_MDP_COLOR0,
++	[MUTEX_MOD_IDX_MDP_COLOR1] = MT8195_MUTEX_MOD_MDP_COLOR1,
++	[MUTEX_MOD_IDX_MDP_COLOR2] = MT8195_MUTEX_MOD_MDP_COLOR2,
++	[MUTEX_MOD_IDX_MDP_COLOR3] = MT8195_MUTEX_MOD_MDP_COLOR3,
++	[MUTEX_MOD_IDX_MDP_OVL0] = MT8195_MUTEX_MOD_MDP_OVL0,
++	[MUTEX_MOD_IDX_MDP_OVL1] = MT8195_MUTEX_MOD_MDP_OVL1,
++	[MUTEX_MOD_IDX_MDP_PAD0] = MT8195_MUTEX_MOD_MDP_PAD0,
++	[MUTEX_MOD_IDX_MDP_PAD1] = MT8195_MUTEX_MOD_MDP_PAD1,
++	[MUTEX_MOD_IDX_MDP_PAD2] = MT8195_MUTEX_MOD_MDP_PAD2,
++	[MUTEX_MOD_IDX_MDP_PAD3] = MT8195_MUTEX_MOD_MDP_PAD3,
++	[MUTEX_MOD_IDX_MDP_TCC0] = MT8195_MUTEX_MOD_MDP_TCC0,
++	[MUTEX_MOD_IDX_MDP_TCC1] = MT8195_MUTEX_MOD_MDP_TCC1,
++	[MUTEX_MOD_IDX_MDP_WROT0] = MT8195_MUTEX_MOD_MDP_WROT0,
++	[MUTEX_MOD_IDX_MDP_WROT1] = MT8195_MUTEX_MOD_MDP_WROT1,
++	[MUTEX_MOD_IDX_MDP_WROT2] = MT8195_MUTEX_MOD_MDP_WROT2,
++	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
++};
++
+ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
+ 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
+@@ -520,6 +613,13 @@ static const struct mtk_mutex_data mt8195_mutex_driver_data = {
+ 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
+ };
+ 
++static const struct mtk_mutex_data mt8195_vpp_mutex_driver_data = {
++	.mutex_sof = mt8195_mutex_sof,
++	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
++	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
++	.mutex_table_mod = mt8195_mutex_table_mod,
++};
++
+ static const struct mtk_mutex_data mt8365_mutex_driver_data = {
+ 	.mutex_mod = mt8365_mutex_mod,
+ 	.mutex_sof = mt8183_mutex_sof,
+@@ -877,6 +977,8 @@ static const struct of_device_id mutex_driver_dt_match[] = {
+ 	  .data = &mt8192_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8195-disp-mutex",
+ 	  .data = &mt8195_mutex_driver_data},
++	{ .compatible = "mediatek,mt8195-vpp-mutex",
++	  .data = &mt8195_vpp_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8365-disp-mutex",
+ 	  .data = &mt8365_mutex_driver_data},
+ 	{},
+diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
+index b335c2837cd8..635218e3ac68 100644
+--- a/include/linux/soc/mediatek/mtk-mutex.h
++++ b/include/linux/soc/mediatek/mtk-mutex.h
+@@ -22,6 +22,41 @@ enum mtk_mutex_mod_index {
+ 	MUTEX_MOD_IDX_MDP_CCORR0,
+ 	MUTEX_MOD_IDX_MDP_HDR0,
+ 	MUTEX_MOD_IDX_MDP_COLOR0,
++	MUTEX_MOD_IDX_MDP_RDMA1,
++	MUTEX_MOD_IDX_MDP_RDMA2,
++	MUTEX_MOD_IDX_MDP_RDMA3,
++	MUTEX_MOD_IDX_MDP_STITCH0,
++	MUTEX_MOD_IDX_MDP_FG0,
++	MUTEX_MOD_IDX_MDP_FG1,
++	MUTEX_MOD_IDX_MDP_FG2,
++	MUTEX_MOD_IDX_MDP_FG3,
++	MUTEX_MOD_IDX_MDP_HDR1,
++	MUTEX_MOD_IDX_MDP_HDR2,
++	MUTEX_MOD_IDX_MDP_HDR3,
++	MUTEX_MOD_IDX_MDP_AAL1,
++	MUTEX_MOD_IDX_MDP_AAL2,
++	MUTEX_MOD_IDX_MDP_AAL3,
++	MUTEX_MOD_IDX_MDP_RSZ2,
++	MUTEX_MOD_IDX_MDP_RSZ3,
++	MUTEX_MOD_IDX_MDP_MERGE2,
++	MUTEX_MOD_IDX_MDP_MERGE3,
++	MUTEX_MOD_IDX_MDP_TDSHP1,
++	MUTEX_MOD_IDX_MDP_TDSHP2,
++	MUTEX_MOD_IDX_MDP_TDSHP3,
++	MUTEX_MOD_IDX_MDP_COLOR1,
++	MUTEX_MOD_IDX_MDP_COLOR2,
++	MUTEX_MOD_IDX_MDP_COLOR3,
++	MUTEX_MOD_IDX_MDP_OVL0,
++	MUTEX_MOD_IDX_MDP_OVL1,
++	MUTEX_MOD_IDX_MDP_PAD0,
++	MUTEX_MOD_IDX_MDP_PAD1,
++	MUTEX_MOD_IDX_MDP_PAD2,
++	MUTEX_MOD_IDX_MDP_PAD3,
++	MUTEX_MOD_IDX_MDP_TCC0,
++	MUTEX_MOD_IDX_MDP_TCC1,
++	MUTEX_MOD_IDX_MDP_WROT1,
++	MUTEX_MOD_IDX_MDP_WROT2,
++	MUTEX_MOD_IDX_MDP_WROT3,
+ 
+ 	MUTEX_MOD_IDX_MAX		/* ALWAYS keep at the end */
+ };
 -- 
 2.18.0
 
