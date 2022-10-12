@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EA4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 14:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 519E2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 15:18:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=spzm7Cs1eek2H5bwQRZ/Cfef+gM8Aq4i4OZ8nQ3gMtI=; b=s8ApkM+kZRwIyt60AQUwmteerJ
-	f8qk8VMwLiDHkmhuKppn31u6WTRTwTI3MyxuoWJ/gKqYEyzbbUIjYeRvdFHhNSrIqNug1+v2CWKBR
-	Il50rIUT5gCdyzfjBaBZI8bDq1Cw3BLXVFNNzH79U5+YVJJ4+RYdbX5PeUNVfymAI5yx09cZYXr44
-	wiBNo5SEZmklVVYQjegFnof8JwmWSKE05qPzD0a3pRgvxS1A0YUmnvtLqYZj7ggJhY9e2uKH0UXJN
-	BvUpYRydiQEhfjX58mBFuo3b+RBKl9xsTDhDw4yDXVrdKnqjqI5IutAeEDCbaolwRobJYns1LeYK/
-	6MPDQqcg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cdmzbBlQTD2oHVxg3pZCibywtUisbVjpQLXyuN+hiBw=; b=p3OR03K/IIwWjTxd4jqGzn/x5r
+	BWSZneDo1NqET9wAwUP0BUqeReKSKYz9jSFVAhSnqlWth0BkoVWC3j9vhx6H0YiDRQT6TWmsW6YgI
+	pqJfl3dceuODoAMjk8tETErogBle+cnYV1TMh3UKnWYALhNgo9Tua7alP2lwTbJPRtQvNW6eftKbS
+	Wgyo/DvzShtCL/q9wPTC+YCgm/ZUS3t9QIPTzNsyNrw1cCfWVqyF/KElEJjstt5JUGwaAuZQFBtdx
+	vyISXHIzsmyAFCsnHT8X3eCAWrPqfOcuKXVmlGV6ZSZD0YSU1Tcw6+w6ROy/5v5AmxhPQKBKjRGA1
+	SzbF5ceg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oicwq-008QmZ-Kn; Wed, 12 Oct 2022 14:43:04 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1oidUb-008VXq-92; Wed, 12 Oct 2022 15:17:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oicwm-008Ql4-KV; Wed, 12 Oct 2022 14:43:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665585780; x=1697121780;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=1qyW+GVUGeVRfhRVj7Mv0CU2cbdZUrFTiwU1yJb/dTg=;
-  b=iGX3mEtSfvY40FVYvrltL6yI3VHVIob2wJxLdmjVjmVwDE9nUv/g6PJ4
-   SA0GLS/E0Zq51fAc4dC74YXfe9i5T7BFkF0sHm8EOiqYRD7egxmk153WP
-   b5MmIxVevlNiD+2d4tfvzXzLsSoWZsjdyCe4QTB3XLu9F3L5kD33qM1wj
-   W3CYXkKchi+kpIV2wLbVnhGCKiphy33HoA8UwPwNTULOfdsU0srWL9ykX
-   CK5ccTEUIRz4SGeWCgy1t6ndDdGjHjAyWL+z0nvbeEyHWOCs/xiMQz3bL
-   hsK3EioJtZaiOm2923CYIXU6kpC62ITQODOVKxkY9oAcAxxAwYa8ReTqJ
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="368977891"
-X-IronPort-AV: E=Sophos;i="5.95,179,1661842800"; 
-   d="scan'208";a="368977891"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2022 07:42:31 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="659953331"
-X-IronPort-AV: E=Sophos;i="5.95,179,1661842800"; 
-   d="scan'208";a="659953331"
-Received: from lkp-server01.sh.intel.com (HELO 2af0a69ca4e0) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 12 Oct 2022 07:42:28 -0700
-Received: from kbuild by 2af0a69ca4e0 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oicwG-0003u0-01;
-	Wed, 12 Oct 2022 14:42:28 +0000
-Date: Wed, 12 Oct 2022 22:41:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: ntfs3@lists.linux.dev, loongarch@lists.linux.dev,
- linux-mm@kvack.org, linux-mediatek@lists.infradead.org,
- linux-ext4@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- f843795727e4f5612c612cd178db1557978da742
-Message-ID: <6346d21a.rLmYiYOU73PR5G14%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1oidSy-008Ueu-LT
+	for linux-mediatek@lists.infradead.org; Wed, 12 Oct 2022 15:16:18 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 43225660037C;
+	Wed, 12 Oct 2022 16:16:11 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665587771;
+	bh=3+fGB/65ejU9q7GUMaC7sKOP/HgDUmBA+dw0IyewzE8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SoIIVHoaco8/OyxxveuNgb9Lhyv/OXfpquRyrU9psOC7prSoAY3gUmq9UzEAu55n1
+	 j2HTt7VI3X+uxfm046LpPTIOxOzDVZBN+zhUD87pM0+uLwy6G6SKl/k5KHt6UcM+vP
+	 VFJ3Qr63T39gi+onlgO6E2sY9KLAaiGpH09Y1UFeTelbiukOw7uIi1bHoF+xLTv7l5
+	 T/NLbNYiPo9GitAyk2p7bA4GXu7QFQlDC9hJm7hwa+SyBjUob2kxmk4nVIfpLU9V+y
+	 zS7G6VQ37QRY3jf+mQpi4lNXh7xY7K003R/IDN+gK6JIcwlxzObILR2BWdqT6e0tjz
+	 MYXV/Tphx/FuQ==
+Message-ID: <163306ba-09a1-3b27-0c0d-5bafc871f7dc@collabora.com>
+Date: Wed, 12 Oct 2022 17:16:08 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RESEND PATCH v2] drm/mediatek: Add AFBC support to Mediatek DRM
+ driver
+Content-Language: en-US
+To: Justin Green <greenjustin@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ jason-jh.lin@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ airlied@linux.ie, matthias.bgg@gmail.com, wenst@chromium.org,
+ justin.yeh@mediatek.com, daniel@ffwll.ch
+References: <20221010150157.1864492-1-greenjustin@google.com>
+ <664e32dc-3f91-48ae-64a1-6dcecc9dfb5b@collabora.com>
+ <CAHC42Rf7o61NF3LNQkm4BFcBHMKEP2np3sZMvM7KYczCsurHKA@mail.gmail.com>
+ <6548c0ea-d1c0-2de2-99b6-4cfc27e8b938@collabora.com>
+ <CAHC42RfKROmaPTkf73eCuU7CV3YhhxyCVEp9UA94XNjMfSzLAQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAHC42RfKROmaPTkf73eCuU7CV3YhhxyCVEp9UA94XNjMfSzLAQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_074300_845116_970BDE90 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221012_081617_211503_A6240FF7 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,241 +81,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: f843795727e4f5612c612cd178db1557978da742  Add linux-next specific files for 20221012
+Il 12/10/22 16:12, Justin Green ha scritto:
+>> These would be different from the macros that are available in bitfield.h, but
+>> not *fundamentally* different, so these would look a little redundant...
+>>
+>> I think that you refer to that `pitch` variable that's coming from the DRM(/fb)
+>> API... and bitfield macros are for register access... so I guess that one clean
+>> way of avoiding the magic shifting (that is purely used to split the 32-bits
+>> number in two 16-bits 'chunks') would be to perhaps use a union, so that you
+>> will have something like u.pitch_lsb, u.pitch_msb (with lsb/msb being two u16).
+> 
+> Do you mean something like this?
+> 
+> union pitch_val {
+>       struct split_pitch_val {
+>            uint16_t lsb;
+>            uint16_t msb;
+>       } split;
+>       uint32_t val;
+> };
+> 
+> I think my concern with that approach would be it assumes the compiler
+> packs structs tightly and it also assumes the endianness of the
+> machine, whereas a bitshift is maybe more portable. Is this an issue
+> worth considering since we know this driver will only run on specific
+> MTK SoCs?
 
-Error/Warning reports:
-
-https://lore.kernel.org/linux-mm/202210090954.pTR6m6rj-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210110857.9s0tXVNn-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210111318.mbUfyhps-lkp@intel.com
-https://lore.kernel.org/llvm/202210122108.67op7Ykg-lkp@intel.com
-
-Error/Warning: (recently discovered and may have been fixed)
-
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/fsl-edma.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/idma64.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/qcom/hdma.ko] undefined!
-ERROR: modpost: "devm_memremap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_memunmap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_platform_ioremap_resource" [drivers/char/xillybus/xillybus_of.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-arch/arm64/kernel/alternative.c:199:6: warning: no previous prototype for 'apply_alternatives_vdso' [-Wmissing-prototypes]
-arch/arm64/kernel/alternative.c:295:14: warning: no previous prototype for 'alt_cb_patch_nops' [-Wmissing-prototypes]
-arch/loongarch/kernel/traps.c:93:39: warning: Null pointer dereference: regs [ctunullpointer]
-arch/loongarch/mm/init.c:166:24: warning: variable 'new' set but not used [-Wunused-but-set-variable]
-arch/loongarch/mm/mmap.c:20:65: warning: Parameter 'filp' can be declared with const [constParameter]
-fs/ext4/super.c:1744:19: warning: 'deprecated_msg' defined but not used [-Wunused-const-variable=]
-grep: smatch_trinity_*: No such file or directory
-mm/mmap.c:802 __vma_adjust() error: uninitialized symbol 'next_next'.
-pahole: .tmp_vmlinux.btf: No such file or directory
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arm64-allyesconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-r016-20221012
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-s043-20221012
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- arm64-randconfig-s052-20221012
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   `-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|-- csky-randconfig-r013-20221012
-|   `-- pahole:.tmp_vmlinux.btf:No-such-file-or-directory
-|-- csky-randconfig-s042-20221012
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   `-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|-- i386-allyesconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-defconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a003
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a005
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a012
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a014
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a016
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-c001
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-c021
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-clang_recent_errors
-|-- arm-buildonly-randconfig-r005-20221012
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- arm-sp7021_defconfig
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- arm64-buildonly-randconfig-r006-20221012
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:a-function-declaration-without-a-prototype-is-deprecated-in-all-versions-of-C-Werror-Wstrict-prototypes
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:a-function-declaration-without-a-prototype-is-deprecated-in-all-versions-of-C-and-is-treated-as-a-zero-parameter-prototype-in-C2x-conf
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:a-parameter-list-without-types-is-only-allowed-in-a-function-definition
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:conflicting-types-for-spin_unlock_irqrestore
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:expected-)
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:expected-identifier-or-(
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:expected-parameter-declarator
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:type-specifier-missing-defaults-to-int-ISO-C99-and-later-do-not-support-implicit-int
-|   |-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:error:while-loop-outside-of-a-function
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-amdgpu_dm-amdgpu_dm.c:warning:variable-crtc_disable_count-set-but-not-used
-|-- arm64-randconfig-r036-20221012
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r001-20221012
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|-- hexagon-randconfig-r005-20221012
-|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|-- hexagon-randconfig-r041-20221012
-|   |-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- hexagon-randconfig-r045-20221012
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a002
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a004
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a011
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a013
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a015
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- mips-loongson2k_defconfig
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-
-elapsed time: 729m
-
-configs tested: 88
-configs skipped: 3
-
-gcc tested configs:
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                        randconfig-a013
-i386                                defconfig
-arc                           tb10x_defconfig
-x86_64                              defconfig
-sh                         apsh4a3a_defconfig
-x86_64                        randconfig-a011
-arm                         cm_x300_defconfig
-nios2                            alldefconfig
-arm                        keystone_defconfig
-x86_64                               rhel-8.3
-x86_64                           rhel-8.3-syz
-powerpc                           allnoconfig
-xtensa                       common_defconfig
-riscv                randconfig-r042-20221012
-arc                                 defconfig
-powerpc                 mpc834x_mds_defconfig
-x86_64                        randconfig-a015
-s390                 randconfig-r044-20221012
-powerpc                          allmodconfig
-alpha                             allnoconfig
-powerpc                      pasemi_defconfig
-x86_64                          rhel-8.3-func
-powerpc                     taishan_defconfig
-i386                          randconfig-a001
-x86_64                         rhel-8.3-kunit
-i386                             allyesconfig
-x86_64                    rhel-8.3-kselftests
-m68k                          atari_defconfig
-riscv                             allnoconfig
-x86_64                           rhel-8.3-kvm
-ia64                                defconfig
-i386                          randconfig-a003
-mips                             allyesconfig
-xtensa                              defconfig
-s390                             allmodconfig
-csky                              allnoconfig
-xtensa                    smp_lx200_defconfig
-arc                               allnoconfig
-x86_64                           allyesconfig
-arm                                 defconfig
-sh                               allmodconfig
-arc                  randconfig-r043-20221012
-x86_64                        randconfig-a004
-powerpc                       ppc64_defconfig
-i386                          randconfig-a005
-alpha                               defconfig
-alpha                            allyesconfig
-x86_64                        randconfig-a002
-s390                             allyesconfig
-arc                              allyesconfig
-s390                                defconfig
-x86_64                        randconfig-a006
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-c001
-i386                          randconfig-a016
-csky                                defconfig
-ia64                         bigsur_defconfig
-powerpc                    amigaone_defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-m68k                          amiga_defconfig
-mips                     decstation_defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-ia64                             allmodconfig
-
-clang tested configs:
-x86_64                        randconfig-a016
-x86_64                        randconfig-a012
-hexagon              randconfig-r041-20221012
-x86_64                        randconfig-a014
-hexagon              randconfig-r045-20221012
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-i386                          randconfig-a013
-x86_64                        randconfig-a005
-i386                          randconfig-a015
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-i386                          randconfig-a011
-mips                        qi_lb60_defconfig
-mips                     loongson2k_defconfig
-x86_64                          rhel-8.3-rust
-arm                          sp7021_defconfig
-arm                       netwinder_defconfig
-powerpc                        icon_defconfig
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Yes I mean something like that (except, use u16, u32 short form)... and that
+should be safe really. As for the endianness, a lot more would break already,
+so I don't see that as a concern right now.
 
