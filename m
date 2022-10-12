@@ -4,83 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C575FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 07:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091FEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 07:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a6aE/yeSlpqCwXOc17W/RYuPLvzETNRc+g+Ynkpn/I0=; b=OdBF7nK80QNoqF4fkBcNV9ylxJ
-	/gcRjifHxd3gnzQ3BKT+pR7XQjG4gxgQGFjuHx8pjJNbMcEGbd3AxYRb0BjeNwUBrasMu0vU2XVXz
-	buumG3fD3+VgDxoN/jutfI2iwxDMabS+3HK8NeBbW+irMxjE+bqeGO8IUXOW+vG9++4KsxQ3RTUWs
-	x8XVgoX0CJJsOB8cmZfcmImWz+m8ebT08VeLXjx4InYeGFR4Y/ttMz1bTdW0AHPsZorujsTb00iso
-	/ZNJRzFJzGEhBVhuTIwO3fopkAULWctrG7+vq6T78lvU1PP0ylyguO9/IEngJaPgOdfU5BFzbmHQx
-	a2uZRJtQ==;
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qCNxzOKYmtTnoInV5j5hFtdhCGIPCn3WQ0Hs3Sj6Pog=; b=i5QRgmw8I2TQxe1NCwxjLLAhtn
+	J+1OwAgjAfhfL7BfZGLjLatDHsF9felEz2ecGNhEmEU4nPNraZWXC245Btc9TBy39Po6UtiXJw3H7
+	T0aJ2EhVWzqb1uK3KW1iDM/ezFmRVXIFbxaUkdu/3seD74WaKYa5dGwSwXkDwEVicHwa9myHkTXW2
+	iWyHkPwtyy+fCCwBGLtPTpKLMlKS74bMedrk+Vu81xqhzdIc+yZ/Ueuo1Yg0zKImUs0GpRxNEC/Kk
+	UmxiUSy8jRwqnDOX7HUr/sdrN+cVwjoRadsWiTstJUB5JRFPagruHSK3b87eUaeFSr2aJfLsxYyLM
+	DWvwzsHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiVsF-00794t-4B; Wed, 12 Oct 2022 07:09:51 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1oiWUq-007E6m-O1; Wed, 12 Oct 2022 07:49:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiVs4-00792n-9n; Wed, 12 Oct 2022 07:09:41 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id g8-20020a17090a128800b0020c79f987ceso1184060pja.5;
-        Wed, 12 Oct 2022 00:09:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=a6aE/yeSlpqCwXOc17W/RYuPLvzETNRc+g+Ynkpn/I0=;
-        b=Ry5AeookqtrVVx3rx+ac4anAVW83jmYImeAAMWIg4BjFTpOiZjA7VuC9w7RWYpOSm3
-         MduhLk6qeEE0VfGdT/lwlAM36dNx2/TiTkLfi8ZzqdY96NAZvREZOUXAaDkqdSsHTLF6
-         60EP+F/e11ZiwxmzffRA432q2MCjy8P/neVOUCd6O3O1GmRFHS9TmOhYA8cVTGrVPbo8
-         ON2aUbmURvGvH83d7aNkpiwbuJPnJvWGyVyWiEEU2V4EbyeUKCUtUPzpub/SqT8CgRjm
-         zsrTlLN3I2ku8b5uragm4/pNVLD/DEDte+8jOnj+UGTYuwxacEQAODhIRszHSxdeY21T
-         iTiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=a6aE/yeSlpqCwXOc17W/RYuPLvzETNRc+g+Ynkpn/I0=;
-        b=zdX6vESo4x/5D3d8NxwzXL8H7vx9vjUmdYgzLcbUyjTQ9hxq5mqpo4eX793S78IWxq
-         ben9zPiI44/aVWT2q0fb+UqheOAz4sZud5fP2a+lY++3Eihyt84yNV3pZsxrVE9BYFgG
-         a+Yt3mSxfPAer4NP7XHQtOaTfbhoLEv21UimgWeNtwW7yF9yPl3HGc6xAMKMbVw9a9tr
-         eW8IkE4xDD+93FmLjzdaBq9N0yYezkG0YEj084q/T3DGWOOCTZcGN4/C9c7j6/ofzrHs
-         CQ0mHpCGGDAUgqNS0loFCP2CjiGq5P1NOvxQUgm6Ol9tLWxRwlqTy0qNuI/Zm8RR5Sl5
-         CjOQ==
-X-Gm-Message-State: ACrzQf2R0f4QWO2uxJTCc3QVfM46JkqhObDo7cEliTECHEnwvGcdjyRW
-	OVFg8f24pahI0Wwnb6jSrb0IVY9BDDRsrQ==
-X-Google-Smtp-Source: AMsMyM6bPrQwR4o8Tg5xTHuN+LnmoIfJo2PlT4D3Y7exSshUyvDBB8SzJKz/Bx+eYwbBiBicbC4BeQ==
-X-Received: by 2002:a17:902:eb86:b0:17f:f884:a62b with SMTP id q6-20020a170902eb8600b0017ff884a62bmr25664464plg.153.1665558578328;
-        Wed, 12 Oct 2022 00:09:38 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (114-137-44-170.emome-ip.hinet.net. [114.137.44.170])
-        by smtp.gmail.com with ESMTPSA id z13-20020a170902cccd00b0017f5ad327casm9813496ple.103.2022.10.12.00.09.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Oct 2022 00:09:38 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	lee@kernel.org,
-	matthias.bgg@gmail.com
-Cc: sre@kernel.org,
-	chiaen_wu@richtek.com,
-	cy_huang@richtek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3] dt-bindings: mfd: mt6370: fix the interrupt order of the charger in the example
-Date: Wed, 12 Oct 2022 15:08:14 +0800
-Message-Id: <fcf4e7e7594070a8698dc0d4b96e031bcaa9b3a3.1665585952.git.chiaen_wu@richtek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oiWUg-007E4r-1F; Wed, 12 Oct 2022 07:49:35 +0000
+X-UUID: d5614043fe654be3bb52eef49c5d05bc-20221012
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=qCNxzOKYmtTnoInV5j5hFtdhCGIPCn3WQ0Hs3Sj6Pog=;
+	b=I3OTq+rcx8A2HDQxU0o2cq7Hii9ef5RRMQiZgq4tqT1hmMxM9w5276pin9vm6o//pkiGE5FPQYEAcJ8PvL1QZhqrFGEcULEeV5C+TPiNNVv7ANLsw7UDsRkIjFV4BIuYknvpwrJsdk0HcUM4DA8W6Wo8hGgzJRp5tUXAlqUcMzg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:2383360a-16f1-4509-b33f-b4cd8897fdb2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:4ae83b01-cdeb-479d-93af-53f947adce9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d5614043fe654be3bb52eef49c5d05bc-20221012
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 395312408; Wed, 12 Oct 2022 00:49:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 12 Oct 2022 15:48:41 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 12 Oct 2022 15:48:40 +0800
+Message-ID: <9fe3a2381746b46bde171f01635d30da2cb93d64.camel@mediatek.com>
+Subject: Re: [PATCH] drm: mediatek: Modify dpi power on/off sequence.
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 12 Oct 2022 15:48:46 +0800
+In-Reply-To: <1662386033-4463-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1662386033-4463-1-git-send-email-xinlei.lee@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_000940_385757_16D1CF08 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20221012_004934_106653_96D73379 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,45 +80,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiaEn Wu <chiaen_wu@richtek.com>
+On Mon, 2022-09-05 at 21:53 +0800, xinlei.lee@mediatek.com wrote:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> Modify dpi power on/off sequence so that the first gpio operation
+> will take effect.
+> 
+> Fixes: 6bd4763fd532 ("drm/mediatek: set dpi pin mode to gpio low to
+> avoid leakage
+> current")
+> 
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> ---
+> Base on the branch of Linux-next/master.
+> Because dpi power_on/off is protected by dpi->refcount, the first
+> time
+> it cannot be powered on and off successfully, it will cause leakage.
+> ---
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 630a4e301ef6..2ce1a39ce3bf 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -462,9 +462,6 @@ static void mtk_dpi_power_off(struct mtk_dpi
+> *dpi)
+>  	if (--dpi->refcount != 0)
+>  		return;
+>  
+> -	if (dpi->pinctrl && dpi->pins_gpio)
+> -		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+> -
+>  	mtk_dpi_disable(dpi);
+>  	clk_disable_unprepare(dpi->pixel_clk);
+>  	clk_disable_unprepare(dpi->engine_clk);
+> @@ -489,9 +486,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+>  		goto err_pixel;
+>  	}
+>  
+> -	if (dpi->pinctrl && dpi->pins_dpi)
+> -		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+> -
+>  	return 0;
+>  
+>  err_pixel:
+> @@ -721,6 +715,9 @@ static void mtk_dpi_bridge_disable(struct
+> drm_bridge *bridge)
+>  {
+>  	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+>  
+> +	if (dpi->pinctrl && dpi->pins_gpio)
+> +		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+> +
+>  	mtk_dpi_power_off(dpi);
+>  }
+>  
+> @@ -728,6 +725,9 @@ static void mtk_dpi_bridge_enable(struct
+> drm_bridge *bridge)
+>  {
+>  	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+>  
+> +	if (dpi->pinctrl && dpi->pins_dpi)
+> +		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+> +
+>  	mtk_dpi_power_on(dpi);
+>  	mtk_dpi_set_display_mode(dpi, &dpi->mode);
+>  	mtk_dpi_enable(dpi);
 
-Fix the interrupt order of the charger in the binding example.
+Hi CK,
 
-Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-v3
-- Add a 'Reviewed-by' tag.
+Gentle ping for this patch, if there is anything I need to modify,
+please kindly let me know.
 
-v2
-- Revise the commit syntax.
-
-v1
-- Due to this patch modifiacation
-  (https://lore.kernel.org/all/20221001202918.me7z2qzm7cmrkzsg@mercury.elektranox.org/),
-  there will get some warnings in linux-next when compiling the dts.
----
- Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-index 250484d..5644882 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-@@ -139,8 +139,8 @@ examples:
- 
-         charger {
-           compatible = "mediatek,mt6370-charger";
--          interrupts = <48>, <68>, <6>;
--          interrupt-names = "attach_i", "uvp_d_evt", "mivr";
-+          interrupts = <68>, <48>, <6>;
-+          interrupt-names = "uvp_d_evt", "attach_i", "mivr";
-           io-channels = <&mt6370_adc MT6370_CHAN_IBUS>;
- 
-           mt6370_otg_vbus: usb-otg-vbus-regulator {
--- 
-2.7.4
+Best Regards!
+xinlei
 
 
