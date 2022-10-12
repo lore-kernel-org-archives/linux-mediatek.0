@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4341EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 15:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45397C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 15:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6sAsGYX3J2Ywp9AFoeC19lv0Q2JC+XewfioV1XazBfU=; b=QVsB4PGhoLxjefx59miI4fmu8n
-	qOLljNSmKRSz60encqo3q9rIzirCJe9p1e2Ed9AhLnJy6QQZzB2HmOc9Kpb/fVT6et7XX9O9jZlMm
-	VAxefwbpFnF2VFET77DVI6SLFWN0ctAM8MC05cpv8X8HKxYasZJGOumkCHQAIyrA4OiVc8ITy4Kak
-	Bh8lhjzVkaGNaE2xB9UBCQBMJyEgJ7ShDJJdaylIS8RMTs/4HUD+4vbe5YC4iBa7JlChdbO4uCml1
-	pSYDmfHBwZB8z8MOZYBb66syDJ09tVZOiMvHXRIz7Me034vNCbbXjYCSz/W9BepMCu9N6+V8U4/Dr
-	yHsw2IYg==;
+	bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=; b=z7XKS1kwIKWcfdVNDuowq5maI8
+	QLPmVj8sLCOIgJSSIsJNeXcCXMamQ90jp0G8WV3urxIIlACQseBOQcEfH4qj8LYJqFj43yR05vVe5
+	dSr6Vx4z0GDx3+/zJIYCSo9pIBkk1Dwtg6hi3UKyVIT+Mj5QzuR4hyH4wVNbcU0ZufSezUv4wIRLn
+	o+oGhxWRtdFPaGvwvqA95Y0EzkpyeghMBuRPzAB1o1jWjN8kaqnm22hIb8WCI/4XUEKWglqTsvLYL
+	H+QXK3BFT0zyV/w0IyN4fOiGYsdhwdbZDgG3X4iUdcpWQkh0giGotuqlHmJYONSXyGhC7q7KFwvRg
+	75rx/WbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oidbr-008Xdt-GG; Wed, 12 Oct 2022 15:25:27 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1oidh6-008YPL-2e; Wed, 12 Oct 2022 15:30:52 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oidbd-008XaX-Dn; Wed, 12 Oct 2022 15:25:17 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id x31-20020a17090a38a200b0020d2afec803so2379485pjb.2;
-        Wed, 12 Oct 2022 08:25:11 -0700 (PDT)
+	id 1oidh3-008YOr-Ns; Wed, 12 Oct 2022 15:30:50 +0000
+Received: by mail-pg1-x529.google.com with SMTP id l6so6286183pgu.7;
+        Wed, 12 Oct 2022 08:30:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=6sAsGYX3J2Ywp9AFoeC19lv0Q2JC+XewfioV1XazBfU=;
-        b=jgi1xr+4QST0cSoTuy8B71zEhLRujUBFMmA2BVNnhFBYOrwMJYkfeGc+6ZKyPK+TNP
-         nrUdJF6SJsfr5h6R7MiA4nbWoy0HzA9PCrTVyvV9y+QArbRRkVxsINbjyDLNKtN9JJB0
-         ewlXtu5d0yyASUjtnHtEOgR/zp17y8ysYLSwtChvEvoTi9+l1S1VAxlKIXQH1zA3yGGq
-         8+6gTLZEpp6stncaM5fPBF7g0yEogepFARSQPunLTD0jEH7U81tP69d6lGXWS2vnK69m
-         fNVz3iUv9qxziIiHeCIZpId3kwaWXT9HoUuqLQqejdX9/ribfs9Zjro6fFOgAE7oOkIh
-         /Nbw==
+        bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=;
+        b=lqsttROg2cCrxJ2Bl9FcBPLiU2PO77JZxmRbQppEIbCw40JE4Hma4eaNUJqJWvDFef
+         biMxcw/yw2mQRgVWJmG6KxiT2VHCyW9lGM1aIbvpGRRiM3VXkE9a5WiIHcmKBmLoGt9c
+         JFofXzrbgVTrOf5WuGZ8hR1Ns6Il9XhkEpqojHHVfFroxh+wWOyfQKTW/c7y4cLQrqM5
+         h4he8xr48itJH2jTAcB9z1IVynBEV43U81JlyfbC5L6DD+xMq8LSKYu8SlhqlbM4CD9c
+         cbSs1zJ+tP/qPabTWWo8xNUYYI3rh5zzNwOmqGNxXx47PNMZlV6EBm65mtCMXxEDSAU+
+         kCyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:references
          :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=6sAsGYX3J2Ywp9AFoeC19lv0Q2JC+XewfioV1XazBfU=;
-        b=xYTT0TjSt7P7Tv7W/d/DwMNd3R9eBK1b+4hI2GFejvSW8lNwQJusKPPypFkRbSc/YI
-         Ijbx3g4MsG6dHjHfg7colOUrlutk3wG1kNuS1Ge2Yh4NxSW4heF0tloUj2EuIiS/e0S7
-         CHXrpt3X5331vBCVIYGWuOPKYsaIAhzWiqrCO7nJz58NnT6U7UD+J0EFrBTU5mHh4ZR9
-         4AHMfUkBVajjZ+Y37llG2n3lXt0WJ6sqx2XJX2V5lVo5/SfU3bzD7tQx0xUbfyT7HFN6
-         HbNxbFJUopLCBoYIJTLeZzcUPCvIbrWLKaAFeydDpiFMnzgZXmbRw+Klv6YVonM/Cgt+
-         3/zw==
-X-Gm-Message-State: ACrzQf0YGTzSJjH+mz1RDMHwVbCG4ySsyZAR3MB1DbuC874fgzg++EVF
-	2256DKEr3Qv5peYsFwZXpMg=
-X-Google-Smtp-Source: AMsMyM5q5hLAeKBSRDeDIPS3wFojXBXzDAqLX57Ia7Z5Bbj+fAAsK05mNKIES79/ba29CBEIihr7/A==
-X-Received: by 2002:a17:902:d589:b0:181:d0e4:3306 with SMTP id k9-20020a170902d58900b00181d0e43306mr19405557plh.28.1665588310827;
-        Wed, 12 Oct 2022 08:25:10 -0700 (PDT)
+        bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=;
+        b=l4CYDe2kxkmbmhxOAFOojcS7tDhPNxrfIViyi7qWJ4slHvlL9sAkONZfGmSanzB2W4
+         FR3QnmqO1rZs2n0iIdbVmzaGTNjLuF6axmYkq9LC9wBXxOmDJJX8BN2nCDGLjyxICqRG
+         XEf5brP4+hJVRKfrKlehH9Rr3T0YdoGx8YBYwwOXg5u1cws5XEp/K88KPvqdKGk2qhNq
+         77bYr44QV0lIjY8vUx6iIUX/V6p4VuWAA34vPyv7hDZkz+tWT4/yLAD6d9FQlJZJiSbr
+         oz/t9L1ZhF7R04eV4gFI1l4rQn+DASMhKT5eyNyOWWeBZpmBbI7UKpsQ5mJKt5vI9hSV
+         QVPg==
+X-Gm-Message-State: ACrzQf3yDZApTNuaD8IEWd4coTtmytdPaursmEepAYuf5icrAFGlkbHe
+	kOKHuBrol8zKqevoJGk8jCft9TupKi4=
+X-Google-Smtp-Source: AMsMyM4Rme9GP63iTEYp6GDtI8cANT8/bRXLd6LmA4Ak4TfcpODAEz3uYTWmpmRdtSuWInqPN4hvmQ==
+X-Received: by 2002:a63:2c6:0:b0:43c:1f18:a475 with SMTP id 189-20020a6302c6000000b0043c1f18a475mr25922948pgc.186.1665588648509;
+        Wed, 12 Oct 2022 08:30:48 -0700 (PDT)
 Received: from ?IPv6:::1? ([2607:fb90:370a:3fc:ad3:2951:4f00:9866])
-        by smtp.gmail.com with ESMTPSA id u186-20020a6260c3000000b00561c6a4c1b0sm11536115pfb.176.2022.10.12.08.25.09
+        by smtp.gmail.com with ESMTPSA id a67-20020a621a46000000b0055f98a2c64bsm11804430pfa.142.2022.10.12.08.30.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Oct 2022 08:25:09 -0700 (PDT)
-Date: Wed, 12 Oct 2022 08:25:06 -0700
+        Wed, 12 Oct 2022 08:30:47 -0700 (PDT)
+Date: Wed, 12 Oct 2022 08:30:45 -0700
 From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 CC: Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- linux-arm-kernel@lists.infradead.org,
  Daniel Thompson <daniel.thompson@linaro.org>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-gpio@vger.kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_7/7=5D_gpiolib=3A_of=3A_add_quirk_for?= =?US-ASCII?Q?_phy_reset_polarity_for_Freescale_Ethernet?=
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_6/7=5D_gpiolib=3A_of=3A_factor_o?= =?US-ASCII?Q?ut_code_overriding_gpio_line_polarity?=
 User-Agent: K-9 Mail for Android
-In-Reply-To: <12081856.O9o76ZdvQC@steina-w>
-References: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com> <20221011-gpiolib-quirks-v1-7-e01d9d3e7b29@gmail.com> <12081856.O9o76ZdvQC@steina-w>
-Message-ID: <9266C00F-0F8F-4DE2-B4DD-08B2D7B1EE4E@gmail.com>
+In-Reply-To: <Y0agrWGm5CR3Rk5e@smile.fi.intel.com>
+References: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com> <20221011-gpiolib-quirks-v1-6-e01d9d3e7b29@gmail.com> <Y0agrWGm5CR3Rk5e@smile.fi.intel.com>
+Message-ID: <6D279EC4-6124-45C2-BCBB-D6CBB3385024@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_082513_497646_8B6013C7 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20221012_083049_796584_23073669 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,52 +92,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On October 11, 2022 11:14:46 PM PDT, Alexander Stein <alexander=2Estein@ew=
-=2Etq-group=2Ecom> wrote:
->Am Mittwoch, 12=2E Oktober 2022, 00:19:35 CEST schrieb Dmitry Torokhov:
->> Bindings for Freescale Fast Ethernet Controller use a separate
->> property "phy-reset-active-high" to specify polarity of its phy
->> gpio line=2E To allow converting the driver to gpiod API we need
->> to add this quirk to gpiolib=2E
->>=20
->> Signed-off-by: Dmitry Torokhov <dmitry=2Etorokhov@gmail=2Ecom>
->> ---
->>  drivers/gpio/gpiolib-of=2Ec | 27 +++++++++++++++++++++++++++
->>  1 file changed, 27 insertions(+)
->>=20
->> diff --git a/drivers/gpio/gpiolib-of=2Ec b/drivers/gpio/gpiolib-of=2Ec
->> index 3200d705fbe3=2E=2Ec3d3fe4d927c 100644
->> --- a/drivers/gpio/gpiolib-of=2Ec
->> +++ b/drivers/gpio/gpiolib-of=2Ec
->> @@ -231,6 +231,33 @@ static void of_gpio_flags_quirks(const struct
->> device_node *np, !strcmp(propname, "snps,reset-gpio") &&
->>  	    of_property_read_bool(np, "snps,reset-active-low"))
->>  		*flags |=3D OF_GPIO_ACTIVE_LOW;
->> +
->> +	/*
->> +	 * Freescale Fast Ethernet Controller uses a separate property to
->> +	 * describe polarity of the phy reset line=2E
->> +	 */
->> +	if (IS_ENABLED(CONFIG_FEC)) {
->> +		static const char * const fec_devices[] =3D {
->> +			"fsl,imx25-fec",
->> +			"fsl,imx27-fec",
->> +			"fsl,imx28-fec",
->> +			"fsl,imx6q-fec",
->> +			"fsl,mvf600-fec",
->> +			"fsl,imx6sx-fec",
->> +			"fsl,imx6ul-fec",
+On October 12, 2022 4:10:37 AM PDT, Andy Shevchenko <andriy=2Eshevchenko@li=
+nux=2Eintel=2Ecom> wrote:
+>On Tue, Oct 11, 2022 at 03:19:34PM -0700, Dmitry Torokhov wrote:
+>> There are several instances where we use a separate property to
+>> override polarity specified in gpio property=2E Factor it out into
+>> a separate function=2E
 >
->> +			"fsl,imx6mq-fec",
->> +			"fsl,imx6qm-fec",
+>=2E=2E=2E
 >
->These two should be 'fsl,imx8mq-fec' & 'fsl,imx8qm-fec' (imx8 instead of=
-=20
->imx6)=2E
+>>  static void of_gpio_flags_quirks(const struct device_node *np,
+>>  				 const char *propname,
+>>  				 enum of_gpio_flags *flags,
+>> @@ -145,7 +167,7 @@ static void of_gpio_flags_quirks(const struct devic=
+e_node *np,
+>>  	     (!(strcmp(propname, "enable-gpio") &&
+>>  		strcmp(propname, "enable-gpios")) &&
+>>  	      of_device_is_compatible(np, "regulator-gpio")))) {
+>> -		bool active_low =3D !of_property_read_bool(np,
+>> +		bool active_high =3D of_property_read_bool(np,
+>
+>Defining
+>
+>	bool active_high;
+>
+>at the top of the function will save you a few ugly indented code lines h=
+ere
+>and in the next patch=2E
+>
 
-Thank you for noticing this=2E I'll fix it up in the next version=2E
+Indeed, but I think the idea was to keep the quirks as independent as poss=
+ible=2E
+I guess I could split it further into separate functions, like the other q=
+uirk handling=2E=20
 
-Thanks=2E
+Bartosz, Linus, any preference here?=20
+
+Thanks=2E=20
 
 --=20
 Dmitry
