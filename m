@@ -4,65 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04307C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 08:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AD9EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 08:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XPVpe+Og9tsOKwpk+GO3Cxy95U6brI62hoEBipMd8iE=; b=FuskVftWBMHRQMfsVe4nqUDyP3
-	+dEZ1oRXTl4rTRvpkoiHV+8Tvf29cfo9pQS0RGAicIhOQtgp9yb1HPUSnJwsehBAb4I6oBM9I3nSv
-	INEKKElAWbXoXwJd0lBhVsgjlBhJKTDiwGc5vLGUod3Hzjh+uWwnDTVHP26jDhsm0EubdSI/nP92+
-	8aDIOT2otpKxmA/ws2rzDM6R0E5/d3nGT36YIB1iZFfoHXlyRWgCiSKyp2Y5C61k3E+O9X04Y9Lt4
-	pWdTrNlTLAhslTsHm84jRMOP9mWVC6qGZnWEzUOrTS45QIMLkJoTksurbIALG9TIj3ME2lkV54VDy
-	nVvykIXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BahOkJA54sohf0jeqphb81Af6pnAASgWhe4oGnRgncw=; b=kJkSDPyuTd4eCJQj1bAAi629Hi
+	hjkW2qNzPUgb4OLoqevpB0UB2mulQXJdAeuaFdsbhJEydf9u7sVQ+/cmX3T2XEZT9VQAWclR2KbRF
+	kL2lLQj6Q7gsGWAry6ZSN2rRWh4gwltmKNe+b8/74uSW3jRkVRQLorMe7qSn1imCFLrp2OTOcM9Gk
+	HZWHPU1DU+C9h5vR6rUbKeTjdCyqV3n9GCkk4U5Ad1JIU+Dh4mPLCqhuyt+d8AEhFt8IZSzxV/bs1
+	GGDAf/Klh1zdPohKxmcr95MSZ2xFkGuYXNBu20//OCPXvg5atA2g9gmo183p7uEckXTlAcugUzzYf
+	kIe9UpwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiXMq-007Oqk-EZ; Wed, 12 Oct 2022 08:45:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oiXXA-007RVb-4v; Wed, 12 Oct 2022 08:56:12 +0000
+Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiXMl-007OnL-6k; Wed, 12 Oct 2022 08:45:29 +0000
-X-UUID: bc93644f248547e4a190641e1014efcd-20221012
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XPVpe+Og9tsOKwpk+GO3Cxy95U6brI62hoEBipMd8iE=;
-	b=apsUzcc5m/Zf/j7rTNNlbgBO94CEiTObIgtI4a2S6vKIsqwjKaG5frDH9dBMpoQEO7tjgegPZLIjuD2mH7QS4iCoL+qB8563knnjPLEudB5vH4EyXyiTa7YNRDHfB9MVyCHN3eqladZyUBgmCt3tKq4Eo7El4X5NmbMh3X9kQhw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:36849529-125f-4d94-b141-86b7b771394f,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:d5533e01-cdeb-479d-93af-53f947adce9d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: bc93644f248547e4a190641e1014efcd-20221012
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2080916166; Wed, 12 Oct 2022 01:45:15 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 12 Oct 2022 15:54:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 12 Oct 2022 15:54:38 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <allen-kh.cheng@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-Subject: [PATCH v1] soc: mediatek: mtk-pm-domains: Allow mt8186 ADSP default power on
-Date: Wed, 12 Oct 2022 15:54:34 +0800
-Message-ID: <20221012075434.30009-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oiXWx-007ROu-5V; Wed, 12 Oct 2022 08:56:00 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 1AB965802BB;
+	Wed, 12 Oct 2022 04:55:58 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Wed, 12 Oct 2022 04:55:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to; s=fm3; t=1665564958; x=
+	1665572158; bh=BahOkJA54sohf0jeqphb81Af6pnAASgWhe4oGnRgncw=; b=S
+	G1UV2pzNYGl8iEyJ6VnnUR5xA9PW9wHXoVkwECHKrlcuuK2BZRsJ6Th3RVWW6pSq
+	HmPIsZnwgkoXFjfzgSh3Z0pl3P/wG5mm+F8bqhKRnjL8Th+wsIwtgprGbMydbZ9o
+	NCTg4K1FV9YHQE0hcy/WOmROGYGOuMe+BA04fVvf3kYVK/PIu8J+ktKN59k/ZnGp
+	3f1+wn3FijhojEYhQPusDfVqL5fWzhY+U5uslcsDqmhzjhMcAP+svEMe+J2h4bg2
+	5LTmzACvuM+bZnxDh5Ha6/1LUs6Pi8k/3E3wtk1b4LGBHzOQ1Jt3lR78PZBgoiAw
+	m8fUeiEnn5VaHBuyC8wzQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1665564958; x=
+	1665572158; bh=BahOkJA54sohf0jeqphb81Af6pnAASgWhe4oGnRgncw=; b=G
+	cCjykGrpkW1C8Qw5ERgUCdIX6x3DJoUseIvWKJu3eMe6/tOI7UPCnFpNEhN6IrAh
+	VGurFLibgUhy9209DdQbBUvAQ3+gLfgIjaJrC2iwyuzVBs4gUoeusvqKg0K55jXe
+	oomFTtcl2H0TvAcbC1m3dprN8fL6vDDukW4tJ3NkvGMDm2qhBtgzwD7ulstSfU8E
+	74olubkKUJIgr3Z94O0GFLxS2bZvpqyYEdL/C814VlpP9scl5RBzlJ4hmE2euNbI
+	xHWg4MApIcFYaqET5SyWlqRRsbtMNTJlH9K2TH9MuM5rMFEJvzLXX78JWwB/5E6M
+	29RGK1yhqmIim2yJF0nCw==
+X-ME-Sender: <xms:HYFGY7NHxD78yqHwhPOZAwj5ULdHXFvH4mw-TfLRoVdOsxjh1APRgQ>
+    <xme:HYFGY19196z-RXr3WkU5Mowsn21kPK8f-MY99GeZYeXqiU8J-MxEcvAfmDnIeJ7LF
+    RM0S6aKEi08gerx168>
+X-ME-Received: <xmr:HYFGY6SrxIW6zNQMjG87hddv5pE0vH8jY8y7B9DgLzCJDPYeMf_MPRDNdv_SXYZu-szJQbuzBavKmoMzij2IoBcpAVi3YXMZWTXC>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfeejkedgtdelucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggugfgjsehtqhertddttddvnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnheptefgleeggfegkeekgffgleduieduffejffegveevkeejudektdduueet
+    feetfefgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:HYFGY_vYBV9zic0IfQdu6igowRUTzHyZsa3mc8NWWyr1OTeW-NLPCw>
+    <xmx:HYFGYzepFqTtLJTTEng5iZYs-1aJPmuApzqOJMB0G47anykBH7BeSQ>
+    <xmx:HYFGY70SSGt6YYN64lE21Z9kwAkSIFixbUJsKb6dWXYslEsLepLFaA>
+    <xmx:HoFGY59xAJOC39ei3Hq0KMgbcMSHFs_aSWKd0T53VUQf-WWiaA3i-w>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 12 Oct 2022 04:55:56 -0400 (EDT)
+Date: Wed, 12 Oct 2022 10:55:55 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
+	chun-jie.chen@mediatek.com, miles.chen@mediatek.com,
+	wenst@chromium.org, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] clk: mediatek: clk-mux: Add .determine_rate() callback
+Message-ID: <20221012085555.3nls7ja56vlnaz2w@houat>
+References: <20221011135548.318323-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20221011135548.318323-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_014528_352489_B2869DA3 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20221012_015559_436284_F2570466 
+X-CRM114-Status: GOOD (  23.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,45 +105,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the use case of configuring the access permissions of the ADSP core,
-the mt8186 SoC ADSP power will be switched on in the bootloader because
-the permission control registers are located in the ADSP subsys.
+Hi,
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- drivers/soc/mediatek/mt8186-pm-domains.h | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+On Tue, Oct 11, 2022 at 03:55:48PM +0200, AngeloGioacchino Del Regno wrote:
+> Since commit 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests
+> to the parent"), the clk_rate_request is .. as the title says, not
+> forwarded anymore to the parent:
 
-diff --git a/drivers/soc/mediatek/mt8186-pm-domains.h b/drivers/soc/mediatek/mt8186-pm-domains.h
-index 108af61854a3..fce86f79c505 100644
---- a/drivers/soc/mediatek/mt8186-pm-domains.h
-+++ b/drivers/soc/mediatek/mt8186-pm-domains.h
-@@ -304,7 +304,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- 		.ctl_offs = 0x9FC,
- 		.pwr_sta_offs = 0x16C,
- 		.pwr_sta2nd_offs = 0x170,
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8186_POWER_DOMAIN_ADSP_INFRA] = {
- 		.name = "adsp_infra",
-@@ -312,7 +311,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- 		.ctl_offs = 0x9F8,
- 		.pwr_sta_offs = 0x16C,
- 		.pwr_sta2nd_offs = 0x170,
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8186_POWER_DOMAIN_ADSP_TOP] = {
- 		.name = "adsp_top",
-@@ -332,7 +330,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- 				MT8186_TOP_AXI_PROT_EN_3_CLR,
- 				MT8186_TOP_AXI_PROT_EN_3_STA),
- 		},
--		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_ACTIVE_WAKEUP,
-+		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_ACTIVE_WAKEUP,
- 	},
- };
- 
--- 
-2.18.0
+It's not entirely true, the rate request should still be forwarded, but
+we don't pass the same instance of clk_rate_request anymore.
 
+> this produces an issue with the MediaTek clock MUX driver during GPU
+> DVFS on MT8195, but not on MT8192 or others.
+>=20
+> This is because, differently from others, like MT8192 where all of
+> the clocks in the MFG parents tree are of mtk_mux type, but in the
+> parent tree of MT8195's MFG clock, we have one mtk_mux clock and
+> one (clk framework generic) mux clock, like so:
+>=20
+> names: mfg_bg3d -> mfg_ck_fast_ref -> top_mfg_core_tmp (or) mfgpll
+> types: mtk_gate ->      mux        ->     mtk_mux      (or) mtk_pll
+>=20
+> To solve this issue and also keep the GPU DVFS clocks code working
+> as expected, wire up a .determine_rate() callback for the mtk_mux
+> ops; for that, the standard clk_mux_determine_rate_flags() was used
+> as it was possible to.
+
+It probably fixes things indeed, but I'm a bit worried that it just
+works around the actual issue instead of fixing the actual bug...
+
+> This commit was successfully tested on MT6795 Xperia M5, MT8173 Elm,
+> MT8192 Spherion and MT8195 Tomato; no regressions were seen.
+>=20
+> For the sake of some more documentation about this issue here's the
+> trace of it:
+>=20
+> [   12.211587] ------------[ cut here ]------------
+> [   12.211589] WARNING: CPU: 6 PID: 78 at drivers/clk/clk.c:1462 clk_core=
+_init_rate_req+0x84/0x90
+> [   12.211593] Modules linked in: stp crct10dif_ce mtk_adsp_common llc rf=
+kill snd_sof_xtensa_dsp
+>                panfrost(+) sbs_battery cros_ec_lid_angle cros_ec_sensors =
+snd_sof_of
+>                cros_ec_sensors_core hid_multitouch cros_usbpd_logger snd_=
+sof gpu_sched
+>                snd_sof_utils fuse ipv6
+> [   12.211614] CPU: 6 PID: 78 Comm: kworker/u16:2 Tainted: G        W    =
+      6.0.0-next-20221011+ #58
+> [   12.211616] Hardware name: Acer Tomato (rev2) board (DT)
+> [   12.211617] Workqueue: devfreq_wq devfreq_monitor
+> [   12.211620] pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYP=
+E=3D--)
+> [   12.211622] pc : clk_core_init_rate_req+0x84/0x90
+> [   12.211625] lr : clk_core_forward_rate_req+0xa4/0xe4
+> [   12.211627] sp : ffff80000893b8e0
+> [   12.211628] x29: ffff80000893b8e0 x28: ffffdddf92f9b000 x27: ffff46a2c=
+0e8bc05
+> [   12.211632] x26: ffff46a2c1041200 x25: 0000000000000000 x24: 000000001=
+73eed80
+> [   12.211636] x23: ffff80000893b9c0 x22: ffff80000893b940 x21: 000000000=
+0000000
+> [   12.211641] x20: ffff46a2c1039f00 x19: ffff46a2c1039f00 x18: 000000000=
+0000000
+> [   12.211645] x17: 0000000000000038 x16: 000000000000d904 x15: 000000000=
+0000003
+> [   12.211649] x14: ffffdddf9357ce48 x13: ffffdddf935e71c8 x12: 000000000=
+004803c
+> [   12.211653] x11: 00000000a867d7ad x10: 00000000a867d7ad x9 : ffffdddf9=
+0c28df4
+> [   12.211657] x8 : ffffdddf9357a980 x7 : 0000000000000000 x6 : 000000000=
+0000004
+> [   12.211661] x5 : ffffffffffffffc8 x4 : 00000000173eed80 x3 : ffff80000=
+893b940
+> [   12.211665] x2 : 00000000173eed80 x1 : ffff80000893b940 x0 : 000000000=
+0000000
+> [   12.211669] Call trace:
+> [   12.211670]  clk_core_init_rate_req+0x84/0x90
+> [   12.211673]  clk_core_round_rate_nolock+0xe8/0x10c
+> [   12.211675]  clk_mux_determine_rate_flags+0x174/0x1f0
+> [   12.211677]  clk_mux_determine_rate+0x1c/0x30
+> [   12.211680]  clk_core_determine_round_nolock+0x74/0x130
+> [   12.211682]  clk_core_round_rate_nolock+0x58/0x10c
+> [   12.211684]  clk_core_round_rate_nolock+0xf4/0x10c
+> [   12.211686]  clk_core_set_rate_nolock+0x194/0x2ac
+> [   12.211688]  clk_set_rate+0x40/0x94
+> [   12.211691]  _opp_config_clk_single+0x38/0xa0
+> [   12.211693]  _set_opp+0x1b0/0x500
+> [   12.211695]  dev_pm_opp_set_rate+0x120/0x290
+> [   12.211697]  panfrost_devfreq_target+0x3c/0x50 [panfrost]
+> [   12.211705]  devfreq_set_target+0x8c/0x2d0
+> [   12.211707]  devfreq_update_target+0xcc/0xf4
+> [   12.211708]  devfreq_monitor+0x40/0x1d0
+> [   12.211710]  process_one_work+0x294/0x664
+> [   12.211712]  worker_thread+0x7c/0x45c
+> [   12.211713]  kthread+0x104/0x110
+> [   12.211716]  ret_from_fork+0x10/0x20
+> [   12.211718] irq event stamp: 7102
+> [   12.211719] hardirqs last  enabled at (7101): [<ffffdddf904ea5a0>] fin=
+ish_task_switch.isra.0+0xec/0x2f0
+> [   12.211723] hardirqs last disabled at (7102): [<ffffdddf91794b74>] el1=
+_dbg+0x24/0x90
+> [   12.211726] softirqs last  enabled at (6716): [<ffffdddf90410be4>] __d=
+o_softirq+0x414/0x588
+> [   12.211728] softirqs last disabled at (6507): [<ffffdddf904171d8>] ___=
+_do_softirq+0x18/0x24
+> [   12.211730] ---[ end trace 0000000000000000 ]---
+
+=2E.. Indeed, you shouldn't hit that warning at all. It happens in
+clk_core_round_rate_nolock, which takes (before your patch) the
+CLK_SET_RATE_PARENT branch. This indeed has been changed by the patch
+you mentioned, and will call clk_core_forward_rate_req() now, that in
+turn calls clk_core_init_rate_nolock().
+
+I think the warning you hit is because core->parent is NULL, which is
+passed to clk_core_forward_rate_req() as the parent argument, and we'll
+call clk_core_init_rate_req() with parent set as the core argument.
+
+In clk_core_init_rate_req(), the first thing we do is a WARN_ON(!core),
+which is what you hit here I think.
+
+This is different to the previous behavior that was calling
+clk_core_round_rate_nolock() with core->parent directly, and
+clk_core_round_rate_nolock() if its core argument is NULL will set
+req->rate to 0 and bail out without returning an error.
+
+Now, your patch probably works because now that you provide a
+determine_rate implementation, clk_core_can_round() returns true and
+you'll take a different branch in clk_core_round_rate_nolock(), avoiding
+that issue entirely.
+
+Does that patch work better (on top of next-20221012)?
+
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index c3c3f8c07258..b831a4227236 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -1459,12 +1459,15 @@ static void clk_core_init_rate_req(struct clk_core =
+* const core,
+ {
+ 	struct clk_core *parent;
+
+-	if (WARN_ON(!core || !req))
++	if (WARN_ON(!req))
+ 		return;
+
+ 	memset(req, 0, sizeof(*req));
+-
+ 	req->rate =3D rate;
++
++	if (!core)
++		return;
++
+ 	clk_core_get_boundaries(core, &req->min_rate, &req->max_rate);
+
+ 	parent =3D core->parent;
+
+Thanks!
+Maxime
 
