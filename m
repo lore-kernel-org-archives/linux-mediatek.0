@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D03AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Oct 2022 22:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD01C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 00:17:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u0K+tDxY91S4wQ9H7TDLz0f3SDpyKHNBEKeqLz2Ae3E=; b=gjaDDbIaOMNFBU5x0f93aXYg0x
-	INWf8ExFwU4R0bxXAzU/xjUZQmuw6CoMbSatAM5Q0v6fhH3S47iOmpYZyus0V8dJARH1GOyaiori2
-	fqwyfI9EARa6c3kXtRpDjLs6YLbvDWhpJLc5eCrRCbaropz2lNp+HYRKtdH48jEwzc+mNNzu0Pdl9
-	A4kbDp7kakFgvgz8BuMHzpwpBdpVZh0XrY7x6u1RTP5pd+3O7/FG1VGWbfk+GU8bGlWOL/NBZgOVX
-	DknjU+aGqj4+7Am9QNhyYTujnduUOGWeh1sC7y4hTwtQxzT+tnxDJsWrqdaDtvJ8zbWOET12cxUuZ
-	xyKTXr4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gotXpdlU/PAS/RGYbhW5477ksHxMEs91rAGu5DbfOWo=; b=kh/Lu23PIX+VZe4S4uL/rnoif1
+	adhF9SkBrU59ttUDpirzIIMsLpxwR/pN/dd+R+BwpzKIQCMto+ZbI4CVV7OHes9ZrseMBY0IMCDoi
+	rSifqAClwwTw3WSLJQaKau/gx5aLl9H2ZvuZqi57t+PG41T/u9gfZtnDqjCW7TaZlJfyWgQPpvGkm
+	d4OI1+6gAn4pqlWMYmVmivOlWHjH74JUQD3TqHM+oJsu4w4wxp4nyunepg21LoZhnSL/o5ybkhdMK
+	Jh5cQDn87E706B0G/NO2/COul/oeDqUqqi6VF6N2WB0F4hQxDK9/u/Ea2gAv167Kt8hDIb7SStrCn
+	5FZptewg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiO4c-0065dP-QM; Tue, 11 Oct 2022 22:50:06 +0000
-Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
+	id 1oiPQc-006JKc-5z; Wed, 12 Oct 2022 00:16:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiO4S-0065b9-3E; Tue, 11 Oct 2022 22:49:57 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id EC3251F8B0;
-	Tue, 11 Oct 2022 22:49:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1665528590; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u0K+tDxY91S4wQ9H7TDLz0f3SDpyKHNBEKeqLz2Ae3E=;
-	b=sRgOJGXbQ4Y3bEg3wrJ7A91VzzgXRjufB+WWTXw8Fvy7noUoSGSDXSs6i+RP7FuuoQxyKM
-	OZ42YOHiwgn+lb3fpKyHmerwrlfQ9fIIgtZgY+j3SIh+VCXYA53HRYuicgJBETxnjZzP7M
-	HP/LiAFOy76J8FmaE7ocDvFjuRyLPpc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1665528590;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u0K+tDxY91S4wQ9H7TDLz0f3SDpyKHNBEKeqLz2Ae3E=;
-	b=3kKi1MuqL0ir4LNRL+T46XoZVejEqg5Nos7qmaiO9BTUJUH92HmjoMulxxlooPVJx+Eiyc
-	1ekIowgP/bfXWhCQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9DB9C13AAC;
-	Tue, 11 Oct 2022 22:49:50 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id kZXdJA7zRWMXDAAAMHmgww
-	(envelope-from <jdelvare@suse.de>); Tue, 11 Oct 2022 22:49:50 +0000
-Date: Wed, 12 Oct 2022 00:49:49 +0200
-From: Jean Delvare <jdelvare@suse.de>
-To: Sasha Levin <sashal@kernel.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, kernel test robot
- <lkp@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chenglin Xu
- <chenglin.xu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH AUTOSEL 6.0 04/46] soc: mediatek: Let PMIC Wrapper and
- SCPSYS depend on OF
-Message-ID: <20221012004949.06d45f74@endymion.delvare>
-In-Reply-To: <20221011145015.1622882-4-sashal@kernel.org>
-References: <20221011145015.1622882-1-sashal@kernel.org>
-	<20221011145015.1622882-4-sashal@kernel.org>
-Organization: SUSE Linux
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+	id 1oiPQZ-006JJW-IO
+	for linux-mediatek@lists.infradead.org; Wed, 12 Oct 2022 00:16:52 +0000
+X-UUID: 57f2942735cf4abebae8b748cbacefe7-20221011
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gotXpdlU/PAS/RGYbhW5477ksHxMEs91rAGu5DbfOWo=;
+	b=psXHsSvzm1PlzzjLbGVgkFPa8E8bs2wF3fSNh8VX0a08HXhinWejRr0bsvh2GOqsND+zbUdnhazK64la0CgD2HdR5/rBcXViqZlsOdNNgXchwNNgSR1eCApSbmYVWYe+v7qjfGEL+IHM7KkcVQkbAk0L14UcFc/3/W/aKGNB+W4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:3c69a635-b442-4968-80c9-999e136a7c22,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:04c72a01-cdeb-479d-93af-53f947adce9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 57f2942735cf4abebae8b748cbacefe7-20221011
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1476404045; Tue, 11 Oct 2022 17:16:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 12 Oct 2022 08:16:28 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 12 Oct 2022 08:16:28 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 4/7] wifi: mt76: mt7921: drop ieee80211_[start, stop]_queues in driver
+Date: Wed, 12 Oct 2022 08:16:18 +0800
+Message-ID: <37425af2d0f923c9230154f303f1e0a040bce0ba.1665533390.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <8d784dba38cfb2183af2e4d9fc822a27ef34dcd2.1665533390.git.objelf@gmail.com>
+References: <8d784dba38cfb2183af2e4d9fc822a27ef34dcd2.1665533390.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221011_154956_303829_B0949429 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20221011_171651_647894_8BE9E505 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +86,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sasha,
+From: Sean Wang <sean.wang@mediatek.com>
 
-On Tue, 11 Oct 2022 10:49:32 -0400, Sasha Levin wrote:
-> From: Jean Delvare <jdelvare@suse.de>
->=20
-> [ Upstream commit 2778caedb5667239823a29148dfc48b26a8b3c2a ]
->=20
-> With the following configuration options:
-> CONFIG_OF is not set
-> CONFIG_MTK_PMIC_WRAP=3Dy
-> CONFIG_MTK_SCPSYS=3Dy
-> we get the following build warnings:
->=20
->   CC      drivers/soc/mediatek/mtk-pmic-wrap.o
-> drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: =E2=80=98of_pwrap_=
-match_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
-> drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: =E2=80=98of_slave_=
-match_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
->   CC      drivers/soc/mediatek/mtk-scpsys.o
-> drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: =E2=80=98of_scpsys_ma=
-tch_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
-> (...)
+The firmware would be in charge of braking and continuing the traffic while
+the channel contexts are switching between different BSS and HW SCAN in the
+background.
 
-This is warning only, pretty harmless, so I don't think this qualifies
-for stable kernel trees.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: drop mt7921_mcu_bss_event that is unused any more
+---
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c    | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-Thanks,
---=20
-Jean Delvare
-SUSE L3 Support
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 2b36c5f6eb40..7a74abecb269 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -199,20 +199,6 @@ mt7921_mcu_connection_loss_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 					mt7921_mcu_connection_loss_iter, event);
+ }
+ 
+-static void
+-mt7921_mcu_bss_event(struct mt7921_dev *dev, struct sk_buff *skb)
+-{
+-	struct mt76_phy *mphy = &dev->mt76.phy;
+-	struct mt76_connac_mcu_bss_event *event;
+-
+-	skb_pull(skb, sizeof(struct mt76_connac2_mcu_rxd));
+-	event = (struct mt76_connac_mcu_bss_event *)skb->data;
+-	if (event->is_absent)
+-		ieee80211_stop_queues(mphy->hw);
+-	else
+-		ieee80211_wake_queues(mphy->hw);
+-}
+-
+ static void
+ mt7921_mcu_debug_msg_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ {
+@@ -279,9 +265,6 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	case MCU_EVENT_SCAN_DONE:
+ 		mt7921_mcu_scan_event(dev, skb);
+ 		return;
+-	case MCU_EVENT_BSS_ABSENCE:
+-		mt7921_mcu_bss_event(dev, skb);
+-		break;
+ 	case MCU_EVENT_DBG_MSG:
+ 		mt7921_mcu_debug_msg_event(dev, skb);
+ 		break;
+@@ -341,7 +324,6 @@ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	if (rxd->ext_eid == MCU_EXT_EVENT_RATE_REPORT ||
+ 	    rxd->eid == MCU_EVENT_BSS_BEACON_LOSS ||
+ 	    rxd->eid == MCU_EVENT_SCHED_SCAN_DONE ||
+-	    rxd->eid == MCU_EVENT_BSS_ABSENCE ||
+ 	    rxd->eid == MCU_EVENT_SCAN_DONE ||
+ 	    rxd->eid == MCU_EVENT_TX_DONE ||
+ 	    rxd->eid == MCU_EVENT_DBG_MSG ||
+-- 
+2.25.1
+
 
