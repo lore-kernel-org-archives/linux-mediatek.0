@@ -4,66 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAFA3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 09:57:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A81BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 10:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A8Fkwk0KlnFIFrsIx2hWbU4kPUZBvFx0SVnAemgCDQY=; b=z9jJNqA65uuh6vF/2GIiX4gBXD
-	XeMHRjgRoUBp85JfwKw3l6OSrO07EMthEPvpeAHeTTczoxlDRSg4Wn2OxXLPzz4ak3abP7KTa4yuo
-	pcaquyeFSinDsTjCHxfQ84aVhj4dqvTXQ7MyYUb96Fd9dPvPON9OmdWXDgPGcYax/s7yGErT//VHx
-	cK1FHM8q1KVxMkXwfH14xptGlChH/znB/LnxNIOQ4i23ayXxK+Mfv1U8AwN0AFthJUf1ikXODejQ5
-	gpLAZMnQmd+tSYXCy1mrgyX4oGBDOvXcSSdcoBKE4D19cKuN5PpDER0blpXaSUazMYCjkSQKscfuX
-	vPlIwRAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=; b=II389yDCdLYRBD9S9BAmLt7fd4
+	toIO5KQvOqnVSESYZS77gkC/ahQDZhL4Guw4iNjfGFneV66fJgmWC/X4QNPno5MAf+dOR4F2ElJU1
+	W5F1MCXMq3ZO4JN6P2VuMhgycuJuYpq5AK/9TYXVDFmaQ+XRPoRCNK9lxlKQify60bSszPjXJ9nQY
+	qEDz4SQno5sXPhFrtc8y6ju3JR6gOYgCARXAcl/Z9Xp+5wKrE2PrX7bg1joHt9avZqlIsjQPuv3Jb
+	LZUw7nlBrVSXPuV6SKG0q0QQ+QXFLvW3RkppuRgs+1IbfGtL3slX409bq/NbCbCV9tehyXZLR1fd6
+	gX7jDOqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiYUg-007ZiY-KI; Wed, 12 Oct 2022 09:57:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oiYbd-007aKg-P6; Wed, 12 Oct 2022 10:04:53 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiYUO-007ZgO-GW; Wed, 12 Oct 2022 09:57:32 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C5A7E6601704;
-	Wed, 12 Oct 2022 10:57:17 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665568638;
-	bh=/AQBbGZwKwTiqKo2iWxBrYNy7c454E4MzSdFSzFJdiU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OjKjoQ/auPATCCmgHukQqO95NnK7RwkbjKeE3DTlGOTmWtN73QdS6CVxalGfzMOgv
-	 +un6otFtm0gD344br22HfrqFt1+0bTyv6sWTjWpM/fbj51BPW/sT39VD8nCETyf3qp
-	 d2899bjMmilP1Bi7hHMul/B3687qm7B3HsYBp5hgi1Xlx7oJxiFU6u43Hr5h6s6VmK
-	 nuWCgLTnVDp7IrgQ48ZbtfRB57u7Y66J0RdgRcNxfaTrHkpiIGYVyQfvuNOqxpQfuk
-	 wPreNMGiWbTStWtcUzpCOG215hymusprE7/YtFOdWFdPh/49g2iVWtL34L1PqJun+f
-	 /bcctkTzAIPIw==
-Message-ID: <6e76f90f-3b6a-330d-6902-b31bf3d33ad4@collabora.com>
-Date: Wed, 12 Oct 2022 11:57:15 +0200
+	id 1oiYbY-007aIs-UY; Wed, 12 Oct 2022 10:04:50 +0000
+Received: by mail-qt1-x835.google.com with SMTP id a24so2295946qto.10;
+        Wed, 12 Oct 2022 03:04:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=;
+        b=ZuAn0riuXHel9rEBKRhDJaphdwknBUsVfuUv/T2PqZwW+uHUs0jQAoNTggSP2xYvxV
+         AIPBHcfBEeKUY8XaTwBfDZ4rSHoMsN+0EmQWS+Q65k7ex3GR3DSFMtYWLj5CjjdFW5lS
+         H15Im9ztaYgi/pdTI+XTH4+61vil18OUHSI0xGSAcGYNKUvzy6F36vXqiFhOKG65c2tn
+         Hm9UqrwXHcz71mbsaS1jF9iuBu0ckjr5DhBRLVoVyj42mBo6ELsboWfCQHWyRGQ4tlaj
+         QaFlpQ5WtgjVo1xKNFF2bpP4chzh3RulgtzO05YqhYqIONKukzB/OS4NwSuMzh0mSuvU
+         pMLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=;
+        b=50/L+Ep9PBDhDCTmNjq6h40euE0ztxaaIkTYKxQMUrUQk+8g95T2Qohi3cXRMpP55U
+         Mg1BpRDi08HU5nIsleAluS1a6vp7ZUso3dS1ouUxwDT33eE9sJ41ZIzMNnBZJp/eZW8N
+         e0lHkrutvXt/5xofqvHMXq0K6i8eGps6h9SgICnrbal63UF0ye2zcpV3Q7GAvZoG5qAZ
+         Wnpms4TwHJa3rmJ75bn4FwMAK1PlikTCFQn+y5ParVBDNi3SE+vaZTU5b9rJ2/pqDRCB
+         eY5S8QugjvFzo7zir+nr5UCwOfc6WmYUegR7nTI9Rld0HuDO138a2kU6mapsfBdhcaBg
+         p5cA==
+X-Gm-Message-State: ACrzQf3lpG1iSLkjgZanSij2QnKUQyipJOpcEUbWR/UpE/MiHP19Jogb
+	V1icaeBPSZNqxfvFwK34ZF8h/ON9MD88DQSX5q8=
+X-Google-Smtp-Source: AMsMyM5ie8LeIoK7BaYP5eKG5FZkx73UfHVDBrIIwi+8uhHlPAnlyvjeeFl/0Iy9XueA0qyfGOPRZ2XY3nQxTptpumo=
+X-Received: by 2002:ac8:7c43:0:b0:35c:cd8f:3da5 with SMTP id
+ o3-20020ac87c43000000b0035ccd8f3da5mr23132665qtv.61.1665569086451; Wed, 12
+ Oct 2022 03:04:46 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2] clk: mediatek: clk-mux: Add .determine_rate() callback
-Content-Language: en-US
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
- chun-jie.chen@mediatek.com, miles.chen@mediatek.com, wenst@chromium.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221011135548.318323-1-angelogioacchino.delregno@collabora.com>
- <20221012085555.3nls7ja56vlnaz2w@houat>
- <c4a1eb9f-016d-c184-e494-c869038b87ff@collabora.com>
- <20221012094004.jgiyvmbgomiyedik@houat>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221012094004.jgiyvmbgomiyedik@houat>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
+In-Reply-To: <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 12 Oct 2022 13:04:10 +0300
+Message-ID: <CAHp75VdDjyUAZBTaoPOe5oA3f_5xRznAooq08=Eff4F1AZyVOQ@mail.gmail.com>
+Subject: Re: [rft, PATCH v2 00/36] pinctrl: Clean up and add missed headers
+To: Florian Fainelli <f.fainelli@gmail.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier <maz@kernel.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Billy Tsai <billy_tsai@aspeedtech.com>, 
+	Thomas Gleixner <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Samuel Holland <samuel@sholland.org>, 
+	Horatiu Vultur <horatiu.vultur@microchip.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	Phil Edworthy <phil.edworthy@renesas.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Fabien Dessenne <fabien.dessenne@foss.st.com>, Prathamesh Shete <pshete@nvidia.com>, 
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org, 
+	linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
+	alsa-devel@alsa-project.org, patches@opensource.cirrus.com, 
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Avi Fishman <avifishman70@gmail.com>, 
+	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
+	Benjamin Fair <benjaminfair@google.com>, 
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Damien Le Moal <damien.lemoal@wdc.com>, 
+	Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@somainline.org>, Tomasz Figa <tomasz.figa@gmail.com>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_025730_294392_8800C843 
-X-CRM114-Status: GOOD (  32.04  )
+X-CRM114-CacheID: sfid-20221012_030449_045446_062D57D9 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,176 +133,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/10/22 11:40, Maxime Ripard ha scritto:
-> On Wed, Oct 12, 2022 at 11:09:59AM +0200, AngeloGioacchino Del Regno wrote:
->> Il 12/10/22 10:55, Maxime Ripard ha scritto:
->>> Hi,
->>>
->>> On Tue, Oct 11, 2022 at 03:55:48PM +0200, AngeloGioacchino Del Regno wrote:
->>>> Since commit 262ca38f4b6e ("clk: Stop forwarding clk_rate_requests
->>>> to the parent"), the clk_rate_request is .. as the title says, not
->>>> forwarded anymore to the parent:
->>>
->>> It's not entirely true, the rate request should still be forwarded, but
->>> we don't pass the same instance of clk_rate_request anymore.
->>>
->>>> this produces an issue with the MediaTek clock MUX driver during GPU
->>>> DVFS on MT8195, but not on MT8192 or others.
->>>>
->>>> This is because, differently from others, like MT8192 where all of
->>>> the clocks in the MFG parents tree are of mtk_mux type, but in the
->>>> parent tree of MT8195's MFG clock, we have one mtk_mux clock and
->>>> one (clk framework generic) mux clock, like so:
->>>>
->>>> names: mfg_bg3d -> mfg_ck_fast_ref -> top_mfg_core_tmp (or) mfgpll
->>>> types: mtk_gate ->      mux        ->     mtk_mux      (or) mtk_pll
->>>>
->>>> To solve this issue and also keep the GPU DVFS clocks code working
->>>> as expected, wire up a .determine_rate() callback for the mtk_mux
->>>> ops; for that, the standard clk_mux_determine_rate_flags() was used
->>>> as it was possible to.
->>>
->>> It probably fixes things indeed, but I'm a bit worried that it just
->>> works around the actual issue instead of fixing the actual bug...
->>>
->>>> This commit was successfully tested on MT6795 Xperia M5, MT8173 Elm,
->>>> MT8192 Spherion and MT8195 Tomato; no regressions were seen.
->>>>
->>>> For the sake of some more documentation about this issue here's the
->>>> trace of it:
->>>>
->>>> [   12.211587] ------------[ cut here ]------------
->>>> [   12.211589] WARNING: CPU: 6 PID: 78 at drivers/clk/clk.c:1462 clk_core_init_rate_req+0x84/0x90
->>>> [   12.211593] Modules linked in: stp crct10dif_ce mtk_adsp_common llc rfkill snd_sof_xtensa_dsp
->>>>                  panfrost(+) sbs_battery cros_ec_lid_angle cros_ec_sensors snd_sof_of
->>>>                  cros_ec_sensors_core hid_multitouch cros_usbpd_logger snd_sof gpu_sched
->>>>                  snd_sof_utils fuse ipv6
->>>> [   12.211614] CPU: 6 PID: 78 Comm: kworker/u16:2 Tainted: G        W          6.0.0-next-20221011+ #58
->>>> [   12.211616] Hardware name: Acer Tomato (rev2) board (DT)
->>>> [   12.211617] Workqueue: devfreq_wq devfreq_monitor
->>>> [   12.211620] pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->>>> [   12.211622] pc : clk_core_init_rate_req+0x84/0x90
->>>> [   12.211625] lr : clk_core_forward_rate_req+0xa4/0xe4
->>>> [   12.211627] sp : ffff80000893b8e0
->>>> [   12.211628] x29: ffff80000893b8e0 x28: ffffdddf92f9b000 x27: ffff46a2c0e8bc05
->>>> [   12.211632] x26: ffff46a2c1041200 x25: 0000000000000000 x24: 00000000173eed80
->>>> [   12.211636] x23: ffff80000893b9c0 x22: ffff80000893b940 x21: 0000000000000000
->>>> [   12.211641] x20: ffff46a2c1039f00 x19: ffff46a2c1039f00 x18: 0000000000000000
->>>> [   12.211645] x17: 0000000000000038 x16: 000000000000d904 x15: 0000000000000003
->>>> [   12.211649] x14: ffffdddf9357ce48 x13: ffffdddf935e71c8 x12: 000000000004803c
->>>> [   12.211653] x11: 00000000a867d7ad x10: 00000000a867d7ad x9 : ffffdddf90c28df4
->>>> [   12.211657] x8 : ffffdddf9357a980 x7 : 0000000000000000 x6 : 0000000000000004
->>>> [   12.211661] x5 : ffffffffffffffc8 x4 : 00000000173eed80 x3 : ffff80000893b940
->>>> [   12.211665] x2 : 00000000173eed80 x1 : ffff80000893b940 x0 : 0000000000000000
->>>> [   12.211669] Call trace:
->>>> [   12.211670]  clk_core_init_rate_req+0x84/0x90
->>>> [   12.211673]  clk_core_round_rate_nolock+0xe8/0x10c
->>>> [   12.211675]  clk_mux_determine_rate_flags+0x174/0x1f0
->>>> [   12.211677]  clk_mux_determine_rate+0x1c/0x30
->>>> [   12.211680]  clk_core_determine_round_nolock+0x74/0x130
->>>> [   12.211682]  clk_core_round_rate_nolock+0x58/0x10c
->>>> [   12.211684]  clk_core_round_rate_nolock+0xf4/0x10c
->>>> [   12.211686]  clk_core_set_rate_nolock+0x194/0x2ac
->>>> [   12.211688]  clk_set_rate+0x40/0x94
->>>> [   12.211691]  _opp_config_clk_single+0x38/0xa0
->>>> [   12.211693]  _set_opp+0x1b0/0x500
->>>> [   12.211695]  dev_pm_opp_set_rate+0x120/0x290
->>>> [   12.211697]  panfrost_devfreq_target+0x3c/0x50 [panfrost]
->>>> [   12.211705]  devfreq_set_target+0x8c/0x2d0
->>>> [   12.211707]  devfreq_update_target+0xcc/0xf4
->>>> [   12.211708]  devfreq_monitor+0x40/0x1d0
->>>> [   12.211710]  process_one_work+0x294/0x664
->>>> [   12.211712]  worker_thread+0x7c/0x45c
->>>> [   12.211713]  kthread+0x104/0x110
->>>> [   12.211716]  ret_from_fork+0x10/0x20
->>>> [   12.211718] irq event stamp: 7102
->>>> [   12.211719] hardirqs last  enabled at (7101): [<ffffdddf904ea5a0>] finish_task_switch.isra.0+0xec/0x2f0
->>>> [   12.211723] hardirqs last disabled at (7102): [<ffffdddf91794b74>] el1_dbg+0x24/0x90
->>>> [   12.211726] softirqs last  enabled at (6716): [<ffffdddf90410be4>] __do_softirq+0x414/0x588
->>>> [   12.211728] softirqs last disabled at (6507): [<ffffdddf904171d8>] ____do_softirq+0x18/0x24
->>>> [   12.211730] ---[ end trace 0000000000000000 ]---
->>>
->>> ... Indeed, you shouldn't hit that warning at all. It happens in
->>> clk_core_round_rate_nolock, which takes (before your patch) the
->>> CLK_SET_RATE_PARENT branch. This indeed has been changed by the patch
->>> you mentioned, and will call clk_core_forward_rate_req() now, that in
->>> turn calls clk_core_init_rate_nolock().
->>>
->>> I think the warning you hit is because core->parent is NULL, which is
->>> passed to clk_core_forward_rate_req() as the parent argument, and we'll
->>> call clk_core_init_rate_req() with parent set as the core argument.
->>>
->>> In clk_core_init_rate_req(), the first thing we do is a WARN_ON(!core),
->>> which is what you hit here I think.
->>>
->>> This is different to the previous behavior that was calling
->>> clk_core_round_rate_nolock() with core->parent directly, and
->>> clk_core_round_rate_nolock() if its core argument is NULL will set
->>> req->rate to 0 and bail out without returning an error.
->>>
->>> Now, your patch probably works because now that you provide a
->>> determine_rate implementation, clk_core_can_round() returns true and
->>> you'll take a different branch in clk_core_round_rate_nolock(), avoiding
->>> that issue entirely.
->>>
->>> Does that patch work better (on top of next-20221012)?
->>
->> I admit I didn't go too deep in the research, as my brain processed that as
->> "this is a mux clock, not really different from a standard mux, this callback
->> is missing, that's not optimal"... then that fixed it and called it a day.
->>
->> I should've prolonged my research for a better understanding of what was
->> actually going on.
-> 
-> No worries :)
-> 
->> What you said actually opened my mind and, with little surprise, your patch
->> works as good as mine - no warnings and the clock scales as expected!
-> 
-> I'm actually wondering if you didn't encounter two issues. What kernel
-> were you testing before? If it's older than today's next
-> (next-20221012), you're likely missing
-> 
+On Tue, Oct 11, 2022 at 11:56 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
+> On 10/10/2022 1:14 PM, Andy Shevchenko wrote:
+> > Currently the header inclusion inside the pinctrl headers seems more arbitrary
+> > than logical. This series is basically out of two parts:
+> > - add missed headers to the pin control drivers / users
+> > - clean up the headers of pin control subsystem
+> >
+> > The idea is to have this series to be pulled after -rc1 by the GPIO and
+> > pin control subsystems, so all new drivers will utilize cleaned up headers
+> > of the pin control.
+> >
+> > Please, review and comment.
+>
+> Did you really need to split this on a per-driver basis as opposed to
+> just a treewide drivers/pinctrl, drivers/media and drivers/gpiolib patch
+> set?
+>
+> 36 patches seems needlessly high when 4 patches could have achieve the
+> same outcome.
 
-I was testing next-20221011.
-
-> https://lore.kernel.org/linux-clk/20221010-rpi-clk-fixes-again-v1-0-d87ba82ac404@cerno.tech/
-> 
-> Which is likely to be what fixed the clock scaling. And my patch only
-> fixed the warning. Could you test next-20221012? If I'm right, you
-> should only get the warning.
-> 
-
-No, I am getting the same situation even after rebasing over next-20221012, without
-any of the two patches (determine_rate() for mtk mux, nor the one you shared for
-clk.c), when the warning happens, I get very slow GPU operation and the same "nice"
-timeout:
-
-[   27.785514] panfrost 13000000.gpu: gpu sched timeout, js=1, config=0x7b00, 
-status=0x0, head=0xa1cb180, tail=0xa1cb180, sched_job=00000000f07d39e3
-
-...so I'm not encountering the same issue that you've fixed with the patches that
-got merged in next-20221012.
-
-Of course, as you were expecting, the warning is also still there and still
-the same:
-
-[   27.750504] WARNING: CPU: 4 PID: 164 at drivers/clk/clk.c:1462 
-clk_core_init_rate_req+0x84/0x90
-
-Cheers,
-Angelo
-
->> I still think that the mtk-mux driver should get a determine_rate callback but,
->> at this point, that's going to have an entirely different commit description...
-> 
-> Yeah, it might, but as you said it's a separate discussion
-> 
->> Please go on and send your patch: if you want, please remember to add me to
->> the Cc's, so that I can give you my R-b tag in a timely manner.
-> 
-> Thanks!
-> Maxime
+I can combine them if maintainers ask for that, nevertheless for Intel
+pin control and GPIO drivers, which I care more about, I would like to
+leave as separate changes (easy to see in history what was done).
 
 
+-- 
+With Best Regards,
+Andy Shevchenko
 
