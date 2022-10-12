@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45397C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 15:31:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4443CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 15:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=; b=z7XKS1kwIKWcfdVNDuowq5maI8
-	QLPmVj8sLCOIgJSSIsJNeXcCXMamQ90jp0G8WV3urxIIlACQseBOQcEfH4qj8LYJqFj43yR05vVe5
-	dSr6Vx4z0GDx3+/zJIYCSo9pIBkk1Dwtg6hi3UKyVIT+Mj5QzuR4hyH4wVNbcU0ZufSezUv4wIRLn
-	o+oGhxWRtdFPaGvwvqA95Y0EzkpyeghMBuRPzAB1o1jWjN8kaqnm22hIb8WCI/4XUEKWglqTsvLYL
-	H+QXK3BFT0zyV/w0IyN4fOiGYsdhwdbZDgG3X4iUdcpWQkh0giGotuqlHmJYONSXyGhC7q7KFwvRg
-	75rx/WbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n5lptyW3ie5pClcDGn5r9fNjFpkWHmTzbf2OcN0VuAU=; b=D1gryhzQ6QnZULUe1PVAIqsbVw
+	h7hPZ50Mp2w4Qt2r4mEIBiNAm8mw8UJTJZcvKYtpjq519W4GyLJ8z1tSxMcZSskrB/cHQy4amAb4G
+	+RVHCSkscNLhhfrZhip6ERXVk/ESc6p/pWhhTUwtiOBmgrzcPd/cXgSm/DsFdW54+G1cWv4p/y882
+	bX/3lxYlAmeoX7xVZIhYQSgj3Zv8eu9kwoA2ny+AN/LPI/CM+r6m2CeO8Ib0SU4qSh5FJiI8MAl3+
+	vm6QaD/2MbodddyTYzlj5jsKaVS/c2y85K0FwbCTplgQ2hrT6OxLGPUUE7iwOHyFtXgj89Ab0HrNx
+	iv51iOxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oidh6-008YPL-2e; Wed, 12 Oct 2022 15:30:52 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1oidmf-008ZTW-Br; Wed, 12 Oct 2022 15:36:37 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oidh3-008YOr-Ns; Wed, 12 Oct 2022 15:30:50 +0000
-Received: by mail-pg1-x529.google.com with SMTP id l6so6286183pgu.7;
-        Wed, 12 Oct 2022 08:30:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=;
-        b=lqsttROg2cCrxJ2Bl9FcBPLiU2PO77JZxmRbQppEIbCw40JE4Hma4eaNUJqJWvDFef
-         biMxcw/yw2mQRgVWJmG6KxiT2VHCyW9lGM1aIbvpGRRiM3VXkE9a5WiIHcmKBmLoGt9c
-         JFofXzrbgVTrOf5WuGZ8hR1Ns6Il9XhkEpqojHHVfFroxh+wWOyfQKTW/c7y4cLQrqM5
-         h4he8xr48itJH2jTAcB9z1IVynBEV43U81JlyfbC5L6DD+xMq8LSKYu8SlhqlbM4CD9c
-         cbSs1zJ+tP/qPabTWWo8xNUYYI3rh5zzNwOmqGNxXx47PNMZlV6EBm65mtCMXxEDSAU+
-         kCyg==
+	id 1oidmd-008ZSo-0d; Wed, 12 Oct 2022 15:36:36 +0000
+Received: by mail-oi1-f178.google.com with SMTP id y72so12761954oia.3;
+        Wed, 12 Oct 2022 08:36:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=jgmSGKWiIJIpmvQ8q/p+qHWdSAvJyDT4YhTIosvbO2U=;
-        b=l4CYDe2kxkmbmhxOAFOojcS7tDhPNxrfIViyi7qWJ4slHvlL9sAkONZfGmSanzB2W4
-         FR3QnmqO1rZs2n0iIdbVmzaGTNjLuF6axmYkq9LC9wBXxOmDJJX8BN2nCDGLjyxICqRG
-         XEf5brP4+hJVRKfrKlehH9Rr3T0YdoGx8YBYwwOXg5u1cws5XEp/K88KPvqdKGk2qhNq
-         77bYr44QV0lIjY8vUx6iIUX/V6p4VuWAA34vPyv7hDZkz+tWT4/yLAD6d9FQlJZJiSbr
-         oz/t9L1ZhF7R04eV4gFI1l4rQn+DASMhKT5eyNyOWWeBZpmBbI7UKpsQ5mJKt5vI9hSV
-         QVPg==
-X-Gm-Message-State: ACrzQf3yDZApTNuaD8IEWd4coTtmytdPaursmEepAYuf5icrAFGlkbHe
-	kOKHuBrol8zKqevoJGk8jCft9TupKi4=
-X-Google-Smtp-Source: AMsMyM4Rme9GP63iTEYp6GDtI8cANT8/bRXLd6LmA4Ak4TfcpODAEz3uYTWmpmRdtSuWInqPN4hvmQ==
-X-Received: by 2002:a63:2c6:0:b0:43c:1f18:a475 with SMTP id 189-20020a6302c6000000b0043c1f18a475mr25922948pgc.186.1665588648509;
-        Wed, 12 Oct 2022 08:30:48 -0700 (PDT)
-Received: from ?IPv6:::1? ([2607:fb90:370a:3fc:ad3:2951:4f00:9866])
-        by smtp.gmail.com with ESMTPSA id a67-20020a621a46000000b0055f98a2c64bsm11804430pfa.142.2022.10.12.08.30.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Oct 2022 08:30:47 -0700 (PDT)
-Date: Wed, 12 Oct 2022 08:30:45 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-CC: Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Thompson <daniel.thompson@linaro.org>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_6/7=5D_gpiolib=3A_of=3A_factor_o?= =?US-ASCII?Q?ut_code_overriding_gpio_line_polarity?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <Y0agrWGm5CR3Rk5e@smile.fi.intel.com>
-References: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com> <20221011-gpiolib-quirks-v1-6-e01d9d3e7b29@gmail.com> <Y0agrWGm5CR3Rk5e@smile.fi.intel.com>
-Message-ID: <6D279EC4-6124-45C2-BCBB-D6CBB3385024@gmail.com>
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=n5lptyW3ie5pClcDGn5r9fNjFpkWHmTzbf2OcN0VuAU=;
+        b=nUa4x/7+UWiwr3pGxGU55A9qF8exYa51JfJWN5e7Q8RJ7et94KBiEcqMtcWRIUZW8i
+         WNlK6WZSJTtpi3DS1Ez+Hd4jmsDdSzXCQOwrtJjyDFqG0TOK5g2yWl5AGUBBAVzQ6oge
+         IFiL5lVeWjXpl0CVN0/V5n5yk7EnXT8PHGQiaeC30S0FeyZmcvtNr++TqHq/LqdWwG+Q
+         ZT6lXNaFjkyO2uZc0bLMI1ltZWEeecRMRkkiw0zRleH1+zzLzA6uxGiKmSA6wcOTQA4w
+         URb5sMJHGLSpyfdQc6ikmVafyGvD0FtZyEGJR5yz+562vz8b63b23Fv/budTFu4EIjzI
+         DIvg==
+X-Gm-Message-State: ACrzQf3c2UZb2wZe0Rwywoy/b7tDfR/87bzErzaLi8oU4x4WxHG6c8ZV
+	XfhVmYzLiTCTXRbsevS4Fw==
+X-Google-Smtp-Source: AMsMyM7YihuyUnIzLG6/okwQkls3Kbv8bMnGi6YmV46cxfr/5CDfSMZlI0ueMUzM8VQx2RPDXUmARA==
+X-Received: by 2002:a05:6808:1487:b0:354:923c:bc7a with SMTP id e7-20020a056808148700b00354923cbc7amr2454582oiw.145.1665588993393;
+        Wed, 12 Oct 2022 08:36:33 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id a28-20020a544e1c000000b00339befdfad0sm6746011oiy.50.2022.10.12.08.36.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Oct 2022 08:36:32 -0700 (PDT)
+Received: (nullmailer pid 2164100 invoked by uid 1000);
+	Wed, 12 Oct 2022 15:36:34 -0000
+Date: Wed, 12 Oct 2022 10:36:34 -0500
+From: Rob Herring <robh@kernel.org>
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, lee@kernel.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, chiaen_wu@richtek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, krzysztof.kozlowski+dt@linaro.org, cy_huang@richtek.com, sre@kernel.org
+Subject: Re: [PATCH v3] dt-bindings: mfd: mt6370: fix the interrupt order of
+ the charger in the example
+Message-ID: <166558333754.1988433.10175192101178879616.robh@kernel.org>
+References: <fcf4e7e7594070a8698dc0d4b96e031bcaa9b3a3.1665585952.git.chiaen_wu@richtek.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <fcf4e7e7594070a8698dc0d4b96e031bcaa9b3a3.1665585952.git.chiaen_wu@richtek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_083049_796584_23073669 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20221012_083635_077461_B2BD4184 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +78,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On October 12, 2022 4:10:37 AM PDT, Andy Shevchenko <andriy=2Eshevchenko@li=
-nux=2Eintel=2Ecom> wrote:
->On Tue, Oct 11, 2022 at 03:19:34PM -0700, Dmitry Torokhov wrote:
->> There are several instances where we use a separate property to
->> override polarity specified in gpio property=2E Factor it out into
->> a separate function=2E
->
->=2E=2E=2E
->
->>  static void of_gpio_flags_quirks(const struct device_node *np,
->>  				 const char *propname,
->>  				 enum of_gpio_flags *flags,
->> @@ -145,7 +167,7 @@ static void of_gpio_flags_quirks(const struct devic=
-e_node *np,
->>  	     (!(strcmp(propname, "enable-gpio") &&
->>  		strcmp(propname, "enable-gpios")) &&
->>  	      of_device_is_compatible(np, "regulator-gpio")))) {
->> -		bool active_low =3D !of_property_read_bool(np,
->> +		bool active_high =3D of_property_read_bool(np,
->
->Defining
->
->	bool active_high;
->
->at the top of the function will save you a few ugly indented code lines h=
-ere
->and in the next patch=2E
->
+On Wed, 12 Oct 2022 15:08:14 +0800, ChiaEn Wu wrote:
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+> 
+> Fix the interrupt order of the charger in the binding example.
+> 
+> Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+> v3
+> - Add a 'Reviewed-by' tag.
+> 
+> v2
+> - Revise the commit syntax.
+> 
+> v1
+> - Due to this patch modifiacation
+>   (https://lore.kernel.org/all/20221001202918.me7z2qzm7cmrkzsg@mercury.elektranox.org/),
+>   there will get some warnings in linux-next when compiling the dts.
+> ---
+>  Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
 
-Indeed, but I think the idea was to keep the quirks as independent as poss=
-ible=2E
-I guess I could split it further into separate functions, like the other q=
-uirk handling=2E=20
-
-Bartosz, Linus, any preference here?=20
-
-Thanks=2E=20
-
---=20
-Dmitry
+Applying to go into rc1 along with the other mt6370 fix, thanks!
 
