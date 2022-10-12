@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2BAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 13:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC282C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 13:55:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g+XC0o/Plp/xNIpjDbJNdUHcdlF8eXV//fvx4EMxcgI=; b=jguLEIucuW7PZ2FBcj23p0I+73
-	BfvFfd/lTmzMiX6mDFY4olOVcziea/LZVNhRIRqoDJ5mpXBWMfh9MRVm96EUWtVx80MQnQjqtjhd1
-	RFwShpkwPGZXii8WAw+dEccAPBS/Eun8uPMVfNRlVd2wtA1HONLTZtp4DHBK0h4AlkOKGBX2P4plg
-	f4eBEe5ksMKXVWwlsEd0xwcguLEt0v2wqNOQ3R6otEEGnshNaPB+A9t8pMuKTMKgR19wPdiDC7mB3
-	BfMy+IsvQMzCTG/dDc/wPzmHq62sJMqqeE1yXEbXyOyP7bVdaW3GfVNFJB0XYUujqTJfFV4pVA5z6
-	cCpsPTdw==;
+	bh=4W9PYnqE39FVIWPtx23Tk+GKt7RrA3d27Hf1sKJ7FqQ=; b=qWwaIDe6K4E/zW+slSZEdtdw00
+	EP5tSuEhnENUCDFyKNIkpTxtX4tYoBYU3NTzUBDxYjLDe8Je1XT00wypMxEwatD1DbBQGJKVqFtLV
+	y7MYOVfy8b/1QsYeUuEY1r6ZXAU1Bf2MADOgVnly0va79OX8fW3O1p/whfms2ITtsrEbR9a3U1yz5
+	ZtpnJ5CPyH0Rp9FT9PE+JkRh2BPDcscKh1x/yyTf0NzLlFFvJuUDzO5rU7PaoK9hLrMm4GfCtFXQ9
+	i6WVh81cfQ4JiZrgq9tSNdjZhtlmxtDp6SJTWbH9H0S0c6psKPM+GXzcBUhGtIaGtsCskVIGd2IzX
+	nbiIwlig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oibog-008By2-42; Wed, 12 Oct 2022 13:30:34 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1oicCQ-008HoX-6C; Wed, 12 Oct 2022 13:55:06 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiboN-008Br0-Oo; Wed, 12 Oct 2022 13:30:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665581415; x=1697117415;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=tV/ZvJGYw4mf000OleNKwCzv+JZQjAKj+4wcxHqkOco=;
-  b=ZBQy9cLxZEYf6ipbM+i5e1QUWaVw0TwqFLAThFamFphnPRvkFmbyXM7Y
-   RIZMWkMDyIuPLZ93OpdGtjLqfOnGcgjOuRF9ynCJmhrR9U1fhu15GA97D
-   q3pVBpfUq7YA4dsvPSnKq7vUfDIPgTiTQJFLNe50BdURcO8BJlaoJQvTq
-   hostlSwkqQ73sqY+zb52glZp/Cis8UMAkGTiAa8VSK7Lywfx4wrepS/lC
-   1KRe064a9aVoPZ+NAQUmj2JTRiRI5NV4ONyT1QbANjiyRL5ikkedMet0m
-   N8uIIdUdrvSDR3wxXZHpfGvbDTU0eBHbvELMUeMhfP+76re++Ethc1cfM
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="304779003"
-X-IronPort-AV: E=Sophos;i="5.95,179,1661842800"; 
-   d="scan'208";a="304779003"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2022 06:30:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="626766256"
-X-IronPort-AV: E=Sophos;i="5.95,179,1661842800"; 
-   d="scan'208";a="626766256"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP; 12 Oct 2022 06:30:07 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oiboD-005qlS-1e;
-	Wed, 12 Oct 2022 16:30:05 +0300
-Date: Wed, 12 Oct 2022 16:30:05 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Kent Gibson <warthog618@gmail.com>
+	id 1oicCD-008Hka-Ml; Wed, 12 Oct 2022 13:54:54 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id p3-20020a17090a284300b0020a85fa3ffcso2055439pjf.2;
+        Wed, 12 Oct 2022 06:54:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4W9PYnqE39FVIWPtx23Tk+GKt7RrA3d27Hf1sKJ7FqQ=;
+        b=UozGTu6YyIYkQQoEJ9mpP/ZP9EXBHkczxk9/ST0nwoYD5CXIifS1ksxnJ1z/XlD8Iv
+         DnXdQDc3QD5BBRt/elc/g3MpiMLgBMvz47ICmyWRQUwskodG72pwSD0FvOfnFwxR4gNT
+         0Nv0c1ZEd9a//beEgotrvzkxpjlIn11dOn3z2tb/KyektIxRp3AMw9k8NLnKlAlJMfAZ
+         ZW00APC6mm2Rgc0I9F6MtW+FIkz4pX/PUfBY7jV2tV/BJmcb7sxvPImZbSg5MEvkpS1A
+         VQqSmx00wjuq8wBY7o0koQO6OL1C+JRHOCj4nWqmVRt4CML82YQgP9dT0rzT4hrO952e
+         5MGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4W9PYnqE39FVIWPtx23Tk+GKt7RrA3d27Hf1sKJ7FqQ=;
+        b=xYmGoTZ73Qrc+BAnGQOXbbpODwXd3zQXeAnMvK50JtFeQrU7DEJ0Dey6t2P+7iJFmA
+         h2M/DUuw854bpdejmikInwrUObKu3KM8cm7v6WNTgqNLhUYPK2VEd9mSY/1+uDTizPaa
+         Da2b1RteK2D1beqOJ+IVEB4kCPpVSvKfoqXc1jM9Dsbtmx+fkTOr2pMnqKO+7wTxkGwe
+         0h+1SLOZmpgtgF2H8vZItgKNN9VetfpbMwFkTf0kCyJSi/Hu0+TlX0zel0DRrjxT2TAb
+         Q0Swpgm4T4dCzk7QQFIUmPu1muwkDgH2d1kIX5o7bL0675KgJAE4hKv86xgTnmBZNHb8
+         a30g==
+X-Gm-Message-State: ACrzQf12nmJSkmOXwnSF/Xn8ZpcQDlP4c+UcH96Th7hnfEPm0zZFJnwR
+	V6wlT0a66LY0eLLXT9zOTU4=
+X-Google-Smtp-Source: AMsMyM4GsOvqLbKi8bnipwZei9bul2eCxZ/xzZEAA7xagdE0qfFC/6Wvyu2i9hoIPRYsb/0vz6gCvA==
+X-Received: by 2002:a17:90a:f2c3:b0:20b:b75f:2f9e with SMTP id gt3-20020a17090af2c300b0020bb75f2f9emr5408380pjb.43.1665582890145;
+        Wed, 12 Oct 2022 06:54:50 -0700 (PDT)
+Received: from sol (110-174-58-111.static.tpgi.com.au. [110.174.58.111])
+        by smtp.gmail.com with ESMTPSA id s20-20020aa78bd4000000b00562f6df42f1sm8959924pfd.152.2022.10.12.06.54.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Oct 2022 06:54:49 -0700 (PDT)
+Date: Wed, 12 Oct 2022 21:54:39 +0800
+From: Kent Gibson <warthog618@gmail.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
 	Geert Uytterhoeven <geert+renesas@glider.be>,
 	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
@@ -69,18 +75,18 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
 	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org
 Subject: Re: [PATCH v2 02/36] gpiolib: cdev: Add missed header(s)
-Message-ID: <Y0bBXSHyxpdTGxoU@smile.fi.intel.com>
+Message-ID: <Y0bHH06cbngWk4mH@sol>
 References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
  <20221010201453.77401-3-andriy.shevchenko@linux.intel.com>
  <Y0SyVwjDl7NGfTPn@sol>
+ <Y0bBXSHyxpdTGxoU@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y0SyVwjDl7NGfTPn@sol>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <Y0bBXSHyxpdTGxoU@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_063015_850618_6D583E6C 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20221012_065453_761292_5026B185 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,38 +101,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 08:01:27AM +0800, Kent Gibson wrote:
-> On Mon, Oct 10, 2022 at 11:14:18PM +0300, Andy Shevchenko wrote:
-
-...
-
-> > -#include <linux/gpio.h>
-> >  #include <linux/gpio/driver.h>
-> > +#include <linux/gpio.h>
-
-> But moving the gpio subsystem header after the gpio/driver is not
-> alphabetical ('.' precedes '/') and it read better and made more sense
-> to me the way it was.
-
-Okay, I will move it back.
-
-...
-
-> > +#include <linux/seq_file.h>
+On Wed, Oct 12, 2022 at 04:30:05PM +0300, Andy Shevchenko wrote:
+> On Tue, Oct 11, 2022 at 08:01:27AM +0800, Kent Gibson wrote:
+> > On Mon, Oct 10, 2022 at 11:14:18PM +0300, Andy Shevchenko wrote:
 > 
-> I wasn't aware that we use anything from seq_file.
-> What am I missing?
+> ...
+> 
+> > > -#include <linux/gpio.h>
+> > >  #include <linux/gpio/driver.h>
+> > > +#include <linux/gpio.h>
+> 
+> > But moving the gpio subsystem header after the gpio/driver is not
+> > alphabetical ('.' precedes '/') and it read better and made more sense
+> > to me the way it was.
+> 
+> Okay, I will move it back.
+> 
+> ...
+> 
+> > > +#include <linux/seq_file.h>
+> > 
+> > I wasn't aware that we use anything from seq_file.
+> > What am I missing?
+> 
+> 
+> Eventually I can answer to your question: the commit 0ae3109a8391
+> ("gpiolib: cdev: add fdinfo output for line request file descriptors")
+> is what you are missing.
+> 
+> That said, we need this patch.
+> 
 
+Ah, yes - totally forgot that one is in flight.
+That makes sense then.
 
-Eventually I can answer to your question: the commit 0ae3109a8391
-("gpiolib: cdev: add fdinfo output for line request file descriptors")
-is what you are missing.
+With the gpio headers retaining their original order:
 
-That said, we need this patch.
+Rewiewed-by: Kent Gibson <warthog618@gmail.com>
 
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
