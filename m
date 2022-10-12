@@ -4,121 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A81BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 10:05:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 246F8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Oct 2022 10:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=; b=II389yDCdLYRBD9S9BAmLt7fd4
-	toIO5KQvOqnVSESYZS77gkC/ahQDZhL4Guw4iNjfGFneV66fJgmWC/X4QNPno5MAf+dOR4F2ElJU1
-	W5F1MCXMq3ZO4JN6P2VuMhgycuJuYpq5AK/9TYXVDFmaQ+XRPoRCNK9lxlKQify60bSszPjXJ9nQY
-	qEDz4SQno5sXPhFrtc8y6ju3JR6gOYgCARXAcl/Z9Xp+5wKrE2PrX7bg1joHt9avZqlIsjQPuv3Jb
-	LZUw7nlBrVSXPuV6SKG0q0QQ+QXFLvW3RkppuRgs+1IbfGtL3slX409bq/NbCbCV9tehyXZLR1fd6
-	gX7jDOqg==;
+	bh=tI7PHfOLhCMDky4RFaRr7XN7h/vhLHywitQ65xQxnf4=; b=h+bbdGruESaUFCPVhv5nJcitWp
+	jPF4qOrpEIk9BfB3+xp9H5Nm6rZZ0KRTXy+ajuzJ0J4K4mHnNk91lManirfNvcf1PL2qIxgeSBV7L
+	MwuDumpg2ecVoWYsOvr+5eWM3Ucqw7EYOHVRUA/dGVJfbzCZFDT/XN0vjk/skzb8nzAgnCMGdgFRF
+	o+snDM0c7lDSJ+5jxrZFwE2Vuie5RMPqNXpR7WS6/jLGFSwzc1OhjbL+yOBNRubnI3cOJCS8tWXx7
+	OWwhvs2Sk2uyiiyImpXK3tOXty4NqwHj6DPulKbaZ2ZslDQQWdSiOeqIKZtaycddGrn7uWK/N8V4d
+	/Kum2g6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiYbd-007aKg-P6; Wed, 12 Oct 2022 10:04:53 +0000
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+	id 1oiYir-007bjL-Vj; Wed, 12 Oct 2022 10:12:21 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiYbY-007aIs-UY; Wed, 12 Oct 2022 10:04:50 +0000
-Received: by mail-qt1-x835.google.com with SMTP id a24so2295946qto.10;
-        Wed, 12 Oct 2022 03:04:47 -0700 (PDT)
+	id 1oiYig-007bfH-5N
+	for linux-mediatek@lists.infradead.org; Wed, 12 Oct 2022 10:12:12 +0000
+Received: by mail-wm1-x335.google.com with SMTP id c7-20020a05600c0ac700b003c6cad86f38so914542wmr.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Oct 2022 03:12:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=;
-        b=ZuAn0riuXHel9rEBKRhDJaphdwknBUsVfuUv/T2PqZwW+uHUs0jQAoNTggSP2xYvxV
-         AIPBHcfBEeKUY8XaTwBfDZ4rSHoMsN+0EmQWS+Q65k7ex3GR3DSFMtYWLj5CjjdFW5lS
-         H15Im9ztaYgi/pdTI+XTH4+61vil18OUHSI0xGSAcGYNKUvzy6F36vXqiFhOKG65c2tn
-         Hm9UqrwXHcz71mbsaS1jF9iuBu0ckjr5DhBRLVoVyj42mBo6ELsboWfCQHWyRGQ4tlaj
-         QaFlpQ5WtgjVo1xKNFF2bpP4chzh3RulgtzO05YqhYqIONKukzB/OS4NwSuMzh0mSuvU
-         pMLQ==
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=tI7PHfOLhCMDky4RFaRr7XN7h/vhLHywitQ65xQxnf4=;
+        b=jDN6aNOQF63xHDfgl/I+pcb8pIDncqDL92OU2QwG5x0xwjP6ya9EaE6e2g8FGRKNNJ
+         EQj4rYIoTeav/6I19wn6vMm34avu9+q90pOc4S2nZg+H4VtgwONb3a5cD7f+bSFqcPJJ
+         /ED/qjQeCg9OXGa5zbCTmq0nYt4+Bd+xxYc2uAMGLFcuCUCPeaQx7YWHvmEgobDv4TDE
+         ytHpDyOee8PyyNlO5/crICK1Qppi7A/pZKBjKeV+/9Cc2wmGY+9/o8nzgIeUJG8P5h/N
+         oYrWg+KPejhMNOzXdSa8j8Xw8+2R8ATvmFNa/CvBPeylbqWObW4RDLpB6MM3bxV5v+6A
+         w0ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=R2uNoWDHy+GOry29L6DC1dXWZKJOzJDC9JxozJVSpGE=;
-        b=50/L+Ep9PBDhDCTmNjq6h40euE0ztxaaIkTYKxQMUrUQk+8g95T2Qohi3cXRMpP55U
-         Mg1BpRDi08HU5nIsleAluS1a6vp7ZUso3dS1ouUxwDT33eE9sJ41ZIzMNnBZJp/eZW8N
-         e0lHkrutvXt/5xofqvHMXq0K6i8eGps6h9SgICnrbal63UF0ye2zcpV3Q7GAvZoG5qAZ
-         Wnpms4TwHJa3rmJ75bn4FwMAK1PlikTCFQn+y5ParVBDNi3SE+vaZTU5b9rJ2/pqDRCB
-         eY5S8QugjvFzo7zir+nr5UCwOfc6WmYUegR7nTI9Rld0HuDO138a2kU6mapsfBdhcaBg
-         p5cA==
-X-Gm-Message-State: ACrzQf3lpG1iSLkjgZanSij2QnKUQyipJOpcEUbWR/UpE/MiHP19Jogb
-	V1icaeBPSZNqxfvFwK34ZF8h/ON9MD88DQSX5q8=
-X-Google-Smtp-Source: AMsMyM5ie8LeIoK7BaYP5eKG5FZkx73UfHVDBrIIwi+8uhHlPAnlyvjeeFl/0Iy9XueA0qyfGOPRZ2XY3nQxTptpumo=
-X-Received: by 2002:ac8:7c43:0:b0:35c:cd8f:3da5 with SMTP id
- o3-20020ac87c43000000b0035ccd8f3da5mr23132665qtv.61.1665569086451; Wed, 12
- Oct 2022 03:04:46 -0700 (PDT)
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tI7PHfOLhCMDky4RFaRr7XN7h/vhLHywitQ65xQxnf4=;
+        b=LwmTNTA7pn1MPFPSx6Z/XZ3sa6a/ErxBNPBJPvGyaSk1rW73ROyUH0+36gwtTar/F3
+         g9ujRYYgvPKOtwqdA62pjDDVTrjqrukpUYUBjsgjX+/qpYIc/QKNUnnxB8bqN9lLGxiC
+         eJcYPJ9/pK2UfPlHHiq1l2xQUO/HXiVr6Re1nJsgUs7QwgKPrCzhJM5nVeUvHVaDiNc2
+         owia3dsHbG6H10S9PaHiOepCgF/ZHWlEzv92iWgvvxCltTng0DzuSYncPeAtltTPbnUm
+         ieE4p4ZcNoWcGBJZjOlYPDnY3kJqyjPjAjU0DCIx397PfErndX2acheKSbrWimGb91k8
+         mexg==
+X-Gm-Message-State: ACrzQf0RltC5dFh9f0wt9YNu7xxeoS1zO85AB8PKvdeJ8LigmQQmGKOR
+	2Mf61/yrS6FSr0zYvk9IPgKrzg==
+X-Google-Smtp-Source: AMsMyM59Kx/pKJsX0EBYR+W2gL9kth140yo0oBjBBh/p1IQe4wPr6eHbwUWALfwFZCGl5TO57rgPAg==
+X-Received: by 2002:a05:600c:d5:b0:3c0:fba1:d2b9 with SMTP id u21-20020a05600c00d500b003c0fba1d2b9mr2192182wmm.108.1665569525703;
+        Wed, 12 Oct 2022 03:12:05 -0700 (PDT)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
+        by smtp.gmail.com with ESMTPSA id t9-20020a05600c198900b003b4fe03c881sm1390163wmq.48.2022.10.12.03.12.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Oct 2022 03:12:05 -0700 (PDT)
+Date: Wed, 12 Oct 2022 11:12:03 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+Subject: Re: [PATCH 2/7] gpiolib: of: consolidate simple renames into a
+ single quirk
+Message-ID: <Y0aS80PlA/T3mx2d@maple.lan>
+References: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com>
+ <20221011-gpiolib-quirks-v1-2-e01d9d3e7b29@gmail.com>
 MIME-Version: 1.0
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
-In-Reply-To: <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 12 Oct 2022 13:04:10 +0300
-Message-ID: <CAHp75VdDjyUAZBTaoPOe5oA3f_5xRznAooq08=Eff4F1AZyVOQ@mail.gmail.com>
-Subject: Re: [rft, PATCH v2 00/36] pinctrl: Clean up and add missed headers
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier <maz@kernel.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Billy Tsai <billy_tsai@aspeedtech.com>, 
-	Thomas Gleixner <tglx@linutronix.de>, Linus Walleij <linus.walleij@linaro.org>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Samuel Holland <samuel@sholland.org>, 
-	Horatiu Vultur <horatiu.vultur@microchip.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	Phil Edworthy <phil.edworthy@renesas.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Fabien Dessenne <fabien.dessenne@foss.st.com>, Prathamesh Shete <pshete@nvidia.com>, 
-	Basavaraj Natikar <Basavaraj.Natikar@amd.com>, linux-gpio@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
-	linux-actions@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
-	alsa-devel@alsa-project.org, patches@opensource.cirrus.com, 
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Avi Fishman <avifishman70@gmail.com>, 
-	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
-	Benjamin Fair <benjaminfair@google.com>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Paul Cercueil <paul@crapouillou.net>, Damien Le Moal <damien.lemoal@wdc.com>, 
-	Tony Lindgren <tony@atomide.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Michal Simek <michal.simek@xilinx.com>, Andy Gross <agross@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@somainline.org>, Tomasz Figa <tomasz.figa@gmail.com>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221011-gpiolib-quirks-v1-2-e01d9d3e7b29@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_030449_045446_062D57D9 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20221012_031210_333931_7623A469 
+X-CRM114-Status: GOOD (  27.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,32 +93,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 11:56 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
-> On 10/10/2022 1:14 PM, Andy Shevchenko wrote:
-> > Currently the header inclusion inside the pinctrl headers seems more arbitrary
-> > than logical. This series is basically out of two parts:
-> > - add missed headers to the pin control drivers / users
-> > - clean up the headers of pin control subsystem
-> >
-> > The idea is to have this series to be pulled after -rc1 by the GPIO and
-> > pin control subsystems, so all new drivers will utilize cleaned up headers
-> > of the pin control.
-> >
-> > Please, review and comment.
+On Tue, Oct 11, 2022 at 03:19:30PM -0700, Dmitry Torokhov wrote:
+> This consolidates all quirks doing simple renames (either allowing
+> suffix-less names or trivial renames, when index changes are not
+> required) into a single quirk.
 >
-> Did you really need to split this on a per-driver basis as opposed to
-> just a treewide drivers/pinctrl, drivers/media and drivers/gpiolib patch
-> set?
+> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+> ---
+>  drivers/gpio/gpiolib-of.c | 176 +++++++++++++++++-----------------------------
+>  1 file changed, 64 insertions(+), 112 deletions(-)
+
+Nice diffstat, almost a shame that the diff algo itself has latched onto
+spurious anchor points to generate something that is so hard to read
+;-) .
+
+I've reviewed this pretty closely and AFAICT it does exactly what the
+preivous code does. Thus the comments below are all related to things
+that the new table makes obvious that the previous code handled in a
+rather inconsistent way. Maybe that means these could/should be fixed
+in an extra patch within this patch set.
+
+I guess that means, despite the feedback below, *this* patch is:
+Reviewed-by: Daniel Thompson <daniel.thompson@linaro.org>
+
+
+> diff --git a/drivers/gpio/gpiolib-of.c b/drivers/gpio/gpiolib-of.c
+> index cef4f6634125..619aae0c5476 100644
+> @@ -365,127 +365,83 @@ struct gpio_desc *gpiod_get_from_of_node(const struct device_node *node,
+> +static struct gpio_desc *of_find_gpio_rename(struct device_node *np,
+>  					     const char *con_id,
+>  					     unsigned int idx,
+>  					     enum of_gpio_flags *of_flags)
+>  {
+> +	static const struct of_rename_gpio {
+> +		const char *con_id;
+> +		const char *legacy_id;	/* NULL - same as con_id */
+> +		const char *compatible; /* NULL - don't check */
+
+"don't check" doesn't seem desirable. It's not too big a deal here
+because everything affected has a vendor prefix (meaning incorrect
+matching is unlikely). Should there be a comment about the general care
+needed for a NULL compatible?
+
+
+> +	} gpios[] = {
+> +#if IS_ENABLED(CONFIG_MFD_ARIZONA)
+> +		{ "wlf,reset",	NULL,		NULL },
+
+CONFIG_REGULATOR_ARIZONA_LDO1 is better guard for this con id.
+
+
+> +#endif
+> +#if IS_ENABLED(CONFIG_REGULATOR)
+> +		/*
+> +		 * Some regulator bindings happened before we managed to
+> +		 * establish that GPIO properties should be named
+> +		 * "foo-gpios" so we have this special kludge for them.
+> +		 */
+> +		{ "wlf,ldoena",  NULL,		NULL }, /* Arizona */
+
+CONFIG_REGULATOR_ARIZONA_LDO1 is better for this one too.
+
+
+> +		{ "wlf,ldo1ena", NULL,		NULL }, /* WM8994 */
+> +		{ "wlf,ldo2ena", NULL,		NULL }, /* WM8994 */
+
+CONFIG_REGULATOR_WM8994 is a better guard for these.
+
+
+> +#endif
+> +#if IS_ENABLED(CONFIG_SPI_MASTER)
+> +		/*
+> +		 * The SPI GPIO bindings happened before we managed to
+> +		 * establish that GPIO properties should be named
+> +		 * "foo-gpios" so we have this special kludge for them.
+> +		 */
+> +		{ "miso",	"gpio-miso",	"spi-gpio" },
+> +		{ "mosi",	"gpio-mosi",	"spi-gpio" },
+> +		{ "sck",	"gpio-sck",	"spi-gpio" },
+
+CONFIG_SPI_GPIO is a better guard for these.
+
+
 >
-> 36 patches seems needlessly high when 4 patches could have achieve the
-> same outcome.
+> +		/*
+> +		 * The old Freescale bindings use simply "gpios" as name
+> +		 * for the chip select lines rather than "cs-gpios" like
+> +		 * all other SPI hardware. Allow this specifically for
+> +		 * Freescale and PPC devices.
+> +		 */
+> +		{ "cs",		"gpios",	"fsl,spi" },
+> +		{ "cs",		"gpios",	"aeroflexgaisler,spictrl" },
 
-I can combine them if maintainers ask for that, nevertheless for Intel
-pin control and GPIO drivers, which I care more about, I would like to
-leave as separate changes (easy to see in history what was done).
+CONFIG_SPI_FSL_SPI for these.
+
+> +		{ "cs",		"gpios",	"ibm,ppc4xx-spi" },
+
+CONFIG_SPI_PPC4xx for this.
 
 
--- 
-With Best Regards,
-Andy Shevchenko
+> +#endif
+> +#if IS_ENABLED(CONFIG_TYPEC_FUSB302)
+> +		/*
+> +		 * Fairchild FUSB302 host is using undocumented "fcs,int_n"
+> +		 * property without the compulsory "-gpios" suffix.
+> +		 */
+> +		{ "fcs,int_n",	NULL,		"fcs,fusb302" },
+> +#endif
+>  	};
+> +	struct gpio_desc *desc;
+> +	const char *legacy_id;
+> +	unsigned int i;
+>
+>  	if (!con_id)
+>  		return ERR_PTR(-ENOENT);
+>
+> +	for (i = 0; i < ARRAY_SIZE(gpios); i++) {
+> +		if (strcmp(con_id, gpios[i].con_id))
+> +			continue;
+>
+> +		if (gpios[i].compatible &&
+> +		    !of_device_is_compatible(np, gpios[i].compatible))
+> +			continue;
+>
+> +		legacy_id = gpios[i].legacy_id ?: gpios[i].con_id;
+> +		desc = of_get_named_gpiod_flags(np, legacy_id, idx, of_flags);
+> +		if (!gpiod_not_found(desc)) {
+> +			pr_info("%s uses legacy gpio name '%s' instead of '%s-gpios'\n",
+> +				of_node_full_name(np), legacy_id, con_id);
+> +			return desc;
+> +		}
+> +	}
+>
+> +	return ERR_PTR(-ENOENT);
+>  }
+
+I would normally trim last but this but given what git did to this particular
+patch I left it as a public service ;-)  (it has the - parts of the
+patch removed).
+
+
+Daniel.
 
