@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A085FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E680C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+pjn465tBlWE2TKJcQ1vmz28ymlMtNutMRGiw9pjsKU=; b=WPgtpDeTSVtH1hz2vngl4dEVv1
-	QXvxRfcxHTy5B2gmAEF8jYC82+fdZdYleg3kGp5Fih7igT334J4VA56KglsLLrDiNqyuYdx2iOmB6
-	TuGQMuKjqrwZHSBH3EZ/yzOBIMhRBPErTOSn4sw6ZKqCzj0HXPBgRA9XGwLyZ4r32zxz9+5tEEGQa
-	4zyWywSnOiTrBQppWJvEYMkN4qD9ZULl3kHd35JfWKkcE0dUANR8JA+rJPnqrZNKkXkHQVhw/03dn
-	4H0SanSlMUeRPhKgq3fsGdLJRofO1mVanyq4DwOyVz8qF4qoa6vVSUSjmfQhuBZ90LUN3cWuOre2C
-	8PbDcKNw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xviEVCzM98P+sYh3OmDpU6yEPeOmCoJkVobO0/V/DjI=; b=YJ08yaq3u43Wbtnce3FX54hek4
+	3zCe532R40ybbd+g/GwraIOgheLOd+jEGxZ9IZqPlJhlFB7Zr8oc9yiTz6dpjlFuS4GFRaiGeTpzu
+	MJdclTIlruJa6XXkXswjxRMztJxLPELoH3bpW7CHr7LHpVie+7y//3SKRi+qiQ+pUr1MxBczKae8Z
+	yVCUE/0HBQ5Pv+966HPW2oKqk6UNDOt+lCj++pbVmMB7H3nQoIHuXY7/X0RymnPTEEiKhJvFWgx6y
+	aCgsXePxmlsOS02J3xDiik/sIF9ZQAZhb8E0bIU8jzX0fLg0ypUPnU03h6HXoR+vHZerz0fg8zTkf
+	vBe8/yvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oizyL-00CErS-5y; Thu, 13 Oct 2022 15:18:09 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oj02l-00CFiz-2j; Thu, 13 Oct 2022 15:22:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oizyA-00CEnl-DP; Thu, 13 Oct 2022 15:18:00 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E44781884C4B;
-	Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id B029F2500015;
-	Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 74E139EC000A; Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1oj02R-00CFZW-Ew; Thu, 13 Oct 2022 15:22:25 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78E626602366;
+	Thu, 13 Oct 2022 16:22:18 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1665674539;
+	bh=DM9dp4q0ZBB9kwxv9JwDMM/0XtGc6/2vq44258xzabo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZgRRH8FHMlEkPlzeZV9XV9OOigpZgq/LZPrWhdZAh7y5j3XtwFUjKX/bsy0oMA9x/
+	 cbJyRFPkx9ppVUt1gcLN+pur7cHmNxVKaN1tARC5ZIHGHASwhXqo8UO5if6zHQex2F
+	 SbH0o8dBl2hE47bBjSaZJs5xZ72O2L5jj78m4b/B7abjLwRA2hgXKIPOpxl/lvyg6W
+	 4b6Pgkkm6vZpbxJZNo8odrnQvrcBFtw6SHSGPydEexGIGeC/N8R4MZ4KT5/ybozsiK
+	 9N7Xa+XbzA/ixaXWOYz8BTlK6Wed/vkEOi27JxSA8/JRv62v9zD2QQRIfHqku0B6Zh
+	 0/eiTxG6qFjTQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	sam.shih@mediatek.com,
+	hanks.chen@mediatek.com,
+	weiyi.lu@mediatek.com,
+	zhiyong.tao@mediatek.com,
+	andrew-sh.cheng@mediatek.com,
+	viresh.kumar@linaro.org,
+	chunfeng.yun@mediatek.com,
+	fparent@baylibre.com,
+	mars.cheng@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/8] ARM64 MediaTek devicetree fixes - Part 1
+Date: Thu, 13 Oct 2022 17:22:04 +0200
+Message-Id: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Date: Thu, 13 Oct 2022 17:17:42 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
- <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
- Machata <petrm@nvidia.com>, Florent Fourcot <florent.fourcot@wifirst.fr>,
- Hans Schultz <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>,
- Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v7 net-next 9/9] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-In-Reply-To: <Y0ggn5SZnw+4SGLC@shredder>
-References: <20221009174052.1927483-1-netdev@kapio-technology.com>
- <20221009174052.1927483-10-netdev@kapio-technology.com>
- <21f799c5a7a79e2e4b111a95fff6fe3d@kapio-technology.com>
- <Y0ggn5SZnw+4SGLC@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <46112084313969f9a6dfdea9fe52b4b1@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_081758_652435_6660E3F7 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20221013_082223_846303_5DE3B44B 
+X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,25 +83,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-10-13 16:28, Ido Schimmel wrote:
-> On Wed, Oct 12, 2022 at 11:46:55AM +0200, netdev@kapio-technology.com 
-> wrote:
->> Ido, have you had time to look at this patch set, and do I need to 
->> release a
->> v8 to fix those two forgotten statics and maybe also this new 
->> switchcore
->> driver that was not there when I posted this patch set?
-> 
-> I don't know which changes you are referring to, but v8 should
-> incorporate all the changes requested so far. Do not post it as long as
-> net-next is closed (unless marked as RFC):
+This series fixes devicetree warnings for some MediaTek DTs.
 
-Ohh, I missed declaring two functions as static in chip.c, and 
-unfortunately my compiler did not give me any warnings...
+Since there's a lot to be done and since not all fixes are trivial,
+I decided to do this in more than one step, as to ease work for
+reviewers, maintainers and for .. me.
+This being part 1 means that there's more to come... a bit later :-)
 
-What is the schedule for net-next to be open (I guess that it is closed 
-as of now)?
+AngeloGioacchino Del Regno (8):
+  arm64: dts: mt7896a: Fix unit_address_vs_reg warning for oscillator
+  arm64: dts: mt6779: Fix devicetree build warnings
+  arm64: dts: mt2712e: Fix unit_address_vs_reg warning for oscillators
+  arm64: dts: mt2712e: Fix unit address for pinctrl node
+  arm64: dts: mt2712-evb: Fix vproc fixed regulators unit names
+  arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
+  arm64: dts: mediatek: pumpkin-common: Fix devicetree warnings
+  arm64: dts: mediatek: mt6797: Fix 26M oscillator unit name
 
-> 
-> https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html#how-often-do-changes-from-these-trees-make-it-to-the-mainline-linus-tree
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   | 12 +++++-----
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     | 22 +++++++++----------
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi      |  8 +++----
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  2 +-
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  2 +-
+ .../boot/dts/mediatek/pumpkin-common.dtsi     |  6 ++---
+ 6 files changed, 26 insertions(+), 26 deletions(-)
+
+-- 
+2.37.2
+
 
