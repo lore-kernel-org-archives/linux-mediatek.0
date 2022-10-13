@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1624C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF8EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ov420NLpC0YD+Qsl19uGAo67aWaxWZx+qIQbqcUwkiQ=; b=vUUOXPjBhEU0fxo+wxgQHDOmUb
-	lmDTMochUa7WCbxGePPAVB7gL3R6AiS6uLtE/JoFqXrdR9KCXzlXdW0IdmMMI4rzwfCbrCF2DK9Ep
-	MwhPNLlKIHpNd0xs0eGKSj7Nh4ZUwFDOIOgT+ozf4Ib5DKv4x1v37EOOhhh3cm36z0cyp4CdoqoUw
-	ageXSltlxc2m8KndlqOXKMVxKP257/Jdwft9QX+qsb3m/AGwuLYygM3u0HIGEcTUSjir9xU6+foUX
-	QYVsjYQb7EdWijwc052MoaSlGJC6ZTPeKwH9gpAjQ48KweVPRF8daExy2J0gq0U7iqOvjWcVyj1Dl
-	4vRh2LEA==;
+	bh=dRL8tQJfIQR+TzHVYyVgFHzByMkel/re0u5um8u7Hg8=; b=3t7j8VPJ9x3GPr6gkKxaRKZGpf
+	gbaKDegtKWxMiQb8+Zx57PYUZ7jT8RwO1jtuTi26TYCECJbHRrOCA5HkpEZq2VadnkWLcyWmHp3ze
+	R3BpLnT/QrNnUHnnpsPfshCHgnHEu8hGy9qklFji06fznDolCWjmMT3iewsBsvaCjk6N5eRLnS5f+
+	Wr4I/Vj8wvF223mQCoyVpSpi5EgQeKgPXhYV5KRcux+I7t5tHJa3BDmVdIHoZ3DatqHLEvoTQ4uxB
+	AZ6/wASRrRRFgTqlcJSqi6SZUa4p+/iAzQhUo35P+jujnCSk+vo8CQj2BYOddged78ZJXftKTn7Gp
+	IpIfok/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj058-00CGvw-7o; Thu, 13 Oct 2022 15:25:10 +0000
+	id 1oj05Y-00CHBY-LB; Thu, 13 Oct 2022 15:25:36 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj02V-00CFcl-5y; Thu, 13 Oct 2022 15:22:29 +0000
+	id 1oj02W-00CFdd-7Q; Thu, 13 Oct 2022 15:22:29 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EA99A6602370;
-	Thu, 13 Oct 2022 16:22:24 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 06D6E660236E;
+	Thu, 13 Oct 2022 16:22:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665674545;
-	bh=OIVvm9eZZnDpMulbdkAjAXAZiIM5QtEjlxZKqlbUhN4=;
+	s=mail; t=1665674546;
+	bh=CSkWVd8BmDjVpIlk/S9C3R40X1S6a2cABTC54a3Nrtg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KnNC2aRr1CuewZByFW/jeStIoRR+cQKvdAc1e4Nr2itAlV18cP5mtMa9/jxqaXSCk
-	 sgucXlPqmUQ47m2fAIT7AQdgdzJBYjEhSb6x2GSRHfIAT8lqfkvfvOWpWWnqNbOX5R
-	 HLnmKQp34796JcP+uEprJMy9hi1xfJ7XAxHvejEe38Azb+Dy3I337s0zFX+7Cx7bQ5
-	 Vjoa+sBjwjdt3ceInjCKF7zVfYwrKY4sokMPBiWCfs10FIMwfxtOX3P/wTsQNaa1ou
-	 hx84eKrCmDIiZq4AiXSoZGCiEsU/VhmpBDvsJpqFuIQGLm/DnMboJA9tC+valF/VmF
-	 7Y+up0VvDk0rg==
+	b=j9tomOInvoFd2WsL9FZDBnDFc3BYU56eyEK4M5E5t9tjLdXIZ5/fLkUpb7HzuT7Tr
+	 BEg7S4g854qW+WBohgIan9syw55r9hTvROfgbHeOQY0kQJvQzMe5nD/q38W+eRmLg+
+	 2NtqMOs/qO4fzLEWj9IF619rsrsiZbwdem6dT/L71MgkIyVtMnr3jT07xqDtonD+HQ
+	 wpJqnpuwL/dExzYTaqh8bYWmoAlTN1+JreemC5pwNmmzyW2BE660cAYcgqVPBu5+W3
+	 FO7/PrdnBOi+OHQKj2CNlj+AzI4ZPkivflEBdw4o4FOgjcq8rHNmLBQRDK8h0q+I4a
+	 BxGLneEMUMZ3g==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -59,17 +59,17 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 6/8] arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
-Date: Thu, 13 Oct 2022 17:22:10 +0200
-Message-Id: <20221013152212.416661-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 7/8] arm64: dts: mediatek: pumpkin-common: Fix devicetree warnings
+Date: Thu, 13 Oct 2022 17:22:11 +0200
+Message-Id: <20221013152212.416661-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_082227_480578_5EBEFFEC 
-X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-CacheID: sfid-20221013_082228_459182_F47C233D 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,55 +85,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the names to regulator-usb-p{0-3}-vbus to fix unit_address_vs_reg
-warnings for those.
+Fix the pinctrl submodes and optee node to remove unneeded unit address,
+fixing all unit_address_vs_reg warnings.
 
-Fixes: 1724f4cc5133 ("arm64: dts: Add USB3 related nodes for MT2712")
+Fixes: 9983822c8cf9 ("arm64: dts: mediatek: add pumpkin board dts")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-index 638908773706..d31a194124c9 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-@@ -50,7 +50,7 @@ extcon_usb1: extcon_iddig1 {
- 		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+index 8ee1529683a3..ec8dfb3d1c6d 100644
+--- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+@@ -17,7 +17,7 @@ chosen {
  	};
  
--	usb_p0_vbus: regulator@2 {
-+	usb_p0_vbus: regulator-usb-p0-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "p0_vbus";
- 		regulator-min-microvolt = <5000000>;
-@@ -59,7 +59,7 @@ usb_p0_vbus: regulator@2 {
- 		enable-active-high;
+ 	firmware {
+-		optee: optee@4fd00000 {
++		optee: optee {
+ 			compatible = "linaro,optee-tz";
+ 			method = "smc";
+ 		};
+@@ -209,7 +209,7 @@ pins_cmd_dat {
+ 		};
  	};
  
--	usb_p1_vbus: regulator@3 {
-+	usb_p1_vbus: regulator-usb-p1-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "p1_vbus";
- 		regulator-min-microvolt = <5000000>;
-@@ -68,7 +68,7 @@ usb_p1_vbus: regulator@3 {
- 		enable-active-high;
+-	i2c0_pins_a: i2c0@0 {
++	i2c0_pins_a: i2c0 {
+ 		pins1 {
+ 			pinmux = <MT8516_PIN_58_SDA0__FUNC_SDA0_0>,
+ 				 <MT8516_PIN_59_SCL0__FUNC_SCL0_0>;
+@@ -217,7 +217,7 @@ pins1 {
+ 		};
  	};
  
--	usb_p2_vbus: regulator@4 {
-+	usb_p2_vbus: regulator-usb-p2-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "p2_vbus";
- 		regulator-min-microvolt = <5000000>;
-@@ -77,7 +77,7 @@ usb_p2_vbus: regulator@4 {
- 		enable-active-high;
- 	};
- 
--	usb_p3_vbus: regulator@5 {
-+	usb_p3_vbus: regulator-usb-p3-vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "p3_vbus";
- 		regulator-min-microvolt = <5000000>;
+-	i2c2_pins_a: i2c2@0 {
++	i2c2_pins_a: i2c2 {
+ 		pins1 {
+ 			pinmux = <MT8516_PIN_60_SDA2__FUNC_SDA2_0>,
+ 				 <MT8516_PIN_61_SCL2__FUNC_SCL2_0>;
 -- 
 2.37.2
 
