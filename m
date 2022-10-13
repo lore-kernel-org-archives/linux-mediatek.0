@@ -4,64 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D08BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 16:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E53C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 18:15:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MTNYopgtbiILVgQC03TdOSCy7LC9F6xBvBsVZFPrUac=; b=UKueD09fhmcFAnKDmV7GvNAl7Q
-	k+9QCuD2WJ3IWaNDw/9MOsEmTBbUVQxviCyLrYZ1K8KfoPvDGbNLI74xM4jGrXIwKjBZZP/QzPWv0
-	yOOe1yueaRAc/UOA9nDzYSNtFEakmtZgCqnk0RzXqM+7yviz26DzGVAEI6P5I4CwqI8GOQjUDWRu8
-	e9j6SNf7RLgGDg0758CwPzO4U3Tc3apAg4uOB1U7ZkGi1zKyx3cWlgwYX6xA+ipPZy786yLSXeaoD
-	V/KTENuvLS71JXXKd+vsXFVkdiMvbfcrVwq8AI7we/dy+5mmsbQ915dvwTALZutayUjuLHqEWUWil
-	5Kxxr0jw==;
+	bh=XedxsMWNS3R97E2u0y/azOBtQq3/ET+ktmx8XyMZ93Q=; b=ugjMBLt3Ud347jQSREs8luz6wJ
+	+YZiK5S/sqqkgg2xVYQ0U/rqMYfwDcHo8j0+iZWrcxEUPbb8FgV6TME8gjpRojnXlgp9yna8QB+Rd
+	QrjmoZ8DE6ULBU1lNIo+5C6HexQGKps5ae3GGVwoaBv63xkIx3HycT+GDjZVSp7tuZpyJA5PPBgFi
+	10bOB7ljM4b/LU6yU2ZxlxWXpFz7AoqkKqwWgtKU0KSBQWnLeO7jcbhMW+EAo+2JT4m1/ih/5b09b
+	mOHONUCRwW8FdHdj7ouww50R2CKRNCDmHqv3ySFSZbuskwZgo2ab5+jOpPTubzWtH1x2meS5ViDp+
+	azsZcV/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj123-00CQYN-Kj; Thu, 13 Oct 2022 16:26:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oj2jL-00Ce5M-9Y; Thu, 13 Oct 2022 18:14:51 +0000
+Received: from mail-mw2nam12on2043.outbound.protection.outlook.com ([40.107.244.43] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj120-00CQXa-9o
-	for linux-mediatek@lists.infradead.org; Thu, 13 Oct 2022 16:26:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DFFD1604EF;
-	Thu, 13 Oct 2022 16:25:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9C18C433C1;
-	Thu, 13 Oct 2022 16:25:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1665678358;
-	bh=0ZprB8JJOEWP6AIX59mAnfcvCDhO84Hoakg5vDW+wH8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WDBhHIlywcm0Sj5MTFIEnPCiTB+Xr1BVPbpE37MzVoV2EG+QsFrYKsLUPz9QZLbNF
-	 fWZORxKHM98pJ9/qB91fTNMKE1TDk5YyvFVRaREVcOa6HQzNgMpsbzoTId9rEr1jgi
-	 2+zZ9PCP+OzXmQk2dv5W4OVPv403110N1WAjRI5zs+XGgEMX8tRCsO5shOYYSgR2su
-	 NDC1pp6IIRr8TRPJ3gS7ItZHXcyZIXkWlJSalwLKnVMTYdrQlw8QgJRVADBNgdx6+1
-	 L3zipe3cmT4SGFSphbhQ0r5/NKkoQruzY1syNNHvjEwVotDIDopIr0MTTb5pXFoN1y
-	 iUsO3sMS1UYnA==
-Date: Thu, 13 Oct 2022 18:25:54 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes@sipsolutions.net>,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [bug report] mt76: implement functions to get the response skb
- for MCU calls
-Message-ID: <Y0g8Ev4hE7m/kP3H@lore-desk>
-References: <20211008130007.GA23161@kili>
- <9298fd82e4b49b965e9f26957510b9e968e8b691.camel@sipsolutions.net>
- <20211008142734.GI2083@kadam>
- <Y0gM2jeo/X5Vq+lq@kadam>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DOS5cU2t4woqfPoR"
+	id 1oj2iY-00Cdee-G2; Thu, 13 Oct 2022 18:14:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Bu6VDtHDyzaNov8SY1Wr5Jxi/ojQ8SkaZAjEO1LJK+VmJNf/XBVH2gfO+yeF0+umk/QWBTtqPXjPX2ySkFGXfrqJwkBDocRbAm8TiJetmaIfLSNGbu3K+r01JImnfZa6KHKB/st3+ZmoSuyWKc4Yihh0IMJqcqQozy9Z65S79QyByH+h1DTXmzxS3vSDOC/x/oetlPrWpE4RNa4ypcXSuXJBBESBPcn7qx1VksGhWdfDZCAYOOgCnscwjd3hKZzxF3K8XgQU4F0gzIG9nxVJbPqBrfFQ4tkXjCo7h3r8VpN825ZIt7dXaD+5VdQrJFpShIgah/Ob7d8BYCdTQU0kzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XedxsMWNS3R97E2u0y/azOBtQq3/ET+ktmx8XyMZ93Q=;
+ b=RXH4wG3T+ozZw5dLb6jZG+O1jkV1eQCEMdBNpbuaJHdUqrQM/5hLXCHeKvc593NBSYlmbMN5PC5flLJm2yb4TElTOhPTmIbleiHTcTiSsbgZ/MeaUmz38ruG/kWKrV4aYa+7Kmtxjq6qyuBAO/XwAgU2ZCO/Fyv+IFDP9rPXXGviHXcXjXlwnHX7/tvaQs/nDnbDPiODFSX8hTYilFSYXfThlCcMF4vTg19FSWlJS4Fk0305giJ1393VBPnbsPsZzpM4ik925jCMbqZNSByLqKHL1ZrFSJCP9N52VpE/oIOUundgTvkmvs47qsqJ2D57gophLaWVwpzr1brhZuQekA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XedxsMWNS3R97E2u0y/azOBtQq3/ET+ktmx8XyMZ93Q=;
+ b=JCiiWns9gnhjVAAZGVjytlpsdHkcW4s4fLAV+2kcgBXqxyAT/LGKaxF23NX8fhnZv5ynTPBOztIvjA4MYMmGBse+pxwVm1aTBuHsxtojEsDuk4lpt1zVU+5QYcvPtkpNho4Bn4f4JtRWFu2flK/7+eM5YAwfsqpbp/0AwXfzTEw+Q5+T/y7D9UoDSikRrEP2z/v1FSGZi0fw3YnbSL0fPZhAciA8QK07Z1mLTz8Jkm6Ro0PI95OhF2gJAYt6e1CSk8IiQZ1oP6ljdTWskTNOose51IsEcTj6RazfEHR1Y5ow8sxVYsFriflcnAbEi2xh6EecBYsya4cTaEvoaCqvVQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
+ by BL1PR12MB5361.namprd12.prod.outlook.com (2603:10b6:208:31f::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.26; Thu, 13 Oct
+ 2022 18:13:56 +0000
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::4ff2:d93e:d200:227e%6]) with mapi id 15.20.5676.031; Thu, 13 Oct 2022
+ 18:13:56 +0000
+Date: Thu, 13 Oct 2022 21:13:50 +0300
+From: Ido Schimmel <idosch@nvidia.com>
+To: netdev@kapio-technology.com
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v7 net-next 9/9] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+Message-ID: <Y0hVXgqsihknFOG7@shredder>
+References: <20221009174052.1927483-1-netdev@kapio-technology.com>
+ <20221009174052.1927483-10-netdev@kapio-technology.com>
+ <21f799c5a7a79e2e4b111a95fff6fe3d@kapio-technology.com>
+ <Y0ggn5SZnw+4SGLC@shredder>
+ <46112084313969f9a6dfdea9fe52b4b1@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y0gM2jeo/X5Vq+lq@kadam>
+In-Reply-To: <46112084313969f9a6dfdea9fe52b4b1@kapio-technology.com>
+X-ClientProxiedBy: VI1PR08CA0124.eurprd08.prod.outlook.com
+ (2603:10a6:800:d4::26) To CY5PR12MB6179.namprd12.prod.outlook.com
+ (2603:10b6:930:24::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|BL1PR12MB5361:EE_
+X-MS-Office365-Filtering-Correlation-Id: e1cc25c5-b682-43c0-5671-08daad46b14f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	/P1waPLLrsR2WRVmRwXOBBStrMPZxeF1ZBPxgaxr16x4jBeQu6HYKWJdU1lw/CwWS3tkjnsFr79/0EAZNCLvjvGZisCRSD1KSOpBlduqzKKdtdccv26e6shddJQvrGqIeXrpJbDcWR9vI7cMrKWChP/7qsHx/IUNzzj5DrYDESz9WkiWemxMDdgFBVgtnHb2aA0GuJ2hjEGzfdYwbM3AxyfeOqM9sUeEbEbZ4h3e9B7TmYlCH+17ZMwxQrDc6VkvMNfBNPSTlVeKiKqdHzTDG1e0RlmrJEKUh/E2LT8+a4my3ZmuUZwwRkKcjciyOsHBdy9BLgBk77qaP8IkPMVTU21Fc2CcHIj+EJg83QwvY0+OvTPOT8QQ+xJAS8Hg6OiHkOFVmy8gQec7fi6g0QieHxUi/UVtOOH0VfDS2Gth7LLkNsT/Ffe96yfVIae0WquLEJnEuyE2sf+GJFVIurgnyuf6LZQ8T+S1ePSnH8IwFMae7Xg5tI1rT7jYyXVDuuSxqumTEZcSPRZJQH5D4IAYg1fWaqNSI4C0iHDQipeVUNeJ4QaZPrGJInLwdK8TiOYLmC7xB1lzyOq+pDA6M/bzNdGNZU0OemAXj8PH7SiH1l2nVe14EyICCfVJh1fixJpKfHSSlz94TUlFq0/qacFjjXxq8l0xHAuUgCIGaT3xZSyJkENM1OJOpVz0gJ/LeLQltduRZIesf8I4vu44M9kW6w==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(346002)(136003)(39860400002)(376002)(366004)(396003)(451199015)(7416002)(5660300002)(7406005)(6506007)(41300700001)(9686003)(6512007)(186003)(26005)(8936002)(2906002)(33716001)(38100700002)(558084003)(86362001)(83380400001)(478600001)(316002)(6486002)(6916009)(54906003)(66946007)(4326008)(66556008)(66476007)(8676002)(6666004);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?YWL8tCkXRJLDnZohqgveiMNIhgCxw8oqlH5MXR4dLLqdZdlR9Q1014bqawow?=
+ =?us-ascii?Q?v0sAr6dbymOqncgzPVTT/zFBsS5/CZibnX17h9Ah7Uk9Jv9gBI/mKaM/Hmt2?=
+ =?us-ascii?Q?QMl932bwZHK8vOctJ1IX13pi1oi33DZXVvvlUpEg9/QKK3XQClTDu5tfNWBC?=
+ =?us-ascii?Q?pSZ0Yd0h1cXiBZCeF52De6Klybzr5a0dOmzVU7zGmbO/N1CsxdvJD3wcAFII?=
+ =?us-ascii?Q?xx/SjMS0bEA7eO5v9SLyIrAPadrM2AbJvkARhmGCeQLS6RLBDwtBDzcARjey?=
+ =?us-ascii?Q?0/TsBR6DsOglBJ8ezePbkXuzMTaKdI71ayRT5iV/Ovw0LkDxDKjIFSrhaYlP?=
+ =?us-ascii?Q?fseCDYXq2Fanvu3vTn2n7bqlcv9kPOwjruNWeePpEOlplFDYr9/8qMEM74Nj?=
+ =?us-ascii?Q?Luo+47e1IsQgkQTk3aKPLhL2IF06PI61h5qFG2MjFwQld2LfE4sPCmNXTyz1?=
+ =?us-ascii?Q?ZWQ952jHshdynF2dVke46ck5A9ovAPKP+ebYmqJFs3fDJw2NBTNV2tvr7AQB?=
+ =?us-ascii?Q?avitENpbxKWQxhKB57sV4+exAY9YRJ9RwQvkY6pthxeIV57XyNg6OkNWSROw?=
+ =?us-ascii?Q?6N1Vjxp+N5vXGA9NDdPIocbcygntyshc8keQd2PSM1iyvSMB1Yw61UcfMkXl?=
+ =?us-ascii?Q?IR6c4CQLzoQpRcTnmkFUhirqh3bvk+sYTonbRy3LPpq6iz9m6v5ocR2YWeYz?=
+ =?us-ascii?Q?+D2U3O1P8sZfXcfDpXTG3d+ub/ls8iacU335GkDaMPSEBXQBnpYUUzT91buj?=
+ =?us-ascii?Q?jXlgSvLgPnSKUYh0mG6BMJINFbk7rgtbhB28nwvaBRQEm3lBoqTUDedNYRUK?=
+ =?us-ascii?Q?yeMkYulgT0bwlGIbUvrFFPqVmzYmZpSRIG2RLEU6m9m+62WxdB0QhpaY2phb?=
+ =?us-ascii?Q?NmrYJNL/IskY90wNfNLoMCZ2cAWsbPG9+a7kMaZWLOyjshZrWukFSSuy2rn4?=
+ =?us-ascii?Q?+SZik7+Ngqt7St/juUahivbiEwj1K33bkDw873xaTRVTLohfkRhUmgpJC9CX?=
+ =?us-ascii?Q?PRVPyWdekbKWyCbYegZoPARVdXLQhGV9KLGGTkHASegftfmOh/vtovlDj4Pp?=
+ =?us-ascii?Q?AOq82PdCZ5w8Tf84zAeRkLYEs/lRhOAFq7fvBxwDZuBKGRlV9Z9xnWPuC/bl?=
+ =?us-ascii?Q?IRMHbTG0o8kYr7AIt7qi89u6sqkkQmrlKOA87+yUKXDkOxZAClmkMRdFq88U?=
+ =?us-ascii?Q?GbRhGEDRJXSY/KlVKC+Qv7a5cg0HTP42GgJxtbQrTkPdIG2PXRbMzZ9NtxcY?=
+ =?us-ascii?Q?vybz89JvvcjgQDHHVgjCddcVOTGHT4I5yvKMBwZqu20Oxogkxxm3hZIIQ0CL?=
+ =?us-ascii?Q?MA5erp2+mixTxdRcCqYNs/hNBudpJc+MU1bmXgE+biflHzw6Ms4zK/Gvherg?=
+ =?us-ascii?Q?+GzuLTgx9tKMCXO9Bhfr+xSYkIB/jvc1Ci4g5rV9zqPATtbIIUCcA8PZYZY3?=
+ =?us-ascii?Q?8dAlVeC1lDs8KN7dem4PHVq6wu6bAnRzmJWrWLfiMLCee+sKzaav6i+CdShf?=
+ =?us-ascii?Q?CjQ03vkcZKkFzq3cEulLkYakvewGxjSA1+Z5LaqqnfZqxVy+kRFGapERVPSZ?=
+ =?us-ascii?Q?N10KRndbGGJWDeFcoqrgmyGU7+N+A+csg4hQQUKS?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e1cc25c5-b682-43c0-5671-08daad46b14f
+X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2022 18:13:56.2616
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JudJAXPB+U9XnKloG6k0J2thBAOr4P27YrcHcoufdvQs2ZE5huV26qbHOUhEr1Iv3AdHqm+/4YW00fcoaREFBQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5361
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_092600_458281_E34F2410 
-X-CRM114-Status: GOOD (  31.76  )
+X-CRM114-CacheID: sfid-20221013_111402_572808_88065C04 
+X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,113 +162,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Oct 13, 2022 at 05:17:42PM +0200, netdev@kapio-technology.com wrote:
+> What is the schedule for net-next to be open (I guess that it is closed as
+> of now)?
 
---DOS5cU2t4woqfPoR
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> I would like to revisit this question.  Last time I complained about
-> this Johannes responded but he misread what mt76_mcu_send_and_get_msg()
-> does.  I have looked at it as well and I also cannot explain what is
-> going on in that function.
->=20
-> I have looked at the callers and my first instinct is that maybe this
-> is dead stub code?  But then when I look at mt76x02u_mcu_send_msg() I
-> think "No, this is not stub code.  This should be returning the newly
-> allocated skb to the caller."
->=20
-> But then I think, surely at some point someone tested this code???  It
-> must be stub code.
->=20
-> Could we get some clarity on this?
-
-for mt76x2 and mt76x0 we do not care of ret_skb (in fact we do not run
-mt76_mcu_send_and_get_msg() directly but we rely on mt76_mcu_send_msg()).
-For mt7921 we set mcu_skb_send_msg function pointer and not mcu_send_msg.
-Moreover mt7921_mcu_get_eeprom() has been remove a while back.
-Am I missing something?
-
-Regards,
-Lorenzo
-
->=20
-> regards,
-> dan carpenter
->=20
-> On Fri, Oct 08, 2021 at 05:27:35PM +0300, Dan Carpenter wrote:
-> > On Fri, Oct 08, 2021 at 04:03:10PM +0200, Johannes Berg wrote:
-> > > On Fri, 2021-10-08 at 16:00 +0300, Dan Carpenter wrote:
-> > > >=20
-> > > > =A0=A0=A0=A01146         ret =3D mt76_mcu_send_and_get_msg(&dev->mt=
-76, MCU_EXT_CMD_EFUSE_ACCESS, &req,
-> > > > =A0=A0=A0=A01147                                         sizeof(req=
-), true, &skb);
-> > > >=20
-> > > > If mt76_mcu_send_and_get_msg() calls the dev->mcu_ops->mcu_send_msg=
-()
-> > > > then "skb" is not initialized.
-> > > >=20
-> > > > =A0=A0=A0=A01148         if (ret)
-> > > > =A0=A0=A0=A01149                 return ret;
-> > > > =A0=A0=A0=A01150=20
-> > > > --> 1151         res =3D (struct mt7921_mcu_eeprom_info *)skb->data;
-> > >=20
-> > > Looks like possibly 'skb' is always initialized if
-> > > mt76_mcu_send_and_get_msg() returns 0 (success)?
-> > >=20
-> >=20
-> > This build is with cross function analysis enabled so Smatch looks for
-> > that.
-> >=20
-> > The problem is that the caller has to know if dev->mcu_ops->mcu_send_msg
-> > is NULL or not because if it's non-NULL "skb" is not set.  Perhaps that
-> > means it should be separated into two functions and we pick which one
-> > to call depending on whether the pointer is set.
-> >=20
-> > drivers/net/wireless/mediatek/mt76/mcu.c
-> >     54  int mt76_mcu_send_and_get_msg(struct mt76_dev *dev, int cmd, co=
-nst void *data,
-> >     55                                int len, bool wait_resp, struct s=
-k_buff **ret_skb)
-> >                                                                        =
-         ^^^^^^^
-> > This is the parameter.
-> >=20
-> >     56  {
-> >     57          struct sk_buff *skb;
-> >     58 =20
-> >     59          if (dev->mcu_ops->mcu_send_msg)
-> >     60                  return dev->mcu_ops->mcu_send_msg(dev, cmd, dat=
-a, len, wait_resp);
-> >=20
-> > The function pointer doesn't set *ret_skb at all.
-> >=20
-> >     61 =20
-> >     62          skb =3D mt76_mcu_msg_alloc(dev, data, len);
-> >     63          if (!skb)
-> >     64                  return -ENOMEM;
-> >     65 =20
-> >     66          return mt76_mcu_skb_send_and_get_msg(dev, skb, cmd, wai=
-t_resp, ret_skb);
-> >=20
-> > But this does.
-> >=20
-> >     67  }
-> >=20
-> > regards,
-> > dan carpenter
-
---DOS5cU2t4woqfPoR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY0g8EgAKCRA6cBh0uS2t
-rCVPAP4rEv8YfBHfUwLvkIVSKOH+whFxPKd0hF+QEAQNYifD8QD6AtDBpfK5YWO+
-7d88bOrTJFkglOlVFYDqN1eO+DqSMgE=
-=dXar
------END PGP SIGNATURE-----
-
---DOS5cU2t4woqfPoR--
+After the merge window closes and 6.1-rc1 is released. Probably on
+Monday.
 
