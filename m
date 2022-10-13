@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C47C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 16:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D08BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 16:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CmzDbYH40Nx7N7FEM30dakxO/xkPUMt7NXDCNwJCb1A=; b=TwteyGBpUE2BXp8rSPW4gbP2lb
-	Knml6ZQAuttbUfNZSbcBtWFyfzexZXSb5rhltdmhvKdFeWb4DtWNdiCTondHfSSDO/FFTZnObg/tr
-	nYPQqp8cNJv00sa5PT1iC1Uo2zzSyucIuXbN3T3bEElecCaDVNX49VtsLoNbzNKv7SkjiXTOfUgTE
-	ZJXI1K7gea96WYC/BI2fGb/C60uOEGI50eKTsZ8s5qcFNeeEjXSnmpohqqJmcyoUJZUG/iO9w8sut
-	H0L2a5lCWytxJpFE5MKzfrKuy8T/TeS2Ms9oHQnY2RESr6idWvuWdiRWIbZXZY32PRLBt7cVbnvYK
-	oi0fs5MQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MTNYopgtbiILVgQC03TdOSCy7LC9F6xBvBsVZFPrUac=; b=UKueD09fhmcFAnKDmV7GvNAl7Q
+	k+9QCuD2WJ3IWaNDw/9MOsEmTBbUVQxviCyLrYZ1K8KfoPvDGbNLI74xM4jGrXIwKjBZZP/QzPWv0
+	yOOe1yueaRAc/UOA9nDzYSNtFEakmtZgCqnk0RzXqM+7yviz26DzGVAEI6P5I4CwqI8GOQjUDWRu8
+	e9j6SNf7RLgGDg0758CwPzO4U3Tc3apAg4uOB1U7ZkGi1zKyx3cWlgwYX6xA+ipPZy786yLSXeaoD
+	V/KTENuvLS71JXXKd+vsXFVkdiMvbfcrVwq8AI7we/dy+5mmsbQ915dvwTALZutayUjuLHqEWUWil
+	5Kxxr0jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj0w4-00CPOh-Jv; Thu, 13 Oct 2022 16:19:52 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1oj123-00CQYN-Kj; Thu, 13 Oct 2022 16:26:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj0w1-00CPO8-09; Thu, 13 Oct 2022 16:19:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665677988; x=1697213988;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=JdM6fRjtfQFPJ08asGi0OyQ7Kn3mWk6zXePhD5kQRm0=;
-  b=QBqjdlVF48LuwfsIRXU2SQD1sMhy6GgE4a7yQ78nD3RBdmVIC0F9lmJE
-   arjobTNIH0Wre1UStdrixBY+cLa9h/nUhW/IveZCgSVswawCJkVQujenw
-   EX7DT9yR4qoDcyuEmr4cRdZACbibuOBIuDNadOas3bq6IauRsLVonOZhl
-   PNBMYlzRZ7wwpooFFgUqEx9/PHpeSRW6HBICdSP39bxRR4agTDAO056D3
-   Jo8l9dfPDY6B+IxnE11ehf6T801Pnws/INd8AMtZVy+/5fiiRVcCSYWQY
-   bCFNtxoZsIFla73cTTwJYpWDjx+aYHVP+BMhFw1CFfXlVvP9K39rCsp6l
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10499"; a="305117931"
-X-IronPort-AV: E=Sophos;i="5.95,182,1661842800"; 
-   d="scan'208";a="305117931"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2022 09:16:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10499"; a="752581669"
-X-IronPort-AV: E=Sophos;i="5.95,182,1661842800"; 
-   d="scan'208";a="752581669"
-Received: from lkp-server01.sh.intel.com (HELO 2af0a69ca4e0) ([10.239.97.150])
-  by orsmga004.jf.intel.com with ESMTP; 13 Oct 2022 09:16:34 -0700
-Received: from kbuild by 2af0a69ca4e0 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oj0sr-0005L8-14;
-	Thu, 13 Oct 2022 16:16:33 +0000
-Date: Fri, 14 Oct 2022 00:16:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: ntfs3@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
- linux-mm@kvack.org, linux-mediatek@lists.infradead.org,
- linux-ext4@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- 56e8142dda103af35e1a47e560517dce355ac001
-Message-ID: <634839db.CE/+5MHDyt/TjFSC%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1oj120-00CQXa-9o
+	for linux-mediatek@lists.infradead.org; Thu, 13 Oct 2022 16:26:01 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DFFD1604EF;
+	Thu, 13 Oct 2022 16:25:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9C18C433C1;
+	Thu, 13 Oct 2022 16:25:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1665678358;
+	bh=0ZprB8JJOEWP6AIX59mAnfcvCDhO84Hoakg5vDW+wH8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WDBhHIlywcm0Sj5MTFIEnPCiTB+Xr1BVPbpE37MzVoV2EG+QsFrYKsLUPz9QZLbNF
+	 fWZORxKHM98pJ9/qB91fTNMKE1TDk5YyvFVRaREVcOa6HQzNgMpsbzoTId9rEr1jgi
+	 2+zZ9PCP+OzXmQk2dv5W4OVPv403110N1WAjRI5zs+XGgEMX8tRCsO5shOYYSgR2su
+	 NDC1pp6IIRr8TRPJ3gS7ItZHXcyZIXkWlJSalwLKnVMTYdrQlw8QgJRVADBNgdx6+1
+	 L3zipe3cmT4SGFSphbhQ0r5/NKkoQruzY1syNNHvjEwVotDIDopIr0MTTb5pXFoN1y
+	 iUsO3sMS1UYnA==
+Date: Thu, 13 Oct 2022 18:25:54 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes@sipsolutions.net>,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [bug report] mt76: implement functions to get the response skb
+ for MCU calls
+Message-ID: <Y0g8Ev4hE7m/kP3H@lore-desk>
+References: <20211008130007.GA23161@kili>
+ <9298fd82e4b49b965e9f26957510b9e968e8b691.camel@sipsolutions.net>
+ <20211008142734.GI2083@kadam>
+ <Y0gM2jeo/X5Vq+lq@kadam>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="DOS5cU2t4woqfPoR"
+Content-Disposition: inline
+In-Reply-To: <Y0gM2jeo/X5Vq+lq@kadam>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_091949_142103_A09CB0A2 
-X-CRM114-Status: UNSURE (   5.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221013_092600_458281_E34F2410 
+X-CRM114-Status: GOOD (  31.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,226 +76,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: 56e8142dda103af35e1a47e560517dce355ac001  Add linux-next specific files for 20221013
 
-Error/Warning reports:
+--DOS5cU2t4woqfPoR
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-https://lore.kernel.org/linux-mm/202210090954.pTR6m6rj-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210110857.9s0tXVNn-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210111318.mbUfyhps-lkp@intel.com
+> I would like to revisit this question.  Last time I complained about
+> this Johannes responded but he misread what mt76_mcu_send_and_get_msg()
+> does.  I have looked at it as well and I also cannot explain what is
+> going on in that function.
+>=20
+> I have looked at the callers and my first instinct is that maybe this
+> is dead stub code?  But then when I look at mt76x02u_mcu_send_msg() I
+> think "No, this is not stub code.  This should be returning the newly
+> allocated skb to the caller."
+>=20
+> But then I think, surely at some point someone tested this code???  It
+> must be stub code.
+>=20
+> Could we get some clarity on this?
 
-Error/Warning: (recently discovered and may have been fixed)
+for mt76x2 and mt76x0 we do not care of ret_skb (in fact we do not run
+mt76_mcu_send_and_get_msg() directly but we rely on mt76_mcu_send_msg()).
+For mt7921 we set mcu_skb_send_msg function pointer and not mcu_send_msg.
+Moreover mt7921_mcu_get_eeprom() has been remove a while back.
+Am I missing something?
 
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/fsl-edma.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/idma64.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/qcom/hdma.ko] undefined!
-ERROR: modpost: "devm_memremap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_memunmap" [drivers/misc/open-dice.ko] undefined!
-ERROR: modpost: "devm_platform_ioremap_resource" [drivers/char/xillybus/xillybus_of.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "ioremap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
-ERROR: modpost: "iounmap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
-arch/arm64/kernel/alternative.c:199:6: warning: no previous prototype for 'apply_alternatives_vdso' [-Wmissing-prototypes]
-arch/arm64/kernel/alternative.c:295:14: warning: no previous prototype for 'alt_cb_patch_nops' [-Wmissing-prototypes]
-fs/ext4/super.c:1744:19: warning: 'deprecated_msg' defined but not used [-Wunused-const-variable=]
-mm/mmap.c:802 __vma_adjust() error: uninitialized symbol 'next_next'.
-vcpu.c:(.text+0xc56): undefined reference to `riscv_cbom_block_size'
+Regards,
+Lorenzo
 
-Error/Warning ids grouped by kconfigs:
+>=20
+> regards,
+> dan carpenter
+>=20
+> On Fri, Oct 08, 2021 at 05:27:35PM +0300, Dan Carpenter wrote:
+> > On Fri, Oct 08, 2021 at 04:03:10PM +0200, Johannes Berg wrote:
+> > > On Fri, 2021-10-08 at 16:00 +0300, Dan Carpenter wrote:
+> > > >=20
+> > > > =A0=A0=A0=A01146         ret =3D mt76_mcu_send_and_get_msg(&dev->mt=
+76, MCU_EXT_CMD_EFUSE_ACCESS, &req,
+> > > > =A0=A0=A0=A01147                                         sizeof(req=
+), true, &skb);
+> > > >=20
+> > > > If mt76_mcu_send_and_get_msg() calls the dev->mcu_ops->mcu_send_msg=
+()
+> > > > then "skb" is not initialized.
+> > > >=20
+> > > > =A0=A0=A0=A01148         if (ret)
+> > > > =A0=A0=A0=A01149                 return ret;
+> > > > =A0=A0=A0=A01150=20
+> > > > --> 1151         res =3D (struct mt7921_mcu_eeprom_info *)skb->data;
+> > >=20
+> > > Looks like possibly 'skb' is always initialized if
+> > > mt76_mcu_send_and_get_msg() returns 0 (success)?
+> > >=20
+> >=20
+> > This build is with cross function analysis enabled so Smatch looks for
+> > that.
+> >=20
+> > The problem is that the caller has to know if dev->mcu_ops->mcu_send_msg
+> > is NULL or not because if it's non-NULL "skb" is not set.  Perhaps that
+> > means it should be separated into two functions and we pick which one
+> > to call depending on whether the pointer is set.
+> >=20
+> > drivers/net/wireless/mediatek/mt76/mcu.c
+> >     54  int mt76_mcu_send_and_get_msg(struct mt76_dev *dev, int cmd, co=
+nst void *data,
+> >     55                                int len, bool wait_resp, struct s=
+k_buff **ret_skb)
+> >                                                                        =
+         ^^^^^^^
+> > This is the parameter.
+> >=20
+> >     56  {
+> >     57          struct sk_buff *skb;
+> >     58 =20
+> >     59          if (dev->mcu_ops->mcu_send_msg)
+> >     60                  return dev->mcu_ops->mcu_send_msg(dev, cmd, dat=
+a, len, wait_resp);
+> >=20
+> > The function pointer doesn't set *ret_skb at all.
+> >=20
+> >     61 =20
+> >     62          skb =3D mt76_mcu_msg_alloc(dev, data, len);
+> >     63          if (!skb)
+> >     64                  return -ENOMEM;
+> >     65 =20
+> >     66          return mt76_mcu_skb_send_and_get_msg(dev, skb, cmd, wai=
+t_resp, ret_skb);
+> >=20
+> > But this does.
+> >=20
+> >     67  }
+> >=20
+> > regards,
+> > dan carpenter
 
-gcc_recent_errors
-|-- arc-randconfig-s051-20221012
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   `-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|-- arm64-alldefconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-allyesconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- i386-allyesconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-defconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a003
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a005
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a012
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a014
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a016
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-c021
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-m021
-|   `-- mm-mmap.c-__vma_adjust()-error:uninitialized-symbol-next_next-.
-|-- microblaze-randconfig-s033-20221012
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- riscv-randconfig-r016-20221012
-|   `-- vcpu.c:(.text):undefined-reference-to-riscv_cbom_block_size
-|-- s390-allmodconfig
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-fsl-edma.ko-undefined
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-idma64.ko-undefined
-|   |-- ERROR:devm_ioremap_resource-drivers-dma-qcom-hdma.ko-undefined
-|   |-- ERROR:devm_memremap-drivers-misc-open-dice.ko-undefined
-clang_recent_errors
-|-- arm64-buildonly-randconfig-r002-20221012
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
-|-- hexagon-randconfig-r032-20221012
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r041-20221012
-|   |-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- hexagon-randconfig-r045-20221012
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a002
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a004
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a011
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a013
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a015
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- powerpc-mpc832x_rdb_defconfig
-|   |-- arch-powerpc-math-emu-fcmpu.c:error:variable-A_c-set-but-not-used-Werror-Wunused-but-set-variable
-|   |-- arch-powerpc-math-emu-fcmpu.c:error:variable-B_c-set-but-not-used-Werror-Wunused-but-set-variable
-|   |-- arch-powerpc-math-emu-fcmpu.c:error:variable-_fex-set-but-not-used-Werror-Wunused-but-set-variable
-|   |-- arch-powerpc-math-emu-fctiw.c:error:variable-_fex-set-but-not-used-Werror-Wunused-but-set-variable
-|   |-- arch-powerpc-math-emu-fctiwz.c:error:variable-_fex-set-but-not-used-Werror-Wunused-but-set-variable
-|   |-- arch-powerpc-math-emu-fsel.c:error:variable-_fex-set-but-not-used-Werror-Wunused-but-set-variable
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- riscv-randconfig-r001-20221012
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- x86_64-randconfig-a005
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- x86_64-randconfig-a012
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- x86_64-randconfig-a014
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-`-- x86_64-rhel-8.3-rust
-    `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+--DOS5cU2t4woqfPoR
+Content-Type: application/pgp-signature; name="signature.asc"
 
-elapsed time: 725m
+-----BEGIN PGP SIGNATURE-----
 
-configs tested: 83
-configs skipped: 3
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY0g8EgAKCRA6cBh0uS2t
+rCVPAP4rEv8YfBHfUwLvkIVSKOH+whFxPKd0hF+QEAQNYifD8QD6AtDBpfK5YWO+
+7d88bOrTJFkglOlVFYDqN1eO+DqSMgE=
+=dXar
+-----END PGP SIGNATURE-----
 
-gcc tested configs:
-riscv                randconfig-r042-20221012
-arc                  randconfig-r043-20221012
-s390                 randconfig-r044-20221012
-arc                                 defconfig
-alpha                               defconfig
-x86_64                        randconfig-a004
-i386                                defconfig
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-x86_64                           rhel-8.3-syz
-s390                             allmodconfig
-x86_64                         rhel-8.3-kunit
-x86_64                              defconfig
-alpha                             allnoconfig
-x86_64                        randconfig-a013
-x86_64                           rhel-8.3-kvm
-x86_64                        randconfig-a011
-arm                                 defconfig
-riscv                             allnoconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-s390                                defconfig
-csky                              allnoconfig
-i386                          randconfig-a014
-i386                          randconfig-a001
-powerpc                           allnoconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-m68k                             allmodconfig
-i386                          randconfig-a003
-x86_64                        randconfig-a015
-arc                               allnoconfig
-s390                             allyesconfig
-powerpc                          allmodconfig
-i386                          randconfig-a012
-i386                          randconfig-a005
-i386                             allyesconfig
-i386                          randconfig-a016
-arc                              allyesconfig
-mips                             allyesconfig
-alpha                            allyesconfig
-ia64                             allmodconfig
-m68k                             allyesconfig
-sh                               allmodconfig
-powerpc                      cm5200_defconfig
-arm                              allyesconfig
-arc                        nsimosci_defconfig
-arm64                            allyesconfig
-sh                            hp6xx_defconfig
-m68k                          amiga_defconfig
-powerpc                   currituck_defconfig
-m68k                       bvme6000_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-arm                        cerfcube_defconfig
-powerpc                 mpc837x_mds_defconfig
-ia64                        generic_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arm64                            alldefconfig
-powerpc                     tqm8541_defconfig
-xtensa                    smp_lx200_defconfig
-sh                        edosk7705_defconfig
-
-clang tested configs:
-hexagon              randconfig-r045-20221012
-hexagon              randconfig-r041-20221012
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-i386                          randconfig-a013
-x86_64                        randconfig-a005
-x86_64                        randconfig-a016
-x86_64                        randconfig-a012
-i386                          randconfig-a011
-i386                          randconfig-a002
-x86_64                        randconfig-a014
-i386                          randconfig-a006
-i386                          randconfig-a004
-i386                          randconfig-a015
-mips                   sb1250_swarm_defconfig
-powerpc                 mpc832x_rdb_defconfig
-x86_64                          rhel-8.3-rust
-powerpc                      walnut_defconfig
-arm                         hackkit_defconfig
-arm                         lpc32xx_defconfig
-arm                      pxa255-idp_defconfig
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+--DOS5cU2t4woqfPoR--
 
