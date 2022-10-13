@@ -4,146 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5397AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 12:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF4AAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 13:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HTOb6aZuMNrXGoFL+bY/yASFEjXcUko4NcXLXmZb7Qs=; b=Sn1AAXfVjdLDfvxMN0VtS2vfYx
-	pYyVaVpTyQyLN9ghst7/A4KJlz+zBDRCGn3tE/4nVr+9hMOjDIfWFQ5L2R5roHAHS83rc7FcxB5GH
-	ia9HQgYBY2WqJtI05DEzEW0YM1zx7fR/7/G5pWM24EJUNvlEEoQk+8bv46NZQYwHt+y/RNOO+MU+v
-	Pwj7QlmwCih2IIv4CdiytBk/nU+j7kc0BscXgIozRYAmi81eOKz24keMpsBUL7zP65MM9WsrjBUn6
-	xtfu9cvGBjq+vmPOB1KB8/skgt7XGCcjI3B4+X1ySIBeDDhNUAvojToaxfTHpUl1iN8eAmCrZpeJV
-	8r1ooScg==;
+	bh=6fGrxMBOLuz/ufum7iLzYyW7+BeCUbMtinCuje5Qnek=; b=4IaF2JFEaJaXCI87Nam+UQ9Kp8
+	dgSgxGg538pP5yCQE/wStL2X+khcxH+sO3zKnx2CXyKQLlrPjp5tj8M+ARRkkQQPoQGfLLbgokkcf
+	izOASMJNaPtjBmkQC4816L+a4v7rsDMHnwLEdc5t+C+7Rv45diMmJ1kFvVXQxUuKzdAe4Ir/FVuYr
+	IzViml0V9T3qSts0hBYCwC/FPnQA4qWN0A7H0RfNaFZ2ARAlfJGb1eQXjqEy10KbcceDMT7OJtzMv
+	UMCzgn482icLE8lmUsZPDYroK1KRVgyycYru5b4U6GbtKNcMdYUUAFA14mt9fkDaMmFq3EyMhYUX8
+	jMSYSQlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oixWs-00Bi7z-QQ; Thu, 13 Oct 2022 12:41:38 +0000
-Received: from mail-mw2nam12on2060.outbound.protection.outlook.com ([40.107.244.60] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1oixop-00Bl19-VY; Thu, 13 Oct 2022 13:00:11 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oixWh-00Bi5M-La; Thu, 13 Oct 2022 12:41:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iD4K/rW2jkcPcPyzZ0YQxK32e9+yNZGqFzBQXFGVdQ/BwuNHGFm/lE+BIdjwknnaAd34zPKfvbXQ6inF+NNbei882o3KMukb2LBdzonjr76iS0lt9zHSWV5kNeDOxrwnJVAsMWxBUYXP97rgmRonm/owEFsv+Li0L+AKEWxEVgLKBxbummoasKo/lsaZgo9zTveKDIe1OsqZ/jlCUjjBXBr/KemG2YH/NcjBazm50NHm7wRnQP387pmRKmMqOjWYGqrVnvRkzoclm8WrlQwKKBQqCMrjbJQIAx/VYgghAjsWyJ8Fxe8FGWJXb/79Kb1j5QeOHS/KI3jvmnCPZWL7+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HTOb6aZuMNrXGoFL+bY/yASFEjXcUko4NcXLXmZb7Qs=;
- b=Add3diYAvZBcWov4EvwWTDbfOzldHQOtAaaLHZdvYzLPWLnzbUUa4Lpj3U9vX/LQeSfjmDchgkBn7rp+952PEzdZVdC4ZdXrP9sJvUAZSu44OHsqTEQ5AmiJ2Xt2/XOzlFVcUsp2EiUhKHXhDln0dDdwHU22jYmJqAxS/xiSFAPG2a0IQ2WsxpOb3R5jMxJgB2cq/mY9zO5JtZY19WK7RaWKcUFEAudhPnEe49kSo25YSOePajhh9GKCug0tJ5H4sS9130cv4WuIdsC3rm6qPU3GMFgerUYhD89/BioyxbhTTqcouBU+M7QX2DXxCnf+mMktcVAUNHjnPNfDbC+oAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HTOb6aZuMNrXGoFL+bY/yASFEjXcUko4NcXLXmZb7Qs=;
- b=aRHYCHQP8fbcbDi3lqpuj9Fb4gE9ffWyzE3CSAiPjKYHusPD2H6F0SpJIX+3Qi3aPy7b09jNL5tiPUYdfBl7qFnJmyOAnrmeAM2h9Jji+F8Aa75GfSzufRcIzY5RCUJphpEbmEQJ3hvad8HqZkitTlnE3GT4b4n3bnIH5qOEpQHoOjyfBW9EKprfmrn2eMXQjkIBGO8ThFummdndMxkU1NZobOI9ZBAFqU83peHYjcfnoP3Un3jHmlWNKusc9rbKiqmo6+XbHoOC4BwGVf9Jx/un11RhDKYAJPK+Qxp4I/eLhR5IfGqjksJgFRGhtVdGxS0awXtdtiY35k6aJXPUlg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by CY5PR12MB6550.namprd12.prod.outlook.com (2603:10b6:930:42::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5709.15; Thu, 13 Oct
- 2022 12:41:22 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e%6]) with mapi id 15.20.5676.031; Thu, 13 Oct 2022
- 12:41:22 +0000
-Date: Thu, 13 Oct 2022 15:41:15 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: "Hans J. Schultz" <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1oixoe-00BkyR-S0
+	for linux-mediatek@lists.infradead.org; Thu, 13 Oct 2022 13:00:02 +0000
+Received: by mail-wr1-x434.google.com with SMTP id a3so2802687wrt.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Oct 2022 05:59:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=6fGrxMBOLuz/ufum7iLzYyW7+BeCUbMtinCuje5Qnek=;
+        b=DDrg6gRNN+qdSFLktuGPe6miLLWo+FuSK7tmXGvcxzwEWl7EOc3azdJ9UyOh6FVCTP
+         TWZ6G2PN+tILhovLGjrqwCbPE7iaWPKnBNdJYFB13D7CH/wGS7ZuaVXfV1ngFWozXv2K
+         zz8WTWpujszYbJhtDEDk+Oz7PP3dcoMka4qvGpADe9folHcBfkmoJCTuzz6lsAXqBNfT
+         7inuvWjNVpbHZ5LP+bMy6YrhzpYc3KtgRLb+RbPToZJpOyJI45oSngd7QHUp/aeDGMSk
+         da7DD4PNiGARh+RI85rh85RBiZf8+85ZmGZyKDgd8boOgMlD3HtlacfhdGJv1fshZLB5
+         Ascg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6fGrxMBOLuz/ufum7iLzYyW7+BeCUbMtinCuje5Qnek=;
+        b=2/Jte23Bh/aO7OIijyl6NSpDlmCntUi5oxNFqAY0phFECxDjIFBS6J2msThr4JgRD0
+         sXUl/8HU8S9jxE4IFrENo6yatTwYhpRt2k00fJIE4KO3YO8D7WAGrK/vCrK13IDpp8h+
+         MpAAV7QF0R9w6qhfudj73AQ0palgJYLWT65nldzp8kSKukM7vW0WItwwDrUTb+uTEdEp
+         Wwseridl7eZZhlfihRb6Uexr+iZwTGX4NzPEy5J50sOEhJJcDLjxLodnbyc2S9zzAzoo
+         xAECCDXE3zwARdH4jV1x+wVJEOhANIL2ZYe0Acq/I+AHdK3HhJ6dapBC2kz9Wno3n30i
+         7DVw==
+X-Gm-Message-State: ACrzQf3uXI3SOKxjUTltBJ1JqQ0L9A0zWVDuXhxvO+C/8gPYCjXvPgZ1
+	NQ0eBzyhPlVZyN42zlJ9H9j//Q==
+X-Google-Smtp-Source: AMsMyM4R9UBvK2aOVuodBoSAKW6fTfehJPe8G1obMNxLSJk0gLOU1bkCanq3VMsPRApZPcX2cW1RDg==
+X-Received: by 2002:a05:6000:168c:b0:231:7950:1114 with SMTP id y12-20020a056000168c00b0023179501114mr7941495wrd.484.1665665997291;
+        Thu, 13 Oct 2022 05:59:57 -0700 (PDT)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
+        by smtp.gmail.com with ESMTPSA id x4-20020adff644000000b0022afbd02c69sm2010424wrp.56.2022.10.13.05.59.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Oct 2022 05:59:56 -0700 (PDT)
+Date: Thu, 13 Oct 2022 13:59:55 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v7 net-next 1/9] net: bridge: add locked entry fdb flag
- to extend locked port feature
-Message-ID: <Y0gHa99Z70TkKtR5@shredder>
-References: <20221009174052.1927483-1-netdev@kapio-technology.com>
- <20221009174052.1927483-2-netdev@kapio-technology.com>
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+Subject: Re: [PATCH 2/7] gpiolib: of: consolidate simple renames into a
+ single quirk
+Message-ID: <Y0gLy84EvqpOmXdd@maple.lan>
+References: <20221011-gpiolib-quirks-v1-0-e01d9d3e7b29@gmail.com>
+ <20221011-gpiolib-quirks-v1-2-e01d9d3e7b29@gmail.com>
+ <Y0aS80PlA/T3mx2d@maple.lan>
+ <Y0cTkubAA4637o5y@google.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221009174052.1927483-2-netdev@kapio-technology.com>
-X-ClientProxiedBy: VI1PR04CA0137.eurprd04.prod.outlook.com
- (2603:10a6:803:f0::35) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|CY5PR12MB6550:EE_
-X-MS-Office365-Filtering-Correlation-Id: d642b567-d51b-4d6b-e266-08daad183b80
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	DX4nCQHAo383/x8njsXmpUjgRJjzx6uzsvfBdTWZwvXk2ip9GeG8ftRgi9gD+mPJURzoNK+vmL1EBNxQysd8pmyxVWV2BRSkjcGvOQGAM8Hy2sSj+PHsZsy2biuMcmUenhGGezv57zjQsGlNxEHhGW+WqojxbTNm4nIOCDjJJgyahr5ewq7VYEjY1rbBqWDnV2b63q7NR34Rv49sN64ylVUKu+jN/dbwRlknynl114xy3uXe4XIH+L1lfCxDGwcnvU50M7v7fgQlKs235KAVnvuZ4CH/66PAJdVx9iOp3iR92U8W9ippcYAaf5xglXuYMMOaoFK+KQoFO8n+fM3rcKCwN1zl2tlcnONGpiq8F3Fz0X0UkSd0wPLkTMC46KhccoEsOy5Tjc9EBWDKJlvYdx74qVaWVW5TGo0g3WBofJJPlyE0reLlVopwookgPmzSrw8wm/3xVquKyju7ked567LNh1605OEaeaDHLhXbu10Kmd1rfQi7z8TY3o4Pn6PXwptKxxnpQ3YLRkKxQTlv0xZTB9OJeMr/x2NO9Dq7rlv7ZClEuyO0fzBeqyDpnxC0KLF3tvotIH3DremgenvkxcuexhhlMHnzae7NTMFZAMhKtGYHOvDyBiDL8mmRjo3la0ezV8zV5H68zGQ0ym9AjT9xDh6Wa3Cpf4haXldAGrrk5+ijju7xXbBYZcslll6jFIbaCpyuslDjWxr9dD80Mw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(4636009)(136003)(376002)(366004)(396003)(39860400002)(346002)(451199015)(66556008)(33716001)(7416002)(8936002)(5660300002)(4326008)(41300700001)(186003)(6486002)(83380400001)(66946007)(66476007)(6666004)(38100700002)(9686003)(86362001)(6506007)(26005)(478600001)(6512007)(8676002)(316002)(6916009)(54906003)(2906002)(7406005);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?KdhLC7vUT5YkTUGSXcVIb8E29Q8EaAh1XEQEVLmY+PGwbz25jqNQisGwPioZ?=
- =?us-ascii?Q?aQsEK1/6AM3gMGqAfRdLCxlJ0wD44AkTet8nn1JTmN3BQWq9dRnvjhbxgUQ7?=
- =?us-ascii?Q?0CfeNmDDJRsWp3u6lyskUsaQ0vDEmddsKOaE0ZfQdI6tCDL9VFfATbLq/E2g?=
- =?us-ascii?Q?yrJh3hPjKbXg55laMwQv8mC5WWLTt8DgDmFqq91luCencGFlIY9Dd8PfJo+u?=
- =?us-ascii?Q?1TmPs/V6omoHj0NhEAIIYuPZNN6RCc5+4sTFBxZsssucu04NFpapr6cZl7F6?=
- =?us-ascii?Q?1RYMXdNo0kMiWHQr4cUzs69zQGjhf+DQs/SBxdb3K5tO1LFZ3uO0gPdG3BoG?=
- =?us-ascii?Q?UFWQdSCHWurZYRFsWwz/G6cWJZIGy1t6YEI0L6y6UF1RWiRmXC8bOx7LKMNg?=
- =?us-ascii?Q?hWSzLh17BAAmzJEeFyDLpNeZaIO2cfqS3rjJHT806J+Qw8iVuo/VRj3s5oNw?=
- =?us-ascii?Q?KajHVBSO++ZvheG2tMHksNPS4cxa3ZXdC/rkthyiwG1n9WqdtHmYFr1i99YN?=
- =?us-ascii?Q?lBbH1ZS34+Pvrl+A+hluLLSA6Ze8KUMdS8WE+gXKbxiGCSE0X2gmi064V/97?=
- =?us-ascii?Q?aqwyUg7VW/kKxCA9rv0ZO9JKwi1JFwzxTGc6abCW5N4q4SF+th3qJuYiYUbf?=
- =?us-ascii?Q?JEgQxJK0OVGvhBewyv4cu4y1NNMvLvZOs8eqdMRJkMuoSJS+n4vV1Z+MKaDI?=
- =?us-ascii?Q?6wkTGRZEuqsPMSsM60kmlRUrmA2jsfJrhnjElzdcW68gfHszdx/qFhNdP/HN?=
- =?us-ascii?Q?sS8Ve8VYXfKbfzsPU6kydLlAJOkUbaaKf3HK/u1dkK+Ry1WwVG46YdYEBbhS?=
- =?us-ascii?Q?jh/4TzMGD3ouUkyazmQJ2ibFIWljvOoL2KLYbmFnCKZjJRpgF2TGUHCQRrYd?=
- =?us-ascii?Q?X5V/m0itWrinuo/C4yk0nHuvPA3Nk3Y+Og83BLMjEvswpbIgja/oPLQd5LYj?=
- =?us-ascii?Q?Kf8h/unBH+zZtPOUI1PPR3HLo3moHDJUFoOzgCPOFNKP+gx8PEb2ZAU2chOQ?=
- =?us-ascii?Q?ZoQdF9FJ/KXgiFDrwfAQH9Io/4hBNna/GgmDvQHogzKNb6CHCN+BmEoFqf14?=
- =?us-ascii?Q?umqtHFL7VITa/McW9IX8PYqn5gTGR8CrMp2r5K7tHZDcXW/ePHTbRVrB50l2?=
- =?us-ascii?Q?oAe+aYLEifAzVZ8W8I6RMytgQ4pbSizQ4YwdpeYCm2KQGfiEF0eNxVcazQKq?=
- =?us-ascii?Q?xlu5lE3gw2BwUm/l/Ebc/VxtKvkYFpBT8WoJIKpGcRy1+Tgg/2CUxIH7YhND?=
- =?us-ascii?Q?CTIQzM2lJi8ox2hBLsGhyZD/AllJ6h4oQE2thmGCDJEweI8rzH4lJ9PSsuM7?=
- =?us-ascii?Q?jmlBCNwBYkv5q7Qx19VooIdOYG5XbRl3wmqtOCMeQjsgSA5Bi/hVp65CL1x0?=
- =?us-ascii?Q?+MgL0nysyk4T9GEuYAXwCN1/9yMjqA1DmA2WHM+y0VcxytPnfERKN3+wBtl3?=
- =?us-ascii?Q?9TIOYPt2/x982BhnrtAIOFsw//H6H9ltj5r2mMZCntPOSziMiEgfToRu8dfv?=
- =?us-ascii?Q?ZPht14TD84pEQuHyBysKjFDcV5sxD0pFH1LfAZ1CLm9OooBg3iGdkETDDsXn?=
- =?us-ascii?Q?cm+WM/jCuYD6EdJRRuHsEfQkTkdG9J2s2hPTDewj?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d642b567-d51b-4d6b-e266-08daad183b80
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2022 12:41:21.9700
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: o48crjiwJYsgm3ZJhnXLaidzaNdMkn1pbwXbiodxJtAo0pNjCq4Nn8TWTgv/Jwo3ZanLIORqFwVaxp48FOjuyw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6550
+In-Reply-To: <Y0cTkubAA4637o5y@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_054127_729437_D4E8DC5A 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20221013_060001_012244_A22A1304 
+X-CRM114-Status: GOOD (  25.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,39 +95,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 09, 2022 at 07:40:44PM +0200, Hans J. Schultz wrote:
-> diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-> index 74864dc46a7e..8008ceb45605 100644
-> --- a/net/core/rtnetlink.c
-> +++ b/net/core/rtnetlink.c
-> @@ -4035,6 +4035,7 @@ int ndo_dflt_fdb_add(struct ndmsg *ndm,
->  		     const unsigned char *addr, u16 vid,
->  		     u16 flags)
->  {
-> +	__u32 ext_flags = 0;
->  	int err = -EINVAL;
->  
->  	/* If aging addresses are supported device will need to
-> @@ -4050,6 +4051,14 @@ int ndo_dflt_fdb_add(struct ndmsg *ndm,
->  		return err;
->  	}
->  
-> +	if (tb[NDA_FLAGS_EXT])
-> +		ext_flags = nla_get_u32(tb[NDA_FLAGS_EXT]);
-> +
-> +	if (ext_flags & NTF_EXT_LOCKED) {
-> +		netdev_info(dev, "invalid flags given to default FDB implementation\n");
-> +		return err;
-> +	}
+On Wed, Oct 12, 2022 at 12:20:50PM -0700, Dmitry Torokhov wrote:
+> On Wed, Oct 12, 2022 at 11:12:03AM +0100, Daniel Thompson wrote:
+> > On Tue, Oct 11, 2022 at 03:19:30PM -0700, Dmitry Torokhov wrote:
+> > > diff --git a/drivers/gpio/gpiolib-of.c b/drivers/gpio/gpiolib-of.c
+> > > index cef4f6634125..619aae0c5476 100644
+> > > @@ -365,127 +365,83 @@ struct gpio_desc *gpiod_get_from_of_node(const struct device_node *node,
+> > > +static struct gpio_desc *of_find_gpio_rename(struct device_node *np,
+> > >  					     const char *con_id,
+> > >  					     unsigned int idx,
+> > >  					     enum of_gpio_flags *of_flags)
+> > >  {
+> > > +	static const struct of_rename_gpio {
+> > > +		const char *con_id;
+> > > +		const char *legacy_id;	/* NULL - same as con_id */
+> > > +		const char *compatible; /* NULL - don't check */
+> >
+> > "don't check" doesn't seem desirable. It's not too big a deal here
+> > because everything affected has a vendor prefix (meaning incorrect
+> > matching is unlikely). Should there be a comment about the general care
+> > needed for a NULL compatible?
 
-I'm not sure it makes sense to deny specific flags in this case. It
-might be better to just error out if NDA_FLAGS_EXT was specified.
+There were certainly a lot of compatibles affected by this translation
+and given the structure of the drivers it is a tough code review to be
+sure you have picked up *all* of them!
 
-> +
->  	if (is_unicast_ether_addr(addr) || is_link_local_ether_addr(addr))
->  		err = dev_uc_add_excl(dev, addr);
->  	else if (is_multicast_ether_addr(addr))
-> -- 
-> 2.34.1
-> 
+
+> I'll add the wording that NULL is only acceptable if property has a
+> vendor prefi, Will that be OK? Otherwise I'll have to add a lot of
+> entries for Arizona and Madera.
+>
+> >
+> >
+> > > +	} gpios[] = {
+> > > +#if IS_ENABLED(CONFIG_MFD_ARIZONA)
+> > > +		{ "wlf,reset",	NULL,		NULL },
+> >
+> > CONFIG_REGULATOR_ARIZONA_LDO1 is better guard for this con id.
+>
+> Are you sure? I see reset handling happening in
+> drivers/mfd/arizona-core.c independently of regulator code...
+
+Looks like I grepped for the wrong string so I was completely wrong
+here... and in two different ways!
+
+Firstly I'm wrong about replacing the guard. Existing guard is correct!
+
+Secondly, I didn't notice until now that wm8804 also uses the
+"wlf,reset" and it is a little odd that the wm8804 driver will accept
+or refuse a misspelled binding based whether the kernel has enabled the
+arizona drivers.
+
+Overall I can live with the code we have today but this makes me wonder
+if the comment discussed above should be stronger. Something like:
+"the NULL compatible code is used there to support legacy entries in
+the table; try to avoid adding new NULL entries".
+
+
+Daniel.
 
