@@ -4,73 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DF7AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10BF9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 16:09:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K+cOdEr4dFCKTviuEVCYO54ebA99qxMq57p3B+s8gQI=; b=zg39LYV08FcGswM685q+HtyDhm
-	LxGflItHojB2At8zA1Ehnt8H62qsQoCQVyOFqfmETN7O1/7gs7mjnA/F9J0rtDZIPvYRkEbR4cazE
-	M8haJk2AkhdVF7/OebBpVsJemxHNgqV/Ty1TZL2/iDqutRMdid9dQnw14hgdaRpOuJPA4hf83xYi/
-	/4QJbku6uk/DUR8xlM9h3/gLc4SflndTVkLN+gCgmX8yab6uFJWKiN8tLGCkz6TByYPkBSm9CCY4p
-	MdvIGMCSuQXBNXR/FCJekQsrzimBlRTtv2xSdXac9UvPolN2ahs4ke60NCjGdP5QSbRKWAj+nzzUE
-	KUSz3PUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G9CAY+9CZoIdevV/pM7F++/h4zo0kyzccs9xz1n3Bjo=; b=JLKz0es5ySvGVgAlOuZiis2Ng1
+	IBviwDOa90cgwsDeWPnpvvFndH01eB4NP6bHqNbEShDk3lJ7dCrXDrND3WE4b6GgWCAvwIU4kLMxY
+	aiY9JGFcwIMUljtb9Mm9ECEkCU1cQ+oD26rH3Rx8CCShswFsmGL6ne4xU1Z7EKMWklzbfC8eCeitR
+	9u79dPk840xM6Xag+/7bAEdYFGP7DSzjRenHqjm9y7xJNIcgN1sWJzpMdx1NVXCiz7rwMY6PjWVbt
+	YzVXSYXz9Y6s9WcwZOTEgAD08wh1sqi2kUTJdlhLznXms+0dlIm6bALZsohX5ev6YVCYDbYis1aYG
+	s3YILRhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj05b-00CHCn-3v; Thu, 13 Oct 2022 15:25:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oj0lz-00COHT-B9; Thu, 13 Oct 2022 16:09:27 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj02X-00CFeT-GZ; Thu, 13 Oct 2022 15:22:31 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 161016602373;
-	Thu, 13 Oct 2022 16:22:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665674548;
-	bh=+rfRhqviBfuKmOoLPSppiW+1QAksWGIE/oQLWXDdMpo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nGkad3uGwfKnQvfXW+y3PBWPg9rcKm6x2zLEgBvyT06kcJCscitnyG0H18rYVm22I
-	 QeCwMM+Ik2q9hpcHaXPwaIxoCzScAnvfaiM99GORX+2pkOblr9poP4E8LU3aq679FD
-	 +JDMAu3YFukRHXYaBJPb8o62hXF8fZrg/dA+djWt8f/1pkwGgQKOpbLA/EyYBmlXcZ
-	 IJxY0l/pt1LKU9hinIaUEAUNug9fXAjLzHGp9L+qqOIQCcFtcWBRegaypUjtV/ymKC
-	 k3hzIzak1WfGf7SjC/AOmnwF0pH+xspBt4gyWydItU+wBj7s1r7yPZONeuPaTdSWDN
-	 gfV12YXT9w8wQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	sam.shih@mediatek.com,
-	hanks.chen@mediatek.com,
-	weiyi.lu@mediatek.com,
-	zhiyong.tao@mediatek.com,
-	andrew-sh.cheng@mediatek.com,
-	viresh.kumar@linaro.org,
-	chunfeng.yun@mediatek.com,
-	fparent@baylibre.com,
-	mars.cheng@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 8/8] arm64: dts: mediatek: mt6797: Fix 26M oscillator unit name
-Date: Thu, 13 Oct 2022 17:22:12 +0200
-Message-Id: <20221013152212.416661-9-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
-References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
+	id 1oj0lu-00COFM-VD; Thu, 13 Oct 2022 16:09:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1665677362; x=1697213362;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=OPQmeZ5uzAfg/Yu3vsd+t3FuvAOQsHliIP9WOqPYQKw=;
+  b=JX5LJCqsgzn2JG4zeU+XSS1C4y9cHmgpmW299lXIzIRKZvVAn07KUwb4
+   7o5fysbIkPFc6dtf+vSb3smTVA61FLCI6F8iFhRjP0hezOI7IMQ+lkz+P
+   NVGc3oQopy9AXzlZ0WZ3hrkKEFzu2mvwg9Q5vxzgb5O16M1Paxk0QkYGY
+   mBI4pDquI7QyG57Sjl+l0KQ3p9hX1n7hC1KwXD8Jyb9b3fjSLKC45INSG
+   u4a5j0rHQPnwquPCOjXZntszgdaHVig+VUGA3Zv99Fj874sIgF6Z8h0wZ
+   QNpmNxoF+tm7/VD0dp7pvqvl/5PYu4J47SBx2UU8zNYj3DKlPxXm++YdY
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10499"; a="331630045"
+X-IronPort-AV: E=Sophos;i="5.95,182,1661842800"; 
+   d="scan'208";a="331630045"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2022 09:05:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10499"; a="802296581"
+X-IronPort-AV: E=Sophos;i="5.95,182,1661842800"; 
+   d="scan'208";a="802296581"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga005.jf.intel.com with ESMTP; 13 Oct 2022 09:05:20 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1oj0hv-006V2r-0F;
+	Thu, 13 Oct 2022 19:05:15 +0300
+Date: Thu, 13 Oct 2022 19:05:14 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mika Westerberg <mika.westerberg@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+	Kent Gibson <warthog618@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Rafa?? Mi??ecki <rafal@milecki.pl>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Phil Edworthy <phil.edworthy@renesas.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Fabien Dessenne <fabien.dessenne@foss.st.com>,
+	Prathamesh Shete <pshete@nvidia.com>,
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-media@vger.kernel.org, linux-actions@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+	linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Andreas F??rber <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>,
+	Damien Le Moal <damien.lemoal@wdc.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Haojian Zhuang <haojian.zhuang@linaro.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Tomasz Figa <tomasz.figa@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>
+Subject: Re: [PATCH v2 35/36] pinctrl: intel: Add missed header(s)
+Message-ID: <Y0g3OiL/9oQlcovJ@smile.fi.intel.com>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
+ <20221010201453.77401-36-andriy.shevchenko@linux.intel.com>
+ <Y0gma4fmhWISrKHe@black.fi.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y0gma4fmhWISrKHe@black.fi.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_082229_746323_11A0B018 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221013_090923_072678_83CAE7ED 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +162,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update its unit name to oscillator-26m and remove the unneeded unit
-address to fix a unit_address_vs_reg warning.
+On Thu, Oct 13, 2022 at 05:53:31PM +0300, Mika Westerberg wrote:
+> On Mon, Oct 10, 2022 at 11:14:51PM +0300, Andy Shevchenko wrote:
+> > Do not imply that some of the generic headers may be always included.
+> > Instead, include explicitly what we are direct user of.
+> > 
+> > While at it, sort headers alphabetically.
+> > 
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> 
+> Reviewed-by: Mika Westerberg <mika.westerberg@linux.intel.com>
+> 
+> For all the intel pinctrl changes.
 
-Fixes: 464c510f60c6 ("arm64: dts: mediatek: add mt6797 support")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6797.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thank you, I have added it to the 4 Intel related patches.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-index 15616231022a..c3677d77e0a4 100644
---- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-@@ -95,7 +95,7 @@ cpu9: cpu@201 {
- 		};
- 	};
- 
--	clk26m: oscillator@0 {
-+	clk26m: oscillator-26m {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
- 		clock-frequency = <26000000>;
 -- 
-2.37.2
+With Best Regards,
+Andy Shevchenko
+
 
 
