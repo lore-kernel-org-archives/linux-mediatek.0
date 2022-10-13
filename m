@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEB5C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A163AC433FE
 	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 12:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,41 +12,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JDRcKBXbcrfo/WvIIu4D+6dm1RFHvAOSwTzFPPJ9QeQ=; b=tc99zMkRjPEFfdGrhL4hPWbX9G
-	geNKSwgKPFzYgI50DZAPgeIx//BdfiFGVgWnQ71gHOdMTpE6xLirVuhFnSzZj98chP1SVZP1gRafq
-	NBR2GCim6A9g0191WGe8WEZCuJujipM5IwjUxQOf/ynYtlFCKWK0oiBIbSOkR7WhJaTZAZwN6zBGf
-	heHTzwtkEnUqFFRGYRmFx7P8l9x4dZd6/AiS2MLDwgAK54zrBvfF65kaLueBmK6pDGjok5NZfGbzN
-	frjes62Usr+bSg9zCBbKrIObjxxe+hn6PhxtSvMEJQ/v9WwXjV+bSKK4yME5qB9KFyeHyc/2pDnzj
-	cj/vW9fg==;
+	bh=xFhPECd8bFcw2oFoVvF540l3OHgmgwT9VFWPqTRxN14=; b=OMDWQyd1p8FgtHKPn/w6TYLmc/
+	zOBs1BVBz7PW0j+Q5od7CXDFEAVKS8aXtjtgf/dVO3ZFPZucT5/zmXq6qAvnbfegYhMzhMSx7BIZX
+	F0r9d0r0DZW6CE69X0nwxl0tz+zZxEZcDgVzJ56yA2uIdehTa7wTu1PEWDlOmFBldFpWJc34J9OrW
+	m8i4+0w8SiSpkENzmi/F6pGmm2wVNDEXjmJXLzMvwYj04hnhEuRbZrK2LHvNF8j2eX/1/E2TJ365u
+	T+yv29GBWyHoHMSMwd2gsn9XAWZAhmM5ZI30R/qs6za3jpRkqTnIWB0rvQCQbzbhuywKYKH+mSbKf
+	Q6Tlr1qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiwt6-00Bc9W-OI; Thu, 13 Oct 2022 12:00:32 +0000
+	id 1oiwt6-00Bc9Q-4p; Thu, 13 Oct 2022 12:00:32 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oiwsn-00Bc4v-Vb; Thu, 13 Oct 2022 12:00:15 +0000
+	id 1oiwso-00Bc5F-0C; Thu, 13 Oct 2022 12:00:15 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0A0686602365;
-	Thu, 13 Oct 2022 13:00:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4944A6602366;
+	Thu, 13 Oct 2022 13:00:08 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665662406;
-	bh=8i7vdv//BJKK0S1wRFfGIN/8B9XDWEMWI/LVdDLpwDA=;
+	s=mail; t=1665662409;
+	bh=BuP37ujugDL4eXcg1n35rpEUIKWBeXdRBR/wQ/WaBxQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U+mzLfjraQ/CX+Hn/X//dazUYZlz8ll7EN+npmpTR1JCftljrqhIwr0zsQHoPl/k7
-	 ycNI8mSwZ7d1ypgkB8CggoSAbj6d7eP1lIWfycnCuenzANzhzcRt0EjbXcfr02nFNi
-	 K215KnAtGMt4oyfp4MG0auMebqPWX90ek5+czVWOucJeE8Af+J9X24cpE+t40uqT2e
-	 cYufECGaWF3I69R/4uTx0W5WGh1XeksxScyTsKcBxJRECjRi+3A7s77TQJkh/mg0gm
-	 pA7+k+2qy0kNckETpDm1GSgOGc1BvXC1pBosZVVG6WOHKB9qwBQeFNvyifRNg8k0tP
-	 DhaONbSKsFHig==
-Message-ID: <98d2ac4b-5b87-d22f-8929-4392b43d51a8@collabora.com>
-Date: Thu, 13 Oct 2022 14:00:03 +0200
+	b=WtUyd1KplznsnnNON9603d186CHop4XLxOd5D8YXPxsEERWbG1IaUI0lSnkIk53Az
+	 Ft5HLXPDPdgpqPDwjpmx+5X4bhZZIbWg2lbWBPlS27nqvubABGwz+q0Qf/7l2HIkJn
+	 3654mvVPctAEBumsx1wjIYdWTd6l79FNo7JC9VJpiwk41f0HaGQglT/VV00wOFqpZT
+	 SQufjN7azaGUGRiHyM5BuQ3y42Qi1lBtQl20l9QYYj7hj5zsBxjctlB99k1XjdKEUb
+	 smrbF3bMGJ++L/5oU8Ptv8d8NiUJj5U0VrFwCHLEDiR1LbQJc2PLYhpLRTpocmF79f
+	 qR7/7jNwuRALg==
+Message-ID: <b074f586-2e51-4060-203f-e91f20cb57e8@collabora.com>
+Date: Thu, 13 Oct 2022 14:00:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v4 4/4] clk: mediatek: Change PLL register API for MT8186
+Subject: Re: [PATCH v4 1/4] clk: mediatek: Export PLL operations symbols
 Content-Language: en-US
 To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org
@@ -57,14 +57,14 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  kuan-hsin.lee@mediatek.com, yu-chang.wang@mediatek.com,
  Edward-JW Yang <edward-jw.yang@mediatek.com>
 References: <20221013112336.15438-1-johnson.wang@mediatek.com>
- <20221013112336.15438-5-johnson.wang@mediatek.com>
+ <20221013112336.15438-2-johnson.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221013112336.15438-5-johnson.wang@mediatek.com>
+In-Reply-To: <20221013112336.15438-2-johnson.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_050014_281641_48601BB3 
-X-CRM114-Status: UNSURE (   6.10  )
+X-CRM114-CacheID: sfid-20221013_050014_281520_366BF847 
+X-CRM114-Status: UNSURE (   6.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,14 +81,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 13/10/22 13:23, Johnson Wang ha scritto:
-> Use mtk_clk_register_pllfhs() to enhance frequency hopping and
-> spread spectrum clocking control for MT8186.
+> Export PLL operations and register functions for different type
+> of clock driver used.
 > 
 > Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 > Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
