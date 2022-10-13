@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95237C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 03:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB0EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 03:36:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DKtcimmmsyJAP/vChFdABDsLsebfmgng3jA8jevjhyA=; b=Iz/Z4kqe8sFA7KK6LxtZzvsNyZ
-	aUChAOrDcnXIO48nDJH75JTyT+jCCwOO4g5B2lLhPfXyY+R0PIHwe6bDf687Vw7X8BtCyFSt3uhj/
-	mb7PsdjvJyz4VtCJYpWBt+zqBwwk3eB+nXuDPvXc8YUpZ4/yEleqkY8U1qe7cC6E0yfU9Q5Qa9n2o
-	iNfWxh9vonbIxK+8CIqyB5dwcce7R7MaqRm7WfZSYmNnum52f3K9VhaeIptpZYNIm8rcgwO5CevhI
-	SqnqOBsxhyL4Pb0PrmWARDSpZfB7p/9nXz50c42yHicpDUUnYM6zrws8A+IGrQ2Hkpw31wmwsnCkQ
-	OiGpgxRA==;
+	bh=e/RnWDHakvB3xqyl8HlC7PmuXWjiVUyJfu/0aj+YTdo=; b=43aQ6b8TP4VCffIuclhcTpyVPC
+	u5q1FDWtKvJEAN1wgni9QaVRmGkgcASW0CTFQgb6XM3zPYOYmdkDr8Be0ScCePV9HBqHNhzCznBIs
+	o3QpRI+cXApQqkLiOHFbTDNipWmcwlFOWE+fXEc6F+laXUtlcDlAM9JWwKr5huzRpEVVz5yEzj93L
+	poPFVry7wG2dClijYsPD+x87xjvt4/JASOHSaeWyaLMXaSIhkj3XBdOsGBsOLZgpxubJKyansiuW8
+	dtPN10JZl7+LSjIgJWBnURXKM8D4e4sasDP2SOLM7Zqtui4uaqKetMzhBuxL+xnnl20uNNKC8ZhBZ
+	qrRU8+sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oioY6-00ARHp-KJ; Thu, 13 Oct 2022 03:06:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oip0t-00ATIj-Ns; Thu, 13 Oct 2022 03:36:03 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oioY3-00ARH4-Cy; Thu, 13 Oct 2022 03:06:18 +0000
-X-UUID: a55c061a642b46ddad16cbed485cdfe0-20221012
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DKtcimmmsyJAP/vChFdABDsLsebfmgng3jA8jevjhyA=;
-	b=Ov4apU9oVux65eafbcGeIuStLDuBDemaaVtSfIxRx98ZgfdJT/bEgjySN5mtsfTdWfoD1Iv4m6Y7mJpaX0fX/tMirFGYa0n0bJ44cMivEm0SCEcLQsyUGwG5W1Dg2qj2X/fsus+piH1NlzuFN1zLqzXtImEyIjKixlPnSg54lBc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:a3e0eae5-c2c8-4c9a-b3f6-5c75457abb45,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:f8a91cff-ee8c-4ff7-afe9-644435e96625,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a55c061a642b46ddad16cbed485cdfe0-20221012
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 551392189; Wed, 12 Oct 2022 20:04:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 13 Oct 2022 10:03:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 13 Oct 2022 10:03:30 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
-	<roy-cw.yeh@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v3 3/8] arm64: dts: mediatek: mt8195: add MMSYS configuration for VPPSYS
-Date: Thu, 13 Oct 2022 10:03:24 +0800
-Message-ID: <20221013020329.8800-4-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221013020329.8800-1-moudy.ho@mediatek.com>
-References: <20221013020329.8800-1-moudy.ho@mediatek.com>
+	id 1oip0j-00ATHK-Rv
+	for linux-mediatek@lists.infradead.org; Thu, 13 Oct 2022 03:35:55 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id m15so858529edb.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Oct 2022 20:35:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=e/RnWDHakvB3xqyl8HlC7PmuXWjiVUyJfu/0aj+YTdo=;
+        b=aGBoVakhLLIHUk8QdHR4T57YVtaIBGYYB3kdNqKVJ3NCk1ZufQbWtDd9840Nm4KnhB
+         BGnqR0QsDGr3nGgJZ8Ph68uTcpBtfQ3a3pApKGfn4/mzYzJB6fyYtx47fppOq+cINLpA
+         l7BRUmKDNgjm3wqgCRXsmbhNnkfgVDTufbcp0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=e/RnWDHakvB3xqyl8HlC7PmuXWjiVUyJfu/0aj+YTdo=;
+        b=nrtWsZIwCcFbVuTf9rgR7uMM6wyEGixqc2d57ePGaEDp7v6nbYkk/WZk+4By163ERm
+         05qP7cD9Vs1C6qQWHQwu50GeQFkQPwVMuOHlMK3MnFZhxkCTNmHnJYGbMgMqOn6VRcNA
+         mmtOfXR9gDZ80uub30kpCbeivWJZrQ3AxpdycgT9m4eTTkxIjZbUtlnbETDXakeyKs3C
+         KBgnf3eRhkXhUiFhDPEeh/n25UlGBWAIjdqy6BJ5rDIfpnRo0X1EBuuttrrswYSZBGaS
+         JnDoMyoAhW0xZvFV/DUB0PTOtwRBQax1Cdcy/9aMjRZXmw76dERJkqVwAzwh7SwVjhae
+         yv/Q==
+X-Gm-Message-State: ACrzQf0Aq2yTOsyfzGRXys4hdhqtXotC77lNlrJ8/8lkzfhyiR2xLqTj
+	Ct+tGCAtdy0b35agYT1PrLOCKFXk5k3bU9CcCU8q8g==
+X-Google-Smtp-Source: AMsMyM5vH6zf1A6cPcPxyCBpJslErrSoPJQuSdL3BNZHZ2RrgtwxqgI5k8R3y5zXlRd+rqDyNqGwET0nhN21GDKrGYw=
+X-Received: by 2002:a05:6402:1604:b0:458:b2b7:bd5a with SMTP id
+ f4-20020a056402160400b00458b2b7bd5amr29067970edv.73.1665632149352; Wed, 12
+ Oct 2022 20:35:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220621091854.1904372-1-treapking@chromium.org>
+ <de6412d4-732c-79cf-ac00-e0fccee44270@gmail.com> <CAEXTbpf=w6qB1X3dYSR=kdJgqNAFW-pRYuiOGuv9WWEtuY47Cw@mail.gmail.com>
+ <CAEXTbpdxj3Yd3dbyAd0Yc+8adCtK1bi=UXt+j7Fbtx6q8xd0RQ@mail.gmail.com>
+In-Reply-To: <CAEXTbpdxj3Yd3dbyAd0Yc+8adCtK1bi=UXt+j7Fbtx6q8xd0RQ@mail.gmail.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Thu, 13 Oct 2022 11:35:38 +0800
+Message-ID: <CAEXTbpchG0=ofGnzT=nTud24apND1qN6dabBN3z=CVw0oSb2_A@mail.gmail.com>
+Subject: Re: [PATCH v3] arm64: dts: mt8173: Fix elm panel DT node
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_200615_467368_0AB1D63D 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20221012_203553_908416_EC15FDCA 
+X-CRM114-Status: GOOD (  29.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,46 +85,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+Friendly ping again on this thread.
 
-With the change of the MMSYS binding file for MT8195, the compatible
-name of VPPSYS in dts need to be fixed to match the definition.
-
-Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 905d1a90b406..1bb6054531c1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1476,8 +1476,9 @@
- 			#clock-cells = <1>;
- 		};
- 
--		vppsys0: clock-controller@14000000 {
--			compatible = "mediatek,mt8195-vppsys0";
-+		vppsys0: syscon@14000000 {
-+			compatible = "mediatek,mt8195-vppsys0",
-+				     "mediatek,mt8195-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
-@@ -1581,8 +1582,9 @@
- 			power-domains = <&spm MT8195_POWER_DOMAIN_WPESYS>;
- 		};
- 
--		vppsys1: clock-controller@14f00000 {
--			compatible = "mediatek,mt8195-vppsys1";
-+		vppsys1: syscon@14f00000 {
-+			compatible = "mediatek,mt8195-vppsys1",
-+				     "mediatek,mt8195-mmsys", "syscon";
- 			reg = <0 0x14f00000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
--- 
-2.18.0
-
+On Mon, Jul 25, 2022 at 4:25 PM Pin-yen Lin <treapking@chromium.org> wrote:
+>
+> Hi Matthias.
+>
+> Gentle ping on this thread. Any feedback or suggestions?
+>
+> Regards,
+> Pin-yen
+>
+> On Mon, Jul 11, 2022 at 11:09 AM Pin-yen Lin <treapking@chromium.org> wrote:
+> >
+> > All we know is that the functions mentioned in the commit message were
+> > working in 4.19 kernel, but not in the latest kernel tree.
+> >
+> > Unfortunately, we don't know which patch breaks the driver.
+> >
+> > Best regards,
+> > Pin-yen
+> >
+> > On Thu, Jul 7, 2022 at 10:50 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> > >
+> > >
+> > >
+> > > On 21/06/2022 11:18, Pin-Yen Lin wrote:
+> > > > Move the panel DT node under `aux-bus` node, so it won't use the buggy
+> > > > `ps8640_bridge_get_edid` to get the display modes. Also, change the
+> > > > compatible string from "lg,lp120up1" to "edp-panel", so the panel-edp
+> > > > driver gets the displays modes from the EDID instead of using the
+> > > > predefined display mode (`lg_lp129qe_mode`) in the driver, which is
+> > > > actually not working.
+> > > >
+> > >
+> > > Do we need a fixes tag here? I'm not quite sure if we fix an upstream bug here,
+> > > to be honest.
+> > >
+> > > Regards,
+> > > Matthias
+> > >
+> > > > Signed-off-by: Pin-Yen Lin <treapking@chromium.org>
+> > > > ---
+> > > >
+> > > > Changes in v3:
+> > > > - Include more details in the commit message.
+> > > >
+> > > > Changes in v2:
+> > > > - Remove the Fixes tag because this change is not compatible with the
+> > > >    old kernel versions.
+> > > >
+> > > >   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 26 +++++++++++---------
+> > > >   1 file changed, 14 insertions(+), 12 deletions(-)
+> > > >
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > > > index 9c75fbb31f98..1e0802a6f6d2 100644
+> > > > --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > > > +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > > > @@ -90,18 +90,6 @@ volume_up {
+> > > >               };
+> > > >       };
+> > > >
+> > > > -     panel: panel {
+> > > > -             compatible = "lg,lp120up1";
+> > > > -             power-supply = <&panel_fixed_3v3>;
+> > > > -             backlight = <&backlight>;
+> > > > -
+> > > > -             port {
+> > > > -                     panel_in: endpoint {
+> > > > -                             remote-endpoint = <&ps8640_out>;
+> > > > -                     };
+> > > > -             };
+> > > > -     };
+> > > > -
+> > > >       panel_fixed_3v3: regulator1 {
+> > > >               compatible = "regulator-fixed";
+> > > >               regulator-name = "PANEL_3V3";
+> > > > @@ -282,6 +270,20 @@ ps8640_out: endpoint {
+> > > >                               };
+> > > >                       };
+> > > >               };
+> > > > +
+> > > > +             aux-bus {
+> > > > +                     panel {
+> > > > +                             compatible = "edp-panel";
+> > > > +                             power-supply = <&panel_fixed_3v3>;
+> > > > +                             backlight = <&backlight>;
+> > > > +
+> > > > +                             port {
+> > > > +                                     panel_in: endpoint {
+> > > > +                                             remote-endpoint = <&ps8640_out>;
+> > > > +                                     };
+> > > > +                             };
+> > > > +                     };
+> > > > +             };
+> > > >       };
+> > > >   };
+> > > >
 
