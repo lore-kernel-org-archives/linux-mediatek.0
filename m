@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6AA8C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:24:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1624C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:25:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ygxOAKdsXNlSEUeeAPUI1kvBZVqOGjtXG8ijnZHzfZE=; b=MkUfPIFFIdPIW8own02EyPn2fr
-	dva9KRe0dz29j7jZrwa1DiaA6JVyMmh2N1Kn6UEQYReTBKbt8Xxv7Xr8DxWAso7DYPo6n67poG9H5
-	8DEvi2faw/avIyDiwLjNMz37usKTIbhwWrGoJ2OfmEp08LhE2rjvzwNpOsVsbP7ss2sIz0e/OYmj8
-	wwVxOT7VeCneeOUPY+tkm+SzQejaZINmNvxvJ7hV/w8Gqd7JBXAVzEjtA22OQowp/Drs1ct6pKOJ2
-	dP+BCYDk7xIxlin/dgacxHRW1NW5I5ojHLgWmw3+OUgGi9cP9Dcbq9f3H2cW/R6kPnBylK1w6/MCh
-	8u1l6gAg==;
+	bh=ov420NLpC0YD+Qsl19uGAo67aWaxWZx+qIQbqcUwkiQ=; b=vUUOXPjBhEU0fxo+wxgQHDOmUb
+	lmDTMochUa7WCbxGePPAVB7gL3R6AiS6uLtE/JoFqXrdR9KCXzlXdW0IdmMMI4rzwfCbrCF2DK9Ep
+	MwhPNLlKIHpNd0xs0eGKSj7Nh4ZUwFDOIOgT+ozf4Ib5DKv4x1v37EOOhhh3cm36z0cyp4CdoqoUw
+	ageXSltlxc2m8KndlqOXKMVxKP257/Jdwft9QX+qsb3m/AGwuLYygM3u0HIGEcTUSjir9xU6+foUX
+	QYVsjYQb7EdWijwc052MoaSlGJC6ZTPeKwH9gpAjQ48KweVPRF8daExy2J0gq0U7iqOvjWcVyj1Dl
+	4vRh2LEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj04S-00CGYY-1k; Thu, 13 Oct 2022 15:24:28 +0000
+	id 1oj058-00CGvw-7o; Thu, 13 Oct 2022 15:25:10 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj02S-00CFaR-Sc; Thu, 13 Oct 2022 15:22:27 +0000
+	id 1oj02V-00CFcl-5y; Thu, 13 Oct 2022 15:22:29 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C4AD3660236C;
-	Thu, 13 Oct 2022 16:22:22 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EA99A6602370;
+	Thu, 13 Oct 2022 16:22:24 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665674543;
-	bh=n1VsYKLDI6PI2eMbYjiYOxjPp4ZKxO4cNBs/kLUYXlw=;
+	s=mail; t=1665674545;
+	bh=OIVvm9eZZnDpMulbdkAjAXAZiIM5QtEjlxZKqlbUhN4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DuxDOr5lO+fvYGFOQ3d3ZeTzDX9yrftkAzjvQl/vFLs0yoVdm3kAK1VP87aCVSgTH
-	 gxlI032FQ5EXq4TsnkCqSMC+ewTrA5xEXMFVmXEQGhEse6J4RuqLkSQzl2UV06vkMi
-	 h5BKnYC4B0XNH4Hya+GL6RjLF+9J8ZC13yAfkphYZ0N9H01uHOKffkWNc2/sQbYcFG
-	 Bbg2f42IBPHntlc/fUQ6M/0f2RBxEiTm0gRSvAgJmGRUqS3TS3ggwu/t5lBuQz/fjE
-	 gn4h/IhDc2seSstvE5LuTQsnFUFLAT3Rwk+FmoOPehlk2tfYzHr3WDcQMvATm4Rg3J
-	 5qKVzqmlrgtIw==
+	b=KnNC2aRr1CuewZByFW/jeStIoRR+cQKvdAc1e4Nr2itAlV18cP5mtMa9/jxqaXSCk
+	 sgucXlPqmUQ47m2fAIT7AQdgdzJBYjEhSb6x2GSRHfIAT8lqfkvfvOWpWWnqNbOX5R
+	 HLnmKQp34796JcP+uEprJMy9hi1xfJ7XAxHvejEe38Azb+Dy3I337s0zFX+7Cx7bQ5
+	 Vjoa+sBjwjdt3ceInjCKF7zVfYwrKY4sokMPBiWCfs10FIMwfxtOX3P/wTsQNaa1ou
+	 hx84eKrCmDIiZq4AiXSoZGCiEsU/VhmpBDvsJpqFuIQGLm/DnMboJA9tC+valF/VmF
+	 7Y+up0VvDk0rg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -59,17 +59,18 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 4/8] arm64: dts: mt2712e: Fix unit address for pinctrl node
-Date: Thu, 13 Oct 2022 17:22:08 +0200
-Message-Id: <20221013152212.416661-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 6/8] arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
+Date: Thu, 13 Oct 2022 17:22:10 +0200
+Message-Id: <20221013152212.416661-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_082225_077490_69E812E0 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20221013_082227_480578_5EBEFFEC 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +85,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The unit address for the pinctrl node is (0x)1000b000 and not
-(0x)10005000, which is the syscfg_pctl_a address instead.
+Update the names to regulator-usb-p{0-3}-vbus to fix unit_address_vs_reg
+warnings for those.
 
-This fixes the following warning:
-arch/arm64/boot/dts/mediatek/mt2712e.dtsi:264.40-267.4: Warning
-(unique_unit_address): /syscfg_pctl_a@10005000: duplicate
-unit-address (also used in node /pinctrl@10005000)
-
-Fixes: f0c64340b748 ("arm64: dts: mt2712: add pintcrl device node.")
+Fixes: 1724f4cc5133 ("arm64: dts: Add USB3 related nodes for MT2712")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index ff6b26cdda81..1ac0b2cf3d40 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -266,7 +266,7 @@ syscfg_pctl_a: syscfg_pctl_a@10005000 {
- 		reg = <0 0x10005000 0 0x1000>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index 638908773706..d31a194124c9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -50,7 +50,7 @@ extcon_usb1: extcon_iddig1 {
+ 		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
  	};
  
--	pio: pinctrl@10005000 {
-+	pio: pinctrl@1000b000 {
- 		compatible = "mediatek,mt2712-pinctrl";
- 		reg = <0 0x1000b000 0 0x1000>;
- 		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+-	usb_p0_vbus: regulator@2 {
++	usb_p0_vbus: regulator-usb-p0-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "p0_vbus";
+ 		regulator-min-microvolt = <5000000>;
+@@ -59,7 +59,7 @@ usb_p0_vbus: regulator@2 {
+ 		enable-active-high;
+ 	};
+ 
+-	usb_p1_vbus: regulator@3 {
++	usb_p1_vbus: regulator-usb-p1-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "p1_vbus";
+ 		regulator-min-microvolt = <5000000>;
+@@ -68,7 +68,7 @@ usb_p1_vbus: regulator@3 {
+ 		enable-active-high;
+ 	};
+ 
+-	usb_p2_vbus: regulator@4 {
++	usb_p2_vbus: regulator-usb-p2-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "p2_vbus";
+ 		regulator-min-microvolt = <5000000>;
+@@ -77,7 +77,7 @@ usb_p2_vbus: regulator@4 {
+ 		enable-active-high;
+ 	};
+ 
+-	usb_p3_vbus: regulator@5 {
++	usb_p3_vbus: regulator-usb-p3-vbus {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "p3_vbus";
+ 		regulator-min-microvolt = <5000000>;
 -- 
 2.37.2
 
