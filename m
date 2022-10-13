@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8925CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 14:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A085FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:18:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MBIipLVwGqXkiEUZQ0s+UwY/gG3UoitI2iMvUcuVF4A=; b=Q4hndz1CN4fzlvxKiznLX9+sn3
-	xtUw6qQ8KSzgLDjnvoNEd03a500aUHKp5cIpEosb6aFObq/fBMjdhcbSZFjmhKUuQ4UztS2TVtL5Y
-	TKtURWi0WduBpazGHP8ls2Dn4go5g7D7NYIfoYoY92d0BurjCW7krRlHss+MbFiMMPU4zQVlrC7Sa
-	EFDEF/tZJhmf+I9RhiPz3jQTe/dqEqZVsd/1rxPMCFYniaZFpJ1IN4j/uR0nhCkxCuBKn1ekYAqzK
-	RNFmEE6Dw4xjhqIVasbsvguxCn0LjfIe/w+6SuRHQPWaMhcH+cXRKGl4yF0rT36Tbmk6IRl9GasG7
-	Emaru7IQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+pjn465tBlWE2TKJcQ1vmz28ymlMtNutMRGiw9pjsKU=; b=WPgtpDeTSVtH1hz2vngl4dEVv1
+	QXvxRfcxHTy5B2gmAEF8jYC82+fdZdYleg3kGp5Fih7igT334J4VA56KglsLLrDiNqyuYdx2iOmB6
+	TuGQMuKjqrwZHSBH3EZ/yzOBIMhRBPErTOSn4sw6ZKqCzj0HXPBgRA9XGwLyZ4r32zxz9+5tEEGQa
+	4zyWywSnOiTrBQppWJvEYMkN4qD9ZULl3kHd35JfWKkcE0dUANR8JA+rJPnqrZNKkXkHQVhw/03dn
+	4H0SanSlMUeRPhKgq3fsGdLJRofO1mVanyq4DwOyVz8qF4qoa6vVSUSjmfQhuBZ90LUN3cWuOre2C
+	8PbDcKNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oizcI-00CCmx-F0; Thu, 13 Oct 2022 14:55:22 +0000
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+	id 1oizyL-00CErS-5y; Thu, 13 Oct 2022 15:18:09 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oizcG-00CCmY-5I
-	for linux-mediatek@lists.infradead.org; Thu, 13 Oct 2022 14:55:21 +0000
-Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-35711e5a5ceso19597947b3.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Oct 2022 07:55:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=MBIipLVwGqXkiEUZQ0s+UwY/gG3UoitI2iMvUcuVF4A=;
-        b=DPxu1EFsYJmUM6rlny57ruFeEaLOyabjkouRzlDJSiXihniPrPGDCGB6u++m4Rmyl9
-         zO39ED8BUIW8zC96c8hyvkbqWLZ3L+BSD6QkBjXaDDnozaU+0jM2Qo1J+UdeD0WldpEW
-         7jLH+V5/ZIXp0U2ljbahLokEdNV7KAr0s08Ro=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MBIipLVwGqXkiEUZQ0s+UwY/gG3UoitI2iMvUcuVF4A=;
-        b=xenG7APAyMDZ260nEcuwn+RVGCqYVSivY51hRiZrVC4aSoiVDcqeAPI9vREWie9sLO
-         unCofYSCfLgUFMljpMPcmspCVsT3UM+ysHzDHpxSwg31crBBNWcRQ3EbM1JU1rs9jWiZ
-         i5I+Im4ht7vSh14mVr3ZuF7DGyqnlyH1wXUtSTcSvOHrQ4puPLHww7DkNaYT9tmEf+fb
-         xg8iwGomoWd/GDf+YAYYhOV3hwRP4DTaw9g3+54rEGQwJkCXfgZUL5IoPgd4zkgAwapy
-         x5DdCUyF3fjA9YqPhhDmzvznN5HrvOfMTWtcX2wuOJfZnez5Fm06UFujyIXoXsIicC+T
-         tsQw==
-X-Gm-Message-State: ACrzQf2MsA8pBmLR8gY1mgPnukZhUPQJsUjqxN9GjpOgWo2SIiK0sbSt
-	djGDbmVLrzUeL9GoCDxoHeRVXESKKPdrOD087aZ+VA==
-X-Google-Smtp-Source: AMsMyM45MZhNQj1zqmzswA00CgfLvl+B+vI9SGLc1NFzKu9waJhjgZ6CIjvEkueQQUKTlClnpCRd9Wrrc8KZjl5Hhdk=
-X-Received: by 2002:a81:2544:0:b0:360:c270:15a1 with SMTP id
- l65-20020a812544000000b00360c27015a1mr329324ywl.67.1665672918017; Thu, 13 Oct
- 2022 07:55:18 -0700 (PDT)
+	id 1oizyA-00CEnl-DP; Thu, 13 Oct 2022 15:18:00 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E44781884C4B;
+	Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id B029F2500015;
+	Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 74E139EC000A; Thu, 13 Oct 2022 15:17:42 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-References: <20221012191226.1646315-1-greenjustin@chromium.org> <CAPj87rPftXR6v=Z44Y7EKkF2w6Hh_sEueW_m0z1qmi0iH+moHw@mail.gmail.com>
-In-Reply-To: <CAPj87rPftXR6v=Z44Y7EKkF2w6Hh_sEueW_m0z1qmi0iH+moHw@mail.gmail.com>
-From: Justin Green <greenjustin@chromium.org>
-Date: Thu, 13 Oct 2022 10:55:07 -0400
-Message-ID: <CAHC42Rcx7TC9R6zQyd4NWuwgm89ReS6X8bbLKR73CjcdfWjHPw@mail.gmail.com>
-Subject: Re: [PATCH v3] drm/mediatek: Add AFBC support to Mediatek DRM driver
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	chunkuang.hu@kernel.org, airlied@linux.ie, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, wenst@chromium.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+Date: Thu, 13 Oct 2022 17:17:42 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
+ <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
+ Machata <petrm@nvidia.com>, Florent Fourcot <florent.fourcot@wifirst.fr>,
+ Hans Schultz <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>,
+ Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v7 net-next 9/9] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <Y0ggn5SZnw+4SGLC@shredder>
+References: <20221009174052.1927483-1-netdev@kapio-technology.com>
+ <20221009174052.1927483-10-netdev@kapio-technology.com>
+ <21f799c5a7a79e2e4b111a95fff6fe3d@kapio-technology.com>
+ <Y0ggn5SZnw+4SGLC@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <46112084313969f9a6dfdea9fe52b4b1@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_075520_256171_78EF7EB7 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221013_081758_652435_6660E3F7 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,11 +86,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the comments everyone! I'll upload a new CL sometime today.
+On 2022-10-13 16:28, Ido Schimmel wrote:
+> On Wed, Oct 12, 2022 at 11:46:55AM +0200, netdev@kapio-technology.com 
+> wrote:
+>> Ido, have you had time to look at this patch set, and do I need to 
+>> release a
+>> v8 to fix those two forgotten statics and maybe also this new 
+>> switchcore
+>> driver that was not there when I posted this patch set?
+> 
+> I don't know which changes you are referring to, but v8 should
+> incorporate all the changes requested so far. Do not post it as long as
+> net-next is closed (unless marked as RFC):
 
-I did want to ask though, I realize I should be using u32/u64 for
-kernel code in general, but the rest of this file seems to be written
-using unsigned int/unsigned long long. In this circumstance, does
-keeping with the style of the original source take precedence over
-general style guidelines, or vice versa?
+Ohh, I missed declaring two functions as static in chip.c, and 
+unfortunately my compiler did not give me any warnings...
+
+What is the schedule for net-next to be open (I guess that it is closed 
+as of now)?
+
+> 
+> https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html#how-often-do-changes-from-these-trees-make-it-to-the-mainline-linus-tree
 
