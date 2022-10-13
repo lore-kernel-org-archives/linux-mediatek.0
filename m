@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E680C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E22C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 15:23:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xviEVCzM98P+sYh3OmDpU6yEPeOmCoJkVobO0/V/DjI=; b=YJ08yaq3u43Wbtnce3FX54hek4
-	3zCe532R40ybbd+g/GwraIOgheLOd+jEGxZ9IZqPlJhlFB7Zr8oc9yiTz6dpjlFuS4GFRaiGeTpzu
-	MJdclTIlruJa6XXkXswjxRMztJxLPELoH3bpW7CHr7LHpVie+7y//3SKRi+qiQ+pUr1MxBczKae8Z
-	yVCUE/0HBQ5Pv+966HPW2oKqk6UNDOt+lCj++pbVmMB7H3nQoIHuXY7/X0RymnPTEEiKhJvFWgx6y
-	aCgsXePxmlsOS02J3xDiik/sIF9ZQAZhb8E0bIU8jzX0fLg0ypUPnU03h6HXoR+vHZerz0fg8zTkf
-	vBe8/yvA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CrQHbQcokOcatyWwpm/XSQD6kmg4zwfxr0Dh4OQ013s=; b=vmNKN1m5jyXHvNkScGfKAnG7rx
+	UWoQ9E3EksxkbtDbkHyT7vzyQ0F481Lp6npSKgSqwfdwmUNsXjQjUOMxKdzO+7HkopWju8zqxyQ7N
+	YaJBk/2k/m16qLFZZdmZzU9g4w6GA/zu5G8CUFuPr8RL74QGeB6fhT+5usneqylzFekbR3raO5fE0
+	noMAUTBxdAfjPwSkRuNvbyoXtQkab8yj5bkQ4K7PeXX4hoCLxmuBfKVO4f1UoUIv1TdAG5fuvfHnk
+	hskrp//MYrpkAQRlSIg9fVT2UiGZdOCsgY7yXKy8av8h+9xNyIglhDjmU0vNchScED8z9e3Gj6aoc
+	P68ippsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj02l-00CFiz-2j; Thu, 13 Oct 2022 15:22:43 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oj02v-00CFmA-Co; Thu, 13 Oct 2022 15:22:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj02R-00CFZW-Ew; Thu, 13 Oct 2022 15:22:25 +0000
+	id 1oj02S-00CFZa-4N; Thu, 13 Oct 2022 15:22:25 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78E626602366;
-	Thu, 13 Oct 2022 16:22:18 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A3D44660236A;
+	Thu, 13 Oct 2022 16:22:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665674539;
-	bh=DM9dp4q0ZBB9kwxv9JwDMM/0XtGc6/2vq44258xzabo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ZgRRH8FHMlEkPlzeZV9XV9OOigpZgq/LZPrWhdZAh7y5j3XtwFUjKX/bsy0oMA9x/
-	 cbJyRFPkx9ppVUt1gcLN+pur7cHmNxVKaN1tARC5ZIHGHASwhXqo8UO5if6zHQex2F
-	 SbH0o8dBl2hE47bBjSaZJs5xZ72O2L5jj78m4b/B7abjLwRA2hgXKIPOpxl/lvyg6W
-	 4b6Pgkkm6vZpbxJZNo8odrnQvrcBFtw6SHSGPydEexGIGeC/N8R4MZ4KT5/ybozsiK
-	 9N7Xa+XbzA/ixaXWOYz8BTlK6Wed/vkEOi27JxSA8/JRv62v9zD2QQRIfHqku0B6Zh
-	 0/eiTxG6qFjTQ==
+	s=mail; t=1665674541;
+	bh=1Hsa+hCs6ujNKDF0QPMj+cm7hvP4DZ+oiE2dgapkeCk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=j9uzIrSVYtl3sc0lo308WxbTghFY6HMyxmml2wdtHPXM7CfuzgUIaaV1dfej+p1E9
+	 QQjdZPn3ygu79WPsAVEmN+fLbdDVnTYFJgdjOfl6s55EgOmCIYkY6wcOpZSDQYbB8K
+	 L3Vp5D9eMFzLsVTK87zYMhosBF1+4nezr3W79Kaw14yPl1ZiVbG8B/zJ/3BtVYJErO
+	 EkSZkBp0/iGIWkkFeDVNbDyzMfjrjmIorejmTplHDBZXIsd1YM7EfK2z2k47AuR1hf
+	 cXxC7tGHNM7bqU+EQLNtdEm6J5Rc4D5xJ17UyD4p7cdpAbZFY3YnyO4vsAqCjnc4bY
+	 vFPX6E9nz15zQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -59,16 +59,17 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 0/8] ARM64 MediaTek devicetree fixes - Part 1
-Date: Thu, 13 Oct 2022 17:22:04 +0200
-Message-Id: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/8] arm64: dts: mt6779: Fix devicetree build warnings
+Date: Thu, 13 Oct 2022 17:22:06 +0200
+Message-Id: <20221013152212.416661-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
+References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_082223_846303_5DE3B44B 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221013_082224_375456_FCBCFDCB 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +84,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series fixes devicetree warnings for some MediaTek DTs.
+Rename fixed-clock oscillators to oscillator-26m and oscillator-32k
+and remove the unit address to fix the unit_address_vs_reg warning;
+fix the unit address for interrupt and intpol controllers by
+removing a leading zero in their unit address.
 
-Since there's a lot to be done and since not all fixes are trivial,
-I decided to do this in more than one step, as to ease work for
-reviewers, maintainers and for .. me.
-This being part 1 means that there's more to come... a bit later :-)
+This commit fixes the following warnings:
 
-AngeloGioacchino Del Regno (8):
-  arm64: dts: mt7896a: Fix unit_address_vs_reg warning for oscillator
-  arm64: dts: mt6779: Fix devicetree build warnings
-  arm64: dts: mt2712e: Fix unit_address_vs_reg warning for oscillators
-  arm64: dts: mt2712e: Fix unit address for pinctrl node
-  arm64: dts: mt2712-evb: Fix vproc fixed regulators unit names
-  arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
-  arm64: dts: mediatek: pumpkin-common: Fix devicetree warnings
-  arm64: dts: mediatek: mt6797: Fix 26M oscillator unit name
+(unit_address_vs_reg): /oscillator@0: node has a unit name, but
+no reg or ranges property
+(unit_address_vs_reg): /oscillator@1: node has a unit name, but
+no reg or ranges property
+(simple_bus_reg): /soc/interrupt-controller@0c000000: simple-bus
+unit address format error, expected "c000000"
+(simple_bus_reg): /soc/intpol-controller@0c53a650: simple-bus
+unit address format error, expected "c53a650"
 
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts   | 12 +++++-----
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi     | 22 +++++++++----------
- arch/arm64/boot/dts/mediatek/mt6779.dtsi      |  8 +++----
- arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  2 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  2 +-
- .../boot/dts/mediatek/pumpkin-common.dtsi     |  6 ++---
- 6 files changed, 26 insertions(+), 26 deletions(-)
+Fixes: 4c7a6260775d ("arm64: dts: add dts nodes for MT6779")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 9bdf5145966c..dde9ce137b4f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -88,14 +88,14 @@ pmu {
+ 		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW 0>;
+ 	};
+ 
+-	clk26m: oscillator@0 {
++	clk26m: oscillator-26m {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <26000000>;
+ 		clock-output-names = "clk26m";
+ 	};
+ 
+-	clk32k: oscillator@1 {
++	clk32k: oscillator-32k {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+@@ -117,7 +117,7 @@ soc {
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
+-		gic: interrupt-controller@0c000000 {
++		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+ 			#interrupt-cells = <4>;
+ 			interrupt-parent = <&gic>;
+@@ -138,7 +138,7 @@ ppi_cluster1: interrupt-partition-1 {
+ 
+ 		};
+ 
+-		sysirq: intpol-controller@0c53a650 {
++		sysirq: intpol-controller@c53a650 {
+ 			compatible = "mediatek,mt6779-sysirq",
+ 				     "mediatek,mt6577-sysirq";
+ 			interrupt-controller;
 -- 
 2.37.2
 
