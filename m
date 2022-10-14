@@ -4,73 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2192CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 03:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 833CEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 07:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ZSRu1BKoFGBPwJxlPjZlBplZCmEr25chXpohl79YHY=; b=vcCs+DzHZ/RdnOYBfq8rrNZaYv
-	0O6iTEuxbG3UvsfCu1bOOk8Jb7CD+HcUPH4VTnNOGA0j+LP41lQw6kmZTWP9DIymomz/ocaDVIWlh
-	GVAU2n5TKZqZkPPtxQp+DhZpar7Xbrn5d9n1lI+8jr0RLFaDgH34O85quTvDHuYfREsutfZ+fDmzt
-	j60mfCiopcO/HGQb+eSlj+w4EvESS8NVM/tE3qB8ACilfuDnzKfDYbK6EWj0kUaakXQu1zVRwjE+/
-	XVvY7UbfcoW3MpQ1XdnwVgdrLkNNSQJmA/MPj4zmu7fE4116cyPUaFdsBAhQF5aGfQkj/rGAC6mFL
-	+jclDnjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=afnKtxDtW16GDfuwLlB3OfXabbMb7ultunOmWDqvX2o=; b=nwsc18J39eNamHDhEQoD6ln03j
+	/1Qgcx/zF0EwfP1jK77zJbtVXrhFDW1UhrPG3dTexAruCZ5Hx4tRJQp1+X6F+U4JtHV5QeOUFe5y1
+	VL8l03IyvVNhafF+2J6Wih9AuPL91rS1WT0awsNSlMaTnxm+8VASoZNkqQVdG2HR7iQ3vteldHqTg
+	cfAH6r063oI2d4vW+sGmpf4vWQgsM0wxT2L2CfEjF3iltj5Wrd1adaxyReONg4mzFz1UzWpVCmF+V
+	XE5reR2ZqRQvyZIlGMoopW7WeXGv/1ox+NFd8nSvu+KL+8AF4Twdr5SDfodkJWKm4QceZ1YhgQ+f2
+	DcYRoaww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojBT6-00DXUJ-Pm; Fri, 14 Oct 2022 03:34:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ojF9L-00Dt5i-HW; Fri, 14 Oct 2022 07:30:31 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojBT4-00DXTp-PA; Fri, 14 Oct 2022 03:34:40 +0000
-X-UUID: fe1640c6e91348cb98797154bef7fd34-20221013
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=3ZSRu1BKoFGBPwJxlPjZlBplZCmEr25chXpohl79YHY=;
-	b=QKzz681/xETVcUO6INd0YbeG/2dgCaBBvT7OwcY2DhXHi7GzbQS8l521cc6C47AvJ4g97hqyVEER/ZuXpmZ+//R9KD0WJirj7cuE3WTUiQX6iwJ4dfQs0lAc+U3nZT8pKlmd5oJ3BatqSSyqRueVfmHgtXZP3Lt9lkrsIdFEHAA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:f30bfc78-d89a-4c62-8c1e-331d3ede668f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:4fb07701-cdeb-479d-93af-53f947adce9d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: fe1640c6e91348cb98797154bef7fd34-20221013
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 442125499; Thu, 13 Oct 2022 20:34:32 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 14 Oct 2022 10:43:56 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 14 Oct 2022 10:43:55 +0800
-Message-ID: <3b7fc7414f282ca044c24dae280f9bc9533a5b7b.camel@mediatek.com>
-Subject: Re: [PATCH 6/8] arm64: dts: mt2712-evb: Fix usb vbus regulators
- unit names
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<matthias.bgg@gmail.com>
-CC: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<sam.shih@mediatek.com>, <hanks.chen@mediatek.com>, <weiyi.lu@mediatek.com>,
-	<zhiyong.tao@mediatek.com>, <andrew-sh.cheng@mediatek.com>,
-	<viresh.kumar@linaro.org>, <fparent@baylibre.com>, <mars.cheng@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>
-Date: Fri, 14 Oct 2022 10:43:55 +0800
-In-Reply-To: <20221013152212.416661-7-angelogioacchino.delregno@collabora.com>
-References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
-	 <20221013152212.416661-7-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ojF9I-00Dt4d-RW
+	for linux-mediatek@lists.infradead.org; Fri, 14 Oct 2022 07:30:30 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29E7Nsxe001314;
+	Fri, 14 Oct 2022 07:30:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2022-7-12;
+ bh=afnKtxDtW16GDfuwLlB3OfXabbMb7ultunOmWDqvX2o=;
+ b=q+18B740zg8reFD3GyzS6Fq2V4iJz6cUPrHtaXx9yieLs59529VklRzEZ7hyiFeM3MMO
+ VjwRpHI7YGtAPjzX8FfqaLzN6v/DXP0oCVyUYtjQbUR6ZWQ+EPybZmlSj4B9CNxu9t1W
+ 3Dymf9vxnCFw6ow/E2LxEb6ctH6e70uYTWgc9T7FPzVGChEDFO9vnRSjavAADJAW4Xsi
+ tbXaoGERnp+zwZj0C/XMeAQauQB/iHBqcVM50k4bO09m9SleROhFCAtbGBIX9YjDy07/
+ RRbcthHxDf0QmhE7la6jHStQrZFr0YeZr2rFiC7jlcTQ7ugyj6EH+HPRvSCpGnUFUlNC VQ== 
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k6qw7hamx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 14 Oct 2022 07:30:22 +0000
+Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 29E71vh1026957;
+	Fri, 14 Oct 2022 07:30:21 GMT
+Received: from nam10-bn7-obe.outbound.protection.outlook.com (mail-bn7nam10lp2109.outbound.protection.outlook.com [104.47.70.109])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3k2yn6xwx7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 14 Oct 2022 07:30:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BqVqmcQn8ve2QSJtj4UZj9+Z9391iuE/4zwxuvTWlEEMNeAgn7HbxGv8f+Jf/hiNMr1pbK/4zx7eKKH0Ho3RVOoZbItSYObMAprCRy+bu/yMr7N/chA8o/S6wmOHh7bN7pw4Kb8jax/WGSTSUDSZExOgHIpNiaEFxZiy8Rj2F3v0kHLlxk8BcG/ncTEnLdmyp1LccXDO80+zBYPuyCs3t4yEsnlwI17S/Jc/tRprqp6mKEvuPo/JskKRibadaBZ2jiJwRKZDdySmdHVHWmaFeXBzbcjplxVcKqnv0EvcTStDfxlH7iMt5b0I4euD2calOj1y0iiprLYPWtH0yyWdJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=afnKtxDtW16GDfuwLlB3OfXabbMb7ultunOmWDqvX2o=;
+ b=H/4EBVId2Rep/LNSMJ944LyLdNsV0cI0aKevGTOKoqNHyG/fJfIs61EkJOADuA6BkMsDvV5dGknVXSDt6Y+3ewoFkUAdFuwCpxovyuVnc8JvJf4WxB4lUHsNOsiOFLiS2uTjd3ufD2wzHNzGoQX7S/Ysnv3TevNBZKEVtpPANY+pOhNpwCW4Xx5DWR2PoF7EY/xgSaHtRAqwwkispZMUNsVo1ZwK5x5ggPOOOvyHiBG2b9SYlgB+rCCThX7nPCzbd3crm6i2tXyxGS8AxAA7bwnTCRLE6OSQvumQNWVMAKJQQbLfwH8jcRrWMrNo98Tsbvt6ACTChCpXM52aMpzZpg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=afnKtxDtW16GDfuwLlB3OfXabbMb7ultunOmWDqvX2o=;
+ b=ydUP7EeKpyjeLkkEnLyX1R1x88LB99WIZQ4p+Tdhz/ZXCLZapIKePQa6aJHXtPZwYjkkGhJ7/TklNtJgk3xUXHXe79NUqraEUKlUbU7pvjdP2kssZzfnk0dszrBrGqt8Z1RGYq+hnf6uGwwo7Ox0RWLchKbRoysQzc99p/PP4EA=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by PH0PR10MB4599.namprd10.prod.outlook.com
+ (2603:10b6:510:39::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.26; Fri, 14 Oct
+ 2022 07:30:18 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::1b8e:540e:10f0:9aec]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::1b8e:540e:10f0:9aec%4]) with mapi id 15.20.5676.031; Fri, 14 Oct 2022
+ 07:30:18 +0000
+Date: Fri, 14 Oct 2022 10:30:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes@sipsolutions.net>,
+        linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [bug report] mt76: implement functions to get the response skb
+ for MCU calls
+Message-ID: <Y0kP/WOjnCexAPCy@kadam>
+References: <20211008130007.GA23161@kili>
+ <9298fd82e4b49b965e9f26957510b9e968e8b691.camel@sipsolutions.net>
+ <20211008142734.GI2083@kadam>
+ <Y0gM2jeo/X5Vq+lq@kadam>
+ <Y0g8Ev4hE7m/kP3H@lore-desk>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y0g8Ev4hE7m/kP3H@lore-desk>
+X-ClientProxiedBy: JNAP275CA0056.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4f::8)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2365:EE_|PH0PR10MB4599:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6d3cfd40-1bb0-4345-e356-08daadb5f16b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	XR0s4oRThYNXjt5Gfb7z7C0+u7woG3maLzj8jDRK6NP8zcBwWdDQWKqMEs21vcyIsxAfJNVnUliqCwHADGrl7mQt+9O4cpmeVmgCGKEqYg4HFncg+j6cmBc/xCM9q12k1ZP7UJNLSnJwLrc4GJhoje/Tu06wdP/IhW0yZGTPgTzeVPXyuWLl7v7isVAiqTgmikXGkDXASos/x3JJ0jSmVH32X6t/qh4PdcPd/83gzYdjvqWe5iw59dBBXeIA3SpLCznC9xhzKnqv/qxmyUhtUffayg6/J9LuWeC6cB7xeRpcXin6iWCOECRyf3HdKUjHdHxQYjgC7IOTpsluaDrxecayQCrJ4JvK+QEFFNe5f9V5dNg9mdtM82lQsGz4Bv31zNEjEuLwVtFYU7hM5LWoCEymsBlanae83Tza2ZADF/1k8YlFDAfOk9lrT0FqJwvvDayrZt6Equ2gi06hAvU7mgPUjAjp3gtoct+RuecfmE9nBOzOVbNuvjISy9l5tDxv2sj1eAqZiovKsJPDePzh0adbGbNeOzoLRNZwllKriaNjaceuQLJVwch1aHsLUS5vFxAM7pZcZpu4QdabcUjlI3UMPbtc/qSxrG9ifc6rmDhYUQ1Z9kNp8FVYwDFvADEFMcqyCi+63f223FixLRaa3fpmHRge+HQ4K3lNTgunWdS3fuEeoCmk12whJHofC5kc5a3rqXcFc44LDAgbvZCOlcJedd13THhg1tVd19FxsxDpiOffqoA6piTiOO+N/7nu
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(366004)(346002)(39860400002)(136003)(396003)(376002)(451199015)(66946007)(186003)(83380400001)(6506007)(2906002)(86362001)(38100700002)(44832011)(5660300002)(8936002)(41300700001)(8676002)(6666004)(6512007)(26005)(478600001)(4326008)(33716001)(54906003)(6486002)(66556008)(6916009)(316002)(9686003)(66476007)(15583001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Pe678VlwUZXVrpinsg8qcxHjcVLFYzvGLfdA9mUiZSg71JM0JCLGGBpImFW0?=
+ =?us-ascii?Q?OQGn6YJpdSlhn0dNlj4xPWcekpURlVVnoamuvArs2AvOAxByBSUkB8zhdoxC?=
+ =?us-ascii?Q?tXUdHHLw+2j7OVUdVe2MaygBlYWxR76UMKlShM7McdzvatQfZXmPcWjgja89?=
+ =?us-ascii?Q?ZmTW3sU74JuI/6Y0V5J5YT9EeeJ1FJ9TEc05AIPOhsfI0a0OQeIpjxl4ET0T?=
+ =?us-ascii?Q?AtA+C4KdGJKOR+ME1gUA+BbzpG7CX6Zr4W2AKS+3qroQ8rdBMQthNY0pfveB?=
+ =?us-ascii?Q?kaT5Ikr5mtTSmrspo/h9Dj2PZ4qNa18aTfs2uTX/GSymkIFffsb30doVGVcP?=
+ =?us-ascii?Q?mE13jitgUoaBNxrV4ArpnNfnllw9FdLXZ73MVSp3lh29p3iDO0S3Jjo3PpJk?=
+ =?us-ascii?Q?inA1veYLNyDcrfbo9Ww8Nh7xFDFr890F10BHEtA418pi6GAeDHhOvQrNVAQO?=
+ =?us-ascii?Q?sg6g7SJTWGLTLBgXe44dSdagZwkBJ7ThTDYUTBMiClOwx1hRHLGolRwtqYoo?=
+ =?us-ascii?Q?E5VzXQyNeDV3sC/iRBqBKPFLo7+EW2iBBwaeUFuMoeC8LaX+U/wSfGpt8Inq?=
+ =?us-ascii?Q?VDTlnZY8AfpuZ/WGh2pn5oV4R8zYuxSelEpKpWYwI0cb9cADkmd60uYMqbO4?=
+ =?us-ascii?Q?aiMjbdXg6xp20ZS4jWVRdF/AN+iRn1g0P1NwWlmDOJcu/lSobqUr3Vx+xZJJ?=
+ =?us-ascii?Q?+wMhvsIBFfhKu9OikJRlPw42m5Sog44s+Kokr9klNhte7yjBq0axCFb76/Ks?=
+ =?us-ascii?Q?kiuyazt2wN3XWkx3au9PmSawazwl9GZk887/R25riI5ZNRPRhiVdyeUa8Uf9?=
+ =?us-ascii?Q?52B/iP1zmQkK1LY6et/2/AElEvomRyRIHvnHHfTK/AjXJ6NB1syjqtd0kb1a?=
+ =?us-ascii?Q?KM+LvLYvNEVFbUrFd0GKicV+dHeT1D7wFnTo7ryAioOPd2j1z5D9lrGPRgbm?=
+ =?us-ascii?Q?A18s2nT+G3RDBEV4i5wcKFdn5NCExKAptLrZIgFrLraL8p+2hpxKfsTENPd6?=
+ =?us-ascii?Q?BYgjPr6KTOHjozK3OJpiz4ZZz+kC9i8iavDuHskpNsltqbNhtTp8hVRGKVmg?=
+ =?us-ascii?Q?MfpA9JayS9J/jNA0wwUc4QBlhDrKO+JLK1MWgDgpKfJLAHcgWbfwavk2adxi?=
+ =?us-ascii?Q?SScdmCjw+UlEXKA7wkWm7+EOuPA/Z7NKFK1ctfW3m3Bh7bTpc+LvxZLOenFR?=
+ =?us-ascii?Q?32S+yFFZ2YUJgx7irZRAfgoEoKd7nmnRIBAqc5Ms358W5DiWeg5Z3WEzepua?=
+ =?us-ascii?Q?ywtgaqVD3a9PgBOaLfbi9pmgfCjB5K2r4p2YurdWh79NS/v+B4QLc5szF15d?=
+ =?us-ascii?Q?lhadFCW+89s0mIqnWXuyZP3Buux+ge8sK5jfMnnwtt7xFd5Bhz2Frobhd5jX?=
+ =?us-ascii?Q?CIkfcsUdYSjMK6YgAsPy8bjejiH2tUmB5tnG/BdijKhl6a5+wQY2sNg3IXkf?=
+ =?us-ascii?Q?K5yp7tCGRB1LcJ2yFwNqA71GfyQxWeonHC7GnJH9nyIR1XkZAOiXK1HZxytz?=
+ =?us-ascii?Q?O7U8QM8da02dF6QEAbLB5bRannoX/htK6Qhd+4WrAGKisLWWks/DYnLdUavp?=
+ =?us-ascii?Q?PkC2IWxLE7p1oTUWIEjaDucAMt8mQiySwW7OJ2dXJQ9lbR79aRTA/QTjE6a3?=
+ =?us-ascii?Q?7A=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6d3cfd40-1bb0-4345-e356-08daadb5f16b
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2022 07:30:17.9755
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZuSHq1NrfVHcp47pzcXlNkxy+FotDvvJyHqJIMIguhyeyiOucr4KJ/gyPj59+cZiV7BckP93ohZWXRJLLiBXfvNmccL5+YHxxILojbiRxXo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB4599
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-14_03,2022-10-13_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 bulkscore=0 phishscore=0
+ mlxlogscore=999 mlxscore=0 spamscore=0 adultscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
+ definitions=main-2210140043
+X-Proofpoint-ORIG-GUID: QnMaLINiogQSeWuC6Xj9zMbcOgmXN2rU
+X-Proofpoint-GUID: QnMaLINiogQSeWuC6Xj9zMbcOgmXN2rU
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_203438_854936_BC22CD2B 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20221014_003028_927145_0224701F 
+X-CRM114-Status: GOOD (  30.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +165,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-10-13 at 17:22 +0200, AngeloGioacchino Del Regno wrote:
-> Update the names to regulator-usb-p{0-3}-vbus to fix
-> unit_address_vs_reg
-> warnings for those.
+On Thu, Oct 13, 2022 at 06:25:54PM +0200, Lorenzo Bianconi wrote:
+> > I would like to revisit this question.  Last time I complained about
+> > this Johannes responded but he misread what mt76_mcu_send_and_get_msg()
+> > does.  I have looked at it as well and I also cannot explain what is
+> > going on in that function.
+> > 
+> > I have looked at the callers and my first instinct is that maybe this
+> > is dead stub code?  But then when I look at mt76x02u_mcu_send_msg() I
+> > think "No, this is not stub code.  This should be returning the newly
+> > allocated skb to the caller."
+> > 
+> > But then I think, surely at some point someone tested this code???  It
+> > must be stub code.
+> > 
+> > Could we get some clarity on this?
 > 
-> Fixes: 1724f4cc5133 ("arm64: dts: Add USB3 related nodes for MT2712")
-> Signed-off-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt2712-evb.dts | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> index 638908773706..d31a194124c9 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> @@ -50,7 +50,7 @@ extcon_usb1: extcon_iddig1 {
->  		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
->  	};
->  
-> -	usb_p0_vbus: regulator@2 {
-> +	usb_p0_vbus: regulator-usb-p0-vbus {
-Can we modify dt-binding of fixed regulator instead of changing the
-node name,
-since all nodes using fixed regulator may need be changed.
+> for mt76x2 and mt76x0 we do not care of ret_skb (in fact we do not run
+> mt76_mcu_send_and_get_msg() directly but we rely on mt76_mcu_send_msg()).
+> For mt7921 we set mcu_skb_send_msg function pointer and not mcu_send_msg.
 
->  		compatible = "regulator-fixed";
->  		regulator-name = "p0_vbus";
->  		regulator-min-microvolt = <5000000>;
-> @@ -59,7 +59,7 @@ usb_p0_vbus: regulator@2 {
->  		enable-active-high;
->  	};
->  
-> -	usb_p1_vbus: regulator@3 {
-> +	usb_p1_vbus: regulator-usb-p1-vbus {
->  		compatible = "regulator-fixed";
->  		regulator-name = "p1_vbus";
->  		regulator-min-microvolt = <5000000>;
-> @@ -68,7 +68,7 @@ usb_p1_vbus: regulator@3 {
->  		enable-active-high;
->  	};
->  
-> -	usb_p2_vbus: regulator@4 {
-> +	usb_p2_vbus: regulator-usb-p2-vbus {
->  		compatible = "regulator-fixed";
->  		regulator-name = "p2_vbus";
->  		regulator-min-microvolt = <5000000>;
-> @@ -77,7 +77,7 @@ usb_p2_vbus: regulator@4 {
->  		enable-active-high;
->  	};
->  
-> -	usb_p3_vbus: regulator@5 {
-> +	usb_p3_vbus: regulator-usb-p3-vbus {
->  		compatible = "regulator-fixed";
->  		regulator-name = "p3_vbus";
->  		regulator-min-microvolt = <5000000>;
+Ah thanks...  It's easy enough to silence the warning in Smatch but I
+was never sure if it wasn't a bug.
+
+> Moreover mt7921_mcu_get_eeprom() has been remove a while back.
+> Am I missing something?
+
+There are 12 callers for mt76_mcu_send_and_get_msg() and 11 of them
+assume that the "ret_skb" is initialized (i.e. they assume that
+the ->mcu_send_msg op is not used) so I get 11 Smatch warnings from
+this...
+
+Why not just do something like below?  It moves the ->mcu_send_msg()
+call to the only place where it won't cause a crash.
+
+regards,
+dan carpenter
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mcu.c b/drivers/net/wireless/mediatek/mt76/mcu.c
+index a8cafa39a56d..6bf0b7d8daee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mcu.c
+@@ -58,9 +58,6 @@ int mt76_mcu_send_and_get_msg(struct mt76_dev *dev, int cmd, const void *data,
+ {
+ 	struct sk_buff *skb;
+ 
+-	if (dev->mcu_ops->mcu_send_msg)
+-		return dev->mcu_ops->mcu_send_msg(dev, cmd, data, len, wait_resp);
+-
+ 	skb = mt76_mcu_msg_alloc(dev, data, len);
+ 	if (!skb)
+ 		return -ENOMEM;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 87db9498dea4..99f931c08da9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1383,6 +1383,9 @@ static inline int
+ mt76_mcu_send_msg(struct mt76_dev *dev, int cmd, const void *data, int len,
+ 		  bool wait_resp)
+ {
++	if (dev->mcu_ops->mcu_send_msg)
++		return dev->mcu_ops->mcu_send_msg(dev, cmd, data, len, wait_resp);
++
+ 	return mt76_mcu_send_and_get_msg(dev, cmd, data, len, wait_resp, NULL);
+ }
+ 
+
 
 
