@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34EBFC4321E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 17:11:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A45C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 17:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lvHkbVkJp6EcnRQi+5PIMElEgmgHrVtQA2UXnyTLJnE=; b=Uh1fyP67Qlegpmgr1jw4KQhUIX
-	oTb3pXAyC+sgAMAbgsh+o/BCzjzbxHZ4aHsJcV+FYCfyHNYVm4IQa8oasb4AOuWv3JSacR3wxJuUs
-	Jze7iKsMa6D4FWCG7+nxDnrNkyEyB0pQl81AWLCdaCrFh6xabxC7cv8DIeQomi8G4qtR7RtEm8PUk
-	lH38m6x6672frez7DQG/L+KGmXPsqdlgR9XZNtfu94M8BPoLVB/7TQRiBJbBknwb05wX3A37YF3Mu
-	Ao4qbuiFs0p5I9qKuF5RvyWXhScJdqp5gdUYCesQSC6ln7gBWrNXG/oABHb4ZbdAXfGLGy3gkS7z0
-	lCJyNgDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=avPRhaqVHvgZmZ8GBsQ+20zIBPkvVr2QT+2++f0G4/A=; b=xG8Jm8t2idMV4oscJaPjhncfU3
+	iWFK7gtV2Ysur/iJjLZaDylbtAi/KxMx66gO85svDzkUrggysISkCiWY675GJSi2iLENPpZ9vR1kZ
+	T/sllTUDuOBGErTIZc/cXC5H1X4O5MoqzNgWRwDYXJ6zCaqPi/iqvHII2AwbNADBUxxr4wFifkK/M
+	DT0skhT+zIYMhbI9Q8R3yEqERaSDf7a6rAs+BlmfUPd09S6HVYFaLgkfKm7XrWUNfJn7j55DXKTOb
+	kDd6EDq22bWRCkEtqH4aXZP8pTsS+F3PfPEH8GIPcELixg7tHGlXmQc9tckflhv5yfnSdkQaQpF86
+	pA6V15WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojOD3-00FS73-M1; Fri, 14 Oct 2022 17:10:57 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+	id 1ojOtP-00FX0I-G7; Fri, 14 Oct 2022 17:54:43 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojOCr-00FS5f-PM; Fri, 14 Oct 2022 17:10:47 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-1322fa1cf6fso6575313fac.6;
-        Fri, 14 Oct 2022 10:10:44 -0700 (PDT)
+	id 1ojOtM-00FWzL-56; Fri, 14 Oct 2022 17:54:41 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id l1so5396127pld.13;
+        Fri, 14 Oct 2022 10:54:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=lvHkbVkJp6EcnRQi+5PIMElEgmgHrVtQA2UXnyTLJnE=;
-        b=UigVBOMALTsPKNEDJ5HLNuYVHLL3LdbmGKmb7QccsIWD9OUI1M/d4hfnqa4j+dxasl
-         k0mZMczbS3Ed3p7E6US1OI14quCpOgFMt3PF9zrQIQxDuGtqmy1kbvQdyZN7NHtwr7Sw
-         HelkeT8jWTDEHWaqA4m01Vvzh1BBiuEEcQ0XVYxRjNj6DQ80oH+4CusowLliMcMuPnmN
-         8vENjthImk7oxzd9mv15wldxXJgggP0XD1H8yMk5G7D6jl4MqtEVyP5Gknmkh1AaRiH/
-         RkAVsgJ/8aKOvb78eA4Iy+ivCKQP0/Aw4UJElz3I13f9k+4b7h6xV17QjsTTM/W7AzwY
-         8rEg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=avPRhaqVHvgZmZ8GBsQ+20zIBPkvVr2QT+2++f0G4/A=;
+        b=kZhR7KCRXJWnF12BPar5TJ6Jp7jOQu5oh+cHmvhzLyF05zeCaifFNhGK2RV9jJxsw7
+         VimZgYTfdukHBQwvv7OanK1IwigLv/d+xhi0TP3zAwnVA6N9Pky4WjZPRXan0Z3MsufV
+         QghtZKG+k2mOjGl0Vg0S/t1x77BZevIUhmuxGLeSWD54IdegSklXCjVAKnkT2Oo/lxWy
+         2oWrH07lFCfFz6RCEuX6Jkpdeh2zLOt+eRMKV+TxgFflN6h9xcTnhT+iZgpDyxPmGITV
+         pgq28asdkYqtuLzYBAHXMMVsZ9e6VVSZGlgtf3K/gA4Or5CvN8E9zKThvuSlj1BcZEgG
+         QOrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=lvHkbVkJp6EcnRQi+5PIMElEgmgHrVtQA2UXnyTLJnE=;
-        b=NWeXD1cG3G3aDndA18PH1WGJ3lyvHaXH3zbO6xH4zbuEUCCo0uyK8mi18Gsx+5xAvd
-         1DGAaaI8c8A9IR06G8aj7Z2QG5InNQkSQlghZoIzxAGi61QR7BfYbQGeEHN0NhflWFeM
-         b1hUlTujMlZQdgBiVkIQc9/7uF/e9jWmS8P4FlZJKS86JJts28gfE7v3zMShbz9OXZBG
-         /VV4XLJzrShY1atZ37k+argO/1l50SXQqK1umMM/wrgfJQKUFZ6+TrMqqT5iKJNh0rqs
-         vlYn/2kHHIxRl+vP7YdaQ+RgvibFjiGqeaeVDnOw1wr/y1Z6ecQtV7P2ISBAl00O7A0J
-         5I7A==
-X-Gm-Message-State: ACrzQf3J0Sdz5dkKNTpIi7f3W0HmaEYBCPvr7TzHmUD+z4O4/AhaKrYh
-	AtFaRldFj/c7na77UZzaMDXoalT/tjuT9NSv4VE=
-X-Google-Smtp-Source: AMsMyM5YRJU50ghT4+PK7ZzjpjEuEF0K9MRdSqXqrXv+y3RgpJpGuixHukGTzRdv7CkiKNlLB9FtM4jof+P+XDYdfHA=
-X-Received: by 2002:a05:6870:4286:b0:132:756f:6b97 with SMTP id
- y6-20020a056870428600b00132756f6b97mr3301793oah.38.1665767443808; Fri, 14 Oct
- 2022 10:10:43 -0700 (PDT)
+        bh=avPRhaqVHvgZmZ8GBsQ+20zIBPkvVr2QT+2++f0G4/A=;
+        b=DUmOB2j2ImnjPexOZznKpVHb+Gkd22zFfwO/MF/w2crOKlRPnOcXFfCRHVdnfPGzdx
+         U/u71i3TwjWkgP2Y+6oFD1sQ50zXcjSd5TK/VSDUN9+hgwTTOCBafPqTlIuOZXkKs4gw
+         xQbnoZiq/qy0hBmyZ2EDKDFRoYJTZDrZO1OINYX+LhRv+t7ThH/7Gobum+T62Lutkxgu
+         IfTXuWU5jUA+Uu6Qj+/tMZmdjc2b9ooDAJ1vt86so2KgwIVb35mBnEh1ZHDRtalugUyb
+         hmHr/Vx3l1lq+c65nfIdg7SQdNGbPwRlsfLTP7Y1uQONVAPNHPdDliYDtOr+g0h4XxDb
+         486w==
+X-Gm-Message-State: ACrzQf0L1T/6awVp9THHGlQw+nIvY233jfxMPjsjE96RGK/qt0GfwCIH
+	X3Vv9umwgSiOL7nI2y4/jcc=
+X-Google-Smtp-Source: AMsMyM5Hzc4Cp+r46/Ag2/jYccuv+/04FsvP087ujnP8b9BZmiBEMZsSts2Cbd5GXI0ayAon/amZ9w==
+X-Received: by 2002:a17:90b:3c8f:b0:20d:959b:26f4 with SMTP id pv15-20020a17090b3c8f00b0020d959b26f4mr7161668pjb.104.1665770077786;
+        Fri, 14 Oct 2022 10:54:37 -0700 (PDT)
+Received: from dtor-ws.mtv.corp.google.com ([2620:15c:9d:2:da06:5604:594f:f6af])
+        by smtp.gmail.com with ESMTPSA id jj19-20020a170903049300b0017f7819732dsm2011780plb.77.2022.10.14.10.54.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Oct 2022 10:54:37 -0700 (PDT)
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>,
+	Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	linux-kernel@vger.kernel.org,
+	Daniel Thompson <daniel.thompson@linaro.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-gpio@vger.kernel.org
+Subject: [PATCH v2 0/9] gpiolib: more quirks to handle legacy names
+Date: Fri, 14 Oct 2022 10:54:24 -0700
+Message-Id: <20221011-gpiolib-quirks-v2-0-73cb7176fd94@gmail.com>
+X-Mailer: git-send-email 2.38.0.413.g74048e4d9e-goog
 MIME-Version: 1.0
-References: <20220909141528.5090-1-tomeu.vizoso@collabora.com> <20220912072903.14626-1-tomeu.vizoso@collabora.com>
-In-Reply-To: <20220912072903.14626-1-tomeu.vizoso@collabora.com>
-From: Rob Clark <robdclark@gmail.com>
-Date: Fri, 14 Oct 2022 10:10:50 -0700
-Message-ID: <CAF6AEGsjfHSYwB0q4qKnLeMnpZigBwcFrkkLpxofKizLVArX5A@mail.gmail.com>
-Subject: Re: [PATCH v9] drm: Add initial ci/ subdirectory
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
-	Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Clark <robdclark@chromium.org>, dri-devel@lists.freedesktop.org, 
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, Neil Armstrong <narmstrong@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+X-Mailer: b4 0.11.0-dev-5166b
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221014_101045_870449_90EF3AA4 
-X-CRM114-Status: GOOD (  33.07  )
+X-CRM114-CacheID: sfid-20221014_105440_252870_47DC48C6 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,199 +94,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 12, 2022 at 12:29 AM Tomeu Vizoso
-<tomeu.vizoso@collabora.com> wrote:
->
-> And use it to store expectations about what the DRM drivers are
-> supposed to pass in the IGT test suite.
->
-> Also include a configuration file that points to the out-of-tree CI
-> scripts.
->
-> By storing the test expectations along the code we can make sure both
-> stay in sync with each other, and so we can know when a code change
-> breaks those expectations.
->
-> This will allow all contributors to drm to reuse the infrastructure
-> already in gitlab.freedesktop.org to test the driver on several
-> generations of the hardware.
->
-> v2:
->   - Fix names of result expectation files to match SoC
->   - Don't execute tests that are going to skip on all boards
->
-> v3:
->   - Remove tracking of dmesg output during test execution
->
-> v4:
->   - Move up to drivers/gpu/drm
->   - Add support for a bunch of other drivers
->   - Explain how to incorporate fixes for CI from a
->     ${TARGET_BRANCH}-external-fixes branch
->   - Remove tests that pass from expected results file, to reduce the
->     size of in-tree files
->   - Add docs about how to deal with outages in automated testing labs
->   - Specify the exact SHA of the CI scripts to be used
->
-> v5:
->   - Remove unneeded skips from Meson expectations file
->   - Use a more advanced runner that detects flakes automatically
->   - Use a more succint format for the expectations
->   - Run many more tests (and use sharding to finish in time)
->   - Use skip lists to avoid hanging machines
->   - Add some build testing
->   - Build IGT in each pipeline for faster uprevs
->   - List failures in the GitLab UI
->
-> v6:
->   - Rebase on top of latest drm-next
->   - Lower priority of LAVA jobs to not impact Mesa CI as much
->   - Update docs
->
-> v7:
->   - Rebase on top of latest drm-next
->
-> v8:
->   - Move all files specific to testing the kernel into the kernel tree
->     (thus I have dropped the r-bs I had collected so far)
->   - Uprev Gitlab CI infrastructure scripts to the latest from Mesa
->   - Add MAINTAINERS entry
->   - Fix boot on MT8173 by adding some Kconfigs that are now needed
->   - Link to the docs from index.rst and hard-wrap the file
->
-> v9:
->   - Only automatically run the pipelines for merge requests
->   - Switch to zstd for the build artifacts to align with Mesa
->   - Add Qcom USB PHYs to config as they are now =m in the defconfig
->
-> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-
-Reviewed-by: Rob Clark <robdclark@gmail.com>
-
-> ---
->  Documentation/gpu/automated_testing.rst       |  144 +
->  Documentation/gpu/index.rst                   |    1 +
->  MAINTAINERS                                   |    8 +
->  drivers/gpu/drm/ci/arm.config                 |   57 +
->  drivers/gpu/drm/ci/arm64.config               |  179 ++
->  drivers/gpu/drm/ci/build-igt.sh               |   43 +
->  drivers/gpu/drm/ci/build.sh                   |  158 +
->  drivers/gpu/drm/ci/build.yml                  |  110 +
->  drivers/gpu/drm/ci/check-patch.py             |   57 +
->  drivers/gpu/drm/ci/container.yml              |   54 +
->  drivers/gpu/drm/ci/gitlab-ci.yml              |  225 ++
->  drivers/gpu/drm/ci/igt_runner.sh              |   77 +
->  drivers/gpu/drm/ci/image-tags.yml             |   13 +
->  drivers/gpu/drm/ci/lava-submit.sh             |   53 +
->  drivers/gpu/drm/ci/static-checks.yml          |   12 +
->  drivers/gpu/drm/ci/test.yml                   |  322 ++
->  drivers/gpu/drm/ci/testlist.txt               | 2763 +++++++++++++++++
->  drivers/gpu/drm/ci/x86_64.config              |  105 +
->  .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   19 +
->  .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   15 +
->  .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |    2 +
->  .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |   32 +
->  drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |    2 +
->  drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   29 +
->  drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    1 +
->  drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |    2 +
->  drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   37 +
->  drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |   40 +
->  drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |    2 +
->  drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |    8 +
->  drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |   25 +
->  drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |    2 +
->  drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   19 +
->  drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |    5 +
->  drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |    8 +
->  drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   30 +
->  drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |    1 +
->  .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   29 +
->  .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   10 +
->  .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |   14 +
->  .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |    5 +
->  .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |    4 +
->  .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   15 +
->  .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |    4 +
->  .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    2 +
->  .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    4 +
->  .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |    2 +
->  .../gpu/drm/ci/xfails/msm-sc7180-fails.txt    |   21 +
->  .../gpu/drm/ci/xfails/msm-sc7180-flakes.txt   |    6 +
->  .../gpu/drm/ci/xfails/msm-sc7180-skips.txt    |   23 +
->  .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   43 +
->  .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   11 +
->  .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |    2 +
->  .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   43 +
->  .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |    2 +
->  .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   49 +
->  .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   29 +
->  .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   20 +
->  .../drm/ci/xfails/rockchip-rk3399-skips.txt   |    5 +
->  .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   38 +
->  .../drm/ci/xfails/virtio_gpu-none-flakes.txt  |    0
->  .../drm/ci/xfails/virtio_gpu-none-skips.txt   |    6 +
->  62 files changed, 5047 insertions(+)
->  create mode 100644 Documentation/gpu/automated_testing.rst
->  create mode 100644 drivers/gpu/drm/ci/arm.config
->  create mode 100644 drivers/gpu/drm/ci/arm64.config
->  create mode 100644 drivers/gpu/drm/ci/build-igt.sh
->  create mode 100644 drivers/gpu/drm/ci/build.sh
->  create mode 100644 drivers/gpu/drm/ci/build.yml
->  create mode 100755 drivers/gpu/drm/ci/check-patch.py
->  create mode 100644 drivers/gpu/drm/ci/container.yml
->  create mode 100644 drivers/gpu/drm/ci/gitlab-ci.yml
->  create mode 100755 drivers/gpu/drm/ci/igt_runner.sh
->  create mode 100644 drivers/gpu/drm/ci/image-tags.yml
->  create mode 100755 drivers/gpu/drm/ci/lava-submit.sh
->  create mode 100644 drivers/gpu/drm/ci/static-checks.yml
->  create mode 100644 drivers/gpu/drm/ci/test.yml
->  create mode 100644 drivers/gpu/drm/ci/testlist.txt
->  create mode 100644 drivers/gpu/drm/ci/x86_64.config
->  create mode 100644 drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/amdgpu-stoney-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sdm845-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/virtio_gpu-none-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/virtio_gpu-none-skips.txt
->
-[snip]
+In preparation to converting several drivers to gpiod API, and to keep=0D
+existing DTS working, this series adds additional quirks to locate=0D
+gpio lines with legacy names.=0D
+=0D
+Additionally the quirk handling has been reworked (once again) to pull=0D
+all simple renames (ones that do not involve change of indices or other=0D
+complex manipulations) into a single quirk with a table containing=0D
+transformations. This should make adding new quirks easier.=0D
+When using legacy names gpiolib will emit a message to nudge users to=0D
+update DTSes (when possible).=0D
+=0D
+Note that the last patch requires the following change from the OF tree:=0D
+=0D
+        88269151be67 ("of: base: make of_device_compatible_match() accept c=
+onst device node")=0D
+=0D
+The change is also available in mainline - it has been merged in 6.1=0D
+merge window.=0D
+=0D
+Thanks.=0D
+=0D
+To: Linus Walleij <linus.walleij@linaro.org>=0D
+To: Bartosz Golaszewski <brgl@bgdev.pl>=0D
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>=0D
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>=0D
+Cc: Daniel Thompson <daniel.thompson@linaro.org>=0D
+Cc: linux-gpio@vger.kernel.org=0D
+Cc: linux-kernel@vger.kernel.org=0D
+Cc: linux-arm-kernel@lists.infradead.org=0D
+Cc: linux-mediatek@lists.infradead.org=0D
+=0D
+---=0D
+Changes in v2:=0D
+- fixed 'fsl,imx8mq-fec' & 'fsl,imx8qm-fec' compatibles issue noticed=0D
+  by Alexander Stein=0D
+- implemented Daniel Thompson's suggestion on tightening configs=0D
+  selecting renaming quirks and added a comment to discourage adding=0D
+  rename quirks without checks for specific compatible(s) =0D
+- added a polarity quirk for Himax LCDs=0D
+- collected reviewed-by tags=0D
+- Link to v1: https://lore.kernel.org/r/20221011-gpiolib-quirks-v1-0-e01d9d=
+3e7b29@gmail.com=0D
+=0D
+---=0D
+Dmitry Torokhov (9):=0D
+      gpiolib: of: add a quirk for legacy names in Mediatek mt2701-cs42448=
+=0D
+      gpiolib: of: consolidate simple renames into a single quirk=0D
+      gpiolib: of: tighten selection of gpio renaming quirks=0D
+      gpiolib: of: add quirk for locating reset lines with legacy bindings=
+=0D
+      gpiolib: of: add a quirk for reset line for Marvell NFC controller=0D
+      gpiolib: of: add a quirk for reset line for Cirrus CS42L56 codec=0D
+      gpiolib: of: factor out code overriding gpio line polarity=0D
+      gpiolib: of: add quirk for phy reset polarity for Freescale Ethernet=
+=0D
+      gpiolib: of: add a quirk for reset line polarity for Himax LCDs=0D
+=0D
+ drivers/gpio/gpiolib-of.c | 344 ++++++++++++++++++++++++++++++------------=
+----=0D
+ 1 file changed, 222 insertions(+), 122 deletions(-)=0D
+---=0D
+base-commit: cd9fd78f5c11b5e165d9317ef11e613f4aef4dd1=0D
+change-id: 20221011-gpiolib-quirks-d452ed31d24e=0D
+=0D
+Best regards,=0D
+Dmitry=0D
+=0D
 
