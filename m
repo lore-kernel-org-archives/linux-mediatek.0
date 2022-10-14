@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62FEFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Oct 2022 20:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F54C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 02:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+I0Nw8jbE3sP19LjXXRkOikyI2yJMkCK+lNPi5UhUak=; b=VHImS/oWcR0+kmAA6F2imXkcbt
-	PHUInFpHA50T17rMTG9AZCr2BavR5GNE1wRNnaC1FCtSXDF4rtwCz+8XSsBpK8ajC5JQDR5uxxym/
-	+PQD+NqF9boQQ26uyfHXcroNs9oMuIKRhcH7mugZJ+nMqFdFfv+ppSRS7hHrpZ2NeZo8WA2VlVFdR
-	6fu524ZPiJ6SlePzGBD056AkrNnfkKjctUGQvkksCr39LH02J/o1wHG0Xn3IyQoooDM5pZLdq9rVo
-	mgJHqMfvAvxTPYs+2X/VWRFV2LO2nekMQ+nnE0Cw4NZWLDt/uOue4hHbK4F2go29sB5KH7+XbddIr
-	0+bfL91Q==;
+	bh=6vh4IJCOfQjz3JMDhYQ0n9jKVIGYVFgFR+YTYI8YBhA=; b=TCS0ljwz82V5S4DUsrW/nugs2Q
+	ZczMDTTTeF4ANwxU2s2XealoVLCxeFd6vAVoDcLgmbattz4PmEJJ1tjvlWLPyV10aa5q5HYLLqEFr
+	oVkQuvh2KnEVTa90luKht4BCabxH8UVYXaaanB1RXtea5zJUf6HsB34yDTZs8l1NsTfc/kJ3cBx1/
+	JC6apDXVSJOu/k+TBY+6VpMdz55Unhudr2v2xUiFcD0DRSPlqN/tBKLuiUoNXfJFCodKo390h5DqA
+	MCCBmYAjBZoE/s0cfKZdQ9tBc+X9MwQzuwW+G1Uc2jJZtUVJ8Q9xH6bjNyAIe6kD8/ClojPK1sR/Q
+	iNqQXQ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj4lF-00Cuqi-FC; Thu, 13 Oct 2022 20:24:57 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ojAti-00DSrG-0b; Fri, 14 Oct 2022 02:58:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oj4l5-00Cupa-0F; Thu, 13 Oct 2022 20:24:48 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C919F660236D;
-	Thu, 13 Oct 2022 21:24:42 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1665692683;
-	bh=/urp6FGOF38ju+OWMwUWjSNprDW/xXAY6n8S22UMNjc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GTzsoONBYo+04M082a10SMoJtzloBqw3/GwPTVo51uEdStLzkFeuUYZFWXF8I3NEv
-	 tlgvl0jZFtz0l7OdBweF9gUW9tZ6fWYfPDzHK0JMZYOa3X/eV3tWF6l1t9LTAoc3TF
-	 D2xklenwKuyf+RYiLzselE6g7nYyww/LxqibW/wUuf/0Fk1axaQG/pmlvYq9MVkBnX
-	 egA8c89DHqG6B80BxIKeswc3XaD2iOrzTXlLbTdYW4gUN2Nvn1Y3sON9PeGAN46N6G
-	 SzkrLg1LCx9OjFpj9vAUU904qwZV30EPQDQtid11YeLQxNgxb8XzcJDMxv72NWEGOs
-	 BOJuw7uy7EcGw==
-Date: Thu, 13 Oct 2022 16:24:38 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 5/5] arm64: dts: mediatek: asurada: Add aliases for
- i2c and mmc
-Message-ID: <20221013202438.unfa4fqinwhgvfiz@notapiano>
-References: <20221006212528.103790-1-nfraprado@collabora.com>
- <20221006212528.103790-6-nfraprado@collabora.com>
- <CAGXv+5GmJOYnfLsovO_+piuJ1ry1R0ZQqALRGK3MNp=nUO-TNw@mail.gmail.com>
- <CAGXv+5HGodRWbawEpDppZWM_EiuzdvZC9h4XBoAPo=FQ7yNotA@mail.gmail.com>
+	id 1ojAte-00DSqV-OT
+	for linux-mediatek@lists.infradead.org; Fri, 14 Oct 2022 02:58:04 +0000
+X-UUID: b8d1b68505ee489b960d452a84f620db-20221013
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6vh4IJCOfQjz3JMDhYQ0n9jKVIGYVFgFR+YTYI8YBhA=;
+	b=nUQsXWeNyishVvxiE8iPQTnx5iRSOS9wLyJuUkB8bqt8EB4QBVPEdJ9TnuTcSpKcJF380L2ZdaVClbj6FIth0Yp04r0BzD71oZZu7bc2F2mxgM5L5/joRab0O7OfrbJv/o82uoSt80ZaY59fcK+q1Xy1+3LvE5/QzZBZ0Pngbwk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:6f0b2ecf-be12-485a-b8fe-3fd1de05f56a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e7137601-cdeb-479d-93af-53f947adce9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b8d1b68505ee489b960d452a84f620db-20221013
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 374914085; Thu, 13 Oct 2022 19:57:55 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 14 Oct 2022 10:57:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 14 Oct 2022 10:57:53 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 2/2] wifi: mt76: mt7915: add ack signal support
+Date: Fri, 14 Oct 2022 10:57:48 +0800
+Message-ID: <167355984a4e8ab4fe4330af7d10c02184b563ee.1665714480.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <98348bffc688f4c1416981f72528eebcc01faee3.1665714480.git.ryder.lee@mediatek.com>
+References: <98348bffc688f4c1416981f72528eebcc01faee3.1665714480.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HGodRWbawEpDppZWM_EiuzdvZC9h4XBoAPo=FQ7yNotA@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_132447_277984_E7E54278 
-X-CRM114-Status: GOOD (  24.92  )
+X-CRM114-CacheID: sfid-20221013_195802_828967_3E4D6B4C 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,71 +79,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 07, 2022 at 12:02:03PM +0800, Chen-Yu Tsai wrote:
-> On Fri, Oct 7, 2022 at 11:51 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> >
-> > On Fri, Oct 7, 2022 at 5:25 AM Nícolas F. R. A. Prado
-> > <nfraprado@collabora.com> wrote:
-> > >
-> > > Add aliases for the i2c and mmc nodes on the Asurada platform DT to
-> > > ensure that we get stable ids for those devices on userspace.
-> > >
-> > > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > >
-> > > ---
-> > >
-> > > Changes in v2:
-> > > - Added this commit
-> > >
-> > >  arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 12 ++++++++++++
-> > >  1 file changed, 12 insertions(+)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > > index dac2d4f5e670..758ca42a6156 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > > @@ -11,6 +11,18 @@
-> > >
-> > >  / {
-> > >         aliases {
-> > > +               i2c0 = &i2c0;
-> > > +               i2c1 = &i2c1;
-> > > +               i2c2 = &i2c2;
-> > > +               i2c3 = &i2c3;
-> > > +               i2c4 = &i2c4;
-> > > +               i2c5 = &i2c5;
-> > > +               i2c6 = &i2c6;
-> > > +               i2c7 = &i2c7;
-> > > +               i2c8 = &i2c8;
-> > > +               i2c9 = &i2c9;
-> >
-> > You should only add aliases for interfaces that are actually enabled.
+This reports signal strength of ACK packets from the peer as measured
+at each interface.
 
-Ok, will drop the extra ones.
+Tested-by: Shurong Wen <shurong.wen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c |  9 ++++-----
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  1 +
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |  7 +++++++
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 19 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  8 ++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  6 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |  8 ++++++++
+ 7 files changed, 51 insertions(+), 7 deletions(-)
 
-> >
-> > Also, I think we can disable i2c6. None of the current products use it.
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 4bdbfd0f6233..c59d12004459 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -951,14 +951,12 @@ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ }
+ EXPORT_SYMBOL(mt76_wcid_key_setup);
+ 
+-static int
+-mt76_rx_signal(struct mt76_rx_status *status)
++int mt76_rx_signal(u8 chain_mask, s8 *chain_signal)
+ {
+-	s8 *chain_signal = status->chain_signal;
+ 	int signal = -128;
+ 	u8 chains;
+ 
+-	for (chains = status->chains; chains; chains >>= 1, chain_signal++) {
++	for (chains = chain_mask; chains; chains >>= 1, chain_signal++) {
+ 		int cur, diff;
+ 
+ 		cur = *chain_signal;
+@@ -980,6 +978,7 @@ mt76_rx_signal(struct mt76_rx_status *status)
+ 
+ 	return signal;
+ }
++EXPORT_SYMBOL(mt76_rx_signal);
+ 
+ static void
+ mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
+@@ -1009,7 +1008,7 @@ mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
+ 	status->ampdu_reference = mstat.ampdu_ref;
+ 	status->device_timestamp = mstat.timestamp;
+ 	status->mactime = mstat.timestamp;
+-	status->signal = mt76_rx_signal(&mstat);
++	status->signal = mt76_rx_signal(mstat.chains, mstat.chain_signal);
+ 	if (status->signal <= -128)
+ 		status->flag |= RX_FLAG_NO_SIGNAL_VAL;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index f9bdf16fc6c4..c91fb9bde632 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1149,6 +1149,7 @@ void mt76_update_survey(struct mt76_phy *phy);
+ void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time);
+ int mt76_get_survey(struct ieee80211_hw *hw, int idx,
+ 		    struct survey_info *survey);
++int mt76_rx_signal(u8 chain_mask, s8 *chain_signal);
+ void mt76_set_stream_caps(struct mt76_phy *phy, bool vht);
+ 
+ int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 7173ed964519..0e7d065afe29 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -353,6 +353,7 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_UNSOL_BCAST_PROBE_RESP);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_FILS_DISCOVERY);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
+ 
+ 	if (!mdev->dev->of_node ||
+ 	    !of_property_read_bool(mdev->dev->of_node,
+@@ -461,6 +462,12 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
+ 	set = FIELD_PREP(MT_WF_RMAC_MIB_OBSS_BACKOFF, 0) |
+ 	      FIELD_PREP(MT_WF_RMAC_MIB_ED_OFFSET, 4);
+ 	mt76_rmw(dev, MT_WF_RMAC_MIB_AIRTIME0(band), mask, set);
++
++	/* filter out non-resp frames and get instanstaeous signal reporting */
++	mask = MT_WTBLOFF_TOP_RSCR_RCPI_MODE | MT_WTBLOFF_TOP_RSCR_RCPI_PARAM;
++	set = FIELD_PREP(MT_WTBLOFF_TOP_RSCR_RCPI_MODE, 0) |
++	      FIELD_PREP(MT_WTBLOFF_TOP_RSCR_RCPI_PARAM, 0x3);
++	mt76_rmw(dev, MT_WTBLOFF_TOP_RSCR(band), mask, set);
+ }
+ 
+ static void mt7915_mac_init(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 34a50d594372..1ce2b91353e7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -9,7 +9,7 @@
+ #include "mac.h"
+ #include "mcu.h"
+ 
+-#define to_rssi(field, rxv)	((FIELD_GET(field, rxv) - 220) / 2)
++#define to_rssi(field, rcpi)	((FIELD_GET(field, rcpi) - 220) / 2)
+ 
+ static const struct mt7915_dfs_radar_spec etsi_radar_specs = {
+ 	.pulse_th = { 110, -10, -80, 40, 5200, 128, 5200 },
+@@ -119,6 +119,7 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
+ 		bool clear = false;
+ 		u32 addr, val;
+ 		u16 idx;
++		s8 rssi[4];
+ 		u8 bw;
+ 
+ 		spin_lock_bh(&dev->sta_poll_lock);
+@@ -132,6 +133,8 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
+ 		spin_unlock_bh(&dev->sta_poll_lock);
+ 
+ 		idx = msta->wcid.idx;
++
++		/* refresh peer's airtime reporting */
+ 		addr = mt7915_mac_wtbl_lmac_addr(dev, idx, 20);
+ 
+ 		for (i = 0; i < IEEE80211_NUM_ACS; i++) {
+@@ -210,6 +213,20 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
+ 			else
+ 				rate->flags &= ~RATE_INFO_FLAGS_SHORT_GI;
+ 		}
++
++		/* get signal strength of resp frames (CTS/BA/ACK) */
++		addr = mt7915_mac_wtbl_lmac_addr(dev, idx, 30);
++		val = mt76_rr(dev, addr);
++
++		rssi[0] = to_rssi(GENMASK(7, 0), val);
++		rssi[1] = to_rssi(GENMASK(15, 8), val);
++		rssi[2] = to_rssi(GENMASK(23, 16), val);
++		rssi[3] = to_rssi(GENMASK(31, 14), val);
++
++		msta->ack_signal =
++			mt76_rx_signal(msta->vif->phy->mt76->antenna_mask, rssi);
++
++		ewma_avg_signal_add(&msta->avg_ack_signal, -msta->ack_signal);
+ 	}
+ 
+ 	rcu_read_unlock();
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 6de49b93387e..ac320182c2ce 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -665,6 +665,8 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
+ 	msta->jiffies = jiffies;
+ 
++	ewma_avg_signal_init(&msta->avg_ack_signal);
++
+ 	mt7915_mac_wtbl_update(dev, idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+ 
+@@ -1025,6 +1027,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 		sinfo->tx_retries = msta->wcid.stats.tx_retries;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
+ 	}
++
++	sinfo->ack_signal = (s8)msta->ack_signal;
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
++
++	sinfo->avg_ack_signal = -(s8)ewma_avg_signal_read(&msta->avg_ack_signal);
++	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL_AVG);
+ }
+ 
+ static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 5e95f5c77933..b0b57ee1e00f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -114,6 +114,8 @@ struct mt7915_twt_flow {
+ 	u8 sched:1;
+ };
+ 
++DECLARE_EWMA(avg_signal, 10, 8)
++
+ struct mt7915_sta {
+ 	struct mt76_wcid wcid; /* must be first */
+ 
+@@ -123,10 +125,12 @@ struct mt7915_sta {
+ 	struct list_head rc_list;
+ 	u32 airtime_ac[8];
+ 
++	int ack_signal;
++	struct ewma_avg_signal avg_ack_signal;
++
+ 	unsigned long changed;
+ 	unsigned long jiffies;
+ 	unsigned long ampdu_state;
+-
+ 	struct mt76_connac_sta_key_conf bip;
+ 
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index 7db809671230..9924271d8e36 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -226,6 +226,14 @@ enum offs_rev {
+ #define MT_DMA_DCR0_MAX_RX_LEN		GENMASK(15, 3)
+ #define MT_DMA_DCR0_RXD_G5_EN		BIT(23)
+ 
++/* WTBLOFF TOP: band 0(0x820e9000),band 1(0x820f9000) */
++#define MT_WTBLOFF_TOP_BASE(_band)	((_band) ? 0x820f9000 : 0x820e9000)
++#define MT_WTBLOFF_TOP(_band, ofs)	(MT_WTBLOFF_TOP_BASE(_band) + (ofs))
++
++#define MT_WTBLOFF_TOP_RSCR(_band)	MT_WTBLOFF_TOP(_band, 0x008)
++#define MT_WTBLOFF_TOP_RSCR_RCPI_MODE	GENMASK(31, 30)
++#define MT_WTBLOFF_TOP_RSCR_RCPI_PARAM	GENMASK(25, 24)
++
+ /* ETBF: band 0(0x820ea000), band 1(0x820fa000) */
+ #define MT_WF_ETBF_BASE(_band)		((_band) ? 0x820fa000 : 0x820ea000)
+ #define MT_WF_ETBF(_band, ofs)		(MT_WF_ETBF_BASE(_band) + (ofs))
+-- 
+2.36.1
 
-It's already disabled upstream.
-
-> >
-> > ChenYu
-> >
-> > > +               mmc0 = &mmc0;
-> > > +               mmc1 = &mmc1;
-> 
-> Also, Spherion does not have an SD card slot. It might be better to move
-> the mmc aliases to the end .dts files.
-
-Based on the downstream dts, rev0 and rev1 do have SD card slot (or at least the
-mmc1 controller isn't disabled on those). However upstream we have a single dts
-(asurada-spherion-r0) shared by those two and rev2 and rev3 (which don't have
-the SD card slot), given that this way we can have a single dts and there's no
-disadvantage to keeping the mmc1 node enabled because the CD IRQ will never be
-triggered. With this in mind, I think it makes more sense to keep the mmc
-aliases in the asurada dtsi, as there's no harm in having them, and will ensure
-fixed ids for the rev0 and rev1 spherion boards.
-
-Thanks,
-Nícolas
 
