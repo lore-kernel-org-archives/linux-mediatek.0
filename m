@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EA5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 15:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6B2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 15:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+jLJYSZFFQ+J9KwL/Vx/5Q1PKh1V5cLDL2XT3zpPOi0=; b=sM5CyrK5zgKPBJxEcTJU5XFG/H
-	FQriaNrpE02hJAJ6FlqaZ243fdvVT9kLwm+u+p0eQOVhv9aI6bjs6zs/AAuIYTk6XrAY0cXdkSXNi
-	ozwhZu3XRX/DKL7vcqgl3gV8kjHQ0SbLJ9KhHbJrkaHjNjglRw/FltQbFmtaE/vKAFBrzG6hchkpA
-	6rhvq9KjLqX+/bitWIbTT1dp6qieO9kkjZ5Jl8RMuGZVzrnuNqlou3QAgJvNTow9R08xrgKO4l6FU
-	w7t6AVH2dTFdWSUtN6t1Wr4mF93FngUC7sqx2NOChWghkAB/zw+vZonmMVZFR9MNcX55l7+HCPYvX
-	tfSkLdsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XC5LEu3vClkmtksdzdUgpje8SO37USDa4/NkLEkuaxk=; b=AucMCTJH2SsK6VSX2ijVXV5ReJ
+	/1KfIbYCz1uKLkLNfp59QJVlLUmL6xfSLuU6sKfahFTYYurXZ0UmGtBA3LSbYUTJTSAc21tP4mZyB
+	q+314cDK5Y8Kh3ABiNKduBVqmjQZqSXCFqwKZofW+Fcl/KRThnzPMAivYqrDXWs+qOe74MIF5Lbrt
+	/Z952AvMbm9UXMzHRN/m/gbndM2NyCAsM+BYf9H0MnMXzdqjrceFxd91dTmI6tg5ZbbX0oYaBYpEy
+	kw9iPcqRKZ1Nc04pnOOYQSL4bfWgtznReJ77Whh58Q1lPMTIM83udyjXXFYR8yedQNnVNhEbE4Fzo
+	3gStgFDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojMLv-00F8YR-Pw; Fri, 14 Oct 2022 15:11:59 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1ojMTp-00F9fD-JL; Fri, 14 Oct 2022 15:20:09 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojMLj-00F8VP-Si; Fri, 14 Oct 2022 15:11:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665760307; x=1697296307;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=N/njfTWM92urhDh1tc8kt06mInCQV3hTHb5sdf7xqk0=;
-  b=UUcVxyNR2k+z1kwwaoCqz6ErWo6ZVzN9f/pYRQKUUvPsZSRKs8ynAbsc
-   ENLstmY5ueLF1Gal81AnPpB79iGLxita4m7L+4mw9383EdRHh3xZ1W2SS
-   tm8vqGRhn2fXBqajLSCxqk7G11mRtJJrs8j7D0FO3L3QirxQ9HmctXKy9
-   Qh5bc7lVfRPtkMmqJw291ukwu3xHgUqxaKOOpZ6wb3yK+78R4VqZRSdUV
-   ZjD/Y92FesRx1C1hmA0vZzfMxxSbD4Beck7sLZuuk05A6/oQ/d20AYo4E
-   6G/E5C9t9OsOJn8sbZDq4FTA6wQFm5JwOIaZlGABTMTsw5xzAxNJ+or7B
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10500"; a="391703298"
-X-IronPort-AV: E=Sophos;i="5.95,184,1661842800"; 
-   d="scan'208";a="391703298"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Oct 2022 08:11:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10500"; a="660758830"
-X-IronPort-AV: E=Sophos;i="5.95,184,1661842800"; 
-   d="scan'208";a="660758830"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga001.jf.intel.com with ESMTP; 14 Oct 2022 08:11:36 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1ojMLW-006yCQ-0e;
-	Fri, 14 Oct 2022 18:11:34 +0300
-Date: Fri, 14 Oct 2022 18:11:33 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Florian Fainelli <f.fainelli@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>,
-	linux-gpio@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-media@vger.kernel.org, linux-actions@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
-	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-omap@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org
-Subject: Re: [rft, PATCH v2 00/36] pinctrl: Clean up and add missed headers
-Message-ID: <Y0l8JTQQvLzRejk1@smile.fi.intel.com>
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com>
- <0684f480-2092-d520-2c8e-bd9a2dca47e3@gmail.com>
- <CAHp75VdDjyUAZBTaoPOe5oA3f_5xRznAooq08=Eff4F1AZyVOQ@mail.gmail.com>
+	id 1ojMTk-00F9bd-4H
+	for linux-mediatek@lists.infradead.org; Fri, 14 Oct 2022 15:20:07 +0000
+Received: by mail-wm1-x335.google.com with SMTP id r8-20020a1c4408000000b003c47d5fd475so5575908wma.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Oct 2022 08:20:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date:message-id:reply-to;
+        bh=XC5LEu3vClkmtksdzdUgpje8SO37USDa4/NkLEkuaxk=;
+        b=ThIpzCsPF1rVHTCbtQrYisKePnMrSzk+2OLerVouDguzlws+D4XMeeA4rZGTV3rOre
+         XEKXdHplc3i7l2jHu/vicLuSzRHcYqKKlQqEQ19bBpOKATPsXbTLdsYjdoVRlK0rXfc+
+         oA4iDiMUAXBGa9RY/GTLmphYivCkq8p7tLEKKbzynqie0dj1u5zkarzqdkXseGoU35PG
+         e6h0o8PsGG53Fpl+7QXyB1ZWH1HQgbcG/32hRln18cPZJKygABPeB+hPuyLjlSUck8uX
+         v+Fmcf6vuia//lQOL+X1G0o9W1eafCc/rGIZ4RyGEk2wLFQqZ3m0R1yRCxJX6gVw2x9+
+         ptlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XC5LEu3vClkmtksdzdUgpje8SO37USDa4/NkLEkuaxk=;
+        b=ZCBRpGLKWjWpQN8A401zrzQY6RG1z5CDU6NfW4FDfCTYtZhcS33pvgRpehCoEbdxpo
+         d+nmltmOgEiR2PWeQVmKIZ9IQIMbYbcaQzqu2MnODEIhz0vsv2G7gHnF79/aW1sq7iQw
+         1koyk9aT0QLiJILEXf/3M8XWzhTsqukmnKHLwMi94kwtJOk8ZpLwpMwlWIbiDQ57un9B
+         OFffbQu1VMaESM2ip5GXKxchwN4OaslJ4sIdAw5tyIHsfbKsDGL+Tly9zZ1HcHBWUDtg
+         6t9gfbvhZVGEijt7LxZg5bWbYvKgofxXvpmimO5NEYQi9XkKvksRPvqMe7SKJ9RHRKHp
+         +8Xw==
+X-Gm-Message-State: ACrzQf0fAqKBlAcFIk/c6v0/oddXFskUosT3Kq7cBDkqUhU+QNNlPkKr
+	7m8/lmO2LdZMmDNYe2i0A1O++A==
+X-Google-Smtp-Source: AMsMyM4VkTLDxpgmuvAJhKLbTOzq4iW8KsRFV4M9ozA3gWvMUm7ECSR35q/G8eUTOdT/6vou6Rojqg==
+X-Received: by 2002:a05:600c:4f52:b0:3c6:cd82:5943 with SMTP id m18-20020a05600c4f5200b003c6cd825943mr10786580wmq.185.1665760801147;
+        Fri, 14 Oct 2022 08:20:01 -0700 (PDT)
+Received: from [127.0.0.1] (2a02-8440-6241-7429-3074-96af-9642-0004.rev.sfr.net. [2a02:8440:6241:7429:3074:96af:9642:4])
+        by smtp.gmail.com with ESMTPSA id z11-20020a05600c0a0b00b003c6bd91caa5sm2818223wmp.17.2022.10.14.08.19.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Oct 2022 08:20:00 -0700 (PDT)
+Subject: [PATCH v2 00/12] Add MT8195 HDMI support
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHp75VdDjyUAZBTaoPOe5oA3f_5xRznAooq08=Eff4F1AZyVOQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-b4-tracking: H4sIACl9SWMC/0WMzQoCIRSFX2W46wwVCW3Ve0SEOpKX/AGdhGHw3bu0aXX4Dt85B/TQMHS4Lge0ML
+ BjLQTytICPtrwCw5UYJJeSG2FYXDM+8/YGMpztgblmi4/klE9KVEbsW23773EIivt/PATjTGmltLh4 o7m+ObsndC2cfc3wmHN+AdU1/fiSAAAA
+From: Guillaume Ranquet <granquet@baylibre.com>
+Date: Fri, 14 Oct 2022 17:15:53 +0200
+Message-Id: <20220919-v2-0-8419dcf4f09d@baylibre.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, David Airlie <airlied@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Jitao shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Guillaume Ranquet <granquet@baylibre.com>, stuart.lee@mediatek.com, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, mac.shen@mediatek.com, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+X-Mailer: b4 0.11.0-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221014_081147_966319_0005D8A5 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20221014_082004_419443_96B37A3F 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +96,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 12, 2022 at 01:04:10PM +0300, Andy Shevchenko wrote:
-> On Tue, Oct 11, 2022 at 11:56 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
-> > On 10/10/2022 1:14 PM, Andy Shevchenko wrote:
-> > > Currently the header inclusion inside the pinctrl headers seems more arbitrary
-> > > than logical. This series is basically out of two parts:
-> > > - add missed headers to the pin control drivers / users
-> > > - clean up the headers of pin control subsystem
-> > >
-> > > The idea is to have this series to be pulled after -rc1 by the GPIO and
-> > > pin control subsystems, so all new drivers will utilize cleaned up headers
-> > > of the pin control.
-> > >
-> > > Please, review and comment.
-> >
-> > Did you really need to split this on a per-driver basis as opposed to
-> > just a treewide drivers/pinctrl, drivers/media and drivers/gpiolib patch
-> > set?
-> >
-> > 36 patches seems needlessly high when 4 patches could have achieve the
-> > same outcome.
-> 
-> I can combine them if maintainers ask for that, nevertheless for Intel
-> pin control and GPIO drivers, which I care more about, I would like to
-> leave as separate changes (easy to see in history what was done).
+Add support for HDMI Tx on MT8195.
 
-I can now tell why I don't like to combine. While doing a revert (it's not
-related to GPIO nor to pin control), it appears that I reverted extra bits
-as merge conflict resolution. This is per se is not an issue, but when
-I tried to find and reapply that missed piece I can't, because the patch
-is combined and Git simply ignores to have
-`git cherry-pick _something in the past_` done.
+This includes a split of the current "legacy" hdmi driver into a common
+library of functions and a two dedicated compilation units with specific
+code for mt8167 and another for the "new" mt8195 SoC.
 
-But again, up to maintainers.
+Support for the new mt8195 hdmi phy and the dpi/drm_drv adjustements to
+support hdmi.
 
+Based on next-20221014
+
+test branch with dts and various "in flight" patches available here:
+https://gitlab.com/granquet/linux/-/tree/granquet/linux-next_HDMI
+
+I haven't updated the vdosys/mmsys/ethdr and mutex patches in a while
+in that test branch, they might be outdated..
+
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+To: Vinod Koul <vkoul@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: David Airlie <airlied@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+To: CK Hu <ck.hu@mediatek.com>
+To: Jitao shi <jitao.shi@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-phy@lists.infradead.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mac.shen@mediatek.com
+CC: stuart.lee@mediatek.com
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+---
+Changes in v2:
+- Removed syscon requirement from the hdmi node
+- Use as much as possible bit FIELD_PREP/FIELD_GET macros across all the
+  patches
+- Make cec optional dynamically instead of hardcoded with a flag
+- Renamed hdmi variants to v1 (legacy) and v2 (mt8195) while waiting for
+  a better name
+- Rework hdmi v2 code to use a connector (same as v1)
+- Remove "magic" 0x43 addr special handling in hdmi ddc code
+- Link to v1: https://lore.kernel.org/r/20220919-v1-0-4844816c9808@baylibre.com
+
+---
+Guillaume Ranquet (12):
+      dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible
+      dt-bindings: display: mediatek: add MT8195 hdmi bindings
+      drm/mediatek: hdmi: use a regmap instead of iomem
+      drm/mediatek: extract common functions from the mtk hdmi driver
+      drm/mediatek: hdmi: make the cec dev optional
+      drm/mediatek: hdmi: add frame_colorimetry flag
+      drm/mediatek: hdmi: add v2 support
+      drm/mediatek: hdmi: v2: add audio support
+      phy: phy-mtk-hdmi: Add generic phy configure callback
+      phy: mediatek: add support for phy-mtk-hdmi-mt8195
+      dt-bindings: display: mediatek: dpi: Add compatible for MediaTek MT8195
+      drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
+
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |    1 +
+ .../bindings/display/mediatek/mediatek,hdmi.yaml   |   67 +-
+ .../display/mediatek/mediatek,mt8195-hdmi-ddc.yaml |   51 +
+ .../devicetree/bindings/phy/mediatek,hdmi-phy.yaml |    1 +
+ drivers/gpu/drm/mediatek/Makefile                  |    5 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |  143 +-
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h            |    5 +
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  655 +-------
+ drivers/gpu/drm/mediatek/mtk_hdmi.h                |   16 +
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c         |  477 ++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h         |  224 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c         |  367 +++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h        |  309 ++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             | 1592 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.h             |   31 +
+ drivers/phy/mediatek/Makefile                      |    1 +
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c         |  546 +++++++
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h         |  131 ++
+ drivers/phy/mediatek/phy-mtk-hdmi.c                |   15 +
+ drivers/phy/mediatek/phy-mtk-hdmi.h                |    2 +
+ 20 files changed, 4004 insertions(+), 635 deletions(-)
+---
+base-commit: 98035e7c0bb29bf68a2f4b650656f3a3dd07a494
+change-id: 20220919-hdmi_mtk
+
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Guillaume Ranquet <granquet@baylibre.com>
 
