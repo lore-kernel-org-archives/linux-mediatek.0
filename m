@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F54C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 02:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D153CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Oct 2022 02:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6vh4IJCOfQjz3JMDhYQ0n9jKVIGYVFgFR+YTYI8YBhA=; b=TCS0ljwz82V5S4DUsrW/nugs2Q
-	ZczMDTTTeF4ANwxU2s2XealoVLCxeFd6vAVoDcLgmbattz4PmEJJ1tjvlWLPyV10aa5q5HYLLqEFr
-	oVkQuvh2KnEVTa90luKht4BCabxH8UVYXaaanB1RXtea5zJUf6HsB34yDTZs8l1NsTfc/kJ3cBx1/
-	JC6apDXVSJOu/k+TBY+6VpMdz55Unhudr2v2xUiFcD0DRSPlqN/tBKLuiUoNXfJFCodKo390h5DqA
-	MCCBmYAjBZoE/s0cfKZdQ9tBc+X9MwQzuwW+G1Uc2jJZtUVJ8Q9xH6bjNyAIe6kD8/ClojPK1sR/Q
-	iNqQXQ8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cROh27n6ZgnlgI33WYAJemy5DY2o8uvql7WSkJiRwzs=; b=hSimNK+NRLOFn/bN4yZW+VBErl
+	MlfRJtZt4FrJHKplaoUZThGO0nLvRQfg3wW/DzJUPbltGjUZA3pmNbQr4mFPFG/cp0vUj80uu4AHC
+	HzUnoN7tYE1eTIewaljpWkaYa9tk1YsCR9NtchIJibENdb8H9+kVXf1fy7jL41kKjdQxJVKM5dEci
+	b4T5rtfZ5ucTLsVop6Nxm/BG4CXZFgdHSIxjSH9xio4+pkpfItdqk5pkcv/MJpYzCSwycItK6PIIx
+	WB9D2wQU4R5bFp/+3IpxeLhL71JHD+noheMLQe4qJIkh4nJw1CAHCel3brKu9sqtBIiWIWM6SgSSe
+	38eYGZYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojAti-00DSrG-0b; Fri, 14 Oct 2022 02:58:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ojAuF-00DSyF-6Z; Fri, 14 Oct 2022 02:58:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojAte-00DSqV-OT
-	for linux-mediatek@lists.infradead.org; Fri, 14 Oct 2022 02:58:04 +0000
-X-UUID: b8d1b68505ee489b960d452a84f620db-20221013
+	id 1ojAuA-00DSw7-QY
+	for linux-mediatek@lists.infradead.org; Fri, 14 Oct 2022 02:58:38 +0000
+X-UUID: 07b4b177924045f68f628f291c86e931-20221013
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6vh4IJCOfQjz3JMDhYQ0n9jKVIGYVFgFR+YTYI8YBhA=;
-	b=nUQsXWeNyishVvxiE8iPQTnx5iRSOS9wLyJuUkB8bqt8EB4QBVPEdJ9TnuTcSpKcJF380L2ZdaVClbj6FIth0Yp04r0BzD71oZZu7bc2F2mxgM5L5/joRab0O7OfrbJv/o82uoSt80ZaY59fcK+q1Xy1+3LvE5/QzZBZ0Pngbwk=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cROh27n6ZgnlgI33WYAJemy5DY2o8uvql7WSkJiRwzs=;
+	b=uOpS1LIPY1ACouhIGmu5zazpxgq2LvOv7RkrBUPZyNpCk3bSOpF1RtTwL5afQYvRCV3e3Nk8UefsDEuPMpGzzpOUevyTpdd3ioab1o5Arxel3P80uYQzE0BpZDEjzss8RdSkpY/QB07pMmFrUxG/PwJArlpNMirJvhvrLh/9ROc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:6f0b2ecf-be12-485a-b8fe-3fd1de05f56a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:e7137601-cdeb-479d-93af-53f947adce9d,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:50c998f7-70c3-400a-8e38-f7ba16920432,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:f452e7e1-2948-402a-a6e4-b5d31fe11eb7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b8d1b68505ee489b960d452a84f620db-20221013
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 07b4b177924045f68f628f291c86e931-20221013
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 374914085; Thu, 13 Oct 2022 19:57:55 -0700
+	with ESMTP id 1613112219; Thu, 13 Oct 2022 19:58:25 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 14 Oct 2022 10:57:53 +0800
+ 15.2.792.15; Fri, 14 Oct 2022 10:57:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 14 Oct 2022 10:57:53 +0800
+ Transport; Fri, 14 Oct 2022 10:57:51 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
 	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] wifi: mt76: mt7915: add ack signal support
-Date: Fri, 14 Oct 2022 10:57:48 +0800
-Message-ID: <167355984a4e8ab4fe4330af7d10c02184b563ee.1665714480.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] wifi: mt76: mt7915: improve accuracy of time_busy calculation
+Date: Fri, 14 Oct 2022 10:57:47 +0800
+Message-ID: <98348bffc688f4c1416981f72528eebcc01faee3.1665714480.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <98348bffc688f4c1416981f72528eebcc01faee3.1665714480.git.ryder.lee@mediatek.com>
-References: <98348bffc688f4c1416981f72528eebcc01faee3.1665714480.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221013_195802_828967_3E4D6B4C 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20221013_195834_889475_7C2DB79B 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,219 +78,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reports signal strength of ACK packets from the peer as measured
-at each interface.
+The MIB INFO command is fetching MIB_BUSY_TIME, MIB_TX_TIME, MIB_RX_TIME and
+MIB_OBSS_AIRTIME from the radio and filling out cc_busy, cc_tx, cc_bss_rx
+and cc_rx respectively.
 
-Tested-by: Shurong Wen <shurong.wen@mediatek.com>
+busy should be >= tx + rx >= tx + bss_rx but we don’t always quite see this.
+Sometimes tx + rx is a bit higher than busy due to inaccurate accounting,
+so this patch recalculates numbers to make them more reasonable.
+
+Reported-By: Kevin Schneider <kevin.schneider@adtran.com>
+Tested-by: Kevin Schneider <kevin.schneider@adtran.com>
+Tested-by: Chad Monroe <chad.monroe@smartrg.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c |  9 ++++-----
- drivers/net/wireless/mediatek/mt76/mt76.h     |  1 +
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  7 +++++++
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 19 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  8 ++++++++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  6 +++++-
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  8 ++++++++
- 7 files changed, 51 insertions(+), 7 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 17 +++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 35 +++++++++++++------
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  8 +++--
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  | 14 ++++++++
+ 4 files changed, 61 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 4bdbfd0f6233..c59d12004459 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -951,14 +951,12 @@ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
- }
- EXPORT_SYMBOL(mt76_wcid_key_setup);
- 
--static int
--mt76_rx_signal(struct mt76_rx_status *status)
-+int mt76_rx_signal(u8 chain_mask, s8 *chain_signal)
- {
--	s8 *chain_signal = status->chain_signal;
- 	int signal = -128;
- 	u8 chains;
- 
--	for (chains = status->chains; chains; chains >>= 1, chain_signal++) {
-+	for (chains = chain_mask; chains; chains >>= 1, chain_signal++) {
- 		int cur, diff;
- 
- 		cur = *chain_signal;
-@@ -980,6 +978,7 @@ mt76_rx_signal(struct mt76_rx_status *status)
- 
- 	return signal;
- }
-+EXPORT_SYMBOL(mt76_rx_signal);
- 
- static void
- mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
-@@ -1009,7 +1008,7 @@ mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
- 	status->ampdu_reference = mstat.ampdu_ref;
- 	status->device_timestamp = mstat.timestamp;
- 	status->mactime = mstat.timestamp;
--	status->signal = mt76_rx_signal(&mstat);
-+	status->signal = mt76_rx_signal(mstat.chains, mstat.chain_signal);
- 	if (status->signal <= -128)
- 		status->flag |= RX_FLAG_NO_SIGNAL_VAL;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index f9bdf16fc6c4..c91fb9bde632 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1149,6 +1149,7 @@ void mt76_update_survey(struct mt76_phy *phy);
- void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time);
- int mt76_get_survey(struct ieee80211_hw *hw, int idx,
- 		    struct survey_info *survey);
-+int mt76_rx_signal(u8 chain_mask, s8 *chain_signal);
- void mt76_set_stream_caps(struct mt76_phy *phy, bool vht);
- 
- int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 7173ed964519..0e7d065afe29 100644
+index c43a8dd16fea..7173ed964519 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -353,6 +353,7 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_UNSOL_BCAST_PROBE_RESP);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_FILS_DISCOVERY);
-+	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
+@@ -444,6 +444,23 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
  
- 	if (!mdev->dev->of_node ||
- 	    !of_property_read_bool(mdev->dev->of_node,
-@@ -461,6 +462,12 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
- 	set = FIELD_PREP(MT_WF_RMAC_MIB_OBSS_BACKOFF, 0) |
- 	      FIELD_PREP(MT_WF_RMAC_MIB_ED_OFFSET, 4);
- 	mt76_rmw(dev, MT_WF_RMAC_MIB_AIRTIME0(band), mask, set);
+ 	/* mt7915: disable rx rate report by default due to hw issues */
+ 	mt76_clear(dev, MT_DMA_DCR0(band), MT_DMA_DCR0_RXD_G5_EN);
 +
-+	/* filter out non-resp frames and get instanstaeous signal reporting */
-+	mask = MT_WTBLOFF_TOP_RSCR_RCPI_MODE | MT_WTBLOFF_TOP_RSCR_RCPI_PARAM;
-+	set = FIELD_PREP(MT_WTBLOFF_TOP_RSCR_RCPI_MODE, 0) |
-+	      FIELD_PREP(MT_WTBLOFF_TOP_RSCR_RCPI_PARAM, 0x3);
-+	mt76_rmw(dev, MT_WTBLOFF_TOP_RSCR(band), mask, set);
++	/* clear estimated value of EIFS for Rx duration & OBSS time */
++	mt76_wr(dev, MT_WF_RMAC_RSVD0(band), MT_WF_RMAC_RSVD0_EIFS_CLR);
++
++	/* clear backoff time for Rx duration  */
++	mt76_clear(dev, MT_WF_RMAC_MIB_AIRTIME1(band),
++		   MT_WF_RMAC_MIB_NONQOSD_BACKOFF);
++	mt76_clear(dev, MT_WF_RMAC_MIB_AIRTIME3(band),
++		   MT_WF_RMAC_MIB_QOS01_BACKOFF);
++	mt76_clear(dev, MT_WF_RMAC_MIB_AIRTIME4(band),
++		   MT_WF_RMAC_MIB_QOS23_BACKOFF);
++
++	/* clear backoff time and set software compensation for OBSS time */
++	mask = MT_WF_RMAC_MIB_OBSS_BACKOFF | MT_WF_RMAC_MIB_ED_OFFSET;
++	set = FIELD_PREP(MT_WF_RMAC_MIB_OBSS_BACKOFF, 0) |
++	      FIELD_PREP(MT_WF_RMAC_MIB_ED_OFFSET, 4);
++	mt76_rmw(dev, MT_WF_RMAC_MIB_AIRTIME0(band), mask, set);
  }
  
  static void mt7915_mac_init(struct mt7915_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 34a50d594372..1ce2b91353e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -9,7 +9,7 @@
- #include "mac.h"
- #include "mcu.h"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 8d2ef4329bde..49761790948d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2944,25 +2944,36 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
+ {
+ 	/* strict order */
+ 	static const u32 offs[] = {
+-		MIB_BUSY_TIME, MIB_TX_TIME, MIB_RX_TIME, MIB_OBSS_AIRTIME,
+-		MIB_BUSY_TIME_V2, MIB_TX_TIME_V2, MIB_RX_TIME_V2,
++		MIB_NON_WIFI_TIME,
++		MIB_TX_TIME,
++		MIB_RX_TIME,
++		MIB_OBSS_AIRTIME,
++		MIB_TXOP_INIT_COUNT,
++		/* v2 */
++		MIB_NON_WIFI_TIME_V2,
++		MIB_TX_TIME_V2,
++		MIB_RX_TIME_V2,
+ 		MIB_OBSS_AIRTIME_V2
+ 	};
+ 	struct mt76_channel_state *state = phy->mt76->chan_state;
+ 	struct mt76_channel_state *state_ts = &phy->state_ts;
+ 	struct mt7915_dev *dev = phy->dev;
+-	struct mt7915_mcu_mib *res, req[4];
++	struct mt7915_mcu_mib *res, req[5];
+ 	struct sk_buff *skb;
+ 	int i, ret, start = 0, ofs = 20;
++	u64 cc_tx;
  
--#define to_rssi(field, rxv)	((FIELD_GET(field, rxv) - 220) / 2)
-+#define to_rssi(field, rcpi)	((FIELD_GET(field, rcpi) - 220) / 2)
- 
- static const struct mt7915_dfs_radar_spec etsi_radar_specs = {
- 	.pulse_th = { 110, -10, -80, 40, 5200, 128, 5200 },
-@@ -119,6 +119,7 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
- 		bool clear = false;
- 		u32 addr, val;
- 		u16 idx;
-+		s8 rssi[4];
- 		u8 bw;
- 
- 		spin_lock_bh(&dev->sta_poll_lock);
-@@ -132,6 +133,8 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
- 		spin_unlock_bh(&dev->sta_poll_lock);
- 
- 		idx = msta->wcid.idx;
-+
-+		/* refresh peer's airtime reporting */
- 		addr = mt7915_mac_wtbl_lmac_addr(dev, idx, 20);
- 
- 		for (i = 0; i < IEEE80211_NUM_ACS; i++) {
-@@ -210,6 +213,20 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
- 			else
- 				rate->flags &= ~RATE_INFO_FLAGS_SHORT_GI;
- 		}
-+
-+		/* get signal strength of resp frames (CTS/BA/ACK) */
-+		addr = mt7915_mac_wtbl_lmac_addr(dev, idx, 30);
-+		val = mt76_rr(dev, addr);
-+
-+		rssi[0] = to_rssi(GENMASK(7, 0), val);
-+		rssi[1] = to_rssi(GENMASK(15, 8), val);
-+		rssi[2] = to_rssi(GENMASK(23, 16), val);
-+		rssi[3] = to_rssi(GENMASK(31, 14), val);
-+
-+		msta->ack_signal =
-+			mt76_rx_signal(msta->vif->phy->mt76->antenna_mask, rssi);
-+
-+		ewma_avg_signal_add(&msta->avg_ack_signal, -msta->ack_signal);
+ 	if (!is_mt7915(&dev->mt76)) {
+-		start = 4;
++		start = 5;
+ 		ofs = 0;
  	}
  
- 	rcu_read_unlock();
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 6de49b93387e..ac320182c2ce 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -665,6 +665,8 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
- 	msta->jiffies = jiffies;
- 
-+	ewma_avg_signal_init(&msta->avg_ack_signal);
+-	for (i = 0; i < 4; i++) {
++	for (i = 0; i < 5; i++) {
+ 		req[i].band = cpu_to_le32(phy != &dev->phy);
+ 		req[i].offs = cpu_to_le32(offs[i + start]);
 +
- 	mt7915_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
-@@ -1025,6 +1027,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 		sinfo->tx_retries = msta->wcid.stats.tx_retries;
- 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
++		if (!is_mt7915(&dev->mt76) && i == 3)
++			break;
  	}
-+
-+	sinfo->ack_signal = (s8)msta->ack_signal;
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL);
-+
-+	sinfo->avg_ack_signal = -(s8)ewma_avg_signal_read(&msta->avg_ack_signal);
-+	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL_AVG);
- }
  
- static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 5e95f5c77933..b0b57ee1e00f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -114,6 +114,8 @@ struct mt7915_twt_flow {
- 	u8 sched:1;
+ 	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD(GET_MIB_INFO),
+@@ -2972,20 +2983,24 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
+ 
+ 	res = (struct mt7915_mcu_mib *)(skb->data + ofs);
+ 
++#define __res_u64(s) le64_to_cpu(res[s].data)
++	/* subtract Tx backoff time from Tx duration */
++	cc_tx = is_mt7915(&dev->mt76) ? __res_u64(1) - __res_u64(4) : __res_u64(1);
++
+ 	if (chan_switch)
+ 		goto out;
+ 
+-#define __res_u64(s) le64_to_cpu(res[s].data)
+-	state->cc_busy += __res_u64(0) - state_ts->cc_busy;
+-	state->cc_tx += __res_u64(1) - state_ts->cc_tx;
++	state->cc_tx += cc_tx - state_ts->cc_tx;
+ 	state->cc_bss_rx += __res_u64(2) - state_ts->cc_bss_rx;
+ 	state->cc_rx += __res_u64(2) + __res_u64(3) - state_ts->cc_rx;
++	state->cc_busy += __res_u64(0) + cc_tx + __res_u64(2) + __res_u64(3) -
++			  state_ts->cc_busy;
+ 
+ out:
+-	state_ts->cc_busy = __res_u64(0);
+-	state_ts->cc_tx = __res_u64(1);
++	state_ts->cc_tx = cc_tx;
+ 	state_ts->cc_bss_rx = __res_u64(2);
+ 	state_ts->cc_rx = __res_u64(2) + __res_u64(3);
++	state_ts->cc_busy = __res_u64(0) + cc_tx + __res_u64(2) + __res_u64(3);
+ #undef __res_u64
+ 
+ 	dev_kfree_skb(skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 87cd1bfff3e6..a4f903f88078 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -160,15 +160,17 @@ struct mt7915_mcu_mib {
+ 
+ enum mt7915_chan_mib_offs {
+ 	/* mt7915 */
+-	MIB_BUSY_TIME = 14,
+ 	MIB_TX_TIME = 81,
+ 	MIB_RX_TIME,
+ 	MIB_OBSS_AIRTIME = 86,
++	MIB_NON_WIFI_TIME,
++	MIB_TXOP_INIT_COUNT,
++
+ 	/* mt7916 */
+-	MIB_BUSY_TIME_V2 = 0,
+ 	MIB_TX_TIME_V2 = 6,
+ 	MIB_RX_TIME_V2 = 8,
+-	MIB_OBSS_AIRTIME_V2 = 490
++	MIB_OBSS_AIRTIME_V2 = 490,
++	MIB_NON_WIFI_TIME_V2
  };
  
-+DECLARE_EWMA(avg_signal, 10, 8)
-+
- struct mt7915_sta {
- 	struct mt76_wcid wcid; /* must be first */
- 
-@@ -123,10 +125,12 @@ struct mt7915_sta {
- 	struct list_head rc_list;
- 	u32 airtime_ac[8];
- 
-+	int ack_signal;
-+	struct ewma_avg_signal avg_ack_signal;
-+
- 	unsigned long changed;
- 	unsigned long jiffies;
- 	unsigned long ampdu_state;
--
- 	struct mt76_connac_sta_key_conf bip;
- 
- 	struct {
+ struct edca {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 7db809671230..9924271d8e36 100644
+index 5180dd931835..7db809671230 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -226,6 +226,14 @@ enum offs_rev {
- #define MT_DMA_DCR0_MAX_RX_LEN		GENMASK(15, 3)
- #define MT_DMA_DCR0_RXD_G5_EN		BIT(23)
+@@ -525,8 +525,22 @@ enum offs_rev {
+ #define MT_WF_RFCR1_DROP_CFEND		BIT(7)
+ #define MT_WF_RFCR1_DROP_CFACK		BIT(8)
  
-+/* WTBLOFF TOP: band 0(0x820e9000),band 1(0x820f9000) */
-+#define MT_WTBLOFF_TOP_BASE(_band)	((_band) ? 0x820f9000 : 0x820e9000)
-+#define MT_WTBLOFF_TOP(_band, ofs)	(MT_WTBLOFF_TOP_BASE(_band) + (ofs))
++#define MT_WF_RMAC_RSVD0(_band)	MT_WF_RMAC(_band, 0x02e0)
++#define MT_WF_RMAC_RSVD0_EIFS_CLR	BIT(21)
 +
-+#define MT_WTBLOFF_TOP_RSCR(_band)	MT_WTBLOFF_TOP(_band, 0x008)
-+#define MT_WTBLOFF_TOP_RSCR_RCPI_MODE	GENMASK(31, 30)
-+#define MT_WTBLOFF_TOP_RSCR_RCPI_PARAM	GENMASK(25, 24)
+ #define MT_WF_RMAC_MIB_AIRTIME0(_band)	MT_WF_RMAC(_band, 0x0380)
+ #define MT_WF_RMAC_MIB_RXTIME_CLR	BIT(31)
++#define MT_WF_RMAC_MIB_OBSS_BACKOFF	GENMASK(15, 0)
++#define MT_WF_RMAC_MIB_ED_OFFSET	GENMASK(20, 16)
 +
- /* ETBF: band 0(0x820ea000), band 1(0x820fa000) */
- #define MT_WF_ETBF_BASE(_band)		((_band) ? 0x820fa000 : 0x820ea000)
- #define MT_WF_ETBF(_band, ofs)		(MT_WF_ETBF_BASE(_band) + (ofs))
++#define MT_WF_RMAC_MIB_AIRTIME1(_band)	MT_WF_RMAC(_band, 0x0384)
++#define MT_WF_RMAC_MIB_NONQOSD_BACKOFF	GENMASK(31, 16)
++
++#define MT_WF_RMAC_MIB_AIRTIME3(_band)	MT_WF_RMAC(_band, 0x038c)
++#define MT_WF_RMAC_MIB_QOS01_BACKOFF	GENMASK(31, 0)
++
++#define MT_WF_RMAC_MIB_AIRTIME4(_band)	MT_WF_RMAC(_band, 0x0390)
++#define MT_WF_RMAC_MIB_QOS23_BACKOFF	GENMASK(31, 0)
+ 
+ /* WFDMA0 */
+ #define MT_WFDMA0_BASE			__REG(WFDMA0_ADDR)
 -- 
 2.36.1
 
