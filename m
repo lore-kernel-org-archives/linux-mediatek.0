@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A54C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Oct 2022 08:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D84C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Oct 2022 08:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=683v4hUy0SmafI83To+Isl3SKfGOBhxnh8RoSe2BfVE=; b=jDw8QRouPvs5gh1evdJWq7TKt9
-	7WJFMSPyYL4RyZd48H12A21Z/5raIXA6VapuFo2kelqTn9H8IQWtju7apd+6JnHsr1Aw94VR/sg31
-	jlH1ejKB4aPVEySaKokBGeGUqP7NpSR3OZvgqlm/JFQtlc9+eSdx+o1hlKLxXqUmq2pgI2X2gP/Wl
-	4Wj3CnIMaV4GYyclbCCrVET+VmN8RLWpgNWQTNWqV2f9DCy1UEvk66ISkGqJfXqN5hdrQZDJcNaHu
-	fUa76WJq1abIpRUF5KxWkFk2Z3oEo2pYB5dEMrwEvNoVj1TbgfmhrxS7pWc+chsUPN8l9uYShQntB
-	PzaXSpZw==;
+	bh=683v4hUy0SmafI83To+Isl3SKfGOBhxnh8RoSe2BfVE=; b=E9daKyStPMyvcrsuFSluncBUhP
+	LnQAFOMo+koRajkZJBaPzfpKjZXkBBPhzeR025Cju+SgTbFlisVqsyxmHOidqEMWkQt4Yf3o2URYV
+	HAB9ToTsWSbMLRrRYoMUxOLLEv9XbJJ//DAYbevhXSDznJSwTez4+mub2ZSngCbBHaAduyoX+Khwz
+	38gpF4FpUQYR3nnRBIPLEhvqByhNDonIsr6bSBY19VDU/TUKbr09MhWNWXKH9cKxOncQAIJJw3JHr
+	MTqkxtgUlCpn1YYHGv+KHTrlv9Y6iRLoeYxsjtImD/Aw2D+3AQ11HNLUVQAmC2t8ISO4Phr5xTCvp
+	0aKjn6rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okLvf-009RDT-ML; Mon, 17 Oct 2022 08:56:59 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1okLwe-009T57-9w; Mon, 17 Oct 2022 08:58:00 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okLvZ-009R2g-7w
-	for linux-mediatek@lists.infradead.org; Mon, 17 Oct 2022 08:56:55 +0000
-Received: by mail-lf1-x132.google.com with SMTP id o12so7987449lfq.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Oct 2022 01:56:50 -0700 (PDT)
+	id 1okLwZ-009SqC-1n
+	for linux-mediatek@lists.infradead.org; Mon, 17 Oct 2022 08:57:56 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id fy4so23324889ejc.5
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Oct 2022 01:57:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
         bh=683v4hUy0SmafI83To+Isl3SKfGOBhxnh8RoSe2BfVE=;
-        b=Qv6q8FWLtueHdd8V7+1ydYsFYZEEJpWavnxcBT7D5eWhQItA1/pVYccISbJFICMSkr
-         Ey3TbxDRm9PfKYS4JmGflA/lpJIrLC38NdXvtV9vC2uiARu6HbiwOaeUGshIc/MABNa8
-         iNRkxG6CAitkZXfK3EBPH0GPp9IUKLoi93vr8Qzhug5C9h9fTgikj/rU7ycMw3UELcZI
-         SVpiBRV4ckNiul+QC7IBmCWqxEcaYjPqjNgLxIT732CKswGqjuVZqI94LQYwNync9INI
-         KcYAHFuQHjoZ8bwkDPJN/fr3Cs0cqXeq4t5oCj9+Z09FuoB3p3Vj0At/JENf/LIAikzH
-         Ubfw==
+        b=t3+amSVGDFAxRbolB49Ma9U6k9IIKhxDwAwyJUkTM3Li0PafxLZLXAW0NCm1nt3as1
+         N84+c+fPTLYB396bAl4/Q0w48uzDDqbLzehPyMBFM1Tp3a7LrIsxevlXc6BrscV+lOfq
+         mGJ3EW5/EeQu7kupGXI95MFitBtE3U0fWugPttQLchXJ+CX+jzVQP7cWoQFnr4RoD6gf
+         /aRgyHO6kVKTo3b840dYVddB4NeyVZKc5wR3ojjuItP2a5dz7lXcnTh1SpVRk9gntYNH
+         Gk9gvPVT1XVoXT4ho5ATtKaTXv1ddOuBPp3yPHFaekZ0rOkS6BaG1XZCPh3lnr6Q6wEH
+         dkkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
         bh=683v4hUy0SmafI83To+Isl3SKfGOBhxnh8RoSe2BfVE=;
-        b=mO/Jo5zcYBt+1TjOxbCXqsQxa0v7GIjbHnxpdFUyla+0SttV0wJi8KBRFLQ19j0hsp
-         FkowBKs9yIwJhtQdmx/EBqur8PnLeVfpPHalZTPvVExyzUFE+Mgt0EO9DA8dG0HOU4Oy
-         DEQEFu+F2l18qj+9A1W6rpGTsCW+cWfzi3o7frU8wtytrgKF8ie7Pfzog8TlsR/g8cyd
-         YoXXfbbq+Nwawk7EW0OoofgNh7bfRgkTP9x/UIf9nNiEr7PvtNYfb4uzmsDc5ol6Yqdq
-         ljw80JzaVmWbnv0PSO9J0sAGQIJnCzMf+81MJSvAw3zfKcYuVLLYbiv4sgX6JqVCtbgc
-         5xYA==
-X-Gm-Message-State: ACrzQf1oIjt7VSB4Pjgnm1bkqUcdewWE8O5Rzyr5XJZ2xr6Ff3DbA71f
-	3Jalv6pfc7Yf5c6vAKewesJMVRpx/ddpHoxyqMkV4cFpk80=
-X-Google-Smtp-Source: AMsMyM54Es/rcRwZ3d5m5p40C0eL91BNOKnYNSaIiRiDdnSBs8EPAVZPWnDFbd89WM1r3BkjvyLcetoBa+sYeNXylYg=
-X-Received: by 2002:a17:906:5d04:b0:77f:ca9f:33d1 with SMTP id
- g4-20020a1709065d0400b0077fca9f33d1mr7894989ejt.526.1665996999142; Mon, 17
- Oct 2022 01:56:39 -0700 (PDT)
+        b=t5WZB04qe/XRxEzC2BmDuwklKObyq/1LAMPE76WsLt3mFmU94RN4DmwVi2VB23IpKm
+         8N71RWfoYnFBX6jgYC1++fgCGL6e4MOah4zvgAKOxzqwbm+n8XntSC9miUyO2rQkajSN
+         7NlqKYDnOBNOHVJO/mVflMYnubvD1tj3jX3WLqTYgOyszvv0syLl+oSlhXbu8sGvdmjZ
+         a2230/Z57CYoLHQbIjPHPon0A+FwT5gSsZ3cK3lRQnqFkBfVNWyNHtmZ07eg4cUgMNUj
+         ck86JHAzjLFQy6QZxO2E/1vRX4mpbwC3U3HnIjKbJqSbVILEX6DWJ7vlfh176ruj56+e
+         99/Q==
+X-Gm-Message-State: ACrzQf3iQA8ceWZrp5PMWZ6Y+jr2UnGT2bpkrhaNjvNE10i4/anPlZY8
+	U7QOIll3STJjyKLbzpzRGajAzMVibS5ALGawL9+I9w==
+X-Google-Smtp-Source: AMsMyM7EnJZWawlqbK2hCUNnkoxsNghTgy0VPziEZIqZHqcD50fAvXotg3KWEk8WTOVELGE1o/67a6uUcG2NxUWD/Yc=
+X-Received: by 2002:a17:907:16aa:b0:6fe:91d5:18d2 with SMTP id
+ hc42-20020a17090716aa00b006fe91d518d2mr4740704ejc.190.1665997072207; Mon, 17
+ Oct 2022 01:57:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <20221010201453.77401-7-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20221010201453.77401-7-andriy.shevchenko@linux.intel.com>
+References: <20221010201453.77401-1-andriy.shevchenko@linux.intel.com> <20221010201453.77401-8-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20221010201453.77401-8-andriy.shevchenko@linux.intel.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 17 Oct 2022 10:56:27 +0200
-Message-ID: <CACRpkdYsJtLT=D6OsJURG9Kj1c3A5x=LmUO_jNLkY=AsqPK5Ng@mail.gmail.com>
-Subject: Re: [PATCH v2 06/36] pinctrl: at91: Add missed header(s)
+Date: Mon, 17 Oct 2022 10:57:41 +0200
+Message-ID: <CACRpkdbuUZugMYmO_9D3AhL7C=NCU65EF1MCmYauQ=zc2yvydg@mail.gmail.com>
+Subject: Re: [PATCH v2 07/36] pinctrl: axp209: Add missed header(s)
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gibson <warthog618@gmail.com>, 
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Billy Tsai <billy_tsai@aspeedtech.com>, 
@@ -117,8 +117,8 @@ Cc: Marc Zyngier <maz@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Kent Gib
 	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_015653_294468_D5FC4A49 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20221017_015755_228562_F9447FE1 
+X-CRM114-Status: UNSURE (   9.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
