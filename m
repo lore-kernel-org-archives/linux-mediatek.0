@@ -4,99 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FFFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Oct 2022 13:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06ED8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Oct 2022 14:20:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OoVgHaBDTUMzcUvs2SGuYYuTvWS8y+7UzurmJV5uzl8=; b=uXEcn6JUOjfdJUYdQzRUuNiPt5
-	qILLVA57IiNfbKLyIX3jZ/u/MfFc8wRrNSoD2az6k0veGCOjzX7/Iz++9POS84XAO5kLux+cZl4fI
-	klJQ0yBvnv8kSVdu8lAHreGqDEwnv8fU+HQR6rjyl9LR/5msOD1ZyMoDfK+GgNa/wbIbnlkld5D3f
-	El2adB8G2M/bwpFD48hvmuwPi8cJTwSWTkkv0DP7dDIolDN/dFWV7UYRwXwd6d4xf8iwBg5JT94eI
-	990/Xmr792pxF1iGVyV+D9d6Dvpv2/kTAoTmX9lMkLwmW5nWKwuoQ1h1mdjKprhWLvcmZtGC0cEQe
-	w8rAbJNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9nM+HJkIZYFDdoIM0Yw1SMU/i8YQxRIRZyTgOy4hyyU=; b=X13pGUHG6kNBZFuQOnxGkcPsGz
+	NRx9QHmIJ02Apv/aAcPyAkyEzGb2WVmjkBG0doRkAXSOMUrcQTKjLbaxHvVsm4VhLSAm0/4boi1Tx
+	puIHx6er50tebPhDpouwhKKeo/hWqbPLQxy3LwzWqY6BDzbVD+XtoTPHWtvw/UsLmI0g8j8kQZ7V2
+	e90rkQXlA+BFfJczhT/OmvavyxWdGRc0FWexef/iPCAPv3RLiy7Y8CZpZ90UhV9NBDJa+8sayRiWj
+	yhf0qr7pSdnYjlyGuxZ51C8CJBzszT564Ds+EyoID9RVHYpv0M5elMl+gmScRcag35DxfJsFBF2Mp
+	Vhj9/OVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okQED-00C7h3-QS; Mon, 17 Oct 2022 13:32:25 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1okQyr-00Ce60-N1; Mon, 17 Oct 2022 14:20:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okQE8-00C7cP-Ff; Mon, 17 Oct 2022 13:32:22 +0000
-Received: from fraeml705-chm.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MrdB34gj5z686tl;
-	Mon, 17 Oct 2022 21:28:59 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- fraeml705-chm.china.huawei.com (10.206.15.54) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2375.31; Mon, 17 Oct 2022 15:32:04 +0200
-Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Mon, 17 Oct
- 2022 14:32:03 +0100
-Date: Mon, 17 Oct 2022 14:32:02 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
-CC: <broonie@kernel.org>, <sanju.mehta@amd.com>,
-	<chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>, <kdasu.kdev@gmail.com>,
-	<f.fainelli@gmail.com>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
-	<eajames@linux.ibm.com>, <olteanv@gmail.com>, <han.xu@nxp.com>,
-	<john.garry@huawei.com>, <shawnguo@kernel.org>, <s.hauer@pengutronix.de>,
-	<narmstrong@baylibre.com>, <khilman@baylibre.com>, <matthias.bgg@gmail.com>,
-	<haibo.chen@nxp.com>, <linus.walleij@linaro.org>, <daniel@zonque.org>,
-	<haojian.zhuang@gmail.com>, <robert.jarzmik@free.fr>, <agross@kernel.org>,
-	<bjorn.andersson@linaro.org>, <heiko@sntech.de>,
-	<krzysztof.kozlowski@linaro.org>, <andi@etezian.org>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>,
-	<masahisa.kojima@linaro.org>, <jaswinder.singh@linaro.org>,
-	<rostedt@goodmis.org>, <mingo@redhat.com>, <l.stelmach@samsung.com>,
-	<davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <alex.aring@gmail.com>, <stefan@datenfreihafen.org>,
-	<kvalo@kernel.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
-	<vigneshr@ti.com>, <jic23@kernel.org>, <tudor.ambarus@microchip.com>,
-	<pratyush@kernel.org>, <git@amd.com>, <linux-spi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <joel@jms.id.au>, <andrew@aj.id.au>,
-	<radu_nicolae.pirea@upb.ro>, <nicolas.ferre@microchip.com>,
-	<alexandre.belloni@bootlin.com>, <claudiu.beznea@microchip.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-	<kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
-	<jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-	<avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
-	<venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
-	<yogeshgaur.83@gmail.com>, <konrad.dybcio@somainline.org>,
-	<alim.akhtar@samsung.com>, <ldewangan@nvidia.com>,
-	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>, <michal.simek@amd.com>,
-	<linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-wpan@vger.kernel.org>, <libertas-dev@lists.infradead.org>,
-	<linux-wireless@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
-	<lars@metafoo.de>, <Michael.Hennerich@analog.com>,
-	<linux-iio@vger.kernel.org>, <michael@walle.cc>, <akumarma@amd.com>,
-	<amitrkcian2002@gmail.com>
-Subject: Re: [PATCH 05/10] iio: imu: Replace spi->chip_select references to
- spi->chip_select[0]
-Message-ID: <20221017143202.00003b1d@huawei.com>
-In-Reply-To: <20221017121249.19061-6-amit.kumar-mahapatra@amd.com>
-References: <20221017121249.19061-1-amit.kumar-mahapatra@amd.com>
-	<20221017121249.19061-6-amit.kumar-mahapatra@amd.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
+	id 1okQyp-00Ce46-HQ; Mon, 17 Oct 2022 14:20:36 +0000
+X-UUID: 94b4550856ff4c9cbcef53df18f7a6bd-20221017
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9nM+HJkIZYFDdoIM0Yw1SMU/i8YQxRIRZyTgOy4hyyU=;
+	b=ROd+uF908endJGyK+g1D0dHapZNUj9TACl6FN9I6P94plGkK5K3XH9Xc/Sex6CMbVuAqyiIEBFGfCHmPjf708GQ8yCisO2no4VeJaTddsQPDDKRwLL/UWxrCEclz5/iF2Ay5q1yVVSM/+UXxviq1CW/ROYJWoCDbwGY109aSoos=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:a8c7d3b8-7ea5-4db0-9644-0326e1b84d14,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:b32b5ab6-a023-44ff-92b1-76c504f71c7a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 94b4550856ff4c9cbcef53df18f7a6bd-20221017
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <mengqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1820742660; Mon, 17 Oct 2022 07:20:27 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 17 Oct 2022 22:20:10 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 17 Oct 2022 22:20:09 +0800
+From: Mengqi Zhang <mengqi.zhang@mediatek.com>
+To: <chaotian.jing@mediatek.com>, <ulf.hansson@linaro.org>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH 0/2] MediaTek eMMC inline encryption support
+Date: Mon, 17 Oct 2022 22:20:05 +0800
+Message-ID: <20221017142007.5408-1-mengqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.226.42]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_063220_856167_18727AD4 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20221017_072035_601536_725C261F 
+X-CRM114-Status: UNSURE (   5.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,39 +79,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Oct 2022 17:42:44 +0530
-Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com> wrote:
+Hello,
 
-> For adding multi CS support & to prevent any existing driver from
-> breaking, replaced all spi->chip_select references to spi->chip_slect[0].
-> 
-> Signed-off-by: Amit Kumar Mahapatra <amit.kumar-mahapatra@amd.com>
+Mediatek eMMC hardware IP has Inline Crypto Engine (ICE), we support inline encryption now.
 
-Hmm. No particular reason why that print should exist at all.
-The warning above it covers the case where there is a mismatch
-in IDs so this adds nothing useful.
+This patchset supports Mediatek eMMC inline encryption which meets the upcoming version of the eMMC specification such as v5.1 or v5.2.
 
-So patch is fine, but I'd be equally happy with just dropping the
-print.
+Patch 1, add crypto clock control flow in mtk-sd driver, patch 2, document the device tree description about crypto clock.
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-> ---
->  drivers/iio/imu/adis16400.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iio/imu/adis16400.c b/drivers/iio/imu/adis16400.c
-> index 17bb0c40a149..aa7bfcee3510 100644
-> --- a/drivers/iio/imu/adis16400.c
-> +++ b/drivers/iio/imu/adis16400.c
-> @@ -466,7 +466,7 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
->  
->  		dev_info(&indio_dev->dev, "%s: prod_id 0x%04x at CS%d (irq %d)\n",
->  			indio_dev->name, prod_id,
-> -			st->adis.spi->chip_select, st->adis.spi->irq);
-> +			st->adis.spi->chip_select[0], st->adis.spi->irq);
->  	}
->  	/* use high spi speed if possible */
->  	if (st->variant->flags & ADIS16400_HAS_SLOW_MODE) {
+Mengqi Zhang (2):
+  mmc: mtk-sd: add Inline Crypto Engine support
+  dt-bingdings: mmc: Mediatek: add ICE clock
+
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml |  4 ++++
+ drivers/mmc/host/mtk-sd.c                         | 12 ++++++++++++
+ 2 files changed, 16 insertions(+)
+
 
 
