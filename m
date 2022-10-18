@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E8CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 02:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA409C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 03:04:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IYogOVe8FwG0NyOno3zg0SlWhd1wK8A+0xGmvuPEsF4=; b=qcyX04O5MABM8UgbV4eNG2Em0Y
-	x3e0uKRAYNuPa7CMt/nZ734ZI/f6Eag/EIcWXZRyd2JPnKN3BXioKqOEUUOjeShRU8n+RHeyQfyat
-	RrGCI9UrfWJV7AoxlPQ31hD7IsQr9RlDQOOP5o+ekNWUip3dK0k8ip5OX/RvHs6uFboaxYeTJEAhk
-	MNNqiq1QSXsFeKjkx4U47fB0f15N3lajc9X1RDP/hinXVN2QFydZ0li27rvBeVMwJdIpRoHpZqQbr
-	Oihx6PxWJ/N6alXmeUWlks+WchVihwNZWyiAViG9Rq6NwWio+GMN+wk9chAM178hIdMnZ/fOIGYXB
-	0j02DOkg==;
+	bh=GfOnCmQ4os1l9pK8r60xypilBfa/Y0HGBb2etrLS7hA=; b=L70ZLCNjd6k9UbpLNjzzEAl1Tt
+	fHQAxqpxiA8bICRXzFVkVwA545nr+XUIHboshjNqWC+0/cn1bclRwxIU4MnuwtFzZwBA3durM5t2f
+	jq3CprSq2MQtWXqdsWOAZ5+A5hUc3rfz8GITMWm54LceWkwNoJXozS3GUE1A0+B88ZC4hpL15J1Qm
+	ZtBzRohaKsJ7TLvBjaSevBIy2pdO94qZG4g2SXNPLra8H/YTbO/wYley2MF2FS3M6u8INUmfCUSMv
+	323Dv4jxVUjeSSZ51v7dRbAnfSEsncjWDd89rMR6OiMWQrKy1tOdMIYEk+549CanbttR3MsvNgjLN
+	AfbqYHTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okcbJ-001dwP-CQ; Tue, 18 Oct 2022 02:45:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1okctx-001nHn-Mr; Tue, 18 Oct 2022 03:04:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okcai-001d6A-UI; Tue, 18 Oct 2022 02:44:30 +0000
-X-UUID: 4073104f248a45b0a2b647cbb9b8b73d-20221017
+	id 1okctm-001nFq-CV; Tue, 18 Oct 2022 03:04:11 +0000
+X-UUID: aef1fa57b89c496d8c2f4b313b022eff-20221017
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IYogOVe8FwG0NyOno3zg0SlWhd1wK8A+0xGmvuPEsF4=;
-	b=GmF7GrtFmtWE0wcTRmxHIJCyLKykSurGx9Lp66pU993yPJ+CdfiSeJU1b6MrWjF0G3brCXUAgoTqSFqj41XKsVT8FQe0I7sO34Hclp+eTjyr9QK89jila6HvU5Nor/+BUHj8AamPjXWvA8U/56JmokAQNb/HAH8IHzYpKuVnZh0=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GfOnCmQ4os1l9pK8r60xypilBfa/Y0HGBb2etrLS7hA=;
+	b=tln09LX4T+lHBcWoV9vx5tA8/cClwSd7Xz7RpReSW+gGdj68OqPPJaeYWk5igoIxw50G9mL1tvxez6sc2o0Q0RYM0YBkPxwdu/zaCagCOn3zJ1GnzRBHpcwjnraZbm87q2+8RZZXeNTjS8WWjiCFeg6n7PNaEqanvyZYChDKT2c=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:f251bb02-238a-46f9-ad00-a3236932ba00,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:537d93ee-314c-4293-acb8-ca4299dd021f,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:5e161ff4-4035-436d-9543-0e9d3a122e0e,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:06bf19a4-ebb2-41a8-a87c-97702aaf2e20,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 4073104f248a45b0a2b647cbb9b8b73d-20221017
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: aef1fa57b89c496d8c2f4b313b022eff-20221017
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1981763112; Mon, 17 Oct 2022 19:44:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 18 Oct 2022 10:43:53 +0800
+	with ESMTP id 561354267; Mon, 17 Oct 2022 20:04:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 18 Oct 2022 10:43:28 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 18 Oct 2022 10:43:52 +0800
+ Transport; Tue, 18 Oct 2022 10:43:27 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Will Deacon <will@kernel.org>
@@ -58,9 +58,9 @@ CC: Robin Murphy <robin.murphy@arm.com>, <iommu@lists.linux.dev>,
 	<chengci.xu@mediatek.com>, <youlin.pei@mediatek.com>,
 	<anan.sun@mediatek.com>, <xueqi.zhang@mediatek.com>, Guenter Roeck
 	<groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [PATCH v7 6/6] iommu/mediatek: Remove unused "mapping" member from mtk_iommu_data
-Date: Tue, 18 Oct 2022 10:42:58 +0800
-Message-ID: <20221018024258.19073-7-yong.wu@mediatek.com>
+Subject: [PATCH v7 2/6] iommu/mediatek: Use component_match_add
+Date: Tue, 18 Oct 2022 10:42:54 +0800
+Message-ID: <20221018024258.19073-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221018024258.19073-1-yong.wu@mediatek.com>
 References: <20221018024258.19073-1-yong.wu@mediatek.com>
@@ -68,9 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_194428_991125_BBCC5B55 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221017_200410_444928_D137E7FB 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,30 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just remove a unused variable that only is for mtk_iommu_v1.
+In order to simplify the error patch(avoid call of_node_put), Use
+component_match_add instead component_match_add_release since we are only
+interested in the "device" here. Then we could always call of_node_put in
+normal path.
 
+Strictly this is not a fixes patch, but it is a prepare for adding the
+error path, thus I add a Fixes tag too.
+
+Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/iommu/mtk_iommu.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/iommu/mtk_iommu.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index f7ac102e343f..cb8df26ec71e 100644
+index 3189b585725f..38112ad87d70 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -223,10 +223,7 @@ struct mtk_iommu_data {
- 	struct device			*smicomm_dev;
+@@ -1068,19 +1068,17 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 			id = i;
  
- 	struct mtk_iommu_bank_data	*bank;
--
--	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
- 	struct regmap			*pericfg;
--
- 	struct mutex			mutex; /* Protect m4u_group/m4u_dom above */
+ 		plarbdev = of_find_device_by_node(larbnode);
+-		if (!plarbdev) {
+-			of_node_put(larbnode);
++		of_node_put(larbnode);
++		if (!plarbdev)
+ 			return -ENODEV;
+-		}
++
+ 		if (!plarbdev->dev.driver) {
+-			of_node_put(larbnode);
+ 			platform_device_put(plarbdev);
+ 			return -EPROBE_DEFER;
+ 		}
+ 		data->larb_imu[id].dev = &plarbdev->dev;
  
- 	/*
+-		component_match_add_release(dev, match, component_release_of,
+-					    component_compare_of, larbnode);
++		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
+ 		platform_device_put(plarbdev);
+ 	}
+ 
 -- 
 2.18.0
 
