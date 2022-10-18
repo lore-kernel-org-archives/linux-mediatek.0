@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7910DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 07:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A501FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 07:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vcwkq/GNAzOHjAXBozQ7dRU3k73TboNxx7qU7Vk6ohE=; b=AZtxqHy5N8Z+vjAmEQfCh3UED3
-	9/ZxIGLoBDbA9oTYNNYg05O0CbbgjNDoplzbiiwEo4H1LKH2n2vX37GdgJSHkcy/s73kbvJHTUEsS
-	AARYy0nwVSqIHiBYA63oap/YWk5L0hP1+otkPLi4HhDwiY/ewwLf9BQXEv8n6DrbaL5Y8X++2o10U
-	GDW6kxm9sPTwtomjN2OVangqL2vYWcV7ThfrhYF2XcFViL4Lr5j7l73iQogq7vo7t7r4PZyoVhXFv
-	nZa2kyj9jcSfOwrt7frwLKBAMSCx6buQU8Cnq5tz0RfNmBBB8knEdkm1wNyCCtMnn1P/a7RSsqMkL
-	YNILyXFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eM+soasMJzB6uxzurzAYBD4NNpjZ9qTL1sEyE6FK3J8=; b=pea3X55Kiwmb4l/0FSNqlTCVJf
+	oNz4HQXeccBHJ09oDscxkd83MH/DsdbLUNEBeQeWjRHXGaCPmseLG9T1hUvIebPy3ridkImJba189
+	vsSDgDIRJem5vJrmjZEajgxcSUrgapY8Bn5yvalqohKflvNNW2NQMIMyuj0t/cWQEjreRz+Ig+Vcb
+	aJEyixBEa6rwzIQ0H3IKrUhiLlAjSHAb/zqScnahgyvZplTOZhTLZnjhxT86DtzrUFg5C9QKey2bE
+	/K5nHzZhk7H6+T3Z7aW1WDYh3oYvCqTaTMA2pB0MwAPRjmf+dDZ7hEcj6e73+KtV3/GmDdMyTQ4t5
+	5kmv+4fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okgwt-003maa-5f; Tue, 18 Oct 2022 07:23:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1okh1p-003pCB-MU; Tue, 18 Oct 2022 07:28:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okgo0-003iYB-5k; Tue, 18 Oct 2022 07:14:29 +0000
-X-UUID: f14047d3115e4f42b3382b5c9628baf4-20221018
+	id 1okh1i-003p7f-Be; Tue, 18 Oct 2022 07:28:40 +0000
+X-UUID: 72c8339c698b4368a481bed5c2a37d87-20221018
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vcwkq/GNAzOHjAXBozQ7dRU3k73TboNxx7qU7Vk6ohE=;
-	b=dtK70E2AXS+cIDxQxX6oihGPpUySZZWc42ho7qboNlfrJ8lHBYUecdnp48tHU10gh8FivylUuN2kXrcLCSDSDmQ+uSbyE1X1YkLJ8kl/Bulxevr/IHOJ7Oao8Y7xVT32o2xn+/oOGNpjiS4cQ7dtbr3b374YnGCOR7wxlSB53xI=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=eM+soasMJzB6uxzurzAYBD4NNpjZ9qTL1sEyE6FK3J8=;
+	b=WfOuPQb2y10opBmhNbzJD5LV31CgOox0UNaRcXkVQsg8p7K9Cu4C3lPUri1c47FM5KXXk6GwHxmKZwipysdb0E2zcf3vrbR/5qzw6JqqB1pXQ/oKV4NrgilEXcimxTAtwKVio+q+uC0vA9U7Tp4iam4Aqr8Y8RbuQG2NQGm2oBk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:9fbbd285-c205-4168-8f2b-01473433dbf2,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:5b5221a3-73e4-48dd-a911-57b5d5484f14,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:ab396457-bd79-4aa5-9ebb-4cd3d413839f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:7bf722a4-ebb2-41a8-a87c-97702aaf2e20,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f14047d3115e4f42b3382b5c9628baf4-20221018
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
+X-UUID: 72c8339c698b4368a481bed5c2a37d87-20221018
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 253638530; Tue, 18 Oct 2022 00:14:25 -0700
+	with ESMTP id 743684049; Tue, 18 Oct 2022 00:28:33 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 18 Oct 2022 14:43:49 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 18 Oct 2022 14:37:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 18 Oct 2022 14:43:48 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+ Transport; Tue, 18 Oct 2022 14:37:54 +0800
+Message-ID: <b5d18b4b631cb19d435f37ccacd296a2282c2a1a.camel@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mt8195: Add Ethernet controller
+From: Biao Huang <biao.huang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 4/4] iommu/mediatek: Add MT8188 IOMMU Support
-Date: Tue, 18 Oct 2022 14:42:39 +0800
-Message-ID: <20221018064239.13391-5-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221018064239.13391-1-chengci.xu@mediatek.com>
-References: <20221018064239.13391-1-chengci.xu@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<macpaul.lin@mediatek.com>
+Date: Tue, 18 Oct 2022 14:37:54 +0800
+In-Reply-To: <d6bda69e-d331-3e64-2100-d41e84c3fab7@linaro.org>
+References: <20221017095834.7675-1-biao.huang@mediatek.com>
+	 <d6bda69e-d331-3e64-2100-d41e84c3fab7@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_001428_247293_6C9B2981 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20221018_002838_501577_E6B903B0 
+X-CRM114-Status: GOOD (  24.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,88 +83,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 has 3 IOMMU, containing 2 MM IOMMUs, one is for vdo, the other
-is for vpp. and 1 INFRA IOMMU.
+Dear Krzysztof,
+	Thanks for your comments!
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iommu/mtk_iommu.c | 47 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+On Mon, 2022-10-17 at 22:01 -0400, Krzysztof Kozlowski wrote:
+> On 17/10/2022 05:58, Biao Huang wrote:
+> > Add Ethernet controller node for mt8195.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88
+> > ++++++++++++++++++++
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 87
+> > +++++++++++++++++++
+> >  2 files changed, 175 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > index 4fbd99eb496a..02e04f82a4ae 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > @@ -258,6 +258,72 @@ &mt6359_vsram_others_ldo_reg {
+> >  };
+> >  
+> >  &pio {
+> > +	eth_default: eth_default {
+> 
+> No underscores in node names. Please also be sure your patch does not
+> bring new warnings with `dtbs_check` (lack of suffix above could mean
+> it
+> brings...)
+OK, I'll fix the underscores issue in next send.
+As to "lack of suffix" issue, do you mean I should write it like:
+	eth-default: eth-default@0 {
+		...
+	}
+If yes, other nodes in current file don't have such suffix.
+e.g.
+	gpio_keys_pins: gpio-keys-pins
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index cb62cb89a2f4..3de8bb5d8404 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -166,6 +166,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8173,
- 	M4U_MT8183,
- 	M4U_MT8186,
-+	M4U_MT8188,
- 	M4U_MT8192,
- 	M4U_MT8195,
- };
-@@ -1475,6 +1476,49 @@ static const struct mtk_iommu_plat_data mt8186_data_mm = {
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
- };
- 
-+static const struct mtk_iommu_plat_data mt8188_data_infra = {
-+	.m4u_plat	  = M4U_MT8188,
-+	.flags            = WR_THROT_EN | DCM_DISABLE | STD_AXI_MODE | PM_CLK_AO |
-+			    MTK_IOMMU_TYPE_INFRA | IFA_IOMMU_PCIE_SUPPORT |
-+			    CFG_IFA_MASTER_IN_ATF,
-+	.inv_sel_reg      = REG_MMU_INV_SEL_GEN2,
-+	.banks_num	  = 1,
-+	.banks_enable     = {true},
-+	.iova_region      = single_domain,
-+	.iova_region_nr   = ARRAY_SIZE(single_domain),
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vdo = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{2}, {0}, {21}, {0}, {19}, {9, 10,
-+			   11 /* 11a */, 25 /* 11c */},
-+			   {13, 0, 29 /* 16b */, 30 /* 17b */, 0}, {5}},
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vpp = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{1}, {3}, {23}, {7}, {MTK_INVALID_LARBID},
-+			   {12, 15, 24 /* 11b */}, {14, MTK_INVALID_LARBID,
-+			   16 /* 16a */, 17 /* 17a */, MTK_INVALID_LARBID,
-+			   27, 28 /* ccu0 */, MTK_INVALID_LARBID}, {4, 6}},
-+};
-+
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1543,6 +1587,9 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
- 	{ .compatible = "mediatek,mt8186-iommu-mm",    .data = &mt8186_data_mm}, /* mm: m4u */
-+	{ .compatible = "mediatek,mt8188-iommu-infra", .data = &mt8188_data_infra},
-+	{ .compatible = "mediatek,mt8188-iommu-vdo",   .data = &mt8188_data_vdo},
-+	{ .compatible = "mediatek,mt8188-iommu-vpp",   .data = &mt8188_data_vpp},
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
--- 
-2.25.1
+Should I keep unified style with other nodes?
+> 
+> > +		txd_pins {
+> 
+> No underscores
+OK, will fix in next send.
+> 
+> > +			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
+> > +				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
+> > +				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
+> > +				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
+> > +			drive-strength = <MTK_DRIVE_8mA>;
+> > +		};
+> > +		cc_pins {
+> 
+> Ditto... and so on.
+OK, will fix in next send.
+> 
+> > +			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
+> > +				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
+> > +				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
+> > +				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
+> > +			drive-strength = <MTK_DRIVE_8mA>;
+> > +		};
+> > +		rxd_pins {
+> > +			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
+> > +				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
+> > +				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
+> > +				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
+> > +		};
+> > +		mdio_pins {
+> > +			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
+> > +				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
+> > +			input-enable;
+> > +		};
+> > +		power_pins {
+> > +			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
+> > +				 <PINMUX_GPIO92__FUNC_GPIO92>;
+> > +			output-high;
+> > +		};
+> > +	};
+> > +
+> > +	eth_sleep: eth_sleep {
+> > +		txd_pins {
+> > +			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
+> > +				 <PINMUX_GPIO78__FUNC_GPIO78>,
+> > +				 <PINMUX_GPIO79__FUNC_GPIO79>,
+> > +				 <PINMUX_GPIO80__FUNC_GPIO80>;
+> > +		};
+> > +		cc_pins {
+> > +			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
+> > +				 <PINMUX_GPIO88__FUNC_GPIO88>,
+> > +				 <PINMUX_GPIO87__FUNC_GPIO87>,
+> > +				 <PINMUX_GPIO86__FUNC_GPIO86>;
+> > +		};
+> > +		rxd_pins {
+> > +			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
+> > +				 <PINMUX_GPIO82__FUNC_GPIO82>,
+> > +				 <PINMUX_GPIO83__FUNC_GPIO83>,
+> > +				 <PINMUX_GPIO84__FUNC_GPIO84>;
+> > +		};
+> > +		mdio_pins {
+> > +			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
+> > +				 <PINMUX_GPIO90__FUNC_GPIO90>;
+> > +			input-disable;
+> > +			bias-disable;
+> > +		};
+> > +		power_pins {
+> > +			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
+> > +				 <PINMUX_GPIO92__FUNC_GPIO92>;
+> > +			input-disable;
+> > +			bias-disable;
+> > +		};
+> > +	};
+> > +
+> >  	gpio_keys_pins: gpio-keys-pins {
+> >  		pins {
+> >  			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
+> > @@ -434,6 +500,28 @@ &xhci0 {
+> >  	status = "okay";
+> >  };
+> >  
+> > +&eth {
+> > +	phy-mode ="rgmii-rxid";
+> > +	phy-handle = <&eth_phy0>;
+> > +	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+> > +	snps,reset-delays-us = <0 10000 10000>;
+> > +	mediatek,tx-delay-ps = <2030>;
+> > +	pinctrl-names = "default", "sleep";
+> > +	pinctrl-0 = <&eth_default>;
+> > +	pinctrl-1 = <&eth_sleep>;
+> > +	status = "okay";
+> > +
+> > +	mdio {
+> > +		compatible = "snps,dwmac-mdio";
+> > +		#address-cells = <1>;
+> > +		#size-cells = <0>;
+> > +		eth_phy0: eth_phy0@1 {
+> 
+> ethernet-phy@1
+OK, will modify in next send.
+> 
+> > +			compatible = "ethernet-phy-id001c.c916";
+> > +			reg = <0x1>;
+> > +		};
+> > +	};
+> > +};
+> > +
+> >  &xhci1 {
+> >  	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+> >  	status = "okay";
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > index 905d1a90b406..aa1fcc3b9cb6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > @@ -1042,6 +1042,93 @@ spis1: spi@1101e000 {
+> >  			status = "disabled";
+> >  		};
+> >  
+> > +		stmmac_axi_setup: stmmac-axi-config {
+> > +			snps,wr_osr_lmt = <0x7>;
+> > +			snps,rd_osr_lmt = <0x7>;
+> > +			snps,blen = <0 0 0 0 16 8 4>;
+> > +		};
+> > +
+> > +		mtl_rx_setup: rx-queues-config {
+> > +			snps,rx-queues-to-use = <4>;
+> > +			snps,rx-sched-sp;
+> > +			queue0 {
+> > +				snps,dcb-algorithm;
+> > +				snps,map-to-dma-channel = <0x0>;
+> > +			};
+> > +			queue1 {
+> > +				snps,dcb-algorithm;
+> > +				snps,map-to-dma-channel = <0x0>;
+> > +			};
+> > +			queue2 {
+> > +				snps,dcb-algorithm;
+> > +				snps,map-to-dma-channel = <0x0>;
+> > +			};
+> > +			queue3 {
+> > +				snps,dcb-algorithm;
+> > +				snps,map-to-dma-channel = <0x0>;
+> > +			};
+> > +		};
+> > +
+> > +		mtl_tx_setup: tx-queues-config {
+> > +			snps,tx-queues-to-use = <4>;
+> > +			snps,tx-sched-wrr;
+> > +			queue0 {
+> > +				snps,weight = <0x10>;
+> > +				snps,dcb-algorithm;
+> > +				snps,priority = <0x0>;
+> > +			};
+> > +			queue1 {
+> > +				snps,weight = <0x11>;
+> > +				snps,dcb-algorithm;
+> > +				snps,priority = <0x1>;
+> > +			};
+> > +			queue2 {
+> > +				snps,weight = <0x12>;
+> > +				snps,dcb-algorithm;
+> > +				snps,priority = <0x2>;
+> > +			};
+> > +			queue3 {
+> > +				snps,weight = <0x13>;
+> > +				snps,dcb-algorithm;
+> > +				snps,priority = <0x3>;
+> > +			};
+> > +		};
+> > +
+> > +		eth: ethernet@11021000 {
+> > +			compatible = "mediatek,mt8195-gmac",
+> > "snps,dwmac-5.10a";
+> > +			reg = <0 0x11021000 0 0x4000>;
+> > +			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			interrupt-names = "macirq";
+> > +			mac-address = [00 55 7b b5 7d f7];
+> 
+> How is this property of a SoC? Are you saying now that all MT8195
+> SoCs
+> have the same MAC address?
+The mac-address here is taken as a default mac address in eth driver
+rather than a randome one.
+Actually, there will be a tool to customize eth mac address (e.g
+through "ifconfig eth0 hw ether xx:xx:xx:xx:xx:xx"), so every
+MT8195 SoCs will get their specified mac address in real product.
+> 
+> Best regards,
+> Krzysztof
+> 
+Best Regards!
+Biao
 
 
