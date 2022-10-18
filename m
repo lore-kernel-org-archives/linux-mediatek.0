@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8CA6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 09:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE691C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 09:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FYG8GwjviBJsJFB/hec4AiXlFf1n+yo9Hen4fknZ6R4=; b=Lsg0CFaSLteSpC2M4QTwF2YTyz
-	vWs6D39NcIiGJpJwIfptXzt4YHvCaTGv0KXww31l9PINqW9nHEZ0vWza9/C8i9oiBDsL6cEc5Hpdo
-	Z8Wnn16T4WjBwlkvH/6JVf1QoJpq3P3WlXt9z2OzPUL74ijXqq8odB5+EpBH6aNcUD+RZyKvXYpop
-	1+LWcUADPpIraWlytEsVFh9eMOyZgod25Xy4UzeU57NaQvBF0dWKqum/R36zC3p0TjQnVmmsn0h2f
-	Dmww7lVdC+6TwkPwCmqVJKmuETMOUEPlsM/tmbL0woT6xnALLFvIdd4YxXRIn6ngqV7am/dHtcvM8
-	v1ieCiRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fHxePj/mZk3CsytYYPoDZH/iNdYUG/Ul5xfu8zN39CE=; b=L6T8lzA5NCScp7/DQL5soZ5Bve
+	cOQxhFOWl2+OukFSZsqF94Vf8+S2DLz/dNBjGvuqfxr/slUpZLyD34kvuV9tmHRvpM0GnHachAI7e
+	84fSoFXhhqv1ICbKRg+Vi2YNpaT+S08aWNRI1iKOLBCijLiH/7Z34SDFaIcvv2uBAPqVqFgEx9fst
+	R4+yGWp4J/m/kZh3YTOXMGqDtbYyTwWLiyLtCZMLSgnWBX2flTKQxJegFDlNErPM5fOEJx0SWErAS
+	6KOregTiPCCMwdbC/wkzh/kNHqaFmnWghY3PpqFoV7O4NitYYYnrh6kEcKzE5YMujhikFLgpWG7I8
+	/xKR04xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okjFP-005Gm5-Aq; Tue, 18 Oct 2022 09:50:55 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1okjKD-005O4D-Op; Tue, 18 Oct 2022 09:55:53 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okjF8-005GKq-0Y; Tue, 18 Oct 2022 09:50:39 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB3EF6602338;
-	Tue, 18 Oct 2022 10:50:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666086634;
-	bh=17Z7x8NyEJQfidNufMuX1DWKMuBHWGn2t5LFggJCdkE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dfeGQIdBHiAwc4rmubqnJsJHdhDu2IKbM1J5vqwC+7wl0qv99FF+W+K+KS/mDlju6
-	 5I82QwuM1i/L5sPMcq96hBfy/rna78EVC2ynb7LQRYVwUli6BlP+biQdf6SFVZ0lWr
-	 yijeNysQFjTKKONzBpCaXFzsRn+9fhM68xmKk11s+C8e2hXm9IIIqeTbBVy9yO/1R1
-	 /KMaiWZpq0dpgY5P14Rw3yjU8rL9k6akijG75JQn9wGr3QJZEXewuNLcb5x2d/6lGz
-	 NjyDL6oADEaqfdo+mFBFnXAxnMFEtG/nyIby05LiXsHpD8nhR0whLh49cIlZ0+UvI/
-	 +DMqiOVGI8swg==
-Message-ID: <92af9496-b622-9234-d89c-d478b4c77d62@collabora.com>
-Date: Tue, 18 Oct 2022 11:50:31 +0200
+	id 1okjKA-005NxT-VD
+	for linux-mediatek@lists.infradead.org; Tue, 18 Oct 2022 09:55:52 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id k6so14174072vsc.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Oct 2022 02:55:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=fHxePj/mZk3CsytYYPoDZH/iNdYUG/Ul5xfu8zN39CE=;
+        b=OYyvIRNLbIXwMu8B/GP88pxXrBL1rTVN9OKaaVp/yCjYwxp2DiR8uf2cHv99SQhhbP
+         ovobN81Sc9Ab+x8TgvH+gt2GR5hbwNAMQg0nTIJtF0QSR75P6jA1F51PqRneDvCrwdWr
+         eSLd9+3CKgZGM+8HyndN0MCQ3By0MhOjASV9Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fHxePj/mZk3CsytYYPoDZH/iNdYUG/Ul5xfu8zN39CE=;
+        b=hmddDkYunTptzXhxvOpTCHyCx67jdp4sNWLnO818EfyXewGtCTXfQHKkYwrMgAnHJD
+         c2pb58OeksFs4eGS10kIuWcB5fPO6tfSIjAzU+QAJl86NQdgv2wpC2mLARPtST2QbvJq
+         0lAqvxBM9PRBaCHuSSJyWj8kayy19mmOBlSzHLIvE7XhjsXlVNo6OjBUgZKu7DzImtkU
+         mgKZoureumolyhXvHxeoMxaheW06GC/57J2yPRiourN3RyfuH4RnHsYFIoNGHKJjeXZ9
+         +suusUukpFTZ7a2yUdpbE3zmZgwq/07cExeP5xqsM/DUkiXpsbcNUmePi9+nknOIROxv
+         g4Lg==
+X-Gm-Message-State: ACrzQf20ZJufx1GMQaWErMOhBqC4jYCQf2bvLY9lSmquwo0qH6nNRlIl
+	TPqoPQp82BIZbQfeAj034biyuIzFbKxToVq0GBL03w==
+X-Google-Smtp-Source: AMsMyM6GgD/Ll61bSvxwgEJyCP26sucK9tDFdq9CCdZxSHx2TzvQOlTTAReK+eEoO6lxWQgVsRzgtN68ZiTGLSBKSFA=
+X-Received: by 2002:a67:f684:0:b0:392:ac17:f9b0 with SMTP id
+ n4-20020a67f684000000b00392ac17f9b0mr926868vso.85.1666086948130; Tue, 18 Oct
+ 2022 02:55:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH 2/2] dt-bingdings: mmc: Mediatek: add ICE clock
-Content-Language: en-US
-To: Mengqi Zhang <mengqi.zhang@mediatek.com>, chaotian.jing@mediatek.com,
- ulf.hansson@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- wenbin.mei@mediatek.com
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221017142007.5408-1-mengqi.zhang@mediatek.com>
- <20221017142007.5408-3-mengqi.zhang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221017142007.5408-3-mengqi.zhang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20221017090208.19041-1-yunfei.dong@mediatek.com>
+In-Reply-To: <20221017090208.19041-1-yunfei.dong@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 18 Oct 2022 17:55:36 +0800
+Message-ID: <CAGXv+5G5Lr6rCB0D+q9egRFmhAzpGL49dNrQeCT8JpeUT+OiAA@mail.gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: fix h264 cavlc bitstream fail
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	George Sun <george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_025038_210449_ED2A90C3 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221018_025551_046292_B3A19CB7 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,15 +89,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/22 16:20, Mengqi Zhang ha scritto:
-> Document the binding for crypto clock of the Inline Crypto Engine
-> of Mediatek SoCs.
-> 
-> Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+On Mon, Oct 17, 2022 at 5:02 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
+>
+> Some cavlc bistream will decode fail when the frame size is small than
+> 20 bytes. Need to add pending data at the end of the bitstream.
 
-Looks good, but please fix the typo in the commit title.
+"magic terminating pattern" instead of "pending data"?
 
-Regards,
-Angelo
+> For the size of mapped memory is at least one page, adding four bytes data
+> won't lead to access unknown virtual memory.
 
+Actually we can narrow this down a bit. The minimum dimension (16x16)
+sets the minimum size of the buffer at 256 bytes.
+
+> Fixes: 59fba9eed5a7 ("media: mediatek: vcodec: support stateless H.264 decoding for mt8192")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  .../vcodec/vdec/vdec_h264_req_multi_if.c      | 27 ++++++++++++++++---
+>  1 file changed, 24 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+> index 4cc92700692b..c1583dddcb04 100644
+> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+> @@ -539,6 +539,24 @@ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
+>         return 0;
+>  }
+>
+> +static void vdec_h264_insert_startcode(struct mtk_vcodec_dev *vcodec_dev, unsigned char *buf,
+> +                                      size_t *bs_size, struct mtk_h264_pps_param *pps)
+> +{
+> +       struct device *dev = &vcodec_dev->plat_dev->dev;
+> +
+> +       /* cavlc bitstream when entropy_coding_mode_flag is false. */
+> +       if (pps->entropy_coding_mode_flag || *bs_size > 20 ||
+> +           !(of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec") ||
+> +           of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec")))
+> +               return;
+> +
+
+There should be a comment here describing what is added.
+
+
+ChenYu
+
+> +       buf[*bs_size] = 0;
+> +       buf[*bs_size + 1] = 0;
+> +       buf[*bs_size + 2] = 1;
+> +       buf[*bs_size + 3] = 0xff;
+> +       (*bs_size) += 4;
+> +}
+> +
+>  static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+>                                       struct vdec_fb *fb, bool *res_chg)
+>  {
+> @@ -582,9 +600,6 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+>         }
+>
+>         inst->vsi->dec.nal_info = buf[nal_start_idx];
+> -       inst->vsi->dec.bs_buf_addr = (u64)bs->dma_addr;
+> -       inst->vsi->dec.bs_buf_size = bs->size;
+> -
+>         lat_buf->src_buf_req = src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
+>         v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->ts_info, true);
+>
+> @@ -592,6 +607,12 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+>         if (err)
+>                 goto err_free_fb_out;
+>
+> +       vdec_h264_insert_startcode(inst->ctx->dev, buf, &bs->size,
+> +                                  &share_info->h264_slice_params.pps);
+> +
+> +       inst->vsi->dec.bs_buf_addr = (uint64_t)bs->dma_addr;
+> +       inst->vsi->dec.bs_buf_size = bs->size;
+> +
+>         *res_chg = inst->resolution_changed;
+>         if (inst->resolution_changed) {
+>                 mtk_vcodec_debug(inst, "- resolution changed -");
+> --
+> 2.25.1
+>
 
