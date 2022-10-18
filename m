@@ -4,59 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE346C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 16:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C125C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 16:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=65bEymJ6ebXyukg1mYJd0nAb5NJZzFAYYGuH+aczhNo=; b=Eye/Wfa7GRVUBmiEXd9pr4UufZ
-	GcHcUyEEnsC3TQyZ84qgtp8MUqY405tmtgvp+hMqfwmfq0ehnyj7yWrgBFSP5CbTnfcCeZqlsVIP0
-	ww1KXNkpe5nb9gYNap2DMGhe6QkrSG5cOdvM/6UZN/kvGxtbKFS8qxM+kyhk6c0BUUISDSXzGCus1
-	tzHV3Xbf1tXJa4p9ISyvFYmx1rPu8VXQ5ZLY5AoZ6luwgb5IzfQ93eNKbU03WAJcf0rcynjclIfQZ
-	MrXA5Pi94ytzxWqEe0F83xCg4PvZhQd7kFdMG0o+/RtQLQOUyhZOD4qAee37/PHmEgRbD2d/kCS64
-	a23sOTlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Hgekr1np2y3RFLW01G0qPAga+ScI8pB4H/+7RRmdt/M=; b=anWmt2CzEs785YhH5tek2s11xM
+	prR/Nbv2x+kZx4COyg0Mmu94TvhuYDEOvca12H5eneXB5+kfwKDupLfjfhAla0dpnEpQUK7YnpAXi
+	zhWlaOvHGCxVoZM+jGAznMMs98yc9BLM81iSYbQ2C/A/LObeC+mPeS5bVZz3zl3wD6xUzrUVNo69L
+	64uq9OCGQulNNDwpVSxrTAZxUR3EYN+WHIn2m/lces0l0jRqp/hdXz/Fe1xSThlyuNXmC638dXEm/
+	ePkZ8bPB1qoBhn5ADienJhn3F4IH0lpTcpb3jNQJcGKDbWJXgImW7aIcSIZ31sxvrp/9C7YYhiN+A
+	n/ZA7WLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okpee-008zGK-DK; Tue, 18 Oct 2022 16:41:24 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1okptw-009ATf-EV; Tue, 18 Oct 2022 16:57:12 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okpeb-008yOZ-JX; Tue, 18 Oct 2022 16:41:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=65bEymJ6ebXyukg1mYJd0nAb5NJZzFAYYGuH+aczhNo=; b=ltF5gg985jvEOsX9L5HsHuiNyj
-	D4uQN4/DjloYOv61pSRgwUw1yX1BLI6JFTTK5UAj8sDMvgKtWsMmgVmmbQP2aoSqNIXA6QCAw/fA/
-	Mp88Z1BxtyzUK0YyAbFWKvLSkHEgBrluaSe+0hskBmQTtfnb7WTDvMMyzb2CLR2MGjuOX7fFFBrjx
-	ZNyfNDnlsVoQaZi8ur0uwR/lilvC1Lr7lObOz4jvlGe8aJDCU51XV1yoXmou9S6epiKiVz65gVmgO
-	Fv3uEQmzgcYzuFRc/TJQ6GBSZ595tH/pbmD5Hn9/nnxXmnY+ZsKG7VcaO818LigTO20kkydB0hsPN
-	9PfgsUjA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34774)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1okpcR-0004ga-9F; Tue, 18 Oct 2022 17:39:07 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1okpcL-0001DJ-1a; Tue, 18 Oct 2022 17:39:01 +0100
-Date: Tue, 18 Oct 2022 17:39:01 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
-References: <20221018153506.60944-1-linux@fw-web.de>
+	id 1okptj-009AHq-Gb; Tue, 18 Oct 2022 16:57:01 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 227C61884963;
+	Tue, 18 Oct 2022 16:56:57 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 195DA25001FA;
+	Tue, 18 Oct 2022 16:56:57 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 129119EC0007; Tue, 18 Oct 2022 16:56:57 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 4E93E9EC0009;
+	Tue, 18 Oct 2022 16:56:56 +0000 (UTC)
+From: "Hans J. Schultz" <netdev@kapio-technology.com>
+To: davem@davemloft.net,
+	kuba@kernel.org
+Cc: netdev@vger.kernel.org,
+	"Hans J. Schultz" <netdev@kapio-technology.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>,
+	Petr Machata <petrm@nvidia.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH v8 net-next 04/12] net: bridge: add MAB flag to hardware offloadable flags
+Date: Tue, 18 Oct 2022 18:56:11 +0200
+Message-Id: <20221018165619.134535-5-netdev@kapio-technology.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221018165619.134535-1-netdev@kapio-technology.com>
+References: <20221018165619.134535-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221018153506.60944-1-linux@fw-web.de>
+Organization: Westermo Network Technologies AB
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_094121_677112_1A4CB847 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20221018_095659_716181_656A6DA6 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,56 +100,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add BR_PORT_MAB to BR_PORT_FLAGS_HW_OFFLOAD.
 
-A couple of points:
+Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+---
+ net/bridge/br_switchdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Tue, Oct 18, 2022 at 05:35:06PM +0200, Frank Wunderlich wrote:
-> diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> index 736839c84130..9614973fd9c4 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> @@ -122,10 +122,25 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
->  	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
->  }
->  
-> +static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_link_state *state)
-> +{
-> +	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
-> +	unsigned int val;
-> +
-> +	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
-> +	state->speed = val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
-> +
-> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
-> +	state->an_complete = !!(val & SGMII_AN_COMPLETE);
-> +	state->link = !!(val & SGMII_LINK_STATYS);
-> +	state->pause = 0;
-
-Finally, something approaching a reasonable implementation for this!
-Two points however:
-1) There's no need to set state->pause if there is no way to get that
-   state.
-2) There should also be a setting for state->pause.
-
-> +}
-> +
->  static const struct phylink_pcs_ops mtk_pcs_ops = {
->  	.pcs_config = mtk_pcs_config,
->  	.pcs_an_restart = mtk_pcs_restart_an,
->  	.pcs_link_up = mtk_pcs_link_up,
-> +	.pcs_get_state = mtk_pcs_get_state,
-
-Please keep this in order - pcs_get_state should be just before
-pcs_config.
-
-Thanks.
-
+diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
+index c6b938c01a74..ccf1b4cffdd0 100644
+--- a/net/bridge/br_switchdev.c
++++ b/net/bridge/br_switchdev.c
+@@ -71,7 +71,7 @@ bool nbp_switchdev_allowed_egress(const struct net_bridge_port *p,
+ }
+ 
+ /* Flags that can be offloaded to hardware */
+-#define BR_PORT_FLAGS_HW_OFFLOAD (BR_LEARNING | BR_FLOOD | \
++#define BR_PORT_FLAGS_HW_OFFLOAD (BR_LEARNING | BR_FLOOD | BR_PORT_MAB | \
+ 				  BR_MCAST_FLOOD | BR_BCAST_FLOOD | BR_PORT_LOCKED | \
+ 				  BR_HAIRPIN_MODE | BR_ISOLATED | BR_MULTICAST_TO_UNICAST)
+ 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.34.1
+
 
