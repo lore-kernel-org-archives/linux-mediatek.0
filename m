@@ -4,87 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67599C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 15:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE346C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 16:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jt9NmyfGUJIYwUHCzEW8eHOdjWosSSdsIWzKAGgNkII=; b=wIbIbFywoCIuP3A61zEgiZJnEY
-	L9p08i0QrRavB5HxvUN6uaSIU2rNnN8hYd2QMXlIrsoaqmarlGWYmbxOv+S7RgvdV0zMm9t5spgYc
-	wTYi9xwSLfp+RmNDBc9tHio/YhcXhzkBCedvRi0CEfswwjX7zZQdkdrWFIQWYRsn70XKFtkaCkunI
-	LxBeLPIw11YBbUwR1sy4qUWJums+IytbSy3a9NJdi4a9I7UINGR1z/XUJ4ak03MkQOWx0tcbAEhZa
-	hLl/YhQeU+BvUfL4gt2bdon6kftHDFkb5U4s7e6kPhXbz5nt1wzfcGyWxHAPqzeOdMKvige4kAgTy
-	hH3Ngkfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=65bEymJ6ebXyukg1mYJd0nAb5NJZzFAYYGuH+aczhNo=; b=Eye/Wfa7GRVUBmiEXd9pr4UufZ
+	GcHcUyEEnsC3TQyZ84qgtp8MUqY405tmtgvp+hMqfwmfq0ehnyj7yWrgBFSP5CbTnfcCeZqlsVIP0
+	ww1KXNkpe5nb9gYNap2DMGhe6QkrSG5cOdvM/6UZN/kvGxtbKFS8qxM+kyhk6c0BUUISDSXzGCus1
+	tzHV3Xbf1tXJa4p9ISyvFYmx1rPu8VXQ5ZLY5AoZ6luwgb5IzfQ93eNKbU03WAJcf0rcynjclIfQZ
+	MrXA5Pi94ytzxWqEe0F83xCg4PvZhQd7kFdMG0o+/RtQLQOUyhZOD4qAee37/PHmEgRbD2d/kCS64
+	a23sOTlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okooU-007vf7-Ng; Tue, 18 Oct 2022 15:47:30 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1okpee-008zGK-DK; Tue, 18 Oct 2022 16:41:24 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okom9-007tNA-8g; Tue, 18 Oct 2022 15:45:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666107900;
-	bh=Jt9NmyfGUJIYwUHCzEW8eHOdjWosSSdsIWzKAGgNkII=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=af4k8kmuydlKzRPaqGcg5kxLEtku1l3NBrtQiBu2TBbes+tESXccMaDzhjRcXAmWO
-	 I0l2raeeldApHJXHqe+ikRsse1uMppCUMT0Nc1N4BkO8Fi0wvv4byyTP3h/1mT/oYe
-	 6Zj51rAOvllZR7X6oyP/XvMffcaa4TiaUYwTgF9I=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.77.116] ([80.245.77.116]) by web-mail.gmx.net
- (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Tue, 18 Oct 2022
- 17:45:00 +0200
+	id 1okpeb-008yOZ-JX; Tue, 18 Oct 2022 16:41:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=65bEymJ6ebXyukg1mYJd0nAb5NJZzFAYYGuH+aczhNo=; b=ltF5gg985jvEOsX9L5HsHuiNyj
+	D4uQN4/DjloYOv61pSRgwUw1yX1BLI6JFTTK5UAj8sDMvgKtWsMmgVmmbQP2aoSqNIXA6QCAw/fA/
+	Mp88Z1BxtyzUK0YyAbFWKvLSkHEgBrluaSe+0hskBmQTtfnb7WTDvMMyzb2CLR2MGjuOX7fFFBrjx
+	ZNyfNDnlsVoQaZi8ur0uwR/lilvC1Lr7lObOz4jvlGe8aJDCU51XV1yoXmou9S6epiKiVz65gVmgO
+	Fv3uEQmzgcYzuFRc/TJQ6GBSZ595tH/pbmD5Hn9/nnxXmnY+ZsKG7VcaO818LigTO20kkydB0hsPN
+	9PfgsUjA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34774)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1okpcR-0004ga-9F; Tue, 18 Oct 2022 17:39:07 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1okpcL-0001DJ-1a; Tue, 18 Oct 2022 17:39:01 +0100
+Date: Tue, 18 Oct 2022 17:39:01 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
+Message-ID: <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
+References: <20221018153506.60944-1-linux@fw-web.de>
 MIME-Version: 1.0
-Message-ID: <trinity-8fe25643-9cf4-4f09-bebb-208570a540d4-1666107900051@3c-app-gmx-bap38>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Aw: Re: [RFC v1 02/12] dt-bindings: PCI: mediatek-gen3: add support
- for mt7986
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 18 Oct 2022 17:45:00 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <684c5659-0691-6534-1602-6c0a53e6e503@linaro.org>
-References: <20221017104141.7338-1-linux@fw-web.de>
- <20221017104141.7338-3-linux@fw-web.de>
- <684c5659-0691-6534-1602-6c0a53e6e503@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:PMOh3tpLUMdJNWND3roFSaz6NdXp/BM0p9g+fEsaYUCyloExNRoiqxoIPHwvPXVjpVM0z
- 0B5l1TzUaZ0CvFNKNRCUuE8US/Xs1UjdwtXKEBnhpHWRHi68JRTvBJd7x1V+fd81vJ86syjRsTcs
- YEQjSw2iNQndlmMfMuZfUVauKCjVairtdw6kOemtuJiDNzarIhRNAOYNAwkHAA2koGgd/KINNjgt
- nsCz4Rpd8DBsU3vx7wS5H3k9CwMzPP9AkSmzbMQMCi6K3W2jl/6Vwj+c7VyhzNl8TXy3aNQgLYEf
- hI=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:G7hCPfXsN6k=:TmCjYiVy2SSY1kL8mfwEFj
- JFWGn2gp0L3NVnE9OVdn2BATvK+qouS+Okg3iLkffGumPDUGbZ2g19ZaLTb1FF5JdPGB8NSdJ
- e5vm/bYfhd8QrFCyYQ5KhCX2QGTK99urFaI1QAudQtmDh/w9vgUmbAQyB4LZZ2IX/Hiu5Sp8X
- kL90zQ5Brgn+/Os/+l7AmK6JuESqeYe0P3OsleBVo5zwMnzDephXKIMihGrCZS+ayvsqZ62XW
- 46nZYR95XAcC7PA8pa0OaHEUDTvPYKRJ0J+TAwYoyNRvdp7VBx+3LlHSvII16ad6GGuZD/xvw
- geTwgsoWjkw1mJ1/Lgzvc4Lx+ycqWUGhYq5APrP6RiZfRwJV26dtZPtcAa9UEII9dQHE7wmK8
- HyDd+dIVoAWOwl5YtEAfl1c2YwwaG7lXLXM8QMnqEqzYyYvGXW16J7r9p8kqfyX6nIonrOJ6e
- bunYg+PGn/16CAqPc1ojiKVoQqwddIycVyPxbps4BTHqa5AKfe4PZTtdD23jHY88c+xBwEQmd
- Vx/FtPVepTWuLBlJywrqJ0wBVIHlAQtkq6Ni8ujbu8v47c41erwK1ZV81F1X1uRN4L9+e19+c
- K8d28j3OMMFwrLk6CN2uiGipWjRDNTAO6M4R/tg6xqjQXBJ0ey3LErS1HFO3R4oadeNg0XEPO
- yWKbCy5kNkRpRb2atxmQSBxBAiBYrJTzDM2qmXbdc13kWyH/DgthnXjPiBC7Ur3ofq+yZOb6E
- Cwpgxck+HkVRbFBn+Sr/heQjJq2ZOqpOkKqZsClqadiqTregIMqVeXRYYPjkBkjZMAq8JPz5w
- bOKk+Z2gwJQyR0BOH45XEvFIFQ6Y+aIFMB/azazxk7NT5vUHYrT+/5W81FDyjVeAv/bib/T4g
- F+yvK/zPR8f55bobu0NAggeEYm97FSvfl0iSZZmnNFRXL6CMq3clwDu5q7VrefUR5YoydGAQG
- VlTt7Fc8Pcc6paQDMkWm3woMxhLjtR7A06/C9SdGh4TCb5tDA/xt8tlx3DjSkTuDSaG0iy2KU
- Ope2usjZzJdeYbfK3iHJp4eskuL3LG0dNyPQar/Q85AG13JOIjDIjsvYGUJsATdhN721XF4k+
- tOFfqECcmqe10SCGKRGv/6xpFz9F/8eygo2TWz0rcddVZI8TvmCllUjgKWpkMKuvBn7D+A7tA
- /BgSORrCMk3HZQb8VwPXQBVpNA/+/+bfN8402Ug/VqaA1gn2swCwiUawi31pSizKwty0rXO5b
- kd+A+nCtluUwcnMiJ86TGv5xK9f7NrwgLMcAiTbuGOFdo4n3lcLN0zWRYWbFvcwNlpBpenlWg
- uWUWldxT
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221018153506.60944-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_084505_639349_61B76968 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20221018_094121_677112_1A4CB847 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,42 +68,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
 
-> Gesendet: Dienstag, 18. Oktober 2022 um 17:35 Uhr
-> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> On 17/10/2022 06:41, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
+A couple of points:
 
-> Maybe the clock is not required on mt7986?
+On Tue, Oct 18, 2022 at 05:35:06PM +0200, Frank Wunderlich wrote:
+> diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+> index 736839c84130..9614973fd9c4 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+> @@ -122,10 +122,25 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
+>  	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
+>  }
+>  
+> +static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_link_state *state)
+> +{
+> +	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
+> +	unsigned int val;
+> +
+> +	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
+> +	state->speed = val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
+> +
+> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
+> +	state->an_complete = !!(val & SGMII_AN_COMPLETE);
+> +	state->link = !!(val & SGMII_LINK_STATYS);
+> +	state->pause = 0;
 
-yes, mt7986 does not have all clocks currently defined in binding for gen3=
--pcie (currently mt8xxx)
+Finally, something approaching a reasonable implementation for this!
+Two points however:
+1) There's no need to set state->pause if there is no way to get that
+   state.
+2) There should also be a setting for state->pause.
 
-the mapping is as followed:
+> +}
+> +
+>  static const struct phylink_pcs_ops mtk_pcs_ops = {
+>  	.pcs_config = mtk_pcs_config,
+>  	.pcs_an_restart = mtk_pcs_restart_an,
+>  	.pcs_link_up = mtk_pcs_link_up,
+> +	.pcs_get_state = mtk_pcs_get_state,
 
-CLK_INFRA_IPCIER_CK: peri_26m
-CLK_INFRA_IPCIEB_CK: top_133m
-CLK_INFRA_IPCIE_CK: pcie working clock from SoC, in MT7986 it is equal to =
-tl_26m + tl_96m + tl_32k in MT8192
-CLK_INFRA_PCIE_SEL: clock mux to select source clock to CLK_INFRA_IPCIE_CK
-CLK_INFRA_IPCIE_PIPE_CK : pcie working clock from PHY, pl_250m
+Please keep this in order - pcs_get_state should be just before
+pcs_config.
 
-as far as i see the driver only enables the clocks in bulk (no access to t=
-he clock-names), but binding needs the names
+Thanks.
 
-got it solved with help from mtk (see my comment on part 7) with filling m=
-issing clocks with a fixed-clock-node.
-If this is the right way this binding-change is enough ;)
-
-> Anyway, for the bindings:
->
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-thx
-
-regards Frank
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
