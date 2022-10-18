@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BD0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 09:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B39C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 09:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IP4Mqv1mf2EHTe5OP3Y2p1QOGFNrw7hLjDrbWnECBlI=; b=QiV/SeivoKb74bXDhmkmzqnQDQ
-	oFIbpSInZVHPv6v+QhbzgW60XXqcdh4RCvTsmMkGbj1h1ZeNcWWk0M+FcvxGwm4VqkPqT+fAz6+DF
-	14XumjftDNJYU1mk381tGuB0Uh8QhrOPGQPbRr117PqcmtS5awvCOd5Id4NgRRV7ysein9CH5SsX3
-	9oefwDEDpmzE6LKVCCJnrolKYpwQZwZ8cVwaOPWfC3e7IQSrbSh8DOaBMJ79+9zCUZJOE9sJ7nEs7
-	B9ya+ocQZxG+ENRWfyNFOnaI+DdqMmO4pRS1Z9laEWM0dq2yg/NUQ29dVOgBRc0t2xpshKyfO+9EF
-	cgPj6FTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wQBkHoM+9stpbfc07Sf7C2iMi2dKdp2h6d3KI9FuXbU=; b=ynCbaqiBYpEVjE3ttf7kgfqfpU
+	2oHJZott+bBIeCPEkTnLI6McTKb9IYqrWi8AkFfIhdY3zW1aE5bB+oPuBiQ43P2fPVwxl6uZb6P6v
+	iO7yqOR5fq84MVywqocqs4Qj8t7gAplqXM5VSJLvyz3pxvaBXoJHVLuu1vkHqWuhKt8kUC3f5mCHS
+	PKAv5Gezyco5Fqd8K3ixjzbmZwuTvPmyxGLgk/IEUJQdjyEPMeAX3mMEhF6Y3UjP7wxDmViwiH9FF
+	0ADfLR2RA+ZD9W8rvaXr2mciTeg0SNFU2gDGOZiaMqoXzejI7RYV/AI6d+OTOfdTvXWS+Uus7l3Jo
+	mV2cVAmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okitu-00512c-Rp; Tue, 18 Oct 2022 09:28:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1okjFG-005GiW-Oy; Tue, 18 Oct 2022 09:50:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okitj-0050iW-VA; Tue, 18 Oct 2022 09:28:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1okjF6-005GBA-65; Tue, 18 Oct 2022 09:50:37 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9083D614E4;
-	Tue, 18 Oct 2022 09:28:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95968C433D6;
-	Tue, 18 Oct 2022 09:28:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666085310;
-	bh=FNvybaaMSsU92LM//vA2J3d3Vos299Q6dH/tB2HZSFo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BoMPy1FAOHq5BZA2CnEyws5/nBk29uNnj7pXHtFvQmOdEpi6SEsgzOrizDu+lJdiU
-	 s6PEmpn4evaWY+VO1JHdctD1qpmgc2AG3rXYwhMbY9a1QB1UcmiwgE6QOkJ/Yn9+xe
-	 CvU2UAgk/Yg0CPuFjJFicRyODN+e48aB4oDn1K6sR3we7H8h6PsqrfFeW8BHhWerl4
-	 oxYxdfIHQIiQgCFoQXFU64r0ENhw1xxy+TAm8/G3XrfKPeCsSFfYarQDh0wzQD4PsP
-	 mZ/k7OB6nOD/inO41U8TiEH4W0TEMFJerIrbcWF7KScIXwpNDAVlneIu9yyCHUK0Z7
-	 ofC29dlwbBrwg==
-Date: Tue, 18 Oct 2022 10:28:23 +0100
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, robh+dt@kernel.org,
-	linux-kernel@vger.kernel.org, chiaen_wu@richtek.com,
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	krzysztof.kozlowski+dt@linaro.org, cy_huang@richtek.com,
-	sre@kernel.org
-Subject: Re: [PATCH v3] dt-bindings: mfd: mt6370: fix the interrupt order of
- the charger in the example
-Message-ID: <Y05xt+r2tPmfJbcq@google.com>
-References: <fcf4e7e7594070a8698dc0d4b96e031bcaa9b3a3.1665585952.git.chiaen_wu@richtek.com>
- <166558333754.1988433.10175192101178879616.robh@kernel.org>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E41846602334;
+	Tue, 18 Oct 2022 10:50:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666086630;
+	bh=HfceC2aAwhgWtVVcIcG4NNLS5294fMdqXNStPSlbxDo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RmxVfyxpOundxTRNDFpEJpaJSfO6XVh046emRYMEp/ytLA0guvbX8cXguC/jnRt+D
+	 IivPzC2SQlsUQorWcCdNL/xrwC0IG6g1BTMX2/wpOo0vJS4kOy5USqnnP20QOQ98YI
+	 EBf1/WatdRvRojOE4YzjC12SWNelM6Pvm0og/mEV8lQrRv11Oohqi3amLiHe1L9OVl
+	 3YMK7tbTk4N/akX0eHOGtV2ZmnHq5Rn/uu17aro73Rn6ktZ7xdu1pnahbem+KF9P4h
+	 H3vXYlu09s3LZg0wZhkmr1gF5IgPcstsvQs4mAyau21E6RWMaojzUgmdGnlIZPKAVT
+	 MGGe2qfFSxGZg==
+Message-ID: <438bf06d-c4f4-74b2-8903-e89dc52196a7@collabora.com>
+Date: Tue, 18 Oct 2022 11:50:27 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <166558333754.1988433.10175192101178879616.robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH 1/2] mmc: mtk-sd: add Inline Crypto Engine support
+Content-Language: en-US
+To: Mengqi Zhang <mengqi.zhang@mediatek.com>, chaotian.jing@mediatek.com,
+ ulf.hansson@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ wenbin.mei@mediatek.com
+Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221017142007.5408-1-mengqi.zhang@mediatek.com>
+ <20221017142007.5408-2-mengqi.zhang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221017142007.5408-2-mengqi.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_022832_085949_DE88E758 
-X-CRM114-Status: GOOD (  18.60  )
+X-CRM114-CacheID: sfid-20221018_025036_478237_919A37ED 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,38 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 12 Oct 2022, Rob Herring wrote:
-
-> On Wed, 12 Oct 2022 15:08:14 +0800, ChiaEn Wu wrote:
-> > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> > 
-> > Fix the interrupt order of the charger in the binding example.
-> > 
-> > Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
-> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > ---
-> > v3
-> > - Add a 'Reviewed-by' tag.
-> > 
-> > v2
-> > - Revise the commit syntax.
-> > 
-> > v1
-> > - Due to this patch modifiacation
-> >   (https://lore.kernel.org/all/20221001202918.me7z2qzm7cmrkzsg@mercury.elektranox.org/),
-> >   there will get some warnings in linux-next when compiling the dts.
-> > ---
-> >  Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
+Il 17/10/22 16:20, Mengqi Zhang ha scritto:
+> add crypto clock control and ungate it before CQHCI init.
 > 
-> Applying to go into rc1 along with the other mt6370 fix, thanks!
+> Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
 
-Fine by me, but please change the subject line to start with an
-upper-case char.
+Hello Mengqi,
+I'm a bit surprised that enabling ICE only requires enabling a clock as
+on downstream code I see some SMC calls to MTK_SIP_KERNEL_HW_FDE_MSDC_CTL.
 
--- 
-Lee Jones [李琼斯]
+Can you please explain why SMC calls are not needed here?
+
+Thanks,
+Angelo
+
 
