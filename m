@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7C7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 14:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCD5C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 15:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+tWQaeIQsJ/hU9EXQIicaHKPbwUSRzgjdrId554pPs0=; b=ZCQU7hWWzNetPUoTFq5KtqpnGr
-	w4gITtfZNF6yKpIKCvlkOX1YW6EEvD4f+iIBvi/GbUzR5CF7JODLBn5WryKdwthV2jYVylyxzwomN
-	kSKlhZR8ZXyeMD9l/ePUhlRyXsKOMHNEEJUGpy+jJoyzWW98JEkGuuRfJkv9KfnGSOg2W7r0h7yRy
-	AgWHAg1Y4OpTPtOmsmz7qrXuikDyUCnIlxk/dVU6cg3Q9l9SBES+YxG/8TucxadSJWMl1eOe4SMV7
-	Fegn/aYkEDcyOz6YHlexaR5Ea9vRUVjjdBYgXIHl0YzSuv56pRv6doNcffmypD5jWHPNB++SOk7VX
-	eII7xHNQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e0MfRQTrkNvMFhzePHNKiHyVMQtWiqTpE2d1mf1SVcY=; b=efYURFZ8JfklZ+h/j6nz2TEy6e
+	oZypBdTwarGmOeq9h6PSxxqITcvpGlKPMf7dv3CJKYfv5iQzdbd3tQPvq1xakWHWITt3gFYDo9xMl
+	OhBbOQ+Iwk0tBS9Iv9IcrmM9OzBNuXH9tUJL+Bq3sAxiC4NrQYWqKml1Mo/LrX3rUxHQM6nFRUze7
+	06mBhmCzDDHpBCPDYZ0hbA+HtYvvR3ygoIOTllqGCKDDRf6dQGDCe88V01GxHNnR4mUr3ZR5Bt7hQ
+	ysVP7u9DyqsWHVYyNQ2Je61PuhhN8WekiYHQss/3OaMxVvgCOiIJkSnD06EG+aZR7iiYeI/3GHbMo
+	hWhXdxZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olAVU-002xFH-UZ; Wed, 19 Oct 2022 14:57:20 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1olB2B-003HF2-RY; Wed, 19 Oct 2022 15:31:07 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olAFh-002qGe-64; Wed, 19 Oct 2022 14:41:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666190461; x=1697726461;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=6v6qLdtYAoaiS5TSUCzJk/2BpQGCWyMLYrB07TdQAKY=;
-  b=Idjcfcb1nYGdps3p83fxwdl2r6zTvPqUlQ+zfLh4LcDZAyaLLPs9aENe
-   IaLR/kKK7TURUskgm4Eh2CPxKHSRSi1x8xzrIX9e6zIZpEnqYd9BaIh3M
-   P/rqpfM81zD18r9cFs/caWUqwdwwDeN9dAyPSz6UO0VctJuBcxOYw2BLU
-   m2EkaozU2gHKHs06py5S4I29wHSjE3ZZjWkD9jrutoQ6bxMu70Yj+Zmhc
-   tUek98LJ8QRbm6V6HGjb9iYi4WuSbn3DZNYbEiKjLtMvFFaUOZ+BuSDLN
-   CwXpCwGXxyq+W0pQFyjDMHkGdQ3Ih51Cx6Rd5QGuPKOxWhD0ZBsY6b9EE
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10505"; a="307535359"
-X-IronPort-AV: E=Sophos;i="5.95,196,1661842800"; 
-   d="scan'208";a="307535359"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2022 07:40:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10505"; a="692416016"
-X-IronPort-AV: E=Sophos;i="5.95,196,1661842800"; 
-   d="scan'208";a="692416016"
-Received: from lkp-server02.sh.intel.com (HELO b6d29c1a0365) ([10.239.97.151])
-  by fmsmga008.fm.intel.com with ESMTP; 19 Oct 2022 07:40:55 -0700
-Received: from kbuild by b6d29c1a0365 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1olAFV-00006T-2P;
-	Wed, 19 Oct 2022 14:40:49 +0000
-Date: Wed, 19 Oct 2022 22:40:39 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: ntfs3@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
- linux-mediatek@lists.infradead.org, linux-ext4@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD REGRESSION
- a72b55bc981b62f7186600d06d1824f1d0612b27
-Message-ID: <63500c67.OtDDn8C+xvHrmrIj%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1olAkb-00374p-TO; Wed, 19 Oct 2022 15:13:01 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 58AB51884ADE;
+	Wed, 19 Oct 2022 15:12:49 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id EF72C250052C;
+	Wed, 19 Oct 2022 15:12:48 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 0)
+	id D86329EC0002; Wed, 19 Oct 2022 15:12:48 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id F21D89120FED;
+	Tue, 18 Oct 2022 16:57:01 +0000 (UTC)
+From: "Hans J. Schultz" <netdev@kapio-technology.com>
+To: davem@davemloft.net,
+	kuba@kernel.org
+Cc: netdev@vger.kernel.org,
+	"Hans J. Schultz" <netdev@kapio-technology.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>,
+	Petr Machata <petrm@nvidia.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH v8 net-next 11/12] net: dsa: mv88e6xxx: add blackhole ATU entries
+Date: Tue, 18 Oct 2022 18:56:18 +0200
+Message-Id: <20221018165619.134535-12-netdev@kapio-technology.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221018165619.134535-1-netdev@kapio-technology.com>
+References: <20221018165619.134535-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Organization: Westermo Network Technologies AB
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_074101_386979_86F4288F 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221019_081258_162578_57E155BB 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,217 +103,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: a72b55bc981b62f7186600d06d1824f1d0612b27  Add linux-next specific files for 20221019
+Blackhole FDB entries can now be added, deleted or replaced in the
+driver ATU.
 
-Error/Warning reports:
+Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+---
+ drivers/net/dsa/mv88e6xxx/chip.c | 62 +++++++++++++++++++++++++++++---
+ 1 file changed, 58 insertions(+), 4 deletions(-)
 
-https://lore.kernel.org/linux-mm/202210090954.pTR6m6rj-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210110857.9s0tXVNn-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210111318.mbUfyhps-lkp@intel.com
-https://lore.kernel.org/llvm/202210060148.UXBijOcS-lkp@intel.com
-
-Error/Warning: (recently discovered and may have been fixed)
-
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/idma64.ko] undefined!
-ERROR: modpost: "devm_ioremap_resource" [drivers/dma/qcom/hdma.ko] undefined!
-arch/arm64/kernel/alternative.c:199:6: warning: no previous prototype for 'apply_alternatives_vdso' [-Wmissing-prototypes]
-arch/arm64/kernel/alternative.c:295:14: warning: no previous prototype for 'alt_cb_patch_nops' [-Wmissing-prototypes]
-arch/powerpc/mm/nohash/e500.c:314:21: error: no previous prototype for 'relocate_init' [-Werror=missing-prototypes]
-fs/ext4/super.c:1744:19: warning: 'deprecated_msg' defined but not used [-Wunused-const-variable=]
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arm64-allyesconfig
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-c041-20221019
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|-- arm64-randconfig-s031-20221019
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-alt_cb_patch_nops
-|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-apply_alternatives_vdso
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- i386-allyesconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-defconfig
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a003
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a005
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a012
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a014
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- i386-randconfig-a016
-|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
-|-- microblaze-randconfig-s033-20221019
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- openrisc-randconfig-s052-20221019
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-clang_recent_errors
-|-- hexagon-defconfig
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- hexagon-randconfig-r013-20221019
-|   |-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r031-20221019
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r036-20221019
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmnewmap
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmsetvec
-|   `-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-memset
-|-- hexagon-randconfig-r041-20221018
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmnewmap
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmsetvec
-|   `-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-memset
-|-- hexagon-randconfig-r045-20221018
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmnewmap
-|   |-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-__vmsetvec
-|   `-- ld.lld:error:vmlinux.a(arch-hexagon-kernel-head.o):(.init.text):relocation-R_HEX_B22_PCREL-out-of-range:is-not-in-references-memset
-|-- i386-randconfig-a002
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a004
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a011
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a013
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- i386-randconfig-a015
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- powerpc-buildonly-randconfig-r004-20221019
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|-- powerpc-mvme5100_defconfig
-|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|-- riscv-randconfig-r024-20221019
-|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-get_symbol_pos:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_num_syms
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-get_symbol_pos:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_offsets
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_names
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_num_syms
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_offsets
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_relative_base
-
-elapsed time: 725m
-
-configs tested: 77
-configs skipped: 3
-
-gcc tested configs:
-arc                              alldefconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-m68k                       m5208evb_defconfig
-powerpc                    klondike_defconfig
-x86_64                          rhel-8.3-func
-i386                                defconfig
-x86_64                    rhel-8.3-kselftests
-arc                                 defconfig
-x86_64                           rhel-8.3-syz
-arm                                 defconfig
-x86_64                        randconfig-a013
-i386                          randconfig-a014
-x86_64                        randconfig-a004
-x86_64                              defconfig
-x86_64                        randconfig-a011
-arc                  randconfig-r043-20221018
-x86_64                         rhel-8.3-kunit
-loongarch                         allnoconfig
-x86_64                        randconfig-a002
-riscv                randconfig-r042-20221018
-x86_64                           rhel-8.3-kvm
-alpha                               defconfig
-i386                             allyesconfig
-x86_64                        randconfig-a015
-i386                          randconfig-a012
-s390                 randconfig-r044-20221018
-x86_64                        randconfig-a006
-arm64                            allyesconfig
-i386                          randconfig-a016
-x86_64                               rhel-8.3
-sh                          polaris_defconfig
-i386                          randconfig-a001
-arm                              allyesconfig
-i386                          randconfig-a003
-mips                         cobalt_defconfig
-x86_64                           allyesconfig
-sh                             shx3_defconfig
-i386                          randconfig-a005
-powerpc                           allnoconfig
-m68k                             allmodconfig
-powerpc                          allmodconfig
-arc                              allyesconfig
-mips                             allyesconfig
-s390                             allmodconfig
-alpha                            allyesconfig
-s390                                defconfig
-sh                               allmodconfig
-arc                         haps_hs_defconfig
-ia64                             allmodconfig
-arc                           tb10x_defconfig
-sparc                             allnoconfig
-m68k                             allyesconfig
-m68k                        mvme16x_defconfig
-s390                             allyesconfig
-arm                         cm_x300_defconfig
-sh                   sh7724_generic_defconfig
-sh                           se7712_defconfig
-
-clang tested configs:
-hexagon                             defconfig
-hexagon              randconfig-r045-20221018
-i386                          randconfig-a013
-x86_64                        randconfig-a016
-i386                          randconfig-a011
-x86_64                        randconfig-a012
-mips                        bcm63xx_defconfig
-x86_64                        randconfig-a005
-x86_64                        randconfig-a001
-x86_64                        randconfig-a014
-hexagon              randconfig-r041-20221018
-x86_64                        randconfig-a003
-i386                          randconfig-a015
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-powerpc                      obs600_defconfig
-x86_64                          rhel-8.3-rust
-powerpc                    mvme5100_defconfig
-
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
+index 71843fe87f77..7a7cd1f0e735 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.c
++++ b/drivers/net/dsa/mv88e6xxx/chip.c
+@@ -2735,6 +2735,58 @@ static int mv88e6xxx_vlan_msti_set(struct dsa_switch *ds,
+ 	return err;
+ }
+ 
++static int mv88e6xxx_blackhole_fdb_loadpurge(struct dsa_switch *ds,
++					     const unsigned char *addr, u16 vid, u8 state)
++{
++	struct mv88e6xxx_chip *chip = ds->priv;
++	struct mv88e6xxx_atu_entry entry;
++	struct mv88e6xxx_vtu_entry vlan;
++
++	u16 fid = 0;
++	int err;
++
++	if (vid == 0) {
++		fid = MV88E6XXX_FID_BRIDGED;
++	} else {
++		mv88e6xxx_reg_lock(chip);
++		err = mv88e6xxx_vtu_get(chip, vid, &vlan);
++		mv88e6xxx_reg_unlock(chip);
++		if (err)
++			return err;
++
++		/* switchdev expects -EOPNOTSUPP to honor software VLANs */
++		if (!vlan.valid)
++			return -EOPNOTSUPP;
++
++		fid = vlan.fid;
++	}
++
++	ether_addr_copy(entry.mac, addr);
++	entry.portvec = MV88E6XXX_G1_ATU_DATA_PORT_VECTOR_NO_EGRESS;
++	entry.state = state;
++	entry.trunk = false;
++
++	mv88e6xxx_reg_lock(chip);
++	err = mv88e6xxx_g1_atu_loadpurge(chip, fid, &entry);
++	mv88e6xxx_reg_unlock(chip);
++
++	return err;
++}
++
++static int mv88e6xxx_blackhole_fdb_add(struct dsa_switch *ds,
++				       const unsigned char *addr, u16 vid)
++{
++	return mv88e6xxx_blackhole_fdb_loadpurge(ds, addr, vid,
++						 MV88E6XXX_G1_ATU_DATA_STATE_UC_STATIC);
++}
++
++static int mv88e6xxx_blackhole_fdb_del(struct dsa_switch *ds,
++				       const unsigned char *addr, u16 vid)
++{
++	return mv88e6xxx_blackhole_fdb_loadpurge(ds, addr, vid,
++						 MV88E6XXX_G1_ATU_DATA_STATE_UC_UNUSED);
++}
++
+ static int mv88e6xxx_port_fdb_add(struct dsa_switch *ds, int port,
+ 				  const unsigned char *addr, u16 vid,
+ 				  u16 fdb_flags, struct dsa_db db)
+@@ -2742,9 +2794,10 @@ static int mv88e6xxx_port_fdb_add(struct dsa_switch *ds, int port,
+ 	struct mv88e6xxx_chip *chip = ds->priv;
+ 	int err;
+ 
+-	/* Ignore entries with flags set */
+-	if (fdb_flags)
++	if (fdb_flags & DSA_FDB_FLAG_LOCKED)
+ 		return 0;
++	if (fdb_flags & DSA_FDB_FLAG_BLACKHOLE)
++		return mv88e6xxx_blackhole_fdb_add(ds, addr, vid);
+ 
+ 	if (mv88e6xxx_port_is_locked(chip, port))
+ 		mv88e6xxx_atu_locked_entry_find_purge(ds, port, addr, vid);
+@@ -2765,9 +2818,10 @@ static int mv88e6xxx_port_fdb_del(struct dsa_switch *ds, int port,
+ 	bool locked_found = false;
+ 	int err = 0;
+ 
+-	/* Ignore entries with flags set */
+-	if (fdb_flags)
++	if (fdb_flags & DSA_FDB_FLAG_LOCKED)
+ 		return 0;
++	if (fdb_flags & DSA_FDB_FLAG_BLACKHOLE)
++		return mv88e6xxx_blackhole_fdb_del(ds, addr, vid);
+ 
+ 	if (mv88e6xxx_port_is_locked(chip, port))
+ 		locked_found = mv88e6xxx_atu_locked_entry_find_purge(ds, port, addr, vid);
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.34.1
+
 
