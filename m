@@ -4,72 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCCEFC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 07:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6CAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 07:07:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XLjpNmmzQfrCx04W/9OkBGz4SSpfbEEzwXgH5RbWvZE=; b=QE4j5px6ES1+ZaZ1Z2LL4kvTEd
-	hi79d4N7dmdbs8sJf4ryR2+goG0jUFDXi96mvo/6qOy7jKqAFdVC4J6SkiYVlIPEOHHYaGY6BXygH
-	PryDo18l7lmfvFIN9B+XKMxWMWWLDiBYn2X8FBtoFkQqYiOQW8rPn0qJK8eGPsohsjEQQeiL5IkMP
-	FFjF9Tya4+IX2jtnJZQt53u4LZbhDFkZGq7Dsy8Hv3s3F09hpLdM7QwQvgP11UKupyLAM1uXzulgS
-	BMI6lVB8LA5ZJPxfWM+hFhFMovpqXYhSRHpddQk9RmUFodwoJqvFmxJNU/puPDLNTggKLsgRbWIN1
-	qgNphxiQ==;
+	bh=1218Q8hjcADaeitkBJ8qYgkPVJTD+QuHR2ne+rHmWHs=; b=IIZJ8ff6i2DQFFQXGmf07mKHDT
+	AGwWH+cF668w/3+OfQc3Jf1gJtxeOZTDJwrsQNz4Dc70FGI0DXGsgFCdOd3HrKc3aIMxU0hoO8eAx
+	CC6RCH/r71PaO9AzLD0p+WbrWoijc+gaLmC78JaixFNJrb5TwD0tLmu9PduoOJ+qYwNzwqre7MS2w
+	EDaSPVNQ6lGGrorddYk9YV1VDnv/6y11PZuSvnSPH7adU1XNyxh7sGZDiB3dE4K7wKUFn3j663CjI
+	Nw7g98eVqhDsFlLFlMRjf/hU8FN5M0JMMD84TWIhZC1g5RYlA+pltmDi9GlztAe/aIpXiUd5rltWo
+	4q6tVyWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okgeK-003fIn-Uj; Tue, 18 Oct 2022 07:04:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1okgh1-003fzt-Ic; Tue, 18 Oct 2022 07:07:15 +0000
+Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okge8-003fFZ-Qw; Tue, 18 Oct 2022 07:04:18 +0000
-X-UUID: 477fb5c557e94cc296bb22340b1f17a9-20221018
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XLjpNmmzQfrCx04W/9OkBGz4SSpfbEEzwXgH5RbWvZE=;
-	b=HVANC9E8n9qc17SU71a1dbE/sbaEtg1kvBJg1XCMXVUibve+2uopbpJEIJlmMtUq4CWq2prkVtjsUB12Cb9bEWLIPOhda1uIybD2niMc6oc2AVpvwNjhiT2pWNevJjGw4If23SGj1Ef2uzs1Ok8n8kY/lOx4DYVDyAiIP877nZU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:cc135ee3-e768-4727-9610-4768df45ed82,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:6aec20a3-73e4-48dd-a911-57b5d5484f14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 477fb5c557e94cc296bb22340b1f17a9-20221018
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1116642275; Tue, 18 Oct 2022 00:04:10 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 18 Oct 2022 14:43:35 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 18 Oct 2022 14:43:35 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v4 3/4] iommu/mediatek: Add enable IOMMU SMC command for INFRA master
-Date: Tue, 18 Oct 2022 14:42:38 +0800
-Message-ID: <20221018064239.13391-4-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221018064239.13391-1-chengci.xu@mediatek.com>
-References: <20221018064239.13391-1-chengci.xu@mediatek.com>
+	id 1okggo-003fug-4v; Tue, 18 Oct 2022 07:07:03 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailnew.west.internal (Postfix) with ESMTP id 514442B067A5;
+	Tue, 18 Oct 2022 03:06:56 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Tue, 18 Oct 2022 03:06:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to; s=fm3; t=1666076815; x=
+	1666084015; bh=1218Q8hjcADaeitkBJ8qYgkPVJTD+QuHR2ne+rHmWHs=; b=W
+	2e5lclZ/owkQ7qi7m8R+1jwwN+I8r2UBxPH5ix26g5O6MlAhPLVD48vnkG+zCG3a
+	jH+goVwE65ty29gUdsdt7S5eGNphIA+iam2XVqp4eQF1QM9jxr4NtQPj5lmh6zKh
+	REEKq49Jn9rgngzTw95OZgCrt3xhEVmOfHFuuSZ6MP1s6QqjUEqUMmGyUAgazghm
+	xyUlLvl/O1zmHHMTRpuFmL0nzUEsFRtg70dUGPrbGuNn92cGW8m4pSvhhZ3GdXNB
+	dOd5ji5FNslDEUOqoMSkLrAODL3Hl1TOUttps+9U8zh4G7mWlWdDonuO6YATVRuI
+	Rp0jQcAT0v3YAQr6JG6FA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1666076815; x=
+	1666084015; bh=1218Q8hjcADaeitkBJ8qYgkPVJTD+QuHR2ne+rHmWHs=; b=P
+	aecRi+TYeNwR/aJhGVhKZPCjIyoAKZyYrOt0tbqgasVM34/2I9mV6AFjgOrIwRPj
+	S2yaRSIhWZNaRYzPhOzJyFRm1lD+mdU+gHFKnpa9phBzGUmjM2A0J6IlAdoyx7GV
+	b2mM68iYUe1lZceXF6aXO2KPd+JelO6GRYi6AMaGin2QxciCdw7jLi3T4ptVRFQi
+	JoF1KAsvkvoE0pnaI83Xzl9teS3x+tMNHZSNKzroDA4FY/ImCZs3HI6XbrH/Uhyz
+	zrUs0uax1ldsU4urwbCHGLuWrwgAWkzj9vZVcfd6KXi+5i5Vv5U6vohhnxiE4m6K
+	R6b2VGiptoZHGOlknxbGw==
+X-ME-Sender: <xms:j1BOY0DxVJYGUBCOE0xHbEk2IJa3420IDt9nHodS12WwGgEK5jQLYg>
+    <xme:j1BOY2hU4IH-tbADU20zoo0df2NZVnEVq0gGYPPvFeteqkNBu-Kl8Xffswl3F-Lhv
+    p8_MguTXIGs_bMGM50>
+X-ME-Received: <xmr:j1BOY3m4mc_9X7W1nIf1IgthYp1Z7jk8s3t-tT9UR7mKytyiMqRaaZzrClLe>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfeeltddguddujecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpeffhffvvefukfhfgggtugfgjgesthhqredttddtvdenucfhrhhomhepofgr
+    gihimhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtf
+    frrghtthgvrhhnpeehjefffeeggfeiveejvdffgfdvgfehtdfgvdeujedvjefgffdvueet
+    ieevudefvdenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucevlhhushhtvghruf
+    hiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdr
+    thgvtghh
+X-ME-Proxy: <xmx:j1BOY6ytn8Io7uaztRRmd7eAQTYLvNT71Z-xoHTiki_x_Kwq1E3tYQ>
+    <xmx:j1BOY5Q-2dLqSnhCECSat6OAKIFLt2-7MCpPz2BW5KAl50QEMXPpjw>
+    <xmx:j1BOY1Y5D370Daoca6PZS6-0UqSTRVXqNh5TweGOftnEIL7uSNCElg>
+    <xmx:j1BOY6SxO4vIjvfMtU9LPGXRTnRzovI2VtfsOP5LpQRq_Ya1_ksI7n_xdWw>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 18 Oct 2022 03:06:54 -0400 (EDT)
+Date: Tue, 18 Oct 2022 09:06:53 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mturquette@baylibre.com, matthias.bgg@gmail.com,
+	chun-jie.chen@mediatek.com, miles.chen@mediatek.com,
+	wenst@chromium.org, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] clk: mediatek: clk-mux: Add .determine_rate() callback
+Message-ID: <20221018070653.gsvnacqe7chvzux2@houat>
+References: <20221011135548.318323-1-angelogioacchino.delregno@collabora.com>
+ <20221012085555.3nls7ja56vlnaz2w@houat>
+ <c4a1eb9f-016d-c184-e494-c869038b87ff@collabora.com>
+ <20221012094004.jgiyvmbgomiyedik@houat>
+ <6e76f90f-3b6a-330d-6902-b31bf3d33ad4@collabora.com>
+ <20221012114813.6d6adro746w5bd7c@houat>
+ <decfd5e5-a48b-b2d1-f21b-1a4d52e05538@collabora.com>
+ <20221012135619.wxyzuqheolhypoec@houat>
+ <20221014193652.0C745C433D6@smtp.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20221014193652.0C745C433D6@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_000416_916239_AB7BDA82 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20221018_000702_399476_85038BC4 
+X-CRM114-Status: GOOD (  27.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,110 +115,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The register which can enable IOMMU for INFRA master should be setted
-in secure world for security concerns. Therefore, we add a SMC command
-for INFRA master to enable/disable INFRA IOMMU in ATF. This function is
-prepared for MT8188.
+Hi Stephen,
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c  | 32 ++++++++++++++++++++++----------
- include/soc/mediatek/smi.h |  1 +
- 2 files changed, 23 insertions(+), 10 deletions(-)
+On Fri, Oct 14, 2022 at 12:36:50PM -0700, Stephen Boyd wrote:
+> Quoting Maxime Ripard (2022-10-12 06:56:19)
+> >=20
+> > I think we need to address this in multiple ways:
+> >=20
+> > - If you have ftrace enabled on that platform, running with "tp_printk
+> >   trace_event=3Dclk:*" in the kernel command line on a failing kernel w=
+ould
+> >   be great, so that we can figure out what is happening exactly.
+> >=20
+> > - We really need to merge your patch above as well;
+> >=20
+> > - And, if we can, we should forbid to register a mux without a
+> >   determine_rate implementation. We have to take into account that some
+> >   muxes are going to be RO and won't need a determine_rate
+> >   implementation at all, but a clock with a set_parent and without a
+> >   determine_rate seems like a weird combination.
+> >=20
+>=20
+> So should I apply this patch now on clk-next? Given this regression I'm
+> leaning towards not sending off the clk rate request this merge window
+> and letting it bake another cycle.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fbaf401f34e0..cb62cb89a2f4 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
-+#include <linux/arm-smccc.h>
- #include <linux/bitfield.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
-@@ -28,6 +29,7 @@
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/soc/mediatek/infracfg.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
- 
-@@ -139,6 +141,7 @@
- #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
- #define PGTABLE_PA_35_EN		BIT(17)
- #define TF_PORT_TO_ADDR_MT8173		BIT(18)
-+#define CFG_IFA_MASTER_IN_ATF		BIT(19)
- 
- #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
- 				((((pdata)->flags) & (mask)) == (_x))
-@@ -535,6 +538,7 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	const struct mtk_iommu_iova_region *region;
- 	unsigned long portid_msk_ext;
-+	struct arm_smccc_res res;
- 	u32 portid_msk = 0;
- 	int i, ret = 0;
- 
-@@ -562,17 +566,24 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 		else
- 			larb_mmu->mmu &= ~portid_msk;
- 	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
--		/* PCI dev has only one output id, enable the next writing bit for PCIe */
--		if (dev_is_pci(dev)) {
--			if (fwspec->num_ids != 1) {
--				dev_err(dev, "PCI dev can only have one port.\n");
--				return -ENODEV;
-+		if (MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
-+			arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
-+				      IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,
-+				      portid_msk, enable, 0, 0, 0, 0, &res);
-+			ret = res.a0;
-+		} else {
-+			/* PCI dev has only one output id, enable the next writing bit for PCIe */
-+			if (dev_is_pci(dev)) {
-+				if (fwspec->num_ids != 1) {
-+					dev_err(dev, "PCI dev can only have one port.\n");
-+					return -ENODEV;
-+				}
-+				portid_msk |= BIT(portid + 1);
- 			}
--			portid_msk |= BIT(portid + 1);
--		}
- 
--		ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
--					 portid_msk, enable ? portid_msk : 0);
-+			ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
-+						 portid_msk, enable ? portid_msk : 0);
-+		}
- 		if (ret)
- 			dev_err(dev, "%s iommu(%s) inframaster 0x%x fail(%d).\n",
- 				enable ? "enable" : "disable",
-@@ -1223,7 +1234,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			dev_err_probe(dev, ret, "mm dts parse fail\n");
- 			goto out_runtime_disable;
- 		}
--	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
-+	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
-+		   !MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
- 		p = data->plat_data->pericfg_comp_str;
- 		data->pericfg = syscon_regmap_lookup_by_compatible(p);
- 		if (IS_ERR(data->pericfg)) {
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index dfd8efca5e60..000eb1cf68b7 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -13,6 +13,7 @@
- 
- enum iommu_atf_cmd {
- 	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to en/disable iommu */
-+	IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,	/* For infra master to enable iommu */
- 	IOMMU_ATF_CMD_MAX,
- };
- 
--- 
-2.25.1
+I saw that you sent the PR, thanks
 
+We spent some time with Angelo yesterday debugging this, and it's still
+not clear to me what happens.
+
+He provided a significant amount of traces, and we first checked that
+the round_rate part of set_rate was returning something meaningful, and
+it does. The rate is fine, the parent is too, everything's great.
+
+Next we checked the decisions by clk_calc_new_rates, and it does return
+the proper top clock, and its proper rate.
+
+Finally, we hooked into clk_change_rate() to see what kind of decision
+it was enforcing, and it seems to be ok as well. It doesn't change
+parent, and it sets the proper rate, in both cases.
+
+There's still one thing we haven't checked: one of the clock in the tree
+(the parent of the one we want to change the rate on, and it has
+SET_RATE_PARENT) has a notifier. As we've had a bug recently over this
+I've not ruled out that this could be a similar bug.
+
+I don't really think it is though, since the notifier callback doesn't
+use the data provided by the framework:
+https://elixir.bootlin.com/linux/v6.1-rc1/source/drivers/clk/mediatek/clk-m=
+ux.c#L279
+
+I've pushed a branch for Angelo to test, just to confirm.
+
+So... yeah. I can't explain the regression at this point. Do you have an
+idea?
+
+The good news is, since you merged this patch the regression is
+invisible now to that platform. We still could encounter it on another
+platform, but maybe it will also have a more obvious setup to replicate?
+
+Thanks!
+Maxime
 
