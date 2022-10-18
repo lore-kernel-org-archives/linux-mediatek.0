@@ -4,53 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAF8CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 15:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C81BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Oct 2022 15:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8ERP7oqCQlb3yIxMKGW/Oz7naZX8fIcg5ZLF84iTXro=; b=IIx4QQ9QuGpYm3
-	mWy6yTpG92/l2y+yezo/GVVj3lHGPde/FnW2cwjW1jL0PoQyfZORwGlHIRDIqHtsdYT8/GhppY0vW
-	e7APQOPYD7MTMCzoGbF4+lIq9+xObxgwZQ2YEtnEM/+cJ4VVUFxxOdVqrUswq6CQ8i7ey2u1GKrxu
-	1TqHEzeITYOdwwIFm+tBN0tC+UnUUPhm+AG4bCrqOweV0fe9RL1/yWY2/QpOrI7lSr2Q0FY0mYjnQ
-	Mr3L1oFJe4g+NAAMZCrjRQSp9966tz2GAKH5dQ8QnSpAVpQXebx0RDG+WBZYXXCmDKTNHEgOaSWax
-	pL8Q625kAsRWd2Pl0gcQ==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y6hCJkFqagNxMfW9SDbCFBpsm7z3HVXT6Fjd2UYXEv4=; b=wJ1QriYN77eCiH
+	MA07TO38rSPpnvs6dicCACSApISBUJJjAus8Ler1m6wQ4Q3MstRCijC78t07s08PQ+y6TjKA3Ab2/
+	uxHfskGxzKn6gmWL0sUPdPoCXa5xi05j2BrLnVz0q2eOoIR2aVSTgBJSEoxkCT6QJUNmTqqPlvSS7
+	x7aI2x4WZxR+l7y0J+j0Vt0CVLNVTNPSq3WW2JmAqF/Qchq4L/vbg1vKAi8rPNCWvA/ys0rsCjhsQ
+	Us0niO3qjdqjLtbjSReYoKwIRPJ0aBxnvbHzwMVDwiwXqrkMWAOzwBp9Q/Ep05zioDY+g2yg0pOrc
+	cSlC3NSg8BrotK+Q2Fkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okohe-007or8-8P; Tue, 18 Oct 2022 15:40:26 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1okojS-007qlN-7e; Tue, 18 Oct 2022 15:42:18 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okocu-007knI-5t; Tue, 18 Oct 2022 15:35:34 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout2.routing.net (Postfix) with ESMTP id AEDE061660;
-	Tue, 18 Oct 2022 15:35:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666107323;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=8ERP7oqCQlb3yIxMKGW/Oz7naZX8fIcg5ZLF84iTXro=;
-	b=GlgOmTQo3HgsRhoPqVLsLubp7CHDgsIFxY7fyawWUgiQrD88TP5S99flVMENJ+HPzrJqJy
-	Yxs8jWBwfEa74QR+x+lrfHkPs5CsXYCZQD8oQZVfH18eRYjp18ajrAbjrC0KakEHMSYEfS
-	8S27f+fLKn4XMMrbDIc3YGPgToPobmU=
-Received: from frank-G5.. (fttx-pool-80.245.77.116.bambit.de [80.245.77.116])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 229178088B;
-	Tue, 18 Oct 2022 15:35:22 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
-Date: Tue, 18 Oct 2022 17:35:06 +0200
-Message-Id: <20221018153506.60944-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	id 1okogB-007nbt-72
+	for linux-mediatek@lists.infradead.org; Tue, 18 Oct 2022 15:38:57 +0000
+Received: by mail-qk1-x732.google.com with SMTP id 8so8889071qka.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Oct 2022 08:38:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=y6hCJkFqagNxMfW9SDbCFBpsm7z3HVXT6Fjd2UYXEv4=;
+        b=Ne/MjDOGNroy+zY/MyDh4x9b4cUAtHXC3Rm/aJyvKhXjbC/tyGcNEPVVgFHPPcKwma
+         TKIUjPHHuaMnNg893nblJ9gtPaaoEmQ+1Pz4mWg1V1IoxKKiB0YxSs4ko/Bj7ria4e1w
+         VSRdItIayeT7oo91BgVScj5mPAGGwIWE9J7HcCUSgyRNZlWO+3V1S+g6+UMfsqpMNmil
+         9teAO4pdFzJ7d2tsjW8DD5x0Wk7li2NWrOTpMdXam/ifK1q7jcYSYTbPcdqk6k9r3zWL
+         gMvgi+8Dcj7Iiy3Dtd7uZuOxaXYwLCEii5mzglfB+YA7rCyc57id1xYfXlI8Evn9KRAZ
+         VBHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=y6hCJkFqagNxMfW9SDbCFBpsm7z3HVXT6Fjd2UYXEv4=;
+        b=74H66FQn5zg6jBfzAZVyjBab59ToHEjW7P2hvNms8s4mWPmno2c2sizbdwigii9ec1
+         x0GLoMpvohF4HXSaXzQUbvm9tX60gG5fWo872DyNqc6bXATgMbEdJnTINDqvmirMEyv4
+         BtdVcsoxrkQFySbJfXOv7f4F9ng5Sl59bpNRDAdpfX52QmdEtVHvQoIPaBbDyPb/ntvz
+         FdaSZ28AV9mFlF+BjxsG4hdXMMQ0BwjvCFl9R9thhbc+IwW8DA8hgz2E6gusHBLpHx8a
+         o+YF568BI1AECPX9QPQHL2KEXu0V5U0ak7KvFCHSVA6l/eiXF+xmCd0Z6LDSFsyfXsee
+         ybGA==
+X-Gm-Message-State: ACrzQf3t51ksFk2j4bXiDm9/5yOXZUxdGVShb+LlBWRkkCfK81zQ1iX9
+	gbMfpJVeClHfltw58IkGZ3Kt9Q==
+X-Google-Smtp-Source: AMsMyM4cbC5maHuTSb+jVctbnXvXXi+FVdljAiIPuL3j2ArNw+LTIgMURFTk7wgx40DS5DtMd5h66w==
+X-Received: by 2002:a05:620a:1709:b0:6ed:4817:1d02 with SMTP id az9-20020a05620a170900b006ed48171d02mr2275958qkb.73.1666107532699;
+        Tue, 18 Oct 2022 08:38:52 -0700 (PDT)
+Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
+        by smtp.gmail.com with ESMTPSA id ci19-20020a05622a261300b0035badb499c7sm2157359qtb.21.2022.10.18.08.38.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Oct 2022 08:38:52 -0700 (PDT)
+Message-ID: <a0ffab83-6797-f769-bb4f-946c7098a4bc@linaro.org>
+Date: Tue, 18 Oct 2022 11:38:51 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 5418bcaa-6979-443d-8992-e1535efa5739
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [RFC v1 12/12] arm64: dts: mt7986: add Bananapi R3
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20221017104141.7338-1-linux@fw-web.de>
+ <20221017104141.7338-13-linux@fw-web.de>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221017104141.7338-13-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_083532_601663_5808EEB7 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20221018_083855_361716_0DA97276 
+X-CRM114-Status: GOOD (  23.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,107 +88,356 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Russell King \(Oracle\)" <rmk+kernel@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexander Couzens <lynxis@fe80.eu>
+On 17/10/2022 06:41, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add support for Bananapi R3 SBC.
+> 
+> - SD/eMMC support (switching first 4 bits of data-bus with sw6/D)
+> - all rj45 ports and both SFP working (eth1/lan4)
+> - PCIe and all USB-Ports + SIM-Slot tested
+> - i2c and all uarts tested
+> - wifi tested
 
-Implement mtk_pcs_ops for the SGMII pcs to read the current state
-of the hardware.
+Thank you for your patch. There is something to discuss/improve.
 
-Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> SPI-NAND/NOR switched (CS by sw5/C) not yet included
+>   this is done with DT-Overlays in my tree, but i have no idea yet,
+>   how to upstream
+> 
+> break some lines in wifi-eeprom-data because of checkpatch warnings.
+> originally there were 8 x int32 per line
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>  .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  34 +
+>  .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  29 +
+>  .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 609 ++++++++++++++++++
+>  4 files changed, 674 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 0ec90cb3ef28..c22cd3e6b98f 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
 
-Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
----
-without this Patch i get this trace in 6.1-rc1 when enabling the left
-sfp (eth1) on bpi-r3 (crash happens in phylink core because a NULL-pointer,
-so fixes-Tag is a guess):
+Alphabetical order
 
-[  108.302810] Unable to handle kernel execute from non-executable memory at virtual address 0000000000000000
-[  108.312462] Mem abort info:
-[  108.315263]   ESR = 0x0000000086000005
-[  108.319003]   EC = 0x21: IABT (current EL), IL = 32 bits
-[  108.324335]   SET = 0, FnV = 0
-[  108.327378]   EA = 0, S1PTW = 0
-[  108.330505]   FSC = 0x05: level 1 translation fault
-[  108.335375] user pgtable: 4k pages, 39-bit VAs, pgdp=00000000419be000
-[  108.341798] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000, pu
-d=0000000000000000
-[  108.350489] Internal error: Oops: 0000000086000005 [#1] SMP
-[  108.356047] Modules linked in: cdc_mbim cdc_ncm cdc_wdm cdc_ether qcserial us
-a_wwan usbnet usbser
-a Mmeisis
-ge from syslogd@bpi-r3 at Aug  7 15:26:54 ...
- kernel:[  108.350489] Internal error: Oops: 0000000086000005 [#1] SMP
-[  108.376743] CPU: 3 PID: 8 Comm: kworker/u8:0 Not tainted 6.0.0-bpi-r3 #1
-[  108.383461] Hardware name: Bananapi BPI-R3 (sdmmc) (DT)
-[  108.388671] Workqueue: events_power_efficient phylink_resolve
-[  108.394411] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[  108.401355] pc : 0x0
-[  108.403531] lr : phylink_mac_pcs_get_state+0x7c/0x100
-[  108.408572] sp : ffffffc00963bd00
-[  108.411873] x29: ffffffc00963bd00 x28: 0000000000000000 x27: 0000000000000000
-[  108.418994] x26: ffffff80000ed074 x25: ffffff800001c105 x24: 0000000000000000
-[  108.426116] x23: ffffff80022f8cd8 x22: ffffff80022f8d30 x21: ffffff80022f8c00
-[  108.433236] x20: 0000000000000000 x19: ffffff8000126040 x18: 0000000000000000
-[  108.440357] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
-[  108.447478] x14: ffffffffffffffff x13: 0000000000000030 x12: 0101010101010101
-[  108.454598] x11: 7f7f7f7f7f7f7f7f x10: fefefefefefefeff x9 : ffffff80000ed07c
-[  108.461720] x8 : fefefefefefefeff x7 : 0000000000000017 x6 : ffffff80000ed074
-[  108.468840] x5 : 0000000000000000 x4 : 0000020000006440 x3 : 00000000fffffffa
-[  108.475960] x2 : 0000000000000000 x1 : ffffffc00963bd80 x0 : ffffff80014c3ab0
-[  108.483082] Call trace:
-[  108.485516]  0x0
-[  108.487344]  phylink_resolve+0x248/0x520
-[  108.491256]  process_one_work+0x204/0x478
-[  108.495256]  worker_thread+0x148/0x4c0
-[  108.498993]  kthread+0xdc/0xe8
-[  108.502037]  ret_from_fork+0x10/0x20
-[  108.505608] Code: bad PC value
-[  108.508652] ---[ end trace 0000000000000000 ]---
-[  108.513255] Kernel panic - not syncing: Oops: Fatal exception
-[  108.518984] SMP: stopping secondary CPUs
-[  108.522894] Kernel Offset: disabled
-[  108.526369] CPU features: 0x00000,00800084,0000420b
-[  108.531232] Memory Limit: none
-[  108.534274] Rebooting in 1 seconds..
----
- drivers/net/ethernet/mediatek/mtk_sgmii.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> new file mode 100644
+> index 000000000000..859b4180ca11
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> @@ -0,0 +1,34 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (emmc)";
+> +};
+> +
+> +&mmc0 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	bus-width = <8>;
+> +	max-frequency = <200000000>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	mmc-hs400-1_8v;
+> +	hs400-ds-delay = <0x14014>;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	non-removable;
+> +	no-sd;
+> +	no-sdio;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> new file mode 100644
+> index 000000000000..57200407ab86
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> @@ -0,0 +1,29 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (sdmmc)";
+> +};
+> +
+> +&mmc0 {
+> +	//sdcard
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	bus-width = <4>;
+> +	max-frequency = <52000000>;
+> +	cap-sd-highspeed;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> new file mode 100644
+> index 000000000000..b2317e894855
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> @@ -0,0 +1,609 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Authors: Sam.Shih <sam.shih@mediatek.com>
+> + *          Frank Wunderlich <frank-w@public-files.de>
+> + *          Daniel Golle <daniel@makrotopia.org>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+> +
+> +#include "mt7986a.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3";
+> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +
+> +	gpio-keys {
+> +		compatible = "gpio-keys";
+> +
+> +		factory {
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index 736839c84130..9614973fd9c4 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -122,10 +122,25 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
- 	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
- }
- 
-+static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_link_state *state)
-+{
-+	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
-+	unsigned int val;
-+
-+	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
-+	state->speed = val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
-+
-+	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
-+	state->an_complete = !!(val & SGMII_AN_COMPLETE);
-+	state->link = !!(val & SGMII_LINK_STATYS);
-+	state->pause = 0;
-+}
-+
- static const struct phylink_pcs_ops mtk_pcs_ops = {
- 	.pcs_config = mtk_pcs_config,
- 	.pcs_an_restart = mtk_pcs_restart_an,
- 	.pcs_link_up = mtk_pcs_link_up,
-+	.pcs_get_state = mtk_pcs_get_state,
- };
- 
- int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
--- 
-2.34.1
+key/button prefix
+
+Does not look like you tested the DTS against bindings. Please run `make
+dtbs_check` (see Documentation/devicetree/bindings/writing-schema.rst
+for instructions).
+
+> +			label = "reset";
+> +			linux,code = <KEY_RESTART>;
+> +			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		wps {
+> +			label = "wps";
+> +			linux,code = <KEY_WPS_BUTTON>;
+> +			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+> +		};
+> +	};
+> +
+> +	/* i2c of the left SFP cage (wan) */
+> +	i2c_sfp1: i2c-gpio-0 {
+> +		compatible = "i2c-gpio";
+> +		sda-gpios = <&pio 16 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		scl-gpios = <&pio 17 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		i2c-gpio,delay-us = <2>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +
+> +	/* i2c of the right SFP cage (lan) */
+> +	i2c_sfp2: i2c-gpio-1 {
+> +		compatible = "i2c-gpio";
+> +		sda-gpios = <&pio 18 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		scl-gpios = <&pio 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		i2c-gpio,delay-us = <2>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +
+> +		green_led: led-0 {
+> +			color = <LED_COLOR_ID_GREEN>;
+> +			function = LED_FUNCTION_POWER;
+> +			gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
+> +			default-state = "on";
+> +		};
+> +
+> +		blue_led: led-1 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_STATUS;
+> +			gpios = <&pio 86 GPIO_ACTIVE_HIGH>;
+> +			default-state = "off";
+> +		};
+> +	};
+
+Blank line
+> +	memory@40000000 {
+> +		device_type = "memory";
+> +		reg = <0 0x40000000 0 0x40000000>;
+> +	};
+> +
+> +	reg_1p8v: regulator-1p8v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-1.8V";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +	};
+> +
+> +	reg_3p3v: regulator-3p3v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-3.3V";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +	};
+> +
+> +	reg_5v: regulator-5v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-5V";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +	};
+> +
+> +	/* left SFP cage (wan) */
+> +	sfp1: sfp1 {
+
+sfp-1
+
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp1>;
+> +		los-gpio = <&pio 46 GPIO_ACTIVE_HIGH>;
+> +		moddef0-gpio = <&pio 49 GPIO_ACTIVE_LOW>;
+> +		tx-disable-gpio = <&pio 20 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpio = <&pio 7 GPIO_ACTIVE_HIGH>;
+> +	};
+> +
+> +	/* right SFP cage (lan) */
+> +	sfp2: sfp2 {
+
+sfp-2
+
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp2>;
+> +		los-gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
+> +		mod-def0-gpios = <&pio 47 GPIO_ACTIVE_LOW>;
+> +		tx-disable-gpios = <&pio 15 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
+> +	};
+> +};
+> +
+> +&crypto {
+> +	status = "okay";
+> +};
+> +
+> +&eth {
+> +	status = "okay";
+> +
+> +	gmac0: mac@0 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <0>;
+> +		phy-mode = "2500base-x";
+> +
+> +		fixed-link {
+> +			speed = <2500>;
+> +			full-duplex;
+> +			pause;
+> +		};
+> +	};
+> +
+> +	gmac1: mac@1 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <1>;
+> +		phy-mode = "2500base-x";
+> +		sfp = <&sfp1>;
+> +		managed = "in-band-status";
+> +	};
+> +
+> +	mdio: mdio-bus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +};
+> +
+> +&mdio {
+> +	switch: switch@0 {
+> +		compatible = "mediatek,mt7531";
+> +		reg = <31>;
+
+This does not match your unit address.
+
+> +		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
+> +	};
+> +};
+> +
+> +&i2c0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&pcie {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +&pio {
+> +	i2c_pins: i2c-pins-3-4 {
+
+Usually bindings expect certain suffix or prefix. Are you sure this
+passes dtbs_check?
+
+
+Best regards,
+Krzysztof
 
 
