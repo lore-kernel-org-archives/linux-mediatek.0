@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927E9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 13:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 264FCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 13:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OOfBa7+7Ac5J9E9dOike9309BkGfqPd11AE88K1rKqE=; b=HeUibnfVt+dxt/AA01eS0KGHKF
-	QIdRv6LZmNRIUiFcVhCN8RS6J8iCZJOtkpze+l0w9DuiFakwX59OWNWRS46iBzf+c1DsJT2aFLHaE
-	8Vyru1gB+0xj5lNLH8oyyin0ibO4xQ9zUYUFYyMGhOCFbPq6Y95vyMM9SiJz66kCDIEUOv/cWqm7l
-	3+Kc6CSy7z994AmG0LLVKYnMd+nsN8OS1SuE7nWdH8hAAeED8Mie0mihd6xJtcu3ZTt1ChWYvB+VQ
-	C/z2afASBi038SCPOtE151D+0ruTI3M9F/4mSkZ3LkJxITnGkTrsD3zEBULyF37LCp81Bul0cvocx
-	dJ5XfE4A==;
+	bh=bWhQyLWn3P1nzjyRx2g5cOkNZks+6vip8qXcgNq/Af8=; b=1q0tKxVf79M+YD59m8dVBTwXOU
+	2zLGprtjx41HK3uCeaxnt8S1aEmWKdS2dZffnvFa/cwg4TMNekLp5FTMOeQo7fbmlAJjgTtLlLRY+
+	ZLDbrr6aI6CyuXBnnHaL/5rSrZl99C9J7mUPnLOzzPDSVFJAh+LAe779F7UMuaWbdWuLrPeSkEqXq
+	ftDwPvKoMM12PnvuGg/D1yHy4gytkbIAru+geJ0vedkfhK+LSHUr95/b7LVErl9ptKj9/WyeExexl
+	nvhii2gGxrgI6Vu+Bdix61AB4w8OBm+CrKbxwhSa1L1i5LIg/wee8PigCFYQiXvjHS2ljQZm5i//B
+	D5gEHPzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol9Qn-002Fu9-Kc; Wed, 19 Oct 2022 13:48:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ol9Zf-002P1Q-A3; Wed, 19 Oct 2022 13:57:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol9Qd-002FiE-5s; Wed, 19 Oct 2022 13:48:16 +0000
+	id 1ol9ZS-002Ocb-Id; Wed, 19 Oct 2022 13:57:24 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C1607660238F;
-	Wed, 19 Oct 2022 14:48:10 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3FA61660238F;
+	Wed, 19 Oct 2022 14:57:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666187291;
-	bh=JRFBIEM/o3vlqulr1q6kOtGadUUgU5fFs6PkyTMxPoM=;
+	s=mail; t=1666187838;
+	bh=GoqeN/GewrNfh6KyiazZvRA5/fFpIcsiWVnAafIR6s4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UCmD794vdXoT52u4B6OT78/64SmEehyANCMurAXV+o/M6BESNlUbHQOjv3jkxrL3K
-	 9BHh5/+85ySWzuLpP7nrVjysxQQG7CSGjLuo/NzoPd9x/rv1kKajohe3gYwOmMUAKQ
-	 VZ3Y7RSFJYmJRoqWW+Guri4l1q1fr2KAJSCn0OBVhTPBohP1KiapOQGFTw5tbiBD+l
-	 LgC3Db3v/ivXnLilPWVuqrwBSxZ9YPhBB1c/VAinDz1eeUhf2Ha2DZfJ0kCg6LaeHl
-	 gPpqH+TTY9yAIc9ni4o+ZaG0n2zBsfLoj2KLMROl8HFiNwYlX+ExHYApUr7XZtuTaJ
-	 u9ZL2m9yX1X6A==
-Message-ID: <56042926-4921-3e77-ae0f-3bc6c462bb5e@collabora.com>
-Date: Wed, 19 Oct 2022 15:48:08 +0200
+	b=jBofWKcmTNvwpH9DAux2lWFazuczb2Pf/fXzZqE0pO2VrcgF/kgweGX93IzW0q6dR
+	 LnNY/qK0yn57wnFWEI7CZwAlbCwEpOEdI46HTLg2jLfSmp3lM3REKgMRQjxrFSQCGZ
+	 Bkx8lg4zoq755qaQZei/LZIebSwKBIocbdPksVCNPNa2oH/SpQceh0iuHRL3IcZlmq
+	 6JOKzuI+VhGDaafraA9xicTTzMyv7UbABtRAoH/CNwyg961zSWqXvZnSk8/tZ6mWeX
+	 WmWPaTaKlTw1rYytzTyQEdncQ7h84pCx/Y9UMXDhYrTbb9BlkGGXpxJnQzW1tBvqt3
+	 vXepuTfwwUcgQ==
+Message-ID: <cf0d4a88-16d0-bb10-8402-30d60feafa1b@collabora.com>
+Date: Wed, 19 Oct 2022 15:57:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v4] pwm: mtk-disp: Fix the parameters calculated by the
- enabled flag of disp_pwm
+Subject: Re: [PATCH v2] arm64: dts: mt8195: Add Ethernet controller
 Content-Language: en-US
-To: xinlei.lee@mediatek.com, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: Biao Huang <biao.huang@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <1666172538-11652-1-git-send-email-xinlei.lee@mediatek.com>
+ macpaul.lin@mediatek.com
+References: <20221019091515.21878-1-biao.huang@mediatek.com>
+ <20221019091515.21878-2-biao.huang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1666172538-11652-1-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <20221019091515.21878-2-biao.huang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_064815_373912_FBE600E7 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221019_065722_779776_C6FB08DF 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +79,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/10/22 11:42, xinlei.lee@mediatek.com ha scritto:
-> From: xinlei lee <xinlei.lee@mediatek.com>
+Il 19/10/22 11:15, Biao Huang ha scritto:
+> Add Ethernet controller node for mt8195.
 > 
-> In the original mtk_disp_pwm_get_state() function wrongly uses bit 0 of
-> CON0 to judge if the PWM is enabled.
-> However that is indicated by a bit (at a machine dependent position) in
-> the DISP_PWM_EN register. Fix this accordingly.
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88 ++++++++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 86 +++++++++++++++++++
+>   2 files changed, 174 insertions(+)
 > 
-> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> Reviewed-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+..snip..
 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..7f7d9f8e72ee 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1042,6 +1042,92 @@ spis1: spi@1101e000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		stmmac_axi_setup: stmmac-axi-config {
 
+Didn't you get a warning during dtb build for these ones?
+And if you did, why have you ignored it? :-)
 
+> +			snps,wr_osr_lmt = <0x7>;
+> +			snps,rd_osr_lmt = <0x7>;
+> +			snps,blen = <0 0 0 0 16 8 4>;
+> +		};
+> +
+
+..snip..
+
+> +
+> +		eth: ethernet@11021000 {
+> +			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
+> +			reg = <0 0x11021000 0 0x4000>;
+> +			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			interrupt-names = "macirq";
+> +			clock-names = "axi",
+> +				      "apb",
+> +				      "mac_cg",
+> +				      "mac_main",
+> +				      "ptp_ref",
+> +				      "rmii_internal";
+> +			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
+> +			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
+> +					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
+> +					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
+> +						 <&topckgen CLK_TOP_ETHPLL_D8>,
+> +						 <&topckgen CLK_TOP_ETHPLL_D10>;
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
+> +			mediatek,pericfg = <&infracfg_ao>;
+> +			snps,axi-config = <&stmmac_axi_setup>;
+> +			snps,mtl-rx-config = <&mtl_rx_setup>;
+> +			snps,mtl-tx-config = <&mtl_tx_setup>;
+> +			snps,txpbl = <16>;
+> +			snps,rxpbl = <16>;
+> +			snps,clk-csr = <0>;
+> +			status = "disabled";
+
+Please move stmmac-axi-config, rx-queues-config, tx-queues-config here as a subnode
+or in the root node, respecting address/size cells being zero.
+Of course adding that here means also specifying {address,size}-cells = <0> in this
+ethernet node.
+
+Regards,
+Angelo
 
