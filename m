@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C75B4C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 07:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2547C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 08:29:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0GUKTxadoDWP2KU6mxW/gNikeYk8pUd22CuXVCBT/U8=; b=iz8WPGQt+euvb66AoQlcRdhZSN
-	ys9ee8cIfKlfvZoT26HVS2d0xdvPK9SO6ZIqodiFQhDig0vbHtMej5N1Dmj3AOaIaWTHn58Ag2a0V
-	i4PDYCAQRYITfzCdk6zqL6WwjddngaUqwX28C1M9v2OTjRav6SJiIixtZQtz926SkZhceQzk5wwx/
-	ldzvvPnifwFDcPcjr4q+KHAiaAOQ0mPMF14o7zpmOSm8LSAHOWhX38Tq2dihbyElFq95duAdsJHsJ
-	Dp8ye1GLKXS6lJqR0fR9DIbTBhI7DpSx/Jr48q3O7tFzgKP297X3yljkYQPwWgQbcRpal3ylcOsAs
-	OeVvbC7w==;
+	bh=EqvjHWUlk3KNFum9CdzugghlPYgbo32lSRlTs7sZX1E=; b=sByrQ/FU21BwJ7wrmAZUFLVbJm
+	xL2KlyCcwxT6euVBFJ/seRfxOeuAyVzI7IIlzy3AZVFLc/KBWv88E3wahGGHJDuy76faH20x66Hnp
+	koxsZlw4bqbkfYEJgqZqtL8LpDXao3CQTlx6EGaU0jkkXnX+/q6+j0i/8OrtaGe1iq5gGxuZtizkF
+	DXVcqWBEVBny2EUmfskhLDWsyB20V9NlLP+AO6y15P5/Ik1DerJHhNcW25AFohrNplWE5Cuso5PzY
+	6lGs0NujFKLpITiwqFNJqo+cOWRyApS8DhlyxDzl0km12RKZsVVCahC8U/leclbGW7eEfT2yuMn1T
+	2VeVnlfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol3aa-00GCce-Lq; Wed, 19 Oct 2022 07:34:08 +0000
+	id 1ol4SC-00GZEF-SB; Wed, 19 Oct 2022 08:29:32 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol3aO-00GCYR-LB; Wed, 19 Oct 2022 07:33:58 +0000
+	id 1ol4Rm-00GZ8I-Iz; Wed, 19 Oct 2022 08:29:08 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8ED4B660226D;
-	Wed, 19 Oct 2022 08:33:52 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3D016602388;
+	Wed, 19 Oct 2022 09:29:01 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666164833;
-	bh=agU8AIJzL3KVTa3O2BDqTFMaHpfGu0dLSgxRTteE4pA=;
+	s=mail; t=1666168142;
+	bh=ocWrVQMR3Z9kZzLMg8BVFlJNcN/HGEjR1aguO3cp0bc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HTzK+QcKYQvhNCdVyOTrUdalgUdfYq/wBID/tc/XACAUL+0t6cxYjAatgRis2WQFI
-	 Q4h1mRZgx8xKg2GLc2pd8cA31YAjxaWyVGK6aiEpMoLV0GliSi4eWXjv8lH3vu/T57
-	 L/qoxnAoXWp5MPXtQPIgStGdW3TJDtEvxW+Z9rx8SbvK90LtUH1y6cVLVl/HLLwC22
-	 R3UtpoatosxDDukOZrD8DbeLvepbJPdIfLeNWzUZHaBSlrSe+CZD4lrWzj4ylkIeQk
-	 v1ylqzNVQjxQ7M0W5hUKDPnkZNlx9/lzPTXk/9G3wBoi58fd2kYq96L0ONCDoLyU/U
-	 wK8P/F35/JYMA==
-Message-ID: <6110f23e-d7e1-fea4-c497-84ec1478eda0@collabora.com>
-Date: Wed, 19 Oct 2022 09:33:49 +0200
+	b=JslCHyyIYsNdzm6vEIetBjO8qkDZ/ptAL3uvjqbctSrFPeXp6ycqYEeYvuQ/rk3SE
+	 m1vLNqJp0WOvN/qqMhIHUHGe+HO0NmOI7OcLVf0Mwm3li8sTr+h3xLZwiBdqYKBeuA
+	 MytITpObucpWuclzLgmsf4eLGlxzpm1WgINdmBIo/uWbiGbokxPQ8kbvMRsHP+Hdwx
+	 aJ1Bc+cN5c54wCsVIVhlnHsOXqmF+musNmIUniJQdOWyNX8H9CabdT5fh2VoDOD64X
+	 6SoMfuVAF5hsoAfjGpHpsVsobEHrAmv/M1uLd0Hr4kn2O63JeTFY+Vac8yMRxaFyBW
+	 tiL5rtbl75dQA==
+Message-ID: <97916360-a24b-0e7d-cc86-9b801fadf869@collabora.com>
+Date: Wed, 19 Oct 2022 10:28:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v12,2/3] drm: mediatek: Set dpi format in mmsys
-To: xinlei.lee@mediatek.com, matthias.bgg@gmail.com,
- rex-bc.chen@mediatek.com, jason-jh.lin@mediatek.com,
- nfraprado@collabora.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- airlied@linux.ie, daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jitao Shi <jitao.shi@mediatek.com>
-References: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
- <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
+Subject: Re: [RFC v1 02/12] dt-bindings: PCI: mediatek-gen3: add support for
+ mt7986
 Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <20221017104141.7338-1-linux@fw-web.de>
+ <20221017104141.7338-3-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <20221017104141.7338-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_003356_873029_A575C19D 
-X-CRM114-Status: UNSURE (   7.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221019_012906_871775_992C6323 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +78,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/10/22 04:52, xinlei.lee@mediatek.com ha scritto:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+Il 17/10/22 12:41, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Dpi output needs to adjust the output format to dual edge for MT8186.
+> Add compatible string for mt7986.
 > 
-> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> mt7986a.dtsi misses clock-names which are now required since support of
+> MT8192/MT8188/MT8195. This change also introduces a 6th clock which is
+> now needed for all pcie-gen3 dts.
+> 
+> i do not know how to map the clocks to the names...
+> 
+> mediatek-pcie-gen3.yaml:
+> 
+>    clock-names:
+>      items:
+>        - const: pl_250m
+>        - const: tl_26m
+>        - const: tl_96m
+>        - const: tl_32k
+>        - const: peri_26m
+>        - enum:
+>            - top_133m        # for MT8192
+>            - peri_mem        # for MT8188/MT8195
+> 
+> mt7986a.dtsi:
+> 
+> 	clocks = <&infracfg CLK_INFRA_PCIE_SEL>,
+> 		 <&infracfg CLK_INFRA_IPCIE_CK>,
+> 		 <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
+> 		 <&infracfg CLK_INFRA_IPCIER_CK>,
+> 		 <&infracfg CLK_INFRA_IPCIEB_CK>;
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+If this SoC has a different clock tree... then you should add bindings for this
+kind of clock tree.
 
+CLK_INFRA_IPCIER_CK is *not* a peri clock: "peri" means PERICFG, which does not
+seem to be present in this SoC... so no, you can't assign it to "peri_26m", nor
+you can assign it to tl_32k, as that's not a 32KHz clock.
+
+CLK_INFRA_PCIEB_CK can be a "top_133m" clock... as it is gating "sysaxi_sel",
+which is a topckgen clock.
+
+CLK_INFRA_IPCIE_CK is your "tl_(something)" clock, as that's effectively gating
+"pextp_tl_ck_sel" (which is the PCIe Transaction Layer clock mux).
+
+CLK_INFRA_IPCIE_PIPE_CK seems to be parented to "top_xtal", frequency = 40MHz,
+so I don't see how can this be a pl_250m? Looks like being a 40m clock and I
+wish we didn't have clock frequencies specified in the names, as "pl" would fit,
+but "pl_250m" does not.
+I wonder if we can change the clock names and reflect the changes to the mt8192
+devicetree (mt8195 does not have any pcie node yet), and if that would be a good
+idea right now.
+
+...and I've left the first for last, because...
+
+CLK_INFRA_PCIE_SEL: I have no datasheet for this SoC, but if you're sure that
+this clock is selecting the source clock to CLK_INFRA_IPCIE_CK, then the clock
+driver is wrong...
+
+Right now, I see the following:
+
+static const char *const infra_pcie_parents[] __initconst = {
+	"top_rtc_32p7k", "csw_f26m_sel", "top_xtal", "pextp_tl_ck_sel"
+};
+
+GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "pextp_tl_ck_sel", 12),
+
+MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_SEL, "infra_pcie_sel",
+		     infra_pcie_parents, 0x0028, 0x0020, 0x0024, 0, 2,
+		     -1, -1, -1),
+
+....so if you're right, we should instead have:
+
+GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "infra_pcie_sel", 12),
+
+....with this meaning that adding CLK_INFRA_PCIE_SEL in devicetree is useless.
+
+This clock tree looks a bit unclear (because again, there's no datasheet around),
+but that's what I understand with a rather fast look in the clock drivers and
+with some experience on other MTK SoCs.
+
+Then again, if this tree is effectively incompatible with the one from MT8192 and
+MT8195, you should have different clock names... and just as a fast idea:
+
+clock-names = "axi", "tl", "pl", "top";
+
+with clocks, in order:
+CLK_INFRA_PCIEB_CK, CLK_INFRA_IPCIE_CK,
+CLK_INFRA_IPCIE_PIPE_CK, CLK_INFRA_IPCIER_CK.
+
+...but feel free to reiterate that :-)
+Hope that was helpful.
+
+Cheers,
+Angelo
 
 
