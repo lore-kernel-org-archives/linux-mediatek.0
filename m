@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5977C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 03:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F0FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 06:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VIMMLG0dXuwl6KEM8MBxM2bfM4gT2Sc13xFGqaWm6lg=; b=ZQ+IVUEVXUlABo6ORAg/wthUki
-	ep6Ty/gyLOuP1D46m8Mudf7HwLpjkyKtRsHwWZO9D4qWSTBRD1reJjtklSv1TwSRWzgU3bX8n/vz0
-	dQmVvmiL05mDdCU2NlOxE5G/KhptYaaq49OQ8bnlaGRl4pX+MByiJeIE+3yyPcrXOUzG/rY+YUyah
-	N1rY6ax4Sx5ICTPnZSB/ZsCqQQGLyviHK8aI31cp0rZHLzjPqwVJDKKvLL8aBxfCRSv0AmcVxUDtC
-	u3f8IdbYdHMf24FLaz4xNbzJq3Vu5SA0e/KV5Ed2ozGDF42nIoCHgicgjocENLl9bjoxMk7nMYKPj
-	eocc8Prw==;
+	bh=QWZltT5Ik1403xLpYJWPCmlVFaiq2fqaz9yBCJYjcXI=; b=hqG7m2zTCjlE+oJAgQdB8B53LN
+	TWWUY7V7rb1Rvc3ixtekE9W5Xc7xYjoMFW3ex4kpZ4ualfwpl1Cf/B4uLdCQ+1YJqs5/mCcwvxBqF
+	jBp+EiZ/gf+LqCrR9qi8nLb4ltaGLi+zLkgHx4s+Fkx9w7Pe4+CGGlkdKad+qz4AXhbRKzLo9cbc4
+	k5eTorgoHnlyeq3TlRx9GDXbpER2EZrbsmyGsSbCwZBlQmELk6oycXoQeitWxIBPSzo+eZ3GcDE7f
+	wvhD4Vj4efezl07Vdw5PauLhNH1VCdc9jkE9alJoPUfmbTriLGoEiA9CPM3MrClzHcDF4A6Fl9HxG
+	3ESgOa8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okzzG-00EIIN-0R; Wed, 19 Oct 2022 03:43:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ol2S0-00FXjM-81; Wed, 19 Oct 2022 06:21:12 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okzyw-00EIDk-Ac; Wed, 19 Oct 2022 03:43:04 +0000
-X-UUID: 766b2db13ace4b26adbcfe315a39e03b-20221018
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VIMMLG0dXuwl6KEM8MBxM2bfM4gT2Sc13xFGqaWm6lg=;
-	b=iG646NaHTZK5FstIDLWZ6yaKWiyTHJ2EwR1eR8UiFXszmgAErXhwEwktb3ntJsFEsUuC57ckb3xPvktFJOQgN9VYqnCeDdeOkq617Ha/b9trtANIkYtO6THwHT/fNdyDVG3SMk3OyCCgW+X7hnZdAMLOhPz5ZfLwTpu6rV9FB5c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:cfd22908-9c48-44d4-98b1-96fa776baa84,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:0e173fa4-ebb2-41a8-a87c-97702aaf2e20,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 766b2db13ace4b26adbcfe315a39e03b-20221018
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1875784614; Tue, 18 Oct 2022 20:42:58 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 19 Oct 2022 10:52:18 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 19 Oct 2022 10:52:18 +0800
-From: <xinlei.lee@mediatek.com>
-To: <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
-	<nfraprado@collabora.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH v12,0/3] Add dpi output format control for MT8186
-Date: Wed, 19 Oct 2022 10:52:13 +0800
-Message-ID: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
+	id 1ol2Rp-00FXbT-0D
+	for linux-mediatek@lists.infradead.org; Wed, 19 Oct 2022 06:21:02 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-1322d768ba7so19512242fac.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Oct 2022 23:20:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QWZltT5Ik1403xLpYJWPCmlVFaiq2fqaz9yBCJYjcXI=;
+        b=fHHz7Xzk5lYdiEDvHwu2jd21UdKcxPmzwJbiub7ibFHkmtsyteKF7RVeuJzxaHAhDX
+         zetJ72PEeG8Sp6YVg5VSxQicLtOOjM1dVacrGrbAhczDxSxu9JP01G10ZvvpQ9vyyPLZ
+         e95Ppe8WfALhzSbLN1l0LXT+pyzGo8OlieGSM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QWZltT5Ik1403xLpYJWPCmlVFaiq2fqaz9yBCJYjcXI=;
+        b=ridaGlhKt4m7CrqIUtwnuY0429GqNRC9+9QpTwfuLVk7ufV+cyT3t28K8nW/pV5T+w
+         fqaogldBxRjTHMHfMSUSUS9xuPXMs7EStQdIfEQH5nsfExcVWlHVjdNO0RTWxXfX0LvI
+         kvf78SFvHto5CJlU8SHWPlPPPO8tpOOjnmlnG0kbSd4oYQ8kyxsdNkShP6KQpgZZAoXh
+         ZsKXobLjUUSbU5VhBZA9Z7wwb0mTEREutZLQtu4NqE/u4HAEbbUljfcSgOS6pCnz1FrB
+         6ecaqIeJ8kGrJOTuYCHneNaCcUzKuqz2yBDZZmk2KpM7whjILvH+NHlQxxmdWv+SmHIJ
+         b3Lg==
+X-Gm-Message-State: ACrzQf2B9oUqi7+nZl1IRcbFPb80kCdS0LQSfClOj9U7Btm0AsEMD9Wm
+	8RIAXff4iN7hLJv14IoA+OOP0Ka5X5P1Wg==
+X-Google-Smtp-Source: AMsMyM5BvfkKcU86WNyaqzZgxnMa/8bi2ufukanMVEw2tKbJ6454+6pNOJAwp/pQAra0ihyl78QhkQ==
+X-Received: by 2002:a17:90b:254e:b0:20b:7e26:f0a0 with SMTP id nw14-20020a17090b254e00b0020b7e26f0a0mr42047837pjb.203.1666160447265;
+        Tue, 18 Oct 2022 23:20:47 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:39a:c061:1f1:ca67])
+        by smtp.gmail.com with ESMTPSA id mg2-20020a17090b370200b0020d9ac33fbbsm9346563pjb.17.2022.10.18.23.20.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Oct 2022 23:20:46 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Sean Paul <seanpaul@chromium.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/mediatek: mtk-dpi: register content protect property
+Date: Wed, 19 Oct 2022 14:19:37 +0800
+Message-Id: <20221019061936.3599965-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.38.0.413.g74048e4d9e-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_204302_386663_E1C29FE3 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20221018_232101_056839_ADB10AE8 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,87 +89,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+Register content protect property in drm so that bridge can update
+the property from userspace request.
 
-Base on the branch of linus/master v6.1 rc1.
+HDCP property needs to be created after the connecter is initialized
+and before the connector is registered. Since some bridge may be
+attached without connector, register this property in drm driver if
+CONFIG_DRM_DISPLAY_HDCP_HELPER is defined.
 
-Change since v11:
-1. Rebase on v6.1-rc1. Change nothing.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+Context: https://lore.kernel.org/lkml/20221012042030.573466-1-hsinyi@chromium.org/T/
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Change since v10:
-1. Modify patch title and add review tag.
-
-Change since v9:
-1. Modify the location of the mmsys_dev member variable.
-
-Change since v8:
-1. Modified the title and some description information.
-
-Changes since v7:
-1. This series is based on the following patch:
-   [1] soc: mediatek: Add mmsys func to adapt to dpi output for MT8186
-   https://patchwork.kernel.org/project/linux-mediatek/patch/1663161662-1598-2-git-send-email-xinlei.lee@mediatek.com/
-2. Modify the DPI_FORMAT_MASK macro definition to GENMASK(1, 0);
-3. Add all settings to mtk_mmsys_ddp_dpi_fmt_config;
-4. Modify the commit title to Add mt8186 dpi compatibles and platform
-data.
-
-Changes since v6:
-1. Different from other ICs, when mt8186 DPI changes the output format,
-the mmsys_base+400 register needs to be set to be valid at the same
-time.
-   In this series, all the situations that mmsys need to be set up are
-perfected (not necessarily used in practice).
-2. Put the value that controls the mmsys function in mtk-mmsys.h.
-3. Encountered the sink ic switched between dual edge and single edge,
-perfected setting and clearing mmsys bit operations in mtk_dpi.c.
-
-Changes since v5:
-1. Separate the patch that adds edge_cfg_in_mmsys from the patch that
-adds mt8186 dpi support.
-2. Move the mmsys register definition to mmsys driver.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 508a6d994e831..3374ebe82aeb2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -18,6 +18,7 @@
  
-Changes since v4:
-1. This series of cancellations is based on the following patches:
-   [1] Add MediaTek SoC(vdosys1) support for mt8195
-   https://patchwork.kernel.org/project/linux-mediatek/cover/20220711075245.10492-1-nancy.lin@mediatek.com/
-   [2] Add MediaTek SoC DRM (vdosys1) support for mt8195
-   https://patchwork.kernel.org/project/linux-mediatek/cover/20220804072827.22383-1-nancy.lin@mediatek.com/
-2. Added mtk_mmsys_update_bits function in mtk-mmsys.c;
-3. MMSYS 0x400 register is modified to MT8186_MMSYS_DPI_OUTPUT_FORMAT;
-4. Fix formatting issues.
-
-Changes since v3:
-1. Fix formatting issues;
-2. Modify the edge output control name & description;
-3. Fix the threading problem.
-
-Changes since v2:
-1. Modify key nouns in the description;
-2. Add the label of jitao to Co-developed-by;
-3. Macro definition address lowercase problem and function naming;
-4. Add missing a description of this property in the mtk_dpi_conf.
-
-Change since v1:
-1. Modify mt8186 compatiable location.
-2. Modify MT8186_DPI_OUTPUT_FORMAT name.
-
-When MT8186 outputs dpi signal, it is necessary to add dual edge output
-format control in mmsys.
-
-Xinlei Lee (3):
-  soc: mediatek: Add all settings to mtk_mmsys_ddp_dpi_fmt_config func
-  drm: mediatek: Set dpi format in mmsys
-  drm: mediatek: Add mt8186 dpi compatibles and platform data
-
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 32 ++++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
- drivers/soc/mediatek/mt8186-mmsys.h    |  8 ++++---
- drivers/soc/mediatek/mtk-mmsys.c       | 27 +++++++++++++++++-----
- include/linux/soc/mediatek/mtk-mmsys.h |  7 ++++++
- 5 files changed, 67 insertions(+), 9 deletions(-)
-
+ #include <video/videomode.h>
+ 
++#include <drm/display/drm_hdcp_helper.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
+ #include <drm/drm_bridge_connector.h>
+@@ -799,6 +800,15 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 		ret = PTR_ERR(dpi->connector);
+ 		goto err_cleanup;
+ 	}
++
++#if defined(CONFIG_DRM_DISPLAY_HDCP_HELPER)
++	ret = drm_connector_attach_content_protection_property(dpi->connector, true);
++	if (ret) {
++		dev_err(dev, "attach content protection: %d\n", ret);
++		return ret;
++	}
++#endif
++
+ 	drm_connector_attach_encoder(dpi->connector, &dpi->encoder);
+ 
+ 	return 0;
 -- 
-2.18.0
+2.38.0.413.g74048e4d9e-goog
 
 
