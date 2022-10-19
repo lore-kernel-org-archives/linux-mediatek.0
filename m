@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D48CAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 09:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 750DAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 09:38:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mVNYk8Vdw4aAhhCQKszm0+c9Pkl9JnTakpEnR19atF8=; b=HJo3stJfqmDX2fSU2m+7MUeNhF
-	3LLe66ghcBsdG8jW+KwArzuXIsy+1Eb92rHut5cFzo9fet1PuVWexk42+jxHaEiy506fhxwzh/o+z
-	CiYZvsqHk26TYgk8+VPQnraOb4YT3UmDBbghr1zdqp21bL+Mp4P4zAruj360VCCpdvTp+DiUuDjJ+
-	0HxgjszxwVIYw5j9DnuAF5WmM1qKesNZGLZi6X8sitpC4rexfv22XBX9FJb+izs+qseMox7Rt7I1Y
-	c/wj1zzbW35VcAZBYMsrN1huGl4bvGmEZlDOV53XYFwYH956eh6RMEt/Jk2rfy4CRVvlDJijC0PKK
-	8zZUd/fg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tqvtEtatRRl/UW0RZ3T+M3Rf2MvxTlfEeOLdRGB0yZQ=; b=n3wUd4rXBfNhYpZM6Oa8al6s0j
+	fL1jG30nbWZzJpkZ2bUvbSePuC45ZPi5jAH1ubzqU6DQbsR1gLycbIXdwImqbLqhDWFO11rsGZMyq
+	l8k470JrBk30BNnhytzIbrnN1cJn0QjKL1l0rQHJYANv3WuHSXAIeDRoQx1obU7NO0tdu1JzTUIE2
+	9AcT4KWJM8Rdd7uukVHP/IS9jyN4qEuKIvLaIbBW1P4y8A3THWzSu+6Pwf3NSn6yWkQczonUdQo6S
+	MZQFmNwxndHgtbvMHOV93Qj7GlvPh+tPuj/hopIvS8uJKRSj6SYdkW6PgHXtD/LmmK6Y7jKZSUCnH
+	s/gmg3sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol5V1-00HOgF-8P; Wed, 19 Oct 2022 09:36:31 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1ol5Wr-00HPeC-Qq; Wed, 19 Oct 2022 09:38:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol5Un-00HOYE-66; Wed, 19 Oct 2022 09:36:18 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout3.routing.net (Postfix) with ESMTP id 52353604B1;
-	Wed, 19 Oct 2022 09:36:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666172173;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mVNYk8Vdw4aAhhCQKszm0+c9Pkl9JnTakpEnR19atF8=;
-	b=JXVqYusBRIyNB+wKF2YAh7PaC83HGvBJkSUpOLsltS11pvKdYAc8mDtWi03eVHaqM5F5mc
-	XvQ5dxvKBHbJOAjFuZjrBi7YhD1ELw7RKRU23AGdldqn4Izq/dIgHm24PMgWY+WuC5b0MJ
-	3tdDOMqeuhmcRZsiD2Xb1XNGDT+5jjI=
-Received: from [127.0.0.1] (tmo-105-196.customers.d1-online.com [80.187.105.196])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 42E10100352;
-	Wed, 19 Oct 2022 09:36:12 +0000 (UTC)
-Date: Wed, 19 Oct 2022 11:36:07 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-CC: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BRFC_v1_02/12=5D_dt-bindings=3A_PCI=3A_?= =?US-ASCII?Q?mediatek-gen3=3A_add_support_for_mt7986?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <97916360-a24b-0e7d-cc86-9b801fadf869@collabora.com>
-References: <20221017104141.7338-1-linux@fw-web.de> <20221017104141.7338-3-linux@fw-web.de> <97916360-a24b-0e7d-cc86-9b801fadf869@collabora.com>
-Message-ID: <C1FA3856-F874-4A13-A0E3-922B745958D6@fw-web.de>
+	id 1ol5Wd-00HPVh-J6; Wed, 19 Oct 2022 09:38:13 +0000
+X-UUID: a4d8b65bda184ba9b6e107cad9410ede-20221019
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tqvtEtatRRl/UW0RZ3T+M3Rf2MvxTlfEeOLdRGB0yZQ=;
+	b=m7CKB7i4ZrDKfnoc8ikWw1z90ggkqKEWFjKCsERsCi5Hsb6WBI+oSjsHz+vMHV6AJyA2Qavh0xyx8KKSOfLuI0j4+GCp5Ts8/O1KisXpe8SiMIZ0/67OqyuYCm1D1duqnz86QhAhFCODmf/TivHfxrSEMLFLkccmKMa8b5eYd6g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:c6e67fef-8000-4ea1-8b09-552c95a22186,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:c8004ba4-ebb2-41a8-a87c-97702aaf2e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a4d8b65bda184ba9b6e107cad9410ede-20221019
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 471933856; Wed, 19 Oct 2022 02:38:04 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 19 Oct 2022 17:07:26 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 19 Oct 2022 17:07:26 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
+	<xinlei.lee@mediatek.com>
+Subject: [PATCH v3] drm: mediatek: Modify dpi power on/off sequence.
+Date: Wed, 19 Oct 2022 17:07:23 +0800
+Message-ID: <1666170443-19301-1-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: 8bc0a8f8-5856-4d54-aa98-5d53cb6e65c2
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_023617_440755_285D2E48 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20221019_023811_700328_798E482B 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,107 +78,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 19=2E Oktober 2022 10:28:59 MESZ schrieb AngeloGioacchino Del Regno <ang=
-elogioacchino=2Edelregno@collabora=2Ecom>:
->Il 17/10/22 12:41, Frank Wunderlich ha scritto:
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
->If this SoC has a different clock tree=2E=2E=2E then you should add bindi=
-ngs for this
->kind of clock tree=2E
->
->CLK_INFRA_IPCIER_CK is *not* a peri clock: "peri" means PERICFG, which do=
-es not
->seem to be present in this SoC=2E=2E=2E so no, you can't assign it to "pe=
-ri_26m", nor
->you can assign it to tl_32k, as that's not a 32KHz clock=2E
->
->CLK_INFRA_PCIEB_CK can be a "top_133m" clock=2E=2E=2E as it is gating "sy=
-saxi_sel",
->which is a topckgen clock=2E
->
->CLK_INFRA_IPCIE_CK is your "tl_(something)" clock, as that's effectively =
-gating
->"pextp_tl_ck_sel" (which is the PCIe Transaction Layer clock mux)=2E
->
->CLK_INFRA_IPCIE_PIPE_CK seems to be parented to "top_xtal", frequency =3D=
- 40MHz,
->so I don't see how can this be a pl_250m? Looks like being a 40m clock an=
-d I
->wish we didn't have clock frequencies specified in the names, as "pl" wou=
-ld fit,
->but "pl_250m" does not=2E
->I wonder if we can change the clock names and reflect the changes to the =
-mt8192
->devicetree (mt8195 does not have any pcie node yet), and if that would be=
- a good
->idea right now=2E
->
->=2E=2E=2Eand I've left the first for last, because=2E=2E=2E
->
->CLK_INFRA_PCIE_SEL: I have no datasheet for this SoC, but if you're sure =
-that
->this clock is selecting the source clock to CLK_INFRA_IPCIE_CK, then the =
-clock
->driver is wrong=2E=2E=2E
->
->Right now, I see the following:
->
->static const char *const infra_pcie_parents[] __initconst =3D {
->	"top_rtc_32p7k", "csw_f26m_sel", "top_xtal", "pextp_tl_ck_sel"
->};
->
->GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "pextp_tl_ck_sel", 12),
->
->MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_SEL, "infra_pcie_sel",
->		     infra_pcie_parents, 0x0028, 0x0020, 0x0024, 0, 2,
->		     -1, -1, -1),
->
->=2E=2E=2E=2Eso if you're right, we should instead have:
->
->GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "infra_pcie_sel", 12),
->
->=2E=2E=2E=2Ewith this meaning that adding CLK_INFRA_PCIE_SEL in devicetre=
-e is useless=2E
->
->This clock tree looks a bit unclear (because again, there's no datasheet =
-around),
->but that's what I understand with a rather fast look in the clock drivers=
- and
->with some experience on other MTK SoCs=2E
->
->Then again, if this tree is effectively incompatible with the one from MT=
-8192 and
->MT8195, you should have different clock names=2E=2E=2E and just as a fast=
- idea:
->
->clock-names =3D "axi", "tl", "pl", "top";
->
->with clocks, in order:
->CLK_INFRA_PCIEB_CK, CLK_INFRA_IPCIE_CK,
->CLK_INFRA_IPCIE_PIPE_CK, CLK_INFRA_IPCIER_CK=2E
->
->=2E=2E=2Ebut feel free to reiterate that :-)
->Hope that was helpful=2E
->
->Cheers,
->Angelo
+Modify dpi power on/off sequence so that the first gpio operation will take effect.
 
-Hi, thanks for digging into the clock-driver=2E Currently i have mapped it=
- like this (see comment to  part7)
+Fixes: 6bd4763fd532 ("drm/mediatek: set dpi pin mode to gpio low to avoid leakage current")
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+---
+change note:
+v2: Remove the empty line between Fixes: and S-o-b.
 
-clocks =3D <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-				 <&infracfg CLK_INFRA_IPCIE_CK>,
-				 <&clk40m>,
-				 <&clk40m>,
-				 <&infracfg CLK_INFRA_IPCIER_CK>,
-				 <&infracfg CLK_INFRA_IPCIEB_CK>;
-			clock-names =3D "pl_250m", "tl_26m", "tl_96m",
-				 "tl_32k", "peri_26m", "top_133m";
+v1: Rebase on linus/master v6.1-rc1. Change nothing.
 
-Mtk says it has same IP block and except missing clocks it is compatible w=
-ith mt8xxx gen3 pcie driver/binding=2E Pcie driver only enables the clocks =
-in bulk without names,but binding requires the names property so mapping ne=
-eds to be correct=2E
+Because dpi power_on/off is protected by dpi->refcount, the first time
+it cannot be powered on and off successfully, it will cause leakage.
+---
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-regards Frank
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 508a6d994e83..f83cf64c2828 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -461,9 +461,6 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	if (--dpi->refcount != 0)
+ 		return;
+ 
+-	if (dpi->pinctrl && dpi->pins_gpio)
+-		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+-
+ 	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+@@ -488,9 +485,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 		goto err_pixel;
+ 	}
+ 
+-	if (dpi->pinctrl && dpi->pins_dpi)
+-		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+-
+ 	return 0;
+ 
+ err_pixel:
+@@ -720,6 +714,9 @@ static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
++	if (dpi->pinctrl && dpi->pins_gpio)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
++
+ 	mtk_dpi_power_off(dpi);
+ }
+ 
+@@ -727,6 +724,9 @@ static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
++	if (dpi->pinctrl && dpi->pins_dpi)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
++
+ 	mtk_dpi_power_on(dpi);
+ 	mtk_dpi_set_display_mode(dpi, &dpi->mode);
+ 	mtk_dpi_enable(dpi);
+-- 
+2.18.0
+
 
