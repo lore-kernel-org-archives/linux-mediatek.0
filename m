@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704E0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 08:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 657DCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 08:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VXEyPaTCrLxGpSY/5IgutvS9DnC8wiZbTJnfp0Z5oLk=; b=Qx/4JPgpbALT3bR41nd0wg1ezU
-	MFwZuu8f+VgCkiLKCFwCc34CIu5nQ7bO1djA8077RGFqzQc/KOWF+nMnQTGVxfc/gBtFSLDz1H5tP
-	FCmr0FliSJNmqQnuVK7fr3OjgqIKn9fS2IMN/zIWu6bvNhCZnb5eNX3YkQNO1FX43jGJzl4WbwTL+
-	GSu08GWVOjQmyrsMDhiEHznE6gMEg50JrEC64rj59X/yWmAHm6aYX0ZsmG0+JuYSWXHXcJCJ6ZXNU
-	+5kGODS0JuJdx30APfOLrJddtIZ82Jt2AEXbNIY+KrGsZHQjaham5narZ+caLoVLb9hZqQYSPftVF
-	W3DOPwTA==;
+	bh=1lzLDphc+ldYullpY+OGA+uWOtXJDHWfcyjDC9QGSsI=; b=tJr9OtCSq6bD+MYQMagrKwck/R
+	BJT334Og4r72f5gNmeXfpt4e+/KI0ZqegW/aYPAiBjEnfj0o1bPKN8KU486tnWTmbDgwdmp9FJ8mp
+	IHUDwjPCeu8sfejG+b8e9f4e1RM9a6591VT67cLiGVke9RAbgezDUPKuH8LYczvaWqgk4g0PJgyuy
+	7HwD1QZRZxkAvdXk8kbrRGt1NUyY1josubvpZyJo+Q2OFE8oZgCMq/rjOP2Na8xVcyUPck8beCcod
+	l2Venew6xFAlRBqyfLAFybNPBJ8IDRx20UxdnOJ0U9HKgUe6edbf4r7xKpA9L2Nd2JIRlF6ndxX2r
+	DTuVVV9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol4aK-00GdCP-U0; Wed, 19 Oct 2022 08:37:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ol4nO-00GwLQ-5i; Wed, 19 Oct 2022 08:51:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol4aD-00Gd4D-Rb; Wed, 19 Oct 2022 08:37:51 +0000
-X-UUID: 59a8ba7683bc4d7c9e7bdf0e329eac14-20221019
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=VXEyPaTCrLxGpSY/5IgutvS9DnC8wiZbTJnfp0Z5oLk=;
-	b=H3jy3jdr9uCQ3VXN6SO1gA7LGwtCgbwgbU8Yavzn38a20dHoJ3p5t02rCBt55+NzqVvrYRN0qjh55+TOMoEBOaWMCHp/6cABbzFe42C+jhD0LsX8xmOX16IHnfsjx6Q17k5Dgy6DFJ6MJgbzHWZnlRoIMdu6l93sZw2CU9K+I94=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:748bb564-65f8-4761-a22f-f71712bda4e2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:d57e47a3-73e4-48dd-a911-57b5d5484f14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 59a8ba7683bc4d7c9e7bdf0e329eac14-20221019
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1883620134; Wed, 19 Oct 2022 01:37:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 19 Oct 2022 16:37:02 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 19 Oct 2022 16:37:02 +0800
-Message-ID: <8c04c2f898ecc1466c3f14eace30762956c83885.camel@mediatek.com>
-Subject: Re: [PATCH] arm64: dts: mt8195: Add Ethernet controller
-From: Biao Huang <biao.huang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<macpaul.lin@mediatek.com>
-Date: Wed, 19 Oct 2022 16:37:02 +0800
-In-Reply-To: <37fff2b8-a798-dea3-c010-714a2bac695f@linaro.org>
-References: <20221017095834.7675-1-biao.huang@mediatek.com>
-	 <d6bda69e-d331-3e64-2100-d41e84c3fab7@linaro.org>
-	 <b5d18b4b631cb19d435f37ccacd296a2282c2a1a.camel@mediatek.com>
-	 <37fff2b8-a798-dea3-c010-714a2bac695f@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ol4n9-00Gw7D-GA; Wed, 19 Oct 2022 08:51:12 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 37E5C66023AA;
+	Wed, 19 Oct 2022 09:51:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666169469;
+	bh=JRrtscYJcgnvP6zoQUoIszeWzHvqEHR17uOuuaKa6uA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MfG6R1OFvTDzIsvmQwazrsJnhSLRTyrtSrgynYi08JlaDlOxOKCPip8RY8pvSiRgN
+	 KHb2pqiMn8wrmvIEDU4mM/ucE8/nyn+dbJgdN0muZb0dQ9rgRNqt+jaWTa3riM+zYc
+	 wDPK6pXdn/LhiAnQa1pF37+eoFm26xSj+Skk3fR4nVOhtpBldwVO0A3+5i+hhu717Q
+	 jj+iXCHioBkax2EtGx12ed0P2XL9JPxMT9+fiu5dPi0El57ERZ/oxru4OxfRB5GGye
+	 pf9NGLGTrQ2mEC4wZ3z+qtqmv8BIXMwAtSdLEcv3RrzeHiDI4J0ogl2iIy3WR+CEkN
+	 xyzf96mibVOwg==
+Message-ID: <01ef8a2d-091f-5428-2cb8-41ba3e137a06@collabora.com>
+Date: Wed, 19 Oct 2022 10:51:07 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v1 3/3] arm64: dts: mt8195: Add venc node
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Irui Wang <irui.wang@mediatek.com>
+References: <20221017070858.13902-1-tinghan.shen@mediatek.com>
+ <20221017070858.13902-4-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221017070858.13902-4-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_013749_943896_664649FB 
-X-CRM114-Status: GOOD (  35.03  )
+X-CRM114-CacheID: sfid-20221019_015111_724475_CA7D4C29 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,105 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Krzysztof,
-	Thanks for your comments~
+Il 17/10/22 09:08, Tinghan Shen ha scritto:
+> Add venc node for mt8195 SoC.
+> 
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 903e92d6156f..7cf2f7ef4ec6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -2163,6 +2163,30 @@
+>   			power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
+>   		};
+>   
+> +		venc: venc@1a020000 {
 
-On Tue, 2022-10-18 at 08:51 -0400, Krzysztof Kozlowski wrote:
-> On 18/10/2022 02:37, Biao Huang wrote:
-> > Dear Krzysztof,
-> > 	Thanks for your comments!
-> > 
-> > On Mon, 2022-10-17 at 22:01 -0400, Krzysztof Kozlowski wrote:
-> > > On 17/10/2022 05:58, Biao Huang wrote:
-> > > > Add Ethernet controller node for mt8195.
-> > > > 
-> > > > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> > > > ---
-> > > >  arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88
-> > > > ++++++++++++++++++++
-> > > >  arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 87
-> > > > +++++++++++++++++++
-> > > >  2 files changed, 175 insertions(+)
-> > > > 
-> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > > b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > > index 4fbd99eb496a..02e04f82a4ae 100644
-> > > > --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > > +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > > @@ -258,6 +258,72 @@ &mt6359_vsram_others_ldo_reg {
-> > > >  };
-> > > >  
-> > > >  &pio {
-> > > > +	eth_default: eth_default {
-> > > 
-> > > No underscores in node names. Please also be sure your patch does
-> > > not
-> > > bring new warnings with `dtbs_check` (lack of suffix above could
-> > > mean
-> > > it
-> > > brings...)
-> > 
-> > OK, I'll fix the underscores issue in next send.
-> > As to "lack of suffix" issue, do you mean I should write it like:
-> > 	eth-default: eth-default@0 {
-> 
-> I don't know whether you should have here suffix or not - please
-> check
-> your bindings. Several pinctrl bindings require suffixes (or
-> prefixes),
-> thus I asked.
-> 
-> BTW, In the label you must use underscore.
-OK, I'll check the pinctrl-mt8195.yaml, and modify the eth related
-node.
-> 
-> > 		...
-> > 	}
-> > If yes, other nodes in current file don't have such suffix.
-> > e.g.
-> > 	gpio_keys_pins: gpio-keys-pins
-> > 
-> > Should I keep unified style with other nodes?
-> 
-> Check what bindings are requiring.
-OK.
-> 
-> > > 
-> > > > +		txd_pins {
-> 
-> (...)
-> 
-> > > > +
-> > > > +		eth: ethernet@11021000 {
-> > > > +			compatible = "mediatek,mt8195-gmac",
-> > > > "snps,dwmac-5.10a";
-> > > > +			reg = <0 0x11021000 0 0x4000>;
-> > > > +			interrupts = <GIC_SPI 716
-> > > > IRQ_TYPE_LEVEL_HIGH
-> > > > 0>;
-> > > > +			interrupt-names = "macirq";
-> > > > +			mac-address = [00 55 7b b5 7d f7];
-> > > 
-> > > How is this property of a SoC? Are you saying now that all MT8195
-> > > SoCs
-> > > have the same MAC address?
-> > 
-> > The mac-address here is taken as a default mac address in eth
-> > driver
-> > rather than a randome one.
-> > Actually, there will be a tool to customize eth mac address (e.g
-> > through "ifconfig eth0 hw ether xx:xx:xx:xx:xx:xx"), so every
-> > MT8195 SoCs will get their specified mac address in real product.
-> 
-> So this means this is not one MAC address for all SoCs, so this does
-> not
-> belong to DTSI. Actually it doesn't belong to DTS either. Look how
-> others are doing...
-OK, will remove it in next send.
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+As Krzysztof also said, this is video-codec@1a020000.
+
+Also, there's one more thing... MT8195 has two video encoder cores, but this
+node is only for the first one. There's a second instance at 0x1b020000: please
+add it.
+
+Regards,
+Angelo
 
 
