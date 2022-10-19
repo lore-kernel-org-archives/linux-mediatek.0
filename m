@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2547C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 08:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704E0C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 08:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EqvjHWUlk3KNFum9CdzugghlPYgbo32lSRlTs7sZX1E=; b=sByrQ/FU21BwJ7wrmAZUFLVbJm
-	xL2KlyCcwxT6euVBFJ/seRfxOeuAyVzI7IIlzy3AZVFLc/KBWv88E3wahGGHJDuy76faH20x66Hnp
-	koxsZlw4bqbkfYEJgqZqtL8LpDXao3CQTlx6EGaU0jkkXnX+/q6+j0i/8OrtaGe1iq5gGxuZtizkF
-	DXVcqWBEVBny2EUmfskhLDWsyB20V9NlLP+AO6y15P5/Ik1DerJHhNcW25AFohrNplWE5Cuso5PzY
-	6lGs0NujFKLpITiwqFNJqo+cOWRyApS8DhlyxDzl0km12RKZsVVCahC8U/leclbGW7eEfT2yuMn1T
-	2VeVnlfA==;
+	bh=VXEyPaTCrLxGpSY/5IgutvS9DnC8wiZbTJnfp0Z5oLk=; b=Qx/4JPgpbALT3bR41nd0wg1ezU
+	MFwZuu8f+VgCkiLKCFwCc34CIu5nQ7bO1djA8077RGFqzQc/KOWF+nMnQTGVxfc/gBtFSLDz1H5tP
+	FCmr0FliSJNmqQnuVK7fr3OjgqIKn9fS2IMN/zIWu6bvNhCZnb5eNX3YkQNO1FX43jGJzl4WbwTL+
+	GSu08GWVOjQmyrsMDhiEHznE6gMEg50JrEC64rj59X/yWmAHm6aYX0ZsmG0+JuYSWXHXcJCJ6ZXNU
+	+5kGODS0JuJdx30APfOLrJddtIZ82Jt2AEXbNIY+KrGsZHQjaham5narZ+caLoVLb9hZqQYSPftVF
+	W3DOPwTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol4SC-00GZEF-SB; Wed, 19 Oct 2022 08:29:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ol4aK-00GdCP-U0; Wed, 19 Oct 2022 08:37:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol4Rm-00GZ8I-Iz; Wed, 19 Oct 2022 08:29:08 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3D016602388;
-	Wed, 19 Oct 2022 09:29:01 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666168142;
-	bh=ocWrVQMR3Z9kZzLMg8BVFlJNcN/HGEjR1aguO3cp0bc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JslCHyyIYsNdzm6vEIetBjO8qkDZ/ptAL3uvjqbctSrFPeXp6ycqYEeYvuQ/rk3SE
-	 m1vLNqJp0WOvN/qqMhIHUHGe+HO0NmOI7OcLVf0Mwm3li8sTr+h3xLZwiBdqYKBeuA
-	 MytITpObucpWuclzLgmsf4eLGlxzpm1WgINdmBIo/uWbiGbokxPQ8kbvMRsHP+Hdwx
-	 aJ1Bc+cN5c54wCsVIVhlnHsOXqmF+musNmIUniJQdOWyNX8H9CabdT5fh2VoDOD64X
-	 6SoMfuVAF5hsoAfjGpHpsVsobEHrAmv/M1uLd0Hr4kn2O63JeTFY+Vac8yMRxaFyBW
-	 tiL5rtbl75dQA==
-Message-ID: <97916360-a24b-0e7d-cc86-9b801fadf869@collabora.com>
-Date: Wed, 19 Oct 2022 10:28:59 +0200
+	id 1ol4aD-00Gd4D-Rb; Wed, 19 Oct 2022 08:37:51 +0000
+X-UUID: 59a8ba7683bc4d7c9e7bdf0e329eac14-20221019
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=VXEyPaTCrLxGpSY/5IgutvS9DnC8wiZbTJnfp0Z5oLk=;
+	b=H3jy3jdr9uCQ3VXN6SO1gA7LGwtCgbwgbU8Yavzn38a20dHoJ3p5t02rCBt55+NzqVvrYRN0qjh55+TOMoEBOaWMCHp/6cABbzFe42C+jhD0LsX8xmOX16IHnfsjx6Q17k5Dgy6DFJ6MJgbzHWZnlRoIMdu6l93sZw2CU9K+I94=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:748bb564-65f8-4761-a22f-f71712bda4e2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:d57e47a3-73e4-48dd-a911-57b5d5484f14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 59a8ba7683bc4d7c9e7bdf0e329eac14-20221019
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1883620134; Wed, 19 Oct 2022 01:37:37 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 19 Oct 2022 16:37:02 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 19 Oct 2022 16:37:02 +0800
+Message-ID: <8c04c2f898ecc1466c3f14eace30762956c83885.camel@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mt8195: Add Ethernet controller
+From: Biao Huang <biao.huang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<macpaul.lin@mediatek.com>
+Date: Wed, 19 Oct 2022 16:37:02 +0800
+In-Reply-To: <37fff2b8-a798-dea3-c010-714a2bac695f@linaro.org>
+References: <20221017095834.7675-1-biao.huang@mediatek.com>
+	 <d6bda69e-d331-3e64-2100-d41e84c3fab7@linaro.org>
+	 <b5d18b4b631cb19d435f37ccacd296a2282c2a1a.camel@mediatek.com>
+	 <37fff2b8-a798-dea3-c010-714a2bac695f@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [RFC v1 02/12] dt-bindings: PCI: mediatek-gen3: add support for
- mt7986
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-References: <20221017104141.7338-1-linux@fw-web.de>
- <20221017104141.7338-3-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221017104141.7338-3-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_012906_871775_992C6323 
-X-CRM114-Status: GOOD (  23.28  )
+X-CRM114-CacheID: sfid-20221019_013749_943896_664649FB 
+X-CRM114-Status: GOOD (  35.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,103 +85,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/22 12:41, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Dear Krzysztof,
+	Thanks for your comments~
+
+On Tue, 2022-10-18 at 08:51 -0400, Krzysztof Kozlowski wrote:
+> On 18/10/2022 02:37, Biao Huang wrote:
+> > Dear Krzysztof,
+> > 	Thanks for your comments!
+> > 
+> > On Mon, 2022-10-17 at 22:01 -0400, Krzysztof Kozlowski wrote:
+> > > On 17/10/2022 05:58, Biao Huang wrote:
+> > > > Add Ethernet controller node for mt8195.
+> > > > 
+> > > > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > > > ---
+> > > >  arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88
+> > > > ++++++++++++++++++++
+> > > >  arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 87
+> > > > +++++++++++++++++++
+> > > >  2 files changed, 175 insertions(+)
+> > > > 
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > > > b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > > > index 4fbd99eb496a..02e04f82a4ae 100644
+> > > > --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > > > +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+> > > > @@ -258,6 +258,72 @@ &mt6359_vsram_others_ldo_reg {
+> > > >  };
+> > > >  
+> > > >  &pio {
+> > > > +	eth_default: eth_default {
+> > > 
+> > > No underscores in node names. Please also be sure your patch does
+> > > not
+> > > bring new warnings with `dtbs_check` (lack of suffix above could
+> > > mean
+> > > it
+> > > brings...)
+> > 
+> > OK, I'll fix the underscores issue in next send.
+> > As to "lack of suffix" issue, do you mean I should write it like:
+> > 	eth-default: eth-default@0 {
 > 
-> Add compatible string for mt7986.
+> I don't know whether you should have here suffix or not - please
+> check
+> your bindings. Several pinctrl bindings require suffixes (or
+> prefixes),
+> thus I asked.
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-> mt7986a.dtsi misses clock-names which are now required since support of
-> MT8192/MT8188/MT8195. This change also introduces a 6th clock which is
-> now needed for all pcie-gen3 dts.
+> BTW, In the label you must use underscore.
+OK, I'll check the pinctrl-mt8195.yaml, and modify the eth related
+node.
 > 
-> i do not know how to map the clocks to the names...
+> > 		...
+> > 	}
+> > If yes, other nodes in current file don't have such suffix.
+> > e.g.
+> > 	gpio_keys_pins: gpio-keys-pins
+> > 
+> > Should I keep unified style with other nodes?
 > 
-> mediatek-pcie-gen3.yaml:
+> Check what bindings are requiring.
+OK.
 > 
->    clock-names:
->      items:
->        - const: pl_250m
->        - const: tl_26m
->        - const: tl_96m
->        - const: tl_32k
->        - const: peri_26m
->        - enum:
->            - top_133m        # for MT8192
->            - peri_mem        # for MT8188/MT8195
+> > > 
+> > > > +		txd_pins {
 > 
-> mt7986a.dtsi:
+> (...)
 > 
-> 	clocks = <&infracfg CLK_INFRA_PCIE_SEL>,
-> 		 <&infracfg CLK_INFRA_IPCIE_CK>,
-> 		 <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-> 		 <&infracfg CLK_INFRA_IPCIER_CK>,
-> 		 <&infracfg CLK_INFRA_IPCIEB_CK>;
-
-If this SoC has a different clock tree... then you should add bindings for this
-kind of clock tree.
-
-CLK_INFRA_IPCIER_CK is *not* a peri clock: "peri" means PERICFG, which does not
-seem to be present in this SoC... so no, you can't assign it to "peri_26m", nor
-you can assign it to tl_32k, as that's not a 32KHz clock.
-
-CLK_INFRA_PCIEB_CK can be a "top_133m" clock... as it is gating "sysaxi_sel",
-which is a topckgen clock.
-
-CLK_INFRA_IPCIE_CK is your "tl_(something)" clock, as that's effectively gating
-"pextp_tl_ck_sel" (which is the PCIe Transaction Layer clock mux).
-
-CLK_INFRA_IPCIE_PIPE_CK seems to be parented to "top_xtal", frequency = 40MHz,
-so I don't see how can this be a pl_250m? Looks like being a 40m clock and I
-wish we didn't have clock frequencies specified in the names, as "pl" would fit,
-but "pl_250m" does not.
-I wonder if we can change the clock names and reflect the changes to the mt8192
-devicetree (mt8195 does not have any pcie node yet), and if that would be a good
-idea right now.
-
-...and I've left the first for last, because...
-
-CLK_INFRA_PCIE_SEL: I have no datasheet for this SoC, but if you're sure that
-this clock is selecting the source clock to CLK_INFRA_IPCIE_CK, then the clock
-driver is wrong...
-
-Right now, I see the following:
-
-static const char *const infra_pcie_parents[] __initconst = {
-	"top_rtc_32p7k", "csw_f26m_sel", "top_xtal", "pextp_tl_ck_sel"
-};
-
-GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "pextp_tl_ck_sel", 12),
-
-MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_SEL, "infra_pcie_sel",
-		     infra_pcie_parents, 0x0028, 0x0020, 0x0024, 0, 2,
-		     -1, -1, -1),
-
-....so if you're right, we should instead have:
-
-GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "infra_pcie_sel", 12),
-
-....with this meaning that adding CLK_INFRA_PCIE_SEL in devicetree is useless.
-
-This clock tree looks a bit unclear (because again, there's no datasheet around),
-but that's what I understand with a rather fast look in the clock drivers and
-with some experience on other MTK SoCs.
-
-Then again, if this tree is effectively incompatible with the one from MT8192 and
-MT8195, you should have different clock names... and just as a fast idea:
-
-clock-names = "axi", "tl", "pl", "top";
-
-with clocks, in order:
-CLK_INFRA_PCIEB_CK, CLK_INFRA_IPCIE_CK,
-CLK_INFRA_IPCIE_PIPE_CK, CLK_INFRA_IPCIER_CK.
-
-...but feel free to reiterate that :-)
-Hope that was helpful.
-
-Cheers,
-Angelo
+> > > > +
+> > > > +		eth: ethernet@11021000 {
+> > > > +			compatible = "mediatek,mt8195-gmac",
+> > > > "snps,dwmac-5.10a";
+> > > > +			reg = <0 0x11021000 0 0x4000>;
+> > > > +			interrupts = <GIC_SPI 716
+> > > > IRQ_TYPE_LEVEL_HIGH
+> > > > 0>;
+> > > > +			interrupt-names = "macirq";
+> > > > +			mac-address = [00 55 7b b5 7d f7];
+> > > 
+> > > How is this property of a SoC? Are you saying now that all MT8195
+> > > SoCs
+> > > have the same MAC address?
+> > 
+> > The mac-address here is taken as a default mac address in eth
+> > driver
+> > rather than a randome one.
+> > Actually, there will be a tool to customize eth mac address (e.g
+> > through "ifconfig eth0 hw ether xx:xx:xx:xx:xx:xx"), so every
+> > MT8195 SoCs will get their specified mac address in real product.
+> 
+> So this means this is not one MAC address for all SoCs, so this does
+> not
+> belong to DTSI. Actually it doesn't belong to DTS either. Look how
+> others are doing...
+OK, will remove it in next send.
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
