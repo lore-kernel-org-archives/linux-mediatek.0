@@ -4,52 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89980C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 16:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B96C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 18:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QPBVcim80ZEA2cpucSN5geGdm9XZKu9ZntbpN9+CTng=; b=YynMuZVxlKPzbALwwrayndFGCg
-	AR92m7Ky7vuItNU80bE25VWwhGPbQMd6zDom2orVnhbAIMwzZHWfRySCdljsC2MnUInIpktANloSf
-	lnIcgKmnVh2hG4Ncw1RhWB7etT4MhQzcPMm8tda1/8Y8e3e1EnPG72XUqXR25IFkm84yvge7dFSs7
-	YokawT0wIODUvXYmwA+q/l/gj+glNfer4Oiq7lXZD06mNUsQT59jE5LI8mtLBNSy+C2UBbmG4XGhW
-	O2HgqqhxwdJH86uP5iz76/piGEMtcft1NrM6v18PkQwqYSnBxeRJT+3gsb44dic65/Ng5MV0gTCen
-	noS9Gk5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=onZg9bkGpyLkmJj2Fk6FDBy22LakxbtW4dE3qVAG/38=; b=oiWWKDzY6AD1KIJzFdRa9epwDv
+	dSknwKXNznO+2akCbnlA5p3YxN4C6k4xmUt7hx4ZNtz35atKJiwVdJbNB07jHt3mo+RpC7JVNmLik
+	IkJbxAOwRW1j6lddFf174bRMaMYNHEUL6UIP2+OQLmpSzVOJlm731LwTrjcBGaemLirC2WfhSqu8o
+	+3UFM7rmXjqcPIsC9pCLX7dcRbMEgZzs1FaahnrN9/FLhMwf43Jkfc8kTfw8glPhYNAHL4HFruDCB
+	Zd2mC1nNlNSr1ZFilh997hfjwcnIMAq3vugbwrjErdGgrBEK/f0dPaLR7LYBoxEfL4npBVhs/HT+P
+	Ee9kKBQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olBU4-003c9Z-F9; Wed, 19 Oct 2022 15:59:56 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1olEGp-004kYe-Ir; Wed, 19 Oct 2022 18:58:27 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olB9G-003M9k-9N; Wed, 19 Oct 2022 15:38:27 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1olB9A-000167-Pv; Wed, 19 Oct 2022 17:38:20 +0200
-Date: Wed, 19 Oct 2022 16:38:14 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH 2/2] dt-bindings: phy: mediatek: tphy: add compatible for
- tphy-v4
-Message-ID: <07c5d962515c4f675f076bb91d69eaf651b187c6.1666193782.git.daniel@makrotopia.org>
-References: <df51b63add2830d91b527db64fba6ffdb7765f5d.1666193782.git.daniel@makrotopia.org>
+	id 1olEGd-004kTi-2G; Wed, 19 Oct 2022 18:58:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 03989B825B6;
+	Wed, 19 Oct 2022 18:58:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F1BC433C1;
+	Wed, 19 Oct 2022 18:58:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666205891;
+	bh=onZg9bkGpyLkmJj2Fk6FDBy22LakxbtW4dE3qVAG/38=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=s/QRSEYU6CfqIOUb1Rd8FcgomGAdkwREiqcsrf0LmVB9BwF9/81d8Y1hYeN2s3s/Y
+	 VoD8ADpfMfOiR0hdz4/cPi94E1+bLqNMVKT3J3vpLIc8aXADo8Vb56zjYqOzZIHQwm
+	 Q/38SLzyoFqo+T2vN+Dfl2YnHovoF/ZOdzxqgukeU0G4xJlnQ2zpVco6wuhLDrMUFm
+	 x1INfQdLxkSsRmgDATky2yE9RbY+tdV1L5uYXxmL7MoWBO6cUCPVPiaEIaejaYJt2X
+	 WiE0FZaJ76F0pnzhQxC5KrFNPUpv4xh85ymDN5KCcuWPKeVTpLc3sRp4Qbnax2+ZFj
+	 iBmEGWQCRlBLg==
+Date: Wed, 19 Oct 2022 11:58:09 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Hans J. Schultz" <netdev@kapio-technology.com>
+Cc: davem@davemloft.net, netdev@vger.kernel.org, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
+ <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
+ <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
+ Machata <petrm@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Florent
+ Fourcot <florent.fourcot@wifirst.fr>, Hans Schultz
+ <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit Cohen
+ <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v8 net-next 00/12] Extend locked port feature with FDB
+ locked flag (MAC-Auth/MAB)
+Message-ID: <20221019115809.552812a5@kernel.org>
+In-Reply-To: <20221018165619.134535-1-netdev@kapio-technology.com>
+References: <20221018165619.134535-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <df51b63add2830d91b527db64fba6ffdb7765f5d.1666193782.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_083826_406050_702F25CE 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221019_115815_298515_729E7FB0 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,40 +89,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-V4 can be found in MT7986 and MT7981 SoCs, it supports PCIe with two
-lanes.
+On Tue, 18 Oct 2022 18:56:07 +0200 Hans J. Schultz wrote:
+> This patch set extends the locked port feature for devices
+> that are behind a locked port, but do not have the ability to
+> authorize themselves as a supplicant using IEEE 802.1X.
+> Such devices can be printers, meters or anything related to
+> fixed installations. Instead of 802.1X authorization, devices
+> can get access based on their MAC addresses being whitelisted.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-index 5613cc5106e32f..851e3dda7b638b 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -89,6 +89,11 @@ properties:
-               - mediatek,mt8188-tphy
-               - mediatek,mt8195-tphy
-           - const: mediatek,generic-tphy-v3
-+      - items:
-+          - enum:
-+              - mediatek,mt7981-tphy
-+              - mediatek,mt7986-tphy
-+          - const: mediatek,generic-tphy-v4
-       - const: mediatek,mt2701-u3phy
-         deprecated: true
-       - const: mediatek,mt2712-u3phy
-@@ -99,7 +104,7 @@ properties:
-     description:
-       Register shared by multiple ports, exclude port's private register.
-       It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
--      T-PHY V2/V3, such as mt2712.
-+      T-PHY V2/V3/V4, such as mt2712.
-     maxItems: 1
- 
-   "#address-cells":
--- 
-2.37.3
-
+FWIW half of this posting got stuck on the "email pipes" for a day..
+somehow. Let's give Ido and others a chance to have a look but you'll
+need to repost even if it's flawless because the build bots can't deal
+with a delay that long :(
 
