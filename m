@@ -4,91 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00F4C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 15:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C40C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 15:58:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5JGEvqiPv9/QL23UPc8CRrhfNP28x42Bpa36jKqUmi8=; b=sFSvozd8Q/W7KnnOyk4D5N9dcP
-	YiDLYtYb1ZZEDBdf7g7JJO+KNWjUW4U6aHXByr2Nj9JcnAwQWvrR9AcQJP7GngT73UEx20vUXVkZ0
-	swfp630ZxZueQSKwULSVk+OMeRY9AuBZI6PIJTiL/dIxsOKA2ykLHTJgbzsn+JEGb7zdIDKjNS6gb
-	89WzckKTwEujEI6dfP0jnFT1zg046pQ93KoMLStqnEKOtxI/g0y+dDbQwB8Qv/P84BGMmmY4IdTRy
-	UVp2/o4vmJ8L/+WnqHmI4v37G76AAfpYlk4iaHWiyG64N4cSkioVUjyrySUsNSorAqgtBtvQfNj6U
-	gKvUMG9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ISX6QpPRg7V9JoRSnj0d65sQzFiTPSAJngbgVAeUpIw=; b=riJspIcLYvXI5ImsZLo/N7aiWE
+	qVttrtsuJWE7vDOPmvVDw1UmS0LtOW6SS8FI3SImpH1vwq2falfgaN7AcwTfa8MXJcgjnReWhkLM6
+	ZSOANoyXGORfwtRvFmC2WUOW+hwm2dkDaAnb14ZRrtAbb/mUNElveAHuQnP5F1qZi/i1jiyybPEha
+	boaf0Dc4zM0jT9Q59r+vA12YJlY+RoyQ1l7YA2Co+JJj9v2tvIXeJGNfe8DJa5hQMuYGCkLy84Cse
+	mBWtkehHjuFFAmkEWxHNMipsjh87O5fbmxKgBy77daTOFU+iyeIRBzewqBFzcljOH42R2Ejf0zxG9
+	y0tqoqCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olB96-003M3j-Ak; Wed, 19 Oct 2022 15:38:16 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1olBSd-003apM-La; Wed, 19 Oct 2022 15:58:27 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olAmX-00374z-9h; Wed, 19 Oct 2022 15:14:59 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5CCFD1884AE1;
-	Wed, 19 Oct 2022 15:12:49 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id C9B6C25004F1;
-	Wed, 19 Oct 2022 15:12:48 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 0)
-	id B42959120FED; Wed, 19 Oct 2022 15:12:48 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 3181D9120FED;
-	Tue, 18 Oct 2022 16:57:00 +0000 (UTC)
-From: "Hans J. Schultz" <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	"Hans J. Schultz" <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>,
-	Petr Machata <petrm@nvidia.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH v8 net-next 09/12] net: dsa: mv88e6xxx: allow reading FID when handling ATU violations
-Date: Tue, 18 Oct 2022 18:56:16 +0200
-Message-Id: <20221018165619.134535-10-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221018165619.134535-1-netdev@kapio-technology.com>
-References: <20221018165619.134535-1-netdev@kapio-technology.com>
+	id 1olB8p-003LqV-3r; Wed, 19 Oct 2022 15:38:00 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1olB8j-00015j-Gi; Wed, 19 Oct 2022 17:37:53 +0200
+Date: Wed, 19 Oct 2022 16:37:44 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] phy: phy-mtk-tphy: Add PCIe 2 lane efuse support
+Message-ID: <df51b63add2830d91b527db64fba6ffdb7765f5d.1666193782.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_081457_662114_E75B07EF 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20221019_083759_242877_BAB3FBB4 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,115 +59,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The FID is needed to get hold of which VID was involved in a violation,
-thus the need to be able to read the FID.
+From: Zhanyong Wang <zhanyong.wang@mediatek.com>
 
-For convenience the function mv88e6xxx_g1_atu_op() has been used to read
-ATU violations, but the function invalidates reading the fid, so to both
-read ATU violations without zeroing the fid, and read the fid, functions
-have been added to ensure both are done correctly.
+Add PCIe 2 lane efuse support in tphy driver.
 
-Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+Signed-off-by: Jie Yang <jieyy.yang@mediatek.com>
+Signed-off-by: Zhanyong Wang <zhanyong.wang@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mv88e6xxx/global1_atu.c | 60 ++++++++++++++++++++++---
- 1 file changed, 55 insertions(+), 5 deletions(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 112 ++++++++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-diff --git a/drivers/net/dsa/mv88e6xxx/global1_atu.c b/drivers/net/dsa/mv88e6xxx/global1_atu.c
-index 40bd67a5c8e9..d9dfa1159cde 100644
---- a/drivers/net/dsa/mv88e6xxx/global1_atu.c
-+++ b/drivers/net/dsa/mv88e6xxx/global1_atu.c
-@@ -114,6 +114,19 @@ static int mv88e6xxx_g1_atu_op_wait(struct mv88e6xxx_chip *chip)
- 	return mv88e6xxx_g1_wait_bit(chip, MV88E6XXX_G1_ATU_OP, bit, 0);
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index e906a82791bdaa..b0c9834efec7ef 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -43,6 +43,15 @@
+ #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+ #define SSUSB_SIFSLV_V2_U3PHYA		0x400
+ 
++/* version V4 sub-banks offset base address */
++/* pcie phy banks */
++#define SSUSB_SIFSLV_V4_SPLLC		0x000
++#define SSUSB_SIFSLV_V4_CHIP		0x100
++#define SSUSB_SIFSLV_V4_U3PHYD		0x900
++#define SSUSB_SIFSLV_V4_U3PHYA		0xb00
++
++#define SSUSB_LN1_OFFSET		0x10000
++
+ #define U3P_MISC_REG1		0x04
+ #define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
+ 
+@@ -268,6 +277,7 @@ enum mtk_phy_version {
+ 	MTK_PHY_V1 = 1,
+ 	MTK_PHY_V2,
+ 	MTK_PHY_V3,
++	MTK_PHY_V4,
+ };
+ 
+ struct mtk_phy_pdata {
+@@ -317,6 +327,9 @@ struct mtk_phy_instance {
+ 	u32 efuse_intr;
+ 	u32 efuse_tx_imp;
+ 	u32 efuse_rx_imp;
++	u32 efuse_intr_ln1;
++	u32 efuse_tx_imp_ln1;
++	u32 efuse_rx_imp_ln1;
+ 	int eye_src;
+ 	int eye_vrt;
+ 	int eye_term;
+@@ -760,6 +773,36 @@ static void phy_v2_banks_init(struct mtk_tphy *tphy,
+ 	}
  }
  
-+static int mv88e6xxx_g1_read_atu_violation(struct mv88e6xxx_chip *chip)
++static void phy_v4_banks_init(struct mtk_tphy *tphy,
++			      struct mtk_phy_instance *instance)
 +{
-+	int err;
++	struct u2phy_banks *u2_banks = &instance->u2_banks;
++	struct u3phy_banks *u3_banks = &instance->u3_banks;
 +
-+	err = mv88e6xxx_g1_write(chip, MV88E6XXX_G1_ATU_OP,
-+				 MV88E6XXX_G1_ATU_OP_BUSY |
-+				 MV88E6XXX_G1_ATU_OP_GET_CLR_VIOLATION);
-+	if (err)
-+		return err;
-+
-+	return mv88e6xxx_g1_atu_op_wait(chip);
-+}
-+
- static int mv88e6xxx_g1_atu_op(struct mv88e6xxx_chip *chip, u16 fid, u16 op)
- {
- 	u16 val;
-@@ -159,6 +172,41 @@ int mv88e6xxx_g1_atu_get_next(struct mv88e6xxx_chip *chip, u16 fid)
- 	return mv88e6xxx_g1_atu_op(chip, fid, MV88E6XXX_G1_ATU_OP_GET_NEXT_DB);
- }
- 
-+static int mv88e6xxx_g1_atu_fid_read(struct mv88e6xxx_chip *chip, u16 *fid)
-+{
-+	u16 val = 0, upper = 0, op = 0;
-+	int err = -EOPNOTSUPP;
-+
-+	if (mv88e6xxx_num_databases(chip) > 256) {
-+		err = mv88e6xxx_g1_read(chip, MV88E6352_G1_ATU_FID, &val);
-+		val &= 0xfff;
-+		if (err)
-+			return err;
-+	} else {
-+		err = mv88e6xxx_g1_read(chip, MV88E6XXX_G1_ATU_OP, &op);
-+		if (err)
-+			return err;
-+		if (mv88e6xxx_num_databases(chip) > 64) {
-+			/* ATU DBNum[7:4] are located in ATU Control 15:12 */
-+			err = mv88e6xxx_g1_read(chip, MV88E6XXX_G1_ATU_CTL, &upper);
-+			if (err)
-+				return err;
-+
-+			upper = (upper >> 8) & 0x00f0;
-+		} else if (mv88e6xxx_num_databases(chip) > 16) {
-+			/* ATU DBNum[5:4] are located in ATU Operation 9:8 */
-+
-+			upper = (op >> 4) & 0x30;
-+		}
-+		/* ATU DBNum[3:0] are located in ATU Operation 3:0 */
-+
-+		val = (op & 0xf) | upper;
++	switch (instance->type) {
++	case PHY_TYPE_USB2:
++		u2_banks->misc = instance->port_base + SSUSB_SIFSLV_V2_MISC;
++		u2_banks->fmreg = instance->port_base + SSUSB_SIFSLV_V2_U2FREQ;
++		u2_banks->com = instance->port_base + SSUSB_SIFSLV_V2_U2PHY_COM;
++		break;
++	case PHY_TYPE_USB3:
++		u3_banks->spllc = instance->port_base + SSUSB_SIFSLV_V2_SPLLC;
++		u3_banks->chip = instance->port_base + SSUSB_SIFSLV_V2_CHIP;
++		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V2_U3PHYD;
++		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V2_U3PHYA;
++		break;
++	case PHY_TYPE_PCIE:
++		u3_banks->spllc = instance->port_base + SSUSB_SIFSLV_V4_SPLLC;
++		u3_banks->chip = instance->port_base + SSUSB_SIFSLV_V4_CHIP;
++		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V4_U3PHYD;
++		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V4_U3PHYA;
++		break;
++	default:
++		dev_err(tphy->dev, "incompatible PHY type\n");
++		return;
 +	}
-+	*fid = val;
-+
-+	return err;
 +}
 +
- /* Offset 0x0C: ATU Data Register */
- 
- static int mv88e6xxx_g1_atu_data_read(struct mv88e6xxx_chip *chip,
-@@ -353,14 +401,12 @@ static irqreturn_t mv88e6xxx_g1_atu_prob_irq_thread_fn(int irq, void *dev_id)
+ static void phy_parse_property(struct mtk_tphy *tphy,
+ 				struct mtk_phy_instance *instance)
  {
- 	struct mv88e6xxx_chip *chip = dev_id;
- 	struct mv88e6xxx_atu_entry entry;
--	int spid;
--	int err;
--	u16 val;
-+	int err, spid;
-+	u16 val, fid;
+@@ -951,6 +994,40 @@ static int phy_efuse_get(struct mtk_tphy *tphy, struct mtk_phy_instance *instanc
  
- 	mv88e6xxx_reg_lock(chip);
- 
--	err = mv88e6xxx_g1_atu_op(chip, 0,
--				  MV88E6XXX_G1_ATU_OP_GET_CLR_VIOLATION);
-+	err = mv88e6xxx_g1_read_atu_violation(chip);
- 	if (err)
- 		goto out;
- 
-@@ -368,6 +414,10 @@ static irqreturn_t mv88e6xxx_g1_atu_prob_irq_thread_fn(int irq, void *dev_id)
- 	if (err)
- 		goto out;
- 
-+	err = mv88e6xxx_g1_atu_fid_read(chip, &fid);
-+	if (err)
-+		goto out;
+ 		dev_dbg(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp %x\n",
+ 			instance->efuse_intr, instance->efuse_rx_imp,instance->efuse_tx_imp);
 +
- 	err = mv88e6xxx_g1_atu_data_read(chip, &entry);
- 	if (err)
- 		goto out;
++		if (tphy->pdata->version != MTK_PHY_V4)
++			break;
++
++		ret = nvmem_cell_read_variable_le_u32(dev, "intr_ln1", &instance->efuse_intr_ln1);
++		if (ret) {
++			dev_err(dev, "fail to get u3 lane1 intr efuse, %d\n", ret);
++			break;
++		}
++
++		ret = nvmem_cell_read_variable_le_u32(dev, "rx_imp_ln1", &instance->efuse_rx_imp_ln1);
++		if (ret) {
++			dev_err(dev, "fail to get u3 lane1 rx_imp efuse, %d\n", ret);
++			break;
++		}
++
++		ret = nvmem_cell_read_variable_le_u32(dev, "tx_imp_ln1", &instance->efuse_tx_imp_ln1);
++		if (ret) {
++			dev_err(dev, "fail to get u3 lane1 tx_imp efuse, %d\n", ret);
++			break;
++		}
++
++		/* no efuse, ignore it */
++		if (!instance->efuse_intr_ln1 &&
++		    !instance->efuse_rx_imp_ln1 &&
++		    !instance->efuse_tx_imp_ln1) {
++			dev_warn(dev, "no u3 lane1 efuse, but dts enable it\n");
++			instance->efuse_sw_en = 0;
++			break;
++		}
++
++		dev_info(dev, "u3 lane1 efuse - intr %x, rx_imp %x, tx_imp %x\n",
++			 instance->efuse_intr_ln1, instance->efuse_rx_imp_ln1,
++			 instance->efuse_tx_imp_ln1);
+ 		break;
+ 	default:
+ 		dev_err(dev, "no sw efuse for type %d\n", instance->type);
+@@ -990,6 +1067,31 @@ static void phy_efuse_set(struct mtk_phy_instance *instance)
+ 
+ 		mtk_phy_update_field(u3_banks->phya + U3P_U3_PHYA_REG0, P3A_RG_IEXT_INTR,
+ 				    instance->efuse_intr);
++		if (instance->type == PHY_TYPE_USB3 || (
++		    !instance->efuse_intr_ln1 &&
++		    !instance->efuse_rx_imp_ln1 &&
++		    !instance->efuse_tx_imp_ln1))
++			break;
++
++		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET + U3P_U3_PHYD_RSV,
++				 P3D_RG_EFUSE_AUTO_LOAD_DIS);
++
++		mtk_phy_update_field(u3_banks->phyd + SSUSB_LN1_OFFSET + U3P_U3_PHYD_IMPCAL0,
++				     P3D_RG_TX_IMPEL, instance->efuse_tx_imp_ln1);
++		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET + U3P_U3_PHYD_IMPCAL0,
++				 P3D_RG_FORCE_TX_IMPEL);
++
++		mtk_phy_update_field(u3_banks->phyd + SSUSB_LN1_OFFSET + U3P_U3_PHYD_IMPCAL1,
++				     P3D_RG_RX_IMPEL, instance->efuse_rx_imp_ln1);
++		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET + U3P_U3_PHYD_IMPCAL1,
++				 P3D_RG_FORCE_RX_IMPEL);
++
++		mtk_phy_update_field(u3_banks->phya + SSUSB_LN1_OFFSET + U3P_U3_PHYA_REG0,
++				     P3A_RG_IEXT_INTR, instance->efuse_intr_ln1);
++
++		dev_info(dev, "%s set LN1 efuse, tx_imp %x, rx_imp %x intr %x\n",
++			 __func__, instance->efuse_tx_imp_ln1,
++			 instance->efuse_rx_imp_ln1, instance->efuse_intr_ln1);
+ 		break;
+ 	default:
+ 		dev_warn(dev, "no sw efuse for type %d\n", instance->type);
+@@ -1129,6 +1231,9 @@ static struct phy *mtk_phy_xlate(struct device *dev,
+ 	case MTK_PHY_V3:
+ 		phy_v2_banks_init(tphy, instance);
+ 		break;
++	case MTK_PHY_V4:
++		phy_v4_banks_init(tphy, instance);
++		break;
+ 	default:
+ 		dev_err(dev, "phy version is not supported\n");
+ 		return ERR_PTR(-EINVAL);
+@@ -1169,6 +1274,12 @@ static const struct mtk_phy_pdata tphy_v3_pdata = {
+ 	.version = MTK_PHY_V3,
+ };
+ 
++static const struct mtk_phy_pdata tphy_v4_pdata = {
++	.avoid_rx_sen_degradation = false,
++	.sw_efuse_supported = true,
++	.version = MTK_PHY_V4,
++};
++
+ static const struct mtk_phy_pdata mt8173_pdata = {
+ 	.avoid_rx_sen_degradation = true,
+ 	.version = MTK_PHY_V1,
+@@ -1188,6 +1299,7 @@ static const struct of_device_id mtk_tphy_id_table[] = {
+ 	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
+ 	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
+ 	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
++	{ .compatible = "mediatek,generic-tphy-v4", .data = &tphy_v4_pdata },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_tphy_id_table);
 -- 
-2.34.1
+2.37.3
 
 
