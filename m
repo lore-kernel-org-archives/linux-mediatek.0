@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CD1C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24FC2C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:21:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=; b=I97W6RyKGNMMUV6HZXFC2J/KhY
-	mvI3LMuv20ukndU6ndmb1dQnC4lkj8mDHawX0n4YsRyqG2dZWHA/ETELEMM2x+ICGvRUawKy8w/5N
-	Cr7EgiNZ7aLraVHGxjJxOUqzS/gH0hUb0xRyrGQJ5Qw/u6NNz7qjYgWkDqZvQejgCmEpUuwXHlPua
-	Vsze7B/f+fckfyAeluYE7rHlvhr6HaSVISeBuCEeR3p4rjIC1ly607dShynqJ7o9JpA+iYx1/50WY
-	05y3z9TN7WW6FzCVU+OMDug6fmgN/yOkYSOd8nb4gfilKm1miJPyDVUQkuhiqXJKOkX5R+QN00mtY
-	WIsPtBZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aLQaH8kLuBy4zyHgqqB9tZsey4wfxoCGASmgyFWFngw=; b=rdy/TXNLHJAwpuMJHDlzhFR+AO
+	sEZpvrVZIHsiczT7jZVwKu1qHCOx+suISAAY2rStJvXEYPWvekkH+NK6QhFBj3c4Yq7DelXGS8+rj
+	SPv9rLOmpOGP0TnPaDXyrf/YPP+GYuuivcJ7SCDhAgKoydc44+oW4x3XZWX5V2mYp2cjjE50M8F16
+	urK67NwcvkY94l1rsw02imIABG+K/ObsK5hiWiQqoH1b4hYH6GdvjhFHz0Fxgl/0232pE2pCT/mBP
+	BDQUcuoQ7UV4kJT0tVBPmkHDm/RE7C1x+pkUb2e9UGqPeEUPYoad/mt8y74AAyLTQ2ktf5RCbAJr9
+	E0ps2oNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYIJ-000Gnz-CU; Thu, 20 Oct 2022 16:21:19 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1olYIR-000Gsi-BZ; Thu, 20 Oct 2022 16:21:27 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYID-000Gj0-V4
+	id 1olYIF-000Ghy-6F
 	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:21:17 +0000
-Received: by mail-wr1-x434.google.com with SMTP id n12so35224296wrp.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:21:13 -0700 (PDT)
+Received: by mail-wr1-x42f.google.com with SMTP id bp11so35453979wrb.9
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:21:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=;
-        b=vLTlwUnpIWIwuvgi0iyBzDgogj1smwA6hhFgkNvK1JQ5gnNPG3XeP5FaxtLrguiiUI
-         yuymHez2yeU703/Gjhglf/3/sijnGdCsN+WIyQt514KEm3HfrfDOnmUt2Evo0ez2pt3V
-         BXp/ighRuejFCYjQiAT05SPZiV+7IrxKHh96ZFXjRzhohOAOcPpHi/scyWj0Iyp365+0
-         jKxiPxuoFGS1Z/g0d9sCsq5M2fObmFAD+CFgiK2uJ0p+elwWT8P2+ECMzQxeclCPkuyd
-         w8GDrWTdqzpFkBBguosfVea6TmJ8aNiuiG3WFo5fSAzdp/+EVdDo7GkaCYQRZ013tg7T
-         1piA==
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date:message-id:reply-to;
+        bh=aLQaH8kLuBy4zyHgqqB9tZsey4wfxoCGASmgyFWFngw=;
+        b=thziFT6DNYotuZscweGhf9OW1tixZcOTuo9h57iHpsIH+H26bkct4tE0xoxQwVjt1q
+         Lbm1cRWnAIbwV3fFDyE0g/+K5FSCh/r4UFSTYHw+FJJutHO+p7p+9WVfvcIT2Bed3Ha3
+         I84z5iOYFroBA7YIh5h1/rREzxBUIbJAdgr1Lx7nlVpqZGlpFzULGA/hpQSoiVs4u0bu
+         l0uLPB3GlC+4jEmrGX/LQDTL4RUdV2HVp7/1NDYV0A1kSWdL0Ny+EN0v+Z91NUNvjg7l
+         eSll1il8fGyG4hkGh080dyVFauYSp+yERMUWNKN8aKLFL0SZGOk0vNDzVD/eoLfcAv7D
+         Yk1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=;
-        b=Il7FmKdkNfwG2Jmr7o7u34+6MnZYy5+22MBsXAhdQGAEtkg+0ILjrcVniJVok1nKGr
-         UDJliCoQT8BJoNI/m5Z7y90V4+CYgYPu17sRqvTCeX34TtiFCQcr5W86oekq52yiYieu
-         cyJYoHWjiqNk4inXK7PoS2UApVOICXeSUe+0fTLxy0KfJMWxoTYyExTfUhqrMYmBaRa5
-         bxJBa4wIvTwvnXaiRc9dvwOcodtNO9eDIcBHQi3qB7T6Fy/Yd+fEjQ7PRTCtKE1zlaY2
-         8Wdxa0g52wZrMYzco0mqJcvpY3G8Gse8gaQaJ5HB/kOUtuWyqwRNZNQLvzZUsJWk2KWs
-         7oFQ==
-X-Gm-Message-State: ACrzQf0XphCWVaHYw5mBTownB/utj9GU2tEde+flOKhfAh9Jpag39lNV
-	jF5iKozCvHdj+jnJbLMYiDfK3w==
-X-Google-Smtp-Source: AMsMyM4LQ/lxoEIrH4UMCDFt1jKZSgIbbOISLRtCxbzdlIaBowCjGyQBQrDj/m1gYIMGc+i23FCohw==
-X-Received: by 2002:a5d:5084:0:b0:22e:2f15:b521 with SMTP id a4-20020a5d5084000000b0022e2f15b521mr9753215wrt.271.1666282871926;
-        Thu, 20 Oct 2022 09:21:11 -0700 (PDT)
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aLQaH8kLuBy4zyHgqqB9tZsey4wfxoCGASmgyFWFngw=;
+        b=s1kyMC3PMafMK4F8CknRatqnp2fbnOEk43G5xtrAqYz4CoFE1m2IKO8W+v7sY5eE5i
+         EIJK7/fTYMwj6KuCIU1z7+uhX4fPEKcSrkZdZ4exOcgL0aDgdSoNNrj6Fa2a1l8j6HUe
+         bAQUg4l8W9IPVlqoCmkh+qU6rpWr968cnrZDr0gPeUfKTSYjMyaapHJPdjplTB9ahM3F
+         LbIaleuiP99TCZa4DRyXeNrmDWpYhGbxc91uq1WLxOITpMtHrDm1Tah0UOLuW+aXuT4A
+         bAGj3OKHMqqL9fzDI29/ltX4+Qtpat7pUW4V/Rzs7FczGL+e3bIl6EkXAiz5cJTNBhtK
+         kWNA==
+X-Gm-Message-State: ACrzQf3cYOXsK8lYX/2Bm88GSm817UXD5OFlY9EjgiiDo0lBzuSjK6ID
+	HhRyNfN+gntn8rXOwK0zYNMchg==
+X-Google-Smtp-Source: AMsMyM6fgd2aVPbZkJzGj2cE/qWnqPixgyVyRefkSahrpYdsZfcXFR1KBGOo7OW4gRXCD7Ic7udFfQ==
+X-Received: by 2002:a5d:4748:0:b0:22e:32c1:d11e with SMTP id o8-20020a5d4748000000b0022e32c1d11emr9426454wrs.672.1666282869644;
+        Thu, 20 Oct 2022 09:21:09 -0700 (PDT)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id m14-20020a05600c3b0e00b003b4fe03c881sm208028wms.48.2022.10.20.09.21.10
+        by smtp.googlemail.com with ESMTPSA id m14-20020a05600c3b0e00b003b4fe03c881sm208028wms.48.2022.10.20.09.21.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Oct 2022 09:21:11 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 20 Oct 2022 18:20:46 +0200
-Subject: [PATCH v3 2/5] dt-bindings: input: mtk-pmic-keys: add binding for MT6357
- PMIC
+        Thu, 20 Oct 2022 09:21:09 -0700 (PDT)
+Subject: [PATCH v3 0/5] Add MediaTek MT6357 PMIC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221005-mt6357-support-v3-2-7e0bd7c315b2@baylibre.com>
-References: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
-In-Reply-To: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
+X-b4-tracking: H4sIAFx1UWMC/3WNzQqDMBCEX0X23C1xQ6rtqe9ResjPWgOaSBIFEd+9ofeehm/gmzkgc/Kc4dEckH
+ jz2cdQQV4asKMOH0bvKgMJolYIhXO5SdVhXpclpoJKSdGbnljKAapkdGY0SQc7Vi2s01TL0ecS0/47
+ 2ajG6+/eRihwaDujyZET+v40ep+8SXy1cYb3eZ5flmqp1bQAAAA=
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 20 Oct 2022 18:20:44 +0200
+Message-Id: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
 To: Mark Brown <broonie@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Dmitry Torokhov <dmitry.torokhov@gmail.com>, Fabien Parent <fabien.parent@linaro.org>,
@@ -79,25 +78,24 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fabien
  linux-kernel@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>, devicetree@vger.kernel.org,
  linux-input@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=923; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=ZkZQij7/0Z3X4e9uF6B+oZckE7xcogOJfck3q8uBCAI=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjUXV0ZNXXgbhkdAz1a55MOKc3KBoIZOBnUZ+E6y1y
- JpYKd/SJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY1F1dAAKCRArRkmdfjHURcv3EA
- CycWh0zpHUbo0QCMDsyag2SfUDfWm7eNlPNHiLaKRoRrhUeE+UqeevDHVNlTozvLo0kXuCbRjEP2hy
- ZUNh5+mCUEdLGEDOMprZ7XGAd/+K7t2bxtDY3FIWvGb8YH3AXaGl8G3/PFUf7iKKtQlcRoCCa91gmu
- bVHu0Wf5ldEGvH351G2QGfvAr3PDibh+11F1Vf8v9f8r1tpBAVQr+N3PhQ4oo73rL3Et1d4BIuhuv6
- qZXnNERdqshdBWa20jHiLrTwNWPcEp2cD4n+O3ThRJ0QBLkg0eUupn+RzwkoGJxABAvKQA/NdDQcG2
- VrM+CEUIvJDE6F8PdJ1T4nXVflxMVj7auEXljbGNmbIii2ZEFBIf8mV7OMJOdd3sW+MLyhMIk3jFI9
- HvEKE2gny3luDvml5/Xiku7YydL3dxMY9aYW33LQhsrXQi4E+kCIREhSp2V4P787KCshWfwOABQtRt
- D3ZXVgSpcv37zt6NUIFhrlF+rpjdmudKWkGmzQ/YoUoCj03FESVcllQIti11iAHW+z8TRJyEBRXL1N
- h0eBNbYo+C5SvCDFQJNp2MohOakK8eCFPM8SxJofKIoijZmr/UlicMkewYYERvs/CVbW/QSJLSdm5P
- 9UWhvEfjmn/4m4G4nCOgJjHgjFB58R1kaG1iqdro4xI+6xN4jAoMXlmoxMvg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2596; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=wWh5SRjmED4SwyZ9UHZwZdSkaEuoagXKZt6zSsawvDw=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjUXV05CtA7G4yM+g6ZR3/d2uEFP5CCn8oCzeAiGa9
+ eRV4aD6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY1F1dAAKCRArRkmdfjHURcP/D/
+ 9OBECu2FN8NBAfx/FBvllaSMGjLY31S/qRwTAbxYplcM8+L9FUiEYMvQBFCDCcLp3Q+DieQGQ5eRHw
+ z5aUwVcTOQepKtCP/25LHSjlx2RhMBnwMZydbNlDuMc+C11h8TimWqIMRFg9Qe3yb0EVsZTj8jdu9y
+ F1zXIE5Z8bkbjnIec7vRLmPAIaViDqZumDrCnFQDoFXjXQ2xc1Kw3lLqPYml8MScCGb+82BI7ZAtAO
+ gEoAvYSSBKdf1xTX1T2DHm3tCV4tH78v+alYuUttufkB1hpfLl5sTfD8UwKkkMCYbkja0rjFwgvEK9
+ hQna405lQPO90Bbux8txtOfnFzQsx/G0NL7AbjD9W6FOFygjBe/tzG/CQoRBR8Fz+BR3j6jpqrMwGr
+ tW+N4/Y63DUF2pruZG44NkL6MyE3NBBU9LlqR5ZZiwm5BR0Qg0F1UxE9PF1HWiL8DQG73S+A1afrIW
+ tIS3X8Kpjq9WgKyoGa8H8SJNMKoEOQfR5iLCfgjavpMgBtjmP7arIPGsYYhvV/cRbpJ3FZRO5IuCa2
+ tZpg8I3iuVeztN+bjVC4KhmaYbvIePgH5FysNsUJm8dKmyo1b5Uk/3lpLx9aWMNtZB36OBAMUASd8w
+ dbcLc0pnsxPHu759gG3Rguq7GeYcNS851ZQXnFZMen5y0fouEVZjOiEZVVag==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_092114_251493_3FA92655 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_092115_264609_7D855DFA 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,31 +110,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Hi,
+This patch series adds MFD, PMIC keys, and regulator support for MT6357.
+MT6357 is a MediaTek PMIC very similar to MT6358.
 
-Add binding documentation for the PMIC keys on MT6357.
+Regards,
+Alex
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Changes in v3:
+- To be consistent with regulator/driver.h and helper.c, shift
+  variables have been removed and the mask values have been directly shifted.
+- Remove index tables and rework volt tables to use set/get helper functions.
+- Add comment to structure and function.
+- Fix Fabien Parent mail address.
+- Link to v2: https://lore.kernel.org/r/20221005-mt6357-support-v2-0-f17ba2d2d0a9@baylibre.com
+
+Changes in v2:
+- Rebase
+- Fix typo
+- Remove dependencies with https://lore.kernel.org/all/20220415153629.1817202-1-fparent@baylibre.com/
+  which is no longer relevant.
+
+Previous versions:
+v1 - https://lore.kernel.org/all/20220531124959.202787-1-fparent@baylibre.com/
+
+To: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Chen Zhong <chen.zhong@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>
+To: Mark Brown <broonie@kernel.org>
+To: Fabien Parent <fabien.parent@linaro.org>
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-input@vger.kernel.org
+Cc: Fabien Parent <fparent@baylibre.com>
+Cc: Rob Herring <robh@kernel.org>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+
 ---
- Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Fabien Parent (5):
+      dt-bindings: mfd: mt6397: add binding for MT6357
+      dt-bindings: input: mtk-pmic-keys: add binding for MT6357 PMIC
+      dt-bindings: regulator: Add binding schema for mt6357 regulators
+      regulator: add mt6357 regulator
+      Input: mtk-pmic-keys: add MT6357 support
 
-diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-index 2f72ec418415..037c3ae9f1c3 100644
---- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-+++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-@@ -26,6 +26,7 @@ properties:
-     enum:
-       - mediatek,mt6323-keys
-       - mediatek,mt6331-keys
-+      - mediatek,mt6357-keys
-       - mediatek,mt6358-keys
-       - mediatek,mt6397-keys
- 
+ .../bindings/input/mediatek,pmic-keys.yaml         |   1 +
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   1 +
+ .../regulator/mediatek,mt6357-regulator.yaml       | 292 +++++++++++++
+ drivers/input/keyboard/mtk-pmic-keys.c             |  17 +
+ drivers/regulator/Kconfig                          |   9 +
+ drivers/regulator/Makefile                         |   1 +
+ drivers/regulator/mt6357-regulator.c               | 453 +++++++++++++++++++++
+ include/linux/regulator/mt6357-regulator.h         |  51 +++
+ 8 files changed, 825 insertions(+)
+---
+base-commit: 7c69ce28cba3d6ad011f86a5d18dc8c04a921b29
+change-id: 20221005-mt6357-support-55308b82e33f
 
+Best regards,
 -- 
-b4 0.10.1
+Alexandre Mergnat <amergnat@baylibre.com>
 
