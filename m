@@ -4,89 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D0D0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 14:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F98EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 14:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7OTh+ZIjQwPwHMVAfy9H3FuL7YWrhAHg4js/lzlDK/M=; b=F6OmHLpOMG6fsckRqeJzTjzQO4
-	dpB2+g9CAnFFaG1V1layrhljK7UXsjUV7AouYjlg7xe0SD2FTx5JX38tvO6qnjqQNzZMnU4lm9l/e
-	EfWH9Zj38B1BuNtRhVvS2jq0/L+ZrlZO8L5UxXeAUR4aIdTKTU798dA4sm1rbnMIcy/yICkcFvTE3
-	8XkEjuWDb9MV5gHhrHt3ngv1hvJZuBFL49wtrIr6vfZFkpa4O7EEQj9U0dutedTwJFBpRuNq3tbtE
-	smWs5A7eIRYHN+kUCujcJCVdbgbHjiauEe2EY+5mGFCM5XsyTsVh7P76mshtjpR1j4qRsqqbOQvsG
-	qyc8Yn1A==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NLfl5Pdqwg6aGY+z2JjYmMdWIFLHrMR79K7EJC5O2Xk=; b=oYEr2qAiGY2SwW
+	BRhM6cDBZVXdoaijlJv5GuUgoxNeBPHoVZcFFeZRWEsvMohiGwWAkp36G+6q6oKGxZd/uL2GCWGsg
+	cRb0t7nuuxKpMbgvIicDwzfx2NSz20NNwNduRQ+4b4zpcN4lrbeMV1kWgh4H6NlLsAHKEGFHPjUeb
+	/t+nAflHEvS8UtIz7pvWUS0Fq6tElU9KVe8OATBmrcJoXVaFpVxNZdm85FL15rGPpASg/TAJGwm8w
+	FXA052MFETlFAqeBh/iwIJIV6gT3JbNpJtHnqCbeq7x5SuMVgEaq3mDt++rB66hSC9nKRA00t/J5z
+	jOvDfGwNRhsSE5u56bag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olWVP-00G8ZU-Op; Thu, 20 Oct 2022 14:26:43 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1olWnY-00GMJS-Hw; Thu, 20 Oct 2022 14:45:28 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olVHK-00FGer-ER
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 13:08:13 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id bp11so34344082wrb.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 06:08:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7OTh+ZIjQwPwHMVAfy9H3FuL7YWrhAHg4js/lzlDK/M=;
-        b=dPjLmalF4T082X1GAwZDaYuFAMSPpp0aB14UPRgdaK3oGQc/1q4BrzgbFxwyN61ZKU
-         U1e00H4orCpimY0WqZV/t9LGcXm04UE9iyNWLrWHOdvrIWV2xsx4LlCkzHT6hK5KzsII
-         nvquy01Wo7tMC/c5yV/TbTtTichCO2NtK90Y3dEfHH3GA+uAi7bHThZv41vN7kLSBDVP
-         d4kbkSo0XMfWUesBVtYlJ5p9jLiAw1GGo/AvJzFRb2nKinO/sfvGxKRHFaPIlBxs0Zmv
-         JxFZ/KWdnf1w8KyOovb2DvVxiyMRAEIJZEGYf4mCbfC7d5hVzcF7yNVFObJYFfPiEifk
-         UAGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7OTh+ZIjQwPwHMVAfy9H3FuL7YWrhAHg4js/lzlDK/M=;
-        b=Hw6Wswb3BUDV+VBBZfYvHZa0b95GjdjjhI+oP5cvpbl38xfYGtU6aqFzHdi5Ka97En
-         jIeIjLfnvhsv3L0g1b2t4dP5DktZy20AUA4UcpUo2/b6BYcAxM+4oJghirPRmC61BjN+
-         CqyRgMEquuUuVHsFhaX29xbY3e5zqaUqPVEnqSaZd4ZonGwcg+ZgIj/9EXzawCzBkAkh
-         h7Xb9ENJXigZ2dHmt5AvRhN7D72VH5o4bqSvQIW5OT1zlZHWjwoieilzYO7pKJPQ+4kp
-         GWO6gpDPRpIQzBPs2we6zU4gDUOv18WsTYlGm4/2QIRbcZ49j78XgYjbhG7FI1dxGHKP
-         ancg==
-X-Gm-Message-State: ACrzQf3DTeccGnHNJCKi/ytIWb4Nmaj5fW4EPANF5VqzBwIvsfBgp65+
-	chTJYXSBCklDYJKdgioeHI0+eg==
-X-Google-Smtp-Source: AMsMyM58z+ASY8UOi2LgUP/AtKbL5GblBy/jUDVZRHLihya/ftcGyEuGo5VmC6hSj04JcLqpHSVyQA==
-X-Received: by 2002:a5d:5346:0:b0:235:6c05:6272 with SMTP id t6-20020a5d5346000000b002356c056272mr2786891wrv.332.1666271284107;
-        Thu, 20 Oct 2022 06:08:04 -0700 (PDT)
-Received: from localhost.localdomain ([2001:861:3a82:90b0:2979:1615:9a68:f204])
-        by smtp.gmail.com with ESMTPSA id p26-20020a1c741a000000b003c6b70a4d69sm2676080wmc.42.2022.10.20.06.08.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Oct 2022 06:08:03 -0700 (PDT)
-From: fchiby@baylibre.com
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	 AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Johnson Wang <johnson.wang@mediatek.com>,
-	"Zhiyong.Tao" <zhiyong.tao@mediatek.com>
-Cc: Fabien Parent <fparent@baylibre.com>,
-	Rob Herring <robh@kernel.org>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	Sen Chu <sen.chu@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/3] dt-bindings: soc: mediatek: pwrap: add MT8365 SoC bindings
-Date: Thu, 20 Oct 2022 15:07:17 +0200
-Message-Id: <20221020130721.24866-2-fchiby@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221020130721.24866-1-fchiby@baylibre.com>
-References: <20221020130721.24866-1-fchiby@baylibre.com>
+	id 1olWn6-00GM17-7I; Thu, 20 Oct 2022 14:45:02 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+	by mxout2.routing.net (Postfix) with ESMTP id 20C996047A;
+	Thu, 20 Oct 2022 14:44:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666277090;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=NLfl5Pdqwg6aGY+z2JjYmMdWIFLHrMR79K7EJC5O2Xk=;
+	b=vZEulL3T7TwliUM7EVF5HlGsUJriE48id3uDksJ6DLN2DwtnIOMY8Rj2bTC6LT060NbNyO
+	8bkreAm+kNAVbM4uw9aDKEWZFHQ9b7fizN/CJrrbvfepGz2/n15dzuK8Z6JsbRAnMLnmtY
+	a/gq7bYfJ4MlIJKs3SCK7vYJH/3blQ4=
+Received: from frank-G5.. (fttx-pool-217.61.146.75.bambit.de [217.61.146.75])
+	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id BA5FA8008E;
+	Thu, 20 Oct 2022 14:44:48 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
+Date: Thu, 20 Oct 2022 16:44:31 +0200
+Message-Id: <20221020144431.126124-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Mail-ID: 21e2aa99-0ce2-48c8-b40d-8630028e796d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_060806_550099_D4D494DA 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_074500_593379_FE907E7D 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,41 +62,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Russell King \(Oracle\)" <rmk+kernel@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+From: Alexander Couzens <lynxis@fe80.eu>
 
-Add pwrap binding documentation for
+Implement mtk_pcs_ops for the SGMII pcs to read the current state
+of the hardware.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
+Fixes: 14a44ab0330d ("net: mtk_eth_soc: partially convert to phylink_pcs")
 ---
- Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 3 +++
- 1 file changed, 3 insertions(+)
+v2:
+- reorder members in phylink_pcs_ops
+- drop pause setting
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-index d24e2bc444be..8424b93c432e 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-@@ -30,6 +30,7 @@ Required properties in pwrap device node.
- 	"mediatek,mt8186-pwrap" for MT8186 SoCs
- 	"mediatek,mt8188-pwrap", "mediatek,mt8195-pwrap" for MT8188 SoCs
- 	"mediatek,mt8195-pwrap" for MT8195 SoCs
-+	"mediatek,mt8365-pwrap" for MT8365 SoCs
- 	"mediatek,mt8516-pwrap" for MT8516 SoCs
- - interrupts: IRQ for pwrap in SOC
- - reg-names: "pwrap" is required; "pwrap-bridge" is optional.
-@@ -39,6 +40,8 @@ Required properties in pwrap device node.
- - clock-names: Must include the following entries:
-   "spi": SPI bus clock
-   "wrap": Main module clock
-+  "sys": System module clock (for MT8365 SoC)
-+  "tmr": Timer module clock (for MT8365 SoC)
- - clocks: Must contain an entry for each entry in clock-names.
+without this Patch i get this trace in 6.1-rc1 when enabling the left
+sfp (eth1) on bpi-r3 (crash happens in phylink core because a NULL-pointer,
+so fixes-Tag is a guess):
+
+[  108.302810] Unable to handle kernel execute from non-executable memory at virtual address 0000000000000000
+[  108.312462] Mem abort info:
+[  108.315263]   ESR = 0x0000000086000005
+[  108.319003]   EC = 0x21: IABT (current EL), IL = 32 bits
+[  108.324335]   SET = 0, FnV = 0
+[  108.327378]   EA = 0, S1PTW = 0
+[  108.330505]   FSC = 0x05: level 1 translation fault
+[  108.335375] user pgtable: 4k pages, 39-bit VAs, pgdp=00000000419be000
+[  108.341798] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000, pu
+d=0000000000000000
+[  108.350489] Internal error: Oops: 0000000086000005 [#1] SMP
+[  108.356047] Modules linked in: cdc_mbim cdc_ncm cdc_wdm cdc_ether qcserial us
+a_wwan usbnet usbser
+a Mmeisis
+ge from syslogd@bpi-r3 at Aug  7 15:26:54 ...
+ kernel:[  108.350489] Internal error: Oops: 0000000086000005 [#1] SMP
+[  108.376743] CPU: 3 PID: 8 Comm: kworker/u8:0 Not tainted 6.0.0-bpi-r3 #1
+[  108.383461] Hardware name: Bananapi BPI-R3 (sdmmc) (DT)
+[  108.388671] Workqueue: events_power_efficient phylink_resolve
+[  108.394411] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  108.401355] pc : 0x0
+[  108.403531] lr : phylink_mac_pcs_get_state+0x7c/0x100
+[  108.408572] sp : ffffffc00963bd00
+[  108.411873] x29: ffffffc00963bd00 x28: 0000000000000000 x27: 0000000000000000
+[  108.418994] x26: ffffff80000ed074 x25: ffffff800001c105 x24: 0000000000000000
+[  108.426116] x23: ffffff80022f8cd8 x22: ffffff80022f8d30 x21: ffffff80022f8c00
+[  108.433236] x20: 0000000000000000 x19: ffffff8000126040 x18: 0000000000000000
+[  108.440357] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+[  108.447478] x14: ffffffffffffffff x13: 0000000000000030 x12: 0101010101010101
+[  108.454598] x11: 7f7f7f7f7f7f7f7f x10: fefefefefefefeff x9 : ffffff80000ed07c
+[  108.461720] x8 : fefefefefefefeff x7 : 0000000000000017 x6 : ffffff80000ed074
+[  108.468840] x5 : 0000000000000000 x4 : 0000020000006440 x3 : 00000000fffffffa
+[  108.475960] x2 : 0000000000000000 x1 : ffffffc00963bd80 x0 : ffffff80014c3ab0
+[  108.483082] Call trace:
+[  108.485516]  0x0
+[  108.487344]  phylink_resolve+0x248/0x520
+[  108.491256]  process_one_work+0x204/0x478
+[  108.495256]  worker_thread+0x148/0x4c0
+[  108.498993]  kthread+0xdc/0xe8
+[  108.502037]  ret_from_fork+0x10/0x20
+[  108.505608] Code: bad PC value
+[  108.508652] ---[ end trace 0000000000000000 ]---
+[  108.513255] Kernel panic - not syncing: Oops: Fatal exception
+[  108.518984] SMP: stopping secondary CPUs
+[  108.522894] Kernel Offset: disabled
+[  108.526369] CPU features: 0x00000,00800084,0000420b
+[  108.531232] Memory Limit: none
+[  108.534274] Rebooting in 1 seconds..
+---
+ drivers/net/ethernet/mediatek/mtk_sgmii.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+index 736839c84130..8b7465057e57 100644
+--- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
++++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+@@ -122,7 +122,21 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
+ 	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
+ }
  
- Optional properities:
++static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_link_state *state)
++{
++	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
++	unsigned int val;
++
++	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
++	state->speed = val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
++
++	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
++	state->an_complete = !!(val & SGMII_AN_COMPLETE);
++	state->link = !!(val & SGMII_LINK_STATYS);
++}
++
+ static const struct phylink_pcs_ops mtk_pcs_ops = {
++	.pcs_get_state = mtk_pcs_get_state,
+ 	.pcs_config = mtk_pcs_config,
+ 	.pcs_an_restart = mtk_pcs_restart_an,
+ 	.pcs_link_up = mtk_pcs_link_up,
 -- 
-2.25.1
+2.34.1
 
 
