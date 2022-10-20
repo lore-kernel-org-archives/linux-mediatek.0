@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964ACC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B3EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:40:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=; b=QuXPiOoWDp2gJTurnogtbpRLv+
-	gQdwu+8rcBRW91QpR8cMRA1ct0fGGYUoKOCt2asHKGFhTHZXYef4us1mrvqndTIUx4M8rb1z5n0YW
-	Egj+wQhEe7AbIpOein33Qw+0l1F/Nmfs/Tl3bnjkpDQsmAphnZ63pTEqsA018byvZ2LRWIVqO9K03
-	YnpEVeXvoxjlo2oPIxo7RDlyLCmfpWt5agLbPEcuC61LgrjQDSOILqtNHyd7syDquaQjW88Py3+zP
-	IWWdC2G7gYy4MK/kDDu/W+23D2+fMmNf6MvoIhXuZbOALrS3tt3Hr29eUv0+yvGLlXRY+mWyd/YRR
-	EJL41k2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IhKecFpHgL5Jix1YZMVIIkbDaep03M/C2zU3FeqEniU=; b=AESuDEZ98htEf2rd/fCTXUAkUP
+	r4eB0nSCd9q1AHYS/c+pZ12ppCEd8Ii60w0LRgVJW+5NsL9Cn/PRw2zwbWHb43cFMMht7Cla0Y7yv
+	yHM5GVQXijAsxuKVl73l2rm0mnrpppLQLBrX5QKw6xroHN/UDKDxjIueXo/6z2BlgAa4JTfjnqb74
+	3Urw3RM+TTwaMLVTviK70eYLqrGliHkxm5/QCDs4aC4ZZ+wrNnBzZ33fm8XdBGrAe9Im/k8B/HqJ2
+	6ZVDRpPBCdNzDi2elRuuOBun2xTQJ8kIv69tNW+CQ7Xf9LtTAAoiE77Odxw73a23hlcByYGzpwvzQ
+	zjP+AXgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUol-00Esl5-71; Thu, 20 Oct 2022 12:38:35 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1olUq8-00EtxM-Tn; Thu, 20 Oct 2022 12:40:00 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUES-00EQ8X-IF; Thu, 20 Oct 2022 12:01:09 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 2CEEE20A43;
-	Thu, 20 Oct 2022 12:01:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1666267260; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=;
-	b=jH0AvdmQ5Sn82qm3xMDUFxEtzQ8Afd86NNzn7lSCGUrsJFLaw9SnOVNSzFWgYotcUsDNAg
-	GKaqBJMmMrfij+SPe7P8hnpSwt/PMM4kACWzGqryH9FajEaW0KkQM86idJuP32rsTloZ7/
-	EQO0HWAxraWBomxhUiO5JqjhYu4FO/o=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1666267260;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=;
-	b=vHl/tg1vlnnTCoJtjSfQJbaUEq4mIb+x/G13qkx57QzPLCFuuxyt3aozzSXnhYTqv6SF/Y
-	S/MUxJREit23oWCA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8E08013494;
-	Thu, 20 Oct 2022 12:00:59 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id FxuXIXs4UWMgFQAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Thu, 20 Oct 2022 12:00:59 +0000
-Message-ID: <8f3a7b67-d193-eb47-a5a6-8826e9c82f83@suse.de>
-Date: Thu, 20 Oct 2022 14:00:59 +0200
+	id 1olUGn-00ERjv-S3; Thu, 20 Oct 2022 12:03:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1666267368;
+	bh=D+hEsIZ5MqHmy/cfeQgHzMHMoHuUmID1yqX63F16548=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Q54MWZ6IspGF/8DRWgMHHIJIFKtF3tD+rr3I5AVF5LbgcvaYEvX4BowHjP4rYPQBh
+	 sB99yt0XiUetkey1MrQzSPgZhhq+nVx1hoKad3Jl8PiPj2EvbGUGHGGt6aFhy43syh
+	 vfB4Uo9VfeMdLbXw2w74Pu/Xz21aOownn1KNWj44=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.146.75] ([217.61.146.75]) by web-mail.gmx.net
+ (3c-app-gmx-bs65.server.lan [172.19.170.209]) (via HTTP); Thu, 20 Oct 2022
+ 14:02:48 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH 01/21] drm/amdgpu: Don't set struct drm_driver.lastclose
-Content-Language: en-US
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, javierm@redhat.com,
- mripard@kernel.org, maarten.lankhorst@linux.intel.com
-Cc: linux-hyperv@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- nouveau@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- spice-devel@lists.freedesktop.org, linux-sunxi@lists.linux.dev,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- freedreno@lists.freedesktop.org
-References: <20221020103755.24058-1-tzimmermann@suse.de>
- <20221020103755.24058-2-tzimmermann@suse.de>
- <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-In-Reply-To: <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------WYrb0xK08aT03AsuaxFIILPE"
+Message-ID: <trinity-72a267fb-f4a0-4d9d-9a1b-f6a1ce3a43ec-1666267368826@3c-app-gmx-bs65>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
+ Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Aw: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 20 Oct 2022 14:02:48 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <Y1EHy0t5nXOF/3Mw@shell.armlinux.org.uk>
+References: <20221018153506.60944-1-linux@fw-web.de>
+ <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
+ <949F5EE5-B22D-40E2-9783-0F75ACFE2C1F@public-files.de>
+ <Y1EHy0t5nXOF/3Mw@shell.armlinux.org.uk>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:mNvPlxKiBmdiWAYpi/kJ+DODyjnMKBtEVLi/DReg3FWYbWdKOBqmfXkS53KdL3KT8Wc58
+ 3qPYbsjwEfQ8WieLv/R5DqfyAWUtUkJlFZVOntWOLj2HG/nLCuxieEg6wxeB8sB0ekyVUA0CsQ4+
+ +10XX+CqhswsZjMw1jD0n/tc+s16+ssb1tCD+z1Nuowh14LuyQrrB8Bt3TPkGmLxXQFib5RSb3Rn
+ GbGdVQj5PkpNvDPmMn4FRXS9SAcuW7UJ3saXQwKgeDOu983RqtiRm71sI8nehUuC+YrfjqvIq3lW
+ 9M=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sIK5fFpPQVw=:SCT0AitDal3oCczr9xpbYt
+ 6w2bGprDyMNI5loZRPHhnzvhQ3CQAbyR9vn4lnt+O9cgroFMcDOAuss/dKyaGICMt6nYt+4MT
+ tEJE62Otdq+eIT9ZoDlAPKH0m/pfKlj+peXIdYDZPSQUsVNAvufRloZ62sbFPtu0uQ4shT50l
+ EQzVNyJMTmNBgCzYGPsD225Vnwvgt7DqW2h7Ggn5uRRVJ1ZvPlLqUuW3/mHeq/lYrJNuOW0lb
+ Ek7n/GD+vyJNiuDaNSBGhCGdt8epSbIxPdkH9lj4F/LfctgtALR3peEsqtOVAAjzfSHRzrLi6
+ wSgLGxEyf/ghv3n1v8T5eeFRhOsx6NyCn539u/tTFIDmzLI8akThvK3uGEd2Ox9MxTEE+YMbq
+ Jt8C7eZdYhlCt+3Pf8Q8cQyB5B7IWxrnqOhjIlASJ2FWBIUL8KaaM0E8+94PFIwN5xjuVbyRj
+ i+sfLZII1S9Gb9A6KDB+B49uNGXOYpqpL93mg4ICY0HCa4MYDZJWX9XcuskuWM9FccpbO26E4
+ tNLfWznLEtES1ZFUx36EkH9RQ+nJNLfsw2Lt6yjzljir+4bw6qwRt/WhWOGsWuowStUyJtaco
+ A8ciA1EknN9W8UIF37qiaSTIN0vPy8YfQ905MfBT3JnMTAP2D5WpuvKJrH+iKuE+9gK7xVVCd
+ ctVYjo5+RR+mgquFdH9PlpvEFn8YjQea+qJiDOkzzx1hFI/vEyyQGFL1Qw8OkGLoRNy4/qB6s
+ 6nOD0DBOu9ZSgQi+y9fEKNnGnd23orwQPwCIFqK5xbzIPJKxBbP16/fAmTJXxHnYN7WeS/9dQ
+ zOUw1jtYaB7R17sQTDlFMYUxE1JfTpf1CIqN9XUcXThlmwO65wvZ/ca2eRoWUPORimiBxoIJF
+ SwuiGArVGzAisPoxXic2NnpGZ+cBpHPdxkgJyT48p3lRIPKHXGTQ6FaiBAXmiMS6JFdxhipG7
+ hof94x/OV0tkUxj6wQiYcyJ4ac8o4U5W+AygX87voeeNgt7NBy6S2u7IXHyGbTeCOdcRenx+1
+ mAAQZJGDY4BZ1+VqE4R8wybNfIH3uPTwVnUhNIn4fuQAEYDqQrZryFvz7JJLx0KmDD/n/b4kS
+ 1X4FaIvxjf8wozW2NQagad1Y3s8LA51MFZyID3NqYQeQR2oEVQ7VLn16fdy3ykckb2KEL0cuT
+ Dl3G2tpgxxzFj+oudmG2YBaj4SsclHIRbPS9NZJu+yTPzzNy946316JIzxcYOTmxfTzXuX0CC
+ 8gYco+EqtjMsxKxCqgUlvFkVBkt+HzCtM6hM+yd7iB73yrDZCdRzSPXm3HlDcVtrZo66yEyWk
+ cKYphK3I
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_050104_865384_EB6CCCCA 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20221020_050330_386562_E1B85C06 
+X-CRM114-Status: GOOD (  19.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,115 +102,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------WYrb0xK08aT03AsuaxFIILPE
-Content-Type: multipart/mixed; boundary="------------gwXK6OaLfaQ8iAMdjblSoB42";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, javierm@redhat.com,
- mripard@kernel.org, maarten.lankhorst@linux.intel.com
-Cc: linux-hyperv@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- nouveau@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- spice-devel@lists.freedesktop.org, linux-sunxi@lists.linux.dev,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- freedreno@lists.freedesktop.org
-Message-ID: <8f3a7b67-d193-eb47-a5a6-8826e9c82f83@suse.de>
-Subject: Re: [PATCH 01/21] drm/amdgpu: Don't set struct drm_driver.lastclose
-References: <20221020103755.24058-1-tzimmermann@suse.de>
- <20221020103755.24058-2-tzimmermann@suse.de>
- <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
-In-Reply-To: <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
 
---------------gwXK6OaLfaQ8iAMdjblSoB42
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+> Gesendet: Donnerstag, 20. Oktober 2022 um 10:33 Uhr
+> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> An: "Frank Wunderlich" <frank-w@public-files.de>
+> Cc: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
+.org, "Alexander Couzens" <lynxis@fe80.eu>, "Felix Fietkau" <nbd@nbd.name>=
+, "John Crispin" <john@phrozen.org>, "Sean Wang" <sean.wang@mediatek.com>,=
+ "Mark Lee" <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft=
+.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel=
+.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg=
+@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,=
+ linux-kernel@vger.kernel.org
+> Betreff: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
+>
+> On Thu, Oct 20, 2022 at 07:54:49AM +0200, Frank Wunderlich wrote:
+> > Am 18. Oktober 2022 18:39:01 MESZ schrieb "Russell King (Oracle)" <lin=
+ux@armlinux.org.uk>:
+> > >Hi,
+> > >
+> > >A couple of points:
+> > >
+> > >On Tue, Oct 18, 2022 at 05:35:06PM +0200, Frank Wunderlich wrote:
+> >
+> > >> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
+> > >> +	state->an_complete =3D !!(val & SGMII_AN_COMPLETE);
+> > >> +	state->link =3D !!(val & SGMII_LINK_STATYS);
+> > >> +	state->pause =3D 0;
+> > >
+> > >Finally, something approaching a reasonable implementation for this!
+> > >Two points however:
+> > >1) There's no need to set state->pause if there is no way to get that
+> > >   state.
+> > >2) There should also be a setting for state->pause.
+> >
+> > Currently it looks like pause cannot be controlled in sgmii-mode so we=
+ disabled it here to not leave it undefined. Should i drop assignment here=
+?
+>
+> Why do you think it would be undefined?
+>
+> static void phylink_mac_pcs_get_state(struct phylink *pl,
+>                                       struct phylink_link_state *state)
+> {
+> ...
+>         if  (state->an_enabled) {
+> ...
+>                 state->pause =3D MLO_PAUSE_NONE;
+>         } else {
+> ,,,
+>                 state->pause =3D pl->link_config.pause;
+> 	}
+> ...
+>         if (pl->pcs)
+>                 pl->pcs->ops->pcs_get_state(pl->pcs, state);
+>
+> So, phylink will call your pcs_get_state() function having initialised
+> it to something sensible.
 
-SGkNCg0KQW0gMjAuMTAuMjIgdW0gMTM6NDggc2NocmllYiBDaHJpc3RpYW4gS8O2bmlnOg0K
-PiBBbSAyMC4xMC4yMiB1bSAxMjozNyBzY2hyaWViIFRob21hcyBaaW1tZXJtYW5uOg0KPj4g
-RG9uJ3Qgc2V0IHN0cnVjdCBkcm1fZHJpdmVyLmxhc3RjbG9zZS4gSXQncyB1c2VkIHRvIHJl
-c3RvcmUgdGhlDQo+PiBmYmRldiBjb25zb2xlLiBCdXQgYXMgYW1kZ3B1IHVzZXMgZ2VuZXJp
-YyBmYmRldiBlbXVsYXRpb24sIHRoZQ0KPj4gY29uc29sZSBpcyBiZWluZyByZXN0b3JlZCBi
-eSB0aGUgRFJNIGNsaWVudCBoZWxwZXJzIGFscmVhZHkuIFNlZQ0KPj4gdGhlIGNhbGwgdG8g
-ZHJtX2NsaWVudF9kZXZfcmVzdG9yZSgpIGluIGRybV9sYXN0Y2xvc2UoKS4NCj4gDQo+ID8/
-Pw0KPiANCj4gVGhlIGNvbW1pdCBtZXNzYWdlIGRvZXNuJ3QgbWF0Y2ggd2hhdCB0aGUgcGF0
-Y2ggaXMgZG9pbmcuIFlvdSBhcmUgDQo+IHJlbW92aW5nIG91dHB1dF9wb2xsX2NoYW5nZWQg
-aW5zdGVhZCBvZiBsYXN0Y2xvc2UgaGVyZS4NCj4gDQo+IERpZCBzb21ldGhpbmcgZ290IG1p
-eGVkIHVwPw0KDQpBcmdoaC4gVGhlcmUgYXJlIHBhdGNoZXMgZm9yIGxhc3RjbG9zZSBhbmQg
-b3V0cHV0X3BvbGxfY2hhbmdlZC4gVGhlIA0KcmVhc29uIGZvciByZW1vdmluZyB0aGVtIGlz
-IHRoZSBzYW1lLCBidXQgdGhhbmtzIHRvIGNvcHkgYW5kIHBhc3RlIHRoZSANCm5hbWVzIGFy
-ZSB3cm9uZy4gU28gdGhlIHBhdGNoIGlzIGNvcnJlY3QsIGJ1dCB0aGUgZGVzY3JpcHRpb24g
-aXNuJ3QuIA0KV2lsbCBiZSBmaXhlZC4NCg0KQmVzdCByZWdhcmRzDQpUaG9tYXMNCg0KPiAN
-Cj4gQ2hlZXJzLA0KPiBDaHJpc3RpYW4uDQo+IA0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IFRo
-b21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPg0KPj4gLS0tDQo+PiDCoCBk
-cml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZGlzcGxheS5jwqDCoMKgwqDCoMKg
-IHwgMSAtDQo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vYW1kL2Rpc3BsYXkvYW1kZ3B1X2RtL2Ft
-ZGdwdV9kbS5jIHwgMiAtLQ0KPj4gwqAgMiBmaWxlcyBjaGFuZ2VkLCAzIGRlbGV0aW9ucygt
-KQ0KPj4NCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRn
-cHVfZGlzcGxheS5jIA0KPj4gYi9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVf
-ZGlzcGxheS5jDQo+PiBpbmRleCAyMzk5OGY3MjdjN2Y5Li5mYjcxODZjNWFkZTJhIDEwMDY0
-NA0KPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rpc3BsYXku
-Yw0KPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rpc3BsYXku
-Yw0KPj4gQEAgLTEyMjQsNyArMTIyNCw2IEBAIGFtZGdwdV9kaXNwbGF5X3VzZXJfZnJhbWVi
-dWZmZXJfY3JlYXRlKHN0cnVjdCANCj4+IGRybV9kZXZpY2UgKmRldiwNCj4+IMKgIGNvbnN0
-IHN0cnVjdCBkcm1fbW9kZV9jb25maWdfZnVuY3MgYW1kZ3B1X21vZGVfZnVuY3MgPSB7DQo+
-PiDCoMKgwqDCoMKgIC5mYl9jcmVhdGUgPSBhbWRncHVfZGlzcGxheV91c2VyX2ZyYW1lYnVm
-ZmVyX2NyZWF0ZSwNCj4+IC3CoMKgwqAgLm91dHB1dF9wb2xsX2NoYW5nZWQgPSBkcm1fZmJf
-aGVscGVyX291dHB1dF9wb2xsX2NoYW5nZWQsDQo+PiDCoCB9Ow0KPj4gwqAgc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fcHJvcF9lbnVtX2xpc3QgYW1kZ3B1X3VuZGVyc2Nhbl9lbnVtX2xp
-c3RbXSA9DQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2Ft
-ZGdwdV9kbS9hbWRncHVfZG0uYyANCj4+IGIvZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5
-L2FtZGdwdV9kbS9hbWRncHVfZG0uYw0KPj4gaW5kZXggZjZhOWU4ZmRkODdkNi4uZTlhMjhh
-NTM2M2I5YSAxMDA2NDQNCj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvZGlzcGxheS9h
-bWRncHVfZG0vYW1kZ3B1X2RtLmMNCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvZGlz
-cGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMNCj4+IEBAIC04Miw3ICs4Miw2IEBADQo+PiDC
-oCAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfdWFwaS5oPg0KPj4gwqAgI2luY2x1ZGUgPGRy
-bS9kcm1fYXRvbWljX2hlbHBlci5oPg0KPj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fYmxlbmQu
-aD4NCj4+IC0jaW5jbHVkZSA8ZHJtL2RybV9mYl9oZWxwZXIuaD4NCj4+IMKgICNpbmNsdWRl
-IDxkcm0vZHJtX2ZvdXJjYy5oPg0KPj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPg0K
-Pj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fdmJsYW5rLmg+DQo+PiBAQCAtMjgxMCw3ICsyODA5
-LDYgQEAgY29uc3Qgc3RydWN0IGFtZGdwdV9pcF9ibG9ja192ZXJzaW9uIGRtX2lwX2Jsb2Nr
-ID0NCj4+IMKgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnX2Z1bmNzIGFt
-ZGdwdV9kbV9tb2RlX2Z1bmNzID0gew0KPj4gwqDCoMKgwqDCoCAuZmJfY3JlYXRlID0gYW1k
-Z3B1X2Rpc3BsYXlfdXNlcl9mcmFtZWJ1ZmZlcl9jcmVhdGUsDQo+PiDCoMKgwqDCoMKgIC5n
-ZXRfZm9ybWF0X2luZm8gPSBhbWRfZ2V0X2Zvcm1hdF9pbmZvLA0KPj4gLcKgwqDCoCAub3V0
-cHV0X3BvbGxfY2hhbmdlZCA9IGRybV9mYl9oZWxwZXJfb3V0cHV0X3BvbGxfY2hhbmdlZCwN
-Cj4+IMKgwqDCoMKgwqAgLmF0b21pY19jaGVjayA9IGFtZGdwdV9kbV9hdG9taWNfY2hlY2ss
-DQo+PiDCoMKgwqDCoMKgIC5hdG9taWNfY29tbWl0ID0gZHJtX2F0b21pY19oZWxwZXJfY29t
-bWl0LA0KPj4gwqAgfTsNCj4gDQoNCi0tIA0KVGhvbWFzIFppbW1lcm1hbm4NCkdyYXBoaWNz
-IERyaXZlciBEZXZlbG9wZXINClNVU0UgU29mdHdhcmUgU29sdXRpb25zIEdlcm1hbnkgR21i
-SA0KTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnLCBHZXJtYW55DQooSFJCIDM2ODA5
-LCBBRyBOw7xybmJlcmcpDQpHZXNjaMOkZnRzZsO8aHJlcjogSXZvIFRvdGV2DQo=
+ok, then i drop the pause setting for now
 
---------------gwXK6OaLfaQ8iAMdjblSoB42--
-
---------------WYrb0xK08aT03AsuaxFIILPE
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmNROHsFAwAAAAAACgkQlh/E3EQov+Af
-qg/8DLfmRUYvAEkOGUdb+UPWlqwaao88s9cPeIA3h2HV6bYLuN3tcbcDWHFeQuAGVFYRgYLVboNR
-UtD8lzBIfELkuzD83B+VRxYJBSUdOWNVr5cmES8vFHFcFPQKMLAl/NCnOZOkXBa2xbSyfsJ9t/t4
-yXi4FqFTtRT4SWIfAHVY2cduEA/oRkqwmhB1nu+Nv+dWdMxKlWT5W5cc9D/tV7PNyU0D43q/xC3U
-UPqtz6yMg2u6UXyQ4smF0HltdBU+CjGDnCKVwKfW1JHy3eo2ONTt3ORu7QnXAGImozT2vrN3G3rF
-9FxNTpfh6Hv15QQMOPJqlCicq4nVRIXFHA2Za5jvGWa4m+bLzS4OH7KB+KqeWUEtX+QKl3eqgC56
-HBs9QpM0tp9VLVX4ws1GcGoJ48BWHSSNQv2suBrtz7yhdrquiPhXM4+XqWo/MZAxS1jnki7QdBhj
-PgYr3LQM68v3qRoLkKoAvqpkMDCUeAP7Sql6H1EmSBYcKupo8RvWEi0xTIoeHWA3WMXS+Lst+3uT
-gOVa/gN0OgRYykGJ6NRHykDPW2fBb50tDngSNH9Mh6zxabnKGwbgzG6q6w+SZy4uEceuLu9yfkv7
-bc/vqXu6UkH5/6ofgivW2hkPpkiyjQj5u9L55R67jqYOZCZfVsG2nGCNPoWHmDSbMdO1Fgmx46g4
-koE=
-=eccN
------END PGP SIGNATURE-----
-
---------------WYrb0xK08aT03AsuaxFIILPE--
+regards Frank
 
