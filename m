@@ -4,89 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FC7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CD1C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=; b=Np3VJuV0vLhNk3VrDyg2G8i8lG
-	1lgKTiNK/EBJU5axUGlDj3TSdQIVAEFppbzQELvK+cY22L1gk4j78mpXcNV3cybDcybORVBRhrxun
-	SvaFzkqCy+39+B2EHuAZXeES8ThYCeFbx1AB93NOrEf69EbXg8oK++ygB/SAUlw+1coav1Q1qglZ+
-	7i/sprDEqFcjZ3auGqi1SmtqF15h8N2C+UalaszvVnHjHnLKr3Sw2fXeD4HAhzjDT2TAp/0wRP7xd
-	YWbgULc2UMWzLJGFty7XGcL+WkIivrwEfStzonWxUrCNt1WIdNNB0MhtpbtRax221J5T97mRfJE1L
-	80UgoPIw==;
+	bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=; b=I97W6RyKGNMMUV6HZXFC2J/KhY
+	mvI3LMuv20ukndU6ndmb1dQnC4lkj8mDHawX0n4YsRyqG2dZWHA/ETELEMM2x+ICGvRUawKy8w/5N
+	Cr7EgiNZ7aLraVHGxjJxOUqzS/gH0hUb0xRyrGQJ5Qw/u6NNz7qjYgWkDqZvQejgCmEpUuwXHlPua
+	Vsze7B/f+fckfyAeluYE7rHlvhr6HaSVISeBuCEeR3p4rjIC1ly607dShynqJ7o9JpA+iYx1/50WY
+	05y3z9TN7WW6FzCVU+OMDug6fmgN/yOkYSOd8nb4gfilKm1miJPyDVUQkuhiqXJKOkX5R+QN00mtY
+	WIsPtBZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYGp-000Fzn-UG; Thu, 20 Oct 2022 16:19:47 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1olYIJ-000Gnz-CU; Thu, 20 Oct 2022 16:21:19 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYGe-000Ft9-5v
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:19:37 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id f14so13852426qvo.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:19:34 -0700 (PDT)
+	id 1olYID-000Gj0-V4
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:21:17 +0000
+Received: by mail-wr1-x434.google.com with SMTP id n12so35224296wrp.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:21:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=;
-        b=wtMyoidNDlc6CXkOIF48tG23OkrzjobXGaBGAeQxYLoX+/YrniIr8r8CuA4naE0ggr
-         egJI4JwS3HR/Z1zTs8DGA2jpvUXFJ3Pa3Gn0ScUdUBakgCjcAQohQ6iI3f5C2nnZLGzn
-         vH6TgDpcxcnqfFceAI+pdV2U4VDRbWogolEQY+R6tOEM9Imx7fBeRZjLd94CMcvNnkwJ
-         /Blt2ZZd5flcx11b+MFkYd/vCewUXmTqpA9NGS6/iJYKySlX27cyst93kh8GxViPaQBP
-         V4+VD4aw6rnQw+q8IXonQnSKgEFTjkTm71OJ1n9DMGWaHZPlGoMeXVrVuQE9Y80TR+g8
-         j4bw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=;
+        b=vLTlwUnpIWIwuvgi0iyBzDgogj1smwA6hhFgkNvK1JQ5gnNPG3XeP5FaxtLrguiiUI
+         yuymHez2yeU703/Gjhglf/3/sijnGdCsN+WIyQt514KEm3HfrfDOnmUt2Evo0ez2pt3V
+         BXp/ighRuejFCYjQiAT05SPZiV+7IrxKHh96ZFXjRzhohOAOcPpHi/scyWj0Iyp365+0
+         jKxiPxuoFGS1Z/g0d9sCsq5M2fObmFAD+CFgiK2uJ0p+elwWT8P2+ECMzQxeclCPkuyd
+         w8GDrWTdqzpFkBBguosfVea6TmJ8aNiuiG3WFo5fSAzdp/+EVdDo7GkaCYQRZ013tg7T
+         1piA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=;
-        b=DAScgYWm+t3eB9nIHFMH4Bv1M4OgmugToZ83ygfY9uBbbAIIFn4JxaQdegN54zy9lv
-         kZ2HS9Iv2LGiGq0HKmT22jryQtsFoGOrbHPZQUmCx/TSFr94hD0KVQVuFVZrQ6kMojqk
-         5n2RXbNGRAVvztxKJTmfoBRQIdcnn9LvXrwiCb0EWHIQkrOHkiEsddCExBrgd2iss9px
-         7x5pgHOrYLy0MKxo1OrG53Yz9+nmyCCDoV60U233lMfipRHJcPQY9cer3ABoKKlQuW6t
-         Wp19wfnp0hbh+lvAuYXBsuQ220UkZoJrPfH6Klag0aiURrkOH5OG9swLIbWI4vRqeDva
-         AP8w==
-X-Gm-Message-State: ACrzQf0Yf4KA+HhMdqj9raaA+GnJ9JuJ2rHXyuOKFZVmAckDfRaFAzoy
-	cN3ni7iZUJrSgSv7K/L/1KDJfA==
-X-Google-Smtp-Source: AMsMyM6mw4at8h/UUnFkUKaYGcNXsz9P2DbQdh3eDc++FhkVB22bdeyzYFFEjleWs4HEZBCi4MI2bw==
-X-Received: by 2002:a0c:e552:0:b0:4b1:86f0:89d5 with SMTP id n18-20020a0ce552000000b004b186f089d5mr11896504qvm.97.1666282774259;
-        Thu, 20 Oct 2022 09:19:34 -0700 (PDT)
-Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
-        by smtp.gmail.com with ESMTPSA id r17-20020ac87951000000b0039cb9ef50b5sm6277793qtt.26.2022.10.20.09.19.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Oct 2022 09:19:33 -0700 (PDT)
-Message-ID: <972de6c1-c844-7581-efed-cb6c4d826c33@linaro.org>
-Date: Thu, 20 Oct 2022 12:19:32 -0400
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4Ggl5GnJW5r8zpcno8Bg7VatgVa63OuBazQq9en4f4Q=;
+        b=Il7FmKdkNfwG2Jmr7o7u34+6MnZYy5+22MBsXAhdQGAEtkg+0ILjrcVniJVok1nKGr
+         UDJliCoQT8BJoNI/m5Z7y90V4+CYgYPu17sRqvTCeX34TtiFCQcr5W86oekq52yiYieu
+         cyJYoHWjiqNk4inXK7PoS2UApVOICXeSUe+0fTLxy0KfJMWxoTYyExTfUhqrMYmBaRa5
+         bxJBa4wIvTwvnXaiRc9dvwOcodtNO9eDIcBHQi3qB7T6Fy/Yd+fEjQ7PRTCtKE1zlaY2
+         8Wdxa0g52wZrMYzco0mqJcvpY3G8Gse8gaQaJ5HB/kOUtuWyqwRNZNQLvzZUsJWk2KWs
+         7oFQ==
+X-Gm-Message-State: ACrzQf0XphCWVaHYw5mBTownB/utj9GU2tEde+flOKhfAh9Jpag39lNV
+	jF5iKozCvHdj+jnJbLMYiDfK3w==
+X-Google-Smtp-Source: AMsMyM4LQ/lxoEIrH4UMCDFt1jKZSgIbbOISLRtCxbzdlIaBowCjGyQBQrDj/m1gYIMGc+i23FCohw==
+X-Received: by 2002:a5d:5084:0:b0:22e:2f15:b521 with SMTP id a4-20020a5d5084000000b0022e2f15b521mr9753215wrt.271.1666282871926;
+        Thu, 20 Oct 2022 09:21:11 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id m14-20020a05600c3b0e00b003b4fe03c881sm208028wms.48.2022.10.20.09.21.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Oct 2022 09:21:11 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 20 Oct 2022 18:20:46 +0200
+Subject: [PATCH v3 2/5] dt-bindings: input: mtk-pmic-keys: add binding for MT6357
+ PMIC
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH 1/3] dt-bindings: soc: mediatek: pwrap: add MT8365 SoC
- bindings
-Content-Language: en-US
-To: fchiby@baylibre.com, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
-Cc: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
- Tinghan Shen <tinghan.shen@mediatek.com>, Sen Chu <sen.chu@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20221020130957.25197-1-fchiby@baylibre.com>
- <20221020130957.25197-2-fchiby@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221020130957.25197-2-fchiby@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20221005-mt6357-support-v3-2-7e0bd7c315b2@baylibre.com>
+References: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
+In-Reply-To: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
+To: Mark Brown <broonie@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Fabien Parent <fabien.parent@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>, devicetree@vger.kernel.org,
+ linux-input@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=923; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=ZkZQij7/0Z3X4e9uF6B+oZckE7xcogOJfck3q8uBCAI=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjUXV0ZNXXgbhkdAz1a55MOKc3KBoIZOBnUZ+E6y1y
+ JpYKd/SJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY1F1dAAKCRArRkmdfjHURcv3EA
+ CycWh0zpHUbo0QCMDsyag2SfUDfWm7eNlPNHiLaKRoRrhUeE+UqeevDHVNlTozvLo0kXuCbRjEP2hy
+ ZUNh5+mCUEdLGEDOMprZ7XGAd/+K7t2bxtDY3FIWvGb8YH3AXaGl8G3/PFUf7iKKtQlcRoCCa91gmu
+ bVHu0Wf5ldEGvH351G2QGfvAr3PDibh+11F1Vf8v9f8r1tpBAVQr+N3PhQ4oo73rL3Et1d4BIuhuv6
+ qZXnNERdqshdBWa20jHiLrTwNWPcEp2cD4n+O3ThRJ0QBLkg0eUupn+RzwkoGJxABAvKQA/NdDQcG2
+ VrM+CEUIvJDE6F8PdJ1T4nXVflxMVj7auEXljbGNmbIii2ZEFBIf8mV7OMJOdd3sW+MLyhMIk3jFI9
+ HvEKE2gny3luDvml5/Xiku7YydL3dxMY9aYW33LQhsrXQi4E+kCIREhSp2V4P787KCshWfwOABQtRt
+ D3ZXVgSpcv37zt6NUIFhrlF+rpjdmudKWkGmzQ/YoUoCj03FESVcllQIti11iAHW+z8TRJyEBRXL1N
+ h0eBNbYo+C5SvCDFQJNp2MohOakK8eCFPM8SxJofKIoijZmr/UlicMkewYYERvs/CVbW/QSJLSdm5P
+ 9UWhvEfjmn/4m4G4nCOgJjHgjFB58R1kaG1iqdro4xI+6xN4jAoMXlmoxMvg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_091936_259994_6840891B 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20221020_092114_251493_3FA92655 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,17 +112,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/10/2022 09:09, fchiby@baylibre.com wrote:
-> From: Fabien Parent <fparent@baylibre.com>
-> 
-> Add pwrap binding documentation for
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+From: Fabien Parent <fparent@baylibre.com>
 
-Ah, and one more issue - your SoB is missing in all patches.
+Add binding documentation for the PMIC keys on MT6357.
 
-Best regards,
-Krzysztof
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+index 2f72ec418415..037c3ae9f1c3 100644
+--- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
++++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+@@ -26,6 +26,7 @@ properties:
+     enum:
+       - mediatek,mt6323-keys
+       - mediatek,mt6331-keys
++      - mediatek,mt6357-keys
+       - mediatek,mt6358-keys
+       - mediatek,mt6397-keys
+ 
+
+-- 
+b4 0.10.1
 
