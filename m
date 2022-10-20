@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5191DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 05:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C7BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 07:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WmQuwKBWTimCndR3nC++in8cypH3ZEm+MiDheyuj4O8=; b=cDWInO+xUp7gpu
-	SBOdcKZWrPxx/W8Yq/68qD0bFpQ3Ik6QEbPAepZiDl5DXN41rQlznwzkN7zb4vd1MKqa3YUljDFGU
-	eOVO8GKfYvT5o80K0soy37qHHJ7P3+WJ3whWHQNxWnZWqOJ2st9zST+9CPCKNanmajWL7wkB+/2cm
-	txH52e4ku9XQisMYNWwqRBGUkusb+vmeT5Zz6rKdpVDHjHiUHrgEdFHoXzzthcob0NYUg+CxXq3zM
-	dg/azk4Y5utq9oAFUkpyjNef9EqtutS7frW5ZVo5iJ12PbFhg/FKM6AQxE67/vGlhqZyrBmYHOGnx
-	8QXie3O0JAVE5KSM/tPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r9WeO21nD8/RBB+ni37nuqxV3+S0pvP1ptA35lbhxHs=; b=t1LZpT6OdKbeRFwAj+U85j5ksS
+	lgMzlbngGBWfAh6wdKnB/KsWDv1m2W2avVw6JfjAvzZjJuDX3woOwV/DoJvMzkphI7Zn3oelgyY5A
+	ePyPx0T+wi62CC1ETM9TkUSSgrmDPuqmuQ4JtCBCXPqYwbXFCvkiF5iw6sdwfW0W1t/ziZTnWiNNT
+	HttB9xri4FK2zSKeIKbIPGZnN8J8eW/UA8LM4TpPKXW083oTL15LjMPEFz+QWfHoH+nRe5vjl71Xd
+	1X4Jm7oCBLKp3xLiIPlQ6NaiNzpKp9nwF5Gqxm4yyAZau9ZLH7tMb+95g/cu+si0rXYNX4RdgRusc
+	X4RhwpUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olOWg-00Aq5I-8N; Thu, 20 Oct 2022 05:55:30 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1olPe0-00BRv1-4B; Thu, 20 Oct 2022 07:07:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olOWc-00ApsA-2W; Thu, 20 Oct 2022 05:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666245299;
-	bh=eYfIfwKZVAPHWPdUZhZS++LaFuPSNaUX5JkNXjlgyig=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References;
-	b=GNaxmdC3RMACnIFIqOSr/dnCILu/l3sJaLLfRaN96waBuLoYrvyD3+jxnH/aOQsYv
-	 EKIGV/imtM7zerR4fK+LTzeXOIWj/P3AMUrxLl4TkGsixmJnerPzWG38Q5bcjfQX8I
-	 8a88jG9z9Rlu012ZTRu36YxGaTtE+MuM1sqga8sQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [127.0.0.1] ([217.61.146.75]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MUowV-1oclgR3QXJ-00Qm59; Thu, 20
- Oct 2022 07:54:58 +0200
-Date: Thu, 20 Oct 2022 07:54:49 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Frank Wunderlich <linux@fw-web.de>
-CC: linux-mediatek@lists.infradead.org, Alexander Couzens <lynxis@fe80.eu>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
-User-Agent: K-9 Mail for Android
-In-Reply-To: <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
-References: <20221018153506.60944-1-linux@fw-web.de> <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
-Message-ID: <949F5EE5-B22D-40E2-9783-0F75ACFE2C1F@public-files.de>
+	id 1olPdg-00BRZo-II; Thu, 20 Oct 2022 07:06:50 +0000
+X-UUID: 558ec476bf5342a5b982e7af7ad57a4e-20221020
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=r9WeO21nD8/RBB+ni37nuqxV3+S0pvP1ptA35lbhxHs=;
+	b=vHY1SAYFueVip00KvMKIJegaqThQbSK9eCws4xHub4PHe2QHBxWg1mQbn0nbwWJyyDgPMmB2Uo3SHXCUA+MdcfLwd42AwuM86SEWzM/aY9gnIaO1FdITgdowLAX5WBfnb3uKEmHV8gXFumXMakhkiwWUeVXgemMPTSpANxXDvP0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:030da832-8ab0-4096-88ad-bf88717f0a79,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:bc7365a4-ebb2-41a8-a87c-97702aaf2e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 558ec476bf5342a5b982e7af7ad57a4e-20221020
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 974450795; Thu, 20 Oct 2022 00:06:36 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 20 Oct 2022 15:06:00 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:05:59 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <ck.hu@mediatek.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, xinlei lee
+	<xinlei.lee@mediatek.com>
+Subject: [PATCH,1/2] dt-bindings: display: mediatek: dpi: Add compatible for MediaTek MT8188
+Date: Thu, 20 Oct 2022 15:05:52 +0800
+Message-ID: <1666249553-15801-2-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1666249553-15801-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1666249553-15801-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:soS9ZlfzVGHMnYNJViC28AeLChMiaM1aVARhkc8HuzudRHY7DPZ
- EKNlvaxU2vEqCTOvtcyYn8vBZVkN843XxDk+coA0TWxjhhZ796HxvyVRoDWefNVzxzh9G2u
- 8yxmLx3eNnREm9NTb0ADlutsSMwcLdMOeOu0pQfqHuczoTNHbvuQmsGyufZK7hszK2nk3lK
- FsqEhBo632zluJ3l3S1RQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:97lpaLYe6Os=:zunmQz9114/K9zjoMonKLW
- eEiEXvyiCuzaOWivMJRFI7eV1jQRy+rUTOKbmo38h3rT+DleJcq80NMBWxJPv2Kt3BiA4Qjoa
- 5PvcqPAuNRIx6/Yxvc+Vuctpx+q9BGy+pMO+8nZEpi3otGe1vMXMfVub41mwRCqvCUc1i/M8e
- 6kBAbVjIuQj/qTuQNDP5xHnK2yqUmOF3YKYQczZY7dAxHsLvrxUs17tuTKsHMhD4WAg575kab
- k+mdm93siPkUZlvwOu+sZBEo5FiI3e0wgmRRgvDvLyzqwbicKVnO6zwpkjtZedfWvZW3CKSNG
- EyuBdwZnTxfQV2qxW+rtwbzWiRP3AQDGMEo3yfbQ17GmZ+zB5CZjBfswMvJF0HuPv2JaVCgRp
- XgOwL6A4tHdv4glA2Zy8VJ2PdJbylpForeTHQzvWsvAO/aLR/SW3dBHtKs/huzFgoyY1BcVod
- yPQPTJ5cn2/odb4MSlvEoQ5cm5k7LrGO8DnmMQvX08BQeNqYd2zT1d9j4rlN5Ux6uzfzv1tGV
- x/gRdQKQ/dVFySsQzARxbPi81AM5XmwIvdT3kd2OghtL5UJtGXRm0DP6HPOlhSdl9geDtgmXd
- k/5EXxgYq9SzfOCZi0+2cw5v8ZZ7nxWGsruS0+GCG8HePEMPicFZ32wc82XYPYuXCJMqgCNuq
- xhmBrXMa41e01wyXwfP9UWYZCw3W5ln1gGL9NoXR40zgcbLJd6+AKdm3gVSMGAkdHS9p0TNiC
- 0PQoZRPnwEmaA7cQaoRWEhrdhxwrETunl2ll3dKg/+Alrg+DQ6RXLp4Su68t2ErDpbIan1vFz
- sEhE+V2tTqpt6wo4cX+yF9mmzDycPIjkYAQ6HdEoZDP7yUkGGDZqMvsm5nuOj7t45cRvYe9Tl
- jdzrljx+66fazd49B4wPSgLO8CgScy8TxjuyZuUGhXEdd7duPD3IxNCZi//LfWKqcYrLfpRcJ
- zNa3hx2TElbaM5/3U+IDA8wVepOgXmBTVyhaR+tbOg7AQ1ZnFHQFhakUA56wIDFcZz/ZB2xtf
- WGmdgDRv96cwkOfiMO/vZs8Eyt24jKcu9PDwOBU/M7k+kvPZaP3Q8f1YEnF2eQkUvMVaOzsNf
- S6135R8WhkjsCnqdTM/ImNpC8aSjA+em98hA7ljXuk2J2A1/F/dhHiSlZa4lkEckbeFeraGDZ
- 3GSAoLUYFItFc36NxXgNMm1Z4OjwK9090KLH3m91bZbhi0KIYT71BBRmNNJ2SRg8Na4x8nyju
- osvd6tYvj8Zk/VHO9hdtW5IlXPmbevI6sgYtCuo4n1jFOuwQq8bTx93Bcxo/429TkXq/OUWhN
- uJDw6vV8wyT2S2MY4Wm+NxNjnajJCJ7PMOFX/v6MQBO2A2dBR9yekvAu7AUwR1xUD7ttPQknj
- eCsuvIec9A4D9du4hwlQcVe97SSVw0UEjIpUSbt35uO1mHXon7LpTvHMYCKelQ4+GxMUbWjaH
- C5Nymt8vodxeAobYi6BuhcVMOIwIhCnCoob0u867OQPmJ/cklNySti7m9WG1jGMfaaNa3Sgfg
- 9waD8JDGO8K9qVj5g3brshTfhQ51/LziWJnXAELokMwe1
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_225526_595054_9DF6F684 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20221020_000648_628758_F37D3BD6 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,44 +80,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 18=2E Oktober 2022 18:39:01 MESZ schrieb "Russell King (Oracle)" <linux@=
-armlinux=2Eorg=2Euk>:
->Hi,
->
->A couple of points:
->
->On Tue, Oct 18, 2022 at 05:35:06PM +0200, Frank Wunderlich wrote:
+From: xinlei lee <xinlei.lee@mediatek.com>
 
->> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
->> +	state->an_complete =3D !!(val & SGMII_AN_COMPLETE);
->> +	state->link =3D !!(val & SGMII_LINK_STATYS);
->> +	state->pause =3D 0;
->
->Finally, something approaching a reasonable implementation for this!
->Two points however:
->1) There's no need to set state->pause if there is no way to get that
->   state=2E
->2) There should also be a setting for state->pause=2E
+For MT8188, the vdosys0 only supports 1T1P mode while the vdosys0 supports 2T1P mode in MT8195.
 
-Currently it looks like pause cannot be controlled in sgmii-mode so we dis=
-abled it here to not leave it undefined=2E Should i drop assignment here?
+So we need to add dt-binding documentation of dpi for MediaTek MT8188 SoC.
 
->> +}
->> +
->>  static const struct phylink_pcs_ops mtk_pcs_ops =3D {
->>  	=2Epcs_config =3D mtk_pcs_config,
->>  	=2Epcs_an_restart =3D mtk_pcs_restart_an,
->>  	=2Epcs_link_up =3D mtk_pcs_link_up,
->> +	=2Epcs_get_state =3D mtk_pcs_get_state,
->
->Please keep this in order - pcs_get_state should be just before
->pcs_config=2E
+Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Ok,will change order
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+index 5bb23e9..963f82b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+@@ -23,6 +23,7 @@ properties:
+       - mediatek,mt8173-dpi
+       - mediatek,mt8183-dpi
+       - mediatek,mt8186-dpi
++      - mediatek,mt8188-edp-intf
+       - mediatek,mt8192-dpi
+       - mediatek,mt8195-dp-intf
+ 
+-- 
+2.6.4
 
-regards Frank
 
