@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12460C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764D8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OVJSxsezPM93wU8wP944PLHN8F5X2+UvzFDaXoRZmNg=; b=qQiZuEQNj+BmUPb5O30hEnWvw/
-	7bc32WuZncp1ArC4Us7v3j2sI/kD/A7Ulj0WBEnrN4mhK+H7LLI0UU6QSo0rspfL+PCSTkMefepSv
-	R5d15P95YYY3UttGcXrv4K1BhTUlTmH4ea8F1c0szISYzudYaFwY7Fq07A3mrUmhuFkqcfJqsDJ8s
-	B2o1KBGUhf4DMrAdm0Nb/cat7sSeCT4w4xCwAd8t3ZOTlmzXKB/F3KCJ6G1LnG/TfGM3YiJg/GHKT
-	+oSfmQNnmaywQucd4BcptdcMESrkooVtC/a5mjWYY0OlYevsBguGtIKwAZxey7ll4U5FIY9qdrfFU
-	hb9RY8Kw==;
+	bh=OJre8KN29d1NkUMRqOSqxQexLqxHmU+GHdpVJfUR2M4=; b=GAys6PskXPFxVtYsWu8kG8aAgT
+	EjSsZ2WE1t+2my70B4Tcw5/Ay13nysVA8uIpz/e2OfzrfiMMhwfBUPado5FAD2TF1iZ8GZjZUat3N
+	bM6ZnnTFsJezxEAcZAaxp/s44Z1BHODr/UnQNH5G6ywy4xxdVeQ2p6CJmA4ZpWzZhjXaUEQKUr0Bs
+	CeXyL5mmocrv9/vIc3y7QiI9oZ0ukdxYtUUC/6jWebR4bRBkhmAZAnSSJpVV/Iqu8ezdQVZN/2Ug/
+	2FKBthM94CfWf6H12+UijXNG9MCF+3/Y+6au2LxiE/nmJOdg4/SxwPEM3yDRPFh6deTW73T7AGbFC
+	DZiDUSQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYZy-000SHC-7P; Thu, 20 Oct 2022 16:39:34 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1olYc8-000Ubl-MU; Thu, 20 Oct 2022 16:41:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYTw-000NWS-BT; Thu, 20 Oct 2022 16:33:22 +0000
+	id 1olYat-000TEl-VM; Thu, 20 Oct 2022 16:40:33 +0000
 Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5C056660252A;
-	Thu, 20 Oct 2022 17:33:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DDA8660247C;
+	Thu, 20 Oct 2022 17:40:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666283595;
-	bh=Q6u2GbH3PGV2qnNkRIJ/Fn4pm+KSrq6IxNUNSYEyuFY=;
+	s=mail; t=1666284028;
+	bh=cvM3djFXmy7wP9TkTQGsL5CnoFlBKYQJZrVbENrbUJg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HrvyrFKm+YQPD31b/I/zrMo5s4g3vbGwhHZXD9Ufc/Pg/y7i650rPbKDnJIG1VUp8
-	 M2Tyxtgn+uKnhvC0Mu+s5VmAoBE27ikd2mXu3diJWF0yTaaAbSdlwZZ1qRdrZ197tR
-	 NA7dlUGIyrWt9IWpPHc1F4nLKZ1WXBzFlC3jdJBoNPlg8ba7auPTaHQoWejaI2X0N1
-	 UiHUX1QcJgYwceHrOw8ORtuKug1p/T92+mF0AlvbzQ8kP6RLAVT47bEeer5nqQeBfY
-	 FSmlosRyu4VUA8L52cHjyMdpGk0PYNjHZ3fMSuaAPGTP0bND2dOA3OyRa0Z9aS3omy
-	 0lWp6oiNXPRqg==
-Date: Thu, 20 Oct 2022 12:33:10 -0400
+	b=HxVPgP72xkk5pXDKB0rWnF5v2W6J0ELdMBK2J5ULgnVIuKkL2msmdQeA51+5tWcmv
+	 Y8ZLEkBLMdkWlLl7UgQk+O09ljGPdB2h7qcnrvuURew/O36BvfyMKDlzNnHrSLSYyE
+	 Mi+Qp43rg1cXDRw9I8Dhi7da8bAK7nGxmlM4r7fM756rjS85u9kkzTRqAA7w+XxZnk
+	 O9LR0hBz6LcXtw688DI8MrPsIT/oGudBYtRZ3/LGol0Jv4LnuR3Ez8sHprNzN2qd+U
+	 uFKskEaJDFlIe1TqaDgUMsg9tO+5lr1PjG5BlwD0EJfjUzzYn6A0xxF3ppxX0FYWgd
+	 Z2bKZRHhol5Ow==
+Date: Thu, 20 Oct 2022 12:40:22 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: xinlei.lee@mediatek.com
 Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
@@ -50,20 +50,20 @@ Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
 	daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v12,1/3] soc: mediatek: Add all settings to
- mtk_mmsys_ddp_dpi_fmt_config func
-Message-ID: <20221020163310.tpkjvr7pe5vhwylh@notapiano>
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v12,2/3] drm: mediatek: Set dpi format in mmsys
+Message-ID: <20221020164022.vtnumo3fob2sh54w@notapiano>
 References: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
- <1666147936-27368-2-git-send-email-xinlei.lee@mediatek.com>
+ <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1666147936-27368-2-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_093320_796184_132409A1 
-X-CRM114-Status: GOOD (  25.80  )
+X-CRM114-CacheID: sfid-20221020_094032_200100_60B45B66 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,131 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Wed, Oct 19, 2022 at 10:52:15AM +0800, xinlei.lee@mediatek.com wrote:
+[..]
+> @@ -134,6 +137,7 @@ struct mtk_dpi_yc_limit {
+>   * @yuv422_en_bit: Enable bit of yuv422.
+>   * @csc_enable_bit: Enable bit of CSC.
+>   * @pixels_per_iter: Quantity of transferred pixels per iteration.
+> + * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
 
-On Wed, Oct 19, 2022 at 10:52:14AM +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> The difference between MT8186 and other ICs is that when modifying the
-> output format, we need to modify the mmsys_base+0x400 register to take
-> effect.
-> So when setting the dpi output format, we need to call mmsys_func to set
+As Angelo suggested previously, this could be written slightly shorter as 
 
-mmsys_func isn't something that exists in the code. Instead mention the actual
-function name: mtk_mmsys_ddp_dpi_fmt_config.
+  * @edge_cfg_in_mmsys: Edge configuration for DPI output has to be set in MMSYS.
 
-> it to MT8186 synchronously.
+>   */
+[..]
+> @@ -448,8 +453,12 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
+>  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
+>  			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
+>  			     EDGE_SEL : 0, EDGE_SEL);
+> +		if (dpi->conf->edge_cfg_in_mmsys)
+> +			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_DDR_CON);
+>  	} else {
+>  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
+> +		if (dpi->conf->edge_cfg_in_mmsys)
+> +			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_SDR_CON);
 
-
-Here, before saying that the commit adds all the settings for dpi, you could
-have mentioned that the previous commit lacked those, to make it clearer:
-
-Commit a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi output for MT8186")
-lacked some of the possible output formats and also had a wrong bitmask.
-
-
-> Adding mmsys all the settings that need to be modified with dpi are for
-> mt8186.
-
-This sentence I would change to the following one:
-
-Add the missing output formats and fix the bitmask.
-
-
-Finally, you're also making the function more HW-agnostic (although in my
-opinion this could've been a future separate commit), so it's worth mentioning
-it here:
-
-While at it, also update mtk_mmsys_ddp_dpi_fmt_config() to use generic formats,
-so that it is slightly easier to extend for other platforms.
-
-> 
-> Fixes: a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi
-> output for MT8186")
-
-The fixes tag should be kept in a single line, without wrapping.
-
-> 
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> ---
->  drivers/soc/mediatek/mt8186-mmsys.h    |  8 +++++---
->  drivers/soc/mediatek/mtk-mmsys.c       | 27 ++++++++++++++++++++------
->  include/linux/soc/mediatek/mtk-mmsys.h |  7 +++++++
->  3 files changed, 33 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
-> index 09b1ccbc0093..035aec1eb616 100644
-> --- a/drivers/soc/mediatek/mt8186-mmsys.h
-> +++ b/drivers/soc/mediatek/mt8186-mmsys.h
-> @@ -5,9 +5,11 @@
->  
->  /* Values for DPI configuration in MMSYS address space */
->  #define MT8186_MMSYS_DPI_OUTPUT_FORMAT		0x400
-> -#define DPI_FORMAT_MASK					0x1
-> -#define DPI_RGB888_DDR_CON				BIT(0)
-> -#define DPI_RGB565_SDR_CON				BIT(1)
-> +#define DPI_FORMAT_MASK					GENMASK(1, 0)
-> +#define DPI_RGB888_SDR_CON				0
-> +#define DPI_RGB888_DDR_CON				1
-> +#define DPI_RGB565_SDR_CON				2
-> +#define DPI_RGB565_DDR_CON				3
-
-These defines should all have a MT8186_ prefix. This will avoid confusions now
-that mtk_mmsys_ddp_dpi_fmt_config() is being made more platform-agnostic.
-
->  
->  #define MT8186_MMSYS_OVL_CON			0xF04
->  #define MT8186_MMSYS_OVL0_CON_MASK			0x3
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index d2c7a87aab87..205f6de45851 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -238,12 +238,27 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
->  
->  void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val)
->  {
-> -	if (val)
-> -		mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> -				      DPI_RGB888_DDR_CON, DPI_FORMAT_MASK);
-> -	else
-> -		mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> -				      DPI_RGB565_SDR_CON, DPI_FORMAT_MASK);
-> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> +
-> +	switch (val) {
-> +	case MTK_DPI_RGB888_SDR_CON:
-> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> +				      DPI_FORMAT_MASK, DPI_RGB888_SDR_CON);
-> +		break;
-> +	case MTK_DPI_RGB565_SDR_CON:
-> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> +				      DPI_FORMAT_MASK, DPI_RGB565_SDR_CON);
-> +		break;
-> +	case MTK_DPI_RGB565_DDR_CON:
-> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> +				      DPI_FORMAT_MASK, DPI_RGB565_DDR_CON);
-> +		break;
-> +	case MTK_DPI_RGB888_DDR_CON:
-> +	default:
-> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
-> +				      DPI_FORMAT_MASK, DPI_RGB888_DDR_CON);
-> +		break;
-> +	}
-
-To be honest I don't really see the point of making the function slightly more
-platform-agnostic like this. With a single platform making use of it it's just
-an unneeded extra abstraction, and it could easily be done when a second
-platform starts requiring this as well...
-
-In any case,
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+I know this isn't one of the formats supported by MT8186, but since we're using
+platform-agnostic formats now... This else branch in theory could also run for a
+format like MEDIA_BUS_FMT_YUYV8_1X16. Would it make sense to set
+MTK_DPI_RGB888_SDR_CON in that case?
 
 Thanks,
 Nícolas
 
->  }
+>  	}
 [..]
 
