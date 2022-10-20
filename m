@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0DBC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 08:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C88E2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 08:39:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V+1ef8CY4rNU4mQk37SBqFAMHnpg/IcaHQ4AFvuNoks=; b=wBLS+mleJBokcY2ET+OcShLYkF
-	EG1VGsMgHczrdlVj5rrEEKeWTkPAd5jQkSOCopUrxSnhnvcM99LSR6xBRcdOAk0lOHDiseNS7rvO/
-	XLiEsmZ211f0FCxXKiSrASIt0r0pXY4WERSfFq1Y1tdZeA94y40WpdShJlK7a09OQ2cdhbnik25DO
-	lHzPcL5JKhrxXkfwUaD70TQiC/aPH6PguzHdzbfXSSmXkcHj6V7urBgRAML6qhk2EG5ppicfg4+j2
-	aKnUoV/W2ZFbuOdGtdzkrVorbtkealu5URkF328UhEFAFw1ZuJOou/WaFK6ec5+XiHgkm9kGImd79
-	kN128UTg==;
+	bh=JHljVWBcr4b76+FxHdScLRgEn2EIZbrBU/VBOXgvySU=; b=fXalERLoi3toOZRyF8hK9+6DCl
+	lXnSlOZRMwtfW0BnYQcA/t4tPogsmAhzeN3VYM1gExuOQfTsgVHbYQGGya7/106cryO+vWIHDKfiI
+	mX1uKvMaYWZr3nXgI+idWCSY4LtbqZsDTksMCaFkvDBRuetQsel8i2AcVFBiHl7/0iASDtQrd1h5V
+	lhvCMCZ+RCMu0NZOAXb5D0nCnEF7Bbh8crwuv/KXImtBs23Twya3aY83kx2WU2Blontu/33f4wWbS
+	UsOoLBgmcOMuNafPcwRc3OmQY2uDqBc6BP4WA3Xh3U/muLJ7yPf5ahm+cIO+7NP/7ssKIivqp48pq
+	Bq5/ZriA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olR1a-00CHsO-N2; Thu, 20 Oct 2022 08:35:34 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1olR5H-00CKm5-Th; Thu, 20 Oct 2022 08:39:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olR1X-00CFcr-I2; Thu, 20 Oct 2022 08:35:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=V+1ef8CY4rNU4mQk37SBqFAMHnpg/IcaHQ4AFvuNoks=; b=GIL9tOLjjdtmPdIM56MUg3cw+p
-	q/vk9cqNJnqbmMS7KTOWoEWU83QMLOIuz74N0QNs5F4IdZEXwhpuQnnMnEg+kS1Vwj4ESaMeTsZ6v
-	thzoxV6W6b7tBNawqRCx/aPDaRFAvnA4wZ6+9X3pWX9CHgN/qQJplDRGtQQVIAh/BTUOr1Tabszl8
-	v4N2z+vPWDHo/wbwHxfbWgL46ZgPHJ47CWnDFgPn+DJPR5I+C57B6kHquYYsZdWhd6LUwhCXlbuOc
-	VrecXyGNCXTUMtamT+vZRsTcwYVr9hH9ueUauV1KTejAlhZWpcUtupe2JxRTbZughvjkLuVLTU8t0
-	q60AoVvQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34818)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1olQzP-0006j5-TT; Thu, 20 Oct 2022 09:33:19 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1olQzL-00031C-LG; Thu, 20 Oct 2022 09:33:15 +0100
-Date: Thu, 20 Oct 2022 09:33:15 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
-	Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y1EHy0t5nXOF/3Mw@shell.armlinux.org.uk>
-References: <20221018153506.60944-1-linux@fw-web.de>
- <Y07Wpd1A1xxLhIVc@shell.armlinux.org.uk>
- <949F5EE5-B22D-40E2-9783-0F75ACFE2C1F@public-files.de>
+	id 1olR5F-00CKhn-3T
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 08:39:22 +0000
+X-UUID: 99b56705a2b9403cba206ceff95c73f2-20221020
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JHljVWBcr4b76+FxHdScLRgEn2EIZbrBU/VBOXgvySU=;
+	b=di3FSsv9Z3507iKS8SZB4NZEgzVvBr7x8KBVRZhJijZ3GMBrKJqXI16odHTXPfFBMWZOUdYHKtSxhedQT+iQqELfWqnwVzD0QHbD6yJbL+9dPwfF/g2GLVKIyo+SKGxR6drgw9Jp36ITPHMZqIVkNlpe5qkjzlcSvA6/rTnVd58=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:541ff4dd-e9e5-4dc4-8a82-85f618d79612,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:62cd327,CLOUDID:678768a4-ebb2-41a8-a87c-97702aaf2e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 99b56705a2b9403cba206ceff95c73f2-20221020
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1529601186; Thu, 20 Oct 2022 01:39:15 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 20 Oct 2022 15:39:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:39:09 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v2 5/9] media: platform: mtk-mdp3: chip config split about resolution limitations
+Date: Thu, 20 Oct 2022 15:38:58 +0800
+Message-ID: <20221020073902.21039-6-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221020073902.21039-1-moudy.ho@mediatek.com>
+References: <20221020073902.21039-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <949F5EE5-B22D-40E2-9783-0F75ACFE2C1F@public-files.de>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_013531_614526_46E8BC0A 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20221020_013921_182613_EA1E1968 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,48 +81,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 20, 2022 at 07:54:49AM +0200, Frank Wunderlich wrote:
-> Am 18. Oktober 2022 18:39:01 MESZ schrieb "Russell King (Oracle)" <linux@armlinux.org.uk>:
-> >Hi,
-> >
-> >A couple of points:
-> >
-> >On Tue, Oct 18, 2022 at 05:35:06PM +0200, Frank Wunderlich wrote:
-> 
-> >> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
-> >> +	state->an_complete = !!(val & SGMII_AN_COMPLETE);
-> >> +	state->link = !!(val & SGMII_LINK_STATYS);
-> >> +	state->pause = 0;
-> >
-> >Finally, something approaching a reasonable implementation for this!
-> >Two points however:
-> >1) There's no need to set state->pause if there is no way to get that
-> >   state.
-> >2) There should also be a setting for state->pause.
-> 
-> Currently it looks like pause cannot be controlled in sgmii-mode so we disabled it here to not leave it undefined. Should i drop assignment here?
+Due to differences in hardware design, the supported max and min
+resolutions and scaling capabilities will vary, and should be
+moved and integrated into the chip configuration header file.
 
-Why do you think it would be undefined?
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 19 +++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 21 +------------------
+ 4 files changed, 22 insertions(+), 20 deletions(-)
 
-static void phylink_mac_pcs_get_state(struct phylink *pl,
-                                      struct phylink_link_state *state)
-{
-...
-        if  (state->an_enabled) {
-...
-                state->pause = MLO_PAUSE_NONE;
-        } else {
-,,,
-                state->pause = pl->link_config.pause;
-	}
-...
-        if (pl->pcs)
-                pl->pcs->ops->pcs_get_state(pl->pcs, state);
-
-So, phylink will call your pcs_get_state() function having initialised
-it to something sensible.
-
+diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+index 1be9cc55b9b5..c541176780aa 100644
+--- a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
++++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+@@ -380,4 +380,23 @@ static const struct mdp_format mt8183_formats[] = {
+ 	}
+ };
+ 
++static const struct mdp_limit mt8183_mdp_def_limit = {
++	.out_limit = {
++		.wmin	= 16,
++		.hmin	= 16,
++		.wmax	= 8176,
++		.hmax	= 8176,
++	},
++	.cap_limit = {
++		.wmin	= 2,
++		.hmin	= 2,
++		.wmax	= 8176,
++		.hmax	= 8176,
++	},
++	.h_scale_up_max = 32,
++	.v_scale_up_max = 32,
++	.h_scale_down_max = 20,
++	.v_scale_down_max = 128,
++};
++
+ #endif  /* __MDP3_PLAT_MT8183_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index ce18cbf70e96..4b02c135b631 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -26,6 +26,7 @@ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.comp_data_len = ARRAY_SIZE(mt8183_mdp_comp_data),
+ 	.format = mt8183_formats,
+ 	.format_len = ARRAY_SIZE(mt8183_formats),
++	.def_limit = &mt8183_mdp_def_limit,
+ };
+ 
+ static const struct of_device_id mdp_of_ids[] = {
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index 982438a9ab02..52f87e59ba9e 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -59,6 +59,7 @@ struct mtk_mdp_driver_data {
+ 	unsigned int comp_data_len;
+ 	const struct mdp_format *format;
+ 	unsigned int format_len;
++	const struct mdp_limit *def_limit;
+ };
+ 
+ struct mdp_dev {
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
+index cd6afbf53797..bb833ae27531 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
+@@ -11,25 +11,6 @@
+ #include "mtk-mdp3-regs.h"
+ #include "mtk-mdp3-m2m.h"
+ 
+-static const struct mdp_limit mdp_def_limit = {
+-	.out_limit = {
+-		.wmin	= 16,
+-		.hmin	= 16,
+-		.wmax	= 8176,
+-		.hmax	= 8176,
+-	},
+-	.cap_limit = {
+-		.wmin	= 2,
+-		.hmin	= 2,
+-		.wmax	= 8176,
+-		.hmax	= 8176,
+-	},
+-	.h_scale_up_max = 32,
+-	.v_scale_up_max = 32,
+-	.h_scale_down_max = 20,
+-	.v_scale_down_max = 128,
+-};
+-
+ static const struct mdp_format *mdp_find_fmt(const struct mtk_mdp_driver_data *mdp_data,
+ 					     u32 pixelformat, u32 type)
+ {
+@@ -485,7 +466,7 @@ int mdp_frameparam_init(struct mdp_dev *mdp, struct mdp_frameparam *param)
+ 		return -EINVAL;
+ 
+ 	INIT_LIST_HEAD(&param->list);
+-	param->limit = &mdp_def_limit;
++	param->limit = mdp->mdp_data->def_limit;
+ 	param->type = MDP_STREAM_TYPE_BITBLT;
+ 
+ 	frame = &param->output;
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.18.0
+
 
