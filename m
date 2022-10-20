@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEB8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA4BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:26:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=opOjBz4YXQMkku/b+s8cixkeDvpolqYi8tbCP8NecmU=; b=2rocznITSrvEdKW6TCoN3zEQtv
-	9zHIcQ9Uh686yXz8Uovd//DxcgM44f9ALaJ5RzvsWFtCuY4/mjhZEzQZlSaeVsRAsJ0HsPv78VME+
-	s6FVg6nzzn8QbwRE2yX3xQOLJ7US9dQfRUn1nOBuTxRSeKBiOzBmR6yUesnb4JuX1iRQBtpfCaTc6
-	FRFUWsCC8QXF9TqsZdnXI5lKR3DvAAag8b+aAEAkhoDroBDl0SJPzpKdf8gH3vCR4g6hgxoqJ8dJ4
-	65TCeoLLEdyRaJsRr52VqMiOvbRTPm/n3yNx/W2/bptKZcWroVXfcYzK78eudGNxXVXOoZiVTkmTq
-	S1qDtcWg==;
+	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2hBzpuTfcLKm/gHU0j1Rb5iDzN0jpTw27RMtS7S6QiY=; b=KJoujha9YogaOAJuO2hfLkoZgE
+	SgzBtTNZkZcbUcjhiCP7IE4kE8G80t62FyuiGEROHss1EzKcgXGnvUqOLe8Me2o6C7KDJXoSUGTWc
+	3TNUi9kJ7+FkCS1rvJXSgNSxYjF7VAlGTjFEUvp8sudU2dq+fVErAPB0woLlix7UR+MwGCeOMuBIz
+	bzyNX0YhEqOHd1cgYc0i76frhDQofJxVbxULEj5aZCu3uRQE8IuY64FbBPGq7vhMwRXSZstDIKISY
+	0z6dRldS7toO1snQWKFi9SwgcHjLKs4Xsbzq0I97g/ggc8ys4U3bb6GN0M+6D8I0Dyuwdl4eVznTQ
+	i0FvRGXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olURs-00EcDx-OQ; Thu, 20 Oct 2022 12:14:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1olUct-00Ek8E-Ve; Thu, 20 Oct 2022 12:26:20 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olTaO-00E07m-3Y; Thu, 20 Oct 2022 11:19:41 +0000
-X-UUID: 21bb4c15f1e74c49b545958c81b2adde-20221020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=opOjBz4YXQMkku/b+s8cixkeDvpolqYi8tbCP8NecmU=;
-	b=YoPKMOB/3izsOGR4+e+ZvfPUfjiUuE4JsU9CbS4Zz0N7FCwtIeUmrs6rkdF5cvAKd2v+J1tidr5uK+JNhcvuC2QwuYAZXg29XknxceeMnmVQkCFgKG9FLkJSycW0QCCU2zoaGneLUwVPKhZQ/8MmeJrNkfSrhT8QFCYzBoXod5Y=;
-X-CID-UNFAMILIAR: 1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:142a05cd-5fd3-4442-b2c7-5e9c9f896053,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.12,REQID:142a05cd-5fd3-4442-b2c7-5e9c9f896053,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:62cd327,CLOUDID:8461e7ee-314c-4293-acb8-ca4299dd021f,B
-	ulkID:2210201919315QAGNI82,BulkQuantity:0,Recheck:0,SF:38|28|16|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 21bb4c15f1e74c49b545958c81b2adde-20221020
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 389386461; Thu, 20 Oct 2022 04:19:29 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 20 Oct 2022 19:19:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 19:19:26 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
-	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
+	id 1olTqk-00E7R0-Vo; Thu, 20 Oct 2022 11:36:36 +0000
+Received: by mail-ed1-x530.google.com with SMTP id a67so29419708edf.12;
+        Thu, 20 Oct 2022 04:36:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=2hBzpuTfcLKm/gHU0j1Rb5iDzN0jpTw27RMtS7S6QiY=;
+        b=LvS7i/tU9BiRY+bnSEBZx2dHBwo+AeR3GLscVXRJPEgvwLRi0gmXL7Y0hcbVsCXxdh
+         GNpDRQjbUKZdTqjAn1gn9SbWj65eppSj30Gm0uUzaE1ijQYGhBN6GOce/D0Jn8SZTaVf
+         zWUxff7rS68KU/SKGxDQnSl5yPYCYsmQ7lYWyl10VS0/qpS+zeEYE0c2UB6H++W3zTTz
+         I4Qo/dlwvqgllRwT46z0hCtGhIT14yM83rpxBBqLAEVyrrx/oHn6Co5q/4xD50a1SZt8
+         sh785bCyqPAHEDs0ZFGJ1VPgcJ6zK54ZGw8cj78YQNfRm/+AudEZSSjdzONlVTlyRBgP
+         wqcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2hBzpuTfcLKm/gHU0j1Rb5iDzN0jpTw27RMtS7S6QiY=;
+        b=agCxwPK+6h1sjRzRILZX3lF8qSXa7SluXHhDKquBd8rTvvEQiKnCoudaAhE/K2LyBO
+         muyX1laP3cDN8sbcRptLOP7FQKYDX9w9WduMysmUzvVDjbcuv7yChJU+sQgRgr3WvEFl
+         CQfVPB5k0oTu8SlzYi7W4c+koI2PkR98gi5XwdLYfvPWwkPrPppNyB7WlNHAr+zYAuf+
+         WZOzREpDEDR8BIL6yjKVCX5I4lYeC8YoZ3xj9itOOi1CsOi4MHZ/K4KXDOrgeIbA5Axx
+         MAI9a24u+dLy6SnP2vmEc2ySE62d3VoFBp8omou7wwd3pfvtljamS/NqwurjpC4QGF6t
+         EuDQ==
+X-Gm-Message-State: ACrzQf0dNsHORAdT2LYRD/Nl3ep96z7yxlDAuStDCky9mjWOEn76Mz+/
+	i3fT3yfJc9y/LpAfTe4fz2PrUKD3ExTNJg==
+X-Google-Smtp-Source: AMsMyM642cRbJkWRb0REHkacf8Zt0nE8dOnuVHN/e2FpIG0h/B96y1K0ZYrvtgKxLuw2QF0YLHrl6A==
+X-Received: by 2002:a17:907:da7:b0:791:8f57:6860 with SMTP id go39-20020a1709070da700b007918f576860mr10947353ejc.509.1666265779656;
+        Thu, 20 Oct 2022 04:36:19 -0700 (PDT)
+Received: from [10.32.3.204] ([95.183.227.98])
+        by smtp.gmail.com with ESMTPSA id bd13-20020a056402206d00b004590b29d8afsm12108770edb.84.2022.10.20.04.36.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Oct 2022 04:36:18 -0700 (PDT)
+Date: Thu, 20 Oct 2022 14:36:08 +0300
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH v3 06/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Add MT6795
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-Subject: [PATCH v2 0/3] Add driver nodes for MT8195 SoC
-Date: Thu, 20 Oct 2022 19:19:22 +0800
-Message-ID: <20221020111925.30002-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	<matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Andy Teng
+	<andy.teng@mediatek.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yassine Oudjana
+	<y.oudjana@protonmail.com>, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <8WU1KR.065JU8WYUX9C3@gmail.com>
+In-Reply-To: <0f078a85-056a-c11e-377b-27764a34485d@linaro.org>
+References: <20221007125904.55371-1-y.oudjana@protonmail.com>
+	<20221007125904.55371-7-y.oudjana@protonmail.com>
+	<0f078a85-056a-c11e-377b-27764a34485d@linaro.org>
+X-Mailer: geary/40.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii; format=flowed
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_041940_254422_828E9366 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_043635_073822_3941E60F 
+X-CRM114-Status: GOOD (  30.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,30 +96,268 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pcie and venc nodes for MT8195 SoC.
 
-This series is based on linux-next/next-20221020.
-Depends on https://lore.kernel.org/all/20221001030752.14486-1-irui.wang@mediatek.com/ 
+On Mon, Oct 10 2022 at 07:24:59 -04:00:00, Krzysztof Kozlowski 
+<krzysztof.kozlowski@linaro.org> wrote:
+> On 07/10/2022 08:59, Yassine Oudjana wrote:
+>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
+>> 
+>>  Combine MT6795 pin controller document into MT6779 one. In the
+>>  process, replace the current interrupts property description with
+>>  the one from the MT6795 document since it makes more sense. Also
+>>  amend property descriptions and examples with more detailed
+>>  information that was available in the MT6795 document, and replace
+>>  the current pinmux node name patterns with ones from it since they
+>>  are more common across mediatek pin controller bindings.
+>> 
+>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+>>  ---
+>>   .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  94 ++++++--
+>>   .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 227 
+>> ------------------
+>>   2 files changed, 77 insertions(+), 244 deletions(-)
+>>   delete mode 100644 
+>> Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+>> 
+>>  diff --git 
+>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml 
+>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>  index a2141eb0854e..cada3530dd0a 100644
+>>  --- 
+>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>  +++ 
+>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>  @@ -8,6 +8,7 @@ title: Mediatek MT6779 Pin Controller
+>> 
+>>   maintainers:
+>>     - Andy Teng <andy.teng@mediatek.com>
+>>  +  - AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com>
+>>     - Sean Wang <sean.wang@kernel.org>
+>> 
+>>   description:
+>>  @@ -18,6 +19,7 @@ properties:
+>>     compatible:
+>>       enum:
+>>         - mediatek,mt6779-pinctrl
+>>  +      - mediatek,mt6795-pinctrl
+>>         - mediatek,mt6797-pinctrl
+>> 
+>>     reg:
+>>  @@ -43,9 +45,10 @@ properties:
+>>     interrupt-controller: true
+>> 
+>>     interrupts:
+>>  -    maxItems: 1
+>>  +    minItems: 1
+>>  +    maxItems: 2
+>>       description: |
+>>  -      Specifies the summary IRQ.
+>>  +      The interrupt outputs to sysirq.
+> 
+> I am not sure if description is relevant now for all variants... what 
+> is
+> the sysirq? You have two interrupts so both go to one sysirq?
 
-v1 -> v2:
-- remove 8195 example from pcie yaml
-- update reset-names of pcie yaml
-- add resets and reset-names to pcie node 
-- rename venc node
+It's the system interrupt controller and it has several inputs. Both 
+interrupts go to it.
 
----
-Jianjun Wang (1):
-  dt-bindings: PCI: mediatek-gen3: Add iommu and power-domain support
+> 
+>> 
+>>     "#interrupt-cells":
+>>       const: 2
+>>  @@ -81,6 +84,30 @@ allOf:
+>>               - const: iocfg_lt
+>>               - const: iocfg_tl
+>>               - const: eint
+>>  +
+>>  +        interrupts:
+>>  +          items:
+>>  +            - description: EINT interrupt
+>>  +
+>>  +  - if:
+>>  +      properties:
+>>  +        compatible:
+>>  +          contains:
+>>  +            const: mediatek,mt6795-pinctrl
+>>  +    then:
+>>  +      properties:
+>>  +        reg:
+>>  +          minItems: 2
+> 
+> What's the maxItems? You declared reg and reg-names in top-level
+> properties as accepting anything, therefore you cannot have loose
+> constraints here.
 
-Tinghan Shen (2):
-  arm64: dts: mt8195: Add pcie and pcie phy nodes
-  arm64: dts: mt8195: Add venc node
+That was an oversight. I'll fix it.
+> 
+>>  +
+>>  +        reg-names:
+>>  +          items:
+>>  +            - const: base
+>>  +            - const: eint
+>>  +
+>>  +        interrupts:
+>>  +          items:
+>>  +            - description: EINT interrupt
+>>  +            - description: EINT event_b interrupt
+> 
+> Blank line
+> 
+>>     - if:
+>>         properties:
+>>           compatible:
+>>  @@ -111,32 +138,50 @@ allOf:
+>>           - "#interrupt-cells"
+>> 
+>>   patternProperties:
+>>  -  '-[0-9]*$':
+>>  +  '-pins$':
+>>       type: object
+>>       additionalProperties: false
+>> 
+>>       patternProperties:
+>>  -      '-pins*$':
+>>  +      '^pins':
+>>           type: object
+>>           description: |
+>>             A pinctrl node should contain at least one subnodes 
+>> representing the
+>>             pinctrl groups available on the machine. Each subnode 
+>> will list the
+>>             pins it needs, and how they should be configured, with 
+>> regard to muxer
+>>  -          configuration, pullups, drive strength, input 
+>> enable/disable and input schmitt.
+>>  -        $ref: "/schemas/pinctrl/pincfg-node.yaml"
+>>  +          configuration, pullups, drive strength, input 
+>> enable/disable and
+>>  +          input schmitt.
+>>  +        $ref: "pinmux-node.yaml"
+> 
+> Drop quotes
+> 
+> Why this one is not pincfg-node anymore? All your properties are not
+> valid then? You mix here so many changes it is a bit difficult to
+> understand the concept.
 
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  16 +-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 174 ++++++++++++++++++
- 2 files changed, 187 insertions(+), 3 deletions(-)
+Seems like I didn't pay enough attention to that. This node actually 
+takes both pinmux-node (pinmux specifically) and pincfg-node 
+properties, so would it make sense to add ref for both?
 
--- 
-2.18.0
+> 
+>> 
+>>           properties:
+>>             pinmux:
+>>               description:
+>>  -              integer array, represents gpio pin number and mux 
+>> setting.
+>>  -              Supported pin number and mux varies for different 
+>> SoCs, and are defined
+>>  -              as macros in boot/dts/<soc>-pinfunc.h directly.
+>>  +              Integer array, represents gpio pin number and mux 
+>> setting.
+>>  +              Supported pin number and mux varies for different 
+>> SoCs, and are
+>>  +              defined as macros in 
+>> dt-bindings/pinctrl/<soc>-pinfunc.h
+>>  +              directly.
+>> 
+>>             bias-disable: true
+>> 
+>>  -          bias-pull-up: true
+>>  -
+>>  -          bias-pull-down: true
+>>  +          bias-pull-up:
+>>  +            oneOf:
+>>  +              - type: boolean
+>>  +              - enum: [100, 101, 102, 103]
+> 
+> Missing ref
+> 
+>>  +                description: Pull up PUPD/R0/R1 type define value.
+>>  +            description: |
+>>  +               For normal pull up type, it is not necessary to 
+>> specify R1R0
+>>  +               values; When pull up type is PUPD/R0/R1, adding 
+>> R1R0 defines
+>>  +               will set different resistance values.
+>>  +
+>>  +          bias-pull-down:
+>>  +            oneOf:
+>>  +              - type: boolean
+>>  +              - enum: [100, 101, 102, 103]
+> 
+> Missing ref
+> 
+>>  +                description: Pull down PUPD/R0/R1 type define 
+>> value.
+>>  +            description: |
+>>  +               For normal pull down type, it is not necessary to 
+>> specify R1R0
+>>  +               values; When pull down type is PUPD/R0/R1, adding 
+>> R1R0 defines
+>>  +               will set different resistance values.
+>> 
+>>             input-enable: true
+>> 
+>>  @@ -151,7 +196,7 @@ patternProperties:
+>>             input-schmitt-disable: true
+>> 
+>>             drive-strength:
+>>  -            enum: [2, 4, 8, 12, 16]
+>>  +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+> 
+> Now you are missing ref - you do not have a type now, because you
+> removed pincfg-node. Split the merging of different pinctrl bindings 
+> and
+> reorganization.
+
+Will do.
+
+> 
+> The drive strengths are also not valid for the other variant...
+
+Actually the supported drive strengths vary between pins of a single 
+variant, so technically they have never been described completely 
+accurately. The old drive strenghs are a superset of strengths 
+supported by pins on the MT6779 pin controller, and this change expands 
+the superset with values supported by some pins in MT6795. Would it be 
+better to move this to the conditionals to have it defined per variant?
+
+>> 
+>>             slew-rate:
+>>               enum: [0, 1]
+>>  @@ -218,8 +263,9 @@ examples:
+>>               #interrupt-cells = <2>;
+>>               interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_HIGH>;
+>> 
+>>  -            mmc0_pins_default: mmc0-0 {
+>>  -                cmd-dat-pins {
+>>  +            /* GPIOs 167-174, 176-178 set as multifunction MSDC0 */
+>>  +            mmc0_pins_default: mmc0-pins {
+>>  +                pins-cmd-dat {
+>>                       pinmux = <PINMUX_GPIO168__FUNC_MSDC0_DAT0>,
+>>                           <PINMUX_GPIO172__FUNC_MSDC0_DAT1>,
+>>                           <PINMUX_GPIO169__FUNC_MSDC0_DAT2>,
+>>  @@ -232,15 +278,29 @@ examples:
+>>                       input-enable;
+>>                       mediatek,pull-up-adv = <1>;
+>>                   };
+>>  -                clk-pins {
+>>  +                pins-clk {
+>>                       pinmux = <PINMUX_GPIO176__FUNC_MSDC0_CLK>;
+>>                       mediatek,pull-down-adv = <2>;
+>>                   };
+>>  -                rst-pins {
+>>  +                pins-rst {
+>>                       pinmux = <PINMUX_GPIO178__FUNC_MSDC0_RSTB>;
+>>                       mediatek,pull-up-adv = <0>;
+>>                   };
+> 
+> Best regards,
+> Krzysztof
+> 
+
 
 
