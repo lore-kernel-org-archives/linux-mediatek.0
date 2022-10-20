@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7501CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 08:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4850C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 08:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aFBBvo1Q72Gnlsd1eMUOXXzEV3l0rb61xTduiSt8CNI=; b=QNh7qUHVjUa+0B3vwVMAXql7vD
-	X9RTQcDJe0Ns2HxaxrNBAXgIv7qj6e1DpmK6wEP5azX+xTiDgHnn4jKeEIyk9eSk/W+YdQPw8Ut1x
-	AiOAAdH6t5m3SM/xh9oqGb/uLKPeCdeXlDyG0plTeJYbUewlSZDS/vIe4GK9AI1rWwZ8DeNtt/9T7
-	0FHnTXSTe2hXmAR91pvNign1igeaejXrdP2J0BRGSu/i8w1q5/xhQLMNpPG72rSSI5nIOu4gePU5P
-	VsbokC8+ylSqJrVx1JlOsWkOq3arnRs9eFBuvTLIO3D7N53KhL64U+WU3uVmGx2DOZi0XLMgs3zNB
-	vKsTWR4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RVnHnjZIbc03C/0P+k/dMEPQcRFLgg8+dULkY97lXN8=; b=Mj03ZUPETRsYZKYOIunTYBIbHh
+	A0ZqGcT29vPVwCKkbSq9mUSFd+9VvIIiEhiaJyUB5l5XsuBXElh8HNePjXp6PUP2EHhUUMiIro6iv
+	ejRwPUZhdIq7bbw76xE9sQqIqeJLhVrWjMxKqqySVBBn9lbqk4SYJ+1n3wI9xIpJr36ivekxh8BVN
+	AVuL2b00yoAVTxQg/1UUXyE2XE2fmSfK500ue74AYmlEWmDpGpQA/grCKyhaQIq+zHrGmb3tIbgyS
+	M+Uv6qgxqpHNOZeueDtJALL+FEkvcP6cSFfYf1KHoyTpKDFntYNYUV1oaYu8YaHo2U1SRc5SRHUa1
+	g59F9yQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olQuY-00CCPY-IY; Thu, 20 Oct 2022 08:28:18 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1olQwY-00CDSr-8R; Thu, 20 Oct 2022 08:30:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olQuN-00CCIg-Kc; Thu, 20 Oct 2022 08:28:09 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 55D9D66023A3;
-	Thu, 20 Oct 2022 09:28:05 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666254485;
-	bh=Dm2sSpcy/WPT5qaMKRDCmxl/L7RXt0Zoucvbb30uh6g=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q0pak6ywHzVJvhN8eGTE2FfIQO1kLkFxLeg3dP2mvNeHMiNAhPJiH6dHxHpl12qTS
-	 J+8nY/2EVFTQgzz9+8s8R+lpiGRdx3sFVnpvKHLr+zDlEJi97gP7pcMbkRVYoah7tZ
-	 Fpo912yLr/OKsUnex8YjcPEk9IH6tz597jXROLsb/CbNTkoMlg+thZ57HGmyBoSKtA
-	 0dJPuRZZDHr5UUx54YNNFpEc/7e8LJ48W8fIK0g79/hRW+OUfi7gEidO6uzzg2biCO
-	 BbE2ThRTNpQ/cQD87churaTOiy/4WhJHjnKdWi/iYUwyNJlokS/mxqQSAfs5RfiLr6
-	 NaLDOuU07xU7w==
-Message-ID: <b33b9d2a-f6d5-b2a7-bcb8-1ed2303c04b4@collabora.com>
-Date: Thu, 20 Oct 2022 10:28:02 +0200
+	id 1olQwV-00CDQw-3R
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 08:30:20 +0000
+X-UUID: f58c0826fbbf44098886101979e4e797-20221020
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RVnHnjZIbc03C/0P+k/dMEPQcRFLgg8+dULkY97lXN8=;
+	b=jKLi8IcB313/2qx6Ku8yTKikG0puaZUjcrIruOis23LMjmoFDMpqACAOVLC4y7eew9Aw32kiC4bjjgfkWbJwAHz1V1NIQ7M8hH3YKZzytgyuvjFRBSRWr/V2AVXD+QHCH5BAi399zt07WR/aRWrHSrDzVbeWCIjNATBeNMs6lz4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:3310a5a4-e97c-48e8-ac29-45bd78891114,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:723868a4-ebb2-41a8-a87c-97702aaf2e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: f58c0826fbbf44098886101979e4e797-20221020
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 18094811; Thu, 20 Oct 2022 01:30:15 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 20 Oct 2022 15:39:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:39:08 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v2 1/9] media: platform: mtk-mdp3: add chip configuration header file
+Date: Thu, 20 Oct 2022 15:38:54 +0800
+Message-ID: <20221020073902.21039-2-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221020073902.21039-1-moudy.ho@mediatek.com>
+References: <20221020073902.21039-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH 2/2] dt-bindings: iio: adc: mediatek,mt2701-auxadc: new
- 32k clock
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Jonathan Cameron
- <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-iio@vger.kernel.org
-Cc: Gwendal Grignou <gwendal@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <f98ed7f3fc15a0614443a57427d46ce17ec2e0cc.1666190235.git.daniel@makrotopia.org>
- <dbe88fd2f7ea5b2f419dce6ecb48c20e96e2e634.1666190235.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <dbe88fd2f7ea5b2f419dce6ecb48c20e96e2e634.1666190235.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_012807_831168_E7B589A7 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20221020_013019_163311_AFF83FDD 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +81,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/10/22 16:38, Daniel Golle ha scritto:
-> Newer MediaTek SoCs need an additional clock to be brought up for
-> AUXADC to work. Add this new optional clock to
-> mediatek,mt2701-auxadc.yaml.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->   .../bindings/iio/adc/mediatek,mt2701-auxadc.yaml          | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> index 7f79a06e76f596..c2a1813dd54152 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> @@ -44,10 +44,14 @@ properties:
->       maxItems: 1
->   
->     clocks:
-> -    maxItems: 1
-> +    maxItems: 2
-> +    minItems: 1
->   
->     clock-names:
-> -    const: main
-> +    items:
-> +      - const: main
-> +      - const: 32k
+In order to be compatible with more MDP3 chip settings in the future,
+move the chip-related configuration to a separate header file.
 
-You're adding this for MT7986, and I don't see any 32KHz ADC clock on that SoC.
-I suppose that your '32k' clock is CLK_INFRA_ADC_FRC_CK, currently parented to
-'csw_f26m_sel', so that's 26MHz, not 32KHz.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 35 +++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 27 ++------------
+ 2 files changed, 37 insertions(+), 25 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
 
-Since you'll need the same changes for thermal as well, I would consider setting
-"infra_adc_frc" as a parent of "infra_adc_26m", like so:
+diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+new file mode 100644
+index 000000000000..3084f62e7df5
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+@@ -0,0 +1,35 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP3_PLAT_MT8183_H__
++#define __MDP3_PLAT_MT8183_H__
++
++static const struct mdp_platform_config mt8183_plat_cfg = {
++	.rdma_support_10bit		= true,
++	.rdma_rsz1_sram_sharing		= true,
++	.rdma_upsample_repeat_only	= true,
++	.rsz_disable_dcm_small_sample	= false,
++	.wrot_filter_constraint		= false,
++};
++
++static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
++	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
++	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
++	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
++};
++
++static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
++	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
++	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
++	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
++	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
++	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
++	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
++	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
++};
++
++#endif  /* __MDP3_PLAT_MT8183_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 2d1f6ae9f080..658037d06250 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -12,33 +12,10 @@
+ #include <linux/remoteproc.h>
+ #include <linux/remoteproc/mtk_scp.h>
+ #include <media/videobuf2-dma-contig.h>
++
+ #include "mtk-mdp3-core.h"
+ #include "mtk-mdp3-m2m.h"
+-
+-static const struct mdp_platform_config mt8183_plat_cfg = {
+-	.rdma_support_10bit		= true,
+-	.rdma_rsz1_sram_sharing		= true,
+-	.rdma_upsample_repeat_only	= true,
+-	.rsz_disable_dcm_small_sample	= false,
+-	.wrot_filter_constraint		= false,
+-};
+-
+-static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+-	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+-	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+-	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
+-};
+-
+-static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+-	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+-	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+-	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
+-	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
+-	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
+-	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
+-	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
+-	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+-};
++#include "mt8183/mdp3-plat-mt8183.h"
+ 
+ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.mdp_probe_infra = mt8183_mdp_probe_infra,
+-- 
+2.18.0
 
-	GATE_INFRA1(CLK_INFRA_ADC_26M_CK, "infra_adc_26m", "infra_adc_frc", 20),
-	GATE_INFRA1(CLK_INFRA_ADC_FRC_CK, "infra_adc_frc", "csw_f26m_sel", 21),
-
-...just because there's apparently no reason to have one of them enabled but not
-the other or, at least, it looks like we *always* need ADC_26M_CK enabled when
-ADC_FRC_CK is enabled.
-
-Regards,
-Angelo
 
