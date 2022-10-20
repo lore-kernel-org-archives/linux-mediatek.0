@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76823C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA8DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:37:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=; b=vXvGKXOnTW5MQqVmFEaXdeCsXM
-	4ijNSFG1e+mhQp0zB7Sid7A4A6t32G3T1HDF3r4ONKwgHEo/JSMu1UcGBdXPnclHjPh52qklnQih9
-	Nb9qvgUXTq+zJzqLdLzLvCQTu9Xt89H+6abHHnlu6hMTLxA5TcmGsv/9wy4Cymh4xFMmZzjSLwa8w
-	n4rbnIl34UpYzjjQ0hwfCVDSxwnbr4rinI3W13waglIHX+8BQYh8Nu7bmDqTP65F2xbvFIFz3536N
-	weX6Dc9ttN+xJLh1o/b9p6NVzQD0h35conWowdSdYOh3yDkQFv8Z0s/xeQ2O5Y8qv+o5kVTcmZFNO
-	TP8l/qaA==;
+	bh=5dI92auzLHY/lelM7TtgPzOdqw5RFORtpBKAr7npXJw=; b=sie6XrWZF1xfzFLQ3fs6TRX7Do
+	oxpvsZ6JtVJT66x8yxZV+ZLMJcmaNTJtyzvGAV7XVO7Ok1DCDTU+2FixTVoyhlV+zzcf0A4qe6n+f
+	iyRrtidU6QJBxLKcWSRd7g+l1CG0lNgj5xyt+zEo3Z0gVJ10V7xWBC4S0TFn6eMIvzVijuywEoznS
+	Eq80YYGlAwel9En2dn8vIBlfGpcwMxWNAcqfOkN6rXY02R6yS7jRC8i89xb4Sxr/redc5jbnxqEhj
+	DpAVu7LW27mTvL1rHvpFHIYcd66ocZSnDJzb3KEeO4pcMs3ChJ7T4pNDboeaabTmZ2+aiewLMKAb5
+	wg8M/Rig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUkx-00EqWx-CO; Thu, 20 Oct 2022 12:34:39 +0000
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
+	id 1olUnt-00Es66-8g; Thu, 20 Oct 2022 12:37:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUCN-00EOoO-CY
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 11:58:57 +0000
-Received: by mail-ua1-x933.google.com with SMTP id i20so8832712ual.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 04:58:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=;
-        b=chHdDPwrngCggbBKdIbWiDLCXZnP7iqdEib8Kgvwcwr079ZvVEZkyUZObQbu4LPB9v
-         ZmZL9dksUjp5QOtQRXo+nXXBnvv0ujExpS8AhU5qghI4lpxjdojJ+Jx1DFH/NDbbjInN
-         ruQ+XSYsr7gXr+cizYo+gc/5gO69+XfMLDsAFSr2pTkJNvNGaDa611kzMo9dj1wzqVFD
-         4TbBFWpTanYKbeHGfToaLYQ13uydaHAIuvhnLU/Tcm3eyy8MijhlRbUxHpVVNMcOju9n
-         vuXpLEQZYve0hDHgWQLaZ75WAaibrb2NzPg58Y9znicE6ZnLCW1mmy942uanNWrXTHPm
-         dTRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=;
-        b=ehn0QuKXcVVkUD92oPceBuSbuZT5s09tOELP536iEf+KLAhcTc9QtlW9Vmbp765EBn
-         INLXK4XuzBmclA2/CEAFUiWskK34WUcZ2lZG0ast5rEFNdqy5LM57PpL1JrriJuMHtz7
-         q7CVx0JGa/+YEmGe0m1D0cF49v9hBkHlsk6fMlDoK6u0Cu0pKDBDNLPekjjhul3wcLnG
-         ES35Yrrjtb3g++BdJ3qer9Xc4OrxZCT6K27aE/1XxkB7jBKy3myUfI0NO3ldbE0PUbmG
-         3xytnqhN/G/lNyBdg7tpiOWiHVXVBVxhLYE/vErvvRxgk7zw9SWvygc+PJzBz8kBlzJO
-         cktQ==
-X-Gm-Message-State: ACrzQf3rtEcARKtdhiwTQmEYqfNWqPolON8J6iJnPOKtB1mxIKcXTju5
-	Mj9nIgIIfvON39XOwEoQEbel5nSoQLZoiuP5UG+ksg==
-X-Google-Smtp-Source: AMsMyM60th5P2fPMIOJLE3lPxXDmFgQe29j7XFR82PlU8rUG/MVn+bF0Ceu1sunzO0mIDlQiOE400CHnNlslzzchU9E=
-X-Received: by 2002:a67:ab02:0:b0:3a9:9953:6471 with SMTP id
- u2-20020a67ab02000000b003a999536471mr4410633vse.47.1666267133910; Thu, 20 Oct
- 2022 04:58:53 -0700 (PDT)
+	id 1olUDW-00EPWJ-5f; Thu, 20 Oct 2022 12:00:07 +0000
+X-UUID: be8de5075ae24648a0df79d92cbd8843-20221020
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5dI92auzLHY/lelM7TtgPzOdqw5RFORtpBKAr7npXJw=;
+	b=kyQX7SbTLrIhjI8F9TpyeZcFVT/k7sb8ExF3W5gMHkr0m4Y2M3sl9SvCU+Q7MCp+nBF+Y9KGjypIvXrEs1DZQw+u7NlakakdffiXDC6nE8wQgLbaLgy4ppMvNSlz0Oq737tsofQsQJuRYqHZNJ7h8xr8SjV69W7jJVGwqcdmQuA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:2a7babb7-c9e1-4f8d-b3bf-230121630c47,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:4b427333-7d3c-46b3-a6e9-0ba03eeda632,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: be8de5075ae24648a0df79d92cbd8843-20221020
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 568496511; Thu, 20 Oct 2022 05:00:03 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 20 Oct 2022 19:19:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 19:19:26 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+Subject: [PATCH v2 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
+Date: Thu, 20 Oct 2022 19:19:24 +0800
+Message-ID: <20221020111925.30002-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221020111925.30002-1-tinghan.shen@mediatek.com>
+References: <20221020111925.30002-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-References: <20221011-gpiolib-quirks-v3-0-eae9cc2ed0a1@gmail.com>
-In-Reply-To: <20221011-gpiolib-quirks-v3-0-eae9cc2ed0a1@gmail.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 20 Oct 2022 13:58:42 +0200
-Message-ID: <CAMRc=Md+zoaMHkDJm=SYEZMiHSF7_gYiXApuEboPU5qFpnD_1w@mail.gmail.com>
-Subject: Re: [PATCH v3 00/10] gpiolib: more quirks to handle legacy names
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Alexander Stein <alexander.stein@ew.tq-group.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_045855_491969_68FAF094 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20221020_050006_269768_1675DDE5 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,41 +84,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 18, 2022 at 7:41 AM Dmitry Torokhov
-<dmitry.torokhov@gmail.com> wrote:
->
-> In preparation to converting several drivers to gpiod API, and to keep
-> existing DTS working, this series adds additional quirks to locate
-> gpio lines with legacy names.
->
-> Additionally the quirk handling has been reworked (once again) to pull
-> all simple renames (ones that do not involve change of indices or other
-> complex manipulations) into a single quirk with a table containing
-> transformations. This should make adding new quirks easier.
-> When using legacy names gpiolib will emit a message to nudge users to
-> update DTSes (when possible).
->
-> Note that the last patch requires the following change from the OF tree:
->
->         88269151be67 ("of: base: make of_device_compatible_match() accept const device node")
->
-> The change is also available in mainline - it has been merged in 6.1
-> merge window.
->
-> Thanks.
->
-> To: Linus Walleij <linus.walleij@linaro.org>
-> To: Bartosz Golaszewski <brgl@bgdev.pl>
-> Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Cc: Alexander Stein <alexander.stein@ew.tq-group.com>
-> Cc: Daniel Thompson <daniel.thompson@linaro.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
->
+Add pcie and pcie phy nodes for mt8195.
 
-I applied the entire series.
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 150 +++++++++++++++++++++++
+ 1 file changed, 150 insertions(+)
 
-Bartosz
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index d03f0c2b8233..2128fa007480 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -13,6 +13,7 @@
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+ #include <dt-bindings/power/mt8195-power.h>
++#include <dt-bindings/reset/mt8195-resets.h>
+ 
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -1182,6 +1183,110 @@
+ 			status = "disabled";
+ 		};
+ 
++		pcie0: pcie@112f0000 {
++			compatible = "mediatek,mt8195-pcie",
++				     "mediatek,mt8192-pcie";
++			device_type = "pci";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			reg = <0 0x112f0000 0 0x4000>;
++			reg-names = "pcie-mac";
++			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x81000000 0 0x20000000
++				  0x0 0x20000000 0 0x200000>,
++				 <0x82000000 0 0x20200000
++				  0x0 0x20200000 0 0x3e00000>;
++
++			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE0 0x2>;
++			iommu-map-mask = <0x0>;
++
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++			clock-names = "pl_250m", "tl_26m", "tl_96m",
++				      "tl_32k", "peri_26m", "peri_mem";
++			assigned-clocks = <&topckgen CLK_TOP_TL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
++
++			phys = <&pciephy>;
++			phy-names = "pcie-phy";
++
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
++
++			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
++			reset-names = "mac";
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
++					<0 0 0 2 &pcie_intc0 1>,
++					<0 0 0 3 &pcie_intc0 2>,
++					<0 0 0 4 &pcie_intc0 3>;
++			status = "disabled";
++
++			pcie_intc0: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
++		};
++
++		pcie1: pcie@112f8000 {
++			compatible = "mediatek,mt8195-pcie",
++				     "mediatek,mt8192-pcie";
++			device_type = "pci";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			reg = <0 0x112f8000 0 0x4000>;
++			reg-names = "pcie-mac";
++			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x81000000 0 0x24000000
++				  0x0 0x24000000 0 0x200000>,
++				 <0x82000000 0 0x24200000
++				  0x0 0x24200000 0 0x3e00000>;
++
++			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE1 0x2>;
++			iommu-map-mask = <0x0>;
++
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
++				 <&clk26m>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
++				 <&clk26m>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
++				 /* Designer has connect pcie1 with peri_mem_p0 clock */
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++			clock-names = "pl_250m", "tl_26m", "tl_96m",
++				      "tl_32k", "peri_26m", "peri_mem";
++			assigned-clocks = <&topckgen CLK_TOP_TL_P1>;
++			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
++
++			phys = <&u3port1 PHY_TYPE_PCIE>;
++			phy-names = "pcie-phy";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
++
++			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
++			reset-names = "mac";
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
++					<0 0 0 2 &pcie_intc1 1>,
++					<0 0 0 3 &pcie_intc1 2>,
++					<0 0 0 4 &pcie_intc1 3>;
++			status = "disabled";
++
++			pcie_intc1: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
++		};
++
+ 		nor_flash: spi@1132c000 {
+ 			compatible = "mediatek,mt8195-nor",
+ 				     "mediatek,mt8173-nor";
+@@ -1241,6 +1346,34 @@
+ 				reg = <0x189 0x2>;
+ 				bits = <7 5>;
+ 			};
++			pciephy_rx_ln1: pciephy-rx-ln1@190 {
++				reg = <0x190 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190 {
++				reg = <0x190 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_tx_ln1_pmos: pciephy-tx-ln1-pmos@191 {
++				reg = <0x191 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_rx_ln0: pciephy-rx-ln0@191 {
++				reg = <0x191 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_tx_ln0_nmos: pciephy-tx-ln0-nmos@192,1 {
++				reg = <0x192 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_tx_ln0_pmos: pciephy-tx-ln0-pmos@192,2 {
++				reg = <0x192 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_glb_intr: pciephy-glb-intr@193 {
++				reg = <0x193 0x1>;
++				bits = <0 4>;
++			};
+ 		};
+ 
+ 		u3phy2: t-phy@11c40000 {
+@@ -1461,6 +1594,23 @@
+ 			};
+ 		};
+ 
++		pciephy: phy@11e80000 {
++			compatible = "mediatek,mt8195-pcie-phy";
++			reg = <0 0x11e80000 0 0x10000>;
++			reg-names = "sif";
++			nvmem-cells = <&pciephy_glb_intr>, <&pciephy_tx_ln0_pmos>,
++				      <&pciephy_tx_ln0_nmos>, <&pciephy_rx_ln0>,
++				      <&pciephy_tx_ln1_pmos>, <&pciephy_tx_ln1_nmos>,
++				      <&pciephy_rx_ln1>;
++			nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
++					   "tx_ln0_nmos", "rx_ln0",
++					   "tx_ln1_pmos", "tx_ln1_nmos",
++					   "rx_ln1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_PHY>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++
+ 		ufsphy: ufs-phy@11fa0000 {
+ 			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
+ 			reg = <0 0x11fa0000 0 0xc000>;
+-- 
+2.18.0
+
 
