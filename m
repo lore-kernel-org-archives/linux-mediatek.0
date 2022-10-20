@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28395C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 07:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D54CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 08:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5LknKFIwjNvmZiN0ecwgvggXlIG/dICT6f5QRyOZdg0=; b=R5bAKoLGu8l6Vn5snfKjh5+Tq7
-	BP0JE0K0rfpLhXQC5YDCaDz71kGX9TMVPXSLG2yZYCpd5s9q8In/vlHCR4724Dlds6k+rQf7OBDQW
-	lHqvixdLntjeSLc2LgGPwAR7pmpPciOL6jN6ugL8V6BsCYcIdnEAPamqPkyYxZHnLgyTSxPJXTADD
-	H2u46iXd0ocUw8jhwbpJNl2CD9hRuC5haEmVbdxDrhJj5JZhKr2DQA9XgDiaAWmrTwD3tvGcKcjhL
-	ymf8r1JoSnB86Y2lAcOWEvFWryBk/mz8IFig7InF/aIf/iv6LCnxRpURJz8EgYCAS/i6M4nx3KMIS
-	mmNTeSvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+NnDDSUoFW1p/YYrT8o2AeBUy64LBLrL7TXVJeeJNsE=; b=p4AlaubYZd60njfyl3FxcoAXKA
+	Y+Q0kfTPL9b3F1sfOF8EdbWEbsc6nnXVFDJ4eepjauLVnlnJwyQ38LDn/rJZSVU+uuP78ggyckDgR
+	HIA0727nbQWy9TMuy1REdiEK0LVS/0U9B0ehpC3JfTouWrAfnHP7fn7oqDGUAyuTwCcjWw7KDUf3D
+	/7KThve6ve1HGX5N9bGKX1xj7/ZtGNc3hjOUQBBSoVqss82yc50u5YM0kRL9hyzlONc5NB2eIHThz
+	IAvW0VSYGF6tMaaTG23d+aVs+9t8pidejH5+ycu5ZRoJBA7SupzxN+tncf6aJI1rSxGQAS3X1fdZ9
+	pofLPMKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olQJQ-00Bvux-1l; Thu, 20 Oct 2022 07:49:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1olQTR-00C1s5-SI; Thu, 20 Oct 2022 08:00:17 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olQJI-00BvtY-Ul
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 07:49:55 +0000
-X-UUID: 61e8f7b6a69148c6a0a0c7ce6fab73a5-20221020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5LknKFIwjNvmZiN0ecwgvggXlIG/dICT6f5QRyOZdg0=;
-	b=QFsoRgX2W69D4y2+5h31pcggQts5NA5n0NKmXYIV1eTcF516UhbDkI9UGTCvXBe5CkgexRBKoOUIOUAWwvcBWJUpKOcBrxful+9fX9r6SKFSMxBUHlVzHv1p24v78K8POPOqtMaNnheXwS9HzyF0g6kh6HTHYeJUCb9wp37N9GE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:b1d1ea1a-10ce-4947-b345-8d63c33bb874,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:13cd65a3-73e4-48dd-a911-57b5d5484f14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 61e8f7b6a69148c6a0a0c7ce6fab73a5-20221020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 629226639; Thu, 20 Oct 2022 00:49:43 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 20 Oct 2022 15:39:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:39:08 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v2 0/9] Add support for multiple chips
-Date: Thu, 20 Oct 2022 15:38:53 +0800
-Message-ID: <20221020073902.21039-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1olQTP-00C1ot-HG
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 08:00:16 +0000
+Received: by mail-ej1-x635.google.com with SMTP id q9so45490157ejd.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 01:00:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=+NnDDSUoFW1p/YYrT8o2AeBUy64LBLrL7TXVJeeJNsE=;
+        b=gfr0OOmHN/gW3+VUUkPNe/rvNFvWe/J4sFvkKffbWA5/GqgpDet+i9JcOu2BgYUH7m
+         XMd7ff8HCmtgLsp9eWw/fBmMwQV1CAZ20wlTwEEF4G3My0AShqzcjsKBVwjcst+B5YLk
+         PjW62HVCCYc4hIRkke7Kjrkq6kxJrHs1/RwT+Wj+cpri1LPkQ2AlokEfELqfp7SbPoVt
+         lyCPrxFNsa6CBSLg1l1ua0LxY9qI901W8XPqD8zx2SkE7y7izLcdWfzLThr1zry8i3fR
+         F29uO/Af2cKghsHzOLsagW3Z2GErdjA+GmGWN63MQtkxdj6PwvLdKcceQyIi3usk8cDR
+         nYUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+NnDDSUoFW1p/YYrT8o2AeBUy64LBLrL7TXVJeeJNsE=;
+        b=sPzmAmc1VI9399LjsnJu6zPHfWJVLQeN4zmn80J+IRaB3R+toL9eIcKHKSp0paT96q
+         N/UwLw8vSoKiYKIjFvezT6HvqvICS5DA1xH6zQhSkuNWDiyASyGuSKriQ50K+q+oCMrv
+         ZgbzPqL1JHo5rzFf4ePBMW+71204dQWtfW7TheHQfauH0c6PpLJepSuLpF+BoS6FnAwf
+         BfRyUme6OvYP7ULvly+KQuV2y4n2wsdbfo8qREbSOFocrcby2ntaR8XWTFqYy0fZKIIi
+         C2zOU0z2C6nNi0eIKo8ximDEvtRJ09xVYHtOZ7RAtjw4+NjzODx6OWN/bh91mVjRkInR
+         sTRw==
+X-Gm-Message-State: ACrzQf2CggRPhCPwN0tsjv3T5A839N5BOQdIwdm2IyauLeB/O1MJdCMP
+	HWN7SWLZJqmGbr3JhEchIfBIPfl/pBoPAIEz1Mv0Wg==
+X-Google-Smtp-Source: AMsMyM5+Lku99gTMJI4bG6h/y7MjMSoqz4+WMa283TgV9DaUiQdCWvkKvZptj29nYoZKCK1khdCO9NPvJqUu05LPkgg=
+X-Received: by 2002:a17:907:7606:b0:78e:61d:757e with SMTP id
+ jx6-20020a170907760600b0078e061d757emr9365136ejc.690.1666252812748; Thu, 20
+ Oct 2022 01:00:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221011-gpiolib-quirks-v3-0-eae9cc2ed0a1@gmail.com>
+ <Y06cvrpcHn0jwZxU@smile.fi.intel.com> <CACRpkdZZZp5Li7OSybv8F7a8F5iik_gRumwR__BAwpWddfctxQ@mail.gmail.com>
+ <Y0/cot711ad/hG/o@smile.fi.intel.com>
+In-Reply-To: <Y0/cot711ad/hG/o@smile.fi.intel.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 20 Oct 2022 10:00:01 +0200
+Message-ID: <CACRpkda_BbpNa+OLz=9vYuMbBNyWi4RBfoDS8F_gtc+vP_Fgyg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/10] gpiolib: more quirks to handle legacy names
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+	Alexander Stein <alexander.stein@ew.tq-group.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, Daniel Thompson <daniel.thompson@linaro.org>, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_004949_034988_0CB8E839 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20221020_010015_601260_5793A70B 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,146 +88,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes since v1:
-- Depend on :
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=687004
-- For hardware-specific structures in the shared memory header(mtk-img-ipi.h),
-  split the relevant functions and structure definitions.
-- The v4l2-compliance test results list is as follows:
-	v4l2-compliance 1.23.0-4942, 32 bits, 32-bit time_t
-	v4l2-compliance SHA: 4cf258c24026 2022-07-28 15:43:45
-	Compliance test for mtk-mdp3 device /dev/video0:
-	Driver Info:
-		Driver name      : mtk-mdp3
-		Card type        : MediaTek MDP3
-		Bus info         : platform:14001000.mdp3-rdma0
-		Driver version   : 6.0.0
-		Capabilities     : 0x84204000
-			Video Memory-to-Memory Multiplanar
-			Streaming
-			Extended Pix Format
-			Device Capabilities
-		Device Caps      : 0x04204000
-			Video Memory-to-Memory Multiplanar
-			Streaming
-			Extended Pix Format
-	Required ioctls:
-		test VIDIOC_QUERYCAP: OK
-		test invalid ioctls: OK
-	Allow for multiple opens:
-		test second /dev/video0 open: OK
-		test VIDIOC_QUERYCAP: OK
-		test VIDIOC_G/S_PRIORITY: OK
-		test for unlimited opens: OK
-	Debug ioctls:
-		test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-		test VIDIOC_LOG_STATUS: OK (Not Supported)
-	Input ioctls:
-		test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-		test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-		test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-		test VIDIOC_ENUMAUDIO: OK (Not Supported)
-		test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-		test VIDIOC_G/S_AUDIO: OK (Not Supported)
-		Inputs: 0 Audio Inputs: 0 Tuners: 0
-	Output ioctls:
-		test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-		test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-		test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-		test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-		test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-		Outputs: 0 Audio Outputs: 0 Modulators: 0
-	Input/Output configuration ioctls:
-		test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-		test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-		test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-		test VIDIOC_G/S_EDID: OK (Not Supported)
-	Control ioctls:
-		test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-		test VIDIOC_QUERYCTRL: OK
-		test VIDIOC_G/S_CTRL: OK
-		test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-		test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-		test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-		Standard Controls: 4 Private Controls: 0
-	Format ioctls:
-		test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-		test VIDIOC_G/S_PARM: OK (Not Supported)
-		test VIDIOC_G_FBUF: OK (Not Supported)
-		test VIDIOC_G_FMT: OK
-		test VIDIOC_TRY_FMT: OK
-		test VIDIOC_S_FMT: OK
-		test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-		test Cropping: OK
-		test Composing: OK
-		test Scaling: OK
-	Codec ioctls:
-		test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-		test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-		test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-	Buffer ioctls:
-		test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-		test VIDIOC_EXPBUF: OK
-		test Requests: OK (Not Supported)
-		test TIME32/64: OK
-	Test input 0:
-	Streaming ioctls:
-		test read/write: OK (Not Supported)
-		test blocking wait: OK
-		Video Capture Multiplanar: Captured 58 buffers
-		test MMAP (no poll): OK
-		Video Capture Multiplanar: Captured 58 buffers
-		test MMAP (select): OK
-		Video Capture Multiplanar: Captured 58 buffers
-		test MMAP (epoll): OK
-		test USERPTR (no poll): OK (Not Supported)
-		test USERPTR (select): OK (Not Supported)
-		test DMABUF: Cannot test, specify --expbuf-device
-	Stream using all formats:
-		(snip)
-	Total for mtk-mdp3 device /dev/video0: 1592, Succeeded: 1592, Failed: 0, Warnings: 0
+On Wed, Oct 19, 2022 at 1:16 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> On Wed, Oct 19, 2022 at 12:56:31PM +0200, Linus Walleij wrote:
+> > On Tue, Oct 18, 2022 at 2:32 PM Andy Shevchenko
 
-Hi,
+> > > I was wondering if we can use the approach that ACPI chose for itself,
+> > > i.e.  the separate data that can be filled by the corresponding driver
+> > > and then GPIO OF common code may use it. In that case each driver knows
+> > > the exact list of compatible strings and associated quirks.
+> >
+> > I actually deliverately chose the other way around, to centralize all quirks,
+> > so that drivers look nice and simple and the ugly historical errors of the
+> > device tree be hidden away in gpiolib-of.c.
+>
+> This makes sense if and only if we may guarantee no quirks will appear in the
+> future. So, it may be true for DT, but I'm quite skeptical about ACPI...
 
-To support multiple chips, a chip configuration header file needs to be created
-and the relevant information split and moved into it.
+Right, the idea is to stop more idiomatic DT bindings from coming into existance
+by review and formal verification of the reviewed bindings by using
+YAML schemas.
 
-Moudy Ho (9):
-  media: platform: mtk-mdp3: add chip configuration header file
-  media: platform: mtk-mdp3: chip config split about component settings
-  media: platform: mtk-mdp3: chip config split about subcomponents
-  media: platform: mtk-mdp3: chip config split about color format
-  media: platform: mtk-mdp3: chip config split about resolution
-    limitations
-  media: platform: mtk-mdp3: chip config split about pipe info
-  media: platform: mtk-mdp3: decompose hardware-related information in
-    shared memory
-  media: platform: mtk-mdp3: extend mdp_color format for compressed mode
-  media: platform: mtk-mdp3: extend shared memory structure to 4-byte
-    aligned
+ACPI is somewhat lacking public review of "bindings" and DSDT tables, and I
+don't know if there is some counterpart to the schema validation, so that
+makes for more new bugs. But maybe ACPI has some tricks up its sleeve that I
+don't know about. To me it seems like bugs in ACPI are discovered by developers
+after the devices are already produced :/
 
- drivers/media/platform/mediatek/mdp3/Makefile |   1 +
- .../mediatek/mdp3/mt8183/mdp3-comp-mt8183.c   | 868 ++++++++++++++++++
- .../mediatek/mdp3/mt8183/mdp3-comp-mt8183.h   | 149 +++
- .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 409 +++++++++
- .../platform/mediatek/mdp3/mtk-img-ipi.h      | 180 +---
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 280 +-----
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  19 +-
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 705 +-------------
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  36 +-
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  50 +-
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  18 +
- .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  10 +-
- .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 283 +-----
- .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 202 ++--
- .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  42 +-
- .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  11 +-
- 16 files changed, 1775 insertions(+), 1488 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-comp-mt8183.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-comp-mt8183.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+There are bindings and device trees which lack public review too, most notably
+Apple Mac, so especially for them we are redefining new bindings and
+who knows, maybe Apple will pick them up eventually!
 
--- 
-2.18.0
-
+Yours,
+Linus Walleij
 
