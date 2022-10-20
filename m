@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B96C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Oct 2022 18:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07835C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 02:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=onZg9bkGpyLkmJj2Fk6FDBy22LakxbtW4dE3qVAG/38=; b=oiWWKDzY6AD1KIJzFdRa9epwDv
-	dSknwKXNznO+2akCbnlA5p3YxN4C6k4xmUt7hx4ZNtz35atKJiwVdJbNB07jHt3mo+RpC7JVNmLik
-	IkJbxAOwRW1j6lddFf174bRMaMYNHEUL6UIP2+OQLmpSzVOJlm731LwTrjcBGaemLirC2WfhSqu8o
-	+3UFM7rmXjqcPIsC9pCLX7dcRbMEgZzs1FaahnrN9/FLhMwf43Jkfc8kTfw8glPhYNAHL4HFruDCB
-	Zd2mC1nNlNSr1ZFilh997hfjwcnIMAq3vugbwrjErdGgrBEK/f0dPaLR7LYBoxEfL4npBVhs/HT+P
-	Ee9kKBQA==;
+	bh=JaIR81W7uRC3RHrO6DoWqaK6YpTRAbe3E0L77VhfzRA=; b=X9UpJrTpGQv60rGa0iX5ve8+pY
+	R7+ymTSs6+Y5oNP4c+VbSRxQI+NkQxDONt9vFBlcF5WJemKAIx0/dTLhQW3mdT2xK3X8GItued+VN
+	g5Oe9OhesONjaV4sCLqCvqZz4Yh/VObjZnSF55eMJeTPzcapCADMTBrcdcfnjYFyJ2INxRrV+ks1l
+	idbZVnf00M4D2z6GM4aqxRBR2jvdK44P3mn3+exZUo5kmF9umUxfBhXcxeMGnVdl+MJNcBAFtsony
+	h8uXWFPVuiuWwdyKtPNLlLXmoFDmkRhv0EgzWN+cFRlgbUFmLnsA5PijY2l0gBhxboLRUciNMPW/U
+	OmCYWWSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olEGp-004kYe-Ir; Wed, 19 Oct 2022 18:58:27 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1olL2J-009Peq-Ty; Thu, 20 Oct 2022 02:11:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olEGd-004kTi-2G; Wed, 19 Oct 2022 18:58:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 03989B825B6;
-	Wed, 19 Oct 2022 18:58:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F1BC433C1;
-	Wed, 19 Oct 2022 18:58:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666205891;
-	bh=onZg9bkGpyLkmJj2Fk6FDBy22LakxbtW4dE3qVAG/38=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=s/QRSEYU6CfqIOUb1Rd8FcgomGAdkwREiqcsrf0LmVB9BwF9/81d8Y1hYeN2s3s/Y
-	 VoD8ADpfMfOiR0hdz4/cPi94E1+bLqNMVKT3J3vpLIc8aXADo8Vb56zjYqOzZIHQwm
-	 Q/38SLzyoFqo+T2vN+Dfl2YnHovoF/ZOdzxqgukeU0G4xJlnQ2zpVco6wuhLDrMUFm
-	 x1INfQdLxkSsRmgDATky2yE9RbY+tdV1L5uYXxmL7MoWBO6cUCPVPiaEIaejaYJt2X
-	 WiE0FZaJ76F0pnzhQxC5KrFNPUpv4xh85ymDN5KCcuWPKeVTpLc3sRp4Qbnax2+ZFj
-	 iBmEGWQCRlBLg==
-Date: Wed, 19 Oct 2022 11:58:09 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Hans J. Schultz" <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, netdev@vger.kernel.org, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
- <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
- <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
- Machata <petrm@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Florent
- Fourcot <florent.fourcot@wifirst.fr>, Hans Schultz
- <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit Cohen
- <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 00/12] Extend locked port feature with FDB
- locked flag (MAC-Auth/MAB)
-Message-ID: <20221019115809.552812a5@kernel.org>
-In-Reply-To: <20221018165619.134535-1-netdev@kapio-technology.com>
-References: <20221018165619.134535-1-netdev@kapio-technology.com>
+	id 1olL27-009Pd9-DQ; Thu, 20 Oct 2022 02:11:45 +0000
+X-UUID: 287f226a756e44188eede36229eaf6f2-20221019
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=JaIR81W7uRC3RHrO6DoWqaK6YpTRAbe3E0L77VhfzRA=;
+	b=GY5OXJHiGC3wCbJ/uUXv0sru4cUlpNZz0lQ8EctPjyqqOoph1SPRm1UOgXl/j2tWQCH2oopP02XnVFaJWmm8LvsjhrvglZiFSD3H5wWtNDqhSS2Tg3wTrEJEj6OA79RBjUtE2tF6tk9eHWZ4m2ZSBlGM4WefNpG+u6+k+SP3JFg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:b7a79465-7c3b-444d-9787-9aad423f508c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:19755ba4-ebb2-41a8-a87c-97702aaf2e20,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 287f226a756e44188eede36229eaf6f2-20221019
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <jianjun.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 115166411; Wed, 19 Oct 2022 19:11:30 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 20 Oct 2022 10:10:56 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 20 Oct 2022 10:10:55 +0800
+Message-ID: <ccb830693f467b59d829c7929ea3b47b2d4c029f.camel@mediatek.com>
+Subject: Re: [PATCH v1 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 20 Oct 2022 10:10:55 +0800
+In-Reply-To: <c30fbc60-bcdf-71f5-0db7-bd9bb27ddd37@collabora.com>
+References: <20221017070858.13902-1-tinghan.shen@mediatek.com>
+	 <20221017070858.13902-3-tinghan.shen@mediatek.com>
+	 <c30fbc60-bcdf-71f5-0db7-bd9bb27ddd37@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_115815_298515_729E7FB0 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20221019_191143_484336_8A906593 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,16 +86,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 18 Oct 2022 18:56:07 +0200 Hans J. Schultz wrote:
-> This patch set extends the locked port feature for devices
-> that are behind a locked port, but do not have the ability to
-> authorize themselves as a supplicant using IEEE 802.1X.
-> Such devices can be printers, meters or anything related to
-> fixed installations. Instead of 802.1X authorization, devices
-> can get access based on their MAC addresses being whitelisted.
+Hi Angelo,
 
-FWIW half of this posting got stuck on the "email pipes" for a day..
-somehow. Let's give Ido and others a chance to have a look but you'll
-need to repost even if it's flawless because the build bots can't deal
-with a delay that long :(
+Thanks for your review.
+
+On Wed, 2022-10-19 at 10:55 +0200, AngeloGioacchino Del Regno wrote:
+> Il 17/10/22 09:08, Tinghan Shen ha scritto:
+> > Add pcie and pcie phy nodes for mt8195.
+> > 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 143
+> > +++++++++++++++++++++++
+> >   1 file changed, 143 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > index d03f0c2b8233..903e92d6156f 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > @@ -1182,6 +1182,104 @@
+> >   			status = "disabled";
+> >   		};
+> >   
+> > +		pcie0: pcie@112f0000 {
+> > +			compatible = "mediatek,mt8195-pcie",
+> > +				     "mediatek,mt8192-pcie";
+> 
+> ..snip..
+> 
+> > +
+> > +			phys = <&pciephy>;
+> > +			phy-names = "pcie-phy";
+> > +
+> > +			power-domains = <&spm
+> > MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
+> 
+> You're missing the resets:
+> 
+> 			resets = <&infracfg_ao
+> MT8195_INFRA_RST2_PCIE_P0_SWRST>;
+> 			reset-names = "mac";
+> 
+> > +
+> > +			#interrupt-cells = <1>;
+> > +			interrupt-map-mask = <0 0 0 7>;
+> 
+> ..snip..
+> 
+> > +		};
+> > +
+> > +		pcie1: pcie@112f8000 {
+> > +			compatible = "mediatek,mt8195-pcie",
+> > +				     "mediatek,mt8192-pcie";
+> 
+> ..snip..
+> 
+> > +			power-domains = <&spm
+> > MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
+> 
+> Here too:
+> 			resets = <&infracfg_ao
+> MT8195_INFRA_RST2_USBSIF_P1_SWRST>,
+
+Reset the combo-phy in PCIe driver will cause side effect on USB2 port,
+so this reset cannot be added.
+
+We will fix others in the next version.
+
+Thanks.
+> 				 <&infracfg_ao
+> MT8195_INFRA_RST2_PCIE_P1_SWRST>;
+> 			reset-names = "phy", "mac";
+> 
+> > +
+> > +			#interrupt-cells = <1>;
+> 
+> ..snip..
+> 
+> > @@ -1241,6 +1339,34 @@
+> >   				reg = <0x189 0x2>;
+> >   				bits = <7 5>;
+> >   			};
+> > +			pciephy_rx_ln1: pciephy-rx-ln1@190 {
+> > +				reg = <0x190 0x1>;
+> > +				bits = <0 4>;
+> > +			};
+> > +			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190 {
+> 
+> Please run dtbs_check and try to build the kernel before pushing
+> commits upstream.
+> This will give you a not-so-nice warning and that shall not happen.
+> 
+> You can solve it by naming these nodes like:
+> pciephy-rx-ln1@190,1
+> pciephy-tx-ln1-nmos@190,2
+> 
+> ...etc
+> 
+> Regards,
+> Angelo
+> 
+> 
+
 
