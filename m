@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37967C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 07:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8AE4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 07:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=09fqyA4k2RD8tjkCxo1wu/f6mjLilCjhB+OIWkZxcCk=; b=O7irP6eq3zTqO4xJL3cx9USeqQ
-	W6MQz/R5pz11bykEqmCqNMAUaCvz9+Eohv8QP27AjIwL2swSvXH7ViNb9yJjusCo9p8BDTk9T/cTz
-	n+fF43SZvNuEHJ+xqMCMi4xNa6aN0xzBQiveMPWdLBfmOjZ3FybHYz2IwOaw/XuqSJ/cpY6LSF98p
-	FbTM+AbbvszU3H7uaaYHt3AKY3wu/z+cMSvIxq7kGAq8cEVwHS/VhJYgiQUQZsNcIXvo3qJfjfILd
-	vFJm976c7KpsOVc7J5/C1ut7L+eg6gPUTQx5Do5J0zw+mmxa3qt8jZDT3NWOil1YgpwKfHwVku/J3
-	uOgqloYA==;
+	bh=Nu8CkHwHdOQOx7g9RjxSew+cd3IBxJ5lzu2JmyM7sys=; b=cfmwzbv0Xguy3RI2wTv4OxQ5p3
+	T4D1/6AHnkhcw9GTDWhF1PlwFUj93AvJtQUDs/lmeR/k4hDedB+cleBYrWbYjg+83rGzvk4Xojof8
+	CW9ZekyuO3dSYrsi6GFblyln9oZAhMHOwuJ6OeRSuYiSrSaHxzFzEcefXyY+axcwwQzGIOhYtuNqu
+	96IrFSolbzsHTJwJ0+aVEgNRSoEl4RGvJfoBhpdAudhhw9og3K3gmfJqztF7XW7DyevvUfo6C2iaA
+	qpnkOS3ucTvLCDyhzeo5xvm2WTHuCWKnnae/XGFl1ePyrCnQAUE3MYNInelFQAio3RiTYzCp2ZM4D
+	h8BmDWVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olPoq-00BaDk-I9; Thu, 20 Oct 2022 07:18:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1olPpD-00BaQt-BU; Thu, 20 Oct 2022 07:18:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olPol-00Ba9Z-65
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 07:18:18 +0000
-X-UUID: 1120a7d754794056a68a00d6f34911b9-20221020
+	id 1olPp9-00BaPF-Am
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 07:18:40 +0000
+X-UUID: 90b5bf5ea6dd409f87e1a81ece61bf0d-20221020
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=09fqyA4k2RD8tjkCxo1wu/f6mjLilCjhB+OIWkZxcCk=;
-	b=Tec+wAEfv8p3MEkYzmgLDReTECBLfBRftse0fFBSnUSrGm3VBKvSuVaS5KrPXFuVNi+Zv1PqLyN/cXLSn0JP+EPQq1PFACe8aEPf455SlCq8rQvq0FthvZ/0uAYZcidhqyxDY97Q5e/W/t8zUDJn9aHjXXwahB++1NTMRxCttLI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Nu8CkHwHdOQOx7g9RjxSew+cd3IBxJ5lzu2JmyM7sys=;
+	b=phAgXv7GnpmYWnKoLipNW/je0X4bJyaPQwZz5czIkl0T2j8AUHsWDFIAEFpLHRZwlcFUV5eeSteYAIXojKe1lPaH6Hi5h9FFlu2OQO2GGxYtWSAt6Jvweqzj77Uu1QD8feFrWVPnY0JSnQLIWm8MaqI8G+isKPBypnDrthoVOCI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:a565c521-1ded-42a2-a2bb-c53006ea2db3,IP:0,U
+X-CID-O-INFO: VERSION:1.1.12,REQID:24f77798-53b1-4c0f-9261-13df77773692,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:724fe0ee-314c-4293-acb8-ca4299dd021f,B
+X-CID-META: VersionHash:62cd327,CLOUDID:a6d264a3-73e4-48dd-a911-57b5d5484f14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1120a7d754794056a68a00d6f34911b9-20221020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 90b5bf5ea6dd409f87e1a81ece61bf0d-20221020
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 4118670; Thu, 20 Oct 2022 00:18:04 -0700
+	with ESMTP id 541881208; Thu, 20 Oct 2022 00:18:35 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 20 Oct 2022 15:18:01 +0800
+ 15.2.792.15; Thu, 20 Oct 2022 15:18:02 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:18:01 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 15:18:02 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
@@ -55,9 +55,9 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v3 1/3] media: platform: mtk-mdp3: fix error handling in mdp_cmdq_send()
-Date: Thu, 20 Oct 2022 15:17:58 +0800
-Message-ID: <20221020071800.20487-2-moudy.ho@mediatek.com>
+Subject: [PATCH v3 2/3] media: platform: mtk-mdp3: fix error handling about components clock_on
+Date: Thu, 20 Oct 2022 15:17:59 +0800
+Message-ID: <20221020071800.20487-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221020071800.20487-1-moudy.ho@mediatek.com>
 References: <20221020071800.20487-1-moudy.ho@mediatek.com>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_001815_269495_E5FF09F6 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20221020_001839_392940_78F63BB9 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,127 +81,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Increase and refine the goto label in mdp_cmdq_send() to avoid
-double free and facilitate traceability.
-Also, remove redundant work queue event in blocking function
-mdp_cmdq_send().
+Add goto statement in mdp_comp_clock_on() to avoid error code not being
+propagated or returning positive values.
+This change also performs a well-timed clock_off when an error occurs, and
+reduces unnecessary error logging in mdp_cmdq_send().
 
 Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 47 ++++++++++---------
- 1 file changed, 26 insertions(+), 21 deletions(-)
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  4 +---
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 24 ++++++++++++++-----
+ 2 files changed, 19 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 86c054600a08..e194dec8050a 100644
+index e194dec8050a..124c1b96e96b 100644
 --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
 +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -252,10 +252,9 @@ static int mdp_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *pkt,
- 	dma_addr_t dma_addr;
+@@ -433,10 +433,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	cmd->mdp_ctx = param->mdp_ctx;
  
- 	pkt->va_base = kzalloc(size, GFP_KERNEL);
--	if (!pkt->va_base) {
--		kfree(pkt);
-+	if (!pkt->va_base)
- 		return -ENOMEM;
--	}
-+
- 	pkt->buf_size = size;
- 	pkt->cl = (void *)client;
- 
-@@ -368,25 +367,30 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	cmd = kzalloc(sizeof(*cmd), GFP_KERNEL);
- 	if (!cmd) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_cancel_job;
- 	}
- 
--	if (mdp_cmdq_pkt_create(mdp->cmdq_clt, &cmd->pkt, SZ_16K)) {
--		ret = -ENOMEM;
--		goto err_cmdq_data;
--	}
-+	ret = mdp_cmdq_pkt_create(mdp->cmdq_clt, &cmd->pkt, SZ_16K);
-+	if (ret)
-+		goto err_free_cmd;
- 
- 	comps = kcalloc(param->config->num_components, sizeof(*comps),
- 			GFP_KERNEL);
- 	if (!comps) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_destroy_pkt;
- 	}
- 
- 	path = kzalloc(sizeof(*path), GFP_KERNEL);
- 	if (!path) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_free_comps;
-+	}
-+
-+	ret = mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-+	if (ret) {
-+		dev_err(dev, "Fail to enable mutex clk\n");
-+		goto err_free_path;
- 	}
- 
- 	path->mdp_dev = mdp;
-@@ -406,15 +410,13 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	ret = mdp_path_ctx_init(mdp, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_ctx_init error\n");
--		goto err_cmdq_data;
-+		goto err_free_path;
- 	}
- 
--	mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
--
- 	ret = mdp_path_config(mdp, cmd, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_config error\n");
--		goto err_cmdq_data;
-+		goto err_free_path;
- 	}
- 	cmdq_pkt_finalize(&cmd->pkt);
- 
-@@ -433,7 +435,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
  	ret = mdp_comp_clocks_on(&mdp->pdev->dev, cmd->comps, cmd->num_comps);
- 	if (ret) {
- 		dev_err(dev, "comp %d failed to enable clock!\n", ret);
--		goto err_clock_off;
-+		goto err_free_path;
- 	}
+-	if (ret) {
+-		dev_err(dev, "comp %d failed to enable clock!\n", ret);
++	if (ret)
+ 		goto err_free_path;
+-	}
  
  	dma_sync_single_for_device(mdp->cmdq_clt->chan->mbox->dev,
-@@ -450,17 +452,20 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	return 0;
+ 				   cmd->pkt.pa_base, cmd->pkt.cmd_buf_size,
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index d3eaf8884412..7bc05f42a23c 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -699,12 +699,22 @@ int mdp_comp_clock_on(struct device *dev, struct mdp_comp *comp)
+ 			dev_err(dev,
+ 				"Failed to enable clk %d. type:%d id:%d\n",
+ 				i, comp->type, comp->id);
+-			pm_runtime_put(comp->comp_dev);
+-			return ret;
++			goto err_revert;
+ 		}
+ 	}
  
- err_clock_off:
--	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 			    cmd->num_comps);
--err_cmdq_data:
-+err_free_path:
-+	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
- 	kfree(path);
--	atomic_dec(&mdp->job_count);
--	wake_up(&mdp->callback_wq);
--	if (cmd && cmd->pkt.buf_size > 0)
--		mdp_cmdq_pkt_destroy(&cmd->pkt);
-+err_free_comps:
- 	kfree(comps);
-+err_destroy_pkt:
-+	mdp_cmdq_pkt_destroy(&cmd->pkt);
-+err_free_cmd:
- 	kfree(cmd);
-+err_cancel_job:
-+	atomic_dec(&mdp->job_count);
+ 	return 0;
 +
- 	return ret;
++err_revert:
++	while (--i >= 0) {
++		if (IS_ERR_OR_NULL(comp->clks[i]))
++			continue;
++		clk_disable_unprepare(comp->clks[i]);
++	}
++	if (comp->comp_dev)
++		pm_runtime_put_sync(comp->comp_dev);
++
++	return ret;
  }
- EXPORT_SYMBOL_GPL(mdp_cmdq_send);
+ 
+ void mdp_comp_clock_off(struct device *dev, struct mdp_comp *comp)
+@@ -723,11 +733,13 @@ void mdp_comp_clock_off(struct device *dev, struct mdp_comp *comp)
+ 
+ int mdp_comp_clocks_on(struct device *dev, struct mdp_comp *comps, int num)
+ {
+-	int i;
++	int i, ret;
+ 
+-	for (i = 0; i < num; i++)
+-		if (mdp_comp_clock_on(dev, &comps[i]) != 0)
+-			return ++i;
++	for (i = 0; i < num; i++) {
++		ret = mdp_comp_clock_on(dev, &comps[i]);
++		if (ret)
++			return ret;
++	}
+ 
+ 	return 0;
+ }
 -- 
 2.18.0
 
