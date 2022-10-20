@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F512C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 20:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CFA1C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 21:10:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M4lf75jTzG3+ZxqRTY+jU9PXmJ1LNBA3/UEUSDYKYmw=; b=HAJxdzsJR0pQoadTZ9aR47uQT+
-	3JHdfp1PybacnMiwdb/I/zyy1+GxgDMAY0/9zXLhSAiPx8JYPIH2C6YMw5d817++k/ihtT/l7wEZh
-	2RptIFmvcHCf9Jq+G1bLg0mPEKiJQXvxava2hIMwJ5ocFJklVewIDcGdupPSs7udiZCyqcK1Jufqz
-	nowoWO5G3o8swK2/+WgGpFDAHzpZjYdfqeNLf4Soy+KJMCdEEZ6shUgReQ7xRsVnWciDRVvIDP8fC
-	IXSp37A6aQa+cmqpzLPQXvK/1D5Phj7tSWy8Bb1dNxkJ70nsESPCYUnxMys5o9WvpW5VGWgse/GOs
-	Zy9BZG/w==;
+	bh=gVrXjJEGfmuc1gn25nOyrrLuiZAhQTfMb/N3tT9O3CI=; b=wiomM48pMqTy9Gb7JGOHI9A7tM
+	HIRsmgjc7KlqzFMnq/1AFk80VmhuOwER7K3fPYsnOVhp8NZv4uhx9HERd6Azq/L2p+k0JTD5dO9Tx
+	FSk8Ij0o7GasDjkUau8jI9DAM/Rpg2JDAMQ9nDdUUNtUsnV0UxzwnCzFj5Q2dohPpoReP0Qt6EajW
+	17vGgmKsuKZqLCvNI3BHm7t90tmxrNmIR2oKKii/BAaT/iC930v7oUwk7Iinu+1CsgGRCiK53+d+S
+	BZlCAHPjOR4wX8MZHhfnrhcwXfdehyXfzLifPOf6FUzj+dvh3QhActg1wCU+YozKEzmnvpjPu4rnp
+	2BpVM5Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olc2K-001elj-3g; Thu, 20 Oct 2022 20:21:04 +0000
+	id 1olcne-001t8n-3O; Thu, 20 Oct 2022 21:09:58 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olc28-001eid-Vg; Thu, 20 Oct 2022 20:20:54 +0000
+	id 1olcnR-001sxs-Aa; Thu, 20 Oct 2022 21:09:46 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 061771884A7E;
-	Thu, 20 Oct 2022 20:20:51 +0000 (UTC)
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id F066718849CE;
+	Thu, 20 Oct 2022 21:09:40 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id DBA3025004E9;
-	Thu, 20 Oct 2022 20:20:50 +0000 (UTC)
+	by mailout.gigahost.dk (Postfix) with ESMTP id D1DD725001FA;
+	Thu, 20 Oct 2022 21:09:40 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id CD02F9EC0002; Thu, 20 Oct 2022 20:20:50 +0000 (UTC)
+	id C9D209EC0002; Thu, 20 Oct 2022 21:09:40 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Date: Thu, 20 Oct 2022 22:20:50 +0200
+Date: Thu, 20 Oct 2022 23:09:40 +0200
 From: netdev@kapio-technology.com
 To: Vladimir Oltean <olteanv@gmail.com>
 Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
@@ -65,14 +65,14 @@ References: <20221018165619.134535-1-netdev@kapio-technology.com>
  <20221018165619.134535-11-netdev@kapio-technology.com>
  <20221020132538.reirrskemcjwih2m@skbuf>
 User-Agent: Gigahost Webmail
-Message-ID: <2565c09bb95d69142522c3c3bcaa599e@kapio-technology.com>
+Message-ID: <3e58594c1223f4591e56409cd5061de7@kapio-technology.com>
 X-Sender: netdev@kapio-technology.com
 Content-Type: text/plain; charset=US-ASCII;
  format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_132053_191839_76FE4983 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20221020_140945_545513_A80A8746 
+X-CRM114-Status: GOOD (  23.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,31 +88,6 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2022-10-20 15:25, Vladimir Oltean wrote:
->> diff --git a/drivers/net/dsa/mv88e6xxx/chip.c 
->> b/drivers/net/dsa/mv88e6xxx/chip.c
->> index 352121cce77e..71843fe87f77 100644
->> --- a/drivers/net/dsa/mv88e6xxx/chip.c
->> +++ b/drivers/net/dsa/mv88e6xxx/chip.c
->> @@ -42,6 +42,7 @@
->>  #include "ptp.h"
->>  #include "serdes.h"
->>  #include "smi.h"
->> +#include "switchdev.h"
->> 
->>  static void assert_reg_lock(struct mv88e6xxx_chip *chip)
->>  {
->> @@ -924,6 +925,13 @@ static void mv88e6xxx_mac_link_down(struct 
->> dsa_switch *ds, int port,
->>  	if (err)
->>  		dev_err(chip->dev,
->>  			"p%d: failed to force MAC link down\n", port);
->> +	else
->> +		if (mv88e6xxx_port_is_locked(chip, port)) {
->> +			err = mv88e6xxx_atu_locked_entry_flush(ds, port);
->> +			if (err)
->> +				dev_err(chip->dev,
->> +					"p%d: failed to clear locked entries\n", port);
->> +		}
 > 
 > This would not have been needed if dsa_port_set_state() would have
 > called dsa_port_fast_age().
@@ -137,13 +112,50 @@ On 2022-10-20 15:25, Vladimir Oltean wrote:
 > I'm missing about the "learning" flag.
 > 
 
-In general locked ports block traffic from a host based on if there is a
-FDB entry or not. In the non-offloaded case, there is only CPU assisted
-learning, so the normal learning mechanism has to be disabled as any
-learned entry will open the port for the learned MAC,vlan.
-Thus learning is off for locked ports, which of course includes MAB.
+As learning is off on locked ports, see other response, your dp->mab 
+flag
+idea might be a way to go, just need confirmation that this is needed.
 
-So the 'learning' is based on authorizing MAC,vlan addresses, which
-is done by userspace daemons, e.g. hostapd or what could be called
-mabd.
+
+>> @@ -6572,8 +6604,10 @@ static int mv88e6xxx_port_bridge_flags(struct 
+>> dsa_switch *ds, int port,
+>>  	if (flags.mask & BR_MCAST_FLOOD) {
+>>  		bool multicast = !!(flags.val & BR_MCAST_FLOOD);
+>> 
+>> +		mv88e6xxx_reg_lock(chip);
+>>  		err = chip->info->ops->port_set_mcast_flood(chip, port,
+>>  							    multicast);
+>> +		mv88e6xxx_reg_unlock(chip);
+>>  		if (err)
+>>  			goto out;
+>>  	}
+>> @@ -6581,20 +6615,34 @@ static int mv88e6xxx_port_bridge_flags(struct 
+>> dsa_switch *ds, int port,
+>>  	if (flags.mask & BR_BCAST_FLOOD) {
+>>  		bool broadcast = !!(flags.val & BR_BCAST_FLOOD);
+>> 
+>> +		mv88e6xxx_reg_lock(chip);
+>>  		err = mv88e6xxx_port_broadcast_sync(chip, port, broadcast);
+>> +		mv88e6xxx_reg_unlock(chip);
+>>  		if (err)
+>>  			goto out;
+>>  	}
+>> 
+>> +	if (flags.mask & BR_PORT_MAB) {
+>> +		chip->ports[port].mab = !!(flags.val & BR_PORT_MAB);
+>> +
+>> +		if (!chip->ports[port].mab)
+>> +			err = mv88e6xxx_atu_locked_entry_flush(ds, port);
+>> +		else
+>> +			err = 0;
+> 
+> Again, dsa_port_fast_age() is also called when dp->learning is turned
+> off in dsa_port_bridge_flags(). I don't want to see the mv88e6xxx 
+> driver
+> doing this manually.
+> 
+
+Maybe I am wrong, but I have only been able to trigger fast ageing by 
+setting
+the STP state of the port to blocked...
 
