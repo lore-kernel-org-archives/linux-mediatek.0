@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764D8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:41:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1217C4321E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:42:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OJre8KN29d1NkUMRqOSqxQexLqxHmU+GHdpVJfUR2M4=; b=GAys6PskXPFxVtYsWu8kG8aAgT
-	EjSsZ2WE1t+2my70B4Tcw5/Ay13nysVA8uIpz/e2OfzrfiMMhwfBUPado5FAD2TF1iZ8GZjZUat3N
-	bM6ZnnTFsJezxEAcZAaxp/s44Z1BHODr/UnQNH5G6ywy4xxdVeQ2p6CJmA4ZpWzZhjXaUEQKUr0Bs
-	CeXyL5mmocrv9/vIc3y7QiI9oZ0ukdxYtUUC/6jWebR4bRBkhmAZAnSSJpVV/Iqu8ezdQVZN/2Ug/
-	2FKBthM94CfWf6H12+UijXNG9MCF+3/Y+6au2LxiE/nmJOdg4/SxwPEM3yDRPFh6deTW73T7AGbFC
-	DZiDUSQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cGAAR2BMfaAANWL2R8YcIVSEZh0G1rs0+++u0ybOJWQ=; b=oL4GmTWU2yR+sDkvwemFPrN2vh
+	t77o3piqFYFHaBMytYeeCIoXYZYIWE5vDWqy/Bs9V/kNjHs3pgqMxbJG0q8ebFalFFf9xmGdz0w8y
+	TQ2mwY75XhvFtszM29sw+H3XL/rPy/8sFYmAL68oe5wbTM+jEiFvPtRMFM9NjCXmaRfrlf2hTg22E
+	lZS60ZIIkR0zKyXmnzb9zvNNxlECnSotqwockvl3CsSq+aXXocXxIFcAIqJuNeI6Enp6O1sZc5s1R
+	Tv5GDA2Qlw0wkJlXzmov+y7nCnGmPr/3R56JF6+1YbA1Gn469qlsUikFkR1kJE4cYl0QWoJuS7zwr
+	dDDicfgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYc8-000Ubl-MU; Thu, 20 Oct 2022 16:41:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1olYcU-000Uv4-Qb; Thu, 20 Oct 2022 16:42:10 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYat-000TEl-VM; Thu, 20 Oct 2022 16:40:33 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DDA8660247C;
-	Thu, 20 Oct 2022 17:40:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666284028;
-	bh=cvM3djFXmy7wP9TkTQGsL5CnoFlBKYQJZrVbENrbUJg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HxVPgP72xkk5pXDKB0rWnF5v2W6J0ELdMBK2J5ULgnVIuKkL2msmdQeA51+5tWcmv
-	 Y8ZLEkBLMdkWlLl7UgQk+O09ljGPdB2h7qcnrvuURew/O36BvfyMKDlzNnHrSLSYyE
-	 Mi+Qp43rg1cXDRw9I8Dhi7da8bAK7nGxmlM4r7fM756rjS85u9kkzTRqAA7w+XxZnk
-	 O9LR0hBz6LcXtw688DI8MrPsIT/oGudBYtRZ3/LGol0Jv4LnuR3Ez8sHprNzN2qd+U
-	 uFKskEaJDFlIe1TqaDgUMsg9tO+5lr1PjG5BlwD0EJfjUzzYn6A0xxF3ppxX0FYWgd
-	 Z2bKZRHhol5Ow==
-Date: Thu, 20 Oct 2022 12:40:22 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: xinlei.lee@mediatek.com
-Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
-	chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
-	daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v12,2/3] drm: mediatek: Set dpi format in mmsys
-Message-ID: <20221020164022.vtnumo3fob2sh54w@notapiano>
-References: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
- <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
+	id 1olYcQ-000Uq2-8F
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:42:08 +0000
+Received: by mail-qt1-x836.google.com with SMTP id g11so14079394qts.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:42:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cGAAR2BMfaAANWL2R8YcIVSEZh0G1rs0+++u0ybOJWQ=;
+        b=n9XO8dfIA6PtGSlMXzxeoH5vZLkJN/qPgV+9tdRknUZG9vkEbK+vAr02Hje6yei4YG
+         WqFrxGj8dglk1yNeyhUhkGK2nnlp7t1KTi6BqKbtRDDIsWayM0Pris8nlEorXXLQXfkq
+         GKQfpFwTu7EKpyQ02ojTPzNq9mWTw1Gmd0zNpqmIYJevGw1Owa+VXYqqEyVOiLvgPYb1
+         8Ap1gf/q6OFbelFhFyQUnS46Vj5IR0j+7uEK3XCdaI48VlVQfLEUyDjSP0X+BXPPoxaM
+         SPFL/YxjgVxxaEUz6ZfAfoX0ZymwnTJiAQL7Vd5vZMFvNn/0w1/isSUIGKljQtqmhvuq
+         ATcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cGAAR2BMfaAANWL2R8YcIVSEZh0G1rs0+++u0ybOJWQ=;
+        b=bOiY3yKv2JKic1b8zSKdDTFn4P/DFmp9PiBsHijnbWumtXkesu/7HuH6Vnyf3Fgkfd
+         IYAHzLeUgQUa6mDmbEBQqTUGlTNAcbEG0AiO3grvFxUmmlnTtBfg6C9WSEMG5+1twqe4
+         +woeMdc43QqKlix5NGwoh234nBnZBRG3TOxwSOpO70LJkWl8AZb+gkA1a4e/ZCoQ6eLr
+         JJQEPPLpNsvttBfuX88qV45HxcTkK4vWq0AAz5BLOfTieurm6PeJnodn5Dl184Hw6NPY
+         5T5nxHlggAOgr1uOujJi8QhnktwJSieTRakxVu38r2XHXVTxg7hebxGs0aEfxdWemWUf
+         ZgWA==
+X-Gm-Message-State: ACrzQf0dWP2Sk6FDOmu4rngxxi4PgdIlZb07sUrO+xpGWdxbcee9xW97
+	C7BWDgzZC/VJbZc9ioAcgyXEeg==
+X-Google-Smtp-Source: AMsMyM5IomthQmzdC4Dq9NmLfyL4YqW1be9IT8LtgUzuYA0I8nVmUicKpJz0j8BzM1Xg/OxBPyArow==
+X-Received: by 2002:ac8:5d88:0:b0:39d:804:90a5 with SMTP id d8-20020ac85d88000000b0039d080490a5mr5811848qtx.20.1666284124103;
+        Thu, 20 Oct 2022 09:42:04 -0700 (PDT)
+Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
+        by smtp.gmail.com with ESMTPSA id w28-20020a05622a191c00b0039bfe8acff6sm6249223qtc.58.2022.10.20.09.42.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Oct 2022 09:42:03 -0700 (PDT)
+Message-ID: <3cf2801c-9be5-c012-606e-d8fb7c4a218f@linaro.org>
+Date: Thu, 20 Oct 2022 12:42:01 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1666147936-27368-3-git-send-email-xinlei.lee@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v3 3/5] dt-bindings: regulator: Add binding schema for
+ mt6357 regulators
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>, Mark Brown
+ <broonie@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Fabien Parent <fabien.parent@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Mattijs Korpershoek
+ <mkorpershoek@baylibre.com>, devicetree@vger.kernel.org,
+ linux-input@vger.kernel.org
+References: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
+ <20221005-mt6357-support-v3-3-7e0bd7c315b2@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221005-mt6357-support-v3-3-7e0bd7c315b2@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_094032_200100_60B45B66 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20221020_094206_340727_3E7E1958 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,39 +104,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 19, 2022 at 10:52:15AM +0800, xinlei.lee@mediatek.com wrote:
-[..]
-> @@ -134,6 +137,7 @@ struct mtk_dpi_yc_limit {
->   * @yuv422_en_bit: Enable bit of yuv422.
->   * @csc_enable_bit: Enable bit of CSC.
->   * @pixels_per_iter: Quantity of transferred pixels per iteration.
-> + * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
+On 20/10/2022 12:20, Alexandre Mergnat wrote:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add YAML schema for the MediaTek MT6357 regulators.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>  .../regulator/mediatek,mt6357-regulator.yaml       | 292 +++++++++++++++++++++
+>  1 file changed, 292 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+> new file mode 100644
+> index 000000000000..8dc1245304be
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+> @@ -0,0 +1,292 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6357-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6357 Regulators
+> +
+> +maintainers:
+> +  - Fabien Parent <fabien.parent@linaro.org>
+> +  - Alexandre Mergnat <amergnat@baylibre.com>
+> +
 
-As Angelo suggested previously, this could be written slightly shorter as 
+The binding looks ok, but to be sure: you are aware that this schema is
+not effective, does nothing without being referenced somewhere? And that
+we do not see this reference neither in the patchset nor in cover letter?
 
-  * @edge_cfg_in_mmsys: Edge configuration for DPI output has to be set in MMSYS.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
->   */
-[..]
-> @@ -448,8 +453,12 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
->  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
->  			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
->  			     EDGE_SEL : 0, EDGE_SEL);
-> +		if (dpi->conf->edge_cfg_in_mmsys)
-> +			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_DDR_CON);
->  	} else {
->  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
-> +		if (dpi->conf->edge_cfg_in_mmsys)
-> +			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_SDR_CON);
+Best regards,
+Krzysztof
 
-I know this isn't one of the formats supported by MT8186, but since we're using
-platform-agnostic formats now... This else branch in theory could also run for a
-format like MEDIA_BUS_FMT_YUYV8_1X16. Would it make sense to set
-MTK_DPI_RGB888_SDR_CON in that case?
-
-Thanks,
-Nícolas
-
->  	}
-[..]
 
