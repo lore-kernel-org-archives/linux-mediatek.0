@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68856C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12460C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SdyZhek2+MykVCKjxFxTEgC1cfdd3K346dolNmpDjdI=; b=fLEM6o73Y+TaBUsp9NLlPMepM0
-	0Q8VSrfRecLEd0he7dQ/89QwxSxsyZ4181AXKwFRvOMvHPUD1C5qGaA1SiAeaRnoVDQRPkymfMVpH
-	YBDlInhzVC8uuO8m0jX9lU5PYD1+5ROlnnDXVkpFW02mo4WTY3ulT9HBW3tx2Z0ghyouzaqur/zKi
-	o2MG0lEm9Uxn1AM4sDX09FTxTdLehvAmGgIXSRnSzt8l1KaSAesaKLTqq0q1WjXnToVc2wMhuKcOc
-	nUOsX9EvPDiv4IXTX7PshZ/i2/h/A/Dvgcn8ZEy8x+1q+I69/4y+7kXLRfp4mC0sFYVCS4LzV5HMy
-	3dM44ddg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OVJSxsezPM93wU8wP944PLHN8F5X2+UvzFDaXoRZmNg=; b=qQiZuEQNj+BmUPb5O30hEnWvw/
+	7bc32WuZncp1ArC4Us7v3j2sI/kD/A7Ulj0WBEnrN4mhK+H7LLI0UU6QSo0rspfL+PCSTkMefepSv
+	R5d15P95YYY3UttGcXrv4K1BhTUlTmH4ea8F1c0szISYzudYaFwY7Fq07A3mrUmhuFkqcfJqsDJ8s
+	B2o1KBGUhf4DMrAdm0Nb/cat7sSeCT4w4xCwAd8t3ZOTlmzXKB/F3KCJ6G1LnG/TfGM3YiJg/GHKT
+	+oSfmQNnmaywQucd4BcptdcMESrkooVtC/a5mjWYY0OlYevsBguGtIKwAZxey7ll4U5FIY9qdrfFU
+	hb9RY8Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYYJ-000Qn8-NB; Thu, 20 Oct 2022 16:37:51 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1olYZy-000SHC-7P; Thu, 20 Oct 2022 16:39:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYSj-000MRy-5h; Thu, 20 Oct 2022 16:32:06 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id x1-20020a17090ab00100b001fda21bbc90so3991358pjq.3;
-        Thu, 20 Oct 2022 09:32:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SdyZhek2+MykVCKjxFxTEgC1cfdd3K346dolNmpDjdI=;
-        b=BcbDsUZWZm0mWLLXO06lcwcIhKGa2roJYmuguova1NnzmR3hwGWAaSFEaIMAPJ3G0k
-         YZHJzj5uq2CnbxTIyoV59ZcqWBDiwfNIycqfiUQiNz8l/86jJ2fnrFzIW31aLX393/AD
-         8t6SUFcHf+qJXZqehpP07t6M4O4MYX3GpD98RO3dVTxYX8YGWrdTWiG8SJsum5FxWDkR
-         250kceozN06rRLanw8zdfkPxbPdZBK4y+xW7xM0I/HrMXNrBUiLSKc5Laam0Rf6SSgZs
-         IL8pyuxOa8m9FWTNjj1Q9+tG6yDQ+xmnpxlTrVtC9d9AJvtMn0sGcC9/Hp+IR09nx4qX
-         ONbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SdyZhek2+MykVCKjxFxTEgC1cfdd3K346dolNmpDjdI=;
-        b=hE6bSUwxTfh7Z0q78xCoUyH7HAzwVh8ixqAPSrLtJRaNjor6DWjFvP+7RwbIINksDS
-         3APBzPzRgZzrDjMoofHKAYhsnzF97YkzQrPV7Qiyr4TsBntt1XIDTY/CwXzfnYdQLOOS
-         NsmhGyMDz3caLNF85Nltv7xa8mrh4WtH9ZgvswDoVl8xiC65d3KbVFMEboD9KSFOWM3o
-         r5wZr/DsGhR1w1TAXVBMUSkIZNEz2leWERf2tv1zWIUgSe4gHHdJYC/0SEr1wwz9bHgF
-         xfso8slu1VQosxK+i2BlVf6LI475ptKlMi0Jv/n8LlRl7h1kBy+8sqWUdFW0tSJ16iuN
-         /TiA==
-X-Gm-Message-State: ACrzQf22GVJ7kZ98BQFOQC4agWK1XpXeM23aR5ybelim1l0HXmi1mCLm
-	q3eFiXVm5NvSmRaAsplU2QMDGRo0Y1k=
-X-Google-Smtp-Source: AMsMyM7j7u12Nvn9PZ1Mghyw6V+7mp9mrtiVFP3EoLpXt3Q318+TO7KTOqx9XgNo1TSOjR6y7YPopQ==
-X-Received: by 2002:a17:903:1053:b0:185:37cb:da04 with SMTP id f19-20020a170903105300b0018537cbda04mr15070162plc.108.1666283519264;
-        Thu, 20 Oct 2022 09:31:59 -0700 (PDT)
-Received: from localhost.localdomain (1-171-5-81.dynamic-ip.hinet.net. [1.171.5.81])
-        by smtp.gmail.com with ESMTPSA id w186-20020a6262c3000000b00561d79f1064sm13519291pfb.57.2022.10.20.09.31.56
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 20 Oct 2022 09:31:58 -0700 (PDT)
-From: cy_huang <u0084500@gmail.com>
-To: lee@kernel.org,
-	matthias.bgg@gmail.com
-Cc: chiaen_wu@richtek.com,
-	andy.shevchenko@gmail.com,
-	cy_huang@richtek.com,
-	linux-arm-kernel@lists.infradead.org,
+	id 1olYTw-000NWS-BT; Thu, 20 Oct 2022 16:33:22 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5C056660252A;
+	Thu, 20 Oct 2022 17:33:14 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666283595;
+	bh=Q6u2GbH3PGV2qnNkRIJ/Fn4pm+KSrq6IxNUNSYEyuFY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HrvyrFKm+YQPD31b/I/zrMo5s4g3vbGwhHZXD9Ufc/Pg/y7i650rPbKDnJIG1VUp8
+	 M2Tyxtgn+uKnhvC0Mu+s5VmAoBE27ikd2mXu3diJWF0yTaaAbSdlwZZ1qRdrZ197tR
+	 NA7dlUGIyrWt9IWpPHc1F4nLKZ1WXBzFlC3jdJBoNPlg8ba7auPTaHQoWejaI2X0N1
+	 UiHUX1QcJgYwceHrOw8ORtuKug1p/T92+mF0AlvbzQ8kP6RLAVT47bEeer5nqQeBfY
+	 FSmlosRyu4VUA8L52cHjyMdpGk0PYNjHZ3fMSuaAPGTP0bND2dOA3OyRa0Z9aS3omy
+	 0lWp6oiNXPRqg==
+Date: Thu, 20 Oct 2022 12:33:10 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: xinlei.lee@mediatek.com
+Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
+	chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+	daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] mfd: mt6370: Add the overbound check to prevent the null pointer
-Date: Fri, 21 Oct 2022 00:31:53 +0800
-Message-Id: <1666283513-17005-1-git-send-email-u0084500@gmail.com>
-X-Mailer: git-send-email 2.7.4
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v12,1/3] soc: mediatek: Add all settings to
+ mtk_mmsys_ddp_dpi_fmt_config func
+Message-ID: <20221020163310.tpkjvr7pe5vhwylh@notapiano>
+References: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
+ <1666147936-27368-2-git-send-email-xinlei.lee@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1666147936-27368-2-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_093205_252964_A704E22E 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20221020_093320_796184_132409A1 
+X-CRM114-Status: GOOD (  25.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,91 +78,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
-
-This potential risk could happen at regmap_raw_read or
-regmap_raw_write when accessing the over-bound register address.
-
-Below's the issue reproduce log to access over-bound register with
-regmap_raw_read function.
-
-[   41.301385] Hardware name: Raspberry Pi 4 Model B Rev 1.2 (DT)
-[   41.307296] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[   41.314358] pc : i2c_smbus_xfer+0x58/0x120
-[   41.314371] lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
-[   41.314376] sp : ffffffc008ceb9a0
-[   41.327261] x29: ffffffc008ceb9a0 x28: 0000000000000000 x27: ffffffc008cebb94
-[   41.334505] x26: ffffffe529116000 x25: ffffffc008ceba30 x24: 0000000000000008
-[   41.334513] x23: 0000000000000000 x22: 0000000000000001 x21: 0000000000000000
-[   41.334520] x20: 0000000000000000 x19: ffffff804e1e8010 x18: ffffffe529116538
-[   41.348994] x17: 0000000000000000 x16: ffffffe528ae11f0 x15: ffffff804e1be01e
-[   41.349002] x14: 0000000000000000 x13: ffffff804e1bd03c x12: 7220303032783020
-[   41.370710] x11: 0000000000000000 x10: 000000000000000a x9 : ffffffc008cebb60
-[   41.377953] x8 : 0000000000000000 x7 : ffffffe529116538 x6 : ffffffc008ceba30
-[   41.385196] x5 : 0000000000000008 x4 : 0000000000000000 x3 : 0000000000000001
-[   41.392436] x2 : 0000000000000000 x1 : 0000000000000002 x0 : ffffff804e1e8010
-[   41.399677] Call trace:
-[   41.402153]  i2c_smbus_xfer+0x58/0x120
-[   41.405956]  i2c_smbus_read_i2c_block_data+0x74/0xc0
-[   41.410991]  mt6370_regmap_read+0x40/0x60 [mt6370]
-[   41.415855]  _regmap_raw_read+0xe4/0x278
-[   41.419834]  regmap_raw_read+0xec/0x240
-[   41.423721]  rg_bound_show+0xb0/0x120 [mt6370]
-[   41.428226]  dev_attr_show+0x3c/0x80
-[   41.431851]  sysfs_kf_seq_show+0xc4/0x150
-[   41.435916]  kernfs_seq_show+0x48/0x60
-[   41.439718]  seq_read_iter+0x11c/0x450
-[   41.443519]  kernfs_fop_read_iter+0x124/0x1c0
-[   41.447937]  vfs_read+0x1a8/0x288
-[   41.451296]  ksys_read+0x74/0x100
-[   41.454654]  __arm64_sys_read+0x24/0x30
-[   41.458541]  invoke_syscall+0x54/0x118
-[   41.462344]  el0_svc_common.constprop.4+0x94/0x128
-[   41.467202]  do_el0_svc+0x3c/0xd0
-[   41.470562]  el0_svc+0x20/0x60
-[   41.473658]  el0t_64_sync_handler+0x94/0xb8
-[   41.477899]  el0t_64_sync+0x15c/0x160
-[   41.481614] Code: 54000388 f9401262 aa1303e0 52800041 (f9400042)
-[   41.487793] ---[ end trace 0000000000000000 ]---
-
-Fixes: b2adf788e603 ("mfd: mt6370: Add MediaTek MT6370 support")
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
 Hi,
 
-The previous discussion thread can be found here.
-https://lore.kernel.org/all/20220914013345.GA5802@cyhuang-hp-elitebook-840-g3.rt/
+On Wed, Oct 19, 2022 at 10:52:14AM +0800, xinlei.lee@mediatek.com wrote:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> The difference between MT8186 and other ICs is that when modifying the
+> output format, we need to modify the mmsys_base+0x400 register to take
+> effect.
+> So when setting the dpi output format, we need to call mmsys_func to set
 
----
- drivers/mfd/mt6370.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+mmsys_func isn't something that exists in the code. Instead mention the actual
+function name: mtk_mmsys_ddp_dpi_fmt_config.
 
-diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
-index cf19cce..acbf960 100644
---- a/drivers/mfd/mt6370.c
-+++ b/drivers/mfd/mt6370.c
-@@ -190,6 +190,9 @@ static int mt6370_regmap_read(void *context, const void *reg_buf,
- 	bank_idx = u8_buf[0];
- 	bank_addr = u8_buf[1];
- 
-+	if (bank_idx >= MT6370_MAX_I2C)
-+		return -EINVAL;
-+
- 	ret = i2c_smbus_read_i2c_block_data(info->i2c[bank_idx], bank_addr,
- 					    val_size, val_buf);
- 	if (ret < 0)
-@@ -211,6 +214,9 @@ static int mt6370_regmap_write(void *context, const void *data, size_t count)
- 	bank_idx = u8_buf[0];
- 	bank_addr = u8_buf[1];
- 
-+	if (bank_idx >= MT6370_MAX_I2C)
-+		return -EINVAL;
-+
- 	return i2c_smbus_write_i2c_block_data(info->i2c[bank_idx], bank_addr,
- 					      len, data + MT6370_MAX_ADDRLEN);
- }
--- 
-2.7.4
+> it to MT8186 synchronously.
 
+
+Here, before saying that the commit adds all the settings for dpi, you could
+have mentioned that the previous commit lacked those, to make it clearer:
+
+Commit a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi output for MT8186")
+lacked some of the possible output formats and also had a wrong bitmask.
+
+
+> Adding mmsys all the settings that need to be modified with dpi are for
+> mt8186.
+
+This sentence I would change to the following one:
+
+Add the missing output formats and fix the bitmask.
+
+
+Finally, you're also making the function more HW-agnostic (although in my
+opinion this could've been a future separate commit), so it's worth mentioning
+it here:
+
+While at it, also update mtk_mmsys_ddp_dpi_fmt_config() to use generic formats,
+so that it is slightly easier to extend for other platforms.
+
+> 
+> Fixes: a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi
+> output for MT8186")
+
+The fixes tag should be kept in a single line, without wrapping.
+
+> 
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mt8186-mmsys.h    |  8 +++++---
+>  drivers/soc/mediatek/mtk-mmsys.c       | 27 ++++++++++++++++++++------
+>  include/linux/soc/mediatek/mtk-mmsys.h |  7 +++++++
+>  3 files changed, 33 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
+> index 09b1ccbc0093..035aec1eb616 100644
+> --- a/drivers/soc/mediatek/mt8186-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8186-mmsys.h
+> @@ -5,9 +5,11 @@
+>  
+>  /* Values for DPI configuration in MMSYS address space */
+>  #define MT8186_MMSYS_DPI_OUTPUT_FORMAT		0x400
+> -#define DPI_FORMAT_MASK					0x1
+> -#define DPI_RGB888_DDR_CON				BIT(0)
+> -#define DPI_RGB565_SDR_CON				BIT(1)
+> +#define DPI_FORMAT_MASK					GENMASK(1, 0)
+> +#define DPI_RGB888_SDR_CON				0
+> +#define DPI_RGB888_DDR_CON				1
+> +#define DPI_RGB565_SDR_CON				2
+> +#define DPI_RGB565_DDR_CON				3
+
+These defines should all have a MT8186_ prefix. This will avoid confusions now
+that mtk_mmsys_ddp_dpi_fmt_config() is being made more platform-agnostic.
+
+>  
+>  #define MT8186_MMSYS_OVL_CON			0xF04
+>  #define MT8186_MMSYS_OVL0_CON_MASK			0x3
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index d2c7a87aab87..205f6de45851 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -238,12 +238,27 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
+>  
+>  void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val)
+>  {
+> -	if (val)
+> -		mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> -				      DPI_RGB888_DDR_CON, DPI_FORMAT_MASK);
+> -	else
+> -		mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> -				      DPI_RGB565_SDR_CON, DPI_FORMAT_MASK);
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +
+> +	switch (val) {
+> +	case MTK_DPI_RGB888_SDR_CON:
+> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> +				      DPI_FORMAT_MASK, DPI_RGB888_SDR_CON);
+> +		break;
+> +	case MTK_DPI_RGB565_SDR_CON:
+> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> +				      DPI_FORMAT_MASK, DPI_RGB565_SDR_CON);
+> +		break;
+> +	case MTK_DPI_RGB565_DDR_CON:
+> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> +				      DPI_FORMAT_MASK, DPI_RGB565_DDR_CON);
+> +		break;
+> +	case MTK_DPI_RGB888_DDR_CON:
+> +	default:
+> +		mtk_mmsys_update_bits(mmsys, MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> +				      DPI_FORMAT_MASK, DPI_RGB888_DDR_CON);
+> +		break;
+> +	}
+
+To be honest I don't really see the point of making the function slightly more
+platform-agnostic like this. With a single platform making use of it it's just
+an unneeded extra abstraction, and it could easily be done when a second
+platform starts requiring this as well...
+
+In any case,
+
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+Nícolas
+
+>  }
+[..]
 
