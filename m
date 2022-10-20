@@ -4,69 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EEAAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F391C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:48:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=u+Pcg0UW3/VpSmufABE9WQF/YkxxJySEHksD2l7TwL8=; b=XEczz+FGDB78M+0qbbiar1GBPB
-	NlmDEgNN5i89+3lzmQSNKafB68Ob0ET8NWorBqiR8+1/IcWlXzULfuvRJLOzBB0ZkbyoxJs/yCFu5
-	tAflMDZHibvZms+JpIcwx3nwsjuPuVR58SD0m/4JZ5alKv+XtKf3A9qPBvd8xl7QSj8kH2pnNUZyt
-	AyiL6q56to9GBIIYTYxeyuWmotDJWHQn9IFPuoYVDxhto1Qb4IgURIHMUeR/puaP0ltKpddiG/HM4
-	gHP86qfUv9LFTZBQnQ5uQJt4Ztb5+8Re+ZaRRXi+9egk+8iXsPylrqCT9Rrl6Ek38ZgDCqdZ1jDHQ
-	qP8bg4lw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=; b=I5cb7nlPamIRhptsPfVTgOp+Ze
+	Ce4hIVuiTRreuzWhfZMVxH3X2dITuzBzw6WEVghUJBroTVHTLLTGyGnK0VcHlX5kfywmVTIjg4EEK
+	TvWRjQMlqZmMP3Qwh8H7R+vmNWijMYch8vEkX9uqi06D6UZifx3UlpQLzFjsDGDluygnY14YWx5/y
+	lD2SO4WDz/WGiB7H6Bhf9uHL0ReZ0/uRGa6sjQEInLFOuG6MlL5ukYmUBfzPkWS/0OFa7c+qGq/2Z
+	pdoYbRS/VO4xkoNwjSK4nJs5Mh1UnDdqmoa4DvTGinEz4kXTf7gnKnGH3al6eNMNCKFByzFZ9fdAh
+	3/8+iSoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUtW-00ExKh-2z; Thu, 20 Oct 2022 12:43:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1olUxw-00F0br-3Q; Thu, 20 Oct 2022 12:48:04 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUSy-00EdFm-H2; Thu, 20 Oct 2022 12:16:08 +0000
-X-UUID: 5277435b267241d281e438efc5a2d516-20221020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=u+Pcg0UW3/VpSmufABE9WQF/YkxxJySEHksD2l7TwL8=;
-	b=nKIKVnxUkwO5X/qgMzVkjSmzKzv2Nh8TcMz/y1CtJaxwURXpL05VD/7jmG0BNGTToi9KiGpgTL5lpCoiO2QUoDeuB9p3jvEzyGTIjt2SCTNy5jCre0YK3ZNlws/PDjGgqXjnJuta2Y3QdAQC8bGVl6zHtRtT10l5+ewdBa17fOg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:e443eaa2-8852-4145-af4e-9811bd52423d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:07917333-7d3c-46b3-a6e9-0ba03eeda632,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5277435b267241d281e438efc5a2d516-20221020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 266603588; Thu, 20 Oct 2022 05:15:59 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 20 Oct 2022 19:45:56 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 19:45:55 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <ck.hu@mediatek.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, xinlei lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH v2,0/2] Add dpi compatibles and platform data for MT8188
-Date: Thu, 20 Oct 2022 19:45:51 +0800
-Message-ID: <1666266353-16670-1-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
+	id 1olUYX-00EhVM-B9
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 12:21:51 +0000
+Received: by mail-qk1-x736.google.com with SMTP id t25so12619046qkm.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 05:21:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=;
+        b=kxmoe7LVcj5YaehnNatSaJ+sgWuAJIYUVHZi7kkFgy1BEN3isRtJwl+XDqqRPPIZJj
+         6s7x2UMRz8IIyEz9CG+9FZuWlnOp6z8CtYGL0HpbUwumjlPwEUL7JTYZnOw+7vLar7Wn
+         SoejmHXPColW7UfWN1jaHbvq/J4jPIXfeVpcUjNSujJJQqIYqcju2EzMxd6ddY48LDQX
+         A1tlt8aK/n1lBw74+4cxPpCUdH2/KVZeZ5LBmsVzHgDj8NvbpqyCTdE4hM1vBaoNFNP+
+         /w6dwgz1OGuvcIigUDxMGAdY/RqReLRuxIk+SE9k8Pg10v6FmZsbmpismQgzrdFyEVWL
+         qTOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=;
+        b=oR+23/9goCysK6WZDe/5GpJcw/0dsLZwI/kxJcPQyW25oUxW1GWiENXNZC1BvPpWvv
+         ITfNzuCjviy5ShGMq4fXPgfzw3RqI0ZVpaquzitD7X5H+SNOjOKzISmXc4XMgvoJYBuN
+         BB+i46DoqazAsyKZ+qw7rMa0xir3KSCAkyKEqem6H8hSigoCU/AWupKOxxgEqRU7oeXu
+         UoNDkhW9+RBbmTWzA65+kkdweZDpSa5S+vjrtTbTWP364RgHBH/LhviJvu4tPedVpDKt
+         ZfQdlsyqYrqrBFgS81tSOQQXIlVT5OkNc7jun+PpqZS1VFOOW5d1BENxQhLUnWsPot+t
+         ubIg==
+X-Gm-Message-State: ACrzQf3iaeA0TvhpxQAPXyefZKaJhMpRkLVpafq5AB6/CmOWKUwXtPT6
+	N0uvGsUyV7x1kKnvRuHIGIvrXA==
+X-Google-Smtp-Source: AMsMyM7gpLAbDdzem95MlHk1VJuHxCQq2NFZ0KtsUUKL2BU/4obX35xeH+M4i4rRIL7C7psdPxWaKA==
+X-Received: by 2002:a05:620a:2489:b0:6ee:6244:a225 with SMTP id i9-20020a05620a248900b006ee6244a225mr8971714qkn.112.1666268505870;
+        Thu, 20 Oct 2022 05:21:45 -0700 (PDT)
+Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
+        by smtp.gmail.com with ESMTPSA id cg15-20020a05622a408f00b0039c37a7914csm5877409qtb.23.2022.10.20.05.21.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Oct 2022 05:21:45 -0700 (PDT)
+Message-ID: <2cfed688-f401-e69e-1ff4-f775c6d90f64@linaro.org>
+Date: Thu, 20 Oct 2022 08:21:43 -0400
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v3 06/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Add MT6795
+Content-Language: en-US
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ Andy Teng <andy.teng@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221007125904.55371-1-y.oudjana@protonmail.com>
+ <20221007125904.55371-7-y.oudjana@protonmail.com>
+ <0f078a85-056a-c11e-377b-27764a34485d@linaro.org>
+ <8WU1KR.065JU8WYUX9C3@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <8WU1KR.065JU8WYUX9C3@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_051604_672979_34F37C05 
-X-CRM114-Status: UNSURE (   6.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_052149_499629_0DAB6C50 
+X-CRM114-Status: GOOD (  29.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +104,247 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: xinlei lee <xinlei.lee@mediatek.com>
+On 20/10/2022 07:36, Yassine Oudjana wrote:
+> 
+> On Mon, Oct 10 2022 at 07:24:59 -04:00:00, Krzysztof Kozlowski 
+> <krzysztof.kozlowski@linaro.org> wrote:
+>> On 07/10/2022 08:59, Yassine Oudjana wrote:
+>>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
+>>>
+>>>  Combine MT6795 pin controller document into MT6779 one. In the
+>>>  process, replace the current interrupts property description with
+>>>  the one from the MT6795 document since it makes more sense. Also
+>>>  amend property descriptions and examples with more detailed
+>>>  information that was available in the MT6795 document, and replace
+>>>  the current pinmux node name patterns with ones from it since they
+>>>  are more common across mediatek pin controller bindings.
+>>>
+>>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+>>>  ---
+>>>   .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  94 ++++++--
+>>>   .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 227 
+>>> ------------------
+>>>   2 files changed, 77 insertions(+), 244 deletions(-)
+>>>   delete mode 100644 
+>>> Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+>>>
+>>>  diff --git 
+>>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml 
+>>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>>  index a2141eb0854e..cada3530dd0a 100644
+>>>  --- 
+>>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>>  +++ 
+>>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+>>>  @@ -8,6 +8,7 @@ title: Mediatek MT6779 Pin Controller
+>>>
+>>>   maintainers:
+>>>     - Andy Teng <andy.teng@mediatek.com>
+>>>  +  - AngeloGioacchino Del Regno 
+>>> <angelogioacchino.delregno@collabora.com>
+>>>     - Sean Wang <sean.wang@kernel.org>
+>>>
+>>>   description:
+>>>  @@ -18,6 +19,7 @@ properties:
+>>>     compatible:
+>>>       enum:
+>>>         - mediatek,mt6779-pinctrl
+>>>  +      - mediatek,mt6795-pinctrl
+>>>         - mediatek,mt6797-pinctrl
+>>>
+>>>     reg:
+>>>  @@ -43,9 +45,10 @@ properties:
+>>>     interrupt-controller: true
+>>>
+>>>     interrupts:
+>>>  -    maxItems: 1
+>>>  +    minItems: 1
+>>>  +    maxItems: 2
+>>>       description: |
+>>>  -      Specifies the summary IRQ.
+>>>  +      The interrupt outputs to sysirq.
+>>
+>> I am not sure if description is relevant now for all variants... what 
+>> is
+>> the sysirq? You have two interrupts so both go to one sysirq?
+> 
+> It's the system interrupt controller and it has several inputs. Both 
+> interrupts go to it.
 
-Rebase on linus/master v6.1-rc1.
+Then the naming is confusing because "sysirq" sounds like "system
+interrupt".
 
-change note:
+> 
+>>
+>>>
+>>>     "#interrupt-cells":
+>>>       const: 2
+>>>  @@ -81,6 +84,30 @@ allOf:
+>>>               - const: iocfg_lt
+>>>               - const: iocfg_tl
+>>>               - const: eint
+>>>  +
+>>>  +        interrupts:
+>>>  +          items:
+>>>  +            - description: EINT interrupt
+>>>  +
+>>>  +  - if:
+>>>  +      properties:
+>>>  +        compatible:
+>>>  +          contains:
+>>>  +            const: mediatek,mt6795-pinctrl
+>>>  +    then:
+>>>  +      properties:
+>>>  +        reg:
+>>>  +          minItems: 2
+>>
+>> What's the maxItems? You declared reg and reg-names in top-level
+>> properties as accepting anything, therefore you cannot have loose
+>> constraints here.
+> 
+> That was an oversight. I'll fix it.
+>>
+>>>  +
+>>>  +        reg-names:
+>>>  +          items:
+>>>  +            - const: base
+>>>  +            - const: eint
+>>>  +
+>>>  +        interrupts:
+>>>  +          items:
+>>>  +            - description: EINT interrupt
+>>>  +            - description: EINT event_b interrupt
+>>
+>> Blank line
+>>
+>>>     - if:
+>>>         properties:
+>>>           compatible:
+>>>  @@ -111,32 +138,50 @@ allOf:
+>>>           - "#interrupt-cells"
+>>>
+>>>   patternProperties:
+>>>  -  '-[0-9]*$':
+>>>  +  '-pins$':
+>>>       type: object
+>>>       additionalProperties: false
+>>>
+>>>       patternProperties:
+>>>  -      '-pins*$':
+>>>  +      '^pins':
+>>>           type: object
+>>>           description: |
+>>>             A pinctrl node should contain at least one subnodes 
+>>> representing the
+>>>             pinctrl groups available on the machine. Each subnode 
+>>> will list the
+>>>             pins it needs, and how they should be configured, with 
+>>> regard to muxer
+>>>  -          configuration, pullups, drive strength, input 
+>>> enable/disable and input schmitt.
+>>>  -        $ref: "/schemas/pinctrl/pincfg-node.yaml"
+>>>  +          configuration, pullups, drive strength, input 
+>>> enable/disable and
+>>>  +          input schmitt.
+>>>  +        $ref: "pinmux-node.yaml"
+>>
+>> Drop quotes
+>>
+>> Why this one is not pincfg-node anymore? All your properties are not
+>> valid then? You mix here so many changes it is a bit difficult to
+>> understand the concept.
+> 
+> Seems like I didn't pay enough attention to that. This node actually 
+> takes both pinmux-node (pinmux specifically) and pincfg-node 
+> properties, so would it make sense to add ref for both?
 
-v1: Modify variable name.
+Yes, and make changes in organized way, easier to read...
 
-xinlei lee (2):
-  dt-bindings: display: mediatek: dpi: Add compatible for MediaTek
-    MT8188
-  drm: mediatek: Add mt8188 dpi compatibles and platform data
+> 
+>>
+>>>
+>>>           properties:
+>>>             pinmux:
+>>>               description:
+>>>  -              integer array, represents gpio pin number and mux 
+>>> setting.
+>>>  -              Supported pin number and mux varies for different 
+>>> SoCs, and are defined
+>>>  -              as macros in boot/dts/<soc>-pinfunc.h directly.
+>>>  +              Integer array, represents gpio pin number and mux 
+>>> setting.
+>>>  +              Supported pin number and mux varies for different 
+>>> SoCs, and are
+>>>  +              defined as macros in 
+>>> dt-bindings/pinctrl/<soc>-pinfunc.h
+>>>  +              directly.
+>>>
+>>>             bias-disable: true
+>>>
+>>>  -          bias-pull-up: true
+>>>  -
+>>>  -          bias-pull-down: true
+>>>  +          bias-pull-up:
+>>>  +            oneOf:
+>>>  +              - type: boolean
+>>>  +              - enum: [100, 101, 102, 103]
+>>
+>> Missing ref
+>>
+>>>  +                description: Pull up PUPD/R0/R1 type define value.
+>>>  +            description: |
+>>>  +               For normal pull up type, it is not necessary to 
+>>> specify R1R0
+>>>  +               values; When pull up type is PUPD/R0/R1, adding 
+>>> R1R0 defines
+>>>  +               will set different resistance values.
+>>>  +
+>>>  +          bias-pull-down:
+>>>  +            oneOf:
+>>>  +              - type: boolean
+>>>  +              - enum: [100, 101, 102, 103]
+>>
+>> Missing ref
+>>
+>>>  +                description: Pull down PUPD/R0/R1 type define 
+>>> value.
+>>>  +            description: |
+>>>  +               For normal pull down type, it is not necessary to 
+>>> specify R1R0
+>>>  +               values; When pull down type is PUPD/R0/R1, adding 
+>>> R1R0 defines
+>>>  +               will set different resistance values.
+>>>
+>>>             input-enable: true
+>>>
+>>>  @@ -151,7 +196,7 @@ patternProperties:
+>>>             input-schmitt-disable: true
+>>>
+>>>             drive-strength:
+>>>  -            enum: [2, 4, 8, 12, 16]
+>>>  +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+>>
+>> Now you are missing ref - you do not have a type now, because you
+>> removed pincfg-node. Split the merging of different pinctrl bindings 
+>> and
+>> reorganization.
+> 
+> Will do.
+> 
+>>
+>> The drive strengths are also not valid for the other variant...
+> 
+> Actually the supported drive strengths vary between pins of a single 
+> variant, so technically they have never been described completely 
+> accurately. The old drive strenghs are a superset of strengths 
+> supported by pins on the MT6779 pin controller, and this change expands 
+> the superset with values supported by some pins in MT6795. Would it be 
+> better to move this to the conditionals to have it defined per variant?
 
- .../bindings/display/mediatek/mediatek,dpi.yaml         |  1 +
- drivers/gpu/drm/mediatek/mtk_dpi.c                      | 17 +++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c                  |  2 ++
- 3 files changed, 20 insertions(+)
+If they vary, then yes.
 
--- 
-2.6.4
+
+Best regards,
+Krzysztof
 
 
