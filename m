@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 309D9C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FC7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=; b=xl8Y748bI0tFzwPoH8iHyVrdQI
-	Ig/jvNTq80Wf9YKIG+l8SsLMVJVP39ZO4kAmV1VNHaM2AXVFdqM6EPoi/2cYsU6C7mXreA+RPKUU7
-	N6ePrAK1VbIQhYDAsb0jKPCemfQbdk/wI5nG7RncFihXcHCh6NlKiR1G0GekuaYP49JWxkOnF25Zr
-	MlP517g+O81jB7VbG16JHUeQOVeu+KteWT7LOV+B9/GCHlWqxOB/AX0UD6Mkuw7pHppa8OqjJabXZ
-	SiC1YgxfrJV6CPn4YGyL0HBf4F33KTvLWmBJ7rDuZfKYGJWCfS6LPIyjUbBspmFWZlMvKD4tNWAPY
-	qNdtdM4g==;
+	bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=; b=Np3VJuV0vLhNk3VrDyg2G8i8lG
+	1lgKTiNK/EBJU5axUGlDj3TSdQIVAEFppbzQELvK+cY22L1gk4j78mpXcNV3cybDcybORVBRhrxun
+	SvaFzkqCy+39+B2EHuAZXeES8ThYCeFbx1AB93NOrEf69EbXg8oK++ygB/SAUlw+1coav1Q1qglZ+
+	7i/sprDEqFcjZ3auGqi1SmtqF15h8N2C+UalaszvVnHjHnLKr3Sw2fXeD4HAhzjDT2TAp/0wRP7xd
+	YWbgULc2UMWzLJGFty7XGcL+WkIivrwEfStzonWxUrCNt1WIdNNB0MhtpbtRax221J5T97mRfJE1L
+	80UgoPIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYGL-000Fmb-8M; Thu, 20 Oct 2022 16:19:17 +0000
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+	id 1olYGp-000Fzn-UG; Thu, 20 Oct 2022 16:19:47 +0000
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYGI-000Fju-MJ
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:19:15 +0000
-Received: by mail-qt1-x835.google.com with SMTP id z8so14012047qtv.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:19:12 -0700 (PDT)
+	id 1olYGe-000Ft9-5v
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:19:37 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id f14so13852426qvo.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:19:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=;
-        b=Ew3XbGq/ADOFDDQULys1w5f0CUfRk2TBhCZqASgyGf36zV7VrScYztVOw8PmvpPlIB
-         HYGwtPKOluSR6DSzzIvr24JeJ0YYWoedtS8MzVoC5I74C3fbl78BwL4tOR0KcydB2KSb
-         /V2CzhHyrKES9ZLC827HHJDu0gp7CJm6ybgYZrtdqvPzZMmoCUXj/HWvUXMmWbIG1pmn
-         T1bsNTHO9qQzwZZnkI0HRDhTTPZ9azKvLazcaXqn1eFLd1J/GxU3DtrwmOLyVeSlsYvg
-         bG461MfFxyncmwL3rNmwLUZIHwqKECSrwdyKE4M5VeHTEJ9bCVZBJz3/LEdk03MCSnR0
-         Cw8A==
+        bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=;
+        b=wtMyoidNDlc6CXkOIF48tG23OkrzjobXGaBGAeQxYLoX+/YrniIr8r8CuA4naE0ggr
+         egJI4JwS3HR/Z1zTs8DGA2jpvUXFJ3Pa3Gn0ScUdUBakgCjcAQohQ6iI3f5C2nnZLGzn
+         vH6TgDpcxcnqfFceAI+pdV2U4VDRbWogolEQY+R6tOEM9Imx7fBeRZjLd94CMcvNnkwJ
+         /Blt2ZZd5flcx11b+MFkYd/vCewUXmTqpA9NGS6/iJYKySlX27cyst93kh8GxViPaQBP
+         V4+VD4aw6rnQw+q8IXonQnSKgEFTjkTm71OJ1n9DMGWaHZPlGoMeXVrVuQE9Y80TR+g8
+         j4bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=;
-        b=eZHblLaG0Uez3B8j9sDjzcewfCZR9EEr5M8vIMjzfsmO1Siim7Bp3MyrOcYv6JJUwy
-         8ytj5fP5JfiOg8WAYJX147WMeMG+fUxl12M2TMxI51Z5kiAAo96kLej8YLsmWwLU1KuR
-         Ov+IYHiKIFDJfV7sxdyA4PoE/XsLDFyrkWHZDk97CA7Cyrjzw3IEXjwkzOKOhUS7/VQ+
-         xW2pctSu97TOVPYASFSoiLzuoKShVPIasO1UlIAPKCctJHtljjY1VCIH8p4+iLKuaEK+
-         ql64+W0n5EheYQi9463IaE2xCnOnczZqBVPHh+cAgulKlnTpkwPkKImofTjwbazzBRQF
-         d0Xg==
-X-Gm-Message-State: ACrzQf2xqj47zmfWqHTEVbtmS2MA5soXQ8quga2AQiPqtrwPrIkJHV58
-	Sh6oqfo45QbehHZkFY5mATQhVg==
-X-Google-Smtp-Source: AMsMyM7XjZb4dPpbk62kCztyoDByKSy+hibNQg8o9nkkhr20RuX1MAdCla2yOjzYa0GvSTYvZIsm+g==
-X-Received: by 2002:ac8:7c44:0:b0:39c:cbe1:2787 with SMTP id o4-20020ac87c44000000b0039ccbe12787mr11764085qtv.214.1666282750048;
-        Thu, 20 Oct 2022 09:19:10 -0700 (PDT)
+        bh=JcnPN6pOymsF6TuFZ7F3+kHPVPEANExbnJVMCV93EB8=;
+        b=DAScgYWm+t3eB9nIHFMH4Bv1M4OgmugToZ83ygfY9uBbbAIIFn4JxaQdegN54zy9lv
+         kZ2HS9Iv2LGiGq0HKmT22jryQtsFoGOrbHPZQUmCx/TSFr94hD0KVQVuFVZrQ6kMojqk
+         5n2RXbNGRAVvztxKJTmfoBRQIdcnn9LvXrwiCb0EWHIQkrOHkiEsddCExBrgd2iss9px
+         7x5pgHOrYLy0MKxo1OrG53Yz9+nmyCCDoV60U233lMfipRHJcPQY9cer3ABoKKlQuW6t
+         Wp19wfnp0hbh+lvAuYXBsuQ220UkZoJrPfH6Klag0aiURrkOH5OG9swLIbWI4vRqeDva
+         AP8w==
+X-Gm-Message-State: ACrzQf0Yf4KA+HhMdqj9raaA+GnJ9JuJ2rHXyuOKFZVmAckDfRaFAzoy
+	cN3ni7iZUJrSgSv7K/L/1KDJfA==
+X-Google-Smtp-Source: AMsMyM6mw4at8h/UUnFkUKaYGcNXsz9P2DbQdh3eDc++FhkVB22bdeyzYFFEjleWs4HEZBCi4MI2bw==
+X-Received: by 2002:a0c:e552:0:b0:4b1:86f0:89d5 with SMTP id n18-20020a0ce552000000b004b186f089d5mr11896504qvm.97.1666282774259;
+        Thu, 20 Oct 2022 09:19:34 -0700 (PDT)
 Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
-        by smtp.gmail.com with ESMTPSA id r17-20020ac87951000000b0039cb9ef50b5sm6277185qtt.26.2022.10.20.09.19.08
+        by smtp.gmail.com with ESMTPSA id r17-20020ac87951000000b0039cb9ef50b5sm6277793qtt.26.2022.10.20.09.19.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Oct 2022 09:19:09 -0700 (PDT)
-Message-ID: <aaf7d4a9-c767-6a63-691d-e3ae00b206fc@linaro.org>
-Date: Thu, 20 Oct 2022 12:19:07 -0400
+        Thu, 20 Oct 2022 09:19:33 -0700 (PDT)
+Message-ID: <972de6c1-c844-7581-efed-cb6c4d826c33@linaro.org>
+Date: Thu, 20 Oct 2022 12:19:32 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.0
@@ -85,8 +85,8 @@ In-Reply-To: <20221020130957.25197-2-fchiby@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_091914_786196_20924C58 
-X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-CacheID: sfid-20221020_091936_259994_6840891B 
+X-CRM114-Status: UNSURE (   8.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,8 +110,7 @@ On 20/10/2022 09:09, fchiby@baylibre.com wrote:
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Acked-by: Rob Herring <robh@kernel.org>
 
-This is not exactly v1 then. Please use patch versioning and add
-changelog (to cover letter or to individual patches).
+Ah, and one more issue - your SoB is missing in all patches.
 
 Best regards,
 Krzysztof
