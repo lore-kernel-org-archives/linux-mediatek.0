@@ -4,146 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346ACC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 13:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F3DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 13:22:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fyGVuHHKK3c1OMgGpArxlrEfKi/ijp99vW6r9U2jzFU=; b=peYHgtR2bFGsr+BYt3Bbo7DMXl
-	mUJQzakZh5tAUXbAHx/pNjRkwcEUji0MAAW2wIQ2MvySPpmDdPv7ex5ZR2UZyQgX3bBRcI0BxFSw6
-	j8uE4+uzWe1grY1elGrr9Q2wHxZfd0l+PcUSk+14GVkzldm8tWVGgUQclNjDfpmub5B80aA84a+9K
-	BNE8y0O8INr3gkd2c+nszSLlq5s8yH2fD/m1soyednQGbYsVfXa6L/jTkh8fel7xT1u2hKhbp86ch
-	SG3/BdZqAsh8aIW6LZ2B+QS+viU6sjETETQMMCIhvy9EG/Aef9ol+Yr7laDyISogzb8RQEAn0sOSc
-	g5oiNt+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aNOCO5Wzuq4FvlmMhHTUbdlTAohmkL46icpaXsf0/1Y=; b=V/tLG2EWrsQv1Iyp1sMUuHGGrP
+	pWWcVLsuhjuuZ6z7BJfRfW3nI53elIOn7vq9zpt1ptu12M564+1gIkmAmjOCw1lW2LA+c+SZul07w
+	fDazwCKSHjiDdysAxO0QjM5HnIlwLI/IvGLC5KU10Y/a+nxWjE4O+QpSRgWrGw/teb0ZmiFnViImw
+	48Eo8EWLtRCHoFIxRFPmJtNDoUTkpRezDHIUH6Fi9mAbYIYPnEaa8KcRvXMWe/LjWA+5PxFTQJl56
+	SIUGD/ZLxluGcQUOI6lwoWZf++VtFpibONhCSwqyXlOGl4zkKkiPx9WXVbTCqd55oTk2ULmAvdiPC
+	oRF4MVBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olVHM-00FGh8-D8; Thu, 20 Oct 2022 13:08:08 +0000
-Received: from mail-bn7nam10on2077.outbound.protection.outlook.com ([40.107.92.77] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1olVUj-00FOYD-EH; Thu, 20 Oct 2022 13:21:57 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olVFX-00FFUP-Ll; Thu, 20 Oct 2022 13:06:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JR1JfS0TvlUEg5N8MLRsZz9h7p6lvH8IW96G3HtBvyIvQ/nBhXLynpHSqsoy1SSeCxvP8r90pxtvRGqmk5y+6tLl/y2TQpftPIDHqQwoL45vn1yq31TyN/FiJsWP7YqAeWaeL7wOnoJIbtvGQAew5PPLaXH3ho8tvs0MAIOGHXZrKY4TkbNr0Tm63Gvg5vrys4gygX71iHYaDYXB4ZKuhT3b2HE4Ix9shVmTTgGz2tmUSTL35VjECgY7duNSUty00pM0TtOD0WM0eVb5EhLulcnpc8yju+246c7tWQqjamqWXwpD72i85GgcpLNY5LFv7kYPuQW6A7+C2WrZOpRtWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fyGVuHHKK3c1OMgGpArxlrEfKi/ijp99vW6r9U2jzFU=;
- b=aVXCIZLXGcal/m75LzIaWMq3KOEhJwAYc4a7j2r25+cyyTa0DM0Yycsz7pbwREopxmbQgKlKL1zjuKU3v6GDUHk+j43/6XvDSXj5Dj4jomhWka7be08fCoFlCfGgbKxsqk5hMFMVA2x/tDSZuPtd3k4CPShXkRAJ1RWvZHtnlgel+O3B5yAZjViWnzAYnDUCizQM7IUew3zIH1meVmByFA1XmYSoH/iWQQjRjfGlisPwuuf4FfdDPzOjkhdhXlTJfo4fs0JkFrb/+XjXUuAnySxZg+RR54KeI85OkMiWqY1P13n4NBBmIlm7H7KEMXpLng6M8t2BB0bSO7FkGAapJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fyGVuHHKK3c1OMgGpArxlrEfKi/ijp99vW6r9U2jzFU=;
- b=T98fhGBAntfJrhR1pwpRZytDN612QohpQO6RGvdsLiN1TY8xdV8SK/t+kctCLXrptSfwxkzpc0NbCgSkieynORiv95CzqvQauzW9dzG8ep7d4E8DiMhlQA48SEjs/pJdqCXcg2jvhe5dsnDGiOAaD68mwb8WynTLEEH7Dxdm5vkR00/yE3gjusOEtV6//kR0Q6DqarXyTc+hN90ll1Iv3Z7JPNMmn7YSJfKgEpwayf4R7GBoBE7a58NVAJohF7SR4KhXBQUNTa+BfqKNYluNw0DLWETIJWmu9Agf7HDWF8+U7FT7wBJAKbJjDZe+2xgksbXcUdL3ek8dOdl4oL7qqA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by DS7PR12MB6165.namprd12.prod.outlook.com (2603:10b6:8:9a::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.33; Thu, 20 Oct
- 2022 13:06:08 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e%7]) with mapi id 15.20.5723.033; Thu, 20 Oct 2022
- 13:06:08 +0000
-Date: Thu, 20 Oct 2022 16:06:01 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: "Hans J. Schultz" <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
+	id 1olVJm-00FI4R-Ji
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 13:10:45 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id f11so34349140wrm.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 06:10:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=aNOCO5Wzuq4FvlmMhHTUbdlTAohmkL46icpaXsf0/1Y=;
+        b=QOuQgD+AnywmC273rOOD7wCOi9HQmQ56/7iOyJ75teIxtA4bmAPiRAFH7PSBR0ASfw
+         ciaQkCMdpZ3rGKVFQGqUNCuTm8pFMpxtTWKEXSHu/UyfQTQCZUXjzbNmXvY7s5AiZMW4
+         nKmyPm5BUA0zx39xS1iwxsU4qtfDjZQMuiPYNBFlLjObNpeA85XSgnoK6rn/OO6VmQ4p
+         MdXmni/HcMV3Ewqmn4sfA1F1KWBC+Ing3I0xvg3QNRPAto+7zYp2AwrJyhOMZevSWDHu
+         i+jbtGn+397825BiRkIuE3ks1wxsnV4onWdReX/vE+3+NOVOHO/VS1vkBilzwfj64BC0
+         EmZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aNOCO5Wzuq4FvlmMhHTUbdlTAohmkL46icpaXsf0/1Y=;
+        b=QiunP6n3wcG/G47XhgkId+Bwajp2GztvRASoBCc8I7r3jNhj7LLNMxyp8GSj7n12rz
+         EHixKUYPVxu55ZWDlFHVcAVJ+aA14YRFvTnlB5uyISVx0kulGT6NK2d2W1cgfRt6Dhh4
+         bEiQA1AxqJ26cEmDY0xIZD7IqJ/7FRqHdPXH37mz4nUTDgnumok/7nG4Tc51ukq34YZ6
+         c4Oyb5Bn5Jb6VJ8iyy6mVcKgA+nLo+8gWJk7G+RQ/MXIdCVOvbnB2P+/62/fSQnS1/0D
+         uGheH0kwZ/aSadAPD7qvXytYtc1lbRhSIsOEGXvS8dhXTgeitKxs32plEJjkmlnG0uKw
+         xYhg==
+X-Gm-Message-State: ACrzQf1Xhc9gOLhlbEwg2hjeScrrpVqBuCV1/2fgoYce7TyjbFyxDMWr
+	urUxmxxKa27uLDQuoCL8Zv/FIA==
+X-Google-Smtp-Source: AMsMyM6GCgm7Wfy7/CKyZj0ERQNdjCwx/MEL17rx5YpYMjNxqw7Ii8gcVJ3PP2LGk67rqCwyUTs5hA==
+X-Received: by 2002:a5d:668f:0:b0:22e:47be:3fa7 with SMTP id l15-20020a5d668f000000b0022e47be3fa7mr8558572wru.200.1666271435924;
+        Thu, 20 Oct 2022 06:10:35 -0700 (PDT)
+Received: from localhost.localdomain ([2001:861:3a82:90b0:2979:1615:9a68:f204])
+        by smtp.gmail.com with ESMTPSA id x8-20020a5d6508000000b00228dff8d975sm16453927wru.109.2022.10.20.06.10.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Oct 2022 06:10:35 -0700 (PDT)
+From: fchiby@baylibre.com
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	"Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+Cc: Fadwa CHIBY <fchiby@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 02/12] net: bridge: add blackhole fdb entry
- flag
-Message-ID: <Y1FHuXE+X/V9aRvh@shredder>
-References: <20221018165619.134535-1-netdev@kapio-technology.com>
- <20221018165619.134535-3-netdev@kapio-technology.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221018165619.134535-3-netdev@kapio-technology.com>
-X-ClientProxiedBy: VE1PR08CA0023.eurprd08.prod.outlook.com
- (2603:10a6:803:104::36) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/3] mediatek: pwrap: Add mt8365 pwrap support
+Date: Thu, 20 Oct 2022 15:09:53 +0200
+Message-Id: <20221020130957.25197-1-fchiby@baylibre.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|DS7PR12MB6165:EE_
-X-MS-Office365-Filtering-Correlation-Id: 43955a47-7593-4960-743c-08dab29bda5d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	6m6p9cKg+Ko0kWVTM7Knod+J7M43VKdLHsCJyYcB3HQiQxvDo1zxvLGnCcrp6x1OaOh9vGvKJAg26aeeYXkOYIWZXYMJgtSVb5+2rY4wWToRlTeCTbUkhY5oUf90jYHcfiQFUH89HLQvaOIgMEayowNQInZOnN6IjEp4828QXMRsKT/0uFxddyiZ38eQluc8pip0jK5LLFlbnQ35+PQ2Uq5oAF21jb2zsygxU3llK5mzqyJbb63p/U6nLMh1xZbQky8dHnVW0o9tKFFN4xArRIfYLlELfThNkwAXeo63BVm0ShzpNJzsY053Hb/fk4IX8Gs9V71lnHC419lfgnvnGPdxoqLSaC6WC4l0nxwLDGWCklMXxq9CBriaC0V9DShyAY1tSUDZu3FYZ0HPlgCKetVs0KzVxE9AghEdvtfrDfbk7QsCcY5M6InVFtekDRdFqvcPuFvuaM/r2S4Glshf8WRkzfI89fnEBREcX8pfqZmBlCen2hamDTpFxeGL/X6FlGi9rkTD1LJx+u9lxhOWQ6lIArIsjNBI417URxmzlBV0WIqKYziTa/lFRMRSR0tgI5FGTnJzNLi2J+1mHJ9yRL+kQY5pFXLff1KAO4/LmQWTKlNRvjxDJCOe7s/X1tihQdK0KJ4djRebSKGmcKQxRwZDC14VDeJ3q6WkWcLtre+g2zsmGQqpKHrtA1UCyc43Y0mQIyvb/gzlkbyULLNyFQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(376002)(366004)(346002)(39860400002)(396003)(136003)(451199015)(7406005)(8936002)(5660300002)(2906002)(41300700001)(7416002)(66476007)(478600001)(33716001)(8676002)(6916009)(38100700002)(26005)(4326008)(6666004)(66556008)(66946007)(9686003)(54906003)(6512007)(6506007)(6486002)(316002)(83380400001)(86362001)(186003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?wM6/gX7mrhQtOTnUZO5ruqn0Gj/fuigwYg104YPz6a5Wwuv2P4Ap4vhHMtzU?=
- =?us-ascii?Q?o91JufsyQ3PmhcT20c+ikUc/lt/IlTyoiu8Sbj819oYvifyP6DdnMpBZRMnU?=
- =?us-ascii?Q?kDv0JaDOaxI2caONHOz5oORheLaHiSIhbLydKM6E5yHvHkeaqOuQkV/DbRqU?=
- =?us-ascii?Q?u8NtFOqNVwRjyQJTd+TA7eTSpR9uKUntoWoGal22CEOImNW4JuxekqfKOpDt?=
- =?us-ascii?Q?083fk2IeHfhaJyJ2CyKAxkaM3h/FcUcWK7649BcyTQZoyGtIQ+NuhZZfG8uH?=
- =?us-ascii?Q?jlryWDLq1QspCiJ2E0/qfiZHspHwuRPKbmNxZEI3rIG9NPBBK2ossvoN2BVk?=
- =?us-ascii?Q?nza3mFXNTUXiQpTnwx7qL76cdqkepTiA62pNeAodKLL5zMenqtIrTz2y8Jn4?=
- =?us-ascii?Q?NA5s22osq2ssBZoPIVbXXwFvy6oenZ0m3LqM/Mvb0+uUuiobA+CvRDASQil4?=
- =?us-ascii?Q?yr8wJPVjTeQusMgOpYJ8x/BnaQm3T8YoQiWA2e21bYn5LSaBmBddyOHzTf93?=
- =?us-ascii?Q?uiK3ZbbziIle71jBx1cCQujzi/3nWw72i199+veAl6zNWwiqR7/YfDjSgFwt?=
- =?us-ascii?Q?uHNVWmuJZj6zHkPHLjRqxxYVlgoWFLaGk/wrgA+BuF5rG5S0xUHDfTLrjCay?=
- =?us-ascii?Q?4WekIKEjQfo9hH6oM97+9faDtJrqJ6WulYJmOk4GkSDa7rLwtggk3BbwI1O6?=
- =?us-ascii?Q?Wkdfcr3QXVqDZPpAcMwA1imXFLGrUpUlY6b2eStdG+d1WONoAwQmkxvgB3vD?=
- =?us-ascii?Q?vQ0eJWfubOcnUcFVRsQ4Us9HB9vXj14a+i1RNOWwgO+aerjH9EVaaKcxFW+i?=
- =?us-ascii?Q?5zqP7CGsJm3zJphQEsVGRhaTx5AlklyZ5uA2CRVF2LujaslPVeP2YwaRZ9w9?=
- =?us-ascii?Q?Py4Ym2XWhwcvczw5w0QQ5eOKsHOWxkGSwjzQelkPaQ2OthXjoZepPOZNDhjr?=
- =?us-ascii?Q?kPZv20HKUGIAKs/mt5vlGTRWA9eU4VtfOiWTkiaX7bHsBLSh8WU6OkPDusnJ?=
- =?us-ascii?Q?+7m/taiC86oWRBs7Pr9kpw5xjiPDJZig0aTT0CqDLR8WRAQ6TMrPc7jH+ixm?=
- =?us-ascii?Q?2zx7KOLkslN2+24zri295S0Pv/V5gb9ef8fMeULfBF3p/vdj1XDBqrtSYiTk?=
- =?us-ascii?Q?yIut73U+Pj7LLyxyDD9LbjGjcxA9/5umtmaq+JtpkeiR5ndzEyWd0yVg6Jf4?=
- =?us-ascii?Q?kk//Zk+2OZRKkoYW3BqFOAEDSd1TU1j+RVVobI8rbATvr8n8JOFgqNPaQtHr?=
- =?us-ascii?Q?P0IWJAU/DDrNEP+AJo6WNUaq/ZdTl9j6jBAi8bUcywW7ZwOQqhpnOkS8TGH+?=
- =?us-ascii?Q?UXhFkLqYtl+zyHVBDTMt3ztN/0ZIb0V+BIrb/p7D1mRVzZScfYCa97kI7Fg3?=
- =?us-ascii?Q?3vcMie+/avl+OmdpbMlaS8gCqflKUczwx3Kif69gU1WxSYIVryakzdvFsgLr?=
- =?us-ascii?Q?PqTIY8ZXEVsYLA99ZA4dXCGaFw83F870r8XMVvCbbRZxh7IQVrqzrp/rkQ2A?=
- =?us-ascii?Q?iF6AX6UwqoVl7l9UNkcjP696bi1/nIoGZXk48RtAUmydy/pcJIsUSd9UrcVa?=
- =?us-ascii?Q?RgfMxHxbq+UsjDFIVuKnW20wPMkG/k0j7AE2zG9d?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 43955a47-7593-4960-743c-08dab29bda5d
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2022 13:06:08.0985
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4SOo4f4MvYCw/lSV/OInaDWknZq+y8qmVWevkUxBwWpm/MKlcVXyvYSgNw8NaKfSdxW6vxYEfcYB8qkFNe6ecg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6165
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_060615_758896_7C6458C2 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20221020_061038_678863_9807BF53 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,39 +97,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 18, 2022 at 06:56:09PM +0200, Hans J. Schultz wrote:
-> Add a 'blackhole' fdb flag, ensuring that no forwarding from any port
-> to a destination MAC that has a FDB entry with this flag on will occur.
-> The packets will thus be dropped.
-> 
-> When the blackhole fdb flag is set, the 'local' flag will also be enabled
-> as blackhole entries are not associated with any port.
+From: Fadwa CHIBY <fchiby@baylibre.com>
 
-It reads as if the kernel will enable the 'local' flag automatically,
-which is not true anymore. The bridge driver enforces that
-'NUD_PERMANENT' is set if 'NTF_EXT_BLACKHOLE' is specified.
+Hello,
 
-> 
-> Thus the command will be alike to:
-> bridge fdb add MAC dev br0 local blackhole
-> 
-> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
+This series contains patches related to the support of mt8365 pwrap.
 
-Looks OK to me. See one comment below.
+Regards,
+Fadwa CHIBY
 
-Reviewed-by: Ido Schimmel <idosch@nvidia.com>
+Fabien Parent (3):
+  dt-bindings: soc: mediatek: pwrap: add MT8365 SoC bindings
+  soc: mediatek: pwrap: add support for sys & tmr clocks
+  soc: mediatek: pwrap: add mt8365 SoC support
 
-[...]
+ .../bindings/soc/mediatek/pwrap.txt           |   3 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 114 +++++++++++++++++-
+ 2 files changed, 113 insertions(+), 4 deletions(-)
 
-> @@ -1140,7 +1148,7 @@ static int __br_fdb_add(struct ndmsg *ndm, struct net_bridge *br,
->  		err = br_fdb_external_learn_add(br, p, addr, vid, true);
->  	} else {
->  		spin_lock_bh(&br->hash_lock);
-> -		err = fdb_add_entry(br, p, addr, ndm, nlh_flags, vid, nfea_tb);
-> +		err = fdb_add_entry(br, p, addr, ndm, nlh_flags, vid, ext_flags, nfea_tb);
+-- 
+2.25.1
 
-I believe the preference is to wrap to 80 columns when possible.
-
->  		spin_unlock_bh(&br->hash_lock);
->  	}
 
