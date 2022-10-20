@@ -4,92 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F391C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E0EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=; b=I5cb7nlPamIRhptsPfVTgOp+Ze
-	Ce4hIVuiTRreuzWhfZMVxH3X2dITuzBzw6WEVghUJBroTVHTLLTGyGnK0VcHlX5kfywmVTIjg4EEK
-	TvWRjQMlqZmMP3Qwh8H7R+vmNWijMYch8vEkX9uqi06D6UZifx3UlpQLzFjsDGDluygnY14YWx5/y
-	lD2SO4WDz/WGiB7H6Bhf9uHL0ReZ0/uRGa6sjQEInLFOuG6MlL5ukYmUBfzPkWS/0OFa7c+qGq/2Z
-	pdoYbRS/VO4xkoNwjSK4nJs5Mh1UnDdqmoa4DvTGinEz4kXTf7gnKnGH3al6eNMNCKFByzFZ9fdAh
-	3/8+iSoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x/YiibZtt8oIPE19OVwC3YZXd2YUXxWN5oRvk2v2Dqk=; b=xoObS0inI4HGANQp4XguzVMTXY
+	IkZHR7qbpskCND6MCmRw72N6KFnY9BMWoewpWFeejePbFckdtNAPxxZwWkEZmXj7nKHiGgsRceKAi
+	AaOvbc0Hfb0JAgzS0Q2/lkkYDIeuttEL1F7QKL/vpM/sA1EDz7SxVwUKtRZ0gEdLBr0EcYbbr7wFU
+	L+Jx0mlQBBrM06QHXRplt4bQkX4q90z4NdpzbyMpDsA2h6GtO4mNteG1QwWYw+RChnhML5Xgs3hyz
+	Lkc23NHPYnB0Os0uCqpNCN1E8piDod6FviGAokiOu4mp5+o+bRgjDRCn8baW4KvpaHhdxZIIIkO0d
+	ZSToxp/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUxw-00F0br-3Q; Thu, 20 Oct 2022 12:48:04 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1olV2O-00F4VD-Mu; Thu, 20 Oct 2022 12:52:40 +0000
+Received: from mail-bn8nam11on2040.outbound.protection.outlook.com ([40.107.236.40] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUYX-00EhVM-B9
-	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 12:21:51 +0000
-Received: by mail-qk1-x736.google.com with SMTP id t25so12619046qkm.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 05:21:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=;
-        b=kxmoe7LVcj5YaehnNatSaJ+sgWuAJIYUVHZi7kkFgy1BEN3isRtJwl+XDqqRPPIZJj
-         6s7x2UMRz8IIyEz9CG+9FZuWlnOp6z8CtYGL0HpbUwumjlPwEUL7JTYZnOw+7vLar7Wn
-         SoejmHXPColW7UfWN1jaHbvq/J4jPIXfeVpcUjNSujJJQqIYqcju2EzMxd6ddY48LDQX
-         A1tlt8aK/n1lBw74+4cxPpCUdH2/KVZeZ5LBmsVzHgDj8NvbpqyCTdE4hM1vBaoNFNP+
-         /w6dwgz1OGuvcIigUDxMGAdY/RqReLRuxIk+SE9k8Pg10v6FmZsbmpismQgzrdFyEVWL
-         qTOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QU8wwIsX2qw3YuWPGoLshZE9nKsPTHBQ9xDkmS6/43A=;
-        b=oR+23/9goCysK6WZDe/5GpJcw/0dsLZwI/kxJcPQyW25oUxW1GWiENXNZC1BvPpWvv
-         ITfNzuCjviy5ShGMq4fXPgfzw3RqI0ZVpaquzitD7X5H+SNOjOKzISmXc4XMgvoJYBuN
-         BB+i46DoqazAsyKZ+qw7rMa0xir3KSCAkyKEqem6H8hSigoCU/AWupKOxxgEqRU7oeXu
-         UoNDkhW9+RBbmTWzA65+kkdweZDpSa5S+vjrtTbTWP364RgHBH/LhviJvu4tPedVpDKt
-         ZfQdlsyqYrqrBFgS81tSOQQXIlVT5OkNc7jun+PpqZS1VFOOW5d1BENxQhLUnWsPot+t
-         ubIg==
-X-Gm-Message-State: ACrzQf3iaeA0TvhpxQAPXyefZKaJhMpRkLVpafq5AB6/CmOWKUwXtPT6
-	N0uvGsUyV7x1kKnvRuHIGIvrXA==
-X-Google-Smtp-Source: AMsMyM7gpLAbDdzem95MlHk1VJuHxCQq2NFZ0KtsUUKL2BU/4obX35xeH+M4i4rRIL7C7psdPxWaKA==
-X-Received: by 2002:a05:620a:2489:b0:6ee:6244:a225 with SMTP id i9-20020a05620a248900b006ee6244a225mr8971714qkn.112.1666268505870;
-        Thu, 20 Oct 2022 05:21:45 -0700 (PDT)
-Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
-        by smtp.gmail.com with ESMTPSA id cg15-20020a05622a408f00b0039c37a7914csm5877409qtb.23.2022.10.20.05.21.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Oct 2022 05:21:45 -0700 (PDT)
-Message-ID: <2cfed688-f401-e69e-1ff4-f775c6d90f64@linaro.org>
-Date: Thu, 20 Oct 2022 08:21:43 -0400
+	id 1olUlp-00Eqwy-5E; Thu, 20 Oct 2022 12:35:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mwxyD1EZTu8oXYheR9EDJwhPX3+2Ysevy7O/0cBs3BP90i9xQoheSme3HEHTtMGN/EdvMxEHieVXGd5BL2yDFzZrpj+s+QiWhdd3Ng3fmYurNvNoWWCSTfTSZXzzUoPqQHZvuiKV9XZFQFEraRNV6YfrVBEVp2zu9gMZrInRIuZ7WnUnqtuKMH9auB/Lh/ujBl/7fLiAMfQ8e4bzuCtRrtJwb2+vh3naPevqdFBMXholYqTdZmCIyD6yNGHcHpMnu+iKwRt8R33EJzl5T70Csb2UVzloRKmV5e5BeAzIbNl8MhW7DYBOJgabj+vibL9c13CL/lP59mqWdEffZjdilw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=x/YiibZtt8oIPE19OVwC3YZXd2YUXxWN5oRvk2v2Dqk=;
+ b=TeZsBpFZtv7Qe5YQxIBBPK02IBIPIp21eiSIf5PmsBBhcuEPdNyO3EWnHLiP4IyiqCeLxQ9reskkS2Fgv7jOHviz2HkgMrRMGcQSYNjCjHf2/KWO3F3n5yVB1VjLg+XNHAWdycgSPove1vgcAwKAO7ikSeEAZJ7vrkY435qog1TjUUGVQgrBORihlSBSqduoNGjS6Zb0hKOI2dWY/vxzkBzlZjNGeGkhAcVeUFunTcu+QrBpEYmsYF3XD2SN8K+U4o2GEYk4Prisxz9WAJuoQHj8iuZC0ouWyJTBFGJRp6KKMeXRfcjGn1453bnQszWLLLdq5b2v0ALFMb2fbsvnkA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=x/YiibZtt8oIPE19OVwC3YZXd2YUXxWN5oRvk2v2Dqk=;
+ b=oSzow6Qji37ce+/huy5q0r0gc1ZpcltIGcfb0F/r0dAhM0UoYhQk0QBmePWT6Q5lOXcBGM3slpkEOsNJ2f4lU1DHeDeJNE6zuHr+cEYpbE/gg1NTL1ppDjHfRDEEYde4vd0W79k6egBwC7zuIAS9xWLI/BIDHkese9b50Aj5VxF8tQe0/kEVKBpytb45QDUOehmLFM32p+73zi8PhGsAt4gOAwBeg3auy2VtWMPpTF8vlke0v1JK94FardnT99T3vlJ5Tg7bjHeaQA/0vc67rx/FTmhKPG3wrrntUgjBnBQRQfPgxCyxd3QdCKHr4YeIidodwnWu0jsjkxfV7d3D3Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
+ by DM4PR12MB5087.namprd12.prod.outlook.com (2603:10b6:5:38a::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.34; Thu, 20 Oct
+ 2022 12:35:29 +0000
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::4ff2:d93e:d200:227e%7]) with mapi id 15.20.5723.033; Thu, 20 Oct 2022
+ 12:35:28 +0000
+Date: Thu, 20 Oct 2022 15:35:22 +0300
+From: Ido Schimmel <idosch@nvidia.com>
+To: "Hans J. Schultz" <netdev@kapio-technology.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v8 net-next 12/12] selftests: forwarding: add MAB tests
+ to locked port tests
+Message-ID: <Y1FAikA8uhjz9hED@shredder>
+References: <20221018165619.134535-1-netdev@kapio-technology.com>
+ <20221018165619.134535-13-netdev@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221018165619.134535-13-netdev@kapio-technology.com>
+X-ClientProxiedBy: VI1PR07CA0276.eurprd07.prod.outlook.com
+ (2603:10a6:803:b4::43) To CY5PR12MB6179.namprd12.prod.outlook.com
+ (2603:10b6:930:24::22)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH v3 06/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
- Add MT6795
-Content-Language: en-US
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- Andy Teng <andy.teng@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221007125904.55371-1-y.oudjana@protonmail.com>
- <20221007125904.55371-7-y.oudjana@protonmail.com>
- <0f078a85-056a-c11e-377b-27764a34485d@linaro.org>
- <8WU1KR.065JU8WYUX9C3@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <8WU1KR.065JU8WYUX9C3@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|DM4PR12MB5087:EE_
+X-MS-Office365-Filtering-Correlation-Id: f31413da-fd82-4c25-6411-08dab29791e0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	0f1+dWRwi4ZecfE6SglapvhH+CpKQAR/ReDxo4v/+D1nXC6MNbEN+6FOBJ1n5xtR77urAu1mZHViY7FHNfG/EBhIf4I9t87f1EB5olN6TCuIxwzXRn66mA59DsJugtB8TQH25HIr8tgQ0eba/1XnYje4kB/6eGRhATFjhoLn1a2WT9MDy6+rvyR4j6qD2WjM/O7I+W1pE/PKCAReIvmlWNY/+X3TLxdkwQWUxvmL0OqLaxOWHFJSp6r3D47Wapod21TtML4/jYZw0J8Yly0ueQbGXaX7Hu/j7WQfSunV4Xl/Y42at7TmiXoxSRn+CmXMtfEO4zo5U68ZCOsmg5KUby0KvORCGtjticV7zehr3DVgcaoxL/lxXuTZcrMJMwRoJO6Pvn2g4SVgKA5SgtNvUrypy9jJxSaGYwg5hqbg5Kuw47lhHxhWINjCnDB2znz2A/ZJy3fnLhEiMPyRCmKlsLNxeruBRhbcYJvNPhl7NIBi0cpAokQV8IC6yzD5HuFGrqd22mhlpPs1tW+wazcBiMlC8PK7LYn0Rf5lPutQh8OA9YsYQvL5iWui51qu/ZCKDN7JyEBiw1DU60Lo9UkW95Dp/r9kUhiyhqTI4cBu5rQmTkr2JBDN/ifcp1sODjWhWPe2k2mtjA56YtIEsbgNStz2y5mgEt/dOCPb+Y4srHOEM5eKwDenQ8CvWsylMJnIAcm8vBr26/uHWEcnlAFEnQ==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(366004)(346002)(39860400002)(396003)(136003)(376002)(451199015)(7416002)(4326008)(6916009)(4744005)(7406005)(54906003)(6666004)(6506007)(8676002)(26005)(66556008)(66476007)(9686003)(8936002)(41300700001)(316002)(33716001)(5660300002)(66946007)(38100700002)(186003)(2906002)(86362001)(83380400001)(478600001)(6512007)(6486002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?SiPIcSJBN9jMyeat3c5XRcHFtJGoPH3fBd1lMCvuBRLDaSMqP6cR6ie2bo1E?=
+ =?us-ascii?Q?ljlagT56UXi4bAvCvp/k5bj+ByBjN8+mjouaeQSM36jwJJQVoy2ARnbQQiwQ?=
+ =?us-ascii?Q?8KbrHulc1xGQ+rW6hw2ele93jfq6yB8JvxkzmXXPjvftJlD4YJAAHfD9tpem?=
+ =?us-ascii?Q?sIx6MRsmLSsGCtudZ9zGSAvyXKzLVrqeln7FNAEBsPDdNhNa0tTYT5l/qraB?=
+ =?us-ascii?Q?fOJlmdhnRtFApuxu4TArIpo8itgkXpSGMaw3tMvuOvDGUKx8noo1ywlLQS+l?=
+ =?us-ascii?Q?gRtEm1hzK6fkp/5RhkYSqJG6GWKqXP+9mGqUh1pg8xta6nhiOKOkrY2qKsEU?=
+ =?us-ascii?Q?/pMPvE3456p4SOWJWxfOWn2RHaAIZmQd/I+B3mKHs6eMvCAgxr5c52CVRH0m?=
+ =?us-ascii?Q?L6NoGnSldRcQIge5A0PDAc+ZZNBEGmrQaJFF+vsU3eXHarZ2I6BJ/wA8bHhH?=
+ =?us-ascii?Q?g4f0Ai6UxVWggFfD2JNOhPnghKFzPeYTZ4KV+2pf6AQ1WMtcsN1fIXBCIzK+?=
+ =?us-ascii?Q?EV5aQzwNU5TfZbt2Hnv8g9LyevHC/uW+SYG7FiyYlB69MqYzieA6hbnM2HQh?=
+ =?us-ascii?Q?6aMPvYY0LlODjqlSVlYy8KzG63WmpgygEmKyWJFr4ydGp6X4c1AFOquGVaS4?=
+ =?us-ascii?Q?6r9+WAfEf/LekzsPbzZAbW0f4SFMuCAmE0Ug8aIr7doOTkb6pHnFxnvHAzfN?=
+ =?us-ascii?Q?XC3F8ry46qWurqBHpyTRt5BYjG5lJ5C1dxCYy+ID4kpBhsyWpUY8iMvixv5e?=
+ =?us-ascii?Q?JMZAxCWoU+3cH6nlLfMo4cBWgg+3VsMMxvWbWsObfyH1nqL4TpKnA1bHSLm9?=
+ =?us-ascii?Q?y/GNz8MddMpv6WwSZHHj9cMyYg5CQyJTabQ0OzK7x46gEGt/oAUZ2CAlpPhs?=
+ =?us-ascii?Q?95e8v8qNLoACFrVOnjTDYd9dv0l5OSuO1Ocv0b2cRcsIuttPa1tDU7KapVws?=
+ =?us-ascii?Q?OMmyZN7DbxkEVXp25fD//GWe8i9nW+w7CxRPmN0bDIEbVxH195OmAZXOcRfX?=
+ =?us-ascii?Q?3oGnrVuFD6sWPQOFe54wteFPoKk9od72AqGKw9XMfQgmUas8ezPlgvGXoVFP?=
+ =?us-ascii?Q?XO8/S1YDZQ7nMC1ICJ2g0+UiDbAqoBYdlVarFWg877UOAmtANEOCnWjzKPU5?=
+ =?us-ascii?Q?wHxJ7KzqYmyxiR6ezQgXB/ucunbQLljL5oOy/bboBVbMqPlxfhqc4DGXaz6R?=
+ =?us-ascii?Q?r07+jqHoTBnuwB8CjlTE3QkbKzX7VMUSx4pG7QDFzMpDfLz0xsiiU5OvQ1nq?=
+ =?us-ascii?Q?AG5dC2ajHIWg2AS6xZBwYiPPc6mEHBvlPJ27k11cXXhm603PYUsoFWKLi5j9?=
+ =?us-ascii?Q?C4s5D/2S+KaNQUh1isM6GQSYW7ZhOUHA1dlj51PZ/rx279RRag3lF9Sgqjb4?=
+ =?us-ascii?Q?O7U5u2iYWzvVcCFHwVWb47Bs9eNu2KNamL0JZWcP92QbUXmiaLZ1YrjglL1d?=
+ =?us-ascii?Q?efS4qcwgQhhfcXaGm74uK+8t1LcJy2IAyHI8x3s08ow8LefR/7IKVVvFhRry?=
+ =?us-ascii?Q?FcDoIKEzZ8fA8Dz1kn7Z6/6AMCfjTQn/EuJR1x3iDBH5vSN4+V1Smg9VWXaG?=
+ =?us-ascii?Q?ZOjUc1bM1jDIYVeGyhcpoEat1NO97MDROoMTEVQP?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f31413da-fd82-4c25-6411-08dab29791e0
+X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2022 12:35:28.8397
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zn8/kXIdVphxZzi1toyCkqGQeocCYCnarjEJtZXoKWN5lBts5FTmbiwRQh/A3eTryBZEqHbwVBUny/vldZY6yA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5087
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_052149_499629_0DAB6C50 
-X-CRM114-Status: GOOD (  29.53  )
+X-CRM114-CacheID: sfid-20221020_053533_250936_316858D2 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,247 +158,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/10/2022 07:36, Yassine Oudjana wrote:
+On Tue, Oct 18, 2022 at 06:56:19PM +0200, Hans J. Schultz wrote:
+> Verify that the MacAuth/MAB mechanism works by adding a FDB entry with
+> the locked flag set, denying access until the FDB entry is replaced with
+> a FDB entry without the locked flag set. Also verify that FDB entries
+> cannot roam from an unlocked port to a locked port.
 > 
-> On Mon, Oct 10 2022 at 07:24:59 -04:00:00, Krzysztof Kozlowski 
-> <krzysztof.kozlowski@linaro.org> wrote:
->> On 07/10/2022 08:59, Yassine Oudjana wrote:
->>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
->>>
->>>  Combine MT6795 pin controller document into MT6779 one. In the
->>>  process, replace the current interrupts property description with
->>>  the one from the MT6795 document since it makes more sense. Also
->>>  amend property descriptions and examples with more detailed
->>>  information that was available in the MT6795 document, and replace
->>>  the current pinmux node name patterns with ones from it since they
->>>  are more common across mediatek pin controller bindings.
->>>
->>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->>>  ---
->>>   .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  94 ++++++--
->>>   .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 227 
->>> ------------------
->>>   2 files changed, 77 insertions(+), 244 deletions(-)
->>>   delete mode 100644 
->>> Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
->>>
->>>  diff --git 
->>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml 
->>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>  index a2141eb0854e..cada3530dd0a 100644
->>>  --- 
->>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>  +++ 
->>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>  @@ -8,6 +8,7 @@ title: Mediatek MT6779 Pin Controller
->>>
->>>   maintainers:
->>>     - Andy Teng <andy.teng@mediatek.com>
->>>  +  - AngeloGioacchino Del Regno 
->>> <angelogioacchino.delregno@collabora.com>
->>>     - Sean Wang <sean.wang@kernel.org>
->>>
->>>   description:
->>>  @@ -18,6 +19,7 @@ properties:
->>>     compatible:
->>>       enum:
->>>         - mediatek,mt6779-pinctrl
->>>  +      - mediatek,mt6795-pinctrl
->>>         - mediatek,mt6797-pinctrl
->>>
->>>     reg:
->>>  @@ -43,9 +45,10 @@ properties:
->>>     interrupt-controller: true
->>>
->>>     interrupts:
->>>  -    maxItems: 1
->>>  +    minItems: 1
->>>  +    maxItems: 2
->>>       description: |
->>>  -      Specifies the summary IRQ.
->>>  +      The interrupt outputs to sysirq.
->>
->> I am not sure if description is relevant now for all variants... what 
->> is
->> the sysirq? You have two interrupts so both go to one sysirq?
+> Add test of blackhole fdb entries, verifying that there is no forwarding
+> to a blackhole entry from any port, and that the blackhole entry can be
+> replaced.
 > 
-> It's the system interrupt controller and it has several inputs. Both 
-> interrupts go to it.
+> Signed-off-by: Hans J. Schultz <netdev@kapio-technology.com>
 
-Then the naming is confusing because "sysirq" sounds like "system
-interrupt".
-
-> 
->>
->>>
->>>     "#interrupt-cells":
->>>       const: 2
->>>  @@ -81,6 +84,30 @@ allOf:
->>>               - const: iocfg_lt
->>>               - const: iocfg_tl
->>>               - const: eint
->>>  +
->>>  +        interrupts:
->>>  +          items:
->>>  +            - description: EINT interrupt
->>>  +
->>>  +  - if:
->>>  +      properties:
->>>  +        compatible:
->>>  +          contains:
->>>  +            const: mediatek,mt6795-pinctrl
->>>  +    then:
->>>  +      properties:
->>>  +        reg:
->>>  +          minItems: 2
->>
->> What's the maxItems? You declared reg and reg-names in top-level
->> properties as accepting anything, therefore you cannot have loose
->> constraints here.
-> 
-> That was an oversight. I'll fix it.
->>
->>>  +
->>>  +        reg-names:
->>>  +          items:
->>>  +            - const: base
->>>  +            - const: eint
->>>  +
->>>  +        interrupts:
->>>  +          items:
->>>  +            - description: EINT interrupt
->>>  +            - description: EINT event_b interrupt
->>
->> Blank line
->>
->>>     - if:
->>>         properties:
->>>           compatible:
->>>  @@ -111,32 +138,50 @@ allOf:
->>>           - "#interrupt-cells"
->>>
->>>   patternProperties:
->>>  -  '-[0-9]*$':
->>>  +  '-pins$':
->>>       type: object
->>>       additionalProperties: false
->>>
->>>       patternProperties:
->>>  -      '-pins*$':
->>>  +      '^pins':
->>>           type: object
->>>           description: |
->>>             A pinctrl node should contain at least one subnodes 
->>> representing the
->>>             pinctrl groups available on the machine. Each subnode 
->>> will list the
->>>             pins it needs, and how they should be configured, with 
->>> regard to muxer
->>>  -          configuration, pullups, drive strength, input 
->>> enable/disable and input schmitt.
->>>  -        $ref: "/schemas/pinctrl/pincfg-node.yaml"
->>>  +          configuration, pullups, drive strength, input 
->>> enable/disable and
->>>  +          input schmitt.
->>>  +        $ref: "pinmux-node.yaml"
->>
->> Drop quotes
->>
->> Why this one is not pincfg-node anymore? All your properties are not
->> valid then? You mix here so many changes it is a bit difficult to
->> understand the concept.
-> 
-> Seems like I didn't pay enough attention to that. This node actually 
-> takes both pinmux-node (pinmux specifically) and pincfg-node 
-> properties, so would it make sense to add ref for both?
-
-Yes, and make changes in organized way, easier to read...
-
-> 
->>
->>>
->>>           properties:
->>>             pinmux:
->>>               description:
->>>  -              integer array, represents gpio pin number and mux 
->>> setting.
->>>  -              Supported pin number and mux varies for different 
->>> SoCs, and are defined
->>>  -              as macros in boot/dts/<soc>-pinfunc.h directly.
->>>  +              Integer array, represents gpio pin number and mux 
->>> setting.
->>>  +              Supported pin number and mux varies for different 
->>> SoCs, and are
->>>  +              defined as macros in 
->>> dt-bindings/pinctrl/<soc>-pinfunc.h
->>>  +              directly.
->>>
->>>             bias-disable: true
->>>
->>>  -          bias-pull-up: true
->>>  -
->>>  -          bias-pull-down: true
->>>  +          bias-pull-up:
->>>  +            oneOf:
->>>  +              - type: boolean
->>>  +              - enum: [100, 101, 102, 103]
->>
->> Missing ref
->>
->>>  +                description: Pull up PUPD/R0/R1 type define value.
->>>  +            description: |
->>>  +               For normal pull up type, it is not necessary to 
->>> specify R1R0
->>>  +               values; When pull up type is PUPD/R0/R1, adding 
->>> R1R0 defines
->>>  +               will set different resistance values.
->>>  +
->>>  +          bias-pull-down:
->>>  +            oneOf:
->>>  +              - type: boolean
->>>  +              - enum: [100, 101, 102, 103]
->>
->> Missing ref
->>
->>>  +                description: Pull down PUPD/R0/R1 type define 
->>> value.
->>>  +            description: |
->>>  +               For normal pull down type, it is not necessary to 
->>> specify R1R0
->>>  +               values; When pull down type is PUPD/R0/R1, adding 
->>> R1R0 defines
->>>  +               will set different resistance values.
->>>
->>>             input-enable: true
->>>
->>>  @@ -151,7 +196,7 @@ patternProperties:
->>>             input-schmitt-disable: true
->>>
->>>             drive-strength:
->>>  -            enum: [2, 4, 8, 12, 16]
->>>  +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
->>
->> Now you are missing ref - you do not have a type now, because you
->> removed pincfg-node. Split the merging of different pinctrl bindings 
->> and
->> reorganization.
-> 
-> Will do.
-> 
->>
->> The drive strengths are also not valid for the other variant...
-> 
-> Actually the supported drive strengths vary between pins of a single 
-> variant, so technically they have never been described completely 
-> accurately. The old drive strenghs are a superset of strengths 
-> supported by pins on the MT6779 pin controller, and this change expands 
-> the superset with values supported by some pins in MT6795. Would it be 
-> better to move this to the conditionals to have it defined per variant?
-
-If they vary, then yes.
-
-
-Best regards,
-Krzysztof
-
+Reviewed-by: Ido Schimmel <idosch@nvidia.com>
+Tested-by: Ido Schimmel <idosch@nvidia.com>
 
