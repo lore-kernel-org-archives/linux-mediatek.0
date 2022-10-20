@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B97C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 22:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B2CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 22:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JglhUSuAsvyo/02iuoDdhbFLRdL0c14GOno7/e71c6I=; b=ZpPjCugUFbUr6Sav401tlKb9L6
-	DS0FD738jUvo+Sa9MDcHlUy5uC/R2Ma9AI3MQXdCzHXGScbLarrv+Hu8PtQbvFNbgadNjODCOMeRd
-	5FsJrHYkoR5R89YIQ2DBNOysz1jqfzUKI+0bqh5nEAtA+t21XviWb8TfX0RKfASZ+onH+PjiFf8xh
-	0+NRVDxyc0acl59LOJI7GBcvp5dijvZ77IShM4UlmG9et3EKF++Rtm2p7V/MuDwzVPsKAqtDPxCtY
-	F02uSWgSpaY0anlXZI+wMXkBsW7+TlNPJs7V2TymU3V2Q9piRlYQJNCuzUkFFBr3yNSbpgLwKysGU
-	jRvyCStA==;
+	bh=L2G/9Nt1UPxsYT32uFvEw5BhWk6FA6rHpv/vvZ1BQSE=; b=qro43Kjsvc/dulxbbvg1/m0/n0
+	9ZYtLYu8WtJ0mayh48cZOJfwSIF1fVk6uZOCVRNqfHcV+y5ARaBr+6kgH8DzIBr3/6az5j/3vz5WB
+	spg9cVcGC5KPT0XUrfW66tv92oVxaeHBFhjMeqKrFIut71IEbVNOFu6hYLdrhzKL+kFSu1ofu9tZ6
+	LBcaGt/MU6i7LPapFMo8c8pHLD38fSfNEZ56+DaDkVZ5wZ/Ymnnmph3h/bxyJNiNB3lafiYcES5MX
+	Zz1IL/5DgZrB81xPTewIarB7hAA6sC6mq46UeP/Yrazcinqp0h/ygQ9wLuskTciwFaYFgdyXXY7q3
+	te+plWkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oleGY-002Kzr-5k; Thu, 20 Oct 2022 22:43:54 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1olePS-002Otd-TH; Thu, 20 Oct 2022 22:53:06 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oleGM-002KvB-Q3; Thu, 20 Oct 2022 22:43:44 +0000
-Received: by mail-ed1-x534.google.com with SMTP id z97so1696030ede.8;
-        Thu, 20 Oct 2022 15:43:39 -0700 (PDT)
+	id 1olePG-002OmB-DL; Thu, 20 Oct 2022 22:52:55 +0000
+Received: by mail-ej1-x634.google.com with SMTP id bj12so2945481ejb.13;
+        Thu, 20 Oct 2022 15:52:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=JglhUSuAsvyo/02iuoDdhbFLRdL0c14GOno7/e71c6I=;
-        b=UVFcLtLRlFJ23BO5nFdHnG4XQRcYTdnQfD3m/QakLfwgOixkkCd7UJlVA+CHErZDSK
-         yqcpu2eHqMGfmTPApN2EotBAlWuycXT2OjFAFM1+5hggxKMnxWXGuezOaAd4WEJlzw/E
-         QwfCAicGgtNoOd8NE+jP3QuxiLJQ5qMyH/pDBuCnlZYt4z3r6VCKUlsfCNk+YLZNLAOA
-         jZfpDE2kC2IhtsQcsYya9US9kOGVA9O8AzfTEwo/8FQZKplzXol7D+K0m8g9+ZJMdMlA
-         7qnuH1rqNqLEFKQ+7QqHXn3BuFaESpqJ+j9E4Q1RUqqQor0Pmd9ogjMf6JpK5JbYc/PN
-         U2Rw==
+        bh=L2G/9Nt1UPxsYT32uFvEw5BhWk6FA6rHpv/vvZ1BQSE=;
+        b=L7KL7Cmq5BeuUdYGMW3cAgtIcuVZg5ASkJ/IZNJWWUiJ+/Qt6gVlScz1u/W2UurieC
+         StTRCMiF1gayWtat9yR1jxy03jHzqPRpY+d/GgJ1K8lmNPRqj47kEmjBivrdxwcQlJRP
+         gqfaCFKJCe0cSgQC/Xx9MVQoKg98NUMWFRqSK3/+nRYCXn1Q7yrGT4PHRNV43mZeBqb1
+         cVtzyuggTcE1Pu9cpikwolaS6fyiZ1HlsdnyB5HAFFtEAPY8oUGlBvmr4xSRLlq7VRIk
+         7rfYUfkbEQcY9aYc3JzsWSeJh1CqZ0CXrIEVX1+mmeRiMEa2Rwrz9msL2vRPepDcIKvz
+         1T1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JglhUSuAsvyo/02iuoDdhbFLRdL0c14GOno7/e71c6I=;
-        b=m6nCSHg2XNfZ+TchECAqz1AMcWtzMlrIk838ePvoXq/V6vUsbl9oXoeXhbcVfzpNQ4
-         R0bIBUjGcpFPXKULHk1b/xXYDNUhRR13vJBs7fgfi/Sbl5iKpV/WikjtHV0woaJkDCJ0
-         FuReDlFiySq8b0D9NJNeWrUM+Ayd6L/KoGSET9hMHjaVKvcS/azwo6OouxQSzT3BrxaG
-         0LgMWMGWlr4Lg9MFKWE/BZbH3UO821vArM+He4PFfp/85oHWtyHoxUqq1hhIpSqZ/aNj
-         zRgi933jii12YFhKKuhob7q7VdxCI36aPe8kiO3oPD6pQrIZsG/f8GEd1bq3Dp+zN55w
-         5hCw==
-X-Gm-Message-State: ACrzQf29p5Ho8InO8WzsEXVlZXJcxaKqCqi3AloVuW7nzQtXmNY7KsHn
-	sxcE6I8Ldd94kXOvCv4RFQw=
-X-Google-Smtp-Source: AMsMyM5MjXkVhqFJ0DzPxQqFB+bWxrQP/KKt/X60NxMrSXVU8VHjgZ1HhV+RGAF8iAk/TVSu8j+SmA==
-X-Received: by 2002:a05:6402:518b:b0:45d:9a19:66d2 with SMTP id q11-20020a056402518b00b0045d9a1966d2mr14121112edd.43.1666305818360;
-        Thu, 20 Oct 2022 15:43:38 -0700 (PDT)
+        bh=L2G/9Nt1UPxsYT32uFvEw5BhWk6FA6rHpv/vvZ1BQSE=;
+        b=SO5Ui805UGUm2uFAbasQLiKE1EZamWPHBwrmpHi3hYOq3Uq0ERmj3kUscjAPN9+p++
+         lvqt91kzyWOHYftBH7hJA4R7SCVZqOp5g/JehyoH8mlA5ApPIzsVzSNostz1zTKtw1hq
+         fXajwxc8M9MnL9EQw+BMVab4wQCjGnXpiJ/+jKp33xZS7nsPHF1mVha8StPrONgE0vq2
+         BuFdnWD8JtRIDTxHqFOq6QnS8SDxbdAD0iiPhmUYkNa6MGtPxVH/PsTNT4BTrB6BYCqn
+         VWAYuSbzAuLLvB2dUT3iMvmUZt5EhkUyLmjFovLFZX/i1KlXGHm5elQAgRgAUd+aaB98
+         xfpg==
+X-Gm-Message-State: ACrzQf20c+qnGehvz0cMoTYX1yfBJHC0WmIx79+wmaBqTqAAtSHhED86
+	SXd0o99sPFUDzqvi+7Z4+Cc=
+X-Google-Smtp-Source: AMsMyM5+9yiqphjFjNrH8KW/esDJUp/n6M5wxHkOVHLIro1ZznSRDyfo73CoezEZIlBBqvJ8bUzutw==
+X-Received: by 2002:a17:907:9602:b0:780:8c9f:f99a with SMTP id gb2-20020a170907960200b007808c9ff99amr12947250ejc.465.1666306371826;
+        Thu, 20 Oct 2022 15:52:51 -0700 (PDT)
 Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id w14-20020a170906384e00b0078246b1360fsm10790195ejc.131.2022.10.20.15.43.35
+        by smtp.gmail.com with ESMTPSA id v25-20020a17090651d900b0078da24ea9c7sm10939361ejk.17.2022.10.20.15.52.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Oct 2022 15:43:37 -0700 (PDT)
-Date: Fri, 21 Oct 2022 01:43:34 +0300
+        Thu, 20 Oct 2022 15:52:51 -0700 (PDT)
+Date: Fri, 21 Oct 2022 01:52:47 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: netdev@kapio-technology.com
 Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
@@ -90,20 +90,22 @@ Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 03/12] net: bridge: enable bridge to install
- locked fdb entries from drivers
-Message-ID: <20221020224334.ksh4xciad7yro3cj@skbuf>
+Subject: Re: [PATCH v8 net-next 05/12] net: dsa: propagate the locked flag
+ down through the DSA layer
+Message-ID: <20221020225247.acy4cejhcmtmf6ua@skbuf>
 References: <20221018165619.134535-1-netdev@kapio-technology.com>
- <20221018165619.134535-4-netdev@kapio-technology.com>
- <20221020125549.v6kls2lk7etvay7c@skbuf>
- <e1184c879642c35e4ff6f19e0fd5de46@kapio-technology.com>
+ <20221018165619.134535-1-netdev@kapio-technology.com>
+ <20221018165619.134535-6-netdev@kapio-technology.com>
+ <20221018165619.134535-6-netdev@kapio-technology.com>
+ <20221020130224.6ralzvteoxfdwseb@skbuf>
+ <715c068915c9f07ad62d9837e70df7a1@kapio-technology.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <e1184c879642c35e4ff6f19e0fd5de46@kapio-technology.com>
+In-Reply-To: <715c068915c9f07ad62d9837e70df7a1@kapio-technology.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_154342_887641_69EF19F8 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20221020_155254_490735_229A296F 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,35 +120,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 20, 2022 at 09:29:06PM +0200, netdev@kapio-technology.com wrote:
-> On 2022-10-20 14:55, Vladimir Oltean wrote:
-> > On Tue, Oct 18, 2022 at 06:56:10PM +0200, Hans J. Schultz wrote:
-> > > diff --git a/net/bridge/br_switchdev.c b/net/bridge/br_switchdev.c
-> > > index 8f3d76c751dd..c6b938c01a74 100644
-> > > --- a/net/bridge/br_switchdev.c
-> > > +++ b/net/bridge/br_switchdev.c
-> > > @@ -136,6 +136,7 @@ static void br_switchdev_fdb_populate(struct
-> > > net_bridge *br,
-> > >  	item->added_by_user = test_bit(BR_FDB_ADDED_BY_USER, &fdb->flags);
-> > >  	item->offloaded = test_bit(BR_FDB_OFFLOADED, &fdb->flags);
-> > >  	item->is_local = test_bit(BR_FDB_LOCAL, &fdb->flags);
-> > > +	item->locked = test_bit(BR_FDB_LOCKED, &fdb->flags);
-> > 
-> > Shouldn't this be set to 0 here, since it is the bridge->driver
-> > direction?
+On Thu, Oct 20, 2022 at 09:43:40PM +0200, netdev@kapio-technology.com wrote:
+> I guess you mean, why it differs from the inherit flag mask list?
 > 
-> Wouldn't it be a good idea to allow drivers to add what corresponds to a blackhole
-> entry when using the bridge input chain to activate the MAB feature, or in general
-> to leave the decision of what to do to the driver implementation?
+> If so it is explained in the update to v7 in 00/12.
 
-The patch doesn't propose that. It proposes:
+The following is written there:
 
-| net: bridge: enable bridge to install locked fdb entries from drivers
-| 
-| The bridge will be able to install locked entries when receiving
-| SWITCHDEV_FDB_ADD_TO_BRIDGE notifications from drivers.
+|        v7:     Remove locked port and mab flags from DSA flags
+|                inherit list as it messes with the learning
+|                setting and those flags are not naturally meant
+|                for enheriting, but should be set explicitly.
 
-Please write patches which make just one logical change, and explain the
-justification for that change and precisely that change in the commit
-message.
+Can you go one level deeper with the explanation? What messes with the
+learning setting? Why are those brport flags not naturally meant for
+inheriting?
+
+It's pretty hard to take your patch set seriously if you don't provide
+proper explanations.
 
