@@ -4,147 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E90C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 09:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D62C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 11:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hPEFtBZAzwiUajtMxvjOEuCLKwkEocj6qxTW3LRTvaU=; b=HXev3OMhkSs1prpj6M3Ar2Ze3l
-	cUKO3dAx2L73vJT/EevGGrH06rT0MXp3KIK+I0x4c20x43SHV4qw18WlwIaiPQgdfaaNm/GLhT/d/
-	A31HmmLZSBp1MPGX7HC0ZBlKrRaQcWVkf81edLZ7jyiQB1UjgAnmy6oQnVQS6ZLcwgFbpyn4EDNZm
-	x66Kb+KSrhDoSkUuguaiJaG7q8k1f92kKhPJuqHzUNX//5h8oQAYgXuMhZsBQwidxiQQk5QyFPJ79
-	FjrS3mVy31tazasluwsBekYFefhHPD8VQ86rv9+VJ9D2UeFKKzPMGnzPAj3aOm/I7yfx9CYjBI1TG
-	3t7VZzsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dfNCfewKdF4qrRIFBcdy7kMwlQEEw/he+rN8lqzuO0c=; b=khoNGwa09aHl+zlXpkyDV/TSTr
+	bK4EoG7Y4KEhjOrTtoyg9twkYDZz+KTeXfJIMHzgyqombDX556qhyKMTLMDeBvYzZyaynj6NCs2hr
+	cNVHPx9BET09mCguhuNCSRfCJCjEpXKh4Iyw+RDnGSBTJG4OutVpt6aevPQglE/4yvk8RSD7XPKF3
+	YCdzYI2ryYOGYppPYpn0ewqAq7kdBcis5caGZrCfixJWDF300hOxbpJjLKV9VlcKKZtf0/CgVkQ70
+	r3yqcg+SvZBiIFq8NEVpzptj9AQ9NuqtiL+qZ+xyT8ECmJDKLuR3kjVtOUO5FzoLeScxVk55XSUmW
+	i87grjkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olSHL-00DDOu-QK; Thu, 20 Oct 2022 09:55:55 +0000
-Received: from mail-dm6nam11on2077.outbound.protection.outlook.com ([40.107.223.77] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1olTnu-00E5tw-Oo; Thu, 20 Oct 2022 11:33:38 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olSH4-00DDBq-KB; Thu, 20 Oct 2022 09:55:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XaXD18bPEeOMqcCMZ/+PQC2vGyrt/tpfJCHTnHNcY0GRiEmTEXzqAOoRKhKbuo29Tr6Z7E65dbLxC1YItayjM1SYZjW/7XagxkFrq4RI2XGiDvEbm3fDn1Ile3mxswcydTS9goCDWfPtTWfO+OflutJvcf1xlqL1MQXGYGKZ41/s5NCREGK8LYtTxHFXnY7Olc8Ur6upFJTqRHbsWnaDAmsMBPS/jlH4gNh6ziyi3hkKCQm/JMSn5eLRdanAgW/BxvjzNiyrokVHicJf4/OvIjA2d5KFj6najbGLlxKsjOJHCWNH035DUFP3h51178+JwF5YCO+9aNPJOTNZaetGRA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hPEFtBZAzwiUajtMxvjOEuCLKwkEocj6qxTW3LRTvaU=;
- b=Qb7n6c1OvvajAqsXHhf3KdPJzvuWbp/i50+C6I5jZ/KXrokVbe3sJFvf2BQcklwgWhxBKyVucFPT5+ltlMh6qln7yl7VwovcrPce/gGqnkdw01yNfwcaqmGxovVpitVPByJ2P15imeUzzwtjgLyIQP2upwsV22QYDiE0HJEd6GtAR6sHO/nkPpdaTlbT9XkUWOj0LtzK7U7XDs78K4eWC6h8k9JUMNSlo9yDTinENkPq3idExxkHebtprmugmizFyrQVKiMlF1e6jMaFvlvIIRxDddLgnrTk5CGJ+m0MDqPV4E6GsHeXtxk7uB8aXz38m9y4U2I5fRgd0b1dr7UWSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hPEFtBZAzwiUajtMxvjOEuCLKwkEocj6qxTW3LRTvaU=;
- b=o7SzomlP+TxTBd6PrRmqXGpxrn1y7EBB6qWHbu6xaunclxqy2K9m+6oN7z1dC4gzROICoR3GAwh8uC4AzIYUhaq/QnFSHv4UvyB64aJ1pfpDWD/yG1XbH/wXtVK/7uZ1RmXhKPLadChGI91OzoL8A9cVphkSHgMc7WNZ+AfcIVrK0K7TXHV9bLjHr2j7TGMvjbYdCACRuCEgWwUrwXBfCA55hwIALs7qH6Q3PFRvlUBPOpFCmtrHKc4VZqyOzumSK43moVvfMQbyAP3h+4rSQZc8zP9VmJlqCGxXGC05O9kGrfJUa79qgtGy2PQdMek2AShtZcKSmsX1oPvUNSzLxw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by CH3PR12MB7617.namprd12.prod.outlook.com (2603:10b6:610:140::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.29; Thu, 20 Oct
- 2022 09:55:34 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e%7]) with mapi id 15.20.5723.033; Thu, 20 Oct 2022
- 09:55:34 +0000
-Date: Thu, 20 Oct 2022 12:55:27 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: "Hans J. Schultz" <netdev@kapio-technology.com>, davem@davemloft.net,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+	id 1olSw8-00DeVr-2k; Thu, 20 Oct 2022 10:38:06 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id B282722B42;
+	Thu, 20 Oct 2022 10:37:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1666262278; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dfNCfewKdF4qrRIFBcdy7kMwlQEEw/he+rN8lqzuO0c=;
+	b=sT2vIrk7gnJPmpN3+w8QkaaTa6QUjGrubtLOteaO8q4FcNJyLa4bQ5A3cJng6/bv4x1ZRW
+	Lz3p/ro9/w3xl+AVVT9FPWpjAMPcA8qn3cc/ebFvAESW96dJmzCi9Vt9UP6A/tQvx+rg4o
+	YGUKbfUA6e96QHnR/bkR596lb9w56ZA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1666262278;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dfNCfewKdF4qrRIFBcdy7kMwlQEEw/he+rN8lqzuO0c=;
+	b=R9wURktsZ4GUuQFrOAQNChz7Mxyve21ulKCwP98mDiqGdgQ9gW2RRTX44wOhGGfIABxhoh
+	cnNyRpZaMJHX9BCA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3F55713B72;
+	Thu, 20 Oct 2022 10:37:58 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id qG2kDgYlUWPPYwAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Thu, 20 Oct 2022 10:37:58 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	javierm@redhat.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com
+Cc: dri-devel@lists.freedesktop.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-aspeed@lists.ozlabs.org,
 	linux-arm-kernel@lists.infradead.org,
+	etnaviv@lists.freedesktop.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-hyperv@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	linux-mips@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 00/12] Extend locked port feature with FDB
- locked flag (MAC-Auth/MAB)
-Message-ID: <Y1EbD4gp7MuTb8lu@shredder>
-References: <20221018165619.134535-1-netdev@kapio-technology.com>
- <20221019115809.552812a5@kernel.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221019115809.552812a5@kernel.org>
-X-ClientProxiedBy: VI1P195CA0084.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:802:59::37) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
+	linux-amlogic@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH 03/21] drm/ingenic: Don't set struct drm_driver.lastclose
+Date: Thu, 20 Oct 2022 12:37:37 +0200
+Message-Id: <20221020103755.24058-4-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.38.0
+In-Reply-To: <20221020103755.24058-1-tzimmermann@suse.de>
+References: <20221020103755.24058-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|CH3PR12MB7617:EE_
-X-MS-Office365-Filtering-Correlation-Id: da607213-eb7c-4fdf-b04a-08dab2813b0b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Ib0akApWlC3oDxWG1XVCrv1J454cTr5bYmGhk7BDiW3HMGDudCq/Dkl3407MbXTJHg74jsgqPhPqGlkYOAgdQT5hY8pRhcwt2Uaohqo+a7BbcHccYcRaWOwV1qvkWtkPY4nVmDaL2nGY/QbcDtIr/htdxyZea2BeqknsJO5gzAXoP/HVv6Mqx2B/aMtfWUgv2d8tDmX7p91Azi2DkLXF1kBLBM1T+T7rwi+nDI1x5lFWl7lDZ/bPrgxMlb9FwoYRtVIkExsYqUbZEjoEYX004X/YUYPg41GATEi76bWmEwGYYhz6Ecx7wuZJ5rcZ1p6s7me8eEzbPuJjBqM09AlDZs/+q5Pba4oPDEI/fGPGL8hS0BHsWbn18VmYdquRZTyO//zs2m2fKHzNEimqAJ0X2JLQFt+GKI5zaDNBLyt3zTLVTATlYSZPy/SDe0GMppB5ysYXzDB+dy4n9VdEvXU6lH6PivS7MLBjJ95Q192z4+lUPelRyZKpmlVdHcs+wbIKxhpz+dWcDPsWzVTFR8YJHtigHvHVIGTph68UgqzcYYvxSFQvoF+kZdQ54bJ45apGiQQUxoZXVKKQg47Lu3eEhlrOOYy0OhwgfmfLFmQb8O/3MvXJFCrf3YSatNQnKV9QcDOSmLL+69r3hq5vAle9nVuzmZQDiMCfuBUpiWuZUFbcUO8sD307u1HkrGrz6SoKkirXGFFPVJhBoo+bq3RQZQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(4636009)(39860400002)(396003)(136003)(376002)(346002)(366004)(451199015)(7406005)(316002)(4326008)(54906003)(6506007)(6512007)(8936002)(2906002)(4744005)(26005)(86362001)(41300700001)(9686003)(7416002)(5660300002)(66946007)(6916009)(6666004)(66556008)(66476007)(8676002)(38100700002)(66899015)(33716001)(6486002)(186003)(478600001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Tn4Ed1z4LZOhHafpBDv/lprJwbMvaIIf5O39bSBZCI3wBymGln4H5QoJw2TW?=
- =?us-ascii?Q?0oQZwv0bsPeyAqHUbSf+2BrOSxrtCpuOCfAD4+lhnT+ro8GTm8HMqdse77lu?=
- =?us-ascii?Q?+gGtDmYPAVnd2KtxSZeXHNSvwtl0ps7XXf45dvUyRrD+rzHY5u9VWsQd4D+x?=
- =?us-ascii?Q?ZUwaTyWeWDx2QvQphnPBRxQIcaVGfXJVHcxeD2rhcbzxMkKEfpxNysKL3tRZ?=
- =?us-ascii?Q?8Un+rBlsLb4qpcHLMFAtzC1zrRJR5nhSi1TdwYphsG9MxcwDnEH/KOm7Xhcg?=
- =?us-ascii?Q?kbLKkRYY2oCVxMtHz6+JUVtjQpbmA9sslk3E7klY2E7kUWeIB9KawQMJiBOZ?=
- =?us-ascii?Q?BaGXCMxrVOpf1RsYMlprXjFj8ioOcUMDrWm2lhjuecUTCCeOwpdkrUftOylH?=
- =?us-ascii?Q?et4y4nn8e6J9oklINYBY4wqVm574Lalm2AEKMu0JEUs+yIWTaVJA//zt7la2?=
- =?us-ascii?Q?a/Zc2X2dzfis4V5NkcVuhsTXRVQtnvY4+LkoTzNuvG0zBotoISukh+FNH3Mf?=
- =?us-ascii?Q?J2ppKupyCz9jAcsjAv03jbAY22wXbFImNrAFwTQ2waUewmv+1eee85nRsmCP?=
- =?us-ascii?Q?PO0jXeAX7y6xDbvA0Z1pjDI8G3np+PmiLYfIfDzEgOES/bByOpB/Vh6gWG8Q?=
- =?us-ascii?Q?ANjg87Pk+9mdhfDPpZHZel11smU8tY/OU4+nntY4yv6ifFXGDLcs39BSJnRZ?=
- =?us-ascii?Q?RFxN8cHlKU/04qL3ynaCh8nJxanob0Qp8A+nCQvpJUUnzDJJrOLefKP6G7aS?=
- =?us-ascii?Q?eAIepWQP9A3KycYLJLP93y0FPYB6fhBUs1t8i8qeR7uZZcC8ql6Qtj2+S4Fz?=
- =?us-ascii?Q?bTBT4rHXUruKU2+vc883kY9hrP+G2Rq8d4FCypV6fmgp96wBX0/E87PdkuoU?=
- =?us-ascii?Q?xEWbddcfLPyjsAgNxKHYkm3X4gd0+PyjSDZtHMLC3FaRfOjKhs6IeBapivgW?=
- =?us-ascii?Q?f4xtVl4FtuMEyYKtzB3pWCC7QYZvg2Y5L5xQEyu1qpE6HKcs7rfaJoCEK1e3?=
- =?us-ascii?Q?pYmKqJdBffifjcVmO/BALlzx05TbPyh0XAwfPO/gw9rZA7zbNBWILq+Cxybm?=
- =?us-ascii?Q?UUEQjv2sYYhR4U6HxWdleyVIKmKcGoC7uS97YOZomFYOvIy0sy1r5hP8thuj?=
- =?us-ascii?Q?DAmYHgNsL7hLbkZv1HodzxPTYmY6feIozZwJqrpAno/2Y3lUe7lRx8eSaG/m?=
- =?us-ascii?Q?qPyEoRz9cEETx5Fuq0YvFE3tfqfmne8HIBGrlVX8T/aNC2lj2S77fkn/49Vx?=
- =?us-ascii?Q?VNX1zq+hoMq2oe7f6xYeeNJUoPdHpnALfaB/14oJCVyP0b+5jVWnTmyVZhrO?=
- =?us-ascii?Q?h/KymZ4zkogzR4d1y6NhKaW9NVJIt2fpjXfgV1JueM0uy7lIxV3WcXAmNODz?=
- =?us-ascii?Q?TuE6vVNFJwYPLhtdHwu5fx3AgP4JQlnZi6uMyFkt9vJ259zT6u2/LiY1LVX6?=
- =?us-ascii?Q?hvUhSItztICffR8xTc/JB2pYoU3m2Z7niG50flVSD7m1fJbhgYntgTuzIkvp?=
- =?us-ascii?Q?4tdmcZsUitrI4VKD1o9GWtYrkZdxJ8TXDZnC4j6rShEua8+OhbuK9oklnKMK?=
- =?us-ascii?Q?e6wNf3PM4PxQ6HqgagcyJ0a/HFp09hRdzoNDVFZ6?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: da607213-eb7c-4fdf-b04a-08dab2813b0b
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2022 09:55:33.9524
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: l1tfyF+rSX2q/Pq4LAAlDbNE4KeAFaY1SxyBmwBQMWTfUppWs8AqnxfRrLMaD9mNSBQfscjuGiXU+KGR3BMV8Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7617
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_025538_955188_9A531055 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_033804_419667_E126EA70 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,11 +113,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 19, 2022 at 11:58:09AM -0700, Jakub Kicinski wrote:
-> FWIW half of this posting got stuck on the "email pipes" for a day..
-> somehow. Let's give Ido and others a chance to have a look but you'll
-> need to repost even if it's flawless because the build bots can't deal
-> with a delay that long :(
+Don't set struct drm_mode_config.output_poll_changed. It's used to
+inform the fbdev console about conncetor changes. But as ingenic
+uses generic fbdev emulation, the console is being informed by the
+DRM client helpers already. See the calls to drm_client_dev_hotplug()
+in drm_probe_helper.c.
 
-Will review today
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+index ab0515d2c420a..99f86f1ba8bee 100644
+--- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
++++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+@@ -1018,7 +1018,6 @@ static const struct drm_bridge_funcs ingenic_drm_bridge_funcs = {
+ 
+ static const struct drm_mode_config_funcs ingenic_drm_mode_config_funcs = {
+ 	.fb_create		= ingenic_drm_gem_fb_create,
+-	.output_poll_changed	= drm_fb_helper_output_poll_changed,
+ 	.atomic_check		= drm_atomic_helper_check,
+ 	.atomic_commit		= drm_atomic_helper_commit,
+ };
+-- 
+2.38.0
+
 
