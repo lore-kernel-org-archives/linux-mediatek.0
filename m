@@ -4,59 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FC23C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:18:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 309D9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 16:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lESwXvm7/TM1xJl1haYY/cX2oj4VfSDfgY65rchWdvg=; b=zMIaLLJ60Lp6w0r96W/1To0GrP
-	FURbvYy/+b+0rrsfyh+UkpKZjBxyXkB5QvyDFQgs56nkyx7zgAVepPt8qwhLgrX0B1kuu/Btnf7k0
-	NXOJ2duBpERgh43tnSaxQsKECLT7GZNGekddMOrQoxpMYMoB088b7k8rfgZuw8nQDvESPYdgNU9yR
-	Ukz0a5lChuvtrLzVkz39RNJjAxJ1llc31Q5q79U1deVWrFO9Q/pFPcZC9DqHaly7dg52Zvka4BcyB
-	Q7pZXihv/hGQ+lz2AVhXV9jAdzzV7SAmHIikVHCH07QkWIlPgNnGBrrBzPRvPVlWcgHmwFCGTnwSQ
-	+/qqzMnw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=; b=xl8Y748bI0tFzwPoH8iHyVrdQI
+	Ig/jvNTq80Wf9YKIG+l8SsLMVJVP39ZO4kAmV1VNHaM2AXVFdqM6EPoi/2cYsU6C7mXreA+RPKUU7
+	N6ePrAK1VbIQhYDAsb0jKPCemfQbdk/wI5nG7RncFihXcHCh6NlKiR1G0GekuaYP49JWxkOnF25Zr
+	MlP517g+O81jB7VbG16JHUeQOVeu+KteWT7LOV+B9/GCHlWqxOB/AX0UD6Mkuw7pHppa8OqjJabXZ
+	SiC1YgxfrJV6CPn4YGyL0HBf4F33KTvLWmBJ7rDuZfKYGJWCfS6LPIyjUbBspmFWZlMvKD4tNWAPY
+	qNdtdM4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYF3-000FAV-M5; Thu, 20 Oct 2022 16:17:57 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1olYGL-000Fmb-8M; Thu, 20 Oct 2022 16:19:17 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olYEz-000F7i-E4; Thu, 20 Oct 2022 16:17:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=lESwXvm7/TM1xJl1haYY/cX2oj4VfSDfgY65rchWdvg=; b=QvK+ioe3eZ2LCAB86gz7Gd5G95
-	x0fPcG2Db25FHsXiK/+Sw24enuFw55evax9BQKac4ROlOtV4+Q/AGvtRu2zCpjUdS+eUlFdJaCj4x
-	RToIx5OUJMTOe74dz3GKKjvingM8LPXxAT3crT+3oOy9acGTgfzr0bZqAFuFTf1ZXJmJu3P+7majd
-	mBCgwI1R5d3DCeoJ/+omEjyTxcL+oKtRS+wbca543Mz5cVhxgdoJ/qmkLsxPVLmhx0WkNLZYKXA6K
-	CzK5goRxtiHEORaGz2DoZVCYCxgsXfv5ZXuMC/McJEeEsdN/ewB7uxoUqmCqsbzIqFVUQtNJbuVN8
-	XHZH51KQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34828)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1olYEr-0007UG-6T; Thu, 20 Oct 2022 17:17:45 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1olYEn-0003IX-Hp; Thu, 20 Oct 2022 17:17:41 +0100
-Date: Thu, 20 Oct 2022 17:17:41 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y1F0pSrJnNlYzehq@shell.armlinux.org.uk>
-References: <20221020144431.126124-1-linux@fw-web.de>
+	id 1olYGI-000Fju-MJ
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 16:19:15 +0000
+Received: by mail-qt1-x835.google.com with SMTP id z8so14012047qtv.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 09:19:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=;
+        b=Ew3XbGq/ADOFDDQULys1w5f0CUfRk2TBhCZqASgyGf36zV7VrScYztVOw8PmvpPlIB
+         HYGwtPKOluSR6DSzzIvr24JeJ0YYWoedtS8MzVoC5I74C3fbl78BwL4tOR0KcydB2KSb
+         /V2CzhHyrKES9ZLC827HHJDu0gp7CJm6ybgYZrtdqvPzZMmoCUXj/HWvUXMmWbIG1pmn
+         T1bsNTHO9qQzwZZnkI0HRDhTTPZ9azKvLazcaXqn1eFLd1J/GxU3DtrwmOLyVeSlsYvg
+         bG461MfFxyncmwL3rNmwLUZIHwqKECSrwdyKE4M5VeHTEJ9bCVZBJz3/LEdk03MCSnR0
+         Cw8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3nmjFBEeD9ZP/eQLwAKtGJ8tL9wL4OpdvH58XZgElX0=;
+        b=eZHblLaG0Uez3B8j9sDjzcewfCZR9EEr5M8vIMjzfsmO1Siim7Bp3MyrOcYv6JJUwy
+         8ytj5fP5JfiOg8WAYJX147WMeMG+fUxl12M2TMxI51Z5kiAAo96kLej8YLsmWwLU1KuR
+         Ov+IYHiKIFDJfV7sxdyA4PoE/XsLDFyrkWHZDk97CA7Cyrjzw3IEXjwkzOKOhUS7/VQ+
+         xW2pctSu97TOVPYASFSoiLzuoKShVPIasO1UlIAPKCctJHtljjY1VCIH8p4+iLKuaEK+
+         ql64+W0n5EheYQi9463IaE2xCnOnczZqBVPHh+cAgulKlnTpkwPkKImofTjwbazzBRQF
+         d0Xg==
+X-Gm-Message-State: ACrzQf2xqj47zmfWqHTEVbtmS2MA5soXQ8quga2AQiPqtrwPrIkJHV58
+	Sh6oqfo45QbehHZkFY5mATQhVg==
+X-Google-Smtp-Source: AMsMyM7XjZb4dPpbk62kCztyoDByKSy+hibNQg8o9nkkhr20RuX1MAdCla2yOjzYa0GvSTYvZIsm+g==
+X-Received: by 2002:ac8:7c44:0:b0:39c:cbe1:2787 with SMTP id o4-20020ac87c44000000b0039ccbe12787mr11764085qtv.214.1666282750048;
+        Thu, 20 Oct 2022 09:19:10 -0700 (PDT)
+Received: from [192.168.10.124] (pool-72-83-177-149.washdc.east.verizon.net. [72.83.177.149])
+        by smtp.gmail.com with ESMTPSA id r17-20020ac87951000000b0039cb9ef50b5sm6277185qtt.26.2022.10.20.09.19.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Oct 2022 09:19:09 -0700 (PDT)
+Message-ID: <aaf7d4a9-c767-6a63-691d-e3ae00b206fc@linaro.org>
+Date: Thu, 20 Oct 2022 12:19:07 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221020144431.126124-1-linux@fw-web.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH 1/3] dt-bindings: soc: mediatek: pwrap: add MT8365 SoC
+ bindings
+Content-Language: en-US
+To: fchiby@baylibre.com, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, Sen Chu <sen.chu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20221020130957.25197-1-fchiby@baylibre.com>
+ <20221020130957.25197-2-fchiby@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221020130957.25197-2-fchiby@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_091753_493150_884F2292 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20221020_091914_786196_20924C58 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,38 +99,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, Alexander Couzens <lynxis@fe80.eu>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 20, 2022 at 04:44:31PM +0200, Frank Wunderlich wrote:
-> diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> index 736839c84130..8b7465057e57 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> @@ -122,7 +122,21 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
->  	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
->  }
->  
-> +static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_link_state *state)
-> +{
-> +	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
-> +	unsigned int val;
-> +
-> +	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
-> +	state->speed = val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
-> +
+On 20/10/2022 09:09, fchiby@baylibre.com wrote:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add pwrap binding documentation for
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-Sorry, looking back at my initial comment on the first revision of this
-patch, I see my second point was confused. It should have read:
+This is not exactly v1 then. Please use patch versioning and add
+changelog (to cover letter or to individual patches).
 
-"2) There should also be a setting for state->duplex."
+Best regards,
+Krzysztof
 
-IOW, "duplex" instead of "pause".
-
-Also, is there no way to read the link partner advertisement?
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
