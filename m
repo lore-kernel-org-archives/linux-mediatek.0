@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 931B9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:34:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76823C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wz4OipA7w5rOdnOi6Yv/koZJh3tmPzhN8rvOUTJz4mE=; b=HlmOHecNbK405VKQVYe6WqFmPi
-	xAKLjw32B8EY5ozJKCwc60mpeBXRWNNgflMuMAvVfLEZjkLduIbiBQC05MXpkeq28P0lN8Tni1f2y
-	F9pu5pmWzep5gvMJpipTpEXFH0KhSEckhg2BLEfvP6B/hYCmb4EGfExig8iqU6gEw58GGFUgmWhjT
-	AYSbjTANHBqHJT0UCKIhpUYLazyla5DndJpIUTcPh5kiBe6Vqx0fhg6Vw4u9StCF4BOGEZpoa3cr8
-	r8bKymiKHSiDRz5cNyT8OlNsMaE4Q/Sa6chr2sJ/gK+PT3rkcTDvMWqlNwxLeV8fHWWvMJO4owONL
-	5h54MfOg==;
+	bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=; b=vXvGKXOnTW5MQqVmFEaXdeCsXM
+	4ijNSFG1e+mhQp0zB7Sid7A4A6t32G3T1HDF3r4ONKwgHEo/JSMu1UcGBdXPnclHjPh52qklnQih9
+	Nb9qvgUXTq+zJzqLdLzLvCQTu9Xt89H+6abHHnlu6hMTLxA5TcmGsv/9wy4Cymh4xFMmZzjSLwa8w
+	n4rbnIl34UpYzjjQ0hwfCVDSxwnbr4rinI3W13waglIHX+8BQYh8Nu7bmDqTP65F2xbvFIFz3536N
+	weX6Dc9ttN+xJLh1o/b9p6NVzQD0h35conWowdSdYOh3yDkQFv8Z0s/xeQ2O5Y8qv+o5kVTcmZFNO
+	TP8l/qaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUkX-00Eq9O-FA; Thu, 20 Oct 2022 12:34:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1olUkx-00EqWx-CO; Thu, 20 Oct 2022 12:34:39 +0000
+Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUA8-00EMaZ-KR; Thu, 20 Oct 2022 11:56:42 +0000
-X-UUID: bdc4a0d990184e3f966467e2d92bcb0b-20221020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Wz4OipA7w5rOdnOi6Yv/koZJh3tmPzhN8rvOUTJz4mE=;
-	b=CY5kHKZmTa6Jl0n1Z3ejuRAIg6gkWzuKfDme4QVES+2Vy+29PPZ8eKRDskozJ3zNWXLR2Fg9l0LG0ZV0HFt1qU2SHnXukt/H0O5wYCi+1eZ3mqMgWb5YJliwPdGLxqZIHfKDLOG1hnwWqxpdPX9jsswLATA9IAR+eF2m5tuFrOo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f3e6e2e7-6717-4d57-955e-cdabcf4f4328,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:6d806da4-ebb2-41a8-a87c-97702aaf2e20,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: bdc4a0d990184e3f966467e2d92bcb0b-20221020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1482384623; Thu, 20 Oct 2022 04:56:33 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 20 Oct 2022 19:45:58 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 19:45:58 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <ck.hu@mediatek.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, xinlei lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH v2,1/2] dt-bindings: display: mediatek: dpi: Add compatible for MediaTek MT8188
-Date: Thu, 20 Oct 2022 19:45:52 +0800
-Message-ID: <1666266353-16670-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1666266353-16670-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1666266353-16670-1-git-send-email-xinlei.lee@mediatek.com>
+	id 1olUCN-00EOoO-CY
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 11:58:57 +0000
+Received: by mail-ua1-x933.google.com with SMTP id i20so8832712ual.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 04:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=;
+        b=chHdDPwrngCggbBKdIbWiDLCXZnP7iqdEib8Kgvwcwr079ZvVEZkyUZObQbu4LPB9v
+         ZmZL9dksUjp5QOtQRXo+nXXBnvv0ujExpS8AhU5qghI4lpxjdojJ+Jx1DFH/NDbbjInN
+         ruQ+XSYsr7gXr+cizYo+gc/5gO69+XfMLDsAFSr2pTkJNvNGaDa611kzMo9dj1wzqVFD
+         4TbBFWpTanYKbeHGfToaLYQ13uydaHAIuvhnLU/Tcm3eyy8MijhlRbUxHpVVNMcOju9n
+         vuXpLEQZYve0hDHgWQLaZ75WAaibrb2NzPg58Y9znicE6ZnLCW1mmy942uanNWrXTHPm
+         dTRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hmdoR/w6BYsfomWVh267+r2sbsTxrmcMIZmpfdw25R8=;
+        b=ehn0QuKXcVVkUD92oPceBuSbuZT5s09tOELP536iEf+KLAhcTc9QtlW9Vmbp765EBn
+         INLXK4XuzBmclA2/CEAFUiWskK34WUcZ2lZG0ast5rEFNdqy5LM57PpL1JrriJuMHtz7
+         q7CVx0JGa/+YEmGe0m1D0cF49v9hBkHlsk6fMlDoK6u0Cu0pKDBDNLPekjjhul3wcLnG
+         ES35Yrrjtb3g++BdJ3qer9Xc4OrxZCT6K27aE/1XxkB7jBKy3myUfI0NO3ldbE0PUbmG
+         3xytnqhN/G/lNyBdg7tpiOWiHVXVBVxhLYE/vErvvRxgk7zw9SWvygc+PJzBz8kBlzJO
+         cktQ==
+X-Gm-Message-State: ACrzQf3rtEcARKtdhiwTQmEYqfNWqPolON8J6iJnPOKtB1mxIKcXTju5
+	Mj9nIgIIfvON39XOwEoQEbel5nSoQLZoiuP5UG+ksg==
+X-Google-Smtp-Source: AMsMyM60th5P2fPMIOJLE3lPxXDmFgQe29j7XFR82PlU8rUG/MVn+bF0Ceu1sunzO0mIDlQiOE400CHnNlslzzchU9E=
+X-Received: by 2002:a67:ab02:0:b0:3a9:9953:6471 with SMTP id
+ u2-20020a67ab02000000b003a999536471mr4410633vse.47.1666267133910; Thu, 20 Oct
+ 2022 04:58:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221011-gpiolib-quirks-v3-0-eae9cc2ed0a1@gmail.com>
+In-Reply-To: <20221011-gpiolib-quirks-v3-0-eae9cc2ed0a1@gmail.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Thu, 20 Oct 2022 13:58:42 +0200
+Message-ID: <CAMRc=Md+zoaMHkDJm=SYEZMiHSF7_gYiXApuEboPU5qFpnD_1w@mail.gmail.com>
+Subject: Re: [PATCH v3 00/10] gpiolib: more quirks to handle legacy names
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Alexander Stein <alexander.stein@ew.tq-group.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Daniel Thompson <daniel.thompson@linaro.org>, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_045636_734090_8028A84C 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221020_045855_491969_68FAF094 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,30 +88,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: xinlei lee <xinlei.lee@mediatek.com>
+On Tue, Oct 18, 2022 at 7:41 AM Dmitry Torokhov
+<dmitry.torokhov@gmail.com> wrote:
+>
+> In preparation to converting several drivers to gpiod API, and to keep
+> existing DTS working, this series adds additional quirks to locate
+> gpio lines with legacy names.
+>
+> Additionally the quirk handling has been reworked (once again) to pull
+> all simple renames (ones that do not involve change of indices or other
+> complex manipulations) into a single quirk with a table containing
+> transformations. This should make adding new quirks easier.
+> When using legacy names gpiolib will emit a message to nudge users to
+> update DTSes (when possible).
+>
+> Note that the last patch requires the following change from the OF tree:
+>
+>         88269151be67 ("of: base: make of_device_compatible_match() accept const device node")
+>
+> The change is also available in mainline - it has been merged in 6.1
+> merge window.
+>
+> Thanks.
+>
+> To: Linus Walleij <linus.walleij@linaro.org>
+> To: Bartosz Golaszewski <brgl@bgdev.pl>
+> Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Cc: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Cc: Daniel Thompson <daniel.thompson@linaro.org>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+>
 
-For MT8188, the vdosys0 only supports 1T1P mode while the vdosys0 supports 2T1P mode in MT8195.
+I applied the entire series.
 
-So we need to add dt-binding documentation of dpi for MediaTek MT8188 SoC.
-
-Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
----
- Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 5bb23e9..d976380 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -23,6 +23,7 @@ properties:
-       - mediatek,mt8173-dpi
-       - mediatek,mt8183-dpi
-       - mediatek,mt8186-dpi
-+      - mediatek,mt8188-dp-intf
-       - mediatek,mt8192-dpi
-       - mediatek,mt8195-dp-intf
- 
--- 
-2.6.4
-
+Bartosz
 
