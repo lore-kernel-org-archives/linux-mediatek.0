@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA8DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964ACC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 12:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5dI92auzLHY/lelM7TtgPzOdqw5RFORtpBKAr7npXJw=; b=sie6XrWZF1xfzFLQ3fs6TRX7Do
-	oxpvsZ6JtVJT66x8yxZV+ZLMJcmaNTJtyzvGAV7XVO7Ok1DCDTU+2FixTVoyhlV+zzcf0A4qe6n+f
-	iyRrtidU6QJBxLKcWSRd7g+l1CG0lNgj5xyt+zEo3Z0gVJ10V7xWBC4S0TFn6eMIvzVijuywEoznS
-	Eq80YYGlAwel9En2dn8vIBlfGpcwMxWNAcqfOkN6rXY02R6yS7jRC8i89xb4Sxr/redc5jbnxqEhj
-	DpAVu7LW27mTvL1rHvpFHIYcd66ocZSnDJzb3KEeO4pcMs3ChJ7T4pNDboeaabTmZ2+aiewLMKAb5
-	wg8M/Rig==;
+	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=; b=QuXPiOoWDp2gJTurnogtbpRLv+
+	gQdwu+8rcBRW91QpR8cMRA1ct0fGGYUoKOCt2asHKGFhTHZXYef4us1mrvqndTIUx4M8rb1z5n0YW
+	Egj+wQhEe7AbIpOein33Qw+0l1F/Nmfs/Tl3bnjkpDQsmAphnZ63pTEqsA018byvZ2LRWIVqO9K03
+	YnpEVeXvoxjlo2oPIxo7RDlyLCmfpWt5agLbPEcuC61LgrjQDSOILqtNHyd7syDquaQjW88Py3+zP
+	IWWdC2G7gYy4MK/kDDu/W+23D2+fMmNf6MvoIhXuZbOALrS3tt3Hr29eUv0+yvGLlXRY+mWyd/YRR
+	EJL41k2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUnt-00Es66-8g; Thu, 20 Oct 2022 12:37:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1olUol-00Esl5-71; Thu, 20 Oct 2022 12:38:35 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olUDW-00EPWJ-5f; Thu, 20 Oct 2022 12:00:07 +0000
-X-UUID: be8de5075ae24648a0df79d92cbd8843-20221020
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5dI92auzLHY/lelM7TtgPzOdqw5RFORtpBKAr7npXJw=;
-	b=kyQX7SbTLrIhjI8F9TpyeZcFVT/k7sb8ExF3W5gMHkr0m4Y2M3sl9SvCU+Q7MCp+nBF+Y9KGjypIvXrEs1DZQw+u7NlakakdffiXDC6nE8wQgLbaLgy4ppMvNSlz0Oq737tsofQsQJuRYqHZNJ7h8xr8SjV69W7jJVGwqcdmQuA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:2a7babb7-c9e1-4f8d-b3bf-230121630c47,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:4b427333-7d3c-46b3-a6e9-0ba03eeda632,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: be8de5075ae24648a0df79d92cbd8843-20221020
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 568496511; Thu, 20 Oct 2022 05:00:03 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 20 Oct 2022 19:19:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 20 Oct 2022 19:19:26 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
-	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-Subject: [PATCH v2 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
-Date: Thu, 20 Oct 2022 19:19:24 +0800
-Message-ID: <20221020111925.30002-3-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221020111925.30002-1-tinghan.shen@mediatek.com>
-References: <20221020111925.30002-1-tinghan.shen@mediatek.com>
+	id 1olUES-00EQ8X-IF; Thu, 20 Oct 2022 12:01:09 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 2CEEE20A43;
+	Thu, 20 Oct 2022 12:01:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1666267260; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=;
+	b=jH0AvdmQ5Sn82qm3xMDUFxEtzQ8Afd86NNzn7lSCGUrsJFLaw9SnOVNSzFWgYotcUsDNAg
+	GKaqBJMmMrfij+SPe7P8hnpSwt/PMM4kACWzGqryH9FajEaW0KkQM86idJuP32rsTloZ7/
+	EQO0HWAxraWBomxhUiO5JqjhYu4FO/o=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1666267260;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xkVVGkBtQDyTBLM0kpfBsn85EfLgvqE9XvpjJpebKS0=;
+	b=vHl/tg1vlnnTCoJtjSfQJbaUEq4mIb+x/G13qkx57QzPLCFuuxyt3aozzSXnhYTqv6SF/Y
+	S/MUxJREit23oWCA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8E08013494;
+	Thu, 20 Oct 2022 12:00:59 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id FxuXIXs4UWMgFQAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Thu, 20 Oct 2022 12:00:59 +0000
+Message-ID: <8f3a7b67-d193-eb47-a5a6-8826e9c82f83@suse.de>
+Date: Thu, 20 Oct 2022 14:00:59 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH 01/21] drm/amdgpu: Don't set struct drm_driver.lastclose
+Content-Language: en-US
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, javierm@redhat.com,
+ mripard@kernel.org, maarten.lankhorst@linux.intel.com
+Cc: linux-hyperv@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ nouveau@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ spice-devel@lists.freedesktop.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ freedreno@lists.freedesktop.org
+References: <20221020103755.24058-1-tzimmermann@suse.de>
+ <20221020103755.24058-2-tzimmermann@suse.de>
+ <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+In-Reply-To: <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------WYrb0xK08aT03AsuaxFIILPE"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_050006_269768_1675DDE5 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20221020_050104_865384_EB6CCCCA 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,197 +103,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pcie and pcie phy nodes for mt8195.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------WYrb0xK08aT03AsuaxFIILPE
+Content-Type: multipart/mixed; boundary="------------gwXK6OaLfaQ8iAMdjblSoB42";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, javierm@redhat.com,
+ mripard@kernel.org, maarten.lankhorst@linux.intel.com
+Cc: linux-hyperv@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ nouveau@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ spice-devel@lists.freedesktop.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ freedreno@lists.freedesktop.org
+Message-ID: <8f3a7b67-d193-eb47-a5a6-8826e9c82f83@suse.de>
+Subject: Re: [PATCH 01/21] drm/amdgpu: Don't set struct drm_driver.lastclose
+References: <20221020103755.24058-1-tzimmermann@suse.de>
+ <20221020103755.24058-2-tzimmermann@suse.de>
+ <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
+In-Reply-To: <b26e508b-7599-3953-6803-7db00b3cfbcb@amd.com>
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 150 +++++++++++++++++++++++
- 1 file changed, 150 insertions(+)
+--------------gwXK6OaLfaQ8iAMdjblSoB42
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index d03f0c2b8233..2128fa007480 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -13,6 +13,7 @@
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
- #include <dt-bindings/power/mt8195-power.h>
-+#include <dt-bindings/reset/mt8195-resets.h>
- 
- / {
- 	compatible = "mediatek,mt8195";
-@@ -1182,6 +1183,110 @@
- 			status = "disabled";
- 		};
- 
-+		pcie0: pcie@112f0000 {
-+			compatible = "mediatek,mt8195-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0 0x112f0000 0 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x81000000 0 0x20000000
-+				  0x0 0x20000000 0 0x200000>,
-+				 <0x82000000 0 0x20200000
-+				  0x0 0x20200000 0 0x3e00000>;
-+
-+			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE0 0x2>;
-+			iommu-map-mask = <0x0>;
-+
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
-+				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
-+			clock-names = "pl_250m", "tl_26m", "tl_96m",
-+				      "tl_32k", "peri_26m", "peri_mem";
-+			assigned-clocks = <&topckgen CLK_TOP_TL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
-+
-+			phys = <&pciephy>;
-+			phy-names = "pcie-phy";
-+
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
-+
-+			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
-+			reset-names = "mac";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-+					<0 0 0 2 &pcie_intc0 1>,
-+					<0 0 0 3 &pcie_intc0 2>,
-+					<0 0 0 4 &pcie_intc0 3>;
-+			status = "disabled";
-+
-+			pcie_intc0: interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+			};
-+		};
-+
-+		pcie1: pcie@112f8000 {
-+			compatible = "mediatek,mt8195-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0 0x112f8000 0 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x81000000 0 0x24000000
-+				  0x0 0x24000000 0 0x200000>,
-+				 <0x82000000 0 0x24200000
-+				  0x0 0x24200000 0 0x3e00000>;
-+
-+			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE1 0x2>;
-+			iommu-map-mask = <0x0>;
-+
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
-+				 /* Designer has connect pcie1 with peri_mem_p0 clock */
-+				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
-+			clock-names = "pl_250m", "tl_26m", "tl_96m",
-+				      "tl_32k", "peri_26m", "peri_mem";
-+			assigned-clocks = <&topckgen CLK_TOP_TL_P1>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
-+
-+			phys = <&u3port1 PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
-+
-+			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
-+			reset-names = "mac";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-+					<0 0 0 2 &pcie_intc1 1>,
-+					<0 0 0 3 &pcie_intc1 2>,
-+					<0 0 0 4 &pcie_intc1 3>;
-+			status = "disabled";
-+
-+			pcie_intc1: interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+			};
-+		};
-+
- 		nor_flash: spi@1132c000 {
- 			compatible = "mediatek,mt8195-nor",
- 				     "mediatek,mt8173-nor";
-@@ -1241,6 +1346,34 @@
- 				reg = <0x189 0x2>;
- 				bits = <7 5>;
- 			};
-+			pciephy_rx_ln1: pciephy-rx-ln1@190 {
-+				reg = <0x190 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190 {
-+				reg = <0x190 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_tx_ln1_pmos: pciephy-tx-ln1-pmos@191 {
-+				reg = <0x191 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_rx_ln0: pciephy-rx-ln0@191 {
-+				reg = <0x191 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_tx_ln0_nmos: pciephy-tx-ln0-nmos@192,1 {
-+				reg = <0x192 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_tx_ln0_pmos: pciephy-tx-ln0-pmos@192,2 {
-+				reg = <0x192 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_glb_intr: pciephy-glb-intr@193 {
-+				reg = <0x193 0x1>;
-+				bits = <0 4>;
-+			};
- 		};
- 
- 		u3phy2: t-phy@11c40000 {
-@@ -1461,6 +1594,23 @@
- 			};
- 		};
- 
-+		pciephy: phy@11e80000 {
-+			compatible = "mediatek,mt8195-pcie-phy";
-+			reg = <0 0x11e80000 0 0x10000>;
-+			reg-names = "sif";
-+			nvmem-cells = <&pciephy_glb_intr>, <&pciephy_tx_ln0_pmos>,
-+				      <&pciephy_tx_ln0_nmos>, <&pciephy_rx_ln0>,
-+				      <&pciephy_tx_ln1_pmos>, <&pciephy_tx_ln1_nmos>,
-+				      <&pciephy_rx_ln1>;
-+			nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
-+					   "tx_ln0_nmos", "rx_ln0",
-+					   "tx_ln1_pmos", "tx_ln1_nmos",
-+					   "rx_ln1";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_PHY>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		ufsphy: ufs-phy@11fa0000 {
- 			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
- 			reg = <0 0x11fa0000 0 0xc000>;
--- 
-2.18.0
+SGkNCg0KQW0gMjAuMTAuMjIgdW0gMTM6NDggc2NocmllYiBDaHJpc3RpYW4gS8O2bmlnOg0K
+PiBBbSAyMC4xMC4yMiB1bSAxMjozNyBzY2hyaWViIFRob21hcyBaaW1tZXJtYW5uOg0KPj4g
+RG9uJ3Qgc2V0IHN0cnVjdCBkcm1fZHJpdmVyLmxhc3RjbG9zZS4gSXQncyB1c2VkIHRvIHJl
+c3RvcmUgdGhlDQo+PiBmYmRldiBjb25zb2xlLiBCdXQgYXMgYW1kZ3B1IHVzZXMgZ2VuZXJp
+YyBmYmRldiBlbXVsYXRpb24sIHRoZQ0KPj4gY29uc29sZSBpcyBiZWluZyByZXN0b3JlZCBi
+eSB0aGUgRFJNIGNsaWVudCBoZWxwZXJzIGFscmVhZHkuIFNlZQ0KPj4gdGhlIGNhbGwgdG8g
+ZHJtX2NsaWVudF9kZXZfcmVzdG9yZSgpIGluIGRybV9sYXN0Y2xvc2UoKS4NCj4gDQo+ID8/
+Pw0KPiANCj4gVGhlIGNvbW1pdCBtZXNzYWdlIGRvZXNuJ3QgbWF0Y2ggd2hhdCB0aGUgcGF0
+Y2ggaXMgZG9pbmcuIFlvdSBhcmUgDQo+IHJlbW92aW5nIG91dHB1dF9wb2xsX2NoYW5nZWQg
+aW5zdGVhZCBvZiBsYXN0Y2xvc2UgaGVyZS4NCj4gDQo+IERpZCBzb21ldGhpbmcgZ290IG1p
+eGVkIHVwPw0KDQpBcmdoaC4gVGhlcmUgYXJlIHBhdGNoZXMgZm9yIGxhc3RjbG9zZSBhbmQg
+b3V0cHV0X3BvbGxfY2hhbmdlZC4gVGhlIA0KcmVhc29uIGZvciByZW1vdmluZyB0aGVtIGlz
+IHRoZSBzYW1lLCBidXQgdGhhbmtzIHRvIGNvcHkgYW5kIHBhc3RlIHRoZSANCm5hbWVzIGFy
+ZSB3cm9uZy4gU28gdGhlIHBhdGNoIGlzIGNvcnJlY3QsIGJ1dCB0aGUgZGVzY3JpcHRpb24g
+aXNuJ3QuIA0KV2lsbCBiZSBmaXhlZC4NCg0KQmVzdCByZWdhcmRzDQpUaG9tYXMNCg0KPiAN
+Cj4gQ2hlZXJzLA0KPiBDaHJpc3RpYW4uDQo+IA0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IFRo
+b21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPg0KPj4gLS0tDQo+PiDCoCBk
+cml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZGlzcGxheS5jwqDCoMKgwqDCoMKg
+IHwgMSAtDQo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vYW1kL2Rpc3BsYXkvYW1kZ3B1X2RtL2Ft
+ZGdwdV9kbS5jIHwgMiAtLQ0KPj4gwqAgMiBmaWxlcyBjaGFuZ2VkLCAzIGRlbGV0aW9ucygt
+KQ0KPj4NCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRn
+cHVfZGlzcGxheS5jIA0KPj4gYi9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVf
+ZGlzcGxheS5jDQo+PiBpbmRleCAyMzk5OGY3MjdjN2Y5Li5mYjcxODZjNWFkZTJhIDEwMDY0
+NA0KPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rpc3BsYXku
+Yw0KPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rpc3BsYXku
+Yw0KPj4gQEAgLTEyMjQsNyArMTIyNCw2IEBAIGFtZGdwdV9kaXNwbGF5X3VzZXJfZnJhbWVi
+dWZmZXJfY3JlYXRlKHN0cnVjdCANCj4+IGRybV9kZXZpY2UgKmRldiwNCj4+IMKgIGNvbnN0
+IHN0cnVjdCBkcm1fbW9kZV9jb25maWdfZnVuY3MgYW1kZ3B1X21vZGVfZnVuY3MgPSB7DQo+
+PiDCoMKgwqDCoMKgIC5mYl9jcmVhdGUgPSBhbWRncHVfZGlzcGxheV91c2VyX2ZyYW1lYnVm
+ZmVyX2NyZWF0ZSwNCj4+IC3CoMKgwqAgLm91dHB1dF9wb2xsX2NoYW5nZWQgPSBkcm1fZmJf
+aGVscGVyX291dHB1dF9wb2xsX2NoYW5nZWQsDQo+PiDCoCB9Ow0KPj4gwqAgc3RhdGljIGNv
+bnN0IHN0cnVjdCBkcm1fcHJvcF9lbnVtX2xpc3QgYW1kZ3B1X3VuZGVyc2Nhbl9lbnVtX2xp
+c3RbXSA9DQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2Ft
+ZGdwdV9kbS9hbWRncHVfZG0uYyANCj4+IGIvZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5
+L2FtZGdwdV9kbS9hbWRncHVfZG0uYw0KPj4gaW5kZXggZjZhOWU4ZmRkODdkNi4uZTlhMjhh
+NTM2M2I5YSAxMDA2NDQNCj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvZGlzcGxheS9h
+bWRncHVfZG0vYW1kZ3B1X2RtLmMNCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvZGlz
+cGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMNCj4+IEBAIC04Miw3ICs4Miw2IEBADQo+PiDC
+oCAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfdWFwaS5oPg0KPj4gwqAgI2luY2x1ZGUgPGRy
+bS9kcm1fYXRvbWljX2hlbHBlci5oPg0KPj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fYmxlbmQu
+aD4NCj4+IC0jaW5jbHVkZSA8ZHJtL2RybV9mYl9oZWxwZXIuaD4NCj4+IMKgICNpbmNsdWRl
+IDxkcm0vZHJtX2ZvdXJjYy5oPg0KPj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPg0K
+Pj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fdmJsYW5rLmg+DQo+PiBAQCAtMjgxMCw3ICsyODA5
+LDYgQEAgY29uc3Qgc3RydWN0IGFtZGdwdV9pcF9ibG9ja192ZXJzaW9uIGRtX2lwX2Jsb2Nr
+ID0NCj4+IMKgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnX2Z1bmNzIGFt
+ZGdwdV9kbV9tb2RlX2Z1bmNzID0gew0KPj4gwqDCoMKgwqDCoCAuZmJfY3JlYXRlID0gYW1k
+Z3B1X2Rpc3BsYXlfdXNlcl9mcmFtZWJ1ZmZlcl9jcmVhdGUsDQo+PiDCoMKgwqDCoMKgIC5n
+ZXRfZm9ybWF0X2luZm8gPSBhbWRfZ2V0X2Zvcm1hdF9pbmZvLA0KPj4gLcKgwqDCoCAub3V0
+cHV0X3BvbGxfY2hhbmdlZCA9IGRybV9mYl9oZWxwZXJfb3V0cHV0X3BvbGxfY2hhbmdlZCwN
+Cj4+IMKgwqDCoMKgwqAgLmF0b21pY19jaGVjayA9IGFtZGdwdV9kbV9hdG9taWNfY2hlY2ss
+DQo+PiDCoMKgwqDCoMKgIC5hdG9taWNfY29tbWl0ID0gZHJtX2F0b21pY19oZWxwZXJfY29t
+bWl0LA0KPj4gwqAgfTsNCj4gDQoNCi0tIA0KVGhvbWFzIFppbW1lcm1hbm4NCkdyYXBoaWNz
+IERyaXZlciBEZXZlbG9wZXINClNVU0UgU29mdHdhcmUgU29sdXRpb25zIEdlcm1hbnkgR21i
+SA0KTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnLCBHZXJtYW55DQooSFJCIDM2ODA5
+LCBBRyBOw7xybmJlcmcpDQpHZXNjaMOkZnRzZsO8aHJlcjogSXZvIFRvdGV2DQo=
 
+--------------gwXK6OaLfaQ8iAMdjblSoB42--
+
+--------------WYrb0xK08aT03AsuaxFIILPE
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmNROHsFAwAAAAAACgkQlh/E3EQov+Af
+qg/8DLfmRUYvAEkOGUdb+UPWlqwaao88s9cPeIA3h2HV6bYLuN3tcbcDWHFeQuAGVFYRgYLVboNR
+UtD8lzBIfELkuzD83B+VRxYJBSUdOWNVr5cmES8vFHFcFPQKMLAl/NCnOZOkXBa2xbSyfsJ9t/t4
+yXi4FqFTtRT4SWIfAHVY2cduEA/oRkqwmhB1nu+Nv+dWdMxKlWT5W5cc9D/tV7PNyU0D43q/xC3U
+UPqtz6yMg2u6UXyQ4smF0HltdBU+CjGDnCKVwKfW1JHy3eo2ONTt3ORu7QnXAGImozT2vrN3G3rF
+9FxNTpfh6Hv15QQMOPJqlCicq4nVRIXFHA2Za5jvGWa4m+bLzS4OH7KB+KqeWUEtX+QKl3eqgC56
+HBs9QpM0tp9VLVX4ws1GcGoJ48BWHSSNQv2suBrtz7yhdrquiPhXM4+XqWo/MZAxS1jnki7QdBhj
+PgYr3LQM68v3qRoLkKoAvqpkMDCUeAP7Sql6H1EmSBYcKupo8RvWEi0xTIoeHWA3WMXS+Lst+3uT
+gOVa/gN0OgRYykGJ6NRHykDPW2fBb50tDngSNH9Mh6zxabnKGwbgzG6q6w+SZy4uEceuLu9yfkv7
+bc/vqXu6UkH5/6ofgivW2hkPpkiyjQj5u9L55R67jqYOZCZfVsG2nGCNPoWHmDSbMdO1Fgmx46g4
+koE=
+=eccN
+-----END PGP SIGNATURE-----
+
+--------------WYrb0xK08aT03AsuaxFIILPE--
 
