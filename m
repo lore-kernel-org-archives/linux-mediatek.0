@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F38DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 22:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C733BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Oct 2022 22:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rg9PF2cWJRiRYlck/ljQ+1z8FnRbQBWQJQ+kEQWkJkM=; b=T+ibpnbctKwjoOGqxwORuNj9Nv
-	Cri2DFBg5uWPKq4/7Whu8CufmFyAtK0fG4Om26jjxQVqU6FtMWJ9FlyGZmqpKAf42Y5BHsMKW4bZi
-	m64bJvSjWXt4j436JGiWesRWShaRxXjUHws1+G0bHNr8pw1mpNOauj4Z6P/ryYgf3ZO/CPmEQB4Rg
-	7qLEOh57nwPUm35ifl6DVr0NuQUozVN1ZqyMQ5XbbKMCDw/Fd1Z7zXfcTQB/tP6J8dOh9oxMDYjTk
-	5hm+CmiYnhuJZ8BPtMspAVlPpg90nYOViOmnwuqjPn+hwRfcARx7vICat8Hl2kQam49bb4ieqIHvF
-	rKcgoaIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lYkpkk5lZ6UbU8vLJDuyL389k5VSF1GIIAgVM4h0/14=; b=bdsPFqxwSlxdz8XSd+xLAE9no2
+	tNJt03s1B08xPkSwa2C18x/VAQezi6Wa7RVKDpHeTWWF1VP66xAgO5VZLd8HwbG1qpNnl0V6+2b1p
+	8244wlxmfkDk/K3HnjC3KjjL157vvmIxDFSy/stHu/tfWIB1NZfemE/a5/sv4P9jCQ1vuGKnadWOp
+	Y0y0ab5jFi5FggmqB3e2dNf25qgFTs9v6s0yLodgS6mBH7ec7SanhRZGKXbr/CZI1FHokGbT1aU8A
+	jECceFJmlW1HZzDSyTukO5lcqVXP7bOqXr+dkRwQFBa+8Bgz7OBcBHpRSv7YZAnNQIzd137JNz4ay
+	kh50PPAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oldtH-002DTy-LZ; Thu, 20 Oct 2022 22:19:51 +0000
-Received: from tartarus.angband.pl ([51.83.246.204])
+	id 1oldzI-002G1j-LX; Thu, 20 Oct 2022 22:26:04 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oldtD-002DO9-FI; Thu, 20 Oct 2022 22:19:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=angband.pl;
-	s=tartarus; h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:
-	Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=rg9PF2cWJRiRYlck/ljQ+1z8FnRbQBWQJQ+kEQWkJkM=; b=p9Qjc/Rz3MaZGP842oDB1HutD9
-	pyQvh/HAwIfGRAJp2Av8vVNxafbO+mjCjOggo2n4FiT03wBAzVT2RjrwI6Hu51yH4lAGd1mqoyYCI
-	ikYlmxvNdq+jZU33TdZFN9mYB6yJbx+eqOHa4wvp2zUHwmJj9s5eor7zZw/ZfUv2A39c=;
-Received: from localhost ([127.0.0.1] helo=valinor.angband.pl)
-	by tartarus.angband.pl with smtp (Exim 4.94.2)
-	(envelope-from <kilobyte@valinor.angband.pl>)
-	id 1oldrk-009OEK-N9; Fri, 21 Oct 2022 00:18:16 +0200
-Received: (nullmailer pid 33760 invoked by uid 1000);
-	Thu, 20 Oct 2022 22:18:15 -0000
-From: Adam Borowski <kilobyte@angband.pl>
-To: linux-kernel@lists.debian.org
-Cc: Adam Borowski <kilobyte@angband.pl>, Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, David Howells <dhowells@redhat.com>, Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, keyrings@vger.kernel.org, linux-crypto@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, linux-mtd@lists.infradead.org, linux-spi@vger.kernel.org, Yong Zhi <yong.zhi@intel.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>, Dan Scally <djrscally@gmail.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, linux-i2c@vger.kernel.org, Cezary Rojewski <cezary.rojewski@intel.com>, Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <liam.r.girdwood@linux.intel.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Bard Liao <yung-chuan.liao@linux.intel.com>, Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Brent Lu <brent.lu@intel.com>
-Subject: [PATCH 0/6] a pile of randconfig fixes
-Date: Fri, 21 Oct 2022 00:17:49 +0200
-Message-Id: <20221020221749.33746-1-kilobyte@angband.pl>
-X-Mailer: git-send-email 2.37.2.609.g9ff673ca1a
+	id 1oldzE-002Fz1-NA
+	for linux-mediatek@lists.infradead.org; Thu, 20 Oct 2022 22:26:02 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-3690482f5dfso6998447b3.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Oct 2022 15:25:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=lYkpkk5lZ6UbU8vLJDuyL389k5VSF1GIIAgVM4h0/14=;
+        b=hsBVPwbjKrKrgBfExbAGtluOzJyrkQ/uRUoJYcAxAmlpY7/TgTVoO8LTUhQjvNxr/X
+         iZC0WFeSJ6xTaIL5UJ4VHjU0VWjqo9QCm3OriDAdpXSgmJL6AW5p4cQQnTA4fWXJjlIV
+         5Rc86aZI+5JzaezrOssbpeVCKRCpY90awmZST1MkeLjsJgPJnqExVP/pU8tFxTcTLXTA
+         IxSVjMXmVgjlPEuMDgd9XLItX+iA32e7iFW/PhylXjKj656W1OxzqmprpPNsD/QVtboU
+         ikazAfJGiD+BnSowbyVqV/B0hQj7JKHGMq8+1OwqTBouCMbSEyu5OoZ7Y3ynAdFNG7pE
+         gs2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lYkpkk5lZ6UbU8vLJDuyL389k5VSF1GIIAgVM4h0/14=;
+        b=lDOqZd/jGd2BHlsAVgwRCsXuzO44lzzkmTE7cF+ScPrIIhplG8iDW1IBJarAbn426O
+         QRSEp+YjeiOXhyqS81xJw8qGbVe0ZYchpFUUhar3W7Moyo4BoTzxYP44ik0cR9shdwnS
+         jsXBdBJTf2Sq9u1WaEvIPkINWHIIhTCZ4Et0HqyKI31NHo4bGZTLnt4TB0c+/NDp5CRJ
+         OdBltqgmICUB1GZ78ljVymz/9t481YDFJ89qekr2Y+C/DiiQbgJ7fYjvUxxpPniHnWpk
+         +6Jn2V8WTRZ5UA/B6fuPmkYrEMt0exfn/1ZZ51p0KqaWh9jjkf7bMrUJeibRExCWNUob
+         rFUQ==
+X-Gm-Message-State: ACrzQf15SRzEDeGOm05v3SIcnpgVcYGboV0glKJ3QVR4ocII2ASCtLX2
+	bKNkwmP/xIpr8+fweeoCSdrMH69cnrb9ib18Y6kjiw==
+X-Google-Smtp-Source: AMsMyM7X2xHBM6u9FmnN0WhferDVZmSwfocFQQeDg1zsd3uR3TG4kwpr+4GGxlDww7/51V1ZfDxvBTZD8XE0/bdLaYY=
+X-Received: by 2002:a0d:fe47:0:b0:361:2bf:6db4 with SMTP id
+ o68-20020a0dfe47000000b0036102bf6db4mr13861718ywf.438.1666304758501; Thu, 20
+ Oct 2022 15:25:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: kilobyte@valinor.angband.pl
-X-SA-Exim-Scanned: No (on tartarus.angband.pl); SAEximRunCond expanded to false
+References: <20221010225744.101629-1-surenb@google.com>
+In-Reply-To: <20221010225744.101629-1-surenb@google.com>
+From: Suren Baghdasaryan <surenb@google.com>
+Date: Thu, 20 Oct 2022 15:25:47 -0700
+Message-ID: <CAJuCfpHeJuZBbv-q+WXjgNHwt_caMomFPL3L9rxosXOrZz3fBw@mail.gmail.com>
+Subject: Re: [RESEND PATCH v4 1/1] psi: stop relying on timer_pending for
+ poll_work rescheduling
+To: peterz@infradead.org
+Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com, 
+	vincent.guittot@linaro.org, dietmar.eggemann@arm.com, rostedt@goodmis.org, 
+	bsegall@google.com, mgorman@suse.de, bristot@redhat.com, 
+	matthias.bgg@gmail.com, minchan@google.com, yt.chang@mediatek.com, 
+	wenju.xu@mediatek.com, jonathan.jmchen@mediatek.com, 
+	show-hong.chen@mediatek.com, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel-team@android.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_151948_225703_EDAADDF7 
-X-CRM114-Status: GOOD (  33.61  )
+X-CRM114-CacheID: sfid-20221020_152600_786849_30906A30 
+X-CRM114-Status: GOOD (  42.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,581 +91,242 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
-I've been doing randconfig build tests for quite a while, here's a pile of
-fixes.  I'm not sure what's the best way to submit these: do you folks
-prefer a series like this, or a number of individual submissions?
+On Mon, Oct 10, 2022 at 3:57 PM Suren Baghdasaryan <surenb@google.com> wrote:
+>
+> Psi polling mechanism is trying to minimize the number of wakeups to
+> run psi_poll_work and is currently relying on timer_pending() to detect
+> when this work is already scheduled. This provides a window of opportunity
+> for psi_group_change to schedule an immediate psi_poll_work after
+> poll_timer_fn got called but before psi_poll_work could reschedule itself.
+> Below is the depiction of this entire window:
+>
+> poll_timer_fn
+>   wake_up_interruptible(&group->poll_wait);
+>
+> psi_poll_worker
+>   wait_event_interruptible(group->poll_wait, ...)
+>   psi_poll_work
+>     psi_schedule_poll_work
+>       if (timer_pending(&group->poll_timer)) return;
+>       ...
+>       mod_timer(&group->poll_timer, jiffies + delay);
+>
+> Prior to 461daba06bdc we used to rely on poll_scheduled atomic which was
+> reset and set back inside psi_poll_work and therefore this race window
+> was much smaller.
+> The larger window causes increased number of wakeups and our partners
+> report visible power regression of ~10mA after applying 461daba06bdc.
+> Bring back the poll_scheduled atomic and make this race window even
+> narrower by resetting poll_scheduled only when we reach polling expiration
+> time. This does not completely eliminate the possibility of extra wakeups
+> caused by a race with psi_group_change however it will limit it to the
+> worst case scenario of one extra wakeup per every tracking window (0.5s
+> in the worst case).
+> This patch also ensures correct ordering between clearing poll_scheduled
+> flag and obtaining changed_states using memory barrier. Correct ordering
+> between updating changed_states and setting poll_scheduled is ensured by
+> atomic_xchg operation.
+> By tracing the number of immediate rescheduling attempts performed by
+> psi_group_change and the number of these attempts being blocked due to
+> psi monitor being already active, we can assess the effects of this change:
+>
+> Before the patch:
+>                                            Run#1    Run#2      Run#3
+> Immediate reschedules attempted:           684365   1385156    1261240
+> Immediate reschedules blocked:             682846   1381654    1258682
+> Immediate reschedules (delta):             1519     3502       2558
+> Immediate reschedules (% of attempted):    0.22%    0.25%      0.20%
+>
+> After the patch:
+>                                            Run#1    Run#2      Run#3
+> Immediate reschedules attempted:           882244   770298    426218
+> Immediate reschedules blocked:             881996   769796    426074
+> Immediate reschedules (delta):             248      502       144
+> Immediate reschedules (% of attempted):    0.03%    0.07%     0.03%
+>
+> The number of non-blocked immediate reschedules dropped from 0.22-0.25%
+> to 0.03-0.07%. The drop is attributed to the decrease in the race window
+> size and the fact that we allow this race only when psi monitors reach
+> polling window expiration time.
+>
+> Fixes: 461daba06bdc ("psi: eliminate kthread_worker from psi trigger scheduling mechanism")
+> Reported-by: Kathleen Chang <yt.chang@mediatek.com>
+> Reported-by: Wenju Xu <wenju.xu@mediatek.com>
+> Reported-by: Jonathan Chen <jonathan.jmchen@mediatek.com>
+> Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+> Tested-by: SH Chen <show-hong.chen@mediatek.com>
+> Acked-by: Johannes Weiner <hannes@cmpxchg.org>
+> ---
+> This patch somehow slipped through the cracks after being acked by Johannes in
+> [1] and I didn't notice it until now because we cherry-picked it into Android
+> kernel trees due to the urgency at that time. On the bright side, this change
+> has been tested for about a year in the field by millions of devices.
+> Resending v4 of this patch previously posted at [2], rebased on the latest
+> Linus' TOT.
 
-With these applied, it seems that archs I run (64-bit x86 arm riscv) are
-clean now -- at least for the values of "haven't failed build in a while".
+Hi Peter,
+We missed this Ack'ed patch last year and as I described above I
+didn't notice that up until now. With rc1 released, hopefully it's a
+good time to ping you to ask for inclusion of this patch in your tree.
+If the timing is not good, please let me know when to remind you and
+I'll send another email. Just want to make sure it does not slip
+again.
 
-My restrictions were:
-[amd64]
-CONFIG_64BIT=y
-CONFIG_COMPILE_TEST=y
-CONFIG_AIC79XX_BUILD_FIRMWARE=n
-CONFIG_AIC7XXX_BUILD_FIRMWARE=n
-[arm64]
-CONFIG_AIC79XX_BUILD_FIRMWARE=n
-CONFIG_AIC7XXX_BUILD_FIRMWARE=n
-[riscv64]
-!CONFIG_ARCH_RV32I=y #yay "selects"
-CONFIG_CMODEL_MEDANY=y
-CONFIG_BPF_PRELOAD_UMD=n
-CONFIG_AIC79XX_BUILD_FIRMWARE=n
-CONFIG_AIC7XXX_BUILD_FIRMWARE=n
-and applied fixes for dwc3-qcom riscv_cbom_block_size dump_emit_page
-riscv:jump_label.
+Just FYI, we have two other Ack'ed PSI patches for you to consider:
 
-All builds were done with gcc-12 on Debian unstable.
+https://lore.kernel.org/all/20221014110551.22695-1-zhouchengming@bytedance.com/
+https://lore.kernel.org/all/20220919072356.GA29069@haolee.io/
 
-
-Meow!
--- 
-⢀⣴⠾⠻⢶⣦⠀
-⣾⠁⢠⠒⠀⣿⡁
-⢿⡄⠘⠷⠚⠋⠀ Quis trollabit ipsos trollos?
-⠈⠳⣄⠀⠀⠀⠀
-
-
-From 0d8157cf874b80deb072cb26e0f84c02f5ef0b15 Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org,
- alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 14 Sep 2022 22:06:51 +0200
-Subject: [PATCH 1/6] ASoC: mediatek: mt8186: fix an "unused" warning
-
-This, and a whole bunch of referenced functions are not needed without
-CONFIG_OF.  The warning makes the build fail under CONFIG_WERROR.
-
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c | 2 +-
- sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
-index cfca6bdee834..b15e97bd9d4d 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
-@@ -1000,7 +1000,7 @@ mt8186_mt6366_da7219_max98357_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("HDMI1"),
- };
- 
--static struct snd_soc_card mt8186_mt6366_da7219_max98357_soc_card = {
-+static __maybe_unused struct snd_soc_card mt8186_mt6366_da7219_max98357_soc_card = {
- 	.name = "mt8186_da7219_max98357",
- 	.owner = THIS_MODULE,
- 	.dai_link = mt8186_mt6366_da7219_max98357_dai_links,
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 2414c5b77233..22ce2f849909 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -976,7 +976,7 @@ mt8186_mt6366_rt1019_rt5682s_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("HDMI1"),
- };
- 
--static struct snd_soc_card mt8186_mt6366_rt1019_rt5682s_soc_card = {
-+static __maybe_unused struct snd_soc_card mt8186_mt6366_rt1019_rt5682s_soc_card = {
- 	.name = "mt8186_rt1019_rt5682s",
- 	.owner = THIS_MODULE,
- 	.dai_link = mt8186_mt6366_rt1019_rt5682s_dai_links,
--- 
-2.37.2.609.g9ff673ca1a
-
-
-From c11d7b580c8237a5445bf043db9f37cbdf6e5590 Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: David Howells <dhowells@redhat.com>,
- Herbert Xu <herbert@gondor.apana.org.au>,
- "David S. Miller" <davem@davemloft.net>,
- keyrings@vger.kernel.org,
- linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 14 Sep 2022 22:13:43 +0200
-Subject: [PATCH 2/6] certs: fips test: fix build failure with
- PKCS7_MESSAGE_PARSER=m
-
-ld: crypto/asymmetric_keys/selftest.o: in function `fips_signature_selftest':
-selftest.c:(.init.text+0xcd): undefined reference to `pkcs7_parse_message'
-ld: selftest.c:(.init.text+0x103): undefined reference to `pkcs7_supply_detached_data'
-ld: selftest.c:(.init.text+0x10d): undefined reference to `pkcs7_verify'
-ld: selftest.c:(.init.text+0x135): undefined reference to `pkcs7_validate_trust'
-ld: selftest.c:(.init.text+0x157): undefined reference to `pkcs7_free_message'
-
-Fixes: 3cde3174eb910513d32a9ec8a9b95ea59be833df
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- crypto/asymmetric_keys/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/crypto/asymmetric_keys/Kconfig b/crypto/asymmetric_keys/Kconfig
-index 3df3fe4ed95f..fe007db96c69 100644
---- a/crypto/asymmetric_keys/Kconfig
-+++ b/crypto/asymmetric_keys/Kconfig
-@@ -83,6 +83,6 @@ config FIPS_SIGNATURE_SELFTEST
- 	  for FIPS.
- 	depends on KEYS
- 	depends on ASYMMETRIC_KEY_TYPE
--	depends on PKCS7_MESSAGE_PARSER
-+	depends on PKCS7_MESSAGE_PARSER=y
- 
- endif # ASYMMETRIC_KEY_TYPE
--- 
-2.37.2.609.g9ff673ca1a
+Thanks,
+Suren.
 
 
-From 582ea8837c41dc1bc738c2bd4e01c85bc2bd3ba3 Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- linux-mtd@lists.infradead.org,
- Mark Brown <broonie@kernel.org>,
- linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 14 Sep 2022 23:29:09 +0200
-Subject: [PATCH 3/6] mtd: eject cfi_interleave code to its own header
 
-This fixes build failures for stuff that doesn't care about that, such as:
-
-In file included from ./include/linux/mtd/spi-nor.h:10,
-                 from drivers/spi/spi-intel.c:13:
-./include/linux/mtd/cfi.h:62:2: error: #warning No CONFIG_MTD_CFI_Ix selected. No NOR chip support
-   62 | #warning No CONFIG_MTD_CFI_Ix selected. No NOR chip support can work.
-      |  ^~~~~~~
-
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- drivers/mtd/chips/cfi_cmdset_0001.c |  1 +
- drivers/mtd/chips/cfi_cmdset_0002.c |  1 +
- drivers/mtd/chips/cfi_cmdset_0020.c |  1 +
- drivers/mtd/chips/cfi_util.c        |  1 +
- drivers/mtd/chips/gen_probe.c       |  1 +
- drivers/mtd/chips/jedec_probe.c     |  1 +
- include/linux/mtd/cfi.h             | 75 --------------------------
- include/linux/mtd/cfi_interleave.h  | 83 +++++++++++++++++++++++++++++
- 8 files changed, 89 insertions(+), 75 deletions(-)
- create mode 100644 include/linux/mtd/cfi_interleave.h
-
-diff --git a/drivers/mtd/chips/cfi_cmdset_0001.c b/drivers/mtd/chips/cfi_cmdset_0001.c
-index 54f92d09d9cf..efbf06fce95b 100644
---- a/drivers/mtd/chips/cfi_cmdset_0001.c
-+++ b/drivers/mtd/chips/cfi_cmdset_0001.c
-@@ -34,6 +34,7 @@
- #include <linux/mtd/map.h>
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- 
- /* #define CMDSET0001_DISABLE_ERASE_SUSPEND_ON_WRITE */
- /* #define CMDSET0001_DISABLE_WRITE_SUSPEND */
-diff --git a/drivers/mtd/chips/cfi_cmdset_0002.c b/drivers/mtd/chips/cfi_cmdset_0002.c
-index 67453f59c69c..70d00c3641d8 100644
---- a/drivers/mtd/chips/cfi_cmdset_0002.c
-+++ b/drivers/mtd/chips/cfi_cmdset_0002.c
-@@ -37,6 +37,7 @@
- #include <linux/mtd/map.h>
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- #include <linux/mtd/xip.h>
- 
- #define AMD_BOOTLOC_BUG
-diff --git a/drivers/mtd/chips/cfi_cmdset_0020.c b/drivers/mtd/chips/cfi_cmdset_0020.c
-index d35df526e0a6..007e37faff56 100644
---- a/drivers/mtd/chips/cfi_cmdset_0020.c
-+++ b/drivers/mtd/chips/cfi_cmdset_0020.c
-@@ -31,6 +31,7 @@
- #include <linux/interrupt.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- #include <linux/mtd/mtd.h>
- 
- 
-diff --git a/drivers/mtd/chips/cfi_util.c b/drivers/mtd/chips/cfi_util.c
-index 6a6a2a21d2ed..608315032f9e 100644
---- a/drivers/mtd/chips/cfi_util.c
-+++ b/drivers/mtd/chips/cfi_util.c
-@@ -22,6 +22,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- 
- void cfi_udelay(int us)
- {
-diff --git a/drivers/mtd/chips/gen_probe.c b/drivers/mtd/chips/gen_probe.c
-index 4d4f97841016..8703890ff20e 100644
---- a/drivers/mtd/chips/gen_probe.c
-+++ b/drivers/mtd/chips/gen_probe.c
-@@ -10,6 +10,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- #include <linux/mtd/gen_probe.h>
- 
- static struct mtd_info *check_cmd_set(struct map_info *, int);
-diff --git a/drivers/mtd/chips/jedec_probe.c b/drivers/mtd/chips/jedec_probe.c
-index 6f7e7e1b3fe5..88a979bb59bb 100644
---- a/drivers/mtd/chips/jedec_probe.c
-+++ b/drivers/mtd/chips/jedec_probe.c
-@@ -20,6 +20,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/cfi.h>
-+#include <linux/mtd/cfi_interleave.h>
- #include <linux/mtd/gen_probe.h>
- 
- /* AMD */
-diff --git a/include/linux/mtd/cfi.h b/include/linux/mtd/cfi.h
-index d88bb56c18e2..4a8ddb51afee 100644
---- a/include/linux/mtd/cfi.h
-+++ b/include/linux/mtd/cfi.h
-@@ -8,87 +8,12 @@
- 
- #include <linux/delay.h>
- #include <linux/types.h>
--#include <linux/bug.h>
- #include <linux/interrupt.h>
- #include <linux/mtd/flashchip.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/cfi_endian.h>
- #include <linux/mtd/xip.h>
- 
--#ifdef CONFIG_MTD_CFI_I1
--#define cfi_interleave(cfi) 1
--#define cfi_interleave_is_1(cfi) (cfi_interleave(cfi) == 1)
--#else
--#define cfi_interleave_is_1(cfi) (0)
--#endif
--
--#ifdef CONFIG_MTD_CFI_I2
--# ifdef cfi_interleave
--#  undef cfi_interleave
--#  define cfi_interleave(cfi) ((cfi)->interleave)
--# else
--#  define cfi_interleave(cfi) 2
--# endif
--#define cfi_interleave_is_2(cfi) (cfi_interleave(cfi) == 2)
--#else
--#define cfi_interleave_is_2(cfi) (0)
--#endif
--
--#ifdef CONFIG_MTD_CFI_I4
--# ifdef cfi_interleave
--#  undef cfi_interleave
--#  define cfi_interleave(cfi) ((cfi)->interleave)
--# else
--#  define cfi_interleave(cfi) 4
--# endif
--#define cfi_interleave_is_4(cfi) (cfi_interleave(cfi) == 4)
--#else
--#define cfi_interleave_is_4(cfi) (0)
--#endif
--
--#ifdef CONFIG_MTD_CFI_I8
--# ifdef cfi_interleave
--#  undef cfi_interleave
--#  define cfi_interleave(cfi) ((cfi)->interleave)
--# else
--#  define cfi_interleave(cfi) 8
--# endif
--#define cfi_interleave_is_8(cfi) (cfi_interleave(cfi) == 8)
--#else
--#define cfi_interleave_is_8(cfi) (0)
--#endif
--
--#ifndef cfi_interleave
--#warning No CONFIG_MTD_CFI_Ix selected. No NOR chip support can work.
--static inline int cfi_interleave(void *cfi)
--{
--	BUG();
--	return 0;
--}
--#endif
--
--static inline int cfi_interleave_supported(int i)
--{
--	switch (i) {
--#ifdef CONFIG_MTD_CFI_I1
--	case 1:
--#endif
--#ifdef CONFIG_MTD_CFI_I2
--	case 2:
--#endif
--#ifdef CONFIG_MTD_CFI_I4
--	case 4:
--#endif
--#ifdef CONFIG_MTD_CFI_I8
--	case 8:
--#endif
--		return 1;
--
--	default:
--		return 0;
--	}
--}
--
- 
- /* NB: these values must represents the number of bytes needed to meet the
-  *     device type (x8, x16, x32).  Eg. a 32 bit device is 4 x 8 bytes.
-diff --git a/include/linux/mtd/cfi_interleave.h b/include/linux/mtd/cfi_interleave.h
-new file mode 100644
-index 000000000000..03d94a6d11fc
---- /dev/null
-+++ b/include/linux/mtd/cfi_interleave.h
-@@ -0,0 +1,83 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#ifndef __MTD_CFI_INTERLEAVE_H__
-+#define __MTD_CFI_INTERLEAVE_H__
-+
-+#include <linux/bug.h>
-+
-+#ifdef CONFIG_MTD_CFI_I1
-+#define cfi_interleave(cfi) 1
-+#define cfi_interleave_is_1(cfi) (cfi_interleave(cfi) == 1)
-+#else
-+#define cfi_interleave_is_1(cfi) (0)
-+#endif
-+
-+#ifdef CONFIG_MTD_CFI_I2
-+# ifdef cfi_interleave
-+#  undef cfi_interleave
-+#  define cfi_interleave(cfi) ((cfi)->interleave)
-+# else
-+#  define cfi_interleave(cfi) 2
-+# endif
-+#define cfi_interleave_is_2(cfi) (cfi_interleave(cfi) == 2)
-+#else
-+#define cfi_interleave_is_2(cfi) (0)
-+#endif
-+
-+#ifdef CONFIG_MTD_CFI_I4
-+# ifdef cfi_interleave
-+#  undef cfi_interleave
-+#  define cfi_interleave(cfi) ((cfi)->interleave)
-+# else
-+#  define cfi_interleave(cfi) 4
-+# endif
-+#define cfi_interleave_is_4(cfi) (cfi_interleave(cfi) == 4)
-+#else
-+#define cfi_interleave_is_4(cfi) (0)
-+#endif
-+
-+#ifdef CONFIG_MTD_CFI_I8
-+# ifdef cfi_interleave
-+#  undef cfi_interleave
-+#  define cfi_interleave(cfi) ((cfi)->interleave)
-+# else
-+#  define cfi_interleave(cfi) 8
-+# endif
-+#define cfi_interleave_is_8(cfi) (cfi_interleave(cfi) == 8)
-+#else
-+#define cfi_interleave_is_8(cfi) (0)
-+#endif
-+
-+#ifndef cfi_interleave
-+#warning No CONFIG_MTD_CFI_Ix selected. No NOR chip support can work.
-+static inline int cfi_interleave(void *cfi)
-+{
-+	BUG();
-+	return 0;
-+}
-+#endif
-+
-+static inline int cfi_interleave_supported(int i)
-+{
-+	switch (i) {
-+#ifdef CONFIG_MTD_CFI_I1
-+	case 1:
-+#endif
-+#ifdef CONFIG_MTD_CFI_I2
-+	case 2:
-+#endif
-+#ifdef CONFIG_MTD_CFI_I4
-+	case 4:
-+#endif
-+#ifdef CONFIG_MTD_CFI_I8
-+	case 8:
-+#endif
-+		return 1;
-+
-+	default:
-+		return 0;
-+	}
-+}
-+
-+
-+#endif /* __MTD_CFI_INTERLEAVE_H__ */
--- 
-2.37.2.609.g9ff673ca1a
-
-
-From e11b2e2d16ac6af2d2ee35b009cdb156ccf6c98e Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: Yong Zhi <yong.zhi@intel.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Bingbu Cao <bingbu.cao@intel.com>,
- Dan Scally <djrscally@gmail.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Fri, 16 Sep 2022 01:33:18 +0200
-Subject: [PATCH 4/6] media: ipu3-cio2: make the bridge depend on i2c
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-drivers/media/pci/intel/ipu3/cio2-bridge.c: In function ‘cio2_bridge_unregister_sensors’:
-drivers/media/pci/intel/ipu3/cio2-bridge.c:258:17: error: implicit declaration of function ‘i2c_unregister_device’; did you mean ‘spi_unregister_device’? [-Werror=implicit-function-declaration]
-  258 |                 i2c_unregister_device(sensor->vcm_i2c_client);
-      |                 ^~~~~~~~~~~~~~~~~~~~~
-      |                 spi_unregister_device
-
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- drivers/media/pci/intel/ipu3/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/media/pci/intel/ipu3/Kconfig b/drivers/media/pci/intel/ipu3/Kconfig
-index 39bd3be0b43d..65b0c1598fbf 100644
---- a/drivers/media/pci/intel/ipu3/Kconfig
-+++ b/drivers/media/pci/intel/ipu3/Kconfig
-@@ -21,6 +21,7 @@ config VIDEO_IPU3_CIO2
- config CIO2_BRIDGE
- 	bool "IPU3 CIO2 Sensors Bridge"
- 	depends on VIDEO_IPU3_CIO2 && ACPI
-+	depends on I2C
- 	help
- 	  This extension provides an API for the ipu3-cio2 driver to create
- 	  connections to cameras that are hidden in the SSDB buffer in ACPI.
--- 
-2.37.2.609.g9ff673ca1a
-
-
-From 6da77c7f9af144a6a35020e2000e990ce285800f Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: Khalil Blaiech <kblaiech@nvidia.com>,
- Asmaa Mnebhi <asmaa@nvidia.com>,
- linux-i2c@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Mon, 10 Oct 2022 20:33:51 +0200
-Subject: [PATCH 5/6] i2c: mlxbf: depend on ACPI; clean away ifdeffage
-
-This fixes maybe_unused warnings/errors.
-
-According to a comment during device tree removal, only ACPI is supported,
-thus let's actually require it.
-
-Fixes: be18c5ede25da39a0eda541f6de3620a30cf731f
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- drivers/i2c/busses/Kconfig     | 1 +
- drivers/i2c/busses/i2c-mlxbf.c | 9 ---------
- 2 files changed, 1 insertion(+), 9 deletions(-)
-
-diff --git a/drivers/i2c/busses/Kconfig b/drivers/i2c/busses/Kconfig
-index 264e780ae32e..e50f9603d189 100644
---- a/drivers/i2c/busses/Kconfig
-+++ b/drivers/i2c/busses/Kconfig
-@@ -764,6 +764,7 @@ config I2C_LPC2K
- config I2C_MLXBF
-         tristate "Mellanox BlueField I2C controller"
-         depends on MELLANOX_PLATFORM && ARM64
-+	depends on ACPI
- 	select I2C_SLAVE
-         help
-           Enabling this option will add I2C SMBus support for Mellanox BlueField
-diff --git a/drivers/i2c/busses/i2c-mlxbf.c b/drivers/i2c/busses/i2c-mlxbf.c
-index e68e775f187e..1810d5791b3d 100644
---- a/drivers/i2c/busses/i2c-mlxbf.c
-+++ b/drivers/i2c/busses/i2c-mlxbf.c
-@@ -2247,7 +2247,6 @@ static struct i2c_adapter_quirks mlxbf_i2c_quirks = {
- 	.max_write_len = MLXBF_I2C_MASTER_DATA_W_LENGTH,
- };
- 
--#ifdef CONFIG_ACPI
- static const struct acpi_device_id mlxbf_i2c_acpi_ids[] = {
- 	{ "MLNXBF03", (kernel_ulong_t)&mlxbf_i2c_chip[MLXBF_I2C_CHIP_TYPE_1] },
- 	{ "MLNXBF23", (kernel_ulong_t)&mlxbf_i2c_chip[MLXBF_I2C_CHIP_TYPE_2] },
-@@ -2282,12 +2281,6 @@ static int mlxbf_i2c_acpi_probe(struct device *dev, struct mlxbf_i2c_priv *priv)
- 
- 	return 0;
- }
--#else
--static int mlxbf_i2c_acpi_probe(struct device *dev, struct mlxbf_i2c_priv *priv)
--{
--	return -ENOENT;
--}
--#endif /* CONFIG_ACPI */
- 
- static int mlxbf_i2c_probe(struct platform_device *pdev)
- {
-@@ -2490,9 +2483,7 @@ static struct platform_driver mlxbf_i2c_driver = {
- 	.remove = mlxbf_i2c_remove,
- 	.driver = {
- 		.name = "i2c-mlxbf",
--#ifdef CONFIG_ACPI
- 		.acpi_match_table = ACPI_PTR(mlxbf_i2c_acpi_ids),
--#endif /* CONFIG_ACPI  */
- 	},
- };
- 
--- 
-2.37.2.609.g9ff673ca1a
-
-
-From 22212623b9fbffbe4e6e1490049a895d1d8591bc Mon Sep 17 00:00:00 2001
-From: Adam Borowski <kilobyte@angband.pl>
-To: Cezary Rojewski <cezary.rojewski@intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <liam.r.girdwood@linux.intel.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
- Brent Lu <brent.lu@intel.com>,
- alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org
-Date: Mon, 17 Oct 2022 08:17:12 +0200
-Subject: [PATCH 6/6] ASoC: Intel: boards: add missing dependency from
- realtek-common
-
-These boards use code from sound/soc/sof/sof-audio.c
-
-Fixes: e1d5e13324020c4b405e63cae34560c7992bec2e
-Signed-off-by: Adam Borowski <kilobyte@angband.pl>
----
- sound/soc/intel/boards/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/intel/boards/Kconfig b/sound/soc/intel/boards/Kconfig
-index aa12d7e3dd2f..3179ba061d87 100644
---- a/sound/soc/intel/boards/Kconfig
-+++ b/sound/soc/intel/boards/Kconfig
-@@ -34,6 +34,7 @@ config SND_SOC_INTEL_SOF_MAXIM_COMMON
- 
- config SND_SOC_INTEL_SOF_REALTEK_COMMON
- 	tristate
-+	depends on SND_SOC_SOF
- 
- config SND_SOC_INTEL_SOF_CIRRUS_COMMON
- 	tristate
--- 
-2.37.2.609.g9ff673ca1a
-
+>
+> [1] https://lore.kernel.org/lkml/YOdwxh3487PeMHRX@cmpxchg.org/
+> [2] https://lore.kernel.org/lkml/20210708203648.2399667-1-surenb@google.com/
+>
+>  include/linux/psi_types.h |  1 +
+>  kernel/sched/psi.c        | 60 +++++++++++++++++++++++++++++++++------
+>  2 files changed, 52 insertions(+), 9 deletions(-)
+>
+> diff --git a/include/linux/psi_types.h b/include/linux/psi_types.h
+> index c7fe7c089718..3f78c9bf7bb1 100644
+> --- a/include/linux/psi_types.h
+> +++ b/include/linux/psi_types.h
+> @@ -170,6 +170,7 @@ struct psi_group {
+>         struct timer_list poll_timer;
+>         wait_queue_head_t poll_wait;
+>         atomic_t poll_wakeup;
+> +       atomic_t poll_scheduled;
+>
+>         /* Protects data used by the monitor */
+>         struct mutex trigger_lock;
+> diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
+> index 7f6030091aee..2f548beeae50 100644
+> --- a/kernel/sched/psi.c
+> +++ b/kernel/sched/psi.c
+> @@ -188,6 +188,7 @@ static void group_init(struct psi_group *group)
+>         INIT_DELAYED_WORK(&group->avgs_work, psi_avgs_work);
+>         mutex_init(&group->avgs_lock);
+>         /* Init trigger-related members */
+> +       atomic_set(&group->poll_scheduled, 0);
+>         mutex_init(&group->trigger_lock);
+>         INIT_LIST_HEAD(&group->triggers);
+>         group->poll_min_period = U32_MAX;
+> @@ -561,18 +562,17 @@ static u64 update_triggers(struct psi_group *group, u64 now)
+>         return now + group->poll_min_period;
+>  }
+>
+> -/* Schedule polling if it's not already scheduled. */
+> -static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+> +/* Schedule polling if it's not already scheduled or forced. */
+> +static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
+> +                                  bool force)
+>  {
+>         struct task_struct *task;
+>
+>         /*
+> -        * Do not reschedule if already scheduled.
+> -        * Possible race with a timer scheduled after this check but before
+> -        * mod_timer below can be tolerated because group->polling_next_update
+> -        * will keep updates on schedule.
+> +        * atomic_xchg should be called even when !force to provide a
+> +        * full memory barrier (see the comment inside psi_poll_work).
+>          */
+> -       if (timer_pending(&group->poll_timer))
+> +       if (atomic_xchg(&group->poll_scheduled, 1) && !force)
+>                 return;
+>
+>         rcu_read_lock();
+> @@ -584,12 +584,15 @@ static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+>          */
+>         if (likely(task))
+>                 mod_timer(&group->poll_timer, jiffies + delay);
+> +       else
+> +               atomic_set(&group->poll_scheduled, 0);
+>
+>         rcu_read_unlock();
+>  }
+>
+>  static void psi_poll_work(struct psi_group *group)
+>  {
+> +       bool force_reschedule = false;
+>         u32 changed_states;
+>         u64 now;
+>
+> @@ -597,6 +600,43 @@ static void psi_poll_work(struct psi_group *group)
+>
+>         now = sched_clock();
+>
+> +       if (now > group->polling_until) {
+> +               /*
+> +                * We are either about to start or might stop polling if no
+> +                * state change was recorded. Resetting poll_scheduled leaves
+> +                * a small window for psi_group_change to sneak in and schedule
+> +                * an immegiate poll_work before we get to rescheduling. One
+> +                * potential extra wakeup at the end of the polling window
+> +                * should be negligible and polling_next_update still keeps
+> +                * updates correctly on schedule.
+> +                */
+> +               atomic_set(&group->poll_scheduled, 0);
+> +               /*
+> +                * A task change can race with the poll worker that is supposed to
+> +                * report on it. To avoid missing events, ensure ordering between
+> +                * poll_scheduled and the task state accesses, such that if the poll
+> +                * worker misses the state update, the task change is guaranteed to
+> +                * reschedule the poll worker:
+> +                *
+> +                * poll worker:
+> +                *   atomic_set(poll_scheduled, 0)
+> +                *   smp_mb()
+> +                *   LOAD states
+> +                *
+> +                * task change:
+> +                *   STORE states
+> +                *   if atomic_xchg(poll_scheduled, 1) == 0:
+> +                *     schedule poll worker
+> +                *
+> +                * The atomic_xchg() implies a full barrier.
+> +                */
+> +               smp_mb();
+> +       } else {
+> +               /* Polling window is not over, keep rescheduling */
+> +               force_reschedule = true;
+> +       }
+> +
+> +
+>         collect_percpu_times(group, PSI_POLL, &changed_states);
+>
+>         if (changed_states & group->poll_states) {
+> @@ -622,7 +662,8 @@ static void psi_poll_work(struct psi_group *group)
+>                 group->polling_next_update = update_triggers(group, now);
+>
+>         psi_schedule_poll_work(group,
+> -               nsecs_to_jiffies(group->polling_next_update - now) + 1);
+> +               nsecs_to_jiffies(group->polling_next_update - now) + 1,
+> +               force_reschedule);
+>
+>  out:
+>         mutex_unlock(&group->trigger_lock);
+> @@ -747,7 +788,7 @@ static void psi_group_change(struct psi_group *group, int cpu,
+>         write_seqcount_end(&groupc->seq);
+>
+>         if (state_mask & group->poll_states)
+> -               psi_schedule_poll_work(group, 1);
+> +               psi_schedule_poll_work(group, 1, false);
+>
+>         if (wake_clock && !delayed_work_pending(&group->avgs_work))
+>                 schedule_delayed_work(&group->avgs_work, PSI_FREQ);
+> @@ -1223,6 +1264,7 @@ void psi_trigger_destroy(struct psi_trigger *t)
+>                  * can no longer be found through group->poll_task.
+>                  */
+>                 kthread_stop(task_to_destroy);
+> +               atomic_set(&group->poll_scheduled, 0);
+>         }
+>         kfree(t);
+>  }
+> --
+> 2.38.0.rc1.362.ged0d419d3c-goog
+>
 
