@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8919FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 122E6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:42:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mYPcs1IOe6NtCzuGcnog0KWdUa2jDExn9rUhH4BHCfo=; b=HxrmGlM0oxjpyMd7F6QmF1ffOH
-	58C2p0Zuoaq0viLnyRtdusxGngJHsn67zUGkDYluwymv05AlGMJnj1/CQlo+LH/EXdC1+KxScUQUw
-	VPRZeLe3MN88dl1UuN723z0EGKxa7xOdRmWbwKHeeCbKmWVC8n0haFn5LNq4tykWcXmCTgSaRoTjc
-	9LLmbW867WtVHu24Pu5hE5aBv+73x6Ra89t9zCxDM5MKjk/R5K+XYyRuMYV8OwowyLUg8M+Psg+vL
-	xLX7hu44LNtQIw6fRnfFluepv4pEBPC2CQBqJatdexUX+TICs42Pem+vmg+lVncdbD+HWsoufzmc0
-	T5hEuMiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VMtmxttdjDMRusyp8YuuiE77qbnbZtwtAdEQ0dVdJJY=; b=0CpsTuJkk6dG86cojvUwB6UORs
+	ZomfzAxB0OtX/fkWzjIJjq+BiBnHAfkaX7H5hFLXZEcYwyYznWxim2Tot668V2Cw87c2pHiNrxQr5
+	5WenKBWID32eZUuTMAThjaFD/dbr/8NPqDNrPe245m1KRghGewHk+oTyfD+5ukM42p67rISyRdvzA
+	hjiweog6qrQhymZ0EYfQjpfAawa+a6/Sfqgnq9eD2ixJRQtXchNhMhXMX205EWXvqKMsKUFBjet9G
+	uKw6xMVI7eP+kBo2S/WCa+aya1XVE2lquNmaiyXMKA0X1GdYOkR7HwzXzfnIGGc+mj0jmBCnz0xzb
+	nVuxpTXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnXq-006QOM-Do; Fri, 21 Oct 2022 08:38:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1olnbF-006S47-6h; Fri, 21 Oct 2022 08:41:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnXW-006QHb-JE; Fri, 21 Oct 2022 08:38:04 +0000
-X-UUID: e15f5a501cef40b0b46955ccc5ae4e3f-20221021
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mYPcs1IOe6NtCzuGcnog0KWdUa2jDExn9rUhH4BHCfo=;
-	b=hXQFzaQArQdGNA0RRbR+werKr8Nb+3qnLa9HIz0ZxhYo1KDzyseQ45FXJM3H12BTuSg1/PRYqGZcmSVPJsMvStOAijAx//O2w+Bo+uJUTz+Jg7VKbmei/yL5/rpKhrJ2qQ/G9Z3Nr2FD4NBm8CMhhZZJQelawGRVeDEpu5rFf0U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:07dc2cd7-1449-49fd-9679-03003921ae68,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:d8e3ac6c-89d3-4bfa-baad-dc632a24bca3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e15f5a501cef40b0b46955ccc5ae4e3f-20221021
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 148956966; Fri, 21 Oct 2022 01:37:57 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 21 Oct 2022 16:27:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 21 Oct 2022 16:27:24 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
-	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
-CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>
-Subject: [PATCH v2 01/12] ASoC: mediatek: common: add SMC ops and SMC CMD
-Date: Fri, 21 Oct 2022 16:27:08 +0800
-Message-ID: <20221021082719.18325-2-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221021082719.18325-1-trevor.wu@mediatek.com>
-References: <20221021082719.18325-1-trevor.wu@mediatek.com>
+	id 1olnak-006RpD-3y; Fri, 21 Oct 2022 08:41:23 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 831446602534;
+	Fri, 21 Oct 2022 09:41:19 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666341680;
+	bh=N4UNINvJZ31lYbQPW+hEaoBxdTyA4gRTjPK7OCidDpE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BGBNH2aFKmpGlLLm0NeLj4/RQcaL0VbfbvpSNvBiB/PxBSbYHaM5/Lch/3U24Rw9U
+	 uBZt588RTaMjkK7GBYsGpQFswiZrKuhQTsihqg5euRXUk3k1DRRp73bWSHn8+2Dcf7
+	 npCXXGE5bShXnQSd0w5C21N8HzPyFDTFHEuzM9mzryNEoDSixKO2lrum+NfMAIq470
+	 uiVTspvctLUxnaFk8ZonDdlNOrp4dcFtsKxC8zHfNWpnRfUbf1LeHgIQb0dpb7mAr1
+	 D6OwKw70VLEMuR6S8j2IJLPCY4iu2bohuPAtyXlj89MsLDbC/Vu3TNFLLH7UOLhuiF
+	 n6J35jOoBuXnQ==
+Message-ID: <51e54a52-17a7-e71d-27ee-d4754fcc8514@collabora.com>
+Date: Fri, 21 Oct 2022 10:41:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v2 04/12] ASoC: mediatek: mt8188: support adda in platform
+ driver
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
+ robh+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20221021082719.18325-1-trevor.wu@mediatek.com>
+ <20221021082719.18325-5-trevor.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221021082719.18325-5-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_013802_663265_6E22AB71 
-X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-CacheID: sfid-20221021_014122_350035_3F2C24C5 
+X-CRM114-Status: UNSURE (   6.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,46 +79,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SMC call is required to communicate with ATF for some secure operations,
-so we add SMC ops IDs and SMC CMD ID to common header.
+Il 21/10/22 10:27, Trevor Wu ha scritto:
+> Add mt8188 adda dai driver support.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/common/mtk-base-afe.h | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
-index ef83e78c22a8..f51578b6c50a 100644
---- a/sound/soc/mediatek/common/mtk-base-afe.h
-+++ b/sound/soc/mediatek/common/mtk-base-afe.h
-@@ -9,7 +9,26 @@
- #ifndef _MTK_BASE_AFE_H_
- #define _MTK_BASE_AFE_H_
- 
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
-+
- #define MTK_STREAM_NUM (SNDRV_PCM_STREAM_LAST + 1)
-+#define MTK_SIP_AUDIO_CONTROL MTK_SIP_SMC_CMD(0x517)
-+
-+/* SMC CALL Operations */
-+enum mtk_audio_smc_call_op {
-+	MTK_AUDIO_SMC_OP_INIT = 0,
-+	MTK_AUDIO_SMC_OP_DRAM_REQUEST,
-+	MTK_AUDIO_SMC_OP_DRAM_RELEASE,
-+	MTK_AUDIO_SMC_OP_SRAM_REQUEST,
-+	MTK_AUDIO_SMC_OP_SRAM_RELEASE,
-+	MTK_AUDIO_SMC_OP_ADSP_REQUEST,
-+	MTK_AUDIO_SMC_OP_ADSP_RELEASE,
-+	MTK_AUDIO_SMC_OP_DOMAIN_SIDEBANDS,
-+	MTK_AUDIO_SMC_OP_BTCVSD_WRITE,
-+	MTK_AUDIO_SMC_OP_BTCVSD_UPDATE_CTRL_CLEAR,
-+	MTK_AUDIO_SMC_OP_BTCVSD_UPDATE_CTRL_UNDERFLOW,
-+	MTK_AUDIO_SMC_OP_NUM
-+};
- 
- struct mtk_base_memif_data {
- 	int id;
--- 
-2.18.0
 
 
