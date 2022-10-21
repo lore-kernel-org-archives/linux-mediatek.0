@@ -4,88 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1195C43219
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 06:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F237C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 06:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=umGGouhL9IQ7GlRp0p4h6u7/QOz73HxFmlgRC36JplY=; b=Qwx428E8pWVe2m
-	noAotZDyayoWSuvkWDwK/8PYthXiJOQThRX6KVEy3kca2cW+CGT4qOggYV4smwbeDmNWWgP+G4NnG
-	Kcczl1HILkMnUNQA/rFdLwZnOBumZILd+A6so7CoHJVqUGB80V/N04nCOWFeVBfgqIJjO+5T3Rx2c
-	QJc80Ywl4I7jvflIW8nPs8wXvjMY4IWrSk2KiwSq3afGHFqRcDJFjmof+mVb0A4iS7xHwnheNPEiR
-	xZGLBVxMSCxvd7JJ9CRIOdtc6ffzfzKenEoLs7Yb5me4wpj4ajlojBdQ/tA/dFBTDGt/ieved4GJu
-	KgSS/9lfn0YKj+HTU41A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BPOYEyF5tz9xReA2PR5B2itvq55j7FP2nA3ronwbhHU=; b=Jobwbb4jOuSoz3yzBu+s9RSdnx
+	5XsrNOpsctwT9VTQvpIGHq3l/hPn63jf4LXc3g2YWm6AVnBQtm7NEAtftw/MjYZZVUAXD3wjRqh0s
+	1Ov6Kp0FbzDpwm0aXE/2zo+RA8nDylZelb9fvaZpl7IK4GSXx9nkTQGXGx+25actdLAK8jSeWoOfd
+	mSgS0iJJtV1Gj9BJ/ayS8LVJCaCd8l4YNCf9q+Y80bcfg9rmZOQ5yL5U66pGYi39Td2lxkkYGoppa
+	aRsuI7kPsvs3qCTNgsXhZ2/ed/OAiBNrhU5FkC6mL6HliIwQ9QKF/mmjDG9W6AmJ9ufN55CLPFh7j
+	GnHnKIQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oll9z-005a7S-T5; Fri, 21 Oct 2022 06:05:35 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1ollGQ-005bli-CI; Fri, 21 Oct 2022 06:12:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oll9o-005a28-Fr; Fri, 21 Oct 2022 06:05:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666332300;
-	bh=XcKCqy9WT0HZU+yGc89UpnlSmGCGlPa9TVxnjEkCmbs=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References;
-	b=IIAptyNrk5ip/23Pap1EkWy7Djnd4uKJ5axDJ/QSVnP9t6esIaJBBSv9KdUoFOyWv
-	 LPNSlsUbBqGlo42TvWZMjNW62U1A2enJzMWvW0ZPIeYl5x2o/K+12ALHunP1UuDuDV
-	 lTBRtPEu7TU4R58bLR7AGwFESU0FHOfTxAcaJ4/I=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [127.0.0.1] ([217.61.146.132]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1M9Fjb-1oiA7X2mIB-006O7z; Fri, 21
- Oct 2022 08:05:00 +0200
-Date: Fri, 21 Oct 2022 08:04:51 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Frank Wunderlich <linux@fw-web.de>
-CC: linux-mediatek@lists.infradead.org, Alexander Couzens <lynxis@fe80.eu>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-User-Agent: K-9 Mail for Android
-In-Reply-To: <Y1F0pSrJnNlYzehq@shell.armlinux.org.uk>
-References: <20221020144431.126124-1-linux@fw-web.de> <Y1F0pSrJnNlYzehq@shell.armlinux.org.uk>
-Message-ID: <02A54E45-2084-440A-A643-772C0CC9F988@public-files.de>
+	id 1ollGM-005bji-Uj; Fri, 21 Oct 2022 06:12:12 +0000
+X-UUID: bd255058f6cd4966b619a8a8b97dc0df-20221020
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=BPOYEyF5tz9xReA2PR5B2itvq55j7FP2nA3ronwbhHU=;
+	b=ICVOVmUXdlxsahqKc6kbftTferGzmv+KxCnKJ1oITIH/4JF69zqMpOpBnu0h1dHe4jLuO58q20d/4k7PAknts13kREmTRJSMWD6DW1AyKBkuOVpwGrTXcchQxwwo7+cfuBk5yXPnCb8o4NhoPBsIyp84w1R52ByvYdWsHqnIJe4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:0864ea5f-7aee-4aef-b157-b17828516c2c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:50883ae4-e572-4957-be22-d8f73f3158f9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: bd255058f6cd4966b619a8a8b97dc0df-20221020
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1464693486; Thu, 20 Oct 2022 23:11:56 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 21 Oct 2022 14:11:43 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 21 Oct 2022 14:11:43 +0800
+Message-ID: <2d9700c64d729ae802a29e0a4282e6206dd0ef33.camel@mediatek.com>
+Subject: Re: [PATCH 1/2] phy: phy-mtk-tphy: Add PCIe 2 lane efuse support
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Daniel Golle <daniel@makrotopia.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	"Vinod Koul" <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Fri, 21 Oct 2022 14:11:43 +0800
+In-Reply-To: <df51b63add2830d91b527db64fba6ffdb7765f5d.1666193782.git.daniel@makrotopia.org>
+References: <df51b63add2830d91b527db64fba6ffdb7765f5d.1666193782.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:T0xeOlwWh+mj7CEVR5iha6HOYXAeiLwNgtwZuW5tfseTPyJVnow
- GV12rB5Z7Gqzk4O4+QSM50R55FX0xEos8jDSOVx7p8bZMP7lN6VctuiyK9OHcZ+uEFsgQv4
- JmPyLp3jiGosxAujzutswr5HylZYkhCoKZiWednBXfVzEw2fOqJUw2npQUORevq0ZHGKkr9
- /CW12oH2hbgX05Otva25Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jngH6wwMaIk=:Lbh6chv5Fo/u3adZRcy8WY
- UROP3LiJwPScWNqtO1rXkSwcYkO1jIvsrsDDgNw/nt5hAuHoHp80XTPdd8todANvmQbo9c5qQ
- uYi0iYeEkg436tCdoWQnU4IYLPHGVNW8dxQyyZPBm7339abBVmdTW0kcJWuXNp+fECebeiA69
- gMyHGriGupxS/S/f8Ji+bzLr7GZilATTR4pifgEJYxa7zwq9838O54IL3x3xdTm7FIbSJ24g7
- ad5IPsACPbocj3P0IN7xSjQNyVTGF3LTBWtcGhEvxZDdpyTHCrYsMhptt68l7XlphCrzNulmY
- eK/gudWKVspn51337DOPk33FixZg2Hp90zCepk6qMNoN7j4n1iB4yJlwwaduuO0UtGZqqtGDn
- yKZS2v3e/5a6YNXL7XsO/k30Efr+tULO7d74jbiRpkXPJid5YtnL1egFL/+Vmqi5ia6fGsUZa
- S7hfwfEYOyuJ+VhnT+VW7MLjoIMEdpAjIj8jNXIjhZLQ3nNFXSmVuZGbQ6Ht3E7hVkc9wFEUc
- hmIrQnSgV/ERuC2STMzykK8QSc7Nq4SftpVx1vaaoFgBM0f6rLOtA/g5UjdOt0jsCDdwaDKaG
- f9Rbs5ApnovfNJ2PpjlEOSfc5otcTGpPkUMze0D+xf85BL4S9K9SXStrwz5YTb9FVdfxG/mWq
- MioYe07Pdq/9zDsIuijDa7ixTqc3cN//7BmP3htkqGFu9/M2WW61E+4+m1Nxk5UC/SbkhrGUs
- b4GiMSux3EWzApRepcEh1lojYbghJA4HqoBFHnnxoMXYlMNfao8/hz34Zx97JhzHI8YSnj2GM
- 6wD/xeCSZ8NW74byHkgvxG24xQRUdDaArwh6rQWVJUAS6l9Dj0thzIrkARs4jYYWln+DjBknm
- LrwksjMJhx9rnBJ/NtMzpYOWo14Aqn28nEULVTzUZ+VekU3xFj6/s5amcZ3Il5CKQikG4Jp3Z
- e7QL98ygI5hA73hoY41KZhsYMgNbnySy8JcIT2lYeUnHykc51MSAWyqb7FvmOdxqacRqIOuSH
- f+QjZyqsE0of3/u0nOnNhsBfEyd6dPol8Bk1aENbg008hAMHzWsaJrRsABfB9NLNvtGEc1kuJ
- x/ObPH0UV26ZJy5HBWd4CGpW9Cuxz1VudUcSKxuiRmfEOyiZcJo/WDn46qByQd2g/X4dQKWe9
- jlhtXzcbJAjjVRAz9OvVH7Jh9BCpRYIMZaQst8cC7lT1FrdjJrQ40AtUnxfFvYKdChtLgc1fF
- DNlh7cepMA9QwJTCer4XRs12lLMcW+lJNh+ljqgCnDYheC8+xrgK2fWVHmbHLcTIbZicZr3a5
- OoQc+Qt2xmBkbVzh+S3+oLBuNlxrfqR5BxDa7w6kacrUPSLxH7bwT7sBmvk/iR4Ixq9OBkzQa
- tjvXGATGtlZmdzDGhjZhxXlXd12B4KoNiN4ROGo10uXnij0jghf93ktmCu37a9/NZn+WodaDO
- s64iZQtIZ0Q8IE42Qhj7QJdS7wr3ExhEWrate7mjuJN5vVETIRCkmpGNG8Rd6J5AUGd5wrmU2
- /iJfb3+hMH+cKLDaZzi2j3udXCAYV86+nhm5bT5L61Erm
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221020_230524_857076_ED18EE05 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20221020_231211_028523_E524AE46 
+X-CRM114-Status: GOOD (  27.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,52 +77,255 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 20=2E Oktober 2022 18:17:41 MESZ schrieb "Russell King (Oracle)" <linux@=
-armlinux=2Eorg=2Euk>:
->On Thu, Oct 20, 2022 at 04:44:31PM +0200, Frank Wunderlich wrote:
->> diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii=2Ec b/drivers/net/=
-ethernet/mediatek/mtk_sgmii=2Ec
->> index 736839c84130=2E=2E8b7465057e57 100644
->> --- a/drivers/net/ethernet/mediatek/mtk_sgmii=2Ec
->> +++ b/drivers/net/ethernet/mediatek/mtk_sgmii=2Ec
->> @@ -122,7 +122,21 @@ static void mtk_pcs_link_up(struct phylink_pcs *pc=
-s, unsigned int mode,
->>  	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
->>  }
->> =20
->> +static void mtk_pcs_get_state(struct phylink_pcs *pcs, struct phylink_=
-link_state *state)
->> +{
->> +	struct mtk_pcs *mpcs =3D pcs_to_mtk_pcs(pcs);
->> +	unsigned int val;
->> +
->> +	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
->> +	state->speed =3D val & RG_PHY_SPEED_3_125G ? SPEED_2500 : SPEED_1000;
->> +
->
->Sorry, looking back at my initial comment on the first revision of this
->patch, I see my second point was confused=2E It should have read:
->
->"2) There should also be a setting for state->duplex=2E"
->
->IOW, "duplex" instead of "pause"=2E
->
->Also, is there no way to read the link partner advertisement?
+On Wed, 2022-10-19 at 16:37 +0100, Daniel Golle wrote:
+> From: Zhanyong Wang <zhanyong.wang@mediatek.com>
+> 
+> Add PCIe 2 lane efuse support in tphy driver.
+> 
+> Signed-off-by: Jie Yang <jieyy.yang@mediatek.com>
+> Signed-off-by: Zhanyong Wang <zhanyong.wang@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/phy/mediatek/phy-mtk-tphy.c | 112
+> ++++++++++++++++++++++++++++
+>  1 file changed, 112 insertions(+)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
+> b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index e906a82791bdaa..b0c9834efec7ef 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -43,6 +43,15 @@
+>  #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+>  #define SSUSB_SIFSLV_V2_U3PHYA		0x400
+>  
+> +/* version V4 sub-banks offset base address */
+> +/* pcie phy banks */
+> +#define SSUSB_SIFSLV_V4_SPLLC		0x000
+> +#define SSUSB_SIFSLV_V4_CHIP		0x100
+> +#define SSUSB_SIFSLV_V4_U3PHYD		0x900
+> +#define SSUSB_SIFSLV_V4_U3PHYA		0xb00
+> +
+> +#define SSUSB_LN1_OFFSET		0x10000
+> +
+>  #define U3P_MISC_REG1		0x04
+>  #define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
+>  
+> @@ -268,6 +277,7 @@ enum mtk_phy_version {
+>  	MTK_PHY_V1 = 1,
+>  	MTK_PHY_V2,
+>  	MTK_PHY_V3,
+> +	MTK_PHY_V4,
+>  };
+>  
+>  struct mtk_phy_pdata {
+> @@ -317,6 +327,9 @@ struct mtk_phy_instance {
+>  	u32 efuse_intr;
+>  	u32 efuse_tx_imp;
+>  	u32 efuse_rx_imp;
+> +	u32 efuse_intr_ln1;
+> +	u32 efuse_tx_imp_ln1;
+> +	u32 efuse_rx_imp_ln1;
+>  	int eye_src;
+>  	int eye_vrt;
+>  	int eye_term;
+> @@ -760,6 +773,36 @@ static void phy_v2_banks_init(struct mtk_tphy
+> *tphy,
+>  	}
+>  }
+>  
+> +static void phy_v4_banks_init(struct mtk_tphy *tphy,
+> +			      struct mtk_phy_instance *instance)
+> +{
+> +	struct u2phy_banks *u2_banks = &instance->u2_banks;
+> +	struct u3phy_banks *u3_banks = &instance->u3_banks;
+> +
+> +	switch (instance->type) {
+> +	case PHY_TYPE_USB2:
+> +		u2_banks->misc = instance->port_base +
+> SSUSB_SIFSLV_V2_MISC;
+> +		u2_banks->fmreg = instance->port_base +
+> SSUSB_SIFSLV_V2_U2FREQ;
+> +		u2_banks->com = instance->port_base +
+> SSUSB_SIFSLV_V2_U2PHY_COM;
+> +		break;
+> +	case PHY_TYPE_USB3:
+> +		u3_banks->spllc = instance->port_base +
+> SSUSB_SIFSLV_V2_SPLLC;
+> +		u3_banks->chip = instance->port_base +
+> SSUSB_SIFSLV_V2_CHIP;
+> +		u3_banks->phyd = instance->port_base +
+> SSUSB_SIFSLV_V2_U3PHYD;
+> +		u3_banks->phya = instance->port_base +
+> SSUSB_SIFSLV_V2_U3PHYA;
+> +		break;
+> +	case PHY_TYPE_PCIE:
+> +		u3_banks->spllc = instance->port_base +
+> SSUSB_SIFSLV_V4_SPLLC;
+> +		u3_banks->chip = instance->port_base +
+> SSUSB_SIFSLV_V4_CHIP;
+> +		u3_banks->phyd = instance->port_base +
+> SSUSB_SIFSLV_V4_U3PHYD;
+> +		u3_banks->phya = instance->port_base +
+> SSUSB_SIFSLV_V4_U3PHYA;
+> +		break;
+> +	default:
+> +		dev_err(tphy->dev, "incompatible PHY type\n");
+> +		return;
+> +	}
+> +}
+> +
+>  static void phy_parse_property(struct mtk_tphy *tphy,
+>  				struct mtk_phy_instance *instance)
+>  {
+> @@ -951,6 +994,40 @@ static int phy_efuse_get(struct mtk_tphy *tphy,
+> struct mtk_phy_instance *instanc
+>  
+>  		dev_dbg(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp
+> %x\n",
+>  			instance->efuse_intr, instance-
+> >efuse_rx_imp,instance->efuse_tx_imp);
+> +
+> +		if (tphy->pdata->version != MTK_PHY_V4)
+> +			break;
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "intr_ln1",
+> &instance->efuse_intr_ln1);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 lane1 intr efuse,
+> %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev,
+> "rx_imp_ln1", &instance->efuse_rx_imp_ln1);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 lane1 rx_imp
+> efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev,
+> "tx_imp_ln1", &instance->efuse_tx_imp_ln1);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 lane1 tx_imp
+> efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		/* no efuse, ignore it */
+> +		if (!instance->efuse_intr_ln1 &&
+> +		    !instance->efuse_rx_imp_ln1 &&
+> +		    !instance->efuse_tx_imp_ln1) {
+> +			dev_warn(dev, "no u3 lane1 efuse, but dts
+> enable it\n");
+> +			instance->efuse_sw_en = 0;
+> +			break;
+> +		}
+> +
+> +		dev_info(dev, "u3 lane1 efuse - intr %x, rx_imp %x,
+> tx_imp %x\n",
+> +			 instance->efuse_intr_ln1, instance-
+> >efuse_rx_imp_ln1,
+> +			 instance->efuse_tx_imp_ln1);
+>  		break;
+>  	default:
+>  		dev_err(dev, "no sw efuse for type %d\n", instance-
+> >type);
+> @@ -990,6 +1067,31 @@ static void phy_efuse_set(struct
+> mtk_phy_instance *instance)
+>  
+>  		mtk_phy_update_field(u3_banks->phya + U3P_U3_PHYA_REG0,
+> P3A_RG_IEXT_INTR,
+>  				    instance->efuse_intr);
+> +		if (instance->type == PHY_TYPE_USB3 || (
+> +		    !instance->efuse_intr_ln1 &&
+> +		    !instance->efuse_rx_imp_ln1 &&
+> +		    !instance->efuse_tx_imp_ln1))
+> +			break;
+> +
+> +		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET +
+> U3P_U3_PHYD_RSV,
+> +				 P3D_RG_EFUSE_AUTO_LOAD_DIS);
+> +
+> +		mtk_phy_update_field(u3_banks->phyd + SSUSB_LN1_OFFSET
+> + U3P_U3_PHYD_IMPCAL0,
+> +				     P3D_RG_TX_IMPEL, instance-
+> >efuse_tx_imp_ln1);
+> +		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET +
+> U3P_U3_PHYD_IMPCAL0,
+> +				 P3D_RG_FORCE_TX_IMPEL);
+> +
+> +		mtk_phy_update_field(u3_banks->phyd + SSUSB_LN1_OFFSET
+> + U3P_U3_PHYD_IMPCAL1,
+> +				     P3D_RG_RX_IMPEL, instance-
+> >efuse_rx_imp_ln1);
+> +		mtk_phy_set_bits(u3_banks->phyd + SSUSB_LN1_OFFSET +
+> U3P_U3_PHYD_IMPCAL1,
+> +				 P3D_RG_FORCE_RX_IMPEL);
+> +
+> +		mtk_phy_update_field(u3_banks->phya + SSUSB_LN1_OFFSET
+> + U3P_U3_PHYA_REG0,
+> +				     P3A_RG_IEXT_INTR, instance-
+> >efuse_intr_ln1);
+> +
+> +		dev_info(dev, "%s set LN1 efuse, tx_imp %x, rx_imp %x
+> intr %x\n",
+> +			 __func__, instance->efuse_tx_imp_ln1,
+> +			 instance->efuse_rx_imp_ln1, instance-
+> >efuse_intr_ln1);
+>  		break;
+>  	default:
+>  		dev_warn(dev, "no sw efuse for type %d\n", instance-
+> >type);
+> @@ -1129,6 +1231,9 @@ static struct phy *mtk_phy_xlate(struct device
+> *dev,
+>  	case MTK_PHY_V3:
+>  		phy_v2_banks_init(tphy, instance);
+>  		break;
+> +	case MTK_PHY_V4:
+> +		phy_v4_banks_init(tphy, instance);
+> +		break;
+>  	default:
+>  		dev_err(dev, "phy version is not supported\n");
+>  		return ERR_PTR(-EINVAL);
+> @@ -1169,6 +1274,12 @@ static const struct mtk_phy_pdata
+> tphy_v3_pdata = {
+>  	.version = MTK_PHY_V3,
+>  };
+>  
+> +static const struct mtk_phy_pdata tphy_v4_pdata = {
+> +	.avoid_rx_sen_degradation = false,
+> +	.sw_efuse_supported = true,
+> +	.version = MTK_PHY_V4,
+> +};
 
-Hi,
+Please try to use hardware efuse autoload way for this case first,
+there is no hardware issue, so I don't think we need use software way.
 
-On my board (bpi-r3) we have no autoneg on the gmacs=2E We have a switch (=
-mt7531) with fixed-link on the first and a sfp-cage on the other=2E Second =
-mac gets speed-setting (1000base-X or 2500base-X) from sfp eeprom, but no a=
-dvertisement from the "other end"=2E Imho it is always full duplex=2E
+As Sam said, the hardware ip used on 7981/7986 is MTK_PHY_V2;
 
-I have no register documentation to check if there is any way to read out =
-pause/duplex setting=2E Maybe MTK can answer this or extend function later=
-=2E
+Thanks a lot
 
-regards Frank
+> +
+>  static const struct mtk_phy_pdata mt8173_pdata = {
+>  	.avoid_rx_sen_degradation = true,
+>  	.version = MTK_PHY_V1,
+> @@ -1188,6 +1299,7 @@ static const struct of_device_id
+> mtk_tphy_id_table[] = {
+>  	{ .compatible = "mediatek,generic-tphy-v1", .data =
+> &tphy_v1_pdata },
+>  	{ .compatible = "mediatek,generic-tphy-v2", .data =
+> &tphy_v2_pdata },
+>  	{ .compatible = "mediatek,generic-tphy-v3", .data =
+> &tphy_v3_pdata },
+> +	{ .compatible = "mediatek,generic-tphy-v4", .data =
+> &tphy_v4_pdata },
+>  	{ },
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_tphy_id_table);
+
 
