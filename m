@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297AEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C10D2C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0yYamFq2e9HNxAgoT4SH7HYJPP6eUODhPlte9BFpifk=; b=MAcWEkNZ29LZuDfnEVl3bQALYp
-	RnF/Afqo8E0Ovp5gtEEEmx8MikjgHxHJHUEA1G6wlH0UOa0UwJsbcddeaU3SGBxSzNfCgceO3hwen
-	4AA5A0KbC+YHVPWaCAyDznKsgLw83PRFmCNyNKUXfM3E+ZJ88gyejfv886dDxAzGtvWoT39c1+Z3+
-	8s5wNPjQlU3qKsDaX3fBgqKaxbrBELI6tjNDR/QLaO4stTi+PjElYXMPpgLgMs2l1RS0jzRt1kua2
-	F/qWki18kf/14NLnH5jmPo+gIvgF4VkOwHVPTVjiyVL2QqocKXC1Uw0rSkdtuLWbuyLG7+PC1RrhW
-	dzTCsl0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6EmYthcJ2NF4pkw+zwFpbJG1Uc8byJjYA0ftZAO+KwY=; b=iQ57AdAbDPdcIAy0g9sJZJXUKW
+	XL40jTAO7rFxbpspcPJ4ExEXHdhn4wG5xQSQpYskcJNRGKa21I8KRlXC30Urc2PCvbkBO3u6TrHLz
+	oqo/G9iVuiqcFSDamjl2jHkOwlsAGRofM0DcGgaRh3GD68UX/1Syjwe+b2WjAC8lN13dsqT8k9LGh
+	8rf30YdrWFxbJ473GH3KaDGlQyMxe5HF5p+jUAYUzb56m76WDOMffbviS7sDVKJpO0UlZtH2ehR8X
+	Zjwb6bIinbbLc059VPVRIKcfmdHpC+uQaf/Ygd3/PpmUSpqY+nGajBRheL1QlKpPLs5lwfIp0wkkC
+	jmW53lRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnFZ-006J31-86; Fri, 21 Oct 2022 08:19:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1olnO6-006LQj-Vg; Fri, 21 Oct 2022 08:28:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnFH-006Iwa-Uz; Fri, 21 Oct 2022 08:19:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B8A38660252D;
-	Fri, 21 Oct 2022 09:19:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666340350;
-	bh=ZYx/Yzop9D7hc2wSOTEttiAxiuCQ7YU4rCEkjT3yODU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NnYwy9OltXtkN2rnajIF1cE5Y9s4R7U85GX8iWvq4m8gIQl0S2ezVgBlgdsL8gGdW
-	 8E/6wjGfB2RKZtExdgYrMbI+edoWnvOUH+v0zP5Yx8b+9r3E90LERx+tyzY+wcLuoh
-	 1TRM20fQoWQC0N5R7KZRM+RFJKmHa//z5zL37eVS2uLeaufj5WMWGVnp154J4zjQ9m
-	 +lYm4W+XjmeVU+mY+8QSePC3Ua0V4B+ocpDyDfKrzTiiCxL0j/U8/BuNjkI3a8aL+I
-	 U8ysZbdcMmfFRMP/pQoz054r6mZR6+X1VKeVob+7LVnQSJNL0e4+a2Sm8egXQ3G89F
-	 rMgbRUPHXZ31g==
-Message-ID: <c34ccb61-8a8d-1d44-35f0-1433eceb3e9c@collabora.com>
-Date: Fri, 21 Oct 2022 10:19:07 +0200
+	id 1olnNv-006LLl-Gv; Fri, 21 Oct 2022 08:28:09 +0000
+X-UUID: c6583acc6ad84db29ee26a1412e8668f-20221021
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6EmYthcJ2NF4pkw+zwFpbJG1Uc8byJjYA0ftZAO+KwY=;
+	b=mG3jmCIxQ7bMW6bRVy1ySyfMNqXi7nfI7Ma1M2IhRt1qF9y0zdFL28rQqvtHS2fHqUOjeLGezdW479DbxfHfXSvjSohdRy+3DThtXYvNvAOoGGvYIoMOThKvJHI7SJhKX1IBWwC6UMO2PtjfKoO/1zSg5mGMTvgvVSh1rk16zAo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:1e8eebc8-0434-4586-a410-25da8bce2cc2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:d7fb42c8-03ab-4171-989e-341ab5339257,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c6583acc6ad84db29ee26a1412e8668f-20221021
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 136063874; Fri, 21 Oct 2022 01:27:58 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 21 Oct 2022 16:27:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 21 Oct 2022 16:27:24 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
+CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>
+Subject: [PATCH v2 00/12] ASoC: mediatek: Add support for MT8188 SoC
+Date: Fri, 21 Oct 2022 16:27:07 +0800
+Message-ID: <20221021082719.18325-1-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH v3 06/10] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
- Add MT6795
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- Andy Teng <andy.teng@mediatek.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221007125904.55371-1-y.oudjana@protonmail.com>
- <20221007125904.55371-7-y.oudjana@protonmail.com>
- <0f078a85-056a-c11e-377b-27764a34485d@linaro.org>
- <8WU1KR.065JU8WYUX9C3@gmail.com>
- <2cfed688-f401-e69e-1ff4-f775c6d90f64@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <2cfed688-f401-e69e-1ff4-f775c6d90f64@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_011912_154323_7B79F7F1 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20221021_012807_611199_647B23FC 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,82 +79,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/10/22 14:21, Krzysztof Kozlowski ha scritto:
-> On 20/10/2022 07:36, Yassine Oudjana wrote:
->>
->> On Mon, Oct 10 2022 at 07:24:59 -04:00:00, Krzysztof Kozlowski
->> <krzysztof.kozlowski@linaro.org> wrote:
->>> On 07/10/2022 08:59, Yassine Oudjana wrote:
->>>>   From: Yassine Oudjana <y.oudjana@protonmail.com>
->>>>
->>>>   Combine MT6795 pin controller document into MT6779 one. In the
->>>>   process, replace the current interrupts property description with
->>>>   the one from the MT6795 document since it makes more sense. Also
->>>>   amend property descriptions and examples with more detailed
->>>>   information that was available in the MT6795 document, and replace
->>>>   the current pinmux node name patterns with ones from it since they
->>>>   are more common across mediatek pin controller bindings.
->>>>
->>>>   Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->>>>   ---
->>>>    .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  94 ++++++--
->>>>    .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 227
->>>> ------------------
->>>>    2 files changed, 77 insertions(+), 244 deletions(-)
->>>>    delete mode 100644
->>>> Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
->>>>
->>>>   diff --git
->>>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>>   index a2141eb0854e..cada3530dd0a 100644
->>>>   ---
->>>> a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>>   +++
->>>> b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->>>>   @@ -8,6 +8,7 @@ title: Mediatek MT6779 Pin Controller
->>>>
->>>>    maintainers:
->>>>      - Andy Teng <andy.teng@mediatek.com>
->>>>   +  - AngeloGioacchino Del Regno
->>>> <angelogioacchino.delregno@collabora.com>
->>>>      - Sean Wang <sean.wang@kernel.org>
->>>>
->>>>    description:
->>>>   @@ -18,6 +19,7 @@ properties:
->>>>      compatible:
->>>>        enum:
->>>>          - mediatek,mt6779-pinctrl
->>>>   +      - mediatek,mt6795-pinctrl
->>>>          - mediatek,mt6797-pinctrl
->>>>
->>>>      reg:
->>>>   @@ -43,9 +45,10 @@ properties:
->>>>      interrupt-controller: true
->>>>
->>>>      interrupts:
->>>>   -    maxItems: 1
->>>>   +    minItems: 1
->>>>   +    maxItems: 2
->>>>        description: |
->>>>   -      Specifies the summary IRQ.
->>>>   +      The interrupt outputs to sysirq.
->>>
->>> I am not sure if description is relevant now for all variants... what
->>> is
->>> the sysirq? You have two interrupts so both go to one sysirq?
->>
->> It's the system interrupt controller and it has several inputs. Both
->> interrupts go to it.
-> 
-> Then the naming is confusing because "sysirq" sounds like "system
-> interrupt".
-> 
+This series of patches adds support for Mediatek AFE of MT8188 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-Yassine: "Interrupt outputs to the system interrupt controller (sysirq)"
+Changes since v1:
+  - remove bus protection functions in case of unmerged dependency problem
+  - replace some bit operation macro with FIELD_PREP
+  - simplify register control by regmap_set_bits and regmap_clear_bits
+  - fix dt-binding errors
+  - rename compatible string for recognition
 
-That will surely clear up the confusion... :-)
+Trevor Wu (12):
+  ASoC: mediatek: common: add SMC ops and SMC CMD
+  ASoC: mediatek: mt8188: add common header
+  ASoC: mediatek: mt8188: support audsys clock
+  ASoC: mediatek: mt8188: support adda in platform driver
+  ASoC: mediatek: mt8188: support etdm in platform driver
+  ASoC: mediatek: mt8188: support pcmif in platform driver
+  ASoC: mediatek: mt8188: support audio clock control
+  ASoC: mediatek: mt8188: add platform driver
+  ASoC: mediatek: mt8188: add control for timing select
+  dt-bindings: mediatek: mt8188: add audio afe document
+  ASoC: mediatek: mt8188: add machine driver with mt6359
+  dt-bindings: mediatek: mt8188: add mt8188-mt6359 document
 
-Cheers,
-Angelo
+ .../bindings/sound/mt8188-afe-pcm.yaml        |  187 +
+ .../bindings/sound/mt8188-mt6359.yaml         |   64 +
+ sound/soc/mediatek/Kconfig                    |   23 +
+ sound/soc/mediatek/Makefile                   |    1 +
+ sound/soc/mediatek/common/mtk-base-afe.h      |   19 +
+ sound/soc/mediatek/mt8188/Makefile            |   15 +
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.c    |  656 ++++
+ sound/soc/mediatek/mt8188/mt8188-afe-clk.h    |  114 +
+ sound/soc/mediatek/mt8188/mt8188-afe-common.h |  151 +
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    | 3359 +++++++++++++++++
+ sound/soc/mediatek/mt8188/mt8188-audsys-clk.c |  206 +
+ sound/soc/mediatek/mt8188/mt8188-audsys-clk.h |   15 +
+ .../soc/mediatek/mt8188/mt8188-audsys-clkid.h |   83 +
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c   |  631 ++++
+ sound/soc/mediatek/mt8188/mt8188-dai-etdm.c   | 2596 +++++++++++++
+ sound/soc/mediatek/mt8188/mt8188-dai-pcm.c    |  366 ++
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c     |  808 ++++
+ sound/soc/mediatek/mt8188/mt8188-reg.h        | 3180 ++++++++++++++++
+ 18 files changed, 12474 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8188-afe-pcm.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
+ create mode 100644 sound/soc/mediatek/mt8188/Makefile
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.h
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-mt6359.c
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-reg.h
+
+-- 
+2.18.0
+
 
