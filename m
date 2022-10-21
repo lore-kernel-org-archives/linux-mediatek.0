@@ -4,98 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D94C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 13:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43294C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 15:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iqOMgMO4fRXqFN7+sEeqPMZsELyoKuJNhCumBVCnYwM=; b=iheSRZeMo6ErPEH8GjFchgQOmf
-	wsq/kM67ch/PfdAF5ZF7qyNaxfm6yHVKuV6YdvYIkRNScWGpXHq7ivOP5BJynRwTpwonWdLIRAsp7
-	fhpcS7CPS7bs8q6QHfJCtrar0rvrKYeYJbpPW7lQHzchK1LYdtK1BuOYk1VwIkBCqVU/YL9BKmPyg
-	Mtx2u+LA88GIrIFOqVMsStywQ+fIzm4ErTjjdarY0b4uR7+hlXGPbW/aoPLgvwVC8P0B9vH8HVrJW
-	yqhNRTuYBd5EXHZHMT1Pe+0yultcr4uNlSRHpiYmg8NYG0J0HpoixFa5ZvsMflw9LNPbnbaFWM8Vv
-	IoliyKDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J1FV8N2HvEmnCxkKHNnzHPV+zvFf6/k8QMPZ9Vrzt3o=; b=QFF3eaesWwUo1QYwEfPCp5PS0K
+	wQCXVz7TqJYO4220hV3EkxUBTtwG1j+WL9lt/3OPeBo6DRM9uuxTTjmBRx0Z9aTA0oqFgXgbugzhE
+	osfMYom0g/Qxpt0LY0NwCOehP3uZAwo4DVo6GikUiyHZw30Uuqha3P0B3CXsG41OQwAD5/7mK6eFz
+	yg7n7fBRYUgvYae1vIWVjy104lpvEFSvm4BUpvkunttHbSKwwDyNGnB/kCelP5S82VVaOxiYCrjNo
+	XNyMSTyMtgiAFJumOrWCklEqzMZDNzLbEFLoB8KQ0cTqA6c42/5mgJ5Xzs3r1WQbiG/xaxpIp51jU
+	iOrulrIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olsJ4-0086TG-31; Fri, 21 Oct 2022 13:43:26 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1oltjQ-008eaX-7W; Fri, 21 Oct 2022 15:14:44 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olsI5-0085qO-Ni
-	for linux-mediatek@lists.infradead.org; Fri, 21 Oct 2022 13:42:29 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id v1so4853844wrt.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Oct 2022 06:42:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iqOMgMO4fRXqFN7+sEeqPMZsELyoKuJNhCumBVCnYwM=;
-        b=jkMMUDA7tBEY5BW0P0DFVUEwi6Puu9sr20YsRRvngDbDWG6XO0+EF4jDSFaVLYS884
-         7NmGpyiVqo8qk78KIIPplhZeOFJbhj16d7045h4T6Skm7g7rAo0mduZRgEUk6o9SvkIN
-         J8iL+J+LmNv0Ir9mh5F7XDMAgcmZZa1rk4P6H1rAPxtheeit+T14J4FcT/hSVF5XFGUq
-         uUnfKx0FvBY1x05ozXe3dw5GAfCwQmo4QAza7uRwy4idcU8GiY9s7hyecU+IMmzMzKxo
-         +IBjA83ROO/EUNGmOvhhn6nQW7BXDk+rU/fXD/WVsRqhRdnnU2wZTiuLlp3wug6NzGSz
-         QUiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=iqOMgMO4fRXqFN7+sEeqPMZsELyoKuJNhCumBVCnYwM=;
-        b=6UYRud56iLZdkpsOFrQd1hZWR1IDziP8l6lVFmLYDX3Hs1/Sa6vVZDYBktHextPabV
-         9NPi4A6SemCduk+f1QpHyGcT3ZWk6ieo1ewBh408+0Fy3V2L5Ghrg8rs1tfzjr0DQdKQ
-         yr3iDDfvmooyTOaaR3z6X6ZOrrl0YlTVMXkupWgxSMyJN1+7fBTevCizwUnHPeQ5r6KT
-         6tUVmNTePM0w+v1MetttReWU3LET+06SurspRv+wOw/w4AAQc/l+k5W8JLoRQ7AIhqj2
-         kb8uqDTTxdXihRxculojqWpY5scdg+pMr3OkVrqzF9oK5Ilv3L+185xKKx0H7WMi1OQf
-         G+Gw==
-X-Gm-Message-State: ACrzQf1+DzFa4pFS0keAshvvE8x/k/Qoz2T1gdL0A3q7ZDUSRxFJ8Mer
-	8QCPbCQ2b+J10MyDelFBSr/Lng==
-X-Google-Smtp-Source: AMsMyM4eaa8ZRO33JVjSblX1N1v4yUy0W9L7PUTzNauH4jzDxTJkMtsAMF/4xE0hOVvB79QUzihkEw==
-X-Received: by 2002:a5d:4647:0:b0:22e:3608:aff5 with SMTP id j7-20020a5d4647000000b0022e3608aff5mr12047260wrs.162.1666359743231;
-        Fri, 21 Oct 2022 06:42:23 -0700 (PDT)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id h5-20020adfe985000000b002322bff5b3bsm22966355wrm.54.2022.10.21.06.42.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Oct 2022 06:42:22 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 21 Oct 2022 15:42:18 +0200
-Subject: [PATCH v5 3/3] iommu/mediatek: add support for MT8365 SoC
+	id 1oltjE-008eXu-9F; Fri, 21 Oct 2022 15:14:34 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E43C6660253A;
+	Fri, 21 Oct 2022 16:14:26 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666365268;
+	bh=WdAyMq9HWMH1DV/m+ouWfIuqmg+VXHtw3JJQiHsJ+BY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Z528/1yFK9NTNJR5xIJjMAESvHZQZ50JDXqwpyHzj0FJRQ9I9x0B48BivdAfLpgxT
+	 hyAi0ZjR+jtIOyTT4BFmpQDHlw9lkmLKDFeSldEU2lsvKvJM6pt7rsHIsq93j+jmcR
+	 H1wqpYgreqKO8JJYCj2tmCesGTDsUgrP0LhJuiY1y1WL0pFRhdEHTXryOEHhGIpOW7
+	 sqK4HIaozGvr1ul5GragRWIS1alBalIKsCUWLsEPx+G6NOIVnKYLS+kXbMhrgkIRT9
+	 3vTwUuNdcYKttDLKXjKqYsdGGDFZUK90d5aKSwifI7rS4dFtPD4JkKOveGZyurCngn
+	 kzAStZZB8Dr5Q==
+Date: Fri, 21 Oct 2022 11:14:23 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: "xinlei.lee" <xinlei.lee@mediatek.com>
+Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
+	chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+	daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v12,1/3] soc: mediatek: Add all settings to
+ mtk_mmsys_ddp_dpi_fmt_config func
+Message-ID: <20221021151423.6lube6aqtqahwpwf@notapiano>
+References: <1666147936-27368-1-git-send-email-xinlei.lee@mediatek.com>
+ <1666147936-27368-2-git-send-email-xinlei.lee@mediatek.com>
+ <20221020163310.tpkjvr7pe5vhwylh@notapiano>
+ <28c0e6890daeb6bf17779243b23f60fa138b2fd2.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221001-iommu-support-v5-3-92cdbb83bbb8@baylibre.com>
-References: <20221001-iommu-support-v5-0-92cdbb83bbb8@baylibre.com>
-In-Reply-To: <20221001-iommu-support-v5-0-92cdbb83bbb8@baylibre.com>
-To: Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Will Deacon <will@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>, devicetree@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, Markus Schneider-Pargmann <msp@baylibre.com>, linux-mediatek@lists.infradead.org,
- iommu@lists.linux.dev, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1961; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=hsmOOJ/Od8mVlqkmioVr/SU8CCmVi1MpCgod71DtGtE=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjUqG7M6Sue3UP1B/Wgzp2kgC06YW9ljbQL87P5Z0h
- Fw6/qgqJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY1KhuwAKCRArRkmdfjHURaJMD/
- 0dxN1PmOTdSgFQdXab9NdfC3fprdPuhHnEdb5g7cDcxTqsh3PRhpBbcUQHSHMJif78ulPLy41zns5s
- wdLFb3ddGfDt8cD+z9QJ+siKPnBiAwaTp9VHISy7vu1ZiKSSP9MUmbuMeMs9bLzdLNijZIFl8mSyCC
- 43TuVoa3B5k9S7XiYdCjefjVo8JIlnkhhnSSrBh9W6+LxiBv3iWqyq1d0hAQsVrfEBicznfVVDO9Xp
- 7xIfBnF/VC3liMMAqEedkcXQE9QiT0FSr5yvkXFZ2xkWT56lndyjGBAiKJhTimPl/gpiVNwc7GamrL
- Xrex38uM0IGAYJjksxKLxGadxcw0020xBXwJx4mdBRWuQo1p4i8gBdLvnKjrawO4WRgoc6lrLlXtHO
- 3I7hwK0ZWlsJl4j7oUqpKdLHCpRuVKkYAoYzPGndgVuMprg+FnN8umVbcEqhXLfD5XS2xSQHejm3Kf
- fuq44UlubFKex1JtXrMagNrBGkF0P/UVI8yf+lf9Yd725CCoN86YBLaBE+6NRDPNoCA3f40ALqYaEi
- cCxTlv4gxL2FHV4d0ADGqflFidce/9UXMXFVFTvaxDQOD7hYTU+VofvHb7kQi3vJLdQaU0nATmVUYo
- 0UOVDqEb0cYdrVWT/56WZoUyeglDSO2T132CH2hKIgziIxXWLLew5HPq7fVQ==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+In-Reply-To: <28c0e6890daeb6bf17779243b23f60fa138b2fd2.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_064225_816771_BE7B2810 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20221021_081432_688044_EF5D0B7E 
+X-CRM114-Status: GOOD (  58.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,59 +80,258 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+On Fri, Oct 21, 2022 at 07:59:02PM +0800, xinlei.lee wrote:
+> On Thu, 2022-10-20 at 12:33 -0400, Nícolas F. R. A. Prado wrote:
+> > Hi,
+> > 
+> > On Wed, Oct 19, 2022 at 10:52:14AM +0800, xinlei.lee@mediatek.com
+> > wrote:
+> > > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > > 
+> > > The difference between MT8186 and other ICs is that when modifying
+> > > the
+> > > output format, we need to modify the mmsys_base+0x400 register to
+> > > take
+> > > effect.
+> > > So when setting the dpi output format, we need to call mmsys_func
+> > > to set
+> > 
+> > mmsys_func isn't something that exists in the code. Instead mention
+> > the actual
+> > function name: mtk_mmsys_ddp_dpi_fmt_config.
+> > 
+> > > it to MT8186 synchronously.
+> > 
+> > 
+> > Here, before saying that the commit adds all the settings for dpi,
+> > you could
+> > have mentioned that the previous commit lacked those, to make it
+> > clearer:
+> > 
+> > Commit a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi
+> > output for MT8186")
+> > lacked some of the possible output formats and also had a wrong
+> > bitmask.
+> > 
+> > 
+> > > Adding mmsys all the settings that need to be modified with dpi are
+> > > for
+> > > mt8186.
+> > 
+> > This sentence I would change to the following one:
+> > 
+> > Add the missing output formats and fix the bitmask.
+> > 
+> > 
+> > Finally, you're also making the function more HW-agnostic (although
+> > in my
+> > opinion this could've been a future separate commit), so it's worth
+> > mentioning
+> > it here:
+> > 
+> > While at it, also update mtk_mmsys_ddp_dpi_fmt_config() to use
+> > generic formats,
+> > so that it is slightly easier to extend for other platforms.
+> > 
+> > > 
+> > > Fixes: a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi
+> > > output for MT8186")
+> > 
+> > The fixes tag should be kept in a single line, without wrapping.
+> > 
+> > > 
+> > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > > Reviewed-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> > > ---
+> > >  drivers/soc/mediatek/mt8186-mmsys.h    |  8 +++++---
+> > >  drivers/soc/mediatek/mtk-mmsys.c       | 27 ++++++++++++++++++++
+> > > ------
+> > >  include/linux/soc/mediatek/mtk-mmsys.h |  7 +++++++
+> > >  3 files changed, 33 insertions(+), 9 deletions(-)
+> > > 
+> > > diff --git a/drivers/soc/mediatek/mt8186-mmsys.h
+> > > b/drivers/soc/mediatek/mt8186-mmsys.h
+> > > index 09b1ccbc0093..035aec1eb616 100644
+> > > --- a/drivers/soc/mediatek/mt8186-mmsys.h
+> > > +++ b/drivers/soc/mediatek/mt8186-mmsys.h
+> > > @@ -5,9 +5,11 @@
+> > >  
+> > >  /* Values for DPI configuration in MMSYS address space */
+> > >  #define MT8186_MMSYS_DPI_OUTPUT_FORMAT		0x400
+> > > -#define DPI_FORMAT_MASK					0x1
+> > > -#define DPI_RGB888_DDR_CON				BIT(0)
+> > > -#define DPI_RGB565_SDR_CON				BIT(1)
+> > > +#define DPI_FORMAT_MASK					GENMASK
+> > > (1, 0)
+> > > +#define DPI_RGB888_SDR_CON				0
+> > > +#define DPI_RGB888_DDR_CON				1
+> > > +#define DPI_RGB565_SDR_CON				2
+> > > +#define DPI_RGB565_DDR_CON				3
+> > 
+> > These defines should all have a MT8186_ prefix. This will avoid
+> > confusions now
+> > that mtk_mmsys_ddp_dpi_fmt_config() is being made more platform-
+> > agnostic.
+> > 
+> > >  
+> > >  #define MT8186_MMSYS_OVL_CON			0xF04
+> > >  #define MT8186_MMSYS_OVL0_CON_MASK			0x3
+> > > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > > b/drivers/soc/mediatek/mtk-mmsys.c
+> > > index d2c7a87aab87..205f6de45851 100644
+> > > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > > @@ -238,12 +238,27 @@ static void mtk_mmsys_update_bits(struct
+> > > mtk_mmsys *mmsys, u32 offset, u32 mask,
+> > >  
+> > >  void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val)
+> > >  {
+> > > -	if (val)
+> > > -		mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > -				      DPI_RGB888_DDR_CON,
+> > > DPI_FORMAT_MASK);
+> > > -	else
+> > > -		mtk_mmsys_update_bits(dev_get_drvdata(dev),
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > -				      DPI_RGB565_SDR_CON,
+> > > DPI_FORMAT_MASK);
+> > > +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> > > +
+> > > +	switch (val) {
+> > > +	case MTK_DPI_RGB888_SDR_CON:
+> > > +		mtk_mmsys_update_bits(mmsys,
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > +				      DPI_FORMAT_MASK,
+> > > DPI_RGB888_SDR_CON);
+> > > +		break;
+> > > +	case MTK_DPI_RGB565_SDR_CON:
+> > > +		mtk_mmsys_update_bits(mmsys,
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > +				      DPI_FORMAT_MASK,
+> > > DPI_RGB565_SDR_CON);
+> > > +		break;
+> > > +	case MTK_DPI_RGB565_DDR_CON:
+> > > +		mtk_mmsys_update_bits(mmsys,
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > +				      DPI_FORMAT_MASK,
+> > > DPI_RGB565_DDR_CON);
+> > > +		break;
+> > > +	case MTK_DPI_RGB888_DDR_CON:
+> > > +	default:
+> > > +		mtk_mmsys_update_bits(mmsys,
+> > > MT8186_MMSYS_DPI_OUTPUT_FORMAT,
+> > > +				      DPI_FORMAT_MASK,
+> > > DPI_RGB888_DDR_CON);
+> > > +		break;
+> > > +	}
+> > 
+> > To be honest I don't really see the point of making the function
+> > slightly more
+> > platform-agnostic like this. With a single platform making use of it
+> > it's just
+> > an unneeded extra abstraction, and it could easily be done when a
+> > second
+> > platform starts requiring this as well...
+> > 
+> > In any case,
+> > 
+> > Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > 
+> > Thanks,
+> > Nícolas
+> > 
+> > >  }
+> > 
+> > [..]
+> 
+> Hi Nícolas:
+> 
+> Thanks for your detailed reply and correction.
+> Before sending out the next edition, I have two questions I would like 
+> to confirm with you in response to your responses:
+> 1.While at it, also update mtk_mmsys_ddp_dpi_fmt_config() to use 
+> generic formats, so that it is slightly easier to extend for other 
+> platforms.
+> => This is to make this mtk_mmsys_ddp_dpi_fmt_config() func more 
+> general? 
+> This function may only be used by MT8186, because only MT8186
+> has 
+> corresponding modifications on HW, and enables the registers reserved 
+> in mmsys for dpi use to control the output format. Because this 
+> register is not defined for other ic, I added control to this function 
+> call in mtk_dpi.c. If you think there are other ways to make it look 
+> more generic, where should I correct it?
 
-Add IOMMU support for MT8365 SoC.
+You already made the mtk_mmsys_ddp_dpi_fmt_config() more generic by making it's
+format parameter decoupled from its register representation on MT8186, that is,
+MTK_DPI_RGB888_SDR_CON instead of DPI_RGB888_SDR_CON.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Reviewed-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Tested-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- drivers/iommu/mtk_iommu.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+I wasn't asking for any code modification on that comment, I was suggesting you
+add this sentence in the commit message, so it reflects the changes you're
+already doing.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 563e3c54a0e2..aff7a9190749 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -170,6 +170,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8186,
- 	M4U_MT8192,
- 	M4U_MT8195,
-+	M4U_MT8365,
- };
- 
- struct mtk_iommu_iova_region {
-@@ -1525,6 +1526,17 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
- 			   {4, MTK_INVALID_LARBID, MTK_INVALID_LARBID, MTK_INVALID_LARBID, 6}},
- };
- 
-+static const struct mtk_iommu_plat_data mt8365_data = {
-+	.m4u_plat	= M4U_MT8365,
-+	.flags		= RESET_AXI | INT_ID_PORT_WIDTH_6,
-+	.inv_sel_reg	= REG_MMU_INV_SEL_GEN1,
-+	.banks_num	= 1,
-+	.banks_enable	= {true},
-+	.iova_region	= single_domain,
-+	.iova_region_nr	= ARRAY_SIZE(single_domain),
-+	.larbid_remap	= {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
-+};
-+
- static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
- 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
-@@ -1537,6 +1549,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
- 	{ .compatible = "mediatek,mt8195-iommu-vpp",   .data = &mt8195_data_vpp},
-+	{ .compatible = "mediatek,mt8365-m4u", .data = &mt8365_data},
- 	{}
- };
- 
+To be extra clear, I was suggesting you update the commit message to the
+following:
 
--- 
-b4 0.10.1
+  The difference between MT8186 and other ICs is that when modifying the output
+  format, we need to modify the mmsys_base+0x400 register to take effect. So when
+  setting the dpi output format, we need to call mtk_mmsys_ddp_dpi_fmt_config to
+  set it to MT8186 synchronously.
+  
+  Commit a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi output for
+  MT8186") lacked some of the possible output formats and also had a wrong
+  bitmask.
+  
+  Add the missing output formats and fix the bitmask.
+  
+  While at it, also update mtk_mmsys_ddp_dpi_fmt_config() to use generic formats,
+  so that it is slightly easier to extend for other platforms.
+  
+  Fixes: a071e52f75d1 ("soc: mediatek: Add mmsys func to adapt to dpi output for MT8186")
+
+> 
+> 2. These definitions should all have a MT8186_ prefix. This will avoid 
+> confusion as mtk_mmsys_ddp_dpi_fmt_config() becomes more platform 
+> independent.
+> 
+> Honestly, I don't really see the point of making the feature platform-
+> agnostic like this. Using it on a single platform is just an extra 
+> abstraction that isn't needed, when a second platform starts needing 
+> it too, it can be done easily...
+> 
+> => My understanding here is that prefixing variables with labels is 
+> more conducive to making functions generic, and can be reused if there 
+> is such a situation in the future. I understand the importance of 
+> keeping the function platform agnostic, but as mentioned, it may only 
+> be used by the MT8186 if there are special cases where other ICs may 
+> rely on mtk_mmsys_update_bits to create new functions.
+
+What I'm saying is that, even though you've made the function receive a generic
+format as a parameter, like MTK_DPI_RGB888_SDR_CON, at this point in time
+MT8186 is the only SoC that has a register in mmsys for it, so the values
+
+DPI_FORMAT_MASK
+DPI_RGB888_SDR_CON
+DPI_RGB888_DDR_CON
+DPI_RGB565_SDR_CON
+DPI_RGB565_DDR_CON
+
+are really all MT8186-specific, at least at this point. Leaving them without the
+MT8186_ can give the false impression that they're already used elsewhere. Also
+it's really easy to mistake them for the generic ones (like
+MTK_DPI_RGB888_SDR_CON). MT8186_MMSYS_DPI_OUTPUT_FORMAT already has the MT8186_
+prefix, so I'm really just saying that the other ones should have as well.
+
+If/when the same address, mask or values for this register start being used on a
+different SoC, then you can remove the prefix and move it to the mtk-mmsys.h
+generic header.
+
+But for now adding the prefixes will avoid confusion and make it clear this is
+MT8186 specific.
+
+Thanks,
+Nícolas
 
