@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 786D5C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8919FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:38:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=auS4tVUwcUseQVTVEiGRM+ro1zrL8AC/r1RNa7sIwkY=; b=UNTZIeW7MKS1Td2ArrAMeBFXUq
-	DvQv1j5fdraD8nyYkCgw5Hc3jPLeyRvnbSUYVGMA6Mrpy+5XBx4WgUA6bi/s+X0xviXlBwW7SCPti
-	qq/ELy6lwSZrMVAtAkzI8RRjHkATuiETnSx9K+Fypr179KKxHARLbrCt3PBOQZnrLFqZHuicVeNvu
-	8YzzpH89bJhghDtXReQ9Am+BG4HsU0ZubSN9hwuqOlOYfrnyZYRAdMptwuAL0PDaklcgILyBor/Fg
-	KWaj3CQIw8WU6VqNRZZIqLbqQqlTyBtMlH6L37EmMSsDlJ75JUCoLFt8JTtPEkaPHq4C2fC89xHAh
-	76y4Mv0g==;
+	bh=mYPcs1IOe6NtCzuGcnog0KWdUa2jDExn9rUhH4BHCfo=; b=HxrmGlM0oxjpyMd7F6QmF1ffOH
+	58C2p0Zuoaq0viLnyRtdusxGngJHsn67zUGkDYluwymv05AlGMJnj1/CQlo+LH/EXdC1+KxScUQUw
+	VPRZeLe3MN88dl1UuN723z0EGKxa7xOdRmWbwKHeeCbKmWVC8n0haFn5LNq4tykWcXmCTgSaRoTjc
+	9LLmbW867WtVHu24Pu5hE5aBv+73x6Ra89t9zCxDM5MKjk/R5K+XYyRuMYV8OwowyLUg8M+Psg+vL
+	xLX7hu44LNtQIw6fRnfFluepv4pEBPC2CQBqJatdexUX+TICs42Pem+vmg+lVncdbD+HWsoufzmc0
+	T5hEuMiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnUO-006Of5-DE; Fri, 21 Oct 2022 08:34:48 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1olnXq-006QOM-Do; Fri, 21 Oct 2022 08:38:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnTj-006OOI-Ds; Fri, 21 Oct 2022 08:34:08 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id j21so1571773qkk.9;
-        Fri, 21 Oct 2022 01:34:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=auS4tVUwcUseQVTVEiGRM+ro1zrL8AC/r1RNa7sIwkY=;
-        b=hkYNZqktU4aAHFnn8vZ6QXTJRErSH0MRNGpOfna068WCQa5EHyDJYazCz4JmRfrquz
-         GdIisRXXX7obNueHKmj1/JNlDZ4EhIMJfWgbiZxzE/jK8OQCUcQRRU4ASjPd31m/xidh
-         kx3lOjx1L59ry2UO8kaXbgS5eKW7xAvxr4NS/8xWwm4gQ+NV2Y9v67ZM0Cx1PXua3K2Y
-         Zgph9N6RMqO/esa812+MJOsxoavdSX8n4HQPPH76MWRs/xrxYegmHlWNvXNwD8T7t2rh
-         ABUs0kgfoTnQriKHftPFlUSUWExu+Bw9/CDxpyBWdftpjOJ96Q3ZTAutBsGs3IrCgPca
-         B5Zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=auS4tVUwcUseQVTVEiGRM+ro1zrL8AC/r1RNa7sIwkY=;
-        b=b9jl3qj5sJjzRLSgmqjQP+AVu5dtrN4LVnZ5Uukkq026SSdkQbFBex8GOwS5Enp8ep
-         lTs7YfNmgEraadr0BNC6i2AskuEDfKcMMC3pVwpQu7/l9zITiVBz8PHCg0+VPwCyUtW3
-         xOQ4BlM9IR/E4lJeGo8PbFHl8AN8oivLYJaW++2rjpmO0rd007IOv//0Ir9i4r3FhgZs
-         MpYR6aDUbJ/WJN8VVm2tuYuLV15oX9zpSHgt3nRJFqbAivd2rzjZuuKHcYDzM8ycw+sD
-         IePK4zGsHBxfL6GGvDHdZ4fs5xpqklO+3wZDmnO+vEDNyaTlrHOPayKOQPy8xZ6jg3zN
-         CxsA==
-X-Gm-Message-State: ACrzQf3sFgL+TEV8BGJF9Y6mbFAqI1nnHVGxDIUcl1sxG7YQAFytjlo3
-	1PiafIdamYdlqVoHAXKDJHeE2XhFX6jBXWmwePHO0QlSrkN+Ow==
-X-Google-Smtp-Source: AMsMyM7Uzw7wHP0j9EY0rDtZFj3HwrBBdUDk+AoqIm5ZhiX0BU7J8S6i2OXG0OrBIafK5nqO+eXsOqX3eqvGNo2taB8=
-X-Received: by 2002:a05:620a:2552:b0:6ca:bf8f:4d27 with SMTP id
- s18-20020a05620a255200b006cabf8f4d27mr12651177qko.383.1666341242520; Fri, 21
- Oct 2022 01:34:02 -0700 (PDT)
+	id 1olnXW-006QHb-JE; Fri, 21 Oct 2022 08:38:04 +0000
+X-UUID: e15f5a501cef40b0b46955ccc5ae4e3f-20221021
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mYPcs1IOe6NtCzuGcnog0KWdUa2jDExn9rUhH4BHCfo=;
+	b=hXQFzaQArQdGNA0RRbR+werKr8Nb+3qnLa9HIz0ZxhYo1KDzyseQ45FXJM3H12BTuSg1/PRYqGZcmSVPJsMvStOAijAx//O2w+Bo+uJUTz+Jg7VKbmei/yL5/rpKhrJ2qQ/G9Z3Nr2FD4NBm8CMhhZZJQelawGRVeDEpu5rFf0U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:07dc2cd7-1449-49fd-9679-03003921ae68,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:d8e3ac6c-89d3-4bfa-baad-dc632a24bca3,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e15f5a501cef40b0b46955ccc5ae4e3f-20221021
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 148956966; Fri, 21 Oct 2022 01:37:57 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 21 Oct 2022 16:27:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 21 Oct 2022 16:27:24 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
+CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>
+Subject: [PATCH v2 01/12] ASoC: mediatek: common: add SMC ops and SMC CMD
+Date: Fri, 21 Oct 2022 16:27:08 +0800
+Message-ID: <20221021082719.18325-2-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221021082719.18325-1-trevor.wu@mediatek.com>
+References: <20221021082719.18325-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-References: <1666318661-11777-1-git-send-email-u0084500@gmail.com>
-In-Reply-To: <1666318661-11777-1-git-send-email-u0084500@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 21 Oct 2022 11:33:26 +0300
-Message-ID: <CAHp75VeMvWycVsNPHb1cvMbtVSCiX3m9wUsZk7HkPU+e=VTb3A@mail.gmail.com>
-Subject: Re: [PATCH v2] mfd: mt6370: Add the out-of-bound check to prevent the
- null pointer
-To: cy_huang <u0084500@gmail.com>
-Cc: lee@kernel.org, matthias.bgg@gmail.com, chiaen_wu@richtek.com, 
-	cy_huang@richtek.com, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_013407_502199_20A90BD3 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20221021_013802_663265_6E22AB71 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,52 +82,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 21, 2022 at 5:17 AM cy_huang <u0084500@gmail.com> wrote:
->
-> From: ChiYuan Huang <cy_huang@richtek.com>
->
-> This potential risk could happen at regmap_raw_read() or
-> regmap_raw_write() when accessing the over-bound register address.
->
-> For testing, I try to reproduce it with a testing attribute file.
-> Below's the issue trace log.
+SMC call is required to communicate with ATF for some secure operations,
+so we add SMC ops IDs and SMC CMD ID to common header.
 
-It looks like you randomly cut the trace.
-It's not what I meant and documentation suggests.
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ sound/soc/mediatek/common/mtk-base-afe.h | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-> [41.314358] pc : i2c_smbus_xfer+0x58/0x120
-> [41.314371] lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
-> [41.399677] Call trace:
-> [41.402153]  i2c_smbus_xfer+0x58/0x120
-> [41.405956]  i2c_smbus_read_i2c_block_data+0x74/0xc0
-> [41.410991]  mt6370_regmap_read+0x40/0x60 [mt6370]
-> [41.415855]  _regmap_raw_read+0xe4/0x278
-> [41.419834]  regmap_raw_read+0xec/0x240
-> [41.423721]  rg_bound_show+0xb0/0x120 [mt6370]
-> [41.428226]  dev_attr_show+0x3c/0x80
-> [41.431851]  sysfs_kf_seq_show+0xc4/0x150
-> [41.435916]  kernfs_seq_show+0x48/0x60
-> [41.439718]  seq_read_iter+0x11c/0x450
-> [41.443519]  kernfs_fop_read_iter+0x124/0x1c0
-> [41.447937]  vfs_read+0x1a8/0x288
-> [41.451296]  ksys_read+0x74/0x100
-> [41.454654]  __arm64_sys_read+0x24/0x30
-> [41.458541]  invoke_syscall+0x54/0x118
-> [41.462344]  el0_svc_common.constprop.4+0x94/0x128
-> [41.467202]  do_el0_svc+0x3c/0xd0
-> [41.470562]  el0_svc+0x20/0x60
-> [41.473658]  el0t_64_sync_handler+0x94/0xb8
-> [41.477899]  el0t_64_sync+0x15c/0x160
-> [41.481614] Code: 54000388 f9401262 aa1303e0 52800041 (f9400042)
-> [41.487793] ---[ end trace 0000000000000000 ]---
-
-...
-
-> If there's still something improper, please kindly correct me.
-
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#backtraces-in-commit-messages
-
+diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+index ef83e78c22a8..f51578b6c50a 100644
+--- a/sound/soc/mediatek/common/mtk-base-afe.h
++++ b/sound/soc/mediatek/common/mtk-base-afe.h
+@@ -9,7 +9,26 @@
+ #ifndef _MTK_BASE_AFE_H_
+ #define _MTK_BASE_AFE_H_
+ 
++#include <linux/soc/mediatek/mtk_sip_svc.h>
++
+ #define MTK_STREAM_NUM (SNDRV_PCM_STREAM_LAST + 1)
++#define MTK_SIP_AUDIO_CONTROL MTK_SIP_SMC_CMD(0x517)
++
++/* SMC CALL Operations */
++enum mtk_audio_smc_call_op {
++	MTK_AUDIO_SMC_OP_INIT = 0,
++	MTK_AUDIO_SMC_OP_DRAM_REQUEST,
++	MTK_AUDIO_SMC_OP_DRAM_RELEASE,
++	MTK_AUDIO_SMC_OP_SRAM_REQUEST,
++	MTK_AUDIO_SMC_OP_SRAM_RELEASE,
++	MTK_AUDIO_SMC_OP_ADSP_REQUEST,
++	MTK_AUDIO_SMC_OP_ADSP_RELEASE,
++	MTK_AUDIO_SMC_OP_DOMAIN_SIDEBANDS,
++	MTK_AUDIO_SMC_OP_BTCVSD_WRITE,
++	MTK_AUDIO_SMC_OP_BTCVSD_UPDATE_CTRL_CLEAR,
++	MTK_AUDIO_SMC_OP_BTCVSD_UPDATE_CTRL_UNDERFLOW,
++	MTK_AUDIO_SMC_OP_NUM
++};
+ 
+ struct mtk_base_memif_data {
+ 	int id;
 -- 
-With Best Regards,
-Andy Shevchenko
+2.18.0
+
 
