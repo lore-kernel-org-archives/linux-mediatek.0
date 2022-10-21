@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC6AFA373F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 17:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 577A4FA373D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 17:29:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wX17tT+QrD7lFBeePCT0xLdrixl4HwabyZojnT4Rgns=; b=ILzf4NqRQXynfCrhnfFjgkS3rt
-	WezCSdZZWdHAfdizJfXnO/Vcfk3kzEGyZ/GB3e5QXoRYL1uhz80ssSPZbn6GfObQ8uLTYSDEP4eHR
-	vaIH8MxWtl3rXxwWwI8QdwTK+GLYzy0t7Bm9QFba+oncbcLDg+bhTUqqFexmhVIrukbb50ZH4BR/t
-	Zqkrrd2yXRmhPJ0FBr+vMtONcWt5lDQF3krMtdEkbJkDmyH0gWE4yHwFQCm3vJ8kJ6lS439dFkmQS
-	UYWmw50wLcd2ANgBNh7vydnZAkf+Ivt4MljwRxSvMz2yC0QAWeHGpHiLRU+0860kG1B66pudAUpyp
-	7MvxXa3g==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LjjPi7cJ9F5nKm/R2773oovFGMSEo4C2+8ScBtsMdKI=; b=JX6f5hvCyBauPIejBzX+ZOzLqB
+	Bf2r9i3IAM5C43xaHksFLrmv9dM7FBN8qV6B8HBI0fs8dU9mAuxyZL28VoJ5wtNUTp2jQLBDvjB79
+	2NxQM5XfT4LziI2J7ekcDET6u6la3Rok/u6KDaeZ/5dBBx2TM5aH4XGsY5idy0RTsAv4m3G1y9TYR
+	OaaX1wHY2W+gxgkD+iB6Z+7ydMGPkbGU9AX/3iSjWzBGL6pVMh55Xy+FCeQ3Hi+5JqzzD8taa5Enl
+	rjCP7vRSh5YFpkqmEfCqp0Nj2xHklvz1aBHma32jVc1TWKNr9p2IwMVHjxO+JE9YHcD4SuDCivo7E
+	lkn2a7TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olvfw-0099bh-WF; Fri, 21 Oct 2022 17:19:17 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1olvpI-009Bpl-RM; Fri, 21 Oct 2022 17:28:56 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olvfl-0099WB-1A; Fri, 21 Oct 2022 17:19:06 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id BD5431884D31;
-	Fri, 21 Oct 2022 17:18:59 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 7E0FF250007B;
-	Fri, 21 Oct 2022 17:18:59 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 7497A9EC0007; Fri, 21 Oct 2022 17:18:59 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1olvpB-009Bn3-H9; Fri, 21 Oct 2022 17:28:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666373329; x=1697909329;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=T59+PZTDZVjX23bCRMZbnZTbnIa553TW4Fq8YgsjUbw=;
+  b=SviI9KbevYvKPZY40XB3ZIcwkxAFYuQIvcqoRwifi7r0NLe+TFw/crJ7
+   i0O6ti6IUfNPsRGWt9Ya0cot+PR5TnZFmoH49h+C899s343XZIFCfv9vk
+   E99zV1w5FIpkybEcvR0Iax6EEhVwaMxpxaxyzADUkvnMsw6wD2JiKXefS
+   xJ02v6tBo67gVHIsf3AIpEBZFsBJldsaMkI/B2JIoq2fvkExOuNTJB/wJ
+   m5aS8RScZk8DOjTC/dljUTmNbbAUcsGyjya7cAdhhW4CrLSsHZ+TGgAc5
+   +AAvHFtfmLXaQC5h7axeOrOrexeN425FmUamyAh1xIgB29aLgcafUb5/s
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="287461741"
+X-IronPort-AV: E=Sophos;i="5.95,202,1661842800"; 
+   d="scan'208";a="287461741"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 10:28:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="630582750"
+X-IronPort-AV: E=Sophos;i="5.95,202,1661842800"; 
+   d="scan'208";a="630582750"
+Received: from lkp-server02.sh.intel.com (HELO b6d29c1a0365) ([10.239.97.151])
+  by orsmga002.jf.intel.com with ESMTP; 21 Oct 2022 10:28:44 -0700
+Received: from kbuild by b6d29c1a0365 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1olvp6-0002om-0R;
+	Fri, 21 Oct 2022 17:28:44 +0000
+Date: Sat, 22 Oct 2022 01:28:25 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: ntfs3@lists.linux.dev, linux-wireless@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-ext4@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ 4d48f589d294ddc5e01d3b0dc7cecc55324c05ca
+Message-ID: <6352d6b9.grpYcP/v5reTKJou%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Date: Fri, 21 Oct 2022 19:18:59 +0200
-From: netdev@kapio-technology.com
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke
- Mehrtens <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
- Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
- <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
- <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
- <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>, Christian Marangi
- <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
- <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>, Ido Schimmel
- <idosch@nvidia.com>, Florent Fourcot <florent.fourcot@wifirst.fr>, Hans
- Schultz <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit
- Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 10/12] net: dsa: mv88e6xxx: mac-auth/MAB
- implementation
-In-Reply-To: <20221021163005.xljk2j3fkikr6uge@skbuf>
-References: <20221018165619.134535-1-netdev@kapio-technology.com>
- <20221018165619.134535-1-netdev@kapio-technology.com>
- <20221018165619.134535-11-netdev@kapio-technology.com>
- <20221018165619.134535-11-netdev@kapio-technology.com>
- <20221020132538.reirrskemcjwih2m@skbuf>
- <2565c09bb95d69142522c3c3bcaa599e@kapio-technology.com>
- <20221020225719.l5iw6vndmm7gvjo3@skbuf>
- <82d23b100b8d2c9e4647b8a134d5cbbf@kapio-technology.com>
- <20221021112216.6bw6sjrieh2znlti@skbuf>
- <7bfaae46b1913fe81654a4cd257d98b1@kapio-technology.com>
- <20221021163005.xljk2j3fkikr6uge@skbuf>
-User-Agent: Gigahost Webmail
-Message-ID: <d1fb07de4b55d64f98425fe66156c4e4@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_101905_244261_2F79350F 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20221021_102849_627806_7DF1B6EE 
+X-CRM114-Status: UNSURE (   6.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +84,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-10-21 18:30, Vladimir Oltean wrote:
-> On Fri, Oct 21, 2022 at 03:16:21PM +0200, netdev@kapio-technology.com 
-> wrote:
->> As it is now in the bridge, the locked port part is handled before 
->> learning
->> in the ingress data path, so with BR_LEARNING and BR_PORT_LOCKED, I 
->> think it
->> will work as it does now except link local packages.
-> 
-> If link-local learning is enabled on a locked port, I think those
-> addresses should also be learned with the BR_FDB_LOCKED flag. The
-> creation of those locked FDB entries can be further suppressed by the
-> BROPT_NO_LL_LEARN flag.
-> 
->> If your suggestion of BR_LEARNING causing BR_FDB_LOCKED on a locked 
->> port, I
->> guess it would be implemented under br_fdb_update() and BR_LEARNING +
->> BR_PORT_LOCKED would go together, forcing BR_LEARNING in this case, 
->> thus also
->> for all drivers?
-> 
-> Yes, basically where this is placed right now (in 
-> br_handle_frame_finish):
-> 
-> 	if (p->flags & BR_PORT_LOCKED) {
-> 		struct net_bridge_fdb_entry *fdb_src =
-> 			br_fdb_find_rcu(br, eth_hdr(skb)->h_source, vid);
-> 
-> 		if (!fdb_src) {
-> 			unsigned long flags = 0;
-> 
-> 			if (p->flags & BR_PORT_MAB) {
-> 			   ~~~~~~~~~~~~~~~~~~~~~~~~
-> 			   except check for BR_LEARNING
-> 
-> 				__set_bit(BR_FDB_LOCKED, &flags);
-> 				br_fdb_update(br, p, eth_hdr(skb)->h_source,
-> 					      vid, flags);
-> 			}
-> 			goto drop;
-> 		} else if (READ_ONCE(fdb_src->dst) != p ||
-> 			   test_bit(BR_FDB_LOCAL, &fdb_src->flags) ||
-> 			   test_bit(BR_FDB_LOCKED, &fdb_src->flags)) {
-> 			goto drop;
-> 		}
-> 	}
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 4d48f589d294ddc5e01d3b0dc7cecc55324c05ca  Add linux-next specific files for 20221021
 
-As I don't know what implications it would have for other drivers to 
-have learning
-forced enabled on locked ports, I cannot say if it is a good idea or 
-not. Right now
-learning is not forced either way as is, but the consensus is that 
-learning should
-be off with locked ports, which it would be either way in the common 
-case I think.
+Error/Warning reports:
+
+https://lore.kernel.org/linux-mm/202210090954.pTR6m6rj-lkp@intel.com
+https://lore.kernel.org/linux-mm/202210110857.9s0tXVNn-lkp@intel.com
+https://lore.kernel.org/llvm/202210211531.zEaM6hBM-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+drivers/nvme/target/loop.c:578 nvme_loop_create_ctrl() warn: 'opts->queue_size - 1' 18446744073709551615 can't fit into 65535 'ctrl->ctrl.sqsize'
+fs/ext4/super.c:1744:19: warning: 'deprecated_msg' defined but not used [-Wunused-const-variable=]
+fs/ntfs3/namei.c:487 ntfs_d_compare() error: uninitialized symbol 'uni1'.
+vcpu.c:(.text+0xa3c): undefined reference to `riscv_cbom_block_size'
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- i386-allyesconfig
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-defconfig
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-randconfig-a003
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-randconfig-a005
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-randconfig-a012
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-randconfig-a014
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- i386-randconfig-a016
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- riscv-randconfig-m031-20221019
+|   |-- drivers-nvme-target-loop.c-nvme_loop_create_ctrl()-warn:opts-queue_size-can-t-fit-into-ctrl-ctrl.sqsize
+|   |-- fs-ntfs3-namei.c-ntfs_d_compare()-error:uninitialized-symbol-uni1-.
+|   `-- vcpu.c:(.text):undefined-reference-to-riscv_cbom_block_size
+|-- x86_64-allyesconfig
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-defconfig
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-randconfig-a002
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-randconfig-a006
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-randconfig-a011
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-randconfig-a015
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-randconfig-m001
+|   `-- arch-x86-kernel-apic-apic.c-generic_processor_info()-warn:always-true-condition-(num_processors-()-)-(-u32max-)
+|-- x86_64-rhel-8.3
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-rhel-8.3-func
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-rhel-8.3-kselftests
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-rhel-8.3-kunit
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+|-- x86_64-rhel-8.3-kvm
+|   `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+`-- x86_64-rhel-8.3-syz
+    `-- fs-ext4-super.c:warning:deprecated_msg-defined-but-not-used
+clang_recent_errors
+|-- arm-colibri_pxa300_defconfig
+|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|-- hexagon-randconfig-r041-20221019
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- hexagon-randconfig-r045-20221019
+|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
+|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
+|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
+|-- i386-allyesconfig
+|   `-- drivers-net-wireless-realtek-rtl8xxxu-rtl8xxxu_8188f.c:warning:variable-hw_ctrl_s1-is-used-uninitialized-whenever-if-condition-is-false
+|-- i386-randconfig-a002
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- i386-randconfig-a004
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- i386-randconfig-a011
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- i386-randconfig-a013
+|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|-- i386-randconfig-a015
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- s390-buildonly-randconfig-r006-20221019
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- s390-randconfig-r044-20221019
+|   `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|-- x86_64-randconfig-a005
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- x86_64-randconfig-a012
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+|-- x86_64-randconfig-a014
+|   |-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
+`-- x86_64-rhel-8.3-rust
+    `-- fs-ext4-super.c:warning:unused-variable-deprecated_msg
+
+elapsed time: 727m
+
+configs tested: 63
+configs skipped: 2
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64                              defconfig
+i386                                defconfig
+mips                             allyesconfig
+sh                               allmodconfig
+arc                                 defconfig
+arc                  randconfig-r043-20221019
+x86_64                               rhel-8.3
+x86_64                        randconfig-a013
+alpha                               defconfig
+x86_64                        randconfig-a011
+i386                          randconfig-a001
+s390                             allmodconfig
+i386                          randconfig-a003
+alpha                            allyesconfig
+x86_64                           allyesconfig
+m68k                             allyesconfig
+x86_64                        randconfig-a002
+m68k                             allmodconfig
+arm                                 defconfig
+s390                                defconfig
+i386                          randconfig-a005
+i386                             allyesconfig
+s390                             allyesconfig
+arc                              allyesconfig
+x86_64                           rhel-8.3-syz
+x86_64                        randconfig-a004
+x86_64                        randconfig-a015
+i386                          randconfig-a014
+x86_64                         rhel-8.3-kunit
+x86_64                        randconfig-a006
+i386                          randconfig-a012
+x86_64                           rhel-8.3-kvm
+i386                          randconfig-a016
+arm64                            allyesconfig
+arm                              allyesconfig
+openrisc                         alldefconfig
+powerpc                       holly_defconfig
+ia64                             allmodconfig
+
+clang tested configs:
+riscv                randconfig-r042-20221019
+hexagon              randconfig-r045-20221019
+hexagon              randconfig-r041-20221019
+x86_64                        randconfig-a016
+i386                          randconfig-a002
+s390                 randconfig-r044-20221019
+x86_64                        randconfig-a001
+x86_64                        randconfig-a012
+x86_64                        randconfig-a003
+i386                          randconfig-a006
+i386                          randconfig-a013
+i386                          randconfig-a004
+x86_64                        randconfig-a014
+i386                          randconfig-a011
+x86_64                        randconfig-a005
+i386                          randconfig-a015
+x86_64                          rhel-8.3-rust
+arm                       mainstone_defconfig
+arm                  colibri_pxa300_defconfig
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
