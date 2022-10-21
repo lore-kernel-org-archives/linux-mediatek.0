@@ -4,113 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654B3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 18:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D630DC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 18:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IWT32hn/5on9JQFLZ9CdZqyFkNpfjrGX5X1sBaET02U=; b=WN3DtOBlC8sh1zlGoWKbEDvWZN
-	GFWgLYuuGhxPMFR7N1AZpTjt05kZWjicgTdIPZH16lq4nssLbfQfwIXEwxO35+q7fEjmYh8VSBLTO
-	1wKbkqtt1ebVGhF3fDkyI5Qqz/+23fL9XnA+M2/IUqN0BGtEvEI2DfcdPJ8tPOQcUMdFUzQS5x7I2
-	wCNH8JHCsiJJK8i99PRboDbR5v26jiab6Obae89YIOYiWe3bgHyAyDERAgxCCLVCYhcn+uODqO5l7
-	NCrbNw53RGFQVc7mcegLHH05DP/cqE1GYLgnaZdrExcOYYETCWDu8oNP20ecgqI/+KvVbaAAdlJrB
-	Cg8VfuSg==;
+	bh=bv4YI8sSgHvwniEnSXvaz0DDBkZlp+9CNcDod+TFfKw=; b=ox1/BV3dLR0mW1lmMvFa3jOO3P
+	GjIJ7BBMl815BztnIG4EDN1bmBKFnZitgdfrwD3vw8dnuwXH0i/20kEMUMHV9MPB5GzoBgpO1tj1U
+	Dtbf8Xx5U4QI/4FAq9EkfrLSWyqTmC9N3W6DopIXMeS+Etqb5ZaqSc0086vt4zTkPI3eSUwZYN77+
+	lWVm62qQiNdAuoIfN5T2z10BmyDs1rmV+Te7CYX1LZSzmAZkfOC64P6sdkkIozy3QbgUGk+my4Tz7
+	RkWrKOgLEWqgfyHgLCeVfEOCq4xVtJaJFdJlqxI/3a34TTAm5SM1NJRR1V7Eq3zv0NOfy3xlBN2vJ
+	2kDf8Lug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olwXN-009Oy0-Oh; Fri, 21 Oct 2022 18:14:29 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1olwoX-009Qwt-P5; Fri, 21 Oct 2022 18:32:13 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olwXC-009OvD-22; Fri, 21 Oct 2022 18:14:19 +0000
-Received: by mail-ed1-x534.google.com with SMTP id g27so8884810edf.11;
-        Fri, 21 Oct 2022 11:14:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=IWT32hn/5on9JQFLZ9CdZqyFkNpfjrGX5X1sBaET02U=;
-        b=P9hSCaa39i9JGj/5fhpGAGKqV0qNaEhqet8DmdqurbIDP+fWwaBweSZJ3/S6bAi2DE
-         p+eq7oKJ/RDCYh9wf+nabFJSnwsdceArXMizkG598uRi7agL1PsnxpKJR3QOGe9LGUsr
-         zmlp8/3/NqI+V1i2nDa+LoUbsVbsT7TecGgNHY9btlLCVLiBhuGwippKH5FV3uy6EKQf
-         py5P3IgoKNZRscRUy9euAQkfpmI26lMxdGlz6ZIjmzgrS22NPAK4YVPfYhIgDowxprq/
-         ViQgGv3cTTio2/IhXMiDB1cCyYpWLgr0OA+yXjiHyGL9TQD3FZitvAZZYL5w3Dv4WD/K
-         D/1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IWT32hn/5on9JQFLZ9CdZqyFkNpfjrGX5X1sBaET02U=;
-        b=RapgEaCCLAgGSjG2y92kHngJNTulZoMyhkRlR/zCa0QPgzasfKk5C9M0iFKrrlQ1G1
-         Tvyh0/2AuoeMGu6QsglnJelDbxeqnCUwaj/loIuCLZij0doUJXmjj6R/5B7F62HkNEIQ
-         AmBx+22vxLBZYDxJgtMWMU6BAlpgxytqxBgS8oDIDHNemc0ET69fWmArGXuMNaHTpwvS
-         xppuPAeCir56QPUoF6GmpblH6nWMqCgjUfwA167gMwd+nOoMTUWsBmhvd+4mbD3imeUn
-         EVgCBf/Xfgk/3kI1ZxuuPBYi9uGyQDylwSfWogA0rda03JsYLNyfMJRhoBvF6IkYWyM+
-         pVKw==
-X-Gm-Message-State: ACrzQf17/B9y8N4D3KQg5b/jCcg8omwovJVVp2fWvWeXmso4UYKiXQrX
-	n0ST626XTra9hhgIy1Is/UI=
-X-Google-Smtp-Source: AMsMyM7EHFMooNaoQGzQ5R9JFO+S5r0igTZjt4d8ThXihB+ZZ0Av9ErxITHmAdRMMZTwcRJFugdAAw==
-X-Received: by 2002:a17:907:b05:b0:78d:9bc9:b96f with SMTP id h5-20020a1709070b0500b0078d9bc9b96fmr16306095ejl.468.1666376056317;
-        Fri, 21 Oct 2022 11:14:16 -0700 (PDT)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id kw15-20020a170907770f00b00741383c1c5bsm11797572ejc.196.2022.10.21.11.14.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Oct 2022 11:14:15 -0700 (PDT)
-Date: Fri, 21 Oct 2022 21:14:11 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: netdev@kapio-technology.com
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Oleksandr Mazur <oleksandr.mazur@plvision.eu>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 10/12] net: dsa: mv88e6xxx: mac-auth/MAB
- implementation
-Message-ID: <20221021181411.sv52q4yxr5r7urab@skbuf>
-References: <20221020132538.reirrskemcjwih2m@skbuf>
- <2565c09bb95d69142522c3c3bcaa599e@kapio-technology.com>
- <20221020225719.l5iw6vndmm7gvjo3@skbuf>
- <82d23b100b8d2c9e4647b8a134d5cbbf@kapio-technology.com>
- <20221021112216.6bw6sjrieh2znlti@skbuf>
- <7bfaae46b1913fe81654a4cd257d98b1@kapio-technology.com>
- <20221021163005.xljk2j3fkikr6uge@skbuf>
- <d1fb07de4b55d64f98425fe66156c4e4@kapio-technology.com>
- <20221021173014.oit3qmpkrsjwzbgu@skbuf>
- <b88e331e016ad3801f1bf1a0dec507f3@kapio-technology.com>
+	id 1olwoT-009QvC-Qd; Fri, 21 Oct 2022 18:32:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=bv4YI8sSgHvwniEnSXvaz0DDBkZlp+9CNcDod+TFfKw=; b=12I3Ud5kvQPhpdSlXRIqfJDNKS
+	6jKrzdwfEmBkdaJ/G/BHpwlAPxUHA/9AZUxKfcZ0+xuK5dA7IilLovhlR87MWqUS88sH8tUxwdvlk
+	8fPlmPgVUkLKBewzgswYL8LS4cXxaZkC3Y7e+KJb70THzJ1daIv152U40UbwrxV3+O6tDiMsTChuB
+	phGR3u+mibTuXYkaYpFrL+H8f3qxfL0Kr1vmEqURr1/5ehkVQioqYvZbLSI9gNe/FmyXZme5uCZzl
+	fOYU2B/MyAcj1iGKcofxWgvhwqp4fnu5BO3GnY4FAjyF6vw8iwFPprB2EEAgZ4tPhzdnrTeOJXXJT
+	8VH8T7kQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34876)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1olwoM-0000aJ-UI; Fri, 21 Oct 2022 19:32:02 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1olwoG-0004Mo-Hd; Fri, 21 Oct 2022 19:31:56 +0100
+Date: Fri, 21 Oct 2022 19:31:56 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+	Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
+Message-ID: <Y1LlnMdm8pGVXC6d@shell.armlinux.org.uk>
+References: <20221020144431.126124-1-linux@fw-web.de>
+ <Y1F0pSrJnNlYzehq@shell.armlinux.org.uk>
+ <02A54E45-2084-440A-A643-772C0CC9F988@public-files.de>
+ <Y1JhEWU5Ac6kd2ne@shell.armlinux.org.uk>
+ <trinity-e60759de-3f0f-4b1e-bc0f-b33c4f8ac201-1666374467573@3c-app-gmx-bap55>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b88e331e016ad3801f1bf1a0dec507f3@kapio-technology.com>
+In-Reply-To: <trinity-e60759de-3f0f-4b1e-bc0f-b33c4f8ac201-1666374467573@3c-app-gmx-bap55>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_111418_130269_B03142D5 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20221021_113209_881182_08325F4B 
+X-CRM114-Status: GOOD (  25.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,42 +84,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 21, 2022 at 07:39:34PM +0200, netdev@kapio-technology.com wrote:
-> Well, with this change, to have MAB working, the bridge would need learning on
-> of course, but how things work with the bridge according to the flags, they
-> should also work in the offloaded case if you ask me. There should be no
-> difference between the two, thus MAB in drivers would have to be with
-> learning on.
+On Fri, Oct 21, 2022 at 07:47:47PM +0200, Frank Wunderlich wrote:
+> > Gesendet: Freitag, 21. Oktober 2022 um 11:06 Uhr
+> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> > An: "Frank Wunderlich" <frank-w@public-files.de>
+> > On Fri, Oct 21, 2022 at 08:04:51AM +0200, Frank Wunderlich wrote:
+> > > I have no register documentation to check if there is any way to read out pause/duplex setting. Maybe MTK can answer this or extend function later.
+> >
+> > I suspect we can probably guess.
+> >
+> > Looking at SGMSYS_PCS_CONTROL_1, this is actually the standard BMCR in
+> > the low 16 bits, and BMSR in the upper 16 bits, so:
+> >
+> > At address 4, I'd expect the PHYSID.
+> > At address 8, I'd expect the advertisement register in the low 16 bits
+> > and the link partner advertisement in the upper 16 bits.
+> >
+> > Can you try an experiment, and in mtk_sgmii_init() try accessing the
+> > regmap at address 0, 4, and 8 and print their contents please?
+> 
+> is this what you want to see?
+> 
+>  int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
+>  {
+>         struct device_node *np;
+> +       unsigned int val;
+>         int i;
+> 
+>         for (i = 0; i < MTK_MAX_DEVS; i++) {
+> @@ -158,6 +159,12 @@ int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
+>                 if (IS_ERR(ss->pcs[i].regmap))
+>                         return PTR_ERR(ss->pcs[i].regmap);
+> 
+> +               regmap_read(ss->pcs[i].regmap, SGMSYS_PCS_CONTROL_1, &val);
+> +               printk(KERN_ALERT "dev: %d offset:0 0x%x",i,val);
+> +               regmap_read(ss->pcs[i].regmap, SGMSYS_PCS_CONTROL_1+4, &val);
+> +               printk(KERN_ALERT "dev: %d offset:4 0x%x",i,val);
+> +               regmap_read(ss->pcs[i].regmap, SGMSYS_PCS_CONTROL_1+8, &val);
+> +               printk(KERN_ALERT "dev: %d offset:8 0x%x",i,val);
+>                 ss->pcs[i].pcs.ops = &mtk_pcs_ops;
+>         }
+> 
+> 
+> [    1.083359] dev: 0 offset:0 0x840140
+> [    1.083376] dev: 0 offset:4 0x4d544950
+> [    1.086955] dev: 0 offset:8 0x1
+> [    1.090697] dev: 1 offset:0 0x81140
+> [    1.093866] dev: 1 offset:4 0x4d544950
+> [    1.097342] dev: 1 offset:8 0x1
 
-Am I proposing for things to work differently in the offload and
-software case, and not realizing it? :-/
+Thanks. Decoding these...
 
-The essence of my proposal was to send a bug fix now which denies
-BR_LEARNING to be set together with BR_PORT_LOCKED. The fact that
-link-local traffic is learned by the software bridge is something
-unintended as far as I understand.
+dev 0:
+ BMCR: fixed, full duplex, 1000Mbps, !autoneg
+ BMSR: link up
+ Phy ID: 0x4d54 0x4950
+ Advertise: 0x0001 (which would correspond with the MAC side of SGMII)
+ Link partner: 0x0000 (no advertisement received, but we're not using
+    negotiation.)
 
-You tried to fix it here, and as far as I could search in my inbox, that
-didn't go anywhere:
-https://lore.kernel.org/netdev/47d8d747-54ef-df52-3b9c-acb9a77fa14a@blackwall.org/T/#u
+dev 1:
+ BMCR: autoneg (full duplex, 1000Mbps - both would be ignored)
+ BMSR: able to do autoneg, no link
+ Phy ID: 0x4d54 0x4950
+ Advertise: 0x0001 (same as above)
+ Link partner: 0x0000 (no advertisement received due to no link)
 
-I thought only mv88e6xxx offloads BR_PORT_LOCKED, but now, after
-searching, I also see prestera has support for it, so let me add
-Oleksandr Mazur to the discussion as well. I wonder how they deal with
-this? Has somebody come to rely on learning being enabled on a locked
-port?
+Okay, what would now be interesting is to see how dev 1 behaves when
+it has link with a 1000base-X link partner that is advertising
+properly. If this changes to 0x01e0 or similar (in the high 16-bits
+of offset 8) then we definitely know that this is an IEEE PHY register
+set laid out in memory, and we can program the advertisement and read
+the link partner's abilities.
 
+At that point, we should try programming the low 16-bits of offset 8
+to see whether that advertisement makes it to the far end of the link.
 
-MAB in offloading drivers will have to be with learning on (same as in
-software). When BR_PORT_LOCKED | BR_LEARNING will be allowed together
-back in net-next (to denote the MAB configuration), offloading drivers
-(mv88e6xxx and prestera) will be patched to reject them. They will only
-accept the two together when they implement MAB support.
+It would be well worth trying to work this out, because it will then
+vastly improve the knowledge of this hardware, and improve the
+driver no end.
 
-Future drivers after this mess has been cleaned up will have to look at
-the BR_PORT_LOCKED and BR_LEARNING flag in combination, to see which
-kind of learning is desired on a port (secure, CPU based learning or
-autonomous learning).
+Is this something you could investigate please?
 
-Am I not making sense?
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
