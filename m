@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55826FA373D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 16:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB75C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 16:19:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eKtRJ5MDoLUtuRvkDEBIxej16kIE13gkEyUSehFTESg=; b=3/OeUnmdiqvEiAULvvN5voolIr
-	6Zw6bE0HrjQkSIhJr9ZPKSQWe7OUX0vlezauYgw2nN5UxkQKRkuN2PTjVEyQpBMZqDen5j3PR2N8A
-	k4QsQM02dphwz49mLvUMmLF01qfuoz375fQWJoF7ImYu7NPzbecr58Y+43es9cP01Nc6piL4gaede
-	8rvlSrt50HsRsWLzP+ojmbmXy0cHxEaUZMj0mq/Td+1/BEMCCkN+0kB3QDqej9EvTrcKxJdxrpgWh
-	Q2H4KrmcugdOxoAll6pM8SKZZDaSSGuiaeO/ryG+RPZZzmjqdNN3fYVHX4tN72KIxg//X8Kd9qzbW
-	WLESAwxg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TOPAdlM3FqzbHxyiRJF/lgadBp768ysApLoYIaa97ic=; b=jOdxEDLw9dk1/4T8JZsSVHe+nN
+	Zo4vuVixGj/VZ/qB3wu8HMxOYkt846Eu70cLfjktZ56Qt8DRD/AIK5j9d0NwK/6MqZqidUrD8tNSM
+	eobTBxjc0OuRRU4kiyBcrRWHJ7NeIgGKFjYLiZlk/pvDUOHUTX8/y817i9lLLDYHAPFOYLbgtKTLf
+	XyccGuUJpyjC/e2pOixPdsFgWOsz6+iC9KndXP9dmeD92sPiEK8IJl95DRTxqlEcyjF6SZef+2o3Z
+	CP3drQdS3NE1dOK3ppG+nqeUhfHjABJNC61U4gwvanHgicNmWhD0Ri0kTxCHhchYFoWgbp5pQw/BB
+	nedYnUcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olujl-008uHr-PO; Fri, 21 Oct 2022 16:19:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1olujs-008uJw-M3; Fri, 21 Oct 2022 16:19:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olujh-008uH7-Nu
-	for linux-mediatek@lists.infradead.org; Fri, 21 Oct 2022 16:19:07 +0000
+	id 1olujp-008uIY-42
+	for linux-mediatek@lists.infradead.org; Fri, 21 Oct 2022 16:19:14 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 590D0B82CA0;
-	Fri, 21 Oct 2022 16:19:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97818C433D6;
-	Fri, 21 Oct 2022 16:19:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A0FAE61F1A;
+	Fri, 21 Oct 2022 16:19:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4588C433D6;
+	Fri, 21 Oct 2022 16:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666369142;
-	bh=le7nhlny4QyaewWADZKPXPcShW1nbYI5/3w0MM5Nc/8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Jm7csGbyLeQewgAnwmZoF1/7GEJ1agj3uLy4bSJRwaGv92qS3x6RFGgb9oH372gOG
-	 llTdzeeTsE6pRZ8sH+SuGKez/C92CgiWxu5R+POzek6LyvGHyww20DnRRm4ZG3GKaA
-	 4nzvJRfUXR6Xa7LuY35OlFFsi/t+eZjXrPe2wza+oefPnW9QRaWOKSoi4Ok6JhJmGs
-	 j4m+REdExvlUN54z+98oUCkkNkry4N/ipzPWEWYZYbg60SaCNWPD2FdLiJQAEy26P8
-	 xFxvWGuwZkgKVvMuh2kpaJGnQr1ysCFG6Kiidzrd845+mrO7cfWpdURx6H6b7YCZFV
-	 tc3IlWNlBRlFw==
+	s=k20201202; t=1666369152;
+	bh=k9QkP/BFaRmPxQyPPvcZYHjcL7Yz23A2zYgMeiywtsA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=SRGtWJ9m7cpUf3zsbQ67b0Koz1rC6UX3TSi4YHnay7OsmOj1pCLwPmJ4lxFmWKNiT
+	 QA7GMj0go7FL4vfBbg0Q2dqw3Jw/uvr2jCeGUwsKqwaqz1s+ZspvMSQffOoBqS8dov
+	 783qVXmFb30e09g4pho1OqZcHm2QyzqWiRy7KH9lchIeyACyBJs9ArT5Fzf2xZymny
+	 59yOG9YqSidChzyHl04N79Y0AHDIfiCGIoBnRil138zwMg+OIGVv+SPsRty5RHEThW
+	 n+lX5jVSahs6pv2a4AMR5iMR0U2BOH29YkQtv/RyLMuOZFIzTSoC7gr0j7MQaPQpp5
+	 LG41viaf5Yurw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -62,16 +62,17 @@ Cc: nbd@nbd.name,
 	devicetree@vger.kernel.org,
 	robh@kernel.org,
 	daniel@makrotopia.org
-Subject: [PATCH net-next 0/6] introduce WED RX support to MT7986 SoC
-Date: Fri, 21 Oct 2022 18:18:30 +0200
-Message-Id: <cover.1666368566.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 1/6] arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet Dispatch
+Date: Fri, 21 Oct 2022 18:18:31 +0200
+Message-Id: <27485d296c51aeae5a0c146e46df3f369d5be1ff.1666368566.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <cover.1666368566.git.lorenzo@kernel.org>
+References: <cover.1666368566.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_091905_964410_608A7D88 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221021_091913_254907_B9AD3372 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,41 +87,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to TX counterpart available on MT7622 and MT7986, introduce
-RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
-offload traffic received by wlan nic to the wired interfaces (lan/wan).
+Similar to TX Wireless Ethernet Dispatch, introduce RX Wireless Ethernet
+Dispatch to offload traffic received by the wlan interface to lan/wan
+one.
 
-Lorenzo Bianconi (6):
-  arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
-    Dispatch
-  dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
-  net: ethernet: mtk_wed: introduce wed mcu support
-  net: ethernet: mtk_wed: introduce wed wo support
-  net: ethernet: mtk_wed: add configure wed wo support
-  net: ethernet: mtk_wed: add rx mib counters
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 79 +++++++++++++++++++++++
+ 1 file changed, 79 insertions(+)
 
- .../arm/mediatek/mediatek,mt7622-wed.yaml     | 126 ++++
- .../arm/mediatek/mediatek,mt7986-wo-boot.yaml |  45 ++
- .../arm/mediatek/mediatek,mt7986-wo-ccif.yaml |  49 ++
- .../arm/mediatek/mediatek,mt7986-wo-dlm.yaml  |  66 ++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  79 +++
- drivers/net/ethernet/mediatek/Makefile        |   2 +-
- drivers/net/ethernet/mediatek/mtk_wed.c       | 577 ++++++++++++++++--
- drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
- .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
- drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 375 ++++++++++++
- drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 545 +++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 287 +++++++++
- include/linux/soc/mediatek/mtk_wed.h          | 104 +++-
- 14 files changed, 2448 insertions(+), 44 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-boot.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-ccif.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-dlm.yaml
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 72e0d9722e07..3ee26cd0f8a9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/clock/mt7986-clk.h>
+ #include <dt-bindings/reset/mt7986-resets.h>
++#include <dt-bindings/reset/ti-syscon.h>
+ 
+ / {
+ 	interrupt-parent = <&gic>;
+@@ -75,6 +76,20 @@ secmon_reserved: secmon@43000000 {
+ 		wmcpu_emi: wmcpu-reserved@4fc00000 {
+ 			no-map;
+ 			reg = <0 0x4fc00000 0 0x00100000>;
++
++		wocpu0_emi: wocpu0_emi@4fd00000 {
++			reg = <0 0x4fd00000 0 0x40000>;
++			no-map;
++		};
++
++		wocpu1_emi: wocpu1_emi@4fd40000 {
++			reg = <0 0x4fd40000 0 0x40000>;
++			no-map;
++		};
++
++		wocpu_data: wocpu_data@4fd80000 {
++			reg = <0 0x4fd80000 0 0x240000>;
++			no-map;
+ 		};
+ 	};
+ 
+@@ -226,6 +241,12 @@ ethsys: syscon@15000000 {
+ 			 reg = <0 0x15000000 0 0x1000>;
+ 			 #clock-cells = <1>;
+ 			 #reset-cells = <1>;
++
++			ethsysrst: reset-controller {
++				compatible = "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <0x34 4 0x34 4 0x34 4 (ASSERT_SET | DEASSERT_CLEAR | STATUS_SET)>;
++			};
+ 		};
+ 
+ 		wed_pcie: wed-pcie@10003000 {
+@@ -240,6 +261,12 @@ wed0: wed@15010000 {
+ 			reg = <0 0x15010000 0 0x1000>;
+ 			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
++			mediatek,wocpu_data = <&wocpu_data>;
++			mediatek,ap2woccif = <&ap2woccif0>;
++			mediatek,wocpu_ilm = <&wocpu0_ilm>;
++			mediatek,wocpu_dlm = <&wocpu0_dlm>;
++			mediatek,wocpu_emi = <&wocpu0_emi>;
++			mediatek,wocpu_boot = <&cpu_boot>;
+ 		};
+ 
+ 		wed1: wed@15011000 {
+@@ -248,6 +275,58 @@ wed1: wed@15011000 {
+ 			reg = <0 0x15011000 0 0x1000>;
+ 			interrupt-parent = <&gic>;
+ 			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
++			mediatek,wocpu_data = <&wocpu_data>;
++			mediatek,ap2woccif = <&ap2woccif1>;
++			mediatek,wocpu_ilm = <&wocpu1_ilm>;
++			mediatek,wocpu_dlm = <&wocpu1_dlm>;
++			mediatek,wocpu_emi = <&wocpu1_emi>;
++			mediatek,wocpu_boot = <&cpu_boot>;
++		};
++
++		ap2woccif0: ap2woccif@151a5000 {
++			compatible = "mediatek,ap2woccif",
++				     "syscon";
++			reg = <0 0x151a5000 0 0x1000>;
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SPI 211 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
++		ap2woccif1: ap2woccif@0x151ad000 {
++			compatible = "mediatek,ap2woccif",
++				     "syscon";
++			reg = <0 0x151ad000 0 0x1000>;
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
++		wocpu0_ilm: wocpu0_ilm@151e0000 {
++			compatible = "mediatek,wocpu0_ilm";
++			reg = <0 0x151e0000 0 0x8000>;
++		};
++
++		wocpu1_ilm: wocpu1_ilm@151f0000 {
++			compatible = "mediatek,wocpu1_ilm";
++			reg = <0 0x151f0000 0 0x8000>;
++		};
++
++		wocpu0_dlm: wocpu_dlm@151e8000 {
++			compatible = "mediatek,wocpu_dlm";
++			reg = <0 0x151e8000 0 0x2000>;
++			resets = <&ethsysrst 0>;
++			reset-names = "wocpu_rst";
++		};
++
++		wocpu1_dlm: wocpu_dlm@0x151f8000 {
++			compatible = "mediatek,wocpu_dlm";
++			reg = <0 0x151f8000 0 0x2000>;
++			resets = <&ethsysrst 0>;
++			reset-names = "wocpu_rst";
++		};
++
++		cpu_boot: wocpu_boot@15194000 {
++			compatible = "mediatek,wocpu_boot",
++				     "syscon";
++			reg = <0 0x15194000 0 0x1000>;
+ 		};
+ 
+ 		eth: ethernet@15100000 {
 -- 
 2.37.3
 
