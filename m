@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70234C43217
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F9DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Oct 2022 08:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WqUYc9fZpedxNE5LiJc51s8x4Wnrlt7MIdy8CpWW210=; b=A045U9Z6mLEvJkDrxb1Vyw0aFj
-	FTMJPg3bNzfQjEqod22qi/6t5S8t4SroZTd8lmD0dPQJ7Kd3E4ua215PFXwVdHMlhPQq6E4VQAt6g
-	IWS4lhAbFftd+Wm7W19knJKt6Hmd0PE70MYkw5sw9GLiH+jN246PXX/4EpAst7b7Do1H5yJQWmw08
-	qUkazMraKGYNeuJQd28HrLKMO2aTfTGWr6a2O+i1DlLjxy3V9zC49wdiDf5U4mGh6J2Na/AByzkAi
-	jd2QZHFr/UHgKfA/28mR2cH0MV73/BrHThkQzWyq/2MKAAXJD/WT+1wmAWHWSyTBhnkHnPjRsrWST
-	LUvNr9pA==;
+	bh=D9xonL0JLD06cIWLcChLq9rmNWYuexA9tFxKKj6aE50=; b=UbRNZeoyZNCXDkxzk4+03JKE9n
+	OMgcAk6oBsUTTQnq027PDOrAPH5zhNuRL6rAJxV1fZKJoCO1oesoY9eL5HnusdW/3IHsDu4XLi+o4
+	PAfMujoq/2JuZ85pEB0J/zH8g89jXtgBLl/3/tPb5nPnC7izFuhG8MVOSHnF71IME1LkQHpQcwVWg
+	KQs2CU0WNQqvnuRRLqvrBW3QRjcxLf0MfkyEp+rbIBv5aj3faiAWtxdZD0E7znJXBvTtjDuaekJST
+	w3asIL52AZdkd5P7FOyKPQZF1db1KFW98IPXs9Zei8cLgRHHSEDrZnx+S1CY39hVWAe6aDMppN5Ij
+	d0Xhv/oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnOG-006LTk-Lu; Fri, 21 Oct 2022 08:28:28 +0000
+	id 1olnOT-006Lah-Jj; Fri, 21 Oct 2022 08:28:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1olnNv-006LLw-By; Fri, 21 Oct 2022 08:28:09 +0000
-X-UUID: 230bbfb5634e4204993443ca1b3c1dd7-20221021
+	id 1olnNw-006LM4-Al; Fri, 21 Oct 2022 08:28:11 +0000
+X-UUID: 3d9be03467d540a2a634b92aa4186db8-20221021
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WqUYc9fZpedxNE5LiJc51s8x4Wnrlt7MIdy8CpWW210=;
-	b=q9BnTsgctspIV765xKJqiOi2D7KjVuo6ZegSF10nu2POD8WKqv9HfkgSnot320nyw67KC3AA3mMdw4C14taFvyJ7CwUHrwlgITG7DTykCRL5FTnBivnoxiMlAG6DwTHl0ebaGpDWU9UEckcBD1Hu481gzPUZ8BW0FoM3emvnYGk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=D9xonL0JLD06cIWLcChLq9rmNWYuexA9tFxKKj6aE50=;
+	b=Lhi4y//AkQ2z5Axl9n5Bo1vr6W6DmcDYbLB3e0+xoCEIPl2kyaIurP7ahCyHe8mEabvBSjjSUqh8B5H2at4PJE8IwxhvYcWptI8aHiskO2/rLhSONRL8ZkLZ+bZaFBfWi/GD2LZ49Q0Vwx0MtYw6RpJj2vNkw8M7rlcrRQsWytA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:d4e7ea65-b815-4a73-8c71-62f2b5d302fd,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:e588ac6c-89d3-4bfa-baad-dc632a24bca3,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:551e85a3-bf93-4851-923f-0556438d2e7b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:ec88ac6c-89d3-4bfa-baad-dc632a24bca3,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 230bbfb5634e4204993443ca1b3c1dd7-20221021
+X-UUID: 3d9be03467d540a2a634b92aa4186db8-20221021
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 849726160; Fri, 21 Oct 2022 01:27:58 -0700
+	with ESMTP id 1897652161; Fri, 21 Oct 2022 01:27:59 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 21 Oct 2022 16:27:24 +0800
+ 15.2.792.15; Fri, 21 Oct 2022 16:27:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 21 Oct 2022 16:27:24 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 21 Oct 2022 16:27:25 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
 	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
@@ -55,9 +55,9 @@ CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
 	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>
-Subject: [PATCH v2 03/12] ASoC: mediatek: mt8188: support audsys clock
-Date: Fri, 21 Oct 2022 16:27:10 +0800
-Message-ID: <20221021082719.18325-4-trevor.wu@mediatek.com>
+Subject: [PATCH v2 11/12] ASoC: mediatek: mt8188: add machine driver with mt6359
+Date: Fri, 21 Oct 2022 16:27:18 +0800
+Message-ID: <20221021082719.18325-12-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221021082719.18325-1-trevor.wu@mediatek.com>
 References: <20221021082719.18325-1-trevor.wu@mediatek.com>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221021_012807_437946_CAD9FCF6 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20221021_012808_417369_38CE9F59 
+X-CRM114-Status: GOOD (  24.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,341 +81,862 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8188 audio cg clock control. Audio clock gates are registered to CCF
-for reference count and clock parent management.
+Add support for mt8188 board with mt6359.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-audsys-clk.c | 206 ++++++++++++++++++
- sound/soc/mediatek/mt8188/mt8188-audsys-clk.h |  15 ++
- .../soc/mediatek/mt8188/mt8188-audsys-clkid.h |  83 +++++++
- 3 files changed, 304 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
- create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.h
- create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h
+ sound/soc/mediatek/Kconfig                |  10 +
+ sound/soc/mediatek/mt8188/Makefile        |   3 +
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 808 ++++++++++++++++++++++
+ 3 files changed, 821 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-mt6359.c
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index cf0e4c6b61e7..b746ef8f7aff 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -219,6 +219,16 @@ config SND_SOC_MT8188
+ 	  Select Y if you have such device.
+ 	  If unsure select "N".
+ 
++config SND_SOC_MT8188_MT6359
++	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
++	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
++	select SND_SOC_HDMI_CODEC
++	help
++	  This adds support for ASoC machine driver for Mediatek MT8188
++	  boards with the MT6359 and other I2S audio codecs.
++	  Select Y if you have such device.
++	  If unsure select "N".
++
+ config SND_SOC_MT8192
+ 	tristate "ASoC support for Mediatek MT8192 chip"
+ 	depends on ARCH_MEDIATEK
+diff --git a/sound/soc/mediatek/mt8188/Makefile b/sound/soc/mediatek/mt8188/Makefile
+index fa5d383c5e47..781e61cbb22b 100644
+--- a/sound/soc/mediatek/mt8188/Makefile
++++ b/sound/soc/mediatek/mt8188/Makefile
+@@ -10,3 +10,6 @@ snd-soc-mt8188-afe-objs := \
+ 	mt8188-dai-pcm.o
+ 
+ obj-$(CONFIG_SND_SOC_MT8188) += snd-soc-mt8188-afe.o
++
++# machine driver
++obj-$(CONFIG_SND_SOC_MT8188_MT6359) += mt8188-mt6359.o
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
 new file mode 100644
-index 000000000000..1f294231d4c2
+index 000000000000..fa935f856dba
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
-@@ -0,0 +1,206 @@
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -0,0 +1,808 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * mt8188-audsys-clk.c  --  MediaTek 8188 audsys clock control
++ * mt8188-mt6359.c  --  MT8188-MT6359 ALSA SoC machine driver
 + *
 + * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
++ * Author: Trevor Wu <trevor.wu@mediatek.com>
 + */
 +
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/clkdev.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/pm_runtime.h>
++#include <sound/jack.h>
++#include <sound/pcm_params.h>
++#include <sound/soc.h>
 +#include "mt8188-afe-common.h"
-+#include "mt8188-audsys-clk.h"
-+#include "mt8188-audsys-clkid.h"
-+#include "mt8188-reg.h"
++#include "../../codecs/mt6359.h"
++#include "../common/mtk-afe-platform-driver.h"
 +
-+struct afe_gate {
-+	int id;
++/* FE */
++SND_SOC_DAILINK_DEFS(playback2,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL2")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback3,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL3")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback6,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL6")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback7,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL7")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback8,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL8")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback10,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL10")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(playback11,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DL11")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture1,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL1")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture2,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL2")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture3,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL3")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture4,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL4")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture5,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL5")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture6,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL6")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture8,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL8")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture9,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL9")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(capture10,
++		     DAILINK_COMP_ARRAY(COMP_CPU("UL10")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++/* BE */
++SND_SOC_DAILINK_DEFS(adda,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ADDA")),
++		     DAILINK_COMP_ARRAY(COMP_CODEC("mt6359-sound",
++						   "mt6359-snd-codec-aif1")),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(dptx,
++		     DAILINK_COMP_ARRAY(COMP_CPU("DPTX")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(etdm1_in,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_IN")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(etdm2_in,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM2_IN")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(etdm1_out,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(etdm2_out,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM2_OUT")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(etdm3_out,
++		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM3_OUT")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++SND_SOC_DAILINK_DEFS(pcm1,
++		     DAILINK_COMP_ARRAY(COMP_CPU("PCM1")),
++		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
++		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
++
++struct mt8188_mt6359_priv {
++	struct snd_soc_jack dp_jack;
++	struct snd_soc_jack hdmi_jack;
++};
++
++struct mt8188_card_data {
 +	const char *name;
-+	const char *parent_name;
-+	int reg;
-+	u8 bit;
-+	const struct clk_ops *ops;
-+	unsigned long flags;
-+	u8 cg_flags;
++	unsigned long quirk;
 +};
 +
-+#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit, _flags, _cgflags) {\
-+		.id = _id,					\
-+		.name = _name,					\
-+		.parent_name = _parent,				\
-+		.reg = _reg,					\
-+		.bit = _bit,					\
-+		.flags = _flags,				\
-+		.cg_flags = _cgflags,				\
-+	}
-+
-+#define GATE_AFE(_id, _name, _parent, _reg, _bit)		\
-+	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		\
-+		       CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED, CLK_GATE_SET_TO_DISABLE)
-+
-+#define GATE_AUD0(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON0, _bit)
-+
-+#define GATE_AUD1(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON1, _bit)
-+
-+#define GATE_AUD3(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON3, _bit)
-+
-+#define GATE_AUD4(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON4, _bit)
-+
-+#define GATE_AUD5(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON5, _bit)
-+
-+#define GATE_AUD6(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON6, _bit)
-+
-+static const struct afe_gate aud_clks[CLK_AUD_NR_CLK] = {
-+	/* AUD0 */
-+	GATE_AUD0(CLK_AUD_AFE, "aud_afe", "top_a1sys_hp", 2),
-+	GATE_AUD0(CLK_AUD_LRCK_CNT, "aud_lrck_cnt", "top_a1sys_hp", 4),
-+	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_APLL, "aud_spdifin_tuner_apll", "top_apll4", 10),
-+	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_DBG, "aud_spdifin_tuner_dbg", "top_apll4", 11),
-+	GATE_AUD0(CLK_AUD_UL_TML, "aud_ul_tml", "top_a1sys_hp", 18),
-+	GATE_AUD0(CLK_AUD_APLL1_TUNER, "aud_apll1_tuner", "top_apll1", 19),
-+	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner", "top_apll2", 20),
-+	GATE_AUD0(CLK_AUD_TOP0_SPDF, "aud_top0_spdf", "top_aud_iec_clk", 21),
-+	GATE_AUD0(CLK_AUD_APLL, "aud_apll", "top_apll1", 23),
-+	GATE_AUD0(CLK_AUD_APLL2, "aud_apll2", "top_apll2", 24),
-+	GATE_AUD0(CLK_AUD_DAC, "aud_dac", "top_a1sys_hp", 25),
-+	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis", "top_a1sys_hp", 26),
-+	GATE_AUD0(CLK_AUD_TML, "aud_tml", "top_a1sys_hp", 27),
-+	GATE_AUD0(CLK_AUD_ADC, "aud_adc", "top_a1sys_hp", 28),
-+	GATE_AUD0(CLK_AUD_DAC_HIRES, "aud_dac_hires", "top_audio_h", 31),
-+
-+	/* AUD1 */
-+	GATE_AUD1(CLK_AUD_A1SYS_HP, "aud_a1sys_hp", "top_a1sys_hp", 2),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC1, "aud_afe_dmic1", "top_a1sys_hp", 10),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC2, "aud_afe_dmic2", "top_a1sys_hp", 11),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC3, "aud_afe_dmic3", "top_a1sys_hp", 12),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC4, "aud_afe_dmic4", "top_a1sys_hp", 13),
-+	GATE_AUD1(CLK_AUD_AFE_26M_DMIC_TM, "aud_afe_26m_dmic_tm", "top_a1sys_hp", 14),
-+	GATE_AUD1(CLK_AUD_UL_TML_HIRES, "aud_ul_tml_hires", "top_audio_h", 16),
-+	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires", "top_audio_h", 17),
-+
-+	/* AUD3 */
-+	GATE_AUD3(CLK_AUD_LINEIN_TUNER, "aud_linein_tuner", "top_apll5", 5),
-+	GATE_AUD3(CLK_AUD_EARC_TUNER, "aud_earc_tuner", "top_apll3", 7),
-+
-+	/* AUD4 */
-+	GATE_AUD4(CLK_AUD_I2SIN, "aud_i2sin", "top_a1sys_hp", 0),
-+	GATE_AUD4(CLK_AUD_TDM_IN, "aud_tdm_in", "top_a1sys_hp", 1),
-+	GATE_AUD4(CLK_AUD_I2S_OUT, "aud_i2s_out", "top_a1sys_hp", 6),
-+	GATE_AUD4(CLK_AUD_TDM_OUT, "aud_tdm_out", "top_a1sys_hp", 7),
-+	GATE_AUD4(CLK_AUD_HDMI_OUT, "aud_hdmi_out", "top_a1sys_hp", 8),
-+	GATE_AUD4(CLK_AUD_ASRC11, "aud_asrc11", "top_a1sys_hp", 16),
-+	GATE_AUD4(CLK_AUD_ASRC12, "aud_asrc12", "top_a1sys_hp", 17),
-+	GATE_AUD4(CLK_AUD_MULTI_IN, "aud_multi_in", "mphone_slave_b", 19),
-+	GATE_AUD4(CLK_AUD_INTDIR, "aud_intdir", "top_intdir", 20),
-+	GATE_AUD4(CLK_AUD_A1SYS, "aud_a1sys", "top_a1sys_hp", 21),
-+	GATE_AUD4(CLK_AUD_A2SYS, "aud_a2sys", "top_a2sys", 22),
-+	GATE_AUD4(CLK_AUD_PCMIF, "aud_pcmif", "top_a1sys_hp", 24),
-+	GATE_AUD4(CLK_AUD_A3SYS, "aud_a3sys", "top_a3sys", 30),
-+	GATE_AUD4(CLK_AUD_A4SYS, "aud_a4sys", "top_a4sys", 31),
-+
-+	/* AUD5 */
-+	GATE_AUD5(CLK_AUD_MEMIF_UL1, "aud_memif_ul1", "top_a1sys_hp", 0),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL2, "aud_memif_ul2", "top_a1sys_hp", 1),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL3, "aud_memif_ul3", "top_a1sys_hp", 2),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL4, "aud_memif_ul4", "top_a1sys_hp", 3),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL5, "aud_memif_ul5", "top_a1sys_hp", 4),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL6, "aud_memif_ul6", "top_a1sys_hp", 5),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL8, "aud_memif_ul8", "top_a1sys_hp", 7),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL9, "aud_memif_ul9", "top_a1sys_hp", 8),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL10, "aud_memif_ul10", "top_a1sys_hp", 9),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL2, "aud_memif_dl2", "top_a1sys_hp", 18),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL3, "aud_memif_dl3", "top_a1sys_hp", 19),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL6, "aud_memif_dl6", "top_a1sys_hp", 22),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL7, "aud_memif_dl7", "top_a1sys_hp", 23),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL8, "aud_memif_dl8", "top_a1sys_hp", 24),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL10, "aud_memif_dl10", "top_a1sys_hp", 26),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL11, "aud_memif_dl11", "top_a1sys_hp", 27),
-+
-+	/* AUD6 */
-+	GATE_AUD6(CLK_AUD_GASRC0, "aud_gasrc0", "top_asm_h", 0),
-+	GATE_AUD6(CLK_AUD_GASRC1, "aud_gasrc1", "top_asm_h", 1),
-+	GATE_AUD6(CLK_AUD_GASRC2, "aud_gasrc2", "top_asm_h", 2),
-+	GATE_AUD6(CLK_AUD_GASRC3, "aud_gasrc3", "top_asm_h", 3),
-+	GATE_AUD6(CLK_AUD_GASRC4, "aud_gasrc4", "top_asm_h", 4),
-+	GATE_AUD6(CLK_AUD_GASRC5, "aud_gasrc5", "top_asm_h", 5),
-+	GATE_AUD6(CLK_AUD_GASRC6, "aud_gasrc6", "top_asm_h", 6),
-+	GATE_AUD6(CLK_AUD_GASRC7, "aud_gasrc7", "top_asm_h", 7),
-+	GATE_AUD6(CLK_AUD_GASRC8, "aud_gasrc8", "top_asm_h", 8),
-+	GATE_AUD6(CLK_AUD_GASRC9, "aud_gasrc9", "top_asm_h", 9),
-+	GATE_AUD6(CLK_AUD_GASRC10, "aud_gasrc10", "top_asm_h", 10),
-+	GATE_AUD6(CLK_AUD_GASRC11, "aud_gasrc11", "top_asm_h", 11),
++static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
++	SND_SOC_DAPM_HP("Headphone", NULL),
++	SND_SOC_DAPM_MIC("Headset Mic", NULL),
 +};
 +
-+int mt8188_audsys_clk_register(struct mtk_base_afe *afe)
++static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
++	SOC_DAPM_PIN_SWITCH("Headphone"),
++	SOC_DAPM_PIN_SWITCH("Headset Mic"),
++};
++
++#define CKSYS_AUD_TOP_CFG 0x032c
++#define CKSYS_AUD_TOP_MON 0x0330
++
++static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
 +{
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk;
-+	struct clk_lookup *cl;
++	struct snd_soc_component *cmpnt_afe =
++		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
++	struct snd_soc_component *cmpnt_codec =
++		asoc_rtd_to_codec(rtd, 0)->component;
++	struct mtk_base_afe *afe;
++	struct mt8188_afe_private *afe_priv;
++	struct mtkaif_param *param;
++	int chosen_phase_1, chosen_phase_2;
++	int prev_cycle_1, prev_cycle_2;
++	int test_done_1, test_done_2;
++	int cycle_1, cycle_2;
++	int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
++	int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
++	int mtkaif_calibration_num_phase;
++	bool mtkaif_calibration_ok;
++	unsigned int monitor = 0;
++	int counter;
++	int phase;
 +	int i;
 +
-+	afe_priv->lookup = devm_kcalloc(afe->dev, CLK_AUD_NR_CLK,
-+					sizeof(*afe_priv->lookup),
-+					GFP_KERNEL);
++	if (!cmpnt_afe)
++		return -EINVAL;
 +
-+	if (!afe_priv->lookup)
-+		return -ENOMEM;
++	afe = snd_soc_component_get_drvdata(cmpnt_afe);
++	afe_priv = afe->platform_priv;
++	param = &afe_priv->mtkaif_params;
 +
-+	for (i = 0; i < ARRAY_SIZE(aud_clks); i++) {
-+		const struct afe_gate *gate = &aud_clks[i];
++	dev_dbg(afe->dev, "%s(), start\n", __func__);
 +
-+		clk = clk_register_gate(afe->dev, gate->name, gate->parent_name,
-+					gate->flags, afe->base_addr + gate->reg,
-+					gate->bit, gate->cg_flags, NULL);
++	param->mtkaif_calibration_ok = false;
++	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++) {
++		param->mtkaif_chosen_phase[i] = -1;
++		param->mtkaif_phase_cycle[i] = 0;
++		mtkaif_chosen_phase[i] = -1;
++		mtkaif_phase_cycle[i] = 0;
++	}
 +
-+		if (IS_ERR(clk)) {
-+			dev_err(afe->dev, "Failed to register clk %s: %ld\n",
-+				gate->name, PTR_ERR(clk));
-+			continue;
++	if (IS_ERR(afe_priv->topckgen)) {
++		dev_info(afe->dev, "%s() Cannot find topckgen controller\n",
++			 __func__);
++		return 0;
++	}
++
++	pm_runtime_get_sync(afe->dev);
++	mt6359_mtkaif_calibration_enable(cmpnt_codec);
++
++	/* set test type to synchronizer pulse */
++	regmap_update_bits(afe_priv->topckgen,
++			   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
++	mtkaif_calibration_num_phase = 42;	/* mt6359: 0 ~ 42 */
++	mtkaif_calibration_ok = true;
++
++	for (phase = 0;
++	     phase <= mtkaif_calibration_num_phase && mtkaif_calibration_ok;
++	     phase++) {
++		mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
++						    phase, phase, phase);
++
++		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
++
++		test_done_1 = 0;
++		test_done_2 = 0;
++
++		cycle_1 = -1;
++		cycle_2 = -1;
++
++		counter = 0;
++		while (!(test_done_1 & test_done_2)) {
++			regmap_read(afe_priv->topckgen,
++				    CKSYS_AUD_TOP_MON, &monitor);
++			test_done_1 = (monitor >> 28) & 0x1;
++			test_done_2 = (monitor >> 29) & 0x1;
++
++			if (test_done_1 == 1)
++				cycle_1 = monitor & 0xf;
++
++			if (test_done_2 == 1)
++				cycle_2 = (monitor >> 4) & 0xf;
++
++			/* handle if never test done */
++			if (++counter > 10000) {
++				dev_info(afe->dev, "%s(), test fail, cycle_1 %d, cycle_2 %d, monitor 0x%x\n",
++					 __func__,
++					 cycle_1, cycle_2, monitor);
++				mtkaif_calibration_ok = false;
++				break;
++			}
 +		}
 +
-+		/* add clk_lookup for devm_clk_get(SND_SOC_DAPM_CLOCK_SUPPLY) */
-+		cl = kzalloc(sizeof(*cl), GFP_KERNEL);
-+		if (!cl)
-+			return -ENOMEM;
++		if (phase == 0) {
++			prev_cycle_1 = cycle_1;
++			prev_cycle_2 = cycle_2;
++		}
 +
-+		cl->clk = clk;
-+		cl->con_id = gate->name;
-+		cl->dev_id = dev_name(afe->dev);
-+		cl->clk_hw = NULL;
-+		clkdev_add(cl);
++		if (cycle_1 != prev_cycle_1 &&
++		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] < 0) {
++			mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] = phase - 1;
++			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] = prev_cycle_1;
++		}
 +
-+		afe_priv->lookup[i] = cl;
++		if (cycle_2 != prev_cycle_2 &&
++		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] < 0) {
++			mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] = phase - 1;
++			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] = prev_cycle_2;
++		}
++
++		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
++
++		if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
++		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
++			break;
 +	}
++
++	if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] < 0) {
++		mtkaif_calibration_ok = false;
++		chosen_phase_1 = 0;
++	} else {
++		chosen_phase_1 = mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0];
++	}
++
++	if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] < 0) {
++		mtkaif_calibration_ok = false;
++		chosen_phase_2 = 0;
++	} else {
++		chosen_phase_2 = mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1];
++	}
++
++	mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
++					    chosen_phase_1,
++					    chosen_phase_2,
++					    0);
++
++	mt6359_mtkaif_calibration_disable(cmpnt_codec);
++	pm_runtime_put(afe->dev);
++
++	param->mtkaif_calibration_ok = mtkaif_calibration_ok;
++	param->mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] = chosen_phase_1;
++	param->mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] = chosen_phase_2;
++
++	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++)
++		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
++
++	dev_info(afe->dev, "%s(), end, calibration ok %d\n",
++		 __func__, param->mtkaif_calibration_ok);
 +
 +	return 0;
 +}
 +
-+void mt8188_audsys_clk_unregister(struct mtk_base_afe *afe)
++static int mt8188_mt6359_init(struct snd_soc_pcm_runtime *rtd)
 +{
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk;
-+	struct clk_lookup *cl;
-+	int i;
++	struct snd_soc_component *cmpnt_codec =
++		asoc_rtd_to_codec(rtd, 0)->component;
++	struct snd_soc_card *card = rtd->card;
++	struct snd_soc_dapm_context *dapm = &card->dapm;
 +
-+	if (!afe_priv)
-+		return;
++	/* set mtkaif protocol */
++	mt6359_set_mtkaif_protocol(cmpnt_codec,
++				   MT6359_MTKAIF_PROTOCOL_2_CLK_P2);
 +
-+	for (i = 0; i < CLK_AUD_NR_CLK; i++) {
-+		cl = afe_priv->lookup[i];
-+		if (!cl)
-+			continue;
++	/* mtkaif calibration */
++	mt8188_mt6359_mtkaif_calibration(rtd);
 +
-+		clk = cl->clk;
-+		clk_unregister_gate(clk);
++	/* disable widget at init, in case of unexpected completed path */
++	snd_soc_dapm_disable_pin(dapm, "Receiver");
++	snd_soc_dapm_disable_pin(dapm, "Headphone L");
++	snd_soc_dapm_disable_pin(dapm, "Headphone R");
++	snd_soc_dapm_disable_pin(dapm, "Headphone L Ext Spk Amp");
++	snd_soc_dapm_disable_pin(dapm, "Headphone R Ext Spk Amp");
++	snd_soc_dapm_disable_pin(dapm, "LINEOUT L");
 +
-+		clkdev_drop(cl);
-+	}
++	return 0;
 +}
 +
-diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.h b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.h
-new file mode 100644
-index 000000000000..6c5f463ad7e4
---- /dev/null
-+++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.h
-@@ -0,0 +1,15 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8188-audsys-clk.h  --  MediaTek 8188 audsys clock definition
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
-+ */
-+
-+#ifndef _MT8188_AUDSYS_CLK_H_
-+#define _MT8188_AUDSYS_CLK_H_
-+
-+int mt8188_audsys_clk_register(struct mtk_base_afe *afe);
-+void mt8188_audsys_clk_unregister(struct mtk_base_afe *afe);
-+
-+#endif
-diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h b/sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h
-new file mode 100644
-index 000000000000..6f34ffc760e0
---- /dev/null
-+++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clkid.h
-@@ -0,0 +1,83 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8188-audsys-clkid.h  --  MediaTek 8188 audsys clock id definition
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
-+ */
-+
-+#ifndef _MT8188_AUDSYS_CLKID_H_
-+#define _MT8188_AUDSYS_CLKID_H_
-+
-+enum{
-+	CLK_AUD_AFE,
-+	CLK_AUD_LRCK_CNT,
-+	CLK_AUD_SPDIFIN_TUNER_APLL,
-+	CLK_AUD_SPDIFIN_TUNER_DBG,
-+	CLK_AUD_UL_TML,
-+	CLK_AUD_APLL1_TUNER,
-+	CLK_AUD_APLL2_TUNER,
-+	CLK_AUD_TOP0_SPDF,
-+	CLK_AUD_APLL,
-+	CLK_AUD_APLL2,
-+	CLK_AUD_DAC,
-+	CLK_AUD_DAC_PREDIS,
-+	CLK_AUD_TML,
-+	CLK_AUD_ADC,
-+	CLK_AUD_DAC_HIRES,
-+	CLK_AUD_A1SYS_HP,
-+	CLK_AUD_AFE_DMIC1,
-+	CLK_AUD_AFE_DMIC2,
-+	CLK_AUD_AFE_DMIC3,
-+	CLK_AUD_AFE_DMIC4,
-+	CLK_AUD_AFE_26M_DMIC_TM,
-+	CLK_AUD_UL_TML_HIRES,
-+	CLK_AUD_ADC_HIRES,
-+	CLK_AUD_LINEIN_TUNER,
-+	CLK_AUD_EARC_TUNER,
-+	CLK_AUD_I2SIN,
-+	CLK_AUD_TDM_IN,
-+	CLK_AUD_I2S_OUT,
-+	CLK_AUD_TDM_OUT,
-+	CLK_AUD_HDMI_OUT,
-+	CLK_AUD_ASRC11,
-+	CLK_AUD_ASRC12,
-+	CLK_AUD_MULTI_IN,
-+	CLK_AUD_INTDIR,
-+	CLK_AUD_A1SYS,
-+	CLK_AUD_A2SYS,
-+	CLK_AUD_PCMIF,
-+	CLK_AUD_A3SYS,
-+	CLK_AUD_A4SYS,
-+	CLK_AUD_MEMIF_UL1,
-+	CLK_AUD_MEMIF_UL2,
-+	CLK_AUD_MEMIF_UL3,
-+	CLK_AUD_MEMIF_UL4,
-+	CLK_AUD_MEMIF_UL5,
-+	CLK_AUD_MEMIF_UL6,
-+	CLK_AUD_MEMIF_UL8,
-+	CLK_AUD_MEMIF_UL9,
-+	CLK_AUD_MEMIF_UL10,
-+	CLK_AUD_MEMIF_DL2,
-+	CLK_AUD_MEMIF_DL3,
-+	CLK_AUD_MEMIF_DL6,
-+	CLK_AUD_MEMIF_DL7,
-+	CLK_AUD_MEMIF_DL8,
-+	CLK_AUD_MEMIF_DL10,
-+	CLK_AUD_MEMIF_DL11,
-+	CLK_AUD_GASRC0,
-+	CLK_AUD_GASRC1,
-+	CLK_AUD_GASRC2,
-+	CLK_AUD_GASRC3,
-+	CLK_AUD_GASRC4,
-+	CLK_AUD_GASRC5,
-+	CLK_AUD_GASRC6,
-+	CLK_AUD_GASRC7,
-+	CLK_AUD_GASRC8,
-+	CLK_AUD_GASRC9,
-+	CLK_AUD_GASRC10,
-+	CLK_AUD_GASRC11,
-+	CLK_AUD_NR_CLK,
++enum {
++	DAI_LINK_DL2_FE,
++	DAI_LINK_DL3_FE,
++	DAI_LINK_DL6_FE,
++	DAI_LINK_DL7_FE,
++	DAI_LINK_DL8_FE,
++	DAI_LINK_DL10_FE,
++	DAI_LINK_DL11_FE,
++	DAI_LINK_UL1_FE,
++	DAI_LINK_UL2_FE,
++	DAI_LINK_UL3_FE,
++	DAI_LINK_UL4_FE,
++	DAI_LINK_UL5_FE,
++	DAI_LINK_UL6_FE,
++	DAI_LINK_UL8_FE,
++	DAI_LINK_UL9_FE,
++	DAI_LINK_UL10_FE,
++	DAI_LINK_ADDA_BE,
++	DAI_LINK_DPTX_BE,
++	DAI_LINK_ETDM1_IN_BE,
++	DAI_LINK_ETDM2_IN_BE,
++	DAI_LINK_ETDM1_OUT_BE,
++	DAI_LINK_ETDM2_OUT_BE,
++	DAI_LINK_ETDM3_OUT_BE,
++	DAI_LINK_PCM1_BE,
 +};
 +
-+#endif
++static int mt8188_dptx_hw_params(struct snd_pcm_substream *substream,
++				 struct snd_pcm_hw_params *params)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	unsigned int rate = params_rate(params);
++	unsigned int mclk_fs_ratio = 256;
++	unsigned int mclk_fs = rate * mclk_fs_ratio;
++	struct snd_soc_dai *dai = asoc_rtd_to_cpu(rtd, 0);
++
++	return snd_soc_dai_set_sysclk(dai, 0, mclk_fs, SND_SOC_CLOCK_OUT);
++}
++
++static const struct snd_soc_ops mt8188_dptx_ops = {
++	.hw_params = mt8188_dptx_hw_params,
++};
++
++static int mt8188_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
++				       struct snd_pcm_hw_params *params)
++{
++	/* fix BE i2s format to 32bit, clean param mask first */
++	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
++			     0, SNDRV_PCM_FORMAT_LAST);
++
++	params_set_format(params, SNDRV_PCM_FORMAT_S32_LE);
++
++	return 0;
++}
++
++static int mt8188_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
++{
++	struct mt8188_mt6359_priv *priv = snd_soc_card_get_drvdata(rtd->card);
++	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
++	int ret = 0;
++
++	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
++				    &priv->hdmi_jack);
++	if (ret) {
++		dev_info(rtd->dev, "%s, new jack failed: %d\n", __func__, ret);
++		return ret;
++	}
++
++	ret = snd_soc_component_set_jack(component, &priv->hdmi_jack, NULL);
++	if (ret)
++		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
++			 __func__, component->name, ret);
++
++	return ret;
++}
++
++static int mt8188_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
++{
++	struct mt8188_mt6359_priv *priv = snd_soc_card_get_drvdata(rtd->card);
++	struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
++	int ret = 0;
++
++	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
++				    &priv->dp_jack);
++	if (ret) {
++		dev_info(rtd->dev, "%s, new jack failed: %d\n", __func__, ret);
++		return ret;
++	}
++
++	ret = snd_soc_component_set_jack(component, &priv->dp_jack, NULL);
++	if (ret)
++		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
++			 __func__, component->name, ret);
++
++	return ret;
++}
++
++static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
++	/* FE */
++	[DAI_LINK_DL2_FE] = {
++		.name = "DL2_FE",
++		.stream_name = "DL2 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback2),
++	},
++	[DAI_LINK_DL3_FE] = {
++		.name = "DL3_FE",
++		.stream_name = "DL3 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback3),
++	},
++	[DAI_LINK_DL6_FE] = {
++		.name = "DL6_FE",
++		.stream_name = "DL6 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback6),
++	},
++	[DAI_LINK_DL7_FE] = {
++		.name = "DL7_FE",
++		.stream_name = "DL7 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_PRE,
++			SND_SOC_DPCM_TRIGGER_PRE,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback7),
++	},
++	[DAI_LINK_DL8_FE] = {
++		.name = "DL8_FE",
++		.stream_name = "DL8 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback8),
++	},
++	[DAI_LINK_DL10_FE] = {
++		.name = "DL10_FE",
++		.stream_name = "DL10 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback10),
++	},
++	[DAI_LINK_DL11_FE] = {
++		.name = "DL11_FE",
++		.stream_name = "DL11 Playback",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(playback11),
++	},
++	[DAI_LINK_UL1_FE] = {
++		.name = "UL1_FE",
++		.stream_name = "UL1 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_PRE,
++			SND_SOC_DPCM_TRIGGER_PRE,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture1),
++	},
++	[DAI_LINK_UL2_FE] = {
++		.name = "UL2_FE",
++		.stream_name = "UL2 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture2),
++	},
++	[DAI_LINK_UL3_FE] = {
++		.name = "UL3_FE",
++		.stream_name = "UL3 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture3),
++	},
++	[DAI_LINK_UL4_FE] = {
++		.name = "UL4_FE",
++		.stream_name = "UL4 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture4),
++	},
++	[DAI_LINK_UL5_FE] = {
++		.name = "UL5_FE",
++		.stream_name = "UL5 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture5),
++	},
++	[DAI_LINK_UL6_FE] = {
++		.name = "UL6_FE",
++		.stream_name = "UL6 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_PRE,
++			SND_SOC_DPCM_TRIGGER_PRE,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture6),
++	},
++	[DAI_LINK_UL8_FE] = {
++		.name = "UL8_FE",
++		.stream_name = "UL8 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture8),
++	},
++	[DAI_LINK_UL9_FE] = {
++		.name = "UL9_FE",
++		.stream_name = "UL9 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture9),
++	},
++	[DAI_LINK_UL10_FE] = {
++		.name = "UL10_FE",
++		.stream_name = "UL10 Capture",
++		.trigger = {
++			SND_SOC_DPCM_TRIGGER_POST,
++			SND_SOC_DPCM_TRIGGER_POST,
++		},
++		.dynamic = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(capture10),
++	},
++	/* BE */
++	[DAI_LINK_ADDA_BE] = {
++		.name = "ADDA_BE",
++		.no_pcm = 1,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		.init = mt8188_mt6359_init,
++		SND_SOC_DAILINK_REG(adda),
++	},
++	[DAI_LINK_DPTX_BE] = {
++		.name = "DPTX_BE",
++		.ops = &mt8188_dptx_ops,
++		.be_hw_params_fixup = mt8188_dptx_hw_params_fixup,
++		.no_pcm = 1,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(dptx),
++	},
++	[DAI_LINK_ETDM1_IN_BE] = {
++		.name = "ETDM1_IN_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBP_CFP,
++		.dpcm_capture = 1,
++		.ignore_suspend = 1,
++		SND_SOC_DAILINK_REG(etdm1_in),
++	},
++	[DAI_LINK_ETDM2_IN_BE] = {
++		.name = "ETDM2_IN_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBP_CFP,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(etdm2_in),
++	},
++	[DAI_LINK_ETDM1_OUT_BE] = {
++		.name = "ETDM1_OUT_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBC_CFC,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(etdm1_out),
++	},
++	[DAI_LINK_ETDM2_OUT_BE] = {
++		.name = "ETDM2_OUT_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBC_CFC,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(etdm2_out),
++	},
++	[DAI_LINK_ETDM3_OUT_BE] = {
++		.name = "ETDM3_OUT_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBC_CFC,
++		.dpcm_playback = 1,
++		SND_SOC_DAILINK_REG(etdm3_out),
++	},
++	[DAI_LINK_PCM1_BE] = {
++		.name = "PCM1_BE",
++		.no_pcm = 1,
++		.dai_fmt = SND_SOC_DAIFMT_I2S |
++			SND_SOC_DAIFMT_NB_NF |
++			SND_SOC_DAIFMT_CBC_CFC,
++		.dpcm_playback = 1,
++		.dpcm_capture = 1,
++		SND_SOC_DAILINK_REG(pcm1),
++	},
++};
++
++static struct snd_soc_card mt8188_mt6359_soc_card = {
++	.owner = THIS_MODULE,
++	.dai_link = mt8188_mt6359_dai_links,
++	.num_links = ARRAY_SIZE(mt8188_mt6359_dai_links),
++	.dapm_widgets = mt8188_mt6359_widgets,
++	.num_dapm_widgets = ARRAY_SIZE(mt8188_mt6359_widgets),
++	.controls = mt8188_mt6359_controls,
++	.num_controls = ARRAY_SIZE(mt8188_mt6359_controls),
++};
++
++static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
++{
++	struct snd_soc_card *card = &mt8188_mt6359_soc_card;
++	struct device_node *platform_node, *dp_node, *hdmi_node;
++	struct mt8188_mt6359_priv *priv;
++	struct mt8188_card_data *card_data;
++	struct snd_soc_dai_link *dai_link;
++	int ret, i;
++
++	card_data = (struct mt8188_card_data *)of_device_get_match_data(&pdev->dev);
++	card->dev = &pdev->dev;
++
++	ret = snd_soc_of_parse_card_name(card, "model");
++	if (ret)
++		return dev_err_probe(&pdev->dev, ret, "%s new card name parsing error\n",
++				     __func__);
++
++	if (!card->name)
++		card->name = card_data->name;
++
++	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return  -ENOMEM;
++
++	if (of_property_read_bool(pdev->dev.of_node, "audio-routing")) {
++		ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
++		if (ret)
++			return ret;
++	}
++
++	platform_node = of_parse_phandle(pdev->dev.of_node,
++					 "mediatek,platform", 0);
++	if (!platform_node) {
++		ret = -EINVAL;
++		return dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
++	}
++
++	dp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,dptx-codec", 0);
++	hdmi_node = of_parse_phandle(pdev->dev.of_node,
++				     "mediatek,hdmi-codec", 0);
++	for_each_card_prelinks(card, i, dai_link) {
++		if (dai_link->platforms->name)
++			continue;
++		dai_link->platforms->of_node = platform_node;
++
++		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
++			if (!dp_node) {
++				dev_dbg(&pdev->dev, "No property 'dptx-codec'\n");
++			} else {
++				dai_link->codecs->of_node = dp_node;
++				dai_link->codecs->name = NULL;
++				dai_link->codecs->dai_name = "i2s-hifi";
++				dai_link->init = mt8188_dptx_codec_init;
++			}
++		} else if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
++			if (!hdmi_node) {
++				dev_dbg(&pdev->dev, "No property 'hdmi-codec'\n");
++			} else {
++				dai_link->codecs->of_node = hdmi_node;
++				dai_link->codecs->name = NULL;
++				dai_link->codecs->dai_name = "i2s-hifi";
++				dai_link->init = mt8188_hdmi_codec_init;
++			}
++		}
++	}
++
++	snd_soc_card_set_drvdata(card, priv);
++
++	ret = devm_snd_soc_register_card(&pdev->dev, card);
++	if (ret)
++		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n",
++			      __func__);
++
++	of_node_put(dp_node);
++	of_node_put(hdmi_node);
++	of_node_put(platform_node);
++
++	return ret;
++}
++
++static struct mt8188_card_data mt8188_evb_card = {
++	.name = "mt8188_mt6359",
++};
++
++static const struct of_device_id mt8188_mt6359_dt_match[] = {
++	{
++		.compatible = "mediatek,mt8188_mt6359_evb",
++		.data = &mt8188_evb_card,
++	},
++	{},
++};
++
++static struct platform_driver mt8188_mt6359_driver = {
++	.driver = {
++		.name = "mt8188_mt6359",
++		.of_match_table = mt8188_mt6359_dt_match,
++		.pm = &snd_soc_pm_ops,
++	},
++	.probe = mt8188_mt6359_dev_probe,
++};
++
++module_platform_driver(mt8188_mt6359_driver);
++
++/* Module information */
++MODULE_DESCRIPTION("MT8188-MT6359 ALSA SoC machine driver");
++MODULE_AUTHOR("Trevor Wu <trevor.wu@mediatek.com>");
++MODULE_LICENSE("GPL");
++MODULE_ALIAS("mt8188 mt6359 soc card");
++
 -- 
 2.18.0
 
