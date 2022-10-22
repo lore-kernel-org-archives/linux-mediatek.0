@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0242C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Oct 2022 16:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D8AFA373F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Oct 2022 16:35:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u7SWOvXweDZtmkeWSuLz6l3o0fM/vaQf8Gw102I5GRQ=; b=qiAC6gSx+umqBP
-	FfqK7S7ClGKUyvt/eOSt/vVC32yLcqBO9T9cG4MUQ0F6kN38PAfzPCKuZSKTJ2Ly0Tze71Vyk7v0p
-	B3PDMYoPfe49hsnas4YJkSAwxZQjhZoUXW69SzjGFMwoWF6wZKsqA8D/mQ7n4kYjq04d8UvslXNjj
-	Nvg7KkNI/8javdP2/3qXP7LD+fugF0v3YDRUqIt/7X0hsPh2B7D58Uve1U76XlJa3MhINxtfdZMRj
-	b8kGySSbRQrBFi6s17N2LHA1+KJCEThxK1X1ordJLJ3frr3vUknXJlxpPEsaSIyikVfvWLLn/zAci
-	aIKk/mdMVMijVpJClE1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GBm0P3FPX2F4B7EXDqIEp1ZB1xk9MTQmB4rl3mZnXIY=; b=kdKJ8TKL4cknWrBG9aN89gVYVH
+	DuZHm8CPvPjMls1BaZ9J4LCeSbdbP4ee48X2bXDrBn0b2APfK99tUe9cPgcvdFlxuic4Af7h8Ex9T
+	9uYXmrPLDZH4y4X8yNHCX9zilL+I9c4VxYsEKR9yyPinFF+/KtDzttMetWDD71apQW3m8x9xdMEVU
+	b08vGOSyBkQ9qLAnG8FRoxqd/mtikdyyZMYrKYVJfP7liKFjjoBuH3xVNrq5vLd3ZQ9SZaKH/KHAX
+	Azjb+1qUY58vGfT7KJvOeOh/gywArebwmNyyUVbX9tkNaVYaZUmE3LXR5XAINdhc8bJS/k49PmYhO
+	MVvXTSJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omHNu-00DFba-Nx; Sat, 22 Oct 2022 16:30:06 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1omHTK-00DGh0-F4; Sat, 22 Oct 2022 16:35:42 +0000
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omHNq-00DFaX-RK
-	for linux-mediatek@lists.infradead.org; Sat, 22 Oct 2022 16:30:04 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-13b6c1c89bdso1355762fac.13
-        for <linux-mediatek@lists.infradead.org>; Sat, 22 Oct 2022 09:30:02 -0700 (PDT)
+	id 1omHT8-00DGdw-MG
+	for linux-mediatek@lists.infradead.org; Sat, 22 Oct 2022 16:35:32 +0000
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-131dda37dddso7324383fac.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 22 Oct 2022 09:35:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=u7SWOvXweDZtmkeWSuLz6l3o0fM/vaQf8Gw102I5GRQ=;
-        b=G2k9jjkJCEai5xU0b1yIXA4xPlcxeZUesmGr2osHTA4IYYE1IgDDkYsqRAUVIVtdgk
-         GLIIvHgw2c70Ey9XB5CESFoq93sozsyh5IXwS43rGyMW/cohocxhwjsEmwf58/kfF56/
-         SVDqL53QkervbiVMC8cpiF1QJAMOdItMguNSgl/3CeUHnH8+4SSn7AZYjvmhsiWRRSih
-         sLdN2h931hAUNtB/wWk4l8YptO9JLY31oRbfU8ERFMSh+yn2+PCmH7cinlQ0JCxK4oR8
-         XmG2g1DuFJoE1me8OZ0ZHWpfQP9FLI7Y9qtdzVX5TvNyY2dJtK6E5XIrwZT2cX7xZ9d4
-         NN1g==
+        bh=GBm0P3FPX2F4B7EXDqIEp1ZB1xk9MTQmB4rl3mZnXIY=;
+        b=f8pvx7q1zwdMngBbP7ZEUPfZkrFHxQxA48Ai3+mygs/GLpdKI7VUvGM9oYNvRDbn7Z
+         wN6FxU3NQy5sPMsOsv9WTOWxhSIjy/2yUBxTdnSvOGLlcC0e13wS4G9ESzgnU4eiawhs
+         GIZSfDlMmqkgJB/SeIPZ00hAXb0qbYUtM8jzuEb0oUrzg1e6Bt0vZOgCMd40Puy9dPDq
+         k4bSgofMU1/EBkgKSo8CboheihaEoNiSe6lAQYuvJOBq50v+aFqQHJL51JL/7VqabJj1
+         dTXTdzZ4/eSOnTVpQHuqjFafZ+aruePF6z/neyN5p/quTJuiJTeaHzsHiXMdyqzxA7eH
+         CNsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=u7SWOvXweDZtmkeWSuLz6l3o0fM/vaQf8Gw102I5GRQ=;
-        b=vdbqYhj7Dit/t9BbDAq3oeZ52APeqT0K/eUa7QNj3f7/woTBdxnP0KNNbeTcXplPPE
-         s10Sa7jV+80lKvn90wz5DTisRRiGw+AIJxnRCNjYwdTughbvh40nX3ANJA53tASO6dwy
-         vcmCsExZU3GJdb2IJ81m6KnKy+8lQ8v2nr2MaSvo06NMiaAfp6LyalBuGo1pk0JDkPx0
-         n8sXDpP/oXC/6a3Cf06eUKpnwu1vxq2LFW/lY/ltM5d4Q2z/yzqN4M6hRSISef31u0or
-         YX+KSgGmA0M5ACMcXtlg9SOSWTDY1+rUvCLOIkA2M6GxYjxqjoTjI5+GszzrOloOFcGi
-         6Oew==
-X-Gm-Message-State: ACrzQf2wmBO+JAOORHTOrzqrFbCDr1o0mExp7NiJti6QDI9BLagXkCZw
-	Blu0garRZoFIuwv+xLRl/RawNw==
-X-Google-Smtp-Source: AMsMyM6xS8BBgTyJDXX7TcLvYtSmpPPTRH/GpaUvPLRo7YA24xOp6Qq1yrXugxI5WF50ALMLGn+ljg==
-X-Received: by 2002:a05:6870:56a7:b0:136:74fb:e6df with SMTP id p39-20020a05687056a700b0013674fbe6dfmr14877673oao.37.1666456201795;
-        Sat, 22 Oct 2022 09:30:01 -0700 (PDT)
+        bh=GBm0P3FPX2F4B7EXDqIEp1ZB1xk9MTQmB4rl3mZnXIY=;
+        b=oR17MsL8IlxK7d7jgmsnc64R+L3FrW40D9G33rAPxnXlQg2lXszWOddrkxHwu9xjW3
+         7cjBMegHjAe7Mi2b9Wo6A2TLhH9quOPwDKF7rmE0adGLYOJ1YIGKWy1lX48hqHPpOaD6
+         OCih/+K4zDaYoXMxnjzG64j63/1RM3TvBmGgO8dc8hTN+hzwPk0RMGJLWz4YfcXwEPuA
+         eugLW5v8KisgMFISgyRrGYYFWH2cZUweZaB6n0JVoZr/1V8uofCNUfWj3rsqLK7NsOcZ
+         tnk5ZskUhBOSnWo1tf73Lue/kGoKe6yBLlnvn7vOBaMwNZO2TMj00DGClDCa2jyjUf40
+         k65w==
+X-Gm-Message-State: ACrzQf26n3AQh/OC+GcgQKqNDU8ITbKu1uWTVRl1Sfz18qie4EpnHDBt
+	3bQEQUWpmqX55Gz6hpZqKlD/h8mxdz58IA==
+X-Google-Smtp-Source: AMsMyM76MhMoHP1Wv+m5Kd8A1kqDnYPXtPFcM3+UoKXjBStkyLbBUXCXUx5uQ9P3gSSkMeyo69lA6g==
+X-Received: by 2002:a05:6870:8193:b0:13a:e465:ad18 with SMTP id k19-20020a056870819300b0013ae465ad18mr9607934oae.30.1666456528592;
+        Sat, 22 Oct 2022 09:35:28 -0700 (PDT)
 Received: from [10.203.8.70] ([205.153.95.177])
-        by smtp.gmail.com with ESMTPSA id y3-20020a056870418300b0011f400edb17sm11796775oac.4.2022.10.22.09.29.59
+        by smtp.gmail.com with ESMTPSA id k14-20020a9d7dce000000b0066210467fb1sm2443640otn.41.2022.10.22.09.35.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 22 Oct 2022 09:30:00 -0700 (PDT)
-Message-ID: <0c88ae58-2841-f0f3-f103-f3030c5cf704@linaro.org>
-Date: Sat, 22 Oct 2022 12:29:58 -0400
+        Sat, 22 Oct 2022 09:35:27 -0700 (PDT)
+Message-ID: <5182e3c4-9e5e-2c36-408b-9029c65c8803@linaro.org>
+Date: Sat, 22 Oct 2022 12:35:25 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.0
-Subject: Re: [PATCH v2 5/5] dt-bindings: mmc: mtk-sd: add mt7986
+Subject: Re: [PATCH 2/2] dt-bindings: pwm: mediatek: Add compatible string for
+ MT7986
 Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221022090530.16265-1-linux@fw-web.de>
- <20221022090530.16265-6-linux@fw-web.de>
+To: Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh@kernel.org>
+Cc: linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <Y1K53n7LnjoMoIfj@makrotopia.org>
+ <20221021222338.GA565200-robh@kernel.org> <Y1MkIdFXrBrrv958@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221022090530.16265-6-linux@fw-web.de>
+In-Reply-To: <Y1MkIdFXrBrrv958@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221022_093002_922761_8A8F1C77 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20221022_093530_734412_7CC93633 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +96,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/10/2022 05:05, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On 21/10/2022 18:58, Daniel Golle wrote:
+> On Fri, Oct 21, 2022 at 05:23:38PM -0500, Rob Herring wrote:
+>> On Fri, Oct 21, 2022 at 04:25:18PM +0100, Daniel Golle wrote:
+>>> Add new compatible string for MT7986 PWM.
+>>>
+>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>>> ---
+>>>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>> index 554c96b6d0c3e0..6f4e60c9e18b81 100644
+>>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>> @@ -8,6 +8,7 @@ Required properties:
+>>>     - "mediatek,mt7623-pwm": found on mt7623 SoC.
+>>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
+>>>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
+>>> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
+>>
+>> This version of the PWM h/w is not compatible with any of the existing 
+>> chips? If it is, it should have a fallback compatible.
 > 
-> Add SoC specific section for defining clock configuration.
-> 
-> Add compatible in "not" section to avoid override the settings again.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../devicetree/bindings/mmc/mtk-sd.yaml       | 28 +++++++++++++++++++
->  1 file changed, 28 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> index c7bcf0c3dd5d..9df63c461f1f 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> @@ -229,6 +229,33 @@ allOf:
->              - const: hclk
->              - const: source_cg
->              - const: bus_clk
+> No, it is unique because it comes with just 2 PWM channels.
+> Otherwise the driver behaves just like for MT8183 (4 channels) or
+> MT8365 (3 channels) which also got distinct compatible strings.
 
-Blank line
+Then something would be here compatible. E.g. If you bound MT8183 with
+mt7986-pwm compatible, would you get working device with two channels?
 
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt7986-mmc
-> +    then:
-> +      properties:
-> +        assigned-clock-parents:
-> +          maxItems: 2
-> +        assigned-clocks:
-> +          maxItems: 2
-
-Define these two only if they are required for the hardware to operate
-and only such setup (two assigned parents) is allowed. Otherwise you put
-some constraints on board design.
-
-> +        clocks:
-> +          minItems: 3
+If so, they are compatible.
 
 Best regards,
 Krzysztof
