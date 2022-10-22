@@ -4,97 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C2CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Oct 2022 10:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B804C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Oct 2022 11:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/B2xlRoYaO6vdRiaURdXthAWr6Z3JTRdnxZApfQ8yCA=; b=vNWeXAl7TaCV6B2UymqViHihBz
-	QcKt3ndX//VgdXP/Ju//FbErrY4/KZLvFYj91dkDY99xGJUoD4HrkpVfV2tkOIYlk9vkll9+SzB7E
-	nKxjJpLBqrwazqLk00qCLwhqyOWNNRxquBDDPD/HBxcsAOo/WwB2FMFOC7zAHgr605gufVeIAyMBw
-	KkWS/+486hHYbPr+yorKimqgTRpqCzSmgq/XMuiRZbDLwQnyDIIX9kN5cKNLnJcwlFCh66H2zAnzG
-	g1hKq/oibCUuz9N11is49KlkqzxS+yREI6QaLPW+K51jdxk4PVFTV1skHIRIuQEqGZgOrFSsUZDq9
-	Ssgi0WlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FNcxlcjmRlhNk+bv6B7cAEGwdM5R0LeaFhjoH03CG4E=; b=5D40fXmdX5v82GoC8s0JJ6pEWt
+	hXnpt7X/85+f0I9U0/NCA/XjGLlAkETgmYSxw1XCRSu9SZHQSnLKomTm9TvM2cNfzEJO+K/VKzXt8
+	mgE81qn7y58CZZdSfvaJ5JgNZ4zLwWYkIdGRIyEsbmR0Alc5CBKL9UqsMsmEpQf1IY6YrDbjCp9Jm
+	5zq7nMB6OyO31Nq/8M7ZQJoAcX00uPXzVUjDsAb2CJO+NbAMVJfQOnj/HcjtdHnAC6rz7NEAofB0U
+	zkWJ8xC5KrXycSrrkJOrB0BzwaE3qEWQJhrKDebryecCIct7mZZrt4eZOoo5n9IcPj5tqozUIVdnh
+	KT8AvLAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omC7K-00CIb3-H6; Sat, 22 Oct 2022 10:52:38 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1omCkN-00CPfi-3O; Sat, 22 Oct 2022 11:32:59 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omC78-00CIWj-PL; Sat, 22 Oct 2022 10:52:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666435920;
-	bh=3Yd90e9Q3V8HInE/QdG86ZT+3Jb9FgTQiauiO9qiniw=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=bFtep/EyWURlXqgf9v4kjce5ykEHZdH+xMN9epLAVheyC4MRJaQ++eQSH4/B+9+Qi
-	 knSJacrOCimWL1jaD1ngGwaCZY4ACsqvX1s2P6heH2M0So+5V/nG6HrfIAdi7Mr/0G
-	 u2yuYTBEj2M6aTXXqWn5kiTzWis1+LCoTPQykxGE=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.73.148] ([80.245.73.148]) by web-mail.gmx.net
- (3c-app-gmx-bs49.server.lan [172.19.170.102]) (via HTTP); Sat, 22 Oct 2022
- 12:52:00 +0200
+	id 1omCkA-00CPd2-RE; Sat, 22 Oct 2022 11:32:48 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id u21so14874716edi.9;
+        Sat, 22 Oct 2022 04:32:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=FNcxlcjmRlhNk+bv6B7cAEGwdM5R0LeaFhjoH03CG4E=;
+        b=V9pZGPntNZAfrt4tMjcaBvXFuvvPLtmeJTcdaWDR7LnKHyBKe+xcoKmr9zwywSRmL2
+         rDnJ/X3kqlYKBPsPVcK0RUBTFKGgoWRJyq1A1S847kwjwcR657PUZiIaZRRYB5CIVp5v
+         Hh2av0UR0oVek9j3FPR/CLfnU1mxF+vPLWccqkzVntDy4MKHodTfdcyFbQrTjdNKQ5ak
+         pQO/ToUnoRapcVvJ2ZaCb759vqW+gPUneB6/UAyC4hls31hnD48Ilxq1V584B1G5y0Ka
+         08AnrQXLvIhyZ4ingsiHj+lHef6L4OPiMoAzZno/Jjwl6kQEJCAITgI8+BL8UlDBktb9
+         ALjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FNcxlcjmRlhNk+bv6B7cAEGwdM5R0LeaFhjoH03CG4E=;
+        b=e6LxAbpsWQ+3/he/KEedVl5SVolfKyhOo/V/hTufiWoH/ct9L4luSVnYlqd+Ts2q2E
+         oUPW4PB/PPVpMgt4U50FRwgQAGi8WT+MWx2T5tkLSnvQUr1LvVkMEw1TLtw27FWStC4q
+         EC+P/67vxpzuJ5xzQxMG07O+JK2/U8NgURKoRalGYVv1jKGGrsP9eXrvbQCe3DOXpM1L
+         wedlihqDbr7pmqz7RoAt9/zU3Ll5EkvRGqCsUFZMMtqezHl6vjST/gv9Qik2idyhvnGb
+         HX1NI4ABkqar3K35MQqmTlOVY5NWkpucjR46bhxWQAod2gDpF0Hqd2rxVSOBEfQQROc6
+         r4Aw==
+X-Gm-Message-State: ACrzQf1dDia3n6oFpyHwpEzr/s1Wf9XwRwWDw0z+Ndk2RGD0jhN8OLn4
+	hvVf/XIbSOnTpoirL+gG5HPJEEPI+y7Arw==
+X-Google-Smtp-Source: AMsMyM7gsD7G5B+ulzHBeDwhpF+5tFa+eEHmDw3n38Q+gnTfGu7G78wB84BnPaUM3/ZANesdFCHtkg==
+X-Received: by 2002:a05:6402:34d0:b0:460:96c4:94af with SMTP id w16-20020a05640234d000b0046096c494afmr12126869edc.365.1666438362909;
+        Sat, 22 Oct 2022 04:32:42 -0700 (PDT)
+Received: from skbuf ([188.27.184.197])
+        by smtp.gmail.com with ESMTPSA id t5-20020a056402524500b0045726e8a22bsm15277836edd.46.2022.10.22.04.32.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 22 Oct 2022 04:32:42 -0700 (PDT)
+Date: Sat, 22 Oct 2022 14:32:38 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Oleksandr Mazur <oleksandr.mazur@plvision.eu>
+Cc: "netdev@kapio-technology.com" <netdev@kapio-technology.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	"UNGLinuxDriver@microchip.com" <UNGLinuxDriver@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"bridge@lists.linux-foundation.org" <bridge@lists.linux-foundation.org>,
+	"linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>
+Subject: Re: [PATCH v8 net-next 10/12] net: dsa: mv88e6xxx: mac-auth/MAB
+ implementation
+Message-ID: <20221022113238.beo5zhufl2x645lf@skbuf>
+References: <20221020225719.l5iw6vndmm7gvjo3@skbuf>
+ <82d23b100b8d2c9e4647b8a134d5cbbf@kapio-technology.com>
+ <20221021112216.6bw6sjrieh2znlti@skbuf>
+ <7bfaae46b1913fe81654a4cd257d98b1@kapio-technology.com>
+ <20221021163005.xljk2j3fkikr6uge@skbuf>
+ <d1fb07de4b55d64f98425fe66156c4e4@kapio-technology.com>
+ <20221021173014.oit3qmpkrsjwzbgu@skbuf>
+ <b88e331e016ad3801f1bf1a0dec507f3@kapio-technology.com>
+ <20221021181411.sv52q4yxr5r7urab@skbuf>
+ <GV1P190MB2019CFA0EB9B5E717F39B621E42C9@GV1P190MB2019.EURP190.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-Message-ID: <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
- Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Aw: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Content-Type: text/plain; charset=UTF-8
-Date: Sat, 22 Oct 2022 12:52:00 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
-References: <20221020144431.126124-1-linux@fw-web.de>
- <Y1F0pSrJnNlYzehq@shell.armlinux.org.uk>
- <02A54E45-2084-440A-A643-772C0CC9F988@public-files.de>
- <Y1JhEWU5Ac6kd2ne@shell.armlinux.org.uk>
- <trinity-e60759de-3f0f-4b1e-bc0f-b33c4f8ac201-1666374467573@3c-app-gmx-bap55>
- <Y1LlnMdm8pGVXC6d@shell.armlinux.org.uk>
- <trinity-b567c57e-b87f-4fe8-acf7-5c9020f85aed-1666381956560@3c-app-gmx-bap55>
- <Y1MO6cyuVtFxTGuP@shell.armlinux.org.uk>
- <9BC397B2-3E0B-4687-99E5-B15472A1762B@fw-web.de>
- <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:/yp+jB8wmgCtvIVgjcE7k4KpTSbWp2vpANssuY7SBFJCyxd+swPt57st3f9b5swAGXYzB
- NTpO1Fxzt19W9CUJANtb1MCEg8hj6c+UHZ+Kh0iUk6MDazLicfwXwLUk17Lw3/g2UNnLr1LEEeim
- YOyb5p1bvIaD5DrRrv0JnmGE2tu2WaTZ1+/ULfzbamzYeFKuorV/L1O2O3Pp6nMC52XH48jVjrT1
- R8yw5p2kAm1UMQqNL1YjK1ZW9IUejt+50MctyghHABP4XHVtBCnIU9izey0LlcPNobWJhzdQidC1
- IE=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:x4/0YoO09AA=:M0/dzt/fPCaOrmq7l9Dhss
- viZ71vainczpiQZVOZUThjHNw8OOIe6fILNQMZVJoS/MxACJE45r6ElnAFjVXYonld0QXz2De
- /siGNnKMiSyxZcQzgpw4P1fFfk8liBf6jkTXRS35ZZ34E7CuyDJO6kKtqw+FoYQmun1lvCrYH
- MLbNnVp5f+cocMRG7AN9CGIT/Y80HCnypOAl4YHTpeYD5XbCLXufADsJ+IoZPQg+HaicO4mA2
- QL73xM0+ZKjmcwY07+h5u3KP+xUx02dz0vt3McCYeiwK7dUBRMi/rki4cRiNM/9RyqysPKtGB
- gyAPXpmyQLJhHd3eOHNFhQJCWBFuuLb88DqYe7VNB+2nZbVUX0B1yjMdFTVRaLAKkscdiyg0b
- m+rp5SmVxY4FFHrd3aWjuXDRkRLTnlokMcHw189AwV3hohVDqrQf3qEJISCpLgHVqCWGcDJT+
- onVrs3CRvpTy3YqUCNDlsdA8KZceS73VVFaw4P1NkPZk3VxI8vX+PBMbWoCl5okI9USLOw5A7
- qdfU7ruY0ToYjW/Ignaby3dTRb+B4zwZBxtsOAqSSSds3p0bo/5l+pUw7PsT/k0ZI3l7AIZk1
- DKCWLen3Vik3CrGSGZWN5hJR+smiTFBiMHSMqc76cIfyyk36pHNSMUs27mRgOSCLlynYDwo+f
- uNaqSsxX0ZJLs2HLH5V3fLQ71HXYJ5zz7N74tNYLrcNDxN34d04HUXe2Mpdb+4q/jBT4VRWSY
- 0SzBzdrXNLZ9dCBxILimCh2ogAR5ZGHKUigfUH3csYFyICR+UGs1MlHHLcLBW1R9nnRV86JiS
- LOemt9zQ4WI/MBhQFrpK2Z3pnSrzszxAPTGpAao0zYjA/tSpSaH+0LvxH9CULLfuJYgClWSly
- l1ssmn9kmUGwUdzzEb0GGwQdTi6xgjQhmEZ5jxy6tRfrHXr3sT46yZXwrzXsyPzsvlvgSDLm5
- tvK70roFZUIlttrxVzazER5NxPazHY0OtNpkT+fl8ccRQFvMcdGNlL4b+1jQ344rrEDZaZ9da
- az7dBWzqz/bBLhEtvKddhTxUgVA+WtZZTdhxsrnIgSMwyh5I4RdjRSmSGgwS16Aw7iYnBNpwe
- uiRzw81mvpEzAqCPZZi06Zly+9O88zVAsPS2Y8GTuXT+f6rZYxyRWDgGdALHY51VOcFi4UWYB
- 2gswqjuXG6hl3XjXRrWuJurJbjb/KUf/eLF2Ovk3Y/XwjsnYvz2SMWhY38zBd9MhMerr8M+rW
- EtgLY3QCQWa4UQTQTZiPZWIFB9Z7bgsDG1Ul0cmmIhoF7+9/i+9NWouxJXHqOeMVZFKVXSbMc
- fcMPo0dM
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <GV1P190MB2019CFA0EB9B5E717F39B621E42C9@GV1P190MB2019.EURP190.PROD.OUTLOOK.COM>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221022_035227_307312_379C00D4 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221022_043246_926975_E3D44B6A 
+X-CRM114-Status: GOOD (  26.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,73 +130,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Samstag, 22. Oktober 2022 um 11:11 Uhr
-> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Hi Oleksandr,
 
-> Please try this untested patch, which should setup the PCS to perform
-> autonegotiation when using in-band mode for 1000base-X, write the
-> correct to offset 8, and set the link timer correctly.
+On Sat, Oct 22, 2022 at 08:50:20AM +0000, Oleksandr Mazur wrote:
+> >The essence of my proposal was to send a bug fix now which denies
+> >BR_LEARNING to be set together with BR_PORT_LOCKED. The fact that
+> >link-local traffic is learned by the software bridge is something
+> >unintended as far as I understand.
+> 
+> >You tried to fix it here, and as far as I could search in my inbox, that
+> >didn't go anywhere:
+> >https://lore.kernel.org/netdev/47d8d747-54ef-df52-3b9c-acb9a77fa14a@blackwall.org/T/#u
+> 
+> >I thought only mv88e6xxx offloads BR_PORT_LOCKED, but now, after
+> >searching, I also see prestera has support for it, so let me add
+> >Oleksandr Mazur to the discussion as well. I wonder how they deal with
+> >this? Has somebody come to rely on learning being enabled on a locked
+> >port?
+> 
+> Hello,
+> 
+> >The fact that
+> >link-local traffic is learned by the software bridge is something
+> >unintended as far as I understand.
+> 
+> In prestera driver, if port is in blocked state only the PAE frames
+> can be trapped, so i'm not sure where other traffic might come from
+> that you are talking. Or maybe i didn't get the issue here right,
+> sorry?
 
-hi,
+I hope the following script will exemplify what I mean.
 
-this patch breaks connectivity at least on the sfp-port (eth1).
+#!/bin/bash
 
-root@bpi-r3:~# ip link set eth1 up
-[   65.457521] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/=
-1000base-x link mode
-root@bpi-r3:~# [   65.522936] offset:0 0x2c1140
-[   65.522950] offset:4 0x4d544950
-[   65.525914] offset:8 0x40e041a0
-[   65.529064] mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Unkn=
-own - flow control off
-[   65.540733] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+ip netns add ns0
+ip -n ns0 link add br0 type bridge
+ip -n ns0 link add veth0 type veth peer name veth1
+ip -n ns0 link set veth1 master br0
+ip -n ns0 link set veth1 type bridge_slave locked on learning on
+ip -n ns0 link set veth0 up
+ip -n ns0 link set veth1 up
+ip -n ns0 link set br0 up
+addr=$(ip -j -n ns0 link show dev veth0 | jq -r '.[]["address"]')
+ip netns exec ns0 mausezahn veth0 -q -c 1 -p 64 -b 01:80:c2:00:00:0e -t ip
+sleep 1
+ip netns exec ns0 bridge fdb show dev veth1 master | grep ${addr}
+ip netns del ns0
 
-root@bpi-r3:~# ip a a 192.168.0.19/24 dev eth1
-root@bpi-r3:~# ip r a default via 192.168.0.10
-root@bpi-r3:~# iperf3 -c 192.168.0.21 #ping does not work too
-iperf3: error - unable to send control message: Bad file descriptor
-root@bpi-r3:~# ethtool eth1
-[  177.346183] offset:0 0x2c1140
-[  177.346202] offset:4 0x4d544950
-Settings for eth[  177.349168] offset:8 0x40e041a0
-1:
-        Supported p[  177.352477] offset:0 0x2c1140
-[  177.356952] offset:4 0x4d544950
+It will print:
 
-        Supported link modes:   1000baseX/Full
-        Supported pause frame use: Symmetric Receive-only
-        Supports auto-negotiation: Yes
-        Supported FEC modes: Not reported
-        Advertised link modes:  1000baseX/Full
-        Advertised pause frame use: Symmetric Receive-only
-        Advertised auto-negotiation: Yes
-        Advertised FEC modes: Not reported
-        Speed: 1000Mb/s
-        Duplex: Unknown! (255)
-        Auto-negotiation: on
-        Port: FIBRE
-        PHYAD: 0
-        Transceiver: internal
-        Current message level: 0x000000ff (255)
-                               drv probe link timer ifdown ifup rx_err tx_=
-err
-        Link detected: yes
-root@bpi-r3:~#
+6e:71:0a:8d:85:9e master br0
 
-from sgmii_init
-[    1.091796] dev: 1 offset:0 0x81140
-[    1.094977] dev: 1 offset:4 0x4d544950
-[    1.098456] dev: 1 offset:8 0x1
-...
-pcs_get_state
-[   65.522936] offset:0 0x2c1140
-[   65.522950] offset:4 0x4d544950
-[   65.525914] offset:8 0x40e041a0
-[  177.346183] offset:0 0x2c1140
-[  177.346202] offset:4 0x4d544950
-[  177.349168] offset:8 0x40e041a0
-[  177.352477] offset:0 0x2c1140
-[  177.356952] offset:4 0x4d544950
+or in other words, the brport veth1 has learned the MAC SA of veth0 as a
+dynamic FDB entry even with no user space daemon to handle the
+authentication protocol.
 
-regards Frank
+In turn, having this MAC SA present in the bridge FDB means that
+communication with this station is now allowed. As far as I can tell,
+this is *not* intended. Only the authentication protocol should create
+the FDB entry.
+
+Compare this with the same script, but with "locked on learning off".
+No FDB entry will be printed.
+
+> 
+> Also, basically, prestera driver does not rely on the learning flag if
+> the port's flag BR_PORT_LOCKED is set. What this means, is that we
+> discard any learning changes on the port if LOCKED is still set (done
+> inside firmware, if i recall correctly). E.g. learning is always off,
+> if port is in BR_PORT_LOCKED state, or in a block state but also has a
+> static fdb entry (aka mac-auth entry).
+
+So I take this as meaning that we could deny BR_LEARNING on ports with
+BR_PORT_LOCKED set, and prestera wouldn't be adversely affected. Ok.
+
+> The concept we follow is basically:
+>   - some userspace daemon blocks the port;
+>   - speaks with the <auth-center> (PAE traffic);
+>   - the daemon itself populates the FDB with authenticated MACs (adding static FDB MACs);
+>   - forces learning flag disable, disables the PORT_LOCKED flag. At
+>   this point switch can basically receive only the traffic from
+>   authorized addresses (fdb still has static entries; learning
+>   disabled).
+
+I don't understand the last step. Why is the BR_PORT_LOCKED flag disabled?
+If disabled, the port will receive frames with any unknown MAC SA,
+not just the authorized ones.
 
