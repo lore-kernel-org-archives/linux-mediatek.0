@@ -4,155 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7F0ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 06:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09F1ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 07:27:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kgkDohZ0nafHK3GXt9H+hoBpyjI6eM+OL0s3t8zTxNg=; b=YNEM72xfFJjnlpIkvLMF6pwUVo
-	w+504jxAapUhoPJorIwcvLco8H4nf/lBTpObX3ttUFvJpu4i5Y3NKfe2HJR9J/pYRKYs9/Z+0oOT6
-	aF7W2oayqhCMvPCAYbrgYcFxTnndKCu9BMgzUUX7GksJrTsTOoO5X9KisQNgIKktRojuh3RDxRpiT
-	y7TR115JMm7X1wNiFjxySzDxV5VYABa7OTzhd4So/KVr7cFJKZj7lMyIfixRMLD1ShFDnKErziXct
-	6yKsyfyRd4FnWwNXSOogEWaRuGX+gNiVrN2a+iE9R3AfXlsxVb4oew/IR5+Z/dpTu2Z9IuWEeMNeB
-	KylTHa8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+MGDUkrSRyHcABEgtdQqOGLeFI1j4ZkH0nmNkFRzzFw=; b=oOUABAKMSpsCO9p71Q1LglkzWE
+	5gP/tkLhWREOkCxUpvhJEetppIxDKAmBOqrsyUV8Z4dFRi4z+gbWpinw85/kjg3xnpcmy6FjPBJKi
+	IqIzQ0dJ4aUpKm/BX5XF4C3z6mn+IIPD85eZhvjJqmBLk+iKIQxWGZ0T9n6kNIGADzdhJ8hTr7WUb
+	4t4IVg/l8AEXrCsoYhQml4yuGI9L4FeS2VBd3ACFJb9y10jOUIqdZBKzTY6oZCZN5htdwTnYJ3OSV
+	V1J4z7LolT4dMoka5pZoPT9+Z8xeobwSwHqj+6TXDrzc5KqPQHlXJxA5zHRtxg2jNGztgc0mUJb+d
+	1z+dEpIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omUrW-00EZZM-5i; Sun, 23 Oct 2022 06:53:34 +0000
-Received: from mail-bn8nam11on2041.outbound.protection.outlook.com ([40.107.236.41] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1omVOE-00EcsY-Rw; Sun, 23 Oct 2022 07:27:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omUrJ-00EZW3-0x; Sun, 23 Oct 2022 06:53:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FeosdJJUb0JuCFSRS4JePzRwqeoQulktESq2VDh4ivg6lS3z3HoH+PNbi18ODGODdYK1qof9/A9JzYd7PkGKN0lklFNAhqKRLOhvG90mGhrQz30zT1k0EicwkxF05a7Nsin2hbgrJOO6EPn81juWp3qbTcVEC8OOKoZTft/AMtDSTP8FlQ7Z7EMzGhpiq5ao3h0hi5BmGbJxEiENqN6X722I/6qzUPBX8YFQL5W2g6A6uV0xcknq8QMYq5JEjLUMrNo5Y7YppEiDGGSMRoA2fPvqbj34SFxeT5VFVonBnc9peWABUD9q4GVx8pKcEYdByhKXFugJTfd0thw79oN/hA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kgkDohZ0nafHK3GXt9H+hoBpyjI6eM+OL0s3t8zTxNg=;
- b=gQ8Y3je6/lFuBv5LZ4c3rJTxVr/9ygd+lHtCEiT9BAEbfdKMS/H8RNajK49Vortnww8QnvpBiDt7mAzLc/qpP0h99s8UJls9a9OfQ+L3Od3BmqlDBFbhyWmdudzhQg1cFq01z/wDi1tKqJLvcBvrR4TIuxKlgfIrc3wKpWCpSJCAYpQaSjc2P3MPB+3LI48TutDQMsLujMVjoKcCm8vyKZS3yau8/NSBvgukI/t42QJTWUmSMuPxo5YfyTiYOEqgJBXX0U9kvJXwzfal/iNJ1r3qEo/dTSzoO0D2iwILYyhZQxZGGD34AG/XZhCc7FjQLmJs4TfuXrR9j1eEHzDgrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kgkDohZ0nafHK3GXt9H+hoBpyjI6eM+OL0s3t8zTxNg=;
- b=O87urIu0OD9N6iqYTJL0pe6Bz2BuX74Pyv1VvVeudAnEtbk/q11TgwWEAoHp8TVA+RCgz2cif2wcvHcjr74UPaZlUY439sVCmgMYt133aQizaA0SW5tbyYeCHD5lf++2eWmaazRfJKY03TIsdtJkogVspCd9Dj2Jft6mqRnl0t4XfiW1ih7RQRQT1Ml9WLXedf2SDvbcD+3Xvgwwrk+4NJB0M3TCQMgXOzVDw4+Q+7z4vKDEZ2LkmuU0YcIXL8+eTnZANa419oVKepQ6rUfUUMSFuwnGjEbbAFLq7BwCVtu+nd3KObVN6xma86SzzVqMG78WknJprByS4o4b2hckeg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
- by CY5PR12MB6273.namprd12.prod.outlook.com (2603:10b6:930:22::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.21; Sun, 23 Oct
- 2022 06:53:15 +0000
-Received: from CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e]) by CY5PR12MB6179.namprd12.prod.outlook.com
- ([fe80::4ff2:d93e:d200:227e%7]) with mapi id 15.20.5746.021; Sun, 23 Oct 2022
- 06:53:15 +0000
-Date: Sun, 23 Oct 2022 09:53:09 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: netdev@kapio-technology.com, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org,
-	Oleksandr Mazur <oleksandr.mazur@plvision.eu>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v8 net-next 10/12] net: dsa: mv88e6xxx: mac-auth/MAB
- implementation
-Message-ID: <Y1Tk1eTlLI6ue8IA@shredder>
-References: <82d23b100b8d2c9e4647b8a134d5cbbf@kapio-technology.com>
- <20221021112216.6bw6sjrieh2znlti@skbuf>
- <7bfaae46b1913fe81654a4cd257d98b1@kapio-technology.com>
- <20221021163005.xljk2j3fkikr6uge@skbuf>
- <d1fb07de4b55d64f98425fe66156c4e4@kapio-technology.com>
- <20221021173014.oit3qmpkrsjwzbgu@skbuf>
- <b88e331e016ad3801f1bf1a0dec507f3@kapio-technology.com>
- <20221021181411.sv52q4yxr5r7urab@skbuf>
- <Y1P0/gYdvrk+W866@shredder>
- <20221022144951.v2twgp2lcnhnbhrv@skbuf>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221022144951.v2twgp2lcnhnbhrv@skbuf>
-X-ClientProxiedBy: FR0P281CA0115.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a8::14) To CY5PR12MB6179.namprd12.prod.outlook.com
- (2603:10b6:930:24::22)
+	id 1omVOD-00EcsN-5L; Sun, 23 Oct 2022 07:27:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
+	In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=+MGDUkrSRyHcABEgtdQqOGLeFI1j4ZkH0nmNkFRzzFw=; b=ifLOOzGRc5G6tzxhoNilOnyhye
+	pqhXlZmDC7JbaVa52zJnSsSrFn9R0re7nlZxwluMspm92ymaARvENNJLuTIYy5Uf3cPBJ69hEa29+
+	pcC1L4P+RN4Tt48+ibIqmHZ5FZAeH+41RjzUj8VIA1vdODCiwa51FIhwxmkGkf5CiwScJcX8ycb5l
+	yGtX3jFsmvEuINun4XueTxdC3m9nf7Ghny2k9rcM9Awx/OXw2uyGc3Kn/5WaEDUJR1nwKRorcg2mw
+	fZuXor12TuF0BuWL8ksJIl3bOabVhu5uo0luQgu1YR7mw/9WfWH2HbTF01/zIGO8l5pAYRpU8h9fT
+	uvpRO1dg==;
+Received: from mout.gmx.net ([212.227.17.21])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1omVO4-005kcg-UL; Sun, 23 Oct 2022 07:27:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1666509999;
+	bh=TBP4iOY9tjkCxnRBE9igXp4oZM6sQ2L6B0wuAA1Mwgc=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=dJ172UiEEjI+ecsVuMEq+4o+dn2FK9TvJqshgTVXF+4K2rA9uxwkZAvBW3oBHYtOA
+	 5q8YB3b0LQyW2rOZylhksPoMHzoPS3ZqP3zJ05+mPuvnycNcMe1+3b2WYpkYsHsNHk
+	 2/ZZEvrsG+k5FncYijst8nenyTmj+YIq83LJgHUU=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.79.234] ([80.245.79.234]) by web-mail.gmx.net
+ (3c-app-gmx-bap20.server.lan [172.19.172.90]) (via HTTP); Sun, 23 Oct 2022
+ 09:26:39 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|CY5PR12MB6273:EE_
-X-MS-Office365-Filtering-Correlation-Id: 06bf7512-a81d-4ca4-0259-08dab4c3420b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	P2s5VdPZBKPE+9MuFac5N0B5/uDO0ggbQhUQsGobAedomuM4mshn6fhqEjSP+ocOxJekeQ7dNn3skSPvjjHUd/BzYMTNxoQZ+hMTFwrVukaevISNSJYsqFN61/HTzuhsedEP02LU+f5YjZhg/p/Mu+ub+ssTUZzIVe2yOgpmToCbTZPMgpftuaOaSy7d4iyWq76NDmqJ7FaQqWbKlrTS7ywlBEYC3ADUczD1tQDWUA9vQXFVn+jsJFlLJz/UwEoKIUGdbWAJ4QbjwlRtvzr5jO3RRpxF30AZcgqZ9tJg5sNcjacPzoTFedFtrhUJrYS7ujO/s614iWTgYKfwP2PXSm8GvcrlEBxKAQNLSOh6gP/4TYzaA/THDSoValOhpBqqo/g40gBDy29LbmlZpCF/REVo5n931pDGpUG8Ysg6HsD0WQQV5i13cOCvGPTEzYwEt7LnUHEWGhZRXGcBNpAUiS3w+KX1lwhp8Ye2yFdbmJnWsp/t6bBBrBKGsmA1pBWFnU4ZNkcniy6PEw0o3IEcyE5dwdM8fduQVRXdK4syeniJ7RR+fdoQIf809Ubxgw9KC1SoQoD9gh87ZAX8dFKbhEFO3IGRoUn5b/itgtDDaHNVshlBSOHbSw5kLeq0wjssfHanI12cQ8QvrynAQN0gfD7sXdMOgaPtb+DOwrqbGC9Ekj7OHOwxSqgfCNmg/6OfHRaI6sGSsnW3gGKU5Y5Z1tzw58lbPni/cZXiI+V6VNzhbBEXuXn5uq9eqGCRJvFL4wn2p6unNiqtY/bSiVTdp8uZvbmD6Ow5RVKeuD3xcYRQFnUv3FW5ziphEhir2YXSxdHEuuP38z9dvcb5rFaFng==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(376002)(39860400002)(396003)(346002)(136003)(366004)(451199015)(38100700002)(86362001)(2906002)(186003)(83380400001)(6666004)(6506007)(6486002)(966005)(26005)(6512007)(9686003)(316002)(6916009)(54906003)(66946007)(66476007)(66556008)(4326008)(8676002)(5660300002)(33716001)(8936002)(41300700001)(7416002)(7406005)(478600001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?AoefoeGVFYlYReLrOOSeQyzJithxqa8+F+zlKShZTmZqVP5FnJHHTsnA3efr?=
- =?us-ascii?Q?9NQBKZ68LKyoXlMomb2NvUOT6KxuP0oTVWvY8eiJvMB0QaXtI81yg0RXRaVB?=
- =?us-ascii?Q?1YJsm6xuOxgj01WYvcV2q2z2CBXGIN75wRhzeb4J8uxN+m0KjlsAFxni3VpS?=
- =?us-ascii?Q?SHMeTuqfCFdB/1cTUNYu5Qc16W9fdfd9j4V4qM7ZUCoh9TbS0nrs0FQLU5Ai?=
- =?us-ascii?Q?w24BeKH+WmJAmC90LHpg3PMzOnog3aHm7wOhBkm1jxAXuw9YZcEUAgpPujNd?=
- =?us-ascii?Q?1kMaBA8K7v2ma95ZXGc4g032MP0kvjMyR1KJxv7DKK1dfuMhfwAr4o+Bofoc?=
- =?us-ascii?Q?u+wJKxdYgafdIklF92/ItLarLQdgd0h8oZFqQ7vDjtHWyuAvNVMpGZXVgp/K?=
- =?us-ascii?Q?KUyQEru7O8p4QWXH3kRBgzMoo8XHtXpmzv8IfYJBn2LAORjyob8wq5s/eaDd?=
- =?us-ascii?Q?KgWyEH9xm753PnXoyOeTaCkoXxCC9Zc4o2QBX9v56Yb7PrDPmyoWk+ty8GpW?=
- =?us-ascii?Q?g967pmrs6HqxDZJUSS9cen+YjI3gA+MRwiQOwizjm3db7YW31Wwc/NQ8mr++?=
- =?us-ascii?Q?cvGdF3CjNBLMrvgnF467KlgaIlM7Q8GV8RH+d8213hBvBpiwXKslBturNh17?=
- =?us-ascii?Q?bRnsUgG+3HVdim2w9VMRap2+jSc1Vtk0PdgPWY8QNCU4UtDLGP2JHBFNoj0D?=
- =?us-ascii?Q?FYws9C278NA4Gv5+9+g7ZONbiaMIbSMYglBJY23zaAP88E68YkGYuzJxA5TP?=
- =?us-ascii?Q?nY/SKHvzidXyAx4hxVgXywiKflJ29g0uOREqRaWGHwSNBkfnP264Q+78CP6r?=
- =?us-ascii?Q?mmp7qDW8k2zxwh7py//dyZrxGXsduJJvXJEVf7JhxE0GngL4a+76a3dfPWMf?=
- =?us-ascii?Q?kS/Kf25FFkX2MpBIRnuLeDvB1EQOnxNEj8GOBi3Q3EhIwqpeK4+d8TYwtgGx?=
- =?us-ascii?Q?O6qXxL72U5x3ToDRVLdffiAGp3ExHEkSoqIQPy6eCfC0rGPsOES+valRWYua?=
- =?us-ascii?Q?XpEOF8i3LYxOlqSQ/cAalWvwNhKTQ1VjPH/cWNqJFDebnUzaiUjORA3OTJUg?=
- =?us-ascii?Q?1R061PY1gSdyahmYQXuEqhoyjyO5skWJPIGYds1RblHZoJCwoYspXLSBUgWx?=
- =?us-ascii?Q?ttWFMh9s6lFIs0ArmU+TmiV9IIRiqKNLeYAzctsRGDtJ5WKpfrTshi46W0Ww?=
- =?us-ascii?Q?T9tvBa4oc9GkjhaL0m2S/imj8rLLydYPtXNACwK+Gwglo8Q9iGla2GTw6SEH?=
- =?us-ascii?Q?rdNzEQf1HRQC1boflrUnx/C1I+iQPoCNuEqxdvHZu33i4LopQBGI9TrfyBWl?=
- =?us-ascii?Q?Hcljgl8wW0jRd6ZkelIuXBYw1RPSBlZ/Edpq5dxzrOWHNyp4bCuXfMp+7Fqf?=
- =?us-ascii?Q?IuNVxJ74323nJkgDhEYmEK2VJev6DVcZcD5kDUDt2pFK2n8TPeoYyjlmBqUE?=
- =?us-ascii?Q?fGnVoazqkcz5VUPCsUt1rxvwL5m6JmBpQE0inDxTHb5NTR4ySf0wzDu+f2vP?=
- =?us-ascii?Q?jzWivHHNUaH4DrVnZ+oPAo+8zLEXXQ7t4KVVgj85A3fmmHbmWXuU1Sg00nOH?=
- =?us-ascii?Q?EdOsvICWiNKE3h18baatLb6/wLB7LJYJBqP42jMQ?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 06bf7512-a81d-4ca4-0259-08dab4c3420b
-X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2022 06:53:14.8329
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FWafE4TCU4W21YP5aiavDYkf2wXnVtxMIZvc0ExLLyik15VNnyY9UWy8pwjLZNHSsiAhmFl7X4Q41enRpzzpdg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6273
+Message-ID: <trinity-ff9bb15b-b10c-46d6-8af2-09a03563c3c8-1666509999435@3c-app-gmx-bap20>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
+ Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Aw: Re: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement
+ mtk_pcs_ops
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 23 Oct 2022 09:26:39 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
+References: <Y1JhEWU5Ac6kd2ne@shell.armlinux.org.uk>
+ <trinity-e60759de-3f0f-4b1e-bc0f-b33c4f8ac201-1666374467573@3c-app-gmx-bap55>
+ <Y1LlnMdm8pGVXC6d@shell.armlinux.org.uk>
+ <trinity-b567c57e-b87f-4fe8-acf7-5c9020f85aed-1666381956560@3c-app-gmx-bap55>
+ <Y1MO6cyuVtFxTGuP@shell.armlinux.org.uk>
+ <9BC397B2-3E0B-4687-99E5-B15472A1762B@fw-web.de>
+ <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
+ <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
+ <Y1Qi55IwJZulL1X/@shell.armlinux.org.uk>
+ <trinity-164dc5a6-98ce-464c-a43d-b00b91ca69e5-1666461195968@3c-app-gmx-bs49>
+ <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:fFpMM08aDl7L3vJnHWI9VzJxzjSaqFYWnegZeGXcufbN2HSYZTKGL29DMoGoorA2ESYtf
+ 3ig4K3+MW+7vFLe4lJiGBlZX1TvVACfYMzSs65M09dU5NrSK+qvKX43ydGTi8aHMdvJNwXFytE9B
+ Hxdxcy7s7UvDLUy2gUI9d205cs/rBHT2A810JkA9U5OHNgozV1Ge5t53b/Js8RVb8xjPUlKRFlOM
+ dAdgDO14Lylc157PdNIPBl7ti5X9NvgBp8H7mHq0pKrA15yNqenwg54PWxheraeaCA6B/azGR6ir
+ lI=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+D3LZqzXfm0=:DTybMHmw8WUh42tKrj2BCc
+ XSvY72QQo5BivLO3AR+F3KVvkeQbJaGJTEmslVVChr4n0Jz2ubOboOo23LfWHKlD+mXKHXr+N
+ CklAroo7LZDbRwkDnqApFIKFicAfrEr9bNTRPVoErklKnqgAjyYJ0kA6X8eLLI5GPj/4AopwV
+ cxyL6Vx0UUa+wiLCZKJe5VC0uX8dRgoyUgb4bjXvwPwMXm3ppuKDF/PRThLLNdV+CKySc/sZy
+ 8DQLdt3ZCcEYGDu9HmILORoKzE0s10txv/iWKOC2P1AMYufZw3ZK9e4aTA3q7v+rCP4p0cwEg
+ wwAv8Jg4PLgK9f6rj6ncLEf2CszxQxJVf3/s5wkrECEMNRqWL9qnhq9YrSuQjtKORL0NEMlnM
+ HNuYHpYFsJHcGu+4kj9Gs9I6beHMCXYmvxpTfRFkkLQ4H/A84CzBlo4iPaN+E+mFJHZHlPwte
+ 1maIINWadY0xL6wfmmljUxEhIZRTd3luK1pNxBiWBgPN/zwxP+4OKZ7TVIpbsgnByWtcCvllS
+ a8+JwhmVS+gWmzypZfmPSNX16wGpFbnyz6pvqkHamsg8kTQQs0h+S9JRMbLrkAtNS5xY0+dq9
+ am2EWBV0AnYxnYV1wa4jUAq623mRSESZuJUdTXQNRtN26hOKrKGmgocBdP8WwmkRwFLwKMnSD
+ qKbU2PWVnsjBaKmklfHF2EE3iEOKv5LXKiid1U6P3+1xN8JHD2Pgcs1iE2WsqEKaHl7I6eaYX
+ en8X1mJHFo1p/IOI3jBojJd4j0HNp8AdUee6itvs1G+eW+CD0OXZXKboMf5X1belk/SGbIddu
+ eNasLJMD1KE+59uVwhFMCpF4XWnGKcWSvL59P5sPTDIev34XJzWmm75BW8SO2UtBSdNY3K2ZY
+ GSaXiHZXdULx/dF7J8yqdJh7EJOjNiQxOYMuyk24oKqgUPvvrj7oXZ3JKc3qkxQkzlcPTw9XP
+ LahaGh6kVS81dUlbl9PVb2/d/s8QP9gMuiQQlrR9PYHCAtdA69nkmvfBrXN+VseIVzYDQBSVC
+ gEJVvenhGH4lJ+1uOQDdzE4RzD8i6tIWmeyqorMc/kU4+7VfQB40NKtTsR/L02jwFYXFjAuW1
+ bz0jhIUjGlvEWqBfv2whxmoTpZ7XU+xUpg+bUd7F8e4zwFG9N0pdpNE9madBPONKGPhehc1Cr
+ /cplgytuO4u5bZ4QNgFm/ghVYsuLsl5b+fLsiGKE5hkGn6IAFaX3yYjfo9nmGkmn8xyp9N2LE
+ 1Ss/CTg/4krH2edo3Vur5rviAgcOPCkXQuPCWnW5R32h7F/0eoVprk1VMZIueDWRbYbaIKpDf
+ DYR//5eV
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221022_235321_361378_5364960A 
-X-CRM114-Status: GOOD (  53.29  )
+X-CRM114-CacheID: sfid-20221023_082714_440093_61A3AD98 
+X-CRM114-Status: GOOD (  47.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,118 +123,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 22, 2022 at 05:49:51PM +0300, Vladimir Oltean wrote:
-> On Sat, Oct 22, 2022 at 04:49:50PM +0300, Ido Schimmel wrote:
-> > In the above scenario, learning does not need to be on for the bridge to
-> > populate its FDB, but rather for the bridge to refresh the dynamic FDB
-> > entries installed by hostapd. This seems like a valid use case and one
-> > needs a good reason to break it in future kernels.
-> 
-> Before suggesting any alternatives, I'd like to know more details about
-> how this will work in practice, because I'm aware of the limitations
-> that come with DSA not syncing its hardware FDB with the software bridge.
-> 
-> So you add a dynamic FDB entry from user space, it gets propagated to
-> hardware via SWITCHDEV_FDB_ADD_TO_DEVICE, and from there on, they have
-> completely independent ageing timers.
-> 
-> You'll still suffer interruptions in authorization, if the software FDB
-> entry expires because it was never refreshed (which will happen if
-> traffic is forwarded autonomously and not seen by software). And at this
-> stage, you could just add static FDB entries which you periodically
-> delete from user space, since the effect would be equivalent.
-> 
-> If the mitigation to that is going to involve the extern_learn flag, the
-> whole point becomes moot (for mv88e6xxx), since FDB refreshing does not
-> happen in the bridge driver in that case (so the learning flag can be
-> whatever).
+> Gesendet: Samstag, 22. Oktober 2022 um 21:18 Uhr
+> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> An: "Frank Wunderlich" <frank-w@public-files.de>
+> Cc: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
+.org, "Alexander Couzens" <lynxis@fe80.eu>, "Felix Fietkau" <nbd@nbd.name>=
+, "John Crispin" <john@phrozen.org>, "Sean Wang" <sean.wang@mediatek.com>,=
+ "Mark Lee" <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft=
+.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel=
+.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg=
+@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,=
+ linux-kernel@vger.kernel.org
+> Betreff: Re: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pc=
+s_ops
+>
+> Hi,
+>
+> On Sat, Oct 22, 2022 at 07:53:16PM +0200, Frank Wunderlich wrote:
+> > > Gesendet: Samstag, 22. Oktober 2022 um 19:05 Uhr
+> > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> > > On Sat, Oct 22, 2022 at 12:52:00PM +0200, Frank Wunderlich wrote:
+> > > > > Gesendet: Samstag, 22. Oktober 2022 um 11:11 Uhr
+> > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+> >
+> > > > this patch breaks connectivity at least on the sfp-port (eth1).
+> >
+> > > > pcs_get_state
+> > > > [   65.522936] offset:0 0x2c1140
+> > > > [   65.522950] offset:4 0x4d544950
+> > > > [   65.525914] offset:8 0x40e041a0
+> > > > [  177.346183] offset:0 0x2c1140
+> > > > [  177.346202] offset:4 0x4d544950
+> > > > [  177.349168] offset:8 0x40e041a0
+> > > > [  177.352477] offset:0 0x2c1140
+> > > > [  177.356952] offset:4 0x4d544950
+> > >
+> > > Hi,
+> > >
+> > > Thanks. Well, the results suggest that the register at offset 8 is
+> > > indeed the advertisement and link-partner advertisement register. So
+> > > we have a bit of progress and a little more understanding of this
+> > > hardware.
+> > >
+> > > Do you know if your link partner also thinks the link is up?
+> >
+> > yes link is up on my switch, cannot enable autoneg for fibre-port, so =
+port is fixed to 1000M/full flowcontrol enabled.
+> >
+> > > What I notice is:
+> > >
+> > > mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Unknown - flo=
+w control off
+> > >
+> > > The duplex is "unknown" which means you're not filling in the
+> > > state->duplex field in your pcs_get_state() function. Given the
+> > > link parter adverisement is 0x00e0, this means the link partner
+> > > supports PAUSE, 1000base-X/Half and 1000base-X/Full. The resolution
+> > > is therefore full duplex, so can we hack that in to your
+> > > pcs_get_state() so we're getting that right for this testing please?
+> >
+> > 0xe0 is bits 5-7 are set (in lower byte from upper word)..which one is=
+ for duplex?
+> >
+> > so i should set state->duplex/pause based on this value (maybe compare=
+ with own caps)?
+> >
+> > found a documentation where 5=3Dfull,6=3Dhalf, and bits 7+8 are for pa=
+use (symetric/asymetric)
+> >
+> > regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1+8, &val);
+> > partner_advertising =3D (val & 0x00ff0000) >> 16;
+>
+> Not quite :) When we have the link partner's advertisement and the BMSR,
+> we have a helper function in phylink to do all the gritty work:
+>
+> 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
+> 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1 + 8, &adv);
+>
+> 	phylink_mii_c22_pcs_decode_state(state, bm >> 16, adv >> 16);
+>
+> will do all the work for you without having to care about whether
+> you're operating at 2500base-X, 1000base-X or SGMII mode.
+>
+> > > Now, I'm wondering what SGMII_IF_MODE_BIT0 and SGMII_IF_MODE_BIT5 do
+> > > in the SGMSYS_SGMII_MODE register. Does one of these bits set the
+> > > format for the 16-bit control word that's used to convey the
+> > > advertisements. I think the next step would be to play around with
+> > > these and see what effect setting or clearing these bits has -
+> > > please can you give that a go?
+> >
+> > these is not clear to me...should i blindly set these and how to
+> > verify what they do?
+>
+> Yes please - I don't think anyone knows what they do.
 
-Once a dynamic FDB entry is installed in hardware the software bridge no
-longer sees the majority of the traffic that refreshes this entry, which
-means we need to prevent the bridge from mindlessly ageing and removing
-the entry. I see two options, depending on the capabilities of the
-underlying hardware implementation:
+i guess BIT0 is the SGMII_EN flag like in other sgmii implementations.
+Bit5 is "reserved" in all docs i've found....maybe it is related to HSGMII
+or for 1G vs. 2G5.
 
-1. If the hardware is capable of generating an event that an entry was
-aged out, then once the dynamic entry was installed in hardware the
-device driver needs to let the bridge driver know that it is no longer
-responsible for ageing the entry. This can be done by either marking the
-entry as extern_learn or offloaded. The latter is more accurate, but we
-need to patch br_fdb_cleanup(). Upon an ageing event, the device driver
-will tell the bridge to remove the entry via
-SWITCHDEV_FDB_DEL_TO_BRIDGE.
+but how to check what has changed...i guess only the register itself chang=
+ed
+and i have to readout another to check whats changed.
 
-2. If the hardware is unable to generate ageing events, but allows
-querying the activity of the entry, then the device driver will need to
-emulate the behavior of the first option. This allows us to use the same
-interface between the bridge and device driver regardless of the
-underlying hardware implementation. My feeling is that most devices fall
-in the first category.
+do we really need these 2 bits? reading/setting duplex/pause from/to the r=
+egister
+makes sense, but digging into undocumented bits is much work and we still =
+only guess.
 
-> > Regarding learning from link-local frames, this can be mitigated by [2]
-> > without adding additional checks in the bridge. I don't know why this
-> > bridge option was originally added, but if it wasn't for this use case,
-> > then now it has another use case.
-> 
-> There is still the problem that link-local learning is on by default
-> (follows the BR_LEARNING setting of the port). I don't feel exactly
-> comfortable with the fact that it's easy for a user to miss this and
-> leave the port completely insecure.
+so i would first want to get sgmii working again and then strip the pause/=
+duplex from it.
 
-I'm willing to patch the man page and add a note near the 'locked'
-bridge port option.
+> > is network broken because of wrong duplex/pause setting? do not
+> > fully understand your Patch.
+>
+> I suspect not having the duplex correct _could_ break stuff, but I
+> also wonder whether the PCS is trying to decode the advertisements
+> itself and coming out with the wrong settings.
+>
+> If it's interpreting a link partner advertisement of 0x00e0 using
+> SGMII rules, then it will be looking at bits 11 and 10 for the
+> speed, both of which are zero, which means 10Mbps - and 1000base-X
+> doesn't operate at 10Mbps!
 
-> > Regarding MAB, from the above you can see that a pure 802.1X
-> > implementation that does not involve MAB can benefit from locked bridge
-> > ports with learning enabled. It is therefore not accurate to say that
-> > one wants MAB merely by enabling learning on a locked port. Given that
-> > MAB is a proprietary extension and much less secure than 802.1X, we can
-> > assume that there will be deployments out there that do not use MAB and
-> > do not care about notifications regarding locked FDB entries. I
-> > therefore think that MAB needs to be enabled by a separate bridge port
-> > flag that is rejected unless the bridge port is locked and has learning
-> > enabled.
-> 
-> I had missed the detail that dynamic FDB entries will be refreshed only
-> with "learning" on. It makes the picture more complete. Only this is
-> said in "man bridge":
-> 
->        learning on or learning off
->               Controls whether a given port will learn MAC addresses
->               from received traffic or not. If learning if off, the
->               bridge will end up flooding any traffic for which it has
->               no FDB entry. By default this flag is on.
-> 
-> Can live with MAB being a separate flag if it comes to that, as long as
-> 'learning' will continue to have its own specific meaning, independent
-> of it (right now that meaning is subtle and undocumented, but makes sense).
+so maybe this breaks sgmii? have you changed this behaviour with your Patc=
+h?
 
-Yes, I agree it is subtle.
+> So my hunch is that one of those two IF_MODE_BIT{0,5} _might_ change
+> the way the PCS interprets the control word, but as we don't have
+> any documentation to go on, only experimentation will answer this
+> question.
+>
+> If these registers are MMIO, you could ensure that you have /dev/mem
+> access enabled, and use devmem2 to poke at this register which would
+> probably be quicker than doing a build-boot-test cycle with the
+> kernel - this is how I do a lot of this kind of discovery when
+> documentation is lacking.
+>
+> > But the timer-change can also break sgmii...
+>
+> SGMII mode should be writing the same value to the link timer, but
+> looking at it now, I see I ended up with one too many zeros on the
+> 16000000! It should be 1.6ms in nanoseconds, so 1600000. Please
+> correct for future testing.
 
-> > Regarding hardware offload, I have an idea (needs testing) on how to
-> > make mlxsw work in a similar way to mv88e6xxx. That is, does not involve
-> > injecting frames that incurred a miss to the Rx path. If you guys want,
-> > I'm willing to take a subset of the patches here, improve the commit
-> > message, do some small changes and submit them along with an mlxsw
-> > implementation. My intention is not to discredit anyone (I will keep the
-> > original authorship), but to help push this forward and give another
-> > example of hardware offload.
-> > 
-> > [1] https://github.com/westermo/hostapd/commit/10c584b875a63a9e58b0ad39835282545351c30e#diff-338b6fad34b4bdb015d7d96930974bd96796b754257473b6c91527789656d6ed
-> > [2] https://git.kernel.org/pub/scm/network/iproute2/iproute2-next.git/commit/?id=c74a8bc9cf5d6b6c9d8c64d5a80c5740165f315a
-> 
-> I think it would be very nice if you could do that. As a middle ground
-> between mv88e6xxx and mlxsw, I can also try to build a setup on ocelot
-> (which should trap frames with MAC SA misses in a similar way to mlxsw,
-> but does also not sync its FDB with the bridge, similar to the mv88e6xxx.
-> Not sure what to do with dynamic FDB entries).
+tried removing 1  zero from the 16000000, but same result.
+tried also setting duplex with ethtool, but  after read it is still unknow=
+n.
+and i get no traffic working...i wonder because duplex was not set before =
+your
+patch too, but interface was working.
 
-Will try to post my patches this week.
+> Many thanks for your patience.
 
-> If only I would figure out how to configure that hostapd fork (something
-> which I never did before).
-> 
-> Hans, would it be possible to lay out some usage instructions for this fork?
+i do what i can, but i'm limited in time.
 
-That would be good.
+Frank
 
