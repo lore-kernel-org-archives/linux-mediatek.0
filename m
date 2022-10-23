@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 529E4ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 15:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EB0C3A59D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 15:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jkbZ9V5ZoXt5szJJ38R/LDP9dSqAPwHUZDRfsWCRqOE=; b=yKT2PGn9PReUbEGAXU/zhCPc8S
-	X3nvP/EM9oKICBQTMWRgG6Be5O624X54sMglsZ4Eajr3TYi0wrNgeTKwjO0wV/fZwoX7B+SxIF7i+
-	Zk8xDQUMKOIBYGCjS/jdOTankzBxFHyjua3CjdAA5sdmv4kDW/0q854pi0HjxQslcJgfKcp/GnIZS
-	LUQsN8GkGeNcU4hrYJBDFq64qxp0sKj+msxvVg0ISwS9X7vsEv+xxGEhBxaKX17k/bgo7TBwX2f/2
-	yk8O98iN5POj2Uo3+wTJTiPaZ+FyA7Sb8nROOcNZ4jo3v2Xr8/7p/O+jr/FHoFJ5Lg9ashqlMGNya
-	8jjb3y5g==;
+	bh=en/K6cWYIiRIMS1OYdC01Hpcvcqx/33fcRw/9+I/F6c=; b=JI2YLO+sIZd41scgIibjkuDd82
+	xyWgcKK/kloIx7C8WIZeoOFMVxlvVaLVT6lTcwjWE3xE78Awv2MvhF3WJGQa499t+ArNsR1mxaCn2
+	gYxmhmEW+tlEgsnEQBgqMTEtZXhaIc8CGO0T2N+pT9dt76ZVIsxJ1P5p6UjaY751jzpbeVP3gPz+7
+	+rlaj3gRt/FVh24NtZx4emg2gdsKjjPG2peX3BYEpd4gSD9c9JgRdlu8BWr0N4Vr7ksJgrHLd1tzA
+	aMihBchEO3KlSe4Tu2lZH9PAy7BVxMNky99BsbiKntAUMzkN320WBnFR+xyFLPwJ0FGNCxYUKChky
+	TwVzPQag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omdC2-00FcvJ-3b; Sun, 23 Oct 2022 15:47:18 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1omdD8-00FdEO-Ro; Sun, 23 Oct 2022 15:48:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omdBy-00FctT-ME; Sun, 23 Oct 2022 15:47:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=jkbZ9V5ZoXt5szJJ38R/LDP9dSqAPwHUZDRfsWCRqOE=; b=FB1z7RXPvga68n+c9yVqZJLMCt
-	L4/q1vfh2sJJU1q7T/eKH9SWFt4+GrA5Zpuy0muQ+K54Niaox9z2i85xSKOB06mQ+jDkiLc8Iw7Ne
-	h/zKfE8fV6xFXbX702WjNlCf4VXLyKlAT/zueh5Zkz05StCR33lZtAx2NtLXcetTJugivhiFlxEh7
-	V/ue1cCghwb0o3I/c84xmVE3qWbPXvGCVuQId9qxCG0fyw7G32BYAUOIS0vt0KWR3nfbdYY1ccGVq
-	odeTs1Wd4Ge7942VXVcCNbZei5uoi5+hWMzJm8v6nQwZ698dLzaJF/k4t3uvNAJoXcFcyuVhOclqp
-	AYyqfvCA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34906)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1omdBi-00025r-Fr; Sun, 23 Oct 2022 16:46:58 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1omdBV-0006CN-T3; Sun, 23 Oct 2022 16:46:45 +0100
-Date: Sun, 23 Oct 2022 16:46:45 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
-	Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y1Vh5U96W2u/GCnx@shell.armlinux.org.uk>
-References: <Y1MO6cyuVtFxTGuP@shell.armlinux.org.uk>
- <9BC397B2-3E0B-4687-99E5-B15472A1762B@fw-web.de>
- <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
- <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
- <Y1Qi55IwJZulL1X/@shell.armlinux.org.uk>
- <trinity-164dc5a6-98ce-464c-a43d-b00b91ca69e5-1666461195968@3c-app-gmx-bs49>
- <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
- <trinity-ff9bb15b-b10c-46d6-8af2-09a03563c3c8-1666509999435@3c-app-gmx-bap20>
- <Y1UMrvk2A9aAcjo5@shell.armlinux.org.uk>
- <trinity-5350c2bc-473d-408f-a25a-16b34bbfcba7-1666537529990@3c-app-gmx-bs01>
+	id 1omdD5-00FdCu-SM
+	for linux-mediatek@lists.infradead.org; Sun, 23 Oct 2022 15:48:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 23F0F60EB4;
+	Sun, 23 Oct 2022 15:48:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 113EDC433C1;
+	Sun, 23 Oct 2022 15:48:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666540097;
+	bh=yJn8OavakVOxQGW6g4JiudjKcYIPmwarJ89dSQSXsHg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kIiNsa1TaTdjM0LttYcAqnmMZ1P5SOkERVC1zWfaiyooK9vk8lt2KqjgoQ6qWzAsl
+	 xo6rB+peXWozLO5mwWxMgmvB5sBYTDg+Y/Lnl5s9o5BaBM0Dz2zWYIlKqK/xWAeYCv
+	 JseeGk5eiT9K5XxyzJZUkR3EUcqC2Gdr+1l+e3cE0x+6qJIQTpkoQYJvystUT6yy+v
+	 1uTmXPjOYj9v+FaoPS0DgkSIfNj0OXHKIG9uvJthfj77Lz+dJId6E58IyAVci9GRgK
+	 wGymDbOXqfx7eT7Iy+fxVc+B5YCAHgu1SlN3xpe40NzAAOiOGzze4Lbb/2Ej2PgkAa
+	 gvZAaWiooqpaw==
+Date: Sun, 23 Oct 2022 17:48:13 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org, daniel@makrotopia.org
+Subject: Re: [PATCH net-next 2/6] dt-bindings: net: mediatek: add WED RX
+ binding for MT7986 eth driver
+Message-ID: <Y1ViPY8QIOeejxNh@lore-desk>
+References: <cover.1666368566.git.lorenzo@kernel.org>
+ <7a454984f0001a71964114b71f353cb47af95ee6.1666368566.git.lorenzo@kernel.org>
+ <20221021224140.GA574155-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1DSfyrdVsyuHoMuf"
 Content-Disposition: inline
-In-Reply-To: <trinity-5350c2bc-473d-408f-a25a-16b34bbfcba7-1666537529990@3c-app-gmx-bs01>
+In-Reply-To: <20221021224140.GA574155-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_084714_908319_B8244EBD 
-X-CRM114-Status: GOOD (  76.36  )
+X-CRM114-CacheID: sfid-20221023_084824_046485_89310F6A 
+X-CRM114-Status: GOOD (  26.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,303 +81,442 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 23, 2022 at 05:05:30PM +0200, Frank Wunderlich wrote:
-> > Gesendet: Sonntag, 23. Oktober 2022 um 11:43 Uhr
-> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> 
-> > On Sun, Oct 23, 2022 at 09:26:39AM +0200, Frank Wunderlich wrote:
-> > > > Gesendet: Samstag, 22. Oktober 2022 um 21:18 Uhr
-> > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > > Hi,
-> > > >
-> > > > On Sat, Oct 22, 2022 at 07:53:16PM +0200, Frank Wunderlich wrote:
-> > > > > > Gesendet: Samstag, 22. Oktober 2022 um 19:05 Uhr
-> > > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > > > > On Sat, Oct 22, 2022 at 12:52:00PM +0200, Frank Wunderlich wrote:
-> > > > > > > > Gesendet: Samstag, 22. Oktober 2022 um 11:11 Uhr
-> > > > > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > > >
-> > > > > > > this patch breaks connectivity at least on the sfp-port (eth1).
-> > > > >
-> > > > > > > pcs_get_state
-> > > > > > > [   65.522936] offset:0 0x2c1140
-> > > > > > > [   65.522950] offset:4 0x4d544950
-> > > > > > > [   65.525914] offset:8 0x40e041a0
-> > > > > > > [  177.346183] offset:0 0x2c1140
-> > > > > > > [  177.346202] offset:4 0x4d544950
-> > > > > > > [  177.349168] offset:8 0x40e041a0
-> > > > > > > [  177.352477] offset:0 0x2c1140
-> > > > > > > [  177.356952] offset:4 0x4d544950
-> > > > > >
-> > > > > > Hi,
-> > > > > >
-> > > > > > Thanks. Well, the results suggest that the register at offset 8 is
-> > > > > > indeed the advertisement and link-partner advertisement register. So
-> > > > > > we have a bit of progress and a little more understanding of this
-> > > > > > hardware.
-> > > > > >
-> > > > > > Do you know if your link partner also thinks the link is up?
-> > > > >
-> > > > > yes link is up on my switch, cannot enable autoneg for fibre-port, so port is fixed to 1000M/full flowcontrol enabled.
-> > > > >
-> > > > > > What I notice is:
-> > > > > >
-> > > > > > mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Unknown - flow control off
-> > > > > >
-> > > > > > The duplex is "unknown" which means you're not filling in the
-> > > > > > state->duplex field in your pcs_get_state() function. Given the
-> > > > > > link parter adverisement is 0x00e0, this means the link partner
-> > > > > > supports PAUSE, 1000base-X/Half and 1000base-X/Full. The resolution
-> > > > > > is therefore full duplex, so can we hack that in to your
-> > > > > > pcs_get_state() so we're getting that right for this testing please?
-> > > > >
-> > > > > 0xe0 is bits 5-7 are set (in lower byte from upper word)..which one is for duplex?
-> > > > >
-> > > > > so i should set state->duplex/pause based on this value (maybe compare with own caps)?
-> > > > >
-> > > > > found a documentation where 5=full,6=half, and bits 7+8 are for pause (symetric/asymetric)
-> > > > >
-> > > > > regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1+8, &val);
-> > > > > partner_advertising = (val & 0x00ff0000) >> 16;
-> > > >
-> > > > Not quite :) When we have the link partner's advertisement and the BMSR,
-> > > > we have a helper function in phylink to do all the gritty work:
-> > > >
-> > > > 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
-> > > > 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1 + 8, &adv);
-> > > >
-> > > > 	phylink_mii_c22_pcs_decode_state(state, bm >> 16, adv >> 16);
-> > > >
-> > > > will do all the work for you without having to care about whether
-> > > > you're operating at 2500base-X, 1000base-X or SGMII mode.
-> > > >
-> > > > > > Now, I'm wondering what SGMII_IF_MODE_BIT0 and SGMII_IF_MODE_BIT5 do
-> > > > > > in the SGMSYS_SGMII_MODE register. Does one of these bits set the
-> > > > > > format for the 16-bit control word that's used to convey the
-> > > > > > advertisements. I think the next step would be to play around with
-> > > > > > these and see what effect setting or clearing these bits has -
-> > > > > > please can you give that a go?
-> > > > >
-> > > > > these is not clear to me...should i blindly set these and how to
-> > > > > verify what they do?
-> > > >
-> > > > Yes please - I don't think anyone knows what they do.
-> > >
-> > > i guess BIT0 is the SGMII_EN flag like in other sgmii implementations.
-> > > Bit5 is "reserved" in all docs i've found....maybe it is related to HSGMII
-> > > or for 1G vs. 2G5.
-> >
-> > "other sgmii implementations" ?
-> 
-> yes i googled for sgmii and found register definition for different vendor...
-> i don't know if sgmii is a standard for each vendor, afair trgmii was not.
-> 
-> > If this is the SGMII_EN flag, maybe SGMII_IF_MODE_BIT0 should be
-> > renamed to SGMII_IF_SGMII_EN ? Maybe it needs to be set for SGMII
-> > and clear for base-X ?
-> >
-> > > but how to check what has changed...i guess only the register itself changed
-> > > and i have to readout another to check whats changed.
-> > >
-> > > do we really need these 2 bits? reading/setting duplex/pause from/to the register
-> > > makes sense, but digging into undocumented bits is much work and we still only guess.
-> >
-> > I don't know - I've no idea about this hardware, or what the PCS is,
-> > and other people over the years I've talked to have said "we're not
-> > using it, we can't help". The mediatek driver has been somewhat of a
-> > pain for phylink as a result.
-> >
-> > > so i would first want to get sgmii working again and then strip the pause/duplex from it.
-> >
-> > I think I'd need more information on your setup - is this dev 0? Are
-> > you using in-band mode or fixed-link mode?
-> 
-> i only test with dev1 which is the sfp-port/eth1/gmac1...dev0 is the fixed-link to switch-chip.
 
-Okay, so when you're using SGMII, how are you testing it? With a copper
-SFP plugged in?
+--1DSfyrdVsyuHoMuf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > I don't think you've updated me with register values for this since
-> > the patch. With the link timer adjusted back to 1.6ms, that should
-> > result in it working again, but if not, I think there's some
-> > possibilities.
-> 
-> sorry for that, have debugged timing and it was wrong because if-
-> condition had not included 1000baseX and 2500baseX. only sgmii
+> On Fri, Oct 21, 2022 at 06:18:32PM +0200, Lorenzo Bianconi wrote:
+> > Document the binding for the RX Wireless Ethernet Dispatch core on the
+> > MT7986 ethernet driver used to offload traffic received by WLAN NIC and
+> > forwarded to LAN/WAN one.
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  .../arm/mediatek/mediatek,mt7622-wed.yaml     | 126 ++++++++++++++++++
+> >  .../arm/mediatek/mediatek,mt7986-wo-boot.yaml |  45 +++++++
+> >  .../arm/mediatek/mediatek,mt7986-wo-ccif.yaml |  49 +++++++
+> >  .../arm/mediatek/mediatek,mt7986-wo-dlm.yaml  |  66 +++++++++
+> >  4 files changed, 286 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/medi=
+atek,mt7986-wo-boot.yaml
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/medi=
+atek,mt7986-wo-ccif.yaml
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/medi=
+atek,mt7986-wo-dlm.yaml
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt=
+7622-wed.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7=
+622-wed.yaml
+> > index 84fb0a146b6e..623f11df5545 100644
+> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-we=
+d.yaml
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-we=
+d.yaml
+> > @@ -29,6 +29,59 @@ properties:
+> >    interrupts:
+> >      maxItems: 1
+> > =20
+> > +  mediatek,wocpu_emi:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to a node describing reserved memory used by mtk wed fir=
+mware
+> > +      (see bindings/reserved-memory/reserved-memory.txt)
+>=20
+> What does that file contain?
+>=20
+> There's a standard property to refer to reserved-memory nodes, use it.
 
-SGMII's link timer is specified to be 1.6ms - the SGMII v1.8 spec
-doesn't specify the margins for this.
+ack, I will fix it in v2.
 
-802.3z (1000base-X) is 10ms +10ms -0s.
+>=20
+> > +
+> > +  mediatek,wocpu_data:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to a node describing reserved memory used by mtk wed fir=
+mware
+> > +      (see bindings/reserved-memory/reserved-memory.txt)
+> > +
+> > +  mediatek,wocpu_ilm:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to a node describing memory used by mtk wed firmware
+> > +
+> > +  mediatek,ap2woccif:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to the mediatek wed-wo controller.
+> > +
+> > +  mediatek,wocpu_boot:
+>=20
+> s/_/-/
 
-This is what we should be using, and what I tried to implement.
+ack, I will fix it in v2.
 
-The hex values programmed into the register should be 0x186A0 for
-SGMII and 0x98968 for 1000base-X and 2500base-X - both values
-should fit because the link timer is apparently 20 bits wide.
+>=20
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to the mediatek wed-wo boot interface.
+> > +
+> > +  mediatek,wocpu_dlm:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    maxItems: 1
+> > +    description:
+> > +      Phandle to the mediatek wed-wo rx hw ring.
+> > +
+> > +allOf:
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            const: mediatek,mt7986-wed
+> > +    then:
+> > +      properties:
+> > +        mediatek,wocpu_data: true
+> > +        mediatek,wocpu_boot: true
+> > +        mediatek,wocpu_emi: true
+> > +        mediatek,wocpu_ilm: true
+> > +        mediatek,ap2woccif: true
+> > +        mediatek,wocpu_dlm: true
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
+> > @@ -49,3 +102,76 @@ examples:
+> >          interrupts =3D <GIC_SPI 214 IRQ_TYPE_LEVEL_LOW>;
+> >        };
+> >      };
+> > +
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/reset/ti-syscon.h>
+> > +    soc {
+> > +      #address-cells =3D <2>;
+> > +      #size-cells =3D <2>;
+> > +      reserved-memory {
+> > +        #address-cells =3D <2>;
+> > +        #size-cells =3D <2>;
+> > +        wocpu0_emi: wocpu0_emi@4fd00000 {
+> > +          reg =3D <0 0x4fd00000 0 0x40000>;
+> > +          no-map;
+> > +        };
+> > +
+> > +        wocpu_data: wocpu_data@4fd80000 {
+> > +          reg =3D <0 0x4fd80000 0 0x240000>;
+> > +          no-map;
+> > +        };
+> > +      };
+> > +
+> > +      ethsys: syscon@15000000 {
+> > +        #address-cells =3D <1>;
+> > +        #size-cells =3D <1>;
+> > +        compatible =3D "mediatek,mt7986-ethsys", "syscon";
+> > +        reg =3D <0 0x15000000 0 0x1000>;
+> > +
+> > +        #clock-cells =3D <1>;
+> > +        #reset-cells =3D <1>;
+> > +        ethsysrst: reset-controller {
+> > +          compatible =3D "ti,syscon-reset";
+> > +          #reset-cells =3D <1>;
+> > +          ti,reset-bits =3D <0x34 4 0x34 4 0x34 4 (ASSERT_SET | DEASSE=
+RT_CLEAR | STATUS_SET)>;
+> > +        };
+>=20
+> You don't need to show providers in examples. Presumably we already have=
+=20
+> an example of them in their binding.
 
-> > The addition of SGMII_AN_ENABLE for SGMSYS_PCS_CONTROL_1 could have
-> > broken your setup if there is no actual in-band signalling, which
-> > basically means that your firmware description is wrong - and you've
-> > possibly been led astray by the poor driver implementation.
-> 
-> disabled it, but makes no change.
-> 
-> but i've noticed that timing is wrong
-> 
-> old value: 0x186a0
-> new value: 0x98968
-> 
-> so it takes the 10000000 and not the 1600000. so it looks like interface-mode is not (yet) SGMII.
-> 
-> debugged it and got 1000baseX (21),in dts i have
-> phy-mode = "2500base-x";
-> but SFP only supports 1G so mode 1000baseX is right
-> 
-> set the old value with your calculation, but still not working, also with disabled AN_ENABLE-flag ;(
+ack, I will fix it in v2.
+>=20
+> > +      };
+> > +
+> > +      wocpu0_ilm: wocpu0_ilm@151e0000 {
+> > +        compatible =3D "mediatek,wocpu0_ilm";
+> > +        reg =3D <0 0x151e0000 0 0x8000>;
+> > +      };
+> > +
+> > +      cpu_boot: wocpu_boot@15194000 {
+> > +        compatible =3D "mediatek,wocpu_boot", "syscon";
+> > +        reg =3D <0 0x15194000 0 0x1000>;
+> > +      };
+> > +
+> > +      ap2woccif0: ap2woccif@151a5000 {
+> > +        compatible =3D "mediatek,ap2woccif", "syscon";
+> > +        reg =3D <0 0x151a5000 0 0x1000>;
+> > +        interrupts =3D <GIC_SPI 211 IRQ_TYPE_LEVEL_HIGH>;
+> > +      };
+> > +
+> > +      wocpu0_dlm: wocpu_dlm@151e8000 {
+> > +        compatible =3D "mediatek,wocpu_dlm";
+> > +        reg =3D <0 0x151e8000 0 0x2000>;
+> > +        resets =3D <&ethsysrst 0>;
+> > +        reset-names =3D "wocpu_rst";
+> > +      };
+> > +
+> > +      wed1: wed@1020a000 {
+> > +        compatible =3D "mediatek,mt7986-wed","syscon";
+> > +        reg =3D <0 0x15010000 0 0x1000>;
+> > +        interrupts =3D <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
+> > +
+> > +        mediatek,wocpu_data =3D <&wocpu_data>;
+> > +        mediatek,ap2woccif =3D <&ap2woccif0>;
+> > +        mediatek,wocpu_ilm =3D <&wocpu0_ilm>;
+> > +        mediatek,wocpu_dlm =3D <&wocpu0_dlm>;
+> > +        mediatek,wocpu_emi =3D <&wocpu_emi>;
+> > +        mediatek,wocpu_boot =3D <&cpu_boot>;
+> > +      };
+> > +    };
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt=
+7986-wo-boot.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek=
+,mt7986-wo-boot.yaml
+> > new file mode 100644
+> > index 000000000000..dc8fdb706960
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo=
+-boot.yaml
+> > @@ -0,0 +1,45 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt7986-wo-bo=
+ot.yaml#"
+> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> > +
+> > +title: MediaTek WED WO boot controller interface for MT7986
+>=20
+> What is 'WED'?
 
-I'm getting the impression that there's some confusing terminology going
-on here... can we clear this up please?
+Wireless Ethernet Dispatch. I will fix it in v2.
 
-SGMII is a proprietary modification of the 802.3z 1000base-X standard
-which:
-- reduces the link timer from 10ms to 1.6ms
-- implements data replication by 10x and 100x to achieve 100M and 10M
-  speeds over a link operating at a fixed speed of 1.25Gbaud.
-- changes the control word format to allow a SGMII PHY to signal to the
-  MAC in a timely manner which speed it is operating at.
+>=20
+> > +
+> > +maintainers:
+> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > +  - Felix Fietkau <nbd@nbd.name>
+> > +
+> > +description:
+> > +  The mediatek wo-boot provides a configuration interface for WED WO
+> > +  boot controller on MT7986 soc.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mediatek,wocpu_boot
+>=20
+> This needs to be SoC specific.
+>=20
+> And s/_/-/
 
-So, if you're using a fibre SFP to another device that is operating in
-1000base-X mode, then you're wanting 1000base-X and not SGMII, and
-referring to this as SGMII is technically misleading.
+ack, I will fix it in v2.
 
-> root@bpi-r3:~# ip link set eth1 up
-> [   44.287442] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/1000be
-> [   44.295902] interface-mode 21 (sgmii:4)
-> root@bpi-r3:~# [   44.295907] timer 0x186a0
-> [   44.352872] offset:0 0x2c1140
-> [   44.355507] offset:4 0x4d544950
-> [   44.358462] offset:8 0x40e041a0
-> [   44.361609] mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Full - flf
-> [   44.373042] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
-> 
-> root@bpi-r3:~# ip a a 192.168.0.19/24 dev eth1
-> root@bpi-r3:~# ping 192.168.0.10
-> PING 192.168.0.10 (192.168.0.10) 56(84) bytes of data.
-> ^C
+>=20
+> > +      - const: syscon
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    soc {
+> > +      #address-cells =3D <2>;
+> > +      #size-cells =3D <2>;
+> > +      cpu_boot: wocpu_boot@15194000 {
+> > +        compatible =3D "mediatek,wocpu_boot", "syscon";
+> > +        reg =3D <0 0x15194000 0 0x1000>;
+> > +      };
+> > +    };
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt=
+7986-wo-ccif.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek=
+,mt7986-wo-ccif.yaml
+> > new file mode 100644
+> > index 000000000000..8fea86425983
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo=
+-ccif.yaml
+> > @@ -0,0 +1,49 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt7986-wo-cc=
+if.yaml#"
+> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> > +
+> > +title: MediaTek WED WO Controller for MT7986
+> > +
+> > +maintainers:
+> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > +  - Felix Fietkau <nbd@nbd.name>
+> > +
+> > +description:
+> > +  The mediatek WO-ccif provides a configuration interface for WED WO
+> > +  controller on MT7986 soc.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mediatek,ap2woccif
+>=20
+> SoC specific.
 
-This is where I postulated that the PCS is trying to interpret the
-advertisements as if they are SGMII formatted control words rather than
-1000base-X formatted control words - and by doing so, it is trying to
-operate at 10Mbps (100x data replication) with the remote end trying to
-operate at 1000Mbps. If that is what it is doing, then you will have
-link-up but no communication.
+ack, I will fix it in v2.
 
-The solution to this is likely trying to find a bit that tells the
-PCS whether it should be expecting a 1000base-X (or 802.3z) formatted
-control word (aka 1000base-X mode) or a SGMII formatted control word.
+>=20
+> > +      - const: syscon
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    soc {
+> > +      #address-cells =3D <2>;
+> > +      #size-cells =3D <2>;
+> > +      ap2woccif0: ap2woccif@151a5000 {
+> > +        compatible =3D "mediatek,ap2woccif", "syscon";
+> > +        reg =3D <0 0x151a5000 0 0x1000>;
+> > +        interrupts =3D <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
+> > +      };
+> > +    };
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt=
+7986-wo-dlm.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,=
+mt7986-wo-dlm.yaml
+> > new file mode 100644
+> > index 000000000000..529343c57e4b
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo=
+-dlm.yaml
+> > @@ -0,0 +1,66 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt7986-wo-dl=
+m.yaml#"
+> > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> > +
+> > +title: MediaTek WED WO hw rx ring interface for MT7986
+> > +
+> > +maintainers:
+> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > +  - Felix Fietkau <nbd@nbd.name>
+> > +
+> > +description:
+> > +  The mediatek WO-dlm provides a configuration interface for WED WO
+> > +  rx ring on MT7986 soc.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,wocpu_dlm
+>=20
+> Soc specific
+>=20
+> s/_/-/
 
-You mentioned that bit 0 in SGMSYS_SGMII_MODE is a "SGMII_EN" bit.
-Any ideas exactly what this bit does? Does it enable the PCS as a
-whole, or could that be the bit which switches between 1000base-X
-mode and SGMII mode? (More on this below).
+ack, I will fix it in v2.
+>=20
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  resets:
+> > +    maxItems: 1
+> > +
+> > +  reset-names:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - resets
+> > +  - reset-names
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/reset/ti-syscon.h>
+> > +    soc {
+> > +      #address-cells =3D <2>;
+> > +      #size-cells =3D <2>;
+> > +
+> > +      ethsys: syscon@15000000 {
+> > +        #address-cells =3D <1>;
+> > +        #size-cells =3D <1>;
+> > +        compatible =3D "mediatek,mt7986-ethsys", "syscon";
+> > +        reg =3D <0 0x15000000 0 0x1000>;
+> > +
+> > +        #clock-cells =3D <1>;
+> > +        #reset-cells =3D <1>;
+> > +        ethsysrst: reset-controller {
+> > +          compatible =3D "ti,syscon-reset";
+> > +          #reset-cells =3D <1>;
+> > +          ti,reset-bits =3D <0x34 4 0x34 4 0x34 4 (ASSERT_SET | DEASSE=
+RT_CLEAR | STATUS_SET)>;
+> > +        };
+> > +      };
+>=20
+> Again, don't need the provider here.
 
-Note that the "old way" used to work because even in 1000base-X
-mode, the code would (technically incorrectly) force the PCS to
-use a fixed configuration of 1000Mbps and force the duplex bit -
-basically no 802.3 specified autonegotiation.
+ack, I will fix it in v2.
 
-However, 1000base-X with in-band signalling _should_ be using
-the autonegotiation - as everything else that uses phylink does.
+Regards,
+Lorenzo
 
-> > Can you confirm that the device on the other end for dev 0 does in
-> > actual fact use in-band signalling please?
-> >
-> > > > If it's interpreting a link partner advertisement of 0x00e0 using
-> > > > SGMII rules, then it will be looking at bits 11 and 10 for the
-> > > > speed, both of which are zero, which means 10Mbps - and 1000base-X
-> > > > doesn't operate at 10Mbps!
-> > >
-> > > so maybe this breaks sgmii? have you changed this behaviour with your Patch?
-> >
-> > Nope, but not setting the duplex properly is yet another buggy and poor
-> > quality of implementation that afficts this driver. I've said about
-> > setting the duplex value when reviewing your patch to add .pcs_get_state
-> > and I'm disappointed that you seemingly haven't yet corrected it in the
-> > code you're testing despite those review comments.
-> 
-> sorry, i thought we want to read out the values from registers to set it based on them.
-> 
-> currently i test only with the dev 1 (in-band-managed with 1GBit/s SFP)
-> 
-> [    1.088310] dev: 0 offset:0 0x40140
-> [    1.088331] dev: 0 offset:4 0x4d544950
-> [    1.091827] dev: 0 offset:8 0x1
-> [    1.095607] dev: 1 offset:0 0x81140
-> [    1.098739] dev: 1 offset:4 0x4d544950
-> [    1.102214] dev: 1 offset:8 0x1
-> 
-> after bring device up (disabled AN and set duplex to full):
-> 
-> [   34.615926] timer 0x98968
-> [   34.672888] offset:0 0x2c1140
-> [   34.675518] offset:4 0x4d544950
-> [   34.678473] offset:8 0x40e041a0
-> 
-> codebase:
-> 
-> https://github.com/frank-w/BPI-R2-4.14/commits/6.1-r3-sgmii
+>=20
+> > +
+> > +      wocpu0_dlm: wocpu_dlm@151e8000 {
+> > +        compatible =3D "mediatek,wocpu_dlm";
+> > +        reg =3D <0 0x151e8000 0 0x2000>;
+> > +        resets =3D <&ethsysrst 0>;
+> > +        reset-names =3D "wocpu_rst";
+> > +      };
+> > +    };
+> > --=20
+> > 2.37.3
+> >=20
+> >=20
 
-I think it would also be useful to print the register at offset 32
-as well, which is the SGMSYS_SGMII_MODE register, so we can discover
-what the initial and current values of these IF_MODE_BITs are. I
-may then be able to provide you an updated patch.
+--1DSfyrdVsyuHoMuf
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> > If duplex remains as "unknown", then the MAC will be programmed to
-> > operate in _half_ _duplex_ mode (read mtk_mac_link_up()) which is not
-> > what you likely want. Many MACs don't support half duplex at 1G speed,
-> > so it's likely that without setting state->duplex, the result is that
-> > the MAC hardware is programmed incorrectly.
-> 
-> wonder why it was working with only my patch which had duplex also not set.
+-----BEGIN PGP SIGNATURE-----
 
-It depends entirely on the MAC implementation and why the manufacturer
-decides to state that 1000 half-duplex isn't supported by the hardware!
-I don't think we can guess. However, configuring the hardware correctly
-eliminates potential issues.
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY1ViPQAKCRA6cBh0uS2t
+rD2HAQCFDDC5z7hFAZN/CdFsQfy/0G73kE8rU6n3vN3jnAGfuwEAx85XrRLYcaWu
+iQGNLEZqtLc73hY+oXvaAHAZIAY+Yg4=
+=oKL4
+-----END PGP SIGNATURE-----
 
-It is in entirely possible for devices configured with dissimilar
-duplex settings to communicate, but there will be packet loss - since
-the end operating in full duplex will transmit while the receiving
-end could also be transmitting, and the receving end could interpret
-that as a collision.
-
-> > > > So my hunch is that one of those two IF_MODE_BIT{0,5} _might_ change
-> > > > the way the PCS interprets the control word, but as we don't have
-> > > > any documentation to go on, only experimentation will answer this
-> > > > question.
-> 
-> the bits were in offset 0/4/8? are they now different than before?
-> if yes maybe these break it.
-> 
-> as offset 4 is the phy-id and 8 is the advertisement from local and far
-> interface i guesss IF_MODE_* is in offset 0.
-
-They're in the register at offset 32:
-
-/* Register to control remote fault */
-#define SGMSYS_SGMII_MODE               0x20
-#define SGMII_IF_MODE_BIT0              BIT(0)
-...
-#define SGMII_IF_MODE_BIT5              BIT(5)
-
-So, I think the first step should be to print the value of this register
-along side the other three you've been providing me and update me with
-its value. I'll then provide you a replacement patch to try.
-
-Russell.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+--1DSfyrdVsyuHoMuf--
 
