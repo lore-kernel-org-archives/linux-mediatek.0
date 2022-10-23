@@ -4,52 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C60BEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E587C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 12:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+FBECTcdeQLfSp5bHcYAa/1zAvqLKLLp0tQ+VpGze+A=; b=rlyGEbDOaM3LXYuzuCK41lbtXg
-	7YDvvTSFubqyVbgqv8Wuz6xCoPkgIxvyKc7J4F1SSRIFbHlmUA4LUP44707pWDFmXAAIfDJoUd151
-	frQ8mNx1UIRDD41kI0n7CTtS8o70J5OLbobzwOf5Aeku05ZE3EQ+JVoJWaEJYanyj6SAbMT+G0yNM
-	V+lnza1/TrEkvTjRLGo6qao/G6Orue1xBrfQlx+v9AMckr/ZsYjKH80qc5M+onmwfov1W65r8q/Wb
-	lEtGRe4QfBM7FXEqyUpKV92IyUsnwQWAw2DXNoWSWOveIoxHzekl4KFaFXBmKbfjQHG+hTucAswDR
-	IRP87ExQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d22Nu7/GsB5hghfVeEKLSy6b7ZpjNBiiw4k31Rhw8Ok=; b=bBF/69pULSZRtsNHzQd1gr3HSQ
+	3tr2mfxq3kCelmGK5SHuR0g6UhcBkSYVpL+WX+k0J6VOa7UwlHihjQ3TWOve/OxRwQAbfHtFDdIzw
+	GsGKQ7iHb1ghqkTsnjsjfOOD5aisKhoVKXlnzxg5TYymLnfkgafL4BSqlGPskg+1Cvc6cUd0TD3/X
+	Nx2yNWRalFujLu8Vf+a4crNTJYqo2rQbRk9NBNZxyPaFSocMTq17xBgp4vZ3M2E+Ny6S7JLKzsYY6
+	olS69aMP7nj+fh8BCCYgBneFkR4EO9o1O7s7yixEcJFvVsI55XUwx0yVEWckBhoMPjo0wv9X+Lay/
+	LXRM4ETA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omXbh-00EsjI-5Q; Sun, 23 Oct 2022 09:49:25 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1oma1v-00F8BQ-UQ; Sun, 23 Oct 2022 12:24:39 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omXbW-00EsfV-7i; Sun, 23 Oct 2022 09:49:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1666518546; h=from:from:sender:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+FBECTcdeQLfSp5bHcYAa/1zAvqLKLLp0tQ+VpGze+A=;
-	b=WMXviK4znNH+cxAIFAOQi3B1ykMnVrOcVU4hf2Rqqlk058V80E+qnyk8E0LlkDXjEPWIXm
-	5qVkv3kePJ7wNXzCipfnq9MYT16MVBahctpgvp0h4oxMOe2Waq01lOVUy6yVlaUaKThAzq
-	zocXklgI+/PciXSlgUahWpIe9bqshyo=
-From: Paul Cercueil <paul@crapouillou.net>
-To: Lee Jones <lee@kernel.org>
-Cc: linux-kernel@vger.kernel.org,
-	Paul Cercueil <paul@crapouillou.net>,
+	id 1oma1t-00F89T-Jc; Sun, 23 Oct 2022 12:24:38 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1oma1d-0007v3-0x; Sun, 23 Oct 2022 14:24:21 +0200
+Date: Sun, 23 Oct 2022 13:24:17 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 05/28] mfd: mt6397-irq: Remove #ifdef guards for PM related functions
-Date: Sun, 23 Oct 2022 10:48:29 +0100
-Message-Id: <20221023094852.8035-6-paul@crapouillou.net>
-In-Reply-To: <20221023094852.8035-1-paul@crapouillou.net>
-References: <20221023094852.8035-1-paul@crapouillou.net>
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] dt-bindings: pwm: mediatek: Add compatible string
+ for MT7986
+Message-ID: <Y1UycU0JvwyAv0x2@makrotopia.org>
+References: <Y1K53n7LnjoMoIfj@makrotopia.org>
+ <20221021222338.GA565200-robh@kernel.org>
+ <Y1MkIdFXrBrrv958@makrotopia.org>
+ <5182e3c4-9e5e-2c36-408b-9029c65c8803@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5182e3c4-9e5e-2c36-408b-9029c65c8803@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_024914_464698_40627B8D 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20221023_052437_667519_58C1FE7A 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,57 +68,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new pm_sleep_ptr() macro to handle the .irq_set_wake() callback.
+Hi Krzysztof,
 
-This macro allows the mt6397_irq_set_wake() function to be automatically
-dropped by the compiler when CONFIG_SUSPEND is disabled, without having
-to use #ifdef guards.
+On Sat, Oct 22, 2022 at 12:35:25PM -0400, Krzysztof Kozlowski wrote:
+> On 21/10/2022 18:58, Daniel Golle wrote:
+> > On Fri, Oct 21, 2022 at 05:23:38PM -0500, Rob Herring wrote:
+> >> On Fri, Oct 21, 2022 at 04:25:18PM +0100, Daniel Golle wrote:
+> >>> Add new compatible string for MT7986 PWM.
+> >>>
+> >>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> >>> ---
+> >>>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+> >>>  1 file changed, 1 insertion(+)
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> >>> index 554c96b6d0c3e0..6f4e60c9e18b81 100644
+> >>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> >>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> >>> @@ -8,6 +8,7 @@ Required properties:
+> >>>     - "mediatek,mt7623-pwm": found on mt7623 SoC.
+> >>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
+> >>>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
+> >>> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
+> >>
+> >> This version of the PWM h/w is not compatible with any of the existing 
+> >> chips? If it is, it should have a fallback compatible.
+> > 
+> > No, it is unique because it comes with just 2 PWM channels.
+> > Otherwise the driver behaves just like for MT8183 (4 channels) or
+> > MT8365 (3 channels) which also got distinct compatible strings.
+> 
+> Then something would be here compatible. E.g. If you bound MT8183 with
+> mt7986-pwm compatible, would you get working device with two channels?
 
-This has the advantage of always compiling these functions in,
-independently of any Kconfig option. Thanks to that, bugs and other
-regressions are subsequently easier to catch.
+Yes, but I'd see another 2 channels which do not work, accessing them
+may even cause problems (I haven't tried that) as it means accessing
+an undocumented memory range of the SoC which we in general we
+shouldn't be messing around with.
 
-Signed-off-by: Paul Cercueil <paul@crapouillou.net>
----
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
+Also note that this case is the same as MT8183 vs. MT8365, they got
+distinct compatible strings and also for those two the only difference
+is the number of channels.
 
- drivers/mfd/mt6397-irq.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+> 
+> If so, they are compatible.
 
-diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
-index eff53fed8fe7..72f923e47752 100644
---- a/drivers/mfd/mt6397-irq.c
-+++ b/drivers/mfd/mt6397-irq.c
-@@ -54,7 +54,6 @@ static void mt6397_irq_enable(struct irq_data *data)
- 	mt6397->irq_masks_cur[reg] |= BIT(shift);
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int mt6397_irq_set_wake(struct irq_data *irq_data, unsigned int on)
- {
- 	struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(irq_data);
-@@ -68,9 +67,6 @@ static int mt6397_irq_set_wake(struct irq_data *irq_data, unsigned int on)
- 
- 	return 0;
- }
--#else
--#define mt6397_irq_set_wake NULL
--#endif
- 
- static struct irq_chip mt6397_irq_chip = {
- 	.name = "mt6397-irq",
-@@ -78,7 +74,7 @@ static struct irq_chip mt6397_irq_chip = {
- 	.irq_bus_sync_unlock = mt6397_irq_sync_unlock,
- 	.irq_enable = mt6397_irq_enable,
- 	.irq_disable = mt6397_irq_disable,
--	.irq_set_wake = mt6397_irq_set_wake,
-+	.irq_set_wake = pm_sleep_ptr(mt6397_irq_set_wake),
- };
- 
- static void mt6397_irq_handle_reg(struct mt6397_chip *mt6397, int reg,
--- 
-2.35.1
+By that definition you should remove the additional compatible for
+MT8365 or rather, it should have been rejected for the same argument.
 
+I'm talking about
+commit fe00faee8060402a3d85aed95775e16838a6dad2
+commit 394b517585da9fbb2eea2f2103ff47d37321e976
+
+
+Cheers
+
+
+Daniel
 
