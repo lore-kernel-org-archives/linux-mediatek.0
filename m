@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80AF5FA373D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2D7ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:14:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=j9mrW/hduerytVdojlo3APh7PbXTuuPGsPr25UCn24I=; b=v/BXqSueTmKZ/c
-	jFLRgdionvKf1e18R1GnxDMergWoW9IVjRxAvrkFmnYtAJDIIsJFafX7mBIlMu0JdZdyG8RJHHV3T
-	w9+VpVhGRKCBtOYv9bYKMhMZ0wMo+ycApEOnKG3OJ8wBHYQIn8yd2JPu/hkPiuoBY6lw5/E9wyU7X
-	WqW9UCuBd3B6um625WiIzvceDMPujYLQPhS3ISC58ezMRJl75EgSBDtLQxjNUXEVrjboRh3j7U4tw
-	V7KnJeSBHWnPRJm6en0p9czUFmpaqMM8FQ1TTtfHUKfVvO+P6oCEGKP20QmPdu8v402GokvJTQpOj
-	Pod+jlyNL24xwIQ3z4GA==;
+	List-Owner; bh=j9mrW/hduerytVdojlo3APh7PbXTuuPGsPr25UCn24I=; b=3bhpb9TyUpdrny
+	QD4cn3j6yJfLvXvkm1BAL882ywkolH78y3Vg2Dur2RvbH7/IkHAEtwV4udZfqaWlLWYJpopbWKpmK
+	mSOR/NlCERm37un+vkFMDCOQEMQKq8p68y+oaSVtzfAcUIRfoHNEuIRTB/J8P/YdRBx46BLk4PgzX
+	Ihmsu/tiQdD//zbzViQb0tcRfvslmLy0YhHOUzeX095efTA1wFl56qznJzTQxPgMgtuMmKSp1Ju0w
+	qypf9cqMnLDZ9mxOwhgE+Rm2lBV7pbtJQ6LqLJqZ42tlMjiAEQ9W2HS74RM+pNBi+UYrYsVTrNi9X
+	Hcl3EBEfRqlyNqBPwQ0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omX33-00ElmV-4M; Sun, 23 Oct 2022 09:13:37 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1omX3k-00Em65-Dk; Sun, 23 Oct 2022 09:14:20 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omX2i-00Elbc-Gq; Sun, 23 Oct 2022 09:13:18 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id 1C5F93FF91;
-	Sun, 23 Oct 2022 09:13:09 +0000 (UTC)
+	id 1omX2i-00Elbf-Ld; Sun, 23 Oct 2022 09:13:19 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout3.routing.net (Postfix) with ESMTP id A9CF7605C2;
+	Sun, 23 Oct 2022 09:13:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666516389;
+	s=20200217; t=1666516386;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding;
 	bh=j9mrW/hduerytVdojlo3APh7PbXTuuPGsPr25UCn24I=;
-	b=dtlIyWt2wZtE5M2hRo/zHb4KJqEPhBhZHm4bw2e9lKXBhlre/YjTRlZmw9M+zDFA8+aQos
-	eIGyauZJl4MreJ5uItrhMuMup7QTTWfDdGF/H4KnN/5kIThqqfffeGY9ef9pVxkJTjqvHp
-	GuFh9cuqHQpDbG2akYpg3RAyUWtSogQ=
+	b=Keb7iGMH/aeRYLoC+uTB9qoQ7/5GSPV97T1UtGq2xoB36cZ8SZNn9gf1K+Qj9z7JnHUpEH
+	IDtrfcqHBAtK9i8zYuvFNaI+VyIYL6bcvuqmKQ/R4dqvYn6bktDzmvHG9O55tOtdSHGtlE
+	P5BxBOeXcaijJV29D61T4c1yIPosVyA=
 Received: from frank-G5.. (fttx-pool-80.245.79.234.bambit.de [80.245.79.234])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 26A6B10009F;
-	Sun, 23 Oct 2022 09:13:08 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 95C1C360629;
+	Sun, 23 Oct 2022 09:12:37 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
 Subject: [PATCH v3 0/7] Add mmc-support for mt7986
-Date: Sun, 23 Oct 2022 11:12:40 +0200
-Message-Id: <20221023091247.70586-1-linux@fw-web.de>
+Date: Sun, 23 Oct 2022 11:11:53 +0200
+Message-Id: <20221023091200.70336-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 34b86ec0-a10f-4bc5-a043-30f82e5b58c6
+X-Mail-ID: b17f74b6-f594-4b7f-a568-6d664155791f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_021316_748183_433FEA29 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20221023_021316_880599_2AA79D65 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
