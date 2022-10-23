@@ -4,111 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09F1ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 07:27:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD92C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+MGDUkrSRyHcABEgtdQqOGLeFI1j4ZkH0nmNkFRzzFw=; b=oOUABAKMSpsCO9p71Q1LglkzWE
-	5gP/tkLhWREOkCxUpvhJEetppIxDKAmBOqrsyUV8Z4dFRi4z+gbWpinw85/kjg3xnpcmy6FjPBJKi
-	IqIzQ0dJ4aUpKm/BX5XF4C3z6mn+IIPD85eZhvjJqmBLk+iKIQxWGZ0T9n6kNIGADzdhJ8hTr7WUb
-	4t4IVg/l8AEXrCsoYhQml4yuGI9L4FeS2VBd3ACFJb9y10jOUIqdZBKzTY6oZCZN5htdwTnYJ3OSV
-	V1J4z7LolT4dMoka5pZoPT9+Z8xeobwSwHqj+6TXDrzc5KqPQHlXJxA5zHRtxg2jNGztgc0mUJb+d
-	1z+dEpIg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m0tnr5ZD8EC2va1ebYMWM4ouc4PlgDpshSSnTTqC0Pw=; b=STgejxNiO94FHD
+	WZ1AoUnQ9Om7pHlLJZtX5lEKSvwQ/E8C6zDPv4zaVoLK4BxR8q2quZ6YoabjrANLPg58I93m3z7Ub
+	A1o2foK4ngsukGcEcEETIZL0HKxblMxlfmN5AGO0upl5pK405myryykxjqPY/k3Ya6eT6l+JMtQ7z
+	PKPcBHwqpYXXoyst6RAfrOFhvcGmNcZiZNo7qZqhEKz9b4ApljKDcUAkoFhBR4Nz+gupoHBYei32G
+	nYOWYjLSKlxfb5oIQ1VHd+UGXTsh4nCAD+hlUXyntKQHwvRuP8z4yDOZ1DWhQmbiQO9jnum+C6Jd2
+	6AGhFFBXVhlEEINM/PAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omVOE-00EcsY-Rw; Sun, 23 Oct 2022 07:27:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1omX33-00Eln3-Ts; Sun, 23 Oct 2022 09:13:37 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omVOD-00EcsN-5L; Sun, 23 Oct 2022 07:27:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
-	In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+MGDUkrSRyHcABEgtdQqOGLeFI1j4ZkH0nmNkFRzzFw=; b=ifLOOzGRc5G6tzxhoNilOnyhye
-	pqhXlZmDC7JbaVa52zJnSsSrFn9R0re7nlZxwluMspm92ymaARvENNJLuTIYy5Uf3cPBJ69hEa29+
-	pcC1L4P+RN4Tt48+ibIqmHZ5FZAeH+41RjzUj8VIA1vdODCiwa51FIhwxmkGkf5CiwScJcX8ycb5l
-	yGtX3jFsmvEuINun4XueTxdC3m9nf7Ghny2k9rcM9Awx/OXw2uyGc3Kn/5WaEDUJR1nwKRorcg2mw
-	fZuXor12TuF0BuWL8ksJIl3bOabVhu5uo0luQgu1YR7mw/9WfWH2HbTF01/zIGO8l5pAYRpU8h9fT
-	uvpRO1dg==;
-Received: from mout.gmx.net ([212.227.17.21])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omVO4-005kcg-UL; Sun, 23 Oct 2022 07:27:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666509999;
-	bh=TBP4iOY9tjkCxnRBE9igXp4oZM6sQ2L6B0wuAA1Mwgc=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=dJ172UiEEjI+ecsVuMEq+4o+dn2FK9TvJqshgTVXF+4K2rA9uxwkZAvBW3oBHYtOA
-	 5q8YB3b0LQyW2rOZylhksPoMHzoPS3ZqP3zJ05+mPuvnycNcMe1+3b2WYpkYsHsNHk
-	 2/ZZEvrsG+k5FncYijst8nenyTmj+YIq83LJgHUU=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.79.234] ([80.245.79.234]) by web-mail.gmx.net
- (3c-app-gmx-bap20.server.lan [172.19.172.90]) (via HTTP); Sun, 23 Oct 2022
- 09:26:39 +0200
+	id 1omX2i-00ElcE-KZ; Sun, 23 Oct 2022 09:13:18 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout1.routing.net (Postfix) with ESMTP id 036B14013A;
+	Sun, 23 Oct 2022 09:13:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666516392;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=m0tnr5ZD8EC2va1ebYMWM4ouc4PlgDpshSSnTTqC0Pw=;
+	b=ZfrEvccQqlzNnYm8CBVY2Eq34a3cobAs9nIc0rTE8eaB4u70Y2CYB8OWtDcHeGsJhxjN/H
+	Vsa9BaiZLBht4FpNT9o1cyIwalonYl7QbEHg1OTK79I347WqveI9To6ThwPu0YOflopGTW
+	stgGbxDyuXrQsXQydd7Xlrapx3jlVdE=
+Received: from frank-G5.. (fttx-pool-80.245.79.234.bambit.de [80.245.79.234])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 4C605100671;
+	Sun, 23 Oct 2022 09:13:11 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 4/7] arm64: dts: mediatek: mt2712e: swap last 2 clocks to match binding
+Date: Sun, 23 Oct 2022 11:12:44 +0200
+Message-Id: <20221023091247.70586-5-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221023091247.70586-1-linux@fw-web.de>
+References: <20221023091247.70586-1-linux@fw-web.de>
 MIME-Version: 1.0
-Message-ID: <trinity-ff9bb15b-b10c-46d6-8af2-09a03563c3c8-1666509999435@3c-app-gmx-bap20>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
- Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Aw: Re: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement
- mtk_pcs_ops
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 23 Oct 2022 09:26:39 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
-References: <Y1JhEWU5Ac6kd2ne@shell.armlinux.org.uk>
- <trinity-e60759de-3f0f-4b1e-bc0f-b33c4f8ac201-1666374467573@3c-app-gmx-bap55>
- <Y1LlnMdm8pGVXC6d@shell.armlinux.org.uk>
- <trinity-b567c57e-b87f-4fe8-acf7-5c9020f85aed-1666381956560@3c-app-gmx-bap55>
- <Y1MO6cyuVtFxTGuP@shell.armlinux.org.uk>
- <9BC397B2-3E0B-4687-99E5-B15472A1762B@fw-web.de>
- <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
- <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
- <Y1Qi55IwJZulL1X/@shell.armlinux.org.uk>
- <trinity-164dc5a6-98ce-464c-a43d-b00b91ca69e5-1666461195968@3c-app-gmx-bs49>
- <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:fFpMM08aDl7L3vJnHWI9VzJxzjSaqFYWnegZeGXcufbN2HSYZTKGL29DMoGoorA2ESYtf
- 3ig4K3+MW+7vFLe4lJiGBlZX1TvVACfYMzSs65M09dU5NrSK+qvKX43ydGTi8aHMdvJNwXFytE9B
- Hxdxcy7s7UvDLUy2gUI9d205cs/rBHT2A810JkA9U5OHNgozV1Ge5t53b/Js8RVb8xjPUlKRFlOM
- dAdgDO14Lylc157PdNIPBl7ti5X9NvgBp8H7mHq0pKrA15yNqenwg54PWxheraeaCA6B/azGR6ir
- lI=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+D3LZqzXfm0=:DTybMHmw8WUh42tKrj2BCc
- XSvY72QQo5BivLO3AR+F3KVvkeQbJaGJTEmslVVChr4n0Jz2ubOboOo23LfWHKlD+mXKHXr+N
- CklAroo7LZDbRwkDnqApFIKFicAfrEr9bNTRPVoErklKnqgAjyYJ0kA6X8eLLI5GPj/4AopwV
- cxyL6Vx0UUa+wiLCZKJe5VC0uX8dRgoyUgb4bjXvwPwMXm3ppuKDF/PRThLLNdV+CKySc/sZy
- 8DQLdt3ZCcEYGDu9HmILORoKzE0s10txv/iWKOC2P1AMYufZw3ZK9e4aTA3q7v+rCP4p0cwEg
- wwAv8Jg4PLgK9f6rj6ncLEf2CszxQxJVf3/s5wkrECEMNRqWL9qnhq9YrSuQjtKORL0NEMlnM
- HNuYHpYFsJHcGu+4kj9Gs9I6beHMCXYmvxpTfRFkkLQ4H/A84CzBlo4iPaN+E+mFJHZHlPwte
- 1maIINWadY0xL6wfmmljUxEhIZRTd3luK1pNxBiWBgPN/zwxP+4OKZ7TVIpbsgnByWtcCvllS
- a8+JwhmVS+gWmzypZfmPSNX16wGpFbnyz6pvqkHamsg8kTQQs0h+S9JRMbLrkAtNS5xY0+dq9
- am2EWBV0AnYxnYV1wa4jUAq623mRSESZuJUdTXQNRtN26hOKrKGmgocBdP8WwmkRwFLwKMnSD
- qKbU2PWVnsjBaKmklfHF2EE3iEOKv5LXKiid1U6P3+1xN8JHD2Pgcs1iE2WsqEKaHl7I6eaYX
- en8X1mJHFo1p/IOI3jBojJd4j0HNp8AdUee6itvs1G+eW+CD0OXZXKboMf5X1belk/SGbIddu
- eNasLJMD1KE+59uVwhFMCpF4XWnGKcWSvL59P5sPTDIev34XJzWmm75BW8SO2UtBSdNY3K2ZY
- GSaXiHZXdULx/dF7J8yqdJh7EJOjNiQxOYMuyk24oKqgUPvvrj7oXZ3JKc3qkxQkzlcPTw9XP
- LahaGh6kVS81dUlbl9PVb2/d/s8QP9gMuiQQlrR9PYHCAtdA69nkmvfBrXN+VseIVzYDQBSVC
- gEJVvenhGH4lJ+1uOQDdzE4RzD8i6tIWmeyqorMc/kU4+7VfQB40NKtTsR/L02jwFYXFjAuW1
- bz0jhIUjGlvEWqBfv2whxmoTpZ7XU+xUpg+bUd7F8e4zwFG9N0pdpNE9madBPONKGPhehc1Cr
- /cplgytuO4u5bZ4QNgFm/ghVYsuLsl5b+fLsiGKE5hkGn6IAFaX3yYjfo9nmGkmn8xyp9N2LE
- 1Ss/CTg/4krH2edo3Vur5rviAgcOPCkXQuPCWnW5R32h7F/0eoVprk1VMZIueDWRbYbaIKpDf
- DYR//5eV
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: bcc1623a-d02d-4a77-a063-81744d9b744b
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_082714_440093_61A3AD98 
-X-CRM114-Status: GOOD (  47.02  )
+X-CRM114-CacheID: sfid-20221023_021316_845715_AB519D29 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,162 +65,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Samstag, 22. Oktober 2022 um 21:18 Uhr
-> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> An: "Frank Wunderlich" <frank-w@public-files.de>
-> Cc: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
-.org, "Alexander Couzens" <lynxis@fe80.eu>, "Felix Fietkau" <nbd@nbd.name>=
-, "John Crispin" <john@phrozen.org>, "Sean Wang" <sean.wang@mediatek.com>,=
- "Mark Lee" <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft=
-.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel=
-.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg=
-@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,=
- linux-kernel@vger.kernel.org
-> Betreff: Re: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pc=
-s_ops
->
-> Hi,
->
-> On Sat, Oct 22, 2022 at 07:53:16PM +0200, Frank Wunderlich wrote:
-> > > Gesendet: Samstag, 22. Oktober 2022 um 19:05 Uhr
-> > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > On Sat, Oct 22, 2022 at 12:52:00PM +0200, Frank Wunderlich wrote:
-> > > > > Gesendet: Samstag, 22. Oktober 2022 um 11:11 Uhr
-> > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> >
-> > > > this patch breaks connectivity at least on the sfp-port (eth1).
-> >
-> > > > pcs_get_state
-> > > > [   65.522936] offset:0 0x2c1140
-> > > > [   65.522950] offset:4 0x4d544950
-> > > > [   65.525914] offset:8 0x40e041a0
-> > > > [  177.346183] offset:0 0x2c1140
-> > > > [  177.346202] offset:4 0x4d544950
-> > > > [  177.349168] offset:8 0x40e041a0
-> > > > [  177.352477] offset:0 0x2c1140
-> > > > [  177.356952] offset:4 0x4d544950
-> > >
-> > > Hi,
-> > >
-> > > Thanks. Well, the results suggest that the register at offset 8 is
-> > > indeed the advertisement and link-partner advertisement register. So
-> > > we have a bit of progress and a little more understanding of this
-> > > hardware.
-> > >
-> > > Do you know if your link partner also thinks the link is up?
-> >
-> > yes link is up on my switch, cannot enable autoneg for fibre-port, so =
-port is fixed to 1000M/full flowcontrol enabled.
-> >
-> > > What I notice is:
-> > >
-> > > mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Unknown - flo=
-w control off
-> > >
-> > > The duplex is "unknown" which means you're not filling in the
-> > > state->duplex field in your pcs_get_state() function. Given the
-> > > link parter adverisement is 0x00e0, this means the link partner
-> > > supports PAUSE, 1000base-X/Half and 1000base-X/Full. The resolution
-> > > is therefore full duplex, so can we hack that in to your
-> > > pcs_get_state() so we're getting that right for this testing please?
-> >
-> > 0xe0 is bits 5-7 are set (in lower byte from upper word)..which one is=
- for duplex?
-> >
-> > so i should set state->duplex/pause based on this value (maybe compare=
- with own caps)?
-> >
-> > found a documentation where 5=3Dfull,6=3Dhalf, and bits 7+8 are for pa=
-use (symetric/asymetric)
-> >
-> > regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1+8, &val);
-> > partner_advertising =3D (val & 0x00ff0000) >> 16;
->
-> Not quite :) When we have the link partner's advertisement and the BMSR,
-> we have a helper function in phylink to do all the gritty work:
->
-> 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
-> 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1 + 8, &adv);
->
-> 	phylink_mii_c22_pcs_decode_state(state, bm >> 16, adv >> 16);
->
-> will do all the work for you without having to care about whether
-> you're operating at 2500base-X, 1000base-X or SGMII mode.
->
-> > > Now, I'm wondering what SGMII_IF_MODE_BIT0 and SGMII_IF_MODE_BIT5 do
-> > > in the SGMSYS_SGMII_MODE register. Does one of these bits set the
-> > > format for the 16-bit control word that's used to convey the
-> > > advertisements. I think the next step would be to play around with
-> > > these and see what effect setting or clearing these bits has -
-> > > please can you give that a go?
-> >
-> > these is not clear to me...should i blindly set these and how to
-> > verify what they do?
->
-> Yes please - I don't think anyone knows what they do.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-i guess BIT0 is the SGMII_EN flag like in other sgmii implementations.
-Bit5 is "reserved" in all docs i've found....maybe it is related to HSGMII
-or for 1G vs. 2G5.
+First 3 clocks for mt2712 need to be "source", "hclk", "source_cg"
+so swap last 2 of mmc0 to match the binding.
 
-but how to check what has changed...i guess only the register itself chang=
-ed
-and i have to readout another to check whats changed.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-do we really need these 2 bits? reading/setting duplex/pause from/to the r=
-egister
-makes sense, but digging into undocumented bits is much work and we still =
-only guess.
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index e6d7453e56e0..9dc0794fcd2e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -766,9 +766,9 @@ mmc0: mmc@11230000 {
+ 		interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&pericfg CLK_PERI_MSDC30_0>,
+ 			 <&pericfg CLK_PERI_MSDC50_0_HCLK_EN>,
+-			 <&pericfg CLK_PERI_MSDC30_0_QTR_EN>,
+-			 <&pericfg CLK_PERI_MSDC50_0_EN>;
+-		clock-names = "source", "hclk", "bus_clk", "source_cg";
++			 <&pericfg CLK_PERI_MSDC50_0_EN>,
++			 <&pericfg CLK_PERI_MSDC30_0_QTR_EN>;
++		clock-names = "source", "hclk", "source_cg", "bus_clk";
+ 		status = "disabled";
+ 	};
+ 
+-- 
+2.34.1
 
-so i would first want to get sgmii working again and then strip the pause/=
-duplex from it.
-
-> > is network broken because of wrong duplex/pause setting? do not
-> > fully understand your Patch.
->
-> I suspect not having the duplex correct _could_ break stuff, but I
-> also wonder whether the PCS is trying to decode the advertisements
-> itself and coming out with the wrong settings.
->
-> If it's interpreting a link partner advertisement of 0x00e0 using
-> SGMII rules, then it will be looking at bits 11 and 10 for the
-> speed, both of which are zero, which means 10Mbps - and 1000base-X
-> doesn't operate at 10Mbps!
-
-so maybe this breaks sgmii? have you changed this behaviour with your Patc=
-h?
-
-> So my hunch is that one of those two IF_MODE_BIT{0,5} _might_ change
-> the way the PCS interprets the control word, but as we don't have
-> any documentation to go on, only experimentation will answer this
-> question.
->
-> If these registers are MMIO, you could ensure that you have /dev/mem
-> access enabled, and use devmem2 to poke at this register which would
-> probably be quicker than doing a build-boot-test cycle with the
-> kernel - this is how I do a lot of this kind of discovery when
-> documentation is lacking.
->
-> > But the timer-change can also break sgmii...
->
-> SGMII mode should be writing the same value to the link timer, but
-> looking at it now, I see I ended up with one too many zeros on the
-> 16000000! It should be 1.6ms in nanoseconds, so 1600000. Please
-> correct for future testing.
-
-tried removing 1  zero from the 16000000, but same result.
-tried also setting duplex with ethtool, but  after read it is still unknow=
-n.
-and i get no traffic working...i wonder because duplex was not set before =
-your
-patch too, but interface was working.
-
-> Many thanks for your patience.
-
-i do what i can, but i'm limited in time.
-
-Frank
 
