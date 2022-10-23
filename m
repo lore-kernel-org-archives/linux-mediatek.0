@@ -4,98 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B65ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 15:06:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217C6ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 15:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RJUYpKi4VOwNXGLLDyKlyBhnuuZuAdNB+ZBwSOioniM=; b=cdzSN+2Kp5HmfPQ6g0wqmy5Fkb
-	YQbgPr2B6rGKf2VgbkhlP1qQ8QQUycNQO12AFgPDMWoF7nr4ZH264YtYD71TAxtuskH9PgV88LjJv
-	N7SHEkEYCoHn7ybuVhCj73jhQjhiCLaajlTXX+i+uVKQgjXy0ogLV3LnkXSxdRya+XvkSELY1fynM
-	8w43gyBNmpNU0Yf+pdONu6cs10v36fvRs+S0Gdu8466ugWhOjC5V08s2szKKKKaocE+3A97yfEOrJ
-	fbWfLZQx/SbW8RullW/6JnkNvU3SLwb4y2krPZPzW9fGYjtym87c/MWLyj1ShkFbMwT+Ob4gj6cOb
-	QLqcVvdQ==;
+	bh=yVSP6kKHDAKLq9LSixfl+dhTMXefhH+oMJ46FKW4FMI=; b=v4uF6H+6IeLFq/A8kX9BCBs3h5
+	JM8usSmegneNBJQtxt5wnsZHMkjv+eZHooIc/t6W2K+uTEzYohWgmy8jRtb+eUOOR8VZ5qKeQvn0N
+	vQ3buovSO06rs+E1mIroPYsGY06L0eflDR34zkYVaKYUx7u9Yf1N9JaWnsrBqvD8wmmiSL9OBvEhN
+	H3t/jEuz/V17uLbls0V8m8a/YmLeCP6A9iITU/xwqmjBlZwA8q9kMDtgzBMqmo2OwgHhg2qo9CZO8
+	XiSdyDvXMvBoTzlbMvt9Qlffpf7K5mxuil/8MSoaKpcinNICwteU5+CIwvLFhqXRLSRiviUjke5YF
+	LJPsz4Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omcYd-00FWVh-9R; Sun, 23 Oct 2022 15:06:35 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1omcvP-00FaRm-Sq; Sun, 23 Oct 2022 15:30:07 +0000
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omcYM-00FWM2-Qw; Sun, 23 Oct 2022 15:06:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666537530;
-	bh=Vaxb3gohNn5gDFD7Xa8aS1zNUOdlCxRydbcxadSnrOg=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=lMWN0J//VOs5rgDlIMb44upiGOdVV8SzWEfU7f4l8nQnGnRvomIdff0u1y7a/peFJ
-	 LOPXXwLLOrx362mpFL+krND/6QJn72whSez0Y59hApHeDCoSoEkh8pF1M8qgw6O9c/
-	 Zd1egFS33yJ5WA6Dbb6/Z5mZjHFqTZENYeZwf+lg=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.79.234] ([80.245.79.234]) by web-mail.gmx.net
- (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Sun, 23 Oct 2022
- 17:05:30 +0200
+	id 1omcv9-00FaMF-EI
+	for linux-mediatek@lists.infradead.org; Sun, 23 Oct 2022 15:29:53 +0000
+Received: by mail-qt1-x834.google.com with SMTP id g11so4477104qts.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 23 Oct 2022 08:29:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yVSP6kKHDAKLq9LSixfl+dhTMXefhH+oMJ46FKW4FMI=;
+        b=SjKJSoHwqhV7MAnSKwEb3d7EOsu8jKc5Z2iUV1kmo5pAEdxV4//ChdnYRNhLO6aShP
+         aENkC9oqyL7YftnBq2OLCv85f/gHm06tfFjbE5Yzp1qC1/DDLQfiMzdVpfWkEnjR/KR/
+         N/M15xIM4/amfbSRnroGuHOVtiL0Q0sKwuSnP0b3ql6X/EsaqkSu8LSgcWPI98Uco+FB
+         U01R5AdO7c2x4z0vwPSfHY3uKn3n650Im/NSurIcjjae9b+f694AVrP1wN4jXFzDXwFp
+         biqdBjUlEVcedhNsJQiPIsJZJ0mh0Dw5WDvk4lEvP9ZY51g6o+WxSIIbBqW3ItRRyDq+
+         /KNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yVSP6kKHDAKLq9LSixfl+dhTMXefhH+oMJ46FKW4FMI=;
+        b=jBCq37pJnFsuDt4LAvr6pq9xOt5N3XHYicN1OqrYRFjeEN7OLq8suGMmDPIg7NHHdI
+         Vl9+1AJCbLGQOx1C0EzEed63ZMofG7tF4KkG57095qyiAry6/8vUqwvJOLpVQQG1KZJk
+         5toSBU5CioXcPdKawIM1BX0Cr4D5FDj9tnzliQcWequ6fiJGe06EeN72fUAFMKxpYTRR
+         F/01b9w/or2eSsNx4QjuFy6xlIJ5lZR1zZCQ7P4AqzZyZT43rfFJW0yU2U90P/jLy2AO
+         CdrHttSxsbPkSoKhyvGP1SlFBRsDkAr3O/TZYmkUvQG5rGG7DxUZ2Z4PHWdOPQAN/E9q
+         ILOg==
+X-Gm-Message-State: ACrzQf2kihWLH0obD0MoSwfUVmUx3A010bRq86n4FyaTlCD0t3fH+/bI
+	+9/uO8XFa37+cXMwxUz7U9I8ow==
+X-Google-Smtp-Source: AMsMyM64TApOWpxw428QRVSCNRXKtG8fHkANR4PG0rwjoOBHXW7sy3qOh854tIP4bIfvL5fuRer27Q==
+X-Received: by 2002:a05:622a:1983:b0:39c:d680:8197 with SMTP id u3-20020a05622a198300b0039cd6808197mr24412010qtc.7.1666538988296;
+        Sun, 23 Oct 2022 08:29:48 -0700 (PDT)
+Received: from [192.168.1.8] ([64.57.193.93])
+        by smtp.gmail.com with ESMTPSA id q1-20020a05620a0d8100b006ec62032d3dsm13366966qkl.30.2022.10.23.08.29.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 23 Oct 2022 08:29:47 -0700 (PDT)
+Message-ID: <261cd2fb-05dc-3772-dcc7-3ab1f3c0222c@linaro.org>
+Date: Sun, 23 Oct 2022 11:29:45 -0400
 MIME-Version: 1.0
-Message-ID: <trinity-5350c2bc-473d-408f-a25a-16b34bbfcba7-1666537529990@3c-app-gmx-bs01>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
- Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Aw: Re: Re: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement
- mtk_pcs_ops
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH 2/2] dt-bindings: pwm: mediatek: Add compatible string for
+ MT7986
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Rob Herring <robh@kernel.org>, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <Y1K53n7LnjoMoIfj@makrotopia.org>
+ <20221021222338.GA565200-robh@kernel.org> <Y1MkIdFXrBrrv958@makrotopia.org>
+ <5182e3c4-9e5e-2c36-408b-9029c65c8803@linaro.org>
+ <Y1UycU0JvwyAv0x2@makrotopia.org>
+ <eab019f7-f801-848e-80a3-5bb526d95d53@linaro.org>
+ <Y1VXTlQ1dCSoE8N2@makrotopia.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <Y1VXTlQ1dCSoE8N2@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
-Date: Sun, 23 Oct 2022 17:05:30 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <Y1UMrvk2A9aAcjo5@shell.armlinux.org.uk>
-References: <Y1LlnMdm8pGVXC6d@shell.armlinux.org.uk>
- <trinity-b567c57e-b87f-4fe8-acf7-5c9020f85aed-1666381956560@3c-app-gmx-bap55>
- <Y1MO6cyuVtFxTGuP@shell.armlinux.org.uk>
- <9BC397B2-3E0B-4687-99E5-B15472A1762B@fw-web.de>
- <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
- <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
- <Y1Qi55IwJZulL1X/@shell.armlinux.org.uk>
- <trinity-164dc5a6-98ce-464c-a43d-b00b91ca69e5-1666461195968@3c-app-gmx-bs49>
- <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
- <trinity-ff9bb15b-b10c-46d6-8af2-09a03563c3c8-1666509999435@3c-app-gmx-bap20>
- <Y1UMrvk2A9aAcjo5@shell.armlinux.org.uk>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:W9L0cP3rHccayNt+1kw2ehLieZ8Cw98286GcvK22Jx9cILS29Ohkx/9sSHK5ErWnjzYVB
- 7LLmKi0ZYlAfeM8Nkzai04b8jLWWBrDOzM2jH2eaRUOnT8tOKRiXs8T/Wna8yaiOJPpT+Sa4ec4K
- 0VUozsdfPsWpm+wArdQEIRHtq4a7ctwgB1J3MtDArNQurKf+oO+TR/hubPljoYPkrHGvTxM0q4Oq
- 3hFF3xxLqQ0TtM+yroG8Dr9H698OAnhK4ueEDK+XHMGwzUgzzbALogweDJBJKCwWdOsn8YGpVAAR
- Xc=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:KeC5iPK2xYI=:tXhxX+ZlbmeVFcXGeouNEy
- 5c7HdYyqicJzqNBZYO7mejZ85HZ+YDPZU3BWVAYA8nEsGRMmCe/g5336axwJmIoGa4cKdfSSF
- DdG6bldHAYRjz/XnRWmhj6b7QSlFdDxwORoWudMyG7+cYzw65W9fxW6PlHVZHCKz2+zr72Rcs
- PuLLUKSESm42PgPZlM9Edv1Y5BkMzmed6fqXm/51+Q+PYWO3oN+EVF5mlic0AZd1LpAaywFy/
- yQgcrmUv0kB6PpZJlv7mWK3RVlSXH9f2g6g8yiWuwV1GgSGpBsSbvRDQMRA6ydBRoCU5gm4Fi
- 9A28G6vukkvkm1nxwJTX5hkkVrLBUera7td5V07838+7mb1Ja+UpGPinqk1vrrSVWe5BJ/bhf
- qPM9icY9TrhA+lxB2jdDikZAoBcw4ApAup7Vx4Yy0xeSms3H1i87SRAJ3fmBGHRZxd287DKBy
- KSzEaH9pAKDz0pLZJPNfVRxrEMvH3HB1k9QifB8wFP+NASFD/b93Zef1dMYGaaF6e/1vlp0IG
- rCI58LWPKAvO+qm9n+M7ImyDwk8wdgEd3oJsi/othkAZyv7qchW+M/mGizOnUhjajHAwlezOQ
- gIx0a+UpKnZSdZmyhqbGZ8vqlSQO6y1f4etuptMcnDXGP+VV0Z6vjbM3fyTAdD++vM88UZjrj
- 074perP4DddVKCmqrn1JnsP4VUlKDYhDMBJF1r/EbZ7+Xt8iYoQ/6tKNODrGjsc9MKlfH1izq
- 5yqty0RPlK7gQsyv7X+lovOVo5SZRcdJ63ohNGMkdmSEvwkR7YN4NeTK/KYYZ5lqGREWEFKL0
- GZGbhzFkbcLnDEpaJAi1ltsjHBxjjWHrsTjFlcTdKzmoXjVyvakSxMz5Jl8oSaz1eceJMnX5K
- wuH6OEEHx/H3K0yLT7n2jJZ4Zzh0wD4Nu/c0oIIjCxMl2hKrO3lsK7xIxuq5ij0l0X9LCzbQv
- vYAWYXWpY7PgyWs943NJYWXc+JGcStqNpOtnwy041XAQiUmBY7fs1+BDI5zsObIW4q9OarlTa
- cvuuU+pNI7oTuvOOFc/Zdw87RRO60fPyiqqnA8a7zMEFp2byFRaFi5q+p8L3445OL718JDpcE
- 2NvwkaxcELbJsFKE3YDRi05b5tNvH0UBB3u59GXkRvVfEX2+6tH7w/glsp/BQm/C/UkOxb16E
- B+wa/LTWGYjTZaABE8EhKuE6xAtFU6wtuZeaZgMHXQR4jUvLX/Qd7sSeefutf0PAsRPKOmu3b
- W2SWiLoZXbbCE7Ab8USZ7Zc/sBTuJx1th/5X9hNusn/IDQ+XExqyEqgl1F0P+Wj7LSt0UODTp
- wFhApYwQlmGCcxxqPQ29ShCjFINOvA==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_080619_648297_4BD30590 
-X-CRM114-Status: GOOD (  71.74  )
+X-CRM114-CacheID: sfid-20221023_082951_498802_6179EAF0 
+X-CRM114-Status: GOOD (  36.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,283 +104,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Sonntag, 23. Oktober 2022 um 11:43 Uhr
-> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
+On 23/10/2022 11:01, Daniel Golle wrote:
+> On Sun, Oct 23, 2022 at 08:39:34AM -0400, Krzysztof Kozlowski wrote:
+>> On 23/10/2022 08:24, Daniel Golle wrote:
+>>> Hi Krzysztof,
+>>>
+>>> On Sat, Oct 22, 2022 at 12:35:25PM -0400, Krzysztof Kozlowski wrote:
+>>>> On 21/10/2022 18:58, Daniel Golle wrote:
+>>>>> On Fri, Oct 21, 2022 at 05:23:38PM -0500, Rob Herring wrote:
+>>>>>> On Fri, Oct 21, 2022 at 04:25:18PM +0100, Daniel Golle wrote:
+>>>>>>> Add new compatible string for MT7986 PWM.
+>>>>>>>
+>>>>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+>>>>>>> ---
+>>>>>>>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>>>>>>>  1 file changed, 1 insertion(+)
+>>>>>>>
+>>>>>>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>>>>>> index 554c96b6d0c3e0..6f4e60c9e18b81 100644
+>>>>>>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>>>>>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+>>>>>>> @@ -8,6 +8,7 @@ Required properties:
+>>>>>>>     - "mediatek,mt7623-pwm": found on mt7623 SoC.
+>>>>>>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
+>>>>>>>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
+>>>>>>> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
+>>>>>>
+>>>>>> This version of the PWM h/w is not compatible with any of the existing 
+>>>>>> chips? If it is, it should have a fallback compatible.
+>>>>>
+>>>>> No, it is unique because it comes with just 2 PWM channels.
+>>>>> Otherwise the driver behaves just like for MT8183 (4 channels) or
+>>>>> MT8365 (3 channels) which also got distinct compatible strings.
+>>>>
+>>>> Then something would be here compatible. E.g. If you bound MT8183 with
+>>>> mt7986-pwm compatible, would you get working device with two channels?
+>>>
+>>> Yes, but I'd see another 2 channels which do not work, accessing them
+>>> may even cause problems (I haven't tried that) as it means accessing
+>>> an undocumented memory range of the SoC which we in general we
+>>> shouldn't be messing around with.
+>>
+>> Why on MT8183 there would be undocumented memory? Where is undocumented
+>> memory?
+> 
+> So we were talking about using the MT8183 compatible for MT7986 SoC, as
+> the PWM units are identical apart from the number of channels they
+> offer:
 
-> On Sun, Oct 23, 2022 at 09:26:39AM +0200, Frank Wunderlich wrote:
-> > > Gesendet: Samstag, 22. Oktober 2022 um 21:18 Uhr
-> > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > Hi,
-> > >
-> > > On Sat, Oct 22, 2022 at 07:53:16PM +0200, Frank Wunderlich wrote:
-> > > > > Gesendet: Samstag, 22. Oktober 2022 um 19:05 Uhr
-> > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > > > On Sat, Oct 22, 2022 at 12:52:00PM +0200, Frank Wunderlich wrote=
-:
-> > > > > > > Gesendet: Samstag, 22. Oktober 2022 um 11:11 Uhr
-> > > > > > > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> > > >
-> > > > > > this patch breaks connectivity at least on the sfp-port (eth1)=
-.
-> > > >
-> > > > > > pcs_get_state
-> > > > > > [   65.522936] offset:0 0x2c1140
-> > > > > > [   65.522950] offset:4 0x4d544950
-> > > > > > [   65.525914] offset:8 0x40e041a0
-> > > > > > [  177.346183] offset:0 0x2c1140
-> > > > > > [  177.346202] offset:4 0x4d544950
-> > > > > > [  177.349168] offset:8 0x40e041a0
-> > > > > > [  177.352477] offset:0 0x2c1140
-> > > > > > [  177.356952] offset:4 0x4d544950
-> > > > >
-> > > > > Hi,
-> > > > >
-> > > > > Thanks. Well, the results suggest that the register at offset 8 =
-is
-> > > > > indeed the advertisement and link-partner advertisement register=
-. So
-> > > > > we have a bit of progress and a little more understanding of thi=
-s
-> > > > > hardware.
-> > > > >
-> > > > > Do you know if your link partner also thinks the link is up?
-> > > >
-> > > > yes link is up on my switch, cannot enable autoneg for fibre-port,=
- so port is fixed to 1000M/full flowcontrol enabled.
-> > > >
-> > > > > What I notice is:
-> > > > >
-> > > > > mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Unknown -=
- flow control off
-> > > > >
-> > > > > The duplex is "unknown" which means you're not filling in the
-> > > > > state->duplex field in your pcs_get_state() function. Given the
-> > > > > link parter adverisement is 0x00e0, this means the link partner
-> > > > > supports PAUSE, 1000base-X/Half and 1000base-X/Full. The resolut=
-ion
-> > > > > is therefore full duplex, so can we hack that in to your
-> > > > > pcs_get_state() so we're getting that right for this testing ple=
-ase?
-> > > >
-> > > > 0xe0 is bits 5-7 are set (in lower byte from upper word)..which on=
-e is for duplex?
-> > > >
-> > > > so i should set state->duplex/pause based on this value (maybe com=
-pare with own caps)?
-> > > >
-> > > > found a documentation where 5=3Dfull,6=3Dhalf, and bits 7+8 are fo=
-r pause (symetric/asymetric)
-> > > >
-> > > > regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1+8, &val);
-> > > > partner_advertising =3D (val & 0x00ff0000) >> 16;
-> > >
-> > > Not quite :) When we have the link partner's advertisement and the B=
-MSR,
-> > > we have a helper function in phylink to do all the gritty work:
-> > >
-> > > 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
-> > > 	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1 + 8, &adv);
-> > >
-> > > 	phylink_mii_c22_pcs_decode_state(state, bm >> 16, adv >> 16);
-> > >
-> > > will do all the work for you without having to care about whether
-> > > you're operating at 2500base-X, 1000base-X or SGMII mode.
-> > >
-> > > > > Now, I'm wondering what SGMII_IF_MODE_BIT0 and SGMII_IF_MODE_BIT=
-5 do
-> > > > > in the SGMSYS_SGMII_MODE register. Does one of these bits set th=
-e
-> > > > > format for the 16-bit control word that's used to convey the
-> > > > > advertisements. I think the next step would be to play around wi=
-th
-> > > > > these and see what effect setting or clearing these bits has -
-> > > > > please can you give that a go?
-> > > >
-> > > > these is not clear to me...should i blindly set these and how to
-> > > > verify what they do?
-> > >
-> > > Yes please - I don't think anyone knows what they do.
-> >
-> > i guess BIT0 is the SGMII_EN flag like in other sgmii implementations.
-> > Bit5 is "reserved" in all docs i've found....maybe it is related to HS=
-GMII
-> > or for 1G vs. 2G5.
->
-> "other sgmii implementations" ?
+No, we talk about MT8183 with mt7986-pwm compatible. Read again my message.
 
-yes i googled for sgmii and found register definition for different vendor=
-...
-i don't know if sgmii is a standard for each vendor, afair trgmii was not.
+> 
+> MT7986 got 2 PWM channels. The MMIO registers used for those two
+> channels start at offsets 0x10 (pwm0) and 0x50 (pwm1)
+> 
+> MT8183 got 4 PWM channels. The MMIO registers used for those four
+> channels start of offsets 0x10 (pwm0), 0x50 (pwm1), 0x90 (pwm2) and
+> 0xd0 (pwm3).
+> 
+> Hence, when using the MT8183 compatible with MT7986, the driver will
+> access offsets 0x90 and 0xd0 in case the users enables the (bogus)
+> outputs pwm2 and pwm3. These offsets, however, are not mentioned in the
+> datasheet, so it has to be considered that writing things to these
+> undocumented offsets could cause unknown behavior.
+> 
+> I hope it's more clear now what I mean.
 
-> If this is the SGMII_EN flag, maybe SGMII_IF_MODE_BIT0 should be
-> renamed to SGMII_IF_SGMII_EN ? Maybe it needs to be set for SGMII
-> and clear for base-X ?
->
-> > but how to check what has changed...i guess only the register itself c=
-hanged
-> > and i have to readout another to check whats changed.
-> >
-> > do we really need these 2 bits? reading/setting duplex/pause from/to t=
-he register
-> > makes sense, but digging into undocumented bits is much work and we st=
-ill only guess.
->
-> I don't know - I've no idea about this hardware, or what the PCS is,
-> and other people over the years I've talked to have said "we're not
-> using it, we can't help". The mediatek driver has been somewhat of a
-> pain for phylink as a result.
->
-> > so i would first want to get sgmii working again and then strip the pa=
-use/duplex from it.
->
-> I think I'd need more information on your setup - is this dev 0? Are
-> you using in-band mode or fixed-link mode?
+But even your case is not correct. On MT7986 the device would still have
+2 channels, how the heck he would get 4? Driver binds to ,t7986-pwm
+compatible, which defines 2 channels.
 
-i only test with dev1 which is the sfp-port/eth1/gmac1...dev0 is the fixed=
--link to switch-chip.
+> 
+>>
+>>>
+>>> Also note that this case is the same as MT8183 vs. MT8365, they got
+>>> distinct compatible strings and also for those two the only difference
+>>> is the number of channels.
+>>
+>> So why they are not made compatible?
+> 
+> My guess is that it's for this very reason:
+> To correctly communicate the capabilities (in this case: number of
+> channels) to the driver and not have bogus pwmX show up in the OS
+> which then causes undocumented MMIO register access in case anyone
+> tries to actually use them.
 
-> I don't think you've updated me with register values for this since
-> the patch. With the link timer adjusted back to 1.6ms, that should
-> result in it working again, but if not, I think there's some
-> possibilities.
+No, that's not correct reason. There would be no wrong MMIO access and
+capabilities would be still correctly communicated.
 
-sorry for that, have debugged timing and it was wrong because if-condition=
- had not included 1000baseX and 2500baseX. only sgmii
+> 
+>>
+>>>
+>>>>
+>>>> If so, they are compatible.
+>>>
+>>> By that definition you should remove the additional compatible for
+>>> MT8365 or rather, it should have been rejected for the same argument.
+>>>
+>>> I'm talking about
+>>> commit fe00faee8060402a3d85aed95775e16838a6dad2
+>>> commit 394b517585da9fbb2eea2f2103ff47d37321e976
+>>
+>> This is a pattern spreading in several Mediatek bindings and we already
+>> commented on new patches. I don't know why people working on Mediatek do
+>> not mark pieces compatible.
+> 
+> Others will have to answer that for you.
+> 
+> To me this looks a bit like a structural shortcoming of the PWM controller
+> bindings: if there was a way to tell the driver "hey, this is like MT8183,
+> but it got only two channels" that would solve it nicely.
+> This could either be done using child-nodes for each PWM channel or by
+> simply adding a 'nr-pwms' property.
 
-> The addition of SGMII_AN_ENABLE for SGMSYS_PCS_CONTROL_1 could have
-> broken your setup if there is no actual in-band signalling, which
-> basically means that your firmware description is wrong - and you've
-> possibly been led astray by the poor driver implementation.
+No, it's rather someone did not think about Devicetree compatibles or
+did not care to design the Mediatek bindings and just copy-paste
+existing pattern...
 
-disabled it, but makes no change.
+Best regards,
+Krzysztof
 
-but i've noticed that timing is wrong
-
-old value: 0x186a0
-new value: 0x98968
-
-so it takes the 10000000 and not the 1600000. so it looks like interface-m=
-ode is not (yet) SGMII.
-
-debugged it and got 1000baseX (21),in dts i have
-phy-mode =3D "2500base-x";
-but SFP only supports 1G so mode 1000baseX is right
-
-set the old value with your calculation, but still not working, also with =
-disabled AN_ENABLE-flag ;(
-
-root@bpi-r3:~# ip link set eth1 up
-[   44.287442] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/=
-1000be
-[   44.295902] interface-mode 21 (sgmii:4)
-root@bpi-r3:~# [   44.295907] timer 0x186a0
-[   44.352872] offset:0 0x2c1140
-[   44.355507] offset:4 0x4d544950
-[   44.358462] offset:8 0x40e041a0
-[   44.361609] mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Full=
- - flf
-[   44.373042] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
-
-root@bpi-r3:~# ip a a 192.168.0.19/24 dev eth1
-root@bpi-r3:~# ping 192.168.0.10
-PING 192.168.0.10 (192.168.0.10) 56(84) bytes of data.
-^C
-
-> Can you confirm that the device on the other end for dev 0 does in
-> actual fact use in-band signalling please?
->
-> > > If it's interpreting a link partner advertisement of 0x00e0 using
-> > > SGMII rules, then it will be looking at bits 11 and 10 for the
-> > > speed, both of which are zero, which means 10Mbps - and 1000base-X
-> > > doesn't operate at 10Mbps!
-> >
-> > so maybe this breaks sgmii? have you changed this behaviour with your =
-Patch?
->
-> Nope, but not setting the duplex properly is yet another buggy and poor
-> quality of implementation that afficts this driver. I've said about
-> setting the duplex value when reviewing your patch to add .pcs_get_state
-> and I'm disappointed that you seemingly haven't yet corrected it in the
-> code you're testing despite those review comments.
-
-sorry, i thought we want to read out the values from registers to set it b=
-ased on them.
-
-currently i test only with the dev 1 (in-band-managed with 1GBit/s SFP)
-
-[    1.088310] dev: 0 offset:0 0x40140
-[    1.088331] dev: 0 offset:4 0x4d544950
-[    1.091827] dev: 0 offset:8 0x1
-[    1.095607] dev: 1 offset:0 0x81140
-[    1.098739] dev: 1 offset:4 0x4d544950
-[    1.102214] dev: 1 offset:8 0x1
-
-after bring device up (disabled AN and set duplex to full):
-
-[   34.615926] timer 0x98968
-[   34.672888] offset:0 0x2c1140
-[   34.675518] offset:4 0x4d544950
-[   34.678473] offset:8 0x40e041a0
-
-codebase:
-
-https://github.com/frank-w/BPI-R2-4.14/commits/6.1-r3-sgmii
-
-> If duplex remains as "unknown", then the MAC will be programmed to
-> operate in _half_ _duplex_ mode (read mtk_mac_link_up()) which is not
-> what you likely want. Many MACs don't support half duplex at 1G speed,
-> so it's likely that without setting state->duplex, the result is that
-> the MAC hardware is programmed incorrectly.
-
-wonder why it was working with only my patch which had duplex also not set=
-.
-
-> > > So my hunch is that one of those two IF_MODE_BIT{0,5} _might_ change
-> > > the way the PCS interprets the control word, but as we don't have
-> > > any documentation to go on, only experimentation will answer this
-> > > question.
-
-the bits were in offset 0/4/8? are they now different than before?
-if yes maybe these break it.
-
-as offset 4 is the phy-id and 8 is the advertisement from local and far
-interface i guesss IF_MODE_* is in offset 0.
-
-> > > If these registers are MMIO, you could ensure that you have /dev/mem
-> > > access enabled, and use devmem2 to poke at this register which would
-> > > probably be quicker than doing a build-boot-test cycle with the
-> > > kernel - this is how I do a lot of this kind of discovery when
-> > > documentation is lacking.
-> > >
-> > > > But the timer-change can also break sgmii...
-
-currently this is no more the case as i set the timer to old value
-so something else is breaking it.
-
-> > > SGMII mode should be writing the same value to the link timer, but
-> > > looking at it now, I see I ended up with one too many zeros on the
-> > > 16000000! It should be 1.6ms in nanoseconds, so 1600000. Please
-> > > correct for future testing.
-> >
-> > tried removing 1  zero from the 16000000, but same result.
-> > tried also setting duplex with ethtool, but  after read it is still un=
-known.
->
-> Honestly this doesn't surprise me given the poor state of the mtk_sgmii
-> code. There's lots that this implementation gets wrong, but I can't fix
-> it without either people willing to research and test stuff, or without
-> the actual hardware in front of me.
-
-i can test, but i do not fully understand the code nor have the exoerience
-to work with devmem2. have used it long time ago but with assistance to re=
-ad
-which register and with expected values.
-
-> This mtk_eth_soc driver has been a right pain for me ever since the
-> half-hearted switch-over to use phylink.
-
-i know it is huge as it covers many different SoC. but i'm not able to rew=
-rite it :p
-
-regards Frank
 
