@@ -4,75 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C186FA373E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 18:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23908ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 19:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jNhR7Q4atrnFwHvWAFzt9a4DOAJQ/Ns6eXFZUm9NkhI=; b=v55/1yEje3u7E5o8PcX2luFpQC
-	9poqTnqEyLXeyfzuy9QgP/eppY99Lipy0qnay8cHiYRKZamOw4xSx+h36HgnvzGknopAMnQHlrTR3
-	WpZo0vTeICxCKOp5vAtUGvgKqQ42OWgJjxkv9/l4b5D2s10NKk0rx8COQmIg+d4gqpUT/F6Nhs815
-	HTlhZwVDhESIX4iAl+8qGwpMnAE3kZO/HywnACC/2uH1FmbntJLgS+tp2ZVBDZhBkO0rTGc06Rumi
-	NfvDii9u7kIQ1BRYLDRNeniga3jStC8uuIX3sSf9yjeFJzOmwhzFT6HZm/0t8EDxS2l814VTQHJFv
-	xH8d94Dg==;
+	bh=rXpVC8Eq4vyF677XBHhX56YxxG0G8aUYohVqFa6lPdc=; b=qAr4VVbCrWnKu0gbjI2t0d/AHG
+	aK+rCYDjmhUzLZ8ZEdzSOGqBUv5WsP45OyadNFxYPaGgmjy/2KpP/11opUIjRxdqLcni4RVWh1RPa
+	LEOVegoZ4hQFaHBu/Yb2LSB7JCu3caiTWZCEiw84mfVqCsq3yrzehToEDFagSeU1/vpa3khBJezmj
+	sqCUotQwJ6fDlVMoZtq7KnV1aNAeHzwM/V5IMjLP0ZkB2951iQ2Ke2aJ53lcJg08suzcPjG3GV8yH
+	v4QbFjTUnW4TNT1muRwUDrn8T6ih5K6M/5qRlIXpO8Lv2E4ucjz1evblwcYhJYRxys+F9kN58q0xs
+	R+8umWFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omfiV-00FxWz-Gz; Sun, 23 Oct 2022 18:28:59 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1omgGq-00G3Hu-3D; Sun, 23 Oct 2022 19:04:28 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omfiJ-00FxPx-W0
-	for linux-mediatek@lists.infradead.org; Sun, 23 Oct 2022 18:28:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 97F15B80DAD;
-	Sun, 23 Oct 2022 18:28:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBAB5C433C1;
-	Sun, 23 Oct 2022 18:28:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666549725;
-	bh=qXT4GPzDeP9IpTekE6kjrT6VMQoqce0Ms6UpGOHy2nk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nRvj51M/OxQmVj0B89xeCv1ZlyFJ6ww2JE+ShGI4L80x7oCUimyz33P/NigCdyEOl
-	 Mx1qO0KSpWzLzoNVF5aPiKBJVvpnEHjaJjwY2AFRFwFap48xM0CrdONxTfHQjUKdGL
-	 arO7522VDJi57chlikXgMVEqihK81a1w5FIlkfFR3GQ13fS0if/gb/jJ3/0bjEDt+Z
-	 ms20B6i8cDu7s7vmcqzJNhoq0MsrRxjot0lqgOilgc3ZByQ3YW2MFM4hF+mRQ9SW1B
-	 pzIs/S51LYgWVJiERg3qMNQ68iCx1iTHBktg4Uv9M1f6c1ZYOmJeBogiB1GHtG+vG/
-	 KfKtaJV7vUOjA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com,
-	sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	daniel@makrotopia.org
-Subject: [PATCH v2 net-next 6/6] net: ethernet: mtk_wed: add rx mib counters
-Date: Sun, 23 Oct 2022 20:28:10 +0200
-Message-Id: <920207544cd3810db3e993742f4644c48c720050.1666549145.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <cover.1666549145.git.lorenzo@kernel.org>
-References: <cover.1666549145.git.lorenzo@kernel.org>
+	id 1omgGp-00G3HD-4o; Sun, 23 Oct 2022 19:04:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
+	In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=rXpVC8Eq4vyF677XBHhX56YxxG0G8aUYohVqFa6lPdc=; b=QUIuEQg2nfKp9Yb1bA9LlnMmuP
+	/ISxwe+GDQBWhcrf3IqOmisoH+9VYcKx8bk/c8A0I/PyO14cF3kri54vB1f5SBsJnqtupcqJ4hp+2
+	VF1boL9Ud+I3pddJ2FuWSLE6wUiC7hFziGZY+QOdHdx6gUH877DpT0zGVtRLvUbS0kBHmRL+uVfjD
+	94RQ82XvtnROYgGsWY7ve889Z8dg/g+Apf/Qe/fHmglg7QBWuZRTGlEKPpN2X+rdvEt/7xda6pBcy
+	+OZQu0AXFZlVR+wBdFMNTGeTHIAthsUsa/L5S2UIphfgvd8eccwHSjwvmDaj0bMiDaQl/JahvLea8
+	ppdkZn5Q==;
+Received: from mout.gmx.net ([212.227.15.18])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1omgGj-005s7w-F7; Sun, 23 Oct 2022 19:04:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1666551838;
+	bh=pbLEU+zXgC8zFwHz0H3Pt6/+hEGvSEnx/0ldbn4xpFI=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=l0RoOupi2ehu9SqaR4Dgn901it9JL5bc0ZWIXPfWS9E+EDvjPBVhXuezEbw38pPkg
+	 vYpz3krKp01VcLFhuVK2EJoMu7S4C/uTJTQsCCtYa50k17tXH7u2ICZ9C56VYrHm0D
+	 OODsOUHAdTaFyAK7mf6PlNMdjjKqulpAcZpCcbeA=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.79.234] ([80.245.79.234]) by web-mail.gmx.net
+ (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Sun, 23 Oct 2022
+ 21:03:58 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-ac9a840b-cb06-4710-827a-4c4423686074-1666551838763@3c-app-gmx-bs01>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>, John
+ Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Aw: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 23 Oct 2022 21:03:58 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <Y1V/asUompZKj0ct@shell.armlinux.org.uk>
+References: <Y1Ozp2ASm2Y+if3Q@shell.armlinux.org.uk>
+ <trinity-4470b00b-771b-466e-9f3a-a3df72758208-1666435920485@3c-app-gmx-bs49>
+ <Y1Qi55IwJZulL1X/@shell.armlinux.org.uk>
+ <trinity-164dc5a6-98ce-464c-a43d-b00b91ca69e5-1666461195968@3c-app-gmx-bs49>
+ <Y1RCA+l2OHkrFfhB@shell.armlinux.org.uk>
+ <trinity-ff9bb15b-b10c-46d6-8af2-09a03563c3c8-1666509999435@3c-app-gmx-bap20>
+ <Y1UMrvk2A9aAcjo5@shell.armlinux.org.uk>
+ <trinity-5350c2bc-473d-408f-a25a-16b34bbfcba7-1666537529990@3c-app-gmx-bs01>
+ <Y1Vh5U96W2u/GCnx@shell.armlinux.org.uk>
+ <trinity-1d4cc306-d1a4-4ccf-b853-d315553515ce-1666543305596@3c-app-gmx-bs01>
+ <Y1V/asUompZKj0ct@shell.armlinux.org.uk>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:RrvjJMnF0bQZ5soakBSlh0up+m7kvTe3/BLFL7d3x1UuF5rF05aEofpiinEMikzwPmVE6
+ zZuwfblYoukCw1lWFA4krdse90iMOjtnZEg22OIfJHZq/a+59DcxQnvZsfNkgmdIDyV3uV7o4Z9o
+ T7ugmrH6+tf0co22i7gjibRucqVD9MsiRI5WF8ZMR2BmQSj3A1w88boLhqN63KE94JSpDzVEywDp
+ iCY/Noy+mGKBG0d6mjrJjOwCZPsZXyJwp06XCE220Z768rpc0qH6k35QTrNhV270ZS2k3AJz2Lx8
+ 6g=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2yNzWUJnl14=:+CVqymrbpa+TnDmpg9GQ0t
+ jVWYFR+lRE7M2rU/Wb0EZ5s67nfTs/XtkWPU7VKzaiw2UeKaEoL5T+MHc7rDZ7Pr14YN8DOYn
+ AKjQzMiy3b3jfZbPHCAlgZZu9n3EEgBx/hXi1EGliKVgKr8k3aJsw+IfzKW50lk7R3dO33sIy
+ GtzaK9NUoJLJfE5MWc/GzMy+jICDd/swZhMVdQX8yJAIQQV5c24U3xIuSBBOlwu8PGvAP7vNc
+ /vUOKAW8nzrOrTUhZzwraZc7IkPc5mZwPiAFUASSSwT3uAhbZwgFEC63GRE1Yzo5DWcJtbAJj
+ yWocrvT5uxfqNQ0HIYp6sJUwzRny781KPW1CEszeqHws+YqAOKKLorNcFbLQdANffKKOSWCTM
+ SJL7eLql6eZw8d4WGNpbnu9SbTzVLX7iIo6a55FfbIiBR2tlboeZflWwAyhB9d/VwMIq8ILpF
+ KxEzR6KJGgDaeHrfMdhg3XfyKCihys1DWoa7Jiu0xwwtlhLdLzt3KoGdI4i8WCBHmJ8nW/J5b
+ rUZtyxV7BAK088e9PKKgFpnigAT8QhWN3Vyo2iqR87IyUOyLDE3k3/wglIuyCs8uD7dyOo2Wy
+ uMrW0wJEy77Cg7Oy7KZSJKmCAL+a5seVxIpNsLH5STgalYI4nhRh0WqXOdLQUflJjeNVbEoUT
+ 54qWd3Qf/eK1C+D1ug390Rt01QTDR9UAMASozRfJS+hUn3h1kXCS5gglIqRyG6NP0t7JKabOW
+ KilNNQ8iM4J2EvFstBvlK04NI2B2g3iPVTbbUzH3CCL/xhtrekJYtMXfRVwK54bdcPWK6eeeb
+ RlFWhAHRzBKtgrQeaiCehVbQwnGsH0dDyzaRRQ80lG2hIcBt/A8D9PmQSU7un1ZJjR48kcGCK
+ 3w9hd+9TjcXD8sdnlQq9h2XCc2+xRJJQY+bu4oR2OApK7zKwinZ1oj5X4eCL5THe53jz3lyIR
+ cpQZ4hsxmQDrI/xL5Kg4EVIg/ONaUeAWJkh7ApbRvSjP/M2/tfji2R1PZeB160ujYcxBfs8v4
+ AuaCx2JvD9JPqJv1PsuNtea1i+jdCILH6bDFeewKLyE+16QoGJNwp0UerzAcq/oyT5SPEE4PS
+ tPffbxfHH+p5CP+3Pi3eM/xyjg5V7lpAfdRIVWwP1n65i2KZX6Zb6nQhP6sewvXqqpDAitqeK
+ GAu3o+juFgRzpPi5VwTWl4m2/uHymHntNsvNekHLZ+P3d1HIOiNmEOXV7pL9llJNaiGm/3HhS
+ /wujAX6zaOgcLyEC0H3Cgrg1XyUKKlxgALVmB45Bm2j2YePkrC9pTn8t+iIc7ihyphNDhM14/
+ uTHB/O6FBcUC8ieNlFXAuCtne6IHxw==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_112848_368775_CC912813 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20221023_200422_390182_EBD962A8 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,155 +122,274 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce WED RX MIB counters support available on MT7986a SoC.
+> Gesendet: Sonntag, 23. Oktober 2022 um 19:52 Uhr
+> Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
 
-Tested-by: Daniel Golle <daniel@makrotopia.org>
-Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../net/ethernet/mediatek/mtk_wed_debugfs.c   | 87 +++++++++++++++++++
- 1 file changed, 87 insertions(+)
+> Hi Frank,
+>
+> Based on this, could you give the following patch a try - it replaces
+> my previous patch.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-index f420f187e837..56f663439721 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2021 Felix Fietkau <nbd@nbd.name> */
- 
- #include <linux/seq_file.h>
-+#include <linux/soc/mediatek/mtk_wed.h>
- #include "mtk_wed.h"
- #include "mtk_wed_regs.h"
- 
-@@ -18,6 +19,8 @@ enum {
- 	DUMP_TYPE_WDMA,
- 	DUMP_TYPE_WPDMA_TX,
- 	DUMP_TYPE_WPDMA_TXFREE,
-+	DUMP_TYPE_WPDMA_RX,
-+	DUMP_TYPE_WED_RRO,
- };
- 
- #define DUMP_STR(_str) { _str, 0, DUMP_TYPE_STRING }
-@@ -36,6 +39,9 @@ enum {
- 
- #define DUMP_WPDMA_TX_RING(_n) DUMP_RING("WPDMA_TX" #_n, 0, DUMP_TYPE_WPDMA_TX, _n)
- #define DUMP_WPDMA_TXFREE_RING DUMP_RING("WPDMA_RX1", 0, DUMP_TYPE_WPDMA_TXFREE)
-+#define DUMP_WPDMA_RX_RING(_n)	DUMP_RING("WPDMA_RX" #_n, 0, DUMP_TYPE_WPDMA_RX, _n)
-+#define DUMP_WED_RRO_RING(_base)DUMP_RING("WED_RRO_MIOD", MTK_##_base, DUMP_TYPE_WED_RRO)
-+#define DUMP_WED_RRO_FDBK(_base)DUMP_RING("WED_RRO_FDBK", MTK_##_base, DUMP_TYPE_WED_RRO)
- 
- static void
- print_reg_val(struct seq_file *s, const char *name, u32 val)
-@@ -57,6 +63,7 @@ dump_wed_regs(struct seq_file *s, struct mtk_wed_device *dev,
- 				   cur > regs ? "\n" : "",
- 				   cur->name);
- 			continue;
-+		case DUMP_TYPE_WED_RRO:
- 		case DUMP_TYPE_WED:
- 			val = wed_r32(dev, cur->offset);
- 			break;
-@@ -69,6 +76,9 @@ dump_wed_regs(struct seq_file *s, struct mtk_wed_device *dev,
- 		case DUMP_TYPE_WPDMA_TXFREE:
- 			val = wpdma_txfree_r32(dev, cur->offset);
- 			break;
-+		case DUMP_TYPE_WPDMA_RX:
-+			val = wpdma_rx_r32(dev, cur->base, cur->offset);
-+			break;
- 		}
- 		print_reg_val(s, cur->name, val);
- 	}
-@@ -132,6 +142,80 @@ wed_txinfo_show(struct seq_file *s, void *data)
- }
- DEFINE_SHOW_ATTRIBUTE(wed_txinfo);
- 
-+static int
-+wed_rxinfo_show(struct seq_file *s, void *data)
-+{
-+	static const struct reg_dump regs[] = {
-+		DUMP_STR("WPDMA RX"),
-+		DUMP_WPDMA_RX_RING(0),
-+		DUMP_WPDMA_RX_RING(1),
-+
-+		DUMP_STR("WPDMA RX"),
-+		DUMP_WED(WED_WPDMA_RX_D_MIB(0)),
-+		DUMP_WED_RING(WED_WPDMA_RING_RX_DATA(0)),
-+		DUMP_WED(WED_WPDMA_RX_D_PROCESSED_MIB(0)),
-+		DUMP_WED(WED_WPDMA_RX_D_MIB(1)),
-+		DUMP_WED_RING(WED_WPDMA_RING_RX_DATA(1)),
-+		DUMP_WED(WED_WPDMA_RX_D_PROCESSED_MIB(1)),
-+		DUMP_WED(WED_WPDMA_RX_D_COHERENT_MIB),
-+
-+		DUMP_STR("WED RX"),
-+		DUMP_WED_RING(WED_RING_RX_DATA(0)),
-+		DUMP_WED_RING(WED_RING_RX_DATA(1)),
-+
-+		DUMP_STR("WED RRO"),
-+		DUMP_WED_RRO_RING(WED_RROQM_MIOD_CTRL0),
-+		DUMP_WED(WED_RROQM_MID_MIB),
-+		DUMP_WED(WED_RROQM_MOD_MIB),
-+		DUMP_WED(WED_RROQM_MOD_COHERENT_MIB),
-+		DUMP_WED_RRO_FDBK(WED_RROQM_FDBK_CTRL0),
-+		DUMP_WED(WED_RROQM_FDBK_IND_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ENQ_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ANC_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ANC2H_MIB),
-+
-+		DUMP_STR("WED Route QM"),
-+		DUMP_WED(WED_RTQM_R2H_MIB(0)),
-+		DUMP_WED(WED_RTQM_R2Q_MIB(0)),
-+		DUMP_WED(WED_RTQM_Q2H_MIB(0)),
-+		DUMP_WED(WED_RTQM_R2H_MIB(1)),
-+		DUMP_WED(WED_RTQM_R2Q_MIB(1)),
-+		DUMP_WED(WED_RTQM_Q2H_MIB(1)),
-+		DUMP_WED(WED_RTQM_Q2N_MIB),
-+		DUMP_WED(WED_RTQM_Q2B_MIB),
-+		DUMP_WED(WED_RTQM_PFDBK_MIB),
-+
-+		DUMP_STR("WED WDMA TX"),
-+		DUMP_WED(WED_WDMA_TX_MIB),
-+		DUMP_WED_RING(WED_WDMA_RING_TX),
-+
-+		DUMP_STR("WDMA TX"),
-+		DUMP_WDMA(WDMA_GLO_CFG),
-+		DUMP_WDMA_RING(WDMA_RING_TX(0)),
-+		DUMP_WDMA_RING(WDMA_RING_TX(1)),
-+
-+		DUMP_STR("WED RX BM"),
-+		DUMP_WED(WED_RX_BM_BASE),
-+		DUMP_WED(WED_RX_BM_RX_DMAD),
-+		DUMP_WED(WED_RX_BM_PTR),
-+		DUMP_WED(WED_RX_BM_TKID_MIB),
-+		DUMP_WED(WED_RX_BM_BLEN),
-+		DUMP_WED(WED_RX_BM_STS),
-+		DUMP_WED(WED_RX_BM_INTF2),
-+		DUMP_WED(WED_RX_BM_INTF),
-+		DUMP_WED(WED_RX_BM_ERR_STS),
-+	};
-+	struct mtk_wed_hw *hw = s->private;
-+	struct mtk_wed_device *dev = hw->wed_dev;
-+
-+	if (!dev)
-+		return 0;
-+
-+	dump_wed_regs(s, dev, regs, ARRAY_SIZE(regs));
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(wed_rxinfo);
- 
- static int
- mtk_wed_reg_set(void *data, u64 val)
-@@ -175,4 +259,7 @@ void mtk_wed_hw_add_debugfs(struct mtk_wed_hw *hw)
- 	debugfs_create_u32("regidx", 0600, dir, &hw->debugfs_reg);
- 	debugfs_create_file_unsafe("regval", 0600, dir, hw, &fops_regval);
- 	debugfs_create_file_unsafe("txinfo", 0400, dir, hw, &wed_txinfo_fops);
-+	if (hw->version != 1)
-+		debugfs_create_file_unsafe("rxinfo", 0400, dir, hw,
-+					   &wed_rxinfo_fops);
- }
--- 
-2.37.3
+looks better now:
 
+root@bpi-r3:~# ip link set eth1 up
+[   59.437700] mtk_soc_eth 15100000.ethernet eth1: configuring for inband/=
+1000base-x link mode
+root@bpi-r3:~# [   59.446191] interface-mode: 21 advertise: 0x1a0 link tim=
+er:0x98968
+[   59.503145] offset:0 0x2c1140
+[   59.509329] offset:4 0x4d544950
+[   59.512284] offset:8 0x40e041a0
+[   59.515446] offset:32 0x3112011a
+[   59.518598] mtk_soc_eth 15100000.ethernet eth1: Link is Up - 1Gbps/Full=
+ - flow control off
+[   59.530096] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+
+root@bpi-r3:~# ip a a 192.168.0.19/24 dev eth1
+root@bpi-r3:~# ping 192.168.0.10
+PING 192.168.0.10 (192.168.0.10) 56(84) bytes of data.
+64 bytes from 192.168.0.10: icmp_seq=3D1 ttl=3D64 time=3D0.863 ms
+64 bytes from 192.168.0.10: icmp_seq=3D2 ttl=3D64 time=3D0.491 ms
+^C
+=2D-- 192.168.0.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1071ms
+rtt min/avg/max/mdev =3D 0.491/0.677/0.863/0.186 ms
+root@bpi-r3:~# ethtool eth1
+[  128.027246] offset:0 0x2c1140
+[  128.027264] offset:4 0x4d544950
+[  128.030230] offset:8 0x40e041a0
+Settings for eth[  128.033411] offset:32 0x3112011a
+1:
+        Supported p[  128.036798] offset:0 0x2c1140
+[  128.041287] offset:4 0x4d544950
+
+        Supported link[  128.045636] offset:8 0x40e041a0
+ modes:   1000baseX/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  1000baseX/Full
+        Advertised pause frame use: Symmetric Receive-only
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: 1000Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        Port: FIBRE
+        PHYAD: 0
+        Transceiver: internal
+        Current message level: 0x000000ff (255)
+                               drv probe link timer ifdown ifup rx_err tx_=
+err
+        Link detected: yes
+root@bpi-r3:~#
+root@bpi-r3:~# iperf3 -c 192.168.0.21
+Connecting to host 192.168.0.21, port 5201
+[  5] local 192.168.0.19 port 50992 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   114 MBytes   960 Mbits/sec    0    450 KBytes
+[  5]   1.00-2.00   sec   112 MBytes   940 Mbits/sec    0    450 KBytes
+[  5]   2.00-3.00   sec   113 MBytes   948 Mbits/sec    0    450 KBytes
+[  5]   3.00-4.00   sec   112 MBytes   940 Mbits/sec    0    450 KBytes
+[  5]   4.00-5.00   sec   112 MBytes   941 Mbits/sec    0    450 KBytes
+[  5]   5.00-6.00   sec   112 MBytes   941 Mbits/sec    0    450 KBytes
+[  5]   6.00-7.00   sec   113 MBytes   948 Mbits/sec    0    450 KBytes
+[  5]   7.00-8.00   sec   112 MBytes   939 Mbits/sec    0    450 KBytes
+[  5]   8.00-9.00   sec   112 MBytes   940 Mbits/sec    0    450 KBytes
+[  5]   9.00-10.00  sec   113 MBytes   947 Mbits/sec    0    450 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   944 Mbits/sec    0             send=
+er
+[  5]   0.00-10.06  sec  1.10 GBytes   938 Mbits/sec                  rece=
+iver
+
+iperf Done.
+root@bpi-r3:~# iperf3 -c 192.168.0.21 -R
+Connecting to host 192.168.0.21, port 5201
+Reverse mode, remote host 192.168.0.21 is sending
+[  5] local 192.168.0.19 port 38736 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   112 MBytes   937 Mbits/sec
+[  5]   1.00-2.00   sec   112 MBytes   940 Mbits/sec
+[  5]   2.00-3.00   sec   112 MBytes   939 Mbits/sec
+[  5]   3.00-4.00   sec   112 MBytes   940 Mbits/sec
+[  5]   4.00-5.00   sec   112 MBytes   940 Mbits/sec
+[  5]   5.00-6.00   sec   112 MBytes   940 Mbits/sec
+[  5]   6.00-7.00   sec   112 MBytes   940 Mbits/sec
+[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec
+[  5]   8.00-9.00   sec   112 MBytes   940 Mbits/sec
+[  5]   9.00-10.00  sec   112 MBytes   940 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.06  sec  1.10 GBytes   936 Mbits/sec    0             send=
+er
+[  5]   0.00-10.00  sec  1.09 GBytes   940 Mbits/sec                  rece=
+iver
+
+iperf Done.
+root@bpi-r3:~#
+
+so now checking the first gmac (mt7531 switch-chip, fixed link with 2500ba=
+seX - sgmii, but i can only test 1G on a switchport not the full 2g5):
+
+root@bpi-r3:~# ip link set eth1 down
+[  128.050136] offset:32 0x3112011a
+[  266.426857] mtk_soc_eth 15100000.ethernet eth1: Link is Down
+root@bpi-r3:~# ip link set eth0 up
+[  277.257578] mtk_soc_eth 15100000.ethernet eth0: configuring for fixed/2=
+500base-x link mode
+[  277.266007] mtk_soc_eth 15100000.ethernet eth0: Link is Up - 2.5Gbps/Fu=
+ll - flow control rx/tx
+root@bpi-r3:~#
+root@bpi-r3:~# ip a a 192.168.0.19/24 dev wan
+root@bpi-r3:~# ip link set wan up
+[  373.687223] mt7530 mdio-bus:1f wan: configuring for phy/gmii link mode
+root@bpi-r3:~# [  373.698593] mt7530 mdio-bus:1f wan: Link is Up - 1Gbps/F=
+ull - flow control rx/tx
+[  373.706061] IPv6: ADDRCONF(NETDEV_CHANGE): wan: link becomes ready
+root@bpi-r3:~# ip a a 192.168.0.19/24 dev wan
+root@bpi-r3:~# ip link set wan up
+[  373.687223] mt7530 mdio-bus:1f wan: configuring for phy/gmii link mode
+root@bpi-r3:~# [  373.698593] mt7530 mdio-bus:1f wan: Link is Up - 1Gbps/F=
+ull - flow control rx/tx
+[  373.706061] IPv6: ADDRCONF(NETDEV_CHANGE): wan: link becomes ready
+
+root@bpi-r3:~# ping 192.168.0.10
+PING 192.168.0.10 (192.168.0.10) 56(84) bytes of data.
+64 bytes from 192.168.0.10: icmp_seq=3D1 ttl=3D64 time=3D0.964 ms
+64 bytes from 192.168.0.10: icmp_seq=3D2 ttl=3D64 time=3D0.523 ms
+^C
+=2D-- 192.168.0.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev =3D 0.523/0.743/0.964/0.220 ms
+root@bpi-r3:~# iperf3 -c 192.168.0.21
+Connecting to host 192.168.0.21, port 5201
+[  5] local 192.168.0.19 port 48332 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   115 MBytes   962 Mbits/sec    0    641 KBytes
+[  5]   1.00-2.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   2.00-3.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   3.00-4.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   4.00-5.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   5.00-6.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   6.00-7.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   7.00-8.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   8.00-9.00   sec   112 MBytes   944 Mbits/sec    0    641 KBytes
+[  5]   9.00-10.00  sec   111 MBytes   933 Mbits/sec    0    641 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   944 Mbits/sec    0             send=
+er
+[  5]   0.00-10.06  sec  1.10 GBytes   937 Mbits/sec                  rece=
+iver
+
+iperf Done.
+root@bpi-r3:~# iperf3 -c 192.168.0.21 -R
+Connecting to host 192.168.0.21, port 5201
+Reverse mode, remote host 192.168.0.21 is sending
+[  5] local 192.168.0.19 port 51822 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   112 MBytes   937 Mbits/sec
+[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec
+[  5]   2.00-3.00   sec   112 MBytes   939 Mbits/sec
+[  5]   3.00-4.00   sec   112 MBytes   940 Mbits/sec
+[  5]   4.00-5.00   sec   112 MBytes   938 Mbits/sec
+[  5]   5.00-6.00   sec   112 MBytes   940 Mbits/sec
+[  5]   6.00-7.00   sec   112 MBytes   938 Mbits/sec
+[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec
+[  5]   8.00-9.00   sec   112 MBytes   940 Mbits/sec
+[  5]   9.00-10.00  sec   112 MBytes   940 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.06  sec  1.10 GBytes   936 Mbits/sec    0             send=
+er
+[  5]   0.00-10.00  sec  1.09 GBytes   939 Mbits/sec                  rece=
+iver
+
+iperf Done.
+root@bpi-r3:~# ethtool eth0
+Settings for eth0:
+        Supported ports: [ MII ]
+        Supported link modes:   2500baseT/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  2500baseT/Full
+        Advertised pause frame use: Symmetric Receive-only
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Link partner advertised link modes:  2500baseT/Full
+        Link partner advertised pause frame use: Symmetric
+        Link partner advertised auto-negotiation: No
+        Link partner advertised FEC modes: Not reported
+        Speed: 2500Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        Port: MII
+        PHYAD: 0
+        Transceiver: internal
+        Current message level: 0x000000ff (255)
+                               drv probe link timer ifdown ifup rx_err tx_=
+err
+        Link detected: yes
+root@bpi-r3:~# ethtool wan
+Settings for wan:
+        Supported ports: [ TP    MII ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Advertised pause frame use: Symmetric Receive-only
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                             100baseT/Half 100baseT/Full
+                                             1000baseT/Full
+        Link partner advertised pause frame use: Symmetric
+        Link partner advertised auto-negotiation: Yes
+        Link partner advertised FEC modes: Not reported
+        Speed: 1000Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        master-slave cfg: preferred slave
+        master-slave status: master
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: external
+        MDI-X: Unknown
+        Supports Wake-on: d
+        Wake-on: d
+        Link detected: yes
+root@bpi-r3:~#
+
+looks good too :)
+
+if you fix this typo you can send the patch and add my tested-by:
+
+        regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+-       if (interface =3D =3D=3D PHY_INTERFACE_MODE_SGMII)
++       if (interface =3D=3D PHY_INTERFACE_MODE_SGMII)
+                val |=3D SGMII_IF_MODE_BIT0;
+        else
+                val &=3D ~SGMII_IF_MODE_BIT0;
+
+should i send an update for my patch including this:
+
+state->duplex =3D DUPLEX_FULL;
+
+or do you want to read the duplex from the advertisement like stated befor=
+e?
+
+regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
+regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1 + 8, &adv);
+
+phylink_mii_c22_pcs_decode_state(state, bm >> 16, adv >> 16);
+
+regards Frank
 
