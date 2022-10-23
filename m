@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2866FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CCDFA373D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 09:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9YIiUZlTrjdPAMVHM7klpVqQezdSDroJaCTYC5nvEj0=; b=qLQgE95slYfPqe
-	rQqwfuddLT2AzghqRh8SfAm46IRSME0HQK5Gc1r2SS99DmZPKWKnXSDCua1HwoyDrZ+8hjsj1R2QK
-	KBGnJhhvm/rpAIsgY9xmA0xu5DF95frPzo7pMMd99ls9OpWCL/OSj6vfQs4XHPNt1iMQmdrmnYH3P
-	v7N24MQLZ4OK8l1Pl8mIF776KQeWb5W6niRqosgh+NI/zzap/JrKQ/gTa1lbO0kDmbmdvTvOn591T
-	aUbC1aIXYAEmyhEoUHPD27n8GZvTiuL7kgjWMRabzWCvhFDk6ELFXvH/Ig6I+YvwnZgJNtUidk0K8
-	2RjIXXaq48qTzNoMZLLA==;
+	List-Owner; bh=FdAcqBn0H2JqQ0pdVG6sZ5NnqpXSrOBaSZ51qSReaUY=; b=1/YomiI1Ma2VPv
+	l0dhiAoRaM+r8vh+y3jTWwguKpblkfId2S6VIOkadjeZmeXqM39jaE+tzO91OyWLqCCQhRJUzuY/z
+	f7J2J6PupNPAwE6e/nJ0g8mMhZt2CVluhUn/zjEOlCqFlvITvsNyg9kUUOs1rQhvOy6lxW8sdNvwa
+	vcWQuUeMCZ3qAZ0i1aPYhLgxL0i+VNMfVYdgH1MO24sd5/zAcyqKvPTnEX8mEgjsvERBbdUdznwma
+	v47C47GpGhkcJEpV1LjIB1Mmx3kPSx4Z9eYAo5wpfji88SsusbcqqUKMz4Urt8Pkst6Re5YXmmJtf
+	ecAfRxQt8RJyv047diiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omX5B-00En18-BI; Sun, 23 Oct 2022 09:15:49 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1omX5F-00En3O-2w; Sun, 23 Oct 2022 09:15:53 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omX2l-00Eleq-Ad; Sun, 23 Oct 2022 09:13:21 +0000
+	id 1omX2j-00ElcB-9q; Sun, 23 Oct 2022 09:13:21 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id 296B84016B;
-	Sun, 23 Oct 2022 09:13:14 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id DC2A910003A;
+	Sun, 23 Oct 2022 09:13:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666516394;
+	s=20200217; t=1666516390;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9YIiUZlTrjdPAMVHM7klpVqQezdSDroJaCTYC5nvEj0=;
-	b=uJE6+VOs3zNi+2fTxHrCF4dX/2FE4qQubL6eW1yW8EnoLb1QYQ56jyybztJklfzpRSQXYx
-	/B4hHoqmSH8hw80J6IuChm+WxdSgzhjnIwC+4VIjhntxk4njS7J5g1+5xxpGAlEIg+SNkt
-	X9krGF/cRyN2lVyDPQC0P9U3pL496Ck=
+	bh=FdAcqBn0H2JqQ0pdVG6sZ5NnqpXSrOBaSZ51qSReaUY=;
+	b=BD6mAlNjAC8SIECoC4GM6MgHhzLKTiR/Q5syyPQ9ektkWyP96tQ0WFR5aV1sPl9CZcwvAF
+	X9Zx3DjRkbGH/c/d5WPlVv9qWAxIrS7JLJqEr314aA6JwwwakzjFCu3VmY82wz6dnetc5/
+	9jQCCIu+FpFirlyQ3dFFZH6To71WhYs=
 Received: from frank-G5.. (fttx-pool-80.245.79.234.bambit.de [80.245.79.234])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 4FBD7100671;
-	Sun, 23 Oct 2022 09:13:13 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 0F37310031F;
+	Sun, 23 Oct 2022 09:13:09 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 7/7] mmc: mediatek: add support for MT7986 SoC
-Date: Sun, 23 Oct 2022 11:12:47 +0200
-Message-Id: <20221023091247.70586-8-linux@fw-web.de>
+Subject: [PATCH v3 1/7] dt-bindings: mmc: Add compatible for Mediatek MT7986
+Date: Sun, 23 Oct 2022 11:12:41 +0200
+Message-Id: <20221023091247.70586-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221023091247.70586-1-linux@fw-web.de>
 References: <20221023091247.70586-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: a1159ceb-d9d5-4262-b7c0-4dd62399a1c6
+X-Mail-ID: e429a734-6886-45a0-be96-cf417621776e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_021319_598096_A46F6116 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20221023_021317_504166_BB18F972 
+X-CRM114-Status: UNSURE (   8.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,53 +66,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 From: Sam Shih <sam.shih@mediatek.com>
 
-Adding mt7986 own characteristics and of_device_id to have support
-of MT7986 SoC.
+This commit adds dt-binding documentation of mmc for Mediatek MT7986 SoC
+Platform.
 
 Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/mmc/host/mtk-sd.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index df941438aef5..3f7f3a1e0df8 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -552,6 +552,19 @@ static const struct mtk_mmc_compatible mt7622_compat = {
- 	.support_64g = false,
- };
- 
-+static const struct mtk_mmc_compatible mt7986_compat = {
-+	.clk_div_bits = 12,
-+	.recheck_sdio_irq = true,
-+	.hs400_tune = false,
-+	.pad_tune_reg = MSDC_PAD_TUNE0,
-+	.async_fifo = true,
-+	.data_tune = true,
-+	.busy_check = true,
-+	.stop_clk_fix = true,
-+	.enhance_rx = true,
-+	.support_64g = true,
-+};
-+
- static const struct mtk_mmc_compatible mt8135_compat = {
- 	.clk_div_bits = 8,
- 	.recheck_sdio_irq = true,
-@@ -609,6 +622,7 @@ static const struct of_device_id msdc_of_ids[] = {
- 	{ .compatible = "mediatek,mt6795-mmc", .data = &mt6795_compat},
- 	{ .compatible = "mediatek,mt7620-mmc", .data = &mt7620_compat},
- 	{ .compatible = "mediatek,mt7622-mmc", .data = &mt7622_compat},
-+	{ .compatible = "mediatek,mt7986-mmc", .data = &mt7986_compat},
- 	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
- 	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
- 	{ .compatible = "mediatek,mt8183-mmc", .data = &mt8183_compat},
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index d8e1e2e9adf2..3cbf0208f1b4 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -23,6 +23,7 @@ properties:
+           - mediatek,mt6795-mmc
+           - mediatek,mt7620-mmc
+           - mediatek,mt7622-mmc
++          - mediatek,mt7986-mmc
+           - mediatek,mt8135-mmc
+           - mediatek,mt8173-mmc
+           - mediatek,mt8183-mmc
 -- 
 2.34.1
 
