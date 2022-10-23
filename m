@@ -4,53 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EFE0ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 17:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA17CC3A59D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 17:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4IpEBqScoz0BOsedKQHVHHygIrrSlTk0S77GHPVXhEM=; b=NaSkXjJBqx+67L
-	xzhTjo2zEo/lGd0ltPhh2Sh6P8k+kdDiv1yaIcIqusDwgu7mau534wu7/o6gsURqswh298CeDzYg8
-	Zj85bxGMLZIT70zDdJuk5BeHZOU568SWM4GpTgoKoUbCinDxZ9wBuKtMnYqdZVAKuFy5uIhFBKMGX
-	xn8+ha3bT8f3dFzH8Oz32y2lBm/BmkAuNrUQP8rDMhMST8epKYkbmQy1NeYdmydi7PzDnInMZR/b5
-	wZeRWiDBpYlBlX3OP2kjpFarzW/DUyjDx1/LfoWmpeZMr0miNgBsGBLhNsUTCtrbnrQqiIe3pEjH9
-	wdaCfTxk2Hhvq76eb3XQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+/+qwOcJ+Ykv/tsQAvaNcC2RFDOgqrMsuP9mqjxWRnA=; b=Z9gz5Dg37I6lPm
+	sCJhj4JLDizwLAU4jHqTSWrlp+0ANr9j8PqGWcBLJuupW78GdVb5nokqX+jC6Kop/0z6OH+6OhIBq
+	wUTrheGiruFfYRrDfQmzoCfy1Z/zkDraBbB0FyHfaf8TJM3n7rVPWwjM/mzfY3xLLYrhRCKzvzjpa
+	ycbgp5h2KK5ak0eMnA4RGedvjnEKPmXjeN5ceGPFOSk1xOgyTfZGd7OR8xywkfptzHX6RSIsscZvj
+	DdJqWfXLgNglCXVhFDgXku7dIRUL9AlfKzjgh65rI/3PKKGHziKxsZIDoM5WXnL7eNm/lwaw/0Hzi
+	NXPZ21AOcJl+DV9M2p4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omeNd-00FmQo-TQ; Sun, 23 Oct 2022 17:03:21 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1omeNd-00FmQa-5w; Sun, 23 Oct 2022 17:03:21 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omeNC-00FmJH-02; Sun, 23 Oct 2022 17:02:56 +0000
+	id 1omeNB-00FmJG-P6; Sun, 23 Oct 2022 17:02:55 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout2.routing.net (Postfix) with ESMTP id 019755FC59;
-	Sun, 23 Oct 2022 17:02:46 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 895A710085C;
+	Sun, 23 Oct 2022 17:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666544567;
+	s=20200217; t=1666544568;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=4IpEBqScoz0BOsedKQHVHHygIrrSlTk0S77GHPVXhEM=;
-	b=tfNPDBVtY0cD9PSSZK9adXpCOkj4k5bc9hh8vqg+d+FqvW3krOa9R71ECgInxPAQ8y0AMG
-	fVDyLBbOCNGac0J3r7tg7uv0JSiykr9nvywBYkSZgwQ3QEkuzPlfYsVQ4Z0pKhI5esipp4
-	kCRc+nRhY5la0Qk+++QDt7Evb5pBswM=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+/+qwOcJ+Ykv/tsQAvaNcC2RFDOgqrMsuP9mqjxWRnA=;
+	b=LVZpdg+qdJ8mDixU4po/b2W0QM58yN/XDmsrGJHfrBjdiWXN6UFnr/hVnILmrgliAOQ7KC
+	uc1xHy3g40URxyRYBgMtTzX6EZvo5rYzXk1OCBPIwatL2+xtedyt/UNqmzFlsc9RHt6Pzh
+	MQSAy4BKccYrLk2GW1OdKaRjcFqtKxE=
 Received: from frank-G5.. (fttx-pool-80.245.79.234.bambit.de [80.245.79.234])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id D978B100352;
-	Sun, 23 Oct 2022 17:02:45 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id B2C9F100352;
+	Sun, 23 Oct 2022 17:02:47 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH 0/3] rework mtk pcie-gen3 bindings and support mt7986
-Date: Sun, 23 Oct 2022 19:02:31 +0200
-Message-Id: <20221023170234.83621-1-linux@fw-web.de>
+Subject: [PATCH 2/3] dt-bindings: PCI: mediatek-gen3: add support for mt7986
+Date: Sun, 23 Oct 2022 19:02:33 +0200
+Message-Id: <20221023170234.83621-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221023170234.83621-1-linux@fw-web.de>
+References: <20221023170234.83621-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 0f466a79-bb1f-4f20-bc41-869e0b319303
+X-Mail-ID: faab5a44-dd36-424f-82ff-370abfa0d751
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_100254_199767_A92F8F2B 
-X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-CacheID: sfid-20221023_100253_980505_A2A1B95A 
+X-CRM114-Status: UNSURE (   8.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,21 +72,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This Series prepares support for mt7986 PCIe which is basicly gen3 PCIe
-but with slightly differnt clock configuration.
+Add compatible string for mt7986.
 
-To make differences better to read i split the exiting bindings which
-has already different settings with a compatible switch and then add a
-new one for mt7986.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Frank Wunderlich (3):
-  dt-bindings: PCI: mediatek-gen3: add SoC based clock config
-  dt-bindings: PCI: mediatek-gen3: add support for mt7986
-  dt-bindings: PCI: mediatek-gen3: add mt7986 clock config
-
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 65 +++++++++++++++----
- 1 file changed, 53 insertions(+), 12 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index af0d2201746d..3662422b38ea 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -48,6 +48,7 @@ properties:
+     oneOf:
+       - items:
+           - enum:
++              - mediatek,mt7986-pcie
+               - mediatek,mt8188-pcie
+               - mediatek,mt8195-pcie
+           - const: mediatek,mt8192-pcie
 -- 
 2.34.1
 
