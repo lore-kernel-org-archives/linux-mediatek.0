@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A190ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 18:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C2CECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 18:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1mKs6GpQeiVSFHYgIcIiKnYZUq2Gc9RwKLa8CmbtFeM=; b=j7Ty4SjsQjxlN67Y6WSms7GZtq
-	xFm9ArxI6OfcewwfYjM05LI80oKsF0KPWXPtwtvHheVlDJHpWDmjHbtOOpyMlnTmn7/oEvclpJJhX
-	eaRbyXNeT2LcztF/j/Jx7ldBcO/zg3NBbzqwwTRWZkrmATNq/cE/b07qBzlmq8yWB9bNnJkidjoMn
-	QIj5y+mLGsnUhLMpuQ5S4nR4ZDMUrm0lP7CmjIVLrgjuz2+dQ2WHIw16ZwkKlFkwyfNT9rfBctslY
-	KJRJ0/QeDIPd72GfE5HVkAtJRwYqgk5hya44O77uOG3V2MjVzypxWBxU2l9vLp7l6/6jntvmbhzZe
-	bMLye2BA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yc5Yvccuiotv+zv4lCo1XgV5t+N05+/Ku8t6cON3GhM=; b=qrZhx4TpC1otJm4Y+QdNtWtCWX
+	Y9ETypD/qJMACHWeJ5Rf6P4evR1pybIdG3rCBVCRwbdQjMpRg8J9VWPOf7xEagLh0gWES9us/AEs8
+	s1dAsrhVD06GnUftedb/LnLcQq4wPh2wsNV1FXiCtdX4nYlXr4sY1oaocuXp/eOuDwuTi9jDe2fpx
+	aMeid4gK0sV3PswZ1Xon5bVGjB7EGOk1u4Hsz0s5pObVNhgKUzJ4kvl4FiKoqicOjF1s/bIHvlC+p
+	zGf6HoERU4tj3gaepEKHy3YrH+gSqSjRvAa/QpsPKHVFpXVBg81/KPIYofboW/76+J0CKUSdDoo6Z
+	7aCoEPpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omfOi-00FtM9-HV; Sun, 23 Oct 2022 18:08:32 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1omfi1-00FxEt-AS; Sun, 23 Oct 2022 18:28:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omfOX-00FtIJ-4j; Sun, 23 Oct 2022 18:08:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1666548455;
-	bh=jJMuc9hlxKrAfgPz6LPixoJQtBtaekfiWlfI/7cKJlw=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=a6MOhQzC0GIhV/8YoFvM8/3WSFxPl1pZUnFZn6ghJf0yEYZHYc1i28/5Z5F1CZ3mi
-	 wQUYksYu1f0NYtnev+I+LRhIP3lvKzcvV/sJmqK8rUR1qEx4gexyGJd3Jkss6Kk47x
-	 Pbdekpi/RaWQtr9L45I4cg+Ee+6pEU7CBOU0b8Ek=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.79.234] ([80.245.79.234]) by web-mail.gmx.net
- (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Sun, 23 Oct 2022
- 20:07:35 +0200
+	id 1omfhy-00FxCB-2y
+	for linux-mediatek@lists.infradead.org; Sun, 23 Oct 2022 18:28:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9F61F60F16;
+	Sun, 23 Oct 2022 18:28:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A1D4C433D6;
+	Sun, 23 Oct 2022 18:28:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666549702;
+	bh=wkdAvPA8Pnc0jF12FSsd05dlVyH8gvyil6OYR7WwYcU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=f0Ds0AHZjDZcVPc3tT6C665O4qlBfFr1PCUOw2anA8I5yQzxi9hzhN5F75we7LfVi
+	 ojAyCmPxenQA2aS6KFUPqU4a/UQQbsyWrGTAvAxESFXebRbO6qg2zSkSEitEwWTWKL
+	 mlXzPoIilV5Ddxr7lJ6D3WSomaAQmOUMRNVChwZFy50UXtYNm+zVbpwf8Edn2tzqJY
+	 ZPMSAuUzmp0aNR1ZL9NcKg4nzD6OFhckGGeeKdRegzKKgffgmr11Z5h2kR4CjU56no
+	 /c83ic05+YGC6FmA5pUgfKQ0l4XUbNl1LrH9R+jzU5LcpjFdGGBWoP39luiNb4eC08
+	 GT3KMla+apxMA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org,
+	robh@kernel.org,
+	daniel@makrotopia.org
+Subject: [PATCH v2 net-next 0/6] introduce WED RX support to MT7986 SoC
+Date: Sun, 23 Oct 2022 20:28:04 +0200
+Message-Id: <cover.1666549145.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Message-ID: <trinity-2cabbf5f-1775-4cfd-9b6c-08e92812e998-1666548455075@3c-app-gmx-bs01>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sam
- Shih <sam.shih@mediatek.com>, Jieyy Yang <jieyy.yang@mediatek.com>
-Subject: Aw: [RFC v1 07/12] arm64: dts: mt7986: add pcie related device
- nodes
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 23 Oct 2022 20:07:35 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <trinity-ed7d279a-ec3c-41f4-95b3-8480790f82fd-1666105878851@3c-app-gmx-bap38>
-References: <20221017104141.7338-1-linux@fw-web.de>
- <20221017104141.7338-8-linux@fw-web.de>
- <trinity-ed7d279a-ec3c-41f4-95b3-8480790f82fd-1666105878851@3c-app-gmx-bap38>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:1kM3UUOGhlHc1aqPITut7jmpqLSkc0EIBLDVdZUliRCRT1SM/Z26jdHbIHfq5dhHJRKbX
- 7fO/HXKRO0t4WnruZfFBStbT6wPOdodu+S/J1GJIcRzHZEhMAsx4lVQpnos554RTSw7lpozqu33I
- NlstEHUIyw8JlSpk8GVO9pNb7dqfzzZxnyEn9b6+DiOIylPRg4kZtEYo0KcpMhBlB9DCEDFopjsS
- eEmN1h3EziyZq5yiM8FnDIgE4wfHF1nLYS6nOzMszfr9HhXipIo+rHlW80r8yTgPOvozqqrhJHaZ
- B0=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Lmu9VQUz/n4=:xrO/0ro88OWB2quWJ3NgTQ
- qIbtbnGC27JgRZLzKhEQOFBPjKfG+f7hwayv3Sgrq9s5+lMvHfz5I09OtPYI+AyHEhaDCYZiN
- AktscUmWnEFfSBtnvftR8O8idgGm9Ptyouolu3M4Wv8L2R+fR7JsPVLW+Z3whzliXPD6nlXwE
- enG7D2pVBtwOZzjMXeyx7C4K0kCjhuYOHzPYhtqtll2ru6KSFX2sPzc57AmlNJSkiGxi/riqa
- 0eiTaPCKaJ+DeTR9cwrOxukDfXlN3uL5h6wslfC0Cxf6flzWlFYYp2KyG/R7yi18wtYIDSNIi
- xZA+OxWa76Qlo/rmZA8s4RuVHJGXELKbAWJHNQNDOeTFQnUqkVH4YVy/y6nhSzciijbfyRxuA
- xVyOoZ/p5clFHiS5OafPKVy7FMgYAPn7nxtjM/8/8rUO7vxdtisk8NZO/vvgiliw5wSxYpkBD
- BvnlUMh9vhMD5rLRsnYcHBanIV9mX1KMhpC/KjbVsNaJAnZsPN8w96AMiEVBNjfIxqTq1UgKg
- OCKcLAhVtu2d/EDeyprGFGB2VtcS9GuWkh4T/lSrnQnAiKN0NfUdW+Ju4TrfgC3wFv6N94Jar
- 0wvIMBojMhrGXS+VFuPWbc+pf2wAcxhnsy+OL6le7cOE7ZDAw0EzIK7h9QJYwxDp4RLQIpHiB
- ZyQPa0kJE8egRgmG6nYxmUpOGVIx4kkGInL+f51HrPl/35K/QIsLLjTaZ9EMRQTKzVdl3Eqam
- 8UrfAiQVuns/3G9PxbqJp7qc8/3ZNmPkaoS0y+5FQceeT+h5CX2M5i93HFflRY6o57wjKqJnt
- wruA58iRwL/6CihJ9QQiXiqkO+j19sGMufHf1St5KpPe+klaVxu4OOlQGl03qwd5IpRy2jouP
- MLnvsL9WWkrz18ovUs2ev3DXyEhC/MRIPtbYs64y6oPyandBn//OaBgnzizBgPhu+cCW7jBOQ
- ILHVEmbbcIOkHzLoFLjmIizS3T16NWvxhtxhvD7PT+lWwGn0qSEACx6sKnwWj6/DOkBPRjAa0
- oW6Kf1nxlJxZ6KF1Xb34GBOAsyLbhaNd+/pailXJDrTz4Dh+zke8trZtbTyIX1iSECCVE2DiV
- bTRlbYeYITd/hBtnwB+diXkACGEXZG4ZMOsmsMQTscwjrPD4GEz0o29gkYHrG7EP+patd6bDY
- s4zsnh+YQpS+y/ByqOzrFFhdPXyvFdaI0E87kSE/a4rl8SsysFbO0HDc963SE3KFz6bNgEz5x
- gwLOXBA0r8u5dgpC87P1MkFZiFtcCrxyO/gRysC6bJJtbVYzCG81qticAJp5vIOYHQkveLgRC
- UDjmcIAC
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_110821_660049_52BFC39D 
-X-CRM114-Status: UNSURE (   5.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221023_112826_227177_659BF329 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +85,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Similar to TX counterpart available on MT7622 and MT7986, introduce
+RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
+offload traffic received by wlan nic to the wired interfaces (lan/wan).
 
-posted dt binding series here:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20221023170234.83621-4-linux@fw-web.de/
+Changes since v1:
+- fix sparse warnings
+- rely on memory-region property in mt7622-wed.yaml
+- some more binding fixes
 
-my dts looks now like this:
+Lorenzo Bianconi (6):
+  arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
+    Dispatch
+  dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
+  net: ethernet: mtk_wed: introduce wed mcu support
+  net: ethernet: mtk_wed: introduce wed wo support
+  net: ethernet: mtk_wed: add configure wed wo support
+  net: ethernet: mtk_wed: add rx mib counters
 
-		pcie: pcie@11280000 {
-			compatible = "mediatek,mt7986-pcie",
-				     "mediatek,mt8192-pcie";
-			device_type = "pci";
-			#address-cells = <3>;
-			#size-cells = <2>;
-			reg = <0x00 0x11280000 0x00 0x4000>;
-			reg-names = "pcie-mac";
-			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
-			bus-range = <0x00 0xff>;
-			ranges = <0x82000000 0x00 0x20000000 0x00
-				  0x20000000 0x00 0x10000000>;
-			clocks = <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-				 <&infracfg CLK_INFRA_IPCIE_CK>,
-				 <&infracfg CLK_INFRA_IPCIER_CK>,
-				 <&infracfg CLK_INFRA_IPCIEB_CK>;
-			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
-			status = "disabled";
+ .../arm/mediatek/mediatek,mt7622-wed.yaml     |  91 +++
+ .../arm/mediatek/mediatek,mt7986-wo-boot.yaml |  46 ++
+ .../arm/mediatek/mediatek,mt7986-wo-ccif.yaml |  49 ++
+ .../arm/mediatek/mediatek,mt7986-wo-dlm.yaml  |  50 ++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  73 +++
+ drivers/net/ethernet/mediatek/Makefile        |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed.c       | 577 ++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
+ .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 390 ++++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 545 +++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 287 +++++++++
+ include/linux/soc/mediatek/mtk_wed.h          | 104 +++-
+ 14 files changed, 2407 insertions(+), 44 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-boot.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-ccif.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-dlm.yaml
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
 
-			phys = <&pcie_port PHY_TYPE_PCIE>;
-			phy-names = "pcie-phy";
+-- 
+2.37.3
 
-			#interrupt-cells = <1>;
-			interrupt-map-mask = <0 0 0 0x7>;
-			interrupt-map = <0 0 0 1 &pcie_intc 0>,
-					<0 0 0 2 &pcie_intc 1>,
-					<0 0 0 3 &pcie_intc 2>,
-					<0 0 0 4 &pcie_intc 3>;
-			pcie_intc: interrupt-controller {
-				#address-cells = <0>;
-				#interrupt-cells = <1>;
-				interrupt-controller;
-			};
-		};
-
-
-will post v2 soon if this is ok...
-
-regards Frank
 
