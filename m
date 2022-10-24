@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1923ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 11:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB96C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 12:06:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=InVIRT4wz14uWEEwh7HiHSLlWViaSqL2Ja35aIQ0Tog=; b=Z/EYD/O3+St5ppV27KcM4lSUBb
-	GNEb8sRI+Nq4MVeKgcV0WK6OrMZ8IpKoqx+7tRd9R/Cu+80ICMoUKcMnJMRhZ13FvHLVAK/X+3El1
-	j0y9WYT2semfZ8miM7mai8rtpuZXI8B1FrlxUjxoMqbE5AkX46oiMMCbDrh3YUXfnhfviCLLL6CkM
-	NJG2HR6BT7VhKShhPHHybnKgydqff2ICJNoJf8spRdTR1a3XQPz1pYeR5O2vbcDQ8D5VsCiVLllJn
-	8+/iamFV0Y1H8o6W1Q4feVrMzYf8NC/tKpPj43WsR4+nTSsKwSa+yyY5RM0hCrpFIDTuO+Qb6O7rG
-	7cxS/VIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sFjsyP8ZKZS0F9t1VR6XE2dkw5z7AQiMIr8WnQjyVtY=; b=460QFDtqg7XD++aIkZnVczOU7U
+	S9pIu/T3IxgCdhrHiqige5BlMLjY4XKz7bfC5wYxpAQoqvTihZIrk9JhsjQOE0pVRbC9HduMt8gQZ
+	BykNij8LTFycTQqfDAvXL97gADKRRZWgFuRkUVKm6Mo72Oy/OrToK9EU5CcbtrJiPYokcubRn6TZk
+	KIdgD0l5lOw39x1uB9ZN6YZVPy2ULm6PWwOOICT1DVqyD2YKw83kA6vJ9VcIla7xd23Miyv3kAzVG
+	DK4nd+yvlcvwvuR+pL8V83RN222iXCHACbDlgTPKXVr+XWflvPNgqFkYukKQGdm4FO+dikEbjbJDG
+	u0KQZHEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvrp-001AKc-IS; Mon, 24 Oct 2022 11:43:41 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1omwE3-001HRC-FF; Mon, 24 Oct 2022 12:06:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvgo-0014AY-2q; Mon, 24 Oct 2022 11:32:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666611138; x=1698147138;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=J//vhD4MqQrSeKUj+KUsipHKrzYYM8OFew0w8HAgIXg=;
-  b=jTNiYHJbG0L4LLKOSDLmrJI9r/rDxEE6aPZS8Mn9quYkNAIHw1C88Zjr
-   EEsKOmJd+58yiWJelkfjH4uRPHusaKwOQBeE9TWDGjTtXBNwI0oz86Obo
-   gBcODe54wAnWbjZAbaSrjAVKlBMyHyumjGHilhVrvJBPFp7+CneF00KSl
-   l2snt7ANby59KQoQrFmTqgMwMBjhxEM0Bdr/gErLKWePov0OCxqb31AJg
-   CpymW09+9UU9RnpNaohJDxlhsutrX9T31uu2o7A7loDe0/cIE8naJ7bVc
-   Mr7URbdEVMRGmg5zPaMKoK1ZxCcLgvanyo9Qtx1SgPeKqPm9w9tUkA/Kf
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10509"; a="290695450"
-X-IronPort-AV: E=Sophos;i="5.95,209,1661842800"; 
-   d="scan'208";a="290695450"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 04:32:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10509"; a="756541972"
-X-IronPort-AV: E=Sophos;i="5.95,209,1661842800"; 
-   d="scan'208";a="756541972"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga004.jf.intel.com with ESMTP; 24 Oct 2022 04:32:11 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1omvgf-001Pmz-1z;
-	Mon, 24 Oct 2022 14:32:09 +0300
-Date: Mon, 24 Oct 2022 14:32:09 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: pavel@ucw.cz, matthias.bgg@gmail.com, chiaen_wu@richtek.com,
-	alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	szunichen@gmail.com
-Subject: Re: [PATCH v15 0/2] Add MediaTek MT6370 PMIC support
-Message-ID: <Y1Z3uWt0dnWjqzTB@smile.fi.intel.com>
-References: <cover.1666636223.git.chiaen_wu@richtek.com>
+	id 1omwDz-001HOX-HW
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 12:06:38 +0000
+X-UUID: 5175e53f653e4a61a819ff8152c390d3-20221024
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sFjsyP8ZKZS0F9t1VR6XE2dkw5z7AQiMIr8WnQjyVtY=;
+	b=efs0JhyieJVELkYHwe9neZdl0pc+/ISG3YNll4VYweOOxZqxXU3KwSVZKl+63mhAil5K+7JBKkLzoMrrwKLRRUnxb6ODCyP1SmvB6rE+hX3E2tKPP6FGHFXPoIu+bLnXDobKj1zP+QAVCoKc0RkZeJaK7DYsLF2yroi7wMGRCjk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:2106f243-d833-44d6-a1c2-576abb09e9e3,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:75e4eb6c-89d3-4bfa-baad-dc632a24bca3,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 5175e53f653e4a61a819ff8152c390d3-20221024
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1204399341; Mon, 24 Oct 2022 05:06:27 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 24 Oct 2022 20:06:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 20:06:04 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+Subject: [PATCH v1] ufs: core: print more evt history
+Date: Mon, 24 Oct 2022 20:06:02 +0800
+Message-ID: <20221024120602.30019-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1666636223.git.chiaen_wu@richtek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_043218_193915_837AF4A1 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20221024_050635_609265_3F6FF8A7 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,18 +82,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 24, 2022 at 06:59:34PM +0800, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
-> 
-> This patch series add MediaTek MT6370 PMIC support and add a index macro
-> to <linear_range.h>.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Is it? Please, align the cover letter and actual code series.
+Some error event is missing in ufshcd_print_evt_hist.
+Add print for this error event.
 
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 7256e6c43ca6..ed354febed29 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -486,6 +486,9 @@ static void ufshcd_print_evt_hist(struct ufs_hba *hba)
+ 	ufshcd_print_evt(hba, UFS_EVT_RESUME_ERR, "resume_fail");
+ 	ufshcd_print_evt(hba, UFS_EVT_SUSPEND_ERR,
+ 			 "suspend_fail");
++	ufshcd_print_evt(hba, UFS_EVT_WL_RES_ERR, "wlun resume_fail");
++	ufshcd_print_evt(hba, UFS_EVT_WL_SUSP_ERR,
++			 "wlun suspend_fail");
+ 	ufshcd_print_evt(hba, UFS_EVT_DEV_RESET, "dev_reset");
+ 	ufshcd_print_evt(hba, UFS_EVT_HOST_RESET, "host_reset");
+ 	ufshcd_print_evt(hba, UFS_EVT_ABORT, "task_abort");
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.18.0
 
 
