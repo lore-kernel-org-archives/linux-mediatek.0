@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25F3AC38A2D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 10:25:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4629C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 10:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZOpoVsNK+xuYUU2eKwQ/Fp+WLpY5GLXN3+0d+EN8c6k=; b=iGfM+VBOENhPhEliTm4HquC4OL
-	Slfez3RC7Y8uO2bHOrUob8rFaYuGO/EjlFa/W4sTUjFlQK3EhphOxWKUm7GYgAV+hK8QaLix0U0Lv
-	VF6JEpO5HdUE6AdMlfBzDJ5Yn31u6pjUQXBk7YaqfMmkx//F7LZ1SE2VEPWeWp7zJ2sUuToS5rvy8
-	ZgWQBXsGvuDX9sndDGumugLbkVgSI0tI4Kl+h95r/pUkn1qJ447yBvtz3OGPlDIMFC4xj3e3695TL
-	Ui5Woi4Uq4lPadcXG5b5rf5a6TE1AEx9JJT8pyrPxxnMgkQcM0lgIIpv+L3sQWHvjJSj3th6YI/hX
-	Kv+zHkIQ==;
+	bh=bG3fgCl2D4Jjl4QFc60+5McCHCqmpfeas57O552t8+g=; b=j/3ldOe238jcETtCRllxDO92L3
+	LAnbKVyHl2yVvG9rb+WA8xh1Q21hcHcSVVN40Hzd1APYjN8BUJIJNbXzgttwZ4MVlxgKOmBrE90rt
+	zJjiVWXigDIdTPL3Ywb/pD18LHgOYpkk3C0iK+WhxW15C8x9bmTscNA3m2Zne9tiNw0fBw3y7nUua
+	NX53DQ3+EvFOQ2yID+lbUqDLqQEOnrzGmqfy5U8LmrpwAOS08rucOxE00wf4hlCgcvGsVVRoU7G4Z
+	+QlFT9NMKfnlsbOt9j8MM7gf22S7FNsMcrUQIgKEU5Fm2ZFvqpnF3FqRv0I8/W5iVNpx0ntTtCvhM
+	JMEmxiyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omudZ-000hQ5-3j; Mon, 24 Oct 2022 10:24:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1omudq-000hbd-JI; Mon, 24 Oct 2022 10:25:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omucE-000gp5-GR; Mon, 24 Oct 2022 10:23:33 +0000
+	id 1omucG-000gqf-HQ; Mon, 24 Oct 2022 10:23:34 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D707F6602822;
-	Mon, 24 Oct 2022 11:23:27 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F06D16602824;
+	Mon, 24 Oct 2022 11:23:29 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666607008;
-	bh=Ygu3QqLW7f5YrNuA3sNdeVICDbkntoh3fZrkeLdv9+s=;
+	s=mail; t=1666607010;
+	bh=Dh97L7JvjfiBu8V6B+2CA5mLksRChUmKRFgxrGoQYBQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ox+QFEDY6gpFHKCYLMQjcDS3gHpDSUqEIB0prKjvzRWzaT1/6Yg+e2zEKleaQcb0R
-	 ZrZlZhhfstKW/qOssTg7PxQDzCYE+Ij6OPJ5djBQAxGZ5PJuiro9pHdXvl3tdGme3G
-	 pJKWmSlCXtLbvJZP4jRnTWPML/hvMCVcKcf9DfI8TpZH8yPRenUKyzrq+vBRa2npgo
-	 8zpj4buuaknxjhlnOECVrV6SUqfMxoAk+3fKfY5U2EcKP9kf9hYC0pInq6bczKVmQZ
-	 eTN3JWXs8NHXh+x7lhjOsF45rS+4FFe5IAgoj4cDj4QQNB/zu1LZFi39h5mW98vkDl
-	 qXDix2KIqRdiQ==
+	b=TvbvH7xeK4iqIydRWHhJqnRO+zIQjaQhBMCL/scRSAUk66+J5M/mEl28MBNqbEEfc
+	 xyLH9KMiCfacPshXsncBxdE5JSuoZ2Y/ZRL35LyGEdpms8htxvbf1YfXG+E6Q73HRa
+	 hhPmB4Whi0JaBBwapXiq6Ykav3ahCOvkMZwpXH0PafoYAx6pPVPAFudrevDCJr0ovB
+	 V4GNN+q8G8SnCULI3PFoFRAsat5ccJQhSsq0P6oQAI2HJS4NJI4taSaKyr8Pd8SpJN
+	 Nik0B44QPlnQpRlTppu+py3djaWi0LfbLXKKPt8OuHb8eubNkMOmTjEIbCGTre63BD
+	 bKEUgKQLNppeA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sboyd@kernel.org
 Cc: mturquette@baylibre.com,
@@ -58,17 +58,17 @@ Cc: mturquette@baylibre.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 03/10] clk: mediatek: mt8183: Compress top_divs array entries
-Date: Mon, 24 Oct 2022 12:23:00 +0200
-Message-Id: <20221024102307.33722-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 05/10] clk: mediatek: mt8173: Drop flags for main/sys/univpll fixed factors
+Date: Mon, 24 Oct 2022 12:23:02 +0200
+Message-Id: <20221024102307.33722-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com>
 References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_032330_832368_9E32571E 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20221024_032332_864319_668B7B98 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,241 +84,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There's no need to split each FACTOR entry in two lines, as each of
-them does fit in one line just fine.
+The main/sys/univpll clocks are used as clock sources for multiple
+peripherals of different kind, some of which are critical (like AXIs);
+a rate change on any of these two will produce a rate change on many
+devices and that's likely to produce system instability if not done
+correctly: this is the reason why we have (a lot of) "fixed factor"
+main/sys/univpll divider clocks, used by MUX clocks to provide
+different rates based on PLL output dividers.
+
+Following what was done on clk-mt8186-topckgen and also preventing the
+same GPU DVFS issue, drop CLK_SET_RATE_PARENT from the aforementioned
+clocks.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8183.c | 216 ++++++++++--------------------
- 1 file changed, 72 insertions(+), 144 deletions(-)
+ drivers/clk/mediatek/clk-mt8173.c | 76 +++++++++++++++----------------
+ 1 file changed, 38 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 1860a35a723a..c3a39db524be 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -31,150 +31,78 @@ static const struct mtk_fixed_factor top_early_divs[] = {
- };
+diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+index b8529ee7199d..b57e33cda7a5 100644
+--- a/drivers/clk/mediatek/clk-mt8173.c
++++ b/drivers/clk/mediatek/clk-mt8173.c
+@@ -37,19 +37,19 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
+ 	FACTOR(CLK_TOP_ARMCA7PLL_754M, "armca7pll_754m", "armca7pll", 1, 2),
+ 	FACTOR(CLK_TOP_ARMCA7PLL_502M, "armca7pll_502m", "armca7pll", 1, 3),
  
- static const struct mtk_fixed_factor top_divs[] = {
--	FACTOR(CLK_TOP_F26M_CK_D2, "csw_f26m_ck_d2", "clk26m", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1,
--		1),
--	FACTOR(CLK_TOP_SYSPLL_D2, "syspll_d2", "syspll_ck", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_D2_D2, "syspll_d2_d2", "syspll_d2", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_D2_D4, "syspll_d2_d4", "syspll_d2", 1,
--		4),
--	FACTOR(CLK_TOP_SYSPLL_D2_D8, "syspll_d2_d8", "syspll_d2", 1,
--		8),
--	FACTOR(CLK_TOP_SYSPLL_D2_D16, "syspll_d2_d16", "syspll_d2", 1,
--		16),
--	FACTOR(CLK_TOP_SYSPLL_D3, "syspll_d3", "mainpll", 1,
--		3),
--	FACTOR(CLK_TOP_SYSPLL_D3_D2, "syspll_d3_d2", "syspll_d3", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_D3_D4, "syspll_d3_d4", "syspll_d3", 1,
--		4),
--	FACTOR(CLK_TOP_SYSPLL_D3_D8, "syspll_d3_d8", "syspll_d3", 1,
--		8),
--	FACTOR(CLK_TOP_SYSPLL_D5, "syspll_d5", "mainpll", 1,
--		5),
--	FACTOR(CLK_TOP_SYSPLL_D5_D2, "syspll_d5_d2", "syspll_d5", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_D5_D4, "syspll_d5_d4", "syspll_d5", 1,
--		4),
--	FACTOR(CLK_TOP_SYSPLL_D7, "syspll_d7", "mainpll", 1,
--		7),
--	FACTOR(CLK_TOP_SYSPLL_D7_D2, "syspll_d7_d2", "syspll_d7", 1,
--		2),
--	FACTOR(CLK_TOP_SYSPLL_D7_D4, "syspll_d7_d4", "syspll_d7", 1,
--		4),
--	FACTOR(CLK_TOP_UNIVPLL_CK, "univpll_ck", "univpll", 1,
--		1),
--	FACTOR(CLK_TOP_UNIVPLL_D2, "univpll_d2", "univpll_ck", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVPLL_D2_D2, "univpll_d2_d2", "univpll_d2", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVPLL_D2_D4, "univpll_d2_d4", "univpll_d2", 1,
--		4),
--	FACTOR(CLK_TOP_UNIVPLL_D2_D8, "univpll_d2_d8", "univpll_d2", 1,
--		8),
--	FACTOR(CLK_TOP_UNIVPLL_D3, "univpll_d3", "univpll", 1,
--		3),
--	FACTOR(CLK_TOP_UNIVPLL_D3_D2, "univpll_d3_d2", "univpll_d3", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVPLL_D3_D4, "univpll_d3_d4", "univpll_d3", 1,
--		4),
--	FACTOR(CLK_TOP_UNIVPLL_D3_D8, "univpll_d3_d8", "univpll_d3", 1,
--		8),
--	FACTOR(CLK_TOP_UNIVPLL_D5, "univpll_d5", "univpll", 1,
--		5),
--	FACTOR(CLK_TOP_UNIVPLL_D5_D2, "univpll_d5_d2", "univpll_d5", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVPLL_D5_D4, "univpll_d5_d4", "univpll_d5", 1,
--		4),
--	FACTOR(CLK_TOP_UNIVPLL_D5_D8, "univpll_d5_d8", "univpll_d5", 1,
--		8),
--	FACTOR(CLK_TOP_UNIVPLL_D7, "univpll_d7", "univpll", 1,
--		7),
--	FACTOR(CLK_TOP_UNIVP_192M_CK, "univ_192m_ck", "univpll_192m", 1,
--		1),
--	FACTOR(CLK_TOP_UNIVP_192M_D2, "univ_192m_d2", "univ_192m_ck", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVP_192M_D4, "univ_192m_d4", "univ_192m_ck", 1,
--		4),
--	FACTOR(CLK_TOP_UNIVP_192M_D8, "univ_192m_d8", "univ_192m_ck", 1,
--		8),
--	FACTOR(CLK_TOP_UNIVP_192M_D16, "univ_192m_d16", "univ_192m_ck", 1,
--		16),
--	FACTOR(CLK_TOP_UNIVP_192M_D32, "univ_192m_d32", "univ_192m_ck", 1,
--		32),
--	FACTOR(CLK_TOP_APLL1_CK, "apll1_ck", "apll1", 1,
--		1),
--	FACTOR(CLK_TOP_APLL1_D2, "apll1_d2", "apll1", 1,
--		2),
--	FACTOR(CLK_TOP_APLL1_D4, "apll1_d4", "apll1", 1,
--		4),
--	FACTOR(CLK_TOP_APLL1_D8, "apll1_d8", "apll1", 1,
--		8),
--	FACTOR(CLK_TOP_APLL2_CK, "apll2_ck", "apll2", 1,
--		1),
--	FACTOR(CLK_TOP_APLL2_D2, "apll2_d2", "apll2", 1,
--		2),
--	FACTOR(CLK_TOP_APLL2_D4, "apll2_d4", "apll2", 1,
--		4),
--	FACTOR(CLK_TOP_APLL2_D8, "apll2_d8", "apll2", 1,
--		8),
--	FACTOR(CLK_TOP_TVDPLL_CK, "tvdpll_ck", "tvdpll", 1,
--		1),
--	FACTOR(CLK_TOP_TVDPLL_D2, "tvdpll_d2", "tvdpll_ck", 1,
--		2),
--	FACTOR(CLK_TOP_TVDPLL_D4, "tvdpll_d4", "tvdpll", 1,
--		4),
--	FACTOR(CLK_TOP_TVDPLL_D8, "tvdpll_d8", "tvdpll", 1,
--		8),
--	FACTOR(CLK_TOP_TVDPLL_D16, "tvdpll_d16", "tvdpll", 1,
--		16),
--	FACTOR(CLK_TOP_MMPLL_CK, "mmpll_ck", "mmpll", 1,
--		1),
--	FACTOR(CLK_TOP_MMPLL_D4, "mmpll_d4", "mmpll", 1,
--		4),
--	FACTOR(CLK_TOP_MMPLL_D4_D2, "mmpll_d4_d2", "mmpll_d4", 1,
--		2),
--	FACTOR(CLK_TOP_MMPLL_D4_D4, "mmpll_d4_d4", "mmpll_d4", 1,
--		4),
--	FACTOR(CLK_TOP_MMPLL_D5, "mmpll_d5", "mmpll", 1,
--		5),
--	FACTOR(CLK_TOP_MMPLL_D5_D2, "mmpll_d5_d2", "mmpll_d5", 1,
--		2),
--	FACTOR(CLK_TOP_MMPLL_D5_D4, "mmpll_d5_d4", "mmpll_d5", 1,
--		4),
--	FACTOR(CLK_TOP_MMPLL_D6, "mmpll_d6", "mmpll", 1,
--		6),
--	FACTOR(CLK_TOP_MMPLL_D7, "mmpll_d7", "mmpll", 1,
--		7),
--	FACTOR(CLK_TOP_MFGPLL_CK, "mfgpll_ck", "mfgpll", 1,
--		1),
--	FACTOR(CLK_TOP_MSDCPLL_CK, "msdcpll_ck", "msdcpll", 1,
--		1),
--	FACTOR(CLK_TOP_MSDCPLL_D2, "msdcpll_d2", "msdcpll", 1,
--		2),
--	FACTOR(CLK_TOP_MSDCPLL_D4, "msdcpll_d4", "msdcpll", 1,
--		4),
--	FACTOR(CLK_TOP_MSDCPLL_D8, "msdcpll_d8", "msdcpll", 1,
--		8),
--	FACTOR(CLK_TOP_MSDCPLL_D16, "msdcpll_d16", "msdcpll", 1,
--		16),
--	FACTOR(CLK_TOP_AD_OSC_CK, "ad_osc_ck", "osc", 1,
--		1),
--	FACTOR(CLK_TOP_OSC_D2, "osc_d2", "osc", 1,
--		2),
--	FACTOR(CLK_TOP_OSC_D4, "osc_d4", "osc", 1,
--		4),
--	FACTOR(CLK_TOP_OSC_D8, "osc_d8", "osc", 1,
--		8),
--	FACTOR(CLK_TOP_OSC_D16, "osc_d16", "osc", 1,
--		16),
--	FACTOR(CLK_TOP_UNIVPLL, "univpll", "univ2pll", 1,
--		2),
--	FACTOR(CLK_TOP_UNIVPLL_D3_D16, "univpll_d3_d16", "univpll_d3", 1,
--		16),
-+	FACTOR(CLK_TOP_F26M_CK_D2, "csw_f26m_ck_d2", "clk26m", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1, 1),
-+	FACTOR(CLK_TOP_SYSPLL_D2, "syspll_d2", "syspll_ck", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D2_D2, "syspll_d2_d2", "syspll_d2", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D2_D4, "syspll_d2_d4", "syspll_d2", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL_D2_D8, "syspll_d2_d8", "syspll_d2", 1, 8),
-+	FACTOR(CLK_TOP_SYSPLL_D2_D16, "syspll_d2_d16", "syspll_d2", 1, 16),
-+	FACTOR(CLK_TOP_SYSPLL_D3, "syspll_d3", "mainpll", 1, 3),
-+	FACTOR(CLK_TOP_SYSPLL_D3_D2, "syspll_d3_d2", "syspll_d3", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D3_D4, "syspll_d3_d4", "syspll_d3", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL_D3_D8, "syspll_d3_d8", "syspll_d3", 1, 8),
-+	FACTOR(CLK_TOP_SYSPLL_D5, "syspll_d5", "mainpll", 1, 5),
-+	FACTOR(CLK_TOP_SYSPLL_D5_D2, "syspll_d5_d2", "syspll_d5", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D5_D4, "syspll_d5_d4", "syspll_d5", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL_D7, "syspll_d7", "mainpll", 1, 7),
-+	FACTOR(CLK_TOP_SYSPLL_D7_D2, "syspll_d7_d2", "syspll_d7", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D7_D4, "syspll_d7_d4", "syspll_d7", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL_CK, "univpll_ck", "univpll", 1, 1),
-+	FACTOR(CLK_TOP_UNIVPLL_D2, "univpll_d2", "univpll_ck", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D2_D2, "univpll_d2_d2", "univpll_d2", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D2_D4, "univpll_d2_d4", "univpll_d2", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL_D2_D8, "univpll_d2_d8", "univpll_d2", 1, 8),
-+	FACTOR(CLK_TOP_UNIVPLL_D3, "univpll_d3", "univpll", 1, 3),
-+	FACTOR(CLK_TOP_UNIVPLL_D3_D2, "univpll_d3_d2", "univpll_d3", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D3_D4, "univpll_d3_d4", "univpll_d3", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL_D3_D8, "univpll_d3_d8", "univpll_d3", 1, 8),
-+	FACTOR(CLK_TOP_UNIVPLL_D5, "univpll_d5", "univpll", 1, 5),
-+	FACTOR(CLK_TOP_UNIVPLL_D5_D2, "univpll_d5_d2", "univpll_d5", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D5_D4, "univpll_d5_d4", "univpll_d5", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL_D5_D8, "univpll_d5_d8", "univpll_d5", 1, 8),
-+	FACTOR(CLK_TOP_UNIVPLL_D7, "univpll_d7", "univpll", 1, 7),
-+	FACTOR(CLK_TOP_UNIVP_192M_CK, "univ_192m_ck", "univpll_192m", 1, 1),
-+	FACTOR(CLK_TOP_UNIVP_192M_D2, "univ_192m_d2", "univ_192m_ck", 1, 2),
-+	FACTOR(CLK_TOP_UNIVP_192M_D4, "univ_192m_d4", "univ_192m_ck", 1, 4),
-+	FACTOR(CLK_TOP_UNIVP_192M_D8, "univ_192m_d8", "univ_192m_ck", 1, 8),
-+	FACTOR(CLK_TOP_UNIVP_192M_D16, "univ_192m_d16", "univ_192m_ck", 1, 16),
-+	FACTOR(CLK_TOP_UNIVP_192M_D32, "univ_192m_d32", "univ_192m_ck", 1, 32),
-+	FACTOR(CLK_TOP_APLL1_CK, "apll1_ck", "apll1", 1, 1),
-+	FACTOR(CLK_TOP_APLL1_D2, "apll1_d2", "apll1", 1, 2),
-+	FACTOR(CLK_TOP_APLL1_D4, "apll1_d4", "apll1", 1, 4),
-+	FACTOR(CLK_TOP_APLL1_D8, "apll1_d8", "apll1", 1, 8),
-+	FACTOR(CLK_TOP_APLL2_CK, "apll2_ck", "apll2", 1, 1),
-+	FACTOR(CLK_TOP_APLL2_D2, "apll2_d2", "apll2", 1, 2),
-+	FACTOR(CLK_TOP_APLL2_D4, "apll2_d4", "apll2", 1, 4),
-+	FACTOR(CLK_TOP_APLL2_D8, "apll2_d8", "apll2", 1, 8),
-+	FACTOR(CLK_TOP_TVDPLL_CK, "tvdpll_ck", "tvdpll", 1, 1),
-+	FACTOR(CLK_TOP_TVDPLL_D2, "tvdpll_d2", "tvdpll_ck", 1, 2),
-+	FACTOR(CLK_TOP_TVDPLL_D4, "tvdpll_d4", "tvdpll", 1, 4),
-+	FACTOR(CLK_TOP_TVDPLL_D8, "tvdpll_d8", "tvdpll", 1, 8),
-+	FACTOR(CLK_TOP_TVDPLL_D16, "tvdpll_d16", "tvdpll", 1, 16),
-+	FACTOR(CLK_TOP_MMPLL_CK, "mmpll_ck", "mmpll", 1, 1),
-+	FACTOR(CLK_TOP_MMPLL_D4, "mmpll_d4", "mmpll", 1, 4),
-+	FACTOR(CLK_TOP_MMPLL_D4_D2, "mmpll_d4_d2", "mmpll_d4", 1, 2),
-+	FACTOR(CLK_TOP_MMPLL_D4_D4, "mmpll_d4_d4", "mmpll_d4", 1, 4),
-+	FACTOR(CLK_TOP_MMPLL_D5, "mmpll_d5", "mmpll", 1, 5),
-+	FACTOR(CLK_TOP_MMPLL_D5_D2, "mmpll_d5_d2", "mmpll_d5", 1, 2),
-+	FACTOR(CLK_TOP_MMPLL_D5_D4, "mmpll_d5_d4", "mmpll_d5", 1, 4),
-+	FACTOR(CLK_TOP_MMPLL_D6, "mmpll_d6", "mmpll", 1, 6),
-+	FACTOR(CLK_TOP_MMPLL_D7, "mmpll_d7", "mmpll", 1, 7),
-+	FACTOR(CLK_TOP_MFGPLL_CK, "mfgpll_ck", "mfgpll", 1, 1),
-+	FACTOR(CLK_TOP_MSDCPLL_CK, "msdcpll_ck", "msdcpll", 1, 1),
-+	FACTOR(CLK_TOP_MSDCPLL_D2, "msdcpll_d2", "msdcpll", 1, 2),
-+	FACTOR(CLK_TOP_MSDCPLL_D4, "msdcpll_d4", "msdcpll", 1, 4),
-+	FACTOR(CLK_TOP_MSDCPLL_D8, "msdcpll_d8", "msdcpll", 1, 8),
-+	FACTOR(CLK_TOP_MSDCPLL_D16, "msdcpll_d16", "msdcpll", 1, 16),
-+	FACTOR(CLK_TOP_AD_OSC_CK, "ad_osc_ck", "osc", 1, 1),
-+	FACTOR(CLK_TOP_OSC_D2, "osc_d2", "osc", 1, 2),
-+	FACTOR(CLK_TOP_OSC_D4, "osc_d4", "osc", 1, 4),
-+	FACTOR(CLK_TOP_OSC_D8, "osc_d8", "osc", 1, 8),
-+	FACTOR(CLK_TOP_OSC_D16, "osc_d16", "osc", 1, 16),
-+	FACTOR(CLK_TOP_UNIVPLL, "univpll", "univ2pll", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D3_D16, "univpll_d3_d16", "univpll_d3", 1, 16),
- };
+-	FACTOR(CLK_TOP_MAIN_H546M, "main_h546m", "mainpll", 1, 2),
+-	FACTOR(CLK_TOP_MAIN_H364M, "main_h364m", "mainpll", 1, 3),
+-	FACTOR(CLK_TOP_MAIN_H218P4M, "main_h218p4m", "mainpll", 1, 5),
+-	FACTOR(CLK_TOP_MAIN_H156M, "main_h156m", "mainpll", 1, 7),
++	FACTOR_FLAGS(CLK_TOP_MAIN_H546M, "main_h546m", "mainpll", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_MAIN_H364M, "main_h364m", "mainpll", 1, 3, 0),
++	FACTOR_FLAGS(CLK_TOP_MAIN_H218P4M, "main_h218p4m", "mainpll", 1, 5, 0),
++	FACTOR_FLAGS(CLK_TOP_MAIN_H156M, "main_h156m", "mainpll", 1, 7, 0),
  
- static const char * const axi_parents[] = {
+ 	FACTOR(CLK_TOP_TVDPLL_445P5M, "tvdpll_445p5m", "tvdpll", 1, 4),
+ 	FACTOR(CLK_TOP_TVDPLL_594M, "tvdpll_594m", "tvdpll", 1, 3),
+ 
+-	FACTOR(CLK_TOP_UNIV_624M, "univ_624m", "univpll", 1, 2),
+-	FACTOR(CLK_TOP_UNIV_416M, "univ_416m", "univpll", 1, 3),
+-	FACTOR(CLK_TOP_UNIV_249P6M, "univ_249p6m", "univpll", 1, 5),
+-	FACTOR(CLK_TOP_UNIV_178P3M, "univ_178p3m", "univpll", 1, 7),
+-	FACTOR(CLK_TOP_UNIV_48M, "univ_48m", "univpll", 1, 26),
++	FACTOR_FLAGS(CLK_TOP_UNIV_624M, "univ_624m", "univpll", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIV_416M, "univ_416m", "univpll", 1, 3, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIV_249P6M, "univ_249p6m", "univpll", 1, 5, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIV_178P3M, "univ_178p3m", "univpll", 1, 7, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIV_48M, "univ_48m", "univpll", 1, 26, 0),
+ 
+ 	FACTOR(CLK_TOP_CLKRTC_EXT, "clkrtc_ext", "clk32k", 1, 1),
+ 	FACTOR(CLK_TOP_CLKRTC_INT, "clkrtc_int", "clk26m", 1, 793),
+@@ -84,20 +84,20 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
+ 	FACTOR(CLK_TOP_MSDCPLL2_D2, "msdcpll2_d2", "msdcpll2", 1, 2),
+ 	FACTOR(CLK_TOP_MSDCPLL2_D4, "msdcpll2_d4", "msdcpll2", 1, 4),
+ 
+-	FACTOR(CLK_TOP_SYSPLL_D2, "syspll_d2", "main_h546m", 1, 1),
+-	FACTOR(CLK_TOP_SYSPLL1_D2, "syspll1_d2", "main_h546m", 1, 2),
+-	FACTOR(CLK_TOP_SYSPLL1_D4, "syspll1_d4", "main_h546m", 1, 4),
+-	FACTOR(CLK_TOP_SYSPLL1_D8, "syspll1_d8", "main_h546m", 1, 8),
+-	FACTOR(CLK_TOP_SYSPLL1_D16, "syspll1_d16", "main_h546m", 1, 16),
+-	FACTOR(CLK_TOP_SYSPLL_D3, "syspll_d3", "main_h364m", 1, 1),
+-	FACTOR(CLK_TOP_SYSPLL2_D2, "syspll2_d2", "main_h364m", 1, 2),
+-	FACTOR(CLK_TOP_SYSPLL2_D4, "syspll2_d4", "main_h364m", 1, 4),
+-	FACTOR(CLK_TOP_SYSPLL_D5, "syspll_d5", "main_h218p4m", 1, 1),
+-	FACTOR(CLK_TOP_SYSPLL3_D2, "syspll3_d2", "main_h218p4m", 1, 2),
+-	FACTOR(CLK_TOP_SYSPLL3_D4, "syspll3_d4", "main_h218p4m", 1, 4),
+-	FACTOR(CLK_TOP_SYSPLL_D7, "syspll_d7", "main_h156m", 1, 1),
+-	FACTOR(CLK_TOP_SYSPLL4_D2, "syspll4_d2", "main_h156m", 1, 2),
+-	FACTOR(CLK_TOP_SYSPLL4_D4, "syspll4_d4", "main_h156m", 1, 4),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL_D2, "syspll_d2", "main_h546m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL1_D2, "syspll1_d2", "main_h546m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL1_D4, "syspll1_d4", "main_h546m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL1_D8, "syspll1_d8", "main_h546m", 1, 8, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL1_D16, "syspll1_d16", "main_h546m", 1, 16, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL_D3, "syspll_d3", "main_h364m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL2_D2, "syspll2_d2", "main_h364m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL2_D4, "syspll2_d4", "main_h364m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL_D5, "syspll_d5", "main_h218p4m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL3_D2, "syspll3_d2", "main_h218p4m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL3_D4, "syspll3_d4", "main_h218p4m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL_D7, "syspll_d7", "main_h156m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL4_D2, "syspll4_d2", "main_h156m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_SYSPLL4_D4, "syspll4_d4", "main_h156m", 1, 4, 0),
+ 
+ 	FACTOR(CLK_TOP_TVDPLL, "tvdpll_ck", "tvdpll_594m", 1, 1),
+ 	FACTOR(CLK_TOP_TVDPLL_D2, "tvdpll_d2", "tvdpll_594m", 1, 2),
+@@ -105,21 +105,21 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
+ 	FACTOR(CLK_TOP_TVDPLL_D8, "tvdpll_d8", "tvdpll_594m", 1, 8),
+ 	FACTOR(CLK_TOP_TVDPLL_D16, "tvdpll_d16", "tvdpll_594m", 1, 16),
+ 
+-	FACTOR(CLK_TOP_UNIVPLL_D2, "univpll_d2", "univ_624m", 1, 1),
+-	FACTOR(CLK_TOP_UNIVPLL1_D2, "univpll1_d2", "univ_624m", 1, 2),
+-	FACTOR(CLK_TOP_UNIVPLL1_D4, "univpll1_d4", "univ_624m", 1, 4),
+-	FACTOR(CLK_TOP_UNIVPLL1_D8, "univpll1_d8", "univ_624m", 1, 8),
+-	FACTOR(CLK_TOP_UNIVPLL_D3, "univpll_d3", "univ_416m", 1, 1),
+-	FACTOR(CLK_TOP_UNIVPLL2_D2, "univpll2_d2", "univ_416m", 1, 2),
+-	FACTOR(CLK_TOP_UNIVPLL2_D4, "univpll2_d4", "univ_416m", 1, 4),
+-	FACTOR(CLK_TOP_UNIVPLL2_D8, "univpll2_d8", "univ_416m", 1, 8),
+-	FACTOR(CLK_TOP_UNIVPLL_D5, "univpll_d5", "univ_249p6m", 1, 1),
+-	FACTOR(CLK_TOP_UNIVPLL3_D2, "univpll3_d2", "univ_249p6m", 1, 2),
+-	FACTOR(CLK_TOP_UNIVPLL3_D4, "univpll3_d4", "univ_249p6m", 1, 4),
+-	FACTOR(CLK_TOP_UNIVPLL3_D8, "univpll3_d8", "univ_249p6m", 1, 8),
+-	FACTOR(CLK_TOP_UNIVPLL_D7, "univpll_d7", "univ_178p3m", 1, 1),
+-	FACTOR(CLK_TOP_UNIVPLL_D26, "univpll_d26", "univ_48m", 1, 1),
+-	FACTOR(CLK_TOP_UNIVPLL_D52, "univpll_d52", "univ_48m", 1, 2),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D2, "univpll_d2", "univ_624m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL1_D2, "univpll1_d2", "univ_624m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL1_D4, "univpll1_d4", "univ_624m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL1_D8, "univpll1_d8", "univ_624m", 1, 8, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D3, "univpll_d3", "univ_416m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL2_D2, "univpll2_d2", "univ_416m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL2_D4, "univpll2_d4", "univ_416m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL2_D8, "univpll2_d8", "univ_416m", 1, 8, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D5, "univpll_d5", "univ_249p6m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL3_D2, "univpll3_d2", "univ_249p6m", 1, 2, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL3_D4, "univpll3_d4", "univ_249p6m", 1, 4, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL3_D8, "univpll3_d8", "univ_249p6m", 1, 8, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D7, "univpll_d7", "univ_178p3m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D26, "univpll_d26", "univ_48m", 1, 1, 0),
++	FACTOR_FLAGS(CLK_TOP_UNIVPLL_D52, "univpll_d52", "univ_48m", 1, 2, 0),
+ 
+ 	FACTOR(CLK_TOP_VCODECPLL, "vcodecpll_ck", "vcodecpll", 1, 3),
+ 	FACTOR(CLK_TOP_VCODECPLL_370P5, "vcodecpll_370p5", "vcodecpll", 1, 4),
 -- 
 2.37.2
 
