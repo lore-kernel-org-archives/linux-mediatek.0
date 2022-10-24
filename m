@@ -4,64 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 586F7C67871
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 21:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D479C67871
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 21:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eg6GOQtZACSfOLvqsH9Jzam7dUz/enYxqCAOwD3ZXfA=; b=QSlpWl72FB/h7+1iGNDY610QCs
-	4pSnhEj83dFxADtr9say7uYEn+4ekomryZJryw0FB74/PW3zupwA6xr6YbgvtveOJBx6UESCyPK8S
-	ZqgSR5WWY8pguvqIJEKq6UiGvRP6ZCdKBgKdGcS4GafMg0MiX9vXSu0YCHPBOD9WWlT/o4HNSGcch
-	/JI+YWCseSYs8NumTxKBveq4Xp/INRsrumSh/uD6/AVj6Q8/ofYe1WIoGk2nskms8qXaIeIADX4Ym
-	XcBHrAKVq6xRqzKiUv6iUAn23oVoL2fxF4wkm2+c+1s8dXxcZJsZGG2oQwa93Dqezkha/M1eOCI/q
-	5qZkbfNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Mie0dwILOoL5NP5Cg3Tf9BLyHE4I1j5avRUFdQRyJZQ=; b=gxr2qGPhgDd/q0ZJInxnUonlKW
+	UYYOsiC/I3z69gkpnKUtu7ZW/rJjhwOypk35YUdBzLkvQRf+3lPJjQqzyRK6F6aKUeI86FukRkmCs
+	aKzJ5XCdjdcNtvcxUuHpqeaLkn7RjfP2Yora/nUxvCo/Vz8R41TGBNdjgLgl2pnK9MI6hoChd9EdH
+	B6IhTLICyb+dGd6/BET5lKAZx7ULt7Pwv2eAxSC9B7Nf4tIBLyuXw1dLcfdSqpAaKmbIiVmIzFs7q
+	brdMRr0oC/LtLt3x+kCj1tTVdKB9UlYNZVpWw4wYt9egX5MtHn/GY5NUCYcD/4ibEr004WHtq6L/x
+	WXe1pHJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5Q6-003ADb-4x; Mon, 24 Oct 2022 21:55:42 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1on5Ru-003AWI-3a; Mon, 24 Oct 2022 21:57:34 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5Pv-003ACY-NP; Mon, 24 Oct 2022 21:55:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3D43CB80D69;
-	Mon, 24 Oct 2022 21:55:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 866F9C433D6;
-	Mon, 24 Oct 2022 21:55:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666648529;
-	bh=oQ9KNEH5p9KGrsnEcH5S1RduBGb6wJ0EGUHoylNIUA0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=owCi5MX6mT/TF8uDWZXk/zB9Mvqn4fHQ+Z09FxiZbMlhfGo/km40JdiQRn+Th/D/h
-	 qo2T9XR3Wqhn+6FfAQv3Flhg/LYkRHu+Tjjd3RsVi4/9bgOiUYS9dedx1JEPH8K7+W
-	 7Oqu6Et9S70kCC+V2cR/eHwe69kMssr3xbUFZ6432fsDgrk9FfPjyYkdZicN0BVUMa
-	 EXfZY9NRnItX/1zYXfzyj8nC4kYB0LXrXC377Av1LnRfYDokrgTNOqRpe3I9SEBsEf
-	 2QkV1CUUnJ3GnbpWNXWNhSaMDF401o5mxDxG/xI20wA0k0iS4d3qwTHoq6Q8kukfZt
-	 lLoBNP6hs8E0g==
-Date: Mon, 24 Oct 2022 14:55:27 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: kernel test robot <lkp@intel.com>, Russell King
- <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Morton <akpm@linux-foundation.org>, ntfs3@lists.linux.dev,
- netdev@vger.kernel.org, linux-parisc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, Linux Memory Management List
- <linux-mm@kvack.org>
-Subject: Re: [linux-next:master] BUILD SUCCESS WITH WARNING
- 76cf65d1377f733af1e2a55233e3353ffa577f54
-Message-ID: <20221024145527.0eff7844@kernel.org>
-In-Reply-To: <6356c451.pwLIF+9EvDUrDjTY%lkp@intel.com>
-References: <6356c451.pwLIF+9EvDUrDjTY%lkp@intel.com>
+	id 1on5Rj-003AU4-BI
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 21:57:25 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id s28so9201999vsr.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 14:57:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Mie0dwILOoL5NP5Cg3Tf9BLyHE4I1j5avRUFdQRyJZQ=;
+        b=gNXcO91AfhdJU+tqEckzPK3JYjWSz1Js/FUQZO3PvIsUgwYmnA80qUARF9QI7nqyrK
+         7aDzrWPVkNNS9jt3kjz3H/2gbEyMAFDMxioj5GYU9tN+InKZaAywQuBlsdxCD8up/ZC1
+         cARm+ZNoI+B5/t+4cl+QXzAJHzscPydD8zxqc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Mie0dwILOoL5NP5Cg3Tf9BLyHE4I1j5avRUFdQRyJZQ=;
+        b=QqoZJ2U8k+c+drQxQ06wlHknYp3F3J/YDvwyFX5Fng3IzJ9JljR8w+Fy5EYf2Ni70u
+         gd7HlLHgcPkFfRd8x6U5KpwNmwZOzzFqZOvSt0UiqBCF74OfcS92x/FlJoknzgc/Lqq1
+         TV92s+9LFj8/Pov6MDHukul1MT6a4WTqorcKKMf6Q1pa6Y7MykdrrNUVlzpjX85ae5qV
+         fbaTa6IhQbv5mL1aYU5RoZ/v7Ic03AOqArq6mZszlYJkuaFOP0A8HKpy/9IoH+t/O2yK
+         ROOplfK155i5wQzpuae3hjiEC2uZQvOqWHrUCWM7SvD81/AEhPl5fMql2gMsQYd0tQ+J
+         KMew==
+X-Gm-Message-State: ACrzQf3QtNUDqN84lD+x6Iih7SlO/ln/gQlzXR9UvuPEU6N6+bivfxj7
+	fqu5JBKkMTO71NGB+eJ2Q1Od1od7OH+fds6pFNxCRA==
+X-Google-Smtp-Source: AMsMyM6PPYTAcOUSy3ZKM+pzj2N+X3xlMfiu8aQLbFXu3p60GkgOWzwhnMJsay3y56pkP1gHlZx4uqvmP7yqCYRajpU=
+X-Received: by 2002:a67:fa14:0:b0:3aa:1ba5:4ab0 with SMTP id
+ i20-20020a67fa14000000b003aa1ba54ab0mr3994142vsq.77.1666648640519; Mon, 24
+ Oct 2022 14:57:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com> <20221024102307.33722-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221024102307.33722-2-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 24 Oct 2022 14:57:09 -0700
+Message-ID: <CAGXv+5HnJgmoX=8596OJZki_0qDaipP+cbbTWpkVxuOkErSBdA@mail.gmail.com>
+Subject: Re: [PATCH 01/10] clk: mediatek: clk-mtk: Allow specifying flags on
+ mtk_fixed_factor clocks
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
+	miles.chen@mediatek.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
+	chun-jie.chen@mediatek.com, jose.exposito89@gmail.com, 
+	yangyingliang@huawei.com, msp@baylibre.com, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_145531_932547_7B734577 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221024_145723_416695_F9AF467B 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,11 +86,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Oct 2022 00:58:57 +0800 kernel test robot wrote:
-> drivers/net/phy/phylink.c:588 phylink_validate_mask_caps() warn: variable dereferenced before check 'state' (see line 583)
+On Mon, Oct 24, 2022 at 3:23 AM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Before this change, every mtk_fixed_factor clock forced clock flags to
+> CLK_SET_RATE_PARENT: while this is harmless in some cases, it may not
+> be desired in some others, especially when performing clock muxing on
+> a clock having multiple parents of which one is a dedicated PLL and the
+> others are not.
+>
+> This is especially seen on the GPU clocks on some SoCs, where we are
+> muxing between multiple parents: a fixed clock (crystal), a programmable
+> GPU PLL and one or more dividers for the MAINPLL, used for a number of
+> devices; it happens that when a rate change is called for the GPU, the
+> clock framework will try to satisfy the rate request by using one of the
+> MAINPLL dividers, which have CLK_SET_RATE_PARENT and will set the rate
+> on MAINPLL itself - overclocking or underclocking many devices in the
+> system - and making it to lock up.
+>
+> Logically, it should be harmless (and would only reduce possible bugs)
+> to change all of the univpll and mainpll related fixed factor clocks
+> to not declare the CLK_SET_RATE_PARENT by default but, on some SoCs,
+> this is also used for dividers of other PLLs for which a rate change
+> based on the divider may be desired, hence introduce a new FACTOR_FLAGS()
+> macro to use custom flags (or none) on selected fixed factor clocks.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hi Russell, I think the warning is semi-legit. Your commit f392a1846489
-("net: phylink: provide phylink_validate_mask_caps() helper") added an 
-if (state) before defer'ing state but it's already deref'ed higher up
-so can't be null.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
