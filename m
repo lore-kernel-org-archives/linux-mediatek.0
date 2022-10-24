@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC74DECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 12:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4408DECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 13:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ZPlZ3IKW+SnzgZAKI2K/vGkuaFxUObD4KGkTfSqY0Q=; b=eIn7O7AvS/TKE+s8Cj+9k6dYTt
-	GuP1tZlJteZxnE6AJkSXY51QYo4Orf6A7L5vRn/8bqiRZNbBv50nztN8Vy47/70LCidwpAjlw6o3+
-	4NqKxdLISHEBt3RM9JaSPDL9CvnHoi2tN8U5Au00ORG2w7XAsdarsOwiR81Dr6p+k0jow/GJzOSFa
-	xPm3ft8QV6klawsglCd+Sx1MaDjy8tK2KVsq/ZlHIYL1wvTI/sD6mWyxkX8sVgix94f4+EbgN4ahr
-	qLyzcCrvwdwh59k5kXj2+wo35bk4GZRNjYgbybusm/0t66N1PZx+qvLscOB1JhPJJLWGFxIvULPYZ
-	TUryzoGw==;
+	bh=0sMr5LMpx7kn/7s7Sx7ZIZcqCa9AYhMtKw0LeVc+4NY=; b=hwYhkb9C+oSe7w7+vreJ6fG4/p
+	MivjR95lsye1R4oPkDREQFB92CWyQ8w/t9QnZBB0slPhwm/8pA4S3Zz0KuAODtvsz62OIcxPtTSMt
+	K20HTt5TIuhNlGvj+kobLSPlkF1lLy+YQ51dHctpz422iOcZRBUnyN4DDuIe0K2iajlwnHajw1Qjc
+	tvXRDnEn7IajdcFHMbC9ruxCH00HNK7r1crO8Jom/Z+HKTee15XMb/Ze33P5ypnbNPjru+g1J1f6P
+	LFl3frI96GWO3vX/7H8qXSbKhMIVILuwqzTch06+WeRHAUKrM0GieJas6QSfcbFI3joekgfbztFPk
+	aTaj64cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omww0-001XuZ-RD; Mon, 24 Oct 2022 12:52:04 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1omxJO-001ej8-6T; Mon, 24 Oct 2022 13:16:14 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omwvD-001XWC-Ar; Mon, 24 Oct 2022 12:51:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 69AE5612F3;
-	Mon, 24 Oct 2022 12:51:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84E0DC433D6;
-	Mon, 24 Oct 2022 12:51:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666615874;
-	bh=4cT1AgEscL+bDejuGY6uubW9ABwIZGuR4hZ++Wp8v4w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kq3W0qANSUbPg7Xp/RRLV7VbWyzUd4fFQfb2glXmct6bX6PIhetoQgY85xKNVeA+J
-	 G6jvtiH0AxGM35AE0jkcMeu8B3ip0EwROrkAQfDl6VVWPpT19T544nwG7qFVCop0VI
-	 HDNSyETZfrbbhPwwU7JyS7whFHvKU4rqL4Qy4qZsH6Z9upRjNew40drv8HnH1wbgMW
-	 I/bZPHsz9Gi23tSc8LlxSOnHWY6O4v9KT3nTwLO3zW6yfkolKWKQwH4wnwT3LBcdsn
-	 W+D1mLFp2BV/5+TXP/f9FolibKs2KNirfCEyZNpHUj20JdWj8iYfZvGEUe+miHsp/n
-	 ip4jPJQHClUqA==
-Date: Mon, 24 Oct 2022 13:51:07 +0100
-From: Lee Jones <lee@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
-	linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
-	Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: mfd: mt6397: add binding for MT6357
-Message-ID: <Y1aKOxGTNAsb2vgz@google.com>
-References: <20221005-mt6357-support-v2-0-f17ba2d2d0a9@baylibre.com>
- <20221005-mt6357-support-v2-1-f17ba2d2d0a9@baylibre.com>
+	id 1omxJL-001egw-BV
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 13:16:12 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id b18so12670494ljr.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 06:16:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=0sMr5LMpx7kn/7s7Sx7ZIZcqCa9AYhMtKw0LeVc+4NY=;
+        b=Z/hgfAKaoQy+GtgOeyfqMYXizV03BcSToMv8i8Qk2ps9uXuoyBwf+Ukb21VG/x1cEa
+         5jAQUtb0j7Z9HavrSf22TIWPhMbBOKxp+rOMetug5iek1n3SziyoFCnLq0mHJSRJddE5
+         2aQf7t6LfdqAgX2JrhHF8e6g34hQI2Wf+1whiFJw+KLsfET9wCnk3uPAmzHErYrDEUbr
+         5sir6S5k78hQ3IpfkowQgdrZJ/3EYdgptWiv5Bo/Nl5ZbSqEyZ45YRFhuP0TMxJr3VbQ
+         6IQ8d8ZfK3DLYIZNYwnMR3LOuzvs6h3iJNJ7WX0PUL57YCrBoU52VdkWAiAKgpIedwd1
+         6tOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0sMr5LMpx7kn/7s7Sx7ZIZcqCa9AYhMtKw0LeVc+4NY=;
+        b=e0MokO9LWRNIDBCOVUt/SUfRppdoDS0USMS4bZmw/+TdK/pV8vOdyEti//D45hqhiQ
+         Yg9T6MzFOZmNGtjALkiPRRxvoMhjbFiXyt2zS5W39Lf+sPv9ds4kAm1tVxp+zqpvGU7p
+         19hQ7ShsG6kC1poFCrN/o95ijSwvazh710DsZtvYrE0Ld0GmXIIncvnk/A62jB15V/IP
+         s1x9bMwfTWu2ng1rBlRS5Iinxs23WjE+C7Y8w4UussXrtD+qmonxXxqJXXOmB10BArAm
+         eLjQvo4cMEQVaEguTCU+bQ0hzhHrvsuf6i5kFLdpUkwFJAhzjhDZhvcpv2AdqjLc8Nyo
+         KOkA==
+X-Gm-Message-State: ACrzQf36sKLmm7oZbZRTkHpo76/RnQcvnJgglMEHfc1pDHWWUFeYm6T0
+	Ig8oHjaDs4/XmA2owaOVlcxSkYiWu9qtwPdPJQ==
+X-Google-Smtp-Source: AMsMyM4xh6amhZ4agKbym874OYc20ETwDPyyOUFqBwR4FwgLL/x9slo1C8nDPcvN6MIH+SPXsukS86XMHKnVJ+Fo2/E=
+X-Received: by 2002:a05:651c:1a22:b0:26f:b314:6fae with SMTP id
+ by34-20020a05651c1a2200b0026fb3146faemr11276181ljb.307.1666617367678; Mon, 24
+ Oct 2022 06:16:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221005-mt6357-support-v2-1-f17ba2d2d0a9@baylibre.com>
+References: <20221024120602.30019-1-peter.wang@mediatek.com>
+In-Reply-To: <20221024120602.30019-1-peter.wang@mediatek.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Mon, 24 Oct 2022 21:15:56 +0800
+Message-ID: <CAGaU9a87HoN1JvzuTAuDFRc8UaLOUfEALyrED2Ke+kH5=zbhFg@mail.gmail.com>
+Subject: Re: [PATCH v1] ufs: core: print more evt history
+To: peter.wang@mediatek.com
+Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org, 
+	martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
+	jejb@linux.ibm.com, wsd_upstream@mediatek.com, 
+	linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com, 
+	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
+	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
+	lin.gui@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_055115_459630_E7E42663 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20221024_061611_409078_F02DB66C 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +90,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 05 Oct 2022, Alexandre Mergnat wrote:
+Hi Peter,
 
-> From: Fabien Parent <fparent@baylibre.com>
-> 
-> Add binding documentation for the MT6357 PMIC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+On Mon, Oct 24, 2022 at 9:11 PM <peter.wang@mediatek.com> wrote:
+>
+> From: Peter Wang <peter.wang@mediatek.com>
+>
+> Some error event is missing in ufshcd_print_evt_hist.
+> Add print for this error event.
+>
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 0088442efca1..518986c44880 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -21,6 +21,7 @@ Required properties:
->  compatible:
->  	"mediatek,mt6323" for PMIC MT6323
->  	"mediatek,mt6331" for PMIC MT6331 and MT6332
-> +	"mediatek,mt6357" for PMIC MT6357
->  	"mediatek,mt6358" for PMIC MT6358 and MT6366
->  	"mediatek,mt6359" for PMIC MT6359
->  	"mediatek,mt6397" for PMIC MT6397
 
-Let me know when it's safe to merge this.
-
--- 
-Lee Jones [李琼斯]
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
