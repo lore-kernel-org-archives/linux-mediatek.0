@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D65AC67871
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 21:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32EA7C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 22:03:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BzSJYeJmaTtTxu26Xk7PIR207/FtZbc1yEGzfOkJ+8U=; b=wcwE321Nu19qAyQ63WnJJ83AGQ
-	WngTzqaXIj3kvL8J85rbGn1UCxAy4FbDilmk+hyTlqU73zjDlyCBlETr3SwufUQKKUI77VD0G6cBI
-	kltKC5EbX+GRGVmmyN5i9qF1odXfG2kXZLyxDd0ucKbOrXu4bzNKPFR9WCyon3oqQOTtfMpu1gd/v
-	MGlBjD94TOWerfoyf6VdMPUxQvbxZKTbuCcT2/VlcI1jNNTH7TMLLpM5LDtL9YshK6ufvZZjZCK/u
-	0rulzRoGLaQfYHrQbMLjuVc+Qf/IuQdzfZ11cqnu+ZMtCnxpUiUoI4b5+Wh6DP3zfmuMRK3MnP59Z
-	FyjnrjxA==;
+	bh=PQO3SP/T7mx2gTBdrb26vhHeh//fHC6TncgJjNKUlYk=; b=D67InKzy3QpElLHOtdKgiMr0ti
+	J5Vb7O/GG80NKiEVrWdkYoA0tCIGaWUwOujMZTa4Hg+yKwHKFMjFowTUwf5oL8QqoJB/IzsFyqAQB
+	xQG9kHp1wgHzl2Hx2I5FVvP8Z4mcJwP47RfTAADZNowSM0JexN9K8ppt1v7gT0xfuTvQrxQkLmI4n
+	JpO6OCRz9TxeSnILredqCogS8GSn4G+UtThk7Rfl3GumFXYcvTtIgl3CD2rb7DbQPbvh6lLl2b97U
+	F03nEBfJRFoW5v2rN4Z30qXewaSiVfVSnKxZsQao5I7LnWm1jtGfWEy3gLepPv4GYDseJWo8exoUf
+	B7Au6ZJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5TA-003AoS-4U; Mon, 24 Oct 2022 21:58:52 +0000
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
+	id 1on5XN-003BmP-3l; Mon, 24 Oct 2022 22:03:13 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5Sz-003Am9-5t
-	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 21:58:42 +0000
-Received: by mail-vs1-xe36.google.com with SMTP id 189so7944605vsi.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 14:58:40 -0700 (PDT)
+	id 1on5X7-003Bff-KB
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 22:02:58 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id 189so7953870vsi.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 15:02:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=BzSJYeJmaTtTxu26Xk7PIR207/FtZbc1yEGzfOkJ+8U=;
-        b=AFR5IkY1THjsaMBnZeQKwLYzIr9rrM6ni3gipAZKPDAEIe/ZGpVLpuD4pUFK0izrIU
-         Iexsw5MQ6s8SqjK8P+TyE7pURsY+RfYmeh+5VhtJliGnTKLRWXxdcK3KfafIdF9EtDd5
-         3ONuGx+5L5V0soyNKdJYLdTlJvp3MlQxIyxms=
+        bh=PQO3SP/T7mx2gTBdrb26vhHeh//fHC6TncgJjNKUlYk=;
+        b=Z2jdLbMLpmR99cxAypgqWbtshKYj35Ebkj3fTaxTstePFu0H4CEsORE/+N7wFrwEmz
+         S/V+Csf+m+CzpG6iUJdChy/UPbuZNn5bkt0lnfgo9MjI+y6nCdCgZI5ZXuAWjBjy2q9L
+         C/NwSuG10/nz1AaJX3BLGjYT8/toKDF0M0nco=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=BzSJYeJmaTtTxu26Xk7PIR207/FtZbc1yEGzfOkJ+8U=;
-        b=xChvehBRCrLBr/AQlGj7KxpDEACuVR+ehtG5McloW+qkm0ZPR0fuXfltV6jZcHYHKO
-         ML5uNcgHtmqVv68rwK8e9pb1QnFTHYUn7AioJO+9y0N2yx0FnYDSCG8E4CmDjUDfjdv9
-         GS6QlFqrwKm1rHdMb/egy5VVJ955k2tOufZ9J4YGgz+loolMVI21Ty32ZaA7mOmc2yIb
-         JFPcrr9KrTGsQDDCUTKqhjothGVYMM7Qu6c9uJtn1JFcknTt7bp1JZplsoSYBXDDWFOn
-         mAjciPN8IMfATEyRklej05JsQh3ErDLWvXZrpU1d4LbS+NjEZxgJN4jXn/YHwIxbotEs
-         bMxA==
-X-Gm-Message-State: ACrzQf09uj2TLu6yFgt8VlTQDj4ImT8rJjlP8x1f12PstL57HsclHw6J
-	kazOpwE42HDI84qnMv+HYXR/RZG5s0QwKTKvJGZ4kg==
-X-Google-Smtp-Source: AMsMyM7xsfjKi9PBasDfAnPzuNevqgPkwVbkWIklAY6Btc1FAexcrTrDwOWAJj+nVch8ctcQNpEKCIhfuV4+G7aJBn0=
-X-Received: by 2002:a05:6102:3a4d:b0:3aa:762:5933 with SMTP id
- c13-20020a0561023a4d00b003aa07625933mr9658131vsu.17.1666648719970; Mon, 24
- Oct 2022 14:58:39 -0700 (PDT)
+        bh=PQO3SP/T7mx2gTBdrb26vhHeh//fHC6TncgJjNKUlYk=;
+        b=le8uaxht0LilN8VNE39fXMUAygkLJQBOlbMYgBmUdiPKbxh3SUiP17ocWrEEW8Tnrd
+         1dgrVjCR6HqPufAveulRoOmEj8Mleuqfuwd6J4/ukgwaW6aC8FzKZHuOhFLwAC+SRub5
+         eO+2y4a6KqkGes0dNZlUBPG0QGG6Bv5dS5R91aZ0R85Q9WcyL95m7Ph3/gwxBU6ch2x3
+         7QJs29j5IebieCAPt8m+39jryOf1meuWS5Z6h5sADJmabLsg78c1MkrJBU1Mfa25SAZ8
+         rwKR+eacHCkGcEqk/TOTsmO/ZskEwT/s9XlV9U4MUCgchi/hNTHFjaTy2AR1FfKHsYre
+         j8Vw==
+X-Gm-Message-State: ACrzQf0vhIoDqVf3pE9JWIJ8C+/HbQogOgbDJRh832VsU058aTI65/UW
+	2B9FEazRsReml45HrXHyP3C8rkFLeyWaYX4LmbdwDw==
+X-Google-Smtp-Source: AMsMyM4Nc2SEf14KxCoAjSdAd9I9wEQsYdGBrpODBvx0PQyqe810u6vS6uHm6Jb+ldd50UX+leY9mLoXV+Dk3qKhG48=
+X-Received: by 2002:a67:f684:0:b0:392:ac17:f9b0 with SMTP id
+ n4-20020a67f684000000b00392ac17f9b0mr20548005vso.85.1666648974339; Mon, 24
+ Oct 2022 15:02:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com> <20221024102307.33722-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221024102307.33722-3-angelogioacchino.delregno@collabora.com>
+References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com> <20221024102307.33722-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221024102307.33722-4-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 24 Oct 2022 14:58:29 -0700
-Message-ID: <CAGXv+5FPUchS36ObBZQ73zh7cR5wyfk6bpNO4u5h3AH1GzSP0Q@mail.gmail.com>
-Subject: Re: [PATCH 02/10] clk: mediatek: mt8186-topckgen: Drop flags for
- main/univpll fixed factors
+Date: Mon, 24 Oct 2022 15:02:37 -0700
+Message-ID: <CAGXv+5HgWwjNz73wdvQv-9qTiQCvbmE9kMp6ts+DccdBUQZ9HQ@mail.gmail.com>
+Subject: Re: [PATCH 03/10] clk: mediatek: mt8183: Compress top_divs array entries
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
 	miles.chen@mediatek.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
@@ -70,8 +69,9 @@ Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
 	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_145841_235304_3A39B6E7 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20221024_150257_714362_4A1DE74D 
+X-CRM114-Status: UNSURE (   7.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,39 +89,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Mon, Oct 24, 2022 at 3:23 AM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> The mainpll and univpll clocks are used as clock sources for multiple
-> peripherals of different kind, some of which are critical (like AXIs);
-> a rate change on any of these two will produce a rate change on many
-> devices and that's likely to produce system instability if not done
-> correctly: this is the reason why we have "fixed factor" clocks, used
-> by MUX clocks to provide different rates based on PLL output dividers.
->
-> Though, there's one fundamental issue that must be resolved somehow:
->
-> When performing GPU DVFS, we get a rate request that will try to change
-> the frequency of MAINPLL due to the CLK_TOP_MFG mux having clk26m,
-> mfgpll (the GPU dedicated PLL), mainpll_d3, mainpll_d5 (fixed factor
-> dividers) as possible parents.
->
-> In order to solve that, there are two ways:
->  1. Add new "fake" mainpll_d3_fixed, mainpll_d5_fixed clocks, clones
->     of mainpll_d3, mainpll_d5 clocks, for the only purpose of not
->     declaring CLK_SET_RATE_PARENT; or
->  2. Simply drop said flag from the original dividers.
->
-> After some careful validation, I cannot see anything calling a rate
-> change request during runtime for MAINPLL, nor for UNIVPLL (which would,
-> again, mean that we're reclocking lots of peripherals at once!), so it
-> is safe *and sane* to simply remove the CLK_SET_RATE_PARENT flag to all
-> of the main/univpll fixed factor divider clocks.
->
-> Besides, if for any (doubtful) reason main/univpll rate change will be
-> required in the future, it's still possible to call that on the PLL main
-> clocks, so we're still covered anyway.
+> There's no need to split each FACTOR entry in two lines, as each of
+> them does fit in one line just fine.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-AFAIK this matches what we do for some other SoC families, so
+Git word-diff + ignore whitespace showed no code changes, so
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
