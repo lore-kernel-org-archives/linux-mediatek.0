@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A1FFECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 10:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F14E8ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 10:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hm6/ueMuBVo443K4IVQssSluusmuvaKoCl5zJE/q8qQ=; b=XlBRyCEsLjryqweVvB162uzVpM
-	yi4tU9Eif8Fo0yvJjxVFyz4PiKI56T0Gunid3/uivz1ux2T8AxfRbzwPjA6mm+xhq9rGlfAlyJYJR
-	lfF9/D5qDyP05KdNgf9PLPR+PAEUWLC4o1QcIi2T2ZydNe+/5yV6Ah6FPsyXTrx6AMR5ZvhiCYllQ
-	O7TrUseqPZUxOpyteLI1IbQZp+L9NMIq3KAuLUV6aB0MhhUudtUm6OTAToTOUEsVX3BqSNpMOBtB4
-	1syGZ5LOWsdKBL9T9XGVF38iTyaBFjVKK7IozzHQW2hfYu1HAOdB9hf8PiWVZXo6YMznpumeEgdo2
-	Qpqrj7hg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=b0m+Ap3AgBXL/v7duwB458tmsFl0a9PquWvZTlwYLrU=; b=ooXbf99rKkVq3bGgeGoPzsm13m
+	rFDVU7bbAlfzcj1xmWLEyunn3QS7S/4fSSum9t3WtC81BzxpqNxKK6sPOipR8yTdIaZdpt8FdRhl0
+	T4QZ0t2QgShCBiizo+HODaHfXwXw6ujPzLznsCGd42+oGmf0wVG0DIZhXMocqOFa8xqRNXy64X80C
+	ZbgQafwzveVa0VaT+3vGg57PNnVgv6Hoa/RsGi78eMw9u6dv/XjpuCMoYan6CmGbjz7ie91PqDswL
+	c0ewZU3H4XNOPqcFyX8wuatpspw0xyR1Uoa0BbKXp/+exXzpxwFAvplyoZPZbNFlfmt3gyFhrGWiP
+	Ce5Ozfug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omuTT-000eq6-PJ; Mon, 24 Oct 2022 10:14:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1omucQ-000gvE-Ex; Mon, 24 Oct 2022 10:23:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omuTQ-000enH-I0; Mon, 24 Oct 2022 10:14:26 +0000
-X-UUID: 9cf5268b6dda49b385db5fb25299004b-20221024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hm6/ueMuBVo443K4IVQssSluusmuvaKoCl5zJE/q8qQ=;
-	b=AH8oWj3fiLLtoWqJW2q908yMqxNJeKT7Ve21C93FzNCmiitrNzFuMMUM6X6+hcmlxET2ZCwW7iLoigWtSzg84CcEncEnQgEdzsm7PVGgRXqBZ6Sa/XqTPgYZ8zo914yfcu0w+Z05dHOTtoQySedA2nFibM1GZwfi6cg/4Ds53xY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:a30185c4-f4c7-460e-9e6a-91151d240516,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:01b2e96c-89d3-4bfa-baad-dc632a24bca3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 9cf5268b6dda49b385db5fb25299004b-20221024
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 635151873; Mon, 24 Oct 2022 03:14:15 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 24 Oct 2022 17:43:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:06 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
-	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
-	<richardcochran@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH v2 06/19] clk: mediatek: Add MT8188 camsys clock support
-Date: Mon, 24 Oct 2022 17:42:41 +0800
-Message-ID: <20221024094254.29218-7-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
-References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
+	id 1omucD-000gof-Kq; Mon, 24 Oct 2022 10:23:31 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC50366026E6;
+	Mon, 24 Oct 2022 11:23:24 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666607005;
+	bh=3oXoEhWg3+MHoIyDaeamIWAKLeunxv0N4TGhq6yceYE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=igH0GyikvyoTw9qwOrQiZ9nd7thTOOXfuysbEppszIcfj8HDJCdfogCpK81ZIft7e
+	 ahMDdRrvTh1kL/r7bdf12b9gcUhHzdbcn7hGZ9JHJjd4Dvahz4tZEB5gdq3XEYuB2j
+	 QtrqVf0pwjZtx/a30mtdDcBfHeNMZWXM7rEOFLh6fL514nhaFtndYkI43Oy27PBmSS
+	 CS955CVEz6BNahHAv3i9Za9YeM+yBTmV+sc9lwZPWsuaoCiOI/TfC9a6Daogx2gDKK
+	 lIOdiD2FjATme8QP5GFfyxQbHxlQ78Ggjp3jnTn8t5YNGq4WQ0fYvrdAf8gJUcFjEy
+	 1yNUzz1VnT2mw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: sboyd@kernel.org
+Cc: mturquette@baylibre.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	miles.chen@mediatek.com,
+	nfraprado@collabora.com,
+	rex-bc.chen@mediatek.com,
+	chun-jie.chen@mediatek.com,
+	jose.exposito89@gmail.com,
+	yangyingliang@huawei.com,
+	msp@baylibre.com,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 00/10] MTK: Undesired set_rate on main PLLs and GPU DVFS
+Date: Mon, 24 Oct 2022 12:22:57 +0200
+Message-Id: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_031424_624959_5A0564F0 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20221024_032329_935456_0C2DD1D7 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,167 +81,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 camsys clock controllers which provide clock gate
-control for camera IP blocks.
+There's no reason to declare CLK_SET_RATE_PARENT on main system PLL
+dividers, as any rate change on those (mainpll, syspll, univpll) will
+change clock rates on critical system peripherals and busses.
 
-Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
----
- drivers/clk/mediatek/Makefile         |   3 +-
- drivers/clk/mediatek/clk-mt8188-cam.c | 130 ++++++++++++++++++++++++++
- 2 files changed, 132 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
+This change was performed only on SoCs that I could test... I'm sure
+that the same can (and should) be done on more MTK clock drivers for
+practically all MTK SoCs, but I don't feel confident in pushing things
+that I couldn't test, so that's done only for MT8173/83/86/92/95 and
+on MT6795.
+While at it, I've also added the much needed clock notifier treatment
+on MT8186 for GPU DVFS, like done on other clock drivers in the past.
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 3048de0131ef..7b5af3075670 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -83,7 +83,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
- 				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
- 				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
- obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
--				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
-+				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
-+				   clk-mt8188-cam.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-cam.c b/drivers/clk/mediatek/clk-mt8188-cam.c
-new file mode 100644
-index 000000000000..90ee89bb49cf
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-cam.c
-@@ -0,0 +1,130 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Garmin Chang <garmin.chang@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs cam_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_CAM(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate cam_main_clks[] = {
-+	GATE_CAM(CLK_CAM_MAIN_LARB13, "cam_main_larb13", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_MAIN_LARB14, "cam_main_larb14", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_MAIN_CAM, "cam_main_cam", "top_cam", 2),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBA, "cam_main_cam_suba", "top_cam", 3),
-+	GATE_CAM(CLK_CAM_MAIN_CAM_SUBB, "cam_main_cam_subb", "top_cam", 4),
-+	GATE_CAM(CLK_CAM_MAIN_CAMTG, "cam_main_camtg", "top_cam", 7),
-+	GATE_CAM(CLK_CAM_MAIN_SENINF, "cam_main_seninf", "top_cam", 8),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVA, "cam_main_gcamsva", "top_cam", 9),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVB, "cam_main_gcamsvb", "top_cam", 10),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVC, "cam_main_gcamsvc", "top_cam", 11),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVD, "cam_main_gcamsvd", "top_cam", 12),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVE, "cam_main_gcamsve", "top_cam", 13),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVF, "cam_main_gcamsvf", "top_cam", 14),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVG, "cam_main_gcamsvg", "top_cam", 15),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVH, "cam_main_gcamsvh", "top_cam", 16),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVI, "cam_main_gcamsvi", "top_cam", 17),
-+	GATE_CAM(CLK_CAM_MAIN_GCAMSVJ, "cam_main_gcamsvj", "top_cam", 18),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_TOP, "cam_main_camsv", "top_cam", 19),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_A, "cam_main_camsv_cq_a", "top_cam", 20),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_B, "cam_main_camsv_cq_b", "top_cam", 21),
-+	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_C, "cam_main_camsv_cq_c", "top_cam", 22),
-+	GATE_CAM(CLK_CAM_MAIN_FAKE_ENG, "cam_main_fake_eng", "top_cam", 28),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM0_GALS, "cam_main_cam2mm0_gals", "top_cam", 29),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2MM1_GALS, "cam_main_cam2mm1_gals", "top_cam", 30),
-+	GATE_CAM(CLK_CAM_MAIN_CAM2SYS_GALS, "cam_main_cam2sys_gals", "top_cam", 31),
-+};
-+
-+static const struct mtk_gate cam_rawa_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_rawb_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_yuva_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVA_LARBX, "cam_yuva_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVA_CAM, "cam_yuva_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVA_CAMTG, "cam_yuva_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_gate cam_yuvb_clks[] = {
-+	GATE_CAM(CLK_CAM_YUVB_LARBX, "cam_yuvb_larbx", "top_cam", 0),
-+	GATE_CAM(CLK_CAM_YUVB_CAM, "cam_yuvb_cam", "top_cam", 1),
-+	GATE_CAM(CLK_CAM_YUVB_CAMTG, "cam_yuvb_camtg", "top_cam", 2),
-+};
-+
-+static const struct mtk_clk_desc cam_main_desc = {
-+	.clks = cam_main_clks,
-+	.num_clks = ARRAY_SIZE(cam_main_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawa_desc = {
-+	.clks = cam_rawa_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawa_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawb_desc = {
-+	.clks = cam_rawb_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawb_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuva_desc = {
-+	.clks = cam_yuva_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuva_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_yuvb_desc = {
-+	.clks = cam_yuvb_clks,
-+	.num_clks = ARRAY_SIZE(cam_yuvb_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_cam[] = {
-+	{
-+		.compatible = "mediatek,mt8188-camsys",
-+		.data = &cam_main_desc,
-+	}, {
-+		.compatible = "mediatek,mt8188-camsys_rawa",
-+		.data = &cam_rawa_desc,
-+	}, {
-+		.compatible = "mediatek,mt8188-camsys_rawb",
-+		.data = &cam_rawb_desc,
-+	}, {
-+		.compatible = "mediatek,mt8188-camsys_yuva",
-+		.data = &cam_yuva_desc,
-+	}, {
-+		.compatible = "mediatek,mt8188-camsys_yuvb",
-+		.data = &cam_yuvb_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
-+
-+static struct platform_driver clk_mt8188_cam_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8188-cam",
-+		.of_match_table = of_match_clk_mt8188_cam,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8188_cam_drv);
-+MODULE_LICENSE("GPL");
+A broader explanation about why this series is needed can be found in
+the first commit that drops this flag from fixed dividers of main and
+univ PLLs (on MT8186) but, for the ones reading mainly the cover letter,
+here's a copy-paste of that commit description:
+
+The mainpll and univpll clocks are used as clock sources for multiple
+peripherals of different kind, some of which are critical (like AXIs);
+a rate change on any of these two will produce a rate change on many
+devices and that's likely to produce system instability if not done
+correctly: this is the reason why we have "fixed factor" clocks, used
+by MUX clocks to provide different rates based on PLL output dividers.
+    
+Though, there's one fundamental issue that must be resolved somehow:
+    
+When performing GPU DVFS, we get a rate request that will try to change
+the frequency of MAINPLL due to the CLK_TOP_MFG mux having clk26m,
+mfgpll (the GPU dedicated PLL), mainpll_d3, mainpll_d5 (fixed factor
+dividers) as possible parents.
+    
+In order to solve that, there are two ways:
+ 1. Add new "fake" mainpll_d3_fixed, mainpll_d5_fixed clocks, clones
+    of mainpll_d3, mainpll_d5 clocks, for the only purpose of not
+    declaring CLK_SET_RATE_PARENT; or
+ 2. Simply drop said flag from the original dividers.
+    
+After some careful validation, I cannot see anything calling a rate
+change request during runtime for MAINPLL, nor for UNIVPLL (which would,
+again, mean that we're reclocking lots of peripherals at once!), so it
+is safe *and sane* to simply remove the CLK_SET_RATE_PARENT flag to all
+of the main/univpll fixed factor divider clocks.
+    
+Besides, if for any (doubtful) reason main/univpll rate change will be
+required in the future, it's still possible to call that on the PLL main
+clocks, so we're still covered anyway.
+
+AngeloGioacchino Del Regno (10):
+  clk: mediatek: clk-mtk: Allow specifying flags on mtk_fixed_factor
+    clocks
+  clk: mediatek: mt8186-topckgen: Drop flags for main/univpll fixed
+    factors
+  clk: mediatek: mt8183: Compress top_divs array entries
+  clk: mediatek: mt8183: Drop flags for sys/univpll fixed factors
+  clk: mediatek: mt8173: Drop flags for main/sys/univpll fixed factors
+  clk: mediatek: mt6795-topckgen: Drop flags for main/sys/univpll fixed
+    factors
+  clk: mediatek: mt8192: Drop flags for main/univpll fixed factors
+  clk: mediatek: mt8195-topckgen: Drop flags for main/univpll fixed
+    factors
+  clk: mediatek: mt8186-mfg: Propagate rate changes to parent
+  clk: mediatek: mt8186-topckgen: Add GPU clock mux notifier
+
+ drivers/clk/mediatek/clk-mt6795-topckgen.c |  76 ++++----
+ drivers/clk/mediatek/clk-mt8173.c          |  76 ++++----
+ drivers/clk/mediatek/clk-mt8183.c          | 216 +++++++--------------
+ drivers/clk/mediatek/clk-mt8186-mfg.c      |   5 +-
+ drivers/clk/mediatek/clk-mt8186-topckgen.c |  89 ++++++---
+ drivers/clk/mediatek/clk-mt8192.c          |  76 ++++----
+ drivers/clk/mediatek/clk-mt8195-topckgen.c |  78 ++++----
+ drivers/clk/mediatek/clk-mtk.c             |   2 +-
+ drivers/clk/mediatek/clk-mtk.h             |   7 +-
+ 9 files changed, 293 insertions(+), 332 deletions(-)
+
 -- 
-2.18.0
+2.37.2
 
 
