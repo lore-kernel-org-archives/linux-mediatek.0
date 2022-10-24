@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13497C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 18:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B85D6C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 19:21:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5eN1nKoPXuoCK7Gl3+FMCs35j1iBuKnWx40bT8XwGo8=; b=TQ9pf65a4+cSUm
-	berca6kltq6GAkzWwswuClVJ/G/1h8KD/GyBpQReo8m1Ri3pMCn390nlXZmW9LpoDzC2Mpz4zLYGa
-	i5bl/d5Z20KP2i118EMdNRDRCffX8Yo+MdwynK6dGNAWnWS7eQujVvWoprjWEgcCyIwZHFNI9snbR
-	lBB3hJS7MHubv4VOkWEmPR8L4LThuREpUBgaDJIHhDWNnz5e5NSY2FFLBcIQuQ75gykIbudmVWjed
-	IEaMIxvx/FZ7Y9sAxSdMVJUv04W5Rl+dDDcTiWGd66mu/6VCQ7oOYiWunD2/z5Y6TcgrUozxIYcBO
-	bChcyJtntmnlU+946PiQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kWGGk3FSvDrDNlj7m3/+RkyTCBK7scHSBvuDcHj894A=; b=B7wjU+D3ji/Yqr5WiZOJbHnD/e
+	D51+z+SBOmWlAu3Otx7FLzPsBm8yaIE4zx7Ttv8MbnGRm0i1V2h0MN0ByHi7UC1GVAj0uQMKyAYOb
+	VFxWDPE1OBW16k5fRi5wYX4SnlgtN5z/5uvQZ44DrpcZBIKFmXHYlqOVQRBtjluuaSTKdNvBMxXii
+	8lwXx+WPsAsKlZ+POI+vXwNqCsgqmyfPo236oHl2cPVEN74Q5zQfWOjW3H7UZgYdCmUII36vHLWnn
+	ojoZ3WNm8yklDVSBsuEveVugGEW5Evrqdn0EhcSEechdSDUFG0BHRlpFcjSOdUr9C8x75yFqG/LLC
+	Ov3BLEgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on2Pa-002hXB-R0; Mon, 24 Oct 2022 18:42:58 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1on30r-002lNO-BU; Mon, 24 Oct 2022 19:21:29 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on2PQ-002hUQ-3l; Mon, 24 Oct 2022 18:42:49 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout3.routing.net (Postfix) with ESMTP id E5FBF62179;
-	Mon, 24 Oct 2022 18:42:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666636962;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5eN1nKoPXuoCK7Gl3+FMCs35j1iBuKnWx40bT8XwGo8=;
-	b=DKp3owzY4XDL0mekK+h8sxv0vm1jog+pcq3JAPdytguMVom3skwnsN7RNZOuua8ih3SNdC
-	yipXSLIYHtQKTOusPa4XVFSmSipZLGZGQQJnSAOaAAY0eNkHjJeqvDnnTRfkPv61TJa3QA
-	wS7yc+nZ/PHp8DUk3hn2+4o01DjMIgI=
-Received: from [127.0.0.1] (fttx-pool-80.245.75.40.bambit.de [80.245.75.40])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id DB82C803C9;
-	Mon, 24 Oct 2022 18:42:40 +0000 (UTC)
-Date: Mon, 24 Oct 2022 20:42:36 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: =?ISO-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_2/7=5D_dt-bindings=3A_mmc=3A_?= =?US-ASCII?Q?mtk-sd=3A_Set_clocks_based_on_compatible?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20221024164353.jzvx4ea442e4vahj@notapiano>
-References: <20221023091247.70586-1-linux@fw-web.de> <20221023091247.70586-3-linux@fw-web.de> <20221024164353.jzvx4ea442e4vahj@notapiano>
-Message-ID: <9940F0A3-9834-4614-A838-2E15BEABAC94@fw-web.de>
+	id 1on30g-002lKh-Pv; Mon, 24 Oct 2022 19:21:19 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-13b6336a1acso7487659fac.3;
+        Mon, 24 Oct 2022 12:21:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kWGGk3FSvDrDNlj7m3/+RkyTCBK7scHSBvuDcHj894A=;
+        b=HjJMKq00fjy2fl13pf3AswFeqYClYz4p+xpN/uyRDjJ7xBJDnv3xLhOZZ2JuMFcBLs
+         +eeuxk2vhHc9kJilPHTkvuu64wyf94i/XNwE4UAx0kSBDxg77nSORp7qfvO/SOVsCPve
+         btWn7ONpgGpvJal/CWPxMMwF4mLkcs0KPucVMpF4XzExWZq5cjfm/WNR4KXyV5GsCiN4
+         E8TlO7WQunKly7gn1SRomQrP/jifVF6MMddwQ7MTmiGPWMBLDSbHNfcIJJJIGfXPV9Zg
+         ZrV+T16Co0j5JEQOndcw/NJnjal94vb8Pmx58bc3DDsM9cqigiiJGvKxyQyj8lnRL39O
+         p90A==
+X-Gm-Message-State: ACrzQf2M8VFQvDdhkv8o+KfROF/LDJx9XXTEac2guYmLNOcqoKtgyEsZ
+	sQRDjM38PyGG9wodOr0pXg==
+X-Google-Smtp-Source: AMsMyM7Kon71TlhiViOgQoNGKfyW7PqeyYXqSISfxJSgf75N31P+dvtYVbGx3ovjnog4dpNSMlMyYA==
+X-Received: by 2002:a05:6870:f692:b0:13a:f2be:7b49 with SMTP id el18-20020a056870f69200b0013af2be7b49mr15736513oab.77.1666639275109;
+        Mon, 24 Oct 2022 12:21:15 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id r40-20020a05683044a800b0066194e0e1casm102893otv.75.2022.10.24.12.21.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Oct 2022 12:21:14 -0700 (PDT)
+Received: (nullmailer pid 2069404 invoked by uid 1000);
+	Mon, 24 Oct 2022 19:21:15 -0000
+Date: Mon, 24 Oct 2022 14:21:15 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH 1/3] dt-bindings: PCI: mediatek-gen3: add SoC based clock
+ config
+Message-ID: <166663927468.2069331.7937155894835281223.robh@kernel.org>
+References: <20221023170234.83621-1-linux@fw-web.de>
+ <20221023170234.83621-2-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: 579f50de-c9e1-4760-9af4-fc1bfa646ae7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221023170234.83621-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_114248_357152_BCDFBB0A 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20221024_122118_858560_9F317A47 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,80 +75,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>, linux-kernel@vger.kernel.org, Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 24=2E Oktober 2022 18:43:53 MESZ schrieb "N=C3=ADcolas F=2E R=2E A=2E Pr=
-ado" <nfraprado@collabora=2Ecom>:
->Hi,
->
->thank you for picking this up=2E
->
->On Sun, Oct 23, 2022 at 11:12:42AM +0200, Frank Wunderlich wrote:
->> From: N=C3=ADcolas F=2E R=2E A=2E Prado <nfraprado@collabora=2Ecom>
->>=20
->> The binding was describing a single clock list for all platforms, but
->> that's not really suitable:
->>=20
->> Most platforms using at least 2 clocks (source, hclk), some of them
->> a third "source_cg"=2E Mt2712 requires an extra 'bus_clk' on some of
->> its controllers, while mt8192 requires 8 clocks=2E
->>=20
->> Move the clock definitions inside if blocks that match on the
->> compatibles=2E
->>=20
->> I used Patch from N=C3=ADcolas F=2E R=2E A=2E Prado and modified it to =
-not using
->> "not" statement=2E
->>=20
->> Fixes: 59a23395d8aa ("dt-bindings: mmc: Add support for MT8192 SoC")
->> Signed-off-by: N=C3=ADcolas F=2E R=2E A=2E Prado <nfraprado@collabora=
-=2Ecom>
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> ---
->> v2:
->> - add this patch
->> v3:
->> - add blank lines and change "not" to matchlist
->> - reorder entries - make generic first then order alphanumeric
->> - rewrite commit description
->> - drop soc-specific mt8183 - constraints were also set for it above
->
->This is wrong, see below=2E
+On Sun, 23 Oct 2022 19:02:32 +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> The PCIe driver covers different SOC which needing different clock
+> configs. Define them based on compatible.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 48 ++++++++++++++-----
+>  1 file changed, 36 insertions(+), 12 deletions(-)
+> 
 
-You are right,will fix in v4
-
->> ---
->>  =2E=2E=2E/devicetree/bindings/mmc/mtk-sd=2Eyaml       | 113 ++++++++++=
-+++-----
->>  1 file changed, 83 insertions(+), 30 deletions(-)
->>=20
->> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml b/Docu=
-mentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
->> index 3cbf0208f1b4=2E=2E31bb6dc329d2 100644
->> --- a/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
->> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd=2Eyaml
->[=2E=2E]
->> =20
->> -if:
->> -  properties:
->> -    compatible:
->> -      contains:
->> -        const: mediatek,mt8183-mmc
->> -then:
->> -  properties:
->> -    reg:
->> -      minItems: 2
->
->You can't drop this=2E Nodes with the mt8183 compatible should keep requi=
-ring two
->reg values=2E It's not covered by the branch below=2E
->
->Thanks,
->N=C3=ADcolas
-
-
-regards Frank
+Reviewed-by: Rob Herring <robh@kernel.org>
 
