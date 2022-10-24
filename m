@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD94DFA373E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 11:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F110C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 11:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mu2A6Ru6vvqSAa8anfcgwfFu/Q/j4bw+8GKC1w2HMmA=; b=QP00DudZbOkRz69zmpfwgoQO+s
-	A9fJLpKggIBK0VkwFLFPIZqsT6qMqRw3aeXxiEeRtY7wRYQK/WBxUKHaUc0dTqgtiyUSLAeV+fyAN
-	JzAVMyWUxnJzD8aDkgKRpdwCc9FrvOsmXoVp506eyGgou2Ickj1XgDMN7OI/jwVTm0kGtm3lp2vt/
-	NV1lcoyk5BiRRpo2eEO9efqaLsgkbfvyZbCU/pJSoAUXiVstyGH7wt8KcRbkebykzxOBCJw18xRCp
-	kh9Wc6I3SuiU+hqQG3PpJO2F48udLgBB+xPQ4qcKXC4YoIa/r6SCpen5UD0cHBRzJPbcemRzDd3Xh
-	jTQ+ZXlQ==;
+	bh=4LfKpOswsnembvGTw5A10DEjilDnUQNy6bx3ya4350M=; b=ktyc19fB5Ey7GJwfzTs4TDtoQD
+	qJV2Jwca2oQC6zzTrtqTeaU0+/XUADVfGBvSpS7iNqUllZdyr8NTwdZoVV8A/USeQ8Xf0NDibbSdR
+	mw4hKqAwtGgJqXGwpQL7j3YZ2HVsDhyOYKWL5iuumqu+GbnXngGJjC8fwNgmHEBkzfFhajotJ6cKU
+	jsY3V6b/84Cc1Vzq3NI+fEkUvnMKoYBD0H996OhfRA5odr8D2YEHQWb43DHhOOsDKbzw58FEXHknt
+	Cq/e3lg8pkTD8ta5u9Sz3jiSiQHz8Nuy8w06QZdljQ0Q3hLMBYQhQ8sMNODqVbr/OY7v27ybtaKYX
+	6LFnwZnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvep-00137l-PC; Mon, 24 Oct 2022 11:30:15 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1omvg4-0013jC-BE; Mon, 24 Oct 2022 11:31:32 +0000
+Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omvV0-000xai-BW; Mon, 24 Oct 2022 11:20:08 +0000
+	id 1omvUy-000xXd-EO; Mon, 24 Oct 2022 11:20:08 +0000
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 9FA5D1FD8D;
-	Mon, 24 Oct 2022 11:20:03 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 483001FD8A;
+	Mon, 24 Oct 2022 11:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1666610403; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1666610400; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mu2A6Ru6vvqSAa8anfcgwfFu/Q/j4bw+8GKC1w2HMmA=;
-	b=1Ddfi5oF53IDn/dEor6K/T+V/aCfrL/W6sW/tT545sWp30MAprfNOr9MyridKrSqfDtAZI
-	ebbFI2M4pL1Z1uiVsH42V8grf97raXsRpVCfa5MeJaU1caiW23JgP+zW63fKCJV9agaiU5
-	xY0Ai+IoQvbFvTjNyZfPs19wDgn/fJM=
+	bh=4LfKpOswsnembvGTw5A10DEjilDnUQNy6bx3ya4350M=;
+	b=m//CahVjAIiwm/8S9Rrkcalu4YtsvYMGGlJ/x4Cns20xgjuFMU4yn3EqTWSWLmkTa9FkiO
+	P1egYdKroy9VxXHn0JsFcKjWtsyvCOmSPeGERoEx8TVmcqNzs14xAcL9DZvbr8t/4xCHCg
+	/2U9Styzy9LPub+xgp0gbwecRUNssHg=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1666610403;
+	s=susede2_ed25519; t=1666610400;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mu2A6Ru6vvqSAa8anfcgwfFu/Q/j4bw+8GKC1w2HMmA=;
-	b=JTRituGpMHUmE6YbaHBmk24BldH2XWaEQXgBvVXUh7zUGL5jFPvQ4ywPocisVX5tACqbjK
-	as4LMfFKnyo2z+CA==
+	bh=4LfKpOswsnembvGTw5A10DEjilDnUQNy6bx3ya4350M=;
+	b=4UdU9G008irTIhYRdGZAhb4TkPgDNu7vcVNG1gFEt2csZ303NBfR+i2HKEQYQeahsz2TFN
+	M+Z1LM+GGDDUmeBQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1F03F13357;
-	Mon, 24 Oct 2022 11:20:03 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 8E1BC13A98;
+	Mon, 24 Oct 2022 11:19:59 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id oF3JBuN0VmOYMgAAMHmgww
-	(envelope-from <tzimmermann@suse.de>); Mon, 24 Oct 2022 11:20:03 +0000
+	id WNHmId90VmOYMgAAMHmgww
+	(envelope-from <tzimmermann@suse.de>); Mon, 24 Oct 2022 11:19:59 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch,
 	airlied@gmail.com,
@@ -88,18 +88,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-tegra@vger.kernel.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v2 10/21] drm/tve200: Include <linux/of.h>
-Date: Mon, 24 Oct 2022 13:19:42 +0200
-Message-Id: <20221024111953.24307-11-tzimmermann@suse.de>
+Subject: [PATCH v2 03/21] drm/vboxvideo: Don't set struct drm_driver.lastclose
+Date: Mon, 24 Oct 2022 13:19:35 +0200
+Message-Id: <20221024111953.24307-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.38.0
 In-Reply-To: <20221024111953.24307-1-tzimmermann@suse.de>
 References: <20221024111953.24307-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_042006_640018_8C325D2D 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221024_042004_683956_5C8A69B8 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,25 +113,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Include <linux/of.h> for of_match_ptr().
+Don't set struct drm_driver.lastclose. It's used to restore the
+fbdev console. But as vboxvideo uses generic fbdev emulation, the
+console is being restored by the DRM client helpers already. See
+the call to drm_client_dev_restore() in drm_lastclose().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/tve200/tve200_drv.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/vboxvideo/vbox_drv.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/tve200/tve200_drv.c b/drivers/gpu/drm/tve200/tve200_drv.c
-index 04db72e3fa9c2..611785e097576 100644
---- a/drivers/gpu/drm/tve200/tve200_drv.c
-+++ b/drivers/gpu/drm/tve200/tve200_drv.c
-@@ -32,6 +32,7 @@
- #include <linux/irq.h>
- #include <linux/io.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/shmem_fs.h>
- #include <linux/slab.h>
+diff --git a/drivers/gpu/drm/vboxvideo/vbox_drv.c b/drivers/gpu/drm/vboxvideo/vbox_drv.c
+index f4f2bd79a7cb6..1cd716eb17a1c 100644
+--- a/drivers/gpu/drm/vboxvideo/vbox_drv.c
++++ b/drivers/gpu/drm/vboxvideo/vbox_drv.c
+@@ -178,8 +178,6 @@ static const struct drm_driver driver = {
+ 	.driver_features =
+ 	    DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+ 
+-	.lastclose = drm_fb_helper_lastclose,
+-
+ 	.fops = &vbox_fops,
+ 	.name = DRIVER_NAME,
+ 	.desc = DRIVER_DESC,
 -- 
 2.38.0
 
