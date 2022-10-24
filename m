@@ -4,94 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E47C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Oct 2022 23:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30144C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 02:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4HTknq9YRuLbulFwFEx4o7i6TtzfHgzwn+Ccmp35GEU=; b=ZZ7N0Pd8pgVwEjKi0S/ijcLI7q
-	Cbu6bHiqVrBHQlYhhL/COakRETdJ1EAh7P2TuYSGtZShfFvAGDRMfXnSKivSbaBDPuxksP1nXQo3o
-	m8z3+mm5qRueRtLcY31cIM7Zqb1Fnvq+mykV0Po/iX27K0RpkBZVe6hM8WtDdhSvxpPkxF0r0q+iV
-	XBUzqRKaLaCD1bK4K5lK/y27OcZCnEs6oSWCmQOztfulsk3IxJ8rlAECv2TCiYQa369X//uYejzMe
-	8P3GQhcj77pShPVp7QQIPzxzebVyjpU9LweFydookAYYAleIDRnad7JhEJCSjk6U5JUAq8lCO4Rb9
-	a4U9fFnQ==;
+	bh=+Dt5S48ijkH3jCYnUMI+LRyOxGVvZm4/fntXbhr+/L8=; b=YXGs9FPIN6tCHI3s8TJj7KrEi1
+	dqwi0/MtMXcjGrWaqm0b1yU3+o3XSslTKtM+AfzH66kva9ZlUntC9nS2rybSbOBHeFwYdvnhhzu+H
+	1ZvGUvzk9yU6Rb/AoIwlplGHWCvfd7pqRYOiSiJ9FNsATpoEVTZG4BI9WZdsBPIgOdRsnC5QdWSUx
+	J4Zxo3zoeMH3MRdgWNucKLQQfu18+avWCKV7bqDYJ50pxa0QnU/AOC1m+uYyG4gXZ80rp+qlH/u4A
+	KYzCM++Xa5S99lCwOoDsFdCdK831rAU4FhidEzeJPFIRYN510wOJtUiKkHoqmn6G6oT5jO6iAY0lp
+	QEXtk+tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omkXC-00GV9J-Jf; Sun, 23 Oct 2022 23:37:38 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1ommqu-00Gl29-Vt; Mon, 24 Oct 2022 02:06:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omkX9-00GV8J-TJ
-	for linux-mediatek@lists.infradead.org; Sun, 23 Oct 2022 23:37:37 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id f22so4855785qto.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Oct 2022 16:37:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4HTknq9YRuLbulFwFEx4o7i6TtzfHgzwn+Ccmp35GEU=;
-        b=V+DcA8VHkywTvzroSILEaWW4mYWin25hdLz1Q9QfocNcb+9rD8WWjaPGkVkNI1Ako5
-         GqD+EXE/hBzVy0YikexMfNjsiJTbewcXcoml+udbQ2KwmTDRYNtoN9W7UE/MsgugXQMZ
-         DLWCZIn/pW+JEri/vqAOwshwmm0L0wMgoCzarkY3FlYrihy7lnRmOzkv5HfdcSQ9CXFX
-         rCNjtrO7pf1YRJENnBojZ4AG59W4OvquwftJC1j6F2jdsCHpVkNT7dlSsnJjPy1XDtNr
-         CAJLOJw74BVmuKOJyEP0d+Z2FIznP2+UhBMghqeVqd1svbeaLUcfmAFQLblwydGIrI1J
-         Lwnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4HTknq9YRuLbulFwFEx4o7i6TtzfHgzwn+Ccmp35GEU=;
-        b=YT5F1vmTWdBpm3K6zlLRHn1rjwH15rkEIaqjUuhD0CSxCkQssI8NlJXcrVlVz3PT+Y
-         AwxmgJYoo9D2jlue9ghXGMgEc8KcK+p3rJDHbhqDkDtRp3iH+grNFCKXPbO5s2Cnsl8i
-         sicLVBw+UnAuWzSPHW1QpJQ1fWavs3Gjw/dTsxmJ6RMnrIuJ1tBYXvQINOO+GbTQzkdL
-         7GZcvHxASb6vSkOVHTkzHtviZyPtXSeYuGcoWI8nJwFUxZWr8AJCmlMOtMXikgKYq85O
-         Zs6h5NQSgftERD3PFP32rN+ul88QsG1okraH64hFN7Ht7cKyqaN9de8in6c0/KntFj4u
-         iqLA==
-X-Gm-Message-State: ACrzQf3eaGw2/3OrmGa6YnIB9wI9tUXUZyODhQXgfGVBnzs2sZsuFIBz
-	+IYWViJsU31E5n8aVzY6SVdUgQ==
-X-Google-Smtp-Source: AMsMyM6rwckOelcCZiDtW/H974ErLN5TU93FI5lGx84DzpID+0M3gXrIY3sNV9Rd2QWsflpqvOOT9w==
-X-Received: by 2002:ac8:58c5:0:b0:39c:c710:f58c with SMTP id u5-20020ac858c5000000b0039cc710f58cmr24698988qta.295.1666568253682;
-        Sun, 23 Oct 2022 16:37:33 -0700 (PDT)
-Received: from [192.168.1.8] ([64.57.193.93])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a132700b006b61b2cb1d2sm13788507qkj.46.2022.10.23.16.37.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 23 Oct 2022 16:37:33 -0700 (PDT)
-Message-ID: <6f28ccf3-ea27-9d5e-bd67-14f7729f713f@linaro.org>
-Date: Sun, 23 Oct 2022 19:37:31 -0400
+	id 1ommqj-00GkyA-Is; Mon, 24 Oct 2022 02:05:59 +0000
+X-UUID: 6e7fc6d9e4514590b1a96daa6c7a0a19-20221023
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+Dt5S48ijkH3jCYnUMI+LRyOxGVvZm4/fntXbhr+/L8=;
+	b=jNHqiXusXN61jR0UYzuyh/f1G6u5xeDFTqgh53PebOI52i0YPSW2/IQ1j7riKHJzaiG0kwEdu8q1XfUbdao4OR8bVLX7/ZCyEes2YRtEioxKZdsYYYvS+cZTD9jY742o4/0xiCuGf+iz0ooqOF3JSHhAPht42Gded9XLy9AAXf8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:2fb44f89-2d25-4b1a-8768-5d0426d7228d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:75
+X-CID-INFO: VERSION:1.1.12,REQID:2fb44f89-2d25-4b1a-8768-5d0426d7228d,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
+	ION:quarantine,TS:75
+X-CID-META: VersionHash:62cd327,CLOUDID:6fa66fc8-03ab-4171-989e-341ab5339257,B
+	ulkID:2210241005465OSNIEZM,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6e7fc6d9e4514590b1a96daa6c7a0a19-20221023
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1205479589; Sun, 23 Oct 2022 19:05:45 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 24 Oct 2022 10:05:08 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 10:05:08 +0800
+From: <xinlei.lee@mediatek.com>
+To: <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
+	<nfraprado@collabora.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
+	<xinlei.lee@mediatek.com>
+Subject: [PATCH v13,3/3] drm: mediatek: Add mt8186 dpi compatibles and platform data
+Date: Mon, 24 Oct 2022 10:04:59 +0800
+Message-ID: <1666577099-3859-4-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1666577099-3859-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1666577099-3859-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH 2/2] dt-bindings: pwm: mediatek: Add compatible string for
- MT7986
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Rob Herring <robh@kernel.org>, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>,
- linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-References: <Y1K53n7LnjoMoIfj@makrotopia.org>
- <20221021222338.GA565200-robh@kernel.org> <Y1MkIdFXrBrrv958@makrotopia.org>
- <5182e3c4-9e5e-2c36-408b-9029c65c8803@linaro.org>
- <Y1UycU0JvwyAv0x2@makrotopia.org>
- <eab019f7-f801-848e-80a3-5bb526d95d53@linaro.org>
- <Y1VXTlQ1dCSoE8N2@makrotopia.org>
- <261cd2fb-05dc-3772-dcc7-3ab1f3c0222c@linaro.org>
- <Y1VhfqBqshkM7mNR@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <Y1VhfqBqshkM7mNR@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="yes"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221023_163736_013063_F1EDB543 
-X-CRM114-Status: GOOD (  41.44  )
+X-CRM114-CacheID: sfid-20221023_190557_631317_26C495B2 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,193 +87,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/10/2022 11:45, Daniel Golle wrote:
-> On Sun, Oct 23, 2022 at 11:29:45AM -0400, Krzysztof Kozlowski wrote:
->> On 23/10/2022 11:01, Daniel Golle wrote:
->>> On Sun, Oct 23, 2022 at 08:39:34AM -0400, Krzysztof Kozlowski wrote:
->>>> On 23/10/2022 08:24, Daniel Golle wrote:
->>>>> Hi Krzysztof,
->>>>>
->>>>> On Sat, Oct 22, 2022 at 12:35:25PM -0400, Krzysztof Kozlowski wrote:
->>>>>> On 21/10/2022 18:58, Daniel Golle wrote:
->>>>>>> On Fri, Oct 21, 2022 at 05:23:38PM -0500, Rob Herring wrote:
->>>>>>>> On Fri, Oct 21, 2022 at 04:25:18PM +0100, Daniel Golle wrote:
->>>>>>>>> Add new compatible string for MT7986 PWM.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>>>>>>>> ---
->>>>>>>>>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
->>>>>>>>>  1 file changed, 1 insertion(+)
->>>>>>>>>
->>>>>>>>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
->>>>>>>>> index 554c96b6d0c3e0..6f4e60c9e18b81 100644
->>>>>>>>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
->>>>>>>>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
->>>>>>>>> @@ -8,6 +8,7 @@ Required properties:
->>>>>>>>>     - "mediatek,mt7623-pwm": found on mt7623 SoC.
->>>>>>>>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
->>>>>>>>>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
->>>>>>>>> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
->>>>>>>>
->>>>>>>> This version of the PWM h/w is not compatible with any of the existing 
->>>>>>>> chips? If it is, it should have a fallback compatible.
->>>>>>>
->>>>>>> No, it is unique because it comes with just 2 PWM channels.
->>>>>>> Otherwise the driver behaves just like for MT8183 (4 channels) or
->>>>>>> MT8365 (3 channels) which also got distinct compatible strings.
->>>>>>
->>>>>> Then something would be here compatible. E.g. If you bound MT8183 with
->>>>>> mt7986-pwm compatible, would you get working device with two channels?
->>>>>
->>>>> Yes, but I'd see another 2 channels which do not work, accessing them
->>>>> may even cause problems (I haven't tried that) as it means accessing
->>>>> an undocumented memory range of the SoC which we in general we
->>>>> shouldn't be messing around with.
->>>>
->>>> Why on MT8183 there would be undocumented memory? Where is undocumented
->>>> memory?
->>>
->>> So we were talking about using the MT8183 compatible for MT7986 SoC, as
->>> the PWM units are identical apart from the number of channels they
->>> offer:
->>
->> No, we talk about MT8183 with mt7986-pwm compatible. Read again my message.
-> 
-> Ok, that was not clear to me. I understood the other way around, to use
-> `mediatek,mt8183-pwm` on MT7986 (and not even introduce an additional
-> compatible for MT7986 in the driver, but only list it as compatibly with
-> existing MT8183 in binding docs).
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-You need dedicated compatible (which will be used by the driver) because
-these are two different devices.
+Add the compatible because use edge_cfg_in_mmsys in mt8186.
 
-https://elixir.bootlin.com/linux/v6.1-rc1/source/Documentation/devicetree/bindings/writing-bindings.rst#L42
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
+ 2 files changed, 23 insertions(+)
 
-
-> So: The to-be newly introduced `mediatek,mt7986-pwm` should work on
-> MT8183 as well, but in that case only two of the four channels would be
-> accessible.
-> 
->>
->>>
->>> MT7986 got 2 PWM channels. The MMIO registers used for those two
->>> channels start at offsets 0x10 (pwm0) and 0x50 (pwm1)
->>>
->>> MT8183 got 4 PWM channels. The MMIO registers used for those four
->>> channels start of offsets 0x10 (pwm0), 0x50 (pwm1), 0x90 (pwm2) and
->>> 0xd0 (pwm3).
->>>
->>> Hence, when using the MT8183 compatible with MT7986, the driver will
->>> access offsets 0x90 and 0xd0 in case the users enables the (bogus)
->>> outputs pwm2 and pwm3. These offsets, however, are not mentioned in the
->>> datasheet, so it has to be considered that writing things to these
->>> undocumented offsets could cause unknown behavior.
->>>
->>> I hope it's more clear now what I mean.
->>
->> But even your case is not correct. On MT7986 the device would still have
->> 2 channels, how the heck he would get 4? Driver binds to ,t7986-pwm
->> compatible, which defines 2 channels.
-> 
-> If we do introduce that new compatible, then yes.
-
-No one here argued against introducing new compatible. The question was
-why these devices are not compatible with each other? Why new compatible
-is not made a part of family of existing compatibles.
-
-
-> I understood you were suggesting to use `mediatek,mt8183` on MT7986
-> hardware which would have resulted in such behavior.
-> 
->>
->>>
->>>>
->>>>>
->>>>> Also note that this case is the same as MT8183 vs. MT8365, they got
->>>>> distinct compatible strings and also for those two the only difference
->>>>> is the number of channels.
->>>>
->>>> So why they are not made compatible?
->>>
->>> My guess is that it's for this very reason:
->>> To correctly communicate the capabilities (in this case: number of
->>> channels) to the driver and not have bogus pwmX show up in the OS
->>> which then causes undocumented MMIO register access in case anyone
->>> tries to actually use them.
->>
->> No, that's not correct reason. There would be no wrong MMIO access and
->> capabilities would be still correctly communicated.
-> 
-> So what exactly do you mean by "made compatible"?
-> In the driver? In DTS files? In DT-bindings?
-
-I review bindings, so by "devices being made compatible" I meant exactly
-what Devicetree specification asks:
-
-"The property value consists of a concatenated list of null terminated
-strings, from most specific to most general. They allow a device to
-express its compatibility with a family of similar devices, potentially
-allowing a single device driver to match against several devices."
-
-Which means that devices share some common characteristics, like
-programming model, and differ by some other pieces. For device drivers,
-usually this also means that a device can use any of the compatibles to
-bind and function properly, within the limits/features of that compatible.
-
->>>>>> If so, they are compatible.
->>>>>
->>>>> By that definition you should remove the additional compatible for
->>>>> MT8365 or rather, it should have been rejected for the same argument.
->>>>>
->>>>> I'm talking about
->>>>> commit fe00faee8060402a3d85aed95775e16838a6dad2
->>>>> commit 394b517585da9fbb2eea2f2103ff47d37321e976
->>>>
->>>> This is a pattern spreading in several Mediatek bindings and we already
->>>> commented on new patches. I don't know why people working on Mediatek do
->>>> not mark pieces compatible.
->>>
->>> Others will have to answer that for you.
->>>
->>> To me this looks a bit like a structural shortcoming of the PWM controller
->>> bindings: if there was a way to tell the driver "hey, this is like MT8183,
->>> but it got only two channels" that would solve it nicely.
->>> This could either be done using child-nodes for each PWM channel or by
->>> simply adding a 'nr-pwms' property.
->>
->> No, it's rather someone did not think about Devicetree compatibles or
->> did not care to design the Mediatek bindings and just copy-paste
->> existing pattern...
-> 
-> So in that case, maybe those existing patterns should be cleaned up?
-> Can you suggest a change? (even informal, I can wrap it up as patch).
-
-Someone knowing the devices should reorganize compatibles to come up
-with family models, e.g. expressed in DT schema like:
-
-oneOf:
- - const: mediatek,mt7986-pwm
- - items:
-     - enum:
-         - mediatek,mt8183-pwm
-     - const: mediatek,mt7986-pwm
-
-and so on.
-
-> To me, code is almost always better documentation than actual
-> documentation, which is usually time consuming to read, hard to
-> understand (compared to reading code or existing examples), and it's
-> commonly full of errors. I hardly waste my time with it, if there is
-> code or existing examples, I will always prefer do read and understand
-> that.
-
-Example schema expresses it:
-
-https://elixir.bootlin.com/linux/v6.0-rc1/source/Documentation/devicetree/bindings/example-schema.yaml#L43
-
-
-
-Best regards,
-Krzysztof
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index ad87ecddf58d..325032fd5343 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -941,6 +941,24 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.csc_enable_bit = CSC_ENABLE,
+ };
+ 
++static const struct mtk_dpi_conf mt8186_conf = {
++	.cal_factor = mt8183_calculate_factor,
++	.reg_h_fre_con = 0xe0,
++	.max_clock_khz = 150000,
++	.output_fmts = mt8183_output_fmts,
++	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
++	.edge_cfg_in_mmsys = true,
++	.pixels_per_iter = 1,
++	.is_ck_de_pol = true,
++	.swap_input_support = true,
++	.support_direct_pin = true,
++	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
++	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
++	.csc_enable_bit = CSC_ENABLE,
++};
++
+ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.cal_factor = mt8183_calculate_factor,
+ 	.reg_h_fre_con = 0xe0,
+@@ -1091,6 +1109,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = &mt8183_conf,
+ 	},
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = &mt8186_conf,
++	},
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = &mt8192_conf,
+ 	},
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 546b79412815..3d32fbc66ac1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -646,6 +646,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8195-dp-intf",
+-- 
+2.18.0
 
 
