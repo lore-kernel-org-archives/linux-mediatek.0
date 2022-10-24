@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 282F5C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 22:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454E0C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 22:11:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=stUhgmxHOajI9uqfx7NpPsmu7P60GiPKRF/7gBID+dg=; b=FrhInfU2IHas6pK5yXmtHLnXRW
-	v9ZVNNkARnanzT2S/TKvtSHhoZDU5PKo8SDCYVvagmFkmu6ixJjefmPwnFQlS5vG8VBWj6nZOn6zT
-	DehQlZv144u/hraXhvxbB7asLFFfrvVgkkCEQ5f2xaPECG+WEOWRGZIjDxcRNpSld2pkEfi3lnsZw
-	Ct5ake/VorC8ROjRhUC6Y2bkHk5ciyLz5y5syC+WlhlUj89Se870gwf/C4AlEnHXFp8dlUodBOakv
-	ZkkcUVAdHJLd7Jg+DNsXBov4dSE7UnYjsV4wjBQOE0rnIcoZoMVRgnXdrdOPLMgvjnuNBoho8k3aY
-	t2MBDCzw==;
+	bh=stUhgmxHOajI9uqfx7NpPsmu7P60GiPKRF/7gBID+dg=; b=DV7PtnwHM9ZNW/WHAdpTsz/6AQ
+	KucOSnyJuzs8DCDN0kvNnYOk+lE2aqj4IlCBfVRO7/31HNYva1qqb1MdgSHnpEm261YKnWKEvFIoU
+	EINwklpJx60ZZmx0X0BP/BuKPitkdlhUTcb+fB0wt27sf7kUhzR5rinGgCeUfIWmRGyPzUBj0zoq2
+	pIrqxhy3d+9ii562NbHxBnxBROU1nV3UecU9LWHytiEbVSvEGs84hjDHipJuIZyPK/+okxBZGzgsU
+	PkCZZS60qwX9ti1ineUO1kdLrkigPMPgbN/qqPQvv2kyXkoXbIVAwXZMGxKGbMoeU3IPD1QmkNZ5R
+	gd5GykbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5eJ-003EA7-Bi; Mon, 24 Oct 2022 22:10:23 +0000
-Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
+	id 1on5ex-003EQZ-Hs; Mon, 24 Oct 2022 22:11:03 +0000
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on5eH-003E8e-BA
-	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 22:10:22 +0000
-Received: by mail-vs1-xe33.google.com with SMTP id 128so9234304vsz.12
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 15:10:20 -0700 (PDT)
+	id 1on5ev-003EOo-2H
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 22:11:02 +0000
+Received: by mail-vs1-xe2f.google.com with SMTP id h3so9228430vsa.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 15:11:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
         bh=stUhgmxHOajI9uqfx7NpPsmu7P60GiPKRF/7gBID+dg=;
-        b=aI7jghSe4eTqhLetWbp1CUXeviJT+nB0niZcj1EYJhDL5AD7HaUHBIBnjyFt5wHzMX
-         kuoy1TdwweW1mYpeAVavBgwSy7Cv65g5xnnQB6RTCg6Ou9V1otGvwMjJixkYCFuabC5v
-         yIqXOu/FOjlFETGXBPo0qK53a/g8ByJg0I/uI=
+        b=bEFddOpdoZI+TExGmAdpUfmJNoo8dPBXr0GJGSgul5kqwh++/sgfJQl8+oGEvFD2ne
+         kpz6K8eWDmAVOCEWOuk3k3vaLpcYn1giG0Y4laOx4hW3kM36CeJfyuYRXRoygTCeOInv
+         vgzrStxX8eomyhmjrg03uh7HfE8n1gEyEMRiw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
         bh=stUhgmxHOajI9uqfx7NpPsmu7P60GiPKRF/7gBID+dg=;
-        b=gTGvAIPTc2vSqfJK0ktERfOLayOxPLgcb72LEENCOJSrsMaqnR60Re3iz/P9vZC/lm
-         04EIv372Yy2zNGaCfN8y1438YL/bP23kEPAWU9bAkTVkRyTaEHHUmfzyZ8x63b9BKD5p
-         g2V4N1aU2pWd7/X0YoO4rxWEp4s3hgg3w6/AentRcucFF/OQ99xJUgH2Br/hJ3Xg0YlB
-         nCqXgEmjayyNCksLDdGmEZ6ZF+F1y8VcFKsAwF8+4c9AE1AdJBxP8zPY6Y5mwFdzlxb3
-         tc1MplgVAFgJglfoLAhsB9ttfjlut7SOz3+4IRogv3m6YShHp+WTMTj6EIpc2gnhqpAl
-         WZHQ==
-X-Gm-Message-State: ACrzQf0zLJJTkKVZDpdZXaPaWXjMhiGDTwUPkkJ0LBjefrGJmxh0jVZj
-	bkf0qtLvaZpZIMDy5IsllXtVOSdy9wbnv07PMzGX3A==
-X-Google-Smtp-Source: AMsMyM4mF8OtH43I5lB0/0j3s/Xrw1R6qcOOGU77MvOGbIdfp4X/GbRrXsUymIVx+BbzSWL5HqwmMg4nQImm+z6TjYI=
-X-Received: by 2002:a67:f684:0:b0:392:ac17:f9b0 with SMTP id
- n4-20020a67f684000000b00392ac17f9b0mr20569192vso.85.1666649420213; Mon, 24
- Oct 2022 15:10:20 -0700 (PDT)
+        b=kfnFNPualoT3ABsaVANeX+CJbcismChRxfFv4wzYVXkk3hMurYs45AQG2Ho83PLR2e
+         2xAygV3Tfdt/P2PwGBB+BxZmJWtHG9H71PO6hDMhYsdFPIA1ONRw7vuz7tBOgZLTzR8g
+         Cx9ROGD2YBw6co/0bOk9zizvQi2TiPx9mDPqhaFErIzPFuuVYXm51Ygsy6nQE9ATpKz7
+         jCJZvTsGI8TKzMM5VCtJjfWJyS8jHTAbHT4giO3xZ6LbuZSlePfp80UObSO44t42UL9a
+         RQxjnHDhmfrJGBjh3916P/1h1N9Ju4WJuwLWme183hgnYpBIuKQnX0q4bS4MgZ8WlkT9
+         W5mg==
+X-Gm-Message-State: ACrzQf32fo51j9Uq3HDDUjeXsFuKkK5sqgRkWjJKFw5Q8EUA6nnuuQH7
+	mE6lRa7IK9U6/SdFl4kCsZPU0NwELjNbfNXbsUYPxQ==
+X-Google-Smtp-Source: AMsMyM4Efc9ufDsXBeEA5wir0gCDCtXUofm53iFeyXJEoyskf089urS75VK07NTr4nbtrLk6Bk5gGbtapSYnxvi7JQg=
+X-Received: by 2002:a67:f106:0:b0:3aa:efc:8610 with SMTP id
+ n6-20020a67f106000000b003aa0efc8610mr6032143vsk.65.1666649460086; Mon, 24 Oct
+ 2022 15:11:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com> <20221024102307.33722-8-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221024102307.33722-8-angelogioacchino.delregno@collabora.com>
+References: <20221024102307.33722-1-angelogioacchino.delregno@collabora.com> <20221024102307.33722-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221024102307.33722-9-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 24 Oct 2022 15:10:09 -0700
-Message-ID: <CAGXv+5GLWLcG8n0vVjKV2rNHpVOxGfz_63OmZSfjqk503gADLw@mail.gmail.com>
-Subject: Re: [PATCH 07/10] clk: mediatek: mt8192: Drop flags for main/univpll
- fixed factors
+Date: Mon, 24 Oct 2022 15:10:48 -0700
+Message-ID: <CAGXv+5EG0TwE6pEyEb3sK3bU8DWzbtQqPgtWcudJ0KpbR3XrCg@mail.gmail.com>
+Subject: Re: [PATCH 08/10] clk: mediatek: mt8195-topckgen: Drop flags for
+ main/univpll fixed factors
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com, 
 	miles.chen@mediatek.com, nfraprado@collabora.com, rex-bc.chen@mediatek.com, 
@@ -70,7 +70,7 @@ Cc: sboyd@kernel.org, mturquette@baylibre.com, matthias.bgg@gmail.com,
 	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_151021_425883_F262B510 
+X-CRM114-CacheID: sfid-20221024_151101_128948_BC01A45D 
 X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
