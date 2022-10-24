@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39535C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 14:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36399ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 15:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BrxfrDUbPsUFpThWqA9RSxt3bESyLFU8TgRiCKoKos4=; b=JTDsxtmGirwz+jb6TqiO9jdfnm
-	SEXuVOaAXr/e8ddYir9tEl2i77f8fprWa3zptCTrnVt5wdWIU6zJov0IpYYLKei4p3lC3ByNL0Cm9
-	BnOaX3rvAuubzY9FkA5V5SgiHEEoVPJLfnxbiKE5Eri1VF83Mab3HAy5e2adD4kYw0j5b9HZZavC1
-	VTtyVr00YN44Kv5WBGEhYW9hsZcPdAiYAUncgl0zkn8NcRev0OD70wRgzciJbiHwNSBrLGOm4DrDU
-	VRXm90PqPfYuTxLoZDl9G1fRjtzkpoAK79EEZrPGOOwRNQuwmt/lTS5om5CjXdfL8rr9uDtdblJij
-	kQMIJCqA==;
+	bh=5jm8Z/STsh6ZtSXhL0p68t3mhS6r4bb6F/JkO48Wf2I=; b=ibAFxH/b94+iZbDebo7VwD6RsU
+	AhLRC15EVP+sRkfw/xExCFYO4v2Q7/No7Ct3g3FCwh+10iLY3M6w6vCdM3sy2hxptXJcnAcwEU0kn
+	TDAEXz/zWRd4EPToDBOAWuvAYKmAzRu0+mQkmxnr7/p6X5vGZH9iHzTKIefqngQoINv1eTN0/ewz5
+	er+jyKNXEOn142usVpSvxjtK27KeqbiqHCCIDnZmra1JeD+0ViDsvDIS14xXFH1louy4ijWe+DTDg
+	AoZsdtHFgslNv25V46unk94ghqLPUFzgDZMpXUcgWbw5cchvFCXrnmmtMzuVqbDJN6Ysf+aUWH5mw
+	Xxp4eCfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omytM-0020lt-K6; Mon, 24 Oct 2022 14:57:28 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1omzf9-002AT4-Ik; Mon, 24 Oct 2022 15:46:51 +0000
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omytB-0020ge-Nv; Mon, 24 Oct 2022 14:57:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=BrxfrDUbPsUFpThWqA9RSxt3bESyLFU8TgRiCKoKos4=; b=hUFyDn4iEM2Umosu5AGmbJVVWt
-	Gd8sS4dlaaccEMpfxIA+FTJfDLsCW3BaDAKG3WhFItnfHCxaubrTdZcHF8xD8CMyGl3OmKYss13IE
-	cf7PvX1v+ed7wIBYbKJjEjVdhn9MaeL34ZUWWMpOrhVUUo9bZHo4GVCsmH33ynRef9Y1jXHk6l4fg
-	G8iouAdGGN7jn0NThsBLmMWXfD+Xc0Zq7a7DnyNRFXx9xAcR78IQiUioEthdkXoKBCJEAQ2fpzM3Y
-	CHABnGcBjLNwmN00otsMN4Yv0UHBCNvxhe1dp3ZPOwFbs7nuc1SQJMrsZ+/bVPXsQK4n67mIGfEfg
-	ncRzNHSA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34932)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1omysw-0003Fd-7H; Mon, 24 Oct 2022 15:57:02 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1omysk-0007DB-GY; Mon, 24 Oct 2022 15:56:50 +0100
-Date: Mon, 24 Oct 2022 15:56:50 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
-	Alexander Couzens <lynxis@fe80.eu>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: Re: Re: Re: [PATCH v2] net: mtk_sgmii: implement mtk_pcs_ops
-Message-ID: <Y1ansgmD69AcITWx@shell.armlinux.org.uk>
-References: <Y1UMrvk2A9aAcjo5@shell.armlinux.org.uk>
- <trinity-5350c2bc-473d-408f-a25a-16b34bbfcba7-1666537529990@3c-app-gmx-bs01>
- <Y1Vh5U96W2u/GCnx@shell.armlinux.org.uk>
- <trinity-1d4cc306-d1a4-4ccf-b853-d315553515ce-1666543305596@3c-app-gmx-bs01>
- <Y1V/asUompZKj0ct@shell.armlinux.org.uk>
- <trinity-ac9a840b-cb06-4710-827a-4c4423686074-1666551838763@3c-app-gmx-bs01>
- <trinity-169e3c3f-3a64-485c-9a43-b7cc595531a9-1666552897046@3c-app-gmx-bs01>
- <Y1Wfc+M/zVdw9Di3@shell.armlinux.org.uk>
- <Y1Zah4+hyFk50JC6@shell.armlinux.org.uk>
- <trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
+	id 1omzcA-0029Bj-Ca
+	for linux-mediatek@lists.infradead.org; Mon, 24 Oct 2022 15:43:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+  t=1666626226; x=1698162226;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5jm8Z/STsh6ZtSXhL0p68t3mhS6r4bb6F/JkO48Wf2I=;
+  b=xSxzBX1y7Inwp/5riIEp30nEfZrtL41eDSLWsWe7d0bOdAJ1YPUjcZTp
+   frUsDGgmAp61KJNubgVOFL5I81TtKervG2G+DNoIqoa0N5IPGIdI5GIBb
+   ybiQY9IDdHQ0aUbTR1lCSEwPwm0SeNU8nSNdN5GEISw5Ri8j6fseg21n3
+   c=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+  by alexa-out-sd-02.qualcomm.com with ESMTP; 24 Oct 2022 08:43:41 -0700
+X-QCInternal: smtphost
+Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
+  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 08:43:41 -0700
+Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Mon, 24 Oct 2022 08:43:40 -0700
+Date: Mon, 24 Oct 2022 08:43:40 -0700
+From: Asutosh Das <quic_asutoshd@quicinc.com>
+To: <peter.wang@mediatek.com>
+CC: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>, <wsd_upstream@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+Subject: Re: [PATCH v1] ufs: core: print more evt history
+Message-ID: <20221024154340.GC18511@asutoshd-linux1.qualcomm.com>
+References: <20221024120602.30019-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"; format=flowed
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <trinity-d2f74581-c020-4473-a5f4-0fc591233293-1666622740261@3c-app-gmx-bap55>
+In-Reply-To: <20221024120602.30019-1-peter.wang@mediatek.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_075717_801763_BAE7200F 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20221024_084346_515820_D92D604E 
+X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +83,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 24, 2022 at 04:45:40PM +0200, Frank Wunderlich wrote:
-> Hi
-> > Gesendet: Montag, 24. Oktober 2022 um 11:27 Uhr
-> > Von: "Russell King (Oracle)" <linux@armlinux.org.uk>
-> 
-> > Here's the combined patch for where I would like mtk_sgmii to get to.
-> >
-> > It looks like this PCS is similar to what we know as pcs-lynx.c, but
-> > there do seem to be differences - the duplex bit for example appears
-> > to be inverted.
-> >
-> > Please confirm whether this still works for you, thanks.
-> 
-> basicly Patch works, but i get some (1-50) retransmitts on iperf3 on first interval in tx-mode (on r3 without -R), other 9 are clean. reverse mode is mostly clean.
-> run iperf3 multiple times, every first interval has retransmitts. same for gmac0 (fixed-link 2500baseX)
-> 
-> i notice that you have changed the timer again to 10000000 for 1000/2500baseX...maybe use here the default value too like the older code does?
+On Mon, Oct 24 2022 at 06:11 -0700, peter.wang@mediatek.com wrote:
+>From: Peter Wang <peter.wang@mediatek.com>
+>
+>Some error event is missing in ufshcd_print_evt_hist.
+>Add print for this error event.
+>
+>Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+>---
+> drivers/ufs/core/ufshcd.c | 3 +++
+> 1 file changed, 3 insertions(+)
+>
+Reviewed-by: Asutosh Das <quic_asutoshd@quicinc.com>
 
-You obviously missed my explanation. I will instead quote the 802.3
-standard which covers 1000base-X:
-
-37.3.1.4 Timers
-
- link_timer
-          Timer used to ensure Auto-Negotiation protocol stability and
-	  register read/write by the management interface.
-
-	  Duration: 10 ms, tolerance +10 ms, –0 s.
-
-For SGMII, the situation is different. Here is what the SGMII
-specification says:
-
-  The link_timer inside the Auto-Negotiation has been changed from 10
-  msec to 1.6 msec to ensure a prompt update of the link status.
-
-So, 10ms is correct for 1000base-X, and 1.6ms correct for SGMII.
-
-However, feel free to check whether changing it solves that issue, but
-also check whether it could be some ARP related issue - remember, if
-two endpoints haven't communicated, they need to ARP to get the other
-end's ethernet addresses which adds extra latency, and may result in
-some packet loss in high packet queuing rate situations.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+>2.18.0
+>
 
