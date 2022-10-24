@@ -4,49 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70122FA373E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AEE7ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5qAxwgLvkE7E2tlc+4zJP54xQXA6JU1MBEYyndOecSs=; b=DHA8qvObSP2uzbAaissZ/WtExX
-	pHSshEDiSrV10+Qk7Z71mnrdtcTcY2/iEQL7PsWR56QRRBp4SP73LWoHuFG3iWvl61DSEn1mRV6XJ
-	RIVt/5RTSjeHr+/juwvoOk8Xy7yM7kd0plw59XBulVo8juoBN0WyyTS4ti2zx+Yz+XzJHbTUC4gsU
-	J+YoCpRGIg71v5QiQ9exSbLJba1+iCGdtz3wXb56PN5N4Ly4csfrfl0XlSEJeLNogDGCaC4cgyyMQ
-	tTt9w+RPFvx5pXl75RWkH4478NUglmsy6qxXVOx9nSxq2PgfEQQCt1NEEm+c91Go14CqpIrKN8ljW
-	FazAs3lw==;
+	bh=ttbTAdXIa0anafMCD2TileSXQbHbiN64d5i8FqHiMEw=; b=RulXYYHP7uAWPcZ/NTlsw4hWBP
+	CeYQ/+s9hFfyd4v4r/IsVeGZVTO6KU0eN3wu3eN1gP9x7SoQ1LLJj58w1K5f9mXPn9z+LQxcI1HFh
+	WAzcXEhsGvh+/Te6GU9UqqDIc6T7i5q3YiUF5xFfGuoWNhOWluENCwdKxpteemHusDnQl2KnWCuZV
+	7nnZSdiV/AS07Y5nAp0fxe1LIlGJHtE43fQpjx7cbPDs0z/UYEUCwPXjk2YqQrclMJBDJprHAH7F2
+	a5//ZJmKKm4OWK1Vklr5Q5UsyzGZap7Svb5xvgd9zUBIL4Lzta23lE5M08QRxrXNY1hCGTgpKWmWU
+	O5UgnGTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omtzL-000Rsx-A9; Mon, 24 Oct 2022 09:43:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1omtzV-000Rv7-OJ; Mon, 24 Oct 2022 09:43:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omtzI-000Rr7-KO; Mon, 24 Oct 2022 09:43:18 +0000
-X-UUID: 39fcad6b8d9b454ca8ec1c4d5794c0cc-20221024
+	id 1omtzJ-000RrX-K7; Mon, 24 Oct 2022 09:43:20 +0000
+X-UUID: 4c40197a1f2f4f79864f28cad1e921e2-20221024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5qAxwgLvkE7E2tlc+4zJP54xQXA6JU1MBEYyndOecSs=;
-	b=lq4o9DNcdVJjHMh6Srk7cH0WvRIE+DM90U2XUqs6Hr2TBpLoI53H1/dw3bastAUIeZu5QyUREeGfaUlM8b2FVgjwDgeHVaxTx6ZFOk5t3e+Z5pXfjNXssD60fWU46XIUObtmhatHfsv1WGO6HyfMMFyhy4651xZfSnAEaM23xzE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ttbTAdXIa0anafMCD2TileSXQbHbiN64d5i8FqHiMEw=;
+	b=AC7fM3vpQzkmI51fUpuijhgKzhbeQb89e4L0PV6B6QSVm74PdmyGRi9/S5c3pAeJVINuRDjdooPKS89lEkYrNOJzCTYcyGz23PvXmzyEfoRsGeWf/F4V/dLTl9+T+HKdz7mLg5WyBzgvCspPhqRUbGK5/9AhYxoYRMCBmkQx/XQ=;
+X-CID-UNFAMILIAR: 1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:8c3ea22c-fcf4-47f7-a008-e75bf85fa523,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:74dde86c-89d3-4bfa-baad-dc632a24bca3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 39fcad6b8d9b454ca8ec1c4d5794c0cc-20221024
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.12,REQID:fbf6e8b9-57f2-4b38-b5ea-4b1f64905500,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.12,REQID:fbf6e8b9-57f2-4b38-b5ea-4b1f64905500,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:62cd327,CLOUDID:10747be4-e572-4957-be22-d8f73f3158f9,B
+	ulkID:221024174311JJLODTI1,BulkQuantity:0,Recheck:0,SF:38|28|16|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4c40197a1f2f4f79864f28cad1e921e2-20221024
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 934884044; Mon, 24 Oct 2022 02:43:04 -0700
+	with ESMTP id 1436395713; Mon, 24 Oct 2022 02:43:08 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 24 Oct 2022 17:43:01 +0800
+ 15.2.792.15; Mon, 24 Oct 2022 17:43:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:01 +0800
+ 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:05 +0800
 From: Garmin.Chang <Garmin.Chang@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -57,9 +61,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH v2 02/19] clk: mediatek: Add MT8188 apmixedsys clock support
-Date: Mon, 24 Oct 2022 17:42:37 +0800
-Message-ID: <20221024094254.29218-3-Garmin.Chang@mediatek.com>
+Subject: [PATCH v2 05/19] clk: mediatek: Add MT8188 infrastructure clock support
+Date: Mon, 24 Oct 2022 17:42:40 +0800
+Message-ID: <20221024094254.29218-6-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
 References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
@@ -67,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_024316_697681_F41A483C 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20221024_024317_686707_A6E3E541 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,211 +87,229 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 apmixedsys clock controller which provides Plls
-generated from SoC 26m and ssusb clock gate control.
+Add MT8188 infrastructure clock controller which provides
+clock gate control for basic IP like pwm, uart, spi and so on.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-Change-Id: I3b1b44155cc5bfe5ba6e860de857e7e9f48b66a7
 ---
- drivers/clk/mediatek/Kconfig                 |  11 ++
- drivers/clk/mediatek/Makefile                |   1 +
- drivers/clk/mediatek/clk-mt8188-apmixedsys.c | 153 +++++++++++++++++++
- 3 files changed, 165 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+ drivers/clk/mediatek/Makefile              |   2 +-
+ drivers/clk/mediatek/clk-mt8188-infra_ao.c | 194 +++++++++++++++++++++
+ 2 files changed, 195 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-infra_ao.c
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 843cea0c7a44..e24e0a14fbd8 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -557,6 +557,17 @@ config COMMON_CLK_MT8186
- 	help
- 	  This driver supports MediaTek MT8186 clocks.
- 
-+config COMMON_CLK_MT8188
-+	bool "Clock driver for MediaTek MT8188"
-+	depends on ARM64 || COMPILE_TEST
-+	select COMMON_CLK_MEDIATEK
-+	default ARCH_MEDIATEK
-+	help
-+	  This driver supports MediaTek MT8188 basic clocks and clocks
-+	  required for various peripheral found on MediaTek. Choose
-+	  M or Y here if you want to use clocks such as peri_ao,
-+	  infra_ao, etc.
-+
- config COMMON_CLK_MT8192
- 	bool "Clock driver for MediaTek MT8192"
- 	depends on ARM64 || COMPILE_TEST
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index ea3b73240303..957530b4303f 100644
+index 87000d148125..3048de0131ef 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -82,6 +82,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
- 				   clk-mt8186-mfg.o clk-mt8186-mm.o clk-mt8186-wpe.o \
+@@ -83,7 +83,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
  				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
  				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
-+obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o
+ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
+-				   clk-mt8188-peri_ao.o
++				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+diff --git a/drivers/clk/mediatek/clk-mt8188-infra_ao.c b/drivers/clk/mediatek/clk-mt8188-infra_ao.c
 new file mode 100644
-index 000000000000..f09e11d0261e
+index 000000000000..a98f294ccca4
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-@@ -0,0 +1,153 @@
++++ b/drivers/clk/mediatek/clk-mt8188-infra_ao.c
+@@ -0,0 +1,194 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
 +// Author: Garmin Chang <garmin.chang@mediatek.com>
 +
-+#include <linux/of_device.h>
++#include <linux/clk-provider.h>
 +#include <linux/platform_device.h>
 +#include <dt-bindings/clock/mediatek,mt8188-clk.h>
 +
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
-+#include "clk-pll.h"
 +
-+static const struct mtk_gate_regs apmixed_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x8,
++static const struct mtk_gate_regs infra_ao0_cg_regs = {
++	.set_ofs = 0x80,
++	.clr_ofs = 0x84,
++	.sta_ofs = 0x90,
 +};
 +
-+#define GATE_APMIXED(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-+
-+static const struct mtk_gate apmixed_clks[] = {
-+	GATE_APMIXED(CLK_APMIXED_PLL_SSUSB26M_EN, "pll_ssusb26m_en", "clk26m", 1),
++static const struct mtk_gate_regs infra_ao1_cg_regs = {
++	.set_ofs = 0x88,
++	.clr_ofs = 0x8c,
++	.sta_ofs = 0x94,
 +};
 +
-+#define MT8188_PLL_FMAX		(3800UL * MHZ)
-+#define MT8188_PLL_FMIN		(1500UL * MHZ)
-+#define MT8188_INTEGER_BITS	8
++static const struct mtk_gate_regs infra_ao2_cg_regs = {
++	.set_ofs = 0xa4,
++	.clr_ofs = 0xa8,
++	.sta_ofs = 0xac,
++};
 +
-+#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,		\
-+	    _rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,		\
-+	    _tuner_reg, _tuner_en_reg, _tuner_en_bit,			\
-+	    _pcw_reg, _pcw_shift, _pcw_chg_reg,				\
-+	    _en_reg, _pll_en_bit) {					\
-+		.id = _id,						\
-+		.name = _name,						\
-+		.reg = _reg,						\
-+		.pwr_reg = _pwr_reg,					\
-+		.en_mask = _en_mask,					\
-+		.flags = _flags,					\
-+		.rst_bar_mask = _rst_bar_mask,				\
-+		.fmax = MT8188_PLL_FMAX,				\
-+		.fmin = MT8188_PLL_FMIN,				\
-+		.pcwbits = _pcwbits,					\
-+		.pcwibits = MT8188_INTEGER_BITS,			\
-+		.pd_reg = _pd_reg,					\
-+		.pd_shift = _pd_shift,					\
-+		.tuner_reg = _tuner_reg,				\
-+		.tuner_en_reg = _tuner_en_reg,				\
-+		.tuner_en_bit = _tuner_en_bit,				\
-+		.pcw_reg = _pcw_reg,					\
-+		.pcw_shift = _pcw_shift,				\
-+		.pcw_chg_reg = _pcw_chg_reg,				\
-+		.en_reg = _en_reg,					\
-+		.pll_en_bit = _pll_en_bit,				\
++static const struct mtk_gate_regs infra_ao3_cg_regs = {
++	.set_ofs = 0xc0,
++	.clr_ofs = 0xc4,
++	.sta_ofs = 0xc8,
++};
++
++static const struct mtk_gate_regs infra_ao4_cg_regs = {
++	.set_ofs = 0xe0,
++	.clr_ofs = 0xe4,
++	.sta_ofs = 0xe8,
++};
++
++#define GATE_INFRA_AO0_FLAGS(_id, _name, _parent, _shift, _flag)                \
++	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao0_cg_regs, _shift, \
++		&mtk_clk_gate_ops_setclr, _flag)
++
++#define GATE_INFRA_AO0(_id, _name, _parent, _shift)	\
++	GATE_INFRA_AO0_FLAGS(_id, _name, _parent, _shift, 0)
++
++#define GATE_INFRA_AO1_FLAGS(_id, _name, _parent, _shift, _flag)		\
++	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao1_cg_regs, _shift,	\
++		&mtk_clk_gate_ops_setclr, _flag)
++
++#define GATE_INFRA_AO1(_id, _name, _parent, _shift)	\
++	GATE_INFRA_AO1_FLAGS(_id, _name, _parent, _shift, 0)
++
++#define GATE_INFRA_AO2(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &infra_ao2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_INFRA_AO3_FLAGS(_id, _name, _parent, _shift, _flag)		\
++	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao3_cg_regs, _shift,	\
++		&mtk_clk_gate_ops_setclr, _flag)
++
++#define GATE_INFRA_AO3(_id, _name, _parent, _shift)	\
++	GATE_INFRA_AO3_FLAGS(_id, _name, _parent, _shift, 0)
++
++#define GATE_INFRA_AO4_FLAGS(_id, _name, _parent, _shift, _flag)		\
++	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao4_cg_regs, _shift,	\
++		&mtk_clk_gate_ops_setclr, _flag)
++
++#define GATE_INFRA_AO4(_id, _name, _parent, _shift)	\
++	GATE_INFRA_AO4_FLAGS(_id, _name, _parent, _shift, 0)
++
++static const struct mtk_gate infra_ao_clks[] = {
++	/* INFRA_AO0 */
++	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_TMR, "infra_ao_pmic_tmr", "top_pwrap_ulposc", 0),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_AP, "infra_ao_pmic_ap", "top_pwrap_ulposc", 1),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_MD, "infra_ao_pmic_md", "top_pwrap_ulposc", 2),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_CONN, "infra_ao_pmic_conn", "top_pwrap_ulposc", 3),
++	/* infra_ao_sej is main clock is for secure engine with JTAG support */
++	GATE_INFRA_AO0_FLAGS(CLK_INFRA_AO_SEJ, "infra_ao_sej", "top_axi", 5, CLK_IS_CRITICAL),
++	GATE_INFRA_AO0(CLK_INFRA_AO_APXGPT, "infra_ao_apxgpt", "top_axi", 6),
++	GATE_INFRA_AO0(CLK_INFRA_AO_GCE, "infra_ao_gce", "top_axi", 8),
++	GATE_INFRA_AO0(CLK_INFRA_AO_GCE2, "infra_ao_gce2", "top_axi", 9),
++	GATE_INFRA_AO0(CLK_INFRA_AO_THERM, "infra_ao_therm", "top_axi", 10),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM_HCLK, "infra_ao_pwm_h", "top_axi", 15),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM1, "infra_ao_pwm1", "top_pwm", 16),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM2, "infra_ao_pwm2", "top_pwm", 17),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM3, "infra_ao_pwm3", "top_pwm", 18),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM4, "infra_ao_pwm4", "top_pwm", 19),
++	GATE_INFRA_AO0(CLK_INFRA_AO_PWM, "infra_ao_pwm", "top_pwm", 21),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART0, "infra_ao_uart0", "top_uart", 22),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART1, "infra_ao_uart1", "top_uart", 23),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART2, "infra_ao_uart2", "top_uart", 24),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART3, "infra_ao_uart3", "top_uart", 25),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART4, "infra_ao_uart4", "top_uart", 26),
++	GATE_INFRA_AO0(CLK_INFRA_AO_GCE_26M, "infra_ao_gce_26m", "clk26m", 27),
++	GATE_INFRA_AO0(CLK_INFRA_AO_CQ_DMA_FPC, "infra_ao_dma", "pad_fpc_ck", 28),
++	GATE_INFRA_AO0(CLK_INFRA_AO_UART5, "infra_ao_uart5", "top_uart", 29),
++	/* INFRA_AO1 */
++	GATE_INFRA_AO1(CLK_INFRA_AO_HDMI_26M, "infra_ao_hdmi_26m", "clk26m", 0),
++	GATE_INFRA_AO1(CLK_INFRA_AO_SPI0, "infra_ao_spi0", "top_spi", 1),
++	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC0, "infra_ao_msdc0", "top_msdc5hclk", 2),
++	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC1, "infra_ao_msdc1", "top_axi", 4),
++	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC2, "infra_ao_msdc2", "top_axi", 5),
++	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC0_SRC, "infra_ao_msdc0_clk", "top_msdc50_0", 6),
++	/* infra_ao_dvfsrc is for internal DVFS usage, should not be handled by Linux. */
++	GATE_INFRA_AO1_FLAGS(CLK_INFRA_AO_DVFSRC, "infra_ao_dvfsrc",
++			     "clk26m", 7, CLK_IS_CRITICAL),
++	GATE_INFRA_AO1(CLK_INFRA_AO_TRNG, "infra_ao_trng", "top_axi", 9),
++	GATE_INFRA_AO1(CLK_INFRA_AO_AUXADC, "infra_ao_auxadc", "clk26m", 10),
++	GATE_INFRA_AO1(CLK_INFRA_AO_CPUM, "infra_ao_cpum", "top_axi", 11),
++	GATE_INFRA_AO1(CLK_INFRA_AO_HDMI_32K, "infra_ao_hdmi_32k", "clk32k", 12),
++	GATE_INFRA_AO1(CLK_INFRA_AO_CEC_66M_HCLK, "infra_ao_cec_66m_hclk", "top_axi", 13),
++	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_26M, "infra_ao_pcie_tl_26m", "clk26m", 15),
++	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC1_SRC, "infra_ao_msdc1_clk", "top_msdc30_1", 16),
++	GATE_INFRA_AO1(CLK_INFRA_AO_CEC_66M_BCLK, "infra_ao_cec_66m_bclk", "top_axi", 17),
++	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_96M, "infra_ao_pcie_tl_96m", "top_tl", 18),
++	/* infra_ao_dapc is for device access permission control module */
++	GATE_INFRA_AO1_FLAGS(CLK_INFRA_AO_DEVICE_APC, "infra_ao_dapc",
++			     "top_axi", 20, CLK_IS_CRITICAL),
++	GATE_INFRA_AO1(CLK_INFRA_AO_ECC_66M_HCLK, "infra_ao_ecc_66m_hclk", "top_axi", 23),
++	GATE_INFRA_AO1(CLK_INFRA_AO_DEBUGSYS, "infra_ao_debugsys", "top_axi", 24),
++	GATE_INFRA_AO1(CLK_INFRA_AO_AUDIO, "infra_ao_audio", "top_axi", 25),
++	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_32K, "infra_ao_pcie_tl_32k", "clk32k", 26),
++	GATE_INFRA_AO1(CLK_INFRA_AO_DBG_TRACE, "infra_ao_dbg_trace", "top_axi", 29),
++	GATE_INFRA_AO1(CLK_INFRA_AO_DRAMC_F26M, "infra_ao_dramc26", "clk26m", 31),
++	/* INFRA_AO2 */
++	GATE_INFRA_AO2(CLK_INFRA_AO_IRTX, "infra_ao_irtx", "top_axi", 0),
++	GATE_INFRA_AO2(CLK_INFRA_AO_DISP_PWM, "infra_ao_disp_pwm", "top_disp_pwm0", 2),
++	GATE_INFRA_AO2(CLK_INFRA_AO_CLDMA_BCLK, "infra_ao_cldmabclk", "top_axi", 3),
++	GATE_INFRA_AO2(CLK_INFRA_AO_AUDIO_26M_BCLK, "infra_ao_audio26m", "clk26m", 4),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SPI1, "infra_ao_spi1", "top_spi", 6),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SPI2, "infra_ao_spi2", "top_spi", 9),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SPI3, "infra_ao_spi3", "top_spi", 10),
++	GATE_INFRA_AO2(CLK_INFRA_AO_FSSPM, "infra_ao_fsspm", "top_sspm", 15),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SSPM_BUS_HCLK, "infra_ao_sspm_hclk", "top_axi", 17),
++	GATE_INFRA_AO2(CLK_INFRA_AO_APDMA_BCLK, "infra_ao_apdma_bclk", "top_axi", 18),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SPI4, "infra_ao_spi4", "top_spi", 25),
++	GATE_INFRA_AO2(CLK_INFRA_AO_SPI5, "infra_ao_spi5", "top_spi", 26),
++	GATE_INFRA_AO2(CLK_INFRA_AO_CQ_DMA, "infra_ao_cq_dma", "top_axi", 27),
++	/* INFRA_AO3 */
++	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC0_SELF, "infra_ao_msdc0sf", "top_msdc50_0", 0),
++	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC1_SELF, "infra_ao_msdc1sf", "top_msdc50_0", 1),
++	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC2_SELF, "infra_ao_msdc2sf", "top_msdc50_0", 2),
++	GATE_INFRA_AO3(CLK_INFRA_AO_I2S_DMA, "infra_ao_i2s_dma", "top_axi", 5),
++	GATE_INFRA_AO3(CLK_INFRA_AO_AP_MSDC0, "infra_ao_ap_msdc0", "top_msdc50_0", 7),
++	GATE_INFRA_AO3(CLK_INFRA_AO_MD_MSDC0, "infra_ao_md_msdc0", "top_msdc50_0", 8),
++	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC30_2, "infra_ao_msdc30_2", "top_msdc30_2", 9),
++	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU, "infra_ao_gcpu", "top_gcpu", 10),
++	GATE_INFRA_AO3(CLK_INFRA_AO_PCIE_PERI_26M, "infra_ao_pcie_peri_26m", "clk26m", 15),
++	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU_66M_BCLK, "infra_ao_gcpu_66m_bclk", "top_axi", 16),
++	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU_133M_BCLK, "infra_ao_gcpu_133m_bclk", "top_axi", 17),
++	GATE_INFRA_AO3(CLK_INFRA_AO_DISP_PWM1, "infra_ao_disp_pwm1", "top_disp_pwm1", 20),
++	GATE_INFRA_AO3(CLK_INFRA_AO_FBIST2FPC, "infra_ao_fbist2fpc", "top_msdc50_0", 24),
++	/* infra_ao_dapc_sync is for device access permission control module */
++	GATE_INFRA_AO3_FLAGS(CLK_INFRA_AO_DEVICE_APC_SYNC, "infra_ao_dapc_sync",
++			     "top_axi", 25, CLK_IS_CRITICAL),
++	GATE_INFRA_AO3(CLK_INFRA_AO_PCIE_P1_PERI_26M, "infra_ao_pcie_p1_peri_26m", "clk26m", 26),
++	/* INFRA_AO4 */
++	/* infra_ao_133m_mclk_set/infra_ao_66m_mclk_set are main clocks of peripheral */
++	GATE_INFRA_AO4_FLAGS(CLK_INFRA_AO_133M_MCLK_CK, "infra_ao_133m_mclk_set",
++			     "top_axi", 0, CLK_IS_CRITICAL),
++	GATE_INFRA_AO4_FLAGS(CLK_INFRA_AO_66M_MCLK_CK, "infra_ao_66m_mclk_set",
++			     "top_axi", 1, CLK_IS_CRITICAL),
++	GATE_INFRA_AO4(CLK_INFRA_AO_PCIE_PL_P_250M_P0, "infra_ao_pcie_pl_p_250m_p0",
++		       "pextp_pipe", 7),
++	GATE_INFRA_AO4(CLK_INFRA_AO_RG_AES_MSDCFDE_CK_0P,
++		       "infra_ao_aes_msdcfde_0p", "top_aes_msdcfde", 18),
++};
++
++static const struct mtk_clk_desc infra_ao_desc = {
++	.clks = infra_ao_clks,
++	.num_clks = ARRAY_SIZE(infra_ao_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8188_infra_ao[] = {
++	{
++		.compatible = "mediatek,mt8188-infracfg_ao",
++		.data = &infra_ao_desc,
++	}, {
++		/* sentinel */
 +	}
-+
-+static const struct mtk_pll_data plls[] = {
-+	PLL(CLK_APMIXED_ETHPLL, "ethpll", 0x044C, 0x0458, 0,
-+	    0, 0, 22, 0x0450, 24, 0, 0, 0, 0x0450, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x0514, 0x0520, 0,
-+	    0, 0, 22, 0x0518, 24, 0, 0, 0, 0x0518, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_TVDPLL1, "tvdpll1", 0x0524, 0x0530, 0,
-+	    0, 0, 22, 0x0528, 24, 0, 0, 0, 0x0528, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_TVDPLL2, "tvdpll2", 0x0534, 0x0540, 0,
-+	    0, 0, 22, 0x0538, 24, 0, 0, 0, 0x0538, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0544, 0x0550, 0xff000000,
-+	    HAVE_RST_BAR, BIT(23), 22, 0x0548, 24, 0, 0, 0, 0x0548, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x045C, 0x0468, 0xff000000,
-+	    HAVE_RST_BAR, BIT(23), 22, 0x0460, 24, 0, 0, 0, 0x0460, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_IMGPLL, "imgpll", 0x0554, 0x0560, 0,
-+	    0, 0, 22, 0x0558, 24, 0, 0, 0, 0x0558, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x0504, 0x0510, 0xff000000,
-+	    HAVE_RST_BAR, BIT(23), 22, 0x0508, 24, 0, 0, 0, 0x0508, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_ADSPPLL, "adsppll", 0x042C, 0x0438, 0,
-+	    0, 0, 22, 0x0430, 24, 0, 0, 0, 0x0430, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_APLL1, "apll1", 0x0304, 0x0314, 0,
-+	    0, 0, 32, 0x0308, 24, 0x0034, 0x0000, 12, 0x030C, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_APLL2, "apll2", 0x0318, 0x0328, 0,
-+	    0, 0, 32, 0x031C, 24, 0x0038, 0x0000, 13, 0x0320, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_APLL3, "apll3", 0x032C, 0x033C, 0,
-+	    0, 0, 32, 0x0330, 24, 0x003C, 0x0000, 14, 0x0334, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_APLL4, "apll4", 0x0404, 0x0414, 0,
-+	    0, 0, 32, 0x0408, 24, 0x0040, 0x0000, 15, 0x040C, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_APLL5, "apll5", 0x0418, 0x0428, 0,
-+	    0, 0, 32, 0x041C, 24, 0x0044, 0x0000, 16, 0x0420, 0, 0, 0, 9),
-+	PLL(CLK_APMIXED_MFGPLL, "mfgpll", 0x0340, 0x034C, 0,
-+	    0, 0, 22, 0x0344, 24, 0, 0, 0, 0x0344, 0, 0, 0, 9),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8188_apmixed[] = {
-+	{ .compatible = "mediatek,mt8188-apmixedsys", },
-+	{}
-+};
-+
-+static int clk_mt8188_apmixed_probe(struct platform_device *pdev)
-+{
-+	struct clk_hw_onecell_data *clk_data;
-+	struct device_node *node = pdev->dev.of_node;
-+	int r;
-+
-+	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-+	if (!clk_data)
-+		return -ENOMEM;
-+
-+	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	if (r)
-+		goto free_apmixed_data;
-+
-+	r = mtk_clk_register_gates(node, apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+	if (r)
-+		goto unregister_plls;
-+
-+	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (r)
-+		goto unregister_gates;
-+
-+	platform_set_drvdata(pdev, clk_data);
-+
-+	return r;
-+
-+unregister_gates:
-+	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+unregister_plls:
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+free_apmixed_data:
-+	mtk_free_clk_data(clk_data);
-+	return r;
-+}
-+
-+static int clk_mt8188_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_gates(apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
-+	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver clk_mt8188_apmixed_drv = {
-+	.probe = clk_mt8188_apmixed_probe,
-+	.remove = clk_mt8188_apmixed_remove,
++static struct platform_driver clk_mt8188_infra_ao_drv = {
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8188-apmixed",
-+		.of_match_table = of_match_clk_mt8188_apmixed,
++		.name = "clk-mt8188-infra_ao",
++		.of_match_table = of_match_clk_mt8188_infra_ao,
 +	},
 +};
-+builtin_platform_driver(clk_mt8188_apmixed_drv);
++builtin_platform_driver(clk_mt8188_infra_ao_drv);
 -- 
 2.18.0
 
