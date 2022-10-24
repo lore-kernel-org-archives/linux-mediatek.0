@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40CD9ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202D8C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/b27cPVwQQ4DT10kssnu0g4lv9XBB/25KBpPwYohmnA=; b=FlfDQ+LPu5n6DP3AYBksH17fDy
-	NcPAtyR7Dgk04/zR0Xrq/qcgzAy1RDQ/eSmmCEvdxkhQLc4IzfSNuF2twpc+7HWNa6roYlu4X72cx
-	JITlIxPrrAOPxVG1BPan8CnuhECY9yFCvTpjiuB2cs/HGUY0oeE3WCpyB8M8cSISC3xQs461kxgSA
-	R1sIGaL2tKhkYcuJI5rUYAmhdkyMePuLtaN1tuqhfdolKuZ8uorL0W4DNKvx9o9GEGQ6vDV49vezw
-	baz74AstakmYHn37kq9wFkZzdg93fkDwr5RIY7navq8OLVjJdM2L5NvmW6XizW4vp/fPgCiF3oe9p
-	Z9Ubu/NQ==;
+	bh=SV4ZCNuMus3emTndqr5X6EoK99RX3qRV90SrSFqgFCU=; b=0W1Yhp/vJXMcgTOdBEVvaPdq7I
+	91ojNv4xQ23ZtwBggxcltDBO0PGjMgHef+IAxi++MG5KAJB8nIYhsimj4ceskH3n/tsNYjJ3YEww1
+	ZEIO9BYlvR9jNPlYZWCVxi+2ixDRUBQqvIOoAgY1beGSt7AUdecQxIZ25n4l4zRrP3ERIfhEgQu6V
+	35nAle8bW4vRs1DG5ipMO2lrGA82LKJ+fq7pyyRlvroIlwcAg+fKDO1rMDK+2JiEWBLF3CPjGIudF
+	22JLAcR4J9lDZGrfm8XNFnYbAMeVpwTRdMhjP8qWml4VjoAqVXITxVAEjQ3eEnZya9APbNGoiOY5g
+	iWfBysug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omu4X-000UZQ-Vm; Mon, 24 Oct 2022 09:48:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1omuCY-000YEy-FL; Mon, 24 Oct 2022 09:56:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omu0o-000Sco-CS; Mon, 24 Oct 2022 09:44:54 +0000
-X-UUID: c7868185ca57403c90e12f0497c148c6-20221024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/b27cPVwQQ4DT10kssnu0g4lv9XBB/25KBpPwYohmnA=;
-	b=d0FhQkuuRC0KBJRLreQFU7cUzcjysK76j5vovjRvv8v2naIDmZ+UEdD4ISPyxwNjHGRfOaqQOGroaFMOYTYBKXSTDllOJ7cZSNM8/NJnrPpOqs3e/lQAxqZ2TuJctjwaf1BMWqRU/WbwmLeBLQHVkhzFikvEUt1/nxXWNajsG9g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:50ed1c3a-6624-45f4-bd65-8f07a1a2f5d6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:14697fc8-03ab-4171-989e-341ab5339257,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c7868185ca57403c90e12f0497c148c6-20221024
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2107741308; Mon, 24 Oct 2022 02:44:45 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 24 Oct 2022 17:43:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:11 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Michael Turquette
-	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Richard Cochran
-	<richardcochran@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH v2 09/19] clk: mediatek: Add MT8188 ipesys clock support
-Date: Mon, 24 Oct 2022 17:42:44 +0800
-Message-ID: <20221024094254.29218-10-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
-References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
+	id 1omuBu-000Y2A-Gy; Mon, 24 Oct 2022 09:56:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=SV4ZCNuMus3emTndqr5X6EoK99RX3qRV90SrSFqgFCU=; b=HxDMHB3hSAI2PizUjkkN5wDtwP
+	cFB+NCRhvN+5wZIxLRZvq+VrgeQoM2oDpp2nb8mo14pEOt77iVNqM3DFzu3XNmJ9pXSA0vZfvylXX
+	Z3EDNYiXOw/rZsnNRtdY4m6tY4hRoE+hs9myc00cbqExzMHRd44VkgJhBR3SiW577wee7W1VjsoZB
+	HEQoxhKO7hzgdrpPStxw5kx0Y+Nmwa0Hu/Pg2dZFdm5OLchvyJ+eqsNZ+Y8mcWnmvj3pfyQfTEKse
+	rFHGbgpz6+YHKcFqwoKjbm0PRXh/68nlLdMofAVdj16s7MFWnl7JbU8wNbEyjw7E2w7AAnI6n/ExP
+	ItDjBU7g==;
+Received: from j130084.upc-j.chello.nl ([24.132.130.84] helo=noisy.programming.kicks-ass.net)
+	by desiato.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1omuBi-00626M-9Y; Mon, 24 Oct 2022 09:56:06 +0000
+Received: from hirez.programming.kicks-ass.net (hirez.programming.kicks-ass.net [192.168.1.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 8E0813002AF;
+	Mon, 24 Oct 2022 11:56:04 +0200 (CEST)
+Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
+	id 654BB2C356CBE; Mon, 24 Oct 2022 11:56:04 +0200 (CEST)
+Date: Mon, 24 Oct 2022 11:56:04 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Suren Baghdasaryan <surenb@google.com>
+Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com,
+	vincent.guittot@linaro.org, dietmar.eggemann@arm.com,
+	rostedt@goodmis.org, bsegall@google.com, mgorman@suse.de,
+	bristot@redhat.com, matthias.bgg@gmail.com, minchan@google.com,
+	yt.chang@mediatek.com, wenju.xu@mediatek.com,
+	jonathan.jmchen@mediatek.com, show-hong.chen@mediatek.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-team@android.com
+Subject: Re: [RESEND PATCH v4 1/1] psi: stop relying on timer_pending for
+ poll_work rescheduling
+Message-ID: <Y1ZhNDEoX3n9qOpk@hirez.programming.kicks-ass.net>
+References: <20221010225744.101629-1-surenb@google.com>
+ <CAJuCfpHeJuZBbv-q+WXjgNHwt_caMomFPL3L9rxosXOrZz3fBw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_024450_529606_0338830A 
-X-CRM114-Status: GOOD (  16.12  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAJuCfpHeJuZBbv-q+WXjgNHwt_caMomFPL3L9rxosXOrZz3fBw@mail.gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,91 +79,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 ipesys clock controller which provides clock gate
-control for Image Process Engine.
+On Thu, Oct 20, 2022 at 03:25:47PM -0700, Suren Baghdasaryan wrote:
+> On Mon, Oct 10, 2022 at 3:57 PM Suren Baghdasaryan <surenb@google.com> wrote:
+> >
+> > Psi polling mechanism is trying to minimize the number of wakeups to
+> > run psi_poll_work and is currently relying on timer_pending() to detect
+> > when this work is already scheduled. This provides a window of opportunity
+> > for psi_group_change to schedule an immediate psi_poll_work after
+> > poll_timer_fn got called but before psi_poll_work could reschedule itself.
+> > Below is the depiction of this entire window:
+> >
+> > poll_timer_fn
+> >   wake_up_interruptible(&group->poll_wait);
+> >
+> > psi_poll_worker
+> >   wait_event_interruptible(group->poll_wait, ...)
+> >   psi_poll_work
+> >     psi_schedule_poll_work
+> >       if (timer_pending(&group->poll_timer)) return;
+> >       ...
+> >       mod_timer(&group->poll_timer, jiffies + delay);
+> >
+> > Prior to 461daba06bdc we used to rely on poll_scheduled atomic which was
+> > reset and set back inside psi_poll_work and therefore this race window
+> > was much smaller.
+> > The larger window causes increased number of wakeups and our partners
+> > report visible power regression of ~10mA after applying 461daba06bdc.
+> > Bring back the poll_scheduled atomic and make this race window even
+> > narrower by resetting poll_scheduled only when we reach polling expiration
+> > time. This does not completely eliminate the possibility of extra wakeups
+> > caused by a race with psi_group_change however it will limit it to the
+> > worst case scenario of one extra wakeup per every tracking window (0.5s
+> > in the worst case).
+> > This patch also ensures correct ordering between clearing poll_scheduled
+> > flag and obtaining changed_states using memory barrier. Correct ordering
+> > between updating changed_states and setting poll_scheduled is ensured by
+> > atomic_xchg operation.
+> > By tracing the number of immediate rescheduling attempts performed by
+> > psi_group_change and the number of these attempts being blocked due to
+> > psi monitor being already active, we can assess the effects of this change:
+> >
+> > Before the patch:
+> >                                            Run#1    Run#2      Run#3
+> > Immediate reschedules attempted:           684365   1385156    1261240
+> > Immediate reschedules blocked:             682846   1381654    1258682
+> > Immediate reschedules (delta):             1519     3502       2558
+> > Immediate reschedules (% of attempted):    0.22%    0.25%      0.20%
+> >
+> > After the patch:
+> >                                            Run#1    Run#2      Run#3
+> > Immediate reschedules attempted:           882244   770298    426218
+> > Immediate reschedules blocked:             881996   769796    426074
+> > Immediate reschedules (delta):             248      502       144
+> > Immediate reschedules (% of attempted):    0.03%    0.07%     0.03%
+> >
+> > The number of non-blocked immediate reschedules dropped from 0.22-0.25%
+> > to 0.03-0.07%. The drop is attributed to the decrease in the race window
+> > size and the fact that we allow this race only when psi monitors reach
+> > polling window expiration time.
+> >
+> > Fixes: 461daba06bdc ("psi: eliminate kthread_worker from psi trigger scheduling mechanism")
+> > Reported-by: Kathleen Chang <yt.chang@mediatek.com>
+> > Reported-by: Wenju Xu <wenju.xu@mediatek.com>
+> > Reported-by: Jonathan Chen <jonathan.jmchen@mediatek.com>
+> > Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+> > Tested-by: SH Chen <show-hong.chen@mediatek.com>
+> > Acked-by: Johannes Weiner <hannes@cmpxchg.org>
+> > ---
+> > This patch somehow slipped through the cracks after being acked by Johannes in
+> > [1] and I didn't notice it until now because we cherry-picked it into Android
+> > kernel trees due to the urgency at that time. On the bright side, this change
+> > has been tested for about a year in the field by millions of devices.
+> > Resending v4 of this patch previously posted at [2], rebased on the latest
+> > Linus' TOT.
+> 
+> Hi Peter,
+> We missed this Ack'ed patch last year and as I described above I
+> didn't notice that up until now. With rc1 released, hopefully it's a
+> good time to ping you to ask for inclusion of this patch in your tree.
+> If the timing is not good, please let me know when to remind you and
+> I'll send another email. Just want to make sure it does not slip
+> again.
+> 
+> Just FYI, we have two other Ack'ed PSI patches for you to consider:
+> 
+> https://lore.kernel.org/all/20221014110551.22695-1-zhouchengming@bytedance.com/
+> https://lore.kernel.org/all/20220919072356.GA29069@haolee.io/
 
-Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
----
- drivers/clk/mediatek/Makefile         |  3 +-
- drivers/clk/mediatek/clk-mt8188-ipe.c | 54 +++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-ipe.c
-
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 242b49bafa9e..21b05e880a3a 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -84,7 +84,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
- 				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
- obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
- 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
--				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o
-+				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
-+				   clk-mt8188-ipe.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-ipe.c b/drivers/clk/mediatek/clk-mt8188-ipe.c
-new file mode 100644
-index 000000000000..34df3c1d6c2f
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-ipe.c
-@@ -0,0 +1,54 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Garmin Chang <garmin.chang@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs ipe_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_IPE(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &ipe_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate ipe_clks[] = {
-+	GATE_IPE(CLK_IPE_DPE, "ipe_dpe", "top_ipe", 0),
-+	GATE_IPE(CLK_IPE_FDVT, "ipe_fdvt", "top_ipe", 1),
-+	GATE_IPE(CLK_IPE_ME, "ipe_me", "top_ipe", 2),
-+	GATE_IPE(CLK_IPESYS_TOP, "ipesys_top", "top_ipe", 3),
-+	GATE_IPE(CLK_IPE_SMI_LARB12, "ipe_smi_larb12", "top_ipe", 4),
-+};
-+
-+static const struct mtk_clk_desc ipe_desc = {
-+	.clks = ipe_clks,
-+	.num_clks = ARRAY_SIZE(ipe_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_ipe[] = {
-+	{
-+		.compatible = "mediatek,mt8188-ipesys",
-+		.data = &ipe_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
-+
-+static struct platform_driver clk_mt8188_ipe_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8188-ipe",
-+		.of_match_table = of_match_clk_mt8188_ipe,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8188_ipe_drv);
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
-
+Thanks for the poke; I've picked up all three and will place then in
+sched/core.
 
