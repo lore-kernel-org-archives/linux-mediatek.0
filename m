@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E7BECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E822FA373E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Oct 2022 09:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JxKl3pu3A4/YZmdnlqyaA88Gzn5hVmwaDXCgnNI0jBs=; b=nCZGw0geo2QoT2m3f1GTuGPsTH
-	R33TjeoM4f5op4EBGc1TPK4cAUC/ZIppRxGO+d08E0AjyvSNN3uDUXo7ZHt8NWz8R6EgncU7Pe4Q+
-	iU1B//nhjoD/SnQ8T7+dySgu8F2uiPW4bb0avY+82z6w3P2y1/wJzpMhZOqczLu2079hYc3JGx/T2
-	uw14LeY+zLoNOA37oG6q8FwBDByrC3Fj68sPxZFQWpzJt8IFRa3AH5pG0pCs7yn6KpLjz/9d6VPNh
-	ZEuV4u8XyalTSwAHmLhUCLLI7ZxmYq1xXeMXPYBx072Rt5AtBxK4lKZXeEwE3X2aIoO5Bbv+id13e
-	U2pDRevQ==;
+	bh=gkfo+YNqHdJmMY3o7ROkMDz2leVHnQirbd0Bap+Vz/M=; b=F4MpZ0YqW3ETZceCu5rH4rrwHO
+	+b+uLoqIOE4iR0oKOqD21XxrgfGRGnxqtRUTFYdZXcq8Rkzqzah1+VxnOh6G249BMB/CMqT7a6d+M
+	OEoNEV1bRTzBDsWXd2Xdb8ZFbhGtqkNSfp7A/aaowAqIrToi1nI9KvYqDu15ub0VO/d6GQvFHcBfo
+	hefq4+ZZ4872OrXUf+ag48UoKRmm7cnVaHviRUTbXZiW70JkZQvXxx+O+E29qiJDM/o5rVeRqve/6
+	cuLyzm7UWYdnadv/fWlJyOVgHj/XWS8agw1vPbB/HtoH1X0hZdUWeBc7rYAxTmjrU9ImKl+iPWgsq
+	9dF5uEtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omu1U-000SwV-TS; Mon, 24 Oct 2022 09:45:32 +0000
+	id 1omu1Y-000SyT-5B; Mon, 24 Oct 2022 09:45:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1omu0Q-000SOO-OW; Mon, 24 Oct 2022 09:44:28 +0000
-X-UUID: 1f3d303548264bbbab52d85dba90fbd1-20221024
+	id 1omu0R-000SNZ-C1; Mon, 24 Oct 2022 09:44:29 +0000
+X-UUID: 59bea4157f1d4206bde936b10c4ace2e-20221024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JxKl3pu3A4/YZmdnlqyaA88Gzn5hVmwaDXCgnNI0jBs=;
-	b=XeS+QGOZXBnFp8hYXmqWtMo9KTaR+MSOSEgLZ4sPPd6wuxwcdiMdrvUEb9wWAPZyQTiob0wLl1GNNSbMyD+IKK4Fdn1hpLtD2f4CGxzKvtTPQRRtxj33bKCQzHyToY7Wv45+MH1gvdBM16AIDLK5q3iaPFLWSbzVn/hf8mfLBwU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gkfo+YNqHdJmMY3o7ROkMDz2leVHnQirbd0Bap+Vz/M=;
+	b=NC8ICEuSvc7J+DD6fCMCBo85ig2W4zDZwNFvcc8tWk+rPlbiF8qwwR1Xizq4KL+PPiqGGQaPcOqqkh9QJMlZR3KGJA63AAn+lCsSbMDuXKws5KGdrPCau/29cK7yClRckuJwmddnvgYirjmN/wzOUM0TJs1TlU5E8L5HNZ49mgA=;
 X-CID-UNFAMILIAR: 1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:a713a929-cc39-415c-a0dd-3b0e28de758e,IP:0,U
+X-CID-O-INFO: VERSION:1.1.12,REQID:90188f1c-6913-480c-8a92-d528d8e56810,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
 	ION:release,TS:75
-X-CID-INFO: VERSION:1.1.12,REQID:a713a929-cc39-415c-a0dd-3b0e28de758e,IP:0,URL
+X-CID-INFO: VERSION:1.1.12,REQID:90188f1c-6913-480c-8a92-d528d8e56810,IP:0,URL
 	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
 	ION:quarantine,TS:75
-X-CID-META: VersionHash:62cd327,CLOUDID:b2e6e86c-89d3-4bfa-baad-dc632a24bca3,B
-	ulkID:221024174423EDRBK625,BulkQuantity:0,Recheck:0,SF:38|28|16|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1f3d303548264bbbab52d85dba90fbd1-20221024
+X-CID-META: VersionHash:62cd327,CLOUDID:7c7c7be4-e572-4957-be22-d8f73f3158f9,B
+	ulkID:221024174423MNHO4EQF,BulkQuantity:1,Recheck:0,SF:38|28|16|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:43,QS:nil,BEC:nil,COL:0
+X-UUID: 59bea4157f1d4206bde936b10c4ace2e-20221024
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 221553050; Mon, 24 Oct 2022 02:44:22 -0700
+	with ESMTP id 1819432288; Mon, 24 Oct 2022 02:44:20 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 24 Oct 2022 17:43:20 +0800
+ 15.2.792.15; Mon, 24 Oct 2022 17:43:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:20 +0800
+ 15.2.792.15 via Frontend Transport; Mon, 24 Oct 2022 17:43:14 +0800
 From: Garmin.Chang <Garmin.Chang@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -61,9 +61,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH v2 15/19] clk: mediatek: Add MT8188 vppsys0 clock support
-Date: Mon, 24 Oct 2022 17:42:50 +0800
-Message-ID: <20221024094254.29218-16-Garmin.Chang@mediatek.com>
+Subject: [PATCH v2 12/19] clk: mediatek: Add MT8188 vdosys0 clock support
+Date: Mon, 24 Oct 2022 17:42:47 +0800
+Message-ID: <20221024094254.29218-13-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
 References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_024426_833444_0CE95734 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20221024_024427_456522_2B43AD9C 
+X-CRM114-Status: GOOD (  18.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +87,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 vppsys0 clock controller which provides clock gate
-controller for Video Processor Pipe.
+Add MT8188 vdosys0 clock controller which provides clock gate
+control in video system. This is integrated with mtk-mmsys
+driver which will populate device by platform_device_register_data
+to start vdosys clock driver.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 ---
  drivers/clk/mediatek/Makefile          |   3 +-
- drivers/clk/mediatek/clk-mt8188-vpp0.c | 143 +++++++++++++++++++++++++
- 2 files changed, 145 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-vpp0.c
+ drivers/clk/mediatek/clk-mt8188-vdo0.c | 129 +++++++++++++++++++++++++
+ 2 files changed, 131 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo0.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 69d89353a585..6a9807cdb80f 100644
+index 663e4bf209b7..c8fcf105e92c 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -86,7 +86,8 @@ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o
+@@ -85,7 +85,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
+ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
  				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
  				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
- 				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
--				   clk-mt8188-vdo0.o clk-mt8188-vdo1.o clk-mt8188-venc.o
-+				   clk-mt8188-vdo0.o clk-mt8188-vdo1.o clk-mt8188-venc.o \
-+				   clk-mt8188-vpp0.o
+-				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o
++				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
++				   clk-mt8188-vdo0.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-vpp0.c b/drivers/clk/mediatek/clk-mt8188-vpp0.c
+diff --git a/drivers/clk/mediatek/clk-mt8188-vdo0.c b/drivers/clk/mediatek/clk-mt8188-vdo0.c
 new file mode 100644
-index 000000000000..e7b46142d653
+index 000000000000..3b65ec9eef35
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-vpp0.c
-@@ -0,0 +1,143 @@
++++ b/drivers/clk/mediatek/clk-mt8188-vdo0.c
+@@ -0,0 +1,129 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -129,100 +131,86 @@ index 000000000000..e7b46142d653
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs vpp0_0_cg_regs = {
-+	.set_ofs = 0x24,
-+	.clr_ofs = 0x28,
-+	.sta_ofs = 0x20,
++static const struct mtk_gate_regs vdo0_0_cg_regs = {
++	.set_ofs = 0x104,
++	.clr_ofs = 0x108,
++	.sta_ofs = 0x100,
 +};
 +
-+static const struct mtk_gate_regs vpp0_1_cg_regs = {
-+	.set_ofs = 0x30,
-+	.clr_ofs = 0x34,
-+	.sta_ofs = 0x2c,
++static const struct mtk_gate_regs vdo0_1_cg_regs = {
++	.set_ofs = 0x114,
++	.clr_ofs = 0x118,
++	.sta_ofs = 0x110,
 +};
 +
-+static const struct mtk_gate_regs vpp0_2_cg_regs = {
-+	.set_ofs = 0x3c,
-+	.clr_ofs = 0x40,
-+	.sta_ofs = 0x38,
++static const struct mtk_gate_regs vdo0_2_cg_regs = {
++	.set_ofs = 0x124,
++	.clr_ofs = 0x128,
++	.sta_ofs = 0x120,
 +};
 +
-+#define GATE_VPP0_0(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vpp0_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_VDO0_0(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo0_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+#define GATE_VPP0_1(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vpp0_1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_VDO0_1(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo0_1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+#define GATE_VPP0_2(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vpp0_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_VDO0_2(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+static const struct mtk_gate vpp0_clks[] = {
-+	/* VPP0_0 */
-+	GATE_VPP0_0(CLK_VPP0_MDP_FG, "vpp0_mdp_fg", "top_vpp", 1),
-+	GATE_VPP0_0(CLK_VPP0_STITCH, "vpp0_stitch", "top_vpp", 2),
-+	GATE_VPP0_0(CLK_VPP0_PADDING, "vpp0_padding", "top_vpp", 7),
-+	GATE_VPP0_0(CLK_VPP0_MDP_TCC, "vpp0_mdp_tcc", "top_vpp", 8),
-+	GATE_VPP0_0(CLK_VPP0_WARP0_ASYNC_TX, "vpp0_warp0_async_tx", "top_vpp", 10),
-+	GATE_VPP0_0(CLK_VPP0_WARP1_ASYNC_TX, "vpp0_warp1_async_tx", "top_vpp", 11),
-+	GATE_VPP0_0(CLK_VPP0_MUTEX, "vpp0_mutex", "top_vpp", 13),
-+	GATE_VPP0_0(CLK_VPP02VPP1_RELAY, "vpp02vpp1_relay", "top_vpp", 14),
-+	GATE_VPP0_0(CLK_VPP0_VPP12VPP0_ASYNC, "vpp0_vpp12vpp0_async", "top_vpp", 15),
-+	GATE_VPP0_0(CLK_VPP0_MMSYSRAM_TOP, "vpp0_mmsysram_top", "top_vpp", 16),
-+	GATE_VPP0_0(CLK_VPP0_MDP_AAL, "vpp0_mdp_aal", "top_vpp", 17),
-+	GATE_VPP0_0(CLK_VPP0_MDP_RSZ, "vpp0_mdp_rsz", "top_vpp", 18),
-+	/* VPP0_1 */
-+	GATE_VPP0_1(CLK_VPP0_SMI_COMMON_MMSRAM, "vpp0_smi_common_mmsram", "top_vpp", 0),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VDO0_LARB0_MMSRAM, "vpp0_gals_vdo0_larb0_mmsram", "top_vpp", 1),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VDO0_LARB1_MMSRAM, "vpp0_gals_vdo0_larb1_mmsram", "top_vpp", 2),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VENCSYS_MMSRAM, "vpp0_gals_vencsys_mmsram", "top_vpp", 3),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VENCSYS_CORE1_MMSRAM,
-+		    "vpp0_gals_vencsys_core1_mmsram", "top_vpp", 4),
-+	GATE_VPP0_1(CLK_VPP0_GALS_INFRA_MMSRAM, "vpp0_gals_infra_mmsram", "top_vpp", 5),
-+	GATE_VPP0_1(CLK_VPP0_GALS_CAMSYS_MMSRAM, "vpp0_gals_camsys_mmsram", "top_vpp", 6),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VPP1_LARB5_MMSRAM, "vpp0_gals_vpp1_larb5_mmsram", "top_vpp", 7),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VPP1_LARB6_MMSRAM, "vpp0_gals_vpp1_larb6_mmsram", "top_vpp", 8),
-+	GATE_VPP0_1(CLK_VPP0_SMI_REORDER_MMSRAM, "vpp0_smi_reorder_mmsram", "top_vpp", 9),
-+	GATE_VPP0_1(CLK_VPP0_SMI_IOMMU, "vpp0_smi_iommu", "top_vpp", 10),
-+	GATE_VPP0_1(CLK_VPP0_GALS_IMGSYS_CAMSYS, "vpp0_gals_imgsys_camsys", "top_vpp", 11),
-+	GATE_VPP0_1(CLK_VPP0_MDP_RDMA, "vpp0_mdp_rdma", "top_vpp", 12),
-+	GATE_VPP0_1(CLK_VPP0_MDP_WROT, "vpp0_mdp_wrot", "top_vpp", 13),
-+	GATE_VPP0_1(CLK_VPP0_GALS_EMI0_EMI1, "vpp0_gals_emi0_emi1", "top_vpp", 16),
-+	GATE_VPP0_1(CLK_VPP0_SMI_SUB_COMMON_REORDER, "vpp0_smi_sub_common_reorder", "top_vpp", 17),
-+	GATE_VPP0_1(CLK_VPP0_SMI_RSI, "vpp0_smi_rsi", "top_vpp", 18),
-+	GATE_VPP0_1(CLK_VPP0_SMI_COMMON_LARB4, "vpp0_smi_common_larb4", "top_vpp", 19),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VDEC_VDEC_CORE1, "vpp0_gals_vdec_vdec_core1", "top_vpp", 20),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VPP1_WPESYS, "vpp0_gals_vpp1_wpesys", "top_vpp", 21),
-+	GATE_VPP0_1(CLK_VPP0_GALS_VDO0_VDO1_VENCSYS_CORE1,
-+		    "vpp0_gals_vdo0_vdo1_vencsys_core1", "top_vpp", 22),
-+	GATE_VPP0_1(CLK_VPP0_FAKE_ENG, "vpp0_fake_eng", "top_vpp", 23),
-+	GATE_VPP0_1(CLK_VPP0_MDP_HDR, "vpp0_mdp_hdr", "top_vpp", 24),
-+	GATE_VPP0_1(CLK_VPP0_MDP_TDSHP, "vpp0_mdp_tdshp", "top_vpp", 25),
-+	GATE_VPP0_1(CLK_VPP0_MDP_COLOR, "vpp0_mdp_color", "top_vpp", 26),
-+	GATE_VPP0_1(CLK_VPP0_MDP_OVL, "vpp0_mdp_ovl", "top_vpp", 27),
-+	GATE_VPP0_1(CLK_VPP0_DSIP_RDMA, "vpp0_dsip_rdma", "top_vpp", 28),
-+	GATE_VPP0_1(CLK_VPP0_DISP_WDMA, "vpp0_disp_wdma", "top_vpp", 29),
-+	GATE_VPP0_1(CLK_VPP0_MDP_HMS, "vpp0_mdp_hms", "top_vpp", 30),
-+	/* VPP0_2 */
-+	GATE_VPP0_2(CLK_VPP0_WARP0_RELAY, "vpp0_warp0_relay", "top_wpe_vpp", 0),
-+	GATE_VPP0_2(CLK_VPP0_WARP0_ASYNC, "vpp0_warp0_async", "top_wpe_vpp", 1),
-+	GATE_VPP0_2(CLK_VPP0_WARP1_RELAY, "vpp0_warp1_relay", "top_wpe_vpp", 2),
-+	GATE_VPP0_2(CLK_VPP0_WARP1_ASYNC, "vpp0_warp1_async", "top_wpe_vpp", 3),
++static const struct mtk_gate vdo0_clks[] = {
++	/* VDO0_0 */
++	GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0", "top_vpp", 0),
++	GATE_VDO0_0(CLK_VDO0_FAKE_ENG0, "vdo0_fake_eng0", "top_vpp", 2),
++	GATE_VDO0_0(CLK_VDO0_DISP_CCORR0, "vdo0_disp_ccorr0", "top_vpp", 4),
++	GATE_VDO0_0(CLK_VDO0_DISP_MUTEX0, "vdo0_disp_mutex0", "top_vpp", 6),
++	GATE_VDO0_0(CLK_VDO0_DISP_GAMMA0, "vdo0_disp_gamma0", "top_vpp", 8),
++	GATE_VDO0_0(CLK_VDO0_DISP_DITHER0, "vdo0_disp_dither0", "top_vpp", 10),
++	GATE_VDO0_0(CLK_VDO0_DISP_WDMA0, "vdo0_disp_wdma0", "top_vpp", 17),
++	GATE_VDO0_0(CLK_VDO0_DISP_RDMA0, "vdo0_disp_rdma0", "top_vpp", 19),
++	GATE_VDO0_0(CLK_VDO0_DSI0, "vdo0_dsi0", "top_vpp", 21),
++	GATE_VDO0_0(CLK_VDO0_DSI1, "vdo0_dsi1", "top_vpp", 22),
++	GATE_VDO0_0(CLK_VDO0_DSC_WRAP0, "vdo0_dsc_wrap0", "top_vpp", 23),
++	GATE_VDO0_0(CLK_VDO0_VPP_MERGE0, "vdo0_vpp_merge0", "top_vpp", 24),
++	GATE_VDO0_0(CLK_VDO0_DP_INTF0, "vdo0_dp_intf0", "top_vpp", 25),
++	GATE_VDO0_0(CLK_VDO0_DISP_AAL0, "vdo0_disp_aal0", "top_vpp", 26),
++	GATE_VDO0_0(CLK_VDO0_INLINEROT0, "vdo0_inlinerot0", "top_vpp", 27),
++	GATE_VDO0_0(CLK_VDO0_APB_BUS, "vdo0_apb_bus", "top_vpp", 28),
++	GATE_VDO0_0(CLK_VDO0_DISP_COLOR0, "vdo0_disp_color0", "top_vpp", 29),
++	GATE_VDO0_0(CLK_VDO0_MDP_WROT0, "vdo0_mdp_wrot0", "top_vpp", 30),
++	GATE_VDO0_0(CLK_VDO0_DISP_RSZ0, "vdo0_disp_rsz0", "top_vpp", 31),
++	/* VDO0_1 */
++	GATE_VDO0_1(CLK_VDO0_DISP_POSTMASK0, "vdo0_disp_postmask0", "top_vpp", 0),
++	GATE_VDO0_1(CLK_VDO0_FAKE_ENG1, "vdo0_fake_eng1", "top_vpp", 1),
++	GATE_VDO0_1(CLK_VDO0_DL_ASYNC2, "vdo0_dl_async2", "top_vpp", 5),
++	GATE_VDO0_1(CLK_VDO0_DL_RELAY3, "vdo0_dl_relay3", "top_vpp", 6),
++	GATE_VDO0_1(CLK_VDO0_DL_RELAY4, "vdo0_dl_relay4", "top_vpp", 7),
++	GATE_VDO0_1(CLK_VDO0_SMI_GALS, "vdo0_smi_gals", "top_vpp", 10),
++	GATE_VDO0_1(CLK_VDO0_SMI_COMMON, "vdo0_smi_common", "top_vpp", 11),
++	GATE_VDO0_1(CLK_VDO0_SMI_EMI, "vdo0_smi_emi", "top_vpp", 12),
++	GATE_VDO0_1(CLK_VDO0_SMI_IOMMU, "vdo0_smi_iommu", "top_vpp", 13),
++	GATE_VDO0_1(CLK_VDO0_SMI_LARB, "vdo0_smi_larb", "top_vpp", 14),
++	GATE_VDO0_1(CLK_VDO0_SMI_RSI, "vdo0_smi_rsi", "top_vpp", 15),
++	/* VDO0_2 */
++	GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi", "top_dsi_occ", 0),
++	GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi", "top_dsi_occ", 8),
++	GATE_VDO0_2(CLK_VDO0_DP_INTF0_DP_INTF, "vdo0_dp_intf0_dp_intf", "top_edp", 16),
 +};
 +
-+static int clk_mt8188_vpp0_probe(struct platform_device *pdev)
++static int clk_mt8188_vdo0_probe(struct platform_device *pdev)
 +{
 +	struct device *dev = &pdev->dev;
 +	struct device_node *node = dev->parent->of_node;
 +	struct clk_hw_onecell_data *clk_data;
 +	int r;
 +
-+	clk_data = mtk_alloc_clk_data(CLK_VPP0_NR_CLK);
++	clk_data = mtk_alloc_clk_data(CLK_VDO0_NR_CLK);
 +	if (!clk_data)
 +		return -ENOMEM;
 +
-+	r = mtk_clk_register_gates(node, vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
++	r = mtk_clk_register_gates(node, vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
 +	if (r)
-+		goto free_vpp0_data;
++		goto free_vdo0_data;
 +
 +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
 +	if (r)
@@ -233,33 +221,33 @@ index 000000000000..e7b46142d653
 +	return r;
 +
 +unregister_gates:
-+	mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
-+free_vpp0_data:
++	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
++free_vdo0_data:
 +	mtk_free_clk_data(clk_data);
 +	return r;
 +}
 +
-+static int clk_mt8188_vpp0_remove(struct platform_device *pdev)
++static int clk_mt8188_vdo0_remove(struct platform_device *pdev)
 +{
 +	struct device *dev = &pdev->dev;
 +	struct device_node *node = dev->parent->of_node;
 +	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
 +
 +	of_clk_del_provider(node);
-+	mtk_clk_unregister_gates(vpp0_clks, ARRAY_SIZE(vpp0_clks), clk_data);
++	mtk_clk_unregister_gates(vdo0_clks, ARRAY_SIZE(vdo0_clks), clk_data);
 +	mtk_free_clk_data(clk_data);
 +
 +	return 0;
 +}
 +
-+static struct platform_driver clk_mt8188_vpp0_drv = {
-+	.probe = clk_mt8188_vpp0_probe,
-+	.remove = clk_mt8188_vpp0_remove,
++static struct platform_driver clk_mt8188_vdo0_drv = {
++	.probe = clk_mt8188_vdo0_probe,
++	.remove = clk_mt8188_vdo0_remove,
 +	.driver = {
-+		.name = "clk-mt8188-vpp0",
++		.name = "clk-mt8188-vdo0",
 +	},
 +};
-+builtin_platform_driver(clk_mt8188_vpp0_drv);
++builtin_platform_driver(clk_mt8188_vdo0_drv);
 -- 
 2.18.0
 
