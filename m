@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80B27C04A95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 13:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E117C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 13:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5FbSf9twERvETDm4iNLtIwwA/uZDMLwNyqcMb0P1AC4=; b=gj20OZiROdY1ew
-	2ftx7UNGhh54SOyhmV5FrXyO5yzWwQW9GwgfQkioEp8BxEWQj+NTdKpPPq38Jp1MnQd3UkAP1kbJA
-	Kg4OPjDuIZtRqeWTAp3ehNWDwq6JOVi1gWziHz/MQDW0xkKBiYwBbkm8l3slxujLCDVLdcqb75YqO
-	ggkw1elJ2EgjEUciGNK2Q6EJcWpR0fNww20Nnbv2Z1zsdDHpv+9/8D4I6LhWVoVNntN/cuPUAcgT1
-	DDz2pt5va2Fwi+DE5TSQOSfRjPtOczB8/6IUyJICYoMy3ciVlMBNZgITQ0hS5l3RMfSwXidgTJuip
-	VeOQXM80s7dBd4u84yvA==;
+	List-Owner; bh=+KqTA8X1WXkJtVBHAMBvpE4UsH8pqMLqQ8SW7LYnkls=; b=OgbboHz/MmPEXP
+	SYEBd75CoJhsx9iUK3bsKEgObXUNd5ATZ4naFUngjM1meiahUZ7fFDFKLkGprgWea644QwQ7tN3t5
+	Vt1D8a4HjKuB0s5nJiQLOHb0+ION3ycU0RIsylKsGHg76l86JWjj8RPXGDqPzuaUK+MltQpWRNYjS
+	qPuXHjWyzV+aZztRDe2kxWMwuT7WVSlkLA1Qu2KTI9fEqx8u9q3Wx/t17ZQgvPNEEvNcx9pnnm2Zh
+	1s/dWcoZw/LbQS3niWPKljS0pLn1pi8wrnZmxE5cqJ5Uz89CuLfMM9acdcDwXdZ+n0l4KkrbxiRj2
+	59JBf1b6gO0lAHm3Cc4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onK1T-005TTs-9Z; Tue, 25 Oct 2022 13:31:15 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1onK1s-005TjK-Sv; Tue, 25 Oct 2022 13:31:40 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onK0L-005Swr-RU; Tue, 25 Oct 2022 13:30:07 +0000
+	id 1onK0M-005Swb-OH; Tue, 25 Oct 2022 13:30:09 +0000
 Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout3.routing.net (Postfix) with ESMTP id 09BF96269E;
-	Tue, 25 Oct 2022 13:30:04 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id 13D0341BE4;
+	Tue, 25 Oct 2022 13:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666704604;
+	s=20200217; t=1666704603;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5FbSf9twERvETDm4iNLtIwwA/uZDMLwNyqcMb0P1AC4=;
-	b=M70gzvNjSVP8os7+u68LOoPoxFjVqN2sNM94ZSip68YoZaZWBiDq6X5/GLh9K5vR4sIDyX
-	CXXOQi7DAIeSKHHYbQ1pGknvpu5cFVEpRVwvixzDdRzdhyFOmXTPr+qHjglaOirSs5jLBL
-	J2dVYr50qTuaeyR9oO17e9ssuKTku3s=
+	bh=+KqTA8X1WXkJtVBHAMBvpE4UsH8pqMLqQ8SW7LYnkls=;
+	b=opW/QX8eaW2XDxkaSJahYnIs5eBiv750GyW+oBsM+qMEVoweVMIeqowiBmMDWn2RsjCskU
+	2lV9Ccfj4LIqULGTmrQpiCRdk+RNih3ByUauYP8R5XgIs52rN6BmEponUB8Jt/Hg1bxDXU
+	ykeKwF5UClaWz8Bj8o3jG9DIbybyVVM=
 Received: from frank-G5.. (fttx-pool-217.61.152.57.bambit.de [217.61.152.57])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 9E7CF406DF;
-	Tue, 25 Oct 2022 13:30:02 +0000 (UTC)
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 830C44055F;
+	Tue, 25 Oct 2022 13:30:01 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 5/6] arm64: dts: mt7622: drop r_smpl property from mmc node
-Date: Tue, 25 Oct 2022 15:29:52 +0200
-Message-Id: <20221025132953.81286-6-linux@fw-web.de>
+Subject: [PATCH v5 4/6] arm64: dts: mt8183: drop drv-type from mmc-node
+Date: Tue, 25 Oct 2022 15:29:51 +0200
+Message-Id: <20221025132953.81286-5-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221025132953.81286-1-linux@fw-web.de>
 References: <20221025132953.81286-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: da3b5ec5-4663-4d83-aad4-cc50a829ea61
+X-Mail-ID: dc44d099-0e74-475c-a740-2cf015df65f2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_063006_062954_9B713BF6 
-X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-CacheID: sfid-20221025_063006_994570_5035DAFE 
+X-CRM114-Status: UNSURE (   9.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,41 +74,27 @@ From: Frank Wunderlich <frank-w@public-files.de>
 
 This property is not defined in binding and driver.
 
-Fixes: 2c002a3049f7 ("arm64: dts: mt7622: add mmc related device nodes")
-Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
+Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
 v5:
 - add fixes-tag
 ---
- arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 1 -
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 1 -
- 2 files changed, 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-index d3f9eab2b784..af3fe61e4093 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-@@ -235,7 +235,6 @@ &mmc1 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index b4b86bb1f1a7..0c9b18c16c89 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -378,7 +378,6 @@ &mmc1 {
+ 	mmc-pwrseq = <&wifi_pwrseq>;
  	bus-width = <4>;
- 	max-frequency = <50000000>;
+ 	max-frequency = <200000000>;
+-	drv-type = <2>;
  	cap-sd-highspeed;
--	r_smpl = <1>;
- 	cd-gpios = <&pio 81 GPIO_ACTIVE_LOW>;
- 	vmmc-supply = <&reg_3p3v>;
- 	vqmmc-supply = <&reg_3p3v>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-index 36722cabe626..b74e774c6eba 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -208,7 +208,6 @@ &mmc1 {
- 	bus-width = <4>;
- 	max-frequency = <50000000>;
- 	cap-sd-highspeed;
--	r_smpl = <1>;
- 	cd-gpios = <&pio 81 GPIO_ACTIVE_LOW>;
- 	vmmc-supply = <&reg_3p3v>;
- 	vqmmc-supply = <&reg_3p3v>;
+ 	sd-uhs-sdr50;
+ 	sd-uhs-sdr104;
 -- 
 2.34.1
 
