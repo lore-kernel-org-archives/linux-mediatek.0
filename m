@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF764ECDFA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 12:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF68CC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 12:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HRBpOaPxNlf8SCNOdJkWXPOLIiLsxSs1Ig/b7TsdPgg=; b=cxdcSgfiUS3/qTdmshFdDcbHJM
-	Uulb/HE7Lzid4LWA4njpTXg/295iHjgApxY3BueMcAifn5LOMStkVmZxswN/m/rzBMVpEjDQ/DD1L
-	aw3kGkTfWiFj/EjhMeK+0lNaDrPkKJ5jmWIydg1GNr2NAeZXKPKN6+bZTHby0lsDwhAOUUmBJeRcc
-	4VAlVEspYDoa9Stn7QxB7XzMXA5LSYefjeN+vlB7ZlziBnWEA50We/zTADc1x33G6HNGcAbCcQlNF
-	9n5HEl6UpN522u/FlzmaiWkE1mndgizPLMpJAunzKTprD+DaAOrnt+IHngrFPnOu/+SEPm91NDlAl
-	bM9yDcZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L99+tUMkR2CW+QplJ2zzCCZTyjxg1Pl4F6T91OclVog=; b=w3ao5PM6boTBc0994dzR6Nx/ym
+	tWfpkeNY164oN0LWCQJdELVkD+Fo7fugkW7FatBnnV5R7AMtvnELGpbHAWEuSxcchSXzxEV1MjDkj
+	Ffk6gsr9A67zCkH4pn+Vamhv2dE1ks34dn0G8PF16beFdIy08wCowonTolkTDhWp5YlCZWKjAKwLM
+	R+suAucqAe/AoW5PR8hEAem3SkWiI0ADs66AjQl5zd8iEgAWwvHXvQR2/ngq2vZpcoVEKXFjNRi4B
+	jN5Ngru+3xhz53Le4PdC6ejXGOSrdJYMLcOvYdyR1ruR+Ib1ZRg4i9O8sehzqwSh9JWMMvXT6MR2V
+	oo0e6vOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIg0-00571a-0d; Tue, 25 Oct 2022 12:05:00 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1onIo6-0057sy-Ra; Tue, 25 Oct 2022 12:13:22 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIfx-00570v-12
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 12:04:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1onInv-0057qX-U9; Tue, 25 Oct 2022 12:13:13 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 90D8ACE1D3D;
-	Tue, 25 Oct 2022 12:04:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7752DC433C1;
-	Tue, 25 Oct 2022 12:04:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666699492;
-	bh=imPbkygKCePq1i3EyArChYjYSEwf0BNJm1sKgppu4aA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dblssCwT7xEDT3+yhnXZazozanPhhtSA/qTKwLthMAUHTCWL41LHSSFMB+TRISU69
-	 SEPEN4iUT8iCs9DZCZigypa3AzG2YioBKbuVDxESBHxHXyQp+2MEOzeAQPG6ZLPe6Y
-	 IgKDBREQBglLVlVT9yPV/gCoNUVlVspui+FGxX+jafFp7+h08j6c09dfp7X3ULAoDw
-	 fD1bx+6tdzhLv8or4464HLskB0792slh8nmq8w487nfoD+HKccm5CIlXOzSbweufKg
-	 LrImQu4jEH7QbDIyNMVS18xyYzgKaHFwVN2D4GcC25SDbtjzJqEKIEaG3PWvupGThq
-	 dmaEty5LBqJfw==
-Date: Tue, 25 Oct 2022 14:04:48 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: Re: [PATCH v2] wifi: mt76: fix bandwidth 80MHz link fail in 6GHz band
-Message-ID: <Y1fQ4BuvyTujs3sK@lore-desk>
-References: <85b5e8374fc9b86fb955060c1840f3b2a1d187e4.1666614616.git.deren.wu@mediatek.com>
- <Y1efUIq4aCFO7V6j@lore-desk>
- <8db3eb8a72da2d478780782a54305e3cf1b5b50a.camel@mediatek.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DADE46602319;
+	Tue, 25 Oct 2022 13:13:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666699989;
+	bh=V5vR6tFJk/ZT4RHAKfHFB8pFtjxpIqRPWBt7oLYvccI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eZHwfh6PCcjVNZ6qg7zfvUWBXt3G7cyPp0wpOiiodk/Qi/s/jauEeXSNRGbt7f5FP
+	 Ccns2R2UAoh4wohieaIQEr+jk5Ew8dpwvq/svysJsGASD2ejzoqLY6qQRKduArhTlV
+	 D+dsoY59iYlYTzi8jZnmCoh73eqqqf6x4/xIP4FwqM1+4ahQJTvWPQH33VwcMLdPvy
+	 +VtY4mwfeqwnVlmCGWugIUcPpzBNgN2XxrMxj19FT3OBOPl7OUzcr3BH/fAh8hMCKs
+	 fL8HUQO+KJaX3n4HNEq9PnxZgO8uTZr+P+EadulFNirjG5jsbC/NNOrGiBR2nij/Qk
+	 DdRQoOkLDFurA==
+Message-ID: <e5de6069-39f7-c938-d271-ccb4cb384333@collabora.com>
+Date: Tue, 25 Oct 2022 14:13:05 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iRIreIuW1ejbPkiI"
-Content-Disposition: inline
-In-Reply-To: <8db3eb8a72da2d478780782a54305e3cf1b5b50a.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v4 4/6] arm64: dts: mt8183: drop drv-type from mmc-node
+Content-Language: en-US
+To: "Frank Wunderlich (linux)" <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
+ Sam Shih <Sam.Shih@mediatek.com>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>
+References: <20221025074238.18136-1-linux@fw-web.de>
+ <20221025074238.18136-5-linux@fw-web.de>
+ <3b366319-5257-a536-4dba-919cb5fdf477@collabora.com>
+ <5ccd67c45c9f384296bfd1f19dd019a1@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <5ccd67c45c9f384296bfd1f19dd019a1@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_050457_438429_5396A9D9 
-X-CRM114-Status: GOOD (  24.88  )
+X-CRM114-CacheID: sfid-20221025_051312_130857_C606E561 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,85 +83,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 25/10/22 13:33, Frank Wunderlich (linux) ha scritto:
+> Am 2022-10-25 12:52, schrieb AngeloGioacchino Del Regno:
+>> Il 25/10/22 09:42, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> This property is not defined in binding and driver.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>
+>> This commit needs a Fixes tag :-)
+> 
+> i hope it is ok adding it here instead of resend full series...
+> 
+> Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+> 
+> regards Frank
 
---iRIreIuW1ejbPkiI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Hi Lorenzo,
->=20
-> On Tue, 2022-10-25 at 10:33 +0200, Lorenzo Bianconi wrote:
-> > > From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> > >=20
-> > > Due to information missing, the firmware may be fail on bandwidth
-> > > related settings in mt7921/mt7922. Add new cmd STA_REC_HE_V2 to
-> > > apply
-> > > additional capabilities in 6GHz band.
-> > >=20
-> > > Tested-by: Ben Greear <greearb@candelatech.com>
-> > > Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> > > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > > Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> > > ---
-> > > v2: Fix le16/cpu type problem, reported by kernel test robot <
-> > > lkp@intel.com>
-> > > ---
-> > >  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 34
-> > > +++++++++++++++++++
-> > >  .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 11 ++++++
-> > >  2 files changed, 45 insertions(+)
-> > >=20
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > > b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > > index 011fc9729b38..9bba18d24c71 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > > @@ -744,6 +744,39 @@ mt76_connac_mcu_sta_he_tlv(struct sk_buff
-> > > *skb, struct ieee80211_sta *sta)
-> > >  	he->pkt_ext =3D 2;
-> > >  }
-> > > =20
-> > > +static void
-> > > +mt76_connac_mcu_sta_he_tlv_v2(struct sk_buff *skb, struct
-> > > ieee80211_sta *sta)
-> >=20
-> > Is this tlv available just for 7921 fw? If so I guess we should add
-> > it just for
-> > it since mt76_connac_mcu_sta_tlv is used even by other chipsets.
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
->=20
-> For now, mt76_connac_mcu_sta_he_tlv_v2() would be used for mt7921 only,
-> not for other chips. However, it would be used for all next-generation
-> chipsets. I propose to put it here and we will take this API in new
-> chip porting.
-
-I am fine with it, I was thinking just to not introduce regression on previ=
-ous
-chips.
+Please send a v5 with the appropriate Fixes tags.
 
 Regards,
-Lorenzo
-
->=20
-> Regards,
-> Deren
->=20
->=20
-
---iRIreIuW1ejbPkiI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY1fQ4AAKCRA6cBh0uS2t
-rGfKAPwN7ys9uKwavwjvGyG5Vul14eDtXcZ2sQgm9lg/cb8JfAEApZ8nG9PMe7CW
-FyqrzcLcc3daLfqCU/Vz8UUX+vKn+gk=
-=srUi
------END PGP SIGNATURE-----
-
---iRIreIuW1ejbPkiI--
+Angelo
 
