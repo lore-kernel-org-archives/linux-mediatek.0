@@ -4,80 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB65C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 12:21:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C445ECDFA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 13:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yrilAhGGJreK8L4jo0y+OfIubyvYYXmcpdYjjv0NBzw=; b=NgV2DvG2JTyzcW
-	ATQ9xfyjsriNqUTW29a3w7GdX86Xb9mpJIGqJIVIno46oft2wN3scnLXc/xU3eyEvmV4RRAggOvRr
-	P44Oj0fSqiRO2T41UFb2Bqx/eaIuAh/Ig1KYo7aDEPEtVpuSRZ5RXGqrKak+cayXjBeNxfkvbEpoQ
-	8/DCm1nfbaXXphvfi5Af1BG2JGk4bhHnkYLL/IFm5aCqY0lPIR6/8aY2ohPPDDZcZFWbd6QXyVEvO
-	dt10hgND7VxZ/FIS9JMi4TA7jaMAJza3D6eGcdKXDlx2Sq0+328Pepj+DzV7o5Y9PhH2WXFB2Nczh
-	FQvJst950g07MEiAQmNw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jolFtewM3ztHIyphgDnA9u4uYdrtd/Xjhj1chDEywEE=; b=KhNnq0btY+RO4Z
+	y/zm6pQfmNmHY2X1e0wE4JAkbc1u3emsmVxkkJEPrOaeSYplRcftIHsO4zj/kxmDRhvMEUKIAyaMG
+	S+DDP4GhA5c7fq+4dqSUMuged7OoAg70Kf/DbkcfgcgYjfWM2Q1uQVl3Zp6ZQh5JnHhSD4tsDIdCG
+	NHZsbklCRHeUB3wAULywWHiVjD4DKyjW1lRuUUrbj/t9MT90QrPyEh9pWdRtQst99hCZGvF2MSFQf
+	dkmSRZluJKcjA7J4c6b/xwBOs8t6dUEw4GR2KuxgqT0oURyt+MdLtTA54pzmADlWySJbiuDHqxUro
+	6QWnc16JsUkYf5/akafQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIw6-005917-D2; Tue, 25 Oct 2022 12:21:38 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1onK0W-005T0e-3h; Tue, 25 Oct 2022 13:30:16 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIw3-0058zx-EI
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 12:21:36 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id ml12so7370744qvb.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Oct 2022 05:21:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yrilAhGGJreK8L4jo0y+OfIubyvYYXmcpdYjjv0NBzw=;
-        b=vFP823FJZuCoQ/qSOuYtkMQd2VmdCUrulmNtzL1ZXynQCiDNoSwdCXGbDO/vsXvXOB
-         GLEh/COj6kV401Ni86hUKFde73N9Nnysrv5Wdma5U4q/VDRlKmnT0UUog66EV4CPz9VE
-         ZG4KL/5K04wupgRJp7o8WLu4PyvCpolUKv0xzxSIDDc6VQHlcGVI3Xm4yIpsaSGc1yWl
-         kSJlMKbuqk6uCSbX3SmBh7DG/VZBfyxSReCuOoo5jXf/WtEBaX1DBKhLtuHlRQfwqZ/R
-         u994/N/ApSm4zlTiYLwUxFDQ5q2NJEXcKfHd5eBvQERIzpeLQgfqB9qivAqRoBC9zyTq
-         NK8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yrilAhGGJreK8L4jo0y+OfIubyvYYXmcpdYjjv0NBzw=;
-        b=b4OQBzZJcIGfT1jMln6nkdGZVfpIZT/vBGRSBH+1aAqkXXnz2mseMMTdxD7bVSdoXa
-         YO4HrHcQ82mB/XZT3UA1hf8NYRqFEbLp4WBRcDRUfrQ/kRbZs2hyUsfyKiJVHGF5INum
-         wQqnJdmMKtqKz1gsEMIK9uQbEcOcw4lker17Q/oeA8n04gD9ntNaBe1EAROzSyPkp6PV
-         +YcBK8yRi1nq9Ly3IoC02hKkFjJbW/zL5jKA28ZNNMyOKVs/o084jrGH534QeogF3CIt
-         6OzIlCqKho/rAZB3ltJERSUWysToncSIIAOYmEB++TZKllDXHM0r3hNS0piBDG/NqKj/
-         BYdg==
-X-Gm-Message-State: ACrzQf3e/hcBO0kMvZCfCiGzX0CXKzHg2iYTS+b1bMpDGThmxY/xg7SQ
-	ath0OFbW4y5imr6f0c9uCt2JbQ==
-X-Google-Smtp-Source: AMsMyM4s0N1Fal+yR+QTBJMIob7ci46MXCs+VOue61R+M/I9AAZ+z1gY8tW13hXFvcnKIx6Wvt0hNg==
-X-Received: by 2002:ad4:5ae5:0:b0:4b7:1bdb:d79e with SMTP id c5-20020ad45ae5000000b004b71bdbd79emr26229025qvh.25.1666700494159;
-        Tue, 25 Oct 2022 05:21:34 -0700 (PDT)
-Received: from [192.168.1.11] ([64.57.193.93])
-        by smtp.gmail.com with ESMTPSA id dt27-20020a05620a479b00b006cdd0939ffbsm1911886qkb.86.2022.10.25.05.21.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Oct 2022 05:21:33 -0700 (PDT)
-Message-ID: <857f6769-3618-0958-472b-bff57a23f763@linaro.org>
-Date: Tue, 25 Oct 2022 08:21:31 -0400
+	id 1onK0I-005Suy-HX; Tue, 25 Oct 2022 13:30:04 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout2.routing.net (Postfix) with ESMTP id A184A618F6;
+	Tue, 25 Oct 2022 13:29:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666704598;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=jolFtewM3ztHIyphgDnA9u4uYdrtd/Xjhj1chDEywEE=;
+	b=P3XbA1ThmmAoxE/xeQoCzcpqoy6L1VS36LoJhcmfdpwy3+Bv82Tw1hjiOWpe0oMLOTfrtb
+	pyAF+e2zINxK8LSW+l5z2G9/Yt7GWEKt4rnCZTm0u13XiqSIaNdmjPc3rjcIQVzNPcc1Wk
+	MudKwFrbrp0M9zLboLGFfJ6XEcecbhM=
+Received: from frank-G5.. (fttx-pool-217.61.152.57.bambit.de [217.61.152.57])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 9ABE240112;
+	Tue, 25 Oct 2022 13:29:57 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v5 0/6] Add mmc-support for mt7986
+Date: Tue, 25 Oct 2022 15:29:47 +0200
+Message-Id: <20221025132953.81286-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH v4 2/6] dt-bindings: mmc: Add support for Mediatek MT7986
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221025074238.18136-1-linux@fw-web.de>
- <20221025074238.18136-3-linux@fw-web.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221025074238.18136-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 1f7902d6-bcfd-4759-8bc0-01e5fc8a140d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_052135_513205_DF51DAA5 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221025_063002_771359_766A7EFE 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,29 +67,56 @@ Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/10/2022 03:42, Frank Wunderlich wrote:
-> From: Sam Shih <sam.shih@mediatek.com>
-> 
-> This commit adds dt-binding documentation of mmc for Mediatek MT7986 SoC
+From: Frank Wunderlich <frank-w@public-files.de>
 
-> +          items:
-> +            - description: source clock
-> +            - description: HCLK which used for host
-> +            - description: independent source clock gate
-> +            - description: bus clock used for internal register access (required for MSDC0/3).
-> +            - description: msdc subsys clock gate
-> +        clock-names:
-> +          minItems: 3
-> +          items:
-> +            - const: source
-> +            - const: hclk
-> +            - const: "source_cg"
-> +            - const: "bus_clk"
-> +            - const: "sys_cg"
+I've noticed the mtk-sd binding needs a bit more work get into a more
+clean state.
 
-Drop quotes.
+There are 2 properties missing that maybe need to be added later or
+dropped from devicetrees:
+drv-type (which is used in mt8183-kukui.dtsi and set to <2>)
+and
+r_smpl (used in mt7622-rfb1.dts and mt7622-bananapi-bpi-r64.dts, both
+times set to <1>)
 
-Best regards,
-Krzysztof
+i don't know their function and boundaries and i do not find them in
+driver. I guess they are added by accident, so i removing them in the
+patches 5+6.
+
+v2:
+- add compatible based binding
+v3:
+- solve "not" statement in binding and reorder if statements,drop mt8183
+- added patches removing invalid properties (not in driver)
+v4:
+- squashed part 1 (compatible) and 3 (SoC specific clock config)
+- new mt7986 clock bindings based on info from mtk
+- re-add mt8183 reg boundary
+v5:
+- add fixes-tags to Patches 4+5 and reviewed-by to 6
+- drop quotes from mt7986 clock-names from patch 2
+
+Frank Wunderlich (3):
+  arm64: dts: mediatek: mt2712e: swap last 2 clocks to match binding
+  arm64: dts: mt8183: drop drv-type from mmc-node
+  arm64: dts: mt7622: drop r_smpl property from mmc node
+
+Nícolas F. R. A. Prado (1):
+  dt-bindings: mmc: mtk-sd: Set clocks based on compatible
+
+Sam Shih (2):
+  dt-bindings: mmc: Add support for Mediatek MT7986
+  mmc: mediatek: add support for MT7986 SoC
+
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 149 ++++++++++++++----
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   6 +-
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |   1 -
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   1 -
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   1 -
+ drivers/mmc/host/mtk-sd.c                     |  14 ++
+ 6 files changed, 136 insertions(+), 36 deletions(-)
+
+-- 
+2.34.1
 
 
