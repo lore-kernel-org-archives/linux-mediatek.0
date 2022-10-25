@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61873C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 15:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E52C04A95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 17:17:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=21fm5EgPKmeOayQHxWYMU7Nefc1Ipf9I7LMbzYS7TPI=; b=12poiHXDt8q8HWlUcoFZ+qq9nj
-	dqQF0o8AarITrLH1WjEMT0qeRK6VLk2W+k4sM1lIGmqVYvkqlmXGzXd/6Bw9pTHaMXDfcQaqJgUfz
-	Vi1EDpP5eaIqG9vrdDplVAve60u43S40LTu43F1Uj0uwBlcW6SmYwtejryNW3wiANEQsNyQpqM7a7
-	15K4K4bU4HumKTnvAyqWXTs//0D3Spgq4anlwsZgZZYv95EQbYcqE0j2iPSuU/AlsKqeRZI7lKKAP
-	UAkd6sMFlmD109DyL5F0ON2+PPrqoRP0K3873ZXZaVTu6S7ExChlu02+vcX3fF3kyy2OfC+6qU3Rv
-	5WIOn7eg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xH/eIxvu4+ajjIqh6Ada3J1EEQaggFRYIaJlXaFYmyY=; b=halemM18J7ZIwJx+ZTpgQHtruh
+	WvBDsqPGaYHxtjYZkd2Q3o9wiw4ZrH/zNnoyeROSnAUGy998O6uC3xvOxel3FzvgXb07y4IYLmdt/
+	sXSLybPBXSRAVVG/eoSKuYEsMzW6rHObNMunEjfQAuyyOKYtgtg5IZFhOXRUC+Xcn3YkyiTbYoECl
+	rXxdcwtLSv9CxjW2nS7J8JdTVu/JZNP9mnHUgeiWSy4rlMIq6wPtmewRDzZxTdc7ZTjK+Tj0w3vGn
+	j1eIyVEWt1xAeH23zCCgUqpKuk6yXw0tdSL43jqUV45tjaoXONSdFxLk/uoEQoK/TarvFNs3oYZqd
+	dEJBt5PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onLWL-005zSZ-Fe; Tue, 25 Oct 2022 15:07:13 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1onNY9-006Pw5-32; Tue, 25 Oct 2022 17:17:13 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onLWG-005zOD-1p
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 15:07:11 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id l9so5689554qkk.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Oct 2022 08:07:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=21fm5EgPKmeOayQHxWYMU7Nefc1Ipf9I7LMbzYS7TPI=;
-        b=Qao3n6VBojqDPD+nyuHaNb8aRuC3dHiWWy2AGSGIeYcnvqBmtYGQkw0ZAnJFMbgl3b
-         YXIsxmYnbPg/gkeIi50KEfyRBdnGvB7rOyE6AKwAWbos4tmP+xf33xTqrKYAFctdgjEV
-         5bJSY6/fZwHsi070+kf0Dnmrd9VA6kpKF5vcsJbaF4KkD+ujQ6HfenyTPpf4q34P817v
-         Lw/cRjg8xI19gsnwTd7/9PilD6/WIP9eNa1DtNk+gWXZdxuCJP9myXKQJQF5gbDxLWVe
-         PS22WiRQZeD4cAN67FUE74f+0buJO7v71DQP6WC4ve5q5Ibyz3V9+9DvZel0/LU50VSx
-         rUZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=21fm5EgPKmeOayQHxWYMU7Nefc1Ipf9I7LMbzYS7TPI=;
-        b=de35DglNcgX11WJibD5+58h7yCtdNiSZZr64H3qD3pJG6OPkB0Ujd0EwZbAQTAGVQb
-         LsWmE+lf83paI2O3EdfHz8suRfx3i3p6FgdiFAY9IP40vjWTVrILUyKBlLkHO4stXXu6
-         wsbMfmqbV4CJIWOVjB3017Z1ULhxY5syDBdawfusx5PEUqRdNjMJJJxNZgv+kvdebp3T
-         2jRjJQPSduxhCGO/MbR6iFAQOqzEzYkpcbfLUTuCqxkxNwUAEAKmzpuTQwBgDSEE2fIT
-         X9zohqVQziX4Xa3d/W/nwxZVsrPFp8UnVn5ZTVi5pSAPwypcOQQTsifUC/tvGDwQ70nb
-         PfMA==
-X-Gm-Message-State: ACrzQf33vPbMce8yqXtsRdauDHTuEIR0ox2yqmroNhuXFTg9lmWrB2Ri
-	s8Y3NRc4OIZ8yTvwLYeyjTMpnocqErpYFoWA9r5WCw==
-X-Google-Smtp-Source: AMsMyM5WxUziOboPsxC2N6qlers3FkCq6d6ddxCwWgeTeLHIKEFc0BoQutxorsr/ysGcAgO7sfY3nB5LJLrWXyNsPDs=
-X-Received: by 2002:a05:620a:25c8:b0:6ae:be73:86c6 with SMTP id
- y8-20020a05620a25c800b006aebe7386c6mr25824699qko.531.1666710423705; Tue, 25
- Oct 2022 08:07:03 -0700 (PDT)
+	id 1onNXw-006Prc-HO; Tue, 25 Oct 2022 17:17:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666718220; x=1698254220;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=tWI0CC/wYBfwZBoYYtn6VEm9PD6POSQYRocuvbf90tQ=;
+  b=KNTClmIZJw5/rmNq4PkS0rmu2ptkWQ59Og0bSK5lcDi4Jl/av4ftD9Gq
+   a9UmDGi8MJMFMP5sxlckmO7m7TZVKF97pQ+FD8A6D25A80QcMta8pkqp7
+   KpZGjTr/gaOIfYJuWFiAMKAX+shTgUsJY9/Lw8o4XqS4KQbf7w5vr52ZP
+   DmfbfzIy+LYxBZ/Y+FOwQ3KRjNeH/IHbLVhK7xlCp2zNapy/zqLjAKR8S
+   ctKkeMOvxKIu2rIsHSl7GzMTQf9zg56EmpoSGrHdR9zwxKJmKSZlhgqKO
+   64rR5sRPxOjnoyMrO2dfAQQj1jEDpLL4E/+FjDfbpbE6YNX3MJlQxl/oL
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10511"; a="308834491"
+X-IronPort-AV: E=Sophos;i="5.95,212,1661842800"; 
+   d="scan'208";a="308834491"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2022 10:16:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10511"; a="609646608"
+X-IronPort-AV: E=Sophos;i="5.95,212,1661842800"; 
+   d="scan'208";a="609646608"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga006.jf.intel.com with ESMTP; 25 Oct 2022 10:16:50 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1onNXj-002Aw0-1l;
+	Tue, 25 Oct 2022 20:16:47 +0300
+Date: Tue, 25 Oct 2022 20:16:47 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Lee Jones <lee@kernel.org>
+Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
+Message-ID: <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
+References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-References: <20220829093141.45583-1-tomeu.vizoso@collabora.com>
- <20220909141528.5090-1-tomeu.vizoso@collabora.com> <CAPj87rMYW1xZdacZ1Y0qk+D9xpqsqE+cwbQ1j1nZ7S+RKpzOoQ@mail.gmail.com>
- <CAKMK7uGkFP1jSNQzv37PvSqvOtt1FnbfbNyYEf99WM=_2AszSw@mail.gmail.com>
-In-Reply-To: <CAKMK7uGkFP1jSNQzv37PvSqvOtt1FnbfbNyYEf99WM=_2AszSw@mail.gmail.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 25 Oct 2022 16:06:52 +0100
-Message-ID: <CAPj87rPTAhcqSnhzYPdDn93Kh9aGJtN9ZGVAYUP2Ke6w6frH5w@mail.gmail.com>
-Subject: Re: [PATCH v8] drm: Add initial ci/ subdirectory
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>, 
-	Jonathan Corbet <corbet@lwn.net>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Clark <robdclark@chromium.org>, dri-devel@lists.freedesktop.org, 
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, Neil Armstrong <narmstrong@baylibre.com>, 
-	Rob Clark <robdclark@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_080708_364952_578E6EE8 
-X-CRM114-Status: GOOD (  30.81  )
+X-CRM114-CacheID: sfid-20221025_101700_659200_3EAA4EA4 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +93,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
+> There are several users of LED framework that reimplement the
+> functionality of led_init_default_state_get(). In order to
+> deduplicate them move the declaration to the global header
+> (patch 2) and convert users (patche 3-11).
 
-On Tue, 25 Oct 2022 at 08:32, Daniel Vetter <daniel@ffwll.ch> wrote:
-> On Fri, 9 Sept 2022 at 19:18, Daniel Stone <daniel@fooishbar.org> wrote:
-> > But equally - and sorry for not jumping on the IRC (?) discussion as I =
-was in the middle of other stuff when it came up - I'm don't think this is =
-the right plan.
-> >
-> > Mesa having all its CI in-tree makes sense, because merges happen rapid=
-ly to a single canonical tree. If the scripts need to be changed for whatev=
-er reason, we can merge something in under an hour and everyone immediately=
- gets it. DRM is quite different though, given the forest of trees we have =
-and the long merge paths between them. I worry that merging the CI scripts =
-in-tree - especially for our initial attempt at it, when we're likely to ne=
-ed to make quite a lot of changes before it settles down to become a stable=
- system that works for everyone - is shooting ourselves in the foot by limi=
-ting our flexibility.
->
-> So the entire "we have multiple trees" is why I want at least the
-> gitlab-ci.yaml in tree, to force people to collaborate more on one
-> thing instead of everyone rolling their own fun and hacking stuff up.
-> And there's still tons of stuff outside in the separate repo, like the
-> lab status so Linus doesn't get a silly history of lab flapping.
->
-> Also wrt "developers don't get the update right away due to
-> backmerge/pull delays", that's why integration trees like drm-tip or
-> linux-next exist. So maybe initially we should make sure the ci
-> patches go in through drm-misc, to maximize how many people see it.
-> And even for mesa it's not fully automatic, you still have the rebase
-> your branch if you picked a bad one for development (but yeah marge
-> does that if the MR is ready). If you're doing kernel development on a
-> linear tree instead of an integration tree, you're doing it very
-> wrong.
->
-> What I think everyone agrees on is that we probably get the split
-> wrong and need to shuffle some files back&forth, and that's something
-> we need to warn Linus about I guess. But somewhere we do need a split
-> between internal and external stuff, and personally I'd like if at
-> least the pure sw testing (build and virtual stuff) could be all in
-> upstream.
->
-> > Given that it's currently very dependent on fd.o infrastructure (publis=
-hed ci-templates, the registry, the specific-tag runners for Collabora/CrOS=
- DUTs, etc), there isn't much of a portability gain in bringing the scripts=
- into the tree either. It's a good goal, but not where we are today.
->
-> I don't think there's huge chances for any non-fdo gitlab anytime
-> soon. Once we get there we might need to figure out how to standardize
-> the hw lab interfacing, and if we have all the sw targets in upstream
-> that should help with shuffling stuff around for a hypothetical LF
-> gitlab CI (or whatever it is).
+Dear LED maintainers, is there any news on this series? It's hanging around
+for almost 2 months now...
 
-Yep, having talked through things on IRC, I'm happy with where we are;
-let's give it a go and find out.
+> Changelog v3:
+> - added tag to patch 11 (Kurt)
+> - Cc'ed to Lee, who might help with LED subsystem maintenance
+> 
+> Changelog v2:
+> - added missed patch 2 and hence make it the series
+> - appended tag to patch 7
+> - new patch 1
+> 
+> Andy Shevchenko (11):
+>   leds: add missing includes and forward declarations in leds.h
+>   leds: Move led_init_default_state_get() to the global header
+>   leds: an30259a: Get rid of custom led_init_default_state_get()
+>   leds: bcm6328: Get rid of custom led_init_default_state_get()
+>   leds: bcm6358: Get rid of custom led_init_default_state_get()
+>   leds: mt6323: Get rid of custom led_init_default_state_get()
+>   leds: mt6360: Get rid of custom led_init_default_state_get()
+>   leds: pca955x: Get rid of custom led_init_default_state_get()
+>   leds: pm8058: Get rid of custom led_init_default_state_get()
+>   leds: syscon: Get rid of custom led_init_default_state_get()
+>   net: dsa: hellcreek: Get rid of custom led_init_default_state_get()
+> 
+>  drivers/leds/flash/leds-mt6360.c           | 38 +++--------------
+>  drivers/leds/leds-an30259a.c               | 21 ++--------
+>  drivers/leds/leds-bcm6328.c                | 49 +++++++++++-----------
+>  drivers/leds/leds-bcm6358.c                | 32 +++++++-------
+>  drivers/leds/leds-mt6323.c                 | 30 ++++++-------
+>  drivers/leds/leds-pca955x.c                | 26 +++---------
+>  drivers/leds/leds-pm8058.c                 | 29 ++++++-------
+>  drivers/leds/leds-syscon.c                 | 49 ++++++++++------------
+>  drivers/leds/leds.h                        |  1 -
+>  drivers/net/dsa/hirschmann/hellcreek_ptp.c | 45 ++++++++++----------
+>  include/linux/leds.h                       | 15 ++++---
+>  11 files changed, 143 insertions(+), 192 deletions(-)
+> 
+> -- 
+> 2.35.1
+> 
 
-Acked-by: Daniel Stone <daniels@collabora.com>
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Cheers,
-Daniel
+
 
