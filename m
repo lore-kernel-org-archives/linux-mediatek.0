@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C86FA373D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 01:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61FD2C67871
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 02:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6Gu0ND/jwgTDHnSCh5YQ1qm3jVdaf3TxXKNSqR5nggI=; b=tW3KCTdt5aZRoe
-	uf+JMvcb53KS2gZo26AApsrnpfBeMPqp1e1pGE+zpf5/tczkrHG9MqTmv245IxY/Pz1pZnAkBAz+4
-	jWZUzrsrDn6+k4Nz5iNn9iv7dUGQJBKnq+tuHp47uH59Z+hQCrM+emgRzc42CdxejglVcSlNIdGJH
-	/uYxZkQ/2ZOHrCA60zCQ7MmSQxPXjg5QrhH066Rj9fXE5vuU0Mm2DynysudxC1E1prmglR3zoeWQu
-	6GEbTCU+Pqe++71WkgcHRygvRmQ+/ZWgJ3W12zpS9XbpgSO5utctME9NrXYfXeUHMlWHeN2kUf7Z8
-	bWHxAwQaJTJwcgYnyQjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ieQS2Mw52Pi8udyGNEflIMqPTtMIjzLnr/hwmBb+3cw=; b=asbk2fZjfJjDrHt7wB+Pq2Oyvs
+	WKX1ZuTGP5bnBOWoCtT7iCxW16DZDl8/0RLC+MpXFm/R5zfmSNHb/QEdjaR1IGLP6KY/kdglI6sq3
+	hzGvQ2L355TO4AIafddMvtOGTvimY1OY+62QqaPNHTAuewqBYH1rCzDyHR6E9fzxeecpYQFAPxCGi
+	MmWRXvVm7EGJdifR2uO/4GasmqE1B1SiwmfW5fKzYxz1D+6B1Afi+uwAGuIb/1t+LNqX6KaHj0Tzv
+	eJC4TdfABlzbdruxSxP4WxJ9m+R0E115hgDJ/W6Fql1yK74kU2+bQdVBWOy8kBSwox+yrYeITTZ01
+	2udDY5Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on8jx-003Xfe-7d; Tue, 25 Oct 2022 01:28:25 +0000
+	id 1on9Vn-003anG-S4; Tue, 25 Oct 2022 02:17:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on8jk-003Xcw-Q9; Tue, 25 Oct 2022 01:28:14 +0000
-X-UUID: db51325fb4924ec2a5c1ee7aa4b251d5-20221024
+	id 1on9Vk-003amA-5L; Tue, 25 Oct 2022 02:17:49 +0000
+X-UUID: 629f4f88db4949bea1aba04c9f707a6b-20221024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=6Gu0ND/jwgTDHnSCh5YQ1qm3jVdaf3TxXKNSqR5nggI=;
-	b=Xo8v005oovr0OaDxPzDQ6sd8Pc042Z8bNtRsWhhxg4MOz67rVrOvahbshSLk27xS3jDlQQf/YJdSAZXxAdL+9/3W0ZYQZ1t66fUAovc097pquLrPwBegeFOUrX5Qxrqq+6Hej8L6f+wA0W87UWH/uH5gtAbrz0ovV6UyFtZRUes=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ieQS2Mw52Pi8udyGNEflIMqPTtMIjzLnr/hwmBb+3cw=;
+	b=S9cyxmxQQQqWWF3clzmqkWQywedKVrUIqyVQOgmsUGNClV40NpExftamVpmx7Phiej18Oo65G1YZNmdm7Kk9i1lAZPhYlZt+WJaMEKFbLSnN/bSIg7ejCdtjWyWTWJzWPREhN0ozkz+VNX/hfVX8ypfVdz1zZBg27ptCCkBQP20=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:e18119ca-7c29-4381-b16d-010878705d2a,IP:0,U
+X-CID-O-INFO: VERSION:1.1.12,REQID:757f8ce5-bcff-40fe-8684-fb926211447b,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:0c55f76c-89d3-4bfa-baad-dc632a24bca3,B
+X-CID-META: VersionHash:62cd327,CLOUDID:2d228ce4-e572-4957-be22-d8f73f3158f9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: db51325fb4924ec2a5c1ee7aa4b251d5-20221024
+X-UUID: 629f4f88db4949bea1aba04c9f707a6b-20221024
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
+	(envelope-from <mingjia.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 113411026; Mon, 24 Oct 2022 18:28:04 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1917903705; Mon, 24 Oct 2022 19:17:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 25 Oct 2022 09:27:28 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ 15.2.792.15; Tue, 25 Oct 2022 09:47:02 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 25 Oct 2022 09:27:28 +0800
-Message-ID: <9759df8a6fbe30bfbd0df72793b751b7628006bc.camel@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: PCI: mediatek-gen3: add SoC based
- clock config
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Frank Wunderlich <linux@fw-web.de>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 25 Oct 2022 09:27:27 +0800
-In-Reply-To: <20221023170234.83621-2-linux@fw-web.de>
-References: <20221023170234.83621-1-linux@fw-web.de>
-	 <20221023170234.83621-2-linux@fw-web.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Tue, 25 Oct 2022 09:47:01 +0800
+From: Mingjia Zhang <mingjia.zhang@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5] media: mediatek: vcodec: Add to support VP9 inner racing mode
+Date: Tue, 25 Oct 2022 09:46:59 +0800
+Message-ID: <20221025014659.7158-1-mingjia.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_182812_886986_9F433AFC 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20221024_191748_219705_41D9C12E 
+X-CRM114-Status: GOOD (  19.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,100 +86,211 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2022-10-23 at 19:02 +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> The PCIe driver covers different SOC which needing different clock
-> configs. Define them based on compatible.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../bindings/pci/mediatek-pcie-gen3.yaml      | 48 ++++++++++++++---
-> --
->  1 file changed, 36 insertions(+), 12 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-
-> gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-
-> gen3.yaml
-> index c00be39af64e..af0d2201746d 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -43,9 +43,6 @@ description: |+
->    each set has its own address for MSI message, and supports 32 MSI
-> vectors
->    to generate interrupt.
->  
-> -allOf:
-> -  - $ref: /schemas/pci/pci-bus.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
-> @@ -84,15 +81,7 @@ properties:
->      maxItems: 6
->  
->    clock-names:
-> -    items:
-> -      - const: pl_250m
-> -      - const: tl_26m
-> -      - const: tl_96m
-> -      - const: tl_32k
-> -      - const: peri_26m
-> -      - enum:
-> -          - top_133m        # for MT8192
-> -          - peri_mem        # for MT8188/MT8195
-> +    maxItems: 6
->  
->    assigned-clocks:
->      maxItems: 1
-> @@ -138,6 +127,41 @@ required:
->    - '#interrupt-cells'
->    - interrupt-controller
->  
-> +allOf:
-> +  - $ref: /schemas/pci/pci-bus.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8192-mmc
+Enable VP9 inner racing mode
+We send lat trans buffer to the core when trigger lat to work, instead of waiting for the lat decode done.
+It can be reduce decoder latency.
 
-This should be "mediatek,mt8192-pcie".
+Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
+---
+Changes from v3:
 
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: tl_96m
-> +            - const: tl_32k
-> +            - const: peri_26m
-> +            - const: top_133m
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8188-pcie
-> +              - mediatek,mt8195-pcie
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: tl_96m
-> +            - const: tl_32k
-> +            - const: peri_26m
-> +            - const: peri_mem
-> +
->  unevaluatedProperties: false
->  
->  examples:
+- CTS/GTS test pass
+- Fluster result: Ran 275/303 tests successfully
+
+Changes from v2:
+
+- CTS/GTS test pass
+- Fluster result: Ran 240/303 tests successfully
+
+Changes from v1:
+
+- CTS/GTS test pass
+---
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 85 ++++++++++---------
+ 1 file changed, 47 insertions(+), 38 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+index 81de876d51267..1b39119c89951 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+@@ -436,6 +436,7 @@ struct vdec_vp9_slice_ref {
+  * @frame_ctx:		4 frame context according to VP9 Spec
+  * @frame_ctx_helper:	4 frame context according to newest kernel spec
+  * @dirty:		state of each frame context
++ * @local_vsi:		local instance vsi information
+  * @init_vsi:		vsi used for initialized VP9 instance
+  * @vsi:		vsi used for decoding/flush ...
+  * @core_vsi:		vsi used for Core stage
+@@ -482,6 +483,8 @@ struct vdec_vp9_slice_instance {
+ 	struct v4l2_vp9_frame_context frame_ctx_helper;
+ 	unsigned char dirty[4];
+ 
++	struct vdec_vp9_slice_vsi local_vsi;
++
+ 	/* MicroP vsi */
+ 	union {
+ 		struct vdec_vp9_slice_init_vsi *init_vsi;
+@@ -1616,16 +1619,10 @@ static int vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance
+ }
+ 
+ static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance *instance,
+-				     struct vdec_lat_buf *lat_buf,
+-				     struct vdec_vp9_slice_pfc *pfc)
++				     struct vdec_vp9_slice_vsi *vsi)
+ {
+-	struct vdec_vp9_slice_vsi *vsi;
+-
+-	vsi = &pfc->vsi;
+-	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
+-
+ 	mtk_vcodec_debug(instance, "Frame %u LAT CRC 0x%08x %lx %lx\n",
+-			 pfc->seq, vsi->state.crc[0],
++			 (instance->seq - 1), vsi->state.crc[0],
+ 			 (unsigned long)vsi->trans.dma_addr,
+ 			 (unsigned long)vsi->trans.dma_addr_end);
+ 
+@@ -2090,6 +2087,13 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		return ret;
+ 	}
+ 
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability)) {
++		vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
++		memcpy(&instance->local_vsi, vsi, sizeof(*vsi));
++		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++		vsi = &instance->local_vsi;
++	}
++
+ 	if (instance->irq) {
+ 		ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_RECEIVED,
+ 						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
+@@ -2102,22 +2106,25 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	}
+ 
+ 	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
+-	ret = vdec_vp9_slice_update_lat(instance, lat_buf, pfc);
++	ret = vdec_vp9_slice_update_lat(instance, vsi);
+ 
+-	/* LAT trans full, no more UBE or decode timeout */
+-	if (ret) {
+-		mtk_vcodec_err(instance, "VP9 decode error: %d\n", ret);
+-		return ret;
+-	}
++	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		/* LAT trans full, no more UBE or decode timeout */
++		if (ret) {
++			mtk_vcodec_err(instance, "frame[%d] decode error: %d\n",
++				       ret, (instance->seq - 1));
++			return ret;
++		}
+ 
+-	mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
+-			 (unsigned long)pfc->vsi.trans.dma_addr,
+-			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+ 
+-	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
+-				       vsi->trans.dma_addr_end +
+-				       ctx->msg_queue.wdma_addr.dma_addr);
+-	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
++	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi->trans.dma_addr_end);
++	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++
++	mtk_vcodec_debug(instance, "lat trans end addr(0x%lx), ube start addr(0x%lx)\n",
++			 (unsigned long)vsi->trans.dma_addr_end,
++			 (unsigned long)ctx->msg_queue.wdma_addr.dma_addr);
+ 
+ 	return 0;
+ }
+@@ -2139,40 +2146,40 @@ static int vdec_vp9_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ {
+ 	struct vdec_vp9_slice_instance *instance;
+-	struct vdec_vp9_slice_pfc *pfc;
++	struct vdec_vp9_slice_pfc *pfc = NULL;
+ 	struct mtk_vcodec_ctx *ctx = NULL;
+ 	struct vdec_fb *fb = NULL;
+ 	int ret = -EINVAL;
+ 
+ 	if (!lat_buf)
+-		goto err;
++		return -EINVAL;
+ 
+ 	pfc = lat_buf->private_data;
+ 	ctx = lat_buf->ctx;
+ 	if (!pfc || !ctx)
+-		goto err;
++		return -EINVAL;
+ 
+ 	instance = ctx->drv_handle;
+ 	if (!instance)
+-		goto err;
++		return -EINVAL;
+ 
+ 	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
+ 	if (!fb) {
+ 		ret = -EBUSY;
+-		goto err;
++		goto vdec_dec_end;
+ 	}
+ 
+ 	ret = vdec_vp9_slice_setup_core(instance, fb, lat_buf, pfc);
+ 	if (ret) {
+ 		mtk_vcodec_err(instance, "vdec_vp9_slice_setup_core\n");
+-		goto err;
++		goto vdec_dec_end;
+ 	}
+ 	vdec_vp9_slice_vsi_to_remote(&pfc->vsi, instance->core_vsi);
+ 
+ 	ret = vpu_dec_core(&instance->vpu);
+ 	if (ret) {
+ 		mtk_vcodec_err(instance, "vpu_dec_core\n");
+-		goto err;
++		goto vdec_dec_end;
+ 	}
+ 
+ 	if (instance->irq) {
+@@ -2190,24 +2197,26 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ 	ret = vdec_vp9_slice_update_core(instance, lat_buf, pfc);
+ 	if (ret) {
+ 		mtk_vcodec_err(instance, "vdec_vp9_slice_update_core\n");
+-		goto err;
++		goto vdec_dec_end;
+ 	}
+ 
+-	pfc->vsi.trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
+ 	mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n",
+ 			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+-	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
+-	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
+-
+-	return 0;
+ 
+-err:
+-	if (ctx && pfc) {
+-		/* always update read pointer */
+-		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
++vdec_dec_end:
++	/* always update read pointer */
++	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
++		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
++					       pfc->vsi.trans.dma_addr);
++	else
++		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
++					       pfc->vsi.trans.dma_addr_end);
+ 
++	if (ret) {
+ 		if (fb)
+ 			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
++	} else {
++		ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
+ 	}
+ 	return ret;
+ }
+-- 
+2.18.0
 
 
