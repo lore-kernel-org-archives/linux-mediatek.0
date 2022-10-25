@@ -4,79 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC1D4C04A95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 07:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABB5C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 07:43:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+r3Ej5MJ+sN5EgIN4UbB8uiEPUjhfnn1clmg3no9TJA=; b=30qcILs+Z+0ViTor14RadOwIBy
-	jrnj8ojVP9qotOr0JzrhF+g1D84piyzRSShD+JTw7wazJJP3i37YO6zvXr0wl2x68p1ZXtgTCPZbB
-	YM32XNXgRBA95jULGkew5nsvIRT+nRnaVZCx6XxPRKvNQjubpLhMzFfRMakUOqFVTf7cp4xtlnop5
-	EUAVQIFKc/d5bvmp43MC9RULWp/W4fwOn+wskq7Ag6I8TgftxZ4Wu5pa9jklaXNLGq79gaxOn0kou
-	PXHtKrOo/TDJOVlY6hs011JQ1NmRjUQq6poytZvYcvy7vZAub2mFKSnOpLzzNybeOxS7U9BSMxV24
-	MJQ43A/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m0tnr5ZD8EC2va1ebYMWM4ouc4PlgDpshSSnTTqC0Pw=; b=JNE+nvyHe7ZbRU
+	68XWHy7xd2tz3PNpGJFoQIK4/vPYrl587W9bZOxi/Jktk3OCjbtoZ0QmGBFDdy2E2zZJGKyjiBoIA
+	ZiggNPJ44+4kKwLdkk0iTsdTJAksHNwTIHi6BxSdacwtz+QaMnpKNooZuRhMzKy8W7cUgpqUcEpsT
+	yeJEzETebVnr7c5iYa4DJ600FdF1Zsg8b2xh1Np7sVC8ciEBjDT4aEmBVL0AoeXmUguEZAkXV7Y8T
+	BOcv5v5IasQh7mJxtkNgRVQVMhR5GCp5k6UgAXMWzcGfsF1Ejg3C/G2v08QZ3mXaDgFazco4A90HG
+	MA5uRCRQo5NiPjo9yp9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onEQj-004Afi-5E; Tue, 25 Oct 2022 07:32:57 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1onEaR-004Cct-Qp; Tue, 25 Oct 2022 07:42:59 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onEQR-004AWm-QC
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 07:32:43 +0000
-Received: by mail-lj1-x233.google.com with SMTP id u2so6508737ljl.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Oct 2022 00:32:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+r3Ej5MJ+sN5EgIN4UbB8uiEPUjhfnn1clmg3no9TJA=;
-        b=dHEXI2+TslzzCiyCa1KMcE47r1HtIoMwtoBUvkYBvqpP87fm4EUvpXQfRQ6MXO6AuC
-         9xeO4KO3F0T+tFK/WMcBGLd+yq4Fw4c2AXe1ISkqTIDMK654s+kSbgEVGoLARnx3uoJW
-         aD0U5w1Q9U2FxNEaud2UGBpkhZQnjHh9Yln5I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+r3Ej5MJ+sN5EgIN4UbB8uiEPUjhfnn1clmg3no9TJA=;
-        b=uaEPer17vurPx5jGPIaR8VAZzjJYP3EiOOdB28JE8TLba0COfsOckfhMbx2imCGNnR
-         6fGITM+fu1FU4h4S8uVL5K2KGnOglsR1m4bX5H8s9u9mWg9sovzc5scbytFmQ12dWPh0
-         Oj5U+f0bNsDfmS+GdSCtfBSKNYWvmVWXpeBfAqn9txrNzM2rSFm3Fts7wi35ncvbaVea
-         yyVJALFTHwDd5NO3vEVMOrwP7enSL8K7u/EjP35nzav7+Kn0BpD198S3w70wypKWvmyV
-         EMlmss6UHDmowr8h7VbPLunsl6d5Mrj3mxd+ji9lzVcOYGaujTvxlj6ExKsmrL9a5s0p
-         XxtA==
-X-Gm-Message-State: ACrzQf1jiklS7RYU9RjXKN+cM+MFmwL006kmLQFWF4vCe2FwfVqoE66s
-	YkjhEtn/a43SxuRju/OighchUxseo0xLZ2jDAI/hLg==
-X-Google-Smtp-Source: AMsMyM7I2ND3r5rWOu78x2UxeUO/s4RiLWEaBOmN4MFRAA0t4abyOutiAaFD3Hl5qHMnJY+WWxw8umC0FhsMF7F5Qq0=
-X-Received: by 2002:a2e:b055:0:b0:277:a98:aac0 with SMTP id
- d21-20020a2eb055000000b002770a98aac0mr3617068ljl.480.1666683155618; Tue, 25
- Oct 2022 00:32:35 -0700 (PDT)
+	id 1onEaF-004CWR-9g; Tue, 25 Oct 2022 07:42:48 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout3.routing.net (Postfix) with ESMTP id 7DC3B625BD;
+	Tue, 25 Oct 2022 07:42:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666683765;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=m0tnr5ZD8EC2va1ebYMWM4ouc4PlgDpshSSnTTqC0Pw=;
+	b=T6ILDSntEIQG1Lxfaudwh18uKwgDURHsEnVpRrwudk2wmE2Nkv4pRrC3LEClFMoMwqm0hc
+	M0oO2pzuiWZ290pHr7+ZhSZS6zoobZ1BARZR9XVeAauja3LOvKGf2ueZy6Jva3oQP4iWjQ
+	ChVGPvjSSNCMsG7zcQBx+RTlHoaVGXc=
+Received: from frank-G5.. (fttx-pool-217.61.152.57.bambit.de [217.61.152.57])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 9EB97360310;
+	Tue, 25 Oct 2022 07:42:44 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 3/6] arm64: dts: mediatek: mt2712e: swap last 2 clocks to match binding
+Date: Tue, 25 Oct 2022 09:42:35 +0200
+Message-Id: <20221025074238.18136-4-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221025074238.18136-1-linux@fw-web.de>
+References: <20221025074238.18136-1-linux@fw-web.de>
 MIME-Version: 1.0
-References: <20220829093141.45583-1-tomeu.vizoso@collabora.com>
- <20220909141528.5090-1-tomeu.vizoso@collabora.com> <CAPj87rMYW1xZdacZ1Y0qk+D9xpqsqE+cwbQ1j1nZ7S+RKpzOoQ@mail.gmail.com>
-In-Reply-To: <CAPj87rMYW1xZdacZ1Y0qk+D9xpqsqE+cwbQ1j1nZ7S+RKpzOoQ@mail.gmail.com>
-From: Daniel Vetter <daniel@ffwll.ch>
-Date: Tue, 25 Oct 2022 09:32:24 +0200
-Message-ID: <CAKMK7uGkFP1jSNQzv37PvSqvOtt1FnbfbNyYEf99WM=_2AszSw@mail.gmail.com>
-Subject: Re: [PATCH v8] drm: Add initial ci/ subdirectory
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>, 
-	Jonathan Corbet <corbet@lwn.net>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Clark <robdclark@chromium.org>, dri-devel@lists.freedesktop.org, 
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, Neil Armstrong <narmstrong@baylibre.com>, 
-	Rob Clark <robdclark@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 2109dc3c-1eb0-4146-986b-e8934a220a40
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_003239_877220_83AFDD67 
-X-CRM114-Status: GOOD (  28.59  )
+X-CRM114-CacheID: sfid-20221025_004247_499157_8DBF8EA6 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,78 +65,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 9 Sept 2022 at 19:18, Daniel Stone <daniel@fooishbar.org> wrote:
->
-> Hi,
->
-> On Fri, 9 Sept 2022 at 15:15, Tomeu Vizoso <tomeu.vizoso@collabora.com> w=
-rote:
->>
->> Also include a configuration file that points to the out-of-tree CI
->> scripts.
->
->
->  I think this para is outdated given ...
->
->> v8:
->>   - Move all files specific to testing the kernel into the kernel tree
->>     (thus I have dropped the r-bs I had collected so far)
->>   - Uprev Gitlab CI infrastructure scripts to the latest from Mesa
->
->
-> But equally - and sorry for not jumping on the IRC (?) discussion as I wa=
-s in the middle of other stuff when it came up - I'm don't think this is th=
-e right plan.
->
-> Mesa having all its CI in-tree makes sense, because merges happen rapidly=
- to a single canonical tree. If the scripts need to be changed for whatever=
- reason, we can merge something in under an hour and everyone immediately g=
-ets it. DRM is quite different though, given the forest of trees we have an=
-d the long merge paths between them. I worry that merging the CI scripts in=
--tree - especially for our initial attempt at it, when we're likely to need=
- to make quite a lot of changes before it settles down to become a stable s=
-ystem that works for everyone - is shooting ourselves in the foot by limiti=
-ng our flexibility.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-So the entire "we have multiple trees" is why I want at least the
-gitlab-ci.yaml in tree, to force people to collaborate more on one
-thing instead of everyone rolling their own fun and hacking stuff up.
-And there's still tons of stuff outside in the separate repo, like the
-lab status so Linus doesn't get a silly history of lab flapping.
+First 3 clocks for mt2712 need to be "source", "hclk", "source_cg"
+so swap last 2 of mmc0 to match the binding.
 
-Also wrt "developers don't get the update right away due to
-backmerge/pull delays", that's why integration trees like drm-tip or
-linux-next exist. So maybe initially we should make sure the ci
-patches go in through drm-misc, to maximize how many people see it.
-And even for mesa it's not fully automatic, you still have the rebase
-your branch if you picked a bad one for development (but yeah marge
-does that if the MR is ready). If you're doing kernel development on a
-linear tree instead of an integration tree, you're doing it very
-wrong.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-What I think everyone agrees on is that we probably get the split
-wrong and need to shuffle some files back&forth, and that's something
-we need to warn Linus about I guess. But somewhere we do need a split
-between internal and external stuff, and personally I'd like if at
-least the pure sw testing (build and virtual stuff) could be all in
-upstream.
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index e6d7453e56e0..9dc0794fcd2e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -766,9 +766,9 @@ mmc0: mmc@11230000 {
+ 		interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&pericfg CLK_PERI_MSDC30_0>,
+ 			 <&pericfg CLK_PERI_MSDC50_0_HCLK_EN>,
+-			 <&pericfg CLK_PERI_MSDC30_0_QTR_EN>,
+-			 <&pericfg CLK_PERI_MSDC50_0_EN>;
+-		clock-names = "source", "hclk", "bus_clk", "source_cg";
++			 <&pericfg CLK_PERI_MSDC50_0_EN>,
++			 <&pericfg CLK_PERI_MSDC30_0_QTR_EN>;
++		clock-names = "source", "hclk", "source_cg", "bus_clk";
+ 		status = "disabled";
+ 	};
+ 
+-- 
+2.34.1
 
-> Given that it's currently very dependent on fd.o infrastructure (publishe=
-d ci-templates, the registry, the specific-tag runners for Collabora/CrOS D=
-UTs, etc), there isn't much of a portability gain in bringing the scripts i=
-nto the tree either. It's a good goal, but not where we are today.
-
-I don't think there's huge chances for any non-fdo gitlab anytime
-soon. Once we get there we might need to figure out how to standardize
-the hw lab interfacing, and if we have all the sw targets in upstream
-that should help with shuffling stuff around for a hypothetical LF
-gitlab CI (or whatever it is).
--Daniel
---=20
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
 
