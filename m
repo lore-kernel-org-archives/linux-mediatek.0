@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7070CC38A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 21:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3B3AC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 22:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MiZtEq0TnMZ6dVYNj/YFe/ZDFlT7YjxhP5A2iXKUkoA=; b=THcrkSL7LdoJS/YC1tdbVavw24
-	3YLlNzD2t4Mb2Zzp3GdzuxxPoFKK16CINlTcECFIr4NEKbvxgyx4lvIOPBqog2CKPWOWOLTpR1rwz
-	yHAgFRRvw27iOkBux1TCqIfEAUmM7JF9jrVcdi/1B3wL00cRhK5NcRaRTY63NWZtoBZV2GL/BlNLH
-	V543xQHuAR1s+H1/ugQBlHXtjjALS/im7pdo9VIkGNI+bat/yz45kpuw01w4qB6dT27cBTdGg0Wkk
-	TYbcZozAKa7Jy507mSQmilDh/m9fhUdtvE3j3eUEPxR6t2kAXAnLgQiiY1IlhzUwmxIvkspcTtb0V
-	TXDK0Rpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OACRRRj3HbVjZB5DHJ6NkbeA5SO5xCg5TOCz0N9BAw4=; b=TNlYxzcwF71/13Ry4sDDh1a7IR
+	5eScDCNebILRQ67sKFlQb+KkPDidtt90rUoxstUgoEc4/M7ZMeYh64Xe6bnMs6cqG9/4DyORAIgl3
+	isyfwVH9aZoc/si30dCF6Un+esxbeWq0I+G6tTziUDvoK06wuyz+YAPS9dVLgkZN+ON9XqBFfUH0T
+	+SFNpq3S+6REwjTZH5ftm6+98pwhqFPgBAq2e/WgsJWyj1IgDNP/SorlRMJ1ud53xX+DRZg5RGFJJ
+	Y7/UaPzbkIJ6j/Y8/gjK11XbBDrLutyYLr4ZQdzRqp0p3FmIQWX7JG7q4Ql8LzeZlK+Mcl+/e5wfp
+	81yT/Glg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onROl-007Ehn-C6; Tue, 25 Oct 2022 21:23:47 +0000
-Received: from mail-ot1-f51.google.com ([209.85.210.51])
+	id 1onSca-007RIG-F9; Tue, 25 Oct 2022 22:42:08 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onROi-007Ee3-QN; Tue, 25 Oct 2022 21:23:46 +0000
-Received: by mail-ot1-f51.google.com with SMTP id m5-20020a9d73c5000000b0066738ce4f12so1511047otk.12;
-        Tue, 25 Oct 2022 14:23:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MiZtEq0TnMZ6dVYNj/YFe/ZDFlT7YjxhP5A2iXKUkoA=;
-        b=3KSdNi2lRGoC7BSvCYHvnthqTcc2EjCuQg5oEXN+Fxl7bwElCaNGPSBSyjhzIZgcU1
-         w3P4+Y+mY7xcAy7sfYWbR8oE4Xekg0I+YduYTQECdMSIAjps+9bMkxagdGzFGQfs5SCK
-         2IP7v7SH7o5Fd8LP3CR55RaTF+XWg+LKmxh0fNL9ZBOKzs/RDneYrwPmhF1Sbnwt1N39
-         v0RoMlihpkhFUdyheJBHngMlTsVu/W3OV1GVgVhEyRfBKCi7dHjMLBNlCosNuhgSalv2
-         5O1TZ3/zvZwZBetRORCpBHLjLV0W07Q/spThxXDtgxiS6GNltTKXa8FXnpNuOIcUyfFo
-         HoYw==
-X-Gm-Message-State: ACrzQf2YISk7sO1D1fFwBESpuEvCY5H23SObhyugUIPjFT5HFzsTFlvA
-	SYUJfmvRvwzQGB8b/kQM4g==
-X-Google-Smtp-Source: AMsMyM4bAY+2dLYm8jZ/uFm3kd9aGE6c3QFn2578otqhf/JxJGpRVle2a9mLUPqcMdF3F83SFeG3/A==
-X-Received: by 2002:a9d:5907:0:b0:665:c301:2f1c with SMTP id t7-20020a9d5907000000b00665c3012f1cmr4332788oth.375.1666733014290;
-        Tue, 25 Oct 2022 14:23:34 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id d22-20020a4ad356000000b004805e9e9f3dsm1563131oos.1.2022.10.25.14.23.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Oct 2022 14:23:33 -0700 (PDT)
-Received: (nullmailer pid 3336858 invoked by uid 1000);
-	Tue, 25 Oct 2022 21:23:34 -0000
-Date: Tue, 25 Oct 2022 16:23:34 -0500
-From: Rob Herring <robh@kernel.org>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, Eric Dumazet <edumazet@google.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, Lee Jones <lee@kernel.org>, Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Landen Chao <Landen.Chao@mediatek.com>, John Crispin <john@phrozen.org>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Florian Fainelli <f.fainelli@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v1 net-next 7/7] dt-bindings: net: mscc,vsc7514-switch:
- utilize generic ethernet-switch.yaml
-Message-ID: <20221025212334.GB3322299-robh@kernel.org>
-References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-8-colin.foster@in-advantage.com>
- <166672723302.3138577.18331816371776997839.robh@kernel.org>
+	id 1onScM-007REQ-UV; Tue, 25 Oct 2022 22:41:56 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 4922CB81F5D;
+	Tue, 25 Oct 2022 22:41:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 708D9C433D6;
+	Tue, 25 Oct 2022 22:41:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666737711;
+	bh=3ReAlpbuxb1p9jUT1Tt05lQ1bFQXcNMX2FBhJvCl64U=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=CHENs7+Jm2JhwnGqKVG6LBdPWTr/zoY37HBmpX5axP8gH4//7lYRP+SI07XpMe+Ca
+	 D+C2b5iwFp3jS6wY9M7rNui0VaCv79pxRRSE1Rm51kMzFUJuvUcQfXsSF841ZP7lpu
+	 ys88kwX5Dn80rrnzny+sciuwoa9xxwFWymnQhvJ2s8bsH2UH6ZS/uWF2ffOy8rxhMg
+	 uJ+dXnvYzzgkN+UA1k5mPdKPPoONNgo8MMI4SsB/9jnTLlN4op6rN4GANBGakjbQZ5
+	 ybr0sZXx/kuN6dfeRXD/w4TpWBuY4CNTBobf5u92SrIEZWC0kPkQdB9MD5mG3ut2gh
+	 e5+V9qhiJrpPw==
+Date: Tue, 25 Oct 2022 15:41:50 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: kernel test robot <lkp@intel.com>, Doug Berger <opendmb@gmail.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, ntfs3@lists.linux.dev,
+ netdev@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-scsi@vger.kernel.org, linux-mm@kvack.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [linux-next:master] BUILD REGRESSION
+ 89bf6e28373beef9577fa71f996a5f73a569617c
+Message-ID: <20221025154150.729bbbd0@kernel.org>
+In-Reply-To: <63581a3c.U6bx8B6mFoRe2pWN%lkp@intel.com>
+References: <63581a3c.U6bx8B6mFoRe2pWN%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <166672723302.3138577.18331816371776997839.robh@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_142344_873540_1AF6F2DC 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20221025_154155_149403_7B50D4BC 
+X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +75,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 25, 2022 at 03:05:02PM -0500, Rob Herring wrote:
-> On Mon, 24 Oct 2022 22:03:55 -0700, Colin Foster wrote:
-> > Several bindings for ethernet switches are available for non-dsa switches
-> > by way of ethernet-switch.yaml. Remove these duplicate entries and utilize
-> > the common bindings for the VSC7514.
-> > 
-> > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> > Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> > ---
-> >  .../bindings/net/mscc,vsc7514-switch.yaml     | 36 +------------------
-> >  1 file changed, 1 insertion(+), 35 deletions(-)
-> > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> ./Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml: Unable to find schema file matching $id: http://devicetree.org/schemas/net/ethernet-switch.yaml
-> Documentation/devicetree/bindings/net/mscc,vsc7514-switch.example.dtb:0:0: /example-0/switch@1010000: failed to match any schema with compatible: ['mscc,vsc7514-switch']
+On Wed, 26 Oct 2022 01:17:48 +0800 kernel test robot wrote:
+> drivers/net/ethernet/broadcom/genet/bcmgenet.c:1497:5-13: ERROR: invalid reference to the index variable of the iterator on line 1475
 
-This one you can ignore. The base tree is reset if a prior patch failed.
-
-Rob
+CC Doug 
 
