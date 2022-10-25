@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A016DC04A95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 08:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648F8C04A95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 09:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tvmGGID1dpeGmDWI+se+qLj+hgdjVoQKMjwsf2BdkEM=; b=NtjtIHPgFf864W6LSDpFjiHBT8
-	DnG1D8sFjJ6eSMo1Q60rHcSp0de0jR2eKcvT6RF/suvWxcuOzO8+gnITAJGyJgt9I/WbjttuzB5Mv
-	gtaPa89OWlr5v85fq2ClQK72lBoAVfWo8lJRd6YzPb/rHaZwPD7/NN4ZrznCsz6Xhkuin/OnsXkON
-	rL8CYvYgcZOIJfixsDSRn3Hd74arsVPCaU7MLZ5oEzEJPBZOTvt5Py6Jv+GV4Tm/YSpAkvUE6I4OF
-	WN0rkPPcdJ3Ug/n4wWkhcY9t16NmPHNV/m/bJ/1tvm3r/g32WrOJ3tz+Y1XVh6uax474taAyy5vXm
-	3ZNpQMTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o8r7L6rhh4TAZcDmS0XgjikERgXONFwizO/PY2BYDK8=; b=uzKJ89nU3PZyfG3/TPLTXklED2
+	oN5eVy8OQkIc5dVfACQ4tY2SxhQ58qFx0oB1AJy9cY7pPWRB3iCw5nnjskqnpgZsHE+2na2yihd2W
+	a1tQHpPKs9oWTXbWSShJYmEo9hTRXgM9wxlRXD/F+kduDfcfgPk2mqOiSkZNU3wscsN3nqWIzLHlf
+	a3nLS02Cdhv5RkSYeQM3d3AUlXGECZk4PjiPubCbqJHjG8CJICQ6aZOTJDB73KL+Qn3OJTJvXXhGh
+	qJelRaj+14+4u1K2sqTAAzrfT6rfaiCP36biLUy7zhOobBSPaDHlETl9wCnMMRmfgUTP671D/f8Ij
+	eWT0aipw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onFNJ-004LRW-G0; Tue, 25 Oct 2022 08:33:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1onGd4-004ewW-2D; Tue, 25 Oct 2022 09:53:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onFNG-004LQP-11
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 08:33:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1onGcm-004et1-4U; Tue, 25 Oct 2022 09:53:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B431617C2;
-	Tue, 25 Oct 2022 08:33:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F04AC433D6;
-	Tue, 25 Oct 2022 08:33:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666686803;
-	bh=LHTcKR+3y7J23LlcMdGj2MOCWs0GNbwZfPXXqFYul5A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NRBP3BrCJBzDzeOemxKt4jNhjlepJrh8dMvAtR9NtFvZ9lUOR8BadeiSgqscZwAhz
-	 +v/9Go+dBSvpUVlL/Uz4d7VZvA6qcmPEX32M078AB/EK4cN5skOKPIskNGnhFnEyFr
-	 b7pkbAyCV8JsWlKwUX4vjNoI94fjAmaPgQeqrE9MM3A8Qs4G1oLJOhDCyydBxPFk2f
-	 s5MM+/Wqe02AUznZWi/fNxj0RnR8bdr+oZvTvvumHvXz9kqy7qQ4smZ9uJdo779CG+
-	 ekYyvz3EoiDEdC/ZXvCB5uGJtVYn27/cMb2I3PoZNe+ssoio7EiDfRqgroBl/Sb//p
-	 aPKEPp6QRknRg==
-Date: Tue, 25 Oct 2022 10:33:20 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Deren Wu <Deren.Wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: Re: [PATCH v2] wifi: mt76: fix bandwidth 80MHz link fail in 6GHz band
-Message-ID: <Y1efUIq4aCFO7V6j@lore-desk>
-References: <85b5e8374fc9b86fb955060c1840f3b2a1d187e4.1666614616.git.deren.wu@mediatek.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC30E660237B;
+	Tue, 25 Oct 2022 10:53:22 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666691603;
+	bh=AfoC+u7QOoMXL0swZVl0spuIt4jUU/HeJkWsU7RAiyY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=e3IHYNgCWZFHB87MlOvMPIe8lEbMrg8kIJx4WoAX8/jwbREZ7I3fZaTIyr0w3J10j
+	 pZBOISwXMzpJCcYc7/SQvDd+Ma5oayPsd8+Ka6I5VNGbVveaGhOL8VeRMqvGMgKBpL
+	 exWc+XE1mILerfwugzCj1mWwZ1a9Va2UaSUVjtsUeKpM5q/neXObmgIHRnRKlTyLAR
+	 MbtO1yqpogjhUhFaJsm+l+jIcu4xvzEVqJmUZMkiMNsA/4y4wXTxuu4aApxS8uY5iz
+	 abIvvWX4zMGKOFa+VW0O6sL/fttYa5qLsw5kuw9CT+Ca78H8kubHmx9Jb8aRahwQXJ
+	 oHQ5piozLYcYA==
+Message-ID: <03f10476-f36f-3b74-6523-7bfbbbf1a5e7@collabora.com>
+Date: Tue, 25 Oct 2022 11:53:20 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ILge1HdLp7MQdi0U"
-Content-Disposition: inline
-In-Reply-To: <85b5e8374fc9b86fb955060c1840f3b2a1d187e4.1666614616.git.deren.wu@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v2 3/3] soc: mediatek: pwrap: add mt8365 SoC support
+Content-Language: en-US
+To: Fadwa CHIBY <fchiby@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ "Zhiyong . Tao" <zhiyong.tao@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Sen Chu <sen.chu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20221024131544.31219-1-fchiby@baylibre.com>
+ <20221024131544.31219-4-fchiby@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221024131544.31219-4-fchiby@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_013326_167512_920EED52 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20221025_025332_358417_4B0B3FAB 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,139 +80,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 24/10/22 15:15, Fadwa CHIBY ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add PMIC Wrap support for MT8365 SoC.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Fadwa CHIBY <fchiby@baylibre.com>
 
---ILge1HdLp7MQdi0U
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->=20
-> Due to information missing, the firmware may be fail on bandwidth
-> related settings in mt7921/mt7922. Add new cmd STA_REC_HE_V2 to apply
-> additional capabilities in 6GHz band.
->=20
-> Tested-by: Ben Greear <greearb@candelatech.com>
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> ---
-> v2: Fix le16/cpu type problem, reported by kernel test robot <lkp@intel.c=
-om>
-> ---
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 34 +++++++++++++++++++
->  .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 11 ++++++
->  2 files changed, 45 insertions(+)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
-rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 011fc9729b38..9bba18d24c71 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -744,6 +744,39 @@ mt76_connac_mcu_sta_he_tlv(struct sk_buff *skb, stru=
-ct ieee80211_sta *sta)
->  	he->pkt_ext =3D 2;
->  }
-> =20
-> +static void
-> +mt76_connac_mcu_sta_he_tlv_v2(struct sk_buff *skb, struct ieee80211_sta =
-*sta)
-
-Is this tlv available just for 7921 fw? If so I guess we should add it just=
- for
-it since mt76_connac_mcu_sta_tlv is used even by other chipsets.
-
-Regards,
-Lorenzo
-
-> +{
-> +	struct ieee80211_sta_he_cap *he_cap =3D &sta->deflink.he_cap;
-> +	struct ieee80211_he_cap_elem *elem =3D &he_cap->he_cap_elem;
-> +	struct sta_rec_he_v2 *he;
-> +	struct tlv *tlv;
-> +
-> +	tlv =3D mt76_connac_mcu_add_tlv(skb, STA_REC_HE_V2, sizeof(*he));
-> +
-> +	he =3D (struct sta_rec_he_v2 *)tlv;
-> +	memcpy(he->he_phy_cap, elem->phy_cap_info, sizeof(he->he_phy_cap));
-> +	memcpy(he->he_mac_cap, elem->mac_cap_info, sizeof(he->he_mac_cap));
-> +
-> +	switch (sta->deflink.bandwidth) {
-> +	case IEEE80211_STA_RX_BW_160:
-> +		if (elem->phy_cap_info[0] &
-> +		    IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_80PLUS80_MHZ_IN_5G)
-> +			he->max_nss_mcs[CMD_HE_MCS_BW8080] =3D
-> +				he_cap->he_mcs_nss_supp.rx_mcs_80p80;
-> +
-> +		he->max_nss_mcs[CMD_HE_MCS_BW160] =3D
-> +				he_cap->he_mcs_nss_supp.rx_mcs_160;
-> +		fallthrough;
-> +	default:
-> +		he->max_nss_mcs[CMD_HE_MCS_BW80] =3D
-> +				he_cap->he_mcs_nss_supp.rx_mcs_80;
-> +		break;
-> +	}
-> +
-> +	he->pkt_ext =3D IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_16US;
-> +}
-> +
->  static u8
->  mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif =
-*vif,
->  			    enum nl80211_band band, struct ieee80211_sta *sta)
-> @@ -838,6 +871,7 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, s=
-truct sk_buff *skb,
->  	/* starec he */
->  	if (sta->deflink.he_cap.has_he) {
->  		mt76_connac_mcu_sta_he_tlv(skb, sta);
-> +		mt76_connac_mcu_sta_he_tlv_v2(skb, sta);
->  		if (band =3D=3D NL80211_BAND_6GHZ &&
->  		    sta_state =3D=3D MT76_STA_INFO_STATE_ASSOC) {
->  			struct sta_rec_he_6g_capa *he_6g_capa;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drive=
-rs/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> index cf4ce3b1fc21..8166722d4717 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> @@ -354,6 +354,16 @@ struct sta_rec_he {
->  	u8 rsv2[2];
->  } __packed;
-> =20
-> +struct sta_rec_he_v2 {
-> +	__le16 tag;
-> +	__le16 len;
-> +	u8 he_mac_cap[6];
-> +	u8 he_phy_cap[11];
-> +	u8 pkt_ext;
-> +	/* 0: BW80, 1: BW160, 2: BW8080 */
-> +	__le16 max_nss_mcs[CMD_HE_MCS_BW_NUM];
-> +} __packed;
-> +
->  struct sta_rec_amsdu {
->  	__le16 tag;
->  	__le16 len;
-> @@ -779,6 +789,7 @@ enum {
->  	STA_REC_BFEE,
->  	STA_REC_PHY =3D 0x15,
->  	STA_REC_HE_6G =3D 0x17,
-> +	STA_REC_HE_V2 =3D 0x19,
->  	STA_REC_MAX_NUM
->  };
-> =20
-> --=20
-> 2.18.0
->=20
-
---ILge1HdLp7MQdi0U
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY1efUAAKCRA6cBh0uS2t
-rOslAQCNdQalNGDSeN/+grsejdDXEvlgFFNWzz6kBr5VimAg1QEA3DiqC34X+SKl
-GEY2aYwWYGpXQmHGq8WNFn9v3xcT6A8=
-=h88U
------END PGP SIGNATURE-----
-
---ILge1HdLp7MQdi0U--
 
