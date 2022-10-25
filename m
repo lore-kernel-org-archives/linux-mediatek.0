@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB01EECDFA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 11:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E920C04A95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 11:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i/pjUimprXAN5aGuHop15W9q66+usPs8I5yURjMHny8=; b=MRtx6mGuIPNtvCW8TiOx7/56Rq
-	gYnqSD0ffeDCf/yXkC/2LP6QM3zmoqFEzql5iEuKzrIMM8DLdDjPtFTYz5u/ctPLwnaujIoG/mfqg
-	xTkOWlicwuJAyAI8vyTqZwe+ZdYEqDCPKRtTMnIUwCYhEqAS0C7j5rEG8+dajCIJvDEw1ppb5xKsr
-	D75FnyHBjn4uRSQByxtM2hcMLJ8L9FQrp4+W4SHEQ3hij7mRUgPfAWrUj1a+THxR3+CFK5kLQk4wD
-	mmiy5xKdOx5uzhKGbdq/gdHdH7+kGCARrJjB5bETanldEbU+SacXtlFBTFfP8ZA3Eml1ORegCr8XY
-	ZSdzKOaA==;
+	bh=6+ancf2wzKVgZhIR1zetpELJHo8pX+zT23hmRzLhVa0=; b=tkshmSn7bCmdOFGvKtckS2Hv0p
+	CEf8BULwvrX3bAoZ75lLwxrgnWMWYPp9/Pm8JwITms6zZVT1S0Jw/cOvTKv8hsPeuTjW4UlR72L+5
+	psNWuwE3pU0vO95mPNgdME7S0M21ZQ2JKeupI9fh/OAzfwZudql6HJGbLHTx1chShR3efyrgKBFPy
+	YSypfbC+I+ukNQBmcM0rRVkomC+sDp9jNG3a5CPH1xMYJX2Yvqd5T9SvOehGWdxvaFEtCSwvzZk7R
+	jRaBIfHCt3gf7/GugWvbxVTjrK309iQqG46eK2nBXDgNNrWJMH3z0ycYdBwzfNkRJTOZZ1VX40zLX
+	4sBW4H8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIBI-0050Y5-31; Tue, 25 Oct 2022 11:33:16 +0000
+	id 1onICM-0050wV-Un; Tue, 25 Oct 2022 11:34:22 +0000
 Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIB6-0050Wp-Ld; Tue, 25 Oct 2022 11:33:06 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout1.routing.net (Postfix) with ESMTP id EF5E141BCA;
-	Tue, 25 Oct 2022 11:32:58 +0000 (UTC)
+	id 1onIBs-0050j1-Nv; Tue, 25 Oct 2022 11:33:54 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout1.routing.net (Postfix) with ESMTP id 29D1541ACE;
+	Tue, 25 Oct 2022 11:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666697579;
+	s=20200217; t=1666697631;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=i/pjUimprXAN5aGuHop15W9q66+usPs8I5yURjMHny8=;
-	b=pKnBbJgB7C26LzjLyROErl6S/TeGybPxmxQYDff76htpo5Ihk2iqRV/iOnLfVJO9PyjFwO
-	mlSIdEpGaFQivp/0IVoNFDEfgXq06ccpEWl89NwmRcAtFWIr2QWBI70nOA/y6exqnoOCNy
-	z/MOv8TECpFBK5ICX15P2onIYpZ+Q1g=
+	bh=6+ancf2wzKVgZhIR1zetpELJHo8pX+zT23hmRzLhVa0=;
+	b=NsW6nDG1Xn6VMNRS1jgiNdi2iDX84NesJgDr5ju/njAmDLJACoym/JduZ8Qxp9gOK/K4od
+	i7ycy9+lTFKgFeEBEQE4Xccm/l13NZmpYTVw275G27TbZEiE4hBxAgyIFdmlladRB9Zni7
+	l6g5T4sXGJvk8d2vNG7XklIsJCTBEgw=
 Received: from webmail.hosting.de (unknown [134.0.26.148])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPA id 2F75F80098;
-	Tue, 25 Oct 2022 11:32:58 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPA id 5F4AD10031F;
+	Tue, 25 Oct 2022 11:33:50 +0000 (UTC)
 MIME-Version: 1.0
-Date: Tue, 25 Oct 2022 13:32:58 +0200
+Date: Tue, 25 Oct 2022 13:33:50 +0200
 From: "Frank Wunderlich (linux)" <linux@fw-web.de>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Ulf
@@ -51,22 +51,21 @@ Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Ulf
  linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski
  <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: Re: [PATCH v4 5/6] arm64: dts: mt7622: drop r_smpl property from mmc
- node
-In-Reply-To: <2bc75b20-9469-e7e3-24e3-cc80ab9b8a8e@collabora.com>
+Subject: Re: [PATCH v4 4/6] arm64: dts: mt8183: drop drv-type from mmc-node
+In-Reply-To: <3b366319-5257-a536-4dba-919cb5fdf477@collabora.com>
 References: <20221025074238.18136-1-linux@fw-web.de>
- <20221025074238.18136-6-linux@fw-web.de>
- <2bc75b20-9469-e7e3-24e3-cc80ab9b8a8e@collabora.com>
+ <20221025074238.18136-5-linux@fw-web.de>
+ <3b366319-5257-a536-4dba-919cb5fdf477@collabora.com>
 User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <842341a170221d072b188e1e919865c8@fw-web.de>
+Message-ID: <5ccd67c45c9f384296bfd1f19dd019a1@fw-web.de>
 X-Sender: linux@fw-web.de
 Content-Type: text/plain; charset=US-ASCII;
  format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mail-ID: b3f94e45-d4d2-47a5-9be4-8caefd74f635
+X-Mail-ID: 944cef20-d0fc-480a-bfc1-5ee2059ae4d4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_043304_934588_B6F1AF3F 
-X-CRM114-Status: UNSURE (   5.76  )
+X-CRM114-CacheID: sfid-20221025_043352_957166_BE689726 
+X-CRM114-Status: UNSURE (   5.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,14 +89,11 @@ Am 2022-10-25 12:52, schrieb AngeloGioacchino Del Regno:
 >> 
 >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Fixes tag please.
+> This commit needs a Fixes tag :-)
 
-as 2 boards were touched (i guess r64 was copy from rfb), i have 2 
-commits found
-adding this property.
+i hope it is ok adding it here instead of resend full series...
 
-Fixes: 2c002a3049f7 ("arm64: dts: mt7622: add mmc related device nodes")
-Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
+Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
 
 regards Frank
 
