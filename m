@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA6F0C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 10:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21A8DC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 10:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VQczvz+g3URTXPLukX1U3rCOQSu42hoB10XM7APyb7Q=; b=s5bPlq5kBU3e8HdvLDNuke9crq
-	TtHRKwIe2CmusU9cb2HGNW5TlU2+/gZ2Y2lRoaNkKIh58/ywNr8xh9A8nkpL5FBoeuSb7JnbSLsO3
-	rkGpR6xHZfKOI7it1/esFuEFk17/jSUQ+gY3XNYbxovo/IhRZ05rTiOtRn2/MsIRvfcFhMhCKbpNC
-	V3yYSRlQFx6Y5jKgQM0ucIhjtf3+QAgaO5+nfcr5ynEbOVWLknRKpGi7Hxf4IhYNv/2JL0oLRIN78
-	9EathBjpjpQWEE69DrPs+jlvuM4C/0KiWXHfvo5tkaRRmHjzS1tFyVumm7gFi8AC79Yc5F2dWVwUB
-	9yD5ol+Q==;
+	bh=ne6kfmWc6p7Gw+TLcOYzvlNP9uzFFLAaPs+rfC+K4oQ=; b=W6Fh7IOun5sISSQFKw5+m5VAS6
+	vmffGNIzSeB37LFLaTZdewaunkSz1BiDarYJr7P1pA0uInYHCYp38ean1kx1pYzkAQod7HiWl888c
+	fPh/NeUbDRpDDTMuYi0SL7R+2cCv1NM91PLy4hbUqjkNQN/ujEYhNgl8zSuG2N9mFAsFfm2HjVpEf
+	vc9ET5PK8BRK/4iaN6BuZlUiWgVccvdYYG7AsiobURL1aaAYBgZJFnVY1d6QOdKSGc4ie8t0mNILX
+	JmAczIZlGEagDPQOcaVEQwPFMFtQqfvGRqfMTbFz/bDxe0NoHzggbz7HXGXwWAe0KmtMFpMuDZxMR
+	bEOKD7cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onH2B-004jcZ-Sj; Tue, 25 Oct 2022 10:19:47 +0000
+	id 1onHIO-004oeW-Ss; Tue, 25 Oct 2022 10:36:32 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onH1F-004j9K-2t; Tue, 25 Oct 2022 10:18:50 +0000
+	id 1onHIC-004oar-QM; Tue, 25 Oct 2022 10:36:23 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 38415660239C;
-	Tue, 25 Oct 2022 11:18:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D14D366023A0;
+	Tue, 25 Oct 2022 11:36:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666693125;
-	bh=oPF1o7oWPbryY18wvQiyqLyaSGkoOyYT6E+3DLkyLxs=;
+	s=mail; t=1666694177;
+	bh=88jblz1wmZWqYd6CzvM6lyG5xtCcQ3zRGSsWSArI80U=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aNxRpUtzvLMgc0F9bQ4w3Pla8RcdaRHv8Cryqkg+evUgzf2jE9kuUy6pcnO1hkucl
-	 Jxs+diruWGkYOA5oU2Ydei2qtQTk2zOPW8nOwQ9P6wgrPpb1tnG0ghdJUGwuzOoFA4
-	 +OuqXMVALz5ew3SouzOGDkE75nmFAkIzvs5/N7157pve+pFQ72TchQWZvqYE0G2ywj
-	 XP9Ek3H4XfIEHoEw6kSfPSsCX0Im0z7EL2shxzG0l9lTgD2le5qep7g43dQBdxqEse
-	 4kvlwIAGfvJBU13l1Y3aXlo/y8+BThw2hlbrBHzTRyfMALtthobTNh9w44it19NZhX
-	 bYp2HlOWhlALQ==
-Message-ID: <473d67ed-198f-82c6-9f32-5827c1f8c852@collabora.com>
-Date: Tue, 25 Oct 2022 12:18:43 +0200
+	b=Lw7uR5PWo6cOI9fF+wmjXzJ0LfMvtyfiJls4R2fj8Hnwz8bSnSnhhjNWwyu0CBxLy
+	 OMR+YkJMOHJGQB5+bEuC5Ip21ANdHXEoZAlVKoTftbY57AkU3OPLgxpHv8iNmYJS7O
+	 IeMqNJ2RiPxc/Ryi79SgXDrQvj7KgzNYOWSPu64ie8GpakVzJv3Xs3NELfOA+WOeVB
+	 4NSAo71LzvZLBxrDVzl9d2kCzzIQ4AZWXFRHvBnrqOBfDGZAflgKJaQWjc3GBSYud+
+	 rD2G92aTgKRSN3Pdnqbl5V0UwlPdQ3WqbBH+aMCkVliU6O0OTuL2Hp4ANOSg93OSYl
+	 9RZjyGg4dKZtQ==
+Message-ID: <8b73e38b-ae78-1f85-f5f0-f13bce6e45de@collabora.com>
+Date: Tue, 25 Oct 2022 12:36:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v2 03/12] ASoC: mediatek: mt8188: support audsys clock
+Subject: Re: [PATCH v6 1/3] reset: mediatek: Move MediaTek system clock reset
+ to reset/mediatek
 Content-Language: en-US
-To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "broonie@kernel.org" <broonie@kernel.org>, "tiwai@suse.com" <tiwai@suse.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20221021082719.18325-1-trevor.wu@mediatek.com>
- <20221021082719.18325-4-trevor.wu@mediatek.com>
- <de66f0e3-7694-7315-c896-9211259a1a17@collabora.com>
- <776557c0fda5a538549ee0d4f4b7f482b0d69934.camel@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, sboyd@kernel.org,
+ mturquette@baylibre.com, matthias.bgg@gmail.com, p.zabel@pengutronix.de
+Cc: runyang.chen@mediatek.com, miles.chen@mediatek.com, wenst@chromium.org,
+ nfraprado@collabora.com, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221021104804.21391-1-rex-bc.chen@mediatek.com>
+ <20221021104804.21391-2-rex-bc.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <776557c0fda5a538549ee0d4f4b7f482b0d69934.camel@mediatek.com>
+In-Reply-To: <20221021104804.21391-2-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_031849_419089_37DCF31E 
-X-CRM114-Status: GOOD (  21.77  )
+X-CRM114-CacheID: sfid-20221025_033621_154403_F071A48B 
+X-CRM114-Status: GOOD (  29.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,106 +79,284 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/10/22 11:58, Trevor Wu (吳文良) ha scritto:
-> On Fri, 2022-10-21 at 10:41 +0200, AngeloGioacchino Del Regno wrote:
->> Il 21/10/22 10:27, Trevor Wu ha scritto:
->>> Add mt8188 audio cg clock control. Audio clock gates are registered
->>> to CCF
->>> for reference count and clock parent management.
->>>
->>> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
->>> ---
->>>    sound/soc/mediatek/mt8188/mt8188-audsys-clk.c | 206
->>> ++++++++++++++++++
->>>    sound/soc/mediatek/mt8188/mt8188-audsys-clk.h |  15 ++
->>>    .../soc/mediatek/mt8188/mt8188-audsys-clkid.h |  83 +++++++
->>>    3 files changed, 304 insertions(+)
->>>    create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>    create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-clk.h
->>>    create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-
->>> clkid.h
->>>
->>> diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>> b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>> new file mode 100644
->>> index 000000000000..1f294231d4c2
->>> --- /dev/null
->>> +++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>> @@ -0,0 +1,206 @@
->>> +// SPDX-License-Identifier: GPL-2.0
->>> +/*
->>> + * mt8188-audsys-clk.c  --  MediaTek 8188 audsys clock control
->>> + *
->>> + * Copyright (c) 2022 MediaTek Inc.
->>> + * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
->>> + */
->>> +
->>> +#include <linux/clk.h>
->>> +#include <linux/clk-provider.h>
->>> +#include <linux/clkdev.h>
->>> +#include "mt8188-afe-common.h"
->>> +#include "mt8188-audsys-clk.h"
->>> +#include "mt8188-audsys-clkid.h"
->>> +#include "mt8188-reg.h"
->>> +
->>> +struct afe_gate {
->>> +	int id;
->>> +	const char *name;
->>> +	const char *parent_name;
->>> +	int reg;
->>> +	u8 bit;
->>> +	const struct clk_ops *ops;
->>> +	unsigned long flags;
->>> +	u8 cg_flags;
->>> +};
->>> +
->>> +#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit, _flags,
->>> _cgflags) {\
->>> +		.id = _id,					\
->>> +		.name = _name,					\
->>> +		.parent_name = _parent,				\
->>> +		.reg = _reg,					\
->>> +		.bit = _bit,					\
->>> +		.flags = _flags,				\
->>> +		.cg_flags = _cgflags,				\
->>> +	}
->>> +
->>> +#define GATE_AFE(_id, _name, _parent, _reg, _bit)		\
->>> +	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		\
->>> +		       CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED,
->>> CLK_GATE_SET_TO_DISABLE)
->>
->> Can you please explain what's the reason for CLK_IGNORE_UNUSED here?
->> Maybe we can solve some issue that you're facing in a cleaner way.
->>
->> Regards,
->> Angelo
+Il 21/10/22 12:48, Bo-Chen Chen ha scritto:
+> To manager MediaTek system clock reset easier, we move the driver to
+> drivers/reset/mediatek.
 > 
-> Hi Angelo,
+> - Create reset/mediatek folder.
+> - Move clk/mediatek/reset.c to reset/mediatek/reset-mediatek-sysclk.c
+> - Because we don't want to build in unsed static variable, we use clk
+>    KConfig to separate them. For example, when we use MT8186, we don't
+>    want to build in the static constants for MT8195.
+> - Move reset data which are scattered around the mediatek drivers to
+>    reset-mtxxxx.c.
+> - There are two version for mtk_reset_init because some mediatek clock
+>    drivers (mt8135 and mt8173) are using device_node instead of device,
+>    so we need to add two version for the init function.
 > 
-> Because clk_disable_unused() calls clk_core_is_enabled(), register
-> access happens in is_enabled() ops.
-> At the moment, the power for register access is not enabled, so the
-> register read results in CPU hang.
+> Suggested-by: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>   drivers/clk/mediatek/Kconfig                  |   1 +
+>   drivers/clk/mediatek/Makefile                 |   2 +-
+>   drivers/clk/mediatek/clk-mt2701-eth.c         |  10 +-
+>   drivers/clk/mediatek/clk-mt2701-g3d.c         |  10 +-
+>   drivers/clk/mediatek/clk-mt2701-hif.c         |  10 +-
+>   drivers/clk/mediatek/clk-mt2701.c             |  22 +-
+>   drivers/clk/mediatek/clk-mt2712.c             |  22 +-
+>   drivers/clk/mediatek/clk-mt6795-infracfg.c    |  22 +-
+>   drivers/clk/mediatek/clk-mt6795-pericfg.c     |  20 +-
+>   drivers/clk/mediatek/clk-mt7622-eth.c         |  10 +-
+>   drivers/clk/mediatek/clk-mt7622-hif.c         |  12 +-
+>   drivers/clk/mediatek/clk-mt7622.c             |  22 +-
+>   drivers/clk/mediatek/clk-mt7629-eth.c         |  10 +-
+>   drivers/clk/mediatek/clk-mt7629-hif.c         |  12 +-
+>   drivers/clk/mediatek/clk-mt8135.c             |  23 +-
+>   drivers/clk/mediatek/clk-mt8173.c             |  22 +-
+>   drivers/clk/mediatek/clk-mt8183.c             |  15 +-
+>   drivers/clk/mediatek/clk-mt8186-infra_ao.c    |  23 +-
+>   drivers/clk/mediatek/clk-mt8192.c             |  27 +-
+>   drivers/clk/mediatek/clk-mt8195-infra_ao.c    |  28 +-
+>   drivers/clk/mediatek/clk-mtk.c                |   5 +-
+>   drivers/clk/mediatek/clk-mtk.h                |   5 +-
+>   drivers/clk/mediatek/reset.c                  | 233 -----------
+>   drivers/reset/Kconfig                         |   1 +
+>   drivers/reset/Makefile                        |   1 +
+>   drivers/reset/mediatek/Kconfig                |   5 +
+>   drivers/reset/mediatek/Makefile               |  13 +
+>   .../reset/mediatek/reset-mediatek-sysclk.c    | 388 ++++++++++++++++++
+>   drivers/reset/mediatek/reset-mt2701.c         | 102 +++++
+>   drivers/reset/mediatek/reset-mt2712.c         |  42 ++
+>   drivers/reset/mediatek/reset-mt6795.c         |  61 +++
+>   drivers/reset/mediatek/reset-mt7622.c         |  91 ++++
+>   drivers/reset/mediatek/reset-mt7629.c         |  62 +++
+>   drivers/reset/mediatek/reset-mt8135.c         |  43 ++
+>   drivers/reset/mediatek/reset-mt8173.c         |  43 ++
+>   drivers/reset/mediatek/reset-mt8183.c         |  31 ++
+>   drivers/reset/mediatek/reset-mt8186.c         |  39 ++
+>   drivers/reset/mediatek/reset-mt8192.c         |  43 ++
+>   drivers/reset/mediatek/reset-mt8195.c         |  44 ++
+>   .../linux/reset/reset-mediatek-sysclk.h       |  62 +--
+>   40 files changed, 1080 insertions(+), 557 deletions(-)
+>   delete mode 100644 drivers/clk/mediatek/reset.c
+>   create mode 100644 drivers/reset/mediatek/Kconfig
+>   create mode 100644 drivers/reset/mediatek/Makefile
+>   create mode 100644 drivers/reset/mediatek/reset-mediatek-sysclk.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt2701.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt2712.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt6795.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt7622.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt7629.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8135.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8173.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8183.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8186.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8192.c
+>   create mode 100644 drivers/reset/mediatek/reset-mt8195.c
+>   rename drivers/clk/mediatek/reset.h => include/linux/reset/reset-mediatek-sysclk.h (59%)
 > 
-> That's why I added CLK_IGNORE_UNUSED here, but it can't resolve all
-> issues. Actually, we met same problem when "cat
-> /sys/kernel/debug/clk/clk_summary" is used. We are still suffering the
-> problem.
-> 
-> I'm not sure if I can implement clk ops by myself, and exclude the
-> registration of is_enabled() ops.
-> 
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 843cea0c7a44..e372f145eada 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -8,6 +8,7 @@ menu "Clock driver for MediaTek SoC"
+>   config COMMON_CLK_MEDIATEK
+>   	tristate
+>   	select RESET_CONTROLLER
+> +	select RESET_MEDIATEK_SYSCLK
+>   	help
+>   	  MediaTek SoCs' clock support.
+>   
 
-Is the power for register access enabled with a power domain?
+..snip..
 
-Check drivers/clk/clk.c, grep for core->rpm_enabled.
+> diff --git a/drivers/reset/Makefile b/drivers/reset/Makefile
+> index 3e7e5fd633a8..5cef7ccc9a7d 100644
+> --- a/drivers/reset/Makefile
+> +++ b/drivers/reset/Makefile
+> @@ -1,6 +1,7 @@
+>   # SPDX-License-Identifier: GPL-2.0
+>   obj-y += core.o
+>   obj-y += hisilicon/
+> +obj-y += mediatek/
 
-If you enable runtime PM before registering the clocks, and you register them
-with the right struct device, the clock API will enable power for you before
-trying to read the clock enable status.
+I'd be more for
+
+obj-$(CONFIG_ARCH_MEDIATEK) += mediatek/
+
+as there's no reason to even compile these if MTK support isn't enabled at all.
+
+>   obj-$(CONFIG_ARCH_STI) += sti/
+>   obj-$(CONFIG_ARCH_TEGRA) += tegra/
+>   obj-$(CONFIG_RESET_A10SR) += reset-a10sr.o
+> diff --git a/drivers/reset/mediatek/Kconfig b/drivers/reset/mediatek/Kconfig
+> new file mode 100644
+> index 000000000000..a416cb938753
+> --- /dev/null
+> +++ b/drivers/reset/mediatek/Kconfig
+> @@ -0,0 +1,5 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+
+Similarly, we should at this point also do....
+
+if ARCH_MEDIATEK
+
+> +config RESET_MEDIATEK_SYSCLK
+> +	tristate "MediaTek System Clock Reset Driver"
+> +	help
+> +	  This enables the system clock reset driver for MediaTek SoCs.
+
+endif # ARCH_MEDIATEK
+
+> diff --git a/drivers/reset/mediatek/Makefile b/drivers/reset/mediatek/Makefile
+> new file mode 100644
+> index 000000000000..83f26c2cecdd
+> --- /dev/null
+> +++ b/drivers/reset/mediatek/Makefile
+> @@ -0,0 +1,13 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +obj-$(CONFIG_RESET_MEDIATEK_SYSCLK) += reset-mediatek-sysclk.o
+> +obj-$(CONFIG_COMMON_CLK_MT2701) += reset-mt2701.o
+> +obj-$(CONFIG_COMMON_CLK_MT2712) += reset-mt2712.o
+> +obj-$(CONFIG_COMMON_CLK_MT6795) += reset-mt6795.o
+> +obj-$(CONFIG_COMMON_CLK_MT7622) += reset-mt7622.o
+> +obj-$(CONFIG_COMMON_CLK_MT7629) += reset-mt7629.o
+> +obj-$(CONFIG_COMMON_CLK_MT8135) += reset-mt8135.o
+> +obj-$(CONFIG_COMMON_CLK_MT8173) += reset-mt8173.o
+> +obj-$(CONFIG_COMMON_CLK_MT8183) += reset-mt8183.o
+> +obj-$(CONFIG_COMMON_CLK_MT8186) += reset-mt8186.o
+> +obj-$(CONFIG_COMMON_CLK_MT8192) += reset-mt8192.o
+> +obj-$(CONFIG_COMMON_CLK_MT8195) += reset-mt8195.o
+> diff --git a/drivers/reset/mediatek/reset-mediatek-sysclk.c b/drivers/reset/mediatek/reset-mediatek-sysclk.c
+> new file mode 100644
+> index 000000000000..9cf115e66a4d
+> --- /dev/null
+> +++ b/drivers/reset/mediatek/reset-mediatek-sysclk.c
+
+..snip..
+
+> +
+> +static struct mtk_rst_id mtk_sysclk_reset_ids[] = {
+
+..snip..
+
+> +	{
+> +		.name = "mt2712-peri-rst",
+> +		.driver_data = MTK_RST_ID_MT2712_PERI,
+> +	},
+> +	{
+> +		.name = "mt6795-ifa",
+
+Keep the names consistent please... "mt6795-infra-rst"
+
+> +		.driver_data = MTK_RST_ID_MT6795_INFRA,
+> +	},
+> +	{
+> +		.name = "mt6795-peri",
+
+mt6795-peri-rst
+
+> +		.driver_data = MTK_RST_ID_MT6795_PERI,
+> +	},
+> +	{
+> +		.name = "mt7622-eth-rst",
+> +		.driver_data = MTK_RST_ID_MT7622_ETH,
+> +	},
+> +	{
+> +		.name = "mt7622-usb-rst",
+> +		.driver_data = MTK_RST_ID_MT7622_SSUSBSYS,
+> +	},
+> +	{
+> +		.name = "mt7622-pcie-rst",
+> +		.driver_data = MTK_RST_ID_MT7622_PCIESYS,
+> +	},
+> +	{
+> +		.name = "mt7622-infrasys-rst",
+> +		.driver_data = MTK_RST_ID_MT7622_INFRASYS,
+> +	},
+> +	{
+> +		.name = "mt7622-pericfg-rst",
+> +		.driver_data = MTK_RST_ID_MT7622_PERICFG,
+> +	},
+> +	{
+> +		.name = "mt7629-ethsys-rst",
+> +		.driver_data = MTK_RST_ID_MT7629_ETHSYS,
+> +	},
+> +	{
+> +		.name = "mt7629-usb-rst",
+> +		.driver_data = MTK_RST_ID_MT7629_SSUSBSYS,
+> +	},
+> +	{
+> +		.name = "mt7629-pcie-rst",
+> +		.driver_data = MTK_RST_ID_MT7629_PCIESYS,
+> +	},
+> +	{
+> +		.name = "clk_mt8135.mt8135-infrasys-rst",
+
+Why do we have this "clk_mt8135." prefix here (and also mt8173), when all of
+the others don't have any prefix?
+
+That's not consistent and shall be changed, unless there's a valid reason not to.
+
+> +		.driver_data = MTK_RST_ID_MT8135_INFRASYS,
+> +	},
+> +	{
+> +		.name = "clk_mt8135.mt8135-pericfg-rst",
+> +		.driver_data = MTK_RST_ID_MT8135_PERICFG,
+> +	},
+> +	{
+> +		.name = "clk_mt8173.mt8173-infracfg-rst",
+> +		.driver_data = MTK_RST_ID_MT8173_INFRACFG,
+> +	},
+> +	{
+> +		.name = "clk_mt8173.mt8173-pericfg-rst",
+> +		.driver_data = MTK_RST_ID_MT8173_PERICFG,
+> +	},
+> +	{
+> +		.name = "mt8183-infra-rst",
+> +		.driver_data = MTK_RST_ID_MT8183_INFRA,
+> +	},
+> +	{
+> +		.name = "mt8186-infra-ao-rst",
+> +		.driver_data = MTK_RST_ID_MT8186_INFRA_AO,
+> +	},
+> +	{
+> +		.name = "mt8192-infra-rst",
+> +		.driver_data = MTK_RST_ID_MT8192_INFRA,
+> +	},
+> +	{
+> +		.name = "mt8195-infra-ao-rst",
+> +		.driver_data = MTK_RST_ID_MT8195_INFRA_AO,
+> +	},
+> +	{
+> +	},
+> +};
+> +
+
+..snip..
+
+> +
+> +int mtk_rst_register_clk_rst_data(u32 index, struct mtk_clk_rst_data *data)
+> +{
+> +	if (index >= MTK_RST_ID_MAX)
+> +		return -EINVAL;
+> +
+> +	p_clk_rst_data[index] = data;
+> +
+> +	pr_info("%s, register mediatek sysclock reset(%d).\n", __func__, index);
+
+Is this really informative?
+There's sysfs telling you infos about drivers that has been (or hasn't been yet)
+registered... so, please change that to a pr_debug() instead.
+
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_rst_register_clk_rst_data);
+> +
+
+Apart from that, looks good.
 
 Regards,
 Angelo
-
 
