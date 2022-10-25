@@ -4,77 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61FD2C67871
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 02:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02639C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 05:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ieQS2Mw52Pi8udyGNEflIMqPTtMIjzLnr/hwmBb+3cw=; b=asbk2fZjfJjDrHt7wB+Pq2Oyvs
-	WKX1ZuTGP5bnBOWoCtT7iCxW16DZDl8/0RLC+MpXFm/R5zfmSNHb/QEdjaR1IGLP6KY/kdglI6sq3
-	hzGvQ2L355TO4AIafddMvtOGTvimY1OY+62QqaPNHTAuewqBYH1rCzDyHR6E9fzxeecpYQFAPxCGi
-	MmWRXvVm7EGJdifR2uO/4GasmqE1B1SiwmfW5fKzYxz1D+6B1Afi+uwAGuIb/1t+LNqX6KaHj0Tzv
-	eJC4TdfABlzbdruxSxP4WxJ9m+R0E115hgDJ/W6Fql1yK74kU2+bQdVBWOy8kBSwox+yrYeITTZ01
-	2udDY5Kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qwFrQdS+VqeasXNLT6D1PeP+XDlq1nWmUOrWZQdRMAA=; b=iHtINCXQ9DhxmsQh0zHLW2B+KZ
+	1UMiPsX1MslGzPpnF7nFKixAFlrbKSQFZRj6jscM7b3hIQU2Q8t/4LEq0iZb4dZxhHEaP8h5e+v8s
+	OOxEwrp7COrrBypsMVhCnC/8vRSZMg4LHlzrvdoS05cO1FJOmYhvsYkoymveznkRPRpwL/u+/c2Ep
+	EuvOXDikHiw/h7QQyRMQmlxAY5lOfGFpzLN8RKJ8i+kzNWxo56gxp9DpEVfmyRlcamBQsNn41a6Vd
+	92vpAeQ5ZMowaIWfuFRal0Y6fMcXZNe6cKw28hQBbiyZSDipSl8LJ1cs3VcV9qz/oWMMQoj5O5jCk
+	3PclwajA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on9Vn-003anG-S4; Tue, 25 Oct 2022 02:17:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1onC6t-003qIJ-Sf; Tue, 25 Oct 2022 05:04:19 +0000
+Received: from mail-bn7nam10on2123.outbound.protection.outlook.com ([40.107.92.123] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on9Vk-003amA-5L; Tue, 25 Oct 2022 02:17:49 +0000
-X-UUID: 629f4f88db4949bea1aba04c9f707a6b-20221024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ieQS2Mw52Pi8udyGNEflIMqPTtMIjzLnr/hwmBb+3cw=;
-	b=S9cyxmxQQQqWWF3clzmqkWQywedKVrUIqyVQOgmsUGNClV40NpExftamVpmx7Phiej18Oo65G1YZNmdm7Kk9i1lAZPhYlZt+WJaMEKFbLSnN/bSIg7ejCdtjWyWTWJzWPREhN0ozkz+VNX/hfVX8ypfVdz1zZBg27ptCCkBQP20=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:757f8ce5-bcff-40fe-8684-fb926211447b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:2d228ce4-e572-4957-be22-d8f73f3158f9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 629f4f88db4949bea1aba04c9f707a6b-20221024
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <mingjia.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1917903705; Mon, 24 Oct 2022 19:17:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 25 Oct 2022 09:47:02 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 25 Oct 2022 09:47:01 +0800
-From: Mingjia Zhang <mingjia.zhang@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5] media: mediatek: vcodec: Add to support VP9 inner racing mode
-Date: Tue, 25 Oct 2022 09:46:59 +0800
-Message-ID: <20221025014659.7158-1-mingjia.zhang@mediatek.com>
+	id 1onC6r-003qFv-2l; Tue, 25 Oct 2022 05:04:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eALrMuN8FQxocoPcS3IRdRuu589MQ6bWC2OOpSDqN3ZKUtGC05F+mUNCEPRjbk9NyJSNKenCouTkBF/+X9XGtY922PRGZh0BeCB20+W08MFe3W65OTa298ZFPXsqL1o8bdlpRCSfzuxnQyq/gsIeBI2S2c7RMP5CxTlEhZY1NnKNhT+2kQGma8moTY/xBLvaT0IXDBW9TXFTsWG0Cg6fRiT4WCgLV/lALkg8FtbAU0yeDrWEk4Wn3nfKflTHAHDLXyotUxoCLTUlRxMGQE37OxZu3p76iwJsFqhLvSS5lwkQQiEBPkFxN5zPUduaApaZs4h6fOi0YrHdAxK+Y055hA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qwFrQdS+VqeasXNLT6D1PeP+XDlq1nWmUOrWZQdRMAA=;
+ b=YhTWJJn/AkGT+5mbqXtoXW7yeGUVSnVxnmcrAfw68W1f5cy2YlEMIyaKEOYqO11gswnaJ5hiQhilxMq01GzXXzQ3Ho0s8uHe0few1fx9Oawf+rjjBgrH1xuxcZ6b2zJ2FyBrskCxqqrTRZfcHII9EYcnF2jpe4eFd0QjnWy7HguQm0LHeMW74Lx4fatA7BTylXNhQowzug7+75fuCxwy6FpcanpJBobTj5yrvSx7p123PFMPiWZXAOKMdcSwanvi0klABoSuFkejVD7RZk3hH8EFHhxdMVLHmFPMFoUY2bgd8brA698cAOxjZi0qTg1Zp8RuARv6zf3K/pmU6DEcrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qwFrQdS+VqeasXNLT6D1PeP+XDlq1nWmUOrWZQdRMAA=;
+ b=N+UocC6yZrPU1JfUWef3hWbC8DaX1hiHu28JvJ+lu3L26OU6SkbzDynz+n9yealdh43d5qN5+VZkWe1iNleuQDED8KwBDO760rZpbCEe2qscy2vLlf/iuUQNK9iJQ7nM3q5vvkZsSX9pwhjnwEVNTpMn4RQsgpfueTLOuKnXCeo=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by DS7PR10MB4989.namprd10.prod.outlook.com
+ (2603:10b6:5:3a9::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.26; Tue, 25 Oct
+ 2022 05:04:08 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::8eaf:edf0:dbd3:d492]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::8eaf:edf0:dbd3:d492%5]) with mapi id 15.20.5746.028; Tue, 25 Oct 2022
+ 05:04:07 +0000
+From: Colin Foster <colin.foster@in-advantage.com>
+To: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?UTF-8?q?n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>
+Subject: [PATCH v1 net-next 0/7] dt-binding preparation for ocelot switches
+Date: Mon, 24 Oct 2022 22:03:48 -0700
+Message-Id: <20221025050355.3979380-1-colin.foster@in-advantage.com>
 X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
+X-ClientProxiedBy: SJ0PR03CA0189.namprd03.prod.outlook.com
+ (2603:10b6:a03:2ef::14) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|DS7PR10MB4989:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8f44eff0-33ed-4df3-a496-08dab646586b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	AvFgFgtNep1LKy21acilTvJyPqb18dGtGEr0rbEhbNcrCe7HqVZ0xMgPLJlAMIyK8kdrOkDzR3b38oXVcLEMh2L6GCEjHKLzxzsMmMGouX05TkJLgM1zEiDJy96cXFfPcp6i7U6jGJjz1QHuNjUEvd7ZFlmenRNW1cz/aYgWcPG0cc1SV4CHZIFweXP1NJ++wp6b8dfUDRkF++H6J9twSMrVcWffE7XHN7uDcc1w4Cdth3MqiStvZqK+r/eoA+6G2HuSe+eycpqaboeyiFc/MQp6q8TUj609kqw3Oe4KQHeu+1F5+i+JOR8rtT010Y6s8HDccBYTbIROxH6W1im8I2kD9KOeQ2Khb7eK3Rn9RFySut4W+VoLQEZZQBzWF5h49TdXT83dHNApLzLUAHyRErmfSOHvybFD1W/lc4pJFlrzJ3smwhge8iQ5C4CHoftstOrSq1LtTJRTxj/4085RmSAsNh0lc6zJsvuzCU3Pd6EhvdEKN9oY8XriFZbzvPj7q/iZHEX/btsH848aCl7xjON9rFWZuJw5cvW6LsnF6FvGOsH7y/eHT/f4GuBNpeOIEDhj4GJ3jPcMNC5H7MRNW+BJU6UjS/WYZjJ2YW2RwBSSq5TwTOGtJ8RUllByQfztCFeHMES8ApLcang8ESs/4mywe/53vb5Nnlg9/X4aAHmsmXpPJHVwlqKmVpV1WJpBCur+l+Mu33fx9KrJnyz4kGP5lkyG2WJHSdAme5Xi8a6tHnCK1ifEc/FXaZVWlAZTHzcaIIrIVJlKYR4UeZspziwWrs3JUWggFzcV67mAarg=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(366004)(39840400004)(136003)(346002)(376002)(451199015)(316002)(52116002)(66476007)(6512007)(26005)(54906003)(44832011)(36756003)(7416002)(66556008)(4326008)(41300700001)(8676002)(66946007)(86362001)(8936002)(5660300002)(2906002)(6666004)(478600001)(966005)(6486002)(83380400001)(6506007)(1076003)(38100700002)(186003)(38350700002)(2616005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?YLFELZhFicgQkmcrRd77c9FOVAH70o0Il/wUnlwxJbClfOLgJWD8csc4j1Do?=
+ =?us-ascii?Q?um1OMqbsZai2Z75jCvxYvDAcWfFkOJ+xI1kLGdgEp9NCnjFm0FDHbpJOgV9k?=
+ =?us-ascii?Q?Zko5bmgVsauazqrcIJElQeePrlHzQpnVoTK+gbXRy65rbwtLNPYiPFnediF9?=
+ =?us-ascii?Q?wMcBL+nzNCx/ArxGRPsOTYFeayh8t+MURBb1B2aVvOjtsMJY0P77Wng9J7Fi?=
+ =?us-ascii?Q?l6OkyUtr+/q1NcWvH6gDgstR043wT+Z0npBgggumCQP4O1yKNFJWHEXGqgbR?=
+ =?us-ascii?Q?BOBZF0kcfuRaVafjrtbjjvH6I2LhBCLITzKmQDs6YO0U8a55o2DqQqziicfi?=
+ =?us-ascii?Q?HTZfUSdZOqi9LjwC5Yz2lLvmv8IVJeNmJkO/ZWhHmJtk36CeQne7TirskY4G?=
+ =?us-ascii?Q?js6P2EQn3yNFM/bQO3Wdh7bkNjQIp8FfFunmsn1hNdFFF6BPH4mLcsdI5HLr?=
+ =?us-ascii?Q?yn9M1fI6XJPcJWc03ALNrDif3FKChkdBMlQKBvjWSuO4hEd3URyvbwipap21?=
+ =?us-ascii?Q?Yzs8AgYkLBShHPeM+EvlHhjAlQLTOue6I3v0DoMTbcBkSVh1a5SdlMMkGLgp?=
+ =?us-ascii?Q?Zelnh6UGVRkhrs4eiyIrVz0oUwxWEGzDhy0M3TINWnXJP3mLVp2j+752k1K6?=
+ =?us-ascii?Q?4wcXI8ZGM2h8yXod15UHW9SjYbN7430nv+zRZIdH+hHqRMf811+9Hzu3zCvP?=
+ =?us-ascii?Q?YsPVE4VlpxsYRWlx3IAYTO9yEY7IPPFaVLOBi5DUHrqF+c/EUm42+CeHV6pw?=
+ =?us-ascii?Q?wr6KtmV+M8oxjsSDVux6VNvXLNrxGS/Slwvti2dLWsT3uT3de49MFlMID0ow?=
+ =?us-ascii?Q?mh848+mpYDHMRGj6cuKF4hOg81OHTYVEcku4ewlMK+PMrPaOIwInGzGCzXfA?=
+ =?us-ascii?Q?f3kEgdssziYOpfs9l8FoFDKjOUCAjJ5uFcjp/WR+OmC4VeDDMTDFHwcF7Ugv?=
+ =?us-ascii?Q?hK9hyZAi2ErVVAibMUo7c4YwSodQjsIkgk44f3abZLRzvPGSppJdmbczo2Tf?=
+ =?us-ascii?Q?NFLmzfVgekHlqVkCbEDdY0j+b9AGToonPGPbgwvrFaqUUvPweyOJWbVDj0w7?=
+ =?us-ascii?Q?lht5t701FZt1rU8vVQgdTMw2AEaVR1NJaOnaiBSOWeBFdhPI1cLOLiUXcsfd?=
+ =?us-ascii?Q?PyC4UPSZeNW6sfm/Wz/aU3zqbaEAObwS94r2V7cQkjv+GzVDxMO3QsLU4nww?=
+ =?us-ascii?Q?BwzEZ61WVJqTApdi0V4RO9ENQNHccBA3zFaffO6FnYT4smAgiXj1STuj1evE?=
+ =?us-ascii?Q?c9P1O31VrqzbUa5YBh6bYLPnA8mRH0LwuMVeUPij2SYMNMzyDTDOX2Ita7PR?=
+ =?us-ascii?Q?lXdmc17B8th/6qyAW9vMLx1Jheq3/AGdlf5k2LIbZ66M2j2LSXJG9FOVzo/P?=
+ =?us-ascii?Q?zXGrVMRAyUi84kP/CnRNiEpPby8IgW3SLXYvMZwhIbCPx9FVfOz7wJI/G9Am?=
+ =?us-ascii?Q?2gHkY5B8XPZlEYKB8DLQKzXpigXtxctVqOBSJmy4ftl2Jb+Paltc8/BFZE61?=
+ =?us-ascii?Q?QYFF9xVsxKm8oTdMIzF0rNN79VfHXeskniIyqs9MpTXNM8soUlZn0sha28w7?=
+ =?us-ascii?Q?dGk6o3NJ/PMmT2UrrMcpT3HBTMzh4G5xeAmEJ01Kqe8b6Ahgffkovfllrhus?=
+ =?us-ascii?Q?nfK2wp1bWwj7qXVnnDPNPFQ=3D?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8f44eff0-33ed-4df3-a496-08dab646586b
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Oct 2022 05:04:07.6574
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: e1WLglYjcY7UZhHoJsLJFvaBa5QuEp6N6/ih+XdC2Fcamk4El7DQ6/6U/HOOOSDMAvGvhrWS3MF5bFjH/7RtOM6ZV5LGmEELKsXYpYvGgNM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR10MB4989
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_191748_219705_41D9C12E 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20221024_220417_173790_B6392BD9 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,208 +150,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable VP9 inner racing mode
-We send lat trans buffer to the core when trigger lat to work, instead of waiting for the lat decode done.
-It can be reduce decoder latency.
+Ocelot switches have the abilitiy to be used internally via
+memory-mapped IO or externally via SPI or PCIe. This brings up issues
+for documentation, where the same chip might be accessed internally in a
+switchdev manner, or externally in a DSA configuration. This patch set
+is perparation to bring DSA functionality to the VSC7512, utilizing as
+much as possible with an almost identical VSC7514 chip.
 
-Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
----
-Changes from v3:
+During the most recent RFC for internal ethernet switch functionality to
+the VSC7512, there were 10 steps laid out to adequately prepare
+documentation:
 
-- CTS/GTS test pass
-- Fluster result: Ran 275/303 tests successfully
+https://lore.kernel.org/all/20221010174856.nd3n4soxk7zbmcm7@skbuf/
 
-Changes from v2:
+The full context is quoted below. This patch set represents steps 1-7 of
+the 10 steps, with the remaining steps to likely be part of what was the
+original RFC.
 
-- CTS/GTS test pass
-- Fluster result: Ran 240/303 tests successfully
+The first two patches are specifically rewording and fixing of the MFD
+bindings. I kept them in this patch set since they might cause conflicts
+with future documentation changes that will be part of the net-next
+tree. I can separate them if desired.
 
-Changes from v1:
 
-- CTS/GTS test pass
----
- .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 85 ++++++++++---------
- 1 file changed, 47 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-index 81de876d51267..1b39119c89951 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-@@ -436,6 +436,7 @@ struct vdec_vp9_slice_ref {
-  * @frame_ctx:		4 frame context according to VP9 Spec
-  * @frame_ctx_helper:	4 frame context according to newest kernel spec
-  * @dirty:		state of each frame context
-+ * @local_vsi:		local instance vsi information
-  * @init_vsi:		vsi used for initialized VP9 instance
-  * @vsi:		vsi used for decoding/flush ...
-  * @core_vsi:		vsi used for Core stage
-@@ -482,6 +483,8 @@ struct vdec_vp9_slice_instance {
- 	struct v4l2_vp9_frame_context frame_ctx_helper;
- 	unsigned char dirty[4];
- 
-+	struct vdec_vp9_slice_vsi local_vsi;
-+
- 	/* MicroP vsi */
- 	union {
- 		struct vdec_vp9_slice_init_vsi *init_vsi;
-@@ -1616,16 +1619,10 @@ static int vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance
- }
- 
- static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance *instance,
--				     struct vdec_lat_buf *lat_buf,
--				     struct vdec_vp9_slice_pfc *pfc)
-+				     struct vdec_vp9_slice_vsi *vsi)
- {
--	struct vdec_vp9_slice_vsi *vsi;
--
--	vsi = &pfc->vsi;
--	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
--
- 	mtk_vcodec_debug(instance, "Frame %u LAT CRC 0x%08x %lx %lx\n",
--			 pfc->seq, vsi->state.crc[0],
-+			 (instance->seq - 1), vsi->state.crc[0],
- 			 (unsigned long)vsi->trans.dma_addr,
- 			 (unsigned long)vsi->trans.dma_addr_end);
- 
-@@ -2090,6 +2087,13 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		return ret;
- 	}
- 
-+	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability)) {
-+		vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
-+		memcpy(&instance->local_vsi, vsi, sizeof(*vsi));
-+		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+		vsi = &instance->local_vsi;
-+	}
-+
- 	if (instance->irq) {
- 		ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_RECEIVED,
- 						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-@@ -2102,22 +2106,25 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	}
- 
- 	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
--	ret = vdec_vp9_slice_update_lat(instance, lat_buf, pfc);
-+	ret = vdec_vp9_slice_update_lat(instance, vsi);
- 
--	/* LAT trans full, no more UBE or decode timeout */
--	if (ret) {
--		mtk_vcodec_err(instance, "VP9 decode error: %d\n", ret);
--		return ret;
--	}
-+	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
-+		/* LAT trans full, no more UBE or decode timeout */
-+		if (ret) {
-+			mtk_vcodec_err(instance, "frame[%d] decode error: %d\n",
-+				       ret, (instance->seq - 1));
-+			return ret;
-+		}
- 
--	mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
--			 (unsigned long)pfc->vsi.trans.dma_addr,
--			 (unsigned long)pfc->vsi.trans.dma_addr_end);
- 
--	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
--				       vsi->trans.dma_addr_end +
--				       ctx->msg_queue.wdma_addr.dma_addr);
--	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
-+	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi->trans.dma_addr_end);
-+	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
-+		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+
-+	mtk_vcodec_debug(instance, "lat trans end addr(0x%lx), ube start addr(0x%lx)\n",
-+			 (unsigned long)vsi->trans.dma_addr_end,
-+			 (unsigned long)ctx->msg_queue.wdma_addr.dma_addr);
- 
- 	return 0;
- }
-@@ -2139,40 +2146,40 @@ static int vdec_vp9_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- {
- 	struct vdec_vp9_slice_instance *instance;
--	struct vdec_vp9_slice_pfc *pfc;
-+	struct vdec_vp9_slice_pfc *pfc = NULL;
- 	struct mtk_vcodec_ctx *ctx = NULL;
- 	struct vdec_fb *fb = NULL;
- 	int ret = -EINVAL;
- 
- 	if (!lat_buf)
--		goto err;
-+		return -EINVAL;
- 
- 	pfc = lat_buf->private_data;
- 	ctx = lat_buf->ctx;
- 	if (!pfc || !ctx)
--		goto err;
-+		return -EINVAL;
- 
- 	instance = ctx->drv_handle;
- 	if (!instance)
--		goto err;
-+		return -EINVAL;
- 
- 	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
- 	if (!fb) {
- 		ret = -EBUSY;
--		goto err;
-+		goto vdec_dec_end;
- 	}
- 
- 	ret = vdec_vp9_slice_setup_core(instance, fb, lat_buf, pfc);
- 	if (ret) {
- 		mtk_vcodec_err(instance, "vdec_vp9_slice_setup_core\n");
--		goto err;
-+		goto vdec_dec_end;
- 	}
- 	vdec_vp9_slice_vsi_to_remote(&pfc->vsi, instance->core_vsi);
- 
- 	ret = vpu_dec_core(&instance->vpu);
- 	if (ret) {
- 		mtk_vcodec_err(instance, "vpu_dec_core\n");
--		goto err;
-+		goto vdec_dec_end;
- 	}
- 
- 	if (instance->irq) {
-@@ -2190,24 +2197,26 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 	ret = vdec_vp9_slice_update_core(instance, lat_buf, pfc);
- 	if (ret) {
- 		mtk_vcodec_err(instance, "vdec_vp9_slice_update_core\n");
--		goto err;
-+		goto vdec_dec_end;
- 	}
- 
--	pfc->vsi.trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
- 	mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n",
- 			 (unsigned long)pfc->vsi.trans.dma_addr_end);
--	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
--	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
--
--	return 0;
- 
--err:
--	if (ctx && pfc) {
--		/* always update read pointer */
--		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
-+vdec_dec_end:
-+	/* always update read pointer */
-+	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
-+		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
-+					       pfc->vsi.trans.dma_addr);
-+	else
-+		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
-+					       pfc->vsi.trans.dma_addr_end);
- 
-+	if (ret) {
- 		if (fb)
- 			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
-+	} else {
-+		ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
- 	}
- 	return ret;
- }
+Context:
+
+```
+To end the discussion on a constructive note, I think if I were Colin,
+I would do the following, in the following order, according to what was
+expressed as a constraint:
+
+1. Reword the "driver" word out of mscc,vsc7514-switch.yaml and express
+   the description in terms of what the switch can do, not what the
+   driver can do.
+
+2. Make qca8k.yaml have "$ref: dsa.yaml#". Remove "$ref: dsa-port.yaml#"
+   from the same schema.
+
+3. Remove "- $ref: dsa-port.yaml#" from mediatek,mt7530.yaml. It doesn't
+   seem to be needed, since dsa.yaml also has this. We need this because
+   we want to make sure no one except dsa.yaml references dsa-port.yaml.
+
+4. Move the DSA-unspecific portion from dsa.yaml into a new
+   ethernet-switch.yaml. What remains in dsa.yaml is "dsa,member".
+   The dsa.yaml schema will have "$ref: ethernet-switch.yaml#" for the
+   "(ethernet-)switch" node, plus its custom additions.
+
+5. Move the DSA-unspecific portion from dsa-port.yaml into a new
+   ethernet-switch-port.yaml. What remains in dsa-port.yaml is:
+   * ethernet phandle
+   * link phandle
+   * label property
+   * dsa-tag-protocol property
+   * the constraint that CPU and DSA ports must have phylink bindings
+
+6. The ethernet-switch.yaml will have "$ref: ethernet-switch-port.yaml#"
+   and "$ref: dsa-port.yaml". The dsa-port.yaml schema will *not* have
+   "$ref: ethernet-switch-port.yaml#", just its custom additions.
+   I'm not 100% on this, but I think there will be a problem if:
+   - dsa.yaml references ethernet-switch.yaml
+     - ethernet-switch.yaml references ethernet-switch-port.yaml
+   - dsa.yaml also references dsa-port.yaml
+     - dsa-port.yaml references ethernet-switch-port.yaml
+   because ethernet-switch-port.yaml will be referenced twice. Again,
+   not sure if this is a problem. If it isn't, things can be simpler,
+   just make dsa-port.yaml reference ethernet-switch-port.yaml, and skip
+   steps 2 and 3 since dsa-port.yaml containing just the DSA specifics
+   is no longer problematic.
+
+7. Make mscc,vsc7514-switch.yaml have "$ref: ethernet-switch.yaml#" for
+   the "mscc,vsc7514-switch.yaml" compatible string. This will eliminate
+   its own definitions for the generic properties: $nodename and
+   ethernet-ports (~45 lines of code if I'm not mistaken).
+
+8. Introduce the "mscc,vsc7512-switch" compatible string as part of
+   mscc,vsc7514-switch.yaml, but this will have "$ref: dsa.yaml#" (this
+   will have to be referenced by full path because they are in different
+   folders) instead of "ethernet-switch.yaml". Doing this will include
+   the common bindings for a switch, plus the DSA specifics.
+
+9. Optional: rework ti,cpsw-switch.yaml, microchip,lan966x-switch.yaml,
+   microchip,sparx5-switch.yaml to have "$ref: ethernet-switch.yaml#"
+   which should reduce some duplication in existing schemas.
+
+10. Question for future support of VSC7514 in DSA mode: how do we decide
+    whether to $ref: ethernet-switch.yaml or dsa.yaml? If the parent MFD
+    node has a compatible string similar to "mscc,vsc7512", then use DSA,
+    otherwise use generic ethernet-switch?
+```
+
+
+
+Colin Foster (7):
+  dt-bindings: mfd: ocelot: remove spi-max-frequency from required
+    properties
+  dt-bindings: mfd: ocelot: remove unnecessary driver wording
+  dt-bindings: net: dsa: qca8k: utilize shared dsa.yaml
+  dt-bindings: net: dsa: mediatek,mt7530: remove unnecessary dsa-port
+    reference
+  dt-bindings: net: add generic ethernet-switch
+  dt-bindings: net: add generic ethernet-switch-port binding
+  dt-bindings: net: mscc,vsc7514-switch: utilize generic
+    ethernet-switch.yaml
+
+ .../devicetree/bindings/mfd/mscc,ocelot.yaml  |  4 +-
+ .../devicetree/bindings/net/dsa/dsa-port.yaml | 26 +---------
+ .../devicetree/bindings/net/dsa/dsa.yaml      | 26 +---------
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  3 --
+ .../devicetree/bindings/net/dsa/qca8k.yaml    | 14 ++---
+ .../bindings/net/ethernet-switch-port.yaml    | 44 ++++++++++++++++
+ .../bindings/net/ethernet-switch.yaml         | 51 +++++++++++++++++++
+ .../bindings/net/mscc,vsc7514-switch.yaml     | 36 +------------
+ MAINTAINERS                                   |  2 +
+ 9 files changed, 107 insertions(+), 99 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch.yaml
+
 -- 
-2.18.0
+2.25.1
 
 
