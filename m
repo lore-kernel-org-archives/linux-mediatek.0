@@ -4,50 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47DEC38A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 11:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF764ECDFA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 12:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Npfy04xrtP8uVsE0fCBs0ol5w615mC5RTZoCz07sp4=; b=WaK38YCt+fh3It6p41U/YMcG8t
-	I/UOASOJdJG9r/F6jct3sfRtHClutFtX4HOCICoUyJiRq9o/mfI4pTZXEnTZzK8M0MBZpeWH5qVDB
-	YsiuoMrfh/pcEQg/OJpARvEApFHYA8cOIbwb2BnxrGbQM0iYEj6BK99LwUvk7xrH5OH9IPveMUqYy
-	W3/fkbetWdtQCZdm1cGtAQmkrEerPnU0aX/5JznGQ/V/cKXuc0BmGqbYTujsLTvXnhaIiEbYaMFNM
-	RCnLQHTg03KDc57mybfO/69DZDuHAs+RonXXUX9xknaYnpsu7RH5xg3FPFj7fInLUhAQrC6Oxeu4Q
-	vFaqhisg==;
+	bh=HRBpOaPxNlf8SCNOdJkWXPOLIiLsxSs1Ig/b7TsdPgg=; b=cxdcSgfiUS3/qTdmshFdDcbHJM
+	Uulb/HE7Lzid4LWA4njpTXg/295iHjgApxY3BueMcAifn5LOMStkVmZxswN/m/rzBMVpEjDQ/DD1L
+	aw3kGkTfWiFj/EjhMeK+0lNaDrPkKJ5jmWIydg1GNr2NAeZXKPKN6+bZTHby0lsDwhAOUUmBJeRcc
+	4VAlVEspYDoa9Stn7QxB7XzMXA5LSYefjeN+vlB7ZlziBnWEA50We/zTADc1x33G6HNGcAbCcQlNF
+	9n5HEl6UpN522u/FlzmaiWkE1mndgizPLMpJAunzKTprD+DaAOrnt+IHngrFPnOu/+SEPm91NDlAl
+	bM9yDcZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIZ6-0055ap-Vh; Tue, 25 Oct 2022 11:57:52 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1onIg0-00571a-0d; Tue, 25 Oct 2022 12:05:00 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onIZ4-0055YU-5v; Tue, 25 Oct 2022 11:57:51 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1onIYs-000088-7U; Tue, 25 Oct 2022 13:57:38 +0200
-Date: Tue, 25 Oct 2022 12:57:35 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/2] pwm: mediatek: Add support for MT7986
-Message-ID: <Y1fPLzwUz/E9C3I1@makrotopia.org>
-References: <Y1K5ym1EL8kwzQEt@makrotopia.org>
- <b5ab84b4d595713588f1d8a68a1585ca3ae5521e.camel@mediatek.com>
+	id 1onIfx-00570v-12
+	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 12:04:58 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 90D8ACE1D3D;
+	Tue, 25 Oct 2022 12:04:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7752DC433C1;
+	Tue, 25 Oct 2022 12:04:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666699492;
+	bh=imPbkygKCePq1i3EyArChYjYSEwf0BNJm1sKgppu4aA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dblssCwT7xEDT3+yhnXZazozanPhhtSA/qTKwLthMAUHTCWL41LHSSFMB+TRISU69
+	 SEPEN4iUT8iCs9DZCZigypa3AzG2YioBKbuVDxESBHxHXyQp+2MEOzeAQPG6ZLPe6Y
+	 IgKDBREQBglLVlVT9yPV/gCoNUVlVspui+FGxX+jafFp7+h08j6c09dfp7X3ULAoDw
+	 fD1bx+6tdzhLv8or4464HLskB0792slh8nmq8w487nfoD+HKccm5CIlXOzSbweufKg
+	 LrImQu4jEH7QbDIyNMVS18xyYzgKaHFwVN2D4GcC25SDbtjzJqEKIEaG3PWvupGThq
+	 dmaEty5LBqJfw==
+Date: Tue, 25 Oct 2022 14:04:48 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Deren Wu <deren.wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+	Stella Chang <Stella.Chang@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: Re: [PATCH v2] wifi: mt76: fix bandwidth 80MHz link fail in 6GHz band
+Message-ID: <Y1fQ4BuvyTujs3sK@lore-desk>
+References: <85b5e8374fc9b86fb955060c1840f3b2a1d187e4.1666614616.git.deren.wu@mediatek.com>
+ <Y1efUIq4aCFO7V6j@lore-desk>
+ <8db3eb8a72da2d478780782a54305e3cf1b5b50a.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iRIreIuW1ejbPkiI"
 Content-Disposition: inline
-In-Reply-To: <b5ab84b4d595713588f1d8a68a1585ca3ae5521e.camel@mediatek.com>
+In-Reply-To: <8db3eb8a72da2d478780782a54305e3cf1b5b50a.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_045750_240022_4B03133F 
-X-CRM114-Status: GOOD (  33.41  )
+X-CRM114-CacheID: sfid-20221025_050457_438429_5396A9D9 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,113 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 25, 2022 at 02:35:43PM +0800, Sam Shih wrote:
-> Hi Daniel:
-> 
-> On Fri, 2022-10-21 at 16:24 +0100, Daniel Golle wrote:
-> > Add support for PWM on MT7986 which has 2 PWM channels, one of them
-> > is
-> > typically used for a temperature controlled fan.
-> > 
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> >  drivers/pwm/pwm-mediatek.c | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> > 
-> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > index 6901a44dc428de..2219cba033e348 100644
-> > --- a/drivers/pwm/pwm-mediatek.c
-> > +++ b/drivers/pwm/pwm-mediatek.c
-> > @@ -329,6 +329,12 @@ static const struct pwm_mediatek_of_data
-> > mt8365_pwm_data = {
-> >  	.has_ck_26m_sel = true,
-> >  };
-> >  
-> > +static const struct pwm_mediatek_of_data mt7986_pwm_data = {
-> > +	.num_pwms = 2,
-> > +	.pwm45_fixup = false,
-> > +	.has_ck_26m_sel = true,
-> 
-> For MT7986 SoC, I think the value of "has_ck_26m_sel" should be 'false'
 
-That's a bit surprising, please explain why.
+--iRIreIuW1ejbPkiI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reading the commit adding .has_ck_26m_sel field:
-> commit 0c0ead76235db0bcfaab83f04db546995449d002
-> Author: Fabien Parent <fparent@baylibre.com>
-> Date:   Mon Oct 19 16:07:02 2020 +0200
-> 
-> pwm: mediatek: Always use bus clock
-> 
-> The MediaTek PWM IP can sometimes use the 26 MHz source clock to
-> generate the PWM signal, but the driver currently assumes that we always
-> use the PWM bus clock to generate the PWM signal.
-> 
-> This commit modifies the PWM driver in order to force the PWM IP to
-> always use the bus clock as source clock.
-> 
-> I do not have the datasheet of all the MediaTek SoC, so I don't know if
-> the register to choose the source clock is present in all the SoCs or
-> only in subset. As a consequence I made this change optional by using a
-> platform data paremeter to says whether this register is supported or
-> not. On all the SoCs I don't have the datasheet (MT2712, MT7622, MT7623,
-> MT7628, MT7629) I kept the behavior to be the same as before this
-> change.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Thierry Reding <thierry.reding@gmail.com>
+> Hi Lorenzo,
+>=20
+> On Tue, 2022-10-25 at 10:33 +0200, Lorenzo Bianconi wrote:
+> > > From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > >=20
+> > > Due to information missing, the firmware may be fail on bandwidth
+> > > related settings in mt7921/mt7922. Add new cmd STA_REC_HE_V2 to
+> > > apply
+> > > additional capabilities in 6GHz band.
+> > >=20
+> > > Tested-by: Ben Greear <greearb@candelatech.com>
+> > > Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+> > > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> > > Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > > ---
+> > > v2: Fix le16/cpu type problem, reported by kernel test robot <
+> > > lkp@intel.com>
+> > > ---
+> > >  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 34
+> > > +++++++++++++++++++
+> > >  .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 11 ++++++
+> > >  2 files changed, 45 insertions(+)
+> > >=20
+> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> > > b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> > > index 011fc9729b38..9bba18d24c71 100644
+> > > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> > > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> > > @@ -744,6 +744,39 @@ mt76_connac_mcu_sta_he_tlv(struct sk_buff
+> > > *skb, struct ieee80211_sta *sta)
+> > >  	he->pkt_ext =3D 2;
+> > >  }
+> > > =20
+> > > +static void
+> > > +mt76_connac_mcu_sta_he_tlv_v2(struct sk_buff *skb, struct
+> > > ieee80211_sta *sta)
+> >=20
+> > Is this tlv available just for 7921 fw? If so I guess we should add
+> > it just for
+> > it since mt76_connac_mcu_sta_tlv is used even by other chipsets.
+> >=20
+> > Regards,
+> > Lorenzo
+> >=20
+>=20
+> For now, mt76_connac_mcu_sta_he_tlv_v2() would be used for mt7921 only,
+> not for other chips. However, it would be used for all next-generation
+> chipsets. I propose to put it here and we will take this API in new
+> chip porting.
 
-From MT7986 datasheet:
-> 0x10048210 PWM_CK_26M_SEL PWM BCLK Selection
-> Reset value 0x00000001
-> Description
-> 0: Select bus CLK as BCLK
-> 1: Select 26M fix CLK as BCLK
+I am fine with it, I was thinking just to not introduce regression on previ=
+ous
+chips.
 
-So after reset, the 26M clock is selected by default.
+Regards,
+Lorenzo
 
-In pwm-mediatek.c I read:
-> #define PWM_CK_26M_SEL          0x210
-> ...
->         /* Make sure we use the bus clock and not the 26MHz clock */
->         if (pc->soc->has_ck_26m_sel)
->                 writel(0, pc->regs + PWM_CK_26M_SEL);
-
-So this PWM_CK_26M_SEL register does exist on MT7986 and has the
-same address as expected by the driver ($PWM_BASE + 0x210).
-The default value selected after reset (0x00000001) matches the
-problem and solution described in the commit description
-"pwm: mediatek: Always use bus clock".
-
-Sidenode: I've tried with both, .has_ck_26m_sel = true as well as
-.has_ck_26m_sel = false. Both do work, but the behavior is slightly
-different, again matching the commit description above.
-
-> 
-> > +};
-> > +
-> >  static const struct pwm_mediatek_of_data mt8516_pwm_data = {
-> >  	.num_pwms = 5,
-> >  	.pwm45_fixup = false,
-> > @@ -342,6 +348,7 @@ static const struct of_device_id
-> > pwm_mediatek_of_match[] = {
-> >  	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data
-> > },
-> >  	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data
-> > },
-> >  	{ .compatible = "mediatek,mt7629-pwm", .data = &mt7629_pwm_data
-> > },
-> > +	{ .compatible = "mediatek,mt7986-pwm", .data = &mt7986_pwm_data
-> > },
-> >  	{ .compatible = "mediatek,mt8183-pwm", .data = &mt8183_pwm_data
-> > },
-> >  	{ .compatible = "mediatek,mt8365-pwm", .data = &mt8365_pwm_data
-> > },
-> >  	{ .compatible = "mediatek,mt8516-pwm", .data = &mt8516_pwm_data
-> > },
-> 
+>=20
 > Regards,
-> Sam
-> 
+> Deren
+>=20
+>=20
+
+--iRIreIuW1ejbPkiI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY1fQ4AAKCRA6cBh0uS2t
+rGfKAPwN7ys9uKwavwjvGyG5Vul14eDtXcZ2sQgm9lg/cb8JfAEApZ8nG9PMe7CW
+FyqrzcLcc3daLfqCU/Vz8UUX+vKn+gk=
+=srUi
+-----END PGP SIGNATURE-----
+
+--iRIreIuW1ejbPkiI--
 
