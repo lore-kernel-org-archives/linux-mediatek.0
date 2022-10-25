@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57BD7C67871
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 00:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36385C67871
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 00:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p9iGP14d6f9I4D+kuqf6O3+s5e5qEr4YR9xj0lL2tQg=; b=uVG8wez6LRUwwS
-	moO8/aMlOzpQp/9EfFt7fHtEhxQetd7H3AHCCTYgaTwkB2mPxp9aZLNmoZU6s793FTZI+T9LW8Uxv
-	TIjdwa1uJcSqez0P6DBTrIpP3MfW9U5OmXxNCVTBRO6ybRdsFFT0mfBuZNkHgHcjEdQei2p/7QnLd
-	5d2KppR6kQWGJ9Zwx9mkIW3titwYNcaz+msIUOdWFQKSLwzGihs/ePbocUQDtCIK9pCa6M62Ha3Lw
-	k0Ae8X9i1hwxarPksLJTswKnz7Arphqt4DHT9fuMvKjBz3IouFey3P4+/PtVwQYN0xOeoGltwy2OR
-	ZVnCcVkljD3I2+eCl2mw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Hfoh3gTks+PoKuD/YhCze4rtA1NKdyMWVodyLUoe7cU=; b=zw5mLLP0J6GAuhGj2dF/OHYYn3
+	HfiVx0nHJ+JkpAvHy94/aRwHNSIih+yGP/Ii7tr3qnViqV4iauCsBw3j7YsxWbJuaylwgzFO9RX9s
+	5MQeUSi8vvDVUD2aIl5/RS7Gu0QXquYL+Ij8QtAP4icc1d9JeqffgQRBUvV7Y01vntZcODVYEgws1
+	9g0sguq28ymEUxL0foieRJgBvVgj4nRVXl59YO2OzLSSRhHOj6nzPUJzhdWrWZ3se9G0z3ju68LhL
+	yJSBZ58ammiBgKgZs6yX7DSNTOIVZq94nnJ3QxPEnj0ZkU7+0SSD0fQuvDJC9FbNIotFWjw0YG+iN
+	XpZaktig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on7eD-003Q6Q-Nh; Tue, 25 Oct 2022 00:18:25 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1on7qg-003RTQ-0X; Tue, 25 Oct 2022 00:31:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1on7eB-003Q5N-6o
-	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 00:18:24 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id o2so7123448qkk.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Oct 2022 17:18:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=p9iGP14d6f9I4D+kuqf6O3+s5e5qEr4YR9xj0lL2tQg=;
-        b=OtcjS3mzg7rlOcJHjSoD4JAWkUpNIVr3uTqc4Vek0xgQC60nPy8J5iQ9eBp+2ScjNh
-         mKkfAe/bj/e1y5HJwuzOnTHJhj6CICRZOx7YVwDPcDkw+hQJzDCNoZ7v7bB+4dsHoXbu
-         WJRZjmeJumf1MwvDTeByrDcFZXKEqCU7GhdJTcAa6iNvoUAh1PILnE1ZlxLQS1Axvvm7
-         bzqO6u8S2fc68LqbJ/TIQD/3OsnKbL4HEoosLrMqxLzAqFmmfxs42GcXhUM6mKpOEekx
-         CkXUkK7+8ECU0HaUf0NJTQhbZ0OKcJcCRSvtBR3I1ALQLtAFluNsshqcPCT5vuDBzpGg
-         jedw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p9iGP14d6f9I4D+kuqf6O3+s5e5qEr4YR9xj0lL2tQg=;
-        b=fBtDtTKDzTml0Bf5tziPfWXC9c4lfwUyundZlSLePe/9Piaj/UCZBmiQaMNySVcKPn
-         JhJG/symB7oK3pYqoxnvSzY5hXIvkjJQfS9FMNiMHAVpp6RMsYPLNRgJd9dxshD6LXuD
-         in7b3HrKUWvw/t3Ncp6e8X7j0ZDsZFvKmSCDnzUsHggKGbiZwgAI47nQYPEDEEnGygmZ
-         GgKWpj1FE6AcwmW2D7tIHe0kU9lr5rcIazkFE+QxRYeDWKKkGorklbRkDUEv1xDbjUZY
-         1iYLRCO5WTEv1BizkT1okN3ShG3nuOSwEOy29JpJI+pqYz5lQQzm/3aQhZkJ7OWFp1ZG
-         qtqQ==
-X-Gm-Message-State: ACrzQf0/SnkguuqEIt82efPlsXG/45rF1jADI32xQua1kS5cpEdVJXqa
-	xKM28upXsjz3Frt4izN0GvAbBw==
-X-Google-Smtp-Source: AMsMyM78J92TaYTk4yJazk6RCGkFm9WubGdfdV2HbUM+i9DvZ7hX6waN9UYo9qf6oaenDl6vIy97bg==
-X-Received: by 2002:ae9:e115:0:b0:6ee:bcbb:396 with SMTP id g21-20020ae9e115000000b006eebcbb0396mr25000114qkm.668.1666657099961;
-        Mon, 24 Oct 2022 17:18:19 -0700 (PDT)
-Received: from [192.168.1.11] ([64.57.193.93])
-        by smtp.gmail.com with ESMTPSA id m8-20020a05620a290800b006ce40fbb8f6sm1040395qkp.21.2022.10.24.17.18.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Oct 2022 17:18:19 -0700 (PDT)
-Message-ID: <22a8f70d-a5ce-1f54-03d1-50874b7c99fa@linaro.org>
-Date: Mon, 24 Oct 2022 20:18:17 -0400
+	id 1on7qc-003RRZ-Mj
+	for linux-mediatek@lists.infradead.org; Tue, 25 Oct 2022 00:31:16 +0000
+X-UUID: aa77126e7f614425a63522c95109e09b-20221024
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Hfoh3gTks+PoKuD/YhCze4rtA1NKdyMWVodyLUoe7cU=;
+	b=WZ6PigxrHv4cGKF2yfJSnmks/Ln1DBltw8C1mA/PERYSvSnqS3zcv+ZonCw/lO//EDJUYgdIZab0FS1CdYNyWZ+A17ChSl8DOaGFE0qSjWtp1Ev6aHhilcPSU9UQvgoz45t+3+1NfBVJxlDELrjpqvXWvo0/6wmTf4IXoygJ8yQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:2e64677a-23f9-40e1-ab50-12c063ee3016,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:d03088e4-e572-4957-be22-d8f73f3158f9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: aa77126e7f614425a63522c95109e09b-20221024
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1364772690; Mon, 24 Oct 2022 17:31:05 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 25 Oct 2022 08:31:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 25 Oct 2022 08:31:03 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 2/2] wifi: mt76: mt7615: enable use_cts_prot support
+Date: Tue, 25 Oct 2022 08:31:01 +0800
+Message-ID: <4aff52fcb41b69e9305f3ef78459d4717817607c.1666657715.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <f13c8c4ae61eb1374ca65e92b03e908c21073917.1666657715.git.ryder.lee@mediatek.com>
+References: <f13c8c4ae61eb1374ca65e92b03e908c21073917.1666657715.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH] dt-bindings: pinctrl: update uart/mmc bindings for MT7986
- SoC
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221024073634.6834-1-linux@fw-web.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221024073634.6834-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221024_171823_278033_9C469673 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221024_173114_772746_5B0D4CD0 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,27 +76,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/10/2022 03:36, Frank Wunderlich wrote:
->            - if:
->                properties:
->                  function:
-> @@ -221,8 +225,9 @@ patternProperties:
->              then:
->                properties:
->                  groups:
-> -                  enum: [uart1_0, uart1_1, uart1_2, uart1_3_rx_tx,
-> -                         uart1_3_cts_rts, uart2_0, uart2_1, uart0, uart1, uart2]
-> +                  enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1, uart1_2_rx_tx, uart1_2_cts_rts,
-> +                         uart1_3_rx_tx, uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rts, uart2_1, uart0,
-> +                         uart1, uart2]
+This adds selectable RTC/CTS enablement for each interface.
 
-Wrap it according to Linux coding style, so 80.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Change-Id: Id36a67f1f1ef21e42cfbbe97a5a502b7a2c2d786
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c   | 15 +++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c  |  3 +++
+ .../net/wireless/mediatek/mt76/mt7615/mt7615.h    |  2 ++
+ drivers/net/wireless/mediatek/mt76/mt7615/regs.h  |  2 ++
+ 4 files changed, 22 insertions(+)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 2ce1705c0f43..45cad911687d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1177,6 +1177,21 @@ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
+ }
+ EXPORT_SYMBOL_GPL(mt7615_mac_set_rates);
+ 
++void mt7615_mac_enable_rtscts(struct mt7615_dev *dev,
++			      struct ieee80211_vif *vif, bool enable)
++{
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++	u32 addr;
++
++	addr = mt7615_mac_wtbl_addr(dev, mvif->sta.wcid.idx) + 3 * 4;
++
++	if (enable)
++		mt76_set(dev, addr, MT_WTBL_W3_RTS);
++	else
++		mt76_clear(dev, addr, MT_WTBL_W3_RTS);
++}
++EXPORT_SYMBOL_GPL(mt7615_mac_enable_rtscts);
++
+ static int
+ mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 			   struct ieee80211_key_conf *key,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 8d4733f87cda..98f9e2155009 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -572,6 +572,9 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
+ 		}
+ 	}
+ 
++	if (changed & BSS_CHANGED_ERP_CTS_PROT)
++		mt7615_mac_enable_rtscts(dev, vif, info->use_cts_prot);
++
+ 	if (changed & BSS_CHANGED_BEACON_ENABLED && info->enable_beacon) {
+ 		mt7615_mcu_add_bss_info(phy, vif, NULL, true);
+ 		mt7615_mcu_sta_add(phy, vif, NULL, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 060d52c81d9e..f632e6a99038 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -473,6 +473,8 @@ void mt7615_mac_reset_counters(struct mt7615_dev *dev);
+ void mt7615_mac_cca_stats_reset(struct mt7615_phy *phy);
+ void mt7615_mac_set_scs(struct mt7615_phy *phy, bool enable);
+ void mt7615_mac_enable_nf(struct mt7615_dev *dev, bool ext_phy);
++void mt7615_mac_enable_rtscts(struct mt7615_dev *dev,
++			      struct ieee80211_vif *vif, bool enable);
+ void mt7615_mac_sta_poll(struct mt7615_dev *dev);
+ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 			  struct sk_buff *skb, struct mt76_wcid *wcid,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index 6712ad9faeaa..fa1b9b26b399 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -446,6 +446,8 @@ enum mt7615_reg_base {
+ #define MT_WTBL_RIUCR3_RATE6		GENMASK(19, 8)
+ #define MT_WTBL_RIUCR3_RATE7		GENMASK(31, 20)
+ 
++#define MT_WTBL_W3_RTS			BIT(22)
++
+ #define MT_WTBL_W5_CHANGE_BW_RATE	GENMASK(7, 5)
+ #define MT_WTBL_W5_SHORT_GI_20		BIT(8)
+ #define MT_WTBL_W5_SHORT_GI_40		BIT(9)
+-- 
+2.36.1
 
 
