@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B726FC38A2D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 08:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A04BC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 08:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DXLh4vDAe6nhT6ATePnrWhlCsXdVGYrZZzK92XPqJjw=; b=c6VYwT03MDaAZWaJ1gGmwmicB7
-	EOADnbL6pXZXRNT4gdkZPcL2fJuosHqK7xUeUwezQytkpt1E5BO+U7xpxUcuW9PKd0CxB1+6pUTTA
-	MVVtXxE/e+1QrYE7cQ4/8wajNGZnEDs3oXNdqcQPLthmtkeMKXXIKW/x9SOmrqELYZTpV/DBhsnHn
-	4YdKeTDREB+x3FZGryg7z5jfVw8/TzRz8NhTJItI0eNSjKukbJMxycZbU6hJS1SgBePPYhlamm8BR
-	4lqXEIdNB3RdwGZW/nlhCSxiQIEIaWUfY+u5ABNKK8zejYGkhAw/q6uUtjZKFuw41ufuOm/NbRPiD
-	aJmwRhtw==;
+	bh=U5oKWfOcAf7R+mPETqabiyguWMlfSODEXFn8Cl9Rxgo=; b=JY3qnFll4uSEmh48bwrFq9fJwi
+	bUjAZxqPfrOJv4XigoQ/ZiR4w3VV3/ZCKuRbX/OQKBvO4Kh5Blx3jwRgwKCZGuO4W5twANaRROQ99
+	QSR0SRvhH6l8qTHKM178gZ8S96x1Z7sAnLuu+WWmFr9j+nbeRBNwmf3q8sJjKWWHO8QfO26M7v3+2
+	CcSEODNDDQZR6QcIf5HJaUpbrF6bJXqjrQto/wibwpEmdM0WwJGrGqACd2MsqQQhr1DtF3kxdKwaQ
+	G9WxQaht9//n/Vn73Qge0/4w8Tu6kZfc6r9hm+FDAgnpTy9zH0fcsvWn8VjK4iYf8nORopjYm7odJ
+	uO/nfeog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onbcq-008Wmx-6K; Wed, 26 Oct 2022 08:19:00 +0000
+	id 1onc06-008cEY-Sc; Wed, 26 Oct 2022 08:43:02 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onbcd-008Wji-Rj; Wed, 26 Oct 2022 08:18:50 +0000
+	id 1onc04-008cDZ-MJ
+	for linux-mediatek@lists.infradead.org; Wed, 26 Oct 2022 08:43:02 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB742660283B;
-	Wed, 26 Oct 2022 09:18:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3D545660283E;
+	Wed, 26 Oct 2022 09:42:58 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666772325;
-	bh=NYCXP6RyBtf3ScHpt1tBvUYys3xwjCxOteKAWeBtIPg=;
+	s=mail; t=1666773778;
+	bh=w31odjVcfeb6QfjPWe48PCOVArAFaXH4iLmTYIV0E5I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ou91Zpf3cGsseLbii8xWViLSeSsjqLIStMuD4Hcro5p0gSbeAFBPLfIhd7qr0YCgM
-	 og6rB/s8syWWTz40ihoOKkG/XRNlh0Hj3GgScRIVz+zW3XWDuJsp7VeCwnN7fY9jor
-	 KclpR6TWiNKvRydsdMIgI1HI9nX94vtqgzpE1nOJlCsYwJ5MgYXmr0oFS2nlMkp9+N
-	 yHX5Lxmgf6LD+t4adseWCQjJOUHG89I4sBQ5vkqHP5gqLq6MdmMHbC6FwUDlDQ4KdP
-	 OBaoCQB4evzQEkuCKDOmmIqA+EN93RWMIVuyFAxYjKQazybq4Hg5frHeMPK1GkA71O
-	 4C2PQBUTIYBzw==
-Message-ID: <360a5f27-8abc-938c-04c7-13ea65b5a89f@collabora.com>
-Date: Wed, 26 Oct 2022 10:18:41 +0200
+	b=U1kt1+HlZCH2AipQyeOkQ0qfqxX/uIphQ0w8EmLcLbSo4SfVpUta+rtG5HnsTVPso
+	 N1a+4RjXqunUnq8eaKuAQcwQjhFS1nUnDvKcycI8uwWjbIBuYNPodI1S8nwYHBkhZT
+	 0qFM6C9fNHdTzLiMVRvqm9PFxJZGJRJa+o+19T4NC/w8qrjOcd9XQ2N85BCG3eUgAQ
+	 ql3cjjph63Kmz9FNhTLgnZFIXcXrIK2F77KdBy3gFi0kIV1zymyq6/JQ+olcz/axa/
+	 be/PreqzGqfn2gE6Y0w3Xrac1bADowt+zE4xaQStpP5Jo12RaBsMON4bCCvcAPNy7c
+	 dUiSUOasd/6sw==
+Message-ID: <b22b6d17-98d6-782c-af5e-8e3d46a0277e@collabora.com>
+Date: Wed, 26 Oct 2022 10:42:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v2 03/12] ASoC: mediatek: mt8188: support audsys clock
-To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>, "tiwai@suse.com"
- <tiwai@suse.com>, "broonie@kernel.org" <broonie@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20221021082719.18325-1-trevor.wu@mediatek.com>
- <20221021082719.18325-4-trevor.wu@mediatek.com>
- <de66f0e3-7694-7315-c896-9211259a1a17@collabora.com>
- <776557c0fda5a538549ee0d4f4b7f482b0d69934.camel@mediatek.com>
- <473d67ed-198f-82c6-9f32-5827c1f8c852@collabora.com>
- <500f80b1ac84101af482bdfcb46671d523d51068.camel@mediatek.com>
+Subject: Re: [PATCH v1 2/2] ufs: mtk-host: Add MCQ feature
 Content-Language: en-US
+To: Eddie Huang <eddie.huang@mediatek.com>,
+ Asutosh Das <quic_asutoshd@quicinc.com>, martin.petersen@oracle.com,
+ stanley.chu@mediatek.com, bvanassche@acm.org, linux-scsi@vger.kernel.org
+Cc: avri.altman@wdc.com, liang-yen.wang@mediatek.com,
+ linux-mediatek@lists.infradead.org, cc.chou@mediatek.com,
+ powen.kao@mediatek.com
+References: <20221026073943.22111-1-eddie.huang@mediatek.com>
+ <20221026073943.22111-3-eddie.huang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <500f80b1ac84101af482bdfcb46671d523d51068.camel@mediatek.com>
+In-Reply-To: <20221026073943.22111-3-eddie.huang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_011848_354269_889D171B 
-X-CRM114-Status: GOOD (  26.63  )
+X-CRM114-CacheID: sfid-20221026_014300_890398_677688BA 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,157 +78,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/10/22 06:10, Trevor Wu (吳文良) ha scritto:
-> On Tue, 2022-10-25 at 12:18 +0200, AngeloGioacchino Del Regno wrote:
->> Il 21/10/22 11:58, Trevor Wu (吳文良) ha scritto:
->>> On Fri, 2022-10-21 at 10:41 +0200, AngeloGioacchino Del Regno
->>> wrote:
->>>> Il 21/10/22 10:27, Trevor Wu ha scritto:
->>>>> Add mt8188 audio cg clock control. Audio clock gates are
->>>>> registered
->>>>> to CCF
->>>>> for reference count and clock parent management.
->>>>>
->>>>> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
->>>>> ---
->>>>>     sound/soc/mediatek/mt8188/mt8188-audsys-clk.c | 206
->>>>> ++++++++++++++++++
->>>>>     sound/soc/mediatek/mt8188/mt8188-audsys-clk.h |  15 ++
->>>>>     .../soc/mediatek/mt8188/mt8188-audsys-clkid.h |  83 +++++++
->>>>>     3 files changed, 304 insertions(+)
->>>>>     create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-
->>>>> clk.c
->>>>>     create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-
->>>>> clk.h
->>>>>     create mode 100644 sound/soc/mediatek/mt8188/mt8188-audsys-
->>>>> clkid.h
->>>>>
->>>>> diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>> b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>> new file mode 100644
->>>>> index 000000000000..1f294231d4c2
->>>>> --- /dev/null
->>>>> +++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>> @@ -0,0 +1,206 @@
->>>>> +// SPDX-License-Identifier: GPL-2.0
->>>>> +/*
->>>>> + * mt8188-audsys-clk.c  --  MediaTek 8188 audsys clock control
->>>>> + *
->>>>> + * Copyright (c) 2022 MediaTek Inc.
->>>>> + * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
->>>>> + */
->>>>> +
->>>>> +#include <linux/clk.h>
->>>>> +#include <linux/clk-provider.h>
->>>>> +#include <linux/clkdev.h>
->>>>> +#include "mt8188-afe-common.h"
->>>>> +#include "mt8188-audsys-clk.h"
->>>>> +#include "mt8188-audsys-clkid.h"
->>>>> +#include "mt8188-reg.h"
->>>>> +
->>>>> +struct afe_gate {
->>>>> +	int id;
->>>>> +	const char *name;
->>>>> +	const char *parent_name;
->>>>> +	int reg;
->>>>> +	u8 bit;
->>>>> +	const struct clk_ops *ops;
->>>>> +	unsigned long flags;
->>>>> +	u8 cg_flags;
->>>>> +};
->>>>> +
->>>>> +#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,
->>>>> _flags,
->>>>> _cgflags) {\
->>>>> +		.id = _id,					
->>>>> \
->>>>> +		.name = _name,					
->>>>> \
->>>>> +		.parent_name = _parent,				
->>>>> \
->>>>> +		.reg = _reg,					
->>>>> \
->>>>> +		.bit = _bit,					
->>>>> \
->>>>> +		.flags = _flags,				
->>>>> \
->>>>> +		.cg_flags = _cgflags,				
->>>>> \
->>>>> +	}
->>>>> +
->>>>> +#define GATE_AFE(_id, _name, _parent, _reg, _bit)		
->>>>> \
->>>>> +	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		
->>>>> \
->>>>> +		       CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED,
->>>>> CLK_GATE_SET_TO_DISABLE)
->>>>
->>>> Can you please explain what's the reason for CLK_IGNORE_UNUSED
->>>> here?
->>>> Maybe we can solve some issue that you're facing in a cleaner
->>>> way.
->>>>
->>>> Regards,
->>>> Angelo
->>>
->>> Hi Angelo,
->>>
->>> Because clk_disable_unused() calls clk_core_is_enabled(), register
->>> access happens in is_enabled() ops.
->>> At the moment, the power for register access is not enabled, so the
->>> register read results in CPU hang.
->>>
->>> That's why I added CLK_IGNORE_UNUSED here, but it can't resolve all
->>> issues. Actually, we met same problem when "cat
->>> /sys/kernel/debug/clk/clk_summary" is used. We are still suffering
->>> the
->>> problem.
->>>
->>> I'm not sure if I can implement clk ops by myself, and exclude the
->>> registration of is_enabled() ops.
->>>
->>
->> Is the power for register access enabled with a power domain?
->>
->> Check drivers/clk/clk.c, grep for core->rpm_enabled.
->>
->> If you enable runtime PM before registering the clocks, and you
->> register them
->> with the right struct device, the clock API will enable power for you
->> before
->> trying to read the clock enable status.
->>
->> Regards,
->> Angelo
->>
+Il 26/10/22 09:39, Eddie Huang ha scritto:
+> Add Mediatek mcq resource and runtime configuration function
+> to support MCQ capability
 > 
-> Hi Angelo,
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> ---
+>   drivers/ufs/host/ufs-mediatek.c | 37 +++++++++++++++++++++++++++++++++++++
+>   drivers/ufs/host/ufs-mediatek.h |  7 +++++++
+>   2 files changed, 44 insertions(+)
 > 
-> I tried the way in MT8195, but it caused circular lock problem.
-> 
-> Because mtcmos depends on some clocks, clk_bulk_prepare_enable is also
-> used in scpsys_power_on()[1].
-> If the clock also depends on the power domain, this results in the
-> circular lock problem.
-> That's why I don't bind the power domain with these clocks.
-> 
+> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+> index c958279..3f5fc05 100644
+> --- a/drivers/ufs/host/ufs-mediatek.c
+> +++ b/drivers/ufs/host/ufs-mediatek.c
 
-This is not supposed to happen... can you please give me a (MT8195) patch to
-reproduce the issue that you're seeing?
+..snip..
 
-I would like to investigate that to check if I can come up with a good solution.
+> +
+> +static int ufs_mtk_config_mcq_resource(struct ufs_hba *hba)
+> +{
+> +	hba->mcq_base = hba->mmio_base +
+> +					MCQ_QUEUE_OFFSET(hba->mcq_capabilities);
+
+This seems to either be an additional usecase that should be implemented into the
+API and not in MediaTek drivers, (as in that case I believe MediaTek won't be the
+only user of such usecase)... or just a way to avoid adding the MCQ iospace to the
+UFS devicetree node.
+
+Please clarify.
 
 Thanks,
 Angelo
-
-> [1]
-> https://elixir.bootlin.com/linux/v6.1-rc2/source/drivers/soc/mediatek/mtk-pm-domains.c
-> 
-> Thanks,
-> Trevor
-> 
-> 
-
-
 
 
