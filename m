@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C54C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 06:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41F8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 07:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pP04e2VJp0d0nmz2znAdb7A4+IsjgZAVkGlG/kc9fXg=; b=jwsEt4WlMydeLva5S0uCEV5UG3
-	bXLMhvfcrYcp72V6yACzi5yes+bUvS41OdxKXi91zkWSVnjjmrZi49+iwrmbKk7lAO+OWWmNrvsoP
-	ZUrM0hFo/jydViQtxKMerp5XEYxxDfSH8wpoZDJWmuOLpZX2ulNkcOUH1RJwHxY4iI3hoGB5t0kGu
-	Vu9syYfXQOTxxZMLxZoHRnVubOF/nyP+OWTrVSeJ/cZoH5LDKob1YlYjgNpoIAoHLvqqaBnKrmscs
-	Hj/dh3akjR/yeZfP7tCq16GhsWoTkgsaJq7Xv4uQ7a5SmdrO8reQD8U2NiMwvud/4vuTQ8a214PiR
-	cE6iTKLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=; b=KWyo6hq5Yv++fKgPa2hN3nnxoN
+	HTIRpB+QfhYNQDIxF97BBSH7Pyv/oDdieg7c8QV3GvrWIIPreIzu9JisRvXp9XcF+MCwmvNO1Py1t
+	/e3N30Pzj22DEvOIjSXS4fvalPXlgbtXSvF2mga6Rgz0D41BnnqZ5+yDJHTWau1usNSHRhwR5aa7e
+	zxkNiIGoLthf6fbjUHsXZVrOUcFhLrQqeyjXCeqwGql4Gofqw+yGAJRWypPSqaVvGhZnQBqMpbQJL
+	mAvX8VNM9yeCMOr4xFzqQJSu7JTKw0NdZjUiqdA5n4/B2zEVLeYq43ny/pwt0N0oDOfMXXltFOFyn
+	X7D3O2MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ona00-008G8J-6Z; Wed, 26 Oct 2022 06:34:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1onaTe-008MDy-5T; Wed, 26 Oct 2022 07:05:26 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onZzY-008FzX-DN; Wed, 26 Oct 2022 06:34:26 +0000
-X-UUID: dc34aecdf4c343a0a7dffdafd79609d1-20221025
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pP04e2VJp0d0nmz2znAdb7A4+IsjgZAVkGlG/kc9fXg=;
-	b=eu0c0dRff85dsUL0SlA0qyEuLhAktMrCKrvOU80yjzxow+hgRDzvY9dEQ92Emj4Dp+S/8frHvvd4OgXi9R+5NYeqGYUVPGLEwMpQq7nubZ+jn790NfVLXqvatiBFG/5KZSZvVlwowimxwbuBD9cClLEzR5cJnWgn7lL5udNSMTs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f1e6d7e8-d084-47c0-9139-5667efbd542a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:af45b4e4-e572-4957-be22-d8f73f3158f9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: dc34aecdf4c343a0a7dffdafd79609d1-20221025
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <runyang.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 709460422; Tue, 25 Oct 2022 23:34:11 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 26 Oct 2022 14:33:34 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 26 Oct 2022 14:33:34 +0800
-From: Runyang Chen <Runyang.Chen@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Philipp
- Zabel <p.zabel@pengutronix.de>, <nfraprado@collabora.com>
-CC: <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-watchdog@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Runyang Chen
-	<runyang.chen@mediatek.com>
-Subject: [RESEND v3 1/3] dt-bindings: watchdog: Add compatible for MediaTek MT8188
-Date: Wed, 26 Oct 2022 14:33:25 +0800
-Message-ID: <20221026063327.20037-2-Runyang.Chen@mediatek.com>
-X-Mailer: git-send-email 2.9.2
-In-Reply-To: <20221026063327.20037-1-Runyang.Chen@mediatek.com>
-References: <20221026063327.20037-1-Runyang.Chen@mediatek.com>
+	id 1onaTQ-008MBL-8C; Wed, 26 Oct 2022 07:05:16 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id v130-20020a1cac88000000b003bcde03bd44so780427wme.5;
+        Wed, 26 Oct 2022 00:05:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=;
+        b=qWl7iB7LmbYBsmiX/9/8KvoCoJKf1FBBDgoMyja/yFA/2kloeRbdOx+lTsehp+1xE/
+         JjW4RdhwYefgJ30e7ZNhJYflZDRgkBtMFEqItkbKfvWOPSkCnaZhS0ZjJ6glzS/to6M6
+         3TfsfLPB53AJrNDOm2gBL04x1qu2IHJJT/AIVP4pGx7Y3xULtbwHFE3B3d1pwgdtDsS3
+         ILAB8k2YLQoILmJPqrDeNZNk0O1op4H1u7NsZ7QZy0tIGk5tnxLJWAL+m551aLxu1PWc
+         /Ky4ak4ThxXs5SyOGK57yu94EgeYfIpbsQ3JeVzG57ZLorCPk2lXUw9BwxisJJPYfCLS
+         XzGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=;
+        b=fzG8OamIU4Z2bCut5vQGdUYqDb2tjX0D5cWWKiwcan2ffWwLx6RsC7ptSxMf3FIqNj
+         5FQ35UNkSSFy0k4hXJzccE+79X8Mq/Z1c7Fu4Zeuzsbd5cf95QkIwu0Hb0o/ZSZZtz+a
+         7dfvSYWGFMTs7X4Z++H9yfRGiIS8zs55ILh4s6IRaviR7YbXdI24b+ToMzkkyZMi/Ccs
+         J4PCJ52VUrLLLw7WyGUlq8Kr30oV+J7Kg9P9yvRTgHp8G/NVyiuEfWrkfAq4JoK/YS2l
+         JaQo/jWWcVuhE5z7ecqlOt+86Pl0Cju8rcaU7WmRPMPrTyq8aKfOMp1hiarAEClCq5hj
+         wstQ==
+X-Gm-Message-State: ACrzQf2l94VXmjQV26uNw+pNfNIaDgQHQdgYmbYyWij55hsM7qHksj4N
+	/EDnlej+JNm5y69IzV10TGTBIh6Q4R2ruNIU71U=
+X-Google-Smtp-Source: AMsMyM5C9NLr2Kz1+vKkOOJ10yx17T4xwIKTzoLig0Zw9Z44q8yI20nka6ZVPN9VHFsB21O4aWfFUz+j7o/G73EyP7U=
+X-Received: by 2002:a05:600c:1990:b0:3c9:a5e8:addb with SMTP id
+ t16-20020a05600c199000b003c9a5e8addbmr1273615wmq.140.1666767909354; Wed, 26
+ Oct 2022 00:05:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <1666318661-11777-1-git-send-email-u0084500@gmail.com>
+ <CAHp75VeMvWycVsNPHb1cvMbtVSCiX3m9wUsZk7HkPU+e=VTb3A@mail.gmail.com>
+ <CADiBU3_m1gDgZxyo53UNvDP8P5LpFgpV+mBbw9+_epYuXimqWA@mail.gmail.com>
+ <CAHp75VeWMSeZiq6vUo25hRdueMbeEEQuzPqR=-ROsOufK+27LQ@mail.gmail.com>
+ <CADiBU39UF3Ez-80Xauy8qaO0iSyh-n-ZxScH+aZt3m=s3qkOjA@mail.gmail.com> <CAHp75VevGHnZKJvsdJ6QpWbHdhWP0VW0G71QLqRDvgk8MFeNUg@mail.gmail.com>
+In-Reply-To: <CAHp75VevGHnZKJvsdJ6QpWbHdhWP0VW0G71QLqRDvgk8MFeNUg@mail.gmail.com>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Wed, 26 Oct 2022 15:04:57 +0800
+Message-ID: <CADiBU39pRnrTuCM4OEFpLwEP9c86aJz2L6+G7yFm22i+7Gt8pw@mail.gmail.com>
+Subject: Re: [PATCH v2] mfd: mt6370: Add the out-of-bound check to prevent the
+ null pointer
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: lee@kernel.org, matthias.bgg@gmail.com, chiaen_wu@richtek.com, 
+	cy_huang@richtek.com, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_233420_474624_F9636E2F 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221026_000512_311362_2727E1C2 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +91,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Runyang Chen <runyang.chen@mediatek.com>
+Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=
+=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=886:35=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> On Fri, Oct 21, 2022 at 12:58 PM ChiYuan Huang <u0084500@gmail.com> wrote=
+:
+> > Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B410=
+=E6=9C=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=885:14=E5=AF=AB=E9=
+=81=93=EF=BC=9A
+> > > On Fri, Oct 21, 2022 at 12:02 PM ChiYuan Huang <u0084500@gmail.com> w=
+rote:
+> > > > Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B4=
+10=E6=9C=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=884:34=E5=AF=AB=
+=E9=81=93=EF=BC=9A
+> > > > > On Fri, Oct 21, 2022 at 5:17 AM cy_huang <u0084500@gmail.com> wro=
+te:
+>
+> ...
+>
+> > > > > https://www.kernel.org/doc/html/latest/process/submitting-patches=
+.html#backtraces-in-commit-messages
+> > >
+> > > Have you had a chance to read this section of the document?
+> > >
+> > OK, get it.
+> > Is the below text enough to express this problem?
+>
+> It is you who decides, because I don't know what exact problem this
+> will represent.
+>
+> > Ex. Testing as below (mt6370 register range from 0 to 0x1ff)
+> >    rg_bound_show()
+> >         regmap_raw_read(regmap, 0x200, &val, sizeof(val));
+>
+> > pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
+>
+> For example, why is this line here?
+>
+> > pc : i2c_smbus_xfer+0x58/0x120
+> > lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
+> > Call trace:
+> >  i2c_smbus_xfer+0x58/0x120
+> >  i2c_smbus_read_i2c_block_data+0x74/0xc0
+> >  mt6370_regmap_read+0x40/0x60
+> >  _regmap_raw_read+0xe4/0x278
+> >  regmap_raw_read+0xec/0x240
+> >  rg_bound_show+0xb0/0x120
+>
+> The rule of thumb is that it's okay to shrink to ~4-5 lines (in most case=
+s).
+>
 
-Add dt-binding documentation of watchdog for MediaTek MT8188 Soc
+At first, I start this thread due to  the original thread seems stopped
+Since it already restarted, please forget this one.
+Just follow the restaed thread for the discussion.
+https://lore.kernel.org/all/Y1aCiReTZDbPp%2FrS@kadam/
 
-Signed-off-by: Runyang Chen <runyang.chen@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index 762c62e428ef..b900c85d4560 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -17,6 +17,7 @@ Required properties:
- 	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
- 	"mediatek,mt8183-wdt": for MT8183
- 	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
-+	"mediatek,mt8188-wdt", "mediatek,mt6589-wdt": for MT8188
- 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
- 	"mediatek,mt8192-wdt": for MT8192
- 	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
--- 
-2.18.0
-
+> --
+> With Best Regards,
+> Andy Shevchenko
 
