@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A99C3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 17:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50BD5C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 19:17:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HB//srE+jyi0FWpKiy+4h9s6yd6ZaGXhIBWWMCtKONM=; b=NvEy9BcB2AiSGeQIOgdEdPcEkS
-	sCvRABaW4TZ4rbwIQfNZ3oSwqkQQ7pWEQRU1tRdNZx5P6mxkEdFeehlWgHb2jB7bvTgYgYKXdUzN7
-	mdPAVECQewZZU8Gjcu/a60RDMac6i1nvpWp5uXQg9uwxYCh8FVVhA+s02PgqVXfjfEj9/dlW0+O82
-	743sVKZ+hOkNfDOSK56//1GJFg2bI2Dqu4+OBldjC/oM6JHju7zykS6E+ovnvgXsQsHGGndIq1QLn
-	lnn2XM/CNriV95ozx2yI5VQcYFw/vw2cNdfai8TgaCxiSWT/qi+MolsUwC5NONfybzedD1I0FKGga
-	J3p50YTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XL1Yh8qNWHb+QXDOVHveDQwjmMefg/hx9d1xznUtfNk=; b=ZaX75zImFZ5YrwfDyvogcuvHVn
+	ah/FI40UnyNVmpRtO8aE8Ig6xZgQvb9e2vAqR6fKdhkOdU77LIhVxNzsXbmGykpPudm2nTQrbxPSD
+	VMnz1JH1YMq9VhUKNRgdIXrfLADKwde7Vw00x6FEXFrXoEg3kVvaVzSl8eRsZJqWWY3VozTKYKzoN
+	bHaHDtBN09TThJBVgJqovGS2bDpU7SZhlrbWqJIMafb5zKCaD63lbR/OH3h3+QKUgxs7l0kskWgkP
+	qlIc4rIExqfZzv4QUdKKhk1ALl/GhW7YrQP+Bjx1GznpC/PaHP1rbXaIGJ8fcZyI+Q1zGC9CTbEmN
+	FBX1tI3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onkUf-00AQhc-EB; Wed, 26 Oct 2022 17:47:09 +0000
-Received: from mail-oa1-f47.google.com ([209.85.160.47])
+	id 1onlu8-00Ajtm-OG; Wed, 26 Oct 2022 19:17:32 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onkUd-00AQg9-7o; Wed, 26 Oct 2022 17:47:08 +0000
-Received: by mail-oa1-f47.google.com with SMTP id 586e51a60fabf-13bd19c3b68so10422367fac.7;
-        Wed, 26 Oct 2022 10:47:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HB//srE+jyi0FWpKiy+4h9s6yd6ZaGXhIBWWMCtKONM=;
-        b=aJlZ4XPvU/q3JZwvih+TIr+QjqcQFmvC7o0ebvNJa+JIsrZrplk843z3qUEUVe1g75
-         VFMdpZrbIMhllF3GptSCBdt/qPkIo7i/exjOYgLRTlZRSk92rxbBnMXznJgXmhsIbzsq
-         AM4BNSJzozi5KvIMV1iR18qKInJcreHk+l2kH7YPy8rdygXAy76Q4RvJYiuxWG23J6HY
-         r5o8/paM9h4f4p3bj4JnwVka2d9n4OGZi3EQlf6p5XEr8rVTNGGqzuekHbq0yafT1CB1
-         NJ/lwynV7n5E8IlOiMH0mA1whH4V0gY89fcMrhzEdyP2E66PoLdplirKPrrV5logkrN1
-         duqg==
-X-Gm-Message-State: ACrzQf2Q/+Am5o7laK5eXaZYIsdeYhRdYlIqOwvQbZgnaXeI/o0LavDF
-	1bvMjofqaJud4gOl3RtJoQ==
-X-Google-Smtp-Source: AMsMyM7519BMQbcZ6P8S30eJ39PNdmtUMBDMdv4cp8EuTysDhqzQIi3UvRg1RXimILV387Wj+AclvQ==
-X-Received: by 2002:a05:6870:63aa:b0:13a:fe6c:5ed0 with SMTP id t42-20020a05687063aa00b0013afe6c5ed0mr3049476oap.257.1666806423841;
-        Wed, 26 Oct 2022 10:47:03 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id z22-20020a4a2256000000b004767df8f231sm2349508ooe.39.2022.10.26.10.47.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Oct 2022 10:47:03 -0700 (PDT)
-Received: (nullmailer pid 811863 invoked by uid 1000);
-	Wed, 26 Oct 2022 17:47:04 -0000
-Date: Wed, 26 Oct 2022 12:47:04 -0500
-From: Rob Herring <robh@kernel.org>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, =?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>
-Subject: Re: [PATCH v1 net-next 7/7] dt-bindings: net: mscc,vsc7514-switch:
- utilize generic ethernet-switch.yaml
-Message-ID: <20221026174704.GA809642-robh@kernel.org>
-References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-8-colin.foster@in-advantage.com>
+	id 1onlhc-00AfGF-0Y; Wed, 26 Oct 2022 19:04:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 88A6EB8241D;
+	Wed, 26 Oct 2022 19:04:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C6D4C433C1;
+	Wed, 26 Oct 2022 19:04:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666811073;
+	bh=Rbn89WhWEbhJuX5225g1SZSIWz53Ni7UUmS8FPZYaIc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=dbJTMmFVz+Q8+h9P3Lb5piXFPbmJcgqly3Af5Xv5f3adQnppBIY1iXmip9TUT4rdb
+	 we/EEY9LIqhI70r/A79oUeMrsI18AtXD+XGiIpVCK+Un0G/VafPsleEpXKlyyH8ZQw
+	 SEm6UmfJLJNbKh2WNHt/hQKdhqaeuGL0nxiwE4i4heYjcr+xFmboKHkI8KdYBkKKUY
+	 kLB59ARgoTt8pc+vuGmtoiHxGjxeaUPj/DD09Y6DfPZNDEWbXnxt+AUVtaavSvFB9U
+	 +bxKBLXxLqNyzBdzmmS5OWwnL/a5q2e15qMlaErZ26/Bq5PFQuXR6quhPF/DMijNpv
+	 BJh9iDn3KPnKA==
+From: Mark Brown <broonie@kernel.org>
+To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, alsa-devel@alsa-project.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Shane Chien <shane.chien@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <20221024230658.1772907-1-nfraprado@collabora.com>
+References: <20221024230658.1772907-1-nfraprado@collabora.com>
+Subject: Re: [PATCH] ASoC: dt-bindings: mt8192-mt6359: Set maxItems, not type, for sound-dai
+Message-Id: <166681107036.960840.8469668580584323500.b4-ty@kernel.org>
+Date: Wed, 26 Oct 2022 20:04:30 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221025050355.3979380-8-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_104707_300671_E9C1E9C2 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20221026_120436_233698_36DDCDF8 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +74,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 24, 2022 at 10:03:55PM -0700, Colin Foster wrote:
-> Several bindings for ethernet switches are available for non-dsa switches
-> by way of ethernet-switch.yaml. Remove these duplicate entries and utilize
-> the common bindings for the VSC7514.
+On Mon, 24 Oct 2022 19:06:57 -0400, Nícolas F. R. A. Prado wrote:
+> sound-dai is a standard property whose type is already set to
+> phandle-array by sound-dai.yaml, so there's no need to set it (and
+> wrongly so for headset-codec) in this binding. What should be set
+> however is the maximum number of items, which for headset-codec should
+> be 1.
 > 
-> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> ---
->  .../bindings/net/mscc,vsc7514-switch.yaml     | 36 +------------------
->  1 file changed, 1 insertion(+), 35 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> index ee0a504bdb24..1703bd46c3ca 100644
-> --- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> +++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-> @@ -19,11 +19,8 @@ description: |
->    packet extraction/injection.
->  
->  properties:
-> -  $nodename:
-> -    pattern: "^switch@[0-9a-f]+$"
-> -
->    compatible:
-> -    const: mscc,vsc7514-switch
-> +    $ref: ethernet-switch.yaml#
+> [...]
 
-??? 'compatible' is a node?
+Applied to
 
-Rob
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: dt-bindings: mt8192-mt6359: Set maxItems, not type, for sound-dai
+      commit: 555e6f573a0a08b66b9543a0e098c5d6adf8e8af
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
