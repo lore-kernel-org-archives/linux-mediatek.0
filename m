@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41F8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 07:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B810FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 07:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=; b=KWyo6hq5Yv++fKgPa2hN3nnxoN
-	HTIRpB+QfhYNQDIxF97BBSH7Pyv/oDdieg7c8QV3GvrWIIPreIzu9JisRvXp9XcF+MCwmvNO1Py1t
-	/e3N30Pzj22DEvOIjSXS4fvalPXlgbtXSvF2mga6Rgz0D41BnnqZ5+yDJHTWau1usNSHRhwR5aa7e
-	zxkNiIGoLthf6fbjUHsXZVrOUcFhLrQqeyjXCeqwGql4Gofqw+yGAJRWypPSqaVvGhZnQBqMpbQJL
-	mAvX8VNM9yeCMOr4xFzqQJSu7JTKw0NdZjUiqdA5n4/B2zEVLeYq43ny/pwt0N0oDOfMXXltFOFyn
-	X7D3O2MA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lbsIGfNdTRFI62Q4sgMBIvZMA5h+sOP1oBKSZ5ur8sg=; b=J9xYiMfvIJ5dwL+DYbdCBlB5W+
+	hoH1nYF65HMf23QgnzZfb+VcxKqn2OIQxwK38o1Z59t0F9Nsb9l2andGRtZuISsBS02OObehUUufI
+	iP41PdqRlOECfAPhxCv7fae191h48HVzX7obS24LV5TyrIwaoWXnC4KKWcp1HlWT7HwBiXAaYCFuF
+	uKguKnOaFhZ9kFZGElcYP1OFosuRGL3+m/xP92/l0DzQN7WQPTSeswrcA+AnDHAaxVPjIQa0BUzDl
+	ZKCf8NFz87MxXZP9fC0yriY2ankFrdQzcmz0e/jTmcDGw6RnQeJ+yLE/DOoclvm+u4rnA4vLltH+y
+	aSzvj7sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onaTe-008MDy-5T; Wed, 26 Oct 2022 07:05:26 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1onaml-008OBr-7z; Wed, 26 Oct 2022 07:25:11 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onaTQ-008MBL-8C; Wed, 26 Oct 2022 07:05:16 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id v130-20020a1cac88000000b003bcde03bd44so780427wme.5;
-        Wed, 26 Oct 2022 00:05:10 -0700 (PDT)
+	id 1onamX-008OAe-Fl; Wed, 26 Oct 2022 07:25:01 +0000
+Received: by mail-pg1-x534.google.com with SMTP id f193so14040852pgc.0;
+        Wed, 26 Oct 2022 00:24:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=;
-        b=qWl7iB7LmbYBsmiX/9/8KvoCoJKf1FBBDgoMyja/yFA/2kloeRbdOx+lTsehp+1xE/
-         JjW4RdhwYefgJ30e7ZNhJYflZDRgkBtMFEqItkbKfvWOPSkCnaZhS0ZjJ6glzS/to6M6
-         3TfsfLPB53AJrNDOm2gBL04x1qu2IHJJT/AIVP4pGx7Y3xULtbwHFE3B3d1pwgdtDsS3
-         ILAB8k2YLQoILmJPqrDeNZNk0O1op4H1u7NsZ7QZy0tIGk5tnxLJWAL+m551aLxu1PWc
-         /Ky4ak4ThxXs5SyOGK57yu94EgeYfIpbsQ3JeVzG57ZLorCPk2lXUw9BwxisJJPYfCLS
-         XzGQ==
+        bh=lbsIGfNdTRFI62Q4sgMBIvZMA5h+sOP1oBKSZ5ur8sg=;
+        b=pNtYy80rJqYM08OpI1tcWHi5BJehiegmf/3b81VbZwJFYi2J0V6LxLfOBGST56LYDB
+         yf1ZpcpCQWBINhlBqut6Pvft6+UgM0QGpgp3iqsdQAwlqXp2HAvFZaF3o0LhZBHFSxZv
+         4PMwaXRB/4bpixQJ60oJCAuwuAUFiYmo8hdpBb6EmbOgagTt/fpVMy2VPJ4zRogsrSem
+         xq/Ey8C89WgWQI+ErYXv2Bgxjx/SjfLjN4imGQ0rdOnXLrZLjOPmEGYFqOWxIHP2MmFZ
+         Yor9FM03SpqhhFBFhNr2YsV+pnZZg/3msxAEwEX9wQuod/l4ifb/UHSXDELucDE0xIno
+         NptQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zQUyYnkfD/QphPAhvZx7MKv0769amG9itPpYbqF4pAg=;
-        b=fzG8OamIU4Z2bCut5vQGdUYqDb2tjX0D5cWWKiwcan2ffWwLx6RsC7ptSxMf3FIqNj
-         5FQ35UNkSSFy0k4hXJzccE+79X8Mq/Z1c7Fu4Zeuzsbd5cf95QkIwu0Hb0o/ZSZZtz+a
-         7dfvSYWGFMTs7X4Z++H9yfRGiIS8zs55ILh4s6IRaviR7YbXdI24b+ToMzkkyZMi/Ccs
-         J4PCJ52VUrLLLw7WyGUlq8Kr30oV+J7Kg9P9yvRTgHp8G/NVyiuEfWrkfAq4JoK/YS2l
-         JaQo/jWWcVuhE5z7ecqlOt+86Pl0Cju8rcaU7WmRPMPrTyq8aKfOMp1hiarAEClCq5hj
-         wstQ==
-X-Gm-Message-State: ACrzQf2l94VXmjQV26uNw+pNfNIaDgQHQdgYmbYyWij55hsM7qHksj4N
-	/EDnlej+JNm5y69IzV10TGTBIh6Q4R2ruNIU71U=
-X-Google-Smtp-Source: AMsMyM5C9NLr2Kz1+vKkOOJ10yx17T4xwIKTzoLig0Zw9Z44q8yI20nka6ZVPN9VHFsB21O4aWfFUz+j7o/G73EyP7U=
-X-Received: by 2002:a05:600c:1990:b0:3c9:a5e8:addb with SMTP id
- t16-20020a05600c199000b003c9a5e8addbmr1273615wmq.140.1666767909354; Wed, 26
- Oct 2022 00:05:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <1666318661-11777-1-git-send-email-u0084500@gmail.com>
- <CAHp75VeMvWycVsNPHb1cvMbtVSCiX3m9wUsZk7HkPU+e=VTb3A@mail.gmail.com>
- <CADiBU3_m1gDgZxyo53UNvDP8P5LpFgpV+mBbw9+_epYuXimqWA@mail.gmail.com>
- <CAHp75VeWMSeZiq6vUo25hRdueMbeEEQuzPqR=-ROsOufK+27LQ@mail.gmail.com>
- <CADiBU39UF3Ez-80Xauy8qaO0iSyh-n-ZxScH+aZt3m=s3qkOjA@mail.gmail.com> <CAHp75VevGHnZKJvsdJ6QpWbHdhWP0VW0G71QLqRDvgk8MFeNUg@mail.gmail.com>
-In-Reply-To: <CAHp75VevGHnZKJvsdJ6QpWbHdhWP0VW0G71QLqRDvgk8MFeNUg@mail.gmail.com>
+        bh=lbsIGfNdTRFI62Q4sgMBIvZMA5h+sOP1oBKSZ5ur8sg=;
+        b=sHKweDrOFs7AkdXX0njD2xyq4y2EZ+GOV6aNce/EvTRLLLDJ1++u6x0bjrcbk1Xagx
+         C/Z2tyAdm5rBMwpm9PdEadvm8FWRkE+pFGA7UZ8j428u7RxhaEmR9H4/Tz23jz+8dcfb
+         Kml9qiCW2snNUf/aUtJ/FzXV2YIalWK3Ce63jqlXX+mAKY5bdQNWZoMJycRypaIlC4fU
+         BR6PbBIGt5CB+nOxlc64ns4FrwcyDOMlegOz+d5QXt2hIaqEyK/wBt97+XaYBno+1wOJ
+         HlhKHjd2OWJ3m1ApuJvG4qgf2ZUGvaSAnBfHciLKkyPvwd8YPHls3/zU+qEY1j/tBQna
+         jb0w==
+X-Gm-Message-State: ACrzQf1S8ccfWeVWkHtJuf5dcSt3voVnBlQQkfV5BWHRUe3MwG54mRGa
+	qqvSPbp3FRLfk2xk0nNjwmCW1WGQ/nQ=
+X-Google-Smtp-Source: AMsMyM5Pgl8UXjLTT+IynrpLOReb8fQxrJOCS430MlGcU+ORFvzAO1lF4PZ8RLhm+3ZNVYQprM6ROw==
+X-Received: by 2002:a63:1a45:0:b0:439:49b4:9672 with SMTP id a5-20020a631a45000000b0043949b49672mr36078100pgm.551.1666769095629;
+        Wed, 26 Oct 2022 00:24:55 -0700 (PDT)
+Received: from cyhuang-hp-elitebook-840-g3.rt ([2402:7500:47a:8591:4c25:2ac0:9173:656f])
+        by smtp.gmail.com with ESMTPSA id k22-20020a63d116000000b00469e09532e0sm2252228pgg.18.2022.10.26.00.24.52
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Oct 2022 00:24:55 -0700 (PDT)
+Date: Wed, 26 Oct 2022 15:24:48 +0800
 From: ChiYuan Huang <u0084500@gmail.com>
-Date: Wed, 26 Oct 2022 15:04:57 +0800
-Message-ID: <CADiBU39pRnrTuCM4OEFpLwEP9c86aJz2L6+G7yFm22i+7Gt8pw@mail.gmail.com>
-Subject: Re: [PATCH v2] mfd: mt6370: Add the out-of-bound check to prevent the
- null pointer
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: lee@kernel.org, matthias.bgg@gmail.com, chiaen_wu@richtek.com, 
-	cy_huang@richtek.com, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Lee Jones <lee@kernel.org>, ChiYuan Huang <cy_huang@richtek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH resend] mfd: mt6370: add bounds checking to
+ regmap_read/write functions
+Message-ID: <20221026072444.GA24881@cyhuang-hp-elitebook-840-g3.rt>
+References: <Y1aCiReTZDbPp/rS@kadam>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y1aCiReTZDbPp/rS@kadam>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_000512_311362_2727E1C2 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20221026_002457_563651_A9791F1F 
+X-CRM114-Status: GOOD (  28.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,64 +94,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=
-=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=886:35=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Fri, Oct 21, 2022 at 12:58 PM ChiYuan Huang <u0084500@gmail.com> wrote=
-:
-> > Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B410=
-=E6=9C=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=885:14=E5=AF=AB=E9=
-=81=93=EF=BC=9A
-> > > On Fri, Oct 21, 2022 at 12:02 PM ChiYuan Huang <u0084500@gmail.com> w=
-rote:
-> > > > Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B4=
-10=E6=9C=8821=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=884:34=E5=AF=AB=
-=E9=81=93=EF=BC=9A
-> > > > > On Fri, Oct 21, 2022 at 5:17 AM cy_huang <u0084500@gmail.com> wro=
-te:
->
-> ...
->
-> > > > > https://www.kernel.org/doc/html/latest/process/submitting-patches=
-.html#backtraces-in-commit-messages
-> > >
-> > > Have you had a chance to read this section of the document?
-> > >
-> > OK, get it.
-> > Is the below text enough to express this problem?
->
-> It is you who decides, because I don't know what exact problem this
-> will represent.
->
-> > Ex. Testing as below (mt6370 register range from 0 to 0x1ff)
-> >    rg_bound_show()
-> >         regmap_raw_read(regmap, 0x200, &val, sizeof(val));
->
-> > pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
->
-> For example, why is this line here?
->
-> > pc : i2c_smbus_xfer+0x58/0x120
-> > lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
-> > Call trace:
-> >  i2c_smbus_xfer+0x58/0x120
-> >  i2c_smbus_read_i2c_block_data+0x74/0xc0
-> >  mt6370_regmap_read+0x40/0x60
-> >  _regmap_raw_read+0xe4/0x278
-> >  regmap_raw_read+0xec/0x240
-> >  rg_bound_show+0xb0/0x120
->
-> The rule of thumb is that it's okay to shrink to ~4-5 lines (in most case=
-s).
->
+On Mon, Oct 24, 2022 at 03:18:17PM +0300, Dan Carpenter wrote:
+> It looks like there are a potential out of bounds accesses in the
+> read/write() functions.  Also can "len" be negative?  Let's check for
+> that too.
+> 
+> Fixes: ab9905c5e38e ("mfd: mt6370: Add MediaTek MT6370 support")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+> This came from static analysis, but then I couldn't figure out the next
+> day if it was actually required or not so we dropped it.  But then
+> ChiYuan Huang did some testing and it was required.
+> 
+> There was some debate around various style questions but honestly I'm
+> pretty happy with the style the way I wrote it.  I've written a long
+> blog on why "unsigned int" is good at the user space boundary but should
+> not be the default choice as a stack variable.
+> 
+> https://staticthinking.wordpress.com/2022/06/01/unsigned-int-i-is-stupid/
+> 
+> The other style issue was wether to use ARRAY_SIZE() or MT6370_MAX_I2C
+> and I just think ARRAY_SIZE() is more obvious to the reader.
+> 
+Hi,
 
-At first, I start this thread due to  the original thread seems stopped
-Since it already restarted, please forget this one.
-Just follow the restaed thread for the discussion.
-https://lore.kernel.org/all/Y1aCiReTZDbPp%2FrS@kadam/
+Before applying the patch, the test result is like as below
+1) overbound register access
+Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+pc : i2c_smbus_xfer+0x58/0x120
+lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
+Call trace:
+ i2c_smbus_xfer+0x58/0x120
+ i2c_smbus_read_i2c_block_data+0x74/0xc0
+ mt6370_regmap_read+0x40/0x60 [mt6370]
+ _regmap_raw_read+0xe4/0x278
+ regmap_raw_read+0xec/0x240a
 
-> --
-> With Best Regards,
-> Andy Shevchenko
+2) normal register access with negative length
+Unable to handle kernel paging request at virtual address ffffffc009cefff2
+pc : __memcpy+0x1dc/0x260
+lr : _regmap_raw_write_impl+0x6d4/0x828
+Call trace:
+ __memcpy+0x1dc/0x260
+ _regmap_raw_write+0xb4/0x130a
+ regmap_raw_write+0x74/0xb0
+
+
+After applying the patch, the first case is cleared.
+But for the case 2, the root cause is not the mt6370_regmap_write() size
+check. It's in __memcpy() before mt6370_regmap_write().
+
+I'm wondering 'is it reasonable to give the negative value as the size?'
+
+
+>  drivers/mfd/mt6370.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
+> index cf19cce2fdc0..fd5e1d6a0272 100644
+> --- a/drivers/mfd/mt6370.c
+> +++ b/drivers/mfd/mt6370.c
+> @@ -190,6 +190,9 @@ static int mt6370_regmap_read(void *context, const void *reg_buf,
+>  	bank_idx = u8_buf[0];
+>  	bank_addr = u8_buf[1];
+>  
+> +	if (bank_idx >= ARRAY_SIZE(info->i2c))
+> +		return -EINVAL;
+> +
+>  	ret = i2c_smbus_read_i2c_block_data(info->i2c[bank_idx], bank_addr,
+>  					    val_size, val_buf);
+>  	if (ret < 0)
+> @@ -211,6 +214,9 @@ static int mt6370_regmap_write(void *context, const void *data, size_t count)
+>  	bank_idx = u8_buf[0];
+>  	bank_addr = u8_buf[1];
+>  
+> +	if (len < 0 || bank_idx >= ARRAY_SIZE(info->i2c))
+> +		return -EINVAL;
+> +
+>  	return i2c_smbus_write_i2c_block_data(info->i2c[bank_idx], bank_addr,
+>  					      len, data + MT6370_MAX_ADDRLEN);
+>  }
+> -- 
+> 2.35.1
 
