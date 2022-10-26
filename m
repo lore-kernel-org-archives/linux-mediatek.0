@@ -4,65 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73812ECDFA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Oct 2022 23:17:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81689C38A02
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 00:57:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bD5GABpHa9zczDjL/GJ7Nsm2ui5w4kCCUNvaFDGN2co=; b=nk1tzuXjgZ/PML9m58buthP/GF
-	xs9rBNifUj1x51TpYni6deuMPcQ3/jELM8E07x3s9Zo/oxKb5xzGH8Qcvz38om0AmaM7mXqOJRKmB
-	8cxJTgmuMQu2namtSOgLD+ENmf9T+mtndS89WVrD1++WZIJqqWrcYBOQZ/OFyBNyfHRgb5C+FOhzY
-	OFmgIINrgSokILmHrp8Ho5QSXnub0RMgwa+uznT3w9ZWQCCUgjkRjDJJgdGS/evPBe/v+CtvxnAcy
-	aztLZaEUA8IN230aaDyyTb+q2xqml0KR/4snzN6SAXQXiFICAbM4Eo0MLpaKqYMKO0K1c3aGpyjmk
-	xPK5KWVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VuIv1ZL3ztdYYZouQ7Ax8epJfmzjjKGL4kkqK3LH2ak=; b=bQjFMcRrGF1gnN1ZAtVxpbupi2
+	PAUSrPYStlQHtnvaS4J4L7ZxOtoJB2RO6cVivGNBUxBdwhtzx03A8nmo/FYYgxxFmAhNCz+cb9mKe
+	W92BgEV93UL0emvc8cvJVBxytXHsI4FhsgqRaHbZ5tWjoWGbNahbDwKJTBI7H/nkzfAaTeHc5v2qV
+	+FrOEYelofsJLCXf/bStlTRkbijbA7MFj4R4kVyoofUrYzSDtYD8jWk+4966lO/7uxL3l3LMg5v6Z
+	MXMzNe+g0TVnCZT0YEjHAQ71pYnhMZU78+z73DEYNFocq97g+dKZbQEGCKjgmTGBoJFTvWi+1qYZu
+	asE6bsSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onTAt-007XQK-2H; Tue, 25 Oct 2022 23:17:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1onUjS-007lwU-De; Wed, 26 Oct 2022 00:57:22 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onTAd-007XKc-Nq; Tue, 25 Oct 2022 23:17:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 18C1161AAD;
-	Tue, 25 Oct 2022 23:17:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1CB3C433D6;
-	Tue, 25 Oct 2022 23:17:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666739838;
-	bh=nV7OVDrwGLapIVrA2MkHe7ePYFXFsBK++LsqBN3LGxk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=jgmD4R4nRxyvZqQf+RFkpy8OzZlwZWaN3uMpSb/mKDFK4G0lCt3Ub6SDpdtaf3acw
-	 RZVWqtWUdVWFpdnLdaoRDbX+u2XI7TUZeUGvvX6eMRqfThv4W+1QhoXi6FhA0uiu3U
-	 PNjHDugBCqcOWYunfi/Rxn2nqZEUG6HpBB5lfDfbMkst0/sSI7ZTmhUxaSyxO3Dp5g
-	 X0HKBuHzTUAQJMZ+v2mw/xPvuoxoT7NR1OW7a7axArGENNfisA0CnRHJWsile+/6Db
-	 VyiNFed0Lk2ahgi29Z9TjFLF2VANpmwGA00vmUK5eYV1xioMDnC9uB8Re4MJZgl8vv
-	 jUNx3NlKFq+vw==
-Date: Tue, 25 Oct 2022 16:17:16 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Doug Berger <opendmb@gmail.com>
-Cc: kernel test robot <lkp@intel.com>, Andrew Morton
- <akpm@linux-foundation.org>, ntfs3@lists.linux.dev, netdev@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-scsi@vger.kernel.org,
- linux-mm@kvack.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Florian Fainelli
- <f.fainelli@gmail.com>, Julia Lawall <Julia.Lawall@inria.fr>
-Subject: Re: [linux-next:master] BUILD REGRESSION
- 89bf6e28373beef9577fa71f996a5f73a569617c
-Message-ID: <20221025161716.1b92a033@kernel.org>
-In-Reply-To: <8fbc9d02-3c73-5990-85af-82eecb6d64e3@gmail.com>
-References: <63581a3c.U6bx8B6mFoRe2pWN%lkp@intel.com>
-	<20221025154150.729bbbd0@kernel.org>
-	<8fbc9d02-3c73-5990-85af-82eecb6d64e3@gmail.com>
+	id 1onUjH-007lui-Vg; Wed, 26 Oct 2022 00:57:13 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1onUjB-0002Yp-PL; Wed, 26 Oct 2022 02:57:06 +0200
+Date: Wed, 26 Oct 2022 01:56:58 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Zhi Mao <zhi.mao@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>
+Subject: [PATCH] pwm: mediatek: always use bus clock for PWM on MT7622
+Message-ID: <Y1iF2slvSblf6bYK@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221025_161719_852693_ED77F411 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20221025_175712_037076_90B8B522 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +61,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Oct 2022 16:04:15 -0700 Doug Berger wrote:
-> > On Wed, 26 Oct 2022 01:17:48 +0800 kernel test robot wrote:  
-> >> drivers/net/ethernet/broadcom/genet/bcmgenet.c:1497:5-13: ERROR: invalid reference to the index variable of the iterator on line 1475  
-> > 
-> > CC Doug  
-> Thanks for highlighting this for me, but I happened to catch it from the 
-> linux-mm list and was just looking into it.
-> 
-> It looks to me like a false positive since I am initializing the 
-> loc_rule variable in all paths outside of the list_for_each_entry() loop 
-> prior to its use on line 1497.
+According to MT7622 Reference Manual for Development Board v1.0 the PWM
+unit found in the MT7622 SoC also comes with the PWM_CK_26M_SEL register
+at offset 0x210 just like other modern MediaTek ARM64 SoCs.
+And also MT7622 sets that register to 0x00000001 on reset which is
+described as 'Select 26M fix CLK as BCLK' in the datasheet.
+Hence set has_ck_26m_sel to true also for MT7622 which results in the
+driver writing 0 to the PWM_CK_26M_SEL register which is described as
+'Select bus CLK as BCLK'.
 
-Ack, indeed the code looks right. Thanks for investigating.
+Fixes: 0c0ead76235db0 ("pwm: mediatek: Always use bus clock")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/pwm/pwm-mediatek.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> If desired I can submit a new patch to make coccinelle happy.
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 2219cba033e348..5b5eeaff35da67 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -296,7 +296,7 @@ static const struct pwm_mediatek_of_data mt6795_pwm_data = {
+ static const struct pwm_mediatek_of_data mt7622_pwm_data = {
+ 	.num_pwms = 6,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = false,
++	.has_ck_26m_sel = true,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7623_pwm_data = {
+-- 
+2.38.1
 
-I wonder if Cocci can detect writes. Let me add Julia for visibility.
-
-If not we can use a different variable for the "check if already
-exists" iteration? It could make the code easier to follow, IMHO.
-Or leave it be.
 
