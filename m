@@ -4,56 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E7AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 09:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194EFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 10:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fZN7K6SjPfR0ei21Pvo3/zh0TEeqCP9RYAtUrDagsLM=; b=pCXcjx4OK8Q0a1
-	nHDNkGJS2r08s7y770ZK1OeyRS4imyI572/11BP9wbWr7l21r5bFdWE2kLCcaikSyxe2014ldqwCY
-	M3NSm+dgxaWeSvf7W6825OONCgnAKY68JRbNof527ZfR80K1Qwr9jLoQwQlQ+0nLTNKtZzdbA1665
-	EEY8GDJG4O9hIdl6MOFFUaq2hHVHSTA28EAy4R6MFq8v7hMXtKQdqcnphkfOgxfytHHIZJdIBKA2M
-	6v4lpOTl7g673PbvRLaN5faiWW/+s8ghBGQozmYT+U1dqymmlhGVHuEqR6ZC9ubuwzTmoEnyusFqV
-	dwHEswYmCnvrFX9AfY5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RsHl2fMrf0h5frTsVlwVHMPwhQYfDiPhfWVBMTKgHWU=; b=Hq1N3Sj+ulUCLn3vLexir5DlC8
+	w3MOK/dGkHVQLC3VbjGAfrKwIaBnwViDTarmgXsUWtPBPVJ8UsgFZVuB7/KRZehdnuhbt/H3BI/Sq
+	iIL5gzMNX46yqTGkn/uFI/sVrEXqBGb02D5IM3htEUh6qtDnvN0XjZXPTdMFaxtbZmfL3SO7pdiCp
+	y5Z2GBvgq6Z1eV/SmDgvri5ExMQ1sTdmhno2s1XNwWevT50sT3enhnWivgRappcnpw9AkYeC7PQ35
+	CH9WU/rD0/LVPH/KsEUiWI44suYo1MxTZdDK7eQrMdCyh+u4HaamjzhpYRAaEj9mP9b8nluVvkN73
+	KiV918YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onctg-008nMW-PU; Wed, 26 Oct 2022 09:40:28 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1ondD9-008suy-70; Wed, 26 Oct 2022 10:00:35 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oncqW-008lZZ-Jr; Wed, 26 Oct 2022 09:37:18 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout3.routing.net (Postfix) with ESMTP id D8F9A62687;
-	Wed, 26 Oct 2022 09:37:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1666777024;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fZN7K6SjPfR0ei21Pvo3/zh0TEeqCP9RYAtUrDagsLM=;
-	b=JTL+TKGMMyjTll+3cCU+Xi663tGhfQM0f5B1IkZiaU8qmlKZD4sMsvkVDyZu3lUDCnniZO
-	TCtP7uik6nqjcx7845VycuSdWltUp7omTxmXlHd8tmbH9ZRgpDFoC6AV/cpflKpyQKnvQh
-	qVD9yF7gAFGWcIq++1E95FhczZHtVyg=
-Received: from frank-G5.. (fttx-pool-80.245.72.174.bambit.de [80.245.72.174])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 30A6380ADC;
-	Wed, 26 Oct 2022 09:37:04 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [RFC v2 7/7] arm64: dts: mt7986: add Bananapi R3
-Date: Wed, 26 Oct 2022 11:36:50 +0200
-Message-Id: <20221026093650.110290-8-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221026093650.110290-1-linux@fw-web.de>
-References: <20221026093650.110290-1-linux@fw-web.de>
+	id 1ondD5-008suR-7X; Wed, 26 Oct 2022 10:00:33 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ondCv-0005BQ-Sg; Wed, 26 Oct 2022 12:00:22 +0200
+Date: Wed, 26 Oct 2022 11:00:18 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/2] pwm: mediatek: Add support for MT7986
+Message-ID: <Y1kFMmkavtBc4BnV@makrotopia.org>
+References: <Y1K5ym1EL8kwzQEt@makrotopia.org>
+ <b5ab84b4d595713588f1d8a68a1585ca3ae5521e.camel@mediatek.com>
+ <Y1fPLzwUz/E9C3I1@makrotopia.org>
+ <df08d62655e57d00ab5596bc90a4c40c332cee6b.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 15207e11-d9b6-4e3e-a0cb-0242da82a19d
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <df08d62655e57d00ab5596bc90a4c40c332cee6b.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_023712_983098_3DF9D429 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20221026_030031_291180_53A6B809 
+X-CRM114-Status: GOOD (  49.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,737 +61,135 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Wed, Oct 26, 2022 at 02:17:06PM +0800, Sam Shih wrote:
+> On Tue, 2022-10-25 at 12:57 +0100, Daniel Golle wrote:
+> > On Tue, Oct 25, 2022 at 02:35:43PM +0800, Sam Shih wrote:
+> > > Hi Daniel:
+> > > 
+> > > On Fri, 2022-10-21 at 16:24 +0100, Daniel Golle wrote:
+> > > > Add support for PWM on MT7986 which has 2 PWM channels, one of
+> > > > them
+> > > > is
+> > > > typically used for a temperature controlled fan.
+> > > > 
+> > > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > > > ---
+> > > >  drivers/pwm/pwm-mediatek.c | 7 +++++++
+> > > >  1 file changed, 7 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-
+> > > > mediatek.c
+> > > > index 6901a44dc428de..2219cba033e348 100644
+> > > > --- a/drivers/pwm/pwm-mediatek.c
+> > > > +++ b/drivers/pwm/pwm-mediatek.c
+> > > > @@ -329,6 +329,12 @@ static const struct pwm_mediatek_of_data
+> > > > mt8365_pwm_data = {
+> > > >  	.has_ck_26m_sel = true,
+> > > >  };
+> > > >  
+> > > > +static const struct pwm_mediatek_of_data mt7986_pwm_data = {
+> > > > +	.num_pwms = 2,
+> > > > +	.pwm45_fixup = false,
+> > > > +	.has_ck_26m_sel = true,
+> > > 
+> > > For MT7986 SoC, I think the value of "has_ck_26m_sel" should be
+> > > 'false'
+> > 
+> > That's a bit surprising, please explain why.
+> > 
+> 
+> The clock tree of MT7981/MT7986 PWM BCLK is as bellow:
+> PLL --> topckgen fix-factors --> TOP_PWM_SEL (topckgen clock mux) -->
+> --
+> > CLK_INFRA_PWM_BSEL (infra clock mux) --> PWM BCLK (gate)
+> 
+> We do have the clock multiplexer to select the source clock for PWM_BCLK
+> https://github.com/torvalds/linux/blob/master/drivers/clk/mediatek/clk-mt7986-infracfg.c#L63
+> 
+> In my knowledge, the pwm hardware of MT7981/MT7986 SoC should ignore
+> this register directtly, but we still keep the register for backword
+> compatibility.
+> 
+> In fact, the MT7986 SoC is also working whether 'has_ck_26m_sel' is
+> 'true' or 'false'.
+> 
+> Going back to the definition of 'has_ck_26m_sel', if it means
+> "PWM_CK_26M_SEL" register exists or not, we should use 'true', but if
+> it means clock from 26M clock or BUS clock, we should use 'false'
 
-Add support for Bananapi R3 SBC.
+It means 'write 0 to PWM_CK_26M_SEL to make sure PWM BCLK is selected'.
+If the register isn't used at all on MT7986 (despite being mentioned in
+the datasheet) or the value written there never has any effect then
+there is no need to do this and has_ck_26m_sel can be false.
 
-- SD/eMMC support (switching first 4 bits of data-bus with sw6/D)
-- all rj45 ports and both SFP working (eth1/lan4)
-- all USB-Ports + SIM-Slot tested
-- i2c and all uarts tested
-- wifi tested
+> 
+> > Reading the commit adding .has_ck_26m_sel field:
+> > > commit 0c0ead76235db0bcfaab83f04db546995449d002
+> > > Author: Fabien Parent <fparent@baylibre.com>
+> > > Date:   Mon Oct 19 16:07:02 2020 +0200
+> > > 
+> > > pwm: mediatek: Always use bus clock
+> > > 
+> > > The MediaTek PWM IP can sometimes use the 26 MHz source clock to
+> > > generate the PWM signal, but the driver currently assumes that we
+> > > always
+> > > use the PWM bus clock to generate the PWM signal.
+> > > 
+> > > This commit modifies the PWM driver in order to force the PWM IP to
+> > > always use the bus clock as source clock.
+> > > 
+> > > I do not have the datasheet of all the MediaTek SoC, so I don't
+> > > know if
+> > > the register to choose the source clock is present in all the SoCs
+> > > or
+> > > only in subset. As a consequence I made this change optional by
+> > > using a
+> > > platform data paremeter to says whether this register is supported
+> > > or
+> > > not. On all the SoCs I don't have the datasheet (MT2712, MT7622,
+> > > MT7623,
+> > > MT7628, MT7629) I kept the behavior to be the same as before this
+> > > change.
+> > > 
+> > > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Signed-off-by: Thierry Reding <thierry.reding@gmail.com>
+> > 
+> > From MT7986 datasheet:
+> > > 0x10048210 PWM_CK_26M_SEL PWM BCLK Selection
+> > > Reset value 0x00000001
+> > > Description
+> > > 0: Select bus CLK as BCLK
+> > > 1: Select 26M fix CLK as BCLK
+> > So after reset, the 26M clock is selected by default.
+> > 
+> > In pwm-mediatek.c I read:
+> > > #define PWM_CK_26M_SEL          0x210
+> > > ...
+> > >         /* Make sure we use the bus clock and not the 26MHz clock
+> > > */
+> > >         if (pc->soc->has_ck_26m_sel)
+> > >                 writel(0, pc->regs + PWM_CK_26M_SEL);
+> > 
+> > So this PWM_CK_26M_SEL register does exist on MT7986 and has the
+> > same address as expected by the driver ($PWM_BASE + 0x210).
+> > The default value selected after reset (0x00000001) matches the
+> > problem and solution described in the commit description
+> > "pwm: mediatek: Always use bus clock".
+> > 
+> > Sidenode: I've tried with both, .has_ck_26m_sel = true as well as
+> > .has_ck_26m_sel = false. Both do work, but the behavior is slightly
+> > different, again matching the commit description above.
+> 
+> What is the difference between the two?
+> 
+> I tried to config the pwm ch0 period=1000000 and duty=500000,
+> Modify PWM_CK_26M_SEL, and measure the output waveform, the waveform
+> keep the same.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-SPI-NAND/NOR switched (CS by sw5/C) not yet included
-  this is done with DT-Overlays in my tree, but i have no idea yet,
-  how to upstream
-
-break some lines in wifi-eeprom-data because of checkpatch warnings.
-originally there were 8 x int32 per line
-
-changes:
-
-v2:
-- remove pcie to be added later (discussion about clocks)
-- some fixes based on suggestions on ML
-  - add key suffix like it's done in mt7622-bpi-r64 devicetree
-  - add dash in sfp node names
-  - use reg as unit for switch-node
-  - drop "-3-4" suffix from i2c-pins node name
-  - fix order in Makefile
----
- arch/arm64/boot/dts/mediatek/Makefile         |   2 +
- .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  34 +
- .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  29 +
- .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 593 ++++++++++++++++++
- 4 files changed, 658 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
-
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 0ec90cb3ef28..e8902f2cc58f 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -7,6 +7,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
-new file mode 100644
-index 000000000000..859b4180ca11
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
-@@ -0,0 +1,34 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Sam.Shih <sam.shih@mediatek.com>
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/gpio/gpio.h>
-+
-+#include "mt7986a-bananapi-bpi-r3.dtsi"
-+
-+/ {
-+	model = "Bananapi BPI-R3 (emmc)";
-+};
-+
-+&mmc0 {
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_pins_default>;
-+	pinctrl-1 = <&mmc0_pins_uhs>;
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	hs400-ds-delay = <0x14014>;
-+	vmmc-supply = <&reg_3p3v>;
-+	vqmmc-supply = <&reg_1p8v>;
-+	non-removable;
-+	no-sd;
-+	no-sdio;
-+	status = "okay";
-+};
-+
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
-new file mode 100644
-index 000000000000..57200407ab86
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Sam.Shih <sam.shih@mediatek.com>
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/gpio/gpio.h>
-+
-+#include "mt7986a-bananapi-bpi-r3.dtsi"
-+
-+/ {
-+	model = "Bananapi BPI-R3 (sdmmc)";
-+};
-+
-+&mmc0 {
-+	//sdcard
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_pins_default>;
-+	pinctrl-1 = <&mmc0_pins_uhs>;
-+	bus-width = <4>;
-+	max-frequency = <52000000>;
-+	cap-sd-highspeed;
-+	vmmc-supply = <&reg_3p3v>;
-+	vqmmc-supply = <&reg_1p8v>;
-+	status = "okay";
-+};
-+
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
-new file mode 100644
-index 000000000000..fc100c3a6415
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
-@@ -0,0 +1,593 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Authors: Sam.Shih <sam.shih@mediatek.com>
-+ *          Frank Wunderlich <frank-w@public-files.de>
-+ *          Daniel Golle <daniel@makrotopia.org>
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+
-+#include "mt7986a.dtsi"
-+
-+/ {
-+	model = "Bananapi BPI-R3";
-+	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
-+
-+	aliases {
-+		serial0 = &uart0;
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+
-+		factory-key {
-+			label = "reset";
-+			linux,code = <KEY_RESTART>;
-+			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		wps-key {
-+			label = "wps";
-+			linux,code = <KEY_WPS_BUTTON>;
-+			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+
-+	/* i2c of the left SFP cage (wan) */
-+	i2c_sfp1: i2c-gpio-0 {
-+		compatible = "i2c-gpio";
-+		sda-gpios = <&pio 16 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		scl-gpios = <&pio 17 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		i2c-gpio,delay-us = <2>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+	};
-+
-+	/* i2c of the right SFP cage (lan) */
-+	i2c_sfp2: i2c-gpio-1 {
-+		compatible = "i2c-gpio";
-+		sda-gpios = <&pio 18 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		scl-gpios = <&pio 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		i2c-gpio,delay-us = <2>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		green_led: led-0 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_POWER;
-+			gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
-+			default-state = "on";
-+		};
-+
-+		blue_led: led-1 {
-+			color = <LED_COLOR_ID_BLUE>;
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&pio 86 GPIO_ACTIVE_HIGH>;
-+			default-state = "off";
-+		};
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x40000000>;
-+	};
-+
-+	reg_1p8v: regulator-1p8v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-1.8V";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_3p3v: regulator-3p3v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-3.3V";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	reg_5v: regulator-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "fixed-5V";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+
-+	/* left SFP cage (wan) */
-+	sfp1: sfp-1 {
-+		compatible = "sff,sfp";
-+		i2c-bus = <&i2c_sfp1>;
-+		los-gpio = <&pio 46 GPIO_ACTIVE_HIGH>;
-+		moddef0-gpio = <&pio 49 GPIO_ACTIVE_LOW>;
-+		tx-disable-gpio = <&pio 20 GPIO_ACTIVE_HIGH>;
-+		tx-fault-gpio = <&pio 7 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	/* right SFP cage (lan) */
-+	sfp2: sfp-2 {
-+		compatible = "sff,sfp";
-+		i2c-bus = <&i2c_sfp2>;
-+		los-gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
-+		mod-def0-gpios = <&pio 47 GPIO_ACTIVE_LOW>;
-+		tx-disable-gpios = <&pio 15 GPIO_ACTIVE_HIGH>;
-+		tx-fault-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
-+	};
-+};
-+
-+&crypto {
-+	status = "okay";
-+};
-+
-+&eth {
-+	status = "okay";
-+
-+	gmac0: mac@0 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <0>;
-+		phy-mode = "2500base-x";
-+
-+		fixed-link {
-+			speed = <2500>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
-+	gmac1: mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "2500base-x";
-+		sfp = <&sfp1>;
-+		managed = "in-band-status";
-+	};
-+
-+	mdio: mdio-bus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+	};
-+};
-+
-+&mdio {
-+	switch: switch@31 {
-+		compatible = "mediatek,mt7531";
-+		reg = <31>;
-+		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
-+	};
-+};
-+
-+&i2c0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c_pins>;
-+	status = "okay";
-+};
-+
-+&pio {
-+	i2c_pins: i2c-pins {
-+		mux {
-+			function = "i2c";
-+			groups = "i2c";
-+		};
-+	};
-+
-+	mmc0_pins_default: mmc0-pins {
-+		mux {
-+			function = "emmc";
-+			groups = "emmc_51";
-+		};
-+		conf-cmd-dat {
-+			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
-+			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
-+			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
-+			input-enable;
-+			drive-strength = <4>;
-+			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
-+		};
-+		conf-clk {
-+			pins = "EMMC_CK";
-+			drive-strength = <6>;
-+			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
-+		};
-+		conf-ds {
-+			pins = "EMMC_DSL";
-+			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
-+		};
-+		conf-rst {
-+			pins = "EMMC_RSTB";
-+			drive-strength = <4>;
-+			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
-+		};
-+	};
-+
-+	mmc0_pins_uhs: mmc0-uhs-pins {
-+		mux {
-+			function = "emmc";
-+			groups = "emmc_51";
-+		};
-+		conf-cmd-dat {
-+			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
-+			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
-+			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
-+			input-enable;
-+			drive-strength = <4>;
-+			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
-+		};
-+		conf-clk {
-+			pins = "EMMC_CK";
-+			drive-strength = <6>;
-+			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
-+		};
-+		conf-ds {
-+			pins = "EMMC_DSL";
-+			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
-+		};
-+		conf-rst {
-+			pins = "EMMC_RSTB";
-+			drive-strength = <4>;
-+			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
-+		};
-+	};
-+
-+	spi_flash_pins: spi-flash-pins {
-+		mux {
-+			function = "spi";
-+			groups = "spi0", "spi0_wp_hold";
-+		};
-+	};
-+
-+	spic_pins: spic-pins {
-+		mux {
-+			function = "spi";
-+			groups = "spi1_0";
-+		};
-+	};
-+
-+	uart1_pins: uart1-pins {
-+		mux {
-+			function = "uart";
-+			groups = "uart1_rx_tx";
-+		};
-+	};
-+
-+	uart2_pins: uart2-pins {
-+		mux {
-+			function = "uart";
-+			groups = "uart2_0_rx_tx";
-+		};
-+	};
-+
-+	wf_2g_5g_pins: wf-2g-5g-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_2g", "wf_5g";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-+			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-+			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-+			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	wf_dbdc_pins: wf-dbdc-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_dbdc";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-+			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-+			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-+			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	wf_led_pins: wf-led-pins {
-+		mux {
-+			function = "led";
-+			groups = "wifi_led";
-+		};
-+	};
-+};
-+
-+&spi0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi_flash_pins>;
-+	cs-gpios = <0>, <0>;
-+	status = "okay";
-+};
-+
-+&spi1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spic_pins>;
-+	cs-gpios = <0>, <0>;
-+	status = "okay";
-+};
-+
-+&ssusb {
-+	vusb33-supply = <&reg_3p3v>;
-+	vbus-supply = <&reg_5v>;
-+	status = "okay";
-+};
-+
-+&switch {
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			label = "wan";
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			label = "lan0";
-+		};
-+
-+		port@2 {
-+			reg = <2>;
-+			label = "lan1";
-+		};
-+
-+		port@3 {
-+			reg = <3>;
-+			label = "lan2";
-+		};
-+
-+		port@4 {
-+			reg = <4>;
-+			label = "lan3";
-+		};
-+
-+		port5: port@5 {
-+			reg = <5>;
-+			label = "lan4";
-+			phy-mode = "2500base-x";
-+			sfp = <&sfp2>;
-+			managed = "in-band-status";
-+		};
-+
-+		port@6 {
-+			reg = <6>;
-+			label = "cpu";
-+			ethernet = <&gmac0>;
-+			phy-mode = "2500base-x";
-+
-+			fixed-link {
-+				speed = <2500>;
-+				full-duplex;
-+				pause;
-+			};
-+		};
-+	};
-+};
-+
-+&trng {
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&uart1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart1_pins>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2_pins>;
-+	status = "okay";
-+};
-+
-+&usb_phy {
-+	status = "okay";
-+};
-+
-+&watchdog {
-+	status = "okay";
-+};
-+
-+&wifi {
-+	status = "okay";
-+	pinctrl-names = "default", "dbdc";
-+	pinctrl-0 = <&wf_2g_5g_pins>, <&wf_led_pins>;
-+	pinctrl-1 = <&wf_dbdc_pins>, <&wf_led_pins>;
-+
-+	mediatek,eeprom-data = <0x86790900 0xc4326 0x60000000 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x1000000
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x800 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x24649090 0x280000 0x5100000 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x21e00 0x21e0002 0x1e00021e 0x22800 0x2280002 0x28000228 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x8080 0x8080fdf7
-+				0x903150d 0x80808080 0x80808080 0x5050d0d 0x1313c6c6 0xc3c3c200
-+				0xc200c2 0x8182
-+				0x8585c2c2 0x82828282 0x858500c2 0xc2000081 0x82858587 0x87c2c200
-+				0x81818285 0x858787c2
-+				0xc2000081 0x82858587 0x87c2c200 0x818285 0x858787c2 0xc2000081
-+				0x82858587 0x87c4c4c2
-+				0xc100c300 0xc3c3c100 0x818383c3 0xc3c3c100 0x81838300 0xc2c2c2c0
-+				0x81828484 0xc3
-+				0xc3c3c100 0x81838386 0x86c3c3c3 0xc1008183 0x838686c2 0xc2c2c081
-+				0x82848486 0x86c3c3c3
-+				0xc1008183 0x838686c3 0xc3c3c100 0x81838386 0x86c3c3c3 0xc1008183
-+				0x83868622 0x28002228
-+				0x222800 0x22280000 0xdddddddd 0xdddddddd 0xddbbbbbb 0xccccccdd
-+				0xdddddddd 0xdddddddd
-+				0xeeeeeecc 0xccccdddd 0xdddddddd 0x4a5662 0x4a 0x56620000 0x4a5662
-+				0x4a
-+				0x56620000 0x88888888 0x33333326 0x26262626 0x26262600 0x33333326
-+				0x26262626 0x26262600
-+				0x33333326 0x26262626 0x26262600 0x33333326 0x26262626 0x26262600
-+				0x00 0xf0f0cc00
-+				0x00 0xaaaa 0xaabbbbbb 0xcccccccc 0xccccbbbb 0xbbbbbbbb 0xbbbbbbaa
-+				0xaaaabbbb
-+				0xbbaaaaaa 0x999999aa 0xaaaabbbb 0xbbcccccc 0x00 0xaaaa 0xaa000000
-+				0xbbbbbbbb
-+				0xbbbbaaaa 0xaa999999 0xaaaaaaaa 0xaaaaaaaa 0xaaaaaaaa 0xaaaaaaaa
-+				0xaaaabbbb 0xbbbbbbbb
-+				0x00 0x00 0x00 0x99999999 0x9999aaaa 0xaaaaaaaa 0x999999aa
-+				0xaaaaaaaa
-+				0xaaaaaaaa 0xaaaaaaaa 0xaaaabbbb 0xbbbbbbbb 0x00 0xeeee 0xeeffffff
-+				0xcccccccc
-+				0xccccdddd 0xddbbbbbb 0xccccccbb 0xbbbbbbbb 0xbbbbbbbb 0xbbbbbbbb
-+				0xbbbbcccc 0xccdddddd
-+				0x516200 0x686e0051 0x6200686e 0x516200 0x686e0051 0x6200686e
-+				0x516200 0x686e0051
-+				0x6200686e 0x516200 0x686e0051 0x6200686e 0x516200 0x686e0051
-+				0x6200686e 0x516200
-+				0x686e0051 0x6200686e 0x516200 0x686e0051 0x6200686e 0x516200
-+				0x686e0051 0x6200686e
-+				0x516200 0x686e0051 0x6200686e 0x516200 0x686e0051 0x6200686e
-+				0x516200 0x686e0051
-+				0x6200686e 0x516200 0x686e0051 0x6200686e 0x516200 0x686e0051
-+				0x6200686e 0x516200
-+				0x686e0051 0x6200686e 0x516200 0x686e0051 0x6200686e 0x516200
-+				0x686e0051 0x6200686e
-+				0x88888888 0x88888888 0x88888888 0x88888888 0x88888888 0x88888888
-+				0x88888888 0x88888888
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x01 0x6000100 0x1050002 0xff0300
-+				0xf900fe03 0x00 0x00 0x9b 0x6e370000 0x00 0xfc0009 0xa00fe00
-+				0x60700fe 0x70800 0x5000b0a 0x00 0x00 0xe2 0x96460000 0x00
-+				0x400f7 0xf8000300 0xfcfe0003 0xfbfc00 0xee00e3f2 0x00 0x00 0x11
-+				0xbb550000 0x00 0x600f6 0xfc000300 0xfbfe0004 0xfafe00 0xf600ecf2
-+				0x00
-+				0x00 0x1f 0xbf580000 0x00 0x600f5 0xf6000400 0xf8f90004 0xf7f800
-+				0xf700f0f4 0x00 0x00 0x24 0xbe570000 0x00 0x800f8 0xfe000600
-+				0xf8fd0007 0xf9fe00 0xf500f0f4 0x00 0x00 0x2d 0xd6610000 0x00
-+				0x400f7 0xfc000500 0xf7fc0005 0xf7fc00 0xf900f5f8 0x00 0x00 0x26
-+				0xd96e0000 0x00 0x400f7 0xf9000600 0xf5f70005 0xf5f800 0xf900f4f7
-+				0x00
-+				0x00 0x1b 0xce690000 0x00 0x300f8 0xf8000600 0xf6f60004 0xf6f700
-+				0xf900f4f7 0x00 0x00 0x18 0xd8720000 0x00 0x00 0x2404002
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0xc1c2c1c2 0x41c341c3 0x3fc13fc1 0x40c13fc2 0x3fc240c1 0x41c040c0
-+				0x3fc23fc2 0x40c13fc2
-+				0x3fc140c0 0x41c040c0 0x3fc33fc3 0x40c23fc2 0x3fc240c1 0x41c040c0
-+				0x3fc23fc2 0x40c23fc2
-+				0x3fc140c1 0x41c040c0 0x00 0x00 0x41c741c7 0xc1c7c1c7 0x00 0x00
-+				0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0
-+				0x3fc03fc0 0x3fc03fc0
-+				0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0 0x3fc03fc0
-+				0x3fc03fc0 0x3fc03fc0
-+				0xa0ce00 0x00 0xb6840000 0x00 0x00 0x00 0x18181818 0x18181818
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x4b5763 0x4b 0x57630000 0x4b5763 0x4b 0x57630000 0x88888888
-+				0x8474759
-+				0x69780849 0x49596d7a 0x849495a 0x6d790848 0x48596c78 0x8484858
-+				0x6a780848 0x48586a78
-+				0x8484858 0x6c78084a 0x4a5b6d79 0x8474759 0x697a0848 0x48596b79
-+				0x8484859 0x6c7a0848
-+				0x48586c79 0x8484857 0x68770848 0x48576877 0x8484857 0x6a77084a
-+				0x4a5a6a77 0x8464659
-+				0x69790848 0x48586b79 0x8484858 0x6c7a0848 0x48596c79 0x8484857
-+				0x68770848 0x48576877
-+				0x8494958 0x6d7a084b 0x4b5c6c77 0x847475a 0x6a7b0849 0x495a6e7c
-+				0x849495a 0x6e7c0849
-+				0x495b6e7c 0x8494959 0x6a7a0849 0x49596a7a 0x84a4a5a 0x6f7d084b
-+				0x4b5c6e7b 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x85848484
-+				0xc3c4c4c5 0xc4c3c33f 0xc3c3c2c2 0xc2c2c03f 0xc3c3c3c4 0xc4c4c33f
-+				0xc2c2c2c2 0xc1c3c1c1
-+				0xc0c08282 0x83848686 0x88880000 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x1111 0x00
-+				0x8080f703 0x10808080 0x80050d13 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0xa4 0xce000000 0xb684 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+				0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
-+};
-+
--- 
-2.34.1
-
+Maybe something else already sets the PWM_CK_26M_SEL register to 0
+before Linux starts (e.g. U-Boot)?
 
