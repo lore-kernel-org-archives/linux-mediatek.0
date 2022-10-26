@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F460C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 09:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83D11C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 09:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SgjPE0OFmRFHo7Z1uCpz96jqkXmo7ld9GDJYygtj7OA=; b=GKaVifTU+N0jw7tHAtnBQVxCXr
-	ZaR4WXsBOfGYGq2wOi6Oa6dUPWWkaAntr6hljP2AmYz+mTulhiefGhtZ6c0Ou89k6rpyDfDvK9ABl
-	MEngzwlkFzBFQd3z+wcXcCxmrz4iTTTpH4BO9lq4KS6nY1rLf8CDcCe1ovefW3lWFxujl4h1gtzqT
-	9o3bY0E7huuunxqsDXyAGR9TeeuMa0jcrWQRKN4ViE2UweocolT8px/4TB/BtrZib975WlnCqACM8
-	WCLexkO28Z5KxfHbKX+7bN+qoJYfUUICF+7/DUm8V2IfqCfDa1qmhtSv772w9WDqhCAngAemSwsJX
-	ILupEBow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4054z3WmrXLjwEDQezr4htc5YT1t0re5zBkfawFOcfc=; b=kYT6GEqEGkJUaP
+	PSkRjMb0ofyXRPE+0BdSjOTij8MHYi/g0BfjvVYqGWpnRv4IImP5LBk3mS3r5HuU4u1/cUR8y3cUe
+	QxeDbjMVe+IDj4n09m5AbvOnE/F/1iFccWjVU7h4GWQiN5Jr1DOLyQ49eLk1p/kaLb/OgDL71ARg4
+	8dllKPlE2P4h1wdmK9KYLfJLfM3AZ+zjTs/EsK3A48v3hEEcVhE/efmGBMAAjXpcn8QI0XplJaDcm
+	TfVFM09kgnQGA1B8j9R0vL70LY1mABAHAfDVHowKyOXlHmlX1XW+1oTUb6rVVx4JxiHN5xXR743yz
+	FpXysHT75/kQytDpuU0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oncMZ-008fCM-R9; Wed, 26 Oct 2022 09:06:15 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1oncqd-008lcx-Dk; Wed, 26 Oct 2022 09:37:19 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oncMO-008f9Y-UZ; Wed, 26 Oct 2022 09:06:06 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id y16so14770682wrt.12;
-        Wed, 26 Oct 2022 02:05:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SgjPE0OFmRFHo7Z1uCpz96jqkXmo7ld9GDJYygtj7OA=;
-        b=TXFYGCkJ8ubmCcJC1JNK3EZ5PvBpOgwIocdGz+ZZ49Blh8RmcAgWcQZ7q6oLIEduND
-         Y1d2r/CERU86YkwReVEZv78aG5ypTcnzRGcpoZ6zJlwvJKslbHI/R9FVleMzpG2mTeZ7
-         TgcRl6tAPi1iHpJlmz2lSlW0VgrtzhhqgLihstKFM6UmOtGpVPxvfeYtEV3zbzl/Sr4m
-         DH6NOqpiSL6POYb6Kn8NrqRIvvje5lpiSkdAk2IPuuEsDCPn46JgvFdIaVY3NBy/zmVz
-         dsp1UlMClBcZlsxO4aDPcihonWVaKDmKT6/hWt1xje/LYtNkbQFKKa9tL/nEm8CSnmBy
-         sl6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SgjPE0OFmRFHo7Z1uCpz96jqkXmo7ld9GDJYygtj7OA=;
-        b=vDsuDOvX6cYXKJTjCNqt0RqJHcAHUu0I5Gn4hsKaPo6Fq5Mad9engH9b0pEw8WQkvO
-         2j0cPT0dmtq7+ESlUb+k2rrHtX6eZWlLsC2UVX8sep2HH8ud8sCr1XEX2+8UgB2JCj2O
-         0PRp/e62TJwwh847xMcJfmovi7Yzous4Hlh0jUpDP28DuLxkqb43wVWy+UHqlwudIWk+
-         hSA8m7h30uKKCpv3L7rQJtv7didBNqdXe1uO9p2sKVN1YytSWwbDq5tOQ/7bYcOGjxgx
-         4ri04oqxvCE6r2y8pa/eB4mUiymIhkB/RFodoFMLxQmQ/xbsPpvJQTb5IKLeWgUICnaZ
-         RRkw==
-X-Gm-Message-State: ACrzQf2SyFhIB2KX+SoG6oVdz3UA0276bClj/WIt5hWG71Pju2TJC2zE
-	u31YeDh6kYkS1CTgEKTElUG/ZPCdP3jMgduyPO0=
-X-Google-Smtp-Source: AMsMyM5NjNV21C5WeMi+mlwJIutp+UfyKLwakzav8DhEyMkznmycOJk1o62D9YtjDLWqniVDB1/7DpEEGCBcsLeMo0A=
-X-Received: by 2002:a5d:6d0d:0:b0:230:1b65:a378 with SMTP id
- e13-20020a5d6d0d000000b002301b65a378mr28943423wrq.406.1666775156703; Wed, 26
- Oct 2022 02:05:56 -0700 (PDT)
+	id 1oncqP-008lWe-89; Wed, 26 Oct 2022 09:37:07 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+	by mxout2.routing.net (Postfix) with ESMTP id 8A56F61916;
+	Wed, 26 Oct 2022 09:37:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666777023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4054z3WmrXLjwEDQezr4htc5YT1t0re5zBkfawFOcfc=;
+	b=W282V9Bf1ejSdHX/0C4BqJwFVYUdAezOPRn6QESMgJ2C0czrLVSfOD2q/OENpeimOwn2cY
+	eY5zms8wB6TFK0D2FZeujYGtDlLz0CC7THpZvKKOprZZIMUm+Ojp8YBHxPS/HIL0btJ2U2
+	aha2uaB+YkXzxfZPAJtOgrLaPXprkDU=
+Received: from frank-G5.. (fttx-pool-80.245.72.174.bambit.de [80.245.72.174])
+	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id BC1138026C;
+	Wed, 26 Oct 2022 09:37:02 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [RFC v2 5/7] arm64: dts: mt7986: add mmc related device nodes
+Date: Wed, 26 Oct 2022 11:36:48 +0200
+Message-Id: <20221026093650.110290-6-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221026093650.110290-1-linux@fw-web.de>
+References: <20221026093650.110290-1-linux@fw-web.de>
 MIME-Version: 1.0
-References: <Y1aCiReTZDbPp/rS@kadam> <20221026072444.GA24881@cyhuang-hp-elitebook-840-g3.rt>
- <Y1j058PsWYj0MQrC@kadam>
-In-Reply-To: <Y1j058PsWYj0MQrC@kadam>
-From: ChiYuan Huang <u0084500@gmail.com>
-Date: Wed, 26 Oct 2022 17:05:44 +0800
-Message-ID: <CADiBU39z_h=QLF-cGztz6Wq86+rMahVb7owHNt4RpvFPFYDs3w@mail.gmail.com>
-Subject: Re: [PATCH resend] mfd: mt6370: add bounds checking to
- regmap_read/write functions
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Lee Jones <lee@kernel.org>, ChiYuan Huang <cy_huang@richtek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: c6edbe6a-b290-41a5-bcc9-bd9d874071a6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_020605_011130_0C07F760 
-X-CRM114-Status: GOOD (  18.89  )
+X-CRM114-CacheID: sfid-20221026_023705_614626_ACE7ACA4 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +65,155 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dan Carpenter <dan.carpenter@oracle.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=88=
-26=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=884:51=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> On Wed, Oct 26, 2022 at 03:24:48PM +0800, ChiYuan Huang wrote:
-> > 2) normal register access with negative length
-> > Unable to handle kernel paging request at virtual address ffffffc009cef=
-ff2
-> > pc : __memcpy+0x1dc/0x260
-> > lr : _regmap_raw_write_impl+0x6d4/0x828
-> > Call trace:
-> >  __memcpy+0x1dc/0x260
-> >  _regmap_raw_write+0xb4/0x130a
-> >  regmap_raw_write+0x74/0xb0
-> >
-> >
-> > After applying the patch, the first case is cleared.
-> > But for the case 2, the root cause is not the mt6370_regmap_write() siz=
-e
-> > check. It's in __memcpy() before mt6370_regmap_write().
-> >
-> > I'm wondering 'is it reasonable to give the negative value as the size?=
-'
-> >
->
-> Thanks for testing!
->
-> I'm not sure I understand exactly which code you're talking about.
-> Could you just create a diff with the check for negative just so I can
-> understand where the issue is?  We can re-work it into a proper patch
-> from there.
->
-Here.
-https://elixir.bootlin.com/linux/v6.1-rc2/source/drivers/base/regmap/regmap=
-.c#L1860
+From: Sam Shih <sam.shih@mediatek.com>
 
-From my experiment, I try to access 0x00 reg for size (-1).
-Testing code is like as below
-regmap_raw_write(regmap, 0, &val, -1);
+This patch adds mmc support for MT7986.
 
-That's why I think if the size check is needed, it may put into
-regmap_raw_write() like as regmap_raw_read().
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-> regards,
-> dan carpenter
->
+v2:
+- update mmc-node because clocks changed
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 85 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 15 ++++
+ 2 files changed, 100 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 2b5d7ea31b4d..c5cc7bd19dbf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -24,6 +24,15 @@ memory@40000000 {
+ 		reg = <0 0x40000000 0 0x40000000>;
+ 	};
+ 
++	reg_1p8v: regulator-1p8v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-1.8V";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
+ 	reg_3p3v: regulator-3p3v {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "fixed-3.3V";
+@@ -76,7 +85,83 @@ switch: switch@0 {
+ 	};
+ };
+ 
++&mmc0 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	hs400-ds-delay = <0x14014>;
++	vmmc-supply = <&reg_3p3v>;
++	vqmmc-supply = <&reg_1p8v>;
++	non-removable;
++	no-sd;
++	no-sdio;
++	status = "okay";
++};
++
+ &pio {
++	mmc0_pins_default: mmc0-pins {
++		mux {
++			function = "emmc";
++			groups = "emmc_51";
++		};
++		conf-cmd-dat {
++			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
++			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
++			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
++			input-enable;
++			drive-strength = <4>;
++			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
++		};
++		conf-clk {
++			pins = "EMMC_CK";
++			drive-strength = <6>;
++			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
++		};
++		conf-ds {
++			pins = "EMMC_DSL";
++			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
++		};
++		conf-rst {
++			pins = "EMMC_RSTB";
++			drive-strength = <4>;
++			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
++		};
++	};
++
++	mmc0_pins_uhs: mmc0-uhs-pins {
++		mux {
++			function = "emmc";
++			groups = "emmc_51";
++		};
++		conf-cmd-dat {
++			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
++			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
++			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
++			input-enable;
++			drive-strength = <4>;
++			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
++		};
++		conf-clk {
++			pins = "EMMC_CK";
++			drive-strength = <6>;
++			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
++		};
++		conf-ds {
++			pins = "EMMC_DSL";
++			mediatek,pull-down-adv = <2>;	/* pull-down 50K */
++		};
++		conf-rst {
++			pins = "EMMC_RSTB";
++			drive-strength = <4>;
++			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
++		};
++	};
++
+ 	spi_flash_pins: spi-flash-pins {
+ 		mux {
+ 			function = "spi";
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 1c7a973c28ca..32c26b239ae6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -284,6 +284,21 @@ ssusb: usb@11200000 {
+ 			status = "disabled";
+ 		};
+ 
++		mmc0: mmc@11230000 {
++			compatible = "mediatek,mt7986-mmc";
++			reg = <0 0x11230000 0 0x1000>,
++			      <0 0x11c20000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
++				 <&infracfg CLK_INFRA_MSDC_HCK_CK>,
++				 <&infracfg CLK_INFRA_MSDC_CK>,
++				 <&infracfg CLK_INFRA_MSDC_133M_CK>,
++				 <&infracfg CLK_INFRA_MSDC_66M_CK>;
++			clock-names = "source", "hclk", "source_cg", "bus_clk",
++				      "sys_cg";
++			status = "disabled";
++		};
++
+ 		usb_phy: t-phy@11e10000 {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
+-- 
+2.34.1
+
 
