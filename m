@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C556CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 17:00:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86553C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 17:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ca06j2Os87StfxEfo01kLY41xiA3lrT0lspLXHYvnPQ=; b=pcK18VFMr54JG1OtJ6FO1n1Raa
-	bcJMWP6e8nSj+KKel3zRc1b2yvnRz85wgbOvnjXOzxUy3GDTiJRXcNsPLJknwBHlP0zLnRIP6XdwS
-	/Q8R5QMBD6X0bynwlr0Z79+YNmJdDh4WeVz12iMA1YrDofEKvVDC/PmFFMZf/aTAT8tMEYOKs734P
-	YxzTSlEw7HMRl34v5sM1URighFwXaT4QbGjyXiIqsSp2JiR2mjX6keVbdLTjRL00Dywco40W+Kksh
-	3ScfZo9v6/5x84UCVzMISARA/UirYOqdf5hQWrf1HwXYU3BhYFy/abwTDynU8gv/hfCGP9vswyMi8
-	5J35ek/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yZ+i/SF4l9FMWNRr/cPA8I6Wy/mpZ+a7Vqb6QMxr248=; b=3KcXU5l2ONuuYvlPrAX2fv0i+M
+	3OfiKZEloALw28WfcR8a9w5n4ldGNfPmVhpQZUTumx3ZjM14OdkVDD3hFQW9W0+CBuVkT4APUL7/z
+	V904sO1NUH+yPqdmD8t/jojfOy/LdLXNZcApBKLyrMXJa+jYE1DH2tZN+KVCbKOil1BpMtHzxjUC2
+	cDU0hncuQWahVNgOpSv7KhxVxGVYjw6UstBhbRMh/TnHAyZSW7n6srXWZvsi74mbYyhu8IcXSoYF5
+	iJxi2zSfOJKdqtTasKGEGvO/Qm7/HoIX9kXARRs3PCBsC6XKLvd+QtrdfmkD0ll6YirYoA0qMKIrY
+	iNiWgOxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onjlC-00AGH4-Gp; Wed, 26 Oct 2022 17:00:10 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1onkS2-00AQ7j-S1; Wed, 26 Oct 2022 17:44:26 +0000
+Received: from mail-oa1-f49.google.com ([209.85.160.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onjl9-00AGFB-8Z; Wed, 26 Oct 2022 17:00:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666803607; x=1698339607;
-  h=date:from:to:cc:subject:message-id:mime-version:
-   content-transfer-encoding;
-  bh=5Z+ixCtjM9zP5Cjx5S+C528BMvr3OqmySU4CCYG0r0g=;
-  b=P1X4JIK4T18mhv7+ztacGbuZ29+sApP/xIB9SBnokPLharBwarSJP4dz
-   niLyZmJfh3wfQdP7LlAC5YKB7zbolRN/9dKMhmI2Rqobi4B8p40pYU/9n
-   cC1YTC8jjT3Udn2bfOhPZh7pUyREA/nf3pvzXtnwxKPDUJW3TPjBw8UsP
-   laqqGAj7n05+7oXNxs7h2XUbeo5UBJ8IP3aB7+RQVTeeZSMD1lgwuAWcI
-   d4SD8bGO54NckhV86m3FGK33jpLXW9a4DiKI2MA/U6fItgIr8sXLGmJe7
-   6oVCJFP6oEl24JkGxy3+O2tDHnsGBL6oVMn9Z0H87pF9B/UHFWrEtkPts
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10512"; a="291307116"
-X-IronPort-AV: E=Sophos;i="5.95,215,1661842800"; 
-   d="scan'208";a="291307116"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Oct 2022 10:00:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10512"; a="665361572"
-X-IronPort-AV: E=Sophos;i="5.95,215,1661842800"; 
-   d="scan'208";a="665361572"
-Received: from lkp-server02.sh.intel.com (HELO b6d29c1a0365) ([10.239.97.151])
-  by orsmga001.jf.intel.com with ESMTP; 26 Oct 2022 10:00:01 -0700
-Received: from kbuild by b6d29c1a0365 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1onjl2-0007dp-25;
-	Wed, 26 Oct 2022 17:00:00 +0000
-Date: Thu, 27 Oct 2022 00:59:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: ntfs3@lists.linux.dev, netdev@vger.kernel.org, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, linux-ext4@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, apparmor@lists.ubuntu.com,
- amd-gfx@lists.freedesktop.org,
- Linux Memory Management List <linux-mm@kvack.org>
-Subject: [linux-next:master] BUILD SUCCESS WITH WARNING
- 60eac8672b5b6061ec07499c0f1b79f6d94311ce
-Message-ID: <63596772.FFBtfld6wjE45SXv%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	id 1onkRz-00AQ6b-22; Wed, 26 Oct 2022 17:44:24 +0000
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-1322d768ba7so21092428fac.5;
+        Wed, 26 Oct 2022 10:44:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yZ+i/SF4l9FMWNRr/cPA8I6Wy/mpZ+a7Vqb6QMxr248=;
+        b=5wstAZSPiMv64WT1CWU6skclrcX3B7/RUktuWcJslG1QQRGFWrCcngN/4YqjNMkN0c
+         86UrpodVB1gEG4FpHxem+3rdJT93D+C6AEjrLSg+V2I8AN4msb80ywQYv//Gvxwn4nQK
+         ItKoEE5YAdMvXJZadnbvz2sZD+JfU9m53bgH+PZ5pzc5xbpIU3mpUFQVw9A+je8UFgFv
+         r9c/5KvXQ9n5gTzIrF1EAcB9WpBBeMVRVGkNC/h9LTqbT4/qFunP6aOiqjr5rZ2TOzdC
+         lJaAuU902PFbvMutLSq17IPfiSITFcHHhE73t5bT5Z1kcr4PPqKSEUfPUgeSZ5/AscxI
+         pL+Q==
+X-Gm-Message-State: ACrzQf2hzUfLHx5RCzbnKd+ngMFn11ytBWu96ABoXWmBs0zrIq2Ytstn
+	73nAfHf1VKLRuB2JzdC1zg==
+X-Google-Smtp-Source: AMsMyM67Pw/bp++Kwpi4bAgdItQrAnVSBhLzRwXb2hhebp/wuZMaR60Sn/XNDJMCXdMpka6OF32FZw==
+X-Received: by 2002:a05:6870:e98e:b0:12b:8d8d:1116 with SMTP id r14-20020a056870e98e00b0012b8d8d1116mr2981248oao.165.1666806260917;
+        Wed, 26 Oct 2022 10:44:20 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id b6-20020a4ae206000000b0044b125e5dabsm2360665oot.35.2022.10.26.10.44.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Oct 2022 10:44:20 -0700 (PDT)
+Received: (nullmailer pid 808914 invoked by uid 1000);
+	Wed, 26 Oct 2022 17:44:21 -0000
+Date: Wed, 26 Oct 2022 12:44:21 -0500
+From: Rob Herring <robh@kernel.org>
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, =?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>
+Subject: Re: [PATCH v1 net-next 6/7] dt-bindings: net: add generic
+ ethernet-switch-port binding
+Message-ID: <20221026174421.GA794561-robh@kernel.org>
+References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
+ <20221025050355.3979380-7-colin.foster@in-advantage.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+In-Reply-To: <20221025050355.3979380-7-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_100007_481494_4D1E9C40 
-X-CRM114-Status: UNSURE (   8.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221026_104423_126989_B0473957 
+X-CRM114-Status: GOOD (  23.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,249 +79,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-branch HEAD: 60eac8672b5b6061ec07499c0f1b79f6d94311ce  Add linux-next specific files for 20221026
+On Mon, Oct 24, 2022 at 10:03:54PM -0700, Colin Foster wrote:
+> The dsa-port.yaml binding had several references that can be common to all
+> ethernet ports, not just dsa-specific ones. Break out the generic bindings
+> to ethernet-switch-port.yaml they can be used by non-dsa drivers.
+> 
+> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+> ---
+>  .../devicetree/bindings/net/dsa/dsa-port.yaml | 26 +----------
+>  .../bindings/net/ethernet-switch-port.yaml    | 44 +++++++++++++++++++
+>  .../bindings/net/ethernet-switch.yaml         |  4 +-
+>  MAINTAINERS                                   |  1 +
+>  4 files changed, 50 insertions(+), 25 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> index 10ad7e71097b..c5144e733511 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> @@ -4,7 +4,7 @@
+>  $id: http://devicetree.org/schemas/net/dsa/dsa-port.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+> -title: Ethernet Switch port Device Tree Bindings
+> +title: DSA Switch port Device Tree Bindings
+>  
+>  maintainers:
+>    - Andrew Lunn <andrew@lunn.ch>
+> @@ -15,12 +15,9 @@ description:
+>    Ethernet switch port Description
+>  
+>  allOf:
+> -  - $ref: /schemas/net/ethernet-controller.yaml#
+> +  - $ref: /schemas/net/ethernet-switch-port.yaml#
+>  
+>  properties:
+> -  reg:
+> -    description: Port number
+> -
+>    label:
+>      description:
+>        Describes the label associated with this port, which will become
+> @@ -57,25 +54,6 @@ properties:
+>        - rtl8_4t
+>        - seville
+>  
+> -  phy-handle: true
+> -
+> -  phy-mode: true
+> -
+> -  fixed-link: true
+> -
+> -  mac-address: true
+> -
+> -  sfp: true
+> -
+> -  managed: true
+> -
+> -  rx-internal-delay-ps: true
+> -
+> -  tx-internal-delay-ps: true
+> -
+> -required:
+> -  - reg
+> -
+>  # CPU and DSA ports must have phylink-compatible link descriptions
+>  if:
+>    oneOf:
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> new file mode 100644
+> index 000000000000..cb1e5e12bf0a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> @@ -0,0 +1,44 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/ethernet-switch-port.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Ethernet Switch port Device Tree Bindings
+> +
+> +maintainers:
+> +  - Andrew Lunn <andrew@lunn.ch>
+> +  - Florian Fainelli <f.fainelli@gmail.com>
+> +  - Vivien Didelot <vivien.didelot@gmail.com>
+> +
+> +description:
+> +  Ethernet switch port Description
+> +
+> +$ref: ethernet-controller.yaml#
+> +
+> +properties:
+> +  reg:
+> +    description: Port number
+> +
+> +  phy-handle: true
+> +
+> +  phy-mode: true
+> +
+> +  fixed-link: true
+> +
+> +  mac-address: true
+> +
+> +  sfp: true
+> +
+> +  managed: true
+> +
+> +  rx-internal-delay-ps: true
+> +
+> +  tx-internal-delay-ps: true
+> +
+> +required:
+> +  - reg
+> +
+> +additionalProperties: true
+> +
+> +...
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-switch.yaml b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
+> index fbaac536673d..f698857619da 100644
+> --- a/Documentation/devicetree/bindings/net/ethernet-switch.yaml
+> +++ b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
+> @@ -36,7 +36,9 @@ patternProperties:
+>          type: object
+>          description: Ethernet switch ports
+>  
+> -        $ref: /schemas/net/dsa/dsa-port.yaml#
+> +        allOf:
+> +          - $ref: /schemas/net/dsa/dsa-port.yaml#
+> +          - $ref: ethernet-switch-port.yaml#
 
-Warning reports:
+dsa-port.yaml references ethernet-switch-port.yaml, so you shouldn't 
+need both here.
 
-https://lore.kernel.org/linux-mm/202210090954.pTR6m6rj-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210110857.9s0tXVNn-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210111318.mbUfyhps-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210240729.zs46Cfzo-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210251946.eT92YAhG-lkp@intel.com
-https://lore.kernel.org/linux-mm/202210261404.b6UlzG7H-lkp@intel.com
-https://lore.kernel.org/llvm/202210060148.UXBijOcS-lkp@intel.com
-https://lore.kernel.org/llvm/202210261759.MQ8VLHNW-lkp@intel.com
+I imagine what you were trying to do here was say it is either one of 
+these, not both. I don't think this is going work for the same reasons I 
+mentioned with unevaluatedProperties.
 
-Warning: (recently discovered and may have been fixed)
-
-lib/zstd/compress/huf_compress.c:460 HUF_getIndex() warn: the 'RANK_POSITION_LOG_BUCKETS_BEGIN' macro might need parens
-security/apparmor/policy_unpack_test.c:149 policy_unpack_test_unpack_array_with_null_name() error: uninitialized symbol 'array_size'.
-security/apparmor/policy_unpack_test.c:164 policy_unpack_test_unpack_array_with_name() error: uninitialized symbol 'array_size'.
-
-Unverified Warning (likely false positive, please contact us if interested):
-
-drivers/gpu/drm/amd/amdgpu/../display/dc/core/dc_link_dp.c:5230:16: warning: no previous prototype for function 'wake_up_aux_channel' [-Wmissing-prototypes]
-drivers/net/ethernet/microchip/vcap/vcap_api_kunit.c:207:24: sparse: sparse: symbol 'test_callbacks' was not declared. Should it be static?
-drivers/net/ethernet/microchip/vcap/vcap_api_kunit.c:219:21: sparse: sparse: symbol 'test_vctrl' was not declared. Should it be static?
-drivers/net/ethernet/microchip/vcap/vcap_api_kunit.c:245:23: sparse: sparse: Using plain integer as NULL pointer
-lib/zstd/decompress/zstd_decompress_block.c:1009 ZSTD_execSequence() warn: inconsistent indenting
-lib/zstd/decompress/zstd_decompress_block.c:894 ZSTD_execSequenceEnd() warn: inconsistent indenting
-lib/zstd/decompress/zstd_decompress_block.c:942 ZSTD_execSequenceEndSplitLitBuffer() warn: inconsistent indenting
-lib/zstd/decompress/zstd_decompress_internal.h:206 ZSTD_DCtx_get_bmi2() warn: inconsistent indenting
-mm/khugepaged.c:1729:3: warning: variable 'index' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
-mm/khugepaged.c:1729:3: warning: variable 'nr' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
-mm/khugepaged.c:1729:7: warning: variable 'index' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
-mm/khugepaged.c:1729:7: warning: variable 'nr' is used uninitialized whenever 'if' condition is true [-Wsometimes-uninitialized]
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arc-randconfig-s051-20221023
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   `-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|-- i386-randconfig-m021
-|   |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequence()-warn:inconsistent-indenting
-|   |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequenceEnd()-warn:inconsistent-indenting
-|   |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequenceEndSplitLitBuffer()-warn:inconsistent-indenting
-|   |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_internal.h-ZSTD_DCtx_get_bmi2()-warn:inconsistent-indenting
-|   |-- lib-zstd-compress-huf_compress.c-HUF_getIndex()-warn:the-RANK_POSITION_LOG_BUCKETS_BEGIN-macro-might-need-parens
-|   |-- lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequence()-warn:inconsistent-indenting
-|   |-- lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequenceEnd()-warn:inconsistent-indenting
-|   |-- lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequenceEndSplitLitBuffer()-warn:inconsistent-indenting
-|   `-- lib-zstd-decompress-zstd_decompress_internal.h-ZSTD_DCtx_get_bmi2()-warn:inconsistent-indenting
-|-- loongarch-randconfig-s043-20221024
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- parisc-randconfig-m031-20221024
-|   |-- security-apparmor-policy_unpack_test.c-policy_unpack_test_unpack_array_with_name()-error:uninitialized-symbol-array_size-.
-|   `-- security-apparmor-policy_unpack_test.c-policy_unpack_test_unpack_array_with_null_name()-error:uninitialized-symbol-array_size-.
-|-- powerpc-randconfig-s053-20221023
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-priv1-got-restricted-__le16-addressable-usertype-fc_len
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-int-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-unsigned-short-usertype-tag-got-restricted-__le16-addressable-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_len-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-__le16-usertype-fc_tag-got-unsigned-short-usertype
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-int-tag-got-restricted-__le16-usertype-fc_tag
-|   |-- fs-ext4-fast_commit.c:sparse:sparse:restricted-__le16-degrades-to-integer
-|   |-- fs-ntfs3-index.c:sparse:sparse:restricted-__le32-degrades-to-integer
-|   |-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s1-got-unsigned-short
-|   `-- fs-ntfs3-namei.c:sparse:sparse:incorrect-type-in-argument-(different-base-types)-expected-restricted-__le16-const-usertype-s2-got-unsigned-short
-|-- riscv-randconfig-s051-20221026
-|   |-- drivers-net-ethernet-microchip-vcap-vcap_api_kunit.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
-|   |-- drivers-net-ethernet-microchip-vcap-vcap_api_kunit.c:sparse:sparse:symbol-test_callbacks-was-not-declared.-Should-it-be-static
-|   `-- drivers-net-ethernet-microchip-vcap-vcap_api_kunit.c:sparse:sparse:symbol-test_vctrl-was-not-declared.-Should-it-be-static
-`-- x86_64-randconfig-m001
-    |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequence()-warn:inconsistent-indenting
-    |-- arch-x86-boot-compressed-..-..-..-..-lib-zstd-decompress-zstd_decompress_block.c-ZSTD_execSequenceEnd()-warn:inconsistent-indenting
-clang_recent_errors
-|-- arm-buildonly-randconfig-r002-20221026
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- arm-buildonly-randconfig-r006-20221024
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|-- arm64-randconfig-r026-20221023
-|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link_dp.c:warning:no-previous-prototype-for-function-wake_up_aux_channel
-|-- arm64-randconfig-r026-20221025
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r014-20221024
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- hexagon-randconfig-r015-20221023
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|-- hexagon-randconfig-r045-20221023
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-buildonly-randconfig-r002-20221024
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   `-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|-- i386-randconfig-a001-20221024
-|   |-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|   |-- mm-khugepaged.c:warning:variable-index-is-used-uninitialized-whenever-if-condition-is-true
-|   `-- mm-khugepaged.c:warning:variable-nr-is-used-uninitialized-whenever-if-condition-is-true
-|-- i386-randconfig-a006-20221024
-|   |-- mm-khugepaged.c:warning:variable-index-is-used-uninitialized-whenever-if-condition-is-true
-|   `-- mm-khugepaged.c:warning:variable-nr-is-used-uninitialized-whenever-if-condition-is-true
-|-- mips-randconfig-r016-20221024
-|   `-- fs-ntfs3-namei.c:warning:variable-uni1-is-used-uninitialized-whenever-if-condition-is-true
-|-- mips-randconfig-r034-20221023
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt2701.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-hdmi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(uns
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8173.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   |-- drivers-phy-mediatek-phy-mtk-mipi-dsi-mt8183.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:
-|   `-- drivers-phy-mediatek-phy-mtk-tphy.c:warning:result-of-comparison-of-constant-with-expression-of-type-typeof-(_Generic((mask_)-char:(unsigned-char)-unsigned-char:(unsigned-char)-signed-char:(unsigned-c
-|-- riscv-randconfig-r001-20221026
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-get_symbol_pos:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_num_syms
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-get_symbol_pos:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_offsets
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_num_syms
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_offsets
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_lookup_name:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_relative_base
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_on_each_symbol:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_num_syms
-|   |-- ld.lld:error:vmlinux.a(kernel-kallsyms.o):(function-kallsyms_on_each_symbol:.text):relocation-R_RISCV_PCREL_HI20-out-of-range:is-not-in-references-kallsyms_offsets
-
-elapsed time: 724m
-
-configs tested: 93
-configs skipped: 2
-
-gcc tested configs:
-um                             i386_defconfig
-um                           x86_64_defconfig
-i386                                defconfig
-arm                                 defconfig
-x86_64                              defconfig
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                               rhel-8.3
-arc                  randconfig-r043-20221024
-x86_64                        randconfig-a015
-x86_64                           rhel-8.3-syz
-arm                              allyesconfig
-x86_64                           allyesconfig
-x86_64                         rhel-8.3-kunit
-arm64                            allyesconfig
-x86_64                          rhel-8.3-func
-ia64                             allmodconfig
-x86_64                           rhel-8.3-kvm
-arc                                 defconfig
-powerpc                   motionpro_defconfig
-s390                             allmodconfig
-i386                             allyesconfig
-riscv                randconfig-r042-20221024
-x86_64                    rhel-8.3-kselftests
-alpha                               defconfig
-s390                 randconfig-r044-20221024
-s390                                defconfig
-powerpc                           allnoconfig
-sh                        sh7785lcr_defconfig
-i386                 randconfig-a011-20221024
-sh                         ecovec24_defconfig
-m68k                        stmark2_defconfig
-i386                 randconfig-a015-20221024
-i386                 randconfig-a014-20221024
-powerpc                          allmodconfig
-ia64                          tiger_defconfig
-s390                             allyesconfig
-sh                               allmodconfig
-i386                 randconfig-a013-20221024
-mips                             allyesconfig
-arc                         haps_hs_defconfig
-i386                 randconfig-a012-20221024
-sparc                            alldefconfig
-i386                 randconfig-a016-20221024
-csky                                defconfig
-m68k                          hp300_defconfig
-arm                      footbridge_defconfig
-s390                       zfcpdump_defconfig
-loongarch                           defconfig
-mips                     loongson1b_defconfig
-arm                         axm55xx_defconfig
-m68k                          amiga_defconfig
-arm                          gemini_defconfig
-parisc                              defconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-sh                        apsh4ad0a_defconfig
-alpha                            allyesconfig
-i386                          randconfig-c001
-m68k                             allyesconfig
-arc                  randconfig-r043-20221023
-x86_64               randconfig-a013-20221024
-x86_64               randconfig-a012-20221024
-riscv                            allmodconfig
-
-clang tested configs:
-i386                 randconfig-a004-20221024
-i386                 randconfig-a001-20221024
-hexagon              randconfig-r041-20221024
-x86_64                        randconfig-a012
-i386                 randconfig-a002-20221024
-x86_64               randconfig-a001-20221024
-hexagon              randconfig-r045-20221024
-x86_64               randconfig-a003-20221024
-i386                 randconfig-a005-20221024
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-x86_64               randconfig-a004-20221024
-x86_64               randconfig-a002-20221024
-i386                 randconfig-a003-20221024
-x86_64               randconfig-a005-20221024
-x86_64               randconfig-a006-20221024
-i386                 randconfig-a006-20221024
-arm                       spear13xx_defconfig
-arm                      tct_hammer_defconfig
-mips                          rm200_defconfig
-riscv                          rv32_defconfig
-arm                         lpc32xx_defconfig
-powerpc                    socrates_defconfig
-arm                          pxa168_defconfig
-mips                      malta_kvm_defconfig
-riscv                randconfig-r042-20221023
-hexagon              randconfig-r041-20221023
-hexagon              randconfig-r045-20221023
-s390                 randconfig-r044-20221023
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Rob
 
