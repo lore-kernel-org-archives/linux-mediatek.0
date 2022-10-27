@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B906ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 23:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D054ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 23:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:
 	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N3/tiBBM65lbA3Kx0jToCOjz1sXOtHVXWYvgKgpiDFc=; b=mbrcWWw1cLX54wlYj8ZvFaPrcu
-	YFxbCD6/0IkzvowAOv59zdoFpNMpKdlyhef9aj/l9cLsfj8Ccz7ZW+BSnz4pZIB8oRrcN7EsKrxVP
-	3pumCaIuWHLOHpa1p0vei5o2tzb2c5C19tn7q3gU/A/umXpTECrUNBQesBlBkJVkUpxHGGpAnXR+Y
-	7hFL54H++UBEPnEKoe63X6TH/8b7EV4LnJZALss2LB/EW5nPx54CzA0yLWhnh4P5SA65Z0Nf7k9ru
-	RZvaB1VhElviiS+gWN8VOaM4bSGkS4Y49NJkE+zFPosrVuAXup4ynD269O7nMddKaIPvkitDH0EfV
-	G9r5Csyw==;
+	bh=paXHZ98aSyfJJ6v60WHxASXnANWrRePFDt5trqmw3pk=; b=rP7E74oHNTrlS4GmGFEK+QgTUI
+	WqqqwNud9NmI0nsyHOuSjurc5z85zcHzi8OLYFzWpXkFRbchqv1yHbWAQeNMvb7y9suBUkheFLyqu
+	crzuHpyt38yY9xe20fsAPbLlgC78WtfOP2tRu2L2JwVLgRH7vxrEWj1Q1r03qNRtWxg2UCJGdtAhj
+	lbL6oZCvz1EZK7kFdOLQRDuO4PfBpqx82udO+wryei44s/Hl8DZAxhIboJ9nzpQTxzoNO5XQjvTY8
+	AiPnRWpT2l+vw2AnEdRggMhAciFy/9nLlOQm6LeVPzewHMO7exOAaYnxww5jOLsFxCg23U6NQhZUS
+	yTxeVcHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooCKh-00FEZZ-FL; Thu, 27 Oct 2022 23:30:43 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ooCa7-00FFqr-TE; Thu, 27 Oct 2022 23:46:39 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooCKW-00FEXx-OZ; Thu, 27 Oct 2022 23:30:34 +0000
+	id 1ooCZu-00FFpT-LV; Thu, 27 Oct 2022 23:46:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 62872B8280A;
-	Thu, 27 Oct 2022 23:30:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F3FAC433D6;
-	Thu, 27 Oct 2022 23:30:30 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id D0913CE2907;
+	Thu, 27 Oct 2022 23:46:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14589C433D6;
+	Thu, 27 Oct 2022 23:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666913430;
-	bh=N3/tiBBM65lbA3Kx0jToCOjz1sXOtHVXWYvgKgpiDFc=;
+	s=k20201202; t=1666914382;
+	bh=vKyUpa6z1uRmhJcURUFkFkbLGb/GBvfWEJCcrU7tfqo=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=iu6ONbFOuNtcJM4mQaxWpdNWxM/V/eSzUpZ73hpm3Qffo2BJqyPDWAqe0OR9TbNOh
-	 B6erzkAR+KYefBQnqAlUM8ofjzhedfcAsQ1QXRNpCxC8iBexmKJt0eFujzgcVORvLO
-	 ptEYjNYbC7CBC3v/yVO/a47eUK/wU08m8G/rEi0Jru8z4X302KFe3HCx/B/E2EksS1
-	 nQm7pGTZlJCCceE2Ma/wWzDQpD5elcc16qEbDL5rxpmLWCohB4x1y9LSIGmLkgnF2M
-	 gsUfd5eWBCbTN3nxWBKyNUR8izsE3bNEJuJ0hIeYOeIqBFjs7u0ncaNsawDK/qgOYz
-	 EQRxkyggrj46w==
+	b=oXT8YtNrSRdfCCoSqjJfjvVD/CTH2tdzsgPEioQDOkJy0Wa41Ye/QlHnbD8jD5pvQ
+	 EMNq+ymHApj/JfjgbVPtTdAt3wVL9QWLKOuu4RGnfwTyPRBRy6e7kgX+bsZjrc1BNo
+	 0N1rt2MeucxNHbsQo0Egvw4AFBW5q1dAWqt6XhiWoT3+8Dj/1bElZqIzwTZFWjXlLI
+	 U2xBEEAq0H+3fcJBsUPW/+UG3mNYA7Y8EHwRZP3tqNz2r4eJt/U0fiv0O3icebuYFg
+	 4JMc0SvGf6kTBfU5CHDJ4w5DGxjOQU5yVCz8SX8R38gXtmtDfd0v/nFHftkj3ibdpi
+	 OrQpBXaRcNU4g==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <Y1sTM/E1VY+XdHk5@makrotopia.org>
-References: <9bde77be-f4ec-11e7-e645-7c4465bcf6db@collabora.com> <5e55012567da74870e1fb2edc2dc513b5821e523.1666801017.git.daniel@makrotopia.org> <20221027214151.7F112C433D6@smtp.kernel.org> <Y1sTM/E1VY+XdHk5@makrotopia.org>
-Subject: Re: [PATCH v2] clk: mediatek: fix dependency of MT7986 ADC clocks
+In-Reply-To: <20221021104804.21391-3-rex-bc.chen@mediatek.com>
+References: <20221021104804.21391-1-rex-bc.chen@mediatek.com> <20221021104804.21391-3-rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH v6 2/3] clk: mediatek: Add auxiliary bus support for sysclk reset
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Date: Thu, 27 Oct 2022 16:30:27 -0700
+Cc: runyang.chen@mediatek.com, miles.chen@mediatek.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, nfraprado@collabora.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de
+Date: Thu, 27 Oct 2022 16:46:19 -0700
 User-Agent: alot/0.10
-Message-Id: <20221027233030.0F3FAC433D6@smtp.kernel.org>
+Message-Id: <20221027234622.14589C433D6@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_163032_965733_3206EB0E 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20221027_164626_897185_E963DCD8 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,23 +70,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Daniel Golle (2022-10-27 16:24:35)
-> On Thu, Oct 27, 2022 at 02:41:49PM -0700, Stephen Boyd wrote:
-> > Quoting Daniel Golle (2022-10-26 09:18:07)
-> > > It seems like CLK_INFRA_ADC_FRC_CK always need to be enabled for
-> > > CLK_INFRA_ADC_26M_CK to work. Instead of adding this dependency to the
-> > > mtk-thermal and mt6577_auxadc drivers, add dependency to the clock
-> > > driver clk-mt7986-infracfg.c.
-> >=20
-> > Is this a cleanup patch? Or a pre-requisite for thermal and auxadc
-> > drivers? I don't understand the priority of this patch. Should I apply
-> > it to fix a regression?
->=20
-> I'd say 'no', as AUXADC and thermal has not yet been added to
-> mt7986a.dtsi, also the corresponding clocks are currently still unused.
-> So while this commit does fix a previous commit, it doesn't have a direct
-> impact and will only matter once thermal and auxadc units are added to
-> mt7986.dtsi.
+Quoting Bo-Chen Chen (2022-10-21 03:48:03)
+> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mt=
+k.c
+> index 74408849ed86..61b7ee23738a 100644
+> --- a/drivers/clk/mediatek/clk-mtk.c
+> +++ b/drivers/clk/mediatek/clk-mtk.c
+> @@ -444,6 +444,63 @@ void mtk_clk_unregister_dividers(const struct mtk_cl=
+k_divider *mcds, int num,
+[..]
+> +int mtk_reset_controller_register(struct device *dev, const char *name)
+> +{
+> +       struct auxiliary_device *adev;
+> +       int ret;
+> +
+> +       adev =3D mtk_reset_adev_alloc(dev, name);
+> +       if (IS_ERR(adev))
+> +               return PTR_ERR(adev);
+> +
+> +       ret =3D auxiliary_device_add(adev);
+> +       if (ret) {
+> +               auxiliary_device_uninit(adev);
+> +               return ret;
+> +       }
+> +
+> +       return devm_add_action_or_reset(dev, mtk_reset_unregister_adev, a=
+dev);
 
-Thanks! Please include these details next time.
+Can we have devm_auxiliary_device_add() that sets the parent and
+registers the device?
 
