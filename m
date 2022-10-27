@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A24ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 14:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F30ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 14:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OORxkzxhRiVQmefWxx+m4EW6qDQg+UZlwTx4gGuL6fw=; b=3cGoq2AfPRtgY7PPiHimOuPVZn
-	6kw2FdbsBwyfeIUeNGb5NUwfg4HF3F7IB1z5haij11Zy5gpFfBs6ROaGful0dvyZapm43cs+/qzsa
-	u3RzbRZM4f59hKimOiKpw62gGPSiHAj/mSdOesfNf6SegZ7RdGONamhXyA3jSkSydVZp/3Ghwj3iZ
-	jH4c4+VuXElaKut3dgUkQbI2Qa8UVCyISfKlIWTgfR4fDMdn1eMrVvrlRc4f5Ts2dsocGCGqmIaim
-	prUqz95uIuT2ap6E9z1NLzIZG+UNzz8RYhPbpowO2tlXHLfl7CPcg/Qt4NhhgxIUJlsUCO3ioVLJ7
-	rZXVXWmQ==;
+	bh=EJ4Kd5OapXjmuby1cWyw4DBWhE67uDDM4xxXN5ju6mc=; b=Fk+ISvHuZCKH4U6sOxAFvsTxmM
+	PSIvgNPtaljb65p4lB7StU/e1sMLJb3xFrVcIGrXYTvsUgcLy1oX0U6RV+0aYafULmvjq9oc7pm7N
+	kBZxcW9YT2PGddK1bhaARuuUWNirJfhBSlChmTqhMeVgCK8tx5UjEtFtIduB19ogVn2qQ9D0LYbbO
+	4XoCgKLPjJALqCBpalZMrN939JYuCE2DHic0kDVIm0/gVR2csxX/uIiZcwOlaOVsEyau/RAYZbCy3
+	Sf6WzlUpHafeQYhzHhSZmCgPRbuEbdovQaU5rgQniUAQeHKPikQXZkECdDL/dnWpjc6ffl54LCO6w
+	lWlvmWZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo3so-00Do34-6W; Thu, 27 Oct 2022 14:29:22 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1oo4Fm-00DtJX-0j; Thu, 27 Oct 2022 14:53:06 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo3sb-00DnzK-IA; Thu, 27 Oct 2022 14:29:11 +0000
-Received: by mail-wr1-x432.google.com with SMTP id y16so2447087wrt.12;
-        Thu, 27 Oct 2022 07:29:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OORxkzxhRiVQmefWxx+m4EW6qDQg+UZlwTx4gGuL6fw=;
-        b=Gt0hsXy6IhM2Xz0cAy2sjDP+ep236BBJmDfYxoU/L7NmYRMzmrVfTGk9k9rg7DzUZe
-         5OKZfZC/Qp29fi9lOanXpwri3qHpEX3NoMPYsyJxWGt1Oxu0Mijugabh2dikNHmgg31H
-         mftu9bhfPodB+rmzOe+K8r/blOOo6pSkS8vOSty7OWEKRxgXZV+16TGTsZJqE6hQH4CS
-         nLdkCzxYZcDJ19j+kdx3Cmey8Qav+vqN4V6NNihCKyuVSOoA94arzK2CqZVntzKNoQWO
-         R6ammiHS+W3a9DUA1F16QklQfjvO3Sky+psFPJ3Ow4f+0qpAVQLOM1t7YSxfNDT/rTDN
-         +fkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OORxkzxhRiVQmefWxx+m4EW6qDQg+UZlwTx4gGuL6fw=;
-        b=Y8MDdvziiIJ/xhiIarQ1k1K8JqpCRuglrq/MepvpOpY0Qtg7r2OWvK5biEyQeQeopj
-         3PAn10kTAVHs0a/EPXEhvd/Fv8FmovdpdfohjgPsgQS5BnT2GFLxjFFY4fBZDiG1LEN9
-         9Pin6VP/FYiw++mlRb8TVYcjGYznl60NNDUaUknEQWNIqdzY6CFlk2ZowFMxGfQNTB2z
-         69eXWVWToSjtagGASDuMIprfcs09XmlnB28AmLou10I9Wy/VlauQc2m51+cu+3oTCxeE
-         N3es2AZ2WhJmMKhxgN2dNcCuGDYXB/j+WV0o9aKm4WIl2uuwQlI4SCAezBtsYwgy9mmF
-         DggA==
-X-Gm-Message-State: ACrzQf11C7/HwIw/w+42vQBFjVKZOy9zrjuetGFOngJmB0D+k0t7LKI+
-	nzP0ClvmcPAhaHcx1ys/+X7W8dPs8KEyi02sHWY=
-X-Google-Smtp-Source: AMsMyM4SLiiSPLbOG0e5gD9YKxgRMhvjNQlF8UG9tcl/GwkgO8DmNw1JoTOlvStoJz9H8B7i2QQVyA8WZmGhDa6Z7VQ=
-X-Received: by 2002:a05:6000:2aa:b0:231:ac4f:196d with SMTP id
- l10-20020a05600002aa00b00231ac4f196dmr30922773wry.121.1666880946500; Thu, 27
- Oct 2022 07:29:06 -0700 (PDT)
+	id 1oo4FI-00Dt7d-N3; Thu, 27 Oct 2022 14:52:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 603DBCE26F9;
+	Thu, 27 Oct 2022 14:52:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D51C433D6;
+	Thu, 27 Oct 2022 14:52:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1666882351;
+	bh=jTEEOUklXetex1TUo5omUcT3p8eJ5Vnvb1qhgEzzmLk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=s95szTrBhoPCZR557GQy/SDo7RemHuo0Alzlr/HYI4osEu4I/5ieQl5QXRqJZjMuC
+	 6y+RxV2C9CKCDnGmxv3WhTcQn9Cbsd9qd7BUP50nlOGfX0/useWRCUMPPKOWXdtpz+
+	 /445Hxzrkg7AbLYQFw8zRMJFrWIjZv0nRizv0vbMixP1LjbKDEGucjslQG3zgepEVX
+	 pbVpE4Kqw4tJBrVZLojVb7eMrn7zvwnJ6TQF4yQpt1NlHJ5JtCdTd2pomuHexheXO6
+	 EN2nQA/5HqfzM7HCRmLftTyh0Mxp7pD+pk/B8m3SYbaaTkwMFfsCtKnvJWXsJASuvw
+	 lJpnI3CPFzpiw==
+Message-ID: <9e64a359-68f5-51b0-bc14-6eda57e41774@kernel.org>
+Date: Thu, 27 Oct 2022 10:52:27 -0400
 MIME-Version: 1.0
-References: <Y1aCiReTZDbPp/rS@kadam> <20221026072444.GA24881@cyhuang-hp-elitebook-840-g3.rt>
- <Y1j058PsWYj0MQrC@kadam> <CADiBU39z_h=QLF-cGztz6Wq86+rMahVb7owHNt4RpvFPFYDs3w@mail.gmail.com>
- <CADiBU38JKzq9ngiaZWTse3eMdH_fTcUCdanea7uQAU7NxZrzZg@mail.gmail.com> <Y1qOwO11z0Wvcz6O@kadam>
-In-Reply-To: <Y1qOwO11z0Wvcz6O@kadam>
-From: ChiYuan Huang <u0084500@gmail.com>
-Date: Thu, 27 Oct 2022 22:28:54 +0800
-Message-ID: <CADiBU39d4xykc3sXH8ZSM3pe-urbjqvcNf+k5BbORnzXMcpeng@mail.gmail.com>
-Subject: Re: [PATCH resend] mfd: mt6370: add bounds checking to
- regmap_read/write functions
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Lee Jones <lee@kernel.org>, ChiYuan Huang <cy_huang@richtek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [RESEND v3 1/3] dt-bindings: watchdog: Add compatible for
+ MediaTek MT8188
+Content-Language: en-US
+To: =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
+ <Allen-KH.Cheng@mediatek.com>, "linux@roeck-us.net" <linux@roeck-us.net>,
+ =?UTF-8?B?UnVueWFuZyBDaGVuICjpmYjmtqbmtIsp?= <Runyang.Chen@mediatek.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20221026063327.20037-1-Runyang.Chen@mediatek.com>
+ <20221026063327.20037-2-Runyang.Chen@mediatek.com>
+ <20221026152645.GA2946818@roeck-us.net>
+ <e889728c-13e9-37f8-4d1a-e31332a39498@collabora.com>
+ <5abd63240a7890895a6de26a52fc24086f1c8ddb.camel@mediatek.com>
+ <e6035c60-29b7-a03e-29cd-77c37f5375e6@roeck-us.net>
+ <c42c4fff91a0794ff0514880182564d28026297a.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <c42c4fff91a0794ff0514880182564d28026297a.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_072909_642411_E184404E 
-X-CRM114-Status: GOOD (  29.39  )
+X-CRM114-CacheID: sfid-20221027_075236_998681_FC03DE11 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,76 +96,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dan Carpenter <dan.carpenter@oracle.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=88=
-27=E6=97=A5 =E9=80=B1=E5=9B=9B =E6=99=9A=E4=B8=8A9:59=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> On Thu, Oct 27, 2022 at 09:59:46AM +0800, ChiYuan Huang wrote:
-> > ChiYuan Huang <u0084500@gmail.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=8826=
-=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=885:05=E5=AF=AB=E9=81=93=EF=BC=
-=9A
-> > >
-> > > Dan Carpenter <dan.carpenter@oracle.com> =E6=96=BC 2022=E5=B9=B410=E6=
-=9C=8826=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=884:51=E5=AF=AB=E9=81=
-=93=EF=BC=9A
-> > > >
-> > > > On Wed, Oct 26, 2022 at 03:24:48PM +0800, ChiYuan Huang wrote:
-> > > > > 2) normal register access with negative length
-> > > > > Unable to handle kernel paging request at virtual address ffffffc=
-009cefff2
-> > > > > pc : __memcpy+0x1dc/0x260
-> > > > > lr : _regmap_raw_write_impl+0x6d4/0x828
-> > > > > Call trace:
-> > > > >  __memcpy+0x1dc/0x260
-> > > > >  _regmap_raw_write+0xb4/0x130a
-> > > > >  regmap_raw_write+0x74/0xb0
-> > > > >
-> > > > >
-> > > > > After applying the patch, the first case is cleared.
-> > > > > But for the case 2, the root cause is not the mt6370_regmap_write=
-() size
-> > > > > check. It's in __memcpy() before mt6370_regmap_write().
-> > > > >
-> > > > > I'm wondering 'is it reasonable to give the negative value as the=
- size?'
-> > > > >
-> > > >
-> > > > Thanks for testing!
-> > > >
-> > > > I'm not sure I understand exactly which code you're talking about.
-> > > > Could you just create a diff with the check for negative just so I =
-can
-> > > > understand where the issue is?  We can re-work it into a proper pat=
-ch
-> > > > from there.
-> > > >
-> > > Here.
-> > > https://elixir.bootlin.com/linux/v6.1-rc2/source/drivers/base/regmap/=
-regmap.c#L1860
-> > >
-> > > From my experiment, I try to access 0x00 reg for size (-1).
-> > > Testing code is like as below
-> > > regmap_raw_write(regmap, 0, &val, -1);
-> > >
-> > > That's why I think if the size check is needed, it may put into
-> > > regmap_raw_write() like as regmap_raw_read().
-> > >
-> > It seems c99 already  said size_t is an unsigned integer type.
-> > My experiment for (-1) size is not reasonable.
-> > (-1) means it will be converted as the UINT_MAX or ULONG_MAX.
-> > This will cause any unknown error like as memory violation or stack
-> > protection,...etc.
-> >
-> > let's check whether the negative size is reasonable or not.
-> > If this case dost not exist, to keep the boundary check is enough.
->
-> I thought you were testing this from user space but it sounds like
-> you're doing a unit test?
->
-Yes, with the device attribute to test regmap_raw_read() and regmap_raw_wri=
-te().
-I think It should be the same as the usage in kernel space.
-> regards,
-> dan carpenter
->
+On 27/10/2022 09:54, Allen-KH Cheng (程冠勳) wrote:
+>> You did not copy the watchdog mailing list with this patch, causing
+>> it to get lost
+>> from my queue (even though I had a look at it). If there were other
+>> watchdog related
+>> patches in this version of the series, they got lost as well.
+>>
+>> Guenter
+>>
+> 
+> I apologize for missing this and will pay attention next time (v3).
+> 
+
+Just use get_maintainers.pl and automate your task... Automation removes
+(most) mistakes.
+
+Best regards,
+Krzysztof
+
 
