@@ -4,68 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A09DFA3740
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 02:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061EBC38A2D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 02:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=coRe6aFtKEJ8SucS8fOYdsHKCX19NW/bW5k33DfhxmU=; b=P0914HcmfG/rdAq3pYxgFkNLJm
-	iF7egkGbarhLwY9waTRjHNcWD7ahbiAhZ2OQfgTyQ+eTnmK0HY5PtNgnZg7BVZ5G+ysElXY9ZdirS
-	TAikuxl90kT8vfVNWjKnaKPma+RuSFANGRcwbhFNg7rpRLA1H6hJagNPL2+a3hEEBzZxQv5A4ZBIc
-	DhJ7jst21u5Ov7yN/dQz6sSjGnjGGPTiqFHi5o3DEGGdkW0+S6qCRhg3gGBL4GTQIX3GZLSHYkTUN
-	ayUkG156ugaFC0+bCX5jIAIZqKkpx/aS+0PtMZ3F0DwMMuLmVYZiSrIRFcVke/QzSiPDH7tpqns/b
-	ezov35Og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tTglUEfd/2mxFd6h4tY5fCQG7mkIUfnhA2eEMBOwcFQ=; b=in1E5thSA0wJL0l2/p0P/FkIwU
+	SMok2L4SjZj7Enki0CCeeXBQxYhq2d3UTEf5TblDI1V952Rqst81GpzbIQul8pIJW1cMRNfAlz5vg
+	EJzqaXzhu23toCKK1R1xEQ7ZQA4EElS3kzEgD/1i622h2DuWvN68J9nQui5uysUOOdfdXsptN+muP
+	23PM3OurJ4V96J8l7HiSEhlC9QWFsEWHvPN12qJd/p5yp7qN2PzvRvdwca2EXFwJO7jFPOpoBFx6q
+	s94+y0PWnii1LNx12GreoU9/QAGHCGefesU5pP+KeuDyy9DS3cJ0S5zBdBoBUvyAkbCfewJGmb7O+
+	SVg8p2Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onscZ-00BaRi-Oj; Thu, 27 Oct 2022 02:27:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1onstM-00BbzA-Lg; Thu, 27 Oct 2022 02:45:12 +0000
+Received: from mail-dm6nam11on2126.outbound.protection.outlook.com ([40.107.223.126] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onscX-00BaQC-8M
-	for linux-mediatek@lists.infradead.org; Thu, 27 Oct 2022 02:27:50 +0000
-X-UUID: ee8319a120264610aa1b6aa61cc27d59-20221026
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=coRe6aFtKEJ8SucS8fOYdsHKCX19NW/bW5k33DfhxmU=;
-	b=dlhDA3LWZ6IUXr5huF5BtYFiAXY0kXlFbTz6Az/DNHGjlXHwDfyTAy6aDrcdvtUWjKQfiDMXZuUp47lVXEW0HiY2DGy0Y4SC6qcrXC+pWyxswUfy3O8Jb0it3HtgPfePqJqiEJsbmUeryCWvf7+E6VZ1YHZQKCV0KuMfy/DetUQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:dc3964fa-608c-4538-ad09-70b6542fb7ab,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:79964327-9eb1-469f-b210-e32d06cfa36e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ee8319a120264610aa1b6aa61cc27d59-20221026
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <howard-yh.hsu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 361676313; Wed, 26 Oct 2022 19:27:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 27 Oct 2022 09:57:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 27 Oct 2022 09:57:01 +0800
-From: Howard Hsu <howard-yh.hsu@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau
-	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
-Subject: [PATCH] wifi: mac80211: Set TWT Information Frame Disabled bit as 1
-Date: Thu, 27 Oct 2022 09:56:53 +0800
-Message-ID: <20221027015653.1448-1-howard-yh.hsu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1onst9-00Bbw6-LS; Thu, 27 Oct 2022 02:45:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fV35kpkDXwnQC4NXRWRtxKz/MS3eU7C1ONWvnKSUV3zyh+CvjMYlOQO7eNQ1jmKQGXuZY9J9T9mpck4R/HETss0yLqidpMT/a/bVHeIe0UAMJsJM1bpRtXgsLLcjE8+N3iyAhp0ggmlQDptmuIHDbQ8yLoZE8/jrWRwfBWyYjqENRy8brm6kRJmK1uV7meTw8ne4cOd13jsOyoAwr6LDbMIJB3wA5idbnDK0fiTVTW4ihUqlxxfQ49gUZrnGRHHfMMMrLPjUr1JoVCLuEXNBB0ioBmETKhQsaOXsllloEQmF7n/emapQhTZt3KPpJLZPPgk7vfUKFrgtQyXEJFyXGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tTglUEfd/2mxFd6h4tY5fCQG7mkIUfnhA2eEMBOwcFQ=;
+ b=UElpQkkAAhvNdjWozgVJyw55I1j338Mm+FgDaJ+/OwkbKARhQZw12U+mOcaubDZKXm4HGdlGUpINthTKc3p0Ldh2hrzKRYtpKhz2zsQ132fEBOEjC7/9zkwBfg0K+8v3eCxzwfb6SDkCFBYayG1/naCVR6hqLNcvQd/fsOEck5+mUZb1APPgoGFiG8HCYDuBZWy1/mLn/Zfhi4aAoES5TchumJVNDXeytetZ2I8TulZ0HAmVy+Nd9LOlGwa7Pf6TkDIwobaapR+LanQghaZB8KKB4brLWxaTqQGjQTnnqjci19F1ou6h+GlazUtlFUu+v/KcnbmJ+phD4g7CzOPtTQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tTglUEfd/2mxFd6h4tY5fCQG7mkIUfnhA2eEMBOwcFQ=;
+ b=aaT0fBAZWjJIxJMZfgkCwow7hjz6pjKg8s+4E3d35KDuT8hLYolao4PbzJG9bfz+5r8tn63DSdBg8auEDMtmQriQhnDdWPz9x8tk2W6+RwbtxwFshYjuu81wWDASbBkVXC6jbkFQDqGkDjAkKsNh2twOSlrAenAPRg5AgOCtXbA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by CY8PR10MB6609.namprd10.prod.outlook.com
+ (2603:10b6:930:57::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.21; Thu, 27 Oct
+ 2022 02:44:51 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::8eaf:edf0:dbd3:d492]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::8eaf:edf0:dbd3:d492%5]) with mapi id 15.20.5746.028; Thu, 27 Oct 2022
+ 02:44:51 +0000
+Date: Wed, 26 Oct 2022 19:44:46 -0700
+From: Colin Foster <colin.foster@in-advantage.com>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Subject: Re: [PATCH v1 net-next 3/7] dt-bindings: net: dsa: qca8k: utilize
+ shared dsa.yaml
+Message-ID: <Y1nwnhjhb06mg0F/@euler>
+References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
+ <20221025050355.3979380-4-colin.foster@in-advantage.com>
+ <20221025212114.GA3322299-robh@kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221025212114.GA3322299-robh@kernel.org>
+X-ClientProxiedBy: SJ0PR03CA0055.namprd03.prod.outlook.com
+ (2603:10b6:a03:33e::30) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|CY8PR10MB6609:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0e73aa49-c3f4-4764-e491-08dab7c53856
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	f9SjewHRvd9yu9Y4iNL0ZZXMAjau0+vkL4Tri5krFb7w1aJX0dghIkA4TPV6vyRa2zs5fqxJOWPi5Rd4FxQAygmd7WstN4QrS9PeOCQSUDxzlixb8aFJV9Kgwm/SuNmO3mcaBX1U2RniQgcrMI4w1Y/L4OZBFi8mBhPDHWN2qA71AJjjR/4AmKPCV27ue+F2GpykfsoKi2cFXeDULZIAf3U0L2QgZYF3UJGrsSnO2arbL9dXJwwHjm6RPZgJ3BtL9pdXWarkK6fZI15OEEAPOGSNXhLXakwhi4fTBqYRuOzKhMn7Wc5V2v51LC/Hj1kYuSvYO8zCPNcF+mrrSPEqRyD8mp01Q2X+DpXav0WEcrAVg7qgSqxO4FSESW47eRWN+EjG/wc/JNWilEri16Ovmbo6NWNrGQBVlJwGpdAz2eDreIOM8NC6VFpV0fYRA4jS34LtmzJsfcb/8/FlKfR08R7Qc/HqVLOjm7NTqunYXjtvE1HwdZx9XKratH8+9fQqTq+85l64PkeU5+tgTNq3wWyH49B5NaVawZC6sm6Gqm/OHCV2pzoTx3XEJKUe+Xfy22FJ9gUm6J7BjEW276EQbaAvDG1QQ9d5ojSNBlIn6feh2JE6a6K4bdZRiZtaUK0f4Z/pN/PEVzo9trOfwZwn+27MMsGdryzDUC+Ai4Oxd/ZVBY0FhXsJ5YW5PrlJQKHIzbQi+Jt5rtdrm4LFGrHxy8OE7f6914ewMHZ8/G6LLbsUMMt9GeNCnY4fgGZydQWvqA+V50OOcrdOhy2mgIhYVw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(136003)(396003)(346002)(376002)(366004)(39840400004)(451199015)(8676002)(4326008)(66476007)(66556008)(6506007)(6666004)(66946007)(186003)(6512007)(44832011)(2906002)(9686003)(26005)(7416002)(41300700001)(8936002)(478600001)(5660300002)(38100700002)(316002)(86362001)(6486002)(966005)(54906003)(6916009)(33716001)(32563001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?18Qax4U0NE+s0VmOiLzrRffrOPUjj4cZYm+bb9MAuTpj8TcjU5k7kaHDbiml?=
+ =?us-ascii?Q?cFYpfW87SlxvgeeNeOwv1aRV5YqVt/8L3KEL3MUHYzIo4HhtbCe1pNuPfEaE?=
+ =?us-ascii?Q?9d7o5FBXwNsNb/y2Vb4FzAxEnX4j5T/zGCha7avoGKsIBPtNRGQkBhQ727Rw?=
+ =?us-ascii?Q?+5Pw25zDxN8aXK47Q9sfVIvMP8noegIM3FSFvhgaZrx5+Q5Fg1R/LILP42cC?=
+ =?us-ascii?Q?mbdPD4fPKPz0CzktUlLorz5Qr89QrTLPcG8B0kkTWUPen7qcNB0pp5brhRmr?=
+ =?us-ascii?Q?vgEoGGrSrr7rZSiuqOYxdEYtGqX92/iTZ+aiL4Q0BX8uqtYeZ+rsTJ84Nplv?=
+ =?us-ascii?Q?l/MvZYZsxDSJL7tP+PJmXXOJ2hYiSqVjl5LQTCC1s+ulH5BWSjTy4RQCBVNg?=
+ =?us-ascii?Q?/tXie1Ggr6SyKy4PZOwv0a7Inwth9KXh1VDON9oDjyWnFmwJuZY0oZmlWt2G?=
+ =?us-ascii?Q?MjkWxard1KtFYM0TLsOfBySsny8z6XeNXv1LFD9NE8nyLicIFhCD8hunb0cq?=
+ =?us-ascii?Q?AkjB7yEKg3e3UNq7jfIEE3WTK/afklNRAIedz05ujq70ieVs/m8e5Ui0caDT?=
+ =?us-ascii?Q?lACgNpOubjS1lY+TB7/QgrWuA367q563VdfHuYiJFp3c3vWosBXRq4DLsV6z?=
+ =?us-ascii?Q?gRXiq2hmTVNVGtXptwrM3WfylHtvTzUeq+kXClq7yHIP3kvrWMwhLYtNizC6?=
+ =?us-ascii?Q?PiCF0aovYFbmjFAzouWEW74zOvvNpSf380aesNIQcbGVBh2nMw/a+A9UNtlE?=
+ =?us-ascii?Q?1pD34St+M7r14OthqqR+HE8WJmaJeva9+JukKC9veVr13vCcDUeXun7FBeV0?=
+ =?us-ascii?Q?R0gEdD7zhsILcShxLq/z+e/DtN2FbqhuYSTPyt08kFBcpuf4CHcpfXDnojHu?=
+ =?us-ascii?Q?GE4g5dUJ+nLF/ZO2q0XnU9SXTx4DjJ1nh2VAPR6qXdO/rFHut/elfRMu2tkK?=
+ =?us-ascii?Q?EtLVDhZuLBDCtPlhjisT+9OX/vc/2/IhKtOXQnU6dxJVnk1NTbU95OheDZCk?=
+ =?us-ascii?Q?Gm1U5cmafYAqGkeORcxb78rvs+cblafWhHbYxHyQkdovZCZ2h9vU80+vOG8U?=
+ =?us-ascii?Q?U9mqgA5BDa7g6TOrweKdJipixcVwVh5gl8KnNJkS0Eibimd+2OrqIXgEIBX/?=
+ =?us-ascii?Q?QxuHQm+vhwZWtQPyA+ph6pOhRE9qqx1MCAXo+L4+ZOsOiK6rFGhFEgLyNWyD?=
+ =?us-ascii?Q?YPUq9QTmzN8JdVQjA1MdA30b+4jAvLc9rB2Ni2VKjj9ERrsOalMrNEomg+Zl?=
+ =?us-ascii?Q?NmbG+fCdUMhF3Pk4foyGyoTwaBMJVgBiYW3QLg/Rhj+ows5ITmC+l5I3hrtJ?=
+ =?us-ascii?Q?Jcnm6g0GZ781ajmb0wT/9tsm9cBc8R0qbneJs+KqtUJVtCuj14gAI3epE5+O?=
+ =?us-ascii?Q?0BfGtt9/aMiZxy3fh6YTLnFrNb/xNNm6yz0ttEEhf/XPe+wxwcIJtpBlp+5B?=
+ =?us-ascii?Q?9319VoXLL2ca7zogtl/gCn7yNhMsaA/fUs7DXpGOU5s7w4K7IdliWtDEcB5Z?=
+ =?us-ascii?Q?tM77S5uRer1wfFIStI6KwQqx8ZnpUq7pPYPN5rH0oVefD7p1IuYawT4VLEiu?=
+ =?us-ascii?Q?VJYFEDFIp0cgjN+Fix94WiM1vuJ/eCCG5UBlBsdVSmi4/1KTUjzDmNIuck7a?=
+ =?us-ascii?Q?gA=3D=3D?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0e73aa49-c3f4-4764-e491-08dab7c53856
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2022 02:44:51.1442
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: C3oXzabisqZUq1Yc49WMctuVeqYayjRrb2XelgQt05l3J2yu2tnRmNzvu/D0gvRYRXTV5FnSmLPw9ucgrSlqhN0risrCyhUvTydaVnZ7t1o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR10MB6609
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_192749_328126_9767AE90 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221026_194459_745775_0B18663B 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +150,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The TWT Information Frame Disabled bit of control field of TWT Setup
-frame shall be set to 1 since handling TWT Information frame is not
-supported by current mac80211 implementation.
+Hi Rob,
 
-Fixes: f5a4c24e689f ("mac80211: introduce individual TWT support in AP mode")
+On Tue, Oct 25, 2022 at 04:21:14PM -0500, Rob Herring wrote:
+> On Mon, Oct 24, 2022 at 10:03:51PM -0700, Colin Foster wrote:
+> > The dsa.yaml binding contains duplicated bindings for address and size
+> > cells, as well as the reference to dsa-port.yaml. Instead of duplicating
+> > this information, remove the reference to dsa-port.yaml and include the
+> > full reference to dsa.yaml.
+> 
+> I don't think this works without further restructuring. Essentially, 
+> 'unevaluatedProperties' on works on a single level. So every level has 
+> to define all properties at that level either directly in 
+> properties/patternProperties or within a $ref.
+> 
+> See how graph.yaml is structured and referenced for an example how this 
+> has to work.
 
-Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
----
- net/mac80211/s1g.c | 2 ++
- 1 file changed, 2 insertions(+)
+Thanks for pointing me to this. I didn't know about
+https://github.com/devicetree-org/dt-schema until now, so I'll take a
+look. I was primarily reading the schemas in net/dsa/* to try to get a
+full understanding of the DT schema nuances, so these types of nudges
+really help me.
 
-diff --git a/net/mac80211/s1g.c b/net/mac80211/s1g.c
-index 8ca7d45d6daa..cb2ab8fd4848 100644
---- a/net/mac80211/s1g.c
-+++ b/net/mac80211/s1g.c
-@@ -111,6 +111,8 @@ ieee80211_s1g_rx_twt_setup(struct ieee80211_sub_if_data *sdata,
- 					 IEEE80211_TWT_REQTYPE_SETUP_CMD);
- 		goto out;
- 	}
-+	/* TWT Information not supported yet */
-+	twt->control |= IEEE80211_TWT_CONTROL_RX_DISABLED;
- 
- 	drv_add_twt_setup(sdata->local, sdata, &sta->sta, twt);
- out:
--- 
-2.18.0
+And I see that Vladimir Oltean has responded to other parts of the
+email, so I'll leave this as a simple "thanks" and keep that context
+going forward.
 
 
