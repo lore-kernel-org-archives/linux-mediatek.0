@@ -4,83 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF983C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 09:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B61C6C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 10:01:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J1cuO+mDXwgJcJinyJ+X0VtQ0L8BPvbHrb6giuMf4+Q=; b=ZZu99V/zs1SDa2Xgweu5wXNffc
-	ChUCp3uOar6GnDlgLO+bbqXSqHC2u7la+C0oYP6J0b7W9TlQ8pNdj+1uYOxsW4c3oK0GSVuSf+l1K
-	sFBv8UJIogcRmfcTFz371pTidtFZ8dUc1F7wjw4gMlcdjMnY2gcC1OzJzKWYzRDfbUXyHgFESNj6f
-	6SecpQgPLDtNhmbEksKY+OMElvt9tpeLovJvUpYG4/bjMQMZ24GKGLDes277m+EnstT3wT+kyZsTt
-	dXiFGciPJdb5dcmkfxTAXqFSvNwXVlb5D9s78s5O/yCtpJB2wfXEmwVSXlqitGJ+XeX6CuHGen/hO
-	U6V+tc+Q==;
+	bh=E3OBCojcudupvCR967/UqBJR+xxArYpVXUF1wcsRKh0=; b=kyzTzPYdW00d0+DZAsX08P2hIm
+	yZwdjozavLHBX5/y8CSH0HtzBYKi7zzUYMByD9n8bGfJOR++hS9iTnpaxc2B9H9wkb3BFN5SzP8BK
+	OF5NCCFmN9otjxjsTtUGvwrqbsQnF7C4XXqqrvXgD+i/SiHBhs/bdMIQb+ORgC19VbSMOcnMmBiN6
+	L0WD9xhfwjzDk6jGfge1hWUf2UsGtJRe1trJmjF5OMpH3CGqU0zh9l/FEG8QJnAYVzQiWrLgk/hBf
+	QAKELHEt1Rc1fX2BQDxOd88mVmPIMEpJmELQn4ubCS2+iQrfBsDbV/9UlmCIcO+/ghKaAUxQdjkdm
+	G/HIm9Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onzcr-00Cghz-8g; Thu, 27 Oct 2022 09:56:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onzbg-00CgDQ-Qw; Thu, 27 Oct 2022 09:55:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=J1cuO+mDXwgJcJinyJ+X0VtQ0L8BPvbHrb6giuMf4+Q=; b=WIbkAtr5KnbTQHbrwn0qLdDmDR
-	DrRd0y6jes1QtVyhfBXw2JawyAvNDEWIcDGLSaRjFmFcQZXgXmO0FNQBQWfsX+wy1I1caSBu57lng
-	OGCdweWEKIfpk4X7VRpD+0fX/mQWHQ9AKJfFWQTLn3uwjoirteE4CEewwA3Yq/+YZmEJ4sHRJWQN2
-	a6t2eLmgM0zEyKBg+oxmVSsPyUKdtZrU6gzasU7RTNNOBXic4zckJCGm+FevFaYFqhHyGPY6LKHe5
-	kNnrBXml9UqGy+j+U8e6lJX4GRuvtP/S8iTuSmcfSCpdwR4NxDjgxAt7zGbfcb4WmgqZ7x7TEL+YF
-	UZ9n7z7Q==;
+	id 1onzhi-00Cig4-Mu; Thu, 27 Oct 2022 10:01:39 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onzbc-006pOn-NC; Thu, 27 Oct 2022 09:55:23 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1onzhV-00CicN-7D; Thu, 27 Oct 2022 10:01:27 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 817CD66028D1;
-	Thu, 27 Oct 2022 10:55:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21AAC66028CF;
+	Thu, 27 Oct 2022 11:01:19 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666864517;
-	bh=WgoDvhQSuu9tCIfcj5g2O+S6s8LD3ydjrKtrkug1bN8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SnKNDqmZtNk88QMipJd9MBel8LetO0m14vAXi+1AN6ZMUBQcwyma2gpDrn4WqMyNP
-	 w7bIFB2zyhQ5HHAuyg+YVo+VezBU9CFCJ0jSxp4CRr91z4hTW+CpLNWVPMoBJSZBc1
-	 lLH37j84X32yTegGV2SPVOZlM4f2I5tV0VC9yWynRspbJXgRg7NdRQJ+y1FH7MEAYa
-	 CEquSj+IFB8KgjiD7eFvVqzB8auWh4xsWthPf3lO7Je6aWS/W+ijqEL2HC2SgnAWIn
-	 t3a76O4ei/O8+helnxhfCZuZJcsOoWH84HKBdKYrDynXMWXgKoKULhkuvvS4V4i6k6
-	 6x+SYGwIECTQQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	hsinyi@chromium.org,
-	nfraprado@collabora.com,
-	allen-kh.cheng@mediatek.com,
-	sam.shih@mediatek.com,
-	andrew@lunn.ch,
-	sean.wang@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 4/6] arm64: dts: mediatek: mt6795: Add support for eMMC/SD/SDIO controllers
-Date: Thu, 27 Oct 2022 11:55:02 +0200
-Message-Id: <20221027095504.37432-5-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20221027095504.37432-1-angelogioacchino.delregno@collabora.com>
-References: <20221027095504.37432-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1666864880;
+	bh=AB1aP9kwM/VwRRkN+/wjhOvonTMwp6saazq/+FJtpWc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nRjRmmzVvgQJpr/h0Tp/P1Qf9rpckVNTKqkO+iB9FyWrDTZGi3veSqviqNneNshhP
+	 W0BMm5lonVgi70d0R38IoxZJKZRDXXsyoeQ5MGmG0m+X4ovpN1eE/CjGIQX1o4aP3g
+	 b2souJy9giA0QrMaZH0kXbny4gyuFBE17CX8yFLvc3yrWesoauIbndfHnZOjS+b2N0
+	 QCruCMKZ4rdlvzW3+ix9e9OVePdHvcTAQbodDLoJ9bwYZ2/lg3ppdaYeMS1MrqCuS0
+	 4QaCOjwyBbbjH3LDyh15SKpdLjKDqOJcH8OMsPwm2DVankGQJTDsE8fwcvJujlvMgr
+	 cypZa0SBjqEFw==
+Message-ID: <3b09d15a-2cc2-c485-5045-820ccd5863c3@collabora.com>
+Date: Thu, 27 Oct 2022 12:01:16 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH 7/7] arm64: dts: mediatek: Add support for MT6795 Sony
+ Xperia M5 smartphone
+Content-Language: en-US
+To: Konrad Dybcio <konrad.dybcio@somainline.org>, robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, vkoul@kernel.org,
+ chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com,
+ hsinyi@chromium.org, nfraprado@collabora.com, allen-kh.cheng@mediatek.com,
+ fparent@baylibre.com, sam.shih@mediatek.com, sean.wang@mediatek.com,
+ long.cheng@mediatek.com, wenbin.mei@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+References: <20220729104441.39177-1-angelogioacchino.delregno@collabora.com>
+ <20220729104441.39177-8-angelogioacchino.delregno@collabora.com>
+ <a8fa9e22-8c3f-60b2-a0db-01cfd5c37765@somainline.org>
+ <17139e24-d33c-8240-cd4a-d87fb3b29276@collabora.com>
+ <9ced2822-a9d2-2e59-fe40-6c6f690be487@somainline.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <9ced2822-a9d2-2e59-fe40-6c6f690be487@somainline.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_105521_024332_55643900 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221027_030125_624910_B257FDB1 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,68 +85,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the mmc nodes to support all of the four controllers, used for
-eMMC, SD/MicroSD and SDIO storage.
-All of these controller nodes are left disabled by default, as
-usage is board dependent.
+Il 27/10/22 11:40, Konrad Dybcio ha scritto:
+> 
+> On 27/10/2022 11:28, AngeloGioacchino Del Regno wrote:
+>> Il 29/07/22 14:00, Konrad Dybcio ha scritto:
+>>>
+>>>
+>>> On 29.07.2022 12:44, AngeloGioacchino Del Regno wrote:
+>>>> Add a basic support for the Sony Xperia M5 (codename "Holly")
+>>>> smartphone, powered by a MediaTek Helio X10 SoC.
+>>>>
+>>>> This achieves a console boot.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno 
+>>>> <angelogioacchino.delregno@collabora.com>
+>>
+>> Hello Konrad,
+>> First of all, I'm sorry for the very late reply.
+>>
+>>>> ---
+>>>>   arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>>>>   .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 90 +++++++++++++++++++
+>>>>   2 files changed, 91 insertions(+)
+>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile 
+>>>> b/arch/arm64/boot/dts/mediatek/Makefile
+>>>> index af362a085a02..72fd683c9264 100644
+>>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>>>> @@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6779-evb.dtb
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+>>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-sony-xperia-m5.dtb
+>>> -holly.dtb?
+>>>
+>>
+>> I prefer using the commercial name to identify the device.
+>> "Holly" is the smartphone project codename and that is mentioned almost nowhere:
+>> the aim here is to enhance readability as to make it immediately understandable
+>> that this devicetree is for the Xperia M5 device.
+> 
+> Ok, sounds good.
+> 
+> 
+>>
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts 
+>>>> b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+>>>> new file mode 100644
+>>>> index 000000000000..94d011c4126c
+>>>> --- /dev/null
+>>>> +++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+>>>> @@ -0,0 +1,90 @@
+>>>> +// SPDX-License-Identifier: GPL-2.0-only
+>>>> +/*
+>>>> + * Copyright (c) 2022, Collabora Ltd
+>>>> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> + */
+>>>> +
+>>>> +/dts-v1/;
+>>>> +#include "mt6795.dtsi"
+>>>> +
+>>>> +#include <dt-bindings/gpio/gpio.h>
+>>> Looks unused.
+>>>
+>>
+>> Right, I'll remove that in v2.
+>>
+>>>> +
+>>>> +/ {
+>>>> +    model = "Sony Xperia M5";
+>>>> +    compatible = "sony,xperia-m5", "mediatek,mt6795";
+>>> sony,holly?
+>>>
+>>
+>> I'm sorry, but I can't understand the sense of adding that compatible string to
+>> the mix. To the kernel, it doesn't mean anything - and we already have another
+>> string advertising the specific machine, which is "sony,xperia-m5".
+> 
+> I was suggesting replacing xperia-m5 with holly, but since we agreed on keeping
+> 
+> m5 in the dtb name, I suppose it's fine for this one to stay too.
+> 
+> 
+>>
+>> Of course, there is no Xperia M5 with a different SoC and, even if there was a
+>> xperia-m5 with a different SoC, we anyway have both a machine compatible and a
+>> SoC compatible in here, so that would still not pose any issue.
+>>
+>>>> +    chassis-type = "handset";
+>>>> +
+>>>> +    aliases {
+>>>> +        mmc0 = &mmc0;
+>>>> +        mmc1 = &mmc1;
+>>>> +        serial0 = &uart0;
+>>>> +        serial1 = &uart1;
+>>>> +    };
+>>>> +
+>>>> +    memory@40000000 {
+>>>> +        device_type = "memory";
+>>>> +        reg = <0 0x40000000 0 0x1E800000>;
+>>> Lowercase hex in size. Also, doesn't the bootloader fill it in?
+>>>
+>>
+>> Updating the device to the latest software version will give you a bootloader
+>> that fills that in, but the first-ever software release contains one that will
+>> not do that in particular conditions (fastboot boot).
+> 
+> Ugh. If only vendors tested their software before shipping it to users..
+> 
+> I think it's worth to adding a comment mentioning that, though.
+> 
+> 
+>>
+>>>> +    };
+>>>> +
+>>>> +    reserved_memory: reserved-memory {
+>>>> +        #address-cells = <2>;
+>>>> +        #size-cells = <2>;
+>>>> +        ranges;
+>>>> +
+>>>> +        /* 128 KiB reserved for ARM Trusted Firmware (BL31) */
+>>> Is that true for all devices with this SoC, or..? If so, it may be worth
+>>> moving this into mt6795.dtsi.
+>>>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 41 ++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+Sorry again, I forgot to reply to this question, so addressing that now:
+no, that's not true for all devices with this SoC.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index 39677eec388b..1564f2c127c4 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -382,5 +382,46 @@ uart3: serial@11005000 {
- 			dma-names = "tx", "rx";
- 			status = "disabled";
- 		};
-+
-+		mmc0: mmc@11230000 {
-+			compatible = "mediatek,mt6795-mmc";
-+			reg = <0 0x11230000 0 0x1000>;
-+			interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_MSDC30_0>,
-+				 <&topckgen CLK_TOP_MSDC50_0_H_SEL>,
-+				 <&topckgen CLK_TOP_MSDC50_0_SEL>;
-+			clock-names = "source", "hclk", "source_cg";
-+			status = "disabled";
-+		};
-+
-+		mmc1: mmc@11240000 {
-+			compatible = "mediatek,mt6795-mmc";
-+			reg = <0 0x11240000 0 0x1000>;
-+			interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_MSDC30_1>,
-+				 <&topckgen CLK_TOP_AXI_SEL>;
-+			clock-names = "source", "hclk";
-+			status = "disabled";
-+		};
-+
-+		mmc2: mmc@11250000 {
-+			compatible = "mediatek,mt6795-mmc";
-+			reg = <0 0x11250000 0 0x1000>;
-+			interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_MSDC30_2>,
-+				 <&topckgen CLK_TOP_AXI_SEL>;
-+			clock-names = "source", "hclk";
-+			status = "disabled";
-+		};
-+
-+		mmc3: mmc@11260000 {
-+			compatible = "mediatek,mt6795-mmc";
-+			reg = <0 0x11260000 0 0x1000>;
-+			interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_MSDC30_3>,
-+				 <&topckgen CLK_TOP_AXI_SEL>;
-+			clock-names = "source", "hclk";
-+			status = "disabled";
-+		};
- 	};
- };
--- 
-2.37.2
+I'm practically sure that all commercial devices that were shipped at that time
+require the same, but here upstream we also have a MT6795 dev board devicetree,
+which uses a much newer bootloader and possibly needs a different secmon carveout,
+if any at all.
+
+Hence, this one cannot be transferred to mt6795.dtsi.
 
 
