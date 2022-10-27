@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC6CC67871
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 08:21:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86454C67871
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 08:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YuBgAKkdp1VxMJgKkN9a77evzVBtMQ6NceJPpcXRQJI=; b=yQEZ+lTqnu9MK8dNU0YaHoRaz8
-	/rdous7wHku/pnREfacDrQCzNJL9MTyNam60lyD8Fngj4EKxZQMJvKFUkS+ZZLEKxXQ1gBa5ydEDs
-	wKDmYNm97ZLMpuGB4JGQ/MWJU47SpWXtBXsZebGbFKwDdzUE0ySGH4p1HtXkYs3ZXT0Y7m7qVG8Ty
-	L/Jw5Ctqv45c1alWbKuY7vQI2c/Q7G0GZ5kEJu8OEAtvrUQgPhDCEojjU018Zh3REyb/AzV8ptWBK
-	sg4ByPtlYMy/zmlH8IsxrKF9G5JZYClP9exdJhOEIbvw8VkUwN9R8IWu0Wr83UG/cCYeUAJhLPeyl
-	J5TKqH1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TwDRdAHV6omantZx30uYTP1G+rwKWyLT0MPaZq06kLw=; b=e4oNtz641XbrLJAHG4AtAt15EY
+	J2sML4eeCai5ItOinO1Ck4X5dXJztSMKZR3AZCXKHcU/wo/AegJUBNNYxEy8vUYdKkyiMmrsVV9Hf
+	Yc1SU3k8EiYEr0u45004ISDqkhYct1PBPa2YbkFgsm8ddq0rwzewGSKpREf/N+cSe4T88blKv6fN6
+	h7lZHhgMxNkB2ixuVwIFtUKwD0RsYWRILAXb/f4nJlimEBJ1NjUrlmLkCF/cB3Q8+6Xdn3TGA4Vb1
+	egqEMJVRNUhkAyh0ZzEmlifSvGOSaEOhzIFSt+MaRvMLUxKFtsDzCfCkcUA+wIACl+m/dweRndG4v
+	9B9NWHyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ony8x-00CM8x-UB; Thu, 27 Oct 2022 08:21:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ony90-00CMAD-QS; Thu, 27 Oct 2022 08:21:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ony8V-00CLya-J9; Thu, 27 Oct 2022 08:21:12 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A0C266028C0;
-	Thu, 27 Oct 2022 09:21:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666858870;
-	bh=J7K7i04eVT2PIfwxr81wlM3HFvdF43HmhvXykO4DStA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WHFnE0yz/vwKClukYr820fflZVz9Ph9B1SoUAjrAVzya5Hk/7ISavMuQo4BYgaekl
-	 /HWmJnPAWg2qqfZZpyVhmyKi2yG909VaTOVQmwlJY0P9xRYEbvwNge027sRkKFZEyY
-	 ht3gjwrUDgKweeb+dZwrVvcjejMZVfD7FR/0QKzOM1VHu6oW95m3ecEDpM3wXSquqJ
-	 w/MZR2+4U1HpXvZpoO/GMC24tMJpqhvHH2R4XKJAwQW3FQpgUec3rJe5YYtsYojw71
-	 gwNrmiX8VRSvETbtDItfaTQeU84EX7AMPRE/acPSKCf4MNLNW87tJhD8lF6XXwxrCh
-	 UNcQOe/ccW5cw==
-Message-ID: <1dbba01b-157d-c04b-8f06-4d9ec79b1d5c@collabora.com>
-Date: Thu, 27 Oct 2022 10:21:06 +0200
+	id 1ony8k-00CM2Z-S8; Thu, 27 Oct 2022 08:21:28 +0000
+X-UUID: 5bacff286b0f4c0bb2c99b3b458d170f-20221027
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TwDRdAHV6omantZx30uYTP1G+rwKWyLT0MPaZq06kLw=;
+	b=MlyHXQpQxujp8tVsEaF8CZx7QGd1Ql+mmmL4UvmbRxkqJ7Xz5qvC+fnun1fuQidb0XlhUfyRMjXGJfe/lWUizF+0uQb5hzLUvzfIRf61+u8LYXZSg3CHNrlWCkKnv2oEuRIpqHSIuHBs5DsKmShob1f8MdoIBGtFWHF8DXO0+gw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:da31fedb-595e-40f4-804b-28e274ce41b5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:955a456d-89d3-4bfa-baad-dc632a24bca3,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 5bacff286b0f4c0bb2c99b3b458d170f-20221027
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <zhaoping.shu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 87857456; Thu, 27 Oct 2022 01:21:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 27 Oct 2022 16:20:46 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 27 Oct 2022 16:20:43 +0800
+From: zhaoping.shu <zhaoping.shu@mediatek.com>
+To: <loic.poulain@linaro.org>, <ryazanov.s.a@gmail.com>,
+	<johannes@sipsolutions.net>, <davem@davemloft.net>, <edumazet@google.com>,
+	<kuba@kernel.org>, <pabeni@redhat.com>, <matthias.bgg@gmail.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <srv_heupstream@mediatek.com>, <haijun.liu@mediatek.com>,
+	<xiayu.zhang@mediatek.com>, <lambert.wang@mediatek.com>, zhaoping.shu
+	<zhaoping.shu@mediatek.com>, "hw . he" <hw.he@mediatek.com>
+Subject: [PATCH net v1] net: wwan: mhi: fix memory leak in mhi_mbim_dellink
+Date: Thu, 27 Oct 2022 16:20:40 +0800
+Message-ID: <20221027082040.149468-1-zhaoping.shu@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH v2 02/19] clk: mediatek: Add MT8188 apmixedsys clock
- support
-Content-Language: en-US
-To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Richard Cochran <richardcochran@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
- <20221024094254.29218-3-Garmin.Chang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221024094254.29218-3-Garmin.Chang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_012111_790451_46563379 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20221027_012126_941327_0C878CAD 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,49 +81,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/10/22 11:42, Garmin.Chang ha scritto:
-> Add MT8188 apmixedsys clock controller which provides Plls
-> generated from SoC 26m and ssusb clock gate control.
-> 
-> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-> Change-Id: I3b1b44155cc5bfe5ba6e860de857e7e9f48b66a7
-> ---
->   drivers/clk/mediatek/Kconfig                 |  11 ++
->   drivers/clk/mediatek/Makefile                |   1 +
->   drivers/clk/mediatek/clk-mt8188-apmixedsys.c | 153 +++++++++++++++++++
->   3 files changed, 165 insertions(+)
->   create mode 100644 drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-> 
+From: hw.he <hw.he@mediatek.com>
 
-..snip..
+MHI driver registers network device without setting the
+needs_free_netdev flag, and does NOT call free_netdev() when
+unregisters network device, which causes a memory leak.
 
-> diff --git a/drivers/clk/mediatek/clk-mt8188-apmixedsys.c b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
-> new file mode 100644
-> index 000000000000..f09e11d0261e
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8188-apmixedsys.c
+This patch sets needs_free_netdev to true when registers
+network device, which makes netdev subsystem call free_netdev()
+automatically after unregister_netdevice().
 
-..snip..
+Fixes: aa730a9905b7 ("net: wwan: Add MHI MBIM network driver")
+Signed-off-by: hw.he <hw.he@mediatek.com>
+Signed-off-by: zhaoping.shu <zhaoping.shu@mediatek.com>
+---
+ drivers/net/wwan/mhi_wwan_mbim.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> +
-> +static int clk_mt8188_apmixed_probe(struct platform_device *pdev)
-> +{
-> +	struct clk_hw_onecell_data *clk_data;
-> +	struct device_node *node = pdev->dev.of_node;
-> +	int r;
-> +
-> +	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-> +	if (!clk_data)
-> +		return -ENOMEM;
-> +
-> +	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-> +	if (r)
-> +		goto free_apmixed_data;
-> +
-> +	r = mtk_clk_register_gates(node, apmixed_clks, ARRAY_SIZE(apmixed_clks), clk_data);
+diff --git a/drivers/net/wwan/mhi_wwan_mbim.c b/drivers/net/wwan/mhi_wwan_mbim.c
+index 6872782e8dd8..ef70bb7c88ad 100644
+--- a/drivers/net/wwan/mhi_wwan_mbim.c
++++ b/drivers/net/wwan/mhi_wwan_mbim.c
+@@ -582,6 +582,7 @@ static void mhi_mbim_setup(struct net_device *ndev)
+ 	ndev->min_mtu = ETH_MIN_MTU;
+ 	ndev->max_mtu = MHI_MAX_BUF_SZ - ndev->needed_headroom;
+ 	ndev->tx_queue_len = 1000;
++	ndev->needs_free_netdev = true;
+ }
+ 
+ static const struct wwan_ops mhi_mbim_wwan_ops = {
+-- 
+2.17.0
 
-Please use mtk_clk_register_gates_with_dev().
-
-Regards,
-Angelo
 
