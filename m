@@ -4,78 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF7FC38A2D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Oct 2022 23:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2A1FA3740
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 01:26:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CAlVcangjllWE4d/TKwBzq5t2wvRwgrX82tWmkgivY8=; b=0d2cPvwz9ls3jBOxefnzxGNTpN
-	z/8y7HVniutDhiSmiYDPUeNh44euePePvNi0TAD17I3pWoCdcty9VlCQLWhtpErds4iDSwTpDmhvA
-	Onxn4lkoL39pCxm2vd3obP4s4WUaiFk1l1SIQiaNl3BzA85t5kw2vqQW64lwcCRhKgvBXE4YpcqhM
-	qTsUrEhe7tAx8agZ8TcZwCjzD7SORUKk+j7Eqgso5UsqJI2juCuYTzZBOm9HrzpjUaUIA553sMvof
-	JvMcfg1ZWH1/XV3BTxc/pQ5GJZ5Takr+NKLRRNTnBgeRxYmU9vhvKWc7ZlbpC4UONseKbcDCbPtqh
-	ej21OQLA==;
+	bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=; b=JBMsNyIUjErE/7Ew90JiEWdBu8
+	hrnc+q0QCNnd7bpXh0s3sj9g+5dCgUHEELpX7Q2f0kAngxXWhrvLFjF1WDsE2jACTrAz/4oJEeU2S
+	uXEP2o6QEGWrIdRYrIPWSgTSeaovNTJKrSyYfM+sbHzgxLvV7AvbJ4Kqt4h0BF8QW55Lg2e+h7yzI
+	Vn261YHhNwRMreb2+x2Z7NoqcGe/a1xwQJEt6bKKzHgsI1qxn2ttcdBut7KwMoAbkDcyInKCi/sr6
+	/UFyf27avaQgBvfANFOD6REEf29V+ZojbkrNNpXUykB8LmMp7RuwuRETIFIfennPd8M8BSoSyLOsE
+	PtAKEeZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onqAM-00BKpQ-Oz; Wed, 26 Oct 2022 23:50:34 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1onreo-00BUaG-1t; Thu, 27 Oct 2022 01:26:06 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onqAA-00BKnY-Rm
-	for linux-mediatek@lists.infradead.org; Wed, 26 Oct 2022 23:50:26 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id t186so21094384yba.12
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Oct 2022 16:50:22 -0700 (PDT)
+	id 1onrei-00BUZW-1i; Thu, 27 Oct 2022 01:26:01 +0000
+Received: by mail-ej1-x635.google.com with SMTP id n12so390987eja.11;
+        Wed, 26 Oct 2022 18:25:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CAlVcangjllWE4d/TKwBzq5t2wvRwgrX82tWmkgivY8=;
-        b=LP32NRkC6Hss/3NIEHMZ+M93o8oVa93//jhRrkZ8NJcHBVGrGpbDBS9Ejq/W8mHhdR
-         wqctEN6vFfZ/GbE2u1s6IzS9VWuxMsT0EaCdSP6RTwd9/eBfJ3lAKCwh7UhGugqF7l+q
-         6mUjjr9Q7cj0HssPcvA6kqS/n0CaMz8TDkXEQFzHH8VSoaCURhFWrbubbI9RUa/vbCXX
-         gK6pDBeNkxD5IXl4TIkDbklprADGB8mR8qfywdbRkvELXyKrOh5Qi+0+8tb/b79XNrzZ
-         lT7/T5i9CccO94gI4VMdV6TrbrvXwtrHZA+/cAGI8HPc5JB0qfcZXX8iSw4YLagAuwSO
-         8wAQ==
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=;
+        b=Ak9cFoMVeWMSUIAGFSQkCJHFveAgowrzclOz8E4R2ovNZinoB7cMxtzP7UJ/FS1MhZ
+         aIQokrDMuaFVyObAva5a9obdhGVc0TwHF/sqmrLQoYKqsWBtpU7iUc2XlX4U44VIx3Fl
+         x4lm958gv/LZXmUtpDAvwe0Xa9ywn99PinYj+U49u2/uv07NVu8IdUgBKvZ4+2iiRaS3
+         51j7VannowB5ZDLKDDlSh9Ip7bZdQh4pmCNSJgbMbOb17pBnjE+VQD/wO5vTADdy40DG
+         99idyhZFj3/rxP/5K4LaE0m+b3wJsquLcBbqrMspfJKC+TzxL+q2Jm9yzSWNvgyyMeOD
+         cJjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CAlVcangjllWE4d/TKwBzq5t2wvRwgrX82tWmkgivY8=;
-        b=fch3szENuXoh9iQ5g5FxWgEDveNZwFH3ciX8Rrem1hRAY/Sk7/XNAb4+K2maiFluwT
-         LoNSylfoQWueIio8uLI9khyfE6Nx89OOe+g3XyuNa8wMltnYTIIt0odt+HN5kVP3b/ht
-         FP8vF84ynxXVv6mfuhQMjqqGyv/NMQw4wYeON0q19xvuxWSj+LFyBcnv4xP1X2C9E3W3
-         NfYgsN22YtizKIi8qJFPCUr58iBT3DyWS1Y/9daftXNrtrSLL4DpZcWqd2RXgqdHkArr
-         FGDcEBg18PhZCqIvW/UvoPZqHNSIo3kPHcQaMTx2nofJ+G9nte9NkCkmC8OgdckMzMC6
-         Qnow==
-X-Gm-Message-State: ACrzQf2EpgEz/feK8FiDjfOIMF+TcIQxpZR95aWMNu2IBFui1hxtj+dd
-	RtrYae299OZegyIUXuGApxE1c3KcvdeNxEKvvPD20w==
-X-Google-Smtp-Source: AMsMyM4czU6uYwVoNp6dsLDT0v7+1AaaSrOFTSC8XL2axVl5nfOHLcJW7UhxUB5s/qGWg8vf3exHj0FkEqsakZ39W8k=
-X-Received: by 2002:a25:3812:0:b0:6cb:446b:69fd with SMTP id
- f18-20020a253812000000b006cb446b69fdmr13916888yba.59.1666828221080; Wed, 26
- Oct 2022 16:50:21 -0700 (PDT)
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=;
+        b=UnFg1pZIBkXgFhyhx3+ao57n5qaIjahjHhYbhqg63dO/nGEvTiyvLRxTOf6pfA/cRZ
+         GxMF/IuEaJcqZ2UnCHWZUGZaECBlfADyLnsfvf0aoMVGG/Kn6sSo+X2B3zb+/wRB6DZA
+         Yxqx8QUgE0qJ5SZoRwGaogO/5aqEHncDHWyZetJOB9izMprqlwszCd5p6hkbTFy2xsEP
+         UGja7B+PRNxECk5bdVagg0TMWfX+cMp6v6OrSboKZYINMjxr/tuawKSLj1UofgtHO3l8
+         5WYLlpmzXFNGzIWM0i5+QG3TrSEPbDEY4smBxzdtB1qZ6g05YcDukLip2cCvhmONbWK2
+         5AXA==
+X-Gm-Message-State: ACrzQf1cq8rQLh/XiPWcHGqA3R0T/XQlwjhSsCwmO6G7rIJAuA4njTrD
+	6N9xjsNeEihgBreyhRmPf+c=
+X-Google-Smtp-Source: AMsMyM6jmu231VAY0bBmdx9jmWK53PBwcm6TKFHHTLvhIiaAps0fm87Ok/ITHE9SN204+ArviR9/DA==
+X-Received: by 2002:a17:907:744:b0:741:36b9:d2cc with SMTP id xc4-20020a170907074400b0074136b9d2ccmr38493473ejb.613.1666833956870;
+        Wed, 26 Oct 2022 18:25:56 -0700 (PDT)
+Received: from skbuf ([188.27.184.197])
+        by smtp.gmail.com with ESMTPSA id q19-20020a170906389300b00773f3ccd989sm10022ejd.68.2022.10.26.18.25.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Oct 2022 18:25:56 -0700 (PDT)
+Date: Thu, 27 Oct 2022 04:25:53 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Colin Foster <colin.foster@in-advantage.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Subject: Re: [PATCH v1 net-next 3/7] dt-bindings: net: dsa: qca8k: utilize
+ shared dsa.yaml
+Message-ID: <20221027012553.zb3zjwmw3x6kw566@skbuf>
+References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
+ <20221025050355.3979380-4-colin.foster@in-advantage.com>
+ <20221025050355.3979380-1-colin.foster@in-advantage.com>
+ <20221025050355.3979380-4-colin.foster@in-advantage.com>
+ <20221025212114.GA3322299-robh@kernel.org>
+ <20221025212114.GA3322299-robh@kernel.org>
 MIME-Version: 1.0
-References: <20221026233839.1934419-1-surenb@google.com>
-In-Reply-To: <20221026233839.1934419-1-surenb@google.com>
-From: Suren Baghdasaryan <surenb@google.com>
-Date: Wed, 26 Oct 2022 16:50:10 -0700
-Message-ID: <CAJuCfpHqEuGSOZptb1-F1kx72Zu+3Rpnqp0qvW0b4SCdyBqeLw@mail.gmail.com>
-Subject: Re: [PATCH v5 1/1] psi: stop relying on timer_pending for poll_work rescheduling
-To: peterz@infradead.org
-Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com, 
-	vincent.guittot@linaro.org, dietmar.eggemann@arm.com, rostedt@goodmis.org, 
-	bsegall@google.com, mgorman@suse.de, bristot@redhat.com, 
-	matthias.bgg@gmail.com, minchan@google.com, yt.chang@mediatek.com, 
-	wenju.xu@mediatek.com, jonathan.jmchen@mediatek.com, 
-	show-hong.chen@mediatek.com, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel-team@android.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221025212114.GA3322299-robh@kernel.org>
+ <20221025212114.GA3322299-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_165022_960052_91A7C8C2 
-X-CRM114-Status: GOOD (  40.92  )
+X-CRM114-CacheID: sfid-20221026_182600_180492_5355A4C5 
+X-CRM114-Status: GOOD (  24.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,236 +111,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 26, 2022 at 4:38 PM Suren Baghdasaryan <surenb@google.com> wrote:
->
-> Psi polling mechanism is trying to minimize the number of wakeups to
-> run psi_poll_work and is currently relying on timer_pending() to detect
-> when this work is already scheduled. This provides a window of opportunity
-> for psi_group_change to schedule an immediate psi_poll_work after
-> poll_timer_fn got called but before psi_poll_work could reschedule itself.
-> Below is the depiction of this entire window:
->
-> poll_timer_fn
->   wake_up_interruptible(&group->poll_wait);
->
-> psi_poll_worker
->   wait_event_interruptible(group->poll_wait, ...)
->   psi_poll_work
->     psi_schedule_poll_work
->       if (timer_pending(&group->poll_timer)) return;
->       ...
->       mod_timer(&group->poll_timer, jiffies + delay);
->
-> Prior to 461daba06bdc we used to rely on poll_scheduled atomic which was
-> reset and set back inside psi_poll_work and therefore this race window
-> was much smaller.
-> The larger window causes increased number of wakeups and our partners
-> report visible power regression of ~10mA after applying 461daba06bdc.
-> Bring back the poll_scheduled atomic and make this race window even
-> narrower by resetting poll_scheduled only when we reach polling expiration
-> time. This does not completely eliminate the possibility of extra wakeups
-> caused by a race with psi_group_change however it will limit it to the
-> worst case scenario of one extra wakeup per every tracking window (0.5s
-> in the worst case).
-> This patch also ensures correct ordering between clearing poll_scheduled
-> flag and obtaining changed_states using memory barrier. Correct ordering
-> between updating changed_states and setting poll_scheduled is ensured by
-> atomic_xchg operation.
-> By tracing the number of immediate rescheduling attempts performed by
-> psi_group_change and the number of these attempts being blocked due to
-> psi monitor being already active, we can assess the effects of this change:
->
-> Before the patch:
->                                            Run#1    Run#2      Run#3
-> Immediate reschedules attempted:           684365   1385156    1261240
-> Immediate reschedules blocked:             682846   1381654    1258682
-> Immediate reschedules (delta):             1519     3502       2558
-> Immediate reschedules (% of attempted):    0.22%    0.25%      0.20%
->
-> After the patch:
->                                            Run#1    Run#2      Run#3
-> Immediate reschedules attempted:           882244   770298    426218
-> Immediate reschedules blocked:             881996   769796    426074
-> Immediate reschedules (delta):             248      502       144
-> Immediate reschedules (% of attempted):    0.03%    0.07%     0.03%
->
-> The number of non-blocked immediate reschedules dropped from 0.22-0.25%
-> to 0.03-0.07%. The drop is attributed to the decrease in the race window
-> size and the fact that we allow this race only when psi monitors reach
-> polling window expiration time.
->
-> Fixes: 461daba06bdc ("psi: eliminate kthread_worker from psi trigger scheduling mechanism")
-> Reported-by: Kathleen Chang <yt.chang@mediatek.com>
-> Reported-by: Wenju Xu <wenju.xu@mediatek.com>
-> Reported-by: Jonathan Chen <jonathan.jmchen@mediatek.com>
-> Signed-off-by: Suren Baghdasaryan <surenb@google.com>
-> Tested-by: SH Chen <show-hong.chen@mediatek.com>
-> Acked-by: Johannes Weiner <hannes@cmpxchg.org>
-> ---
-> Changes since v4 posted at
-> https://lore.kernel.org/all/20221010225744.101629-1-surenb@google.com/
-> - Added missing parameter in psi_schedule_poll_work() call used only when
-> CONFIG_IRQ_TIME_ACCOUNTING is enabled, reported by kernel test robot.
->
->  include/linux/psi_types.h |  1 +
->  kernel/sched/psi.c        | 62 ++++++++++++++++++++++++++++++++-------
->  2 files changed, 53 insertions(+), 10 deletions(-)
->
-> diff --git a/include/linux/psi_types.h b/include/linux/psi_types.h
-> index 6e4372735068..14a1ebb74e11 100644
-> --- a/include/linux/psi_types.h
-> +++ b/include/linux/psi_types.h
-> @@ -177,6 +177,7 @@ struct psi_group {
->         struct timer_list poll_timer;
->         wait_queue_head_t poll_wait;
->         atomic_t poll_wakeup;
-> +       atomic_t poll_scheduled;
->
->         /* Protects data used by the monitor */
->         struct mutex trigger_lock;
-> diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
-> index dbaeac915895..19d05b5c8a55 100644
-> --- a/kernel/sched/psi.c
-> +++ b/kernel/sched/psi.c
-> @@ -189,6 +189,7 @@ static void group_init(struct psi_group *group)
->         INIT_DELAYED_WORK(&group->avgs_work, psi_avgs_work);
->         mutex_init(&group->avgs_lock);
->         /* Init trigger-related members */
-> +       atomic_set(&group->poll_scheduled, 0);
->         mutex_init(&group->trigger_lock);
->         INIT_LIST_HEAD(&group->triggers);
->         group->poll_min_period = U32_MAX;
-> @@ -580,18 +581,17 @@ static u64 update_triggers(struct psi_group *group, u64 now)
->         return now + group->poll_min_period;
->  }
->
-> -/* Schedule polling if it's not already scheduled. */
-> -static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
-> +/* Schedule polling if it's not already scheduled or forced. */
-> +static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
-> +                                  bool force)
->  {
->         struct task_struct *task;
->
->         /*
-> -        * Do not reschedule if already scheduled.
-> -        * Possible race with a timer scheduled after this check but before
-> -        * mod_timer below can be tolerated because group->polling_next_update
-> -        * will keep updates on schedule.
-> +        * atomic_xchg should be called even when !force to provide a
-> +        * full memory barrier (see the comment inside psi_poll_work).
->          */
-> -       if (timer_pending(&group->poll_timer))
-> +       if (atomic_xchg(&group->poll_scheduled, 1) && !force)
->                 return;
->
->         rcu_read_lock();
-> @@ -603,12 +603,15 @@ static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
->          */
->         if (likely(task))
->                 mod_timer(&group->poll_timer, jiffies + delay);
-> +       else
-> +               atomic_set(&group->poll_scheduled, 0);
->
->         rcu_read_unlock();
->  }
->
->  static void psi_poll_work(struct psi_group *group)
->  {
-> +       bool force_reschedule = false;
->         u32 changed_states;
->         u64 now;
->
-> @@ -616,6 +619,43 @@ static void psi_poll_work(struct psi_group *group)
->
->         now = sched_clock();
->
-> +       if (now > group->polling_until) {
-> +               /*
-> +                * We are either about to start or might stop polling if no
-> +                * state change was recorded. Resetting poll_scheduled leaves
-> +                * a small window for psi_group_change to sneak in and schedule
-> +                * an immegiate poll_work before we get to rescheduling. One
-> +                * potential extra wakeup at the end of the polling window
-> +                * should be negligible and polling_next_update still keeps
-> +                * updates correctly on schedule.
-> +                */
-> +               atomic_set(&group->poll_scheduled, 0);
-> +               /*
-> +                * A task change can race with the poll worker that is supposed to
-> +                * report on it. To avoid missing events, ensure ordering between
-> +                * poll_scheduled and the task state accesses, such that if the poll
-> +                * worker misses the state update, the task change is guaranteed to
-> +                * reschedule the poll worker:
-> +                *
-> +                * poll worker:
-> +                *   atomic_set(poll_scheduled, 0)
-> +                *   smp_mb()
-> +                *   LOAD states
-> +                *
-> +                * task change:
-> +                *   STORE states
-> +                *   if atomic_xchg(poll_scheduled, 1) == 0:
-> +                *     schedule poll worker
-> +                *
-> +                * The atomic_xchg() implies a full barrier.
-> +                */
-> +               smp_mb();
-> +       } else {
-> +               /* Polling window is not over, keep rescheduling */
-> +               force_reschedule = true;
-> +       }
-> +
-> +
->         collect_percpu_times(group, PSI_POLL, &changed_states);
->
->         if (changed_states & group->poll_states) {
-> @@ -641,7 +681,8 @@ static void psi_poll_work(struct psi_group *group)
->                 group->polling_next_update = update_triggers(group, now);
->
->         psi_schedule_poll_work(group,
-> -               nsecs_to_jiffies(group->polling_next_update - now) + 1);
-> +               nsecs_to_jiffies(group->polling_next_update - now) + 1,
-> +               force_reschedule);
->
->  out:
->         mutex_unlock(&group->trigger_lock);
-> @@ -802,7 +843,7 @@ static void psi_group_change(struct psi_group *group, int cpu,
->         write_seqcount_end(&groupc->seq);
->
->         if (state_mask & group->poll_states)
-> -               psi_schedule_poll_work(group, 1);
-> +               psi_schedule_poll_work(group, 1, false);
->
->         if (wake_clock && !delayed_work_pending(&group->avgs_work))
->                 schedule_delayed_work(&group->avgs_work, PSI_FREQ);
-> @@ -956,7 +997,7 @@ void psi_account_irqtime(struct task_struct *task, u32 delta)
->                 write_seqcount_end(&groupc->seq);
->
->                 if (group->poll_states & (1 << PSI_IRQ_FULL))
-> -                       psi_schedule_poll_work(group, 1);
-> +                       psi_schedule_poll_work(group, 1, false);
+Hi Rob,
 
-Previous patch was missing the above one-line change. I missed that
-because I didn't test CONFIG_IRQ_TIME_ACCOUNTING=y configuration. The
-older version of this patch didn't have it because this function
-invocation code is relatively new (added on 08/25/22 by 52b1364ba0b1
-"sched/psi: Add PSI_IRQ to track IRQ/SOFTIRQ pressure").
-Peter, please try picking up this one. Hopefully I didn't miss
-anything else this time...
+On Tue, Oct 25, 2022 at 04:21:14PM -0500, Rob Herring wrote:
+> On Mon, Oct 24, 2022 at 10:03:51PM -0700, Colin Foster wrote:
+> > The dsa.yaml binding contains duplicated bindings for address and size
+> > cells, as well as the reference to dsa-port.yaml. Instead of duplicating
+> > this information, remove the reference to dsa-port.yaml and include the
+> > full reference to dsa.yaml.
+> 
+> I don't think this works without further restructuring. Essentially, 
+> 'unevaluatedProperties' on works on a single level. So every level has 
+> to define all properties at that level either directly in 
+> properties/patternProperties or within a $ref.
+> 
+> See how graph.yaml is structured and referenced for an example how this 
+> has to work.
+> 
+> > @@ -104,8 +98,6 @@ patternProperties:
+> >                SGMII on the QCA8337, it is advised to set this unless a communication
+> >                issue is observed.
+> >  
+> > -        unevaluatedProperties: false
+> > -
+> 
+> Dropping this means any undefined properties in port nodes won't be an 
+> error. Once I fix all the issues related to these missing, there will be 
+> a meta-schema checking for this (this could be one I fixed already).
 
->         } while ((group = group->parent));
->  }
->  #endif
-> @@ -1342,6 +1383,7 @@ void psi_trigger_destroy(struct psi_trigger *t)
->                  * can no longer be found through group->poll_task.
->                  */
->                 kthread_stop(task_to_destroy);
-> +               atomic_set(&group->poll_scheduled, 0);
->         }
->         kfree(t);
->  }
-> --
-> 2.38.1.273.g43a17bfeac-goog
->
+I may be misreading, but here, "unevaluatedProperties: false" from dsa.yaml
+(under patternProperties: "^(ethernet-)?port@[0-9]+$":) is on the same
+level as the "unevaluatedProperties: false" that Colin is deleting.
+
+In fact, I believe that it is precisely due to the "unevaluatedProperties: false"
+from dsa.yaml that this is causing a failure now:
+
+net/dsa/qca8k.example.dtb: switch@10: ports:port@6: Unevaluated properties are not allowed ('qca,sgmii-rxclk-falling-edge' was unexpected)
+
+Could you please explain why is the 'qca,sgmii-rxclk-falling-edge'
+property not evaluated from the perspective of dsa.yaml in the example?
+It's a head scratcher to me.
+
+May it have something to do with the fact that Colin's addition:
+
+$ref: "dsa.yaml#"
+
+is not expressed as:
+
+allOf:
+  - $ref: "dsa.yaml#"
+
+?
+
+If yes, can you explain exactly what is the difference with respect to
+unevaluatedProperties?
+
+> >  oneOf:
+> >    - required:
+> >        - ports
+> > @@ -116,7 +108,7 @@ required:
+> >    - compatible
+> >    - reg
+> >  
+> > -additionalProperties: true
+> 
+> This should certainly be changed though. We should only have 'true' for 
+> incomplete collections of properties. IOW, for common bindings.
+> 
+> > +unevaluatedProperties: false
 
