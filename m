@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6F0FA3740
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A5FDECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:20:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qB0h6wHZwGG6CkzRFicqY/YPbAS2ounhtVu6YgW3du4=; b=0dwnbIwjw2pmtNlXlrr53GDZtU
-	ma+ZGgQMgicuDBdLvfuDqJc7ZjlV0GISvNtX0JWprixKadXoMKUvj+v09iyxqofc99h+VcSCEzZ+u
-	f+hlPSOkF6lZbYcpnRb/hL970qQBuwBwW6w1j90jwprHqzfBKP1Dy7ibmf7geG8oFQ4sPHG+H2s/e
-	hC/MxhNVE2EYFimggSFT6kcECzvIKInuSSVQ29ssQ+BLb43MjRpVM6gfKxWbcEKVFLA0wwGS67SPR
-	KgMffurCk7x1TEpxQcaotXXX4s3OGMykHZO0XGO6m6FZ9mrgaa80/YRinVI2mMEJ2C1E6wvfXja9R
-	J40tuDjQ==;
+	bh=xI8DaM29+IDXZMB5FejDKAyekS110HTrnSErVmAbFjc=; b=niJvEWSUxUX1WciTv+Y4PCN/n9
+	4fL20AiXjDD+p7TlzmddH8tPicd+X9VOWvi41ARfTOpD0wYQdYpjs42pM6KhGCQc5i4uki1elWNXG
+	cyITh5z7y6CVF3vBtoQGQRsPSEvsZPT7fhH/tnUcPs/9fn43DMkyVflpGe9eCU6SmTKlS0yWw9syW
+	Gh+e5hIX4ym129Ed8gVprO+6sQk3oRfRnQmSXEz3m0U61EbvcrpZlvQU7kyeinrtTpQSJknCBJV14
+	bGLTCy9Po/MdbP9sOuVmaGzAuJO7GW97ytLZ9sCPhwGOiIXncZRFse1sIrJfbolM3KBHGj3PVVIVu
+	kUhxxn2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo2mi-00DQUk-NI; Thu, 27 Oct 2022 13:19:00 +0000
+	id 1oo2oX-00DRSx-5w; Thu, 27 Oct 2022 13:20:53 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo2f4-00DMyy-3e; Thu, 27 Oct 2022 13:11:07 +0000
+	id 1oo2fB-00DN23-MZ; Thu, 27 Oct 2022 13:11:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=qB0h6wHZwGG6CkzRFicqY/YPbAS2ounhtVu6YgW3du4=; b=ewQqlWvPlZHwlkrPQW6P7vTqYt
-	uXjj9u+lfZfkGNhmWFO2kex1sEZ8FIdrO4EURU+hVBuA2y4BZblqZXwwO6ws6+77W/99mVWmNQjjL
-	p/YMSzhNdriqXV7EnXs7tm13Z6BNMVDT9kvAm+7UbYe1bFukuQR3leUPCOktKLeuU1wD4ePkncmc0
-	duyy2AoItFEDmZRe4WofBGPngbvpHWkmxLewcGJ1fYqIvlAtX08pyvxzxLI8l7XrRbFGRVj9gKVQR
-	5Qa3dWOv5VyynGGNdEoToLMSCKgxcguevWmeiZGr5l1xltKyzp/Y5eaa9hEQx/RzaoBUrjplSDj4i
-	BoQQLNoA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36750 helo=rmk-PC.armlinux.org.uk)
+	bh=xI8DaM29+IDXZMB5FejDKAyekS110HTrnSErVmAbFjc=; b=Wt53qdcyRJXWUb4XOMkPnIdoat
+	IN4ruydk37AWUU0kt124BQ0QWM956CVHg4/649NphzVOk8++pROsE/TmHMpcvFBsOOFTGVr9OtqWB
+	08xP/zEMx3JmiJX3wXl+o8++GSgThU8GCWOrNJswjXwnNHJkJWpBOXdd5l7sh5evD5Yn0Nr3ZwHc/
+	Vy5wLoH2Q3s9BsH+dFwHk8eg8aV/PL5bQ3Zh5JzePO7x14jhFqocygcnmmCUFDbE+A4JEIlPFLSFB
+	y+LHoazDf5ATgalkHtEeeiotr8pzDx8POuTOfFEiiIy8zHCIbtNQBaMf8TaF2uveTUcjsDelPUraf
+	eiDDqKTw==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36756 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1oo2f1-0006yo-OM; Thu, 27 Oct 2022 14:11:03 +0100
+	id 1oo2f6-0006z5-SX; Thu, 27 Oct 2022 14:11:08 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1oo2f1-00HF88-4n; Thu, 27 Oct 2022 14:11:03 +0100
+	id 1oo2f6-00HF8E-8U; Thu, 27 Oct 2022 14:11:08 +0100
 In-Reply-To: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
 References: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -60,17 +60,17 @@ Cc: Eric Dumazet <edumazet@google.com>,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net-next 06/11] net: mtk_eth_soc: add out of band forcing of
- speed and duplex in pcs_link_up
+Subject: [PATCH net-next 07/11] net: mtk_eth_soc: move PHY power up
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1oo2f1-00HF88-4n@rmk-PC.armlinux.org.uk>
-Date: Thu, 27 Oct 2022 14:11:03 +0100
+Message-Id: <E1oo2f6-00HF8E-8U@rmk-PC.armlinux.org.uk>
+Date: Thu, 27 Oct 2022 14:11:08 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_061106_171773_97782CE8 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20221027_061113_839256_7BD7B27C 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +85,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for forcing the link speed and duplex setting in the
-pcs_link_up() method for out of band modes, which will be useful when
-we finish converting the pcs_config() method. Until then, we still have
-to force duplex for 802.3z modes to work correctly.
+The PHY power up is common to both configuration paths, so move it into
+the parent function. We need to do this for all serdes modes.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/mediatek/mtk_sgmii.c | 28 ++++++++++++++---------
- 1 file changed, 17 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_sgmii.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index 868ff0b2e036..d26a0ba2e47b 100644
+index d26a0ba2e47b..63b25574caac 100644
 --- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
 +++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -108,17 +108,23 @@ static void mtk_pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
- 	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
- 	unsigned int sgm_mode;
+@@ -45,9 +45,6 @@ static void mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
  
--	if (!phy_interface_mode_is_8023z(interface))
--		return;
+ 	regmap_update_bits(mpcs->regmap, SGMSYS_PCS_CONTROL_1,
+ 			   SGMII_AN_RESTART, SGMII_AN_RESTART);
 -
--	/* SGMII force duplex setting */
--	if (duplex == DUPLEX_FULL)
--		sgm_mode = SGMII_DUPLEX_FULL;
--	else
--		sgm_mode = 0;
--
--	regmap_update_bits(mpcs->regmap, SGMSYS_SGMII_MODE,
--			   SGMII_DUPLEX_FULL, sgm_mode);
-+	if (!phylink_autoneg_inband(mode) ||
-+	    phy_interface_mode_is_8023z(interface)) {
-+		/* Force the speed and duplex setting */
-+		if (speed == SPEED_10)
-+			sgm_mode = SGMII_SPEED_10;
-+		else if (speed == SPEED_100)
-+			sgm_mode = SGMII_SPEED_100;
-+		else
-+			sgm_mode = SGMII_SPEED_1000;
-+
-+		if (duplex == DUPLEX_FULL)
-+			sgm_mode |= SGMII_DUPLEX_FULL;
-+
-+		regmap_update_bits(mpcs->regmap, SGMSYS_SGMII_MODE,
-+				   SGMII_DUPLEX_FULL | SGMII_SPEED_MASK,
-+				   sgm_mode);
-+	}
+-	regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
+-			   SGMII_PHYA_PWD, 0);
  }
  
- static const struct phylink_pcs_ops mtk_pcs_ops = {
+ /* For 1000BASE-X and 2500BASE-X interface modes, which operate at a
+@@ -72,10 +69,6 @@ static void mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
+ 	regmap_update_bits(mpcs->regmap, SGMSYS_SGMII_MODE,
+ 			   SGMII_IF_MODE_MASK & ~SGMII_DUPLEX_FULL,
+ 			   SGMII_SPEED_1000);
+-
+-	/* Release PHYA power down state */
+-	regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
+-			   SGMII_PHYA_PWD, 0);
+ }
+ 
+ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
+@@ -91,6 +84,10 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
+ 	else if (phylink_autoneg_inband(mode))
+ 		mtk_pcs_setup_mode_an(mpcs);
+ 
++	/* Release PHYA power down state */
++	regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
++			   SGMII_PHYA_PWD, 0);
++
+ 	return 0;
+ }
+ 
 -- 
 2.30.2
 
