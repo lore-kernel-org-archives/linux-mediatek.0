@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 216BDFA3746
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB87FFA3744
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hCuI3VgccMocVgeiGzU7uyjEe2olId2dWYazu2mv73s=; b=iDLnQL1VxnB80ev5wb9+n6aJ5d
-	nRbSa8ihq8Np/Ty6QztcrM3Gb+XYB0DutZU8MsoVrQ//dlzg8UaGJcgD3I/vPYG+m2uBCJOPyg9VX
-	v84iM5MMrDY1K1zEeiCGrg6/Z81iL456MkWsRusWrqtGrcwOJLKX820enr+j3w4KKB1Uzg6Amsp2L
-	JxlqebaUSSs883iK1GwN0r9ju7w5GR8pgb6uPrWKqop5FAbldQqao4OVT0PEixVTzwzv8cehZILGe
-	VhgqLWd34Vs0IX1LArAakS7hqKfvePNQLispYqiIm1e5UgLE2U+g3oSNFmM4tTUWx68tQNRIJiLnS
-	kMRxIoug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ic5qV7VWLqe4+lahnJxOzORNAlLni3RZGNOdWJ0dyec=; b=tCpxK9bzalsKahBXj+54UNyvRV
+	u+Icof8uk2q6nY9AjZvb7xv+SzHoq6dVEKJtNYFcE2oqwhUHLCgcgPcZWED7/hjhr5Fle9/AD5Yk+
+	mmyNJ40CaPJj7W7UvGVTQEm4pybeAviWnmmMBj6kIP95lgy5q7p4OH/9ZWifxAxk0JatGmn2GRpvo
+	AHQLFenYEszfHtdSh/gv/TmgRr+meJRg/GPwDMiV30+3gmqNJ7vj/HXq0nwZRRvvX4FSPWv5sLI2F
+	qP4o5+F0yNqZ32/qGZvjksyOeVDLhmJxJq74ionJzKE9m5qz3BtRWz15FhjptZxG9KjKghMmw88mY
+	KIiIrgfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo2wf-00DWiw-1B; Thu, 27 Oct 2022 13:29:17 +0000
+	id 1oo32b-00DZKS-NT; Thu, 27 Oct 2022 13:35:25 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo2gn-00DMsc-1D; Thu, 27 Oct 2022 13:12:55 +0000
+	id 1oo2rg-00DTN2-Je; Thu, 27 Oct 2022 13:24:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=hCuI3VgccMocVgeiGzU7uyjEe2olId2dWYazu2mv73s=; b=IYeXflN60pkCp7YIYT1OEoU3Qn
-	SfA5sw26Cj+7gzMAkCoJfMgIwUschfjueSTfawVHSEhMDs8oCSnrusije+ouFuWwrFpEQb0nycQWB
-	6CWtR5ckhX8DXITSDUkjvx2Nf3hL4ThUShoM5cyMkB/6qRZueKJFB0PQNydE423XanEURT0UiqudG
-	A55aj1NVpCh6QFZQ9la1Dl+WRzAIp0sO9WgjXX7B4vHqBe4UmUMcqF5xV1AWIrBN8950l+PwVmcel
-	oemZkqTvdypgKCQ3nVL3qFKt3hTaEbaXwr+CnumGStWcf14RJm32PxkhxVwxa/QAAolcnLy9RzYI4
-	V9NnzRNw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:57774 helo=rmk-PC.armlinux.org.uk)
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Ic5qV7VWLqe4+lahnJxOzORNAlLni3RZGNOdWJ0dyec=; b=SgfKVU45bIsDSc6qM2t+eq5mzz
+	uygqYGqxeA23IDB81kxyy8p3Jol8JbrH7eJaCsAQfITFy1mv9Xs5K+km9oWnp8hSZW6rvlpGAeptr
+	nNFYUBQ6nmV1FwbWjfEoJpmGQQ3HprGPM7sSBkHs5ZkeH/663GzkBS22Sq/utpJorCd5+OK3XzR7K
+	/NnzTLvIjMsHNoyiqJR649acRIBm/9kZAyzKpwlP62VMgOklu+Cbvzg3+oZWz4MirlkSdWuCAyB0p
+	AV6gCLker321KFUrpyXm/wPgL3pNESejKVO2ArmPH2VjVNxleOGO81ww0rL/uD/m8vlXjns5VVNOA
+	4jdS+awA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34974)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1oo2em-0006xx-CG; Thu, 27 Oct 2022 14:10:48 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1oo2el-00HF7p-P3; Thu, 27 Oct 2022 14:10:47 +0100
-In-Reply-To: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
-References: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1oo2rZ-00072U-Ak; Thu, 27 Oct 2022 14:24:01 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1oo2rW-0001aM-9x; Thu, 27 Oct 2022 14:23:58 +0100
+Date: Thu, 27 Oct 2022 14:23:58 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: "David S. Miller" <davem@davemloft.net>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Frank Wunderlich <frank-w@public-files.de>
-Cc: Eric Dumazet <edumazet@google.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
 	John Crispin <john@phrozen.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net-next 03/11] net: mtk_eth_soc: eliminate unnecessary error
- handling
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH net-next 00/11] net: mtk_eth_soc: improve PCS
+ implementation
+Message-ID: <Y1qGbrPZWNBt/78Z@shell.armlinux.org.uk>
+References: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1oo2el-00HF7p-P3@rmk-PC.armlinux.org.uk>
-Date: Thu, 27 Oct 2022 14:10:47 +0100
+In-Reply-To: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_061253_180066_20CC5DB6 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20221027_062408_677981_A8158A58 
+X-CRM114-Status: GOOD (  24.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +81,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The functions called by the pcs_config() method always return zero, so
-there is no point trying to handle an error from these functions. Make
-these functions void, eliminate the "err" variable and simply return
-zero from the pcs_config() function itself.
+On Thu, Oct 27, 2022 at 02:10:11PM +0100, Russell King (Oracle) wrote:
+> Hi,
+> 
+> As a result of invesigations from Frank Wunderlich, we know a lot more
+> about the Mediatek "SGMII" PCS block, and can implement the PCS support
+> correctly. This series achieves that, and Frank has tested the final
+> result and reports that it works for him. The series could do with
+> further testing by others, but I suspect that is unlikely to happen
+> until it is merged based on past performances with this driver.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/mediatek/mtk_sgmii.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+I forgot to say, many thanks to Frank for his efforts and patience in
+testing various patches to discover how this PCS works.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index 736839c84130..7637ba16b44b 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -20,7 +20,7 @@ static struct mtk_pcs *pcs_to_mtk_pcs(struct phylink_pcs *pcs)
- }
- 
- /* For SGMII interface mode */
--static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
-+static void mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
- {
- 	unsigned int val;
- 
-@@ -39,16 +39,13 @@ static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
- 	regmap_read(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, &val);
- 	val &= ~SGMII_PHYA_PWD;
- 	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, val);
--
--	return 0;
--
- }
- 
- /* For 1000BASE-X and 2500BASE-X interface modes, which operate at a
-  * fixed speed.
-  */
--static int mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
--				    phy_interface_t interface)
-+static void mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
-+				     phy_interface_t interface)
- {
- 	unsigned int val;
- 
-@@ -73,8 +70,6 @@ static int mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
- 	regmap_read(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, &val);
- 	val &= ~SGMII_PHYA_PWD;
- 	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, val);
--
--	return 0;
- }
- 
- static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
-@@ -83,15 +78,14 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
- 			  bool permit_pause_to_mac)
- {
- 	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
--	int err = 0;
- 
- 	/* Setup SGMIISYS with the determined property */
- 	if (interface != PHY_INTERFACE_MODE_SGMII)
--		err = mtk_pcs_setup_mode_force(mpcs, interface);
-+		mtk_pcs_setup_mode_force(mpcs, interface);
- 	else if (phylink_autoneg_inband(mode))
--		err = mtk_pcs_setup_mode_an(mpcs);
-+		mtk_pcs_setup_mode_an(mpcs);
- 
--	return err;
-+	return 0;
- }
- 
- static void mtk_pcs_restart_an(struct phylink_pcs *pcs)
+> 
+> Briefly, the patches in order:
+> 
+> 1. Add a new helper to get the link timer duration in nanoseconds
+> 2. Add definitions for the newly discovered registers and updates to
+>    bit definitions, including bitmasks for the BMCR, BMSR and two
+>    advertisement registers.
+> 3. Remove unnecessary/unused error handling (functions always returning
+>    zero.)
+> 4. Adding the missing pcs_get_state() implementation.
+> 5. Converting the code to use regmap_update_bits() rather than
+>    open-coding read-modify-write sequences.
+> 6. Adding out-of-band speed and duplex forcing for all non-inband modes
+>    not just the 802.3z link modes the code currently does.
+> 7. Moving the release of the PHY power down to the main pcs_config()
+>    function.
+> 8. Moving the interface speed selection to the main pcs_config()
+>    function.
+> 9. Adding advertisement programming.
+> 10. Adding correct link timer programming using the new helper in the
+>     first patch.
+> 11. Adding support for 802.3z negotiation.
+> 
+> There is one remaining issue - when configuring the PCS for in-band,
+> for some reason the AN restart bit is always set. This should not be
+> necessary, but requires further investigation with the hardware to
+> find out whether it is really necessary. I suspect this was a work
+> around for a previous poor implementation.
+> 
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  13 ++-
+>  drivers/net/ethernet/mediatek/mtk_sgmii.c   | 174 ++++++++++++++++------------
+>  include/linux/phylink.h                     |  24 ++++
+>  3 files changed, 134 insertions(+), 77 deletions(-)
+> 
+> -- 
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+> 
+
 -- 
-2.30.2
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
