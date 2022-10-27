@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B61C6C38A2D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 10:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780D5FA3740
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 12:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E3OBCojcudupvCR967/UqBJR+xxArYpVXUF1wcsRKh0=; b=kyzTzPYdW00d0+DZAsX08P2hIm
-	yZwdjozavLHBX5/y8CSH0HtzBYKi7zzUYMByD9n8bGfJOR++hS9iTnpaxc2B9H9wkb3BFN5SzP8BK
-	OF5NCCFmN9otjxjsTtUGvwrqbsQnF7C4XXqqrvXgD+i/SiHBhs/bdMIQb+ORgC19VbSMOcnMmBiN6
-	L0WD9xhfwjzDk6jGfge1hWUf2UsGtJRe1trJmjF5OMpH3CGqU0zh9l/FEG8QJnAYVzQiWrLgk/hBf
-	QAKELHEt1Rc1fX2BQDxOd88mVmPIMEpJmELQn4ubCS2+iQrfBsDbV/9UlmCIcO+/ghKaAUxQdjkdm
-	G/HIm9Sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WP+7R/Fr2VMJLa5AXizn+zOIuwCy4AiCbk7L9UfX4Zw=; b=fNuzSkm4ZbfqIShlJb/FSmgHhO
+	/9EV5CjfKRZ4u+neoeacRt5gG/fpENL1SDo1LrULdxqZS/tSRo7U346ln9ksBeP5mHNiZbacmiU9p
+	BRYn06/ObTc5ZrKnu+M0zQsq4T/HNl/xUFWfguZE9mdCp/bZP7HsoJ4HBoZOS1pkJiTE3ouB6M/1H
+	4xj349ajQieP/VcQuCO3awjMqQJWjVmifgNEgJHHtQUMipR4aFEruK0wi6Fhx8X+qwNhcP0xCM0Es
+	lSijQbyZOWNUpZk0M0T7AJn1Q+xTmfppoen5dHNe5ZA57EBDVn5H4QrYYez+HFgbh7o9PRcJGPAwh
+	ho/YYq6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onzhi-00Cig4-Mu; Thu, 27 Oct 2022 10:01:39 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oo2FY-00DDRJ-F1; Thu, 27 Oct 2022 12:44:44 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onzhV-00CicN-7D; Thu, 27 Oct 2022 10:01:27 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 21AAC66028CF;
-	Thu, 27 Oct 2022 11:01:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666864880;
-	bh=AB1aP9kwM/VwRRkN+/wjhOvonTMwp6saazq/+FJtpWc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nRjRmmzVvgQJpr/h0Tp/P1Qf9rpckVNTKqkO+iB9FyWrDTZGi3veSqviqNneNshhP
-	 W0BMm5lonVgi70d0R38IoxZJKZRDXXsyoeQ5MGmG0m+X4ovpN1eE/CjGIQX1o4aP3g
-	 b2souJy9giA0QrMaZH0kXbny4gyuFBE17CX8yFLvc3yrWesoauIbndfHnZOjS+b2N0
-	 QCruCMKZ4rdlvzW3+ix9e9OVePdHvcTAQbodDLoJ9bwYZ2/lg3ppdaYeMS1MrqCuS0
-	 4QaCOjwyBbbjH3LDyh15SKpdLjKDqOJcH8OMsPwm2DVankGQJTDsE8fwcvJujlvMgr
-	 cypZa0SBjqEFw==
-Message-ID: <3b09d15a-2cc2-c485-5045-820ccd5863c3@collabora.com>
-Date: Thu, 27 Oct 2022 12:01:16 +0200
+	id 1oo2FL-00DDMn-Ob; Thu, 27 Oct 2022 12:44:32 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id t10-20020a17090a4e4a00b0020af4bcae10so1343369pjl.3;
+        Thu, 27 Oct 2022 05:44:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WP+7R/Fr2VMJLa5AXizn+zOIuwCy4AiCbk7L9UfX4Zw=;
+        b=agwMaoXKy9Wbn7+kG/2zoL2ab09hLBHI3OWHuBTISVwNYL2VkJUvzxCRoL49OCshBj
+         vLioT/vawmbM+eFCEGMjfNYBG7euvnY+eyE98TBYycgStlmJnIPInsn8srezL58PDRl3
+         GbQRFNvB+CskWz5NEW4VF4ylYuXxQLQIFGWxPAPRT4aobnXX5r3NioqpU61GBtW1SsyN
+         78gcwnit22wAzscY5gBg5HbZTcffuWqOnD8XVVJwUvz5JS9yy9l/rcL1J9r7YFGn9Tdr
+         T1bD5t0YqlJzWkGgCkwslI3+2L9jbWFoe1V7+E7bwxjo1dJHsQjhJGvfdnoIhxetRjTP
+         9fQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WP+7R/Fr2VMJLa5AXizn+zOIuwCy4AiCbk7L9UfX4Zw=;
+        b=uma6hbyYMWcOMQyZBSb6Nsrt4KrMANg0SahqOgpXRHeGUdzgfAXNoXrUrveUBYTjck
+         bcBWZV7Cz+oNZDrXFo4lTq/xCcUp9G1zUuN8PW/rGtSTS7SVyWmYXDMxGjG5fVbtff7O
+         AGANtGSTMlrOJvkwKtQHVw6X8mTEF7cVx7BNDM1xVCJj2HhzdXb0MPTu+ZbHlo1/9lkQ
+         ms8OuOJeQqEBuNvR1gEejJeGKHN4Tl81Ekxh0LXhSkNP9WwiPmbwXQka8dFlS47MOBld
+         mQKpNYxdCXGo1m+h8u9uFI+gdTBj127JTiCHQ+jREODHp7h7PFW/FezgomYysg8A2KvN
+         7K0g==
+X-Gm-Message-State: ACrzQf10CMj/nMLeO5U2CfHVjMrhtWjp4ECuiqhoPYuMFl0TBLe5lfh4
+	JaHed0GXIrzF6+SwcAVRsKs=
+X-Google-Smtp-Source: AMsMyM5+O8XthDRDSKyEQ3I1jHlcTzZmKX7d/XfEB3c8kCa+btVU5AIiiGXo52VS5hqEqrrzqoO+lA==
+X-Received: by 2002:a17:902:c20c:b0:186:b3d0:f77 with SMTP id 12-20020a170902c20c00b00186b3d00f77mr17479095pll.26.1666874668179;
+        Thu, 27 Oct 2022 05:44:28 -0700 (PDT)
+Received: from debian.me (subs28-116-206-12-37.three.co.id. [116.206.12.37])
+        by smtp.gmail.com with ESMTPSA id i7-20020a170902c94700b00186b3c3e2dasm1125991pla.155.2022.10.27.05.44.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Oct 2022 05:44:27 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 28834103F96; Thu, 27 Oct 2022 19:44:25 +0700 (WIB)
+Date: Thu, 27 Oct 2022 19:44:25 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Sumit Semwal <sumit.semwal@linaro.org>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Liam Mark <lmark@codeaurora.org>, Laura Abbott <labbott@redhat.com>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>,
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dma-buf: cma_heap: Fix typo in comment
+Message-ID: <Y1p9KT1ZZ0bqIhdu@debian.me>
+References: <20221027072642.23787-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH 7/7] arm64: dts: mediatek: Add support for MT6795 Sony
- Xperia M5 smartphone
-Content-Language: en-US
-To: Konrad Dybcio <konrad.dybcio@somainline.org>, robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, vkoul@kernel.org,
- chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com,
- hsinyi@chromium.org, nfraprado@collabora.com, allen-kh.cheng@mediatek.com,
- fparent@baylibre.com, sam.shih@mediatek.com, sean.wang@mediatek.com,
- long.cheng@mediatek.com, wenbin.mei@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dmaengine@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
-References: <20220729104441.39177-1-angelogioacchino.delregno@collabora.com>
- <20220729104441.39177-8-angelogioacchino.delregno@collabora.com>
- <a8fa9e22-8c3f-60b2-a0db-01cfd5c37765@somainline.org>
- <17139e24-d33c-8240-cd4a-d87fb3b29276@collabora.com>
- <9ced2822-a9d2-2e59-fe40-6c6f690be487@somainline.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <9ced2822-a9d2-2e59-fe40-6c6f690be487@somainline.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="XHaG62drdJ2C2Nnp"
+Content-Disposition: inline
+In-Reply-To: <20221027072642.23787-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_030125_624910_B257FDB1 
-X-CRM114-Status: GOOD (  24.60  )
+X-CRM114-CacheID: sfid-20221027_054431_840238_81EC7B96 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,143 +99,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/10/22 11:40, Konrad Dybcio ha scritto:
-> 
-> On 27/10/2022 11:28, AngeloGioacchino Del Regno wrote:
->> Il 29/07/22 14:00, Konrad Dybcio ha scritto:
->>>
->>>
->>> On 29.07.2022 12:44, AngeloGioacchino Del Regno wrote:
->>>> Add a basic support for the Sony Xperia M5 (codename "Holly")
->>>> smartphone, powered by a MediaTek Helio X10 SoC.
->>>>
->>>> This achieves a console boot.
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno 
->>>> <angelogioacchino.delregno@collabora.com>
->>
->> Hello Konrad,
->> First of all, I'm sorry for the very late reply.
->>
->>>> ---
->>>>   arch/arm64/boot/dts/mediatek/Makefile         |  1 +
->>>>   .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 90 +++++++++++++++++++
->>>>   2 files changed, 91 insertions(+)
->>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
->>>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile 
->>>> b/arch/arm64/boot/dts/mediatek/Makefile
->>>> index af362a085a02..72fd683c9264 100644
->>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>>> @@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6779-evb.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-sony-xperia-m5.dtb
->>> -holly.dtb?
->>>
->>
->> I prefer using the commercial name to identify the device.
->> "Holly" is the smartphone project codename and that is mentioned almost nowhere:
->> the aim here is to enhance readability as to make it immediately understandable
->> that this devicetree is for the Xperia M5 device.
-> 
-> Ok, sounds good.
-> 
-> 
->>
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->>>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts 
->>>> b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
->>>> new file mode 100644
->>>> index 000000000000..94d011c4126c
->>>> --- /dev/null
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
->>>> @@ -0,0 +1,90 @@
->>>> +// SPDX-License-Identifier: GPL-2.0-only
->>>> +/*
->>>> + * Copyright (c) 2022, Collabora Ltd
->>>> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> + */
->>>> +
->>>> +/dts-v1/;
->>>> +#include "mt6795.dtsi"
->>>> +
->>>> +#include <dt-bindings/gpio/gpio.h>
->>> Looks unused.
->>>
->>
->> Right, I'll remove that in v2.
->>
->>>> +
->>>> +/ {
->>>> +    model = "Sony Xperia M5";
->>>> +    compatible = "sony,xperia-m5", "mediatek,mt6795";
->>> sony,holly?
->>>
->>
->> I'm sorry, but I can't understand the sense of adding that compatible string to
->> the mix. To the kernel, it doesn't mean anything - and we already have another
->> string advertising the specific machine, which is "sony,xperia-m5".
-> 
-> I was suggesting replacing xperia-m5 with holly, but since we agreed on keeping
-> 
-> m5 in the dtb name, I suppose it's fine for this one to stay too.
-> 
-> 
->>
->> Of course, there is no Xperia M5 with a different SoC and, even if there was a
->> xperia-m5 with a different SoC, we anyway have both a machine compatible and a
->> SoC compatible in here, so that would still not pose any issue.
->>
->>>> +    chassis-type = "handset";
->>>> +
->>>> +    aliases {
->>>> +        mmc0 = &mmc0;
->>>> +        mmc1 = &mmc1;
->>>> +        serial0 = &uart0;
->>>> +        serial1 = &uart1;
->>>> +    };
->>>> +
->>>> +    memory@40000000 {
->>>> +        device_type = "memory";
->>>> +        reg = <0 0x40000000 0 0x1E800000>;
->>> Lowercase hex in size. Also, doesn't the bootloader fill it in?
->>>
->>
->> Updating the device to the latest software version will give you a bootloader
->> that fills that in, but the first-ever software release contains one that will
->> not do that in particular conditions (fastboot boot).
-> 
-> Ugh. If only vendors tested their software before shipping it to users..
-> 
-> I think it's worth to adding a comment mentioning that, though.
-> 
-> 
->>
->>>> +    };
->>>> +
->>>> +    reserved_memory: reserved-memory {
->>>> +        #address-cells = <2>;
->>>> +        #size-cells = <2>;
->>>> +        ranges;
->>>> +
->>>> +        /* 128 KiB reserved for ARM Trusted Firmware (BL31) */
->>> Is that true for all devices with this SoC, or..? If so, it may be worth
->>> moving this into mt6795.dtsi.
->>>
 
-Sorry again, I forgot to reply to this question, so addressing that now:
-no, that's not true for all devices with this SoC.
+--XHaG62drdJ2C2Nnp
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I'm practically sure that all commercial devices that were shipped at that time
-require the same, but here upstream we also have a MT6795 dev board devicetree,
-which uses a much newer bootloader and possibly needs a different secmon carveout,
-if any at all.
+On Thu, Oct 27, 2022 at 03:26:38PM +0800, Mark-PK Tsai wrote:
+> Fix typo in comment.
+>=20
 
-Hence, this one cannot be transferred to mt6795.dtsi.
+Comment on what function? I had to see the diff context.
 
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> ---
+>  drivers/dma-buf/heaps/cma_heap.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/dma-buf/heaps/cma_heap.c b/drivers/dma-buf/heaps/cma=
+_heap.c
+> index 28fb04eccdd0..cd386ce639f3 100644
+> --- a/drivers/dma-buf/heaps/cma_heap.c
+> +++ b/drivers/dma-buf/heaps/cma_heap.c
+> @@ -316,7 +316,7 @@ static struct dma_buf *cma_heap_allocate(struct dma_h=
+eap *heap,
+
+Oh, you refer to cma_heap_allocate(). Please mention it in the patch
+description.
+
+>  			kunmap_atomic(vaddr);
+>  			/*
+>  			 * Avoid wasting time zeroing memory if the process
+> -			 * has been killed by by SIGKILL
+> +			 * has been killed by SIGKILL
+
+Duplicated "by"?
+
+Thanks.
+
+--=20
+An old man doll... just what I always wanted! - Clara
+
+--XHaG62drdJ2C2Nnp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCY1p9JQAKCRD2uYlJVVFO
+o2ycAP4mutv5A+U0sVGBxomMJwORB1VaIuTIp/xeL/6OqueMIQEAq2u8IOVlVke8
+K367ezUx4yUU08CTyQcg97a1puTuqwU=
+=bsZY
+-----END PGP SIGNATURE-----
+
+--XHaG62drdJ2C2Nnp--
 
