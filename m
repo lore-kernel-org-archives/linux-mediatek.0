@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86454C67871
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 08:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4846AC67871
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 08:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TwDRdAHV6omantZx30uYTP1G+rwKWyLT0MPaZq06kLw=; b=e4oNtz641XbrLJAHG4AtAt15EY
-	J2sML4eeCai5ItOinO1Ck4X5dXJztSMKZR3AZCXKHcU/wo/AegJUBNNYxEy8vUYdKkyiMmrsVV9Hf
-	Yc1SU3k8EiYEr0u45004ISDqkhYct1PBPa2YbkFgsm8ddq0rwzewGSKpREf/N+cSe4T88blKv6fN6
-	h7lZHhgMxNkB2ixuVwIFtUKwD0RsYWRILAXb/f4nJlimEBJ1NjUrlmLkCF/cB3Q8+6Xdn3TGA4Vb1
-	egqEMJVRNUhkAyh0ZzEmlifSvGOSaEOhzIFSt+MaRvMLUxKFtsDzCfCkcUA+wIACl+m/dweRndG4v
-	9B9NWHyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ac0vDkVN2S5INbBKAJZXzBMZgmwPtx+J/y1wgnR5DWw=; b=2J8AWDSo2oyMbAukk6SW98RazL
+	O4SklpXOPmKBs/ppJhnXawGXgc6z684thAk5SZvo8ygjlosyF4oRYayXm1jbYQpK8O0GmtGeMGJVM
+	iL7UurTOJU03RyqWlMgVBBiwwS3Yhu6ef0pHPOZ/ShCz4lUrhVOAkeE4lazeZYpT+3AKEboZFnxxz
+	FAs6IyZub1U1SB/maivI7tdgTw6e0VDL0FsbtatAQs8iQdLbwi1z+2ZVcGheN2yCvPzU1oVr0QYp7
+	BaGMNSSgUThRCbb6ZkExAVV1xB3X2pdRymqiaBKtKOW/nmXHRlFPyVrxQsulEq0fYnCQTQDEfkUcP
+	GgnJfCyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ony90-00CMAD-QS; Thu, 27 Oct 2022 08:21:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1onyA7-00CMmk-Jg; Thu, 27 Oct 2022 08:22:51 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ony8k-00CM2Z-S8; Thu, 27 Oct 2022 08:21:28 +0000
-X-UUID: 5bacff286b0f4c0bb2c99b3b458d170f-20221027
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TwDRdAHV6omantZx30uYTP1G+rwKWyLT0MPaZq06kLw=;
-	b=MlyHXQpQxujp8tVsEaF8CZx7QGd1Ql+mmmL4UvmbRxkqJ7Xz5qvC+fnun1fuQidb0XlhUfyRMjXGJfe/lWUizF+0uQb5hzLUvzfIRf61+u8LYXZSg3CHNrlWCkKnv2oEuRIpqHSIuHBs5DsKmShob1f8MdoIBGtFWHF8DXO0+gw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:da31fedb-595e-40f4-804b-28e274ce41b5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:955a456d-89d3-4bfa-baad-dc632a24bca3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5bacff286b0f4c0bb2c99b3b458d170f-20221027
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <zhaoping.shu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 87857456; Thu, 27 Oct 2022 01:21:21 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 27 Oct 2022 16:20:46 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 27 Oct 2022 16:20:43 +0800
-From: zhaoping.shu <zhaoping.shu@mediatek.com>
-To: <loic.poulain@linaro.org>, <ryazanov.s.a@gmail.com>,
-	<johannes@sipsolutions.net>, <davem@davemloft.net>, <edumazet@google.com>,
-	<kuba@kernel.org>, <pabeni@redhat.com>, <matthias.bgg@gmail.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <srv_heupstream@mediatek.com>, <haijun.liu@mediatek.com>,
-	<xiayu.zhang@mediatek.com>, <lambert.wang@mediatek.com>, zhaoping.shu
-	<zhaoping.shu@mediatek.com>, "hw . he" <hw.he@mediatek.com>
-Subject: [PATCH net v1] net: wwan: mhi: fix memory leak in mhi_mbim_dellink
-Date: Thu, 27 Oct 2022 16:20:40 +0800
-Message-ID: <20221027082040.149468-1-zhaoping.shu@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+	id 1ony9j-00CMZV-V8; Thu, 27 Oct 2022 08:22:29 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F16CE66028BE;
+	Thu, 27 Oct 2022 09:22:25 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666858946;
+	bh=JtEUOLR2EgDz232JYBT0aoeVDFCeQIPLjyQdNecDcaQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=V1npCHGRLgGjVicy2SdACvdAX5ZHEezSbWPJ8t0wK0SMv0QX1Lku39eJExLZso573
+	 KLrkmy+ohl87wTvJ1GN9Jh9wE89C3k5XEanW27kP6A8H2UjS0d9k3hLBrh8gVHCWNH
+	 jWEqbWt65KNhZajPnUa0pyB9IHa/0uaH66OMwyuHaym4+CpoI9QKy2/vS7XRYGi/k9
+	 LlffUpGuBBsREhPmz7NViiOqAHvXqkGBQ4cs0YWTD1679z4UvkmQILBIaemUDVztKX
+	 VeXRHz9RlWqrOe1BRwc+h5vx7XoGA8rEtSjIQ6KRg/sV7cz+HMlR55lE8gQgCQIq81
+	 V4d32mWnLJ1Lg==
+Message-ID: <8c0da3f2-0e77-e960-dab4-0a1d02e0d21e@collabora.com>
+Date: Thu, 27 Oct 2022 10:22:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v2 04/19] clk: mediatek: Add MT8188 peripheral clock
+ support
+Content-Language: en-US
+To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Richard Cochran <richardcochran@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20221024094254.29218-1-Garmin.Chang@mediatek.com>
+ <20221024094254.29218-5-Garmin.Chang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221024094254.29218-5-Garmin.Chang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_012126_941327_0C878CAD 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221027_012228_177209_AFC3EFF4 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,36 +80,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: hw.he <hw.he@mediatek.com>
+Il 24/10/22 11:42, Garmin.Chang ha scritto:
+> Add MT8188 peripheral clock controller which provides clock
+> gate control for ethernet/flashif/pcie/ssusb.
+> 
+> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 
-MHI driver registers network device without setting the
-needs_free_netdev flag, and does NOT call free_netdev() when
-unregisters network device, which causes a memory leak.
+..snip..
 
-This patch sets needs_free_netdev to true when registers
-network device, which makes netdev subsystem call free_netdev()
-automatically after unregister_netdevice().
+> +
+> +static const struct of_device_id of_match_clk_mt8188_peri_ao[] = {
+> +	{
+> +		.compatible = "mediatek,mt8188-pericfg_ao",
+> +		.data = &peri_ao_desc,
+> +	}, {
+> +		/* sentinel */
+> +	}
+> +};
+> +
 
-Fixes: aa730a9905b7 ("net: wwan: Add MHI MBIM network driver")
-Signed-off-by: hw.he <hw.he@mediatek.com>
-Signed-off-by: zhaoping.shu <zhaoping.shu@mediatek.com>
----
- drivers/net/wwan/mhi_wwan_mbim.c | 1 +
- 1 file changed, 1 insertion(+)
+Here and for all of the other drivers that you're introducing with this series...
 
-diff --git a/drivers/net/wwan/mhi_wwan_mbim.c b/drivers/net/wwan/mhi_wwan_mbim.c
-index 6872782e8dd8..ef70bb7c88ad 100644
---- a/drivers/net/wwan/mhi_wwan_mbim.c
-+++ b/drivers/net/wwan/mhi_wwan_mbim.c
-@@ -582,6 +582,7 @@ static void mhi_mbim_setup(struct net_device *ndev)
- 	ndev->min_mtu = ETH_MIN_MTU;
- 	ndev->max_mtu = MHI_MAX_BUF_SZ - ndev->needed_headroom;
- 	ndev->tx_queue_len = 1000;
-+	ndev->needs_free_netdev = true;
- }
- 
- static const struct wwan_ops mhi_mbim_wwan_ops = {
--- 
-2.17.0
+please compress this array to one line per entry, like so:
+
+static const struct of_device_id of_match_clk_mt8188_peri_ao[] = {
+	{ .compatible = "mediatek,mt8188-pericfg_ao", .data = &peri_ao_desc },
+	{ /* sentinel */ }
+};
+
+Regards,
+Angelo
 
 
