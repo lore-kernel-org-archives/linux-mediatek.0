@@ -4,99 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2A1FA3740
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 01:26:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA22C38A2D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 02:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=; b=JBMsNyIUjErE/7Ew90JiEWdBu8
-	hrnc+q0QCNnd7bpXh0s3sj9g+5dCgUHEELpX7Q2f0kAngxXWhrvLFjF1WDsE2jACTrAz/4oJEeU2S
-	uXEP2o6QEGWrIdRYrIPWSgTSeaovNTJKrSyYfM+sbHzgxLvV7AvbJ4Kqt4h0BF8QW55Lg2e+h7yzI
-	Vn261YHhNwRMreb2+x2Z7NoqcGe/a1xwQJEt6bKKzHgsI1qxn2ttcdBut7KwMoAbkDcyInKCi/sr6
-	/UFyf27avaQgBvfANFOD6REEf29V+ZojbkrNNpXUykB8LmMp7RuwuRETIFIfennPd8M8BSoSyLOsE
-	PtAKEeZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z5QwCsBsQ9rxaiWZoCnkId+Sbas3jW64rpNqbI07GYs=; b=QLtJj6IYEPgC4I0OWEfjK44wL7
+	upvXmjpH7tcjhaFrFgMPH3Y0XlP44JRa6ZMKycJ6IDzdHnb8vHW9aPHTioTkXkNk7RYxvvL/lcjrz
+	PBYGpC5FrGcPuF0oSUk9QXiXNdbi9GTTTryn2QEoxUC5RW0SOSee6vA/1W5n3n7SDnZT2R8vBqbj/
+	D19rbmkBxvt84PeUcb3J2KouoOc0kIpIHn83a7SAodqKbQcqFK92rTsKcrnD4mudBALTr1MGVv7fp
+	O7RSemSWrAoUoTuCTUAMZpxGzduVFMB/fHFEFNNr78Z44f7UTSb3ToX+z1trhNi6lyoql3VJU3ysy
+	8yVoiQRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onreo-00BUaG-1t; Thu, 27 Oct 2022 01:26:06 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1onsBn-00BXsQ-7a; Thu, 27 Oct 2022 02:00:11 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1onrei-00BUZW-1i; Thu, 27 Oct 2022 01:26:01 +0000
-Received: by mail-ej1-x635.google.com with SMTP id n12so390987eja.11;
-        Wed, 26 Oct 2022 18:25:58 -0700 (PDT)
+	id 1onsBc-00BXqy-Jb; Thu, 27 Oct 2022 02:00:02 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id l14so22230962wrw.2;
+        Wed, 26 Oct 2022 18:59:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=;
-        b=Ak9cFoMVeWMSUIAGFSQkCJHFveAgowrzclOz8E4R2ovNZinoB7cMxtzP7UJ/FS1MhZ
-         aIQokrDMuaFVyObAva5a9obdhGVc0TwHF/sqmrLQoYKqsWBtpU7iUc2XlX4U44VIx3Fl
-         x4lm958gv/LZXmUtpDAvwe0Xa9ywn99PinYj+U49u2/uv07NVu8IdUgBKvZ4+2iiRaS3
-         51j7VannowB5ZDLKDDlSh9Ip7bZdQh4pmCNSJgbMbOb17pBnjE+VQD/wO5vTADdy40DG
-         99idyhZFj3/rxP/5K4LaE0m+b3wJsquLcBbqrMspfJKC+TzxL+q2Jm9yzSWNvgyyMeOD
-         cJjQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=z5QwCsBsQ9rxaiWZoCnkId+Sbas3jW64rpNqbI07GYs=;
+        b=R/A2YVA1zZ+iOJAicaFSBvejxTm9ZbiCzqf2f765kMJtxBG5OtP4I+LCQwrwDU2ozh
+         RjtgI7p4b/DmmH3vOxI2+Jbu5tDhJ3XGbBQHbl+sBP18ShInha2r/VY4VTIh22r2qFf6
+         R7D739EtqG9rdBGRcvK0/tRbZQw/gp4eYVRjEwA009ce2GErea+Ul6xR6cfQvk3tPPCA
+         UvFRG+RnIcnWKr1dXDc9lsO9tSfKcGlOB9Y/wskJTNbSqm0aQjnOwDInTsiE+HR1GHCv
+         rd3p1e3vFoM/YMWK6LJForl4rklm+jiEJaVVoBoC+fgw/G4qMT3pV9MxX+j4SrxcJ39h
+         W9Gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iR9yh+MGJc6yJjmKhl5V2S44arNolkzCvV+lLhhUe64=;
-        b=UnFg1pZIBkXgFhyhx3+ao57n5qaIjahjHhYbhqg63dO/nGEvTiyvLRxTOf6pfA/cRZ
-         GxMF/IuEaJcqZ2UnCHWZUGZaECBlfADyLnsfvf0aoMVGG/Kn6sSo+X2B3zb+/wRB6DZA
-         Yxqx8QUgE0qJ5SZoRwGaogO/5aqEHncDHWyZetJOB9izMprqlwszCd5p6hkbTFy2xsEP
-         UGja7B+PRNxECk5bdVagg0TMWfX+cMp6v6OrSboKZYINMjxr/tuawKSLj1UofgtHO3l8
-         5WYLlpmzXFNGzIWM0i5+QG3TrSEPbDEY4smBxzdtB1qZ6g05YcDukLip2cCvhmONbWK2
-         5AXA==
-X-Gm-Message-State: ACrzQf1cq8rQLh/XiPWcHGqA3R0T/XQlwjhSsCwmO6G7rIJAuA4njTrD
-	6N9xjsNeEihgBreyhRmPf+c=
-X-Google-Smtp-Source: AMsMyM6jmu231VAY0bBmdx9jmWK53PBwcm6TKFHHTLvhIiaAps0fm87Ok/ITHE9SN204+ArviR9/DA==
-X-Received: by 2002:a17:907:744:b0:741:36b9:d2cc with SMTP id xc4-20020a170907074400b0074136b9d2ccmr38493473ejb.613.1666833956870;
-        Wed, 26 Oct 2022 18:25:56 -0700 (PDT)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id q19-20020a170906389300b00773f3ccd989sm10022ejd.68.2022.10.26.18.25.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Oct 2022 18:25:56 -0700 (PDT)
-Date: Thu, 27 Oct 2022 04:25:53 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Colin Foster <colin.foster@in-advantage.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Lee Jones <lee@kernel.org>
-Subject: Re: [PATCH v1 net-next 3/7] dt-bindings: net: dsa: qca8k: utilize
- shared dsa.yaml
-Message-ID: <20221027012553.zb3zjwmw3x6kw566@skbuf>
-References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-4-colin.foster@in-advantage.com>
- <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-4-colin.foster@in-advantage.com>
- <20221025212114.GA3322299-robh@kernel.org>
- <20221025212114.GA3322299-robh@kernel.org>
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=z5QwCsBsQ9rxaiWZoCnkId+Sbas3jW64rpNqbI07GYs=;
+        b=7QtvhT7dF2bIugyQGTKP8kaG093tjH0HlpLjB3TZYjsZV+F6sC/q1IHT+eIds/8Z2N
+         Qz2gMzL/v2E4/qbSWX44064qF4ehrKtNRYr6ofgbb64SrnR1ghIRuFPh5JDi2BRNoo5S
+         rqBc0dCWiGRymb69e0LY+DvUZEsCo/I7NmNtJYe7/QYqkDCuIMXi275SFh+oB9NPXs33
+         MsXRMC5yHfaMPP+vAbBvXQ5DuMCALkoXPB8cepc+XAY6wg4R2Zp8MKGXh6NCvKe+Jbx3
+         BF9vzmm9xUG3i5Gpe6YgIn6oaGX1zgtLgwljRK6KClvz99RihK/R6uCjpk+srFQfBRed
+         jn/g==
+X-Gm-Message-State: ACrzQf1AuLuLl9Dj4GrKBIBnQj6LcPBl2wFQ3K49c84wkV0x9BngGvF1
+	Hl8s2K1d70YT3vMNT8ho67WS84tBONJRh/rAJAWXvu1HhxU=
+X-Google-Smtp-Source: AMsMyM5m9w2fnMET9O2I/2czFqyKE19N4YcMLhy5KV6X/u8QmGbc2YG4dYZjbEsxCI4GdHGVMbDIVLmgvK4OlGjENsw=
+X-Received: by 2002:a5d:58d9:0:b0:236:5b81:2c99 with SMTP id
+ o25-20020a5d58d9000000b002365b812c99mr18155363wrf.494.1666835998201; Wed, 26
+ Oct 2022 18:59:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221025212114.GA3322299-robh@kernel.org>
- <20221025212114.GA3322299-robh@kernel.org>
+References: <Y1aCiReTZDbPp/rS@kadam> <20221026072444.GA24881@cyhuang-hp-elitebook-840-g3.rt>
+ <Y1j058PsWYj0MQrC@kadam> <CADiBU39z_h=QLF-cGztz6Wq86+rMahVb7owHNt4RpvFPFYDs3w@mail.gmail.com>
+In-Reply-To: <CADiBU39z_h=QLF-cGztz6Wq86+rMahVb7owHNt4RpvFPFYDs3w@mail.gmail.com>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Thu, 27 Oct 2022 09:59:46 +0800
+Message-ID: <CADiBU38JKzq9ngiaZWTse3eMdH_fTcUCdanea7uQAU7NxZrzZg@mail.gmail.com>
+Subject: Re: [PATCH resend] mfd: mt6370: add bounds checking to
+ regmap_read/write functions
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Lee Jones <lee@kernel.org>, ChiYuan Huang <cy_huang@richtek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221026_182600_180492_5355A4C5 
-X-CRM114-Status: GOOD (  24.23  )
+X-CRM114-CacheID: sfid-20221026_190000_665890_FA0CC071 
+X-CRM114-Status: GOOD (  22.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,72 +89,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+ChiYuan Huang <u0084500@gmail.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=8826=E6=
+=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=885:05=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Dan Carpenter <dan.carpenter@oracle.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=
+=8826=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=884:51=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+> >
+> > On Wed, Oct 26, 2022 at 03:24:48PM +0800, ChiYuan Huang wrote:
+> > > 2) normal register access with negative length
+> > > Unable to handle kernel paging request at virtual address ffffffc009c=
+efff2
+> > > pc : __memcpy+0x1dc/0x260
+> > > lr : _regmap_raw_write_impl+0x6d4/0x828
+> > > Call trace:
+> > >  __memcpy+0x1dc/0x260
+> > >  _regmap_raw_write+0xb4/0x130a
+> > >  regmap_raw_write+0x74/0xb0
+> > >
+> > >
+> > > After applying the patch, the first case is cleared.
+> > > But for the case 2, the root cause is not the mt6370_regmap_write() s=
+ize
+> > > check. It's in __memcpy() before mt6370_regmap_write().
+> > >
+> > > I'm wondering 'is it reasonable to give the negative value as the siz=
+e?'
+> > >
+> >
+> > Thanks for testing!
+> >
+> > I'm not sure I understand exactly which code you're talking about.
+> > Could you just create a diff with the check for negative just so I can
+> > understand where the issue is?  We can re-work it into a proper patch
+> > from there.
+> >
+> Here.
+> https://elixir.bootlin.com/linux/v6.1-rc2/source/drivers/base/regmap/regm=
+ap.c#L1860
+>
+> From my experiment, I try to access 0x00 reg for size (-1).
+> Testing code is like as below
+> regmap_raw_write(regmap, 0, &val, -1);
+>
+> That's why I think if the size check is needed, it may put into
+> regmap_raw_write() like as regmap_raw_read().
+>
+It seems c99 already  said size_t is an unsigned integer type.
+My experiment for (-1) size is not reasonable.
+(-1) means it will be converted as the UINT_MAX or ULONG_MAX.
+This will cause any unknown error like as memory violation or stack
+protection,...etc.
 
-On Tue, Oct 25, 2022 at 04:21:14PM -0500, Rob Herring wrote:
-> On Mon, Oct 24, 2022 at 10:03:51PM -0700, Colin Foster wrote:
-> > The dsa.yaml binding contains duplicated bindings for address and size
-> > cells, as well as the reference to dsa-port.yaml. Instead of duplicating
-> > this information, remove the reference to dsa-port.yaml and include the
-> > full reference to dsa.yaml.
-> 
-> I don't think this works without further restructuring. Essentially, 
-> 'unevaluatedProperties' on works on a single level. So every level has 
-> to define all properties at that level either directly in 
-> properties/patternProperties or within a $ref.
-> 
-> See how graph.yaml is structured and referenced for an example how this 
-> has to work.
-> 
-> > @@ -104,8 +98,6 @@ patternProperties:
-> >                SGMII on the QCA8337, it is advised to set this unless a communication
-> >                issue is observed.
-> >  
-> > -        unevaluatedProperties: false
-> > -
-> 
-> Dropping this means any undefined properties in port nodes won't be an 
-> error. Once I fix all the issues related to these missing, there will be 
-> a meta-schema checking for this (this could be one I fixed already).
-
-I may be misreading, but here, "unevaluatedProperties: false" from dsa.yaml
-(under patternProperties: "^(ethernet-)?port@[0-9]+$":) is on the same
-level as the "unevaluatedProperties: false" that Colin is deleting.
-
-In fact, I believe that it is precisely due to the "unevaluatedProperties: false"
-from dsa.yaml that this is causing a failure now:
-
-net/dsa/qca8k.example.dtb: switch@10: ports:port@6: Unevaluated properties are not allowed ('qca,sgmii-rxclk-falling-edge' was unexpected)
-
-Could you please explain why is the 'qca,sgmii-rxclk-falling-edge'
-property not evaluated from the perspective of dsa.yaml in the example?
-It's a head scratcher to me.
-
-May it have something to do with the fact that Colin's addition:
-
-$ref: "dsa.yaml#"
-
-is not expressed as:
-
-allOf:
-  - $ref: "dsa.yaml#"
-
-?
-
-If yes, can you explain exactly what is the difference with respect to
-unevaluatedProperties?
-
-> >  oneOf:
-> >    - required:
-> >        - ports
-> > @@ -116,7 +108,7 @@ required:
-> >    - compatible
-> >    - reg
-> >  
-> > -additionalProperties: true
-> 
-> This should certainly be changed though. We should only have 'true' for 
-> incomplete collections of properties. IOW, for common bindings.
-> 
-> > +unevaluatedProperties: false
+let's check whether the negative size is reasonable or not.
+If this case dost not exist, to keep the boundary check is enough.
+> > regards,
+> > dan carpenter
+> >
 
