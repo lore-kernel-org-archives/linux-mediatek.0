@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB87FFA3744
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BE0FA3742
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 13:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ic5qV7VWLqe4+lahnJxOzORNAlLni3RZGNOdWJ0dyec=; b=tCpxK9bzalsKahBXj+54UNyvRV
-	u+Icof8uk2q6nY9AjZvb7xv+SzHoq6dVEKJtNYFcE2oqwhUHLCgcgPcZWED7/hjhr5Fle9/AD5Yk+
-	mmyNJ40CaPJj7W7UvGVTQEm4pybeAviWnmmMBj6kIP95lgy5q7p4OH/9ZWifxAxk0JatGmn2GRpvo
-	AHQLFenYEszfHtdSh/gv/TmgRr+meJRg/GPwDMiV30+3gmqNJ7vj/HXq0nwZRRvvX4FSPWv5sLI2F
-	qP4o5+F0yNqZ32/qGZvjksyOeVDLhmJxJq74ionJzKE9m5qz3BtRWz15FhjptZxG9KjKghMmw88mY
-	KIiIrgfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DXI7ttHruh1sJniS6TpJJRJcjXoXJ/dSqy2SyC1F0VA=; b=YXCEMFCMwBuyfXVJSpfIG2GKlr
+	mxmsO64GC1nsg3w1PQ4FZbT8d3+zKjM4tTrNbZOwL6m4+Lbn5Y0XaN4/2PtGqhAz8atmD15qZpS9d
+	w4ihteQC3iGCjTQIbpadWODwsJZCgLHKscWmeFb9N7ovCfiAZ9H+e6IX3sCvz2cNV74tIlnXcb9J5
+	aoQ7dVcA+rBkqe6EWKpslm/EV3igwdaMW1Mie7MmC7XHe1Vp3n1fm+Iy+Pte6Jq8f0j5nHO3jy4NG
+	aRvoDc+a98pjdQmsNqiXONKN63GjNlb2zqoWCPraU9zpeJdK1wwwffDcJJTOqJHg2u8bzvHDrauky
+	QxuupVEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo32b-00DZKS-NT; Thu, 27 Oct 2022 13:35:25 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oo3Bj-00DeqI-V7; Thu, 27 Oct 2022 13:44:51 +0000
+Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo2rg-00DTN2-Je; Thu, 27 Oct 2022 13:24:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Ic5qV7VWLqe4+lahnJxOzORNAlLni3RZGNOdWJ0dyec=; b=SgfKVU45bIsDSc6qM2t+eq5mzz
-	uygqYGqxeA23IDB81kxyy8p3Jol8JbrH7eJaCsAQfITFy1mv9Xs5K+km9oWnp8hSZW6rvlpGAeptr
-	nNFYUBQ6nmV1FwbWjfEoJpmGQQ3HprGPM7sSBkHs5ZkeH/663GzkBS22Sq/utpJorCd5+OK3XzR7K
-	/NnzTLvIjMsHNoyiqJR649acRIBm/9kZAyzKpwlP62VMgOklu+Cbvzg3+oZWz4MirlkSdWuCAyB0p
-	AV6gCLker321KFUrpyXm/wPgL3pNESejKVO2ArmPH2VjVNxleOGO81ww0rL/uD/m8vlXjns5VVNOA
-	4jdS+awA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34974)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oo2rZ-00072U-Ak; Thu, 27 Oct 2022 14:24:01 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oo2rW-0001aM-9x; Thu, 27 Oct 2022 14:23:58 +0100
-Date: Thu, 27 Oct 2022 14:23:58 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: "David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Frank Wunderlich <frank-w@public-files.de>
-Cc: Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH net-next 00/11] net: mtk_eth_soc: improve PCS
- implementation
-Message-ID: <Y1qGbrPZWNBt/78Z@shell.armlinux.org.uk>
-References: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
+	id 1oo36f-00DbYO-TQ
+	for linux-mediatek@lists.infradead.org; Thu, 27 Oct 2022 13:39:40 +0000
+Received: by mail-qt1-x829.google.com with SMTP id a24so1078566qto.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Oct 2022 06:39:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DXI7ttHruh1sJniS6TpJJRJcjXoXJ/dSqy2SyC1F0VA=;
+        b=kFiekM9BXanfNbGJ5MdCQMWLy47GZ83U2h7aw1Tkexy8Og4ISelKH6cwszpIaHA0Sn
+         UXWTWABH5vUlkqWPV+WnKg9dzn4l7TXcALRIK7R8yCOMuFBVv0bGAKUeI7CcZEJdBRgy
+         xb1YUGNzU1emvfumth2zWqCLpKT/CaY6ND5L0c38JMmy8alEEXliM2K70ggS868CB2iS
+         zwPkkYPwAjSk9qUYiLG4nNRfpJRkhft4FTF0ql+xTLwAS/wdIYxaUhXx03+IptlDjC2P
+         dRHoHCjmnjMseI0U9DEqBxqrhy8KlexvY8sxOHcxKh7lZJTXwuaUSJPGy9QbdUcYk6Mi
+         +7QQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DXI7ttHruh1sJniS6TpJJRJcjXoXJ/dSqy2SyC1F0VA=;
+        b=GRK5lVv+b7FsPF2vtAlC86vbhoAsqpI7NKfd7awZdgn1KNKvnZWA11GhIP4NTmXgik
+         SH8zmRgPM05gq2Gq1HSiUF5BRxa52xvrPyVu3dCHJJUYjky1AtbsEQXJxxvOB96n9Rju
+         KqGzpxh8UVMUUAfKJOPLBrPUupinKSyAzIRXOlWFYgazj+Y1u70UZBj0/kAPLwq5wUlA
+         gtJpHTxL2pE2zbgjj/f/7DgOJREGtM5q0oY/uG828lAHCMu0dF4zkeAyFEiMoIrsSGpa
+         xjjHf/EV6i9yYBsjj+Rs4W5zN8vmNKdvEoXNnRTCoxatf2GIRMUdgu5+fuTMqNyT5Qg5
+         w+oA==
+X-Gm-Message-State: ACrzQf1gO088QhgXmwReU2zc1JLyrmZfzuU6dehzrQXmpbIKr9L9R3qJ
+	EAxOVvWOcYNhMqSUuzFddZ2BlQ==
+X-Google-Smtp-Source: AMsMyM51EC06AFkH8LuvtXEBIHaCz7EHTGzSieB15/F7HnjFlhWODFvVB5sLxkSNNGmH6+hxPN3k2w==
+X-Received: by 2002:a05:622a:1903:b0:39c:e308:ee1a with SMTP id w3-20020a05622a190300b0039ce308ee1amr42153049qtc.469.1666877975306;
+        Thu, 27 Oct 2022 06:39:35 -0700 (PDT)
+Received: from [192.168.1.11] ([64.57.193.93])
+        by smtp.gmail.com with ESMTPSA id k25-20020ac84759000000b0039bfe8acff6sm887391qtp.58.2022.10.27.06.39.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Oct 2022 06:39:34 -0700 (PDT)
+Message-ID: <0cfb3da3-99ff-31b7-d3e3-cf425296af67@linaro.org>
+Date: Thu, 27 Oct 2022 09:39:33 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y1qDMw+DJLAJHT40@shell.armlinux.org.uk>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v2 5/6] dt-bindings: arm: mediatek: Add compatible for
+ MT6795 Sony Xperia M5
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ hsinyi@chromium.org, nfraprado@collabora.com, allen-kh.cheng@mediatek.com,
+ sam.shih@mediatek.com, andrew@lunn.ch, sean.wang@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20221027095504.37432-1-angelogioacchino.delregno@collabora.com>
+ <20221027095504.37432-6-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221027095504.37432-6-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_062408_677981_A8158A58 
-X-CRM114-Status: GOOD (  24.59  )
+X-CRM114-CacheID: sfid-20221027_063937_967779_3D2FF593 
+X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,59 +99,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 27, 2022 at 02:10:11PM +0100, Russell King (Oracle) wrote:
-> Hi,
+On 27/10/2022 05:55, AngeloGioacchino Del Regno wrote:
+> Add a compatible for the Sony Xperia M5 smartphone.
 > 
-> As a result of invesigations from Frank Wunderlich, we know a lot more
-> about the Mediatek "SGMII" PCS block, and can implement the PCS support
-> correctly. This series achieves that, and Frank has tested the final
-> result and reports that it works for him. The series could do with
-> further testing by others, but I suspect that is unlikely to happen
-> until it is merged based on past performances with this driver.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
 
-I forgot to say, many thanks to Frank for his efforts and patience in
-testing various patches to discover how this PCS works.
 
-> 
-> Briefly, the patches in order:
-> 
-> 1. Add a new helper to get the link timer duration in nanoseconds
-> 2. Add definitions for the newly discovered registers and updates to
->    bit definitions, including bitmasks for the BMCR, BMSR and two
->    advertisement registers.
-> 3. Remove unnecessary/unused error handling (functions always returning
->    zero.)
-> 4. Adding the missing pcs_get_state() implementation.
-> 5. Converting the code to use regmap_update_bits() rather than
->    open-coding read-modify-write sequences.
-> 6. Adding out-of-band speed and duplex forcing for all non-inband modes
->    not just the 802.3z link modes the code currently does.
-> 7. Moving the release of the PHY power down to the main pcs_config()
->    function.
-> 8. Moving the interface speed selection to the main pcs_config()
->    function.
-> 9. Adding advertisement programming.
-> 10. Adding correct link timer programming using the new helper in the
->     first patch.
-> 11. Adding support for 802.3z negotiation.
-> 
-> There is one remaining issue - when configuring the PCS for in-band,
-> for some reason the AN restart bit is always set. This should not be
-> necessary, but requires further investigation with the hardware to
-> find out whether it is really necessary. I suspect this was a work
-> around for a previous poor implementation.
-> 
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  13 ++-
->  drivers/net/ethernet/mediatek/mtk_sgmii.c   | 174 ++++++++++++++++------------
->  include/linux/phylink.h                     |  24 ++++
->  3 files changed, 134 insertions(+), 77 deletions(-)
-> 
-> -- 
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
-> 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Best regards,
+Krzysztof
+
 
