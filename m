@@ -4,84 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F30ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 14:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8540DFA3740
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Oct 2022 15:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EJ4Kd5OapXjmuby1cWyw4DBWhE67uDDM4xxXN5ju6mc=; b=Fk+ISvHuZCKH4U6sOxAFvsTxmM
-	PSIvgNPtaljb65p4lB7StU/e1sMLJb3xFrVcIGrXYTvsUgcLy1oX0U6RV+0aYafULmvjq9oc7pm7N
-	kBZxcW9YT2PGddK1bhaARuuUWNirJfhBSlChmTqhMeVgCK8tx5UjEtFtIduB19ogVn2qQ9D0LYbbO
-	4XoCgKLPjJALqCBpalZMrN939JYuCE2DHic0kDVIm0/gVR2csxX/uIiZcwOlaOVsEyau/RAYZbCy3
-	Sf6WzlUpHafeQYhzHhSZmCgPRbuEbdovQaU5rgQniUAQeHKPikQXZkECdDL/dnWpjc6ffl54LCO6w
-	lWlvmWZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Rm1t4RdpbKKClXKPtibfxyQ7kbjOHaphgTBCR98lkTg=; b=2AlKJ0wo4IN8SN
+	u7witBQFY81Nv8ISycF6p5pSHhoNNPAMWmi4bkPEAoUcVNvZaoKhWnLX8QduvMwEzcYEQTdDqKjdq
+	JKxyFAhB0lbzkgmWT2NRoPIoHvuvdBzkKaQH/+lzN3WFDTgm4Hs99dPbbzOuNdrbcx/Sh4r/LoX6b
+	8HS2oZH/LN4e5vK2jw7Msv14RQnGww5DYXg/Tc6pd7QuT6psmTkh3Cu14e4EdMKc1oAaZ9hQQTOSi
+	6euo0a4VYnoJIIzU20ZdZ+zDE/E4YZziD7ffs5ZcYGuCeH0l7LxxXb/NnupHcnlUltsBtx5bQjBf/
+	jcH9Uselhe9Ikc33qI9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo4Fm-00DtJX-0j; Thu, 27 Oct 2022 14:53:06 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1oo4Zy-00E1nQ-63; Thu, 27 Oct 2022 15:13:58 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oo4FI-00Dt7d-N3; Thu, 27 Oct 2022 14:52:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 603DBCE26F9;
-	Thu, 27 Oct 2022 14:52:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D51C433D6;
-	Thu, 27 Oct 2022 14:52:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1666882351;
-	bh=jTEEOUklXetex1TUo5omUcT3p8eJ5Vnvb1qhgEzzmLk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=s95szTrBhoPCZR557GQy/SDo7RemHuo0Alzlr/HYI4osEu4I/5ieQl5QXRqJZjMuC
-	 6y+RxV2C9CKCDnGmxv3WhTcQn9Cbsd9qd7BUP50nlOGfX0/useWRCUMPPKOWXdtpz+
-	 /445Hxzrkg7AbLYQFw8zRMJFrWIjZv0nRizv0vbMixP1LjbKDEGucjslQG3zgepEVX
-	 pbVpE4Kqw4tJBrVZLojVb7eMrn7zvwnJ6TQF4yQpt1NlHJ5JtCdTd2pomuHexheXO6
-	 EN2nQA/5HqfzM7HCRmLftTyh0Mxp7pD+pk/B8m3SYbaaTkwMFfsCtKnvJWXsJASuvw
-	 lJpnI3CPFzpiw==
-Message-ID: <9e64a359-68f5-51b0-bc14-6eda57e41774@kernel.org>
-Date: Thu, 27 Oct 2022 10:52:27 -0400
+	id 1oo4ZH-00E1Q9-8s; Thu, 27 Oct 2022 15:13:18 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout2.routing.net (Postfix) with ESMTP id 888656047D;
+	Thu, 27 Oct 2022 15:13:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1666883583;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=Rm1t4RdpbKKClXKPtibfxyQ7kbjOHaphgTBCR98lkTg=;
+	b=v6LDHRx1zCBOkp6Yk8dAWZuc0EwIB9m2G9nZLJzgZ1a/QAwIwB32f0LcsuXFNTDzZSe4K1
+	RCF82sGi14r9AhYRah/nw82AN/0ci4hrrZXpOzdKeDRGx1ecmHkvmqWM1kBp5hJ370Uo9c
+	u9/IOHe7rAruZQWXTgcQDRp9ztvFUtA=
+Received: from frank-G5.. (fttx-pool-80.245.77.6.bambit.de [80.245.77.6])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 985DC3604A1;
+	Thu, 27 Oct 2022 15:10:55 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] arm64: dts: mt7986: fix trng node name
+Date: Thu, 27 Oct 2022 17:10:22 +0200
+Message-Id: <20221027151022.5541-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [RESEND v3 1/3] dt-bindings: watchdog: Add compatible for
- MediaTek MT8188
-Content-Language: en-US
-To: =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
- <Allen-KH.Cheng@mediatek.com>, "linux@roeck-us.net" <linux@roeck-us.net>,
- =?UTF-8?B?UnVueWFuZyBDaGVuICjpmYjmtqbmtIsp?= <Runyang.Chen@mediatek.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>
-References: <20221026063327.20037-1-Runyang.Chen@mediatek.com>
- <20221026063327.20037-2-Runyang.Chen@mediatek.com>
- <20221026152645.GA2946818@roeck-us.net>
- <e889728c-13e9-37f8-4d1a-e31332a39498@collabora.com>
- <5abd63240a7890895a6de26a52fc24086f1c8ddb.camel@mediatek.com>
- <e6035c60-29b7-a03e-29cd-77c37f5375e6@roeck-us.net>
- <c42c4fff91a0794ff0514880182564d28026297a.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <c42c4fff91a0794ff0514880182564d28026297a.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-Mail-ID: ead8d68b-beaf-45b4-a187-c45a63bd847c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221027_075236_998681_FC03DE11 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20221027_081315_558692_7EA507CC 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +63,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/10/2022 09:54, Allen-KH Cheng (程冠勳) wrote:
->> You did not copy the watchdog mailing list with this patch, causing
->> it to get lost
->> from my queue (even though I had a look at it). If there were other
->> watchdog related
->> patches in this version of the series, they got lost as well.
->>
->> Guenter
->>
-> 
-> I apologize for missing this and will pay attention next time (v3).
-> 
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Just use get_maintainers.pl and automate your task... Automation removes
-(most) mistakes.
+Binding requires node name to be rng not trng:
 
-Best regards,
-Krzysztof
+trng@1020f000: $nodename:0: 'trng@1020f000' does not match '^rng@[0-9a-f]+$'
+
+Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 72e0d9722e07..226648f48df2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -168,7 +168,7 @@ sgmiisys1: syscon@10070000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		trng: trng@1020f000 {
++		trng: rng@1020f000 {
+ 			compatible = "mediatek,mt7986-rng",
+ 				     "mediatek,mt7623-rng";
+ 			reg = <0 0x1020f000 0 0x100>;
+-- 
+2.34.1
 
 
