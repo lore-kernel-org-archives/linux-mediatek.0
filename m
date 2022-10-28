@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0AC1C38A02
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 08:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C88A0ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 09:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oSFxP9Fb4fyR8FREPivnQnZ8b4w7uljzRB2VBvMiBGc=; b=Pl7aTdzEx6eNQylD2mUZi4TFyv
-	o7nr0yy6XXU5CklUIPKpjiWC0Fsp7SV7HMTUDUCYK/xtN3o1CNZxA/ybliNcquyPQL+qY0BddABp5
-	M2wO3aw1NG0KSitSU2fq133VHASkQSn9RhR8VPGYKyd60zIyE325sN1nEDtFgiAPt0F8bVYaIZ8Dw
-	Vfp/6xpOTGi5TOsLkPGNarJuxHFIpogU5T7uvCIL1q2VP+8K//uvHzjjIEnqA0+cNiy4HiIndTm50
-	fnfoVn9Ceq6k6lX0uFAYwffq47lS98Zxy72AQ7udAzn/JUIHgXk098FgsdATV0+aWfEexFAWC8TfG
-	WVXmdSNg==;
+	bh=JUMp/+YHjwFONvV93mltyqDZIKY9bpfbQ1LwXUnpcpc=; b=EJoaklftvspFP+a9BgrsOxYoCf
+	PjZ9Va8yoHnmMJkHZ6LHiSYYrkide4NMsZ00TsX0YxxalRjYEei3Ysw1wz/3m8wt+kYzgxheK/z0S
+	NFiXqd1D3bjcWDtJGb2pfQLwaNUfjq8YebyxliomqGTnxDZqSc+rT7FfO0+tsy8xyG5p1t1iMVaAo
+	14UteLwRf6xmI5L/DZLattrDGtjaGeArp0kNZ4xkCxWXph1S/SaM3Vt3W4Ml3/C9y3DlCffrNaonT
+	70Ql6EIWMuTaihZMRw67LtM0O2S8VvCz4v+Pl2bOUGFF6t2h/U2UvT7AMIgoIIy9nyYFuG9/Mbxwi
+	HjC9/x/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooKuC-00GAy9-3N; Fri, 28 Oct 2022 08:39:56 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ooLWu-00GHHD-0i; Fri, 28 Oct 2022 09:19:56 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooKtz-00GAt6-0s; Fri, 28 Oct 2022 08:39:44 +0000
+	id 1ooLWi-00GHES-Uq; Fri, 28 Oct 2022 09:19:47 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0CFB3660290F;
-	Fri, 28 Oct 2022 09:39:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 89A146602910;
+	Fri, 28 Oct 2022 10:19:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666946375;
-	bh=UhMWJ/1/cEHdLVXxkAy9ur25nedUXLfJn8yUZ5lgu04=;
+	s=mail; t=1666948781;
+	bh=dtnceuSfrqjxHu5xEJ8dEOnPPlrplVmUrR2fGovJYEo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TefUW9//YWfJDnNMBy5ONnnUxBXe/gejvnZs+Gxu/ShigBEh2gElXp/yeYKn67n3W
-	 wYKId+ZA4K5/rNAaMXTTZNbz8D04HFcxOrsdoL06tjAd057i1R1cRA0xuVj6nTZMWL
-	 jc2HqGmg46eE/7za1W7guuJoTKf/w9NjTTZkSxrH4fmmCKMjHTxuUX2yXPo6dCzf++
-	 W3BVHpf2icr820ATZo4+yvfE4iQFk5fUPIYoT0iTJqWC3eWZ5hP+uswwu4T1cE/YTg
-	 33b9ucRL2oO2bz+cmRA3nbRJkjIWq3VNm2SkaMQYU3Or+FnlgIOJ6cLE8M0oybagYC
-	 mMBK4o/11hlqw==
-Message-ID: <eb47aba9-e5d9-9f27-06ae-cf386b291b05@collabora.com>
-Date: Fri, 28 Oct 2022 10:39:31 +0200
+	b=PXLGKW06GbzwNTmLvx8BTyJ/6Udcf5qfEzvHON5D6C4MsN3whz2XFTk2BzgSaWeyK
+	 gLjuLY1t8MGmy3kZyfDag54c3yHZIph3oExfoCSgdPDZ6OJjgeEaLmbbJI1MMDAZG2
+	 x3FssjI19/HaX6S7ssDacd12fDHGLwCA2b2m92/nLkjnoHqa/aLc4sPVCWXZgdHjjj
+	 EKxczp8TzKCYm8ajz0XIbZLSJ86H2nx6VtLI2QZQvZku26/k5jG1/wHPCvXYbqVuiK
+	 v+x8IehWJ3K1P+pM3HVmoHo4jcLws/HlBI9vFap7Rr3JQtoIoZ19+3dcclaWIG/Hv6
+	 qSVPsdU4zjYnA==
+Message-ID: <64daf96b-b2b5-6f02-91aa-58d19083ee01@collabora.com>
+Date: Fri, 28 Oct 2022 11:19:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH] pwm: mediatek: always use bus clock for PWM on MT7622
+Subject: Re: [RFC v2 7/7] arm64: dts: mt7986: add Bananapi R3
 Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Thierry Reding
- <thierry.reding@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
- <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, Zhi Mao <zhi.mao@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>
-References: <Y1iF2slvSblf6bYK@makrotopia.org>
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <20221026093650.110290-1-linux@fw-web.de>
+ <20221026093650.110290-8-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Y1iF2slvSblf6bYK@makrotopia.org>
+In-Reply-To: <20221026093650.110290-8-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_013943_424556_7DECB069 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20221028_021945_289327_937249EF 
+X-CRM114-Status: GOOD (  35.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,20 +77,327 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/10/22 02:56, Daniel Golle ha scritto:
-> According to MT7622 Reference Manual for Development Board v1.0 the PWM
-> unit found in the MT7622 SoC also comes with the PWM_CK_26M_SEL register
-> at offset 0x210 just like other modern MediaTek ARM64 SoCs.
-> And also MT7622 sets that register to 0x00000001 on reset which is
-> described as 'Select 26M fix CLK as BCLK' in the datasheet.
-> Hence set has_ck_26m_sel to true also for MT7622 which results in the
-> driver writing 0 to the PWM_CK_26M_SEL register which is described as
-> 'Select bus CLK as BCLK'.
+Il 26/10/22 11:36, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Fixes: 0c0ead76235db0 ("pwm: mediatek: Always use bus clock")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Add support for Bananapi R3 SBC.
+> 
+> - SD/eMMC support (switching first 4 bits of data-bus with sw6/D)
+> - all rj45 ports and both SFP working (eth1/lan4)
+> - all USB-Ports + SIM-Slot tested
+> - i2c and all uarts tested
+> - wifi tested
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> SPI-NAND/NOR switched (CS by sw5/C) not yet included
+>    this is done with DT-Overlays in my tree, but i have no idea yet,
+>    how to upstream
+> 
+> break some lines in wifi-eeprom-data because of checkpatch warnings.
+> originally there were 8 x int32 per line
+> 
+> changes:
+> 
+> v2:
+> - remove pcie to be added later (discussion about clocks)
+> - some fixes based on suggestions on ML
+>    - add key suffix like it's done in mt7622-bpi-r64 devicetree
+>    - add dash in sfp node names
+>    - use reg as unit for switch-node
+>    - drop "-3-4" suffix from i2c-pins node name
+>    - fix order in Makefile
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>   .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  34 +
+>   .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  29 +
+>   .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 593 ++++++++++++++++++
+>   4 files changed, 658 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 0ec90cb3ef28..e8902f2cc58f 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -7,6 +7,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> new file mode 100644
+> index 000000000000..859b4180ca11
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> @@ -0,0 +1,34 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (emmc)";
+> +};
+> +
+> +&mmc0 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+pinctrl properties and power supply properties can go to the shared
+mt7986a-bananapi-bpi-r3.dtsi file.
+
+Also, I have a question here... so your hardware can take either eMMC
+or MicroSD... and... is there really no way to build in both devicetrees
+and having the bootloader to select the right one based on hardware version
+or on machine compatible?
+
+I can see, on the wiki, that both bootloader and ATF can be customized (so,
+can be compiled and flashed just fine), so I would say that even if the
+"original" U-Boot doesn't distinguish devicetrees, you can definitely easily
+implement that.
+
+If you have no idea how to recognize the boards, from a fast look at the
+board schematics, I can see that there's a bootstrap setting based on the
+state of GPIO0 and GPIO1... you can perhaps use that somehow?
+Otherwise, remember that, most of the times, there are other ways to determine
+the board version, like Board ID resistors...
+
+Also, still on the wiki, I can't see any no-eMMC version of this board: is
+the sd-only a pre-production version or..?
+
+> +	bus-width = <8>;
+> +	max-frequency = <200000000>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	mmc-hs400-1_8v;
+> +	hs400-ds-delay = <0x14014>;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	non-removable;
+> +	no-sd;
+> +	no-sdio;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> new file mode 100644
+> index 000000000000..57200407ab86
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> @@ -0,0 +1,29 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (sdmmc)";
+> +};
+> +
+> +&mmc0 {
+> +	//sdcard
+
+C-style comments please
+
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	bus-width = <4>;
+> +	max-frequency = <52000000>;
+> +	cap-sd-highspeed;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> new file mode 100644
+> index 000000000000..fc100c3a6415
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> @@ -0,0 +1,593 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Authors: Sam.Shih <sam.shih@mediatek.com>
+> + *          Frank Wunderlich <frank-w@public-files.de>
+> + *          Daniel Golle <daniel@makrotopia.org>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+> +
+> +#include "mt7986a.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3";
+> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +
+> +	gpio-keys {
+> +		compatible = "gpio-keys";
+> +
+> +		factory-key {
+
+I'd say that this is not "factory-key" but "reset-key"?
+
+> +			label = "reset";
+> +			linux,code = <KEY_RESTART>;
+> +			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		wps-key {
+> +			label = "wps";
+> +			linux,code = <KEY_WPS_BUTTON>;
+> +			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+> +		};
+> +	};
+> +
+
+..snip..
+
+> +
+> +	memory@40000000 {
+> +		device_type = "memory";
+> +		reg = <0 0x40000000 0 0x40000000>;
+
+Doesn't your bootloader fill-in the memory size automatically?
+
+> +	};
+> +
+> +	reg_1p8v: regulator-1p8v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-1.8V";
+
+This is "avdd18", isn't it?
+
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+
+All these regulators have a vin-supply: please fill it in.
+Moreover, in the schematics, I can also see other LDOs: 0.9VD (input +12VD),
+AVDD12 (input 1.8VD), DDRV_VPP (input 3.3VD)...
+
+Of course, this means that you have one more 1.8V regulator, called 1.8vd.
+
+> +	};
+> +
+> +	reg_3p3v: regulator-3p3v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-3.3V";
+
+regulator-name = "3.3vd";
+
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+
+vin-supply = <&dcin>; (dcin: regulator-12vd { ... })
+
+> +	};
+> +
+> +	reg_5v: regulator-5v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "fixed-5V";
+
+regulator-name  = "fixed-5p1";
+
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+
+Schematics say "+5V: 5.1V/3A", so this is not 5000000.
+
+> +		regulator-boot-on;
+> +		regulator-always-on;
 
 
+vin-supply = <&dcin>;
+
+> +	};
+> +
+
+..snip..
+
+> +
+> +&pio {
+> +	i2c_pins: i2c-pins {
+> +		mux {
+> +			function = "i2c";
+> +			groups = "i2c";
+> +		};
+> +	};
+> +
+> +	mmc0_pins_default: mmc0-pins {
+> +		mux {
+> +			function = "emmc";
+> +			groups = "emmc_51";
+> +		};
+> +		conf-cmd-dat {
+> +			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
+> +			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
+> +			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
+> +			input-enable;
+> +			drive-strength = <4>;
+> +			mediatek,pull-up-adv = <1>;	/* pull-up 10K */
+
+Can we please stop using these custom pull-{up,down}-adv properties?
+Check what was done on pinctrl-mt8192.c (and dt schema) for more information
+and examples.
+
+> +		};
+> +		conf-clk {
+
+..snip..
+
+> +
+> +&wifi {
+> +	status = "okay";
+> +	pinctrl-names = "default", "dbdc";
+> +	pinctrl-0 = <&wf_2g_5g_pins>, <&wf_led_pins>;
+> +	pinctrl-1 = <&wf_dbdc_pins>, <&wf_led_pins>;
+> +
+> +	mediatek,eeprom-data = <0x86790900 0xc4326 0x60000000 0x00 0x00 0x00 0x00 0x00
+
+Ouch! This looks like firmware unrolled in a devicetree property - that can't
+be right.
+
+Please dump that in a binary file and load it as firmware from userspace.
+
+Regards,
+Angelo
 
