@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBEA3C38A02
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 09:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61462FA3741
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 09:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ufhGul3EHDWt6vGqX7ebDIkN1/wWifIISfjdZ6no5xY=; b=jx/IiHNw8+iSXQ
-	R+NB/fWbSnM2f7ZTx2mHEM64e++/ej12pwuM32k9d04JVOSRf2AoR8InA0hS0mF2TbqWEXp7SDk5C
-	ZfCEcGrInkh/EzRTwkuAY5cR4TLmBqNpKyW3MU0/+OCh/B0/agkon9GSLHU9OaLzTK99Ez36yQ79U
-	OG+YwG8i1M2BacxP79kW0RvdBuQcICYu4w4j5BCMIYp5w6VcK/r9IEvkl6tAHcDAebqLKYmDTokM5
-	EVckuDIwYk0GDwenRoEczDYBwqP8C224CWnY0YlknYvxG/KASXszfWweROIIYZ6t8mkdwze35iGLh
-	MA8GFdnDvKjlwnOBWEOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NkABwCeXQ/gauEr1GiibQ64NJdHiVYs93/JDP/5Zq6k=; b=cGnNC2vHaFMIKNAwAIIkiOCl5r
+	WulicmLAzav/SJSa2fk4ywcmZ9RhcUKm1hDG6lrkxuw2YoS/H9JxKr46/D/uuQzQbk3m5pkl+VV54
+	PnwaFaYVeK82G+B/w8vYuPJCO4o99hKWVwItkYxwPWwt+XV21Ri5V+YG/2B6FjTh4s5q7Eo0G3O9X
+	yDvu11goWiTwFuYmFc7I19QUjBl9wOMVkmBXMs/kWFxYo66lfbnjBFkc/ZIuk84yq/LTszZKYsmqM
+	6DBFmpJu2C4OuaKMLA+zh7Edi9z6xGdUO/aSz1p4YzbPzdOO9/8m/VMat51ROskGZzyZJjhZtLHBB
+	YfbQaepg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooLcr-00GJ6S-P5; Fri, 28 Oct 2022 09:26:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ooLdB-00GJI1-NI; Fri, 28 Oct 2022 09:26:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooLcC-00GInT-OI; Fri, 28 Oct 2022 09:25:26 +0000
-X-UUID: 786fd6cc515143168f0c992e02454b9c-20221028
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=ufhGul3EHDWt6vGqX7ebDIkN1/wWifIISfjdZ6no5xY=;
-	b=grNzHjgJuxZmbVZ7R7lEWtBSoxPv1TzgR2jwaLNavK6X+cy4N5x2PgM0nvhI8GgjrugHH0NBorEUEKPyrvAlw8BMCxDVbQYKtVAc8uJdLXHu0TO7FnsrngEoOsn/UEViKrh3PFF5ndtXmcWnpIGsYyZ3Ex8agQW+CVPOcK8HcwY=;
-X-CID-UNFAMILIAR: 1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f273f604-922a-4c5b-b647-8ab307dbd32d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:49
-X-CID-INFO: VERSION:1.1.12,REQID:f273f604-922a-4c5b-b647-8ab307dbd32d,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_HamU,ACTION
-	:release,TS:49
-X-CID-META: VersionHash:62cd327,CLOUDID:1112bfea-84ac-4628-a416-bc50d5503da6,B
-	ulkID:221028172441ZCOWV2TN,BulkQuantity:1,Recheck:0,SF:38|28|16|19|48|102,
-	TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: 786fd6cc515143168f0c992e02454b9c-20221028
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1117244053; Fri, 28 Oct 2022 02:25:10 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 28 Oct 2022 17:24:38 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 28 Oct 2022 17:24:37 +0800
-Message-ID: <61c0b62af62ddd0e98378159db2b7d94022c9bf5.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: PCI: mediatek-gen3: add SoC based
- clock config
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Frank Wunderlich <linux@fw-web.de>, <linux-mediatek@lists.infradead.org>
-Date: Fri, 28 Oct 2022 17:24:36 +0800
-In-Reply-To: <20221025072837.16591-2-linux@fw-web.de>
-References: <20221025072837.16591-1-linux@fw-web.de>
-	 <20221025072837.16591-2-linux@fw-web.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ooLcN-00GItb-Qr; Fri, 28 Oct 2022 09:25:37 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 01C1F6602910;
+	Fri, 28 Oct 2022 10:25:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1666949134;
+	bh=LvswVNx54C9wiErF7sJ0zCEyXuSuFf8n0AySygPtKqk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ok0mK8kPt9nuNOkQewkQYwn+LZGR4aoypCBRqgelU5q6UJpbo9N3lLL+yYBdhymKr
+	 2IFJlIr/PKStSDJf20Szqp2cjBYJx49uCfNx4+VTAx8HZbmzbTh7ikzJJv2nXtgpl/
+	 ZyfvPnc/1cOAOVAimNa/DCbx+PogDj/VgQdHhyf0fSpFTuBLqh2MUwjNg0q1rv1LpK
+	 OPGLwP09IJFNm+pEeSQweee0UGOlG8ddiSj/T4eLSw0tpDrHBpJbhTfJPPrsdQ2taX
+	 p1WzabdnjKeQDV1wRJYcICP2br0nc3GhTUOlWfZ5Q77xiS/kva2wZek0S9DRYDyPIv
+	 /ivAaPPtRuM5A==
+Message-ID: <6fb93012-f923-f653-1865-5ce28ef3cec4@collabora.com>
+Date: Fri, 28 Oct 2022 11:25:31 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v5 3/6] arm64: dts: mediatek: mt2712e: swap last 2 clocks
+ to match binding
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>
+References: <20221025132953.81286-1-linux@fw-web.de>
+ <20221025132953.81286-4-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221025132953.81286-4-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_022524_864017_D27ED2F3 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20221028_022536_046488_50E25CEF 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,121 +78,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-After apply this patch, we found some dtbs_check error with the
-following patch which adds the PCIe node for MT8195:
-
-https://lore.kernel.org/linux-pci/20221020111925.30002-3-tinghan.shen@mediatek.com/
-
-arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb: pcie@112f0000
-: clock-names:        5: 'top_133m' was expected
-    From schema: Documentation/devicetree/bindings/pci/mediatek-pcie-
-gen3.yaml
-arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb: pcie@112f8000
-: clock-names:        5: 'top_133m' was expected
-    From schema: Documentation/devicetree/bindings/pci/mediatek-pcie-
-gen3.yaml
-
-Did you get the same error when adding the PCIe node for MT7986?
-
-Thanks. 
-
-On Tue, 2022-10-25 at 09:28 +0200, Frank Wunderlich wrote:
+Il 25/10/22 15:29, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> The PCIe driver covers different SOC which needing different clock
-> configs. Define them based on compatible.
+> First 3 clocks for mt2712 need to be "source", "hclk", "source_cg"
+> so swap last 2 of mmc0 to match the binding.
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
-> v2:
-> - fix typo in mediatek,mt8192-pcie
-> ---
->  .../bindings/pci/mediatek-pcie-gen3.yaml      | 48 ++++++++++++++---
-> --
->  1 file changed, 36 insertions(+), 12 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-
-> gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-
-> gen3.yaml
-> index c00be39af64e..98d3f0f1cd76 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -43,9 +43,6 @@ description: |+
->    each set has its own address for MSI message, and supports 32 MSI
-> vectors
->    to generate interrupt.
->  
-> -allOf:
-> -  - $ref: /schemas/pci/pci-bus.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
-> @@ -84,15 +81,7 @@ properties:
->      maxItems: 6
->  
->    clock-names:
-> -    items:
-> -      - const: pl_250m
-> -      - const: tl_26m
-> -      - const: tl_96m
-> -      - const: tl_32k
-> -      - const: peri_26m
-> -      - enum:
-> -          - top_133m        # for MT8192
-> -          - peri_mem        # for MT8188/MT8195
-> +    maxItems: 6
->  
->    assigned-clocks:
->      maxItems: 1
-> @@ -138,6 +127,41 @@ required:
->    - '#interrupt-cells'
->    - interrupt-controller
->  
-> +allOf:
-> +  - $ref: /schemas/pci/pci-bus.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8192-pcie
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: tl_96m
-> +            - const: tl_32k
-> +            - const: peri_26m
-> +            - const: top_133m
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8188-pcie
-> +              - mediatek,mt8195-pcie
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: tl_96m
-> +            - const: tl_32k
-> +            - const: peri_26m
-> +            - const: peri_mem
-> +
->  unevaluatedProperties: false
->  
->  examples:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
