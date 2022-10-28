@@ -4,61 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D971FECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 14:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80DEECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 15:35:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UtbBjtOCDmxG1fiAjntsLrhrfFgg1H/OVy+mHU9Tdic=; b=vGESmJdrzM4EAUvHH9GQoRuCOe
-	dTEKdzwm0J03cWDG9dYFJ07+xnaP+0mSf5TMoit1g3ScO3I3mHX4FzYx2BxFDkfou7xF1H6HPoK4u
-	pKe8cs6Ok2gsWvA8/TWue60E24VeQ9gzVBwoJvuLPW3EjqZHL5O1XQtq31aRxHOSvepoL6b0jA27T
-	R521AeeOC2O6ah67eV0LifFLuijk4SXqBPQkpO4LS+H5El1dRFPydITb+dnVfaoDRA5kmNg/vaI3f
-	mKBWWQkHhjemtcLu1ZUi82Mg+liDK/7RIGqtUUP1/eyHwujk5NS39af59CI1x0R+ncsfabrh8XMMs
-	f+ULn13Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7JOBlKgg/kW62eSwLjo5AIuvvOOYYo6+JrLET6u1kQg=; b=CWUxm1OSTE0V58833hWip/SH+c
+	tggnVYx1E+H/2YFKN6GNroN2eFwYZmCdlpB9Q+4hafuKyLMkbVnkLwBfBeVw18S+u/Ts5P1yQzXeq
+	5IGYTbmxK7Sr5iRMQmCAN0yrRMe4YxRI82FV35b2F2Wvf5GLbOQJYKFSOSDAcLHRTaY3jeFw0Y9Zc
+	z2f08uajd1Z6fbyPIf37tD/LPt3uC5nhHtBuRo6phAWFcdhVMBs2WwhV7w4jCTbNFha2Gdq8am5RW
+	a1ZUNT119UAUhBlQlpKrbTAEjUpuEHL8H7z10czSPdbkuIqnctrt+2DpKOAK7sotuIO30fZgwsUz6
+	zN8a2h1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooQj6-000HUi-0z; Fri, 28 Oct 2022 14:52:52 +0000
-Received: from ms.lwn.net ([2600:3c01:e000:3a1::42])
+	id 1ooROT-000YAC-2h; Fri, 28 Oct 2022 15:35:37 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooQe1-000FH9-3z; Fri, 28 Oct 2022 14:47:38 +0000
-Received: from localhost (unknown [IPv6:2601:281:8300:73::5f6])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id 0623260C;
-	Fri, 28 Oct 2022 14:47:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 0623260C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
-	t=1666968454; bh=UtbBjtOCDmxG1fiAjntsLrhrfFgg1H/OVy+mHU9Tdic=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=YPUMK7NbZEWiVJxDd81wBZav9MFex8t217mE4PTTWDl1Wycu8GM6Ea9a1vRzQ6K4s
-	 LB7lTKlSS1ZmpG7NdF0hatynkN3t1WCNrag2zPTpYp8Msw6DjzzGxXOLTagWQfStM5
-	 OpzNr69zoX0ZplnOKZjT7c3Gdpe26YiCH/GCuvVKjggGKnoYVlW8q52BozogUqaHaf
-	 lqbfUUsSLqzTySycQ7oJUAd39iZ6MnYN5bJxYZfwTw6xy6OrG5GkA6RIbXH+7RLbyz
-	 i9pvY3yXqHCvRhxsT6z+QxdZ90sNaW8G8ij9tPpOZYwQ1kmZ7kWl3ddSJDgLnmf13s
-	 uYKklGhEZ+f3w==
-From: Jonathan Corbet <corbet@lwn.net>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>, bagasdotme@gmail.com
-Cc: Brian.Starkey@arm.com, benjamin.gaignard@collabora.com,
- christian.koenig@amd.com, dri-devel@lists.freedesktop.org,
- jstultz@google.com, labbott@redhat.com, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- lmark@codeaurora.org, mark-pk.tsai@mediatek.com, matthias.bgg@gmail.com,
- sumit.semwal@linaro.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v2] dma-buf: cma_heap: Fix typo in comment
-In-Reply-To: <20221028065907.23954-1-mark-pk.tsai@mediatek.com>
-References: <Y1tSWo+eRvkVofbv@debian.me>
- <20221028065907.23954-1-mark-pk.tsai@mediatek.com>
-Date: Fri, 28 Oct 2022 08:47:33 -0600
-Message-ID: <87k04k6m4a.fsf@meer.lwn.net>
+	id 1ooROJ-000Y3k-Ch; Fri, 28 Oct 2022 15:35:31 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id a5so8376545edb.11;
+        Fri, 28 Oct 2022 08:35:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7JOBlKgg/kW62eSwLjo5AIuvvOOYYo6+JrLET6u1kQg=;
+        b=Lokonk4He2xvlbb0fbSGgNBvGtfmJ+Cm3w1fR3GB3KPaUOgFO/DJLBT8Jh9cAlTWvg
+         blZJBA64Mkg7OD9h4tm8kPTTHQzT6277uCDrVVEkcn4E52Lvgwr6WTMqf6zkUh1b5TTn
+         4/H9m/4qYkEyuQ1gVVChxlRI/UGECSrF34XkXkypZBdqILubNuXc/onQrfxysdTuA9LO
+         Lwh8gz6fzrsbrlQBhcPvXvXr0yc4Ur46faSWL+W5U4DvluQo6sA4yxgROLNfAr58Jfh2
+         OaWjI+1XPsBqG2iz3L1v+bRE1Cuj58TRrr6CvB860HVT6Q84lbTfcFiKzEbDSLqPZsrc
+         Ktcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7JOBlKgg/kW62eSwLjo5AIuvvOOYYo6+JrLET6u1kQg=;
+        b=JNx9rjiCmq3D8x6PzF9nAP80AE4NZmGJYhN3y/I6mQnXhWFLwusyjvLLvRY6KRaixG
+         4OHP/DQjHh43J/26OR8uqScok4YAxACpTOekiKLyt1V1fWq13Qv3WxQWBjN+AZAmuEra
+         E5INlxlGo8vjUopRe02h0WoaJaINCwyfKhOeahdgzOvzVLp+XMX/hVhHs3xe+mg2/aK/
+         khShbRhkOROiA1M1swN+ceCN9D7IV+190/41X2hmQqHL9FyS8yGq7P7NdjYPnuXd61tp
+         lDOerHKlLGSkaGWt5BmP8E1Atrbp5KCwgrTbQ5k6fQa+mleLkoqjRHkX1OqNTvM6+QxU
+         HISw==
+X-Gm-Message-State: ACrzQf0iLWNvEa6fLX1FqHIYxQ4m5dZ/A8aFC+47ro1BmuVzSGMbTmC1
+	r20tq4QnwWQB4Movo3bb3HI=
+X-Google-Smtp-Source: AMsMyM6kzcugT2qZxWGejK7iVyAsKOi54x/a/sQwjsQcyTJruqJX4HMEf1MzEwUzsPRojZzKej5AxQ==
+X-Received: by 2002:a05:6402:1d4f:b0:461:d2ed:788c with SMTP id dz15-20020a0564021d4f00b00461d2ed788cmr13269edb.418.1666971323016;
+        Fri, 28 Oct 2022 08:35:23 -0700 (PDT)
+Received: from localhost.localdomain ([95.183.227.98])
+        by smtp.gmail.com with ESMTPSA id ds12-20020a0564021ccc00b00461aebb2fe2sm2830635edb.54.2022.10.28.08.35.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Oct 2022 08:35:22 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Andy Teng <andy.teng@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH v4 01/13] arm64: dts: mediatek: mt6779: Remove syscon compatible from pin controller
+Date: Fri, 28 Oct 2022 18:34:53 +0300
+Message-Id: <20221028153505.23741-2-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221028153505.23741-1-y.oudjana@protonmail.com>
+References: <20221028153505.23741-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_074737_197655_0ED4830D 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20221028_083527_479746_CF14B1B7 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,26 +101,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mark-PK Tsai <mark-pk.tsai@mediatek.com> writes:
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
->> [-- Attachment #1: Type: text/plain, Size: 349 bytes --]
->> 
->> On Fri, Oct 28, 2022 at 09:44:17AM +0800, Mark-PK Tsai wrote:
->> > Remove duplicated "by" from comment in cma_heap_allocate().
->> > 
->> 
->> This patch isn't typofix but duplicate word stripping, right? If so, the
->> patch subject should be "dma-buf: cma_heap: Remove duplicated 'by'".
->
-> Okay, I've update the title in v3.
-> Sorry for the horrible commit description.
-> Thanks.
+Remove syscon compatible string from pin controller to follow
+DT bindings and pass checks. Adding the syscon compatible to
+the DT bindings documentation instead causes a different check
+error due to the syscon document specifying a maximum of 1 item
+in the reg property, while this has 9. This pin controller has
+never been, and will never be, used as a syscon, hence it is
+safe to drop this compatible.
 
-Your original commit description was just fine, you just had the bad
-luck to draw the attention of somebody who likes telling other
-contributors what to do.
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 9bdf5145966c..a6fa5212da4e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -160,7 +160,7 @@ infracfg_ao: clock-controller@10001000 {
+ 		};
+ 
+ 		pio: pinctrl@10005000 {
+-			compatible = "mediatek,mt6779-pinctrl", "syscon";
++			compatible = "mediatek,mt6779-pinctrl";
+ 			reg = <0 0x10005000 0 0x1000>,
+ 			      <0 0x11c20000 0 0x1000>,
+ 			      <0 0x11d10000 0 0x1000>,
+-- 
+2.38.1
 
-jon
 
