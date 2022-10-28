@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD922ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 16:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C5CECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 16:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDdem09UvQC6RtPh9eP/fPIosZi0f2DCCtFcOfni9E0=; b=nryWFW2JfKB8Qwc51LwTzYG/V+
-	30nUlXhhy/DPp+dtJAi0CD2Cy0P2LsPKxxrjyOklMd1P5AFZGsbExEVIVSj07E/QxVePstsQGgTyR
-	CV3eJKVXBhDEVBcJPef9/83dcAUtI9AA53Vqtf7WPtSgG0VsG523ArdfsCHW1gDySNVVhSq0j+FDP
-	/o5htzV1xvLECSW4Skkcsow10TT+L93miLQXSkZ/RczGTLvq3R0fLiQMvUVCZqajDKdISDkAVdxGB
-	ta3avoiyUlZQyRy260sDVGAGmfzw6qiO/LwIG6Fd3wir5HOaiw5VVf8cN/mKRLyD6rM6a9TjDF1C9
-	u9DRNnmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IvNePpe25ku4UesWYqS3YQEbu9VfdgAEtqYDLNKXD4M=; b=pUzNiu+jT6ZslyFSdZ/6+0gt46
+	4jAm9UplSt35yEc80uaXapD43WYAWRr4Q33XlDnzsulYh7B+bKW9rIe7f5f3dRWW/cWPxyYG3Ikxh
+	EwuKSNiuEL8RqY3xACmFFXx2KRKT2Tc0Z8uqk1c1E91GfU01gpF6EsRaiQWF0GqZWFoibcxI1lGNb
+	mpYU38YJzUr4QRadiLdks4ntO0wIserrsODdlBcTFBT9tmE4cvM0d1DwzPiTDmI+4R8pVXd1aeb8P
+	C5DMp6xqneeUkjzuSQ/7M0f7A1bZsvDkYb9fwMEB4r1Vkq3M0bZzC+wXsYnXM9c5EWUtZWOCezz4L
+	eeWJXUfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooSKN-000w0g-Qu; Fri, 28 Oct 2022 16:35:27 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1ooSRA-000yqP-RC; Fri, 28 Oct 2022 16:42:28 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooSK8-000vrm-4y
-	for linux-mediatek@lists.infradead.org; Fri, 28 Oct 2022 16:35:14 +0000
-Received: by mail-lf1-x130.google.com with SMTP id f37so9131976lfv.8
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Oct 2022 09:35:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=dDdem09UvQC6RtPh9eP/fPIosZi0f2DCCtFcOfni9E0=;
-        b=iVRKB99bCuGg75YHK5Jin6eKXNVe9XeG9Wu8TuxvOpZO8X9g0HtdOKXe+lJnotbapy
-         yY1d/TS43YunRmZBAdM4kiS1Sb8vvY1JzgsNRODuo9qg+niv7CXg1LdbK/MFiVHVTCVh
-         uZZlAnEomqAMCPuV5LXMWtWwirMKSIYACBgbeq/QvJ2NTjC6iw3aocNENCpW3yfSF+VF
-         h4Np4qcUKUFrsMntcE0udkLz1iH8nhF4d+Vl8ryBfkZ1woIlFqAplaVWyTnQlJUeIlwr
-         w9vUx8zv8jyRRFHooTylzter5G7/0iRYvFvfCgrWmJ1KX4Ui/6vhhI2pxLyUISlF4kgT
-         PF/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dDdem09UvQC6RtPh9eP/fPIosZi0f2DCCtFcOfni9E0=;
-        b=PUMkAcYdQ+3jR5Wy5MwBerOzzYQGwPptqoSXVPxegsGoWi8vFd1FOJ8EUw/Z6MRgSn
-         NGkYo963WJN4YY9Hn7XxSiNURlaWpBegH7bqQ5L2sXiQ1pAqWmZfzty8QVfjzAW7CGvr
-         958vmgggq9cvk5AfXWDEQ3NUDGW7quN81avrY6eSp984h4rMBR3TsxxuMW5Yuog6ZAAf
-         8pb/d6i7FohrdFJxp80SGOmnajOLUrEDIsutValWNlYQy2EV1zl3yKqwMAvMW1iCd0h4
-         EBYrK1zjPfC6XrklCkYEsO6TPVNm48Yrtg6lT97vqSz4WXQbC3PiYpmNzyEqjUHC9YX1
-         fGLQ==
-X-Gm-Message-State: ACrzQf1BuvOA6Ryn9MN9hWGetJfmAb80LUXaqkxrGlKY+slNAYF2owBL
-	K4LM++UT2rntf6omfhbRCER7DgRdjYTd2Lu1y8Ot
-X-Google-Smtp-Source: AMsMyM4GCKg+Wc/lMbvqmo5qiLQjfqMXoXH+QadR3RXEfZMfTqJByvQ611ruQrIRULNKM67OA8DPiAstRGkRDG9JZno=
-X-Received: by 2002:a05:6512:2616:b0:4a2:1723:cf40 with SMTP id
- bt22-20020a056512261600b004a21723cf40mr80364lfb.354.1666974906701; Fri, 28
- Oct 2022 09:35:06 -0700 (PDT)
+	id 1ooSQz-000ynQ-DH; Fri, 28 Oct 2022 16:42:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1666975323;
+	bh=ssFI465ybeaWGZ24izMnuugaOjPgpCJi0sJ7Awro/8A=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=L7h7yaCH+ZX6KIzfN/QjlVrNiWft678n9rDJukWkPOGZs0hckUzBdN3RAG6kQHPOm
+	 Uyt2100T/cEoAIPmKt3TNoif1vS73t+j/o1D5hLCRtzG9w76qu7RjgsOe+Dpbm+qYn
+	 vKSlbxwOwOfkNK1VYRm1zr92Ej2Ggb4CY9YjXZwPhrsPf30qTijqvv2vjsEF4bsk0P
+	 kEkUZ6eOVbcckYUCCssvdpkAD2ga9FrB02dVTm1zyKx3u6ZmFnO9NDppgtj3oHgssX
+	 yI4RSVDCVOHs7gF2AM6r/y9g8TPNyEEEi0EieZmwLVaRuS+LmT/V6BvLzHFWZsgXwN
+	 pMgvV6dNL3Qwg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.151.20] ([217.61.151.20]) by web-mail.gmx.net
+ (3c-app-gmx-bs17.server.lan [172.19.170.69]) (via HTTP); Fri, 28 Oct 2022
+ 18:42:03 +0200
 MIME-Version: 1.0
-References: <20221028065533.23856-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20221028065533.23856-1-mark-pk.tsai@mediatek.com>
-From: John Stultz <jstultz@google.com>
-Date: Fri, 28 Oct 2022 09:34:55 -0700
-Message-ID: <CANDhNCpWcfMfXKHU7rHSUXd8e0JcAnD+qJABWCs9rWTC_J3h6g@mail.gmail.com>
-Subject: Re: [PATCH v3] dma-buf: cma_heap: Remove duplicated 'by' in comment
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Liam Mark <lmark@codeaurora.org>, 
-	Laura Abbott <labbott@redhat.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com, 
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <trinity-a848b9af-2c0e-41fb-9073-97a7d05011c8-1666975323664@3c-app-gmx-bs17>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>
+Subject: Aw: Re: [PATCH v2 1/2] dt-bindings: PCI: mediatek-gen3: add SoC
+ based clock config
+Content-Type: text/plain; charset=UTF-8
+Date: Fri, 28 Oct 2022 18:42:03 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <61c0b62af62ddd0e98378159db2b7d94022c9bf5.camel@mediatek.com>
+References: <20221025072837.16591-1-linux@fw-web.de>
+ <20221025072837.16591-2-linux@fw-web.de>
+ <61c0b62af62ddd0e98378159db2b7d94022c9bf5.camel@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:s7AmXG5Xr8qwlj5dxfm5hJbBhoA3/AEO3/SxR4wXpwOjNCAQHbsZmtVEjuv4MTB5JRd0b
+ tHCV4fN8FwCO+TReRsMZYqOUTfNahi8Gqkd62rjJ4yeWl5fnqPCg8yV+X3IxqgRpiVIY9z2S1u+8
+ v3bLyvhenwEuabCTRS3imH3c9VlOc2GP3smvs110Ak1r2ca+/Pm5nXVRSkOogE4sexIkiu+Iw0Kn
+ xtOeugYhuCYeKu1ADsJWC2xeyHfAmdH4lWwTKX8Zu0nOE5cag2nkfqqFukZoa+IFjQTa1hrVS727
+ Lw=
+UI-OutboundReport: notjunk:1;M01:P0:FSSZZCPNFhs=;atXnM023B9CPS6D/dovlpObQPjn
+ S5W0jCWtyn2g7hKo9n2ulhpfd3LdPphNES2mhXsdDti9xwz/kjiIHMqlY3FPccDTLlLCJF/Kb
+ 81tcuHi29/qFnJ0x97hKi8lYejF/q9Wze8ELBKq1BAp0tRjjeu1yiDTH8wVtqbuWNVfgOb21X
+ ROKKo/q9T4M/lCJSXEltLiFYm28YCv9UX7QIh4VKn03q/+Vq/D8GYQqjVtgjokr4qMo49wwGw
+ tsycnNcYClyM1wr9xaG7Whf9VOY3IDM4F6W4rJeAbLIR1T5iZTg53zDTZKp37klIwra0VaFaB
+ H6aQRW490aqoGR63/+qiKxLNCw4hP+HSCvdO4/63Vi/M84m2UeFnznlDQTO+lZidWyPIAEjc0
+ qHY6Cdvt5DmQyDQQqYSn4VB70S5DsIAtuttVUmNaH5vxDDxTVl6auZ8DzPqiRkiGcJFAZDA+x
+ wgpQThlmFdg7nuMydrLhMdcvyGDala7rnFlbJjHeiGvm1LdFHMZX+V3N1+6mI+q+azXKFJEXp
+ 43qBxF4N9bCrOPstFmDZPAZT85E2F+hQbfx3c7o7h4NLS9/rM1cyZ4KB/pgSIw7Rkws086k6k
+ Sh7WXL1DCuctnxxrGiQ+4o/+SpL+m1bPKxPfz7M66fr/xoDxWyuOnAVmSkkKeLxwo4fdM56X+
+ H2lK/8OWEXKvUp5G3a3ecSUJ8ZFolfGcWGKB1YZJJJQAXaOBgHbJRlNSlmSADZ6Ab6iixJG5k
+ 2XcfgC7Ye1o/U1O3wzIJILRuyF0nvCP2biOWxPWQYONEGEf/uCyrLYWDC+e3CmOAUGxS9zTHm
+ L5Mb6QqpSADy5V9JjQR6QehA==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_093512_215331_F167FEC6 
-X-CRM114-Status: UNSURE (   7.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221028_094217_751718_AE51CC75 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,15 +97,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 27, 2022 at 11:55 PM Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
+Hi
+> Gesendet: Freitag, 28. Oktober 2022 um 11:24 Uhr
+> Von: "Jianjun Wang" <jianjun.wang@mediatek.com>
+> An: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
+.org
+> Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Ryder Lee" <ryder.lee=
+@mediatek.com>, "Bjorn Helgaas" <bhelgaas@google.com>, "Rob Herring" <robh=
++dt@kernel.org>, "Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>=
+, "Matthias Brugger" <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, =
+devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel=
+@lists.infradead.org, "Rob Herring" <robh@kernel.org>
+> Betreff: Re: [PATCH v2 1/2] dt-bindings: PCI: mediatek-gen3: add SoC bas=
+ed clock config
 >
-> Remove duplicated 'by' from comment in cma_heap_allocate().
+> Hi Frank,
 >
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> After apply this patch, we found some dtbs_check error with the
+> following patch which adds the PCIe node for MT8195:
+>
+> https://lore.kernel.org/linux-pci/20221020111925.30002-3-tinghan.shen@me=
+diatek.com/
+>
+> arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb: pcie@112f0000
+> : clock-names:        5: 'top_133m' was expected
+>     From schema: Documentation/devicetree/bindings/pci/mediatek-pcie-
+> gen3.yaml
+> arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb: pcie@112f8000
+> : clock-names:        5: 'top_133m' was expected
+>     From schema: Documentation/devicetree/bindings/pci/mediatek-pcie-
+> gen3.yaml
+>
+> Did you get the same error when adding the PCIe node for MT7986?
 
-Thanks for sending this and going through a few iterations!
+i'm sure i had tested the yaml and did not get any error, but on my retest=
+ i get same error for mt7986 too...
 
-Acked-by: John Stultz <jstultz@google.com>
+maybe the right way is to remove the contains in the mediatek,mt8192-pcie =
+if condition (to match only if this condition is no fallback),
+then it is clean for me. Can you test it with your patches?
 
--john
+allOf:
+  - $ref: /schemas/pci/pci-bus.yaml#
+  - if:
+      properties:
+        compatible:
+          #contains:
+          const: mediatek,mt8192-pcie
+    then:
+      properties:
+        clock-names:
+          items:
+            - const: pl_250m
+            - const: tl_26m
+            - const: tl_96m
+            - const: tl_32k
+            - const: peri_26m
+            - const: top_133m
+
+
+regards Frank
+
+regards Frank
 
