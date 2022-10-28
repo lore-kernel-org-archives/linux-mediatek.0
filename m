@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DFD0ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 09:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E900ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 09:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yktn2X3Tu9fQS6qMm81/IkyxFTy0zWn5CAydvKl1vAs=; b=jQDzWs6ldh5gaoGkDiTB/f2MDJ
-	gzxShSVCUXLBGC4qfIbTfPdvifd7lvoKtoiZE8vcG4tktdj9Vgw6Qc5+WirnGdz1jFaAM3krttNdJ
-	y3LUCWTdI4uHNUfYg0eAzruH0l6NvMDYOkzFuKEAoQIj7x07rr+R7ZdbbXd+d/t3156JCDA7F/V/c
-	6q62Yb5cS0/IRbyQtDprAqad6BkyEkGHzeHL/IpZO3Two+88n0ryMfC1myNKn1nZhOM7kQvpfUCjt
-	E6PClChZukDjLRFa+GdoOKtetR6OYYLHG2TrBMYcEmuFcVyoR5HqtjdUEjwRfFIgq7yLMTiwi1IJv
-	m9+aGHlg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VBfEs4tVvu1FX5R5hBpYfxbDL/kM262uozbK/j71Z48=; b=zspT4qOVHLRkHcIC/6WmLkW/Af
+	7DbnP8knEA4Qutwhxuwtt87hNu2N+sSHxHoOGj7AN8bpo0sJyNQ5DCyXXiW6iY+bJtmV553csBiuE
+	hvfNhW+4qpt9lpNNiYIM8cLbo0Xe6yFt8msgjUcwRctRSp8yJq6Qhy/aIu3v6lbO+hSS4l1su5BJT
+	sfZ3Uhw40lpAPZtpzuKdHCFutwjZIp2wE/e6N1O7TfdD3wDju3N+LvGXmDvapgAqWUWaJm9TNXmlB
+	CIx45XWC/R5Ov07Mdz8msrxrsscZ6nJX4knsQG3w4uHQxnL+MMmheryG2WQh10SWGx903nfTeYNAx
+	1gZFipmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooLgJ-00GKXi-LQ; Fri, 28 Oct 2022 09:29:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ooLtv-00GOZH-CJ; Fri, 28 Oct 2022 09:43:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooLfx-00GKMe-TN; Fri, 28 Oct 2022 09:29:19 +0000
-X-UUID: 56f5c870fa3b49fd9df2c8930463639b-20221028
+	id 1ooLti-00GOUO-SI; Fri, 28 Oct 2022 09:43:32 +0000
+X-UUID: 49eb0f1a82f24d5abdb7c57a735b0ea3-20221028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yktn2X3Tu9fQS6qMm81/IkyxFTy0zWn5CAydvKl1vAs=;
-	b=p8ngwYhHUUDBnLZXtE6sQq9hznGoAoCTkxTFBUNfriawUWJpvc97qIgNz4AL2TprHA1Uo97/zRvbbNF7EJvnLMqrTNz1PrWTnJc7a4MMlcgxx7YvYU0gBR7zcDwWQaZglGg3HIQa8W9Vu74ecwstt0eAWuMPIc93wfLpie+dXng=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VBfEs4tVvu1FX5R5hBpYfxbDL/kM262uozbK/j71Z48=;
+	b=Yj0MOlR7Br3oUOwQ2mrvN5LT0AFplbI2MQBJjrpMz9zXJfO9GtMkEnmZ/XO4MHXPmTff/fDsuOqWTQVYfh9RyVBTsLBX/W/ZqtaIQPSGi6R/lPTDTLfxwZ5GhUtgmrivGwvt0haMZG4C7cSrCvZPXcLhnd5EMFpUFxa3ujBch2c=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:5f7fe789-8342-4183-b8d0-56d232fba000,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.12,REQID:5f7fe789-8342-4183-b8d0-56d232fba000,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:62cd327,CLOUDID:892fbfea-84ac-4628-a416-bc50d5503da6,B
-	ulkID:221028172841B01PFHWG,BulkQuantity:4,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: 56f5c870fa3b49fd9df2c8930463639b-20221028
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.12,REQID:c8295f81-051b-4e84-97e1-2164e538eb78,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:aeefe68f-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 49eb0f1a82f24d5abdb7c57a735b0ea3-20221028
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1407609857; Fri, 28 Oct 2022 02:29:13 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 2072508069; Fri, 28 Oct 2022 02:43:28 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 28 Oct 2022 17:28:38 +0800
+ 15.2.792.15; Fri, 28 Oct 2022 17:43:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 28 Oct 2022 17:28:38 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 28 Oct 2022 17:43:22 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
 	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
@@ -60,17 +57,19 @@ CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-Subject: [PATCH v3 0/3] Add driver nodes for MT8195 SoC
-Date: Fri, 28 Oct 2022 17:28:33 +0800
-Message-ID: <20221028092836.29006-1-tinghan.shen@mediatek.com>
+	<tinghan.shen@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
+Subject: [PATCH v4 3/3] arm64: dts: mt8195: Add venc node
+Date: Fri, 28 Oct 2022 17:43:17 +0800
+Message-ID: <20221028094317.29270-4-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221028094317.29270-1-tinghan.shen@mediatek.com>
+References: <20221028094317.29270-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_022917_989479_F23AD822 
-X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-CacheID: sfid-20221028_024330_934458_BE2FE774 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,32 +85,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pcie and venc nodes for MT8195 SoC.
+Add venc node for mt8195 SoC.
 
-This series is based on linux-next/next-20221028.
-Depends on https://lore.kernel.org/all/20221001030752.14486-1-irui.wang@mediatek.com/ 
-
-v2 -> v3:
-- update pcie iommu-map-mask
-
-v1 -> v2:
-- remove 8195 example from pcie yaml
-- update reset-names of pcie yaml
-- add resets and reset-names to pcie node 
-- rename venc node
-
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
-Jianjun Wang (1):
-  dt-bindings: PCI: mediatek-gen3: Support mt8195
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-Tinghan Shen (2):
-  arm64: dts: mt8195: Add pcie and pcie phy nodes
-  arm64: dts: mt8195: Add venc node
-
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  16 +-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 174 ++++++++++++++++++
- 2 files changed, 187 insertions(+), 3 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 97de03267884..2a29ec3bfdd7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -2109,6 +2109,30 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
+ 		};
+ 
++		venc: video-codec@1a020000 {
++			compatible = "mediatek,mt8195-vcodec-enc";
++			reg = <0 0x1a020000 0 0x10000>;
++			iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_REC>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_CUR_CHROMA>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
++				 <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
++			interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
++			mediatek,scp = <&scp>;
++			clocks = <&vencsys CLK_VENC_VENC>;
++			clock-names = "venc_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC>;
++			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
++		};
++
+ 		vencsys_core1: clock-controller@1b000000 {
+ 			compatible = "mediatek,mt8195-vencsys_core1";
+ 			reg = <0 0x1b000000 0 0x1000>;
 -- 
 2.18.0
 
