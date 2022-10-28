@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A1BECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 10:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6F7FA3741
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Oct 2022 10:19:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zwzLdWoWFgq62O5OUUPFj6Ag8jaRzLM+v7K+j93cq9Q=; b=wBCHk4chAJEnMLmHZiJlmcOQbd
-	2sR0cYNKwIxvfGZ12m96I+mnsaJbf3XeyWnWwfb/XGNpbghy1jHeQPqo4HfQYdZa5/pEPKpZGvmdL
-	cNO+9D4rFxTWm6a4Nqowfwo+7xn0Hde/szfePIAzd57SOVJvoehTX69P0h44V6mCbzatXHU8aHvR8
-	UASwdgu9wiZXGr7MMLJgrVhMMz7XBxSf11zbcxux8sJZO7esfSBfJJ9RyXCqF1P1vx4EFFBEMxeZL
-	XLBrpKNY9enF6LKd4pJL1sw8m29BW2kOf7wb6X9qBuW3ty4XLuhTgJt5d7dC9AJrjJhqWhfT/mCFu
-	iwbP+RUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G+LcKYZ3sKkxAZzs1Wuu8DlHBctnh9Ch1bzv03QmHHE=; b=dDj5hODk1zC+L1qu1lwgS+iX2F
+	huawk+j3G9K9quwgW48wF+MlCchJyRzZZ9NNIk2d4wtTUq2+nBRhtn0LrTeZXHG+IO0X2aBtPKqYo
+	8sf5e6UsKHpexsRmMlk+BNFPrdbOsTMi9fe7YjxjjkF6n6to9cQ9TYKUuwmlBLvZCmB7MZFQTjAh9
+	8ljV36WcgFjFIFm1BLH25mpT+9P8Zc9bHUBfakf4ZLaMr0eqaerW7gPaokZ570NFKCMoPILJWkT3R
+	8RIXZsuqDie3oHEskdjIiiT0hbAwaXBdltMpr8bHE9IGlSvBVgXn0l1yRJjvb+KuKVdZmjHT9qbHb
+	wXdILW5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooMKe-00GZb6-75; Fri, 28 Oct 2022 10:11:20 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ooMSd-00Gclj-Tb; Fri, 28 Oct 2022 10:19:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooMFg-00GXAD-VO; Fri, 28 Oct 2022 10:06:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=zwzLdWoWFgq62O5OUUPFj6Ag8jaRzLM+v7K+j93cq9Q=; b=cVI3iPRP9gWeyM/NYB9omyAnZp
-	OjsiPD+FvsdDnL8BZPbbWr7Jw8M4vaX/fkYw7lyqdSfoW1G4VEf/66lCba6pHDfYDBR7eQuxJ/bKV
-	aKYAKv/Upmqe8CAJaXt0a0tw1uiBicrRbrAPnyx1JGuyoXjgO4j+yZj3LDhLBDixNvv3dHO0FI4BA
-	hzizln9IDaFoJAYFKrjyN8LIGCrGA0/JTUsnlwmAzi7NtF2sHT1g41LBWyB4+sfE4q2ZTPqotZiAq
-	jHqC/UHYyScRSUZ/qbT9sH27kK+EoxHPBbAqTgbKv3ci6uIu//ZChpy9W09NlUgzrkrCD4qJbXdn4
-	b+GGbYzQ==;
-Received: from mail.astralinux.ru ([217.74.38.119])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooMFd-0075Ml-3r; Fri, 28 Oct 2022 10:06:11 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id D5A801864518;
-	Fri, 28 Oct 2022 13:05:55 +0300 (MSK)
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id RQ0YjnkqfdBW; Fri, 28 Oct 2022 13:05:55 +0300 (MSK)
-Received: from localhost (localhost [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id 7E2381864579;
-	Fri, 28 Oct 2022 13:05:55 +0300 (MSK)
-X-Virus-Scanned: amavisd-new at astralinux.ru
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id PqBdEedcLvs2; Fri, 28 Oct 2022 13:05:55 +0300 (MSK)
-Received: from rbta-msk-lt-106062.astralinux.ru (unknown [10.177.20.20])
-	by mail.astralinux.ru (Postfix) with ESMTPSA id DF1611864315;
-	Fri, 28 Oct 2022 13:05:54 +0300 (MSK)
-From: Anastasia Belova <abelova@astralinux.ru>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Anastasia Belova <abelova@astralinux.ru>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	lvc-project@linuxtesting.org
-Subject: [PATCH 5.10 1/1] vdec_vp9_if: add check for NULL for vsi->frm_bufs[vsi->new_fb_idx].buf.fb in vp9_swap_frm_bufs
-Date: Fri, 28 Oct 2022 13:05:39 +0300
-Message-Id: <20221028100539.30925-2-abelova@astralinux.ru>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20221028100539.30925-1-abelova@astralinux.ru>
-References: <20221028100539.30925-1-abelova@astralinux.ru>
+	id 1ooMSR-00Gci7-TF; Fri, 28 Oct 2022 10:19:25 +0000
+X-UUID: 358185714d0e400dbf712c9879875cdb-20221028
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=G+LcKYZ3sKkxAZzs1Wuu8DlHBctnh9Ch1bzv03QmHHE=;
+	b=n74DaT0lCJEeApA1g285jC48VxFsc22x3x9Meov2zNJHVTqwlkf/DTdNMcOl0kgoTsWzJr7n54DR8buQBoquzPjPXR/pUwzef6BXvJ29HEQ/Hsz02GMU9iq98a3NCDQHSXka7sOQLvbsabGOCgFuKkekHzNbGO04j2kw3tYzYWY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:05232523-6a26-4910-9d27-23efda1fb33b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:cddae78f-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 358185714d0e400dbf712c9879875cdb-20221028
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1113191315; Fri, 28 Oct 2022 03:19:17 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 28 Oct 2022 17:28:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 28 Oct 2022 17:28:38 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>
+Subject: [PATCH v3 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
+Date: Fri, 28 Oct 2022 17:28:35 +0800
+Message-ID: <20221028092836.29006-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221028092836.29006-1-tinghan.shen@mediatek.com>
+References: <20221028092836.29006-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221028_110609_467250_80561A38 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221028_031924_133321_202DB836 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +84,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If vsi->frm_bufs[vsi->new_fb_idx].buf.fb =3D=3D NULL while cleaning
-fb_free_list NULL-pointer is dereferenced.
+Add pcie and pcie phy nodes for mt8195.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
-
-Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 150 +++++++++++++++++++++++
+ 1 file changed, 150 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drive=
-rs/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index d9880210b2ab..dea056689b48 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -512,7 +512,7 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *i=
-nst)
- 	 * clean fb_free_list
- 	 */
- 	if (vsi->frm_bufs[vsi->new_fb_idx].ref_cnt =3D=3D 0) {
--		if (!vp9_is_sf_ref_fb(
-+		if (vsi->frm_bufs[vsi->new_fb_idx].buf.fb !=3D NULL && !vp9_is_sf_ref_=
-fb(
- 			inst, vsi->frm_bufs[vsi->new_fb_idx].buf.fb)) {
- 			struct vdec_fb *fb;
-=20
---=20
-2.30.2
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 905d1a90b406..40a90e5f84ab 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -13,6 +13,7 @@
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+ #include <dt-bindings/power/mt8195-power.h>
++#include <dt-bindings/reset/mt8195-resets.h>
+ 
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -1182,6 +1183,110 @@
+ 			status = "disabled";
+ 		};
+ 
++		pcie0: pcie@112f0000 {
++			compatible = "mediatek,mt8195-pcie",
++				     "mediatek,mt8192-pcie";
++			device_type = "pci";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			reg = <0 0x112f0000 0 0x4000>;
++			reg-names = "pcie-mac";
++			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x81000000 0 0x20000000
++				  0x0 0x20000000 0 0x200000>,
++				 <0x82000000 0 0x20200000
++				  0x0 0x20200000 0 0x3e00000>;
++
++			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE0 0x2>;
++			iommu-map-mask = <0x0>;
++
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++			clock-names = "pl_250m", "tl_26m", "tl_96m",
++				      "tl_32k", "peri_26m", "peri_mem";
++			assigned-clocks = <&topckgen CLK_TOP_TL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
++
++			phys = <&pciephy>;
++			phy-names = "pcie-phy";
++
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
++
++			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
++			reset-names = "mac";
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
++					<0 0 0 2 &pcie_intc0 1>,
++					<0 0 0 3 &pcie_intc0 2>,
++					<0 0 0 4 &pcie_intc0 3>;
++			status = "disabled";
++
++			pcie_intc0: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
++		};
++
++		pcie1: pcie@112f8000 {
++			compatible = "mediatek,mt8195-pcie",
++				     "mediatek,mt8192-pcie";
++			device_type = "pci";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			reg = <0 0x112f8000 0 0x4000>;
++			reg-names = "pcie-mac";
++			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x81000000 0 0x24000000
++				  0x0 0x24000000 0 0x200000>,
++				 <0x82000000 0 0x24200000
++				  0x0 0x24200000 0 0x3e00000>;
++
++			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE1 0x2>;
++			iommu-map-mask = <0x0>;
++
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
++				 <&clk26m>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
++				 <&clk26m>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
++				 /* Designer has connect pcie1 with peri_mem_p0 clock */
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++			clock-names = "pl_250m", "tl_26m", "tl_96m",
++				      "tl_32k", "peri_26m", "peri_mem";
++			assigned-clocks = <&topckgen CLK_TOP_TL_P1>;
++			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
++
++			phys = <&u3port1 PHY_TYPE_PCIE>;
++			phy-names = "pcie-phy";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
++
++			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
++			reset-names = "mac";
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
++					<0 0 0 2 &pcie_intc1 1>,
++					<0 0 0 3 &pcie_intc1 2>,
++					<0 0 0 4 &pcie_intc1 3>;
++			status = "disabled";
++
++			pcie_intc1: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
++		};
++
+ 		nor_flash: spi@1132c000 {
+ 			compatible = "mediatek,mt8195-nor",
+ 				     "mediatek,mt8173-nor";
+@@ -1241,6 +1346,34 @@
+ 				reg = <0x189 0x2>;
+ 				bits = <7 5>;
+ 			};
++			pciephy_rx_ln1: pciephy-rx-ln1@190 {
++				reg = <0x190 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190 {
++				reg = <0x190 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_tx_ln1_pmos: pciephy-tx-ln1-pmos@191 {
++				reg = <0x191 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_rx_ln0: pciephy-rx-ln0@191 {
++				reg = <0x191 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_tx_ln0_nmos: pciephy-tx-ln0-nmos@192,1 {
++				reg = <0x192 0x1>;
++				bits = <0 4>;
++			};
++			pciephy_tx_ln0_pmos: pciephy-tx-ln0-pmos@192,2 {
++				reg = <0x192 0x1>;
++				bits = <4 4>;
++			};
++			pciephy_glb_intr: pciephy-glb-intr@193 {
++				reg = <0x193 0x1>;
++				bits = <0 4>;
++			};
+ 		};
+ 
+ 		u3phy2: t-phy@11c40000 {
+@@ -1461,6 +1594,23 @@
+ 			};
+ 		};
+ 
++		pciephy: phy@11e80000 {
++			compatible = "mediatek,mt8195-pcie-phy";
++			reg = <0 0x11e80000 0 0x10000>;
++			reg-names = "sif";
++			nvmem-cells = <&pciephy_glb_intr>, <&pciephy_tx_ln0_pmos>,
++				      <&pciephy_tx_ln0_nmos>, <&pciephy_rx_ln0>,
++				      <&pciephy_tx_ln1_pmos>, <&pciephy_tx_ln1_nmos>,
++				      <&pciephy_rx_ln1>;
++			nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
++					   "tx_ln0_nmos", "rx_ln0",
++					   "tx_ln1_pmos", "tx_ln1_nmos",
++					   "rx_ln1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_PHY>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++
+ 		ufsphy: ufs-phy@11fa0000 {
+ 			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
+ 			reg = <0 0x11fa0000 0 0xc000>;
+-- 
+2.18.0
 
 
