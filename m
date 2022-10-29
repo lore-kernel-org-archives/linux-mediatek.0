@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70B25C38A02
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 17:58:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A393CC38A02
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 21:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LTpooZDpdsqsvqaDbOu23ms4l7LkFqk26NVhnZqBE0E=; b=eBz8sN2KDanHJK
-	7hIAfDbhoJhjxgVIZME7p2BbBaPjxu3SEWis2JZfc5SJhfoOPC4B5Oa9O1GWaHJV5/0qiQf89BhmS
-	8vlFpI2Xjatdp+owXwFu+8OvvzDzQBiHk+L2v0i1u/BlmRsSzuTnr7XpzHcLPr8gnn/IvtNXLpawy
-	XNYw7cWW1o9miN39jCgMleM8L/zQZTuEwjJgVxaaSm13d9Zj9J/6TM+kGfwvPFaLoosc3FEZjbypQ
-	WgjkKHd2DfnDMgO4sYqVZWSkwm5Te1vi+Ax5yU7w0OF/cQWXoUPytpF+Qja2EHlajPF4AR4kZNfPi
-	4aGBPmC6vf5wfRcXP+bg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z1qQZCy0M/thTqzqjt6W2kPpKDuY9/VZH/683PeTRvM=; b=LjJ42DaWLsheLcshhBRToT7WR3
+	ypPJLzU0cAqQcuKeYJMo+DAdYStH0SfiAO2O3UaeYD9WT5aFInh5USWLmeKK5WmgtLnliDAjuld7G
+	vYaGK6HddZl3njZNOPGQh0doT+PaWV9vLoKR54Q1hKF/8DZsRsJC8Ao1p2bSRlMnvfPdw405K/sT+
+	WN3L5oBAiH5DHwlw/IUw00tDiRfY3HAOeSkk0XG9fCDfRQK9QBrGEyH8MDvo3RXXV69b7Jcde4OyV
+	tVbchAerzCBi0wSLXm/ydSVQlI/QKtL6tRQe3h3JB/uTFGgQlDUm5dZNFVwtUyqlTMu83QM5lscBO
+	j49gjv2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooq6b-007mI4-8g; Sat, 29 Oct 2022 17:58:49 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1oot90-009MT4-CI; Sat, 29 Oct 2022 21:13:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooq6C-007ljw-0N; Sat, 29 Oct 2022 17:58:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1667066288;
-	bh=Kycf1XZFridgEvLb9sjdHDeiaD0OdfNkXClfb9amqkM=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
-	b=UsPVdHkaWEBcPgy9htvvrIQT3hEkQwmUwDBPienJyCYI+AtAFEhMYnchSg8bVHpDE
-	 KXGiLaczW5z8F2ZboyrXCSFynY+6bkbIbLnKTwp+/Aqnt+FbCV8ZdxoHFdgfWZ9MnK
-	 HACV4Ez82Q7R36/mUfZfaqoyfC9UV4A/9f5VOG7fVgYM5A/eTtlGyi28D9naCaoRpT
-	 YJqOjIaNvjYrBP4LpsQHOlAjZW7A0z5dk9MdZh1lVI2h2Cy0fCqzHF7Ef8C/J3FMMA
-	 38lV5nO+8naQVvGfkT5FZND5kgDVFdd7p8F4tP2FV0VBF5zLfwSxv2DeGpt0dVo1Yo
-	 rIV5o45YLi4uA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MXGvG-1oYnny346I-00YeoW; Sat, 29
- Oct 2022 19:58:08 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 0/2] rework mtk pcie-gen3 bindings and support mt7986
-Date: Sat, 29 Oct 2022 19:58:04 +0200
-Message-Id: <20221029175806.14899-1-frank-w@public-files.de>
-X-Mailer: git-send-email 2.34.1
+	id 1oot8w-009MOa-KC
+	for linux-mediatek@lists.infradead.org; Sat, 29 Oct 2022 21:13:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6BCEF60B9C;
+	Sat, 29 Oct 2022 21:13:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6BE4C43153;
+	Sat, 29 Oct 2022 21:13:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667078004;
+	bh=LAb5KIWfqD5Ieoc6po1xcm3UCB0pZOliEZth1GO/who=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oU6rH4YD0vY8LLHeqsOFuV7TqPm/g5bk4xjniNHM2wmO1sFD2wg7Pm7nk5XQupWFb
+	 KeczfVaXIrQLcuGHLIXLuVULgRU7HcJ2PzAOE7EZ3l1kWeBM1H3nfmSoEU7xWVyi3r
+	 TK+58Xbp7CMUDUwM+0FXErs5hGX0qKRDHtptKDY3UrPXTpBl9TxQZjBVdGZXA3hWsK
+	 tyuX6GyqpMVlfLICQT8tfff43nclXWvgst4PmzUvt8mT9VUrgXh5lTOFmmzPbH/793
+	 wvjo3zH3uuHazSQPVRX9288KD2Q+hppPaHWinqK2OqFv8KBPLRJl4JSQM6t8THWEyG
+	 VGb2UcBZ2HKLQ==
+Date: Sat, 29 Oct 2022 23:13:20 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org, robh@kernel.org, daniel@makrotopia.org
+Subject: Re: [PATCH v2 net-next 1/6] arm64: dts: mediatek: mt7986: add
+ support for RX Wireless Ethernet Dispatch
+Message-ID: <Y12XcHCVotO9dmk7@lore-desk>
+References: <cover.1666549145.git.lorenzo@kernel.org>
+ <41d67d36481f3099f953a462a80e99a4fcd477dd.1666549145.git.lorenzo@kernel.org>
+ <4f9f6fcf-b6f2-7729-5950-7bc472d0c863@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:O8JulodXz6iNhGWFYBR5Cj6XqvHcQPN5n3A5elUNyc8v/6ddcN+
- 3m5Eu5scvKIpc/c0Kt2FhLfHZW5dLloOapBj6o6pCcZp1yom0ODWRqPJgcsGktaEY9JP3/M
- WJUYzqPrCZKNv+8Dd/xhS+wsYl6mCFjbwVC+0+4rJ76MwbE3AHJ0gM4jNrxe7SteSvFKp8f
- 58ctIM3jobvwp6YsPlh0g==
-UI-OutboundReport: notjunk:1;M01:P0:OqLcNjY3+us=;ZQkvU2y4h+VNqF0k6uFxn4tIBJz
- 5lrhIWbcICbr+bMK9s0/2SAc1pzkYvfefzP+K91+7WS9TTDMYFJfZTCsU/27nCi4VQIGTAPKW
- ItbQnOzxKsZLQBpBslHH4ZIVYoeM09UA175b39Q5DX/CYvKQL6blmp4rrSBwPbau/EP4qgXQL
- Aweh9eBkE1iuVFdHVi0ajHsVOzX0fnICRG3YWCD++fSbZmlNshwGMXHLUkysNTAihOYK5snbE
- QPCB3mg9yJFR7IGysXo3iUjxIn4vq4A5onWUMgFO2KuaCylCs5AyFnxWfvllpB1W86w1XsbE/
- 7P2ehVxeneM7W8dLUJYpumSw9jqmRHoqs0HASxsJH8llhLQHq4NmxADUEsTgvA/kxlayoWZ8Q
- srG4d8oafS0dXL/Rif70joKXFE9M00UattmjsfcG/Jklugu26slYv/cWtJFu10oUxf2zjX6jX
- bPB/BtvIMh47Yq3uW3KyBo0rg7zSJZ5AMh9zYkn9AMrKocUT95du0xAE88Q0g2cU1j9wQDjWc
- NqYZgxzHtNEVZKsRPgyReYw9fC+1OEzuzI09rnE2k5e5y5dC/iwaBKGfT8Czk++q8r+NKg83o
- G0DYHcqpjBAvPK4kfra1uKfoCn3kBTx9U0ydFMfJRUHb2TSCAtnhsUqzKcdBvtwbQF5RDqcOD
- BsFtmr6u3XV5n3oJiY5o42oH8owrWi57++QuyUjI+lEmmg3lkfdE5K2NLKILaFsW3Lpw2d1JG
- o7nZ4YsZW5u+uXZl/cDIsg0dysbJzl/o8E+q6FgwK0JYj298vaASGmNyVOoC8jbPUu544T9OL
- J8vjL4f24ZmEFqha6omdjRvPM+jeZOdpQ7/lAVGnG3UwIfm4Cjpm/iwtRNifnpzccVqMh235i
- BlmnWJlv8nRUOdc+zDoSvhCPscOybAdXl8TGtQshppD7YKyo2jrAeDckV2lRYpu8vDSxDYOuD
- 2BiOTg==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="DzLXIAU9zMmZf85z"
+Content-Disposition: inline
+In-Reply-To: <4f9f6fcf-b6f2-7729-5950-7bc472d0c863@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221029_105824_354713_6E972F2D 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221029_141326_781872_4DC314EF 
+X-CRM114-Status: GOOD (  23.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +78,187 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jianjun Wang <jianjun.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This Series prepares support for mt7986 PCIe which is basicly gen3 PCIe
-but with slightly differnt clock configuration.
 
-To make differences better to read i split the exiting bindings which
-has already different settings with a compatible switch and then add a
-new one for mt7986.
+--DzLXIAU9zMmZf85z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-v2:
-- fixed typo in part 1 (SoC based config)
-- squashed part2+3 (compatible and clock config for mt7986)
+> On 23/10/2022 14:28, Lorenzo Bianconi wrote:
+> > Similar to TX Wireless Ethernet Dispatch, introduce RX Wireless Ethernet
+> > Dispatch to offload traffic received by the wlan interface to lan/wan
+> > one.
+>=20
+> Please use scripts/get_maintainers.pl to get a list of necessary people
+> and lists to CC.  It might happen, that command when run on an older
+> kernel, gives you outdated entries.  Therefore please be sure you base
+> your patches on recent Linux kernel.
 
-v3:
-- fixed problem with fallback-compatible not compatible to main
+Hi Krzysztof,
 
-Frank Wunderlich (2):
-  dt-bindings: PCI: mediatek-gen3: add SoC based clock config
-  dt-bindings: PCI: mediatek-gen3: add support for mt7986
+Ack, sorry. I will do it in v3.
 
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 64 +++++++++++++++----
- 1 file changed, 52 insertions(+), 12 deletions(-)
+>=20
+> >=20
+> > Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 73 +++++++++++++++++++++++
+> >  1 file changed, 73 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boo=
+t/dts/mediatek/mt7986a.dtsi
+> > index 72e0d9722e07..e3b05280dcb6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > @@ -8,6 +8,7 @@
+> >  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> >  #include <dt-bindings/clock/mt7986-clk.h>
+> >  #include <dt-bindings/reset/mt7986-resets.h>
+> > +#include <dt-bindings/reset/ti-syscon.h>
+> > =20
+> >  / {
+> >  	interrupt-parent =3D <&gic>;
+> > @@ -76,6 +77,31 @@ wmcpu_emi: wmcpu-reserved@4fc00000 {
+> >  			no-map;
+> >  			reg =3D <0 0x4fc00000 0 0x00100000>;
+> >  		};
+> > +
+> > +		wo_emi0: wo-emi0@4fd00000 {
+> > +			reg =3D <0 0x4fd00000 0 0x40000>;
+> > +			no-map;
+> > +		};
+> > +
+> > +		wo_emi1: wo-emi1@4fd40000 {
+> > +			reg =3D <0 0x4fd40000 0 0x40000>;
+> > +			no-map;
+> > +		};
+> > +
+> > +		wo_ilm0: wo-ilm0@151e0000 {
+> > +			reg =3D <0 0x151e0000 0 0x8000>;
+> > +			no-map;
+> > +		};
+> > +
+> > +		wo_ilm1: wo-ilm1@151f0000 {
+> > +			reg =3D <0 0x151f0000 0 0x8000>;
+> > +			no-map;
+> > +		};
+> > +
+> > +		wo_data: wo-data@4fd80000 {
+> > +			reg =3D <0 0x4fd80000 0 0x240000>;
+> > +			no-map;
+> > +		};
+> >  	};
+> > =20
+> >  	timer {
+> > @@ -226,6 +252,12 @@ ethsys: syscon@15000000 {
+> >  			 reg =3D <0 0x15000000 0 0x1000>;
+> >  			 #clock-cells =3D <1>;
+> >  			 #reset-cells =3D <1>;
+> > +
+> > +			ethsysrst: reset-controller {
+> > +				compatible =3D "ti,syscon-reset";
+> > +				#reset-cells =3D <1>;
+> > +				ti,reset-bits =3D <0x34 4 0x34 4 0x34 4 (ASSERT_SET | DEASSERT_CLE=
+AR | STATUS_SET)>;
+> > +			};
+> >  		};
+> > =20
+> >  		wed_pcie: wed-pcie@10003000 {
+> > @@ -240,6 +272,10 @@ wed0: wed@15010000 {
+> >  			reg =3D <0 0x15010000 0 0x1000>;
+> >  			interrupt-parent =3D <&gic>;
+> >  			interrupts =3D <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
+> > +			memory-region =3D <&wo_emi0>, <&wo_ilm0>, <&wo_data>;
+> > +			mediatek,wo-ccif =3D <&wo_ccif0>;
+> > +			mediatek,wo-dlm =3D <&wo_dlm0>;
+> > +			mediatek,wo-boot =3D <&wo_boot>;
+> >  		};
+> > =20
+> >  		wed1: wed@15011000 {
+> > @@ -248,6 +284,43 @@ wed1: wed@15011000 {
+> >  			reg =3D <0 0x15011000 0 0x1000>;
+> >  			interrupt-parent =3D <&gic>;
+> >  			interrupts =3D <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
+> > +			memory-region =3D <&wo_emi1>, <&wo_ilm1>, <&wo_data>;
+> > +			mediatek,wo-ccif =3D <&wo_ccif1>;
+> > +			mediatek,wo-dlm =3D <&wo_dlm1>;
+> > +			mediatek,wo-boot =3D <&wo_boot>;
+> > +		};
+> > +
+> > +		wo_ccif0: wo-ccif1@151a5000 {
+>=20
+> Node names should be generic.
+> https://devicetree-specification.readthedocs.io/en/latest/chapter2-device=
+tree-basics.html#generic-names-recommendation
+>=20
+> "1" suffix is for sure not generic. Neither wo-ccif is... unless there
+> is some article on Wikipedia about it? Or maybe generic name is not
+> possible to get, which happens...
 
-=2D-
-2.34.1
+I think we can use "syscon" for wo_ccif and wo_boot. I can't find a better
+name for wo_dlm since afaik it is a hw ring used for packet processing.
+What do you think?
 
+Regards,
+Lorenzo
+
+>=20
+> > +			compatible =3D "mediatek,mt7986-wo-ccif","syscon";
+> > +			reg =3D <0 0x151a5000 0 0x1000>;
+> > +			interrupt-parent =3D <&gic>;
+> > +			interrupts =3D <GIC_SPI 211 IRQ_TYPE_LEVEL_HIGH>;
+> > +		};
+> > +
+> > +		wo_ccif1: wo-ccif1@151ad000 {
+> > +			compatible =3D "mediatek,mt7986-wo-ccif","syscon";
+> > +			reg =3D <0 0x151ad000 0 0x1000>;
+> > +			interrupt-parent =3D <&gic>;
+> > +			interrupts =3D <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>;
+> > +		};
+> > +
+> > +		wo_dlm0: wo-dlm@151e8000 {
+> > +			compatible =3D "mediatek,mt7986-wo-dlm";
+> > +			reg =3D <0 0x151e8000 0 0x2000>;
+> > +			resets =3D <&ethsysrst 0>;
+> > +			reset-names =3D "wocpu_rst";
+> > +		};
+> > +
+> > +		wo_dlm1: wo-dlm@0x151f8000 {
+> > +			compatible =3D "mediatek,mt7986-wo-dlm";
+> > +			reg =3D <0 0x151f8000 0 0x2000>;
+> > +			resets =3D <&ethsysrst 0>;
+> > +			reset-names =3D "wocpu_rst";
+> > +		};
+> > +
+> > +		wo_boot: wo-boot@15194000 {
+> > +			compatible =3D "mediatek,mt7986-wo-boot","syscon";
+>=20
+> Missing space.
+>=20
+> > +			reg =3D <0 0x15194000 0 0x1000>;
+> >  		};
+> > =20
+> >  		eth: ethernet@15100000 {
+>=20
+> Best regards,
+> Krzysztof
+>=20
+
+--DzLXIAU9zMmZf85z
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY12XcAAKCRA6cBh0uS2t
+rBS/AP0VysqOcNwJcht83GFMNwtIkB9Kx6juESfTqOiREumIOgEAgW72UiJqGtzM
+WJDTAGm6l8TMGnF5ku6bkRJprQ7IwAU=
+=NbWc
+-----END PGP SIGNATURE-----
+
+--DzLXIAU9zMmZf85z--
 
