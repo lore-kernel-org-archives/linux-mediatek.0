@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C557C38A02
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 17:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81AC3C38A02
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 17:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LTpooZDpdsqsvqaDbOu23ms4l7LkFqk26NVhnZqBE0E=; b=cj322z6dC/iNIT
-	CJNnrF9M9CYb/dMk0OGOzkdRI1kTSrZ5dwSZd+oiVWk3f+LZL6p2IDy7lirc7Jt3HYHKS7h+u89gN
-	OXQaLWNNTgTkyYnEGm6J04pwY2Oe9TMvJp2vjPO3kPVD4g6c6Dn8VL6iowTCSEvH35JyIbjL8V9lD
-	iBSM0ryp/RFURqTgHFHxa8Grxt8gs+bWLFbvT7sUIiMqwmNgel4uCq/ArHTNFjwGyCgs/V4nNsYW8
-	nVEWiUP30ET9OYpzjL+NwkYeGTCkVE+VFvZmeQrRv7vo9s75k5G2siyrT+KOzXmA+tCezLUfVXyFN
-	48/yPEEYShO+9a6Ziv3A==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MXS7XYXgHAQNROMH/gcyw3RlXa8PwXV8LYYbdM9KSpk=; b=PQUUmY2HdoDmW0
+	OBO776iQuNX9JlwFYY1sqQr+GnqY44V8WGrI4yE7OhOYSm/AA9egd5T3FJ6JurfWleGDeD5ezQPHK
+	EgzE6xra1hmprkgd2ip6gpIBye9Tyt0TVhXrUbS7/Wpn7zEMahMGhZ+5JyeavsjPQQUXyHjwl3WWv
+	z4C8shII1T6vh0hi/4+XTeQAVB3o0ejwLGl35VY5krZ16oei7ly2ugQLPTHV1G4RL/lSmzjQisl52
+	T8Cyu/sOxwxdk+4if80mRdIRFFGRFRYmjsM7/WbjAAOpynI7v8ctrvvDbg5AnbdrUrXCUktxKmbq7
+	r6Bs0i3/1fAZfFEEMsWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooq5l-007lI6-Vd; Sat, 29 Oct 2022 17:57:57 +0000
+	id 1ooq6I-007lse-5b; Sat, 29 Oct 2022 17:58:30 +0000
 Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooq5j-007lEA-8e; Sat, 29 Oct 2022 17:57:56 +0000
+	id 1ooq63-007lXC-Cs; Sat, 29 Oct 2022 17:58:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1667066264;
-	bh=Kycf1XZFridgEvLb9sjdHDeiaD0OdfNkXClfb9amqkM=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
-	b=gcDPqIPhiTQ+pzawxtf3bhnipr/GmH4NIl1X328jXZCo/YAMUuCL6R/DBgEYClYml
-	 6/T2OrL+UQ/P0ZpD6GlNyAi16LmxnSVlz+EVpukOLDiLCIgCbq4Z6YAEXg0eMuR8cn
-	 JCqG7Ovm9/BBnXRusyYYAl4GJODfvhDjJhVspLYb8+DN5uLxd++yiqjvuNLr+8AQtm
-	 o3W6EBKNwvAEgs7TjmgG9aG9TE86SRvX+pv/nzh6VxO5yKrxS+neNXMocROTvm/4kn
-	 FJMp6egebAxgDfF/d1Kp41K1U9HuPpsXT5hiChZbn1eAPkem4/Q5tLxpjUIPi6T/k8
-	 WhHafbOUhO8VA==
+	s=s31663417; t=1667066289;
+	bh=/287IqXU2M48jGY5dOJDRNgS48sMz8IqBXXdIAdLiD0=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=OEZ7vXKHFGYr5iTatp0Mwf0R/6aU69uMFAJ5ju25G6w4WNCPHeP5if4FQOOfzEtuI
+	 d8jZaYQ2TmMQI+mrwx5TJtNU09L6frWZy/lcvgHfb0yZEs1qbI9LSoNBYOa6OxPkQA
+	 toR9N3hdSMgptBhWiNZzHsJoKCllTBxDac92atC7eAm6ytGiP+hEAy7Nk8rtjPkn/E
+	 ycg7248ChumOo8rJv4BmNrEtxTWCoNicRgJx0pRup5M4MCL1E5FnKZtfGC7CM94Dwx
+	 sRuUKZlKGdcOBVGUuuJRnPC7zas7EE7FWMvv9b/q/Z+C1NrHE9HqgB8PvoS2lyXO92
+	 TPnvvxdJNsg8g==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1M6Udt-1ohyKH2HzV-006sfm; Sat, 29
- Oct 2022 19:57:44 +0200
+Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N4hvb-1pES5G0Iq7-011fuP; Sat, 29
+ Oct 2022 19:58:09 +0200
 From: Frank Wunderlich <frank-w@public-files.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 0/2] rework mtk pcie-gen3 bindings and support mt7986
-Date: Sat, 29 Oct 2022 19:57:35 +0200
-Message-Id: <20221029175737.14834-1-frank-w@public-files.de>
+Subject: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: add SoC based clock config
+Date: Sat, 29 Oct 2022 19:58:05 +0200
+Message-Id: <20221029175806.14899-2-frank-w@public-files.de>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221029175806.14899-1-frank-w@public-files.de>
+References: <20221029175806.14899-1-frank-w@public-files.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:y9FHqWI6q/ps50bB8NVirHxE+56q04DIKv1dG+cnZsKTTeVERc8
- KfhfxYgV30IQD4KTR8uYZEAkj7lV2sUY3rQfOuHELKIAOCvg3cw3r0FbuizmYBGh4Cf24ur
- IBP8a1RVZ/+qN49KsTKpaPXoOJ6JV2o1i55we0LCBKfvCBizXhqv/wfTufFYOVdB/4z85ml
- FPsi5rhHMTHcgD/LwzG5A==
-UI-OutboundReport: notjunk:1;M01:P0:R/lddGv2HO0=;S3AAUs1/LjWeXAC1CYf7F4QMJSn
- ide6VGdiypJSGD5BMUXOwmp2JkmqcDtRPfWVx4kMqnqtb2D+F+LmJMa2Dd75eF/h3YWjKR+Gp
- kuopi+qQBpnNalVwpurqAARZgFlT0w7Cm+eSbqpBWXZRRDGWuUM1ic/5o+O3BagOvLVlh3NiJ
- YQ6QA0ZWoWa4cUphFktKrf/MD0Jqq/2FTcFYFXAHlnAQ3Kj7F+o6zUjQAvuUtm29CAe/ctnpU
- WY0CwfBDF63j9M4P5yYDL3oy3lwH7h4SXRkQIheTQ7F15Rp0YUNZ79ILPZ7CxPnriTvNiVhj4
- cNz1KrKCR6nZ6+XVNazv0SL68bTi/QjVJlMadQI1H6HuhU1PPHkH76CjVN3m/QB1w28Fqj8Sm
- dW6dlvUbQYrodrmCukxGqHvIM7O7ljbClTFWmxtpO985FPsTQ1cWkYchCFk4H0nHJD55qrfb8
- Zjw6gYvSPMfG32grGW3u9N7624YbpImipfXT5uo2alJfmXEf+siZttiwY1adVFIILV2uyGaR/
- 9BHIqr8HDASyEWjWjemHCzxwpbshYjGsKjgax9Lwbt4J8UyXM/QpTWB/wwFsPw5zhkFX7enO/
- urBvIXDsInHsJ4U2j1iw+3/ffOYg5kFANsXe1iczkWEI9Dy9mq4oO8LYu41qvZRgCLBo07wNY
- oDsW17Tyr38NTwM6s7IsRX3SJS6C7FG23AsX2nbMj1oEpOxk3HwwKI+kW+yTlBMJq7aZyO3Bh
- T7StM4cejMBmjOh5xQCoiuazYDHi7+MIOg4EGE0MCZHObGWDO35pFN5Dm9lADVsYRQ7pncptb
- zGfIgJOzzaHlO7FrThGGNV4jqrGeBuAuBFdl/C6iqfoltleWiHgQo3l44KXTDKUCwyiv28CPQ
- wp9DpiKEjgvByZ6eKyFrvElw2D2v5rFs74jVOLUzcIKREBuNu4AcCv9UIRKEQHD+gmJ79z0cm
- c2OaKrkE+EQJPRRB8oNFzupmghE=
+X-Provags-ID: V03:K1:zso9H8enCAQo27e7CXSDU6tiEbUwr+oh4l121T5GOU6gypCw1bz
+ obMOVr7UT7T61f1vuFU5NEB1PwDhAtl0hbJdW4KHDYjifaLfIG1sDYsJywK/UBTsA4ZazSv
+ XuJpMUVxI+IEMFS7IctXkKz8U+ROOYwbFec9rcuQcvdiUppU9PyDASeZjjUnfjVbzt70TVu
+ D+DPgSZXHbiK7s2Qcv0bw==
+UI-OutboundReport: notjunk:1;M01:P0:eBhfvPLFTQo=;FLS16h8ZKYNCa1REsLbs4YmgLXd
+ BxyznKfkvOrtHJ+EB/5UNKypilJICWAr5ddekbECiCLagVYLE/Sjq6nHifwKlN6gdAxExgFLu
+ svW/r88bAvcTLu/Lmp/4dRce0QLr8wQufXUh7hb3RnZHwJ3R1wJnOygUDEZjgHnKWF6mgvBHm
+ /xQNZu3wcRjAS0OnAOovAuARG0MYUMq4QL56mGK5SgvedV/ol1vSonm5uhLy5pPQS71BFC15g
+ +A57rZRTTTJn0+YQbyN0hifyuxEA9MOcZir3vM0HJXtj6or3fNWFpK4cJOldbYw7LpvnKBFty
+ CcX6Pmi4N53+kj8KYwytJQkffETIP5S6hfVKy/rTpJawAmnaHCs5c55Gfx+KRGqw85yC57ncj
+ yINgUV4TAIE8Afm+3sL8LcikYIpxFLnKiNzQBnR2kc+DOshJBFVZZF4ELmTcmQN6NAwix557I
+ ITI1eNc7n7HEK3XKeGx5QH0pBwM4BXJa6q+9XG9nY0pgegLCtsa5EW1zX9Ta1FKKs7qqIp/DK
+ qvPSBUgxWHdlZ0kaBB1XJMDV3Db5Cg2SZ3JKy/ylx8cUKMBZhrEgMwrlc40qwL1fnhtefauI1
+ lP71wjygV/9RNgrCGS54SN2t68nO1Jd5pcwcHfbTz68K+DhQzVf2rzP2hEuqdWyghHfuhuAv5
+ /pqE+hRGwHlZO8Es22jmqz3IZeNrqQBxiOuFiYg4pR+NwJ07m571HSLYGMbtJ+9RfgCfZgbVf
+ YECdfS/46oTaacI2q1IfuGZby8f8lELP9NyfGG9+Lmq2ssWrYQlrOMZzpdWJv6UEx6B3JER1J
+ 5FjfRjnOxrPHIwEhnI/emJJaRQEATY8MZsPXQMJyo8qWVsZNioOJGgOn/Fnhng1IcSLTy1u/U
+ VuLUo90OVhBeEpTRSXuLZ6UtZD3tXRb3vtoeKs1g+SRE44tRwsYkY+CdyctMjA0Hib1UdtUsA
+ 6TGArqpqdfe6BElLVc/rBQJEo5E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221029_105755_597489_0991AAF4 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221029_105815_741876_CF3001B7 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +85,95 @@ Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vg
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This Series prepares support for mt7986 PCIe which is basicly gen3 PCIe
-but with slightly differnt clock configuration.
+The PCIe driver covers different SOC which needing different clock
+configs. Define them based on compatible.
 
-To make differences better to read i split the exiting bindings which
-has already different settings with a compatible switch and then add a
-new one for mt7986.
-
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+=2D--
 v2:
-- fixed typo in part 1 (SoC based config)
-- squashed part2+3 (compatible and clock config for mt7986)
-
+- fix typo in mediatek,mt8192-pcie
 v3:
-- fixed problem with fallback-compatible not compatible to main
+- remove contains to match only if compatible is no fallback
+  tested with series "Add driver nodes for MT8195 SoC" and mt7986
+  pcie-nodes, dtbs_check is now clean
+=2D--
+ .../bindings/pci/mediatek-pcie-gen3.yaml      | 47 ++++++++++++++-----
+ 1 file changed, 35 insertions(+), 12 deletions(-)
 
-Frank Wunderlich (2):
-  dt-bindings: PCI: mediatek-gen3: add SoC based clock config
-  dt-bindings: PCI: mediatek-gen3: add support for mt7986
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml=
+ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index c00be39af64e..5d7369debff2 100644
+=2D-- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -43,9 +43,6 @@ description: |+
+   each set has its own address for MSI message, and supports 32 MSI vecto=
+rs
+   to generate interrupt.
 
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 64 +++++++++++++++----
- 1 file changed, 52 insertions(+), 12 deletions(-)
+-allOf:
+-  - $ref: /schemas/pci/pci-bus.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -84,15 +81,7 @@ properties:
+     maxItems: 6
 
+   clock-names:
+-    items:
+-      - const: pl_250m
+-      - const: tl_26m
+-      - const: tl_96m
+-      - const: tl_32k
+-      - const: peri_26m
+-      - enum:
+-          - top_133m        # for MT8192
+-          - peri_mem        # for MT8188/MT8195
++    maxItems: 6
+
+   assigned-clocks:
+     maxItems: 1
+@@ -138,6 +127,40 @@ required:
+   - '#interrupt-cells'
+   - interrupt-controller
+
++allOf:
++  - $ref: /schemas/pci/pci-bus.yaml#
++  - if:
++      properties:
++        compatible:
++          const: mediatek,mt8192-pcie
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: pl_250m
++            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
++            - const: peri_26m
++            - const: top_133m
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8188-pcie
++              - mediatek,mt8195-pcie
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: pl_250m
++            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
++            - const: peri_26m
++            - const: peri_mem
++
+ unevaluatedProperties: false
+
+ examples:
 =2D-
 2.34.1
 
