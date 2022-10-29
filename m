@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB0B7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 15:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D03FA3743
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 17:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LTpooZDpdsqsvqaDbOu23ms4l7LkFqk26NVhnZqBE0E=; b=wggs8QyK9eY3rH
-	jx8gAb1cupwpyjoWwrgyPg2ZU0QqhcMmC8oF4zFuxpBq0fL2vjifoEnOhXV5gQaa/Lvy1DtdJrtQs
-	23VoVJ9QP94yUXuyBi/aJQGwsEDf+FwPKWA0+8qnjLSB3wI5vWKHFqo26Z9B69TI55gVCFVr+UTKn
-	mRLTFui7nhC04q00UBAo5ibobcekQ7KsvDyRIx7ekB1FeqIuXu92w1R3SGHc0/panP7KYy4PP1I+X
-	7kZK/+uOXDl/dAWyjaXmgAa4Wh9vc9wZMlXFJFAoe+QPyLFm4lElUPe+f0F0dZm1SUEv3GF+rfXvO
-	dZfacicTFyw279wwxlTw==;
+	List-Owner; bh=LTpooZDpdsqsvqaDbOu23ms4l7LkFqk26NVhnZqBE0E=; b=ha9cbq+Ft+6L3q
+	aDJ3RlG7VECqvYGzYE0Bi+WAOgKfa7cXCKiI1kNttibMwiZ+A6Y8/KeYs11TRiyAaaKexV+kTa8BT
+	i3tfjqCVVO6EWicJawF/6UHuAZyqq9zDfZ1skKktwpG46qaQinVzSnaI2d+igzSDu1p8r9dFiX62l
+	RG1QkEKAbWr5LBYIArCJ4oWwi235MAvomf/U208lksvI4kGLI6TG3sgAAynAYvZAWR5kyz9QMRMnR
+	h4hfzX4u8exi1t/fUbnR4s9vs6wf3Tkzvgz3ZymExTSEC32sKMhZq65yKhPnarI6hGqR/kHUuOciP
+	ImN0WJlPVGWKFrx5AMkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooo8q-006yud-JL; Sat, 29 Oct 2022 15:53:00 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1ooq3f-007jOq-Ig; Sat, 29 Oct 2022 17:55:47 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ooo8f-006ypR-DZ; Sat, 29 Oct 2022 15:52:50 +0000
+	id 1ooq3c-007jGE-Bw; Sat, 29 Oct 2022 17:55:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1667058753;
+	s=s31663417; t=1667066124;
 	bh=Kycf1XZFridgEvLb9sjdHDeiaD0OdfNkXClfb9amqkM=;
 	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
-	b=hw0j53BVtFbC1xnqlHkNqtba6jEmor1AECidmrkh3ggV/tYuIXNsb8DlqLOBpKPUW
-	 qCWZo+dk/rPSKumoAY/NC0zkXxDY5wUdATd7JhGrjWuNHiOWF/KMjA9CJZDhsikVji
-	 cv9zyWW+2NbST3BAi67O9QIqegtE7QctujJUP47s5mhxwPAsqBEokJsWep8BCIdbqH
-	 3Pa8np+C5TMVSc1gsq+O4BepvCsB1Drrz/+dxf700LTOdmKVmwIAiT+T53men9WeMK
-	 T7b2guUVjmFG/VDi74Jz/cH18ymAKWoyclI0GScHy1hKulDNheWxyYwGt5BOirElK4
-	 1B6uzTaVebU9A==
+	b=a95ybDL6/m6NouR77Vfx/jrjpFe+vsBdD/+3panVqt9YNUw3PMjZysOt8njrj1aMt
+	 iQpVwmgSmAPG3zy7QNXbzJpaPRI+yQQoxyf5bRsA9sW05OVtnOtqFgRRSdVgYRaozu
+	 c5yrYq19bS46YJt5pcTTgKXFQlJnRJ1dGmZNFokvWRdZEex+pY/wvaxKXxc8IAfZxh
+	 2SkeDqXOBR2oQhvclZ8JYRvltBviOjtbtLcP5rOkMoEXy1YDdi0Qad4IsB6Pmq7nfT
+	 LgmIWHvf9eFnmQqUBWh0nWN5B9T0ao4Xs93bPOTgl2kcW9yzupreJbeRq8fPBCaJ1G
+	 poNPNV1Ac8pRQ==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1N33ET-1pBism26KD-013Kf9; Sat, 29
- Oct 2022 17:52:33 +0200
+Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MIMfW-1os7qq0I7w-00EJMD; Sat, 29
+ Oct 2022 19:55:24 +0200
 From: Frank Wunderlich <frank-w@public-files.de>
 To: linux-mediatek@lists.infradead.org
 Subject: [PATCH v3 0/2] rework mtk pcie-gen3 bindings and support mt7986
-Date: Sat, 29 Oct 2022 17:52:23 +0200
-Message-Id: <20221029155225.7104-1-frank-w@public-files.de>
+Date: Sat, 29 Oct 2022 19:55:13 +0200
+Message-Id: <20221029175515.14526-1-frank-w@public-files.de>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:diT2Gefmafn/nZ+zWz2K9Sc7U/zf7MWKJVX6SrzI9Fk1bXLYPHD
- o1XqCd1Ag1j6hIDROr6UzLx43dkgDd+7JZu8NSLvyAnG0dWiBqAt6v6JouGaJnzBzBOHM0z
- 8rpAcRv0Lvsx/BrnBOQ0xX8cIUBToqff+sTKW5AFQlVRIsTpRLRNNhRBw1uJKGOP2cQz7R1
- jvWHNfvQf7mBWY31E5Gag==
-UI-OutboundReport: notjunk:1;M01:P0:n9GfSGB0G2w=;ZjGUNKuL/LJM8mRrT1iGH82btnK
- OAESaaRGx0UxdcBWNW8gvgEleJGJ7JSxpxUDkfzScm4UyQx960VlXBPZdnn277knBdtd75ZFN
- JAqdy+H7R7LdBgDqhaRg5jDwtLulhJkDLOKFBWc2CdJ+xHQnHrQbhYhQUykQQ8hD+LtNADit2
- k9GHCzwCSg1ff0+QzbJ3IhqhdT8Zbj/3wN2juKSfKm9C/Yguq4JDfPxEqP1vss+5yt8Pyv+Bj
- OV+KDHtSb4nKE2ZzkGR4d/N+VMSFd5pxdlHv/oDFShf0w762npceEPhwgCoCsf9AC8ipPq2ix
- MI0tByo+oUv+q8qKF7lyV5o80T+mmnTYABJKXKIzUUR8pfD8QZkJ5Axv5To9iiPPtr9ppEf2l
- 6ORf0/7bn5WIsuPFTl6cem2Oq45KyKNfrhVy1BTPvRbbw2eHIB8p/hChp08eR1tsjgeO93eME
- koNIk4u/VaE5wT681X+m3YuBjdWUT2llAEb1H2kqfshYkLOGYD3N49lsNwPjOfMhQqYVYdmYg
- UnYArzVoC0Nfb6KBbZJdZHuCQpCYcUf43kCZJU7+BHsTVm3pFRqv/8JIF8gRuQIhKPtF6GfHn
- a61q1Gu67yI1BZU0TwYcLngRqfPHomE2B/e+7qtFZTHlWXwzeNHEy/qvpA4HS8WDdc6ibuk+Q
- 9hhmlvZElw+EVqNVlTK67K245fQelDUOQHScvnadyeUTMO6JZKqLslJ4DJgO88zjdKkwGlgcH
- id4TO/fGhHwPb6sq9TsDvxrjb8isAbB2XSPSRwlJt5Z0q+s7F5M2R5HDg82QOnYh/uVEyoOcC
- 61Ci5VJhKnH/Llqixke9UI1RPR/DQJK3HhYkG3B7+wo+NYwD0j+Gvo2QqVgHGNx8I4xSxwPg+
- KCd0Ow5Fy0ulNWXqEd+TwkpUVe6vHsT8V0Oda9gRQI7TkSDHzDKoW47tto9M9R1gj+jwyd1tq
- 3RyW6rsdbQB/IO2sBzMomyTlX9c=
+X-Provags-ID: V03:K1:KxEWb7itPFWpTFXDzdkAlZkhTG+OLCfGNO1UX1xRxoigacLZp9n
+ BHAdDh48FNV7BvYDFaZKZDAtM7nqke88BIiDjCNhLmveo9xisVCE3CzkDCw5JIxop09tCGn
+ Of5NB7MZNqULn+zl8Wa3RI8EJgXmUbdmSmEnOX0vqbcsBBCne0xeq0syWyZXq6zbgKQaOhx
+ qmr9cuOq9bdLj5o/oPjiw==
+UI-OutboundReport: notjunk:1;M01:P0:UgbdyR0oegs=;WsBLUDG5xSh2G2iV4ajaVN6GcL4
+ RxEPfjzboRWB7yNWnDB5IEJ1h+CD0fSkRtJYJXIaABYBJYdEBYi3a2gHL85n+yac2sgXPQVqh
+ 6st5Yuj+ipW3YPHU8DHQKAPH2avYDAwPd4aue9SKqFYaWwfcWgwd2IZRGJ1Qa0hbGlbb4Lcz1
+ 2IQdWus23mLM94MjwqSZlaCrODvisBHSLypch6jTUwJYH3m/BzvMz0UEY1pSp+6Sm/QilzOUm
+ hUm910tYeWJxWUyBtqAtddpV9HlyzQ+55ZKuTpgoMdCftvq2n2SPB9xMSrkDSp2idUXE0Wz8v
+ 0ZfF6n3UYi0qFJBsxvbhLvIiJjcVYOVw3RQKRpmKy1qLgLIiPn60Bq0KHXR0w2LkUhJII1u32
+ CFUl9EhdcnxdCmmRs48RwiCd23E388r66pgLb1qlH4PFjax9Ff16zoPD0BdyfKOEpMCNWw/b1
+ 0myOWaYZEZftAqJ8Jrif3zkr4DpJXY4jEYgH9IykGANnxzCJdHKAYbTSHLHsZs0d8iGIjvXv6
+ SfSG/M9SlUqZJlbGTt2g2HN4zg4m/USyGBwEKwgwdPjuUgIW8LWXo8t1soi1s+abWwT3IVPNt
+ N1rHMSB6rxr+oebOTrMrcCilwWJqLLuhWqiYGqqsCIO3pUJVx1NfGx8SvNR+noWNpsaxjZmor
+ JoaDvEz5huovWu9hBe6ukU54JpLVM1SUKuF5gvQNP5V++k9gV8f+uXuiDUbS//b6LOutVe+yN
+ IzoAGooUqgFONwiR/hD6kNjuH+dd/ZK9bXQgq17J/f7ZpaOa01hZ9zzEAxLGFmRiNqUPUGwcj
+ lgR8d1RtVMZV+nw9j+9hyQjLyRuwqVv+J3gzR0Pj4zmOU6fGR/perUtEm1dUbCDjIdSHf8Eq2
+ LDEuZdIvTi9j8KNkIUICEMGDWwSNkoZGAGqHIMN+9A9CYPaQktS1DWOSEUpDBQ2J8ouf4YOI0
+ 6d7U9g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221029_085249_762949_3741576A 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20221029_105544_807116_9035A397 
+X-CRM114-Status: UNSURE (   8.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
