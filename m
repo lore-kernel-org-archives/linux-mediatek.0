@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FACDC38A02
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 15:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB0B7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Oct 2022 15:53:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F28icF3t/ZJZnzJ1jYpuHgDKBjTOtvEe+03X+Age5+w=; b=nMz06a7rmKgbH5
-	9TeFMdK6uLxgxS5EJ65f5bOwIGW1pn0DJPmh+vYfwr5lmipueZZMde0JMsQVFEeSjpUG6Z8LhJeMT
-	OzETbG7X+ah4jrXpo7gdvA/D03JQ+gc0rRw7N8DUJwqb9t7NXkZF0IEdfWt6ttzkwD0hXZNCBzeZ8
-	X/cMmjkuv91PhWizPPL0RqbE5k2pNmAVLyDzMOjT5CBRLktW/D90nYAe9PgqnJkP3s/ZsjIQ8tdGi
-	7dLyRRASmllpOb2SzQrli5rNqUnngIzKnWN+3EK4YEm4fIw+FmXQGhOyG2aiB/ZySczCgW8JW+Z4u
-	Xs7bsMq3+vlnRM2wlaiA==;
+	List-Owner; bh=LTpooZDpdsqsvqaDbOu23ms4l7LkFqk26NVhnZqBE0E=; b=wggs8QyK9eY3rH
+	jx8gAb1cupwpyjoWwrgyPg2ZU0QqhcMmC8oF4zFuxpBq0fL2vjifoEnOhXV5gQaa/Lvy1DtdJrtQs
+	23VoVJ9QP94yUXuyBi/aJQGwsEDf+FwPKWA0+8qnjLSB3wI5vWKHFqo26Z9B69TI55gVCFVr+UTKn
+	mRLTFui7nhC04q00UBAo5ibobcekQ7KsvDyRIx7ekB1FeqIuXu92w1R3SGHc0/panP7KYy4PP1I+X
+	7kZK/+uOXDl/dAWyjaXmgAa4Wh9vc9wZMlXFJFAoe+QPyLFm4lElUPe+f0F0dZm1SUEv3GF+rfXvO
+	dZfacicTFyw279wwxlTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oonzG-006vOZ-99; Sat, 29 Oct 2022 15:43:06 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1ooo8q-006yud-JL; Sat, 29 Oct 2022 15:53:00 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oonz1-006vCx-EM; Sat, 29 Oct 2022 15:42:55 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 2099A403E3;
-	Sat, 29 Oct 2022 15:42:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1667058166;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=F28icF3t/ZJZnzJ1jYpuHgDKBjTOtvEe+03X+Age5+w=;
-	b=iQwpRoeuL1M5N78QvYS6ScSXvstS9WycunzN1i3DKaDCyFcSCqeCKJ+5ZkULjMrm2R/0v5
-	J7+ynWZzxGq8OBMeFQRyuQQvQjb4XuNzXU2/IZ60PGGNUk65mIlmI7RrULUhtTOTd4eD1t
-	aYMVKeWpI2oqivbCtZF/1Zw+N1LAh88=
-Received: from frank-G5.. (fttx-pool-217.61.156.178.bambit.de [217.61.156.178])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 37C273600A1;
-	Sat, 29 Oct 2022 15:42:45 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
+	id 1ooo8f-006ypR-DZ; Sat, 29 Oct 2022 15:52:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1667058753;
+	bh=Kycf1XZFridgEvLb9sjdHDeiaD0OdfNkXClfb9amqkM=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+	b=hw0j53BVtFbC1xnqlHkNqtba6jEmor1AECidmrkh3ggV/tYuIXNsb8DlqLOBpKPUW
+	 qCWZo+dk/rPSKumoAY/NC0zkXxDY5wUdATd7JhGrjWuNHiOWF/KMjA9CJZDhsikVji
+	 cv9zyWW+2NbST3BAi67O9QIqegtE7QctujJUP47s5mhxwPAsqBEokJsWep8BCIdbqH
+	 3Pa8np+C5TMVSc1gsq+O4BepvCsB1Drrz/+dxf700LTOdmKVmwIAiT+T53men9WeMK
+	 T7b2guUVjmFG/VDi74Jz/cH18ymAKWoyclI0GScHy1hKulDNheWxyYwGt5BOirElK4
+	 1B6uzTaVebU9A==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from frank-G5 ([217.61.156.178]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1N33ET-1pBism26KD-013Kf9; Sat, 29
+ Oct 2022 17:52:33 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
 To: linux-mediatek@lists.infradead.org
 Subject: [PATCH v3 0/2] rework mtk pcie-gen3 bindings and support mt7986
-Date: Sat, 29 Oct 2022 17:42:17 +0200
-Message-Id: <20221029154219.4833-1-linux@fw-web.de>
+Date: Sat, 29 Oct 2022 17:52:23 +0200
+Message-Id: <20221029155225.7104-1-frank-w@public-files.de>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 9d1853c2-04a8-4447-aaa2-a41ba2a3b9e1
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:diT2Gefmafn/nZ+zWz2K9Sc7U/zf7MWKJVX6SrzI9Fk1bXLYPHD
+ o1XqCd1Ag1j6hIDROr6UzLx43dkgDd+7JZu8NSLvyAnG0dWiBqAt6v6JouGaJnzBzBOHM0z
+ 8rpAcRv0Lvsx/BrnBOQ0xX8cIUBToqff+sTKW5AFQlVRIsTpRLRNNhRBw1uJKGOP2cQz7R1
+ jvWHNfvQf7mBWY31E5Gag==
+UI-OutboundReport: notjunk:1;M01:P0:n9GfSGB0G2w=;ZjGUNKuL/LJM8mRrT1iGH82btnK
+ OAESaaRGx0UxdcBWNW8gvgEleJGJ7JSxpxUDkfzScm4UyQx960VlXBPZdnn277knBdtd75ZFN
+ JAqdy+H7R7LdBgDqhaRg5jDwtLulhJkDLOKFBWc2CdJ+xHQnHrQbhYhQUykQQ8hD+LtNADit2
+ k9GHCzwCSg1ff0+QzbJ3IhqhdT8Zbj/3wN2juKSfKm9C/Yguq4JDfPxEqP1vss+5yt8Pyv+Bj
+ OV+KDHtSb4nKE2ZzkGR4d/N+VMSFd5pxdlHv/oDFShf0w762npceEPhwgCoCsf9AC8ipPq2ix
+ MI0tByo+oUv+q8qKF7lyV5o80T+mmnTYABJKXKIzUUR8pfD8QZkJ5Axv5To9iiPPtr9ppEf2l
+ 6ORf0/7bn5WIsuPFTl6cem2Oq45KyKNfrhVy1BTPvRbbw2eHIB8p/hChp08eR1tsjgeO93eME
+ koNIk4u/VaE5wT681X+m3YuBjdWUT2llAEb1H2kqfshYkLOGYD3N49lsNwPjOfMhQqYVYdmYg
+ UnYArzVoC0Nfb6KBbZJdZHuCQpCYcUf43kCZJU7+BHsTVm3pFRqv/8JIF8gRuQIhKPtF6GfHn
+ a61q1Gu67yI1BZU0TwYcLngRqfPHomE2B/e+7qtFZTHlWXwzeNHEy/qvpA4HS8WDdc6ibuk+Q
+ 9hhmlvZElw+EVqNVlTK67K245fQelDUOQHScvnadyeUTMO6JZKqLslJ4DJgO88zjdKkwGlgcH
+ id4TO/fGhHwPb6sq9TsDvxrjb8isAbB2XSPSRwlJt5Z0q+s7F5M2R5HDg82QOnYh/uVEyoOcC
+ 61Ci5VJhKnH/Llqixke9UI1RPR/DQJK3HhYkG3B7+wo+NYwD0j+Gvo2QqVgHGNx8I4xSxwPg+
+ KCd0Ow5Fy0ulNWXqEd+TwkpUVe6vHsT8V0Oda9gRQI7TkSDHzDKoW47tto9M9R1gj+jwyd1tq
+ 3RyW6rsdbQB/IO2sBzMomyTlX9c=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221029_084252_097331_8B4536FE 
-X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-CacheID: sfid-20221029_085249_762949_3741576A 
+X-CRM114-Status: UNSURE (   8.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,8 +83,6 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jianjun Wang <jianjun.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-
-From: Frank Wunderlich <frank-w@public-files.de>
 
 This Series prepares support for mt7986 PCIe which is basicly gen3 PCIe
 but with slightly differnt clock configuration.
@@ -90,7 +105,7 @@ Frank Wunderlich (2):
  .../bindings/pci/mediatek-pcie-gen3.yaml      | 64 +++++++++++++++----
  1 file changed, 52 insertions(+), 12 deletions(-)
 
--- 
+=2D-
 2.34.1
 
 
