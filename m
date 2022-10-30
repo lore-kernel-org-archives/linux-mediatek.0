@@ -4,91 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 356E2FA373D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Oct 2022 08:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97DF5FA373D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Oct 2022 09:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wBzTxDjyto5LMQswRTp7KBmkgk5W/wTuc9ACHOfSi38=; b=gN8vNop5c0kkXrWNsTkGDHIxsS
-	dQzJKIFrohv6rNSR114y0feuMSonk83/int47ejBmlFj3/BpLnZOpYirQn6FYPvY3+nycIdz6g9Tb
-	eGDi1bAGkRQAPK/w1IRMuXOTSabPL38VoQeKzOiMaDtBHKXLBjyXrGGf3+QTPuWBjeByyD+LoWc4Z
-	xI/odLbZb/5VJ/tt0VkE+5TT0RcE7QDIxnTuNgbgPbQqqjBz5mbn2Y4F2U7zd9xAqHAKk0sDkRzMM
-	N757sJMP6wMNaHMHgyb9FDfudwBMOWwuR/lMeku+ath4HC/NkeTBOxys/6hpMuWOjJMbjHibRwoqN
-	PlwxF4Rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PrESdhTf+ohvD7xti8OA6Uw5cnHRo0bNkMMZkvXzv/4=; b=1l1qmr9ryMZ4GhrrLgJ9KRQz81
+	a65sGb2GvfWb7x3ew8PBACORSSAFQ4RtdryNgahC3rYHnSirQo+BOWUov54G0FWs2TJh1I2Lu1/CJ
+	C2JZblFRP0badLa2kzITZ/dAi8tYmtPTp5QYWv+0jOxD9yuOWCinoHblX1iUtiInZkuffy2jn31SP
+	IvE/dmXZiokYlErPsjND8z+aqwJ0pNny22B6ZmzuczgO2TJYjvjnQfslbCn+W+T8P2862KeWfEdVx
+	SSMCtZpg+bwoMdAccy5jL0Rn07elkJaVcGE61d5uKAntzGBOlzrn1ihjN0LRpkjXx49d94C9Eb25G
+	bfNNN3fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1op45T-00ESDq-6v; Sun, 30 Oct 2022 08:54:35 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1op4wi-00F0K0-KQ; Sun, 30 Oct 2022 09:49:36 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1op45B-00ERwS-22
-	for linux-mediatek@lists.infradead.org; Sun, 30 Oct 2022 08:54:18 +0000
-Received: by mail-pf1-x441.google.com with SMTP id v28so8097014pfi.12
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Oct 2022 01:54:16 -0700 (PDT)
+	id 1op4wg-00F0IC-97; Sun, 30 Oct 2022 09:49:35 +0000
+Received: by mail-ej1-x629.google.com with SMTP id b2so22809627eja.6;
+        Sun, 30 Oct 2022 02:49:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=compal-corp-partner-google-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wBzTxDjyto5LMQswRTp7KBmkgk5W/wTuc9ACHOfSi38=;
-        b=tymRk0zMyi8GuCOIsy0IZYKTm+b0f2psClgbas9stTxrRjO4Wfn6FPKu+RVNo6skRw
-         gZOYLyA+4nTeaP7JX77+V2eM8Oq9u72LIzbPNIO1NBk0ELjix3IE9an1ZmyIMGmsBRZy
-         DXBdDfBkCl0YFPweKExGde8Fs+Du/Gxk9ETpVYJ/LmYBP73OWDFZzzCYf+Ro/48UKsWl
-         Ejy0H0N83WMQQbZRWlZUIwf0OhEyXPKkiQboMjVkxB3b5K5muurogkQI+PMjiu0rT//t
-         1eknklWt7+vzK0nOTaiLArzj9UGIWRMFKTtJYw/BV+5eUezmuG0icIYukmVIBYcS/hmm
-         JKQQ==
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=PrESdhTf+ohvD7xti8OA6Uw5cnHRo0bNkMMZkvXzv/4=;
+        b=XCPPldoPImUrN93VgBHvNuASTcusKXWwI3GrzvHSID9zUSdCg2D2FdY1dlvZIqGpQj
+         t51wbjbN9deBfA2Q9Y6F0FjYilLwY1LAZW7jqAHedeSss1wUNUTwS75nBTPFHsKnet3R
+         SjAhI73Ek+p3W72qWN/+VjVb7R2pw978ObKkS9aX995r3/eNyuaA+5GRJ9CwSL0cvJWL
+         ywh2SzcOLIZQVEaU8QvdE3VaRMfikUtTq02cG7qkWDhW8p2UxLyQ7dHqU4dsQvRFdKcB
+         3CaJkdiQjr6RlItkON76VjXpgFs/7YsuZncPWEWiaoia0Bs0lYVey8X8Lfs1c7TX+a1i
+         rk8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wBzTxDjyto5LMQswRTp7KBmkgk5W/wTuc9ACHOfSi38=;
-        b=MLDdKQrG/C2zvPe6XSpD13tI6AAqVDBaMTVtWI8Ejj2AAwaS8J1Nk6IJvc07dwXy+t
-         3+u/1uSZedDcgvqoV+Xe1+1aHlTToum+Wl9xdETDVQgUgM4z7yyqL02K4/ut/RSGl5HT
-         yDJJ4i0rFQsOyaDbXVF7Cfbt2yJHDedGsWZwuRj2dnm/DeGlRYCWMco/pTt1TsbymX9c
-         rTb8+/Cwh1HY2adQ7gUiNomW9PIHGqAviongXNC13N5cd+DvFlORPmMIhKSsvwzA/O4D
-         70Hb5FYpNdxEHE3AuanvUWI4SgNV+FemgEORmANPjYmQxmSmJofzvXEwvoHk7pu1+0Ab
-         q/Aw==
-X-Gm-Message-State: ACrzQf3iVWQxHO3NKHxNAXVYpxvothimbKMtY7NaKiCDM/Ef8Q34uRu+
-	RlF5zmQAbQSSN3a1OkiENeXHuA==
-X-Google-Smtp-Source: AMsMyM4Bq9LbVtjGLObonlNiHAhlksGSQ0te2JqDR528mm158U/vgGmsgUUan0Rgz/mXDgLmYBANtg==
-X-Received: by 2002:aa7:9565:0:b0:56c:8860:bce1 with SMTP id x5-20020aa79565000000b0056c8860bce1mr8103347pfq.31.1667120056257;
-        Sun, 30 Oct 2022 01:54:16 -0700 (PDT)
-Received: from localhost.localdomain (118-167-185-125.dynamic-ip.hinet.net. [118.167.185.125])
-        by smtp.gmail.com with ESMTPSA id n9-20020a63f809000000b0041ae78c3493sm2054627pgh.52.2022.10.30.01.54.13
+        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PrESdhTf+ohvD7xti8OA6Uw5cnHRo0bNkMMZkvXzv/4=;
+        b=JCe+1ksTJFk5REAmrHCX7izHcYso3ANvYNQQrBFG1R3zjAd09mSWtzGTzCGlG5NbZm
+         gYzBjIcxqz9+fd6mPcfUJ9vSxEbx0im1WWPD4inJ1l6h1iPvyhndA+qT4KK0E22Beudm
+         /XXRdk6Ltv9aedb0Euy9+RZOaWOiRdU9y7/0Jk88y+/L7sBSQNUsuu9j5HZvIwIiZDcV
+         1n3GdahxN1ZCWV90cO0JyrlRpTk3XiG3yZ13Kp3E3Y5mGVxXXaOF+NgO61CAREh1MemE
+         9hqBKMzIritr7F2wifnjr/B8O8+QjjwNd5SkIQooUAKITADGoJmuaQ30uvRvHwSKPiJ2
+         rW4w==
+X-Gm-Message-State: ACrzQf1CkKheXAOjw2FPxOrjL0x8JNkoBMjUAqKSa5jWlUw1XTgB3JFC
+	V6uG8lyP5jvrEF71gJBpiCE=
+X-Google-Smtp-Source: AMsMyM7LXJPbJfwCst2+OBeGHE3sUGrmmMgHlv73Xnbhlcz9oB5xVLivRHIDUAjKFEfx4+i0M6n8Kw==
+X-Received: by 2002:a17:907:7e9a:b0:796:7a21:1520 with SMTP id qb26-20020a1709077e9a00b007967a211520mr7581144ejc.236.1667123371124;
+        Sun, 30 Oct 2022 02:49:31 -0700 (PDT)
+Received: from [10.32.3.204] ([95.183.227.98])
+        by smtp.gmail.com with ESMTPSA id 10-20020a170906328a00b007836d075152sm1672391ejw.187.2022.10.30.02.49.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Oct 2022 01:54:15 -0700 (PDT)
-From: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
-To: linux-kernel@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	"chunxu . li" <chunxu.li@mediatek.com>,
-	Takashi Iwai <tiwai@suse.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	alsa-devel@alsa-project.org
-Subject: [PATCH v3 2/2] ASoC: mediatek: mt8186-rt5682: Modify machine driver for two DMICs case
-Date: Sun, 30 Oct 2022 16:53:58 +0800
-Message-Id: <20221030085358.1619285-3-ajye_huang@compal.corp-partner.google.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221030085358.1619285-1-ajye_huang@compal.corp-partner.google.com>
-References: <20221030085358.1619285-1-ajye_huang@compal.corp-partner.google.com>
+        Sun, 30 Oct 2022 02:49:30 -0700 (PDT)
+Date: Sun, 30 Oct 2022 12:49:16 +0300
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH v4 08/13] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Improve pinctrl subnode and property descriptions
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Andy Teng
+	<andy.teng@mediatek.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yassine Oudjana
+	<y.oudjana@protonmail.com>, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <4M8KKR.ECH2308DQOMN2@gmail.com>
+In-Reply-To: <f5bf36e2-5be2-cec9-510d-bc99bb9b6bda@linaro.org>
+References: <20221028153505.23741-1-y.oudjana@protonmail.com>
+	<20221028153505.23741-9-y.oudjana@protonmail.com>
+	<f5bf36e2-5be2-cec9-510d-bc99bb9b6bda@linaro.org>
+X-Mailer: geary/40.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii; format=flowed
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221030_015417_176860_C3F507AC 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20221030_024934_344723_0BD09406 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,162 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Having two DMICs, a front DMIC and a Rear DMIC,
-but only host audio input AUX port0 is used for these two Dmics.
-A "dmic-gpios" property is used for a mixer control to switch
-the dmic signal source between the Front and Rear Dmic.
 
-Refer to this one as an example,
-commit 3cfbf07c6d27
-("ASoC: qcom: sc7180: Modify machine driver for 2mic")
+On Fri, Oct 28 2022 at 15:58:30 -04:00:00, Krzysztof Kozlowski 
+<krzysztof.kozlowski@linaro.org> wrote:
+> On 28/10/2022 11:35, Yassine Oudjana wrote:
+>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
+>> 
+>>  Change "subnodes" to "subnode" in subnode description for better 
+>> grammatical
+>>  accuracy, capitalize pinmux description, wrap all descriptions at 
+>> 80 characters,
+>>  and remove literal style indicators from descriptions that don't 
+>> need their new
+>>  lines preserved.
+>> 
+>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+>>  ---
+> 
+> I propose to squash it with the one changing description here.
 
-Signed-off-by: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
----
- .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 102 +++++++++++++++++-
- 1 file changed, 101 insertions(+), 1 deletion(-)
+You mean patch 6 "dt-bindings: pinctrl: mediatek,pinctrl-mt6795: 
+Improve interrupts description"? If yes, would that mean improving 
+descriptions in mediatek,pinctrl-mt6795.yaml then pulling them into 
+mt6779?
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 2414c5b77233..b5c25d1247be 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -7,6 +7,8 @@
- // Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
- //
- 
-+#include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/input.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-@@ -39,6 +41,8 @@
- 
- struct mt8186_mt6366_rt1019_rt5682s_priv {
- 	struct snd_soc_jack headset_jack, hdmi_jack;
-+	struct gpio_desc *dmic_sel;
-+	int dmic_switch;
- };
- 
- /* Headset jack detection DAPM pins */
-@@ -68,6 +72,94 @@ static struct snd_soc_codec_conf mt8186_mt6366_rt1019_rt5682s_codec_conf[] = {
- 	},
- };
- 
-+static int dmic_get(struct snd_kcontrol *kcontrol,
-+		    struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_dapm_context *dapm = snd_soc_dapm_kcontrol_dapm(kcontrol);
-+	struct mtk_soc_card_data *soc_card_data =
-+		snd_soc_card_get_drvdata(dapm->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+
-+	ucontrol->value.integer.value[0] = priv->dmic_switch;
-+	return 0;
-+}
-+
-+static int dmic_set(struct snd_kcontrol *kcontrol,
-+		    struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_dapm_context *dapm = snd_soc_dapm_kcontrol_dapm(kcontrol);
-+	struct mtk_soc_card_data *soc_card_data =
-+		snd_soc_card_get_drvdata(dapm->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+
-+	priv->dmic_switch = ucontrol->value.integer.value[0];
-+	if (priv->dmic_sel) {
-+		gpiod_set_value(priv->dmic_sel, priv->dmic_switch);
-+		dev_info(dapm->card->dev, "dmic_set_value %d\n",
-+			 priv->dmic_switch);
-+	}
-+	return 0;
-+}
-+
-+static const char * const dmic_mux_text[] = {
-+	"FrontMic",
-+	"RearMic",
-+};
-+
-+static SOC_ENUM_SINGLE_DECL(mt8186_dmic_enum,
-+			    SND_SOC_NOPM, 0, dmic_mux_text);
-+
-+static const struct snd_kcontrol_new mt8186_dmic_mux_control =
-+	SOC_DAPM_ENUM_EXT("DMIC Select Mux", mt8186_dmic_enum,
-+			  dmic_get, dmic_set);
-+
-+static const struct snd_soc_dapm_widget dmic_widgets[] = {
-+	SND_SOC_DAPM_MIC("DMIC", NULL),
-+	SND_SOC_DAPM_MUX("Dmic Mux", SND_SOC_NOPM, 0, 0, &mt8186_dmic_mux_control),
-+};
-+
-+static const struct snd_soc_dapm_route dmic_map[] = {
-+	/* digital mics */
-+	{"Dmic Mux", "FrontMic", "DMIC"},
-+	{"Dmic Mux", "RearMic", "DMIC"},
-+};
-+
-+static int primary_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+	int ret;
-+
-+	ret = mt8186_mt6366_init(rtd);
-+
-+	if (ret) {
-+		dev_err(card->dev, "mt8186_mt6366_init failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	if (!priv->dmic_sel) {
-+		dev_info(card->dev, "dmic_sel is null\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dapm_new_controls(&card->dapm, dmic_widgets,
-+					ARRAY_SIZE(dmic_widgets));
-+	if (ret) {
-+		dev_err(card->dev, "DMic widget addition failed: %d\n", ret);
-+		/* Don't need to add routes if widget addition failed */
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dapm_add_routes(&card->dapm, dmic_map,
-+				      ARRAY_SIZE(dmic_map));
-+
-+	if (ret)
-+		dev_err(card->dev, "DMic map addition failed: %d\n", ret);
-+
-+	return ret;
-+}
-+
- static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
- {
- 	struct snd_soc_component *cmpnt_afe =
-@@ -775,7 +867,7 @@ static struct snd_soc_dai_link mt8186_mt6366_rt1019_rt5682s_dai_links[] = {
- 		.dpcm_playback = 1,
- 		.dpcm_capture = 1,
- 		.ignore_suspend = 1,
--		.init = mt8186_mt6366_init,
-+		.init = primary_codec_init,
- 		SND_SOC_DAILINK_REG(adda),
- 	},
- 	{
-@@ -1015,6 +1107,14 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
- 
- 	soc_card_data->mach_priv = mach_priv;
- 
-+	mach_priv->dmic_sel = devm_gpiod_get_optional(&pdev->dev,
-+						      "dmic", GPIOD_OUT_LOW);
-+	if (IS_ERR(mach_priv->dmic_sel)) {
-+		dev_err(&pdev->dev, "DMIC gpio failed err=%ld\n",
-+			PTR_ERR(mach_priv->dmic_sel));
-+		return PTR_ERR(mach_priv->dmic_sel);
-+	}
-+
- 	adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
- 	if (adsp_node) {
- 		struct mtk_sof_priv *sof_priv;
--- 
-2.25.1
+
 
 
