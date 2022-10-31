@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954F0C38A02
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 12:57:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A681AECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 12:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0eyPwIID5QTj89ySOKRfQtfyf9Um1CmzCups6XoDQNc=; b=MnJwzEVW7zg2qBkia8syhOU3rA
-	2PvTb+ha8U6QgeCiL3jhpU7Tt4CBoBzf5m5IhD1GtXymTWc6Sm9/VFP9FzMT0MS/xPBTatu39w++9
-	7k2ZpHBjm2aHlgArZ9IfsUxEEMSGZQDTUCwYWO9PjdoiY9JGtK0xl/fJCICksFuzqjUmszVDZ/Lgx
-	v7goZJZarJId754yi+zrh2HKFGJ17Y/gQJhtf3b3Tb6kvZAgRSebrNk8bZgrdN55zu7hK+0OdcH4T
-	d61PvFhFLR3NnI2BW235p3pLIeeIvAXfVq6CGhtunzBzbPSv8qRTEsQDDZADNbwa+jk8DVSMdieTG
-	PZvb6pzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ark57VTLZLSreyHxp92nYN7q7RpSyTCzE4QV2bI6EhI=; b=U9Ov9qvI09p2rR8c76gm+cY4ss
+	4T2wtHXm6waq8n3wVzrzRtjq4KNnxTpr8W2g8g5qhfiSPSgWiWDLYvqQzJaE2b3UYRnfepNx5fo4A
+	PDzgBBgSkDN425Kue+SISUrUVblTyIC6eDGxTP5hX6YpwLf1yfTQu6mySl7UqdBLP4arz+hHVNXNk
+	Bjovnoe0v4S7jRyD7M4YO83M+25+G+lWbhjM90wKPI1IyyyjmkZVbyFw7phL92qGJ30WsrD8TKw4x
+	S1pp/JoXUegR32/nvPoX+D48dfAlQ/z+S7z9moEmKF798JR1cRjPv7oW0z4AVCnjw0Pbn264og54l
+	tRCZE9Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opULW-00Bs2r-18; Mon, 31 Oct 2022 12:56:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1opUNV-00BsSz-L9; Mon, 31 Oct 2022 12:58:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opULT-00Bs1u-7K; Mon, 31 Oct 2022 12:56:52 +0000
-X-UUID: 1d0431569ca74bce9cb382744789ae10-20221031
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0eyPwIID5QTj89ySOKRfQtfyf9Um1CmzCups6XoDQNc=;
-	b=GqCl7f9mh0Oy5KQWzuF8l/zeDd648Tb7sPd951Dbhvsgyla2NgY9ROGcC919saKOUEFNsz/2BRnlwuiaDGIe0VWWJBdCuB/l6N5sdthKbrcVsuOIdCb/0MJ0MSLFTTF6tKdR/V0FYH9YaVjXLgmCqe/wWfOLhN/S8L44da5k764=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:62b4d37e-3b97-4351-be7d-aa9e65fc4f0f,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:86c82090-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1d0431569ca74bce9cb382744789ae10-20221031
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 501407580; Mon, 31 Oct 2022 05:56:39 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 31 Oct 2022 20:46:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 31 Oct 2022 20:46:35 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Tudor Ambarus <tudor.ambarus@microchip.com>, Pratyush Yadav
-	<pratyush@kernel.org>, Michael Walle <michael@walle.cc>, Miquel Raynal
-	<miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh
- Raghavendra <vigneshr@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-mtd@lists.infradead.org>
-CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>, Bayi Cheng <bayi.cheng@mediatek.com>
-Subject: [PATCH] mtd: spi-nor: Fix the number of bytes for the dummy cycles
-Date: Mon, 31 Oct 2022 20:46:33 +0800
-Message-ID: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1opUNK-00BsPz-MX; Mon, 31 Oct 2022 12:58:48 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9852D6602387;
+	Mon, 31 Oct 2022 12:58:44 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667221125;
+	bh=BeO+oKNCameH1zwWU+wvsYFCN/BzRO3hzCcri9HM8Ts=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UyCAja/GRKvLpVKSbz7anu0DQ+8wfifs86/5lOQgb/e0PNtobNTqmWJn0yZ2ZpWmb
+	 Ydy+npxCpco9Vg5RxZBiLe8obCwipmCEN0WF9K0Q04IFCkbSvu7cSl7F7uqpZMQdEE
+	 eWWr4fbXAAjhkGNIciwGGrXYnRymzMcOzip0zqVxhQWqiB4c/0ivI0Yy8owLatja68
+	 VZ8ZDGBves4YliS4lJ1RWfKEZikmKZysMoornAAPba44vbL7qxIKSZvRvcwQk8Ueta
+	 SfoANlKgBQR6102N9tPyTPu7qijUx0UESyby8qSEbdCzDGHbqhfC92JDBJuDvjbC/L
+	 fB7ysKlhc3rhg==
+Message-ID: <270b6269-0d5d-752a-c59f-44a7d28baae7@collabora.com>
+Date: Mon, 31 Oct 2022 13:58:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v3 1/3] dt-bindings: soc: mediatek: pwrap: add MT8365 SoC
+ bindings
+Content-Language: en-US
+To: fchiby@baylibre.com, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ "Zhiyong . Tao" <zhiyong.tao@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Sen Chu <sen.chu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20221031093401.22916-1-fchiby@baylibre.com>
+ <20221031093401.22916-2-fchiby@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221031093401.22916-2-fchiby@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_055651_287976_2E455E59 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20221031_055846_893434_051A8039 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +82,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The number of bytes used by spi_nor_spimem_check_readop() may be
-incorrect for the dummy cycles. Since nor->read_dummy is not initialized
-before spi_nor_spimem_adjust_hwcaps().
+Il 31/10/22 10:33, fchiby@baylibre.com ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add pwrap binding documentation for
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Fadwa CHIBY <fchiby@baylibre.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-We use both mode and wait state clock cycles instead of nor->read_dummy.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
-Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
-Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- drivers/mtd/spi-nor/core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 6c921eb3fadb..8b9c318a0ad4 100644
---- a/drivers/mtd/spi-nor/core.c
-+++ b/drivers/mtd/spi-nor/core.c
-@@ -1914,7 +1914,8 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
- 	spi_nor_spimem_setup_op(nor, &op, read->proto);
- 
- 	/* convert the dummy cycles to the number of bytes */
--	op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
-+	op.dummy.nbytes = (read->num_mode_clocks + read->num_wait_states) *
-+			  op.dummy.buswidth / 8;
- 	if (spi_nor_protocol_is_dtr(nor->read_proto))
- 		op.dummy.nbytes *= 2;
- 
--- 
-2.18.0
 
 
