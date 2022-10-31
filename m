@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744D9ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 18:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 206EEECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 18:39:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HeS1sOb9YdlcvRsbVO+Dvx/uDWKvQh39hdZYXcin7QA=; b=JrcAUsuGkXmhcf84QMLBfxnXVY
-	qHDxj4G2FnoATvN2+PcFLpATJOTx5mGNIjIl0dLzlzGTesg5edZ/yXZ75eXVeI/sIwJ828ue86SQQ
-	5OdyKsjpn2TtJYo6/FzQFXrjtl8mSK8S6MI7XxDlLCwz8aGVOeoKyaQi4pA3zhENkQDfh0/RBnvMf
-	fBT9m1uAaKVJrVBmpYgjBF3CvqZ4R++JJdcHmGW64LsLJ1yga7+e3EO3As5Wg4eZUdEht+lNB43oU
-	5Qoueav5b8ynTIO8ijwQVfAOeM1EMLzi8JntT4zJY5Gq25jYif9pegf9XiiB7KTHZ0t/1iReu8R3Q
-	apmrqTew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q8I23OysfCUx1Xe2YvQAfauLcceZ5Fm8l3YdA4hOzeE=; b=a1w9sHMPcLgsuSEeji0ItedHO5
+	YW34in0RoXhB8QZ1uYlWI2r8JjhDlPV4CoB0fzo2HUHVxVrJtxxjFiizyJRGgNFh/tob5vu7KrA7P
+	9EkR/Wkx4tTj7zVZZcd6EoTkYRBB55kOpjG8qirqPHA3hnPk22CKvqf9EqFSROahLXHsmNgx0mROT
+	3GyqBYd4FFmA052o/JfnMVDrPZ7wjfnX7wjv/Wt148mwmiV8+0/FkD7S2wLY3oqxEVyRe0NYfyGFn
+	N5CQRzW/ZvvK1xfFkOWPKQA8O+RQHJe4ktF+RSQX79+bfAN+zhKdHRwEUn4Fx3phgGMYr/2ZEzZrH
+	Cdvi77ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opZfg-00DpBn-B8; Mon, 31 Oct 2022 18:38:04 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1opZhN-00Dpph-0t; Mon, 31 Oct 2022 18:39:49 +0000
+Received: from mail-oa1-f44.google.com ([209.85.160.44])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opZfV-00Dp3Q-1x; Mon, 31 Oct 2022 18:37:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A8E50B81A40;
-	Mon, 31 Oct 2022 18:37:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F30B8C433D6;
-	Mon, 31 Oct 2022 18:37:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667241470;
-	bh=ZpTWBC53pD9jnfi/c4IU8fgvcZSMtpYN97AUUuaHEmI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=fISESh/PTcHRhJ2Q0Oz8ZQ5tnCGlOmSb4jvPRe5AA5BhtF/LnVD+b56qgdwKH4val
-	 g5qLsOHifvGiyDA5nKe+Qhqic46cDUot977FqZeUJI/UFJTS9FyWueA/ob5+BgVkWC
-	 kNRTskoHiXXZOBa38QenhnqD+P5em2EA6s3HYTUiO6AZvVTB0mMJZfPeESB34qRmzB
-	 ZHc95UrMfQTq0UnvUvhrEbZRsZ/Y75ntcnpoN9/5g1UD83iBY9WvkVKiLZfaDAavkv
-	 KaCOQRaskkieL72gzW9AcEGOrpgu7CX5isv7Z7LJKeTv+ldWG/6EYhnOU4J9ya/R0P
-	 wWBTeu7YRimrw==
-From: Mark Brown <broonie@kernel.org>
-To: Zhichao Liu <zhichao.liu@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org,
- leilk.liu@mediatek.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20221021091653.18297-1-zhichao.liu@mediatek.com>
-References: <20221021091653.18297-1-zhichao.liu@mediatek.com>
-Subject: Re: [PATCH] spi: mediatek: Fix package division error
-Message-Id: <166724146867.755330.12479790403811029953.b4-ty@kernel.org>
-Date: Mon, 31 Oct 2022 18:37:48 +0000
+	id 1opZhK-00DpnG-Gp; Mon, 31 Oct 2022 18:39:47 +0000
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-13bd2aea61bso14469149fac.0;
+        Mon, 31 Oct 2022 11:39:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Q8I23OysfCUx1Xe2YvQAfauLcceZ5Fm8l3YdA4hOzeE=;
+        b=0x5c80Ie7OY7pgPz6sZsbwfS09CBPd0QL5amW2I3+C7ocWuSrNj+ijeOHKDpLMeq01
+         ATpo0l6wOzT5Jfki2U9HbKfCuz44kNARDek/MNlwXFxT+na+jsXKQqk3x53+ma6d8buR
+         r9uEgHIITz2P1PtREJDq8mUfWBOpL0vrI4hyS1gxuY2VYcNAw49o3tkSGj0aukR7WdVI
+         Zc3FftsBb7TBFw7rHO5Mwqeu/sdsN4aeW2n3csXGBDwm2UTz1lug/TfbP2K7yEf/ykvO
+         FVRIpb8RvvKc5BJPYY1whTwQTELb0pFqdYlbrGPieA8ddglSnXJ2MZsJhBi14TSfLSx2
+         u4ew==
+X-Gm-Message-State: ACrzQf0vv9dzq0H/LxKVbB9O1L/iHMjgd+gh+kZXcrUqrRUj+AoEVffV
+	JkboWHhvtR2UyowUjdA6hANhyGrIBg==
+X-Google-Smtp-Source: AMsMyM76PZ6E2clfU5MJa4MsDXzGuDNWQDOmvVzuoUlAJbMDTKjf/teIxDgreXo1CZP+otpDeba2ZQ==
+X-Received: by 2002:a05:6870:5894:b0:131:b25b:413e with SMTP id be20-20020a056870589400b00131b25b413emr17944734oab.192.1667241584347;
+        Mon, 31 Oct 2022 11:39:44 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id i16-20020a056870a69000b0013b8b3710bfsm3396902oam.13.2022.10.31.11.39.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 31 Oct 2022 11:39:43 -0700 (PDT)
+Received: (nullmailer pid 3235802 invoked by uid 1000);
+	Mon, 31 Oct 2022 18:39:45 -0000
+Date: Mon, 31 Oct 2022 13:39:45 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Tinghan Shen <tinghan.shen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 1/3] dt-bindings: PCI: mediatek-gen3: Support mt8195
+Message-ID: <20221031183945.GA3060184-robh@kernel.org>
+References: <20221028094317.29270-1-tinghan.shen@mediatek.com>
+ <20221028094317.29270-2-tinghan.shen@mediatek.com>
+ <9da05c64-87bb-39c7-6c23-e4918bd5024b@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9da05c64-87bb-39c7-6c23-e4918bd5024b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_113753_264832_A45CC1CB 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20221031_113946_583312_E66D6B64 
+X-CRM114-Status: GOOD (  23.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,45 +79,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 21 Oct 2022 17:16:53 +0800, Zhichao Liu wrote:
-> From: "zhichao.liu" <zhichao.liu@mediatek.com>
+On Mon, Oct 31, 2022 at 02:28:54PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 28/10/22 11:43, Tinghan Shen ha scritto:
+> > From: Jianjun Wang <jianjun.wang@mediatek.com>
+> > 
+> > In order to support mt8195 pcie node, update the yaml to support new
+> > properties of iommu and power-domain, and update the reset-names
+> > property to allow only one 'mac' name.
+> > 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
+> > ---
+> >   .../bindings/pci/mediatek-pcie-gen3.yaml         | 16 +++++++++++++---
+> >   1 file changed, 13 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > index c00be39af64e..a9013c10131a 100644
+> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > @@ -70,14 +70,21 @@ properties:
+> >       minItems: 1
+> >       maxItems: 8
+> > +  iommu-map:
+> > +    maxItems: 1
+> > +
+> > +  iommu-map-mask:
+> > +    const: 0
+> > +
+> >     resets:
+> >       minItems: 1
+> >       maxItems: 2
+> >     reset-names:
+> > -    minItems: 1
+> > -    items:
+> > -      - const: phy
+> > +    oneOf:
+> > +      - items:
+> > +          - const: phy
+> > +          - const: mac
+> >         - const: mac
 > 
-> Commit 7e963fb2a33ce ("spi: mediatek: add ipm design support
-> for MT7986") makes a mistake on package dividing operation
-> (one change is missing), need to fix it.
+> Sorry, this looks a bit messy.
 > 
-> Background:
-> Ipm design is expanding the HW capability of dma (adjust package
-> length from 1KB to 64KB), and using "dev_comp->ipm_support" flag
-> to indicate it.
+> I can propose two solutions, either:
 > 
-> [...]
+> reset-names:
+>   minItems: 1
+>   items:
+>     - const: mac
+>     - const: phy
+> ... and change the order in mt8192.dtsi;
 
-Applied to
+That doesn't work because originally 'phy' alone was allowed.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+You could do:
 
-Thanks!
+minItems: 1
+maxItems: 2
+items:
+  enum: [ phy, mac ]
 
-[1/1] spi: mediatek: Fix package division error
-      commit: cf82d0ecb84e8ef9958721193f901609b408655b
+But for 2 items, either order would be allowed. Not great, but not a 
+huge deal.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> otherwise, something like
+> allOf:
+>   - if:
+>      properties:
+>        compatible:
+>          contains:
+>            - const: mediatek,mt8195-pcie
+>     ... invert reset-names
+> 
+> I think that the first solution makes a bit more sense though, as the
+> PHY reset may be moved in a PCIE-PHY specific driver instead of being
+> managed here in pci-mediatek-gen3.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+That either makes sense or it doesn't. If it does, then you should go 
+ahead and separate the phy rather than change the ABI twice.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Rob
 
