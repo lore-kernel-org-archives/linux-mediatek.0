@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFB1FA3741
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 15:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F2ADFA3741
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 15:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcn3vAQRNrAE/pkchFiZsx/QcZxKnM6OJ25GvSTJfWk=; b=pA7XSGFuaGQWt4JL9dKtjSPEgK
-	32oDxn8BU2Y6DpSdVyj/64sb0znBNlYaVRfWhNRAsBbqpl3M25vbUSTus/WtJQE1MFzA0f5dQyB+E
-	650NloXtJM4UPAPWzD7uTHSauKRyGOjTnY7k3zzsLlk7uavwLTy/yobBfBoSeuXbqNHjoXMgxtkd6
-	TgO3vOg/xNptJcc4u3SxV0cEKU4tMaagMLrQE+4gK5orEWKk34b2Bt7tY6c9ulp6VVR4+edSR2MTG
-	4h1uUGVmMAqRn28jrGjg+HEu/M0ZUZSeWTXtKq+e9MEB65LVlJONNccsKybi4vYq6TRf1zI9KtKIB
-	u7NJ6lNw==;
+	bh=+it/uWgYLK72rmmUI3p1Wer5BTQwxtjc1xi5SAJGU40=; b=0n1d4Yvem9ehKE4Pz+JUGUU6y/
+	zPC4RkFyMWUgx84wd6u9ZVWzGnffHa6O42C0OidbobroHcWWLKsYmBKLAD86cpx2yV4PgfMLEneti
+	WcFJBpQad4A/HyajkS1saOTmPfj2dEfR/fwu3Kpr6T7dKnjowKA3paXHP5i4YAu/7ciRSJbuH7zS0
+	N54SiyQF65QXy4Vt29o5/Fa0iEQXu8bYOxt8HxvVAiSPSJGURVnwokAPocc1P6iitsqwfS5E3c4sr
+	F63tvLb6W3US8YHgRy3T40YKJYuZfGUe8XYJt5fcGZnvlH2s906CcPgGzCH0Wv4yXJLN91asRyEBz
+	v4f1MPNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWmM-00Cd3A-D9; Mon, 31 Oct 2022 15:32:46 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1opWqB-00CeK5-Sq; Mon, 31 Oct 2022 15:36:43 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWmC-00CcyU-4A; Mon, 31 Oct 2022 15:32:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1667230356; x=1698766356;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=njbyewzlB0I61UcEx1gvn+c62w1UHRxU4mCpMpRMQrs=;
-  b=Rre5HojfDNFCCrlQxXv6b6joFwfoaoHUfkQaZNpuJemeSSzpVjVHIHwd
-   C3BLWLXZVHFMBwN0r1EjficBGI4OMxYIHoRETvQUbGQhm2Rsn2i6aBxau
-   UCfOGH+ue4UU26ouBLTDBAI/oVGs3ap4qA1EjiUbvI4mHWEytZqsC0IAt
-   YBc+WdEK5h31gu4LL57XxQatVbk2xKWqu7uMv2G6fEItCL6uLwgBzG+Ut
-   oSMTG2FdCcwIDjYlUhsLFt+8ntLFYhDKyidp2aGKtSlSwlnLn9q30CVan
-   l21cmfsmNapGRrQ36TtAoXsctfffA3UEX3Fc4gF8G0nD4KvhR15MCPnZL
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="310626645"
-X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; 
-   d="scan'208";a="310626645"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2022 08:32:34 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="611527071"
-X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; 
-   d="scan'208";a="611527071"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga006.jf.intel.com with ESMTP; 31 Oct 2022 08:32:29 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1opWm2-005Av2-1x;
-	Mon, 31 Oct 2022 17:32:26 +0200
-Date: Mon, 31 Oct 2022 17:32:26 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
+	id 1opWpu-00CeCF-0m; Mon, 31 Oct 2022 15:36:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id A0699B818CC;
+	Mon, 31 Oct 2022 15:36:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88A10C43140;
+	Mon, 31 Oct 2022 15:36:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667230582;
+	bh=hQTeoRIMnGPp9UdgDT08Aavn4R9xt6+Q4i1tH0XNAtE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XTouMncDtMEck6F3hpEnv5HTI5FxTrknmp7Hw+WJKidcVfbyNHJdYHjmRRLvQ1NMi
+	 79k6ew61nkE5JUU/R+H8Y4UkCM20ONTgi5IvomLie4xhwbM01zKP+BP1cqNj41B9je
+	 sLE2SObyNqVO4v93GRBtNDBDS1YoRyjPj1/UmGcrG3SCxctMAeXaLiGn9k43iyOphl
+	 OD9LKi73/RdJWgcEKIBGJaisJJ7orl49E0Azz9nIM82iK8Ztons+syGXtHWUhfTqMH
+	 gFNoIxoQRefbmGC7wkvpFacJV+m4GepDRdg8aa0Qzqxqd72bVQhwRsLd5G8iJPOxg2
+	 vLf/O4qQ+5HyQ==
+Date: Mon, 31 Oct 2022 15:36:14 +0000
+From: Lee Jones <lee@kernel.org>
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
+	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
-Message-ID: <Y1/qisszTjUL9ngU@smile.fi.intel.com>
-References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
- <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
- <Y1+NHVS5ZJLFTBke@google.com>
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v1 net-next 1/7] dt-bindings: mfd: ocelot: remove
+ spi-max-frequency from required properties
+Message-ID: <Y1/rbgXwUZZXY3JK@google.com>
+References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
+ <20221025050355.3979380-2-colin.foster@in-advantage.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <Y1+NHVS5ZJLFTBke@google.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221025050355.3979380-2-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_083236_239770_F74202C7 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20221031_083626_230172_47DC0368 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +91,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
-> On Tue, 25 Oct 2022, Andy Shevchenko wrote:
-> 
-> > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
-> > > There are several users of LED framework that reimplement the
-> > > functionality of led_init_default_state_get(). In order to
-> > > deduplicate them move the declaration to the global header
-> > > (patch 2) and convert users (patche 3-11).
-> > 
-> > Dear LED maintainers, is there any news on this series? It's hanging around
-> > for almost 2 months now...
-> 
-> My offer still stands if help is required.
+On Mon, 24 Oct 2022, Colin Foster wrote:
 
-From my point of view the LED subsystem is quite laggish lately (as shown by
-this patch series, for instance), which means that _in practice_ the help is
-needed, but I haven't got if we have any administrative agreement on that.
+> The property spi-max-frequency was initially documented as a required
+> property. It is not actually required, and will break bindings validation
+> if other control mediums (e.g. PCIe) are used.
+> 
+> Remove this property from the required arguments.
+> 
+> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/mfd/mscc,ocelot.yaml | 1 -
+>  1 file changed, 1 deletion(-)
 
-Pavel?
+Applied, thanks.
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Lee Jones [李琼斯]
 
