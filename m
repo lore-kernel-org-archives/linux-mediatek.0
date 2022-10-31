@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4065DECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 13:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F74ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 13:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLiZKuvP0SUtt1RsXSrtxdXyeMaEyq942pKps2yyHEI=; b=pSXfBAqzrejcWscznL8ezErGEN
-	Td6mgq6m2Ey3UoolNPxEr1KHvgwKMfRpSBt2Als6nZ4i2vyXKNi9J+P86Tm0fbaJOdNHqenf6y53a
-	kO52PHsXMrkrqUKibq285dT7/oWLczT80SLXpYjr1khsM6ofE3sAdLd09P4vpPsQw+EsdPDPvczhQ
-	nVjY6sq25l9Qdeyo0KrZmXlVuQuC1ji+e8YfTJGtEKtxtaOI/+vm+FCiw4h4ZLuASo/bOBQRuWwYA
-	xdbFZuMY4dASuHbchgMD7g+Q9MFZ6meAxX7zMtSqXFbAj3AuxZMLE2bDDkY3uBCWF4tHWhuuXZwCT
-	iz2VQGsA==;
+	bh=G8wF098WxkIOFEKTti8ujD3dJsTyTOaJoWpuIS3XUk4=; b=ggqY5ZphNS++K9cq7S5Urg3NIC
+	MfEEUDw2RzrjEmVDfkIPwC7jMUmmxDyBMc9OuxVxFIfoxr5LM7kvD0tq3IQs5vVy4J6BzJmiajrXz
+	X7AGCrGDdMhqyQKkwpOOqcKqRfG90/PUGeyDYgXymPLp0W3xx7oIywrucLzf0xNG4doaKW9nKp6pF
+	eNSzdZaJPwfeKYs1g66yJlSlkPE5MOteq1eF77RUm6eYPR4TWKIXwobWPH+Yb9XaR5xWFMR94M4At
+	P/g5zTzMPE2wU9IpdgwUkAxuXJp+FZxnt/aSzz76VZuIE3t0xY6Z3pEeOtdV5m4TW/+MXPHB27UwL
+	ga7KqhHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opVE9-00C983-16; Mon, 31 Oct 2022 13:53:21 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1opVEw-00C9Mb-1a; Mon, 31 Oct 2022 13:54:10 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opVDv-00C950-O8; Mon, 31 Oct 2022 13:53:11 +0000
+	id 1opVEc-00C9Ft-8I; Mon, 31 Oct 2022 13:53:53 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5E340B816D4;
-	Mon, 31 Oct 2022 13:53:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5920C433C1;
-	Mon, 31 Oct 2022 13:53:02 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id BBDB5B816D9;
+	Mon, 31 Oct 2022 13:53:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEDAAC433D6;
+	Mon, 31 Oct 2022 13:53:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667224385;
-	bh=L+f9q+7arbkRsu3om4S7s3pvQcwEFSDo9OD2UXdL+YI=;
+	s=k20201202; t=1667224427;
+	bh=pTy7t7Q8QOwX1bSA4Jd5z2ewZ2NvD0qcR1QWYdy44rY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YVm6mCIoQSKHGVK0lw6agZNIgY/5U+amyGkJ1TWE6u/kIcOIGCR3AY8qge4B84BYb
-	 OhZD4ExqRb3YKG3ocrcwIDZ+5ArzkBt6wWRtbphEg/ceaQ/pIW70lXCc8IDkB/WmjP
-	 RDN2FEsOwIE9O57xKg7v+nyUwZOpO46xUVKq/1B/Fs8xccwhp5I2Ot+Kgji5LcdVsa
-	 PggXqSl8fCMh/1++kF7nFrBLsfKnxyFKp7n8/wh0Y9kxXp/0RwZOZz4VcMnxv8H+b3
-	 X2fe855JdpR+QWL05TrteDAUfq66l7SnlHjm/Q2Iz7xjxdvMrPufg3+nfZwOQmOnFA
-	 ofAhsByK0yccA==
-Date: Mon, 31 Oct 2022 13:52:59 +0000
+	b=AECja8WxEAHVraIRg2PtlfXZEnzCsq0KVf/wn77pDT1Afy9ppuHT1z9uGvIljxogY
+	 C73SyMCwEW6Gl/L3Hk4jnxvi9MO/RohHWhUQM1Walr0v3pzqaPiQ4gCnyS9M1qaOMO
+	 sFY3ouaKCFc2OcHQlbfxFwcEWStGCg0k88IhobOqX6Ql3aiUPL4vkrFY95ypFu4yEI
+	 RjuVfVrbPSdzMg6Svb1iVdi1P2DC1zEwyEsfBX47ZYXjYVVrqA6LrGfMFcjJyVLjM4
+	 CN96eUnPeEinFXSjhC3zcNBNG63JBJVh9Acdj4leaX5pgGM/2ryAvH2GUAkbSwJGcE
+	 0Ro5UfrXJDr7Q==
+Date: Mon, 31 Oct 2022 13:53:40 +0000
 From: Lee Jones <lee@kernel.org>
-To: cy_huang <u0084500@gmail.com>
-Cc: matthias.bgg@gmail.com, gene_chen@richtek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	ChiYuan Huang <cy_huang@richtek.com>, stable@vger.kernel.org
-Subject: Re: [PATCH v2] mfd: mt6360: add bound check in regmap read/write
- function
-Message-ID: <Y1/TO+mOrwjj3D33@google.com>
-References: <1664416817-31590-1-git-send-email-u0084500@gmail.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Mark Brown <broonie@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Fabien Parent <fabien.parent@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+	devicetree@vger.kernel.org, linux-input@vger.kernel.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: mfd: mt6397: add binding for MT6357
+Message-ID: <Y1/TZEMBF3OI+XSa@google.com>
+References: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
+ <20221005-mt6357-support-v3-1-7e0bd7c315b2@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1664416817-31590-1-git-send-email-u0084500@gmail.com>
+In-Reply-To: <20221005-mt6357-support-v3-1-7e0bd7c315b2@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_065307_957212_9257A93F 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20221031_065350_451677_AC9A417B 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,26 +83,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022, cy_huang wrote:
+On Thu, 20 Oct 2022, Alexandre Mergnat wrote:
 
-> From: ChiYuan Huang <cy_huang@richtek.com>
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> Fix the potential risk for null pointer if bank index is over the maximum.
+> Add binding documentation for the MT6357 PMIC.
 > 
-> Refer to the discussion list for the experiment result on mt6370.
-> https://lore.kernel.org/all/20220914013345.GA5802@cyhuang-hp-elitebook-840-g3.rt/
-> If not to check the bound, there is the same issue on mt6360.
-> 
-> Fixes: 3b0850440a06c (mfd: mt6360: Merge different sub-devices I2C read/write)
-> Cc: stable@vger.kernel.org
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 > ---
-> Since v2:
-> - Assign i2c bank variable after bank index is already checked.
-> 
-> ---
->  drivers/mfd/mt6360-core.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
 Applied, thanks.
 
