@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99ADDECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 13:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D843ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 13:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UXK6tGcHjDFvugmuVqAqiLp805ttFZrJ4Mi9HpSHGXU=; b=IOG0tWh/0U1E+EDIubwgPP3+uW
-	fMXEARPamvgk5OMDMokgJG0TOK5gLGz9s0ne9/eYWXbbascHY0xwv5L9JBUoArm/V3361DhgN1rR8
-	pkaqwmy4Io87PoH0X15PpGqvyZB5MVhH5a18sT4esR6csaIV7KEWbAwHoGMiorGRlXX5iphbLgFRz
-	mshjshnLLYw3Lh+ndH5wRMqkFmp7V/lTsUloF4nYV6VDLSWFEkq0r+PDa31z2kUUmMVx/lGx4VaVM
-	rNLmXW/Ryu5t7zdYJ9cH6cCawOTufRfvLnuhuvm5XRDZXB2qDWxR/EoAyDtzAbzXpyfU9LYioOKcw
-	WcL+S1ww==;
+	bh=iqWUj6VuhOWZUG7Gwms5nB+e/pKNGjwPJ1N5cZG7kGk=; b=tpzF5MMWSKhOTKotC0ouCsX2D1
+	FsD6vEGrV2MAAoMXqyyUfMeeCHYGdxh8hiPJSfYhC0F1xlYnV7cxe9CBGEODlFJIZ3OAoxr6hqY9I
+	RDZyublmY4ofs4B4IykHjNwvxSSqt+gjsbswpOTUX8AWnc1QqZxkSWzd91Nh5EqxdE47j6zfDw53z
+	LXE6Ap5V0G7U0ohhfuQXpobAJ9kMIK9cg/8cKZMRfhW0SG5lqNW/S1y7j+ybasKWT40U9EAFl+YyM
+	+y22a6YprorARce6lw6HQ91aLl7WLO4+1M2zMRT3G5bmm+pWSQyJqaypJn43BL6BX3GKAl5Sm43IZ
+	9GcSWozw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opV6a-00C7UY-Ms; Mon, 31 Oct 2022 13:45:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1opVAc-00C8TR-RY; Mon, 31 Oct 2022 13:49:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opV6Q-00C7R9-No; Mon, 31 Oct 2022 13:45:24 +0000
+	id 1opVAR-00C8Pn-9O; Mon, 31 Oct 2022 13:49:32 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3E7516602253;
-	Mon, 31 Oct 2022 13:45:19 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC9BB6602253;
+	Mon, 31 Oct 2022 13:49:28 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667223920;
-	bh=FqG5Q9Uq9BODSoedqBA3YlNqZjPSGiArJ7cELbg3dBI=;
+	s=mail; t=1667224169;
+	bh=1CjDirYTveyInAKG0RQWqvIdW7a/AeUnGrEqY2Utiws=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q+BkQP4mwRLmQ1tdn6vLsPc96vlTiWTXoDR3oAn+hPGADvHLXKQ7xIQwCBGSxh+i5
-	 0oppqtccMWm7GDIxLgq7STRH4DjocOKPdoEfhHcT3xHgmavC5P32fQDA7ySsgifCjH
-	 HXk4HD8GMr50Ag3OuwcDC2rsJSS/lUjAaCUfY1wl1LpPOhimRmtLeuWk2lgixQarS/
-	 UakTBK0eWkW+7XKlxjcnNcsm5MDDx3isM2maXebCimfBXi6fcbCaA69IcuFw3VE8vY
-	 jR4BjhHz2AdIfevEvrFNoSjhIhIbqzr8H3fCHns4DPaUALb93eYIion+xmK9vbfKxa
-	 SEEVtIi8/pt7A==
-Message-ID: <5329430d-fd58-0872-50d3-b0558f6868df@collabora.com>
-Date: Mon, 31 Oct 2022 14:45:16 +0100
+	b=nA/Q+Sp2imNv4fxfZ/8CkIieGZNWmDpQT7s7l69lK6HIcn9v18xnHcI8h3ctbuHXv
+	 RqZC9bQJGr8LEnitwh1/CoQQL1jrxdPIWUnqaTMwG6UAk5FH2MzWPFu2Z2SmefTKvV
+	 Wc578sIxIrI9+D0oUJGo8fM+9CDWgrC8+gx7jy2Ctva1slyeikphBmMjUgrGTTHwGG
+	 HGLX/KnM7b2QQn/Y4yRiSw7M2hUUUB6/19hZKzn5Q+18knP0dzdr6yeNKc+ZGfovE+
+	 7gGSbGZCK+PcRY9DjYlFCnhvtUkF5AvStKLlp3Vq5u1mn+DaSGN5VXPKUEBuJpIFK7
+	 29qzcCexoVc3w==
+Message-ID: <e0d37670-cb88-3a20-5230-9f14411edec1@collabora.com>
+Date: Mon, 31 Oct 2022 14:49:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v3] dma-buf: cma_heap: Remove duplicated 'by' in comment
+Subject: Re: [PATCH v2 1/2] dt-bingings: gce: add gce header file for mt8188
 Content-Language: en-US
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Liam Mark <lmark@codeaurora.org>, Laura Abbott <labbott@redhat.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+To: "Elvis.Wang" <Elvis.Wang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: yj.chiang@mediatek.com, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20221028065533.23856-1-mark-pk.tsai@mediatek.com>
+Cc: Houlong Wei <houlong.wei@mediatek.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Bo-Chen Chen <rex-bc.chen@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20221029105017.20734-1-Elvis.Wang@mediatek.com>
+ <20221029105017.20734-2-Elvis.Wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221028065533.23856-1-mark-pk.tsai@mediatek.com>
+In-Reply-To: <20221029105017.20734-2-Elvis.Wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_064522_944843_5980A745 
-X-CRM114-Status: UNSURE (   6.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221031_064931_564919_3662CA49 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,13 +80,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/10/22 08:55, Mark-PK Tsai ha scritto:
-> Remove duplicated 'by' from comment in cma_heap_allocate().
+Il 29/10/22 12:50, Elvis.Wang ha scritto:
+> From: Elvis Wang <Elvis.Wang@mediatek.com>
 > 
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> Reviewed-By: Mukesh Ojha <quic_mojha@quicinc.com>
-> Acked-by: John Stultz <jstultz@google.com>
+> add gce header file to define the gce thread priority, gce subsys id,
+>   event and constant for mt8188.
+> v2 - use vendor in filename, use Dual license.
+> 
+> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
+> Reviewed-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> Thanks for the reviews, I have fixed them.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I can't see where/when Krzysztof gave you his R-b tag. Drop it.
+
+Also, please fix the typo in the commit title. s/bingings/bindings/g.
+
+Regards,
+Angelo
 
 
