@@ -4,67 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 206EEECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 18:39:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C24ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 19:24:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q8I23OysfCUx1Xe2YvQAfauLcceZ5Fm8l3YdA4hOzeE=; b=a1w9sHMPcLgsuSEeji0ItedHO5
-	YW34in0RoXhB8QZ1uYlWI2r8JjhDlPV4CoB0fzo2HUHVxVrJtxxjFiizyJRGgNFh/tob5vu7KrA7P
-	9EkR/Wkx4tTj7zVZZcd6EoTkYRBB55kOpjG8qirqPHA3hnPk22CKvqf9EqFSROahLXHsmNgx0mROT
-	3GyqBYd4FFmA052o/JfnMVDrPZ7wjfnX7wjv/Wt148mwmiV8+0/FkD7S2wLY3oqxEVyRe0NYfyGFn
-	N5CQRzW/ZvvK1xfFkOWPKQA8O+RQHJe4ktF+RSQX79+bfAN+zhKdHRwEUn4Fx3phgGMYr/2ZEzZrH
-	Cdvi77ww==;
+	bh=cwno6K2Qqv+JXL4Utet5qWElq4dGxhdrJi1ZpXfBTwc=; b=zGmlJRIPwLfq3KbAZoO2KOMwTM
+	pJoGYLuDmYOYGOBLHu80vz2PCAbMXS/yJgEguGGn4ha8EkeDXfK6TkZGl0Y4s9WZJVEfcTJYxf2Se
+	jk1uZK/MaFQQWK3bmYVNj2JkZagea6xcVcij/6ktA1OYs1GhUbyB54uTNZr3FIPgEiA9E2bbINgUG
+	5J4pen/XL2H046OqF1VhNBxletqyQwumDjFeDcp3PIqPS89sI21I+8DIRGTUtxOECcI9Oorv17K4H
+	+6UpOKH0LVR97YoTMNZM2P6wUjMUSJ69O5QCkQRMHGbzSX8ubbpdk2J14VaqCa2yb47VF8SrIuUCZ
+	w5jA3XQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opZhN-00Dpph-0t; Mon, 31 Oct 2022 18:39:49 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1opaO1-00ECh6-VK; Mon, 31 Oct 2022 19:23:53 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opZhK-00DpnG-Gp; Mon, 31 Oct 2022 18:39:47 +0000
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-13bd2aea61bso14469149fac.0;
-        Mon, 31 Oct 2022 11:39:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Q8I23OysfCUx1Xe2YvQAfauLcceZ5Fm8l3YdA4hOzeE=;
-        b=0x5c80Ie7OY7pgPz6sZsbwfS09CBPd0QL5amW2I3+C7ocWuSrNj+ijeOHKDpLMeq01
-         ATpo0l6wOzT5Jfki2U9HbKfCuz44kNARDek/MNlwXFxT+na+jsXKQqk3x53+ma6d8buR
-         r9uEgHIITz2P1PtREJDq8mUfWBOpL0vrI4hyS1gxuY2VYcNAw49o3tkSGj0aukR7WdVI
-         Zc3FftsBb7TBFw7rHO5Mwqeu/sdsN4aeW2n3csXGBDwm2UTz1lug/TfbP2K7yEf/ykvO
-         FVRIpb8RvvKc5BJPYY1whTwQTELb0pFqdYlbrGPieA8ddglSnXJ2MZsJhBi14TSfLSx2
-         u4ew==
-X-Gm-Message-State: ACrzQf0vv9dzq0H/LxKVbB9O1L/iHMjgd+gh+kZXcrUqrRUj+AoEVffV
-	JkboWHhvtR2UyowUjdA6hANhyGrIBg==
-X-Google-Smtp-Source: AMsMyM76PZ6E2clfU5MJa4MsDXzGuDNWQDOmvVzuoUlAJbMDTKjf/teIxDgreXo1CZP+otpDeba2ZQ==
-X-Received: by 2002:a05:6870:5894:b0:131:b25b:413e with SMTP id be20-20020a056870589400b00131b25b413emr17944734oab.192.1667241584347;
-        Mon, 31 Oct 2022 11:39:44 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id i16-20020a056870a69000b0013b8b3710bfsm3396902oam.13.2022.10.31.11.39.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Oct 2022 11:39:43 -0700 (PDT)
-Received: (nullmailer pid 3235802 invoked by uid 1000);
-	Mon, 31 Oct 2022 18:39:45 -0000
-Date: Mon, 31 Oct 2022 13:39:45 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Tinghan Shen <tinghan.shen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 1/3] dt-bindings: PCI: mediatek-gen3: Support mt8195
-Message-ID: <20221031183945.GA3060184-robh@kernel.org>
-References: <20221028094317.29270-1-tinghan.shen@mediatek.com>
- <20221028094317.29270-2-tinghan.shen@mediatek.com>
- <9da05c64-87bb-39c7-6c23-e4918bd5024b@collabora.com>
+	id 1opaNs-00ECfi-AK; Mon, 31 Oct 2022 19:23:45 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1opaNj-0008Uc-L3; Mon, 31 Oct 2022 20:23:35 +0100
+Date: Mon, 31 Oct 2022 19:23:28 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Zhi Mao <zhi.mao@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>
+Subject: [PATCH v2] dt-bindings: pwm: mediatek: Add compatible for MT7986
+Message-ID: <e2170b37f28238c59b2f43309822b63a4d0ac9b1.1667243978.git.daniel@makrotopia.org>
+References: <6f28ccf3-ea27-9d5e-bd67-14f7729f713f@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <9da05c64-87bb-39c7-6c23-e4918bd5024b@collabora.com>
+In-Reply-To: <6f28ccf3-ea27-9d5e-bd67-14f7729f713f@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_113946_583312_E66D6B64 
-X-CRM114-Status: GOOD (  23.15  )
+X-CRM114-CacheID: sfid-20221031_122344_371924_CD0EFFB9 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,84 +63,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 31, 2022 at 02:28:54PM +0100, AngeloGioacchino Del Regno wrote:
-> Il 28/10/22 11:43, Tinghan Shen ha scritto:
-> > From: Jianjun Wang <jianjun.wang@mediatek.com>
-> > 
-> > In order to support mt8195 pcie node, update the yaml to support new
-> > properties of iommu and power-domain, and update the reset-names
-> > property to allow only one 'mac' name.
-> > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
-> > ---
-> >   .../bindings/pci/mediatek-pcie-gen3.yaml         | 16 +++++++++++++---
-> >   1 file changed, 13 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > index c00be39af64e..a9013c10131a 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > @@ -70,14 +70,21 @@ properties:
-> >       minItems: 1
-> >       maxItems: 8
-> > +  iommu-map:
-> > +    maxItems: 1
-> > +
-> > +  iommu-map-mask:
-> > +    const: 0
-> > +
-> >     resets:
-> >       minItems: 1
-> >       maxItems: 2
-> >     reset-names:
-> > -    minItems: 1
-> > -    items:
-> > -      - const: phy
-> > +    oneOf:
-> > +      - items:
-> > +          - const: phy
-> > +          - const: mac
-> >         - const: mac
-> 
-> Sorry, this looks a bit messy.
-> 
-> I can propose two solutions, either:
-> 
-> reset-names:
->   minItems: 1
->   items:
->     - const: mac
->     - const: phy
-> ... and change the order in mt8192.dtsi;
+Add new compatible string for MT7986 PWM and list compatible units for
+existing entries. Also make sure the number of pwm1-X clocks is listed
+for all supported units.
 
-That doesn't work because originally 'phy' alone was allowed.
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  | 20 +++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
-You could do:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+index 554c96b6d0c3e0..952a338e06e7c5 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+@@ -2,14 +2,15 @@ MediaTek PWM controller
+ 
+ Required properties:
+  - compatible: should be "mediatek,<name>-pwm":
+-   - "mediatek,mt2712-pwm": found on mt2712 SoC.
++   - "mediatek,mt2712-pwm", "mediatek,mt6795-pwm": found on mt2712 SoC.
+    - "mediatek,mt6795-pwm": found on mt6795 SoC.
+-   - "mediatek,mt7622-pwm": found on mt7622 SoC.
+-   - "mediatek,mt7623-pwm": found on mt7623 SoC.
++   - "mediatek,mt7622-pwm", "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt7622 SoC.
++   - "mediatek,mt7623-pwm", "mediatek,mt7628-pwm": found on mt7623 SoC.
+    - "mediatek,mt7628-pwm": found on mt7628 SoC.
+    - "mediatek,mt7629-pwm": found on mt7629 SoC.
+-   - "mediatek,mt8183-pwm": found on mt8183 SoC.
+-   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm": found on mt8195 SoC.
++   - "mediatek,mt7986-pwm": found on mt7986 SoC.
++   - "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8183 SoC.
++   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8195 SoC.
+    - "mediatek,mt8365-pwm": found on mt8365 SoC.
+    - "mediatek,mt8516-pwm": found on mt8516 SoC.
+  - reg: physical base address and length of the controller's registers.
+@@ -20,11 +21,14 @@ Required properties:
+                 has no clocks
+    - "top": the top clock generator
+    - "main": clock used by the PWM core
++   - "pwm1"  : the PWM1 clock for mt7629
++   - "pwm1-2": the two per PWM clocks for mt7986
+    - "pwm1-3": the three per PWM clocks for mt8365
+-   - "pwm1-8": the eight per PWM clocks for mt2712
++   - "pwm1-4": the four per PWM clocks for mt7628 or mt8183
++   - "pwm1-5": the five per PWM clocks for mt7623 or mt8516
+    - "pwm1-6": the six per PWM clocks for mt7622
+-   - "pwm1-5": the five per PWM clocks for mt7623
+-   - "pwm1"  : the PWM1 clock for mt7629
++   - "pwm1-7": the seven per PWM clocks for mt6795
++   - "pwm1-8": the eight per PWM clocks for mt2712
+  - pinctrl-names: Must contain a "default" entry.
+  - pinctrl-0: One property must exist for each entry in pinctrl-names.
+    See pinctrl/pinctrl-bindings.txt for details of the property values.
+-- 
+2.38.1
 
-minItems: 1
-maxItems: 2
-items:
-  enum: [ phy, mac ]
-
-But for 2 items, either order would be allowed. Not great, but not a 
-huge deal.
-
-> otherwise, something like
-> allOf:
->   - if:
->      properties:
->        compatible:
->          contains:
->            - const: mediatek,mt8195-pcie
->     ... invert reset-names
-> 
-> I think that the first solution makes a bit more sense though, as the
-> PHY reset may be moved in a PCIE-PHY specific driver instead of being
-> managed here in pci-mediatek-gen3.
-
-That either makes sense or it doesn't. If it does, then you should go 
-ahead and separate the phy rather than change the ABI twice.
-
-Rob
 
