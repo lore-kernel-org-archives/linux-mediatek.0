@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F74ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 13:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C36ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 14:43:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G8wF098WxkIOFEKTti8ujD3dJsTyTOaJoWpuIS3XUk4=; b=ggqY5ZphNS++K9cq7S5Urg3NIC
-	MfEEUDw2RzrjEmVDfkIPwC7jMUmmxDyBMc9OuxVxFIfoxr5LM7kvD0tq3IQs5vVy4J6BzJmiajrXz
-	X7AGCrGDdMhqyQKkwpOOqcKqRfG90/PUGeyDYgXymPLp0W3xx7oIywrucLzf0xNG4doaKW9nKp6pF
-	eNSzdZaJPwfeKYs1g66yJlSlkPE5MOteq1eF77RUm6eYPR4TWKIXwobWPH+Yb9XaR5xWFMR94M4At
-	P/g5zTzMPE2wU9IpdgwUkAxuXJp+FZxnt/aSzz76VZuIE3t0xY6Z3pEeOtdV5m4TW/+MXPHB27UwL
-	ga7KqhHw==;
+	bh=w+B+bKwkZajw9wqTsexpQ+swmijNJ09uQIWw31o7PxQ=; b=3eFhMEoEtfOLl84x/9XUoudIj0
+	6nrzd/5x+phwlJCu63mG+nanah8DJpQO+D/3TOx8rV8LQ1gWfwG8Oh6YmsHtVq6DIraa5H5z4331U
+	oVdzGdCpeKMBZUSJQ32TafHqX+0zet5SF/WD6mdfgI4GCp1BI8gNHD/o4n0cfq2S0ePCwmqWBJZfP
+	jLRZyXNnpEskkjyGCEP9y3b5P8kBD0CiGibygYNb4UF8gqKGZgz+OkQpyJnHx7mOTkntBFuJITyL0
+	UFfm9YhNscgUTkuQw5UmigpbNMCce6Ym5KUOYLOCPXkIUrnORzmiZJ/cxeKmfKOsqpYstBqTKex0j
+	RZG8XAVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opVEw-00C9Mb-1a; Mon, 31 Oct 2022 13:54:10 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1opW0J-00CKmM-3C; Mon, 31 Oct 2022 14:43:07 +0000
+Received: from mail-oa1-f45.google.com ([209.85.160.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opVEc-00C9Ft-8I; Mon, 31 Oct 2022 13:53:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BBDB5B816D9;
-	Mon, 31 Oct 2022 13:53:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEDAAC433D6;
-	Mon, 31 Oct 2022 13:53:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667224427;
-	bh=pTy7t7Q8QOwX1bSA4Jd5z2ewZ2NvD0qcR1QWYdy44rY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AECja8WxEAHVraIRg2PtlfXZEnzCsq0KVf/wn77pDT1Afy9ppuHT1z9uGvIljxogY
-	 C73SyMCwEW6Gl/L3Hk4jnxvi9MO/RohHWhUQM1Walr0v3pzqaPiQ4gCnyS9M1qaOMO
-	 sFY3ouaKCFc2OcHQlbfxFwcEWStGCg0k88IhobOqX6Ql3aiUPL4vkrFY95ypFu4yEI
-	 RjuVfVrbPSdzMg6Svb1iVdi1P2DC1zEwyEsfBX47ZYXjYVVrqA6LrGfMFcjJyVLjM4
-	 CN96eUnPeEinFXSjhC3zcNBNG63JBJVh9Acdj4leaX5pgGM/2ryAvH2GUAkbSwJGcE
-	 0Ro5UfrXJDr7Q==
-Date: Mon, 31 Oct 2022 13:53:40 +0000
-From: Lee Jones <lee@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Mark Brown <broonie@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Fabien Parent <fabien.parent@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <fparent@baylibre.com>, Rob Herring <robh@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>,
-	devicetree@vger.kernel.org, linux-input@vger.kernel.org
-Subject: Re: [PATCH v3 1/5] dt-bindings: mfd: mt6397: add binding for MT6357
-Message-ID: <Y1/TZEMBF3OI+XSa@google.com>
-References: <20221005-mt6357-support-v3-0-7e0bd7c315b2@baylibre.com>
- <20221005-mt6357-support-v3-1-7e0bd7c315b2@baylibre.com>
+	id 1opW0G-00CKlG-Ts; Mon, 31 Oct 2022 14:43:06 +0000
+Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-1322d768ba7so13681060fac.5;
+        Mon, 31 Oct 2022 07:43:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=w+B+bKwkZajw9wqTsexpQ+swmijNJ09uQIWw31o7PxQ=;
+        b=EnIWXiTp9roLIcVt1dU6em0PeIJ3EDcwSDlJTzJ3C3mCCM5bKt1FCCWPxSMSpwASh2
+         MLpdWyjrcNxcjTSbI39lkDD3UxoZewLi5xxMC0xysBFz1aqMTz9ArJKgHKtlE1qJuTZp
+         tN7tX+E0W9FcRZsOsjAaR2RZD5iVUSUiLrEq3r4q/EUqAvWy/OZtUiVNpiYohA1QcjOH
+         8AIm3eDQuREaNvJ9mI0dZEkl2KQALJPFU/l8iXeLJq0g+F6v/e9Yc1RC6xvjYtnX/YJ0
+         Jn5pmaD9Ut/xizIjLZCTQwDAAUj21IDLxTUE7BBfk9Wp6oNowsEKQxv6Q97maPRDXbQd
+         TRtg==
+X-Gm-Message-State: ACrzQf12e8gTE8RA55NhAP59U07PbnJaWJY1LQn9l0FYVWWV4VN3v1sF
+	22KRLfU9rsXB6I0DkzMCOXoPLDrI1g==
+X-Google-Smtp-Source: AMsMyM6r3n78WWlzNtMmHub5yrpP5yHb6caca/SxmRCN8GdJrio1xlSLZskM2+oZwdb8CDa0AodveQ==
+X-Received: by 2002:a05:6870:c88d:b0:137:11e7:12e9 with SMTP id er13-20020a056870c88d00b0013711e712e9mr7713557oab.220.1667227380162;
+        Mon, 31 Oct 2022 07:43:00 -0700 (PDT)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id g10-20020a4a250a000000b00480fd5b0d6bsm178938ooa.22.2022.10.31.07.42.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 31 Oct 2022 07:42:59 -0700 (PDT)
+Received: (nullmailer pid 2857339 invoked by uid 1000);
+	Mon, 31 Oct 2022 14:43:01 -0000
+Date: Mon, 31 Oct 2022 09:43:01 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: add SoC based
+ clock config
+Message-ID: <20221031144301.GA2856406-robh@kernel.org>
+References: <20221029175806.14899-1-frank-w@public-files.de>
+ <20221029175806.14899-2-frank-w@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221005-mt6357-support-v3-1-7e0bd7c315b2@baylibre.com>
+In-Reply-To: <20221029175806.14899-2-frank-w@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_065350_451677_AC9A417B 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20221031_074304_983852_AF294A71 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,21 +79,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 20 Oct 2022, Alexandre Mergnat wrote:
-
-> From: Fabien Parent <fparent@baylibre.com>
+On Sat, Oct 29, 2022 at 07:58:05PM +0200, Frank Wunderlich wrote:
+> The PCIe driver covers different SOC which needing different clock
+> configs. Define them based on compatible.
 > 
-> Add binding documentation for the MT6357 PMIC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
->  1 file changed, 1 insertion(+)
+> v2:
+> - fix typo in mediatek,mt8192-pcie
+> v3:
+> - remove contains to match only if compatible is no fallback
+>   tested with series "Add driver nodes for MT8195 SoC" and mt7986
+>   pcie-nodes, dtbs_check is now clean
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 47 ++++++++++++++-----
+>  1 file changed, 35 insertions(+), 12 deletions(-)
 
-Applied, thanks.
-
--- 
-Lee Jones [李琼斯]
+Reviewed-by: Rob Herring <robh@kernel.org>
 
