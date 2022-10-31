@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A364CFA3747
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 15:44:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 456D1FA3741
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 16:40:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ifwpmU7A0PMQ06MNBDvyGSIa8Sixxnkraic/SyG2pxo=; b=monpHkyxeicHes87gv+MLcBSzW
-	NG0Vd9wAlkuDsL2zziNnZyd/Wt6u2/wMt2LumAm4rro7Yk+7Z2Qr5IxFxg38ELOKiPUYioAO5q6V0
-	qYFr9s0Ay50ET0WBbKSmn8eXfdxaxhzIanDdrvasLOZXbu5XN9UCHL9HBpl3S8adupzv+yPmNdTlp
-	YDatHENdqXi3/8ivgJDl01tADU2NDJaxFr4xMLAPppoMEBFCVg2rGU7l/xpX8+BjwALQtdIpSCyIs
-	c0csozjznZGQ4EEIM4j3ZwSwCRwyZlU7aDGnI3Wc6lS4ajBGVM7CDbSH9aBD2lDc5A2Oh7wm2e88R
-	B66kxurw==;
+	bh=G5iO8KHmbbjpD0edAAD18XYUlbSGy4UU+ld7nxMCDFQ=; b=0wknBnD73Rc7TjIDP/hxguwVwQ
+	Z7WUh+yixL3k9O22C6ei1HMvQR/j3vDA/kNyhquK27BiVDwVZBHbWb02IxB9jbsEJlcPKPSbTFJdt
+	xCKraniV+sZ0Uh632DyJ1Ngc+k3sH7UaerdDGRBOrMlvwuigYkt4EQMGijEwktSYzA1UUODqQr9vL
+	j0qJkDiXLWqOnHiw68t0KOtHNR4tEAEnVg5Wcnh0rMtqWyPmfRdxVCSQrSrrVADKWdL4lggGFeeLV
+	qIhAgDsrlMjcDG5e6NWUlE4OvpvURpw91V5/58QinWd0G/SMXO6Xa6WcVbtgk6pJjWnMh2zXFNIw0
+	LZQzX4Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWxS-00Ci6g-7T; Mon, 31 Oct 2022 15:44:14 +0000
-Received: from mail-ot1-f51.google.com ([209.85.210.51])
+	id 1opXpb-00D35S-GK; Mon, 31 Oct 2022 16:40:11 +0000
+Received: from mail-pg1-f176.google.com ([209.85.215.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opWxO-00Ci3q-TY; Mon, 31 Oct 2022 15:44:12 +0000
-Received: by mail-ot1-f51.google.com with SMTP id k59-20020a9d19c1000000b0066c45cdfca5so2535377otk.10;
-        Mon, 31 Oct 2022 08:44:09 -0700 (PDT)
+	id 1opXpY-00D30k-GC
+	for linux-mediatek@lists.infradead.org; Mon, 31 Oct 2022 16:40:10 +0000
+Received: by mail-pg1-f176.google.com with SMTP id h193so2466825pgc.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Oct 2022 09:40:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ifwpmU7A0PMQ06MNBDvyGSIa8Sixxnkraic/SyG2pxo=;
-        b=jk3oXpTV/Iy8rZ8vqBBcP7Z6AyB5R/aX1Jj3zyyXbtSjEWmkAaEg90wCFdhar6X7RW
-         g88wqQ+rm6LMKeMrMyTAU5W6IYVsL/qGPiEHsT198lg1oKo5J8hkB3zlGOBxTiUckfRE
-         szneAspMSWosO6P991Q2l4Y8qn5VNBET/K/1h+BUYP4bjxEC/JI2g89l1K7WIdBzzatd
-         c1kFFRgIJal1u+IL3Y0Nefi6aCg5O83h6jRiSXSdcide3z1g0wOq9sf0SySFxihs7m+4
-         m6IhmshNWoNZXLjy3bZzPwUVpJO/ulLWbdps5Gv6rSAULQwvkQkEfsyIgVXoswqGfIA/
-         dB0Q==
-X-Gm-Message-State: ACrzQf09ban6MtfpyvIco2Uvk+dEsoyeBD1tdCQVnn3Nn/Vk/pGso0I3
-	8YyoQY2Cg8VeHSW9UvQrCw==
-X-Google-Smtp-Source: AMsMyM4dyhQJfUihmItaQeAe7EzaxUEKtl/G0crodesYYunz1GQ0UewMwDpLQSlnR0+F3iiPt9nM5A==
-X-Received: by 2002:a9d:7384:0:b0:66c:42ae:a3da with SMTP id j4-20020a9d7384000000b0066c42aea3damr5180443otk.220.1667231048700;
-        Mon, 31 Oct 2022 08:44:08 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id v13-20020a056870708d00b0013c955f64dbsm3147424oae.41.2022.10.31.08.44.07
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G5iO8KHmbbjpD0edAAD18XYUlbSGy4UU+ld7nxMCDFQ=;
+        b=empvHonVMDUqiF5OAGIqly0cj4Tm70RkF2+qvglBe0fOnv5A/iI/+dsRey05hszq4I
+         J7+slPRNyUr48NchVvhQTLhcy6Z1vJLff8Zy/izEsvFrb5EswX8BupgKqbvvJL4BLFrJ
+         7ib8pcIHUmPISFekZtgIWj2HytKpvhS1x19rFEgexNK2RunQeZ1bdcvjERYp+08vWQKY
+         c2ZwiQY3m4bSVExSULZ3vnTBO3dVZjPtbsWi0UW5CCsMNY/VMX1BQ5y2CD5QuSqGrCjk
+         avDHdYnHFR0rA8S633ylWTRhe1ot5ksYKgo7vKT+c8ucw3HtwGGtVjGt9UcQ9U+ovcmc
+         IywQ==
+X-Gm-Message-State: ACrzQf3DBDw4q9AFDt2liJax6sTNqsQOJLpqFApVt6LFXM8pxFaiJ1+v
+	xbKSRIN1R2cU4lGQE7w3lh5ZvkAII0Nll6GA
+X-Google-Smtp-Source: AMsMyM4wbIhY06SY2nUR74pUKGuIl5gTFPk+xpQFABfA9XZzwdh1qCxm1jXpjY9c4HML23XPnl7EdQ==
+X-Received: by 2002:a63:c146:0:b0:46f:c9e8:777d with SMTP id p6-20020a63c146000000b0046fc9e8777dmr4645744pgi.459.1667234405901;
+        Mon, 31 Oct 2022 09:40:05 -0700 (PDT)
+Received: from localhost ([75.172.140.17])
+        by smtp.gmail.com with ESMTPSA id i63-20020a625442000000b0056be2a3c87csm4835445pfb.154.2022.10.31.09.40.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Oct 2022 08:44:08 -0700 (PDT)
-Received: (nullmailer pid 2922103 invoked by uid 1000);
-	Mon, 31 Oct 2022 15:44:09 -0000
-Date: Mon, 31 Oct 2022 10:44:09 -0500
-From: Rob Herring <robh@kernel.org>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Colin Foster <colin.foster@in-advantage.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, =?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Florian Fainelli <f.fainelli@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>
-Subject: Re: [PATCH v1 net-next 3/7] dt-bindings: net: dsa: qca8k: utilize
- shared dsa.yaml
-Message-ID: <20221031154409.GA2861119-robh@kernel.org>
-References: <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-4-colin.foster@in-advantage.com>
- <20221025050355.3979380-1-colin.foster@in-advantage.com>
- <20221025050355.3979380-4-colin.foster@in-advantage.com>
- <20221025212114.GA3322299-robh@kernel.org>
- <20221025212114.GA3322299-robh@kernel.org>
- <20221027012553.zb3zjwmw3x6kw566@skbuf>
+        Mon, 31 Oct 2022 09:40:05 -0700 (PDT)
+From: Kevin Hilman <khilman@kernel.org>
+To: bchihi@baylibre.com, sean.wang@kernel.org, linus.walleij@linaro.org,
+ matthias.bgg@gmail.com
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [v2, 0/2] Fix broken SET/CLR mode of a certain number of pins
+ for MediaTek MT8385 SoC
+In-Reply-To: <20221021084708.1109986-1-bchihi@baylibre.com>
+References: <20221021084708.1109986-1-bchihi@baylibre.com>
+Date: Mon, 31 Oct 2022 09:40:04 -0700
+Message-ID: <7h5yg02bh7.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221027012553.zb3zjwmw3x6kw566@skbuf>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_084410_999810_6C3AD172 
-X-CRM114-Status: GOOD (  31.19  )
+X-CRM114-CacheID: sfid-20221031_094008_553274_33C650F0 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 27, 2022 at 04:25:53AM +0300, Vladimir Oltean wrote:
-> Hi Rob,
-> 
-> On Tue, Oct 25, 2022 at 04:21:14PM -0500, Rob Herring wrote:
-> > On Mon, Oct 24, 2022 at 10:03:51PM -0700, Colin Foster wrote:
-> > > The dsa.yaml binding contains duplicated bindings for address and size
-> > > cells, as well as the reference to dsa-port.yaml. Instead of duplicating
-> > > this information, remove the reference to dsa-port.yaml and include the
-> > > full reference to dsa.yaml.
-> > 
-> > I don't think this works without further restructuring. Essentially, 
-> > 'unevaluatedProperties' on works on a single level. So every level has 
-> > to define all properties at that level either directly in 
-> > properties/patternProperties or within a $ref.
-> > 
-> > See how graph.yaml is structured and referenced for an example how this 
-> > has to work.
-> > 
-> > > @@ -104,8 +98,6 @@ patternProperties:
-> > >                SGMII on the QCA8337, it is advised to set this unless a communication
-> > >                issue is observed.
-> > >  
-> > > -        unevaluatedProperties: false
-> > > -
-> > 
-> > Dropping this means any undefined properties in port nodes won't be an 
-> > error. Once I fix all the issues related to these missing, there will be 
-> > a meta-schema checking for this (this could be one I fixed already).
-> 
-> I may be misreading, but here, "unevaluatedProperties: false" from dsa.yaml
-> (under patternProperties: "^(ethernet-)?port@[0-9]+$":) is on the same
-> level as the "unevaluatedProperties: false" that Colin is deleting.
-> 
-> In fact, I believe that it is precisely due to the "unevaluatedProperties: false"
-> from dsa.yaml that this is causing a failure now:
-> 
-> net/dsa/qca8k.example.dtb: switch@10: ports:port@6: Unevaluated properties are not allowed ('qca,sgmii-rxclk-falling-edge' was unexpected)
-> 
-> Could you please explain why is the 'qca,sgmii-rxclk-falling-edge'
-> property not evaluated from the perspective of dsa.yaml in the example?
-> It's a head scratcher to me.
-
-A schema with unevaluatedProperties can "see" into a $ref, but the 
-ref'ed schema having unevaluatedProperties can't see back to the 
-referring schema for properties defined there.
-
-So if a schema is referenced by other schemas which can define their own 
-additional properties, that schema cannot have 'unevaluatedProperties: 
-false'. If both schemas have 'unevaluatedProperties: false', then it's 
-just redundant. We may end up doing that just because it's not obvious 
-when we have both or not, and no unevaluatedProperties/ 
-additionalProperties at all is a bigger issue. I'm working on a 
-meta-schema to check this.
+Hi Balsam,
 
 
-> May it have something to do with the fact that Colin's addition:
-> 
-> $ref: "dsa.yaml#"
-> 
-> is not expressed as:
-> 
-> allOf:
->   - $ref: "dsa.yaml#"
-> 
-> ?
+bchihi@baylibre.com writes:
 
-No. Either way behaves the same. We generally only use 'allOf' when 
-there might be more than 1 entry. That is mostly just at the top-level.
+> From: Balsam CHIHI <bchihi@baylibre.com>
+>
+> On MT8365, the SET/CLR of the mode is broken and some pins won't set or clear the modes correctly.
+> To fix this issue, we add a specific callback mt8365_set_clr_mode() for this specific SoC.
+> This callback uses the main R/W register to read/update/write the modes instead of using the SET/CLR register.
+>
+> This is the original patch series proposed by Fabien Parent <fparent@baylibre.com>.
+> "https://lore.kernel.org/linux-arm-kernel/20220530123425.689459-1-fparent@baylibre.com/"
+>
+> Changelog:
+> Changes in v2 :
+>         - Rebase on top of 6.1.0-rc1-next-20221020
+>         - Delete MTK_PINCTRL_MODE_SET_CLR_BROKEN quirk
+>         - Add mt8365_set_clr_mode() callback
 
-Rob
+nit: subject of cover letter should also include "pinctrl: mediatek:"
+prefix.  Also note that you're missing the word "PATCH" in all of the
+subjects.
+
+Tip: If you use `git format-patch`, you can just pass `-v2` on the
+cmdline and it will create the prefixes for you automatically.
+
+Kevin
 
