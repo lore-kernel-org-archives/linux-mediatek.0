@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5A6ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 12:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954F0C38A02
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 12:57:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FimjysKcElGtPUVau6NM+mxCrsdNQICgW3ETSGgxlMc=; b=ry/FWJdwuxktBXsvQn0xHpBVHN
-	dMDeN4L9C8AmanK1WRxU8w2QQ6nIih5NgWBJjQ28JUHAMwnWxhJfGRjhbb3NzJleyL7nEvMjrMOke
-	ZAsOFp/HYTGSK8jwkRo3k+JHsSXYh4DJ230h6vreQa6KQN3ho4a3YWJrmvFEks25RLTZeU9fOXmtd
-	oewsz0ZvR0Ar21Vv7JtCJ2/RD3XcMrIj2JhnorYfnIjjtnEn0kZkBV4ivsVHLVV1tWpUt3N/j4r/W
-	NXFD2RVd7mA9owjrPAWIrLpOrLaUvvanfrPHw6z0n4+B6fm2jv1zaQWFlfJj8nFC9859icoSoe+Eg
-	vP195qfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0eyPwIID5QTj89ySOKRfQtfyf9Um1CmzCups6XoDQNc=; b=MnJwzEVW7zg2qBkia8syhOU3rA
+	2PvTb+ha8U6QgeCiL3jhpU7Tt4CBoBzf5m5IhD1GtXymTWc6Sm9/VFP9FzMT0MS/xPBTatu39w++9
+	7k2ZpHBjm2aHlgArZ9IfsUxEEMSGZQDTUCwYWO9PjdoiY9JGtK0xl/fJCICksFuzqjUmszVDZ/Lgx
+	v7goZJZarJId754yi+zrh2HKFGJ17Y/gQJhtf3b3Tb6kvZAgRSebrNk8bZgrdN55zu7hK+0OdcH4T
+	d61PvFhFLR3NnI2BW235p3pLIeeIvAXfVq6CGhtunzBzbPSv8qRTEsQDDZADNbwa+jk8DVSMdieTG
+	PZvb6pzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opUDx-00Bpia-Ri; Mon, 31 Oct 2022 12:49:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1opULW-00Bs2r-18; Mon, 31 Oct 2022 12:56:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opUDm-00Bpg3-8C; Mon, 31 Oct 2022 12:48:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 48DEA6602387;
-	Mon, 31 Oct 2022 12:48:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667220528;
-	bh=ETLcOC6RqGvMLvwInB/+hn555B0YojoNFYRHkoq15ys=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IVJTu5Kmw6Bx3dBbjqANAxFC42H8FCVyp7y5hDD88QU6z/8dffprYyNN7wg7NfQlL
-	 VPdKu/AIXrBedGLMVMl3rUzDrlqCQqD2ZqcwvNUO0UcAiUTm6wZgH7CQaa4Fg+KQUi
-	 r1SkLpU5f9hR4yku37q7q8UdrVoV15MFT0mPGwUoM+ReQhPO+Yb8Xxqh/gQ6whADPm
-	 zXBQiS24Qsl81Jhx19reqEmL47I7O4vR5T0QqaKuR14Ufy0/VKJ3wWW1kVlaMmgXGR
-	 XlKzP9qSY8bWQjxIwh9B3zgiUqYpeWlqLdnFbnqyxS0ML3bvk1kDRl+C02Q7/uOLvP
-	 ijCjc4NCnI0iw==
-Message-ID: <2fbf35b9-3cad-4211-db5b-501d5eb14a2e@collabora.com>
-Date: Mon, 31 Oct 2022 13:48:45 +0100
+	id 1opULT-00Bs1u-7K; Mon, 31 Oct 2022 12:56:52 +0000
+X-UUID: 1d0431569ca74bce9cb382744789ae10-20221031
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0eyPwIID5QTj89ySOKRfQtfyf9Um1CmzCups6XoDQNc=;
+	b=GqCl7f9mh0Oy5KQWzuF8l/zeDd648Tb7sPd951Dbhvsgyla2NgY9ROGcC919saKOUEFNsz/2BRnlwuiaDGIe0VWWJBdCuB/l6N5sdthKbrcVsuOIdCb/0MJ0MSLFTTF6tKdR/V0FYH9YaVjXLgmCqe/wWfOLhN/S8L44da5k764=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:62b4d37e-3b97-4351-be7d-aa9e65fc4f0f,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:86c82090-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 1d0431569ca74bce9cb382744789ae10-20221031
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 501407580; Mon, 31 Oct 2022 05:56:39 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 31 Oct 2022 20:46:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 31 Oct 2022 20:46:35 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Tudor Ambarus <tudor.ambarus@microchip.com>, Pratyush Yadav
+	<pratyush@kernel.org>, Michael Walle <michael@walle.cc>, Miquel Raynal
+	<miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh
+ Raghavendra <vigneshr@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<linux-mtd@lists.infradead.org>
+CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>, Bayi Cheng <bayi.cheng@mediatek.com>
+Subject: [PATCH] mtd: spi-nor: Fix the number of bytes for the dummy cycles
+Date: Mon, 31 Oct 2022 20:46:33 +0800
+Message-ID: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH] vcodec: mediatek: add check for NULL for
- vsi->frm_bufs[vsi->new_fb_idx].buf.fb in vp9_swap_frm_bufs
-Content-Language: en-US
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Anastasia Belova <abelova@astralinux.ru>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, lvc-project@linuxtesting.org
-References: <20221028125811.11340-1-abelova@astralinux.ru>
- <664bd195bdde7fd740572c4981c60b32de1465aa.camel@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <664bd195bdde7fd740572c4981c60b32de1465aa.camel@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_054854_544964_EAC6BEB7 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20221031_055651_287976_2E455E59 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,50 +81,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/10/22 15:02, Nicolas Dufresne ha scritto:
-> Hi,
-> 
-> Le vendredi 28 octobre 2022 à 15:58 +0300, Anastasia Belova a écrit :
->> If vsi->frm_bufs[vsi->new_fb_idx].buf.fb == NULL while cleaning
->> fb_free_list NULL-pointer is dereferenced.
->>
->> Found by Linux Verification Center (linuxtesting.org) with SVACE.
->>
->> Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video Decoder Driver")
->>
->> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
->> ---
->>   drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
->> index 70b8383f7c8e..b0679aaf6192 100644
->> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
->> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
->> @@ -512,7 +512,7 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
->>   	 * clean fb_free_list
->>   	 */
->>   	if (vsi->frm_bufs[vsi->new_fb_idx].ref_cnt == 0) {
->> -		if (!vp9_is_sf_ref_fb(
->> +		if (vsi->frm_bufs[vsi->new_fb_idx].buf.fb != NULL && !vp9_is_sf_ref_fb(
->>   			inst, vsi->frm_bufs[vsi->new_fb_idx].buf.fb)) {
->>   			struct vdec_fb *fb;
-> 
-> Perhaps we could try and maintain some readability ? I'd suggest to move the
-> check into vp9_is_sf_ref_fb() as an early return.
-> 
+The number of bytes used by spi_nor_spimem_check_readop() may be
+incorrect for the dummy cycles. Since nor->read_dummy is not initialized
+before spi_nor_spimem_adjust_hwcaps().
 
-I don't think that this will ever happen, as the check was omitted because of being
-totally sure that vsi->frm_bufs[vsi->new_fb_idx].buf.fb is not NULL.
+We use both mode and wait state clock cycles instead of nor->read_dummy.
 
-In any case, it doesn't really cost anything to add a check... in which case, I
-agree with Nicolas about moving that to vp9_is_sf_ref_fb().
+Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
+Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
+Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ drivers/mtd/spi-nor/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-	if (!fb)
-		return false
-	for .....
-
-Regards,
-Angelo
+diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+index 6c921eb3fadb..8b9c318a0ad4 100644
+--- a/drivers/mtd/spi-nor/core.c
++++ b/drivers/mtd/spi-nor/core.c
+@@ -1914,7 +1914,8 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
+ 	spi_nor_spimem_setup_op(nor, &op, read->proto);
+ 
+ 	/* convert the dummy cycles to the number of bytes */
+-	op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
++	op.dummy.nbytes = (read->num_mode_clocks + read->num_wait_states) *
++			  op.dummy.buswidth / 8;
+ 	if (spi_nor_protocol_is_dtr(nor->read_proto))
+ 		op.dummy.nbytes *= 2;
+ 
+-- 
+2.18.0
 
 
