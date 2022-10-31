@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E312ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 14:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFB1FA3741
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 15:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xKMheBe6+tALckGCgXRgq0Nenx9e5EqobLOp//FbZXY=; b=mFOt7j5dfI+ILJfCnGGEex2wgV
-	qt/mQ1lWjfrZizrpeOdK388c5LjHZ2RVic4PfBA9iv/gXn+oH2IJbXUouxbUADrLgG0j/bsXGVczr
-	f88MWB2xZL20xL5T6bpPTx3SiDtEbWbCvIoTkEdTbfsOl34CW76vRgoe3k7ssXKVf9C7oB087CjsH
-	MT4r1SzmuVomiuj8ShPDE+cgoQKdLE8Sv94Y3xQEDw41LvTnEslKnBv0vsMMuZ80tOp4kj/9U3ErA
-	B3H8fmXybtiqr3Pp2AXF6BNkMzQBr9/BIF9CpEqcO0BhR6Mhc0ln34iacNbBG/ZmuhQoJ8PDmYq+1
-	9uFudGMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gcn3vAQRNrAE/pkchFiZsx/QcZxKnM6OJ25GvSTJfWk=; b=pA7XSGFuaGQWt4JL9dKtjSPEgK
+	32oDxn8BU2Y6DpSdVyj/64sb0znBNlYaVRfWhNRAsBbqpl3M25vbUSTus/WtJQE1MFzA0f5dQyB+E
+	650NloXtJM4UPAPWzD7uTHSauKRyGOjTnY7k3zzsLlk7uavwLTy/yobBfBoSeuXbqNHjoXMgxtkd6
+	TgO3vOg/xNptJcc4u3SxV0cEKU4tMaagMLrQE+4gK5orEWKk34b2Bt7tY6c9ulp6VVR4+edSR2MTG
+	4h1uUGVmMAqRn28jrGjg+HEu/M0ZUZSeWTXtKq+e9MEB65LVlJONNccsKybi4vYq6TRf1zI9KtKIB
+	u7NJ6lNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opW0S-00CKoz-Pb; Mon, 31 Oct 2022 14:43:16 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1opWmM-00Cd3A-D9; Mon, 31 Oct 2022 15:32:46 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opW0Q-00CKnE-9P; Mon, 31 Oct 2022 14:43:15 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 29VEh2LZ002087;
-	Mon, 31 Oct 2022 09:43:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1667227382;
-	bh=xKMheBe6+tALckGCgXRgq0Nenx9e5EqobLOp//FbZXY=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=EEEOmiorUFfhlYJP4Kmp+Tqf3wLsmqWR8VoUSQQuL9bG3CnyXcDGVfEXzItcJDkYw
-	 /zH1whRx6xA+3ul9TnsKgSdght7iimEz4LkD5hcW9igiQVVPxru4JLh1ECQzz3/diM
-	 sOjEbNeTiSRneF9jkWzMR23AZX2EESkSBVTSKoUY=
-Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 29VEh299006573
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 31 Oct 2022 09:43:02 -0500
-Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.6; Mon, 31
- Oct 2022 09:43:02 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.6 via
- Frontend Transport; Mon, 31 Oct 2022 09:43:02 -0500
-Received: from [10.250.234.171] (ileaxei01-snat2.itg.ti.com [10.180.69.6])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 29VEgu2P021939;
-	Mon, 31 Oct 2022 09:42:57 -0500
-Message-ID: <ceaf4036-12f8-0cfe-9cdc-37d2ef96bd76@ti.com>
-Date: Mon, 31 Oct 2022 20:12:55 +0530
+	id 1opWmC-00CcyU-4A; Mon, 31 Oct 2022 15:32:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1667230356; x=1698766356;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=njbyewzlB0I61UcEx1gvn+c62w1UHRxU4mCpMpRMQrs=;
+  b=Rre5HojfDNFCCrlQxXv6b6joFwfoaoHUfkQaZNpuJemeSSzpVjVHIHwd
+   C3BLWLXZVHFMBwN0r1EjficBGI4OMxYIHoRETvQUbGQhm2Rsn2i6aBxau
+   UCfOGH+ue4UU26ouBLTDBAI/oVGs3ap4qA1EjiUbvI4mHWEytZqsC0IAt
+   YBc+WdEK5h31gu4LL57XxQatVbk2xKWqu7uMv2G6fEItCL6uLwgBzG+Ut
+   oSMTG2FdCcwIDjYlUhsLFt+8ntLFYhDKyidp2aGKtSlSwlnLn9q30CVan
+   l21cmfsmNapGRrQ36TtAoXsctfffA3UEX3Fc4gF8G0nD4KvhR15MCPnZL
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="310626645"
+X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; 
+   d="scan'208";a="310626645"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2022 08:32:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="611527071"
+X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; 
+   d="scan'208";a="611527071"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga006.jf.intel.com with ESMTP; 31 Oct 2022 08:32:29 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1opWm2-005Av2-1x;
+	Mon, 31 Oct 2022 17:32:26 +0200
+Date: Mon, 31 Oct 2022 17:32:26 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
+Message-ID: <Y1/qisszTjUL9ngU@smile.fi.intel.com>
+References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
+ <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
+ <Y1+NHVS5ZJLFTBke@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [EXTERNAL] [PATCH] mtd: spi-nor: Fix the number of bytes for the
- dummy cycles
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-        Tudor Ambarus
-	<tudor.ambarus@microchip.com>,
-        Pratyush Yadav <pratyush@kernel.org>,
-        Michael
- Walle <michael@walle.cc>,
-        Miquel Raynal <miquel.raynal@bootlin.com>,
-        Richard
- Weinberger <richard@nod.at>,
-        Vignesh Raghavendra <vigneshr@ti.com>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        <linux-mtd@lists.infradead.org>
-CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-        Bayi Cheng
-	<bayi.cheng@mediatek.com>
-References: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
-Content-Language: en-US
-From: Dhruva Gole <d-gole@ti.com>
-In-Reply-To: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y1+NHVS5ZJLFTBke@google.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_074314_488448_0E769563 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20221031_083236_239770_F74202C7 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,44 +95,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/10/22 18:16, Allen-KH Cheng wrote:
-> The number of bytes used by spi_nor_spimem_check_readop() may be
-> incorrect for the dummy cycles. Since nor->read_dummy is not initialized
-> before spi_nor_spimem_adjust_hwcaps().
->
-> We use both mode and wait state clock cycles instead of nor->read_dummy.
->
-> Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
-> Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
+On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
+> On Tue, 25 Oct 2022, Andy Shevchenko wrote:
+> 
+> > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
+> > > There are several users of LED framework that reimplement the
+> > > functionality of led_init_default_state_get(). In order to
+> > > deduplicate them move the declaration to the global header
+> > > (patch 2) and convert users (patche 3-11).
+> > 
+> > Dear LED maintainers, is there any news on this series? It's hanging around
+> > for almost 2 months now...
+> 
+> My offer still stands if help is required.
 
-Tested-by: Dhruva Gole <d-gole@ti.com>
+From my point of view the LED subsystem is quite laggish lately (as shown by
+this patch series, for instance), which means that _in practice_ the help is
+needed, but I haven't got if we have any administrative agreement on that.
 
->   drivers/mtd/spi-nor/core.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-> index 6c921eb3fadb..8b9c318a0ad4 100644
-> --- a/drivers/mtd/spi-nor/core.c
-> +++ b/drivers/mtd/spi-nor/core.c
-> @@ -1914,7 +1914,8 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
->   	spi_nor_spimem_setup_op(nor, &op, read->proto);
->   
->   	/* convert the dummy cycles to the number of bytes */
-> -	op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
-> +	op.dummy.nbytes = (read->num_mode_clocks + read->num_wait_states) *
-> +			  op.dummy.buswidth / 8;
->   	if (spi_nor_protocol_is_dtr(nor->read_proto))
->   		op.dummy.nbytes *= 2;
->   
-Tested on my AM625 SK EVM having spi nor flash and no obvious 
-regressions observed :)
+Pavel?
 
 -- 
-Best regards,
-Dhruva Gole
-Texas Instruments Incorporated
+With Best Regards,
+Andy Shevchenko
+
 
 
