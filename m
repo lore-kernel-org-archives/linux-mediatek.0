@@ -4,76 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF09FA3740
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 09:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DA13C38A02
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Oct 2022 09:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6WU26MBOt8WJip0LsF+/o2BON0nZWtJO9/skfyzMYys=; b=RCHOLtICqchMs97KYIwZ/hj1nM
-	6U+0NpaAES+M1gmvdQ43Cv60BDu9TaDB/wIsfmTtlqr8Ojmyh2Vxx5NPz/psBBSSZm+BXuuL9xIbA
-	3wiEbQPcMEWqPPRspmM5sdg3rbXGZIbcIfz3rELC91aOLvqHewH1FU2bao/dubyXHkjmDobjuZEUt
-	Z+WqOkkWX6dRo41K6egp5i2k/r3jSlwMzqY3Ih3wcjkABqV3DdGz8VdKze7g6bwpVgfdvgDfi1QNJ
-	5bvsRl/xGYgS7xrHcaf/8werJOEhStUo5Vr9tb7iJStfk0Yqzxf76ccXjwvRUUeJCYPAHBUxR7EqB
-	qv9A5ZJA==;
+	bh=f58UwhQpDHzczA+5QKtK6sm9tfcwbG82pZn1CGvlejc=; b=iSIThBvow9kfLddv9hdELo4yax
+	jvtFtJkqL8G2ohRt/ti/4CpWPS/NOPnH63iV5oc9EXaE18RmuZQ/FKn6K6QMZIDyZ2QV5XlZRqDee
+	h38LYg46bgT03AS9tR1k+txaGmowzzmqgflSkQLe6nYhVhsyOPBAT+JiPw9btEsqzZeKXuCCaD8zI
+	MFLi/3msDXns+otxR3gA1AAkRO23XwmMS0zdXn1AWo5ZFNkxkkeMrwkwBIBq/Q8YrXnUusoWNxQpx
+	RCx643Fcmb2CprzSRreN7ht68PYJ8Ov5TjckFYTm2aRq05UY0cPsYInLo7uJU3e/DOlV8lgzSXprS
+	tSFwgb1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opR48-00A4Sx-E6; Mon, 31 Oct 2022 09:26:44 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1opRBZ-00AAYs-2e; Mon, 31 Oct 2022 09:34:25 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opR2v-00A379-HZ; Mon, 31 Oct 2022 09:25:30 +0000
-Received: by mail-lf1-x130.google.com with SMTP id p8so18248576lfu.11;
-        Mon, 31 Oct 2022 02:25:26 -0700 (PDT)
+	id 1opRBU-00AATq-42
+	for linux-mediatek@lists.infradead.org; Mon, 31 Oct 2022 09:34:22 +0000
+Received: by mail-wr1-x430.google.com with SMTP id h9so15150046wrt.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Oct 2022 02:34:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6WU26MBOt8WJip0LsF+/o2BON0nZWtJO9/skfyzMYys=;
-        b=l9Ec6Z3pCXkd/0PTcwHkH7+fM6BIWq9SSTBElCmHDmP12O19aP/1XUl2kowGBBfSU5
-         SOxQ/i+u9Vgo1beE6pzWMWl3fTxd/ZjV+Yr0Kx8Y80OSmj9Tn1PecncY5g4FDnKqAbxL
-         eM3nqIt+vxJmx1KKet+q7PJY8XH2IZeoUCDYft69i36rS7iL/lstV1faHoQIpIOLolg+
-         OAKeADCXW7ZXzf8JijPKPbptu+c5Kvhmz9D+biGjBxcdo6IvfHZvUaDnD4/2KvWWRjS2
-         BB0Ooas8nyXPXLJ76DjhtD8enNTPyOeQZNhIRVAAhGbjqFNJf3U30CqiXSH6zebSH57j
-         pG+Q==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=f58UwhQpDHzczA+5QKtK6sm9tfcwbG82pZn1CGvlejc=;
+        b=cLu03t97Aow5oHYipvaLKKPRdGvr6iO8PWNY+ymOA3JvW1h4iAwXc8QZkkfFCQmsKL
+         XuoRS7hclJeAHZ3VlJdTltoGAzs2V+qSYxiYXynkp+A19G4LmnlfuxjtdSviPCjFInsN
+         10dSgO622XoQYsMcIC9HS93qAv/Za+HZRYafRBO+n/STEaY8Edtj9rysHLgTcbblwQdE
+         mpY1X3MkcWX2aXwycGPXmiD4PUNDSYMNwuJQPPMZ0LUhfRpk5OWGbHL4esNeu7MoidFv
+         iQo6Ofw0G0QOw4P13KLLpk3mfI7cuKM0+oRfK8jR8GrW29C/ASRCN82j6CnXN5B7/ub/
+         4liA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6WU26MBOt8WJip0LsF+/o2BON0nZWtJO9/skfyzMYys=;
-        b=TXeznSkgrytHJ4p4/5jJnmTLbPfqTc3e4ASu7r04+VtFEgKm0yfGZVWJ+lh1Dvn6Tb
-         sNvv4Ap089N4GgGlVQTwqF4O0PmUkAzepOlK5a/53sXw4VmzdDOBQPsv4u5vpZ+xv57w
-         JYilDcOYOQ522E0vhRTsR9ebu9RG+jG395r7tHby28gWQlUeYkWdBKw15Uzr/99Eto+l
-         CFxeWA9BEISuPrng2vcRPCYy3XKOXtGHE8ZM4KMGz4Qg9PP93dBQMVJ62Q3+nD1hkHW7
-         POhsP6jXFcQt1rSnC1mFiaR3FUQLfNK/U3KqHMGJ7BbDsRbftyBlodAPnkfYinyt4CPA
-         UhXw==
-X-Gm-Message-State: ACrzQf0U3U/dg+R3ChWCv6wdoWhp/evQrWauTyOaCqnPN/pUSisZPiLW
-	JSCNXMCxjR2NYBPpKUJbaMo=
-X-Google-Smtp-Source: AMsMyM4+8FD7UeMjok9pXXcM0gZLvNIuCQiyoXprPxWuWz6Gf31a80EiV+fpLs6m7K9BmQJVvF3j9Q==
-X-Received: by 2002:a05:6512:6d4:b0:4a2:f89:db7d with SMTP id u20-20020a05651206d400b004a20f89db7dmr4718215lff.125.1667208324715;
-        Mon, 31 Oct 2022 02:25:24 -0700 (PDT)
-Received: from dc75zzyyyyyyyyyyyyyby-3.rev.dnainternet.fi (dc75zzyyyyyyyyyyyyyby-3.rev.dnainternet.fi. [2001:14ba:16f3:4a00::2])
-        by smtp.gmail.com with ESMTPSA id 190-20020a2e05c7000000b0026f9cb6d10fsm1239260ljf.45.2022.10.31.02.25.23
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=f58UwhQpDHzczA+5QKtK6sm9tfcwbG82pZn1CGvlejc=;
+        b=kc+D2Mq8pVP6mvGZri/Am38Mc48VUasx9hUnNXXkqTzQfrS+PP43gKhGaY2BNqIUo+
+         /7nLQuL89W591u8bOSM2Bzgkr5a30w+9CdjY4NzPiTCMjVQT8IGsXQxhBHWOxg6Q8qPQ
+         sJBxj9wcHUPF0TNnpg2Y9aYQHTt6qPsgAM5/vZN10uju7vkz3aGe+WP6WWOR9c6JHiTe
+         USZhz49LBQtNedmkoNpscsvLdObCS0ZYkiI0eN7Q1PSJoW+wz64XYS/mMy4TodSSKtCr
+         cwJNZgORu5dnKFSTjkWBxJbvZppkPNXqU4cuVDxLBDKlNm91jAYcXZzK/PG4U+nXYQcS
+         xp3w==
+X-Gm-Message-State: ACrzQf3m61xUjOsrZj8um3pGBzOuw6gtBGEjCRLJh2YYOyQayVOt7+kG
+	P4pe/mndWjwRL3NOYvnDPkGaLg==
+X-Google-Smtp-Source: AMsMyM6pZk8bSEyO/Ya/5Vj7m9SXW6/Sj/biRPXj25tFFdwpGWc9kYXw5i5PoaJZpW2B7Hqo5LBO/g==
+X-Received: by 2002:a5d:5610:0:b0:236:50d5:e6ec with SMTP id l16-20020a5d5610000000b0023650d5e6ecmr7391051wrv.13.1667208856455;
+        Mon, 31 Oct 2022 02:34:16 -0700 (PDT)
+Received: from fadwachiby.lan ([2001:861:3104:1980:6db3:63f:b30d:9361])
+        by smtp.gmail.com with ESMTPSA id t16-20020adff610000000b0023538fb27c1sm6547566wrp.85.2022.10.31.02.34.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Oct 2022 02:25:23 -0700 (PDT)
-Date: Mon, 31 Oct 2022 11:25:00 +0200
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>
-Cc: Sebastian Reichel <sre@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+        Mon, 31 Oct 2022 02:34:15 -0700 (PDT)
+From: fchiby@baylibre.com
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	"Zhiyong . Tao" <zhiyong.tao@mediatek.com>
+Cc: Fadwa CHIBY <fchiby@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] power: supply: mt6360: Use LINEAR_RANGE_IDX()
-Message-ID: <2c6267efae04a3f64d88baf2e34ea309af438d40.1667208242.git.mazziesaccount@gmail.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/3] mediatek: pwrap: Add mt8365 pwrap support
+Date: Mon, 31 Oct 2022 10:33:55 +0100
+Message-Id: <20221031093401.22916-1-fchiby@baylibre.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="spmfeW7Hd1DSSs/Y"
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_022529_640611_A991D970 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20221031_023420_412661_ADAC4F32 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,82 +97,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Fadwa CHIBY <fchiby@baylibre.com>
 
---spmfeW7Hd1DSSs/Y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hello,
 
-Do minor clean-up by using the newly inroduced LINEAR_RANGE_IDX()
-initialization macro.
+MT8365 requires an extra 2 clocks to be enabled to behave correctly.
+This series contains patches adding the support of mt8365 pwrap.
 
-Signed-off-by: Matti Vaittinen <mazziesaccount@gmail.com>
+changes in v3:
+- Modify "sys" and "tmr" descriptions to be more generic.
+Changes in v2 :
+- Rebase on top of linux-next/master
+- Link to v1 "https://lore.kernel.org/linux-arm-kernel/20220530135522.762560-1-fparent@baylibre.com/"
 
----
-Sorry, this one evaded my original grep so sending an individual patch.
-Would've squashed this with bd99954 one if I spotted it right away.
----
- drivers/power/supply/mt6360_charger.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+Regards,
+Fadwa CHIBY
 
-diff --git a/drivers/power/supply/mt6360_charger.c b/drivers/power/supply/m=
-t6360_charger.c
-index 3abaa72e0668..92e48e3a4853 100644
---- a/drivers/power/supply/mt6360_charger.c
-+++ b/drivers/power/supply/mt6360_charger.c
-@@ -113,16 +113,13 @@ enum {
- 	MT6360_RANGE_MAX,
- };
-=20
--#define MT6360_LINEAR_RANGE(idx, _min, _min_sel, _max_sel, _step) \
--	[idx] =3D REGULATOR_LINEAR_RANGE(_min, _min_sel, _max_sel, _step)
--
- static const struct linear_range mt6360_chg_range[MT6360_RANGE_MAX] =3D {
--	MT6360_LINEAR_RANGE(MT6360_RANGE_VMIVR, 3900000, 0, 0x5F, 100000),
--	MT6360_LINEAR_RANGE(MT6360_RANGE_ICHG, 100000, 0, 0x31, 100000),
--	MT6360_LINEAR_RANGE(MT6360_RANGE_VOREG, 3900000, 0, 0x51, 10000),
--	MT6360_LINEAR_RANGE(MT6360_RANGE_AICR, 100000, 0, 0x3F, 50000),
--	MT6360_LINEAR_RANGE(MT6360_RANGE_IPREC, 100000, 0, 0x0F, 50000),
--	MT6360_LINEAR_RANGE(MT6360_RANGE_IEOC, 100000, 0, 0x0F, 50000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_VMIVR, 3900000, 0, 0x5F, 100000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_ICHG, 100000, 0, 0x31, 100000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_VOREG, 3900000, 0, 0x51, 10000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_AICR, 100000, 0, 0x3F, 50000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_IPREC, 100000, 0, 0x0F, 50000),
-+	LINEAR_RANGE_IDX(MT6360_RANGE_IEOC, 100000, 0, 0x0F, 50000),
- };
-=20
- struct mt6360_chg_info {
---=20
-2.37.3
+Fabien Parent (3):
+  dt-bindings: soc: mediatek: pwrap: add MT8365 SoC bindings
+  soc: mediatek: pwrap: add support for sys & tmr clocks
+  soc: mediatek: pwrap: add mt8365 SoC support
 
+ .../bindings/soc/mediatek/pwrap.txt           |   3 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 114 +++++++++++++++++-
+ 2 files changed, 113 insertions(+), 4 deletions(-)
 
---=20
-Matti Vaittinen, Linux device drivers
-ROHM Semiconductors, Finland SWDC
-Kiviharjunlenkki 1E
-90220 OULU
-FINLAND
+-- 
+2.25.1
 
-~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
-Simon says - in Latin please.
-~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
-Thanks to Simon Glass for the translation =3D]=20
-
---spmfeW7Hd1DSSs/Y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEIx+f8wZb28fLKEhTeFA3/03aocUFAmNflF8ACgkQeFA3/03a
-ocUITQf/Vr2UgDLY58WdZKQDMEovsWmrPfqqvVaI8lXvunXIoru48z0u5F1LPzev
-X65VfIgyQ4rrH+sbgBpatfqcMP9EsIe0Qu9oDEAu97ycfO4iNiWHHJKxvqqim/D2
-gDu1jgH+zlgtSp/N5QKCH7R1157yQ96JFIP6Ka4Tr7LQcgjQGoygS51wMNF3G41b
-MaMmrXM6ZqDNuaMOOhXMo7MQd1NGO2wAFU6bQt9KoGbHNTMM68NMlowyHIE/pLJc
-5ysNufmSt5NkIEhLO0SkQNkeUYoerb4mBRYfshBlonftVuFkpcLQqyec+KAyMbRo
-6zM/giLvVS8M3NJy2I514PmoEYCENA==
-=KmNS
------END PGP SIGNATURE-----
-
---spmfeW7Hd1DSSs/Y--
 
