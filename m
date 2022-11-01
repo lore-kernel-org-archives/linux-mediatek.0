@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A574BFA373D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 10:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D773DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 10:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ifEtjIVlTaP3++cRQmv2qysU5CyrCue5y2eduWwm65g=; b=r8q4Kw+fSJ2KkV7byfKzWNCkOd
-	kX5kb5Q1AtIfLBWgHyzCTXPBdjriHI/2ZSfkf8Fvl7eRJp3BbrIai68qZSv5Exk8nOX6SfDMSW1Us
-	5Gr2iKjtbp+hjXpPnZXbAfElSXT/ml+oqOuKupa/sVv0O517RsGXWcjMFr+lPda7jai22BNBANDlK
-	BRmXwE5TUOs7xdb2sVfxGyoA3JF38IPgxcefaChSVekyBoNO95BNcI5brT5p358YdeRZheDrzunui
-	nebK8MKZpE0DxcE8F5kvK79JFdnKeEPz4FYS1EoYdMBTUnNSjpBSq1/xfDYAACJLnSNmufvEOaC/z
-	vjSOtA7w==;
+	bh=WccujCCQpIheOZ0UETKW975TLIiI71rRZqTn9o9i6Q4=; b=D9mYynJBn6UXmM9E9TYGV1kAf1
+	ya2vTZPAywq87O0YniXutjCvNp2oozJKRVOxo+AHRV71FLaKiluYFsv4iZg4X5n1SMGEVRnLDaxcm
+	YE33wosdDH3TEwHcD0+sKCt5xacafch7nHH4zSqPokMSzjQ+bazJzECJ5JiwlhLNcQD8VsFJ4w8pi
+	OLq3MrCV+FWoUjQthYAdEEFW/Wb01dHOK9IGBhTR3sctVBkwo80PwsF8iwnaQvbHRXJ082vPMpbZp
+	873yxAz+ocSTuyrvpSMknOuZMGAUUs/tWWeS25J5ufN9YyeTInkJpk0eDf5cUU23W3b9RR2wOjK2O
+	hfIsOdJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opo6D-003t4s-Gi; Tue, 01 Nov 2022 10:02:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1opoHO-003z03-6d; Tue, 01 Nov 2022 10:13:58 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opo6B-003t3p-0a; Tue, 01 Nov 2022 10:02:24 +0000
-X-UUID: 30385b4091944af0b47c21bc699631f9-20221101
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ifEtjIVlTaP3++cRQmv2qysU5CyrCue5y2eduWwm65g=;
-	b=TbOt0EGtuYUHnGVwo+MvfULuyw7qnmMTJXAj2GlTM9TTVEuj0wP2tc1Wo7QT0w+RwQuFdDWSoBaDom8dfekfbne/Ta2+9kWE4BgkuRI0dHrgO9TsZx/pRUvdgJQIzR+gqsRmXb+wbFcEpHlzOmh3xxF30mMa1fNcC8XqQ4/3aJo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:2182e1f5-16c3-422d-aeb5-bb8497af59b0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:7fe215eb-84ac-4628-a416-bc50d5503da6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 30385b4091944af0b47c21bc699631f9-20221101
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1702820819; Tue, 01 Nov 2022 03:02:17 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 1 Nov 2022 17:01:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 1 Nov 2022 17:01:36 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-CC: <nfraprado@collabora.com>, <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>
-Subject: [PATCH v3 7/7] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible for MT8173
-Date: Tue, 1 Nov 2022 17:01:16 +0800
-Message-ID: <20221101090116.27130-8-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221101090116.27130-1-allen-kh.cheng@mediatek.com>
-References: <20221101090116.27130-1-allen-kh.cheng@mediatek.com>
+	id 1opoHC-003ymp-Hp; Tue, 01 Nov 2022 10:13:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1667297618;
+	bh=EXo84VvyGFTmnUtTrG/jdPf51mIhHpHMuo9uKvlgcNU=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=lzdpyZ1ZS169jMbRDTgL75XNWlMM2oWp6gL7Q1PQsKPnFMYm0rYRtToZ5Zak5tAdY
+	 KZlEUSD4/6Ye8nvFoYFR8YjjQe7I/hQm7c8tzNMOgQuD4jgGXkzZMM0TCh1qKZDYVz
+	 1U+FYiUoOQE5CP9RX/EflIbfb8kaUuVZF/vOUcqAB+kX09mgIF/vbZGYqnuz7UcE43
+	 QYr5WYnPQw6U2Ko44aL4YOW6jKZa+iDg3C2a1iFRuXOfVs7alYhzxOCxtHvEF0jSM6
+	 K6Wahsp8ZRUoXPROUnDJ531uOU+OXqxd267x2/vdEs/gXM3u60qTxagSZ6+RZ4Xm7h
+	 y6J15bBNbJilQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.78.243] ([80.245.78.243]) by web-mail.gmx.net
+ (3c-app-gmx-bs25.server.lan [172.19.170.77]) (via HTTP); Tue, 1 Nov 2022
+ 11:13:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <trinity-5f39285a-b188-4b6d-a5e5-d1b3439f9506-1667297618702@3c-app-gmx-bs25>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: Aw: [RFC v2 0/7] Add BananaPi R3
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 1 Nov 2022 11:13:38 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20221026093650.110290-1-linux@fw-web.de>
+References: <20221026093650.110290-1-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:vTLmDZVdxu/OhxXQdTtnUrTU8yVjVdP1AJqlwGeH25SKTftZwcYz5EUJkxLnSKt07UwBO
+ AZZbIwz0azU04gsTcylSqO6vpy0EJMzg5tGR6LU9P0Fu85IZkrE5+GvcTrFINcfITW6IQHBLSBFa
+ Ft628KAFdy+1Uggnv23DdweVKm61nlYoU2BK7H+xx03l/g9HHxmdfjZz2g6JqY6yhL37vjh5GhrX
+ tADFjdkiyYWiCkiglzb25HY2ojRF2UaNFGC60wf2sADUuXgTkxAaiCcrJEoX+IogGJD7XYOWH9/G
+ OY=
+UI-OutboundReport: notjunk:1;M01:P0:NZk14boAfX4=;LLalRtJ//zvUVwCWzAr8k322sTN
+ QrXMtEJIgtdByG7Wy3iKadWHhDzcH+8JJky+xYmGl0x8d7JUgaE1xOa5OHwcdWkzrpgCU105m
+ x+XuKXuKkw8v3nE//WDldWCE95s+VodeOkosiVeZsazU+t0+UjMHnVUK9zjlJRUmbE3BGi8uD
+ qTKbcussMJZhIgyY74RI4oQhhgh3ic6bcznLXJyzDNDNYzbVWG1qQD6nmvwUHNBkG5O7u1W4s
+ gpbq6LsV3vRVxzaxXMK6FX/CJzhaG05bDBay5eBlzdtJathrutqoXncnBApWT9YF3qPjegtgN
+ keK/JrUyx2435Ql+HWtGXtTy4HN+b8cUyN0KJnUWSSLVrDCJ4Q22hFyMtFqE5L3xyHimVRpiL
+ NRlqJvWjswaiYO3dVQ7Wr3vQWCDz61wI5N5KaCRjp3D5YQPp/kulgfwdOarMuIJwSJ0zZyqB5
+ D2zgo86SDhkazQggr8yhqWFX88pHbaNo5Dy1KLouTqIqvg8wWY/A+GLhi6qyoFx3cjW7CJ5Ir
+ ngMQ4POi1PhV1bbW5vos8SZhHy61WdivCE7Mj59uV/0ru8hcchBfZ7kagu6rlvcSX1iQuIsdi
+ WHE8A0LTkJfGQJnofSzp3o6QcmITBU8NLb0p10n8VJSRv2atfdq4bZPw6RQTaZiMvKAddG3Fr
+ +5PxhSLaLwqRomNt0M0nLEPCqBk/91Zgv0PwKo9YDhmHYd1cZnr2f2UKP+yoEl2L8VfHu+jP4
+ Spe9FgBMgRA7Ys0Ie1FeAIur0P9rIuizXj71uNWWP4Pn9azh4GwfX3lEY7FRqoGbNRm/hwy7t
+ 1DHP6sjZ0gMx9urEAFh8zluDt+JzsuX8pectH+UDZotTs=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_030223_090879_C3EE795A 
-X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-CacheID: sfid-20221101_031346_993365_8946AB61 
+X-CRM114-Status: UNSURE (   7.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,30 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the mediatek,mt8173-wdt compatible using mediatek,mt6589-wdt as
-fallback.
+Hi,
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
----
- Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
- 1 file changed, 1 insertion(+)
+any comments on Parts 2,3,4 and 6?
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-index 36606524d869..b3605608410c 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-@@ -37,6 +37,7 @@ properties:
-               - mediatek,mt7622-wdt
-               - mediatek,mt7623-wdt
-               - mediatek,mt7629-wdt
-+              - mediatek,mt8173-wdt
-               - mediatek,mt8516-wdt
-           - const: mediatek,mt6589-wdt
- 
--- 
-2.18.0
+>   arm64: dts: mt7986: add i2c node
+>   arm64: dts: mt7986: add spi related device nodes
+>   arm64: dts: mt7986: add usb related device nodes
+>   arm64: dts: mt7986: add crypto related device nodes
 
+maybe they are ready to merge? mtk is working on mmc-pinctrl and i work on the other comments for r3 dts.
+
+regards Frank
 
