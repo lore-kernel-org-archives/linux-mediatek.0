@@ -4,47 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8109FA373D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 06:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 767F0FA373D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 06:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GxTScHc95rAlhDh/s52djMefw1krEYgEA7nv6cnnb8A=; b=v7mWt6h9LPULM+QDBo/IXVmoqU
-	ObNVtPKHrahzWYcnX6cwdQxfUOlvvM8H0VQ1nfrKTITQ2nrrxkXv8iyZMucldDWVqbsQ11XDIJQA5
-	aY243yammehaza3Kdg2G/xxVTZdVPSFdotUsISWE9iDlAAfH5sj2m8TF7AsKykEy9hbHm/oCb2hgg
-	etCdtrtCxo6hIo0icsPXOFEPIFrW+L0TSWP7MJpsmz3U8L4V942iLXc3pCZdJoxegMvuK4ycNurRc
-	A2YCVpBP1ir+RceTtSBd4xmpW6idNERzv+rwIqVHoGkBUYFpl9A5pAG30GVyrTH1O1HFAasoLztJ8
-	WSeJklvQ==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kA5JNRTKDV1dAItHbDmK5oovg/tPz2PC0c+hpfEzm2c=; b=deaD3hB2mqfb2KInlUgRUu+b7Y
+	f8UfY1xRbvTaqpFae+mD4Ol4v7Uzdow1L3P+qPTeWT9hGwB1nahUktfxTqGd/6/XUfiTmplg2wJPq
+	TMDz/AUOa8/pqIKg/cUJ28yIojddMV9LZbJwTDCiZnWUwcSGA+gytIwqb5voP5gWNfVCfKywOiOfS
+	TzNd1+l6aO/PZ74iH2ppLhjIk9GhKDk8YVR5QnSzA7i7/sg1jXuTnsSOLs4fHkevO7GHXy8awZMk+
+	W7JtDmPsATWTxFngAfDFSaAYu5OKoOo2ERikhEHqeqTIzSJRfFB3SpU9twFL7KueXtMWv+Zv/PB45
+	5pNJfSFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opkVF-002Nxt-MZ; Tue, 01 Nov 2022 06:12:01 +0000
+	id 1opkVf-002O2C-8h; Tue, 01 Nov 2022 06:12:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opkV4-002NvO-GY; Tue, 01 Nov 2022 06:11:51 +0000
-X-UUID: 764e085e631747288dbd3172d1c165a3-20221031
+	id 1opkVT-002O00-Fl; Tue, 01 Nov 2022 06:12:16 +0000
+X-UUID: 8a2466c994c5412dbf37b08987575b91-20221031
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GxTScHc95rAlhDh/s52djMefw1krEYgEA7nv6cnnb8A=;
-	b=Z00mFAFZlNTpt4nb5ZCIDDjaCCJjJA8W5pv2/hCkaCNAaWgbeqREZrj6FZEt7TfexhnWPZ4Km7fLco83l5i2zbmrd2bCXi5hDnmRb+sCgyBKdoIsy2rPX7l9QGdBZu/t3OHBsFuXpysiVVcYx9/m7SxPaXJqNgpweq9EKK0xGLM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kA5JNRTKDV1dAItHbDmK5oovg/tPz2PC0c+hpfEzm2c=;
+	b=sCWJbizksz+qi5+bJn5rAGUPje8tRQ9RHy4Cytoaqy3AccI7HU02K8QBYYRp3UgxBmlyNR+fyXdzNnOXloSM3wPqMQAczE4hnGy9++i1l0wwc5ePChFDLF12/5F3/ApTwaRjKC7NkbAB6RDhbtVI1PMOyuYnUWARxjEpZaJbkIk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:695a3a9b-b4d1-4ab1-80f1-b6af3e22519a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.12,REQID:695a3a9b-b4d1-4ab1-80f1-b6af3e22519a,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:62cd327,CLOUDID:c3433590-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:221101141143ZFIW5XC0,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 764e085e631747288dbd3172d1c165a3-20221031
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.12,REQID:08191369-11b3-4016-9790-a4a0714709da,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:0c743e81-3116-4fbc-b86b-83475c3df513,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 8a2466c994c5412dbf37b08987575b91-20221031
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 99588834; Mon, 31 Oct 2022 23:11:42 -0700
+	with ESMTP id 440183185; Mon, 31 Oct 2022 23:12:13 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Tue, 1 Nov 2022 14:11:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -66,17 +63,18 @@ CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v1 0/2] Revise mt8186 ADSP clock driver
-Date: Tue, 1 Nov 2022 14:11:35 +0800
-Message-ID: <20221101061137.25731-1-tinghan.shen@mediatek.com>
+Subject: [PATCH v1 1/2] dt-bindings: dsp: mediatek: Add default clock sources for mt8186 dsp
+Date: Tue, 1 Nov 2022 14:11:36 +0800
+Message-ID: <20221101061137.25731-2-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221101061137.25731-1-tinghan.shen@mediatek.com>
+References: <20221101061137.25731-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221031_231150_574223_864F4166 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221031_231215_549955_7183740C 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,19 +89,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize the dependent clock sources for mt8186 ADSP and
-fix the enable/disable order of ADSP clocks. 
+Add the default clock sources used by mt8186 dsp.
 
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
-Tinghan Shen (2):
-  dt-bindings: dsp: mediatek: Add default clock sources for mt8186 dsp
-  ASoC: SOF: mediatek: Revise mt8186 ADSP clock driver
+ .../devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
- .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 12 +++++--
- sound/soc/sof/mediatek/mt8186/mt8186-clk.c    | 35 +++++++++++++++----
- sound/soc/sof/mediatek/mt8186/mt8186-clk.h    |  2 ++
- 3 files changed, 39 insertions(+), 10 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+index 3e63f79890b4..4cc0634c876b 100644
+--- a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
++++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+@@ -35,11 +35,15 @@ properties:
+     items:
+       - description: mux for audio dsp clock
+       - description: mux for audio dsp local bus
++      - description: default clock source for dsp local bus
++      - description: default clock source for dsp core
+ 
+   clock-names:
+     items:
+       - const: audiodsp
+       - const: adsp_bus
++      - const: mainpll_d2_d2
++      - const: clk26m
+ 
+   power-domains:
+     maxItems: 1
+@@ -82,9 +86,11 @@ examples:
+               <0x1068f000 0x1000>;
+         reg-names = "cfg", "sram", "sec", "bus";
+         clocks = <&topckgen CLK_TOP_AUDIODSP>,
+-                 <&topckgen CLK_TOP_ADSP_BUS>;
+-        clock-names = "audiodsp",
+-                      "adsp_bus";
++                 <&topckgen CLK_TOP_ADSP_BUS>,
++                 <&topckgen CLK_TOP_MAINPLL_D2_D2>,
++                 <&clk26m>;
++        clock-names = "audiodsp", "adsp_bus",
++                      "mainpll_d2_d2", "clk26m";
+         power-domains = <&spm 6>;
+         mbox-names = "rx", "tx";
+         mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
 -- 
 2.18.0
 
