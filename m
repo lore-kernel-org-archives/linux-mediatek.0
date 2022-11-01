@@ -4,67 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82F5AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 22:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B40F6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Nov 2022 22:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WQKmZwmRwxOn+HnD1KFV5jlF5xh+33dSq3nC9o1DTzk=; b=I0cFy6DYbTXwmhza4GSu221NR5
-	NM0wKl5OiMnBBgJZcu5YJ1/ArzP1tdk/wnBiiYX/XEpReiJW4pJVrlfceDuIhMQoizStLXhECHPyI
-	Y0QbmXKMXElOcd958sJ7wz1aWEeed7QgKJWxdoNeG4GogVghPKRmQf7RnSOYwgz2ag6zT5tVK0DlS
-	sqb2gYxoZrsD5EoLNVdsF9sRJUwsu/biuMbaOLEXJ2in0d3QF6QvndduK4Ha0df0bmFsFLwl/N5J0
-	TJFU7U9//wBu3NITaJe7quXwZR9AMlCtv5oH5k00Y8SBCubP2qrDXRjI2+V4qnd6kHgnngOJDrIhJ
-	nRztJgYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3i7nN5aw5OVLfa/b8XeXSZKgZlxzWp3qsauPMLCOpAM=; b=bmYzogcAhRgTFRnNz9KcxytQtD
+	45fxxsmjpxH7wTpCloKWYpdimy60eyWAg4hegQIwbRR2Qqr5rVlE2l0ZzePtc9THAGZRze/xwJnG/
+	YAe7YD7kH3zaKljMJPzg0QFu+Xqw1TE+x+rLyqsZwlLPYi4RLavhbkX8jPTpK8ROkNeJudVfWHdJg
+	UmUgEoWa87dYzpv8MlCsisi7pnyJj+TgD6LUlx+3alQDr3l/tDVIMkWevEgCz1+VXM8RNWNZODxos
+	tzoqdnE+YFlP383KWA27oLjq3Cfk4ZVTVQwH/UGlms7LMkehQ0kijFRj0kHH5eRyr5pSJIu0wnT5h
+	QIdkQ03w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opzM3-007KkQ-Rk; Tue, 01 Nov 2022 22:03:31 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1opzOx-007MFn-86; Tue, 01 Nov 2022 22:06:31 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1opzLm-007Kaj-6g; Tue, 01 Nov 2022 22:03:15 +0000
-Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 33F8F660284F;
-	Tue,  1 Nov 2022 22:03:07 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667340188;
-	bh=yMp4w9RoWXCGng4R5gRPNg63j86qA6FnSxUKrRZ65bs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=j+ei/IQG//damy7N0vcrtAagkDLsrP4ZOsk52t5QV64cHuYQQBW58N91q6uAmEQzo
-	 5Zh7RRckssF/ZPC1kHvZymv8aB4O9ocAzfWN6QULCBkX3NTPJikOLE2A4giFsFLtJz
-	 HPEbSPCP1UVpf4vcqCYag3kgn3oZ8HN9MZKdR0L5J1Vg/eoAk9aFnh6VZgb+ahnC7D
-	 p+VO7ciIXExKioAmxgyth17Z8pOiozefhqs7gQPMpoi8SdUXSLKK/Syn4IFXLo0JNL
-	 majVSvEOYMtQHT7H2k6Fzo1ng8cfLGPQETsuk85neh3FM3vVXlHt5VTg3Sq56rQuaz
-	 nOQoa4+tBaUDA==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Masahiro Yamada <masahiroy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michal Marek <michal.lkml@markovi.net>,
-	Nick Desaulniers <ndesaulniers@google.com>,
+	id 1opzOf-007M7D-Th; Tue, 01 Nov 2022 22:06:16 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1opzOJ-0007B1-0b; Tue, 01 Nov 2022 23:05:51 +0100
+Date: Tue, 1 Nov 2022 22:05:47 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kbuild@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] kbuild: Add DTB_FILES variable for dtbs_check
-Date: Tue,  1 Nov 2022 18:03:03 -0400
-Message-Id: <20221101220304.65715-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.38.1
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] net: ethernet: mediatek: ppe: add support for flow
+ accounting
+Message-ID: <Y2GYO9muWSmRypnF@makrotopia.org>
+References: <Y2FvtampxpDGua2p@makrotopia.org>
+ <5d8e00d4-830d-19ff-a3cb-59bd81618903@nbd.name>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5d8e00d4-830d-19ff-a3cb-59bd81618903@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_150314_396455_1C5DD800 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221101_150613_988556_1933E3A3 
+X-CRM114-Status: GOOD (  22.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +66,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently running dtbs_check compiles and runs the DT checker on all
-enabled devicetrees against all dt-bindings. This can take a long time,
-and is an unnecessary burden when just validating a new devicetree or
-changes in an existing one, with the dt-bindings unchanged.
+Hi Felix,
 
-Similarly to DT_SCHEMA_FILES for dt_binding_check, add a DTB_FILES
-variable that can be passed to the dtbs_check make command to restrict
-which devicetrees are validated.
+On Tue, Nov 01, 2022 at 08:38:59PM +0100, Felix Fietkau wrote:
+> On 01.11.22 20:12, Daniel Golle wrote:
+> > The PPE units found in MT7622 and newer support packet and byte
+> > accounting of hw-offloaded flows. Add support for reading those
+> > counters as found in MediaTek's SDK[1].
+> > 
+> > [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/bc6a6a375c800dc2b80e1a325a2c732d1737df92
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >   drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  11 +-
+> >   drivers/net/ethernet/mediatek/mtk_eth_soc.h   |   1 +
+> >   drivers/net/ethernet/mediatek/mtk_ppe.c       | 122 +++++++++++++++++-
+> >   drivers/net/ethernet/mediatek/mtk_ppe.h       |  23 +++-
+> >   .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |   9 +-
+> >   .../net/ethernet/mediatek/mtk_ppe_offload.c   |   7 +
+> >   drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |  14 ++
+> >   7 files changed, 178 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > index 789268b15106ec..5fcd66fca7a089 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > @@ -4221,6 +4223,7 @@ static const struct mtk_soc_data mt2701_data = {
+> >   	.hw_features = MTK_HW_FEATURES,
+> >   	.required_clks = MT7623_CLKS_BITMAP,
+> >   	.required_pctl = true,
+> > +	.has_accounting = false,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> >   		.rxd_size = sizeof(struct mtk_rx_dma),
+> > @@ -4239,6 +4242,7 @@ static const struct mtk_soc_data mt7621_data = {
+> >   	.required_pctl = false,
+> >   	.offload_version = 2,
+> >   	.hash_offset = 2,
+> > +	.has_accounting = false,
+> >   	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> > @@ -4259,6 +4263,7 @@ static const struct mtk_soc_data mt7622_data = {
+> >   	.required_pctl = false,
+> >   	.offload_version = 2,
+> >   	.hash_offset = 2,
+> > +	.has_accounting = true,
+> >   	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> > @@ -4278,6 +4283,7 @@ static const struct mtk_soc_data mt7623_data = {
+> >   	.required_pctl = true,
+> >   	.offload_version = 2,
+> >   	.hash_offset = 2,
+> > +	.has_accounting = false,
+> >   	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> > @@ -4296,6 +4302,7 @@ static const struct mtk_soc_data mt7629_data = {
+> >   	.hw_features = MTK_HW_FEATURES,
+> >   	.required_clks = MT7629_CLKS_BITMAP,
+> >   	.required_pctl = false,
+> > +	.has_accounting = true,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> >   		.rxd_size = sizeof(struct mtk_rx_dma),
+> > @@ -4315,6 +4322,7 @@ static const struct mtk_soc_data mt7986_data = {
+> >   	.required_pctl = false,
+> >   	.hash_offset = 4,
+> >   	.foe_entry_size = sizeof(struct mtk_foe_entry),
+> > +	.has_accounting = true,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma_v2),
+> >   		.rxd_size = sizeof(struct mtk_rx_dma_v2),
+> > @@ -4331,6 +4339,7 @@ static const struct mtk_soc_data rt5350_data = {
+> >   	.hw_features = MTK_HW_FEATURES_MT7628,
+> >   	.required_clks = MT7628_CLKS_BITMAP,
+> >   	.required_pctl = false,
+> > +	.has_accounting = false,
+> >   	.txrx = {
+> >   		.txd_size = sizeof(struct mtk_tx_dma),
+> >   		.rxd_size = sizeof(struct mtk_rx_dma),
+> You can leave out the .has_accounting = false assignments.
+Ack.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> > index 2d8ca99f2467ff..bc4660da28451b 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> > @@ -545,6 +592,16 @@ __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
+> >   	wmb();
+> >   	hwe->ib1 = entry->ib1;
+> > +	if (ppe->accounting) {
+> > +		int type;
+> > +
+> > +		type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
+> > +		if (type >= MTK_PPE_PKT_TYPE_IPV4_DSLITE)
+> > +			hwe->ipv6.ib2 |= MTK_FOE_IB2_MIB_CNT;
+> > +		else
+> > +			hwe->ipv4.ib2 |= MTK_FOE_IB2_MIB_CNT;
+> > +	}
+> Use mtk_foe_entry_ib2() here.
 
----
-Usage example:
-make dtbs_check DTB_FILES='arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb'
+Ack, turns it into a one-liner ;)
 
- scripts/Makefile.lib | 7 +++++++
- 1 file changed, 7 insertions(+)
+> 
+> > @@ -654,11 +711,8 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+> >   			continue;
+> >   		}
+> > -		if (found || !mtk_flow_entry_match(ppe->eth, entry, hwe)) {
+> > -			if (entry->hash != 0xffff)
+> > -				entry->hash = 0xffff;
+> > +		if (found || !mtk_flow_entry_match(ppe->eth, entry, hwe))
+> >   			continue;
+> > -		}
+> What is the reason for this change?
 
-diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index ec391c6a2641..f3ac6d3632a2 100644
---- a/scripts/Makefile.lib
-+++ b/scripts/Makefile.lib
-@@ -418,9 +418,16 @@ DT_CHECKER_FLAGS ?= $(if $(DT_SCHEMA_FILES),-l $(DT_SCHEMA_FILES),-m)
- DT_BINDING_DIR := Documentation/devicetree/bindings
- DT_TMP_SCHEMA := $(objtree)/$(DT_BINDING_DIR)/processed-schema.json
- 
-+ifeq ($(DTB_FILES),)
- quiet_cmd_dtb =	DTC_CHK $@
-       cmd_dtb =	$(cmd_dtc) ; $(DT_CHECKER) $(DT_CHECKER_FLAGS) -u $(srctree)/$(DT_BINDING_DIR) -p $(DT_TMP_SCHEMA) $@ || true
- else
-+SHOULD_CHECK_DTB = $(filter $@,$(DTB_FILES))
-+
-+quiet_cmd_dtb =	$(if $(SHOULD_CHECK_DTB),DTC_CHK,DTC) $@
-+      cmd_dtb =	$(if $(SHOULD_CHECK_DTB), $(cmd_dtc) ; $(DT_CHECKER) $(DT_CHECKER_FLAGS) -u $(srctree)/$(DT_BINDING_DIR) -p $(DT_TMP_SCHEMA) $@ || true , $(cmd_dtc))
-+endif
-+else
- quiet_cmd_dtb = $(quiet_cmd_dtc)
-       cmd_dtb = $(cmd_dtc)
- endif
--- 
-2.38.1
+This has slipped in accidentally as it was part of the patch in
+mtk-openwrt-feeds. I suppose it may be related to the rather mystical
+2nd part of the commit message there:
+Patches-4 fix __schedule_bug issue in the __mtk_foe_entry_clear().
 
+However, as things seem to work just fine also without that I will send
+v3 skipping this part.
+
+
+Thanks for the review!
+
+
+Daniel
 
