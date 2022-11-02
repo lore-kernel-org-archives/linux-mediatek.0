@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1380C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 21:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E97AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 21:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v5991RrXScJhmv3IUMGcu52NKLks7Sr9R7RvijLy0Po=; b=g1xmQ725dxb3UrVAUUF1D0TOzp
-	kwBRllUN+8FacZwsrNOVgYkgbW/5wGtdTFJb76vwOOefmTxBJM5zHUXXH1XRcj++WtVK0KVp0/qad
-	+iBlTuF4G1AeoOKo1z9Z4vKktEZixIBh1n3f78Pg0GHt9lkRfx9WSJZv9QVzNHFCtsyCytJlPUT13
-	0pP2H9MM8Qqxx9/70fBH2Vvn/tPyR/6mk+RtPjG+QtCoBaPCvf2tG9j1l1qnovbX80KOEIFi0vnTa
-	uN6kOv3Ka2Pe+6QKkHVNUPlfeTlQTT4UbnKcKi3Y+f1l4HuGLChsbr4R/Oh7GU7BHOc1Apcd31Ygy
-	LWT0ok+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AR+RpptO93OXstfiAhWbUVqw4hBBZs7vD9OUXvkHxOE=; b=KJTSi7ZpAb8DN6+iDwXLRN03TU
+	cl5NTrKt4FoGmKBW4WuuWs44zCyb+Zn0ayidKrqMRk2ijBhDPZQB67s/739FVhAqAaLQjgB4EcE9s
+	NC683iUdMrZgCQ0rAXTvyw08hG1E7KGjQ3hbeo5ILjtxQp6dWTej3rxKO/VbdYkzwenSZfFEfSUav
+	6P06cGHob6tVkUiVOcIyL5rm5UUQ5YLVF9wKZAH1eYN/jpBUmoAudB4SLZs7vUWkcLY80PPc7Yp3O
+	DFUyfnnBWameWIwXnKTyqKPc7v430nEUoxzZClyexfplglcPlVp6kBKWPab2yGpWOyOwh09AfpLM4
+	4RycPBcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqLW2-00EYl9-DU; Wed, 02 Nov 2022 21:43:18 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oqLZw-00EZbn-Vl; Wed, 02 Nov 2022 21:47:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqLVr-00EYjJ-OY; Wed, 02 Nov 2022 21:43:09 +0000
-Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	id 1oqLZi-00EZV3-4t; Wed, 02 Nov 2022 21:47:07 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF48C660037C;
-	Wed,  2 Nov 2022 21:43:03 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8690B66017D3;
+	Wed,  2 Nov 2022 21:46:58 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667425385;
-	bh=I6k0VYTBtgXqylue8+whQkMj2wwlEM89xgbgwhw/Gmg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dFDgAJLbSFI9EOSca34tAKkHzdhLLdsf9vnQaR0Cj4ijTC5sqJoLsaeZn+rGY1jb6
-	 U6X1C7odwcSRrtrUaMkS4wwAoXiiWuwbYXxswZBS/MoSVB7LY9AlgGvbNvMbSFTuU2
-	 jjAuXo3zpDnwoHnrkdtpRg/0Q89AiQr17/T2VxqhPDyt2EmbR1c0wDcggEYth7R1Of
-	 kyvmIb2DOC2+/uDdqom/3gfaKCs1wWZCun5vXp7ysr76L0n+OZaQ368qfxswpO6MDG
-	 YqQkW5COIllOaScVlOUvE45dtf/EUl2TiKmOpPx/lY4/4OmmOb5jyIiVJ0y+z1V3qv
-	 n0XRk4mlOJWjA==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Rob Herring <robh+dt@kernel.org>
+	s=mail; t=1667425620;
+	bh=wr7XvMBx78CPPZbFbCo5cFsqN667CuKHD66q8hrxbsU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Chs0dNoDzTTzVfBcJOaxY9re2NI0KcgqFwFCYcBI2SiP7ViF9AwVnzmuBZJ+PTFha
+	 733pUwWjrPpCGTfB33H0bLV6UmKAAedHz2UKfEkrUXUZvV35TCDhfOGT03jAoN/rKB
+	 1A8TEcUoKwUSzyfbQi0Mf4w43y95HOoBTc2VwtNpyRASXdGxYy35IXY9xRoRcn2v6I
+	 vBEhVhPlUg08iQexwCyokTyU7YfPgPI7zF1t/VxHgK+D2dEl9ma8aVxB6y06A6oBW4
+	 TqkApFf5nIlPOXJa9ejtMrYuKcRHWeK8QQw8mxGpp936vMi8VxHiKrczXPb2rzjsSN
+	 dYX9bWcsjcdPg==
+Date: Wed, 2 Nov 2022 17:46:54 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Rob Herring <robh@kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	kernel@collabora.com, Masahiro Yamada <masahiroy@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] docs: dt: writing-schema: Document usage of CHECK_DTBS make flag
-Date: Wed,  2 Nov 2022 17:43:00 -0400
-Message-Id: <20221102214300.309347-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.38.1
+	Michal Marek <michal.lkml@markovi.net>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kbuild@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] kbuild: Add DTB_FILES variable for dtbs_check
+Message-ID: <20221102214654.axyptitp5kpq3wcq@notapiano>
+References: <20221101220304.65715-1-nfraprado@collabora.com>
+ <20221102171343.3ajwlkxhp7s7r36k@notapiano>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221102171343.3ajwlkxhp7s7r36k@notapiano>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_144308_062417_891FE31D 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20221102_144706_341739_28CDA856 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +77,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is possible to run checks on a Devicetree by passing the CHECK_DTBS
-flag when building. This is a useful shortcut to the dtbs_check make
-target since it avoids checking unrelated Devicetrees, which can take
-some time and is unnecessary if no bindings were modified. Document it.
+On Wed, Nov 02, 2022 at 01:13:48PM -0400, Nícolas F. R. A. Prado wrote:
+> On Tue, Nov 01, 2022 at 06:03:03PM -0400, Nícolas F. R. A. Prado wrote:
+> > Currently running dtbs_check compiles and runs the DT checker on all
+> > enabled devicetrees against all dt-bindings. This can take a long time,
+> > and is an unnecessary burden when just validating a new devicetree or
+> > changes in an existing one, with the dt-bindings unchanged.
+> > 
+> > Similarly to DT_SCHEMA_FILES for dt_binding_check, add a DTB_FILES
+> > variable that can be passed to the dtbs_check make command to restrict
+> > which devicetrees are validated.
+> > 
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > 
+> > ---
+> > Usage example:
+> > make dtbs_check DTB_FILES='arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb'
+> 
+> Hi,
+> 
+> I have just learned that it is already possible to achieve the same thing by
+> passing the dtbs explicitly to make and enabling the DTBS_CHECK flag like so:
+> 
+> make CHECK_DTBS=y mediatek/mt8192-asurada-spherion-r0.dtb
+> 
+> This flag isn't documented anywhere outside the Makefile however. So I'll send a
+> patch documenting it shortly, and this commit can be ignored.
 
-Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
+Patch: https://lore.kernel.org/all/20221102214300.309347-1-nfraprado@collabora.com
 
----
-
- Documentation/devicetree/bindings/writing-schema.rst | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/writing-schema.rst b/Documentation/devicetree/bindings/writing-schema.rst
-index 4a381d20f2b4..55ad556472b4 100644
---- a/Documentation/devicetree/bindings/writing-schema.rst
-+++ b/Documentation/devicetree/bindings/writing-schema.rst
-@@ -167,6 +167,13 @@ setting the ``DT_SCHEMA_FILES`` variable to a specific schema file or pattern.
-     make dt_binding_check DT_SCHEMA_FILES=/gpio/
-     make dtbs_check DT_SCHEMA_FILES=trivial-devices.yaml
- 
-+Note that ``make dtbs_check`` will validate every DT source file that is
-+enabled. When making changes to a DT but not to the bindings, a possible
-+shortcut to validate only the DT in question is to explicitly build it with
-+the ``CHECK_DTBS`` flag enabled. For example::
-+
-+    make CHECK_DTBS=y mediatek/mt8192-evb.dtb
-+
- 
- json-schema Resources
- ---------------------
--- 
-2.38.1
-
+Thanks,
+Nícolas
 
