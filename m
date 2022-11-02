@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A00EC43217
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 09:33:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411A5C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 09:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=; b=H7fMMdUHI+kU8wU7N+kO9jRNMp
-	WGq+UvuJeUxdDpG4g8Ioq+Dh4wyJ9zi4E/jzMBh6voV77OTMg9BzPgD7EmsKl7hutH7XGqMvb6Pby
-	GmlA+sm8J9iqeQvIY61h50upco+CUO/e5h73lNbACmdMGXwYTybgu3ktXwLz61TC5ZZBRoBrSL9ev
-	+v3ic6a0LIXuKEUkQqzFM8taoV7rip44ZsXVRndUTPr4z9nW3jRCnmlr61yIl285nufK7PPCazMSN
-	qp0fCVD74rypJtsjEistT8GITPlsxWA5SmHeMJ2xxgQpTeQEam/GJK6Qz32qsuGj2RPOXeguv9Y3e
-	ht9H2Ypw==;
+	bh=RgeOXsRJ+XKaYoOYvxoyhBylXQrWD/HUrGfmQUHOZZs=; b=BebL5bzc3OLBQeDeviPbPIf2V+
+	y6L95L24UQ80jDxt6jlz1aX2OK8axE55ECxFVVlD6degFAb2bul8JSXy8LOoufWNzRBufOpT9Yf9T
+	2XLJx7Sw2VRV+XbbgEPhYIgo4ODInRXJT9Bb+uVMq5gJee6LQJo+DnZborOqkYsUQN5v+W1AG9wun
+	4dN/mUhhVdmd4XMKG2zhQYcR+gZa2dkSquSSTdjwLOEuePnSzPqm4/9tFTr+oh2j+AOKQTJLxxV/k
+	UZPO6U2pyd5GGhoV5bYrMbt5lnIs4CriEZN+6OKmwNgmUPA1ez6s4MRdxUjKVzNnnWnHMqPg6gf7E
+	DivW8d8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqA7g-00AHIO-3P; Wed, 02 Nov 2022 09:33:24 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1oqADe-00AJgC-T8; Wed, 02 Nov 2022 09:39:34 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqA6b-00AGlQ-RO
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 09:32:29 +0000
+	id 1oqADY-00AJcy-3a
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 09:39:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667381536;
+	s=mimecast20190719; t=1667381967;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=;
-	b=g86kVOmVqcJ3jvx7QLkap7dOJqWx4Jkz4xwCyM5E3D5uU39i8xAefQvqxOKN5H5LoxvUsS
-	PIC72S+nNsAaw1AjBB0WT2jmkEDsxqvhrcNE9IXrbtcn7F5l8j3iSkrfnqjMOP901MtXZm
-	CJcXGUj8XU5QGMG0V3YLjmFRZQfk710=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=RgeOXsRJ+XKaYoOYvxoyhBylXQrWD/HUrGfmQUHOZZs=;
+	b=NUjdYV3rW79cPv/AK0PWPgFBCxIqQyzjJC7+TBixeJ+GrpLhAetFvre/jNHsDh3WHN9fkN
+	qIhEY98vXVKVZTpwUluv7G52Vnd8YgeNxFTFPzB3yb/3+/YOCi5unhZSaBadHvPIVkGGCS
+	Fqf/xQJxT9DKpbUnMs09sSYNx4qfjBQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-653-95XhLoB2P-mLnnezEeB_Ow-1; Wed, 02 Nov 2022 05:32:15 -0400
-X-MC-Unique: 95XhLoB2P-mLnnezEeB_Ow-1
-Received: by mail-wm1-f70.google.com with SMTP id d13-20020a05600c34cd00b003ce1f62ac5aso832065wmq.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 02:32:15 -0700 (PDT)
+ us-mta-534-QvhZbviwPialqwaq9cJ_Ug-1; Wed, 02 Nov 2022 05:39:25 -0400
+X-MC-Unique: QvhZbviwPialqwaq9cJ_Ug-1
+Received: by mail-wr1-f72.google.com with SMTP id v12-20020adfa1cc000000b00236eaee7197so874394wrv.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 02:39:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=;
-        b=N6kib2oeXggZ7cZ/Wk+Lfd34QrF41sS3KW/SqPdGhBfXmL5A+VMC5ACWHiyAzZZQOv
-         d5DpJBOg9E+D8yZxaz2r1Qyvj8Pf0dHiX7UNHUi/T299AG1tpeUNH8XxrB2zS/N66Jbv
-         itRaePmkyrO/w8HTgUrIaWp4C1fWNDv/ebxguZGvtO+toGNi7pnntP+oznWKZ+Ri31bn
-         iT05ofKc/NrqJzHtpAO2NDYewhMBZut2aSFN3ms9iUZhy/DW8d4Efite4eFzCsfy15QE
-         hhK1NZZJEkDg/CMSf0pzGrQrNEvpnpkxh3lqR29BMXHnf3YLtuKNeKhazK9QTP45DV70
-         D/vQ==
-X-Gm-Message-State: ACrzQf3OgixI/pyJb0a1U0R9WSvbza9O2i9/GkJdLFgJ9xtRs3EiKSVm
-	gVDsh58hzPoJ0sl4FrQHeF25uQcEew8Yd6/eYi1T9yq+G7tterzbnnNwt8u9YKQEmIWkuXtUPGZ
-	QBKUNt2f1Kv8QOpyqZuua4ugjScQTvybu
-X-Received: by 2002:a05:600c:6023:b0:3cf:7dc1:e08e with SMTP id az35-20020a05600c602300b003cf7dc1e08emr5443614wmb.154.1667381534284;
-        Wed, 02 Nov 2022 02:32:14 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7iks5yFnak5X2iZPcs6wSoPN4c8RmVdgyjVaQzUQOEwDY0j8GZM7MD/vLKrS0XyFefd22bEw==
-X-Received: by 2002:a05:600c:6023:b0:3cf:7dc1:e08e with SMTP id az35-20020a05600c602300b003cf7dc1e08emr5443583wmb.154.1667381533975;
-        Wed, 02 Nov 2022 02:32:13 -0700 (PDT)
+        bh=RgeOXsRJ+XKaYoOYvxoyhBylXQrWD/HUrGfmQUHOZZs=;
+        b=VMsNj8Ol5vquFkrCRQ3VIG0yeLCre0uw6hArM03JM96ReGAWQyKpwKvD1DJlVotznc
+         mnY8+P/i2bXhyCQyQ47NxpyiZkAnHeLHM26vYNRdKQbrNCDP5acIVL0M3YbqyrKSAPBM
+         cicbav3O0S/NCOruOgmudrHBr0SpSQQIsLGw63Jg1YFgBGdyyJ3Tro6w5I4XhBG0sANA
+         uKG+RSRYzU1DIDZ9spXLAi4GnoknaUVKSVhDLOFKpikbdovDaaWRNPcfFconfkOHpwtW
+         R7j0cC5dn4xytjvo5+gMEvg56tykcpQp/0Kj6v56bPVeha/SXdQsjLFxMEgp8XFsL+hL
+         1Sxg==
+X-Gm-Message-State: ACrzQf06Ey3AnrNXbFJt1p5iUFd/puvycUqAt4ETIYHphxNwDvgcw0j4
+	Skb9X/lFFQK3XzAFIaaI8SaG+V0alxQDEd8QI9AnxJ7n7Adn2GASa8BY/fjPdSRPskud9Ov4nBL
+	lJZAGgaMjQPruqWgfZLrlfFJYfHoAHmrF
+X-Received: by 2002:a5d:40d1:0:b0:236:786d:611e with SMTP id b17-20020a5d40d1000000b00236786d611emr14871544wrq.355.1667381964721;
+        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4/k2KHrjikPXyIbTE3cWGjPi0EsRobUeOg55XAJjnO250x+w4Sp4JFFeS1nRK3GUJGY3QPnQ==
+X-Received: by 2002:a5d:40d1:0:b0:236:786d:611e with SMTP id b17-20020a5d40d1000000b00236786d611emr14871522wrq.355.1667381964509;
+        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
 Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id x21-20020a1c7c15000000b003b492753826sm1361990wmc.43.2022.11.02.02.32.12
+        by smtp.gmail.com with ESMTPSA id dn12-20020a05600c654c00b003cf537ec2efsm1653185wmb.36.2022.11.02.02.39.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 02:32:13 -0700 (PDT)
-Message-ID: <3ab32fc3-f2aa-1b42-fd87-557482ab56d5@redhat.com>
-Date: Wed, 2 Nov 2022 10:32:11 +0100
+        Wed, 02 Nov 2022 02:39:24 -0700 (PDT)
+Message-ID: <23b6c3ca-828a-5376-ae80-0b04202e190b@redhat.com>
+Date: Wed, 2 Nov 2022 10:39:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 17/21] drm/fb-helper: Perform all fbdev I/O with the
- same implementation
+Subject: Re: [PATCH v2 18/21] drm/fb_helper: Minimize damage-helper overhead
 To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
  airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
  maarten.lankhorst@linux.intel.com
@@ -89,17 +88,17 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
 References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-18-tzimmermann@suse.de>
+ <20221024111953.24307-19-tzimmermann@suse.de>
 From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221024111953.24307-18-tzimmermann@suse.de>
+In-Reply-To: <20221024111953.24307-19-tzimmermann@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_023218_041730_1A4955E5 
-X-CRM114-Status: GOOD (  25.25  )
+X-CRM114-CacheID: sfid-20221102_023928_294822_581E39DD 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,92 +114,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/24/22 13:19, Thomas Zimmermann wrote:
-> Implement the fbdev's read/write helpers with the same functions. Use
-> the generic fbdev's code as template. Convert all drivers.
-> 
-> DRM's fb helpers must implement regular I/O functionality in struct
-> fb_ops and possibly perform a damage update. Handle all this in the
-> same functions and convert drivers. The functionality has been used
-> as part of the generic fbdev code for some time. The drivers don't
-> set struct drm_fb_helper.fb_dirty, so they will not be affected by
-> damage handling.
-> 
-> For I/O memory, fb helpers now provide drm_fb_helper_cfb_read() and
-> drm_fb_helper_cfb_write(). Several drivers require these. Until now
-> tegra used I/O read and write, although the memory buffer appears to
-> be in system memory. So use _sys_ helpers now.
+> Pull the test for fb_dirty into the caller to avoid extra work
+> if no callback has been set. In this case no damage handling is
+> required and no damage area needs to be computed. Print a warning
+> if the damage worker runs without getting an fb_dirty callback.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > ---
 
-[...]
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
 
-> +static ssize_t __drm_fb_helper_write(struct fb_info *info, const char __user *buf, size_t count,
-> +				     loff_t *ppos, drm_fb_helper_write_screen write_screen)
-> +{
+But I've a trivial comment below:
 
-[...]
+>  drivers/gpu/drm/drm_fb_helper.c | 90 ++++++++++++++++++++++-----------
+>  1 file changed, 60 insertions(+), 30 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
+> index 836523aef6a27..fbc5c5445fdb0 100644
+> --- a/drivers/gpu/drm/drm_fb_helper.c
+> +++ b/drivers/gpu/drm/drm_fb_helper.c
+> @@ -449,12 +449,13 @@ static int drm_fb_helper_damage_blit(struct drm_fb_helper *fb_helper,
+>  static void drm_fb_helper_damage_work(struct work_struct *work)
+>  {
+>  	struct drm_fb_helper *helper = container_of(work, struct drm_fb_helper, damage_work);
+> +	struct drm_device *dev = helper->dev;
 
-> +	/*
-> +	 * Copy to framebuffer even if we already logged an error. Emulates
-> +	 * the behavior of the original fbdev implementation.
-> +	 */
-> +	ret = write_screen(info, buf, count, pos);
-> +	if (ret < 0)
-> +		return ret; /* return last error, if any */
-> +	else if (!ret)
-> +		return err; /* return previous error, if any */
-> +
-> +	*ppos += ret;
-> +
-
-Should *ppos be incremented even if the previous error is returned?
-
-The write_screen() succeeded anyways, even when the count written was
-smaller than what the caller asked for.
-
->  /**
-> - * drm_fb_helper_sys_read - wrapper around fb_sys_read
-> + * drm_fb_helper_sys_read - Implements struct &fb_ops.fb_read for system memory
->   * @info: fb_info struct pointer
->   * @buf: userspace buffer to read from framebuffer memory
->   * @count: number of bytes to read from framebuffer memory
->   * @ppos: read offset within framebuffer memory
->   *
-> - * A wrapper around fb_sys_read implemented by fbdev core
-> + * Returns:
-> + * The number of read bytes on success, or an error code otherwise.
->   */
-
-This sentence sounds a little bit off to me. Shouldn't be "number of bytes read"
-instead? I'm not a native English speaker though, so feel free to just ignore me.
-
-[...]
-
->  
-> +static ssize_t fb_read_screen_base(struct fb_info *info, char __user *buf, size_t count,
-> +				   loff_t pos)
-> +{
-> +	const char __iomem *src = info->screen_base + pos;
-> +	size_t alloc_size = min_t(size_t, count, PAGE_SIZE);
-> +	ssize_t ret = 0;
-> +	int err = 0;
-
-Do you really need these two? AFAIK ssize_t is a signed type
-so you can just use the ret variable to store and return the
-errno value.
-
-[...]
-
-> +static ssize_t fb_write_screen_base(struct fb_info *info, const char __user *buf, size_t count,
-> +				    loff_t pos)
-> +{
-> +	char __iomem *dst = info->screen_base + pos;
-> +	size_t alloc_size = min_t(size_t, count, PAGE_SIZE);
-> +	ssize_t ret = 0;
-> +	int err = 0;
-
-Same here.
+You removed this in patch #15, maybe just leaving it in that patch if you
+plan to use it again here?
 
 -- 
 Best regards,
