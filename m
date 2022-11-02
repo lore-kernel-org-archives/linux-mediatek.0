@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0D9C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 08:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8829AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 09:01:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E8kiC2Fnz610Izbk5JEjEAUzp28eW34GIPDHHy9yqng=; b=Fa5MSbkeqRrWmBzAPs3CB9UUm8
-	2vd0KwmjJBeQSMr0vAM5UI+/T4qQnyZRORsCuyF3bvNwi8pSpTUgeds40cdxJMabePFdkVf4O5BI0
-	w1jyCO3mCxMVxcp2tNtg9Vtp/r0EQNdGD4HnmHWlscL0/IsQD9ihhgU05wPoZBSlVC2NX84QCEO8e
-	FQPKt5qD29xxk4BAbjVRz1ZY+BfP4o1QMlfWVLaAVLfDcUHKk/Ma3FgIF3hEo+foW3YQiSQVrJcAf
-	m2P11DagZhwfSILgJyyM+pHc2W1k2XRm3vxQUePhh/zlbrnt6Tgx1HU0omv9IjStTwo2OUbiVlDV7
-	MUwd1pEQ==;
+	bh=94lKhMZJjthMOtl8dzM+48sXJwhdmAoczjEvD4TnYik=; b=p5PeTKeK7qChIX536d7/vL+J7V
+	Wl4a5R0TCBr/F+qI0bU5J+OZ2cKpHoM/A2T9CC65/sZB8KO+lR4Fhb+27/KGQi3NTPHw3cF+a3a8g
+	czD3mn6JwKvwo7EKGYP+pBy2Pw75dDJ+qU7Mw+YDLpdxp0vLZo5tdj5pJ7JuvhS2SD2H/rGByULkR
+	jfYglcenIHDg9COzKEbwuHjOvGZDUpw8DHJPsPP+NpQ9vpdjvYAtHE2LUebd0aUkCAgDtO5XCrErN
+	sUePzdqlxKyRPh3S3e3Kh6UU4QVeoZrgeXq0XtXFcPjZo71uNDsFJPJ+fExGY8hJ2i9z9lnZGWR+e
+	rQo6p76w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq9XM-009GYK-RR; Wed, 02 Nov 2022 08:55:52 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oq9d1-009L8c-Mm; Wed, 02 Nov 2022 09:01:43 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq9XB-009GNx-GY; Wed, 02 Nov 2022 08:55:43 +0000
+	id 1oq9cp-009L0v-JC; Wed, 02 Nov 2022 09:01:33 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E74D36602929;
-	Wed,  2 Nov 2022 08:55:35 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5819F6602929;
+	Wed,  2 Nov 2022 09:01:26 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667379336;
-	bh=96/vIlCR0pm8B4E0/1/a7fElFLkubeJEBzd4uuxKC64=;
+	s=mail; t=1667379687;
+	bh=B3S5ofvq5lBgOYCzOV4yVG6oWPC54xPQLQoltYPZikI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ojzgURK3lzEbgIcNB+4xc2oHgrl8FATrqeLB3BqnJR0WjLJmk/i9C2wanD5wNgTfS
-	 P03Zcuqmog9HdYZhQupYHuIsKKcwbJo4BHH1tzXhuA/p8Bj1iknx82U15P/1jbqxC+
-	 G4QypHYxK6hmmp2Gdy145aa398eT35o9a9sdyXgVBPlKEefkoIdMsdqWRDVMx6nlNn
-	 AV6trM/NNvAxOCEYHwl6HNw6yexR01ZA+aqY2gR0KFhZoqnmLXvtfiTWNFXKXdk0FY
-	 4dnmoavItEYUkw6InryI7EmkA04bSdzkS0WZd4m1Y6PQ3qtF2ykmIsHTYrTUmLT8PW
-	 VFc34eP0xLuwA==
-Message-ID: <32627314-4971-7eea-8007-1797707e7969@collabora.com>
-Date: Wed, 2 Nov 2022 09:55:33 +0100
+	b=ESnzgT/r7UP1N7AQGWxxtrlqvyB8qs7KPLjxgUkvh7JTk1fZwC+0rZB660jBLRW3q
+	 aQnSvFDR3Zh7Au8A6yHDARpl3ttYVfj1aqbZhaGrFXXj/NoEGVdRy7U8lv9k57LkI+
+	 ReO2PGLXGfLVG5Rt2w3mYKh/IIC0BL/kH4nGmNw21ecz5I4AEboU3lG9yEK/DLRIPS
+	 NMDA03giCBftUj+RwS13C2s8XAujF95q6UYlb4Hm3tIEu3MsNe1SRIeoDCK/0fZTbB
+	 /q45z79DJzHY8ALw8nl6lxnsuoZXEfCu9RMPtoHsZRRWBPZDcrfTtsps78nXhEEwE/
+	 K+Z1kK8Z261Mg==
+Message-ID: <d73a9850-07fe-e6b1-33d7-02da2ace9b54@collabora.com>
+Date: Wed, 2 Nov 2022 10:01:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH] kbuild: Add DTB_FILES variable for dtbs_check
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Rob Herring <robh@kernel.org>
-Cc: kernel@collabora.com, Masahiro Yamada <masahiroy@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michal Marek <michal.lkml@markovi.net>,
- Nick Desaulniers <ndesaulniers@google.com>,
- linux-arm-kernel@lists.infradead.org, linux-kbuild@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20221101220304.65715-1-nfraprado@collabora.com>
+Subject: Re: [PATCH v3 3/7] arm64: dts: mediatek: mt7986: Fix watchdog
+ compatible
 Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: nfraprado@collabora.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221101090116.27130-1-allen-kh.cheng@mediatek.com>
+ <20221101090116.27130-4-allen-kh.cheng@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221101220304.65715-1-nfraprado@collabora.com>
+In-Reply-To: <20221101090116.27130-4-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_015541_841584_768737DC 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20221102_020131_789192_12DB34EE 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +82,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/11/22 23:03, Nícolas F. R. A. Prado ha scritto:
-> Currently running dtbs_check compiles and runs the DT checker on all
-> enabled devicetrees against all dt-bindings. This can take a long time,
-> and is an unnecessary burden when just validating a new devicetree or
-> changes in an existing one, with the dt-bindings unchanged.
+Il 01/11/22 10:01, Allen-KH Cheng ha scritto:
+> MT7986's watchdog embeds a reset controller and needs only the
+> mediatek,mt7986-wdt compatible string as the MT6589 one is there
+> for watchdogs that don't have any reset controller capability.
 > 
-> Similarly to DT_SCHEMA_FILES for dt_binding_check, add a DTB_FILES
-> variable that can be passed to the dtbs_check make command to restrict
-> which devicetrees are validated.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
+> Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
