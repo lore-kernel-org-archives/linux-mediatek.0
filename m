@@ -4,74 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 153DEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 09:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A00EC43217
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 09:33:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CAWuHkpwgFfj7hhvFV4HxiLR1FE5OMLKHNPDDaCEASU=; b=I3rh2JHY2ZLW6du2fhaX4cVCrP
-	zzPomFFslprMtP1up7PzXaMKRk3inWCOEyTkxZCF3WbKeyx4AOjX3HmsrUJywTeFE6lxxFV1G9l1h
-	mb8gTc/AqoU6e8i91GV0GNZJzTdfpSH3DHV0e+A2Xoyb1gCmdQ2y6H27bfVTzQfh6tbSwZ6RV9yFt
-	HhL9bXvj6I5qVISa3nnLJbPUuQLVBW5GvZX8WI4DKIUX1HXBaMlbGcnY6XvNvZa8A8o9oLT/0wHov
-	8Y2nTWuEuhCRNQIzCpPb8Vu5tRDxzEnfCO1ewZHL2fZUr3itse7mhr0ultra8UAbPqyBeZPfVqcX5
-	RlHesgVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=; b=H7fMMdUHI+kU8wU7N+kO9jRNMp
+	WGq+UvuJeUxdDpG4g8Ioq+Dh4wyJ9zi4E/jzMBh6voV77OTMg9BzPgD7EmsKl7hutH7XGqMvb6Pby
+	GmlA+sm8J9iqeQvIY61h50upco+CUO/e5h73lNbACmdMGXwYTybgu3ktXwLz61TC5ZZBRoBrSL9ev
+	+v3ic6a0LIXuKEUkQqzFM8taoV7rip44ZsXVRndUTPr4z9nW3jRCnmlr61yIl285nufK7PPCazMSN
+	qp0fCVD74rypJtsjEistT8GITPlsxWA5SmHeMJ2xxgQpTeQEam/GJK6Qz32qsuGj2RPOXeguv9Y3e
+	ht9H2Ypw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq9yf-00ACqe-Fm; Wed, 02 Nov 2022 09:24:05 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1oqA7g-00AHIO-3P; Wed, 02 Nov 2022 09:33:24 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq9xy-00AC9Y-E6
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 09:23:26 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id ud5so43668068ejc.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 02:23:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CAWuHkpwgFfj7hhvFV4HxiLR1FE5OMLKHNPDDaCEASU=;
-        b=Gtu0Ihij+nBxhtfx6L2SIRCXBbEoh6Ml8CRcad4tGqp0bDLotvBdDokciS4kkebKf+
-         c7JGqzXn/KB9jct4cDwpgKInbF2y/Jn6Aw0Ja72vQd5X7jQv3zfHK/SMClip4QvPLh0u
-         5CJOgas3x0pDyfEsA/TKs7cAQZyJ7Jmc0qUrE397kgEUCIpjMvyul5oaEQxcgqWJAR5R
-         fvdFGUCLmKgH/eIVIVrnoBKLoXH4zPdimLuNhKZubyR7LGpEgBWJFvwz0Ay10zC/In0D
-         usUXQ0kII5JY0q+QTiTylaJX7guINEk/3sElROzw+akl6ZVOM09N5IhXCxEtOHxRF6aj
-         DmvQ==
+	id 1oqA6b-00AGlQ-RO
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 09:32:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1667381536;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=;
+	b=g86kVOmVqcJ3jvx7QLkap7dOJqWx4Jkz4xwCyM5E3D5uU39i8xAefQvqxOKN5H5LoxvUsS
+	PIC72S+nNsAaw1AjBB0WT2jmkEDsxqvhrcNE9IXrbtcn7F5l8j3iSkrfnqjMOP901MtXZm
+	CJcXGUj8XU5QGMG0V3YLjmFRZQfk710=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-653-95XhLoB2P-mLnnezEeB_Ow-1; Wed, 02 Nov 2022 05:32:15 -0400
+X-MC-Unique: 95XhLoB2P-mLnnezEeB_Ow-1
+Received: by mail-wm1-f70.google.com with SMTP id d13-20020a05600c34cd00b003ce1f62ac5aso832065wmq.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 02:32:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CAWuHkpwgFfj7hhvFV4HxiLR1FE5OMLKHNPDDaCEASU=;
-        b=ELdO4kAMP2s7yGNmeg4z2Yp5fpzL+/U1Mxpsm2eYj8B4pEYSAHUBCF3qfZU399LZHn
-         l2SQwMv7frbeK0vV5MvyWSr80k+ygHZy+1UPSc3fZdmE4olOiscFeyw0LgO0ND9JSCa4
-         7kOK8BX8r/ztvGsldxTEp5wm6Zf+mHNIxHDk0ZLjOnpcfO59Z4Bm411LTzAKElm30t7/
-         1giVQTJK4VkzNKEK2Zh3G9Oibtx1hqGhXm+9zZx8NajI+6dxRVrAUBWJeXhCWObM6nMA
-         oPaa3rBGmVfk+zE4JqDzOQQ7OrA1TWuB0FMEXWuWRstI9dEHix1qI4aCo1Oxx7MhY3da
-         Tz7g==
-X-Gm-Message-State: ACrzQf1eJfeN6Mv0UJTHhXZh/EArGclBw9WcesOkCnxbfFhJ+pZ0oD3D
-	Em+5Eh/Oa+bqNQ88rIQDPi120W39Jw4TkMDY9FoZ3g==
-X-Google-Smtp-Source: AMsMyM4Z+d3FlUYFTaTzsaq4IqvJzKWCQTziKaxgs3wXWXAnaLeMiKS9TGWC3euoNd0VWQleMtvHS7le7gJSoYKCCR4=
-X-Received: by 2002:a17:906:9b86:b0:73d:72cf:72af with SMTP id
- dd6-20020a1709069b8600b0073d72cf72afmr23201600ejc.440.1667380988923; Wed, 02
- Nov 2022 02:23:08 -0700 (PDT)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qCDrX0xKXyu8erIDNjxDiJKuT0hxZZKKE3HXuUGBVDQ=;
+        b=N6kib2oeXggZ7cZ/Wk+Lfd34QrF41sS3KW/SqPdGhBfXmL5A+VMC5ACWHiyAzZZQOv
+         d5DpJBOg9E+D8yZxaz2r1Qyvj8Pf0dHiX7UNHUi/T299AG1tpeUNH8XxrB2zS/N66Jbv
+         itRaePmkyrO/w8HTgUrIaWp4C1fWNDv/ebxguZGvtO+toGNi7pnntP+oznWKZ+Ri31bn
+         iT05ofKc/NrqJzHtpAO2NDYewhMBZut2aSFN3ms9iUZhy/DW8d4Efite4eFzCsfy15QE
+         hhK1NZZJEkDg/CMSf0pzGrQrNEvpnpkxh3lqR29BMXHnf3YLtuKNeKhazK9QTP45DV70
+         D/vQ==
+X-Gm-Message-State: ACrzQf3OgixI/pyJb0a1U0R9WSvbza9O2i9/GkJdLFgJ9xtRs3EiKSVm
+	gVDsh58hzPoJ0sl4FrQHeF25uQcEew8Yd6/eYi1T9yq+G7tterzbnnNwt8u9YKQEmIWkuXtUPGZ
+	QBKUNt2f1Kv8QOpyqZuua4ugjScQTvybu
+X-Received: by 2002:a05:600c:6023:b0:3cf:7dc1:e08e with SMTP id az35-20020a05600c602300b003cf7dc1e08emr5443614wmb.154.1667381534284;
+        Wed, 02 Nov 2022 02:32:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7iks5yFnak5X2iZPcs6wSoPN4c8RmVdgyjVaQzUQOEwDY0j8GZM7MD/vLKrS0XyFefd22bEw==
+X-Received: by 2002:a05:600c:6023:b0:3cf:7dc1:e08e with SMTP id az35-20020a05600c602300b003cf7dc1e08emr5443583wmb.154.1667381533975;
+        Wed, 02 Nov 2022 02:32:13 -0700 (PDT)
+Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
+        by smtp.gmail.com with ESMTPSA id x21-20020a1c7c15000000b003b492753826sm1361990wmc.43.2022.11.02.02.32.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 02 Nov 2022 02:32:13 -0700 (PDT)
+Message-ID: <3ab32fc3-f2aa-1b42-fd87-557482ab56d5@redhat.com>
+Date: Wed, 2 Nov 2022 10:32:11 +0100
 MIME-Version: 1.0
-References: <20221021084708.1109986-1-bchihi@baylibre.com> <7h5yg02bh7.fsf@baylibre.com>
-In-Reply-To: <7h5yg02bh7.fsf@baylibre.com>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Wed, 2 Nov 2022 10:22:33 +0100
-Message-ID: <CAGuA+oqWXy-WV3-VFN+Mm8cHnAbr83a4HjE=PuyH2CVV9soZVg@mail.gmail.com>
-Subject: Re: [v2, 0/2] Fix broken SET/CLR mode of a certain number of pins for
- MediaTek MT8385 SoC
-To: Kevin Hilman <khilman@kernel.org>
-Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.1
+Subject: Re: [PATCH v2 17/21] drm/fb-helper: Perform all fbdev I/O with the
+ same implementation
+To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
+ airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com
+Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+ etnaviv@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
+References: <20221024111953.24307-1-tzimmermann@suse.de>
+ <20221024111953.24307-18-tzimmermann@suse.de>
+From: Javier Martinez Canillas <javierm@redhat.com>
+In-Reply-To: <20221024111953.24307-18-tzimmermann@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_022322_764246_4787AEB4 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20221102_023218_041730_1A4955E5 
+X-CRM114-Status: GOOD (  25.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,43 +114,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 31, 2022 at 5:40 PM Kevin Hilman <khilman@kernel.org> wrote:
->
-> Hi Balsam,
->
->
-> bchihi@baylibre.com writes:
->
-> > From: Balsam CHIHI <bchihi@baylibre.com>
-> >
-> > On MT8365, the SET/CLR of the mode is broken and some pins won't set or clear the modes correctly.
-> > To fix this issue, we add a specific callback mt8365_set_clr_mode() for this specific SoC.
-> > This callback uses the main R/W register to read/update/write the modes instead of using the SET/CLR register.
-> >
-> > This is the original patch series proposed by Fabien Parent <fparent@baylibre.com>.
-> > "https://lore.kernel.org/linux-arm-kernel/20220530123425.689459-1-fparent@baylibre.com/"
-> >
-> > Changelog:
-> > Changes in v2 :
-> >         - Rebase on top of 6.1.0-rc1-next-20221020
-> >         - Delete MTK_PINCTRL_MODE_SET_CLR_BROKEN quirk
-> >         - Add mt8365_set_clr_mode() callback
->
-> nit: subject of cover letter should also include "pinctrl: mediatek:"
-> prefix.  Also note that you're missing the word "PATCH" in all of the
-> subjects.
->
-> Tip: If you use `git format-patch`, you can just pass `-v2` on the
-> cmdline and it will create the prefixes for you automatically.
->
+On 10/24/22 13:19, Thomas Zimmermann wrote:
+> Implement the fbdev's read/write helpers with the same functions. Use
+> the generic fbdev's code as template. Convert all drivers.
+> 
+> DRM's fb helpers must implement regular I/O functionality in struct
+> fb_ops and possibly perform a damage update. Handle all this in the
+> same functions and convert drivers. The functionality has been used
+> as part of the generic fbdev code for some time. The drivers don't
+> set struct drm_fb_helper.fb_dirty, so they will not be affected by
+> damage handling.
+> 
+> For I/O memory, fb helpers now provide drm_fb_helper_cfb_read() and
+> drm_fb_helper_cfb_write(). Several drivers require these. Until now
+> tegra used I/O read and write, although the memory buffer appears to
+> be in system memory. So use _sys_ helpers now.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
 
-Hi Kevin,
+[...]
 
-Well received.
-I will fix these issues in the next version/resend.
-Thank you so much for the review!
+> +static ssize_t __drm_fb_helper_write(struct fb_info *info, const char __user *buf, size_t count,
+> +				     loff_t *ppos, drm_fb_helper_write_screen write_screen)
+> +{
 
-Balsam.
+[...]
 
-> Kevin
+> +	/*
+> +	 * Copy to framebuffer even if we already logged an error. Emulates
+> +	 * the behavior of the original fbdev implementation.
+> +	 */
+> +	ret = write_screen(info, buf, count, pos);
+> +	if (ret < 0)
+> +		return ret; /* return last error, if any */
+> +	else if (!ret)
+> +		return err; /* return previous error, if any */
+> +
+> +	*ppos += ret;
+> +
+
+Should *ppos be incremented even if the previous error is returned?
+
+The write_screen() succeeded anyways, even when the count written was
+smaller than what the caller asked for.
+
+>  /**
+> - * drm_fb_helper_sys_read - wrapper around fb_sys_read
+> + * drm_fb_helper_sys_read - Implements struct &fb_ops.fb_read for system memory
+>   * @info: fb_info struct pointer
+>   * @buf: userspace buffer to read from framebuffer memory
+>   * @count: number of bytes to read from framebuffer memory
+>   * @ppos: read offset within framebuffer memory
+>   *
+> - * A wrapper around fb_sys_read implemented by fbdev core
+> + * Returns:
+> + * The number of read bytes on success, or an error code otherwise.
+>   */
+
+This sentence sounds a little bit off to me. Shouldn't be "number of bytes read"
+instead? I'm not a native English speaker though, so feel free to just ignore me.
+
+[...]
+
+>  
+> +static ssize_t fb_read_screen_base(struct fb_info *info, char __user *buf, size_t count,
+> +				   loff_t pos)
+> +{
+> +	const char __iomem *src = info->screen_base + pos;
+> +	size_t alloc_size = min_t(size_t, count, PAGE_SIZE);
+> +	ssize_t ret = 0;
+> +	int err = 0;
+
+Do you really need these two? AFAIK ssize_t is a signed type
+so you can just use the ret variable to store and return the
+errno value.
+
+[...]
+
+> +static ssize_t fb_write_screen_base(struct fb_info *info, const char __user *buf, size_t count,
+> +				    loff_t pos)
+> +{
+> +	char __iomem *dst = info->screen_base + pos;
+> +	size_t alloc_size = min_t(size_t, count, PAGE_SIZE);
+> +	ssize_t ret = 0;
+> +	int err = 0;
+
+Same here.
+
+-- 
+Best regards,
+
+Javier Martinez Canillas
+Core Platforms
+Red Hat
+
 
