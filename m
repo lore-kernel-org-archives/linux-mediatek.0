@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3570C43219
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 10:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADCAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 10:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QoVTRIE06q1gLaA+FiGPh2NoY5TNtlfidxMdk3t+aTM=; b=h+L4MspxbUoq/UY8vnuW5EazmS
-	4/N/THtP3fISeM1AkpCb4/Q+Z+o5/gzWnhJwRWhPz/P6KhJuKALa5233qwxLWsSDna7YdTuVlaK/j
-	2o4Ub6DNJjiC4Z9vwF2gpS1z+vc0ZPeFyEx39eQXC77DtFOLBUAVrolTCHdS4Lxqo1t6GbLKFmNGd
-	njPEfFqPkh/LM9Pbpfp8YG1rRqioRb00qB3WV709yXHKVLx4ZECUO2tv16Bny2s8zy+FkeUwUWFOh
-	SgiuVNMhxbTKOUKp2SK2urDuPPC7L7SyCwpKfGfZ4JV5KwLc3TkIXHCPvY4HJr71sO/WRKs8UHSKo
-	Dgr+L+Qw==;
+	bh=lYDm2f88uo7N+T5CuGh2kGVIDaWbYMjQLaRZ3nU/m+Y=; b=eWIxzi+avCTEH5I4E9P5LLAwqP
+	ndE1ZydsLdAq7fJSuQTKQuOCSeBIZWe2nxlsp0KKscBM5sBHh82PbKuQ18FRu1YP1c0b5eovAYDmm
+	AB6CICVXBWXcir/ypvGZ+0TJJiHkWzms1p60KkC2QtCE5juKw4WbUALj7qDPfgIb3m5PctnTy6JTx
+	QoDmmpvHB1dMSqBPaqoo8upa8junu0s8Oaf1oxH1WB+C8Dyu57e3k49873q4O0XEGuD6y3jsamsMC
+	wf3u+YLx5okSZwlHp1VwEMr/WMr/OJZ0Z0xWe082mkzJCITO8Ldvdq++Dv3WXkgvSIvyWxk3qqRtd
+	OReg3Xbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqAYt-00APb6-Fu; Wed, 02 Nov 2022 10:01:31 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1oqAZw-00AQ16-RY; Wed, 02 Nov 2022 10:02:36 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqAYp-00APZM-JP
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 10:01:30 +0000
+	id 1oqAZt-00APza-UW
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 10:02:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1667383286;
+	s=mimecast20190719; t=1667383353;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=QoVTRIE06q1gLaA+FiGPh2NoY5TNtlfidxMdk3t+aTM=;
-	b=fuSs/eA4/7vZhV+X35FsnJlEhJ/20+W2k2LZenlQ7FIAvrb5mWjQpHZEEE3G7/vkuBezcY
-	ci/Smj7q/Z7hIgWVlQx1F2hNiJZQuFSvdEElWEudDf6CzncUGzYGNXoMcPmOQDpm4N2pDn
-	leC3TPAoQgZGNS5Qf5k3LtPYa4n+dVI=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=lYDm2f88uo7N+T5CuGh2kGVIDaWbYMjQLaRZ3nU/m+Y=;
+	b=ap5HxA5nVNBX4Kft77Bwp22PvJM5V9OpmiiEAw2stbn4gU+Gs5O+Y4jjxnUhYyK48Sa2H9
+	VdeuO4B+QuxURImRBUw0k/37Zkt2eUnI51CrT6GbQPXFqxWynnsaMbcqaYz0D0WearhG6L
+	lsJrFc0CDFyuArQOOPvOroA5dcElooY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-283-ALNyIc0YMEqJecZhmF3Ysw-1; Wed, 02 Nov 2022 06:01:25 -0400
-X-MC-Unique: ALNyIc0YMEqJecZhmF3Ysw-1
-Received: by mail-wr1-f70.google.com with SMTP id r4-20020adfbb04000000b00236639438e9so4699858wrg.11
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 03:01:25 -0700 (PDT)
+ us-mta-534-sLs5SckLMxOC9CP_l-OnQQ-1; Wed, 02 Nov 2022 06:02:31 -0400
+X-MC-Unique: sLs5SckLMxOC9CP_l-OnQQ-1
+Received: by mail-wm1-f69.google.com with SMTP id h204-20020a1c21d5000000b003cf4e055442so7753881wmh.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 03:02:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QoVTRIE06q1gLaA+FiGPh2NoY5TNtlfidxMdk3t+aTM=;
-        b=0KJomVR1e3iXAkiCZRlqE/lHkpQbBwBXc5Yq/u2RU4xOLyqLfALf99vtxTEdYwCocm
-         lrnpBsjoQbpmWmS5/aQtxEiGqBPQy3pRsBO3npUhFACxjlhUi9bmKQlltMd9emVAf8tL
-         seIg6f9y/lamYjW5k1LxI65f4962GTkvz2jgHCjyvaf7xEh2MAc2k/wPfjmIdNmz5HRe
-         BD0biaCEv2MqEHa6CKkklph6rwZN4PWOTK3fpstRyJe5lPduMfrPhErC9R3/PAZxI/1n
-         trL5Ct22gakh2hiuj/URzRY9YSpcwjyJ8mW6B20x1D4kXLxoQdCCk+aGnFSxJ3WexA3S
-         BieA==
-X-Gm-Message-State: ACrzQf1UMQ7g8Pv3m3fkB94uMVgMnkQoZXHC1On5erkNvZkmcd1tqwOC
-	sWge0eTqBNUHTBqp2QzaA9WcBo541aGgT9C+pyFHCLybXh6V+nDISmX7EmrAh7pYxkZ14JYtnuX
-	ArziewRErOzrUpRtG3YtvovzB0fE4TgHF
-X-Received: by 2002:a5d:5505:0:b0:236:582b:7eb0 with SMTP id b5-20020a5d5505000000b00236582b7eb0mr14405772wrv.68.1667383284455;
-        Wed, 02 Nov 2022 03:01:24 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5ieiweFPtXW5w3c0VZoUXMoQohTPuy1WtQBfT29g+UzlDhvHMzFOjUUUPFpm0LZwMa5DV8ag==
-X-Received: by 2002:a5d:5505:0:b0:236:582b:7eb0 with SMTP id b5-20020a5d5505000000b00236582b7eb0mr14405736wrv.68.1667383284200;
-        Wed, 02 Nov 2022 03:01:24 -0700 (PDT)
+        bh=lYDm2f88uo7N+T5CuGh2kGVIDaWbYMjQLaRZ3nU/m+Y=;
+        b=RewnkhrwukDEojyKSjULAjfm74bie/YZecfarfQ7jrABABNzlBo/Tco16Mi3uK2UOV
+         FHSuJNN7TfRkg26DL4VtZbZCMQKtdcV+EHOqKXlH6ebA8NJNWQs3Mp1Et5hvJQBbcj3Q
+         yrVDh+tXXWbWU/DNTLrcmMh4J0vS+mZaTBgMPQUXWXT7F9TWpaXysHX+TNC4Tp6LUPpN
+         40HszYWPN3WYVlo8nBnjMeC0TNqgUBUXkh297LcUVFokect2xrPv1to8HUmH88tRsd+S
+         HrUGndEjFeicFxL+9N+QmpdYyMkXzTUWBvOHMz095Wr+9faOYVRN1+VNUBQSLX7IpppT
+         fEFg==
+X-Gm-Message-State: ACrzQf1wLsdglQPXcVq61BSwj2dZ0B0C+t225DgZSY1k3/JjPlJGtpZB
+	TXgzCo23lOSqv0JErLWFA6AkLr83a1Ql9FVtq+jxyV0rBPAhT1Ky1X34qFIqXZyTvD33OhUaUEl
+	hirDoTms263DS59hLugHSlmxWVjM/8M2/
+X-Received: by 2002:adf:f9cf:0:b0:236:6a26:c055 with SMTP id w15-20020adff9cf000000b002366a26c055mr14584871wrr.195.1667383350613;
+        Wed, 02 Nov 2022 03:02:30 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6OHHkFmpcUlQhLx4VZSF/FNGP0hsrmpEExWtKIxFg2Jf6dmbAckk/gQVQTytU8dXpfU2B04w==
+X-Received: by 2002:adf:f9cf:0:b0:236:6a26:c055 with SMTP id w15-20020adff9cf000000b002366a26c055mr14584846wrr.195.1667383350420;
+        Wed, 02 Nov 2022 03:02:30 -0700 (PDT)
 Received: from [192.168.1.130] (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id b13-20020a5d550d000000b002366b17ca8bsm14230263wrv.108.2022.11.02.03.01.22
+        by smtp.gmail.com with ESMTPSA id fn13-20020a05600c688d00b003a3170a7af9sm1564836wmb.4.2022.11.02.03.02.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 03:01:23 -0700 (PDT)
-Message-ID: <1d2b9809-857f-48cc-1177-72e6fc67b8e5@redhat.com>
-Date: Wed, 2 Nov 2022 11:01:22 +0100
+        Wed, 02 Nov 2022 03:02:30 -0700 (PDT)
+Message-ID: <68309442-ad39-36da-b1ec-680dd4129a7f@redhat.com>
+Date: Wed, 2 Nov 2022 11:02:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
-Subject: Re: [PATCH v2 20/21] drm/fb-helper: Move generic fbdev emulation into
- separate source file
+Subject: Re: [PATCH v2 21/21] drm/fb-helper: Remove unnecessary include
+ statements
 To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
  airlied@gmail.com, sam@ravnborg.org, mripard@kernel.org,
  maarten.lankhorst@linux.intel.com
@@ -89,17 +89,17 @@ Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org
 References: <20221024111953.24307-1-tzimmermann@suse.de>
- <20221024111953.24307-21-tzimmermann@suse.de>
+ <20221024111953.24307-22-tzimmermann@suse.de>
 From: Javier Martinez Canillas <javierm@redhat.com>
-In-Reply-To: <20221024111953.24307-21-tzimmermann@suse.de>
+In-Reply-To: <20221024111953.24307-22-tzimmermann@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_030127_750850_5CA80271 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20221102_030234_083330_496AC589 
+X-CRM114-Status: UNSURE (   8.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -116,12 +116,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/24/22 13:19, Thomas Zimmermann wrote:
-> Move the generic fbdev implementation into its own source and header
-> file. Adapt drivers. No functonal changes, but some of the internal
-> helpers have been renamed to fit into the drm_fbdev_ naming scheme.
+> Remove include statements for <drm/drm_fb_helper.h> where it is not
+> required (i.e., most of them). In a few places include other header
+> files that are required by the source code.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > ---
+
 Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
 
 -- 
