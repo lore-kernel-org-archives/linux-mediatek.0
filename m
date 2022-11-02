@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D355C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 11:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC19C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 12:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+weQtxfgoNBES+U0BFPfLStOe9TACD1kLz8vTrv2O+E=; b=SUm5FfHQcg1gMxXwvhOsGtN200
-	FLXh29o+9CiYSlvguFXaNr9m0J65tou8s9GB5R7AJqih+48McFyB+dXYyay5N9B1nvjCujsDi4ikw
-	/jis6t7lWtCerKc/JRY4G4RThjH+wHnyat12IbOGNxYjrto3ysyLspBYA8DpF+ZZxqtUn6pdXqTDL
-	tltQ4fXlO4ifrhlYsWYAoE4VNRSfSX0yHB5B5QcxYP68B4k7a3gpUUQNlYtyNkqy0zQFhBGYrlqVq
-	E3JWUiF4uJuqLRF547GezxxPooV+Db60UoZWAsmU/82XCyeaGNzKqg0tMAAQ7p6mJJEvbOFwiBf1I
-	KvSSLLNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XIwwONpUR9SdSPR3A4IDAkq7FO9Vi6bAN02Uo080t4Q=; b=dXhXE/z4I7zfLD4PNnicWC/fAz
+	8yvqcufzEyJDcgMZ/D1tvXyzIK851lwUDKKC9pfeKZB76cwrYVDRYb7wSru53VnYXVFC3ELMVMNr0
+	klayNmpot2KYhto0IPnUoXHMOGmNdnmPZJ/f3AIMaKcE7P5lYTrwDvQ/dnjYaakf4YIHrWGMzrqBS
+	JtTZ4poKTPI7m/Z3xwEhmAm+PljyLTxF9rSfeWbmLrXZwyrBlNRDg6VviTmUvSZAPnQH9VSNpyeDQ
+	kQRY7FfJtjW29vjdrZ32Yds3/6nT0m35iJpfk1xrAgzEkogxIYDK3aXlFqTr0vdmRnR1BnTEfZceN
+	FVpwDh6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqC6t-00AnOl-QD; Wed, 02 Nov 2022 11:40:43 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1oqCaH-00Av8E-F6; Wed, 02 Nov 2022 12:11:05 +0000
+Received: from mail.astralinux.ru ([217.74.38.119])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqC6j-00AnLQ-1n; Wed, 02 Nov 2022 11:40:34 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1oqC6I-0002qz-Nw; Wed, 02 Nov 2022 12:40:06 +0100
-Date: Wed, 2 Nov 2022 11:40:01 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	id 1oqCa5-00Av3Z-UQ; Wed, 02 Nov 2022 12:10:55 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.astralinux.ru (Postfix) with ESMTP id 240631864286;
+	Wed,  2 Nov 2022 15:10:37 +0300 (MSK)
+Received: from mail.astralinux.ru ([127.0.0.1])
+	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10032)
+	with ESMTP id x3qXL0O3_M-d; Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.astralinux.ru (Postfix) with ESMTP id C9B7A1864285;
+	Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
+X-Virus-Scanned: amavisd-new at astralinux.ru
+Received: from mail.astralinux.ru ([127.0.0.1])
+	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id OhcNLsfn8h1N; Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
+Received: from rbta-msk-lt-106062.astralinux.ru (unknown [10.177.20.20])
+	by mail.astralinux.ru (Postfix) with ESMTPSA id 1483F1864280;
+	Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
+From: Anastasia Belova <abelova@astralinux.ru>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Anastasia Belova <abelova@astralinux.ru>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] net: ethernet: mediatek: ppe: add support for flow
- accounting
-Message-ID: <Y2JXEfRDZO2oPoMT@makrotopia.org>
-References: <Y2HAmYYPd77dz+K5@makrotopia.org>
- <20221101204945.35edb8e6@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	lvc-project@linuxtesting.org
+Subject: [PATCH v2] vcodec: mediatek: add check for NULL for 
+Date: Wed,  2 Nov 2022 15:10:27 +0300
+Message-Id: <20221102121027.4285-1-abelova@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221101204945.35edb8e6@kernel.org>
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_044033_134422_DC9FCCE0 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20221102_051054_187747_3E857FBA 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,40 +79,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jakub,
+Any time calling vp9_is_sf_ref_fb we need fb !=3D NULL after checks.
 
-On Tue, Nov 01, 2022 at 08:49:45PM -0700, Jakub Kicinski wrote:
-> On Wed, 2 Nov 2022 00:58:01 +0000 Daniel Golle wrote:
-> > The PPE units found in MT7622 and newer support packet and byte
-> > accounting of hw-offloaded flows. Add support for reading those
-> > counters as found in MediaTek's SDK[1].
-> > 
-> > [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/bc6a6a375c800dc2b80e1a325a2c732d1737df92
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > v4: declare function mtk_mib_entry_read as static
-> > v3: don't bother to set 'false' values in any zero-initialized struct
-> >     use mtk_foe_entry_ib2
-> >     both changes were requested by Felix Fietkau
-> > 
-> > v2: fix wrong variable name in return value check spotted by Denis Kirjanov
-> 
-> Please read the FAQ:
-> 
-> https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#tl-dr
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-I'm sorry for re-submitting the fixes to frequently. I'll give it more
-time in future.
+Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video De=
+coder Driver")
 
-> 
-> https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them
-> 
+Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+---
+ drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-It wasn't my intention to out-source testing to the patchwork bot.
-I do run checks as recommended locally, which includes checkpatch.pl,
-build and run-time testing. And though in this case an unneeded export
-of a function was also indicated by my local compiler, I must have
-missed it in the output of the kernel build. I will try to improve my
-workflow in such a way that it will be less likely to miss new compiler
-warnings.
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/=
+drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+index 70b8383f7c8e..776468cd834a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+@@ -208,6 +208,9 @@ static bool vp9_is_sf_ref_fb(struct vdec_vp9_inst *in=
+st, struct vdec_fb *fb)
+ 	int i;
+ 	struct vdec_vp9_vsi *vsi =3D inst->vsi;
+=20
++	if (!fb)
++		return true;
++
+ 	for (i =3D 0; i < ARRAY_SIZE(vsi->sf_ref_fb); i++) {
+ 		if (fb =3D=3D &vsi->sf_ref_fb[i].fb)
+ 			return true;
+--=20
+2.30.2
+
 
