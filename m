@@ -4,91 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6865DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 13:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82777C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 13:31:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mlsbvkprHgJ0IvQTZa5UDDXjtB5OH5rT8mURrSqNxzk=; b=s8rNZRBDy7/oSej20+dO9k75ys
-	Zez+YrndNR73qjOIHtlHCLVsoql2Xj3SX1Om0l6lpwkuYcdVUPj5IpStG3bgzMTrXP8sdfA9sj8Vf
-	Zrfb8OBMvOt7gtsNbRNLLhjw0FVOMun8l+MOLSP/FAfsJXBDImWf7duG2ZkeU7YQZ16Hb/iFZ8jZB
-	AQmKRXnLxMha/qV+RNSd7ibcWSIV74aKaQvRiJjbOujnic//NQYBLZJlL3RC71nTB18+gvpH/Kp7t
-	WDdYyDs10y1rEwtiZgBh0vN0tSv9y0livWDhnL3ROEQ+kVXUTqg2sv2xSMXSIH847t7lvi1AFfO22
-	soVVIlMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Qt810txVALNNyUdY4OEJ1D3fYrKTdtnWDD3u56EERwI=; b=Zv4h5408SbNsUgz3qWEsTGaufL
+	AibArVwiPKfQGxcmvzWNLlxL6D2EjsRUHPxYTiLKUsGxIa7zgiDSe8OBZCrnV4pk9iwQj4Dse+jD5
+	HVbGwQbIakJm5GP4F3LR2syXJxAFpmE1EO+USbfc3I8rtgje11hSMVqc73Srlv1TU1CkzZmf48gIs
+	oY1ioNpXPRu/yU7d2Ik9J6UiHp3663D9t3LQn5IhElskFtucvwV8RU564bgTehaZmEiLqXTmB+qD4
+	CwR3LGAjsnuVCI3HNEWJKtU1ji6sq+YD9fIckHEvrL01+FWhumMEqGgM6JP/ewmE2/u8QfZ+SBrza
+	b/95Hvdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqDLh-00B81g-W8; Wed, 02 Nov 2022 13:00:06 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1oqDqI-00BIk8-2x; Wed, 02 Nov 2022 13:31:42 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqDLV-00B7vv-4e
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 12:59:54 +0000
-Received: by mail-pf1-x443.google.com with SMTP id k22so16348681pfd.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 05:59:52 -0700 (PDT)
+	id 1oqDq6-00BIfc-6i
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 13:31:34 +0000
+Received: by mail-lf1-x131.google.com with SMTP id g12so28275466lfh.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 06:31:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=compal-corp-partner-google-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mlsbvkprHgJ0IvQTZa5UDDXjtB5OH5rT8mURrSqNxzk=;
-        b=XfdLwi+fBWNdR07gP135luAlA0nVau1Cw5zbb2hxknBCIkfwtYOc/bfFZnoJtyPaX2
-         HgKFu0slPqynpEHStt2ORdu8T+yki9L6MGZ0bnVFrD7v2GVqrFOsi626LAgaNMeZPSAa
-         3/J1Ain+MxYBdhDS9Esbyuqm88vYSKSy8J+l+qYqwtBMpaE3KnecHcGFNq+SS82Gp7Gv
-         3+yzLmBYbl1sFCnH2Hx4ga4ybt4UqW3fy/4VtTUC+ldwiyw5FeAMEcfqXsbLpNCyn4hE
-         KoQVDSSes9KK+3XnPOVvIMzAYS+hDKzEE9UGSMD7sRlFCrDHBMXpiE9zU6HLlX4pFIPZ
-         7PsQ==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Qt810txVALNNyUdY4OEJ1D3fYrKTdtnWDD3u56EERwI=;
+        b=3xmqrEhp6kIZuyPMYnSPokp0VKivtqklDyyWKzYNWn7RZ9r32jO+TYfFJYvac4ILFA
+         HN8cAoqwO36KNOPekRjuxDsqK6LQuARHGNBy7DDo2ods9roVUhZI42CQh5OFNUZKbTfG
+         F9gCKBM7koia5e0VuYUIfiKOHb3GGXspmKJ7JmSWnnDslrPKhxbER3LVZJ8JhFK+Is6V
+         V64OO2OHY3kFRAvTWv/NIU604DON7dRgX2bQETft6CwN1IGmZVn9qrvWFUZ5OmHKlnZ2
+         TVsTmVfPlMVH8huodx3nlqli2FqtWsmNB+OZqtu3f39Bn7ooCpAkDJ2DQH11Qrs6wy8W
+         5zog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mlsbvkprHgJ0IvQTZa5UDDXjtB5OH5rT8mURrSqNxzk=;
-        b=L5WPsxXmw9PnPDB/oV9n9Ann5siOjFz+O7+DJlGMvNdwvEGwvFipjMSYxt0McrLVbQ
-         M/xDF2Woq8EaZRcw3d2Vm1gQzOdXKZ7HNADflZu7KnhoaqISXcaQSUsplYm7mPn5k1ib
-         lfvgBanfi7y7I2xIhw8ez2mEUzAc9iqGx5zTEX4jfagU9s0nq+VoDfSa2QLV9yRe4tY3
-         B93tUMg59hYgHF8HB6evwyJIUd8DwMirLqat2EZM7hvbBkiIcidKwZSCyOnx1BUKlkjD
-         khIcozdn56AuFQiUUVjab/qtJU5SZUX8WHz6tHrNy2hbDrP1RJ2bFiPVNIWd5b2XPQtr
-         4niw==
-X-Gm-Message-State: ACrzQf0x32sV7iFR8PetbQHlv7QmDiTPdI+TjXjCGT/wFUgShGaagaGI
-	Gxr98/1SQOVDSivAsTWA1/CB4g==
-X-Google-Smtp-Source: AMsMyM57eJFobr+3azOKWBFaR8GmbVtKN1BTYzoXsux0SGZ8FxcKEpPB1rhY9C/MHc7zeWxAHCwOgg==
-X-Received: by 2002:a63:5d12:0:b0:46e:cd38:3f76 with SMTP id r18-20020a635d12000000b0046ecd383f76mr21099814pgb.64.1667393992283;
-        Wed, 02 Nov 2022 05:59:52 -0700 (PDT)
-Received: from localhost.localdomain (118-167-210-180.dynamic-ip.hinet.net. [118.167.210.180])
-        by smtp.gmail.com with ESMTPSA id k14-20020a170902d58e00b0017f59ebafe7sm8259345plh.212.2022.11.02.05.59.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Nov 2022 05:59:51 -0700 (PDT)
-From: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
-To: linux-kernel@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	"chunxu . li" <chunxu.li@mediatek.com>,
-	Takashi Iwai <tiwai@suse.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	alsa-devel@alsa-project.org
-Subject: [PATCH v6 2/2] ASoC: mediatek: mt8186-rt5682: Modify machine driver for two DMICs case
-Date: Wed,  2 Nov 2022 20:59:36 +0800
-Message-Id: <20221102125936.2176748-3-ajye_huang@compal.corp-partner.google.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221102125936.2176748-1-ajye_huang@compal.corp-partner.google.com>
-References: <20221102125936.2176748-1-ajye_huang@compal.corp-partner.google.com>
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Qt810txVALNNyUdY4OEJ1D3fYrKTdtnWDD3u56EERwI=;
+        b=OIww5iDI8nQbHmq/6MaZm4WHguX4xIa4s6ABEq6sKl71Q2VjU/dM6tYtt1LU56Wl1Z
+         7jbcT3wt3DsY/92dWwbB9OSqgkeljYEZI3cf/G6x7/vEEVBDNh6UkV3XsoEkVHIRKQak
+         Zr0szjmD7ryRX1kjIwe1Abks59wg0+DIiivpqHZBA/1WxmfcFrXEQnfqixLP9/DW05lk
+         33oqjjTk3L6HPqAbkxaEZTHjCBsx2FPaWt0NT3QRftYOryJWu4hRx0phAnITnj1oiJXE
+         tglgTBx3EmbfaZ5QrtgZwSClc/ilj1AbjGne7l05bolFY0FLHTMtp7xDj/Jcy37/0kDN
+         LGTQ==
+X-Gm-Message-State: ACrzQf1IShO/LXnDUIWfDh1lTHJjZlU2DI8m0aG/FAYGyoCbJFMhXZvB
+	+7k+hF7t8YjEzb6DzSdcnAWhIamm53HZPTqCCd8WHg==
+X-Google-Smtp-Source: AMsMyM7NEe/GaJR4NF+KA5B639tBCDJwn4kT6yPPjmVJnVe6xV1T07jvraVMLccE++55BYXBEE26QqdBGn1uy3S8WHM=
+X-Received: by 2002:ac2:5e33:0:b0:4a2:1d16:5cc2 with SMTP id
+ o19-20020ac25e33000000b004a21d165cc2mr8578793lfg.620.1667395887603; Wed, 02
+ Nov 2022 06:31:27 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 2 Nov 2022 13:31:27 +0000
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.2
+References: <20220919-v2-0-8419dcf4f09d@baylibre.com> <20220919-v2-2-8419dcf4f09d@baylibre.com>
+ <c91ee3ce-3f30-a3ef-bb38-8571e488b6b6@linaro.org>
+In-Reply-To: <c91ee3ce-3f30-a3ef-bb38-8571e488b6b6@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Wed, 2 Nov 2022 13:31:26 +0000
+Message-ID: <CABnWg9t3w4o4rmNosvYCpqG-h8DESerajH7OsXEYofRf2kr1Xg@mail.gmail.com>
+Subject: Re: [PATCH v2 02/12] dt-bindings: display: mediatek: add MT8195 hdmi bindings
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, David Airlie <airlied@gmail.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Jitao shi <jitao.shi@mediatek.com>, 
+	CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: stuart.lee@mediatek.com, linux-phy@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	mac.shen@mediatek.com, linux-mediatek@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_055953_205418_C9B8C3F1 
-X-CRM114-Status: GOOD (  19.47  )
+X-CRM114-CacheID: sfid-20221102_063130_281188_20832B98 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,162 +96,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Having two DMICs, a front DMIC and a Rear DMIC,
-but only host audio input AUX port0 is used for these two Dmics.
-A "dmic-gpios" property is used for a mixer control to switch
-the dmic signal source between the Front and Rear Dmic.
+On Fri, 14 Oct 2022 18:08, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>On 14/10/2022 11:15, Guillaume Ranquet wrote:
+>> Add mt8195 SoC bindings for hdmi and hdmi-ddc
+>>
+>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>> ---
+>>  .../bindings/display/mediatek/mediatek,hdmi.yaml   | 67 +++++++++++++++++-----
+>>  .../display/mediatek/mediatek,mt8195-hdmi-ddc.yaml | 51 ++++++++++++++++
+>>  2 files changed, 104 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
+>> index bdaf0b51e68c..955026cd7ca5 100644
+>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
+>> @@ -21,26 +21,21 @@ properties:
+>>        - mediatek,mt7623-hdmi
+>>        - mediatek,mt8167-hdmi
+>>        - mediatek,mt8173-hdmi
+>> +      - mediatek,mt8195-hdmi
+>>
+>>    reg:
+>>      maxItems: 1
+>>
+>> -  interrupts:
+>> -    maxItems: 1
+>> -
+>
+>This change is not really explained in commit msg...
+>
+>>    clocks:
+>> -    items:
+>> -      - description: Pixel Clock
+>> -      - description: HDMI PLL
+>> -      - description: Bit Clock
+>> -      - description: S/PDIF Clock
+>> +    minItems: 4
+>> +    maxItems: 4
+>>
+>>    clock-names:
+>> -    items:
+>> -      - const: pixel
+>> -      - const: pll
+>> -      - const: bclk
+>> -      - const: spdif
+>> +    minItems: 4
+>> +    maxItems: 4
+>> +
+>> +  interrupts:
+>> +    maxItems: 1
+>>
+>>    phys:
+>>      maxItems: 1
+>> @@ -58,6 +53,9 @@ properties:
+>>      description: |
+>>        phandle link and register offset to the system configuration registers.
+>>
+>> +  power-domains:
+>> +    maxItems: 1
+>> +
+>>    ports:
+>>      $ref: /schemas/graph.yaml#/properties/ports
+>>
+>> @@ -86,9 +84,50 @@ required:
+>>    - clock-names
+>>    - phys
+>>    - phy-names
+>> -  - mediatek,syscon-hdmi
+>>    - ports
+>>
+>> +allOf:
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            const: mediatek,mt8195-hdmi
+>> +    then:
+>> +      properties:
+>> +        clocks:
+>> +          items:
+>> +            - description: APB
+>> +            - description: HDCP
+>> +            - description: HDCP 24M
+>> +            - description: Split HDMI
+>> +        clock-names:
+>> +          items:
+>> +            - const: hdmi_apb_sel
+>> +            - const: hdcp_sel
+>> +            - const: hdcp24_sel
+>> +            - const: split_hdmi
+>> +
+>> +      required:
+>> +        - power-domains
+>> +    else:
+>> +      properties:
+>> +        clocks:
+>> +          items:
+>> +            - description: Pixel Clock
+>> +            - description: HDMI PLL
+>> +            - description: Bit Clock
+>> +            - description: S/PDIF Clock
+>> +
+>> +        clock-names:
+>> +          items:
+>> +            - const: pixel
+>> +            - const: pll
+>> +            - const: bclk
+>> +            - const: spdif
+>> +
+>> +      required:
+>> +        - mediatek,syscon-hdmi
+>> +
+>>  additionalProperties: false
+>>
+>>  examples:
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
+>> new file mode 100644
+>> index 000000000000..0fe0a2a2f17f
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
+>> @@ -0,0 +1,51 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Mediatek HDMI DDC for mt8195
+>> +
+>> +maintainers:
+>> +  - CK Hu <ck.hu@mediatek.com>
+>> +  - Jitao shi <jitao.shi@mediatek.com>
+>> +
+>> +description: |
+>> +  The HDMI DDC i2c controller is used to interface with the HDMI DDC pins.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    enum:
+>> +      - mediatek,mt8195-hdmi-ddc
+>
+>I think I wrote it - you already have bindings for HDMI DDC. I doubt
+>that these are different and it looks like you model the bindings
+>according to your driver. That's not the way.
 
-Refer to this one as an example,
-commit 3cfbf07c6d27
-("ASoC: qcom: sc7180: Modify machine driver for 2mic")
+Hi Krzysztof,
 
-Signed-off-by: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
----
- .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 102 +++++++++++++++++-
- 1 file changed, 101 insertions(+), 1 deletion(-)
+I've made a separate binding as this new IP is integrated into the
+HDMI hw block.
+The difference it makes is that the hw is slightly simpler to describe
+as the IP doesn't
+have it's own range of registers or an interrupt line.
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 2414c5b77233..16d834f3153d 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -7,6 +7,8 @@
- // Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
- //
- 
-+#include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/input.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-@@ -39,6 +41,8 @@
- 
- struct mt8186_mt6366_rt1019_rt5682s_priv {
- 	struct snd_soc_jack headset_jack, hdmi_jack;
-+	struct gpio_desc *dmic_sel;
-+	int dmic_switch;
- };
- 
- /* Headset jack detection DAPM pins */
-@@ -68,6 +72,94 @@ static struct snd_soc_codec_conf mt8186_mt6366_rt1019_rt5682s_codec_conf[] = {
- 	},
- };
- 
-+static int dmic_get(struct snd_kcontrol *kcontrol,
-+		    struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_dapm_context *dapm = snd_soc_dapm_kcontrol_dapm(kcontrol);
-+	struct mtk_soc_card_data *soc_card_data =
-+		snd_soc_card_get_drvdata(dapm->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+
-+	ucontrol->value.integer.value[0] = priv->dmic_switch;
-+	return 0;
-+}
-+
-+static int dmic_set(struct snd_kcontrol *kcontrol,
-+		    struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_dapm_context *dapm = snd_soc_dapm_kcontrol_dapm(kcontrol);
-+	struct mtk_soc_card_data *soc_card_data =
-+		snd_soc_card_get_drvdata(dapm->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+
-+	priv->dmic_switch = ucontrol->value.integer.value[0];
-+	if (priv->dmic_sel) {
-+		gpiod_set_value(priv->dmic_sel, priv->dmic_switch);
-+		dev_info(dapm->card->dev, "dmic_set_value %d\n",
-+			 priv->dmic_switch);
-+	}
-+	return 0;
-+}
-+
-+static const char * const dmic_mux_text[] = {
-+	"Front Mic",
-+	"Rear Mic",
-+};
-+
-+static SOC_ENUM_SINGLE_DECL(mt8186_dmic_enum,
-+			    SND_SOC_NOPM, 0, dmic_mux_text);
-+
-+static const struct snd_kcontrol_new mt8186_dmic_mux_control =
-+	SOC_DAPM_ENUM_EXT("DMIC Select Mux", mt8186_dmic_enum,
-+			  dmic_get, dmic_set);
-+
-+static const struct snd_soc_dapm_widget dmic_widgets[] = {
-+	SND_SOC_DAPM_MIC("DMIC", NULL),
-+	SND_SOC_DAPM_MUX("Dmic Mux", SND_SOC_NOPM, 0, 0, &mt8186_dmic_mux_control),
-+};
-+
-+static const struct snd_soc_dapm_route dmic_map[] = {
-+	/* digital mics */
-+	{"Dmic Mux", "Front Mic", "DMIC"},
-+	{"Dmic Mux", "Rear Mic", "DMIC"},
-+};
-+
-+static int primary_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
-+	int ret;
-+
-+	ret = mt8186_mt6366_init(rtd);
-+
-+	if (ret) {
-+		dev_err(card->dev, "mt8186_mt6366_init failed: %d\n", ret);
-+		return ret;
-+	}
-+
-+	if (!priv->dmic_sel) {
-+		dev_info(card->dev, "dmic_sel is null\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dapm_new_controls(&card->dapm, dmic_widgets,
-+					ARRAY_SIZE(dmic_widgets));
-+	if (ret) {
-+		dev_err(card->dev, "DMic widget addition failed: %d\n", ret);
-+		/* Don't need to add routes if widget addition failed */
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dapm_add_routes(&card->dapm, dmic_map,
-+				      ARRAY_SIZE(dmic_map));
-+
-+	if (ret)
-+		dev_err(card->dev, "DMic map addition failed: %d\n", ret);
-+
-+	return ret;
-+}
-+
- static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
- {
- 	struct snd_soc_component *cmpnt_afe =
-@@ -775,7 +867,7 @@ static struct snd_soc_dai_link mt8186_mt6366_rt1019_rt5682s_dai_links[] = {
- 		.dpcm_playback = 1,
- 		.dpcm_capture = 1,
- 		.ignore_suspend = 1,
--		.init = mt8186_mt6366_init,
-+		.init = primary_codec_init,
- 		SND_SOC_DAILINK_REG(adda),
- 	},
- 	{
-@@ -1015,6 +1107,14 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
- 
- 	soc_card_data->mach_priv = mach_priv;
- 
-+	mach_priv->dmic_sel = devm_gpiod_get_optional(&pdev->dev,
-+						      "dmic", GPIOD_OUT_LOW);
-+	if (IS_ERR(mach_priv->dmic_sel)) {
-+		dev_err(&pdev->dev, "DMIC gpio failed err=%ld\n",
-+			PTR_ERR(mach_priv->dmic_sel));
-+		return PTR_ERR(mach_priv->dmic_sel);
-+	}
-+
- 	adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
- 	if (adsp_node) {
- 		struct mtk_sof_priv *sof_priv;
--- 
-2.25.1
+I can use the "legacy mediatek mtk ddc binding" if I modify it to have
+the reg and
+interrupt properties not being required for mt8195.
 
+Would that work better for you?
+
+>
+>> +
+>> +  clocks:
+>> +    maxItems: 1
+>> +
+>> +  clock-names:
+>> +    items:
+>> +      - const: ddc
+>> +
+>> +  mediatek,hdmi:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>> +    description:
+>> +      A phandle to the mt8195 hdmi controller
+>> +
+>> +required:
+>> +  - compatible
+>> +  - clocks
+>> +  - clock-names
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>> +    #include <dt-bindings/interrupt-controller/irq.h>
+>> +    hdmiddc0: ddc_i2c {
+>
+>Node names should be generic - ddc.
+>https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+>
+>No underscores in node names.
+>
+>Additionally I2C devices have addresses on the bus. Why this one doesn't?
+>
+
+This is an i2c adapter, not a device.
+And as it lives inside the HDMI hw block, I've omitted using an address here.
+
+Is this valid? or should this be expressed differently?
+
+Thx,
+Guillaume.
+
+>> +      compatible = "mediatek,mt8195-hdmi-ddc";
+>> +      mediatek,hdmi = <&hdmi0>;
+>> +      clocks = <&clk26m>;
+>> +      clock-names = "ddc";
+>> +    };
+>> +
+>> +...
+>>
+>
+>Best regards,
+>Krzysztof
+>
 
