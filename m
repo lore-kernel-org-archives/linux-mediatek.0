@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7739CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 19:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08863C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 19:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RFNfY9d3J3FGfhHeuKP6i9tm4DRtRshTbbDnkz68QE0=; b=W1BRkzfXmA9NwDiyXGRjytrLhN
-	qEnyc9STf9XkvoulgUh9Roxyg2iq8eoqj0y0LgJhAuJeQJbWD71/2QcA1hztjrpcG59FEKwdSg7nh
-	z7cmgFQ5ozdZEFwrhALbF+DXHD/jq2+CQNAJWhCVLot5c7xjtMveV4qjA+3gbXsDFJGFvxPsJ10lF
-	0oWGq8n5JBdQvQn5fBA6vD/xV4ptel+OccjKAloA+Bp6zdHMB6rcMCdHWpGSbSSno1Oby/seIS39y
-	DLPit6hXTSBDft7NMHtFxNQv5CaFMkA25qGqPwe102bw73di/yBWxdYojZP5yWj+eXD42WPpidRqh
-	lWlli1IQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4EDI3vYbHaaiAQeZuuGzJ5Pv1WpOR32gAtsS0QDWLuw=; b=q6tYIFspbUoi/l/fsRrjf9GOHi
+	WKReGVIvSm/iVN2+hB3sBb7EhlqDJq6Ji1/dpibSk8NT/luhTonKsGU7dCNf2A2YgR4dO1mnxuURf
+	l2qK3vKkOuufapXR4ovb8uVjEvdMzFe5wbGNIqfCkZD0aL6/Za+oWh8ctAr6Y89iBLmy8YcW8UV6T
+	pO96kQ1mUtjzIwA1z4ZzVYveMWgYLUt0FcQOqdRjoPrwHkqy3AP+V1eixUy0iMPBF4uzUJobtZRxD
+	YJpo8m95QaBmqXPBGmhwYypU8NHgaB/qX8GLMXtwdyUiRIMSS2i0TFSQINLIVLh0wyM/SthSlmc4+
+	Hf0T0HYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqJ5y-00DUcH-Be; Wed, 02 Nov 2022 19:08:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oqJJw-00Di4Y-Bd; Wed, 02 Nov 2022 19:22:40 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqJ4I-00DSYH-83; Wed, 02 Nov 2022 19:06:32 +0000
-Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C9D2966028BD;
-	Wed,  2 Nov 2022 19:06:27 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667415989;
-	bh=psNsBgRZUfl25MmyYsegtoE6p8qBYKvjuaAigeczHcs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BzUZx3QI5rk9bRKJ/8KzAxkEVIXNJ+QBKyG0LMVSOyppAkTPIVMdu6NXv5wMN8oNo
-	 4AlA3dZhpmeLUggTxnViPoZTn9mD0lydKzTacl/XHLlArSbkxB8EuV5xyjuB6NgXf0
-	 1kUO1NR7iGdyuep8Kct9VqnrJMq3CDW+InY8tWOLJ+XmTEAZBAWiLdatnFUtLfpwr/
-	 2gfDkryv8KWwn6Tyxg7hf3gOgoXh+3pvclEQrUl0gA4fljUi/oaPQca2B/7aIwrDhY
-	 kr7YB7ZVMEk1PnQK6d5aqy22IftEu0y/eJMrdWSpiZDSHHvhCiXU5WRKfZG7lwt/ox
-	 NWPNl0xlr28Bg==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
+	id 1oqJJW-00Dhcg-9j
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 19:22:16 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id b185so17280107pfb.9
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 12:22:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4EDI3vYbHaaiAQeZuuGzJ5Pv1WpOR32gAtsS0QDWLuw=;
+        b=cf2nTr5YnckoTzWzbGWmtwmcSXrd8AamU45cN4BkmLr5woysN2W1kdbIKrPwII4PVI
+         ce8I7YTY4uSDnL6ZPBTz94gxiF8GCs7pA974P296j4z8qCIMA1+np81HnE/zTRa6yv+M
+         k3Z8gi82o4u4QsaXVn9ASZodldSA4+ubXIZL0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4EDI3vYbHaaiAQeZuuGzJ5Pv1WpOR32gAtsS0QDWLuw=;
+        b=GLlPCy2K4ZeHiWu2mwm61wzx3B7EvhSfzN16wRuKexVHbAG1bzBrF3Ai41vYAox/H2
+         n5kJ9zqNdmBBTpxDVjAN8e/GcLRQOonBUSwDkv/PKjlrHe4MId4ZLGB5LLZRoYZ4nPJV
+         SjwHcC+cA/HTp0reMvZE1jfVN/iDwgL17eG091HPXTZjksnRiOuJSGvgyk8AfnSal+ZP
+         8iiWAwxPbo0NN2+kdLDCee6Xh5vt9ejodQsTDgBmDsuoCBkp7r1HzGen3Z2/ynH37gz7
+         g6dR+kI3Ic1hLMnNDcDNpSItN6jnc7hJsCoYOI50WSifNgI3Ahwmb+vMdlT1BNaR9vce
+         J/+A==
+X-Gm-Message-State: ACrzQf0UJNgHIdEEEarA9ycsuWivDrBrYd1lvyBEw7RtaOl1FjaSxuzi
+	RY7wABbd5t8k9TJxixn1Shk1ZQ==
+X-Google-Smtp-Source: AMsMyM6VtLTeGYSXsL6Ro3gC8gkszOK2+Cjl0KViNXychOWaLiDIqn26ITH/JYsmSRn3aX4X3qwIeQ==
+X-Received: by 2002:a05:6a00:1391:b0:56d:2b6f:57b3 with SMTP id t17-20020a056a00139100b0056d2b6f57b3mr23293181pfg.56.1667416932256;
+        Wed, 02 Nov 2022 12:22:12 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+        by smtp.gmail.com with ESMTPSA id 85-20020a621658000000b005609d3d3008sm9054723pfw.171.2022.11.02.12.22.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Nov 2022 12:22:11 -0700 (PDT)
+Date: Wed, 2 Nov 2022 12:22:11 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 5/5] arm64: dts: mediatek: asurada: Add aliases for i2c and mmc
-Date: Wed,  2 Nov 2022 15:06:11 -0400
-Message-Id: <20221102190611.283546-6-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221102190611.283546-1-nfraprado@collabora.com>
-References: <20221102190611.283546-1-nfraprado@collabora.com>
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>, Sami Tolvanen <samitolvanen@google.com>,
+	llvm@lists.linux.dev, linux-kernel@vger.kernel.org,
+	patches@lists.linux.dev
+Subject: Re: [PATCH] drm/mediatek: Fix return type of
+ mtk_hdmi_bridge_mode_valid()
+Message-ID: <202211021222.1E8A8BCB43@keescook>
+References: <20221102154712.540548-1-nathan@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221102154712.540548-1-nathan@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_120630_452151_A0476156 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20221102_122214_372352_8EC19CEB 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,42 +92,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add aliases for the i2c and mmc nodes on the Asurada platform DT to
-ensure that we get stable ids for those devices on userspace.
+On Wed, Nov 02, 2022 at 08:47:12AM -0700, Nathan Chancellor wrote:
+> With clang's kernel control flow integrity (kCFI, CONFIG_CFI_CLANG),
+> indirect call targets are validated against the expected function
+> pointer prototype to make sure the call target is valid to help mitigate
+> ROP attacks. If they are not identical, there is a failure at run time,
+> which manifests as either a kernel panic or thread getting killed. A
+> proposed warning in clang aims to catch these at compile time, which
+> reveals:
+> 
+>   drivers/gpu/drm/mediatek/mtk_hdmi.c:1407:16: error: incompatible function pointer types initializing 'enum drm_mode_status (*)(struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' with an expression of type 'int (struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' [-Werror,-Wincompatible-function-pointer-types-strict]
+>           .mode_valid = mtk_hdmi_bridge_mode_valid,
+>                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+>   1 error generated.
+> 
+> ->mode_valid() in 'struct drm_bridge_funcs' expects a return type of
+> 'enum drm_mode_status', not 'int'. Adjust the return type of
+> mtk_hdmi_bridge_mode_valid() to match the prototype's to resolve the
+> warning and CFI failure.
+> 
+> Link: https://github.com/ClangBuiltLinux/linux/issues/1750
+> Reported-by: Sami Tolvanen <samitolvanen@google.com>
+> Signed-off-by: Nathan Chancellor <nathan@kernel.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Reviewed-by: Kees Cook <keescook@chromium.org>
 
----
-
-Changes in v3:
-- Removed i2c4, 5, 6, 8 and 9 as they aren't used on asurada
-
-Changes in v2:
-- Added this commit
-
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index ce9e43475f9e..9f12257ab4e7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -11,6 +11,13 @@
- 
- / {
- 	aliases {
-+		i2c0 = &i2c0;
-+		i2c1 = &i2c1;
-+		i2c2 = &i2c2;
-+		i2c3 = &i2c3;
-+		i2c7 = &i2c7;
-+		mmc0 = &mmc0;
-+		mmc1 = &mmc1;
- 		serial0 = &uart0;
- 	};
- 
 -- 
-2.38.1
-
+Kees Cook
 
