@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC19C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 12:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39708C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 12:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XIwwONpUR9SdSPR3A4IDAkq7FO9Vi6bAN02Uo080t4Q=; b=dXhXE/z4I7zfLD4PNnicWC/fAz
-	8yvqcufzEyJDcgMZ/D1tvXyzIK851lwUDKKC9pfeKZB76cwrYVDRYb7wSru53VnYXVFC3ELMVMNr0
-	klayNmpot2KYhto0IPnUoXHMOGmNdnmPZJ/f3AIMaKcE7P5lYTrwDvQ/dnjYaakf4YIHrWGMzrqBS
-	JtTZ4poKTPI7m/Z3xwEhmAm+PljyLTxF9rSfeWbmLrXZwyrBlNRDg6VviTmUvSZAPnQH9VSNpyeDQ
-	kQRY7FfJtjW29vjdrZ32Yds3/6nT0m35iJpfk1xrAgzEkogxIYDK3aXlFqTr0vdmRnR1BnTEfZceN
-	FVpwDh6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EZG/ByG3yJYBkXj69Uab2Z/6HK+E8SMP0+2AXC/lf1A=; b=WSXQ4SkR/0rPByQ2JLa/GNsR3Y
+	He//nUSBQzU2nlljyfQmFMx1wxvQm00/7aVJ7UuCylgMQKRO2Kcgs/ssIGLlNiIAiRRXdBT+X4TZp
+	QfbAseJ7Y9mmcd6ejPitjoU8XIZ0gX0Fn/pzHTNvxIa6ZM5Y0jgAPziYDEE1IaGw0LxCDicaIvoGT
+	3DXxfE92VfsnxgJ+UjNo1EJlSNZIJGqYDszhjd13IS/tSTh4aN/o/5hMp94d9IPueWAigih04gBid
+	kTJeLIWvh4AbKIzIJjdq/I9d+ueuYiQS8X0BpmAtX9sdx3lV4ez3Uz+Dbfh9kQ5Xa7Ml3LUzXz2IG
+	TCnO0lCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqCaH-00Av8E-F6; Wed, 02 Nov 2022 12:11:05 +0000
-Received: from mail.astralinux.ru ([217.74.38.119])
+	id 1oqCdL-00AvuV-HK; Wed, 02 Nov 2022 12:14:15 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqCa5-00Av3Z-UQ; Wed, 02 Nov 2022 12:10:55 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id 240631864286;
-	Wed,  2 Nov 2022 15:10:37 +0300 (MSK)
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id x3qXL0O3_M-d; Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
-Received: from localhost (localhost [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id C9B7A1864285;
-	Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
-X-Virus-Scanned: amavisd-new at astralinux.ru
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id OhcNLsfn8h1N; Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
-Received: from rbta-msk-lt-106062.astralinux.ru (unknown [10.177.20.20])
-	by mail.astralinux.ru (Postfix) with ESMTPSA id 1483F1864280;
-	Wed,  2 Nov 2022 15:10:36 +0300 (MSK)
-From: Anastasia Belova <abelova@astralinux.ru>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Anastasia Belova <abelova@astralinux.ru>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	lvc-project@linuxtesting.org
-Subject: [PATCH v2] vcodec: mediatek: add check for NULL for 
-Date: Wed,  2 Nov 2022 15:10:27 +0300
-Message-Id: <20221102121027.4285-1-abelova@astralinux.ru>
-X-Mailer: git-send-email 2.30.2
+	id 1oqCdI-00Avsj-Rg
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 12:14:14 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-3321c2a8d4cso164210267b3.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 05:14:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=EZG/ByG3yJYBkXj69Uab2Z/6HK+E8SMP0+2AXC/lf1A=;
+        b=AkNUUmqO/Y45WxuoBR0rRaklH4OHqR+yZ5YeF6JnVQmYmTjluAaV46qVgaOKJ2mmgM
+         PBqqDqdSWLLqNZ45Xbhc9B3t+OD2sBNtUXc4stMQoQBI48nwjPKRzZqbUNLP46fnP13T
+         lQmPaz8cpBM0wcs0z2tUJuejy8JXAcpI/+Hs5tpVWFSQAdsg7I4Jl4sDzhvROmrGNqdQ
+         MWBorzdi2SMHTwJ7sALIh4+WOqexvrkM688bwEJwNkjYffRbHc4ARbU+DnpEWbp7wI+u
+         1X56Ly/vyk7iOdRZ842EBbJE8Gr+ggILqwOTMmQvHR0dIVSvVeQbheizloGpALSZYzdr
+         XbjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EZG/ByG3yJYBkXj69Uab2Z/6HK+E8SMP0+2AXC/lf1A=;
+        b=wPVvqxCr/FQBCRaxSOoRRzGt4N7JY2Kxr0l076nZXr8h1umluKnHbeO6w0gy3yq3FH
+         ZA8KELvIv66uisBrF32soevFvLn/BcU1xRfATuUTbk9cAUkJmz38LW3ejXdXpgOUNu8c
+         6EWT0XpGgU1hYPVMlHEGcUMDUZN137BL8gD1AcN4pSarvGOzwkCfGAhMEZeE0Bgf72nj
+         m3jOP7I9Fo3waTYQElZlSVpzFWJepJ3ZTX9YoOLFSA7sjvR8Mi9GfLoXIKMOYTE2kxnu
+         s/PD1BtlSqafX1XQjf2OKuZ8azUgYMvGZLiBlv/neX4k1WNYVT4/vkJ95IrFP1osucrs
+         K17w==
+X-Gm-Message-State: ACrzQf1od+rtKBCQeJX9gKaasdAhLuKvtis69KbO2gq7DCsgh6XrGoNu
+	8PeHDA1ecPcbFPr8ylhUpyGEVsbVpYH9Y4WuChXKqresPoo+rg==
+X-Google-Smtp-Source: AMsMyM78NfzDgrg2IPxctI0tS2AzDrlpnwtNUe18UdnC0fjfl1bmHHKpixedQ85u2WDA5JObnaAM2Jkhsl48huvRB6I=
+X-Received: by 2002:a81:9e47:0:b0:361:468a:7221 with SMTP id
+ n7-20020a819e47000000b00361468a7221mr23413942ywj.155.1667391250013; Wed, 02
+ Nov 2022 05:14:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+References: <20221031122224.1846221-1-ajye_huang@compal.corp-partner.google.com>
+ <20221031122224.1846221-3-ajye_huang@compal.corp-partner.google.com> <549e1ff6-821a-1c26-0a4f-021bed27b093@collabora.com>
+In-Reply-To: <549e1ff6-821a-1c26-0a4f-021bed27b093@collabora.com>
+From: Ajye Huang <ajye_huang@compal.corp-partner.google.com>
+Date: Wed, 2 Nov 2022 20:13:58 +0800
+Message-ID: <CALprXBbL6HDaZhGU5eG6cnDP_rqymvamjTNGy7acaOk1rTMNmA@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] ASoC: mediatek: mt8186-rt5682: Modify machine
+ driver for two DMICs case
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	linux-mediatek@lists.infradead.org, "chunxu . li" <chunxu.li@mediatek.com>, 
+	Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	alsa-devel@alsa-project.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_051054_187747_3E857FBA 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221102_051412_935047_8140B8D0 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +93,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Any time calling vp9_is_sf_ref_fb we need fb !=3D NULL after checks.
+Hi AngeloGioacchino,
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+On Wed, Nov 2, 2022 at 6:44 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> > A "dmic-gpios" property is used for a mixer control to switch
+> > the dmic signal source between the Front and Rear Dmic.
+> >
+> > Refer to this one as an example,
+> > commit 3cfbf07c6d27
+> > ("ASoC: qcom: sc7180: Modify machine driver for 2mic")
+> >
 
-Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video De=
-coder Driver")
+> > +static const char * const dmic_mux_text[] = {
+> > +     "FrontMic",
+> > +     "RearMic",
+>
+> Why are the two words joined?
+> s/FrontMic/Front Mic/g
+> s/RearMic/Rear Mic/g
+>
+> Like that, we keep it consistent with the naming that was given in the commit
+> that you mentioned in the commit description.
+>
+> Regards,
+> Angelo
 
-Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
----
- drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/=
-drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
-index 70b8383f7c8e..776468cd834a 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
-@@ -208,6 +208,9 @@ static bool vp9_is_sf_ref_fb(struct vdec_vp9_inst *in=
-st, struct vdec_fb *fb)
- 	int i;
- 	struct vdec_vp9_vsi *vsi =3D inst->vsi;
-=20
-+	if (!fb)
-+		return true;
-+
- 	for (i =3D 0; i < ARRAY_SIZE(vsi->sf_ref_fb); i++) {
- 		if (fb =3D=3D &vsi->sf_ref_fb[i].fb)
- 			return true;
---=20
-2.30.2
-
+Thank you for your review.
+Yes, you are correct, I should keep the string format consistent with
+the commit I mentioned in descriptions to avoid confusion.
+I will submit the next. Thanks. Regards.
 
