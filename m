@@ -4,87 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF80CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 20:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1380C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 21:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ltt9NnEIjGYG5lwZ6IHnSObeQ3raAW3TtWZ21QCUHmE=; b=qAv9+BoMhj9roXkeUn4nU+5Tyt
-	nDODetRpiNv8KNwa+QQpb6sk3NDXxeHz1s1wJeiHR5NyBunOKIcVduobJxUtSVmIQZvI6VxfAwzE0
-	Vw4p08kfkFNaICpsBrf73WwNKNLO13JmrbM5zKXFW2LwLB3tpgPyg/gXkChLWxjX8juVSFL7BOqL2
-	AF1VDjAW5rUXX4CXo+/O3BXwYh5XuPaloy08lAR42yqqg1K4eC9ARRR9d2oJqB/iTcCjcxdHAJldx
-	Lk8V4QEp01gx1G8jSr7NF6WKsiNkwE1QMt5+ySTnEV1dCceQ/iTo8iM8Z4u1+zUvz+m1rbbxLhYeX
-	kRMQhVYQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=v5991RrXScJhmv3IUMGcu52NKLks7Sr9R7RvijLy0Po=; b=g1xmQ725dxb3UrVAUUF1D0TOzp
+	kwBRllUN+8FacZwsrNOVgYkgbW/5wGtdTFJb76vwOOefmTxBJM5zHUXXH1XRcj++WtVK0KVp0/qad
+	+iBlTuF4G1AeoOKo1z9Z4vKktEZixIBh1n3f78Pg0GHt9lkRfx9WSJZv9QVzNHFCtsyCytJlPUT13
+	0pP2H9MM8Qqxx9/70fBH2Vvn/tPyR/6mk+RtPjG+QtCoBaPCvf2tG9j1l1qnovbX80KOEIFi0vnTa
+	uN6kOv3Ka2Pe+6QKkHVNUPlfeTlQTT4UbnKcKi3Y+f1l4HuGLChsbr4R/Oh7GU7BHOc1Apcd31Ygy
+	LWT0ok+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqKaL-00EKkX-Ij; Wed, 02 Nov 2022 20:43:41 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1oqLW2-00EYl9-DU; Wed, 02 Nov 2022 21:43:18 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqKaI-00EKin-TA
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 20:43:40 +0000
-Received: by mail-qk1-x734.google.com with SMTP id l9so12585727qkk.11
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 13:43:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ltt9NnEIjGYG5lwZ6IHnSObeQ3raAW3TtWZ21QCUHmE=;
-        b=f7vI5crW47B36jradRBCcmIhyekL1RaywghaonA1HttPuiWTI4cKCEt+qm5zkoB7P2
-         Lh/mNN9AyR2t9poLz7zE1UXsvqlgxiX+w/gT/VEdADVZAs4qkkCcCwv0ZRiWyK3zf5ox
-         uI7rcJ8nG6pJbDp979SHFIclSffX/jjRzy01tv87kgL0nvtl+3sjWq0lSDfw4Ah+XWkE
-         DInQqk+6kr7eJfM+Sqmkh95rxOTrNuCP8SGXVTe2ZhePYnGudj40j7PSQu+rf3S6V+kr
-         4FHYjughcsRnQgzAixrQ90I2g/ByQQmjOLRjFoU8Ex3FX9iVqc3c2wkcPVNsuFUlyEAh
-         BHEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ltt9NnEIjGYG5lwZ6IHnSObeQ3raAW3TtWZ21QCUHmE=;
-        b=J2g6dHQ+56UxpXFtNnPnvCq2vl3fZWwL0/P4DH92UTdAv2HS5D3x8knjOSlgMmVMRn
-         U5ccy761c+JdgK7AWDtL3D2nXTW3pDaGYq+RI47uKRy82b+H/uDKm9PLvzQEmTvBZ0DG
-         leT8qH9hjXT3HSK1dfKm5cwhZH3zCd1/Tz1GFHWkUB6LT0kp8X3qKXOBMck+pJKyFGYp
-         4IBe720o1PFI++bFzFStDWjhpbM6DJkp2gS0ZC8g+yZx/U3VK2AZbq0LeQBzdDS4xq3c
-         /GT1QQRL0LMZdn7p07uWzO/z6mj99XM/BrUQxy0U/qPKlBWfAMUF49PWqkHoD1BJDJgm
-         KL4A==
-X-Gm-Message-State: ACrzQf02xW8WcB1pLJU+cjufBsLX32aEvMAiIBcXeTde9DitUZdMhv49
-	fN3+iD2s3lZR7Fp2JtjsHk8bbA==
-X-Google-Smtp-Source: AMsMyM4oCbZg4lNyLR2GtlIfKfLa2p6djOGtmfr7BuAfYZIUxocU92p7n5dbJahyx9Shf5PRqLrfGg==
-X-Received: by 2002:a05:620a:152e:b0:6fa:3cb8:dd9c with SMTP id n14-20020a05620a152e00b006fa3cb8dd9cmr10779651qkk.82.1667421817473;
-        Wed, 02 Nov 2022 13:43:37 -0700 (PDT)
-Received: from ?IPV6:2601:586:5000:570:28d9:4790:bc16:cc93? ([2601:586:5000:570:28d9:4790:bc16:cc93])
-        by smtp.gmail.com with ESMTPSA id x30-20020a05620a0b5e00b006eeae49537bsm1815398qkg.98.2022.11.02.13.43.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 13:43:37 -0700 (PDT)
-Message-ID: <cdc79d9b-7afe-1aaf-3692-171370abaa3c@linaro.org>
-Date: Wed, 2 Nov 2022 16:43:35 -0400
+	id 1oqLVr-00EYjJ-OY; Wed, 02 Nov 2022 21:43:09 +0000
+Received: from notapiano.myfiosgateway.com (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF48C660037C;
+	Wed,  2 Nov 2022 21:43:03 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667425385;
+	bh=I6k0VYTBtgXqylue8+whQkMj2wwlEM89xgbgwhw/Gmg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=dFDgAJLbSFI9EOSca34tAKkHzdhLLdsf9vnQaR0Cj4ijTC5sqJoLsaeZn+rGY1jb6
+	 U6X1C7odwcSRrtrUaMkS4wwAoXiiWuwbYXxswZBS/MoSVB7LY9AlgGvbNvMbSFTuU2
+	 jjAuXo3zpDnwoHnrkdtpRg/0Q89AiQr17/T2VxqhPDyt2EmbR1c0wDcggEYth7R1Of
+	 kyvmIb2DOC2+/uDdqom/3gfaKCs1wWZCun5vXp7ysr76L0n+OZaQ368qfxswpO6MDG
+	 YqQkW5COIllOaScVlOUvE45dtf/EUl2TiKmOpPx/lY4/4OmmOb5jyIiVJ0y+z1V3qv
+	 n0XRk4mlOJWjA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] docs: dt: writing-schema: Document usage of CHECK_DTBS make flag
+Date: Wed,  2 Nov 2022 17:43:00 -0400
+Message-Id: <20221102214300.309347-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH 2/2] dt-bindings: thermal: mediatek: add compatible string
- for MT7986 SoC
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.or, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-References: <136157bd1f94c64504f87ee2db6b3ed0a8dcc3de.1667254476.git.daniel@makrotopia.org>
- <1216e96b279d08230cb2aa61d536f44c1e9b800a.1667254476.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <1216e96b279d08230cb2aa61d536f44c1e9b800a.1667254476.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_134338_981895_E115037B 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20221102_144308_062417_891FE31D 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,29 +76,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/10/2022 18:16, Daniel Golle wrote:
-> Add compatible string 'mediatek,mt7986-thermal' for V3 thermal unit
-> found in MT7981 and MT7986 SoCs.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> index 5c7e7bdd029abf..efc16ab5b22b5d 100644
-> --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> @@ -13,6 +13,7 @@ Required properties:
->    - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
->    - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
->    - "mediatek,mt7622-thermal" : For MT7622 SoC
-> +  - "mediatek,mt7986-thermal" : For MT7981 and MT7986 SoC
+It is possible to run checks on a Devicetree by passing the CHECK_DTBS
+flag when building. This is a useful shortcut to the dtbs_check make
+target since it avoids checking unrelated Devicetrees, which can take
+some time and is unnecessary if no bindings were modified. Document it.
 
-Then recommended is to have specific compatible followed by fallback (so
-7986 followed by 7981)
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Best regards,
-Krzysztof
+---
+
+ Documentation/devicetree/bindings/writing-schema.rst | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/writing-schema.rst b/Documentation/devicetree/bindings/writing-schema.rst
+index 4a381d20f2b4..55ad556472b4 100644
+--- a/Documentation/devicetree/bindings/writing-schema.rst
++++ b/Documentation/devicetree/bindings/writing-schema.rst
+@@ -167,6 +167,13 @@ setting the ``DT_SCHEMA_FILES`` variable to a specific schema file or pattern.
+     make dt_binding_check DT_SCHEMA_FILES=/gpio/
+     make dtbs_check DT_SCHEMA_FILES=trivial-devices.yaml
+ 
++Note that ``make dtbs_check`` will validate every DT source file that is
++enabled. When making changes to a DT but not to the bindings, a possible
++shortcut to validate only the DT in question is to explicitly build it with
++the ``CHECK_DTBS`` flag enabled. For example::
++
++    make CHECK_DTBS=y mediatek/mt8192-evb.dtb
++
+ 
+ json-schema Resources
+ ---------------------
+-- 
+2.38.1
 
 
