@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06815C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 05:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0D9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 08:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GHqgpi49F525hGNgrGw5jxJA5z8262KOfovIPeXSDkE=; b=5Gj0fv7iKPSGHquoDKsEQlpWgY
-	PjDV+2rVKGx+ViZeFnNA15gaZIska9OmrHicKBoy91senm5Z2OYFaI1380JdcDDzHy/B581PO5kDn
-	BJwZPPHiiFGjYgJkI7z/R8gadXGkR19xTm5IeLWKZrLO07N3lJ9BoEVamwcsz8QuYGcm/86ezlCGP
-	I0ILsC470IWe35DNNXv8YLhBxzmiKIKTjPZ/dA5TYNN97T6+oL+b/dpJsSuN898hr8ZhKOpvdDsU9
-	aQaKUXMBR/Fv+1A2NNsKpdc+CVBrQnH/qjXoLbk6L7HsJnTuwlKqeJDI9/53h+RwLeRdzN+FJTM2e
-	9T4VLokQ==;
+	bh=E8kiC2Fnz610Izbk5JEjEAUzp28eW34GIPDHHy9yqng=; b=Fa5MSbkeqRrWmBzAPs3CB9UUm8
+	2vd0KwmjJBeQSMr0vAM5UI+/T4qQnyZRORsCuyF3bvNwi8pSpTUgeds40cdxJMabePFdkVf4O5BI0
+	w1jyCO3mCxMVxcp2tNtg9Vtp/r0EQNdGD4HnmHWlscL0/IsQD9ihhgU05wPoZBSlVC2NX84QCEO8e
+	FQPKt5qD29xxk4BAbjVRz1ZY+BfP4o1QMlfWVLaAVLfDcUHKk/Ma3FgIF3hEo+foW3YQiSQVrJcAf
+	m2P11DagZhwfSILgJyyM+pHc2W1k2XRm3vxQUePhh/zlbrnt6Tgx1HU0omv9IjStTwo2OUbiVlDV7
+	MUwd1pEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq6dH-008Len-Mt; Wed, 02 Nov 2022 05:49:47 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1oq9XM-009GYK-RR; Wed, 02 Nov 2022 08:55:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oq6d6-008Laf-4v; Wed, 02 Nov 2022 05:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:From
-	:References:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=GHqgpi49F525hGNgrGw5jxJA5z8262KOfovIPeXSDkE=; b=Pw+1ZCBBpSQGbjl9omMRX/HDUR
-	PISJ5gZNcun2rUbxtx6gB/F8dAH3yS6U4VFO8xVZ1UdDVMP3HuAG24vDkQMDcXwb23pWdGHgLWIVz
-	jkA/6RKt2AEhsyEI49a3q14XV+20onwacw8H7liW5/I+Lveccz09crjogPH4/BCTx110=;
-Received: from p200300daa71950003c313de20777bbcd.dip0.t-ipconnect.de ([2003:da:a719:5000:3c31:3de2:777:bbcd] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1oq6cl-00Gq2Q-Rs; Wed, 02 Nov 2022 06:49:15 +0100
-Message-ID: <770dd173-41b8-80f7-7c78-40319734cfbf@nbd.name>
-Date: Wed, 2 Nov 2022 06:49:15 +0100
+	id 1oq9XB-009GNx-GY; Wed, 02 Nov 2022 08:55:43 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E74D36602929;
+	Wed,  2 Nov 2022 08:55:35 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667379336;
+	bh=96/vIlCR0pm8B4E0/1/a7fElFLkubeJEBzd4uuxKC64=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ojzgURK3lzEbgIcNB+4xc2oHgrl8FATrqeLB3BqnJR0WjLJmk/i9C2wanD5wNgTfS
+	 P03Zcuqmog9HdYZhQupYHuIsKKcwbJo4BHH1tzXhuA/p8Bj1iknx82U15P/1jbqxC+
+	 G4QypHYxK6hmmp2Gdy145aa398eT35o9a9sdyXgVBPlKEefkoIdMsdqWRDVMx6nlNn
+	 AV6trM/NNvAxOCEYHwl6HNw6yexR01ZA+aqY2gR0KFhZoqnmLXvtfiTWNFXKXdk0FY
+	 4dnmoavItEYUkw6InryI7EmkA04bSdzkS0WZd4m1Y6PQ3qtF2ykmIsHTYrTUmLT8PW
+	 VFc34eP0xLuwA==
+Message-ID: <32627314-4971-7eea-8007-1797707e7969@collabora.com>
+Date: Wed, 2 Nov 2022 09:55:33 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.3.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH] kbuild: Add DTB_FILES variable for dtbs_check
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Rob Herring <robh@kernel.org>
+Cc: kernel@collabora.com, Masahiro Yamada <masahiroy@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Marek <michal.lkml@markovi.net>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kbuild@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20221101220304.65715-1-nfraprado@collabora.com>
 Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>
-Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <Y2G9ANkdaaENNnOd@makrotopia.org> <Y2G/CaPrTVsYeGWB@lunn.ch>
- <Y2HBzEdmiKK9IPFK@makrotopia.org> <Y2HHOSaYQGAhWL/E@lunn.ch>
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v3] net: ethernet: mediatek: ppe: add support for flow
- accounting
-In-Reply-To: <Y2HHOSaYQGAhWL/E@lunn.ch>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221101220304.65715-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221101_224936_295677_3EB08E19 
-X-CRM114-Status: GOOD (  25.47  )
+X-CRM114-CacheID: sfid-20221102_015541_841584_768737DC 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,53 +78,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02.11.22 02:26, Andrew Lunn wrote:
-> On Wed, Nov 02, 2022 at 01:03:08AM +0000, Daniel Golle wrote:
->> Hi Andrew,
->> 
->> On Wed, Nov 02, 2022 at 01:51:21AM +0100, Andrew Lunn wrote:
->> > On Wed, Nov 02, 2022 at 12:42:40AM +0000, Daniel Golle wrote:
->> > > The PPE units found in MT7622 and newer support packet and byte
->> > > accounting of hw-offloaded flows. Add support for reading those
->> > > counters as found in MediaTek's SDK[1].
->> > > 
->> > > [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/bc6a6a375c800dc2b80e1a325a2c732d1737df92
->> > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->> > 
->> > Sorry, but NACK.
->> > 
->> > You have not explained why doing this correctly via ethtool -S cannot
->> > be done. debugfs is a vendor crap way of doing this.
->> 
->> The debugfs interface is pre-existing and **in addition** to the
->> standard Linux interfaces which are also provided. It is true that
->> the debugfs interface in this case doesn't provide much additional
->> value apart from having the counter listed next to the hardware-
->> specific hashtable keys. As the debugfs interface for now aims to
->> be as complete as possible, naturally there is some redundance of
->> things which can also be accessed using other (standard) interfaces.
+Il 01/11/22 23:03, Nícolas F. R. A. Prado ha scritto:
+> Currently running dtbs_check compiles and runs the DT checker on all
+> enabled devicetrees against all dt-bindings. This can take a long time,
+> and is an unnecessary burden when just validating a new devicetree or
+> changes in an existing one, with the dt-bindings unchanged.
 > 
-> debugfs is by definition unstable. It is not ABI. Anything using it is
-> expected to break in the near future when it changes its layout. It is
-> also totally option, you cannot expect it to be mounted.
+> Similarly to DT_SCHEMA_FILES for dt_binding_check, add a DTB_FILES
+> variable that can be passed to the dtbs_check make command to restrict
+> which devicetrees are validated.
 > 
-> I hope you don't have any user space code using it.
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > 
-> Maybe i should submit a patch which just for the fun of it rearranged
-> the order in debugfs and change the file name?
 
-I believe that OpenWrt is still the main user of the PPE offloading 
-code, since most vendors of devices with these SoC still use different 
-out-of-tree implementations.
-OpenWrt does not ship or contain any user space code that relies on 
-these debugfs files.
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Whenever I'm debugging PPE related issues, I rely heavily on the debugfs 
-API, so keeping it as complete as possible is important to me as well.
 
-Aside from that, exposing per-flow statistics (which is what this patch 
-does) via ethtool -S API makes no sense to me at all. I'm not aware of 
-any other offload capable driver that does this.
-
-- Felix
 
