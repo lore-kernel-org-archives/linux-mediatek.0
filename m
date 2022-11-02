@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A82C43217
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 15:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4449C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 15:47:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HBUgvD/rqAGK+YRqMBW4phcXREVNhOcGxJwJ+qjyr1o=; b=PS+gwvYS+YrmC68RwrRH0aTR13
-	xOsW39oLe5g0SYVqQqxF+/P8ESrk1Zpem6Yba7smLece+8Hc/Z4VejUCGaqStb3CmFc3G2gO3XwBp
-	X6Yu9YxhVRSeuaxgK2ny+BWsRrcpeIMCzkj2tz1ChSqqXykp0OzbIx4j05bGZQaSwWDXddixwLsVu
-	4P+frFbnrJ2f1A0bwoeL6m7laJtYYJR5WwEK9qTPb1I30nspwrWfT/Xap3GdTdi+YlhGMjl3dCR1h
-	k+7+BZGTWA3s0/CtIv6EowZhLcwhaGwiIpCYGvRI/HumUDPp8i+CfwIhbVYoExkz3Yu8jE02VbGYB
-	GXaXXMow==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=g6ttj8s1HBUAsVkS9zAwvmRPefh6Jiq75lq2trGDN5Y=; b=n9WlIrULZpbq9aDZkESEV65lKR
+	qT8i5F1MU67wTEhx4wc3j6g660BvctKyNxZ2R1Zu+3Rq7P15y1Xu9SizQPZAKIu0ekSBPVTjaeyVL
+	abe0UAxxRGwgPKMYo0MJRYgJSwDTROGIwUPIcStEfyCG5NbHCgIGAdf4x9F9EaVaV2RFPbyWa+GKv
+	0+tnEB5o725UWl+s6DLILCRo+BlI71/ElIKjnXnJGup8HZySBZ2VrVBjPYghhL5GhQk0aF/rjw6yW
+	k1GpsGM9yGB8uDKPZeAwLDwjAuOXM3Bioatb21yYC+xQlbbu/Aetfi7mDCLANBuFJFQcGfRJd02kJ
+	X9aq8mFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqFg9-00BlRd-0a; Wed, 02 Nov 2022 15:29:21 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1oqFxu-00Bql2-4g; Wed, 02 Nov 2022 15:47:42 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqFfw-00BlMT-Aq
-	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 15:29:10 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id j6so12651561qvn.12
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Nov 2022 08:29:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HBUgvD/rqAGK+YRqMBW4phcXREVNhOcGxJwJ+qjyr1o=;
-        b=yMiW5wZeRixIDVPx2S6wWqAENq9ui2w590VhU8Q82s5HlMw1OC/McuiTNplTDQerBZ
-         nWSDgFKXMGPpg/Vyq4IBU/0iKFeXgMMLykjcp6vdiVFOquqA+fJcbfn5AAWesnG81kKZ
-         bO4cPVShoBQEBgH7trb7ygaWpmPMvNlcboYQLzGgzr+RGX9EfdIcTGVgEhUMKKlkvykQ
-         oMm4/hr4MrHbfs30mAY1ic8eqwEteKa1JdCpkRwFKznpPqC9QeXpNdUagSFIfHF/zkUq
-         DHAeEFI/j6pC7+zh8+Hf8HQHTErRoyTZTDt4ak5Z19NIRN3DRpCM9gzD8sZV+JsvI3WT
-         +j+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HBUgvD/rqAGK+YRqMBW4phcXREVNhOcGxJwJ+qjyr1o=;
-        b=pBJZYld0lQrED9jWoOjD8fxNe2fyjOuGXeG4CzZXOP8VgXKuQJ+sKIdQpR5r43tA/l
-         ffufmzOpIhzmmmKkKBeIaT7tDQncVQSqBRRP+6/qfkvR51O8WYYjI8DOmuKDVTxTmLLF
-         nsU35idrzepvpTygift+OCA7sEX35l+Tis91k3NLTCBTMH+zWNXnQGzKO55aQwqkY9Ah
-         sZslgn7xY6EonsyhIpFiWZLIWC2o5xpUg1c9fjCRNPnXduuiTVxCNdSdsXsleJ3eC0MQ
-         pxNrzogrH7ZcYXU0tMEFcxrXz1uT1wCR4fSyzw17Nd6iu4KbqszPFQXCilgruIRKNxh1
-         Ee2g==
-X-Gm-Message-State: ACrzQf10LSP5ClS2WsP2Zf68rIeMIdqSLhkXawRAWFc9o158najR/cTz
-	DXH7zU2oWvbhhSDXV10HH1nkvQ==
-X-Google-Smtp-Source: AMsMyM4utp2+ndIufDJeNK+726MD7dtGV59X/4aZ5wQsoENyuaC3TKzF03FZtl52mGndJQCeR3Y4dw==
-X-Received: by 2002:ad4:5e8b:0:b0:4b9:98bf:92cc with SMTP id jl11-20020ad45e8b000000b004b998bf92ccmr21728371qvb.128.1667402946667;
-        Wed, 02 Nov 2022 08:29:06 -0700 (PDT)
-Received: from ?IPV6:2601:586:5000:570:28d9:4790:bc16:cc93? ([2601:586:5000:570:28d9:4790:bc16:cc93])
-        by smtp.gmail.com with ESMTPSA id bm8-20020a05620a198800b006ed138e89f2sm8677531qkb.123.2022.11.02.08.29.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 08:29:06 -0700 (PDT)
-Message-ID: <3e374a0e-ab17-432a-67c5-bf8f459193fd@linaro.org>
-Date: Wed, 2 Nov 2022 11:29:05 -0400
+	id 1oqFxf-00Bqef-CB; Wed, 02 Nov 2022 15:47:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id C726DB82386;
+	Wed,  2 Nov 2022 15:47:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C39C1C433D6;
+	Wed,  2 Nov 2022 15:47:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667404043;
+	bh=rkW/QyBofVtN1MAesr7DFgUS/FF5stFfPR9fvlPXMF4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JGmHAvU0/bWPJxrmLujwXYEuDMFsY4lhx9S7zgNWoyuqdqqzjGIAnMctYdhHcxMw8
+	 jenGlEdlAXACE9JEZoYCGpmr1zsYPTeuxt+e4pKjJ/MMoXS1Sybr0Fh0nGkoOSjRNP
+	 V75ycFPRrgYv2TCCT8tKqY4Bc8seM82Om7Ba5E5dAuQwolprLC4ZNiO91jDsS1Se37
+	 GA0VR0pV199yY4iuT6DJsy5F3hH+sCiY1ZJc+wrhOSuI/7TRU6xjPWnuRSXs1rliXR
+	 noXsBM0VYpXIR14VOEn7F4IUvG2g7UwrOa+Ld82HGfwF+G2Gls5T+DWUI7Lc4r25z5
+	 lxRNkEXEG6CKg==
+From: Nathan Chancellor <nathan@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>,
+	Kees Cook <keescook@chromium.org>,
+	Sami Tolvanen <samitolvanen@google.com>,
+	llvm@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	patches@lists.linux.dev,
+	Nathan Chancellor <nathan@kernel.org>
+Subject: [PATCH] drm/mediatek: Fix return type of mtk_hdmi_bridge_mode_valid()
+Date: Wed,  2 Nov 2022 08:47:12 -0700
+Message-Id: <20221102154712.540548-1-nathan@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH 2/2] dt-bindings: mailbox: mediatek,gce-mailbox: add
- mt8188 compatible name
-Content-Language: en-US
-To: "Elvis.Wang" <Elvis.Wang@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Houlong Wei <houlong.wei@mediatek.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20221029105017.20734-1-Elvis.Wang@mediatek.com>
- <20221029105017.20734-3-Elvis.Wang@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221029105017.20734-3-Elvis.Wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_082908_405114_6FC760A4 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20221102_084727_604355_BB201229 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,21 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/10/2022 06:50, Elvis.Wang wrote:
-> From: Elvis Wang <Elvis.Wang@mediatek.com>
-> 
-> Add mt8188 compatible name.
-> 
-> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
-> ---
->  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml        | 1 +
->  1 file changed, 1 insertion(+)
-> 
+With clang's kernel control flow integrity (kCFI, CONFIG_CFI_CLANG),
+indirect call targets are validated against the expected function
+pointer prototype to make sure the call target is valid to help mitigate
+ROP attacks. If they are not identical, there is a failure at run time,
+which manifests as either a kernel panic or thread getting killed. A
+proposed warning in clang aims to catch these at compile time, which
+reveals:
 
-Looks ok, but you need to resend making it a proper patchset. Without
-fake tags.
+  drivers/gpu/drm/mediatek/mtk_hdmi.c:1407:16: error: incompatible function pointer types initializing 'enum drm_mode_status (*)(struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' with an expression of type 'int (struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' [-Werror,-Wincompatible-function-pointer-types-strict]
+          .mode_valid = mtk_hdmi_bridge_mode_valid,
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
 
-Best regards,
-Krzysztof
+->mode_valid() in 'struct drm_bridge_funcs' expects a return type of
+'enum drm_mode_status', not 'int'. Adjust the return type of
+mtk_hdmi_bridge_mode_valid() to match the prototype's to resolve the
+warning and CFI failure.
+
+Link: https://github.com/ClangBuiltLinux/linux/issues/1750
+Reported-by: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 4c80b6896dc3..6e8f99554f54 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1202,9 +1202,10 @@ static enum drm_connector_status mtk_hdmi_detect(struct mtk_hdmi *hdmi)
+ 	return mtk_hdmi_update_plugged_status(hdmi);
+ }
+ 
+-static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+-				      const struct drm_display_info *info,
+-				      const struct drm_display_mode *mode)
++static enum drm_mode_status
++mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
++			   const struct drm_display_info *info,
++			   const struct drm_display_mode *mode)
+ {
+ 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+ 	struct drm_bridge *next_bridge;
+
+base-commit: 9abf2313adc1ca1b6180c508c25f22f9395cc780
+-- 
+2.38.1
 
 
