@@ -4,69 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F909C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 12:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98116C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 12:52:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mhoRnGWblIJoUjOZOMP2K1bnpT6Df1eLBG65ig720ns=; b=DOt2oNyQ8dh+UuA7OrRL5IPjci
-	inds5cXxX2pXeQxIvTLODd7tiFRbVxKjJxe6KcJunP4hJnHKal8Jvx3PGSMZKXe8F4K3ERu0b907/
-	ZGeOvl7mHD8Jpfbe/1OjPQO+9pHekcaqu88gNksnrhjDMOVGZkzzgZLO3OtbhFhiNHTWKvO9H//PP
-	iSMqUUva91WcdveW9wAgYYcDkGZNhYcH69jteV1j2hLVxm8YBq7ic7KKvQdgmOQV47hLdg/X+/2pk
-	EuSngcnYCr1qI88L7VmdU61AoRqe2pPjYYCYL+OgU8Vlls8dz7WXQMnv0+xJesH2ZGlyMSQx5tmM5
-	3twWYhZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZLn5sm9jB4iChIy9YVdBNcIz/Kc3dpqgq4R0HzGWXFE=; b=SrouKr3k45PnGjJF9qwHbDS+4I
+	4ncULa9UrNwDFtsE+WKCpJwmytiy2ZjwOXp/IDw4rbd1/FOpqfi8eAMiwWRcWb1EoGqXP12xnbeEm
+	IJ/LY1l7NVt4lLgoibOC1ZGK5A/kfTZm7zB8As1LcMF+c07dQHsgikXXhkniaTMbgO0LBc5cMrtCS
+	KtpMK7PB+77UhtcVB/Do/EJix5l2tX5IyNncrPUv34Pq4Jimvx7P+CzKesYI6tl8nx3IxwJUq0/as
+	rKe8L94Ea7ApIQhyGb7Z60E9TONOVcMp/4h6MPbfeq1Jzpxh1oRSRGVA+YlOqeWozDySBGV9/1eiS
+	LvgFtk2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqCkx-00Ay7U-S8; Wed, 02 Nov 2022 12:22:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oqDDx-00B5gD-Ij; Wed, 02 Nov 2022 12:52:05 +0000
+Received: from mail-mw2nam04on2057.outbound.protection.outlook.com ([40.107.101.57] helo=NAM04-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqCko-00Ay4w-5Q; Wed, 02 Nov 2022 12:21:59 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9CD616602946;
-	Wed,  2 Nov 2022 12:21:53 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667391714;
-	bh=GWrRwN7bo6fjXnGPMvnQdgStYumrjcHBQAPPOaH9oHo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TFEcV7yYRYT7iW5wv1LhRrmo+Xj1fG3UlLNU1htU2Ve/t57kVotd9+jk1QcLJGJYv
-	 21LoV00Gq5lKqyIfGkihnXbvJeetV2KzpagoJZy+0j2xVYVswmw4ZP11SVNSezlslk
-	 LO0tMXIilWpkTiDtfVRLaKghaC2ISJubVKOrE1v2CyEOd1ZrfsdNyZ8qgOvGRy2o6Y
-	 kOlRvh4rQk2CBpaudqPMhevdpq3GS5JOmr5+hF+mJlQqDQzSycp3sDqjOBhO8ta4ZU
-	 zNJOU0bRGMS1SpTirb6ZqP24Zvj7HNkvUhLwGtC9Tq5qTYoQ8E38m3lGhX/ONOlL8U
-	 kyZNE0W558Dnw==
-Message-ID: <4841b48c-c35c-a375-8e78-154bc5217930@collabora.com>
-Date: Wed, 2 Nov 2022 13:21:51 +0100
+	id 1oqDDu-00B5d3-EE; Wed, 02 Nov 2022 12:52:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=T4GecxCeESLLBRoHN4DK9yrhSW9QHt1Cc0FXIp5jv0Gany9t778AzDlVEEfEl7GJW3LqRJ+eBa7MU9nmacc44nJmKaEk2Ip+EwDuzJOpv3fqQ7m8oscPq/2PhVlSgCLq7vQ0H7cS/SoLr/pKq0PAPBa/20Rva12tIxqyvYlsVDVkqVuFZI0MP+ZgeLEo70jz9c9Kv3Gyp8ANxWIhyW2F2Dk0hA4Bl/JT86g/SA/SyV2EMYiuNdFJikABsNwzAX+2mggEA6I/6eDuFoVKo846WU79uJw0mZb/eIMrirBmpDy3Gof0ainqlfzw5K3FKVBMfwDPm1BuRVtbgeLzKOVPfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZLn5sm9jB4iChIy9YVdBNcIz/Kc3dpqgq4R0HzGWXFE=;
+ b=eusigoItp5nWKIK0O6MnVrC1OQzXwGz1gjwrg22SP2m2Y/hM/LirzB0C9xj+kLNpEu4InYuXbAthIZtU6Exs/b+bIt5Aj5rouqFTyGKPjgCDPPALGd/fYSSx8nfVcfRC2nS5oyJBtwBSXdpUxHRqsnd/wAeQNOCO61HmCaX+FlM5occ/imcJdoN9BMwQ9T4F3K/mR+6ZnqyFP1rc55RXRFg3vobR3WKrmIiy5j7XfuUrP8+CpIWOkTU/Q+OlnhCVqpgfLgMCm8lFkUt9A6TLTVxmQfLucZzFgWc0tUifHkrd7dSAzlFkWPw/9vlBKqInkXCrZqlnhYEasx4tkqvWmw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZLn5sm9jB4iChIy9YVdBNcIz/Kc3dpqgq4R0HzGWXFE=;
+ b=EgDkb9Ce6HiMCWPOUcf+W8k2g8ia576DbpgXMuMraoLsIpEgUqpNWmX7n73lARaZJI7v+aCTBW0xdm0hWRWj03Iy4wqNHgKSWb2Hg0x9BLzGHsuUTIb90lxBHTEQtj+kOtqugcRdR2oaWlbDzVajhtgjVoeS7QgsxpoEFE68r4X5llHlnrw/8ZPF6Pi/Fbo2qwBpGyNLwIBMM4W3jPfzECrBBJiJCMRXmYRPgN5kcCFJHgMNwZHFWR8wIrY8iLt9BtBAFGRh4xBGyaZpf3mjKbLP7cVHsdSyZKZx0PqmwJIa1mL6SryxcVUQJK+dadjvVBWa+KDz425jmybbxBgtyg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by BY5PR12MB4067.namprd12.prod.outlook.com (2603:10b6:a03:212::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.21; Wed, 2 Nov
+ 2022 12:51:58 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::7a81:a4e4:bb9c:d1de]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::7a81:a4e4:bb9c:d1de%6]) with mapi id 15.20.5769.015; Wed, 2 Nov 2022
+ 12:51:57 +0000
+Date: Wed, 2 Nov 2022 09:51:56 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org
+Cc: will@kernel.org, robin.murphy@arm.com, kevin.tian@intel.com,
+	quic_jjohnson@quicinc.com, suravee.suthikulpanit@amd.com,
+	robdclark@gmail.com, dwmw2@infradead.org, baolu.lu@linux.intel.com,
+	yong.wu@mediatek.com, matthias.bgg@gmail.com, orsonzhai@gmail.com,
+	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+	jean-philippe@linaro.org, tglx@linutronix.de,
+	shameerali.kolothum.thodi@huawei.com, christophe.jaillet@wanadoo.fr,
+	yangyicong@hisilicon.com, yangyingliang@huawei.com,
+	quic_saipraka@quicinc.com, jon@solid-run.com, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux-foundation.org
+Subject: [GIT PULL iommu] Please pull iommu errno changes
+Message-ID: <Y2Jn7Jskqzz95XB4@nvidia.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="BsckruZV/wiPefnD"
+Content-Disposition: inline
+X-ClientProxiedBy: BL0PR01CA0027.prod.exchangelabs.com (2603:10b6:208:71::40)
+ To LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH] mtd: spi-nor: Fix the number of bytes for the dummy
- cycles
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>,
- Pratyush Yadav <pratyush@kernel.org>, Michael Walle <michael@walle.cc>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Bayi Cheng <bayi.cheng@mediatek.com>
-References: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|BY5PR12MB4067:EE_
+X-MS-Office365-Filtering-Correlation-Id: b10d7d34-15e9-4218-36b7-08dabcd10705
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	ARK3huCaEMhr5z2Ic1nE43p3WsDZXRkRM97w4iKFpBahUdzxskIKC7KMPzslZYLkHsRkL+pghhlG3T2ncrAyfMsUDybrimHVwsN2Lc8rfV/t5oy6K9dggZir51xm/JPd+fyvsu2V2SApBNRiyssS18Vm0/WMJX5RzSK0gdT9ydKe29ZTHC/qgEETFEz89ruvoeq3/Na2/+lb95JiOxaoibPKHCDJhiQiNG1rIPNymfSdxIA6ia8sC0X1sVORw/FvVtlE68ymuRtKw32ChPhNzWoSllrsP/SdS3R8kIqauYKbzkDPxMCn8eMru7xSS5X5bEObav1JXaMlNjBCKUTINWnJOHweRObMIbW3EKGKLXsVAZ9lFnsVSaquK3rFiaA/HnIaG/wlb2IBdlJTilLzWMUZiURurDukAXi5YS/ESkbDYsclIhbkzvo9mca3pJTjzJODiSZOs/2tw4LLl+ICf4dK5ff8yzCM6hx1nSagfpTPCROp7Sno7kRP7yzyjLND9Z+X2K2AsipYXQjo8NDEWoT34o+U+Bh1Pd201WUZRocdsoG5TURviw3aWcXEY50dAaHCJYFNKnBuCx9EXMUbfwFrdVXrq+XZ0OXav4iKNH6T/9LMkARF0p3m0kjwfd7eJ6DCn7foS8sbwHt9xK8LpS+vBGFcx7Q7Cpj8ikeZo8pkldfhUoe/0TzJ1Q+8uxVrbAJfZyZbQs4iVpkFFoVCKv+QeI9KBxoAxjEvFra9cVQDUuyOzSUaR1DcFyZ898rARXX9M5w2O+udIwTrrkboF4xJZ614k6d+ZsNT/vKUJvBxIPjkOJUCyW6bwaP64w5DDCA0PBlhQBk1+4sILt0rGk+epZeH3kTFePyaJ52P7fI8KsLbfFkXDBiXJETQkXoH
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(366004)(396003)(346002)(39860400002)(136003)(451199015)(2616005)(26005)(44144004)(966005)(6512007)(6506007)(83380400001)(21480400003)(186003)(478600001)(2906002)(4001150100001)(316002)(66946007)(5660300002)(6486002)(8676002)(7406005)(8936002)(66556008)(7416002)(66476007)(4326008)(41300700001)(36756003)(86362001)(38100700002)(2700100001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?TPZJsHVeouuiYW5XvGOo42jp9d5dkFhSoMCVJLI2Sw3LW2Kj63Y0aOV4v10d?=
+ =?us-ascii?Q?fHvfr4uLfSXL7MyQU4DzM43m6FKHunBVCry6RNU4dTy5ipklhb6BhVnnF870?=
+ =?us-ascii?Q?xvwWeTpyge8ORsaIffD/vDopejaP19TTT6htKxjPYHBxpIzB4TyYukpoTI0v?=
+ =?us-ascii?Q?pMC8Sp3nhoAyYGhFvesyNYeuuO33DNzxDN0bok8/jrJXNHRa9NdXd74ot9jz?=
+ =?us-ascii?Q?mN3tbW71SCrdAeM2RTNNDsG5PSyAtkorT2T66BNNktgdTU/ZpcdGrf7s/dLO?=
+ =?us-ascii?Q?dcpaUxe1RYeetbLyZYFP+M3v5wK+9/Vp4PZ0lmznNd9e0Fmx8i1/U+ZZdohY?=
+ =?us-ascii?Q?RLWEtIJECb0gEt1d4zug78dAFico4DbRpi+sgQm4N77mj89gPnF49NstNpy0?=
+ =?us-ascii?Q?uWoGcl7Mtimetfoiw2kwlS4r4wvmscDt5fDHMjUQeagdTHqlMQijJzot4XTh?=
+ =?us-ascii?Q?qDgWN8UDTNCBhehjQvQNDgh57jQsxwzG9v/BmERiqQY57YYJE4gEXXgdD89c?=
+ =?us-ascii?Q?uRJup2ej495XnsE3sl5r7dX9ySP6nIag7LS5QRLmO/B/ORq5EHrlFANFxCyF?=
+ =?us-ascii?Q?fh6uRu8sS3Duwz/Q+y+rGRkZDLJMslKjqQBcZlB08oy/tM8DlfGmSy4Py3/7?=
+ =?us-ascii?Q?1wy4ZxU70Le5z24bnIPbiGZH12ofmIMX7s8xoLPNaCNur7UktTJSx8nhg1it?=
+ =?us-ascii?Q?aEQ3+T6Zzl2caOpRlV/3XJ4zibiE8VsRgY8HHaF9bCaV0j+BX8dZsqfHcPta?=
+ =?us-ascii?Q?dOsPS2Jkhv0MShCS3KOs49PD0uMBoR78AbN8U+4tfUbRIKnreeGQlqOVlt6E?=
+ =?us-ascii?Q?4uSJJUvgnUTy5xGZVylnHTtfg24w1KAxGMs+pcQ8L7weJBksvv+KfA/R6grM?=
+ =?us-ascii?Q?+M360GSm3OGPM7k7WI3vHsCRQZEwCoDwczaEwJidoJvtfF/usvcAVcVPieRn?=
+ =?us-ascii?Q?OnAgb088sn3l3BKeeTTzKLSICky5rB8zX/KwPIqtxkk8VpdEK9yRqpEOYgyO?=
+ =?us-ascii?Q?kukZy9joLHo3aA807OIloL4f6NsyTyECShMKmM+/vRIdOK7g5CbREaeqIyKA?=
+ =?us-ascii?Q?WrkMeRcFq7adEHKTmoNE0I6QpgaFgPiWiR2BKWOLZaF6FP56uj5P/cIOKJau?=
+ =?us-ascii?Q?W5jcKePepCWoxzrGcgPrD6/8xUCxfbridX3JfW9M9kfYqDOR3tVOohL5BRkY?=
+ =?us-ascii?Q?JUiZgJgXeV2Ab7hZ3LIkrFGIb6Ls23QQy2evBjYe/NAx1M29Gf4F1QYTRpfD?=
+ =?us-ascii?Q?etfgEC3G46nOXbuEZ4wkWfaYC3hEkH4vBb0tGXhVfjSH+CPsxZmnAkjWC0+j?=
+ =?us-ascii?Q?Zy6zotqHVmsUzhwHA1QKBSkht6VLsYCZhtEfYJkaJD1s7lZTcYkJPR0tvstg?=
+ =?us-ascii?Q?Bd/ZbR1bu8w8JS8zOWA5xrCPr8hFf5nAYsQywY3XgAOnHhICBvsosawuRAD1?=
+ =?us-ascii?Q?F1Z8ldqj4ldboubK8beM++ex70Y4diPBGstxBsJcA7DCTTkfLfLbzvAfScMT?=
+ =?us-ascii?Q?Zv6u1beE3lNs3/EC2oOcmIma4VhgWg/t/JyA6VBGAVGCp6lcfRFlEGkDHt05?=
+ =?us-ascii?Q?xZwF9bKEZVUkRgqRQIA=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b10d7d34-15e9-4218-36b7-08dabcd10705
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Nov 2022 12:51:57.9096
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qPIODLA6cxMKQoeY5mqiiUMadmsHrL2eYQMqaoyudGEeXLEYQWQQ8OmPBs1qg+85
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4067
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_052158_368001_2D3DFE7D 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20221102_055202_536047_D0435F0A 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +139,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/10/22 13:46, Allen-KH Cheng ha scritto:
-> The number of bytes used by spi_nor_spimem_check_readop() may be
-> incorrect for the dummy cycles. Since nor->read_dummy is not initialized
-> before spi_nor_spimem_adjust_hwcaps().
-> 
-> We use both mode and wait state clock cycles instead of nor->read_dummy.
-> 
-> Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
-> Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Tested-by: Dhruva Gole <d-gole@ti.com>
+--BsckruZV/wiPefnD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On MT8195 Tomato Chromebook:
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Joerg,
 
+Here is a PR for a shared branch with Nicolin's series. I will be
+putting this in the iommufd tree right away and Alex will need it for
+vfio as well to progress this cycle. Please grab it to the iommu tree,
+thanks
 
+Jason
+
+The following changes since commit 30a0b95b1335e12efef89dd78518ed3e4a71a763:
+
+  Linux 6.1-rc3 (2022-10-30 15:19:28 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/jgg/iommufd.git tags/for-joerg
+
+for you to fetch changes up to 04cee82e04d2aff3d177ef0021ecdff228daf7b8:
+
+  iommu: Propagate return value in ->attach_dev callback functions (2022-11-01 14:39:59 -0300)
+
+----------------------------------------------------------------
+iommu: Define EINVAL as device/domain incompatibility
+
+This series is to replace the previous EMEDIUMTYPE patch in a VFIO series:
+https://lore.kernel.org/kvm/Yxnt9uQTmbqul5lf@8bytes.org/
+
+The purpose is to regulate all existing ->attach_dev callback functions to
+use EINVAL exclusively for an incompatibility error between a device and a
+domain. This allows VFIO and IOMMUFD to detect such a soft error, and then
+try a different domain with the same device.
+
+Among all the patches, the first two are preparatory changes. And then one
+patch to update kdocs and another three patches for the enforcement
+effort.
+
+Link: https://lore.kernel.org/r/cover.1666042872.git.nicolinc@nvidia.com
+
+----------------------------------------------------------------
+Nicolin Chen (5):
+      iommu/amd: Drop unnecessary checks in amd_iommu_attach_device()
+      iommu: Add return value rules to attach_dev op and APIs
+      iommu: Regulate EINVAL in ->attach_dev callback functions
+      iommu: Use EINVAL for incompatible device/domain in ->attach_dev
+      iommu: Propagate return value in ->attach_dev callback functions
+
+ drivers/iommu/amd/iommu.c                   | 12 ++----------
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 11 +----------
+ drivers/iommu/arm/arm-smmu/arm-smmu.c       |  3 ---
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c     |  7 +------
+ drivers/iommu/fsl_pamu.c                    |  2 +-
+ drivers/iommu/fsl_pamu_domain.c             |  4 ++--
+ drivers/iommu/intel/iommu.c                 | 10 +++-------
+ drivers/iommu/intel/pasid.c                 |  6 ++++--
+ drivers/iommu/iommu.c                       | 24 ++++++++++++++++++++++++
+ drivers/iommu/ipmmu-vmsa.c                  |  2 --
+ drivers/iommu/mtk_iommu.c                   |  4 ++--
+ drivers/iommu/omap-iommu.c                  |  6 +++---
+ drivers/iommu/sprd-iommu.c                  |  4 +---
+ drivers/iommu/tegra-gart.c                  |  2 +-
+ drivers/iommu/virtio-iommu.c                |  7 +++----
+ include/linux/iommu.h                       | 12 ++++++++++++
+ 16 files changed, 60 insertions(+), 56 deletions(-)
+
+--BsckruZV/wiPefnD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRRRCHOFoQz/8F5bUaFwuHvBreFYQUCY2Jn6gAKCRCFwuHvBreF
+YaUcAQDVwu1W5Ju+SReB7lFO8un7TR4IDb/buDjg8mi630JAhgD9GoSb648jPGRW
+zo63odNSUA/R1ly8EBdT/qL77ktaogA=
+=HzjF
+-----END PGP SIGNATURE-----
+
+--BsckruZV/wiPefnD--
 
