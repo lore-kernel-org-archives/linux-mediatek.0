@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E97AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 21:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA8D4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Nov 2022 22:37:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AR+RpptO93OXstfiAhWbUVqw4hBBZs7vD9OUXvkHxOE=; b=KJTSi7ZpAb8DN6+iDwXLRN03TU
-	cl5NTrKt4FoGmKBW4WuuWs44zCyb+Zn0ayidKrqMRk2ijBhDPZQB67s/739FVhAqAaLQjgB4EcE9s
-	NC683iUdMrZgCQ0rAXTvyw08hG1E7KGjQ3hbeo5ILjtxQp6dWTej3rxKO/VbdYkzwenSZfFEfSUav
-	6P06cGHob6tVkUiVOcIyL5rm5UUQ5YLVF9wKZAH1eYN/jpBUmoAudB4SLZs7vUWkcLY80PPc7Yp3O
-	DFUyfnnBWameWIwXnKTyqKPc7v430nEUoxzZClyexfplglcPlVp6kBKWPab2yGpWOyOwh09AfpLM4
-	4RycPBcQ==;
+	bh=yt5IB5knkVf77kcKACvxdYcGkUHcp0Bvm5SU2agY7rQ=; b=hZtYPe8LT/djLyz38smyb0WrDq
+	UO3WcNsKt6myScsGqDcaQ6Q4jyypv9Uv5xS+4gbJLOqdK4iBt8ItzSNfuqYwOEwlGOXzLrhX5t0SV
+	xYoGnnXBUt0I+NDa1OIttLfTv41bX6/mDNd03JEQnk9h1mDrjeuyXNxMDnijNXfaYwSdtmt2BVYXB
+	lsTgdUS7bum5m9RNb2YSfHHMf1OENmoOQzId9hCuMOu7UY/CiJ9f+viZW17ZD/lY63YBnIFd6ZUbx
+	g+m/HJ2V4KPe+GqK/poVJZUxpEr/yXNRVaFkdVCJbFTr/i2MRg74pTXcSMKrEtvXJLZSobUlJs70u
+	OryCQA2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqLZw-00EZbn-Vl; Wed, 02 Nov 2022 21:47:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oqMMB-00Ejs0-BP; Wed, 02 Nov 2022 22:37:11 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqLZi-00EZV3-4t; Wed, 02 Nov 2022 21:47:07 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oqMM8-00EjqH-Ma
+	for linux-mediatek@lists.infradead.org; Wed, 02 Nov 2022 22:37:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8690B66017D3;
-	Wed,  2 Nov 2022 21:46:58 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667425620;
-	bh=wr7XvMBx78CPPZbFbCo5cFsqN667CuKHD66q8hrxbsU=;
+	by sin.source.kernel.org (Postfix) with ESMTPS id 11696CE2265;
+	Wed,  2 Nov 2022 22:37:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C10FC433B5;
+	Wed,  2 Nov 2022 22:37:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667428624;
+	bh=HGrNUTgAl8c/oQJAl4TiiTH5QHvDd9Mu7yXf5rzTRao=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Chs0dNoDzTTzVfBcJOaxY9re2NI0KcgqFwFCYcBI2SiP7ViF9AwVnzmuBZJ+PTFha
-	 733pUwWjrPpCGTfB33H0bLV6UmKAAedHz2UKfEkrUXUZvV35TCDhfOGT03jAoN/rKB
-	 1A8TEcUoKwUSzyfbQi0Mf4w43y95HOoBTc2VwtNpyRASXdGxYy35IXY9xRoRcn2v6I
-	 vBEhVhPlUg08iQexwCyokTyU7YfPgPI7zF1t/VxHgK+D2dEl9ma8aVxB6y06A6oBW4
-	 TqkApFf5nIlPOXJa9ejtMrYuKcRHWeK8QQw8mxGpp936vMi8VxHiKrczXPb2rzjsSN
-	 dYX9bWcsjcdPg==
-Date: Wed, 2 Nov 2022 17:46:54 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Masahiro Yamada <masahiroy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michal Marek <michal.lkml@markovi.net>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kbuild@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] kbuild: Add DTB_FILES variable for dtbs_check
-Message-ID: <20221102214654.axyptitp5kpq3wcq@notapiano>
-References: <20221101220304.65715-1-nfraprado@collabora.com>
- <20221102171343.3ajwlkxhp7s7r36k@notapiano>
+	b=UudH/B14WAcaNzxlgTJzts9Wo9DUqqYNk52xGI2zi0Jix8vWA1t6fEnG7RFMca4lZ
+	 zIZ7voUHJqyEf4hJ8ux4FY8rKbSPB0aj8N1O7a14oV4Ih0LXSy8V+QUTweQoRcWnQY
+	 tD+UkLzfpCL1RT6ali0QhSujUwIcWD/kMbkG+FUTV0wdFkeWO7+itdKKpqVIHc9tZO
+	 VFecJz/VW0ybiU6blCASnAN3WnSJ8ZuL8D+gfmpGnfyuT+OfMXc+HMKhJfvKCeIUvs
+	 7Ww2LeodQ0M7KuIVeRHmCMLHC0evmAub+MKemRNqqIc1NiwR0bg+s/a2h0Id/CYMu4
+	 WJeqJpE2fr+QQ==
+Date: Wed, 2 Nov 2022 23:37:00 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: Re: [PATCH 01/10] wifi: mt76: extend aggr_stats for tri-band support
+Message-ID: <Y2LxDLqPa45Xbe9n@lore-desk>
+References: <20221031164000.17063-1-shayne.chen@mediatek.com>
+ <20221031164000.17063-2-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="8OepT4zXwtk9Efj7"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221102171343.3ajwlkxhp7s7r36k@notapiano>
+In-Reply-To: <20221031164000.17063-2-shayne.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_144706_341739_28CDA856 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20221102_153708_943543_45093FB4 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +78,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 02, 2022 at 01:13:48PM -0400, Nícolas F. R. A. Prado wrote:
-> On Tue, Nov 01, 2022 at 06:03:03PM -0400, Nícolas F. R. A. Prado wrote:
-> > Currently running dtbs_check compiles and runs the DT checker on all
-> > enabled devicetrees against all dt-bindings. This can take a long time,
-> > and is an unnecessary burden when just validating a new devicetree or
-> > changes in an existing one, with the dt-bindings unchanged.
-> > 
-> > Similarly to DT_SCHEMA_FILES for dt_binding_check, add a DTB_FILES
-> > variable that can be passed to the dtbs_check make command to restrict
-> > which devicetrees are validated.
-> > 
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > ---
-> > Usage example:
-> > make dtbs_check DTB_FILES='arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb'
-> 
-> Hi,
-> 
-> I have just learned that it is already possible to achieve the same thing by
-> passing the dtbs explicitly to make and enabling the DTBS_CHECK flag like so:
-> 
-> make CHECK_DTBS=y mediatek/mt8192-asurada-spherion-r0.dtb
-> 
-> This flag isn't documented anywhere outside the Makefile however. So I'll send a
-> patch documenting it shortly, and this commit can be ignored.
 
-Patch: https://lore.kernel.org/all/20221102214300.309347-1-nfraprado@collabora.com
+--8OepT4zXwtk9Efj7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Nícolas
+On Nov 01, Shayne Chen wrote:
+> Make band2 able to report aggregation stats.
+> This is a preliminary patch to add mt7996 chipset support.
+>=20
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index f9bdf16fc6c4..42847b327cb0 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -781,7 +781,7 @@ struct mt76_dev {
+> =20
+>  	u32 rev;
+> =20
+> -	u32 aggr_stats[32];
+> +	u32 aggr_stats[16 * __MT_MAX_BAND];
+
+I think this patch will break mt7915 and mt7921 drivers.
+
+Regards,
+Lorenzo
+
+> =20
+>  	struct tasklet_struct pre_tbtt_tasklet;
+>  	int beacon_int;
+> --=20
+> 2.25.1
+>=20
+
+--8OepT4zXwtk9Efj7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2LxDAAKCRA6cBh0uS2t
+rEB8AP9Dm5/DXpvQLm3l29yvDhyBM5gPC9tAq05+24dkf8At3QD9HVpnd8JIW8ZR
+E4bSiHw7IUPp15+Bp53TQvck0WVT0ww=
+=vlXf
+-----END PGP SIGNATURE-----
+
+--8OepT4zXwtk9Efj7--
 
