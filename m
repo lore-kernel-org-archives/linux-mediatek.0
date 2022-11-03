@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF7EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 680E3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:44:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TKTewyrnhpQ1F53x4v45gH0+Zm/vbdAFcBiFtRsy1Zw=; b=sp+D+OH/4fx8RVMAit87OLo7fB
-	anvjtn6cmw5wMxsqOZdnsGEaAcR+LlewY7abqBn195VyA+3/bvps3tPHNc0QAE9whn++1hGrGeCFy
-	qpykurOhd8C7lSxSgPSPrK32Mp997BdH02K4gYtmeOFaSzW98RGjEBGuomyUNv9ySrULsPGktvwcP
-	+gpThoP4hcYIhdb5HjzM69xAaS8ppHnIKjU5EDQ91ZwgizmLnGy0XypYk42lBLZJ1PumzfdTBnOsc
-	3DSKIhgtJqKK7ICBy3tbXPhEKfeBR3Yjh/LxUiLRRKvVZryqjwjuMWmM18mN9Dh+mG5qKqv1R3vva
-	5UsITK8Q==;
+	bh=IlIL/Gvt31j+5nbe1oGT9s0qamo1aZLvLiZq9r55uy8=; b=dAZ4tM+cAUuztVOBW6BmI+PrCo
+	TOhGccuNfS5NlmJj0imNycM7CjqMEwmMKmUKpnrcW6TPYphPwOqaBx1yxxarros/VniALq70Ew/Fz
+	4X2eXgAQMb/27D+3yz/Mj1s8MMsGrum+EejjIHiFjdDaoF6R6nEBO825d6Emlj5UjXjMLEsg9LQAG
+	nm7dXn0mCvg9rTO5yiolQRG8BotuTPiN3HBzCNxo+SEkUJercQMmBHN/kVi1MhA1eetXGOowSyXwR
+	fsbdV9nhTTJaOACIcubJug3cjIH8+hal2REVjmzglFx0ovp0qtrlEFH9DXDY/z965OhLmcaO0QZei
+	WU5shJbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWZm-00GwzN-LZ; Thu, 03 Nov 2022 09:31:54 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oqWlS-00Gzyv-T7; Thu, 03 Nov 2022 09:43:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWXB-00GvpF-3i
-	for linux-mediatek@lists.infradead.org; Thu, 03 Nov 2022 09:29:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oqWlG-00Gzwy-Im; Thu, 03 Nov 2022 09:43:48 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 8B2B4B826A6;
-	Thu,  3 Nov 2022 09:29:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBE06C433D6;
-	Thu,  3 Nov 2022 09:29:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667467750;
-	bh=B/U8fjOrOcTUs3/L5mJw71YthuNrt+CD4lE1Aj11sjI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=uhfiIxFYdDykFSJ90KjtBljy2e64lIDURT0tgo9hQ7R7T5drWE5JE2SClyC9GcFB0
-	 pXbJdEuYTj70LUwNQHd/90Xdq2et8FB4W/NuIHqtnjNd7RRky9IYGjHRzXd52gZinu
-	 uXsnr0iWh+ayVACGhtxwnINMm+wEwqjW/n91IVOI/kwrVtzGxEcZIozYJzmLwmW3Zk
-	 WMySFEGUuoGKeSQM54txRCGHsLn3lIWMTDeUFuuQ3slnXbp9CBkcybwj7738prM+1S
-	 Dwb8w8EDTi2r6YJWlerMH0Na7jWw5VdXwcJeF/GCBQ35xVvZK0af5W/okS1gPVY1P3
-	 JETVU3WQrXcjg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com,
-	sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	daniel@makrotopia.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v3 net-next 8/8] MAINTAINERS: update MEDIATEK ETHERNET entry
-Date: Thu,  3 Nov 2022 10:28:07 +0100
-Message-Id: <a13a62d87d37b98d3c8d93a63ee30dc2508ef75c.1667466887.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <cover.1667466887.git.lorenzo@kernel.org>
-References: <cover.1667466887.git.lorenzo@kernel.org>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 502116602910;
+	Thu,  3 Nov 2022 09:43:44 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667468624;
+	bh=WzJl4BXFZRLkOk01bt0LBwgsiwnE8Tpr5KVb5Ed86K4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NaPeZEpZbFjEIt3jYG2wvn6z3NUPQRFSdWgpzTyAHzNlRJhaAFdJkikbizVhs7Byl
+	 3tyIfSkeK3MhkRWZehuPSamIlQuBEXeAYSQWYYSXKUYox/3MFAR7S71Bwt3WB19lpc
+	 4GJ8F3R6ZlyG+SA6FKmJ6C0DVY8fveeQ8SnZ340JNYNxczpi2RzhzzP3JSCCkV4fSq
+	 +kjhNPeGOwrqONsuzP6yyIDXbtoWY6QoEuYtBuzMC7aNSlVkReVVGQ7W4U/Lavlanp
+	 6tkuZDYZ4C+XOOmLDr+faXNsOG3xAgnkBPwtz9hYuaM3F8qqu3ll2g5gfucgLO57p3
+	 L3anbGiWaI6jg==
+Message-ID: <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
+Date: Thu, 3 Nov 2022 10:43:41 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
+Content-Language: en-US
+To: Bayi Cheng <bayi.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Chuanhong Guo <gch981213@gmail.com>, linux-kernel@vger.kernel.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20221103052843.2025-1-bayi.cheng@mediatek.com>
+ <20221103052843.2025-2-bayi.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221103052843.2025-2-bayi.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_022913_341732_4574B58D 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221103_024346_795427_44786E04 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,29 +78,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update MEDIATEK ETHERNET driver maintainer file enty adding myself to
-maintainers list
+Il 03/11/22 06:28, Bayi Cheng ha scritto:
+> From: bayi cheng <bayi.cheng@mediatek.com>
+> 
+> The timeout value of the current dma read is unreasonable. For example,
+> If the spi flash clock is 26Mhz, It will takes about 1.3ms to read a
+> 4KB data in spi mode. But the actual measurement exceeds 50s when a
+> dma read timeout is encountered.
+> 
+> In order to be more accurately, It is necessary to use msecs_to_jiffies,
+> After modification, the measured timeout value is about 130ms.
+> 
+> Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
+> ---
+>   drivers/spi/spi-mtk-nor.c | 7 ++++---
+>   1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> index d167699a1a96..3d989db80ee9 100644
+> --- a/drivers/spi/spi-mtk-nor.c
+> +++ b/drivers/spi/spi-mtk-nor.c
+> @@ -354,7 +354,7 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
+>   			    dma_addr_t dma_addr)
+>   {
+>   	int ret = 0;
+> -	ulong delay;
+> +	ulong delay, timeout;
+>   	u32 reg;
+>   
+>   	writel(from, sp->base + MTK_NOR_REG_DMA_FADR);
+> @@ -376,15 +376,16 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
+>   	mtk_nor_rmw(sp, MTK_NOR_REG_DMA_CTL, MTK_NOR_DMA_START, 0);
+>   
+>   	delay = CLK_TO_US(sp, (length + 5) * BITS_PER_BYTE);
+> +	timeout = (delay + 1) * 100;
+>   
+>   	if (sp->has_irq) {
+>   		if (!wait_for_completion_timeout(&sp->op_done,
+> -						 (delay + 1) * 100))
+> +		    msecs_to_jiffies(max_t(size_t, timeout / 1000, 10))))
 
-Acked-by: Felix Fietkau <nbd@nbd.name>
-Acked-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+You're giving a `size_t` variable to msecs_to_jiffies(), but checking `jiffies.h`,
+this function takes a `const unsigned int` param.
+Please change the type to match that.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7d44c5a6607d..b277dbde70ef 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12920,6 +12920,7 @@ M:	Felix Fietkau <nbd@nbd.name>
- M:	John Crispin <john@phrozen.org>
- M:	Sean Wang <sean.wang@mediatek.com>
- M:	Mark Lee <Mark-MC.Lee@mediatek.com>
-+M:	Lorenzo Bianconi <lorenzo@kernel.org>
- L:	netdev@vger.kernel.org
- S:	Maintained
- F:	drivers/net/ethernet/mediatek/
--- 
-2.38.1
+Aside from that, your `timeout` variable contains a timeout in microseconds and
+this means that actually using msecs_to_jiffies() is suboptimal here.
+
+Please use usecs_to_jiffies() instead.
+
+Regards,
+Angelo
 
 
