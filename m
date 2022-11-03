@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BEE0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 03:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B829C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 03:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNpyGlgBl9SZPhFeKALEIhFld+lzd+Z0HIMWFtYFTLM=; b=V1EG6ET+bqqOkbEL3slq5teUk5
-	hmNd7gJvZOKtRBP2M8bU44Hvd1DV5EfNIpnVNYZaTzoFunfDEZjp/nMuuQMnNOO8g5fpurFYFun7W
-	vEfW0Crq8RH9xt8QH2FMKT75Y/7gZjB9QXJu2H4Ip+Bv2rOgevF3V43I1EJLE6srqS3PCxbFLFR5d
-	uiIeq2zxZLvj13vQGG05a26ekqyS+6VTI3l9JKHUrgOwlN7x5lJ2ehodTHTj4Lr7pLQbBBcZne6WT
-	HDK6Y29vagWIjiYOpMa/l4fxHZd6hpyv0kQe2IWu9G8EK+BgYIpiJ6g2IRMlLQDhnkoRqcp6ah82x
-	xOHibaUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W4ju1y7e3Iky+rEpfGuw3OjiV9WjujyUdNGD/rdFXpM=; b=2K3VRU3CoLLm2aY1qhSKEpSftP
+	lqzNtjEYVMUL4D6r3Zz/Nn+eqn2TKHkXqDk/VCt6gMsyMzRSGiVw2Tc+G2qX1ivvK5QjnvQK90t0H
+	cepYUFvYbaGLqlHPvkcWSC9PUR1x3c2hu5UjC2gq03qRBD6DNGHOYXtc/4jIVCM6gkz5iCpCDJ2ti
+	+pWC27eKe2qaYnBnqeIifjr8rl3mNpoOIZfSYTek+Yka3vGCgIpV753fFBednNFrCzpafNdy8XTCb
+	LoVExtYhBrNvQdcufYeOqB34W1DFJUBLi8PhRZIPlY43wOhbFsrLHd1FwgPoiG+tni5KmBP9aigkW
+	zxoUKsHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQwe-00Fo2K-QD; Thu, 03 Nov 2022 03:31:08 +0000
+	id 1oqQxQ-00FoXr-Vp; Thu, 03 Nov 2022 03:31:57 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQsZ-00FlV1-TE; Thu, 03 Nov 2022 03:26:58 +0000
-X-UUID: 94218e038185482aac4110876761dc39-20221102
+	id 1oqQsa-00FlSZ-1L; Thu, 03 Nov 2022 03:27:00 +0000
+X-UUID: debab2bba5a0481f9d3fa597818f1ac9-20221102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XNpyGlgBl9SZPhFeKALEIhFld+lzd+Z0HIMWFtYFTLM=;
-	b=lEBgTJpvWe+Z+OCPptrhBWAbXCcT9I+VDwnu7eT2TMm2Br2XtOMlVQ4uKQbxB20ffbFP+mSWsb6J8a0R8IQDBngpogcjl4WLszY/0a5UO5IG2Z7H3qtnR0MNZ0hW4WgLMsmVDzSAEmH7fnNmnVRmUCLjD7Hg+leXvAssj2QftBo=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=W4ju1y7e3Iky+rEpfGuw3OjiV9WjujyUdNGD/rdFXpM=;
+	b=EWC1uGG3uhJpU/9XPLc77rAuLtkhVwYSqYgQAe9t7gIZXSY0Szmar2Nd3XJgLZD4NEdtDSbMj9kQAaJIFusptU5HdSwUCxkJJ3LH5T6+XAW2cve6wCPCbrngoMjedOGTqyinhSPqUdYpydKNXiAoZYykNDTU9VQYb1qsUKqyh/0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f7966f90-88dd-4ced-94c0-c84e198313f2,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:348746eb-84ac-4628-a416-bc50d5503da6,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:69ec6ee2-8a11-4e93-bfbc-941f9c53f856,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:62cd327,CLOUDID:388746eb-84ac-4628-a416-bc50d5503da6,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 94218e038185482aac4110876761dc39-20221102
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: debab2bba5a0481f9d3fa597818f1ac9-20221102
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 958908804; Wed, 02 Nov 2022 20:26:48 -0700
+	with ESMTP id 177298468; Wed, 02 Nov 2022 20:26:50 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Thu, 3 Nov 2022 11:26:12 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -49,12 +49,12 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  15.2.792.15 via Frontend Transport; Thu, 3 Nov 2022 11:26:12 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
- Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
 	<nfraprado@collabora.com>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
- Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
 	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
 	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
@@ -62,18 +62,19 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
 	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
 	<singo.chang@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v27 1/7] dt-bindings: mediatek: add ethdr definition for mt8195
-Date: Thu, 3 Nov 2022 11:26:04 +0800
-Message-ID: <20221103032610.9217-2-nancy.lin@mediatek.com>
+Subject: [PATCH v27 5/7] drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
+Date: Thu, 3 Nov 2022 11:26:08 +0800
+Message-ID: <20221103032610.9217-6-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221103032610.9217-1-nancy.lin@mediatek.com>
 References: <20221103032610.9217-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_202655_967877_2806C3DA 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20221102_202656_113757_713F7116 
+X-CRM114-Status: GOOD (  23.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,212 +89,619 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 ETHDR definition.
+MT8195 have two mmsys. Modify drm for MT8195 multi-mmsys support.
+The two mmsys (vdosys0 and vdosys1) will bring up two drm drivers,
+only one drm driver register as the drm device.
+Each drm driver binds its own component. The last bind drm driver
+allocates and registers the drm device to drm core.
+Each crtc path is created with the corresponding drm driver data.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Change-Id: Icf2a32f9eaa8bbdb0589d523852ea16512c51ad6
 ---
- .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
- 1 file changed, 188 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  24 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h |   3 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 292 ++++++++++++++++++------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  10 +-
+ 4 files changed, 243 insertions(+), 86 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-new file mode 100644
-index 000000000000..3b11e47a8834
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-@@ -0,0 +1,188 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,ethdr.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 78e20f604158..30dcb65d8a5a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -874,21 +874,28 @@ struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
+ }
+ 
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+-			const enum mtk_ddp_comp_id *path, unsigned int path_len)
++			const enum mtk_ddp_comp_id *path, unsigned int path_len,
++			int priv_data_index)
+ {
+ 	struct mtk_drm_private *priv = drm_dev->dev_private;
+ 	struct device *dev = drm_dev->dev;
+ 	struct mtk_drm_crtc *mtk_crtc;
+ 	unsigned int num_comp_planes = 0;
+-	int pipe = priv->num_pipes;
+ 	int ret;
+ 	int i;
+ 	bool has_ctm = false;
+ 	uint gamma_lut_size = 0;
++	struct drm_crtc *tmp;
++	int crtc_i = 0;
+ 
+ 	if (!path)
+ 		return 0;
+ 
++	priv = priv->all_drm_private[priv_data_index];
 +
-+title: MediaTek Ethdr Device
++	drm_for_each_crtc(tmp, drm_dev)
++		crtc_i++;
 +
-+maintainers:
-+  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-+  - Philipp Zabel <p.zabel@pengutronix.de>
+ 	for (i = 0; i < path_len; i++) {
+ 		enum mtk_ddp_comp_id comp_id = path[i];
+ 		struct device_node *node;
+@@ -900,7 +907,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 		if (!node) {
+ 			dev_info(dev,
+ 				 "Not creating crtc %d because component %d is disabled or missing\n",
+-				 pipe, comp_id);
++				 crtc_i, comp_id);
+ 			return 0;
+ 		}
+ 
+@@ -956,7 +963,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+ 		ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
+-						    pipe);
++						    crtc_i);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -968,24 +975,23 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	 */
+ 	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
+ 
+-	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
++	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, crtc_i);
+ 	if (ret < 0)
+ 		return ret;
+ 
+ 	if (gamma_lut_size)
+ 		drm_mode_crtc_set_gamma_size(&mtk_crtc->base, gamma_lut_size);
+ 	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, has_ctm, gamma_lut_size);
+-	priv->num_pipes++;
+ 	mutex_init(&mtk_crtc->hw_lock);
+ 
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	i = priv->mbox_index++;
+ 	mtk_crtc->cmdq_client.client.dev = mtk_crtc->mmsys_dev;
+ 	mtk_crtc->cmdq_client.client.tx_block = false;
+ 	mtk_crtc->cmdq_client.client.knows_txdone = true;
+ 	mtk_crtc->cmdq_client.client.rx_callback = ddp_cmdq_cb;
+ 	mtk_crtc->cmdq_client.chan =
+-			mbox_request_channel(&mtk_crtc->cmdq_client.client,
+-					     drm_crtc_index(&mtk_crtc->base));
++			mbox_request_channel(&mtk_crtc->cmdq_client.client, i);
+ 	if (IS_ERR(mtk_crtc->cmdq_client.chan)) {
+ 		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+ 			drm_crtc_index(&mtk_crtc->base));
+@@ -995,7 +1001,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	if (mtk_crtc->cmdq_client.chan) {
+ 		ret = of_property_read_u32_index(priv->mutex_node,
+ 						 "mediatek,gce-events",
+-						 drm_crtc_index(&mtk_crtc->base),
++						 i,
+ 						 &mtk_crtc->cmdq_event);
+ 		if (ret) {
+ 			dev_dbg(dev, "mtk_crtc %d failed to get mediatek,gce-events property\n",
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index f5a6e80c5265..606f72f35924 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -17,7 +17,8 @@
+ void mtk_drm_crtc_commit(struct drm_crtc *crtc);
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path,
+-			unsigned int path_len);
++			unsigned int path_len,
++			int priv_data_index);
+ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			     struct mtk_plane_state *state);
+ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 43633d670ef4..7689d5d877e1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -214,6 +214,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.ext_path = mt2701_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
+ 	.shadow_register = true,
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
+@@ -222,6 +223,7 @@ static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
+ 	.ext_path = mt7623_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt7623_mtk_ddp_ext),
+ 	.shadow_register = true,
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+@@ -231,11 +233,13 @@ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+ 	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
+ 	.third_path = mt2712_mtk_ddp_third,
+ 	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
+ 	.main_path = mt8167_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8167_mtk_ddp_main),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+@@ -243,6 +247,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+ 	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+ 	.ext_path = mt8173_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+@@ -250,6 +255,7 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.main_len = ARRAY_SIZE(mt8183_mtk_ddp_main),
+ 	.ext_path = mt8183_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+@@ -257,6 +263,7 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ 	.main_len = ARRAY_SIZE(mt8186_mtk_ddp_main),
+ 	.ext_path = mt8186_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt8186_mtk_ddp_ext),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+@@ -264,36 +271,122 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
+ 	.ext_path = mt8192_mtk_ddp_ext,
+ 	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
+ 	.main_path = mt8195_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
++	.mmsys_dev_num = 1,
+ };
+ 
++static const struct of_device_id mtk_drm_of_ids[] = {
++	{ .compatible = "mediatek,mt2701-mmsys",
++	  .data = &mt2701_mmsys_driver_data},
++	{ .compatible = "mediatek,mt7623-mmsys",
++	  .data = &mt7623_mmsys_driver_data},
++	{ .compatible = "mediatek,mt2712-mmsys",
++	  .data = &mt2712_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8167-mmsys",
++	  .data = &mt8167_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8173-mmsys",
++	  .data = &mt8173_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8183-mmsys",
++	  .data = &mt8183_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8186-mmsys",
++	  .data = &mt8186_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8192-mmsys",
++	  .data = &mt8192_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8195-vdosys0",
++	  .data = &mt8195_vdosys0_driver_data},
++	{ }
++};
++MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
 +
-+description:
-+  ETHDR (ET High Dynamic Range) is a MediaTek internal HDR engine and is
-+  designed for HDR video and graphics conversion in the external display path.
-+  It handles multiple HDR input types and performs tone mapping, color
-+  space/color format conversion, and then combine different layers,
-+  output the required HDR or SDR signal to the subsequent display path.
-+  This engine is composed of two video frontends, two graphic frontends,
-+  one video backend and a mixer. ETHDR has two DMA function blocks, DS and ADL.
-+  These two function blocks read the pre-programmed registers from DRAM and
-+  set them to HW in the v-blanking period.
++static int mtk_drm_match(struct device *dev, void *data)
++{
++	if (!strncmp(dev_name(dev), "mediatek-drm", sizeof("mediatek-drm") - 1))
++		return true;
++	return false;
++}
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8195-disp-ethdr
++static bool mtk_drm_get_all_drm_priv(struct device *dev)
++{
++	struct mtk_drm_private *drm_priv = dev_get_drvdata(dev);
++	struct mtk_drm_private *all_drm_priv[MAX_CRTC];
++	struct device_node *phandle = dev->parent->of_node;
++	const struct of_device_id *of_id;
++	struct device_node *node;
++	struct device *drm_dev;
++	int cnt = 0;
++	int i, j;
 +
-+  reg:
-+    maxItems: 7
++	for_each_child_of_node(phandle->parent, node) {
++		struct platform_device *pdev;
 +
-+  reg-names:
-+    items:
-+      - const: mixer
-+      - const: vdo_fe0
-+      - const: vdo_fe1
-+      - const: gfx_fe0
-+      - const: gfx_fe1
-+      - const: vdo_be
-+      - const: adl_ds
++		of_id = of_match_node(mtk_drm_of_ids, node);
++		if (!of_id)
++			continue;
 +
-+  interrupts:
-+    maxItems: 1
++		pdev = of_find_device_by_node(node);
++		if (!pdev)
++			continue;
 +
-+  iommus:
-+    minItems: 1
-+    maxItems: 2
++		drm_dev = device_find_child(&pdev->dev, NULL, mtk_drm_match);
++		if (!drm_dev || !dev_get_drvdata(drm_dev))
++			continue;
 +
-+  clocks:
-+    items:
-+      - description: mixer clock
-+      - description: video frontend 0 clock
-+      - description: video frontend 1 clock
-+      - description: graphic frontend 0 clock
-+      - description: graphic frontend 1 clock
-+      - description: video backend clock
-+      - description: autodownload and menuload clock
-+      - description: video frontend 0 async clock
-+      - description: video frontend 1 async clock
-+      - description: graphic frontend 0 async clock
-+      - description: graphic frontend 1 async clock
-+      - description: video backend async clock
-+      - description: ethdr top clock
++		all_drm_priv[cnt] = dev_get_drvdata(drm_dev);
++		if (all_drm_priv[cnt] && all_drm_priv[cnt]->mtk_drm_bound)
++			cnt++;
++	}
 +
-+  clock-names:
-+    items:
-+      - const: mixer
-+      - const: vdo_fe0
-+      - const: vdo_fe1
-+      - const: gfx_fe0
-+      - const: gfx_fe1
-+      - const: vdo_be
-+      - const: adl_ds
-+      - const: vdo_fe0_async
-+      - const: vdo_fe1_async
-+      - const: gfx_fe0_async
-+      - const: gfx_fe1_async
-+      - const: vdo_be_async
-+      - const: ethdr_top
++	if (drm_priv->data->mmsys_dev_num == cnt) {
++		for (i = 0; i < cnt; i++)
++			for (j = 0; j < cnt; j++)
++				all_drm_priv[j]->all_drm_private[i] = all_drm_priv[i];
 +
-+  power-domains:
-+    maxItems: 1
++		return true;
++	}
 +
-+  resets:
-+    items:
-+      - description: video frontend 0 async reset
-+      - description: video frontend 1 async reset
-+      - description: graphic frontend 0 async reset
-+      - description: graphic frontend 1 async reset
-+      - description: video backend async reset
++	return false;
++}
 +
-+  reset-names:
-+    items:
-+      - const: vdo_fe0_async
-+      - const: vdo_fe1_async
-+      - const: gfx_fe0_async
-+      - const: gfx_fe1_async
-+      - const: vdo_be_async
++static bool mtk_drm_find_mmsys_comp(struct mtk_drm_private *private, int comp_id)
++{
++	const struct mtk_mmsys_driver_data *drv_data = private->data;
++	int i;
 +
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: The register of display function block to be set by gce.
-+      There are 4 arguments in this property, gce node, subsys id, offset and
-+      register size. The subsys id is defined in the gce header of each chips
-+      include/dt-bindings/gce/<chip>-gce.h, mapping to the register of display
-+      function block.
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    minItems: 7
-+    maxItems: 7
++	if (drv_data->main_path)
++		for (i = 0; i < drv_data->main_len; i++)
++			if (drv_data->main_path[i] == comp_id)
++				return true;
 +
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - power-domains
-+  - resets
-+  - mediatek,gce-client-reg
++	if (drv_data->ext_path)
++		for (i = 0; i < drv_data->ext_len; i++)
++			if (drv_data->ext_path[i] == comp_id)
++				return true;
 +
-+additionalProperties: false
++	if (drv_data->third_path)
++		for (i = 0; i < drv_data->third_len; i++)
++			if (drv_data->third_path[i] == comp_id)
++				return true;
 +
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+    #include <dt-bindings/memory/mt8195-memory-port.h>
-+    #include <dt-bindings/power/mt8195-power.h>
-+    #include <dt-bindings/reset/mt8195-resets.h>
++	return false;
++}
 +
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
+ static int mtk_drm_kms_init(struct drm_device *drm)
+ {
+ 	struct mtk_drm_private *private = drm->dev_private;
++	struct mtk_drm_private *priv_n;
+ 	struct platform_device *pdev;
+-	struct device_node *np;
++	struct device_node *np = NULL;
+ 	struct device *dma_dev;
+-	int ret;
++	int ret, i, j;
+ 
+ 	if (drm_firmware_drivers_only())
+ 		return -ENODEV;
+ 
+-	if (!iommu_present(&platform_bus_type))
+-		return -EPROBE_DEFER;
+-
+-	pdev = of_find_device_by_node(private->mutex_node);
+-	if (!pdev) {
+-		dev_err(drm->dev, "Waiting for disp-mutex device %pOF\n",
+-			private->mutex_node);
+-		of_node_put(private->mutex_node);
+-		return -EPROBE_DEFER;
+-	}
+-	private->mutex_dev = &pdev->dev;
+-
+ 	ret = drmm_mode_config_init(drm);
+ 	if (ret)
+ 		goto put_mutex_dev;
+@@ -311,33 +404,61 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 	drm->mode_config.funcs = &mtk_drm_mode_config_funcs;
+ 	drm->mode_config.helper_private = &mtk_drm_mode_config_helpers;
+ 
+-	ret = component_bind_all(drm->dev, drm);
+-	if (ret)
+-		goto put_mutex_dev;
++	for (i = 0; i < private->data->mmsys_dev_num; i++) {
++		drm->dev_private = private->all_drm_private[i];
++		ret = component_bind_all(private->all_drm_private[i]->dev, drm);
++		if (ret)
++			goto put_mutex_dev;
++	}
+ 
+ 	/*
+-	 * We currently support two fixed data streams, each optional,
+-	 * and each statically assigned to a crtc:
+-	 * OVL0 -> COLOR0 -> AAL -> OD -> RDMA0 -> UFOE -> DSI0 ...
++	 * 1. We currently support two fixed data streams, each optional,
++	 *    and each statically assigned to a crtc:
++	 *    OVL0 -> COLOR0 -> AAL -> OD -> RDMA0 -> UFOE -> DSI0 ...
++	 * 2. For multi mmsys architecture, crtc path data are located in
++	 *    different drm private data structures. Loop through crtc index to
++	 *    create crtc from the main path and then ext_path and finally the
++	 *    third path.
++	 * 3. Use OVL device for all DMA memory allocations
+ 	 */
+-	ret = mtk_drm_crtc_create(drm, private->data->main_path,
+-				  private->data->main_len);
+-	if (ret < 0)
+-		goto err_component_unbind;
+-	/* ... and OVL1 -> COLOR1 -> GAMMA -> RDMA1 -> DPI0. */
+-	ret = mtk_drm_crtc_create(drm, private->data->ext_path,
+-				  private->data->ext_len);
+-	if (ret < 0)
+-		goto err_component_unbind;
+-
+-	ret = mtk_drm_crtc_create(drm, private->data->third_path,
+-				  private->data->third_len);
+-	if (ret < 0)
+-		goto err_component_unbind;
++	for (i = 0; i < MAX_CRTC; i++) {
++		for (j = 0; j < private->data->mmsys_dev_num; j++) {
++			priv_n = private->all_drm_private[j];
 +
-+        hdr-engine@1c114000 {
-+                compatible = "mediatek,mt8195-disp-ethdr";
-+                reg = <0 0x1c114000 0 0x1000>,
-+                      <0 0x1c115000 0 0x1000>,
-+                      <0 0x1c117000 0 0x1000>,
-+                      <0 0x1c119000 0 0x1000>,
-+                      <0 0x1c11a000 0 0x1000>,
-+                      <0 0x1c11b000 0 0x1000>,
-+                      <0 0x1c11c000 0 0x1000>;
-+                reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+                            "vdo_be", "adl_ds";
-+                mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0x4000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x5000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x7000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x9000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xa000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xb000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xc000 0x1000>;
-+                clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-+                         <&vdosys1 CLK_VDO1_26M_SLOW>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-+                         <&topckgen CLK_TOP_ETHDR>;
-+                clock-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+                              "vdo_be", "adl_ds", "vdo_fe0_async", "vdo_fe1_async",
-+                              "gfx_fe0_async", "gfx_fe1_async","vdo_be_async",
-+                              "ethdr_top";
-+                power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+                iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-+                         <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-+                interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /* disp mixer */
-+                resets = <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-+                reset-names = "vdo_fe0_async", "vdo_fe1_async", "gfx_fe0_async",
-+                              "gfx_fe1_async", "vdo_be_async";
-+        };
-+    };
-+...
++			if (i == 0 && priv_n->data->main_len) {
++				ret = mtk_drm_crtc_create(drm, priv_n->data->main_path,
++							  priv_n->data->main_len, j);
++				if (ret)
++					goto err_component_unbind;
++
++				if (!np)
++					np = priv_n->comp_node[priv_n->data->main_path[0]];
++
++				continue;
++			} else if (i == 1 && priv_n->data->ext_len) {
++				ret = mtk_drm_crtc_create(drm, priv_n->data->ext_path,
++							  priv_n->data->ext_len, j);
++				if (ret)
++					goto err_component_unbind;
++
++				if (!np)
++					np = priv_n->comp_node[priv_n->data->ext_path[0]];
++
++				continue;
++			} else if (i == 2 && priv_n->data->third_len) {
++				ret = mtk_drm_crtc_create(drm, priv_n->data->third_path,
++							  priv_n->data->third_len, j);
++				if (ret)
++					goto err_component_unbind;
++
++				if (!np)
++					np = priv_n->comp_node[priv_n->data->third_path[0]];
++
++				continue;
++			}
++		}
++	}
+ 
+-	/* Use OVL device for all DMA memory allocations */
+-	np = private->comp_node[private->data->main_path[0]] ?:
+-	     private->comp_node[private->data->ext_path[0]];
+ 	pdev = of_find_device_by_node(np);
+ 	if (!pdev) {
+ 		ret = -ENODEV;
+@@ -346,7 +467,8 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 	}
+ 
+ 	dma_dev = &pdev->dev;
+-	private->dma_dev = dma_dev;
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		private->all_drm_private[i]->dma_dev = dma_dev;
+ 
+ 	/*
+ 	 * Configure the DMA segment size to make sure we get contiguous IOVA
+@@ -368,9 +490,12 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 	return 0;
+ 
+ err_component_unbind:
+-	component_unbind_all(drm->dev, drm);
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		component_unbind_all(private->all_drm_private[i]->dev, drm);
+ put_mutex_dev:
+-	put_device(private->mutex_dev);
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		put_device(private->all_drm_private[i]->mutex_dev);
++
+ 	return ret;
+ }
+ 
+@@ -418,15 +543,36 @@ static const struct drm_driver mtk_drm_driver = {
+ static int mtk_drm_bind(struct device *dev)
+ {
+ 	struct mtk_drm_private *private = dev_get_drvdata(dev);
++	struct platform_device *pdev;
+ 	struct drm_device *drm;
+-	int ret;
++	int ret, i;
++
++	if (!iommu_present(&platform_bus_type))
++		return -EPROBE_DEFER;
++
++	pdev = of_find_device_by_node(private->mutex_node);
++	if (!pdev) {
++		dev_err(dev, "Waiting for disp-mutex device %pOF\n",
++			private->mutex_node);
++		of_node_put(private->mutex_node);
++		return -EPROBE_DEFER;
++	}
++
++	private->mutex_dev = &pdev->dev;
++	private->mtk_drm_bound = true;
++	private->dev = dev;
++
++	if (!mtk_drm_get_all_drm_priv(dev))
++		return 0;
+ 
+ 	drm = drm_dev_alloc(&mtk_drm_driver, dev);
+ 	if (IS_ERR(drm))
+ 		return PTR_ERR(drm);
+ 
++	private->drm_master = true;
+ 	drm->dev_private = private;
+-	private->drm = drm;
++	for (i = 0; i < private->data->mmsys_dev_num; i++)
++		private->all_drm_private[i]->drm = drm;
+ 
+ 	ret = mtk_drm_kms_init(drm);
+ 	if (ret < 0)
+@@ -451,10 +597,14 @@ static void mtk_drm_unbind(struct device *dev)
+ {
+ 	struct mtk_drm_private *private = dev_get_drvdata(dev);
+ 
+-	drm_dev_unregister(private->drm);
+-	mtk_drm_kms_deinit(private->drm);
+-	drm_dev_put(private->drm);
+-	private->num_pipes = 0;
++	/* for multi mmsys dev, unregister drm dev in mmsys master */
++	if (private->drm_master) {
++		drm_dev_unregister(private->drm);
++		mtk_drm_kms_deinit(private->drm);
++		drm_dev_put(private->drm);
++	}
++	private->mtk_drm_bound = false;
++	private->drm_master = false;
+ 	private->drm = NULL;
+ }
+ 
+@@ -577,29 +727,6 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	{ }
+ };
+ 
+-static const struct of_device_id mtk_drm_of_ids[] = {
+-	{ .compatible = "mediatek,mt2701-mmsys",
+-	  .data = &mt2701_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt7623-mmsys",
+-	  .data = &mt7623_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt2712-mmsys",
+-	  .data = &mt2712_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8167-mmsys",
+-	  .data = &mt8167_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8173-mmsys",
+-	  .data = &mt8173_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8183-mmsys",
+-	  .data = &mt8183_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8186-mmsys",
+-	  .data = &mt8186_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8192-mmsys",
+-	  .data = &mt8192_mmsys_driver_data},
+-	{ .compatible = "mediatek,mt8195-vdosys0",
+-	  .data = &mt8195_vdosys0_driver_data},
+-	{ }
+-};
+-MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+-
+ static int mtk_drm_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -627,6 +754,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 
+ 	private->data = of_id->data;
+ 
++	private->all_drm_private = devm_kmalloc_array(dev, private->data->mmsys_dev_num,
++						      sizeof(*private->all_drm_private),
++						      GFP_KERNEL);
++	if (!private->all_drm_private)
++		return -ENOMEM;
++
+ 	/* Iterate over sibling DISP function blocks */
+ 	for_each_child_of_node(phandle->parent, node) {
+ 		const struct of_device_id *of_id;
+@@ -646,7 +779,13 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		comp_type = (enum mtk_ddp_comp_type)of_id->data;
+ 
+ 		if (comp_type == MTK_DISP_MUTEX) {
+-			private->mutex_node = of_node_get(node);
++			int id;
++
++			id = of_alias_get_id(node, "mutex");
++			if (id < 0 || id == private->data->mmsys_id) {
++				private->mutex_node = of_node_get(node);
++				dev_dbg(dev, "get mutex for mmsys %d", private->data->mmsys_id);
++			}
+ 			continue;
+ 		}
+ 
+@@ -657,6 +796,9 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 			continue;
+ 		}
+ 
++		if (!mtk_drm_find_mmsys_comp(private, comp_id))
++			continue;
++
+ 		private->comp_node[comp_id] = of_node_get(node);
+ 
+ 		/*
+@@ -732,16 +874,20 @@ static int mtk_drm_sys_prepare(struct device *dev)
+ 	struct mtk_drm_private *private = dev_get_drvdata(dev);
+ 	struct drm_device *drm = private->drm;
+ 
+-	return drm_mode_config_helper_suspend(drm);
++	if (private->drm_master)
++		return drm_mode_config_helper_suspend(drm);
++	else
++		return 0;
+ }
+ 
+ static void mtk_drm_sys_complete(struct device *dev)
+ {
+ 	struct mtk_drm_private *private = dev_get_drvdata(dev);
+ 	struct drm_device *drm = private->drm;
+-	int ret;
++	int ret = 0;
+ 
+-	ret = drm_mode_config_helper_resume(drm);
++	if (private->drm_master)
++		ret = drm_mode_config_helper_resume(drm);
+ 	if (ret)
+ 		dev_err(dev, "Failed to resume\n");
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index d27561e5e274..8d3ff32b5364 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -29,14 +29,16 @@ struct mtk_mmsys_driver_data {
+ 	unsigned int third_len;
+ 
+ 	bool shadow_register;
++	unsigned int mmsys_id;
++	unsigned int mmsys_dev_num;
+ };
+ 
+ struct mtk_drm_private {
+ 	struct drm_device *drm;
+ 	struct device *dma_dev;
+-
+-	unsigned int num_pipes;
+-
++	bool mtk_drm_bound;
++	bool drm_master;
++	struct device *dev;
+ 	struct device_node *mutex_node;
+ 	struct device *mutex_dev;
+ 	struct device *mmsys_dev;
+@@ -44,6 +46,8 @@ struct mtk_drm_private {
+ 	struct mtk_ddp_comp ddp_comp[DDP_COMPONENT_ID_MAX];
+ 	const struct mtk_mmsys_driver_data *data;
+ 	struct drm_atomic_state *suspend_state;
++	unsigned int mbox_index;
++	struct mtk_drm_private **all_drm_private;
+ };
+ 
+ extern struct platform_driver mtk_disp_aal_driver;
 -- 
 2.18.0
 
