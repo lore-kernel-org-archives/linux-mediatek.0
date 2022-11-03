@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC26C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 02:58:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D0EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 02:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KANAasD+SmEdz35KDFRLNTAGhP8lyoSqBT3btkljEGc=; b=0OOp9nCa62LJ6Bykuuq9JdaT5h
-	L8rhiNC4RwGxC3objQiInMVosabxTXtvpIjc6VmVSmmNCytBmespNALUyuYukxEl0nJfER2wDd/kS
-	8WfBPkolcpdg3MOanO73sPvXK2ufC8cgarGMYIWAWQ54fza4D5MFSDhID2qpKDixup4mtMBWSNnRc
-	+hynVOsK/+jTDUBNHAxSo2VEYIh25FXJ7snixCKhVu6yY+hm2MR9RxDmhSn7y+AeGIQotntr20BPB
-	/zlf5WzWVhoOrFhFfydatA0TvSn7dh7tbGMVTTlO1lqE+dJVwEcoIpkrbc3+Fvih+qZIRNbDcQXW3
-	1Pw6lfcw==;
+	bh=NkXsbhZ1C8Ne8ug6E4tBFfkzINbKPN88lCCIn+4lczs=; b=EFTLtP7ZqWjVvSetM5KZyS1xUS
+	IGMH5w4wb9lTJIOpbSmO72S+bz7KdleXuHSbFY0VfFqg4GbeEfa01byhK2Vph+7kkgeI0Gc4ynXPY
+	BOCvVxCPkAqDrOsV0S7lG9uaXRmAGb3qyo1hz9bSN3+zLu7TcO79qnUHd5F2UL/DKrIibUTt/hNr2
+	GFDqcgOnBokcdRqZlHGvVK2Umcf5Hjkg59bnMKw0CkPb5xSEF3AqMWUj7MBfpGsPIj7k0zXoIlm3l
+	REBOZxvIFCYAyECB1W9QHqRlbwlgpCHsxeGB9Uvx26TnW7MOSTugMTYteW19ZxrPkzWj+jWsVcDBW
+	dUvGhWRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQQR-00Fhe4-4k; Thu, 03 Nov 2022 02:57:51 +0000
+	id 1oqQQZ-00FhgQ-T7; Thu, 03 Nov 2022 02:57:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQQE-00Fhas-OX; Thu, 03 Nov 2022 02:57:41 +0000
-X-UUID: 98fdfe04b5424bc9b228e32e5ee4759f-20221102
+	id 1oqQQI-00Fhc1-KA; Thu, 03 Nov 2022 02:57:43 +0000
+X-UUID: 04d0648cbcc44f7f9bc2e511a254d1fa-20221102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KANAasD+SmEdz35KDFRLNTAGhP8lyoSqBT3btkljEGc=;
-	b=G4dnZAow1q6PxYHT7msXJfIvm7W2tJbJz+Ij7EM0pLqSrqQZtKhPLmdF9vIuQxKUJlwzjaykTw5djck/ejjwAAbAUFCT1hmE+n1jXPWdDwA/ev6/y69Myu6pOgRAhfRGoXtyrARRwh4fySTOPyHMMb8cAH3So+3odANwDiMwd6Y=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NkXsbhZ1C8Ne8ug6E4tBFfkzINbKPN88lCCIn+4lczs=;
+	b=NE//+U/QChOFkWDOxxJk5oZVrFhse6JqXusvzooqSiD+fmoYAFMZrUm/QYCs1bfE9S87R9QvVkhj8YS5KUHmHAOTA9VbFrWYcyW7Vh8mVwa7TyaSLPumNf+fDFvT1uMkHYOO/PYa6E+Ipy1HewM7SqcczaGvRMwccYfpp8p5a3w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:ff74a54f-bac0-4bb1-9f4f-937482a60285,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:507545eb-84ac-4628-a416-bc50d5503da6,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:9572a051-eacb-4df0-84b5-8e5d24f873a1,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:d7b96c90-1a78-4832-bd08-74b1519dcfbf,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 98fdfe04b5424bc9b228e32e5ee4759f-20221102
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 04d0648cbcc44f7f9bc2e511a254d1fa-20221102
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1777038239; Wed, 02 Nov 2022 19:57:27 -0700
+	with ESMTP id 2093291549; Wed, 02 Nov 2022 19:57:40 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 3 Nov 2022 10:57:04 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 3 Nov 2022 10:57:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Thu, 3 Nov 2022 10:57:04 +0800
@@ -56,11 +56,11 @@ To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
 CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, TingHan Shen
 	<tinghan.shen@mediatek.com>
-Subject: [PATCH v5 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
-Date: Thu, 3 Nov 2022 10:56:55 +0800
-Message-ID: <20221103025656.8714-3-tinghan.shen@mediatek.com>
+Subject: [PATCH v5 1/3] dt-bindings: PCI: mediatek-gen3: Support mt8195
+Date: Thu, 3 Nov 2022 10:56:54 +0800
+Message-ID: <20221103025656.8714-2-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221103025656.8714-1-tinghan.shen@mediatek.com>
 References: <20221103025656.8714-1-tinghan.shen@mediatek.com>
@@ -68,8 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_195738_824161_3D7B83A5 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20221102_195742_690257_A9852090 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,197 +84,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pcie and pcie phy nodes for mt8195.
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+
+In order to support mt8195 pcie node, update the yaml to support new
+properties of iommu and power-domain, and update the reset-names
+property to allow only one 'mac' name.
 
 Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 150 +++++++++++++++++++++++
- 1 file changed, 150 insertions(+)
+ .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 905d1a90b406..7d74a5211091 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -13,6 +13,7 @@
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
- #include <dt-bindings/power/mt8195-power.h>
-+#include <dt-bindings/reset/mt8195-resets.h>
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index c00be39af64e..bc90f0ec7bd9 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -70,15 +70,21 @@ properties:
+     minItems: 1
+     maxItems: 8
  
- / {
- 	compatible = "mediatek,mt8195";
-@@ -1182,6 +1183,110 @@
- 			status = "disabled";
- 		};
++  iommu-map:
++    maxItems: 1
++
++  iommu-map-mask:
++    const: 0
++
+   resets:
+     minItems: 1
+     maxItems: 2
  
-+		pcie0: pcie@112f0000 {
-+			compatible = "mediatek,mt8195-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0 0x112f0000 0 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x81000000 0 0x20000000
-+				  0x0 0x20000000 0 0x200000>,
-+				 <0x82000000 0 0x20200000
-+				  0x0 0x20200000 0 0x3e00000>;
-+
-+			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE0 0x2>;
-+			iommu-map-mask = <0x0>;
-+
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
-+				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
-+			clock-names = "pl_250m", "tl_26m", "tl_96m",
-+				      "tl_32k", "peri_26m", "peri_mem";
-+			assigned-clocks = <&topckgen CLK_TOP_TL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
-+
-+			phys = <&pciephy>;
-+			phy-names = "pcie-phy";
-+
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
-+
-+			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
-+			reset-names = "mac";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-+					<0 0 0 2 &pcie_intc0 1>,
-+					<0 0 0 3 &pcie_intc0 2>,
-+					<0 0 0 4 &pcie_intc0 3>;
-+			status = "disabled";
-+
-+			pcie_intc0: interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+			};
-+		};
-+
-+		pcie1: pcie@112f8000 {
-+			compatible = "mediatek,mt8195-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0 0x112f8000 0 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x81000000 0 0x24000000
-+				  0x0 0x24000000 0 0x200000>,
-+				 <0x82000000 0 0x24200000
-+				  0x0 0x24200000 0 0x3e00000>;
-+
-+			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE1 0x2>;
-+			iommu-map-mask = <0x0>;
-+
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
-+				 /* Designer has connect pcie1 with peri_mem_p0 clock */
-+				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
-+			clock-names = "pl_250m", "tl_26m", "tl_96m",
-+				      "tl_32k", "peri_26m", "peri_mem";
-+			assigned-clocks = <&topckgen CLK_TOP_TL_P1>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
-+
-+			phys = <&u3port1 PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
-+
-+			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
-+			reset-names = "mac";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-+					<0 0 0 2 &pcie_intc1 1>,
-+					<0 0 0 3 &pcie_intc1 2>,
-+					<0 0 0 4 &pcie_intc1 3>;
-+			status = "disabled";
-+
-+			pcie_intc1: interrupt-controller {
-+				interrupt-controller;
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+			};
-+		};
-+
- 		nor_flash: spi@1132c000 {
- 			compatible = "mediatek,mt8195-nor",
- 				     "mediatek,mt8173-nor";
-@@ -1241,6 +1346,34 @@
- 				reg = <0x189 0x2>;
- 				bits = <7 5>;
- 			};
-+			pciephy_rx_ln1: pciephy-rx-ln1@190,1 {
-+				reg = <0x190 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190,2 {
-+				reg = <0x190 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_tx_ln1_pmos: pciephy-tx-ln1-pmos@191,1 {
-+				reg = <0x191 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_rx_ln0: pciephy-rx-ln0@191,2 {
-+				reg = <0x191 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_tx_ln0_nmos: pciephy-tx-ln0-nmos@192,1 {
-+				reg = <0x192 0x1>;
-+				bits = <0 4>;
-+			};
-+			pciephy_tx_ln0_pmos: pciephy-tx-ln0-pmos@192,2 {
-+				reg = <0x192 0x1>;
-+				bits = <4 4>;
-+			};
-+			pciephy_glb_intr: pciephy-glb-intr@193 {
-+				reg = <0x193 0x1>;
-+				bits = <0 4>;
-+			};
- 		};
+   reset-names:
+     minItems: 1
++    maxItems: 2
+     items:
+-      - const: phy
+-      - const: mac
++      enum: [ phy, mac ]
  
- 		u3phy2: t-phy@11c40000 {
-@@ -1461,6 +1594,23 @@
- 			};
- 		};
+   clocks:
+     maxItems: 6
+@@ -107,6 +113,9 @@ properties:
+     items:
+       - const: pcie-phy
  
-+		pciephy: phy@11e80000 {
-+			compatible = "mediatek,mt8195-pcie-phy";
-+			reg = <0 0x11e80000 0 0x10000>;
-+			reg-names = "sif";
-+			nvmem-cells = <&pciephy_glb_intr>, <&pciephy_tx_ln0_pmos>,
-+				      <&pciephy_tx_ln0_nmos>, <&pciephy_rx_ln0>,
-+				      <&pciephy_tx_ln1_pmos>, <&pciephy_tx_ln1_nmos>,
-+				      <&pciephy_rx_ln1>;
-+			nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
-+					   "tx_ln0_nmos", "rx_ln0",
-+					   "tx_ln1_pmos", "tx_ln1_nmos",
-+					   "rx_ln1";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_PHY>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
++  power-domains:
++    maxItems: 1
 +
- 		ufsphy: ufs-phy@11fa0000 {
- 			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
- 			reg = <0 0x11fa0000 0 0xc000>;
+   '#interrupt-cells':
+     const: 1
+ 
 -- 
 2.18.0
 
