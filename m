@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C70C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD7AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f13YrIXF3nPk5ucE+cLo6TRaXJT7UIlS45UGoNwokAI=; b=Dq5TInGS9ZP/7e1MjTabB50H/Z
-	lux/C1azJb/IKGhU9JdNBtYle4VwXvzHZNOEHj1crcV3drCE07Fo29xYbbeiUQ0ktQLR8x/aixj7F
-	77EHMf8Vp/Lrf33F7PZh3mi5v0sXnNHBXs1Je4B5ZvylKi8gqlT/DjJNxyOKfXNq69PycODlg8GEd
-	UueSV4ozR0acyBe/aktoPqbGnJkVCyS9eEGJ8gL/Q5GbWWt1jBOU5wQIpCq0dDI5gYlYGulIE6R/T
-	0UU9YyXKEXLCvg/lgg1BgL0v83cKwMmwoYwon8ZTMk/n5BJ1eHYuieSQMzEaeAH+agLOBgwydgRSM
-	BZiGfVkA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4T3ceWB6j+uy3tYtKQZ1wl1SRf3uGWUi/BHp1Np2wrY=; b=Gip5BEjeh9OYf0rovqMjfG/iTB
+	hD5i6hPuHUOVG55EAaL588/JlBGF4PY76aTIdSVrGBZe0eSSyvSWo8ItAw0KEWB2GJaF3xQv7YHxX
+	2ZAuF+SToO23BjKKLAw7Nrj6wvlSnojNadqw+TbC+NV3c6AiT/ITFDoWe1MyLaerqm94dfLx3bXiA
+	BKNghdvawrM0w7dXMTplYMNBQSHWjLsXAVDuzGBppwl/Lc2xy7BGA0oEEHdx5NCkQOLIloQF8sx0Z
+	G66M4ZJnWTRtvkbfD16lLW5+kL6bVipI4Lfx83aCLGw2WuH7nVrhwMHVx1MKfshxKZ/G+naO9TOW+
+	R7XnzW+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWSk-00Gu0F-Tt; Thu, 03 Nov 2022 09:24:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oqWZ3-00GwYl-3x; Thu, 03 Nov 2022 09:31:09 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWNc-00Gs4f-2z; Thu, 03 Nov 2022 09:19:21 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1oqWWe-00Gvb4-EB
+	for linux-mediatek@lists.infradead.org; Thu, 03 Nov 2022 09:28:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E63B766028F8;
-	Thu,  3 Nov 2022 09:19:17 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667467158;
-	bh=M5O9/BCrWTrkOySMMphlKg4mAjD2Nfo1FUdwjlTecWk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CncGJbw++/sDS5qmxAD4+iJ2XknKwtwxKT01wNdwIGnaX6LlNI9tChQ8S3Wle5Iqh
-	 y/Jgy/GTy0ZZqJ0oTFP3NyNCdvWKnW1Uckq8zXrigY5ep8h3Nja60dK2zsKQ2Onzmz
-	 JuMXfz/i26ZGrFDwXcq30uQwrfS1mAVG+qUYfu+HUJa4rksaB7ivdmlQ1QbMaIUDCQ
-	 EYY0zXzn9WvEdC6s4dK3dnhRtKTYqocRoci+mn3WDLdk1YxAdohefJMvxvLxn8bnZF
-	 mER16CqRSHK41KD36Qh/+ioNec47BjMqtkWh2SKxx5eiGa0GphJpf3iYEzrL1lgDII
-	 npWttR9BR5QiA==
-Message-ID: <cbeb2bdc-4a36-1f9a-e28f-842773b6a161@collabora.com>
-Date: Thu, 3 Nov 2022 10:19:15 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6708C61D17;
+	Thu,  3 Nov 2022 09:28:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FF3CC433C1;
+	Thu,  3 Nov 2022 09:28:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667467718;
+	bh=S/F8Xv1K2g426RUX/9UHQYE4rfAx8qVSyI51yE7iV6k=;
+	h=From:To:Cc:Subject:Date:From;
+	b=SqCSdZcJuEOc4qeMi3Hspx4fiaEzeIqa9FJ++XSyVVNQE/wfiYBqeUjDONbXo7Mqm
+	 9FwJdcHUcWsjGditUGL3HKwZhdgkY2X2WdZYxO3bZ7znv8huK232/gFKYb85qtqrkj
+	 Nqh/ivuGh2PTfKhSObHehx2nwR0ex3BykLR4nhbwpqE65VepPIDWjQUsj1tPbK0KT8
+	 uOIvO1sUT0m5wGqWTNWL5z5wCfdd/4z4XDwY19PBIJQ/6EstUVK23lU66kPthuNSKB
+	 ANN+YrH4ZG0p+YKhGlF2qMueWR+unsPjcgvgEu6FfjGGWbt6xAh8pUN8sl06wZBVLt
+	 8GC23EdQ6vWVw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org,
+	robh+dt@kernel.org,
+	daniel@makrotopia.org,
+	krzysztof.kozlowski+dt@linaro.org
+Subject: [PATCH v3 net-next 0/8] introduce WED RX support to MT7986 SoC
+Date: Thu,  3 Nov 2022 10:27:59 +0100
+Message-Id: <cover.1667466887.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH] docs: dt: writing-schema: Document usage of CHECK_DTBS
- make flag
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Rob Herring <robh+dt@kernel.org>
-Cc: kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20221102214300.309347-1-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221102214300.309347-1-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_021920_299045_414169D7 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20221103_022840_628140_A365BD2C 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,50 +86,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/11/22 22:43, Nícolas F. R. A. Prado ha scritto:
-> It is possible to run checks on a Devicetree by passing the CHECK_DTBS
-> flag when building. This is a useful shortcut to the dtbs_check make
-> target since it avoids checking unrelated Devicetrees, which can take
-> some time and is unnecessary if no bindings were modified. Document it.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->  > ---
-> 
->   Documentation/devicetree/bindings/writing-schema.rst | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/writing-schema.rst b/Documentation/devicetree/bindings/writing-schema.rst
-> index 4a381d20f2b4..55ad556472b4 100644
-> --- a/Documentation/devicetree/bindings/writing-schema.rst
-> +++ b/Documentation/devicetree/bindings/writing-schema.rst
-> @@ -167,6 +167,13 @@ setting the ``DT_SCHEMA_FILES`` variable to a specific schema file or pattern.
->       make dt_binding_check DT_SCHEMA_FILES=/gpio/
->       make dtbs_check DT_SCHEMA_FILES=trivial-devices.yaml
->   
-> +Note that ``make dtbs_check`` will validate every DT source file that is
+Similar to TX counterpart available on MT7622 and MT7986, introduce
+RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
+offload traffic received by wlan nic to the wired interfaces (lan/wan).
 
-"Note that xxxx" looks a bit repeated... read:
+Changes since v2:
+- rely on of_reserved_mem APIs in mcu code
+- add some dts fixes
+- rename {tx,rx}_wdma in {rx,tx}_wdma
+- update entry in maintainers file
 
-Note that ``dtbs_check`` will skip any binding schema files with errors.
-(etc etc)
+Changes since v1:
+- fix sparse warnings
+- rely on memory-region property in mt7622-wed.yaml
+- some more binding fixes
 
-Note that ``make dtbs_check`` will validate every DT source file ...
-(etc etc)
+Lorenzo Bianconi (7):
+  arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
+    Dispatch
+  dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
+  net: ethernet: mtk_wed: introduce wed wo support
+  net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
+  net: ethernet: mtk_wed: add configure wed wo support
+  net: ethernet: mtk_wed: add rx mib counters
+  MAINTAINERS: update MEDIATEK ETHERNET entry
 
-Perhaps we can change the first paragraph saying
-"In order to perform validation of DT source files, use..."
-to something like:
+Sujuan Chen (1):
+  net: ethernet: mtk_wed: introduce wed mcu support
 
-In order to perform validation of all DT source files, use the ``dtbs_check``
-target, or set the ``CHECK_DTBS`` variable to ``y`` when building specific DTs::
+ .../arm/mediatek/mediatek,mt7622-wed.yaml     |  62 +-
+ .../arm/mediatek/mediatek,mt7986-wo-boot.yaml |  47 ++
+ .../arm/mediatek/mediatek,mt7986-wo-ccif.yaml |  50 ++
+ .../arm/mediatek/mediatek,mt7986-wo-dlm.yaml  |  50 ++
+ MAINTAINERS                                   |   1 +
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  75 +++
+ drivers/net/ethernet/mediatek/Makefile        |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed.c       | 609 ++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
+ .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 392 +++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 508 +++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 284 ++++++++
+ include/linux/soc/mediatek/mtk_wed.h          | 106 ++-
+ 15 files changed, 2366 insertions(+), 57 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-boot.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-ccif.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wo-dlm.yaml
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
 
-::
+-- 
+2.38.1
 
-     make dtbs_check
-     make CHECK_DTBS=y mediatek/mt8192-evb.dtb
-
-Any opinion?
-
-Cheers,
-Angelo
 
