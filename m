@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 680E3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD49C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 09:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IlIL/Gvt31j+5nbe1oGT9s0qamo1aZLvLiZq9r55uy8=; b=dAZ4tM+cAUuztVOBW6BmI+PrCo
-	TOhGccuNfS5NlmJj0imNycM7CjqMEwmMKmUKpnrcW6TPYphPwOqaBx1yxxarros/VniALq70Ew/Fz
-	4X2eXgAQMb/27D+3yz/Mj1s8MMsGrum+EejjIHiFjdDaoF6R6nEBO825d6Emlj5UjXjMLEsg9LQAG
-	nm7dXn0mCvg9rTO5yiolQRG8BotuTPiN3HBzCNxo+SEkUJercQMmBHN/kVi1MhA1eetXGOowSyXwR
-	fsbdV9nhTTJaOACIcubJug3cjIH8+hal2REVjmzglFx0ovp0qtrlEFH9DXDY/z965OhLmcaO0QZei
-	WU5shJbg==;
+	bh=6fO6PJSgF7qkqXLHAAVDIwUbaGbV1UTQvVg8sSQrsFM=; b=Xc/ibankexTki4YgpMV5JP4gNk
+	JddBQtrU4l9s8HC1muAOZUkzWHbVxrBikmmNmRR0r8JadP8Da0FuVaxFEIpe9i/l7JBAFsc/NX15h
+	/nWVloZL+C5/EsGwnvwWPeIOLH5B0AM/We7odctcC9jTPWpxLb/ktB+MG/sgt+9WlNjDQ8/hoZd+R
+	FUOvORIF+Jf0wbhh8C8pVy1fPFkuB1/BYLN84x75nRFZ95pUEFjT3DbqoVoTg26sLnkg3KsXWon9f
+	cWhcL3Rbjnb+rbgGJbycV0EX0UCSX3OlJn/f25C16PmEKmkZgahfyav/bCG69HsaoBRL8gxiWPFMb
+	flnXZiCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWlS-00Gzyv-T7; Thu, 03 Nov 2022 09:43:58 +0000
+	id 1oqWrT-00H0n1-KN; Thu, 03 Nov 2022 09:50:11 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqWlG-00Gzwy-Im; Thu, 03 Nov 2022 09:43:48 +0000
+	id 1oqWrI-00H0ko-7R; Thu, 03 Nov 2022 09:50:01 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 502116602910;
-	Thu,  3 Nov 2022 09:43:44 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 30DF56602910;
+	Thu,  3 Nov 2022 09:49:58 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667468624;
-	bh=WzJl4BXFZRLkOk01bt0LBwgsiwnE8Tpr5KVb5Ed86K4=;
+	s=mail; t=1667468998;
+	bh=4CpuV+XdMGlw8IhY60YU6dU/4TY7hgL/Dy2jeBCaZis=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NaPeZEpZbFjEIt3jYG2wvn6z3NUPQRFSdWgpzTyAHzNlRJhaAFdJkikbizVhs7Byl
-	 3tyIfSkeK3MhkRWZehuPSamIlQuBEXeAYSQWYYSXKUYox/3MFAR7S71Bwt3WB19lpc
-	 4GJ8F3R6ZlyG+SA6FKmJ6C0DVY8fveeQ8SnZ340JNYNxczpi2RzhzzP3JSCCkV4fSq
-	 +kjhNPeGOwrqONsuzP6yyIDXbtoWY6QoEuYtBuzMC7aNSlVkReVVGQ7W4U/Lavlanp
-	 6tkuZDYZ4C+XOOmLDr+faXNsOG3xAgnkBPwtz9hYuaM3F8qqu3ll2g5gfucgLO57p3
-	 L3anbGiWaI6jg==
-Message-ID: <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
-Date: Thu, 3 Nov 2022 10:43:41 +0100
+	b=NO+0Sni1GND37CMVheasUORCY5dOko3seUNX6BnzeVMjaaCQPvGQVAuaxg7fJ/HpD
+	 t/sZhatvKR7Ny+tcUfNxdJswJQJ3CNb+d2zGnkFH+XI+9VdXV3ftkfAOkZaU/21G8x
+	 v3wTS0lrLw0bNbxMfr3yRfR1WXLSHYQK8GBfcKZQW6O+FCs4KW44H2WN1Rpt4lcOIY
+	 CLZRCrfjcnQk9rUHv/K1mVjf3fRNJ2SLaL3lDZAWRD1zZ9rLyR/lHIAEJ/OAxIJ/9W
+	 qVBgV0++lH8h0DGSk45FOO9CEXacxc2dAYPXzN/pYDPFpRS1hMPdNKgeKqizB+dzmb
+	 hnVx3c2dlebgA==
+Message-ID: <e219b620-a119-74ba-34d7-e678a08b83df@collabora.com>
+Date: Thu, 3 Nov 2022 10:49:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
+Subject: Re: [PATCH v3 4/5] arm64: dts: mediatek: asurada: Enable audio
+ support
 Content-Language: en-US
-To: Bayi Cheng <bayi.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Chuanhong Guo <gch981213@gmail.com>, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20221103052843.2025-1-bayi.cheng@mediatek.com>
- <20221103052843.2025-2-bayi.cheng@mediatek.com>
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221102190611.283546-1-nfraprado@collabora.com>
+ <20221102190611.283546-5-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221103052843.2025-2-bayi.cheng@mediatek.com>
+In-Reply-To: <20221102190611.283546-5-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_024346_795427_44786E04 
-X-CRM114-Status: GOOD (  18.93  )
+X-CRM114-CacheID: sfid-20221103_025000_430534_AFB27BFF 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +79,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/11/22 06:28, Bayi Cheng ha scritto:
-> From: bayi cheng <bayi.cheng@mediatek.com>
+Il 02/11/22 20:06, Nícolas F. R. A. Prado ha scritto:
+> Enable audio support for the Asurada platform. This consists of the
+> machine sound card, the rt1015p codec for the speakers, the rt5682 codec
+> for the headset, and the dmic codec for the internal microphone.
 > 
-> The timeout value of the current dma read is unreasonable. For example,
-> If the spi flash clock is 26Mhz, It will takes about 1.3ms to read a
-> 4KB data in spi mode. But the actual measurement exceeds 50s when a
-> dma read timeout is encountered.
+> Newer revisions of spherion and hayato use the rt5682s codec for the
+> headset instead, so the codecs and card compatible are added through
+> separate dtsi files to prepare for that.
 > 
-> In order to be more accurately, It is necessary to use msecs_to_jiffies,
-> After modification, the measured timeout value is about 130ms.
+> HDMI audio support is left out for now since the DisplayPort chip
+> required isn't enabled yet.
 > 
-> Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
-> ---
->   drivers/spi/spi-mtk-nor.c | 7 ++++---
->   1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-> index d167699a1a96..3d989db80ee9 100644
-> --- a/drivers/spi/spi-mtk-nor.c
-> +++ b/drivers/spi/spi-mtk-nor.c
-> @@ -354,7 +354,7 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
->   			    dma_addr_t dma_addr)
->   {
->   	int ret = 0;
-> -	ulong delay;
-> +	ulong delay, timeout;
->   	u32 reg;
->   
->   	writel(from, sp->base + MTK_NOR_REG_DMA_FADR);
-> @@ -376,15 +376,16 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
->   	mtk_nor_rmw(sp, MTK_NOR_REG_DMA_CTL, MTK_NOR_DMA_START, 0);
->   
->   	delay = CLK_TO_US(sp, (length + 5) * BITS_PER_BYTE);
-> +	timeout = (delay + 1) * 100;
->   
->   	if (sp->has_irq) {
->   		if (!wait_for_completion_timeout(&sp->op_done,
-> -						 (delay + 1) * 100))
-> +		    msecs_to_jiffies(max_t(size_t, timeout / 1000, 10))))
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-You're giving a `size_t` variable to msecs_to_jiffies(), but checking `jiffies.h`,
-this function takes a `const unsigned int` param.
-Please change the type to match that.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Aside from that, your `timeout` variable contains a timeout in microseconds and
-this means that actually using msecs_to_jiffies() is suboptimal here.
-
-Please use usecs_to_jiffies() instead.
-
-Regards,
-Angelo
 
 
