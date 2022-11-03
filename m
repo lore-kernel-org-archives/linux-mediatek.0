@@ -4,96 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDB58C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 15:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90988C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 16:18:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+GK+kN47VRDh5Rd9IAtghxyhLdbPgGlBTCLcifjdKfY=; b=rzVSjYGC5lrjrT+nw3eGbu7nD9
-	NKWjewfUuy6W24b5zWgLKqKpPLSN+WwDWccydqmtlWuw4cKTNe+V8yWtTQ1VzF7TeTCAP315W11gF
-	3bLnYrrWYt2XhxXFcfC62DSwV8QrEL0CCxw3iJ+eM1rIBWtasxLz3j3rxkAJAdM7nkJf/EkJ2zDQC
-	iwgnd6pU4U9pFu4Zpe6k/66dhbsEM5N/jS/XqOYfPpEELXtRPh76dFNr6cY3vfGPerKzurJK4OSON
-	FWve2wZtr6MpWJhUtJ1TtTP9Wkl8fO7bA4wOm9kCFh6hBrwieZWVbVM5xHpislTw+NT3G09A2FzDR
-	DEaV+06g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MVCVa7KWVIH7S5RnoHtmNnvvrOGrqEfTeCPuTEI4FLc=; b=tG2sAnVuc1QPhSuoavoGk0KurM
+	hpx8rYD1qcw/WUoniQADOJp86rVwjJNoDHkgGZtW3eomrYNin8voktYz3OWnHioUCSg3AB5dE05+F
+	PqminVF7g5dqHqXzuTN3U8TQhWdPNPTRXnhTuxYLMu3w1/LOKjBCJD2C5GzotGahNG1f0je8aaPhA
+	Kbx6YpxfPoZIe6O7S7J39J8wDy7NGWCY9GHKtt2FZPYbM4Ag7Is2XcuLoMy+4ETk7fqs8GJ1ULl9S
+	y4Yw+uNMAENR9ybVeGV2OMuUDYEMdU78+d/QjC10lUPkN7zHCG33VhYHDjlnyDO/lSiCPSv0v7RBS
+	iSyIQZtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqcKc-000SUu-Sz; Thu, 03 Nov 2022 15:40:38 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1oqcuj-000ddC-Jo; Thu, 03 Nov 2022 16:17:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqc5Q-000Lj4-C6
-	for linux-mediatek@lists.infradead.org; Thu, 03 Nov 2022 15:24:57 +0000
-Received: by mail-qk1-x732.google.com with SMTP id l9so1317552qkk.11
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Nov 2022 08:24:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+GK+kN47VRDh5Rd9IAtghxyhLdbPgGlBTCLcifjdKfY=;
-        b=CuVdKrpYE2rQRg37FPIg+JZrk4NzKKxt219BGe3CMQvQo8Lmp2ckSDbzhj0bEEUIDL
-         fxTOSuzkB/5KrS//gXY6ySrTmRgRg8/Y7fvynh6m65Zh2OXxQ4VX2GSRl9UBvObPXaiB
-         +vOZCa0xjXVbfTNBKAzOFM+Bk77Hb1sPLlBuXe4pMZ5UDc+2YdWojicrTPpwK/H61Iio
-         yq7H5MfkITJRWQYoPFpDcBb9983wRkk5uycAbX1edw4j+1IfEOYvTWUb0TabE5T1YL68
-         HomjjXu09Q9xuXt2iGFj5ybrYfCG6zH2HK1fcjAIOuAUFslSMbvF1EvI5XH6vconk6NT
-         K1+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+GK+kN47VRDh5Rd9IAtghxyhLdbPgGlBTCLcifjdKfY=;
-        b=wm/4dL0xlpE86Se54yqL8MpYoXiU2CBws1xN2tR7uoOCaYbUdxv9aqvigmToSr2iIZ
-         dr0cTjvYII74LRl0rOOlC4935ydg5PBYwTNnTsDGYw/whA0iPtT1DRFjIhexq2B6wPAI
-         UoLRA8rSpoLVY08mrx2quFHoEPsklpk4y3ntkB1rlqKBMxOrcEGZCL+0vmaDaCy6k4rK
-         CKHFbg/9lhrzRpAaofonJBqxV3eHqNM0/xwwnIGTIMn35cwIQhtjUEVGqlwpbv6qBfN0
-         q9OrqZn1KEAG/yjknw5td3bjYQk7yw8aoVs/zM3xQqMA7DbNEbLraHACS5sHHGfTYeLV
-         pScQ==
-X-Gm-Message-State: ACrzQf1P5vDopQs6GC7p5b0O200q88ueqATwUMVtARWBeqNNfq2ikJaW
-	qbd/NR0LsJHUUnCBMbcKDpX6Gg==
-X-Google-Smtp-Source: AMsMyM4JfQZmP8W7rxOWSLWL8ATCWGxBIJQoz0Nkbogfi2BmdP8tf0y5Xg2ivz3gto0bPNF2tfnghQ==
-X-Received: by 2002:a05:620a:1256:b0:6fa:4c67:4d9c with SMTP id a22-20020a05620a125600b006fa4c674d9cmr10696457qkl.713.1667489095268;
-        Thu, 03 Nov 2022 08:24:55 -0700 (PDT)
-Received: from ?IPV6:2601:586:5000:570:a35d:9f85:e3f7:d9fb? ([2601:586:5000:570:a35d:9f85:e3f7:d9fb])
-        by smtp.gmail.com with ESMTPSA id p20-20020a05620a15f400b006b953a7929csm907379qkm.73.2022.11.03.08.24.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 03 Nov 2022 08:24:54 -0700 (PDT)
-Message-ID: <a2b1ffe3-e2bc-25d5-f665-363db09bd959@linaro.org>
-Date: Thu, 3 Nov 2022 11:24:53 -0400
+	id 1oqcuN-000dQc-Ou; Thu, 03 Nov 2022 16:17:37 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 66FEB6602962;
+	Thu,  3 Nov 2022 16:17:27 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667492249;
+	bh=UF8gcf9Zdsra79jQbu7uASjF23J3RPW5N777RLTHhuY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=BuefWQlJf8M4p09e0/uP4GwZBjBH8QwGMfRznG/AwyOlcJj/RN64+2lpdnSV4cTNK
+	 n+huZqFNDDR3di5xNQ/VMT5NhuiG0V9Xq/50r3FVSBLnY/VAeg4HPpl7iryOOPFazz
+	 xAnb4V7qFNpJVHZbEDNFS3VSkWY7jWTXdyl3tAv29BtVo17G0BMwKR9/mKBxAGtK1B
+	 UXEf5yEGt8vDymhc5wEnFfMFhj2wmOPe1NFdWOejaPwclO+ASdD+i+K4HNwIF0RE4X
+	 accQfnWvEhuO/Ph1cAufgt6fTa0P1fuXvZ/alaa5/rrH2zX55/ezcLRmhhh6u3qgTi
+	 WogQ4pHX/hJ4A==
+Message-ID: <df2676f0e4dce565d483ce2149b2c54da05b34a5.camel@collabora.com>
+Subject: Re: [PATCH v2] vcodec: mediatek: add check for NULL for
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Anastasia Belova <abelova@astralinux.ru>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
+ Verkuil <hverkuil-cisco@xs4all.nl>,  linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,  lvc-project@linuxtesting.org
+Date: Thu, 03 Nov 2022 12:17:17 -0400
+In-Reply-To: <20221102121027.4285-1-abelova@astralinux.ru>
+References: <20221102121027.4285-1-abelova@astralinux.ru>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH v2 02/12] dt-bindings: display: mediatek: add MT8195 hdmi
- bindings
-Content-Language: en-US
-To: Guillaume Ranquet <granquet@baylibre.com>, Daniel Vetter
- <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, David Airlie <airlied@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jitao shi <jitao.shi@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: stuart.lee@mediatek.com, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, mac.shen@mediatek.com,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20220919-v2-0-8419dcf4f09d@baylibre.com>
- <20220919-v2-2-8419dcf4f09d@baylibre.com>
- <c91ee3ce-3f30-a3ef-bb38-8571e488b6b6@linaro.org>
- <CABnWg9t3w4o4rmNosvYCpqG-h8DESerajH7OsXEYofRf2kr1Xg@mail.gmail.com>
- <6bb3ab49-1c12-6863-a49a-2fd1f34de561@linaro.org>
- <CABnWg9uDki0ZtkxU1BPZq0ZU1mi4zFjasw+e3pQYb+Nv1MThLA@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CABnWg9uDki0ZtkxU1BPZq0ZU1mi4zFjasw+e3pQYb+Nv1MThLA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_082456_551790_2912B3B5 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20221103_091735_972159_5D86B40C 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,23 +76,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/11/2022 11:17, Guillaume Ranquet wrote:
-> On Thu, 03 Nov 2022 13:45, Krzysztof Kozlowski
->>> This is an i2c adapter, not a device.
->>> And as it lives inside the HDMI hw block, I've omitted using an address here.
->>>
->>> Is this valid? or should this be expressed differently?
->>
->> What is an I2C adapter? Did you mean I2C controller (master)?
-> 
-> Yes, a controller.
-> This is an I2C controller connected to the HDMI connector, it is used
-> to exchange data on the Display Data Channel with
-> the display (such as EDID).
+Le mercredi 02 novembre 2022 =C3=A0 15:10 +0300, Anastasia Belova a =C3=A9c=
+rit=C2=A0:
+> Any time calling vp9_is_sf_ref_fb we need fb !=3D NULL after checks.
+>=20
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
+>=20
+> Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video De=
+coder Driver")
 
-OK, then the node name is "i2c".
+As Angelo said, this change is a no-op in practice, for this reason I would
+suggest to drop the `Fixes` tag (not worth the effort of back-porting this)=
+.
 
-Best regards,
-Krzysztof
+>=20
+> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+>  drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/=
+drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+> index 70b8383f7c8e..776468cd834a 100644
+> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+> @@ -208,6 +208,9 @@ static bool vp9_is_sf_ref_fb(struct vdec_vp9_inst *in=
+st, struct vdec_fb *fb)
+>  	int i;
+>  	struct vdec_vp9_vsi *vsi =3D inst->vsi;
+> =20
+> +	if (!fb)
+> +		return true;
+> +
+>  	for (i =3D 0; i < ARRAY_SIZE(vsi->sf_ref_fb); i++) {
+>  		if (fb =3D=3D &vsi->sf_ref_fb[i].fb)
+>  			return true;
 
 
