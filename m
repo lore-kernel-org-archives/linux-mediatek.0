@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E956C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 14:23:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F7BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 14:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LCIcOAZK45WhtpsfLjI1i7bzeOkd8OGhy97svwxtw9g=; b=1BQLkGqNK0ldMD9WDF8VBE4NPJ
-	ahfgH/V5kimDUs0onEZ6nWyFTV2+cIuwX1ZZar8k/lxuSQtuYGoVYeTCAkuNvkoeYMw3Efxt1e5T4
-	LULWLeQI3xjZJ9i/r2y4nqr9parL3/H/IstGLk+wiDwhTpS0PLGo0516V1bRFzd6xLHg6maeIAjvF
-	6IznK5OGFShsLsy7YtmVikPKUmL9ofibqk37WJjd5lD3276vgQSzn+Cs+ekV3p0PWJCZG7Hxj6UaN
-	/OxCDn/6vzV1vJjbZdqXRMu2ZWg27W5ZUZj5+kjuVvd4qd36CB5HNqgeyedMoQSYJ+qR90UF1+TvC
-	QEOaEC/A==;
+	bh=1KAYCLzkHmSn4Dmkp031xJFq1Sg7C20fdvyRyyluwuw=; b=5BQK+QzEOBFBvXecDI/Ub+S7MJ
+	+SrO5TTQOsJ7sUuzJt9vmQwqUNBl+iL47EDtn0pnASGzibymUw2hX7UO65gNuhwqKyrRWVvM+rCl/
+	MHuCqZRayPB2vyo1Kv+NQ+Jw4GIhvhoJfcHTL0u/rQY7hvjiK6aBNc3IDf9xUXMvkJqGy72YGt+QX
+	og8EeZlB2MflEOqEY7KTAibBGNtWsDp6TVd2iFGB5nbrIhjJH4V60Qw9EH22+zdoTFNvEATRAsBCp
+	UmEl7l2mWPik/w89CslTAEB/2zevSaRy13myEnpEtqZoq0z/2msw3VNLnFvyS1FZE+fYjPZgkTMlq
+	L+fRCC+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqb7z-00045L-Ur; Thu, 03 Nov 2022 14:23:31 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oqbAG-0004YH-52; Thu, 03 Nov 2022 14:25:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqb7x-00043o-2c
-	for linux-mediatek@lists.infradead.org; Thu, 03 Nov 2022 14:23:30 +0000
+	id 1oqbA0-0004Rk-An; Thu, 03 Nov 2022 14:25:39 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 96FE26600371;
-	Thu,  3 Nov 2022 14:23:21 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE7B0660294D;
+	Thu,  3 Nov 2022 14:25:28 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667485402;
-	bh=3mt1m6/QtMnNnjR535B2nVg3qDLugNulE7yA6duNDag=;
+	s=mail; t=1667485529;
+	bh=V/lrvTevc4IJp5UcDZQsx+cZatS/QHb6/HH934WSbtk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OC8hm/Q4NRI6uEEABE1mX5Wvw4kDDeQEGmMKkS4Ru23B2iGdCoIF47mdcG4SqtIQ1
-	 cLroty8af5np/zfAOspaO+mq/PE65O/qQItqrEHRuwPYDXukYx8ITynggYdz0oNoHL
-	 rb6LbFPvr1fiqQx1s3QK3UDVDU2vy7lTRmgmPSAKtszwj6MkHjEP8+0iO89k/C1508
-	 4H+p0Z+ryn4kzMXNMtEP68r/Q0C17jCRFLlzTWmxiSWegJdRNYzPJS1Sp81uvU1BJk
-	 tp79Jh6hgnhwl4BYfmuI0Vc43S39JGv7qJ+v3NY6CZEJQowxfwcIUOFb+Ymwqij6Gy
-	 kEtriTb2LqmKQ==
-Message-ID: <5248b495-710b-ad72-7813-869dc660cf31@collabora.com>
-Date: Thu, 3 Nov 2022 15:23:19 +0100
+	b=apgnt2Fj0WevICWRfwwwzURMMEeLtibvGDP8URTDqPQCrugbAIbO9d37xWbX8fZ5p
+	 82lWXBTUeNjSh2tH98SL1LZPV3g2jBfZn75Flue4TIOBuQbOEzad/EZPP+VIDx+OYw
+	 SVbm7CVhdzN4rthu2L0kqH1okwLPCJRivCBCBGuWzIv+1eTCh1mlbvtCtWvQKbfXfU
+	 ipJriuk+lmQcpZC/4AH50W0xvvowSXsDlzzur8NSZx0pkRHkH/t6Rmc5biB53WgZvA
+	 FpBmLz5kWv3frBmlMqopUpPPlHL71WapWpLyT174RVHmYN3Vs+pkwATSEHcwBRilSR
+	 G4dYzUCbKhv9A==
+Message-ID: <357eb6c1-b8ec-34eb-5333-3a98cc5d6841@collabora.com>
+Date: Thu, 3 Nov 2022 15:25:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v3 net-next 3/8] net: ethernet: mtk_wed: introduce wed mcu
- support
+Subject: Re: [PATCH v5 1/3] dt-bindings: PCI: mediatek-gen3: Support mt8195
 Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com, ryder.Lee@mediatek.com,
- evelyn.tsai@mediatek.com, devicetree@vger.kernel.org, robh+dt@kernel.org,
- daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org
-References: <cover.1667466887.git.lorenzo@kernel.org>
- <01c82e3783373e04b609d60075ef7ecf71d0d24d.1667466887.git.lorenzo@kernel.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221103025656.8714-1-tinghan.shen@mediatek.com>
+ <20221103025656.8714-2-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <01c82e3783373e04b609d60075ef7ecf71d0d24d.1667466887.git.lorenzo@kernel.org>
+In-Reply-To: <20221103025656.8714-2-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_072329_422447_7F458026 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20221103_072537_036450_7E1BACC8 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,142 +82,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/11/22 10:28, Lorenzo Bianconi ha scritto:
-> From: Sujuan Chen <sujuan.chen@mediatek.com>
+Il 03/11/22 03:56, Tinghan Shen ha scritto:
+> From: Jianjun Wang <jianjun.wang@mediatek.com>
 > 
-> Introduce WED mcu support used to configure WED WO chip.
-> This is a preliminary patch in order to add RX Wireless
-> Ethernet Dispatch available on MT7986 SoC.
+> In order to support mt8195 pcie node, update the yaml to support new
+> properties of iommu and power-domain, and update the reset-names
+> property to allow only one 'mac' name.
 > 
-> Tested-by: Daniel Golle <daniel@makrotopia.org>
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> ---
->   drivers/net/ethernet/mediatek/Makefile       |   2 +-
->   drivers/net/ethernet/mediatek/mtk_wed_mcu.c  | 364 +++++++++++++++++++
->   drivers/net/ethernet/mediatek/mtk_wed_regs.h |   1 +
->   drivers/net/ethernet/mediatek/mtk_wed_wo.h   | 152 ++++++++
->   include/linux/soc/mediatek/mtk_wed.h         |  29 ++
->   5 files changed, 547 insertions(+), 1 deletion(-)
->   create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
->   create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
-> 
-> diff --git a/drivers/net/ethernet/mediatek/Makefile b/drivers/net/ethernet/mediatek/Makefile
-> index 45ba0970504a..d4bdefa77159 100644
-> --- a/drivers/net/ethernet/mediatek/Makefile
-> +++ b/drivers/net/ethernet/mediatek/Makefile
-> @@ -5,7 +5,7 @@
->   
->   obj-$(CONFIG_NET_MEDIATEK_SOC) += mtk_eth.o
->   mtk_eth-y := mtk_eth_soc.o mtk_sgmii.o mtk_eth_path.o mtk_ppe.o mtk_ppe_debugfs.o mtk_ppe_offload.o
-> -mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) += mtk_wed.o
-> +mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) += mtk_wed.o mtk_wed_mcu.o
->   ifdef CONFIG_DEBUG_FS
->   mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) += mtk_wed_debugfs.o
->   endif
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> new file mode 100644
-> index 000000000000..20987eecfb52
-> --- /dev/null
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
 
-..snip..
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +
-> +int mtk_wed_mcu_init(struct mtk_wed_wo *wo)
-> +{
-> +	u32 val;
-> +	int ret;
-> +
-> +	skb_queue_head_init(&wo->mcu.res_q);
-> +	init_waitqueue_head(&wo->mcu.wait);
-> +	mutex_init(&wo->mcu.mutex);
-> +
-> +	ret = mtk_wed_mcu_load_firmware(wo);
-> +	if (ret)
-> +		return ret;
-> +
-> +	do {
-> +		/* get dummy cr */
-> +		val = wed_r32(wo->hw->wed_dev,
-> +			      MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL);
-> +	} while (val && !time_after(jiffies, jiffies + MTK_FW_DL_TIMEOUT));
-
-Here you can use readx_poll_timeout() instead: please do so.
-
-> +
-> +	return val ? -EBUSY : 0;
-> +}
-> +
-> +MODULE_FIRMWARE(MT7986_FIRMWARE_WO0);
-> +MODULE_FIRMWARE(MT7986_FIRMWARE_WO1);
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> index e270fb336143..c940b3bb215b 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> @@ -152,6 +152,7 @@ struct mtk_wdma_desc {
->   
->   #define MTK_WED_RING_RX(_n)				(0x400 + (_n) * 0x10)
->   
-> +#define MTK_WED_SCR0					0x3c0
->   #define MTK_WED_WPDMA_INT_TRIGGER			0x504
->   #define MTK_WED_WPDMA_INT_TRIGGER_RX_DONE		BIT(1)
->   #define MTK_WED_WPDMA_INT_TRIGGER_TX_DONE		GENMASK(5, 4)
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-> new file mode 100644
-> index 000000000000..2ef3ccdec5bf
-> --- /dev/null
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-> @@ -0,0 +1,152 @@
-
-
-..snip..
-
-> +
-> +#define MTK_WO_MCU_CFG_LS_BASE				0 /* XXX: 0x15194000 */
-
-Since that definition is zero, you can safely remove it: like so, the ones
-following will be a bit more readable.
-
-> +#define MTK_WO_MCU_CFG_LS_HW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x000)
-> +#define MTK_WO_MCU_CFG_LS_FW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x004)
-> +#define MTK_WO_MCU_CFG_LS_CFG_DBG1_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x00c)
-> +#define MTK_WO_MCU_CFG_LS_CFG_DBG2_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x010)
-> +#define MTK_WO_MCU_CFG_LS_WF_MCCR_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x014)
-> +#define MTK_WO_MCU_CFG_LS_WF_MCCR_SET_ADDR		(MTK_WO_MCU_CFG_LS_BASE + 0x018)
-> +#define MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR		(MTK_WO_MCU_CFG_LS_BASE + 0x01c)
-> +#define MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR		(MTK_WO_MCU_CFG_LS_BASE + 0x050)
-> +#define MTK_WO_MCU_CFG_LS_WM_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE + 0x060)
-> +#define MTK_WO_MCU_CFG_LS_WA_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE + 0x064)
-
-..snip..
-
-> +
-> +static inline int
-> +mtk_wed_mcu_check_msg(struct mtk_wed_wo *wo, struct sk_buff *skb)
-> +{
-> +	struct mtk_wed_mcu_hdr *hdr = (struct mtk_wed_mcu_hdr *)skb->data;
-> +
-> +	if (hdr->version)
-
-	if (hdr->version || skb->len < sizeof(*hdr) || skb->len != le16_to_cpu(hdr->length))
-		return -EINVAL;
-
-
-> +		return -EINVAL;
-> +
-> +	if (skb->len < sizeof(*hdr))
-> +		return -EINVAL;
-> +
-> +	if (skb->len != le16_to_cpu(hdr->length))
-> +		return -EINVAL;
-> +
-> +	return 0;
-> +}
-> +
-
-Regards,
-Angelo
 
 
