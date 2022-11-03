@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B3CAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 02:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66BBDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 03:26:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=B0ypRIAyBeXMSvb0l7UowvJTfhEVeBMR45ZyeATiyEc=; b=mBhmoavEUqcpfLc6snh9Yef563
-	UnL7F2v1G1hQux4HzabDndvN21pMlqTLur0aOB3SH2vDcsXNS6MQUkPG120QpURATOucnZa6E/dGJ
-	LXMf1c3YIiVkCNNdZPcpsoIx95ZlEAB2Kjn1vNFiv+WLeb5XK9KDUAfzjk9QZp8Eh4Ue7J79rTSu2
-	/zahA/LXuw7ykj9z1wiaPvT633voB2IilTAKXipvO6QzSwnnouK1q+yJ46yEbWfWY/ryektXLGfnm
-	PeAYQBGui372cUgLNyys0cIrGG5hZajK6zblBkFYq0AQspO/ybTPH/3H00x/m9yeOI1Q6QzXQDY1H
-	1aSESIsg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0N51fkS4M4Fj0+621De0CJlc7z4Kpvdo03m8ggJ4l7E=; b=wzjgK1GcQXdkTAVV2ff8RFQHpM
+	VWcFxPQUBYgAkXNWLoj1tj8j70AYAR1ua7ETgd8//22x4bOQk2DUfD5Fiyttm3u9gs1ka+dFyxM6P
+	6ELyCTRTcfhkyZgukmF5N9f6pQkUmdJcxZl5LitXPQBJ6vvbrMK1SKhjToHuzeNu4nPAqwPZWypAo
+	D/m3ZmEEqynK8P6E0YjH7GH9mwfqb95fsx58oUL7TrXAaMvrfhknOjjdeR7Qo5q3kGX/MxLB74kHw
+	yLtFyvLlLDC4N671C9o7WVcRGa0/D85bE6z/O0O8i6Eb17dO784HeZtfNAoWQcafwCC4FIO4T1iBD
+	n94j0LtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQQj-00FhkJ-7J; Thu, 03 Nov 2022 02:58:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oqQrx-00Fl9j-KZ; Thu, 03 Nov 2022 03:26:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqQQJ-00FhcP-KJ; Thu, 03 Nov 2022 02:57:45 +0000
-X-UUID: e5fe7204c09042c386f1dc172c14135f-20221102
+	id 1oqQrZ-00Fkv9-GC; Thu, 03 Nov 2022 03:25:55 +0000
+X-UUID: 4f70839d859548d5a23ff32fabc8a882-20221102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=B0ypRIAyBeXMSvb0l7UowvJTfhEVeBMR45ZyeATiyEc=;
-	b=rQ6WKelqcIrNZp68OnrvRXIWOidb9wCCGnOVkLaR6QWXnn/9vVcFH2VjNUx0qussaCiPph9x4FBCWO7ayeI2Trp+X9XbcwgzlLG/toOmXGUPFGGb2/lcTuh9uptzrHqy1mqFzF6VOHYB55Iz9lHs9l2xedYADd5KlMQaKfvFfrA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0N51fkS4M4Fj0+621De0CJlc7z4Kpvdo03m8ggJ4l7E=;
+	b=Dc419T3j8QLz3MzlEPZz+JWcukR/o41IRe2L2SmBKF1lHrBSK+lE0ZEPbk9lZKX4hHiQF6LfVqIC04Ig2IvlVjSQwJFV+HFSdfrH1mAoej72VTepD4WISVtMXxW+YRnbDttv6Y6T+GqDPNlrAYib663cjstNWLpYIlUXjJXNS8s=;
+X-CID-UNFAMILIAR: 1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:af44650e-76ce-458e-a354-3b8eccef51d0,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:d4b96c90-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e5fe7204c09042c386f1dc172c14135f-20221102
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.12,REQID:5e635ead-4d03-413b-8985-5fdf970c4e1e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:95
+X-CID-INFO: VERSION:1.1.12,REQID:5e635ead-4d03-413b-8985-5fdf970c4e1e,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:95
+X-CID-META: VersionHash:62cd327,CLOUDID:157e46eb-84ac-4628-a416-bc50d5503da6,B
+	ulkID:221103112536R3TLLD22,BulkQuantity:1,Recheck:0,SF:38|28|16|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 4f70839d859548d5a23ff32fabc8a882-20221102
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1711600428; Wed, 02 Nov 2022 19:57:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 3 Nov 2022 10:57:04 +0800
+	with ESMTP id 377806057; Wed, 02 Nov 2022 20:25:49 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 3 Nov 2022 11:25:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 3 Nov 2022 10:57:04 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
-	<jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 3 Nov 2022 11:25:14 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
+	<nfraprado@collabora.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>
-Subject: [PATCH v5 0/3] Add driver nodes for MT8195 SoC
-Date: Thu, 3 Nov 2022 10:56:53 +0800
-Message-ID: <20221103025656.8714-1-tinghan.shen@mediatek.com>
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+	<singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v27 01/11] dt-bindings: arm: mediatek: mmsys: add vdosys1 compatible for MT8195
+Date: Thu, 3 Nov 2022 11:25:02 +0800
+Message-ID: <20221103032512.9144-2-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221103032512.9144-1-nancy.lin@mediatek.com>
+References: <20221103032512.9144-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221102_195743_686775_AD5EE949 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221102_202553_562023_CEFA2801 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,39 +92,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pcie and venc nodes for MT8195 SoC.
+Add vdosys1 mmsys compatible for MT8195 platform.
 
-This series is based on linux-next/next-20221028.
-Depends on https://lore.kernel.org/all/20221001030752.14486-1-irui.wang@mediatek.com/ 
+For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
+2 different power domains, different clock drivers and different
+mediatek-drm drivers.
 
-v4 -> v5:
-- update reset-names of pcie yaml
-
-v3 -> v4:
-- update resets of pcie node
-
-v2 -> v3:
-- update pcie iommu-map-mask
-
-v1 -> v2:
-- remove 8195 example from pcie yaml
-- update reset-names of pcie yaml
-- add resets and reset-names to pcie node 
-- rename venc node
-
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Change-Id: I8065205ce44baa417f58176adaae9e1eefa6eadb
 ---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Jianjun Wang (1):
-  dt-bindings: PCI: mediatek-gen3: Support mt8195
-
-Tinghan Shen (2):
-  arm64: dts: mt8195: Add pcie and pcie phy nodes
-  arm64: dts: mt8195: Add venc node
-
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  13 +-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 174 ++++++++++++++++++
- 2 files changed, 185 insertions(+), 2 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 0711f1834fbd..67b6e1cbe418 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -48,7 +48,9 @@ properties:
+           - const: syscon
+ 
+       - items:
+-          - const: mediatek,mt8195-vdosys0
++          - enum:
++            - mediatek,mt8195-vdosys0
++            - mediatek,mt8195-vdosys1
+           - const: mediatek,mt8195-mmsys
+           - const: syscon
+ 
 -- 
 2.18.0
 
