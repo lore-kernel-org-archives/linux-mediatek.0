@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D1BAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 14:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA4FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 14:24:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w3HVpr38dw1g+Gys8Rw5Ia6clclGhJnxPc1fiBkUAa8=; b=ulGbDNs/pQtN3mUG1ANwzCDNgf
-	FRNPzHsSU3qqfym063RFmiIF6ClmZwHifi72XpDbXvQEgzhz/2hVRdKV/tG/BQMr53nD1Ke6TYWkd
-	lX16ZNJmS+C2EwU1rwtCZLt1TY1N+LrYaAG2t9c/AL6V6puemLQtzdPuaHPAOiamU04jVX86KZE7j
-	FxDi7ng9XZD18rbf9qJINkJYexD8oQAqXW0tE0V9ITxVV9pz1H8AcwXgKbYwFaBJnH21c7scPfv9K
-	WHBzDes6zj7rqvXKGs/DfouJSrpYzsSWLjSeAH//LKcqH0Kzoj12oQUqb+sCVSbJdvlgbWbmTFyrj
-	Y9mfr89w==;
+	bh=LFk2SQk2wzq81vwUtfsaZUQx2y6VxMzaqna40LeLxmw=; b=R/a0yU+DJEyyJUpFu6eislU/TN
+	EgyY3gQxc8+0e5s1XAvJIGeRxeVHqXb0kTgMOyRPYzTlClfkl409w9uUoOgFqaL+A4IPX3Y3UVKhU
+	wdKJFaDXpdEsFeS0S/iFDmPmb5c8dX7EdoBQ88/uL9W2d4HbPM5/v+323GEX6MJP4lThZBKSfFHDe
+	fY1EgJ80QS6AzhN0vgtcQaZRf0259iyRr5yKDvWVudgaWEZ7dyyBEugrlWPsvpFSYqhx6uWO5FPdW
+	FRzVNknPWNxMv15LvZ/p50Qb2l9bW7Om6mucpuL/lrwqqLnOlLP8skYV9E+JyTTZGFEesSi1enOx9
+	BM781utg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxcA-003wwU-Qf; Fri, 04 Nov 2022 14:24:10 +0000
+	id 1oqxcG-003wzi-0R; Fri, 04 Nov 2022 14:24:16 +0000
 Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxap-003wKs-Lw; Fri, 04 Nov 2022 14:22:49 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 44FA258050C;
-	Fri,  4 Nov 2022 10:22:43 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Fri, 04 Nov 2022 10:22:43 -0400
+	id 1oqxaq-003wMm-Bg; Fri, 04 Nov 2022 14:22:50 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id A879858057F;
+	Fri,  4 Nov 2022 10:22:47 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Fri, 04 Nov 2022 10:22:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
 	:cc:content-transfer-encoding:content-type:date:date:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm3; t=1667571763; x=
-	1667578963; bh=w3HVpr38dw1g+Gys8Rw5Ia6clclGhJnxPc1fiBkUAa8=; b=E
-	e0t0U2puMyuy99W7bGnkNAmukTQvIXb2NXm5SkQCB0J/bxJ1WsUknJ/Wb/jvlf0/
-	O2qO/odDdLRKX3PdBSbuh/7l98td1DL6pEUb4OZJc5tBNGUDFZVvG7LiQqWLrFiX
-	KkbRlxx1ocawrWDWTl6G3DR+4QrVzHOgJ4s3dOYJxpHMCWuVSCu5BK2ZromHuHo6
-	I6xXOM9FtoakO0RmvKLodXSAgsaqw36uPKpA/YoPpyWQs05xVybUkBoIFiy6r+Ky
-	tGOTvTF8q3ni8ev4h+Lddy6mdtgosgR/g63CfukPXay+M3IOEchLWcWteOK8xR3s
-	q11nxGDgSdRnDBqKO2yQw==
+	:reply-to:sender:subject:subject:to:to; s=fm3; t=1667571767; x=
+	1667578967; bh=LFk2SQk2wzq81vwUtfsaZUQx2y6VxMzaqna40LeLxmw=; b=A
+	1mD9TdePrzElrKfNdH4DAa4BrTqdusatwtjJXhce2xkYJ1THVzjZ1jgFH5VCZIOd
+	PsHqfbr/+pDyPQLNxWdBGQZRXnqo5/hNHrpJc3bD0y+eKioaUG04dblkoGMuw1lb
+	x/s0NVR2Grr9hYFgofCxw8XlYPABasNK+vOEbH4e2kOQLo55fLWx/hC0KcG+Toka
+	eNyWQ/iogf3Zz+Fi7y5vUlmDRLrPA6XEx91ViEIptj9wbnWpqn2g9x3DaG82wkoE
+	keYvvWTFY+LgqK+kcf6c4JlbiIrVF8wTyf+Nw09RwgEdPGb8TL1H6xwzpZ1Ny5xI
+	Z2QG6B2RlX7Cg2k09HShw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1667571763; x=
-	1667578963; bh=w3HVpr38dw1g+Gys8Rw5Ia6clclGhJnxPc1fiBkUAa8=; b=B
-	B8f1ogJnnEu3uJSIlQA2q0BrDkmVY6amkDq6efXNPJdJzR2Ld3KXdMkxF+LEhXFD
-	tBy9juFZZcHGTwN4spv2HNfbnIVBVTphicTKYGtmIByag3cQuLD+67g++88WTuCX
-	EAQFLqxwqP+UojYKA2YLTfXtbC56/7ALm7VuLpQ7IB66p9XAAtlpSOmppZnKPcoA
-	yLpnwRpNsPucYpJXhqdt4pmEovdCRT61dHw0+nEVxbzbRv+WG6JLFg5NGOcyskLQ
-	YYqzJQV5Iz+kktF5l3/SGgGpdmSJpTXJVolpK1qzvKywW2GeSRlO6kTDpzgREb0D
-	+0eMAAhiN5AlnrNoVZqYg==
-X-ME-Sender: <xms:MSBlY1jdXBHFZtaoPpZ-OrHPEzahD3jCRJGN7zvnBwwxJzbhpZpfuQ>
-    <xme:MSBlY6BqfXgElKHqgH8HHz1imAJ_TDiu6itXZ6K00q6oeIFrjuyE7K7QrhNqvsuZQ
-    ieUoibWNkHzl7VfXOI>
-X-ME-Received: <xmr:MSBlY1F-Ev4_E9KY_Iym_Y-BPF969O1fu_XlMgbwroAiP76qzPw62lN2a1Pk2lmfXFFi3WU2qLk2ArVbIJO7HRgrpSmOI4sNpDIvim8RPJ8uYQ>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1667571767; x=
+	1667578967; bh=LFk2SQk2wzq81vwUtfsaZUQx2y6VxMzaqna40LeLxmw=; b=q
+	VwBtkx/nLqqINhFKg8IDkuXEihz6bUnSmCFuMuO5roPYqCIC5F9AhfZ/L6RK75Vv
+	Rny6WaTkhnKLUTu3Ngi7RvY1ao0fsoegRSgk8Gb4GgdrJyuv3Mu1vtwKPpuu/Gvx
+	wjzidNGgatkUWk31dSzRCvzi+/B4YFmQRTTOVeDloICfvZbXtvOPFkkhSR3idov2
+	3hC0OhMLP+ey2KQOfNuTQ7eERWDZgPhPOzKChLSfo0U90xGwjZBx+cZu7HpyJRFx
+	u/FEbtELLq/1g2fW6jkS3RSDBhU/NgGnKpeeBVPjStQKJ/F8/0f5W8lBKyRyObu7
+	K14vmVaOFqOuYpobt95rQ==
+X-ME-Sender: <xms:NSBlY3900ug8VLb8HPe7x5Lx_I5D0KNXYEFEDHwsVk4hpye_pQ3Ufw>
+    <xme:NSBlYzvQTwXUkeQt40hkoI25bNls2hPPqM_EmiW1T6RDD708CmmmZkZdlqFisx1ck
+    oimj-KDxS0mEui6TbI>
+X-ME-Received: <xmr:NSBlY1AD1Q-7RsfU7LfB8W7UAdvy0aNKzij8LIfyotRNncBL9vz3QRpN3n8UzcNsTEoTG43lXkkT6vI7qWKrh6AU-3pVIaKTaS47OKWL9Lzulg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdeiudcutefuodetggdotefrodftvf
     curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
     uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
@@ -65,20 +65,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdeiudcutefuodetggdote
     htthgvrhhnpeduudduhfevjeetfeegvdffvdevvdejudegudekjeehtdelhfffveethfej
     ledtveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
     hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:MSBlY6T668Dzl2PbFxTLdD6_KweDalKrkjSO0xNFUGBNZVrTlJrF0w>
-    <xmx:MSBlYyzUHKsV_z1hYIFhIw4vboPuHdZVeDLGZW8SDCPDfFOhSr-teg>
-    <xmx:MSBlYw57XAOdSLFC94RDrTn5o8RaawBDJJlI4zSaQHwWpTtoAsmDSg>
-    <xmx:MyBlY2jEv-Tc8bDOhGFAV_5iEHu-VTVBYXqANRN9u3_sxx5Iqy6UPg>
+X-ME-Proxy: <xmx:NSBlYze1T9Gv4OLatv_PhvdqPZ1oOQjAL2xcaQ1Pg7CX1VNmcmVIDw>
+    <xmx:NSBlY8NWt7hdKKjjk1eKdImPCUUjX0L3jQxLKJDmubXUvF8DgSgSxw>
+    <xmx:NSBlY1m_rfQdJRY3_q3t6nEbt-k92do8lood8-UjqSPwBBEn9jiXzg>
+    <xmx:NyBlYyuwmaEX2nI7kALhvP9uyIAXaQ4HHb5YL319MrFf4lYkOtBPNA>
 Feedback-ID: i8771445c:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 4 Nov 2022 10:22:41 -0400 (EDT)
+ 4 Nov 2022 10:22:44 -0400 (EDT)
 From: Maxime Ripard <maxime@cerno.tech>
-Date: Fri, 04 Nov 2022 14:18:20 +0100
-Subject: [PATCH v2 63/65] ASoC: tlv320aic32x4: pll: Switch to determine_rate
+Date: Fri, 04 Nov 2022 14:18:21 +0100
+Subject: [PATCH v2 64/65] ASoC: tlv320aic32x4: div: Switch to determine_rate
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221018-clk-range-checks-fixes-v2-63-f6736dec138e@cerno.tech>
+Message-Id: <20221018-clk-range-checks-fixes-v2-64-f6736dec138e@cerno.tech>
 References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
 In-Reply-To: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
 To: Stephen Boyd <sboyd@kernel.org>,
@@ -125,16 +125,16 @@ Cc: linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org, linux
  linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 X-Mailer: b4 0.11.0-dev-99e3a
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3073; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=wrb/gLlXObBQQfdHTgDTlHkPVh4Y+mxa5fDcw3PaFNc=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDMmpAt8047Pc5aS5L7yeL+cw5aXhlN+LH9+ONM7OZjbkusf7
- +bJoRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACbCv4SRYfu9z/JZ69c0NLstffKwfu
- r+1T92e0y4GiA5z2/PWp1HTbcZ/ic1fpmYei17msgzKZGEn005Kxet12Rk3bLESN2Y99DzHYwA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3138; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=oZ1+qP4VSAo6iGLJx+GPpYVjTZRxAtNyrtqK/8Cq0F8=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDMmpAt/k/QXk+BZsmHT8/KRHh6977BTl3RxZZeayUmd/xGXu
+ lP2+HaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZiInj0jw2b/tSLbqm9f3vcsecqfmt
+ eVoRMqjQWETxaIJmmyu547fp3hn4naz+W33hz/ts/J+XuVmb9VdZrGlM4j/4SObe67zhuVyAcA
 X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_072248_248124_0EA387F6 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20221104_072248_543931_840BF07C 
+X-CRM114-Status: GOOD (  20.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,8 +149,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The tlv320aic32x4 PLL clocks implements a mux with a set_parent hook, but
-doesn't provide a determine_rate implementation.
+The tlv320aic32x4 divider clocks implements a mux with a set_parent
+hook, but doesn't provide a determine_rate implementation.
 
 This is a bit odd, since set_parent() is there to, as its name implies,
 change the parent of a clock. However, the most likely candidate to
@@ -179,52 +179,53 @@ oversight, the clock behaviour can be adjusted later on.
 
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- sound/soc/codecs/tlv320aic32x4-clk.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+ sound/soc/codecs/tlv320aic32x4-clk.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/sound/soc/codecs/tlv320aic32x4-clk.c b/sound/soc/codecs/tlv320aic32x4-clk.c
-index 65b72373cb95..d8b8ea3eaa12 100644
+index d8b8ea3eaa12..707c9951fac0 100644
 --- a/sound/soc/codecs/tlv320aic32x4-clk.c
 +++ b/sound/soc/codecs/tlv320aic32x4-clk.c
-@@ -205,18 +205,23 @@ static unsigned long clk_aic32x4_pll_recalc_rate(struct clk_hw *hw,
- 	return clk_aic32x4_pll_calc_rate(&settings, parent_rate);
+@@ -333,16 +333,17 @@ static int clk_aic32x4_div_set_rate(struct clk_hw *hw, unsigned long rate,
+ 				AIC32X4_DIV_MASK, divisor);
  }
  
--static long clk_aic32x4_pll_round_rate(struct clk_hw *hw,
--			unsigned long rate,
--			unsigned long *parent_rate)
-+static int clk_aic32x4_pll_determine_rate(struct clk_hw *hw,
+-static long clk_aic32x4_div_round_rate(struct clk_hw *hw, unsigned long rate,
+-				unsigned long *parent_rate)
++static int clk_aic32x4_div_determine_rate(struct clk_hw *hw,
 +					  struct clk_rate_request *req)
  {
- 	struct clk_aic32x4_pll_muldiv settings;
-+	unsigned long rate;
- 	int ret;
+ 	unsigned long divisor;
  
--	ret = clk_aic32x4_pll_calc_muldiv(&settings, rate, *parent_rate);
-+	ret = clk_aic32x4_pll_calc_muldiv(&settings, req->rate, req->best_parent_rate);
- 	if (ret < 0)
--		return 0;
-+		return -EINVAL;
+-	divisor = DIV_ROUND_UP(*parent_rate, rate);
++	divisor = DIV_ROUND_UP(req->best_parent_rate, req->rate);
+ 	if (divisor > 128)
+ 		return -EINVAL;
  
--	return clk_aic32x4_pll_calc_rate(&settings, *parent_rate);
-+	rate = clk_aic32x4_pll_calc_rate(&settings, req->best_parent_rate);
-+	if (rate < 0)
-+		return rate;
-+
-+	req->rate = rate;
+-	return DIV_ROUND_UP(*parent_rate, divisor);
++	req->rate = DIV_ROUND_UP(req->best_parent_rate, divisor);
 +	return 0;
  }
  
- static int clk_aic32x4_pll_set_rate(struct clk_hw *hw,
-@@ -267,7 +272,7 @@ static const struct clk_ops aic32x4_pll_ops = {
- 	.unprepare = clk_aic32x4_pll_unprepare,
- 	.is_prepared = clk_aic32x4_pll_is_prepared,
- 	.recalc_rate = clk_aic32x4_pll_recalc_rate,
--	.round_rate = clk_aic32x4_pll_round_rate,
-+	.determine_rate = clk_aic32x4_pll_determine_rate,
- 	.set_rate = clk_aic32x4_pll_set_rate,
- 	.set_parent = clk_aic32x4_pll_set_parent,
- 	.get_parent = clk_aic32x4_pll_get_parent,
+ static unsigned long clk_aic32x4_div_recalc_rate(struct clk_hw *hw,
+@@ -361,7 +362,7 @@ static const struct clk_ops aic32x4_div_ops = {
+ 	.prepare = clk_aic32x4_div_prepare,
+ 	.unprepare = clk_aic32x4_div_unprepare,
+ 	.set_rate = clk_aic32x4_div_set_rate,
+-	.round_rate = clk_aic32x4_div_round_rate,
++	.determine_rate = clk_aic32x4_div_determine_rate,
+ 	.recalc_rate = clk_aic32x4_div_recalc_rate,
+ };
+ 
+@@ -389,7 +390,7 @@ static const struct clk_ops aic32x4_bdiv_ops = {
+ 	.set_parent = clk_aic32x4_bdiv_set_parent,
+ 	.get_parent = clk_aic32x4_bdiv_get_parent,
+ 	.set_rate = clk_aic32x4_div_set_rate,
+-	.round_rate = clk_aic32x4_div_round_rate,
++	.determine_rate = clk_aic32x4_div_determine_rate,
+ 	.recalc_rate = clk_aic32x4_div_recalc_rate,
+ };
+ 
 
 -- 
 b4 0.11.0-dev-99e3a
