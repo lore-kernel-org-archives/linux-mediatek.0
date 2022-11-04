@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B50C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 08:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48777C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 09:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VntHT8WzB0CAVLCelb8y6Uv9sB/qlBf5aIY+LECjOFo=; b=eoWl4lHCPVyX5Bf/d+QdWdr9UT
-	JrTHtzC6QESVbc0yLDn7g+Jy4wecrrQg5RJqDkLvEXR5M7GzMiI/OFD3cBKkKo11QZaAu8COR3fxU
-	5MuY+Zoz9AYaqFmP1OWUt6crvHB/B9DE4h2iSBFK0A5HhE5aNFxDDT0knTrASvxEdyYUy8iMOxzys
-	bCGsmNWXviNsdru9d09I4oNPybESWjRlMpndaJQuOHPv6t7X7znQaAzDEYeFrSYfk8J7IdUQF09rS
-	H/2GjKfOmPDI88IhEvP0yGWms09ls+xpkOhH+IqSJ8AZgkde61xdCY2MXghM7kHSBVqSoG1uXZKBu
-	sDZHF5cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bXnWGGdDSxQZTnpoLn7lHVsbinkh5chtlI8waYit954=; b=PZMVENBcHGhk80CDDxVAFfa0rQ
+	JlJYSgkuUJFP+jiFEzabnlTrrs1MK74PMruZK0IlP5ZV0OXSAH49tj1PTm8FL7AMPJ1e7pFkA2IhQ
+	18NAOzke96iKFRo408tyFyZqZad3BQTHRh92fV80uxzXp6KPWLeYVQAlgA0mZwmPbpxfbPySjRrTI
+	mrWLmJJviAN9EPRwlnVPkj2MK587YT0usz1F6c30zzEyQmDzLrelarwC1aB7uY2/2P3tump0uywZa
+	IyZRAvLmJ2axCHSRNxYkPqxpU4qCghJUz8ZPTjMCtwK7N8uGgn2hXcRZPN/PDaJO3DaiMV9AZ9gNJ
+	QSl9UiIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqsAl-002yiO-1U; Fri, 04 Nov 2022 08:35:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oqsdy-0032IH-Uv; Fri, 04 Nov 2022 09:05:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqsAi-002yhW-6x; Fri, 04 Nov 2022 08:35:29 +0000
-X-UUID: 4243b4cd34da4bbab63e7abf4d706f94-20221104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VntHT8WzB0CAVLCelb8y6Uv9sB/qlBf5aIY+LECjOFo=;
-	b=QJzCpoit2uUgL5R3GGL4QB2ZGxsn37M+EtEgj2pmJg6qpQFKOwyYicGbtO4SGrivpNwakYNLe0qdLpoydEpPicaMLPaLjFsSD4UTTkPQdclBdmm9q/dkW8OuDgGQrE+fUdAYacc2ShSkvELXoFkDK+rZP65Vps05DxplXIgcd7Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:70a1fe2c-2042-40a8-bbaa-c86bc6dbf41f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-30
-X-CID-META: VersionHash:62cd327,CLOUDID:9709acf3-a19e-4b45-8bfe-6a73c93611e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 4243b4cd34da4bbab63e7abf4d706f94-20221104
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <elvis.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1478149454; Fri, 04 Nov 2022 01:35:23 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Fri, 4 Nov 2022 15:44:47 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Nov 2022 15:44:46 +0800
-From: Elvis.Wang <Elvis.Wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Elvis Wang <Elvis.Wang@mediatek.com>
-CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 0/2] Add gce support for mt8188
-Date: Fri, 4 Nov 2022 15:44:41 +0800
-Message-ID: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oqsdw-0032Hq-J9
+	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 09:05:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 03674620E2;
+	Fri,  4 Nov 2022 09:05:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCEC8C433C1;
+	Fri,  4 Nov 2022 09:05:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667552739;
+	bh=ZSnfcbo7a554FxbRKiHzgm/4DxE8HZ48VBVyW0oWshY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UtnQYKfKCY36RTupDEI2hU7Bui6ycF38v079aWJrvbzHn8pStbIKuNS/Zu/NYBPBV
+	 XdvNghvD3CXYZvKlZCKBkQD2t822P//Ky9cLlvC5SWO1hg0+zaOmLol17zniGJ057z
+	 XeM4mRa8DDFOXSHJORHmOePFjBYBS6RvCEB+psaQXTABlOv43TEfj2EQlItjHHWE3T
+	 Aprmzp03KZui0SEj16c9UWWyepPwkUDt4KOAJx9RbfChR2+Y75IhWozY/gL6waRRSs
+	 BAoW+5QcG4X440PgdnTfmtDPy64qC4uOdY+ZawYwuV42+ZyH0NFUIuxS9bMgBA+DTz
+	 vHQ/eU+hjqYvg==
+Date: Fri, 4 Nov 2022 10:05:35 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org, robh+dt@kernel.org,
+	daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org,
+	Sam.Shih@mediatek.com
+Subject: Re: [PATCH v3 net-next 1/8] arm64: dts: mediatek: mt7986: add
+ support for RX Wireless Ethernet Dispatch
+Message-ID: <Y2TV34YFl/uySbiP@lore-desk>
+References: <cover.1667466887.git.lorenzo@kernel.org>
+ <4bd5f6626174ac042c0e9b9f2ffff40c3c72b88a.1667466887.git.lorenzo@kernel.org>
+ <3046551a-62d7-2990-afb6-75fe2e20d8cb@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="P7L9QEHRaBj8iPjh"
+Content-Disposition: inline
+In-Reply-To: <3046551a-62d7-2990-afb6-75fe2e20d8cb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_013528_285355_7243F031 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221104_020540_727217_67881ABF 
+X-CRM114-Status: GOOD (  23.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +83,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Elvis Wang <Elvis.Wang@mediatek.com>
 
-Base on tag: next-20221028, linux-next/master
+--P7L9QEHRaBj8iPjh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Change in v3:
- - remove incorrect message.
+> Il 03/11/22 10:28, Lorenzo Bianconi ha scritto:
+> > Similar to TX Wireless Ethernet Dispatch, introduce RX Wireless Ethernet
+> > Dispatch to offload traffic received by the wlan interface to lan/wan
+> > one.
+> >=20
+> > Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+> Hello Lorenzo,
 
-Change in v2:
- - use vendor in filename, use Dual license and remove inappropriate
-   define in mediatek,mt8188-gce.h
+Hi Angelo,
 
-Elvis Wang (2):
-  dt-bingings: gce: add gce header file for mt8188
-  dt-bindings: mailbox: mediatek,gce-mailbox: add mt8188 compatible name
+> thanks for the patch! However, there's something to improve...
+>=20
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 75 +++++++++++++++++++++++
+> >   1 file changed, 75 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boo=
+t/dts/mediatek/mt7986a.dtsi
+> > index 72e0d9722e07..b0a593c6020e 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>=20
+> ..snip..
+>=20
+> > @@ -226,6 +252,12 @@ ethsys: syscon@15000000 {
+> >   			 reg =3D <0 0x15000000 0 0x1000>;
+> >   			 #clock-cells =3D <1>;
+> >   			 #reset-cells =3D <1>;
+> > +
+> > +			ethsysrst: reset-controller {
+>=20
+> That's not right. It works, yes, but your ethsys rightfully declares #res=
+et-cells,
+> because it is supposed to also be a reset controller (even though I don't=
+ see any
+> reset controller registering action in clk-mt7986-eth.c).
+>=20
+> Please document the ethernet reset in the appropriate dt-bindings header =
+and
+> register the reset controller in clk-mt7986-eth.c.
+>=20
+> Finally, you won't need any "ti,syscon-reset" node, and resets will look =
+like
+>=20
+> 	resets =3D <&ethsys MT7986_ETHSYS_SOMETHING_SWRST>;
+>=20
+> If you need any hint about how to do that, please check clk-mt8195-infra_=
+ao.c.
 
- .../mailbox/mediatek,gce-mailbox.yaml         |   1 +
- include/dt-bindings/gce/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
- 2 files changed, 967 insertions(+)
- create mode 100644 include/dt-bindings/gce/mediatek,mt8188-gce.h
+reviewing the code I think we do not have any mt7986-eth reset line consume=
+r at the
+moment, since:
+- mtk_eth_soc driver rely on syscon for resetting the chip writing directly=
+ in the register
+  in ethsys_reset()
+- we do not rely on reset api in wed wo code.
 
--- 
-2.18.0
+I think we can just drop reset support in ethsys/wo-dlm nodes at the moment=
+ (since it
+is not used in this series) and convert the driver to reset api as soon as
+we have proper support in clk-mt7986-eth.c (AFAIU sam will work on it).
 
+Regards,
+Lorenzo
+
+>=20
+> Regards,
+> Angelo
+>=20
+
+--P7L9QEHRaBj8iPjh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2TV3wAKCRA6cBh0uS2t
+rDvkAQDRi+dctkQ5LZ35L85BSvNNY1urFlysqWl8he4gt/A7lAD+PYMwbezhgc58
+vi3XsNZV3Ai9yacwLFeEBnE3SbmpGQc=
+=uq0/
+-----END PGP SIGNATURE-----
+
+--P7L9QEHRaBj8iPjh--
 
