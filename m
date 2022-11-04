@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6592DC43219
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 15:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CFFC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 15:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WD3SWI1ZQbB56NbLV6ErcIYLgxudB79QnGxHT/OO1/A=; b=pJkkhyAZkpXvWPUVk5IKaxDkHm
-	6xUK77kPTx04BbmaPiOB/STGJH/2S7rX4iSLua8C4Rh7VZeQ36TXGUJViWg2KekKroXwIsDWWrjJs
-	p2de3XRIh1lBO0U7oR3RfS8Udl5uX+4P89kWf/5ZMBPzGwLGtaBbhMGz1MUcxI9FCFS8H/rlVqWMG
-	h/nmiq5wCwKHH7lyucmcgVMkaToh0Zvqq570tZdZxQEXtAY83NzEie1m7VjbJ2RxVHsMcch6RQSqw
-	KvVUI8tWDbIfQCkhbMujFa8//lN6Of1zQV5DV1xINIvaMHn1644UigTcA46uWooEIiE5ZlAAMo1ku
-	rThO1lbw==;
+	bh=tRnjrNrKpUEdCWynwN46DRbvjj6rSysENOSI8RxBlNo=; b=ZqL/CqpwaaNS6XwoNEwbKJCIpn
+	sntUAUvm4KNRxnAWIGuE91nzA7YejpeG0I7yxbQWrUgHHbBlKTo6pamh3Bd4gzjZGL9VBmQtvEDlv
+	EhiXI8mi+VgbEpYB/ldJheQXunzlzDs+/rTQmnHPVc9vEDdryWR202gqHJGT4ZTpAwINPSRnIS1gH
+	9c1V7Wk/9pIOSaPlJtDArX5tiYODUTNd8zWsk8qyoWHBKlzglNE2OxSR+7sdXjeR1glwHpvowDn1M
+	hjOpIvReMnlBRWolct7VP8dGIfafWWBs5zuuuZzgrqsKhb1lpXKIiVzxph2Wa9161RLGiTYg+g7TQ
+	yx+I0sOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqyQc-0049Qy-1m; Fri, 04 Nov 2022 15:16:18 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1oqyTi-004AFI-A7; Fri, 04 Nov 2022 15:19:30 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxSY-003slO-PV
-	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 14:14:18 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id n39-20020a05600c3ba700b003cf71011cddso5306106wms.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Nov 2022 07:14:13 -0700 (PDT)
+	id 1oqyTe-004ACw-I7
+	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 15:19:28 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id c8so3381992qvn.10
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Nov 2022 08:19:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=WD3SWI1ZQbB56NbLV6ErcIYLgxudB79QnGxHT/OO1/A=;
-        b=bTed3Pl4trQLUpxLlWsdBybB/k5hL2muwqS1OJcE7jkRwpfokeL65/UNorJiLXcKxZ
-         lM9Iue3B6q0rOf0ISBUuZPzbWxhOeFZ3Sm3zTZleKgGV/HdZ30obg+g9Oh5vdlgcJ5ER
-         nTNmyiBiIBKoLtlD2XexxHnW9JCLMR3SMR6LPDIkENHx1+oBnGKI0M2NWtmV/a2erHC5
-         uG8X/iIX6/bkHQO82C9gMyY2tFEbfnNaHdbgI6YDKWsXLT74XSDXdp8n+GXQsXRtkvk6
-         ydORMgMhg/Rb07Ru7lPf9S3L6dH+ewl/sPBEyWMV9bZ5QULGgMriXac40HqfmiZqKPu7
-         TQkA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tRnjrNrKpUEdCWynwN46DRbvjj6rSysENOSI8RxBlNo=;
+        b=nG9oFgohsMgh0IKM6eaQaQ76xOTmewTADKqUnB3LIf8Pyh2WRzvGKl2UgeDuNsnYrO
+         ZhO0HKTxzc2OyZQ1bglKCjndW9q33wxeSysF3DgSu4S3CMtFgd9y90jyWtC5b5U5ifjO
+         aqfvBJVpBXXQWhAxEHawDdO9jwhdjT6SLOw45/Y16BFnutT5MoPm22ogdg0yZFT3U1vE
+         lQcM6vmJlDiOmFH6oWMlPc0e3QC6JZIXwFeREE7TJRUb2bs+LV3pQRpNjk9KasIeY7Iu
+         tWqHLNTjzLeGW+1hcJSDcC3DyWPpc0/FLatlRgpXn8OHXAzG96ee9jwrbMZJhiNmDvNv
+         BM7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WD3SWI1ZQbB56NbLV6ErcIYLgxudB79QnGxHT/OO1/A=;
-        b=3+dxrTzb7U6/ovLGDrbTxdqpoogPExC67Jm5D50CF6le4VYwNbhq5p+IjrnK+yiDux
-         q3DB80pyJ/nvYgaZHTLJsRYx02Jc4zB8lkVdo8cCjGE0XwKSGtN2Z1Ie02Anlv9tWDIr
-         6D2dfPf97+5K2KZJ13C16i7S26NvktrLC2d/RyWhUt8xGBDTPKrqW4qo88fUbfFcvYWb
-         NT08cjxmX08u4NW7oELU6KRnOZz3xbCg6w1Uz7QxW/q1NF7kgMUujPApuKWtGV6FRoKG
-         Vvt6FN1oyG9aAbImG/H7cuDqqwibFkrMCuRBWYj4vu/QBYfjtm0oKTVHCeixtakZzL2S
-         xxyg==
-X-Gm-Message-State: ACrzQf27O4Fmyq1eor9apCkqx5wrBiglJqZIA0gtFHeUm/AcmESnmeGJ
-	+c+29ucTUAoT8dnzH9BMmM5rcg==
-X-Google-Smtp-Source: AMsMyM7vr/tEk9xUPtDTMq4VZQuzXHqjb43Klio4FW6m6cCPE/+DZH8hvlh38PkQlxZftBsB9ZVg1Q==
-X-Received: by 2002:a05:600c:3b21:b0:3c6:172:9c5a with SMTP id m33-20020a05600c3b2100b003c601729c5amr24077921wms.129.1667571252638;
-        Fri, 04 Nov 2022 07:14:12 -0700 (PDT)
-Received: from [127.0.0.1] (2a02-8440-6440-7fff-3074-96af-9642-0003.rev.sfr.net. [2a02:8440:6440:7fff:3074:96af:9642:3])
-        by smtp.gmail.com with ESMTPSA id bj9-20020a0560001e0900b002365cd93d05sm3594512wrb.102.2022.11.04.07.14.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Nov 2022 07:14:12 -0700 (PDT)
-From: Guillaume Ranquet <granquet@baylibre.com>
-Date: Fri, 04 Nov 2022 15:09:49 +0100
-Subject: [PATCH v3 03/12] drm/mediatek: hdmi: use a regmap instead of iomem
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tRnjrNrKpUEdCWynwN46DRbvjj6rSysENOSI8RxBlNo=;
+        b=tqBPYeibQv2dYGpOxN1dxLq12OlXbLy5UePcsF4atXGlP5gzGLGSEk6Psvr6xgqkvt
+         1zI6Ez2eHsz6IgSGp7cLDay54OnvE9iU5PtR0k+tC5naI7RulDedRyy7RFdL39DoHeBV
+         b7EXW6kMgnSYYFTJtxEyoCGDjyvp+eZnpaVAM5jxBc+TWQG/3djDjpHKrNe7cE/Ruyry
+         afF3x3sZnJSuKTQAEA/N3eaFo4AkIOhj1xSy21yfpPAeWVQFbDCr+iojLzCblHjgx85S
+         ZYODGgVWoRDSu5Hq/+a7fa1F6i6WapZf6KDdoEBpN2IGNIiLHSBc6TKN3qR/5QeQ5XKx
+         7rMw==
+X-Gm-Message-State: ACrzQf0BRgxGGgaIWsvLJNcHpe2o7+tm4Z6Jp80s70RnPbSXm0cLdmYJ
+	LuXUZLZyHwpfilzDZTW8FioyTg==
+X-Google-Smtp-Source: AMsMyM6/bD7TwetAszdHR3EmYhj0XT1Ya2qXerlaVZb95uTZIfvp1C7Y6AQQUqEDn0G3VLRG4dxKxg==
+X-Received: by 2002:a05:6214:20c2:b0:4b1:316c:67a2 with SMTP id 2-20020a05621420c200b004b1316c67a2mr32412761qve.32.1667575163412;
+        Fri, 04 Nov 2022 08:19:23 -0700 (PDT)
+Received: from ?IPV6:2601:586:5000:570:aad6:acd8:4ed9:299b? ([2601:586:5000:570:aad6:acd8:4ed9:299b])
+        by smtp.gmail.com with ESMTPSA id bq37-20020a05620a46a500b006ee77f1ecc3sm3160269qkb.31.2022.11.04.08.19.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 04 Nov 2022 08:19:22 -0700 (PDT)
+Message-ID: <8cdd0560-8a64-de1f-d1f2-a4dc729f8970@linaro.org>
+Date: Fri, 4 Nov 2022 11:19:21 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20220919-v3-3-a803f2660127@baylibre.com>
-References: <20220919-v3-0-a803f2660127@baylibre.com>
-In-Reply-To: <20220919-v3-0-a803f2660127@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, stuart.lee@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, Guillaume Ranquet <granquet@baylibre.com>, mac.shen@mediatek.com,
- linux-phy@lists.infradead.org
-X-Mailer: b4 0.11.0-dev
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v2 0/2] Mediatek eMMC Inline Crypto Engine support
+Content-Language: en-US
+To: Mengqi Zhang <mengqi.zhang@mediatek.com>, chaotian.jing@mediatek.com,
+ ulf.hansson@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ wenbin.mei@mediatek.com, angelogioacchino.delregno@collabora.com
+Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221104095848.27444-1-mengqi.zhang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221104095848.27444-1-mengqi.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_071414_901957_319132BC 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20221104_081926_646450_3DBD37A6 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,142 +97,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To prepare support for newer chips that need to share their address
-range with a dedicated ddc driver, use a regmap.
+On 04/11/2022 05:58, Mengqi Zhang wrote:
+> Change in v2
+> - change patch 1 commit title
+> - change patch 2 commit title, and correct commit message
+> - add crypto clock description base on new code base
+> 
+> Mediatek eMMC hardware IP has Inline Crypto Engine (ICE), we support inline encryption now.
+> 
+> This patchset supports Mediatek eMMC inline encryption which meets the upcoming version of the eMMC specification such as v5.1 or v5.2.
+> 
+> Patch 1, add crypto clock control flow in mtk-sd driver, patch 2, document the device tree description about crypto clock.
+> 
+> Mengqi Zhang (2):
+>   mmc: mtk-sd: add Inline Crypto Engine clock control
+>   dt-bindings: mmc: mtk-sd: add Inline Crypto Engine clock
+> 
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 43 +++++++++++--------------------------
- 1 file changed, 13 insertions(+), 30 deletions(-)
+Your threading is broken. Resend with proper threads.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 4c80b6896dc3..9b02b30a193a 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -171,7 +171,7 @@ struct mtk_hdmi {
- 	u32 ibias_up;
- 	struct regmap *sys_regmap;
- 	unsigned int sys_offset;
--	void __iomem *regs;
-+	struct regmap *regs;
- 	enum hdmi_colorspace csp;
- 	struct hdmi_audio_param aud_param;
- 	bool audio_enable;
-@@ -187,44 +187,29 @@ static inline struct mtk_hdmi *hdmi_ctx_from_bridge(struct drm_bridge *b)
- 	return container_of(b, struct mtk_hdmi, bridge);
- }
- 
--static u32 mtk_hdmi_read(struct mtk_hdmi *hdmi, u32 offset)
-+static int mtk_hdmi_read(struct mtk_hdmi *hdmi, u32 offset, u32 *val)
- {
--	return readl(hdmi->regs + offset);
-+	return regmap_read(hdmi->regs, offset, val);
- }
- 
- static void mtk_hdmi_write(struct mtk_hdmi *hdmi, u32 offset, u32 val)
- {
--	writel(val, hdmi->regs + offset);
-+	regmap_write(hdmi->regs, offset, val);
- }
- 
- static void mtk_hdmi_clear_bits(struct mtk_hdmi *hdmi, u32 offset, u32 bits)
- {
--	void __iomem *reg = hdmi->regs + offset;
--	u32 tmp;
--
--	tmp = readl(reg);
--	tmp &= ~bits;
--	writel(tmp, reg);
-+	regmap_clear_bits(hdmi->regs, offset, bits);
- }
- 
- static void mtk_hdmi_set_bits(struct mtk_hdmi *hdmi, u32 offset, u32 bits)
- {
--	void __iomem *reg = hdmi->regs + offset;
--	u32 tmp;
--
--	tmp = readl(reg);
--	tmp |= bits;
--	writel(tmp, reg);
-+	regmap_set_bits(hdmi->regs, offset, bits);
- }
- 
- static void mtk_hdmi_mask(struct mtk_hdmi *hdmi, u32 offset, u32 val, u32 mask)
- {
--	void __iomem *reg = hdmi->regs + offset;
--	u32 tmp;
--
--	tmp = readl(reg);
--	tmp = (tmp & ~mask) | (val & mask);
--	writel(tmp, reg);
-+	regmap_update_bits(hdmi->regs, offset, mask, val);
- }
- 
- static void mtk_hdmi_hw_vid_black(struct mtk_hdmi *hdmi, bool black)
-@@ -473,7 +458,7 @@ static void mtk_hdmi_hw_aud_set_i2s_fmt(struct mtk_hdmi *hdmi,
- {
- 	u32 val;
- 
--	val = mtk_hdmi_read(hdmi, GRL_CFG0);
-+	mtk_hdmi_read(hdmi, GRL_CFG0, &val);
- 	val &= ~(CFG0_W_LENGTH_MASK | CFG0_I2S_MODE_MASK);
- 
- 	switch (i2s_fmt) {
-@@ -565,7 +550,7 @@ static void mtk_hdmi_hw_aud_set_input_type(struct mtk_hdmi *hdmi,
- {
- 	u32 val;
- 
--	val = mtk_hdmi_read(hdmi, GRL_CFG1);
-+	mtk_hdmi_read(hdmi, GRL_CFG1, &val);
- 	if (input_type == HDMI_AUD_INPUT_I2S &&
- 	    (val & CFG1_SPDIF) == CFG1_SPDIF) {
- 		val &= ~CFG1_SPDIF;
-@@ -596,7 +581,7 @@ static void mtk_hdmi_hw_aud_src_reenable(struct mtk_hdmi *hdmi)
- {
- 	u32 val;
- 
--	val = mtk_hdmi_read(hdmi, GRL_MIX_CTRL);
-+	mtk_hdmi_read(hdmi, GRL_MIX_CTRL, &val);
- 	if (val & MIX_CTRL_SRC_EN) {
- 		val &= ~MIX_CTRL_SRC_EN;
- 		mtk_hdmi_write(hdmi, GRL_MIX_CTRL, val);
-@@ -610,7 +595,7 @@ static void mtk_hdmi_hw_aud_src_disable(struct mtk_hdmi *hdmi)
- {
- 	u32 val;
- 
--	val = mtk_hdmi_read(hdmi, GRL_MIX_CTRL);
-+	mtk_hdmi_read(hdmi, GRL_MIX_CTRL, &val);
- 	val &= ~MIX_CTRL_SRC_EN;
- 	mtk_hdmi_write(hdmi, GRL_MIX_CTRL, val);
- 	mtk_hdmi_write(hdmi, GRL_SHIFT_L1, 0x00);
-@@ -621,7 +606,7 @@ static void mtk_hdmi_hw_aud_set_mclk(struct mtk_hdmi *hdmi,
- {
- 	u32 val;
- 
--	val = mtk_hdmi_read(hdmi, GRL_CFG5);
-+	mtk_hdmi_read(hdmi, GRL_CFG5, &val);
- 	val &= CFG5_CD_RATIO_MASK;
- 
- 	switch (mclk) {
-@@ -1427,7 +1412,6 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	struct device_node *cec_np, *remote, *i2c_np;
- 	struct platform_device *cec_pdev;
- 	struct regmap *regmap;
--	struct resource *mem;
- 	int ret;
- 
- 	ret = mtk_hdmi_get_all_clk(hdmi, np);
-@@ -1473,8 +1457,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	}
- 	hdmi->sys_regmap = regmap;
- 
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	hdmi->regs = devm_ioremap_resource(dev, mem);
-+	hdmi->regs = device_node_to_regmap(dev->of_node);
- 	if (IS_ERR(hdmi->regs)) {
- 		ret = PTR_ERR(hdmi->regs);
- 		goto put_device;
+Best regards,
+Krzysztof
 
--- 
-b4 0.11.0-dev
 
