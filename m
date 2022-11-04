@@ -4,101 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC89C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 14:36:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1697EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 14:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5W2yVD4YDWpQ3CdxVHUW7qDBpRLK/GNpv3OQ8xCAesQ=; b=y2Y5q7aPTD1mr3SFeVO21sOerm
-	l334Bl0Ags0DP6FWBhXWfWhw1PsQgFMK980NSZ3JK+iZTAHM4tYPIxYw4/g4ZnuUXnuGwdbU9QnnL
-	9l60Z8BoJ7U4yaa1ZgW83WtKNsIZDYf4SMETrXIxGL17UhYpCG1KJl7DP+w0W9fctjteZrf0Y3X0b
-	8SyCTAUSCAmv6nMrMlDXvWBarQI0FBuCA/kE0jvGIUH40W5IR8rp7+rbVPqkRh3rDn9ADt6ApSlSj
-	hV1oGEagbnbkGH6RxGvw0IliHwCfc5hSLqj8NB8r8ogoMM877smqq2gcm7pjFj7Sv5bBRLTO/5VWN
-	Aexiab0Q==;
+	bh=QgjU+OEEvQPZ01qzgjb2MKqqHyMalDRUVvIv26QXzls=; b=v5FmBKAepqRVn7AN5Xv4UibxNt
+	Mb/FrD/qNzXlpLihrVhzcaRyMU8h6NwVTlrTsc8U9U3hPC4xf500M8fsihpv12gFLvz82O7IisE5A
+	fZGrLHXYO27TEWs4Mol/IDq0IV6I3rkpwqSSzL+TXuABxKtr8YBVXHjez48HLY9uD/W+h1avw1Z5m
+	RX0Q0koNcPGD59UAjd5hZ7w6xqw7acSbdog0w5HXy/N8qHaZl11wJYNDghP44lTz1oCe3mNUNW6SC
+	9l4K316tGoVWT+UI2lBYhUICcr0kc3Ut9Dgeg3UAPzC70SezJBxuIqjNl5bY0l1JAcJF7ZfcJCVXJ
+	MALed8cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxnU-0041kn-Ak; Fri, 04 Nov 2022 14:35:52 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1oqy3k-0045PC-0D; Fri, 04 Nov 2022 14:52:40 +0000
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxn2-0041Uo-8h
-	for linux-mediatek@bombadil.infradead.org; Fri, 04 Nov 2022 14:35:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=5W2yVD4YDWpQ3CdxVHUW7qDBpRLK/GNpv3OQ8xCAesQ=; b=XCYPyIrsBvaHI7FRkUeYngkoFh
-	r59wlQAskJz3zW8/kkpMTFgwNPiLdGhc4x3HQzUJ02PT+NT/mpLFXkTHRTQUtrvpG8eXCyE2sOY+Z
-	egrz0xtN46c4EgIZ+4G9u+s7/+HL6xYNqqHyTCdQ8+DGk3mzlAWoNtGC3QRAW1Jg99jH2S5M9g+sV
-	EbR/HKZ2aDq8+oAYAJsHcpX3shhSQRCFr5ApomfIzZjRfnGm19sMjqi9zJWfO+jp2mJlJ+dsMNAmU
-	oH7XHNxc8urLTOm4TJlH3O0Vo075+/tAgCNOReomzI5dc7256iAsKc0C9sW5oMeCMnObGLd7RPW97
-	BfWMj9Ew==;
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqxT1-007Ppo-U0
-	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 14:14:47 +0000
-Received: by mail-wr1-x432.google.com with SMTP id v1so7212342wrt.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Nov 2022 07:14:30 -0700 (PDT)
+	id 1oqy3Z-0045Mk-1I
+	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 14:52:30 +0000
+Received: by mail-qt1-x82e.google.com with SMTP id fz10so3164543qtb.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Nov 2022 07:52:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5W2yVD4YDWpQ3CdxVHUW7qDBpRLK/GNpv3OQ8xCAesQ=;
-        b=ZH2Ico95zCvYIhFHVP6NHK4O/87cVBVR6I9hbo3P/sVcFSUVcKKppKz+maSYGYhi/D
-         NpWIm0t4PyoLdvM/bAya2RMTCsQjh6R6c4Cjh5iAX7AqelzO7RmfgrbbO4RPVAVa2tLJ
-         jZXhQukTuY9Rt8GMWWEbmF706RL02veZ71ZVo6MaEMeUTUXpBedIdFTivAIRSJ2s4zFp
-         4RdZPY/12nY/Ezf+WkzWCrcSR/n/J/gf34saIWlVTQkuIwNvronXLtYil6Uj0fCmtaK7
-         7Fq4nsJoJFqqaloQGy2CBzCrYwLCoJWdRlm94Clm+S2A/n7/ZOj7+mtuj2MKfs5XUDQ9
-         MQrA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QgjU+OEEvQPZ01qzgjb2MKqqHyMalDRUVvIv26QXzls=;
+        b=EEn0//VkZ+RccjlE/pD9lTHfQMk2wzl3pr5N8iZf+IhhfMGJ0ZrQE24okgkcanNyb4
+         i+FS7LZpo3vxhzn4guBMal5KihP9v276yMLOr/KaZmCa+swk6orhWJhPfIhOji3edgxk
+         OwYAbSCYeaF4IH8iqaBANSAgAQ5hdlVgdbPiTKMUmFSMo8ZnFCbplOk3PpfJO8e21SIq
+         bTXd6bTUTllJHlRaU0n3BHCDyTHblxDIw6oYd/Esv4RtvaK5dq+W93e/dLk7rF8yYFMg
+         62ZxAHiWZlBcs+EMikh1Cl0gDC9ul062+RvTpYLTj7cnKgXoAfcDZjxnUwwUP26xPlTk
+         UGfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5W2yVD4YDWpQ3CdxVHUW7qDBpRLK/GNpv3OQ8xCAesQ=;
-        b=xymRjVhptu0bSD3BCooEnW0OL+96coLQz8ShEsmfsqaZ4AoCovrcm7PDT/S4eXPxCv
-         BvC3Q3OH8ZyJJ72Jnbp6GWR420+WaU2l6iv63Vrw37qqv0BufFEr0lcEWVg29QIi8bU+
-         2EKHIqiwhdrX7H+TMLyO586Nc3CAVKoFUoe82HuGgPc0fIMiniGo7exoBJVJu/D7SUC1
-         0amiwdCZE/NAokfuRbFFeAgr7sjN33eiWNmJiWrHZwq4A1v+CqPaVvn27/3rgrHXCgqk
-         zedP4qDY3pE0QrXV6h+Ew61dXgck2HG7HDyYz1uB1vCql+HPfzqXZ9vWFP7kDuClcGZB
-         P8qw==
-X-Gm-Message-State: ACrzQf0b2jAvq4iJAW4KXDBge2r1nLY/iKzT7qXr2KDU7xNsWZgFr8Hi
-	QY6XGJbFlMXi/XJ+RYkJ9sw4Og==
-X-Google-Smtp-Source: AMsMyM5UgSNrJdjJbaWkNmPYq6dn0dMCmkzxuRJCJIVsuSJ/GH354TzUrpT1mXY6Xoiz6vRA08LnyQ==
-X-Received: by 2002:a5d:59c5:0:b0:236:cc8a:59fd with SMTP id v5-20020a5d59c5000000b00236cc8a59fdmr17239311wry.426.1667571267873;
-        Fri, 04 Nov 2022 07:14:27 -0700 (PDT)
-Received: from [127.0.0.1] (2a02-8440-6440-7fff-3074-96af-9642-0003.rev.sfr.net. [2a02:8440:6440:7fff:3074:96af:9642:3])
-        by smtp.gmail.com with ESMTPSA id bj9-20020a0560001e0900b002365cd93d05sm3594512wrb.102.2022.11.04.07.14.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Nov 2022 07:14:27 -0700 (PDT)
-From: Guillaume Ranquet <granquet@baylibre.com>
-Date: Fri, 04 Nov 2022 15:09:57 +0100
-Subject: [PATCH v3 11/12] dt-bindings: display: mediatek: dpi: Add compatible for
- MediaTek MT8195
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QgjU+OEEvQPZ01qzgjb2MKqqHyMalDRUVvIv26QXzls=;
+        b=Owre0guK7TRJzPp98BBo31MDvGy8avD4rcqbhgnr38JrjwbyIsDDU1EnrVmrX3uIxs
+         Lhp2RQXNUXSL3caPDxhFXFkXQDgOT3jtbkQAUr9M8IGnN3drSYIZDyCmxjwZpL60Jhbx
+         tp7THXSRcc+Tx72AvYTa5m+S0k26wki0utbwyV5u7L3czWnBTJ/pwsCBoLfePCdP9AsJ
+         xpEryfVEN1v4cwQA4EEGBv0XFxylildFEyRXWcvIybChtDWdgdUEZ2+/a8LBSpnHV8hp
+         6/qr+YSmxsJDS8VAnFtPt3/VSWdSbcdIyN7N0+dToXG4VIIo/7mJJvXpekWAFLSSUvo/
+         4aEA==
+X-Gm-Message-State: ACrzQf1hifNHHIBkcG9+Bgzg1H38ec/Z/AYWSwwqiWF5wJtYolWNcTnS
+	uK2Wjc5QcZPgc2tw/wmyvWgYTWmuark4iA==
+X-Google-Smtp-Source: AMsMyM4YO7l4BmWs/QUGSvV1jS0dywSrAlj7aR/rV7nTudHC1ZtuLQY2KyT2tKW0cGiHGsyP4lLurQ==
+X-Received: by 2002:ac8:7fc7:0:b0:3a5:71f2:c89a with SMTP id b7-20020ac87fc7000000b003a571f2c89amr1179362qtk.636.1667573543826;
+        Fri, 04 Nov 2022 07:52:23 -0700 (PDT)
+Received: from ?IPV6:2601:586:5000:570:aad6:acd8:4ed9:299b? ([2601:586:5000:570:aad6:acd8:4ed9:299b])
+        by smtp.gmail.com with ESMTPSA id u5-20020a05620a0c4500b006fa22f0494bsm3020401qki.117.2022.11.04.07.52.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 04 Nov 2022 07:52:23 -0700 (PDT)
+Message-ID: <34f40c1c-f933-cee6-f022-14c37650dc3a@linaro.org>
+Date: Fri, 4 Nov 2022 10:52:22 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20220919-v3-11-a803f2660127@baylibre.com>
-References: <20220919-v3-0-a803f2660127@baylibre.com>
-In-Reply-To: <20220919-v3-0-a803f2660127@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, stuart.lee@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, Guillaume Ranquet <granquet@baylibre.com>, mac.shen@mediatek.com,
- linux-phy@lists.infradead.org
-X-Mailer: b4 0.11.0-dev
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH] dt-bindings: examples: add a list of templates and
+ solutions
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20221028233701.572280-1-krzysztof.kozlowski@linaro.org>
+ <20221101130720.GA963805-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221101130720.GA963805-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_141444_057665_780C310D 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221104_075229_141627_D2F49D73 
+X-CRM114-Status: GOOD (  24.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,27 +96,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-binding documentation of dpi for MediaTek MT8195 SoC.
+On 01/11/2022 09:07, Rob Herring wrote:
+> On Fri, Oct 28, 2022 at 07:37:01PM -0400, Krzysztof Kozlowski wrote:
+>> It is useful to start from existing bindings when writing new ones,
+>> especially when one does not know that much DT schema.  However we have
+>> several bindings which are not the best examples, so people tend to copy
+>> their issues into new bindings.
+>>
+>> Beginners also might not know how to achieve some more complex solutions
+>> in DT schema, e.g. how one of two properties should be required by the
+>> bindings.  Some of such solutions are already in example-schema.yaml,
+>> but several other are missing.  Add reference with such re-usable
+>> design-patterns.
+> 
+> My main concern here is what's a good example today is not tomorrow... 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Yes, I agree. The problem I want to solve is some folks copy-paste some
+existing schema as starting point and then are surprised when receive
+basic style feedback.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 5bb23e97cf33..2c7ecef54986 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -24,6 +24,7 @@ properties:
-       - mediatek,mt8183-dpi
-       - mediatek,mt8186-dpi
-       - mediatek,mt8192-dpi
-+      - mediatek,mt8195-dpi
-       - mediatek,mt8195-dp-intf
- 
-   reg:
+Of course the optimal solution would be to make all schemas in same
+(proper) style, but this is going take some time...
 
--- 
-b4 0.11.0-dev
+How to solve this problem other way? I don't know.
+
+> 
+> 
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> ---
+>>  .../devicetree/bindings/examples.rst          | 63 +++++++++++++++++++
+>>  Documentation/devicetree/bindings/index.rst   |  1 +
+>>  2 files changed, 64 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/examples.rst
+>>
+>> diff --git a/Documentation/devicetree/bindings/examples.rst b/Documentation/devicetree/bindings/examples.rst
+>> new file mode 100644
+>> index 000000000000..710eea81d8b7
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/examples.rst
+>> @@ -0,0 +1,63 @@
+>> +.. SPDX-License-Identifier: GPL-2.0
+>> +
+>> +Examples of Devicetree Bindings to use a base
+>> +=============================================
+>> +
+>> +Following Devicetree Bindings in DT Schema are a known good starting point when
+>> +writing new bindings:
+>> +
+>> +1. Simple SPI device:
+>> +   Documentation/devicetree/bindings/iio/adc/maxim,max11205.yaml
+>> +
+>> +2. PMIC (MFD) with several sub-devices:
+>> +   Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+>> +
+>> +3. Battery charger (power supply):
+>> +   Documentation/devicetree/bindings/power/supply/bq256xx.yaml
+>> +   (but use vendor prefix in filename)
+>> +
+>> +4. Clock controller for several devices with different clock inputs:
+>> +   Documentation/devicetree/bindings/clock/qcom,mmcc.yaml
+>> +
+>> +5. GPIO controller:
+>> +   Documentation/devicetree/bindings/gpio/qcom,wcd934x-gpio.yaml
+>> +
+>> +
+>> +Re-usable design patterns when writing your own bindings
+>> +========================================================
+>> +
+>> +Following bindings show how to use common pattern of writing bindings:
+>> +
+>> +1. Property required and present only for one variant.  Property cannot appear
+>> +   on other variants:
+>> +   Documentation/devicetree/bindings/example-schema.yaml
+>> +   Line: 212
+>> +
+>> +2. Excluding properties, but none are required:
+>> +   Documentation/devicetree/bindings/mfd/samsung,s5m8767.yaml
+>> +   Line: 155
+>> +
+>> +3. Excluding required properties, but one is required:
+>> +   Documentation/devicetree/bindings/reserved-memory/reserved-memory.yaml
+>> +   Line: 91
+>> +
+>> +4. Array with numbers (items) from given range - min/max:
+>> +   Documentation/devicetree/bindings/arm/l2c2x0.yaml
+>> +   Line: 74
+>> +
+>> +5. Array with numbers (items) from given range - enum:
+>> +   Documentation/devicetree/bindings/display/msm/dsi-controller-main.yaml
+>> +   Line: 101
+>> +
+>> +6. Uint32 matrix, variable length of two-items:
+>> +   Documentation/devicetree/bindings/iio/adc/st,stm32-adc.yaml
+>> +   Line: 278
+>> +
+>> +7. Phandle to syscon with offset:
+>> +   Documentation/devicetree/bindings/soc/samsung/exynos-usi.yaml
+>> +   Line: 42
+>> +
+>> +8. Variable length of array (e.g. clocks and clock-names) but narrowed to
+>> +   specific variant:
+>> +   Documentation/devicetree/bindings/clock/qcom,mmcc.yaml
+>> +   Lines: 33 and 71
+> 
+> It seems like some of these that are just a single property we could add 
+> to example-schema.yaml.
+
+I am afraid the example-schema will grow too big for folks to look into.
+It's already quite complicated, with explanations of the dtschema
+behavior itself.
+
+How about then RST file with small code snippets?
+
+> Also, perhaps a reference to this from writing-schema.rst.
+
+I can do this as well.
+
+The problem with my approach above (and adding these to writing-schema)
+is that examples above can change, lines can be inadequate.
+
+Best regards,
+Krzysztof
+
 
