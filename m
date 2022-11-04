@@ -4,140 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E316DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 04:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32788C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 07:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YficV6/27d5Ko/XmkrRhmfOs6plp6V0bvdu4M23diZ8=; b=JlFbM57YoPAVUzNCjQ6pnnvW6A
-	zkgaXwUalhCnEMRohV3niKrHL/K4wFFfRjUhv/11k/1YVijLreyL53hb4LJ97qMUKh41qIsBAcyNt
-	XXgh/9qYqzNs5CpOPsm9e3EXOAFOMZh+/BJPZYY14YcssvsymvvmGoKWN1eoDu60SBtJZXN/zVJY+
-	T1OjZAuxPhXIwi8LsVGtvh8c6jbwrrLFCWghR8cwi/veHsRGlsfe2acryOmbR7U+/sFhUPbj7r7T4
-	rlMUXrjNL6doLrZD/H+SUL7RzbtL80XoZjJhi7cL4ZM8koBIPFfwT3k37NmR/LG0wXtyLErW6OEy0
-	XzrWjbxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LDZihQfY/x+fubxDzed0+F5jN2XVSrRJ4MgFE8TaxZk=; b=ko8Ngvy9j/XLQhFPi2kmgw8uEd
+	r3HNr/sEcxHN7A88plZ+cpEjSMqUwDd2ioDGvuYBbKclhLUeuCwzz2Swj7eBD5LC47w4imFWjMSb1
+	8CazyXUI5jfMU0GAy+GITWIrVyrygKsPBvZmLxx9uN2xA4lA+q6pYx1P7FBaf8R9vXWKdRweafEGV
+	eMmwHUeqXUi4uf01j2wetiBRg5oMuVaqTwbir2+XAIpX5+iY5Qh0RxkuRUz6HK1xfNtG9d8On8imw
+	KG++jernd6gjvAFdm4T57mUfOmReKwUIYwLq6pRcR1EhmOm6FNKWZflOTZKgpK4KLUg1GgWuKxTQW
+	o6uU7IGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqoin-002N2C-Hi; Fri, 04 Nov 2022 04:54:25 +0000
-Received: from mail-dm6nam11on2106.outbound.protection.outlook.com ([40.107.223.106] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1oqrOG-002ndC-J6; Fri, 04 Nov 2022 07:45:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqoh1-002MBx-Ek; Fri, 04 Nov 2022 04:52:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JfzDJTF9mQVQ+D7XFdZl2Zct0VIQlvubQ4mnYwFfDxv4HLvfrnCvGJD5mnpXogmJggRcle0E/gHvm9MnrnHxHmu3LVTTMDay9i4D7OlOqc5PpwEXRXAgKKQy+f2ZUBVPydzqP1rxaFuJEDG/DrwnHduRsyO9yYpqnQeZEMz1d3g9hMmxzYhxTVnDmwcmk5Vn8HtfXxiVSUfYfjlAhkUZ7iygNGG2ghZJTEximmTMeZIdv9RvMirDPinHX68kcpqVd1dpp2LGF/H1WJQpsn6qEXt7WrJdStzWQxDb30hkTdMA0XaUl/iYI/+1Q7MoFPz4WZcMugz4NBrKtAI5G60w3g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YficV6/27d5Ko/XmkrRhmfOs6plp6V0bvdu4M23diZ8=;
- b=WrVbnDqjLYsp9pcpAQv/RoYYTfJQAVSxrmgmBvOncewrdelxMhponuWPy4rxOzsJ2lQ1OnRng90fMzRjSv4NxnSWhk2XDEOqfMjidBmwZVtNhviQpbxYLpODmkmAvrpp8vJM7hfNDtCm9Y4+iuJ0OAHD/OgxgcyS8BNADLaia6WR/2LBrDfWHLl46pYALx+Okgejui2iKYsH6z1idwM7u/c3NzQUdVLGtpUhSfagMJ9URajSdVLOngE/ByvRpldtNOVP9LvJl0TwWiRrNnMBREv3gkQvRzDS9JD9VN76n/guM9nK6EsdNKwBN9XvARr2JXy7FaWeJqw1Dc9Qom8+yA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YficV6/27d5Ko/XmkrRhmfOs6plp6V0bvdu4M23diZ8=;
- b=HDJvP7y18AoUrnj9RIkV+M99vm4hlTLBO7aORUHFigm/dXEsmuDU91FLRfQavd4dWo/1qPN2ZjOodAp1wmYTPInr7E5209pyyhIx5GtBCZ3O89loWr5AJm1Oi+wyRSLlAQtOqSg7oMIFglIn+DynNpyflKSXbvxJEjsOnfwfKaE=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by CY5PR10MB5986.namprd10.prod.outlook.com
- (2603:10b6:930:2a::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.22; Fri, 4 Nov
- 2022 04:52:26 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::a8ed:4de9:679e:9d36]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::a8ed:4de9:679e:9d36%4]) with mapi id 15.20.5769.021; Fri, 4 Nov 2022
- 04:52:25 +0000
-From: Colin Foster <colin.foster@in-advantage.com>
-To: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?UTF-8?q?n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v2 net-next 6/6] dt-bindings: net: mscc,vsc7514-switch: utilize generic ethernet-switch.yaml
-Date: Thu,  3 Nov 2022 21:52:04 -0700
-Message-Id: <20221104045204.746124-7-colin.foster@in-advantage.com>
+	id 1oqrOB-002ncN-2s; Fri, 04 Nov 2022 07:45:23 +0000
+X-UUID: 3a02852d5dc14fceaea735f4b7b9d023-20221104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LDZihQfY/x+fubxDzed0+F5jN2XVSrRJ4MgFE8TaxZk=;
+	b=YC8NGM2Xt1KGuXKONFxvuOZizc6o0hYQklGsOpn/vqbSvqbxAnTux9InR1g7WeNG91tfQn9N1/iYal43FwWr3/e5F3YnECaEcmdPXe/8deTM7AvnfKv31EsLyMhHhLSqbJ8p8tiEacMpkVXYuOUsi8ko2jMsCr8z4HZ4Kl3xxEU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:a0ce166d-6f9b-41df-85b1-8990dd3fe5ca,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:01606eeb-84ac-4628-a416-bc50d5503da6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3a02852d5dc14fceaea735f4b7b9d023-20221104
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <elvis.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 160399675; Fri, 04 Nov 2022 00:45:06 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 4 Nov 2022 15:44:51 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 4 Nov 2022 15:44:50 +0800
+From: Elvis.Wang <Elvis.Wang@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Elvis Wang <Elvis.Wang@mediatek.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 1/2] dt-bindings: gce: add gce header file for mt8188
+Date: Fri, 4 Nov 2022 15:44:42 +0800
+Message-ID: <20221104074443.26172-2-Elvis.Wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221104045204.746124-1-colin.foster@in-advantage.com>
-References: <20221104045204.746124-1-colin.foster@in-advantage.com>
+In-Reply-To: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
+References: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: BY3PR03CA0023.namprd03.prod.outlook.com
- (2603:10b6:a03:39a::28) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|CY5PR10MB5986:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2b34eb9f-ca8d-42a6-3229-08dabe205e38
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	whJjC17Ox+ik38k32m4wwHBJyVnZNchI2Th9HiF7//QOOKsfnDeOWc2cEeIUtGSEjTX+ShibvFnFHHQ3kvOU2NST+NFhxqFZMrsnzrE5obalDZi/Ldbtj9nFcN/RMbc1VkbSOlp8hvvZAT8Dj4jaL57rQzPwOIZYhiY+O8eSHzKpOSc82JjA0JQ/xUP8em3Tq+Tbl2/zA5GfG3nBE9hipq775ZrkkeA8wV0xAmgQ8jIGFnKnGxOvqRRMKf/V2r8LCS3qMNE0Sob9taxLvWCBdj6AlKbgGNvnXvX//8aShC0+s9CzXr2nt82yUytWsF+4cS2jXFQ9GNJ7rDo33N4s3rHYlCQcQaGhDr8XCfY8sf3lXgLE5teAdGOsxh44Qzvvyxr9suNIgz9qYULZ/JCvQum19ABhAwKbDlVrbEb5qoAQF1nYtawueP2QGu7SF9MwP5zro+dTivHsnm/v1xDwXM6rw0WbPbzjiLRArk/Xi5JTY8lKHt+gZqT3XW5GG5vNk2qmTLWjYCCU5SxOh4rm5QZr6u5HZBtqk8VMIGwgW3Ijl604tRQ58YWmnzYcg07FB8+Thkw9EjNdLImepG7p/79QzCoE1gnBlz84zzPTPvRoNpuZzqPw3Csge2ebM6IIX2YWXoY5/N2/btuPJiP4mu4CXcmK0UEMtEIg6MJ+CoIBe8IjFoiqDWD9N4VqkWcWpMUxoruRlAtx21/BMTSV7SR81IA1Kal+qz9SWfQkTyozn3q822RQIEa/Q55oRSGnCH8eQRNh19yw/D9crfUwqN80NfAKoJY4JGvnav1bVMk=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(376002)(346002)(396003)(136003)(39840400004)(366004)(451199015)(86362001)(36756003)(316002)(38350700002)(38100700002)(6666004)(8676002)(2616005)(6506007)(66946007)(478600001)(54906003)(52116002)(66476007)(44832011)(6486002)(2906002)(5660300002)(7416002)(186003)(8936002)(4326008)(6512007)(83380400001)(1076003)(66556008)(26005)(41300700001)(41533002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?T1p9KNxSGFjOkCKYz0LnIiO9oORwPtytYSGNFDjRQUFc3/Fz2X0apV0GYKiJ?=
- =?us-ascii?Q?ViqQvembxLwsW1t73kipYPrk6PjR3MTKD/fDksDT21ilSDwhj2YGOAVVDq3J?=
- =?us-ascii?Q?7QaFONG9RDn8hn4t7nKkMQV+6++YXeL6w8sAzcrhraXRDAxguLpYInHQTE0t?=
- =?us-ascii?Q?Kme+d4NcvwWwnKQc3ripFO9L2Nh+A3r+kQ2lb9pTqQ9WpAw5DzSVflAmXNmu?=
- =?us-ascii?Q?k46/qN1WsA9aK21H1BiEP0nTQcZWzkBnnk5Bo60Pqes7fNPiDIBkru4fUFcm?=
- =?us-ascii?Q?Q6ewDK5HeO/Y/ioBhc2hoqTeopQRu7P2bwkqAxIpP3RezSURjSKzt/ImB/n1?=
- =?us-ascii?Q?zKesYpHoZCl2wJozXpeisX1VMirRN4eN6igf49J8ueG65HtHZYA8rnWFzfjc?=
- =?us-ascii?Q?waXZhLRlrPz30AeIOrzx6dhI81qZaZl3Xx4LofnBiQJVQvA6qTnKdsZLZo1q?=
- =?us-ascii?Q?dCz3BD02xop5kIut6tOUcpiinRUSctKWIuUtAdSR6YH2DVfTFnVaorC8PNeT?=
- =?us-ascii?Q?PXgID2A37MHoPVGy0rTNwuQJrKXpPPl4lFxuRW4NupTHje7tUysuYF+pcXK4?=
- =?us-ascii?Q?sWu5xbiI/n2Hw9BuTxqUwtDZjlkyPtzyjmOEK/m80nZmU6O+56C7lyD5Rna4?=
- =?us-ascii?Q?sJFYaeGfXTPTf83vu2IQ9SIxe1ykCnyJacxU0nqA/MdJ/trbRpyHhykBAya6?=
- =?us-ascii?Q?2xe1Ce/ieyLo23f/rdG6PP84cQC92vrG3BgYPI9zAwmFZ9FbCUjRDXxfnG/Z?=
- =?us-ascii?Q?GhW9zAEmnFXAUBwcfUYme26U/cIgNhSHLmP5cr3wetIoXS1F3g5s1j0flTaD?=
- =?us-ascii?Q?oSGL2EayH+C81r2O/WQY5iXERtday/yx+tvhdMrLRZjxXhaIiHbeqJx9S5s3?=
- =?us-ascii?Q?8oMkT+Tc/J5OiwrOUKbFwidw7tN6mmmhjiFHF0fHaFY1gYlT7tHKUOu1yGpE?=
- =?us-ascii?Q?WVW1e73oqm4XulybBT0n7pWnnWhsR9KBIhJ2nyEu99fkYQ3mFKAZ/1nvsufx?=
- =?us-ascii?Q?nyGit6laWv/4oiG1wM8mU2odtgPAqMhb5YduTu03oR3HOWJZ/LGrUyMsW763?=
- =?us-ascii?Q?PrxNhUrdzjc/P/v+7pU/3TP29LIKzbO579wj+FVDgsIVTwjg9owhxmeGxgXm?=
- =?us-ascii?Q?aBqW1PBYumstR2wkzqFSrRD4zyMz5vx2r29tlMGLnNWdapJG0ZTX7nnH8oQF?=
- =?us-ascii?Q?a6fpkrH3wHNzsejTUCcYdOItQhQmRJTr9KCVEcQbs352gs+ElP6n/HF76aGu?=
- =?us-ascii?Q?4bgXysUwYXqphx68Dp0aN1/2ow3HxsRo/+qN2g3Y03z+EiUUZh4C3z40jG0A?=
- =?us-ascii?Q?UgUvB1icDPh3mzTjtR9bszFGHub8qtoD2aMnSjI0YeC0ZhHVmiFX3qHq5KIH?=
- =?us-ascii?Q?y3SA4zCKe37cC5s6UbrPH1LV9bZSON68CQLm1U/U1QnK23D3a59H/xLSZ7HX?=
- =?us-ascii?Q?jYefxQ0VaoNa2ECoLpy3diY89RdFReBK1ln2eRgST+HiSkgWPdc9vmRgGWui?=
- =?us-ascii?Q?c50O9sVgxG1xLpWMhOLMgMwPK2R8SmfdjnTBFXcZFGMCumpa3dP/dlHM7Qhr?=
- =?us-ascii?Q?JZmHLdqoTR2T7S9c7NLc82nTmsP0dadDmIOZyVHaZFmyfXBelM+PovKn67hu?=
- =?us-ascii?Q?qa5hL2a9tx1TWR2vSPN/SlY=3D?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2b34eb9f-ca8d-42a6-3229-08dabe205e38
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2022 04:52:25.8130
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Ftm0SBB74TuBDYj+GgMYGfclBFvPOvdgE3CUC4eSfSKS/b1vykfBPGtQi0cqXAmN9DNAS9seXhXQcz3ncFLXP0P3B7kE8fiq0hzckMUs9vo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR10MB5986
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_215235_525442_0E303A5A 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221104_004519_211145_71056465 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,92 +83,992 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several bindings for ethernet switches are available for non-dsa switches
-by way of ethernet-switch.yaml. Remove these duplicate entries and utilize
-the common bindings for the VSC7514.
+From: Elvis Wang <Elvis.Wang@mediatek.com>
 
-Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+add gce header file to define the gce thread priority, gce subsys id,
+event and constant for mt8188.
+
+Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
 ---
-
-v1 -> v2:
-  * Fix "$ref: ethernet-switch.yaml" placement. Oops.
-  * Add "unevaluatedProperties: true" to ethernet-ports layer so it
-    can correctly read into ethernet-switch.yaml
-  * Add "unevaluatedProperties: true" to ethernet-port layer so it can
-    correctly read into ethernet-controller.yaml
-
+Thanks for the reviews, I have removed the incorrect reviewed message.
 ---
- .../bindings/net/mscc,vsc7514-switch.yaml     | 40 ++-----------------
- 1 file changed, 4 insertions(+), 36 deletions(-)
+ include/dt-bindings/gce/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
+ 1 file changed, 966 insertions(+)
+ create mode 100644 include/dt-bindings/gce/mediatek,mt8188-gce.h
 
-diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-index ee0a504bdb24..3f3f9fd548cf 100644
---- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-@@ -18,10 +18,9 @@ description: |
-   packets using CPU. Additionally, PTP is supported as well as FDMA for faster
-   packet extraction/injection.
- 
--properties:
--  $nodename:
--    pattern: "^switch@[0-9a-f]+$"
-+$ref: ethernet-switch.yaml#
- 
-+properties:
-   compatible:
-     const: mscc,vsc7514-switch
- 
-@@ -88,46 +87,15 @@ properties:
-       - const: fdma
- 
-   ethernet-ports:
--    type: object
--
--    properties:
--      '#address-cells':
--        const: 1
--      '#size-cells':
--        const: 0
- 
--    additionalProperties: false
-+    unevaluatedProperties: true
- 
-     patternProperties:
-       "^port@[0-9a-f]+$":
--        type: object
--        description: Ethernet ports handled by the switch
- 
-         $ref: ethernet-controller.yaml#
- 
--        unevaluatedProperties: false
--
--        properties:
--          reg:
--            description: Switch port number
--
--          phy-handle: true
--
--          phy-mode: true
--
--          fixed-link: true
--
--          mac-address: true
--
--        required:
--          - reg
--          - phy-mode
--
--        oneOf:
--          - required:
--              - phy-handle
--          - required:
--              - fixed-link
-+        unevaluatedProperties: true
- 
- required:
-   - compatible
+diff --git a/include/dt-bindings/gce/mediatek,mt8188-gce.h b/include/dt-bindings/gce/mediatek,mt8188-gce.h
+new file mode 100644
+index 000000000000..e2e2c56016a1
+--- /dev/null
++++ b/include/dt-bindings/gce/mediatek,mt8188-gce.h
+@@ -0,0 +1,966 @@
++/* SPDX-License-Identifier: GPL-2.0 OR BSD-2-Clause */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ *
++ */
++#ifndef _DT_BINDINGS_GCE_MT8188_H
++#define _DT_BINDINGS_GCE_MT8188_H
++
++#define CMDQ_THR_PRIO_LOWEST		0
++#define CMDQ_THR_PRIO_1			1
++#define CMDQ_THR_PRIO_2			2
++#define CMDQ_THR_PRIO_3			3
++#define CMDQ_THR_PRIO_4			4
++#define CMDQ_THR_PRIO_5			5
++#define CMDQ_THR_PRIO_6			6
++#define CMDQ_THR_PRIO_HIGHEST		7
++
++#define SUBSYS_1400XXXX                 0
++#define SUBSYS_1401XXXX			1
++#define SUBSYS_1402XXXX			2
++#define SUBSYS_1c00XXXX			3
++#define SUBSYS_1c01XXXX			4
++#define SUBSYS_1c02XXXX			5
++#define SUBSYS_1c10XXXX			6
++#define SUBSYS_1c11XXXX			7
++#define SUBSYS_1c12XXXX			8
++#define SUBSYS_14f0XXXX			9
++#define SUBSYS_14f1XXXX			10
++#define SUBSYS_14f2XXXX			11
++#define SUBSYS_1800XXXX			12
++#define SUBSYS_1801XXXX			13
++#define SUBSYS_1802XXXX			14
++#define SUBSYS_1803XXXX			15
++#define SUBSYS_1032XXXX			16
++#define SUBSYS_1033XXXX			17
++#define SUBSYS_1600XXXX			18
++#define SUBSYS_1601XXXX			19
++#define SUBSYS_14e0XXXX			20
++#define SUBSYS_1c20XXXX			21
++#define SUBSYS_1c30XXXX			22
++#define SUBSYS_1c40XXXX			23
++#define SUBSYS_1c50XXXX			24
++#define SUBSYS_1c60XXXX			25
++#define SUBSYS_NO_SUPPORT		99
++
++#define CMDQ_EVENT_IMG_SOF				0
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_0		1
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_1		2
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_2		3
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_3		4
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_4		5
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_5		6
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_6		7
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_7		8
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_8		9
++#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_9		10
++#define CMDQ_EVENT_IMG_TRAW0_DMA_ERROR_INT		11
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_0		12
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_1		13
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_2		14
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_3		15
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_4		16
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_5		17
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_6		18
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_7		19
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_8		20
++#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_9		21
++#define CMDQ_EVENT_IMG_TRAW1_DMA_ERROR_INT		22
++#define CMDQ_EVENT_IMG_ADL_RESERVED			23
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_0		24
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_1		25
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_2		26
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_3		27
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_4		28
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_5		29
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_6		30
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_7		31
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_8		32
++#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_9		33
++#define CMDQ_EVENT_IMG_DIP_DMA_ERR			34
++#define CMDQ_EVENT_IMG_DIP_NR_DMA_ERR			35
++#define CMDQ_EVENT_DIP_DUMMY_0				36
++#define CMDQ_EVENT_DIP_DUMMY_1				37
++#define CMDQ_EVENT_DIP_DUMMY_2				38
++#define CMDQ_EVENT_IMG_WPE_EIS_GCE_FRAME_DONE	39
++#define CMDQ_EVENT_IMG_WPE_EIS_DONE_SYNC_OUT	40
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_0	41
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_1	42
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_2	43
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_3	44
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_4	45
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_5	46
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_6	47
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_7	48
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_8	49
++#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_9	50
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_0	51
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_1	52
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_2	53
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_3	54
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_4	55
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_5	56
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_6	57
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_7	58
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_8	59
++#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_9	60
++#define CMDQ_EVENT_IMG_PQDIP_A_DMA_ERR		61
++#define CMDQ_EVENT_WPE0_DUMMY_0			62
++#define CMDQ_EVENT_WPE0_DUMMY_1			63
++#define CMDQ_EVENT_WPE0_DUMMY_2			64
++#define CMDQ_EVENT_IMG_WPE_TNR_GCE_FRAME_DONE	65
++#define CMDQ_EVENT_IMG_WPE_TNR_DONE_SYNC_OUT	66
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_0	67
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_1	68
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_2	69
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_3	70
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_4	71
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_5	72
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_6	73
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_7	74
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_8	75
++#define CMDQ_EVENT_IMG_WPE_TNR_CQ_THR_DONE_9	76
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_0	77
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_1	78
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_2	79
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_3	80
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_4	81
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_5	82
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_6	83
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_7	84
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_8	85
++#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_9	86
++#define CMDQ_EVENT_IMG_PQDIP_B_DMA_ERR		87
++#define CMDQ_EVENT_WPE1_DUMMY_0			88
++#define CMDQ_EVENT_WPE1_DUMMY_1			89
++#define CMDQ_EVENT_WPE1_DUMMY_2			90
++#define CMDQ_EVENT_IMG_WPE_LITE_GCE_FRAME_DONE	91
++#define CMDQ_EVENT_IMG_WPE_LITE_DONE_SYNC_OUT	92
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_0	93
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_1	94
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_2	95
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_3	96
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_4	97
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_5	98
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_6	99
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_7	100
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_8	101
++#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_9	102
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_0	103
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_1	104
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_2	105
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_3	106
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_4	107
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_5	108
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_6	109
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_7	110
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_8	111
++#define CMDQ_EVENT_IMG_XTRAW_CQ_THR_DONE_9	112
++#define CMDQ_EVENT_IMG_XTRAW_DMA_ERR_EVENT	113
++#define CMDQ_EVENT_WPE2_DUMMY_0			114
++#define CMDQ_EVENT_WPE2_DUMMY_1			115
++#define CMDQ_EVENT_WPE2_DUMMY_2			116
++#define CMDQ_EVENT_IMG_IMGSYS_IPE_DUMMY		117
++#define CMDQ_EVENT_IMG_IMGSYS_IPE_FDVT_DONE	118
++#define CMDQ_EVENT_IMG_IMGSYS_IPE_ME_DONE	119
++#define CMDQ_EVENT_IMG_IMGSYS_IPE_DVS_DONE	120
++#define CMDQ_EVENT_IMG_IMGSYS_IPE_DVP_DONE	121
++#define CMDQ_EVENT_FDVT1_RESERVED		122
++#define CMDQ_EVENT_IMG_ENG_EVENT		123
++#define CMDQ_EVENT_CAMSUBA_SW_PASS1_DONE		129
++#define CMDQ_EVENT_CAMSUBB_SW_PASS1_DONE		130
++#define CMDQ_EVENT_CAMSUBC_SW_PASS1_DONE		131
++#define CMDQ_EVENT_GCAMSV_A_1_SW_PASS1_DONE		132
++#define CMDQ_EVENT_GCAMSV_A_2_SW_PASS1_DONE		133
++#define CMDQ_EVENT_GCAMSV_B_1_SW_PASS1_DONE		134
++#define CMDQ_EVENT_GCAMSV_B_2_SW_PASS1_DONE		135
++#define CMDQ_EVENT_GCAMSV_C_1_SW_PASS1_DONE		136
++#define CMDQ_EVENT_GCAMSV_C_2_SW_PASS1_DONE		137
++#define CMDQ_EVENT_GCAMSV_D_1_SW_PASS1_DONE		138
++#define CMDQ_EVENT_GCAMSV_D_2_SW_PASS1_DONE		139
++#define CMDQ_EVENT_GCAMSV_E_1_SW_PASS1_DONE		140
++#define CMDQ_EVENT_GCAMSV_E_2_SW_PASS1_DONE		141
++#define CMDQ_EVENT_GCAMSV_F_1_SW_PASS1_DONE		142
++#define CMDQ_EVENT_GCAMSV_F_2_SW_PASS1_DONE		143
++#define CMDQ_EVENT_GCAMSV_G_1_SW_PASS1_DONE		144
++#define CMDQ_EVENT_GCAMSV_G_2_SW_PASS1_DONE		145
++#define CMDQ_EVENT_GCAMSV_H_1_SW_PASS1_DONE		146
++#define CMDQ_EVENT_GCAMSV_H_2_SW_PASS1_DONE		147
++#define CMDQ_EVENT_GCAMSV_I_1_SW_PASS1_DONE		148
++#define CMDQ_EVENT_GCAMSV_I_2_SW_PASS1_DONE		149
++#define CMDQ_EVENT_GCAMSV_J_1_SW_PASS1_DONE		150
++#define CMDQ_EVENT_GCAMSV_J_2_SW_PASS1_DONE		151
++#define CMDQ_EVENT_MRAW_0_SW_PASS1_DONE			152
++#define CMDQ_EVENT_MRAW_1_SW_PASS1_DONE			153
++#define CMDQ_EVENT_MRAW_2_SW_PASS1_DONE			154
++#define CMDQ_EVENT_MRAW_3_SW_PASS1_DONE			155
++#define CMDQ_EVENT_SENINF_CAM0_FIFO_FULL		156
++#define CMDQ_EVENT_SENINF_CAM1_FIFO_FULL		157
++#define CMDQ_EVENT_SENINF_CAM2_FIFO_FULL		158
++#define CMDQ_EVENT_SENINF_CAM3_FIFO_FULL		159
++#define CMDQ_EVENT_SENINF_CAM4_FIFO_FULL		160
++#define CMDQ_EVENT_SENINF_CAM5_FIFO_FULL		161
++#define CMDQ_EVENT_SENINF_CAM6_FIFO_FULL		162
++#define CMDQ_EVENT_SENINF_CAM7_FIFO_FULL		163
++#define CMDQ_EVENT_SENINF_CAM8_FIFO_FULL		164
++#define CMDQ_EVENT_SENINF_CAM9_FIFO_FULL		165
++#define CMDQ_EVENT_SENINF_CAM10_FIFO_FULL		166
++#define CMDQ_EVENT_SENINF_CAM11_FIFO_FULL		167
++#define CMDQ_EVENT_SENINF_CAM12_FIFO_FULL		168
++#define CMDQ_EVENT_SENINF_CAM13_FIFO_FULL		169
++#define CMDQ_EVENT_SENINF_CAM14_FIFO_FULL		170
++#define CMDQ_EVENT_SENINF_CAM15_FIFO_FULL		171
++#define CMDQ_EVENT_SENINF_CAM16_FIFO_FULL		172
++#define CMDQ_EVENT_SENINF_CAM17_FIFO_FULL		173
++#define CMDQ_EVENT_SENINF_CAM18_FIFO_FULL		174
++#define CMDQ_EVENT_SENINF_CAM19_FIFO_FULL		175
++#define CMDQ_EVENT_SENINF_CAM20_FIFO_FULL		176
++#define CMDQ_EVENT_SENINF_CAM21_FIFO_FULL		177
++#define CMDQ_EVENT_SENINF_CAM22_FIFO_FULL		178
++#define CMDQ_EVENT_SENINF_CAM23_FIFO_FULL		179
++#define CMDQ_EVENT_SENINF_CAM24_FIFO_FULL		180
++#define CMDQ_EVENT_SENINF_CAM25_FIFO_FULL		181
++#define CMDQ_EVENT_SENINF_CAM26_FIFO_FULL		182
++#define CMDQ_EVENT_TG_OVRUN_MRAW0_INT			183
++#define CMDQ_EVENT_TG_OVRUN_MRAW1_INT			184
++#define CMDQ_EVENT_TG_OVRUN_MRAW2_INT			185
++#define CMDQ_EVENT_TG_OVRUN_MRAW3_INT			186
++#define CMDQ_EVENT_DMA_R1_ERROR_MRAW0_INT		187
++#define CMDQ_EVENT_DMA_R1_ERROR_MRAW1_INT		188
++#define CMDQ_EVENT_DMA_R1_ERROR_MRAW2_INT		189
++#define CMDQ_EVENT_DMA_R1_ERROR_MRAW3_INT		190
++#define CMDQ_EVENT_PDA0_IRQO_EVENT_DONE_D1		191
++#define CMDQ_EVENT_PDA1_IRQO_EVENT_DONE_D1		192
++#define CMDQ_EVENT_CAM_SUBA_TG_INT1				193
++#define CMDQ_EVENT_CAM_SUBA_TG_INT2				194
++#define CMDQ_EVENT_CAM_SUBA_TG_INT3				195
++#define CMDQ_EVENT_CAM_SUBA_TG_INT4				196
++#define CMDQ_EVENT_CAM_SUBB_TG_INT1				197
++#define CMDQ_EVENT_CAM_SUBB_TG_INT2				198
++#define CMDQ_EVENT_CAM_SUBB_TG_INT3				199
++#define CMDQ_EVENT_CAM_SUBB_TG_INT4				200
++#define CMDQ_EVENT_CAM_SUBC_TG_INT1				201
++#define CMDQ_EVENT_CAM_SUBC_TG_INT2				202
++#define CMDQ_EVENT_CAM_SUBC_TG_INT3				203
++#define CMDQ_EVENT_CAM_SUBC_TG_INT4				204
++#define CMDQ_EVENT_CAM_SUBA_IMGO_R1_LOW_LATENCY_LINE_CNT_INT	205
++#define CMDQ_EVENT_CAM_SUBA_YUVO_R1_LOW_LATENCY_LINE_CNT_INT	206
++#define CMDQ_EVENT_CAM_SUBA_YUVO_R3_LOW_LATENCY_LINE_CNT_INT	207
++#define CMDQ_EVENT_CAM_SUBA_DRZS4NO_R1_LOW_LATENCY_LINE_CNT_INT	208
++#define CMDQ_EVENT_CAM_SUBB_IMGO_R1_LOW_LATENCY_LINE_CNT_INT	209
++#define CMDQ_EVENT_CAM_SUBB_YUVO_R1_LOW_LATENCY_LINE_CNT_INT	210
++#define CMDQ_EVENT_CAM_SUBB_YUVO_R3_LOW_LATENCY_LINE_CNT_INT	211
++#define CMDQ_EVENT_CAM_SUBB_DRZS4NO_R1_LOW_LATENCY_LINE_CNT_INT	212
++#define CMDQ_EVENT_CAM_SUBC_IMGO_R1_LOW_LATENCY_LINE_CNT_INT	213
++#define CMDQ_EVENT_CAM_SUBC_YUVO_R1_LOW_LATENCY_LINE_CNT_INT	214
++#define CMDQ_EVENT_CAM_SUBC_YUVO_R3_LOW_LATENCY_LINE_CNT_INT	215
++#define CMDQ_EVENT_CAM_SUBC_DRZS4NO_R1_LOW_LATENCY_LINE_CNT_INT	216
++#define CMDQ_EVENT_RAW_SEL_SOF_SUBA				217
++#define CMDQ_EVENT_RAW_SEL_SOF_SUBB				218
++#define CMDQ_EVENT_RAW_SEL_SOF_SUBC				219
++#define CMDQ_EVENT_CAM_SUBA_RING_BUFFER_OVERFLOW_INT_IN		220
++#define CMDQ_EVENT_CAM_SUBB_RING_BUFFER_OVERFLOW_INT_IN		221
++#define CMDQ_EVENT_CAM_SUBC_RING_BUFFER_OVERFLOW_INT_IN		222
++#define CMDQ_EVENT_VPP0_MDP_RDMA_SOF				256
++#define CMDQ_EVENT_VPP0_MDP_FG_SOF				257
++#define CMDQ_EVENT_VPP0_STITCH_SOF				258
++#define CMDQ_EVENT_VPP0_MDP_HDR_SOF				259
++#define CMDQ_EVENT_VPP0_MDP_AAL_SOF				260
++#define CMDQ_EVENT_VPP0_MDP_RSZ_IN_RSZ_SOF			261
++#define CMDQ_EVENT_VPP0_MDP_TDSHP_SOF				262
++#define CMDQ_EVENT_VPP0_DISP_COLOR_SOF				263
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_SOF			264
++#define CMDQ_EVENT_VPP0_VPP_PADDING_IN_PADDING_SOF		265
++#define CMDQ_EVENT_VPP0_MDP_TCC_IN_SOF				266
++#define CMDQ_EVENT_VPP0_MDP_WROT_SOF				267
++#define CMDQ_EVENT_VPP0_WARP0_MMSYS_TOP_RELAY_SOF_PRE		269
++#define CMDQ_EVENT_VPP0_WARP1_MMSYS_TOP_RELAY_SOF_PRE		270
++#define CMDQ_EVENT_VPP0_VPP1_MMSYS_TOP_RELAY_SOF		271
++#define CMDQ_EVENT_VPP0_VPP1_IN_MMSYS_TOP_RELAY_SOF_PRE		272
++#define CMDQ_EVENT_VPP0_DISP_RDMA_SOF				273
++#define CMDQ_EVENT_VPP0_DISP_WDMA_SOF				274
++#define CMDQ_EVENT_VPP0_MDP_HMS_SOF				275
++#define CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE			288
++#define CMDQ_EVENT_VPP0_MDP_FG_TILE_DONE			289
++#define CMDQ_EVENT_VPP0_STITCH_FRAME_DONE			290
++#define CMDQ_EVENT_VPP0_MDP_HDR_FRAME_DONE			291
++#define CMDQ_EVENT_VPP0_MDP_AAL_FRAME_DONE			292
++#define CMDQ_EVENT_VPP0_MDP_RSZ_FRAME_DONE			293
++#define CMDQ_EVENT_VPP0_MDP_TDSHP_FRAME_DONE			294
++#define CMDQ_EVENT_VPP0_DISP_COLOR_FRAME_DONE			295
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_FRAME_DONE		296
++#define CMDQ_EVENT_VPP0_VPP_PADDING_IN_PADDING_FRAME_DONE	297
++#define CMDQ_EVENT_VPP0_MDP_TCC_TCC_FRAME_DONE			298
++#define CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE			299
++#define CMDQ_EVENT_VPP0_DISP_RDMA_FRAME_DONE			305
++#define CMDQ_EVENT_VPP0_DISP_WDMA_FRAME_DONE			306
++#define CMDQ_EVENT_VPP0_MDP_HMS_FRAME_DONE			307
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_0		320
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_1		321
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_2		322
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_3		323
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_4		324
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_5		325
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_6		326
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_7		327
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_8		328
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_9		329
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_10		330
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_11		331
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_12		332
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_13		333
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_14		334
++#define CMDQ_EVENT_VPP0_DISP_MUTEX_STREAM_DONE_15		335
++#define CMDQ_EVENT_VPP0_DISP_RDMA_0_UNDERRUN			336
++#define CMDQ_EVENT_VPP0_DISP_RDMA_1_UNDERRUN			337
++#define CMDQ_EVENT_VPP0_U_MERGE4_UNDERRUN			338
++#define CMDQ_EVENT_VPP0_U_VPP_SPLIT_VIDEO_0_OVERFLOW		339
++#define CMDQ_EVENT_VPP0_U_VPP_SPLIT_VIDEO_1_OVERFLOW		340
++#define CMDQ_EVENT_VPP0_DSI_0_UNDERRUN				341
++#define CMDQ_EVENT_VPP0_DSI_1_UNDERRUN				342
++#define CMDQ_EVENT_VPP0_DP_INTF_0				343
++#define CMDQ_EVENT_VPP0_DP_INTF_1				344
++#define CMDQ_EVENT_VPP0_DPI_0					345
++#define CMDQ_EVENT_VPP0_DPI_1					346
++#define CMDQ_EVENT_VPP0_MDP_RDMA_SW_RST_DONE			352
++#define CMDQ_EVENT_VPP0_MDP_RDMA_PM_VALID_EVENT			353
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_FRAME_RESET_DONE_PULSE	354
++#define CMDQ_EVENT_VPP0_MDP_WROT_SW_RST_DONE			355
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_0		356
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_1		357
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_2		358
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_3		359
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_4		360
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_5		361
++#define CMDQ_EVENT_VPP0_DISP_OVL_NOAFBC_TARGET_MATCH_6		362
++#define CMDQ_EVENT_VPP0_DISP_RDMA_DISP_RDMA_VALID_EVENT		363
++#define CMDQ_EVENT_VPP0_DISP_RDMA_DISP_RDMA_TARGET_LINE_EVENT	364
++#define CMDQ_EVENT_VPP0_DISP_WDMA_SW_RST_DONE			365
++#define CMDQ_EVENT_VPP0_DISP_WDMA_WDMA_VALID_EVENT		366
++#define CMDQ_EVENT_VPP0_DISP_WDMA_WDMA_TARGET_LINE_EVENT	367
++#define CMDQ_EVENT_VPP1_HDMI_META_SOF				384
++#define CMDQ_EVENT_VPP1_DGI_SOF					385
++#define CMDQ_EVENT_VPP1_VPP_SPLIT_SOF				386
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_TCC_SOF			387
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_SOF			388
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_SOF			389
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_SOF			390
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_FG_SOF			391
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_FG_SOF			392
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_FG_SOF			393
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_HDR_SOF			394
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_HDR_SOF			395
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_HDR_SOF			396
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_AAL_SOF			397
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_AAL_SOF			398
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_AAL_SOF			399
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_SOF			400
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_SOF			401
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_SOF			402
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_TDSHP_SOF			403
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_TDSHP_SOF			404
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_TDSHP_SOF			405
++#define CMDQ_EVENT_VPP1_SVPP2_VPP_MERGE_SOF			406
++#define CMDQ_EVENT_VPP1_SVPP3_VPP_MERGE_SOF			407
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_COLOR_SOF			408
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_COLOR_SOF			409
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_COLOR_SOF			410
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_OVL_SOF			411
++#define CMDQ_EVENT_VPP1_SVPP1_VPP_PAD_SOF			412
++#define CMDQ_EVENT_VPP1_SVPP2_VPP_PAD_SOF			413
++#define CMDQ_EVENT_VPP1_SVPP3_VPP_PAD_SOF			414
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF			415
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SOF			416
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SOF			417
++#define CMDQ_EVENT_VPP1_VPP0_DL_IRLY_SOF			418
++#define CMDQ_EVENT_VPP1_VPP0_DL_ORLY_SOF			419
++#define CMDQ_EVENT_VPP1_VDO0_DL_ORLY_0_SOF			420
++#define CMDQ_EVENT_VPP1_VDO0_DL_ORLY_1_SOF			421
++#define CMDQ_EVENT_VPP1_VDO1_DL_ORLY_0_SOF			422
++#define CMDQ_EVENT_VPP1_VDO1_DL_ORLY_1_SOF			423
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_FRAME_DONE		424
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_FRAME_DONE		425
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_FRAME_DONE		426
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE		427
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_FRAME_DONE		428
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_FRAME_DONE		429
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_OVL_FRAME_DONE		430
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_RSZ_FRAME_DONE		431
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_RSZ_FRAME_DONE		432
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_RSZ_FRAME_DONE		433
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_FG_TILE_DONE			434
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_FG_TILE_DONE			435
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_FG_TILE_DONE			436
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_HDR_FRAME_DONE		437
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_HDR_FRAME_DONE		438
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_HDR_FRAME_DONE		439
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_AAL_FRAME_DONE		440
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_AAL_FRAME_DONE		441
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_AAL_FRAME_DONE		442
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_TDSHP_FRAME_DONE		443
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_TDSHP_FRAME_DONE		444
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_TDSHP_FRAME_DONE		445
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_COLOR_FRAME_DONE		446
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_COLOR_FRAME_DONE		447
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_COLOR_FRAME_DONE		448
++#define CMDQ_EVENT_VPP1_SVPP1_VPP_PAD_FRAME_DONE		449
++#define CMDQ_EVENT_VPP1_SVPP2_VPP_PAD_FRAME_DONE		450
++#define CMDQ_EVENT_VPP1_SVPP3_VPP_PAD_FRAME_DONE		451
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_TCC_FRAME_DONE		452
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_0		456
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_1		457
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_2		458
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_3		459
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_4		460
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_5		461
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_6		462
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_7		463
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_8		464
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_9		465
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_10		466
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_11		467
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_12		468
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_13		469
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_14		470
++#define CMDQ_EVENT_VPP1_MUTEX_STREAM_DONE_GCE_EVENT_15		471
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_0		472
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_1		473
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_2		474
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_3		475
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_4		476
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_5		477
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_6		478
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_7		479
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_8		480
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_9		481
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_10		482
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_11		483
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_12		484
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_13		485
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_14		486
++#define CMDQ_EVENT_VPP1_MUTEX_BUF_UNDERRUN_GCE_EVENT_15		487
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_0			488
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_1			489
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_2			490
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_3			491
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_4			492
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_5			493
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_6			494
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_7			495
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_8			496
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_9			497
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_10			498
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_11			499
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_12			500
++#define CMDQ_EVENT_VPP1_DGI_SYNC_EVENT_13			501
++#define CMDQ_EVENT_VPP1_SVPP3_VPP_MERGE_GCE_EVENT		502
++#define CMDQ_EVENT_VPP1_SVPP2_VPP_MERGE_GCE_EVENT		503
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_OVL_GCE_EVENT			504
++#define CMDQ_EVENT_VPP1_VPP_SPLIT_DGI_GCE_EVENT			505
++#define CMDQ_EVENT_VPP1_VPP_SPLIT_HDMI_GCE_EVENT		506
++#define CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SW_RST_DONE_GCE_EVENT	507
++#define CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SW_RST_DONE_GCE_EVENT	508
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SW_RST_DONE_GCE_EVENT	509
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_OVL_NEW_EVENT_0		510
++#define CMDQ_EVENT_VPP1_SVPP1_MDP_OVL_NEW_EVENT_1		511
++#define CMDQ_EVENT_VDO0_DISP_OVL0_SOF				512
++#define CMDQ_EVENT_VDO0_DISP_WDMA0_SOF				513
++#define CMDQ_EVENT_VDO0_DISP_RDMA0_SOF				514
++#define CMDQ_EVENT_VDO0_DISP_COLOR0_SOF				515
++#define CMDQ_EVENT_VDO0_DISP_CCORR0_SOF				516
++#define CMDQ_EVENT_VDO0_DISP_AAL0_SOF				517
++#define CMDQ_EVENT_VDO0_DISP_GAMMA0_SOF				518
++#define CMDQ_EVENT_VDO0_DISP_DITHER0_SOF			519
++#define CMDQ_EVENT_VDO0_DSI0_SOF				520
++#define CMDQ_EVENT_VDO0_DSC_WRAP0C0_SOF			521
++#define CMDQ_EVENT_VDO0_DISP_OVL1_SOF			522
++#define CMDQ_EVENT_VDO0_DISP_WDMA1_SOF			523
++#define CMDQ_EVENT_VDO0_DISP_RDMA1_SOF			524
++#define CMDQ_EVENT_VDO0_DISP_COLOR1_SOF			525
++#define CMDQ_EVENT_VDO0_DISP_CCORR1_SOF			526
++#define CMDQ_EVENT_VDO0_DISP_AAL1_SOF			527
++#define CMDQ_EVENT_VDO0_DISP_GAMMA1_SOF			528
++#define CMDQ_EVENT_VDO0_DISP_DITHER1_SOF		529
++#define CMDQ_EVENT_VDO0_DSI1_SOF			530
++#define CMDQ_EVENT_VDO0_DSC_WRAP0C1_SOF			531
++#define CMDQ_EVENT_VDO0_VPP_MERGE0_SOF			532
++#define CMDQ_EVENT_VDO0_DP_INTF0_SOF			533
++#define CMDQ_EVENT_VDO0_DISP_DPI0_SOF			534
++#define CMDQ_EVENT_VDO0_DISP_DPI1_SOF			535
++#define CMDQ_EVENT_VDO0_DISP_POSTMASK0_SOF		536
++#define CMDQ_EVENT_VDO0_MDP_WROT0_SOF			537
++#define CMDQ_EVENT_VDO0_DISP_RSZ0_SOF			538
++#define CMDQ_EVENT_VDO0_VPP1_DL_RELAY0_SOF		539
++#define CMDQ_EVENT_VDO0_VPP1_DL_RELAY1_SOF		540
++#define CMDQ_EVENT_VDO0_VDO1_DL_RELAY2_SOF		541
++#define CMDQ_EVENT_VDO0_VDO0_DL_RELAY3_SOF		542
++#define CMDQ_EVENT_VDO0_VDO0_DL_RELAY4_SOF		543
++#define CMDQ_EVENT_VDO0_DISP_PWM0_SOF			544
++#define CMDQ_EVENT_VDO0_DISP_PWM1_SOF			545
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_FRAME_DONE		546
++#define CMDQ_EVENT_VDO0_DISP_WDMA0_FRAME_DONE		547
++#define CMDQ_EVENT_VDO0_DISP_RDMA0_FRAME_DONE		548
++#define CMDQ_EVENT_VDO0_DISP_COLOR0_O_FRAME_DONE	549
++#define CMDQ_EVENT_VDO0_DISP_CCORR0_O_FRAME_DONE	550
++#define CMDQ_EVENT_VDO0_DISP_AAL0_O_FRAME_DONE		551
++#define CMDQ_EVENT_VDO0_DISP_GAMMA0_O_FRAME_DONE	552
++#define CMDQ_EVENT_VDO0_DISP_DITHER0_O_FRAME_DONE	553
++#define CMDQ_EVENT_VDO0_DSI0_FRAME_DONE			554
++#define CMDQ_EVENT_VDO0_DSC_WRAP0_O_FRAME_DONE_0	555
++#define CMDQ_EVENT_VDO0_DISP_OVL1_O_FRAME_DONE		556
++#define CMDQ_EVENT_VDO0_DISP_WDMA1_O_FRAME_DONE		557
++#define CMDQ_EVENT_VDO0_DISP_RDMA1_O_FRAME_DONE		558
++#define CMDQ_EVENT_VDO0_DISP_COLOR1_O_FRAME_DONE	559
++#define CMDQ_EVENT_VDO0_DISP_CCORR1_O_FRAME_DONE	560
++#define CMDQ_EVENT_VDO0_DISP_AAL1_O_FRAME_DONE		561
++#define CMDQ_EVENT_VDO0_DISP_GAMMA1_O_FRAME_DONE	562
++#define CMDQ_EVENT_VDO0_DISP_DITHER1_O_FRAME_DONE	563
++#define CMDQ_EVENT_VDO0_DSI1_FRAME_DONE			564
++#define CMDQ_EVENT_VDO0_DSC_WRAP0_O_FRAME_DONE_1	565
++#define CMDQ_EVENT_VDO0_DP_INTF0_FRAME_DONE		567
++#define CMDQ_EVENT_VDO0_DISP_DPI0_O_FRAME_DONE		568
++#define CMDQ_EVENT_VDO0_DISP_DPI1_O_FRAME_DONE		569
++#define CMDQ_EVENT_VDO0_DISP_POSTMASK0_O_FRAME_DONE	570
++#define CMDQ_EVENT_VDO0_MDP_WROT0_O_FRAME_DONE		571
++#define CMDQ_EVENT_VDO0_DISP_RSZ0_O_FRAME_DONE		572
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0		574
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_1		575
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_2		576
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_3		577
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_4		578
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_5		579
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_6		580
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_7		581
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_8		582
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_9		583
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_10		584
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_11		585
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_12		586
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_13		587
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_14		588
++#define CMDQ_EVENT_VDO0_DISP_STREAM_DONE_15		589
++#define CMDQ_EVENT_VDO0_DISP_RDMA_0_UNDERRUN		590
++#define CMDQ_EVENT_VDO0_DISP_RDMA_1_UNDERRUN		591
++#define CMDQ_EVENT_VDO0_U_MERGE4_UNDERRUN		592
++#define CMDQ_EVENT_VDO0_DSI_0_UNDERRUN			595
++#define CMDQ_EVENT_VDO0_DSI_1_UNDERRUN			596
++#define CMDQ_EVENT_VDO0_DP_INTF_0			597
++#define CMDQ_EVENT_VDO0_DP_INTF_1			598
++#define CMDQ_EVENT_VDO0_DPI_0				599
++#define CMDQ_EVENT_VDO0_DPI_1				600
++#define CMDQ_EVENT_VDO0_DISP_SMIASSERT_ENG_EVENT	606
++#define CMDQ_EVENT_VDO0_DSI0_O_DSI_IRQ_EVENT_MM		607
++#define CMDQ_EVENT_VDO0_DSI0_TE_ENG_EVENT_MM		608
++#define CMDQ_EVENT_VDO0_DSI0_O_DSI_DONE_EVENT_MM	609
++#define CMDQ_EVENT_VDO0_DSI0_O_DSI_VACTL_EVENT_MM	610
++#define CMDQ_EVENT_VDO0_DSI1_O_DSI_IRQ_EVENT_MM		611
++#define CMDQ_EVENT_VDO0_DSI1_TE_ENG_EVENT_MM		612
++#define CMDQ_EVENT_VDO0_DSI1_O_DSI_DONE_EVENT_MM	613
++#define CMDQ_EVENT_VDO0_DSI1_O_DSI_VACTL_EVENT_MM	614
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_DP_VSYNC_START_EVENT_MM		615
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_DP_VSYNC_END_EVENT_MM		616
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_DP_VDE_START_EVENT_MM		617
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_DP_VDE_END_EVENT_MM			618
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_VACT_TARGET_LINE_EVENT_MM		619
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_LAST_SAFE_BLANK_EVENT_MM		620
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_LAST_LINE_EVENT_MM			621
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_TRIGGER_LOOP_CLEAR_EVENT_MM		622
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_TARGET_LINE_0_EVENT_MM		623
++#define CMDQ_EVENT_VDO0_DP_INTF0_O_TARGET_LINE_1_EVENT_MM		624
++#define CMDQ_EVENT_VDO0_DISP_POSTMASK0_O_FRAME_RESET_DONE_PULSE		625
++#define CMDQ_EVENT_VDO0_VPP_MERGE0_O_VPP_MERGE_EVENT			626
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_FRAME_RESET_DONE_PULSE		627
++#define CMDQ_EVENT_VDO0_DISP_RDMA0_O_DISP_RDMA_TARGET_LINE_EVENT	628
++#define CMDQ_EVENT_VDO0_DISP_WDMA0_O_WDMA_TARGET_LINE_EVENT		629
++#define CMDQ_EVENT_VDO0_DISP_WDMA0_O_SW_RST_DONE			630
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_0		631
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_1		632
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_2		633
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_3		634
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_4		635
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_5		636
++#define CMDQ_EVENT_VDO0_DISP_OVL0_O_TARGET_MATCH_EVENT_6		637
++#define CMDQ_EVENT_VDO0_MDP_WROT0_O_SW_RST_DONE				638
++#define CMDQ_EVENT_VDO0_RESERVED					639
++#define CMDQ_EVENT_VDO1_MDP_RDMA0_SOF				640
++#define CMDQ_EVENT_VDO1_MDP_RDMA1_SOF				641
++#define CMDQ_EVENT_VDO1_MDP_RDMA2_SOF				642
++#define CMDQ_EVENT_VDO1_MDP_RDMA3_SOF				643
++#define CMDQ_EVENT_VDO1_MDP_RDMA4_SOF				644
++#define CMDQ_EVENT_VDO1_MDP_RDMA5_SOF				645
++#define CMDQ_EVENT_VDO1_MDP_RDMA6_SOF				646
++#define CMDQ_EVENT_VDO1_MDP_RDMA7_SOF				647
++#define CMDQ_EVENT_VDO1_DISP_PADDING0_SOF			648
++#define CMDQ_EVENT_VDO1_DISP_PADDING1_SOF			649
++#define CMDQ_EVENT_VDO1_DISP_PADDING2_SOF			650
++#define CMDQ_EVENT_VDO1_DISP_PADDING3_SOF			651
++#define CMDQ_EVENT_VDO1_DISP_PADDING4_SOF			652
++#define CMDQ_EVENT_VDO1_DISP_PADDING5_SOF			653
++#define CMDQ_EVENT_VDO1_DISP_PADDING6_SOF			654
++#define CMDQ_EVENT_VDO1_DISP_PADDING7_SOF			655
++#define CMDQ_EVENT_VDO1_DISP_RSZ0_SOF				656
++#define CMDQ_EVENT_VDO1_DISP_RSZ1_SOF				657
++#define CMDQ_EVENT_VDO1_DISP_RSZ2_SOF				658
++#define CMDQ_EVENT_VDO1_DISP_RSZ3_SOF				659
++#define CMDQ_EVENT_VDO1_VPP_MERGE0_SOF				660
++#define CMDQ_EVENT_VDO1_VPP_MERGE1_SOF				661
++#define CMDQ_EVENT_VDO1_VPP_MERGE2_SOF				662
++#define CMDQ_EVENT_VDO1_VPP_MERGE3_SOF				663
++#define CMDQ_EVENT_VDO1_VPP_MERGE4_SOF				664
++#define CMDQ_EVENT_VDO1_VPP2_DL_RELAY_SOF			665
++#define CMDQ_EVENT_VDO1_VPP3_DL_RELAY_SOF			666
++#define CMDQ_EVENT_VDO0_DSC_DL_ASYNC_SOF			667
++#define CMDQ_EVENT_VDO0_MERGE_DL_ASYNC_SOF			668
++#define CMDQ_EVENT_VDO1_OUT_DL_RELAY_SOF			669
++#define CMDQ_EVENT_VDO1_DISP_MIXER_SOF				670
++#define CMDQ_EVENT_VDO1_HDR_VDO_FE0_SOF				671
++#define CMDQ_EVENT_VDO1_HDR_VDO_FE1_SOF				672
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE0_SOF				673
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE1_SOF				674
++#define CMDQ_EVENT_VDO1_HDR_VDO_BE0_SOF				675
++#define CMDQ_EVENT_VDO1_HDR_MLOAD_SOF				676
++#define CMDQ_EVENT_VDO1_DPI0_EXT_SOF				677
++#define CMDQ_EVENT_VDO1_DPI1_EXT_SOF				678
++#define CMDQ_EVENT_VDO1_DP_INTF_EXT_EXT_SOF			679
++#define CMDQ_EVENT_VDO1_MDP_RDMA0_FRAME_DONE		680
++#define CMDQ_EVENT_VDO1_MDP_RDMA1_FRAME_DONE		681
++#define CMDQ_EVENT_VDO1_MDP_RDMA2_FRAME_DONE		682
++#define CMDQ_EVENT_VDO1_MDP_RDMA3_FRAME_DONE		683
++#define CMDQ_EVENT_VDO1_MDP_RDMA4_FRAME_DONE		684
++#define CMDQ_EVENT_VDO1_MDP_RDMA5_FRAME_DONE		685
++#define CMDQ_EVENT_VDO1_MDP_RDMA6_FRAME_DONE		686
++#define CMDQ_EVENT_VDO1_MDP_RDMA7_FRAME_DONE		687
++#define CMDQ_EVENT_VDO1_DISP_PADDING0_FRAME_DONE	688
++#define CMDQ_EVENT_VDO1_DISP_PADDING1_FRAME_DONE	689
++#define CMDQ_EVENT_VDO1_DISP_PADDING2_FRAME_DONE	690
++#define CMDQ_EVENT_VDO1_DISP_PADDING3_FRAME_DONE	691
++#define CMDQ_EVENT_VDO1_DISP_PADDING4_FRAME_DONE	692
++#define CMDQ_EVENT_VDO1_DISP_PADDING5_FRAME_DONE	693
++#define CMDQ_EVENT_VDO1_DISP_PADDING6_FRAME_DONE	694
++#define CMDQ_EVENT_VDO1_DISP_PADDING7_FRAME_DONE	695
++#define CMDQ_EVENT_VDO1_DISP_RSZ0_FRAME_DONE		696
++#define CMDQ_EVENT_VDO1_DISP_RSZ1_FRAME_DONE		697
++#define CMDQ_EVENT_VDO1_DISP_RSZ2_FRAME_DONE		698
++#define CMDQ_EVENT_VDO1_DISP_RSZ3_FRAME_DONE		699
++#define CMDQ_EVENT_VDO1_VPP_MERGE0_FRAME_DONE		700
++#define CMDQ_EVENT_VDO1_VPP_MERGE1_FRAME_DONE		701
++#define CMDQ_EVENT_VDO1_VPP_MERGE2_FRAME_DONE		702
++#define CMDQ_EVENT_VDO1_VPP_MERGE3_FRAME_DONE		703
++#define CMDQ_EVENT_VDO1_VPP_MERGE4_FRAME_DONE		704
++#define CMDQ_EVENT_VDO1_DPI0_FRAME_DONE			705
++#define CMDQ_EVENT_VDO1_DPI1_FRAME_DONE			706
++#define CMDQ_EVENT_VDO1_DP_INTF0_FRAME_DONE		707
++#define CMDQ_EVENT_VDO1_DISP_MIXER_FRAME_DONE_MM	708
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_0		709
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_1		710
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_2		711
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_3		712
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_4		713
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_5		714
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_6		715
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_7		716
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_8		717
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_9		718
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_10		719
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_11		720
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_12		721
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_13		722
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_14		723
++#define CMDQ_EVENT_VDO1_STREAM_DONE_ENG_15		724
++#define CMDQ_EVENT_VDO1_DISP_RDMA_0_UNDERRUN		725
++#define CMDQ_EVENT_VDO1_DISP_RDMA_1_UNDERRUN		726
++#define CMDQ_EVENT_VDO1_U_MERGE4_UNDERRUN		727
++#define CMDQ_EVENT_VDO1_U_VPP_SPLIT_VIDEO_0_OVERFLOW	728
++#define CMDQ_EVENT_VDO1_U_VPP_SPLIT_VIDEO_1_OVERFLOW	729
++#define CMDQ_EVENT_VDO1_DSI_0_UNDERRUN			730
++#define CMDQ_EVENT_VDO1_DSI_1_UNDERRUN			731
++#define CMDQ_EVENT_VDO1_DP_INTF_0			732
++#define CMDQ_EVENT_VDO1_DP_INTF_1			733
++#define CMDQ_EVENT_VDO1_DPI_0				734
++#define CMDQ_EVENT_VDO1_DPI_1				735
++#define CMDQ_EVENT_VDO1_MDP_RDMA0_SW_RST_DONE		741
++#define CMDQ_EVENT_VDO1_MDP_RDMA1_SW_RST_DONE		742
++#define CMDQ_EVENT_VDO1_MDP_RDMA2_SW_RST_DONE		743
++#define CMDQ_EVENT_VDO1_MDP_RDMA3_SW_RST_DONE		744
++#define CMDQ_EVENT_VDO1_MDP_RDMA4_SW_RST_DONE		745
++#define CMDQ_EVENT_VDO1_MDP_RDMA5_SW_RST_DONE		746
++#define CMDQ_EVENT_VDO1_MDP_RDMA6_SW_RST_DONE		747
++#define CMDQ_EVENT_VDO1_MDP_RDMA7_SW_RST_DONE		748
++#define CMDQ_EVENT_VDO1_DP0_VDE_END_ENG_EVENT_MM	749
++#define CMDQ_EVENT_VDO1_DP0_VDE_START_ENG_EVENT_MM	750
++#define CMDQ_EVENT_VDO1_DP0_VSYNC_END_ENG_EVENT_MM	751
++#define CMDQ_EVENT_VDO1_DP0_VSYNC_START_ENG_EVENT_MM	752
++#define CMDQ_EVENT_VDO1_DP0_TARGET_LINE_ENG_EVENT_MM	753
++#define CMDQ_EVENT_VDO1_VPP_MERGE0_EVENT		754
++#define CMDQ_EVENT_VDO1_VPP_MERGE1_EVENT		755
++#define CMDQ_EVENT_VDO1_VPP_MERGE2_EVENT		756
++#define CMDQ_EVENT_VDO1_VPP_MERGE3_EVENT		757
++#define CMDQ_EVENT_VDO1_VPP_MERGE4_EVENT		758
++#define CMDQ_EVENT_VDO1_HDMITX_EVENT			759
++#define CMDQ_EVENT_VDO1_HDR_VDO_BE0_ADL_TRIG_EVENT_MM		760
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE1_THDR_ADL_TRIG_EVENT_MM	761
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE1_DM_ADL_TRIG_EVENT_MM	762
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE0_THDR_ADL_TRIG_EVENT_MM	763
++#define CMDQ_EVENT_VDO1_HDR_GFX_FE0_DM_ADL_TRIG_EVENT_MM	764
++#define CMDQ_EVENT_VDO1_HDR_VDO_FE1_ADL_TRIG_EVENT_MM		765
++#define CMDQ_EVENT_VDO1_HDR_VDO_FE1_AD0_TRIG_EVENT_MM		766
++#define CMDQ_EVENT_VDO1_DPI0_TARGET_LINE_1_EVENT_MM		767
++#define CMDQ_EVENT_HANDSHAKE_0		768
++#define CMDQ_EVENT_HANDSHAKE_1		769
++#define CMDQ_EVENT_HANDSHAKE_2		770
++#define CMDQ_EVENT_HANDSHAKE_3		771
++#define CMDQ_EVENT_HANDSHAKE_4		772
++#define CMDQ_EVENT_HANDSHAKE_5		773
++#define CMDQ_EVENT_HANDSHAKE_6		774
++#define CMDQ_EVENT_HANDSHAKE_7		775
++#define CMDQ_EVENT_HANDSHAKE_8		776
++#define CMDQ_EVENT_HANDSHAKE_9		777
++#define CMDQ_EVENT_HANDSHAKE_10		778
++#define CMDQ_EVENT_HANDSHAKE_11		779
++#define CMDQ_EVENT_HANDSHAKE_12		780
++#define CMDQ_EVENT_HANDSHAKE_13		781
++#define CMDQ_EVENT_HANDSHAKE_14		782
++#define CMDQ_EVENT_HANDSHAKE_15		783
++#define CMDQ_EVENT_VDEC_SOC_EVENT_0	800
++#define CMDQ_EVENT_VDEC_SOC_EVENT_1	801
++#define CMDQ_EVENT_VDEC_SOC_EVENT_2	802
++#define CMDQ_EVENT_VDEC_SOC_EVENT_3	803
++#define CMDQ_EVENT_VDEC_SOC_EVENT_4	804
++#define CMDQ_EVENT_VDEC_SOC_EVENT_5	805
++#define CMDQ_EVENT_VDEC_SOC_EVENT_6	806
++#define CMDQ_EVENT_VDEC_SOC_EVENT_7	807
++#define CMDQ_EVENT_VDEC_SOC_EVENT_8	808
++#define CMDQ_EVENT_VDEC_SOC_EVENT_9	809
++#define CMDQ_EVENT_VDEC_SOC_EVENT_10	810
++#define CMDQ_EVENT_VDEC_SOC_EVENT_11	811
++#define CMDQ_EVENT_VDEC_SOC_EVENT_12	812
++#define CMDQ_EVENT_VDEC_SOC_EVENT_13	813
++#define CMDQ_EVENT_VDEC_SOC_EVENT_14	814
++#define CMDQ_EVENT_VDEC_SOC_EVENT_15	815
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_0	832
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_1	833
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_2	834
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_3	835
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_4	836
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_5	837
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_6	838
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_7	839
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_8	840
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_9	841
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_10	842
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_11	843
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_12	844
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_13	845
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_14	846
++#define CMDQ_EVENT_VDEC_CORE0_EVENT_15	847
++#define CMDQ_EVENT_VENC_TOP_VENC_FRAME_DONE		865
++#define CMDQ_EVENT_VENC_TOP_VENC_PAUSE_DONE		866
++#define CMDQ_EVENT_VENC_TOP_JPGENC_DONE			867
++#define CMDQ_EVENT_VENC_TOP_VENC_MB_DONE		868
++#define CMDQ_EVENT_VENC_TOP_VENC_128BYTE_DONE		869
++#define CMDQ_EVENT_VENC_TOP_JPGDEC_DONE			870
++#define CMDQ_EVENT_VENC_TOP_VENC_SLICE_DONE		871
++#define CMDQ_EVENT_VENC_TOP_JPGDEC_INSUFF_DONE		872
++#define CMDQ_EVENT_VENC_TOP_WP_2ND_STAGE_DONE		874
++#define CMDQ_EVENT_VENC_TOP_WP_3RD_STAGE_DONE		875
++#define CMDQ_EVENT_VENC_TOP_PPS_HEADER_DONE		876
++#define CMDQ_EVENT_VENC_TOP_SPS_HEADER_DONE		877
++#define CMDQ_EVENT_VENC_TOP_VPS_HEADER_DONE		878
++#define CMDQ_EVENT_WPE_VPP0_WPE_GCE_FRAME_DONE		882
++#define CMDQ_EVENT_WPE_VPP0_WPE_DONE_SYNC_OUT		883
++#define CMDQ_EVENT_SVPP1_MDP_OVL_NEW_EVENT_2		896
++#define CMDQ_EVENT_SVPP1_MDP_OVL_NEW_EVENT_3		897
++#define CMDQ_EVENT_SVPP1_MDP_OVL_NEW_EVENT_4		898
++#define CMDQ_EVENT_SVPP1_MDP_OVL_NEW_EVENT_5		899
++#define CMDQ_EVENT_SVPP1_MDP_OVL_NEW_EVENT_6		900
++#define CMDQ_EVENT_VDO1_DPI0_TARGET_LINE_0_EVENT_MM		928
++#define CMDQ_EVENT_VDO1_DPI0_TRIGGER_LOOP_CLEAR_EVENT_MM	929
++#define CMDQ_EVENT_VDO1_DPI0_LAST_LINE_EVENT_MM			930
++#define CMDQ_EVENT_VDO1_DPI0_LAST_SAFE_BLANK_EVENT_MM		931
++#define CMDQ_EVENT_VDO1_DPI0_VSYNC_START_EVENT_MM		932
++#define CMDQ_EVENT_VDO1_DPI1_TARGET_LINE_1_EVENT_MM		933
++#define CMDQ_EVENT_VDO1_DPI1_TARGET_LINE_0_EVENT_MM		934
++#define CMDQ_EVENT_VDO1_DPI1_TRIGGER_LOOP_CLEAR_EVENT_MM	935
++#define CMDQ_EVENT_VDO1_DPI1_LAST_LINE_EVENT_MM			936
++#define CMDQ_EVENT_VDO1_DPI1_LAST_SAFE_BLANK_EVENT_MM		937
++#define CMDQ_EVENT_VDO1_DPI1_VSYNC_START_EVENT_MM		938
++#define CMDQ_EVENT_VDO1_DP_INTF_TARGET_LINE_1_EVENT_MM		939
++#define CMDQ_EVENT_VDO1_DP_INTF_TARGET_LINE_0_EVENT_MM		940
++#define CMDQ_EVENT_VDO1_DP_INTF_TRIGGER_LOOP_CLEAR_EVENT_MM	941
++#define CMDQ_EVENT_VDO1_DP_INTF_LAST_LINE_EVENT_MM		942
++#define CMDQ_EVENT_VDO1_DP_INTF_LAST_SAFE_BLANK_EVENT_MM	943
++#define CMDQ_EVENT_VBLANK_FALLING		946
++#define CMDQ_EVENT_VSC_FINISH			947
++#define CMDQ_EVENT_TPR_0			962
++#define CMDQ_EVENT_TPR_1			963
++#define CMDQ_EVENT_TPR_2			964
++#define CMDQ_EVENT_TPR_3			965
++#define CMDQ_EVENT_TPR_4			966
++#define CMDQ_EVENT_TPR_5			967
++#define CMDQ_EVENT_TPR_6			968
++#define CMDQ_EVENT_TPR_7			969
++#define CMDQ_EVENT_TPR_8			970
++#define CMDQ_EVENT_TPR_9			971
++#define CMDQ_EVENT_TPR_10			972
++#define CMDQ_EVENT_TPR_11			973
++#define CMDQ_EVENT_TPR_12			974
++#define CMDQ_EVENT_TPR_13			975
++#define CMDQ_EVENT_TPR_14			976
++#define CMDQ_EVENT_TPR_15			977
++#define CMDQ_EVENT_TPR_16			978
++#define CMDQ_EVENT_TPR_17			979
++#define CMDQ_EVENT_TPR_18			980
++#define CMDQ_EVENT_TPR_19			981
++#define CMDQ_EVENT_TPR_20			982
++#define CMDQ_EVENT_TPR_21			983
++#define CMDQ_EVENT_TPR_22			984
++#define CMDQ_EVENT_TPR_23			985
++#define CMDQ_EVENT_TPR_24			986
++#define CMDQ_EVENT_TPR_25			987
++#define CMDQ_EVENT_TPR_26			988
++#define CMDQ_EVENT_TPR_27			989
++#define CMDQ_EVENT_TPR_28			990
++#define CMDQ_EVENT_TPR_29			991
++#define CMDQ_EVENT_TPR_30			992
++#define CMDQ_EVENT_TPR_31			993
++#define CMDQ_EVENT_TPR_TIMEOUT_0	994
++#define CMDQ_EVENT_TPR_TIMEOUT_1	995
++#define CMDQ_EVENT_TPR_TIMEOUT_2	996
++#define CMDQ_EVENT_TPR_TIMEOUT_3	997
++#define CMDQ_EVENT_TPR_TIMEOUT_4	998
++#define CMDQ_EVENT_TPR_TIMEOUT_5	999
++#define CMDQ_EVENT_TPR_TIMEOUT_6	1000
++#define CMDQ_EVENT_TPR_TIMEOUT_7	1001
++#define CMDQ_EVENT_TPR_TIMEOUT_8	1002
++#define CMDQ_EVENT_TPR_TIMEOUT_9	1003
++#define CMDQ_EVENT_TPR_TIMEOUT_10	1004
++#define CMDQ_EVENT_TPR_TIMEOUT_11	1005
++#define CMDQ_EVENT_TPR_TIMEOUT_12	1006
++#define CMDQ_EVENT_TPR_TIMEOUT_13	1007
++#define CMDQ_EVENT_TPR_TIMEOUT_14	1008
++#define CMDQ_EVENT_TPR_TIMEOUT_15	1009
++#define CMDQ_EVENT_OUTPIN_0		1018
++#define CMDQ_EVENT_OUTPIN_1		1019
++
++#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_EIS			124
++#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_TNR			125
++#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_LITE			126
++#define CMDQ_SYNC_TOKEN_IMGSYS_TRAW			127
++#define CMDQ_SYNC_TOKEN_IMGSYS_LTRAW			128
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_1			223
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_2			224
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_3			225
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_4			226
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_5			227
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_6			228
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_7			229
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_8			230
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_9			231
++#define CMDQ_SYNC_TOKEN_CAMSYS_POOL_10			232
++#define CMDQ_SYNC_TOKEN_IMGSYS_XTRAW			233
++#define CMDQ_SYNC_TOKEN_IMGSYS_DIP			234
++#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_A			235
++#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_B			236
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_1			237
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_2			238
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_3			239
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_4			240
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_5			241
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_6			242
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_7			243
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_8			244
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_9			245
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_10			246
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_11			247
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_12			248
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_13			249
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_14			250
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_15			251
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_16			252
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_17			253
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_18			254
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_19			255
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_20			276
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_21			277
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_22			278
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_23			279
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_24			280
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_25			281
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_26			282
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_27			283
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_28			284
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_29			285
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_30			286
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_31			287
++#define CMDQ_SYNC_TOKEN_IPESYS_ME			300
++#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_TRAW			301
++#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_LTRAW		302
++#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_XTRAW		303
++#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_DIP			304
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_32			308
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_33			309
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_34			310
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_35			311
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_36			312
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_37			313
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_38			314
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_39			315
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_40			316
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_41			370
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_42			371
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_43			372
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_44			373
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_45			374
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_46			375
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_47			376
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_48			377
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_49			378
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_50			379
++#define CMDQ_SYNC_TOKEN_TZMP_ISP_WAIT			380
++#define CMDQ_SYNC_TOKEN_TZMP_ISP_SET			381
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_51			790
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_52			791
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_53			792
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_54			793
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_55			794
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_56			795
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_57			796
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_58			797
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_59			798
++#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_60			799
++#define CMDQ_SYNC_TOKEN_PREBUILT_MDP_WAIT		816
++#define CMDQ_SYNC_TOKEN_PREBUILT_MDP_SET		817
++#define CMDQ_SYNC_TOKEN_PREBUILT_MDP_LOCK		818
++#define CMDQ_SYNC_TOKEN_PREBUILT_MML_WAIT		819
++#define CMDQ_SYNC_TOKEN_PREBUILT_MML_SET		820
++#define CMDQ_SYNC_TOKEN_PREBUILT_MML_LOCK		821
++#define CMDQ_SYNC_TOKEN_PREBUILT_VFMT_WAIT		822
++#define CMDQ_SYNC_TOKEN_PREBUILT_VFMT_SET		823
++#define CMDQ_SYNC_TOKEN_PREBUILT_VFMT_LOCK		824
++#define CMDQ_SYNC_TOKEN_PREBUILT_DISP_WAIT		825
++#define CMDQ_SYNC_TOKEN_PREBUILT_DISP_SET		826
++#define CMDQ_SYNC_TOKEN_PREBUILT_DISP_LOCK		827
++#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY			848
++#define CMDQ_SYNC_TOKEN_STREAM_EOF			849
++#define CMDQ_SYNC_TOKEN_ESD_EOF				850
++#define CMDQ_SYNC_TOKEN_STREAM_BLOCK			851
++#define CMDQ_SYNC_TOKEN_CABC_EOF			852
++#define CMDQ_SYNC_TOKEN_VENC_INPUT_READY		853
++#define CMDQ_SYNC_TOKEN_VENC_EOF			854
++#define CMDQ_SYNC_TOKEN_SECURE_THR_EOF			855
++#define CMDQ_SYNC_TOKEN_USER_0				856
++#define CMDQ_SYNC_TOKEN_USER_1				857
++#define CMDQ_SYNC_TOKEN_POLL_MONITOR			858
++#define CMDQ_TOKEN_TPR_LOCK				859
++#define CMDQ_SYNC_TOKEN_MSS				860
++#define CMDQ_SYNC_TOKEN_MSF				861
++#define CMDQ_SYNC_TOKEN_GPR_SET_0			884
++#define CMDQ_SYNC_TOKEN_GPR_SET_1			885
++#define CMDQ_SYNC_TOKEN_GPR_SET_2			886
++#define CMDQ_SYNC_TOKEN_GPR_SET_3			887
++#define CMDQ_SYNC_TOKEN_GPR_SET_4			888
++#define CMDQ_SYNC_RESOURCE_WROT0			889
++#define CMDQ_SYNC_RESOURCE_WROT1			890
++#define CMDQ_SYNC_TOKEN_DISP_VA_START			1012
++#define CMDQ_SYNC_TOKEN_DISP_VA_END			1013
++#endif
 -- 
-2.25.1
+2.18.0
 
 
