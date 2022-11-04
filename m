@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB92C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 20:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB94C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 21:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SJDm6ZwA/4FnL4+xX4lXkBOljkX+IoHERBT/+QgPzuE=; b=MfMrLUroEhvZJ68IMNbNmtkvud
-	K6LKG9hnbpz/Vt1l11fgh4Ke2RWtNiScDxeMf0U5X4We3Rjc0L2wnWcGSgrGzzl+Gxq6xul9jfUVN
-	5hx1V/+XS2s6fhMVdQFICxOMq7Yek7TgiJQd12Rs+HJM5iasZ+pfQN9KBN+cFP4q5Re/UNONHCowZ
-	g9mJXaeuxgvx822iZwMOiz97cW6rwKhZP3insVyAM2boBGDTI1lyiOeq94Fymtp7COu4DsVPOj4sY
-	WK8eEA/iysla5f5Hki18P2Ahuo/MrcxkE/bddin0cRMdZ1IUKDY2cWJ1j6O05qf1F612+2YgWRHVZ
-	d2sQjyqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8fou4J33orvJPRJZJVv3MZe6syB9YzcftMX35Qce/P0=; b=ew8tgaDAfjWzm99W1J6QAciFVx
+	YIxiCEqDBBHuFA5LX0xiwbVwI7Pu8irRtMqo0fa91r6jkN2zfQoSytr49FRaErbZmwIcwLVuCKcrM
+	hbFT6yzenNCyLSWr1opPM7QF3wcvVhz7OcCB3yFt9Ec7j6LTok0Ph85WyCPQXBhOFMDBRYQ9hkyy4
+	r8tp+N56Sz28HgIeb63ikgBXLIL7R4AemFu72LUPT3i9pUEVYmsOAVeE5177QuKTE40wRt1nxNX4K
+	ytxpnYeTPm+rP2v1pLVublffYS0J797lEdlg3CcUVbAgxbd0P6AD0dn22SRNVTUe2FOva6PXWO2jx
+	Fz9X4Ptw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1or2tM-004xqL-1R; Fri, 04 Nov 2022 20:02:16 +0000
-Received: from mail-oi1-f171.google.com ([209.85.167.171])
+	id 1or4Ay-005C3F-BS; Fri, 04 Nov 2022 21:24:32 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1or2tJ-004xpQ-74; Fri, 04 Nov 2022 20:02:15 +0000
-Received: by mail-oi1-f171.google.com with SMTP id g10so6254453oif.10;
-        Fri, 04 Nov 2022 13:02:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SJDm6ZwA/4FnL4+xX4lXkBOljkX+IoHERBT/+QgPzuE=;
-        b=NWpQAKmt691hvh0FI2BdkXCjUF83PFGMdVsNjlYTm49bRpvinz9ppYzF8nJAXCDbSk
-         II56tMBHbgUaHjlr1UkwayDEkwe7DezjlembNGdbHimVvJ74PQKMRBJ7o2qi0P+7xvRY
-         As1Prhzn6Lc4t/g71clR6vpnI44DknGAQ3KbytwkHeYl74LkWI8rsWBnbSEkhlvED93Q
-         YFvHfzcfy88MTpQts6MlSnvA0PwIDvJu1XiAhPlnDwIC3ndZzUkFFFtZyNtEjvhul7/l
-         BXN/Tsb7IiZ2Yqc8DuJ02p1wzjLcGaWr+JzOXyR9aA5ig0v0LQt6g44MZNU03BJ4y1zb
-         XgMg==
-X-Gm-Message-State: ACrzQf2Ja0Hqf31BJ2YYxYb/17Uk28SWOzeyx0Y6NBRWeXEF5Zav7OBz
-	yGZ4FcnhVI3i/Nv7AkoWDw==
-X-Google-Smtp-Source: AMsMyM6Ipf6S0fbARxOeLpKUo6SzRbVO9jETbh+4MRfT+gXkGSDVrL16sjzp3xIW9/gcVs7RMXvOIg==
-X-Received: by 2002:a05:6808:8e2:b0:35a:2f3e:4210 with SMTP id d2-20020a05680808e200b0035a2f3e4210mr11136724oic.7.1667592131831;
-        Fri, 04 Nov 2022 13:02:11 -0700 (PDT)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id j36-20020a9d17a7000000b0066c55e23a16sm132454otj.2.2022.11.04.13.02.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Nov 2022 13:02:11 -0700 (PDT)
-Received: (nullmailer pid 2405323 invoked by uid 1000);
-	Fri, 04 Nov 2022 20:02:12 -0000
-Date: Fri, 4 Nov 2022 15:02:12 -0500
-From: Rob Herring <robh@kernel.org>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, =?iso-8859-1?Q?n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH v2 net-next 0/6] dt-binding preparation for ocelot
- switches
-Message-ID: <20221104200212.GA2315642-robh@kernel.org>
-References: <20221104045204.746124-1-colin.foster@in-advantage.com>
+	id 1or4Am-005ByN-EC; Fri, 04 Nov 2022 21:24:22 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 26FFB660298A;
+	Fri,  4 Nov 2022 21:24:13 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667597055;
+	bh=uuFnxcWfl5++HD7bZPixLE+GB/VdJsnKSziUJa+HwpM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=AsC3JSUiy8ATScgoKbobipTzEIeVkpxY7awI94quhKG+i4VkQevrmJCg0ey1kG/IN
+	 QTs735SZ3cltlzwM/HEzsg/9w3ZdTHdTN61DXBO979AxB2d3i1+vsVzhTZTCxnHu8d
+	 ipqJXY4mOx+wj5VEo/wJhMlRQcEmE3kbXR7wf1Mmu8KGsediEn6OEPv7tZYXBwwuuQ
+	 s3g12ZKk6E/nFdG4bfdH+Wn4i+t6gA7P0BzSliCwDxys5vhmYN6Jb5muyTGIZA1wZb
+	 5qmi/tb066woqT/IN8Rde7vKYYYARokJu4jJBKt1LGtY2SHzkwU0kyRe9trcKWXVzw
+	 jcwbOsIOvNttA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Akihiko Odaki <akihiko.odaki@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Takashi Iwai <tiwai@suse.com>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] ASoC: mediatek: mt8183-da7219: Register to module device table
+Date: Fri,  4 Nov 2022 17:24:07 -0400
+Message-Id: <20221104212409.603970-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221104045204.746124-1-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_130213_291057_EE09A4C0 
-X-CRM114-Status: GOOD (  28.37  )
+X-CRM114-CacheID: sfid-20221104_142420_753589_269C5DB7 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,368 +82,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 03, 2022 at 09:51:58PM -0700, Colin Foster wrote:
-> Ocelot switches have the abilitiy to be used internally via
-> memory-mapped IO or externally via SPI or PCIe. This brings up issues
-> for documentation, where the same chip might be accessed internally in a
-> switchdev manner, or externally in a DSA configuration. This patch set
-> is perparation to bring DSA functionality to the VSC7512, utilizing as
-> much as possible with an almost identical VSC7514 chip.
-> 
-> During the most recent RFC for internal ethernet switch functionality to
-> the VSC7512, there were 10 steps laid out to adequately prepare
-> documentation:
-> 
-> https://lore.kernel.org/all/20221010174856.nd3n4soxk7zbmcm7@skbuf/
-> 
-> The full context is quoted below. This patch set represents steps 1-7 of
-> the 10 steps, with the remaining steps to likely be part of what was the
-> original RFC.
-> 
-> The first two patches are specifically rewording and fixing of the MFD
-> bindings. I kept them in this patch set since they might cause conflicts
-> with future documentation changes that will be part of the net-next
-> tree. I can separate them if desired.
-> 
-> 
-> 
-> Context:
-> 
-> ```
-> To end the discussion on a constructive note, I think if I were Colin,
-> I would do the following, in the following order, according to what was
-> expressed as a constraint:
-> 
-> 1. Reword the "driver" word out of mscc,vsc7514-switch.yaml and express
->    the description in terms of what the switch can do, not what the
->    driver can do.
-> 
-> 2. Make qca8k.yaml have "$ref: dsa.yaml#". Remove "$ref: dsa-port.yaml#"
->    from the same schema.
+Register the compatibles for this module on the module device table so
+it can be automatically loaded when a matching device is found on the
+system.
 
-No, you need dsa-port.yaml referenced because it has DSA port properties 
-plus custom qca8k properties.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-> 
-> 3. Remove "- $ref: dsa-port.yaml#" from mediatek,mt7530.yaml. It doesn't
->    seem to be needed, since dsa.yaml also has this. We need this because
->    we want to make sure no one except dsa.yaml references dsa-port.yaml.
+---
 
-You don't seem to need it in mediatek,mt7530.yaml, but only dsa.yaml 
-referencing dsa-port.yaml is not what we need. dsa-port.yaml wouldn't 
-(and didn't at one time) exist if only dsa.yaml needed it.
+ sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Something like the below patch is on top of your changes is what's 
-needed. For DSA, there are 2 cases, custom properties in 'port' nodes 
-and no custom properties. '(ethernet-)?ports' never has custom 
-properties AFAICT (brcm,sf2 had brcm,use-bcm-hdr in the wrong place).
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index 9f22d3939818..0e572fe28c58 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -842,6 +842,7 @@ static const struct of_device_id mt8183_da7219_max98357_dt_match[] = {
+ 	},
+ 	{}
+ };
++MODULE_DEVICE_TABLE(of, mt8183_da7219_max98357_dt_match);
+ #endif
+ 
+ static struct platform_driver mt8183_da7219_max98357_driver = {
+-- 
+2.38.1
 
-Bindings using only standard DSA properties need to reference 
-'dsa.yaml#'. Bindings with custom 'ethernet-port' node properties need 
-to use 'dsa.yaml#/$defs/base' and then under the ethernet-port node 
-reference dsa-port.yaml, define their custom properties, and set 
-'unevaluatedProperties: false'.
-
-Obviously this needs to be refactored into proper patches and/or 
-squashed into yours. Probably a patch to fix brcm,sf2 and one to add 
-dsa.yaml#/$defs/base, then split out switch stuff.
-
-8<-------------------------------------------------------------------
-diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-index 259a0c6547f3..8d5abb05abdf 100644
---- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Arrow SpeedChips XRS7000 Series Switch Device Tree Bindings
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
- 
- maintainers:
-   - George McCollister <george.mccollister@gmail.com>
-diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-index 1219b830b1a4..f323fc01b224 100644
---- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-@@ -66,7 +66,7 @@ required:
-   - reg
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-index d159ac78cec1..eed16e216fb6 100644
---- a/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/brcm,sf2.yaml
-@@ -85,11 +85,16 @@ properties:
-   ports:
-     type: object
- 
--    properties:
--      brcm,use-bcm-hdr:
--        description: if present, indicates that the switch port has Broadcom
--          tags enabled (per-packet metadata)
--        type: boolean
-+    patternProperties:
-+      '^port@[0-9a-f]$':
-+        $ref: dsa-port.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          brcm,use-bcm-hdr:
-+            description: if present, indicates that the switch port has Broadcom
-+              tags enabled (per-packet metadata)
-+            type: boolean
- 
- required:
-   - reg
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-index d97fb87cccb0..0672443ea7a6 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-@@ -14,6 +14,8 @@ maintainers:
- description:
-   Ethernet switch port Description
- 
-+$ref: /schemas/net/ethernet-switch-port.yaml#
-+
- properties:
-   label:
-     description:
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-index 2290a9d32b21..1b3593a36014 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-@@ -21,9 +21,6 @@ select: false
- $ref: "/schemas/net/ethernet-switch.yaml#"
- 
- properties:
--  $nodename:
--    pattern: "^(ethernet-)?switch(@.*)?$"
--
-   dsa,member:
-     minItems: 2
-     maxItems: 2
-@@ -36,4 +33,20 @@ properties:
- 
- additionalProperties: true
- 
-+$defs:
-+  base:
-+    description: A DSA without any extra port properties
-+    $ref: '#/'
-+
-+    patternProperties:
-+      "^(ethernet-)?ports$":
-+        type: object
-+
-+        patternProperties:
-+          "^(ethernet-)?port@[0-9]+$":
-+            description: Ethernet switch ports
-+            $ref: /schemas/net/dsa/dsa-port.yaml#
-+            unevaluatedProperties: false
-+
-+
- ...
-diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-index 73b774eadd0b..e27b1619066f 100644
---- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Hirschmann Hellcreek TSN Switch Device Tree Bindings
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
- 
- maintainers:
-   - Andrew Lunn <andrew@lunn.ch>
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 81f291105660..564783fcb685 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -156,21 +156,15 @@ patternProperties:
- 
-     patternProperties:
-       "^(ethernet-)?port@[0-9]+$":
--        type: object
--        description: Ethernet switch ports
--
--        properties:
--          reg:
--            description:
--              Port address described must be 5 or 6 for CPU port and from 0 to 5
--              for user ports.
--
-         allOf:
-           - if:
-               required: [ ethernet ]
-             then:
-               properties:
-                 reg:
-+                  description:
-+                    Port address described must be 5 or 6 for CPU port and from 0 to 5
-+                    for user ports.
-                   enum:
-                     - 5
-                     - 6
-@@ -235,7 +229,7 @@ $defs:
-                       - sgmii
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
-   - if:
-       required:
-         - mediatek,mcm
-diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-index 4da75b1f9533..bfa2b76659c9 100644
---- a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Woojung Huh <Woojung.Huh@microchip.com>
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
-   - $ref: /schemas/spi/spi-peripheral-props.yaml#
- 
- properties:
-diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-index 630bf0f8294b..f4f9798addae 100644
---- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-@@ -10,7 +10,7 @@ maintainers:
-   - UNGLinuxDriver@microchip.com
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml b/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
-index 8d93ed9c172c..a7041ae4d811 100644
---- a/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mscc,ocelot.yaml
-@@ -78,7 +78,7 @@ required:
-   - reg
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
-   - if:
-       properties:
-         compatible:
-diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-index 1e26d876d146..13a835af9468 100644
---- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
-@@ -13,7 +13,7 @@ description:
-   depends on the SPI bus master driver.
- 
- allOf:
--  - $ref: "dsa.yaml#"
-+  - $ref: dsa.yaml#/$defs/base
-   - $ref: /schemas/spi/spi-peripheral-props.yaml#
- 
- maintainers:
-diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-index d831d5eee437..a33abdb9ead0 100644
---- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-@@ -77,8 +77,7 @@ patternProperties:
-     type: object
-     patternProperties:
-       "^(ethernet-)?port@[0-6]$":
--        type: object
--        description: Ethernet switch ports
-+        $ref: dsa-port.yaml#
- 
-         properties:
-           qca,sgmii-rxclk-falling-edge:
-@@ -102,7 +101,7 @@ patternProperties:
-               SGMII on the QCA8337, it is advised to set this unless a communication
-               issue is observed.
- 
--        unevaluatedProperties: true
-+        unevaluatedProperties: false
- 
- oneOf:
-   - required:
-diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-index 1a7d45a8ad66..ad1793eba31a 100644
---- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Realtek switches for unmanaged switches
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
- 
- maintainers:
-   - Linus Walleij <linus.walleij@linaro.org>
-diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-index 7ca9c19a157c..eb9ea25efcb7 100644
---- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-@@ -14,7 +14,7 @@ description: |
-   handles 4 ports + 1 CPU management port.
- 
- allOf:
--  - $ref: dsa.yaml#
-+  - $ref: dsa.yaml#/$defs/base
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/net/ethernet-switch.yaml b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-index f698857619da..0d417997c163 100644
---- a/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/ethernet-switch.yaml
-@@ -25,6 +25,8 @@ properties:
- patternProperties:
-   "^(ethernet-)?ports$":
-     type: object
-+    additionalProperties: false
-+
-     properties:
-       '#address-cells':
-         const: 1
-@@ -36,10 +38,6 @@ patternProperties:
-         type: object
-         description: Ethernet switch ports
- 
--        allOf:
--          - $ref: /schemas/net/dsa/dsa-port.yaml#
--          - $ref: ethernet-switch-port.yaml#
--
- oneOf:
-   - required:
-       - ports
-@@ -48,4 +46,20 @@ oneOf:
- 
- additionalProperties: true
- 
-+$defs:
-+  base:
-+    description: An Ethernet switch without any extra port properties
-+    $ref: '#/'
-+
-+    patternProperties:
-+      "^(ethernet-)?ports$":
-+        type: object
-+
-+        patternProperties:
-+          "^(ethernet-)?port@[0-9]+$":
-+            description: Ethernet switch ports
-+            $ref: ethernet-switch-port.yaml#
-+            unevaluatedProperties: false
-+
-+
- ...
 
