@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C009C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 13:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42DD3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 13:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OP12R/HSwnTWUiyniRxMemi0pLCGiBDAP9oM26nYGNs=; b=urst0CnbZ6dvucLbZOgDQj2C0+
-	63ikZpUJNGJOaGSyAnjS8Lz6Tx+xQ9XHMy8c7j3b+K9akzMzftkcwPQ1hwp3NX9hZAX6kJtHqERWG
-	tXDr1hYoDHz+CDsSV6jqiFKntFpQe7myP+/oAp1q2H9YHCeIN024P9CnTP3ZcT53GW6KugVLkCnQ+
-	uRz7khz+gYNCXHsp7nKtFcnfHZtXjBl+3ezX/B+/I4Cy4pw1TYqr+2i35rmwAfgN+llsB+4+qU8S+
-	3oOo6jvkvCoHM8dzNwQl5kzOBaeChndDYUYGBXuLkIFMYo24DNuPrwi0MDIRlk9gBUIL25/+xtUnq
-	s/SlJeNg==;
+	bh=tGBydtCUDCk73jqHi1ms+PUwXaWw+MD85xxvyrgKLGo=; b=pVc4H/HyYucAJ6uPZ0pVPxUFM8
+	m9djrQkIm0PdTLTRWmQoTsLE+O+hZ9W9HHC5QZ7IWhtbXzuYLs0NXjCKnhextX9y8vnhVkiX4rXIz
+	gVPp7IQq10p70Mu+w0P0ILdq4N70qB9sPR7bDa6yQf0fm9qlIWZj9zld2kd+8NIq14X2+4wOUZDoW
+	iQiDzaD5swf4t1CpPC0BhsKrjBm2cDZgSaxSHWFqg2k+E/qWodTzze/2or+s9mxaVxjf7197Wz0H3
+	LvLhhFdEO0LqnGQwE5IWCD6HvJgBq/Qa+Kqkk7TU4HGMMOlkNf6brGKqmfVtvRB87Puzkl6XbBunQ
+	riShQEtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqwoV-003hkD-Kh; Fri, 04 Nov 2022 13:32:52 +0000
+	id 1oqwoe-003hpN-2G; Fri, 04 Nov 2022 13:33:00 +0000
 Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqwoQ-003him-L4; Fri, 04 Nov 2022 13:32:48 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailnew.nyi.internal (Postfix) with ESMTP id A42735800E8;
-	Fri,  4 Nov 2022 09:32:45 -0400 (EDT)
+	id 1oqwoY-003hlg-VI; Fri, 04 Nov 2022 13:32:56 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 5C485580260;
+	Fri,  4 Nov 2022 09:32:54 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Fri, 04 Nov 2022 09:32:45 -0400
+  by compute3.internal (MEProxy); Fri, 04 Nov 2022 09:32:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
 	:cc:content-transfer-encoding:content-type:date:date:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm3; t=1667568765; x=
-	1667575965; bh=OP12R/HSwnTWUiyniRxMemi0pLCGiBDAP9oM26nYGNs=; b=b
-	gAoZ0r0P8dMEne5SzNzLIJAe3UgRjLWN9bCUPBHvCCH4eCQnR+QyrHBmvrbbTLE1
-	+7fy8nnZ7nZePtSZgN+yAdudz0peNsQ7IvXEMzywxSGKMXCDY01yRLg1S1sLMqan
-	CdmOfRJnmnbz3lB8jX81cmwZMSukLNJpcdaYN4ub4roKS3mcXdM3yhK5MbkPDl9O
-	6KuLcNyGnI3U9Q2dyrQN0qKfcFG4rqV2GNa7g4gCRBu7n7OSteja1wDrUR5Bx2N4
-	AHWbAgHJ8t4YdpC3Ti39gE7KCzssfZnyc047bBssNcd0aQAoQ4BmGMJZ/R87RUsp
-	2bSijGIJnkZocDBohoOcA==
+	:reply-to:sender:subject:subject:to:to; s=fm3; t=1667568774; x=
+	1667575974; bh=tGBydtCUDCk73jqHi1ms+PUwXaWw+MD85xxvyrgKLGo=; b=H
+	zZSaVpusazNg/YVT2NLu/+9aFuPRyZqkFeM3Xvax2JTezgPb71HKKAmjNt9OL6LQ
+	BRoCWn7bkdaceum4BsnyjBxsWjAOgX7hUuyXGFN7VnHNs7ea0D81T/uCym3Lkaic
+	tS6dCr9stjiI+BvSE1W9cHogLQrZKAU6fydmTfrZ1I2IwgKv0uIjjdpcvBiREZNO
+	RXLEvlYObHoq9AVZe7OJ3Z37GXxVQFAQyL5ER7T8OONYI4texbIxZfoMV6He0i8+
+	ynhmvP+z72lzSAAL98VCo8V5qb/hvDwgieUxz2cUNQHYTDloXGthdUmfq0XB3+Gh
+	0j4WOPoUF+RVUm51g7JTg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1667568765; x=
-	1667575965; bh=OP12R/HSwnTWUiyniRxMemi0pLCGiBDAP9oM26nYGNs=; b=r
-	SkeD2o6ZAAo+4q0OjI4d65U5pnJx1CYHxmUBzzZTJ2VQPck7LDDg5vZ59AKlZn6G
-	s/1uPKi6JibjWI+JLAEzr+0vypI0rTLlOyvBpEX3L3/4TWgrpCTy9f7hY4T8fgoh
-	mdnLqfjodVnyy1VF/bQYN6mP4BnC4MXeK5Q6lDjASmNh44TrIZJqqkKmBQRRLyTo
-	h7di6xl4TiBPFU6a7ZCev+sVPuNeE3n1XfYdG+O6bpzRYNjhmBqQVNzKP45mcc4G
-	+NLZOyKVwjN9c9IFwOObE539NDfDI3Mx3n9UdGttpghBCbOLOoBQZtYANtVzPoO6
-	5RKhVWFHnfrO3Rt2tQSpA==
-X-ME-Sender: <xms:exRlY_XCvztwJsBzW95sc03lce1X_mQcngj0HhHIQYrwFN1i8Vysyw>
-    <xme:exRlY3k8oDEQPINbMIIjz3qbhIRNATnBIrYEiXPD0dvb7XKIUnPlJ7J3IQmskGhx6
-    ePTsIcyrALXKemL_Dk>
-X-ME-Received: <xmr:exRlY7bNerzppRlNWr0H55T4PZCg6lX37NTS4tGmz-amkmtcOOal6hkk7LTL8VYKy50K46VvNHKQWX7b7317R295Jm1yQFkg-PW8Qvw1y38qkA>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1667568774; x=
+	1667575974; bh=tGBydtCUDCk73jqHi1ms+PUwXaWw+MD85xxvyrgKLGo=; b=M
+	7Tf4/qXEEA34xah9HeEwuKKmhlpnc+11ekAUOmw3BuNFjlUhAFTCURkfMRHZVvDy
+	o4DzyRL44cP0hsbvuG7EjtK6ucV1beBEkcKQuNR2nhUGTNfTi1P0NVe9l8SOlRqE
+	9i8zRRuFS9TQHU2fwX+Crtqexrn06Rc3G5I64bzwQrRGkRpotaOt1okiUiaTFcq/
+	FLdsCWYVP+gzoASKY++2x5y/39Pq8A24vno/WVF9lxb94gsbxH9Rb/7jbkiXVmy+
+	gynmUWLDlJAW321uqM6oPkwPEr32WWCAxLJXkWwC1RFivj5ubkkoQHTEQbOliAA9
+	cn0fDNZcwl13jyoCkwDJQ==
+X-ME-Sender: <xms:hRRlY_OZfnizhcakOJ1XZ7QBPrFIq9RzsssMuuH3h5kGwdRC3w7a2g>
+    <xme:hRRlY5_6MfqR2X2e2jeaMLjh1X_xAxxd7OjucKrof2_o_uhL0e030sT64fzgzcW75
+    3kYN3uuY-0twYStTeQ>
+X-ME-Received: <xmr:hRRlY-TnZlIeE1jwDmECykW-mwlh-qkbN-WvJSOcqPMcxttoYcsYivLwIJ2-NfVU7aZbTEyv7e7x67MiiRWa5QaXGfxS0G1xdw9E26SqgNrAVQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdehudcutefuodetggdotefrodftvf
     curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
     uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
@@ -65,20 +65,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdehudcutefuodetggdote
     htthgvrhhnpeduudduhfevjeetfeegvdffvdevvdejudegudekjeehtdelhfffveethfej
     ledtveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
     hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:exRlY6WGxlE0rHO6ELE2DTgZdv2xruZnsSnFmQ7xjW0fBEJkGH_-oQ>
-    <xmx:exRlY5lW36A8UpOP4pUZgR-90LQUumgnvehST1o5p2HHMlpbSIIvlA>
-    <xmx:exRlY3fx1yobTFhs7IfuLvoEvgzMKFmejPd9gOOYWv25eVjoR_uDlw>
-    <xmx:fRRlY3lo68OErBuUdEoaIdlJt3hK4Hul0iRDFSiECM3WHaxrxThJ8g>
+X-ME-Proxy: <xmx:hRRlYzsAO02H6QsAdIkwLSRE7raY2NbewULGhtiKO2dXamxl2yzvcQ>
+    <xmx:hRRlY3ff-4Ap0gE2XYGDgHUvXnbd4bHDXo8lakEk2stOqIpV3PZeaw>
+    <xmx:hRRlY_2rnepJXx7KIvcAkw3-mA4Ze_Uewh4ObJc6ZqsugoqTU3D0Mg>
+    <xmx:hhRlY28LI5ia1Z2nyukat4qEcg_hOtMGW92Mv9Po473ubbRrf57cvg>
 Feedback-ID: i8771445c:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 4 Nov 2022 09:32:42 -0400 (EDT)
+ 4 Nov 2022 09:32:53 -0400 (EDT)
 From: Maxime Ripard <maxime@cerno.tech>
-Date: Fri, 04 Nov 2022 14:17:48 +0100
-Subject: [PATCH v2 31/65] clk: tegra: bpmp: Add a determine_rate hook
+Date: Fri, 04 Nov 2022 14:17:50 +0100
+Subject: [PATCH v2 33/65] clk: tegra: periph: Add a determine_rate hook
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221018-clk-range-checks-fixes-v2-31-f6736dec138e@cerno.tech>
+Message-Id: <20221018-clk-range-checks-fixes-v2-33-f6736dec138e@cerno.tech>
 References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
 In-Reply-To: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
 To: Stephen Boyd <sboyd@kernel.org>,
@@ -125,16 +125,16 @@ Cc: linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org, linux
  linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 X-Mailer: b4 0.11.0-dev-99e3a
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2636; i=maxime@cerno.tech;
- h=from:subject:message-id; bh=TtnVJku8LpgyWhA8mU3ohncryBqbkle8GPJNf4SxgVU=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDMmpAl9eTHlylc3QsPZpwdbVvj17exleFBruNQk1PGPRt5Xr
- UJVQRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACYir8fw311P4dbJgnmqy2/ufpXSdO
- 2U0JN5zd4Fs5veOvxVV3zD5cvIsK6mVMTlyI1Ji/juLzhWfzT23c79x3g2RB9LuRXzycIukQUA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2522; i=maxime@cerno.tech;
+ h=from:subject:message-id; bh=TVWzazISCOex614FUIKSWVgATQ2K3qNuwmBeNxoZHAM=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDMmpAl9Wim3aHRGfvVZQ0iX9wS0dq3aNxKwnv58HPNecriXL
+ t+d1RykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACbyYSojw6TIBX69GamNv7n3nJZjfj
+ /7WX75c+aVkQ8MONsOJTi+lWD4K8MpteRrxtFfP8u2nry3X7fc/vGy7Ngb12ys1tT6TJkQygcA
 X-Developer-Key: i=maxime@cerno.tech; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_063246_782596_661213F4 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20221104_063255_103027_6AE61FDE 
+X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,7 +149,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Tegra BPMP mux clock implements a mux with a set_parent hook, but
+The Tegra periph nodiv clock implements a mux with a set_parent hook, but
 doesn't provide a determine_rate implementation.
 
 This is a bit odd, since set_parent() is there to, as its name implies,
@@ -180,36 +180,30 @@ behavior now and it can be further refined down the line.
 
 Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 ---
- drivers/clk/tegra/clk-bpmp.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/clk/tegra/clk-periph.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/tegra/clk-bpmp.c b/drivers/clk/tegra/clk-bpmp.c
-index d82a71f10c2c..6aea1cefbb80 100644
---- a/drivers/clk/tegra/clk-bpmp.c
-+++ b/drivers/clk/tegra/clk-bpmp.c
-@@ -286,6 +286,7 @@ static const struct clk_ops tegra_bpmp_clk_mux_ops = {
- 	.unprepare = tegra_bpmp_clk_unprepare,
- 	.is_prepared = tegra_bpmp_clk_is_prepared,
- 	.recalc_rate = tegra_bpmp_clk_recalc_rate,
-+	.determine_rate = __clk_mux_determine_rate,
- 	.set_parent = tegra_bpmp_clk_set_parent,
- 	.get_parent = tegra_bpmp_clk_get_parent,
+diff --git a/drivers/clk/tegra/clk-periph.c b/drivers/clk/tegra/clk-periph.c
+index 79ca3aa072b7..367396c62259 100644
+--- a/drivers/clk/tegra/clk-periph.c
++++ b/drivers/clk/tegra/clk-periph.c
+@@ -140,6 +140,7 @@ const struct clk_ops tegra_clk_periph_ops = {
  };
-@@ -512,10 +513,12 @@ tegra_bpmp_clk_register(struct tegra_bpmp *bpmp,
- 	clk->hw.init = &init;
  
- 	if (info->flags & TEGRA_BPMP_CLK_HAS_MUX) {
--		if (info->flags & TEGRA_BPMP_CLK_HAS_SET_RATE)
-+		if (info->flags & TEGRA_BPMP_CLK_HAS_SET_RATE) {
- 			init.ops = &tegra_bpmp_clk_mux_rate_ops;
--		else
-+		} else {
- 			init.ops = &tegra_bpmp_clk_mux_ops;
-+			init.flags |= CLK_SET_RATE_NO_REPARENT;
-+		}
- 	} else {
- 		if (info->flags & TEGRA_BPMP_CLK_HAS_SET_RATE)
- 			init.ops = &tegra_bpmp_clk_rate_ops;
+ static const struct clk_ops tegra_clk_periph_nodiv_ops = {
++	.determine_rate = __clk_mux_determine_rate,
+ 	.get_parent = clk_periph_get_parent,
+ 	.set_parent = clk_periph_set_parent,
+ 	.is_enabled = clk_periph_is_enabled,
+@@ -170,7 +171,7 @@ static struct clk *_tegra_clk_register_periph(const char *name,
+ 	bool div = !(periph->gate.flags & TEGRA_PERIPH_NO_DIV);
+ 
+ 	if (periph->gate.flags & TEGRA_PERIPH_NO_DIV) {
+-		flags |= CLK_SET_RATE_PARENT;
++		flags |= CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT;
+ 		init.ops = &tegra_clk_periph_nodiv_ops;
+ 	} else if (periph->gate.flags & TEGRA_PERIPH_NO_GATE)
+ 		init.ops = &tegra_clk_periph_no_gate_ops;
 
 -- 
 b4 0.11.0-dev-99e3a
