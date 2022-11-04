@@ -4,82 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AFA5C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 14:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF131C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 15:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FEjd+PvKAYdN3SYcvnx+UWY1J3SHepx3zo4VttAFVqo=; b=wt0xhE8FlFfoAJMUxbvVxznWiT
-	sZDLe80KntBD6LmugzDsOprwD9uuaQbdNrnEJJz7DW5nAo6HkAat5mwBe8PKfJMuOetKPDs7WvHXJ
-	mP2iITZgtbbVHiX8NONN5geC8YlToZZjfX5ZLrPrVM+Yi6t7JsOHGyA97UJ64pwmjTQH/dUeAtQxi
-	pC6DezRqqF9Mfb+XSbVV/dbjLy3hetA058c/UMnqg9/F2Lq9DZaTKJEfhVx1wacnjiwV1DBzg+nkH
-	5S9waybY0a+oKN9HbGqoNeVh4WTAUBPnqYwMJh31eW3DW3UL03nZpQolaCKcL4qecrdjlwc3X9vWx
-	MRNgTEyA==;
+	bh=Y5oKJivX8wkahYNQyZEHeLWH6EQTo4IwcdhL358fYx8=; b=tufo56rsh7V/urWQKbFkMHOxsc
+	e/m8k65wiiw4Tiil3gMm5ru1irg2sP2XeSLaGb2PGwcg3y02S3t5cLV7HWrKiX0apsnbl6hU0rDX/
+	BLkEPlHBrPH8rXL3/wY//laUdGZ5FUXXOh2EgFYxi8DbQ0HlrgoyAVyEhfBtDkb6ZuIxmAIHZQUeZ
+	HbhHGEovoN2WpNRWrjLaLFTJrZM3dCYJFfGnTx9kUab2he1WTuD2iCBhbiRLgYaT3yRJxUD6sP5jD
+	XoPrJgigWtglKOab//oxEeDUBByKYb0kdFEmuVua6ZIqi3Sd7s3mJLAcUtim+xqkTRklBBRnCIuoJ
+	efYwAoUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqy4e-0045av-W9; Fri, 04 Nov 2022 14:53:37 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oqyAm-00472l-Nt; Fri, 04 Nov 2022 14:59:56 +0000
+Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqy4S-0045We-DB; Fri, 04 Nov 2022 14:53:26 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E30D9660296D;
-	Fri,  4 Nov 2022 14:53:19 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667573602;
-	bh=nbrvVX+UhnvF5ENRV50WNSRNnwQj9Mpuw87bW7JfI+I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RmsC+Pbm32Z7NholMslPUTwJiR3ZxsKjJ9YqNeeVaHHcCt+yRHlyG4Gchb+G+9WTm
-	 SvtiVAgzvbRerlFy+XawTBAaqFM1Qz2tEtlV7DDFMK60UpO+7ohsviZcinoNuKfL9D
-	 TFSfF2zL37updpctWSqw15JtPXK5Fg/leqi6oRB56ZVo05pfVUmaSY8lHxN7c4UT+e
-	 uRg9CRgGSrxtHVmxkvdemaxG6XmTWsorAQVoYIcuWJPuJ2ssuaM/u4RgHTyXIYu5Ud
-	 ZLUDl6mpbb2UiA6b7zxyL4y0vTdl6T6wJYdtN11V78sI4sdue4rde7cUbQrOrSfQQh
-	 1GvHl1Lg4r8NA==
-Date: Fri, 4 Nov 2022 10:53:15 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>
-Cc: "llvm@lists.linux.dev" <llvm@lists.linux.dev>,
-	Yongqiang Niu =?utf-8?B?KOeJm+awuOW8uik=?= <yongqiang.niu@mediatek.com>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	"nathan@kernel.org" <nathan@kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>,
-	"linux@roeck-us.net" <linux@roeck-us.net>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"wim@linux-watchdog.org" <wim@linux-watchdog.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"airlied@linux.ie" <airlied@linux.ie>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"ndesaulniers@google.com" <ndesaulniers@google.com>
-Subject: Re: [PATCH v27 6/7] drm/mediatek: add drm ovl_adaptor sub driver for
- MT8195
-Message-ID: <20221104145315.hsff6kswyquyscx2@notapiano>
-References: <20221103032610.9217-1-nancy.lin@mediatek.com>
- <20221103032610.9217-7-nancy.lin@mediatek.com>
- <20221103212800.43nxlxpconqkasvc@notapiano>
- <82f99ec0d0150d7625e87fe6d5aba58382c8aec4.camel@mediatek.com>
+	id 1oqyAh-00471a-W0; Fri, 04 Nov 2022 14:59:54 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	by mailnew.nyi.internal (Postfix) with ESMTP id EA41F58026B;
+	Fri,  4 Nov 2022 10:59:50 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute2.internal (MEProxy); Fri, 04 Nov 2022 10:59:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm3; t=1667573990; x=1667581190; bh=Y5oKJivX8w
+	kahYNQyZEHeLWH6EQTo4IwcdhL358fYx8=; b=pBVbAwq1wh0urQYxWnM1cZvXiw
+	mvjZO+455nAE/nRxFcqzso7pQ/J60kCKGSeIBmskbHvQSi9PYRl1MN1qk4QMVnXO
+	O26I129jq9+yAZIkexYRp4WvrKiZfr4PFjBlnR6Nh+XMiiV9w0CdYiHl0idAaJKW
+	SHLPz7vGqcjauK0q4winqVKK9cMBHOK6DVXMDDGCJ2DBcg3NR9tuw2sjqesu0iC5
+	VW00jbu4GMIQ4H6yTjfIOwq2YTOMuSvVxQo1rCKHMe/hwvsSdfgZHZjFLM37jHkc
+	FwLM9N2SL9k0UfdS0EShXYbR+EyxaJVVEbjqGsA9/nE72YI5YDI0+va41kBw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1667573990; x=1667581190; bh=Y5oKJivX8wkahYNQyZEHeLWH6EQT
+	o4IwcdhL358fYx8=; b=gZDDItvEezCWxgqad6gxjjfWfeOrA4CSVOD4X/tCyGR/
+	1zWJ5PDZMcJtl46J8cw6TZD8A3kvRySi5xhe4K3TaTEG7WSLs3rDubeqtmw/UcfG
+	soFvWcONBG4N1E/1fQXCWUlTeDAhL9uzsoy6Nj6u2sSjTeKMWRrHN7I4Tz6uHFnC
+	LXurihQPC91YGB99/gpiYWXFAnt9Xiw5lRUWdw/CBiJ4rg+29C3oMLtgZuLpAtK1
+	uqE7F8s0fbwdOdKsuxGDFdn2e17l+JnphDkcERDXrb/KIH6muNdhFpjnB3fJ2brt
+	RDCd01W2037fcjJzBEnocY/kYTqF1PbP9lh/+Mn7Gg==
+X-ME-Sender: <xms:5ShlY7FKvMdiI7MdYB8GPeH7sm8yEz0sE4pJ5CoQooBaFvUW75AoGg>
+    <xme:5ShlY4XvaNfgFPuKsbvtHa4_U0X6FVBAMhSvKhV3R6UFiRvXhpKJFh0-s4nI01b-x
+    jlyf7I2qKs61MkDHXI>
+X-ME-Received: <xmr:5ShlY9LR2xrGFIdsac3sg_xCouZpM4-aJJqKitqCh2RhgZbrJcPoS4waQ2RtRJ_kVlR9pyfi3ryzGNEBMMMCVOAhnjEpXSEw8aIKBgu3XZZdZg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvddugdeilecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpeffhffvvefukfhfgggtuggjsehgtderredttddunecuhfhrohhmpeforgigihhm
+    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+    htvghrnhepieehffffvefgiedthfeiieeutdfgffekhfehgfehgfeiuddutdfftdekffeh
+    heevnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecuvehluhhsthgvrhfuihiivg
+    eptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggt
+    hh
+X-ME-Proxy: <xmx:5ShlY5FulryG6piRTq1Doh0CuBDYwOCeoCXIadUTWLSZ4ObNKGT5XA>
+    <xmx:5ShlYxUeU1vUGVeUlBlRWaIdtbyO6tDYisF3f47KqmHxCSKrHS6GNQ>
+    <xmx:5ShlY0NJrQGz6nbT46fijtydHCKy1E91zFdvxhw1jNtNOKb1d8H9Ig>
+    <xmx:5ihlY1egHKPdtgWfhXGl3pSh5GvaBqT4_jcol8t3pFd7EG_r7GifVw>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 4 Nov 2022 10:59:47 -0400 (EDT)
+Date: Fri, 4 Nov 2022 15:59:46 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Paul Cercueil <paul@crapouillou.net>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Peter De Schrijver <pdeschrijver@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,	Mark Brown <broonie@kernel.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
+Message-ID: <20221104145946.orsyrhiqvypisl5j@houat>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
+ <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qzlwgqpxalgoto6y"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <82f99ec0d0150d7625e87fe6d5aba58382c8aec4.camel@mediatek.com>
+In-Reply-To: <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_075324_729410_A8CD1079 
-X-CRM114-Status: GOOD (  26.04  )
+X-CRM114-CacheID: sfid-20221104_075952_281844_1B8A4F2E 
+X-CRM114-Status: GOOD (  45.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,107 +146,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 04, 2022 at 10:57:28AM +0000, Nancy Lin (林欣螢) wrote:
-> Dear Nicolas,
-> 
-> Thanks for the review.
-> 
-> On Thu, 2022-11-03 at 17:28 -0400, Nícolas F. R. A. Prado wrote:
-> > On Thu, Nov 03, 2022 at 11:26:09AM +0800, Nancy.Lin wrote:
-> > > Add drm ovl_adaptor sub driver. Bring up ovl_adaptor sub driver if
-> > > the component exists in the path.
-> > > 
-> > > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > > Tested-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > > Change-Id: I0501f3c80e78ec8279366cba9c137a2edd7a852e
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  61 ++++-----
-> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   2 +-
-> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 129 ++++++++++++--
-> > > ------
-> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  50 +++++++-
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  78 ++++++------
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |  12 +-
-> > >  6 files changed, 209 insertions(+), 123 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > index 30dcb65d8a5a..ce5617ad04cb 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > 
-> > [..]
-> > >  int mtk_drm_crtc_create(struct drm_device *drm_dev,
-> > > -			const enum mtk_ddp_comp_id *path, unsigned int
-> > > path_len,
-> > > +			const unsigned int *path, unsigned int
-> > > path_len,
-> > 
-> > Hi Nancy,
-> > 
-> > why is 'enum mtk_ddp_comp_id' being changed to 'unsigned int'
-> > throughout this
-> > patch? Was this intentional?
-> > 
-> > I saw that this change happened between v16 [1] and v17 [2], but I
-> > didn't see
-> > any reply or mention about this in the commit message or cover
-> > letter.
-> > 
-> > Thanks,
-> > Nícolas
-> > 
-> > [1] 
-> > https://lore.kernel.org/all/20220318142009.2796-21-nancy.lin@mediatek.com/
-> > [2] 
-> > https://lore.kernel.org/all/20220416020749.29010-20-nancy.lin@mediatek.com/
-> 
-> 
-> The change is for the review in [1] to expose each mod instead of ovl
-> adaptor to mtk_mutex.
-> Ovl adaptor is an application that combine these mod to achieve ovl
-> function, and it's not a real component in mtk_mmsys/mtk_mutex.
-> 
-> For the above comment, I discussed the solution with MediaTek DRM
-> reviewer CK.Hu internally.
-> 1. remove the DDP_COMPONENT_OVL_ADAPTOR in enum mtk_ddp_comp_id{}  (ref
-> [2])
-> 2. add DRM driver component define "DDP_COMPONENT_DRM_OVL_ADAPTOR" in
-> mtk_drm_drv.h (ref[3])
-> 3. replace mmsys compoent DDP_COMPONENT_OVL_ADAPTOR with DRM driver
-> compoent DDP_COMPONENT_DRM_OVL_ADAPTOR in drm mt8195_mtk_ddp_ext[] path
-> array. (ref[3] - mtk_drm_drv.c)
->    
->     static const unsigned int mt8195_mtk_ddp_ext[] = {
-> 		DDP_COMPONENT_DRM_OVL_ADAPTOR,
-> 		DDP_COMPONENT_MERGE5,
-> 		DDP_COMPONENT_DP_INTF1,
->     };
-> Because the DDP_COMPONENT_DRM_OVL_ADAPTOR is not a real mmsys
-> component, change to use "unsigned int" instead of "enum
-> mtk_ddp_comp_id{}"
 
-Ah okay, that makes sense. Thank you for the clarification.
+--qzlwgqpxalgoto6y
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Nícolas
+Hi Paul,
 
-> 
-> 
-> [1] 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220318142009.2796-10-nancy.lin@mediatek.com/
-> [2] 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220318142009.2796-5-nancy.lin@mediatek.com/
-> [3] 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20221103032610.9217-7-nancy.lin@mediatek.com/
-> 
-> Thanks,
-> Nancy
-> 
+On Fri, Nov 04, 2022 at 02:31:20PM +0000, Paul Cercueil wrote:
+> Le ven. 4 nov. 2022 =E0 14:18:13 +0100, Maxime Ripard <maxime@cerno.tech>=
+ a
+> =E9crit :
+> > The Ingenic CGU clocks implements a mux with a set_parent hook, but
+> > doesn't provide a determine_rate implementation.
+> >=20
+> > This is a bit odd, since set_parent() is there to, as its name implies,
+> > change the parent of a clock. However, the most likely candidate to
+> > trigger that parent change is a call to clk_set_rate(), with
+> > determine_rate() figuring out which parent is the best suited for a
+> > given rate.
+> >=20
+> > The other trigger would be a call to clk_set_parent(), but it's far less
+> > used, and it doesn't look like there's any obvious user for that clock.
+> >=20
+> > So, the set_parent hook is effectively unused, possibly because of an
+> > oversight. However, it could also be an explicit decision by the
+> > original author to avoid any reparenting but through an explicit call to
+> > clk_set_parent().
+> >=20
+> > The driver does implement round_rate() though, which means that we can
+> > change the rate of the clock, but we will never get to change the
+> > parent.
+> >=20
+> > However, It's hard to tell whether it's been done on purpose or not.
+> >=20
+> > Since we'll start mandating a determine_rate() implementation, let's
+> > convert the round_rate() implementation to a determine_rate(), which
+> > will also make the current behavior explicit. And if it was an
+> > oversight, the clock behaviour can be adjusted later on.
+>=20
+> So it's partly on purpose, partly because I didn't know about
+> .determine_rate.
+>=20
+> There's nothing odd about having a lonely .set_parent callback; in my case
+> the clocks are parented from the device tree.
+>=20
+> Having the clocks driver trigger a parent change when requesting a rate
+> change sounds very dangerous, IMHO. My MMC controller can be parented to =
+the
+> external 48 MHz oscillator, and if the card requests 50 MHz, it could swi=
+tch
+> to one of the PLLs. That works as long as the PLLs don't change rate, but=
+ if
+> one is configured as driving the CPU clock, it becomes messy.
+> The thing is, the clocks driver has no way to know whether or not it is
+> "safe" to use a designated parent.
+>=20
+> For that reason, in practice, I never actually want to have a clock
+> re-parented - it's almost always a bad idea vs. sticking to the parent cl=
+ock
+> configured in the DTS.
+
+Yeah, and this is totally fine. But we need to be explicit about it. The
+determine_rate implementation I did in all the patches is an exact
+equivalent to the round_rate one if there was one. We will never ask to
+change the parent.
+
+Given what you just said, I would suggest to set the
+CLK_SET_RATE_NO_REPARENT flag as well.
+
+>=20
+> > Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+> > ---
+> >  drivers/clk/ingenic/cgu.c | 15 ++++++++-------
+> >  1 file changed, 8 insertions(+), 7 deletions(-)
+> >=20
+> > diff --git a/drivers/clk/ingenic/cgu.c b/drivers/clk/ingenic/cgu.c
+> > index 1f7ba30f5a1b..0c9c8344ad11 100644
+> > --- a/drivers/clk/ingenic/cgu.c
+> > +++ b/drivers/clk/ingenic/cgu.c
+> > @@ -491,22 +491,23 @@ ingenic_clk_calc_div(struct clk_hw *hw,
+> >  	return div;
+> >  }
+> >=20
+> > -static long
+> > -ingenic_clk_round_rate(struct clk_hw *hw, unsigned long req_rate,
+> > -		       unsigned long *parent_rate)
+> > +static int ingenic_clk_determine_rate(struct clk_hw *hw,
+> > +				      struct clk_rate_request *req)
+> >  {
+> >  	struct ingenic_clk *ingenic_clk =3D to_ingenic_clk(hw);
+> >  	const struct ingenic_cgu_clk_info *clk_info =3D
+> > to_clk_info(ingenic_clk);
+> >  	unsigned int div =3D 1;
+> >=20
+> >  	if (clk_info->type & CGU_CLK_DIV)
+> > -		div =3D ingenic_clk_calc_div(hw, clk_info, *parent_rate, req_rate);
+> > +		div =3D ingenic_clk_calc_div(hw, clk_info, req->best_parent_rate,
+> > +					   req->rate);
+>=20
+> Sorry but I'm not sure that this works.
+>=20
+> You replace the "parent_rate" with the "best_parent_rate", and that means
+> you only check the requested rate vs. the parent with the highest frequen=
+cy,
+> and not vs. the actual parent that will be used.
+
+best_parent_rate is initialized to the current parent rate, not the
+parent with the highest frequency:
+https://elixir.bootlin.com/linux/v6.1-rc3/source/drivers/clk/clk.c#L1471
+
+Maxime
+
+--qzlwgqpxalgoto6y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY2Uo4gAKCRDj7w1vZxhR
+xdiNAPwMWogS8hbvxJqI1oGt6bgt9c110SCyrRmWXmJGBnFUHAD/WYzk5xWPvpPl
+ZxQGNyyIgpdw3paEkkzKgvc0ede/vwU=
+=GVUt
+-----END PGP SIGNATURE-----
+
+--qzlwgqpxalgoto6y--
 
