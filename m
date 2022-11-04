@@ -4,164 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BF4C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 07:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43509C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 08:31:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3c9wWiN+8oMqh21/U9FOVfxVsElK+x3UlRx95555E1I=; b=a3FpRjtG8BsGGWImiXSdaMOb0d
-	v2pcx9VH7okEKiTOuu+R2wmv5M3vLX2vYe4oxKed/HX7L0nLe08usCVWyvAfHBZuCzIvTSsDjKZC7
-	Hl/0iXPtWq6P7IaZD97Q1/vt8mcxctvO08X6k7QNNP7hGpukYJhP7TlWIpwJ5+ydGGeIE1YIKsiCU
-	8k6SL2j71LLmBiRk7Joomdiz/h5VO1ReWh0UJRHryGdvNGfVGb3wT8Tudwv73i/4k4WbD71hX2iwS
-	mdHI+AaymeZN1bTNQXplsye6cVpe+ypcllMRdh0dAjR3e+R9mJVODsk8Fvv1Z6ah4+l50tnIIoeet
-	4168E7bw==;
+	bh=OiuZsnWB3saqVM2W8w1HufJbIPNO8v1X/CZ9SOG+w/k=; b=GNzFbrHvDOEmoWRbLKiTLc/nHJ
+	3ZvUKmMH8Qnde3jtcndcZSUzElQSv76q6TRqQPswuUVTgcYxjIp+fncLo0w/XkmkQ7+U683zVeXxS
+	E7lkRYp/WHiTpNwA6GwfCourQVRXzSTkEcOc4vkzpIqecDKWJgs0E/QVGy/vED98FfySUN7w/nj//
+	R3Pm/ndrP5iGY/B9KHcWV6bRSpD4fu/ETvQIgNnT8Sy8ox+3g1opYh1am5FNKIDDYClDmVMzhJfg2
+	WHXaSWK9QM8ygIh1RYV7jB+PPncQNz1US7v0ndvp01Z73013LYtCKaVE9Xk+65kxV7w1Hz7nVyG0H
+	X/MEBdCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqrWl-002p0C-In; Fri, 04 Nov 2022 07:54:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oqs6E-002xqO-AW; Fri, 04 Nov 2022 08:30:50 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqrWa-002oyv-55; Fri, 04 Nov 2022 07:54:01 +0000
-X-UUID: 1e7c076c77f04e0eae18037968c584af-20221104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=3c9wWiN+8oMqh21/U9FOVfxVsElK+x3UlRx95555E1I=;
-	b=GjO4T+B/MSrS+3meqR2zOx97VkwM22GgF0rwJNNHfYDiDGVdxuqi6xpzDLG2kQrDsLLF2uKZWef+KazFZN94MFOvbwPxJTN68RsdLp3Bah7CVyTnHqeTx6HLBauhD3LA5WHkvrDYuCZd/oq4Tn8jRoTYyHgeHjcpAA2iADjuO+M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:c01c2f59-0f64-4f5e-ab11-879a378d896e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:fbec9590-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1e7c076c77f04e0eae18037968c584af-20221104
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <bayi.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 443899489; Fri, 04 Nov 2022 00:53:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 4 Nov 2022 15:53:24 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 4 Nov 2022 15:53:24 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eF6SRoekHKEC7T7YQFHU5LU44NzW10A3nZ2x84Qqg/Jegh0e70l5tNoLh++5UX3aR0jLdVseUeqr2hiJ8A0UxJNH+iH6enmd1b9XRyHU87aWjXKmBc4m09IGRXJ5XII88Y3yrwg/L6HTdGamYI2dkbbMcb7iVRDfLd+zBAk3vqpIc4iAexwnfLJBnLZgBHU6ynQ/KZinlJoFO9xIZsn4LPkUC9lpV8q+P7DU2fdbaP9OLt3bjJZnyhV8Fskwt3EEaHic6hRZOysN2I71R+Go0RgqyRS9YHd7OsI2SikLDQ9okBSbfY1W1nI/Q/o9c8XP3nzUCtX6Su0XfLQMqoPPlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3c9wWiN+8oMqh21/U9FOVfxVsElK+x3UlRx95555E1I=;
- b=iMUlGz3JKTOPzDmklL1b5fTMXW5uJlRQvnKkSGji1o+JT5rGvYfcP/0289vg2vzk7VjV1cbqcI3o6ZfMThYfrjwFwemqYFjIR2SBcTVPPXvjwEp7kzlvlC/jZwYySdwK8dd+RJXcOQVPTUcqGSeb05z++c9HttWthG8G1QM00m71SZV0DMwYguGSVMybaGry0H+JXQcXyA5vspCaZTzWZ4v9YtaRvtv1ieSzFYuBasFEC5nbN3xh7U/nnxf+wWWVSi/sodGmPUVezAxun3mmW+4yV+YHlM2WkffBW1RMxAQg1l8HGGVCnufSLnro7jiR5ueBEbKnrsUa6pUitIeylQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3c9wWiN+8oMqh21/U9FOVfxVsElK+x3UlRx95555E1I=;
- b=XfTDNMdfJF220wJl9ruIOVBBW8Nt0TiKLNEAHngfP+Um+f7kLi9YT4K+IoVPmxhd/tx8zCdCfG1ZkZ39+XL+qMv4njFc0VsdTYIueYQHBJNEFivslVS8C+CG+DPNci2HJ4pbUVWnyEIvfjoSA0b/qu22luhlVHg1TWcVkR+QF7E=
-Received: from PS1PR03MB4747.apcprd03.prod.outlook.com (2603:1096:300:86::18)
- by KL1PR03MB5636.apcprd03.prod.outlook.com (2603:1096:820:54::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.22; Fri, 4 Nov
- 2022 07:53:22 +0000
-Received: from PS1PR03MB4747.apcprd03.prod.outlook.com
- ([fe80::b0f2:a34a:b2b4:3eef]) by PS1PR03MB4747.apcprd03.prod.outlook.com
- ([fe80::b0f2:a34a:b2b4:3eef%7]) with mapi id 15.20.5791.009; Fri, 4 Nov 2022
- 07:53:21 +0000
-From: =?utf-8?B?QmF5aSBDaGVuZyAo56iL5YWr5oSPKQ==?= <bayi.cheng@mediatek.com>
-To: "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "David.Laight@ACULAB.COM"
-	<David.Laight@ACULAB.COM>, "broonie@kernel.org" <broonie@kernel.org>
-CC: "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "gch981213@gmail.com" <gch981213@gmail.com>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
-Thread-Topic: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
-Thread-Index: AQHY70U3L+QgZhq720C1cLpB3c3zja4s8viAgADXjICAAJv0AA==
-Date: Fri, 4 Nov 2022 07:53:21 +0000
-Message-ID: <617c0b563a2602668fde7d96e1bc98648870d30c.camel@mediatek.com>
-References: <20221103052843.2025-1-bayi.cheng@mediatek.com>
-	 <20221103052843.2025-2-bayi.cheng@mediatek.com>
-	 <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
-	 <c612cc0eb4fc463a9bfd9094ff652ac9@AcuMS.aculab.com>
-In-Reply-To: <c612cc0eb4fc463a9bfd9094ff652ac9@AcuMS.aculab.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PS1PR03MB4747:EE_|KL1PR03MB5636:EE_
-x-ms-office365-filtering-correlation-id: 96ac8207-4fb4-4f88-8478-08dabe39a51e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: eAdZY1iTf1nsXuG4hVC83qFjJ/jKlOkaF3bQCjb9XEtaJopcjR7UViVuSaifyrFIMyBTztxFPAiVBRT5htzvgdFaHBgCIV4uA3QGhg1RuZwOfovKh0seCPwDrV443Q9g8zKpmguplbZwq1EKlgYslvtjcDNsALcpw6S7cu2skRKb2fYLcSjrmA/lmLVp6Vp+IXHC8O9xcmjQISVkVsbYJXj9A0AL13gxb+kjEXdWzEGxUk7G6JxgKU+oyO5vqCaTlLE/JyLw9KjyL2B0iuLtK1t2+FOo1Zeh/WC1ASZwK/wbEDpVfhml0oq9cBwe27sap3h49kZyVi3HG761kWFVHfpYJCCX5xWMpKqacPZfKVhoYY/x6TSY9IH4KbNBw79LDOM+m1nMDgEMj3/krtkam07MpLchmC4p/G7w+789gGAJ8SJa79mjBVvcBUnyX15Z4WU1wymoqHT1yXebKFfeQZ+NSzAro3WWIPexIW15Z4lMy/iXnmIgWFgz6lFgiwO3mnadMZwm5SNEqkhSqkA7yia01YyLUoF/wJTgAY9X1gKoDjadsUe6TPO+ZnRDlEWOdbHt1I57jTntP0X4GxURuVc1tCLQJ96Jv0Y/eSa8nglkV3wWRy9VsY/DsX/jqREAt0+IZMDFWCuq0qSLbEghDC6FM4C3cRbrSTWcas56ySIC+M+tMD1QRG9lIkM0nUl9BHc8hRsJYq+yDBy7UxKySZ4kfVrqGNBAiZAs1qiCBPm02oefgQ7/GVcXGM2D1NeFf9R6CBxXbuyh+pOrjzlUQ8gkxi9cWbpm77I5F9Qh8N8=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PS1PR03MB4747.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(376002)(136003)(396003)(39860400002)(366004)(451199015)(76116006)(64756008)(6506007)(66476007)(6512007)(4326008)(66556008)(66946007)(85182001)(66446008)(91956017)(36756003)(2906002)(6486002)(83380400001)(38100700002)(107886003)(26005)(122000001)(86362001)(8676002)(478600001)(71200400001)(54906003)(316002)(186003)(110136005)(8936002)(38070700005)(5660300002)(41300700001)(2616005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?b0swU2RWcTZmUC9weGFvQitIOXZXL1EwRiszSHNSZHNnSmRNS3NtNitjaXRy?=
- =?utf-8?B?TDFHOE5rcGptZVUxU2pTL1ZUaHphYnNVaTJpeWs4eGRXckxkUDQxQmV3bUNQ?=
- =?utf-8?B?YitpSDYxYzRxOGxCcmwxSkdSZS95UWRyNDZFS3BlZnZMNUd3cG5OMkFnQXJH?=
- =?utf-8?B?MUErWHNKYnVnUVlwcEJaaFVYUDZaRi94eUxsZS9KaEZZa25iYnM3TGQ3WVFS?=
- =?utf-8?B?Y0hKQjc3RDAzYmtFY2JmRTc1M2ZZTXdvWUg4cTJENEI0SDN2Zk5UK0o5OG1Q?=
- =?utf-8?B?ZDdacHdaZERBb3hIUExDYlk3N2cwNnRaWk5tWHp4TE94eXVpN1BscnlZNG1s?=
- =?utf-8?B?dE5XeHo5QzdpUFJCWUZDenJYZ05xK21aU2Z6UDNJMUNzQ2VwWUZJYUZLVzJx?=
- =?utf-8?B?SlNSb0djemFCMzZCQWJSaHFzUERHdnlmbk9jQ0FOQWhaQzJublNkU0lGK0JO?=
- =?utf-8?B?TkRiWkQySTBhVE5lVUdDNlErUWpmemR1SGVTbUU5UGVHNm8vc3VTM3pZblFs?=
- =?utf-8?B?aEhpdWJtTTZhUjhtVy8zalo0dTBUN3Z5bVN6VlNJdWJDZUNYdlgwRGlhcU9D?=
- =?utf-8?B?NUlEZ0YrN3VXZ0VrNTNRdkRIYUEydnBPV3JRc0k1SWRXOHFHWndIaDMzMlkx?=
- =?utf-8?B?R3ZWS3BMSDdQVG9UR3kxSVF3ek5WaSs3L3hLZUZ5ZU02YmtaRHJyMlFaS0Jy?=
- =?utf-8?B?QWllZnYwbkR5QXJIQ251amMxUTRnS2JvL3EvMXV0UHJWRTNoZWFQcXF3WEZw?=
- =?utf-8?B?ZEt5NkIzNTEzOEdGaEVXUWZBWkczOFhoWFB2RjlaSlloc28vNjVEOVMxUXBq?=
- =?utf-8?B?cEtPTTZMYXErOTBXa0tZMHl1bjFNYUZtVTMydWx6TmRvNnlnb29aT3NRRUor?=
- =?utf-8?B?WmN0VE8xSzN2TG1rYW9BTlBJbFZEcGc0VlpTQ3RwSUxLUk8wdmZCbFRMbmlm?=
- =?utf-8?B?Z3JYdHBSb0VMTnJCNE9VUTRWRkR5YmRWYnlHVFJ1bXhGMWJaUzJ6WXFwQU10?=
- =?utf-8?B?SGZRdFZxMnFJS1dZZ0ZQSGEyYVgzL2xVK2I5T1pieEZ1OUtUZHczeVlWWlUv?=
- =?utf-8?B?Wm1YRzVWNXkxUC93amRndDlIVTBNWWovWkFyZ0oyMTl4YjhJZ05QajQreGNF?=
- =?utf-8?B?VEtQdHZISGZTSjhoOEIrTGtjbDhDNWJrN2ZkaDRxVkFjb1FXazMrNERtbVN6?=
- =?utf-8?B?bVRrRE5uTGVjTm5xL1hGRGtLSngwbGJ0NmtIZVlKUjNkYWhSek9TTW04eDY0?=
- =?utf-8?B?em54Z2IwaWFsWExTTE5uRE1tMWpVd2JvbkxvdGtNU2VuNTZpeVZkU0NmT2x6?=
- =?utf-8?B?UnF4ZEZIMnJVRGkzSWRPdWhLYUxGdUNITUZPOFFYQWZiam0vY2t5ckMxZ3gx?=
- =?utf-8?B?d2VueHNFenNoODhYNWREVzBsUjd6UzFnQ1dUaDRDb2xNVWFhWkdqMHRLNDE1?=
- =?utf-8?B?MENSV1U1dVBld0ZNeUN0US9VRWhYUWdHQmRRZTN1eEV5VTRJRGRqSUVzOERS?=
- =?utf-8?B?bm5KcjJ0bkZmcGFOOGwvcWN1RU11UHByZlNjY0NXQ3NiK3pqY1JzbzVWN2RC?=
- =?utf-8?B?aC9OMjZhN3QzdEQ3dlBzSkxWSXJpRm9qYithc3RsQnR6aTZKTnU4bC93RXhq?=
- =?utf-8?B?RVArT01QUTlJcXREWW9sQ1NrM2VxOUpZTVgzTnJ5ZDFFNG55d1FXNnJTOUxB?=
- =?utf-8?B?TmZ1WUxZRkZrbk9YRUlWcklzRUo5M3ZrV09aMTNnNTZUYVVLWFBYSUgxajZ2?=
- =?utf-8?B?MVBxcFFoUTE2MFlVTVFnbGM1aTVIY2QwNlBZdmp0bHZaMU9sdjcwYzJXa3du?=
- =?utf-8?B?K2hBV0VpQmxJNU5lVmtSOU0xOVp1N2JFOFlVWWxvRlh3dFFhKzUyTjNzeGtx?=
- =?utf-8?B?S0hEYVM1VHgxYkxmV0VXUEVtZklpN2lRZkNsN1VKTmVDTmE0azVIWVo3NkRx?=
- =?utf-8?B?bzhvKzFVZ2FNaWtKS3VNS2lyN1VMY0h2d0dhWE9IcXdyTlRJbWJ2WThMeWhZ?=
- =?utf-8?B?V001UFdrMWJCd2Mzb3ZpMVMwcFhjWFFqejRnWjJlR2NGQnpxNkFnYWFRbWFH?=
- =?utf-8?B?WlViRFdqekdFSUtETUY5SWxnd0VlUTI1YlBVU29aRTN6YkUxODNFYnRmaHZI?=
- =?utf-8?B?VmJncG1rZmw2K1EzcXhSMnllSHJrcDdNejc4UTlVaEl2ZUl4SEVZcUoyTnY5?=
- =?utf-8?B?U2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E774C3377A46ED4388F7008CEE14AC97@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1oqs69-002xo7-N1
+	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 08:30:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2FDADB82B45;
+	Fri,  4 Nov 2022 08:30:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AAB3C433D6;
+	Fri,  4 Nov 2022 08:30:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667550639;
+	bh=WIUTKBxwy/bzKaF26xR92fZ5f2WaPf18vEmhzh/HNwM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=q9QLBS1BDlwzJjibwmEleUhyv//E8vdFqEwgmHEBt/qR607nFIbmjT0p6XmNj31fY
+	 t45XFoJbRYUsO1prb+4UPkl8+ej0d1mN2RVb7334o4cw0S80zxPTsLC4Gs993CY5kg
+	 itS5HkS6RHDzkF2EXu8w7spxZkVN3hUBMOugZb3+GBV5kMMoM9DQlfqczLT2TKwrof
+	 LXHhvR9/IXfQfQKb4udvWQyi2ZNM83FlhrcAvb5sX9r5qunj0tbqTI8FzgsjhDjPBw
+	 eN6SXq0Y3keBRVwT/CXhJ6OIXhCuwcfUdRgizXg4a2NsKjyBwlugl8bdo10hnaA+sy
+	 IEPCFXg1bZM6g==
+Date: Fri, 4 Nov 2022 09:30:36 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org
+Subject: Re: [PATCH v3 net-next 3/8] net: ethernet: mtk_wed: introduce wed
+ mcu support
+Message-ID: <Y2TNrF610zJUt4vr@lore-desk>
+References: <cover.1667466887.git.lorenzo@kernel.org>
+ <01c82e3783373e04b609d60075ef7ecf71d0d24d.1667466887.git.lorenzo@kernel.org>
+ <Y2R6A68BY6GuMt+f@makrotopia.org>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PS1PR03MB4747.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 96ac8207-4fb4-4f88-8478-08dabe39a51e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2022 07:53:21.8375
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IIf3nFfa/Z7UuCIikoP3fDZXbpbs4PoLHn8faT2LnxZ6cSZD/Fl5mfuPPoIT6rIQJjmKIazKRUTvtnBnvEbDEw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB5636
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="VKqrjdcuJRZc+ap5"
+Content-Disposition: inline
+In-Reply-To: <Y2R6A68BY6GuMt+f@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_005400_230353_2A062C31 
-X-CRM114-Status: GOOD (  33.35  )
+X-CRM114-CacheID: sfid-20221104_013046_104666_6E6A8875 
+X-CRM114-Status: GOOD (  34.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,63 +82,681 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTExLTAzIGF0IDIyOjM1ICswMDAwLCBEYXZpZCBMYWlnaHQgd3JvdGU6DQo+
-IEZyb206IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vDQo+ID4gU2VudDogMDMgTm92ZW1iZXIg
-MjAyMiAwOTo0NA0KPiA+IA0KPiA+IElsIDAzLzExLzIyIDA2OjI4LCBCYXlpIENoZW5nIGhhIHNj
-cml0dG86DQo+ID4gPiBGcm9tOiBiYXlpIGNoZW5nIDxiYXlpLmNoZW5nQG1lZGlhdGVrLmNvbT4N
-Cj4gPiA+IA0KPiA+ID4gVGhlIHRpbWVvdXQgdmFsdWUgb2YgdGhlIGN1cnJlbnQgZG1hIHJlYWQg
-aXMgdW5yZWFzb25hYmxlLiBGb3INCj4gPiA+IGV4YW1wbGUsDQo+ID4gPiBJZiB0aGUgc3BpIGZs
-YXNoIGNsb2NrIGlzIDI2TWh6LCBJdCB3aWxsIHRha2VzIGFib3V0IDEuM21zIHRvDQo+ID4gPiBy
-ZWFkIGENCj4gPiA+IDRLQiBkYXRhIGluIHNwaSBtb2RlLiBCdXQgdGhlIGFjdHVhbCBtZWFzdXJl
-bWVudCBleGNlZWRzIDUwcyB3aGVuDQo+ID4gPiBhDQo+ID4gPiBkbWEgcmVhZCB0aW1lb3V0IGlz
-IGVuY291bnRlcmVkLg0KPiA+ID4gDQo+ID4gPiBJbiBvcmRlciB0byBiZSBtb3JlIGFjY3VyYXRl
-bHksIEl0IGlzIG5lY2Vzc2FyeSB0byB1c2UNCj4gPiA+IG1zZWNzX3RvX2ppZmZpZXMsDQo+ID4g
-PiBBZnRlciBtb2RpZmljYXRpb24sIHRoZSBtZWFzdXJlZCB0aW1lb3V0IHZhbHVlIGlzIGFib3V0
-IDEzMG1zLg0KPiA+ID4gDQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBiYXlpIGNoZW5nIDxiYXlpLmNo
-ZW5nQG1lZGlhdGVrLmNvbT4NCj4gPiA+IC0tLQ0KPiA+ID4gICBkcml2ZXJzL3NwaS9zcGktbXRr
-LW5vci5jIHwgNyArKysrLS0tDQo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMo
-KyksIDMgZGVsZXRpb25zKC0pDQo+ID4gPiANCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3Nw
-aS9zcGktbXRrLW5vci5jIGIvZHJpdmVycy9zcGkvc3BpLW10ay0NCj4gPiA+IG5vci5jDQo+ID4g
-PiBpbmRleCBkMTY3Njk5YTFhOTYuLjNkOTg5ZGI4MGVlOSAxMDA2NDQNCj4gPiA+IC0tLSBhL2Ry
-aXZlcnMvc3BpL3NwaS1tdGstbm9yLmMNCj4gPiA+ICsrKyBiL2RyaXZlcnMvc3BpL3NwaS1tdGst
-bm9yLmMNCj4gPiA+IEBAIC0zNTQsNyArMzU0LDcgQEAgc3RhdGljIGludCBtdGtfbm9yX2RtYV9l
-eGVjKHN0cnVjdCBtdGtfbm9yDQo+ID4gPiAqc3AsIHUzMiBmcm9tLCB1bnNpZ25lZCBpbnQgbGVu
-Z3RoLA0KPiA+ID4gICAJCQkgICAgZG1hX2FkZHJfdCBkbWFfYWRkcikNCj4gPiA+ICAgew0KPiA+
-ID4gICAJaW50IHJldCA9IDA7DQo+ID4gPiAtCXVsb25nIGRlbGF5Ow0KPiA+ID4gKwl1bG9uZyBk
-ZWxheSwgdGltZW91dDsNCj4gPiA+ICAgCXUzMiByZWc7DQo+ID4gPiANCj4gPiA+ICAgCXdyaXRl
-bChmcm9tLCBzcC0+YmFzZSArIE1US19OT1JfUkVHX0RNQV9GQURSKTsNCj4gPiA+IEBAIC0zNzYs
-MTUgKzM3NiwxNiBAQCBzdGF0aWMgaW50IG10a19ub3JfZG1hX2V4ZWMoc3RydWN0IG10a19ub3IN
-Cj4gPiA+ICpzcCwgdTMyIGZyb20sIHVuc2lnbmVkIGludCBsZW5ndGgsDQo+ID4gPiAgIAltdGtf
-bm9yX3JtdyhzcCwgTVRLX05PUl9SRUdfRE1BX0NUTCwgTVRLX05PUl9ETUFfU1RBUlQsDQo+ID4g
-PiAwKTsNCj4gPiA+IA0KPiA+ID4gICAJZGVsYXkgPSBDTEtfVE9fVVMoc3AsIChsZW5ndGggKyA1
-KSAqIEJJVFNfUEVSX0JZVEUpOw0KPiA+ID4gKwl0aW1lb3V0ID0gKGRlbGF5ICsgMSkgKiAxMDA7
-DQo+ID4gPiANCj4gPiA+ICAgCWlmIChzcC0+aGFzX2lycSkgew0KPiA+ID4gICAJCWlmICghd2Fp
-dF9mb3JfY29tcGxldGlvbl90aW1lb3V0KCZzcC0+b3BfZG9uZSwNCj4gPiA+IC0JCQkJCQkgKGRl
-bGF5ICsgMSkgKiAxMDApKQ0KPiA+ID4gKwkJICAgIG1zZWNzX3RvX2ppZmZpZXMobWF4X3Qoc2l6
-ZV90LCB0aW1lb3V0IC8gMTAwMCwNCj4gPiA+IDEwKSkpKQ0KPiA+IA0KPiA+IFlvdSdyZSBnaXZp
-bmcgYSBgc2l6ZV90YCB2YXJpYWJsZSB0byBtc2Vjc190b19qaWZmaWVzKCksIGJ1dA0KPiA+IGNo
-ZWNraW5nIGBqaWZmaWVzLmhgLA0KPiA+IHRoaXMgZnVuY3Rpb24gdGFrZXMgYSBgY29uc3QgdW5z
-aWduZWQgaW50YCBwYXJhbS4NCj4gPiBQbGVhc2UgY2hhbmdlIHRoZSB0eXBlIHRvIG1hdGNoIHRo
-YXQuDQo+IA0KPiBUaGUgdHlwZSBzaG91bGRuJ3QgbWF0dGVyIGF0IGFsbC4NCj4gV2hhdCBtYXR0
-ZXJzIGlzIHRoZSBkb21haW4gb2YgdGhlIHZhbHVlLg0KPiANCj4gUXVpdGUgd2h5IHlvdSBuZWVk
-IHRvIHVzZSBtYXhfdChzaXplX3QsIC4uLikgaXMgYW5vdGhlciBtYXR0ZXIuDQo+IHRpbWVvdXQg
-aXMgdWxvbmcgc28gbWF4KHRpbWVvdXQvMTAwMCwgMTB1bCkgc2hvdWxkIGJlIGZpbmUuDQo+IA0K
-PiBCdXQgaXMgdWxvbmcgZXZlbiByaWdodD8NCj4gVGhlIGRvbWFpbiBvZiB0aGUgdmFsdWUgaXMg
-YWxtb3N0IGNlcnRhaW5seSB0aGUgc2FtZSBvbiAzMmJpdCBhbmQNCj4gNjRiaXQuDQo+IFNvIHlv
-dSBhbG1vc3QgY2VydGFpbmx5IG5lZWQgdTMyIG9yIHU2NC4NCj4gDQo+IAlEYXZpZA0KPiANCkhp
-IERhdmlkICYgQW5nZWxvDQoNClRoYW5rIHlvdSBmb3IgeW91ciBjb21tZW50cyENClRvIHN1bSB1
-cCwgSSB0aGluayB0aGUgbmV4dCB2ZXJzaW9uIHdpbGwgbWFrZSB0aGUgZm9sbG93aW5nIHR3bw0K
-Y2hhbmdlczoNCjEsIFRoZSB0aW1lb3V0IHZhbHVlIHdpbGwgbm90IGV4Y2VlZCB1MzIsIHNvIHRo
-ZSB0eXBlIG9mIHRpbWVvdXQgd2lsbA0KYmUgY2hhbmdlZCBmcm9tIHVsb25nIHRvIHUzMi4NCjIs
-IENoYW5nZSBtc2Vjc190b19qaWZmaWVzKG1heF90KHNpemVfdCwgdGltZW91dCAvIDEwMDAsIDEw
-KSkgdG8gYmUNCm1zZWNzX3RvX2ppZmZpZXMobWF4KHRpbWVvdXQvMTAwMCwgMTB1bCkpLg0KDQpJ
-ZiB5b3UgdGhpbmsgdGhlc2UgY2hhbmdlcyBhcmUgbm90IGVub3VnaCwgcGxlYXNlIGxldCBtZSBr
-bm93LCBUaGFua3PvvIENCg0KQmVzdCBSZWdhcmRzLA0KQmF5aQ0KDQo+ID4gDQo+ID4gQXNpZGUg
-ZnJvbSB0aGF0LCB5b3VyIGB0aW1lb3V0YCB2YXJpYWJsZSBjb250YWlucyBhIHRpbWVvdXQgaW4N
-Cj4gPiBtaWNyb3NlY29uZHMgYW5kDQo+ID4gdGhpcyBtZWFucyB0aGF0IGFjdHVhbGx5IHVzaW5n
-IG1zZWNzX3RvX2ppZmZpZXMoKSBpcyBzdWJvcHRpbWFsDQo+ID4gaGVyZS4NCj4gPiANCj4gPiBQ
-bGVhc2UgdXNlIHVzZWNzX3RvX2ppZmZpZXMoKSBpbnN0ZWFkLg0KPiA+IA0KPiA+IFJlZ2FyZHMs
-DQo+ID4gQW5nZWxvDQo+IA0KPiAtDQo+IFJlZ2lzdGVyZWQgQWRkcmVzcyBMYWtlc2lkZSwgQnJh
-bWxleSBSb2FkLCBNb3VudCBGYXJtLCBNaWx0b24gS2V5bmVzLA0KPiBNSzEgMVBULCBVSw0KPiBS
-ZWdpc3RyYXRpb24gTm86IDEzOTczODYgKFdhbGVzKQ0K
+
+--VKqrjdcuJRZc+ap5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Hi Lorenzo,
+
+Hi Daniel,
+
+>=20
+> I found a potential typo in the print output during probe.
+> See below.
+>=20
+> On Thu, Nov 03, 2022 at 10:28:02AM +0100, Lorenzo Bianconi wrote:
+> > From: Sujuan Chen <sujuan.chen@mediatek.com>
+> >=20
+> > Introduce WED mcu support used to configure WED WO chip.
+> > This is a preliminary patch in order to add RX Wireless
+> > Ethernet Dispatch available on MT7986 SoC.
+> >=20
+> > Tested-by: Daniel Golle <daniel@makrotopia.org>
+> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> > ---
+> >  drivers/net/ethernet/mediatek/Makefile       |   2 +-
+> >  drivers/net/ethernet/mediatek/mtk_wed_mcu.c  | 364 +++++++++++++++++++
+> >  drivers/net/ethernet/mediatek/mtk_wed_regs.h |   1 +
+> >  drivers/net/ethernet/mediatek/mtk_wed_wo.h   | 152 ++++++++
+> >  include/linux/soc/mediatek/mtk_wed.h         |  29 ++
+> >  5 files changed, 547 insertions(+), 1 deletion(-)
+> >  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> >  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
+> >=20
+> > diff --git a/drivers/net/ethernet/mediatek/Makefile b/drivers/net/ether=
+net/mediatek/Makefile
+> > index 45ba0970504a..d4bdefa77159 100644
+> > --- a/drivers/net/ethernet/mediatek/Makefile
+> > +++ b/drivers/net/ethernet/mediatek/Makefile
+> > @@ -5,7 +5,7 @@
+> > =20
+> >  obj-$(CONFIG_NET_MEDIATEK_SOC) +=3D mtk_eth.o
+> >  mtk_eth-y :=3D mtk_eth_soc.o mtk_sgmii.o mtk_eth_path.o mtk_ppe.o mtk_=
+ppe_debugfs.o mtk_ppe_offload.o
+> > -mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed.o
+> > +mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed.o mtk_wed_mcu.o
+> >  ifdef CONFIG_DEBUG_FS
+> >  mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed_debugfs.o
+> >  endif
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/=
+ethernet/mediatek/mtk_wed_mcu.c
+> > new file mode 100644
+> > index 000000000000..20987eecfb52
+> > --- /dev/null
+> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> > @@ -0,0 +1,364 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/* Copyright (C) 2022 MediaTek Inc.
+> > + *
+> > + * Author: Lorenzo Bianconi <lorenzo@kernel.org>
+> > + *	   Sujuan Chen <sujuan.chen@mediatek.com>
+> > + */
+> > +
+> > +#include <linux/firmware.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_reserved_mem.h>
+> > +#include <linux/mfd/syscon.h>
+> > +#include <linux/soc/mediatek/mtk_wed.h>
+> > +
+> > +#include "mtk_wed_regs.h"
+> > +#include "mtk_wed_wo.h"
+> > +#include "mtk_wed.h"
+> > +
+> > +static u32 wo_r32(struct mtk_wed_wo *wo, u32 reg)
+> > +{
+> > +	u32 val;
+> > +
+> > +	if (regmap_read(wo->boot, reg, &val))
+> > +		val =3D ~0;
+> > +
+> > +	return val;
+> > +}
+> > +
+> > +static void wo_w32(struct mtk_wed_wo *wo, u32 reg, u32 val)
+> > +{
+> > +	regmap_write(wo->boot, reg, val);
+> > +}
+> > +
+> > +static struct sk_buff *
+> > +mtk_wed_mcu_msg_alloc(const void *data, int data_len)
+> > +{
+> > +	int length =3D sizeof(struct mtk_wed_mcu_hdr) + data_len;
+> > +	struct sk_buff *skb;
+> > +
+> > +	skb =3D alloc_skb(length, GFP_KERNEL);
+> > +	if (!skb)
+> > +		return NULL;
+> > +
+> > +	memset(skb->head, 0, length);
+> > +	skb_reserve(skb, sizeof(struct mtk_wed_mcu_hdr));
+> > +	if (data && data_len)
+> > +		skb_put_data(skb, data, data_len);
+> > +
+> > +	return skb;
+> > +}
+> > +
+> > +static struct sk_buff *
+> > +mtk_wed_mcu_get_response(struct mtk_wed_wo *wo, unsigned long expires)
+> > +{
+> > +	if (!time_is_after_jiffies(expires))
+> > +		return NULL;
+> > +
+> > +	wait_event_timeout(wo->mcu.wait, !skb_queue_empty(&wo->mcu.res_q),
+> > +			   expires - jiffies);
+> > +	return skb_dequeue(&wo->mcu.res_q);
+> > +}
+> > +
+> > +void mtk_wed_mcu_rx_event(struct mtk_wed_wo *wo, struct sk_buff *skb)
+> > +{
+> > +	skb_queue_tail(&wo->mcu.res_q, skb);
+> > +	wake_up(&wo->mcu.wait);
+> > +}
+> > +
+> > +void mtk_wed_mcu_rx_unsolicited_event(struct mtk_wed_wo *wo,
+> > +				      struct sk_buff *skb)
+> > +{
+> > +	struct mtk_wed_mcu_hdr *hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
+> > +
+> > +	switch (hdr->cmd) {
+> > +	case MTK_WED_WO_EVT_LOG_DUMP: {
+> > +		const char *msg =3D (const char *)(skb->data + sizeof(*hdr));
+> > +
+> > +		dev_notice(wo->hw->dev, "%s\n", msg);
+> > +		break;
+> > +	}
+> > +	case MTK_WED_WO_EVT_PROFILING: {
+> > +		struct mtk_wed_wo_log_info *info;
+> > +		u32 count =3D (skb->len - sizeof(*hdr)) / sizeof(*info);
+> > +		int i;
+> > +
+> > +		info =3D (struct mtk_wed_wo_log_info *)(skb->data + sizeof(*hdr));
+> > +		for (i =3D 0 ; i < count ; i++)
+> > +			dev_notice(wo->hw->dev,
+> > +				   "SN:%u latency: total=3D%u, rro:%u, mod:%u\n",
+> > +				   le32_to_cpu(info[i].sn),
+> > +				   le32_to_cpu(info[i].total),
+> > +				   le32_to_cpu(info[i].rro),
+> > +				   le32_to_cpu(info[i].mod));
+> > +		break;
+> > +	}
+> > +	case MTK_WED_WO_EVT_RXCNT_INFO:
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	dev_kfree_skb(skb);
+> > +}
+> > +
+> > +static int
+> > +mtk_wed_mcu_skb_send_msg(struct mtk_wed_wo *wo, struct sk_buff *skb,
+> > +			 int id, int cmd, u16 *wait_seq, bool wait_resp)
+> > +{
+> > +	struct mtk_wed_mcu_hdr *hdr;
+> > +
+> > +	/* TODO: make it dynamic based on cmd */
+> > +	wo->mcu.timeout =3D 20 * HZ;
+> > +
+> > +	hdr =3D (struct mtk_wed_mcu_hdr *)skb_push(skb, sizeof(*hdr));
+> > +	hdr->cmd =3D cmd;
+> > +	hdr->length =3D cpu_to_le16(skb->len);
+> > +
+> > +	if (wait_resp && wait_seq) {
+> > +		u16 seq =3D ++wo->mcu.seq;
+> > +
+> > +		if (!seq)
+> > +			seq =3D ++wo->mcu.seq;
+> > +		*wait_seq =3D seq;
+> > +
+> > +		hdr->flag |=3D cpu_to_le16(MTK_WED_WARP_CMD_FLAG_NEED_RSP);
+> > +		hdr->seq =3D cpu_to_le16(seq);
+> > +	}
+> > +	if (id =3D=3D MTK_WED_MODULE_ID_WO)
+> > +		hdr->flag |=3D cpu_to_le16(MTK_WED_WARP_CMD_FLAG_FROM_TO_WO);
+> > +
+> > +	dev_kfree_skb(skb);
+> > +	return 0;
+> > +}
+> > +
+> > +static int
+> > +mtk_wed_mcu_parse_response(struct mtk_wed_wo *wo, struct sk_buff *skb,
+> > +			   int cmd, int seq)
+> > +{
+> > +	struct mtk_wed_mcu_hdr *hdr;
+> > +
+> > +	if (!skb) {
+> > +		dev_err(wo->hw->dev, "Message %08x (seq %d) timeout\n",
+> > +			cmd, seq);
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
+> > +	if (le16_to_cpu(hdr->seq) !=3D seq)
+> > +		return -EAGAIN;
+> > +
+> > +	skb_pull(skb, sizeof(*hdr));
+> > +	switch (cmd) {
+> > +	case MTK_WED_WO_CMD_RXCNT_INFO:
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
+> > +			 const void *data, int len, bool wait_resp)
+> > +{
+> > +	unsigned long expires;
+> > +	struct sk_buff *skb;
+> > +	u16 seq;
+> > +	int ret;
+> > +
+> > +	skb =3D mtk_wed_mcu_msg_alloc(data, len);
+> > +	if (!skb)
+> > +		return -ENOMEM;
+> > +
+> > +	mutex_lock(&wo->mcu.mutex);
+> > +
+> > +	ret =3D mtk_wed_mcu_skb_send_msg(wo, skb, id, cmd, &seq, wait_resp);
+> > +	if (ret || !wait_resp)
+> > +		goto unlock;
+> > +
+> > +	expires =3D jiffies + wo->mcu.timeout;
+> > +	do {
+> > +		skb =3D mtk_wed_mcu_get_response(wo, expires);
+> > +		ret =3D mtk_wed_mcu_parse_response(wo, skb, cmd, seq);
+> > +		dev_kfree_skb(skb);
+> > +	} while (ret =3D=3D -EAGAIN);
+> > +
+> > +unlock:
+> > +	mutex_unlock(&wo->mcu.mutex);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int
+> > +mtk_wed_get_memory_region(struct mtk_wed_wo *wo,
+> > +			  struct mtk_wed_wo_memory_region *region)
+> > +{
+> > +	struct reserved_mem *rmem;
+> > +	struct device_node *np;
+> > +	int index;
+> > +
+> > +	index =3D of_property_match_string(wo->hw->node, "memory-region-names=
+",
+> > +					 region->name);
+> > +	if (index < 0)
+> > +		return index;
+> > +
+> > +	np =3D of_parse_phandle(wo->hw->node, "memory-region", index);
+> > +	if (!np)
+> > +		return -ENODEV;
+> > +
+> > +	rmem =3D of_reserved_mem_lookup(np);
+> > +	of_node_put(np);
+> > +
+> > +	if (!rmem)
+> > +		return -ENODEV;
+> > +
+> > +	region->phy_addr =3D rmem->base;
+> > +	region->size =3D rmem->size;
+> > +	region->addr =3D devm_ioremap(wo->hw->dev, region->phy_addr, region->=
+size);
+> > +	if (!region->addr)
+> > +		return -EINVAL;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int
+> > +mtk_wed_mcu_run_firmware(struct mtk_wed_wo *wo, const struct firmware =
+*fw,
+> > +			 struct mtk_wed_wo_memory_region *region)
+> > +{
+> > +	const u8 *first_region_ptr, *region_ptr, *trailer_ptr, *ptr =3D fw->d=
+ata;
+> > +	const struct mtk_wed_fw_trailer *trailer;
+> > +	const struct mtk_wed_fw_region *fw_region;
+> > +
+> > +	trailer_ptr =3D fw->data + fw->size - sizeof(*trailer);
+> > +	trailer =3D (const struct mtk_wed_fw_trailer *)trailer_ptr;
+> > +	region_ptr =3D trailer_ptr - trailer->num_region * sizeof(*fw_region);
+> > +	first_region_ptr =3D region_ptr;
+> > +
+> > +	while (region_ptr < trailer_ptr) {
+> > +		u32 length;
+> > +
+> > +		fw_region =3D (const struct mtk_wed_fw_region *)region_ptr;
+> > +		length =3D le32_to_cpu(fw_region->len);
+> > +
+> > +		if (region->phy_addr !=3D le32_to_cpu(fw_region->addr))
+> > +			goto next;
+> > +
+> > +		if (region->size < length)
+> > +			goto next;
+> > +
+> > +		if (first_region_ptr < ptr + length)
+> > +			goto next;
+> > +
+> > +		if (region->shared && region->consumed)
+> > +			return 0;
+> > +
+> > +		if (!region->shared || !region->consumed) {
+> > +			memcpy_toio(region->addr, ptr, length);
+> > +			region->consumed =3D true;
+> > +			return 0;
+> > +		}
+> > +next:
+> > +		region_ptr +=3D sizeof(*fw_region);
+> > +		ptr +=3D length;
+> > +	}
+> > +
+> > +	return -EINVAL;
+> > +}
+> > +
+> > +static int
+> > +mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+> > +{
+> > +	static struct mtk_wed_wo_memory_region mem_region[] =3D {
+> > +		[MTK_WED_WO_REGION_EMI] =3D {
+> > +			.name =3D "wo-emi",
+> > +		},
+> > +		[MTK_WED_WO_REGION_ILM] =3D {
+> > +			.name =3D "wo-ilm",
+> > +		},
+> > +		[MTK_WED_WO_REGION_DATA] =3D {
+> > +			.name =3D "wo-data",
+> > +			.shared =3D true,
+> > +		},
+> > +	};
+> > +	const struct mtk_wed_fw_trailer *trailer;
+> > +	const struct firmware *fw;
+> > +	const char *fw_name;
+> > +	u32 val, boot_cr;
+> > +	int ret, i;
+> > +
+> > +	/* load firmware region metadata */
+> > +	for (i =3D 0; i < ARRAY_SIZE(mem_region); i++) {
+> > +		ret =3D mtk_wed_get_memory_region(wo, &mem_region[i]);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> > +
+> > +	wo->boot =3D syscon_regmap_lookup_by_phandle(wo->hw->node,
+> > +						   "mediatek,wo-boot");
+> > +	if (IS_ERR_OR_NULL(wo->boot))
+> > +		return PTR_ERR(wo->boot);
+> > +
+> > +	/* set dummy cr */
+> > +	wed_w32(wo->hw->wed_dev, MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL,
+> > +		wo->hw->index + 1);
+> > +
+> > +	/* load firmware */
+> > +	fw_name =3D wo->hw->index ? MT7986_FIRMWARE_WO1 : MT7986_FIRMWARE_WO0;
+> > +	ret =3D request_firmware(&fw, fw_name, wo->hw->dev);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	trailer =3D (void *)(fw->data + fw->size -
+> > +			   sizeof(struct mtk_wed_fw_trailer));
+> > +	dev_info(wo->hw->dev,
+> > +		 "MTK WED WO Firmware Version: %.10s, Build Time: %.15s\n",
+> > +		 trailer->fw_ver, trailer->build_date);
+> > +	dev_info(wo->hw->dev, "MTK WED WO Chid ID %02x Region %d\n",
+>=20
+> -Chid
+> +Chip
+> ?
+
+ack, I will fix it.
+
+Regards,
+Lorenzo
+
+>=20
+>=20
+> > +		 trailer->chip_id, trailer->num_region);
+> > +
+> > +	for (i =3D 0; i < ARRAY_SIZE(mem_region); i++) {
+> > +		ret =3D mtk_wed_mcu_run_firmware(wo, fw, &mem_region[i]);
+> > +		if (ret)
+> > +			goto out;
+> > +	}
+> > +
+> > +	/* set the start address */
+> > +	boot_cr =3D wo->hw->index ? MTK_WO_MCU_CFG_LS_WA_BOOT_ADDR_ADDR
+> > +				: MTK_WO_MCU_CFG_LS_WM_BOOT_ADDR_ADDR;
+> > +	wo_w32(wo, boot_cr, mem_region[MTK_WED_WO_REGION_EMI].phy_addr >> 16);
+> > +	/* wo firmware reset */
+> > +	wo_w32(wo, MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR, 0xc00);
+> > +
+> > +	val =3D wo_r32(wo, MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR);
+> > +	val |=3D wo->hw->index ? MTK_WO_MCU_CFG_LS_WF_WM_WA_WA_CPU_RSTB_MASK
+> > +			     : MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK;
+> > +	wo_w32(wo, MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR, val);
+> > +out:
+> > +	release_firmware(fw);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +int mtk_wed_mcu_init(struct mtk_wed_wo *wo)
+> > +{
+> > +	u32 val;
+> > +	int ret;
+> > +
+> > +	skb_queue_head_init(&wo->mcu.res_q);
+> > +	init_waitqueue_head(&wo->mcu.wait);
+> > +	mutex_init(&wo->mcu.mutex);
+> > +
+> > +	ret =3D mtk_wed_mcu_load_firmware(wo);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	do {
+> > +		/* get dummy cr */
+> > +		val =3D wed_r32(wo->hw->wed_dev,
+> > +			      MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL);
+> > +	} while (val && !time_after(jiffies, jiffies + MTK_FW_DL_TIMEOUT));
+> > +
+> > +	return val ? -EBUSY : 0;
+> > +}
+> > +
+> > +MODULE_FIRMWARE(MT7986_FIRMWARE_WO0);
+> > +MODULE_FIRMWARE(MT7986_FIRMWARE_WO1);
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net=
+/ethernet/mediatek/mtk_wed_regs.h
+> > index e270fb336143..c940b3bb215b 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+> > @@ -152,6 +152,7 @@ struct mtk_wdma_desc {
+> > =20
+> >  #define MTK_WED_RING_RX(_n)				(0x400 + (_n) * 0x10)
+> > =20
+> > +#define MTK_WED_SCR0					0x3c0
+> >  #define MTK_WED_WPDMA_INT_TRIGGER			0x504
+> >  #define MTK_WED_WPDMA_INT_TRIGGER_RX_DONE		BIT(1)
+> >  #define MTK_WED_WPDMA_INT_TRIGGER_TX_DONE		GENMASK(5, 4)
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/e=
+thernet/mediatek/mtk_wed_wo.h
+> > new file mode 100644
+> > index 000000000000..2ef3ccdec5bf
+> > --- /dev/null
+> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+> > @@ -0,0 +1,152 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-only */
+> > +/* Copyright (C) 2022 Lorenzo Bianconi <lorenzo@kernel.org>  */
+> > +
+> > +#ifndef __MTK_WED_WO_H
+> > +#define __MTK_WED_WO_H
+> > +
+> > +#include <linux/skbuff.h>
+> > +#include <linux/netdevice.h>
+> > +
+> > +struct mtk_wed_hw;
+> > +
+> > +struct mtk_wed_mcu_hdr {
+> > +	/* DW0 */
+> > +	u8 version;
+> > +	u8 cmd;
+> > +	__le16 length;
+> > +
+> > +	/* DW1 */
+> > +	__le16 seq;
+> > +	__le16 flag;
+> > +
+> > +	/* DW2 */
+> > +	__le32 status;
+> > +
+> > +	/* DW3 */
+> > +	u8 rsv[20];
+> > +};
+> > +
+> > +struct mtk_wed_wo_log_info {
+> > +	__le32 sn;
+> > +	__le32 total;
+> > +	__le32 rro;
+> > +	__le32 mod;
+> > +};
+> > +
+> > +enum mtk_wed_wo_event {
+> > +	MTK_WED_WO_EVT_LOG_DUMP		=3D 0x1,
+> > +	MTK_WED_WO_EVT_PROFILING	=3D 0x2,
+> > +	MTK_WED_WO_EVT_RXCNT_INFO	=3D 0x3,
+> > +};
+> > +
+> > +#define MTK_WED_MODULE_ID_WO		1
+> > +#define MTK_FW_DL_TIMEOUT		(4 * HZ)
+> > +#define MTK_WOCPU_TIMEOUT		(2 * HZ)
+> > +
+> > +enum {
+> > +	MTK_WED_WARP_CMD_FLAG_RSP		=3D BIT(0),
+> > +	MTK_WED_WARP_CMD_FLAG_NEED_RSP		=3D BIT(1),
+> > +	MTK_WED_WARP_CMD_FLAG_FROM_TO_WO	=3D BIT(2),
+> > +};
+> > +
+> > +enum {
+> > +	MTK_WED_WO_REGION_EMI,
+> > +	MTK_WED_WO_REGION_ILM,
+> > +	MTK_WED_WO_REGION_DATA,
+> > +	__MTK_WED_WO_REGION_MAX,
+> > +};
+> > +
+> > +enum mtk_wed_dummy_cr_idx {
+> > +	MTK_WED_DUMMY_CR_FWDL,
+> > +	MTK_WED_DUMMY_CR_WO_STATUS,
+> > +};
+> > +
+> > +#define MT7986_FIRMWARE_WO0	"mediatek/mt7986_wo_0.bin"
+> > +#define MT7986_FIRMWARE_WO1	"mediatek/mt7986_wo_1.bin"
+> > +
+> > +#define MTK_WO_MCU_CFG_LS_BASE				0 /* XXX: 0x15194000 */
+> > +#define MTK_WO_MCU_CFG_LS_HW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x00=
+0)
+> > +#define MTK_WO_MCU_CFG_LS_FW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x00=
+4)
+> > +#define MTK_WO_MCU_CFG_LS_CFG_DBG1_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x=
+00c)
+> > +#define MTK_WO_MCU_CFG_LS_CFG_DBG2_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x=
+010)
+> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x0=
+14)
+> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_SET_ADDR		(MTK_WO_MCU_CFG_LS_BASE + =
+0x018)
+> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR		(MTK_WO_MCU_CFG_LS_BASE + =
+0x01c)
+> > +#define MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR		(MTK_WO_MCU_CFG_LS_BA=
+SE + 0x050)
+> > +#define MTK_WO_MCU_CFG_LS_WM_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE +=
+ 0x060)
+> > +#define MTK_WO_MCU_CFG_LS_WA_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE +=
+ 0x064)
+> > +
+> > +#define MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK	BIT(5)
+> > +#define MTK_WO_MCU_CFG_LS_WF_WM_WA_WA_CPU_RSTB_MASK	BIT(0)
+> > +
+> > +struct mtk_wed_wo_memory_region {
+> > +	const char *name;
+> > +	void __iomem *addr;
+> > +	phys_addr_t phy_addr;
+> > +	u32 size;
+> > +	bool shared:1;
+> > +	bool consumed:1;
+> > +};
+> > +
+> > +struct mtk_wed_fw_region {
+> > +	__le32 decomp_crc;
+> > +	__le32 decomp_len;
+> > +	__le32 decomp_blk_sz;
+> > +	u8 rsv0[4];
+> > +	__le32 addr;
+> > +	__le32 len;
+> > +	u8 feature_set;
+> > +	u8 rsv1[15];
+> > +} __packed;
+> > +
+> > +struct mtk_wed_fw_trailer {
+> > +	u8 chip_id;
+> > +	u8 eco_code;
+> > +	u8 num_region;
+> > +	u8 format_ver;
+> > +	u8 format_flag;
+> > +	u8 rsv[2];
+> > +	char fw_ver[10];
+> > +	char build_date[15];
+> > +	u32 crc;
+> > +};
+> > +
+> > +struct mtk_wed_wo {
+> > +	struct mtk_wed_hw *hw;
+> > +	struct regmap *boot;
+> > +
+> > +	struct {
+> > +		struct mutex mutex;
+> > +		int timeout;
+> > +		u16 seq;
+> > +
+> > +		struct sk_buff_head res_q;
+> > +		wait_queue_head_t wait;
+> > +	} mcu;
+> > +};
+> > +
+> > +static inline int
+> > +mtk_wed_mcu_check_msg(struct mtk_wed_wo *wo, struct sk_buff *skb)
+> > +{
+> > +	struct mtk_wed_mcu_hdr *hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
+> > +
+> > +	if (hdr->version)
+> > +		return -EINVAL;
+> > +
+> > +	if (skb->len < sizeof(*hdr))
+> > +		return -EINVAL;
+> > +
+> > +	if (skb->len !=3D le16_to_cpu(hdr->length))
+> > +		return -EINVAL;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +void mtk_wed_mcu_rx_event(struct mtk_wed_wo *wo, struct sk_buff *skb);
+> > +void mtk_wed_mcu_rx_unsolicited_event(struct mtk_wed_wo *wo,
+> > +				      struct sk_buff *skb);
+> > +int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
+> > +			 const void *data, int len, bool wait_resp);
+> > +int mtk_wed_mcu_init(struct mtk_wed_wo *wo);
+> > +
+> > +#endif /* __MTK_WED_WO_H */
+> > diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/m=
+ediatek/mtk_wed.h
+> > index 4450c8b7a1cb..2cc2f1e43ba9 100644
+> > --- a/include/linux/soc/mediatek/mtk_wed.h
+> > +++ b/include/linux/soc/mediatek/mtk_wed.h
+> > @@ -11,6 +11,35 @@
+> >  struct mtk_wed_hw;
+> >  struct mtk_wdma_desc;
+> > =20
+> > +enum mtk_wed_wo_cmd {
+> > +	MTK_WED_WO_CMD_WED_CFG,
+> > +	MTK_WED_WO_CMD_WED_RX_STAT,
+> > +	MTK_WED_WO_CMD_RRO_SER,
+> > +	MTK_WED_WO_CMD_DBG_INFO,
+> > +	MTK_WED_WO_CMD_DEV_INFO,
+> > +	MTK_WED_WO_CMD_BSS_INFO,
+> > +	MTK_WED_WO_CMD_STA_REC,
+> > +	MTK_WED_WO_CMD_DEV_INFO_DUMP,
+> > +	MTK_WED_WO_CMD_BSS_INFO_DUMP,
+> > +	MTK_WED_WO_CMD_STA_REC_DUMP,
+> > +	MTK_WED_WO_CMD_BA_INFO_DUMP,
+> > +	MTK_WED_WO_CMD_FBCMD_Q_DUMP,
+> > +	MTK_WED_WO_CMD_FW_LOG_CTRL,
+> > +	MTK_WED_WO_CMD_LOG_FLUSH,
+> > +	MTK_WED_WO_CMD_CHANGE_STATE,
+> > +	MTK_WED_WO_CMD_CPU_STATS_ENABLE,
+> > +	MTK_WED_WO_CMD_CPU_STATS_DUMP,
+> > +	MTK_WED_WO_CMD_EXCEPTION_INIT,
+> > +	MTK_WED_WO_CMD_PROF_CTRL,
+> > +	MTK_WED_WO_CMD_STA_BA_DUMP,
+> > +	MTK_WED_WO_CMD_BA_CTRL_DUMP,
+> > +	MTK_WED_WO_CMD_RXCNT_CTRL,
+> > +	MTK_WED_WO_CMD_RXCNT_INFO,
+> > +	MTK_WED_WO_CMD_SET_CAP,
+> > +	MTK_WED_WO_CMD_CCIF_RING_DUMP,
+> > +	MTK_WED_WO_CMD_WED_END
+> > +};
+> > +
+> >  enum mtk_wed_bus_tye {
+> >  	MTK_WED_BUS_PCIE,
+> >  	MTK_WED_BUS_AXI,
+> > --=20
+> > 2.38.1
+> >=20
+> >=20
+
+--VKqrjdcuJRZc+ap5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2TNrAAKCRA6cBh0uS2t
+rBmzAP0Rwq2n8F4Bnoh5jOaoXhZGRo9bD9JsepZRBpC+wyefzQD+JM71oiwGJ3Ne
++IoIUY21ljdFS7bzKvt8kLxL/crihwU=
+=bEN6
+-----END PGP SIGNATURE-----
+
+--VKqrjdcuJRZc+ap5--
 
