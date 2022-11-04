@@ -4,111 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60282C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 16:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77F4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 17:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/fSoTUtqLSMP2KfCqxLZIKji3GOepn9Xc93RPyjSVkg=; b=FdyF2Y1nRfMYej/xkTuDiYYHiY
-	gdi2JYtF1rlRjekkGO7aOQBuj9RQc95VP+Ayu5FMGUIfq/XmEtv9x/eaKC2MQXIBvYLXy+BiUXH03
-	T+WyiR7PVznnxDBDgkZbO9HrQt1SdedH0HHIppn9NfxJoCz/wHsrdD5pcujHXdSLuxTJzBHPh9B7x
-	Q3rfv7lG8jpLy2HASXrDUdRnkoYpZim/L8/VnnsNaQ9d8C/uiwo3Rteydz+xzBakmV2Pcbs9AhhhO
-	kwVGWGJEAXOZvfAujGAIT+J/AJhW3h+N7/ulr4eRYS0yfaGxr9uamEhrXZDGWdLrwREyrp0bo6Gur
-	OfMc3UaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
+	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5dZbdXu3R3mbhUpBVZJf8njJvsSXLtFO2DXcA1zzYw8=; b=L8ezj3tWxI6rJ8cq8YsXAXVkj2
+	F7S6GBsa7J4VX0IlAkY9B0Lq/ei1l8Mfj4gid9V8IGI/EjCWYPZ1LnCXicjW0rYwglFXD75yMnATq
+	7V+gdfjdlPrKl2fQbiPb59CeVN/gcpcghT+0bVWSxgDEk5OoXYbRO/hF8KOfqb6QH7srXIjJJASKS
+	0ZsNptb3c8VxgsecjvMCsaenXWfdIMTMj1taDlnC78qWYuLaOe+xhWUtNDl0zjZY3FDxqphvjo/rY
+	Ijoe098We2/YTNkO3TV3StBCi1oMOn8QPBjqdaai3KzL3/gUiAftnLoJiCFiVMPjVYAJyvc96I8r3
+	7V6yvZFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqztZ-004Xw9-J0; Fri, 04 Nov 2022 16:50:17 +0000
-Received: from vern.gendns.com ([98.142.107.122])
+	id 1or0Gj-004bmE-0D; Fri, 04 Nov 2022 17:14:13 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqzt7-004Xa8-Ez; Fri, 04 Nov 2022 16:49:52 +0000
+	id 1or0GV-004bil-8U; Fri, 04 Nov 2022 17:14:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:Content-ID
+	:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+	Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=/fSoTUtqLSMP2KfCqxLZIKji3GOepn9Xc93RPyjSVkg=; b=S05yN9/OkId9ymzRJ4dCjcPWLQ
-	7kS+7hwLHIGVXlHp7W14BxEpjdI4ntV02EjHSD7RVjfxzjyZZY+kvQZZx58NMhQA3G5XgkIRxucIi
-	1OotghPODhkcufNUd5I3CGkJL57YrmUvR1N06/jUXH2swC2CkuimIhdic8beAfGSReYdk0zY/yiuZ
-	yCoOy4drXYmkZQ1P6bLMxXp+heS5TEP3UnHMbT+naZWwnajVpJ4cAXNOiBZHJHsv1ZCK1dTFhnhcE
-	kQfJJLIU0/MUGSPFRmI/cJ4R007YPo4eHbdvB68luhk9bsDRd+9PwexE0o4g4q5uI6q1mQphZaEQ8
-	PyW6kaVA==;
-Received: from ip98-183-112-30.ok.ok.cox.net ([98.183.112.30]:33812 helo=[192.168.0.134])
-	by vern.gendns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.95)
-	(envelope-from <david@lechnology.com>)
-	id 1oqzsl-00Ciq9-V8;
-	Fri, 04 Nov 2022 12:49:41 -0400
-Message-ID: <6296d944-e03d-6f2b-48b1-3dad78e3c89d@lechnology.com>
-Date: Fri, 4 Nov 2022 11:49:34 -0500
+	bh=5dZbdXu3R3mbhUpBVZJf8njJvsSXLtFO2DXcA1zzYw8=; b=zUuF6BGmmCI+OxUNr4Tz5sqZZ0
+	MjQa7bIUslFMEqwVd5W97nm1cgDhSEMo7uFgNeIDVzwPkqotmvHf82XsKkEYJQB88zqbDHLEKMS+R
+	dLr97dZeMkGeQYU9uu+SYjk7zYPl/yjh2vKIcRRggx1qgiUr09TuI5e0tvnVuitM8ppH7snRm8/fs
+	/PIca07bgsHIdWqr1Nm5PQfh/0/BBibgxFqPscLE5WqIvjvFePTUQULP/uTt1N7DQEAbvH/pc7Bjr
+	i5P/qad46UgDDgXtjuL6oTyMrutOnrnoJWg5vRlcD4bRrXEUiGvFVbLjA/gvYtqezotpnWDs5+NEg
+	dLLvqYkQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:48216 helo=rmk-PC.armlinux.org.uk)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1or0Fa-0007to-2m; Fri, 04 Nov 2022 17:13:02 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1or0FZ-001tRa-DI; Fri, 04 Nov 2022 17:13:01 +0000
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Joyce Ooi <joyce.ooi@intel.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Chris Snook <chris.snook@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Marcin Wojtas <mw@semihalf.com>,
+	Taras Chornyi <tchornyi@marvell.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Sergey Shtylyov <s.shtylyov@omp.ru>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
+Cc: netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-usb@vger.kernel.org,
+	UNGLinuxDriver@microchip.com
+Subject: [PATCH net-next] net: remove explicit phylink_generic_validate()
+ references
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH v2 54/65] clk: da8xx: clk48: Switch to determine_rate
-Content-Language: en-US
-To: Maxime Ripard <maxime@cerno.tech>, Stephen Boyd <sboyd@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Daniel Vetter <daniel@ffwll.ch>, Nicolas Ferre
- <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
- Fabio Estevam <festevam@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Dinh Nguyen <dinguyen@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam
- <mani@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- Orson Zhai <orsonzhai@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Prashant Gaikwad <pgaikwad@nvidia.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Samuel Holland <samuel@sholland.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul
- <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Sekhar Nori <nsekhar@ti.com>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Takashi Iwai <tiwai@suse.com>,
- David Airlie <airlied@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
- linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-54-f6736dec138e@cerno.tech>
-From: David Lechner <david@lechnology.com>
-In-Reply-To: <20221018-clk-range-checks-fixes-v2-54-f6736dec138e@cerno.tech>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - vern.gendns.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - lechnology.com
-X-Get-Message-Sender-Via: vern.gendns.com: authenticated_id: davidmain+lechnology.com/only user confirmed/virtual account not confirmed
-X-Authenticated-Sender: vern.gendns.com: davidmain@lechnology.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
+Date: Fri, 04 Nov 2022 17:13:01 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_094949_686566_6E720F2C 
-X-CRM114-Status: GOOD (  29.59  )
+X-CRM114-CacheID: sfid-20221104_101359_648373_FD1DFDDA 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,74 +111,301 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/4/22 8:18 AM, Maxime Ripard wrote:
-> The TI DA8xx USB0 clk48 clocks implements a mux with a set_parent
-> hook, but doesn't provide a determine_rate implementation.
-> 
-> This is a bit odd, since set_parent() is there to, as its name implies,
-> change the parent of a clock. However, the most likely candidate to
-> trigger that parent change is a call to clk_set_rate(), with
-> determine_rate() figuring out which parent is the best suited for a
-> given rate.
-> 
-> The other trigger would be a call to clk_set_parent(), but it's far less
-> used, and it doesn't look like there's any obvious user for that clock.
-> 
-> So, the set_parent hook is effectively unused, possibly because of an
-> oversight. However, it could also be an explicit decision by the
-> original author to avoid any reparenting but through an explicit call to
-> clk_set_parent().
-> 
-> The driver does implement round_rate() though, which means that we can
-> change the rate of the clock, but we will never get to change the
-> parent.
-> 
-> However, It's hard to tell whether it's been done on purpose or not.
-> 
-> Since we'll start mandating a determine_rate() implementation, let's
-> convert the round_rate() implementation to a determine_rate(), which
-> will also make the current behavior explicit. And if it was an
-> oversight, the clock behaviour can be adjusted later on.
+Virtually all conventional network drivers are now converted to use
+phylink_generic_validate() - only DSA drivers and fman_memac remain,
+so lets remove the necessity for network drivers to explicitly set
+this member, and default to phylink_generic_validate() when unset.
+This is possible as .validate must currently be set.
 
-I think this one should be the same as the clk:davinci changes and
-not allow re-parenting. Since this is a USB 48MHz PHY clock, a rate
-change will never be requested.
+Any remaining instances that have not been addressed by this patch can
+be fixed up later.
 
-> 
-> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
-> ---
->   drivers/clk/davinci/da8xx-cfgchip.c | 10 ++++++----
->   1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/clk/davinci/da8xx-cfgchip.c b/drivers/clk/davinci/da8xx-cfgchip.c
-> index 4c1cc59bba53..f60c97091818 100644
-> --- a/drivers/clk/davinci/da8xx-cfgchip.c
-> +++ b/drivers/clk/davinci/da8xx-cfgchip.c
-> @@ -462,10 +462,12 @@ static unsigned long da8xx_usb0_clk48_recalc_rate(struct clk_hw *hw,
->   	return 48000000;
->   }
->   
-> -static long da8xx_usb0_clk48_round_rate(struct clk_hw *hw, unsigned long rate,
-> -					unsigned long *parent_rate)
-> +static int da8xx_usb0_clk48_determine_rate(struct clk_hw *hw,
-> +					   struct clk_rate_request *req)
->   {
-> -	return 48000000;
-> +	req->rate = 48000000;
-> +
-> +	return 0;
->   }
->   
->   static int da8xx_usb0_clk48_set_parent(struct clk_hw *hw, u8 index)
-> @@ -494,7 +496,7 @@ static const struct clk_ops da8xx_usb0_clk48_ops = {
->   	.disable	= da8xx_usb0_clk48_disable,
->   	.is_enabled	= da8xx_usb0_clk48_is_enabled,
->   	.recalc_rate	= da8xx_usb0_clk48_recalc_rate,
-> -	.round_rate	= da8xx_usb0_clk48_round_rate,
-> +	.determine_rate	= da8xx_usb0_clk48_determine_rate,
->   	.set_parent	= da8xx_usb0_clk48_set_parent,
->   	.get_parent	= da8xx_usb0_clk48_get_parent,
->   };
-> 
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/ethernet/altera/altera_tse_main.c            | 1 -
+ drivers/net/ethernet/atheros/ag71xx.c                    | 1 -
+ drivers/net/ethernet/cadence/macb_main.c                 | 1 -
+ drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c         | 1 -
+ drivers/net/ethernet/freescale/enetc/enetc_pf.c          | 1 -
+ drivers/net/ethernet/freescale/fman/fman_dtsec.c         | 1 -
+ drivers/net/ethernet/freescale/fman/fman_tgec.c          | 1 -
+ drivers/net/ethernet/marvell/mvneta.c                    | 1 -
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c          | 1 -
+ drivers/net/ethernet/marvell/prestera/prestera_main.c    | 1 -
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c              | 1 -
+ drivers/net/ethernet/microchip/lan966x/lan966x_phylink.c | 1 -
+ drivers/net/ethernet/microchip/sparx5/sparx5_phylink.c   | 1 -
+ drivers/net/ethernet/mscc/ocelot_net.c                   | 1 -
+ drivers/net/ethernet/renesas/rswitch.c                   | 1 -
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c        | 1 -
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c                 | 1 -
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c        | 1 -
+ drivers/net/phy/phylink.c                                | 5 ++++-
+ drivers/net/usb/asix_devices.c                           | 1 -
+ include/linux/phylink.h                                  | 5 +++++
+ 21 files changed, 9 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/net/ethernet/altera/altera_tse_main.c b/drivers/net/ethernet/altera/altera_tse_main.c
+index 7633b227b2ca..28b5cae60eb5 100644
+--- a/drivers/net/ethernet/altera/altera_tse_main.c
++++ b/drivers/net/ethernet/altera/altera_tse_main.c
+@@ -1095,7 +1095,6 @@ static struct phylink_pcs *alt_tse_select_pcs(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops alt_tse_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_an_restart = alt_tse_mac_an_restart,
+ 	.mac_config = alt_tse_mac_config,
+ 	.mac_link_down = alt_tse_mac_link_down,
+diff --git a/drivers/net/ethernet/atheros/ag71xx.c b/drivers/net/ethernet/atheros/ag71xx.c
+index cc932b3cf873..a5de1bd8538c 100644
+--- a/drivers/net/ethernet/atheros/ag71xx.c
++++ b/drivers/net/ethernet/atheros/ag71xx.c
+@@ -1086,7 +1086,6 @@ static void ag71xx_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops ag71xx_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_config = ag71xx_mac_config,
+ 	.mac_link_down = ag71xx_mac_link_down,
+ 	.mac_link_up = ag71xx_mac_link_up,
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index 4f63f1ba3161..5d618814bb12 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -742,7 +742,6 @@ static struct phylink_pcs *macb_mac_select_pcs(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops macb_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = macb_mac_select_pcs,
+ 	.mac_config = macb_mac_config,
+ 	.mac_link_down = macb_mac_link_down,
+diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+index 2bbab28f763d..51c9da8e1be2 100644
+--- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
++++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+@@ -236,7 +236,6 @@ static void dpaa2_mac_link_down(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops dpaa2_mac_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = dpaa2_mac_select_pcs,
+ 	.mac_config = dpaa2_mac_config,
+ 	.mac_link_up = dpaa2_mac_link_up,
+diff --git a/drivers/net/ethernet/freescale/enetc/enetc_pf.c b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+index bdf94335ee99..9f6c4f5c0a6c 100644
+--- a/drivers/net/ethernet/freescale/enetc/enetc_pf.c
++++ b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+@@ -1111,7 +1111,6 @@ static void enetc_pl_mac_link_down(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops enetc_mac_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = enetc_pl_mac_select_pcs,
+ 	.mac_config = enetc_pl_mac_config,
+ 	.mac_link_up = enetc_pl_mac_link_up,
+diff --git a/drivers/net/ethernet/freescale/fman/fman_dtsec.c b/drivers/net/ethernet/freescale/fman/fman_dtsec.c
+index 3c87820ca202..d00bae15a901 100644
+--- a/drivers/net/ethernet/freescale/fman/fman_dtsec.c
++++ b/drivers/net/ethernet/freescale/fman/fman_dtsec.c
+@@ -986,7 +986,6 @@ static void dtsec_link_down(struct phylink_config *config, unsigned int mode,
+ }
+ 
+ static const struct phylink_mac_ops dtsec_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = dtsec_select_pcs,
+ 	.mac_config = dtsec_mac_config,
+ 	.mac_link_up = dtsec_link_up,
+diff --git a/drivers/net/ethernet/freescale/fman/fman_tgec.c b/drivers/net/ethernet/freescale/fman/fman_tgec.c
+index c265b7f19a4d..c2261d26db5b 100644
+--- a/drivers/net/ethernet/freescale/fman/fman_tgec.c
++++ b/drivers/net/ethernet/freescale/fman/fman_tgec.c
+@@ -469,7 +469,6 @@ static void tgec_link_down(struct phylink_config *config, unsigned int mode,
+ }
+ 
+ static const struct phylink_mac_ops tgec_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_config = tgec_mac_config,
+ 	.mac_link_up = tgec_link_up,
+ 	.mac_link_down = tgec_link_down,
+diff --git a/drivers/net/ethernet/marvell/mvneta.c b/drivers/net/ethernet/marvell/mvneta.c
+index 05ff3c58087e..c2cb98d24f5c 100644
+--- a/drivers/net/ethernet/marvell/mvneta.c
++++ b/drivers/net/ethernet/marvell/mvneta.c
+@@ -4228,7 +4228,6 @@ static void mvneta_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops mvneta_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = mvneta_mac_select_pcs,
+ 	.mac_prepare = mvneta_mac_prepare,
+ 	.mac_config = mvneta_mac_config,
+diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+index 116e53172072..d98f7e9a480e 100644
+--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
++++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+@@ -6603,7 +6603,6 @@ static void mvpp2_mac_link_down(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops mvpp2_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = mvpp2_select_pcs,
+ 	.mac_prepare = mvpp2_mac_prepare,
+ 	.mac_config = mvpp2_mac_config,
+diff --git a/drivers/net/ethernet/marvell/prestera/prestera_main.c b/drivers/net/ethernet/marvell/prestera/prestera_main.c
+index edbdda8f958d..f8deaee84398 100644
+--- a/drivers/net/ethernet/marvell/prestera/prestera_main.c
++++ b/drivers/net/ethernet/marvell/prestera/prestera_main.c
+@@ -360,7 +360,6 @@ static void prestera_pcs_an_restart(struct phylink_pcs *pcs)
+ }
+ 
+ static const struct phylink_mac_ops prestera_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = prestera_mac_select_pcs,
+ 	.mac_config = prestera_mac_config,
+ 	.mac_link_down = prestera_mac_link_down,
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 789268b15106..1cf76fd7afbc 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -653,7 +653,6 @@ static void mtk_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops mtk_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = mtk_mac_select_pcs,
+ 	.mac_pcs_get_state = mtk_mac_pcs_get_state,
+ 	.mac_config = mtk_mac_config,
+diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_phylink.c b/drivers/net/ethernet/microchip/lan966x/lan966x_phylink.c
+index f9579a2ae676..c5f9803e6e63 100644
+--- a/drivers/net/ethernet/microchip/lan966x/lan966x_phylink.c
++++ b/drivers/net/ethernet/microchip/lan966x/lan966x_phylink.c
+@@ -124,7 +124,6 @@ static void lan966x_pcs_aneg_restart(struct phylink_pcs *pcs)
+ }
+ 
+ const struct phylink_mac_ops lan966x_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = lan966x_phylink_mac_select,
+ 	.mac_config = lan966x_phylink_mac_config,
+ 	.mac_prepare = lan966x_phylink_mac_prepare,
+diff --git a/drivers/net/ethernet/microchip/sparx5/sparx5_phylink.c b/drivers/net/ethernet/microchip/sparx5/sparx5_phylink.c
+index 830da0e5ff27..bb97d27a1da4 100644
+--- a/drivers/net/ethernet/microchip/sparx5/sparx5_phylink.c
++++ b/drivers/net/ethernet/microchip/sparx5/sparx5_phylink.c
+@@ -138,7 +138,6 @@ const struct phylink_pcs_ops sparx5_phylink_pcs_ops = {
+ };
+ 
+ const struct phylink_mac_ops sparx5_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = sparx5_phylink_mac_select_pcs,
+ 	.mac_config = sparx5_phylink_mac_config,
+ 	.mac_link_down = sparx5_phylink_mac_link_down,
+diff --git a/drivers/net/ethernet/mscc/ocelot_net.c b/drivers/net/ethernet/mscc/ocelot_net.c
+index f50dada2bb8e..ca4bde861397 100644
+--- a/drivers/net/ethernet/mscc/ocelot_net.c
++++ b/drivers/net/ethernet/mscc/ocelot_net.c
+@@ -1727,7 +1727,6 @@ static void vsc7514_phylink_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops ocelot_phylink_ops = {
+-	.validate		= phylink_generic_validate,
+ 	.mac_config		= vsc7514_phylink_mac_config,
+ 	.mac_link_down		= vsc7514_phylink_mac_link_down,
+ 	.mac_link_up		= vsc7514_phylink_mac_link_up,
+diff --git a/drivers/net/ethernet/renesas/rswitch.c b/drivers/net/ethernet/renesas/rswitch.c
+index 20df2020d3e5..81c390bf7a35 100644
+--- a/drivers/net/ethernet/renesas/rswitch.c
++++ b/drivers/net/ethernet/renesas/rswitch.c
+@@ -1190,7 +1190,6 @@ static void rswitch_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops rswitch_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_config = rswitch_mac_config,
+ 	.mac_link_down = rswitch_mac_link_down,
+ 	.mac_link_up = rswitch_mac_link_up,
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 8273e6a175c8..2fea8785aaf4 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -1080,7 +1080,6 @@ static void stmmac_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops stmmac_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = stmmac_mac_select_pcs,
+ 	.mac_config = stmmac_mac_config,
+ 	.mac_link_down = stmmac_mac_link_down,
+diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+index 0dbdce4dc077..1062d60d7a46 100644
+--- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
++++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+@@ -1471,7 +1471,6 @@ static void am65_cpsw_nuss_mac_link_up(struct phylink_config *config, struct phy
+ }
+ 
+ static const struct phylink_mac_ops am65_cpsw_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_config = am65_cpsw_nuss_mac_config,
+ 	.mac_link_down = am65_cpsw_nuss_mac_link_down,
+ 	.mac_link_up = am65_cpsw_nuss_mac_link_up,
+diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+index 441e1058104f..205903a1aee4 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
++++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+@@ -1736,7 +1736,6 @@ static void axienet_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops axienet_phylink_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_select_pcs = axienet_mac_select_pcs,
+ 	.mac_config = axienet_mac_config,
+ 	.mac_link_down = axienet_mac_link_down,
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 88f60e98b760..25feab1802ee 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -649,7 +649,10 @@ static int phylink_validate_mac_and_pcs(struct phylink *pl,
+ 	}
+ 
+ 	/* Then validate the link parameters with the MAC */
+-	pl->mac_ops->validate(pl->config, supported, state);
++	if (pl->mac_ops->validate)
++		pl->mac_ops->validate(pl->config, supported, state);
++	else
++		phylink_generic_validate(pl->config, supported, state);
+ 
+ 	return phylink_is_empty_linkmode(supported) ? -EINVAL : 0;
+ }
+diff --git a/drivers/net/usb/asix_devices.c b/drivers/net/usb/asix_devices.c
+index 02941d97d034..0fe3773c5bca 100644
+--- a/drivers/net/usb/asix_devices.c
++++ b/drivers/net/usb/asix_devices.c
+@@ -773,7 +773,6 @@ static void ax88772_mac_link_up(struct phylink_config *config,
+ }
+ 
+ static const struct phylink_mac_ops ax88772_phylink_mac_ops = {
+-	.validate = phylink_generic_validate,
+ 	.mac_config = ax88772_mac_config,
+ 	.mac_link_down = ax88772_mac_link_down,
+ 	.mac_link_up = ax88772_mac_link_up,
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 1df3e5e316e8..c492c26202b5 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -207,6 +207,11 @@ struct phylink_mac_ops {
+  *
+  * If the @state->interface mode is not supported, then the @supported
+  * mask must be cleared.
++ *
++ * This member is optional; if not set, the generic validator will be
++ * used making use of @config->mac_capabilities and
++ * @config->supported_interfaces to determine which link modes are
++ * supported.
+  */
+ void validate(struct phylink_config *config, unsigned long *supported,
+ 	      struct phylink_link_state *state);
+-- 
+2.30.2
 
 
