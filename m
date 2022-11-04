@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE1AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 16:46:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F333C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 16:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4AvnEeQeniDWkQBvG292xKcyqRcJZJN4ObwNBkkj5tk=; b=EaAuQ2ZkUZOE37W8Z9iChAs4ga
-	SRgRcxtC8mA6gbn2SrMjQpO2MvFCs49MMYBRURsXli4I7hw5N+/q+uijMnXGvQxUlUFWsKERMUdIJ
-	I0Zd8Bq2X9IwTitCwsYJ4jVOe4JSzyw2nHyGFQGcykd3T59wALJixgdCb+BGYSMDZ2CR4a9hPjGNM
-	K+BkFChJaOMzYmvt2dniRIakXepu+Nj8EfqisYbjduFcvmAd+kADh0bJDVyaDhJ2Jjv08HFPtFgeg
-	n2+DEttpvcBGNfJYK+uU4N/CIbUFVwakvj1MwGw8Cimw/rPg06ETBxxIb9P6VKd5Y9bgbVGS9VpKQ
-	YJilMwuQ==;
+	bh=zI7RcZiPaTDKMltPgs4ZCXXOEkuyhKs5pu9RAgGaQCM=; b=IvzejsqwtnvmMqxrWN32mQ8D8E
+	43LfP46mqDWG6Lu+JSG6lhGbwkz5pSZTY3mXl97fHWBRgWz0asQYAuLJK8IgoUwTkHCtvUNA7tY5x
+	fl9bvzVL5saYPuKZ6w/3IqsuVw5Ga0YBwjCr3KObm9tMxPJcKMFrW4nxBxE9B1E7O14UA/BwUwQy8
+	8CfY6RzdG3XQvUu90hF3KLrIH4Nof3VU309izkSe3Zr886cK6xOvkaOJreUWI0xbNEKOmyTi1icIR
+	FvvPW14Z3sKWumNv0XvmncDhSGnD1+My0uYyEpHUi5kwaq1vKUrc1irTEH3e6llTU/mx4MI95xeXD
+	Cw/XWoKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqzps-004VVQ-2d; Fri, 04 Nov 2022 16:46:28 +0000
+	id 1oqzqT-004Vis-11; Fri, 04 Nov 2022 16:47:05 +0000
 Received: from vern.gendns.com ([98.142.107.122])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqzpo-004VFf-9c; Fri, 04 Nov 2022 16:46:26 +0000
+	id 1oqzqP-004VRV-O4; Fri, 04 Nov 2022 16:47:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
 	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
 	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4AvnEeQeniDWkQBvG292xKcyqRcJZJN4ObwNBkkj5tk=; b=WdhahLUmGJpQ95hVL+3u1VjMxb
-	tUf7myaQndCk0qHzeKh1A+E2O/JcVf+aJ+IiQD/qFkAbTU535DJ2WAUD6UP1/EvQ/y4beijc5YALa
-	Q3fcMmim22RAxWP0Rh4RhjXR+GqdPYPNBO9KnnRYGmufKc5r2oNWcdiYm05562NzkHszBUsTfAWO7
-	JgFdZNqyyoguqSiEpMW173KJx1qkCjb5qv/86gVYx+OCVFDAJzuXuMvEgrqYPPENnQENv9FFS7mH/
-	qsMwcba1c5ad5x6Y1xKSIlEvINxjtsa56wEJ+F6ehiPRzOvf9PnvY6QcDHcSY53EeaOn9zO5Boa6z
-	wQg4vJPQ==;
-Received: from ip98-183-112-30.ok.ok.cox.net ([98.183.112.30]:58206 helo=[192.168.0.134])
+	bh=zI7RcZiPaTDKMltPgs4ZCXXOEkuyhKs5pu9RAgGaQCM=; b=WDBX+cAnoxNFA2qROraJWPqwl6
+	sawOBGcwqy0cJOAIrVpjLZZ+Gx2IKKPpzlq32XA8dIyrUdyxFM7DDARo5oPRviL3HJfndmG8Y/6DX
+	JszwjA1qIBE963R9b+AbWyWXzot3CnWQfj8Q3yBrd7GtzWZM+7HpOT38Y0pygwUoqjt9E5drTi3PA
+	iwRZOCwQqQ0SXdmD9XyBdaTbR1R3prwAqmXw5Hw/1of8Akd3I0gnrXsFcDHUGIRQzdA3pfYYEcbWP
+	RGvTglAlnqK66tcDfALPc+yDGWDJk2SuAVwnrNdyQUQOE9Eu+PrDksdtVsbsh6ynJyaP/aeQMp/TT
+	YGTHedGw==;
+Received: from ip98-183-112-30.ok.ok.cox.net ([98.183.112.30]:45370 helo=[192.168.0.134])
 	by vern.gendns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 	(Exim 4.95)
 	(envelope-from <david@lechnology.com>)
-	id 1oqzog-00Chgx-Is;
-	Fri, 04 Nov 2022 12:45:28 -0400
-Message-ID: <187e61cd-7d02-2453-acf1-30180559d42f@lechnology.com>
-Date: Fri, 4 Nov 2022 11:45:17 -0500
+	id 1oqzpN-00ChtK-Ip;
+	Fri, 04 Nov 2022 12:46:11 -0400
+Message-ID: <4a91a4cf-acac-387f-19a5-e2ce144f3496@lechnology.com>
+Date: Fri, 4 Nov 2022 11:46:02 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.2
-Subject: Re: [PATCH v2 21/65] clk: davinci: da8xx-cfgchip: Add a
+Subject: Re: [PATCH v2 22/65] clk: davinci: da8xx-cfgchip: Add a
  determine_rate hook
 Content-Language: en-US
 To: Maxime Ripard <maxime@cerno.tech>, Stephen Boyd <sboyd@kernel.org>,
@@ -92,9 +92,9 @@ Cc: linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
  linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
  dri-devel@lists.freedesktop.org
 References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-21-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-22-f6736dec138e@cerno.tech>
 From: David Lechner <david@lechnology.com>
-In-Reply-To: <20221018-clk-range-checks-fixes-v2-21-f6736dec138e@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v2-22-f6736dec138e@cerno.tech>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
@@ -108,8 +108,8 @@ X-Source:
 X-Source-Args: 
 X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_094624_483215_ABCB91F0 
-X-CRM114-Status: GOOD (  29.03  )
+X-CRM114-CacheID: sfid-20221104_094701_902070_89464CA1 
+X-CRM114-Status: GOOD (  27.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,8 +125,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 11/4/22 8:17 AM, Maxime Ripard wrote:
-> The Davinci DA8xxx cfgchip mux clock implements a mux with a set_parent
-> hook, but doesn't provide a determine_rate implementation.
+> The Davinci DA8xxx cfgchip "clk48" clock implements a mux with a
+> set_parent hook, but doesn't provide a determine_rate implementation.
 > 
 > This is a bit odd, since set_parent() is there to, as its name implies,
 > change the parent of a clock. However, the most likely candidate to
@@ -141,12 +141,6 @@ On 11/4/22 8:17 AM, Maxime Ripard wrote:
 > oversight. However, it could also be an explicit decision by the
 > original author to avoid any reparenting but through an explicit call to
 > clk_set_parent().
-
-
-The parent is defined in the device tree and is not expected to change
-at runtime, so if I am understanding the patch correctly, setting the
-CLK_SET_RATE_NO_REPARENT flag seems correct.
-
 > 
 > The latter case would be equivalent to setting the flag
 > CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
@@ -159,33 +153,37 @@ CLK_SET_RATE_NO_REPARENT flag seems correct.
 > 
 > And if it was an oversight, then we are at least explicit about our
 > behavior now and it can be further refined down the line.
+
+The parent is defined in the device tree and is not expected to change
+at runtime, so if I am understanding the patch correctly, setting the
+CLK_SET_RATE_NO_REPARENT flag seems correct.
+
 > 
 > Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 > ---
->   drivers/clk/davinci/da8xx-cfgchip.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>   drivers/clk/davinci/da8xx-cfgchip.c | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
 > diff --git a/drivers/clk/davinci/da8xx-cfgchip.c b/drivers/clk/davinci/da8xx-cfgchip.c
-> index 4103d605e804..c04276bc4051 100644
+> index c04276bc4051..4c1cc59bba53 100644
 > --- a/drivers/clk/davinci/da8xx-cfgchip.c
 > +++ b/drivers/clk/davinci/da8xx-cfgchip.c
-> @@ -229,6 +229,7 @@ static u8 da8xx_cfgchip_mux_clk_get_parent(struct clk_hw *hw)
+> @@ -565,6 +565,7 @@ static u8 da8xx_usb1_clk48_get_parent(struct clk_hw *hw)
 >   }
 >   
->   static const struct clk_ops da8xx_cfgchip_mux_clk_ops = {
+>   static const struct clk_ops da8xx_usb1_clk48_ops = {
 > +	.determine_rate	= __clk_mux_determine_rate,
->   	.set_parent	= da8xx_cfgchip_mux_clk_set_parent,
->   	.get_parent	= da8xx_cfgchip_mux_clk_get_parent,
+>   	.set_parent	= da8xx_usb1_clk48_set_parent,
+>   	.get_parent	= da8xx_usb1_clk48_get_parent,
 >   };
-> @@ -251,7 +252,7 @@ da8xx_cfgchip_mux_clk_register(struct device *dev,
->   	init.ops = &da8xx_cfgchip_mux_clk_ops;
+> @@ -589,6 +590,7 @@ da8xx_cfgchip_register_usb1_clk48(struct device *dev,
+>   
+>   	init.name = "usb1_clk48";
+>   	init.ops = &da8xx_usb1_clk48_ops;
+> +	init.flags = CLK_SET_RATE_NO_REPARENT;
 >   	init.parent_names = parent_names;
 >   	init.num_parents = 2;
-> -	init.flags = 0;
-> +	init.flags = CLK_SET_RATE_NO_REPARENT;
 >   
->   	mux->hw.init = &init;
->   	mux->regmap = regmap;
 > 
 
 
