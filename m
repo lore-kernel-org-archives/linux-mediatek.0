@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A159EC43217
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 02:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07632C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 02:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cyUvGxY4Wu98m1LncPnnl8Hq6Znl/5H8+fOEMNjgd2E=; b=KAapwLyUvDsc92IFV9JOZjoj2t
-	7HF5zsD2YwolmTlKgahVKaS4xPpR5DqEyGK1m9lAA+2uW+LGQwDZJiZVK0gREENRGUj5ahV/7Kgq+
-	wB2geq911CxEAGIULCehbWSRInM/PxbeMToc7XZSIkmHQfn0nExGCs6ORtfk8QHSFrf9/kean/3T7
-	OPTAsgObUvcb7NJIhEpGrcpaAEXjIUUC/0YymVHLIliQJTAbJGOdl3GDIbT1QHpB6ckq/BDqn0nXT
-	iRqz1fsuVqliEcgGJQmI6XkHFkNbSpE1Wb9fguUrd2v6bD4lTdK2qhsw5TB3rHL++mgtbfdGc4UfM
-	0Yy7vyrw==;
+	bh=hqt2qDFNbfsmqWFHQYYGGsgfhqmp4gbQQHYsgXAQHGQ=; b=4N/mnVBJAwrjc2K8PnZ73Lkjqq
+	xwGYCKUOaGiY2RWoQWHBfC5CQiDsOqqn8ttSW7ezsAw6OUeCoj5qzTv4kr5BCDHPKYbX9k+OqpsAt
+	Fm8SbIHD2OZJo42Tm/Ug+61Oo9g/VmyVIE54iNL7CtAz9p2XWRf9ggKNLuikoldCYlTQxHX5X4Mkq
+	iIkSe/X92JzZ4rU0cZrrGm5ZksHUqTZhWpLT5eomLSBb0S/aNl1Xcv2jLxnjx5HjDDdRSqJqYBVKR
+	Q6m0w8esQhdjfzAjFTMoR3wo3Fi0yM5YZrTtlx7eFs4QS7w/BaUOvEou1IonS0R6A1JCC+PUVS5KS
+	3CRy8cDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqm75-002BC3-V4; Fri, 04 Nov 2022 02:07:19 +0000
+	id 1oqm7N-002BHr-CY; Fri, 04 Nov 2022 02:07:37 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqm72-002BAi-BW; Fri, 04 Nov 2022 02:07:18 +0000
-X-UUID: f4bdbd92a1f246b8b8665bde8f3c5fc5-20221103
+	id 1oqm72-002BAj-BY; Fri, 04 Nov 2022 02:07:20 +0000
+X-UUID: 14451a0c673748cfb830a6a637c287d2-20221103
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cyUvGxY4Wu98m1LncPnnl8Hq6Znl/5H8+fOEMNjgd2E=;
-	b=AD5sN5D2AVY8Rw3XGftKYcoed+O288JzX1zz06wkxbwXd5qlPaWioVspZjqu1rxaE1+83kuZ2zbIWMADCBNwwmYeQ7YONGuYkNEc7o0Xay2vNLztyOt9xPejaWC6vTOi5bOrAFFMQCIJk0rmNbTwKmE6EveBAkbSSUWqZqxckRQ=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hqt2qDFNbfsmqWFHQYYGGsgfhqmp4gbQQHYsgXAQHGQ=;
+	b=mWkH5GB16TmazzF9ewTsrSgnK1owlbQ/DCY0Gl4KrpbYs6raqvh2a2DCBFkY8O41u0G4kKQJuaEuBgooTENGssCzVCNxDJZn0q0tMHnKQkJwzgFuMwosurvTz0OGmMKRQZg80MzRoY5Q77pe+15pUi533UrW9+aRRe8Xx9x73sg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:ceb358c0-bf6e-4a7b-a979-9471b8347101,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:a4fe8990-1a78-4832-bd08-74b1519dcfbf,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:ccaaf305-2993-46cd-9dbd-f340cbe36981,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:62cd327,CLOUDID:a6fe8990-1a78-4832-bd08-74b1519dcfbf,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f4bdbd92a1f246b8b8665bde8f3c5fc5-20221103
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 14451a0c673748cfb830a6a637c287d2-20221103
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 866779007; Thu, 03 Nov 2022 19:07:05 -0700
+	with ESMTP id 1352483169; Thu, 03 Nov 2022 19:07:06 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 4 Nov 2022 10:07:02 +0800
+ 15.2.792.15; Fri, 4 Nov 2022 10:07:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 4 Nov 2022 10:07:02 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 4 Nov 2022 10:07:05 +0800
 From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
 	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
@@ -57,9 +57,9 @@ CC: <nfraprado@collabora.com>, <angelogioacchino.delregno@collabora.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
 	<allen-kh.cheng@mediatek.com>
-Subject: [PATCH v4 1/7] arm64: dts: mediatek: mt8186: Fix watchdog compatible
-Date: Fri, 4 Nov 2022 10:06:55 +0800
-Message-ID: <20221104020701.24134-2-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v4 5/7] dt-bindings: watchdog: mediatek: Convert mtk-wdt to json-schema
+Date: Fri, 4 Nov 2022 10:06:59 +0800
+Message-ID: <20221104020701.24134-6-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221104020701.24134-1-allen-kh.cheng@mediatek.com>
 References: <20221104020701.24134-1-allen-kh.cheng@mediatek.com>
@@ -68,8 +68,8 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_190716_470958_DF185C77 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20221103_190716_472070_64E4A430 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,33 +86,160 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-MT8186's watchdog embeds a reset controller and needs only the
-mediatek,mt8186-wdt compatible string as the MT6589 one is there
-for watchdogs that don't have any reset controller capability.
+Convert the MediaTek watchdog bindings to schema.
 
-Fixes: 2e78620b1350 ("arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile")
+The original binding only had 4 without a fallback but there is a reset
+controller on the "mediatek,mt7986-wdt", "mediatek,mt8186-wdt",
+"mediatek,mt8188-wdt" and "mediatek,mt8195-wdt" Since there is no reset
+controller for the mt6589, we remove "mediatek,mt6589-wdt" as a
+fallback.
+
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .../bindings/watchdog/mediatek,mtk-wdt.yaml   | 78 +++++++++++++++++++
+ .../devicetree/bindings/watchdog/mtk-wdt.txt  | 43 ----------
+ 2 files changed, 78 insertions(+), 43 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+ delete mode 100644 Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 64693c17af9e..e4366144cca5 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -330,8 +330,7 @@
- 		};
- 
- 		watchdog: watchdog@10007000 {
--			compatible = "mediatek,mt8186-wdt",
--				     "mediatek,mt6589-wdt";
-+			compatible = "mediatek,mt8186-wdt";
- 			mediatek,disable-extrst;
- 			reg = <0 0x10007000 0 0x1000>;
- 			#reset-cells = <1>;
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+new file mode 100644
+index 000000000000..b3d2273f323b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/watchdog/mediatek,mtk-wdt.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SoCs Watchdog timer
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description:
++  The watchdog supports a pre-timeout interrupt that fires
++  timeout-sec/2 before the expiry.
++
++allOf:
++  - $ref: watchdog.yaml#
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt2712-wdt
++          - mediatek,mt6589-wdt
++          - mediatek,mt7986-wdt
++          - mediatek,mt8183-wdt
++          - mediatek,mt8186-wdt
++          - mediatek,mt8188-wdt
++          - mediatek,mt8192-wdt
++          - mediatek,mt8195-wdt
++      - items:
++          - enum:
++              - mediatek,mt2701-wdt
++              - mediatek,mt6582-wdt
++              - mediatek,mt6797-wdt
++              - mediatek,mt7622-wdt
++              - mediatek,mt7623-wdt
++              - mediatek,mt7629-wdt
++              - mediatek,mt8516-wdt
++          - const: mediatek,mt6589-wdt
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    items:
++      - description: Watchdog pre-timeout (bark) interrupt
++
++  mediatek,disable-extrst:
++    description: Disable sending output reset signal
++    type: boolean
++
++  '#reset-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        watchdog@10007000 {
++            compatible = "mediatek,mt8183-wdt";
++            reg = <0 0x10007000 0 0x100>;
++            interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
++            mediatek,disable-extrst;
++            timeout-sec = <10>;
++            #reset-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+deleted file mode 100644
+index b900c85d4560..000000000000
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ /dev/null
+@@ -1,43 +0,0 @@
+-Mediatek SoCs Watchdog timer
+-
+-The watchdog supports a pre-timeout interrupt that fires timeout-sec/2
+-before the expiry.
+-
+-Required properties:
+-
+-- compatible should contain:
+-	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
+-	"mediatek,mt2712-wdt": for MT2712
+-	"mediatek,mt6582-wdt", "mediatek,mt6589-wdt": for MT6582
+-	"mediatek,mt6589-wdt": for MT6589
+-	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
+-	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+-	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+-	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+-	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
+-	"mediatek,mt8183-wdt": for MT8183
+-	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
+-	"mediatek,mt8188-wdt", "mediatek,mt6589-wdt": for MT8188
+-	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+-	"mediatek,mt8192-wdt": for MT8192
+-	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
+-
+-- reg : Specifies base physical address and size of the registers.
+-
+-Optional properties:
+-- mediatek,disable-extrst: disable send output reset signal
+-- interrupts: Watchdog pre-timeout (bark) interrupt.
+-- timeout-sec: contains the watchdog timeout in seconds.
+-- #reset-cells: Should be 1.
+-
+-Example:
+-
+-watchdog: watchdog@10007000 {
+-	compatible = "mediatek,mt8183-wdt",
+-		     "mediatek,mt6589-wdt";
+-	mediatek,disable-extrst;
+-	reg = <0 0x10007000 0 0x100>;
+-	interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
+-	timeout-sec = <10>;
+-	#reset-cells = <1>;
+-};
 -- 
 2.18.0
 
