@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFFAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 10:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A97FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 10:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SiJd/cbIFHc0t29rG3pUwRbp3B0gNob0JkC9ON4oH/Y=; b=fho5c/yEQfMczQT6JrVi8s5GiY
-	/aPKl7V4bJ1bqfboeGIbQFmqz42lG1Obf5cFdc0fwWUA/w3Ufl4S6Iqg5Kn7MZO3sSXf+uHzXzw+l
-	TB3MBPLDGq4itp2Xa4GvAIa4shjz6kPMWCxoi8kuyjTqHP7kWRYWhqCospiBdJxrwYjTkqHi5uRed
-	s6HgyrwtdrDs4AC1J+3OUMpKE4hKlm1Y+oFLAdlt9aDkE9+3e2T86263/6g4vaUYRjBweieKUniBx
-	Pr1X+6jsyZUnxxFvHDCRWDnr7w45L3OZKZNhDCX3NLqsbcDWbGoc6c9sCNGNJy1+KqQNOdaE/+k8N
-	m/SZg9AA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=udWPOBXPLH8ELd/9vx9GinaQfO2qOL74S4ly4WI8daI=; b=nCll6wGINdbQCSkU0gLUsMLd6l
+	+MOm3kLKUJ6sL5QPgQZyRFw2zpPKMKqIdlIRbuAphPrgHV29GUW8DaLvgMuTVddcfvsltNP5zsOkg
+	mlgVShKpYqiZi9QUE+ZTVT9+HP+9rQnZewjwCVHJQcjEAGF4NntWfwp78vGaFen0VAmazNlUcNn6H
+	I4il16u3XYgKZNsu16OYvF/6M/QJ1kHIurxBV5syH7V3PlfSRreBD8QzidLVESqNx29Y4rOFJGDlz
+	z7No4Y4qxWbu+6oQLmMwpuAa+CmnDY4ADAhPpPJ4VbDK3manefxhyxOsnJ68HV64TYmfwZygcfzjl
+	g47EScmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oquCb-003FcJ-MM; Fri, 04 Nov 2022 10:45:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oquN7-003INb-Gx; Fri, 04 Nov 2022 10:56:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oquCX-003FbD-Us; Fri, 04 Nov 2022 10:45:31 +0000
-X-UUID: 2eaf7ece995243af9cbc253b68b0c9e9-20221104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SiJd/cbIFHc0t29rG3pUwRbp3B0gNob0JkC9ON4oH/Y=;
-	b=HZrqVcNlvAbPIAzrFT/a7SDK2j/pXOdxQKPtMtf0y73Ae8FsEW1eiMCbgUpicP6FP5z8nfmmmrubz59gZJKaiYA22EK7Y6ji631JpxP3zgXszRfjSnL0Y/3E+OrFgY4ZBE5aGhRjW+152CL+0VIDXMhCQCG+uMQ4sj1lc3szVcs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:ceb544ca-d0ef-49ca-bcbf-e19dd010796b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:44f7aff3-a19e-4b45-8bfe-6a73c93611e9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 2eaf7ece995243af9cbc253b68b0c9e9-20221104
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <mengqi.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1803770613; Fri, 04 Nov 2022 03:45:23 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 4 Nov 2022 18:04:46 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 4 Nov 2022 18:04:45 +0800
-From: Mengqi Zhang <mengqi.zhang@mediatek.com>
-To: <chaotian.jing@mediatek.com>, <ulf.hansson@linaro.org>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <wenbin.mei@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Mengqi Zhang <mengqi.zhang@mediatek.com>
-Subject: [PATCH v2 2/2] dt-bindings: mmc: mtk-sd: add Inline Crypto Engine clock
-Date: Fri, 4 Nov 2022 18:04:11 +0800
-Message-ID: <20221104100410.27531-3-mengqi.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oquMv-003IJa-QR; Fri, 04 Nov 2022 10:56:15 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3F5336602970;
+	Fri,  4 Nov 2022 10:56:09 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667559369;
+	bh=kR0yMmfSADaph/vvvsbk8ijgbIAXuJ7Ew0EtyUSL8pQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ElwKlRjACqNxRMX31ZGDEzzA7bLPFU7hCpa3HSCzqanj7wQt6Risk6xSZMSgmndwH
+	 bRH7opU6YJpLbY9JePqn5pUTXK2g+Vx/Ft291hEWKRVeWBmDgSnXa3xSQzFRB9JX/p
+	 e7KDPuysbKymQlh8hnlBAiaAHmiRNTAT0MfoOOHrE7Dt5NqHYcVu2E4xOd0iv/PN9h
+	 hVkPH5QgqzlvGoQlYLkMAzwZQKSjDZAmPAN7ArpD2aB1U98t8dxr6U6qayPVAYy5z9
+	 RNknrq1sTdXlsnelalFxRGYukYx/O+ucmg0Cra9ASRoAL27XaPVwhZP6bvvnjSCz3+
+	 CC5mR2RUdRQOQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linus.walleij@linaro.org
+Cc: sean.wang@kernel.org,
+	matthias.bgg@gmail.com,
+	zhiyong.tao@mediatek.com,
+	wenst@chromium.org,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] pinctrl: mediatek: common-v2: Fix bias-disable for PULL_PU_PD_RSEL_TYPE
+Date: Fri,  4 Nov 2022 11:56:05 +0100
+Message-Id: <20221104105605.33720-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_034530_089533_94F7AD64 
-X-CRM114-Status: UNSURE (   7.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221104_035614_124897_E40C370C 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +75,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional crypto clock of the Inline Crypto Engine of Mediatek SoCs.
+In pinctrl-paris we're calling the .bias_set_combo() callback when we
+are asked to set the pin bias to either pull up/down or pull disable.
 
-Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+On newer platforms, this callback is mtk_pinconf_bias_set_combo(),
+located in pinctrl-mtk-common-v2.c: this will check the "pull type"
+assigned to the requested pin and in case said pin's pull type is
+MTK_PULL_PU_PD_RSEL_TYPE, this function will set RSEL first, PUPD
+last, which is fine.
+
+The issue comes when we're requesting PIN_CONFIG_BIAS_DISABLE, as
+this does *not* require setting RSEL but only PU_PD: in this case,
+the arg is MTK_DISABLE (zero), which is not a supported RSEL, due
+to which function mtk_pinconf_bias_set_rsel() returns a failure;
+because of that, mtk_pinconf_bias_set_pu_pd() is never called,
+hence the pin bias is never set to DISABLE.
+
+To fix this issue, add a check to mtk_pinconf_bias_set_rsel(): if
+we are entering that function with no pullup requested and at the
+same time the arg is MTK_DISABLE, this means that we're trying to
+disable pin bias, hence it's safe to return cleanly without ever
+setting any RSEL register.
+This makes mtk_pinconf_bias_set_combo() happy, going on with setting
+the PU_PD registers, which is the only action to actually take to
+disable bias on a pin/pingroup.
+
+Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/mmc/mtk-sd.yaml       | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 6f8ecb4788eb..8ed94a12a03b 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -263,6 +263,28 @@ allOf:
-             - const: bus_clk
-             - const: sys_cg
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index e1ae3beb9f72..b7921b59eb7b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -709,6 +709,9 @@ static int mtk_pinconf_bias_set_rsel(struct mtk_pinctrl *hw,
+ {
+ 	int err, rsel_val;
  
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8186-mmc
-+            - mediatek,mt8188-mmc
-+            - mediatek,mt8195-mmc
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: source clock
-+            - description: HCLK which used for host
-+            - description: independent source clock gate
-+            - description: crypto clock used for data encrypt/decrypt (optional)
-+        clock-names:
-+          items:
-+            - const: source
-+            - const: hclk
-+            - const: source_cg
-+            - const: crypto
++	if (!pullup && arg == MTK_DISABLE)
++		return 0;
 +
-   - if:
-       properties:
-         compatible:
+ 	if (hw->rsel_si_unit) {
+ 		/* find pin rsel_index from pin_rsel array*/
+ 		err = mtk_hw_pin_rsel_lookup(hw, desc, pullup, arg, &rsel_val);
 -- 
-2.25.1
+2.37.2
 
 
