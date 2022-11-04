@@ -4,83 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F38C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 16:04:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE1AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 16:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c9bxV+OCEXftWrTSONy9JJ3mm1QIs1dym/YT3cWSpDM=; b=2IoqKIw+vXfhwLor+S7y38v3Ea
-	j+fnqCiEhhd9xJedqOJ0txK04XwqU01A2Cdf3ykhrEtJIOKkyrnHkX6eexM46aaF8GM6lLMY68j8b
-	VYEIWK6CabvB7rP/OIlVbuQU5Rxd/pDBtL5kiAOW8DOvQ0xDI0jb1z0MTUIAD6+MTS0yqrmezhHAn
-	qVjYyovmvHcmKbK13hgelH9jFlsIEWUYpoErCSUUhHIQDO+cRKHCrsreScAAMOLbsdWWV1fBWCJCA
-	t5spz8vq+7WK1vj4dOIwmjh3XQTMkejjvLyaIiqyULRjTsTguJQqolvm5aNX/MrzD0Apan65DfJrw
-	cyYjJTBw==;
+	bh=4AvnEeQeniDWkQBvG292xKcyqRcJZJN4ObwNBkkj5tk=; b=EaAuQ2ZkUZOE37W8Z9iChAs4ga
+	SRgRcxtC8mA6gbn2SrMjQpO2MvFCs49MMYBRURsXli4I7hw5N+/q+uijMnXGvQxUlUFWsKERMUdIJ
+	I0Zd8Bq2X9IwTitCwsYJ4jVOe4JSzyw2nHyGFQGcykd3T59wALJixgdCb+BGYSMDZ2CR4a9hPjGNM
+	K+BkFChJaOMzYmvt2dniRIakXepu+Nj8EfqisYbjduFcvmAd+kADh0bJDVyaDhJ2Jjv08HFPtFgeg
+	n2+DEttpvcBGNfJYK+uU4N/CIbUFVwakvj1MwGw8Cimw/rPg06ETBxxIb9P6VKd5Y9bgbVGS9VpKQ
+	YJilMwuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqzBG-004OV5-B1; Fri, 04 Nov 2022 16:04:30 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1oqzps-004VVQ-2d; Fri, 04 Nov 2022 16:46:28 +0000
+Received: from vern.gendns.com ([98.142.107.122])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqzBD-004OTc-QE; Fri, 04 Nov 2022 16:04:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1667577856;
-	bh=HaDXsj5DAmUozxmuMTfo9ex+N6s+nv1T65q4Xi8hgFE=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=ZM2nwxB2r33PzRiQCbOUAeIkRnw2n9KjRUooAhRZVI9FX5xWWX4UWs1MZdn2iJS+F
-	 DWw5BS4v8Jnvr9XtlBMz3T9NOVl2wGVwoY6N3nwXNjBEhsV+Dv6NN6zqc4N8WCs8Cm
-	 Wa7veXULp3mR9NTq7H0N6DHXJibfQDALqqGUKtdkqQ5M4JAtSPGCQHwoMP4adChuoL
-	 0lKpbFDuN3NR8wlpvQwKrfO6ot4c0ThUdXII1H6Vk4auLgDsdN88eA3fFYftYDciUg
-	 hDG0gzOSaS80ZkoAsjTsiizwU2afLqcd+Ru8+pr6JHMuGs7YqTALqohyx6/tazW/Po
-	 bnsNJoZx5VbNw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.77.26] ([80.245.77.26]) by web-mail.gmx.net
- (3c-app-gmx-bs24.server.lan [172.19.170.76]) (via HTTP); Fri, 4 Nov 2022
- 17:04:16 +0100
+	id 1oqzpo-004VFf-9c; Fri, 04 Nov 2022 16:46:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=4AvnEeQeniDWkQBvG292xKcyqRcJZJN4ObwNBkkj5tk=; b=WdhahLUmGJpQ95hVL+3u1VjMxb
+	tUf7myaQndCk0qHzeKh1A+E2O/JcVf+aJ+IiQD/qFkAbTU535DJ2WAUD6UP1/EvQ/y4beijc5YALa
+	Q3fcMmim22RAxWP0Rh4RhjXR+GqdPYPNBO9KnnRYGmufKc5r2oNWcdiYm05562NzkHszBUsTfAWO7
+	JgFdZNqyyoguqSiEpMW173KJx1qkCjb5qv/86gVYx+OCVFDAJzuXuMvEgrqYPPENnQENv9FFS7mH/
+	qsMwcba1c5ad5x6Y1xKSIlEvINxjtsa56wEJ+F6ehiPRzOvf9PnvY6QcDHcSY53EeaOn9zO5Boa6z
+	wQg4vJPQ==;
+Received: from ip98-183-112-30.ok.ok.cox.net ([98.183.112.30]:58206 helo=[192.168.0.134])
+	by vern.gendns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.95)
+	(envelope-from <david@lechnology.com>)
+	id 1oqzog-00Chgx-Is;
+	Fri, 04 Nov 2022 12:45:28 -0400
+Message-ID: <187e61cd-7d02-2453-acf1-30180559d42f@lechnology.com>
+Date: Fri, 4 Nov 2022 11:45:17 -0500
 MIME-Version: 1.0
-Message-ID: <trinity-889b4468-8a50-4eae-80a1-6bd9ffbeaaf2-1667577856206@3c-app-gmx-bs24>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Aw: Re: [PATCH v2] dt-bindings: pinctrl: update uart/mmc bindings
- for MT7986 SoC
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 4 Nov 2022 17:04:16 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <e7192d9b-df86-a860-d5cb-8b4b9184e5bc@linaro.org>
-References: <20221025070255.14407-1-linux@fw-web.de>
- <e7192d9b-df86-a860-d5cb-8b4b9184e5bc@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:2X1CafeoZLi1maobab4XpgEBgVUV/xQr84vHR6gjBAuOAY+JVVgANmAm4TcRb/l8nDxS2
- TnKDSNrjO66TVkQ5Xv4tr22SQACFwC8dyQ5Ll1ovrg6NFnaVVla9fQWFTGVG3ydGBt4eY/4/7vU8
- BOJEfNFxM3uM2fdID/4ZsxJovvlK1CDWDoVbs+QRvVF175YDPu+J5S564bNkOGoh11auRi/vnZss
- jHYbLCQ7bKanEf80Q/YE26Kq+rO1TwJuNmmvMxFtfFWsv5EV0YohuUNEs5XDlMS5neXaVDZAYIYw
- +g=
-UI-OutboundReport: notjunk:1;M01:P0:uc0fEXlhH1I=;v14gmGUwfv0+qhv+chsSKxKrs5P
- pwVmYK1Z+eFI4681MyQNBz/llzYKerv1128HaHFkR43erPzjWWPnk/BxJfoUhH3LmmWPkGsWG
- Sk8JuO1KSz5VdbakOSaL3Ql+Q7VPd4OGrLYhSBz8dfwaawb4C3pSOYpTnkgmMjCmqQgFXmrfq
- b9kGjG+G5j8n2iuiXVsv/L6nFTFnolCkwcPKeFysjsSbGZ7M0lGV+kaRIrPmezJVEnMSFiL9D
- pYy2VsMd7Dk17hgP81q7yhcsCA5vXFceeYISenxgZfBiXQSJV6mNKSFiGp0Ttql8Jyr1O/3ZV
- VyfLpd7PRJMmzap8TtKeBdgp6R9xVMsX/IaaKtXXfij97OGpAGCOJqs5hCE4Oz3DMP+F7QY0f
- WIN527EHyL47okLwszSdFNatf6uh9rc9oCMqHSMHq2l4P5g0//mfjV8G6O80rYd/RXfinSKGQ
- 7PPQRA0vJckPPSWEr9IRQpH2he3G8/22AzEqEBjDvZ6xAkTTz+iiUCN5zYA4mTT+lBmT1IJtf
- h09a8G8k4edta9sAq9qiMoGgS59X1Se7+ounLhHeWFFVZSVrgWNGdy4sBjD4vvgAb+/78C1gd
- oKf9no7c1eIuJa6bFL0s8Rwwya4yeVFr6M0ihtwsNdwU00a2L+3SLcHVvkwzhJ48p1WF5kNKE
- 4KXjT9FbecheJRm35FwNbIfhbmCrFR//HA7gt/o5x3FgnaeLupaIbf6BboNfWbDFrRcQ1aTLt
- 5zPRw4LOtLFUnk4KjIWnSF/+GgkaQn834lSdZe5OsIaQRJWuCnkC7VL73hMGHATNrap6UOuzr
- IDQZmto+wcE9Idj3Tx1bfR8NAo9OQlPqjlgFTRtTW3H7c=
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH v2 21/65] clk: davinci: da8xx-cfgchip: Add a
+ determine_rate hook
+Content-Language: en-US
+To: Maxime Ripard <maxime@cerno.tech>, Stephen Boyd <sboyd@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+ Fabio Estevam <festevam@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam
+ <mani@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Orson Zhai <orsonzhai@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul
+ <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Sekhar Nori <nsekhar@ti.com>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-21-f6736dec138e@cerno.tech>
+From: David Lechner <david@lechnology.com>
+In-Reply-To: <20221018-clk-range-checks-fixes-v2-21-f6736dec138e@cerno.tech>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - vern.gendns.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - lechnology.com
+X-Get-Message-Sender-Via: vern.gendns.com: authenticated_id: davidmain+lechnology.com/only user confirmed/virtual account not confirmed
+X-Authenticated-Sender: vern.gendns.com: davidmain@lechnology.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_090428_252234_9B82076A 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20221104_094624_483215_ABCB91F0 
+X-CRM114-Status: GOOD (  29.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,55 +124,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 11/4/22 8:17 AM, Maxime Ripard wrote:
+> The Davinci DA8xxx cfgchip mux clock implements a mux with a set_parent
+> hook, but doesn't provide a determine_rate implementation.
+> 
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidate to
+> trigger that parent change is a call to clk_set_rate(), with
+> determine_rate() figuring out which parent is the best suited for a
+> given rate.
+> 
+> The other trigger would be a call to clk_set_parent(), but it's far less
+> used, and it doesn't look like there's any obvious user for that clock.
+> 
+> So, the set_parent hook is effectively unused, possibly because of an
+> oversight. However, it could also be an explicit decision by the
+> original author to avoid any reparenting but through an explicit call to
+> clk_set_parent().
 
-> Gesendet: Dienstag, 25. Oktober 2022 um 20:35 Uhr
-> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> Betreff: Re: [PATCH v2] dt-bindings: pinctrl: update uart/mmc bindings f=
-or MT7986 SoC
->
-> On 25/10/2022 03:02, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add new splitted uart pins and emmc_51
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->
->
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-after talking with MTK for the emmc pinctrl settings (custom pull-up) they=
- suggested me to change
-binding to fix other emmc-values and allow multiple (2) uart-items
+The parent is defined in the device tree and is not expected to change
+at runtime, so if I am understanding the patch correctly, setting the
+CLK_SET_RATE_NO_REPARENT flag seems correct.
 
-so on top of this patch
+> 
+> The latter case would be equivalent to setting the flag
+> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
+> to __clk_mux_determine_rate(). Indeed, if no determine_rate
+> implementation is provided, clk_round_rate() (through
+> clk_core_round_rate_nolock()) will call itself on the parent if
+> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+> otherwise. __clk_mux_determine_rate() has the exact same behavior when
+> CLK_SET_RATE_NO_REPARENT is set.
+> 
+> And if it was an oversight, then we are at least explicit about our
+> behavior now and it can be further refined down the line.
+> 
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+> ---
+>   drivers/clk/davinci/da8xx-cfgchip.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/davinci/da8xx-cfgchip.c b/drivers/clk/davinci/da8xx-cfgchip.c
+> index 4103d605e804..c04276bc4051 100644
+> --- a/drivers/clk/davinci/da8xx-cfgchip.c
+> +++ b/drivers/clk/davinci/da8xx-cfgchip.c
+> @@ -229,6 +229,7 @@ static u8 da8xx_cfgchip_mux_clk_get_parent(struct clk_hw *hw)
+>   }
+>   
+>   static const struct clk_ops da8xx_cfgchip_mux_clk_ops = {
+> +	.determine_rate	= __clk_mux_determine_rate,
+>   	.set_parent	= da8xx_cfgchip_mux_clk_set_parent,
+>   	.get_parent	= da8xx_cfgchip_mux_clk_get_parent,
+>   };
+> @@ -251,7 +252,7 @@ da8xx_cfgchip_mux_clk_register(struct device *dev,
+>   	init.ops = &da8xx_cfgchip_mux_clk_ops;
+>   	init.parent_names = parent_names;
+>   	init.num_parents = 2;
+> -	init.flags = 0;
+> +	init.flags = CLK_SET_RATE_NO_REPARENT;
+>   
+>   	mux->hw.init = &init;
+>   	mux->regmap = regmap;
+> 
 
-             then:
-               properties:
-                 groups:
--                  enum: [emmc, emmc_rst, emmc_51]
-+                  enum: [emmc_45, emmc_51]
-           - if:
-               properties:
-                 function:
-@@ -231,10 +231,12 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1,
--                         uart1_2_rx_tx, uart1_2_cts_rts, uart1_3_rx_tx,
--                         uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rts,
--                         uart2_1, uart0, uart1, uart2]
-+                  items:
-+                    enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1,
-+                           uart1_2_rx_tx, uart1_2_cts_rts, uart1_3_rx_tx,
-+                           uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rt=
-s,
-+                           uart2_1, uart0, uart1, uart2]
-+                  maxItems: 2
-
-i would squash these changes and send as v3 or should i send an extra-patc=
-h?
-
-regards Frank
 
