@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C002C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Nov 2022 22:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0302C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 02:07:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:In-Reply-To:References:Message-ID:Date:Subject:CC:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QKbnlsmkRekc5g7H4UDJpqdXvMO9MIFw9JHi3/mmLtw=; b=aNaF6sIFIiNlAn6qI4vJJ/lfCv
-	jDQUdP7AvDfWpOrDjFRpbnbQxfp7kXO508vv/mw6ct5xZv3zm1ekVWy/edwcqqCh/6m4iKgZTQiRP
-	EQB5pgO9Ic6KFTiU/oKuVZClcCygH1wvD5+WGlJaiwK/eOMREILct8s6XUzMRNNImgjiBRXG7zh4z
-	Bv3v9dK8a5NzApXNTYPZPUnrYuLkbJz6tZFSLtcDApS/ECf5W2YdBeWX7fXAJRLyiy2paBcXSnf1W
-	KI4suLGJws+ZBBTkLs7bOGyB0wWn1fG7h1NR2KJTdgQVf9HVNxauD/cewuOGSXubkT6rHqCoHKBVD
-	TxjyxVtQ==;
+	bh=Zk0HSy3TaveQBxq2iNOnCPmUUZl44elFjK7RBgpyTL0=; b=FVxOHqYI3hWA2MT+7xSiAKzTW7
+	pdau8vGrMZBG4dTqZr1zL529KXKY3Mbo6857MTiEwXrnR+DefLVsT02MFAQxHZKI1AoysxroHpodS
+	6hEy1nYmIB0G1Iw+zI7hSOb+aXFi3Qy43kftxJzAQuYP1UAJQ/yd7nD3hegLbbmmqUJzPEfgeOdjV
+	3BByJk4W1Z2x6YczLEtZg4yeYOw2Bzrgln6wd8b0StaJdRA90MbBvoTkE4H5RQ242KHBHiq1vW3gs
+	0YwWNbnbg8Lq7qfFWAqoLPfuzH4+rkIwzstbrvbh+gvBZf/jxnsQKotYxmB/+X9Pj+ibwL0+OCYcE
+	Cy74Uduw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqio5-001tZF-DK; Thu, 03 Nov 2022 22:35:29 +0000
-Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
+	id 1oqm76-002BCK-Kk; Fri, 04 Nov 2022 02:07:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqint-001tSr-82
-	for linux-mediatek@lists.infradead.org; Thu, 03 Nov 2022 22:35:18 +0000
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-108-jjXBwe61OA2r_dWCY7x20Q-1; Thu, 03 Nov 2022 22:35:10 +0000
-X-MC-Unique: jjXBwe61OA2r_dWCY7x20Q-1
-Received: from AcuMS.Aculab.com (10.202.163.6) by AcuMS.aculab.com
- (10.202.163.6) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Thu, 3 Nov
- 2022 22:35:09 +0000
-Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
- id 15.00.1497.042; Thu, 3 Nov 2022 22:35:09 +0000
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'AngeloGioacchino Del Regno' <angelogioacchino.delregno@collabora.com>,
-	Bayi Cheng <bayi.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, "linux-spi@vger.kernel.org"
-	<linux-spi@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Chuanhong Guo <gch981213@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: RE: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
-Thread-Topic: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
-Thread-Index: AQHY72jIBAhQmgXzVUCnGozhoMFIG64tyFhQ
-Date: Thu, 3 Nov 2022 22:35:09 +0000
-Message-ID: <c612cc0eb4fc463a9bfd9094ff652ac9@AcuMS.aculab.com>
-References: <20221103052843.2025-1-bayi.cheng@mediatek.com>
- <20221103052843.2025-2-bayi.cheng@mediatek.com>
- <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
-In-Reply-To: <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+	id 1oqm72-002BAh-BX; Fri, 04 Nov 2022 02:07:18 +0000
+X-UUID: 4c7396f6f1bb467db2e0288855a8adad-20221103
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Zk0HSy3TaveQBxq2iNOnCPmUUZl44elFjK7RBgpyTL0=;
+	b=liwiJenJWgyyLFfUhPRKbIfsFJDpvhBvy/7GXTyVUA5YRysDaP7/prooJG9QEJZekTxofLznkkmBrRyEteJm1llq6anZDJD+mVUFolnihaGb1rCm1n2qjzfaxobKKdwooAyu9FUio2J5xqrxpxS5MtJdzwIZVe47TVoBbCCk6VE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:5b38ec9f-40f1-47fa-a7c1-969754a86e52,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:a5fe8990-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4c7396f6f1bb467db2e0288855a8adad-20221103
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 238067996; Thu, 03 Nov 2022 19:07:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 4 Nov 2022 10:07:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 4 Nov 2022 10:07:04 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <nfraprado@collabora.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>
+Subject: [PATCH v4 3/7] arm64: dts: mediatek: mt7986: Fix watchdog compatible
+Date: Fri, 4 Nov 2022 10:06:57 +0800
+Message-ID: <20221104020701.24134-4-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221104020701.24134-1-allen-kh.cheng@mediatek.com>
+References: <20221104020701.24134-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221103_153517_596339_E4076B11 
-X-CRM114-Status: GOOD (  23.03  )
+X-CRM114-CacheID: sfid-20221103_190716_470028_3E797B8F 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +84,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8NCj4gU2VudDogMDMgTm92ZW1iZXIgMjAy
-MiAwOTo0NA0KPiANCj4gSWwgMDMvMTEvMjIgMDY6MjgsIEJheWkgQ2hlbmcgaGEgc2NyaXR0bzoN
-Cj4gPiBGcm9tOiBiYXlpIGNoZW5nIDxiYXlpLmNoZW5nQG1lZGlhdGVrLmNvbT4NCj4gPg0KPiA+
-IFRoZSB0aW1lb3V0IHZhbHVlIG9mIHRoZSBjdXJyZW50IGRtYSByZWFkIGlzIHVucmVhc29uYWJs
-ZS4gRm9yIGV4YW1wbGUsDQo+ID4gSWYgdGhlIHNwaSBmbGFzaCBjbG9jayBpcyAyNk1oeiwgSXQg
-d2lsbCB0YWtlcyBhYm91dCAxLjNtcyB0byByZWFkIGENCj4gPiA0S0IgZGF0YSBpbiBzcGkgbW9k
-ZS4gQnV0IHRoZSBhY3R1YWwgbWVhc3VyZW1lbnQgZXhjZWVkcyA1MHMgd2hlbiBhDQo+ID4gZG1h
-IHJlYWQgdGltZW91dCBpcyBlbmNvdW50ZXJlZC4NCj4gPg0KPiA+IEluIG9yZGVyIHRvIGJlIG1v
-cmUgYWNjdXJhdGVseSwgSXQgaXMgbmVjZXNzYXJ5IHRvIHVzZSBtc2Vjc190b19qaWZmaWVzLA0K
-PiA+IEFmdGVyIG1vZGlmaWNhdGlvbiwgdGhlIG1lYXN1cmVkIHRpbWVvdXQgdmFsdWUgaXMgYWJv
-dXQgMTMwbXMuDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBiYXlpIGNoZW5nIDxiYXlpLmNoZW5n
-QG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAgIGRyaXZlcnMvc3BpL3NwaS1tdGstbm9yLmMg
-fCA3ICsrKystLS0NCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDMgZGVs
-ZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zcGkvc3BpLW10ay1ub3Iu
-YyBiL2RyaXZlcnMvc3BpL3NwaS1tdGstbm9yLmMNCj4gPiBpbmRleCBkMTY3Njk5YTFhOTYuLjNk
-OTg5ZGI4MGVlOSAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL3NwaS9zcGktbXRrLW5vci5jDQo+
-ID4gKysrIGIvZHJpdmVycy9zcGkvc3BpLW10ay1ub3IuYw0KPiA+IEBAIC0zNTQsNyArMzU0LDcg
-QEAgc3RhdGljIGludCBtdGtfbm9yX2RtYV9leGVjKHN0cnVjdCBtdGtfbm9yICpzcCwgdTMyIGZy
-b20sIHVuc2lnbmVkIGludCBsZW5ndGgsDQo+ID4gICAJCQkgICAgZG1hX2FkZHJfdCBkbWFfYWRk
-cikNCj4gPiAgIHsNCj4gPiAgIAlpbnQgcmV0ID0gMDsNCj4gPiAtCXVsb25nIGRlbGF5Ow0KPiA+
-ICsJdWxvbmcgZGVsYXksIHRpbWVvdXQ7DQo+ID4gICAJdTMyIHJlZzsNCj4gPg0KPiA+ICAgCXdy
-aXRlbChmcm9tLCBzcC0+YmFzZSArIE1US19OT1JfUkVHX0RNQV9GQURSKTsNCj4gPiBAQCAtMzc2
-LDE1ICszNzYsMTYgQEAgc3RhdGljIGludCBtdGtfbm9yX2RtYV9leGVjKHN0cnVjdCBtdGtfbm9y
-ICpzcCwgdTMyIGZyb20sIHVuc2lnbmVkIGludCBsZW5ndGgsDQo+ID4gICAJbXRrX25vcl9ybXco
-c3AsIE1US19OT1JfUkVHX0RNQV9DVEwsIE1US19OT1JfRE1BX1NUQVJULCAwKTsNCj4gPg0KPiA+
-ICAgCWRlbGF5ID0gQ0xLX1RPX1VTKHNwLCAobGVuZ3RoICsgNSkgKiBCSVRTX1BFUl9CWVRFKTsN
-Cj4gPiArCXRpbWVvdXQgPSAoZGVsYXkgKyAxKSAqIDEwMDsNCj4gPg0KPiA+ICAgCWlmIChzcC0+
-aGFzX2lycSkgew0KPiA+ICAgCQlpZiAoIXdhaXRfZm9yX2NvbXBsZXRpb25fdGltZW91dCgmc3At
-Pm9wX2RvbmUsDQo+ID4gLQkJCQkJCSAoZGVsYXkgKyAxKSAqIDEwMCkpDQo+ID4gKwkJICAgIG1z
-ZWNzX3RvX2ppZmZpZXMobWF4X3Qoc2l6ZV90LCB0aW1lb3V0IC8gMTAwMCwgMTApKSkpDQo+IA0K
-PiBZb3UncmUgZ2l2aW5nIGEgYHNpemVfdGAgdmFyaWFibGUgdG8gbXNlY3NfdG9famlmZmllcygp
-LCBidXQgY2hlY2tpbmcgYGppZmZpZXMuaGAsDQo+IHRoaXMgZnVuY3Rpb24gdGFrZXMgYSBgY29u
-c3QgdW5zaWduZWQgaW50YCBwYXJhbS4NCj4gUGxlYXNlIGNoYW5nZSB0aGUgdHlwZSB0byBtYXRj
-aCB0aGF0Lg0KDQpUaGUgdHlwZSBzaG91bGRuJ3QgbWF0dGVyIGF0IGFsbC4NCldoYXQgbWF0dGVy
-cyBpcyB0aGUgZG9tYWluIG9mIHRoZSB2YWx1ZS4NCg0KUXVpdGUgd2h5IHlvdSBuZWVkIHRvIHVz
-ZSBtYXhfdChzaXplX3QsIC4uLikgaXMgYW5vdGhlciBtYXR0ZXIuDQp0aW1lb3V0IGlzIHVsb25n
-IHNvIG1heCh0aW1lb3V0LzEwMDAsIDEwdWwpIHNob3VsZCBiZSBmaW5lLg0KDQpCdXQgaXMgdWxv
-bmcgZXZlbiByaWdodD8NClRoZSBkb21haW4gb2YgdGhlIHZhbHVlIGlzIGFsbW9zdCBjZXJ0YWlu
-bHkgdGhlIHNhbWUgb24gMzJiaXQgYW5kIDY0Yml0Lg0KU28geW91IGFsbW9zdCBjZXJ0YWlubHkg
-bmVlZCB1MzIgb3IgdTY0Lg0KDQoJRGF2aWQNCg0KPiANCj4gQXNpZGUgZnJvbSB0aGF0LCB5b3Vy
-IGB0aW1lb3V0YCB2YXJpYWJsZSBjb250YWlucyBhIHRpbWVvdXQgaW4gbWljcm9zZWNvbmRzIGFu
-ZA0KPiB0aGlzIG1lYW5zIHRoYXQgYWN0dWFsbHkgdXNpbmcgbXNlY3NfdG9famlmZmllcygpIGlz
-IHN1Ym9wdGltYWwgaGVyZS4NCj4gDQo+IFBsZWFzZSB1c2UgdXNlY3NfdG9famlmZmllcygpIGlu
-c3RlYWQuDQo+IA0KPiBSZWdhcmRzLA0KPiBBbmdlbG8NCg0KLQ0KUmVnaXN0ZXJlZCBBZGRyZXNz
-IExha2VzaWRlLCBCcmFtbGV5IFJvYWQsIE1vdW50IEZhcm0sIE1pbHRvbiBLZXluZXMsIE1LMSAx
-UFQsIFVLDQpSZWdpc3RyYXRpb24gTm86IDEzOTczODYgKFdhbGVzKQ0K
+MT7986's watchdog embeds a reset controller and needs only the
+mediatek,mt7986-wdt compatible string as the MT6589 one is there
+for watchdogs that don't have any reset controller capability.
+
+Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 72e0d9722e07..6a94cd618772 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -119,8 +119,7 @@
+ 		};
+ 
+ 		watchdog: watchdog@1001c000 {
+-			compatible = "mediatek,mt7986-wdt",
+-				     "mediatek,mt6589-wdt";
++			compatible = "mediatek,mt7986-wdt";
+ 			reg = <0 0x1001c000 0 0x1000>;
+ 			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+ 			#reset-cells = <1>;
+-- 
+2.18.0
 
 
