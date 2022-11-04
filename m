@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43509C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 08:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B50C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Nov 2022 08:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OiuZsnWB3saqVM2W8w1HufJbIPNO8v1X/CZ9SOG+w/k=; b=GNzFbrHvDOEmoWRbLKiTLc/nHJ
-	3ZvUKmMH8Qnde3jtcndcZSUzElQSv76q6TRqQPswuUVTgcYxjIp+fncLo0w/XkmkQ7+U683zVeXxS
-	E7lkRYp/WHiTpNwA6GwfCourQVRXzSTkEcOc4vkzpIqecDKWJgs0E/QVGy/vED98FfySUN7w/nj//
-	R3Pm/ndrP5iGY/B9KHcWV6bRSpD4fu/ETvQIgNnT8Sy8ox+3g1opYh1am5FNKIDDYClDmVMzhJfg2
-	WHXaSWK9QM8ygIh1RYV7jB+PPncQNz1US7v0ndvp01Z73013LYtCKaVE9Xk+65kxV7w1Hz7nVyG0H
-	X/MEBdCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VntHT8WzB0CAVLCelb8y6Uv9sB/qlBf5aIY+LECjOFo=; b=eoWl4lHCPVyX5Bf/d+QdWdr9UT
+	JrTHtzC6QESVbc0yLDn7g+Jy4wecrrQg5RJqDkLvEXR5M7GzMiI/OFD3cBKkKo11QZaAu8COR3fxU
+	5MuY+Zoz9AYaqFmP1OWUt6crvHB/B9DE4h2iSBFK0A5HhE5aNFxDDT0knTrASvxEdyYUy8iMOxzys
+	bCGsmNWXviNsdru9d09I4oNPybESWjRlMpndaJQuOHPv6t7X7znQaAzDEYeFrSYfk8J7IdUQF09rS
+	H/2GjKfOmPDI88IhEvP0yGWms09ls+xpkOhH+IqSJ8AZgkde61xdCY2MXghM7kHSBVqSoG1uXZKBu
+	sDZHF5cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqs6E-002xqO-AW; Fri, 04 Nov 2022 08:30:50 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oqsAl-002yiO-1U; Fri, 04 Nov 2022 08:35:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oqs69-002xo7-N1
-	for linux-mediatek@lists.infradead.org; Fri, 04 Nov 2022 08:30:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2FDADB82B45;
-	Fri,  4 Nov 2022 08:30:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AAB3C433D6;
-	Fri,  4 Nov 2022 08:30:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667550639;
-	bh=WIUTKBxwy/bzKaF26xR92fZ5f2WaPf18vEmhzh/HNwM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=q9QLBS1BDlwzJjibwmEleUhyv//E8vdFqEwgmHEBt/qR607nFIbmjT0p6XmNj31fY
-	 t45XFoJbRYUsO1prb+4UPkl8+ej0d1mN2RVb7334o4cw0S80zxPTsLC4Gs993CY5kg
-	 itS5HkS6RHDzkF2EXu8w7spxZkVN3hUBMOugZb3+GBV5kMMoM9DQlfqczLT2TKwrof
-	 LXHhvR9/IXfQfQKb4udvWQyi2ZNM83FlhrcAvb5sX9r5qunj0tbqTI8FzgsjhDjPBw
-	 eN6SXq0Y3keBRVwT/CXhJ6OIXhCuwcfUdRgizXg4a2NsKjyBwlugl8bdo10hnaA+sy
-	 IEPCFXg1bZM6g==
-Date: Fri, 4 Nov 2022 09:30:36 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: Re: [PATCH v3 net-next 3/8] net: ethernet: mtk_wed: introduce wed
- mcu support
-Message-ID: <Y2TNrF610zJUt4vr@lore-desk>
-References: <cover.1667466887.git.lorenzo@kernel.org>
- <01c82e3783373e04b609d60075ef7ecf71d0d24d.1667466887.git.lorenzo@kernel.org>
- <Y2R6A68BY6GuMt+f@makrotopia.org>
+	id 1oqsAi-002yhW-6x; Fri, 04 Nov 2022 08:35:29 +0000
+X-UUID: 4243b4cd34da4bbab63e7abf4d706f94-20221104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VntHT8WzB0CAVLCelb8y6Uv9sB/qlBf5aIY+LECjOFo=;
+	b=QJzCpoit2uUgL5R3GGL4QB2ZGxsn37M+EtEgj2pmJg6qpQFKOwyYicGbtO4SGrivpNwakYNLe0qdLpoydEpPicaMLPaLjFsSD4UTTkPQdclBdmm9q/dkW8OuDgGQrE+fUdAYacc2ShSkvELXoFkDK+rZP65Vps05DxplXIgcd7Q=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:70a1fe2c-2042-40a8-bbaa-c86bc6dbf41f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:62cd327,CLOUDID:9709acf3-a19e-4b45-8bfe-6a73c93611e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4243b4cd34da4bbab63e7abf4d706f94-20221104
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <elvis.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1478149454; Fri, 04 Nov 2022 01:35:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 4 Nov 2022 15:44:47 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 4 Nov 2022 15:44:46 +0800
+From: Elvis.Wang <Elvis.Wang@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Elvis Wang <Elvis.Wang@mediatek.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 0/2] Add gce support for mt8188
+Date: Fri, 4 Nov 2022 15:44:41 +0800
+Message-ID: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VKqrjdcuJRZc+ap5"
-Content-Disposition: inline
-In-Reply-To: <Y2R6A68BY6GuMt+f@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221104_013046_104666_6E6A8875 
-X-CRM114-Status: GOOD (  34.79  )
+X-CRM114-CacheID: sfid-20221104_013528_285355_7243F031 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,681 +82,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Elvis Wang <Elvis.Wang@mediatek.com>
 
---VKqrjdcuJRZc+ap5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Base on tag: next-20221028, linux-next/master
 
-> Hi Lorenzo,
+Change in v3:
+ - remove incorrect message.
 
-Hi Daniel,
+Change in v2:
+ - use vendor in filename, use Dual license and remove inappropriate
+   define in mediatek,mt8188-gce.h
 
->=20
-> I found a potential typo in the print output during probe.
-> See below.
->=20
-> On Thu, Nov 03, 2022 at 10:28:02AM +0100, Lorenzo Bianconi wrote:
-> > From: Sujuan Chen <sujuan.chen@mediatek.com>
-> >=20
-> > Introduce WED mcu support used to configure WED WO chip.
-> > This is a preliminary patch in order to add RX Wireless
-> > Ethernet Dispatch available on MT7986 SoC.
-> >=20
-> > Tested-by: Daniel Golle <daniel@makrotopia.org>
-> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> > ---
-> >  drivers/net/ethernet/mediatek/Makefile       |   2 +-
-> >  drivers/net/ethernet/mediatek/mtk_wed_mcu.c  | 364 +++++++++++++++++++
-> >  drivers/net/ethernet/mediatek/mtk_wed_regs.h |   1 +
-> >  drivers/net/ethernet/mediatek/mtk_wed_wo.h   | 152 ++++++++
-> >  include/linux/soc/mediatek/mtk_wed.h         |  29 ++
-> >  5 files changed, 547 insertions(+), 1 deletion(-)
-> >  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> >  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
-> >=20
-> > diff --git a/drivers/net/ethernet/mediatek/Makefile b/drivers/net/ether=
-net/mediatek/Makefile
-> > index 45ba0970504a..d4bdefa77159 100644
-> > --- a/drivers/net/ethernet/mediatek/Makefile
-> > +++ b/drivers/net/ethernet/mediatek/Makefile
-> > @@ -5,7 +5,7 @@
-> > =20
-> >  obj-$(CONFIG_NET_MEDIATEK_SOC) +=3D mtk_eth.o
-> >  mtk_eth-y :=3D mtk_eth_soc.o mtk_sgmii.o mtk_eth_path.o mtk_ppe.o mtk_=
-ppe_debugfs.o mtk_ppe_offload.o
-> > -mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed.o
-> > +mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed.o mtk_wed_mcu.o
-> >  ifdef CONFIG_DEBUG_FS
-> >  mtk_eth-$(CONFIG_NET_MEDIATEK_SOC_WED) +=3D mtk_wed_debugfs.o
-> >  endif
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/=
-ethernet/mediatek/mtk_wed_mcu.c
-> > new file mode 100644
-> > index 000000000000..20987eecfb52
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> > @@ -0,0 +1,364 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/* Copyright (C) 2022 MediaTek Inc.
-> > + *
-> > + * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-> > + *	   Sujuan Chen <sujuan.chen@mediatek.com>
-> > + */
-> > +
-> > +#include <linux/firmware.h>
-> > +#include <linux/of_address.h>
-> > +#include <linux/of_reserved_mem.h>
-> > +#include <linux/mfd/syscon.h>
-> > +#include <linux/soc/mediatek/mtk_wed.h>
-> > +
-> > +#include "mtk_wed_regs.h"
-> > +#include "mtk_wed_wo.h"
-> > +#include "mtk_wed.h"
-> > +
-> > +static u32 wo_r32(struct mtk_wed_wo *wo, u32 reg)
-> > +{
-> > +	u32 val;
-> > +
-> > +	if (regmap_read(wo->boot, reg, &val))
-> > +		val =3D ~0;
-> > +
-> > +	return val;
-> > +}
-> > +
-> > +static void wo_w32(struct mtk_wed_wo *wo, u32 reg, u32 val)
-> > +{
-> > +	regmap_write(wo->boot, reg, val);
-> > +}
-> > +
-> > +static struct sk_buff *
-> > +mtk_wed_mcu_msg_alloc(const void *data, int data_len)
-> > +{
-> > +	int length =3D sizeof(struct mtk_wed_mcu_hdr) + data_len;
-> > +	struct sk_buff *skb;
-> > +
-> > +	skb =3D alloc_skb(length, GFP_KERNEL);
-> > +	if (!skb)
-> > +		return NULL;
-> > +
-> > +	memset(skb->head, 0, length);
-> > +	skb_reserve(skb, sizeof(struct mtk_wed_mcu_hdr));
-> > +	if (data && data_len)
-> > +		skb_put_data(skb, data, data_len);
-> > +
-> > +	return skb;
-> > +}
-> > +
-> > +static struct sk_buff *
-> > +mtk_wed_mcu_get_response(struct mtk_wed_wo *wo, unsigned long expires)
-> > +{
-> > +	if (!time_is_after_jiffies(expires))
-> > +		return NULL;
-> > +
-> > +	wait_event_timeout(wo->mcu.wait, !skb_queue_empty(&wo->mcu.res_q),
-> > +			   expires - jiffies);
-> > +	return skb_dequeue(&wo->mcu.res_q);
-> > +}
-> > +
-> > +void mtk_wed_mcu_rx_event(struct mtk_wed_wo *wo, struct sk_buff *skb)
-> > +{
-> > +	skb_queue_tail(&wo->mcu.res_q, skb);
-> > +	wake_up(&wo->mcu.wait);
-> > +}
-> > +
-> > +void mtk_wed_mcu_rx_unsolicited_event(struct mtk_wed_wo *wo,
-> > +				      struct sk_buff *skb)
-> > +{
-> > +	struct mtk_wed_mcu_hdr *hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
-> > +
-> > +	switch (hdr->cmd) {
-> > +	case MTK_WED_WO_EVT_LOG_DUMP: {
-> > +		const char *msg =3D (const char *)(skb->data + sizeof(*hdr));
-> > +
-> > +		dev_notice(wo->hw->dev, "%s\n", msg);
-> > +		break;
-> > +	}
-> > +	case MTK_WED_WO_EVT_PROFILING: {
-> > +		struct mtk_wed_wo_log_info *info;
-> > +		u32 count =3D (skb->len - sizeof(*hdr)) / sizeof(*info);
-> > +		int i;
-> > +
-> > +		info =3D (struct mtk_wed_wo_log_info *)(skb->data + sizeof(*hdr));
-> > +		for (i =3D 0 ; i < count ; i++)
-> > +			dev_notice(wo->hw->dev,
-> > +				   "SN:%u latency: total=3D%u, rro:%u, mod:%u\n",
-> > +				   le32_to_cpu(info[i].sn),
-> > +				   le32_to_cpu(info[i].total),
-> > +				   le32_to_cpu(info[i].rro),
-> > +				   le32_to_cpu(info[i].mod));
-> > +		break;
-> > +	}
-> > +	case MTK_WED_WO_EVT_RXCNT_INFO:
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +
-> > +	dev_kfree_skb(skb);
-> > +}
-> > +
-> > +static int
-> > +mtk_wed_mcu_skb_send_msg(struct mtk_wed_wo *wo, struct sk_buff *skb,
-> > +			 int id, int cmd, u16 *wait_seq, bool wait_resp)
-> > +{
-> > +	struct mtk_wed_mcu_hdr *hdr;
-> > +
-> > +	/* TODO: make it dynamic based on cmd */
-> > +	wo->mcu.timeout =3D 20 * HZ;
-> > +
-> > +	hdr =3D (struct mtk_wed_mcu_hdr *)skb_push(skb, sizeof(*hdr));
-> > +	hdr->cmd =3D cmd;
-> > +	hdr->length =3D cpu_to_le16(skb->len);
-> > +
-> > +	if (wait_resp && wait_seq) {
-> > +		u16 seq =3D ++wo->mcu.seq;
-> > +
-> > +		if (!seq)
-> > +			seq =3D ++wo->mcu.seq;
-> > +		*wait_seq =3D seq;
-> > +
-> > +		hdr->flag |=3D cpu_to_le16(MTK_WED_WARP_CMD_FLAG_NEED_RSP);
-> > +		hdr->seq =3D cpu_to_le16(seq);
-> > +	}
-> > +	if (id =3D=3D MTK_WED_MODULE_ID_WO)
-> > +		hdr->flag |=3D cpu_to_le16(MTK_WED_WARP_CMD_FLAG_FROM_TO_WO);
-> > +
-> > +	dev_kfree_skb(skb);
-> > +	return 0;
-> > +}
-> > +
-> > +static int
-> > +mtk_wed_mcu_parse_response(struct mtk_wed_wo *wo, struct sk_buff *skb,
-> > +			   int cmd, int seq)
-> > +{
-> > +	struct mtk_wed_mcu_hdr *hdr;
-> > +
-> > +	if (!skb) {
-> > +		dev_err(wo->hw->dev, "Message %08x (seq %d) timeout\n",
-> > +			cmd, seq);
-> > +		return -ETIMEDOUT;
-> > +	}
-> > +
-> > +	hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
-> > +	if (le16_to_cpu(hdr->seq) !=3D seq)
-> > +		return -EAGAIN;
-> > +
-> > +	skb_pull(skb, sizeof(*hdr));
-> > +	switch (cmd) {
-> > +	case MTK_WED_WO_CMD_RXCNT_INFO:
-> > +	default:
-> > +		break;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
-> > +			 const void *data, int len, bool wait_resp)
-> > +{
-> > +	unsigned long expires;
-> > +	struct sk_buff *skb;
-> > +	u16 seq;
-> > +	int ret;
-> > +
-> > +	skb =3D mtk_wed_mcu_msg_alloc(data, len);
-> > +	if (!skb)
-> > +		return -ENOMEM;
-> > +
-> > +	mutex_lock(&wo->mcu.mutex);
-> > +
-> > +	ret =3D mtk_wed_mcu_skb_send_msg(wo, skb, id, cmd, &seq, wait_resp);
-> > +	if (ret || !wait_resp)
-> > +		goto unlock;
-> > +
-> > +	expires =3D jiffies + wo->mcu.timeout;
-> > +	do {
-> > +		skb =3D mtk_wed_mcu_get_response(wo, expires);
-> > +		ret =3D mtk_wed_mcu_parse_response(wo, skb, cmd, seq);
-> > +		dev_kfree_skb(skb);
-> > +	} while (ret =3D=3D -EAGAIN);
-> > +
-> > +unlock:
-> > +	mutex_unlock(&wo->mcu.mutex);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int
-> > +mtk_wed_get_memory_region(struct mtk_wed_wo *wo,
-> > +			  struct mtk_wed_wo_memory_region *region)
-> > +{
-> > +	struct reserved_mem *rmem;
-> > +	struct device_node *np;
-> > +	int index;
-> > +
-> > +	index =3D of_property_match_string(wo->hw->node, "memory-region-names=
-",
-> > +					 region->name);
-> > +	if (index < 0)
-> > +		return index;
-> > +
-> > +	np =3D of_parse_phandle(wo->hw->node, "memory-region", index);
-> > +	if (!np)
-> > +		return -ENODEV;
-> > +
-> > +	rmem =3D of_reserved_mem_lookup(np);
-> > +	of_node_put(np);
-> > +
-> > +	if (!rmem)
-> > +		return -ENODEV;
-> > +
-> > +	region->phy_addr =3D rmem->base;
-> > +	region->size =3D rmem->size;
-> > +	region->addr =3D devm_ioremap(wo->hw->dev, region->phy_addr, region->=
-size);
-> > +	if (!region->addr)
-> > +		return -EINVAL;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int
-> > +mtk_wed_mcu_run_firmware(struct mtk_wed_wo *wo, const struct firmware =
-*fw,
-> > +			 struct mtk_wed_wo_memory_region *region)
-> > +{
-> > +	const u8 *first_region_ptr, *region_ptr, *trailer_ptr, *ptr =3D fw->d=
-ata;
-> > +	const struct mtk_wed_fw_trailer *trailer;
-> > +	const struct mtk_wed_fw_region *fw_region;
-> > +
-> > +	trailer_ptr =3D fw->data + fw->size - sizeof(*trailer);
-> > +	trailer =3D (const struct mtk_wed_fw_trailer *)trailer_ptr;
-> > +	region_ptr =3D trailer_ptr - trailer->num_region * sizeof(*fw_region);
-> > +	first_region_ptr =3D region_ptr;
-> > +
-> > +	while (region_ptr < trailer_ptr) {
-> > +		u32 length;
-> > +
-> > +		fw_region =3D (const struct mtk_wed_fw_region *)region_ptr;
-> > +		length =3D le32_to_cpu(fw_region->len);
-> > +
-> > +		if (region->phy_addr !=3D le32_to_cpu(fw_region->addr))
-> > +			goto next;
-> > +
-> > +		if (region->size < length)
-> > +			goto next;
-> > +
-> > +		if (first_region_ptr < ptr + length)
-> > +			goto next;
-> > +
-> > +		if (region->shared && region->consumed)
-> > +			return 0;
-> > +
-> > +		if (!region->shared || !region->consumed) {
-> > +			memcpy_toio(region->addr, ptr, length);
-> > +			region->consumed =3D true;
-> > +			return 0;
-> > +		}
-> > +next:
-> > +		region_ptr +=3D sizeof(*fw_region);
-> > +		ptr +=3D length;
-> > +	}
-> > +
-> > +	return -EINVAL;
-> > +}
-> > +
-> > +static int
-> > +mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
-> > +{
-> > +	static struct mtk_wed_wo_memory_region mem_region[] =3D {
-> > +		[MTK_WED_WO_REGION_EMI] =3D {
-> > +			.name =3D "wo-emi",
-> > +		},
-> > +		[MTK_WED_WO_REGION_ILM] =3D {
-> > +			.name =3D "wo-ilm",
-> > +		},
-> > +		[MTK_WED_WO_REGION_DATA] =3D {
-> > +			.name =3D "wo-data",
-> > +			.shared =3D true,
-> > +		},
-> > +	};
-> > +	const struct mtk_wed_fw_trailer *trailer;
-> > +	const struct firmware *fw;
-> > +	const char *fw_name;
-> > +	u32 val, boot_cr;
-> > +	int ret, i;
-> > +
-> > +	/* load firmware region metadata */
-> > +	for (i =3D 0; i < ARRAY_SIZE(mem_region); i++) {
-> > +		ret =3D mtk_wed_get_memory_region(wo, &mem_region[i]);
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> > +
-> > +	wo->boot =3D syscon_regmap_lookup_by_phandle(wo->hw->node,
-> > +						   "mediatek,wo-boot");
-> > +	if (IS_ERR_OR_NULL(wo->boot))
-> > +		return PTR_ERR(wo->boot);
-> > +
-> > +	/* set dummy cr */
-> > +	wed_w32(wo->hw->wed_dev, MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL,
-> > +		wo->hw->index + 1);
-> > +
-> > +	/* load firmware */
-> > +	fw_name =3D wo->hw->index ? MT7986_FIRMWARE_WO1 : MT7986_FIRMWARE_WO0;
-> > +	ret =3D request_firmware(&fw, fw_name, wo->hw->dev);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	trailer =3D (void *)(fw->data + fw->size -
-> > +			   sizeof(struct mtk_wed_fw_trailer));
-> > +	dev_info(wo->hw->dev,
-> > +		 "MTK WED WO Firmware Version: %.10s, Build Time: %.15s\n",
-> > +		 trailer->fw_ver, trailer->build_date);
-> > +	dev_info(wo->hw->dev, "MTK WED WO Chid ID %02x Region %d\n",
->=20
-> -Chid
-> +Chip
-> ?
+Elvis Wang (2):
+  dt-bingings: gce: add gce header file for mt8188
+  dt-bindings: mailbox: mediatek,gce-mailbox: add mt8188 compatible name
 
-ack, I will fix it.
+ .../mailbox/mediatek,gce-mailbox.yaml         |   1 +
+ include/dt-bindings/gce/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
+ 2 files changed, 967 insertions(+)
+ create mode 100644 include/dt-bindings/gce/mediatek,mt8188-gce.h
 
-Regards,
-Lorenzo
+-- 
+2.18.0
 
->=20
->=20
-> > +		 trailer->chip_id, trailer->num_region);
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(mem_region); i++) {
-> > +		ret =3D mtk_wed_mcu_run_firmware(wo, fw, &mem_region[i]);
-> > +		if (ret)
-> > +			goto out;
-> > +	}
-> > +
-> > +	/* set the start address */
-> > +	boot_cr =3D wo->hw->index ? MTK_WO_MCU_CFG_LS_WA_BOOT_ADDR_ADDR
-> > +				: MTK_WO_MCU_CFG_LS_WM_BOOT_ADDR_ADDR;
-> > +	wo_w32(wo, boot_cr, mem_region[MTK_WED_WO_REGION_EMI].phy_addr >> 16);
-> > +	/* wo firmware reset */
-> > +	wo_w32(wo, MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR, 0xc00);
-> > +
-> > +	val =3D wo_r32(wo, MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR);
-> > +	val |=3D wo->hw->index ? MTK_WO_MCU_CFG_LS_WF_WM_WA_WA_CPU_RSTB_MASK
-> > +			     : MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK;
-> > +	wo_w32(wo, MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR, val);
-> > +out:
-> > +	release_firmware(fw);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +int mtk_wed_mcu_init(struct mtk_wed_wo *wo)
-> > +{
-> > +	u32 val;
-> > +	int ret;
-> > +
-> > +	skb_queue_head_init(&wo->mcu.res_q);
-> > +	init_waitqueue_head(&wo->mcu.wait);
-> > +	mutex_init(&wo->mcu.mutex);
-> > +
-> > +	ret =3D mtk_wed_mcu_load_firmware(wo);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	do {
-> > +		/* get dummy cr */
-> > +		val =3D wed_r32(wo->hw->wed_dev,
-> > +			      MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL);
-> > +	} while (val && !time_after(jiffies, jiffies + MTK_FW_DL_TIMEOUT));
-> > +
-> > +	return val ? -EBUSY : 0;
-> > +}
-> > +
-> > +MODULE_FIRMWARE(MT7986_FIRMWARE_WO0);
-> > +MODULE_FIRMWARE(MT7986_FIRMWARE_WO1);
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net=
-/ethernet/mediatek/mtk_wed_regs.h
-> > index e270fb336143..c940b3bb215b 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> > @@ -152,6 +152,7 @@ struct mtk_wdma_desc {
-> > =20
-> >  #define MTK_WED_RING_RX(_n)				(0x400 + (_n) * 0x10)
-> > =20
-> > +#define MTK_WED_SCR0					0x3c0
-> >  #define MTK_WED_WPDMA_INT_TRIGGER			0x504
-> >  #define MTK_WED_WPDMA_INT_TRIGGER_RX_DONE		BIT(1)
-> >  #define MTK_WED_WPDMA_INT_TRIGGER_TX_DONE		GENMASK(5, 4)
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/e=
-thernet/mediatek/mtk_wed_wo.h
-> > new file mode 100644
-> > index 000000000000..2ef3ccdec5bf
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-> > @@ -0,0 +1,152 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/* Copyright (C) 2022 Lorenzo Bianconi <lorenzo@kernel.org>  */
-> > +
-> > +#ifndef __MTK_WED_WO_H
-> > +#define __MTK_WED_WO_H
-> > +
-> > +#include <linux/skbuff.h>
-> > +#include <linux/netdevice.h>
-> > +
-> > +struct mtk_wed_hw;
-> > +
-> > +struct mtk_wed_mcu_hdr {
-> > +	/* DW0 */
-> > +	u8 version;
-> > +	u8 cmd;
-> > +	__le16 length;
-> > +
-> > +	/* DW1 */
-> > +	__le16 seq;
-> > +	__le16 flag;
-> > +
-> > +	/* DW2 */
-> > +	__le32 status;
-> > +
-> > +	/* DW3 */
-> > +	u8 rsv[20];
-> > +};
-> > +
-> > +struct mtk_wed_wo_log_info {
-> > +	__le32 sn;
-> > +	__le32 total;
-> > +	__le32 rro;
-> > +	__le32 mod;
-> > +};
-> > +
-> > +enum mtk_wed_wo_event {
-> > +	MTK_WED_WO_EVT_LOG_DUMP		=3D 0x1,
-> > +	MTK_WED_WO_EVT_PROFILING	=3D 0x2,
-> > +	MTK_WED_WO_EVT_RXCNT_INFO	=3D 0x3,
-> > +};
-> > +
-> > +#define MTK_WED_MODULE_ID_WO		1
-> > +#define MTK_FW_DL_TIMEOUT		(4 * HZ)
-> > +#define MTK_WOCPU_TIMEOUT		(2 * HZ)
-> > +
-> > +enum {
-> > +	MTK_WED_WARP_CMD_FLAG_RSP		=3D BIT(0),
-> > +	MTK_WED_WARP_CMD_FLAG_NEED_RSP		=3D BIT(1),
-> > +	MTK_WED_WARP_CMD_FLAG_FROM_TO_WO	=3D BIT(2),
-> > +};
-> > +
-> > +enum {
-> > +	MTK_WED_WO_REGION_EMI,
-> > +	MTK_WED_WO_REGION_ILM,
-> > +	MTK_WED_WO_REGION_DATA,
-> > +	__MTK_WED_WO_REGION_MAX,
-> > +};
-> > +
-> > +enum mtk_wed_dummy_cr_idx {
-> > +	MTK_WED_DUMMY_CR_FWDL,
-> > +	MTK_WED_DUMMY_CR_WO_STATUS,
-> > +};
-> > +
-> > +#define MT7986_FIRMWARE_WO0	"mediatek/mt7986_wo_0.bin"
-> > +#define MT7986_FIRMWARE_WO1	"mediatek/mt7986_wo_1.bin"
-> > +
-> > +#define MTK_WO_MCU_CFG_LS_BASE				0 /* XXX: 0x15194000 */
-> > +#define MTK_WO_MCU_CFG_LS_HW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x00=
-0)
-> > +#define MTK_WO_MCU_CFG_LS_FW_VER_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x00=
-4)
-> > +#define MTK_WO_MCU_CFG_LS_CFG_DBG1_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x=
-00c)
-> > +#define MTK_WO_MCU_CFG_LS_CFG_DBG2_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x=
-010)
-> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_ADDR			(MTK_WO_MCU_CFG_LS_BASE + 0x0=
-14)
-> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_SET_ADDR		(MTK_WO_MCU_CFG_LS_BASE + =
-0x018)
-> > +#define MTK_WO_MCU_CFG_LS_WF_MCCR_CLR_ADDR		(MTK_WO_MCU_CFG_LS_BASE + =
-0x01c)
-> > +#define MTK_WO_MCU_CFG_LS_WF_MCU_CFG_WM_WA_ADDR		(MTK_WO_MCU_CFG_LS_BA=
-SE + 0x050)
-> > +#define MTK_WO_MCU_CFG_LS_WM_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE +=
- 0x060)
-> > +#define MTK_WO_MCU_CFG_LS_WA_BOOT_ADDR_ADDR		(MTK_WO_MCU_CFG_LS_BASE +=
- 0x064)
-> > +
-> > +#define MTK_WO_MCU_CFG_LS_WF_WM_WA_WM_CPU_RSTB_MASK	BIT(5)
-> > +#define MTK_WO_MCU_CFG_LS_WF_WM_WA_WA_CPU_RSTB_MASK	BIT(0)
-> > +
-> > +struct mtk_wed_wo_memory_region {
-> > +	const char *name;
-> > +	void __iomem *addr;
-> > +	phys_addr_t phy_addr;
-> > +	u32 size;
-> > +	bool shared:1;
-> > +	bool consumed:1;
-> > +};
-> > +
-> > +struct mtk_wed_fw_region {
-> > +	__le32 decomp_crc;
-> > +	__le32 decomp_len;
-> > +	__le32 decomp_blk_sz;
-> > +	u8 rsv0[4];
-> > +	__le32 addr;
-> > +	__le32 len;
-> > +	u8 feature_set;
-> > +	u8 rsv1[15];
-> > +} __packed;
-> > +
-> > +struct mtk_wed_fw_trailer {
-> > +	u8 chip_id;
-> > +	u8 eco_code;
-> > +	u8 num_region;
-> > +	u8 format_ver;
-> > +	u8 format_flag;
-> > +	u8 rsv[2];
-> > +	char fw_ver[10];
-> > +	char build_date[15];
-> > +	u32 crc;
-> > +};
-> > +
-> > +struct mtk_wed_wo {
-> > +	struct mtk_wed_hw *hw;
-> > +	struct regmap *boot;
-> > +
-> > +	struct {
-> > +		struct mutex mutex;
-> > +		int timeout;
-> > +		u16 seq;
-> > +
-> > +		struct sk_buff_head res_q;
-> > +		wait_queue_head_t wait;
-> > +	} mcu;
-> > +};
-> > +
-> > +static inline int
-> > +mtk_wed_mcu_check_msg(struct mtk_wed_wo *wo, struct sk_buff *skb)
-> > +{
-> > +	struct mtk_wed_mcu_hdr *hdr =3D (struct mtk_wed_mcu_hdr *)skb->data;
-> > +
-> > +	if (hdr->version)
-> > +		return -EINVAL;
-> > +
-> > +	if (skb->len < sizeof(*hdr))
-> > +		return -EINVAL;
-> > +
-> > +	if (skb->len !=3D le16_to_cpu(hdr->length))
-> > +		return -EINVAL;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +void mtk_wed_mcu_rx_event(struct mtk_wed_wo *wo, struct sk_buff *skb);
-> > +void mtk_wed_mcu_rx_unsolicited_event(struct mtk_wed_wo *wo,
-> > +				      struct sk_buff *skb);
-> > +int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
-> > +			 const void *data, int len, bool wait_resp);
-> > +int mtk_wed_mcu_init(struct mtk_wed_wo *wo);
-> > +
-> > +#endif /* __MTK_WED_WO_H */
-> > diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/m=
-ediatek/mtk_wed.h
-> > index 4450c8b7a1cb..2cc2f1e43ba9 100644
-> > --- a/include/linux/soc/mediatek/mtk_wed.h
-> > +++ b/include/linux/soc/mediatek/mtk_wed.h
-> > @@ -11,6 +11,35 @@
-> >  struct mtk_wed_hw;
-> >  struct mtk_wdma_desc;
-> > =20
-> > +enum mtk_wed_wo_cmd {
-> > +	MTK_WED_WO_CMD_WED_CFG,
-> > +	MTK_WED_WO_CMD_WED_RX_STAT,
-> > +	MTK_WED_WO_CMD_RRO_SER,
-> > +	MTK_WED_WO_CMD_DBG_INFO,
-> > +	MTK_WED_WO_CMD_DEV_INFO,
-> > +	MTK_WED_WO_CMD_BSS_INFO,
-> > +	MTK_WED_WO_CMD_STA_REC,
-> > +	MTK_WED_WO_CMD_DEV_INFO_DUMP,
-> > +	MTK_WED_WO_CMD_BSS_INFO_DUMP,
-> > +	MTK_WED_WO_CMD_STA_REC_DUMP,
-> > +	MTK_WED_WO_CMD_BA_INFO_DUMP,
-> > +	MTK_WED_WO_CMD_FBCMD_Q_DUMP,
-> > +	MTK_WED_WO_CMD_FW_LOG_CTRL,
-> > +	MTK_WED_WO_CMD_LOG_FLUSH,
-> > +	MTK_WED_WO_CMD_CHANGE_STATE,
-> > +	MTK_WED_WO_CMD_CPU_STATS_ENABLE,
-> > +	MTK_WED_WO_CMD_CPU_STATS_DUMP,
-> > +	MTK_WED_WO_CMD_EXCEPTION_INIT,
-> > +	MTK_WED_WO_CMD_PROF_CTRL,
-> > +	MTK_WED_WO_CMD_STA_BA_DUMP,
-> > +	MTK_WED_WO_CMD_BA_CTRL_DUMP,
-> > +	MTK_WED_WO_CMD_RXCNT_CTRL,
-> > +	MTK_WED_WO_CMD_RXCNT_INFO,
-> > +	MTK_WED_WO_CMD_SET_CAP,
-> > +	MTK_WED_WO_CMD_CCIF_RING_DUMP,
-> > +	MTK_WED_WO_CMD_WED_END
-> > +};
-> > +
-> >  enum mtk_wed_bus_tye {
-> >  	MTK_WED_BUS_PCIE,
-> >  	MTK_WED_BUS_AXI,
-> > --=20
-> > 2.38.1
-> >=20
-> >=20
-
---VKqrjdcuJRZc+ap5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2TNrAAKCRA6cBh0uS2t
-rBmzAP0Rwq2n8F4Bnoh5jOaoXhZGRo9bD9JsepZRBpC+wyefzQD+JM71oiwGJ3Ne
-+IoIUY21ljdFS7bzKvt8kLxL/crihwU=
-=bEN6
------END PGP SIGNATURE-----
-
---VKqrjdcuJRZc+ap5--
 
