@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDCDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Nov 2022 22:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54546C4167B
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Nov 2022 22:37:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gzzo4SpGoiw63l9dMV1sVeSFU5uHz4LE5b222yDgj/k=; b=PcnXAq0tI+LsJ63ZJVXXsN6hP5
-	qu9LdP6OZlqyKULl+T8na/k6Zjgh/Xw8dBU9q+PEl2g7WWGM0u6DlJN6LctyhgAKvwcudMO4aQsGT
-	FQ1CWX2X0h+vmp0tHaXY7sxW6aJ8ioCVHiRiNLJA7XqwPqDDC1hhJked33zOnk4LP2N1c3gLKSjBj
-	23wYMYTvNuo563qrKurNTkgc11dyTICDbENTkmXh+lkeRtrHgzUz0pTjhCJa262bDs5TwnyRJC4qQ
-	rTOY5rUtbeiS+FuKWl0xaRtqfdwM5C6W1we52WaaipnymQ1Fz1FyMjAKHqQUmFPNRkk++GetBjQJO
-	8didqxHw==;
+	bh=Vha6l5/R6y9hIXiMXJ5jKcqQLuxX7o7wXWqhZuvi4Xs=; b=F3U2b0xl8f4c2evQnF9/cH8qOy
+	q6rzPsPip0DBXpjtpSMXXXQb98JctkoG4QH3k99/dV6BYQVlKvZTJ2FzV9jt1y11u3xdF4qTISeau
+	rXZQDk5Vf1+Pmiy4i0sGBAmzKn7eCYDbjEeaeFkPqOuOjnvyEjvU8P152GshNK/6WA0CUJbng//9y
+	aYYfyp2wmd+iHIGPihIgfUJyXEHA0/H92FfPQAuo6ybRI7GKX/6h0D9yE6nx8JxWZMEq/jt1epAxD
+	c+4dXhHaQygO1p0GiiESXMMXz4aFtUplHWqyfdBq4VJwZ8N4T8TBZEKJyZtCMlvFFLQxCledpuM1C
+	inRL5Jig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orRmh-007KD1-D9; Sat, 05 Nov 2022 22:37:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1orRmk-007KEz-7t; Sat, 05 Nov 2022 22:37:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orRme-007KAu-8k
-	for linux-mediatek@lists.infradead.org; Sat, 05 Nov 2022 22:37:01 +0000
+	id 1orRmi-007KDL-4u
+	for linux-mediatek@lists.infradead.org; Sat, 05 Nov 2022 22:37:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D0B3560B98;
-	Sat,  5 Nov 2022 22:36:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFD30C433D6;
-	Sat,  5 Nov 2022 22:36:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8B01160B78;
+	Sat,  5 Nov 2022 22:37:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94B3FC433C1;
+	Sat,  5 Nov 2022 22:37:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667687819;
-	bh=/rWXPCaXYKqDtuzw5QKoWJBsLCAYOuMK0PuW5Rz4gFI=;
+	s=k20201202; t=1667687823;
+	bh=aekRNA0fmpdgo5jsqTiIl1w1VyTVSk/fDt6LH0NC+Ww=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dvCRLPrtP/8yYv1+Qp6VioiZG2zdX7UKrR1gFZQjayH8ZqQUQOM+t+pZfVOc/vIqO
-	 C/W/mHgO2O1hN3BCo+ZPB+sCfSwVx9MyqEWpRfcuY4S3/uk0+6+wRAGPkevBoN7v8F
-	 D4DVh+3386nm9xVEyL7Fov5hsG6/T08b5lcu12y7+5s4e+LDq6S6xa3yg9K7OahlPn
-	 M74x4c4qWtY1a0J1AyaYVwYHzehp7/AMt3aa/CqySF1TfCt4Rc4GatG7nTNyKDmFMp
-	 8XxjR96BOkjn5sRk4B0lX47y8XAi1gGBQ8MFPwl5RpUh3lamCrCfsjEmE/ff2jzXkL
-	 pJ1eKIf3CtyVw==
+	b=c+EQiRh8VqWSAoT55EMiJO9TWGVIgkdg6T0N3K2j+9q6Z3pGBHyce41qCAWnbngf7
+	 vC3upkSEoU9D6Ja5wrpwSZOz/seUi26rdDLyc6UL6Ip5Tlxv0TIzeHnuKX8B1gE16U
+	 KWk5GKr9nJu/bXRFHo9BrUwXLacPfTC6D6F05H6t1iVZbilGhYOvJIqQ/vuOTwr126
+	 /Sc9OSdnrx13b/8w9RuR2lPe2LSwkyrZYhyhk9J4w1mywZeEkYMSDGR2PDjYyV1oDb
+	 iQ+MiipgLF06b9q+sJBeOExWp2i/29zIxMYYnkW0B94FvH5IzMlZcs2tZIANHkvJAl
+	 EUpXxR06kFwtA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -64,17 +64,18 @@ Cc: nbd@nbd.name,
 	daniel@makrotopia.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v4 net-next 7/8] net: ethernet: mtk_wed: add rx mib counters
-Date: Sat,  5 Nov 2022 23:36:22 +0100
-Message-Id: <3ba5ababadc1cd2200fa80b8a310380bdc6c0958.1667687249.git.lorenzo@kernel.org>
+Subject: [PATCH v4 net-next 8/8] MAINTAINERS: update MEDIATEK ETHERNET entry
+Date: Sat,  5 Nov 2022 23:36:23 +0100
+Message-Id: <d9d798bad6835d031ca0135ee29469c44ba73bf0.1667687249.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <cover.1667687249.git.lorenzo@kernel.org>
 References: <cover.1667687249.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221105_153700_403393_4BE58765 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20221105_153704_243141_4FD2A173 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,154 +90,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce WED RX MIB counters support available on MT7986a SoC.
+Update MEDIATEK ETHERNET driver maintainer file enty adding myself to
+maintainers list
 
-Tested-by: Daniel Golle <daniel@makrotopia.org>
-Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Acked-by: Felix Fietkau <nbd@nbd.name>
+Acked-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/ethernet/mediatek/mtk_wed_debugfs.c   | 87 +++++++++++++++++++
- 1 file changed, 87 insertions(+)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-index f420f187e837..56f663439721 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2021 Felix Fietkau <nbd@nbd.name> */
- 
- #include <linux/seq_file.h>
-+#include <linux/soc/mediatek/mtk_wed.h>
- #include "mtk_wed.h"
- #include "mtk_wed_regs.h"
- 
-@@ -18,6 +19,8 @@ enum {
- 	DUMP_TYPE_WDMA,
- 	DUMP_TYPE_WPDMA_TX,
- 	DUMP_TYPE_WPDMA_TXFREE,
-+	DUMP_TYPE_WPDMA_RX,
-+	DUMP_TYPE_WED_RRO,
- };
- 
- #define DUMP_STR(_str) { _str, 0, DUMP_TYPE_STRING }
-@@ -36,6 +39,9 @@ enum {
- 
- #define DUMP_WPDMA_TX_RING(_n) DUMP_RING("WPDMA_TX" #_n, 0, DUMP_TYPE_WPDMA_TX, _n)
- #define DUMP_WPDMA_TXFREE_RING DUMP_RING("WPDMA_RX1", 0, DUMP_TYPE_WPDMA_TXFREE)
-+#define DUMP_WPDMA_RX_RING(_n)	DUMP_RING("WPDMA_RX" #_n, 0, DUMP_TYPE_WPDMA_RX, _n)
-+#define DUMP_WED_RRO_RING(_base)DUMP_RING("WED_RRO_MIOD", MTK_##_base, DUMP_TYPE_WED_RRO)
-+#define DUMP_WED_RRO_FDBK(_base)DUMP_RING("WED_RRO_FDBK", MTK_##_base, DUMP_TYPE_WED_RRO)
- 
- static void
- print_reg_val(struct seq_file *s, const char *name, u32 val)
-@@ -57,6 +63,7 @@ dump_wed_regs(struct seq_file *s, struct mtk_wed_device *dev,
- 				   cur > regs ? "\n" : "",
- 				   cur->name);
- 			continue;
-+		case DUMP_TYPE_WED_RRO:
- 		case DUMP_TYPE_WED:
- 			val = wed_r32(dev, cur->offset);
- 			break;
-@@ -69,6 +76,9 @@ dump_wed_regs(struct seq_file *s, struct mtk_wed_device *dev,
- 		case DUMP_TYPE_WPDMA_TXFREE:
- 			val = wpdma_txfree_r32(dev, cur->offset);
- 			break;
-+		case DUMP_TYPE_WPDMA_RX:
-+			val = wpdma_rx_r32(dev, cur->base, cur->offset);
-+			break;
- 		}
- 		print_reg_val(s, cur->name, val);
- 	}
-@@ -132,6 +142,80 @@ wed_txinfo_show(struct seq_file *s, void *data)
- }
- DEFINE_SHOW_ATTRIBUTE(wed_txinfo);
- 
-+static int
-+wed_rxinfo_show(struct seq_file *s, void *data)
-+{
-+	static const struct reg_dump regs[] = {
-+		DUMP_STR("WPDMA RX"),
-+		DUMP_WPDMA_RX_RING(0),
-+		DUMP_WPDMA_RX_RING(1),
-+
-+		DUMP_STR("WPDMA RX"),
-+		DUMP_WED(WED_WPDMA_RX_D_MIB(0)),
-+		DUMP_WED_RING(WED_WPDMA_RING_RX_DATA(0)),
-+		DUMP_WED(WED_WPDMA_RX_D_PROCESSED_MIB(0)),
-+		DUMP_WED(WED_WPDMA_RX_D_MIB(1)),
-+		DUMP_WED_RING(WED_WPDMA_RING_RX_DATA(1)),
-+		DUMP_WED(WED_WPDMA_RX_D_PROCESSED_MIB(1)),
-+		DUMP_WED(WED_WPDMA_RX_D_COHERENT_MIB),
-+
-+		DUMP_STR("WED RX"),
-+		DUMP_WED_RING(WED_RING_RX_DATA(0)),
-+		DUMP_WED_RING(WED_RING_RX_DATA(1)),
-+
-+		DUMP_STR("WED RRO"),
-+		DUMP_WED_RRO_RING(WED_RROQM_MIOD_CTRL0),
-+		DUMP_WED(WED_RROQM_MID_MIB),
-+		DUMP_WED(WED_RROQM_MOD_MIB),
-+		DUMP_WED(WED_RROQM_MOD_COHERENT_MIB),
-+		DUMP_WED_RRO_FDBK(WED_RROQM_FDBK_CTRL0),
-+		DUMP_WED(WED_RROQM_FDBK_IND_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ENQ_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ANC_MIB),
-+		DUMP_WED(WED_RROQM_FDBK_ANC2H_MIB),
-+
-+		DUMP_STR("WED Route QM"),
-+		DUMP_WED(WED_RTQM_R2H_MIB(0)),
-+		DUMP_WED(WED_RTQM_R2Q_MIB(0)),
-+		DUMP_WED(WED_RTQM_Q2H_MIB(0)),
-+		DUMP_WED(WED_RTQM_R2H_MIB(1)),
-+		DUMP_WED(WED_RTQM_R2Q_MIB(1)),
-+		DUMP_WED(WED_RTQM_Q2H_MIB(1)),
-+		DUMP_WED(WED_RTQM_Q2N_MIB),
-+		DUMP_WED(WED_RTQM_Q2B_MIB),
-+		DUMP_WED(WED_RTQM_PFDBK_MIB),
-+
-+		DUMP_STR("WED WDMA TX"),
-+		DUMP_WED(WED_WDMA_TX_MIB),
-+		DUMP_WED_RING(WED_WDMA_RING_TX),
-+
-+		DUMP_STR("WDMA TX"),
-+		DUMP_WDMA(WDMA_GLO_CFG),
-+		DUMP_WDMA_RING(WDMA_RING_TX(0)),
-+		DUMP_WDMA_RING(WDMA_RING_TX(1)),
-+
-+		DUMP_STR("WED RX BM"),
-+		DUMP_WED(WED_RX_BM_BASE),
-+		DUMP_WED(WED_RX_BM_RX_DMAD),
-+		DUMP_WED(WED_RX_BM_PTR),
-+		DUMP_WED(WED_RX_BM_TKID_MIB),
-+		DUMP_WED(WED_RX_BM_BLEN),
-+		DUMP_WED(WED_RX_BM_STS),
-+		DUMP_WED(WED_RX_BM_INTF2),
-+		DUMP_WED(WED_RX_BM_INTF),
-+		DUMP_WED(WED_RX_BM_ERR_STS),
-+	};
-+	struct mtk_wed_hw *hw = s->private;
-+	struct mtk_wed_device *dev = hw->wed_dev;
-+
-+	if (!dev)
-+		return 0;
-+
-+	dump_wed_regs(s, dev, regs, ARRAY_SIZE(regs));
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(wed_rxinfo);
- 
- static int
- mtk_wed_reg_set(void *data, u64 val)
-@@ -175,4 +259,7 @@ void mtk_wed_hw_add_debugfs(struct mtk_wed_hw *hw)
- 	debugfs_create_u32("regidx", 0600, dir, &hw->debugfs_reg);
- 	debugfs_create_file_unsafe("regval", 0600, dir, hw, &fops_regval);
- 	debugfs_create_file_unsafe("txinfo", 0400, dir, hw, &wed_txinfo_fops);
-+	if (hw->version != 1)
-+		debugfs_create_file_unsafe("rxinfo", 0400, dir, hw,
-+					   &wed_rxinfo_fops);
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 95fc5e1b4548..51be68e90f6c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -12925,6 +12925,7 @@ M:	Felix Fietkau <nbd@nbd.name>
+ M:	John Crispin <john@phrozen.org>
+ M:	Sean Wang <sean.wang@mediatek.com>
+ M:	Mark Lee <Mark-MC.Lee@mediatek.com>
++M:	Lorenzo Bianconi <lorenzo@kernel.org>
+ L:	netdev@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/ethernet/mediatek/
 -- 
 2.38.1
 
