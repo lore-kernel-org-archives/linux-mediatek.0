@@ -4,147 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A42D2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Nov 2022 18:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF592C43217
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Nov 2022 22:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b/ECord+SifV3PIetO4yQ5wLgG/AQqEiLIj3Vn+wRkY=; b=KRVnxkQsJ/YNiClJW9U7dp/Hng
-	FrvOeGQ3WknwmqqsulcpJhZLObrff3WEuZRcsr3W3jiuXNBjcu0hpa1GavrwuV4qOYVUrmQOplnie
-	oN1OoSmK1khqMn7Du1S1GtjiuuT99K09SxuP3lxB51WqB1T9OZDrh0cfdfny0c/B8AkPp57wlYYJ7
-	CR1s4OcOa23YnkEs8n/atZf5tYVwN0S+D0QS92tJFGVExBYnAjEk5ujyYcXVFtOwbRZ60KNmZfOG4
-	q+cX7NBkRqI+a2lm/S6TnU2Js1O9IghcymCrVLxgSjJc5N0KSYTsUvBDTWAdBFoDnAuqaJ8Xhb/Iv
-	gsxSLjIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BQQFa5rAiETHZqyuMJQY6B8pE/A5TPrGPHWZr+P0PCQ=; b=nycXfoped2KE8i3Gvm26CdFArF
+	z5V34Msbqb06Ay1+AyG4h2dWZNIXiAbQzTsXTWvfyUAxJMLQuSG8E1DlqxMh19EirBpzznXG5A9FI
+	qB1S+ZU0bg58JRKOTsltVmxFjeFP5o5K4OR3/HOzKeyqYK8nBnr05pdYsShihmvzf/DUB780kxRLj
+	uuwhnyDBP7YbVY+P2h/a3FnbXPEbaQ12q8UIcLKPjKGZZyEXfsQz02FJvM+iQFRJKNma4cxTBjDYk
+	V3tN9OJD73IpfQntckXzv+76Tu4n9mzhvC3IdgmkvccY+kAb/GoN1kSPm1CYPFskl4w1oJtFfMfka
+	oWtCx7xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orNjs-0071eH-8m; Sat, 05 Nov 2022 18:17:52 +0000
-Received: from mail-bn7nam10on2120.outbound.protection.outlook.com ([40.107.92.120] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1orRmF-007K14-6o; Sat, 05 Nov 2022 22:36:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orNjg-0071bn-Uk; Sat, 05 Nov 2022 18:17:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kgBD7s+ZnaXvhNAlqc4mVGusLb/gMpASS3psjJP1pbupT6A7zZ59JTPiYR0j/wDR3/NBWYUV94iIIXEtUazWbFWktMITHnYKT7Cmg9AkszEwZWQNRWsa8W3IS4eBt6Q7QjtaQs20PSGGGlWQ9kgd92a7ZNQSpPBfBV0tfuuYrtMe3fFdKnwr9YUGTqUgEtxni3hjqQTaZ7AuJVTDe2bv5QnHSPcJX7/qwKyiFO/bobhdneNYbDHVbYnN/31CQfcp20+bTmzIIlSNQUcWhzUMj0syAJ0pjJ4w/2ouqf6O6LqlF0EUwFx/QjQBh6qPsXnNlziXpZ/U+bRvlNN+nyfJvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=b/ECord+SifV3PIetO4yQ5wLgG/AQqEiLIj3Vn+wRkY=;
- b=GWqk4LazEvhdGFDRy85NzMSzBokjvZXc7VfxiGIoaaypyfonwrvGqw+Z/wiqGJW0AOr4sMLmavoA10tkMz+S0G+9eAhV0zbhJSjhB2U27gRLdiWpCLPBXKwV1oJegVSdbkA3JtEro1TFtnJDRQLk15tA/LSQYgLMI+NJtQdUfNCbh/bCL+zKonjtqRPyS7gWCgfLwWfXltugeSEfRFEKHim0rpfiYW4tVEsgX1XcERXeNYMiB4pZ5QrrSKPZiB/xQlbWqIJfRxQQBkBzicPOlYroB2dWWB3Qj3V50BhR9k9s8TK9+xZIz660WbGc1FLUOfa2dt84/CpmJAxs2upjpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=b/ECord+SifV3PIetO4yQ5wLgG/AQqEiLIj3Vn+wRkY=;
- b=S5yp82Bw4WP0m9hJeHZJ7uqgLLmQRoZRfZVFOJiQ4Gx/LiNtilfEZ5Zry44TUC4FnBnPBjR4nhi+d3eQZ/kUsLDqRulvx0bRYLUh+uV461fVaR4douu4qPppQhjaA33gCULaba9TCKgstGDfO9pN6omBxbuMSFZ4K2xKP+MH2xA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by BN0PR10MB4856.namprd10.prod.outlook.com
- (2603:10b6:408:12b::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.25; Sat, 5 Nov
- 2022 18:17:32 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::4780:1359:e037:1626]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::4780:1359:e037:1626%4]) with mapi id 15.20.5791.022; Sat, 5 Nov 2022
- 18:17:32 +0000
-Date: Sat, 5 Nov 2022 11:17:28 -0700
-From: Colin Foster <colin.foster@in-advantage.com>
-To: Rob Herring <robh@kernel.org>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH v2 net-next 3/6] dt-bindings: net: dsa: mediatek,mt7530:
- remove unnecessary dsa-port reference
-Message-ID: <Y2aouEapTNroLcVe@euler>
-References: <20221104045204.746124-1-colin.foster@in-advantage.com>
- <20221104045204.746124-4-colin.foster@in-advantage.com>
- <20221104185343.GC2133300-robh@kernel.org>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221104185343.GC2133300-robh@kernel.org>
-X-ClientProxiedBy: MW4PR04CA0380.namprd04.prod.outlook.com
- (2603:10b6:303:81::25) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
+	id 1orRmD-007K0k-0h
+	for linux-mediatek@lists.infradead.org; Sat, 05 Nov 2022 22:36:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9306260B98;
+	Sat,  5 Nov 2022 22:36:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D12EC433C1;
+	Sat,  5 Nov 2022 22:36:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667687791;
+	bh=4wbJ4V9ftwA4chQ1NoT4hKYIC4+12nuKIWSBJd0mldk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WzPisES4dxeQsw0+FzXV5/k+MFyI/lR8FFMY+E/BC6ZJ4m0zUIbspb8VQ9a8aGJOG
+	 QE8u2jcLgHBzb45z1wG/QnJO3t5amsPgPvEZtoI6tDpJzmAKKMXJ7ro++ndRsu9HCt
+	 s6bFHjxocAsWgkR2fDGiwDnbcS/b4pE6gOaEFOuq7R/mfW0rdWq6wHcivRG82POYUG
+	 Uxkt+EV5phzWQhP4EMTqo9jrSgt1/nCICUgRWBrvrx+X1qZi153L89CmLEn/5dDkUF
+	 ayf+l8+0y67z+1vAUSzcHb6BEKR8s86u77XEEgWqpXe+TnhYq3y4bFbPkiE2qCGdPu
+	 nmwmo9KxeW0IA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com,
+	Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com,
+	ryder.Lee@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	devicetree@vger.kernel.org,
+	robh+dt@kernel.org,
+	daniel@makrotopia.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	angelogioacchino.delregno@collabora.com
+Subject: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
+Date: Sat,  5 Nov 2022 23:36:15 +0100
+Message-Id: <cover.1667687249.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|BN0PR10MB4856:EE_
-X-MS-Office365-Filtering-Correlation-Id: e71bcde8-fde6-4971-42b1-08dabf5a0138
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	jocsqITJaSyhZz/9Sp2wLhJG4FP++guVYgpwtpJbq2FAIMWT3IruoiJs4ZU5L0qtl31qYiZ7NBoD1Uj83tWrc8peH5lLPF0BmxF3fy+mZiKjqPTpP83BuePEwprwQEFhcrSmdXnz7Z3tp24ytVCkhIq2sh6SpMrbyYzCc7uuo95zQ+roKsi7jsPwWKyKFtQcMIBF61tivkYhOivh4Xdnzr1J95x1n82t0SWFDinNPrSMFTEUER8iYtjrbii/HiyZSNfQswZ3uEVgqN0+oGWVJkmQpzYlHIKlQUEUrc7LzqEWkAw0//sO08OZwgow7zNimEenZFlCL5aeWoOs78arKNK8Mgi4+hidtlMHgrqtdFl1mN3OuAG9PKs5pfmepSB4KfhPbdw1rH/xjgfoHE3mRBAqpPagMWUn6/vP264Kh/d0bC2fMGKNzqeJ8/HF+oCoXNG8zFPNAE3E9QPH2HP46irAl4eNye/IVMN6zDBl7HwrIsRsRfl48lbV/xO6N92pU5mXG+VwU+y1KSHokCLg/txZhT8bLhKvvJkPYVn3MvStfC6ATDxfC6rbdvMH3HXZO5Cf3TjEK+iAQM+YiNznOXDjk/MRkV/GRAv00t4iW6BPmxMjjKKsHeuEJnEfn/quczs8isW35UcbP/7rxmOARMADXw91iVGTPPFdshpA1IICvumaXB8NzhJIq9O6I0rvX0GfmJTJ2X+14alRrP8boQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(39830400003)(136003)(346002)(376002)(366004)(396003)(451199015)(478600001)(6486002)(44832011)(8936002)(7416002)(5660300002)(2906002)(316002)(6916009)(54906003)(41300700001)(4326008)(8676002)(66476007)(66556008)(66946007)(83380400001)(38100700002)(6506007)(6666004)(86362001)(186003)(9686003)(6512007)(26005)(33716001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?TzFnMWdLdjZTWjJvV1UwR2xXRzJLeS95aXArdCtkTTBDaEtXZDRFblRHN2hn?=
- =?utf-8?B?WTRkeXNHejdrWlhvQUN3ZndYQldpbFNxMEovMHJ3OUdyWjJrUGI3c3hyN2Jj?=
- =?utf-8?B?eWkrQm0xUXZvT28xeE5XUC96ZkNpck9SZ3pBY3NSOGkwRTYvMEoydUpPRFly?=
- =?utf-8?B?azZIMzVzVytNZ3VKVU5zU2pIbVVHZjB6b3FvVjJkQzA4UVV3cU1tK0Qwb2VU?=
- =?utf-8?B?RmdkejVSQjN2KzNKWnlGaElLd21QYUIzdWtwUWh1dDdvNkdIK2JiV3kzUUlt?=
- =?utf-8?B?dWNEWG5UNzVMMFl4RFRMalk5bE50dHYzQ1U1czFPTG1pTEhPVmhVc1Y3TFd6?=
- =?utf-8?B?UXJYMnpDUHdYNDM4RmM1cHRyS0tUb21JaGZHeEo0L2JpQzBSeklHRThJeG9H?=
- =?utf-8?B?eFM4UENGUWllT2ZFQk5la0F5TGlCMGNtcUNPbDlKT1dWS3paUWJ6L0QwTW1z?=
- =?utf-8?B?N1ZBNVdzMEJXVkhBSW5zSkNjby9NSEIyZkRIMnpyZnNSeHRKY1pDU2U4b0ZS?=
- =?utf-8?B?NEpyVDEwZEZtc2Zaay9MZnl2WHZFQU5MejA1N1NoejhRblFJVVE5b0FISW0y?=
- =?utf-8?B?UnJzOEZOMk9hTVN5WWVGSUo2WlBTVEhUc2RoUk1DWEkrRkF3K2VuZ1c4bGtY?=
- =?utf-8?B?UklrMFVzY1crSCtyUkF3YlI5dkVMZFZCZkRiQmcrbWU4UmhSM1p0bk5yaUIw?=
- =?utf-8?B?VzBhd0puamVDMkhZSXl4c0RoYUIzSUJBTUNGWDZpZjNHRjh6WXR5eStUaFZ2?=
- =?utf-8?B?bEI1c2FsVlNNb0lCMzltY3RnTFBUV085Uyt4NTV6RG5hU2Zma3FMQmVhSlpo?=
- =?utf-8?B?NEJ4bDV4QWR4bDBaYU02QVZMNnBqSFZyQVd2TzJOLzdxeUtsRmhyU091NEg0?=
- =?utf-8?B?Z2ZaRkFSek01VXBIbXN6ajViL05PUWROTUxuY2o2N2lEelRLRHRXT0Y4NXI3?=
- =?utf-8?B?UWJBSG93ZWczTUZYamxlZitjY2RTZHoyeEszaElWc2pPM3pLSFFLdUxUWjhK?=
- =?utf-8?B?WnhkZGlRY1VyZ2ZiMVlsR3hTWGwzWEZ4NXgwbU9Yek5GS2oyREhWeHZEejRR?=
- =?utf-8?B?MGlTRkw5Q0RQbmVUaDcrcC9QTm90NFovMHFOZWUxenFSQnMxT2ZucUhkaG9u?=
- =?utf-8?B?MEpCOWFoOXZYcUlXNVFWdkN5T0FmNzFRUGsxcXJ3SjRrbGxYSnVjMTNnSDFF?=
- =?utf-8?B?cjdkRkNVaG5oN1J6S2xzcld4am1qcW0zUFlpMUhhYnZobWRWLytVeFdRamFF?=
- =?utf-8?B?Wk5kRmE5bWUyLzYvcE9ialh6Wm1NUk5Sc29BUzB6QklUd2IzNlNKK0dvR0VT?=
- =?utf-8?B?dlpXajBDUjdUUFQrYVA0MDZvZjk1N2VYSFpBRlVOZURqQ01wYzNVY3FNZnY5?=
- =?utf-8?B?OENMZml4cXc0K3pPM1JwYVQ0N3A3RVE3d0M3dW1abDM0RUlzeEwrWG9GVTdh?=
- =?utf-8?B?TVFuSHhYcjVpVFh3MDBFcnBCR2pJRG8yNldaakJqeEFLc21UTHJxa3g3WlFF?=
- =?utf-8?B?UTk4bFVmZXVpdjcvVVdwZ2VwdElMdERuRXNuYUZHQ2xxaFNhZEkwNmwwSllj?=
- =?utf-8?B?Ymhma0pjenpOOXdKajAxUGVwSi9oay9TRGRDMmVPYjhLZVRwWWlLdXhCS3dY?=
- =?utf-8?B?L09jT1NXcHh1MWVWYUg3bHBDZkRjc3REa3R3Vm8vNjZKSXNBUlR0Ums1Y0pG?=
- =?utf-8?B?Sk1yVm5DbVppNVJZdUM4Mnd1TXVhY3Z4RE9lbmtrbDZLb3NRTkI1MzJwY2ZE?=
- =?utf-8?B?Vm9GMzU2T0l2dktleWZxYWdTeGs2ZDlDcVJDOFQ5KzN0Mjg2Z1FWZkdnRk1m?=
- =?utf-8?B?NU4rN1F5d2ZKb0pUMjdOWHpIQUg1M0VNemxqbS9sNXZBaHNqdVB3empBMVY1?=
- =?utf-8?B?dFdjb1NYS1BENk9ibTE4eDN5a1NrNkRKSjk4VUxtajVEV1BwRHVwa3NHMVBl?=
- =?utf-8?B?Vm1XOFM0M0lnREtaVFR1YkJ1cEcrWGVVcWQwaWYxWTVpaWp4RHRSVGEzenhE?=
- =?utf-8?B?T2N5S2lsR2dRVGlTcW5EVGkrMmJxTCs3bG9DYmNzRmwxV2ttVi9xcFJwU2pv?=
- =?utf-8?B?Vm9xQmtZZWJScFpLNm5zZDdEMzRsWmhyRDdlRXp5MVVnTjR0b0gwaFd6ZFEv?=
- =?utf-8?B?QVBMTUlVQkRtOS9QUnVhakN3a04yUHRGK3FUS3lKNXlhdnJneDhPNUZZVTJi?=
- =?utf-8?B?cFE9PQ==?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e71bcde8-fde6-4971-42b1-08dabf5a0138
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Nov 2022 18:17:31.7584
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: a/VcBpmXbdeXZJw+Q0ZxEUqCeQ7i/DzHUO0lLbTSGHIVRRvZX3xdQa4T4jZ2XT9G/+9dsm6LABvUMqjIePU0hGZGg97xP4q6FpKAc1AQbBY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB4856
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221105_111741_037179_3530FE83 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20221105_153633_177254_7CE74BA2 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,63 +87,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+Similar to TX counterpart available on MT7622 and MT7986, introduce
+RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
+offload traffic received by wlan nic to the wired interfaces (lan/wan).
 
-On Fri, Nov 04, 2022 at 01:53:43PM -0500, Rob Herring wrote:
-> On Thu, Nov 03, 2022 at 09:52:01PM -0700, Colin Foster wrote:
-> > dsa.yaml contains a reference to dsa-port.yaml, so a duplicate reference to
-> > the binding isn't necessary. Remove this unnecessary reference.
-> > 
-> > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> > Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> > Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > ---
-> > 
-> > v1 -> v2
-> >   * Add Reviewed-by
-> > 
-> > ---
-> >  Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 3 ---
-> >  1 file changed, 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > index f2e9ff3f580b..81f291105660 100644
-> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > @@ -159,8 +159,6 @@ patternProperties:
-> >          type: object
-> >          description: Ethernet switch ports
-> >  
-> > -        unevaluatedProperties: false
-> > -
-> 
-> You just allowed this node to have any property.
+Changes since v3:
+- remove reset property in ethsys dts node
+- rely on readx_poll_timeout in wo mcu code
+- fix typos
+- move wo-ccif binding in soc folder
+- use reserved-memory for wo-dlm
+- improve wo-ccif binding
 
-I appreciate your time and help. Thank you. In this case, I think I need
-"unevaluatedProperties: true" so that the ^(ethernet-)?port node can
-get the properties it needs from nodes in dsa... ?
+Changes since v2:
+- rely on of_reserved_mem APIs in mcu code
+- add some dts fixes
+- rename {tx,rx}_wdma in {rx,tx}_wdma
+- update entry in maintainers file
 
-But then I'm not sure how this node worked in the first place. I might
-have misunderstood, but I thought you suggested that if this node had
-unevaluatedProperties: false, it wouldn't be able to look into dsa-port.
+Changes since v1:
+- fix sparse warnings
+- rely on memory-region property in mt7622-wed.yaml
+- some more binding fixes
 
-On the other hand, you did include a lot more information in your
-response to 0/6 of this set, which I have yet to fully absorb.
+Lorenzo Bianconi (7):
+  arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
+    Dispatch
+  dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
+  net: ethernet: mtk_wed: introduce wed wo support
+  net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
+  net: ethernet: mtk_wed: add configure wed wo support
+  net: ethernet: mtk_wed: add rx mib counters
+  MAINTAINERS: update MEDIATEK ETHERNET entry
 
-> 
-> >          properties:
-> >            reg:
-> >              description:
-> > @@ -168,7 +166,6 @@ patternProperties:
-> >                for user ports.
-> >  
-> >          allOf:
-> > -          - $ref: dsa-port.yaml#
-> >            - if:
-> >                required: [ ethernet ]
-> >              then:
-> > -- 
-> > 2.25.1
-> > 
-> > 
+Sujuan Chen (1):
+  net: ethernet: mtk_wed: introduce wed mcu support
+
+ .../arm/mediatek/mediatek,mt7622-wed.yaml     |  52 ++
+ .../soc/mediatek/mediatek,mt7986-wo-ccif.yaml |  51 ++
+ MAINTAINERS                                   |   1 +
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  65 ++
+ drivers/net/ethernet/mediatek/Makefile        |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed.c       | 619 ++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
+ .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 387 +++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 508 ++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 282 ++++++++
+ include/linux/soc/mediatek/mtk_wed.h          | 106 ++-
+ 13 files changed, 2256 insertions(+), 54 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt7986-wo-ccif.yaml
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
+
+-- 
+2.38.1
+
 
