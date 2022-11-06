@@ -4,56 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97911C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 08:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C154CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 08:09:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CwzgypedxlgZw3WEvEFkcsmGoeorFZCgPtvDphQ59OA=; b=3Y84L2bczPueGk
-	+U+EHLhiUmJKYQK3H5g00llKSsms4UgNtTj+Km2p6JNQvcw4fETkxpujsGxls9M4MlLO6Pa5OPNs0
-	CosYTigYKJf5NKfimXP4VEEi9b/8ypLFopCr/hqJR2Wb+8HgdmNVn5ZVn7Kc6jdGWt8URukfrxuUw
-	vJMlnAi6JV7aOqHeE0FlVwlj9zlMiWxQq6NGQTSkQzsX0Am2cdr87HXNQFUNzRpRXVXfggZprwtUT
-	1zzQaMRvRzf9KGkiUbh8rZyJMVXMQRcllq1GUnZKRDUGm/vL/Iee/QcGuIMSNPirdTcMVCRk5pTj6
-	3161aw5G8dOdwsMsUvZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=psAl4xYsagSw7D6c6rdl/M3zRR70g8jwLLUhLUJBJqU=; b=ND5TWyEbfouGDvYCNKJMeE/ygB
+	06bc+ptT0/npRju1Yz6lCFaIo/RcJw8Gtw0mcu00GS7s8zRRRcHo3XiNnmLwFrH1bd8L6xU1qaaZ6
+	q+coUpLQ1J5FwtfSUS2uy57E6AZw8kQoLs8wATN0aJQfqGICDQeRgge8HH8Lt6uarq3LiZbFasc4p
+	rBTJUCf2eXHkGI8/eN1A/+8ejx8IvaaQ4bkoVTy07YQRzylzU8y6F/71tyfxNs5ufoHLFeOd66dwB
+	fCBhOEpjnjnCRyiY5fNOA/m2xO2IzhQQVkfiulcnwUC1/AiyR3HtKClEFv5irxQUo2J/Zj5LBSsck
+	8nIjVMxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orach-007eqg-QZ; Sun, 06 Nov 2022 08:03:19 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1oraiK-007gfF-FG; Sun, 06 Nov 2022 08:09:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oraaz-007dvD-30; Sun, 06 Nov 2022 08:01:36 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 9637F40408;
-	Sun,  6 Nov 2022 08:01:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1667721689;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CwzgypedxlgZw3WEvEFkcsmGoeorFZCgPtvDphQ59OA=;
-	b=Q1LcpD1a9DvJVkic2PdyY7/9bq8Z+sQ/JT691O5PQxBFxUeBGR5+4aOiytuFb1Qs4auaf3
-	zQqOQgUWxOuFUg3WqPLLJemF0Xpz9TembtQs4kEum5GrMhI0U1uJUQCRZ7Q8WWyqzj8qgA
-	U7s0sJjpMtdqZWvU//C3gaX3b43o8SY=
-Received: from frank-G5.. (fttx-pool-80.245.79.199.bambit.de [80.245.79.199])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E85063608D6;
-	Sun,  6 Nov 2022 08:01:28 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/6] dt-bindings: pinctrl: update uart/mmc bindings for MT7986 SoC
-Date: Sun,  6 Nov 2022 09:01:09 +0100
-Message-Id: <20221106080114.7426-3-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221106080114.7426-1-linux@fw-web.de>
-References: <20221106080114.7426-1-linux@fw-web.de>
+	id 1orai8-007gby-Ef; Sun, 06 Nov 2022 08:08:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=psAl4xYsagSw7D6c6rdl/M3zRR70g8jwLLUhLUJBJqU=; b=nfqyVKUNZM97QI2Dp9dxp7M8M6
+	G9yNiBG90JQWW6H9Y0XxWft40YcS23ZG/ZBHRIST8bBH+A4If41g6QOI4TlQOK5ksEyfm2KJPO/Uc
+	757kwGf4lYgQ+9ummnfOcWXTh5p5Fpz2E7XUNxpgQonGhLe4EIKP/dgsvU9oYShZwRCOVsxSbi4Eb
+	4J/1+F0zSjUhtQTVuE7FbdQ1wqTCuZX4Znh0/tzxwttwUF6tHKLswqk3yf4JhQL8L7hZ2MiYP3/Hc
+	FLwkPUT2Gao7df07uDu0vGisU1CPAb1DTlLAxMgWYBCikE6NOT5oUY3TM62Cyb1tJkAiJCmJuCcml
+	E0934vQw==;
+Received: from mout.gmx.net ([212.227.17.20])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oraht-009Uq8-PL; Sun, 06 Nov 2022 08:08:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1667722110;
+	bh=psAl4xYsagSw7D6c6rdl/M3zRR70g8jwLLUhLUJBJqU=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=dRjipgN4EbNkFq7tBqeTvNTbZq7vuPIyMWfkHIgZsw7gMJzKK4kiUBR3G9rHMnurS
+	 QGKL2HNY2oAD1n6RzRBlbb06JD7Tlj4VyJ6w4qJVL3Ys/tNodMgbXWIDaFEi/ezfrU
+	 3YI4igH1sDiH6ZEMaAn/dNHdT0Px1K9CemNe0zPc21UDGRGZLVObSzxj2upb5+GMnt
+	 ZMo/Q6TAVxqwUcSUdgJmKdjoWUl8UNH8oa+mPyf+83Fo4mharKTsCQumreaMe8uG5p
+	 5dNkn/g+VzXoPRc6sFAR9ID0z99UypA/y68I0EtyaZYR7vIkxvo/IsF1Kx7cpgT4jb
+	 xUUYWLLZaysqw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.79.199] ([80.245.79.199]) by web-mail.gmx.net
+ (3c-app-gmx-bap30.server.lan [172.19.172.100]) (via HTTP); Sun, 6 Nov 2022
+ 09:08:30 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 3e7652be-892b-4782-86de-b1a45213699a
+Message-ID: <trinity-f782418a-8148-4eab-93ff-dd213cf05fd0-1667722110396@3c-app-gmx-bap30>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re: [PATCH] dt-bindings: pinctrl: update pcie/pwm/spi bindings
+ for MT7986 SoC
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 6 Nov 2022 09:08:30 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cd2e3ae3-6a30-f6cd-fbbb-9c5c6071fb9b@linaro.org>
+References: <20221024074349.7777-1-linux@fw-web.de>
+ <cd2e3ae3-6a30-f6cd-fbbb-9c5c6071fb9b@linaro.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:fGz1/KhXbeWnAd5zd1PUJkVWwdG90UbiMcUADj/KY9NVZ64iNeWLh5R3z4PuC3tn5idoq
+ OnYe9WSqSZCcNF65fbJyQ9TB/5Rv/lsh7lS04dncSEJ0BxhauWps0hrR+aOIcLbKwVQJTXnEwhAk
+ k1Psgh39gkWRR5FNMKXX/ZEY2Dky5Lv19AXjUnSlYlwsWqbLErtMJ3jeqbnby66L5mi4bheYRLPg
+ 9G6LiFiiCdjAxs2sJvG2716qMmzCEtLy6Ckp8vq0eP+4Btj8bhoYp9xIWKJUIu/ij1RD7/+B3E1w
+ S4=
+UI-OutboundReport: notjunk:1;M01:P0:8nvazYWkGJg=;FwFz1MwnXoUa4YfGZurYexOPqXw
+ CxVMnOUfJ2JK0FMvysjx12hyt8/tpoMGfvhBvgTamqfzFMZJJuQ+L+wVR6DjKwbvfEHKVQQi6
+ sIUyAQjB7gOrAWm8vnvm+NmcrxbrKQvxOMhhc/9sFBUh7LmAJCsMiTBfnDCQidPhfqDR0Bu/E
+ zrlJuXSNon/0KRJ064M0WupyXutK5dqHsx0isz8Qw5IUbiL8lbHu48g/Yzjp4hhefvGp+oqJ3
+ 6dIVFZ5bebaznflaFKrlB4rZQ6dIrMcPobsY/nAYA637tPKmPiOczFhDaf6m1E5mUl8v7CaH1
+ F7Rq0T7wlEb/FUCePeCqKoeu8BX6c0TqL0juWvSECooWzVNrsMcWAq9IWT5sHCwMXuRDKTLOy
+ abIIBwOSPjB6mOeflSyy1LXP9S/OMjBQu69MYdtGMVm9gPBXogcmoDOher1FgWhKkOs8Z/4LX
+ JCpra3G6xZQ7I2zRWYpPFj6jCwScX41SNw5VSdxIfQolp47QcOMjWIHQhf00LmlzemkUTTqVN
+ oGxgQ/fGwnYfcMZx81xbI4GZOB8GmCQzGpYNFcX8yPk1RWFT2xqPJJhyzMmmW3yDvX1R7+jQE
+ Mid92tV6aofbLxOxPO1s4NFvNGpoNiVBa4U4fxl+dMyGZmlrQbZiRv9MowJIuHLj4LqFK89he
+ 5ZCahZLDPUBW/6dyixESHu2pRm0UAHfq5qLKEIM6Zjl1NyKA/W7BS0+V5VDoeFzgInY0iCT5i
+ KatrVDjqzJ1jQY07VFVkdCIyOpotJpJCkkZ/Bk1LSYl5U3MbOFZi5+GSwk1VgwpwgAZ23LmOS
+ c+CEq0OD9W4n5xIQLcMFs6Ww==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_010134_625475_7E25648E 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20221106_080842_305269_9AEC6F25 
+X-CRM114-Status: UNSURE (   6.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,127 +105,12 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+included this Patch into the pinctl series to have binding checks clean
 
-Fix mmc and uart pins after uart splitting.
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=692462
 
-Some pinmux pins of the mt7986 pinctrl driver is composed of multiple
-pinctrl groups, the original binding only allows one pinctrl group
-per dts node, this patch sets "maxItems" for these groups and add new
-examples to the binding documentation.
-
-Fixes: 65916a1ca90a ("dt-bindings: pinctrl: update bindings for MT7986 SoC")
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v3:
-- squashed version from sam
-- v2 was ack'd by Krzysztof, but sams patch included updated emmc-names
-  and different structure for uart to allow 2 pingroups
-v2:
-- wrap on col 80
----
- .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 46 +++++++++++++++++--
- 1 file changed, 41 insertions(+), 5 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-index 75766956cfad..b2b9c01efd70 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-@@ -87,6 +87,8 @@ patternProperties:
-           "wifi_led"        "led"       1, 2
-           "i2c"             "i2c"       3, 4
-           "uart1_0"         "uart"      7, 8, 9, 10
-+          "uart1_rx_tx"     "uart"      42, 43
-+          "uart1_cts_rts"   "uart"      44, 45
-           "pcie_clk"        "pcie"      9
-           "pcie_wake"       "pcie"      10
-           "spi1_0"          "spi"       11, 12, 13, 14
-@@ -98,9 +100,11 @@ patternProperties:
-           "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30,
-                                         31, 32
-           "spi1_1"          "spi"       23, 24, 25, 26
--          "uart1_2"         "uart"      29, 30, 31, 32
-+          "uart1_2_rx_tx"   "uart"      29, 30
-+          "uart1_2_cts_rts" "uart"      31, 32
-           "uart1_1"         "uart"      23, 24, 25, 26
--          "uart2_0"         "uart"      29, 30, 31, 32
-+          "uart2_0_rx_tx"   "uart"      29, 30
-+          "uart2_0_cts_rts" "uart"      31, 32
-           "spi0"            "spi"       33, 34, 35, 36
-           "spi0_wp_hold"    "spi"       37, 38
-           "uart1_3_rx_tx"   "uart"      35, 36
-@@ -157,7 +161,7 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  enum: [emmc, emmc_rst]
-+                  enum: [emmc_45, emmc_51]
-           - if:
-               properties:
-                 function:
-@@ -227,8 +231,12 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  enum: [uart1_0, uart1_1, uart1_2, uart1_3_rx_tx,
--                         uart1_3_cts_rts, uart2_0, uart2_1, uart0, uart1, uart2]
-+                  items:
-+                    enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1,
-+                           uart1_2_rx_tx, uart1_2_cts_rts, uart1_3_rx_tx,
-+                           uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rts,
-+                           uart2_1, uart0, uart1, uart2]
-+                  maxItems: 2
-           - if:
-               properties:
-                 function:
-@@ -362,6 +370,27 @@ examples:
-         interrupt-parent = <&gic>;
-         #interrupt-cells = <2>;
- 
-+        pcie_pins: pcie-pins {
-+          mux {
-+            function = "pcie";
-+            groups = "pcie_clk", "pcie_wake", "pcie_pereset";
-+          };
-+        };
-+
-+        pwm_pins: pwm-pins {
-+          mux {
-+            function = "pwm";
-+            groups = "pwm0", "pwm1_0";
-+          };
-+        };
-+
-+        spi0_pins: spi0-pins {
-+          mux {
-+            function = "spi";
-+            groups = "spi0", "spi0_wp_hold";
-+          };
-+        };
-+
-         uart1_pins: uart1-pins {
-           mux {
-             function = "uart";
-@@ -369,6 +398,13 @@ examples:
-           };
-         };
- 
-+        uart1_3_pins: uart1-3-pins {
-+          mux {
-+            function = "uart";
-+            groups = "uart1_3_rx_tx", "uart1_3_cts_rts";
-+          };
-+        };
-+
-         uart2_pins: uart2-pins {
-           mux {
-             function = "uart";
--- 
-2.34.1
-
+regards Frank
 
