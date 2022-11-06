@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3182C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 17:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC8FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 22:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fdmXL7bpdeULTeDIluvooBAEn965XgIrk5KI9RQsT6s=; b=McfxmY3xaaHCnnCmvL+/qbGgRQ
-	GzjMarqURRspu0oUohEZjSGXzhOHSPM124rT/3JZkzNTcuIbjIwtJYuhxfXHMFMvsx3fbnhfk2iww
-	3+upQNVZn8u6w16ujPWFBWLsHb8CevRHnn1YLUurLssflFfYLG3jmJEU226R2Moj4zIAS/iGVXTFl
-	ZHN2qrKq7BeRH0FxDWCnB0v9c3pCh8bqurgUETo/Jvo6Ef5lmyvTIuZGV3E/UIekWM7OMa7zVxd+B
-	fOVSNqPSuYWd8cT2Ix2vUvVvCeuhXV+zzv+uszlLD6vEMBfS01n828vADiqpRVSKJ6/3ZKkM0R0Pa
-	NF8MBDBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ueZQBrMbeO7aiG0xIq19y+FRYZq2F41aeAYODCw4rJM=; b=tg5tdyGyHONgKenWfuY2aBGqyq
+	Wv4iV1qVkPXb3Vxhvy0jvmoVxrw1qb/CwM6wsIg1i8vBsOwf9YGXIzhlJmu/Lktggh1ibnwZEgPE6
+	oiw4cO7rATmSDhNvfTpIgBAWfeAYP3+z+AUM0CWQg9BB+WeuNRGVAa9EJRp4hwFcvIf6BdkO6pAKH
+	bxjiAwmlffbxnOT9+xhFCwhxIH8uY9x/J0M0OjgDKTYAHqaBdS7nbZFSNjo/LH73hB3k+7LQqS3bU
+	BkdqJYdehv3n0eaZSLWGgBK3Hegj420Y3H8yTxpB7lluF0adcQlfzN3IPxBUpKeR//l2aPk/yVdHj
+	i2+O51LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orj6F-008x2I-M7; Sun, 06 Nov 2022 17:06:23 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oroWz-00AK7Q-Ik; Sun, 06 Nov 2022 22:54:21 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orj62-008wuf-0X; Sun, 06 Nov 2022 17:06:11 +0000
+	id 1oroWo-00AK5q-Ch; Sun, 06 Nov 2022 22:54:11 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 70D54B80C71;
-	Sun,  6 Nov 2022 17:06:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7CB8EC433D6;
-	Sun,  6 Nov 2022 17:06:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 83B1E60BA0;
+	Sun,  6 Nov 2022 22:54:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8997CC433D6;
+	Sun,  6 Nov 2022 22:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667754367;
-	bh=6xSy77Aw6z0fpoypOrp9uPxk6VC+ci3iUBhretptsqQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KCBpoIQpuuZ6roWHzRXTIZTm2c2nqNrVbAEh76hj4mJtpSwswmqnrjHWZdl2t6K/O
-	 NJYNthEfhbJyx6Ws2oPnzn5Onew961h9gz3+9zBNGjxOT69lNuIfoVyrs5MVTWfC7K
-	 wUllWVdaOxpSHWXMSXxBMIBXiX8+nY3matK6U/EriVVfnHb2OpT0EidJWDCxdi7MNE
-	 wqvHquGrONJvxQR2EmP9sju/lGZyJiU32AsYq/JlfvUSMXzKzwJNG4AzCwu/PwuwLm
-	 gJaOVr+QlojbYHMR2aX6gLgiry+GVFYvd5IaKJfGEvdPYPHOdj7gpt0bD0PYcFkdw3
-	 oD8w9AJjtwapQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Zhang Qilong <zhangqilong3@huawei.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	chi.minghao@zte.com.cn,
-	ckeepax@opensource.cirrus.com,
-	steve@sk2.org,
-	alsa-devel@alsa-project.org,
+	s=k20201202; t=1667775248;
+	bh=CCOXKsk1YG6cytIhCugUYJ5LpHswjB66YukQZnjJrb4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dHI5IDuxp1uLkeFTUcpRH3bRKYCLaI4GmrmUFk/iFG3nvE5gcAwQBdoS7zh+QeLu1
+	 7f5/j4eVo3ADiBkrPFu/GxybEOmWlwVtRjHWfwrTC/46ZDNAN6kUIpmNY3kZksY90I
+	 OdbFe6BYMYjJZALw9ciO/Hcb6dxTBoyEIn3mcecQIwDIH6TpGF6FYqMhLX+OckU8ym
+	 aF3Ikni8lpbyq1Qcy/7iN3Mlil65LlBdW0XSvo3nc+SnRQo7v+czAs1Esld+tX+W5A
+	 TgFsXXSFhLpPhzCfLZnEwLMjU1Sp615Ol+5fZZSPZV1vBPaTavbDBf4MfVNUxdNb0X
+	 hebEDEeu3Bj9w==
+Date: Sun, 6 Nov 2022 23:54:06 +0100
+From: Pratyush Yadav <pratyush@kernel.org>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Tudor Ambarus <tudor.ambarus@microchip.com>,
+	Michael Walle <michael@walle.cc>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mtd@lists.infradead.org, linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 04/16] ASoC: mt6660: Keep the pm_runtime enables before component stuff in mt6660_i2c_probe
-Date: Sun,  6 Nov 2022 12:05:41 -0500
-Message-Id: <20221106170555.1580584-4-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221106170555.1580584-1-sashal@kernel.org>
-References: <20221106170555.1580584-1-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Bayi Cheng <bayi.cheng@mediatek.com>
+Subject: Re: [PATCH] mtd: spi-nor: Fix the number of bytes for the dummy
+ cycles
+Message-ID: <20221106225406.o36syeso4prdi7yn@yadavpratyush.com>
+References: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_090610_223544_9DC22F0D 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20221106_145410_505962_D4491D00 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,47 +80,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zhang Qilong <zhangqilong3@huawei.com>
+On 31/10/22 08:46PM, Allen-KH Cheng wrote:
+> The number of bytes used by spi_nor_spimem_check_readop() may be
+> incorrect for the dummy cycles. Since nor->read_dummy is not initialized
+> before spi_nor_spimem_adjust_hwcaps().
+> 
+> We use both mode and wait state clock cycles instead of nor->read_dummy.
+> 
+> Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
+> Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
+> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>  drivers/mtd/spi-nor/core.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+> index 6c921eb3fadb..8b9c318a0ad4 100644
+> --- a/drivers/mtd/spi-nor/core.c
+> +++ b/drivers/mtd/spi-nor/core.c
+> @@ -1914,7 +1914,8 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
+>  	spi_nor_spimem_setup_op(nor, &op, read->proto);
+>  
+>  	/* convert the dummy cycles to the number of bytes */
+> -	op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
+> +	op.dummy.nbytes = (read->num_mode_clocks + read->num_wait_states) *
+> +			  op.dummy.buswidth / 8;
 
-[ Upstream commit c4ab29b0f3a6f1e167c5a627f7cd036c1d2b7d65 ]
+Good catch!
 
-It would be better to keep the pm_runtime enables before the
-IRQ and component stuff. Both of those could start triggering
-PM runtime events.
+Reviewed-by: Pratyush Yadav <pratyush@kernel.org>
 
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20221008140522.134912-1-zhangqilong3@huawei.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- sound/soc/codecs/mt6660.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+>  	if (spi_nor_protocol_is_dtr(nor->read_proto))
+>  		op.dummy.nbytes *= 2;
+>  
+> -- 
+> 2.18.0
+> 
 
-diff --git a/sound/soc/codecs/mt6660.c b/sound/soc/codecs/mt6660.c
-index e18a58868273..3cee2ea4b85d 100644
---- a/sound/soc/codecs/mt6660.c
-+++ b/sound/soc/codecs/mt6660.c
-@@ -504,14 +504,14 @@ static int mt6660_i2c_probe(struct i2c_client *client,
- 		dev_err(chip->dev, "read chip revision fail\n");
- 		goto probe_fail;
- 	}
-+	pm_runtime_set_active(chip->dev);
-+	pm_runtime_enable(chip->dev);
- 
- 	ret = devm_snd_soc_register_component(chip->dev,
- 					       &mt6660_component_driver,
- 					       &mt6660_codec_dai, 1);
--	if (!ret) {
--		pm_runtime_set_active(chip->dev);
--		pm_runtime_enable(chip->dev);
--	}
-+	if (ret)
-+		pm_runtime_disable(chip->dev);
- 
- 	return ret;
- 
 -- 
-2.35.1
-
+Regards,
+Pratyush Yadav
 
