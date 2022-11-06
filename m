@@ -4,49 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA02C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 03:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4840FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 03:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SiJd/cbIFHc0t29rG3pUwRbp3B0gNob0JkC9ON4oH/Y=; b=tasV54dM/RwAAwdMvfLJ0piMhf
-	PiElkHrdao3PAaqMFoeNdpZxJu7xCs3VI0ux6BNqKsKTS3iZdEzR1c0AvZwRLKIG//YtaemlQxsaD
-	aWz4oc1jHmhq0rcmV3rbPeuT+hMWl9yoI+gqBt9rl9Nb01i6OE3cQaBFiuimvJ86IvPDYwBgk6OZy
-	uyWWe7JtSEHk06NLoB9rPMhMkO0STHK/j7np+LYIr810vLt54BV+Y4srQJqxO2lMiY0TSvxXqOVjA
-	Y0qz6JNEQNKJgwh3Jbt2Oz8jWHnzuxl3qmsXJTR/XggLj5V+RGYYvCGljskHfv+diD5KmEvBSbZgw
-	wTNyh68A==;
+	bh=dz2mheJDfObycJwcc1Bk8TmgsLqq6x+ImrkrFILsGBU=; b=wFDAjMSw47hah0UTjI9ZeOyWjk
+	BrBRxeeEk7Vfw4JSpuIeAUV5NPGrtvSbFjtvu5PTom/0rp/MtcJ+f1YNMQam/P9UtbtBOWJJYnLSv
+	LLvR/tNhHFPT4y0ga6Um9a9U/guNSgkS2aAPTxojE+8HrT7NRtig66Z44y8NTP0K1IWZreYh46nfz
+	sC4a/RodiJRJg76fMiCdLcbyI05CId89bjIOsWIk1bdJWHkMkFBb3A3X7/HrK4BvHoLFVY8t9hhh3
+	qtwDKwvJIMfikN4pyZxVszNJpGxhNvDZu7BB2ZDHqWJvTiSQeKzupOAs0nLBD9SOkxs4GZtwYiosF
+	5cnoOR4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orWgG-007TK6-BE; Sun, 06 Nov 2022 03:50:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1orWly-007Thp-Oa; Sun, 06 Nov 2022 03:56:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orWgC-007TJP-J0; Sun, 06 Nov 2022 03:50:42 +0000
-X-UUID: 22a713c8d6f343d5a2a2fba314d1ef8c-20221105
+	id 1orWlx-007Thb-Em
+	for linux-mediatek@bombadil.infradead.org; Sun, 06 Nov 2022 03:56:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=dz2mheJDfObycJwcc1Bk8TmgsLqq6x+ImrkrFILsGBU=; b=U/QXiXNJM6FrecmA6Bj83CS6oF
+	J5I7O1cFawSOJGcPLS4Pa8J9ubMETxpn+rYKWkn93NZXkL8twRlZbJhWmRy0Q5Xvf2W8+Ir40P30U
+	+MIMdl/0zCAU8B1vQMFDCdg5ZPmKtdaQlpH1G7uUQChvmu+V1GfMuweFIgPUMiakpP8PDE6dsnqnH
+	VcB95vaRRmpXVSPm+U+ZX7KuXiZtE4+wnU5OizlYOZEITBfK2MW4hJxHcqxTjxhNTJZF/s0kO8vSO
+	ipNCHEsVWNbgD7AUhuJPfQ541mRGHt25RYWS2H/F3BsA5eFqoUqAqELch/NDDHhrnXiucIy07TZ0H
+	rOp4Zb8g==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1orWlo-009RRL-Kn
+	for linux-mediatek@lists.infradead.org; Sun, 06 Nov 2022 03:56:33 +0000
+X-UUID: dba82324e1564a7dbdf6708585828ea1-20221105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SiJd/cbIFHc0t29rG3pUwRbp3B0gNob0JkC9ON4oH/Y=;
-	b=kBeAHwseCHRvvlYzp5mUSoSUVeX44XSrrjGjy7R9mcs8OYcbHQiZebcqMW2cCTm3aSY0Uy+FlIUbP050AWKTmzSM7PMJ11AWG7tAwzM5hrKlloZX5lT4ypkxkWXK5yZZdDGGRmdus1O7lr9PF6rKhd6ock7pyFJffRnoOSnGVv0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dz2mheJDfObycJwcc1Bk8TmgsLqq6x+ImrkrFILsGBU=;
+	b=EQ9dWJKA8DZWU1A8AqxqKdlm5H3HZBmJuDJOK9FR/Ax/KIr1UYp3qQ/u5eXnUbBwntZD3Xn/vh+yxFI7Uu5EhEKOxcfef0EUfUFfuR2b843XRIUe3k4bbpsfcJwggn3e4js4pzmseQi/I5Cwvf+qVnyHKKi277s5bJDofR8+MR8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f0c049e1-957a-4ee1-ae39-10e4febd7b44,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:62cd327,CLOUDID:5e2eb390-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 22a713c8d6f343d5a2a2fba314d1ef8c-20221105
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.12,REQID:36015a14-8721-4030-a900-21285a1d8303,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:62cd327,CLOUDID:8c1db390-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: dba82324e1564a7dbdf6708585828ea1-20221105
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <mengqi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 141581047; Sat, 05 Nov 2022 20:50:33 -0700
+	with ESMTP id 255537494; Sat, 05 Nov 2022 20:40:43 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sun, 6 Nov 2022 11:40:31 +0800
+ 15.2.792.15; Sun, 6 Nov 2022 11:40:08 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sun, 6 Nov 2022 11:40:30 +0800
+ Transport; Sun, 6 Nov 2022 11:40:08 +0800
 From: Mengqi Zhang <mengqi.zhang@mediatek.com>
 To: <chaotian.jing@mediatek.com>, <ulf.hansson@linaro.org>,
 	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -55,9 +70,9 @@ To: <chaotian.jing@mediatek.com>, <ulf.hansson@linaro.org>,
 CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>
-Subject: [RESEND v2 2/2] dt-bindings: mmc: mtk-sd: add Inline Crypto Engine clock
-Date: Sun, 6 Nov 2022 11:39:26 +0800
-Message-ID: <20221106033924.9854-3-mengqi.zhang@mediatek.com>
+Subject: [RESEND v2 1/2] mmc: mtk-sd: add Inline Crypto Engine clock control
+Date: Sun, 6 Nov 2022 11:39:24 +0800
+Message-ID: <20221106033924.9854-2-mengqi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221106033924.9854-1-mengqi.zhang@mediatek.com>
 References: <20221106033924.9854-1-mengqi.zhang@mediatek.com>
@@ -65,9 +80,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221105_205040_659387_3B8F8426 
-X-CRM114-Status: UNSURE (   6.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221106_035630_839487_882D58A4 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +96,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add optional crypto clock of the Inline Crypto Engine of Mediatek SoCs.
+Add crypto clock control and ungate it before CQHCI init.
 
 Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/mmc/mtk-sd.yaml       | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ drivers/mmc/host/mtk-sd.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 6f8ecb4788eb..8ed94a12a03b 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -263,6 +263,28 @@ allOf:
-             - const: bus_clk
-             - const: sys_cg
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 3f7f3a1e0df8..652a67f9b054 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -452,6 +452,7 @@ struct msdc_host {
+ 	struct clk *bus_clk;	/* bus clock which used to access register */
+ 	struct clk *src_clk_cg; /* msdc source clock control gate */
+ 	struct clk *sys_clk_cg;	/* msdc subsys clock control gate */
++	struct clk *crypto_clk; /* msdc crypto clock control gate */
+ 	struct clk_bulk_data bulk_clks[MSDC_NR_CLOCKS];
+ 	u32 mclk;		/* mmc subsystem clock frequency */
+ 	u32 src_clk_freq;	/* source clock frequency */
+@@ -840,6 +841,7 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
+ static void msdc_gate_clock(struct msdc_host *host)
+ {
+ 	clk_bulk_disable_unprepare(MSDC_NR_CLOCKS, host->bulk_clks);
++	clk_disable_unprepare(host->crypto_clk);
+ 	clk_disable_unprepare(host->src_clk_cg);
+ 	clk_disable_unprepare(host->src_clk);
+ 	clk_disable_unprepare(host->bus_clk);
+@@ -855,6 +857,7 @@ static int msdc_ungate_clock(struct msdc_host *host)
+ 	clk_prepare_enable(host->bus_clk);
+ 	clk_prepare_enable(host->src_clk);
+ 	clk_prepare_enable(host->src_clk_cg);
++	clk_prepare_enable(host->crypto_clk);
+ 	ret = clk_bulk_prepare_enable(MSDC_NR_CLOCKS, host->bulk_clks);
+ 	if (ret) {
+ 		dev_err(host->dev, "Cannot enable pclk/axi/ahb clock gates\n");
+@@ -2672,6 +2675,15 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 		goto host_free;
+ 	}
  
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8186-mmc
-+            - mediatek,mt8188-mmc
-+            - mediatek,mt8195-mmc
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: source clock
-+            - description: HCLK which used for host
-+            - description: independent source clock gate
-+            - description: crypto clock used for data encrypt/decrypt (optional)
-+        clock-names:
-+          items:
-+            - const: source
-+            - const: hclk
-+            - const: source_cg
-+            - const: crypto
++	/* only eMMC has crypto property */
++	if (!(mmc->caps2 & MMC_CAP2_NO_MMC)) {
++		host->crypto_clk = devm_clk_get_optional(&pdev->dev, "crypto");
++		if (IS_ERR(host->crypto_clk))
++			host->crypto_clk = NULL;
++		else
++			mmc->caps2 |= MMC_CAP2_CRYPTO;
++	}
 +
-   - if:
-       properties:
-         compatible:
+ 	host->irq = platform_get_irq(pdev, 0);
+ 	if (host->irq < 0) {
+ 		ret = -EINVAL;
 -- 
 2.25.1
 
