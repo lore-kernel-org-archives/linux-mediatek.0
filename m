@@ -4,97 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A486C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 08:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A59C43217
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 08:51:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HTNFq3TyDhFyNWIAWgSh9mMvlsrOJm3pLpGjJrBym60=; b=JBEKC3t9hpXmiFZ/dDAa6Brm/8
-	dC0xAVCqubuHvme5Swid6fk7z1twUY/P01plMPJSIkecP8Qock3IMxjwle0cnZWYt/8rAI/CIG5/2
-	zpfm7lsZ3P02h5EddJaH0Tzepbd4WmiDEhti/wGYKfIv1bYbZt3oBOIXaF/pmfxlZYxjhlc46xKUB
-	w+hBNGzWnygfMxiijnEmh4tGPh7sJTNyVbpKEDDJYbg+DHrllGYCvoPMUJno7DSdWot6tbOfQfsyX
-	G+JLWC66SyKjKqOlf+HU/5iAzxmQ+P5OqvqWFae0wiVM0u34dxpw2Tlvo6h8s2CDylaPUp4FUReDS
-	NWFg2EOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8iyCtYf/S4Xy39ojyQ6Mk9mNXir36Uajzk5LIv0/AQQ=; b=29faoa5uXfLqHu
+	wxsaaaZ1BFOWt9gvkCQAkbEJ8gKY21rSUa8E4dkxbjcRd2tbEM9xW0UZ3QEepVIxmDhqsy5Q4ApG7
+	fQjDaAoHGKPWFqqEijDKsAP1HiV+IziHd557fnUULtJFjQ00QbS9IdYCg6zJ5LKGQYC0mkOIwIGwi
+	rVj7AC5aPBtFGB50Sn9miDy90WL+nvP2g5Bi7cIRhDPLIjxr2sxL/uSCnUZilbHwkTdcjU/W9vwk6
+	LlY8eqmoLZab90XcTDXsyA8LzsljMKTjT1AwaQ3lzxVNpwO99NZBMxsUL6Bo38+L6YdvpEVQDlIRy
+	ALckUhy94IO3R6vZrNHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oraiU-007gin-LG; Sun, 06 Nov 2022 08:09:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1orbMn-007kGo-AJ; Sun, 06 Nov 2022 08:50:57 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orai8-007gcJ-Sh; Sun, 06 Nov 2022 08:08:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=HTNFq3TyDhFyNWIAWgSh9mMvlsrOJm3pLpGjJrBym60=; b=HWpWhuWLPRUJ1f2Wpzdw93WSnZ
-	HEPJAUKpwP+6llBO7co5OtIlZ5zlIeyxmggY8yOxABbeZUG0uYz/Ahz1Giy9bwo1XJywyVhQ/Ozgv
-	r83cr76mFgyj0ozENG5SsUZnMfl7/9UK6L/n5WCzcmecEhGThpFm4n6jsBIvcwE+jmAmAMm6mHlZi
-	NvPvViMzTPRtfxFytjobVI7xWnMRS3U3OqnLF0ztdPPhQa2klKN98gWE+WJAuyJtA1lWiVKeVbBdC
-	Yz3Vns5iw4KJZmhHxCZZL8A07q6DqZNTZDJmWe30qGVPkfPtWkS2/qS0RVbJOyoa6Z3ojpZf9E8Dw
-	gsD+1uTQ==;
-Received: from mout.gmx.net ([212.227.17.22])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orai4-009UqP-Sf; Sun, 06 Nov 2022 08:08:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1667722118;
-	bh=HTNFq3TyDhFyNWIAWgSh9mMvlsrOJm3pLpGjJrBym60=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=ZTjTIQ5tgWtBUGXuP5NdP2uWnuhLQAE5DIvsBGFvFVQXIgtxH95sdOMg5coexIt1t
-	 LU3Ic2UAKnGsoKOeHAKbUSFJ/Qm3keYE4n6APEz96aLcglUD3C167kPei4c7qrTYMa
-	 hsOpq51y9QjW4nAmu5WUkII0FC1g18+fL2HOiFFhrHunj/BUf3gaTnoxfBJgYz5c1/
-	 isDVTeeCDf0TLNPUJ17Oj89JjzG7nHbO0kYA8PUh9t9C6PZp9i/TnUoLweGs3F1xf7
-	 1Usi2TKKA0HRnpP77wMAVfbUkcXVwzEO+ea8NtJex9hKdlJqTOIP9lOM1FHOhJBm+O
-	 py0iCkJnl9fcQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.79.199] ([80.245.79.199]) by web-mail.gmx.net
- (3c-app-gmx-bap30.server.lan [172.19.172.100]) (via HTTP); Sun, 6 Nov 2022
- 09:08:38 +0100
+	id 1orbMb-007kA6-Gm; Sun, 06 Nov 2022 08:50:46 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout2.routing.net (Postfix) with ESMTP id 1EDDD5FDE8;
+	Sun,  6 Nov 2022 08:50:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1667724644;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8iyCtYf/S4Xy39ojyQ6Mk9mNXir36Uajzk5LIv0/AQQ=;
+	b=dYv65eJwqY6uRrSaPOfN5QWvdG/NrMFLXSyhFXAGGcyXpmomNN2jphTZlOVcqg0AyB5rAT
+	GXi4pcYNyZLWtVl3SsWY1oUWX+2P5ADoENJ9jRJva293UnvpqH5yzf2hxTrgZl0V+Gv7cI
+	VmbIIekzEk+dq39MR5s9QRm1sagM7TU=
+Received: from frank-G5.. (fttx-pool-80.245.79.199.bambit.de [80.245.79.199])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 45BED360707;
+	Sun,  6 Nov 2022 08:50:43 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [RFC v3 06/11] arm64: dts: mt7986: add i2c node
+Date: Sun,  6 Nov 2022 09:50:29 +0100
+Message-Id: <20221106085034.12582-7-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221106085034.12582-1-linux@fw-web.de>
+References: <20221106085034.12582-1-linux@fw-web.de>
 MIME-Version: 1.0
-Message-ID: <trinity-82c4e225-5699-4c03-bc04-cea1a2d5b3f6-1667722118679@3c-app-gmx-bap30>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Rob Herring <robh@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob
- Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Sam
- Shih <sam.shih@mediatek.com>, devicetree@vger.kernel.org, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@kernel.org>
-Subject: Aw: Re: [PATCH v3] dt-bindings: pinctrl: update uart/mmc bindings
- for MT7986 SoC
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 6 Nov 2022 09:08:38 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <trinity-93c64b9b-8363-406b-aa0b-07e6802ec84b-1667660667233@3c-app-gmx-bap26>
-References: <20221105092500.12145-1-linux@fw-web.de>
- <166765939212.4158869.5881767839110614067.robh@kernel.org>
- <trinity-93c64b9b-8363-406b-aa0b-07e6802ec84b-1667660667233@3c-app-gmx-bap26>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:EMz+lrjrmCAlVksKsxn0azOOpK6Wc0cDQzr6u804gLqwdXRbJ4LHgABsPteviC2OPicw4
- WxfBVlWrhF7266MetBJotdeEWiyXZHY39hQBpuHumEq+TfQKASSJAmgYhwwoUiGlWHk5X7nd8xA1
- UpRbSg1Acu4cncnaKDj9Ohl80yxR1+nngsjhuAtwXOKEt9UI0e2SIeKwr9z2fgh+xZAjV52U9tEW
- 0/4vXcT8btC+yVpyyD398y70mKMoilF9kx872A8GbPyyDcuBiDRprr8IatT3CyT1ahJZFB98JHhJ
- /c=
-UI-OutboundReport: notjunk:1;M01:P0:MfjkpulsvRo=;ruPvxJlI/AytI0KCjmc/m9Jb5B0
- LEXvXaJ4IfVEvdWDwgbnQ/4sJNiKRUnfcehTucqUxeeNVPdZ5PUuIpYhGCnNOuE7Xk4Wgjyt9
- +4A0hqMM887wGdHYRkWBaH5QnSPGmwD3uuF1qcqnWmC5i7QwD+eGZbrkUSZEj0ElO24Uotjwb
- iGMtSvCRqNzjyyOLIfxvSenK43IhTuNOLyJkCs4W2VRBYyjqLRbKNkb/6V+bJL/BZtXCDQIcH
- FKlqh+LgsxMd+dYBU3SB5X0+rZnCrpSJvYvczd9gzFjjXcz7vlqLF7gOx6s9ZMgFVRzThKTNp
- TwcNewLIBNCWJGJQeUQoDPPE1qVN5NcLRBc4pYCMmVgPkr6Xr+IcQZ/L+D7pHJ2GkVAyPhDiA
- j620Cc0bWhRSVyysSwvL5zcUqHVfgD4bg4SbbTOBTvz9aLKh/azEwP7THrXQyJKK5EVIcpo+r
- XKmxiMvfRg9t6MetmewF6tcFaPzXLF3W5SUbTKTIhR3x0DoqRjWva+s0nvnfIP9ohML4Qly1c
- O7vSQM8SBx5t0rJhPMUYEdz2O6clAgjNslemg2KfL7kzAyxZtuOfTmRBYiITN4hIpNw11YnTY
- QJKqblGyimCwVXscTOplYBqSh6IAXXSshXIorjgpz7L3imSvcfiM3lGX++NRVB4TLQxp0LQBG
- dMX7y/dkdkxJ/y9UC6/ZHb/D2K8y+ibHRLf6SGBDQNmTXmRoyVI4yrGfESOkNBb+RTbAza79Q
- GxYxKKW9AJuTfF4S4sTe1Bx5Xl5Hz8pUM6NEEqtO2Xfb9SLlYyQb7Xpl33qTpoQF8+fAVgmS0
- 6FwWtkqCEXc708UOtCdy85Mg==
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: a0a1a384-5582-43d5-9121-0ae405ecdabb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_080853_555248_233B1D89 
-X-CRM114-Status: UNSURE (   6.15  )
+X-CRM114-CacheID: sfid-20221106_015045_718283_BEC86FC4 
+X-CRM114-Status: UNSURE (   8.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,12 +66,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-included this Patch in the pinctl series here:
+From: Frank Wunderlich <frank-w@public-files.de>
 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=692462
+Add i2c Node to mt7986 devicetree.
 
-regards Frank
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 32c26b239ae6..a1a788db113a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -261,6 +261,20 @@ uart2: serial@11004000 {
+ 			status = "disabled";
+ 		};
+ 
++		i2c0: i2c@11008000 {
++			compatible = "mediatek,mt7986-i2c";
++			reg = <0 0x11008000 0 0x90>,
++			      <0 0x10217080 0 0x80>;
++			interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>;
++			clock-div = <5>;
++			clocks = <&infracfg CLK_INFRA_I2C0_CK>,
++				 <&infracfg CLK_INFRA_AP_DMA_CK>;
++			clock-names = "main", "dma";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
++
+ 		ssusb: usb@11200000 {
+ 			compatible = "mediatek,mt7986-xhci",
+ 				     "mediatek,mtk-xhci";
+-- 
+2.34.1
+
 
