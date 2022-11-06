@@ -4,81 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1855EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 09:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 930DBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 10:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j3uoZ8eg/BvFs8rs7FPp0J3kaSE2I30G0Ccj5oJr1j0=; b=RAq7qQA7w7/t+/
-	e0iOP6UqdmsNUZboGw2Q0xmDCC5sRMwFFbURkkGZj7mQupGUd9097SRCWt6Frjd/ezvVkDXKfKh/Y
-	1KDGlgXPEsMfYwmukhT+j0n7zb0gIFw3nHQlt4Tjyg6b3xYPncBCVUlHGOunLVtmb5jEknTdmssLM
-	JYTbU9EbmEHG+sCtsOhocxp3aH84F8nQF/+JmGIHd1Xi67J2hMaqvkjggl7Xc0LYr+qBhhWMnnUdZ
-	PllEnVYKTWaS1l2jk4KmYPvVCabpy4rps4EtlFj+HrZUszDQH2/SSSuBS6TDIThOP0UvnBOBr/HdA
-	8r5l4H2azIPaPA+rQycQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DI2wXka1VPadT80guBcm7zD76/m9DkDi2ofoECszAB4=; b=dmCPRaPKToa3vO9p+Z2WeiN1mg
+	stCDPJPrvpafkdhN7KAxbz8LLOqmVxz4zktn2Yo6YmmD124Oh00f9aLgMPSLCZHC9Jnk5JPs/b8MT
+	FPblJeeH055GiYYPsj/4nkf3V4aIP2JGSnw5fBS8CQRVDSm+CECZmOZJFUUBmm0XytxAr8YgaLPaY
+	6XL5N9w3ioBnnjkSDS1Xuax9eQr+WjZHKzIJwYiMP8uegiHKS8vB8i7JMS3jCBe6Og2CLgh/7tPMx
+	EwtwieDvqGAy89ShJiRYubEJW6jh8C4TH4h8nZNCTSSN2F81WuLMTmlYGDWchXMPTm3cGLgm/IlMX
+	laUNEjCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orcBb-007rlG-6F; Sun, 06 Nov 2022 09:43:27 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1orcsv-007xMp-1T; Sun, 06 Nov 2022 10:28:13 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orcBO-007rhi-MQ
-	for linux-mediatek@lists.infradead.org; Sun, 06 Nov 2022 09:43:17 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id f37so13027920lfv.8
-        for <linux-mediatek@lists.infradead.org>; Sun, 06 Nov 2022 01:43:14 -0800 (PST)
+	id 1orcsm-007xLO-J2
+	for linux-mediatek@lists.infradead.org; Sun, 06 Nov 2022 10:28:05 +0000
+Received: by mail-lf1-x136.google.com with SMTP id bp15so13067465lfb.13
+        for <linux-mediatek@lists.infradead.org>; Sun, 06 Nov 2022 02:28:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=j3uoZ8eg/BvFs8rs7FPp0J3kaSE2I30G0Ccj5oJr1j0=;
-        b=JhCFu/aUzf0W6T5ML6C7E94GeMV8WaJYKN5uI7XxEQ1qKbP9iZx2yKA3gdoRXBUY2z
-         G/fWgv2s4UwsyGK+b+YcsLB+TAb3J1498wTMjElMK1w0V7u5IGc5N59aYO4LhWPBjbV/
-         ymHpL33lLG9uCKa53lE6Zh9bK1bWlQsaKoVrdL9ypsbPvHgqBAqRyetcyUHSO7pxTfzU
-         WIyxSazI18dj4uWtsregYMTY+05XvBnHJTNwAV39HzjU3XbY77N85RcCsLIinP5fcuPh
-         B7ovO/lRaOKsrPsTB9JqRK9QDYeFygiIRitdN8uZZGDxL3F6NoxTK6nnEbwdb7Wl8t97
-         bVSQ==
+        bh=DI2wXka1VPadT80guBcm7zD76/m9DkDi2ofoECszAB4=;
+        b=jhgcp1ofKi8CJNeepvC5AR0U4tw6fExjpPcT83RAe07y/NTity7qnNXs0wcWITUjfp
+         WP4uRJCrqecyhOzyjKyxCmhiElB98snuqxq0ApmCHpkR7/XYF85ZZbUge05N1z/yvsQ/
+         WwRgcfs1G5U4oQ/zPZqImVS8AmcEQI1GH/nF7MmZXaiS1hPEiZvgQ9Md/Omg/mJwhQ0q
+         Jw8Q8E9g9uJeCvr41nMbQwCIGNarqEAM2aPs5dLnq8lP+dpFK1cOnhUQ3Iuj+jjVzA+G
+         w4t/phl0rKWlFtjA2RksIPxr9MpharsOvhY71fJkkwpVyLEpSZbIwTPpljGgEqHydXsE
+         1JUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=j3uoZ8eg/BvFs8rs7FPp0J3kaSE2I30G0Ccj5oJr1j0=;
-        b=Oc9Yk67aUBD1HwpyZ+4daJq69iYzu7V0ZEE0h8hOJ2m6rWsYfkxw1okn6IXjkxeoP5
-         TvJ31UBabVsRpdZTVzn9cE9oy5NtQgLe1ij+kMqnmr4H483P86JdtouJURC1v8UQP4Pl
-         vE+CVBvXQhjZvnT36BBA765+SsV/t1LNtULJtVHa8sinVtj6dgX5nQ4A9QkutKOhGsSg
-         vgDGlweWt2YOWMbPg/SS08W+mkWxnBM7Mm/1eyzziBsUdWxlROakiEcNGy7diXjITP11
-         O7e4lrRGuOGJ9n0BqQMeAspACMSviONFI2FwuI9o99sn1g4CWQ/6VtAcdq18wDLva3MJ
-         +4qg==
-X-Gm-Message-State: ACrzQf2XJJbtsEJeNm31q/XIj39eGPJUepFShXNgF3Z56gDycdoW0v75
-	hT2mLthLulhIgf3t5cqW2+qRWg==
-X-Google-Smtp-Source: AMsMyM6yFiVzkAiG6SuBOtUyuRrODZlYhfqyISkrKpHDvrih18jZcYBcgFsRYtxM2rvLqfCkOewXRg==
-X-Received: by 2002:ac2:4c47:0:b0:4a2:c07b:4b62 with SMTP id o7-20020ac24c47000000b004a2c07b4b62mr15311753lfk.426.1667727792787;
-        Sun, 06 Nov 2022 01:43:12 -0800 (PST)
+        bh=DI2wXka1VPadT80guBcm7zD76/m9DkDi2ofoECszAB4=;
+        b=3Ri8bHEXPtsMRl5rduI8pjNOWP0Xs8T4kAQEBVhT+xMF9/LKLxBf6etESyf0k7atrt
+         tm+01cKr398RmgXNLYFBpWtV4azF1RC9CBxk4+dh7q4KhQ6kn7YJ0tj+WteZ+eiT10q9
+         8DpMZ43Kia5SSoV5eBVEnIts7cxhKKlpwCDL7V6R7o7fsiJMkOmccQ0rVqLiXyz2SbtF
+         9jcCuffGrRTlGp/eKk2PUPz+m3X+z9t7VPJ7YnhmXj+P70tW5wX4pWlSHQ1VH2hhZbAR
+         AclV6FWyLyIabxRsOAuCJyp1VRLeySyoBkUA4iAGRMKWU8Bi+I7fQTDMiV2OS1ur0hvW
+         6S8g==
+X-Gm-Message-State: ACrzQf3bfDGj6RjqaGQLT+atWy6aDLH2TPDrrzMYkhQfSYCXgmVW/Ijt
+	Xdi7zXDhZflkPrQrgzXdz+Ofew==
+X-Google-Smtp-Source: AMsMyM6iECEVS+TMPYiJoxK6Wgqo3Wojp65hLGJ1ilpUTfDe6RaCnWsjg7cygqvuDwjeN9z/l3JOiw==
+X-Received: by 2002:a05:6512:1156:b0:4a2:7e73:1f28 with SMTP id m22-20020a056512115600b004a27e731f28mr17946406lfg.38.1667730480138;
+        Sun, 06 Nov 2022 02:28:00 -0800 (PST)
 Received: from [192.168.0.20] (088156142199.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.199])
-        by smtp.gmail.com with ESMTPSA id be13-20020a056512250d00b004a8b9c68735sm628148lfb.102.2022.11.06.01.43.11
+        by smtp.gmail.com with ESMTPSA id x18-20020a0565123f9200b004972b0bb426sm632697lfa.257.2022.11.06.02.27.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Nov 2022 01:43:12 -0800 (PST)
-Message-ID: <143bcd9f-b4af-2651-4f5f-752912b553e1@linaro.org>
-Date: Sun, 6 Nov 2022 10:43:11 +0100
+        Sun, 06 Nov 2022 02:27:59 -0800 (PST)
+Message-ID: <bdb46b7c-6e08-26cf-491d-ca68d36f29af@linaro.org>
+Date: Sun, 6 Nov 2022 11:27:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v2 3/6] dt-bindings: pinctrl: mt7986: add generic
- bias-pull* support
+Subject: Re: [PATCH v3 1/2] dt-bindings: gce: add gce header file for mt8188
 Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221106080114.7426-1-linux@fw-web.de>
- <20221106080114.7426-4-linux@fw-web.de>
+To: "Elvis.Wang" <Elvis.Wang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
+ <20221104074443.26172-2-Elvis.Wang@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221106080114.7426-4-linux@fw-web.de>
+In-Reply-To: <20221104074443.26172-2-Elvis.Wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_014314_764005_ED842B2A 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221106_022804_634884_87F1C697 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,22 +96,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/11/2022 09:01, Frank Wunderlich wrote:
-> From: Sam Shih <sam.shih@mediatek.com>
+On 04/11/2022 08:44, Elvis.Wang wrote:
+> From: Elvis Wang <Elvis.Wang@mediatek.com>
 > 
-> Since the bias-pull-{up,down} attribute already defines in pinctrl driver
-> of mediatek MT7986 SoC, this patch updates bindings to support mediatek
-> common bias-pull* function.
+> add gce header file to define the gce thread priority, gce subsys id,
+> event and constant for mt8188.
 > 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
 > ---
+> Thanks for the reviews, I have removed the incorrect reviewed message.
+> ---
+>  include/dt-bindings/gce/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
+>  1 file changed, 966 insertions(+)
+>  create mode 100644 include/dt-bindings/gce/mediatek,mt8188-gce.h
+> 
+> diff --git a/include/dt-bindings/gce/mediatek,mt8188-gce.h b/include/dt-bindings/gce/mediatek,mt8188-gce.h
+> new file mode 100644
+> index 000000000000..e2e2c56016a1
+> --- /dev/null
+> +++ b/include/dt-bindings/gce/mediatek,mt8188-gce.h
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+What is a "gce" subsystem or type of hardware? Why do you put headers in
+"gce"?
+
+Don't continue this pattern. Mediatek devices do not get specific folders...
 
 Best regards,
 Krzysztof
