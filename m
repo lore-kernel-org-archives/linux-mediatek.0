@@ -4,86 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E321EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 18:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851D8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 18:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RZto2aI8Bptli2OzTKbCF8aaAGorStB0N8MSB1xDDtE=; b=d7clWSNER2OOkp6bXaQYnZj6eK
-	A4KmHzmEB/873OWpwqSPoEs59u07yOswypw5Smpa7pwQSPU6LFFA/VXz5ESriXZy+pBi55nE1fFdX
-	gQyP6NcDuSC1ff6js65F9mrq1+bfV7yOv4lZlGu1qJJlLFcmpqml9hm9EtCCP4M0UJkW5CWDTWPkP
-	04vAxwfeX9rRhUipgEVT7gQiDdEwqw7UmaOSezF/JqMBhEnSmwX7tsXHO6QJZrnQLmqrbwCJslaUb
-	y16V69F8IGu3jRYj63vgrgsxVg9IysKi3wLs2mbtk9aaxFvnNwbDTBEtCW4jAi3cLVXqVG99Xj3mh
-	h+u5YGtw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YLg5pPiZ4SgYBGCUeq6yCCCPL/wr+lr6XSx1WcECfek=; b=igbgrR0KSmhY7JNSH9pyJLoTxU
+	5jUdvp/BJeauVhf9xxm8X7gKe2s6BBfO9lx6JHHG7EcMeOrXh7+O+ZUhGMspBhesqKLhMbPyRfZSZ
+	afF0MRPj5LFNt4oS+RtHiAZ63aDVzOsiiOQNhb4HsRskwkPsF9iDiYi4VK9LJfBcUlqM3gbxynd/R
+	h5UfJBF4wXUPzGEmFqhAw4xcmn7TxppBfRxCebDpsEdOFzkm92nRy8Kl6G8JjonOeu83tB7o9YDwQ
+	m5745nwnfiUKKuywgSzuVsMU1Bv4H30l/EbrMnaJkMUx+UUuJhd2vUEuFzSq369x5kPfQkvSmQPvU
+	gMSL7NjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os6yQ-00HDLW-BF; Mon, 07 Nov 2022 18:35:54 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1os7Hm-00HKxJ-8d; Mon, 07 Nov 2022 18:55:54 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os6yG-00HDJQ-CH
-	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 18:35:45 +0000
-Received: by mail-lf1-x129.google.com with SMTP id d6so17961754lfs.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 10:35:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=RZto2aI8Bptli2OzTKbCF8aaAGorStB0N8MSB1xDDtE=;
-        b=vo5nLgHJwfnXEhjUBrU1bPOwdaFEjM909+M2qoa53AjbBjcM3hNZqMa4pZzsuCQRn0
-         lpPDAJnxdGAijHfUaO4MdbZe4RjB65J7KstdKxwI6d0f8BLN822lpu8f8Wc8TuJClkKN
-         ZM9eJuggIQbYxLVe77V7d3dGfkJih4Yo4HoeUA5JtntxU5R0KyJbIJnhQ5nOBYCh0Mnr
-         eQcH3mcm+IGiCba6xHn9au9243J9KLjzFhg9TBAUT76iv1KbLNYW+yMMrjdHST1AD7NQ
-         LSJFvlneJpLNT3t2mc0UA85cSd1YTHdFuOg2ZYtRlHQ/kkiQOWjtN+E6UePW9qbg/ZXZ
-         RCWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RZto2aI8Bptli2OzTKbCF8aaAGorStB0N8MSB1xDDtE=;
-        b=NGswaH7mPw5rHlN+2mFxFOhKl6Ljq24L+TQ99G20ybl7JfUP6pSDKuhdsclIK8xyak
-         jfDErVwIYGXLNJXYI9HdaSKdBWW3vRcXLZNFxGsiqCC5zIVG4dUM/3PmwaOd1VopxCyI
-         RnfCPnoTu5PPKYkRxA3Z1jZbXnMGLcrL0Mwwg8FcteTzsj9QUBzUA+nuROYYgLsupnpS
-         6U2pseogMKB//fOGLBblalQ1loBuKmNj3Vgs6VcAzG3vRm8hZBHAxnCXbxeuhNKOxMGF
-         qOsKYh8Aj1t5w1UrSP637zRIfMWnwrjjpLMPN7BrD5ydY1eff4s0lggdcETo1rn7I5NG
-         XUgg==
-X-Gm-Message-State: ACrzQf2XhFBUmT51NzyPwg2OaxxIxNdbybBPRNGN3zB2gNKtlyp0Yxw8
-	fzZV1uFIkS9xaPeUgojZQw6mvQ==
-X-Google-Smtp-Source: AMsMyM6ioglBiZGtDLKRsAr68YwkWzhXxrEcAKOa49F6LtuCSk/ZFcxVyr3OS6Jtu4/aUqvZZJBsLQ==
-X-Received: by 2002:ac2:5221:0:b0:4a4:5af7:8ad5 with SMTP id i1-20020ac25221000000b004a45af78ad5mr17457353lfl.388.1667846139899;
-        Mon, 07 Nov 2022 10:35:39 -0800 (PST)
-Received: from [192.168.0.20] (088156142199.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.199])
-        by smtp.gmail.com with ESMTPSA id j23-20020a056512345700b00492d064e8f8sm1371621lfr.263.2022.11.07.10.35.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Nov 2022 10:35:39 -0800 (PST)
-Message-ID: <c8ad788b-5934-8dee-e122-3450a19dd08f@linaro.org>
-Date: Mon, 7 Nov 2022 19:35:38 +0100
+	id 1os7HP-00HKoR-RT; Mon, 07 Nov 2022 18:55:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:
+	Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=YLg5pPiZ4SgYBGCUeq6yCCCPL/wr+lr6XSx1WcECfek=; b=WvQqD0JZD+cMdUTfMcVWB+LWE1
+	ZWQnp0lAdw3j1H4rZxowkxQDZLm3kjQOSPCFhPuNjFYi5DtCBfXlU2P3X/FZxGiJkQH58cgLJEUmW
+	8rnGn2i110PtwhvyiByPWYQuvKPyVse2oAq9MrCU3n1u+B0O2VO8UBx7Qq9RKDwogaCE=;
+Received: from p200300daa72ee1007849d74f78949f6c.dip0.t-ipconnect.de ([2003:da:a72e:e100:7849:d74f:7894:9f6c] helo=Maecks.lan)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1os7H8-000LCc-LA; Mon, 07 Nov 2022 19:55:14 +0100
+From: Felix Fietkau <nbd@nbd.name>
+To: netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 01/14] net: ethernet: mtk_eth_soc: account for vlan in rx header length
+Date: Mon,  7 Nov 2022 19:54:39 +0100
+Message-Id: <20221107185452.90711-1-nbd@nbd.name>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH] dt-bindings: examples: add a list of templates and
- solutions
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20221028233701.572280-1-krzysztof.kozlowski@linaro.org>
- <20221101130720.GA963805-robh@kernel.org>
- <34f40c1c-f933-cee6-f022-14c37650dc3a@linaro.org>
- <20221104214744.GA2878314-robh@kernel.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221104214744.GA2878314-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_103544_424838_5A33F77F 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20221107_105531_993118_E7779C01 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,46 +74,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/11/2022 22:47, Rob Herring wrote:
->>>> +7. Phandle to syscon with offset:
->>>> +   Documentation/devicetree/bindings/soc/samsung/exynos-usi.yaml
->>>> +   Line: 42
->>>> +
->>>> +8. Variable length of array (e.g. clocks and clock-names) but narrowed to
->>>> +   specific variant:
->>>> +   Documentation/devicetree/bindings/clock/qcom,mmcc.yaml
->>>> +   Lines: 33 and 71
->>>
->>> It seems like some of these that are just a single property we could add 
->>> to example-schema.yaml.
->>
->> I am afraid the example-schema will grow too big for folks to look into.
->> It's already quite complicated, with explanations of the dtschema
->> behavior itself.
-> 
-> How about splitting up the top-level descriptions and property examples?
+This may be needed for correct MTU settings on devices using DSA
 
-You mean splitting up to separate YAML files? I guess this could work
-and still be concise - few examples showing different concepts.
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
->> How about then RST file with small code snippets?
-> 
-> Then they don't validate.
-> 
->>
->>> Also, perhaps a reference to this from writing-schema.rst.
->>
->> I can do this as well.
->>
->> The problem with my approach above (and adding these to writing-schema)
->> is that examples above can change, lines can be inadequate.
-> 
-> I just meant a link in writing-schema.rst to this doc. We already have 
-> that for example-schema.yaml.
-
-
-Best regards,
-Krzysztof
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 589f27ddc401..dcf2a0d5da33 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -29,7 +29,7 @@
+ #define MTK_TX_DMA_BUF_LEN_V2	0xffff
+ #define MTK_DMA_SIZE		512
+ #define MTK_MAC_COUNT		2
+-#define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
++#define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + ETH_HLEN + ETH_FCS_LEN)
+ #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
+ #define MTK_DMA_DUMMY_DESC	0xffffffff
+ #define MTK_DEFAULT_MSG_ENABLE	(NETIF_MSG_DRV | \
+-- 
+2.38.1
 
 
