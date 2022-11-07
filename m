@@ -4,83 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67BD1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 20:56:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B02CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 20:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=; b=JQcnmVgDuUTm8GeLuFADGTDTWp
-	0fA0qpcbRFW0LoeMhhpVqRox859/47vgpk4dpImKk55CS+zaPgD2rNu4jC2gkd6fJifgSd1llQS+R
-	OZ9bMNRyxh/srR3tWUtD48BEkYqe7/O5Ga9opdOv5NjfmoxH1z/UvBtlYNXQ+5871LglLskGTmGte
-	l/gq+XeV6yzCTd2ZdNVk83r1DheFDcBGy6ZYRUtWO7R5WZZhdiwlTcjD/K/SF/t4f0s8aQNby76UR
-	9BUACHO4OcV4zzzLj5RtCPPWHU68LK7S4cDK7J/Ct70gUshbRrdcfot1mWM23r2Q/eSAQFQKjIn3+
-	nrcOkQzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:In-reply-to:Subject:Cc:To:From:
+	References:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xNuIDh9+z0CfhmCPEaKB/O13kWB7hEyf2+U7jlAoSUM=; b=NX8KuoVtApMs+O+VEYuu33rnOY
+	Kg4yyN6Y32DI9OQbHdKuXahf1P6Vsjaw+Nnf90m2J5JXXuBBSVvrU/emKb2JUyehMdvmk80vsTli2
+	AEnLvP7oFcvQTcNKjBIcMxYowSCh47bdPXvo2VZeKIEiLI0KYVQn7xSwB8+L6ZWL+22J9xPabTpea
+	Ip6OuWFofcxUW5qmvEMIHe1ls2+tONt/joVPY877iQB1nBDSAqxU6+ttG00S6DJiKgMoAf4cBQzB0
+	zAe4hbD+8KAD4aDfBu21UKbYWViTDSJHzFnzbdJ3c1DSgEI+EVgkEA1G5J6uaFXH3rCZ7AKUyFj4U
+	Qe/M2uEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os9AD-000RfX-51; Mon, 07 Nov 2022 20:56:13 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1os9BQ-000Sfv-UI; Mon, 07 Nov 2022 20:57:28 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os9A2-000RXX-6x; Mon, 07 Nov 2022 20:56:03 +0000
-Received: by mail-ed1-x534.google.com with SMTP id u24so19482994edd.13;
-        Mon, 07 Nov 2022 12:56:01 -0800 (PST)
+	id 1os9BO-000SbN-2b; Mon, 07 Nov 2022 20:57:27 +0000
+Received: by mail-wr1-x435.google.com with SMTP id bs21so18049638wrb.4;
+        Mon, 07 Nov 2022 12:57:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=;
-        b=lcXa8yD0SgTUPQeGlv227tDRMrB5NnfEInO0NrD4HykU0N5ueMLTDPxXEpe4pJTJY5
-         +wK/aRIZRTyxwXuzqNVBd8eKLBMBlIyI/JgcV3eN5CfMcZaVcgbh1cmGfJ4qY6CMN1pS
-         y/WPX1gnhv8dezjEePLyT+6MI5cREwiKs0FzVshIW0A2tUUuBECTwEfygyBjw0EIzIL7
-         bfOsiCsZuwm/C0dTUElfowYYH8InVD+HVNS3XC3piOewEAbrSbFNpOExugQl+Ah8DPmh
-         pGple9hGCOZkPNH3sAjqfQjV9Zgi8FmSPGJWBpDRSz8UD13WzNVlwGZoXX9OoGjyNQ0W
-         ldww==
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:to:from:references:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xNuIDh9+z0CfhmCPEaKB/O13kWB7hEyf2+U7jlAoSUM=;
+        b=PMUoELhE6AnXK+iNbgb6rPTOJPEKsFgBujXqxbWpgwA5fYf4gBdL2QEZ7s38On6Pdv
+         tEvNrpWkJH7345NtNVL6P6neZYoOwCet4Y628+aQE5juJnavU3qBi7KlO1rk5DAUAUOq
+         438HwMs8JiemVJnEaCYxBD3fJBcnKF+Ec4ElTT2rACGgYIzmW6zjKAQjhVEt1OoUDQVI
+         vKeu2GP4yAVneediojKblkMb81j+Ywo5HajTIEQtgDumphUC4m8/Zrw4Q3MU5M1r0ziT
+         8aiG4DnxTEwp4bvltkVyz/XtyJfkf0wefxRxSHxi02sFECEhyFppC6IqlBS76u0z4eLR
+         9SRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=;
-        b=WJlL/6ivlAdqhgvWho8H+Y7iPLLnJVVWZR70ayOIfr2EUQT13oY5o+KnsEhAoLT7Ll
-         HHjaNj11BW4bY1B4/sHVBZdtJOSnW4hOK61rs8EhCJ4fTcPYli/SfyOsyq3vfQ8xabsL
-         mccnsOys5wL70gAxHNilhK1AdzBG8FnCZ4lHAxRSfPhf6/lwql/F8dLXL3iq/aMPqp9I
-         uN1ndZOu3J3hiVGXvkTDEzeLYxCKQCp4QFH8A/dqGHmnGFXHNFlBdFGwTqrIDN77n+PJ
-         a2i8JPQGjIeTZirw4bXDQ8Ctphw6b2GJKusKFGQE01amB0pFwhFBUIyCzoQMa6Jt6pfe
-         UNuA==
-X-Gm-Message-State: ACrzQf2HNOztwlLSxmBP4k/vazCZ36Q2giUTY2xOPrwQpJA//fdLX/bA
-	4KpLJUqc9Fl6cfOmV/jVvtw=
-X-Google-Smtp-Source: AMsMyM6ioc0P0uojdmQ1u0VY0uZvTZqZ5dbDJ15EFDJgrrKmfO6nqvWye/xti1qfyvHjVNe1PfWaDA==
-X-Received: by 2002:a50:ef06:0:b0:463:2605:d24d with SMTP id m6-20020a50ef06000000b004632605d24dmr47036181eds.43.1667854560277;
-        Mon, 07 Nov 2022 12:56:00 -0800 (PST)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id g18-20020a17090604d200b0073dc5bb7c32sm3882261eja.64.2022.11.07.12.55.56
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:to:from:references:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=xNuIDh9+z0CfhmCPEaKB/O13kWB7hEyf2+U7jlAoSUM=;
+        b=CgXD/8avJjUP/7SA55CCTUc8Yr4BeYlx2GNuMRyyOFzhHuK5+pQyyoa8LqzwQgaq09
+         qG+rw05jVb5vCi5pqvkY2cCFl/2ZdXiIdKzA+OCqi9F5hsEdXkxh/tQtskxCNNFET2NK
+         8Q/S+cywP8mP6QubCXGJcpWQq4dNHXn46WJC6ZoS3nmHMNu9RTHCkFXOtibFIxPuNHB+
+         wk5Pwn0PngoX811keW45+TMQH+iF9cu+kitCC+djvJUDCMrL45jaJPA5//dvSR/SzbKt
+         GzQQjFOqCVCnZQXIuzaaavHt/nX8gue/QN11QFZt3fAHFAjbOiDDojw/Ue/DCDaW4YZs
+         qO3A==
+X-Gm-Message-State: ACrzQf1TsZUAWBWGXUxxe/7bOWwfDFzXLETnqvmIs2hG/ddeSdLcYiQ0
+	kadlWgs+24oUJI/B5qe6zgo=
+X-Google-Smtp-Source: AMsMyM68KhRfPQSDi8CFA78pakjxRAM3L6JCB7fc1yr/DnXKn9yQG4njsjQsXjAXYrNXUB9CMb72nw==
+X-Received: by 2002:a5d:4ec1:0:b0:22e:435c:1e0f with SMTP id s1-20020a5d4ec1000000b0022e435c1e0fmr633954wrv.200.1667854640408;
+        Mon, 07 Nov 2022 12:57:20 -0800 (PST)
+Received: from localhost (188.28.3.103.threembb.co.uk. [188.28.3.103])
+        by smtp.gmail.com with ESMTPSA id m1-20020a7bca41000000b003c6c3fb3cf6sm9173176wml.18.2022.11.07.12.57.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Nov 2022 12:55:59 -0800 (PST)
-Date: Mon, 7 Nov 2022 22:55:53 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 01/14] net: ethernet: mtk_eth_soc: account for vlan in rx
- header length
-Message-ID: <20221107205553.cnydzeh3tmilqblx@skbuf>
-References: <20221107185452.90711-1-nbd@nbd.name>
+        Mon, 07 Nov 2022 12:57:19 -0800 (PST)
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
+ <80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
+ <20221104145946.orsyrhiqvypisl5j@houat>
+ <cp7Yh29ndlOOi1yW8KwCcpzoLPLxm1vR@localhost>
+ <20221107085417.xrsh6xy3ouwdkp4z@houat>
+From: Aidan MacDonald <aidanmacdonald.0x0@gmail.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Paul Cercueil <paul@crapouillou.net>, Stephen Boyd <sboyd@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>, Fabio
+ Estevam <festevam@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Turquette
+ <mturquette@baylibre.com>, Dinh Nguyen <dinguyen@kernel.org>, Chunyan
+ Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>,
+ Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Jonathan Hunter
+ <jonathanh@nvidia.com>,
+ Abel Vesa <abelvesa@kernel.org>, Charles Keepax
+ <ckeepax@opensource.cirrus.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>, Orson Zhai
+ <orsonzhai@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Samuel Holland <samuel@sholland.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Sekhar
+ Nori <nsekhar@ti.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Linus
+ Walleij <linus.walleij@linaro.org>, Takashi Iwai <tiwai@suse.com>, David
+ Airlie <airlied@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Baolin Wang <baolin.wang@linux.alibaba.com>,
+ David Lechner <david@lechnology.com>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>, Max Filippov
+ <jcmvbkbc@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
+In-reply-to: <20221107085417.xrsh6xy3ouwdkp4z@houat>
+Date: Mon, 07 Nov 2022 20:57:22 +0000
+Message-ID: <ucJ6KSBqdPTxfxUQqLUr9C9RGiQRnY1I@localhost>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221107185452.90711-1-nbd@nbd.name>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_125602_300808_DCA190C7 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20221107_125726_145046_D0FD9AD8 
+X-CRM114-Status: GOOD (  48.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +128,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 07, 2022 at 07:54:39PM +0100, Felix Fietkau wrote:
-> This may be needed for correct MTU settings on devices using DSA
-> 
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index 589f27ddc401..dcf2a0d5da33 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -29,7 +29,7 @@
->  #define MTK_TX_DMA_BUF_LEN_V2	0xffff
->  #define MTK_DMA_SIZE		512
->  #define MTK_MAC_COUNT		2
-> -#define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
-> +#define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + ETH_HLEN + ETH_FCS_LEN)
 
-Commit title says account for VLAN (VLAN_HLEN, 4 bytes), code says add
-VLAN_ETH_HLEN (18) more bytes.
+Maxime Ripard <maxime@cerno.tech> writes:
 
-Also, why is DSA mentioned in the commit message? Is accounting for VLAN
-hlen not needed if DSA is not used? Why?
+> Hi,
+>
+> On Fri, Nov 04, 2022 at 05:35:29PM +0000, Aidan MacDonald wrote:
+>>
+>> Maxime Ripard <maxime@cerno.tech> writes:
+>>
+>> > Hi Paul,
+>> >
+>> > On Fri, Nov 04, 2022 at 02:31:20PM +0000, Paul Cercueil wrote:
+>> >> Le ven. 4 nov. 2022 =C3=A0 14:18:13 +0100, Maxime Ripard <maxime@cern=
+o.tech> a
+>> >> =C3=A9crit :
+>> >> > The Ingenic CGU clocks implements a mux with a set_parent hook, but
+>> >> > doesn't provide a determine_rate implementation.
+>> >> >
+>> >> > This is a bit odd, since set_parent() is there to, as its name impl=
+ies,
+>> >> > change the parent of a clock. However, the most likely candidate to
+>> >> > trigger that parent change is a call to clk_set_rate(), with
+>> >> > determine_rate() figuring out which parent is the best suited for a
+>> >> > given rate.
+>> >> >
+>> >> > The other trigger would be a call to clk_set_parent(), but it's far=
+ less
+>> >> > used, and it doesn't look like there's any obvious user for that cl=
+ock.
+>> >> >
+>> >> > So, the set_parent hook is effectively unused, possibly because of =
+an
+>> >> > oversight. However, it could also be an explicit decision by the
+>> >> > original author to avoid any reparenting but through an explicit ca=
+ll to
+>> >> > clk_set_parent().
+>> >> >
+>> >> > The driver does implement round_rate() though, which means that we =
+can
+>> >> > change the rate of the clock, but we will never get to change the
+>> >> > parent.
+>> >> >
+>> >> > However, It's hard to tell whether it's been done on purpose or not.
+>> >> >
+>> >> > Since we'll start mandating a determine_rate() implementation, let's
+>> >> > convert the round_rate() implementation to a determine_rate(), which
+>> >> > will also make the current behavior explicit. And if it was an
+>> >> > oversight, the clock behaviour can be adjusted later on.
+>> >>
+>> >> So it's partly on purpose, partly because I didn't know about
+>> >> .determine_rate.
+>> >>
+>> >> There's nothing odd about having a lonely .set_parent callback; in my=
+ case
+>> >> the clocks are parented from the device tree.
+>> >>
+>> >> Having the clocks driver trigger a parent change when requesting a ra=
+te
+>> >> change sounds very dangerous, IMHO. My MMC controller can be parented=
+ to the
+>> >> external 48 MHz oscillator, and if the card requests 50 MHz, it could=
+ switch
+>> >> to one of the PLLs. That works as long as the PLLs don't change rate,=
+ but if
+>> >> one is configured as driving the CPU clock, it becomes messy.
+>> >> The thing is, the clocks driver has no way to know whether or not it =
+is
+>> >> "safe" to use a designated parent.
+>> >>
+>> >> For that reason, in practice, I never actually want to have a clock
+>> >> re-parented - it's almost always a bad idea vs. sticking to the paren=
+t clock
+>> >> configured in the DTS.
+>> >
+>> > Yeah, and this is totally fine. But we need to be explicit about it. T=
+he
+>> > determine_rate implementation I did in all the patches is an exact
+>> > equivalent to the round_rate one if there was one. We will never ask to
+>> > change the parent.
+>> >
+>> > Given what you just said, I would suggest to set the
+>> > CLK_SET_RATE_NO_REPARENT flag as well.
+>>
+>> Ideally there should be a way for drivers and the device tree to
+>> say, "clock X must be driven by clock Y", but the clock framework
+>> would be allowed to re-parent clocks freely as long as it doesn't
+>> violate any DT or driver constraints.
+>
+> I'm not really sure what you mean there, sorry. Isn't it what
+> assigned-clock-parents/clk_set_parent() at probe, plus a determine_rate
+> implementation that would affect best_parent_hw would already provide?
 
->  #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
->  #define MTK_DMA_DUMMY_DESC	0xffffffff
->  #define MTK_DEFAULT_MSG_ENABLE	(NETIF_MSG_DRV | \
-> -- 
-> 2.38.1
-> 
+Assigning the parent clock in the DT works once, at boot, but going off
+what you wrote in the commit message, if the clock driver has a
+.determine_rate() implementation that *can* reparent clocks then it
+probably *will* reparent them, and the DT assignment will be lost.
+
+What I'm suggesting is a runtime constraint that the clock subsystem
+would enforce, and actively prevent drivers from changing the parent.
+Either explicitly with clk_set_parent() or due to .determine_rate().
+
+That way you could write a .determine_rate() implementation that *can*
+select a better parent, but if the DT applies a constraint to fix the
+clock to a particular parent, the clock subsystem will force that parent
+to be used so you can be sure the clock is never reparented by accident.
+
+>> That way allowing reparenting doesn't need to be an all-or-nothing
+>> thing, and it doesn't need to be decided at the clock driver level
+>> with special flags.
+>
+> Like I said, the default implementation is already working to what you
+> suggested if I understood properly. However, this has never been tested
+> for any of the drivers in that series so I don't want to introduce (and
+> debug ;)) regressions in all those drivers that were not setting any
+> constraint but never actually tested their reparenting code.
+>
+> So that series is strictly equivalent to what you had before, it's just
+> explicit now.
+>
+> If you find that some other decision make sense for your driver in
+> particular cases, feel free to change it. I barely know most of these
+> platforms, so I won't be able to make that decision (and test it)
+> unfortunately.
+>
+> Maxime
+
+That's OK, I didn't review the patch, I'm just making a general
+suggestion. :)
 
