@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36A25C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B271C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S89qlfLEv8XlSTv714rvJzWqtsO0LUWDFauseN64fhU=; b=KRQItzncWj59Q/ZebzpXzCLcml
-	iBSP9ZsTKjI3ndpWww5LCQherkr/mAvSXcJNUg7G9ouR78zPnC9vkLmAFM8HhJ8COKIUfGUNjja95
-	uFwcfOb4xrVvS0DZwtMYiPzs517iAlpkjczlDxGO5bd5evRoqlupa7Gcso1bAxm1xQubJg1BDVrhd
-	CLfnytUx2+ch/5XbhKTFPvQEp0b4AoXrU+RArO+WQTSS6fksQxN/JIg5jVYd2ZmenIzThpuZqbvKR
-	0p270eJTgrBdLlVnTbnHOnSr6wtRrOwdwXizX4dF77HyN3QuurfPvlKZtmD6Y+kmGh/eNBXxq2j1j
-	C5+1eS+w==;
+	bh=/1grlSosDlqsh7JXp4E+q/aiybzRVCpFkWY3KuYlx88=; b=HP5DTAv1wgN5+gdIp+TD2o4+bn
+	UDHaeZiDcCds9RMw9WPTEJ6EqCaPDzyHzokPzZL3GNbGx+tg+4k/B5wuR+yelS9waJyHruu2pyRgp
+	tVCnhqbC2KAKgWE8l/fCAxttOPXetkzqoeqOR8uBnO+o1qYQVibIKKVkT3BTT4+Votggt/FC8lEVv
+	9MI1yEkHZidWGGS7bzN9NCT3QgOEhCqhWiBudJ0uXR+qeHx8U5DEIrkNy1EWKfMFuJXDMfnVaryuT
+	lFxITEiESYFe60Jp/KNmDJQPWckd+2hnopUpxtfjIbIKxHFxDNoHsRYji6ui+/SO1/Hthac1MRvJ+
+	mZiW1skg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os5BN-00GI1F-So; Mon, 07 Nov 2022 16:41:10 +0000
+	id 1os5BW-00GI8i-BW; Mon, 07 Nov 2022 16:41:18 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4zF-00GBQa-NW; Mon, 07 Nov 2022 16:28:40 +0000
+	id 1os50u-00GC40-4n; Mon, 07 Nov 2022 16:30:22 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5E01223A;
-	Mon,  7 Nov 2022 08:28:42 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E21FD23A;
+	Mon,  7 Nov 2022 08:30:23 -0800 (PST)
 Received: from pierre123.arm.com (pierre123.nice.arm.com [10.34.100.128])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 11F933F534;
-	Mon,  7 Nov 2022 08:28:20 -0800 (PST)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id B80A53F534;
+	Mon,  7 Nov 2022 08:30:02 -0800 (PST)
 From: Pierre Gondois <pierre.gondois@arm.com>
 To: linux-kernel@vger.kernel.org
 Cc: Pierre Gondois <pierre.gondois@arm.com>,
@@ -101,32 +101,32 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	Shenwei Wang <shenwei.wang@nxp.com>,
 	Peng Fan <peng.fan@nxp.com>,
 	Ming Qian <ming.qian@nxp.com>,
+	Adam Ford <aford173@gmail.com>,
 	Lucas Stach <l.stach@pengutronix.de>,
 	Tim Harvey <tharvey@gateworks.com>,
-	Adam Ford <aford173@gmail.com>,
-	Li Jun <jun.li@nxp.com>,
 	Richard Zhu <hongxing.zhu@nxp.com>,
+	Li Jun <jun.li@nxp.com>,
 	Marek Vasut <marex@denx.de>,
 	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
 	Joakim Zhang <qiangqing.zhang@nxp.com>,
 	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
 	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
 	Martin Kepplinger <martink@posteo.de>,
+	Joy Zou <joy.zou@nxp.com>,
 	David Heidelberg <david@ixit.cz>,
 	Liu Ying <victor.liu@nxp.com>,
 	Oliver Graute <oliver.graute@kococonnector.com>,
 	Shijie Qin <shijie.qin@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>,
 	Jacky Bai <ping.bai@nxp.com>,
+	Wei Fang <wei.fang@nxp.com>,
+	Clark Wang <xiaoning.wang@nxp.com>,
 	Chris Packham <chris.packham@alliedtelesis.co.nz>,
 	Vadym Kochan <vadym.kochan@plvision.eu>,
 	Sameer Pujar <spujar@nvidia.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Akhil R <akhilrajeev@nvidia.com>,
 	Prathamesh Shete <pshete@nvidia.com>,
+	Akhil R <akhilrajeev@nvidia.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
 	Sumit Gupta <sumitg@nvidia.com>,
 	Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
 	Vidya Sagar <vidyas@nvidia.com>,
@@ -136,7 +136,6 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Aswani Reddy <aswani.reddy@samsung.com>,
 	Shashank Prashar <s.prashar@samsung.com>,
-	Arjun K V <arjun.kv@samsung.com>,
 	devicetree@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -149,17 +148,17 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	linux-realtek-soc@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 17/23] arm64: dts: Update cache properties for realtek
-Date: Mon,  7 Nov 2022 16:57:10 +0100
-Message-Id: <20221107155825.1644604-18-pierre.gondois@arm.com>
+Subject: [PATCH v2 18/23] arm64: dts: Update cache properties for renesas
+Date: Mon,  7 Nov 2022 16:57:11 +0100
+Message-Id: <20221107155825.1644604-19-pierre.gondois@arm.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
 References: <20221107155825.1644604-1-pierre.gondois@arm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_082837_959792_0A5AD98D 
-X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-CacheID: sfid-20221107_083020_327555_560E047D 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -185,76 +184,43 @@ Update the Device Trees accordingly.
 
 Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
 ---
- arch/arm64/boot/dts/realtek/rtd1293.dtsi | 1 +
- arch/arm64/boot/dts/realtek/rtd1295.dtsi | 1 +
- arch/arm64/boot/dts/realtek/rtd1296.dtsi | 1 +
- arch/arm64/boot/dts/realtek/rtd1395.dtsi | 1 +
- arch/arm64/boot/dts/realtek/rtd16xx.dtsi | 2 ++
- 5 files changed, 6 insertions(+)
+ arch/arm64/boot/dts/renesas/r9a07g043.dtsi | 1 +
+ arch/arm64/boot/dts/renesas/r9a07g044.dtsi | 1 +
+ arch/arm64/boot/dts/renesas/r9a07g054.dtsi | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/realtek/rtd1293.dtsi b/arch/arm64/boot/dts/realtek/rtd1293.dtsi
-index 2d92b56ac94d..0696b99fc40d 100644
---- a/arch/arm64/boot/dts/realtek/rtd1293.dtsi
-+++ b/arch/arm64/boot/dts/realtek/rtd1293.dtsi
-@@ -30,6 +30,7 @@ cpu1: cpu@1 {
- 
- 		l2: l2-cache {
+diff --git a/arch/arm64/boot/dts/renesas/r9a07g043.dtsi b/arch/arm64/boot/dts/renesas/r9a07g043.dtsi
+index 689aa4ba416b..18c69a187ecb 100644
+--- a/arch/arm64/boot/dts/renesas/r9a07g043.dtsi
++++ b/arch/arm64/boot/dts/renesas/r9a07g043.dtsi
+@@ -88,6 +88,7 @@ L3_CA55: cache-controller-0 {
  			compatible = "cache";
-+			cache-level = <2>;
+ 			cache-unified;
+ 			cache-size = <0x40000>;
++			cache-level = <3>;
  		};
  	};
  
-diff --git a/arch/arm64/boot/dts/realtek/rtd1295.dtsi b/arch/arm64/boot/dts/realtek/rtd1295.dtsi
-index 1402abe80ea1..4ca322e420e6 100644
---- a/arch/arm64/boot/dts/realtek/rtd1295.dtsi
-+++ b/arch/arm64/boot/dts/realtek/rtd1295.dtsi
-@@ -44,6 +44,7 @@ cpu3: cpu@3 {
- 
- 		l2: l2-cache {
+diff --git a/arch/arm64/boot/dts/renesas/r9a07g044.dtsi b/arch/arm64/boot/dts/renesas/r9a07g044.dtsi
+index 2283d4fb8736..86866d9dc7c4 100644
+--- a/arch/arm64/boot/dts/renesas/r9a07g044.dtsi
++++ b/arch/arm64/boot/dts/renesas/r9a07g044.dtsi
+@@ -109,6 +109,7 @@ L3_CA55: cache-controller-0 {
  			compatible = "cache";
-+			cache-level = <2>;
+ 			cache-unified;
+ 			cache-size = <0x40000>;
++			cache-level = <3>;
  		};
  	};
  
-diff --git a/arch/arm64/boot/dts/realtek/rtd1296.dtsi b/arch/arm64/boot/dts/realtek/rtd1296.dtsi
-index fb864a139c97..03fccd48f0c0 100644
---- a/arch/arm64/boot/dts/realtek/rtd1296.dtsi
-+++ b/arch/arm64/boot/dts/realtek/rtd1296.dtsi
-@@ -44,6 +44,7 @@ cpu3: cpu@3 {
- 
- 		l2: l2-cache {
+diff --git a/arch/arm64/boot/dts/renesas/r9a07g054.dtsi b/arch/arm64/boot/dts/renesas/r9a07g054.dtsi
+index 358d4c34465f..b36dd5291e5a 100644
+--- a/arch/arm64/boot/dts/renesas/r9a07g054.dtsi
++++ b/arch/arm64/boot/dts/renesas/r9a07g054.dtsi
+@@ -109,6 +109,7 @@ L3_CA55: cache-controller-0 {
  			compatible = "cache";
-+			cache-level = <2>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/realtek/rtd1395.dtsi b/arch/arm64/boot/dts/realtek/rtd1395.dtsi
-index 05c9216a87ee..94c0a8cf4953 100644
---- a/arch/arm64/boot/dts/realtek/rtd1395.dtsi
-+++ b/arch/arm64/boot/dts/realtek/rtd1395.dtsi
-@@ -44,6 +44,7 @@ cpu3: cpu@3 {
- 
- 		l2: l2-cache {
- 			compatible = "cache";
-+			cache-level = <2>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/realtek/rtd16xx.dtsi b/arch/arm64/boot/dts/realtek/rtd16xx.dtsi
-index afba5f04c8ec..2ee9ba1ecdc1 100644
---- a/arch/arm64/boot/dts/realtek/rtd16xx.dtsi
-+++ b/arch/arm64/boot/dts/realtek/rtd16xx.dtsi
-@@ -87,12 +87,14 @@ cpu5: cpu@500 {
- 
- 		l2: l2-cache {
- 			compatible = "cache";
-+			cache-level = <2>;
- 			next-level-cache = <&l3>;
- 
- 		};
- 
- 		l3: l3-cache {
- 			compatible = "cache";
+ 			cache-unified;
+ 			cache-size = <0x40000>;
 +			cache-level = <3>;
  		};
  	};
