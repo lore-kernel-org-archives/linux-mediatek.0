@@ -4,151 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55A2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 13:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD0FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 13:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Y7hXv082RRO177Jkx3+duI0Rsbs+ddNcXnKRWErdsk=; b=1Ds3iAgV28pMLstcheim07i3v1
-	LvTis0eg7xd6SGKaL50c5OXp85M7a0eovsuAMR380Im0vI4BCYciQdnxHVNJfvQN+y8r0nUYMY9bU
-	nvfkBdVC+RTg0s81n60crSI+tESb2JfOYiQmfqq0v//Cpv9RtaYCOgRssvAqVh7/8+9lZVoUsgZNc
-	E8Egj71XcwtHTVSctKjDVLWCtIzRZ9cTyHPPHJhma36GycSj54WorGFVWNFqQA6+pkoxxvIRrthkx
-	l5XaNZDgkxnp87qoiVf4JbfSAHRZrvn7+xS6chSe4crV20+FuuSHv94on9ytUACI1S879VbEjKZQF
-	DMH+60XQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BVlVGOBMAEG8mZxK+1+Ovz1DgYnaFK4gqmPC23ACB3Y=; b=uBRMjDV5yyI30V6jube76YJniT
+	5YfImCLguHoqamnJEvgDo1X1Kv6cPPZ9Ui6iaYO3srI0WBUnXAYF5cBVSfehcDeinhC0iSYoZpZ43
+	GYReRi3tf9m1q/xltoRDO2KhxWXflPWhDUjDo/MwFkcrLw0KCjknznODOT8sM2q2EyYWewzo5fPZ1
+	W9S3s4SiJw025h4JLl9rsVIRQBm2rihdiJ4GuzpNwZIqbKr+oCt0ro95OJCSD0E/52ZEgdOgreHrN
+	F2tsIQuZEn3p0NFsN+xhfjcrqTDyipdZ4yjZyRm3CfpCk6ELBXEwEgmsT0zRTt2tyCLkrHp8ztL06
+	TFkv79mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os1kG-00Ecp9-Fc; Mon, 07 Nov 2022 13:00:56 +0000
-Received: from mail-vi1eur05on2074.outbound.protection.outlook.com ([40.107.21.74] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1os21r-00Eowf-6w; Mon, 07 Nov 2022 13:19:07 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os1jv-00Ecgx-Lf; Mon, 07 Nov 2022 13:00:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cxGeF2wigfvTLyYJ48PIJT7SRZ+P+doXVXM02MmeoSaWCBddlzk1gjFVmMsRtd97JU44+PDo+U1OayjZ1XX67sSa7N1rHp9ARUbmaRtMHxG+eGcQaHee3MxNMa7tAlh1hVJyfoI4yF2l0uLvw5RTepF9/ltOUhYWagHxtU01JbJUSXz369Wy7L37uOnBH5yZWMXKZ3dlogQL1awcQrFwiCez+ZQm25RY7/TSAi4QBGAieTlF50J/DU3ZG2KU5/ZVJDfCBIKkVc57Z9elvXbbLcHAWQ7+qgt3qT+MehAOasBTbkR65mPpU1Ztf1RGJnKHvXyGi9GMWmakwTda0wZecA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9Y7hXv082RRO177Jkx3+duI0Rsbs+ddNcXnKRWErdsk=;
- b=AAPdl6/eg9sNdbXY2rdqENO2KgO+6H9NyuGabbxmsuNO8D8o70H6/UAuT+hT0IjcR8oJ5/Cu4lHM8RSxIZz2llJz4bktlu4DLXc+SjIFFzCill1JYf88q0cokQkJXLCBgRP+tK5Kx3ap01T4RUUL+0VMbmKd2AYbqWfnWeVkMckXEz7WUDYES6Cmd8q2UujTpNG/T/ikoB99jaSUsNA3lZEb0PxaY/bnRCzwwiOcd3Aj0y8kDWI0XmPnmzl0sLlg53dQOVIcn5d2TYALuCCmSeGdj2YDFwqpCRjZlV1ONNC9Sp85fd49gSj8RMsbGFpLhf+RK61u5D0ACBSpmwf4NA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9Y7hXv082RRO177Jkx3+duI0Rsbs+ddNcXnKRWErdsk=;
- b=E3D9+FuGVq63URE0UJVOkJSFwmOGqW5DXrju50AbvAK02HpLApi/ALZvSCtm72Tf1AXtk/f3E5P35s1pZWTLiH1+1k/t1WMpwetBUUpu3Uy/OO6B9CLC8Q4SpgBoAptuOVZWeF6pyrztDmPUdYWVJAUl1o+TFZUxmrsVY9b0mHc=
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by DBBPR04MB7548.eurprd04.prod.outlook.com (2603:10a6:10:20c::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.22; Mon, 7 Nov
- 2022 13:00:27 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::4a73:29eb:28e3:f66d]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::4a73:29eb:28e3:f66d%7]) with mapi id 15.20.5791.024; Mon, 7 Nov 2022
- 13:00:27 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-CC: Joyce Ooi <joyce.ooi@intel.com>, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Chris Snook <chris.snook@gmail.com>, Nicolas Ferre
-	<nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>, Claudiu Manoil
-	<claudiu.manoil@nxp.com>, Madalin Bucur <madalin.bucur@nxp.com>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, Marcin Wojtas <mw@semihalf.com>,
-	Taras Chornyi <tchornyi@marvell.com>, Felix Fietkau <nbd@nbd.name>, John
- Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>, Lars Povlsen
-	<lars.povlsen@microchip.com>, Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Maxime
- Coquelin <mcoquelin.stm32@gmail.com>, Radhey Shyam Pandey
-	<radhey.shyam.pandey@xilinx.com>, Michal Simek <michal.simek@xilinx.com>,
-	Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
-	<linux-renesas-soc@vger.kernel.org>,
-	"linux-stm32@st-md-mailman.stormreply.com"
-	<linux-stm32@st-md-mailman.stormreply.com>, "linux-usb@vger.kernel.org"
-	<linux-usb@vger.kernel.org>, "UNGLinuxDriver@microchip.com"
-	<UNGLinuxDriver@microchip.com>
-Subject: Re: [PATCH net-next] net: remove explicit phylink_generic_validate()
- references
-Thread-Topic: [PATCH net-next] net: remove explicit phylink_generic_validate()
- references
-Thread-Index: AQHY8HDMdl+vkQ7h8UWdK3AxPmtmWw==
-Date: Mon, 7 Nov 2022 13:00:27 +0000
-Message-ID: <20221107130027.5itc5uqljcs4eath@skbuf>
-References: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
- <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
- <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: VI1PR04MB5136:EE_|DBBPR04MB7548:EE_
-x-ms-office365-filtering-correlation-id: 8379f2b8-f0ad-4486-a6ab-08dac0c00b0f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:  DxQFl1JEwQoxGUKvmIRgjgq0/HJgmfyYCJtoXSm3p+E5BgFoxX0tTp+qdNdhtKy1xJqcnpAWm6lUku3blX2lAfq1YDoyDwg7Py+lpiKy55rTreIOANiK+TN0fX1g66Kex7Cw35bSogKqAvhi3W3NMiHoyu3+zKL/tNN/suW72uaQI1sC7poys9PoCF598nNd9NXK1LPS+qkzYJaBEdvcWxRh9bjSEwSOose8ptZld++Xrq3N99XUIBKY7ahFK0dUmtlYZKcCHhEfGQoer3V9WeXvH879LMtW1fzacGFh+oYRsnf9hlz2Bvtlt7mVMPai1tJOvs5bY8J2LdZbvNi1sWdAvWEXEJOnYY2HzAQ6LyXfsQhhD3L0afh4Cg7sfE1qMS/4KZyPOa0YdwqdlYqIkJdy39+ZJEOxuZWF7HH8T3jiY0nF26O2S/o9OigZVDFiJUu1K25suFAwDTd1tuyXVl+KDYZT4RBjL6M6s2UpOnOOy57x729wbgSe3cSLipZ0lKBMqI7PIC3Rw9ydIRswvY8HnBYU0i0zfkL9+jUCkMk1cUd6nXmk6VXER+oelDuGMbGlmWWVRrJ65RK2UFat59EZv8Njbb8001XkWjC0mUxxH+rJxXqExvYZhsK2jbDFhzpJ6UAgnQkh/I3sdb9VcAcv1cn//IaI8EGfd7bAvheyz55cw8iYkh0AWyTfGYXf2WEEqidhftlZf9bcOSRoaEthbZ30bDp5e20vLAStVXnEFqrGY5yJAdKgOnijk2qhFBXmYN0Pf5n9y9iyGDrPL/nvozRKoOn2pWRD2V4hzu8=
-x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB5136.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(136003)(396003)(346002)(376002)(39860400002)(366004)(451199015)(26005)(6512007)(9686003)(1076003)(6506007)(186003)(122000001)(83380400001)(44832011)(4744005)(2906002)(8676002)(7406005)(7416002)(33716001)(478600001)(54906003)(71200400001)(38100700002)(6486002)(41300700001)(5660300002)(8936002)(91956017)(4326008)(316002)(76116006)(66446008)(66946007)(66556008)(64756008)(66476007)(38070700005)(86362001)(41533002);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:  =?us-ascii?Q?h3I6vsmX68czQxu9DGCd7jkrk/jQBKJSRsTpk98uPf0jgERPs6UnQLwS84sm?=
- =?us-ascii?Q?q+X7moCF2lT/glSJrrUs0uaSLyJRPFs7glgg8Beyqe+JMA5w5ZKvwqo/t2RL?=
- =?us-ascii?Q?0pjiQa/OkhffwNzTCiFzjC/rFjOq40tYeRzAxFX/lBUhZD6Jq66k9GrogiRd?=
- =?us-ascii?Q?Ua11NV4hLY2uevS1LJWnmpnAVRqaRSqAcKkTFvgZlaIECQxevnixIvhLM5Iq?=
- =?us-ascii?Q?dIHdbc2L18ndi+xcMzTcUHrOraFtvnLgjVvAx0jHahulRIhsz2GPkL46ioLU?=
- =?us-ascii?Q?kapg4pMCuOlCYzOszMkuHZTbOlBa+W5eSGSC/UkMTkxraWcQua6+MHLS7nZk?=
- =?us-ascii?Q?xb08nWzcHt4qrieCk5k1GhQbTAP8ckf4UISpdhfDowXuhvoz7RiywEec/mJe?=
- =?us-ascii?Q?BC7/eC9JtLpcyACwMCUH7Wp8Y6VtpoEQj5fXYrt37sRp4pYGdi9rWjvwjKot?=
- =?us-ascii?Q?zL3mQgn1piAsVympLkVcSEwwIh7lveYZK01TXTJsMUpz3nYih49wbv8rXxHz?=
- =?us-ascii?Q?BOctaFpq6uYxW2T0Z072nCuCPLRqcKH53eemZCssGi+Zuf3gNL/fiXPwABR8?=
- =?us-ascii?Q?y0bPCXPMeVlI3O/jx60B3dMxSwBgUWgl9eiVIbl/VYLkF/q0yPGhs90oefVZ?=
- =?us-ascii?Q?yIakqd67Fe6o2DjY0rGqdYInXPv7L98roPeoav/fzbEM46Xp/toki1ICdbZs?=
- =?us-ascii?Q?YJETCrKiG+joGOghMaiXJKeMfajEPhzvwgcJLJBhhDp8qCKsKc1oiRzTwbHA?=
- =?us-ascii?Q?/hiRwbXUa956MwcQkUcHNZ5+r4tEnIekQ0CkYnKxo8w+vjy/+aaS7bfh/1bD?=
- =?us-ascii?Q?tTRrum1f5Uc0E1E3jzZyDk7GoqGVGlKcMnfRLwCUzhlhIf/oX3sXax2/1DRO?=
- =?us-ascii?Q?wzIlOR0NVING7g0uPYhnAk+JAJtsBzeU0HyN0lP3rxNnt+MAKVTD/1UaIzOe?=
- =?us-ascii?Q?wDL79hdxmZqXRTritWRSDhsjYGzSHRae3hYBvQwobiiL7RAVOLMCVlYHy3QL?=
- =?us-ascii?Q?wtpnnyBmgvtkzejDGGUJmidu3id9E6RGDurmsvhsCltjLEyw2VcIhqlmXJdU?=
- =?us-ascii?Q?pYQrYvLhKf9SvVEF0rBDqe+4F2gtgvqnah8bAxyzAkf+34Nb05gr1650OlgG?=
- =?us-ascii?Q?SuFLZX39hT++wj9GtDbUUif8+KJprnRnLieFeJy64VLFWXRkW/1oIz/m0GvW?=
- =?us-ascii?Q?HrR6Wv+zxw/A/YhK0IA4goAI8L5+opNfOHwBbolFYeVMqOcBOJI13MWduwm8?=
- =?us-ascii?Q?MYE6hOqihGY9fEG/5aFgjoBYl0fGp0MLoi1XDxWwvwVvAGdmA2fOLubJh6RY?=
- =?us-ascii?Q?BQojctrcXkWAjHVLGGiaWOJ2NsX4ZAEu7D9chwVCGPmiGz6EN1pQyTgfEYYS?=
- =?us-ascii?Q?bg4Qnq01nl4ic2qOnTloJ55G+QS5NR4hWyLhjyJMD3Ukv7J8tVqKwa0bOraI?=
- =?us-ascii?Q?CfBCLRWoMSbT2/46fqsBzQrC3/0GZnB3FBaZUbwVc8tqz0EtwGIEozceUFxz?=
- =?us-ascii?Q?kq0ofepBO5w/wix8vA3F6h3qHRTdDvAYpB//rFx8cglTZHb2isqSZ1asSWS2?=
- =?us-ascii?Q?LTBHmw+r3B9Z0lXjUlE0p826Gi8MhCmajUOziZFzKSXiFMYi8cjtqv/8HPUT?=
- =?us-ascii?Q?cg=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <A158BAF6A45039439EFFF98CA61228A9@eurprd04.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+	id 1os21f-00EoJY-AW; Mon, 07 Nov 2022 13:18:57 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DB5E1660283A;
+	Mon,  7 Nov 2022 13:18:49 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667827131;
+	bh=tU1OAe0Vvp0aOciZukkqE9qUSHS3oLbNbkvzwrPYLkc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=L4C8TBHEQh4aCfg5EhyPfgDj7FBDr9tlaaqbeuI2gxoiauoPTJ0LRomeu3U3xn8yB
+	 cLs9jf3Qy5ulLx74oSSgelmTH9X5C4sVeW484q5SfPvgG+kcUvnYsjsfobsKfYjC04
+	 ZQk8R+V7AaQ6z1506vNkwdxgkBqBt/s6ODPYs3m5BkY1rmI8n/S2N2RCNR421rHjUn
+	 ASXerx/DVGAO8Cx0KStDw3qgbQZ5wCzTkfJ59lyqmzQ0G91Liny88HktJVxCPBkfOM
+	 Wofw5oBzikLshh4GzrlCvthIbamO2sQSZVn8DtnPtjjRTMfplep3iDt/8YvgPVBRZC
+	 k8M+6uS+puyHA==
+Message-ID: <ae15dce7-5be2-8486-54b4-8c5ec656546e@collabora.com>
+Date: Mon, 7 Nov 2022 14:18:47 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8379f2b8-f0ad-4486-a6ab-08dac0c00b0f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Nov 2022 13:00:27.8019
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1fmwY1au33an5lCPHExcDIMs0WlYNWEWT1Q7c1nIotVpdUp2jT3PjeUG230VmkwZKurFzkBha31ijgKTuvM1XA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7548
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v5] media: mediatek: vcodec: Add to support VP9 inner
+ racing mode
+Content-Language: en-US
+To: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ "nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ =?UTF-8?B?TWluZ2ppYSBaaGFuZyAo5byg5piO5L2zKQ==?=
+ <Mingjia.Zhang@mediatek.com>, "tfiga@google.com" <tfiga@google.com>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+ <Andrew-CT.Chen@mediatek.com>, "acourbot@chromium.org"
+ <acourbot@chromium.org>
+Cc: =?UTF-8?B?WGlhb3lvbmcgTHUgKOWNouWwj+WLhyk=?= <Xiaoyong.Lu@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "frkoenig@chromium.org" <frkoenig@chromium.org>,
+ =?UTF-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+ "stevecho@chromium.org" <stevecho@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>,
+ "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20221025014659.7158-1-mingjia.zhang@mediatek.com>
+ <b7f6e258d00e9946852b900ada0548e342c1ce50.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <b7f6e258d00e9946852b900ada0548e342c1ce50.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_050035_729649_D8E2F00D 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20221107_051855_739304_90C0C708 
+X-CRM114-Status: GOOD (  29.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,18 +101,292 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 04, 2022 at 05:13:01PM +0000, Russell King (Oracle) wrote:
-> Virtually all conventional network drivers are now converted to use
-> phylink_generic_validate() - only DSA drivers and fman_memac remain,
-> so lets remove the necessity for network drivers to explicitly set
-> this member, and default to phylink_generic_validate() when unset.
-> This is possible as .validate must currently be set.
->=20
-> Any remaining instances that have not been addressed by this patch can
-> be fixed up later.
->=20
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
+Il 07/11/22 12:46, Yunfei Dong (董云飞) ha scritto:
+> Hi Mingjia,
+> 
+> Thanks for your patch.
+> Some comments need to get your feedback.
+> On Tue, 2022-10-25 at 09:46 +0800, Mingjia Zhang wrote:
+>> Enable VP9 inner racing mode
+>> We send lat trans buffer to the core when trigger lat to work,
+>> instead of waiting for the lat decode done.
+>> It can be reduce decoder latency.
+>>
+>> Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
+>> ---
+>> Changes from v3:
+>>
+>> - CTS/GTS test pass
+>> - Fluster result: Ran 275/303 tests successfully
+>>
+>> Changes from v2:
+>>
+>> - CTS/GTS test pass
+>> - Fluster result: Ran 240/303 tests successfully
+>>
+>> Changes from v1:
+>>
+>> - CTS/GTS test pass
+>> ---
+>>   .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 85 ++++++++++-------
+>> --
+>>   1 file changed, 47 insertions(+), 38 deletions(-)
+>>
+>> diff --git
+>> a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>> b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>> index 81de876d51267..1b39119c89951 100644
+>> ---
+>> a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>> +++
+>> b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>> @@ -436,6 +436,7 @@ struct vdec_vp9_slice_ref {
+>>    * @frame_ctx:		4 frame context according to VP9 Spec
+>>    * @frame_ctx_helper:	4 frame context according to newest
+>> kernel spec
+>>    * @dirty:		state of each frame context
+>> + * @local_vsi:		local instance vsi information
+>>    * @init_vsi:		vsi used for initialized VP9 instance
+>>    * @vsi:		vsi used for decoding/flush ...
+>>    * @core_vsi:		vsi used for Core stage
+>> @@ -482,6 +483,8 @@ struct vdec_vp9_slice_instance {
+>>   	struct v4l2_vp9_frame_context frame_ctx_helper;
+>>   	unsigned char dirty[4];
+>>   
+>> +	struct vdec_vp9_slice_vsi local_vsi;
+>> +
+>>   	/* MicroP vsi */
+>>   	union {
+>>   		struct vdec_vp9_slice_init_vsi *init_vsi;
+>> @@ -1616,16 +1619,10 @@ static int
+>> vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance
+>>   }
+>>   
+>>   static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance
+>> *instance,
+>> -				     struct vdec_lat_buf *lat_buf,
+>> -				     struct vdec_vp9_slice_pfc *pfc)
+>> +				     struct vdec_vp9_slice_vsi *vsi)
+>>   {
+>> -	struct vdec_vp9_slice_vsi *vsi;
+>> -
+>> -	vsi = &pfc->vsi;
+>> -	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
+>> -
+>>   	mtk_vcodec_debug(instance, "Frame %u LAT CRC 0x%08x %lx %lx\n",
+>> -			 pfc->seq, vsi->state.crc[0],
+>> +			 (instance->seq - 1), vsi->state.crc[0],
+>>   			 (unsigned long)vsi->trans.dma_addr,
+>>   			 (unsigned long)vsi->trans.dma_addr_end);
+>>   
+>> @@ -2090,6 +2087,13 @@ static int vdec_vp9_slice_lat_decode(void
+>> *h_vdec, struct mtk_vcodec_mem *bs,
+>>   		return ret;
+>>   	}
+>>   
+>> +	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability)) {
+>> +		vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
+>> +		memcpy(&instance->local_vsi, vsi, sizeof(*vsi));
+>> +		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx,
+>> lat_buf);
+>> +		vsi = &instance->local_vsi;
+>> +	}
+>> +
+>>   	if (instance->irq) {
+>>   		ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_
+>> RECEIVED,
+>>   						   WAIT_INTR_TIMEOUT_MS
+>> , MTK_VDEC_LAT0);
+>> @@ -2102,22 +2106,25 @@ static int vdec_vp9_slice_lat_decode(void
+>> *h_vdec, struct mtk_vcodec_mem *bs,
+>>   	}
+>>   
+>>   	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
+>> -	ret = vdec_vp9_slice_update_lat(instance, lat_buf, pfc);
+>> +	ret = vdec_vp9_slice_update_lat(instance, vsi);
+>>   
+>> -	/* LAT trans full, no more UBE or decode timeout */
+>> -	if (ret) {
+>> -		mtk_vcodec_err(instance, "VP9 decode error: %d\n",
+>> ret);
+>> -		return ret;
+>> -	}
+>> +	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
+>> +		/* LAT trans full, no more UBE or decode timeout */
+>> +		if (ret) {
+>> +			mtk_vcodec_err(instance, "frame[%d] decode
+>> error: %d\n",
+>> +				       ret, (instance->seq - 1));
+>> +			return ret;
+>> +		}
+>>   
+> If inner racing decode error, how to do? Looks this error condition
+> only in non inner racing mode.
+>> -	mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
+>> -			 (unsigned long)pfc->vsi.trans.dma_addr,
+>> -			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+>>   
+>> -	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
+>> -				       vsi->trans.dma_addr_end +
+>> -				       ctx-
+>>> msg_queue.wdma_addr.dma_addr);
+>> -	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
+>> +	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
+>> +	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi-
+>>> trans.dma_addr_end);
+>> +	if (!IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
+>> +		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx,
+>> lat_buf);
+>> +
+>> +	mtk_vcodec_debug(instance, "lat trans end addr(0x%lx), ube
+>> start addr(0x%lx)\n",
+>> +			 (unsigned long)vsi->trans.dma_addr_end,
+>> +			 (unsigned long)ctx-
+>>> msg_queue.wdma_addr.dma_addr);
+>>   
+>>   	return 0;
+>>   }
+>> @@ -2139,40 +2146,40 @@ static int vdec_vp9_slice_decode(void
+>> *h_vdec, struct mtk_vcodec_mem *bs,
+>>   static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
+>>   {
+>>   	struct vdec_vp9_slice_instance *instance;
+>> -	struct vdec_vp9_slice_pfc *pfc;
+>> +	struct vdec_vp9_slice_pfc *pfc = NULL;
+>>   	struct mtk_vcodec_ctx *ctx = NULL;
+>>   	struct vdec_fb *fb = NULL;
+>>   	int ret = -EINVAL;
+>>   
+>>   	if (!lat_buf)
+>> -		goto err;
+>> +		return -EINVAL;
+>>   
+>>   	pfc = lat_buf->private_data;
+>>   	ctx = lat_buf->ctx;
+>>   	if (!pfc || !ctx)
+>> -		goto err;
+>> +		return -EINVAL;
+>>   
+>>   	instance = ctx->drv_handle;
+>>   	if (!instance)
+>> -		goto err;
+>> +		return -EINVAL;
+>>   
+>>   	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
+>>   	if (!fb) {
+>>   		ret = -EBUSY;
+>> -		goto err;
+>> +		goto vdec_dec_end;
+>>   	}
+>>   
+>>   	ret = vdec_vp9_slice_setup_core(instance, fb, lat_buf, pfc);
+>>   	if (ret) {
+>>   		mtk_vcodec_err(instance,
+>> "vdec_vp9_slice_setup_core\n");
+>> -		goto err;
+>> +		goto vdec_dec_end;
+>>   	}
+>>   	vdec_vp9_slice_vsi_to_remote(&pfc->vsi, instance->core_vsi);
+>>   
+>>   	ret = vpu_dec_core(&instance->vpu);
+>>   	if (ret) {
+>>   		mtk_vcodec_err(instance, "vpu_dec_core\n");
+>> -		goto err;
+>> +		goto vdec_dec_end;
+>>   	}
+>>   
+>>   	if (instance->irq) {
+>> @@ -2190,24 +2197,26 @@ static int vdec_vp9_slice_core_decode(struct
+>> vdec_lat_buf *lat_buf)
+>>   	ret = vdec_vp9_slice_update_core(instance, lat_buf, pfc);
+>>   	if (ret) {
+>>   		mtk_vcodec_err(instance,
+>> "vdec_vp9_slice_update_core\n");
+>> -		goto err;
+>> +		goto vdec_dec_end;
+>>   	}
+>>   
+>> -	pfc->vsi.trans.dma_addr_end += ctx-
+>>> msg_queue.wdma_addr.dma_addr;
+>>   	mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n",
+>>   			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+>> -	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc-
+>>> vsi.trans.dma_addr_end);
+>> -	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf-
+>>> src_buf_req);
+>> -
+>> -	return 0;
+>>   
+>> -err:
+>> -	if (ctx && pfc) {
+>> -		/* always update read pointer */
+>> -		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc-
+>>> vsi.trans.dma_addr_end);
+>> +vdec_dec_end:
+>> +	/* always update read pointer */
+>> +	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
+>> +		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
+>> +					       pfc-
+>>> vsi.trans.dma_addr);
+>> +	else
+>> +		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
+>> +					       pfc-
+>>> vsi.trans.dma_addr_end);
+>>   
+>> +	if (ret) {
+> No need {
+> 
 
-Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>=
+It's right, there's no *need* to, but in this case I'd keep it for the sake
+of readability, as in..
+
+	if (ret) {
+		if (fb)
+			some;
+	} else {
+		thing;
+	}
+
+looks more readable than
+
+	if (ret)
+		if (fb)
+			some;
+	else
+		thing;
+
+... alternatively, we can do something like ...
+
+	if (ret == 0)
+		thing;
+	else if (fb)
+		some;
+
+But then, there's another consideration: vdec_vp9_slice_update_core() never
+returns anything else than zero, so I don't see how, in this case, `ret` can
+be different than zero.
+
+This means that the "else if (fb)" part would never happen, so, unless you're
+planning to introduce a change that may return a failure in
+vdec_vp9_slice_update_core(), this branch makes no sense at all.
+
+Of course, in case you plan to do that, you should add the check in that change
+or you should add that change in this commit.
+
+Regards,
+Angelo
+
+> Best Regards,
+> Yunfei Dong
+>>   		if (fb)
+>>   			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1,
+>> lat_buf->src_buf_req);
+>> +	} else {
+>> +		ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf-
+>>> src_buf_req);
+>>   	}
+>>   	return ret;
+>>   }
+
+
 
