@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4169CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 20:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67BD1C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 20:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZYdHJswDeDT3txuf8JK/w+986tI61N01JzHQOoC+jnU=; b=cDk/IklFwTbZinND4fGTlFvaRO
-	KkTaXOCjBmsn0OT4zU6DJV16SgUdA1ZJG9ybRkoxOoFg8i31Ibu+ZTEhIs2931JwVekp7UbUGgLbL
-	aFshT/qyFKhxgAjH+NeXqVGixO7z2MbH41LSyMuqpaAqHWuqtcHF3Q/27P64yRhlxjepwRVrlXSXq
-	Y7E337vVDt8q2+oGaDPHsHU/Vtxfs68Kbh087I8nOyuw8KQq60IQAEJyjFmLYx/IpOHm5fauIm3Hf
-	FjQwP/WbZTucBMfEq0qAVyKDSy752iBVxpDzeXzFwR9Z7VWDE78CShWU5avuGfdewhNHzE0lO3AgL
-	zbZLA7pA==;
+	bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=; b=JQcnmVgDuUTm8GeLuFADGTDTWp
+	0fA0qpcbRFW0LoeMhhpVqRox859/47vgpk4dpImKk55CS+zaPgD2rNu4jC2gkd6fJifgSd1llQS+R
+	OZ9bMNRyxh/srR3tWUtD48BEkYqe7/O5Ga9opdOv5NjfmoxH1z/UvBtlYNXQ+5871LglLskGTmGte
+	l/gq+XeV6yzCTd2ZdNVk83r1DheFDcBGy6ZYRUtWO7R5WZZhdiwlTcjD/K/SF/t4f0s8aQNby76UR
+	9BUACHO4OcV4zzzLj5RtCPPWHU68LK7S4cDK7J/Ct70gUshbRrdcfot1mWM23r2Q/eSAQFQKjIn3+
+	nrcOkQzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os8vM-000LNt-N4; Mon, 07 Nov 2022 20:40:52 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1os9AD-000RfX-51; Mon, 07 Nov 2022 20:56:13 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os8vC-000LJS-2E; Mon, 07 Nov 2022 20:40:43 +0000
-Received: by mail-ej1-x629.google.com with SMTP id k2so33408044ejr.2;
-        Mon, 07 Nov 2022 12:40:38 -0800 (PST)
+	id 1os9A2-000RXX-6x; Mon, 07 Nov 2022 20:56:03 +0000
+Received: by mail-ed1-x534.google.com with SMTP id u24so19482994edd.13;
+        Mon, 07 Nov 2022 12:56:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZYdHJswDeDT3txuf8JK/w+986tI61N01JzHQOoC+jnU=;
-        b=Q+Ezft1Ugxx7pFfrT+/0zleWdM2c1oPP+CSzpxbWAF61TwxLeiwnKzbfP996DLBRe0
-         RWTV+nn9uSwH/juyDPDPdxgnnstdQ4uFjcGFK3GlHQiUm+7E7JhUvbbzUOcfcZW8G34D
-         IlQzk235D2Z6WlmavUqa+sxbA4+yhdJ9+xVBdKYlvXLWpeMauv+gg1GLUml5t8jgMe68
-         55E2E+pt4lQNL43f/XQx605AqWcPvfFfPS9dFEJIAtUv/TzZ6QvIN2No8tKWx6Hh6UDi
-         5MSOCw8D8sAu8W570HmZU7qgcOFUVrtE8G7LWVcPwBdp7Tr0tqLaw15O5LlBOp87iyXY
-         UP5Q==
+        bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=;
+        b=lcXa8yD0SgTUPQeGlv227tDRMrB5NnfEInO0NrD4HykU0N5ueMLTDPxXEpe4pJTJY5
+         +wK/aRIZRTyxwXuzqNVBd8eKLBMBlIyI/JgcV3eN5CfMcZaVcgbh1cmGfJ4qY6CMN1pS
+         y/WPX1gnhv8dezjEePLyT+6MI5cREwiKs0FzVshIW0A2tUUuBECTwEfygyBjw0EIzIL7
+         bfOsiCsZuwm/C0dTUElfowYYH8InVD+HVNS3XC3piOewEAbrSbFNpOExugQl+Ah8DPmh
+         pGple9hGCOZkPNH3sAjqfQjV9Zgi8FmSPGJWBpDRSz8UD13WzNVlwGZoXX9OoGjyNQ0W
+         ldww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZYdHJswDeDT3txuf8JK/w+986tI61N01JzHQOoC+jnU=;
-        b=APfY3Raae1aeCPZUkhSl5CoCHTy0Jdv1XMkgGa+TmPAPnaqU53LT20JJIs+k6k724I
-         M7DKW6fbZxs3NAunsIKjhpe8OyL9bzcsWK01kmUqwH0ZezeUEQNdpzp/bgiRcmah9VtL
-         T677+PNH6YNFAkL/5JiVbGKTYEpMGSkxVMSbmAB2SHwyIkrn8TaYYa6mVwg54ySprf9W
-         mK+lkwT311lqusficyiTZbrMQSQOjH0m4LfeY5fy1kWaEoYl4RWkWmtxvJWcWp8NUCk7
-         gbj8peo5tDlvRWsQKTvgixAYqkC4Zikzjs72F9S56PE8F8STPLlLejd73KEwp2KHxNpx
-         sBGQ==
-X-Gm-Message-State: ACrzQf0xoRHGSHWbkZEd4gm1SE+or8gFwFP7FYgToQnykz0KHQX9Q5/D
-	EWrenWsi27PMjl2S8CuiWVo=
-X-Google-Smtp-Source: AMsMyM7OX51d9S1r13lEiI4F7DiaNTNLGHVFhzmJa4PWwH5gjRXGrlYR+119nzng5vyUZSAFHDPSTw==
-X-Received: by 2002:a17:906:5a5b:b0:7a6:cbc7:4ca1 with SMTP id my27-20020a1709065a5b00b007a6cbc74ca1mr49681321ejc.544.1667853636915;
-        Mon, 07 Nov 2022 12:40:36 -0800 (PST)
+        bh=aZz5lIxuDB7I0z1jD8r02lw8MXfBIpXPRDPu83kXprE=;
+        b=WJlL/6ivlAdqhgvWho8H+Y7iPLLnJVVWZR70ayOIfr2EUQT13oY5o+KnsEhAoLT7Ll
+         HHjaNj11BW4bY1B4/sHVBZdtJOSnW4hOK61rs8EhCJ4fTcPYli/SfyOsyq3vfQ8xabsL
+         mccnsOys5wL70gAxHNilhK1AdzBG8FnCZ4lHAxRSfPhf6/lwql/F8dLXL3iq/aMPqp9I
+         uN1ndZOu3J3hiVGXvkTDEzeLYxCKQCp4QFH8A/dqGHmnGFXHNFlBdFGwTqrIDN77n+PJ
+         a2i8JPQGjIeTZirw4bXDQ8Ctphw6b2GJKusKFGQE01amB0pFwhFBUIyCzoQMa6Jt6pfe
+         UNuA==
+X-Gm-Message-State: ACrzQf2HNOztwlLSxmBP4k/vazCZ36Q2giUTY2xOPrwQpJA//fdLX/bA
+	4KpLJUqc9Fl6cfOmV/jVvtw=
+X-Google-Smtp-Source: AMsMyM6ioc0P0uojdmQ1u0VY0uZvTZqZ5dbDJ15EFDJgrrKmfO6nqvWye/xti1qfyvHjVNe1PfWaDA==
+X-Received: by 2002:a50:ef06:0:b0:463:2605:d24d with SMTP id m6-20020a50ef06000000b004632605d24dmr47036181eds.43.1667854560277;
+        Mon, 07 Nov 2022 12:56:00 -0800 (PST)
 Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id s14-20020a170906960e00b007803083a36asm3868053ejx.115.2022.11.07.12.40.35
+        by smtp.gmail.com with ESMTPSA id g18-20020a17090604d200b0073dc5bb7c32sm3882261eja.64.2022.11.07.12.55.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Nov 2022 12:40:36 -0800 (PST)
-Date: Mon, 7 Nov 2022 22:40:34 +0200
+        Mon, 07 Nov 2022 12:55:59 -0800 (PST)
+Date: Mon, 7 Nov 2022 22:55:53 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 05/14] net: dsa: tag_mtk: assign per-port queues
-Message-ID: <20221107204034.bwbhyhahku4m2xdd@skbuf>
+Subject: Re: [PATCH 01/14] net: ethernet: mtk_eth_soc: account for vlan in rx
+ header length
+Message-ID: <20221107205553.cnydzeh3tmilqblx@skbuf>
 References: <20221107185452.90711-1-nbd@nbd.name>
- <20221107185452.90711-5-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221107185452.90711-5-nbd@nbd.name>
+In-Reply-To: <20221107185452.90711-1-nbd@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_124042_168050_4293F027 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221107_125602_300808_DCA190C7 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,14 +95,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Felix,
-
-On Mon, Nov 07, 2022 at 07:54:43PM +0100, Felix Fietkau wrote:
-> Keeps traffic sent to the switch within link speed limits
+On Mon, Nov 07, 2022 at 07:54:39PM +0100, Felix Fietkau wrote:
+> This may be needed for correct MTU settings on devices using DSA
 > 
 > Signed-off-by: Felix Fietkau <nbd@nbd.name>
 > ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index 589f27ddc401..dcf2a0d5da33 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -29,7 +29,7 @@
+>  #define MTK_TX_DMA_BUF_LEN_V2	0xffff
+>  #define MTK_DMA_SIZE		512
+>  #define MTK_MAC_COUNT		2
+> -#define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+> +#define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + ETH_HLEN + ETH_FCS_LEN)
 
-Do you have a patch 00/14 that explains what you're up to? I'm only
-copied on 05/14 and 10/14, hard to get an idea.
+Commit title says account for VLAN (VLAN_HLEN, 4 bytes), code says add
+VLAN_ETH_HLEN (18) more bytes.
+
+Also, why is DSA mentioned in the commit message? Is accounting for VLAN
+hlen not needed if DSA is not used? Why?
+
+>  #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
+>  #define MTK_DMA_DUMMY_DESC	0xffffffff
+>  #define MTK_DEFAULT_MSG_ENABLE	(NETIF_MSG_DRV | \
+> -- 
+> 2.38.1
+> 
 
