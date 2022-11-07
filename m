@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED31C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 11:19:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D24C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 11:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bE/B1hEKlsShE0rJtK/wqGe/9FUjw3TNSnOuMMxxx5c=; b=TLtPtMwJosJ/+KdCtvwrFwydaF
-	I6xh5/vNqbmqeaqK8v8qwh1MXQkn4rab+B8YPvmpjXvuSW2JVNzApA23iNLpR9/sY1cx/aOUQUumW
-	ip096A8IVc87XKmARoIJDXAf3hbD55HTk+M5CQq8e22UKdQ6kvnsXYJujhOJ0/vZf+/s4VGCHRtcj
-	TuQxLKB6M+hvn4JsLtaBiOv3mA4oac0nNfQ7NzjjMF9g3z6GA26xVWJB3wWFwAWHH6z3ibp6sC+Z0
-	WV9/xZsdNxCAXgjHNG38LjK/zuRzaFQLBE6YEk5e0XOJdCs/JqoJaJX7dUhnvHwLKqdvyXcXmElbw
-	DZsYB+Mg==;
+	bh=kh9C2Om70TAiYR4g/uLgbpdUxfz7VUBIyzW/2AM+dHM=; b=GwgwmaykfXD6Im3J13WGkgscGo
+	98VNbU5PjRq07DfMhhYC41WCRK6vd/S1A7tGg/aLCc1BTHG1zPAYjGEYC8q8EkD9+EcliSN0c5vU7
+	VobeNLqzJRmn7e/waHhkjESjlHmGOT/GRjIkLHatzSjWZ5V8v6FhN0XAdLGfE2N1gND4jSnJ6vWCH
+	1NuSEF1urdS5qeBVmmLC0a1VjPdcsn3+ksDU54GYeHbneSyUUpM1EVM5TQmW3gUf15/WjSv5e0+gs
+	svw3ZNeYUzMZ/H/O9LMhWuokkbYG/vQLtP6UnW6JNc5oz01c9FAIsvl6UJtyFlHh/vaXHVvqD5X80
+	U1p109Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os09z-00E6GI-4i; Mon, 07 Nov 2022 11:19:23 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1os0B9-00E6qu-VK; Mon, 07 Nov 2022 11:20:35 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os09B-00E5mo-O7; Mon, 07 Nov 2022 11:18:37 +0000
-Received: by mail-wm1-x334.google.com with SMTP id p13-20020a05600c468d00b003cf8859ed1bso6936651wmo.1;
-        Mon, 07 Nov 2022 03:18:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bE/B1hEKlsShE0rJtK/wqGe/9FUjw3TNSnOuMMxxx5c=;
-        b=kqG8f+Y6oT2x2fUWNz8vbbbNk4CncuhqoXWlJRRYGp7vCOyhe6FHCC+PhQ2spwH8kD
-         o7ke5mugzwO5NHVfQnSdBhb1xupi+/WPzyUtOCFrTFOJrwh7QHhFxqIck1o3/e8d6sEN
-         a+mXXGKpZV5oUQJntT+wxrjIt1jlD6VN01WMw2g1QXhdXMlzXoexB5vjwOSgwNOjtcTo
-         poo7Kia1UZQHQnurHlLyQfPS6qa1dwa/tyVBm3jrWx2ue1VtYuOlvcKuQhV3sExaMKGB
-         bisoLww9V2O0SuFlZjclSJ76xsL16/rA/g3DJWY7Z454d9Bpl2FQIgJPK+sqbNvHUvya
-         Jn2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bE/B1hEKlsShE0rJtK/wqGe/9FUjw3TNSnOuMMxxx5c=;
-        b=fBMESIVcpUpPcKSICcnVD01hnfIZhDqqmZ2pS92UNLIJPOHcX8JmuuvyqstvHqr4qZ
-         BrwDdogRdDSyS1RAmZYoM9Ddmab7NjLMpL7IwCbNdlyPGILQJh4T99A0DEdYI+6dLNrq
-         MLd6dxQwrcfy6HzOrVqjBMAb3fUYOQNe15BIGjbiCECA9XlzHXPeG6irmJxRK9dscmEj
-         KfiiKAIfuCoIy4zLiFAFCVAmFXEHxw1VlhwggFsKxouUC0uVoEXWuXrKPZECmi7uzlxX
-         wWyJuOp6jBLHyOp1L4+kJMoz1fIsJv/0QMslNZH8eaJ7nptuga7bhcT8vcMZujeDPfnw
-         kaBw==
-X-Gm-Message-State: ACrzQf12yjEE8Dm+DlQDd1uFgDW5YUYkRcfQzkAHhuc3+lK/2aCOqMC0
-	Opp5q2Du1KUmaA3e+iTdH8I=
-X-Google-Smtp-Source: AMsMyM602bjMyEAIMHb7PPY/WchKiT9g7wWxWDeiZVVF/3WBk72v331wPVEgqU98Sqgeey5mI0NOTA==
-X-Received: by 2002:a05:600c:5109:b0:3cf:5fd2:877f with SMTP id o9-20020a05600c510900b003cf5fd2877fmr32712091wms.156.1667819909730;
-        Mon, 07 Nov 2022 03:18:29 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id c5-20020a05600c0a4500b003b4a68645e9sm12514451wmq.34.2022.11.07.03.18.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Nov 2022 03:18:28 -0800 (PST)
-Message-ID: <fcec5536-6ba8-9cac-2001-710a7170df70@gmail.com>
-Date: Mon, 7 Nov 2022 12:18:26 +0100
+	id 1os0Aw-00E6kb-4U; Mon, 07 Nov 2022 11:20:23 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6863D660236A;
+	Mon,  7 Nov 2022 11:20:19 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667820020;
+	bh=7z542Aj3CgGqKW5DeYxuUBU2RHuE8LKZ6Cy4e7BxEYA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Dl74wRMaSBKxFLE4SD7wiQV6g95KV0/pfW+wGLhCf8nqePUEfscyhBuTG1xcefTYr
+	 jBFnBGZ05LssJGphJq2pOX1JYUMtpHbTQ0yJYPIYtbW3JMOjOwcSzCqAXulqkL2iEk
+	 sjMBpX4EU9p7hwvpM4Fl1NZmIfs+g+/MkUUujWn42Hx73WL6JF2VxjD5+iOGqoZeka
+	 UpZoIk0zv9Ru/BQHdVRf73NLxu+/uq2u3o9eeb2cqsXu/Dru14nRNsW5/MO3XRw7wM
+	 0Kyc6rKQFZiEjvCMEB6rv/nlJrU4hUuHWuUHFiJ7BUSvenGKb9Eoa4QUJw+5P0XOtY
+	 Ew95u+utNO9lw==
+Message-ID: <988b0a7a-69bb-34e4-e777-1d9516221077@collabora.com>
+Date: Mon, 7 Nov 2022 12:20:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH v3 1/2] dt-bindings: gce: add gce header file for mt8188
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v3 12/12] drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- "Elvis.Wang" <Elvis.Wang@mediatek.com>, Jassi Brar
- <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221104074443.26172-1-Elvis.Wang@mediatek.com>
- <20221104074443.26172-2-Elvis.Wang@mediatek.com>
- <bdb46b7c-6e08-26cf-491d-ca68d36f29af@linaro.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <bdb46b7c-6e08-26cf-491d-ca68d36f29af@linaro.org>
+To: Guillaume Ranquet <granquet@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Jitao shi
+ <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, stuart.lee@mediatek.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ mac.shen@mediatek.com, linux-phy@lists.infradead.org
+References: <20220919-v3-0-a803f2660127@baylibre.com>
+ <20220919-v3-12-a803f2660127@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220919-v3-12-a803f2660127@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_031833_854742_4D37EE3C 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20221107_032022_342342_46776348 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,43 +85,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 06/11/2022 11:27, Krzysztof Kozlowski wrote:
-> On 04/11/2022 08:44, Elvis.Wang wrote:
->> From: Elvis Wang <Elvis.Wang@mediatek.com>
->>
->> add gce header file to define the gce thread priority, gce subsys id,
->> event and constant for mt8188.
->>
->> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
->> ---
->> Thanks for the reviews, I have removed the incorrect reviewed message.
->> ---
->>   include/dt-bindings/gce/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
->>   1 file changed, 966 insertions(+)
->>   create mode 100644 include/dt-bindings/gce/mediatek,mt8188-gce.h
->>
->> diff --git a/include/dt-bindings/gce/mediatek,mt8188-gce.h b/include/dt-bindings/gce/mediatek,mt8188-gce.h
->> new file mode 100644
->> index 000000000000..e2e2c56016a1
->> --- /dev/null
->> +++ b/include/dt-bindings/gce/mediatek,mt8188-gce.h
+Il 04/11/22 15:09, Guillaume Ranquet ha scritto:
+> Add the DPI1 hdmi path support in mtk dpi driver
 > 
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dpi.c      | 143 ++++++++++++++++++++++++++++++--
+>   drivers/gpu/drm/mediatek/mtk_dpi_regs.h |   5 ++
+>   2 files changed, 141 insertions(+), 7 deletions(-)
 > 
-> What is a "gce" subsystem or type of hardware? Why do you put headers in
-> "gce"?
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 508a6d994e83..8052b47042b8 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -14,7 +14,10 @@
+>   #include <linux/of_graph.h>
+>   #include <linux/pinctrl/consumer.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/reset.h>
+>   #include <linux/types.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+>   
+>   #include <video/videomode.h>
+>   
+> @@ -65,10 +68,14 @@ struct mtk_dpi {
+>   	struct drm_bridge *next_bridge;
+>   	struct drm_connector *connector;
+>   	void __iomem *regs;
+> +	struct reset_control *reset_ctl;
+>   	struct device *dev;
+>   	struct clk *engine_clk;
+> +	struct clk *dpi_ck_cg;
+>   	struct clk *pixel_clk;
+> +	struct clk *dpi_sel_clk;
+>   	struct clk *tvd_clk;
+> +	struct clk *hdmi_cg;
 
-Yes, I think we should move all header files from the gce folder into the 
-mailbox folder.
+I admit that I didn't really check these clocks, but judging by the names,
+it is highly possible that one (or more) of them are supposed to be parents
+of some others.
+
+The first suspicious ones are dpi_ck_cg and dpi_sel_clk: please check.
+
+I'm also not sure about the hdmi_cg, shouldn't the DPI have a HDMI port in
+the graph that you'd declare in devicetree?
+
+Besides... you're doing a lot of work to check if (is_internal_hdmi) for
+power up/down paths, but seeing that you're introducing this change after
+adding the HDMI driver makes me mostly sure that the internal hdmi that we're
+talking about here is the one that is managed by the HDMIV2 driver... and
+this means that you should really, really, really rely on connecting inputs
+and outputs the right way in the devicetree, as that will most probably make
+you able to write practically 0 code to manage power for the DPI... and may
+also remove the need of adding the hdmi_cg clock here...
 
 Regards,
-Matthias
+Angelo
 
-> Don't continue this pattern. Mediatek devices do not get specific folders...
-> 
-> Best regards,
-> Krzysztof
-> 
+
 
