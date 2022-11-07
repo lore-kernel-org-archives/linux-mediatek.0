@@ -4,85 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B717DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 14:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88118C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 14:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i0O2rk5E0cL+fm306yvacQlome9MWqlkSl0PtbnJ/Fk=; b=M04Pcbl8mh+RLYd0lzeDgR7UqL
-	rffyiJ6mDw7Ell5FRDKP6OeLWEGIp65pMM3HRHDiQy0BRlTayiv8HyjtFanQulMbM7gyX15W9Tx4P
-	oQkjaWS2n7ESgbB57OyYzrPaf5hdt50CSsTqqE6YPKFsGpkgPBHgLRyGYoAlT3EFwtBdZZx7NII27
-	ZPzy3XLChv1P/pbHB2PGFOW08PxGbL/Rye+dXaweonF14Lb+yZItyL6mBhwgLnbIwuIRbYG+3uZVr
-	a6WHk12R9p/jk4UlBrtf+LNDjaM+wkGzkdkJW/kGVgpq5umrj6HzndzQDv4qlceVGjxXaJNvaAGVb
-	N4QLqLlg==;
+	bh=c2CoTYYkSpK+sQj3p0R6Cfi101yt3YpQVds/7qZK0/E=; b=kaQj/sB87FvW4jMc4xCsyQAENF
+	HsOlNbO+QKSQA/ftcLr/aGlB7JjBtCbI5zXcZofXJE9Jh3lYK0Uo6JlLjc/nuJmsotTgYXWWvZbMM
+	ruh3DWg5qZXNYMjntOr7lOWwdPrOGLSsT6djtpbujTZ6VuyJk1R+ath0Lir4TzvwFwej0O/fBHfdn
+	tW5oDano0NYGljzTDOZfeMA/g4f09hYMrK+1USuZdGhoDqzqiTbFlkgF47Y6E/16vaQ/ccEs036sO
+	grwYXPjVNby6G86BU/JoTsWYa43hQwmPLEP5KQNhx9oe073ahkpeOriWpRyVBpsYnf7WygPt6IU00
+	Sth54JQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3aV-00FSc5-PU; Mon, 07 Nov 2022 14:58:59 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1os3bG-00FSzt-RJ; Mon, 07 Nov 2022 14:59:46 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3M1-00FKHN-Ij
-	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 14:44:05 +0000
-Received: by mail-lj1-x236.google.com with SMTP id a15so16578347ljb.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 06:44:00 -0800 (PST)
+	id 1os3ML-00FKOS-NA
+	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 14:44:23 +0000
+Received: by mail-ej1-x633.google.com with SMTP id kt23so30672155ejc.7
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 06:44:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=i0O2rk5E0cL+fm306yvacQlome9MWqlkSl0PtbnJ/Fk=;
-        b=KGd9O5AMOGZXp+tE3f0j+hwAkW+8r8XE9RmQsXGMLtLEL+k0tlrOTlc9x3z6DY60pT
-         hoRXvYOeD/Og/ka1ZIfwjHVVwiYkMECBdxL+qr6sOmlcw2M4myVgfy3mUcsg34OUY9JJ
-         q2lBidE2ZbHrX8DY8H34jBlgMAfqbaTK5gWDjPBKRDyH0O/aQ5nkMbT7YyKZ1J3wKPKE
-         g2HXUzVU7qAK/Wi5p4uk8UO+C3/OrXQtIeJ+BKMBSvKfMctlvCZ9EjPETJgknfSh0Eme
-         qzAIsFJwkk2g1boA0NctS759r6L3DUzwJ6BMZO1g8SlxiYVglENC/U8KI+IphbjhOzQm
-         oWPw==
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=c2CoTYYkSpK+sQj3p0R6Cfi101yt3YpQVds/7qZK0/E=;
+        b=BC4wd+UVzNToFcbV2iVIZ9rGyRHo5M8PVDarYeufP55XrNjp8E1FCWyEVKl5CwoaY0
+         lR+2atWzyXzMT4A3XPzWTFWDeHC3PbLvpogP9fta5cjFa5fbBaxIkMw1HGIi4P3d4I0c
+         cza+mPzRFrTO1Rt27xiHBYqwdjRL5KfCWBTXsVRvLCXieB2HMwTp2CgraQPvvydqRQZd
+         60i1wgkl4fnrTjNLVC5yiPE7Is22jItfeRhURFn6lCwPcOQxM0jk5dc+VfQ/tBUOZCmQ
+         64TuCMlV4E8PCMTg22qLzhIbbSAXqpPkwC5iRK3DKGCbpSfEXTrajEXqk0yF3bDgFQ4f
+         mM1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=i0O2rk5E0cL+fm306yvacQlome9MWqlkSl0PtbnJ/Fk=;
-        b=XnoRYd9UZJbndjY8/5ndV3N599JrHx7S43x5X0X6tvmaMfGni+iRMdvO5pbbhjOGTq
-         CJ/M+Phfs4+GI8VUEIIjgGvUp8+Uf3QN3JcXp+Gsuv/YxvaxXCjlPBitqkcNdWcBkFmj
-         erzB1+hLukenkvPMw5JWDBPn479aq0xjQn2YAaGUQbuFJhVsN8HKA60GTkciK70lMAbS
-         87jvnpz8fEFUMOelwf9EDsUHdCfC8wDw7Eprd5c/1xSgMLmfxXwTS1w9+MwpB4blRYuz
-         wnI7mp8yUoJWF6bwbVrG4+Lifa9PYf7FajmBwJSbzHAA4Liv7lkOgTymGvRst8Y4/oUi
-         qPww==
-X-Gm-Message-State: ACrzQf3RMuFdWS8Ua2ykfjiQ/9/RK9d24y+LQaOOzN/TfVDN+rGPkLnk
-	jIs9F4JvaqsYF2arAZTWyS3v2D11Xf/5FPzMy2x5uQ==
-X-Google-Smtp-Source: AMsMyM6xHORFjhVs0PnFDG1Q5hbXYVz1Gde1fVXPnnjTrXUg8FmzxrTbBpDXilPPBRiYEYQWH0D3yvUDzcEPlfT2y8I=
-X-Received: by 2002:a2e:2e0c:0:b0:277:75bb:429e with SMTP id
- u12-20020a2e2e0c000000b0027775bb429emr9673388lju.314.1667832238908; Mon, 07
- Nov 2022 06:43:58 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 7 Nov 2022 14:43:58 +0000
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20220919-v3-0-a803f2660127@baylibre.com> <20220919-v3-3-a803f2660127@baylibre.com>
- <05183178-32cb-98c0-4fcb-d5e78874e6c4@collabora.com>
-In-Reply-To: <05183178-32cb-98c0-4fcb-d5e78874e6c4@collabora.com>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=c2CoTYYkSpK+sQj3p0R6Cfi101yt3YpQVds/7qZK0/E=;
+        b=RNbYidiC24b0vN8U/4maZv8qkbM7ydfS+N8ZG3BKBHYqoB9MivbP58YZaIWQnMePNu
+         uhxED9AqJZt513Vni3eFJxjww6CDfAmz16wdYjDkuuijG8JSPjzY4MdSOpe46zr+hOKD
+         6jzYh2Vfkdn54sDU903XZziCs13gzK4c+kodwL2pjhnwgNhYxK6GqZz83peuK5VVSsV8
+         Yc5+iJ8WU26VeNKap3pCTJBgUhNJALj69ozoxWvoQPhrsvTUz6ebmvUcS6liDXxnz6bs
+         Scx88/0Ysa9gnt1hkFcho2X5MrW85c1azvehU5tSztxn3Pt/j/mDLb3DKhkQiFijqEHB
+         DwFg==
+X-Gm-Message-State: ACrzQf2yey3zsAVbu3ijQZnlQsa5v8Rj8haJniWj7MjVJVaGdx+57x94
+	l/vS+6U0zA9xZAxJDOOvtHZT0NipyaSK/g37uO2HVw==
+X-Google-Smtp-Source: AMsMyM66VeTBEt4Ejj9PcxdBT6i+5GxO0WwEHmtm+cP2hP7E419Giec+LXEu+KXWIgYVPJ+vs8/wows07Wwnsj6FP4g=
+X-Received: by 2002:a17:907:c1e:b0:7ae:31a0:571e with SMTP id
+ ga30-20020a1709070c1e00b007ae31a0571emr16653409ejc.690.1667832256100; Mon, 07
+ Nov 2022 06:44:16 -0800 (PST)
 MIME-Version: 1.0
-Date: Mon, 7 Nov 2022 14:43:58 +0000
-Message-ID: <CABnWg9sZ29jnCbCjtJ-tLWn2s1JYjFVEEGkau72WJyukHWU9=Q@mail.gmail.com>
-Subject: Re: [PATCH v3 03/12] drm/mediatek: hdmi: use a regmap instead of iomem
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	stuart.lee@mediatek.com, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, mac.shen@mediatek.com, 
-	linux-phy@lists.infradead.org
+References: <20221021084708.1109986-1-bchihi@baylibre.com>
+In-Reply-To: <20221021084708.1109986-1-bchihi@baylibre.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 7 Nov 2022 15:44:05 +0100
+Message-ID: <CACRpkdYdmG5cFenESg36BwVpJ7FDJunPH1Z8dJjHwmu+NW-etA@mail.gmail.com>
+Subject: Re: [v2, 0/2] Fix broken SET/CLR mode of a certain number of pins for
+ MediaTek MT8385 SoC
+To: bchihi@baylibre.com
+Cc: sean.wang@kernel.org, matthias.bgg@gmail.com, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_064401_665812_9CE286A7 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20221107_064421_845733_6C884D3C 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,63 +86,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Nov 2022 12:20, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->Il 04/11/22 15:09, Guillaume Ranquet ha scritto:
->> To prepare support for newer chips that need to share their address
->> range with a dedicated ddc driver, use a regmap.
->>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 43 +++++++++++--------------------------
->>   1 file changed, 13 insertions(+), 30 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> index 4c80b6896dc3..9b02b30a193a 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> @@ -171,7 +171,7 @@ struct mtk_hdmi {
->>   	u32 ibias_up;
->>   	struct regmap *sys_regmap;
->>   	unsigned int sys_offset;
->> -	void __iomem *regs;
->> +	struct regmap *regs;
->>   	enum hdmi_colorspace csp;
->>   	struct hdmi_audio_param aud_param;
->>   	bool audio_enable;
->> @@ -187,44 +187,29 @@ static inline struct mtk_hdmi *hdmi_ctx_from_bridge(struct drm_bridge *b)
->>   	return container_of(b, struct mtk_hdmi, bridge);
->>   }
->>
->> -static u32 mtk_hdmi_read(struct mtk_hdmi *hdmi, u32 offset)
->> +static int mtk_hdmi_read(struct mtk_hdmi *hdmi, u32 offset, u32 *val)
->>   {
->> -	return readl(hdmi->regs + offset);
->> +	return regmap_read(hdmi->regs, offset, val);
->>   }
->>
->>   static void mtk_hdmi_write(struct mtk_hdmi *hdmi, u32 offset, u32 val)
->>   {
->> -	writel(val, hdmi->regs + offset);
->> +	regmap_write(hdmi->regs, offset, val);
->>   }
->>
->>   static void mtk_hdmi_clear_bits(struct mtk_hdmi *hdmi, u32 offset, u32 bits)
->
->You don't need these functions anymore, as these are now simply wrapping
->regmap calls, hence these don't contain any "real" logic anymore.
->
->Please remove them and use the regmap API directly.
->
->Thanks,
->Angelo
->
+On Fri, Oct 21, 2022 at 10:47 AM <bchihi@baylibre.com> wrote:
 
-Agree with that, my intent was to minimize the change size so that it
-would be easy to review.
+> From: Balsam CHIHI <bchihi@baylibre.com>
+>
+> On MT8365, the SET/CLR of the mode is broken and some pins won't set or clear the modes correctly.
+> To fix this issue, we add a specific callback mt8365_set_clr_mode() for this specific SoC.
+> This callback uses the main R/W register to read/update/write the modes instead of using the SET/CLR register.
+>
+> This is the original patch series proposed by Fabien Parent <fparent@baylibre.com>.
+> "https://lore.kernel.org/linux-arm-kernel/20220530123425.689459-1-fparent@baylibre.com/"
+>
+> Changelog:
+> Changes in v2 :
+>         - Rebase on top of 6.1.0-rc1-next-20221020
+>         - Delete MTK_PINCTRL_MODE_SET_CLR_BROKEN quirk
+>         - Add mt8365_set_clr_mode() callback
 
-My mistake, I'll remove the wrappers.
+Patches applied, no need to resend for small issues.
 
-Thx,
-Guillaume.
+Sorry for taking so long, I wanted some feedback from the Mediatek
+maintainers but haven't heard anything, so I just applied them.
+
+Yours,
+Linus Walleij
 
