@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B7FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 14:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C91C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 14:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Qk0bFRbQ5AmR9QbdIkwLRi0dXt47rbwjkoBugSCUwM=; b=zzaoTkPAJWsQXmVcvAR3MGE963
-	bj8UEDyVrFGIqjoBLVm0Fd6oFec/Urbqd2WaeuRjvCUV4lgtUUJ9SSYWYawIVqauCfamM1ZNhE6Ek
-	DqZ2CGHkVDess0K/PebDXwG0I/IPvDJIdNo9+yZyS9hoj0C7v0TcOpVuf+biqPOBCs7hFvWWTBoum
-	33o0F0yQcouLsnmtt2PcJE+N1VoGeXKZXeQ+gnwENXLNC2kHoNuzht/M3Gw5JsTzrvFWJfLZc3SfR
-	TAjZJ+zP2J6Ws25jWsXHk+k5fBrqV/3Y1/Nt08M1s1ETCxAT06gFP8PUe0aIsa55RcMHfGwb3SvS8
-	N6xY8DYA==;
+	bh=kmZJjcyK8nxBYdkGyjF9BBYtQhsKTKXX/XHgXHfVxFQ=; b=j4zL+wgjEjgLM6HpKNTfTcHOjM
+	+FWFq+PVQEqWtkk8yLhDPEbln4TE/QlSuJITEjZGL3EkvSwMVd6OKLno8vc7AtaETBCkv5/hVSlvq
+	pH/2++ssA3zrEr+gGLZTmOsNR0NLWl6TQ9Q+JVEEEidy5IEW0EfhM8n81i0+sGXhlEpTFbeCTSZsB
+	P5kyH26FLQViweVhpmJXTMs/dISxIzrL7lYlJpVwvaOK1nqcb9u94DnG9yBeRXYHcLFI30YPb9VLe
+	dOKXLlpfp+M0ZOrwbbENxDFCeB4yx4VP91xXk54kDDP/X9KsXEFe2xfbv3ra6vf/dHfApwLWoe1Ih
+	u4IEwO7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3O0-00FLCi-3k; Mon, 07 Nov 2022 14:46:04 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1os3XS-00FQXG-L6; Mon, 07 Nov 2022 14:55:50 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os2y7-00FB6J-Vx; Mon, 07 Nov 2022 14:19:21 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C4B97660239F;
-	Mon,  7 Nov 2022 14:19:11 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667830754;
-	bh=mif3qn3xqCd8aP/nkWjlrL1oW7XjaH5g2PK3HDhAi84=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jgBKXah+RA7SIC0Q4KCuj43Bx8oHJJahN8t+3IkG7Ran+4yxX4eKJfiYDeWRTG05H
-	 XF8mOBWG7dBSxJX4EC2S7I7BaRYpuNlqJFEv2HvxArpu+ivWDq8Fyy/g84m6VjModV
-	 7u5weXvP/Bj4IfiN8zt8MxD8ozAeakJ8FAa6WdoUGnvhu//odgGPMupz+1VsvY+6jc
-	 trKaP8zfNs7rxJTvGBCmFgOHPibVES1yxSbWl85xaxrloXxM4E+jVpyH1bRhzaejsf
-	 uMudsdFXoUMxNFcKmbvWC7ucJbxTBI4/cxnah0qnS3SSouArDSXLF6Y3RYt9LXumY1
-	 OPKTB0GEqbFMQ==
-Date: Mon, 7 Nov 2022 09:19:06 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Mark Brown <broonie@kernel.org>, kernel@collabora.com,
-	Akihiko Odaki <akihiko.odaki@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Miaoqian Lin <linmq006@gmail.com>, Takashi Iwai <tiwai@suse.com>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8183-da7219: Register to module
- device table
-Message-ID: <20221107141906.jrs5gwmwi2eakvvg@notapiano>
-References: <20221104212409.603970-1-nfraprado@collabora.com>
- <63325548-63c6-8405-6481-3b019e7dd656@collabora.com>
+	id 1os3Je-00FJ7s-7X
+	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 14:41:37 +0000
+Received: by mail-lj1-x233.google.com with SMTP id a15so16567220ljb.7
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 06:41:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kmZJjcyK8nxBYdkGyjF9BBYtQhsKTKXX/XHgXHfVxFQ=;
+        b=U1adVyNOAbOtB7LzITQqX+3NVUCD7hjijSzI/YHO7Rr5osXA9MHZaq6HCqJm+6HOsd
+         fJ0ys8uvAM/DHnbHHSTIk7+IrHs0ykceAZnbCNalyMPTjX5V0QSFVrfDnqsHiyZXVh7v
+         xS76OH44LE4SOvIqhvtz4JcIew6uCLD+fjCy8iCwwo3tsgl5PIuVNZofJHC1aYnEYJXE
+         0XMka9P59kkmELC5diVPEBztOC7sT7XY8SbiwvhDewSyIpJ9Lj95VhVT+42KmMiEjuT6
+         Wgj/v227ic5IahOtxJlSZVfx5uKNgE3Pdar4ogOMdGAQtsAHGlHZnhJZLBYIO31EZPz5
+         3FpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kmZJjcyK8nxBYdkGyjF9BBYtQhsKTKXX/XHgXHfVxFQ=;
+        b=3EFtCKMGafO2o4fTgLLmG5JZKuAJZ6SM1bt6cHeYk83/LvSX3d/LOyj/Q9F9/YV6ak
+         45ilNhNeL5FvpoJXfiI81ySzwUYCItCknCJhYG/DFRizoFolhbXQ99e02xe2O+8dGwVt
+         KMEWZSAEVxvPOR8w3sGOn72VqNngFAYFmY5Ow+9YQ//cXI0t61R+y9fI39wZQcYtpXJo
+         nZNYGk8chki9F+J0IYyD+DYs5xoEJl0nSeeEr7FIN20eCO+DfzTzpodrxV+A7jDuDtNu
+         gdowjXaYJYRqWfmDsdOA5Rhg4gAZ9J7T2KyYuoHGVqYShfe/NriI12gbTwVwFeFHs8/M
+         xJmA==
+X-Gm-Message-State: ACrzQf3V4rb+BLvLtd9+oTO7kLrGb+rUo7canXsqy6c1BrkhABKWFi+i
+	IZ+HTbvzksKjQa00jYqMgvjXsy9cY/lY5lpocRowhg==
+X-Google-Smtp-Source: AMsMyM4ifBzOc5epJWnolpwJB7I8Uu7REkrSM32h9Wi0RNR6YarRrxj3LMKdHch3+Mq/MvaFZCjO8+SeHm/lb2cNC1M=
+X-Received: by 2002:a2e:a58e:0:b0:277:774a:92f5 with SMTP id
+ m14-20020a2ea58e000000b00277774a92f5mr9046538ljp.224.1667832090776; Mon, 07
+ Nov 2022 06:41:30 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 7 Nov 2022 14:41:30 +0000
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.2
+References: <20220919-v3-0-a803f2660127@baylibre.com> <20220919-v3-1-a803f2660127@baylibre.com>
+ <96d0f2d2-24b9-0838-4538-7d70c01ddace@collabora.com>
+In-Reply-To: <96d0f2d2-24b9-0838-4538-7d70c01ddace@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <63325548-63c6-8405-6481-3b019e7dd656@collabora.com>
+Date: Mon, 7 Nov 2022 14:41:29 +0000
+Message-ID: <CABnWg9uwqyMpknrnR0nNuNLNtO81XQP=kJ8quLEaC2WzawFgzQ@mail.gmail.com>
+Subject: Re: [PATCH v3 01/12] dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	stuart.lee@mediatek.com, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, mac.shen@mediatek.com, 
+	linux-phy@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_061920_323075_B03A130A 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20221107_064134_535511_E87901EE 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,24 +98,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 07, 2022 at 10:06:51AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 04/11/22 22:24, Nícolas F. R. A. Prado ha scritto:
-> > Register the compatibles for this module on the module device table so
-> > it can be automatically loaded when a matching device is found on the
-> > system.
-> > 
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> 
-> Hello Nícolas,
-> I agree but.... can you please do the same for 8192, 8195, 8186?
-> 
-> Getting them all in one series would make absolute sense... :-)
+On Mon, 07 Nov 2022 12:20, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>Il 04/11/22 15:09, Guillaume Ranquet ha scritto:
+>> Add a compatible for the HDMI PHY on MT8195
+>>
+>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>
+>Ack and R-b tags go after your S-o-b.
+>
+>Apart from that:
+>Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>
+>
+>
+>
 
-Yes, I was planning to do that in a following series, to avoid extra churn on
-all SoCs in case some change was needed. But perhaps I was being too careful, I
-can add them here for v2.
+Hi Angelo,
 
-Thanks,
-Nícolas
+Thx for your review.
+I'm not exactly sure what to do here as I'm using b4 trailers to
+collect Acked-by and Reviewed-by
+
+And there's an ongoing discussion about that topic on the tools
+mailing list [1], it seems there's
+no agreement on what to do with trailers ordering.
+I'll keep using b4 trailers for now as for me this is the sane thing to do.
+I'll update the ordering if I see concensus on that discussion.
+
+Thx,
+Guillaume.
+
+---
+
+[1] https://lore.kernel.org/tools/20221031165842.vxr4kp6h7qnkc53l@meerkat.local
 
