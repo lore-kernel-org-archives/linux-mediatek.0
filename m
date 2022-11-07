@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D682AC43219
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 19:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48490C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 20:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ieiAxhifSMyQ4MxSnOsIKCi9Eh84IdHGfPjBjh2Hno=; b=a8evwzFDLPJM6vVwTwefe1f6Dt
-	cWiyiNvtEeS3RVWB57QV66OykblcTJDL31NBEHFt8p9CJPfR3uWiAOiWv/17PsNIrUP8nRLdI5J/Z
-	ryMYkN7cklfvHrwyjpMt5Dbc4OzL54z1sRwVVTHfQUHC8xbol9fnT7RP2/kBRhQW7jUodY1fzpEqj
-	FNRFmeqdMOc0gF3WX/+RlZKRy7sGYAJRtif8MhrgtDZxq0shtxU0aFltxWLncOpsZnh5hCjg5zsyV
-	jdepMjGfGfFm6mjiENqzVaWFskzgvSRy2dAsRHjMW9aDohmps1SJ4TtXD54cO/MRmIvO7P15xUEUW
-	332WAaJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IgPXmc42gSS+9RDbk9bPwPQ6xa5IFwcVI8Es/AMs5QQ=; b=Wj5fjsROkxAPt7SPxZ0BkDtv6H
+	8aGSsL3ML5xkw+cKZ0lD7rA9RtkLJDSyjCYdx2pUpf5sGZ90fABknQ+CP+PdMx9ZDK4R+JHMjLSWK
+	fquhlz0aoTI57st88beHLJ/zx4TL8wAlYHH/uvw38Y523f83CqTwm+gWk5A1UXK7OMvNjBJVYXFCZ
+	AqVtfG/X5yI3UoAALBIzHgrSlaAMyecW15TRmz8NDI44ML04dk/7DT2e7zb9uo1gRF4x9vfgtT/ey
+	Z7qcRB8S1oBkGrsP9egEIfbWHd+tkuylCmYn3bzwsFLWV1DJ1tGdUnxTZryJi7YNrEyB67Zo80bbq
+	o9jRj6IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os7kz-00Haw4-Lp; Mon, 07 Nov 2022 19:26:05 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1os8VS-000GjI-TR; Mon, 07 Nov 2022 20:14:06 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os7kn-00Hape-E8; Mon, 07 Nov 2022 19:25:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=5ieiAxhifSMyQ4MxSnOsIKCi9Eh84IdHGfPjBjh2Hno=; b=fh+rYeK17i703PklQYs1GnZj8Y
-	f5vZfagQdzCt9wXjqfxtHNlZIdAM53JDmm+IwWUapnaFa4G6gsdpTOpbgj6ZtC11spai+rqg8ir6l
-	jNiDa95qAoAoe/9Ydlgi2YCvzf8hPn5twSqDAP+MxbLGHFG63nzZ9/RTqm8v68cWJXHU=;
-Received: from p200300daa72ee1007849d74f78949f6c.dip0.t-ipconnect.de ([2003:da:a72e:e100:7849:d74f:7894:9f6c] helo=Maecks.lan)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1os7HI-000LCc-Ht; Mon, 07 Nov 2022 19:55:24 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 14/14] net: ethernet: mtk_eth_soc: drop packets to WDMA if the ring is full
-Date: Mon,  7 Nov 2022 19:54:52 +0100
-Message-Id: <20221107185452.90711-14-nbd@nbd.name>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221107185452.90711-1-nbd@nbd.name>
-References: <20221107185452.90711-1-nbd@nbd.name>
+	id 1os8VQ-000Ghz-Jw
+	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 20:14:05 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id z5-20020a17090a8b8500b00210a3a2364fso51551pjn.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 12:14:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=IgPXmc42gSS+9RDbk9bPwPQ6xa5IFwcVI8Es/AMs5QQ=;
+        b=Lv0jaAlJO3Pfx2NP9fOi99sjktk/EKRfwOlofukUKOgpp9M2209JDrInYlC/Hb96kX
+         WiFgfbpqnRnlKBoFNwrkXH8hdPPEdvc+JMppDiaruAqyLaQClFKAVZtFDzGkHwW7T2RL
+         WmqOYCgFSpdcFq5UUU2a314WlDmSL5htwNEqvYznRbM62EhrkUo4OQ60Zi7OKV7aVCqN
+         nrAAeEPNouP9/5fi3qrJL26TZ2acC+1IMFkeaV1a3w4/bMys9H4EYRl0pvQ5A5ZL4kee
+         +s0yRYYrISNeQuVGL6Zs/zy2ps2eAYlnxiOGNZxpi60pbVpK5w27mE62FYhwoABPH+2A
+         C+fA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=IgPXmc42gSS+9RDbk9bPwPQ6xa5IFwcVI8Es/AMs5QQ=;
+        b=PqGOaQ3kser7oY4XpHyq2rkWWHz8b5BWB+NV+QEmaoD2fu2/FhX7JzU8lVAvh5EHaS
+         WPk/Q6kwtnKvCOoWCkPajHGj2ohG70tdxZ0J0YQ4NPNnJ61/RHV9cGQu1DTQv1aVk+W1
+         XwHtRwYRPIQrKNeVKBTlr1MGSjgC10RdL+n3H9B6uBZ+obFC8qKkqc7W5KdfpSQHs1FF
+         /sPkY01jbo22+NgT31j+Y47PJ3PVZ8D/TasaU+cmG+lNi6YTTB9e5KUPKkfUL0dRvHXF
+         6x/vL4SjfddhGfiIme1VDatA6vIBpYtX0moqFAs5PJAsz30/WLuLb/jG+kRm/g3SC1Uy
+         mAOg==
+X-Gm-Message-State: ACrzQf2/EPYm9g0S5Zk4TcX0jD3sXxLIE4j2UNDqcHeREF/GWOL4fYLk
+	J7S9vPDNTsEoTf1390B35Pd4TfBtZRBrsjFFSYR7/A==
+X-Google-Smtp-Source: AMsMyM4Uqs3O9TcimuuptYpAiUUKJmyf19xvGSioeogsaTGjXrG+KhSscjv5iIa2S1MqvOlKLMq04hYJyEoDAQTxJ/A=
+X-Received: by 2002:a17:90b:4d07:b0:1ef:521c:f051 with SMTP id
+ mw7-20020a17090b4d0700b001ef521cf051mr71864059pjb.164.1667852042927; Mon, 07
+ Nov 2022 12:14:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20221106033924.9854-1-mengqi.zhang@mediatek.com>
+In-Reply-To: <20221106033924.9854-1-mengqi.zhang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 7 Nov 2022 21:13:25 +0100
+Message-ID: <CAPDyKFp4wEaiGvyXQJPehbDkkZReUXk5fsXwJGLpVX9w2ZOZjQ@mail.gmail.com>
+Subject: Re: [RESEND v2 0/2] Mediatek eMMC Inline Crypto Engine support
+To: Mengqi Zhang <mengqi.zhang@mediatek.com>
+Cc: chaotian.jing@mediatek.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
+	wenbin.mei@mediatek.com, angelogioacchino.delregno@collabora.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_112553_501505_57B76A56 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20221107_121404_674461_FDB92E60 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +89,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Improves handling of DMA ring overflow.
-Clarify other WDMA drop related comment.
+On Sun, 6 Nov 2022 at 04:39, Mengqi Zhang <mengqi.zhang@mediatek.com> wrote:
+>
+> Change in v2
+> - change patch 1 commit title
+> - change patch 2 commit title, and correct commit message
+> - add crypto clock description base on new code base
+>
+> Mediatek eMMC hardware IP has Inline Crypto Engine (ICE), we support inline encryption now.
+>
+> This patchset supports Mediatek eMMC inline encryption which meets the upcoming version of the eMMC specification such as v5.1 or v5.2.
+>
+> Patch 1, add crypto clock control flow in mtk-sd driver, patch 2, document the device tree description about crypto clock.
+>
+> Mengqi Zhang (2):
+>   mmc: mtk-sd: add Inline Crypto Engine clock control
+>   dt-bindings: mmc: mtk-sd: add Inline Crypto Engine clock
+>
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 22 +++++++++++++++++++
+>  drivers/mmc/host/mtk-sd.c                     | 12 ++++++++++
+>  2 files changed, 34 insertions(+)
+>
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 5 ++++-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
- 2 files changed, 5 insertions(+), 1 deletion(-)
+Applied for next, thanks!
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 50756c8aa871..4bd06ab1a2b5 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3529,9 +3529,12 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
- 
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
--		/* PSE should not drop port8 and port9 packets */
-+		/* PSE should not drop port8 and port9 packets from WDMA Tx */
- 		mtk_w32(eth, 0x00000300, PSE_DROP_CFG);
- 
-+		/* PSE should drop packets to port 8/9 on WDMA Rx ring full */
-+		mtk_w32(eth, 0x00000300, PSE_PPE0_DROP);
-+
- 		/* PSE Free Queue Flow Control  */
- 		mtk_w32(eth, 0x01fa01f4, PSE_FQFC_CFG2);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index bf8c7d11df9f..226022346369 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -124,6 +124,7 @@
- #define PSE_FQFC_CFG1		0x100
- #define PSE_FQFC_CFG2		0x104
- #define PSE_DROP_CFG		0x108
-+#define PSE_PPE0_DROP		0x110
- 
- /* PSE Input Queue Reservation Register*/
- #define PSE_IQ_REV(x)		(0x140 + (((x) - 1) << 2))
--- 
-2.38.1
-
+Kind regards
+Uffe
 
