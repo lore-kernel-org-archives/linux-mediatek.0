@@ -4,76 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0155AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 07:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21CC8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 08:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NR11Z/Ik0Etwx3WZuOzzt8Weah+qLsIcT31/EczJgBA=; b=i/+wQ4inw3QZHvbU/v3CkSgfWm
-	ElJ9jF5FtJweyB2LyCz3lBkuLZ2xa1XPU0vguM/OMzKTQZ47Pw3wlFYgoR5NAjbNqG7i2mXCxY1zu
-	dMK2NI0Dd6I/6kiCeYTTIa0WsypHgySb91CfXKS0GxoldOPfBQeztP1oRwL8LVZyMFKDEh4L7HSic
-	PZ8lj4nqrtyZJOKQxqpwvsGpuRDyET5Ql6SRBilI9Xgs0MteV1JBcffcL/1z6fILuKWRRYRDS/jf6
-	4zLTkDjkq0b7CGayQMv3L/aiC2DgtPrjU9ckZXncHuKS7PUG715w9tOP/zvWSMsu25eA0useNePI9
-	IZCkHOiA==;
+	bh=Aq/rXhvOvHCvrLASPVtA3GhXPBKkD/XGjmzw/rPkVIM=; b=SUSDxmtkEGzUeI2L3Z5ceCx4HS
+	5IaiJlecrc913tj2fSqqONjEBlnJ7Puv9YKUcvDK2jloeIKQc7J9RAmXqqxA4tuic4XhKg4XW5xH8
+	LPBvlnhTIB+2KgdCRP9Jh8X2NIlxbBRaed4yLkLRj2DV50Z1KZTNXAEVhMozFi+HoM8pdXdg6Pv2A
+	6l0vj1vUDRHmZwqpLBY/cYOvsqJpu1E0XzCg9FXo8RkFJX9Oryu9GQpCdbtcBeGwupWog7BEFui+e
+	kGg8FXlvMm2Dp34l9sUYEz5Slkm2/xEslRHwtZtuvlEMM+0EcwAK8SGIp0AeNEPUHF2vsnW5CYroU
+	PrW3HKaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orwz3-00CmGl-Sw; Mon, 07 Nov 2022 07:55:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1orxjG-00CuKa-Vk; Mon, 07 Nov 2022 08:43:38 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orwyf-00Cm40-Oj; Mon, 07 Nov 2022 07:55:32 +0000
-X-UUID: e6c6320de8f7419bb00c280e9d40c0cd-20221107
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NR11Z/Ik0Etwx3WZuOzzt8Weah+qLsIcT31/EczJgBA=;
-	b=AcWXUIaGhPFe3R7LI1GnAI22QwUUUQyoDwpTSfVYTds+IudOZ+GZJWPTb8tUVclkdxPfw3w8nVU+LO5rx8p9Ozy8tc5BP1pFR5yKI/k57j0nihuDDT59Wf/3QzqF+8MhKemFJbO8opEPvQGPbfWX3dAkdTVKPS3vGv+93PgEMNc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:d8fa7722-5089-4aa2-ac17-1450c7d522fa,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:1f88a5eb-84ac-4628-a416-bc50d5503da6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e6c6320de8f7419bb00c280e9d40c0cd-20221107
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 355947808; Mon, 07 Nov 2022 00:55:25 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 7 Nov 2022 15:24:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 7 Nov 2022 15:24:16 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
-	<nfraprado@collabora.com>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
-	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
-	<singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v28 3/7] drm/mediatek: add ovl_adaptor support for MT8195
-Date: Mon, 7 Nov 2022 15:24:09 +0800
-Message-ID: <20221107072413.16178-4-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221107072413.16178-1-nancy.lin@mediatek.com>
-References: <20221107072413.16178-1-nancy.lin@mediatek.com>
+	id 1orxjD-00CuHZ-KW; Mon, 07 Nov 2022 08:43:37 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailnew.nyi.internal (Postfix) with ESMTP id DCF6C5809A3;
+	Mon,  7 Nov 2022 03:43:26 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute1.internal (MEProxy); Mon, 07 Nov 2022 03:43:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to; s=fm2; t=1667810606; x=
+	1667817806; bh=Aq/rXhvOvHCvrLASPVtA3GhXPBKkD/XGjmzw/rPkVIM=; b=X
+	Mzr/NIXE6ygs347sr9HjDgFFmGK0kq2KoXS6EvljdsT42q4HsSnbBFrXk17Pe+gZ
+	dWbVuf6oW1+RlsFCQbTn544CssUriWkdV+D7FXCbxrEp8AxET1HdURrEBKJzUYip
+	gVp212D/tSe6iCpYb8VYliJ6Hev5v0qHDCpkBoJUaujjvJGMUAqW8xJ0KWDbIhx2
+	f5norJaeRYMtACTiES69qUrDVZarBnstpffE60GXGDd6KlKdXhD/p6mDfle1Oi4F
+	tw8iedF5sTGvIEhGaml/Nc6ebkrPtqOu9NjXpE5BUxEsl1U9zmVbTM0yWe9Za4Cz
+	JF3Za+gLAV5z5vYvIwltw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1667810606; x=
+	1667817806; bh=Aq/rXhvOvHCvrLASPVtA3GhXPBKkD/XGjmzw/rPkVIM=; b=l
+	wO0TYr73LbJV0++Mo0Um+3yOostKt5yo2CyyIGo8HFTSTPAi2RrbvF/eRSp9o2o2
+	+aEVg2asFpEDgNzFCjzsmWw/I+winn7en/mnpBxWoy/G9LDRZ5zDpfIzUw5/ExAf
+	Y7SEm+UrAAGqRUJtHB7t0Xc50b9C6WaAjlDM4qjFcrD2PcYNYOE9QOiOy4F7vJjr
+	fmjXTSUWCZhrxcaSeBX3LtrMMbHa4zhhWUrzwuBioKbLUhXVRM289XoLHGsg3xp2
+	6zbPAykMclfzZdWbQloPKRXZpM9u+s22KxEGCZhH8wEOlTH1HKC+Jt2c+4+482O8
+	Z39ITGRaZngh6H60+S0aA==
+X-ME-Sender: <xms:LMVoYx7dsZ21l2kErXuCb57W6V-JAsoe4W4HyM-WpbOoXImjvs3hCg>
+    <xme:LMVoY-41AhVywvyeK4JfUUsEXi7yGSMTiVKjjqjrhVi3Vf1Yt9cKCBrkudXStPFiS
+    80CbN6QU3FxaDKrquA>
+X-ME-Received: <xmr:LMVoY4ciLQGBbg4CzXUFW73ZhYqObOA6ViBEUq4OeCeWLiBj7LCQ0Jxh9VVQb2zHcTSkhAgpDRwjT3Ql7rjQtJFL6DUYyC-FaDJ1OEZlc5vEZQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvdejgdduvdefucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggugfgjsehtqhertddttddvnecuhfhrohhmpeforgig
+    ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+    grthhtvghrnheptefgleeggfegkeekgffgleduieduffejffegveevkeejudektdduueet
+    feetfefgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+    epmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:LMVoY6JplDgIhemcdbpXp5Yl8GMlUJ2C4lCcCvxIoPX9Qw0Zvdc0mQ>
+    <xmx:LMVoY1JKtIdwUipzss4LM7NNIWStHUol6IdWpo5CiSQ2mvmoUJi-bA>
+    <xmx:LMVoYzztB-PRe8uYYyegx0uiiyjfwD6LHztfsDpgQpUsGlbjTfSTUA>
+    <xmx:LsVoY5TW4OQFLtlRuiANOQeiVNxH9XWmg3_g5ax-jjleBakAR9plvQ>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 7 Nov 2022 03:43:23 -0500 (EST)
+Date: Mon, 7 Nov 2022 09:43:22 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Mark Brown <broonie@kernel.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,	Paul Cercueil <paul@crapouillou.net>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Peter De Schrijver <pdeschrijver@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,	Max Filippov <jcmvbkbc@gmail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 43/65] ASoC: tlv320aic32x4: Add a determine_rate hook
+Message-ID: <20221107084322.gk4j75r52zo5k7xk@houat>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-43-f6736dec138e@cerno.tech>
+ <Y2UzdYyjgahJsbHg@sirena.org.uk>
+ <20221104155123.qomguvthehnogkdd@houat>
+ <Y2U2+ePwRieYkNjv@sirena.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <Y2U2+ePwRieYkNjv@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_235529_844072_A34590D0 
-X-CRM114-Status: GOOD (  22.87  )
+X-CRM114-CacheID: sfid-20221107_004335_763858_FD5157CC 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,633 +149,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ovl_adaptor driver for MT8195.
-Ovl_adaptor is an encapsulated module and designed for simplified
-DRM control flow. This module is composed of 8 RDMAs, 4 MERGEs and
-an ETHDR. Two RDMAs merge into one layer, so this module support 4
-layers.
+Hi Mark,
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
----
- drivers/gpu/drm/mediatek/Makefile             |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  26 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 533 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   1 +
- 4 files changed, 561 insertions(+)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+On Fri, Nov 04, 2022 at 03:59:53PM +0000, Mark Brown wrote:
+> On Fri, Nov 04, 2022 at 04:51:23PM +0100, Maxime Ripard wrote:
+>=20
+> > Just filling determine_rate if it's missing with
+> > __clk_mux_determine_rate will possibly pick different parents, and I'm
+> > fairly certain that this have never been tested on most platforms, and
+> > will be completely broken. And I don't really want to play a game of
+> > whack-a-mole adding that flag everywhere it turns out it's broken.
+>=20
+> Well, hopefully everyone for whom it's an issue currently will be
+> objecting to this version of the change anyway so we'll either know
+> where to set the flag or we'll get the whack-a-mole with the series
+> being merged?
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 840f14436d3c..d4d193f60271 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -6,6 +6,7 @@ mediatek-drm-y := mtk_disp_aal.o \
- 		  mtk_disp_gamma.o \
- 		  mtk_disp_merge.o \
- 		  mtk_disp_ovl.o \
-+		  mtk_disp_ovl_adaptor.o \
- 		  mtk_disp_rdma.o \
- 		  mtk_drm_crtc.o \
- 		  mtk_drm_ddp_comp.o \
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 33e61a136bbc..654f8e257984 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -7,6 +7,8 @@
- #define _MTK_DISP_DRV_H_
- 
- #include <linux/soc/mediatek/mtk-cmdq.h>
-+#include <linux/soc/mediatek/mtk-mmsys.h>
-+#include <linux/soc/mediatek/mtk-mutex.h>
- #include "mtk_drm_plane.h"
- #include "mtk_mdp_rdma.h"
- 
-@@ -116,6 +118,30 @@ void mtk_rdma_unregister_vblank_cb(struct device *dev);
- void mtk_rdma_enable_vblank(struct device *dev);
- void mtk_rdma_disable_vblank(struct device *dev);
- 
-+void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex);
-+void mtk_ovl_adaptor_remove_comp(struct device *dev, struct mtk_mutex *mutex);
-+void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev,
-+			     unsigned int next);
-+void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev,
-+				unsigned int next);
-+int mtk_ovl_adaptor_clk_enable(struct device *dev);
-+void mtk_ovl_adaptor_clk_disable(struct device *dev);
-+void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
-+			    unsigned int h, unsigned int vrefresh,
-+			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-+				  struct mtk_plane_state *state,
-+				  struct cmdq_pkt *cmdq_pkt);
-+void mtk_ovl_adaptor_register_vblank_cb(struct device *dev, void (*vblank_cb)(void *),
-+					void *vblank_cb_data);
-+void mtk_ovl_adaptor_unregister_vblank_cb(struct device *dev);
-+void mtk_ovl_adaptor_enable_vblank(struct device *dev);
-+void mtk_ovl_adaptor_disable_vblank(struct device *dev);
-+void mtk_ovl_adaptor_start(struct device *dev);
-+void mtk_ovl_adaptor_stop(struct device *dev);
-+unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
-+struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev);
-+
- int mtk_mdp_rdma_clk_enable(struct device *dev);
- void mtk_mdp_rdma_clk_disable(struct device *dev);
- void mtk_mdp_rdma_start(struct device *dev, struct cmdq_pkt *cmdq_pkt);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-new file mode 100644
-index 000000000000..046217828ab3
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -0,0 +1,533 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#include <drm/drm_fourcc.h>
-+#include <drm/drm_of.h>
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/of_device.h>
-+#include <linux/of_address.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/reset.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
-+#include <linux/soc/mediatek/mtk-mmsys.h>
-+#include <linux/soc/mediatek/mtk-mutex.h>
-+
-+#include "mtk_disp_drv.h"
-+#include "mtk_drm_crtc.h"
-+#include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
-+#include "mtk_ethdr.h"
-+
-+#define MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH 1920
-+#define MTK_OVL_ADAPTOR_LAYER_NUM 4
-+
-+enum mtk_ovl_adaptor_comp_type {
-+	OVL_ADAPTOR_TYPE_RDMA = 0,
-+	OVL_ADAPTOR_TYPE_MERGE,
-+	OVL_ADAPTOR_TYPE_ETHDR,
-+	OVL_ADAPTOR_TYPE_NUM,
-+};
-+
-+enum mtk_ovl_adaptor_comp_id {
-+	OVL_ADAPTOR_MDP_RDMA0,
-+	OVL_ADAPTOR_MDP_RDMA1,
-+	OVL_ADAPTOR_MDP_RDMA2,
-+	OVL_ADAPTOR_MDP_RDMA3,
-+	OVL_ADAPTOR_MDP_RDMA4,
-+	OVL_ADAPTOR_MDP_RDMA5,
-+	OVL_ADAPTOR_MDP_RDMA6,
-+	OVL_ADAPTOR_MDP_RDMA7,
-+	OVL_ADAPTOR_MERGE0,
-+	OVL_ADAPTOR_MERGE1,
-+	OVL_ADAPTOR_MERGE2,
-+	OVL_ADAPTOR_MERGE3,
-+	OVL_ADAPTOR_ETHDR0,
-+	OVL_ADAPTOR_ID_MAX
-+};
-+
-+struct ovl_adaptor_comp_match {
-+	enum mtk_ovl_adaptor_comp_type type;
-+	int alias_id;
-+};
-+
-+struct mtk_disp_ovl_adaptor {
-+	struct device *ovl_adaptor_comp[OVL_ADAPTOR_ID_MAX];
-+	struct device *mmsys_dev;
-+	bool children_bound;
-+};
-+
-+static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
-+	[OVL_ADAPTOR_TYPE_RDMA]		= "vdo1-rdma",
-+	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
-+	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
-+};
-+
-+static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
-+	[OVL_ADAPTOR_MDP_RDMA0]	= { OVL_ADAPTOR_TYPE_RDMA, 0 },
-+	[OVL_ADAPTOR_MDP_RDMA1]	= { OVL_ADAPTOR_TYPE_RDMA, 1 },
-+	[OVL_ADAPTOR_MDP_RDMA2]	= { OVL_ADAPTOR_TYPE_RDMA, 2 },
-+	[OVL_ADAPTOR_MDP_RDMA3]	= { OVL_ADAPTOR_TYPE_RDMA, 3 },
-+	[OVL_ADAPTOR_MDP_RDMA4]	= { OVL_ADAPTOR_TYPE_RDMA, 4 },
-+	[OVL_ADAPTOR_MDP_RDMA5]	= { OVL_ADAPTOR_TYPE_RDMA, 5 },
-+	[OVL_ADAPTOR_MDP_RDMA6]	= { OVL_ADAPTOR_TYPE_RDMA, 6 },
-+	[OVL_ADAPTOR_MDP_RDMA7]	= { OVL_ADAPTOR_TYPE_RDMA, 7 },
-+	[OVL_ADAPTOR_MERGE0]	= { OVL_ADAPTOR_TYPE_MERGE, 1 },
-+	[OVL_ADAPTOR_MERGE1]	= { OVL_ADAPTOR_TYPE_MERGE, 2 },
-+	[OVL_ADAPTOR_MERGE2]	= { OVL_ADAPTOR_TYPE_MERGE, 3 },
-+	[OVL_ADAPTOR_MERGE3]	= { OVL_ADAPTOR_TYPE_MERGE, 4 },
-+	[OVL_ADAPTOR_ETHDR0]	= { OVL_ADAPTOR_TYPE_ETHDR, 0 },
-+};
-+
-+void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-+				  struct mtk_plane_state *state,
-+				  struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+	struct mtk_plane_pending_state *pending = &state->pending;
-+	struct mtk_mdp_rdma_cfg rdma_config = {0};
-+	struct device *rdma_l;
-+	struct device *rdma_r;
-+	struct device *merge;
-+	struct device *ethdr;
-+	const struct drm_format_info *fmt_info = drm_format_info(pending->format);
-+	bool use_dual_pipe = false;
-+	unsigned int align_width;
-+	unsigned int l_w = 0;
-+	unsigned int r_w = 0;
-+
-+	dev_dbg(dev, "%s+ idx:%d, enable:%d, fmt:0x%x\n", __func__, idx,
-+		pending->enable, pending->format);
-+	dev_dbg(dev, "addr 0x%pad, fb w:%d, {%d,%d,%d,%d}\n",
-+		&pending->addr, (pending->pitch / fmt_info->cpp[0]),
-+		pending->x, pending->y, pending->width, pending->height);
-+
-+	rdma_l = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx];
-+	rdma_r = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx + 1];
-+	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
-+	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
-+
-+	if (!pending->enable) {
-+		mtk_merge_stop_cmdq(merge, cmdq_pkt);
-+		mtk_mdp_rdma_stop(rdma_l, cmdq_pkt);
-+		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
-+		mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
-+		return;
-+	}
-+
-+	/* ETHDR is in 1T2P domain, width needs to be 2 pixels align */
-+	align_width = ALIGN_DOWN(pending->width, 2);
-+
-+	if (align_width > MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH)
-+		use_dual_pipe = true;
-+
-+	if (use_dual_pipe) {
-+		l_w = (align_width / 2) + ((pending->width / 2) % 2);
-+		r_w = align_width - l_w;
-+	} else {
-+		l_w = align_width;
-+	}
-+	mtk_merge_advance_config(merge, l_w, r_w, pending->height, 0, 0, cmdq_pkt);
-+	mtk_mmsys_merge_async_config(ovl_adaptor->mmsys_dev, idx, align_width / 2,
-+				     pending->height, cmdq_pkt);
-+
-+	rdma_config.width = l_w;
-+	rdma_config.height = pending->height;
-+	rdma_config.addr0 = pending->addr;
-+	rdma_config.pitch = pending->pitch;
-+	rdma_config.fmt = pending->format;
-+	rdma_config.color_encoding = pending->color_encoding;
-+	mtk_mdp_rdma_config(rdma_l, &rdma_config, cmdq_pkt);
-+
-+	if (use_dual_pipe) {
-+		rdma_config.x_left = l_w;
-+		rdma_config.width = r_w;
-+		mtk_mdp_rdma_config(rdma_r, &rdma_config, cmdq_pkt);
-+	}
-+
-+	mtk_merge_start_cmdq(merge, cmdq_pkt);
-+
-+	mtk_mdp_rdma_start(rdma_l, cmdq_pkt);
-+	if (use_dual_pipe)
-+		mtk_mdp_rdma_start(rdma_r, cmdq_pkt);
-+	else
-+		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
-+
-+	mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
-+}
-+
-+void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
-+			    unsigned int h, unsigned int vrefresh,
-+			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_config(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0], w, h,
-+			 vrefresh, bpc, cmdq_pkt);
-+}
-+
-+void mtk_ovl_adaptor_start(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_start(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+void mtk_ovl_adaptor_stop(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_stop(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+int mtk_ovl_adaptor_clk_enable(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+	struct device *comp;
-+	int ret;
-+	int i;
-+
-+	for (i = 0; i < OVL_ADAPTOR_MERGE0; i++) {
-+		comp = ovl_adaptor->ovl_adaptor_comp[i];
-+		ret = pm_runtime_get_sync(comp);
-+		if (ret < 0) {
-+			dev_err(dev, "Failed to enable power domain %d, err %d\n", i, ret);
-+			goto pwr_err;
-+		}
-+	}
-+
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		comp = ovl_adaptor->ovl_adaptor_comp[i];
-+
-+		if (i < OVL_ADAPTOR_MERGE0)
-+			ret = mtk_mdp_rdma_clk_enable(comp);
-+		else if (i < OVL_ADAPTOR_ETHDR0)
-+			ret = mtk_merge_clk_enable(comp);
-+		else
-+			ret = mtk_ethdr_clk_enable(comp);
-+		if (ret) {
-+			dev_err(dev, "Failed to enable clock %d, err %d\n", i, ret);
-+			goto clk_err;
-+		}
-+	}
-+
-+	return ret;
-+
-+clk_err:
-+	while (--i >= 0) {
-+		comp = ovl_adaptor->ovl_adaptor_comp[i];
-+		if (i < OVL_ADAPTOR_MERGE0)
-+			mtk_mdp_rdma_clk_disable(comp);
-+		else if (i < OVL_ADAPTOR_ETHDR0)
-+			mtk_merge_clk_disable(comp);
-+		else
-+			mtk_ethdr_clk_disable(comp);
-+	}
-+	i = OVL_ADAPTOR_MERGE0;
-+
-+pwr_err:
-+	while (--i >= 0)
-+		pm_runtime_put(ovl_adaptor->ovl_adaptor_comp[i]);
-+
-+	return ret;
-+}
-+
-+void mtk_ovl_adaptor_clk_disable(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+	struct device *comp;
-+	int i;
-+
-+	for (i = 0; i < OVL_ADAPTOR_ID_MAX; i++) {
-+		comp = ovl_adaptor->ovl_adaptor_comp[i];
-+
-+		if (i < OVL_ADAPTOR_MERGE0) {
-+			mtk_mdp_rdma_clk_disable(comp);
-+			pm_runtime_put(comp);
-+		} else if (i < OVL_ADAPTOR_ETHDR0) {
-+			mtk_merge_clk_disable(comp);
-+		} else {
-+			mtk_ethdr_clk_disable(comp);
-+		}
-+	}
-+}
-+
-+unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev)
-+{
-+	return MTK_OVL_ADAPTOR_LAYER_NUM;
-+}
-+
-+struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	return ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0];
-+}
-+
-+void mtk_ovl_adaptor_register_vblank_cb(struct device *dev, void (*vblank_cb)(void *),
-+					void *vblank_cb_data)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_register_vblank_cb(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0],
-+				     vblank_cb, vblank_cb_data);
-+}
-+
-+void mtk_ovl_adaptor_unregister_vblank_cb(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_unregister_vblank_cb(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+void mtk_ovl_adaptor_enable_vblank(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_enable_vblank(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+void mtk_ovl_adaptor_disable_vblank(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_disable_vblank(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex)
-+{
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA3);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA4);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA5);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA6);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MDP_RDMA7);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE1);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE2);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE3);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_MERGE4);
-+	mtk_mutex_add_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
-+}
-+
-+void mtk_ovl_adaptor_remove_comp(struct device *dev, struct mtk_mutex *mutex)
-+{
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA0);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA1);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA2);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA3);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA4);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA5);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA6);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MDP_RDMA7);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE1);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE2);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE3);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_MERGE4);
-+	mtk_mutex_remove_comp(mutex, DDP_COMPONENT_ETHDR_MIXER);
-+}
-+
-+void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev, unsigned int next)
-+{
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA0, DDP_COMPONENT_MERGE1);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA1, DDP_COMPONENT_MERGE1);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MDP_RDMA2, DDP_COMPONENT_MERGE2);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE1, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_connect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
-+}
-+
-+void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev, unsigned int next)
-+{
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA0, DDP_COMPONENT_MERGE1);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA1, DDP_COMPONENT_MERGE1);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MDP_RDMA2, DDP_COMPONENT_MERGE2);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE1, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER);
-+	mtk_mmsys_ddp_disconnect(mmsys_dev, DDP_COMPONENT_ETHDR_MIXER, next);
-+}
-+
-+static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
-+				   enum mtk_ovl_adaptor_comp_type type)
-+{
-+	int alias_id = of_alias_get_id(node, private_comp_stem[type]);
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(comp_matches); i++)
-+		if (comp_matches[i].type == type &&
-+		    comp_matches[i].alias_id == alias_id)
-+			return i;
-+
-+	dev_warn(dev, "Failed to get id. type: %d, alias: %d\n", type, alias_id);
-+	return -EINVAL;
-+}
-+
-+static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
-+	{
-+		.compatible = "mediatek,mt8195-vdo1-rdma",
-+		.data = (void *)OVL_ADAPTOR_TYPE_RDMA,
-+	}, {
-+		.compatible = "mediatek,mt8195-disp-merge",
-+		.data = (void *)OVL_ADAPTOR_TYPE_MERGE,
-+	}, {
-+		.compatible = "mediatek,mt8195-disp-ethdr",
-+		.data = (void *)OVL_ADAPTOR_TYPE_ETHDR,
-+	},
-+	{},
-+};
-+
-+static int compare_of(struct device *dev, void *data)
-+{
-+	return dev->of_node == data;
-+}
-+
-+static int ovl_adaptor_comp_init(struct device *dev, struct component_match **match)
-+{
-+	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-+	struct device_node *node, *parent;
-+	struct platform_device *comp_pdev;
-+
-+	parent = dev->parent->parent->of_node->parent;
-+
-+	for_each_child_of_node(parent, node) {
-+		const struct of_device_id *of_id;
-+		enum mtk_ovl_adaptor_comp_type type;
-+		int id;
-+
-+		of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids, node);
-+		if (!of_id)
-+			continue;
-+
-+		if (!of_device_is_available(node)) {
-+			dev_dbg(dev, "Skipping disabled component %pOF\n",
-+				node);
-+			continue;
-+		}
-+
-+		type = (enum mtk_ovl_adaptor_comp_type)of_id->data;
-+		id = ovl_adaptor_comp_get_id(dev, node, type);
-+		if (id < 0) {
-+			dev_warn(dev, "Skipping unknown component %pOF\n",
-+				 node);
-+			continue;
-+		}
-+
-+		comp_pdev = of_find_device_by_node(node);
-+		if (!comp_pdev)
-+			return -EPROBE_DEFER;
-+
-+		priv->ovl_adaptor_comp[id] = &comp_pdev->dev;
-+
-+		drm_of_component_match_add(dev, match, compare_of, node);
-+		dev_dbg(dev, "Adding component match for %pOF\n", node);
-+	}
-+
-+	if (!*match) {
-+		dev_err(dev, "No match device for ovl_adaptor\n");
-+		return -ENODEV;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_disp_ovl_adaptor_comp_bind(struct device *dev, struct device *master,
-+					  void *data)
-+{
-+	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-+
-+	if (!priv->children_bound)
-+		return -EPROBE_DEFER;
-+
-+	return 0;
-+}
-+
-+static void mtk_disp_ovl_adaptor_comp_unbind(struct device *dev, struct device *master,
-+					     void *data)
-+{
-+}
-+
-+static const struct component_ops mtk_disp_ovl_adaptor_comp_ops = {
-+	.bind	= mtk_disp_ovl_adaptor_comp_bind,
-+	.unbind = mtk_disp_ovl_adaptor_comp_unbind,
-+};
-+
-+static int mtk_disp_ovl_adaptor_master_bind(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = component_bind_all(dev, priv->mmsys_dev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "component_bind_all failed!\n");
-+
-+	priv->children_bound = true;
-+	return 0;
-+}
-+
-+static void mtk_disp_ovl_adaptor_master_unbind(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-+
-+	priv->children_bound = false;
-+}
-+
-+static const struct component_master_ops mtk_disp_ovl_adaptor_master_ops = {
-+	.bind		= mtk_disp_ovl_adaptor_master_bind,
-+	.unbind		= mtk_disp_ovl_adaptor_master_unbind,
-+};
-+
-+static int mtk_disp_ovl_adaptor_probe(struct platform_device *pdev)
-+{
-+	struct mtk_disp_ovl_adaptor *priv;
-+	struct device *dev = &pdev->dev;
-+	struct component_match *match = NULL;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	ret = ovl_adaptor_comp_init(dev, &match);
-+	if (ret < 0)
-+		return ret;
-+
-+	priv->mmsys_dev = pdev->dev.platform_data;
-+
-+	component_master_add_with_match(dev, &mtk_disp_ovl_adaptor_master_ops, match);
-+
-+	pm_runtime_enable(dev);
-+
-+	ret = component_add(dev, &mtk_disp_ovl_adaptor_comp_ops);
-+	if (ret != 0) {
-+		pm_runtime_disable(dev);
-+		dev_err(dev, "Failed to add component: %d\n", ret);
-+	}
-+
-+	return ret;
-+}
-+
-+static int mtk_disp_ovl_adaptor_remove(struct platform_device *pdev)
-+{
-+	component_master_del(&pdev->dev, &mtk_disp_ovl_adaptor_master_ops);
-+	pm_runtime_disable(&pdev->dev);
-+	return 0;
-+}
-+
-+struct platform_driver mtk_disp_ovl_adaptor_driver = {
-+	.probe		= mtk_disp_ovl_adaptor_probe,
-+	.remove		= mtk_disp_ovl_adaptor_remove,
-+	.driver		= {
-+		.name	= "mediatek-disp-ovl-adaptor",
-+		.owner	= THIS_MODULE,
-+	},
-+};
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 3fb85776b8b3..d27561e5e274 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -51,6 +51,7 @@ extern struct platform_driver mtk_disp_ccorr_driver;
- extern struct platform_driver mtk_disp_color_driver;
- extern struct platform_driver mtk_disp_gamma_driver;
- extern struct platform_driver mtk_disp_merge_driver;
-+extern struct platform_driver mtk_disp_ovl_adaptor_driver;
- extern struct platform_driver mtk_disp_ovl_driver;
- extern struct platform_driver mtk_disp_rdma_driver;
- extern struct platform_driver mtk_dpi_driver;
--- 
-2.18.0
+I'm sorry, I'm not sure what you mean here. The only issue to fix at the
+moment is that determine_rate and set_parent aren't coupled, and it led
+to issues due to oversight.
 
+I initially added a warning but Stephen wanted to fix all users in that
+case and make that an error instead.
+
+If I filled __clk_mux_determine_rate into clocks that weren't using it
+before, I would change their behavior. With that flag set, on all users
+I add __clk_mux_determine_rate to, the behavior is the same than what we
+previously had, so the risk of regressions is minimal, and everything
+should keep going like it was?
+
+Maxime
 
