@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A768C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 013C2C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ly/RiY6mg7DvTRhzwlh35nHRzyaAwSIlUrVS33hi/Oc=; b=ZzxFJZrDs80c8U7XSjZDMUP69A
-	+z/NxpZ9i7CI/BsbAO3HlUXJ4ZQ/8t4s3kAxcISUFwYxBWaZv4yOszAjDF+yjZQ//nFqj4/466UBD
-	j8Ua9c+jFD4wnm95qBafzsdBhiUZbu1izjrEP2PVg1HtZEsVHLtg5pBZDxgyL8gEODKimU6P4wiGX
-	F54Os0leFwOYHxX68GmwuZi5YRvkPTCqRxUK53MeOAgdn+N/BoYgNulYsRx1wyTQKANbj4bFbkkJz
-	XLXhwLEpiBvhKGE55NXo9hbPpN1un7K3DULA1SUDUfHWqdWQRf/gHDZia5tiybXIqNbk5QySSJxM9
-	8oqSrWuw==;
+	bh=mdLZY405J3655s0rV0afQV61PLq7CSM+FebkFJjSZkg=; b=f41A6LFeBDPyz8vBJ3QVDKzlfZ
+	PC7v0XUhX9ADl3e1ZAd2alpspauvnPk0QLAgIg65JDBMezbjSUOZxuIpe8pk4Jqy0G/AJnvYmJFQ7
+	wm7U/fJRbdYDQWc+OGF3WiWKmp6tJ2zJSiwdrDydYcRmVqPkCqW2EUkyx1Womo3Djg4SFakLgadMD
+	QI4sQ9IzgOdfsi0NgXyKybFe3FG8S9WBecXy0YbWND4umKHRA4ko9IkxDujMq+H3bQ4mmv+P9M56z
+	zF4A9ZJr2cHMWp4uDhOGtc5I7jh5eEqS1ePXcO0XK54gFaOo74je2D1XUOaftbm4dykmHMo1dZfCW
+	CiFQPklA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os5C3-00GIX1-QG; Mon, 07 Nov 2022 16:41:51 +0000
+	id 1os5CF-00GIgp-2M; Mon, 07 Nov 2022 16:42:03 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os52P-00GCn0-2e; Mon, 07 Nov 2022 16:31:55 +0000
+	id 1os53v-00GDa3-PZ; Mon, 07 Nov 2022 16:33:30 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A1FC823A;
-	Mon,  7 Nov 2022 08:31:57 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6BD8323A;
+	Mon,  7 Nov 2022 08:33:29 -0800 (PST)
 Received: from pierre123.arm.com (pierre123.nice.arm.com [10.34.100.128])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 376173F534;
-	Mon,  7 Nov 2022 08:31:36 -0800 (PST)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 21D303F534;
+	Mon,  7 Nov 2022 08:33:08 -0800 (PST)
 From: Pierre Gondois <pierre.gondois@arm.com>
 To: linux-kernel@vger.kernel.org
 Cc: Pierre Gondois <pierre.gondois@arm.com>,
@@ -98,38 +98,37 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	Tero Kristo <kristo@kernel.org>,
 	Viorel Suman <viorel.suman@nxp.com>,
 	Abel Vesa <abelvesa@kernel.org>,
+	Shenwei Wang <shenwei.wang@nxp.com>,
 	Shijie Qin <shijie.qin@nxp.com>,
 	Ming Qian <ming.qian@nxp.com>,
 	Peng Fan <peng.fan@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Adam Ford <aford173@gmail.com>,
 	Lucas Stach <l.stach@pengutronix.de>,
+	Adam Ford <aford173@gmail.com>,
 	Tim Harvey <tharvey@gateworks.com>,
 	Li Jun <jun.li@nxp.com>,
 	Richard Zhu <hongxing.zhu@nxp.com>,
-	Joakim Zhang <qiangqing.zhang@nxp.com>,
 	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
 	Marek Vasut <marex@denx.de>,
 	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
 	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
 	Martin Kepplinger <martink@posteo.de>,
+	Joakim Zhang <qiangqing.zhang@nxp.com>,
 	David Heidelberg <david@ixit.cz>,
 	Oliver Graute <oliver.graute@kococonnector.com>,
 	Liu Ying <victor.liu@nxp.com>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Ahmad Fatoum <a.fatoum@pengutronix.de>,
-	Clark Wang <xiaoning.wang@nxp.com>,
+	Zhou Peng <eagle.zhou@nxp.com>,
 	Wei Fang <wei.fang@nxp.com>,
+	Clark Wang <xiaoning.wang@nxp.com>,
 	Jacky Bai <ping.bai@nxp.com>,
 	Chris Packham <chris.packham@alliedtelesis.co.nz>,
 	Vadym Kochan <vadym.kochan@plvision.eu>,
 	Sameer Pujar <spujar@nvidia.com>,
 	Prathamesh Shete <pshete@nvidia.com>,
 	Akhil R <akhilrajeev@nvidia.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
 	Sumit Gupta <sumitg@nvidia.com>,
 	Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
 	Vidya Sagar <vidyas@nvidia.com>,
 	Ashish Mhetre <amhetre@nvidia.com>,
 	Johan Jonker <jbx6244@gmail.com>,
@@ -150,18 +149,17 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	linux-realtek-soc@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 19/23] arm64: dts: Update cache properties for rockchip
-Date: Mon,  7 Nov 2022 16:57:12 +0100
-Message-Id: <20221107155825.1644604-20-pierre.gondois@arm.com>
+Subject: [PATCH v2 20/23] arm64: dts: Update cache properties for socionext
+Date: Mon,  7 Nov 2022 16:57:13 +0100
+Message-Id: <20221107155825.1644604-21-pierre.gondois@arm.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
 References: <20221107155825.1644604-1-pierre.gondois@arm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_083153_265780_83D8C1B0 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221107_083327_957944_4BC5C665 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,15 +184,16 @@ Update the Device Trees accordingly.
 
 Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 1 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
- 2 files changed, 2 insertions(+)
+ arch/arm64/boot/dts/socionext/uniphier-ld11.dtsi | 1 +
+ arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi | 2 ++
+ arch/arm64/boot/dts/socionext/uniphier-pxs3.dtsi | 1 +
+ 3 files changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 2dfa67f1cd67..dd228a256a32 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -96,6 +96,7 @@ CPU_SLEEP: cpu-sleep {
+diff --git a/arch/arm64/boot/dts/socionext/uniphier-ld11.dtsi b/arch/arm64/boot/dts/socionext/uniphier-ld11.dtsi
+index 1c76b4375b2e..6e1e00939214 100644
+--- a/arch/arm64/boot/dts/socionext/uniphier-ld11.dtsi
++++ b/arch/arm64/boot/dts/socionext/uniphier-ld11.dtsi
+@@ -52,6 +52,7 @@ cpu1: cpu@1 {
  
  		l2: l2-cache {
  			compatible = "cache";
@@ -202,13 +201,30 @@ index 2dfa67f1cd67..dd228a256a32 100644
  		};
  	};
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 49ae15708a0b..8741914cea44 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -102,6 +102,7 @@ CPU_SLEEP: cpu-sleep {
+diff --git a/arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi b/arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi
+index 9308458f9611..db7d20a1a301 100644
+--- a/arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi
++++ b/arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi
+@@ -86,10 +86,12 @@ cpu3: cpu@101 {
  
- 		l2: l2-cache0 {
+ 		a72_l2: l2-cache0 {
+ 			compatible = "cache";
++			cache-level = <2>;
+ 		};
+ 
+ 		a53_l2: l2-cache1 {
+ 			compatible = "cache";
++			cache-level = <2>;
+ 		};
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/socionext/uniphier-pxs3.dtsi b/arch/arm64/boot/dts/socionext/uniphier-pxs3.dtsi
+index b0c29510a7da..9ce544c9ea0a 100644
+--- a/arch/arm64/boot/dts/socionext/uniphier-pxs3.dtsi
++++ b/arch/arm64/boot/dts/socionext/uniphier-pxs3.dtsi
+@@ -83,6 +83,7 @@ cpu3: cpu@3 {
+ 
+ 		l2: l2-cache {
  			compatible = "cache";
 +			cache-level = <2>;
  		};
