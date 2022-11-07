@@ -4,85 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C45DEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 15:07:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941B8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 15:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=msJlygCwztcKRCpl1OXcVZ463IWdf/JAulr8vPXr8uc=; b=E1HMNRyvhBwxFf//TLHjSzGlCi
-	jwWZY3wti34Ixv6ek3Z2x3xIKks7ObI9FhIWmmXarohmVbWcDwgdhG/MIffTkZhXgZCAoEkmYTb46
-	EXK5lmGoHkaeGQrCKi8M0Xgx5+8HzcphWqJXGdYq7uEsJfvROeV4bv7heQ6ukdSvJ+RqTV0YzbxmJ
-	X362u+mC0so0I1MjzVfnqXlG3Bsnka8mjFeg3kELSRFG/inRH9Qz3AjAzLRtQvouo2wZV7VwUfwJw
-	VnEUvf365efLng6zkYYkYGuH7+q70eOIL1439SSJ4sC4qGNAvhxl+t1zI1RSMh4Z9S9EQBQa74yDL
-	eW2yeaaA==;
+	bh=IIy8QXUDWnlcncLyNQJNbxMRRWumgUmyAMyd+aDiO3o=; b=HgKQ2sBty61MHNXYthdZUG8Jnq
+	tuzw5KRlSSHcNq5GGJ+qUJiFEsOAg80nKGcbtEqv4/ec/iMOusRMFhHUMtfIRhZuOzeTtbY58RN0C
+	q5rokOsmokkFraQpa+zWDJMnt6+G0YDTFZdgA/JhdGbjgevEEZ2iQ9zX/zLJvkAkaDL/TvUPJarN/
+	vV7En5EV37+F3eMVeXPkN6367dXNI8SxuNgU/TJ4OfUATqcY3RAAfenqw0GWdr34UsSxqayEzHxWN
+	aegYXyKz1wVa6w1Ude6nC2m05pYBtyU83TnbVoodr+r/svDMkPgQK74Mn6dHZs3zvHSE+U73Y8IMF
+	dSra9y9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3iI-00FXkr-Dh; Mon, 07 Nov 2022 15:07:02 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1os411-00FjRr-0W; Mon, 07 Nov 2022 15:26:23 +0000
+Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3hV-00FXJQ-O7
-	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 15:06:16 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id d6so17140666lfs.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 07:06:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=msJlygCwztcKRCpl1OXcVZ463IWdf/JAulr8vPXr8uc=;
-        b=kw/1CVr1CvRVBN7ppDzHuBwXNvTpjmdU+210GrNG3Nc4b7E6jprzvZIHSr8pmgM/I3
-         Ooumonhq2AA5Z/bDkgOMmb2uuM0HYdIO4QfNzuv00lDToNyHDOw36qPCZqLGXo4Ny3Rv
-         8GkkhYRZVPrpYZIyCy0c/BpWEycFDPgrnqVXz0/oGqCFsBGaXEqVwjB2ectF8uoWJPDw
-         cqsZOPBXQ8MKkKJ4OYLi5exG/8EufN0ybQVFN2TtQD6A6dL7rQVdsIKxIZG1aTs5d6oI
-         3O2K+mIJ1o8KaZwC8/MgU6kRcp+hsoW+as5mFzAkuL6pYASSSpWkf57h2MlRn8yzVn5+
-         jiqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=msJlygCwztcKRCpl1OXcVZ463IWdf/JAulr8vPXr8uc=;
-        b=ZLgOscLkrmKbQl5qqn61Cw3aybZ9KmydvLTr5FVMVxrWkDfwIYhs3NVeWBe4pRqqDK
-         JJPP8YxwhI2UNfUWFrWjvsSkHHYq5NRTm6oVxrKOx1r9FReE08VzeREAikwSoBwf7Wvk
-         9iq175qZd+q0jzjjDvzmliFt3lSdfryD5EyIjaZIkXoQKaTmvDGspDpG49wdrU0CWEqA
-         8H+3dGOvS/f4Vvo7icOzfBNbGq4NatXTFp5IPO19vvvlaxuxFdXVEaeLa0CJxvxPAG/p
-         C59Osm8sfKLMHTzxyd7GwSquHEeP6Fnv8ol+ieRA5rLTale/6jD00zOE5EliONCQHCui
-         7PhQ==
-X-Gm-Message-State: ACrzQf31NQBvgVe4eEa4vpRWndI+JIXxHCFUqAm47T3c2K62mhQ0i8Yq
-	AyooD1meol65/taF8irJHftmZKGXNpoNVNOaHz1qDg==
-X-Google-Smtp-Source: AMsMyM4/hRdV6PUceQjYTAr5VlJwQq0PJWF/plhX/TikjJfOvo1/P9XLmwGDedaShVJ1ltmLlfA5kP20+nvh1Rr9HWY=
-X-Received: by 2002:a05:6512:a93:b0:4a2:a5b3:fbb4 with SMTP id
- m19-20020a0565120a9300b004a2a5b3fbb4mr17334447lfu.346.1667833571328; Mon, 07
- Nov 2022 07:06:11 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 7 Nov 2022 15:06:10 +0000
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20220919-v3-0-a803f2660127@baylibre.com> <20220919-v3-12-a803f2660127@baylibre.com>
- <988b0a7a-69bb-34e4-e777-1d9516221077@collabora.com>
-In-Reply-To: <988b0a7a-69bb-34e4-e777-1d9516221077@collabora.com>
+	id 1os40x-00FjR7-2g; Mon, 07 Nov 2022 15:26:21 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailnew.west.internal (Postfix) with ESMTP id DEA372B05E77;
+	Mon,  7 Nov 2022 10:26:08 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute1.internal (MEProxy); Mon, 07 Nov 2022 10:26:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm2; t=1667834768; x=1667841968; bh=IIy8QXUDWn
+	lcncLyNQJNbxMRRWumgUmyAMyd+aDiO3o=; b=Yz8C45furNQhVL2oz7HXZgGnHH
+	TvCIbx3oIXxLgbEPnABUHdZn1FjTlBXO/L1HUin7nlSwmgzBZEAHQXtqUueLWNNB
+	OwfmyOlg36y4QZvHUbl/IFeKRrua5v3nbs+lI8yzO8mXx4IT19hD5T6x7SIXqH7E
+	cc2GzTsHAmmLjTDm7nLKE9rJj7tzh9QXh/pmM/gmbKHm8u4yCEDXIt2H8iqZARt9
+	QsECam1RG4/cnzrlWYrmdX95jbKBthE1SCw52xWcjKgvNrC/w9eFBvNcqPdoP0VC
+	kgyueznhPVmNlxZMotlGuMS8QDMwTbcA/aTq9dkJ4NLHTQ8GcN7cr6b1QC9Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; t=1667834768; x=1667841968; bh=IIy8QXUDWnlcncLyNQJNbxMRRWum
+	gUmyAMyd+aDiO3o=; b=we3Y+H0VECymbGK0VaXTFHbsW346wsLVjErpCLgJ45+g
+	scHpf9eiainU1JBqntlua0SrTwXrGABBVlunf276/GfhfNOd/1vGEf1lUcHwrvm5
+	zbWxzN3W7Zenf9Aa8Y0lcDOZ0gM54P8lT8lwFBUPN/ByfauorTjW7d7RXbvSlkJT
+	k7v9evp6jVencFixQzMQhtO2nt3yGpBePuWO6Pu5QWJ2wKtmD8tFnyhZw/c9eN/k
+	XmLHoh4bXi0sW22vHo0bm88oijG5yx4MWoMqBaBgxLapeXxyjGYt3QLy+aQKy4Ug
+	w/V1K5ZGWlq/bSa4sSDWF1/AjvqtR9hsVVTIILV+1w==
+X-ME-Sender: <xms:jiNpY8OMxnFFt5PbqqvqZSEoKfqq7taLlfkj3szUIQCjdWFIeQL24w>
+    <xme:jiNpYy89u_mQTLvZGrbcNIjZbLYu9wV4EYfNRlktfKZUm38GG6xC_Qlt2hrpbO_df
+    BSGxlyk5s8vknO0ZFg>
+X-ME-Received: <xmr:jiNpYzSfZa6atc_eqwJFct1WjeHK-hLh2fplSb5wr1nE_LAD9arud3e8hqAHxwKU5wiR6hkEVdXqGN4RgoEjwLXSB8uMLCObkZqNF9IY6V2NlA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvdekgdejhecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+    htvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheehfffh
+    vedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmh
+    grgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:jiNpY0vtIK-PZdgej79mMr_MApM6wLdfXscqntkFAEOkhGYrOU0MCQ>
+    <xmx:jiNpY0cvni03g0uv0yl-yo399Y_hbctd4rNagD2H1NT2_Xs_g9EWBQ>
+    <xmx:jiNpY42HLjMSaphod3lQyPY5KzbEAeoKRXRXEDPctlkn3XY9SKEjVg>
+    <xmx:kCNpY4m1DCnGwZRgh_rsYFaEzCSCv9LG7n_fC4ovY1-GZspzYu6x7s6Mw5U>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 7 Nov 2022 10:26:05 -0500 (EST)
+Date: Mon, 7 Nov 2022 16:26:03 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Mark Brown <broonie@kernel.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,	Paul Cercueil <paul@crapouillou.net>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Peter De Schrijver <pdeschrijver@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,	Max Filippov <jcmvbkbc@gmail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 43/65] ASoC: tlv320aic32x4: Add a determine_rate hook
+Message-ID: <20221107152603.57qimyzkinhifx5p@houat>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-43-f6736dec138e@cerno.tech>
+ <Y2UzdYyjgahJsbHg@sirena.org.uk>
+ <20221104155123.qomguvthehnogkdd@houat>
+ <Y2U2+ePwRieYkNjv@sirena.org.uk>
+ <20221107084322.gk4j75r52zo5k7xk@houat>
+ <Y2j0r0wX1XtQBvqO@sirena.org.uk>
 MIME-Version: 1.0
-Date: Mon, 7 Nov 2022 15:06:10 +0000
-Message-ID: <CABnWg9t0KznQG1Mix=jSchk99Xj-h3Bf28WTaP9gc8AC6yLr7Q@mail.gmail.com>
-Subject: Re: [PATCH v3 12/12] drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	stuart.lee@mediatek.com, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, mac.shen@mediatek.com, 
-	linux-phy@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6jvzxow5645ldbud"
+Content-Disposition: inline
+In-Reply-To: <Y2j0r0wX1XtQBvqO@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_070613_821831_9809BFD5 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20221107_072619_698292_DD0EE749 
+X-CRM114-Status: GOOD (  32.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,76 +149,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Nov 2022 12:20, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->Il 04/11/22 15:09, Guillaume Ranquet ha scritto:
->> Add the DPI1 hdmi path support in mtk dpi driver
->>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_dpi.c      | 143 ++++++++++++++++++++++++++++++--
->>   drivers/gpu/drm/mediatek/mtk_dpi_regs.h |   5 ++
->>   2 files changed, 141 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
->> index 508a6d994e83..8052b47042b8 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
->> @@ -14,7 +14,10 @@
->>   #include <linux/of_graph.h>
->>   #include <linux/pinctrl/consumer.h>
->>   #include <linux/platform_device.h>
->> +#include <linux/reset.h>
->>   #include <linux/types.h>
->> +#include <linux/regmap.h>
->> +#include <linux/mfd/syscon.h>
->>
->>   #include <video/videomode.h>
->>
->> @@ -65,10 +68,14 @@ struct mtk_dpi {
->>   	struct drm_bridge *next_bridge;
->>   	struct drm_connector *connector;
->>   	void __iomem *regs;
->> +	struct reset_control *reset_ctl;
->>   	struct device *dev;
->>   	struct clk *engine_clk;
->> +	struct clk *dpi_ck_cg;
->>   	struct clk *pixel_clk;
->> +	struct clk *dpi_sel_clk;
->>   	struct clk *tvd_clk;
->> +	struct clk *hdmi_cg;
->
->I admit that I didn't really check these clocks, but judging by the names,
->it is highly possible that one (or more) of them are supposed to be parents
->of some others.
->
->The first suspicious ones are dpi_ck_cg and dpi_sel_clk: please check.
->
->I'm also not sure about the hdmi_cg, shouldn't the DPI have a HDMI port in
->the graph that you'd declare in devicetree?
->
->Besides... you're doing a lot of work to check if (is_internal_hdmi) for
->power up/down paths, but seeing that you're introducing this change after
->adding the HDMI driver makes me mostly sure that the internal hdmi that we're
->talking about here is the one that is managed by the HDMIV2 driver... and
->this means that you should really, really, really rely on connecting inputs
->and outputs the right way in the devicetree, as that will most probably make
->you able to write practically 0 code to manage power for the DPI... and may
->also remove the need of adding the hdmi_cg clock here...
->
->Regards,
->Angelo
->
->
 
-I don't have access to a clock tree documentation or anything that permits
-me to answer those questions with confidence. I'll ask mediatek for some input
-and I'll also check how those clocks are declared in the clock framework.
+--6jvzxow5645ldbud
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You are right in assuming that the "is_internal_hdmi" is in fact the V2 IP.
-I like the idea of removing code, I'll try to make sense of your suggestion
-and see if there's anything I can do better for v4.
+On Mon, Nov 07, 2022 at 12:06:07PM +0000, Mark Brown wrote:
+> On Mon, Nov 07, 2022 at 09:43:22AM +0100, Maxime Ripard wrote:
+> > On Fri, Nov 04, 2022 at 03:59:53PM +0000, Mark Brown wrote:
+>=20
+> > > Well, hopefully everyone for whom it's an issue currently will be
+> > > objecting to this version of the change anyway so we'll either know
+> > > where to set the flag or we'll get the whack-a-mole with the series
+> > > being merged?
+>=20
+> > I'm sorry, I'm not sure what you mean here. The only issue to fix at the
+> > moment is that determine_rate and set_parent aren't coupled, and it led
+> > to issues due to oversight.
+>=20
+> > I initially added a warning but Stephen wanted to fix all users in that
+> > case and make that an error instead.
+>=20
+> My suggestion is that instead of doing either of these things it'd be
+> quicker and less error prone to just fix the core to provide the default
+> implementation if nothing more specific is provided.  Any issues that
+> causes would already be present with your current series.
+>=20
+> > If I filled __clk_mux_determine_rate into clocks that weren't using it
+> > before, I would change their behavior. With that flag set, on all users
+> > I add __clk_mux_determine_rate to, the behavior is the same than what we
+> > previously had, so the risk of regressions is minimal, and everything
+> > should keep going like it was?
+>=20
+> The series does fill in __clk_mux_determine_rate for everything though -
+> if it was just assumed by default the only thing that'd be needed would
+> be adding the flag.
 
-Thx,
-Guillaume.
+The behavior assumed by default was equivalent to
+__clk_mux_determine_rate + CLK_SET_RATE_NO_REPARENT. We could indeed set
+both if determine_rate is missing in the core, but that's unprecedented
+in the clock framework so I think we'll want Stephen to comment here :)
+
+It's also replacing one implicit behavior by another. The point of this
+series was to raise awareness on that particular point, so I'm not sure
+it actually fixes things. We'll see what Stephen thinks about it.
+
+Maxime
+
+--6jvzxow5645ldbud
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY2kjiwAKCRDj7w1vZxhR
+xbC4AQCzinBg5fORSxUmh/ryaaQ1U50ULCO44lpcoTcfgR8NCQEArCtBTBrB8cDz
+ZaXsPn80Mh//XhAP83gNXiHtZW4aJwQ=
+=1n6i
+-----END PGP SIGNATURE-----
+
+--6jvzxow5645ldbud--
 
