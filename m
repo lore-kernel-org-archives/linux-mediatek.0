@@ -4,36 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0220EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:30:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF61C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:33:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IhQIO44y3h94uo7TFBwlYcI8x40r8SNqpmruPqTN2gU=; b=rv+KLOOdiEBFyUm9E1EP5XzGC2
-	9IfdBqgMSw7rMYlbfGsjPm7OFN5vW95cI3pT0ELDQRHZ8tqclAgYvHDVMO3/ZAxhzfaSCyweG6puF
-	B9K1EIjEmE6P93H7idJhtFbDV8xfhkFoiEjHymhYs/9Uc+3ENqmtpLSukle8bN01TNwkITmBYVrGs
-	NEFTy8IdIl95Gp3qgbl4Ak5rrfS25dn2aCXeX6rgKUuTOyX5DJivZZLZKpJ87rtEaE7E+rbbSN1TX
-	tAkSKCwQ0axM0xASY5UqcLp/nsWRjsUSUZ5VaWUPjSS9ejGBXtrXmYIENOivwxq+BBEYFQ3/bEYB+
-	jJmGSkrw==;
+	bh=lVbeVIzcWsBHEvXpUIqWxWV9Pr4GUmBdcHJPygjeNp8=; b=VHYgYkc/Wm9Dx2ZbO3cqZyGkRo
+	07s/50OWFxRptnHmj3l+ydoz2J3Py/pLy7cOCA7XAN2VgeL0ZA10IlNtwLbLdjXffKhMuaYRtAaP4
+	VYXBTlFs084CxPWqeoFR/EKTYhuXZ+v3l/0pYenOt9Z4c5p4FaBiKHp8fqDLD0PTLf3L8nyON8YQ6
+	Vzdb+gcQLWQyfuFCgGgIzDtSPcjAP0/WuueV5911DIpBWUCZrkBgxa8YbeQw2gXfilO5aqA6Xowgi
+	xFK61MCFDZ8qUrcP5TKnrjXkxMP0T0GWv4fzU2FXzZmkjWMhqqeDNeRtHqT4dnPma0EkD4/nYidzK
+	n+SOO9yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os50v-00GC4t-Rl; Mon, 07 Nov 2022 16:30:21 +0000
+	id 1os53Q-00GDJ7-PH; Mon, 07 Nov 2022 16:32:56 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4qg-00G7Dd-Cm; Mon, 07 Nov 2022 16:19:48 +0000
+	id 1os4sE-00G8Fh-Fr; Mon, 07 Nov 2022 16:21:24 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 965E01FB;
-	Mon,  7 Nov 2022 08:19:51 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 55027ED1;
+	Mon,  7 Nov 2022 08:21:26 -0800 (PST)
 Received: from pierre123.arm.com (pierre123.nice.arm.com [10.34.100.128])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 4B0CB3F534;
-	Mon,  7 Nov 2022 08:19:30 -0800 (PST)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 251943F534;
+	Mon,  7 Nov 2022 08:21:05 -0800 (PST)
 From: Pierre Gondois <pierre.gondois@arm.com>
 To: linux-kernel@vger.kernel.org
 Cc: Pierre Gondois <pierre.gondois@arm.com>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Florian Fainelli <f.fainelli@gmail.com>,
@@ -99,14 +98,14 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	Tero Kristo <kristo@kernel.org>,
 	Viorel Suman <viorel.suman@nxp.com>,
 	Abel Vesa <abelvesa@kernel.org>,
-	Peng Fan <peng.fan@nxp.com>,
 	Shenwei Wang <shenwei.wang@nxp.com>,
 	Ming Qian <ming.qian@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
+	Peng Fan <peng.fan@nxp.com>,
 	Adam Ford <aford173@gmail.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
 	Tim Harvey <tharvey@gateworks.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
 	Li Jun <jun.li@nxp.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
 	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
 	Joakim Zhang <qiangqing.zhang@nxp.com>,
 	Marek Vasut <marex@denx.de>,
@@ -117,11 +116,11 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	David Heidelberg <david@ixit.cz>,
 	Liu Ying <victor.liu@nxp.com>,
 	Oliver Graute <oliver.graute@kococonnector.com>,
-	Shijie Qin <shijie.qin@nxp.com>,
 	Zhou Peng <eagle.zhou@nxp.com>,
 	Wei Fang <wei.fang@nxp.com>,
-	Jacky Bai <ping.bai@nxp.com>,
 	Clark Wang <xiaoning.wang@nxp.com>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
 	Vadym Kochan <vadym.kochan@plvision.eu>,
 	Sameer Pujar <spujar@nvidia.com>,
 	Prathamesh Shete <pshete@nvidia.com>,
@@ -149,17 +148,17 @@ Cc: Pierre Gondois <pierre.gondois@arm.com>,
 	linux-realtek-soc@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 11/23] arm64: dts: Update cache properties for marvell
-Date: Mon,  7 Nov 2022 16:57:04 +0100
-Message-Id: <20221107155825.1644604-12-pierre.gondois@arm.com>
+Subject: [PATCH v2 12/23] arm64: dts: Update cache properties for mediatek
+Date: Mon,  7 Nov 2022 16:57:05 +0100
+Message-Id: <20221107155825.1644604-13-pierre.gondois@arm.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
 References: <20221107155825.1644604-1-pierre.gondois@arm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_081946_571726_8B7364DE 
-X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-CacheID: sfid-20221107_082122_660797_A5733CEA 
+X-CRM114-Status: UNSURE (   9.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -184,93 +183,84 @@ properties for unified cache is present ('cache-size', ...).
 Update the Device Trees accordingly.
 
 Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
-For ac5-98dx25xx.dtsi:
-Reviewed-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
 ---
- arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi      | 1 +
- arch/arm64/boot/dts/marvell/armada-ap806-dual.dtsi | 2 ++
- arch/arm64/boot/dts/marvell/armada-ap806-quad.dtsi | 4 ++++
- arch/arm64/boot/dts/marvell/armada-ap807-quad.dtsi | 4 ++++
- 4 files changed, 11 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 3 +++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 3 +++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 +++
+ 3 files changed, 9 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi b/arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi
-index 44ed6f963b75..7308f7b6b22c 100644
---- a/arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi
-+++ b/arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi
-@@ -49,6 +49,7 @@ cpu1: cpu@1 {
- 
- 		l2: l2-cache {
- 			compatible = "cache";
-+			cache-level = <2>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/marvell/armada-ap806-dual.dtsi b/arch/arm64/boot/dts/marvell/armada-ap806-dual.dtsi
-index fcab5173fe67..6713b2ee50c9 100644
---- a/arch/arm64/boot/dts/marvell/armada-ap806-dual.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-ap806-dual.dtsi
-@@ -48,9 +48,11 @@ cpu1: cpu@1 {
- 
- 		l2: l2-cache {
- 			compatible = "cache";
-+			cache-unified;
- 			cache-size = <0x80000>;
- 			cache-line-size = <64>;
- 			cache-sets = <512>;
-+			cache-level = <2>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/marvell/armada-ap806-quad.dtsi b/arch/arm64/boot/dts/marvell/armada-ap806-quad.dtsi
-index 3db427122f9e..695c8f070dbc 100644
---- a/arch/arm64/boot/dts/marvell/armada-ap806-quad.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-ap806-quad.dtsi
-@@ -78,16 +78,20 @@ cpu3: cpu@101 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index 64693c17af9e..c326aeb33a10 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -198,16 +198,19 @@ cluster_off_b: cluster-off-b {
  
  		l2_0: l2-cache0 {
  			compatible = "cache";
-+			cache-unified;
- 			cache-size = <0x80000>;
- 			cache-line-size = <64>;
- 			cache-sets = <512>;
 +			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
  		};
  
  		l2_1: l2-cache1 {
  			compatible = "cache";
-+			cache-unified;
- 			cache-size = <0x80000>;
- 			cache-line-size = <64>;
- 			cache-sets = <512>;
 +			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
+ 		};
+ 
+ 		l3_0: l3-cache {
+ 			compatible = "cache";
++			cache-level = <3>;
  		};
  	};
- };
-diff --git a/arch/arm64/boot/dts/marvell/armada-ap807-quad.dtsi b/arch/arm64/boot/dts/marvell/armada-ap807-quad.dtsi
-index 68782f161f12..878d82bb1052 100644
---- a/arch/arm64/boot/dts/marvell/armada-ap807-quad.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-ap807-quad.dtsi
-@@ -78,16 +78,20 @@ cpu3: cpu@101 {
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 6b20376191a7..424fc89cc6f7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -169,16 +169,19 @@ core3 {
  
  		l2_0: l2-cache0 {
  			compatible = "cache";
-+			cache-unified;
- 			cache-size = <0x80000>;
- 			cache-line-size = <64>;
- 			cache-sets = <512>;
 +			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
  		};
  
  		l2_1: l2-cache1 {
  			compatible = "cache";
-+			cache-unified;
- 			cache-size = <0x80000>;
- 			cache-line-size = <64>;
- 			cache-sets = <512>;
 +			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
+ 		};
+ 
+ 		l3_0: l3-cache {
+ 			compatible = "cache";
++			cache-level = <3>;
+ 		};
+ 
+ 		idle-states {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 905d1a90b406..cb74905cfbb8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -213,16 +213,19 @@ cluster_off_b: cluster-off-b {
+ 
+ 		l2_0: l2-cache0 {
+ 			compatible = "cache";
++			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
+ 		};
+ 
+ 		l2_1: l2-cache1 {
+ 			compatible = "cache";
++			cache-level = <2>;
+ 			next-level-cache = <&l3_0>;
+ 		};
+ 
+ 		l3_0: l3-cache {
+ 			compatible = "cache";
++			cache-level = <3>;
  		};
  	};
- };
+ 
 -- 
 2.25.1
 
