@@ -4,70 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2B8DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE288C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OccnILZwAZ1iW7ZSQATU7VS3BdSsH1TXTafd12dSgdI=; b=Ft4RYGPcdEE02SCUvtVVYeGIit
-	2+SIiR6sahZAsXzfsfr0Pn0j3PSwCoaKqje0WEvso8rSF4twRvdGx858d5We3JQKpLGwGrIa+WHJB
-	36fUIKrdiGg9IMsdqP8IBgQDnELR6tS48aR3VHMs3/z5HccCiFXYy2ewgajLTvNenPB1p1on3eqPj
-	PtRUQMSrquk4gDOD5fcoJN5YG6YhE+CJF298lpExLNEK8snyf+nkVYe3UgFlNfZhVJmwNZCpt+fGt
-	QXWEd0/4L5yZfvlutzeY+pzlku0iX98nypZHTQYAyZK6kQKPrVIK0NgLGsmkBxwOOD09uT0I+tJnZ
-	i4zV2KXQ==;
+	bh=zXcomT1gA+TDoTaor44sLB0g4hLE8aVQx+szeqco3Tk=; b=SFAwJOVLSNkiE4R+CosxazxHtn
+	Ep4Rc5KMuAVV/LHJRolG5fnT5MRPhZ+h01RBGpuXFsk28HNiTDgYFrWvGSCGeEStMtgxZKtmr3B+g
+	M1fZzYWmw31fM/HqoSsgojANGbDEm+PBwcyRjjHiVq1t5GxXtBxUTtgJ2hOs/AnNcTfgRCjqy1w5J
+	XtsxgjAcqTVOkWFkny4n2KCcKazECJBJJp6vlClUEpM4k6emPGIY4qR4ZZyEC+MO6WvCvsQ0HVVMc
+	P96tNAH0XHHBGpFyrSz7J/VVgDFLnQlBGLe9fdtcg9flgPar+wNZC9wABw4Ty81YGeuz8i3s7BoxF
+	N0U8Qgow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4fO-00G1St-8I; Mon, 07 Nov 2022 16:08:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4cf-00Fzhi-Pj; Mon, 07 Nov 2022 16:05:19 +0000
-Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BE87566028B0;
-	Mon,  7 Nov 2022 16:05:13 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667837116;
-	bh=bP8o3ce5ZgXYubneNGO6GUzIYsV6S7bzhWTdLtO4yUs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B2Ep22NpGLHP5/VWW983UeeWT9Jv6oVhDPstT7b4AK3Ja3Jlj2EOCivxH/eXfWbsF
-	 g44fjgHkbLkZ+MtzgHP61Pnij2w68rASg2JsrADGE9Xa9FpnDx8u1s3HPEhCtBkI1N
-	 ue0bi2D6ACxLmroy5kFfawfTY0FP0cGg2g69KMctlJfemQWrUWo3kqMQoXxsnIr357
-	 NemKv0btLzMj3qxlMCGZlSAOvDiCGxZh2ge03bUZ5D2v+F3MIn2fRLxNNkw4O4q0dB
-	 VECXJLkTMVB0iqi6GVbFSxNbZfD76HrppGwwXgY5wWoQcmLJc34DWu6EyE5hpr1x1p
-	 hMHW+a5dqIiBg==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Takashi Iwai <tiwai@suse.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	alsa-devel@alsa-project.org,
+	id 1os4fS-00G1WC-Kk; Mon, 07 Nov 2022 16:08:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1os4dL-00G069-1N; Mon, 07 Nov 2022 16:06:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B652DED1;
+	Mon,  7 Nov 2022 08:06:00 -0800 (PST)
+Received: from pierre123.arm.com (pierre123.nice.arm.com [10.34.100.128])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 896EF3F534;
+	Mon,  7 Nov 2022 08:05:39 -0800 (PST)
+From: Pierre Gondois <pierre.gondois@arm.com>
+To: linux-kernel@vger.kernel.org
+Cc: Pierre Gondois <pierre.gondois@arm.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Brijesh Singh <brijeshkumar.singh@amd.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Tom Lendacky <thomas.lendacky@amd.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	William Zhang <william.zhang@broadcom.com>,
+	Anand Gore <anand.gore@broadcom.com>,
+	Kursad Oney <kursad.oney@broadcom.com>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Li Yang <leoyang.li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Chester Lin <clin@suse.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Matthias Brugger <mbrugger@suse.com>,
+	NXP S32 Linux Team <s32@nxp.com>,
+	Wei Xu <xuwei5@hisilicon.com>,
+	Chanho Min <chanho.min@lge.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Nishanth Menon <nm@ti.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tero Kristo <kristo@kernel.org>,
+	Viorel Suman <viorel.suman@nxp.com>,
+	Abel Vesa <abelvesa@kernel.org>,
+	Peng Fan <peng.fan@nxp.com>,
+	Ming Qian <ming.qian@nxp.com>,
+	Shenwei Wang <shenwei.wang@nxp.com>,
+	Adam Ford <aford173@gmail.com>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Li Jun <jun.li@nxp.com>,
+	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
+	Marco Felsch <m.felsch@pengutronix.de>,
+	Joakim Zhang <qiangqing.zhang@nxp.com>,
+	Marek Vasut <marex@denx.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Martin Kepplinger <martink@posteo.de>,
+	David Heidelberg <david@ixit.cz>,
+	Liu Ying <victor.liu@nxp.com>,
+	Oliver Graute <oliver.graute@kococonnector.com>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Clark Wang <xiaoning.wang@nxp.com>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	Vadym Kochan <vadym.kochan@plvision.eu>,
+	Sameer Pujar <spujar@nvidia.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Akhil R <akhilrajeev@nvidia.com>,
+	Sumit Gupta <sumitg@nvidia.com>,
+	Prathamesh Shete <pshete@nvidia.com>,
+	Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
+	Vidya Sagar <vidyas@nvidia.com>,
+	Ashish Mhetre <amhetre@nvidia.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Aswani Reddy <aswani.reddy@samsung.com>,
+	Shashank Prashar <s.prashar@samsung.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	devicetree@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 9/9] ASoC: mediatek: mt8195-mt6359: Register to module device table
-Date: Mon,  7 Nov 2022 11:04:37 -0500
-Message-Id: <20221107160437.740353-10-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221107160437.740353-1-nfraprado@collabora.com>
-References: <20221107160437.740353-1-nfraprado@collabora.com>
+	linux-amlogic@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org,
+	linux-tegra@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-realtek-soc@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 01/23] arm64: dts: Update cache properties for amazon
+Date: Mon,  7 Nov 2022 16:56:54 +0100
+Message-Id: <20221107155825.1644604-2-pierre.gondois@arm.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
+References: <20221107155825.1644604-1-pierre.gondois@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_080517_994206_FB43C540 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20221107_080559_202162_AD961DFF 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +174,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register the compatibles for this module on the module device table so
-it can be automatically loaded when a matching device is found on the
-system.
+The DeviceTree Specification v0.3 specifies that the cache node
+'compatible' and 'cache-level' properties are 'required'. Cf.
+s3.8 Multi-level and Shared Cache Nodes
+The 'cache-unified' property should be present if one of the
+properties for unified cache is present ('cache-size', ...).
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Update the Device Trees accordingly.
+
+Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
 ---
+ arch/arm64/boot/dts/amazon/alpine-v3.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-index 480ed3e08d5b..61be66f47723 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-@@ -1544,6 +1544,7 @@ static const struct of_device_id mt8195_mt6359_dt_match[] = {
- 	},
- 	{},
- };
-+MODULE_DEVICE_TABLE(of, mt8195_mt6359_dt_match);
+diff --git a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+index 73a352ea8fd5..ba7e56dc85db 100644
+--- a/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
++++ b/arch/arm64/boot/dts/amazon/alpine-v3.dtsi
+@@ -246,6 +246,7 @@ cpu@303 {
  
- static struct platform_driver mt8195_mt6359_driver = {
- 	.driver = {
+ 		cluster0_l2: cache@0 {
+ 			compatible = "cache";
++			cache-unified;
+ 			cache-size = <0x200000>;
+ 			cache-line-size = <64>;
+ 			cache-sets = <2048>;
+@@ -254,6 +255,7 @@ cluster0_l2: cache@0 {
+ 
+ 		cluster1_l2: cache@100 {
+ 			compatible = "cache";
++			cache-unified;
+ 			cache-size = <0x200000>;
+ 			cache-line-size = <64>;
+ 			cache-sets = <2048>;
+@@ -262,6 +264,7 @@ cluster1_l2: cache@100 {
+ 
+ 		cluster2_l2: cache@200 {
+ 			compatible = "cache";
++			cache-unified;
+ 			cache-size = <0x200000>;
+ 			cache-line-size = <64>;
+ 			cache-sets = <2048>;
+@@ -270,6 +273,7 @@ cluster2_l2: cache@200 {
+ 
+ 		cluster3_l2: cache@300 {
+ 			compatible = "cache";
++			cache-unified;
+ 			cache-size = <0x200000>;
+ 			cache-line-size = <64>;
+ 			cache-sets = <2048>;
 -- 
-2.38.1
+2.25.1
 
 
