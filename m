@@ -4,60 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E258BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 11:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E81C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 11:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r+OR8cYXtgMMHJBhue/J8ZZzG/uyPATbsTTdU9KLIm8=; b=qSK3M16Y0sZZ4k3rpMGD3BXhjJ
-	VHzygmCt7Mc+MvgZobZo8exhYiHMZtBvmYT0hzKa4OHAuMN1UFiMvzyn8sNJlIJZMgqphsdmp3tBv
-	DmkpTp3zEbJpsPm3FfQvixtFxkVAu+LThsvTP1dsCDvt9NcHIeGCNBcdgPQrV3IEALtLKJJYubAbT
-	oai4zRvU3mNUXxMDeqqqATuHPUMRFL4mzhS+DX2V5ic6kW4ylReA2sZ+XhRR9K57e1/tE1vMixS3r
-	fIuuMZiQqB8UjKsLKoKY341AyMTJ3gouyrx/IzHCXZ+fdgWyF+2+hy+Jhng/u1AbVqaen1wHIRYrD
-	/rIMo0UQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=70UvSXUmoINhhG7EUlsIadtRRPhXS7VEQ5V9huCsoIc=; b=zUh1PB/7+ixxaRI+xyP0/hjYan
+	sxsEcD/++LolD0ncKduszcsjgld7SZ2qBUWcFTumv0zSR793hHM5ZwwcMSdShO2c7SK2/qlBvj85n
+	KNJmu40IOXPr0Itr56eeToLoSnXTcwtcPESCFCs3PrI5hkc7WK/azDYKPxL2hVluqFQNnNvJeESxj
+	+X2fg8cDsAUbwHOIBvLhrY5/WWtH+Q5uTIJfQfjgG3w2n0cEg02cxw6wVpsLy2ypmHGKNcJVoXLlZ
+	dyJhFb2enjUHDHuXenOjgaUR8xJCDC3XRKBlhirD5G9Q8oNyxyVUpyS9+mAI0YY48GwWnE6H9jE16
+	A/bhW43w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os0RT-00EAz3-Pp; Mon, 07 Nov 2022 11:37:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1os0bh-00EID1-CR; Mon, 07 Nov 2022 11:48:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os0RO-00EAy6-Gb
-	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 11:37:26 +0000
-Received: from [IPv6:2804:431:c7c2:1b4f:3c23:4bb6:e920:86e] (unknown [IPv6:2804:431:c7c2:1b4f:3c23:4bb6:e920:86e])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dwlsalmeida)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E88036601FAA;
-	Mon,  7 Nov 2022 11:37:14 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667821039;
-	bh=gNC1tfly6QsHeoWCQfsuRm/5GK99lv7chf7mmdYziZY=;
-	h=Date:From:Subject:To:Cc:In-Reply-To:References:From;
-	b=D++L3LCk3kC47z5H4ieY9HEAgKvkT5ZPyraAT97irnn1IXheAHa00Pc+4Cvj3WmbA
-	 gEB0Xuq2X4zzhTFsu1qsB3I1hN8EjyNj3gcPqbZtOfbhCRwjYLPGcCeuo+0a5JOPws
-	 iujXuQbZk14s31xc8ikryDIBofDzR5do519fEXBWa3mEJYBF+h806knogLW96egl5L
-	 2MzP7hY0EEg1sfkqIikC3kffMSObFOb1hzFKcoYk8czvDKqDZ4TyioxE2PzFrLcNYH
-	 iGIuOxWFfhwThDVo+/ZgFbCUPZV/UWeMiIIwFomE1B8/adTux7uq+RW/dhN/JHj3Ky
-	 Z6Q8/nuWyx1KA==
-Date: Mon, 07 Nov 2022 08:36:54 -0300
-From: Collabora <daniel.almeida@collabora.com>
-Subject: Re: Bug while resuming from suspend on mt7921e
-To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com
-Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org
-Message-Id: <IX6ZKR.JVEB9NE4EDIF3@collabora.com>
-In-Reply-To: <GJ9YKR.V6918C76FSX2@collabora.com>
-References: <GJ9YKR.V6918C76FSX2@collabora.com>
-X-Mailer: geary/43.0
+	id 1os0bU-00EHvQ-Bc; Mon, 07 Nov 2022 11:47:51 +0000
+X-UUID: d52238f033c54bfca9a849f1d23db868-20221107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=70UvSXUmoINhhG7EUlsIadtRRPhXS7VEQ5V9huCsoIc=;
+	b=efk7hD9/q1Xae8eGlLR5f1T6mGknskEjv293i7lGmq8SaAV2oWwsbpDVFZBUAE2H1I+4Ml2d8Rub04v2QWmBw+0TPSYOK5B+QFsS3vvo3xFmj5IULwSWPswdeGRz/nHfMxaOkQCjAMn+JN1HIHWdtVq8F52OxdFQm3HDXzAIoNk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:77b5e3fc-350a-4c89-843b-57268be99112,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:169ce8f3-a19e-4b45-8bfe-6a73c93611e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d52238f033c54bfca9a849f1d23db868-20221107
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1872904237; Mon, 07 Nov 2022 04:47:39 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 7 Nov 2022 19:47:05 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 7 Nov 2022 19:47:04 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TVB6crkz1RA2yDAZ2syT2kPDbMoO+t2Bw4I3SzqWtaGppHnn4Zqm9QJaL6rBkEe+HrdUJE1wnNzXKeFh4jxAeQWlaG7uY3rwf1fWHPIlXoRYLK52IJ6RlA+cH8vGkIZo8VPUycjXDj8NyHlxg6koAyrP780ceHkclprFEsmozl93UW/h0sVL3xq64hzJ81jWPRbT0N1ZrnMY9D+IFqTb+7+p2jTdAsU8ImajhN3ICyF1YuQVuHWS/J6cyw2Gdy9CcmyRz7nooXb6UECnap8y37OXYaz5UVgwKX3W5YkKfhsy/oYrHsFl64G+hE2fKLW5KLZW2Xv80TA33PfXRopUYQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=70UvSXUmoINhhG7EUlsIadtRRPhXS7VEQ5V9huCsoIc=;
+ b=T1JXhIHPH/QxXgYCeFMC1rcUcX9FJ3/FO9+wBUaNP7rpNgYjCP6AK67XXOk39s1q6bcrAOnaMbt7Z53smpnAqLRurNyHQWJmV7fsVKmrwQO105LwVFwhH/ce1UAoIkpM8p7q8aK5iq1Ryw7VzBQI/vMtCaPCiUH9lwj4bkW0HWg6aIhmlbyGjXeG7oS5MP7yW6VZniJAOVa1mb9izn1CkGtAuJq44PFVAEhTurIg0oyei9YOdUX7Ena0W3hS0KOzAwgKDRjYxXrdkBVRCKsiGj6BLDye756LnaNNn4Bx2Posc+lSWJn3zkw+9jcoWtRwq4eKxucqpSrfq/pWb0wb+w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=70UvSXUmoINhhG7EUlsIadtRRPhXS7VEQ5V9huCsoIc=;
+ b=dogo1f6Lv5hS9r4ckXr9l8a5P7SGyx4MibXi4//6gDRo+RVcS8eCwf1+h6tyjLdlJkrToSa4ZCYTFwldwNRtqLhJHqiB0jnPW8Di6MB9lDaO+W+6BfgV1C26Lawt0BF8eYpnxktjTVqzK+nQrR/7g9MdCDurDIy56p/60Wyb/4k=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by SI2PR03MB5999.apcprd03.prod.outlook.com (2603:1096:4:14b::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.26; Mon, 7 Nov
+ 2022 11:46:58 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b%6]) with mapi id 15.20.5791.025; Mon, 7 Nov 2022
+ 11:46:58 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "nicolas@ndufresne.ca"
+	<nicolas@ndufresne.ca>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	=?utf-8?B?TWluZ2ppYSBaaGFuZyAo5byg5piO5L2zKQ==?=
+	<Mingjia.Zhang@mediatek.com>, "tfiga@google.com" <tfiga@google.com>,
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+	"hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	=?utf-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+	<Andrew-CT.Chen@mediatek.com>, "acourbot@chromium.org"
+	<acourbot@chromium.org>
+CC: =?utf-8?B?WGlhb3lvbmcgTHUgKOWNouWwj+WLhyk=?= <Xiaoyong.Lu@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>,
+	=?utf-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+	"stevecho@chromium.org" <stevecho@chromium.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, =?utf-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?=
+	<Irui.Wang@mediatek.com>, "hsinyi@chromium.org" <hsinyi@chromium.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH v5] media: mediatek: vcodec: Add to support VP9 inner
+ racing mode
+Thread-Topic: [PATCH v5] media: mediatek: vcodec: Add to support VP9 inner
+ racing mode
+Thread-Index: AQHY6BPrz+YzbirvrEW+ivpJnEkUl64zbR+A
+Date: Mon, 7 Nov 2022 11:46:58 +0000
+Message-ID: <b7f6e258d00e9946852b900ada0548e342c1ce50.camel@mediatek.com>
+References: <20221025014659.7158-1-mingjia.zhang@mediatek.com>
+In-Reply-To: <20221025014659.7158-1-mingjia.zhang@mediatek.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|SI2PR03MB5999:EE_
+x-ms-office365-filtering-correlation-id: e8f537a2-a615-4593-8fa0-08dac0b5c70e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: KNsoR77ZinQiBDokK1mR7XJtYeE5Vmrq3w8fKsI6EJwSu8DHNEdmLXXKxb8ycY4JHTlXj28HXJlV2IIRucg3mqJBoieNHyf4PFZCluKu6e3kl2U0z69puFwpdQEmJZK7M6o8nPZia3uV5YgtwDrVoc23CrKB7L9/uSWvymXTCIwT4Y16KXvZv7ZxYQSgBsCZ8xTs4BpXF1Cda9YMkfoKhu2TZC3JGOH/hYr/8QBnrGODAjAsmezK9cpsWRsOmZ3w8F47ntXv1j33wq2Hb3xq4f6EqJztKmMCXUPXMF2q+EW7NFuGs0otTlA5BaTQwoy7mVlHJhT4pDXUhXxo9psBolYC9+uSFq4tqOQgipnVYFkYLFAdiczVHkUBO2SDy3H7bL2suYui3TVMhIyw/zp5y6UbmkvrDENzC9TAtBJtXTRbi02OqS4weT2lwQe6ZyxvbMR4kZSwpyTRQtCMiYaausPGGgPyjjrCKDIkdMObmG/vYAj8Sd8/GAsjNYCfRyJeMNo7TJR7vJIrp9FotDF8QM8tMLVzN6sEgBcz+5UDYChbtRjA7B7WRMvFEk4LHEkFG+jGEYLf/fv32CpIcJxwSYibab9kTcc4ZSlw0spcV7lhSEzCpx5CzLbI9afFXGmlerlSDt3FYJ8ciXiYeqDaTi4cBkug+H9DMkvbrsO2kNcIRoe16/ESAmdxnJGlSXWOT1674POzKr6KVjYXAN1LhovbbgXiMr7pgdz77Utmj4RAMeAqKFcvxfmK1Yk0OsZ6RxrEdZRqDJq2o0yR+gOlsI+uC0j8QoS2TdA9cH3odXlj92AuaTZo5aoz/3ppm0hSm9mj6fCnpCG0Am0Q3tEeqY2xFokftuWJVWLv5HU0YsQ=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(346002)(39860400002)(376002)(396003)(136003)(451199015)(86362001)(85182001)(36756003)(38100700002)(5660300002)(8936002)(7416002)(2906002)(4001150100001)(6512007)(83380400001)(2616005)(186003)(921005)(38070700005)(4326008)(110136005)(316002)(8676002)(41300700001)(91956017)(54906003)(66476007)(76116006)(122000001)(26005)(64756008)(66556008)(66946007)(66446008)(107886003)(6486002)(478600001)(6506007)(71200400001)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dHg3bEFRMjRFc0lXOGlmb0xTNGcyeEYvV1prSmhlU1VuV0lnMHRFNGhkbklh?=
+ =?utf-8?B?NDBBYmZYY2trY3Flc2VxdVZ0L2wzSUJaamRNUmhEVXJmQlVRR2laZGY5QktF?=
+ =?utf-8?B?MnE5cE5NSERxczVhR2xUY2NjdnlWMmFDTjZjYWRHV2RpeU5GR0NTZkdKdHdK?=
+ =?utf-8?B?Z01janV4TmF4SFYzQzNJNUVPR0tjMzlXQklaYUh0aFlqYlBUU2QrRGIwZWc4?=
+ =?utf-8?B?Y1FCMFI0M0djU0JPakZBZEpjaG0wbXN6TEFIY2tBenJneWpLa04vQUczbzl1?=
+ =?utf-8?B?NUNQWlAzNEszdGd1Tk84NkRBcTZRdEg0TmpqOWRFVTBDVm9YWXJBUFZhMURq?=
+ =?utf-8?B?QXIxT2lLY3hub2Ira3VVNHY3ZmVrR0FDVERSanpMSEg5SytWV29wYXVjRGVV?=
+ =?utf-8?B?eXpCcDNaNmZ4cDhCeldQL2ZTUytYUUwwbE9pZytLRnR0TnM2N0hVUU9YWEFM?=
+ =?utf-8?B?SDcxSVoxNk5naVZHTThXMW9SWEhXSzBoRDZVZGtDUTZmYTJDSkdhcnB4RmZ6?=
+ =?utf-8?B?aWlMSmQydE45S1FndEdsWG5PaTBLY3Roeit2Z2lHMHhhRlMreG1FSGxuVzZE?=
+ =?utf-8?B?M1luSHhKUFZhTFlZM0hRdkgrbVpPNUh1RFVCKzh3TmsvclpnVVFyYVBPUGk3?=
+ =?utf-8?B?R3o5T21SUFlSL1V5dVI2U2hsd2hJZ2hiVk0razNJVnpUSlVxUytQQWdyUW1H?=
+ =?utf-8?B?d0o0cmg0SHVaVnduSHliODVZYjB2WVdlTWMxemRnNThoSXBxakJWZ0U5VlVL?=
+ =?utf-8?B?WWRydTNEbTB2NTBYZStRazNGV2RFRzl5R0JIVUFYZ0ttbjdYK1RUNmRidjky?=
+ =?utf-8?B?V2k1bkh5OWhnemR3RnFNdDR4SWoxVUpkSnVLM0sycEYwbGZTOEFkZWxkQkZv?=
+ =?utf-8?B?NUxGc0ZEZTNXNk1tUGlRekhpQ2RPYjBrcUhEWnlqdnFlM3RRZC8ycEpVZmV0?=
+ =?utf-8?B?a1J2Q1FuOUFsRnRNVWdQYllLVVhPVGRmL0pHZ09rSTRwUTBNbUM3VUthc1I4?=
+ =?utf-8?B?MHkyeDVPZTVhbGRNWUNtaHg0NVFsWi9NS3JTUVlyMWNZcEVGL0pNM3UyMElv?=
+ =?utf-8?B?aHpjcXNqNEE0c1h5cUlXVWc1QzR6ay9EdlRPYjUyUW5PekQvRmIzMWNNZWlX?=
+ =?utf-8?B?Uk9UYkp1clAyelJmT21Odkg3KzJWM2Z3S1FUSytVMU92UEVaQXNkMjVxNXNB?=
+ =?utf-8?B?Z0RtcktmZXB0dVhBTzNtSDMvQUpLRm9zZjB3ZVVka1pGZHZvN002b09xVWJ3?=
+ =?utf-8?B?aCt0WHhjYk9QZkZUUUxmZ2hiRFJ4amJPd2xXVDJyWEgwK2xybWJHR1NwajZL?=
+ =?utf-8?B?NlFsSlRnYTloaDVsVFRVQlNqeW5yTTdnakdHTGpkU1JwNDNXWDR0Z0RzbGto?=
+ =?utf-8?B?VWNEbG1hbTgrMFRyc1NKaFo3bGVIS1EvdmRqK2NRSklBOFhqbzlNL2ovVDhz?=
+ =?utf-8?B?YzZqL2xNMWVBVUhqYisyeHQvQ2doeFgxOWxwakg2L0k5MldmUTZBTmd6cm5G?=
+ =?utf-8?B?ZlEraExvUWlPTVFEV1pSZktkTHptZTREM3JRSnFIZThsYUV6WlJlWFRXYWVu?=
+ =?utf-8?B?aFJvR3U5NCtwK0N4VmYveFNDZ1liUmJUdFFyRUZqR3drTVFjc1VhTnFEZDdQ?=
+ =?utf-8?B?S3hQVjFEUUJ5UDA5eGcwZytHSllxVFh6M1c0SGYyTGU1cVdUdEhOeWtkSHRO?=
+ =?utf-8?B?ditmZEdiU0pUQWsweG0wdDlwRDk3OVpJSWdyc2d5aWpOb01VOHM2bjAxWmNF?=
+ =?utf-8?B?VE11eFdrcXEwNHdKcW1ucG9DMmR1aEtxTWNEbmVtZzQwT2hIanZEaFU3TXhw?=
+ =?utf-8?B?QWwrZXh6TXByMUQ2UzQ3MUQ2MU1KdDNZTXZCYWZ0UENyTGwzNllyU0xIc1Fp?=
+ =?utf-8?B?K1N2eGlCTzNIVzZ3M0ZyNE1zM0c2Ui9BaENPaU5ZbEtQdEIySmxXc3J2QTd4?=
+ =?utf-8?B?bERxc0YwZlBYUDdTbjdHMHdqN2Uvck5rT0Qzak5uZVBBSDBRcU1hOVk4MXRy?=
+ =?utf-8?B?a3dJMVJlTHdEb2tCRWw2anhTM3lvV3VlSjluMTdqV21pTDlONG51dFBPczZx?=
+ =?utf-8?B?cHVUTG1rY1o4anFWVStxMXR2d1N2QVM5bFdxdHhMV0xjMWdDVEtodExCVW5N?=
+ =?utf-8?B?c0psZVljK3lsUXhNdlpEVk92Nk1oRGJ5TWd3Z2tickRqb1F3RlNXSCtPL0Q2?=
+ =?utf-8?B?QlE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <879A45BFF3D1384DAB7BD96ED3B2B1CD@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e8f537a2-a615-4593-8fa0-08dac0b5c70e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Nov 2022 11:46:58.7424
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: FW4lsdFE05+01Yl9Q3seSrsZ6pvTQbFZym/lq1vJh+7xM3NKWg2hHgOIImKRpuvyC0EZFPr8PeLA4Z3veXuGQUvRS+4U7o0MPKYpm9mkh78=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5999
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_033722_851516_7CDD3F31 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20221107_034748_444562_AA03424B 
+X-CRM114-Status: GOOD (  20.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,565 +193,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sending this again because the first email was rejected by the mailing=20
-lists
-
-On Sun, Nov 6 2022 at 08:35:40 PM -03:00:00, Collabora=20
-<daniel.almeida@collabora.com> wrote:
-> Hi,
->=20
-> I have been having some issues with wifi on a beelink gtr5. This=20
-> comes with the AMD RZ608, which apparently is just a rebrand on=20
-> MT7921K. Pardon/correct me if I am wrong.
->=20
-> After suspending,  wi-fi just does not work.
->=20
-> modprobe -r mt7921e && modprobe mt7921e works though, i.e. wifi works=20
-> again.
->=20
-> Dmesg has a few pointers on the issue:
->=20
-> [ 8898.932739] mt7921e 0000:03:00.0: Message 000046ed (seq 7) timeout
-> [ 8899.011186] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8902.129421] mt7921e 0000:03:00.0: Message 00000010 (seq 8) timeout
-> [ 8902.129427] mt7921e 0000:03:00.0: Failed to get patch semaphore
-> [ 8902.208409] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8905.329413] mt7921e 0000:03:00.0: Message 00000010 (seq 9) timeout
-> [ 8905.329422] mt7921e 0000:03:00.0: Failed to get patch semaphore
-> [ 8905.329524] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8908.529746] mt7921e 0000:03:00.0: Message 000046ed (seq 10) timeout
-> [ 8908.608858] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8911.729628] mt7921e 0000:03:00.0: Message 00000010 (seq 11) timeout
-> [ 8911.729640] mt7921e 0000:03:00.0: Failed to get patch semaphore
-> [ 8911.808033] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8914.929423] mt7921e 0000:03:00.0: Message 00000010 (seq 12) timeout
-> [ 8914.929431] mt7921e 0000:03:00.0: Failed to get patch semaphore
->=20
->=20
-> There's also this oops:
->=20
-> [ 9099.559190] ------------[ cut here ]------------
-> [ 9099.559192] tasklet SCHED state not set: func 0x0
-> [ 9099.559200] WARNING: CPU: 12 PID: 91 at kernel/softirq.c:769=20
-> tasklet_clear_sched+0x64/0x70
-> [ 9099.559207] Modules linked in: mt7921e mt7921_common tls rfcomm=20
-> ccm intel_rapl_msr intel_rapl_common uhid snd_sof_amd_renoir=20
-> snd_sof_amd_acp snd_sof_pci cmac snd_sof algif_hash snd_sof_utils=20
-> algif_skcipher snd_soc_core af_alg snd_hda_codec_realtek snd_compress=20
-> snd_hda_codec_generic bnep ledtrig_audio snd_hda_codec_hdmi ac97_bus=20
-> snd_pcm_dmaengine snd_hda_intel mt76_connac_lib snd_rpl_pci_acp6x=20
-> btusb snd_intel_dspcfg mt76 snd_intel_sdw_acpi amdgpu snd_acp_pci=20
-> btrtl edac_mce_amd snd_pci_acp6x btbcm vfat snd_hda_codec=20
-> snd_pci_acp5x btintel fat wmi_bmof mac80211 snd_hda_core gpu_sched=20
-> snd_rn_pci_acp3x btmtk kvm_amd snd_hwdep libarc4 bluetooth drm_buddy=20
-> r8169 snd_pcm drm_ttm_helper joydev snd_acp_config mousedev=20
-> ecdh_generic ttm snd_timer realtek cfg80211 apple_mfi_fastcharge kvm=20
-> snd_soc_acpi drm_display_helper snd mdio_devres irqbypass soundcore=20
-> rfkill snd_pci_acp3x cec sp5100_tco libphy rapl pcspkr i2c_piix4=20
-> k10temp wmi tpm_crb video tpm_tis mac_hid tpm_tis_core crypto_user=20
-> amd_pstate fuse
-> [ 9099.559253]  bpf_preload ip_tables x_tables ext4 crc32c_generic=20
-> crc16 mbcache jbd2 hid_apple usbhid dm_crypt cbc encrypted_keys=20
-> trusted asn1_encoder tee tpm dm_mod crct10dif_pclmul crc32_pclmul=20
-> crc32c_intel polyval_clmulni polyval_generic gf128mul=20
-> ghash_clmulni_intel aesni_intel nvme crypto_simd ccp nvme_core=20
-> xhci_pci cryptd rng_core nvme_common xhci_pci_renesas [last unloaded:=20
-> mt7921_common]
-> [ 9099.559271] CPU: 12 PID: 91 Comm: ksoftirqd/12 Tainted: G        W=20
->          6.0.7-arch1-1 #1 54734d35253fb4c526adcfdfa2e7225be9ec4a9a
-> [ 9099.559274] Hardware name: AZW GTR/GTR, BIOS=20
-> GTR_V1.24_bLink_P4C5M43 06/08/2022
-> [ 9099.559275] RIP: 0010:tasklet_clear_sched+0x64/0x70
-> [ 9099.559277] Code: 00 48 c7 c0 5f 90 ea bb 48 8b 57 18 48 c7 c6 73=20
-> 7c ea bb 48 0f 45 f0 48 c7 c7 88 b9 f1 bb c6 05 8f b4 d1 01 01 e8 cc=20
-> f8 ae 00 <0f> 0b eb b3 0f 1f 84 00 00 00 00 00 f3 0f 1e fa 0f 1f 44=20
-> 00 00 41
-> [ 9099.559279] RSP: 0018:ffffbfed40463e58 EFLAGS: 00010282
-> [ 9099.559280] RAX: 0000000000000000 RBX: ffff9cad439e8900 RCX:=20
-> 0000000000000027
-> [ 9099.559281] RDX: ffff9cb3ee921668 RSI: 0000000000000001 RDI:=20
-> ffff9cb3ee921660
-> [ 9099.559282] RBP: 0000000000000000 R08: 0000000000000000 R09:=20
-> ffffbfed40463ce0
-> [ 9099.559283] R10: 0000000000000003 R11: ffffffffbc6cb508 R12:=20
-> ffff9cb3ee9211d0
-> [ 9099.559283] R13: ffff9cad439e89a8 R14: 0000000000000040 R15:=20
-> 0000000000000006
-> [ 9099.559285] FS:  0000000000000000(0000) GS:ffff9cb3ee900000(0000)=20
-> knlGS:0000000000000000
-> [ 9099.559286] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [ 9099.559287] CR2: 000055da8b0ee558 CR3: 000000028d410000 CR4:=20
-> 0000000000750ee0
-> [ 9099.559288] PKRU: 55555554
-> [ 9099.559289] Call Trace:
-> [ 9099.559291]  <TASK>
-> [ 9099.559293]  tasklet_action_common.constprop.0+0xa5/0x140
-> [ 9099.559296]  __do_softirq+0xd3/0x2ca
-> [ 9099.559301]  ? sort_range+0x20/0x20
-> [ 9099.559302]  run_ksoftirqd+0x2c/0x40
-> [ 9099.559304]  smpboot_thread_fn+0xdc/0x1d0
-> [ 9099.559305]  kthread+0xde/0x110
-> [ 9099.559308]  ? kthread_complete_and_exit+0x20/0x20
-> [ 9099.559309]  ret_from_fork+0x22/0x30
-> [ 9099.559315]  </TASK>
->=20
->=20
-> Lastly, maybe this helps:
->=20
-> [ 9099.563431] mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build=20
-> Time: 20220608210839a
-> [ 9099.834344] mt7921e 0000:03:00.0: WM Firmware Version: ____010000,=20
-> Build Time: 20220608210922
->=20
-> =E2=9D=AF uname -a
-> Linux dwls-gtr5 6.0.7-arch1-1 #1 SMP PREEMPT_DYNAMIC Thu, 03 Nov 2022=20
-> 18:01:58 +0000 x86_64 GNU/Linux
->=20
-> Here's some other errors that show up while the system is trying to=20
-> suspend:
->=20
-> [ 8825.286896] PM: suspend entry (deep)
-> [ 8825.291609] Filesystems sync: 0.004 seconds
-> [ 8825.311418] Freezing user space processes ... (elapsed 0.001=20
-> seconds) done.
-> [ 8825.312771] OOM killer disabled.
-> [ 8825.312772] Freezing remaining freezable tasks ... (elapsed 0.001=20
-> seconds) done.
-> [ 8825.313877] printk: Suspending console(s) (use no_console_suspend=20
-> to debug)
-> [ 8825.335938] queueing ieee80211 work while going to suspend
-> [ 8825.347356] [drm] free PSP TMR buffer
-> [ 8825.499466] perf: interrupt took too long (3839 > 2500), lowering=20
-> kernel.perf_event_max_sample_rate to 51900
-> [ 8825.543172] ACPI: PM: Preparing to enter system sleep state S3
-> [ 8825.863331] ACPI: PM: Saving platform NVS memory
-> [ 8825.863440] Disabling non-boot CPUs ...
-> [ 8825.865645] smpboot: CPU 1 is now offline
-> [ 8825.868994] smpboot: CPU 2 is now offline
-> [ 8825.871466] smpboot: CPU 3 is now offline
-> [ 8825.873805] smpboot: CPU 4 is now offline
-> [ 8825.875961] smpboot: CPU 5 is now offline
-> [ 8825.878234] smpboot: CPU 6 is now offline
-> [ 8825.880319] smpboot: CPU 7 is now offline
-> [ 8825.882530] smpboot: CPU 8 is now offline
-> [ 8825.884557] smpboot: CPU 9 is now offline
-> [ 8825.886797] smpboot: CPU 10 is now offline
-> [ 8825.888727] smpboot: CPU 11 is now offline
-> [ 8825.890893] smpboot: CPU 12 is now offline
-> [ 8825.892759] smpboot: CPU 13 is now offline
-> [ 8825.894957] smpboot: CPU 14 is now offline
-> [ 8825.895397] Spectre V2 : Update user space SMT mitigation: STIBP=20
-> off
-> [ 8825.897254] smpboot: CPU 15 is now offline
-> [ 8825.897630] ACPI: PM: Low-level resume complete
-> [ 8825.897630] ACPI: PM: Restoring platform NVS memory
-> [ 8825.897630] AMD-Vi: Virtual APIC enabled
-> [ 8825.897630] AMD-Vi: Virtual APIC enabled
-> [ 8825.897630] LVT offset 0 assigned for vector 0x400
-> [ 8825.897630] Enabling non-boot CPUs ...
-> [ 8825.897630] x86: Booting SMP configuration:
-> [ 8825.897630] smpboot: Booting Node 0 Processor 1 APIC 0x1
-> [ 8825.865540] microcode: CPU1: patch_level=3D0x0a50000c
-> [ 8825.898370] ACPI: \_SB_.PLTF.P001: Found 3 idle states
-> [ 8825.898516] Spectre V2 : Update user space SMT mitigation: STIBP=20
-> always-on
-> [ 8825.898528] CPU1 is up
-> [ 8825.898559] smpboot: Booting Node 0 Processor 2 APIC 0x2
-> [ 8825.898269] microcode: CPU2: patch_level=3D0x0a50000c
-> [ 8825.898897] ACPI: \_SB_.PLTF.P002: Found 3 idle states
-> [ 8825.899073] CPU2 is up
-> [ 8825.899095] smpboot: Booting Node 0 Processor 3 APIC 0x3
-> [ 8825.898706] microcode: CPU3: patch_level=3D0x0a50000c
-> [ 8825.899409] ACPI: \_SB_.PLTF.P003: Found 3 idle states
-> [ 8825.899600] CPU3 is up
-> [ 8825.899635] smpboot: Booting Node 0 Processor 4 APIC 0x4
-> [ 8825.899245] microcode: CPU4: patch_level=3D0x0a50000c
-> [ 8825.900273] ACPI: \_SB_.PLTF.P004: Found 3 idle states
-> [ 8825.900488] CPU4 is up
-> [ 8825.900508] smpboot: Booting Node 0 Processor 5 APIC 0x5
-> [ 8825.900098] microcode: CPU5: patch_level=3D0x0a50000c
-> [ 8825.900813] ACPI: \_SB_.PLTF.P005: Found 3 idle states
-> [ 8825.901099] CPU5 is up
-> [ 8825.901117] smpboot: Booting Node 0 Processor 6 APIC 0x6
-> [ 8825.900660] microcode: CPU6: patch_level=3D0x0a50000c
-> [ 8825.901432] ACPI: \_SB_.PLTF.P006: Found 3 idle states
-> [ 8825.901699] CPU6 is up
-> [ 8825.901726] smpboot: Booting Node 0 Processor 7 APIC 0x7
-> [ 8825.901270] microcode: CPU7: patch_level=3D0x0a50000c
-> [ 8825.902037] ACPI: \_SB_.PLTF.P007: Found 3 idle states
-> [ 8825.902377] CPU7 is up
-> [ 8825.902394] smpboot: Booting Node 0 Processor 8 APIC 0x8
-> [ 8825.901871] microcode: CPU8: patch_level=3D0x0a50000c
-> [ 8825.902714] ACPI: \_SB_.PLTF.P008: Found 3 idle states
-> [ 8825.903043] CPU8 is up
-> [ 8825.903067] smpboot: Booting Node 0 Processor 9 APIC 0x9
-> [ 8825.902541] microcode: CPU9: patch_level=3D0x0a50000c
-> [ 8825.903374] ACPI: \_SB_.PLTF.P009: Found 3 idle states
-> [ 8825.903742] CPU9 is up
-> [ 8825.903765] smpboot: Booting Node 0 Processor 10 APIC 0xa
-> [ 8825.903211] microcode: CPU10: patch_level=3D0x0a50000c
-> [ 8825.904088] ACPI: \_SB_.PLTF.P00A: Found 3 idle states
-> [ 8825.904482] CPU10 is up
-> [ 8825.904503] smpboot: Booting Node 0 Processor 11 APIC 0xb
-> [ 8825.903906] microcode: CPU11: patch_level=3D0x0a50000c
-> [ 8825.904820] ACPI: \_SB_.PLTF.P00B: Found 3 idle states
-> [ 8825.905295] CPU11 is up
-> [ 8825.905315] smpboot: Booting Node 0 Processor 12 APIC 0xc
-> [ 8825.904650] microcode: CPU12: patch_level=3D0x0a50000c
-> [ 8825.905644] ACPI: \_SB_.PLTF.P00C: Found 3 idle states
-> [ 8825.906100] CPU12 is up
-> [ 8825.906117] smpboot: Booting Node 0 Processor 13 APIC 0xd
-> [ 8825.905461] microcode: CPU13: patch_level=3D0x0a50000c
-> [ 8825.906458] ACPI: \_SB_.PLTF.P00D: Found 3 idle states
-> [ 8825.906949] CPU13 is up
-> [ 8825.906973] smpboot: Booting Node 0 Processor 14 APIC 0xe
-> [ 8825.906283] microcode: CPU14: patch_level=3D0x0a50000c
-> [ 8825.907318] ACPI: \_SB_.PLTF.P00E: Found 3 idle states
-> [ 8825.907819] CPU14 is up
-> [ 8825.907837] smpboot: Booting Node 0 Processor 15 APIC 0xf
-> [ 8825.907134] microcode: CPU15: patch_level=3D0x0a50000c
-> [ 8825.908151] ACPI: \_SB_.PLTF.P00F: Found 3 idle states
-> [ 8825.908711] CPU15 is up
-> [ 8825.909733] ACPI: PM: Waking up from system sleep state S3
-> [ 8827.436514] mt7921e 0000:03:00.0: Unable to change power state=20
-> from D3hot to D0, device inaccessible
-> [ 8827.439626] ACPI Error: No handler for Region [ECRM]=20
-> (00000000f92718d8) [EmbeddedControl] (20220331/evregion-130)
-> [ 8827.439632] ACPI Error: Region EmbeddedControl (ID=3D3) has no=20
-> handler (20220331/exfldio-261)
-> [ 8827.439635] ACPI Error: Aborting method \_SB.GPIO._EVT due to=20
-> previous error (AE_NOT_EXIST) (20220331/psparse-529)
-> [ 8827.440130] pci 0000:00:00.2: can't derive routing for PCI INT A
-> [ 8827.440132] pci 0000:00:00.2: PCI INT A: no GSI
-> [ 8827.440437] [drm] PCIE GART of 1024M enabled.
-> [ 8827.440441] [drm] PTB located at 0x000000F41FC00000
-> [ 8827.440473] [drm] PSP is resuming...
-> [ 8827.460495] [drm] reserve 0x400000 from 0xf41f400000 for PSP TMR
-> [ 8827.461689] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8827.461695] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8827.463949] nvme nvme0: 8/0/0 default/read/poll queues
-> [ 8827.542950] amdgpu 0000:05:00.0: amdgpu: RAS: optional ras ta=20
-> ucode is not available
-> [ 8827.551453] amdgpu 0000:05:00.0: amdgpu: RAP: optional rap ta=20
-> ucode is not available
-> [ 8827.551454] amdgpu 0000:05:00.0: amdgpu: SECUREDISPLAY:=20
-> securedisplay ta ucode is not available
-> [ 8827.551456] amdgpu 0000:05:00.0: amdgpu: SMU is resuming...
-> [ 8827.551582] amdgpu 0000:05:00.0: amdgpu: dpm has been disabled
-> [ 8827.553533] amdgpu 0000:05:00.0: amdgpu: SMU is resumed=20
-> successfully!
-> [ 8827.554099] [drm] DMUB hardware initialized: version=3D0x0101001F
-> [ 8827.583859] [drm] kiq ring mec 2 pipe 1 q 0
-> [ 8827.588663] [drm] VCN decode and encode initialized=20
-> successfully(under DPG Mode).
-> [ 8827.588737] [drm] JPEG decode initialized successfully.
-> [ 8827.588743] amdgpu 0000:05:00.0: amdgpu: ring gfx uses VM inv eng=20
-> 0 on hub 0
-> [ 8827.588744] amdgpu 0000:05:00.0: amdgpu: ring comp_1.0.0 uses VM=20
-> inv eng 1 on hub 0
-> [ 8827.588745] amdgpu 0000:05:00.0: amdgpu: ring comp_1.1.0 uses VM=20
-> inv eng 4 on hub 0
-> [ 8827.588746] amdgpu 0000:05:00.0: amdgpu: ring comp_1.2.0 uses VM=20
-> inv eng 5 on hub 0
-> [ 8827.588746] amdgpu 0000:05:00.0: amdgpu: ring comp_1.3.0 uses VM=20
-> inv eng 6 on hub 0
-> [ 8827.588747] amdgpu 0000:05:00.0: amdgpu: ring comp_1.0.1 uses VM=20
-> inv eng 7 on hub 0
-> [ 8827.588747] amdgpu 0000:05:00.0: amdgpu: ring comp_1.1.1 uses VM=20
-> inv eng 8 on hub 0
-> [ 8827.588747] amdgpu 0000:05:00.0: amdgpu: ring comp_1.2.1 uses VM=20
-> inv eng 9 on hub 0
-> [ 8827.588748] amdgpu 0000:05:00.0: amdgpu: ring comp_1.3.1 uses VM=20
-> inv eng 10 on hub 0
-> [ 8827.588749] amdgpu 0000:05:00.0: amdgpu: ring kiq_2.1.0 uses VM=20
-> inv eng 11 on hub 0
-> [ 8827.588749] amdgpu 0000:05:00.0: amdgpu: ring sdma0 uses VM inv=20
-> eng 0 on hub 1
-> [ 8827.588750] amdgpu 0000:05:00.0: amdgpu: ring vcn_dec uses VM inv=20
-> eng 1 on hub 1
-> [ 8827.588750] amdgpu 0000:05:00.0: amdgpu: ring vcn_enc0 uses VM inv=20
-> eng 4 on hub 1
-> [ 8827.588751] amdgpu 0000:05:00.0: amdgpu: ring vcn_enc1 uses VM inv=20
-> eng 5 on hub 1
-> [ 8827.588751] amdgpu 0000:05:00.0: amdgpu: ring jpeg_dec uses VM inv=20
-> eng 6 on hub 1
-> [ 8827.712592] usb 3-3: reset high-speed USB device number 3 using=20
-> xhci_hcd
-> [ 8827.752961] ata2: SATA link down (SStatus 0 SControl 300)
-> [ 8827.752961] ata1: SATA link down (SStatus 0 SControl 300)
-> [ 8827.984644] usb 3-4: reset high-speed USB device number 4 using=20
-> xhci_hcd
-> [ 8828.476344] mt7921e 0000:03:00.0: Message 00020007 (seq 15) timeout
-> [ 8828.476357] mt7921e 0000:03:00.0: PM: dpm_run_callback():=20
-> pci_pm_resume+0x0/0xe0 returns -110
-> [ 8828.476370] mt7921e 0000:03:00.0: PM: failed to resume async:=20
-> error -110
-> [ 8828.555395] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8831.729553] mt7921e 0000:03:00.0: Message 00000010 (seq 1) timeout
-> [ 8831.729565] mt7921e 0000:03:00.0: Failed to get patch semaphore
-> [ 8831.809114] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8834.929686] mt7921e 0000:03:00.0: Message 00000010 (seq 2) timeout
-> [ 8834.929697] mt7921e 0000:03:00.0: Failed to get patch semaphore
-> [ 8834.929878] mt7921e 0000:03:00.0: AMD-Vi: Event logged=20
-> [IO_PAGE_FAULT domain=3D0x000c address=3D0x0 flags=3D0x0020]
-> [ 8838.129831] mt7921e 0000:03:00.0: Message 000046ed (seq 3) timeout
-> [ 8838.129849] ------------[ cut here ]------------
-> [ 8838.129851] Hardware became unavailable upon resume. This could be=20
-> a software issue prior to suspend or a hardware issue.
-> [ 8838.129887] WARNING: CPU: 13 PID: 45173 at=20
-> net/mac80211/util.c:2436 ieee80211_reconfig+0x9c/0x1570 [mac80211]
-> [ 8838.129961] Modules linked in: tls rfcomm ccm intel_rapl_msr=20
-> intel_rapl_common uhid snd_sof_amd_renoir snd_sof_amd_acp snd_sof_pci=20
-> cmac snd_sof algif_hash snd_sof_utils algif_skcipher snd_soc_core=20
-> af_alg snd_hda_codec_realtek mt7921e snd_compress=20
-> snd_hda_codec_generic bnep ledtrig_audio snd_hda_codec_hdmi=20
-> mt7921_common ac97_bus snd_pcm_dmaengine snd_hda_intel=20
-> mt76_connac_lib snd_rpl_pci_acp6x btusb snd_intel_dspcfg mt76=20
-> snd_intel_sdw_acpi amdgpu snd_acp_pci btrtl edac_mce_amd=20
-> snd_pci_acp6x btbcm vfat snd_hda_codec snd_pci_acp5x btintel fat=20
-> wmi_bmof mac80211 snd_hda_core gpu_sched snd_rn_pci_acp3x btmtk=20
-> kvm_amd snd_hwdep libarc4 bluetooth drm_buddy r8169 snd_pcm=20
-> drm_ttm_helper joydev snd_acp_config mousedev ecdh_generic ttm=20
-> snd_timer realtek cfg80211 apple_mfi_fastcharge kvm snd_soc_acpi=20
-> drm_display_helper snd mdio_devres irqbypass soundcore rfkill=20
-> snd_pci_acp3x cec sp5100_tco libphy rapl pcspkr i2c_piix4 k10temp wmi=20
-> tpm_crb video tpm_tis mac_hid tpm_tis_core crypto_user amd_pstate fuse
-> [ 8838.130052]  bpf_preload ip_tables x_tables ext4 crc32c_generic=20
-> crc16 mbcache jbd2 hid_apple usbhid dm_crypt cbc encrypted_keys=20
-> trusted asn1_encoder tee tpm dm_mod crct10dif_pclmul crc32_pclmul=20
-> crc32c_intel polyval_clmulni polyval_generic gf128mul=20
-> ghash_clmulni_intel aesni_intel nvme crypto_simd ccp nvme_core=20
-> xhci_pci cryptd rng_core nvme_common xhci_pci_renesas
-> [ 8838.130085] CPU: 13 PID: 45173 Comm: kworker/u32:6 Not tainted=20
-> 6.0.7-arch1-1 #1 54734d35253fb4c526adcfdfa2e7225be9ec4a9a
-> [ 8838.130091] Hardware name: AZW GTR/GTR, BIOS=20
-> GTR_V1.24_bLink_P4C5M43 06/08/2022
-> [ 8838.130094] Workqueue: events_unbound async_run_entry_fn
-> [ 8838.130104] RIP: 0010:ieee80211_reconfig+0x9c/0x1570 [mac80211]
-> [ 8838.130153] Code: 84 24 8d 05 00 00 00 4c 89 e7 e8 df ea fb ff 41=20
-> 89 c0 85 c0 0f 84 fd 02 00 00 48 c7 c7 c8 53 03 c1 44 89 04 24 e8 b4=20
-> 93 5c fa <0f> 0b 44 8b 04 24 eb 35 84 c0 0f 85 76 01 00 00 c6 87 8d=20
-> 05 00 00
-> [ 8838.130156] RSP: 0018:ffffbfed54e2fd88 EFLAGS: 00010282
-> [ 8838.130159] RAX: 0000000000000000 RBX: ffff9cad439e0518 RCX:=20
-> 0000000000000027
-> [ 8838.130161] RDX: ffff9cb3ee961668 RSI: 0000000000000001 RDI:=20
-> ffff9cb3ee961660
-> [ 8838.130163] RBP: ffff9cad439e03a0 R08: ffffffffbc65b4c0 R09:=20
-> ffffbfed54e2fd18
-> [ 8838.130164] R10: 0000000000000002 R11: ffffffffbc6b37d8 R12:=20
-> ffff9cad439e08e0
-> [ 8838.130166] R13: 0000000000000010 R14: 0000000000000000 R15:=20
-> ffff9cad4f51a208
-> [ 8838.130168] FS:  0000000000000000(0000) GS:ffff9cb3ee940000(0000)=20
-> knlGS:0000000000000000
-> [ 8838.130170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [ 8838.130172] CR2: 0000000000000000 CR3: 000000028d410000 CR4:=20
-> 0000000000750ee0
-> [ 8838.130174] PKRU: 55555554
-> [ 8838.130176] Call Trace:
-> [ 8838.130180]  <TASK>
-> [ 8838.130185]  ? wait_for_completion+0x95/0x160
-> [ 8838.130194]  wiphy_resume+0x80/0x150 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.130244]  ? wiphy_suspend+0x2b0/0x2b0 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.130285]  dpm_run_callback+0x4a/0x150
-> [ 8838.130294]  device_resume+0xa2/0x1f0
-> [ 8838.130298]  async_resume+0x1d/0x30
-> [ 8838.130302]  async_run_entry_fn+0x34/0x130
-> [ 8838.130308]  process_one_work+0x1c7/0x380
-> [ 8838.130313]  worker_thread+0x51/0x390
-> [ 8838.130317]  ? rescuer_thread+0x3b0/0x3b0
-> [ 8838.130320]  kthread+0xde/0x110
-> [ 8838.130323]  ? kthread_complete_and_exit+0x20/0x20
-> [ 8838.130327]  ret_from_fork+0x22/0x30
-> [ 8838.130335]  </TASK>
-> [ 8838.130336] ---[ end trace 0000000000000000 ]---
-> [ 8838.130950] ------------[ cut here ]------------
-> [ 8838.130950] wlp3s0: Failed check-sdata-in-driver check, flags: 0x0
-> [ 8838.130956] WARNING: CPU: 13 PID: 45173 at=20
-> net/mac80211/driver-ops.c:98 drv_remove_interface+0x114/0x120=20
-> [mac80211]
-> [ 8838.130973] Modules linked in: tls rfcomm ccm intel_rapl_msr=20
-> intel_rapl_common uhid snd_sof_amd_renoir snd_sof_amd_acp snd_sof_pci=20
-> cmac snd_sof algif_hash snd_sof_utils algif_skcipher snd_soc_core=20
-> af_alg snd_hda_codec_realtek mt7921e snd_compress=20
-> snd_hda_codec_generic bnep ledtrig_audio snd_hda_codec_hdmi=20
-> mt7921_common ac97_bus snd_pcm_dmaengine snd_hda_intel=20
-> mt76_connac_lib snd_rpl_pci_acp6x btusb snd_intel_dspcfg mt76=20
-> snd_intel_sdw_acpi amdgpu snd_acp_pci btrtl edac_mce_amd=20
-> snd_pci_acp6x btbcm vfat snd_hda_codec snd_pci_acp5x btintel fat=20
-> wmi_bmof mac80211 snd_hda_core gpu_sched snd_rn_pci_acp3x btmtk=20
-> kvm_amd snd_hwdep libarc4 bluetooth drm_buddy r8169 snd_pcm=20
-> drm_ttm_helper joydev snd_acp_config mousedev ecdh_generic ttm=20
-> snd_timer realtek cfg80211 apple_mfi_fastcharge kvm snd_soc_acpi=20
-> drm_display_helper snd mdio_devres irqbypass soundcore rfkill=20
-> snd_pci_acp3x cec sp5100_tco libphy rapl pcspkr i2c_piix4 k10temp wmi=20
-> tpm_crb video tpm_tis mac_hid tpm_tis_core crypto_user amd_pstate fuse
-> [ 8838.130990]  bpf_preload ip_tables x_tables ext4 crc32c_generic=20
-> crc16 mbcache jbd2 hid_apple usbhid dm_crypt cbc encrypted_keys=20
-> trusted asn1_encoder tee tpm dm_mod crct10dif_pclmul crc32_pclmul=20
-> crc32c_intel polyval_clmulni polyval_generic gf128mul=20
-> ghash_clmulni_intel aesni_intel nvme crypto_simd ccp nvme_core=20
-> xhci_pci cryptd rng_core nvme_common xhci_pci_renesas
-> [ 8838.130997] CPU: 13 PID: 45173 Comm: kworker/u32:6 Tainted: G     =20
->   W          6.0.7-arch1-1 #1 54734d35253fb4c526adcfdfa2e7225be9ec4a9a
-> [ 8838.130998] Hardware name: AZW GTR/GTR, BIOS=20
-> GTR_V1.24_bLink_P4C5M43 06/08/2022
-> [ 8838.130999] Workqueue: events_unbound async_run_entry_fn
-> [ 8838.131001] RIP: 0010:drv_remove_interface+0x114/0x120 [mac80211]
-> [ 8838.131015] Code: ff ff 48 8b 83 80 07 00 00 48 8d b3 a0 07 00 00=20
-> 48 c7 c7 68 44 03 c1 c6 05 58 41 0f 00 01 48 85 c0 48 0f 45 f0 e8 5c=20
-> a3 60 fa <0f> 0b 5b 5d c3 cc cc cc cc 0f 1f 00 66 0f 1f 00 0f 1f 44=20
-> 00 00 41
-> [ 8838.131016] RSP: 0018:ffffbfed54e2fc50 EFLAGS: 00010286
-> [ 8838.131016] RAX: 0000000000000000 RBX: ffff9cad431889c0 RCX:=20
-> 0000000000000027
-> [ 8838.131017] RDX: ffff9cb3ee961668 RSI: 0000000000000001 RDI:=20
-> ffff9cb3ee961660
-> [ 8838.131018] RBP: ffff9cad439e08e0 R08: ffffffffbc65b4c0 R09:=20
-> 0000000000000000
-> [ 8838.131018] R10: ffffffffffffffff R11: ffffffffbceb6a9e R12:=20
-> ffff9cad439e08e0
-> [ 8838.131019] R13: ffff9cad43189b80 R14: ffff9cad439e11e0 R15:=20
-> 0000000000000000
-> [ 8838.131019] FS:  0000000000000000(0000) GS:ffff9cb3ee940000(0000)=20
-> knlGS:0000000000000000
-> [ 8838.131020] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [ 8838.131020] CR2: 0000000000000000 CR3: 000000028d410000 CR4:=20
-> 0000000000750ee0
-> [ 8838.131021] PKRU: 55555554
-> [ 8838.131021] Call Trace:
-> [ 8838.131022]  <TASK>
-> [ 8838.131023]  ieee80211_do_stop+0x673/0x8b0 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131041]  ieee80211_stop+0x41/0x170 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131055]  __dev_close_many+0x9e/0x110
-> [ 8838.131060]  dev_close_many+0x8f/0x140
-> [ 8838.131062]  ? ieee80211_sched_scan_end+0x1d/0x60 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131077]  dev_close+0x83/0xb0
-> [ 8838.131079]  cfg80211_shutdown_all_interfaces+0x4d/0xf0 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131093]  wiphy_resume+0x98/0x150 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131105]  ? wiphy_suspend+0x2b0/0x2b0 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131118]  dpm_run_callback+0x4a/0x150
-> [ 8838.131119]  device_resume+0xa2/0x1f0
-> [ 8838.131120]  async_resume+0x1d/0x30
-> [ 8838.131122]  async_run_entry_fn+0x34/0x130
-> [ 8838.131123]  process_one_work+0x1c7/0x380
-> [ 8838.131124]  worker_thread+0x51/0x390
-> [ 8838.131125]  ? rescuer_thread+0x3b0/0x3b0
-> [ 8838.131126]  kthread+0xde/0x110
-> [ 8838.131127]  ? kthread_complete_and_exit+0x20/0x20
-> [ 8838.131128]  ret_from_fork+0x22/0x30
-> [ 8838.131130]  </TASK>
-> [ 8838.131130] ---[ end trace 0000000000000000 ]---
-> [ 8838.131137] ------------[ cut here ]------------
-> [ 8838.131138] WARNING: CPU: 13 PID: 45173 at=20
-> net/mac80211/driver-ops.c:37 drv_stop+0xf5/0x100 [mac80211]
-> [ 8838.131152] Modules linked in: tls rfcomm ccm intel_rapl_msr=20
-> intel_rapl_common uhid snd_sof_amd_renoir snd_sof_amd_acp snd_sof_pci=20
-> cmac snd_sof algif_hash snd_sof_utils algif_skcipher snd_soc_core=20
-> af_alg snd_hda_codec_realtek mt7921e snd_compress=20
-> snd_hda_codec_generic bnep ledtrig_audio snd_hda_codec_hdmi=20
-> mt7921_common ac97_bus snd_pcm_dmaengine snd_hda_intel=20
-> mt76_connac_lib snd_rpl_pci_acp6x btusb snd_intel_dspcfg mt76=20
-> snd_intel_sdw_acpi amdgpu snd_acp_pci btrtl edac_mce_amd=20
-> snd_pci_acp6x btbcm vfat snd_hda_codec snd_pci_acp5x btintel fat=20
-> wmi_bmof mac80211 snd_hda_core gpu_sched snd_rn_pci_acp3x btmtk=20
-> kvm_amd snd_hwdep libarc4 bluetooth drm_buddy r8169 snd_pcm=20
-> drm_ttm_helper joydev snd_acp_config mousedev ecdh_generic ttm=20
-> snd_timer realtek cfg80211 apple_mfi_fastcharge kvm snd_soc_acpi=20
-> drm_display_helper snd mdio_devres irqbypass soundcore rfkill=20
-> snd_pci_acp3x cec sp5100_tco libphy rapl pcspkr i2c_piix4 k10temp wmi=20
-> tpm_crb video tpm_tis mac_hid tpm_tis_core crypto_user amd_pstate fuse
-> [ 8838.131168]  bpf_preload ip_tables x_tables ext4 crc32c_generic=20
-> crc16 mbcache jbd2 hid_apple usbhid dm_crypt cbc encrypted_keys=20
-> trusted asn1_encoder tee tpm dm_mod crct10dif_pclmul crc32_pclmul=20
-> crc32c_intel polyval_clmulni polyval_generic gf128mul=20
-> ghash_clmulni_intel aesni_intel nvme crypto_simd ccp nvme_core=20
-> xhci_pci cryptd rng_core nvme_common xhci_pci_renesas
-> [ 8838.131174] CPU: 13 PID: 45173 Comm: kworker/u32:6 Tainted: G     =20
->   W          6.0.7-arch1-1 #1 54734d35253fb4c526adcfdfa2e7225be9ec4a9a
-> [ 8838.131176] Hardware name: AZW GTR/GTR, BIOS=20
-> GTR_V1.24_bLink_P4C5M43 06/08/2022
-> [ 8838.131176] Workqueue: events_unbound async_run_entry_fn
-> [ 8838.131178] RIP: 0010:drv_stop+0xf5/0x100 [mac80211]
-> [ 8838.131191] Code: 0f 00 48 85 c0 74 0c 48 8b 78 08 48 89 de e8 e2=20
-> 9f 04 00 65 ff 0d eb 84 09 3f 0f 85 39 ff ff ff e8 a8 bf a7 f9 e9 2f=20
-> ff ff ff <0f> 0b 5b c3 cc cc cc cc 0f 1f 00 66 0f 1f 00 0f 1f 44 00=20
-> 00 41 54
-> [ 8838.131192] RSP: 0018:ffffbfed54e2fc58 EFLAGS: 00010246
-> [ 8838.131193] RAX: 0000000000000000 RBX: ffff9cad439e08e0 RCX:=20
-> ffff9cad06593068
-> [ 8838.131193] RDX: 0000000000000000 RSI: 0000000000000282 RDI:=20
-> ffff9cad439e08e0
-> [ 8838.131193] RBP: ffff9cad439e1b10 R08: ffffffffbc65b4c0 R09:=20
-> 0000000000000000
-> [ 8838.131194] R10: ffffffffffffffff R11: ffffffffbceb6a9e R12:=20
-> ffff9cad439e08e0
-> [ 8838.131194] R13: ffff9cad43189b80 R14: ffff9cad439e11e0 R15:=20
-> 0000000000000000
-> [ 8838.131195] FS:  0000000000000000(0000) GS:ffff9cb3ee940000(0000)=20
-> knlGS:0000000000000000
-> [ 8838.131195] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [ 8838.131196] CR2: 0000000000000000 CR3: 000000028d410000 CR4:=20
-> 0000000000750ee0
-> [ 8838.131197] PKRU: 55555554
-> [ 8838.131197] Call Trace:
-> [ 8838.131197]  <TASK>
-> [ 8838.131198]  ieee80211_do_stop+0x6a5/0x8b0 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131213]  ieee80211_stop+0x41/0x170 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131227]  __dev_close_many+0x9e/0x110
-> [ 8838.131228]  dev_close_many+0x8f/0x140
-> [ 8838.131230]  ? ieee80211_sched_scan_end+0x1d/0x60 [mac80211=20
-> 413b373032165e62b73c5ea709856cb11f187fe5]
-> [ 8838.131244]  dev_close+0x83/0xb0
-> [ 8838.131246]  cfg80211_shutdown_all_interfaces+0x4d/0xf0 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131258]  wiphy_resume+0x98/0x150 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131271]  ? wiphy_suspend+0x2b0/0x2b0 [cfg80211=20
-> 3bc9c89fdd1a86213882b8cd88cb8dca2477ddbe]
-> [ 8838.131283]  dpm_run_callback+0x4a/0x150
-> [ 8838.131285]  device_resume+0xa2/0x1f0
-> [ 8838.131286]  async_resume+0x1d/0x30
-> [ 8838.131287]  async_run_entry_fn+0x34/0x130
-> [ 8838.131289]  process_one_work+0x1c7/0x380
-> [ 8838.131290]  worker_thread+0x51/0x390
-> [ 8838.131291]  ? rescuer_thread+0x3b0/0x3b0
-> [ 8838.131292]  kthread+0xde/0x110
-> [ 8838.131293]  ? kthread_complete_and_exit+0x20/0x20
-> [ 8838.131294]  ret_from_fork+0x22/0x30
-> [ 8838.131295]  </TASK>
-> [ 8838.131296] ---[ end trace 0000000000000000 ]---
-> [ 8838.131361] ieee80211 phy0: PM: dpm_run_callback():=20
-> wiphy_resume+0x0/0x150 [cfg80211] returns -110
-> [ 8838.131376] ieee80211 phy0: PM: failed to resume async: error -110
-> [ 8838.131894] OOM killer enabled.
-> [ 8838.131895] Restarting tasks ...
-> [ 8838.131958] usb 3-1: USB disconnect, device number 2
->=20
->=20
-> Let me know if I can be of further help.
->=20
-> -- Daniel
-
-
+SGkgTWluZ2ppYSwNCg0KVGhhbmtzIGZvciB5b3VyIHBhdGNoLg0KU29tZSBjb21tZW50cyBuZWVk
+IHRvIGdldCB5b3VyIGZlZWRiYWNrLg0KT24gVHVlLCAyMDIyLTEwLTI1IGF0IDA5OjQ2ICswODAw
+LCBNaW5namlhIFpoYW5nIHdyb3RlOg0KPiBFbmFibGUgVlA5IGlubmVyIHJhY2luZyBtb2RlDQo+
+IFdlIHNlbmQgbGF0IHRyYW5zIGJ1ZmZlciB0byB0aGUgY29yZSB3aGVuIHRyaWdnZXIgbGF0IHRv
+IHdvcmssDQo+IGluc3RlYWQgb2Ygd2FpdGluZyBmb3IgdGhlIGxhdCBkZWNvZGUgZG9uZS4NCj4g
+SXQgY2FuIGJlIHJlZHVjZSBkZWNvZGVyIGxhdGVuY3kuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBN
+aW5namlhIFpoYW5nIDxtaW5namlhLnpoYW5nQG1lZGlhdGVrLmNvbT4NCj4gLS0tDQo+IENoYW5n
+ZXMgZnJvbSB2MzoNCj4gDQo+IC0gQ1RTL0dUUyB0ZXN0IHBhc3MNCj4gLSBGbHVzdGVyIHJlc3Vs
+dDogUmFuIDI3NS8zMDMgdGVzdHMgc3VjY2Vzc2Z1bGx5DQo+IA0KPiBDaGFuZ2VzIGZyb20gdjI6
+DQo+IA0KPiAtIENUUy9HVFMgdGVzdCBwYXNzDQo+IC0gRmx1c3RlciByZXN1bHQ6IFJhbiAyNDAv
+MzAzIHRlc3RzIHN1Y2Nlc3NmdWxseQ0KPiANCj4gQ2hhbmdlcyBmcm9tIHYxOg0KPiANCj4gLSBD
+VFMvR1RTIHRlc3QgcGFzcw0KPiAtLS0NCj4gIC4uLi92Y29kZWMvdmRlYy92ZGVjX3ZwOV9yZXFf
+bGF0X2lmLmMgICAgICAgICB8IDg1ICsrKysrKysrKystLS0tLS0tDQo+IC0tDQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgNDcgaW5zZXJ0aW9ucygrKSwgMzggZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0t
+Z2l0DQo+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvdmRlYy92ZGVj
+X3ZwOV9yZXFfbGF0X2lmLmMNCj4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zj
+b2RlYy92ZGVjL3ZkZWNfdnA5X3JlcV9sYXRfaWYuYw0KPiBpbmRleCA4MWRlODc2ZDUxMjY3Li4x
+YjM5MTE5Yzg5OTUxIDEwMDY0NA0KPiAtLS0NCj4gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21l
+ZGlhdGVrL3Zjb2RlYy92ZGVjL3ZkZWNfdnA5X3JlcV9sYXRfaWYuYw0KPiArKysNCj4gYi9kcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy92ZGVjL3ZkZWNfdnA5X3JlcV9sYXRf
+aWYuYw0KPiBAQCAtNDM2LDYgKzQzNiw3IEBAIHN0cnVjdCB2ZGVjX3ZwOV9zbGljZV9yZWYgew0K
+PiAgICogQGZyYW1lX2N0eDoJCTQgZnJhbWUgY29udGV4dCBhY2NvcmRpbmcgdG8gVlA5IFNwZWMN
+Cj4gICAqIEBmcmFtZV9jdHhfaGVscGVyOgk0IGZyYW1lIGNvbnRleHQgYWNjb3JkaW5nIHRvIG5l
+d2VzdA0KPiBrZXJuZWwgc3BlYw0KPiAgICogQGRpcnR5OgkJc3RhdGUgb2YgZWFjaCBmcmFtZSBj
+b250ZXh0DQo+ICsgKiBAbG9jYWxfdnNpOgkJbG9jYWwgaW5zdGFuY2UgdnNpIGluZm9ybWF0aW9u
+DQo+ICAgKiBAaW5pdF92c2k6CQl2c2kgdXNlZCBmb3IgaW5pdGlhbGl6ZWQgVlA5IGluc3RhbmNl
+DQo+ICAgKiBAdnNpOgkJdnNpIHVzZWQgZm9yIGRlY29kaW5nL2ZsdXNoIC4uLg0KPiAgICogQGNv
+cmVfdnNpOgkJdnNpIHVzZWQgZm9yIENvcmUgc3RhZ2UNCj4gQEAgLTQ4Miw2ICs0ODMsOCBAQCBz
+dHJ1Y3QgdmRlY192cDlfc2xpY2VfaW5zdGFuY2Ugew0KPiAgCXN0cnVjdCB2NGwyX3ZwOV9mcmFt
+ZV9jb250ZXh0IGZyYW1lX2N0eF9oZWxwZXI7DQo+ICAJdW5zaWduZWQgY2hhciBkaXJ0eVs0XTsN
+Cj4gIA0KPiArCXN0cnVjdCB2ZGVjX3ZwOV9zbGljZV92c2kgbG9jYWxfdnNpOw0KPiArDQo+ICAJ
+LyogTWljcm9QIHZzaSAqLw0KPiAgCXVuaW9uIHsNCj4gIAkJc3RydWN0IHZkZWNfdnA5X3NsaWNl
+X2luaXRfdnNpICppbml0X3ZzaTsNCj4gQEAgLTE2MTYsMTYgKzE2MTksMTAgQEAgc3RhdGljIGlu
+dA0KPiB2ZGVjX3ZwOV9zbGljZV91cGRhdGVfc2luZ2xlKHN0cnVjdCB2ZGVjX3ZwOV9zbGljZV9p
+bnN0YW5jZSAqaW5zdGFuY2UNCj4gIH0NCj4gIA0KPiAgc3RhdGljIGludCB2ZGVjX3ZwOV9zbGlj
+ZV91cGRhdGVfbGF0KHN0cnVjdCB2ZGVjX3ZwOV9zbGljZV9pbnN0YW5jZQ0KPiAqaW5zdGFuY2Us
+DQo+IC0JCQkJICAgICBzdHJ1Y3QgdmRlY19sYXRfYnVmICpsYXRfYnVmLA0KPiAtCQkJCSAgICAg
+c3RydWN0IHZkZWNfdnA5X3NsaWNlX3BmYyAqcGZjKQ0KPiArCQkJCSAgICAgc3RydWN0IHZkZWNf
+dnA5X3NsaWNlX3ZzaSAqdnNpKQ0KPiAgew0KPiAtCXN0cnVjdCB2ZGVjX3ZwOV9zbGljZV92c2kg
+KnZzaTsNCj4gLQ0KPiAtCXZzaSA9ICZwZmMtPnZzaTsNCj4gLQltZW1jcHkoJnBmYy0+c3RhdGVb
+MF0sICZ2c2ktPnN0YXRlLCBzaXplb2YodnNpLT5zdGF0ZSkpOw0KPiAtDQo+ICAJbXRrX3Zjb2Rl
+Y19kZWJ1ZyhpbnN0YW5jZSwgIkZyYW1lICV1IExBVCBDUkMgMHglMDh4ICVseCAlbHhcbiIsDQo+
+IC0JCQkgcGZjLT5zZXEsIHZzaS0+c3RhdGUuY3JjWzBdLA0KPiArCQkJIChpbnN0YW5jZS0+c2Vx
+IC0gMSksIHZzaS0+c3RhdGUuY3JjWzBdLA0KPiAgCQkJICh1bnNpZ25lZCBsb25nKXZzaS0+dHJh
+bnMuZG1hX2FkZHIsDQo+ICAJCQkgKHVuc2lnbmVkIGxvbmcpdnNpLT50cmFucy5kbWFfYWRkcl9l
+bmQpOw0KPiAgDQo+IEBAIC0yMDkwLDYgKzIwODcsMTMgQEAgc3RhdGljIGludCB2ZGVjX3ZwOV9z
+bGljZV9sYXRfZGVjb2RlKHZvaWQNCj4gKmhfdmRlYywgc3RydWN0IG10a192Y29kZWNfbWVtICpi
+cywNCj4gIAkJcmV0dXJuIHJldDsNCj4gIAl9DQo+ICANCj4gKwlpZiAoSVNfVkRFQ19JTk5FUl9S
+QUNJTkcoY3R4LT5kZXYtPmRlY19jYXBhYmlsaXR5KSkgew0KPiArCQl2ZGVjX3ZwOV9zbGljZV92
+c2lfZnJvbV9yZW1vdGUodnNpLCBpbnN0YW5jZS0+dnNpLCAwKTsNCj4gKwkJbWVtY3B5KCZpbnN0
+YW5jZS0+bG9jYWxfdnNpLCB2c2ksIHNpemVvZigqdnNpKSk7DQo+ICsJCXZkZWNfbXNnX3F1ZXVl
+X3FidWYoJmN0eC0+ZGV2LT5tc2dfcXVldWVfY29yZV9jdHgsDQo+IGxhdF9idWYpOw0KPiArCQl2
+c2kgPSAmaW5zdGFuY2UtPmxvY2FsX3ZzaTsNCj4gKwl9DQo+ICsNCj4gIAlpZiAoaW5zdGFuY2Ut
+PmlycSkgew0KPiAgCQlyZXQgPSBtdGtfdmNvZGVjX3dhaXRfZm9yX2RvbmVfY3R4KGN0eCwJTVRL
+X0lOU1RfSVJRXw0KPiBSRUNFSVZFRCwNCj4gIAkJCQkJCSAgIFdBSVRfSU5UUl9USU1FT1VUX01T
+DQo+ICwgTVRLX1ZERUNfTEFUMCk7DQo+IEBAIC0yMTAyLDIyICsyMTA2LDI1IEBAIHN0YXRpYyBp
+bnQgdmRlY192cDlfc2xpY2VfbGF0X2RlY29kZSh2b2lkDQo+ICpoX3ZkZWMsIHN0cnVjdCBtdGtf
+dmNvZGVjX21lbSAqYnMsDQo+ICAJfQ0KPiAgDQo+ICAJdmRlY192cDlfc2xpY2VfdnNpX2Zyb21f
+cmVtb3RlKHZzaSwgaW5zdGFuY2UtPnZzaSwgMCk7DQo+IC0JcmV0ID0gdmRlY192cDlfc2xpY2Vf
+dXBkYXRlX2xhdChpbnN0YW5jZSwgbGF0X2J1ZiwgcGZjKTsNCj4gKwlyZXQgPSB2ZGVjX3ZwOV9z
+bGljZV91cGRhdGVfbGF0KGluc3RhbmNlLCB2c2kpOw0KPiAgDQo+IC0JLyogTEFUIHRyYW5zIGZ1
+bGwsIG5vIG1vcmUgVUJFIG9yIGRlY29kZSB0aW1lb3V0ICovDQo+IC0JaWYgKHJldCkgew0KPiAt
+CQltdGtfdmNvZGVjX2VycihpbnN0YW5jZSwgIlZQOSBkZWNvZGUgZXJyb3I6ICVkXG4iLA0KPiBy
+ZXQpOw0KPiAtCQlyZXR1cm4gcmV0Ow0KPiAtCX0NCj4gKwlpZiAoIUlTX1ZERUNfSU5ORVJfUkFD
+SU5HKGN0eC0+ZGV2LT5kZWNfY2FwYWJpbGl0eSkpDQo+ICsJCS8qIExBVCB0cmFucyBmdWxsLCBu
+byBtb3JlIFVCRSBvciBkZWNvZGUgdGltZW91dCAqLw0KPiArCQlpZiAocmV0KSB7DQo+ICsJCQlt
+dGtfdmNvZGVjX2VycihpbnN0YW5jZSwgImZyYW1lWyVkXSBkZWNvZGUNCj4gZXJyb3I6ICVkXG4i
+LA0KPiArCQkJCSAgICAgICByZXQsIChpbnN0YW5jZS0+c2VxIC0gMSkpOw0KPiArCQkJcmV0dXJu
+IHJldDsNCj4gKwkJfQ0KPiAgDQpJZiBpbm5lciByYWNpbmcgZGVjb2RlIGVycm9yLCBob3cgdG8g
+ZG8/IExvb2tzIHRoaXMgZXJyb3IgY29uZGl0aW9uDQpvbmx5IGluIG5vbiBpbm5lciByYWNpbmcg
+bW9kZS4NCj4gLQltdGtfdmNvZGVjX2RlYnVnKGluc3RhbmNlLCAibGF0IGRtYSBhZGRyOiAweCVs
+eCAweCVseFxuIiwNCj4gLQkJCSAodW5zaWduZWQgbG9uZylwZmMtPnZzaS50cmFucy5kbWFfYWRk
+ciwNCj4gLQkJCSAodW5zaWduZWQgbG9uZylwZmMtPnZzaS50cmFucy5kbWFfYWRkcl9lbmQpOw0K
+PiAgDQo+IC0JdmRlY19tc2dfcXVldWVfdXBkYXRlX3ViZV93cHRyKCZjdHgtPm1zZ19xdWV1ZSwN
+Cj4gLQkJCQkgICAgICAgdnNpLT50cmFucy5kbWFfYWRkcl9lbmQgKw0KPiAtCQkJCSAgICAgICBj
+dHgtDQo+ID5tc2dfcXVldWUud2RtYV9hZGRyLmRtYV9hZGRyKTsNCj4gLQl2ZGVjX21zZ19xdWV1
+ZV9xYnVmKCZjdHgtPmRldi0+bXNnX3F1ZXVlX2NvcmVfY3R4LCBsYXRfYnVmKTsNCj4gKwl2c2kt
+PnRyYW5zLmRtYV9hZGRyX2VuZCArPSBjdHgtPm1zZ19xdWV1ZS53ZG1hX2FkZHIuZG1hX2FkZHI7
+DQo+ICsJdmRlY19tc2dfcXVldWVfdXBkYXRlX3ViZV93cHRyKCZjdHgtPm1zZ19xdWV1ZSwgdnNp
+LQ0KPiA+dHJhbnMuZG1hX2FkZHJfZW5kKTsNCj4gKwlpZiAoIUlTX1ZERUNfSU5ORVJfUkFDSU5H
+KGN0eC0+ZGV2LT5kZWNfY2FwYWJpbGl0eSkpDQo+ICsJCXZkZWNfbXNnX3F1ZXVlX3FidWYoJmN0
+eC0+ZGV2LT5tc2dfcXVldWVfY29yZV9jdHgsDQo+IGxhdF9idWYpOw0KPiArDQo+ICsJbXRrX3Zj
+b2RlY19kZWJ1ZyhpbnN0YW5jZSwgImxhdCB0cmFucyBlbmQgYWRkcigweCVseCksIHViZQ0KPiBz
+dGFydCBhZGRyKDB4JWx4KVxuIiwNCj4gKwkJCSAodW5zaWduZWQgbG9uZyl2c2ktPnRyYW5zLmRt
+YV9hZGRyX2VuZCwNCj4gKwkJCSAodW5zaWduZWQgbG9uZyljdHgtDQo+ID5tc2dfcXVldWUud2Rt
+YV9hZGRyLmRtYV9hZGRyKTsNCj4gIA0KPiAgCXJldHVybiAwOw0KPiAgfQ0KPiBAQCAtMjEzOSw0
+MCArMjE0Niw0MCBAQCBzdGF0aWMgaW50IHZkZWNfdnA5X3NsaWNlX2RlY29kZSh2b2lkDQo+ICpo
+X3ZkZWMsIHN0cnVjdCBtdGtfdmNvZGVjX21lbSAqYnMsDQo+ICBzdGF0aWMgaW50IHZkZWNfdnA5
+X3NsaWNlX2NvcmVfZGVjb2RlKHN0cnVjdCB2ZGVjX2xhdF9idWYgKmxhdF9idWYpDQo+ICB7DQo+
+ICAJc3RydWN0IHZkZWNfdnA5X3NsaWNlX2luc3RhbmNlICppbnN0YW5jZTsNCj4gLQlzdHJ1Y3Qg
+dmRlY192cDlfc2xpY2VfcGZjICpwZmM7DQo+ICsJc3RydWN0IHZkZWNfdnA5X3NsaWNlX3BmYyAq
+cGZjID0gTlVMTDsNCj4gIAlzdHJ1Y3QgbXRrX3Zjb2RlY19jdHggKmN0eCA9IE5VTEw7DQo+ICAJ
+c3RydWN0IHZkZWNfZmIgKmZiID0gTlVMTDsNCj4gIAlpbnQgcmV0ID0gLUVJTlZBTDsNCj4gIA0K
+PiAgCWlmICghbGF0X2J1ZikNCj4gLQkJZ290byBlcnI7DQo+ICsJCXJldHVybiAtRUlOVkFMOw0K
+PiAgDQo+ICAJcGZjID0gbGF0X2J1Zi0+cHJpdmF0ZV9kYXRhOw0KPiAgCWN0eCA9IGxhdF9idWYt
+PmN0eDsNCj4gIAlpZiAoIXBmYyB8fCAhY3R4KQ0KPiAtCQlnb3RvIGVycjsNCj4gKwkJcmV0dXJu
+IC1FSU5WQUw7DQo+ICANCj4gIAlpbnN0YW5jZSA9IGN0eC0+ZHJ2X2hhbmRsZTsNCj4gIAlpZiAo
+IWluc3RhbmNlKQ0KPiAtCQlnb3RvIGVycjsNCj4gKwkJcmV0dXJuIC1FSU5WQUw7DQo+ICANCj4g
+IAlmYiA9IGN0eC0+ZGV2LT52ZGVjX3BkYXRhLT5nZXRfY2FwX2J1ZmZlcihjdHgpOw0KPiAgCWlm
+ICghZmIpIHsNCj4gIAkJcmV0ID0gLUVCVVNZOw0KPiAtCQlnb3RvIGVycjsNCj4gKwkJZ290byB2
+ZGVjX2RlY19lbmQ7DQo+ICAJfQ0KPiAgDQo+ICAJcmV0ID0gdmRlY192cDlfc2xpY2Vfc2V0dXBf
+Y29yZShpbnN0YW5jZSwgZmIsIGxhdF9idWYsIHBmYyk7DQo+ICAJaWYgKHJldCkgew0KPiAgCQlt
+dGtfdmNvZGVjX2VycihpbnN0YW5jZSwNCj4gInZkZWNfdnA5X3NsaWNlX3NldHVwX2NvcmVcbiIp
+Ow0KPiAtCQlnb3RvIGVycjsNCj4gKwkJZ290byB2ZGVjX2RlY19lbmQ7DQo+ICAJfQ0KPiAgCXZk
+ZWNfdnA5X3NsaWNlX3ZzaV90b19yZW1vdGUoJnBmYy0+dnNpLCBpbnN0YW5jZS0+Y29yZV92c2kp
+Ow0KPiAgDQo+ICAJcmV0ID0gdnB1X2RlY19jb3JlKCZpbnN0YW5jZS0+dnB1KTsNCj4gIAlpZiAo
+cmV0KSB7DQo+ICAJCW10a192Y29kZWNfZXJyKGluc3RhbmNlLCAidnB1X2RlY19jb3JlXG4iKTsN
+Cj4gLQkJZ290byBlcnI7DQo+ICsJCWdvdG8gdmRlY19kZWNfZW5kOw0KPiAgCX0NCj4gIA0KPiAg
+CWlmIChpbnN0YW5jZS0+aXJxKSB7DQo+IEBAIC0yMTkwLDI0ICsyMTk3LDI2IEBAIHN0YXRpYyBp
+bnQgdmRlY192cDlfc2xpY2VfY29yZV9kZWNvZGUoc3RydWN0DQo+IHZkZWNfbGF0X2J1ZiAqbGF0
+X2J1ZikNCj4gIAlyZXQgPSB2ZGVjX3ZwOV9zbGljZV91cGRhdGVfY29yZShpbnN0YW5jZSwgbGF0
+X2J1ZiwgcGZjKTsNCj4gIAlpZiAocmV0KSB7DQo+ICAJCW10a192Y29kZWNfZXJyKGluc3RhbmNl
+LA0KPiAidmRlY192cDlfc2xpY2VfdXBkYXRlX2NvcmVcbiIpOw0KPiAtCQlnb3RvIGVycjsNCj4g
+KwkJZ290byB2ZGVjX2RlY19lbmQ7DQo+ICAJfQ0KPiAgDQo+IC0JcGZjLT52c2kudHJhbnMuZG1h
+X2FkZHJfZW5kICs9IGN0eC0NCj4gPm1zZ19xdWV1ZS53ZG1hX2FkZHIuZG1hX2FkZHI7DQo+ICAJ
+bXRrX3Zjb2RlY19kZWJ1ZyhpbnN0YW5jZSwgImNvcmUgZG1hX2FkZHJfZW5kIDB4JWx4XG4iLA0K
+PiAgCQkJICh1bnNpZ25lZCBsb25nKXBmYy0+dnNpLnRyYW5zLmRtYV9hZGRyX2VuZCk7DQo+IC0J
+dmRlY19tc2dfcXVldWVfdXBkYXRlX3ViZV9ycHRyKCZjdHgtPm1zZ19xdWV1ZSwgcGZjLQ0KPiA+
+dnNpLnRyYW5zLmRtYV9hZGRyX2VuZCk7DQo+IC0JY3R4LT5kZXYtPnZkZWNfcGRhdGEtPmNhcF90
+b19kaXNwKGN0eCwgMCwgbGF0X2J1Zi0NCj4gPnNyY19idWZfcmVxKTsNCj4gLQ0KPiAtCXJldHVy
+biAwOw0KPiAgDQo+IC1lcnI6DQo+IC0JaWYgKGN0eCAmJiBwZmMpIHsNCj4gLQkJLyogYWx3YXlz
+IHVwZGF0ZSByZWFkIHBvaW50ZXIgKi8NCj4gLQkJdmRlY19tc2dfcXVldWVfdXBkYXRlX3ViZV9y
+cHRyKCZjdHgtPm1zZ19xdWV1ZSwgcGZjLQ0KPiA+dnNpLnRyYW5zLmRtYV9hZGRyX2VuZCk7DQo+
+ICt2ZGVjX2RlY19lbmQ6DQo+ICsJLyogYWx3YXlzIHVwZGF0ZSByZWFkIHBvaW50ZXIgKi8NCj4g
+KwlpZiAoSVNfVkRFQ19JTk5FUl9SQUNJTkcoY3R4LT5kZXYtPmRlY19jYXBhYmlsaXR5KSkNCj4g
+KwkJdmRlY19tc2dfcXVldWVfdXBkYXRlX3ViZV9ycHRyKCZjdHgtPm1zZ19xdWV1ZSwNCj4gKwkJ
+CQkJICAgICAgIHBmYy0NCj4gPnZzaS50cmFucy5kbWFfYWRkcik7DQo+ICsJZWxzZQ0KPiArCQl2
+ZGVjX21zZ19xdWV1ZV91cGRhdGVfdWJlX3JwdHIoJmN0eC0+bXNnX3F1ZXVlLA0KPiArCQkJCQkg
+ICAgICAgcGZjLQ0KPiA+dnNpLnRyYW5zLmRtYV9hZGRyX2VuZCk7DQo+ICANCj4gKwlpZiAocmV0
+KSB7DQpObyBuZWVkIHsNCg0KQmVzdCBSZWdhcmRzLA0KWXVuZmVpIERvbmcNCj4gIAkJaWYgKGZi
+KQ0KPiAgCQkJY3R4LT5kZXYtPnZkZWNfcGRhdGEtPmNhcF90b19kaXNwKGN0eCwgMSwNCj4gbGF0
+X2J1Zi0+c3JjX2J1Zl9yZXEpOw0KPiArCX0gZWxzZSB7DQo+ICsJCWN0eC0+ZGV2LT52ZGVjX3Bk
+YXRhLT5jYXBfdG9fZGlzcChjdHgsIDAsIGxhdF9idWYtDQo+ID5zcmNfYnVmX3JlcSk7DQo+ICAJ
+fQ0KPiAgCXJldHVybiByZXQ7DQo+ICB9DQo=
 
