@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D6DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 17:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB53C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 18:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PGr+OHpd9QR70TelEUD0vawxtEQ1HAh4AfgGSoeJdCg=; b=p+Uak1CX7cMQvh+W4rG0rvqZVa
-	j3N3kvI6kFwo2bAh8anFkWy1xEzeQhJU6hZaGAmgCVfpehd+dc6e6lWlX2chc8KYjE672o/S84W9X
-	jJTRnHM7jx8+E4O7ejUjeJfxdRI7LRuvy8Q+WeT2YFt1DtSZUMcJOUQBf4W2mS3cnvseBtuU5EoWR
-	/iqrNxK4VG+FD/8Zx+6yV/edQTE8hilRc9HfHeiA6fgUshrtHqReCnu3RMCFeJFTMWQM8sT3rM/U+
-	t+Du3nEcTVUhmbg+ewEDO7i13x6/gzkM4eSWEBv1O2HsosuItdiIOmFr5hNJeyWfieHMYSMeZncm/
-	mINwvtrQ==;
+	bh=+ir96l+QDjXFux43KwFJhlNV7YT1OSh/8apFuqiZtho=; b=L4pZj4zQ+wJWHl+JyBIq3Lfau8
+	bCBzQYJ6Uh9Utpq4umkIREnkBwBgUHAKl693dd9FeQj+H29yKP8joXt/9wKvkvH8BBZevV6OEEcYw
+	c7C25+va17G6+i/Z/KbodfKRX9R0UWmfujZKlhLlWx4iclKPf8zOBlswkdNGwTVBxJfOj1pAY+eM5
+	9DGUwU9E2iCYWWbWbC6XIuZWbAQWRE7jX9a8Jp1iT5qdAldKdEiZM29NRIVgY2gZTKQ6dZ0blyolB
+	5TCTkWAPZNhBDuo2ZVxvIS9O1DrEuxRZAhJt6Fa73We9sjbgYse9o1T1OYUBmHiKI0TOC/PYHQIFZ
+	knraLlHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os6Lh-00GxcM-0P; Mon, 07 Nov 2022 17:55:53 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1os6YK-00H3fY-Lv; Mon, 07 Nov 2022 18:08:56 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os6LO-00GxKZ-V5
-	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 17:55:37 +0000
-Received: by mail-lj1-x232.google.com with SMTP id d20so17456606ljc.12
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 09:55:32 -0800 (PST)
+	id 1os6TV-00H1TU-Os
+	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 18:04:00 +0000
+Received: by mail-lj1-x233.google.com with SMTP id x21so17494436ljg.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 10:03:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PGr+OHpd9QR70TelEUD0vawxtEQ1HAh4AfgGSoeJdCg=;
-        b=YJ1bDYl6JLlBjy8eyB95SYQZIKQOVjudBlguIR/pdlO9WhqJqZP5VFxWpqsOhj+q/F
-         XPCwvsTaIC3lDzN8fuOI7q/rdvZiXOl2Uyc06eAWQTgYbkVZ3vUTB2xk5bCxCOiEzN3m
-         Mig/4KNs+R8/fdK27ItXKObx4D0FoanGoi4XtUJhBebXNS7v73cRMRqO00XvHc9UHSiW
-         K673Tc2Wiy+vGBC5vO7XUso8/lieNabysdAzjR/3jdnMeTMH9bYD/q/d1frObSXI0PQk
-         CnD/cnz6JdKNse3zFfvIPX0y9NLRwJKX1LxMiucrA8l6H+hTF5v6191LWCt6gDGerOLG
-         aV5A==
+        bh=+ir96l+QDjXFux43KwFJhlNV7YT1OSh/8apFuqiZtho=;
+        b=nT3CgucQtQ1gVhgea+s6MbSPrlUCSZ6j43gzpB71/IhaN3vIRUyUQg9rFIOQ0EOSOI
+         l1p8KXfPEyVrbLHtZU/V0ENKGuD7OmI+eqRCHWED0EpxhpQrOr2ktf7eSoJ7kEhDVEG/
+         /VttDUEf6u71RNqAgu4GudNAz+jDgaxFKRVUWIX1Gaax+w43cwBjvhZg0rqSE+RUiNYL
+         tC+k2Snids+rFyic656eMYikt5iVJbJujpa4BR9hvfsVPuXxEqNU56ziemfweSeTJ7YY
+         r4HHT5C/KL/ROQtuTTbrXmkr8zNarexAeib+Ha6s4u+Wau8hhKauEXzK8HgyEh1HdIhG
+         JMNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PGr+OHpd9QR70TelEUD0vawxtEQ1HAh4AfgGSoeJdCg=;
-        b=rV87g55NcRi4C7C9gneP2LhvbXnXwufdQS1EC+mKDSrxHuKdvhmetBg4jrwxR0EzO1
-         qSO2uld6YXYv3SUL+3HAeWa4B4R/lY6MJwqG4vy4sIIw+glAG0NLToEHxxhk0DLsTuQY
-         3Uc9mPPhe5iJfBtwWxAt3HVZGX2dll843L2uQJJyPA6LdWfdxa1JayhaWy5meNBXNKbW
-         4LGozSDjvulgSq6n9Aay8EkrRlnCIWI9NTGoKO8Oim4pwpwE94wvgpPKV3Z7fiuiElWs
-         pxethQ2+7ODF2tiBkYNwu/rJaQjiHX6oSNgXrPIEg2rI9L/x7Q8sI/QBOGu/Hhr9dfzU
-         DXog==
-X-Gm-Message-State: ACrzQf06pFNhhAFw2bJKG7BX45MFSiu27S4T7a3ydg4DHtL7zL6LWbQb
-	WPTueNfDpb5y0LbytVsrCWUehw==
-X-Google-Smtp-Source: AMsMyM4i3h9s+NDpf4TdbXxN2HKfcV0lefo8LkPXtTQWjLJHSetVxfR9aJ+uXIefvKsVbJ2ZwlNwvA==
-X-Received: by 2002:a05:651c:516:b0:277:2428:3682 with SMTP id o22-20020a05651c051600b0027724283682mr6104769ljp.291.1667843730703;
-        Mon, 07 Nov 2022 09:55:30 -0800 (PST)
+        bh=+ir96l+QDjXFux43KwFJhlNV7YT1OSh/8apFuqiZtho=;
+        b=6yoGN8iitr+p6nn40Tkm03C66pPDFANdwHeco3lZCI+E+IA+ImiF6vmHjhjMU3W9yr
+         pu/nyxVtI1PuP+PpvfXfH5qbkNerv7fsOwjL2pNEXEce+wgzVAL7IWEDOWhZUQOZEOAk
+         /z/SLq29epsygfVQ2qEvwrEZojWGKjDrlZ2/Sm1r0bJ9jhm4OmBjehNjCUw2h2eZ+hso
+         rTE/SoMztcpCivQcC3EnbKlo1BWzWJSKRuBgpagUb+IIYMnVWvUy952bb8HEl7Mt+cXQ
+         0Ef5dNZKcNMRXtRzrXvhxzBDfVcNUd/eGReyC1/m97wqi6UC0wsYRtMgqm++V8cd9v7A
+         sTRg==
+X-Gm-Message-State: ACrzQf16GyN7U/AsyqdPe7kAnjyBCrmUZx7MhMzgnGZ3NQ6WcDFSSRJu
+	PsjXlqlhJNSlWwtk/uSe6aW99w==
+X-Google-Smtp-Source: AMsMyM59MymaW14rwcCR//K6Z824DJsWuzy2Lj65+BM7fRjMmwmBrrErq2391fOQILS2QOeD1c70uA==
+X-Received: by 2002:a2e:2405:0:b0:277:524c:f83d with SMTP id k5-20020a2e2405000000b00277524cf83dmr5914462ljk.217.1667844232060;
+        Mon, 07 Nov 2022 10:03:52 -0800 (PST)
 Received: from [192.168.0.20] (088156142199.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.199])
-        by smtp.gmail.com with ESMTPSA id j10-20020a056512344a00b004afd23cf7eesm1336063lfr.168.2022.11.07.09.55.27
+        by smtp.gmail.com with ESMTPSA id z4-20020a056512376400b00499b1873d6dsm1353254lft.269.2022.11.07.10.03.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Nov 2022 09:55:29 -0800 (PST)
-Message-ID: <84b57a5c-3b29-3e40-8375-8496baabdbc9@linaro.org>
-Date: Mon, 7 Nov 2022 18:55:26 +0100
+        Mon, 07 Nov 2022 10:03:51 -0800 (PST)
+Message-ID: <e6fbdee5-24b0-ef0f-9cff-1d77220d9d73@linaro.org>
+Date: Mon, 7 Nov 2022 19:03:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v2 07/23] arm64: dts: Update cache properties for exynos
+Subject: Re: [PATCH v2 00/23] Update cache properties for arm64 DTS
 Content-Language: en-US
 To: Pierre Gondois <pierre.gondois@arm.com>, linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -109,16 +109,21 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  Jonathan Hunter <jonathanh@nvidia.com>, Andy Gross <agross@kernel.org>,
  Bjorn Andersson <andersson@kernel.org>,
  Konrad Dybcio <konrad.dybcio@somainline.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Nishanth Menon <nm@ti.co>,
- Tero Kristo <kristo@kernel.org>, 73@gmail.com,
- Martin Kepplinger <martink@posteo.de>, Liu Ying <victor.liu@nxp.com>,
- Haibo Chen <haibo.chen@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>,
- Vadym Kochan <vadym.kochan@plvision.eu>, Sameer Pujar <spujar@nvidia.com>,
- Akhil R <akhilrajeev@nvidia.com>, Ashish Mhetre <amhetre@nvidia.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Shashank Prashar <s.prashar@samsung.com>,
- Sriranjani P <sriranjani.p@samsung.com>, devicetree@vger.kernel.org,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tero Kristo <kristo@kernel.org>, Viorel Suman <viorel.suman@nxp.com>,
+ Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
+ Shenwei Wang <shenwei.wang@nxp.com>, Ming Qian <ming.qian@nxp.com>,
+ Lucas Stach <l.stach@pengutronix.de>, Adam Ford <aford173@gmail.com>,
+ Tim Harvey <tharvey@gateworks.com>, Richard Zhu <hongxing.zhu@nxp.com>,
+ Li Jun <jun.li@nxp.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Markus Niebel <Markus.Niebel@ew.tq-group.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, Marek Vasut <marex@denx.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Arjun K V <arjun.kv@samsung.com>, devicetree@vger.kernel.org,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-amlogic@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
  linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
@@ -126,14 +131,13 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  linux-realtek-soc@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20221107155825.1644604-1-pierre.gondois@arm.com>
- <20221107155825.1644604-8-pierre.gondois@arm.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221107155825.1644604-8-pierre.gondois@arm.com>
+In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_095535_148446_249B4236 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20221107_100357_871093_AF96168F 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,21 +152,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/11/2022 16:57, Pierre Gondois wrote:
-> The DeviceTree Specification v0.3 specifies that the cache node
-> 'compatible' and 'cache-level' properties are 'required'. Cf.
-> s3.8 Multi-level and Shared Cache Nodes
-> The 'cache-unified' property should be present if one of the
-> properties for unified cache is present ('cache-size', ...).
-> 
-> Update the Device Trees accordingly.
+On 07/11/2022 16:56, Pierre Gondois wrote:
+> v2:
+> - Update/Add patches for missed cache properties requiring to be
+>   updated for the following platforns: bcm, amazon, arm, exynos,
+>   freescale, marvell, mediatek, nvidia, socinext, tesla, ti.
+>   Missed cache properties were detected using Rob Herring's branch:
+>   https://github.com/robherring/dt-schema/tree/cache-rework
+> - v1 of exynos, tesla were merged.
 
-Why do you send it again? This was applied.
+So you now duplicated the properties... You need to explicitly ask for a
+patch to be dropped.
 
-What is more - you have way too many recipients. Mail servers reject it.
-It's impossible even to reply to it...
+This cannot be sent like this because it is unmanageable.
+1. Split the patchset per sub arch:
 
->  			cache-sets = <2048>;
+"Sending of the message failed.
+An error occurred while sending mail. The mail server responded:
+Your message has too many recipients. For more information regarding
+Google's sending limits, please visit:
+ https://support.google.com/mail/?p=TooManyRecipientsError
+w8-20020ac24428000000b00492ea54beeasm1344368lfl.306 - gsmtp.
+ Please check the message recipient "chris.obbard@collabora.com" and try
+again."
+
+2. Ask explicitly for dropping already merged patches (I assume they are
+incorrect if you send v2 of them).
+
+3. Use subject prefixes matching the subsystem (git log --oneline -- ...).
+
+4. Send such patches only to interested parties, not as part of everything.
 
 Best regards,
 Krzysztof
