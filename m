@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C384C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:07:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19551C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:07:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qaXy7ASsEDDlQPixtA9h8Vqb0JSzYSy8v098jeMIfeo=; b=BttVRo8h7/dOZMqCfDs/ZnssMM
-	Z02VoMe6OC6bPYlJSMyyKYPLCLTwNi8BXz+DvrAeWR0aklnJ/MTXdLrEC0oF7e4Hpa1FQp9/DobvI
-	eLIP2xDNARuiuqoYzk4/My+jQk1h3Q/mgPObxINhB9aRx04CoP6byPFQUzhuB0wXY07Zx0tiHSjvA
-	eevD1NxnAzxZ8NG9UIqttnIw07YqL23vJ6SP/Hh4nLKCemsUMaZfOfllOXH101jCP5LMSQT7CWska
-	RUaorUc41bfM31pf02mcpeoKk4NP3/uxAV29T8DOpTuSFDkpRtMuvhU7a162/R6dKZBzBqB7VWO10
-	2xC6s+fw==;
+	bh=zth7KOlMoWhqf1aWOgLJYn15uj/RILU1/au2R5lrHlQ=; b=m/q3YM3y3166hs8agfMyEnc5zE
+	cix3cJyfa6pAJUQShQlPG5Nuf4X4sA5A7HjZAkClQAh+GDwJMekQMiblnS1YKihsSdLrKsAjyi9+f
+	r0OOYdmsYLGzRzqA8dCGIoMdpuhBS/U5DpDIH4DmaFKMKjz8/AQDlAMHRLTW1ss3ufh51xJwtX7RG
+	hCStQkTLuXv8noeZNfVi/NkeDPYlpENIIq/ulGowsTf+T+WZ7yEk/Nagmpfez31E5M3Dy/4PXyGAa
+	185dxLsYB+PYC4gEQ73ersKWBo3Uoj/g8DQ6PZljdpLvgz6es9FdmLaUZzb6pEG0cHr2sWVC/2hAw
+	n1bVNzMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4eN-00G0o6-BF; Mon, 07 Nov 2022 16:07:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1os4eu-00G1B5-1G; Mon, 07 Nov 2022 16:07:36 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4cY-00FzeG-JE; Mon, 07 Nov 2022 16:05:11 +0000
+	id 1os4cc-00FzgE-IX; Mon, 07 Nov 2022 16:05:15 +0000
 Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8DC6E66028EA;
-	Mon,  7 Nov 2022 16:05:06 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D1D266602965;
+	Mon,  7 Nov 2022 16:05:09 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667837109;
-	bh=oiakfK/KyQsyZ8dFT+n7UDDhSpuPj6+i0VVZ4ScGBTI=;
+	s=mail; t=1667837113;
+	bh=oWRkrDOmNJ2dmIVe5ehfgdnkPnZtvtRMYH1LSztA4/Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LM/BCzWmyL7gjkAmc0cyLFYZ1P0pS7/pjWtsKAY1HMsJpA6WgBVb+urgQitu/VU4u
-	 omJw2s0ZEPP/E2KuLjbTGPAeyC4a1FifCx5JR8Thk3ysT6DDUG3uT5w9yIMKWqOKk7
-	 4zqVYg/4kAB0wy3FHcDuPvnVnMV80l9YN1YIgRa0BhqBS1kg5vgsVltc0sAtcvCNc7
-	 1dvfcngzV2ySfNd9xVB2bKbAYJ/7theAvhcAEmM4UeMarPjb0Kl8YDfW4vmvZd42Ps
-	 UFTraaqOseeMJLMkS+r+jeerKMtOXvC1qNnQyAN/CQUV5BvOtDV88sXmOJ1FlmH8u6
-	 VCzh5kLnklrlw==
+	b=RPN1eQI+7jezHkamwk1HZ83zy7ukfs4L6sTCR6xZHpu/bu1zpRls/3yENC7JX7xvR
+	 a/FoukoFapv9GKGXxmAiAF89zt6I4untu+Unf5lDZxoIbFoXqrwLV/0KYafeZOlKXx
+	 /SdtT5fK7JCl75PnyRZ+mbhOvToMtYXVoVhlRyZHBvlF5BxYDs/0fOVLCVKDzAuFPf
+	 FXkO73a5CVSewIyHYP9P8QhRLITCkE+3ZW9iKMhVI5RyPoEtksEDFMHTAEy9GvdUfI
+	 YAN9xsthNEmATiRdln1fYBhhweSTNXFiBVeF32tvUhXJT0xUbTMxuuDg36DhuGoRbc
+	 OF1/GDse4c1SA==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Mark Brown <broonie@kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	kernel@collabora.com,
 	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
+	Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Jaroslav Kysela <perex@perex.cz>,
 	Jiaxin Yu <jiaxin.yu@mediatek.com>,
 	Liam Girdwood <lgirdwood@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
 	Takashi Iwai <tiwai@suse.com>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
 	alsa-devel@alsa-project.org,
-	"chunxu.li" <chunxu.li@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 7/9] ASoC: mediatek: mt8186-rt5682: Register to module device table
-Date: Mon,  7 Nov 2022 11:04:35 -0500
-Message-Id: <20221107160437.740353-8-nfraprado@collabora.com>
+Subject: [PATCH 8/9] ASoC: mediatek: mt8192-mt6359: Register to module device table
+Date: Mon,  7 Nov 2022 11:04:36 -0500
+Message-Id: <20221107160437.740353-9-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221107160437.740353-1-nfraprado@collabora.com>
 References: <20221107160437.740353-1-nfraprado@collabora.com>
@@ -67,8 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_080510_791522_3B019157 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20221107_080514_791686_B34B847D 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +91,21 @@ system.
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
 
- sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c | 1 +
+ sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 16d834f3153d..e59d92e2afa3 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -1237,6 +1237,7 @@ static const struct of_device_id mt8186_mt6366_rt1019_rt5682s_dt_match[] = {
+diff --git a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+index b93c3237ef2d..16660eda577e 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
++++ b/sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+@@ -1261,6 +1261,7 @@ static const struct of_device_id mt8192_mt6359_dt_match[] = {
  	},
  	{}
  };
-+MODULE_DEVICE_TABLE(of, mt8186_mt6366_rt1019_rt5682s_dt_match);
++MODULE_DEVICE_TABLE(of, mt8192_mt6359_dt_match);
  #endif
  
- static struct platform_driver mt8186_mt6366_rt1019_rt5682s_driver = {
+ static const struct dev_pm_ops mt8192_mt6359_pm_ops = {
 -- 
 2.38.1
 
