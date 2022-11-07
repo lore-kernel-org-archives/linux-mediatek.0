@@ -4,68 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC8FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Nov 2022 22:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B62C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 01:15:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ueZQBrMbeO7aiG0xIq19y+FRYZq2F41aeAYODCw4rJM=; b=tg5tdyGyHONgKenWfuY2aBGqyq
-	Wv4iV1qVkPXb3Vxhvy0jvmoVxrw1qb/CwM6wsIg1i8vBsOwf9YGXIzhlJmu/Lktggh1ibnwZEgPE6
-	oiw4cO7rATmSDhNvfTpIgBAWfeAYP3+z+AUM0CWQg9BB+WeuNRGVAa9EJRp4hwFcvIf6BdkO6pAKH
-	bxjiAwmlffbxnOT9+xhFCwhxIH8uY9x/J0M0OjgDKTYAHqaBdS7nbZFSNjo/LH73hB3k+7LQqS3bU
-	BkdqJYdehv3n0eaZSLWGgBK3Hegj420Y3H8yTxpB7lluF0adcQlfzN3IPxBUpKeR//l2aPk/yVdHj
-	i2+O51LA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RdqEOXLN1wdc1llkU3ljCh2GalL/TJg4Xksy3ttqH1Q=; b=b5DL34hty99NRdydp5+XA/LwLH
+	kd8qLLot/KTjGPXU50yY/o861tVYuYlpT2mlvziz9rszIu6ssj/vNXxyoHCbKGpkgq84QcclBD1Em
+	I5iTbjZddyA0KqItGd23/qojBVsxJULttwR26xQ6Cl28jYtwAGJ9KKrX5x1nZvWi6lDVMF6SD+Hsd
+	3UHfo85zXf8m7xJMFnV4R5A+C51n5pOBnFPS1eNc8Xqk0z1Soh/mEl+LFfKP3GsI661vNHSxCFTJR
+	7pbLf4Pcibk5Vd7x6bUhlKBrLIV80MU7pogUMFR26KmaHFFCChVAJgptjW1aTZulSm3dCURAeve+a
+	ofwcWgGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oroWz-00AK7Q-Ik; Sun, 06 Nov 2022 22:54:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1orqjU-00Ao9b-1E; Mon, 07 Nov 2022 01:15:24 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oroWo-00AK5q-Ch; Sun, 06 Nov 2022 22:54:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 83B1E60BA0;
-	Sun,  6 Nov 2022 22:54:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8997CC433D6;
-	Sun,  6 Nov 2022 22:54:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667775248;
-	bh=CCOXKsk1YG6cytIhCugUYJ5LpHswjB66YukQZnjJrb4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dHI5IDuxp1uLkeFTUcpRH3bRKYCLaI4GmrmUFk/iFG3nvE5gcAwQBdoS7zh+QeLu1
-	 7f5/j4eVo3ADiBkrPFu/GxybEOmWlwVtRjHWfwrTC/46ZDNAN6kUIpmNY3kZksY90I
-	 OdbFe6BYMYjJZALw9ciO/Hcb6dxTBoyEIn3mcecQIwDIH6TpGF6FYqMhLX+OckU8ym
-	 aF3Ikni8lpbyq1Qcy/7iN3Mlil65LlBdW0XSvo3nc+SnRQo7v+czAs1Esld+tX+W5A
-	 TgFsXXSFhLpPhzCfLZnEwLMjU1Sp615Ol+5fZZSPZV1vBPaTavbDBf4MfVNUxdNb0X
-	 hebEDEeu3Bj9w==
-Date: Sun, 6 Nov 2022 23:54:06 +0100
-From: Pratyush Yadav <pratyush@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Tudor Ambarus <tudor.ambarus@microchip.com>,
-	Michael Walle <michael@walle.cc>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mtd@lists.infradead.org, linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Bayi Cheng <bayi.cheng@mediatek.com>
-Subject: Re: [PATCH] mtd: spi-nor: Fix the number of bytes for the dummy
- cycles
-Message-ID: <20221106225406.o36syeso4prdi7yn@yadavpratyush.com>
-References: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
+	id 1orqjJ-00Ao7X-1d; Mon, 07 Nov 2022 01:15:15 +0000
+Received: from dggpeml500026.china.huawei.com (unknown [172.30.72.56])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4N5Cty04x1zHvZS;
+	Mon,  7 Nov 2022 09:14:34 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by dggpeml500026.china.huawei.com
+ (7.185.36.106) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Mon, 7 Nov
+ 2022 09:14:56 +0800
+From: Zhengchao Shao <shaozhengchao@huawei.com>
+To: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <nbd@nbd.name>, <john@phrozen.org>,
+	<sean.wang@mediatek.com>, <Mark-MC.Lee@mediatek.com>, <davem@davemloft.net>,
+	<edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<matthias.bgg@gmail.com>
+CC: <bgolaszewski@baylibre.com>, <weiyongjun1@huawei.com>,
+	<yuehaibing@huawei.com>, <shaozhengchao@huawei.com>
+Subject: [PATCH net] net: ethernet: mtk-star-emac: disable napi when connect and start PHY failed in mtk_star_enable()
+Date: Mon, 7 Nov 2022 09:21:59 +0800
+Message-ID: <20221107012159.211387-1-shaozhengchao@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221031124633.13189-1-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpeml500026.china.huawei.com (7.185.36.106)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_145410_505962_D4491D00 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20221106_171513_298392_FE7AE66E 
+X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +67,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/10/22 08:46PM, Allen-KH Cheng wrote:
-> The number of bytes used by spi_nor_spimem_check_readop() may be
-> incorrect for the dummy cycles. Since nor->read_dummy is not initialized
-> before spi_nor_spimem_adjust_hwcaps().
-> 
-> We use both mode and wait state clock cycles instead of nor->read_dummy.
-> 
-> Fixes: 0e30f47232ab ("mtd: spi-nor: add support for DTR protocol")
-> Co-developed-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->  drivers/mtd/spi-nor/core.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-> index 6c921eb3fadb..8b9c318a0ad4 100644
-> --- a/drivers/mtd/spi-nor/core.c
-> +++ b/drivers/mtd/spi-nor/core.c
-> @@ -1914,7 +1914,8 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
->  	spi_nor_spimem_setup_op(nor, &op, read->proto);
->  
->  	/* convert the dummy cycles to the number of bytes */
-> -	op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
-> +	op.dummy.nbytes = (read->num_mode_clocks + read->num_wait_states) *
-> +			  op.dummy.buswidth / 8;
+When failed to connect to and start PHY in mtk_star_enable() for opening
+device, napi isn't disabled. When open mtk star device next time, it will
+reports a invalid opcode issue. Fix it. Only be compiled, not be tested.
 
-Good catch!
+Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
+Signed-off-by: Zhengchao Shao <shaozhengchao@huawei.com>
+---
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Reviewed-by: Pratyush Yadav <pratyush@kernel.org>
-
->  	if (spi_nor_protocol_is_dtr(nor->read_proto))
->  		op.dummy.nbytes *= 2;
->  
-> -- 
-> 2.18.0
-> 
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 7e890f81148e..7050351250b7 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1026,6 +1026,8 @@ static int mtk_star_enable(struct net_device *ndev)
+ 	return 0;
+ 
+ err_free_irq:
++	napi_disable(&priv->rx_napi);
++	napi_disable(&priv->tx_napi);
+ 	free_irq(ndev->irq, ndev);
+ err_free_skbs:
+ 	mtk_star_free_rx_skbs(priv);
 -- 
-Regards,
-Pratyush Yadav
+2.17.1
+
 
