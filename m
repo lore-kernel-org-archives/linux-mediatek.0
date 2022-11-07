@@ -4,133 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FF7C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 15:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A8CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 15:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pH9EnTs5L3AE9yRrf/TOfLTE3vMWtMQ5hIBy7+jkfxo=; b=MmcrFqaN/PDSPG2ZDTFor3bHYi
-	Ib5VngLa6YVjfohKrZs8h/0vl8/sB4qtlYxCHj33+dXpri1irjLFXnSRUMJ/8yuZd9Ltj6T5J0rNu
-	PPpkfvBGJNaDf3DyQiRy/b/7Z4W68lSdA3m9b7Nbp9jndm3K2JryWPTZDOO/WH2FWf8JT8Opfjkbo
-	Hgy8GnlZ7QqgGFgZEZwuDEfSPNyFjLhE2Cq3ygnSZ1i8IX6rc09asRIkM3WaDVKWE/jxfdibn+E2a
-	s63V4SB/29YifctQY9uLCdL9ls4DEt8J5s999xN3gahgOO6SEZMVvAMFbgyTF3C5hhQRWLKlpSaYJ
-	yD0iGAsA==;
+	bh=AQlxwrQ9+SAIJlBHFz/WVtqfuSsX8479gf+InmNYkZs=; b=HH/GcRKXbTSy7LWHv75IBw3B3s
+	4UqWIUfp0X79bn/RjsbHb689MMZT4q9jduUvLNglFhoaf37Q4dped6gJyPmoMR4vsgl+rhNJqkOwT
+	qulQi2xvp6n98FOZIKwyfau/OBH7uAIvfGlQa/hRF0rtZECC0lakuwP+MRpNcTgVZU+ZApsssx4/+
+	kLRKzXrpzB+Coz2tSUMz16I6OhKuaEHgWcA34F/zzkWSqxQerS62HcKEZFrXC3kjJUkBreIFW3zNL
+	qon0D6QKhyKT7cMlp5VPU/E3/f0TpDeGcar/Bltqrp8kNhEnC7KveE6lshrW+2cvm8KaYXk/0q75A
+	KnCy6bqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3ff-00FVzq-7c; Mon, 07 Nov 2022 15:04:19 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1os3gf-00FWfr-HF; Mon, 07 Nov 2022 15:05:21 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os3U5-00FOg1-KV; Mon, 07 Nov 2022 14:52:23 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailnew.west.internal (Postfix) with ESMTP id 10FC32B05D99;
-	Mon,  7 Nov 2022 09:52:06 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute2.internal (MEProxy); Mon, 07 Nov 2022 09:52:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1667832726; x=1667839926; bh=pH9EnTs5L3
-	AE9yRrf/TOfLTE3vMWtMQ5hIBy7+jkfxo=; b=F7wDDyPbg4B6cj4BQiM8vMTPkt
-	tkEJFLYEYVOXIksN+jqz4ftMcxZZXnzOddYWfqs9q6bd1iOFwyhB5pE4Fvz/05uZ
-	RF10RSC0RzcIedJ1G2E1LSQq4Zg42bEfK0TSyO7m7id0Yy1xeUuD5zWJX3us817V
-	rjIfPInA1Vwm/QlX4DnPJzUv40Z0ii9fRJxzgHqkydlEG9GHtOtzfSoBBYVuklOY
-	znHltzYI/nV8aA3pqWRO9oD9yS5dvx0Tnbouc9wI5DeGckOnRznPX94uGeI63tXw
-	4a6YpykXCScaYQzL11169W/UCCuCj+CqGjGcj2LOgIC8IwvROeIK920PT8Og==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; t=1667832726; x=1667839926; bh=pH9EnTs5L3AE9yRrf/TOfLTE3vMW
-	tMQ5hIBy7+jkfxo=; b=tm2CjukNyGky7m61cEbNeNPEwlXow6RPoGg2KjXghbKg
-	ra/lLyp2zKjbGDhKlZm+A1NYUYItu9u5SMkA9pJHis1as3Cuaw086EXYoGiWAwEc
-	kwmgNzmeS59QVCIvcfLkrQ+Ebrrzyvxm0bLZzUJt64WJNOdWIwV+A1Lm0sxt1PlG
-	pqQrTshYGPUOlH25VHE+1Lo/JkFnLumTSx7pnL0tNbn51t3OP92FWPXw0EfQztVG
-	wtJ4RnEpesPcGbqI0l7+PnoJguGMz6X3T6Oc+iWlaBg8/BNZZbD/jeW+bRR9Y7Mm
-	aeVy4dRLsyWLoksEM3gODq0m5OD2atrQxRTwoulo5w==
-X-ME-Sender: <xms:lBtpY-40Eo4JzBjQaFjHtoUz7QeBdEwcwbk96GIlHmmJELkNOdiNuw>
-    <xme:lBtpY355rFDdDU_5_Zhsu6BuYYJ8FsknqxkvYPdHiPLl5stDZ4ymxPAwZCGrhq1q0
-    rYmNowEFVM52RrtcrQ>
-X-ME-Received: <xmr:lBtpY9dGH4qlk66IJxrnFOeAg7gL0Dzov_oSAqI9d3jUn16Bj4wfUEZhAxYh6xwVb1pD_70A4Fj78DNZ9hmuXeqDZ6FtyKnnZ6v_m9fVoJ9KEg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrvdekgdeijecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
-    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
-    htvghrnhepteefffefgfektdefgfeludfgtdejfeejvddttdekteeiffejvdfgheehfffh
-    vedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmh
-    grgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:lBtpY7K_De75Z1Qb3KnMLSjsRajiL-H-Ua3gdzprEa6elskIEslNHg>
-    <xmx:lBtpYyJPcAZLuZCZ9YrgeNVP2SDE0zyvQMv9GMV_qnwg12P9XLOYhg>
-    <xmx:lBtpY8zZKJW8BWrb3kvSxaP7pHRcbh-yGdZ8oBvUaVqZHP2VBvAXdw>
-    <xmx:lhtpY2R7H97-NMegP3mWI1QxFbMYDvDajfqDlJ0guaZiDLR4Zxs1FRw326M>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 7 Nov 2022 09:52:03 -0500 (EST)
-Date: Mon, 7 Nov 2022 15:52:02 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: David Lechner <david@lechnology.com>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>,	Ulf Hansson <ulf.hansson@linaro.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,	Paul Cercueil <paul@crapouillou.net>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,	Abel Vesa <abelvesa@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
-	Sekhar Nori <nsekhar@ti.com>,	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,	Takashi Iwai <tiwai@suse.com>,
- David Airlie <airlied@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,	Mark Brown <broonie@kernel.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-stm32@st-md-mailman.stormreply.com,	alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,	linux-phy@lists.infradead.org,
- linux-mips@vger.kernel.org,	linux-renesas-soc@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 54/65] clk: da8xx: clk48: Switch to determine_rate
-Message-ID: <20221107145202.2mne5p2sa4l2dm6g@houat>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-54-f6736dec138e@cerno.tech>
- <6296d944-e03d-6f2b-48b1-3dad78e3c89d@lechnology.com>
+	id 1os3Yw-00FRcn-Ko
+	for linux-mediatek@lists.infradead.org; Mon, 07 Nov 2022 14:57:25 +0000
+Received: by mail-lf1-x131.google.com with SMTP id o12so17097992lfq.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Nov 2022 06:57:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AQlxwrQ9+SAIJlBHFz/WVtqfuSsX8479gf+InmNYkZs=;
+        b=1eTJqEXUCN6TpV6RPCjctxazLVjc44ZvzsBItOrs8d80EmK/RTm5KYkB5ehzSFcSap
+         0Ia4QJxum/15AedJZzgTedYWblULvJ2HWn6NIOVO0kLVUGzxxNuXTNkUbSKEiihYW5uY
+         eI9c/r5MpYt9th3ARFOLRYCWL8+OX7E7r5QjWjQT9gbVW+CjhHoH7P5pnYbE+s3Ht/BS
+         ZpQxbAlG3a2Q6BXdz03VLJbB2BAE4WHiC0ArV3yEpnSEla0c1RJ8q72c1z9KjXtBDvuA
+         r5eCbX117hzvliriCVcObFn6wp63MG/Om9IFx0pHFFyRetN5uD76XxvKlFE9BmmzVAs3
+         XGsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AQlxwrQ9+SAIJlBHFz/WVtqfuSsX8479gf+InmNYkZs=;
+        b=fks0EmbpYX/OR/X7ZQ4G1cDkLgyKP3tGdHk01dfvhXnfMOAnJwca5sm89zxLhQdEfZ
+         zqj0Up9UjVc7lKMe0aLYDpewb8aLRbKX1TIFMoTKO1dmg4R7QlH3YXSKo66H6vLECAz8
+         cEqaun21osPtErLAkjHk7lK0sUEC436vnt0bBs2QcaISZ5Q/wtB+gsFpMLHIr8tjrADo
+         Q2gimHiOLYPwyNZ4KAr5JfJdc1aM0hc9MEiiAFXt5VJuFXjXA+UqShSolMmFTOV6tJrn
+         QI3a3+s1PBo4T1xwroVqJUvmCrr3/akb5bWPRev9ooinbZEw1PsHeMvRsBhkpAYAkse8
+         itdA==
+X-Gm-Message-State: ACrzQf2u7T+sm87WlAZjiFSBA1Fp/vuuP3EFwX1JyOf6EIgt2b66tkRm
+	Ek8bYl8ZiPBYPIXZ2tvUwE0sVpmfTCYsNd64dXoz7A==
+X-Google-Smtp-Source: AMsMyM5u67xgoVRbvAl2jo49umhno4Yx8nKrhd8saRcif/bR8rpMZwMhWdL1nVFsqasbfxpjnO2MfcuNIfWTUazhbyA=
+X-Received: by 2002:a05:6512:a93:b0:4a2:a5b3:fbb4 with SMTP id
+ m19-20020a0565120a9300b004a2a5b3fbb4mr17313440lfu.346.1667833039925; Mon, 07
+ Nov 2022 06:57:19 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 7 Nov 2022 14:57:19 +0000
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.2
+References: <20220919-v3-0-a803f2660127@baylibre.com> <20220919-v3-6-a803f2660127@baylibre.com>
+ <a3472c42-ccac-7c98-a0b6-57556a348ac1@collabora.com>
+In-Reply-To: <a3472c42-ccac-7c98-a0b6-57556a348ac1@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kwjqag62r4ghubsj"
-Content-Disposition: inline
-In-Reply-To: <6296d944-e03d-6f2b-48b1-3dad78e3c89d@lechnology.com>
+Date: Mon, 7 Nov 2022 14:57:19 +0000
+Message-ID: <CABnWg9uPL0qCat4Sw2uqj6-KN-OxPqGOjw+SR1bBVvGrmCBTZQ@mail.gmail.com>
+Subject: Re: [PATCH v3 06/12] drm/mediatek: hdmi: add frame_colorimetry flag
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Jitao shi <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	stuart.lee@mediatek.com, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, mac.shen@mediatek.com, 
+	linux-phy@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_065221_771067_E5AC049D 
-X-CRM114-Status: GOOD (  32.03  )
+X-CRM114-CacheID: sfid-20221107_065722_782035_77D6C8C8 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,65 +97,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 07 Nov 2022 12:09, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>Il 04/11/22 15:09, Guillaume Ranquet ha scritto:
+>> Add a flag to indicate support for frame colorimetry.
+>>
+>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 11 +++++++++++
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.h |  1 +
+>>   2 files changed, 12 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+>> index 3635ca66817b..933c51b5f6d7 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+>> @@ -120,6 +120,17 @@ int mtk_hdmi_setup_avi_infoframe(struct mtk_hdmi *hdmi, u8 *buffer, size_t bufsz
+>>   		return err;
+>>   	}
+>>
+>> +	if (hdmi->conf->has_frame_colorimetry) {
+>> +		frame.colorimetry = hdmi->colorimtery;
+>
+>Typo: s/colorimtery/colorimetry/g
+>
+>...also, I don't see this being really used? In hdmi-v2 you're setting this param
+>to HDMI_COLORIMETRY_NONE and quantization ranges to always the same default value.
+>
+>I wonder if this is really needed at this point.
+>
+>Regards,
+>Angelo
 
---kwjqag62r4ghubsj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I'll see if I can make something work without this boolean.
 
-Hi David,
-
-On Fri, Nov 04, 2022 at 11:49:34AM -0500, David Lechner wrote:
-> On 11/4/22 8:18 AM, Maxime Ripard wrote:
-> > The TI DA8xx USB0 clk48 clocks implements a mux with a set_parent
-> > hook, but doesn't provide a determine_rate implementation.
-> >=20
-> > This is a bit odd, since set_parent() is there to, as its name implies,
-> > change the parent of a clock. However, the most likely candidate to
-> > trigger that parent change is a call to clk_set_rate(), with
-> > determine_rate() figuring out which parent is the best suited for a
-> > given rate.
-> >=20
-> > The other trigger would be a call to clk_set_parent(), but it's far less
-> > used, and it doesn't look like there's any obvious user for that clock.
-> >=20
-> > So, the set_parent hook is effectively unused, possibly because of an
-> > oversight. However, it could also be an explicit decision by the
-> > original author to avoid any reparenting but through an explicit call to
-> > clk_set_parent().
-> >=20
-> > The driver does implement round_rate() though, which means that we can
-> > change the rate of the clock, but we will never get to change the
-> > parent.
-> >=20
-> > However, It's hard to tell whether it's been done on purpose or not.
-> >=20
-> > Since we'll start mandating a determine_rate() implementation, let's
-> > convert the round_rate() implementation to a determine_rate(), which
-> > will also make the current behavior explicit. And if it was an
-> > oversight, the clock behaviour can be adjusted later on.
->=20
-> I think this one should be the same as the clk:davinci changes and
-> not allow re-parenting. Since this is a USB 48MHz PHY clock, a rate
-> change will never be requested.
-
-I'm not sure, it doesn't seem to be the same clock, it's not doing the
-same thing (this one will always force the same rate, the others let the
-rate change), and we're not doing the same refactoring (this one had a
-round_rate implementation, the other one doesn't)
-
-Maxime
-
---kwjqag62r4ghubsj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY2kbkgAKCRDj7w1vZxhR
-xdnyAPoDUCObUrCr2C1a0eiJzKGIcW+Cl1z7L7QadhXWYBxPJAD+K5Cnal04FAYQ
-nw7UCY5eZErrD6YvLzwUrAeczrFXVQw=
-=GExv
------END PGP SIGNATURE-----
-
---kwjqag62r4ghubsj--
+Thx,
+Guillaume.
 
