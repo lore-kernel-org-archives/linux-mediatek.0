@@ -4,45 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873ADC4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 18:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0046C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 18:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R2N+jSfSlY43TnrF1h50zfC2H3h4TDeeUUxvXDObycg=; b=EY9d+VA920sN5MrlVKFB9oYiVV
-	vU1027MW8Ek5t4DPFcylewHtJ9QHumY40zo8q3OsyWF+iaEZYTXUW9vXQs6LWKcltRZf4xQozaRpP
-	R1n3hBIXUM9ysF8NVAzvGBHpBVmcK5CjOwT/8Rm1YdwPcUrGVD/LdOtuh25m6OgjgLARpZmZmgl7j
-	25FJHthrWrMyw+qNoN09D1b6w6FwFY5e6s/Hjg+/7C8yQdf+mCJNH9LGY1Ik/00q0x3IzrNwLbLtM
-	sdGNuYsGbki4doiIecv0UEN3KQEHj5WiBU1u9OW2Qs0zrDEkBGv19OUY2HHfy4aEIkW6orokx+VSS
-	yIzgvxHA==;
+	bh=Qys05PG22fbxdWm5s8ByJ0wPdOueN+diTukAKqcYoqA=; b=JEzb0Npu7pqa0zE/PAMPK0I8cZ
+	7PsDI4r6h1oPewL03OlVD+ffhIZ5kz6YmiLIk5/O2Xudl6X5PPOSd/AYx3V0cV3Ft6ADPniXwUl9o
+	j8FCyCNRmjKiMPA5v3r7/S8dZhea7AUOM/V0f/bH/07klXmBCgSSvNnzd3bEWFEWQd85gTQhy44Hn
+	nuLSYYDjBvds+iuBLnRBJCKY/X6KCJr57MW7Yym8uqC/mUgz7Ri9Iubv477fAV2wEvX7GkzNbB/VT
+	reRQ0yB3aZ7DCkgP894VeQeayXE9yTuQ6mNWo5bdkqc0CKkQ1nxhXEBk9MNrRDTsb/CnrPtjzOtnx
+	2M3twRgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os7IN-00HLID-QE; Mon, 07 Nov 2022 18:56:31 +0000
+	id 1os7JK-00HLtd-76; Mon, 07 Nov 2022 18:57:30 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os7HP-00HKoW-Ra; Mon, 07 Nov 2022 18:55:34 +0000
+	id 1os7HQ-00HKor-9z; Mon, 07 Nov 2022 18:55:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=R2N+jSfSlY43TnrF1h50zfC2H3h4TDeeUUxvXDObycg=; b=C7Bjul4L+uZ5OTJN4pEVSnqlbL
-	qxyo4As8AlXPlDIoxFGL6JtZIC9DUnL/tZB6t9okWkqhDmncnwapQ626TBPm0Dz0MUDeEqhd6hBbb
-	EU5heDXhPmbjEPt2KSK7tCs5w0nEpSdt9f0WnPmiV/Vd4yssvCnNedGvHg5vdVYP+9OI=;
+	bh=Qys05PG22fbxdWm5s8ByJ0wPdOueN+diTukAKqcYoqA=; b=FxYpLAUUzZ0MezR3P4pPCvkz2p
+	/RYuPhe0ELtcVlsyntSnLU/zmxETClklGmsfqVpQIdY0+hM+lS07kJrd/7+XniM7QNEyUlKZGFC+N
+	6wKJjv6SCdI4vdLSRQfStoVeLpLj4cpnvQk6E9QmauVKZ+Uy2JAPOi0HZU51jBVmFT+k=;
 Received: from p200300daa72ee1007849d74f78949f6c.dip0.t-ipconnect.de ([2003:da:a72e:e100:7849:d74f:7894:9f6c] helo=Maecks.lan)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 	(Exim 4.94.2)
 	(envelope-from <nbd@nbd.name>)
-	id 1os7HA-000LCc-5E; Mon, 07 Nov 2022 19:55:16 +0100
+	id 1os7HF-000LCc-A1; Mon, 07 Nov 2022 19:55:21 +0100
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
 	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
@@ -51,17 +55,17 @@ To: netdev@vger.kernel.org,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 03/14] net: ethernet: mtk_eth_soc: avoid port_mg assignment on MT7622 and newer
-Date: Mon,  7 Nov 2022 19:54:41 +0100
-Message-Id: <20221107185452.90711-3-nbd@nbd.name>
+Subject: [PATCH 10/14] net: dsa: tag_mtk: parse hwaccel VLAN tags
+Date: Mon,  7 Nov 2022 19:54:48 +0100
+Message-Id: <20221107185452.90711-10-nbd@nbd.name>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221107185452.90711-1-nbd@nbd.name>
 References: <20221107185452.90711-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_105532_002080_97ACAE94 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20221107_105532_360211_2787A77E 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,59 +80,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On newer chips, this field is unused and contains some bits related to queue
-assignment. Initialize it to 0 in those cases.
-Fix offload_version on MT7621 and MT7623, which still need the previous value.
+Pull the port information from the VLAN protocol ID field
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- drivers/net/ethernet/mediatek/mtk_ppe.c     | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ net/dsa/tag_mtk.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 02a57729db28..9f607c80f49c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4243,7 +4243,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.hw_features = MTK_HW_FEATURES,
- 	.required_clks = MT7621_CLKS_BITMAP,
- 	.required_pctl = false,
--	.offload_version = 2,
-+	.offload_version = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
-@@ -4282,7 +4282,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.hw_features = MTK_HW_FEATURES,
- 	.required_clks = MT7623_CLKS_BITMAP,
- 	.required_pctl = true,
--	.offload_version = 2,
-+	.offload_version = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 2d8ca99f2467..3ee2bf53f9e5 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -175,6 +175,8 @@ int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
- 		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT_V2, pse_port) |
- 		      FIELD_PREP(MTK_FOE_IB2_PORT_AG_V2, 0xf);
- 	} else {
-+		int port_mg = eth->soc->offload_version > 1 ? 0 : 0x3f;
-+
- 		val = FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_BIND) |
- 		      FIELD_PREP(MTK_FOE_IB1_PACKET_TYPE, type) |
- 		      FIELD_PREP(MTK_FOE_IB1_UDP, l4proto == IPPROTO_UDP) |
-@@ -182,7 +184,7 @@ int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
- 		entry->ib1 = val;
+diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
+index 445d6113227f..0dfa2354f77d 100644
+--- a/net/dsa/tag_mtk.c
++++ b/net/dsa/tag_mtk.c
+@@ -73,13 +73,18 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev)
+ 	if (unlikely(!pskb_may_pull(skb, MTK_HDR_LEN)))
+ 		return NULL;
  
- 		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT, pse_port) |
--		      FIELD_PREP(MTK_FOE_IB2_PORT_MG, 0x3f) |
-+		      FIELD_PREP(MTK_FOE_IB2_PORT_MG, port_mg) |
- 		      FIELD_PREP(MTK_FOE_IB2_PORT_AG, 0x1f);
- 	}
+-	phdr = dsa_etype_header_pos_rx(skb);
+-	hdr = ntohs(*phdr);
++	if (skb_vlan_tag_present(skb)) {
++		hdr = ntohs(skb->vlan_proto);
++		__vlan_hwaccel_clear_tag(skb);
++	} else {
++		phdr = dsa_etype_header_pos_rx(skb);
++		hdr = ntohs(*phdr);
+ 
+-	/* Remove MTK tag and recalculate checksum. */
+-	skb_pull_rcsum(skb, MTK_HDR_LEN);
++		/* Remove MTK tag and recalculate checksum. */
++		skb_pull_rcsum(skb, MTK_HDR_LEN);
+ 
+-	dsa_strip_etype_header(skb, MTK_HDR_LEN);
++		dsa_strip_etype_header(skb, MTK_HDR_LEN);
++	}
+ 
+ 	/* Get source port information */
+ 	port = (hdr & MTK_HDR_RECV_SOURCE_PORT_MASK);
+@@ -93,11 +98,22 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev)
+ 	return skb;
+ }
+ 
++static void mtk_tag_flow_dissect(const struct sk_buff *skb, __be16 *proto,
++				 int *offset)
++{
++	if (!skb_vlan_tag_present(skb))
++		return dsa_tag_generic_flow_dissect(skb, proto, offset);
++
++	*offset = 0;
++	*proto = ((__be16 *)skb->data)[-1];
++}
++
+ static const struct dsa_device_ops mtk_netdev_ops = {
+ 	.name		= "mtk",
+ 	.proto		= DSA_TAG_PROTO_MTK,
+ 	.xmit		= mtk_tag_xmit,
+ 	.rcv		= mtk_tag_rcv,
++	.flow_dissect	= mtk_tag_flow_dissect,
+ 	.needed_headroom = MTK_HDR_LEN,
+ };
  
 -- 
 2.38.1
