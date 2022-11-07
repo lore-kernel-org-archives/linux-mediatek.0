@@ -4,75 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C77C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 07:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1318AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 07:52:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XT/BEz0j/BOzKyKuiHt02sHEYAwvPw7EMXdnY/HUfuI=; b=GygWKO/NkTsYH+040Nn18qDddt
-	/h88laPQwpvkFDCNOkfcT72JPF0QJdg5ws8zQCcqYskVGJF93i32emSMtYeycjHqPJYEY7982LF1G
-	VUxPqEsQs8TxWZ9URz2qEGh5Rzh7FvMKP/FTyHwQieCVrn2Y0u+7JXWUaSx26tyMEG/zl3l2ecCIy
-	lc7M25/hrvJrwgu4G3tZACU4hxk1hr1PmtbufWBOUr1SUmcjqLbB9XuIpTvvukZbBYgjSz4UTK+Y0
-	/zDzSFihrAjpc95LTX5LjTZWMNP/ZEVSrQ/ZTrm8o9ce4gtSsl0SEpnXieAIysVEwohy36vYOk+Sp
-	RMV5CgAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hLKOOl0yo7YI7pAdrLyTR/NQWG7rhWdAq87I8wp+XOk=; b=Lqlt6ofQ7Pb1cdJJ0q0COsGIrv
+	Vpl+dAIC/9cxiY+hpSn+Hh7c72Vo4G8cQ8Cywhhp8KP1+6Pq77hKe9RWDmYxr8ROwtRh82+dsmnDA
+	9sMkV48uyNaWIa/CrdilmLbvRkrjH0wyjwESya+xxrsVst8lQH9/AXqqW7/7D1ixrqOLTM+qbmLkr
+	FXYDB90lYoblnQQVA6M5BVjQkF7771sEEfg5Mg4+/mj0oHhQ1zTlNvsAOznmD0WbudTqjjWO+4fJF
+	9sLyRkVLnN9vsurs5+bUlm3w1b/8ghlMx0jnwAqogJOyztULPOo7bJG5rbpzW5Fw4i6L/JKWnz96k
+	A9C3WnLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orwoA-00CXvW-Ip; Mon, 07 Nov 2022 07:44:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1orwvh-00Ckx5-Oq; Mon, 07 Nov 2022 07:52:25 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1orwny-00CXZD-Be; Mon, 07 Nov 2022 07:44:28 +0000
-X-UUID: 713fa1f6b48f419cb47a04062c6bdb6b-20221107
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XT/BEz0j/BOzKyKuiHt02sHEYAwvPw7EMXdnY/HUfuI=;
-	b=WCsWp1fGIhFMmGmPTiyEAZoF/xI93nvhATkYl69RL7w+5w9yhRxGIRYOnHnA1u9JzY2kbx1VTTgOPncR3ELCtxp9nCoDi0SZVfBi8NGX8ikvjAAQq4ZJsOL3K3t4Hk6asoShwm7ZjLKD08rdjWnbQkycMASTvQFXyTsCsxASCIo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:13e894a1-30de-4ca8-88c1-1fec87cf27f2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:5529a5eb-84ac-4628-a416-bc50d5503da6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 713fa1f6b48f419cb47a04062c6bdb6b-20221107
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1845735139; Mon, 07 Nov 2022 00:44:20 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 7 Nov 2022 15:24:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 7 Nov 2022 15:24:16 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
- Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
-	<nfraprado@collabora.com>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
- Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
-	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
-	<singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v28 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
-Date: Mon, 7 Nov 2022 15:24:06 +0800
-Message-ID: <20221107072413.16178-1-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1orwve-00CkNs-IO; Mon, 07 Nov 2022 07:52:24 +0000
+Received: by mail-oi1-f173.google.com with SMTP id l127so11303244oia.8;
+        Sun, 06 Nov 2022 23:52:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hLKOOl0yo7YI7pAdrLyTR/NQWG7rhWdAq87I8wp+XOk=;
+        b=Mp42spz/zDTazHphj2S1wSQ+DPH4cwh072WkPreMhPebH6gzI4yvg8G3+A+2KWx3Po
+         qsCQhOhqIuHYYahSp4Qd9nUX/bFsKNcFmrxERB5hUcSNnzCxueQmKr8vbwg2bhT90B6k
+         f5C7EhePToe8hhyCEgbWqfXuLMDsTII4r2LApQV7Iq9DITKLVw7hDrh0Jjv7s0r7wGIc
+         m01/jJ6ok2rj+dpJ6LtIHEZuFVHDeulIZVI9jWtwe1EgNgKoCb1wj/WomE2FbE2MK8Ra
+         RfBYneuJOzSaqBtQHuRC7G/HAUFFtNv+z1mfwxn18q9fK9ECOK+MH0mOAiyq5yOM+27u
+         PZ2Q==
+X-Gm-Message-State: ACrzQf2vpIctMHeAa+qCIF3SCJXy4n5qTs2oaDG2ktjJ9dqywHmlNk/b
+	nGbl4m/Lt+k9MVZNFj58NWB6fge6+Bdd0Q==
+X-Google-Smtp-Source: AMsMyM4Rp38hni7QQEwRBgDxaCi2A3FZ/V/8hlcJ6i9H2wHdcS54YEBFqFL1NPcIstp3HpEyF84/MQ==
+X-Received: by 2002:aca:1c03:0:b0:359:c144:7f6 with SMTP id c3-20020aca1c03000000b00359c14407f6mr31351723oic.83.1667807539884;
+        Sun, 06 Nov 2022 23:52:19 -0800 (PST)
+Received: from mail-ot1-f43.google.com (mail-ot1-f43.google.com. [209.85.210.43])
+        by smtp.gmail.com with ESMTPSA id ca1-20020a056830610100b0066ca61230casm2171365otb.8.2022.11.06.23.52.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 06 Nov 2022 23:52:19 -0800 (PST)
+Received: by mail-ot1-f43.google.com with SMTP id l42-20020a9d1b2d000000b0066c6366fbc3so6075632otl.3;
+        Sun, 06 Nov 2022 23:52:19 -0800 (PST)
+X-Received: by 2002:a81:9c49:0:b0:34a:de:97b8 with SMTP id n9-20020a819c49000000b0034a00de97b8mr45959924ywa.384.1667807529144;
+ Sun, 06 Nov 2022 23:52:09 -0800 (PST)
 MIME-Version: 1.0
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech> <20221018-clk-range-checks-fixes-v2-28-f6736dec138e@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v2-28-f6736dec138e@cerno.tech>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 7 Nov 2022 08:51:56 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXee3Xf8G53anCq-4qfenHhgnMiyC1KhKo8Uv6-UV_jrw@mail.gmail.com>
+Message-ID: <CAMuHMdXee3Xf8G53anCq-4qfenHhgnMiyC1KhKo8Uv6-UV_jrw@mail.gmail.com>
+Subject: Re: [PATCH v2 28/65] clk: renesas: r9a06g032: Add a determine_rate hook
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Stephen Boyd <sboyd@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Dinh Nguyen <dinguyen@kernel.org>, 
+	Paul Cercueil <paul@crapouillou.net>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Manivannan Sadhasivam <mani@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, Alessandro Zummo <a.zummo@towertech.it>, 
+	Peter De Schrijver <pdeschrijver@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Samuel Holland <samuel@sholland.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul <vkoul@kernel.org>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sekhar Nori <nsekhar@ti.com>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Takashi Iwai <tiwai@suse.com>, David Airlie <airlied@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	David Lechner <david@lechnology.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Mark Brown <broonie@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, linux-stm32@st-md-mailman.stormreply.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-clk@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, patches@opensource.cirrus.com, 
+	linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	Gareth Williams <gareth.williams.jx@renesas.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221106_234426_419918_7274E3BC 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20221106_235222_638963_C0F36289 
+X-CRM114-Status: GOOD (  31.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,201 +110,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
+CC Gareth
 
-Add DRM and these modules support by the patches below:
-
-Changes in v28:
-- rebase to next-20221107
-- fix reviewer comment in v27
-  - extra new line at the end mtk_ethdr.h
-
-Changes in v27:
-- rebase to next-20221102
-- change mmsys compatible for mt8195 vdosys1
-  - base on jason's series[ref 1]
-- fix reviewer comment
-  - add error return code if no ovl_adaptor's comp found
-
-Changes in v26:
-- rebase to next-20220819
-- resend for patch corrupted in v25
-
-Changes in v25:
-- rebase to next-20220803
-
-Changes in v24:
-- fix ovl_adaptor binding issue (mtk_disp_ovl_adaptor.c)
-  - Since ovl_adaptor is an aggregated component, it should be bounded after
-    all its child components are bounded.
-- rebase to next-20220708
-
-Changes in v23:
-- separate[7] mmsys/mutex and drm patches into two series
-
-Changes in v22:
-- rebase to next-20220525
-- rebase to vdosys0 series v22
-- separate dts to a new patch
-
-Changes in v21:
-- fix reviewer comment
-  - fix rdma and ethdr binding doc and dts
-
-Changes in v20:
-- fix reviewer comment
-  - update mmsys update bit api name
-  - add mtk_mmsys_update_bits error message if lose gce property
-  - list all mt8195 vdosys1 reset bits
-
-Changes in v19:
-- fix reviewer comment
-  - separate mt8195 mmsys component to a new patch
-  - separate mt8195 vdo0 and vdo1 routing table
-  - separate mmsys_write_reg api to a new patch and simplify write reg code
-  - separate mmsys 64 bit reset to a new patch
-  - separate mtk-mutex dp_intf1 component to a new patch
-
-Changes in v18:
-- fix reviewer comment
-  - fix rdma binding doc
-  - fix ethdr binding doc
-  - refine mmsys config cmdq support
-  - refine merge reset control flow, get reset control in probe function
-  - add ethdr reset control error handling and remove dbg log
-- rebase to vdosys0 series v20 (ref [5])
-
-Changes in v17:
-- fix reviewer comment in v16
-  - separate ovl adaptor comp in mtk-mmsys and mtk-mutex
-  - separate mmsys config API
-  - move mdp_rdma binding yaml
-- fix ovl adaptor pm runtime get sync timing issue
-- rebase to vdosys0 series v19 (ref [5])
-- rebase to [7] for modify vblank register change
-
-Changes in v16:
-- fix reviewer comment in v 15
-  - fix mtk_drm_ddp_comp.c alignment
-  - fix vdosys0 mmsys num before adding vdosys1 patch
-
-Changes in v15:
-- fix ethdr uppercase hex number in dts
-
-Changes in v14:
-- remove MTK_MMSYS 64 bit dependency
-- add ethdr.yaml back and fix dt_schema check fail
-
-Resend v13
-- add related maintainer in maillist
-
-Changes in v13:
-- fix reviewer comment in v12
-  - fix rdma dt-binding format
-  - fix dts node naming
-- fix 32 bit build error
-  - modify 64bit dependency for mtk-mmsys
-- rebase to vdosys0 series v16. (ref [5])
-
-Changes in v12:
-- fix reviewer comment in v11
-  - modify mbox index
-  - refine dma dev for ovl_adaptor sub driver
-
-Changes in v11:
-- remove ethdr vblank spin lock
-- refine ovl_adaptor print message
-
-Changes in v10:
-- refine ethdr reset control using devm_reset_control_array_get_optional_exclusive
-- fix ovl_adaptor mtk_ovl_adaptor_clk_enable error handle issue
-
-Changes in v9:
-- rebase on kernel-5.16-rc1
-- rebase on vdosys0 series v13. (ref [5])
-- fix ovl_adaptor sub driver is brought up unintentionally
-- fix clang build test fail- duplicate ethdr/mdp_rdma init_module/cleanup_module symbol issue 
-
-Changes in v8:
-- separate merge async reset to new patch.
-- separate drm ovl_adaptor sub driver to new patch.
-- fix reviewer comment in v7.
-
-Changes in v7:
-- rebase on vdosys0 series v12 (ref[5])
-- add dma description in ethdr binding document.
-- refine vdosys1 bit definition of mmsys routing table.
-- separate merge modification into 3 pathces.
-- separate mutex modification into 2 patches.
-- add plane color coding for mdp_rdma csc.
-- move mdp_rdma pm control to ovl_adaptor.
-- fix reviewer comment in v6.
-
-Changes in v6:
-- rebase on kernel-5.15-rc1.
-- change mbox label to gce0 for dts node of vdosys1.
-- modify mmsys reset num for mt8195.
-- rebase on vdosys0 series v10. (ref [5])
-- use drm to bring up ovl_adaptor driver.
-- move drm iommu/mutex check from kms init to drm bind.
-- modify rdma binding doc location. (Documentation/devicetree/bindings/arm/)
-- modify for reviewer's comment in v5.
-
-Changes in v5:
-- add mmsys reset controller reference.
-
-Changes in v4:
-- use merge common driver for merge1~4.
-- refine ovl_adaptor rdma driver.
-- use ovl_adaptor ddp_comp function instead of ethdr.
-- modify for reviewer's comment in v3.
-
-Changes in v3:
-- modify for reviewer's comment in v2.
-- add vdosys1 2 pixels align limit.
-- add mixer odd offset support.
-
-Changes in v2:
-- Merge PSEUDO_OVL and ETHDR into one DRM component.
-- Add mmsys config API for vdosys1 hardware setting.
-- Add mmsys reset control using linux reset framework.
-
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-
-This series are based on the following patch:
-[1] Change mmsys compatible for mt8195 mediatek-drm
-    20220927152704.12018-1-jason-jh.lin@mediatek.com
-[2] Add MediaTek SoC(vdosys1) support for mt8195
-    20221103032512.9144-1-nancy.lin@mediatek.com
-
-Nancy.Lin (7):
-  dt-bindings: mediatek: add ethdr definition for mt8195
-  drm/mediatek: add ETHDR support for MT8195
-  drm/mediatek: add ovl_adaptor support for MT8195
-  drm/mediatek: add dma dev get function
-  drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
-  drm/mediatek: add drm ovl_adaptor sub driver for MT8195
-  drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
-
- .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++
- drivers/gpu/drm/mediatek/Makefile             |   2 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  26 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 533 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  96 ++--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   6 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 129 +++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  58 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 362 ++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  24 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c          | 370 ++++++++++++
- drivers/gpu/drm/mediatek/mtk_ethdr.h          |  25 +
- 12 files changed, 1624 insertions(+), 195 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
-
--- 
-2.18.0
-
+On Fri, Nov 4, 2022 at 2:18 PM Maxime Ripard <maxime@cerno.tech> wrote:
+>
+> The Renesas r9a06g032 bitselect clock implements a mux with a set_parent
+> hook, but doesn't provide a determine_rate implementation.
+>
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidate to
+> trigger that parent change is a call to clk_set_rate(), with
+> determine_rate() figuring out which parent is the best suited for a
+> given rate.
+>
+> The other trigger would be a call to clk_set_parent(), but it's far less
+> used, and it doesn't look like there's any obvious user for that clock.
+>
+> So, the set_parent hook is effectively unused, possibly because of an
+> oversight. However, it could also be an explicit decision by the
+> original author to avoid any reparenting but through an explicit call to
+> clk_set_parent().
+>
+> The latter case would be equivalent to setting the flag
+> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
+> to __clk_mux_determine_rate(). Indeed, if no determine_rate
+> implementation is provided, clk_round_rate() (through
+> clk_core_round_rate_nolock()) will call itself on the parent if
+> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+> otherwise. __clk_mux_determine_rate() has the exact same behavior when
+> CLK_SET_RATE_NO_REPARENT is set.
+>
+> And if it was an oversight, then we are at least explicit about our
+> behavior now and it can be further refined down the line.
+>
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+> ---
+>  drivers/clk/renesas/r9a06g032-clocks.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/clk/renesas/r9a06g032-clocks.c b/drivers/clk/renesas/r9a06g032-clocks.c
+> index 983faa5707b9..70c37097ca6e 100644
+> --- a/drivers/clk/renesas/r9a06g032-clocks.c
+> +++ b/drivers/clk/renesas/r9a06g032-clocks.c
+> @@ -773,6 +773,7 @@ static int r9a06g032_clk_mux_set_parent(struct clk_hw *hw, u8 index)
+>  }
+>
+>  static const struct clk_ops clk_bitselect_ops = {
+> +       .determine_rate = __clk_mux_determine_rate,
+>         .get_parent = r9a06g032_clk_mux_get_parent,
+>         .set_parent = r9a06g032_clk_mux_set_parent,
+>  };
+> @@ -797,7 +798,7 @@ r9a06g032_register_bitsel(struct r9a06g032_priv *clocks,
+>
+>         init.name = desc->name;
+>         init.ops = &clk_bitselect_ops;
+> -       init.flags = CLK_SET_RATE_PARENT;
+> +       init.flags = CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT;
+>         init.parent_names = names;
+>         init.num_parents = 2;
+>
+>
+> --
+> b4 0.11.0-dev-99e3a
 
