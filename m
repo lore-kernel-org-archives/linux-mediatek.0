@@ -4,164 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86355C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3207EC43219
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Nov 2022 16:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YLju/WwLm4KsEZUT7EMuWJYxY8BFjAT3GQH494WY0mc=; b=mhAL7FUkW3h5BxlYayF7RPI05w
-	OraS9RfDoZLs9XX/wl780iIYLY7kqz6uZdrt2fT2DhjKmgPD8xtoiMWIuY90vWnTyxrCVa373vv50
-	6F/POGt71p5i9i4ZSzpvGmJl1+MbSaObFiMIsozzo0PAuiG3b0bj6Qr7ws07HSC/8f0Oxpf9KAXIk
-	5S9DDM2TD4843zUzITZ5FeTx0FXIb97aYNpwBSPcAbqwmuFfRQ1khJmt6iLmSLmhSKjiCwr+sOpWJ
-	1Fq4e2QYQcM17x49QadYyQDXuc0JCj8EgZmvXjbg4X9DWNCXW6gMqVtcrlr5RRjcXKwKEo0qzAGMg
-	F1JpbeHQ==;
+	bh=yY2+3tqYHY5/Nj0gegT3dgan1cJadcoMTwqFRr5L2kw=; b=qTtxDgRYNb/2s8xj8ex/DEac46
+	5mGZAz4UQMtvRpzfX38/CAekzuZm5a6URmhrunxajw3lBkmOl17XdY9Ezhx80K9fbrEdyXgbYXVb1
+	LLK+1Phj1Ni7weon2kIfoaIX8Ql/CI0nZWWp97rtPDr7rGbaxFYnNJ7fAMJ0/ut6n1w2rr9gS8PPl
+	QFUxJ5TPwUBPQqz+3XGUbSkR5xUQOlTc4jDVH92R+VVka0bRbIWXrtuejgiQbBOKDQkbp/mjQrBhb
+	ZqSOOu1mjEvU1pLf7qy39iLbFh54KUpdpLqbOsdho2N14Ts+0E2q3LkAHXbuC/7/gj6PsvwcvGzSo
+	fg72UbYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4lq-00G4uE-8e; Mon, 07 Nov 2022 16:14:46 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1os4lP-00G4ik-7n; Mon, 07 Nov 2022 16:14:20 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E13F0113E;
-	Mon,  7 Nov 2022 08:14:23 -0800 (PST)
-Received: from pierre123.arm.com (pierre123.nice.arm.com [10.34.100.128])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 7A2E33F534;
-	Mon,  7 Nov 2022 08:14:02 -0800 (PST)
-From: Pierre Gondois <pierre.gondois@arm.com>
-To: linux-kernel@vger.kernel.org
-Cc: Pierre Gondois <pierre.gondois@arm.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
-	Antoine Tenart <atenart@kernel.org>,
-	Brijesh Singh <brijeshkumar.singh@amd.com>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Tom Lendacky <thomas.lendacky@amd.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Khuong Dinh <khuong@os.amperecomputing.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	William Zhang <william.zhang@broadcom.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Li Yang <leoyang.li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Chester Lin <clin@suse.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Matthias Brugger <mbrugger@suse.com>,
-	NXP S32 Linux Team <s32@nxp.com>,
-	Wei Xu <xuwei5@hisilicon.com>,
-	Chanho Min <chanho.min@lge.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Nishanth Menon <nm@ti.com>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Tero Kristo <kristo@kernel.org>,
-	Viorel Suman <viorel.suman@nxp.com>,
-	Abel Vesa <abelvesa@kernel.org>,
-	Shijie Qin <shijie.qin@nxp.com>,
-	Peng Fan <peng.fan@nxp.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Adam Ford <aford173@gmail.com>,
-	Tim Harvey <tharvey@gateworks.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Li Jun <jun.li@nxp.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
-	Marek Vasut <marex@denx.de>,
-	Marco Felsch <m.felsch@pengutronix.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Martin Kepplinger <martink@posteo.de>,
-	David Heidelberg <david@ixit.cz>,
-	Oliver Graute <oliver.graute@kococonnector.com>,
-	Liu Ying <victor.liu@nxp.com>,
-	Zhou Peng <eagle.zhou@nxp.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Vadym Kochan <vadym.kochan@plvision.eu>,
-	Sameer Pujar <spujar@nvidia.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Prathamesh Shete <pshete@nvidia.com>,
-	Akhil R <akhilrajeev@nvidia.com>,
-	Sumit Gupta <sumitg@nvidia.com>,
-	Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Ashish Mhetre <amhetre@nvidia.com>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Aswani Reddy <aswani.reddy@samsung.com>,
-	Shashank Prashar <s.prashar@samsung.com>,
-	Sriranjani P <sriranjani.p@samsung.com>,
-	devicetree@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org,
-	linux-tegra@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-realtek-soc@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 07/23] arm64: dts: Update cache properties for exynos
-Date: Mon,  7 Nov 2022 16:57:00 +0100
-Message-Id: <20221107155825.1644604-8-pierre.gondois@arm.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221107155825.1644604-1-pierre.gondois@arm.com>
-References: <20221107155825.1644604-1-pierre.gondois@arm.com>
+	id 1os4mN-00G5D4-CG; Mon, 07 Nov 2022 16:15:19 +0000
+Received: from vern.gendns.com ([98.142.107.122])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1os3Vt-00FPCM-2f; Mon, 07 Nov 2022 14:54:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=yY2+3tqYHY5/Nj0gegT3dgan1cJadcoMTwqFRr5L2kw=; b=uoFE+zNkTW8nSe/gzYuumfpsP+
+	NvcVijNGM28CoRMokRZKPl1GdsfUdYxaotECOilfwMGqj6BDffp/BjbYJ4yNFbz+s2CxdyH6cX5Lr
+	MQbgkIJMMe4KCteld8LCqTAZGoq+yD1zwmKygBYrGlp9J890ITSxlUQinxYNMXaiIbjzZUNRkZLPc
+	eQ2bF+MdrKjTwAU1agFFumWE06f/sHmpU9d19bt9GE5dpUDqDWL2FEa0Etn1r/hl1rGdDPytmUEgS
+	3qcGJfAXI4zguO45vQRaGV2eDPPiAkD2S2PXeDRuGclR0xc+REj5X8IrdHJHPFg3D/FX3vIL0qFxd
+	Z+O33w3Q==;
+Received: from ip98-183-112-30.ok.ok.cox.net ([98.183.112.30]:44606 helo=[192.168.0.134])
+	by vern.gendns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.95)
+	(envelope-from <david@lechnology.com>)
+	id 1os3Ut-00DZTt-S5;
+	Mon, 07 Nov 2022 09:53:15 -0500
+Message-ID: <7a2bf9aa-9489-fc91-9338-ec9d0835a43c@lechnology.com>
+Date: Mon, 7 Nov 2022 08:52:56 -0600
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH v2 21/65] clk: davinci: da8xx-cfgchip: Add a
+ determine_rate hook
+Content-Language: en-US
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+ Fabio Estevam <festevam@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam
+ <mani@kernel.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Orson Zhai <orsonzhai@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul
+ <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Sekhar Nori <nsekhar@ti.com>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Takashi Iwai <tiwai@suse.com>,
+ David Airlie <airlied@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-stm32@st-md-mailman.stormreply.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-21-f6736dec138e@cerno.tech>
+ <187e61cd-7d02-2453-acf1-30180559d42f@lechnology.com>
+ <20221107120611.vutsgpgpcorsgzwp@houat>
+From: David Lechner <david@lechnology.com>
+In-Reply-To: <20221107120611.vutsgpgpcorsgzwp@houat>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - vern.gendns.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - lechnology.com
+X-Get-Message-Sender-Via: vern.gendns.com: authenticated_id: davidmain+lechnology.com/only user confirmed/virtual account not confirmed
+X-Authenticated-Sender: vern.gendns.com: davidmain@lechnology.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_081419_402985_52A9CC21 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221107_065413_241247_13627F44 
+X-CRM114-Status: GOOD (  18.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,56 +127,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DeviceTree Specification v0.3 specifies that the cache node
-'compatible' and 'cache-level' properties are 'required'. Cf.
-s3.8 Multi-level and Shared Cache Nodes
-The 'cache-unified' property should be present if one of the
-properties for unified cache is present ('cache-size', ...).
+On 11/7/22 6:06 AM, Maxime Ripard wrote:
+> Hi David,
+> 
+> On Fri, Nov 04, 2022 at 11:45:17AM -0500, David Lechner wrote:
+>> On 11/4/22 8:17 AM, Maxime Ripard wrote:
+>>> The Davinci DA8xxx cfgchip mux clock implements a mux with a set_parent
+>>> hook, but doesn't provide a determine_rate implementation.
+>>>
+>>> This is a bit odd, since set_parent() is there to, as its name implies,
+>>> change the parent of a clock. However, the most likely candidate to
+>>> trigger that parent change is a call to clk_set_rate(), with
+>>> determine_rate() figuring out which parent is the best suited for a
+>>> given rate.
+>>>
+>>> The other trigger would be a call to clk_set_parent(), but it's far less
+>>> used, and it doesn't look like there's any obvious user for that clock.
+>>>
+>>> So, the set_parent hook is effectively unused, possibly because of an
+>>> oversight. However, it could also be an explicit decision by the
+>>> original author to avoid any reparenting but through an explicit call to
+>>> clk_set_parent().
+>>
+>>
+>> The parent is defined in the device tree and is not expected to change
+>> at runtime, so if I am understanding the patch correctly, setting the
+>> CLK_SET_RATE_NO_REPARENT flag seems correct.
+> 
+> Is that an acked-by/reviewed-by?
+> 
+> Thanks!
+> Maxime
 
-Update the Device Trees accordingly.
+The commit message could be updated to be more certain now, but sure...
 
-Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
----
- arch/arm64/boot/dts/exynos/exynos5433.dtsi | 4 ++++
- arch/arm64/boot/dts/exynos/exynos7.dtsi    | 2 ++
- 2 files changed, 6 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/exynos/exynos5433.dtsi b/arch/arm64/boot/dts/exynos/exynos5433.dtsi
-index bd6a354b9cb5..8619920da4b6 100644
---- a/arch/arm64/boot/dts/exynos/exynos5433.dtsi
-+++ b/arch/arm64/boot/dts/exynos/exynos5433.dtsi
-@@ -226,6 +226,8 @@ cpu7: cpu@3 {
- 
- 		cluster_a57_l2: l2-cache0 {
- 			compatible = "cache";
-+			cache-level = <2>;
-+			cache-unified;
- 			cache-size = <0x200000>;
- 			cache-line-size = <64>;
- 			cache-sets = <2048>;
-@@ -233,6 +235,8 @@ cluster_a57_l2: l2-cache0 {
- 
- 		cluster_a53_l2: l2-cache1 {
- 			compatible = "cache";
-+			cache-level = <2>;
-+			cache-unified;
- 			cache-size = <0x40000>;
- 			cache-line-size = <64>;
- 			cache-sets = <256>;
-diff --git a/arch/arm64/boot/dts/exynos/exynos7.dtsi b/arch/arm64/boot/dts/exynos/exynos7.dtsi
-index 1cd771c90b47..f378d8629d88 100644
---- a/arch/arm64/boot/dts/exynos/exynos7.dtsi
-+++ b/arch/arm64/boot/dts/exynos/exynos7.dtsi
-@@ -107,6 +107,8 @@ cpu_atlas3: cpu@3 {
- 
- 		atlas_l2: l2-cache0 {
- 			compatible = "cache";
-+			cache-level = <2>;
-+			cache-unified;
- 			cache-size = <0x200000>;
- 			cache-line-size = <64>;
- 			cache-sets = <2048>;
--- 
-2.25.1
-
+Acked-by: David Lechner <david@lechnology.com>
 
