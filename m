@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 781C1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 19:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F322C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 19:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6ucZf4pwP7m0anh+9GOUZcIcP5stJ6/e+bu+Jc7CdKc=; b=d70v6/bMgdkmdWyoYHJoEVTbFD
-	esT3Mad3fq0pXMILXbuK6Hj32A6IkSRxWMUpGL9EwxtKMoA/58Z6HnBr38ZcJgBJCvE9PWTm4ngbY
-	u8inNDSzss8Pywbc/bNR51CpZ4V8QjXfQLfcE34MYCaAHM3t4wrTvptGkvQCjj5xgNnhpBlMreFXc
-	6GCCwcbeVSlN4luo3j4wq5N/LW8rQgfUpbKsrPL8SE9rrEJ9v7igFRLTAUEatsTy+I0dSlyHiGVcz
-	5UWybEDh+IuMjWDsvjHRg37X/xGQlewS77mqRTA+sNW8Z7aJruQFsZVGilIrs6lWqT8X8j/2ZRojY
-	59xaw80A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6bclizzSRIlamtGMODT6snhWxdjRVNRBTNT9TT9LWhk=; b=dLyqZZ1ZLN0X2F75gp4xAdkiLj
+	wFUPsQgIVPhgNuTE8QpkWscJfjOofenVSOnKuFjPu7m1ZKutAaXNwkDe5u6dd6wSl8jQqSU6ss54p
+	MI5OggFdIZ6Y4yl99nYR9/4ZFr0iIg2h2vLUbRBwgxVaV+mUnB6iBvXaCgXUWkoeG4Ze31KNuVh4R
+	PJo2DR1X0wizTW0h4BvWSVWBWTByiPpOfAZQG16bLT4esZtZW9nBjSF8TOO3XCp+0trd/icQWfS0L
+	AQAO9pfCQeSE29xYl7Kh0om+o2hTfmX7THpgu1F+zSsL9aYIbMEbDbHk3DEtSe3JaqA0pJ9Z/b2KM
+	34eXgmqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osUKd-007rOD-9A; Tue, 08 Nov 2022 19:32:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1osUW6-007tHv-Mu; Tue, 08 Nov 2022 19:44:14 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osUKY-007rKa-G0
-	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 19:32:22 +0000
-X-UUID: 7829d9f4309b43df89fd1b047a226473-20221108
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6ucZf4pwP7m0anh+9GOUZcIcP5stJ6/e+bu+Jc7CdKc=;
-	b=Q7uFt5K4CvRahs3XGyqr8pKmoLtwA8LN+KW3er/cCzq5m3Lu+jUlU17Vf+U6/sO0euCRoGM3uUFAF6pnSbzdl0YmZyg0HTmaPeF4RdSILllqUWPLbNtgPSC9g7SV+pagwyZTgO2VNH56lxjKC/h+Tm1CfLf6k4512HS4WvbN+hE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:0373aac4-ffda-4f0f-9a47-c2da98e07cc0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:0e54fa90-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 7829d9f4309b43df89fd1b047a226473-20221108
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 878425804; Tue, 08 Nov 2022 12:32:15 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 9 Nov 2022 03:02:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 9 Nov 2022 03:02:11 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Bo Jiao <bo.jiao@mediatek.com>, Ryder
- Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH 1/4] wifi: mt76: mt7915: rework mt7915_dma_reset()
-Date: Wed, 9 Nov 2022 03:02:07 +0800
-Message-ID: <26aefa69d1002616412c4b00bf2e779f71ca3289.1667929344.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1osUVv-007tEA-Vb; Tue, 08 Nov 2022 19:44:05 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78F166602901;
+	Tue,  8 Nov 2022 19:43:55 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1667936640;
+	bh=6IPOHqPNCs5nNHtjv5U5pfU8G/tXeRydSVK9DQqoUkM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nPXE7p8WqjCGRkfHD/65NWImZPY/i2vIC/StyEb0unYuDap47EAXgfs0u0q+jgkms
+	 szfJr9WEm99QqrmKzOpP89A42+huD66hckwCuLM0R3+N+IFoV39yh7a+QpsW8gw7DX
+	 2zPICGRqXjO+jW8lAQdr2juuUiF1kdUR4c05x3VegIw5U11c6+vFBrvPUKGQoBVC9i
+	 Zeigx9Buktk7dcxN7rQc3OYffrGPxgm3zyM4aMiPot03Z3MUIQTApS554yekyKx5nx
+	 eIMg/kLlDa5nirPo0oE6en73dqAHwlCV0ZIgG7l6OXr19HoFkUPC0tpLZcKj+zsOZV
+	 wjbU2tKpgfHZw==
+Date: Tue, 8 Nov 2022 14:43:51 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux@roeck-us.net, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	"jason-jh . lin" <jason-jh.lin@mediatek.com>,
+	Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	llvm@lists.linux.dev, singo.chang@mediatek.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v28 05/11] soc: mediatek: refine code to use
+ mtk_mmsys_update_bits API
+Message-ID: <20221108194351.u63k4mqzq3bkhpl7@notapiano>
+References: <20221107072243.15748-1-nancy.lin@mediatek.com>
+ <20221107072243.15748-6-nancy.lin@mediatek.com>
+ <58d55016-afc7-e560-32cf-8228794b5752@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <58d55016-afc7-e560-32cf-8228794b5752@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_113218_603411_44F0690E 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20221108_114404_164198_9DCB8C4A 
+X-CRM114-Status: GOOD (  24.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,261 +87,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <bo.jiao@mediatek.com>
+On Tue, Nov 08, 2022 at 06:37:19PM +0100, Matthias Brugger wrote:
+> 
+> 
+> On 07/11/2022 08:22, Nancy.Lin wrote:
+> > Simplify code for update  mmsys reg.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> > Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-mmsys.c | 45 ++++++++++++--------------------
+> >   1 file changed, 16 insertions(+), 29 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> > index 9a327eb5d9d7..73c8bd27e6ae 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -99,22 +99,27 @@ struct mtk_mmsys {
+> >   	struct reset_controller_dev rcdev;
+> >   };
+> > +static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
+> > +{
+> > +	u32 tmp;
+> > +
+> > +	tmp = readl_relaxed(mmsys->regs + offset);
+> > +	tmp = (tmp & ~mask) | (val & mask);
+> 
+> I'm not sure about the change in the implementation of
+> mtk_mmsys_update_bits(). Nicolas tried to explain it to me on IRC but I
+> wasn't totally convincing. As we have to go for at least another round of
+> this patches, I'd like to get a clear understanding while it is needed that
+> val bits are set to 1 in the mask.
 
-Reuse mt7915_dma_disable() to reduce duplicated code.
-This is a preliminary patch to enable full system reset.
+The point here was to make sure that mtk_mmsys_update_bits() didn't allow
+setting bits outside of the mask, since that's never what you want: the entire
+point of having a mask is to specify the bits that should be updated (and the
+ones that should be kept unchanged). So for example if you had
 
-Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/dma.c   | 110 ++++++++++++++----
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |  69 +----------
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   1 +
- 3 files changed, 91 insertions(+), 89 deletions(-)
+mask = 0x0ff0
+val  = 0x00ff
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-index e4fa240834d8..5b27093f618b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-@@ -50,23 +50,37 @@ static void mt7915_dma_config(struct mt7915_dev *dev)
- #define TXQ_CONFIG(q, wfdma, int, id)	Q_CONFIG(__TXQ(q), (wfdma), (int), (id))
- 
- 	if (is_mt7915(&dev->mt76)) {
--		RXQ_CONFIG(MT_RXQ_MAIN, WFDMA0, MT_INT_RX_DONE_BAND0, MT7915_RXQ_BAND0);
--		RXQ_CONFIG(MT_RXQ_MCU, WFDMA1, MT_INT_RX_DONE_WM, MT7915_RXQ_MCU_WM);
--		RXQ_CONFIG(MT_RXQ_MCU_WA, WFDMA1, MT_INT_RX_DONE_WA, MT7915_RXQ_MCU_WA);
--		RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0, MT_INT_RX_DONE_BAND1, MT7915_RXQ_BAND1);
--		RXQ_CONFIG(MT_RXQ_BAND1_WA, WFDMA1, MT_INT_RX_DONE_WA_EXT, MT7915_RXQ_MCU_WA_EXT);
--		RXQ_CONFIG(MT_RXQ_MAIN_WA, WFDMA1, MT_INT_RX_DONE_WA_MAIN, MT7915_RXQ_MCU_WA);
-+		RXQ_CONFIG(MT_RXQ_MAIN, WFDMA0, MT_INT_RX_DONE_BAND0,
-+			   MT7915_RXQ_BAND0);
-+		RXQ_CONFIG(MT_RXQ_MCU, WFDMA1, MT_INT_RX_DONE_WM,
-+			   MT7915_RXQ_MCU_WM);
-+		RXQ_CONFIG(MT_RXQ_MCU_WA, WFDMA1, MT_INT_RX_DONE_WA,
-+			   MT7915_RXQ_MCU_WA);
-+		RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0, MT_INT_RX_DONE_BAND1,
-+			   MT7915_RXQ_BAND1);
-+		RXQ_CONFIG(MT_RXQ_BAND1_WA, WFDMA1, MT_INT_RX_DONE_WA_EXT,
-+			   MT7915_RXQ_MCU_WA_EXT);
-+		RXQ_CONFIG(MT_RXQ_MAIN_WA, WFDMA1, MT_INT_RX_DONE_WA_MAIN,
-+			   MT7915_RXQ_MCU_WA);
- 		TXQ_CONFIG(0, WFDMA1, MT_INT_TX_DONE_BAND0, MT7915_TXQ_BAND0);
- 		TXQ_CONFIG(1, WFDMA1, MT_INT_TX_DONE_BAND1, MT7915_TXQ_BAND1);
--		MCUQ_CONFIG(MT_MCUQ_WM, WFDMA1, MT_INT_TX_DONE_MCU_WM, MT7915_TXQ_MCU_WM);
--		MCUQ_CONFIG(MT_MCUQ_WA, WFDMA1, MT_INT_TX_DONE_MCU_WA, MT7915_TXQ_MCU_WA);
--		MCUQ_CONFIG(MT_MCUQ_FWDL, WFDMA1, MT_INT_TX_DONE_FWDL, MT7915_TXQ_FWDL);
-+		MCUQ_CONFIG(MT_MCUQ_WM, WFDMA1, MT_INT_TX_DONE_MCU_WM,
-+			    MT7915_TXQ_MCU_WM);
-+		MCUQ_CONFIG(MT_MCUQ_WA, WFDMA1, MT_INT_TX_DONE_MCU_WA,
-+			    MT7915_TXQ_MCU_WA);
-+		MCUQ_CONFIG(MT_MCUQ_FWDL, WFDMA1, MT_INT_TX_DONE_FWDL,
-+			    MT7915_TXQ_FWDL);
- 	} else {
--		RXQ_CONFIG(MT_RXQ_MCU, WFDMA0, MT_INT_RX_DONE_WM, MT7916_RXQ_MCU_WM);
--		RXQ_CONFIG(MT_RXQ_BAND1_WA, WFDMA0, MT_INT_RX_DONE_WA_EXT_MT7916, MT7916_RXQ_MCU_WA_EXT);
--		MCUQ_CONFIG(MT_MCUQ_WM, WFDMA0, MT_INT_TX_DONE_MCU_WM, MT7915_TXQ_MCU_WM);
--		MCUQ_CONFIG(MT_MCUQ_WA, WFDMA0, MT_INT_TX_DONE_MCU_WA_MT7916, MT7915_TXQ_MCU_WA);
--		MCUQ_CONFIG(MT_MCUQ_FWDL, WFDMA0, MT_INT_TX_DONE_FWDL, MT7915_TXQ_FWDL);
-+		RXQ_CONFIG(MT_RXQ_MCU, WFDMA0, MT_INT_RX_DONE_WM,
-+			   MT7916_RXQ_MCU_WM);
-+		RXQ_CONFIG(MT_RXQ_BAND1_WA, WFDMA0, MT_INT_RX_DONE_WA_EXT_MT7916,
-+			   MT7916_RXQ_MCU_WA_EXT);
-+		MCUQ_CONFIG(MT_MCUQ_WM, WFDMA0, MT_INT_TX_DONE_MCU_WM,
-+			    MT7915_TXQ_MCU_WM);
-+		MCUQ_CONFIG(MT_MCUQ_WA, WFDMA0, MT_INT_TX_DONE_MCU_WA_MT7916,
-+			    MT7915_TXQ_MCU_WA);
-+		MCUQ_CONFIG(MT_MCUQ_FWDL, WFDMA0, MT_INT_TX_DONE_FWDL,
-+			    MT7915_TXQ_FWDL);
- 
- 		if (is_mt7916(&dev->mt76) && mtk_wed_device_active(&dev->mt76.mmio.wed)) {
- 			RXQ_CONFIG(MT_RXQ_MAIN, WFDMA0, MT_INT_WED_RX_DONE_BAND0_MT7916,
-@@ -77,16 +91,23 @@ static void mt7915_dma_config(struct mt7915_dev *dev)
- 				   MT7916_RXQ_BAND1);
- 			RXQ_CONFIG(MT_RXQ_MAIN_WA, WFDMA0, MT_INT_WED_RX_DONE_WA_MAIN_MT7916,
- 				   MT7916_RXQ_MCU_WA_MAIN);
--			TXQ_CONFIG(0, WFDMA0, MT_INT_WED_TX_DONE_BAND0, MT7915_TXQ_BAND0);
--			TXQ_CONFIG(1, WFDMA0, MT_INT_WED_TX_DONE_BAND1, MT7915_TXQ_BAND1);
-+			TXQ_CONFIG(0, WFDMA0, MT_INT_WED_TX_DONE_BAND0,
-+				   MT7915_TXQ_BAND0);
-+			TXQ_CONFIG(1, WFDMA0, MT_INT_WED_TX_DONE_BAND1,
-+				   MT7915_TXQ_BAND1);
- 		} else {
--			RXQ_CONFIG(MT_RXQ_MAIN, WFDMA0, MT_INT_RX_DONE_BAND0_MT7916, MT7916_RXQ_BAND0);
--			RXQ_CONFIG(MT_RXQ_MCU_WA, WFDMA0, MT_INT_RX_DONE_WA, MT7916_RXQ_MCU_WA);
--			RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0, MT_INT_RX_DONE_BAND1_MT7916, MT7916_RXQ_BAND1);
-+			RXQ_CONFIG(MT_RXQ_MAIN, WFDMA0, MT_INT_RX_DONE_BAND0_MT7916,
-+				   MT7916_RXQ_BAND0);
-+			RXQ_CONFIG(MT_RXQ_MCU_WA, WFDMA0, MT_INT_RX_DONE_WA,
-+				   MT7916_RXQ_MCU_WA);
-+			RXQ_CONFIG(MT_RXQ_BAND1, WFDMA0, MT_INT_RX_DONE_BAND1_MT7916,
-+				   MT7916_RXQ_BAND1);
- 			RXQ_CONFIG(MT_RXQ_MAIN_WA, WFDMA0, MT_INT_RX_DONE_WA_MAIN_MT7916,
- 				   MT7916_RXQ_MCU_WA_MAIN);
--			TXQ_CONFIG(0, WFDMA0, MT_INT_TX_DONE_BAND0, MT7915_TXQ_BAND0);
--			TXQ_CONFIG(1, WFDMA0, MT_INT_TX_DONE_BAND1, MT7915_TXQ_BAND1);
-+			TXQ_CONFIG(0, WFDMA0, MT_INT_TX_DONE_BAND0,
-+				   MT7915_TXQ_BAND0);
-+			TXQ_CONFIG(1, WFDMA0, MT_INT_TX_DONE_BAND1,
-+				   MT7915_TXQ_BAND1);
- 		}
- 	}
- }
-@@ -514,6 +535,53 @@ int mt7915_dma_init(struct mt7915_dev *dev, struct mt7915_phy *phy2)
- 	return 0;
- }
- 
-+int mt7915_dma_reset(struct mt7915_dev *dev, bool force)
-+{
-+	struct mt76_phy *mphy_ext = dev->mt76.phys[MT_BAND1];
-+	int i;
-+
-+	/* clean up hw queues */
-+	for (i = 0; i < ARRAY_SIZE(dev->mt76.phy.q_tx); i++) {
-+		mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[i], true);
-+		if (mphy_ext)
-+			mt76_queue_tx_cleanup(dev, mphy_ext->q_tx[i], true);
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(dev->mt76.q_mcu); i++)
-+		mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[i], true);
-+
-+	mt76_for_each_q_rx(&dev->mt76, i)
-+		mt76_queue_rx_cleanup(dev, &dev->mt76.q_rx[i]);
-+
-+	/* reset wfsys */
-+	if (force)
-+		mt7915_wfsys_reset(dev);
-+
-+	mt7915_dma_disable(dev, force);
-+
-+	/* reset hw queues */
-+	for (i = 0; i < __MT_TXQ_MAX; i++) {
-+		mt76_queue_reset(dev, dev->mphy.q_tx[i]);
-+		if (mphy_ext)
-+			mt76_queue_reset(dev, mphy_ext->q_tx[i]);
-+	}
-+
-+	for (i = 0; i < __MT_MCUQ_MAX; i++)
-+		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
-+
-+	mt76_for_each_q_rx(&dev->mt76, i)
-+			mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
-+
-+	mt76_tx_status_check(&dev->mt76, true);
-+
-+	mt7915_dma_enable(dev);
-+
-+	mt76_for_each_q_rx(&dev->mt76, i)
-+		mt76_queue_rx_reset(dev, i);
-+
-+	return 0;
-+}
-+
- void mt7915_dma_cleanup(struct mt7915_dev *dev)
- {
- 	mt7915_dma_disable(dev, true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 324f0f58572b..3b1259f14de6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1306,73 +1306,6 @@ mt7915_update_beacons(struct mt7915_dev *dev)
- 		mt7915_update_vif_beacon, mphy_ext->hw);
- }
- 
--static void
--mt7915_dma_reset(struct mt7915_dev *dev)
--{
--	struct mt76_phy *mphy_ext = dev->mt76.phys[MT_BAND1];
--	u32 hif1_ofs = MT_WFDMA0_PCIE1(0) - MT_WFDMA0(0);
--	int i;
--
--	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
--		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
--		   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
--
--	if (is_mt7915(&dev->mt76))
--		mt76_clear(dev, MT_WFDMA1_GLO_CFG,
--			   MT_WFDMA1_GLO_CFG_TX_DMA_EN |
--			   MT_WFDMA1_GLO_CFG_RX_DMA_EN);
--	if (dev->hif2) {
--		mt76_clear(dev, MT_WFDMA0_GLO_CFG + hif1_ofs,
--			   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
--			   MT_WFDMA0_GLO_CFG_RX_DMA_EN);
--
--		if (is_mt7915(&dev->mt76))
--			mt76_clear(dev, MT_WFDMA1_GLO_CFG + hif1_ofs,
--				   MT_WFDMA1_GLO_CFG_TX_DMA_EN |
--				   MT_WFDMA1_GLO_CFG_RX_DMA_EN);
--	}
--
--	usleep_range(1000, 2000);
--
--	for (i = 0; i < __MT_TXQ_MAX; i++) {
--		mt76_queue_tx_cleanup(dev, dev->mphy.q_tx[i], true);
--		if (mphy_ext)
--			mt76_queue_tx_cleanup(dev, mphy_ext->q_tx[i], true);
--	}
--
--	for (i = 0; i < __MT_MCUQ_MAX; i++)
--		mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[i], true);
--
--	mt76_for_each_q_rx(&dev->mt76, i)
--		mt76_queue_rx_reset(dev, i);
--
--	mt76_tx_status_check(&dev->mt76, true);
--
--	/* re-init prefetch settings after reset */
--	mt7915_dma_prefetch(dev);
--
--	mt76_set(dev, MT_WFDMA0_GLO_CFG,
--		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
--	if (is_mt7915(&dev->mt76))
--		mt76_set(dev, MT_WFDMA1_GLO_CFG,
--			 MT_WFDMA1_GLO_CFG_TX_DMA_EN |
--			 MT_WFDMA1_GLO_CFG_RX_DMA_EN |
--			 MT_WFDMA1_GLO_CFG_OMIT_TX_INFO |
--			 MT_WFDMA1_GLO_CFG_OMIT_RX_INFO);
--	if (dev->hif2) {
--		mt76_set(dev, MT_WFDMA0_GLO_CFG + hif1_ofs,
--			 MT_WFDMA0_GLO_CFG_TX_DMA_EN |
--			 MT_WFDMA0_GLO_CFG_RX_DMA_EN);
--
--		if (is_mt7915(&dev->mt76))
--			mt76_set(dev, MT_WFDMA1_GLO_CFG + hif1_ofs,
--				 MT_WFDMA1_GLO_CFG_TX_DMA_EN |
--				 MT_WFDMA1_GLO_CFG_RX_DMA_EN |
--				 MT_WFDMA1_GLO_CFG_OMIT_TX_INFO |
--				 MT_WFDMA1_GLO_CFG_OMIT_RX_INFO);
--	}
--}
--
- void mt7915_tx_token_put(struct mt7915_dev *dev)
- {
- 	struct mt76_txwi_cache *txwi;
-@@ -1424,7 +1357,7 @@ void mt7915_mac_reset_work(struct work_struct *work)
- 	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_DMA_STOPPED);
- 
- 	if (mt7915_wait_reset_state(dev, MT_MCU_CMD_RESET_DONE)) {
--		mt7915_dma_reset(dev);
-+		mt7915_dma_reset(dev, false);
- 
- 		mt7915_tx_token_put(dev);
- 		idr_init(&dev->mt76.token);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index fe6a6d3b0a32..5af26e60e902 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -443,6 +443,7 @@ s8 mt7915_eeprom_get_power_delta(struct mt7915_dev *dev, int band);
- int mt7915_dma_init(struct mt7915_dev *dev, struct mt7915_phy *phy2);
- void mt7915_dma_prefetch(struct mt7915_dev *dev);
- void mt7915_dma_cleanup(struct mt7915_dev *dev);
-+int mt7915_dma_reset(struct mt7915_dev *dev, bool force);
- int mt7915_mcu_init(struct mt7915_dev *dev);
- int mt7915_mcu_twt_agrt_update(struct mt7915_dev *dev,
- 			       struct mt7915_vif *mvif,
--- 
-2.36.1
+the previous implementation would happily overwrite the 4 least significant bits
+on the destination register, despite them not being present in the mask, which
+is wrong.
 
+This wrong behavior could easily lead to hard to trace bugs as soon as a badly
+formatted/wrong val is passed and an unrelated bit updated due to the mask being
+ignored.
+
+For reference, _regmap_update_bits() does the same masking of the value [1].
+
+That said, given that this function already existed and was just being moved,
+it would've been cleaner to make this change in a separate commit.
+
+[1] https://elixir.bootlin.com/linux/latest/source/drivers/base/regmap/regmap.c#L3122
+
+Thanks,
+Nícolas
+
+> 
+> Regards,
+> Matthias
+> 
+> > +	writel_relaxed(tmp, mmsys->regs + offset);
+> > +}
+[..]
+> > -static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
+> > -{
+> > -	u32 tmp;
+> > -
+> > -	tmp = readl_relaxed(mmsys->regs + offset);
+> > -	tmp = (tmp & ~mask) | val;
+> > -	writel_relaxed(tmp, mmsys->regs + offset);
+> > -}
+> > -
+[..]
 
