@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB99DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 12:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95730C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 12:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tyyODRHXtilG30dzd65m7MqoIR0cCDBRC2Fx24RI5us=; b=KU0uwwH5dJ5O58+yHnDLt9La5C
-	/rpi1+FXC9fjlJhfCo+xp1E33wwGiyJdLP10AALk6N0DRhgmaTcwH+o2VTEZw7LKVWpSndQHqrrNI
-	zLSt3fIc1cOTWBfbAMS0DVb/c9kdDvhvGNCVICMWOsHFe9r/wxxS2XLHaCwdCaAZul9taxrtK9Rdt
-	Lt5mN0Mqr2iAG30f3J9XRNded72OhcUpsBVITM0imofTYR0SSik+MEyJ/hKshbhWbyw2r8GR99JrQ
-	MqF+jMrIHmumG1A3t/ZwbSfqE1jBF4OYbyM/UAr5L9m8Ll42a5eqoyuzQLKD35VMhC/e4ArGIoMpG
-	41UdPoUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vA/6w/TAg60jnQ3hhyPXCj6N+JmaescOH0FqC1VC2/E=; b=FWsrAxBmnY95kcm55NodAOBqdO
+	yZcYyScTICIjSZ5f5oGil0IRZCIycMg0lV3ZZSjI0HX5SWdn4HIqZhmBzVbb6YTxXruEevXvLPIcV
+	NKbw1hPP6bapWh1gqPAvmWqPzQ2HMsaQmHobFJ4nyNLMVmUN0V7+vN2GB82VcFK6rYAvZv/UI6fpu
+	6NtemKLngUzkdWUv1ixR85anQIPFWjiNwJK7Vo80Xj/kMpdRmXI8tjCk7uJN02sFNhWLccYPzCEob
+	oCDJDSu7yvqF1Ys2eBR/Ts2XUw9eGdSJN5agouQ0Q3SFPdsia6VUg9codsNm8GeJG2O1NEEUS9RvC
+	8e6/cwrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osNhN-005DQg-66; Tue, 08 Nov 2022 12:27:25 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1osNhc-005DZt-Nk; Tue, 08 Nov 2022 12:27:40 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osNgh-005D9D-PW
-	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 12:26:45 +0000
-Received: by mail-ej1-x630.google.com with SMTP id 13so38226553ejn.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Nov 2022 04:26:40 -0800 (PST)
+	id 1osNhY-005DWq-7U
+	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 12:27:37 +0000
+Received: by mail-wr1-x432.google.com with SMTP id k8so20765129wrh.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Nov 2022 04:27:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=tyyODRHXtilG30dzd65m7MqoIR0cCDBRC2Fx24RI5us=;
-        b=NwqsXVnBhJboZ5eY8Xcr2QcAQU3A73tG4C/C3p5ehSjxJZ4ThJ57K0n0cIX/tv2Ybk
-         e/aZXkZsV/52EeZ3Le1b63V7g/eNCwIkd0TE/TLJWWeahFa03vuMnSydXOenjn2O+r26
-         2b/+7v45FlbfjgjFEiKAW+5AGPVmIMb+x2naOXmRQRPBYZAOl0H/J1XwncIGM27oUW7h
-         hwdUK4R8iXXnUYFHq2CJ0iS+KSgnH7rgwtSsFICV9x+QW4KvtpbstlLVmnp8jZn3Hx9j
-         iqUALcQYxf7JGjd41US5zsmlUnqFpgwe4nBqHKXNNqmk2K57ezo4Pl9D8wU9l/HVgEGF
-         A9GA==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vA/6w/TAg60jnQ3hhyPXCj6N+JmaescOH0FqC1VC2/E=;
+        b=ncbEcc0hwW//oao7WG9oisKKHt9RWotUEhJjBQqthqy2YtejUMeJqETlB0gY11KDdj
+         RpkK+iDQArtaeEbPI7UWS/cQJPEwrM8LxDbfA4ItcOd0O6kitWIOiiGTvwWrpGcUbftO
+         TvsyBAucBFikX3eUphNXJCgv7PJHx6DndxVa9ir6A3N2m3RRs7kYXz0Ibc+/xpSnfSqa
+         8465gE5kQT31kPMUvFILlysNfYbFdf81yRtRr6eN/fh4JRa5Wna8m0JyGNM0GsyPMwNK
+         er/NDN/CWWN93SedDgsuoeOUVJ7G9PmemLtjoxTk6TX8y+sOFQE+fPopoFwlWl9473wT
+         qRAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tyyODRHXtilG30dzd65m7MqoIR0cCDBRC2Fx24RI5us=;
-        b=YspBGyzOfzWgPhEKwiVMfTq4NkmK/B7YuKNfjzUIPYoTlXx7C3mZjTkm9T89jLJuKK
-         HbeIt0+9NJjwcs+c2E2SGtzvlH5aV6lX3hlM2q7QQapHvQ0PAZ41fpH2k7PLmvXQKfPz
-         hs5mHrNzFXawrU1palMPQSmq+qSh+1UeN4yV1n1eFaXAaASB9LLPAMsxgksQmYar/88l
-         fyQGgT/B2PfVLfjSDrDFsOdTULzIIUmB8m46tyvZz/0MZbDKfD9ms5EeHL+pVGIWDIKY
-         SSC4mZ6dCxYJmjBVEJVnNUaOfqsHHPNcKKEpdFvZ3U0zFYblq29zRaH464w4Blkfq/fT
-         2Yug==
-X-Gm-Message-State: ANoB5pnw7FJo47G7K1t82HXDN3WwmVHPuPI1wefKRwBTi0xuv1jEhc+9
-	F1CWd6XT6d0XnCU2RLFzEAVc3TZFpfiklIuziHhIZQ==
-X-Google-Smtp-Source: AA0mqf7/Kq3Eo4YzTUVxcP/fg8+u1hyvRb5r0lVcTK6pr5Bewd4oHaTol2L4r9Xfdxk26RfW13/NiikTqCw5vcoldf8=
-X-Received: by 2002:a17:906:6acc:b0:7ae:658c:ee45 with SMTP id
- q12-20020a1709066acc00b007ae658cee45mr10932109ejs.190.1667910399610; Tue, 08
- Nov 2022 04:26:39 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vA/6w/TAg60jnQ3hhyPXCj6N+JmaescOH0FqC1VC2/E=;
+        b=fMhAo63s1V0W7xAiaFgLGGjOcRSV6BggSULMPC9/wWyteLZUYOMzbu9YD4aZVzEeg1
+         9gzBlRlv7yagG9V3LYL+SFtH5TQKyQXChv/0CI3RiUZb33EmCw4bVsPM8UqAcW0Ma0ea
+         EgeqtRekH3VNN8agKcS0SBdDSMVs4ibbzzXv+V5E0kpMhieKKrq6yUIGkjn9QGhOtp/G
+         WMuJMyBbeGY9Z/ap4pvNhwWu04oM3wpVmgk2rP1MrCqo6lIcqsNrryzBUXtzihCOjoDx
+         Dx+Azis9GJTZDsEaGbNcigJloVo3sN78T0QfXL4ZPb64mOICKsU64BGExAL+XMUYpfDU
+         YwPw==
+X-Gm-Message-State: ACrzQf2gpLI/swcis1h7N5BkKI1qBBxryapGVM80OgojtnYHmSzneSUf
+	toCtN5W+9w9CAudalC2KmvY=
+X-Google-Smtp-Source: AMsMyM5YScKNzFGwxOrJ0kHinbp68XeCGVB0PYgH77/yLwXlasvihvDOIhnjfnldCdDbxkXE/OLDVQ==
+X-Received: by 2002:a5d:6ac7:0:b0:236:b281:150 with SMTP id u7-20020a5d6ac7000000b00236b2810150mr34684381wrw.29.1667910453596;
+        Tue, 08 Nov 2022 04:27:33 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id t1-20020a1c7701000000b003b3307fb98fsm10798650wmi.24.2022.11.08.04.27.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 08 Nov 2022 04:27:32 -0800 (PST)
+Message-ID: <999a6b2f-4f40-3862-1988-d290890249a6@gmail.com>
+Date: Tue, 8 Nov 2022 13:27:31 +0100
 MIME-Version: 1.0
-References: <20221028153505.23741-1-y.oudjana@protonmail.com>
-In-Reply-To: <20221028153505.23741-1-y.oudjana@protonmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 8 Nov 2022 13:26:28 +0100
-Message-ID: <CACRpkdb6FFCtry+93jnXw0f8jeu7yDR7_S2GOKaGYiEGSGc27A@mail.gmail.com>
-Subject: Re: [PATCH v4 00/13] MediaTek pinctrl DT binding cleanup and MT6735
- pinctrl support
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
-	Andy Teng <andy.teng@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Yassine Oudjana <y.oudjana@protonmail.com>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Subject: Re: Driver of MT7915 for Raspberry Pi Compute Module 4
+Content-Language: en-US
+To: LinChinting@itri.org.tw, ryder.lee@mediatek.com
+Cc: linux-mediatek@lists.infradead.org
+References: <0708ffbb3b404cf8b08e852e8083eb91@EXMB11.ITRI.DS>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <0708ffbb3b404cf8b08e852e8083eb91@EXMB11.ITRI.DS>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_042643_890658_82AB9B94 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20221108_042736_303325_2A7766A0 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,32 +91,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yassine,
+Hi Lin,
 
-On Fri, Oct 28, 2022 at 5:35 PM Yassine Oudjana
-<yassine.oudjana@gmail.com> wrote:
+On 05/10/2022 05:46, LinChinting@itri.org.tw wrote:
+> Dear Lee,
+> 
+> As the title, I want to use the Wi-Fi 6 chip (Asia RF AW7915-NP1 MT7915AN) on my raspberry pi cm4.
+> 
+> I used the
+> System: Ubuntu 22.04.1 LTS
+> Kernel: Linux ubuntu 5.19.0-1002-raspi #6-Ubuntu SMP PREEMPT Wed Sep 28 09:20:32 UTC 2022 aarch64 aarch64 aarch64 GNU/Linux
+> 
 
-> This series adds a driver for the pin controller found on the MediaTek MT6735
-> and MT6735M SoCs. The two differ in the last 6 physical pins, which are used
-> for MSDC2 on MT6735 but don't exist on MT6735M (since MSDC2 doesn't exist on it
-> to begin with). In preparation to document DT bindings for this pin controller,
-> the existing documents for MT67xx SoCs are combined into one in order to
-> eliminate duplicate property definitions and standardize pin configuration node
-> names. Necessary cleanup is done along the way.
->
-> Changes since v3:
->  - Improve interrupts description to make clear what sysirq means.
->  - Set drive-strength constraints per variant.
->  - Set maxItems for reg in MT6795.
->  - Add blank lines between conditionals.
->  - Add ref for both pinmux-node.yaml and pincfg-node.yaml.
->  - Make pinctrl subnode-related changes in separate patch.
->  - Fix up some pinctrl subnode property descriptions.
->  - Add interrupts items descriptions to MT6765 and MT6735.
+You would need to test with an upstream kernel and report any bug with that. For 
+Ubuntu provided kernel you would need to report that to Ubuntu as a bug.
 
-I have applied patches 1-6 so you do not need to resend those.
-Keep it going with the rest!
+Sorry for the late reply.
 
-Yours,
-Linus Walleij
+Regards,
+Matthias
+
+> and I have enabled the mt7915e module with "modprobe mt7915e", and "lscpi" shows below:
+> https://filedn.com/lv23Kcszmo74qetwMgmdPw8/shared/001.png
+> 
+> "dmsg" shows below:
+> https://filedn.com/lv23Kcszmo74qetwMgmdPw8/shared/002.png
+> 
+> I want to ask that are there have any solution for my situation,
+> just like intel's driver (https://www.intel.com.tw/content/www/tw/zh/support/articles/000005511/wireless.html) or any else?
+> 
+> 
+> Many thanks.
+> 
+> Sincerely,
+> Lin, Chin-ting 2022.10.5
+> 
+> 
+> --
+> 本信件可能包含工研院機密資訊，非指定之收件者，請勿使用或揭露本信件內容，並請銷毀此信件。 This email may contain confidential information. Please do not use or disclose it in any way and delete it if you are not the intended recipient.
 
