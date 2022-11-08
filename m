@@ -4,123 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4935C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 00:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED186C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 02:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=weGhFE/NPYqsu3+oQ3+Gc2/85Dt0v2jOoXlR66OrBHw=; b=DflmGToZkDHKUS1nsJfqn+T+FA
-	rDMIjXe+n3Dks3xvUySlSH7q8ZlbpzECGFGcMIltrX+CowUaI1bxuUcglUaP3DE4S6ukXO9tTWxYj
-	aONJ+JAjyskU1VA1oTEOhPmICwe95OhwuMH5xWMY+18AVmF0R5jKxdd9CooSxwAopYJq3qGJj97H9
-	eRR4MgbcW61XwJ0OUFvRQpVKY2QCz+HpC2D5slu8RrpBUkO7p00CUFIo35a7FDqWrJKMrThD6MUSf
-	SHgZTQiBTj/+d551PFIjaS7HEMrkWJKbFnKDFGCh/LuMi/cBgOxgDZVSqxFnd7t1CcsHcOuysLjHb
-	dLFNqHVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JHwi7UuuEP7fbuXDfMIejC0wEJyxjjCVtwfBU8TnuVY=; b=Ty9+Z2oj12+EyVsztM8y2S1UmF
+	QZJB1yNG5961rDOvkxps18cjsp1q2hq0b3i1jVcX4NQxp42ev/fcstUQ57c27yHjZ8LrLlRi2xdUA
+	CbvJibFI56N8tXP3PpMJqJLttobiZUOaaPsvCxNFsqcFxNcDkuGilJDaEDSMp22kBmTc7+Pkjq5LI
+	iJu2LN7/YJR+Tcx0O2B2jpfSQXMySq9DMMLIUFmQD03aBXEPKRoK8S2eSw5cdK22RapqGjRIr5I94
+	gmCE0ca40Mbep2nIcY2bhqdcU9kHe5D4ED1VHfJK/KLFYbaJiFdWiMsCN0hoM646qUUyOVl9GQ156
+	FxDHLEeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osCGn-001Qev-QS; Tue, 08 Nov 2022 00:15:13 +0000
-Received: from mail-mw2nam10on2078.outbound.protection.outlook.com ([40.107.94.78] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1osEOQ-0021xM-1J; Tue, 08 Nov 2022 02:31:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osCGk-001Qdo-Sg; Tue, 08 Nov 2022 00:15:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=K7T9m5eCCkMF1JiU8YIs+mgovLnWwzz88lLlR5R/SrCprXK/ZDh7sU2NFh4k9EWNfSMhRKnrnPaUkjUCnrmBCAz75rh4+6VE06R/KKBBnaEzDalLw+EXA7uX32MP3NTn7mPEHIiIINmD6x8ZxqUoTIu7Wdqtc+fdBX1h/jezzbxdZJs5QizU3IYVZ70qPJBzv3dj0H54hVi2/bcqAlS2hH9o+HRZRQnxORtt+jOFQEKvGzyfXVKL2jBWr76W1isgWgR8dDsd/KDW07RnfJC2+qs5vlMDJIHPzMCeYwNuUaSCYguzMMXsGO5W+2LgXJfpevnHd4OeKE4lmdwlWmnqqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=weGhFE/NPYqsu3+oQ3+Gc2/85Dt0v2jOoXlR66OrBHw=;
- b=kx7IfdEOtqt2KHzYWuGL3ZqCYAVthb7LZTE5D99w3Vp+06kf0rhjqFAJ0bX6ysKXuVJABprwelzRTRme8RuZwU2+bhNmMKnsXZ10EziheSNFzzwVLnv7hg1PPmnzx08Rx2clKBkNRUh0N21G84quHsnUqoY+OWHRBkbOOZXi8fT3HQ6j5mIxy9YfhblWPY0mZarwLeXbmS80YBCxCokxiNrtVi12ScyGk5EnmHZz92sjl/Ekeuh0Apy/nJGuoaIaKZTHQZSahc4ltOFzRyiocj3xK8myMkMyDojbIgmFSpwxWspWMAItLgTD0E+gause4qUbTnXphFJMAwIeHMFnzA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=kernel.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=weGhFE/NPYqsu3+oQ3+Gc2/85Dt0v2jOoXlR66OrBHw=;
- b=Hm/1W6/aw4Wz3PVVK2TxDawAuSSC47ovyTL3RQ+Jvq7LvI8Wrc9bhEjkLVWdsqVb6g0LNQIjwYOgJo+S8btjUICCUnG/mjvX5B0eWz6TyGelAUJQzrr+zPGYM7eJA0VlVT8HaMKsz0o8Htkfg2fg1gQIQXcIa1yfxK5FUYITJFvLx6f6kt6Chi91JLmVmkP8SXrA4QbD5v+ULjcKOuvNUMJo+nFWUcmI0KbSszkcgciF1iUSD6u7npCYS+19Syl0GRYU6kSxa7chi4Qq2DYMfbIe0hDnIrbNlckMmMvkr1l7oHqtexEIjExBLdRQERKKDNHStvuNE3vxiXZgibuhVQ==
-Received: from MN2PR20CA0014.namprd20.prod.outlook.com (2603:10b6:208:e8::27)
- by SJ0PR12MB5424.namprd12.prod.outlook.com (2603:10b6:a03:300::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.26; Tue, 8 Nov
- 2022 00:15:00 +0000
-Received: from BL02EPF0000EE3C.namprd05.prod.outlook.com
- (2603:10b6:208:e8:cafe::f) by MN2PR20CA0014.outlook.office365.com
- (2603:10b6:208:e8::27) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.20 via Frontend
- Transport; Tue, 8 Nov 2022 00:14:59 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL02EPF0000EE3C.mail.protection.outlook.com (10.167.241.132) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5813.11 via Frontend Transport; Tue, 8 Nov 2022 00:14:59 +0000
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Mon, 7 Nov 2022
- 16:14:37 -0800
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail203.nvidia.com
- (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Mon, 7 Nov 2022
- 16:14:36 -0800
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
- Transport; Mon, 7 Nov 2022 16:14:34 -0800
-Date: Mon, 7 Nov 2022 16:14:32 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Will Deacon <will@kernel.org>
-CC: <joro@8bytes.org>, <robin.murphy@arm.com>, <jgg@nvidia.com>,
-	<kevin.tian@intel.com>, <quic_jjohnson@quicinc.com>,
-	<suravee.suthikulpanit@amd.com>, <robdclark@gmail.com>,
-	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <orsonzhai@gmail.com>,
-	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<jean-philippe@linaro.org>, <tglx@linutronix.de>,
-	<shameerali.kolothum.thodi@huawei.com>, <christophe.jaillet@wanadoo.fr>,
-	<yangyicong@hisilicon.com>, <yangyingliang@huawei.com>,
-	<quic_saipraka@quicinc.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>
-Subject: Re: [PATCH v7 4/5] iommu: Use EINVAL for incompatible device/domain
- in ->attach_dev
-Message-ID: <Y2mfaG1/6hd1qykW@Asurada-Nvidia>
-References: <cover.1666042872.git.nicolinc@nvidia.com>
- <f52a07f7320da94afe575c9631340d0019a203a7.1666042873.git.nicolinc@nvidia.com>
- <20221107152645.GD21002@willie-the-truck>
+	id 1osENa-0021hQ-9n; Tue, 08 Nov 2022 02:30:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C97A61418;
+	Tue,  8 Nov 2022 02:30:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 35E6AC43147;
+	Tue,  8 Nov 2022 02:30:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667874616;
+	bh=1hYnMgfurIKVnqS2BSMFp3XJTtcvbl4vCIjx0mlf2hc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=corZkn9pLiTNJeebW0flJi865e5dD2UeDQ+8JGk7sNL3V2a4kHdhDOxRXG+71pGQh
+	 tCXiG+7o3v6mOeeLKPu/57tG+LrMlFVD7nqaY2jNgLYhnSBCgmww0rJG7PwT0mxFnQ
+	 DHxnQCH1iiCovuIwHQEB2ax8KYZE908axQ2TH0zhLT1QN+KgiKG+fXYAZln7wzSx1c
+	 xLSmupP5T9DNXlQ5kAQMlI+UjIri6aFHbnH8+eTsabgCIM0uqdp5Hnjozuz1polESL
+	 E6gbQ8xo0SfxSmjlEMum1OAGCuWMzRPfJ+fqvK6trB9aq3D6aY8DWf5B8RV3VZKAfR
+	 1cuX6y9Fyloug==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1BC44C73FFC;
+	Tue,  8 Nov 2022 02:30:16 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20221107152645.GD21002@willie-the-truck>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0000EE3C:EE_|SJ0PR12MB5424:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5808e1ce-f844-4895-f7a2-08dac11e4645
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	0RU24JXB3AVpAykJgZNiyB3QHnmFS+aLLRoamB/d0r3zRn8a/2egcnaBTglj+4BNErN9mte5MVKMKM4Yxyxgwgz5sehyBUjHTrMEQeFFmxn7Btkl8XS1rklD3NNWVLTcMi5ayNeV1hWnIoqchFg65GgZqaubfP6eFAREAIzAOdGi5ryeiBukr5zfyzFpue5gZUxQqiKCuwt6/RNBzE8eH/u+xfAjXGF+gs/SHAgMwRncZF/iGKBwqeXVpC91hJWnhC830ozySpnTDs318VEVGkUZPSyK3sVs+39mNMiFiYtYAl3dLjyiKukH1j1+gnsXMB/b9DCq/scM56Uo2nPkyVowrQT9qKDHEIH4+OST988u/RuxNk4yUETdsd5nhds2NuO/A5DJEcDCU2zDrWUF7f//rzXfkniEOa02yik+5IP2WguwggJexPf3GjwYnYKwHrKZsEVbYEhW2eXxFz0Z6xzr0akkdSN/IxGuRuipblRntFU5KMzr981xONqiTjuecTCm1NpOb3hMmH9K+Vm3B5GQsjlCHOznfH6rj+TP5tI99FSbrXOH6+ftyVklI9Ja+P6896QvJ7unisz0fyzvtCHUVF5zoMZm1YATBq+4gIIDtT/1tYF+MPA0r7SBsE/anmABGSKRWch0wN960R0b/Paqb8j90kGfif4uAmSEl2598y8OvmqvMSST9n9cJckjYFxJwF3bqKTQdg9npOGBNrlaJpioZ6dSRPtCMmXrg3rnFC8MUBXBymSJrwTVWGDP9PDHJuI/vherWrVYPsufQpmP/Po6R3OjUS7y6uy3jPM=
-X-Forefront-Antispam-Report: 	CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(376002)(396003)(136003)(39860400002)(346002)(451199015)(40470700004)(46966006)(36840700001)(86362001)(356005)(7636003)(82740400003)(83380400001)(55016003)(40460700003)(40480700001)(2906002)(9686003)(26005)(186003)(336012)(47076005)(426003)(36860700001)(70206006)(8676002)(4326008)(7406005)(6916009)(316002)(478600001)(82310400005)(33716001)(7416002)(54906003)(70586007)(8936002)(5660300002)(41300700001)(473944003);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Nov 2022 00:14:59.6329
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5808e1ce-f844-4895-f7a2-08dac11e4645
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BL02EPF0000EE3C.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB5424
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: remove explicit phylink_generic_validate()
+ references
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <166787461610.16737.3952195755714134439.git-patchwork-notify@kernel.org>
+Date: Tue, 08 Nov 2022 02:30:16 +0000
+References: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: joyce.ooi@intel.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, chris.snook@gmail.com,
+ nicolas.ferre@microchip.com, claudiu.beznea@microchip.com,
+ ioana.ciornei@nxp.com, claudiu.manoil@nxp.com, madalin.bucur@nxp.com,
+ thomas.petazzoni@bootlin.com, mw@semihalf.com, tchornyi@marvell.com,
+ nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com,
+ horatiu.vultur@microchip.com, lars.povlsen@microchip.com,
+ Steen.Hegelund@microchip.com, daniel.machon@microchip.com,
+ vladimir.oltean@nxp.com, alexandre.belloni@bootlin.com, s.shtylyov@omp.ru,
+ peppe.cavallaro@st.com, alexandre.torgue@foss.st.com, joabreu@synopsys.com,
+ mcoquelin.stm32@gmail.com, radhey.shyam.pandey@xilinx.com,
+ michal.simek@xilinx.com, andrew@lunn.ch, hkallweit1@gmail.com,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-usb@vger.kernel.org,
+ UNGLinuxDriver@microchip.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_161510_965965_EA7526B8 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20221107_183022_430661_3BD0DFEF 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,51 +89,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 07, 2022 at 03:26:45PM +0000, Will Deacon wrote:
+Hello:
 
-> > diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > index ba47c73f5b8c..01fd7df16cb9 100644
-> > --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > @@ -2430,23 +2430,14 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
-> >                       goto out_unlock;
-> >               }
-> >       } else if (smmu_domain->smmu != smmu) {
-> > -             dev_err(dev,
-> > -                     "cannot attach to SMMU %s (upstream of %s)\n",
-> > -                     dev_name(smmu_domain->smmu->dev),
-> > -                     dev_name(smmu->dev));
-> > -             ret = -ENXIO;
-> > +             ret = -EINVAL;
-> >               goto out_unlock;
-> >       } else if (smmu_domain->stage == ARM_SMMU_DOMAIN_S1 &&
-> >                  master->ssid_bits != smmu_domain->s1_cfg.s1cdmax) {
-> > -             dev_err(dev,
-> > -                     "cannot attach to incompatible domain (%u SSID bits != %u)\n",
-> > -                     smmu_domain->s1_cfg.s1cdmax, master->ssid_bits);
-> >               ret = -EINVAL;
-> >               goto out_unlock;
-> >       } else if (smmu_domain->stage == ARM_SMMU_DOMAIN_S1 &&
-> >                  smmu_domain->stall_enabled != master->stall_enabled) {
-> > -             dev_err(dev, "cannot attach to stall-%s domain\n",
-> > -                     smmu_domain->stall_enabled ? "enabled" : "disabled");
-> >               ret = -EINVAL;
-> >               goto out_unlock;
-> >       }
+This patch was applied to netdev/net-next.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
 
-> I think it would be helpful to preserve these messages using
-> dev_err_ratelimited() so that attach failure can be diagnosed without
-> having to hack the messages back into the driver.
+On Fri, 04 Nov 2022 17:13:01 +0000 you wrote:
+> Virtually all conventional network drivers are now converted to use
+> phylink_generic_validate() - only DSA drivers and fman_memac remain,
+> so lets remove the necessity for network drivers to explicitly set
+> this member, and default to phylink_generic_validate() when unset.
+> This is possible as .validate must currently be set.
+> 
+> Any remaining instances that have not been addressed by this patch can
+> be fixed up later.
+> 
+> [...]
 
-Thank you for the review.
+Here is the summary with links:
+  - [net-next] net: remove explicit phylink_generic_validate() references
+    https://git.kernel.org/netdev/net-next/c/e1f4ecab1933
 
-The change is already picked up last week. Yet, I can add prints
-back with a followup patch, if no one has a problem with that.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Also, I am not quite sure what the use case would be to have an
-error print. Perhaps dev_dbg() would be more fitting if it is
-just for diagnosis?
 
-Thanks
-Nic
 
