@@ -4,100 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCF0C4167E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 18:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A351EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 19:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0/WfzvHJubbv56pooqVBj0w476tmu7QbHTTDbRCIA5E=; b=Cb0EpMB+yUT8YsPUOwoRFglVZH
-	ZUdfMNgIhQn/S81UkRlR72O6gfKhkBm13epU5ddf0MfAzcuFAb4hCsYzY0tzsxkrqmAHP0uWC/9GR
-	0O/4Kdv5eS16NpjMDhe2TMRK7k52pIfdp1lnq0yKc0OL1imRzLRxB6ErcjMrPPEdGd0NeDZUUkvo5
-	GuUWKg0Xkn1D+Q9vYg1LWj6dg9SIVEuaJqsuBRrkLaee+2tssTUwWkVNz55bZ5v1yDk+gLQj5kcgj
-	SMKOFWXYr/f2XdBCmC0D7ZnAVcBjjcOJCr/AmlJU7klI7SucYu8Ls9cJh1nD+wQd/vdmEbOKolO5N
-	CPjzMlMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XfXoDgW9OI5PANI8jHFCHbYEq+oBqTjh/uAha6cV/Ls=; b=ma0euBYzQoN6dBzvNhi6WFst4Z
+	I++PPh2OxM+1d5/yXke+fdnMfy3pR1HMjndbUlZA6WVDYrdvS0sCTVwy1e/ZbKmD7qweFCkg6oDLB
+	OrycSXBCs0/zKqOi5/ATE/7QWp65ySDSpDvqvpN7Vuzf2GcyIigS+cpV9DsXoYABx/9dCrIAyPrCA
+	uUjwL0Ucobg84d5SSYjdVo4Qop2tvJBvlL5QZorUBpFWdkRRgc9DpJ7JLGEbc4QLJ3XqNHF3OdVbo
+	mZdufKF4+HlyZw0mi+cWtPaz3zoO3lAjps3AQQ+UvXeY27+anXAWjuwV9YAEinkxErHApA+4/Q9qX
+	gusGU/Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osTaI-007a31-NL; Tue, 08 Nov 2022 18:44:30 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1osTsB-007ejj-3z; Tue, 08 Nov 2022 19:02:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osTa8-007Zp1-9x
-	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 18:44:25 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id g12so22377093wrs.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Nov 2022 10:44:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0/WfzvHJubbv56pooqVBj0w476tmu7QbHTTDbRCIA5E=;
-        b=TewWiwo/fKUKHnrl/jdGAA26gbsYfnUGzuWcy1Z6I8182suw87I83Z6VUuQrsVqIgV
-         8eYu6BsyAZSa2Nbii6LBsVNDvsHOXsbu9sQiuVGO3cAJ+MaATm0I8yqJ0Xw8ffODeFyL
-         oTtw//bUxz0QR9Rh/ZOuKZkYUjsGnf9FlVVE5pDQJCY138jZVgeOhO4agYzEX4G5dVHx
-         8mhro01GcAXguWqqFwAsc/+Jrq6ya5VG5hzHT+nBE2q+KKQIyaSgn8PzHEezPJsZWA2V
-         aPgzrhpztrn9y9rs5z0CAn2TxZ3lj53L1G5uTCW/ogDbt2i3PrGJkAnF1k6Ihwz+nclx
-         vZ7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0/WfzvHJubbv56pooqVBj0w476tmu7QbHTTDbRCIA5E=;
-        b=M7Oc/7BZedqUXGIK5OqykAez6RWdH+RSTVoOJxkMYJ/WO8zuC4ilsGwDZMdk0BkR+3
-         Bxh3gr79qaDbyH/dxRGQtB5l9Qu+JNBy75Hta1tDJkkvu3i/jd5OD6A6OH6l/ZDbp8cU
-         Hk2lO/ExGvosSXT+CSUA0rYsObDnS9mz7Jwicj62UWZU1BzRO0N9p/a29etpw2uKRpga
-         EUmrZQd+H2FC9K4pNWENJqahRBxOSYSpb0ZqoZ/3byLkSP2kQHC2Lcud8zh58XROMuXz
-         PiAT7tb/cqoUQHOrQcCdkOORHKPX3nffbKqGzsc+18NO9yVlCdSzr2LB6YARgbgxfAsy
-         hIlw==
-X-Gm-Message-State: ACrzQf36lzGRN7gKFyhR4ql3fgxZzMckDWORJQu8gDh3ZlEBgXy7fdKW
-	yhomMcDSp0j7Y89iG/cwC8vWIg==
-X-Google-Smtp-Source: AMsMyM4GRByfBs2rOhytOJLVqo5arouXEthW3hO7pFcl3jL2IFAN0WwzGLcg7+E4ljaUFdtb9RkLag==
-X-Received: by 2002:adf:ba8f:0:b0:22c:def3:1179 with SMTP id p15-20020adfba8f000000b0022cdef31179mr36812897wrg.571.1667933054732;
-        Tue, 08 Nov 2022 10:44:14 -0800 (PST)
-Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id m6-20020a05600c3b0600b003cf6c2f9513sm13564009wms.2.2022.11.08.10.44.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Nov 2022 10:44:14 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 08 Nov 2022 19:43:37 +0100
-Subject: [PATCH v4 2/9] dt-bindings: rtc: mediatek: convert MT6397 rtc documentation
+	id 1osTs8-007eiI-47
+	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 19:02:58 +0000
+X-UUID: fdf4f22d004e43219a8ce1fd70ce80eb-20221108
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XfXoDgW9OI5PANI8jHFCHbYEq+oBqTjh/uAha6cV/Ls=;
+	b=kmtp6PXCVwq6qpWTpN5SlXDh8KgG/+oz9q9HOWU2wdwaJ7CFxcRt2UFTvKZdZGkavQP6uIo1dZaimRPe4fUykXxgrS52qdhwd+su57b7hlNSj5SUcx8DWwj0Xs7G3VDj+tnvLW1NGMt5at1Tg1M/M2paazXvCimM5xCwVnQwsCE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:428c9602-b185-45a5-a756-a8f9bc5071c8,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:0809fa90-1a78-4832-bd08-74b1519dcfbf,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fdf4f22d004e43219a8ce1fd70ce80eb-20221108
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 222119972; Tue, 08 Nov 2022 12:02:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 9 Nov 2022 03:02:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 9 Nov 2022 03:02:12 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Bo Jiao <bo.jiao@mediatek.com>, "Ryder
+ Lee" <ryder.lee@mediatek.com>
+Subject: [PATCH 2/4] wifi: mt76: mt7915: enable full system reset support
+Date: Wed, 9 Nov 2022 03:02:08 +0800
+Message-ID: <9f478d0b5dd00f66d8071b20bff159623078015c.1667929344.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <26aefa69d1002616412c4b00bf2e779f71ca3289.1667929344.git.ryder.lee@mediatek.com>
+References: <26aefa69d1002616412c4b00bf2e779f71ca3289.1667929344.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20221005-mt6357-support-v4-2-5d2bb58e6087@baylibre.com>
-References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
-In-Reply-To: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
-To: Fabien Parent <fabien.parent@linaro.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Chen Zhong <chen.zhong@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Pavel Machek <pavel@ucw.cz>,
- Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: linux-leds@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fabien Parent <fparent@baylibre.com>,
- linux-rtc@vger.kernel.org, Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>
-X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3705; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=/h7YGXK8tw+BLV0bfVCW4btQXGCozMogPt+Hd7yMb0w=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjaqN6CcEIylfYlBT9eGuZhBXMu2i4n3Ib1lYHdH1n
- C4gPsFeJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY2qjegAKCRArRkmdfjHURVVaD/
- 0RFrYM5QhJtj1wxw1WP8Su/8jf7SX9w6CEJdEwgOv8MoNVRPajQAS1CfjLMls9gf9+mBKCXnidGzPM
- bDWm+UFzkoCFRRfvNaz03yHPv/xtw4d1Mx68maavKuNtPHP4G4A1b4nK72gTK06NCa3RDJ/0LO94kJ
- 2szrH6wmsgb2qAIMxhv5J8IFuVg4KlGa0/GKRz2CNljD6gD33IRqmel1gDHoPLxcKgqRnTVleGNZOr
- obiskESHGXywTJ8h3BABgXOCUbnXOnSscs7//0XL4e61yBMOSQmeQV9e6xm9Ia1ZR3o+IAywUazdho
- GihclUAEcvj2Lgwu7T/xgwYy4zt8hbvK9M2m7JC4hRhtdrNMjPYpuj/irv5uAUVafwyP5PK4tAdnkU
- EOeTLNmgd4xgCbgVVB8hgA0Cuxfrrp1+CG4y0Y+NIBneVy3ghLzMgM1wDwTCC+BWlRaPBp1n/4tgCa
- 1v7AsxSaYYhb7wEeKQP//eBC0mrsfkQ5xx9MbhDWB5qq02BCwjfHci9hPcJ9YSGWQehuyckkmLIyKx
- fxLuAqts76aL7lWlnt+7GplIKMWrT6ORB9Lq79G2j4VVY1SM8TXFgoHUpBhYhFtDoCggWrehJLnEl4
- hLr4Ae2OS/ZHx0MFVFeEJJ8C/A0cs4jE2IrLSZhbLGxc8tYCtZWq/Z2j49aQ==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_104420_355620_7F931173 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20221108_110256_212600_0D94FBA7 
+X-CRM114-Status: GOOD (  21.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,115 +80,480 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Convert rtc/rtc-mt6397.txt to rtc/mt6397-rtc.yaml
-- Add mediatek,mt6357-rtc compatible.
-- Add maintainer
-- Remove the .txt binding file
+From: Bo Jiao <bo.jiao@mediatek.com>
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Add mt7915_reset() and refactor mt7915_mac_reset_work() to support
+full system recovery.
+
+Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
 ---
- Documentation/devicetree/bindings/mfd/mt6397.txt   |  2 +-
- .../bindings/rtc/mediatek,mt6397-rtc.yaml          | 40 ++++++++++++++++++++++
- .../devicetree/bindings/rtc/rtc-mt6397.txt         | 31 -----------------
- 3 files changed, 41 insertions(+), 32 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |  11 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 212 +++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  18 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   |  24 +-
+ .../net/wireless/mediatek/mt76/mt7915/mmio.c  |   7 +-
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  15 +-
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |   4 +
+ 7 files changed, 265 insertions(+), 26 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index 0088442efca1..79aaf21af8e9 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -33,7 +33,7 @@ Optional subnodes:
- 		- compatible: "mediatek,mt6331-rtc"
- 		- compatible: "mediatek,mt6358-rtc"
- 		- compatible: "mediatek,mt6397-rtc"
--	For details, see ../rtc/rtc-mt6397.txt
-+	For details, see ../rtc/mediatek,mt6397-rtc.yaml
- - regulators
- 	Required properties:
- 		- compatible: "mediatek,mt6323-regulator"
-diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
-new file mode 100644
-index 000000000000..bb48c0150f95
---- /dev/null
-+++ b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
-@@ -0,0 +1,40 @@
-+ # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/rtc/mediatek,mt6397-rtc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 324db5291c85..1f39aa3e3f3d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -262,9 +262,8 @@ static void mt7915_led_set_brightness(struct led_classdev *led_cdev,
+ 		mt7915_led_set_config(led_cdev, 0xff, 0);
+ }
+ 
+-static void
+-mt7915_init_txpower(struct mt7915_dev *dev,
+-		    struct ieee80211_supported_band *sband)
++void mt7915_init_txpower(struct mt7915_dev *dev,
++			 struct ieee80211_supported_band *sband)
+ {
+ 	int i, n_chains = hweight8(dev->mphy.antenna_mask);
+ 	int nss_delta = mt76_tx_power_nss_delta(n_chains);
+@@ -446,7 +445,7 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
+ 	mt76_clear(dev, MT_DMA_DCR0(band), MT_DMA_DCR0_RXD_G5_EN);
+ }
+ 
+-static void mt7915_mac_init(struct mt7915_dev *dev)
++void mt7915_mac_init(struct mt7915_dev *dev)
+ {
+ 	int i;
+ 	u32 rx_len = is_mt7915(&dev->mt76) ? 0x400 : 0x680;
+@@ -476,7 +475,7 @@ static void mt7915_mac_init(struct mt7915_dev *dev)
+ 	}
+ }
+ 
+-static int mt7915_txbf_init(struct mt7915_dev *dev)
++int mt7915_txbf_init(struct mt7915_dev *dev)
+ {
+ 	int ret;
+ 
+@@ -1117,6 +1116,8 @@ int mt7915_register_device(struct mt7915_dev *dev)
+ 			goto unreg_thermal;
+ 	}
+ 
++	dev->recovery.hw_init_done = true;
 +
-+title: MediaTek MT6397/MT6366/MT6358/MT6357/MT6323 RTC
+ 	mt7915_init_debugfs(&dev->phy);
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 3b1259f14de6..8667bf7f1aab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1265,7 +1265,7 @@ mt7915_wait_reset_state(struct mt7915_dev *dev, u32 state)
+ 	bool ret;
+ 
+ 	ret = wait_event_timeout(dev->reset_wait,
+-				 (READ_ONCE(dev->reset_state) & state),
++				 (READ_ONCE(dev->recovery.state) & state),
+ 				 MT7915_RESET_TIMEOUT);
+ 
+ 	WARN(!ret, "Timeout waiting for MCU reset state %x\n", state);
+@@ -1320,6 +1320,171 @@ void mt7915_tx_token_put(struct mt7915_dev *dev)
+ 	idr_destroy(&dev->mt76.token);
+ }
+ 
++static int
++mt7915_mac_restart(struct mt7915_dev *dev)
++{
++	struct mt7915_phy *phy2;
++	struct mt76_phy *ext_phy;
++	struct mt76_dev *mdev = &dev->mt76;
++	int i, ret;
++	u32 irq_mask;
 +
-+maintainers:
-+  - Alexandre Mergnat <amergnat@baylibre.com>
++	ext_phy = dev->mt76.phys[MT_BAND1];
++	phy2 = ext_phy ? ext_phy->priv : NULL;
 +
-+description: |
-+  MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
-+  as a type of multi-function device (MFD). The RTC can be configured and set up
-+  with PMIC wrapper bus which is a common resource shared with the other
-+  functions found on the same PMIC.
++	if (dev->hif2) {
++		mt76_wr(dev, MT_INT1_MASK_CSR, 0x0);
++		mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
++	}
 +
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt6323-rtc
-+      - mediatek,mt6357-rtc
-+      - mediatek,mt6358-rtc
-+      - mediatek,mt6366-rtc
-+      - mediatek,mt6397-rtc
++	if (dev_is_pci(mdev->dev)) {
++		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
++		if (dev->hif2)
++			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0x0);
++	}
 +
-+additionalProperties: false
++	set_bit(MT76_RESET, &dev->mphy.state);
++	set_bit(MT76_MCU_RESET, &dev->mphy.state);
++	wake_up(&dev->mt76.mcu.wait);
++	if (ext_phy) {
++		set_bit(MT76_RESET, &ext_phy->state);
++		set_bit(MT76_MCU_RESET, &ext_phy->state);
++	}
 +
-+required:
-+  - compatible
++	/* lock/unlock all queues to ensure that no tx is pending */
++	mt76_txq_schedule_all(&dev->mphy);
++	if (ext_phy)
++		mt76_txq_schedule_all(ext_phy);
 +
-+examples:
-+  - |
-+    pmic {
-+        compatible = "mediatek,mt6397";
++	/* disable all tx/rx napi */
++	mt76_worker_disable(&dev->mt76.tx_worker);
++	mt76_for_each_q_rx(mdev, i) {
++		if (mdev->q_rx[i].ndesc)
++			napi_disable(&dev->mt76.napi[i]);
++	}
++	napi_disable(&dev->mt76.tx_napi);
 +
-+        rtc {
-+               compatible = "mediatek,mt6397-rtc";
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-deleted file mode 100644
-index 7212076a8f1b..000000000000
---- a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-+++ /dev/null
-@@ -1,31 +0,0 @@
--Device-Tree bindings for MediaTek PMIC based RTC
++	/* token reinit */
++	mt7915_tx_token_put(dev);
++	idr_init(&dev->mt76.token);
++
++	mt7915_dma_reset(dev, true);
++
++	local_bh_disable();
++	mt76_for_each_q_rx(mdev, i) {
++		if (mdev->q_rx[i].ndesc) {
++			napi_enable(&dev->mt76.napi[i]);
++			napi_schedule(&dev->mt76.napi[i]);
++		}
++	}
++	local_bh_enable();
++	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
++	clear_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
++
++	mt76_wr(dev, MT_INT_MASK_CSR, dev->mt76.mmio.irqmask);
++	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
++
++	if (dev->hif2) {
++		mt76_wr(dev, MT_INT1_MASK_CSR, irq_mask);
++		mt76_wr(dev, MT_INT1_SOURCE_CSR, ~0);
++	}
++	if (dev_is_pci(mdev->dev)) {
++		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
++		if (dev->hif2)
++			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
++	}
++
++	/* load firmware */
++	ret = mt7915_mcu_init_firmware(dev);
++	if (ret)
++		goto out;
++
++	/* set the necessary init items */
++	ret = mt7915_mcu_set_eeprom(dev);
++	if (ret)
++		goto out;
++
++	mt7915_mac_init(dev);
++	mt7915_init_txpower(dev, &dev->mphy.sband_2g.sband);
++	mt7915_init_txpower(dev, &dev->mphy.sband_5g.sband);
++	ret = mt7915_txbf_init(dev);
++
++	if (test_bit(MT76_STATE_RUNNING, &dev->mphy.state)) {
++		ret = mt7915_run(dev->mphy.hw);
++		if (ret)
++			goto out;
++	}
++
++	if (ext_phy && test_bit(MT76_STATE_RUNNING, &ext_phy->state)) {
++		ret = mt7915_run(ext_phy->hw);
++		if (ret)
++			goto out;
++	}
++
++out:
++	/* reset done */
++	clear_bit(MT76_RESET, &dev->mphy.state);
++	if (phy2)
++		clear_bit(MT76_RESET, &phy2->mt76->state);
++
++	local_bh_disable();
++	napi_enable(&dev->mt76.tx_napi);
++	napi_schedule(&dev->mt76.tx_napi);
++	local_bh_enable();
++
++	mt76_worker_enable(&dev->mt76.tx_worker);
++
++	return ret;
++}
++
++static void
++mt7915_mac_full_reset(struct mt7915_dev *dev)
++{
++	struct mt7915_phy *phy2;
++	struct mt76_phy *ext_phy;
++	int i;
++
++	ext_phy = dev->mt76.phys[MT_BAND1];
++	phy2 = ext_phy ? ext_phy->priv : NULL;
++
++	dev->recovery.hw_full_reset = true;
++
++	wake_up(&dev->mt76.mcu.wait);
++	ieee80211_stop_queues(mt76_hw(dev));
++	if (ext_phy)
++		ieee80211_stop_queues(ext_phy->hw);
++
++	cancel_delayed_work_sync(&dev->mphy.mac_work);
++	if (ext_phy)
++		cancel_delayed_work_sync(&ext_phy->mac_work);
++
++	mutex_lock(&dev->mt76.mutex);
++	for (i = 0; i < 10; i++) {
++		if (!mt7915_mac_restart(dev))
++			break;
++	}
++	mutex_unlock(&dev->mt76.mutex);
++
++	if (i == 10)
++		dev_err(dev->mt76.dev, "chip full reset failed\n");
++
++	ieee80211_restart_hw(mt76_hw(dev));
++	if (ext_phy)
++		ieee80211_restart_hw(ext_phy->hw);
++
++	ieee80211_wake_queues(mt76_hw(dev));
++	if (ext_phy)
++		ieee80211_wake_queues(ext_phy->hw);
++
++	dev->recovery.hw_full_reset = false;
++	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
++				     MT7915_WATCHDOG_TIME);
++	if (ext_phy)
++		ieee80211_queue_delayed_work(ext_phy->hw,
++					     &ext_phy->mac_work,
++					     MT7915_WATCHDOG_TIME);
++}
++
+ /* system error recovery */
+ void mt7915_mac_reset_work(struct work_struct *work)
+ {
+@@ -1332,7 +1497,29 @@ void mt7915_mac_reset_work(struct work_struct *work)
+ 	ext_phy = dev->mt76.phys[MT_BAND1];
+ 	phy2 = ext_phy ? ext_phy->priv : NULL;
+ 
+-	if (!(READ_ONCE(dev->reset_state) & MT_MCU_CMD_STOP_DMA))
++	/* chip full reset */
++	if (dev->recovery.restart) {
++		dev_info(dev->mt76.dev, "start full system recovery...\n");
++
++		/* disable WA/WM WDT */
++		mt76_clear(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
++
++		mt7915_mac_full_reset(dev);
++
++		/* enable mcu irq */
++		mt7915_irq_enable(dev, MT_INT_MCU_CMD);
++		mt7915_irq_disable(dev, 0);
++
++		/* enable WA/WM WDT */
++		mt76_set(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
++
++		dev->recovery.state = MT_MCU_CMD_NORMAL_STATE;
++		dev->recovery.restart = false;
++		return;
++	}
++
++	/* chip partial reset */
++	if (!(READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA))
+ 		return;
+ 
+ 	ieee80211_stop_queues(mt76_hw(dev));
+@@ -1406,6 +1593,27 @@ void mt7915_mac_reset_work(struct work_struct *work)
+ 					     MT7915_WATCHDOG_TIME);
+ }
+ 
++void mt7915_reset(struct mt7915_dev *dev)
++{
++	if (!dev->recovery.hw_init_done)
++		return;
++
++	if (dev->recovery.hw_full_reset)
++		return;
++
++	/* wm/wa exception: do full recovery */
++	if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_WDT_MASK) {
++		dev->recovery.restart = true;
++
++		mt7915_irq_disable(dev, MT_INT_MCU_CMD);
++		queue_work(dev->mt76.wq, &dev->reset_work);
++		return;
++	}
++
++	queue_work(dev->mt76.wq, &dev->reset_work);
++	wake_up(&dev->reset_wait);
++}
++
+ void mt7915_mac_update_stats(struct mt7915_phy *phy)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 6de49b93387e..32c362965dc4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -20,17 +20,13 @@ static bool mt7915_dev_running(struct mt7915_dev *dev)
+ 	return phy && test_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ }
+ 
+-static int mt7915_start(struct ieee80211_hw *hw)
++int mt7915_run(struct ieee80211_hw *hw)
+ {
+ 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+ 	bool running;
+ 	int ret;
+ 
+-	flush_work(&dev->init_work);
 -
--MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
--as a type of multi-function device (MFD). The RTC can be configured and set up
--with PMIC wrapper bus which is a common resource shared with the other
--functions found on the same PMIC.
+-	mutex_lock(&dev->mt76.mutex);
 -
--For MediaTek PMIC MFD bindings, see:
--../mfd/mt6397.txt
+ 	running = mt7915_dev_running(dev);
+ 
+ 	if (!running) {
+@@ -80,6 +76,18 @@ static int mt7915_start(struct ieee80211_hw *hw)
+ 		mt7915_mac_reset_counters(phy);
+ 
+ out:
++	return ret;
++}
++
++static int mt7915_start(struct ieee80211_hw *hw)
++{
++	struct mt7915_dev *dev = mt7915_hw_dev(hw);
++	int ret;
++
++	flush_work(&dev->init_work);
++
++	mutex_lock(&dev->mt76.mutex);
++	ret = mt7915_run(hw);
+ 	mutex_unlock(&dev->mt76.mutex);
+ 
+ 	return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 65ae959859e7..17fe29d8fd71 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2249,18 +2249,10 @@ mt7915_mcu_init_rx_airtime(struct mt7915_dev *dev)
+ 				 sizeof(req), true);
+ }
+ 
+-int mt7915_mcu_init(struct mt7915_dev *dev)
++int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+ {
+-	static const struct mt76_mcu_ops mt7915_mcu_ops = {
+-		.headroom = sizeof(struct mt76_connac2_mcu_txd),
+-		.mcu_skb_send_msg = mt7915_mcu_send_message,
+-		.mcu_parse_response = mt7915_mcu_parse_response,
+-		.mcu_restart = mt76_connac_mcu_restart,
+-	};
+ 	int ret;
+ 
+-	dev->mt76.mcu_ops = &mt7915_mcu_ops;
 -
--For MediaTek PMIC wrapper bus bindings, see:
--../soc/mediatek/pwrap.txt
--
--Required properties:
--- compatible: Should be one of follows
--       "mediatek,mt6323-rtc": for MT6323 PMIC
--       "mediatek,mt6358-rtc": for MT6358 PMIC
--       "mediatek,mt6366-rtc", "mediatek,mt6358-rtc": for MT6366 PMIC
--       "mediatek,mt6397-rtc": for MT6397 PMIC
--
--Example:
--
--       pmic {
--               compatible = "mediatek,mt6323";
--
--               ...
--
--               rtc {
--                       compatible = "mediatek,mt6323-rtc";
--               };
--       };
-
+ 	/* force firmware operation mode into normal state,
+ 	 * which should be set before firmware download stage.
+ 	 */
+@@ -2309,6 +2301,20 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
+ 				 MCU_WA_PARAM_RED, 0, 0);
+ }
+ 
++int mt7915_mcu_init(struct mt7915_dev *dev)
++{
++	static const struct mt76_mcu_ops mt7915_mcu_ops = {
++		.headroom = sizeof(struct mt76_connac2_mcu_txd),
++		.mcu_skb_send_msg = mt7915_mcu_send_message,
++		.mcu_parse_response = mt7915_mcu_parse_response,
++		.mcu_restart = mt76_connac_mcu_restart,
++	};
++
++	dev->mt76.mcu_ops = &mt7915_mcu_ops;
++
++	return mt7915_mcu_init_firmware(dev);
++}
++
+ void mt7915_mcu_exit(struct mt7915_dev *dev)
+ {
+ 	__mt76_mcu_restart(&dev->mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index be1b8ea711c7..032af46289af 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -746,10 +746,9 @@ static void mt7915_irq_tasklet(struct tasklet_struct *t)
+ 		u32 val = mt76_rr(dev, MT_MCU_CMD);
+ 
+ 		mt76_wr(dev, MT_MCU_CMD, val);
+-		if (val & MT_MCU_CMD_ERROR_MASK) {
+-			dev->reset_state = val;
+-			queue_work(dev->mt76.wq, &dev->reset_work);
+-			wake_up(&dev->reset_wait);
++		if (val & (MT_MCU_CMD_ERROR_MASK | MT_MCU_CMD_WDT_MASK)) {
++			dev->recovery.state = val;
++			mt7915_reset(dev);
+ 		}
+ 	}
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 5af26e60e902..49caf7b21a20 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -303,7 +303,13 @@ struct mt7915_dev {
+ 	struct work_struct rc_work;
+ 	struct work_struct reset_work;
+ 	wait_queue_head_t reset_wait;
+-	u32 reset_state;
++
++	struct {
++		u32 state;
++		bool hw_full_reset:1;
++		bool hw_init_done:1;
++		bool restart:1;
++	} recovery;
+ 
+ 	struct list_head sta_rc_list;
+ 	struct list_head sta_poll_list;
+@@ -444,7 +450,13 @@ int mt7915_dma_init(struct mt7915_dev *dev, struct mt7915_phy *phy2);
+ void mt7915_dma_prefetch(struct mt7915_dev *dev);
+ void mt7915_dma_cleanup(struct mt7915_dev *dev);
+ int mt7915_dma_reset(struct mt7915_dev *dev, bool force);
++int mt7915_txbf_init(struct mt7915_dev *dev);
++void mt7915_init_txpower(struct mt7915_dev *dev,
++			 struct ieee80211_supported_band *sband);
++void mt7915_reset(struct mt7915_dev *dev);
++int mt7915_run(struct ieee80211_hw *hw);
+ int mt7915_mcu_init(struct mt7915_dev *dev);
++int mt7915_mcu_init_firmware(struct mt7915_dev *dev);
+ int mt7915_mcu_twt_agrt_update(struct mt7915_dev *dev,
+ 			       struct mt7915_vif *mvif,
+ 			       struct mt7915_twt_flow *flow,
+@@ -544,6 +556,7 @@ static inline void mt7915_irq_disable(struct mt7915_dev *dev, u32 mask)
+ 		mt76_set_irq_mask(&dev->mt76, MT_INT_MASK_CSR, mask, 0);
+ }
+ 
++void mt7915_mac_init(struct mt7915_dev *dev);
+ u32 mt7915_mac_wtbl_lmac_addr(struct mt7915_dev *dev, u16 wcid, u8 dw);
+ bool mt7915_mac_wtbl_update(struct mt7915_dev *dev, int idx, u32 mask);
+ void mt7915_mac_reset_counters(struct mt7915_phy *phy);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index 5180dd931835..9120380d74c6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -541,6 +541,8 @@ enum offs_rev {
+ #define MT_WFDMA0_BUSY_ENA_TX_FIFO1	BIT(1)
+ #define MT_WFDMA0_BUSY_ENA_RX_FIFO	BIT(2)
+ 
++#define MT_WFDMA0_MCU_HOST_INT_ENA	MT_WFDMA0(0x1f4)
++
+ #define MT_WFDMA0_GLO_CFG		MT_WFDMA0(0x208)
+ #define MT_WFDMA0_GLO_CFG_TX_DMA_EN	BIT(0)
+ #define MT_WFDMA0_GLO_CFG_RX_DMA_EN	BIT(2)
+@@ -709,6 +711,8 @@ enum offs_rev {
+ #define MT_MCU_CMD_NORMAL_STATE		BIT(5)
+ #define MT_MCU_CMD_ERROR_MASK		GENMASK(5, 1)
+ 
++#define MT_MCU_CMD_WDT_MASK		GENMASK(31, 30)
++
+ /* TOP RGU */
+ #define MT_TOP_RGU_BASE			0x18000000
+ #define MT_TOP_PWR_CTRL			(MT_TOP_RGU_BASE + (0x0))
 -- 
-b4 0.10.1
+2.36.1
+
 
