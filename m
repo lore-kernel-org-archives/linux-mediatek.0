@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F81BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 14:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52EF7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 14:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nmobDXOnKIvXSqDf0KznrH6+NdMK57hX9B8Qa4ds58Q=; b=UUMNDh/Xr1ZVoT5gbKB4dylx51
-	rhmo+TO7glDgZtrQcZfc73GiO+NrvMMlRhn1Q6CBLxSBgo/rWu2VuKshZ2NmlyQ2ZUqiv5klPyxu0
-	qboFAkHwXvIOOvDpWnMjGF4fZNvpdgm87iYCmMLGUCsd19l1/HgoS+r22LvozhFeQWdHM5fRks5za
-	H5/oovC3nWiMjer0Hq44LRdQC0eraiiFIgGg0aXrE2SCvqUtD9TU/gK2IYF2kMp/BVtVMoLdFUbzN
-	IH+RMGMZN8hkIluiqLsfcetYOTPp+e7/LlJ1+fTSG7vsRWxJZ5Iuo8a5kfd4bpDtm2f6DTNovaJhN
-	XpzfFkKQ==;
+	bh=5RfhvWt1Tv41V7xOdh182isXRfcqnMCvMMU4ZxjHa4I=; b=uj9HVerx443AxNgxWKPO4icxYs
+	O36fdx/ghzVahfRnArapFtsOhp34+tmADUhHcZiwuK/kvo+6m7GUakMQrA0FLyk0QT2fjVM81cQr/
+	Gd2dlQAZrrd8HK7J9GbGKUdHRg9m/ozfxN6dAGh59TEkYIiTlEBtQ4XpxaY8aqHILPLPMgLycruHA
+	KG7EZ5K/GJq23yT0O5UCbQluTel4v38SUgky5qmY55rM10VPQwLDXdHMYOxDjKs+YkzLiswprEP6N
+	G/08VvHySSK6hI8Id//6j8Ows9BloOaQgPJzyCQKDKdArRexKvb/ZCLCEQPtx/JkMunNWRzw/NGzb
+	YBIjcLBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osPXA-005uoD-Vx; Tue, 08 Nov 2022 14:25:00 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1osPwX-0061qh-Ka; Tue, 08 Nov 2022 14:51:13 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osPX0-005uml-F1; Tue, 08 Nov 2022 14:24:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1667917490; x=1699453490;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=SkQVJcDZAagONBPRjE0wTg4gud81SvHRy4ZcfIKi2yU=;
-  b=mTUne7x5L8iban5km9oeaZeRZpSYSbyY70DU5LZVpaC6xYedEWRapzyW
-   t+g8BQZvbzCUvhnCVh12VYkQKl8m61CqykDyAKag5TS8t7uGmCH1ZQJ7C
-   jen7CxQv3mqaCN+GdyJdOwa3x5lIodO3zdlluTBeIPQOPh8FFn71LgWgH
-   NNe04Tgu5zrT4sCyWZJM5dSNQ/T6deQH6l3AE05nVRjD1WtLeIQ6KoUj6
-   bYkHitZopA0Btiw0kV61RUiFc+MNL+0VUCHYg9tShzoiZAQcu5fdy1l9t
-   fkdd2Y+eqHIycF+RJ7HjOZ+5qtPXPxboexo8ChxW4KobqUl2D38GRJTjr
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="311858517"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; 
-   d="scan'208";a="311858517"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Nov 2022 06:24:49 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="630884179"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; 
-   d="scan'208";a="630884179"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga007.jf.intel.com with ESMTP; 08 Nov 2022 06:24:43 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1osPWq-009ANu-2m;
-	Tue, 08 Nov 2022 16:24:40 +0200
-Date: Tue, 8 Nov 2022 16:24:40 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
-Message-ID: <Y2pmqBXYq3WQa97u@smile.fi.intel.com>
-References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
- <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
- <Y1+NHVS5ZJLFTBke@google.com>
- <Y1/qisszTjUL9ngU@smile.fi.intel.com>
+	id 1osPwR-0061N3-UL
+	for linux-mediatek@lists.infradead.org; Tue, 08 Nov 2022 14:51:11 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id k2so39288429ejr.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Nov 2022 06:51:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=5RfhvWt1Tv41V7xOdh182isXRfcqnMCvMMU4ZxjHa4I=;
+        b=vgPgq/fKoy91SWpS9t2e6oRNux2GYZ11uz4nq69Ecusn/WQxEr9PnRkXeciq96q9Kf
+         Y/uc1JXxwDcE7DZk4ERIHWnMD3xCOKQOkmZ9szh6zLYAHlS8jB3/9Vzu0GTEcRvD273p
+         QcJzqGu94FAUp4fND/CyiussZorc4AISQgkF6NZxvG/MLLVHHNxJkea27kaoeMZFf8NM
+         MrPmIrciQQHldO1W0L/ICYsoJczxk/E5K1ku/kfcnyWtcEYwFARIfMuiqAHSi0RwOReo
+         3xg6N55uGAcHesseexA8+25xPiouSe/QNOgAQpSqMWJsa4JVGZPnnvoO6B0S9mYDKIX0
+         HTaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5RfhvWt1Tv41V7xOdh182isXRfcqnMCvMMU4ZxjHa4I=;
+        b=jyvmog/uI18kOttTMesxLIP5VYhVCxrbIx/hGI6Bf92C/tiBmuRMQGWst1EGjSpvWm
+         /mb6r2Q6A+aUZ6YBTN4VkrrCGoZUbJFB0cZJ+8gb6MzSLhexf+Ogdc7J2YubKGFj/tT7
+         s1IJZee85y+K1U+DAPt5R2wlLB+nscybjqWtqzgtUk23m+UU6SWDQLju98RJKpaPOsv4
+         rBhKgeTQrPKEKcso3HNpHbo6LVVfGcCTCTfXpnXn1yXa5h9HPCncGW0hZxpitljm5DRG
+         M4aEeiV7tK6oG3/0qUzEkKm89HY3VxKC/tF7ZJLUaW6CIYuy3sEK5VXFJtnPAmztPUXf
+         bueA==
+X-Gm-Message-State: ACrzQf32Z85jy2ArNSDgG5zXxgKpffR05thuXjAoiWpVBZN5oz1N8LNp
+	RPvKLc0oCPytbjGwpjh4s2q54ReIoV3rCU0jA7wIDg==
+X-Google-Smtp-Source: AMsMyM43GACP12dQZV6v3KIC5Qxaj6QVCASShwmiPx6+SaG+30Y/RBMbREK4KJlCmGU7p1c/8UJC8IQmuja8j8BZsDc=
+X-Received: by 2002:a17:907:c1e:b0:7ae:31a0:571e with SMTP id
+ ga30-20020a1709070c1e00b007ae31a0571emr21471098ejc.690.1667919065615; Tue, 08
+ Nov 2022 06:51:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y1/qisszTjUL9ngU@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20221025070255.14407-1-linux@fw-web.de> <e7192d9b-df86-a860-d5cb-8b4b9184e5bc@linaro.org>
+ <trinity-889b4468-8a50-4eae-80a1-6bd9ffbeaaf2-1667577856206@3c-app-gmx-bs24>
+In-Reply-To: <trinity-889b4468-8a50-4eae-80a1-6bd9ffbeaaf2-1667577856206@3c-app-gmx-bs24>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 8 Nov 2022 15:50:44 +0100
+Message-ID: <CACRpkdZFkeX7J9R2C0rhF+WZJXe65y6FfeBEMBGGkSTh4AWmsQ@mail.gmail.com>
+Subject: Re: Re: [PATCH v2] dt-bindings: pinctrl: update uart/mmc bindings for
+ MT7986 SoC
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Frank Wunderlich <linux@fw-web.de>, 
+	linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_062450_562866_35FAFC54 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20221108_065107_981647_9CE300FE 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,33 +90,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 31, 2022 at 05:32:26PM +0200, Andy Shevchenko wrote:
-> On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
-> > On Tue, 25 Oct 2022, Andy Shevchenko wrote:
-> > 
-> > > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
-> > > > There are several users of LED framework that reimplement the
-> > > > functionality of led_init_default_state_get(). In order to
-> > > > deduplicate them move the declaration to the global header
-> > > > (patch 2) and convert users (patche 3-11).
-> > > 
-> > > Dear LED maintainers, is there any news on this series? It's hanging around
-> > > for almost 2 months now...
-> > 
-> > My offer still stands if help is required.
-> 
-> From my point of view the LED subsystem is quite laggish lately (as shown by
-> this patch series, for instance), which means that _in practice_ the help is
-> needed, but I haven't got if we have any administrative agreement on that.
-> 
-> Pavel?
+On Fri, Nov 4, 2022 at 5:04 PM Frank Wunderlich <frank-w@public-files.de> wrote:
 
-So, Pavel seems quite unresponsive lately... Shall we just move on and take
-maintainership?
+> > Gesendet: Dienstag, 25. Oktober 2022 um 20:35 Uhr
+> > Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
+> > Betreff: Re: [PATCH v2] dt-bindings: pinctrl: update uart/mmc bindings for MT7986 SoC
+> >
+> > On 25/10/2022 03:02, Frank Wunderlich wrote:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+> > >
+> > > Add new splitted uart pins and emmc_51
+> > >
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> >
+> >
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>
+> after talking with MTK for the emmc pinctrl settings (custom pull-up) they suggested me to change
+> binding to fix other emmc-values and allow multiple (2) uart-items
+>
+> so on top of this patch
+>
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [emmc, emmc_rst, emmc_51]
+> +                  enum: [emmc_45, emmc_51]
+>            - if:
+>                properties:
+>                  function:
+> @@ -231,10 +231,12 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1,
+> -                         uart1_2_rx_tx, uart1_2_cts_rts, uart1_3_rx_tx,
+> -                         uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rts,
+> -                         uart2_1, uart0, uart1, uart2]
+> +                  items:
+> +                    enum: [uart1_0, uart1_rx_tx, uart1_cts_rts, uart1_1,
+> +                           uart1_2_rx_tx, uart1_2_cts_rts, uart1_3_rx_tx,
+> +                           uart1_3_cts_rts, uart2_0_rx_tx, uart2_0_cts_rts,
+> +                           uart2_1, uart0, uart1, uart2]
+> +                  maxItems: 2
+>
+> i would squash these changes and send as v3 or should i send an extra-patch?
 
--- 
-With Best Regards,
-Andy Shevchenko
+Squash and send av v3 if you haven't already! Easiest for me.
 
-
+Yours,
+Linus Walleij
 
