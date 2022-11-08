@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED186C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 02:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6CE7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Nov 2022 03:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JHwi7UuuEP7fbuXDfMIejC0wEJyxjjCVtwfBU8TnuVY=; b=Ty9+Z2oj12+EyVsztM8y2S1UmF
-	QZJB1yNG5961rDOvkxps18cjsp1q2hq0b3i1jVcX4NQxp42ev/fcstUQ57c27yHjZ8LrLlRi2xdUA
-	CbvJibFI56N8tXP3PpMJqJLttobiZUOaaPsvCxNFsqcFxNcDkuGilJDaEDSMp22kBmTc7+Pkjq5LI
-	iJu2LN7/YJR+Tcx0O2B2jpfSQXMySq9DMMLIUFmQD03aBXEPKRoK8S2eSw5cdK22RapqGjRIr5I94
-	gmCE0ca40Mbep2nIcY2bhqdcU9kHe5D4ED1VHfJK/KLFYbaJiFdWiMsCN0hoM646qUUyOVl9GQ156
-	FxDHLEeQ==;
+	bh=8qbIsZEvvK3AR1keZXDSbpz3zGOMmhEZ5vFDHxwjayo=; b=AnKIE5sPbCxFT8CBd17R56QTS3
+	Av4q9D6agBytzIUqGO247nJa1/cANPqK+QXPEC1XkcmRL65F/L2lIDFX4krClHW7ANCJsx1dxHh35
+	Rjm1Vhgnw0EwuWm9gIC/cZxV4yjr5x+tPMcsZAg5WP8cYv/Jnran+0KizRYb4303w/JfJ82N+s+bM
+	TAJErsz3+CZzRBOjbc9/FjLROQLFvq/uDuSRdqnSpMk2+F380QXAa9mSw4D0Q6GZfzB+w7U4At2lC
+	VVFeET+FpjujdZIxS3nPm1M3O8VNw4WSQUqtLWMk5v8/a/AWNRA7vkKn+aEFM1jsLadE9SqfQnLkU
+	We2kRW9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osEOQ-0021xM-1J; Tue, 08 Nov 2022 02:31:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1osFLd-002JDj-9D; Tue, 08 Nov 2022 03:32:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osENa-0021hQ-9n; Tue, 08 Nov 2022 02:30:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C97A61418;
-	Tue,  8 Nov 2022 02:30:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 35E6AC43147;
-	Tue,  8 Nov 2022 02:30:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1667874616;
-	bh=1hYnMgfurIKVnqS2BSMFp3XJTtcvbl4vCIjx0mlf2hc=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=corZkn9pLiTNJeebW0flJi865e5dD2UeDQ+8JGk7sNL3V2a4kHdhDOxRXG+71pGQh
-	 tCXiG+7o3v6mOeeLKPu/57tG+LrMlFVD7nqaY2jNgLYhnSBCgmww0rJG7PwT0mxFnQ
-	 DHxnQCH1iiCovuIwHQEB2ax8KYZE908axQ2TH0zhLT1QN+KgiKG+fXYAZln7wzSx1c
-	 xLSmupP5T9DNXlQ5kAQMlI+UjIri6aFHbnH8+eTsabgCIM0uqdp5Hnjozuz1polESL
-	 E6gbQ8xo0SfxSmjlEMum1OAGCuWMzRPfJ+fqvK6trB9aq3D6aY8DWf5B8RV3VZKAfR
-	 1cuX6y9Fyloug==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1BC44C73FFC;
-	Tue,  8 Nov 2022 02:30:16 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1osFLb-002JDB-97; Tue, 08 Nov 2022 03:32:24 +0000
+X-UUID: da7ebed4777849d7911292b26a45123d-20221107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8qbIsZEvvK3AR1keZXDSbpz3zGOMmhEZ5vFDHxwjayo=;
+	b=aPxRh+it18Qij6W1W3V9AxixxXo/h+4ltRwSGADTD8KUGg88W7Hs8896HTyH3ZE9jgKBuJD9ytezT1Jr5YJsAdvohMoD0L8Xmfoh4kQca7jwO6FZmcG7PhxL/lDaWMAxX9TVy1YaIhpgNXtWjNjMuZn3ItANJLheLeoXvVgeC6k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:4a0d2bc7-0c4c-4b38-a04b-8690d7919112,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:0659f9f3-a19e-4b45-8bfe-6a73c93611e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: da7ebed4777849d7911292b26a45123d-20221107
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 509724356; Mon, 07 Nov 2022 20:32:17 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 8 Nov 2022 11:32:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 8 Nov 2022 11:32:14 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <nfraprado@collabora.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>
+Subject: [PATCH v5 6/7] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible for MT6795
+Date: Tue, 8 Nov 2022 11:32:08 +0800
+Message-ID: <20221108033209.22751-7-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221108033209.22751-1-allen-kh.cheng@mediatek.com>
+References: <20221108033209.22751-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: remove explicit phylink_generic_validate()
- references
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166787461610.16737.3952195755714134439.git-patchwork-notify@kernel.org>
-Date: Tue, 08 Nov 2022 02:30:16 +0000
-References: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1or0FZ-001tRa-DI@rmk-PC.armlinux.org.uk>
-To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Cc: joyce.ooi@intel.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, chris.snook@gmail.com,
- nicolas.ferre@microchip.com, claudiu.beznea@microchip.com,
- ioana.ciornei@nxp.com, claudiu.manoil@nxp.com, madalin.bucur@nxp.com,
- thomas.petazzoni@bootlin.com, mw@semihalf.com, tchornyi@marvell.com,
- nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com,
- horatiu.vultur@microchip.com, lars.povlsen@microchip.com,
- Steen.Hegelund@microchip.com, daniel.machon@microchip.com,
- vladimir.oltean@nxp.com, alexandre.belloni@bootlin.com, s.shtylyov@omp.ru,
- peppe.cavallaro@st.com, alexandre.torgue@foss.st.com, joabreu@synopsys.com,
- mcoquelin.stm32@gmail.com, radhey.shyam.pandey@xilinx.com,
- michal.simek@xilinx.com, andrew@lunn.ch, hkallweit1@gmail.com,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-usb@vger.kernel.org,
- UNGLinuxDriver@microchip.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221107_183022_430661_3BD0DFEF 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20221107_193223_351295_FAE2B053 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +85,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This patch was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
+Add the mediatek,mt6795-wdt compatible.
 
-On Fri, 04 Nov 2022 17:13:01 +0000 you wrote:
-> Virtually all conventional network drivers are now converted to use
-> phylink_generic_validate() - only DSA drivers and fman_memac remain,
-> so lets remove the necessity for network drivers to explicitly set
-> this member, and default to phylink_generic_validate() when unset.
-> This is possible as .validate must currently be set.
-> 
-> Any remaining instances that have not been addressed by this patch can
-> be fixed up later.
-> 
-> [...]
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Here is the summary with links:
-  - [net-next] net: remove explicit phylink_generic_validate() references
-    https://git.kernel.org/netdev/net-next/c/e1f4ecab1933
-
-You are awesome, thank you!
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index b3d2273f323b..d9d4aa7e27e3 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -22,6 +22,7 @@ properties:
+       - enum:
+           - mediatek,mt2712-wdt
+           - mediatek,mt6589-wdt
++          - mediatek,mt6795-wdt
+           - mediatek,mt7986-wdt
+           - mediatek,mt8183-wdt
+           - mediatek,mt8186-wdt
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.18.0
 
 
