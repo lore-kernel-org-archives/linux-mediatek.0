@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2A6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 09:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 022FEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 10:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r2cNI+ffmhgd288nc181fA7eXZb8pJjpetZ9uhC7U1M=; b=XgtW4ImnUocv9dHHGfW5LusWol
-	VT1mvXoaWJ0Ox6sI+ccaTfMbgd47IF9bDabgtKzFQBa/zlX20fILS/nWuE1eMog2ER+AMI691A5sb
-	xY55IS6fxevxgvk6h8xZ4Bsw8rt6H9yx+chesB8ftLo7Brt32g0+wUqQjdUkOw74SR0k8MRp+uIke
-	pgZzZnzrsC9YrtJW3yqrMBwIjNZmmLMnkjpceShExk4JAzGN02FrTgc1glnaH+R+o4Vlx+t8oEPLD
-	UhGNE5Lmd+PoZl245uuv7mOPnjgeqhsQSsKU1IpuIj3yUh6lCq3IVl5vkRLluIWNjeCS+68FkbvmP
-	NDHx9bqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i0RvSmzfXal4CwyktVc7SkL+bv7kfZ77IrYMKCrSjfA=; b=iXsqgiqx+KaGqlNMJVE8EHGNjL
+	gPIaXgly8CjDg9yGKE2wfKfvdO0ERcE++IJqUN1mJdGL8JjbiQofkwW9IDExZuVh8nY5eB/eGLttl
+	LA36j15haNLWHl72JnE+EAG41EHO4WDXIKAxpQKWWBJvdo6cB4JKpvYXlGCl6uc6Da0gafiwJYnBj
+	m84nEdaifuesKJ29cpBJxGuo4JEqwPF0pbWeYde6ymcCRV1DGjvkha1JF6p+7HWn0E/BuVT8yBf+/
+	5i3TKJKYF8j5uXHNjt3P60fGNuUCO3LVfp4mI6Ltfe6tN1VA+/wfFPUW4+BoFxBFAnfk9kYWVU1aF
+	s97yS1Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osho7-00CUcI-Bc; Wed, 09 Nov 2022 09:55:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1osiMe-00CdhW-16; Wed, 09 Nov 2022 10:31:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oshnv-00CUUM-4C; Wed, 09 Nov 2022 09:55:33 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4572F660299E;
-	Wed,  9 Nov 2022 09:55:28 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667987729;
-	bh=tqSAj7i9eJ7hbkEWeNSQsTS7ENW3LYaPNesgiYySff8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H7B/hEAnNYmUbN8RI01wuQoCpxbKZ1LND5aLvcJOs9fjGhBdASp/EZrx6rCijVYtb
-	 qUJDwgXj5Dt1/QpNZbE2pHiKaO8WRYiAD7QRkvtTGjLn0KCk9nuPy9ojfbHrtCfzvu
-	 TW6tfIZMpZD7wqOYskA6lEc8DRgKSrATnf+YIkQKADD0pF5LpZhlZbGY44lG+s5v9K
-	 Hdqfk2Ga/iQr1KTxBHZdunIhxR+A1KocjXfxRQnO4JbweQyXE/ZtyN+zFzJrWgZECU
-	 jKfoIo1np1st0d/+HBaF6bQwKGmzZ4T8FYT+bXrRZJcyGSrJuDSjXG+IgFqH8IjKwF
-	 1SFSxR5UuJa+Q==
-Message-ID: <fe898d24-54fa-56bb-8067-b422a3a52ff5@collabora.com>
-Date: Wed, 9 Nov 2022 10:55:25 +0100
+	id 1osiMT-00Cdfr-TR; Wed, 09 Nov 2022 10:31:15 +0000
+X-UUID: 878bcef449984e5bb4b5c64f49dff358-20221109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=i0RvSmzfXal4CwyktVc7SkL+bv7kfZ77IrYMKCrSjfA=;
+	b=F5WJl9+sFbZm59O9XDcWPczxSQux4+XoD9Wz/L0Y+ksyUKMmFNyj9iTrAPQ4OqXFBzvioxXYsTHQ5iUQ0BAoFDPifEu7i+ftjyR0VB7nE2Hw1cD4hlXQjphgmyhLVdb6OMzYJOy6Rg9s2OOqtXTjp8v1wxVab3yXMWVA2qv2AXk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:6baa1e93-4dc8-437e-b02d-26f9e448a701,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:453bcc50-b7af-492d-8b40-b1032f90ce11,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 878bcef449984e5bb4b5c64f49dff358-20221109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1579690227; Wed, 09 Nov 2022 03:31:06 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 9 Nov 2022 18:01:02 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 9 Nov 2022 18:01:01 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
+	<xinlei.lee@mediatek.com>
+Subject: [PATCH v4] drm: mediatek: Modify dpi power on/off sequence.
+Date: Wed, 9 Nov 2022 18:00:59 +0800
+Message-ID: <1667988059-8635-1-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Subject: Re: [PATCH v4 5/9] dt-bindings: soc: mediatek: convert pwrap
- documentation
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Fabien Parent <fabien.parent@linaro.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Chen Zhong <chen.zhong@mediatek.com>, Alessandro Zummo
- <a.zummo@towertech.it>, Pavel Machek <pavel@ucw.cz>,
- Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>, linux-rtc@vger.kernel.org,
- Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>
-References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
- <20221005-mt6357-support-v4-5-5d2bb58e6087@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221005-mt6357-support-v4-5-5d2bb58e6087@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_015531_461940_83504278 
-X-CRM114-Status: GOOD (  31.09  )
+X-CRM114-CacheID: sfid-20221109_023113_960899_A56E8BF3 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,214 +78,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/11/22 19:43, Alexandre Mergnat ha scritto:
-> - Convert soc/mediatek/pwrap.txt to soc/mediatek/mediatek,pwrap.yaml
-> - MT8365 SoC has 2 additional clock items and a yaml schema for its PMIC
-> - Remove pwrap.txt file
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
->   .../devicetree/bindings/leds/leds-mt6323.txt       |   2 +-
->   Documentation/devicetree/bindings/mfd/mt6397.txt   |   2 +-
->   .../bindings/soc/mediatek/mediatek,pwrap.yaml      | 158 +++++++++++++++++++++
->   .../devicetree/bindings/soc/mediatek/pwrap.txt     |  75 ----------
->   4 files changed, 160 insertions(+), 77 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
-> index 45bf9f7d85f3..73353692efa1 100644
-> --- a/Documentation/devicetree/bindings/leds/leds-mt6323.txt
-> +++ b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
-> @@ -9,7 +9,7 @@ MT6323 PMIC hardware.
->   For MT6323 MFD bindings see:
->   Documentation/devicetree/bindings/mfd/mt6397.txt
->   For MediaTek PMIC wrapper bindings see:
-> -Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
->   
->   Required properties:
->   - compatible : Must be "mediatek,mt6323-led"
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 79aaf21af8e9..3bee4a42555d 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -13,7 +13,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
->   It is interfaced to host controller using SPI interface by a proprietary hardware
->   called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
->   See the following for pwarp node definitions:
-> -../soc/mediatek/pwrap.txt
-> +../soc/mediatek/mediatek,pwrap.yaml
->   
->   This document describes the binding for MFD device and its sub module.
->   
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> new file mode 100644
-> index 000000000000..fe83458b801a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> @@ -0,0 +1,158 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/soc/mediatek/mediatek,pwrap.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek PMIC Wrapper
-> +
-> +maintainers:
-> +  - Alexandre Mergnat <amergnat@baylibre.com>
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-I say that the maintainer for pwrap is Flora Fu <flora.fu@mediatek.com>....
+Modify dpi power on/off sequence so that the first gpio operation will take effect.
 
-> +
-> +description: |
-> +  On MediaTek SoCs the PMIC is connected via SPI. The SPI master interface
-> +  is not directly visible to the CPU, but only through the PMIC wrapper
-> +  inside the SoC. The communication between the SoC and the PMIC can
-> +  optionally be encrypted. Also a non standard Dual IO SPI mode can be
-> +  used to increase speed.
-> +
-> +  IP Pairing
-> +
-> +  On MT8135 the pins of some SoC internal peripherals can be on the PMIC.
-> +  The signals of these pins are routed over the SPI bus using the pwrap
-> +  bridge. In the binding description below the properties needed for bridging
-> +  are marked with "IP Pairing". These are optional on SoCs which do not support
-> +  IP Pairing
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt2701-pwrap
+Fixes: 6bd4763fd532 ("drm/mediatek: set dpi pin mode to gpio low to avoid leakage current")
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+---
+change note:
+v3: Moved pull-down pin control after mtk_dpi_power_off.
 
-..snip..
+v2: Remove the empty line between Fixes: and S-o-b.
 
-> +  interrupts:
-> +    maxItems: 1
-> +    description: IRQ for pwrap in SOC
+v1: Rebase on linus/master v6.1-rc1. Change nothing.
 
-description: PMIC Wrapper interrupt
+Because dpi power_on/off is protected by dpi->refcount, the first time
+it cannot be powered on and off successfully, it will cause leakage.
+---
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-> +
-> +  clocks: true
-> +
-> +  clock-names: true
-> +
-> +  resets:
-> +    minItems: 1
-> +    items:
-> +      - description: PMIC wrapper reset
-> +      - description: IP pairing reset
-> +
-> +  reset-names:
-> +    minItems: 1
-> +    items:
-> +      - const: pwrap
-> +      - const: pwrap-bridge
-> +
-> +  pmic:
-> +    type: object
-> +
-> +allOf:
-> +  - if:
-
-if `resets` is present, reset-names is *required*...
-
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8365-pwrap
-> +    then:
-> +      properties:
-> +        pmic:
-> +          $ref: /schemas/mfd/mediatek,mt6357.yaml#
-> +
-> +        clocks:
-> +          items:
-> +            - description: SPI bus clock
-> +            - description: Main module clock
-> +            - description: System module clock
-> +            - description: Timer module clock
-> +        clock-names:
-> +          items:
-> +            - const: spi
-> +            - const: wrap
-> +            - const: sys
-> +            - const: tmr
-
-For clocks and clock-names... you can declare that globally and set
-`minItems: 2` for both: this means that the first two items are mandatory,
-but the last two are not.
-
-If you really want to force a validation error when using mediatek,mt8365-pwrap
-and not providing `sys` and `tmr` clocks, you can just override minItems.
-
-> +    else:
-> +      properties:
-> +        pmic:
-> +          description: |
-
-You don't need this '|'.
-
-> +            List of child nodes that specify the regulators.
-> +            See ../../mfd/mt6397.txt for more details.
-> +
-> +        clocks:
-> +          items:
-> +            - description: SPI bus clock
-> +            - description: Main module clock
-> +        clock-names:
-> +          items:
-> +            - const: spi
-> +            - const: wrap
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - reg-names
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +additionalProperties: true
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/reset/mt8135-resets.h>
-> +
-> +    soc {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +      pwrap@1000f000 {
-> +          compatible = "mediatek,mt8135-pwrap";
-> +          reg = <0 0x1000f000 0 0x1000>, <0 0x11017000 0 0x1000>;
-> +          reg-names = "pwrap", "pwrap-bridge";
-> +          interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>;
-> +          resets = <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
-> +              <&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
-
-Fix indentation please
-
-           resets = <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
-                    <&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
-
-> +          reset-names = "pwrap", "pwrap-bridge";
-> +          clocks = <&clk26m>, <&clk26m>;
-
-...and also, clocks/clock-names before resets/reset-names please.
-
-> +          clock-names = "spi", "wrap";
-> +
-> +          pmic {
-> +            compatible = "mediatek,mt6397";
-> +          };
-> +      };
-> +    };
-
-Regards,
-Angelo
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 508a6d994e83..1f5d39a4077c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -461,9 +461,6 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	if (--dpi->refcount != 0)
+ 		return;
+ 
+-	if (dpi->pinctrl && dpi->pins_gpio)
+-		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+-
+ 	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+@@ -488,9 +485,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 		goto err_pixel;
+ 	}
+ 
+-	if (dpi->pinctrl && dpi->pins_dpi)
+-		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+-
+ 	return 0;
+ 
+ err_pixel:
+@@ -721,12 +715,18 @@ static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
+ 	mtk_dpi_power_off(dpi);
++
++	if (dpi->pinctrl && dpi->pins_gpio)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+ }
+ 
+ static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
++	if (dpi->pinctrl && dpi->pins_dpi)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
++
+ 	mtk_dpi_power_on(dpi);
+ 	mtk_dpi_set_display_mode(dpi, &dpi->mode);
+ 	mtk_dpi_enable(dpi);
+-- 
+2.18.0
 
 
