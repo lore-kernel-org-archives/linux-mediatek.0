@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D72CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 09:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C91F9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 09:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q3m79KnYWRGGLkzECdRAwXzK2YUbC4lc0rheGKkaLm4=; b=kvOz0X7TjLsW5ZpsNxa/4PJWff
-	Pqe+jk/gnl+LWbzd8JE0K/pQLiWyymxa8F7OvEPu1G0fcAeifikVj8fCT06vFr3uXgfHbvFoOWiuO
-	8UvdGAqngRN8XSoU9VTLgO0QhN9x6bdVu+f4LUfPkSc7upI3W817Z+yyj4JS51akuj3MlFhWjW8YI
-	8uHk7OkesKEaeWc+nqzOEs9f+0Z37qQE4klUqs7HvcbouXpt1/gJY+xmtYsOulgErMy43t3rPCSlS
-	ep5JzP5ZKHvhry++uZV+lOslvW4YYKP25K/rlbIIN7KeGKrmABsrGX8LhXR3DMHiFGNzIcBC1DCIy
-	3PFlVH1g==;
+	bh=qXI56nT59C66fh4wx9zXlKYhFIYX2MSCFQTcjLySrxU=; b=soSjyVoztFDNsr9Do7sf5IEpsH
+	Xt2nqsro4tp/aIOZHyrf8dZEGDJh/PcpEfatMPIvWtBKe91a7tz90LzmqbGGEJLfWgr8CXYHP1F+I
+	2FbaRg/KrZ82iqayBJaBNLCvarbr4kf96+t36o1VLvRnZI4f06S1UoQ7FNCpm09UjZ0Q0YG1Nkzol
+	wfZCIkk23T2clxA7nwatWzKQXMuILXaFpQNE5cZn/+PCvqU4bO7GQg1ve7EwsaCjB5itrkYwb7h1x
+	4yb/tqCRjWbEkr6nNi4hHcyPXo23l6r7on6LT6JdTXed+Nm3Nt/4byxsjWvy3h9DZaz4O6l5rqOii
+	BTXo4GsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oshRw-00CLUP-Cm; Wed, 09 Nov 2022 09:32:48 +0000
+	id 1oshZn-00CQhj-A5; Wed, 09 Nov 2022 09:40:55 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oshRj-00CLDM-I3; Wed, 09 Nov 2022 09:32:37 +0000
+	id 1oshZc-00CQNZ-ID; Wed, 09 Nov 2022 09:40:45 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2B5576602905;
-	Wed,  9 Nov 2022 09:32:29 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B14506602905;
+	Wed,  9 Nov 2022 09:40:41 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1667986350;
-	bh=aKTpg/ANFcmHZS6rm4S2+2Jpe3Cgbu7viy4fKsSsIpo=;
+	s=mail; t=1667986842;
+	bh=5+SECJlEo7BQZC8NrHGOWqaaKAjZ2nnSt35XWUVSojo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=O2GvFZIETDdsB/6xrek1ymsjKH5wqdVDFwde5Ddu8gIy5YdTeN8tUODdLJjzy6PgD
-	 Uq12P/F7sVOWjVUYhVPOQgY/kb5vrxGi/MvMsMYzWKyUSMLMJUI9dJgPap0duXutzA
-	 FI9bePzzml12R37tj9UUBHs626/WZiTQVqCPz1rkgmKrpwxHCWybwZJGLO3WLFufVG
-	 eSaYcfJiyyWgZmtBA6dhOq/8YWToduukp2SIGf2anvZCQwENk4mYnUjfpKrShYbKyy
-	 Lyb9SQB5p0e2h4qsOxB9BDVzm2Kl2CqL66XdBfz0l+49ppZF+YXReXSA3QRyi0T8u8
-	 EVLwd4yKi0Ncg==
-Message-ID: <e3224f98-3f76-ef32-2088-dc7119f080be@collabora.com>
-Date: Wed, 9 Nov 2022 10:32:26 +0100
+	b=m8CVH8yhd5O27fE9M+b+hAoSLn0wY/5h5thZ5FV8UPovCxAeZQ+5jtr6gPslB4iwx
+	 NtS0elb1yU0JrNGd5hdeB6yV/rMkFGDWbTgOcIExtCcrGc8HmUjrAa/KOxtbzC08u5
+	 z20f+G969MK/0qw7PAzfVnO0lbhUUPtW2LnnGDUPyjGNH5QPspKvYdNkXq5y/qM0yn
+	 +RSNRIhZDLKxQACTEZbOA5FXlELCewvDPqe0ZcFvccwqyUcPXfpPP0TQdyyf3iSPjM
+	 F7w91uU1YlabydGsQcuP+NsObKyEJ3UlIbbJEEIeK/v0yVE9YdIbNEi/5mJ1TMbaYP
+	 tYaJHd8s9hOSA==
+Message-ID: <ed298a3e-25dd-af19-437c-f27c160788b3@collabora.com>
+Date: Wed, 9 Nov 2022 10:40:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH 3/3] arm64: dts: mt8195: Add video decoder node
+Subject: Re: [PATCH v4 2/9] dt-bindings: rtc: mediatek: convert MT6397 rtc
+ documentation
 Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
- Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221109073529.26765-1-yunfei.dong@mediatek.com>
- <20221109073529.26765-3-yunfei.dong@mediatek.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Fabien Parent <fabien.parent@linaro.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
+ Chen Zhong <chen.zhong@mediatek.com>, Alessandro Zummo
+ <a.zummo@towertech.it>, Pavel Machek <pavel@ucw.cz>,
+ Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>, linux-rtc@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>
+References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
+ <20221005-mt6357-support-v4-2-5d2bb58e6087@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221109073529.26765-3-yunfei.dong@mediatek.com>
+In-Reply-To: <20221005-mt6357-support-v4-2-5d2bb58e6087@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_013235_763272_A51C2039 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20221109_014044_768011_8224D7BD 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,86 +87,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/11/22 08:35, Yunfei Dong ha scritto:
-> Add video decoder node to mt8195 device tree.
+Il 08/11/22 19:43, Alexandre Mergnat ha scritto:
+> - Convert rtc/rtc-mt6397.txt to rtc/mt6397-rtc.yaml
+> - Add mediatek,mt6357-rtc compatible.
+> - Add maintainer
+> - Remove the .txt binding file
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
-> dtbs_check pass.
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 63 ++++++++++++++++++++++++
->   1 file changed, 63 insertions(+)
+>   Documentation/devicetree/bindings/mfd/mt6397.txt   |  2 +-
+>   .../bindings/rtc/mediatek,mt6397-rtc.yaml          | 40 ++++++++++++++++++++++
+>   .../devicetree/bindings/rtc/rtc-mt6397.txt         | 31 -----------------
+>   3 files changed, 41 insertions(+), 32 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 905d1a90b406..ffabf91d4273 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1874,6 +1874,69 @@
->   			power-domains = <&spm MT8195_POWER_DOMAIN_CAM>;
->   		};
->   
-> +		video-codec@18000000 {
-> +			compatible = "mediatek,mt8195-vcodec-dec";
-> +			mediatek,scp = <&scp>;
-> +			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
-> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			reg = <0 0x18000000 0 0x1000>,      /* VDEC_SYS */
-> +			      <0 0x18004000 0 0x1000>;      /* VDEC_RACING_CTRL */
 
-Since we're adding register descriptions to the schema file, you don't need any
-comments in front of the iospaces that you're declaring here... this means that
-it also fits on one line:
-			reg = <0 0x18000000 0 0x1000>, <0 0x18004000 0 0x1000>;
+Please split the txt->yaml conversion in one commit and the addition of the
+new mt6357-rtc compatible in another commit.
 
-> +			ranges = <0 0 0 0x18000000 0 0x26000>;
-> +			clocks = <&topckgen CLK_TOP_VDEC>,
-> +			         <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +			clock-names = "vdec-sel", "top";
-> +			assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +
-> +			vcodec-lat-soc@2000 {
-> +				compatible = "mediatek,mtk-vcodec-lat-soc";
-> +				reg = <0 0x2000 0 0x800>;		/* VDEC_MISC */
+Also, isn't the original maintainer of rtc-mt6397 supposed to be...
+Tianping Fang <tianping.fang@mediatek.com> ?
 
-We can perhaps add descriptions to the schema file for VDEC_MISC as well,
-meaning that we don't need that comment as well.
-
-> +				iommus = <&iommu_vpp M4U_PORT_L23_VDEC_UFO_ENC_EXT>,
-> +					 <&iommu_vpp M4U_PORT_L23_VDEC_RDMA_EXT>;
-> +				clocks = <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>;
-> +				clock-names = "vdec-soc-vdec", "vdec-soc-lat";
-> +				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-> +			};
-> +
-> +			vcodec-lat@10000 {
-> +				compatible = "mediatek,mtk-vcodec-lat";
-> +				reg = <0 0x10000 0 0x800>;		/* VDEC_MISC */
-
-same here
-
-> +				interrupts = <GIC_SPI 708 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				iommus = <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD2_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_AVC_MC_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_PRED_RD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_TILE_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_WDMA_EXT>;
-> +				clocks = <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>;
-> +				clock-names = "vdec-soc-vdec", "vdec-soc-lat";
-> +				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-> +			};
-> +
-> +			vcodec-core@25000 {
-> +				compatible = "mediatek,mtk-vcodec-core";
-> +				reg = <0 0x25000 0 0x1000>;		/* VDEC_CORE_MISC */
-
-...and same here too.
+You can add yourself to the list of maintainers, though, unless Tianping
+explicitly says that he doesn't want to maintain this driver anymore?
 
 Regards,
 Angelo
+
 
