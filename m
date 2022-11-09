@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DF7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 13:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552B3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 15:04:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=; b=BGJkBNTUrnoVRRZpnxzKnI78Rt
-	d/uaI1mggCPuRmh7il7PdyyfAdMsyIuTRVco8RbXH63I1h83i1RVuN56yZoQFtqqzTB1ctinXVMNg
-	VxaHZIP82IF9rolcuijEWxE91m9L96tukPq7x7/Z6Tb1x3hdvh5+MvIe7CfBd3q0ZfdUK11Fpmxym
-	5B6sJhgMzC85UVasOKBbfdFQ+2Yb0PJ3PZ2ljKe0oMvrAP67T09KnxLHzLOuX7lsTV2dBWE83OJZc
-	X7SG2Yi6OVlwssLutKCXwwMSkz+rTFnIKLPBW4uyy3ZnOxCDxWUNlIityn0a1kaI7+ZZRnDAtVe2M
-	k/K/NjlQ==;
+	bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=; b=qHR62+VoCV6pNs2wBNBE2hnWf2
+	K4ahm4ZN1dtie6UgGFnyysBf/wceqcJklsxUuTR8Cj859DQq48mYhth04wtSpXPmCN1LyqNH2/vOf
+	5IAj2nGsRGTcapOVn7mOOgbp7jb9BYafKbyGoNB8r12Aw6rZw9kPVRZnKd3CoU3PJleVM89v3+oUT
+	pIS61z+FVtDiyc79iSeOQi77wiXleg5NwQSITKZzXxSKbAlzOtNLSiBtzicveXq3RfOkU/qv78aZY
+	OWLi0RRKC4fBZYLxWXmXEZPqlmptk7SxO0/FyDNZfv0ufp8kI75s2DwuAqYQfDrMdtORItJhqHpF7
+	ip8jk4bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oslWE-00DyXH-K0; Wed, 09 Nov 2022 13:53:30 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1osmcO-00EMhe-7F; Wed, 09 Nov 2022 15:03:56 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oslW1-00DyOj-89; Wed, 09 Nov 2022 13:53:18 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id q186so6428427oia.9;
-        Wed, 09 Nov 2022 05:53:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=;
-        b=IRoPyveQ9oFrAzTF3HHWGRj0bUrCS8UXLDCa9ddqKqECHwdlDrMOiKDSZFD12lTdMl
-         XNBIQOgXzPdtgZPPrv9GafkLQB/QCIIiL+YPya0/Hp1NPKysiaBQGQjOfZI3/fws8WmO
-         IC351Nj8xsn5UopowW+WN6XagzJpYeXF21UXhjDo9EsVVx2/tmOi23Yx33AbvliZBYWZ
-         rjCm3e40+B0iBtSKK9mkxqcUkAjx9wi3fsP9JzExbAkKPOzS1PbKl5D01nmRmZqwArlf
-         c4WRIWu9QxLRLeK41yi7GJb8h2BS48MGKMxNelapj/igM3ozt9vWWbfuoFaITTowNE3m
-         D41w==
+	id 1osmcL-00EMg2-L3
+	for linux-mediatek@lists.infradead.org; Wed, 09 Nov 2022 15:03:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1668006230;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=;
+	b=GZoiw6ORQ6Ki7p3GnFbql+SY/CfBAy4c5M46IVhQdclOGdmdJ3T3mxJwq0NJBKmYVtCMNi
+	6l70oBX3RSZIQUsOztuffhuagc9pA+mjgpnaJly8tl4Lp66RAeb3jmvAHw8pvWnlkU4jkk
+	s7Vr+ewYBGPGaUKo5NLq6N5ehFXWF0s=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-638-FZ2sqmipMGajLlEdN22aDQ-1; Wed, 09 Nov 2022 10:03:46 -0500
+X-MC-Unique: FZ2sqmipMGajLlEdN22aDQ-1
+Received: by mail-qt1-f198.google.com with SMTP id fb5-20020a05622a480500b003a525d52abcso12696185qtb.10
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Nov 2022 07:03:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=;
-        b=XGy8ujk3/IVqyS55D6Oo/rb+2bjCMn1xagVG0P7h0pugJtgKgMuM8Jq2tP2SdAWPSO
-         twx8CKif/Gn0vosYabSW0YHZ+UR1XJGLLZFKd9VB7vNSnxgk3hqk1vwkrXDB9G33vfCe
-         urRJRRuESG+LHhdrQqtD5Ily/dhj2dTaKLMJpKnKxJvvWfvMoFRi6wwUj1Pd0syDTuBc
-         3Nq+9U++VsmGwUErmbxjsSdjiZQvHeSLVN2sGcJrjpaU9ZTi5Wt1ZHz9iSyj4jmMxH1P
-         xzPzTI5smuEzj0wycOVrY9sBfHivQZJtbP8DRp80faTf+k7ZS+kWR+l7mqYQB1SOqDYl
-         PcsQ==
-X-Gm-Message-State: ACrzQf3kHb3WQZyRsbGKagnXrkddJ6DLuJ73z5Tbt774gYIK82eQ2kKA
-	pIr8ri8So9Q2l1zc0N+n87A=
-X-Google-Smtp-Source: AMsMyM7yhbw8cdCur7Z/B3HPRG1UyZ5Xhy0cQKinNow41q8SEdCpF9Q0zCPt1dXhUKXdFyWWSxduvw==
-X-Received: by 2002:a05:6808:1b13:b0:35a:57ef:8388 with SMTP id bx19-20020a0568081b1300b0035a57ef8388mr16587593oib.195.1668001989314;
-        Wed, 09 Nov 2022 05:53:09 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id f15-20020a056870210f00b0013ae5246449sm6082480oae.22.2022.11.09.05.53.07
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=;
+        b=4KuFcONzwrekB4cW9yBFKhWre/dx4Jz5ymKCV31wOLEyBTQ7RqZvaNX/FhMDsxtr2T
+         tpX82R3xcVBflcC6WDi4mFEiEpe73+MczBOkUOZFKFYnpXsVIf7WPhtWqIk4Mj0JdQsw
+         UMGL/e/Tv0ysl05tep1K0hCoPXaXKje8Q20Zg6BYqtPv9GJircDFBfjZ5c3jnbdW3hB6
+         i+yZz89tUsJJW4JlGForrt4XP8QQr3xC1kc/FyVDhlThn38zE9ZJrXrI+F2S2X5ZxciN
+         CT36rLZQedf4r4p16bxIt8Tclz4jQMIwLuogif5Ld1zS+Ryzm/sZN/Y9IAcMnXpjS0OX
+         yflw==
+X-Gm-Message-State: ACrzQf1gOGZ0lTbdQImY5gbdg/bKJ2eRl5jEpDnWyRHuqlY9ZGbaLm9r
+	oHiTwkorjHb1idGX3WX2aQzrfJfT6VNxl12TjU4GCG3r8FY0Oq6eDPd8aBGbTfnZymPc1zdSoPs
+	2cmretMXFEJ2s+MKjyyfCe4y98iwKvVaJ
+X-Received: by 2002:a05:620a:1476:b0:6fa:4c67:83ec with SMTP id j22-20020a05620a147600b006fa4c6783ecmr31728034qkl.23.1668006225828;
+        Wed, 09 Nov 2022 07:03:45 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM5W/7Ofyy9aq2b4znPe4up0GqSbcYRBkArYCCUVmHJGVm6seQcJp68VlQkJ57qQhD7SVx9FuQ==
+X-Received: by 2002:a05:620a:1476:b0:6fa:4c67:83ec with SMTP id j22-20020a05620a147600b006fa4c6783ecmr31728001qkl.23.1668006225495;
+        Wed, 09 Nov 2022 07:03:45 -0800 (PST)
+Received: from localhost ([66.187.232.66])
+        by smtp.gmail.com with ESMTPSA id az8-20020a05620a170800b006bb87c4833asm11102303qkb.109.2022.11.09.07.03.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Nov 2022 05:53:08 -0800 (PST)
-Date: Wed, 9 Nov 2022 05:53:06 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>, nfraprado@collabora.com,
-	angelogioacchino.delregno@collabora.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 5/7] dt-bindings: watchdog: mediatek: Convert mtk-wdt
- to json-schema
-Message-ID: <20221109135306.GA3538893@roeck-us.net>
-References: <20221108033209.22751-1-allen-kh.cheng@mediatek.com>
- <20221108033209.22751-6-allen-kh.cheng@mediatek.com>
- <585a9cbb-4df4-1c06-ecfa-3b9442f1a5e2@gmail.com>
- <5758c2af-c2c5-dfbe-c7d8-036bbdaf71c7@kernel.org>
+        Wed, 09 Nov 2022 07:03:44 -0800 (PST)
+Date: Wed, 9 Nov 2022 16:03:40 +0100
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, Bo.Jiao@mediatek.com,
+	sujuan.chen@mediatek.com, ryder.Lee@mediatek.com,
+	evelyn.tsai@mediatek.com, devicetree@vger.kernel.org,
+	robh+dt@kernel.org, daniel@makrotopia.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	angelogioacchino.delregno@collabora.com, kvalo@kernel.org
+Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
+Message-ID: <Y2vBTBUw47sshA+E@localhost.localdomain>
+References: <cover.1667687249.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gRH5EQBfd9X8l7db"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5758c2af-c2c5-dfbe-c7d8-036bbdaf71c7@kernel.org>
+In-Reply-To: <cover.1667687249.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_055317_313500_7D10A380 
-X-CRM114-Status: GOOD (  19.70  )
+X-CRM114-CacheID: sfid-20221109_070353_809265_2864E3C6 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,47 +103,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 09, 2022 at 10:04:09AM +0100, Krzysztof Kozlowski wrote:
-> On 08/11/2022 11:50, Matthias Brugger wrote:
-> > 
-> > 
-> > On 08/11/2022 04:32, Allen-KH Cheng wrote:
-> >> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >>
-> >> Convert the MediaTek watchdog bindings to schema.
-> >>
-> >> The original binding only had 4 without a fallback but there is a reset
-> >> controller on the "mediatek,mt7986-wdt", "mediatek,mt8186-wdt",
-> >> "mediatek,mt8188-wdt" and "mediatek,mt8195-wdt" Since there is no reset
-> >> controller for the mt6589, we remove "mediatek,mt6589-wdt" as a
-> >> fallback.
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >> Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> >> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> >> Reviewed-by: Rob Herring <robh@kernel.org>
-> >> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> >> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > As I'm put as the maintainer:
-> > Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > 
-> > Shall I take that through my tree or shall it go through the watchdog tree?
-> > 
-> 
-> In general, bindings should go via subsystem trees (so watchdog), just
-> like drivers. However this got Guenter's review tag, so usually it means
-> also an ack... Dunno... :)
 
-For watchdog patches, if I send a Reviewed-by: tag, I expect Wim to pick
-up the patch through the watchdog tree. If I expect some other tree to
-pick it up, I use Acked-by: and usually add a note saying that I assume
-that the patch will be picked up by someone else.
+--gRH5EQBfd9X8l7db
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I usually also add watchdog patches to my own watchdog-next tree as
-reference for Wim. I already have several mediatek devicetree patches
-queued there. Handling some of the patches through watchdog and others
-through some other tree would create a mess. Please don't do that.
+> Similar to TX counterpart available on MT7622 and MT7986, introduce
+> RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
+> offload traffic received by wlan nic to the wired interfaces (lan/wan).
 
-Guenter
+Hi all,
+
+I noticed today the series state is 'Awaiting Upstream'. I am wondering if
+this series is expected to go through a different tree, e.g. wireless one
+(adding Kalle in cc). In this particular case the series changes only
+the mtk ethernet driver and mt76 is built since we modify a common include =
+(but
+there are no changes in mt76). My personal opinion is this series is suited=
+ to
+go through net-next tree but I would be fine even if it goes through Kalle's
+one. Any opinions?
+
+Regards,
+Lorenzo
+
+>=20
+> Changes since v3:
+> - remove reset property in ethsys dts node
+> - rely on readx_poll_timeout in wo mcu code
+> - fix typos
+> - move wo-ccif binding in soc folder
+> - use reserved-memory for wo-dlm
+> - improve wo-ccif binding
+>=20
+> Changes since v2:
+> - rely on of_reserved_mem APIs in mcu code
+> - add some dts fixes
+> - rename {tx,rx}_wdma in {rx,tx}_wdma
+> - update entry in maintainers file
+>=20
+> Changes since v1:
+> - fix sparse warnings
+> - rely on memory-region property in mt7622-wed.yaml
+> - some more binding fixes
+>=20
+> Lorenzo Bianconi (7):
+>   arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
+>     Dispatch
+>   dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
+>   net: ethernet: mtk_wed: introduce wed wo support
+>   net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
+>   net: ethernet: mtk_wed: add configure wed wo support
+>   net: ethernet: mtk_wed: add rx mib counters
+>   MAINTAINERS: update MEDIATEK ETHERNET entry
+>=20
+> Sujuan Chen (1):
+>   net: ethernet: mtk_wed: introduce wed mcu support
+>=20
+>  .../arm/mediatek/mediatek,mt7622-wed.yaml     |  52 ++
+>  .../soc/mediatek/mediatek,mt7986-wo-ccif.yaml |  51 ++
+>  MAINTAINERS                                   |   1 +
+>  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  65 ++
+>  drivers/net/ethernet/mediatek/Makefile        |   2 +-
+>  drivers/net/ethernet/mediatek/mtk_wed.c       | 619 ++++++++++++++++--
+>  drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
+>  .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
+>  drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 387 +++++++++++
+>  drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
+>  drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 508 ++++++++++++++
+>  drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 282 ++++++++
+>  include/linux/soc/mediatek/mtk_wed.h          | 106 ++-
+>  13 files changed, 2256 insertions(+), 54 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediat=
+ek,mt7986-wo-ccif.yaml
+>  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+>  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
+>  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
+>=20
+> --=20
+> 2.38.1
+>=20
+
+--gRH5EQBfd9X8l7db
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2vBSQAKCRA6cBh0uS2t
+rPcgAP9PAG0essRbeHBLaiZaGlJXLeM6J4qukctGB9+r/1Ix1QEA8bLkD/GDnBc4
+J4EU5i4C57QJ7m+WDzf/nKWJReThFg0=
+=jPqc
+-----END PGP SIGNATURE-----
+
+--gRH5EQBfd9X8l7db--
+
 
