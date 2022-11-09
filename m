@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3811AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 11:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721FAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 12:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3HeCzuAd5DrGQl3yX0PoEWG+18EHx/4Mkssb32++3BI=; b=XKVG++lwwa2wASpkT4JvkRpM77
-	mwjtMCyXA3cdjaS0+3gI2Hk9t+sIMdEhU6uF0nttK030SdFwn1YPtntInm7s6IICwbF0jud4vuAY1
-	os5kkZcbHX4rDU9QrLcBA7pF/+vgrxoftzztdbjP82eKP23lhQepozRsBKgGAXvkHTmKm8FfdtZat
-	8XD41jcnCd/oYFcWkMoY9LXl5WlxmwFlbVy9BlKptGdE9l+lbZQ20ObYvcGOYvJT0rQuqM25avQ3a
-	oK6xtM5M0KQoJb8G9G1kKtenSmtBtFV8KEvwIXyPMPr9+ukdpkCL9nhKB4LlM27By2bRni6lAEauo
-	RpfYa4Bg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=07B+ipuUGPa1oSrg0ssDpz9XSSuA65btwItkypaE/xw=; b=vW6qij5s3+lOX15OOV0/ABbHW5
+	37DIzkesCm5Y6JJrVJ8eZSm5Zq94TN0U/241Ev66qVFme/HevbwHKsDAt7jO//DDNLuOdIHZhPLWe
+	UwQML0h9rsNclaE9yGbgoz3sROS4N4F7VHwaT3K/F/gjSNTc/pOdgPzA3aWw3y/kXBKjKpEDfoljN
+	gP07ifFXM3IRPLzugn6e3hNIdDqgkzc7K+TueeIuAEawuLU7Zi2xtXITcbVBv4HWsixcp9o3fyqlw
+	3/BX8uRl7p+q4fOAop8armq0fqR3W078bpgGfFRPXR+iJ62sBpIgk19QkVlS0KEHoCaeXzRJ5Q94/
+	yn56/YIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osjON-00D2DL-9d; Wed, 09 Nov 2022 11:37:15 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1osjoK-00DL3C-Ug; Wed, 09 Nov 2022 12:04:04 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osjOI-00D2Bf-L2; Wed, 09 Nov 2022 11:37:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1667993821; h=from:from:sender:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=3HeCzuAd5DrGQl3yX0PoEWG+18EHx/4Mkssb32++3BI=;
-	b=WwCPTNJPOIDWtdzd5piGmEgZU4J4b1t9NVy+qRbY3+ISBvVQ6apE6t+8jx2p/zEgIxnja5
-	9nWJEIf1duGHYh5JmCtFyh2CbFVaBUveP5Si2RGhwuWsnzKNfsXmdpkN0q+yUABhtgFuRh
-	Y+C1HQZU871ihv7USL4Dk3I6J/l65gU=
-Date: Wed, 09 Nov 2022 11:36:35 +0000
-From: Paul Cercueil <paul@crapouillou.net>
-Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Stephen Boyd <sboyd@kernel.org>, Maxime Coquelin
-	<mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Thierry Reding <thierry.reding@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
-	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>, Claudiu Beznea
-	<claudiu.beznea@microchip.com>, Michael Turquette <mturquette@baylibre.com>,
-	Dinh Nguyen <dinguyen@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>, Andreas =?iso-8859-1?q?F=E4rber?=
-	<afaerber@suse.de>, Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa
-	<abelvesa@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Alessandro Zummo <a.zummo@towertech.it>, Peter De Schrijver
-	<pdeschrijver@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Samuel Holland <samuel@sholland.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Richard Fitzgerald
-	<rf@opensource.cirrus.com>, Vinod Koul <vkoul@kernel.org>, NXP Linux Team
-	<linux-imx@nxp.com>, Sekhar Nori <nsekhar@ti.com>, Kishon Vijay Abraham I
-	<kishon@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Takashi Iwai
-	<tiwai@suse.com>, David Airlie <airlied@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Baolin Wang
-	<baolin.wang@linux.alibaba.com>, David Lechner <david@lechnology.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>,
-	Max Filippov <jcmvbkbc@gmail.com>, Geert Uytterhoeven
-	<geert+renesas@glider.be>, linux-stm32@st-md-mailman.stormreply.com,
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-actions@lists.infradead.org,
-	linux-clk@vger.kernel.org, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, patches@opensource.cirrus.com,
-	linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
-Message-Id: <Z8W2LR.DTD355V5EAE02@crapouillou.net>
-In-Reply-To: <20221109105301.ueus7o3b75j5yeff@houat>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
-	<20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
-	<80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
-	<20221104145946.orsyrhiqvypisl5j@houat>
-	<IOEVKR.TWFKJND2FJ473@crapouillou.net>
-	<20221109105301.ueus7o3b75j5yeff@houat>
+	id 1osjoH-00DL1k-GL
+	for linux-mediatek@lists.infradead.org; Wed, 09 Nov 2022 12:04:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2A4B0B81DD7;
+	Wed,  9 Nov 2022 12:03:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF823C433C1;
+	Wed,  9 Nov 2022 12:03:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1667995434;
+	bh=NJ5GVcvGeMR/bawxbaeebqLkYeMabe8bNBhIIG7od8w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FGPowr6k0l3Uh6VRLu4qXFdovu90YOb0M7cXRFg7nOZTbW2zshBedhLR6Aojse7LK
+	 juwDK0aXlpMq4I5+RYm0a8yfGF5ViB/xGQZxT4ll8DnmkdCuhj1Yg9Jo1hxtEyZjrv
+	 COV+u8D/WypzWy9Cjk69ZzAfEF6UbVs6OOGHDQO37apBfpZqE3vkJMdFwPswRcvb79
+	 Dpf0yuA/X587wCwhYlsjYijk9Fdw9/SlCFIw+t6mFeGozw4woM1l2OemkimnGX8bok
+	 Low4/WcAiwypBTnIx9zf83Pk+Y83JdsjbQJQRGlYSoWbqASEY3y11Mf5Of53H1YYwY
+	 mThMixSm0aQvw==
+Date: Wed, 9 Nov 2022 13:03:50 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 08/10] wifi: mt76: connac: add more starec command tags
+Message-ID: <Y2uXJh5rFm9uocvz@localhost.localdomain>
+References: <20221031164000.17063-1-shayne.chen@mediatek.com>
+ <20221031164000.17063-9-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gT3vqYmmKO2wHLuj"
+Content-Disposition: inline
+In-Reply-To: <20221031164000.17063-9-shayne.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_033710_874006_CB84D86F 
-X-CRM114-Status: GOOD (  49.62  )
+X-CRM114-CacheID: sfid-20221109_040401_758252_65F7B009 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,162 +77,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-Le mer. 9 nov. 2022 =E0 11:53:01 +0100, Maxime Ripard=20
-<maxime@cerno.tech> a =E9crit :
-> Hi Paul,
+--gT3vqYmmKO2wHLuj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Add starec tags which will be used in new chipset.
+> This is a preliminary patch to add mt7996 chipset support.
 >=20
-> On Sat, Nov 05, 2022 at 10:33:54AM +0000, Paul Cercueil wrote:
->>  Hi Maxime,
->>=20
->>  Le ven. 4 nov. 2022 =E0 15:59:46 +0100, Maxime Ripard=20
->> <maxime@cerno.tech> a
->>  =E9crit :
->>  > Hi Paul,
->>  >
->>  > On Fri, Nov 04, 2022 at 02:31:20PM +0000, Paul Cercueil wrote:
->>  > >  Le ven. 4 nov. 2022 =E0 14:18:13 +0100, Maxime Ripard
->>  > > <maxime@cerno.tech> a
->>  > >  =E9crit :
->>  > >  > The Ingenic CGU clocks implements a mux with a set_parent=20
->> hook,
->>  > > but
->>  > >  > doesn't provide a determine_rate implementation.
->>  > >  >
->>  > >  > This is a bit odd, since set_parent() is there to, as its=20
->> name
->>  > > implies,
->>  > >  > change the parent of a clock. However, the most likely=20
->> candidate
->>  > > to
->>  > >  > trigger that parent change is a call to clk_set_rate(), with
->>  > >  > determine_rate() figuring out which parent is the best=20
->> suited for
->>  > > a
->>  > >  > given rate.
->>  > >  >
->>  > >  > The other trigger would be a call to clk_set_parent(), but=20
->> it's
->>  > > far less
->>  > >  > used, and it doesn't look like there's any obvious user for=20
->> that
->>  > > clock.
->>  > >  >
->>  > >  > So, the set_parent hook is effectively unused, possibly=20
->> because
->>  > > of an
->>  > >  > oversight. However, it could also be an explicit decision by=20
->> the
->>  > >  > original author to avoid any reparenting but through an=20
->> explicit
->>  > > call to
->>  > >  > clk_set_parent().
->>  > >  >
->>  > >  > The driver does implement round_rate() though, which means=20
->> that
->>  > > we can
->>  > >  > change the rate of the clock, but we will never get to=20
->> change the
->>  > >  > parent.
->>  > >  >
->>  > >  > However, It's hard to tell whether it's been done on purpose=20
->> or
->>  > > not.
->>  > >  >
->>  > >  > Since we'll start mandating a determine_rate()=20
->> implementation,
->>  > > let's
->>  > >  > convert the round_rate() implementation to a=20
->> determine_rate(),
->>  > > which
->>  > >  > will also make the current behavior explicit. And if it was=20
->> an
->>  > >  > oversight, the clock behaviour can be adjusted later on.
->>  > >
->>  > >  So it's partly on purpose, partly because I didn't know about
->>  > >  .determine_rate.
->>  > >
->>  > >  There's nothing odd about having a lonely .set_parent=20
->> callback; in
->>  > > my case
->>  > >  the clocks are parented from the device tree.
->>  > >
->>  > >  Having the clocks driver trigger a parent change when=20
->> requesting a
->>  > > rate
->>  > >  change sounds very dangerous, IMHO. My MMC controller can be
->>  > > parented to the
->>  > >  external 48 MHz oscillator, and if the card requests 50 MHz, it
->>  > > could switch
->>  > >  to one of the PLLs. That works as long as the PLLs don't change
->>  > > rate, but if
->>  > >  one is configured as driving the CPU clock, it becomes messy.
->>  > >  The thing is, the clocks driver has no way to know whether or=20
->> not
->>  > > it is
->>  > >  "safe" to use a designated parent.
->>  > >
->>  > >  For that reason, in practice, I never actually want to have a=20
->> clock
->>  > >  re-parented - it's almost always a bad idea vs. sticking to the
->>  > > parent clock
->>  > >  configured in the DTS.
->>  >
->>  > Yeah, and this is totally fine. But we need to be explicit about=20
->> it. The
->>  > determine_rate implementation I did in all the patches is an exact
->>  > equivalent to the round_rate one if there was one. We will never=20
->> ask to
->>  > change the parent.
->>  >
->>  > Given what you just said, I would suggest to set the
->>  > CLK_SET_RATE_NO_REPARENT flag as well.
->>=20
->>  But that would introduce policy into the driver...
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 ++
+>  1 file changed, 2 insertions(+)
 >=20
-> I'm not sure why you're bringing policies into that discussion.=20
-> There's
-> plenty of policy in the driver already, and the current code doesn't=20
-> do
-> something that the old wasn't doing (implicitly).
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drive=
+rs/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> index ed1d24822c37..336c20fcc8dc 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> @@ -791,6 +791,8 @@ enum {
+>  	STA_REC_PHY =3D 0x15,
+>  	STA_REC_HE_6G =3D 0x17,
+>  	STA_REC_HE_V2 =3D 0x19,
+> +	STA_REC_HDRT =3D 0x28,
+> +	STA_REC_HDR_TRANS =3D 0x2B,
+>  	STA_REC_MAX_NUM
+>  };
 
-Yes, I was just talking about the CLK_SET_RATE_NO_REPARENT flag adding=20
-policy. The fact that there's plenty of policy in the driver already is=20
-not an argument for adding some more.
+I guess this patch does not apply cleanly.
 
-> And there's plenty of policies in drivers in general. Whether you=20
-> limit
-> the rate or not, whether you allow reparenting or not, even the
-> CLK_SET_RATE_NO_REPARENT flag mentioned above is a policy decision set
-> by drivers.
+Regards,
+Lorenzo
 
-Allowing reparenting and not limiting the rates is not a policy, it's=20
-just following what the hardware allows you to do. The absence of=20
-policy means that the driver allows you to configure the hardware in=20
-any way you might want to.
-
-Limiting rates, forbidding reparenting, that's policy, and it doesn't=20
-belong in a driver.
-
-You can argue that choosing not to reparent on rate change is a policy,=20
-and it is. That's why we need a way to enforce these policies outside=20
-the driver.
-
->>  The fact that I don't want the MMC parented to the PLLs, doesn't=20
->> mean
->>  that it's an invalid configuration per se.
+> =20
+> --=20
+> 2.25.1
 >=20
-> Sure, and that's another policy :)
 
-A policy that is not enforced by the driver.
+--gT3vqYmmKO2wHLuj
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Going back to the patch itself... I am fine with the change, although=20
-the patch description should probably be updated. We have .set_parent=20
-callbacks to configure clocks from DT, there's nothing more to it.
+-----BEGIN PGP SIGNATURE-----
 
-Cheers,
--Paul
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2uXIgAKCRA6cBh0uS2t
+rIDMAPsE3oby14vVQSHX2fTS4hhlkEtnCaTSTymIorjldcYNtQD/WadNMgazZTTg
+KV5JGHuWZzPzgbCa49tzU5mBIP3NvQA=
+=wk8x
+-----END PGP SIGNATURE-----
 
-
+--gT3vqYmmKO2wHLuj--
 
