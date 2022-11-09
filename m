@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A72C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 16:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DCC9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 17:50:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=810KJYvQua3Tgj0eTQnOjCyIwfPHWRslPBRk0KhS8r0=; b=JeompQ3evKwzQsNeml7RN/QEtR
-	hiyKjIRnm59MpmtqgdAocH3jxg+EmcHiIKTSTCAYH1fPg9oOOLyLUkVgi1uxVxn0tC/LZLO1Ztrl3
-	YKS2KmMzpVi7UYlZaf/LKlKD2gA7GsJd0inp/fErv8Goe1z3Mt1Vx7D6kjJH6NTXNsglgZkI7y5Mk
-	adxTaO605HC89TQOQMjEgYagNI/KcTZ9tpPtsxjYO5pDoJGUDUEGa2iPCDsdHYaXmxzrWWruNH99A
-	wJDS7Y8sOwR6b+1aXW4E0OE1sFFknw+gZEa0ve/DXAjfC/JAi/jseryAR+PxEkakWHjzl18hyN30t
-	URPT1ApQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O7d9XV6IsnIwU7Gj07fwE3ldNBJ/qjfOW6mSWa+l8tI=; b=fnD48HuSDIG9krw7USJaTXYUz0
+	eEBBSA+K0OkXn3poRxm/L030i0MXm5A8n28xV3H8kA8EdzIG8y1zVs2q11eBcC1Q1uq/OiIw2sBuV
+	VYrBjRiV7apScIF7U63gq2JSIjQUMQNxDx9XZaNz81kNlSzDO5RNezi9jdtlJWJfR59cEIZGF/uER
+	guWscHh4sdOlV161gf+A8RAE7oHnU6OI96W0MNUoX6Inv60LezumwTLeRVSQnR4Bo4T8eYxMiJ4Q4
+	H1F4H2eG8hGT2SoPi7XefSz73dkzuIePcDSIjrqbWYiw5PiKA1dMtAqBrLQoorNie4vXGtgHd+D0K
+	KEMimMOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osoOq-00FHSK-E6; Wed, 09 Nov 2022 16:58:04 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1ospCx-00FmxF-IP; Wed, 09 Nov 2022 17:49:51 +0000
+Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osoOe-00FHNH-J6; Wed, 09 Nov 2022 16:57:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=810KJYvQua3Tgj0eTQnOjCyIwfPHWRslPBRk0KhS8r0=; b=NfgRes3FlgLZOAi5KPhr9WSYdb
-	rrBOtRbDLSQNvOvLOh6GDIC6Y8+5WVCLr8KEzM46i2phVihE73iMK3m3knPfug2NL4xmYMdgRQjGY
-	KslSg1b2y1q1dfWQMjh40HhMGbWbK3pRT4Da2eR4NAaPIDW4Yu/BGunFKikhGOOJHcGg=;
-Received: from p200300daa72ee100054f3c61b16ef6e7.dip0.t-ipconnect.de ([2003:da:a72e:e100:54f:3c61:b16e:f6e7] helo=localhost.localdomain)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1oso2B-000l4N-M4; Wed, 09 Nov 2022 17:34:39 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v2 11/12] net: ethernet: mtk_eth_soc: set NETIF_F_ALL_TSO
-Date: Wed,  9 Nov 2022 17:34:25 +0100
-Message-Id: <20221109163426.76164-12-nbd@nbd.name>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221109163426.76164-1-nbd@nbd.name>
-References: <20221109163426.76164-1-nbd@nbd.name>
+	id 1ospCi-00FmcK-PC; Wed, 09 Nov 2022 17:49:39 +0000
+Received: (Authenticated sender: alexandre.belloni@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 94A33240002;
+	Wed,  9 Nov 2022 17:49:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1668016172;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=O7d9XV6IsnIwU7Gj07fwE3ldNBJ/qjfOW6mSWa+l8tI=;
+	b=CLipaJKhG3s+/op4L0NtH9sjz2WfwiRqjsKDlScPaX0KdHktmnWhIGym0rK890RfIxNJKK
+	MLUF4Xl0RxHIqQtYZ5p5uBz7pl4+/Vj1yucDRer129pJAruTVoQ3dc55nGhoi2O/ZZvtYy
+	0QOYI5PoA9Ri918CkMmOi0zIf5yl7udtNc3QCrOAvYlTUpdGDVxispUsZ3D6wxtIBLEb7j
+	6kPYFE+xx55WzPq7oiXWScyfMSDZL8I3v9OVlxct0YVUKmTcn9glcAm9rBc+aRgd54n4bH
+	Zpd32cL6D4eyMhWabFPmWEOczgX5rfFuJugIMBT8yZ3UUaJ9yx9IoaeKImPTQA==
+Date: Wed, 9 Nov 2022 18:49:30 +0100
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>,
+	Fabien Parent <fabien.parent@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Lee Jones <lee@kernel.org>, Chen Zhong <chen.zhong@mediatek.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
+	Fabien Parent <fparent@baylibre.com>, linux-rtc@vger.kernel.org,
+	Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Subject: Re: [PATCH v4 2/9] dt-bindings: rtc: mediatek: convert MT6397 rtc
+ documentation
+Message-ID: <Y2voKqz1zRg32jaJ@mail.local>
+References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
+ <20221005-mt6357-support-v4-2-5d2bb58e6087@baylibre.com>
+ <ed298a3e-25dd-af19-437c-f27c160788b3@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ed298a3e-25dd-af19-437c-f27c160788b3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_085752_657198_BBFDE5E8 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221109_094937_159637_71DC5D6D 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,28 +84,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Significantly improves performance by avoiding unnecessary segmentation
+On 09/11/2022 10:40:39+0100, AngeloGioacchino Del Regno wrote:
+> Il 08/11/22 19:43, Alexandre Mergnat ha scritto:
+> > - Convert rtc/rtc-mt6397.txt to rtc/mt6397-rtc.yaml
+> > - Add mediatek,mt6357-rtc compatible.
+> > - Add maintainer
+> > - Remove the .txt binding file
+> > 
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >   Documentation/devicetree/bindings/mfd/mt6397.txt   |  2 +-
+> >   .../bindings/rtc/mediatek,mt6397-rtc.yaml          | 40 ++++++++++++++++++++++
+> >   .../devicetree/bindings/rtc/rtc-mt6397.txt         | 31 -----------------
+> >   3 files changed, 41 insertions(+), 32 deletions(-)
+> > 
+> 
+> Please split the txt->yaml conversion in one commit and the addition of the
+> new mt6357-rtc compatible in another commit.
+> 
+> Also, isn't the original maintainer of rtc-mt6397 supposed to be...
+> Tianping Fang <tianping.fang@mediatek.com> ?
+> 
+> You can add yourself to the list of maintainers, though, unless Tianping
+> explicitly says that he doesn't want to maintain this driver anymore?
+> 
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+This is not about the maintenance of the driver but of the device tree
+bindings for the IP
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 1c85fbad5bc1..60da6936559a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -49,8 +49,7 @@
- 				 NETIF_F_RXCSUM | \
- 				 NETIF_F_HW_VLAN_CTAG_TX | \
- 				 NETIF_F_HW_VLAN_CTAG_RX | \
--				 NETIF_F_SG | NETIF_F_TSO | \
--				 NETIF_F_TSO6 | \
-+				 NETIF_F_SG | NETIF_F_ALL_TSO | \
- 				 NETIF_F_IPV6_CSUM |\
- 				 NETIF_F_HW_TC)
- #define MTK_HW_FEATURES_MT7628	(NETIF_F_SG | NETIF_F_RXCSUM)
+> Regards,
+> Angelo
+> 
+
 -- 
-2.38.1
-
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
