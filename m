@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B1CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 11:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3811AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 11:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yVfcpsRQhZ+K1eDUGm/hT79865gqKPGqp1NWWMzmywA=; b=3YZIABybncY8l6KfA9oCKo3bks
-	myKkKDaHRxPw5SoN+xQ3hDHHsNTRvTfK97/c2imQtMC15eTaC482wzH1v1lyJxZTTMQnO4lhMbCWr
-	EBJU44JfTJlq0+r95i57PlojfoLfMd8YLl7XXTbnFgPWBn/H9kAMsA7FepBQUXFDUMBVMnkN1gl98
-	GSJA2/mjNRT7//LxIIup9oLgRZrDFmbxfghJIV9oQkTqAsgYlQPL2U+1M/hekkUELI7uwumCQ2/p2
-	NpQCyV2BmlR8zvvDw1JbDefoSEM0F3bmI64vpZNYMhcDw9Pjpr2lUULtj6hR2Apj0K62CTlhNsGWv
-	1exbgcsw==;
+	bh=3HeCzuAd5DrGQl3yX0PoEWG+18EHx/4Mkssb32++3BI=; b=XKVG++lwwa2wASpkT4JvkRpM77
+	mwjtMCyXA3cdjaS0+3gI2Hk9t+sIMdEhU6uF0nttK030SdFwn1YPtntInm7s6IICwbF0jud4vuAY1
+	os5kkZcbHX4rDU9QrLcBA7pF/+vgrxoftzztdbjP82eKP23lhQepozRsBKgGAXvkHTmKm8FfdtZat
+	8XD41jcnCd/oYFcWkMoY9LXl5WlxmwFlbVy9BlKptGdE9l+lbZQ20ObYvcGOYvJT0rQuqM25avQ3a
+	oK6xtM5M0KQoJb8G9G1kKtenSmtBtFV8KEvwIXyPMPr9+ukdpkCL9nhKB4LlM27By2bRni6lAEauo
+	RpfYa4Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osjDP-00D0HN-1C; Wed, 09 Nov 2022 11:25:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1osjON-00D2DL-9d; Wed, 09 Nov 2022 11:37:15 +0000
+Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osjD4-00D06z-CS; Wed, 09 Nov 2022 11:25:35 +0000
-Received: by mail-wr1-x436.google.com with SMTP id w14so25267070wru.8;
-        Wed, 09 Nov 2022 03:25:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yVfcpsRQhZ+K1eDUGm/hT79865gqKPGqp1NWWMzmywA=;
-        b=QYl+yjjJGwob7l4O1fw3+oiBMl/GAN8a/Tzrcirxu+K51wcXU1Tk02WMEgePKIKx2x
-         CRzaFVSCpQYyr4Jr9nO+rr9BltzAyt4y3PhHd3qwidEqPikm8OZGzn+alPWjkYV/Sacz
-         /5/1+eyo4xMg/gr7O/PoXrfZu/DW1a82+xYgZAxBpZ83Y/uG6dLLriPz/Mp28FGuLKpz
-         vhUFGpWrQbxGGa7T9Bk/iD1N2h/QsgMJNEoUrsxioP9kxLQv5WSWMXvvKgSWpbKCkQjz
-         j72DKYn1Zytrw9JrSiS+QdeUQNi16sX8VGrRaX71sCZuaB24lT8gGAGChEOq6FohMZTS
-         qepg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yVfcpsRQhZ+K1eDUGm/hT79865gqKPGqp1NWWMzmywA=;
-        b=P30AJGq5ohRJYQ+67OQI9J+am/LIk8IEZrcETQpa8bj9LDFEllzSeQKkRqmIQw+L1U
-         Q7+Yk20CFVO4Cf6aR4YKO9EOfzpXBj+CZY7F+xZifYgI8Z0LGwRs6DDPjBVRTS3ah3Xz
-         KYUwsT+rV5nN41CEGchKK9sSkyAJOF8mL+kbnIbEYiJcab+V79f+/ssh6a8Ja/JF6yKs
-         Ct/LLx5Cx7QnQREDrwobH8rh7J0MYAHUFVulxItyCa3j0O4mCPLGLyN3EqxMIuAbHw8u
-         gHjSX8RJcc6LgE7Wloa7KHEN/55T/F845pw+YWCrtNnIRs/8OHnVoTNPdQiwueYWmBvB
-         amhA==
-X-Gm-Message-State: ACrzQf1P4gAVv/iKyGtkie/zk48D+FJKzDodvHxthe2ox2uEUBL8jU/b
-	Vbj8k2IvD2K3CY5W3L1rt4Y=
-X-Google-Smtp-Source: AMsMyM4iaCUXPelD5JPs3GwdxrrcdP1EVcbyNAKOCSt0mIJomogbed+Y7iZa1JRJyZ3hoqj23+CxWw==
-X-Received: by 2002:a05:6000:1566:b0:236:6a6f:6c27 with SMTP id 6-20020a056000156600b002366a6f6c27mr38530858wrz.553.1667993133963;
-        Wed, 09 Nov 2022 03:25:33 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id u2-20020a5d4342000000b0022eafed36ebsm12791671wrr.73.2022.11.09.03.25.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Nov 2022 03:25:32 -0800 (PST)
-Message-ID: <a0b61872-12bb-0ed2-a1b4-75cb5609c1c3@gmail.com>
-Date: Wed, 9 Nov 2022 12:25:30 +0100
+	id 1osjOI-00D2Bf-L2; Wed, 09 Nov 2022 11:37:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1667993821; h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3HeCzuAd5DrGQl3yX0PoEWG+18EHx/4Mkssb32++3BI=;
+	b=WwCPTNJPOIDWtdzd5piGmEgZU4J4b1t9NVy+qRbY3+ISBvVQ6apE6t+8jx2p/zEgIxnja5
+	9nWJEIf1duGHYh5JmCtFyh2CbFVaBUveP5Si2RGhwuWsnzKNfsXmdpkN0q+yUABhtgFuRh
+	Y+C1HQZU871ihv7USL4Dk3I6J/l65gU=
+Date: Wed, 09 Nov 2022 11:36:35 +0000
+From: Paul Cercueil <paul@crapouillou.net>
+Subject: Re: [PATCH v2 56/65] clk: ingenic: cgu: Switch to determine_rate
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Stephen Boyd <sboyd@kernel.org>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>, Claudiu Beznea
+	<claudiu.beznea@microchip.com>, Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, Andreas =?iso-8859-1?q?F=E4rber?=
+	<afaerber@suse.de>, Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa
+	<abelvesa@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>, Peter De Schrijver
+	<pdeschrijver@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Samuel Holland <samuel@sholland.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Richard Fitzgerald
+	<rf@opensource.cirrus.com>, Vinod Koul <vkoul@kernel.org>, NXP Linux Team
+	<linux-imx@nxp.com>, Sekhar Nori <nsekhar@ti.com>, Kishon Vijay Abraham I
+	<kishon@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Takashi Iwai
+	<tiwai@suse.com>, David Airlie <airlied@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>,
+	Max Filippov <jcmvbkbc@gmail.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, linux-stm32@st-md-mailman.stormreply.com,
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-actions@lists.infradead.org,
+	linux-clk@vger.kernel.org, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, patches@opensource.cirrus.com,
+	linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Message-Id: <Z8W2LR.DTD355V5EAE02@crapouillou.net>
+In-Reply-To: <20221109105301.ueus7o3b75j5yeff@houat>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+	<20221018-clk-range-checks-fixes-v2-56-f6736dec138e@cerno.tech>
+	<80VTKR.CE8RVN8M3ZYK3@crapouillou.net>
+	<20221104145946.orsyrhiqvypisl5j@houat>
+	<IOEVKR.TWFKJND2FJ473@crapouillou.net>
+	<20221109105301.ueus7o3b75j5yeff@houat>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH v5 3/6] soc: mediatek: add mtk-mmsys support for mt8195
- vdosys0
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220927152704.12018-1-jason-jh.lin@mediatek.com>
- <20220927152704.12018-4-jason-jh.lin@mediatek.com>
- <0e67041f-a61d-1e34-2ce4-6a199c2c9f8e@collabora.com>
- <ac0a8cadf18291575d5fc798f0d6b99f5c3a4258.camel@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <ac0a8cadf18291575d5fc798f0d6b99f5c3a4258.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_032534_457013_379DEE18 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20221109_033710_874006_CB84D86F 
+X-CRM114-Status: GOOD (  49.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,34 +101,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime,
+
+Le mer. 9 nov. 2022 =E0 11:53:01 +0100, Maxime Ripard=20
+<maxime@cerno.tech> a =E9crit :
+> Hi Paul,
+>=20
+> On Sat, Nov 05, 2022 at 10:33:54AM +0000, Paul Cercueil wrote:
+>>  Hi Maxime,
+>>=20
+>>  Le ven. 4 nov. 2022 =E0 15:59:46 +0100, Maxime Ripard=20
+>> <maxime@cerno.tech> a
+>>  =E9crit :
+>>  > Hi Paul,
+>>  >
+>>  > On Fri, Nov 04, 2022 at 02:31:20PM +0000, Paul Cercueil wrote:
+>>  > >  Le ven. 4 nov. 2022 =E0 14:18:13 +0100, Maxime Ripard
+>>  > > <maxime@cerno.tech> a
+>>  > >  =E9crit :
+>>  > >  > The Ingenic CGU clocks implements a mux with a set_parent=20
+>> hook,
+>>  > > but
+>>  > >  > doesn't provide a determine_rate implementation.
+>>  > >  >
+>>  > >  > This is a bit odd, since set_parent() is there to, as its=20
+>> name
+>>  > > implies,
+>>  > >  > change the parent of a clock. However, the most likely=20
+>> candidate
+>>  > > to
+>>  > >  > trigger that parent change is a call to clk_set_rate(), with
+>>  > >  > determine_rate() figuring out which parent is the best=20
+>> suited for
+>>  > > a
+>>  > >  > given rate.
+>>  > >  >
+>>  > >  > The other trigger would be a call to clk_set_parent(), but=20
+>> it's
+>>  > > far less
+>>  > >  > used, and it doesn't look like there's any obvious user for=20
+>> that
+>>  > > clock.
+>>  > >  >
+>>  > >  > So, the set_parent hook is effectively unused, possibly=20
+>> because
+>>  > > of an
+>>  > >  > oversight. However, it could also be an explicit decision by=20
+>> the
+>>  > >  > original author to avoid any reparenting but through an=20
+>> explicit
+>>  > > call to
+>>  > >  > clk_set_parent().
+>>  > >  >
+>>  > >  > The driver does implement round_rate() though, which means=20
+>> that
+>>  > > we can
+>>  > >  > change the rate of the clock, but we will never get to=20
+>> change the
+>>  > >  > parent.
+>>  > >  >
+>>  > >  > However, It's hard to tell whether it's been done on purpose=20
+>> or
+>>  > > not.
+>>  > >  >
+>>  > >  > Since we'll start mandating a determine_rate()=20
+>> implementation,
+>>  > > let's
+>>  > >  > convert the round_rate() implementation to a=20
+>> determine_rate(),
+>>  > > which
+>>  > >  > will also make the current behavior explicit. And if it was=20
+>> an
+>>  > >  > oversight, the clock behaviour can be adjusted later on.
+>>  > >
+>>  > >  So it's partly on purpose, partly because I didn't know about
+>>  > >  .determine_rate.
+>>  > >
+>>  > >  There's nothing odd about having a lonely .set_parent=20
+>> callback; in
+>>  > > my case
+>>  > >  the clocks are parented from the device tree.
+>>  > >
+>>  > >  Having the clocks driver trigger a parent change when=20
+>> requesting a
+>>  > > rate
+>>  > >  change sounds very dangerous, IMHO. My MMC controller can be
+>>  > > parented to the
+>>  > >  external 48 MHz oscillator, and if the card requests 50 MHz, it
+>>  > > could switch
+>>  > >  to one of the PLLs. That works as long as the PLLs don't change
+>>  > > rate, but if
+>>  > >  one is configured as driving the CPU clock, it becomes messy.
+>>  > >  The thing is, the clocks driver has no way to know whether or=20
+>> not
+>>  > > it is
+>>  > >  "safe" to use a designated parent.
+>>  > >
+>>  > >  For that reason, in practice, I never actually want to have a=20
+>> clock
+>>  > >  re-parented - it's almost always a bad idea vs. sticking to the
+>>  > > parent clock
+>>  > >  configured in the DTS.
+>>  >
+>>  > Yeah, and this is totally fine. But we need to be explicit about=20
+>> it. The
+>>  > determine_rate implementation I did in all the patches is an exact
+>>  > equivalent to the round_rate one if there was one. We will never=20
+>> ask to
+>>  > change the parent.
+>>  >
+>>  > Given what you just said, I would suggest to set the
+>>  > CLK_SET_RATE_NO_REPARENT flag as well.
+>>=20
+>>  But that would introduce policy into the driver...
+>=20
+> I'm not sure why you're bringing policies into that discussion.=20
+> There's
+> plenty of policy in the driver already, and the current code doesn't=20
+> do
+> something that the old wasn't doing (implicitly).
+
+Yes, I was just talking about the CLK_SET_RATE_NO_REPARENT flag adding=20
+policy. The fact that there's plenty of policy in the driver already is=20
+not an argument for adding some more.
+
+> And there's plenty of policies in drivers in general. Whether you=20
+> limit
+> the rate or not, whether you allow reparenting or not, even the
+> CLK_SET_RATE_NO_REPARENT flag mentioned above is a policy decision set
+> by drivers.
+
+Allowing reparenting and not limiting the rates is not a policy, it's=20
+just following what the hardware allows you to do. The absence of=20
+policy means that the driver allows you to configure the hardware in=20
+any way you might want to.
+
+Limiting rates, forbidding reparenting, that's policy, and it doesn't=20
+belong in a driver.
+
+You can argue that choosing not to reparent on rate change is a policy,=20
+and it is. That's why we need a way to enforce these policies outside=20
+the driver.
+
+>>  The fact that I don't want the MMC parented to the PLLs, doesn't=20
+>> mean
+>>  that it's an invalid configuration per se.
+>=20
+> Sure, and that's another policy :)
+
+A policy that is not enforced by the driver.
+
+Going back to the patch itself... I am fine with the change, although=20
+the patch description should probably be updated. We have .set_parent=20
+callbacks to configure clocks from DT, there's nothing more to it.
+
+Cheers,
+-Paul
 
 
-On 05/10/2022 09:08, Jason-JH.Lin wrote:
-> Hi Matthias,
-> 
-> Do you have any comment for this binding?
-> 
-> Can you help us review the soc/mediatek related patches?
-> 
-
-Patches 1-3 applied now. Sorry for the late answer.
-
-Matthias
-
-> Regards,
-> Jason-JH.Lin
-> 
-> On Wed, 2022-09-28 at 10:14 +0200, AngeloGioacchino Del Regno wrote:
->> Il 27/09/22 17:27, Jason-JH.Lin ha scritto:
->>> 1. Add mt8195 driver data with compatible "mediatek-mt8195-
->>> vdosys0".
->>> 2. Add mt8195 routing table settings of vdosys0.
->>>
->>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->>
->> Reviewed-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->>
->>
->>
 
