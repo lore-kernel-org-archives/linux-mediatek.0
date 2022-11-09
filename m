@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552B3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 15:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2062C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 16:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=; b=qHR62+VoCV6pNs2wBNBE2hnWf2
-	K4ahm4ZN1dtie6UgGFnyysBf/wceqcJklsxUuTR8Cj859DQq48mYhth04wtSpXPmCN1LyqNH2/vOf
-	5IAj2nGsRGTcapOVn7mOOgbp7jb9BYafKbyGoNB8r12Aw6rZw9kPVRZnKd3CoU3PJleVM89v3+oUT
-	pIS61z+FVtDiyc79iSeOQi77wiXleg5NwQSITKZzXxSKbAlzOtNLSiBtzicveXq3RfOkU/qv78aZY
-	OWLi0RRKC4fBZYLxWXmXEZPqlmptk7SxO0/FyDNZfv0ufp8kI75s2DwuAqYQfDrMdtORItJhqHpF7
-	ip8jk4bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WR9m9xGAUrcO1/AvRVvG5U32PAMYEGiJLP5jiZDvjSk=; b=xBzlZ7YDp1mNlGMmiYGwSWBA5C
+	Vf6YhS7F0Nnt2TQZDw7LmtoI97g0473koLY1nX/exrtDiVA9vOV3mJFslaT2eXAy85X+TuDvc9Q8L
+	+vR48PeURmijME4SmwrOiG8t3XnWZjxWi5A+Pdfg4OwBJ7PHhUrG9QkeyNcCAiJa7nX7lTPcozQDG
+	S8ABp0+8bI0po7v0wo+fB2lnJGLGWzIBeNkN5lpLymPAhDGnram6Oc1ulbvknNwuOH5gDMpZy7LSa
+	4eya/rjlGlQiA4OirslL3oRUwYW1hgNzjzVp1EgOE5iGxm83WQmwmxERSyOD3ZxkXXy1ODVKBsz5Z
+	InEb4W2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osmcO-00EMhe-7F; Wed, 09 Nov 2022 15:03:56 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1osnX8-00EuPw-Ul; Wed, 09 Nov 2022 16:02:34 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osmcL-00EMg2-L3
-	for linux-mediatek@lists.infradead.org; Wed, 09 Nov 2022 15:03:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1668006230;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=;
-	b=GZoiw6ORQ6Ki7p3GnFbql+SY/CfBAy4c5M46IVhQdclOGdmdJ3T3mxJwq0NJBKmYVtCMNi
-	6l70oBX3RSZIQUsOztuffhuagc9pA+mjgpnaJly8tl4Lp66RAeb3jmvAHw8pvWnlkU4jkk
-	s7Vr+ewYBGPGaUKo5NLq6N5ehFXWF0s=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-638-FZ2sqmipMGajLlEdN22aDQ-1; Wed, 09 Nov 2022 10:03:46 -0500
-X-MC-Unique: FZ2sqmipMGajLlEdN22aDQ-1
-Received: by mail-qt1-f198.google.com with SMTP id fb5-20020a05622a480500b003a525d52abcso12696185qtb.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Nov 2022 07:03:46 -0800 (PST)
+	id 1osnWy-00EuJZ-2d
+	for linux-mediatek@lists.infradead.org; Wed, 09 Nov 2022 16:02:25 +0000
+Received: by mail-wm1-x334.google.com with SMTP id p16so11124471wmc.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Nov 2022 08:02:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WR9m9xGAUrcO1/AvRVvG5U32PAMYEGiJLP5jiZDvjSk=;
+        b=uSb83s+HW6rE4ZSs/mfMPfqbB/RtectTSQZrCBmkHlcMYPyWmUWwv5tMxgv0jUb9BM
+         rNJuNtbOZQkb8qnTNIJGBxJdxZrG3DkUqRYyn8ZN7Ua7H8Kiap3gsVzYDrvDdEVYU99p
+         Z4eRQSUBwnddiLnULbfK/QmURfi+lfP61BK1QNw9fYTzP8D17CHbbc0AGV575JENhHPY
+         Lk1CExEzwCZN/P35iP/CQ3qMq9T/j5NSIsoD9ucOdzELhBWDqjfy/SRZ3cqFwGioO7qz
+         WZhz+U7RzOuqgoEwcorbRrUeERVch4HzNu2QfGQU0ADcvIiSVImf4ogesA5ZniJlHTWO
+         s7RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zqiSLvJxdke/yqrf6iYu6+yVJoRzkJ0McEbSIHch4qc=;
-        b=4KuFcONzwrekB4cW9yBFKhWre/dx4Jz5ymKCV31wOLEyBTQ7RqZvaNX/FhMDsxtr2T
-         tpX82R3xcVBflcC6WDi4mFEiEpe73+MczBOkUOZFKFYnpXsVIf7WPhtWqIk4Mj0JdQsw
-         UMGL/e/Tv0ysl05tep1K0hCoPXaXKje8Q20Zg6BYqtPv9GJircDFBfjZ5c3jnbdW3hB6
-         i+yZz89tUsJJW4JlGForrt4XP8QQr3xC1kc/FyVDhlThn38zE9ZJrXrI+F2S2X5ZxciN
-         CT36rLZQedf4r4p16bxIt8Tclz4jQMIwLuogif5Ld1zS+Ryzm/sZN/Y9IAcMnXpjS0OX
-         yflw==
-X-Gm-Message-State: ACrzQf1gOGZ0lTbdQImY5gbdg/bKJ2eRl5jEpDnWyRHuqlY9ZGbaLm9r
-	oHiTwkorjHb1idGX3WX2aQzrfJfT6VNxl12TjU4GCG3r8FY0Oq6eDPd8aBGbTfnZymPc1zdSoPs
-	2cmretMXFEJ2s+MKjyyfCe4y98iwKvVaJ
-X-Received: by 2002:a05:620a:1476:b0:6fa:4c67:83ec with SMTP id j22-20020a05620a147600b006fa4c6783ecmr31728034qkl.23.1668006225828;
-        Wed, 09 Nov 2022 07:03:45 -0800 (PST)
-X-Google-Smtp-Source: AMsMyM5W/7Ofyy9aq2b4znPe4up0GqSbcYRBkArYCCUVmHJGVm6seQcJp68VlQkJ57qQhD7SVx9FuQ==
-X-Received: by 2002:a05:620a:1476:b0:6fa:4c67:83ec with SMTP id j22-20020a05620a147600b006fa4c6783ecmr31728001qkl.23.1668006225495;
-        Wed, 09 Nov 2022 07:03:45 -0800 (PST)
-Received: from localhost ([66.187.232.66])
-        by smtp.gmail.com with ESMTPSA id az8-20020a05620a170800b006bb87c4833asm11102303qkb.109.2022.11.09.07.03.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Nov 2022 07:03:44 -0800 (PST)
-Date: Wed, 9 Nov 2022 16:03:40 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, Bo.Jiao@mediatek.com,
-	sujuan.chen@mediatek.com, ryder.Lee@mediatek.com,
-	evelyn.tsai@mediatek.com, devicetree@vger.kernel.org,
-	robh+dt@kernel.org, daniel@makrotopia.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	angelogioacchino.delregno@collabora.com, kvalo@kernel.org
-Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
-Message-ID: <Y2vBTBUw47sshA+E@localhost.localdomain>
-References: <cover.1667687249.git.lorenzo@kernel.org>
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WR9m9xGAUrcO1/AvRVvG5U32PAMYEGiJLP5jiZDvjSk=;
+        b=8CZG+wY6a+r85KTlteBAgTUUj/VJWdibMOWSVs+Z9u43WrDORbKoA9pQb32IaLsl+o
+         /hX7EC4/aBrO1aOBnC2B/IMYayQ5QMZlpgZ/J8MF8v2NdYd7Do15ToFaL6WjEXmdMrv8
+         5dHxHjLI/TW8ZIMiEzmRt2WF5lVjQNAeTTj5527AbK9pMWMMHSqofeXLf8qX/xXRjTQE
+         2MLGdgYCw1ZOdBTFvQKBm0LUEdhFFGw8r0QOfiP6WmKmgLaLICTg2vqC6crtXDtQ0tpA
+         EITTalEUe0qVhQ771a/MRcX/DozuK3UwjNI9yj8gfBQJBd6SFldNXx3gy8AUWPf3z2ec
+         tW3Q==
+X-Gm-Message-State: ACrzQf2SKLJs7UGXvWHRqnAlFVwmVxC8pBJxZLmVMYB8qfqNTAY5BOH6
+	pbZd5tInnGbAZgq4dsZvNzPKqSeHz1PxnlKRm9dZqw==
+X-Google-Smtp-Source: AMsMyM55YvmkRzYCd+FdwuzCtLvww/XUEX97+sLt0snJRUKlnBEeVBkZ0X4BUVrKG6997P2iT6sTJgSfoxl3FEMJEaY=
+X-Received: by 2002:a05:600c:4d86:b0:3cf:7257:ba15 with SMTP id
+ v6-20020a05600c4d8600b003cf7257ba15mr35748058wmp.22.1668009735506; Wed, 09
+ Nov 2022 08:02:15 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gRH5EQBfd9X8l7db"
-Content-Disposition: inline
-In-Reply-To: <cover.1667687249.git.lorenzo@kernel.org>
+References: <20221108105352.89801-1-haozhe.chang@mediatek.com>
+ <CAMZdPi96dZV0J_6U-mH5eCquWycSQLPvoz6JX1BHWn0eQJyeDA@mail.gmail.com> <8406210223bd8dcbf6682082570f791a6088104c.camel@mediatek.com>
+In-Reply-To: <8406210223bd8dcbf6682082570f791a6088104c.camel@mediatek.com>
+From: Loic Poulain <loic.poulain@linaro.org>
+Date: Wed, 9 Nov 2022 17:01:38 +0100
+Message-ID: <CAMZdPi9t2bz06kTECHT01g6zZeTXPgrODvR5qnR2n8BGRUHjWA@mail.gmail.com>
+Subject: Re: [PATCH v2] wwan: core: Support slicing in port TX flow of WWAN subsystem
+To: =?UTF-8?B?SGFvemhlIENoYW5nICjluLjmtanlk7Ip?= <Haozhe.Chang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linuxwwan@intel.com" <linuxwwan@intel.com>, 
+	"m.chetan.kumar@linux.intel.com" <m.chetan.kumar@linux.intel.com>, 
+	=?UTF-8?B?SHVhIFlhbmcgKOadqOWNjik=?= <Hua.Yang@mediatek.com>, 
+	=?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>, 
+	"chiranjeevi.rapolu@linux.intel.com" <chiranjeevi.rapolu@linux.intel.com>, 
+	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>, "kuba@kernel.org" <kuba@kernel.org>, 
+	=?UTF-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>, 
+	"johannes@sipsolutions.net" <johannes@sipsolutions.net>, 
+	"chandrashekar.devegowda@intel.com" <chandrashekar.devegowda@intel.com>, 
+	"edumazet@google.com" <edumazet@google.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"pabeni@redhat.com" <pabeni@redhat.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"ricardo.martinez@linux.intel.com" <ricardo.martinez@linux.intel.com>, 
+	"davem@davemloft.net" <davem@davemloft.net>, =?UTF-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?= <Lambert.Wang@mediatek.com>, 
+	"srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_070353_809265_2864E3C6 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20221109_080224_130786_0FE588BE 
+X-CRM114-Status: GOOD (  49.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,99 +102,231 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 9 Nov 2022 at 12:23, Haozhe Chang (=E5=B8=B8=E6=B5=A9=E5=93=B2)
+<Haozhe.Chang@mediatek.com> wrote:
+>
+> Hi Loic
+>
+> On Tue, 2022-11-08 at 13:14 +0100, Loic Poulain wrote:
+> > Hi Haozhe,
+> >
+> > On Tue, 8 Nov 2022 at 11:54, <haozhe.chang@mediatek.com> wrote:
+> > >
+> > > From: haozhe chang <haozhe.chang@mediatek.com>
+> > >
+> > > wwan_port_fops_write inputs the SKB parameter to the TX callback of
+> > > the WWAN device driver. However, the WWAN device (e.g., t7xx) may
+> > > have an MTU less than the size of SKB, causing the TX buffer to be
+> > > sliced and copied once more in the WWAN device driver.
+> > >
+> > > This patch implements the slicing in the WWAN subsystem and gives
+> > > the WWAN devices driver the option to slice(by chunk) or not. By
+> > > doing so, the additional memory copy is reduced.
+> > >
+> > > Meanwhile, this patch gives WWAN devices driver the option to
+> > > reserve
+> > > headroom in SKB for the device-specific metadata.
+> > >
+> > > Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
+> > >
+> > > ---
+> > > Changes in v2
+> > >   -send fragments to device driver by skb frag_list.
+> > > ---
+> > >  drivers/net/wwan/t7xx/t7xx_port_wwan.c | 42 ++++++++++-------
+> > >  drivers/net/wwan/wwan_core.c           | 65 ++++++++++++++++++++
+> > > ------
+> > >  include/linux/wwan.h                   |  5 +-
+> > >  3 files changed, 80 insertions(+), 32 deletions(-)
+> > >
+> > > diff --git a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+> > > b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+> > > index 33931bfd78fd..74fa58575d5a 100644
+> > > --- a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+> > > +++ b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+> > > @@ -54,13 +54,13 @@ static void t7xx_port_ctrl_stop(struct
+> > > wwan_port *port)
+> >
+> > [...]
+> > >  static const struct wwan_port_ops wwan_ops =3D {
+> > >         .start =3D t7xx_port_ctrl_start,
+> > >         .stop =3D t7xx_port_ctrl_stop,
+> > >         .tx =3D t7xx_port_ctrl_tx,
+> > > +       .needed_headroom =3D t7xx_port_tx_headroom,
+> > > +       .tx_chunk_len =3D t7xx_port_tx_chunk_len,
+> >
+> > Can you replace 'chunk' with 'frag' everywhere?
+> >
+> OK
+> > >  };
+> > >
+> > >  static int t7xx_port_wwan_init(struct t7xx_port *port)
+> > > diff --git a/drivers/net/wwan/wwan_core.c
+> > > b/drivers/net/wwan/wwan_core.c
+> > > index 62e9f7d6c9fe..ed78471f9e38 100644
+> > > --- a/drivers/net/wwan/wwan_core.c
+> > > +++ b/drivers/net/wwan/wwan_core.c
+> > > @@ -20,7 +20,7 @@
+> > >  #include <uapi/linux/wwan.h>
+> > >
+> > >  /* Maximum number of minors in use */
+> > > -#define WWAN_MAX_MINORS                (1 << MINORBITS)
+> > > +#define WWAN_MAX_MINORS                BIT(MINORBITS)
+> > >
+> > >  static DEFINE_MUTEX(wwan_register_lock); /* WWAN device
+> > > create|remove lock */
+> > >  static DEFINE_IDA(minors); /* minors for WWAN port chardevs */
+> > > @@ -67,6 +67,8 @@ struct wwan_device {
+> > >   * @rxq: Buffer inbound queue
+> > >   * @waitqueue: The waitqueue for port fops (read/write/poll)
+> > >   * @data_lock: Port specific data access serialization
+> > > + * @headroom_len: SKB reserved headroom size
+> > > + * @chunk_len: Chunk len to split packet
+> > >   * @at_data: AT port specific data
+> > >   */
+> > >  struct wwan_port {
+> > > @@ -79,6 +81,8 @@ struct wwan_port {
+> > >         struct sk_buff_head rxq;
+> > >         wait_queue_head_t waitqueue;
+> > >         struct mutex data_lock; /* Port specific data access
+> > > serialization */
+> > > +       size_t headroom_len;
+> > > +       size_t chunk_len;
+> > >         union {
+> > >                 struct {
+> > >                         struct ktermios termios;
+> > > @@ -550,8 +554,13 @@ static int wwan_port_op_start(struct wwan_port
+> > > *port)
+> > >         }
+> > >
+> > >         /* If port is already started, don't start again */
+> > > -       if (!port->start_count)
+> > > +       if (!port->start_count) {
+> > >                 ret =3D port->ops->start(port);
+> > > +               if (port->ops->tx_chunk_len)
+> > > +                       port->chunk_len =3D port->ops-
+> > > >tx_chunk_len(port);
+> >
+> > So, maybe frag len and headroom should be parameters of
+> > wwan_create_port() instead of port ops, as we really need this info
+> > only once.
+> >
+> If frag_len and headroom are added, wwan_create_port will have 6
+> parameters, is it too much? And for similar requirements in the future,
+> it may be difficult to add more parameters.
 
---gRH5EQBfd9X8l7db
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I think 6 is still fine, if we need more fields in the future we can
+always have a port_config struct as a parameter instead.
 
-> Similar to TX counterpart available on MT7622 and MT7986, introduce
-> RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
-> offload traffic received by wlan nic to the wired interfaces (lan/wan).
+>
+> Is it a good solution to provide wwan_port_set_frag_len and
+> wwan_port_set_headroom_len to the device driver? if so, the device
+> driver has a chance to modify the wwan port's field after calling
+> wwan_create_port.
 
-Hi all,
+Would be preferable to not have these values changeable at runtime.
 
-I noticed today the series state is 'Awaiting Upstream'. I am wondering if
-this series is expected to go through a different tree, e.g. wireless one
-(adding Kalle in cc). In this particular case the series changes only
-the mtk ethernet driver and mt76 is built since we modify a common include =
-(but
-there are no changes in mt76). My personal opinion is this series is suited=
- to
-go through net-next tree but I would be fine even if it goes through Kalle's
-one. Any opinions?
+> > > +               if (port->ops->needed_headroom)
+> > > +                       port->headroom_len =3D port->ops-
+> > > >needed_headroom(port);
+> > > +       }
+> > >
+> > >         if (!ret)
+> > >                 port->start_count++;
+> > > @@ -698,30 +707,56 @@ static ssize_t wwan_port_fops_read(struct
+> > > file *filp, char __user *buf,
+> > >  static ssize_t wwan_port_fops_write(struct file *filp, const char
+> > > __user *buf,
+> > >                                     size_t count, loff_t *offp)
+> > >  {
+> > > +       size_t len, chunk_len, offset, allowed_chunk_len;
+> > > +       struct sk_buff *skb, *head =3D NULL, *tail =3D NULL;
+> > >         struct wwan_port *port =3D filp->private_data;
+> > > -       struct sk_buff *skb;
+> > >         int ret;
+> > >
+> > >         ret =3D wwan_wait_tx(port, !!(filp->f_flags & O_NONBLOCK));
+> > >         if (ret)
+> > >                 return ret;
+> > >
+> > > -       skb =3D alloc_skb(count, GFP_KERNEL);
+> > > -       if (!skb)
+> > > -               return -ENOMEM;
+> > > +       allowed_chunk_len =3D port->chunk_len ? port->chunk_len :
+> > > count;
+> >
+> > I would suggest making port->chunk_len (frag_len) always valid, by
+> > setting it to -1 (MAX size_t) when creating a port without frag_len
+> > requirement.
+> >
+> Ok, it will help to reduce some code.
+> > > +       for (offset =3D 0; offset < count; offset +=3D chunk_len) {
+> > > +               chunk_len =3D min(count - offset, allowed_chunk_len);
+> > > +               len =3D chunk_len + port->headroom_len;
+> > > +               skb =3D alloc_skb(len, GFP_KERNEL);
+> >
+> > That works but would prefer a simpler solution like:
+> > do {
+> >     len =3D min(port->frag_len, remain);
+> >     skb =3D alloc_skb(len + port->needed_headroom; GFP_KERNEL);
+> >     [...]
+> >     copy_from_user(skb_put(skb, len), buf + count - remain)
+> > } while ((remain -=3D len));
+> >
+> May I know if the suggestion is because "while" is more efficient
+> than  "for", or is it more readable?
+
+It's more readable to me, but it's a subjective opinion here.
+
+> > > +               if (!skb) {
+> > > +                       ret =3D -ENOMEM;
+> > > +                       goto freeskb;
+> > > +               }
+> > > +               skb_reserve(skb, port->headroom_len);
+> > > +
+> > > +               if (!head) {
+> > > +                       head =3D skb;
+> > > +               } else if (!tail) {
+> > > +                       skb_shinfo(head)->frag_list =3D skb;
+> > > +                       tail =3D skb;
+> > > +               } else {
+> > > +                       tail->next =3D skb;
+> > > +                       tail =3D skb;
+> > > +               }
+> > >
+> > > -       if (copy_from_user(skb_put(skb, count), buf, count)) {
+> > > -               kfree_skb(skb);
+> > > -               return -EFAULT;
+> > > -       }
+> > > +               if (copy_from_user(skb_put(skb, chunk_len), buf +
+> > > offset, chunk_len)) {
+> > > +                       ret =3D -EFAULT;
+> > > +                       goto freeskb;
+> > > +               }
+> > >
+> > > -       ret =3D wwan_port_op_tx(port, skb, !!(filp->f_flags &
+> > > O_NONBLOCK));
+> > > -       if (ret) {
+> > > -               kfree_skb(skb);
+> > > -               return ret;
+> > > +               if (skb !=3D head) {
+> > > +                       head->data_len +=3D skb->len;
+> > > +                       head->len +=3D skb->len;
+> > > +                       head->truesize +=3D skb->truesize;
+> > > +               }
+> > >         }
+> > >
+> > > -       return count;
+> > > +       if (head) {
+> >
+> > How head can be null here?
+> >
+> if the parameter "count" is 0, the for loop will not be executed.
+
+Ok, right (with do/while version it should not happen).
+But maybe the !count case should be caught earlier, if even possible in fop=
+s.
 
 Regards,
-Lorenzo
-
->=20
-> Changes since v3:
-> - remove reset property in ethsys dts node
-> - rely on readx_poll_timeout in wo mcu code
-> - fix typos
-> - move wo-ccif binding in soc folder
-> - use reserved-memory for wo-dlm
-> - improve wo-ccif binding
->=20
-> Changes since v2:
-> - rely on of_reserved_mem APIs in mcu code
-> - add some dts fixes
-> - rename {tx,rx}_wdma in {rx,tx}_wdma
-> - update entry in maintainers file
->=20
-> Changes since v1:
-> - fix sparse warnings
-> - rely on memory-region property in mt7622-wed.yaml
-> - some more binding fixes
->=20
-> Lorenzo Bianconi (7):
->   arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet
->     Dispatch
->   dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
->   net: ethernet: mtk_wed: introduce wed wo support
->   net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
->   net: ethernet: mtk_wed: add configure wed wo support
->   net: ethernet: mtk_wed: add rx mib counters
->   MAINTAINERS: update MEDIATEK ETHERNET entry
->=20
-> Sujuan Chen (1):
->   net: ethernet: mtk_wed: introduce wed mcu support
->=20
->  .../arm/mediatek/mediatek,mt7622-wed.yaml     |  52 ++
->  .../soc/mediatek/mediatek,mt7986-wo-ccif.yaml |  51 ++
->  MAINTAINERS                                   |   1 +
->  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  65 ++
->  drivers/net/ethernet/mediatek/Makefile        |   2 +-
->  drivers/net/ethernet/mediatek/mtk_wed.c       | 619 ++++++++++++++++--
->  drivers/net/ethernet/mediatek/mtk_wed.h       |  21 +
->  .../net/ethernet/mediatek/mtk_wed_debugfs.c   |  87 +++
->  drivers/net/ethernet/mediatek/mtk_wed_mcu.c   | 387 +++++++++++
->  drivers/net/ethernet/mediatek/mtk_wed_regs.h  | 129 +++-
->  drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 508 ++++++++++++++
->  drivers/net/ethernet/mediatek/mtk_wed_wo.h    | 282 ++++++++
->  include/linux/soc/mediatek/mtk_wed.h          | 106 ++-
->  13 files changed, 2256 insertions(+), 54 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediat=
-ek,mt7986-wo-ccif.yaml
->  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_mcu.c
->  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.c
->  create mode 100644 drivers/net/ethernet/mediatek/mtk_wed_wo.h
->=20
-> --=20
-> 2.38.1
->=20
-
---gRH5EQBfd9X8l7db
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY2vBSQAKCRA6cBh0uS2t
-rPcgAP9PAG0essRbeHBLaiZaGlJXLeM6J4qukctGB9+r/1Ix1QEA8bLkD/GDnBc4
-J4EU5i4C57QJ7m+WDzf/nKWJReThFg0=
-=jPqc
------END PGP SIGNATURE-----
-
---gRH5EQBfd9X8l7db--
-
+Loic
 
