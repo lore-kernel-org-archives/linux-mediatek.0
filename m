@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE88C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 16:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921EFC43219
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 16:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R2N+jSfSlY43TnrF1h50zfC2H3h4TDeeUUxvXDObycg=; b=Rz1UAY300Hir3mHMQraHB4tChW
-	yG9twxtk9x3rSyKnjDdyn0pnBk3hofi6/TZUVwX1b2tTygoQq6O3SUs8eM53bp12DSF1YMFCw2f/Q
-	cbR8qdFObcYJ5EA9Cp2GRBmadC21LgECRXSS2LNbzriqYR4ye3DN9qZa+l+rObOA9/6jQsbe4miAd
-	lWAfnHtqJ5YQ+N2SD4tXboyRZkQzgU9W6UZYn67bZvSu5bAwoKVRabDea7gPiq6NWZiTQ8vxQRxXa
-	hzPfXHjspgfhO0qYiajkgfLV0JmPJ1U9j9OfZINTgKSh5SFe4DrFVPwqE7kITfpWCOsWMx8JUW8YH
-	A3aoUTgA==;
+	bh=/rqSZTPHTzjvgQiKEtydX5Kmlo97LMyPbAHh98dxziY=; b=bWk7ColzipJQm5Z+DfENzAeuzF
+	OysJKtgkCZOoLq0fxyD6jmYoDWB0f311da02fYg6HcePrkaRRiiCXr3vVJHhH3un1on15jcttY56t
+	h8TNLABXmWGznZo024DumkhFX1dHlmDa/WI5hE942YuPLmNl3qMV6hzrQDFOb/PKAEc+YaC6oEXnv
+	bYqxBQlPMTXggbI/Mof57whTPUnqUjHJOezDjrXFVJPQ6G7E2IvY4EHfYZuSD40hrS9E/CsWw2qpj
+	EAUj7H1dB037hkuADzhXssXI74PyfwpmCI7aMYPxbmNeJWzxeLD4MlDZ4HP8AFoKM4FKKES6VlJhl
+	wUy06Rrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oso2j-00F3av-WB; Wed, 09 Nov 2022 16:35:14 +0000
+	id 1oso2l-00F3bf-G6; Wed, 09 Nov 2022 16:35:15 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oso2J-00F3KG-Rt; Wed, 09 Nov 2022 16:34:49 +0000
+	id 1oso2J-00F3KF-RN; Wed, 09 Nov 2022 16:34:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=R2N+jSfSlY43TnrF1h50zfC2H3h4TDeeUUxvXDObycg=; b=Oz7nOGqVGIhjqu9jeS3nT4Kbfs
-	PSWnp8/YhdyRWGxpJST3iAZeB/CvGM4hlDI2z0s0hvgvW5P7oPIiYbcRtdPXScAQmKSNJ+uIasf1W
-	4rhCHSWzYSJsPV90qpbpYaZlVFCo2WLJztJvriYCj5gvnHN063jICFpX9MQzSyb/GurU=;
+	bh=/rqSZTPHTzjvgQiKEtydX5Kmlo97LMyPbAHh98dxziY=; b=sDXwynUwMTWL9k/+n3l1jXgPBt
+	kJl0TjusG4QI7dFTev5pZph46nVAFRao/yDinHhxbDKqxAV3P1zkQrLUMUOXJ80REQKwz23zJkE6z
+	ScpyI1fcBBkNfae2UKZnzqVCNpjzv4xXBTERh8mfMfyNGDnGOfWHhTEW9QDCm9NjKE3w=;
 Received: from p200300daa72ee100054f3c61b16ef6e7.dip0.t-ipconnect.de ([2003:da:a72e:e100:54f:3c61:b16e:f6e7] helo=localhost.localdomain)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 	(Exim 4.94.2)
 	(envelope-from <nbd@nbd.name>)
-	id 1oso24-000l4N-Ln; Wed, 09 Nov 2022 17:34:32 +0100
+	id 1oso27-000l4N-BL; Wed, 09 Nov 2022 17:34:35 +0100
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org,
 	John Crispin <john@phrozen.org>,
@@ -52,17 +52,17 @@ Cc: Vladimir Oltean <olteanv@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v2 03/12] net: ethernet: mtk_eth_soc: avoid port_mg assignment on MT7622 and newer
-Date: Wed,  9 Nov 2022 17:34:17 +0100
-Message-Id: <20221109163426.76164-4-nbd@nbd.name>
+Subject: [PATCH net-next v2 06/12] net: ethernet: mediatek: ppe: assign per-port queues for offloaded traffic
+Date: Wed,  9 Nov 2022 17:34:20 +0100
+Message-Id: <20221109163426.76164-7-nbd@nbd.name>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221109163426.76164-1-nbd@nbd.name>
 References: <20221109163426.76164-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_083447_921154_1E07E76D 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20221109_083447_913064_C46C4C23 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,59 +77,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On newer chips, this field is unused and contains some bits related to queue
-assignment. Initialize it to 0 in those cases.
-Fix offload_version on MT7621 and MT7623, which still need the previous value.
+Keeps traffic sent to the switch within link speed limits
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- drivers/net/ethernet/mediatek/mtk_ppe.c     | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_ppe.c        | 18 ++++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_ppe.h        |  4 ++++
+ .../net/ethernet/mediatek/mtk_ppe_offload.c    | 12 +++++++++---
+ 3 files changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 02a57729db28..9f607c80f49c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4243,7 +4243,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.hw_features = MTK_HW_FEATURES,
- 	.required_clks = MT7621_CLKS_BITMAP,
- 	.required_pctl = false,
--	.offload_version = 2,
-+	.offload_version = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
-@@ -4282,7 +4282,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.hw_features = MTK_HW_FEATURES,
- 	.required_clks = MT7623_CLKS_BITMAP,
- 	.required_pctl = true,
--	.offload_version = 2,
-+	.offload_version = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
 diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 2d8ca99f2467..3ee2bf53f9e5 100644
+index 3ee2bf53f9e5..96ad0a9b79b4 100644
 --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
 +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -175,6 +175,8 @@ int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
- 		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT_V2, pse_port) |
- 		      FIELD_PREP(MTK_FOE_IB2_PORT_AG_V2, 0xf);
- 	} else {
-+		int port_mg = eth->soc->offload_version > 1 ? 0 : 0x3f;
-+
- 		val = FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_BIND) |
- 		      FIELD_PREP(MTK_FOE_IB1_PACKET_TYPE, type) |
- 		      FIELD_PREP(MTK_FOE_IB1_UDP, l4proto == IPPROTO_UDP) |
-@@ -182,7 +184,7 @@ int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
- 		entry->ib1 = val;
+@@ -399,6 +399,24 @@ int mtk_foe_entry_set_wdma(struct mtk_eth *eth, struct mtk_foe_entry *entry,
+ 	return 0;
+ }
  
- 		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT, pse_port) |
--		      FIELD_PREP(MTK_FOE_IB2_PORT_MG, 0x3f) |
-+		      FIELD_PREP(MTK_FOE_IB2_PORT_MG, port_mg) |
- 		      FIELD_PREP(MTK_FOE_IB2_PORT_AG, 0x1f);
++int mtk_foe_entry_set_queue(struct mtk_eth *eth, struct mtk_foe_entry *entry,
++			    unsigned int queue)
++{
++	u32 *ib2 = mtk_foe_entry_ib2(eth, entry);
++
++	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
++		*ib2 &= ~MTK_FOE_IB2_QID_V2;
++		*ib2 |= FIELD_PREP(MTK_FOE_IB2_QID_V2, queue);
++		*ib2 |= MTK_FOE_IB2_PSE_QOS_V2;
++	} else {
++		*ib2 &= ~MTK_FOE_IB2_QID;
++		*ib2 |= FIELD_PREP(MTK_FOE_IB2_QID, queue);
++		*ib2 |= MTK_FOE_IB2_PSE_QOS;
++	}
++
++	return 0;
++}
++
+ static bool
+ mtk_flow_entry_match(struct mtk_eth *eth, struct mtk_flow_entry *entry,
+ 		     struct mtk_foe_entry *data)
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index 0b7a67a958e4..be635864bb96 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -68,7 +68,9 @@ enum {
+ #define MTK_FOE_IB2_DSCP		GENMASK(31, 24)
+ 
+ /* CONFIG_MEDIATEK_NETSYS_V2 */
++#define MTK_FOE_IB2_QID_V2			GENMASK(6, 0)
+ #define MTK_FOE_IB2_PORT_MG_V2		BIT(7)
++#define MTK_FOE_IB2_PSE_QOS_V2		BIT(8)
+ #define MTK_FOE_IB2_DEST_PORT_V2	GENMASK(12, 9)
+ #define MTK_FOE_IB2_MULTICAST_V2	BIT(13)
+ #define MTK_FOE_IB2_WDMA_WINFO_V2	BIT(19)
+@@ -350,6 +352,8 @@ int mtk_foe_entry_set_pppoe(struct mtk_eth *eth, struct mtk_foe_entry *entry,
+ 			    int sid);
+ int mtk_foe_entry_set_wdma(struct mtk_eth *eth, struct mtk_foe_entry *entry,
+ 			   int wdma_idx, int txq, int bss, int wcid);
++int mtk_foe_entry_set_queue(struct mtk_eth *eth, struct mtk_foe_entry *entry,
++			    unsigned int queue);
+ int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
+ void mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
+ int mtk_foe_entry_idle_time(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index 28bbd1df3e30..81afd5ee3fbf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -188,7 +188,7 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
+ 			   int *wed_index)
+ {
+ 	struct mtk_wdma_info info = {};
+-	int pse_port, dsa_port;
++	int pse_port, dsa_port, queue;
+ 
+ 	if (mtk_flow_get_wdma_info(dev, dest_mac, &info) == 0) {
+ 		mtk_foe_entry_set_wdma(eth, foe, info.wdma_idx, info.queue,
+@@ -212,8 +212,6 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
  	}
+ 
+ 	dsa_port = mtk_flow_get_dsa_port(&dev);
+-	if (dsa_port >= 0)
+-		mtk_foe_entry_set_dsa(eth, foe, dsa_port);
+ 
+ 	if (dev == eth->netdev[0])
+ 		pse_port = 1;
+@@ -222,6 +220,14 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
+ 	else
+ 		return -EOPNOTSUPP;
+ 
++	if (dsa_port >= 0) {
++		mtk_foe_entry_set_dsa(eth, foe, dsa_port);
++		queue = 3 + dsa_port;
++	} else {
++		queue = pse_port - 1;
++	}
++	mtk_foe_entry_set_queue(eth, foe, queue);
++
+ out:
+ 	mtk_foe_entry_set_pse_port(eth, foe, pse_port);
  
 -- 
 2.38.1
