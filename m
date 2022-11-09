@@ -4,56 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730DDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 13:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DF7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 13:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+GUaBpSLjcsDpSEk8ATKUTZgKIV8pbmAZ1XnfGnicZ4=; b=v5gV/Z5388kmZjiT9ZUT4G54DV
-	aZArG/QZFN/AvHZbnO7YvJaVuP3XNeeFsKxq2binWW37NqLPhvJEHlLXJKxKCiNdmaMGQnZdRCux0
-	wfhM6h32Qh8SsdDyVQXCJZ0cNWnqFQSuo4nAz1Ek0nTDO4lFoEm+5TWTVpv4YQg0Of8Ol41o0ZCc1
-	xROPYksbG9MVxajWZW+oqCE8m7IjnLSjRcV2N/3FxE2pWnZBIHY/jq+eHt+u8NQLoon5yPbuTWK6q
-	gscosskgsGXByly1dDSexQkUkyT/C+8LFCNzR/U1uSdWvdsSJM+9TD3OiduBeraeqlH1dXnatl5jV
-	d84AFKbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=; b=BGJkBNTUrnoVRRZpnxzKnI78Rt
+	d/uaI1mggCPuRmh7il7PdyyfAdMsyIuTRVco8RbXH63I1h83i1RVuN56yZoQFtqqzTB1ctinXVMNg
+	VxaHZIP82IF9rolcuijEWxE91m9L96tukPq7x7/Z6Tb1x3hdvh5+MvIe7CfBd3q0ZfdUK11Fpmxym
+	5B6sJhgMzC85UVasOKBbfdFQ+2Yb0PJ3PZ2ljKe0oMvrAP67T09KnxLHzLOuX7lsTV2dBWE83OJZc
+	X7SG2Yi6OVlwssLutKCXwwMSkz+rTFnIKLPBW4uyy3ZnOxCDxWUNlIityn0a1kaI7+ZZRnDAtVe2M
+	k/K/NjlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oslEx-00Dnn7-Sq; Wed, 09 Nov 2022 13:35:39 +0000
-Received: from mail1.systemli.org ([93.190.126.36])
+	id 1oslWE-00DyXH-K0; Wed, 09 Nov 2022 13:53:30 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oslEi-00Dnam-TC; Wed, 09 Nov 2022 13:35:27 +0000
-Message-ID: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
-	s=default; t=1668000915;
-	bh=+GUaBpSLjcsDpSEk8ATKUTZgKIV8pbmAZ1XnfGnicZ4=;
-	h=Date:To:Cc:From:Subject:From;
-	b=4TD00xCvsDVkVIt7ZSkoCZ4zuIMBujyerc1andI3G16RW7BhIb/4ZpgMnGOQgaHu+
-	 lZl4GgxPMkZ1ZB8MUTL3LRRn/Kxyi6aoZkwy/JW8tUK9iyDvbKIStjf1uLNND3b2SP
-	 0a8za/heRn4GwkV8+X3C0J7dqJcg9WU0b8hsc5HfmwzTvJ+qKvy+h5Lfpoc9R6kWjf
-	 Omhmvb1M6+H16tAK7aHReJ3cxSR4kZzfPKjnlp57ZoL+p4lEghHjZlWWWZM9FIuZmg
-	 IEFMjb1AbpZnTRh2BgMJgPXzdZF2eo2Rd1W7qk9exqzRiyn8QxPxbdrXLkzsmURmuW
-	 LPtDVZjPCj/BQ==
-Date: Wed, 9 Nov 2022 14:35:12 +0100
+	id 1oslW1-00DyOj-89; Wed, 09 Nov 2022 13:53:18 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id q186so6428427oia.9;
+        Wed, 09 Nov 2022 05:53:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=;
+        b=IRoPyveQ9oFrAzTF3HHWGRj0bUrCS8UXLDCa9ddqKqECHwdlDrMOiKDSZFD12lTdMl
+         XNBIQOgXzPdtgZPPrv9GafkLQB/QCIIiL+YPya0/Hp1NPKysiaBQGQjOfZI3/fws8WmO
+         IC351Nj8xsn5UopowW+WN6XagzJpYeXF21UXhjDo9EsVVx2/tmOi23Yx33AbvliZBYWZ
+         rjCm3e40+B0iBtSKK9mkxqcUkAjx9wi3fsP9JzExbAkKPOzS1PbKl5D01nmRmZqwArlf
+         c4WRIWu9QxLRLeK41yi7GJb8h2BS48MGKMxNelapj/igM3ozt9vWWbfuoFaITTowNE3m
+         D41w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IP5GuE55LXSPGOYJX6tyMHFgYaUe2wT0zbakn2aZiKA=;
+        b=XGy8ujk3/IVqyS55D6Oo/rb+2bjCMn1xagVG0P7h0pugJtgKgMuM8Jq2tP2SdAWPSO
+         twx8CKif/Gn0vosYabSW0YHZ+UR1XJGLLZFKd9VB7vNSnxgk3hqk1vwkrXDB9G33vfCe
+         urRJRRuESG+LHhdrQqtD5Ily/dhj2dTaKLMJpKnKxJvvWfvMoFRi6wwUj1Pd0syDTuBc
+         3Nq+9U++VsmGwUErmbxjsSdjiZQvHeSLVN2sGcJrjpaU9ZTi5Wt1ZHz9iSyj4jmMxH1P
+         xzPzTI5smuEzj0wycOVrY9sBfHivQZJtbP8DRp80faTf+k7ZS+kWR+l7mqYQB1SOqDYl
+         PcsQ==
+X-Gm-Message-State: ACrzQf3kHb3WQZyRsbGKagnXrkddJ6DLuJ73z5Tbt774gYIK82eQ2kKA
+	pIr8ri8So9Q2l1zc0N+n87A=
+X-Google-Smtp-Source: AMsMyM7yhbw8cdCur7Z/B3HPRG1UyZ5Xhy0cQKinNow41q8SEdCpF9Q0zCPt1dXhUKXdFyWWSxduvw==
+X-Received: by 2002:a05:6808:1b13:b0:35a:57ef:8388 with SMTP id bx19-20020a0568081b1300b0035a57ef8388mr16587593oib.195.1668001989314;
+        Wed, 09 Nov 2022 05:53:09 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id f15-20020a056870210f00b0013ae5246449sm6082480oae.22.2022.11.09.05.53.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Nov 2022 05:53:08 -0800 (PST)
+Date: Wed, 9 Nov 2022 05:53:06 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>, nfraprado@collabora.com,
+	angelogioacchino.delregno@collabora.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 5/7] dt-bindings: watchdog: mediatek: Convert mtk-wdt
+ to json-schema
+Message-ID: <20221109135306.GA3538893@roeck-us.net>
+References: <20221108033209.22751-1-allen-kh.cheng@mediatek.com>
+ <20221108033209.22751-6-allen-kh.cheng@mediatek.com>
+ <585a9cbb-4df4-1c06-ecfa-3b9442f1a5e2@gmail.com>
+ <5758c2af-c2c5-dfbe-c7d8-036bbdaf71c7@kernel.org>
 MIME-Version: 1.0
-Content-Language: en-US
-To: jia-wei.chang@mediatek.com, rex-bc.chen@mediatek.com,
- angelogioacchino.delregno@collabora.com, viresh.kumar@linaro.org
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Daniel Golle <daniel@makrotopia.org>,
- =?UTF-8?Q?H=c3=bchn=2c_Thomas?= <thomas.huehn@hs-nordhausen.de>
-From: Nick <vincent@systemli.org>
-Subject: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
- mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5758c2af-c2c5-dfbe-c7d8-036bbdaf71c7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_053525_445373_6693BAA4 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221109_055317_313500_7D10A380 
+X-CRM114-Status: GOOD (  19.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,86 +101,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-while trying to bump OpenWrt Kernel to 6.1rc2 I noticed that the kernel 
-is crashing while booting on a Banana Pi R64 (MT7622):
+On Wed, Nov 09, 2022 at 10:04:09AM +0100, Krzysztof Kozlowski wrote:
+> On 08/11/2022 11:50, Matthias Brugger wrote:
+> > 
+> > 
+> > On 08/11/2022 04:32, Allen-KH Cheng wrote:
+> >> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >>
+> >> Convert the MediaTek watchdog bindings to schema.
+> >>
+> >> The original binding only had 4 without a fallback but there is a reset
+> >> controller on the "mediatek,mt7986-wdt", "mediatek,mt8186-wdt",
+> >> "mediatek,mt8188-wdt" and "mediatek,mt8195-wdt" Since there is no reset
+> >> controller for the mt6589, we remove "mediatek,mt6589-wdt" as a
+> >> fallback.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >> Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> >> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> >> Reviewed-by: Rob Herring <robh@kernel.org>
+> >> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> >> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > 
+> > As I'm put as the maintainer:
+> > Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > 
+> > Shall I take that through my tree or shall it go through the watchdog tree?
+> > 
+> 
+> In general, bindings should go via subsystem trees (so watchdog), just
+> like drivers. However this got Guenter's review tag, so usually it means
+> also an ack... Dunno... :)
 
-> [    1.055565] ------------[ cut here ]------------
-> [    1.060204] Kernel BUG at regulator_check_voltage+0xb0/0xf0 [verbose debug info unavailable]
-> [    1.062418] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 ranges:
-> [    1.068656] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
-> [    1.075248] mtk-pcie 1a143000.pcie: Parsing ranges property...
-> [    1.081257] Modules linked in:
-> [    1.081264] CPU: 1 PID: 328 Comm: kworker/1:7 Tainted: G S                 6.1-rc2 #0
-> [    1.087088] mtk-pcie 1a143000.pcie:      MEM 0x0020000000..0x0027ffffff -> 0x0020000000
-> [    1.090126] Hardware name: Bananapi BPI-R64 (DT)
-> [    1.110541] Workqueue: events dbs_work_handler
-> [    1.114988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    1.121944] pc : regulator_check_voltage+0xb0/0xf0
-> [    1.126728] lr : regulator_set_voltage_unlocked+0x88/0x110
-> [    1.129638] mmc1: host does not support reading read-only switch, assuming write-enable
-> [    1.132207] sp : ffffffc00956bb30
-> [    1.132209] x29: ffffffc00956bb30 x28: ffffff8000efb400 x27: 0000000000000024
-> [    1.132219] x26: 00000000001312d0 x25: 0000000000118c30 x24: 00000000001312d0
-> [    1.132227] x23: 0000000000149970
-> [    1.146036] mmc1: new high speed SDHC card at address e624
-> [    1.150642]  x22: ffffff800038f800
-> [    1.159192] mmcblk1: mmc1:e624 SL16G 14.8 GiB
-> [    1.161068]  x21: ffffff8000efb100
-> [    1.161072] x20: 00000000001312d0
-> [    1.175424] GPT:partition_entry_array_crc32 values don't match: 0xa0b5ce6d != 0xab54d286
-> [    1.177757]  x19: 0000000000000000 x18: 00000000799b2550
-> [    1.181067] GPT:Primary header thinks Alt. header is not at the end of the disk.
-> [    1.189143] x17: 0000000000000003 x16: 0000000000000001 x15: 0000000000000000
-> [    1.189151] x14: 0000000000000000 x13: 0000000000000146 x12: 00000000fa83b2da
-> [    1.189159] x11: 000000000000013d x10: 0000000000000850
-> [    1.194472] GPT:305184 != 31116287
-> [    1.201842]  x9 : ffffffc00956b910
-> [    1.201846] x8 : ffffff8000b9edf0 x7 : 0000000000000001
-> [    1.208970] GPT:Alternate GPT header not at the end of the disk.
-> [    1.216092]  x6 : 00000000001312d0
-> [    1.216095] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 0000000000000000
-> [    1.216103] x2 : ffffffc00956bb68 x1 : ffffffc00956bb6c
-> [    1.221321] GPT:305184 != 31116287
-> [    1.224706]  x0 : ffffff800038f800
-> [    1.228095] GPT: Use GNU Parted to correct GPT errors.
-> [    1.233307]
-> [    1.233309] Call trace:
-> [    1.233312]  regulator_check_voltage+0xb0/0xf0
-> [    1.242680] FIT: Selected configuration: "config-mt7622-bananapi-bpi-r64-pcie1" (OpenWrt bananapi_bpi-r64 with mt7622-bananapi-bpi-r64-pcie1)
-> [    1.242694]  regulator_set_voltage+0x3c/0x64
-> [    1.249831] FIT:           kernel sub-image 0x00001000..0x0052fd0a "kernel-1" (ARM64 OpenWrt Linux-6.1-rc2)
-> [    1.255030]  mtk_cpufreq_voltage_tracking+0x11c/0x26c
-> [    1.255039]  mtk_cpufreq_set_target+0x1c4/0x350
-> [    1.258444] FIT:          flat_dt sub-image 0x00530000..0x005380c5 "fdt-1" (ARM64 OpenWrt bananapi_bpi-r64 device tree blob)
-> [    1.261820]  __cpufreq_driver_target+0x2f4/0x674
-> [    1.261826]  od_dbs_update+0xb8/0x19c
-> [    1.266969] FIT:          flat_dt sub-image 0x00539000..0x0053911a "fdt-mt7622-bananapi-bpi-r64-pcie1" (ARM64 OpenWrt bananapi_bpi-r64 device tree overlay mt7622-bananapi-bpi-r64-pcie1)
-> [    1.268431]  dbs_work_handler+0x3c/0x7c
-> [    1.270883] FIT:          flat_dt sub-image 0x0053a000..0x0053a20f "fdt-mt7622-bananapi-bpi-r64-sata" (ARM64 OpenWrt bananapi_bpi-r64 device tree overlay mt7622-bananapi-bpi-r64-sata)
-> [    1.275297]  process_one_work+0x200/0x3a0
-> [    1.287998] FIT:       filesystem sub-image 0x0053b000..0x00859fff "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 rootfs)
-> [    1.292237]  worker_thread+0x170/0x4c0
-> [    1.292244]  kthread+0xd4/0xe0
-> [    1.302066] FIT: selecting configured loadable "rootfs-1" to be root filesystem
-> [    1.307092]  ret_from_fork+0x10/0x20
-> [    1.311631]  mmcblk1: p1 p2 p3 p4 p5 p6 p65(rootfs-1) p66(rootfs_data) p128
-> [    1.322903] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
-> [    1.413322] ---[ end trace 0000000000000000 ]---
-The complete log can be found here:
-https://gist.githubusercontent.com/PolynomialDivision/395d009c84b426d780549c5fa1f64ff1/raw/886d621d2bf6f03429586adf8a14a6c37c8d8a7d/mt7622-6-1.log
+For watchdog patches, if I send a Reviewed-by: tag, I expect Wim to pick
+up the patch through the watchdog tree. If I expect some other tree to
+pick it up, I use Acked-by: and usually add a note saying that I assume
+that the patch will be picked up by someone else.
 
-Reverting commit "cpufreq: mediatek: Refine 
-mtk_cpufreq_voltage_tracking()" fixes the kernel bug:
-https://github.com/torvalds/linux/commit/6a17b3876bc8303612d7ad59ecf7cbc0db418bcd
+I usually also add watchdog patches to my own watchdog-next tree as
+reference for Wim. I already have several mediatek devicetree patches
+queued there. Handling some of the patches through watchdog and others
+through some other tree would create a mess. Please don't do that.
 
-The revert commit can be found here:
-https://github.com/PolynomialDivision/openwrt/commit/1df941d0334000e3aced43b7d50cdac0da8bf427
-
-The branch I use to build the 6.1rc2 on a Banana Pi R64 can be found here:
-https://github.com/PolynomialDivision/openwrt/commits/bump-mt7622-rebase
-
-Bests
-Nick
-
+Guenter
 
