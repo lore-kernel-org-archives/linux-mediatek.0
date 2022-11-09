@@ -4,68 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4262DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 00:30:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00AC4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 02:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P8e55r60yL8b3MDHe2FUZdktnmdfVIU8b+P0EU+Kx0c=; b=Ole7B5emrNyrURU2mTnIF4k2e1
-	TYPYXHn8peIAYeCEq53n5aBAOdRHIr5JyhVFny5XD5jxrQrrVw0Zd1k/ebRLL4Ym1Y8qxz6yK+wnM
-	cDRINWtlOHmo5i1TuJU9B153UKvlK9wskUWloFhmuhuIDh8t2kKpOjLafRy0vEgWdWhjgkb4jFJTU
-	qlpP45cJIxaKtBo03Z5OQaTYwxtyvBtpRXS/o22EX1/mJBFKbA6S7A1Q9Ul6ohrHRtD8Qe73VgOT9
-	nLPzQFmlZOnth6Q9oCfAFRFzmXdJw0lcXjweUh96W8LGTwp91RHKp6m5aTRETytz3urtw5MdkUukb
-	CQuKEmqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P+g7uBaPDLFFg0J1gV8Dso1qvnMoueWJq6O4OzNz3Oo=; b=PlSiw2ve7MvLD7hSRaVRv5KDqo
+	ZGUuT9wFZUwN9bNtsqdaA28wJlOh8i39CF1QHLTY/4Lwzmdwi+MuwbdcUsCGC7+AqkZEC8pvYb6lB
+	HwnenlAkk3Cn8MEvNvDIs+6vKLZfJBDxi2XcNDPBrLhQXgBdDubf1fyac83R0rcxA5pk5GuQdFvDM
+	ivvEvCVKF9O78ucDWk6Z7N8Sxo6llrOjBZta1pv3Wq3xDOc7ph4oXe2k2gO0zANFdW1rYh1OuH8O4
+	PYYjfHUHacipCOktZ1tnvdAG+u9Uhl0n4BkLGNFazMi409h1DwEfWhi54EnzGCW5jsLIBjPFYPyQu
+	I/ni9MIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osYyi-009PdW-O4; Wed, 09 Nov 2022 00:30:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1osaow-009wgI-Lr; Wed, 09 Nov 2022 02:28:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osYyd-009Pby-NT
-	for linux-mediatek@lists.infradead.org; Wed, 09 Nov 2022 00:30:03 +0000
-X-UUID: 199c7c9df37b4f2ca4422b72e4b28751-20221108
+	id 1osaot-009wfJ-Az; Wed, 09 Nov 2022 02:28:05 +0000
+X-UUID: fc914d04a21a49ce8c30a418aa064bba-20221108
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=P8e55r60yL8b3MDHe2FUZdktnmdfVIU8b+P0EU+Kx0c=;
-	b=u7KqR053HmYSDH+bZ6U/TbDLonhFJaW5+wNkZ0FlJucEwQKEcWV5P2N2k1cK+etprIYCA2tQiDJqOqqOPe242OE0CTxdDY5IRGUtprm9W1e1pNZBrCf7jHjvtF03ZhQ7HhwkX35XWABubVY9BV8qcpy8JI18IVwjXmbX+FcL9ag=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=P+g7uBaPDLFFg0J1gV8Dso1qvnMoueWJq6O4OzNz3Oo=;
+	b=SxrgY+1QRYYUDsge0iCS4NiJL4QhWiKTk37eIrdwGp6IFq9QhoUOi2wsAbMxH+FaH5aebhp9Xob6de3aNy/fXBtr1Nf4jDxGHzk5mSIGuIDpJq9FjrP0z0lH7pGyOl+PLqe0ThYP6Dme8zTvWLJ0fkJ23uQVybMBiKC9EC6dCtY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:51af79c7-b62e-4f1c-9e3e-095ec32b62ce,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-35
-X-CID-META: VersionHash:62cd327,CLOUDID:da99fd90-1a78-4832-bd08-74b1519dcfbf,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 199c7c9df37b4f2ca4422b72e4b28751-20221108
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.12,REQID:4f07e967-2d8a-49d2-bf16-13c2342a05de,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:3943daeb-84ac-4628-a416-bc50d5503da6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fc914d04a21a49ce8c30a418aa064bba-20221108
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1871900870; Tue, 08 Nov 2022 17:29:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 539063412; Tue, 08 Nov 2022 19:27:49 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 9 Nov 2022 07:29:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 9 Nov 2022 07:29:51 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v2 4/4] wifi: mt76: mt7915: enable coredump support
-Date: Wed, 9 Nov 2022 07:29:44 +0800
-Message-ID: <be7fbdcc459504c5e9c2e3f23184fe328f5bbabd.1667949443.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <26aefa69d1002616412c4b00bf2e779f71ca3289.1667949443.git.ryder.lee@mediatek.com>
-References: <26aefa69d1002616412c4b00bf2e779f71ca3289.1667949443.git.ryder.lee@mediatek.com>
+ 15.2.792.15; Wed, 9 Nov 2022 10:27:16 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 9 Nov 2022 10:27:15 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HwEvNbYMhuPYNYS9ZNCPm26Pv8SKqdIlQ7hBpJK+lRkVphy5ZLLSP9jZSkRhZtmeV4g+cGcPgEcBPeU/xERSDnjaTsgMotozeABOld/BJgtAvOuqBdWfUhNufF2toLjrxL4FYMmf6JFnUVfBh+bQfjXYm8XTGdh/KxFLkhpFwzp/zYY28LzfTBRtXvEprZ6VsER9a7QVSladRIHDhqjRdLQS0x+28eaTyn7PFeXvGNahxWs0g0zu6IgZZe4mE2eRZOYKe48WjdzKWYsu/L0VULVk5yCUmkvQiFEZcJTat9lNDbjQbfM9ANiV58nyatpyWZ7scpK40lvrNBqXO4DU0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=P+g7uBaPDLFFg0J1gV8Dso1qvnMoueWJq6O4OzNz3Oo=;
+ b=SGe2uMVl+BrWtNtCJ5K3TgixB7J5EUnPy1Nl4aEjdwjXJJJB3NZW9Hy4G0UG5d7xn0e3mvnV1Wbe7c6knJR+mGsLoavEc0Z5AiXeqBrSeXCkb3YOPVERFRRVcv+vbcnFecTYMW5jkdCCX+ZL4udhShKiFAZMv+nJa1nsqc9ZZSlaT6FugK/BRdiOyfrLwJWmXUpXld/e8dngNXrAeoQ/6aQK3ii3pgloJyO4dGMGzdAtZJBiAeFsU9e4I63AP9EbcMKZ7i/YeLhJuI/oh8dX79YXflyVho3/psxfM08PKJKWbD9wLFhm1a/rivZJrX9h2nR3Y2BRgxqc1WMBsdOkBw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=P+g7uBaPDLFFg0J1gV8Dso1qvnMoueWJq6O4OzNz3Oo=;
+ b=tcAyLQdEQSiruYXvWlLFOo4GPvMlwFqlUqKuJl/GoASIePDqyk8fxatquF+byoqh6ObQNRFq4dCQGncVEuVi+JXkDZrPnElJqhW409thfFY5D2BCPxjg7ewZWSFSdWB+YFJTFVi8HY+9i4ghnnSX7uNaoK4QEPR+3RZSuln+M5k=
+Received: from SI2PR03MB5339.apcprd03.prod.outlook.com (2603:1096:4:105::9) by
+ PUZPR03MB6985.apcprd03.prod.outlook.com (2603:1096:301:fa::11) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5791.25; Wed, 9 Nov 2022 02:27:13 +0000
+Received: from SI2PR03MB5339.apcprd03.prod.outlook.com
+ ([fe80::c97d:476e:330:2459]) by SI2PR03MB5339.apcprd03.prod.outlook.com
+ ([fe80::c97d:476e:330:2459%5]) with mapi id 15.20.5791.019; Wed, 9 Nov 2022
+ 02:27:13 +0000
+From: =?utf-8?B?WGlubGVpIExlZSAo5p2O5piV56OKKQ==?= <Xinlei.Lee@mediatek.com>
+To: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "airlied@linux.ie"
+	<airlied@linux.ie>, =?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+	<jitao.shi@mediatek.com>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH] drm: mediatek: Modify dpi power on/off sequence.
+Thread-Topic: [PATCH] drm: mediatek: Modify dpi power on/off sequence.
+Thread-Index: AQHYwS82s+Q+jayFZkiWluRDUUA5iq4LIdsAgCnnjICAATnIgA==
+Date: Wed, 9 Nov 2022 02:27:13 +0000
+Message-ID: <8bdbffecc932dbfd40c2ed4d0b5c8cbe0f84fe47.camel@mediatek.com>
+References: <1662386033-4463-1-git-send-email-xinlei.lee@mediatek.com>
+	 <9fe3a2381746b46bde171f01635d30da2cb93d64.camel@mediatek.com>
+	 <c59a202cd31d46286eff441c6f42ec309486f334.camel@mediatek.com>
+In-Reply-To: <c59a202cd31d46286eff441c6f42ec309486f334.camel@mediatek.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5339:EE_|PUZPR03MB6985:EE_
+x-ms-office365-filtering-correlation-id: fffaa891-7e87-465b-71fe-08dac1f9e972
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: FetHX5ZuKDcYYv+ZJMOR2w+NOkK6mJ/oJaGsaYrWScimtbDml855rxZnCZL5p3kotC13cb8VnAbDMx9r92EsD8Y1nx/WbAZGSjwEslNszBVLXo38g4QdEdmx/KAEXl9adm86pCgj66lxIJhpQR/5UH+oXV8WmjlEXJUUYhaFXkS3XoxjlQ3IXzkWjHxcYQ5iLDaY2zl6sCWXwOd6Y5/C0K7ntVuwjyx2Lkca/oQI2ObH07fqRAEJoOoKBzgvh+tBsCF7s4sJgTTCI3M3xy+ds708o1MDvdPt5D77s2XAwJT8L80uX7wSqAHTNL1ssIEMWdhqc/wpMaYiOnFM2mvDbpBZkWoVl9dtWh7uiW2HgbrufzfR68Mvb6YlW5z4Z4Ns4faq9Zvv8GUNOJIv1Qn6aMrpS9Q3/8xHsWf4BMjR3rhxZ19PfA1jMrKaI8XH/Ny8VvQzEYnq+x5A3pK2Pjwi96udPRwIyw2KKmhw6X2D+zSZ1DXooNQSWnyy8D5mH3R9yVWYVAuasP6XXRwC2t9weZ6374qE5Yeq+wrRvd3cJZs61oihgCJ2K9xISUvTSIX0qdMqo0+vjB717NUe0ubjFSmi9TCDjXnq1fwuin/k+DGfvA+uoZowObknvkJCCZWhtruJj+DgWWtFsfdibAYtaQa6XSxtdJ2l93+emE0dAJ4h8d650F1NnkEAFQw/MHfiUsXz8MOpkZsBex5m/VHfhsQsiS7l5lwe4clfsaziCwyqilpChze+uRgeAFjHhuUcMCIDKlZNsUssDQES9qTL7g==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5339.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(136003)(376002)(346002)(396003)(366004)(39860400002)(451199015)(6486002)(4001150100001)(2906002)(316002)(64756008)(26005)(71200400001)(41300700001)(8936002)(5660300002)(478600001)(36756003)(6636002)(38070700005)(110136005)(8676002)(66556008)(4326008)(66476007)(54906003)(83380400001)(186003)(6506007)(86362001)(107886003)(66946007)(2616005)(6512007)(122000001)(76116006)(38100700002)(66446008)(85182001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aVVYZ0IwdnZDT1JZci85aXhKZkxLMFUzSTF3YjIwRk5rYk9MaFZaVDZ4SlAr?=
+ =?utf-8?B?T2tBOFZwOEF0eGJUQ1E4N0VwNzh2UjN6UDUwdVN0OFA4VkVzU1ZQdGZwYVph?=
+ =?utf-8?B?VHQrczg4NlRjVEd0eGRHaVlpOHZOcmt3c1hNa3RkYWQ0M1ZPa0VtZHhrb241?=
+ =?utf-8?B?Y1Q3UHpOaW9ONEpwMU91TC85bEdXc3FEVytnRUc2R1c0Nzc1QXJpUVJYRHpw?=
+ =?utf-8?B?ODBwdENYZzNFWlpDNWw5S3NhdXI1dXRuY1BuUG11K0RMRkFpRXVBdjEyMlpt?=
+ =?utf-8?B?WGJhNmFMQmZ5MmRiT2luMlpDVWp5WXVOQmFqcGVMd3MzTzNRQjQyN2xoVkR4?=
+ =?utf-8?B?WGplSXVBQ0xPZHY1eVlJQXJhS1MzQUU2bnZmR3Y1bkV6SzhyQzZyRVhxdGFl?=
+ =?utf-8?B?R0xOTEZpR0FDcnlSL1lXZWJVT0xJeXJGanJrMllPWmh5MmVVY1h0RWVxSGx6?=
+ =?utf-8?B?YStTbllYSWtvVlJJTHlZd3ZwVTFxWjZyZjhCUk16M0UrcE5xV0FVNFBobUR5?=
+ =?utf-8?B?UGxUc1RxN2kwU0d2ZnA0clo3bmcwYWhRVHNpc0wxVVh0Um13bXh0aXIzREcv?=
+ =?utf-8?B?T0pCbCtQMGNZSHNrOWpoOVM1SzVFYnErMHFhSE9NVk9iZlZCVC9vMXlnOXlm?=
+ =?utf-8?B?OFZZcGxBRVEyaUFzMmVSeVhxWGQxMXJjQ2JJMkdCSm9wb0trY3hIZHZxTTFl?=
+ =?utf-8?B?OXZMRUR6UFg1aGEyMCtLUEZnQW01RnNld3MvRVFSREMzRUYzK3VWYmgxMGZG?=
+ =?utf-8?B?dDljYXo4WHZtcDFBaXNPSXVJQWRMdytPb0lsRWZBRFQrMkdvNS90Y0xCS1Vq?=
+ =?utf-8?B?anhDSjhlM1doSFE4ekJ3bi80Q0xLY0U3QkR6Rmw2L2RKZ0tBRFJlUjJwMk9s?=
+ =?utf-8?B?STI1RDZHRmY3RVhlMGgxQWVYT3lQMnUvQmVjTDRSWXQ2L3dPRWJnT3JaMUVM?=
+ =?utf-8?B?WVZxVVZVVldMOHR2eWtEWXNUV3Z5ejhhV1RLdGpaaHVNRitqdFIrbUJaaWU5?=
+ =?utf-8?B?ZUFVVjVoUTZLSFlmSlFFTms4RW80QlFyVFJpZEVQV0ZXamlUS3NXS0Jram4w?=
+ =?utf-8?B?QXpPdWJ5OWVVanZBV01oa2tiQmxCRFAvakM3RHE4bFlaMFBQaXJicHlrcEp0?=
+ =?utf-8?B?MjhpOXVvaXd2eHphc1U2L2V6VXJGS1JaekQwUVJkbkgwSnBudVVvSldmbSs5?=
+ =?utf-8?B?TWhHY2xlWEJZdVRzY0JIOEx2WWd2dmhXdG1YcHNvUnBTcXg2c0FFMEpDekFm?=
+ =?utf-8?B?QnRuTlpITjZhY0VxZHR3THVTN29lSXZEbjBvTnZRL3VLbXFrMW9WOG0vUnB4?=
+ =?utf-8?B?dWVrMHZpcitrKzRkWXZ6YjdiOTlIR0xENVAwTGEyRFZLcVFOelo5NkgzY2lC?=
+ =?utf-8?B?VXd5ZlFGWUUyWm0zU0dvYTNNWVRQNUh2bk1FaFVnUURRbWx1ZEx1RXNvWHQ0?=
+ =?utf-8?B?aXNhdGJIYW5ZYjB4VHFkYjVuMkg4OTR1RXBpelJTSlozemZiS2YxM1B5VDB5?=
+ =?utf-8?B?VUZhaEMvT1MwN1RwbndVYkczaUltSkpYOThpN3BIZmhVNi9vMS9NaG4rTC9q?=
+ =?utf-8?B?TTI1NWJ3OWN6YUVrakQzVWFBOSsrQ2lXZldFNDhGR0hYeStRdHBmZEdBWTA0?=
+ =?utf-8?B?bUlPWmxOWGZRS0h3SEtoVW4vTGRRdmFscHBsODdQS3JtSG5yL3lsU0hKcmYx?=
+ =?utf-8?B?cFIrUU14OU9oQWd2RW9ma29iWEkrS0Nwbm9IZHVKMWtGMHlFRjl2dWJxTFRq?=
+ =?utf-8?B?VVkzRm5sNy9PODZMYUQybHlHQmxIUjR0MEJsb1Znd0g3anZsazhNSk1ram1X?=
+ =?utf-8?B?NVhyamRhZXNlRWI3dHZyRjI3YVM0YVU0NFN1djdDZzVRT2VCSlR6VnNLVEhC?=
+ =?utf-8?B?aFNUVW0zN0FqOXZ6b2tLYVBsZ2c4NGtKS3V5TnFlNk44OVFiNS9saDNlTzQ5?=
+ =?utf-8?B?SnJkYVdBNWNOT0o3U3R0VnpjZDZsRFJhamdFeDRMMmkxRHM4Yy91MGdpc2pH?=
+ =?utf-8?B?WFFyczA0L2lZTk5JejJKLzRYakk5TWpPbkY5MWU1OXh5WWw2QVNMNEZkRGx6?=
+ =?utf-8?B?S0lmcGFvYnJ4dTMxeStxNDBMWisrd2E2TGNrbldGaGpqemJBRWcrU3YwWDRF?=
+ =?utf-8?B?dTRsM3BiVTRrUy9jeVk2K3g4YW9Ed3FEWGpoNUxWWkpnaEFicVNtZUhwZWI4?=
+ =?utf-8?B?WHc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <79695469A51E6E4CAC908BD07AE9ACD9@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5339.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fffaa891-7e87-465b-71fe-08dac1f9e972
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Nov 2022 02:27:13.3330
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ucYvsioaSz0VM1wKQ0D9yqEWw5ex4ILw2DJXiFVyNNJs94ohuIk4g+TmfUADqcuqydDLOEQjukeo5hX3L606cQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR03MB6985
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221108_162959_812886_4CD2F7E1 
-X-CRM114-Status: GOOD (  24.33  )
+X-CRM114-CacheID: sfid-20221108_182803_395101_C86F7DF6 
+X-CRM114-Status: GOOD (  28.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,952 +175,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Host triggered and catastrophic event triggered firmware core dumping
-for basic firmware issues triage, including state reporting, task/irq
-info, function calltrace and MCU memory dump.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/Kconfig |   1 +
- .../wireless/mediatek/mt76/mt7915/Makefile    |   3 +-
- .../wireless/mediatek/mt76/mt7915/coredump.c  | 409 ++++++++++++++++++
- .../wireless/mediatek/mt76/mt7915/coredump.h  | 136 ++++++
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  12 +-
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |  72 ++-
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  59 ++-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  22 +
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  34 +-
- 9 files changed, 740 insertions(+), 8 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7915/coredump.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7915/coredump.h
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-index f21282cea845..d710726d47bf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-@@ -2,6 +2,7 @@
- config MT7915E
- 	tristate "MediaTek MT7915E (PCIe) support"
- 	select MT76_CONNAC_LIB
-+	select WANT_DEV_COREDUMP
- 	depends on MAC80211
- 	depends on PCI
- 	select RELAY
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/Makefile b/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
-index b794ceb79c37..797ae49805c3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
-@@ -6,4 +6,5 @@ mt7915e-y := pci.o init.o dma.o eeprom.o main.o mcu.o mac.o \
- 	     debugfs.o mmio.o
- 
- mt7915e-$(CONFIG_NL80211_TESTMODE) += testmode.o
--mt7915e-$(CONFIG_MT7986_WMAC) += soc.o
-\ No newline at end of file
-+mt7915e-$(CONFIG_MT7986_WMAC) += soc.o
-+mt7915e-$(CONFIG_DEV_COREDUMP) += coredump.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/coredump.c b/drivers/net/wireless/mediatek/mt76/mt7915/coredump.c
-new file mode 100644
-index 000000000000..bb4b70401af5
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/coredump.c
-@@ -0,0 +1,409 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2022 MediaTek Inc. */
-+
-+#include <linux/devcoredump.h>
-+#include <linux/kernel.h>
-+#include <linux/types.h>
-+#include <linux/utsname.h>
-+#include "coredump.h"
-+
-+static bool coredump_memdump;
-+module_param(coredump_memdump, bool, 0644);
-+
-+static const struct mt7915_mem_region mt7915_mem_regions[] = {
-+	{
-+		.start = 0xe003b400,
-+		.len = 0x00003bff,
-+		.name = "CRAM",
-+	},
-+};
-+
-+static const struct mt7915_mem_region mt7916_mem_regions[] = {
-+	{
-+		.start = 0x00800000,
-+		.len = 0x0005ffff,
-+		.name = "ROM",
-+	},
-+	{
-+		.start = 0x00900000,
-+		.len = 0x00013fff,
-+		.name = "ULM1",
-+	},
-+	{
-+		.start = 0x02200000,
-+		.len = 0x0004ffff,
-+		.name = "ULM2",
-+	},
-+	{
-+		.start = 0x02300000,
-+		.len = 0x0004ffff,
-+		.name = "ULM3",
-+	},
-+	{
-+		.start = 0x00400000,
-+		.len = 0x00027fff,
-+		.name = "SRAM",
-+	},
-+	{
-+		.start = 0xe0000000,
-+		.len = 0x00157fff,
-+		.name = "CRAM",
-+	},
-+};
-+
-+static const struct mt7915_mem_region mt7986_mem_regions[] = {
-+	{
-+		.start = 0x00800000,
-+		.len = 0x0005ffff,
-+		.name = "ROM",
-+	},
-+	{
-+		.start = 0x00900000,
-+		.len = 0x0000ffff,
-+		.name = "ULM1",
-+	},
-+	{
-+		.start = 0x02200000,
-+		.len = 0x0004ffff,
-+		.name = "ULM2",
-+	},
-+	{
-+		.start = 0x02300000,
-+		.len = 0x0004ffff,
-+		.name = "ULM3",
-+	},
-+	{
-+		.start = 0x00400000,
-+		.len = 0x00017fff,
-+		.name = "SRAM",
-+	},
-+	{
-+		.start = 0xe0000000,
-+		.len = 0x00113fff,
-+		.name = "CRAM",
-+	},
-+};
-+
-+const struct mt7915_mem_region*
-+mt7915_coredump_get_mem_layout(struct mt7915_dev *dev, u32 *num)
-+{
-+	switch (mt76_chip(&dev->mt76)) {
-+	case 0x7915:
-+		*num = ARRAY_SIZE(mt7915_mem_regions);
-+		return &mt7915_mem_regions[0];
-+	case 0x7986:
-+		*num = ARRAY_SIZE(mt7986_mem_regions);
-+		return &mt7986_mem_regions[0];
-+	case 0x7916:
-+		*num = ARRAY_SIZE(mt7916_mem_regions);
-+		return &mt7916_mem_regions[0];
-+	default:
-+		return NULL;
-+	}
-+}
-+
-+static int mt7915_coredump_get_mem_size(struct mt7915_dev *dev)
-+{
-+	const struct mt7915_mem_region *mem_region;
-+	size_t size = 0;
-+	u32 num;
-+	int i;
-+
-+	mem_region = mt7915_coredump_get_mem_layout(dev, &num);
-+	if (!mem_region)
-+		return 0;
-+
-+	for (i = 0; i < num; i++) {
-+		size += mem_region->len;
-+		mem_region++;
-+	}
-+
-+	/* reserve space for the headers */
-+	size += num * sizeof(struct mt7915_mem_hdr);
-+	/* make sure it is aligned 4 bytes for debug message print out */
-+	size = ALIGN(size, 4);
-+
-+	return size;
-+}
-+
-+struct mt7915_crash_data *mt7915_coredump_new(struct mt7915_dev *dev)
-+{
-+	struct mt7915_crash_data *crash_data = dev->coredump.crash_data;
-+
-+	lockdep_assert_held(&dev->dump_mutex);
-+
-+	guid_gen(&crash_data->guid);
-+	ktime_get_real_ts64(&crash_data->timestamp);
-+
-+	return crash_data;
-+}
-+
-+static void
-+mt7915_coredump_fw_state(struct mt7915_dev *dev, struct mt7915_coredump *dump,
-+			 bool *exception)
-+{
-+	u32 state, count, type;
-+
-+	type = (u32)mt76_get_field(dev, MT_FW_EXCEPT_TYPE, GENMASK(7, 0));
-+	state = (u32)mt76_get_field(dev, MT_FW_ASSERT_STAT, GENMASK(7, 0));
-+	count = is_mt7915(&dev->mt76) ?
-+		(u32)mt76_get_field(dev, MT_FW_EXCEPT_COUNT, GENMASK(15, 8)) :
-+		(u32)mt76_get_field(dev, MT_FW_EXCEPT_COUNT, GENMASK(7, 0));
-+
-+	/* normal mode: driver can manually trigger assert for detail info */
-+	if (!count)
-+		strscpy(dump->fw_state, "normal", sizeof(dump->fw_state));
-+	else if (state > 1 && (count == 1) && type == 5)
-+		strscpy(dump->fw_state, "assert", sizeof(dump->fw_state));
-+	else if ((state > 1 && count == 1) || count > 1)
-+		strscpy(dump->fw_state, "exception", sizeof(dump->fw_state));
-+
-+	*exception = !!count;
-+}
-+
-+static void
-+mt7915_coredump_fw_trace(struct mt7915_dev *dev, struct mt7915_coredump *dump,
-+			 bool exception)
-+{
-+	u32 n, irq, sch, base = MT_FW_EINT_INFO;
-+
-+	/* trap or run? */
-+	dump->last_msg_id = mt76_rr(dev, MT_FW_LAST_MSG_ID);
-+
-+	n = is_mt7915(&dev->mt76) ?
-+	    (u32)mt76_get_field(dev, base, GENMASK(7, 0)) :
-+	    (u32)mt76_get_field(dev, base, GENMASK(15, 8));
-+	dump->eint_info_idx = n;
-+
-+	irq = mt76_rr(dev, base + 0x8);
-+	n = is_mt7915(&dev->mt76) ?
-+	    FIELD_GET(GENMASK(7, 0), irq) : FIELD_GET(GENMASK(23, 16), irq);
-+	dump->irq_info_idx = n;
-+
-+	sch = mt76_rr(dev, MT_FW_SCHED_INFO);
-+	n = is_mt7915(&dev->mt76) ?
-+	    FIELD_GET(GENMASK(7, 0), sch) : FIELD_GET(GENMASK(15, 8), sch);
-+	dump->sched_info_idx = n;
-+
-+	if (exception) {
-+		u32 i, y;
-+
-+		/* sched trace */
-+		n = is_mt7915(&dev->mt76) ?
-+		    FIELD_GET(GENMASK(15, 8), sch) : FIELD_GET(GENMASK(7, 0), sch);
-+		n = n > 60 ? 60 : n;
-+
-+		strscpy(dump->trace_sched, "(sched_info) id, time",
-+			sizeof(dump->trace_sched));
-+
-+		for (y = dump->sched_info_idx, i = 0; i < n; i++, y++) {
-+			mt7915_memcpy_fromio(dev, dump->sched, base + 0xc + y * 12,
-+					     sizeof(dump->sched));
-+			y = y >= n ? 0 : y;
-+		}
-+
-+		/* irq trace */
-+		n = is_mt7915(&dev->mt76) ?
-+		    FIELD_GET(GENMASK(15, 8), irq) : FIELD_GET(GENMASK(7, 0), irq);
-+		n = n > 60 ? 60 : n;
-+
-+		strscpy(dump->trace_irq, "(irq_info) id, time",
-+			sizeof(dump->trace_irq));
-+
-+		for (y = dump->irq_info_idx, i = 0; i < n; i++, y++) {
-+			mt7915_memcpy_fromio(dev, dump->irq, base + 0x4 + y * 16,
-+					     sizeof(dump->irq));
-+			y = y >= n ? 0 : y;
-+		}
-+	}
-+}
-+
-+static void
-+mt7915_coredump_fw_stack(struct mt7915_dev *dev, struct mt7915_coredump *dump,
-+			 bool exception)
-+{
-+	u32 oldest, i, idx;
-+
-+	/* stop call stack record */
-+	if (!exception)
-+		mt76_clear(dev, 0x89050200, BIT(0));
-+
-+	oldest = (u32)mt76_get_field(dev, 0x89050200, GENMASK(20, 16)) + 2;
-+	for (i = 0; i < 16; i++) {
-+		idx = ((oldest + 2 * i + 1) % 32);
-+		dump->call_stack[i] = mt76_rr(dev, 0x89050204 + idx * 4);
-+	}
-+
-+	/* start call stack record */
-+	if (!exception)
-+		mt76_set(dev, 0x89050200, BIT(0));
-+}
-+
-+static void
-+mt7915_coredump_fw_task(struct mt7915_dev *dev, struct mt7915_coredump *dump)
-+{
-+	u32 offs = is_mt7915(&dev->mt76) ? 0xe0 : 0x170;
-+
-+	strscpy(dump->task_qid, "(task queue id) read, write",
-+		sizeof(dump->task_qid));
-+
-+	dump->taskq[0].read = mt76_rr(dev, MT_FW_TASK_QID1);
-+	dump->taskq[0].write = mt76_rr(dev, MT_FW_TASK_QID1 - 4);
-+	dump->taskq[1].read = mt76_rr(dev, MT_FW_TASK_QID2);
-+	dump->taskq[1].write = mt76_rr(dev, MT_FW_TASK_QID2 - 4);
-+
-+	strscpy(dump->task_info, "(task stack) start, end, size",
-+		sizeof(dump->task_info));
-+
-+	dump->taski[0].start = mt76_rr(dev, MT_FW_TASK_START);
-+	dump->taski[0].end = mt76_rr(dev, MT_FW_TASK_END);
-+	dump->taski[0].size = mt76_rr(dev, MT_FW_TASK_SIZE);
-+	dump->taski[1].start = mt76_rr(dev, MT_FW_TASK_START + offs);
-+	dump->taski[1].end = mt76_rr(dev, MT_FW_TASK_END + offs);
-+	dump->taski[1].size = mt76_rr(dev, MT_FW_TASK_SIZE + offs);
-+}
-+
-+static void
-+mt7915_coredump_fw_context(struct mt7915_dev *dev, struct mt7915_coredump *dump)
-+{
-+	u32 count, idx, id;
-+
-+	count = mt76_rr(dev, MT_FW_CIRQ_COUNT);
-+
-+	/* current context */
-+	if (!count) {
-+		strscpy(dump->fw_context, "(context) interrupt",
-+			sizeof(dump->fw_context));
-+
-+		idx = is_mt7915(&dev->mt76) ?
-+		      (u32)mt76_get_field(dev, MT_FW_CIRQ_IDX, GENMASK(31, 16)) :
-+		      (u32)mt76_get_field(dev, MT_FW_CIRQ_IDX, GENMASK(15, 0));
-+		dump->context.idx = idx;
-+		dump->context.handler = mt76_rr(dev, MT_FW_CIRQ_LISR);
-+	} else {
-+		idx = mt76_rr(dev, MT_FW_TASK_IDX);
-+		id = mt76_rr(dev, MT_FW_TASK_ID);
-+
-+		if (!id && idx == 3) {
-+			strscpy(dump->fw_context, "(context) idle",
-+				sizeof(dump->fw_context));
-+		} else if (id && idx != 3) {
-+			strscpy(dump->fw_context, "(context) task",
-+				sizeof(dump->fw_context));
-+
-+			dump->context.idx = idx;
-+			dump->context.handler = id;
-+		}
-+	}
-+}
-+
-+static struct mt7915_coredump *mt7915_coredump_build(struct mt7915_dev *dev)
-+{
-+	struct mt7915_crash_data *crash_data = dev->coredump.crash_data;
-+	struct mt7915_coredump *dump;
-+	struct mt7915_coredump_mem *dump_mem;
-+	size_t len, sofar = 0, hdr_len = sizeof(*dump);
-+	unsigned char *buf;
-+	bool exception;
-+
-+	len = hdr_len;
-+
-+	if (coredump_memdump && crash_data->memdump_buf_len)
-+		len += sizeof(*dump_mem) + crash_data->memdump_buf_len;
-+
-+	sofar += hdr_len;
-+
-+	/* this is going to get big when we start dumping memory and such,
-+	 * so go ahead and use vmalloc.
-+	 */
-+	buf = vzalloc(len);
-+	if (!buf)
-+		return NULL;
-+
-+	mutex_lock(&dev->dump_mutex);
-+
-+	dump = (struct mt7915_coredump *)(buf);
-+	dump->len = len;
-+
-+	/* plain text */
-+	strscpy(dump->magic, "mt76-crash-dump", sizeof(dump->magic));
-+	strscpy(dump->kernel, init_utsname()->release, sizeof(dump->kernel));
-+	strscpy(dump->fw_ver, dev->mt76.hw->wiphy->fw_version,
-+		sizeof(dump->fw_ver));
-+
-+	guid_copy(&dump->guid, &crash_data->guid);
-+	dump->tv_sec = crash_data->timestamp.tv_sec;
-+	dump->tv_nsec = crash_data->timestamp.tv_nsec;
-+	dump->device_id = mt76_chip(&dev->mt76);
-+
-+	mt7915_coredump_fw_state(dev, dump, &exception);
-+	mt7915_coredump_fw_trace(dev, dump, exception);
-+	mt7915_coredump_fw_task(dev, dump);
-+	mt7915_coredump_fw_context(dev, dump);
-+	mt7915_coredump_fw_stack(dev, dump, exception);
-+
-+	/* gather memory content */
-+	dump_mem = (struct mt7915_coredump_mem *)(buf + sofar);
-+	dump_mem->len = crash_data->memdump_buf_len;
-+	if (coredump_memdump && crash_data->memdump_buf_len)
-+		memcpy(dump_mem->data, crash_data->memdump_buf,
-+		       crash_data->memdump_buf_len);
-+
-+	mutex_unlock(&dev->dump_mutex);
-+
-+	return dump;
-+}
-+
-+int mt7915_coredump_submit(struct mt7915_dev *dev)
-+{
-+	struct mt7915_coredump *dump;
-+
-+	dump = mt7915_coredump_build(dev);
-+	if (!dump) {
-+		dev_warn(dev->mt76.dev, "no crash dump data found\n");
-+		return -ENODATA;
-+	}
-+
-+	dev_coredumpv(dev->mt76.dev, dump, dump->len, GFP_KERNEL);
-+
-+	return 0;
-+}
-+
-+int mt7915_coredump_register(struct mt7915_dev *dev)
-+{
-+	struct mt7915_crash_data *crash_data;
-+
-+	crash_data = vzalloc(sizeof(*dev->coredump.crash_data));
-+	if (!crash_data)
-+		return -ENOMEM;
-+
-+	dev->coredump.crash_data = crash_data;
-+
-+	if (coredump_memdump) {
-+		crash_data->memdump_buf_len = mt7915_coredump_get_mem_size(dev);
-+		if (!crash_data->memdump_buf_len)
-+			/* no memory content */
-+			return 0;
-+
-+		crash_data->memdump_buf = vzalloc(crash_data->memdump_buf_len);
-+		if (!crash_data->memdump_buf) {
-+			vfree(crash_data);
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+void mt7915_coredump_unregister(struct mt7915_dev *dev)
-+{
-+	if (dev->coredump.crash_data->memdump_buf) {
-+		vfree(dev->coredump.crash_data->memdump_buf);
-+		dev->coredump.crash_data->memdump_buf = NULL;
-+		dev->coredump.crash_data->memdump_buf_len = 0;
-+	}
-+
-+	vfree(dev->coredump.crash_data);
-+	dev->coredump.crash_data = NULL;
-+}
-+
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/coredump.h b/drivers/net/wireless/mediatek/mt76/mt7915/coredump.h
-new file mode 100644
-index 000000000000..1db326d208d0
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/coredump.h
-@@ -0,0 +1,136 @@
-+/* SPDX-License-Identifier: ISC */
-+/* Copyright (C) 2022 MediaTek Inc. */
-+
-+#ifndef _COREDUMP_H_
-+#define _COREDUMP_H_
-+
-+#include "mt7915.h"
-+
-+struct trace {
-+	u32 id;
-+	u32 timestamp;
-+};
-+
-+struct mt7915_coredump {
-+	char magic[16];
-+
-+	u32 len;
-+
-+	guid_t guid;
-+
-+	/* time-of-day stamp */
-+	u64 tv_sec;
-+	/* time-of-day stamp, nano-seconds */
-+	u64 tv_nsec;
-+	/* kernel version */
-+	char kernel[64];
-+	/* firmware version */
-+	char fw_ver[ETHTOOL_FWVERS_LEN];
-+
-+	u32 device_id;
-+
-+	/* exception state */
-+	char fw_state[12];
-+
-+	u32 last_msg_id;
-+	u32 eint_info_idx;
-+	u32 irq_info_idx;
-+	u32 sched_info_idx;
-+
-+	/* schedule info */
-+	char trace_sched[32];
-+	struct {
-+		struct trace t;
-+		u32 pc;
-+	} sched[60];
-+
-+	/* irq info */
-+	char trace_irq[32];
-+	struct trace irq[60];
-+
-+	/* task queue status */
-+	char task_qid[32];
-+	struct {
-+		u32 read;
-+		u32 write;
-+	} taskq[2];
-+
-+	/* task stack info */
-+	char task_info[32];
-+	struct {
-+		u32 start;
-+		u32 end;
-+		u32 size;
-+	} taski[2];
-+
-+	/* firmware context */
-+	char fw_context[24];
-+	struct {
-+		u32 idx;
-+		u32 handler;
-+	} context;
-+
-+	/* link registers calltrace */
-+	u32 call_stack[16];
-+
-+	/* memory content */
-+	u8 data[];
-+} __packed;
-+
-+struct mt7915_coredump_mem {
-+	u32 len;
-+	u8 data[];
-+} __packed;
-+
-+struct mt7915_mem_hdr {
-+	u32 start;
-+	u32 len;
-+	u8 data[];
-+};
-+
-+struct mt7915_mem_region {
-+	u32 start;
-+	size_t len;
-+
-+	const char *name;
-+};
-+
-+#ifdef CONFIG_DEV_COREDUMP
-+
-+const struct mt7915_mem_region *
-+mt7915_coredump_get_mem_layout(struct mt7915_dev *dev, u32 *num);
-+struct mt7915_crash_data *mt7915_coredump_new(struct mt7915_dev *dev);
-+int mt7915_coredump_submit(struct mt7915_dev *dev);
-+int mt7915_coredump_register(struct mt7915_dev *dev);
-+void mt7915_coredump_unregister(struct mt7915_dev *dev);
-+
-+#else /* CONFIG_DEV_COREDUMP */
-+
-+static inline const struct mt7915_mem_region*
-+mt7915_coredump_get_mem_layout(struct mt7915_dev *dev)
-+{
-+	return NULL;
-+}
-+
-+static inline int mt7915_coredump_submit(struct mt7915_dev *dev)
-+{
-+	return 0;
-+}
-+
-+struct mt7915_crash_data *mt7915_coredump_new(struct mt7915_dev *dev)
-+{
-+	return NULL;
-+}
-+
-+static inline int mt7915_coredump_register(struct mt7915_dev *dev)
-+{
-+	return 0;
-+}
-+
-+static inline void mt7915_coredump_unregister(struct mt7915_dev *dev)
-+{
-+}
-+
-+#endif /* CONFIG_DEV_COREDUMP */
-+
-+#endif /* _COREDUMP_H_ */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 1f39aa3e3f3d..db581742994c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -8,6 +8,7 @@
- #include "mt7915.h"
- #include "mac.h"
- #include "mcu.h"
-+#include "coredump.h"
- #include "eeprom.h"
- 
- static const struct ieee80211_iface_limit if_limits[] = {
-@@ -1076,6 +1077,8 @@ int mt7915_register_device(struct mt7915_dev *dev)
- 
- 	init_waitqueue_head(&dev->reset_wait);
- 	INIT_WORK(&dev->reset_work, mt7915_mac_reset_work);
-+	INIT_WORK(&dev->dump_work, mt7915_mac_dump_work);
-+	mutex_init(&dev->dump_mutex);
- 
- 	dev->dbdc_support = mt7915_band_config(dev);
- 
-@@ -1118,7 +1121,13 @@ int mt7915_register_device(struct mt7915_dev *dev)
- 
- 	dev->recovery.hw_init_done = true;
- 
--	mt7915_init_debugfs(&dev->phy);
-+	ret = mt7915_init_debugfs(&dev->phy);
-+	if (ret)
-+		goto unreg_thermal;
-+
-+	ret = mt7915_coredump_register(dev);
-+	if (ret)
-+		goto unreg_thermal;
- 
- 	return 0;
- 
-@@ -1137,6 +1146,7 @@ int mt7915_register_device(struct mt7915_dev *dev)
- void mt7915_unregister_device(struct mt7915_dev *dev)
- {
- 	mt7915_unregister_ext_phy(dev);
-+	mt7915_coredump_unregister(dev);
- 	mt7915_unregister_thermal(&dev->phy);
- 	mt76_unregister_device(&dev->mt76);
- 	mt7915_stop_hardware(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index c8e69644c552..ccabe492075e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -3,6 +3,7 @@
- 
- #include <linux/etherdevice.h>
- #include <linux/timekeeping.h>
-+#include "coredump.h"
- #include "mt7915.h"
- #include "../dma.h"
- #include "mac.h"
-@@ -1597,6 +1598,75 @@ void mt7915_mac_reset_work(struct work_struct *work)
- 					     MT7915_WATCHDOG_TIME);
- }
- 
-+/* firmware coredump */
-+void mt7915_mac_dump_work(struct work_struct *work)
-+{
-+	const struct mt7915_mem_region *mem_region;
-+	struct mt7915_crash_data *crash_data;
-+	struct mt7915_dev *dev;
-+	struct mt7915_mem_hdr *hdr;
-+	size_t buf_len;
-+	int i;
-+	u32 num;
-+	u8 *buf;
-+
-+	dev = container_of(work, struct mt7915_dev, dump_work);
-+
-+	mutex_lock(&dev->dump_mutex);
-+
-+	crash_data = mt7915_coredump_new(dev);
-+	if (!crash_data) {
-+		mutex_unlock(&dev->dump_mutex);
-+		goto skip_coredump;
-+	}
-+
-+	mem_region = mt7915_coredump_get_mem_layout(dev, &num);
-+	if (!mem_region || !crash_data->memdump_buf_len) {
-+		mutex_unlock(&dev->dump_mutex);
-+		goto skip_memdump;
-+	}
-+
-+	buf = crash_data->memdump_buf;
-+	buf_len = crash_data->memdump_buf_len;
-+
-+	/* dumping memory content... */
-+	memset(buf, 0, buf_len);
-+	for (i = 0; i < num; i++) {
-+		if (mem_region->len > buf_len) {
-+			dev_warn(dev->mt76.dev, "%s len %lu is too large\n",
-+				 mem_region->name, mem_region->len);
-+			break;
-+		}
-+
-+		/* reserve space for the header */
-+		hdr = (void *)buf;
-+		buf += sizeof(*hdr);
-+		buf_len -= sizeof(*hdr);
-+
-+		mt7915_memcpy_fromio(dev, buf, mem_region->start,
-+				     mem_region->len);
-+
-+		hdr->start = mem_region->start;
-+		hdr->len = mem_region->len;
-+
-+		if (!mem_region->len)
-+			/* note: the header remains, just with zero length */
-+			break;
-+
-+		buf += mem_region->len;
-+		buf_len -= mem_region->len;
-+
-+		mem_region++;
-+	}
-+
-+	mutex_unlock(&dev->dump_mutex);
-+
-+skip_memdump:
-+	mt7915_coredump_submit(dev);
-+skip_coredump:
-+	queue_work(dev->mt76.wq, &dev->reset_work);
-+}
-+
- void mt7915_reset(struct mt7915_dev *dev)
- {
- 	if (!dev->recovery.hw_init_done)
-@@ -1613,7 +1683,7 @@ void mt7915_reset(struct mt7915_dev *dev)
- 			 wiphy_name(dev->mt76.hw->wiphy));
- 
- 		mt7915_irq_disable(dev, MT_INT_MCU_CMD);
--		queue_work(dev->mt76.wq, &dev->reset_work);
-+		queue_work(dev->mt76.wq, &dev->dump_work);
- 		return;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 032af46289af..3c840853a2c9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -25,7 +25,22 @@ static const u32 mt7915_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0xd7000,
- 	[CBTOP1_PHY_END]	= 0x77ffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c3fffff,
--	[FW_EXCEPTION_ADDR]	= 0x219848,
-+	[FW_ASSERT_STAT_ADDR]	= 0x219848,
-+	[FW_EXCEPT_TYPE_ADDR]	= 0x21987c,
-+	[FW_EXCEPT_COUNT_ADDR]	= 0x219848,
-+	[FW_CIRQ_COUNT_ADDR]	= 0x216f94,
-+	[FW_CIRQ_IDX_ADDR]	= 0x216ef8,
-+	[FW_CIRQ_LISR_ADDR]	= 0x2170ac,
-+	[FW_TASK_ID_ADDR]	= 0x216f90,
-+	[FW_TASK_IDX_ADDR]	= 0x216f9c,
-+	[FW_TASK_QID1_ADDR]	= 0x219680,
-+	[FW_TASK_QID2_ADDR]	= 0x219760,
-+	[FW_TASK_START_ADDR]	= 0x219558,
-+	[FW_TASK_END_ADDR]	= 0x219554,
-+	[FW_TASK_SIZE_ADDR]	= 0x219560,
-+	[FW_LAST_MSG_ID_ADDR]	= 0x216f70,
-+	[FW_EINT_INFO_ADDR]	= 0x219818,
-+	[FW_SCHED_INFO_ADDR]	= 0x219828,
- 	[SWDEF_BASE_ADDR]	= 0x41f200,
- 	[TXQ_WED_RING_BASE]	= 0xd7300,
- 	[RXQ_WED_RING_BASE]	= 0xd7410,
-@@ -43,7 +58,22 @@ static const u32 mt7916_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0xd7000,
- 	[CBTOP1_PHY_END]	= 0x7fffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c085fff,
--	[FW_EXCEPTION_ADDR]	= 0x022050bc,
-+	[FW_ASSERT_STAT_ADDR]	= 0x02204c14,
-+	[FW_EXCEPT_TYPE_ADDR]	= 0x022051a4,
-+	[FW_EXCEPT_COUNT_ADDR]	= 0x022050bc,
-+	[FW_CIRQ_COUNT_ADDR]	= 0x022001ac,
-+	[FW_CIRQ_IDX_ADDR]	= 0x02204f84,
-+	[FW_CIRQ_LISR_ADDR]	= 0x022050d0,
-+	[FW_TASK_ID_ADDR]	= 0x0220406c,
-+	[FW_TASK_IDX_ADDR]	= 0x0220500c,
-+	[FW_TASK_QID1_ADDR]	= 0x022028c8,
-+	[FW_TASK_QID2_ADDR]	= 0x02202a38,
-+	[FW_TASK_START_ADDR]	= 0x0220286c,
-+	[FW_TASK_END_ADDR]	= 0x02202870,
-+	[FW_TASK_SIZE_ADDR]	= 0x02202878,
-+	[FW_LAST_MSG_ID_ADDR]	= 0x02204fe8,
-+	[FW_EINT_INFO_ADDR]	= 0x0220525c,
-+	[FW_SCHED_INFO_ADDR]	= 0x0220516c,
- 	[SWDEF_BASE_ADDR]	= 0x411400,
- 	[TXQ_WED_RING_BASE]	= 0xd7300,
- 	[RXQ_WED_RING_BASE]	= 0xd7410,
-@@ -61,7 +91,22 @@ static const u32 mt7986_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0x27000,
- 	[CBTOP1_PHY_END]	= 0x7fffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c085fff,
--	[FW_EXCEPTION_ADDR]	= 0x02204ffc,
-+	[FW_ASSERT_STAT_ADDR]	= 0x02204b54,
-+	[FW_EXCEPT_TYPE_ADDR]	= 0x022050dc,
-+	[FW_EXCEPT_COUNT_ADDR]	= 0x02204ffc,
-+	[FW_CIRQ_COUNT_ADDR]	= 0x022001ac,
-+	[FW_CIRQ_IDX_ADDR]	= 0x02204ec4,
-+	[FW_CIRQ_LISR_ADDR]	= 0x02205010,
-+	[FW_TASK_ID_ADDR]	= 0x02204fac,
-+	[FW_TASK_IDX_ADDR]	= 0x02204f4c,
-+	[FW_TASK_QID1_ADDR]	= 0x02202814,
-+	[FW_TASK_QID2_ADDR]	= 0x02202984,
-+	[FW_TASK_START_ADDR]	= 0x022027b8,
-+	[FW_TASK_END_ADDR]	= 0x022027bc,
-+	[FW_TASK_SIZE_ADDR]	= 0x022027c4,
-+	[FW_LAST_MSG_ID_ADDR]	= 0x02204f28,
-+	[FW_EINT_INFO_ADDR]	= 0x02205194,
-+	[FW_SCHED_INFO_ADDR]	= 0x022051a4,
- 	[SWDEF_BASE_ADDR]	= 0x411400,
- 	[TXQ_WED_RING_BASE]	= 0x24420,
- 	[RXQ_WED_RING_BASE]	= 0x24520,
-@@ -457,6 +502,14 @@ static u32 __mt7915_reg_addr(struct mt7915_dev *dev, u32 addr)
- 	return mt7915_reg_map_l2(dev, addr);
- }
- 
-+void mt7915_memcpy_fromio(struct mt7915_dev *dev, void *buf, u32 offset,
-+			  size_t len)
-+{
-+	u32 addr = __mt7915_reg_addr(dev, offset);
-+
-+	memcpy_fromio(buf, dev->mt76.mmio.regs + addr, len);
-+}
-+
- static u32 mt7915_rr(struct mt76_dev *mdev, u32 offset)
- {
- 	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 96ef06511552..e647ba26e6ef 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -220,6 +220,15 @@ struct mib_stats {
- 	u32 tx_amsdu_cnt;
- };
- 
-+/* crash-dump */
-+struct mt7915_crash_data {
-+	guid_t guid;
-+	struct timespec64 timestamp;
-+
-+	u8 *memdump_buf;
-+	size_t memdump_buf_len;
-+};
-+
- struct mt7915_hif {
- 	struct list_head list;
- 
-@@ -301,6 +310,7 @@ struct mt7915_dev {
- 
- 	struct work_struct init_work;
- 	struct work_struct rc_work;
-+	struct work_struct dump_work;
- 	struct work_struct reset_work;
- 	wait_queue_head_t reset_wait;
- 
-@@ -313,6 +323,14 @@ struct mt7915_dev {
- 		bool restart:1;
- 	} recovery;
- 
-+	/* protects coredump data */
-+	struct mutex dump_mutex;
-+#ifdef CONFIG_DEV_COREDUMP
-+	struct {
-+		struct mt7915_crash_data *crash_data;
-+	} coredump;
-+#endif
-+
- 	struct list_head sta_rc_list;
- 	struct list_head sta_poll_list;
- 	struct list_head twt_list;
-@@ -558,6 +576,9 @@ static inline void mt7915_irq_disable(struct mt7915_dev *dev, u32 mask)
- 		mt76_set_irq_mask(&dev->mt76, MT_INT_MASK_CSR, mask, 0);
- }
- 
-+void mt7915_memcpy_fromio(struct mt7915_dev *dev, void *buf, u32 offset,
-+			  size_t len);
-+
- void mt7915_mac_init(struct mt7915_dev *dev);
- u32 mt7915_mac_wtbl_lmac_addr(struct mt7915_dev *dev, u16 wcid, u8 dw);
- bool mt7915_mac_wtbl_update(struct mt7915_dev *dev, int idx, u32 mask);
-@@ -575,6 +596,7 @@ void mt7915_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta);
- void mt7915_mac_work(struct work_struct *work);
- void mt7915_mac_reset_work(struct work_struct *work);
-+void mt7915_mac_dump_work(struct work_struct *work);
- void mt7915_mac_sta_rc_work(struct work_struct *work);
- void mt7915_mac_update_stats(struct mt7915_phy *phy);
- void mt7915_mac_twt_teardown_flow(struct mt7915_dev *dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index d7756cb0d29b..3509abaf2b82 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -24,7 +24,22 @@ enum reg_rev {
- 	WFDMA_EXT_CSR_ADDR,
- 	CBTOP1_PHY_END,
- 	INFRA_MCU_ADDR_END,
--	FW_EXCEPTION_ADDR,
-+	FW_ASSERT_STAT_ADDR,
-+	FW_EXCEPT_TYPE_ADDR,
-+	FW_EXCEPT_COUNT_ADDR,
-+	FW_CIRQ_COUNT_ADDR,
-+	FW_CIRQ_IDX_ADDR,
-+	FW_CIRQ_LISR_ADDR,
-+	FW_TASK_ID_ADDR,
-+	FW_TASK_IDX_ADDR,
-+	FW_TASK_QID1_ADDR,
-+	FW_TASK_QID2_ADDR,
-+	FW_TASK_START_ADDR,
-+	FW_TASK_END_ADDR,
-+	FW_TASK_SIZE_ADDR,
-+	FW_LAST_MSG_ID_ADDR,
-+	FW_EINT_INFO_ADDR,
-+	FW_SCHED_INFO_ADDR,
- 	SWDEF_BASE_ADDR,
- 	TXQ_WED_RING_BASE,
- 	RXQ_WED_RING_BASE,
-@@ -957,7 +972,22 @@ enum offs_rev {
- #define MT_ADIE_TYPE_MASK		BIT(1)
- 
- /* FW MODE SYNC */
--#define MT_FW_EXCEPTION			__REG(FW_EXCEPTION_ADDR)
-+#define MT_FW_ASSERT_STAT		__REG(FW_ASSERT_STAT_ADDR)
-+#define MT_FW_EXCEPT_TYPE		__REG(FW_EXCEPT_TYPE_ADDR)
-+#define MT_FW_EXCEPT_COUNT		__REG(FW_EXCEPT_COUNT_ADDR)
-+#define MT_FW_CIRQ_COUNT		__REG(FW_CIRQ_COUNT_ADDR)
-+#define MT_FW_CIRQ_IDX			__REG(FW_CIRQ_IDX_ADDR)
-+#define MT_FW_CIRQ_LISR			__REG(FW_CIRQ_LISR_ADDR)
-+#define MT_FW_TASK_ID			__REG(FW_TASK_ID_ADDR)
-+#define MT_FW_TASK_IDX			__REG(FW_TASK_IDX_ADDR)
-+#define MT_FW_TASK_QID1			__REG(FW_TASK_QID1_ADDR)
-+#define MT_FW_TASK_QID2			__REG(FW_TASK_QID2_ADDR)
-+#define MT_FW_TASK_START		__REG(FW_TASK_START_ADDR)
-+#define MT_FW_TASK_END			__REG(FW_TASK_END_ADDR)
-+#define MT_FW_TASK_SIZE			__REG(FW_TASK_SIZE_ADDR)
-+#define MT_FW_LAST_MSG_ID		__REG(FW_LAST_MSG_ID_ADDR)
-+#define MT_FW_EINT_INFO			__REG(FW_EINT_INFO_ADDR)
-+#define MT_FW_SCHED_INFO		__REG(FW_SCHED_INFO_ADDR)
- 
- #define MT_SWDEF_BASE			__REG(SWDEF_BASE_ADDR)
- 
--- 
-2.36.1
-
+T24gVHVlLCAyMDIyLTExLTA4IGF0IDA3OjQ0ICswMDAwLCBDSyBIdSAo6IOh5L+K5YWJKSB3cm90
+ZToNCj4gSGksIFhpbmxlaToNCj4gDQo+IE9uIFdlZCwgMjAyMi0xMC0xMiBhdCAxNTo0OCArMDgw
+MCwgeGlubGVpLmxlZSB3cm90ZToNCj4gPiBPbiBNb24sIDIwMjItMDktMDUgYXQgMjE6NTMgKzA4
+MDAsIHhpbmxlaS5sZWVAbWVkaWF0ZWsuY29tIHdyb3RlOg0KPiA+ID4gRnJvbTogWGlubGVpIExl
+ZSA8eGlubGVpLmxlZUBtZWRpYXRlay5jb20+DQo+ID4gPiANCj4gPiA+IE1vZGlmeSBkcGkgcG93
+ZXIgb24vb2ZmIHNlcXVlbmNlIHNvIHRoYXQgdGhlIGZpcnN0IGdwaW8gb3BlcmF0aW9uDQo+ID4g
+PiB3aWxsIHRha2UgZWZmZWN0Lg0KPiA+ID4gDQo+ID4gPiBGaXhlczogNmJkNDc2M2ZkNTMyICgi
+ZHJtL21lZGlhdGVrOiBzZXQgZHBpIHBpbiBtb2RlIHRvIGdwaW8gbG93DQo+ID4gPiB0bw0KPiA+
+ID4gYXZvaWQgbGVha2FnZQ0KPiA+ID4gY3VycmVudCIpDQo+ID4gPiANCj4gPiA+IFNpZ25lZC1v
+ZmYtYnk6IFhpbmxlaSBMZWUgPHhpbmxlaS5sZWVAbWVkaWF0ZWsuY29tPg0KPiA+ID4gDQo+ID4g
+PiAtLS0NCj4gPiA+IEJhc2Ugb24gdGhlIGJyYW5jaCBvZiBMaW51eC1uZXh0L21hc3Rlci4NCj4g
+PiA+IEJlY2F1c2UgZHBpIHBvd2VyX29uL29mZiBpcyBwcm90ZWN0ZWQgYnkgZHBpLT5yZWZjb3Vu
+dCwgdGhlIGZpcnN0DQo+ID4gPiB0aW1lDQo+ID4gPiBpdCBjYW5ub3QgYmUgcG93ZXJlZCBvbiBh
+bmQgb2ZmIHN1Y2Nlc3NmdWxseSwgaXQgd2lsbCBjYXVzZQ0KPiA+ID4gbGVha2FnZS4NCj4gPiA+
+IC0tLQ0KPiA+ID4gLS0tDQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGku
+YyB8IDEyICsrKysrKy0tLS0tLQ0KPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMo
+KyksIDYgZGVsZXRpb25zKC0pDQo+ID4gPiANCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jDQo+ID4gPiBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHBpLmMNCj4gPiA+IGluZGV4IDYzMGE0ZTMwMWVmNi4uMmNlMWEzOWNlM2JmIDEwMDY0
+NA0KPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYw0KPiA+ID4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYw0KPiA+ID4gQEAgLTQ2Miw5
+ICs0NjIsNiBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX3Bvd2VyX29mZihzdHJ1Y3QgbXRrX2RwaQ0K
+PiA+ID4gKmRwaSkNCj4gPiA+ICAJaWYgKC0tZHBpLT5yZWZjb3VudCAhPSAwKQ0KPiA+ID4gIAkJ
+cmV0dXJuOw0KPiA+ID4gIA0KPiA+ID4gLQlpZiAoZHBpLT5waW5jdHJsICYmIGRwaS0+cGluc19n
+cGlvKQ0KPiA+ID4gLQkJcGluY3RybF9zZWxlY3Rfc3RhdGUoZHBpLT5waW5jdHJsLCBkcGktPnBp
+bnNfZ3Bpbyk7DQo+ID4gPiAtDQo+ID4gPiAgCW10a19kcGlfZGlzYWJsZShkcGkpOw0KPiA+ID4g
+IAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHBpLT5waXhlbF9jbGspOw0KPiA+ID4gIAljbGtfZGlz
+YWJsZV91bnByZXBhcmUoZHBpLT5lbmdpbmVfY2xrKTsNCj4gPiA+IEBAIC00ODksOSArNDg2LDYg
+QEAgc3RhdGljIGludCBtdGtfZHBpX3Bvd2VyX29uKHN0cnVjdCBtdGtfZHBpDQo+ID4gPiAqZHBp
+KQ0KPiA+ID4gIAkJZ290byBlcnJfcGl4ZWw7DQo+ID4gPiAgCX0NCj4gPiA+ICANCj4gPiA+IC0J
+aWYgKGRwaS0+cGluY3RybCAmJiBkcGktPnBpbnNfZHBpKQ0KPiA+ID4gLQkJcGluY3RybF9zZWxl
+Y3Rfc3RhdGUoZHBpLT5waW5jdHJsLCBkcGktPnBpbnNfZHBpKTsNCj4gPiA+IC0NCj4gPiA+ICAJ
+cmV0dXJuIDA7DQo+ID4gPiAgDQo+ID4gPiAgZXJyX3BpeGVsOg0KPiA+ID4gQEAgLTcyMSw2ICs3
+MTUsOSBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX2JyaWRnZV9kaXNhYmxlKHN0cnVjdA0KPiA+ID4g
+ZHJtX2JyaWRnZSAqYnJpZGdlKQ0KPiA+ID4gIHsNCj4gPiA+ICAJc3RydWN0IG10a19kcGkgKmRw
+aSA9IGJyaWRnZV90b19kcGkoYnJpZGdlKTsNCj4gPiA+ICANCj4gPiA+ICsJaWYgKGRwaS0+cGlu
+Y3RybCAmJiBkcGktPnBpbnNfZ3BpbykNCj4gPiA+ICsJCXBpbmN0cmxfc2VsZWN0X3N0YXRlKGRw
+aS0+cGluY3RybCwgZHBpLT5waW5zX2dwaW8pOw0KPiANCj4gSSB0aGluayB0aGlzIHNob3VsZCBi
+ZSBwbGFjZWQgYWZ0ZXIgbXRrX2RwaV9wb3dlcl9vZmYoKS4NCj4gDQo+ID4gPiArDQo+ID4gPiAg
+CW10a19kcGlfcG93ZXJfb2ZmKGRwaSk7DQo+ID4gPiAgfQ0KPiA+ID4gIA0KPiA+ID4gQEAgLTcy
+OCw2ICs3MjUsOSBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX2JyaWRnZV9lbmFibGUoc3RydWN0DQo+
+ID4gPiBkcm1fYnJpZGdlICpicmlkZ2UpDQo+ID4gPiAgew0KPiA+ID4gIAlzdHJ1Y3QgbXRrX2Rw
+aSAqZHBpID0gYnJpZGdlX3RvX2RwaShicmlkZ2UpOw0KPiA+ID4gIA0KPiA+ID4gKwlpZiAoZHBp
+LT5waW5jdHJsICYmIGRwaS0+cGluc19kcGkpDQo+ID4gPiArCQlwaW5jdHJsX3NlbGVjdF9zdGF0
+ZShkcGktPnBpbmN0cmwsIGRwaS0+cGluc19kcGkpOw0KPiA+ID4gKw0KPiA+ID4gIAltdGtfZHBp
+X3Bvd2VyX29uKGRwaSk7DQo+ID4gPiAgCW10a19kcGlfc2V0X2Rpc3BsYXlfbW9kZShkcGksICZk
+cGktPm1vZGUpOw0KPiA+ID4gIAltdGtfZHBpX2VuYWJsZShkcGkpOw0KPiA+IA0KPiA+IEhpIENL
+LA0KPiA+IA0KPiA+IEdlbnRsZSBwaW5nIGZvciB0aGlzIHBhdGNoLCBpZiB0aGVyZSBpcyBhbnl0
+aGluZyBJIG5lZWQgdG8gbW9kaWZ5LA0KPiA+IHBsZWFzZSBraW5kbHkgbGV0IG1lIGtub3cuDQo+
+ID4gDQo+ID4gQmVzdCBSZWdhcmRzIQ0KPiA+IHhpbmxlaQ0KPiA+IA0KDQpIaSBDSzoNCg0KWWVz
+LCB0aGlzIHBhY3RoIGlzIG1haW5seSB0byByZW1vdmUgdGhlIGNvbnRyb2wgb2YgdGhlIHBpbiBm
+cm9tIA0KZHBpX3Bvd2VyX29uL29mZiwgYmVjYXVzZSBkcGlfcG93ZXJfb24vb2ZmIGlzIHByb3Rl
+Y3RlZCBieSByZWZjb3VudC4NCg0KSSB3aWxsIG1vZGlmeSB0aGUgcG9zaXRpb24gb2YgdGhlIHB1
+bGwtZG93biBncGlvIGluIHRoZSBuZXh0IHZlcnNpb24uDQoNCkJlc3QgUmVnYXJkcyENCnhpbmxl
+aQ0K
 
