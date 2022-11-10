@@ -4,53 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23636C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 10:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF70C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 10:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L0Ez5CO8feEkornp6QsB0akR30tYyS30jCTuChE+g3k=; b=XIQlVQz2IDySCDEMblayHPXqTO
-	fdPbi0dx2xBs0vw09+F/niVCnClTVhrKSxqn5D1l8G7BTDQ0jECwyq4YWftZyOU0R14mPsuRbKyHx
-	dyDNalzoEdQBCVF4Zjw+If16m6Hn2mi/lLFGnhjCR55JnoAbLxTVR/wM4kH50iPFRsYrGjpW3FMdb
-	yC4GpAzmWknElrvlyYvJ4O0nShmANnD/Mc5jNQxUyCfxxoiQ/Qz1Df9fmn6Jqv8cWY8dBioXf4db9
-	zR6wrkCHL0djRGpIP7T8Or5lLdKKuBxaApirVxe7woj5jNRUXxg4AOb+kTN+eiLJDMH5O+hrfulqd
-	AWwWT2MQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9k9uk4PP+p/ezx83CEQ8H7xrIryZqMyMXaSUInDHGYI=; b=2huEqs4rq3i2ujL7eibI4pP5hW
+	RfR/VsFzHqayj6+isX4OELuC8VvTWZta0EDFTHaG/gat5K0YX9uCUkWywrRhLRGXPzRkR+cP+XMgk
+	B0QMVqIZmXHYq2FdzyQz47kkRHSEw1Mc5R8mPGRGtsL1MRBogBsobvgBAxWxOtPgcWk9z6e7LCG8Z
+	r06FxLUcwsPcNf3vzDTCRaiv9JRy/2Ke4qcXUxBD7jEoeKg3wnY/flHDjFau/YttrcgMsdXMLbD1n
+	WdJz0Z+/gsMXN6Gh3nZLNqY7RbL6iYpko4I0e2wHfCTZRWnIHtei2iHM64zH7nGBaqFqhGOkaM0sz
+	+DX800Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot4ny-0052he-Mx; Thu, 10 Nov 2022 10:29:06 +0000
+	id 1ot57h-0058IV-I6; Thu, 10 Nov 2022 10:49:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot4nw-0052cQ-5Z; Thu, 10 Nov 2022 10:29:06 +0000
-X-UUID: 3cb61353eff149459c1c354510308bb3-20221110
+	id 1ot57e-0058HI-Ah; Thu, 10 Nov 2022 10:49:28 +0000
+X-UUID: 333b845687d94b81976cc4600983edc8-20221110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=L0Ez5CO8feEkornp6QsB0akR30tYyS30jCTuChE+g3k=;
-	b=bFNGnxslF6N5+Ac9kn+KoR8ionot5zHy82/3vY9e00BuS1ORUi6OYzlbMJnzyxmzHNymtkxInFrM1USnKdoTSa/DbwwPU2OvSfbxhvO+f/w3XRLhFvqxQkc4UGviuOPPgw64Rp7LW+JnpVnApJ0kOqcKJfbc3CblparohhY85T0=;
-X-CID-UNFAMILIAR: 1
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9k9uk4PP+p/ezx83CEQ8H7xrIryZqMyMXaSUInDHGYI=;
+	b=dkrlsSzn0dYR4Sy5NY/+P8g6YTsQSXm9OLFHUV3vG7EhaW1e1/nL9Vyk3rQ/zixYGZ3+2at+9mEduT7jA4UeUHkZc49iyfoe+y4AAJo4ml0FlyEJgjL3uVi3B1pNFyn3EWOQq8k9U5XpvzNxds6d8f4aK43gAnXLspp9nTJ6988=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:48c768fe-7d4a-436f-ba04-07be9e4b18f8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.12,REQID:48c768fe-7d4a-436f-ba04-07be9e4b18f8,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:62cd327,CLOUDID:c3692e5d-100c-4555-952b-a62c895efded,B
-	ulkID:221110182854NKO7H6LP,BulkQuantity:0,Recheck:0,SF:38|28|16|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3cb61353eff149459c1c354510308bb3-20221110
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.12,REQID:974c427c-d6ba-44e5-b6a3-59cb87cbce70,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:62cd327,CLOUDID:37c1e685-088c-4756-8f76-577be701e693,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 333b845687d94b81976cc4600983edc8-20221110
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 811316512; Thu, 10 Nov 2022 03:28:52 -0700
+	with ESMTP id 2037679433; Thu, 10 Nov 2022 03:49:21 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 10 Nov 2022 18:28:49 +0800
+ 15.2.792.15; Thu, 10 Nov 2022 18:28:43 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 10 Nov 2022 18:28:43 +0800
+ Transport; Thu, 10 Nov 2022 18:28:41 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
 	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -64,19 +60,17 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,2/3] media: dt-bindings: media: mediatek: vcodec: Adding racing control register base
-Date: Thu, 10 Nov 2022 18:28:33 +0800
-Message-ID: <20221110102834.8946-2-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,1/3] media: dt-bindings: media: mediatek: vcodec: Fix clock num not correctly
+Date: Thu, 10 Nov 2022 18:28:32 +0800
+Message-ID: <20221110102834.8946-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221110102834.8946-1-yunfei.dong@mediatek.com>
-References: <20221110102834.8946-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_022904_240597_13B6BE6B 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20221110_024926_916923_AA5E3165 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,63 +85,232 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to add racing control register base in device node for mt8195 support
-inner racing mode. Removing 'maxItems' and adding 'minItems'.
+mt8195 and mt8192 have different clock numbers, can't write 'clocks' and
+'clock-names' with const value.
 
-Adding description for each reg.
+Move 'assigned-clocks' and 'assigned-clock-parents' to parent node.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
-compared with v1:
-- add description for 'VDEC_SYS'
-- add description for 'VDEC_RACING_CTRL'
-- add description for 'VDEC_MISC'
-- change maxItems -> minItems according to AngeloGioacchino's suggestion
-- Fix dt_binding_check fail
----
- .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 119 +++++++++++-------
+ 1 file changed, 72 insertions(+), 47 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index 794012853834..9af58db294d3 100644
+index c4f20acdc1f8..794012853834 100644
 --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
 +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -61,7 +61,10 @@ properties:
-       - mediatek,mt8195-vcodec-dec
+@@ -89,23 +89,33 @@ properties:
  
-   reg:
--    maxItems: 1
+   ranges: true
+ 
++  clocks:
 +    minItems: 1
-+    items:
-+      - description: VDEC_SYS register space
-+      - description: VDEC_RACING_CTRL register space
++    maxItems: 5
++
++  clock-names:
++    minItems: 1
++    maxItems: 5
++
++  assigned-clocks:
++    maxItems: 1
++
++  assigned-clock-parents:
++    maxItems: 1
++
+ # Required child node:
+ patternProperties:
+-  '^vcodec-lat@[0-9a-f]+$':
++  '^vcodec-lat-soc@[0-9a-f]+$':
+     type: object
  
-   iommus:
-     minItems: 1
-@@ -115,6 +118,7 @@ patternProperties:
+     properties:
+       compatible:
+         enum:
+-          - mediatek,mtk-vcodec-lat
+           - mediatek,mtk-vcodec-lat-soc
  
        reg:
          maxItems: 1
-+        description: VDEC_MISC register space
  
+-      interrupts:
+-        maxItems: 1
+-
        iommus:
          minItems: 1
-@@ -154,6 +158,7 @@ patternProperties:
+         maxItems: 32
+@@ -114,22 +124,55 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
  
-       reg:
-         maxItems: 1
-+        description: VDEC_MISC register space
+       clocks:
++        minItems: 1
+         maxItems: 5
  
-       interrupts:
-         maxItems: 1
-@@ -195,6 +200,7 @@ patternProperties:
+       clock-names:
+-        items:
+-          - const: sel
+-          - const: soc-vdec
+-          - const: soc-lat
+-          - const: vdec
+-          - const: top
++        minItems: 1
++        maxItems: 5
  
-       reg:
+-      assigned-clocks:
++      power-domains:
          maxItems: 1
-+        description: VDEC_MISC register space
  
-       interrupts:
+-      assigned-clock-parents:
++    required:
++      - compatible
++      - reg
++      - iommus
++      - clocks
++      - clock-names
++      - power-domains
++
++    additionalProperties: false
++
++  '^vcodec-lat@[0-9a-f]+$':
++    type: object
++
++    properties:
++      compatible:
++        enum:
++          - mediatek,mtk-vcodec-lat
++
++      reg:
++        maxItems: 1
++
++      interrupts:
          maxItems: 1
+ 
++      iommus:
++        minItems: 1
++        maxItems: 32
++        description: |
++          List of the hardware port in respective IOMMU block for current Socs.
++          Refer to bindings/iommu/mediatek,iommu.yaml.
++
++      clocks:
++        minItems: 1
++        maxItems: 5
++
++      clock-names:
++        minItems: 1
++        maxItems: 5
++
+       power-domains:
+         maxItems: 1
+ 
+@@ -139,8 +182,6 @@ patternProperties:
+       - iommus
+       - clocks
+       - clock-names
+-      - assigned-clocks
+-      - assigned-clock-parents
+       - power-domains
+ 
+     additionalProperties: false
+@@ -166,15 +207,12 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
+ 
+       clocks:
++        minItems: 1
+         maxItems: 5
+ 
+       clock-names:
+-        items:
+-          - const: sel
+-          - const: soc-vdec
+-          - const: soc-lat
+-          - const: vdec
+-          - const: top
++        minItems: 1
++        maxItems: 5
+ 
+       assigned-clocks:
+         maxItems: 1
+@@ -188,12 +226,9 @@ patternProperties:
+     required:
+       - compatible
+       - reg
+-      - interrupts
+       - iommus
+       - clocks
+       - clock-names
+-      - assigned-clocks
+-      - assigned-clock-parents
+       - power-domains
+ 
+     additionalProperties: false
+@@ -205,17 +240,10 @@ required:
+   - mediatek,scp
+   - dma-ranges
+   - ranges
+-
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - mediatek,mtk-vcodec-lat
+-
+-then:
+-  required:
+-    - interrupts
++  - clocks
++  - clock-names
++  - assigned-clocks
++  - assigned-clock-parents
+ 
+ additionalProperties: false
+ 
+@@ -241,6 +269,11 @@ examples:
+             #size-cells = <2>;
+             ranges = <0 0 0 0x16000000 0 0x40000>;
+             reg = <0 0x16000000 0 0x1000>;		/* VDEC_SYS */
++            clocks = <&topckgen CLK_TOP_VDEC_SEL>,
++                <&topckgen CLK_TOP_MAINPLL_D4>;
++            clock-names = "sel", "top";
++            assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
++            assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
+             vcodec-lat@10000 {
+                 compatible = "mediatek,mtk-vcodec-lat";
+                 reg = <0 0x10000 0 0x800>;
+@@ -253,14 +286,10 @@ examples:
+                     <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+                     <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+                     <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+-                clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+-                    <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++                clocks = <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
+                     <&vdecsys_soc CLK_VDEC_SOC_LAT>,
+-                    <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
+-                    <&topckgen CLK_TOP_MAINPLL_D4>;
++                    <&vdecsys_soc CLK_VDEC_SOC_LARB1>;
+                 clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
+-                assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+-                assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
+                 power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
+             };
+ 
+@@ -279,14 +308,10 @@ examples:
+                     <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
+                     <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+                     <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+-                clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+-                    <&vdecsys CLK_VDEC_VDEC>,
++                clocks = <&vdecsys CLK_VDEC_VDEC>,
+                     <&vdecsys CLK_VDEC_LAT>,
+-                    <&vdecsys CLK_VDEC_LARB1>,
+-                    <&topckgen CLK_TOP_MAINPLL_D4>;
++                    <&vdecsys CLK_VDEC_LARB1>;
+                 clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
+-                assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+-                assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
+                 power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
+             };
+         };
 -- 
 2.18.0
 
