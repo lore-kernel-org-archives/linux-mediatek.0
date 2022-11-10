@@ -4,85 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4507AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 14:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40062C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 15:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ey1AQpHQJmLwWlHR7WvCo+Mh7OBWJhTN7kBM9O932Lk=; b=0W3l+yF2pFXsx03tfm5NWF/9pr
-	66u6pwgJU1Jw4ln2KEQ9UIKl29hflnW45tsbc4Yh8igsI8X05n2GCPhjTWHJIWDVQm9KAOsVGxCQX
-	Lnkf3iO/mA9TuYUJUl5OkNu9zyAn+uDXEZYiPJPICU5XPPnnpP3lMg1DcYpy7H5eyH9fpYjfXl+zl
-	QlessE2MSs+YMUbRjUDwHBqggN0H84En8NFHXCqW27e3D44eaXXcvw76CYBc3IM21+OkvvPxzEKt7
-	mWSnuz9ijFYY+b9l5pMltTM7evcCoMnFQaWftPJA4a/jIGaSe5A+qBIi/ixHcHSCgvZMeWugDjLdO
-	YDvWtoSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6muYTmuW4fRLX681LzGmDQIgs514tFCN9mQYiCTTPsk=; b=K1ayKi//xJo0eBN8R2jz9neIjJ
+	PrmVhbtZ/qZROshgSZPRN4RCy4zGNl6s4pqE3s0bpSLhcRS+h8obZ4/AugPQQ7BZ4pevm/dVnCvCI
+	OjCBVXxF/qQuGiB7Rnfo1Hky3s5i9ztgd1jlTy3MX7KOwsEhXIJ5W+ijnVqFde5AYUsJBzKW1POVB
+	te2jjcc4iI+GgykKq8U6HPzOm0HoHtngPFPflUoK4KVGP4e+GnsAbgkLfExwDWBWmC7stloAnKGVO
+	UsMOYLQpZPUi20Xalhj2c9c81xXmqkdmtbbsCa4wyrSevlBk9TMTFzSO+6b7NCJwRV+gdxCEmOUdV
+	2frVLgqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot8aS-006Oc2-Tr; Thu, 10 Nov 2022 14:31:24 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1ot96B-006aP7-NY; Thu, 10 Nov 2022 15:04:11 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot8aH-006OXg-2S; Thu, 10 Nov 2022 14:31:14 +0000
-Received: by mail-wr1-x432.google.com with SMTP id o4so2519559wrq.6;
-        Thu, 10 Nov 2022 06:31:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ey1AQpHQJmLwWlHR7WvCo+Mh7OBWJhTN7kBM9O932Lk=;
-        b=lKVxtGAF6KgZ9znDKbiDgn+29vfeR/baAnBRLSwXGwS8lrJK5dFBom2qqIAcD4iZ07
-         4gWDWd/O2+CmLLlMR1NzXypB1WL7giM2k5jlsCTabTOmgSYtP8zxYBU0WXQ2K0/awMa9
-         iMW0blvOuwz1ugGR50/KPaMg4xpD+JWT7EMVpW5Vs/qQgtSfdxiWZwtgekjI2rFlSOBV
-         Yl6Emh7wKEaacMNqWVQ1CLAzHGwFoPh0euQzAO4EIM2AhyzpSIx4tSosmvFp6nMduRDm
-         oZR2+4KR3iRRhaMUDANYewdq2JZMXzAZ4XwAqBdCOV56Z53mJRdhICxK1HIuUHFXwtX4
-         87Qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ey1AQpHQJmLwWlHR7WvCo+Mh7OBWJhTN7kBM9O932Lk=;
-        b=UG1X0wIiy4Za6Ihqm2+DpqOd1oKhqWZpLdQhDHmhlLWf2qLtxY+oTH8suKmtud1pnx
-         nN1RGNO1xSGEEasYm2t0IhKbkNxyB4VvUCS0lrXrCtb8ZkDsbb0QmxRkZjtIpNBqsGZ4
-         F2YhH9WaAzop2j7ZxX0GDdGTnH8JRMaZOH4BrNRdY3qVsgwLdohYjK9sRvBBWgGThRvS
-         0+3S7imv/JU+9cjDrkmGoLgHTYmNJmkg7J4u7O/bxeggwkr7DJ5TQ4aXS9gUfCx0Nsk5
-         3OtrHEJjlhW7Cx17uZLgQgJFRoVvK5edOGVA+nRvOsQWKTEMT7NnfEJ6nr4PvGvX/f6T
-         cfmQ==
-X-Gm-Message-State: ACrzQf0kU4KtFMK7vdCLqrw/lJP7i5tjYkvoJoPU1YBwEGGjgL5szpNx
-	rWBQvVsPMBGXtNutavWLims=
-X-Google-Smtp-Source: AMsMyM7wiH890UFM7ywsgSihfawl87lkuRK49fnsLmY/LuBzeAlWQzUPXBhrbPCLkwy03Rd1GBfUwQ==
-X-Received: by 2002:a5d:5d87:0:b0:22a:bbc5:5afe with SMTP id ci7-20020a5d5d87000000b0022abbc55afemr41324229wrb.235.1668090669749;
-        Thu, 10 Nov 2022 06:31:09 -0800 (PST)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id h17-20020adff191000000b00236488f62d6sm15801731wro.79.2022.11.10.06.31.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Nov 2022 06:31:09 -0800 (PST)
-Date: Thu, 10 Nov 2022 16:31:07 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v2 01/12] net: ethernet: mtk_eth_soc: account
- for vlan in rx header length
-Message-ID: <20221110143107.335esdtwbfqy7ktu@skbuf>
-References: <20221109163426.76164-1-nbd@nbd.name>
- <20221109163426.76164-2-nbd@nbd.name>
+	id 1ot95w-006aGd-9S; Thu, 10 Nov 2022 15:03:58 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 55D486602959;
+	Thu, 10 Nov 2022 15:03:50 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1668092630;
+	bh=QFiZtqMZmaPw9ms++EaxKdyMdIsrAeckCDCQOTuJxik=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JlfT/GNYWdHxplSYyKFjYL6QN5tqEuJ+HWxKryM+tp4hJBGEFb6vKHZ/hBrhvtYS1
+	 9feWUusJC6z0W10zbkJyiSDmJ5LcBW4sxuYm/WAQN4C5VV7rKwdB3PO90HXiNmofh9
+	 1iOxbEoqcqxY3w5VdJXgjPdUCEvdg0lt3KrlazQxCgF+mFrEf5Z6ldVk7nkULWD8Gg
+	 yHyJTD2Q70uWMaWdL4mViQ/vfWB5Op0DW71uXrddE0qM70Y+SXk9vyGgh9Hp2nNAKQ
+	 H6qDzAxNMegbVET/sjEWEdia3/huvwixZ+logC7JpHP5BRYgdGMPtT9fI4q6NtGnXX
+	 n9XDWLIAC8+FA==
+Message-ID: <eae90e1e-408b-4f9a-9211-649da28b0358@collabora.com>
+Date: Thu, 10 Nov 2022 16:03:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221109163426.76164-2-nbd@nbd.name>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH] soc: mediatek: Add deprecated compatible to mmsys
+Content-Language: en-US
+To: matthias.bgg@kernel.org, matthias.bgg@gmail.com, nancy.lin@mediatek.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221110120222.32297-1-matthias.bgg@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221110120222.32297-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_063113_129511_D34FA9B9 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221110_070356_587932_AF385D98 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,12 +73,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 09, 2022 at 05:34:15PM +0100, Felix Fietkau wrote:
-> The network stack assumes that devices can handle an extra VLAN tag without
-> increasing the MTU
+Il 10/11/22 13:02, matthias.bgg@kernel.org ha scritto:
+> From: Matthias Brugger <matthias.bgg@gmail.com>
 > 
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> ---
+> For backward compatibility we add the deprecated compatible.
+> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Hello Matthias,
+
+You forgot to advertise that this commit depends on [1]... and I'm afraid
+that you have to push a v2 anyway, because...
+
+> ---
+>   drivers/soc/mediatek/mtk-mmsys.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index ba2e79b26993b..47106f557c574 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -303,6 +303,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+>   		.compatible = "mediatek,mt8192-mmsys",
+>   		.data = &mt8192_mmsys_driver_data,
+>   	},
+> +	{	/* deprecated compatible */
+> +		.compatible = "mediatek,mt8195-mmsys",
+> +		.data = &mt8195_mmsys_match_data,
+
+...mt8195_mmsys_match_data doesn't exist anymore after [1], so this should be
+
+		.data = &mt8195_vdosys0_driver_data,
+
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=681097
+
+Cheers,
+Angelo
+
 
