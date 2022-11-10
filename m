@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4D7CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 13:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09987C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 13:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3AuGOL+RtsyjgtlhQ1twOTD3QDsCayIE+ZhoLatVnh8=; b=pagPy/4UC9eOVc
-	jcX+kdZU+q/y+AXAC6M2hQKRuy7d++qebFNVbrbmJyThI1+LMmMdRzMsUxAK7VzWTGEgNZNZYhzoM
-	YtjWadadfxd8VQb1aNzIYMY0Y57AykLrt3Tf0McNb7eRNRv7kvB6+46JUg+1DZTvMnS9v3+guSK6Z
-	3cVOhImBeO1dovNcV0bRxqj+ypMQ2hBDqrl1Ev+S+d+Gyq03BgZRpsehg1qF2zJsXWhwKDvFtxUQX
-	KvSqukzBHgUU5WUoZEtA1BPnE0DCWeLZRWF3y5hUdIVuqu5NbmJwgy/elkn3S6QB+X6L7YpvMGwdC
-	zJgJqpnM2jqSh3cmlkCg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=S8W6/VsKY9UBnV+rl6xlAuNJ77NeZ4guQ3Yk9GbydsY=; b=FS0qhAzbrVxuSrJCbGDqDRG4vX
+	zLkk0dMbksNzEAd0L9bsiedLSbi7R/cL9VZNc6QL0bsY6oGWDO4zraX47L7Nrvw9VJFmWkhNgvr//
+	ghy+xYskRqae+ogLaUxQ0Z/jhV2NT0SMPG6//HMIoQNbOQG8FtuNKngam39mxEVqwpuWxF/08neQ3
+	LvFh2MUfMQM+DrF2Fxv8EjqO0lHXDeLxPgEEnY8ZcZBBkV+NmqPakqDA9g0euxRZhuL06H8MJyrHF
+	GCgbQgl9APg9MbBUIWTzTVCklvLxOtP9mgc17qcXAMbCEcIe3/NytlRUI7rTRNtVsj+xX3JMhq7kJ
+	zgWxDO2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot7Qz-005yGX-U1; Thu, 10 Nov 2022 13:17:33 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1ot7b8-00612g-AV; Thu, 10 Nov 2022 13:28:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot7Qx-005yEE-RB; Thu, 10 Nov 2022 13:17:33 +0000
-Received: by mail-wr1-x430.google.com with SMTP id z14so2204850wrn.7;
-        Thu, 10 Nov 2022 05:17:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3AuGOL+RtsyjgtlhQ1twOTD3QDsCayIE+ZhoLatVnh8=;
-        b=RV5fqXf/02xSU+of/wRNHSNDfokXIgvuEIDtcu2kKeQXudcWKZP7riIIAQARrusvVh
-         Lkq1O6makjoEtKWWLpH1hPAcpXDsKZB+UvgoZRacC+SDPk0Xil24mAG+ydEyT5jp6XUa
-         mhIR1h+1GF9Ms/9qw9vu/rgLJ7G6JVZxmyncSJUiUnKJ9+jNcscqpvoMhAhilt9hp6YQ
-         ED2C03XV/n45iW+2+TFaMrPtEpbW5pxd3OtVcrc5/4Q/SEEqJdpbI5IuMiHdv8ZuDOBG
-         HdM9FM9X0fkSZOdhZIEM8Vxx4dfH5iVq5dgJd4zL90MLpcDGOWmm55pqsy1VPIyUXZmV
-         Vnpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3AuGOL+RtsyjgtlhQ1twOTD3QDsCayIE+ZhoLatVnh8=;
-        b=GmNDGZOyZYRKH8K18iag6HoCHQ57ALFaFOnlSaoWDb8NiBOhhfOxyf+PBpIcXup8CA
-         hUY/HY8o+ZSuDD3eIJAzf3Xq+Nnpici0jmVQnDlWU6GzE60Fm2MbuDmRP9QtYO+b5UB/
-         +LntbPCw2JAZ89SiCum0PgYaypC8e2+PnBEy4zanlDY7R2XFgk4lyJgUPVinvVtq/8e1
-         ZSETJVjHX8Qrpd6H7bMW8fxtuydB991qrlUR+GUsYNqzbPitn0MdosPEDot58UASctxy
-         5PH7AwzNJyaUAEk+wJNw8I5Y1iani/qrKzfHsXx3XrklzH2T2UOUh9w5VHtM36o07fRi
-         QVlg==
-X-Gm-Message-State: ACrzQf3WsevA8ErQZZnNn+eH8wNTBSDQDYLNhBxO+NCbBYO0FWcIANLU
-	bE+O/3vrdMe0fjyFVmFxwRw=
-X-Google-Smtp-Source: AMsMyM5u8zbufjcwPB7JaqlJrtf4ezpLmiDlsEYr4/cyk2dW/70P5nxD22butpKFtIHBptJAMs4Xxw==
-X-Received: by 2002:a5d:4b11:0:b0:236:4e3c:7720 with SMTP id v17-20020a5d4b11000000b002364e3c7720mr1020738wrq.674.1668086248134;
-        Thu, 10 Nov 2022 05:17:28 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id z3-20020a05600c0a0300b003c83465ccbfsm5916631wmp.35.2022.11.10.05.17.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Nov 2022 05:17:26 -0800 (PST)
-Message-ID: <6def7161-d428-a822-59c4-d6012310379e@gmail.com>
-Date: Thu, 10 Nov 2022 14:17:26 +0100
+	id 1ot7b4-0060yE-TI; Thu, 10 Nov 2022 13:28:00 +0000
+X-UUID: 471cb8f788f543d9bb00372f99d74982-20221110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=S8W6/VsKY9UBnV+rl6xlAuNJ77NeZ4guQ3Yk9GbydsY=;
+	b=rgnvi34RUZgE7I1TKuea+OOjW01mxCfJArfXiccXJFrtnCcQoDcpFzeMrPjo/2uUDYfTqJ8dYLnS9fbT5KCF5J0e75m/2G7y944/SlNQYk2PT8ID7wV/Xs6/cZWSPrQfdSd+55WPcsTKE45mksLQQxRhFKcfTaToxjDhz0UhG4M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:e280bbfe-5f23-4300-85e6-4e1491a72daf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.12,REQID:e280bbfe-5f23-4300-85e6-4e1491a72daf,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:62cd327,CLOUDID:54dded50-b7af-492d-8b40-b1032f90ce11,B
+	ulkID:2211102127412RLBA9Q2,BulkQuantity:1,Recheck:0,SF:28|17|19|48,TC:nil,
+	Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 471cb8f788f543d9bb00372f99d74982-20221110
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 409421687; Thu, 10 Nov 2022 06:27:51 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 10 Nov 2022 21:27:18 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 10 Nov 2022 21:27:17 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nathan Chancellor
+	<nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, Tom Rix
+	<trix@redhat.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<llvm@lists.linux.dev>, Eddie Hung <eddie.hung@mediatek.com>, Tianping Fang
+	<tianping.fang@mediatek.com>, kernel test robot <lkp@intel.com>
+Subject: [PATCH v4 1/3] phy: mediatek: fix build warning caused by clang for powerpc
+Date: Thu, 10 Nov 2022 21:27:14 +0800
+Message-ID: <20221110132716.12294-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH v2] arm64: dts: mt7986: fix trng node name
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221027151022.5541-1-linux@fw-web.de>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221027151022.5541-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_051731_911229_C500A30E 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20221110_052759_006319_4D045BA5 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +83,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Remove the temporary @mask_, this may cause build warning when use clang
+compiler for powerpc, but can't reproduce it when compile for arm64.
+the build warning is -Wtautological-constant-out-of-range-compare, and
+caused by
+"BUILD_BUG_ON_MSG(__bf_cast_unsigned(_mask, _mask)"
 
+After removing @mask_, there is a "CHECK:MACRO_ARG_REUSE" when run
+checkpatch.pl, due to @mask is constant, no reuse problem will happen.
 
-On 27/10/2022 17:10, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Binding requires node name to be rng not trng:
-> 
-> trng@1020f000: $nodename:0: 'trng@1020f000' does not match '^rng@[0-9a-f]+$'
-> 
-> Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: 84513eccd678 ("phy: mediatek: fix build warning of FIELD_PREP()")
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v4 new patch, I'm not sure it can fix build warning, due to I don't cross compile
+    it for powerpc using clang in office.
+---
+ drivers/phy/mediatek/phy-mtk-io.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Applied, thanks
+diff --git a/drivers/phy/mediatek/phy-mtk-io.h b/drivers/phy/mediatek/phy-mtk-io.h
+index d20ad5e5be81..58f06db822cb 100644
+--- a/drivers/phy/mediatek/phy-mtk-io.h
++++ b/drivers/phy/mediatek/phy-mtk-io.h
+@@ -39,8 +39,8 @@ static inline void mtk_phy_update_bits(void __iomem *reg, u32 mask, u32 val)
+ /* field @mask shall be constant and continuous */
+ #define mtk_phy_update_field(reg, mask, val) \
+ ({ \
+-	typeof(mask) mask_ = (mask);	\
+-	mtk_phy_update_bits(reg, mask_, FIELD_PREP(mask_, val)); \
++	BUILD_BUG_ON_MSG(!__builtin_constant_p(mask), "mask is not constant"); \
++	mtk_phy_update_bits(reg, mask, FIELD_PREP(mask, val)); \
+ })
+ 
+ #endif
+-- 
+2.18.0
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index 72e0d9722e07..226648f48df2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -168,7 +168,7 @@ sgmiisys1: syscon@10070000 {
->   			#clock-cells = <1>;
->   		};
->   
-> -		trng: trng@1020f000 {
-> +		trng: rng@1020f000 {
->   			compatible = "mediatek,mt7986-rng",
->   				     "mediatek,mt7623-rng";
->   			reg = <0 0x1020f000 0 0x100>;
 
