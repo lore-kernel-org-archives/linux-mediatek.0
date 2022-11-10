@@ -4,95 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85492C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Nov 2022 23:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA17C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 01:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OFt2iInFdLzf7GfwKHdD3j+aUdF9jsCsydxz9v2UQ1A=; b=d6e5pRhag22PZVAfTPmHTX7fQE
-	iEMdArjRUHCbTLKkcNfi0SG/o+SC2YiJdFV/gHlQ0P0N+y59aWBrYjrLy+iA7KOg5iX0FshtcvwEj
-	XFwMRkZ7sjZngHKOYIUMMzV1ikTuJYCST0BP/dLP0SoI3HqqGSMwO8rkuBeHGTNGheMQAgDHv7N6T
-	oBOi3X9S5Zz5BkpKHwE6CnuCmsXh2usV9wXdRYXbp/R0il4O+qiF+S5mYh4LixXRX3ri7th7E3uND
-	BUkUuGkBHcsuDwRErPmoJzE25XhqKVITQ7blJbPwxA1rzTUMnEKqsgHCaLXsM3SuD1F3hV9e0Cwuh
-	vPbKu2gg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t/3cMdplP6bvfk49doZdF/4hC0mH6rLs2Pb0c5MFHbc=; b=IsFjMUgvR7OvsjTY18dqvyhHpo
+	x2nQv1Xv5HJEWwjXfgNPZm1oHPXpt4jBk3Fp3YJO2ZpxPnhDLmN0i35CiexVQgrfchAafCZxsbJQK
+	A0+kDfGqerZln/3HdmOPnSS5rOeTpsB2amZlqyimGEkBGA7RW6lDHdsmMlTO5GQjDStA06gD8Amng
+	WXFApP1TBMb5YQKVCmrx+ZATmV7uTa7mmU8UdY+ymcsSJC6p1RBXpAlZsEVp+aDxA1orxhLfErZC3
+	7I+k2O33EGMazDtogiUKWrSARjbeVBUr0JlsEQGQgW2UEmC6z+YdhXbU/920dIuryTOfJ4oplY4tI
+	mSou0W8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osujQ-000qxT-0m; Wed, 09 Nov 2022 23:43:44 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1oswpR-001knE-IH; Thu, 10 Nov 2022 01:58:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1osujN-000quQ-EI; Wed, 09 Nov 2022 23:43:42 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id r203-20020a1c44d4000000b003cfa97c05cdso571616wma.4;
-        Wed, 09 Nov 2022 15:43:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OFt2iInFdLzf7GfwKHdD3j+aUdF9jsCsydxz9v2UQ1A=;
-        b=kYEiR5/XOnWEJcuYQMT/lDt/q8F2QByKoxnBIy8kZjgohSvQyo0mUtanQgf3+szIvN
-         MSOVRCegCpQf51QSynEnBwEnWtNVgeWke+9m74gQDRNLOwx8GSh9kF2VvTh07UtAyeb+
-         tHytmoLhDRJpJzaYFDE72YRZKtE9IdNDwOlN6rG6bu0dkd9DBpkTm2vFQVWZDZrPxtDH
-         tGyyJeySMdSgqKFslJQXsRmVIbR26tBqoBEdsYUEsjx+vwoa6R2jLXMWXhSREnez3NmD
-         GPxrfdpRIgqKjbZ98FAYSpXRJcPhzA2UBZWktFLXLHj8Va++t3WQwNv6SbFdTK1Ms7J4
-         9Ssg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OFt2iInFdLzf7GfwKHdD3j+aUdF9jsCsydxz9v2UQ1A=;
-        b=ZK/dDUqsaS6oWnL+pTMhZYpSr540bUz/CL6c+ByT7SnnHxyOix6tkSJdfoSopK+zaP
-         MNS71Pm5929QdrnYDm3qcQS6/T0JX6Sypa5qhrhzkarcs1eG3Aw+qQNFc4SlYbXUUJDc
-         OPabwKLJosamFjbw734wwEZ5gGaC3UgDLh0NEzMqt6ihNRGrVOATqs0NohQvBSU6HGd/
-         rs0pPpw7Te/3BYkYrHFKXDNHBXtQF3Yr0O92wYme8bNb0G6kKCXp03K/oKjwZZxlz3O3
-         WACSdc1PtYfriSHAYgmScWUfAw1f5uJtWhVT6uO8e/kDFn1U4aUyvGH1vfGYcyes4w6E
-         3Img==
-X-Gm-Message-State: ACrzQf3uyp4/9eT8FOzhS1jyWQ18YD1t+mNV4Pol5A5S+0y8tih1y7VM
-	bKROU5Y26y4Ak852tMpC/dA=
-X-Google-Smtp-Source: AMsMyM5mQGFSLzsRyD3kfuv9grfSRmnWBY0njMWzcYer+2VdrbkUGshrhvuuBCy7VXGZRtVzf0QNAA==
-X-Received: by 2002:a7b:c3c4:0:b0:3c4:785a:36d7 with SMTP id t4-20020a7bc3c4000000b003c4785a36d7mr52661181wmj.138.1668037419391;
-        Wed, 09 Nov 2022 15:43:39 -0800 (PST)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id b9-20020a05600003c900b0022e6178bd84sm14494051wrg.8.2022.11.09.15.43.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Nov 2022 15:43:39 -0800 (PST)
-Date: Thu, 10 Nov 2022 01:43:36 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Colin Foster <colin.foster@in-advantage.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH v2 net-next 5/6] dt-bindings: net: add generic
- ethernet-switch-port binding
-Message-ID: <20221109234336.s4womtunv3i62agk@skbuf>
-References: <20221104045204.746124-1-colin.foster@in-advantage.com>
- <20221104045204.746124-6-colin.foster@in-advantage.com>
- <20221104185028.GB2133300-robh@kernel.org>
+	id 1oswpO-001km3-Eo
+	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 01:58:03 +0000
+X-UUID: 378bde726ec54955afaa7e119086e51b-20221109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=t/3cMdplP6bvfk49doZdF/4hC0mH6rLs2Pb0c5MFHbc=;
+	b=KdYJbhI/zKdVnDf7M5MufOE5fZmVgkME6R77/qIGGKR+n1mV5Ys3zKoOc11U32m7Pp8mk1ndFiGBBHwLdeJBaxBLehjSY9vPWj9fUIk8yb/kG3iUdGmgiyS5vaqmAe/c3Ekwel8G0aAVijP5vT62NwDa08GUEyEsYhK5jOZEUos=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:f0ac956a-d76f-43ee-9dac-dcc8aa0a77ad,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:4eeb1d5d-100c-4555-952b-a62c895efded,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 378bde726ec54955afaa7e119086e51b-20221109
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1607981468; Wed, 09 Nov 2022 18:57:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 10 Nov 2022 09:37:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 10 Nov 2022 09:37:12 +0800
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: fix incorrect tx path number configuration
+Date: Thu, 10 Nov 2022 09:37:01 +0800
+Message-ID: <20221110013701.14790-1-howard-yh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221104185028.GB2133300-robh@kernel.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_154341_518369_B4E9FF06 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221109_175802_521168_BEA27967 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,10 +78,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 04, 2022 at 01:50:28PM -0500, Rob Herring wrote:
-> Or we can just allow anything from ethernet-controller.yaml and drop 
-> this list.
+For a variant of mt7916, it supports up to 3 tx/rx paths but only 2
+spatial streams. This implies that it has one more path to support
+beamform. The correct tx/rx path number shall be configured to make sure
+beamform works properly.
 
-Sounds fine to me. Makes ethernet-switch-port just an ethernet-controller
-where "reg" has a particular meaning (port number). Which is basically true.
+Fixes: 66065073177b ("wifi: mt76: mt7915: deal with special variant of mt7916")
+Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  | 16 ++++++++--------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 6de49b93387e..0ebaed174d5d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -953,7 +953,7 @@ mt7915_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+ 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+ 	int max_nss = hweight8(hw->wiphy->available_antennas_tx);
+-	bool ext_phy = phy != &dev->phy;
++	u8 chainshift = dev->chainshift;
+ 
+ 	if (!tx_ant || tx_ant != rx_ant || ffs(tx_ant) > max_nss)
+ 		return -EINVAL;
+@@ -963,10 +963,10 @@ mt7915_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+ 	phy->mt76->antenna_mask = tx_ant;
+ 
+ 	/* handle a variant of mt7916 which has 3T3R but nss2 on 5 GHz band */
+-	if (is_mt7916(&dev->mt76) && ext_phy && hweight8(tx_ant) == max_nss)
+-		phy->mt76->chainmask = dev->chainmask >> dev->chainshift;
++	if (is_mt7916(&dev->mt76) && phy->band_idx && hweight8(tx_ant) == max_nss)
++		phy->mt76->chainmask = (dev->chainmask >> chainshift) << chainshift;
+ 	else
+-		phy->mt76->chainmask = tx_ant << (dev->chainshift * ext_phy);
++		phy->mt76->chainmask = tx_ant << (chainshift * phy->band_idx);
+ 
+ 	mt76_set_stream_caps(phy->mt76, true);
+ 	mt7915_set_stream_vht_txbf_caps(phy);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 65ae959859e7..790d690fabc3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2632,8 +2632,8 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ 		u8 control_ch;
+ 		u8 center_ch;
+ 		u8 bw;
+-		u8 tx_streams_num;
+-		u8 rx_streams;	/* mask or num */
++		u8 tx_path_num;
++		u8 rx_path;	/* mask or num */
+ 		u8 switch_reason;
+ 		u8 band_idx;
+ 		u8 center_ch2;	/* for 80+80 only */
+@@ -2649,8 +2649,8 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ 		.control_ch = chandef->chan->hw_value,
+ 		.center_ch = ieee80211_frequency_to_channel(freq1),
+ 		.bw = mt76_connac_chan_bw(chandef),
+-		.tx_streams_num = hweight8(phy->mt76->antenna_mask),
+-		.rx_streams = phy->mt76->antenna_mask,
++		.tx_path_num = hweight16(phy->mt76->chainmask),
++		.rx_path = phy->mt76->chainmask >> (dev->chainshift * phy->band_idx),
+ 		.band_idx = phy->band_idx,
+ 		.channel_band = ch_band[chandef->chan->band],
+ 	};
+@@ -2658,13 +2658,13 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ #ifdef CONFIG_NL80211_TESTMODE
+ 	if (phy->mt76->test.tx_antenna_mask &&
+ 	    mt76_testmode_enabled(phy->mt76)) {
+-		req.tx_streams_num = fls(phy->mt76->test.tx_antenna_mask);
+-		req.rx_streams = phy->mt76->test.tx_antenna_mask;
++		req.tx_path_num = fls(phy->mt76->test.tx_antenna_mask);
++		req.rx_path = phy->mt76->test.tx_antenna_mask;
+ 	}
+ #endif
+ 
+ 	if (mt76_connac_spe_idx(phy->mt76->antenna_mask))
+-		req.tx_streams_num = fls(phy->mt76->antenna_mask);
++		req.tx_path_num = fls(phy->mt76->antenna_mask);
+ 
+ 	if (cmd == MCU_EXT_CMD(SET_RX_PATH) ||
+ 	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
+@@ -2678,7 +2678,7 @@ int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd)
+ 		req.switch_reason = CH_SWITCH_NORMAL;
+ 
+ 	if (cmd == MCU_EXT_CMD(CHANNEL_SWITCH))
+-		req.rx_streams = hweight8(req.rx_streams);
++		req.rx_path = hweight8(req.rx_path);
+ 
+ 	if (chandef->width == NL80211_CHAN_WIDTH_80P80) {
+ 		int freq2 = chandef->center_freq2;
+-- 
+2.18.0
+
 
