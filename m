@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C0CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 14:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D16C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 14:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ISjS9vItpte95t/ScfBBhnWRioYpdTc4gkkpbIxsuts=; b=vKCwd+orYfu7OMJAL57Bi+PgTB
-	BgnTbkUlLOWQPdPu6npPvbVQKNS7HZzUuPJi4nX/B7ryXisI+thfQcCgBjNQZvarINys1UhpeigY8
-	MX+6fYFNMgz1dK84A6jmh+nc29c7Nlu7OW2Ih4IauQyMC6nzX9UYUMAAdXSIdCFDuR8UMp+linDvv
-	iQdaDRw7toHsnBrzfu8q1XqJnT6KA55vz4i4TxkOd4RxA5Of0IAX3mspiOZ0HRwjUqvO9BRDZHbFi
-	2bUYK9Mqk/E5ktkMVmqz8K9xhtv4xtWt1VvKY2BoEIuRBeZF1Wxl5CDMy1G9B78h/KDDAKJVX7TgK
-	IQqolwhA==;
+	bh=OuqFxBaxjmGS8vHZWox+dggoZc9OmvY8M2AfXlJU0R8=; b=bEU+yPnfXMKWLLqttd3UyKmV8j
+	v7Q3QSiSGBwG2pLuC+0Y8V/RFZ5GTlB+PY51Ax7Si1QKON56oLpmo1ELqQFcXIrRGomCLt+no8jF/
+	iBhh4qbkFe/4ivHFulXSJKXq9GIYD6ll2yCCSsF7KzDeaLx0myCzWcTqp664W4zPVBHQUqOerT+fo
+	CB+g8LtxkZOmc4gA1rj+pKaPUN01m0RnzaR/5WQ48cBCtzRl19Q3WOKKWpESXmEPa1syJbtNybFfV
+	J19UPnFbbonejmUS7GDJkzGyqL6ccg7XdV6UrpK0QgkOVOJEu8uRgueBhiyyybZMq0TAeJNxBC2j1
+	E8ioIisg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot8Wh-006N62-Dq; Thu, 10 Nov 2022 14:27:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ot8Xi-006NUZ-09; Thu, 10 Nov 2022 14:28:34 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot8We-006N4L-9b; Thu, 10 Nov 2022 14:27:29 +0000
-X-UUID: 8e770078c638461b9729e9e261478131-20221110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ISjS9vItpte95t/ScfBBhnWRioYpdTc4gkkpbIxsuts=;
-	b=Td92RnqcYXUGSYJ8yLrZhJoFfgYHczI+hY0t+MsNgWA5S3S9Cdx4Cj2WwkQtv0onZoUP1P3Sr6qUacxhe+4i0gylsPL4VDSJDEed65eWw4xOZIbpO4Kg1o+05H4cfpGLX+adQFZn8Mjd0P8YnygLGeHQ3vv1NSfBIg67pxhUqck=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:7cd18089-9d04-4d57-a8d3-ce20d618ff8a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:2956325d-100c-4555-952b-a62c895efded,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 8e770078c638461b9729e9e261478131-20221110
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 870708813; Thu, 10 Nov 2022 07:27:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 10 Nov 2022 21:27:19 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 10 Nov 2022 21:27:18 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nathan Chancellor
-	<nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, Tom Rix
-	<trix@redhat.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<llvm@lists.linux.dev>, Eddie Hung <eddie.hung@mediatek.com>, Tianping Fang
-	<tianping.fang@mediatek.com>
-Subject: [PATCH v4 2/3] phy: core: add debugfs root
-Date: Thu, 10 Nov 2022 21:27:15 +0800
-Message-ID: <20221110132716.12294-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221110132716.12294-1-chunfeng.yun@mediatek.com>
-References: <20221110132716.12294-1-chunfeng.yun@mediatek.com>
+	id 1ot8XV-006NP9-Ha; Thu, 10 Nov 2022 14:28:22 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5so1252970wmo.1;
+        Thu, 10 Nov 2022 06:28:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=OuqFxBaxjmGS8vHZWox+dggoZc9OmvY8M2AfXlJU0R8=;
+        b=ajB4H0a6WchJa0TPWnDA1l/S+VvoZ3Aignfw6CB9Khx3EoOmQz44WmdZiFDiyT8HPr
+         vhS2DnKWKgwBwtJFo+8YpY3GPf0zMSsP77e24ilWvDsNMLljfY2XdzU+r3YwiUdUhvwo
+         3p3tiRt9l4IGufdRwdmUXmnIhO819CXw3f4UOaO27j65iaa9fA+/kjALT6qJXTJBQxg3
+         BRpjuadfyxlv2JM124CSdCzNfP/y+tO83csk4O8EjXIZtxz8p0AQ5SijYXhMqZu5NLqS
+         x00/KKWiZ2u5livNVfGkCJUKZFkWtHwe9519WNHg9b58Au8LsukUQ8WYj0qyhEzVD6pT
+         fLPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OuqFxBaxjmGS8vHZWox+dggoZc9OmvY8M2AfXlJU0R8=;
+        b=Yi5EP0QPGIPBPSRWBgljBB3mfh6vPPuvm8JBFzuE/nNhoFalRoxfQ6fdbZkNbNzryR
+         45eRykoRHVhhYjmGBBis8uqHSTrTjKjLCkuGyMoDmxrevRQ7T9sRWyqecGchlCUwJ7q+
+         Q82Vul5SzgPU1L9B8azFG00R6ZmYwL7agcPO7LjYoWKLHvfXZFUnpSDQ0v76PJU9UQd9
+         P0dcVmCiZfFiPaUJv86V43PbtZ9IlRNv8AAaGT2xlgRfiLVgcGiJ4Qm7tGQjqNCrbjo6
+         9kpMpFvluD5P9q3v1UNthmWfIpebBP7JbxkRtDbH+B4OZJLlzfpyf+77SFSM2TbAKyOu
+         SjRw==
+X-Gm-Message-State: ACrzQf2eejOaZ9ThoOj77/XAqH7EUb4G4CZ4RL7hCtfeOuhWJjIEVfXV
+	WwRG+UF3Nin/Ti2j5UyWuzk=
+X-Google-Smtp-Source: AMsMyM7TvV/ACzOcKSosDbshDfkaAHOF9iaM7AWChs0Ym7t4LKZ1i41uQlxxpykDs92oIW1yI12Jkg==
+X-Received: by 2002:a05:600c:1994:b0:3cf:7c1e:8227 with SMTP id t20-20020a05600c199400b003cf7c1e8227mr33822528wmq.103.1668090498922;
+        Thu, 10 Nov 2022 06:28:18 -0800 (PST)
+Received: from skbuf ([188.27.184.197])
+        by smtp.gmail.com with ESMTPSA id m12-20020a5d6a0c000000b00238df11940fsm16202285wru.16.2022.11.10.06.28.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Nov 2022 06:28:18 -0800 (PST)
+Date: Thu, 10 Nov 2022 16:28:16 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2 00/12] Multiqueue + DSA untag support + fixes
+ for mtk_eth_soc
+Message-ID: <20221110142816.nzy4sb27km7xpctd@skbuf>
+References: <20221109163426.76164-1-nbd@nbd.name>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221109163426.76164-1-nbd@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_062728_367587_C89F0FF6 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20221110_062821_623162_079FAF23 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +89,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a debugfs root for phy class, then phy drivers can add debugfs files
-under this folder.
+On Wed, Nov 09, 2022 at 05:34:14PM +0100, Felix Fietkau wrote:
+> This series contains multiple improvements for mtk_eth_soc:
+> 
+> On devices with QDMA (MT7621 and newer), multiqueue support is implemented
+> by using the SoC's traffic shaper function, which sits on the DMA engine.
+> The driver exposes traffic shaper queues as network stack queues and configures
+> them to the link speed limit. This fixes an issue where traffic to slower ports
+> would drown out traffic to faster ports. It also fixes packet drops and jitter
+> when running hardware offloaded traffic alongside traffic from the CPU.
+> 
+> On MT7622, the DSA tag for MT753x switches can be untagged by the DMA engine,
+> which removes the need for header mangling in the DSA tag driver.
+> 
+> This is implemented by letting DSA skip the tag receive function, if the port
+> is passed via metadata dst type METADATA_HW_PORT_MUX
+> 
+> Also part of this series are a number of fixes to TSO/SG support
+> 
+> Changes in v2:
+> - drop the use of skb vlan tags to pass the port information to the tag driver,
+>   use metadata_dst instead
+> - fix a small issue in enabling untag
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2~v4: no changes
----
- drivers/phy/phy-core.c  | 6 ++++++
- include/linux/phy/phy.h | 2 ++
- 2 files changed, 8 insertions(+)
+Please split the work and let's concentrate on one thing at a time
+without extra noise, for example DSA RX tag processing offload first,
+since that needs the most attention.
 
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index d93ddf1262c5..2f9f69190519 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -11,6 +11,7 @@
- #include <linux/export.h>
- #include <linux/module.h>
- #include <linux/err.h>
-+#include <linux/debugfs.h>
- #include <linux/device.h>
- #include <linux/slab.h>
- #include <linux/of.h>
-@@ -1204,6 +1205,9 @@ void devm_of_phy_provider_unregister(struct device *dev,
- }
- EXPORT_SYMBOL_GPL(devm_of_phy_provider_unregister);
- 
-+struct dentry *phy_debug_root;
-+EXPORT_SYMBOL_GPL(phy_debug_root);
-+
- /**
-  * phy_release() - release the phy
-  * @dev: the dev member within phy
-@@ -1233,6 +1237,8 @@ static int __init phy_core_init(void)
- 
- 	phy_class->dev_release = phy_release;
- 
-+	phy_debug_root = debugfs_create_dir("phy", NULL);
-+
- 	return 0;
- }
- device_initcall(phy_core_init);
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index b1413757fcc3..c398749d49b9 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -205,6 +205,8 @@ struct phy_lookup {
- #define devm_of_phy_provider_register_full(dev, children, xlate) \
- 	__devm_of_phy_provider_register(dev, children, THIS_MODULE, xlate)
- 
-+extern struct dentry *phy_debug_root;
-+
- static inline void phy_set_drvdata(struct phy *phy, void *data)
- {
- 	dev_set_drvdata(&phy->dev, data);
--- 
-2.18.0
-
+Also please use ./scripts/get_maintainer.pl when sending patches ;)
 
