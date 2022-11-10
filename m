@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27263C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 21:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22936C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 21:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CtmGvO+Y27LomRwiSBbwQG3+4u8RGeKxNxvjoDf6oK0=; b=q6h28nsRobrxjRsBIBhjXJVUDk
-	xWuC3nfoDbyxGLjS7QrtKLiZLSJCPV9ZKI9iY0HBRXQEgO0wwseAeTMxhchl5eXSBxhICR++KByxH
-	ODZtfd5Z28fW/vzGo8uvsy3U7SZWOnTnT6obJnZAlQRelVJCos9cWk05oLh3feR1e4J/wtehxO7xz
-	bgBjMRI4rh1j2RcNbVMcVIoJMVrQG9DasLgyNgGHBEBT5bDCoVM3Ew/JZbZ805Nh/H0qal3o4u0Qt
-	bQ67+wglI1bKXe3FZp0405r1DEioqqOZ/uGUelChWfI5X8nwEYRyw+md8cRXBADeQNQs5HEQoojTR
-	B9+QlAiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=63Z+xk8BmPcO1jTwGwmNyOpt9akHnNa2h1PwHeZ/hWU=; b=nLcJl4hJxdrae9IKvY3DqeCkSD
+	W4qxHt1E/E72vJTnrcSr0K7nIFzyeCnDMddpLuKiesYc6PxP4CeRxTm6eACuDh4HkP1AEHmYBeama
+	dQHr+ayrtW+C8r/m0AVbPQSiweVgDUQMzjo9T2KUqiAa2Eom9gm8l/GCxF2kLld3lyzQn78FokUaX
+	Pwry7duQ4W6x2Aeqfcr+lNdT6JvH0h+eAvApRyySTUyl76QqjKjAZghZbpxeiOKptEcFMPAw01ds+
+	WKPDvz0K2whKzqqJyyFacIddNOHi2CDOWnbXCCOxIJeCa4+DATzHikJfBZGYuesVokYLEINrkvREQ
+	Xjpa4QVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otF0m-00ARhh-85; Thu, 10 Nov 2022 21:23:00 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1otF1t-00ASTS-KL; Thu, 10 Nov 2022 21:24:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otF0I-00ARVa-MA; Thu, 10 Nov 2022 21:22:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=CtmGvO+Y27LomRwiSBbwQG3+4u8RGeKxNxvjoDf6oK0=; b=qR6c6Ftx4P7oFmkPrhdd+peSoP
-	BxtW50Whwo8o809uTCr9IIfuR9gXdcXwuFV1Ss47zVkVXdFuJCpCcEe0i9rxQZJkOJVNPTfeWnNA0
-	3ouYXYqmJe6cexCLB0AHJvd8gAGCZoNk65YQstBtkrfnUVQoJyxqaoBzaO8/BO3gBDj4=;
-Received: from p200300daa72ee10c199752172ce6dd7a.dip0.t-ipconnect.de ([2003:da:a72e:e10c:1997:5217:2ce6:dd7a] helo=Maecks.lan)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1otF05-0011Om-UX; Thu, 10 Nov 2022 22:22:18 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Russell King <linux@armlinux.org.uk>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v3 4/4] net: ethernet: mtk_eth_soc: enable hardware DSA untagging
-Date: Thu, 10 Nov 2022 22:22:11 +0100
-Message-Id: <20221110212212.96825-5-nbd@nbd.name>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221110212212.96825-1-nbd@nbd.name>
-References: <20221110212212.96825-1-nbd@nbd.name>
+	id 1otF1p-00ASRI-Tr
+	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 21:24:07 +0000
+X-UUID: b99399af713b4536b456794d7a6892d4-20221110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=63Z+xk8BmPcO1jTwGwmNyOpt9akHnNa2h1PwHeZ/hWU=;
+	b=RcH0INZpWQGMQkfvtEMaOSHT9sifQ61d3IRTMWvSMvGh67CmrXoopiw9eOib083O+BLZda7gCSouRauUGYr8WEncxOMF6Kw1GzfTC+eIpr1HwWPQaZA80icR4Jt4ZOL2UEu5h7gZ82+fWbA02U4PeVZ0412mXtHJCz/yDMFSSY4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:d8fbd9cd-42e7-4aeb-b3a0-536da09b633c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:1527ef85-088c-4756-8f76-577be701e693,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b99399af713b4536b456794d7a6892d4-20221110
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 295706277; Thu, 10 Nov 2022 14:23:59 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 11 Nov 2022 05:23:56 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 11 Nov 2022 05:23:56 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 1/7] wifi: mt76: connac: add mt76_connac_mcu_uni_set_chctx
+Date: Fri, 11 Nov 2022 05:23:43 +0800
+Message-ID: <a6a20f55b9f7d8b2a89c9c8ac69003440d400f0c.1668068326.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <cover.1668068326.git.objelf@gmail.com>
+References: <cover.1668068326.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_132230_757516_FD667D6C 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20221110_132405_997996_811C7FA0 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,163 +86,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- pass the tag to DSA via metadata dst
-- disabled on 7986 for now, since it's not working yet
-- disabled if a MAC is enabled that does not use DSA
+From: Sean Wang <sean.wang@mediatek.com>
 
-This improves performance by bypassing the DSA tag driver and avoiding extra
-skb data mangling
+add mt76_connac_mcu_uni_set_chctx to set up the channel context per BSS
+in the firmware
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 66 ++++++++++++++++++---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  8 +++
- 2 files changed, 67 insertions(+), 7 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 147 ++++++++++--------
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   3 +
+ 2 files changed, 82 insertions(+), 68 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index a118c715b09b..991ffa0b02f5 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -23,6 +23,7 @@
- #include <linux/jhash.h>
- #include <linux/bitfield.h>
- #include <net/dsa.h>
-+#include <net/dst_metadata.h>
- 
- #include "mtk_eth_soc.h"
- #include "mtk_wed.h"
-@@ -1939,13 +1940,19 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 				__vlan_hwaccel_put_tag(skb, htons(RX_DMA_VPID(trxd.rxd3)),
- 						       RX_DMA_VID(trxd.rxd3));
- 			}
-+		}
-+
-+		/* When using VLAN untagging in combination with DSA, the
-+		 * hardware treats the MTK special tag as a VLAN and untags it.
-+		 */
-+		if (skb_vlan_tag_present(skb) && netdev_uses_dsa(netdev)) {
-+			unsigned int port = ntohs(skb->vlan_proto) & GENMASK(2, 0);
- 
--			/* If the device is attached to a dsa switch, the special
--			 * tag inserted in VLAN field by hw switch can * be offloaded
--			 * by RX HW VLAN offload. Clear vlan info.
--			 */
--			if (netdev_uses_dsa(netdev))
--				__vlan_hwaccel_clear_tag(skb);
-+			if (port < ARRAY_SIZE(eth->dsa_meta) &&
-+			    eth->dsa_meta[port])
-+				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
-+
-+			__vlan_hwaccel_clear_tag(skb);
- 		}
- 
- 		skb_record_rx_queue(skb, 0);
-@@ -2990,11 +2997,46 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 config)
- 	mtk_w32(eth, 0, MTK_RST_GL);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 011fc9729b38..4b12d65dc076 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1313,44 +1313,13 @@ mt76_connac_mcu_uni_bss_he_tlv(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	he->max_nss_mcs[CMD_HE_MCS_BW8080] = cap->he_mcs_nss_supp.tx_mcs_80p80;
  }
  
-+
-+static bool mtk_uses_dsa(struct net_device *dev)
-+{
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	return netdev_uses_dsa(dev) &&
-+	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
-+#else
-+	return false;
-+#endif
-+}
-+
- static int mtk_open(struct net_device *dev)
+-int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
+-				struct ieee80211_vif *vif,
+-				struct mt76_wcid *wcid,
+-				bool enable)
++int mt76_connac_mcu_uni_set_chctx(struct mt76_phy *phy, struct mt76_vif *mvif,
++				  struct ieee80211_chanctx_conf *ctx)
  {
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
--	int err;
-+	int i, err;
+-	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+-	struct cfg80211_chan_def *chandef = &phy->chandef;
++	struct cfg80211_chan_def *chandef = ctx ? &ctx->def : &phy->chandef;
+ 	int freq1 = chandef->center_freq1, freq2 = chandef->center_freq2;
+ 	enum nl80211_band band = chandef->chan->band;
+ 	struct mt76_dev *mdev = phy->dev;
+-	struct {
+-		struct {
+-			u8 bss_idx;
+-			u8 pad[3];
+-		} __packed hdr;
+-		struct mt76_connac_bss_basic_tlv basic;
+-		struct mt76_connac_bss_qos_tlv qos;
+-	} basic_req = {
+-		.hdr = {
+-			.bss_idx = mvif->idx,
+-		},
+-		.basic = {
+-			.tag = cpu_to_le16(UNI_BSS_INFO_BASIC),
+-			.len = cpu_to_le16(sizeof(struct mt76_connac_bss_basic_tlv)),
+-			.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
+-			.dtim_period = vif->bss_conf.dtim_period,
+-			.omac_idx = mvif->omac_idx,
+-			.band_idx = mvif->band_idx,
+-			.wmm_idx = mvif->wmm_idx,
+-			.active = true, /* keep bss deactivated */
+-			.phymode = mt76_connac_get_phy_mode(phy, vif, band, NULL),
+-		},
+-		.qos = {
+-			.tag = cpu_to_le16(UNI_BSS_INFO_QBSS),
+-			.len = cpu_to_le16(sizeof(struct mt76_connac_bss_qos_tlv)),
+-			.qos = vif->bss_conf.qos,
+-		},
+-	};
+ 	struct {
+ 		struct {
+ 			u8 bss_idx;
+@@ -1388,6 +1357,81 @@ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
+ 			.band = band,
+ 		},
+ 	};
 +
-+	if (mtk_uses_dsa(dev)) {
-+		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+			struct metadata_dst *md_dst = eth->dsa_meta[i];
-+
-+			if (md_dst)
-+				continue;
-+
-+			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
-+						    GFP_KERNEL);
-+			if (!md_dst)
-+				return -ENOMEM;
-+
-+			md_dst->u.port_info.port_id = i;
-+			eth->dsa_meta[i] = md_dst;
-+		}
-+	} else {
-+		/* Hardware special tag parsing needs to be disabled if at least
-+		 * one MAC does not use DSA.
-+		 */
-+		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		val &= ~MTK_CDMP_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
++	switch (chandef->width) {
++	case NL80211_CHAN_WIDTH_40:
++		rlm_req.rlm.bw = CMD_CBW_40MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_80:
++		rlm_req.rlm.bw = CMD_CBW_80MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_80P80:
++		rlm_req.rlm.bw = CMD_CBW_8080MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_160:
++		rlm_req.rlm.bw = CMD_CBW_160MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_5:
++		rlm_req.rlm.bw = CMD_CBW_5MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_10:
++		rlm_req.rlm.bw = CMD_CBW_10MHZ;
++		break;
++	case NL80211_CHAN_WIDTH_20_NOHT:
++	case NL80211_CHAN_WIDTH_20:
++	default:
++		rlm_req.rlm.bw = CMD_CBW_20MHZ;
++		rlm_req.rlm.ht_op_info = 0;
++		break;
 +	}
++
++	if (rlm_req.rlm.control_channel < rlm_req.rlm.center_chan)
++		rlm_req.rlm.sco = 1; /* SCA */
++	else if (rlm_req.rlm.control_channel > rlm_req.rlm.center_chan)
++		rlm_req.rlm.sco = 3; /* SCB */
++
++	return mt76_mcu_send_msg(mdev, MCU_UNI_CMD(BSS_INFO_UPDATE), &rlm_req,
++				 sizeof(rlm_req), true);
++}
++EXPORT_SYMBOL_GPL(mt76_connac_mcu_uni_set_chctx);
++
++int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
++				struct ieee80211_vif *vif,
++				struct mt76_wcid *wcid,
++				bool enable)
++{
++	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = &phy->chandef;
++	enum nl80211_band band = chandef->chan->band;
++	struct mt76_dev *mdev = phy->dev;
++	struct {
++		struct {
++			u8 bss_idx;
++			u8 pad[3];
++		} __packed hdr;
++		struct mt76_connac_bss_basic_tlv basic;
++		struct mt76_connac_bss_qos_tlv qos;
++	} basic_req = {
++		.hdr = {
++			.bss_idx = mvif->idx,
++		},
++		.basic = {
++			.tag = cpu_to_le16(UNI_BSS_INFO_BASIC),
++			.len = cpu_to_le16(sizeof(struct mt76_connac_bss_basic_tlv)),
++			.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
++			.dtim_period = vif->bss_conf.dtim_period,
++			.omac_idx = mvif->omac_idx,
++			.band_idx = mvif->band_idx,
++			.wmm_idx = mvif->wmm_idx,
++			.active = true, /* keep bss deactivated */
++			.phymode = mt76_connac_get_phy_mode(phy, vif, band, NULL),
++		},
++		.qos = {
++			.tag = cpu_to_le16(UNI_BSS_INFO_QBSS),
++			.len = cpu_to_le16(sizeof(struct mt76_connac_bss_qos_tlv)),
++			.qos = vif->bss_conf.qos,
++		},
++	};
+ 	int err, conn_type;
+ 	u8 idx, basic_phy;
  
- 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
- 	if (err) {
-@@ -3321,6 +3363,10 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	 */
- 	val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
- 	mtk_w32(eth, val | MTK_CDMQ_STAG_EN, MTK_CDMQ_IG_CTRL);
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
-+	}
- 
- 	/* Enable RX VLan Offloading */
- 	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-@@ -3538,6 +3584,12 @@ static int mtk_free_dev(struct mtk_eth *eth)
- 		free_netdev(eth->netdev[i]);
+@@ -1474,40 +1518,7 @@ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
+ 			return err;
  	}
  
-+	for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+		if (!eth->dsa_meta[i])
-+			break;
-+		metadata_dst_free(eth->dsa_meta[i]);
-+	}
-+
- 	return 0;
+-	switch (chandef->width) {
+-	case NL80211_CHAN_WIDTH_40:
+-		rlm_req.rlm.bw = CMD_CBW_40MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_80:
+-		rlm_req.rlm.bw = CMD_CBW_80MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_80P80:
+-		rlm_req.rlm.bw = CMD_CBW_8080MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_160:
+-		rlm_req.rlm.bw = CMD_CBW_160MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_5:
+-		rlm_req.rlm.bw = CMD_CBW_5MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_10:
+-		rlm_req.rlm.bw = CMD_CBW_10MHZ;
+-		break;
+-	case NL80211_CHAN_WIDTH_20_NOHT:
+-	case NL80211_CHAN_WIDTH_20:
+-	default:
+-		rlm_req.rlm.bw = CMD_CBW_20MHZ;
+-		rlm_req.rlm.ht_op_info = 0;
+-		break;
+-	}
+-
+-	if (rlm_req.rlm.control_channel < rlm_req.rlm.center_chan)
+-		rlm_req.rlm.sco = 1; /* SCA */
+-	else if (rlm_req.rlm.control_channel > rlm_req.rlm.center_chan)
+-		rlm_req.rlm.sco = 3; /* SCB */
+-
+-	return mt76_mcu_send_msg(mdev, MCU_UNI_CMD(BSS_INFO_UPDATE), &rlm_req,
+-				 sizeof(rlm_req), true);
++	return mt76_connac_mcu_uni_set_chctx(phy, mvif, NULL);
  }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_uni_add_bss);
  
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 589f27ddc401..a572416e25de 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -22,6 +22,9 @@
- #include <linux/bpf_trace.h>
- #include "mtk_ppe.h"
- 
-+#define MTK_MAX_DSA_PORTS	7
-+#define MTK_DSA_PORT_MASK	GENMASK(2, 0)
-+
- #define MTK_QDMA_PAGE_SIZE	2048
- #define MTK_MAX_RX_LENGTH	1536
- #define MTK_MAX_RX_LENGTH_2K	2048
-@@ -91,6 +94,9 @@
- #define MTK_CDMQ_IG_CTRL	0x1400
- #define MTK_CDMQ_STAG_EN	BIT(0)
- 
-+/* CDMQ Exgress Control Register */
-+#define MTK_CDMQ_EG_CTRL	0x1404
-+
- /* CDMP Ingress Control Register */
- #define MTK_CDMP_IG_CTRL	0x400
- #define MTK_CDMP_STAG_EN	BIT(0)
-@@ -1121,6 +1127,8 @@ struct mtk_eth {
- 
- 	int				ip_align;
- 
-+	struct metadata_dst		*dsa_meta[MTK_MAX_DSA_PORTS];
-+
- 	struct mtk_ppe			*ppe[2];
- 	struct rhashtable		flow_table;
- 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index cf4ce3b1fc21..b7e29b177a6c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1736,6 +1736,9 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ int mt76_connac_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif *mvif,
+ 			   struct ieee80211_ampdu_params *params,
+ 			   int cmd, bool enable, bool tx);
++int mt76_connac_mcu_uni_set_chctx(struct mt76_phy *phy,
++				  struct mt76_vif *vif,
++				  struct ieee80211_chanctx_conf *ctx);
+ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
+ 				struct ieee80211_vif *vif,
+ 				struct mt76_wcid *wcid,
 -- 
-2.38.1
+2.25.1
 
 
