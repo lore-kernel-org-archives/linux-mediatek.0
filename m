@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2426BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 21:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C808AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 21:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nTrKgW0O6IY5Rsi1eg9QyPI5s4jmnFbMLTtY42BqCo0=; b=hxgLsS3rPHKv4cw4xZL/Gg7pqW
-	e2AROupff19NielY3k60QPlY1NPv46JzMVh4dbcy6TZnUKFU/feBWId7GSn+ygE+P7OGmygqO2xI9
-	ZmLhL6aawObf5yxZ5onCOtBpUmtYHw4dnisqVyGXuza872IgXkryGU0whDRchHhaPrdz4CiLnTyoT
-	uCw9Q7WCPN0cEIRQ4pUhpfQwDu5k6Ijea98mK4qY4jjt09gGwryMEHs5OCG0DV64rj0GXcpcOSA+V
-	Nq+HoQ7TZk0qv4rHUj3vxxgtHMkrMp65VmirpbH92SSRUt4pMsSCtBFegR+W6YGJE2dbJYF6tQ94I
-	t63zXGpQ==;
+	bh=ukrpjAtV5q41Z5KOBVuOWSW1ODCEyS4q5z+TXMdsO6k=; b=knFwYQQWW662cjAK0Mpi2A9OIJ
+	URGvIAP/wnVjGg9pzVMTEOXejG8XVfOvjvhf3cGSuc0GBEEL8JbVXJGcNDhT60XUBVdm6SSpG+5CC
+	mRU7mKMGSRQzjSGA75kFs0hCc7O+OJmgeiEbYg/YyVm85Tm3LCIiTQSlY7+SELCMgrKky2ctRBdR+
+	Ghs+T+vRC/G24kcGC1Q3hBgXxpuGaNxpX2f7GOgXowuRUZgMq/VOTiCmNPRv/ZnZFTKmjpknm4GdH
+	BDBVLB15+j542vFuzXloKj4CgGTaaOyhE+nxdbV97GH49D577dAeMeX8Br55bTuSvM/j6sBOiMRs1
+	qO4PWZOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otFCn-00AUz5-KC; Thu, 10 Nov 2022 21:35:25 +0000
+	id 1otFV1-00AZUn-LP; Thu, 10 Nov 2022 21:54:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otFCk-00AUxk-QF
-	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 21:35:24 +0000
-X-UUID: 846ac5e139bd4582800cc0969f368b48-20221110
+	id 1otFUy-00AZTf-CA
+	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 21:54:14 +0000
+X-UUID: bec676558fac4b9ab246acdced64a33d-20221110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nTrKgW0O6IY5Rsi1eg9QyPI5s4jmnFbMLTtY42BqCo0=;
-	b=Urfy4Q8Qm/xdQax3adfJDz/dFUrRIJbrJ87rqDLy0NvLgHHFVGHJw2U8pc31hXaQwwbVwRGcwgn1+GUzD3hlfgxbQxiFtyBCVBwKY1b5KFe/N7m03NhJGAb3lfk8QPayDiPXXGshil8GCZRZjHQUYrJismtrQpLUE1SoEEeuqT8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ukrpjAtV5q41Z5KOBVuOWSW1ODCEyS4q5z+TXMdsO6k=;
+	b=LSQmGCGAOY2wxFEjSzWrEidAESF1tpFj+k8cdcL/tVu+Y5Ht4tY7XT1OJFtVJlT9kALiJT03LjYNn8xvvdYjct9ffCd2ccMVKNPlRUZS+3fn7X4lAGYW6VdZI5Z4MPiK2RdwcqlNAN6hv4fPyw44Tjgb/9hEUB8+/d+8RllU2oI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:90adda82-c913-4ddb-b886-f75bd3e8d340,IP:0,U
+X-CID-O-INFO: VERSION:1.1.12,REQID:dd620c81-be3e-43b0-aeb8-7b51a91885d1,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:fa40ef85-088c-4756-8f76-577be701e693,B
+X-CID-META: VersionHash:62cd327,CLOUDID:7b88375d-100c-4555-952b-a62c895efded,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 846ac5e139bd4582800cc0969f368b48-20221110
+X-UUID: bec676558fac4b9ab246acdced64a33d-20221110
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2129980646; Thu, 10 Nov 2022 14:35:17 -0700
+	with ESMTP id 304478577; Thu, 10 Nov 2022 14:54:06 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 11 Nov 2022 05:24:12 +0800
+ 15.2.792.15; Fri, 11 Nov 2022 05:24:01 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 11 Nov 2022 05:24:12 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 11 Nov 2022 05:24:01 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -59,11 +59,12 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
 	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
 	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Deren
- Wu <deren.wu@mediatek.com>
-Subject: [PATCH v3 7/7] wifi: mt76: mt7921: introduce chanctx support
-Date: Fri, 11 Nov 2022 05:23:49 +0800
-Message-ID: <a6f342b356b87415a123e2ae144b3c7c9f3a9fca.1668068326.git.objelf@gmail.com>
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Quan
+ Zhou <quan.zhou@mediatek.com>, Deren Wu <deren.wu@mediatek.com>, Kaikai Hu
+	<kaikai.hu@mediatek.com>
+Subject: [PATCH v3 3/7] wifi: mt76: mt7921: add unified ROC cmd/event support
+Date: Fri, 11 Nov 2022 05:23:45 +0800
+Message-ID: <2ec5ef0995c23b02fdea46127d2ec44051c166ec.1668068326.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1668068326.git.objelf@gmail.com>
 References: <cover.1668068326.git.objelf@gmail.com>
@@ -71,8 +72,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_133522_892701_907E9622 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20221110_135412_452316_306AC042 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,274 +88,240 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Quan Zhou <quan.zhou@mediatek.com>
 
-The firmware can have the capability to manage the channel context
-scheduling on multiple roles running on the device including Station,
-AP and P2P GC/GO mode (will be extended based on the future patchset)
-to help users sharing the network with others on a single device.
+Add unified ROC cmd/event which is only supported by the newer fw.
 
-The firmware is able to support the channel chanctx up to 2 interface
-simultaneously running on the different channels.
-
-Another thing to be noted is that before the driver is going sent out the
-management frames, the driver has to get the privilege from the firmware
-to occupy the current channel context until the frame handshake is
-completed and then get the privilege back to the firmware.
-
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Co-developed-by: Kaikai Hu <kaikai.hu@mediatek.com>
+Signed-off-by: Kaikai Hu <kaikai.hu@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  33 +++++-
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |   8 --
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 111 +++++++++++++++++-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |   1 +
- 4 files changed, 136 insertions(+), 17 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  10 +-
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 119 ++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  19 +++
+ 3 files changed, 146 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index e9353e9929a9..79b8055ce4c4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -26,6 +26,27 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 		.max_interfaces = MT7921_MAX_INTERFACES,
- 		.num_different_channels = 1,
- 		.beacon_int_infra_match = true,
-+	},
-+};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index bc1c47daa81a..87c65d252d56 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -121,11 +121,13 @@ struct mt76_connac2_mcu_rxd {
+ 
+ 	u8 eid;
+ 	u8 seq;
+-	u8 rsv[2];
+-
++	u8 option;
++	u8 rsv;
+ 	u8 ext_eid;
+ 	u8 rsv1[2];
+ 	u8 s2d_index;
 +
-+static const struct ieee80211_iface_limit if_limits_chanctx[] = {
-+	{
-+		.max = 2,
-+		.types = BIT(NL80211_IFTYPE_STATION),
-+	},
-+	{
-+		.max = 1,
-+		.types = BIT(NL80211_IFTYPE_AP),
-+	}
-+};
-+
-+static const struct ieee80211_iface_combination if_comb_chanctx[] = {
-+	{
-+		.limits = if_limits_chanctx,
-+		.n_limits = ARRAY_SIZE(if_limits_chanctx),
-+		.max_interfaces = 2,
-+		.num_different_channels = 2,
-+		.beacon_int_infra_match = false,
- 	}
++	u8 tlv[0];
  };
  
-@@ -66,17 +87,19 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
- 	hw->sta_data_size = sizeof(struct mt7921_sta);
- 	hw->vif_data_size = sizeof(struct mt7921_vif);
+ struct mt76_connac2_patch_hdr {
+@@ -946,6 +948,9 @@ enum {
+ 	DEV_INFO_MAX_NUM
+ };
  
--	if (dev->fw_features & MT7921_FW_CAP_CNM)
-+	if (dev->fw_features & MT7921_FW_CAP_CNM) {
- 		wiphy->flags |= WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
--	else
-+		wiphy->iface_combinations = if_comb_chanctx;
-+		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx);
-+	} else {
- 		wiphy->flags &= ~WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
--
--	wiphy->iface_combinations = if_comb;
-+		wiphy->iface_combinations = if_comb;
-+		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
-+	}
- 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
- 			  WIPHY_FLAG_4ADDR_STATION);
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
- 				 BIT(NL80211_IFTYPE_AP);
--	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
- 	wiphy->max_remain_on_channel_duration = 5000;
- 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
- 	wiphy->max_scan_ssids = 4;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 2cf709a80b5f..08c9a2cec687 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -168,14 +168,6 @@ static void
- mt7921_get_status_freq_info(struct mt7921_dev *dev, struct mt76_phy *mphy,
- 			    struct mt76_rx_status *status, u8 chfreq)
- {
--	if (!test_bit(MT76_HW_SCANNING, &mphy->state) &&
--	    !test_bit(MT76_HW_SCHED_SCANNING, &mphy->state) &&
--	    !test_bit(MT76_STATE_ROC, &mphy->state)) {
--		status->freq = mphy->chandef.chan->center_freq;
--		status->band = mphy->chandef.chan->band;
--		return;
--	}
--
- 	if (chfreq > 180) {
- 		status->band = NL80211_BAND_6GHZ;
- 		chfreq = (chfreq - 181) * 4 + 1;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 82837ccc104d..6206aa44c0e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -858,7 +858,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
++#define MCU_UNI_CMD_EVENT                       BIT(1)
++#define MCU_UNI_CMD_UNSOLICITED_EVENT           BIT(2)
++
+ /* event table */
+ enum {
+ 	MCU_EVENT_TARGET_ADDRESS_LEN = 0x01,
+@@ -1152,6 +1157,7 @@ enum {
+ 	MCU_UNI_CMD_OFFLOAD = 0x06,
+ 	MCU_UNI_CMD_HIF_CTRL = 0x07,
+ 	MCU_UNI_CMD_SNIFFER = 0x24,
++	MCU_UNI_CMD_ROC = 0x27,
+ };
  
- 	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
- 		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
--					    true, NULL);
-+					    true, mvif->ctx);
- 
- 	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-@@ -891,7 +891,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		if (!sta->tdls)
- 			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
- 						    &mvif->sta.wcid, false,
--						    NULL);
-+						    mvif->ctx);
- 	}
- 
- 	spin_lock_bh(&dev->sta_poll_lock);
-@@ -1645,7 +1645,7 @@ mt7921_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	mt7921_mutex_acquire(dev);
- 
- 	err = mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
--					  true, NULL);
-+					  true, mvif->ctx);
- 	if (err)
- 		goto out;
- 
-@@ -1677,12 +1677,108 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		goto out;
- 
- 	mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid, false,
--				    NULL);
-+				    mvif->ctx);
- 
- out:
- 	mt7921_mutex_release(dev);
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 67bf92969a7b..2b36c5f6eb40 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -302,6 +302,23 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	dev_kfree_skb(skb);
  }
  
-+static int
-+mt7921_add_chanctx(struct ieee80211_hw *hw,
-+		   struct ieee80211_chanctx_conf *ctx)
-+{
-+	return 0;
-+}
-+
 +static void
-+mt7921_remove_chanctx(struct ieee80211_hw *hw,
-+		      struct ieee80211_chanctx_conf *ctx)
++mt7921_mcu_uni_rx_unsolicited_event(struct mt7921_dev *dev,
++				    struct sk_buff *skb)
 +{
++	struct mt76_connac2_mcu_rxd *rxd;
++
++	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
++
++	switch (rxd->eid) {
++	case MCU_UNI_EVENT_ROC:
++		break;
++	default:
++		break;
++	}
++	dev_kfree_skb(skb);
 +}
 +
-+static void mt7921_ctx_iter(void *priv, u8 *mac,
-+			    struct ieee80211_vif *vif)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct ieee80211_chanctx_conf *ctx = priv;
-+
-+	if (ctx != mvif->ctx)
-+		return;
-+
-+	mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->mt76, ctx);
-+}
-+
-+static void
-+mt7921_change_chanctx(struct ieee80211_hw *hw,
-+		      struct ieee80211_chanctx_conf *ctx,
-+		      u32 changed)
-+{
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+
-+	mt7921_mutex_acquire(phy->dev);
-+	ieee80211_iterate_active_interfaces(phy->mt76->hw,
-+					    IEEE80211_IFACE_ITER_ACTIVE,
-+					    mt7921_ctx_iter, ctx);
-+	mt7921_mutex_release(phy->dev);
-+}
-+
-+static int
-+mt7921_assign_vif_chanctx(struct ieee80211_hw *hw,
-+			  struct ieee80211_vif *vif,
-+			  struct ieee80211_bss_conf *link_conf,
-+			  struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mutex_lock(&dev->mt76.mutex);
-+	mvif->ctx = ctx;
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return 0;
-+}
-+
-+static void
-+mt7921_unassign_vif_chanctx(struct ieee80211_hw *hw,
-+			    struct ieee80211_vif *vif,
-+			    struct ieee80211_bss_conf *link_conf,
-+			    struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mutex_lock(&dev->mt76.mutex);
-+	mvif->ctx = NULL;
-+	mutex_unlock(&dev->mt76.mutex);
-+}
-+
-+static void mt7921_mgd_prepare_tx(struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  struct ieee80211_prep_tx_info *info)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	u16 duration = info->duration ? info->duration :
-+		       jiffies_to_msecs(HZ);
-+
-+	mt7921_mutex_acquire(dev);
-+	mt7921_set_roc(mvif->phy, mvif, mvif->ctx->def.chan, duration,
-+		       MT7921_ROC_REQ_JOIN);
-+	mt7921_mutex_release(dev);
-+}
-+
-+static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
-+				   struct ieee80211_vif *vif,
-+				   struct ieee80211_prep_tx_info *info)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mt7921_mutex_acquire(dev);
-+	mt7921_abort_roc(mvif->phy, mvif);
-+	mt7921_mutex_release(dev);
-+}
-+
- const struct ieee80211_ops mt7921_ops_chanctx = {
- 	.tx = mt7921_tx,
- 	.start = mt7921_start,
-@@ -1735,6 +1831,13 @@ const struct ieee80211_ops mt7921_ops_chanctx = {
- 	.set_sar_specs = mt7921_set_sar_specs,
- 	.remain_on_channel = mt7921_remain_on_channel,
- 	.cancel_remain_on_channel = mt7921_cancel_remain_on_channel,
-+	.add_chanctx = mt7921_add_chanctx,
-+	.remove_chanctx = mt7921_remove_chanctx,
-+	.change_chanctx = mt7921_change_chanctx,
-+	.assign_vif_chanctx = mt7921_assign_vif_chanctx,
-+	.unassign_vif_chanctx = mt7921_unassign_vif_chanctx,
-+	.mgd_prepare_tx = mt7921_mgd_prepare_tx,
-+	.mgd_complete_tx = mt7921_mgd_complete_tx,
- };
- EXPORT_SYMBOL_GPL(mt7921_ops_chanctx);
+ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ {
+ 	struct mt76_connac2_mcu_rxd *rxd;
+@@ -311,6 +328,11 @@ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
  
+ 	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
+ 
++	if (rxd->option & MCU_UNI_CMD_UNSOLICITED_EVENT) {
++		mt7921_mcu_uni_rx_unsolicited_event(dev, skb);
++		return;
++	}
++
+ 	if (rxd->eid == 0x6) {
+ 		mt76_mcu_rx_event(&dev->mt76, skb);
+ 		return;
+@@ -636,6 +658,103 @@ int mt7921_mcu_set_tx(struct mt7921_dev *dev, struct ieee80211_vif *vif)
+ 				 &req_mu, sizeof(req_mu), false);
+ }
+ 
++int mt7921_mcu_set_roc(struct mt7921_phy *phy, struct mt7921_vif *vif,
++		       struct ieee80211_channel *chan, int duration,
++		       enum mt7921_roc_req type, u8 token_id)
++{
++	int center_ch = ieee80211_frequency_to_channel(chan->center_freq);
++	struct mt7921_dev *dev = phy->dev;
++	struct {
++		struct {
++			u8 rsv[4];
++		} __packed hdr;
++		struct roc_acquire_tlv {
++			__le16 tag;
++			__le16 len;
++			u8 bss_idx;
++			u8 tokenid;
++			u8 control_channel;
++			u8 sco;
++			u8 band;
++			u8 bw;
++			u8 center_chan;
++			u8 center_chan2;
++			u8 bw_from_ap;
++			u8 center_chan_from_ap;
++			u8 center_chan2_from_ap;
++			u8 reqtype;
++			__le32 maxinterval;
++			u8 dbdcband;
++			u8 rsv[3];
++		} __packed roc;
++	} __packed req = {
++		.roc = {
++			.tag = cpu_to_le16(UNI_ROC_ACQUIRE),
++			.len = cpu_to_le16(sizeof(struct roc_acquire_tlv)),
++			.tokenid = token_id,
++			.reqtype = type,
++			.maxinterval = cpu_to_le32(duration),
++			.bss_idx = vif->mt76.idx,
++			.control_channel = chan->hw_value,
++			.bw = CMD_CBW_20MHZ,
++			.bw_from_ap = CMD_CBW_20MHZ,
++			.center_chan = center_ch,
++			.center_chan_from_ap = center_ch,
++			.dbdcband = 0xff, /* auto */
++		},
++	};
++
++	if (chan->hw_value < center_ch)
++		req.roc.sco = 1; /* SCA */
++	else if (chan->hw_value > center_ch)
++		req.roc.sco = 3; /* SCB */
++
++	switch (chan->band) {
++	case NL80211_BAND_6GHZ:
++		req.roc.band = 3;
++		break;
++	case NL80211_BAND_5GHZ:
++		req.roc.band = 2;
++		break;
++	default:
++		req.roc.band = 1;
++		break;
++	}
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(ROC),
++				 &req, sizeof(req), false);
++}
++
++int mt7921_mcu_abort_roc(struct mt7921_phy *phy, struct mt7921_vif *vif,
++			 u8 token_id)
++{
++	struct mt7921_dev *dev = phy->dev;
++	struct {
++		struct {
++			u8 rsv[4];
++		} __packed hdr;
++		struct roc_abort_tlv {
++			__le16 tag;
++			__le16 len;
++			u8 bss_idx;
++			u8 tokenid;
++			u8 dbdcband;
++			u8 rsv[5];
++		} __packed abort;
++	} __packed req = {
++		.abort = {
++			.tag = cpu_to_le16(UNI_ROC_ABORT),
++			.len = cpu_to_le16(sizeof(struct roc_abort_tlv)),
++			.tokenid = token_id,
++			.bss_idx = vif->mt76.idx,
++			.dbdcband = 0xff, /* auto*/
++		},
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(ROC),
++				 &req, sizeof(req), false);
++}
++
+ int mt7921_mcu_set_chan_info(struct mt7921_phy *phy, int cmd)
+ {
+ 	struct mt7921_dev *dev = phy->dev;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index ab1bf34d5616..681356c80870 100644
+index eaba114a9c7e..d9d78f6b088e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -171,6 +171,7 @@ struct mt7921_vif {
- 	struct ewma_rssi rssi;
+@@ -53,6 +53,20 @@
+ #define MT7921_SDIO_HDR_TX_BYTES	GENMASK(15, 0)
+ #define MT7921_SDIO_HDR_PKT_TYPE	GENMASK(17, 16)
  
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
-+	struct ieee80211_chanctx_conf *ctx;
- };
++#define MCU_UNI_EVENT_ROC  0x27
++
++enum {
++	UNI_ROC_ACQUIRE,
++	UNI_ROC_ABORT,
++	UNI_ROC_NUM
++};
++
++enum mt7921_roc_req {
++	MT7921_ROC_REQ_JOIN,
++	MT7921_ROC_REQ_ROC,
++	MT7921_ROC_REQ_NUM
++};
++
+ enum mt7921_sdio_pkt_type {
+ 	MT7921_SDIO_TXD,
+ 	MT7921_SDIO_DATA,
+@@ -508,4 +522,9 @@ int mt7921_set_tx_sar_pwr(struct ieee80211_hw *hw,
  
- struct mib_stats {
+ int mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
+ 		       enum environment_cap env_cap);
++int mt7921_mcu_set_roc(struct mt7921_phy *phy, struct mt7921_vif *vif,
++		       struct ieee80211_channel *chan, int duration,
++		       enum mt7921_roc_req type, u8 token_id);
++int mt7921_mcu_abort_roc(struct mt7921_phy *phy, struct mt7921_vif *vif,
++			 u8 token_id);
+ #endif
 -- 
 2.25.1
 
