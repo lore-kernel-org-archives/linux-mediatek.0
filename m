@@ -4,173 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99F7FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 11:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D91AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 11:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PJSZfyuhtbGTs/8kINl5maoTHQnAjrHLBkDGpWlyhmA=; b=E2bAjAduQaQV40MTglw8Fe5FbD
-	sdl134jPYX8QrobDfhopVm3BSfacYTWafY1PsbkaJchpvk5vsl0lf0sFBwH/gNF48MFRF2NoqhnL7
-	eZNJuhvLAvOVXsBENSegNzT8ucyTAJN2r8Zw2VALPD0b/SP9ZJUYscKHdLxNJOTCabazQ/UkyYElW
-	RaFnpmV597f+3nOnr4z8ZzK6wDvX0eiKLyGgMjyBV2Z9lGCHewN7L9Cr6HNG0T5TtCf5YdgLwxidZ
-	RwHosrgIvt4Q90652wma0fN37AGCeTlHIyflopVUk3XYYBQ5XzVXoMt0k5bFbzs2pdpkBSc1wAZLT
-	mqIE3RQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oFjEQ6EjyEVKgcohCb8YrONslLnRgxrTvxjujhEUG08=; b=RrCugUmykk0kfDo/oNOUSIwjR2
+	x9vkqnHAJOKSBDdtW4tOzov4gjCC/LIwP2nQf9OQwyiCG33IH3po5UYdqqqt9ZlOOD5NFBlx14fvf
+	VXSKoDxopZ5yCDcynBsBa9GC159r9+IJ8VUwXcahREb98GqtJeReaALYty3c9C+Yk2w/3EWaDNPiX
+	U4jCW8Sq43kDAJaGWQ3uh0Ws99T73LAH6sXVvUZ6vnDtwVNRvAecrAg7LF/XNj+62dx3NLEgUqekj
+	4nhSoEG6nHAH7UU2zW/cZ+wRpCWs9sw5nZhjiCIs41XQfZ6q8NauJy5JaY3Chx2d7gqAG7P+GSfDA
+	YbNfuJXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot5wR-005S6v-J3; Thu, 10 Nov 2022 11:41:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ot5xs-005Su0-9x; Thu, 10 Nov 2022 11:43:24 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot5fz-005Kt3-Bd; Thu, 10 Nov 2022 11:24:57 +0000
-X-UUID: e4daa038d30a471eb2d4372d3c0942cd-20221110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=PJSZfyuhtbGTs/8kINl5maoTHQnAjrHLBkDGpWlyhmA=;
-	b=fVrA1ch73PE7OcyYE+McnmoauXP5/vyWABxpfGmM3C+pANWJsmakjqRP8EASCG+tyaZO8fi8DkcPICaP/7kVvuDAG1pEBEPYzHFD+zKIgmdkDnYUJUyfSN6mUH5DFiRi6RPZFOfL05x7whz8JQpubJRqEkk6LNsnbiQwANazqaI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:fda6d0ff-a344-4b9d-a879-00032ab3babf,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:28f3eb50-b7af-492d-8b40-b1032f90ce11,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e4daa038d30a471eb2d4372d3c0942cd-20221110
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1208071583; Thu, 10 Nov 2022 04:24:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 10 Nov 2022 18:34:17 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 10 Nov 2022 18:34:16 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LmNnImD0zdER7Yust6TCuFZNmTyg+OI4uphvQ3un1iYWf5s+CDWZaKZSua11nJZM6S0q6hWuAP2jQXQwK6JGUFSpk/Y6e247gZP0snewIj0xK6QzNIl7h5Ub+r0fxzfwGqYwSKc837mRiLjY+GY7FI9ItjynRt7uZAu84nQUPgMPFuHKm8kCyMh9rlxgBqJLsf2s3pN753cv9aOQyS/UeaF+9uPVZOpz6X7dp2uEm1YwEl63dzGzF/gDO8tHpvAbHR0yDcHRY28SbCfo3Yn3b05pdN3Bgn7pvIZ+5LRffj5KiVDRNJabkRB1xigxgD4QTJcv4Sc6EZbiLkhkpW+rJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PJSZfyuhtbGTs/8kINl5maoTHQnAjrHLBkDGpWlyhmA=;
- b=nX2g6VaTj1LAfiABy5gEaM8RcDQrPvlODH56VXXK50SAQQq0S8dI/34iWSC7ztElzGXYy3qoqC2pb9GRiJIqCGze/qRxxywW9BC+9/uuskjru2EGoqfehaDJonkFWYMpgzAxtReCDB+kI99S3AeVJxoJKTW8QXqIKEkDr1BeV2n+Oeix3mjN88iDqV/I4xA1069QVCF2lMa/+6+biDddoAwVtCdF4JIoxx1Na/J8dwxkNqIbHDMLuyOyuw4g6WHn4cFKIp5gSZSHRDuVTymm/D1Tq868fIXtkwkQNx1//9xBW89RgnltEBk8OeRT+0DitYBewGQzYl80g1uKjGC1bg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1ot5hW-005LPz-4T; Thu, 10 Nov 2022 11:26:32 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id a14so1804411wru.5;
+        Thu, 10 Nov 2022 03:26:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PJSZfyuhtbGTs/8kINl5maoTHQnAjrHLBkDGpWlyhmA=;
- b=SE12eceaAJT/AmeOHHKtXz/uJ0QfZ3UnPc/vaKef7CTKKF/lEQmXNtrHPA7gMFsQE8Yw0QpdFhnz13f2tw4IoTbsvIhQ4wg73HBcYLuyTF7WoqP4oQmmnpz+to7v8fUV9we+YInDFXNFf0ixTprez9f3SJTyIO4YIOaPXiCLjak=
-Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
- by SEZPR03MB7148.apcprd03.prod.outlook.com (2603:1096:101:ef::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5813.13; Thu, 10 Nov
- 2022 10:34:14 +0000
-Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
- ([fe80::a0e1:17bd:db1c:f57b]) by SL2PR03MB4153.apcprd03.prod.outlook.com
- ([fe80::a0e1:17bd:db1c:f57b%6]) with mapi id 15.20.5791.025; Thu, 10 Nov 2022
- 10:34:14 +0000
-From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>, "wenst@chromium.org"
-	<wenst@chromium.org>, =?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?=
-	<tiffany.lin@mediatek.com>, "benjamin.gaignard@collabora.com"
-	<benjamin.gaignard@collabora.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "hverkuil-cisco@xs4all.nl"
-	<hverkuil-cisco@xs4all.nl>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"stevecho@chromium.org" <stevecho@chromium.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"mchehab@kernel.org" <mchehab@kernel.org>, "daniel@ffwll.ch"
-	<daniel@ffwll.ch>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
-	<hsinyi@chromium.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/3] media: dt-bindings: media: mediatek: vcodec: Change
- the max reg value to 2
-Thread-Topic: [PATCH 2/3] media: dt-bindings: media: mediatek: vcodec: Change
- the max reg value to 2
-Thread-Index: AQHY9A3s5UobTKtD5ESIsMOIykLWOa42U3+AgAGkWIA=
-Date: Thu, 10 Nov 2022 10:34:14 +0000
-Message-ID: <6229b2ce6f49ccad25eed3ae00390b4553cf94a3.camel@mediatek.com>
-References: <20221109073529.26765-1-yunfei.dong@mediatek.com>
-	 <20221109073529.26765-2-yunfei.dong@mediatek.com>
-	 <96979d33-829a-4b38-bd8e-83b7f07a7c2c@collabora.com>
-In-Reply-To: <96979d33-829a-4b38-bd8e-83b7f07a7c2c@collabora.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|SEZPR03MB7148:EE_
-x-ms-office365-filtering-correlation-id: 6dc6bb5c-708a-43fe-8194-08dac3071d1f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: tS3zjNEa2VBVrQPvA7ANLjsUkPi0y9eRDODkTAC/3j/cSP4rRMfk7Nm5P3iN9f90HjJF7jK8OSq6J8Og09t2fGlyM0eQ1dyJ0rxwtOypJdSFXdW8hszTgecBwDglmExdlWYYsqXv1F6oVErdS8h/Ab5nwYkTievnhGm6T5yeIY+iS0nE4/pNdPN2Wq8nWFoFe+4mUi0yPCDhxjfn+KEH/JF0oDO5LESxrDBpDuy3wzHm9o99bpny2jjw+G2SLFBh35DB8uFfLXkHBF/6c3HQDDLq7wee3CsasAZw88z1mu1GA2plzhaLiPteNI1KMlm5jWu8aSeu3ZlkeoRrCi4wKtgXyveAljPZ4BD+Mzs32YzIkeb+lidwbRjYGTHMLTcbIRUx5deVAZRTUMHmBLIKft8CDPHnCZdCY6jakyfpZ91R+DcEuRw792kp0RnS6aLTvE4OgU0gAOUxPW2nC1lj+4Zt3p8fXfm1qSNx8nGtO9eSeXQXlhteVN/92Fs7fGvH6BIbNJAVfSG6qOsJTPA1MWdKRcr0ntYlzSJ41bJtanim4tMzunJAUItKOxdbSb00HAL+MzGTjFqps3zS7akaQ4fWh1ns5dc+lTn8HIQFkWsqCoiAIat0SV/J7nEb6X9E2J8iCkYiJxVOHJJqwXenWJfHcRfjyJx6yGwsIh5Y90znMluXfRu9JmgZwRE9SreAwI8UGJQJQuawzbQMtdFEpBEacBNTn0Q8tE8Wrn2Hz7rpBiSwRbw92eLq0iIiZ98dudEzqAWtSu0ye9fuNsHXmy/S+nl79SCeG4WoI0NBGsKqx5xlNwcISlpyNaTbTMuc/b5LBSI3rH2TqOjbtWgkaQ==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(366004)(346002)(39860400002)(376002)(136003)(451199015)(122000001)(38100700002)(2906002)(86362001)(38070700005)(4326008)(6506007)(2616005)(26005)(6512007)(110136005)(66476007)(316002)(478600001)(91956017)(64756008)(66446008)(76116006)(66556008)(8676002)(66946007)(6486002)(71200400001)(7416002)(41300700001)(8936002)(54906003)(186003)(5660300002)(83380400001)(85182001)(36756003)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?elFjYXJ2aFdkd1FyUktYNmtpUzhkYWFNN0cvSmdqUWRXUE5VY1laalk0Vy8r?=
- =?utf-8?B?L2JTd2ZYOVBKUHg2dEY0NXJmQ0w0QTdWM3V0ak83Z1VQRW5iVmNCNDBKaEtR?=
- =?utf-8?B?MnJrTmxZWWN4UGpCWFFuWTUrNElrOThTbkQ2enhXWVFJendjOGlZTUlwb25V?=
- =?utf-8?B?R0JwNWFwb0grczQxOW8wQkZPek04aGZDUHFIL1JUcWV2WUdTT0orODVMWHhH?=
- =?utf-8?B?Zk9rZjBZTlI2bmVZMUNTQklKNmh2ZElkWUhGNi91WHpudzF3YURqT0dyYUM4?=
- =?utf-8?B?Q0dqWnV0UXFVRmtpQjhNMnhDT1loOEpoR0h1dnYzUlpaRUpkbXZ6OGZQb0pT?=
- =?utf-8?B?dXljUWdoeXJpbDF4bXJ1V3RHYmlpanNuZk1lMFQwMEkrQkMrQTZyZjRyZlpW?=
- =?utf-8?B?WjFuTFJWcFFoRk93cC9xTHZHWUEzRHprbVY3M00vSXFHV3BueUpmcER3Mldw?=
- =?utf-8?B?MlYrR01QMnJDSWdtYW9CV0ZqZWk4VnhzL01VWCtTeEZHSTZsYm14dVNaNm1l?=
- =?utf-8?B?WjdEeXgxb1duOU91Z3ZGMHZ5b283ZjZhclprdVI0bkZKcjFlRGFWNnFEVzdp?=
- =?utf-8?B?bStKREJBRS9yeHk4Z3EvSXpDbmxjSHlsQnY0aFR3cEdHaUtqcElhcUVmMGhX?=
- =?utf-8?B?UHRxcGFZOEFiTGkvaUFiVFI5bHh4cG1Oa2NYNkJEeityNUh2bzJCS0xodVJ2?=
- =?utf-8?B?b005aGsxTll1REVnVnJaK2R0ZTU4RmVXTEhpTmdsa2ZXbnI4M0FmSkJBa2hZ?=
- =?utf-8?B?cklzYmxzd2doaDdwaUJ4c3ZRMkVTelc0Y3UxTXBpV1k3ZkhxcDAxdWZIaGRm?=
- =?utf-8?B?Z1A2M0VxQlMyQUZQcFNPYjlUelptTVRyS3NURExWbEUyM3dTa0kwWFh2OEhR?=
- =?utf-8?B?ZUJlOFQ1U1h0ZzBUbHZCaitaenJwN3NFMktSYm9qWDgwOVd2amQyazhkTHlq?=
- =?utf-8?B?Ui90NzZ2MmNCLzZxWlJLK2lvYVdnQm16L2lLdXY4azZQbzg2R1lUV2s4aUNo?=
- =?utf-8?B?OVQxRjRDQmJGLzZtaU1NT0NoTXc0TS8vS1VMbUF4bWh2MngwdEd3czloRFdh?=
- =?utf-8?B?Zk85REphN09VdTVLeUJ0ZnhzamN5MTlSUEw5NFdoQjBiYk95azZ1NlFnWTJ3?=
- =?utf-8?B?cS9VUThLSnZUcWR5blBQS0owa3RuS3IybkNrQ0VmSHZiM3hMREZTdi84TGJq?=
- =?utf-8?B?OEVuNnJVdEdWZjM3RXYrRDIxRHBEYmpPd0w2UXYvWlNMQUZydm41cXRLR2kw?=
- =?utf-8?B?aTZTQW5sMUNlYk1Oc2F6MDBsUmtpVUdJcnF6NUQ0dUhzUVh0VzU0Q0x0MlBV?=
- =?utf-8?B?Z1RLNHJWY080cXhqMWFiNEI2K3E2YkVQWW01czBOczNDY20xTTdTbG0reTdS?=
- =?utf-8?B?UzloNjM1akNabGlDQVBRN1R1VjlkYUVFRzgwK1k2blN5U1hPWHFiQ0hhNmhx?=
- =?utf-8?B?WmlUZjFacFg0eHU2bmprc3JZdHdTNHJuQlNsMXVCeXFvbFdwNTVFeXp2SHNU?=
- =?utf-8?B?RWlLaGJGMWVZeTFzMktqNTVVL2lDdEUzTmJzL2JWRlBnWXFNQUFEdVBNdUYv?=
- =?utf-8?B?UzNOaEJ1YmxqbWxuSnJmU3QxUm5vQU84NktrZ295WmVpWlRUU2JCQlRiNmtK?=
- =?utf-8?B?aXBwdWRielBHcElZQWZ4aVlaVjVlR2lQKzF2TWpFTXRnNXVQbm5TajgrVytp?=
- =?utf-8?B?SVREamhZOFpGM1JUSVFNaXFxNS9pUTZsaTF1OUFUOUJaN3RKVnQvN0wzUlRp?=
- =?utf-8?B?M1NFSTVXVnFKVVZERE1zRitLak5pRElRMEFXLytURmNJN1ZTTzNyRDU5Qmsz?=
- =?utf-8?B?bWUrMnV5WHlUQ2pUVEQyQ2tQMzNSYm4vRkVnOUFhZlBFeThhRExUWC9nK2c4?=
- =?utf-8?B?S2EzdXc3UmxjaG1OYTJ4eWlFTTJmeURKVS9XWXdSeTZ1Z1k5WHJ6WkRkUElH?=
- =?utf-8?B?cWtjUzRIMXpFcmF0SDhyNW1uTXZYbDlmcGxmTExVL05tVjVxMHFydCtFanM3?=
- =?utf-8?B?UXR3VUdBTHdWVWtycmNWZkRCdVQzUFJBR2VYOVdtTnVpc2ZieGp1Rk9YWFpw?=
- =?utf-8?B?c3BuS0praWN0NnpWNEFMYS9ycGpoS2FpWUNIaVRFaTdnOWJSdlFHREZVdHZM?=
- =?utf-8?B?OGk2VURGTE5TdjRLaWhUWFM0LzEzcVV2MnNxV0JIeEx3YnhTRjhhM0M2RWRD?=
- =?utf-8?B?TWc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <73EF268E9F31FF42884E513222DC245A@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oFjEQ6EjyEVKgcohCb8YrONslLnRgxrTvxjujhEUG08=;
+        b=RqWifMivrB4Nu65E05zf0OiBOHmIf5+MDeA2BYi94cKRaxk+eNPRX9wG+VgdpYqVpd
+         WvOpTOxACh4uOcMRVBRtW3Hw0Cv3DZomZbichRFA81HNi+lOW5rOoS6FmmXKjI65WEF8
+         obN4NlGnbi1GmSpwi+EbrhY4KqzOwGbpEISUIb1ziMq2ftQmMGYpp4ihfA/pPMLXOYzc
+         DdOBFgDNJKgSXyLicW07PSdAKkXtCT78A7cPbJQAi6CYNT6JSRZKQ/dBJJ3G/QEZ8sxR
+         ZlofILIhtzLYFQBL1nZh1u9RO8tltkqw1Xqov/STYBKYuVwCa95WEi1L2bEya1hJGKGG
+         yfsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oFjEQ6EjyEVKgcohCb8YrONslLnRgxrTvxjujhEUG08=;
+        b=gubGNDMayXziuBpf0PvrdTZfMzhD8kXngJhQwWrt0T3kCUdC16g4rK5geo7jTrjJDY
+         acGxoZjF8UlT8R5Ytivui12n8oyP/nHEgZkzvrICmiDyLO1pRKik70SE/GA5rG2nnqNN
+         fv74r9dd45mNI7RRDq1rDqwP84wb+wC3SzLErNdaJOYAhFaNEthJP+uDslGHTRdadDVr
+         CNvZtJOJu1nYeSGVmJ/Mm8vBOPPlvSYVpR4UOCpn7AtjDWNpYR/o5kfTUuP/T5cgoa+F
+         xAv/mbL2EUjBlpxksk6u0ZE1pZPx4h/Cccbyhgssku9K2pOIsCZ3hLPOEJEJJMShQrKo
+         TN5g==
+X-Gm-Message-State: ACrzQf15SyIwHcxmtI0QYlLe9MnxUfIubUMQe7VUy9l7ca52eA/2HmHh
+	c86IRqQeAmFN1YGwzbALGMQ=
+X-Google-Smtp-Source: AMsMyM493GRRAlRZKKd5q3v49N1Ze10nEaUPhQRBKPHaIoQSYJObJjFz67UxgNoLNZSPumACb6Rn3g==
+X-Received: by 2002:adf:f687:0:b0:236:481f:83a6 with SMTP id v7-20020adff687000000b00236481f83a6mr41804672wrp.342.1668079583165;
+        Thu, 10 Nov 2022 03:26:23 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id j15-20020a056000124f00b00236740c6e6fsm15738858wrx.100.2022.11.10.03.26.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Nov 2022 03:26:21 -0800 (PST)
+Message-ID: <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
+Date: Thu, 10 Nov 2022 12:26:20 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6dc6bb5c-708a-43fe-8194-08dac3071d1f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Nov 2022 10:34:14.6512
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2NTynN0s+8gNOHyRLZM9DDlWONqhco9sD0doyLy6iCoiETt2wl7lP18qKqUpeQxREYoZHS4KWWU752htepjRpQfYReWNA5BA49p7MsLvPLA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7148
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
+ mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
+Content-Language: en-US
+To: Nick <vincent@systemli.org>, jia-wei.chang@mediatek.com,
+ rex-bc.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
+ viresh.kumar@linaro.org, Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Daniel Golle <daniel@makrotopia.org>,
+ =?UTF-8?Q?H=c3=bchn=2c_Thomas?= <thomas.huehn@hs-nordhausen.de>
+References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_032455_460482_B882F3AE 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20221110_032630_225177_79437F3D 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -185,30 +97,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RGVhciBBbmdlbG9HaW9hY2NoaW5vIERlbCwNCg0KVGhhbmsgZm9yIHlvdXIgc3VnZ2VzdGlvbiwg
-bG9va3MgdmVyeSByZWFzb25hYmxlLg0KRml4IGluIHYyLg0KDQpCZXN0IHJlZ2FyZHMsDQpZdW5m
-ZWkgRG9uZw0KDQpPbiBXZWQsIDIwMjItMTEtMDkgYXQgMTA6MjkgKzAxMDAsIEFuZ2Vsb0dpb2Fj
-Y2hpbm8gRGVsIFJlZ25vIHdyb3RlOg0KPiBJbCAwOS8xMS8yMiAwODozNSwgWXVuZmVpIERvbmcg
-aGEgc2NyaXR0bzoNCj4gPiBOZWVkIHRvIGFkZCByYWNpbmcgY29udHJvbCByZWdpc3RlciBiYXNl
-IGluIGRldmljZSBub2RlIGZvciBtdDgxOTUNCj4gPiBzdXBwb3J0DQo+ID4gaW5uZXIgcmFjaW5n
-IG1vZGUuIENoYW5naW5nIHRoZSBtYXggcmVnIHZhbHVlIGZyb20gMSB0byAyLg0KPiA+IA0KPiA+
-IFNpZ25lZC1vZmYtYnk6IFl1bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+DQo+
-ID4gLS0tDQo+ID4gICAuLi4vYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssdmNvZGVjLXN1YmRldi1k
-ZWNvZGVyLnlhbWwgICAgICAgICAgfCANCj4gPiAyICstDQo+ID4gICAxIGZpbGUgY2hhbmdlZCwg
-MSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4gPiANCj4gPiBkaWZmIC0tZ2l0DQo+ID4g
-YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssdmNvZGVj
-LXN1YmRldi0NCj4gPiBkZWNvZGVyLnlhbWwNCj4gPiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMtc3ViZGV2LQ0KPiA+IGRlY29kZXIueWFt
-bA0KPiA+IGluZGV4IDc5NDAxMjg1MzgzNC4uMTY5N2ZlYjFmODU0IDEwMDY0NA0KPiA+IC0tLSBh
-L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMt
-DQo+ID4gc3ViZGV2LWRlY29kZXIueWFtbA0KPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMtDQo+ID4gc3ViZGV2LWRlY29kZXIu
-eWFtbA0KPiA+IEBAIC02MSw3ICs2MSw3IEBAIHByb3BlcnRpZXM6DQo+ID4gICAgICAgICAtIG1l
-ZGlhdGVrLG10ODE5NS12Y29kZWMtZGVjDQo+ID4gICANCj4gPiAgICAgcmVnOg0KPiA+IC0gICAg
-bWF4SXRlbXM6IDENCj4gPiArICAgIG1heEl0ZW1zOiAyDQo+IA0KPiBXaGF0IGFib3V0IGRvaW5n
-LCBpbnN0ZWFkLi4uDQo+IA0KPiAtIGRlc2NyaXB0aW9uOiBWREVDX1NZUyByZWdpc3RlciBzcGFj
-ZQ0KPiAtIGRlc2NyaXB0aW9uOiBWREVDX1JBQ0lOR19DVFJMIHJlZ2lzdGVyIHNwYWNlDQo+IA0K
-PiB0aGVuLCBzZXR0aW5nIGBtaW5JdGVtczogMWAgd2lsbCBtYWtlIHRoZSByYWNpbmdfY3RybCBp
-b3NwYWNlDQo+IG9wdGlvbmFsIDotKQ0KPiANCj4gUmVnYXJkcywNCj4gQW5nZWxvDQo+IA0KPiAN
-Cg==
+Hi Nick,
+
+On 09/11/2022 14:35, Nick wrote:
+> Hi,
+> while trying to bump OpenWrt Kernel to 6.1rc2 I noticed that the kernel is 
+> crashing while booting on a Banana Pi R64 (MT7622):
+> 
+>> [    1.055565] ------------[ cut here ]------------
+>> [    1.060204] Kernel BUG at regulator_check_voltage+0xb0/0xf0 [verbose debug 
+>> info unavailable]
+>> [    1.062418] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 ranges:
+>> [    1.068656] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
+>> [    1.075248] mtk-pcie 1a143000.pcie: Parsing ranges property...
+>> [    1.081257] Modules linked in:
+>> [    1.081264] CPU: 1 PID: 328 Comm: kworker/1:7 Tainted: G S                 
+>> 6.1-rc2 #0
+>> [    1.087088] mtk-pcie 1a143000.pcie:      MEM 0x0020000000..0x0027ffffff -> 
+>> 0x0020000000
+>> [    1.090126] Hardware name: Bananapi BPI-R64 (DT)
+>> [    1.110541] Workqueue: events dbs_work_handler
+>> [    1.114988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>> [    1.121944] pc : regulator_check_voltage+0xb0/0xf0
+>> [    1.126728] lr : regulator_set_voltage_unlocked+0x88/0x110
+>> [    1.129638] mmc1: host does not support reading read-only switch, assuming 
+>> write-enable
+>> [    1.132207] sp : ffffffc00956bb30
+>> [    1.132209] x29: ffffffc00956bb30 x28: ffffff8000efb400 x27: 0000000000000024
+>> [    1.132219] x26: 00000000001312d0 x25: 0000000000118c30 x24: 00000000001312d0
+>> [    1.132227] x23: 0000000000149970
+>> [    1.146036] mmc1: new high speed SDHC card at address e624
+>> [    1.150642]  x22: ffffff800038f800
+>> [    1.159192] mmcblk1: mmc1:e624 SL16G 14.8 GiB
+>> [    1.161068]  x21: ffffff8000efb100
+>> [    1.161072] x20: 00000000001312d0
+>> [    1.175424] GPT:partition_entry_array_crc32 values don't match: 0xa0b5ce6d 
+>> != 0xab54d286
+>> [    1.177757]  x19: 0000000000000000 x18: 00000000799b2550
+>> [    1.181067] GPT:Primary header thinks Alt. header is not at the end of the 
+>> disk.
+>> [    1.189143] x17: 0000000000000003 x16: 0000000000000001 x15: 0000000000000000
+>> [    1.189151] x14: 0000000000000000 x13: 0000000000000146 x12: 00000000fa83b2da
+>> [    1.189159] x11: 000000000000013d x10: 0000000000000850
+>> [    1.194472] GPT:305184 != 31116287
+>> [    1.201842]  x9 : ffffffc00956b910
+>> [    1.201846] x8 : ffffff8000b9edf0 x7 : 0000000000000001
+>> [    1.208970] GPT:Alternate GPT header not at the end of the disk.
+>> [    1.216092]  x6 : 00000000001312d0
+>> [    1.216095] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 0000000000000000
+>> [    1.216103] x2 : ffffffc00956bb68 x1 : ffffffc00956bb6c
+>> [    1.221321] GPT:305184 != 31116287
+>> [    1.224706]  x0 : ffffff800038f800
+>> [    1.228095] GPT: Use GNU Parted to correct GPT errors.
+>> [    1.233307]
+>> [    1.233309] Call trace:
+>> [    1.233312]  regulator_check_voltage+0xb0/0xf0
+>> [    1.242680] FIT: Selected configuration: 
+>> "config-mt7622-bananapi-bpi-r64-pcie1" (OpenWrt bananapi_bpi-r64 with 
+>> mt7622-bananapi-bpi-r64-pcie1)
+>> [    1.242694]  regulator_set_voltage+0x3c/0x64
+>> [    1.249831] FIT:           kernel sub-image 0x00001000..0x0052fd0a 
+>> "kernel-1" (ARM64 OpenWrt Linux-6.1-rc2)
+>> [    1.255030]  mtk_cpufreq_voltage_tracking+0x11c/0x26c
+>> [    1.255039]  mtk_cpufreq_set_target+0x1c4/0x350
+>> [    1.258444] FIT:          flat_dt sub-image 0x00530000..0x005380c5 "fdt-1" 
+>> (ARM64 OpenWrt bananapi_bpi-r64 device tree blob)
+>> [    1.261820]  __cpufreq_driver_target+0x2f4/0x674
+>> [    1.261826]  od_dbs_update+0xb8/0x19c
+>> [    1.266969] FIT:          flat_dt sub-image 0x00539000..0x0053911a 
+>> "fdt-mt7622-bananapi-bpi-r64-pcie1" (ARM64 OpenWrt bananapi_bpi-r64 device 
+>> tree overlay mt7622-bananapi-bpi-r64-pcie1)
+>> [    1.268431]  dbs_work_handler+0x3c/0x7c
+>> [    1.270883] FIT:          flat_dt sub-image 0x0053a000..0x0053a20f 
+>> "fdt-mt7622-bananapi-bpi-r64-sata" (ARM64 OpenWrt bananapi_bpi-r64 device tree 
+>> overlay mt7622-bananapi-bpi-r64-sata)
+>> [    1.275297]  process_one_work+0x200/0x3a0
+>> [    1.287998] FIT:       filesystem sub-image 0x0053b000..0x00859fff 
+>> "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 rootfs)
+>> [    1.292237]  worker_thread+0x170/0x4c0
+>> [    1.292244]  kthread+0xd4/0xe0
+>> [    1.302066] FIT: selecting configured loadable "rootfs-1" to be root 
+>> filesystem
+>> [    1.307092]  ret_from_fork+0x10/0x20
+>> [    1.311631]  mmcblk1: p1 p2 p3 p4 p5 p6 p65(rootfs-1) p66(rootfs_data) p128
+>> [    1.322903] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
+>> [    1.413322] ---[ end trace 0000000000000000 ]---
+> The complete log can be found here:
+> https://gist.githubusercontent.com/PolynomialDivision/395d009c84b426d780549c5fa1f64ff1/raw/886d621d2bf6f03429586adf8a14a6c37c8d8a7d/mt7622-6-1.log
+> 
+> Reverting commit "cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()" 
+> fixes the kernel bug:
+> https://github.com/torvalds/linux/commit/6a17b3876bc8303612d7ad59ecf7cbc0db418bcd
+> 
+> The revert commit can be found here:
+> https://github.com/PolynomialDivision/openwrt/commit/1df941d0334000e3aced43b7d50cdac0da8bf427
+> 
+> The branch I use to build the 6.1rc2 on a Banana Pi R64 can be found here:
+> https://github.com/PolynomialDivision/openwrt/commits/bump-mt7622-rebase
+> 
+
+Thanks for the report.
+Could you test with a plain upstream kernel? That would help us to verify that 
+this is a upstream problem and not introduced by some openwrt patches.
+
+Regards,
+Matthias
 
