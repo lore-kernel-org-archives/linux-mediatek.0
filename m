@@ -4,72 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1CEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 11:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840E7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 11:46:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W006FXupaW42B/x5G9yW+O4T6r5mvU+FHMnHSKEGfX8=; b=bBo/qQK1/q8nOzxDp5CgrtH0od
-	lTBjXq1ZzatJQMBZEUUl//MOa7bEM1xmKVxvzNo9dQFSiVxvDqUhzgsRMKm0UO27A9IVappWZQo5M
-	A9IFzBdyUMEGnami91aP2nbWWi2u/fyC9jTpP4PKLPjKQPocQqP32S//+xt5Z+Am/LZq54/JaI0Re
-	DMm7UOjaDnbgX129RzQeQSAJb5+oMk47P4OpCc4zDNzGBlJbTifA9300F0UN5CVSBidoRdQ4McV9Z
-	60YdJ7hyqWyTWJeO4ULsmIzTET1VOmOkRfCijv/idfU7kryF8R3RyppFGvrb2JHNWQbsm769pmXSI
-	mqEZN6AA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dZWp2kHBH7BxTK24vYMYaWuh8ES61v4HZQKkOxWH97c=; b=J/e1BpXtsCWRi3a8IvnT+qr3b2
+	KmR/VQ64hyit9hwqlZJUf9a+rdeb/8GJJ9dLMphl4VM5ea+6DcyZJ3V6H8LJhpSfBJIaCAUUqicnG
+	hmcEj1yJ4TMkq/mcVQqCo65JAGjLXHrNo+AGco/FnLEnHtcD6zVFASjv6X3+rmvATTWtFkiIGaNzF
+	FiGuC1A0eSpPSCUBTQR1P1gkNcNTj/gup6An8RUmcH2XH1xoYmEoSZDproLUFEsVU5Uphjrxo5VuG
+	uyOgLrfP/ZQzCDQiycei0V5xp9BtK2Jy0OwOrMcFWjEtx331/Nw5Hd+dlVX9TM7tF/LaKc4nZugHI
+	FTB5Sogg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot5zR-005TeM-NB; Thu, 10 Nov 2022 11:45:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ot616-005UTy-FP; Thu, 10 Nov 2022 11:46:44 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot5iV-005LwL-Eu; Thu, 10 Nov 2022 11:27:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=W006FXupaW42B/x5G9yW+O4T6r5mvU+FHMnHSKEGfX8=; b=pQa5xE39iYrKgLK+NZ5d2sX8S8
-	sXFxIfTxnRe0tPozbToXqEzA+WwnNkZuiFt3WufmQgrR8SzpzZuvNT1GYGsRhcEm6ZuWCqXDGEjeg
-	m77n/PYoTq1Qy3iyLtbSDpcANTqoLnqgY6Zn0wcX9p8EkW5n+UbAaPIx7qIyZfgT0bWDR+EF3oVao
-	0wtq0J8bQ11N6t23pRQ1f6QbeA9znFYiY5bgdoQ24d1DWcNrploF6Ty9E3O0WuYL6zSe7MjwmnaK9
-	xewdNtZ/PTqCS9/WVjX2wyhMUKQAcEQhx1zlny8HhF44xH/DpxbmJ4FjdDueNqx19lxG1kQe/x3Nm
-	z215YMQw==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot5iR-00AGUA-4D; Thu, 10 Nov 2022 11:27:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C1F9261353;
-	Thu, 10 Nov 2022 11:27:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57232C433C1;
-	Thu, 10 Nov 2022 11:27:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668079639;
-	bh=H7L8eU5xdL9u0Jd6RrhhVUB8QU6JlkkcKX42Z2x9pO0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Qj/6/IDU7Y8snWCvvVIrp69nyF9vpSpTIkS5weVtw585GttL9CmVHQf3bFEGbRDyd
-	 FdPvLzWaKHQ9dqwxhmqXGMUsbUQkli6rb6RZXxjLKGQSrsXSrHzCZ0XWQ21wAvqpng
-	 bm7WNn7nJpxatkth4tsMj39nxQLiKWygWc4V4bFKlagSuBRQZMyEO9/Rf4rGf/43g5
-	 2KQxMH+qI19px1A4ao6jFh9z8ndykuYlVcIldx4kC4uUmY+nPJUAyUaws4qjW5H8Pe
-	 Xye1oDIJKgOOi6AOzy+xJ5W93ipwM3cw3GKj8vSTLULlfu8gVxIQK2+wM8d496g1B3
-	 e4vcL2GFsVmcg==
-From: Mark Brown <broonie@kernel.org>
-To: Zhichao Liu <zhichao.liu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20221110072839.30961-1-zhichao.liu@mediatek.com>
-References: <20221110072839.30961-1-zhichao.liu@mediatek.com>
-Subject: Re: [PATCH] spi: mediatek: Fix DEVAPC Violation at KO Remove
-Message-Id: <166807963802.164080.11001757867052909901.b4-ty@kernel.org>
-Date: Thu, 10 Nov 2022 11:27:18 +0000
+	id 1ot5kG-005MYr-LD
+	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 11:29:24 +0000
+Received: by mail-pf1-x433.google.com with SMTP id k22so1767519pfd.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Nov 2022 03:29:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=dZWp2kHBH7BxTK24vYMYaWuh8ES61v4HZQKkOxWH97c=;
+        b=nm5AzPUP/c5SxnOWRF0E8OOs8vIUdOgDjB6wYkEQYpfYDRuGKSxS+CBIeuds7UEokj
+         CAc3O4M3Lzp0CmH9uvJ+chSuCz2e7UtgkMxDMXFmH0EFBdC81NQcL56cIa/e5fTzyvWS
+         kSegvkcOyKB6FEauX3mSzkzzDIAUq5r5SATzN3WmVSBqg1jyg/gg0kYs06KdBSG3zxV/
+         fvTxGa1dt18Ruz+5BEtQasGBTHQrEp0wpReAHWWGdK+pWMVHzmdtTwn3mkonTWk309ZV
+         x5RN6EKVnoWzvPKijsEeJPqRTGi+5rLHTCBxYP1D5lgzLbOuhL8arV0ezTVKJRNayIhr
+         L9Iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dZWp2kHBH7BxTK24vYMYaWuh8ES61v4HZQKkOxWH97c=;
+        b=TNyTnAcQDMBxh8h8GfuleV/JY0ybMYACjp1wyrKuHB7+rBx2zM1EnQBxmjbMcr4u+v
+         8AAvWr829sEW5GS8itx06P3mmvoziLNYgMV0Gnbkc7PituQljbo+zkKa3iOBMA8yOGNI
+         WeeSmfActYmIb6v6jrtdPxvX3xlHkCzjAsieIDhE5uD/86ze6qMIpSHhCSgoleigohWL
+         39ePUC+42/hFbBAvJW99S+ZxO34Qxu+kVKvGYCQEfcWCpxU5WkGiTrMMfYbAUzWDHoHk
+         ARvM1SPEvNcdI9SepZ/SAZMdUwJXlEqJ3ZJpR34B3NLX2U60342jbPpI3Hb5gxD3NUIZ
+         AFzQ==
+X-Gm-Message-State: ACrzQf2EiXoFDnd788s26EQ9ZjHI1nBx6vy2HqZ7y7ZsIwsakByPkL61
+	6SIG4a6hSLDNS7Z+ynU758pEusmLTdta7vhMAhZ3sA==
+X-Google-Smtp-Source: AMsMyM4cuzpOD/TX9hqFyYyupcC8P3vPeFAFlSRm0wZ2MgnRUbZnV+cRg9A/mVHt7wBrkUdmfz48YahbcXukazUMnzc=
+X-Received: by 2002:a63:4204:0:b0:442:ee11:4894 with SMTP id
+ p4-20020a634204000000b00442ee114894mr2372631pga.595.1668079758533; Thu, 10
+ Nov 2022 03:29:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech> <20221018-clk-range-checks-fixes-v2-35-f6736dec138e@cerno.tech>
+In-Reply-To: <20221018-clk-range-checks-fixes-v2-35-f6736dec138e@cerno.tech>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 10 Nov 2022 12:28:41 +0100
+Message-ID: <CAPDyKFoycVedCJMy0=UK+q5SiPQHqje_8bSN-gdkpBa6KhFfkg@mail.gmail.com>
+Subject: Re: [PATCH v2 35/65] clk: ux500: sysctrl: Add a determine_rate hook
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Stephen Boyd <sboyd@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Turquette <mturquette@baylibre.com>, 
+	Dinh Nguyen <dinguyen@kernel.org>, Paul Cercueil <paul@crapouillou.net>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Abel Vesa <abelvesa@kernel.org>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, Alessandro Zummo <a.zummo@towertech.it>, 
+	Peter De Schrijver <pdeschrijver@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Samuel Holland <samuel@sholland.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Vinod Koul <vkoul@kernel.org>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sekhar Nori <nsekhar@ti.com>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Takashi Iwai <tiwai@suse.com>, David Airlie <airlied@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	David Lechner <david@lechnology.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Mark Brown <broonie@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, linux-stm32@st-md-mailman.stormreply.com, 
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-clk@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, patches@opensource.cirrus.com, 
+	linux-tegra@vger.kernel.org, linux-rtc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_112727_575288_4816A02B 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20221110_032920_827734_5EC71D93 
+X-CRM114-Status: GOOD (  34.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +113,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Nov 2022 15:28:39 +0800, Zhichao Liu wrote:
-> A DEVAPC violation occurs when removing the module
-> due to accessing HW registers without base clock.
-> To fix this bug, the correct method is:
-> 1. Call the runtime resume function to enable the
->    clock;
-> 2. Operate the registers to reset the HW;
-> 3. Turn off the clocks and disable the device
->    RPM mechanism.
-> 
-> [...]
+On Fri, 4 Nov 2022 at 14:32, Maxime Ripard <maxime@cerno.tech> wrote:
+>
+> The UX500 sysctrl "set_parent" clocks implement a mux with a set_parent
+> hook, but doesn't provide a determine_rate implementation.
+>
+> This is a bit odd, since set_parent() is there to, as its name implies,
+> change the parent of a clock. However, the most likely candidate to
+> trigger that parent change is a call to clk_set_rate(), with
+> determine_rate() figuring out which parent is the best suited for a
+> given rate.
+>
+> The other trigger would be a call to clk_set_parent(), but it's far less
+> used, and it doesn't look like there's any obvious user for that clock.
 
-Applied to
+If I recall correctly, that is the use case we did target for these
+types of clocks. See sound/soc/ux500/ux500_ab85xx.c, for example.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Maybe there are some additional pieces missing from the old down
+stream kernel, I don't have full picture, sorry.
 
-Thanks!
+Anyway, if I am not wrong, this was about supporting a low-power audio
+use case, which requires us to switch the parent clock (to avoid
+wasting energy).
 
-[1/1] spi: mediatek: Fix DEVAPC Violation at KO Remove
-      commit: 0d10e90cee9eb57882b0f7e19fd699033722e226
+>
+> So, the set_parent hook is effectively unused, possibly because of an
+> oversight. However, it could also be an explicit decision by the
+> original author to avoid any reparenting but through an explicit call to
+> clk_set_parent().
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Yes, this was the reason.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+As a matter of fact, I don't even recall that re-parenting was
+possible through clk_set_rate() when this clock driver was introduced.
+But, I might be wrong, it's quite a while ago.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+>
+> The latter case would be equivalent to setting the flag
+> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
+> to __clk_mux_determine_rate(). Indeed, if no determine_rate
+> implementation is provided, clk_round_rate() (through
+> clk_core_round_rate_nolock()) will call itself on the parent if
+> CLK_SET_RATE_PARENT is set, and will not change the clock rate
+> otherwise. __clk_mux_determine_rate() has the exact same behavior when
+> CLK_SET_RATE_NO_REPARENT is set.
+>
+> And if it was an oversight, then we are at least explicit about our
+> behavior now and it can be further refined down the line.
+>
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Seems reasonable to me!
 
-Thanks,
-Mark
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
+
+Kind regards
+Uffe
+
+> ---
+>  drivers/clk/ux500/clk-sysctrl.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/clk/ux500/clk-sysctrl.c b/drivers/clk/ux500/clk-sysctrl.c
+> index 702f2f8b43fa..d36336665b6d 100644
+> --- a/drivers/clk/ux500/clk-sysctrl.c
+> +++ b/drivers/clk/ux500/clk-sysctrl.c
+> @@ -110,6 +110,7 @@ static const struct clk_ops clk_sysctrl_gate_fixed_rate_ops = {
+>  };
+>
+>  static const struct clk_ops clk_sysctrl_set_parent_ops = {
+> +       .determine_rate = __clk_mux_determine_rate,
+>         .set_parent = clk_sysctrl_set_parent,
+>         .get_parent = clk_sysctrl_get_parent,
+>  };
+> @@ -220,6 +221,7 @@ struct clk *clk_reg_sysctrl_set_parent(struct device *dev,
+>                                 unsigned long flags)
+>  {
+>         return clk_reg_sysctrl(dev, name, parent_names, num_parents,
+> -                       reg_sel, reg_mask, reg_bits, 0, 0, flags,
+> +                       reg_sel, reg_mask, reg_bits, 0, 0,
+> +                       flags | CLK_SET_RATE_NO_REPARENT,
+>                         &clk_sysctrl_set_parent_ops);
+>  }
+>
+> --
+> b4 0.11.0-dev-99e3a
 
