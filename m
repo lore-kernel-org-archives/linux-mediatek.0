@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0447C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 09:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C370C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 09:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ehegx5upTwUwKUa7i1fR2NFIOGbbZnhMXi3LaBv9R1g=; b=kiVX9WWVbnG7U9U6vGfrJG8C6r
-	suv4mkL6dU+LJ5Q9zfLUQofPaLIeYf8r3IfUhd18LfRRsyjVzpvR7G4Tr4fRw3tdHyY0bqoLeVn7z
-	GetOl2RBwpU3H8MKIeRrhB2+QQ7dR2/E0eGCFO1zVD0R2vlglUB7wu/twX6AN/VO8gwd802fEpRn6
-	8bXqOnP+22rN50+mTXTk0IbqR/qKFTUGTXftCccxhM5uFb7UBfbflLimhfqElIBK+efjlVhyVx+/s
-	2r7L+OcGQz+2awivM+2VI3HmpaltPIwHf6e0g7BIJ0taiKwNWA460u12zhKTMgb8A38fB+vLQ2ykx
-	xPKeenUQ==;
+	bh=VjNL9lqZXPJsMPQomTJqwXWyRRHD78kK/jkrhktmSYk=; b=0Pb2/T9P2EqQTVs2XhTlnbNfp1
+	lFXT687pXRmFdXu6Vs0AJsQy5pES37yOcg9k3MStGpCjonR07z7ZYqAthNLjjxqtBPr8iqjWIoHJY
+	SIl0HQ+B/HCPTG4DrDBuybS/fokvRetfltOjQKlUA3LaewKTsOECwhBsC+j5Fz7TsPfLK39rpch9H
+	ZuzrVOI46LLnWOWwSv7uXzy9paMTG2I9/CeN6paqN1Ih52daqf+r8zJiaUxgHIv3dfxCWk2Ekj9gx
+	FfqLo3RN/nNAK/X5ARkuHfFFCI/3SHshQqJFgttNsA4+QNXusbbn53oqOZaPjHOYhRq0xmrM7jVXC
+	eKc3xF4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot3R3-004Pwy-GU; Thu, 10 Nov 2022 09:01:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ot3SE-004QiG-Ke; Thu, 10 Nov 2022 09:02:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot3Qq-004Prb-Hg; Thu, 10 Nov 2022 09:01:09 +0000
+	id 1ot3S0-004QW6-VM; Thu, 10 Nov 2022 09:02:22 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 863E7660296E;
-	Thu, 10 Nov 2022 09:01:06 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B994F6602A12;
+	Thu, 10 Nov 2022 09:02:16 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668070866;
-	bh=V3LxIHxrigauZUZ1sN9cfEsRLLqICxP6H8hCpXI+0S8=;
+	s=mail; t=1668070937;
+	bh=ePBS862hPs4yf5c+mZnYpufOgVKu6Ts7nvvHguuCxDM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aOQPCbm9zRqrdI5uRlt2A1HHmDuFG1r7ITm3kIr2EVw1xgIwT4cMuO+czifU7qSLB
-	 orFCzor+dFH2YcfclZxAXJZbiEShr6lRb0KtrXpYrcAiYSrM8QqHTLvqJTmNj+NeUz
-	 ArhfcwqZeEdIOuGzv3zVtvV8vZve9PBzl9yyLvkTJ0fcGkeSwgmMsOSz1DLzQv9gb5
-	 IzP/xXjdB5RNVzyuci49a3zNEqrCLTYDJoZ3t5uTGAQfevfv9F+bLToky8BgAXd5Lh
-	 y0hkXM2rcTPVSR4Mwk0SxcoBsbED4XLdwRJd++VOpq/gyFNEq2sjTsTBLxAqdgrgfi
-	 yRU1WE/eJHctg==
-Message-ID: <0fc25cbd-6a4c-18e3-510e-a9cb1d394915@collabora.com>
-Date: Thu, 10 Nov 2022 10:01:04 +0100
+	b=ndhZA3GFoHwv/PZPwd8KVeA7WW4XwA3owaNqgfUSS5k8gi8uYtm3HqCD4OxboqsXX
+	 M7ydc5tijTAdmT2wPBlctu4DVMkAi+FSa7hqAB38v8Nb4j+n8WJd2/UVZPMWAZDart
+	 Ib04DdwnYrW25DYgOmtfEDAuCXTTEI5luzfH4N+1Sk7PfBZk4h+FQmWDhDsZdEVtNe
+	 VaooFsD30z90PnLjQrSwmS8d819tbNhiXOD9qAgnna7SY4mBN2FL3sN7hby8fBxJ/N
+	 9Ntcq6hJWRwpSRhA4bQejaM15hHwU6hGcJXcLDyLxaBYpUUsXjT9hjxtaWmxq7Io74
+	 2/cOMXxqfMHZw==
+Message-ID: <a430f1c9-0d25-5771-6a9f-23f47daa3759@collabora.com>
+Date: Thu, 10 Nov 2022 10:02:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH] spi: mediatek: Fix DEVAPC Violation at KO Remove
+Subject: Re: [PATCH] mmc: mtk-sd: fix two spelling mistakes in comment
 Content-Language: en-US
-To: Zhichao Liu <zhichao.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com
-References: <20221110072839.30961-1-zhichao.liu@mediatek.com>
+To: Yu Zhe <yuzhe@nfschina.com>, chaotian.jing@mediatek.com,
+ ulf.hansson@linaro.org, matthias.bgg@gmail.com
+Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, liqiong@nfschina.com
+References: <20221110072819.11530-1-yuzhe@nfschina.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221110072839.30961-1-zhichao.liu@mediatek.com>
+In-Reply-To: <20221110072819.11530-1-yuzhe@nfschina.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_010108_748717_6F2CAED7 
-X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-CacheID: sfid-20221110_010221_163744_94FB2BE4 
+X-CRM114-Status: UNSURE (   6.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,17 +76,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/11/22 08:28, Zhichao Liu ha scritto:
-> A DEVAPC violation occurs when removing the module
-> due to accessing HW registers without base clock.
-> To fix this bug, the correct method is:
-> 1. Call the runtime resume function to enable the
->     clock;
-> 2. Operate the registers to reset the HW;
-> 3. Turn off the clocks and disable the device
->     RPM mechanism.
+Il 10/11/22 08:28, Yu Zhe ha scritto:
+> spelling mistake fix : "alreay" -> "already"
+> 		       "checksume" -> "checksum"
 > 
-> Signed-off-by: Zhichao Liu <zhichao.liu@mediatek.com>
+> Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
