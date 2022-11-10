@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFC5C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 05:33:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C234C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 06:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=biIlgnOa19EuvR79yaxqUqFjHhCMWtwXXgdFbZ/hUco=; b=HjjvmkJxgCqR96qMmp6PHvXJTd
-	jGmxnoNA4RAiu4K4CpCgaHlynwFbRvMC5R1lGXr+KJAp0XNYd76rorpdA9ZhH4Oq0bbKBYWTpFutz
-	YXDLBqvReSf1uLh/0aU5Q+Gr6DKAnwi4TfE1jeMXfntPXw+FUdvCHpy7oTxTlIjtgSpB5ypdL1zi+
-	0jL+0dqpIxmhnZ4gHQrAXqVQXGvgoN0DUIL8PFiHEE2INKbRxLAOt/j8tpGLixRYok+p5E7g2rHj9
-	MdmSNBOEZoj+eoYkq70lAgNqa330d/+FRggfAtpSgxedDP6q7yk+W5+DCZK97eEORD4Ir0G3wWdlE
-	8eFZYNaQ==;
+	bh=o4SwcYmQeEsPhNZNiOlAz3LSIKt52BQiCkN0gMjK+lM=; b=xsKvuh6EkSkAMh3/DNHvvjJ8N9
+	J0Mn5+wK7a9ZMDwY7reucypz+6JPzxvSax4U22Y3rjn34cAVh0u+SQFQC6qupZBzvCuMiFbXNkxcR
+	WqzKUz72f2LBtK+dmKANRQXpWlB+R5vDINbqVDvoyJ0f+TRYsF2qvUaYzX63yrXdP0I4I0JVn69cX
+	hMi4pKyAjkM1DeBYQTwHgaxHPu866nfDR2QiAKzTmKFnvDhJkH53VJEhr1HAI+fzVEICpwP2PQmDU
+	rCD3fPFESXocewdcDroz+V4+H6+uULZF0SMOYfLOVf8/0qqTufelAvUeBYbBKSLSfbkVLLle6ay/G
+	A2lispXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot0Bu-0039Q4-5C; Thu, 10 Nov 2022 05:33:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ot1CR-003QqD-Hv; Thu, 10 Nov 2022 06:38:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot0Br-0039PJ-Mx
-	for linux-mediatek@lists.infradead.org; Thu, 10 Nov 2022 05:33:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B782E61D70;
-	Thu, 10 Nov 2022 05:33:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53BF1C433C1;
-	Thu, 10 Nov 2022 05:33:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668058404;
-	bh=3hgeLAwk4esWTSqgIqITFPv1E5o+nyLyDn8nF6HntFg=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=J3vyFZcGmUSmoPWg4MkblFRaowrBTOzFakon/JqxJNc9bJNnJEtzb3ECSLPAKE9GG
-	 vjIQP4LOLr2bkl7H9THJ4r0nujREzedt5zUtAiBxF72y56XOuTnZcc1e/11J3iuQLL
-	 7he6aGjR3eCQkpXAHoqtgIcACPgCcNFqrCzSvVwCRrSZRKJ7XG0xJ6EFTgsl1fiYp9
-	 kaY2SNbH97tdC7WIONUifYIS9Oly+7WT57ShdG8HzU1PLPR9tfPekngVy0W8LVdQr4
-	 m//kDz1UfVuAtoPqkDHmuoC5ipeU2nmTllseYiLEplWxYeZ6NqSyPFX/ndkRUF3f/e
-	 vMfT99DxG3u8A==
-From: Kalle Valo <kvalo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,  Lorenzo Bianconi <lorenzo@kernel.org>,  netdev@vger.kernel.org,  nbd@nbd.name,  john@phrozen.org,  sean.wang@mediatek.com,  Mark-MC.Lee@mediatek.com,  davem@davemloft.net,  edumazet@google.com,  pabeni@redhat.com,  matthias.bgg@gmail.com,  linux-mediatek@lists.infradead.org,  Bo.Jiao@mediatek.com,  sujuan.chen@mediatek.com,  ryder.Lee@mediatek.com,  evelyn.tsai@mediatek.com,  devicetree@vger.kernel.org,  robh+dt@kernel.org,  daniel@makrotopia.org,  krzysztof.kozlowski+dt@linaro.org,  angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
-References: <cover.1667687249.git.lorenzo@kernel.org>
-	<Y2vBTBUw47sshA+E@localhost.localdomain>
-	<20221109110538.431355ba@kernel.org>
-Date: Thu, 10 Nov 2022 07:33:18 +0200
-In-Reply-To: <20221109110538.431355ba@kernel.org> (Jakub Kicinski's message of
-	"Wed, 9 Nov 2022 11:05:38 -0800")
-Message-ID: <874jv7tlup.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1ot1CO-003QT8-8N; Thu, 10 Nov 2022 06:38:06 +0000
+X-UUID: 00232bd383fe4ed8a445598e32de8220-20221109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=o4SwcYmQeEsPhNZNiOlAz3LSIKt52BQiCkN0gMjK+lM=;
+	b=ZkKnoofum6hASHZt3TZG5BNd4iNfpwShZ/FMMGsAyaKsywM8huesT3wOzfQd0ei9hb2pXrHwFofmV5uurhpCIpH2nN6rr+h1Vz/7lDIwX1mmkkkGTsnJkWWAZ+tv0Cr28Rsp5SVSRG5u/Gjr4XosOaQNJZTISgClDnhUZNbkg/U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:37ee2439-26bb-4a6c-9a73-d527c79cd9ba,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:37be265d-100c-4555-952b-a62c895efded,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 00232bd383fe4ed8a445598e32de8220-20221109
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1761424802; Wed, 09 Nov 2022 23:37:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 10 Nov 2022 14:37:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 10 Nov 2022 14:37:18 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>
+CC: <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v4 4/4] arm64: dts: mediatek: cherry: Add edptx and dptx support
+Date: Thu, 10 Nov 2022 14:37:16 +0800
+Message-ID: <20221110063716.25677-5-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
+References: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_213327_805566_925F1058 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20221109_223804_319069_FB25F55B 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,23 +81,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jakub Kicinski <kuba@kernel.org> writes:
+In cherry projects, we use edptx as the internal display interface
+and use dptx as the external display interface. To support this, we
+need to add more properties.
 
-> On Wed, 9 Nov 2022 16:03:40 +0100 Lorenzo Bianconi wrote:
->> I noticed today the series state is 'Awaiting Upstream'. I am wondering if
->> this series is expected to go through a different tree, e.g. wireless one
->> (adding Kalle in cc). In this particular case the series changes only
->> the mtk ethernet driver and mt76 is built since we modify a common include (but
->> there are no changes in mt76). My personal opinion is this series is suited to
->> go through net-next tree but I would be fine even if it goes through Kalle's
->> one. Any opinions?
->
-> Works either way, we'll see what Kalle says.
+- Add pinctrls for edptx and dptx.
+- Add ports for edptx and dptx.
 
-I would prefer if you can take these to net-next.
+The port connections for the internal and external display:
+dp-intf0 -> edptx -> panel
+dp-intf1 -> dptx
 
+The edptx endpoint is kept empty for now, as the panel addition will
+come in a later commit.
+
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 68 +++++++++++++++++++
+ 1 file changed, 68 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 303dc32c64dc..560103e29017 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -125,6 +125,7 @@
+ 
+ 	port {
+ 		dp_intf0_out: endpoint {
++			remote-endpoint = <&edp_in>;
+ 		};
+ 	};
+ };
+@@ -134,6 +135,59 @@
+ 
+ 	port {
+ 		dp_intf1_out: endpoint {
++			remote-endpoint = <&dptx_in>;
++		};
++	};
++};
++
++&edp_tx {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&edptx_pins_default>;
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			edp_in: endpoint {
++				remote-endpoint = <&dp_intf0_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			edp_out: endpoint {
++				data-lanes = <0 1 2 3>;
++			};
++		};
++	};
++};
++
++&dp_tx {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&dptx_pin>;
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			dptx_in: endpoint {
++				remote-endpoint = <&dp_intf1_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			dptx_out: endpoint {
++				data-lanes = <0 1 2 3>;
++			};
+ 		};
+ 	};
+ };
+@@ -497,6 +551,20 @@
+ 		};
+ 	};
+ 
++	edptx_pins_default: edptx-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO7__FUNC_EDP_TX_HPD>;
++			bias-pull-up;
++		};
++	};
++
++	dptx_pin: dptx-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO18__FUNC_DP_TX_HPD>;
++			bias-pull-up;
++		};
++	};
++
+ 	i2c0_pins: i2c0-default-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.18.0
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
