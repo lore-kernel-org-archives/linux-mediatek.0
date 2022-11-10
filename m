@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263ECC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 07:29:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E78C43219
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 07:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=t0/o53uHaLc1cWdwkI5TfPVjLrmOsQYjVeraYDpXbyY=; b=Z34mmiOOehvE/3LyXwugBcpK+2
-	0K9XGGWOVxSJzVGbAoc6vPbHHK3a7yYmNScY9kCVf9EiN8Ao4iNqyGZK03vnweF8LZhECs3m+IeMY
-	LzYFiHXBptqPbB05SrZB5OKs1vcs6wn0yXyaEn9U79W2t7MxYEsD28WfhnaEx0DLibjw+wIP8VXDK
-	TkNxRkre/9sXQ8tUYP1+74h3aehAKMBl4pD8BTFIrZt6gZsg/b0rZjaI0db05GiBSLozMdzWEnU9A
-	dDCLbtW2vEHW/x3qa7Vp3R421iEEkNx8/pRwuPO06/g138lU+VzqhWbUhyhTduDHQXs8SEW75Rnjc
-	OeJJP+Rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g8vhFKeVZODszpNNdcs1n44q8B0+ixfLD0v3NWycG2k=; b=pnowkKaGjZMIs3PvEoqxw5OZ/k
+	MMI9/sQX3jXnHO/iWt2/Jle8LGc9rS01LS2PylNYxs5Hr3J2jHhyVlzVarqJlQRzyo4j4UvJTNj5C
+	nl4PIA+T1AIvcEgk8l8sUigzRhwJGamb3IYK5lN8tVnIFiBDeaFzv2aOaL/U7YKrb3NsaAQ51xm6M
+	2/xSetSLMY3d1YK5chGfSBPH9+1Ynfy1RqlbdZVUa9TNC5Bnj9gCq7momNtiqQx+iker3s8Zv7i+u
+	JcDfwAB0JY+/gQhhg1zkMTUjiE4VQuCkB3dK370djxaLqULSRwtCiWcdEPXm4tcU2HjgQ4mQG6Da9
+	NhAs/olw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot208-003n3L-Ud; Thu, 10 Nov 2022 07:29:28 +0000
-Received: from mail.nfschina.com ([124.16.136.209])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ot1zy-003myd-L7; Thu, 10 Nov 2022 07:29:20 +0000
-Received: from localhost (unknown [127.0.0.1])
-	by mail.nfschina.com (Postfix) with ESMTP id 261A11E80D74;
-	Thu, 10 Nov 2022 15:26:34 +0800 (CST)
-X-Virus-Scanned: amavisd-new at test.com
-Received: from mail.nfschina.com ([127.0.0.1])
-	by localhost (mail.nfschina.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uKJeQaodD6Q2; Thu, 10 Nov 2022 15:26:31 +0800 (CST)
-Received: from localhost.localdomain (unknown [180.167.10.98])
-	(Authenticated sender: yuzhe@nfschina.com)
-	by mail.nfschina.com (Postfix) with ESMTPA id D5AC71E80D6D;
-	Thu, 10 Nov 2022 15:26:30 +0800 (CST)
-From: Yu Zhe <yuzhe@nfschina.com>
-To: chaotian.jing@mediatek.com,
-	ulf.hansson@linaro.org,
-	matthias.bgg@gmail.com
-Cc: linux-mmc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	liqiong@nfschina.com,
-	Yu Zhe <yuzhe@nfschina.com>
-Subject: [PATCH] mmc: mtk-sd: fix two spelling mistakes in comment
-Date: Thu, 10 Nov 2022 15:28:19 +0800
-Message-Id: <20221110072819.11530-1-yuzhe@nfschina.com>
-X-Mailer: git-send-email 2.11.0
+	id 1ot28Q-003ryF-L6; Thu, 10 Nov 2022 07:38:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1ot28N-003rta-SW; Thu, 10 Nov 2022 07:38:01 +0000
+X-UUID: c169637394654c6099bd0154750c1543-20221110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=g8vhFKeVZODszpNNdcs1n44q8B0+ixfLD0v3NWycG2k=;
+	b=IBiW34Q24VMck8asBhnkcKvtdizaveZPW063PBBUXsj5mA2TMQCVtbNIHg4E4v0uHZDJZpkvZI99s3B2yggzLXN7ICkyAC22PjKGTuRBdxNaOsYD+vs6tIt0m81yN0xnkEIBym9qKKZO4hfJFLZZ56Yn1Pjx6+MrFeq8gENfJHk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:37faf310-9894-408e-9d2b-48d5eea0acca,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:58ab285d-100c-4555-952b-a62c895efded,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c169637394654c6099bd0154750c1543-20221110
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 918214662; Thu, 10 Nov 2022 00:37:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 10 Nov 2022 14:37:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 10 Nov 2022 14:37:18 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>
+CC: <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v4 3/4] arm64: dts: mediatek: cherry: Add dp-intf ports
+Date: Thu, 10 Nov 2022 14:37:15 +0800
+Message-ID: <20221110063716.25677-4-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
+References: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221109_232918_917326_64F43D83 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20221109_233759_939558_99D6DCFB 
+X-CRM114-Status: UNSURE (   8.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,37 +82,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-spelling mistake fix : "alreay" -> "already"
-		       "checksume" -> "checksum"
+Dp-intfs provide the pixel data to edptx and dptx. To support edptx
+and dptx, we need to add dp-intf0 and dp-intf1 ports.
 
-Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/mmc/host/mtk-sd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index df941438aef5..a10aca76dfb3 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -735,7 +735,7 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
- 		else
- 			bd[j].bd_info &= ~BDMA_DESC_EOL;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 9b62e161db26..303dc32c64dc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -120,6 +120,24 @@
+ 	};
+ };
  
--		/* checksume need to clear first */
-+		/* checksum need to clear first */
- 		bd[j].bd_info &= ~BDMA_DESC_CHECKSUM;
- 		bd[j].bd_info |= msdc_dma_calcs((u8 *)(&bd[j]), 16) << 8;
- 	}
-@@ -1212,7 +1212,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 		     !host->hs400_tuning))
- 			/*
- 			 * should not clear fifo/interrupt as the tune data
--			 * may have alreay come when cmd19/cmd21 gets response
-+			 * may have already come when cmd19/cmd21 gets response
- 			 * CRC error.
- 			 */
- 			msdc_reset_hw(host);
++&dp_intf0 {
++	status = "okay";
++
++	port {
++		dp_intf0_out: endpoint {
++		};
++	};
++};
++
++&dp_intf1 {
++	status = "okay";
++
++	port {
++		dp_intf1_out: endpoint {
++		};
++	};
++};
++
+ &i2c0 {
+ 	status = "okay";
+ 
 -- 
-2.11.0
+2.18.0
 
 
