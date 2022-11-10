@@ -4,80 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B09A0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 17:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C54F8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Nov 2022 17:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x2t1WEHSv/Xobd4JFvIWEfFa5FRwPCsm+v8kpN8OtL4=; b=D3t+YWYFN92i6hPvSqLY/SctrU
-	5S8JYEF3giFk2Fl14Z5fW7GSs9NKIlGCCrqwFj6xyIEnqplVwnrGmgkW4BwOGbXR+P+DWA722Xy2y
-	apWZTIT5oQDSMVpZo8U9yE2kZzzquPuUNxQSqiZU1uHOc4z7HO2xDNvicSl4eTFmLCO+3ZIPu1FbO
-	7JkwxSGK/jD4wi4j5O5XC6u5CjpRuPVxnU4PZTdCVYVLR5hGb8yAymi3wCCf+VFFYyY+Ve0pdvEte
-	NADpj+zvGLHaiwCFFWikuAlTZdLHuGaVSB6bjVARV5ELy4gIwFadYOIk0aCx2OywTWr6e3F6E6nBc
-	bEEGs/3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XQcOQYZnlWJWG3dwNjhp6DaZdmsdFdfCvAjvOwArSus=; b=uyrrOcRe7Sj85luAYpkVzwEm40
+	iNddhB9a9BmFlIQKbUGDrU2NruppkHJkEj6hQLXuxBgrzvHglhYflyvavjAkqAtdL8ZMRkjY12KVJ
+	8sevb0Vw0bs238d284ItzVQ/HmHRKeUw6FXcFxBj8ZxO5oFCcYgEXSGhTHDS4CbMqqzWOkxePoTrc
+	ZVgTMlhbS+IazFf3ZNPfmMjHbWqSPFJ1oFJqc/D8cldi7kb8QBW1hH9IoVFpTsxUzPvAOGc3yidlN
+	SIOgZysQwDp4QJMsZVyDjJLW80AyDGnQEO+kwFfQ3qiNws+29SFNdGpj+KQu5ok7TFf7k1yHBOatY
+	HmowidKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otAxy-007SUi-PZ; Thu, 10 Nov 2022 17:03:50 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1otBmC-007t6r-R3; Thu, 10 Nov 2022 17:55:44 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otAxt-007SKX-GQ; Thu, 10 Nov 2022 17:03:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668099812;
-	bh=x2t1WEHSv/Xobd4JFvIWEfFa5FRwPCsm+v8kpN8OtL4=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=qbQJb8LsfyFmehWDtMO3aS428gTw8gO+ub3zsckAX0LZpPX4f29zVXvCbI6svFrtG
-	 m/fVu6hF3CvPJXllPP0f1E3j8IRCHy8PolvTDLRJ52nMM59l948+36TjORgeDMvhZA
-	 rVp/wLJz8HOFiikqJh9qAye8dg/oUDtQrZBoNnEpI49QAhUs6Oit9muRBmPfz0sxpe
-	 IYxb0rVZn/Nxwp4ON1MZnYbaizbP69DqUrv6ZzIwaBTeXHgsqh3FDpkbheXPyjXAV+
-	 qLtM6SxkZDFeMM8MmMWyBbKOmFmlLTZ7RS9ADqXnfCciKgIxTpRsuPaDpu4xMJ1Rn1
-	 Uc8GAVPPQmOwA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.79.199] ([80.245.79.199]) by web-mail.gmx.net
- (3c-app-gmx-bs29.server.lan [172.19.170.81]) (via HTTP); Thu, 10 Nov 2022
- 18:03:32 +0100
+	id 1otBlz-007szn-U9; Thu, 10 Nov 2022 17:55:33 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 54F76B822A4;
+	Thu, 10 Nov 2022 17:55:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FD9BC43470;
+	Thu, 10 Nov 2022 17:55:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668102929;
+	bh=uV0gS8Zym8itzBA6jauOP1PQV82pLKsM1MencwuTk4s=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Z7DtR/W642sNyhHLYsGF9t6PWbPia5GkKB4yquzhZFYAvCBEnTcYcisLNDHz9Bm63
+	 OTf+hyTDdcTBydtqHGAogg+cRonEAQGpoD4mTzw6wCOXzR0yjB/6ZKcMpZXi42Mbyn
+	 rANmyW37gYKhH6RrxflwttID57nm9PwgFtphiXGERDsfT8sxydKAd5r+vP7TTHIy7C
+	 Qzo4XmmpN0Ad/ebklnZr0Gng49ivNjEmDGJ0CXENDqgHpgYmnJ8v99neDo7/nihMGZ
+	 Soglp8CY1c9ue1w5rdnoosLUs8pL8D++mN2+t8w6PxPD6BzKdOu00cUf0KbyFwR+kn
+	 J45ZAFyZv45vA==
+From: Mark Brown <broonie@kernel.org>
+To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Cc: alsa-devel@alsa-project.org, kernel@collabora.com, Miaoqian Lin <linmq006@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ Akihiko Odaki <akihiko.odaki@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
+ linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221104212409.603970-1-nfraprado@collabora.com>
+References: <20221104212409.603970-1-nfraprado@collabora.com>
+Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8183-da7219: Register to module device table
+Message-Id: <166810292583.959181.9972965736235328683.b4-ty@kernel.org>
+Date: Thu, 10 Nov 2022 17:55:25 +0000
 MIME-Version: 1.0
-Message-ID: <trinity-e9c6aa94-6656-4d9c-9d9b-90ede6c8e6fc-1668099812662@3c-app-gmx-bs29>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Frank Wunderlich
- <linux@fw-web.de>
-Subject: Aw: [RFC v3 00/11] Add BananaPi R3
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 10 Nov 2022 18:03:32 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20221106085034.12582-1-linux@fw-web.de>
-References: <20221106085034.12582-1-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:VQN4MP4prAKaeyQLdo2F1bcNtu4aIBSNXUEd5DaVlqlo7iiDfD3e/MRde1CxmvKyslJ01
- irslpCjv+U51lb0D6pDTYdwkEr9/Vi0BMF+t21Y+02yh83JcDo+32werxADltPtMgbeZV/J/ymQO
- lcvuVTh3t2XadeBpqIsfdCSrZ+sqsWmiLgSk6JhLfcUX6a2iNIcblbRMNynXCNQa2zRdgtphq876
- FC+xZJlSQVAdlVY/jZ7QDMa+soZRCtQWFHm6ZEdXCpgtzXXBTWyrzVYeReiQQAqpm9AFETsGq9hS
- L8=
-UI-OutboundReport: notjunk:1;M01:P0:d/Krjwy8YxE=;BwTpPoAIASDm2UbdYKTFs+Zjp6R
- H9PD04o8pce8Sm0YsxBjQBLgwa9Y3sorQIw+8Zi75ZiWntaG24sLVoH8HA7bbotlgFVs3jtbI
- lm5+fbMVAKYVgXVxg+q3WM6+sS4ZBuoD1P7Hh36cW3Ey9kQ/FLVxCE+EEesTcTt5kHGskdhkM
- GVg6Ys1LfcRGpXw6RegvoAiSvBezHlTI9wi2lejCG9jeGhGRVOuSje/tBQIzns9WlMwkYN6gB
- Tq6YTOH9VM9iuy1tMAVF/q2Yb2iCGr4vvbKk+W5+6sGpr8amSuVfY9ZyoGTr72gybnqmTr0qI
- cDKJwX2mRE2cnfqYBj9oIKO9CUu6ZrBO7p/Ap/16LpTHM53v2YDn2kjKZB+oYhTqyWQLL96zj
- kwoNTA3P4s2ehnDfQYdsCQ4pVS3tP7Z6OV87b8V12k3EpoboCK3Kr68xW+/SQDv7RhOoyj+kS
- TaV5b58TkeGUZkjQ0jbVmxUzRhAcPyuWyvMV6YxUA9h+jhFZlIIt2O/lXaUb6e54asJsEOtYQ
- m2RtVqIPqWWsHbfjPqQapzAhrgREZ9lQrTZWggF1qSOULrVbJpnXKFWdiEsRhkcCNM8XUF2Ak
- s0R9g3ycbbigNtx9pQsFDflI0lm9M7674Vv1ALmGVmsQDdLYMm/TkrJL4RPmGQD7RlTXg+l/G
- 2hUH9MrnscaIgGer3JyOkYQxAUV/GDomqQpnArQPDlDIxCbpieDHi8uoe1pwsHkTiepTq2a2Y
- 7oCc8zlLKIFNLdq8fwvyKiCjE+uf6d+5I6GnOCH3q6hwnqlsqLeftP9qJr81nOCbIMJ0jVJBn
- lfBG7EVBlRZOJi147aR6osCXt9SGxqsJ3YcGwuEBmMCxk=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_090345_970027_5B44C9E0 
-X-CRM114-Status: UNSURE (   6.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221110_095532_136763_30AEEDD9 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +74,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Fri, 4 Nov 2022 17:24:07 -0400, Nícolas F. R. A. Prado wrote:
+> Register the compatibles for this module on the module device table so
+> it can be automatically loaded when a matching device is found on the
+> system.
+> 
+> 
 
-can you please take Patches 1+3 of v1 into your tree?
-due to reordering in my tree i missed them in this version
+Applied to
 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=685798
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-pcie-bindings are here:
+Thanks!
 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=690172
+[1/2] ASoC: mediatek: mt8183-da7219: Register to module device table
+      commit: b5e004b0e5b57d14ac7804875878cdfdb31c9288
+[2/2] ASoC: mediatek: mt8183-mt6358: Register to module device table
+      commit: bc63a806acdcfca201c68c820731d74185118789
 
-i found 1 error in bpi-r3 dts (properties from sfp1 not plural) which i will fix in next version and will drop
-the compile comment in dt overlays.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-also i've found this commit:
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?h=dt/next&id=363547d2191cbc32ca954ba75d72908712398ff2
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-so maybe i need to rename my overlay dts files to dtso?
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-maybe the others can be applied (at least the mt7986 nodes)?
-
-regards Frank
+Thanks,
+Mark
 
