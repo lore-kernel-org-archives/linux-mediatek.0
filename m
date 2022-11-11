@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D742C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 12:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9822C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 12:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vomVH4hGvaTNsTHXITvhcXN9JynH/ws7lJFxyIwVXrI=; b=oF2QbD/XRbWeutDs57oWrQa5+e
-	neqQ7HLc8yF+IyD61b3T7NR1sn8YhkEuw8G0fFRqz0hX68BvZCf7AdFrAR2E3R+UQgZ4NajR9pJR+
-	mGmq2GaHvGkTu9uvPIpRFOX2NYZTZ+ZqFZ1rNCwJuqux+ZsBtaJQNOUIrMpfHlZzYYwvGRNqY1D4Q
-	KPtZjhrAOAPQ02mki60QbgN82wz0qssDeSFu1pNprV00gcZ0K8x92M31HWddarLpZTn2OXoR0n07c
-	Qs7v5sKiZihIBRpN9VrucQgtjpqRKDnb/kZYI1dDKk7pDsbb0r1hy3xqIKwO5euONCrUfh3Ul2nQA
-	9tg6nFVg==;
+	bh=zjWAsr+RvOGj+BTsFabySpMvwV1qHn6L4iU1gBJ8zWk=; b=U3qAm3X5bp3It2cDMqxklUWISQ
+	gJl9Q+ZUgapLmgoGm8XsAphzH/8sRHagF2vTiYnCGXyClyfOp5lVIFpCE2RsXR4EVmYMrekLLkMqX
+	n2/ONmQgwAyqAJ9H8esbWHeESPyK7N5qFyiJj/q6+dnoakL2vNF4HOL2LhDpjEU8wWCKoKTDkpFw+
+	pjmASkC1T5JVkKcoE2n/r4QNvzGx6LjL1/nGiWhSl4giK5HgccEtzrhIkUh5KSRtm7eNOw8dyGWOo
+	TH7R60K91Fe3t6dgs1m8dzSSP6ffouVL6Ya+NhOxwiXZojkII8HEWB9xpCMKphHRnJCaj8J9kDZqY
+	W8qR+4lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTIT-00FdUC-IN; Fri, 11 Nov 2022 12:38:13 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1otTQ7-00Fg2n-ND; Fri, 11 Nov 2022 12:46:07 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTIQ-00FdSG-58; Fri, 11 Nov 2022 12:38:12 +0000
+	id 1otTPw-00Ffzi-EY; Fri, 11 Nov 2022 12:45:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668170275;
-	bh=vomVH4hGvaTNsTHXITvhcXN9JynH/ws7lJFxyIwVXrI=;
+	s=s31663417; t=1668170741;
+	bh=qneJJGHoqWYbu5rchBDl5skDJGGz8YlMGk6gDkI/2nk=;
 	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=kZQLp5U7kMMYp6mfAsrl7LwptADZs8vfS+g5aOjUUxFrSMA447zx84J/9u/3CAxYk
-	 z9JeXnY4AuuegECvKNk80p+rNKTxJZJPbEFRkDLh6kekj0XHLwxiuBTM9K80LWTIzs
-	 qcMHJqyMHYKNJeOLP6BDMkv6CSAb7pw2OW1v9Y9d9MVqIRBOHvHvPf27tGV198QItG
-	 pso7Ss/i5PzBvN7rB9oJPcnVuZAj70VL30OIeFedr3Ei15Kmvge8uzxgF3EWF0ZEft
-	 pQC4lbStYnYVhfVpCR+1/u6DNuXRrxj6+fQoJEEBeZq9LGlOEaDIXV6x454Q9xhtcL
-	 iHppbch+vzBzg==
+	b=rPLQNBZZO4h+5oiwI2s2dkXi55MzW4QCr4sgHtnRVk42EVw9x7hUBAiMdi5rJThUI
+	 67qgkiUv6jmUSweUtVbp1yUCwc052RTK1/oeN/ZQ5OlX+zjEAGxx0tC5zhOwJtyyPA
+	 3KDMamhoECn6W3NLh/mkDCvJ9zdHbjDW3ugczX7OkCe91cEAdBtK7KNDvTRctjuDSr
+	 rsxxIBErErvAj3zyIX3YQJmy9sHb6ZHbyTPyxOcvzJ9rFYb7J6WT/X2cbhjtibU3iD
+	 iKuSP3YsrTY3bIcWK0yILxwuAJFS/15/+dqJZpssy2o2LUWlDNTacd2PMKMSHyWXol
+	 j+WlBOp5Yyz8g==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [157.180.224.127] ([157.180.224.127]) by web-mail.gmx.net
  (3c-app-gmx-bap63.server.lan [172.19.172.133]) (via HTTP); Fri, 11 Nov 2022
- 13:37:55 +0100
+ 13:45:41 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-b1022e89-9e6b-417e-9506-431574251dc3-1668170275463@3c-app-gmx-bap63>
+Message-ID: <trinity-6bc6a2db-9bdf-460a-a9e5-e8d5aebdc579-1668170741328@3c-app-gmx-bap63>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Frank Wunderlich <linux@fw-web.de>
-Subject: Aw: Re:  [RFC v3 00/11] Add BananaPi R3
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Sam Shih
+ <sam.shih@mediatek.com>
+Subject: Aw: Re: [RFC v3 05/11] arm64: dts: mt7986: add mmc related device
+ nodes
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 11 Nov 2022 13:37:55 +0100
+Date: Fri, 11 Nov 2022 13:45:41 +0100
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <a34fd2d5-b7ed-2fea-7a6c-acc7659cb001@gmail.com>
+In-Reply-To: <9955078b-72cd-4260-0cc2-ba1b9e0a0bdd@gmail.com>
 References: <20221106085034.12582-1-linux@fw-web.de>
- <trinity-e9c6aa94-6656-4d9c-9d9b-90ede6c8e6fc-1668099812662@3c-app-gmx-bs29>
- <a34fd2d5-b7ed-2fea-7a6c-acc7659cb001@gmail.com>
+ <20221106085034.12582-6-linux@fw-web.de>
+ <9955078b-72cd-4260-0cc2-ba1b9e0a0bdd@gmail.com>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:qzBXiIbmK6VlpmlzQ8d/pWtwIGf1DVbX1BVamaBSp5KUXn5tY9cVbZSny9tIZlVHZ48zw
- m4pLYujy30CBnl5ZCRFMPVoBZnoCXRieIIqhDM36P11G6whstxQ6XptO9YpX+kxWWU9xqwQ2oYw1
- m15+CPDoMA4eENjC50kiSs7+AigLrXkZSkyzmJE3CuogagZ487oPOk7zDhP7PCnAhwZZA+o2HZOY
- BSbdgkBRfn0T7VcZXPDQKoqwBHfSPKl+TzwXf3QCTdyVwPKrRNWLXbx7mKy5FPlt94EHvrd0Lpuv
- EY=
-UI-OutboundReport: notjunk:1;M01:P0:XUKcN6EumEM=;XqaSSbZ/dRE242s41zQECcN9B8U
- wc/UjnMHgeRHgRqMkiIGi60wLr3JIqNTxGOMrX8leR8PSh4roQy7TcmUGUup+PO/qiqiyFkmG
- 8+cRSy7VcikF+LecZRCjyIUSZYy6hxyltkOHSuag4z/ymfNZq5GWXN8EsZVFCSqMkxsZYH8Ko
- NcnORU7vAQv1f6YAGdHOOtOms9qn1zvv3twqzeJ5PBgYg6pKVsWSGGi60M0Kl356TGVBbNmyl
- nNdppagaCMgzfObw4IAs31aJTDS4TJclAhPo9KuWdpY9pgJamZoVz3Hjv5UtzvaPraSmmml6w
- lgqQelRwRFGgv/sd6KmE9jele1CsNkylaIxfzdCX89GntbRqJDeM39xrIXRl1h4hFR4uQOmP3
- WJAQ+bqmc30fcZJFmDCWhowgVCLOksNfgonQE48Tf2SYKsOlT6jJmNQR0TyFchoeDdXDu68wy
- y3qCxdJjQNcJjTmf8X63TpiaehSIS4YZUcRo0c1QAtvCE5NBd4KayK8iT/yU3NBs9Z8iIscvA
- 7YCKfGDlucJjtZjZUvj0pr22fOv11zTJgcAIzlArNvP+sW6UusFZ6w4ibbr0gXniGKBj3qLoK
- 8CXBNJXCGw9IVuGQVSGeHnVXhPSKSFGadYGKh4FXkxdBd+tkyh0lJuxvcgnJG4xQ7/10EjNsE
- tGg6KcExo2KPGYtvd8tQvISLkbH55EKjDMnzfsLWXV4AGLvUpyGPXZgxJiN9xziGMRYLhtR9f
- uoHZczHnFlfSOC2Xvo0mIswxigdwkJVpOekKaU3RbAlfosGq+6BNqn/fLLyPtcCquxTE54DlF
- E2eLqnILjtYM0+lmR4O+vQoCx1H2ZkY6K1MuqPDKWbFC8=
+X-Provags-ID: V03:K1:uVg3wzNrILOD0hMUF9OrIK2sauhiLJ0L97UfHqLn79TwvVMrQmYlpmXGxlzHuBUCoJ/GX
+ aUX1+963E5c6LznpCZDV6oSScaJbsffhX1md/uYVYdPbhfKcBwJlpxiAkWpjFMWFEbwqFsu4APpX
+ tV1jjb5/5cV6nfHMMs1OfSU197XcBuuzY5DApduT3jySQVptpt2tE1HBScZayl6as/Gpn+XVJv1g
+ 2jLTHGn5I15xaruDaqGUlKIMpCxkemuOOsS7xROP+7ivAijnJvrRQy6VZPFbWrMkwQsS8nH+7ow0
+ C4=
+UI-OutboundReport: notjunk:1;M01:P0:rJZgTu1YGdk=;FvoX5LF81jBREy7bE8wHMa7TySI
+ yEAocm5OvPnl23qhZLSxMkzctb8ibQbCs8JW+wpty/cqdRqolQGddqFjyDWii4sjgO7UMvlR5
+ SfqgUY4VVUEWd+1ffCNcPL4HqUi4s/lY7UpoJIICjMwD1seEtFOwAvrXPb4g1EbCMAdc5i/VD
+ TIY+zoRRPe+4/Sc3Yc3FGZ/XYmmJdoWwK5WW7OB1kl9FSd8EAf3x2OqXHBAZ76+7G3awqKLnJ
+ Gnn9+EQQ0ezLMvR2sZTYX0WwY2k78OBes4qJaxIcyGVJEjG+/xpu00caKUR2JvKtLsMDnR4xp
+ RkNp6LM4h3QKDg/zhyvLlkUQEAG2nNnGFU0Uwc7Q/JIiB8jDe/F/L9ZMCskhjNECSiXBUBzjT
+ ny9pbBUlnPFfQb/f51NyvOBR3yBDQNd3LVsyoxyHqIG0gGzz9EU3nDiTllXetNFP3w8qQ5nX2
+ Yq4qoZ3sfn0RY9k0nXtY7lm4takQ9/XT2SLaQ5f1+y2jqGIKXjfZ9VAKRbhrz5yNYJ3yRMm5d
+ PrepJytUIOz6Iw3Lo8GHrTbEBl8lzDSjDdNBlyC7Kaq8js1+Es7Fl4E7Z2APr/ig1/qDN0tvX
+ an1JUQesY6+sKriQqiqea1NJiNkeIWBg06QjDLl1JFFoJ11PcMKzxMyBZmKe0mA/TqG9BYJrP
+ 9pi1hDCmp+732fTV2lyjf6OylZj8TPWNwtN37R/12Z4SeCB2gI+m6AagcIe1zggWoW3WCJ9Xf
+ pllKUnNDwaWItt9HriBFpskVrREQwKlw4ah6V+vfKYVDVoc1Y6vREFXY3S+HfO2y4sBTEv0Sf
+ iFew6wTF8aUtRIPZGX2hbN1g==
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_043810_501205_5A5D04A1 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20221111_044556_787638_EF05BBF0 
+X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,67 +98,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi
 
-> Gesendet: Freitag, 11. November 2022 um 10:17 Uhr
+> Gesendet: Freitag, 11. November 2022 um 09:58 Uhr
 > Von: "Matthias Brugger" <matthias.bgg@gmail.com>
-> An: "Frank Wunderlich" <frank-w@public-files.de>, "Rob Herring" <robh+dt=
-@kernel.org>
-> Cc: linux-mediatek@lists.infradead.org, "Krzysztof Kozlowski" <krzysztof=
-.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, devicetre=
-e@vger.kernel.org, linux-kernel@vger.kernel.org, "Frank Wunderlich" <linux=
-@fw-web.de>
-> Betreff: Re: Aw: [RFC v3 00/11] Add BananaPi R3
->
->
->
-> On 10/11/2022 18:03, Frank Wunderlich wrote:
-> > Hi Rob,
-> >
-> > can you please take Patches 1+3 of v1 into your tree?
-> > due to reordering in my tree i missed them in this version
-> >
-> > https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D685=
-798
-> >
->
-> They should go through the subsystem maintainers trees. I'd advise to re=
-send,
-> dropping the RFC prefix and add the corresponding maintainers.
 
-ok, wait for your push and i create v4 including the missing binding-patch=
-es and the reorder of wed-node together with my fixes.
+> >   &pio {
+> > +	mmc0_pins_default: mmc0-pins {
+> > +		mux {
+> > +			function =3D "emmc";
+> > +			groups =3D "emmc_51";
+>
+> Waiting on
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20221106080114=
+.7426-3-linux@fw-web.de/
+>
+> Please correct me if I'm wrong.
 
-> Regards,
+this (newer version with some pinctrl-fixes) is applied to linus pinctrl t=
+ree
+
+https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/c=
+ommit/?h=3Dfor-next&id=3Dc115e7f51e685536ecb885854bdd4b3f225ff3e4
+
 > Matthias
->
-> > pcie-bindings are here:
-> >
-> > https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D690=
-172
-> >
-> > i found 1 error in bpi-r3 dts (properties from sfp1 not plural) which =
-i will fix in next version and will drop
-> > the compile comment in dt overlays.
-> >
-> > also i've found this commit:
-> >
-> > https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/=
-?h=3Ddt/next&id=3D363547d2191cbc32ca954ba75d72908712398ff2
-> >
-> > so maybe i need to rename my overlay dts files to dtso?
-> >
-> > maybe the others can be applied (at least the mt7986 nodes)?
 
-does this solve your question about dt-overlays?
-
-just to note for all...it is all 1 board having sd+emmc on 1 mmc-controlle=
-r and nand+nor on one spi. it depends on hardware-switches which devices a=
-re accessable (1mmc+1 spi). Adding dts for all possible combinations will =
-add more dts (sd+nor, sd+nand, emmc+nor, emmc+nand) than adding the 2 over=
-lays or adds redundant config.
-
-or should i copy the emmc/sd dts and adding once nor or nand? so we have t=
-he dtsi and dts for combinations above (=3D5 total)?
-
-> > regards Frank
->
+regards Frank
 
