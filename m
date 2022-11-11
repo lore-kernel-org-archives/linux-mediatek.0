@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0077FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 08:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A3DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 08:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tsjmyHi4r6Myvb+rHZSLHaboidJA8/ijSf2F5q7vcyc=; b=z/hgXeNo5MKXvdgeAj+TenWuvr
-	IVYFNenNUibNdtXAeFV2xhjAJYk5XYBv0g7A9V12y0d37kWaBMGYoei94h/4VOKdWvvA7KQYw+LOv
-	2UjbEaky0JivlqPwLrxglu/GY1iAaBA0/XqgxY8z4eI2pKGi7jTP+hn89Yo6Pv/F+PUQ7hj9FLN3A
-	U1pHglo6mIKxZaV/gRP0ytAEGagc+PIkKXWcSG8nVvvV3YdbJe5vifytbMA7WKYlIeISA5TgcfBBV
-	J0d7z+dAvt2Be9x5BXh+2yCM4bYfRrDiXNiMbNLrn93ZPiZ2q0cokK9H7BPNePmj/pnjElXCw2yyS
-	EcUvBmDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=O7XFRD57Ip4dGqDJ0XOR7pxNjCqTahxYqdQzy3E8aVM=; b=QBUgBlMjC/G7I7ez7TDqBgq2cY
+	EHPia+wfMRKb5aM5tlC78L5sWNV7wbZlqdH8MbK6xtoB6zEl7+y5m4zEIHSZLHtooiQS3A5ygJorR
+	bKzxc7kCOviSASe7wHEYqEbLMseH0JIXe0Cng6jG1QV08Re1Grec+FSipwlZFfm8Og1+Ozfuu3pcp
+	BGK90odxKFO0arXlZ3WmLHVztuA4UdGoEXLzJB3mN7kk8tv9Bnd1N0Am6IUlK8i2T7KH6/i47TG0k
+	mJcCduwsx5qNEiacigYaVOJ1V42BwZ/Afje10J5OV1o0FVUfVwSKE5puOIpUcRLGcI2oPAszyyOE+
+	JlBs7iOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPH5-00ECLi-1U; Fri, 11 Nov 2022 08:20:31 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1otPPy-00EDzA-1L; Fri, 11 Nov 2022 08:29:42 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPH0-00ECJz-7I
-	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 08:20:29 +0000
+	id 1otPPm-00EDwD-OQ; Fri, 11 Nov 2022 08:29:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 5B950CE25AB;
-	Fri, 11 Nov 2022 08:20:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 89E42C433D7;
-	Fri, 11 Nov 2022 08:20:16 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 654EDB8244E;
+	Fri, 11 Nov 2022 08:29:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C739BC433D6;
+	Fri, 11 Nov 2022 08:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668154816;
-	bh=H0z/gyJf8Kdl7Ragj8yN9726qsQnh7OwQ4laCsBomPA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=cYO3UeuNtcn8uUAEtwLchU82CVyKc4fat54bFG0CWqLX1oah7554Tpg8dSmhhmram
-	 M518saSIfdtoHA5nXxDxXQCF6t+oQBbFyV+crogdLPbDb8H8o/evwxLogRhsPfCMNi
-	 tHArM5BbZyFQ18x5Hgqs436sphkrOelsYArvXEbCscooWANDrlkvUjuNz7vFbdqiHv
-	 OLT5uZlJaALPwzfxZJuhiWeRhthgjnRPGn/69BgTPVLWQRiAfde1GBtVYeu93x779w
-	 kmka2amA51crkMnXcN189RAqL2hY7krT8Gw7FEpbYOYb6q0HBrBbjXZwn7OokRyrRp
-	 i+W/nsUiR8L4g==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 65710E270C4;
-	Fri, 11 Nov 2022 08:20:16 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1668155368;
+	bh=IbKTOSMRuvpV8+oOxfdFXA1JqBMgz65cI7OeqnvELIk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=STTRE6H/1T/mrvwgv3N6PQyijKtXpeAPGlTOng+Osur9C0CwbVaiO9InFBF7R7Q3H
+	 cisSqYm8zwxZjrgPdkHu/3VSAnLRnHNrwshrfC0Q4gA/tQ/ED9ht4sVr1+1GPB2nIS
+	 p7g8CUfJzAZgCJ4ZRZNK0KWSsg/DmZKHkLHX7Ug9hJNqNVXhVoIvz4VEf3ap6KxysS
+	 2F74FPN/SQg5I3IFmSms3bHZfD5+O0oTJ7jyfv0cjYngcD08dZxM09+trxaTGX5atV
+	 hPWd/ByQacSUXyxWZPM6NnJtQ53VW96zs2AIWEHqCM1UZ5Bu6cKVo25053IyiM+vNQ
+	 N40vxDESs3Law==
+From: matthias.bgg@kernel.org
+To: matthias.bgg@gmail.com,
+	nancy.lin@mediatek.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] soc: mediatek: Add deprecated compatible to mmsys
+Date: Fri, 11 Nov 2022 09:29:12 +0100
+Message-Id: <20221111082912.14557-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.38.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166815481641.32563.14048666303133746703.git-patchwork-notify@kernel.org>
-Date: Fri, 11 Nov 2022 08:20:16 +0000
-References: <cover.1667687249.git.lorenzo@kernel.org>
-In-Reply-To: <cover.1667687249.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi@redhat.com, Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
- ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com, devicetree@vger.kernel.org,
- robh+dt@kernel.org, daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org,
- angelogioacchino.delregno@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_002027_433669_0CF6F185 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20221111_002930_957561_B0FFE81D 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +70,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Matthias Brugger <matthias.bgg@gmail.com>
 
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
+For backward compatibility we add the deprecated compatible.
 
-On Sat,  5 Nov 2022 23:36:15 +0100 you wrote:
-> Similar to TX counterpart available on MT7622 and MT7986, introduce
-> RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
-> offload traffic received by wlan nic to the wired interfaces (lan/wan).
-> 
-> Changes since v3:
-> - remove reset property in ethsys dts node
-> - rely on readx_poll_timeout in wo mcu code
-> - fix typos
-> - move wo-ccif binding in soc folder
-> - use reserved-memory for wo-dlm
-> - improve wo-ccif binding
-> 
-> [...]
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+Changes since v1:
+- fix drive data pointer
 
-Here is the summary with links:
-  - [v4,net-next,1/8] arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet Dispatch
-    https://git.kernel.org/netdev/net-next/c/eed4f1ddad8c
-  - [v4,net-next,2/8] dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
-    https://git.kernel.org/netdev/net-next/c/ceb82ac2e745
-  - [v4,net-next,3/8] net: ethernet: mtk_wed: introduce wed mcu support
-    https://git.kernel.org/netdev/net-next/c/cc514101a97e
-  - [v4,net-next,4/8] net: ethernet: mtk_wed: introduce wed wo support
-    https://git.kernel.org/netdev/net-next/c/799684448e3e
-  - [v4,net-next,5/8] net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
-    https://git.kernel.org/netdev/net-next/c/084d60ce0c6c
-  - [v4,net-next,6/8] net: ethernet: mtk_wed: add configure wed wo support
-    https://git.kernel.org/netdev/net-next/c/4c5de09eb0d0
-  - [v4,net-next,7/8] net: ethernet: mtk_wed: add rx mib counters
-    https://git.kernel.org/netdev/net-next/c/51ef685584e2
-  - [v4,net-next,8/8] MAINTAINERS: update MEDIATEK ETHERNET entry
-    https://git.kernel.org/netdev/net-next/c/90050f80509c
+ drivers/soc/mediatek/mtk-mmsys.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-You are awesome, thank you!
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index ba2e79b26993b..f3431448e8431 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -303,6 +303,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+ 		.compatible = "mediatek,mt8192-mmsys",
+ 		.data = &mt8192_mmsys_driver_data,
+ 	},
++	{	/* deprecated compatible */
++		.compatible = "mediatek,mt8195-mmsys",
++		.data = &mt8195_vdosys0_driver_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8195-vdosys0",
+ 		.data = &mt8195_vdosys0_driver_data,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.38.0
 
 
