@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EDD5C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 07:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0077FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 08:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=; b=oZF2+Pc22595XczVHk9SS9uGyW
-	RfJFnwfN+hvOj/OlgfECSyE0IW5HNSorMMo7UxOu0hf+0vm1c6yzpZ8hNd/09va2310RWUvsGNE3z
-	JlFr7PzNsyK96pdogb3yQterXQD5j/x+ecPP5YyG1qhjRBAfm43lrwzM2yxmAOy94ljaN2+V0pwLM
-	GYArbnPtCE0qFb1S3tnq2r3eRKUvr023d66ga3CX5E5O6onO+C+u/yOx5nsOJ33co6/cjrJRVxiSK
-	oGeqUmA+5yKfYJHNmqTS2Crs1jnqujCZnB9ocrWxD8gC8bq7/HuS2u90EdiDihyKz+k2OwLc+4+fC
-	wYHauwXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tsjmyHi4r6Myvb+rHZSLHaboidJA8/ijSf2F5q7vcyc=; b=z/hgXeNo5MKXvdgeAj+TenWuvr
+	IVYFNenNUibNdtXAeFV2xhjAJYk5XYBv0g7A9V12y0d37kWaBMGYoei94h/4VOKdWvvA7KQYw+LOv
+	2UjbEaky0JivlqPwLrxglu/GY1iAaBA0/XqgxY8z4eI2pKGi7jTP+hn89Yo6Pv/F+PUQ7hj9FLN3A
+	U1pHglo6mIKxZaV/gRP0ytAEGagc+PIkKXWcSG8nVvvV3YdbJe5vifytbMA7WKYlIeISA5TgcfBBV
+	J0d7z+dAvt2Be9x5BXh+2yCM4bYfRrDiXNiMbNLrn93ZPiZ2q0cokK9H7BPNePmj/pnjElXCw2yyS
+	EcUvBmDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otOej-00DwP9-PU; Fri, 11 Nov 2022 07:40:53 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1otPH5-00ECLi-1U; Fri, 11 Nov 2022 08:20:31 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otOeh-00DwOm-3R
-	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 07:40:52 +0000
-Received: by mail-ua1-x936.google.com with SMTP id 97so1128128uam.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Nov 2022 23:40:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=;
-        b=F2dJGfr/6QuqyV8T3+ORTE5PscCUIRksA9H7zYvuBPSuViw6/kOe//nCkXR6hrojc/
-         3voOCwRsLN3dNFb6PHCVnGacjtn3lkiwsiBVSYPCgz9YqkRe3tZLXP92HJ//ch9GzAGk
-         QvBNMd/ze3lm8DEqW/oEuR5k2WODJ4f+t6Gq8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=;
-        b=6FwXebtLc9W/euW1/6wraoG9C11ufbNhfLaC1oMjMe/MaYJdNb9syZRrzv9zKnrDgF
-         +n5zhWvbMLnfkSQ6Ixi+SnsIY2uRbc1I7vR00lInlQ4O0Kqz1UUSR/EW75rvxVruvy+F
-         NiAa60YOlFZexoj4CtMkuhGDP/jxqyAKo2yTjUdeIyzfU+E++ZY09oqywXCD+hB7QG0A
-         gR9DKQLSf63wAGXT168fgcWMjDB7+FJ8qg0Hihiw+ooGjMBC9vPogM1XubrP/UtbdIH0
-         suLx6PELDE21GlbL/7igeax102WtIFa72m8nN8rChTcX51HXr8ZAdTphtne7/tmDPHzL
-         cpHQ==
-X-Gm-Message-State: ANoB5pmmGTTGFTMJR8BVF00RztETnPCR1vRcsM5h78VqhnnrJrFanirH
-	hIviKshMBtv+oAWvKTSN189YXdHYt5yNegxda0ZI4Q==
-X-Google-Smtp-Source: AA0mqf60bQlM6y1waTIKCFYX4aHza3GEl7ztw9lALAFIoTrEbx+lXYrSHIrK4i/aPKj7zLkoBjp6Ul9kYl5ocidQGV4=
-X-Received: by 2002:a9f:2f01:0:b0:3ad:bbe7:e134 with SMTP id
- x1-20020a9f2f01000000b003adbbe7e134mr187214uaj.43.1668152448952; Thu, 10 Nov
- 2022 23:40:48 -0800 (PST)
+	id 1otPH0-00ECJz-7I
+	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 08:20:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 5B950CE25AB;
+	Fri, 11 Nov 2022 08:20:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 89E42C433D7;
+	Fri, 11 Nov 2022 08:20:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668154816;
+	bh=H0z/gyJf8Kdl7Ragj8yN9726qsQnh7OwQ4laCsBomPA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=cYO3UeuNtcn8uUAEtwLchU82CVyKc4fat54bFG0CWqLX1oah7554Tpg8dSmhhmram
+	 M518saSIfdtoHA5nXxDxXQCF6t+oQBbFyV+crogdLPbDb8H8o/evwxLogRhsPfCMNi
+	 tHArM5BbZyFQ18x5Hgqs436sphkrOelsYArvXEbCscooWANDrlkvUjuNz7vFbdqiHv
+	 OLT5uZlJaALPwzfxZJuhiWeRhthgjnRPGn/69BgTPVLWQRiAfde1GBtVYeu93x779w
+	 kmka2amA51crkMnXcN189RAqL2hY7krT8Gw7FEpbYOYb6q0HBrBbjXZwn7OokRyrRp
+	 i+W/nsUiR8L4g==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 65710E270C4;
+	Fri, 11 Nov 2022 08:20:16 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20221110184852.1848917-1-gildekel@chromium.org>
-In-Reply-To: <20221110184852.1848917-1-gildekel@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 11 Nov 2022 15:40:37 +0800
-Message-ID: <CAGXv+5HmNT9hEncMoQJ2dj+7YWnmq-N-z4Y7xNQHzT0mst=kug@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/mediatek: make eDP panel as the first connected connector
-To: Gil Dekel <gildekel@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
-	airlied@linux.ie, matthias.bgg@gmail.com, daniel@ffwll.ch, 
-	daniel@fooishbar.org, seanpaul@chromium.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <166815481641.32563.14048666303133746703.git-patchwork-notify@kernel.org>
+Date: Fri, 11 Nov 2022 08:20:16 +0000
+References: <cover.1667687249.git.lorenzo@kernel.org>
+In-Reply-To: <cover.1667687249.git.lorenzo@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+ sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ lorenzo.bianconi@redhat.com, Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
+ ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org,
+ angelogioacchino.delregno@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_234051_207527_92B917C2 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20221111_002027_433669_0CF6F185 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +80,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 11, 2022 at 2:49 AM Gil Dekel <gildekel@chromium.org> wrote:
->
-> [Why]
-> Some userspaces assume that the first connected connector is the "main"
-> display, which supposed to display, for example, the login screen.
-> For laptops, this should be the internal connector.
->
-> [How]
-> This patch calls drm_helper_move_panel_connectors_to_head() right before
-> crtc creation to ensure internal connectors are at the top of the
-> connector list.
->
-> Tested by ensuring the internal panels are at the top of the connector
-> list via modetest -c.
->
-> This patch does to mediatek what the following patch
-> https://www.spinics.net/lists/stable/msg590605.html
-> did for qualcomm.
->
-> Signed-off-by: Gil Dekel <gildekel@chromium.org>
-> Tested-by: Gil Dekel <gildekel@chromium.org>
+Hello:
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+This series was applied to netdev/net-next.git (master)
+by David S. Miller <davem@davemloft.net>:
+
+On Sat,  5 Nov 2022 23:36:15 +0100 you wrote:
+> Similar to TX counterpart available on MT7622 and MT7986, introduce
+> RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
+> offload traffic received by wlan nic to the wired interfaces (lan/wan).
+> 
+> Changes since v3:
+> - remove reset property in ethsys dts node
+> - rely on readx_poll_timeout in wo mcu code
+> - fix typos
+> - move wo-ccif binding in soc folder
+> - use reserved-memory for wo-dlm
+> - improve wo-ccif binding
+> 
+> [...]
+
+Here is the summary with links:
+  - [v4,net-next,1/8] arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet Dispatch
+    https://git.kernel.org/netdev/net-next/c/eed4f1ddad8c
+  - [v4,net-next,2/8] dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
+    https://git.kernel.org/netdev/net-next/c/ceb82ac2e745
+  - [v4,net-next,3/8] net: ethernet: mtk_wed: introduce wed mcu support
+    https://git.kernel.org/netdev/net-next/c/cc514101a97e
+  - [v4,net-next,4/8] net: ethernet: mtk_wed: introduce wed wo support
+    https://git.kernel.org/netdev/net-next/c/799684448e3e
+  - [v4,net-next,5/8] net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
+    https://git.kernel.org/netdev/net-next/c/084d60ce0c6c
+  - [v4,net-next,6/8] net: ethernet: mtk_wed: add configure wed wo support
+    https://git.kernel.org/netdev/net-next/c/4c5de09eb0d0
+  - [v4,net-next,7/8] net: ethernet: mtk_wed: add rx mib counters
+    https://git.kernel.org/netdev/net-next/c/51ef685584e2
+  - [v4,net-next,8/8] MAINTAINERS: update MEDIATEK ETHERNET entry
+    https://git.kernel.org/netdev/net-next/c/90050f80509c
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
