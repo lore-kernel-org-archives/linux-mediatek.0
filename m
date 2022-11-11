@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29271C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 07:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EDD5C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 07:41:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TL1DUTNfvzaTDC5V59A/ZBBk1n7wWZR3gc8cGOLQ5D4=; b=NvtJhFbnLIArHZTtHnrG3WTog5
-	O/5QcEjOAfLMZFYSJvzQqHA2zpF7lSvbo1ok9zLLObkybpkq7fQmijyB0xSmhlMJTLlKGPZil/5hg
-	HjEXtxIU1ktkjXQ4JsgcDaX8KyrVhT1kQsAfpX1rqdDNSwZlANRw1dIhvH0d2pqdqCqwp1jlMskBs
-	gfJ3p6/Y71/YEaofZzpfLweDHE9fBLfV3adOVW3YJLwtFsQ7GfzGUAPKnak9mcUOzDML2sSJoYCOr
-	E1YE5QBKva1UBHCb735JluTJBd7eVP2oBPT3eIPoc09cpzvhuCQ55F3RZf772BfMlk/FnKS528V6R
-	HoMqefsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=; b=oZF2+Pc22595XczVHk9SS9uGyW
+	RfJFnwfN+hvOj/OlgfECSyE0IW5HNSorMMo7UxOu0hf+0vm1c6yzpZ8hNd/09va2310RWUvsGNE3z
+	JlFr7PzNsyK96pdogb3yQterXQD5j/x+ecPP5YyG1qhjRBAfm43lrwzM2yxmAOy94ljaN2+V0pwLM
+	GYArbnPtCE0qFb1S3tnq2r3eRKUvr023d66ga3CX5E5O6onO+C+u/yOx5nsOJ33co6/cjrJRVxiSK
+	oGeqUmA+5yKfYJHNmqTS2Crs1jnqujCZnB9ocrWxD8gC8bq7/HuS2u90EdiDihyKz+k2OwLc+4+fC
+	wYHauwXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otOb6-00DuAZ-UF; Fri, 11 Nov 2022 07:37:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1otOej-00DwP9-PU; Fri, 11 Nov 2022 07:40:53 +0000
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otOb0-00Du9j-UL
-	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 07:37:04 +0000
-X-UUID: abd9e54267f344328fd16967385f4271-20221111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TL1DUTNfvzaTDC5V59A/ZBBk1n7wWZR3gc8cGOLQ5D4=;
-	b=euRNAwOzB8yEiRwTM3nZe5E2XO7WcRKyHzROM78uNIVY6350LfBM4lGJkAmyAf5mAfb7VynW/HN+ck/t1+J3GsCtlTX8SHQg44wo77xXeWYixeiMthS6qsSuvlskJZn/4AyC033v6RKd8edur/HyGbK1Dd43d0UKEcsknUoR4dc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:75af9219-fce4-4239-b8f6-02a2c7fc379c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:9301ff85-088c-4756-8f76-577be701e693,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: abd9e54267f344328fd16967385f4271-20221111
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <evelyn.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1192972103; Fri, 11 Nov 2022 00:36:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 11 Nov 2022 15:36:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 11 Nov 2022 15:36:16 +0800
-From: Evelyn Tsai <evelyn.tsai@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH] wifi: mt76: connac: update nss calculation in txs
-Date: Fri, 11 Nov 2022 15:36:15 +0800
-Message-ID: <20221111073615.25666-1-evelyn.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1otOeh-00DwOm-3R
+	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 07:40:52 +0000
+Received: by mail-ua1-x936.google.com with SMTP id 97so1128128uam.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Nov 2022 23:40:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=;
+        b=F2dJGfr/6QuqyV8T3+ORTE5PscCUIRksA9H7zYvuBPSuViw6/kOe//nCkXR6hrojc/
+         3voOCwRsLN3dNFb6PHCVnGacjtn3lkiwsiBVSYPCgz9YqkRe3tZLXP92HJ//ch9GzAGk
+         QvBNMd/ze3lm8DEqW/oEuR5k2WODJ4f+t6Gq8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RSCEsE/k2zop7T/QkKVjsEEgTxwFxYe+bGHoI98bBtY=;
+        b=6FwXebtLc9W/euW1/6wraoG9C11ufbNhfLaC1oMjMe/MaYJdNb9syZRrzv9zKnrDgF
+         +n5zhWvbMLnfkSQ6Ixi+SnsIY2uRbc1I7vR00lInlQ4O0Kqz1UUSR/EW75rvxVruvy+F
+         NiAa60YOlFZexoj4CtMkuhGDP/jxqyAKo2yTjUdeIyzfU+E++ZY09oqywXCD+hB7QG0A
+         gR9DKQLSf63wAGXT168fgcWMjDB7+FJ8qg0Hihiw+ooGjMBC9vPogM1XubrP/UtbdIH0
+         suLx6PELDE21GlbL/7igeax102WtIFa72m8nN8rChTcX51HXr8ZAdTphtne7/tmDPHzL
+         cpHQ==
+X-Gm-Message-State: ANoB5pmmGTTGFTMJR8BVF00RztETnPCR1vRcsM5h78VqhnnrJrFanirH
+	hIviKshMBtv+oAWvKTSN189YXdHYt5yNegxda0ZI4Q==
+X-Google-Smtp-Source: AA0mqf60bQlM6y1waTIKCFYX4aHza3GEl7ztw9lALAFIoTrEbx+lXYrSHIrK4i/aPKj7zLkoBjp6Ul9kYl5ocidQGV4=
+X-Received: by 2002:a9f:2f01:0:b0:3ad:bbe7:e134 with SMTP id
+ x1-20020a9f2f01000000b003adbbe7e134mr187214uaj.43.1668152448952; Thu, 10 Nov
+ 2022 23:40:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221110184852.1848917-1-gildekel@chromium.org>
+In-Reply-To: <20221110184852.1848917-1-gildekel@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 11 Nov 2022 15:40:37 +0800
+Message-ID: <CAGXv+5HmNT9hEncMoQJ2dj+7YWnmq-N-z4Y7xNQHzT0mst=kug@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: make eDP panel as the first connected connector
+To: Gil Dekel <gildekel@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
+	justin.yeh@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	airlied@linux.ie, matthias.bgg@gmail.com, daniel@ffwll.ch, 
+	daniel@fooishbar.org, seanpaul@chromium.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221110_233703_049470_840133E5 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221110_234051_207527_92B917C2 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,38 +84,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+On Fri, Nov 11, 2022 at 2:49 AM Gil Dekel <gildekel@chromium.org> wrote:
+>
+> [Why]
+> Some userspaces assume that the first connected connector is the "main"
+> display, which supposed to display, for example, the login screen.
+> For laptops, this should be the internal connector.
+>
+> [How]
+> This patch calls drm_helper_move_panel_connectors_to_head() right before
+> crtc creation to ensure internal connectors are at the top of the
+> connector list.
+>
+> Tested by ensuring the internal panels are at the top of the connector
+> list via modetest -c.
+>
+> This patch does to mediatek what the following patch
+> https://www.spinics.net/lists/stable/msg590605.html
+> did for qualcomm.
+>
+> Signed-off-by: Gil Dekel <gildekel@chromium.org>
+> Tested-by: Gil Dekel <gildekel@chromium.org>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index 8b7ec64abc95..fd60123fb284 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -567,7 +567,7 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	struct mt76_phy *mphy;
- 	struct rate_info rate = {};
- 	bool cck = false;
--	u32 txrate, txs, mode;
-+	u32 txrate, txs, mode, stbc;
- 
- 	txs = le32_to_cpu(txs_data[0]);
- 
-@@ -587,6 +587,10 @@ bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 
- 	rate.mcs = FIELD_GET(MT_TX_RATE_IDX, txrate);
- 	rate.nss = FIELD_GET(MT_TX_RATE_NSS, txrate) + 1;
-+	stbc = FIELD_GET(MT_TX_RATE_STBC, txrate);
-+
-+	if (stbc && rate.nss > 1)
-+		rate.nss >>= 1;
- 
- 	if (rate.nss - 1 < ARRAY_SIZE(stats->tx_nss))
- 		stats->tx_nss[rate.nss - 1]++;
--- 
-2.18.0
-
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
