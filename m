@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9906C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E29C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:Subject
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1QviO7g0X9TaU2BPfKXn+/uDSwn9+ZcxkSHMkagSvBQ=; b=BUUYm+1cORhg1V
-	C58UaiXDjMVrNi8U298hHLKVAXjp8Vj7sLnrKCMO35A4bFqpr7j6ec/FJwABEep1+dAjYwwvdF/ay
-	PEcveVaN9IuPC0Yet9/3nz1rsYcF0ioI3e3W9E2Buzoj6fBaN+pbJhB2ru1o+mOpqDPjrusbAqwXS
-	NdUHTiAGg4YVHB+dVmX+XRLUnf6+rvtPf2F1iNzFTwkRcmc8AywwZKDg49kdp2+BgdHe7nBzlpnIY
-	slDiw3S9S02xytHpXL2Q48+CloMPVPaWSlThaHPQMLTXwdB+0UfNrJqH255a4sUDtgdDVqXc9jaux
-	H9p4BN646w1QgFVKayYg==;
+	List-Owner; bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=; b=RAY8q3kDHt4oLh
+	SQqntauZXtGV29CA9pROD5p/9ZF+vPhbZuSMjLkbybvoaerIlIZA6lXdTqZMSREp/lR6kv01JBT42
+	hBkczlZN77eifeZqAw+iUnIDUtWkSe1Ys8uS1GikbdZB8N/PzLXmc4D1Lu492kCn429FmqWcLzSdz
+	39w+rmMr4eJmYG8IzogECV0LeUxKj5+2etaseWNlqDJHg2HQv9i/TND9an40NsRD8vL7t1UyWsiti
+	XK/EbKPd+D3tYWD7yacf9hgmf1LZH8Ik0d5fGmWbcnU4wi5/sQP+QJ8RDdWSCsB9matSOtZqBTHLm
+	q/WS04YjBqf9gIdMUH4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPyq-00EUSl-Ut; Fri, 11 Nov 2022 09:05:44 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1otPzF-00EUgM-HV; Fri, 11 Nov 2022 09:06:09 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPyo-00EUQn-0J; Fri, 11 Nov 2022 09:05:43 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id w14so5600419wru.8;
-        Fri, 11 Nov 2022 01:05:41 -0800 (PST)
+	id 1otPzC-00EUdU-TG; Fri, 11 Nov 2022 09:06:08 +0000
+Received: by mail-wr1-x433.google.com with SMTP id cl5so5601208wrb.9;
+        Fri, 11 Nov 2022 01:06:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=1QviO7g0X9TaU2BPfKXn+/uDSwn9+ZcxkSHMkagSvBQ=;
-        b=XH7/0SMYFxcygZBP/lXF+7e071JADn9twF2Wzsu12Te92AbupuMte1rSifd+asp7zY
-         m7ZZ2eKEOK8HhQYGiAIqYQXpyRljjlMXVfstuvWKERhG3gJnDgdSPB0K8JXrnxD7Kk+2
-         0uvQRV5C4MFPOSgA3jhqSBPaS6l98ohw1nHuLHRipMSzEGVI1B4c58RM9TlM7AoMx4k3
-         ZXbg1AUUduuFtWLNmWmPNDUVr4kUejMwnwFQbbRq05nZf+zu49I/dY+T8ZITK51DPGYk
-         f2IFeKYc/YOR4Q7vTpztl13WvEtiOCY5uInpO9olCCpTD7yIboP4gupAqNBm1IvPUfbk
-         lxcw==
+        bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=;
+        b=NbF4F7dz0fofp/f43N2ow0yB/tAABhFhEVMbbwLgVZndPW6oTtV6gh8DOaaOdIMNpr
+         pUOTcRj3CvL1AdR8JZuB99ujecuBtJ/0wC3FCevUUbOlsrb6GjYi0pwQ7U1C9Adl230+
+         TC3VqpN8as2xq9K+IrPNrIK7gjV5l9lzxIovFesk8zAlRozMYMOAjZL3I8Dm/Xzthw5H
+         5q6nDg32nXx7vzbKn9gemP0SoTYg834FtwkZsYAt4vNRFBGVl5jJ2qEFSA+Xxk+Tl/qM
+         slYN6velNyNjsYR4fTMHFjipz+SUcKPpPUxRODiJrTHBOiMN8YOyTTKMaKorzvVte4lo
+         aLxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1QviO7g0X9TaU2BPfKXn+/uDSwn9+ZcxkSHMkagSvBQ=;
-        b=fwn3LD5BFazDYnTvl/BiZd3yixwf3GIAnasuuUlArbFX+RA3ggqlFaeE/QLT0eIt9C
-         bHqF1y/01I2eF1ir/YsF1xHKpavW6ivg35fas0JnoUma8M5LrC7XMGKUUDGWQeq3JVaP
-         VOb3Vitr6UEUh69JYlk4AcYsfj7qzrzjmFQlb1beuwTFLHCbQY6GMKiL+9QOSV6ygq6g
-         Wby/XwZpHh/cGPD7t5FoH/ANVU9O6aF0MUweZX7eJegL0Fk2Zl95I7g7lyI/qUKNIbpC
-         JKBSl+XTUs5ajkBsXkapdItchVmBUw1ObhTLjXvAxlWzg0mxv0qfXGQ4vVvhj7QhMu1k
-         RQCQ==
-X-Gm-Message-State: ANoB5pku6FDwIzD6W0CbQM+eOFlQDEF388b33vn1TfPMiM3Y+PzkXDiU
-	WvZEA4BvWzjsHwKYjsZWVaA=
-X-Google-Smtp-Source: AA0mqf63UJilBtZakUaPTB0dgbaIiRLdllAsQExluAwwAkE1d1Fc1dH/wnYZ/0v9nOHk7xNr/uBT4g==
-X-Received: by 2002:a5d:4841:0:b0:22e:38b:95ff with SMTP id n1-20020a5d4841000000b0022e038b95ffmr610851wrs.202.1668157540379;
-        Fri, 11 Nov 2022 01:05:40 -0800 (PST)
+        bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=;
+        b=qX7p+ocowyIbvd5VLR5APsx0MFlwz2Zwdkwnymt9awjSTP/F4WcEutXrKriPBf8q+7
+         11J72ACu/Fhleximn3ctyeJ0IXwmrQuqFvdDDIKFrgie6/l/FttL+TkUicZS36T3O5G0
+         AldYhKJLRnHlppTl6d3ZG5wp5M6BX2DL71ZaQwJmnXemz8URatbU+A/2WK3092V67VXd
+         g+gOAGu0CP2NqCm8juFpwbADYLmPPwZA2hQQv/qUsTEsNTaNnaX2XynDf9L5dZUWsSE/
+         CZMmdQ2KSwZky1WPJtlKMHu6hsbFt/75RWWwzsG7/ATK+yShmzCQDHAkUsV5qOLryzQj
+         Tdsw==
+X-Gm-Message-State: ANoB5pkI5ji59jcABwdqnbhXgzfVnt/ZVXvTyaP8rSfwAgGd6kzLaAUV
+	MriNa/JgZbJ1aTNBymIP3Vc=
+X-Google-Smtp-Source: AA0mqf7NqydisRfGc/xHd5/cqwAgF58CN4sU4/ZLqyyjDVsYUbAuedLMEKJjiAC5d/zeN5+rhpPjnA==
+X-Received: by 2002:a5d:6a12:0:b0:22e:3664:ffce with SMTP id m18-20020a5d6a12000000b0022e3664ffcemr664681wru.131.1668157565241;
+        Fri, 11 Nov 2022 01:06:05 -0800 (PST)
 Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id p25-20020a05600c1d9900b003c64c186206sm2203693wms.16.2022.11.11.01.05.38
+        by smtp.gmail.com with ESMTPSA id p7-20020a05600c430700b003cf6a55d8e8sm2202375wme.7.2022.11.11.01.06.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Nov 2022 01:05:38 -0800 (PST)
-Message-ID: <a9273083-eb34-6415-132a-621ec7703d92@gmail.com>
-Date: Fri, 11 Nov 2022 10:05:37 +0100
+        Fri, 11 Nov 2022 01:06:03 -0800 (PST)
+Message-ID: <68e4f061-af72-fe13-2a49-f62a9c542685@gmail.com>
+Date: Fri, 11 Nov 2022 10:06:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.1
-Subject: Re: [RFC v3 01/11] arm64: dts: mt7986: harmonize device node order
+Subject: Re: [RFC v3 06/11] arm64: dts: mt7986: add i2c node
 Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20221106085034.12582-1-linux@fw-web.de>
- <20221106085034.12582-2-linux@fw-web.de>
- <d38f8b81-b62e-18c5-1bd3-d1bc1f2b98d9@gmail.com>
-In-Reply-To: <d38f8b81-b62e-18c5-1bd3-d1bc1f2b98d9@gmail.com>
+ <20221106085034.12582-7-linux@fw-web.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221106085034.12582-7-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_010542_071688_F0698638 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20221111_010606_973040_A0764A72 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,197 +87,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
 
-On 11/11/2022 09:55, Matthias Brugger wrote:
+On 06/11/2022 09:50, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
+> Add i2c Node to mt7986 devicetree.
 > 
-> On 06/11/2022 09:50, Frank Wunderlich wrote:
->> From: Sam Shih <sam.shih@mediatek.com>
->>
->> This arrange device tree nodes in alphabetical order.
->>
->> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
->> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Applied, thanks!
-> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-I realized that
-wed_pcie: wed-pcie@10003000
-is'nt ordered correctly. Please send a follow-up patch to fix that.
+Applied, thanks
 
-Regards,
-Matthias
-
->> ---
->> i modified sams patch
->>
->> https://patchwork.kernel.org/project/linux-mediatek/patch/20220427124741.18245-2-sam.shih@mediatek.com/
->>
->> by moving pio-node up instead of moving uarts down to ensure alphabetical
->> order for switch-/wifi-node.
->>
->> And moved uart0 and wifi in mt7986b-rfb too.
->> ---
->>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 94 ++++++++++----------
->>   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 22 ++---
->>   2 files changed, 58 insertions(+), 58 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts 
->> b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
->> index afe37b702eef..6189436fe31d 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
->> @@ -54,6 +54,53 @@ switch: switch@0 {
->>       };
->>   };
->> +&pio {
->> +    uart1_pins: uart1-pins {
->> +        mux {
->> +            function = "uart";
->> +            groups = "uart1";
->> +        };
->> +    };
->> +
->> +    uart2_pins: uart2-pins {
->> +        mux {
->> +            function = "uart";
->> +            groups = "uart2";
->> +        };
->> +    };
->> +
->> +    wf_2g_5g_pins: wf-2g-5g-pins {
->> +        mux {
->> +            function = "wifi";
->> +            groups = "wf_2g", "wf_5g";
->> +        };
->> +        conf {
->> +            pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
->> +                   "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
->> +                   "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
->> +                   "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
->> +                   "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
->> +                   "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
->> +                   "WF1_TOP_CLK", "WF1_TOP_DATA";
->> +            drive-strength = <4>;
->> +        };
->> +    };
->> +
->> +    wf_dbdc_pins: wf-dbdc-pins {
->> +        mux {
->> +            function = "wifi";
->> +            groups = "wf_dbdc";
->> +        };
->> +        conf {
->> +            pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
->> +                   "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
->> +                   "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
->> +                   "WF0_TOP_CLK", "WF0_TOP_DATA";
->> +            drive-strength = <4>;
->> +        };
->> +    };
->> +};
->> +
->>   &switch {
->>       ports {
->>           #address-cells = <1>;
->> @@ -121,50 +168,3 @@ &wifi {
->>       pinctrl-0 = <&wf_2g_5g_pins>;
->>       pinctrl-1 = <&wf_dbdc_pins>;
->>   };
->> -
->> -&pio {
->> -    uart1_pins: uart1-pins {
->> -        mux {
->> -            function = "uart";
->> -            groups = "uart1";
->> -        };
->> -    };
->> -
->> -    uart2_pins: uart2-pins {
->> -        mux {
->> -            function = "uart";
->> -            groups = "uart2";
->> -        };
->> -    };
->> -
->> -    wf_2g_5g_pins: wf-2g-5g-pins {
->> -        mux {
->> -            function = "wifi";
->> -            groups = "wf_2g", "wf_5g";
->> -        };
->> -        conf {
->> -            pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
->> -                   "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
->> -                   "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
->> -                   "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
->> -                   "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
->> -                   "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
->> -                   "WF1_TOP_CLK", "WF1_TOP_DATA";
->> -            drive-strength = <4>;
->> -        };
->> -    };
->> -
->> -    wf_dbdc_pins: wf-dbdc-pins {
->> -        mux {
->> -            function = "wifi";
->> -            groups = "wf_dbdc";
->> -        };
->> -        conf {
->> -            pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
->> -                   "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
->> -                   "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
->> -                   "WF0_TOP_CLK", "WF0_TOP_DATA";
->> -            drive-strength = <4>;
->> -        };
->> -    };
->> -};
->> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts 
->> b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
->> index 3443013b5971..7459ddb6b6f0 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
->> @@ -25,10 +25,6 @@ memory@40000000 {
->>       };
->>   };
->> -&uart0 {
->> -    status = "okay";
->> -};
->> -
->>   &eth {
->>       status = "okay";
->> @@ -99,13 +95,6 @@ fixed-link {
->>       };
->>   };
->> -&wifi {
->> -    status = "okay";
->> -    pinctrl-names = "default", "dbdc";
->> -    pinctrl-0 = <&wf_2g_5g_pins>;
->> -    pinctrl-1 = <&wf_dbdc_pins>;
->> -};
->> -
->>   &pio {
->>       wf_2g_5g_pins: wf-2g-5g-pins {
->>           mux {
->> @@ -138,3 +127,14 @@ conf {
->>           };
->>       };
->>   };
->> +
->> +&uart0 {
->> +    status = "okay";
->> +};
->> +
->> +&wifi {
->> +    status = "okay";
->> +    pinctrl-names = "default", "dbdc";
->> +    pinctrl-0 = <&wf_2g_5g_pins>;
->> +    pinctrl-1 = <&wf_dbdc_pins>;
->> +};
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 32c26b239ae6..a1a788db113a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -261,6 +261,20 @@ uart2: serial@11004000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		i2c0: i2c@11008000 {
+> +			compatible = "mediatek,mt7986-i2c";
+> +			reg = <0 0x11008000 0 0x90>,
+> +			      <0 0x10217080 0 0x80>;
+> +			interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>;
+> +			clock-div = <5>;
+> +			clocks = <&infracfg CLK_INFRA_I2C0_CK>,
+> +				 <&infracfg CLK_INFRA_AP_DMA_CK>;
+> +			clock-names = "main", "dma";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>   		ssusb: usb@11200000 {
+>   			compatible = "mediatek,mt7986-xhci",
+>   				     "mediatek,mtk-xhci";
 
