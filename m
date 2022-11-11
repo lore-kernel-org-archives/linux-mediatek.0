@@ -4,84 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9822C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 12:46:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6AA5C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 14:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zjWAsr+RvOGj+BTsFabySpMvwV1qHn6L4iU1gBJ8zWk=; b=U3qAm3X5bp3It2cDMqxklUWISQ
-	gJl9Q+ZUgapLmgoGm8XsAphzH/8sRHagF2vTiYnCGXyClyfOp5lVIFpCE2RsXR4EVmYMrekLLkMqX
-	n2/ONmQgwAyqAJ9H8esbWHeESPyK7N5qFyiJj/q6+dnoakL2vNF4HOL2LhDpjEU8wWCKoKTDkpFw+
-	pjmASkC1T5JVkKcoE2n/r4QNvzGx6LjL1/nGiWhSl4giK5HgccEtzrhIkUh5KSRtm7eNOw8dyGWOo
-	TH7R60K91Fe3t6dgs1m8dzSSP6ffouVL6Ya+NhOxwiXZojkII8HEWB9xpCMKphHRnJCaj8J9kDZqY
-	W8qR+4lA==;
+	bh=nKIh7Rn2uY03gvMDxLSAjGI/gyfIpOz2PNRYMB/8BVY=; b=taz5NsxPmXv0ajKcZUCp/PJ3/T
+	22A25oR5S11W5yZNdCEtFWSmbKGxthBKnahO4FDPJlrUicv/DWAt8rn4sFr6vh/P5oOjqOA343DXo
+	wzMxv4EDaetvSmboVevLrLpDOiiNZuLrWCvHg2TEeRUCRXbYOrcvK2M+zfVU+d80eq+RxRmlHP9Mv
+	0J7WQH5hMaoxjCKpvvGzCzaOySzZbrU70nRBWqGYIvhSmDX6LTnwllXPAoQospv1wCAgnLF6FOZBI
+	BrhKL02hc3ZOLC467R4KjoD4WSuGWje5GxcTB3Gqg0i/Rq008X+uQ7HwbSgcpfpqIkMBhd0dflyT1
+	YHEnI0rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTQ7-00Fg2n-ND; Fri, 11 Nov 2022 12:46:07 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1otVHo-00GJXN-4d; Fri, 11 Nov 2022 14:45:40 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otTPw-00Ffzi-EY; Fri, 11 Nov 2022 12:45:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668170741;
-	bh=qneJJGHoqWYbu5rchBDl5skDJGGz8YlMGk6gDkI/2nk=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=rPLQNBZZO4h+5oiwI2s2dkXi55MzW4QCr4sgHtnRVk42EVw9x7hUBAiMdi5rJThUI
-	 67qgkiUv6jmUSweUtVbp1yUCwc052RTK1/oeN/ZQ5OlX+zjEAGxx0tC5zhOwJtyyPA
-	 3KDMamhoECn6W3NLh/mkDCvJ9zdHbjDW3ugczX7OkCe91cEAdBtK7KNDvTRctjuDSr
-	 rsxxIBErErvAj3zyIX3YQJmy9sHb6ZHbyTPyxOcvzJ9rFYb7J6WT/X2cbhjtibU3iD
-	 iKuSP3YsrTY3bIcWK0yILxwuAJFS/15/+dqJZpssy2o2LUWlDNTacd2PMKMSHyWXol
-	 j+WlBOp5Yyz8g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.224.127] ([157.180.224.127]) by web-mail.gmx.net
- (3c-app-gmx-bap63.server.lan [172.19.172.133]) (via HTTP); Fri, 11 Nov 2022
- 13:45:41 +0100
+	id 1otVHl-00GJUG-6K
+	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 14:45:38 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id f37so8617315lfv.8
+        for <linux-mediatek@lists.infradead.org>; Fri, 11 Nov 2022 06:45:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nKIh7Rn2uY03gvMDxLSAjGI/gyfIpOz2PNRYMB/8BVY=;
+        b=zMLqECAHr+5NcQNla/y7bj36+Jihm72LxNXySqm8xh+3R51WS6kmb8BtZlvnSPqDe/
+         igKUE/GAiR9gOUGc4qHV9tkJW/7sbMSEYiWS0UIQYo1Z7/kmm6k5wASAJOJKomoVAY47
+         Kb2GD5r0gu5itoPz6sZK49pbQhiySjQsFbvaEAnLSVpbI0fwR2LDfRE//v5AjgFf+DD+
+         waGekmsiQWHluWL22/FWNtkd/9TBklGK4p1GLIPqkb8dKq8tCscS52QU5WvSegdzfiVX
+         aYhHp1GTJg5XGXC58x1ppi9ZDqYtjsD7f3qL4rLaZ5BbJqNFlsPuI6//YxkETH8shZdL
+         P8GA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nKIh7Rn2uY03gvMDxLSAjGI/gyfIpOz2PNRYMB/8BVY=;
+        b=fhs/WLumGpn8dkyJXkyEeCwaiHwxsThQw60Z90yeMs8iAtqzeLN1AN1OhFOhuNVgtC
+         v4U16Livrl5OWXIefCk5NRHVeW90MaQ+3Lnar27b1oPqn2IgJcVw2D94sUB/bOx3RhLU
+         q6KMIbaiV7dw2VFwLcIQurKd0109mrIoZCS9PL12JntLwBMiz2pLLLDqXP4BBgmCX+3P
+         PLSKiDHnb9T/TRIoZIDsuZd02uR5mh6tyRWHUhc8srcw64eXo/+2RSkoWRCDrhYdOeXS
+         h6dVCUPE8dItZgg5Ak9fQWIVTsPoTr67d1dE2qCN+fvUYBNZ4pXtqoR4010g3rd+GM2r
+         hV6w==
+X-Gm-Message-State: ANoB5pnN7QX7YUeFPsTh1iuVBk+tMGSS2tsLCOA1y6mEcswEDWjpoWlC
+	qiMmx3/7y0EvsLx/syfERITnoQ==
+X-Google-Smtp-Source: AA0mqf4sgLsj52HWaY59vMgHa4fGiq4HixM8ZVYXfqlh1s69CeMqoQVflfov72D5yRE0mhynje0tUA==
+X-Received: by 2002:a19:6d0f:0:b0:4a2:23b0:b850 with SMTP id i15-20020a196d0f000000b004a223b0b850mr780143lfc.60.1668177933536;
+        Fri, 11 Nov 2022 06:45:33 -0800 (PST)
+Received: from [192.168.0.20] (088156142199.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.199])
+        by smtp.gmail.com with ESMTPSA id n26-20020ac2491a000000b00494a603953dsm361574lfi.89.2022.11.11.06.45.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Nov 2022 06:45:32 -0800 (PST)
+Message-ID: <72093230-9da4-665d-c177-055c0a5e33cc@linaro.org>
+Date: Fri, 11 Nov 2022 15:45:30 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-6bc6a2db-9bdf-460a-a9e5-e8d5aebdc579-1668170741328@3c-app-gmx-bap63>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Sam Shih
- <sam.shih@mediatek.com>
-Subject: Aw: Re: [RFC v3 05/11] arm64: dts: mt7986: add mmc related device
- nodes
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v4 3/9] dt-bindings: regulator: Add binding schema for
+ mt6357 regulators
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Fabien Parent <fabien.parent@linaro.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
+ Chen Zhong <chen.zhong@mediatek.com>, Alessandro Zummo
+ <a.zummo@towertech.it>, Pavel Machek <pavel@ucw.cz>,
+ Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, linux-rtc@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>
+References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
+ <20221005-mt6357-support-v4-3-5d2bb58e6087@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221005-mt6357-support-v4-3-5d2bb58e6087@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 11 Nov 2022 13:45:41 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <9955078b-72cd-4260-0cc2-ba1b9e0a0bdd@gmail.com>
-References: <20221106085034.12582-1-linux@fw-web.de>
- <20221106085034.12582-6-linux@fw-web.de>
- <9955078b-72cd-4260-0cc2-ba1b9e0a0bdd@gmail.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:uVg3wzNrILOD0hMUF9OrIK2sauhiLJ0L97UfHqLn79TwvVMrQmYlpmXGxlzHuBUCoJ/GX
- aUX1+963E5c6LznpCZDV6oSScaJbsffhX1md/uYVYdPbhfKcBwJlpxiAkWpjFMWFEbwqFsu4APpX
- tV1jjb5/5cV6nfHMMs1OfSU197XcBuuzY5DApduT3jySQVptpt2tE1HBScZayl6as/Gpn+XVJv1g
- 2jLTHGn5I15xaruDaqGUlKIMpCxkemuOOsS7xROP+7ivAijnJvrRQy6VZPFbWrMkwQsS8nH+7ow0
- C4=
-UI-OutboundReport: notjunk:1;M01:P0:rJZgTu1YGdk=;FvoX5LF81jBREy7bE8wHMa7TySI
- yEAocm5OvPnl23qhZLSxMkzctb8ibQbCs8JW+wpty/cqdRqolQGddqFjyDWii4sjgO7UMvlR5
- SfqgUY4VVUEWd+1ffCNcPL4HqUi4s/lY7UpoJIICjMwD1seEtFOwAvrXPb4g1EbCMAdc5i/VD
- TIY+zoRRPe+4/Sc3Yc3FGZ/XYmmJdoWwK5WW7OB1kl9FSd8EAf3x2OqXHBAZ76+7G3awqKLnJ
- Gnn9+EQQ0ezLMvR2sZTYX0WwY2k78OBes4qJaxIcyGVJEjG+/xpu00caKUR2JvKtLsMDnR4xp
- RkNp6LM4h3QKDg/zhyvLlkUQEAG2nNnGFU0Uwc7Q/JIiB8jDe/F/L9ZMCskhjNECSiXBUBzjT
- ny9pbBUlnPFfQb/f51NyvOBR3yBDQNd3LVsyoxyHqIG0gGzz9EU3nDiTllXetNFP3w8qQ5nX2
- Yq4qoZ3sfn0RY9k0nXtY7lm4takQ9/XT2SLaQ5f1+y2jqGIKXjfZ9VAKRbhrz5yNYJ3yRMm5d
- PrepJytUIOz6Iw3Lo8GHrTbEBl8lzDSjDdNBlyC7Kaq8js1+Es7Fl4E7Z2APr/ig1/qDN0tvX
- an1JUQesY6+sKriQqiqea1NJiNkeIWBg06QjDLl1JFFoJ11PcMKzxMyBZmKe0mA/TqG9BYJrP
- 9pi1hDCmp+732fTV2lyjf6OylZj8TPWNwtN37R/12Z4SeCB2gI+m6AagcIe1zggWoW3WCJ9Xf
- pllKUnNDwaWItt9HriBFpskVrREQwKlw4ah6V+vfKYVDVoc1Y6vREFXY3S+HfO2y4sBTEv0Sf
- iFew6wTF8aUtRIPZGX2hbN1g==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_044556_787638_EF05BBF0 
-X-CRM114-Status: UNSURE (   8.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221111_064537_264472_FB5A5552 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +107,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On 08/11/2022 19:43, Alexandre Mergnat wrote:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add YAML schema for the MediaTek MT6357 regulators.
 
-> Gesendet: Freitag, 11. November 2022 um 09:58 Uhr
-> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
+Use subject prefixes matching the subsystem (git log --oneline -- ...).
+regulator: dt-bindings:
 
-> >   &pio {
-> > +	mmc0_pins_default: mmc0-pins {
-> > +		mux {
-> > +			function =3D "emmc";
-> > +			groups =3D "emmc_51";
->
-> Waiting on
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20221106080114=
-.7426-3-linux@fw-web.de/
->
-> Please correct me if I'm wrong.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>  .../regulator/mediatek,mt6357-regulator.yaml       | 292 +++++++++++++++++++++
+>  1 file changed, 292 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+> new file mode 100644
+> index 000000000000..3997a70a8b6c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+> @@ -0,0 +1,292 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6357-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 
-this (newer version with some pinctrl-fixes) is applied to linus pinctrl t=
-ree
 
-https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/c=
-ommit/?h=3Dfor-next&id=3Dc115e7f51e685536ecb885854bdd4b3f225ff3e4
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-> Matthias
+Best regards,
+Krzysztof
 
-regards Frank
 
