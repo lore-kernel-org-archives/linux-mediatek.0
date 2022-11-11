@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEAF3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 11:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815B7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 11:52:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZiZPd5oULqd/tLgR6S0NEVvIvyE2JnjYEORmvK53qK4=; b=Wje2gB51/pdp5alwH7w0uEgy4k
-	56ivbFH3S+n9V3a+FNdZCtb2nKCYiX6zdCWb0oiFxcpzExcOsPYtbE0R1bSYnHqHKKelRJgdOvxU3
-	K8Q9jr2S38Yk5c2+VvvJI3PPwwx1ZoQ+FxnhQIngd+Sa68Wfy6X5Ff6bPZrxb/EMB2/YbOS9qlDTF
-	pLVpwscNfrvHWXV8DSFHEMfySEaWle66TOzFGDA+/duPXSBEnjKLSnqOZaPLN0tig8bJDaYQ+rOsV
-	kCjm5Bi7UqJR8mNvX8/EouXvUC5RwedxRiN3DX+zb6Ab77g0U42bpvjhmwI3vXaM4EbFjroyVCTy9
-	zo2Ovflw==;
+	bh=8OtYKVWMi1GkRVogIfj4s/B5mdbZjVV1yjLy1OxRYi8=; b=TG6ZOK9iGWMMvk+WuyX/XoKMu6
+	2QuCJ/sHMNnjB8BrT5G/0taK+3RHutWh0nZ+LQdItpvdYsq2YzOG5Byl0deZ7o3GtQGqK/wCno9sF
+	DBqEpQF2L68XzdWdsUHPJO/RJvU4XLf+ovt+BnaUzq9Czo7V8EB/qNxKzJUPrQQvxVdr+7nROO+3X
+	fsCii9tVuCF85atnlUPnO2Nxd3+mXo9zE/0r3U/vWqw0jy5z9cpcxA2kWZLCrvr41UkOie8QTUWyU
+	Rr/b1KqEuPeLnVNSZ0l5T87wQ8LoHW6KsmXMLyKxnW4rxKK0Oa/K/a4RHuj+Tsl4RW8XBjrf/h13P
+	seS8FFiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSQF-00FLUm-Em; Fri, 11 Nov 2022 11:42:11 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1otSaK-00FPdf-2l; Fri, 11 Nov 2022 11:52:36 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSQC-00FLRe-H3; Fri, 11 Nov 2022 11:42:10 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id r203-20020a1c44d4000000b003cfa97c05cdso3686752wma.4;
-        Fri, 11 Nov 2022 03:42:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZiZPd5oULqd/tLgR6S0NEVvIvyE2JnjYEORmvK53qK4=;
-        b=GL+mJx3NYkYn7I7HcehCjjKhqePjdtGJlqcr7ZgBtejSn55iOB5ypZBvJF/JTqfdo7
-         bc+e9eaefSDEmtdRDf2lrVm0Ojz/G5n/fE36CsrdBoKSstWOnNtJxkmXowvLe8EFo3cT
-         U60GvjpGA1NcE0/Z00FozBdV/VSflcs30mMscT0pWC+egWSCmq9vxJyxbNghCGEjTqlX
-         zKUSdm4/AnQBAKvn1H6vtIeNvwpBtB6CAswrdkR6EC4ajmoF2JGNaBMDls5i/nhm7btN
-         sfJJx07OYwA2GSHqXPZZxCeKti/sQaApeWIu3sUwnGNekA2Hhk4lZafAMPaJ3hMUzHFV
-         nWpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZiZPd5oULqd/tLgR6S0NEVvIvyE2JnjYEORmvK53qK4=;
-        b=ljIW3gK7u3LT7ule48xAX9ArRnaiB3SYadAy5DfDtyNGlD2GGEdDu6eE2TPKGxmiKt
-         fESwIMmgf4V5dWdFsVc8j5WuC33fvUNPFZZNqXUxVvxgPWZ68vcWyAMlt3mds4PPkd7y
-         /EbQYSjSQvTZ7YuoLD0QuoYJjIhuJMlkiqaK91MhsyDcXxfmj0QGj8h27I8/RfzqSPJ1
-         t0NT/rQD9R9Xj3HwEzhCqKwUFHF5HPa1VsuxzgAPMZLDwYAVnWo/6NPRlLA6e0hpLppE
-         42SnknyJ/2HfYwNTpAHaalpRcxgB66Fnf0XEFf/GVmT/ze7CKhUKu11CO4eQ3EHCXJIR
-         g4Wg==
-X-Gm-Message-State: ANoB5pkSEDRKC7mS6D52EPB52ugPCKaCn8uhtH3J45Bzfi7zKyQfhohe
-	BErfhLx79NtPybtb5ZYVFBs7qZXK/Wu1bw==
-X-Google-Smtp-Source: AA0mqf6IgJ8vpxxZ6Jw7iq2LCaNjOG4CLjxbRyEOr2ygr+qxAFn1apb5f3P5YIELTnZyVYnu18S3+w==
-X-Received: by 2002:a05:600c:1614:b0:3cf:615f:54fb with SMTP id m20-20020a05600c161400b003cf615f54fbmr945615wmn.76.1668166925622;
-        Fri, 11 Nov 2022 03:42:05 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id z3-20020a05600c0a0300b003c83465ccbfsm9569651wmp.35.2022.11.11.03.42.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Nov 2022 03:42:04 -0800 (PST)
-Message-ID: <c3c7396c-de5b-1853-e914-9d8eabd31099@gmail.com>
-Date: Fri, 11 Nov 2022 12:42:03 +0100
+	id 1otSaH-00FPaN-Cb
+	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 11:52:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8OtYKVWMi1GkRVogIfj4s/B5mdbZjVV1yjLy1OxRYi8=; b=bO6zTklQqjTdIX2E5cEafZezoV
+	E7shapaKbRtONzaBh2WVspgBsuqfD8lGSipyMS8QUOInLxxgzt9UK347qXOR6LxGnt8c+vqOzG5Zo
+	8KomaAQ1MS2mdIg/ne4pkiJT+gGB6ewAATQpzSu5Tzjfi/Ybh0NmUKneghmyiwySTy9Q=;
+Received: from p200300daa72ee10c199752172ce6dd7a.dip0.t-ipconnect.de ([2003:da:a72e:e10c:1997:5217:2ce6:dd7a] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1otSa1-0018dc-Aj; Fri, 11 Nov 2022 12:52:17 +0100
+Message-ID: <f2f873d2-fca1-f4d0-b6df-2c69f795b449@nbd.name>
+Date: Fri, 11 Nov 2022 12:52:16 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [PATCH v5 5/6] drm/mediatek: add mediatek-drm of vdosys0 support
- for mt8195
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.4.2
+Subject: Re: [PATCH v3 6/7] wifi: mt76: mt7921: introduce remain_on_channel
+ support
 Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220927152704.12018-1-jason-jh.lin@mediatek.com>
- <20220927152704.12018-6-jason-jh.lin@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220927152704.12018-6-jason-jh.lin@mediatek.com>
+To: sean.wang@mediatek.com, lorenzo.bianconi@redhat.com
+Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ jenhao.yang@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+ ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
+ jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com,
+ abhishekpandit@google.com, shawnku@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <cover.1668068326.git.objelf@gmail.com>
+ <8e285c5f1b4fe477c477bf01156b26b8b5e65bc8.1668068326.git.objelf@gmail.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <8e285c5f1b4fe477c477bf01156b26b8b5e65bc8.1668068326.git.objelf@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_034208_612687_09F5A4B1 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20221111_035233_536783_A2B3215A 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,130 +79,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 27/09/2022 17:27, Jason-JH.Lin wrote:
-> Add driver data of mt8195 vdosys0 to mediatek-drm and the sub driver.
+On 10.11.22 22:23, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Introduce remain_on_channel support. Additionally, we add
+> mt7921_check_offload_capability to disable .remain_on_channel and
+> .cancel_remain_on_channel and related configuration because those
+> operations would rely on the fundamental MCU commands that will be only
+> supported with newer firmware.
+> 
+> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  6 +++++
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 28 ++++++++++++++++++++++++
->   2 files changed, 34 insertions(+)
+>   .../net/wireless/mediatek/mt76/mt7921/init.c  |  63 +++++++
+>   .../net/wireless/mediatek/mt76/mt7921/main.c  | 165 ++++++++++++++++++
+>   .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  24 +++
+>   .../wireless/mediatek/mt76/mt7921/mt7921.h    |  49 ++++++
+>   .../net/wireless/mediatek/mt76/mt7921/pci.c   |  26 ++-
+>   .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  17 +-
+>   .../net/wireless/mediatek/mt76/mt7921/usb.c   |  16 +-
+>   7 files changed, 346 insertions(+), 14 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index 2cb90466798c..66cdd0bc1311 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -374,6 +374,10 @@ static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
->   	.fifo_size = 5 * SZ_1K,
->   };
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> index 82df5fa4fbc7..82837ccc104d 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -1573,6 +1683,61 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+>   	mt7921_mutex_release(dev);
+>   }
 >   
-> +static const struct mtk_disp_rdma_data mt8195_rdma_driver_data = {
-> +	.fifo_size = 1920,
+> +const struct ieee80211_ops mt7921_ops_chanctx = {
+> +	.tx = mt7921_tx,
+> +	.start = mt7921_start,
+> +	.stop = mt7921_stop,
+> +	.add_interface = mt7921_add_interface,
+> +	.remove_interface = mt7921_remove_interface,
+> +	.config = mt7921_config,
+> +	.conf_tx = mt7921_conf_tx,
+> +	.configure_filter = mt7921_configure_filter,
+> +	.bss_info_changed = mt7921_bss_info_changed,
+> +	.start_ap = mt7921_start_ap,
+> +	.stop_ap = mt7921_stop_ap,
+> +	.sta_state = mt7921_sta_state,
+> +	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
+> +	.set_key = mt7921_set_key,
+> +	.sta_set_decap_offload = mt7921_sta_set_decap_offload,
+> +#if IS_ENABLED(CONFIG_IPV6)
+> +	.ipv6_addr_change = mt7921_ipv6_addr_change,
+> +#endif /* CONFIG_IPV6 */
+> +	.ampdu_action = mt7921_ampdu_action,
+> +	.set_rts_threshold = mt7921_set_rts_threshold,
+> +	.wake_tx_queue = mt76_wake_tx_queue,
+> +	.release_buffered_frames = mt76_release_buffered_frames,
+> +	.channel_switch_beacon = mt7921_channel_switch_beacon,
+> +	.get_txpower = mt76_get_txpower,
+> +	.get_stats = mt7921_get_stats,
+> +	.get_et_sset_count = mt7921_get_et_sset_count,
+> +	.get_et_strings = mt7921_get_et_strings,
+> +	.get_et_stats = mt7921_get_et_stats,
+> +	.get_tsf = mt7921_get_tsf,
+> +	.set_tsf = mt7921_set_tsf,
+> +	.get_survey = mt76_get_survey,
+> +	.get_antenna = mt76_get_antenna,
+> +	.set_antenna = mt7921_set_antenna,
+> +	.set_coverage_class = mt7921_set_coverage_class,
+> +	.hw_scan = mt7921_hw_scan,
+> +	.cancel_hw_scan = mt7921_cancel_hw_scan,
+> +	.sta_statistics = mt7921_sta_statistics,
+> +	.sched_scan_start = mt7921_start_sched_scan,
+> +	.sched_scan_stop = mt7921_stop_sched_scan,
+> +	CFG80211_TESTMODE_CMD(mt7921_testmode_cmd)
+> +	CFG80211_TESTMODE_DUMP(mt7921_testmode_dump)
+> +#ifdef CONFIG_PM
+> +	.suspend = mt7921_suspend,
+> +	.resume = mt7921_resume,
+> +	.set_wakeup = mt7921_set_wakeup,
+> +	.set_rekey_data = mt7921_set_rekey_data,
+> +#endif /* CONFIG_PM */
+> +	.flush = mt7921_flush,
+> +	.set_sar_specs = mt7921_set_sar_specs,
+> +	.remain_on_channel = mt7921_remain_on_channel,
+> +	.cancel_remain_on_channel = mt7921_cancel_remain_on_channel,
 > +};
+> +EXPORT_SYMBOL_GPL(mt7921_ops_chanctx);
 > +
->   static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
->   	{ .compatible = "mediatek,mt2701-disp-rdma",
->   	  .data = &mt2701_rdma_driver_data},
-> @@ -383,6 +387,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
->   	  .data = &mt8183_rdma_driver_data},
->   	{ .compatible = "mediatek,mt8192-disp-rdma",
->   	  .data = &mt8192_rdma_driver_data},
-> +	{ .compatible = "mediatek,mt8195-disp-rdma",
-> +	  .data = &mt8195_rdma_driver_data},
->   	{},
->   };
->   MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index adc9a4f4085b..9b5a7a7ddde0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -195,6 +195,19 @@ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
->   	DDP_COMPONENT_DPI0,
->   };
->   
-> +static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_COLOR0,
-> +	DDP_COMPONENT_CCORR,
-> +	DDP_COMPONENT_AAL0,
-> +	DDP_COMPONENT_GAMMA,
-> +	DDP_COMPONENT_DITHER0,
-> +	DDP_COMPONENT_DSC0,
-> +	DDP_COMPONENT_MERGE0,
-> +	DDP_COMPONENT_DP_INTF0,
-> +};
-> +
->   static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
->   	.main_path = mt2701_mtk_ddp_main,
->   	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-> @@ -253,6 +266,11 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
->   	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
->   };
->   
-> +static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-> +	.main_path = mt8195_mtk_ddp_main,
-> +	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-> +};
-> +
->   static int mtk_drm_kms_init(struct drm_device *drm)
->   {
->   	struct mtk_drm_private *private = drm->dev_private;
-> @@ -470,12 +488,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->   	  .data = (void *)MTK_DISP_DITHER },
->   	{ .compatible = "mediatek,mt8183-disp-dither",
->   	  .data = (void *)MTK_DISP_DITHER },
-> +	{ .compatible = "mediatek,mt8195-disp-dsc",
-> +	  .data = (void *)MTK_DISP_DSC },
->   	{ .compatible = "mediatek,mt8167-disp-gamma",
->   	  .data = (void *)MTK_DISP_GAMMA, },
->   	{ .compatible = "mediatek,mt8173-disp-gamma",
->   	  .data = (void *)MTK_DISP_GAMMA, },
->   	{ .compatible = "mediatek,mt8183-disp-gamma",
->   	  .data = (void *)MTK_DISP_GAMMA, },
-> +	{ .compatible = "mediatek,mt8195-disp-merge",
-> +	  .data = (void *)MTK_DISP_MERGE },
->   	{ .compatible = "mediatek,mt2701-disp-mutex",
->   	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt2712-disp-mutex",
-> @@ -490,6 +512,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->   	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt8192-disp-mutex",
->   	  .data = (void *)MTK_DISP_MUTEX },
-> +	{ .compatible = "mediatek,mt8195-disp-mutex",
-> +	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt8173-disp-od",
->   	  .data = (void *)MTK_DISP_OD },
->   	{ .compatible = "mediatek,mt2701-disp-ovl",
-> @@ -524,6 +548,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->   	  .data = (void *)MTK_DISP_RDMA },
->   	{ .compatible = "mediatek,mt8192-disp-rdma",
->   	  .data = (void *)MTK_DISP_RDMA },
-> +	{ .compatible = "mediatek,mt8195-disp-rdma",
-> +	  .data = (void *)MTK_DISP_RDMA },
->   	{ .compatible = "mediatek,mt8173-disp-ufoe",
->   	  .data = (void *)MTK_DISP_UFOE },
->   	{ .compatible = "mediatek,mt8173-disp-wdma",
-> @@ -568,6 +594,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
->   	  .data = &mt8186_mmsys_driver_data},
->   	{ .compatible = "mediatek,mt8192-mmsys",
->   	  .data = &mt8192_mmsys_driver_data},
-> +	{ .compatible = "mediatek,mt8195-vdosys0",
-> +	  .data = &mt8195_vdosys0_driver_data},
+>   const struct ieee80211_ops mt7921_ops = {
+>   	.tx = mt7921_tx,
+>   	.start = mt7921_start,
+Please avoid creating a copy&paste ops struct, since that adds extra 
+maintenance overhead.
+For some devices we already use devm_kmemdup to duplicate and modify 
+ops. Please use the same for chanctx. You could add a common function 
+that fills in the remain_on_channel/chanctx part into the duplicated ops.
 
-To make this work with older device tree, we will need to provide the same 
-driver data to the old compatible:
-
-+	{ .compatible = "mediatek,,mt8195-mmsys",
-+	  .data = &mt8195_vdosys0_driver_data},
-+       }
-
-Regards,
-Matthias
-
->   	{ }
->   };
->   MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+- Felix
 
