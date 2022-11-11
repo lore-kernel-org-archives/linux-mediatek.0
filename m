@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98524C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9B60C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 10:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=svuNj1VqJz0ZUG6mVtwUlPiIusDro2cEugIR/L1NTac=; b=pSag3RC2TCzTuguqOHlRoNz9qy
-	wUk653YIDr8emsnZG02O4qXzSmOYLnjDu0wmHZdU4H2AnevnHeVTiSo4IPc3GnmVfWR4sDTUEd08S
-	OdUj1TOiLrOmtVBWa1U/0TwEgBPB7oWHvg39spT87qupvn0IgWkKfnuy/WIda4spoCNnWDLj2/cUY
-	XjqPSne/btELQEcjMBuOnIwc7SZUFeZmxQxXoMM9aT+G/NVpYr3wsxptf0DiScZgpPp2QcXA5vuxd
-	7joPYvOu0s9C4pNFK2Qy4czrBl+BXmFoPCd+NJ2ZlGsrnxzpRZKAkGiekewG+s8arwm13Mof9Wx4T
-	ca0pWrhQ==;
+	bh=2kPNOGOomYObpfy8Uhn469poBxSZitEQV8g7qGLyCTg=; b=wJiHMOx4nY0mFfy/a0AmGLkvaF
+	uvjSnarFQYrkhh7dzrJ8qYmma1cCBo+UKeCA9dO/WzFsXbvRZteIVHwL61NNJHVWz3oEWd8mHIof2
+	Uxoy/ypM0qEQrDzAvbnOgrhFa/IGgfLJ4TaeAUvWv0Qnhh5M1xNQ/QM4U9FYqqiOb+BJfesGRWexe
+	lX+6H2uAGXutvlXSvrILOvC6Y3ivkEQo1DLeZzhWeEXi4+BKFwOtPc0DOG0fDet5mN98wobdZr/Vn
+	Z638def+wgr1e1rH/B0iD2Lyblnl2i7LRxrlhDFAfNmUFJY5Im6FbGBQr/AnM8V4v3Wk8V4f3lAqU
+	XI9qUufg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otQXO-00Ef07-KT; Fri, 11 Nov 2022 09:41:26 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1otR8c-00Etwy-E8; Fri, 11 Nov 2022 10:19:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otQXC-00Eeqw-CZ; Fri, 11 Nov 2022 09:41:16 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 29C7B660035A;
-	Fri, 11 Nov 2022 09:41:12 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668159672;
-	bh=/QAbwy39z5wB7wwJDYJB20RcokLJXsTqKYcafNeAgBc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=f7eLY5VFMz5KIPdqNWG+Z0GZRRIXfYo7L/QNDxqXbAPduxqg3Y2mOpEpStioieRoy
-	 EGS2tx19LAtuDljepAHrBox9Gb4swrvCU8X1cf9NmQEtFW6mgJrTVsGNB4a+bp20u2
-	 2hGKf2OEt2taKqVyaVt7IWumevoN6/JsXxuAHHHoE0fQciRQBfX4B8+FqQ1s0zdQMN
-	 sdcBlI2WYO2zLQuFAg0OTtfwDg3rwKha23xhjCT5gCVEEbn+GdubnaeVouWT1kL1Lm
-	 y8fhoobdeVAFmT3XXCIP7nnBiCIomUak1l7A1Kr40xYRY16kYFTgWlhOku8iTtNb8s
-	 6iawiHr/NpYnA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sean.wang@kernel.org
-Cc: linus.walleij@linaro.org,
-	matthias.bgg@gmail.com,
-	nfraprado@collabora.com,
-	marijn.suijten@somainline.org,
-	jami.kettunen@somainline.org,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] pinctrl: mediatek: Fix EINT pins input debounce time configuration
-Date: Fri, 11 Nov 2022 10:41:06 +0100
-Message-Id: <20221111094106.18486-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.38.1
+	id 1otR8I-00EtkA-Cu; Fri, 11 Nov 2022 10:19:38 +0000
+X-UUID: 4156bfe4438b4f46901b100652e04612-20221111
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2kPNOGOomYObpfy8Uhn469poBxSZitEQV8g7qGLyCTg=;
+	b=EoWG/X1vNE9tlNJXU3eLOYQ/b0VQn/dcpmEFIIYlZHKNgyWZW6hPmfVVWuNti6i8/HWXF7eMOJVm5KNg6taenWJUoUGa0RhLUMqlvlJfajA8EhiBxOzkdCroEUsU02rdfShSsAHjn5pqxwkgM+YukWohHkduL1Gm5obGMWSw45g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:f0d887ec-3025-451f-9040-466c0221f040,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:62cd327,CLOUDID:56f14b5d-100c-4555-952b-a62c895efded,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4156bfe4438b4f46901b100652e04612-20221111
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <haozhe.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1456219177; Fri, 11 Nov 2022 03:19:23 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 11 Nov 2022 18:08:45 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 11 Nov 2022 18:08:43 +0800
+From: <haozhe.chang@mediatek.com>
+To: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation
+	<linuxwwan@intel.com>, Loic Poulain <loic.poulain@linaro.org>, Sergey
+ Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Stephan
+ Gerhold <stephan@gerhold.net>, Chandrashekar Devegowda
+	<chandrashekar.devegowda@intel.com>, Chiranjeevi Rapolu
+	<chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>,
+	Ricardo Martinez <ricardo.martinez@linux.intel.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Oliver Neukum <oneukum@suse.com>, Shang XiaoJing <shangxiaojing@huawei.com>,
+	haozhe chang <haozhe.chang@mediatek.com>, "open list:INTEL WWAN IOSM DRIVER"
+	<netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "open
+ list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..."
+	<linux-remoteproc@vger.kernel.org>, "open list:USB SUBSYSTEM"
+	<linux-usb@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <lambert.wang@mediatek.com>, <xiayu.zhang@mediatek.com>,
+	<hua.yang@mediatek.com>
+Subject: [PATCH v3] wwan: core: Support slicing in port TX flow of WWAN subsystem
+Date: Fri, 11 Nov 2022 18:08:36 +0800
+Message-ID: <20221111100840.105305-1-haozhe.chang@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_014114_714466_AD94320C 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20221111_021934_623224_8546B126 
+X-CRM114-Status: GOOD (  25.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,400 +92,318 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The External Interrupt Controller (EINTC) on all of the supported
-MediaTek SoCs does support input debouncing, but not all of them
-index the debounce time values (DBNC_SETTING registers) the same way.
+From: haozhe chang <haozhe.chang@mediatek.com>
 
-Before this change, in some cases, as an example, requesting a debounce
-time of 16 milliseconds would mistakenly set the relative DBNC_SETTING
-register to 0x2, resulting in a way shorter debounce time of 500uS.
+wwan_port_fops_write inputs the SKB parameter to the TX callback of
+the WWAN device driver. However, the WWAN device (e.g., t7xx) may
+have an MTU less than the size of SKB, causing the TX buffer to be
+sliced and copied once more in the WWAN device driver.
 
-To fix the aforementioned issue, define three different debounce_time
-arrays, reflecting the correct register index for each value and for
-each register index variant, and make sure that each SoC pinctrl
-driver uses the right one.
+This patch implements the slicing in the WWAN subsystem and gives
+the WWAN devices driver the option to slice(by frag_len) or not. By
+doing so, the additional memory copy is reduced.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Meanwhile, this patch gives WWAN devices driver the option to reserve
+headroom in fragments for the device-specific metadata.
+
+Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
+
 ---
+Changes in v2
+  -send fragments to device driver by skb frag_list.
 
-I know, this commit is a good candidate to get a Fixes tag, but I
-couldn't find a way to actually do that cleanly...
+Changes in v3
+  -move frag_len and headroom_len setting to wwan_create_port.
+---
+ drivers/net/wwan/iosm/iosm_ipc_port.c  |  3 +-
+ drivers/net/wwan/mhi_wwan_ctrl.c       |  2 +-
+ drivers/net/wwan/rpmsg_wwan_ctrl.c     |  2 +-
+ drivers/net/wwan/t7xx/t7xx_port_wwan.c | 34 +++++++--------
+ drivers/net/wwan/wwan_core.c           | 59 ++++++++++++++++++++------
+ drivers/net/wwan/wwan_hwsim.c          |  2 +-
+ drivers/usb/class/cdc-wdm.c            |  2 +-
+ include/linux/wwan.h                   |  6 ++-
+ 8 files changed, 73 insertions(+), 37 deletions(-)
 
-The only way would be to split this in one commit for each pinctrl
-driver, but that would result in a series containing 21 commits, of
-which 20 are one-liners... and that didn't look right.
-
- drivers/pinctrl/mediatek/mtk-eint.c       | 31 +++++++++++++++++++----
- drivers/pinctrl/mediatek/mtk-eint.h       |  6 +++++
- drivers/pinctrl/mediatek/pinctrl-mt2701.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt2712.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt6765.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt6779.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt6795.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt7622.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt7623.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt7629.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt7986.c |  2 ++
- drivers/pinctrl/mediatek/pinctrl-mt8127.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8135.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8167.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8173.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8183.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8186.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8188.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8192.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8195.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8365.c |  1 +
- drivers/pinctrl/mediatek/pinctrl-mt8516.c |  1 +
- 22 files changed, 53 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index fff0c05a1425..3e205318b54e 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -24,6 +24,7 @@
- #define MTK_EINT_EDGE_SENSITIVE           0
- #define MTK_EINT_LEVEL_SENSITIVE          1
- #define MTK_EINT_DBNC_SET_DBNC_BITS	  4
-+#define MTK_EINT_DBNC_MAX		  16
- #define MTK_EINT_DBNC_RST_BIT		  (0x1 << 1)
- #define MTK_EINT_DBNC_SET_EN		  (0x1 << 0)
+diff --git a/drivers/net/wwan/iosm/iosm_ipc_port.c b/drivers/net/wwan/iosm/iosm_ipc_port.c
+index b6d81c627277..dc43b8f0d1af 100644
+--- a/drivers/net/wwan/iosm/iosm_ipc_port.c
++++ b/drivers/net/wwan/iosm/iosm_ipc_port.c
+@@ -63,7 +63,8 @@ struct iosm_cdev *ipc_port_init(struct iosm_imem *ipc_imem,
+ 	ipc_port->ipc_imem = ipc_imem;
  
-@@ -48,6 +49,18 @@ static const struct mtk_eint_regs mtk_generic_eint_regs = {
- 	.dbnc_clr  = 0x700,
- };
+ 	ipc_port->iosm_port = wwan_create_port(ipc_port->dev, port_type,
+-					       &ipc_wwan_ctrl_ops, ipc_port);
++					       &ipc_wwan_ctrl_ops, 0, 0,
++					       ipc_port);
  
-+const unsigned int debounce_time_mt2701[] = {
-+	500, 1000, 16000, 32000, 64000, 128000, 256000, 0
-+};
-+
-+const unsigned int debounce_time_mt6765[] = {
-+	125, 250, 500, 1000, 16000, 32000, 64000, 128000, 256000, 512000, 0
-+};
-+
-+const unsigned int debounce_time_mt6795[] = {
-+	500, 1000, 16000, 32000, 64000, 128000, 256000, 512000, 0
-+};
-+
- static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
- 					 unsigned int eint_num,
- 					 unsigned int offset)
-@@ -402,10 +415,11 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
- 	int virq, eint_offset;
- 	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask,
- 		     dbnc;
--	static const unsigned int debounce_time[] = {500, 1000, 16000, 32000,
--						     64000, 128000, 256000};
- 	struct irq_data *d;
+ 	return ipc_port;
+ }
+diff --git a/drivers/net/wwan/mhi_wwan_ctrl.c b/drivers/net/wwan/mhi_wwan_ctrl.c
+index f7ca52353f40..29300838531c 100644
+--- a/drivers/net/wwan/mhi_wwan_ctrl.c
++++ b/drivers/net/wwan/mhi_wwan_ctrl.c
+@@ -237,7 +237,7 @@ static int mhi_wwan_ctrl_probe(struct mhi_device *mhi_dev,
  
-+	if (!eint->hw->db_time)
-+		return -EOPNOTSUPP;
-+
- 	virq = irq_find_mapping(eint->domain, eint_num);
- 	eint_offset = (eint_num % 4) * 8;
- 	d = irq_get_irq_data(virq);
-@@ -416,9 +430,9 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
- 	if (!mtk_eint_can_en_debounce(eint, eint_num))
+ 	/* Register as a wwan port, id->driver_data contains wwan port type */
+ 	port = wwan_create_port(&cntrl->mhi_dev->dev, id->driver_data,
+-				&wwan_pops, mhiwwan);
++				&wwan_pops, 0, 0, mhiwwan);
+ 	if (IS_ERR(port)) {
+ 		kfree(mhiwwan);
+ 		return PTR_ERR(port);
+diff --git a/drivers/net/wwan/rpmsg_wwan_ctrl.c b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+index 31c24420ab2e..060f06072dca 100644
+--- a/drivers/net/wwan/rpmsg_wwan_ctrl.c
++++ b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+@@ -129,7 +129,7 @@ static int rpmsg_wwan_ctrl_probe(struct rpmsg_device *rpdev)
+ 
+ 	/* Register as a wwan port, id.driver_data contains wwan port type */
+ 	port = wwan_create_port(parent, rpdev->id.driver_data,
+-				&rpmsg_wwan_pops, rpwwan);
++				&rpmsg_wwan_pops, 0, 0, rpwwan);
+ 	if (IS_ERR(port))
+ 		return PTR_ERR(port);
+ 
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_wwan.c b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+index 33931bfd78fd..b75bb272f861 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
++++ b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+@@ -54,13 +54,13 @@ static void t7xx_port_ctrl_stop(struct wwan_port *port)
+ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ {
+ 	struct t7xx_port *port_private = wwan_port_get_drvdata(port);
+-	size_t len, offset, chunk_len = 0, txq_mtu = CLDMA_MTU;
+ 	const struct t7xx_port_conf *port_conf;
++	struct sk_buff *cur = skb, *cloned;
+ 	struct t7xx_fsm_ctl *ctl;
+ 	enum md_state md_state;
++	int cnt = 0, ret;
+ 
+-	len = skb->len;
+-	if (!len || !port_private->chan_enable)
++	if (!port_private->chan_enable)
  		return -EINVAL;
  
--	dbnc = ARRAY_SIZE(debounce_time);
--	for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
--		if (debounce <= debounce_time[i]) {
-+	dbnc = eint->num_db_time;
-+	for (i = 0; i < eint->num_db_time; i++) {
-+		if (debounce <= eint->hw->db_time[i]) {
- 			dbnc = i;
- 			break;
+ 	port_conf = port_private->port_conf;
+@@ -72,23 +72,21 @@ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ 		return -ENODEV;
+ 	}
+ 
+-	for (offset = 0; offset < len; offset += chunk_len) {
+-		struct sk_buff *skb_ccci;
+-		int ret;
+-
+-		chunk_len = min(len - offset, txq_mtu - sizeof(struct ccci_header));
+-		skb_ccci = t7xx_port_alloc_skb(chunk_len);
+-		if (!skb_ccci)
+-			return -ENOMEM;
+-
+-		skb_put_data(skb_ccci, skb->data + offset, chunk_len);
+-		ret = t7xx_port_send_skb(port_private, skb_ccci, 0, 0);
++	while (cur) {
++		cloned = skb_clone(cur, GFP_KERNEL);
++		cloned->len = skb_headlen(cur);
++		ret = t7xx_port_send_skb(port_private, cloned, 0, 0);
+ 		if (ret) {
+-			dev_kfree_skb_any(skb_ccci);
++			dev_kfree_skb(cloned);
+ 			dev_err(port_private->dev, "Write error on %s port, %d\n",
+ 				port_conf->name, ret);
+-			return ret;
++			return cnt ? cnt + ret : ret;
  		}
-@@ -492,6 +506,13 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 	if (!eint->domain)
- 		return -ENOMEM;
++		cnt += cur->len;
++		if (cur == skb)
++			cur = skb_shinfo(skb)->frag_list;
++		else
++			cur = cur->next;
+ 	}
  
-+	if (eint->hw->db_time) {
-+		for (i = 0; i < MTK_EINT_DBNC_MAX; i++)
-+			if (eint->hw->db_time[i] == 0)
-+				break;
-+		eint->num_db_time = i;
-+	}
+ 	dev_kfree_skb(skb);
+@@ -154,13 +152,15 @@ static int t7xx_port_wwan_disable_chl(struct t7xx_port *port)
+ static void t7xx_port_wwan_md_state_notify(struct t7xx_port *port, unsigned int state)
+ {
+ 	const struct t7xx_port_conf *port_conf = port->port_conf;
++	unsigned int header_len = sizeof(struct ccci_header);
+ 
+ 	if (state != MD_STATE_READY)
+ 		return;
+ 
+ 	if (!port->wwan_port) {
+ 		port->wwan_port = wwan_create_port(port->dev, port_conf->port_type,
+-						   &wwan_ops, port);
++						   &wwan_ops, CLDMA_MTU - header_len,
++						   header_len, port);
+ 		if (IS_ERR(port->wwan_port))
+ 			dev_err(port->dev, "Unable to create WWWAN port %s", port_conf->name);
+ 	}
+diff --git a/drivers/net/wwan/wwan_core.c b/drivers/net/wwan/wwan_core.c
+index 62e9f7d6c9fe..0d466f4cc2df 100644
+--- a/drivers/net/wwan/wwan_core.c
++++ b/drivers/net/wwan/wwan_core.c
+@@ -67,6 +67,8 @@ struct wwan_device {
+  * @rxq: Buffer inbound queue
+  * @waitqueue: The waitqueue for port fops (read/write/poll)
+  * @data_lock: Port specific data access serialization
++ * @headroom_len: SKB reserved headroom size
++ * @frag_len: Length to split packet
+  * @at_data: AT port specific data
+  */
+ struct wwan_port {
+@@ -79,6 +81,8 @@ struct wwan_port {
+ 	struct sk_buff_head rxq;
+ 	wait_queue_head_t waitqueue;
+ 	struct mutex data_lock;	/* Port specific data access serialization */
++	size_t headroom_len;
++	size_t frag_len;
+ 	union {
+ 		struct {
+ 			struct ktermios termios;
+@@ -422,6 +426,8 @@ static int __wwan_port_dev_assign_name(struct wwan_port *port, const char *fmt)
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   size_t frag_len,
++				   unsigned int headroom_len,
+ 				   void *drvdata)
+ {
+ 	struct wwan_device *wwandev;
+@@ -455,6 +461,8 @@ struct wwan_port *wwan_create_port(struct device *parent,
+ 
+ 	port->type = type;
+ 	port->ops = ops;
++	port->frag_len = frag_len ? frag_len : SIZE_MAX;
++	port->headroom_len = headroom_len;
+ 	mutex_init(&port->ops_lock);
+ 	skb_queue_head_init(&port->rxq);
+ 	init_waitqueue_head(&port->waitqueue);
+@@ -698,30 +706,53 @@ static ssize_t wwan_port_fops_read(struct file *filp, char __user *buf,
+ static ssize_t wwan_port_fops_write(struct file *filp, const char __user *buf,
+ 				    size_t count, loff_t *offp)
+ {
++	struct sk_buff *skb, *head = NULL, *tail = NULL;
+ 	struct wwan_port *port = filp->private_data;
+-	struct sk_buff *skb;
++	size_t frag_len, remain = count;
+ 	int ret;
+ 
+ 	ret = wwan_wait_tx(port, !!(filp->f_flags & O_NONBLOCK));
+ 	if (ret)
+ 		return ret;
+ 
+-	skb = alloc_skb(count, GFP_KERNEL);
+-	if (!skb)
+-		return -ENOMEM;
++	do {
++		frag_len = min(remain, port->frag_len);
++		skb = alloc_skb(frag_len + port->headroom_len, GFP_KERNEL);
++		if (!skb) {
++			ret = -ENOMEM;
++			goto freeskb;
++		}
++		skb_reserve(skb, port->headroom_len);
 +
- 	mtk_eint_hw_init(eint);
- 	for (i = 0; i < eint->hw->ap_num; i++) {
- 		int virq = irq_create_mapping(eint->domain, i);
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-index 48468d0fae68..6139b16cd225 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.h
-+++ b/drivers/pinctrl/mediatek/mtk-eint.h
-@@ -37,8 +37,13 @@ struct mtk_eint_hw {
- 	u8		ports;
- 	unsigned int	ap_num;
- 	unsigned int	db_cnt;
-+	const unsigned int *db_time;
- };
++		if (!head) {
++			head = skb;
++		} else if (!tail) {
++			skb_shinfo(head)->frag_list = skb;
++			tail = skb;
++		} else {
++			tail->next = skb;
++			tail = skb;
++		}
  
-+extern const unsigned int debounce_time_mt2701[];
-+extern const unsigned int debounce_time_mt6765[];
-+extern const unsigned int debounce_time_mt6795[];
+-	if (copy_from_user(skb_put(skb, count), buf, count)) {
+-		kfree_skb(skb);
+-		return -EFAULT;
+-	}
++		if (copy_from_user(skb_put(skb, frag_len), buf + count - remain, frag_len)) {
++			ret = -EFAULT;
++			goto freeskb;
++		}
+ 
+-	ret = wwan_port_op_tx(port, skb, !!(filp->f_flags & O_NONBLOCK));
+-	if (ret) {
+-		kfree_skb(skb);
+-		return ret;
+-	}
++		if (skb != head) {
++			head->data_len += skb->len;
++			head->len += skb->len;
++			head->truesize += skb->truesize;
++		}
++	} while (remain -= frag_len);
 +
- struct mtk_eint;
++	ret = wwan_port_op_tx(port, head, !!(filp->f_flags & O_NONBLOCK));
++	if (!ret)
++		return count;
  
- struct mtk_eint_xt {
-@@ -62,6 +67,7 @@ struct mtk_eint {
- 	/* Used to fit into various EINT device */
- 	const struct mtk_eint_hw *hw;
- 	const struct mtk_eint_regs *regs;
-+	u16 num_db_time;
+-	return count;
++freeskb:
++	kfree_skb(head);
++	return ret;
+ }
  
- 	/* Used to fit into various pinctrl device */
- 	void *pctl;
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-index d1583b4fdd9d..b185538452a0 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-@@ -518,6 +518,7 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 169,
- 		.db_cnt    = 16,
-+		.db_time   = debounce_time_mt2701,
- 	},
- };
+ static __poll_t wwan_port_fops_poll(struct file *filp, poll_table *wait)
+diff --git a/drivers/net/wwan/wwan_hwsim.c b/drivers/net/wwan/wwan_hwsim.c
+index ff09a8cedf93..3a02a75d4485 100644
+--- a/drivers/net/wwan/wwan_hwsim.c
++++ b/drivers/net/wwan/wwan_hwsim.c
+@@ -205,7 +205,7 @@ static struct wwan_hwsim_port *wwan_hwsim_port_new(struct wwan_hwsim_dev *dev)
  
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-index b921068f9e69..730a496848dc 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-@@ -567,6 +567,7 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
- 		.ports     = 8,
- 		.ap_num    = 229,
- 		.db_cnt    = 40,
-+		.db_time   = debounce_time_mt2701,
- 	},
- };
+ 	port->wwan = wwan_create_port(&dev->dev, WWAN_PORT_AT,
+ 				      &wwan_hwsim_port_ops,
+-				      port);
++				      0, 0, port);
+ 	if (IS_ERR(port->wwan)) {
+ 		err = PTR_ERR(port->wwan);
+ 		goto err_free_port;
+diff --git a/drivers/usb/class/cdc-wdm.c b/drivers/usb/class/cdc-wdm.c
+index 1f0951be15ab..ff7494635d0f 100644
+--- a/drivers/usb/class/cdc-wdm.c
++++ b/drivers/usb/class/cdc-wdm.c
+@@ -929,7 +929,7 @@ static void wdm_wwan_init(struct wdm_device *desc)
+ 		return;
+ 	}
  
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-index c57b19fcda03..f6ec41eb6e0c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-@@ -1062,6 +1062,7 @@ static const struct mtk_eint_hw mt6765_eint_hw = {
- 	.ports     = 6,
- 	.ap_num    = 160,
- 	.db_cnt    = 13,
-+	.db_time   = debounce_time_mt6765,
- };
+-	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops, desc);
++	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops, 0, 0, desc);
+ 	if (IS_ERR(port)) {
+ 		dev_err(&intf->dev, "%s: Unable to create WWAN port\n",
+ 			dev_name(intf->usb_dev));
+diff --git a/include/linux/wwan.h b/include/linux/wwan.h
+index 5ce2acf444fb..e1a6554792fc 100644
+--- a/include/linux/wwan.h
++++ b/include/linux/wwan.h
+@@ -67,6 +67,9 @@ struct wwan_port_ops {
+  * @parent: Device to use as parent and shared by all WWAN ports
+  * @type: WWAN port type
+  * @ops: WWAN port operations
++ * @frag_len: TX fragments length, if 0 is set,
++ *            the WWAN core will not split the user package.
++ * @headroom_len: TX fragments reserved headroom length
+  * @drvdata: Pointer to caller driver data
+  *
+  * Allocate and register a new WWAN port. The port will be automatically exposed
+@@ -84,6 +87,8 @@ struct wwan_port_ops {
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   size_t frag_len,
++				   unsigned int headroom_len,
+ 				   void *drvdata);
  
- static const struct mtk_pin_soc mt6765_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-index 4ddf8bda6827..62d4f5ad6737 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-@@ -737,6 +737,7 @@ static const struct mtk_eint_hw mt6779_eint_hw = {
- 	.ports     = 6,
- 	.ap_num    = 195,
- 	.db_cnt    = 13,
-+	.db_time   = debounce_time_mt2701,
- };
+ /**
+@@ -112,7 +117,6 @@ void wwan_port_rx(struct wwan_port *port, struct sk_buff *skb);
+  */
+ void wwan_port_txoff(struct wwan_port *port);
  
- static const struct mtk_pin_soc mt6779_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6795.c b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-index f90152261a0f..01e855ccd4dd 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-@@ -475,6 +475,7 @@ static const struct mtk_eint_hw mt6795_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = 224,
- 	.db_cnt    = 32,
-+	.db_time   = debounce_time_mt6795,
- };
- 
- static const unsigned int mt6795_pull_type[] = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-index 68eee881ee3d..3c1148d59eff 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-@@ -846,6 +846,7 @@ static const struct mtk_eint_hw mt7622_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = ARRAY_SIZE(mt7622_pins),
- 	.db_cnt    = 20,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_soc mt7622_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7623.c b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-index b8d9d31db74f..699977074697 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-@@ -1369,6 +1369,7 @@ static const struct mtk_eint_hw mt7623_eint_hw = {
- 	.ports     = 6,
- 	.ap_num    = 169,
- 	.db_cnt    = 20,
-+	.db_time   = debounce_time_mt2701,
- };
- 
- static struct mtk_pin_soc mt7623_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7629.c b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-index b5f0fa43245f..2ce411cb9c6e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-@@ -402,6 +402,7 @@ static const struct mtk_eint_hw mt7629_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = ARRAY_SIZE(mt7629_pins),
- 	.db_cnt    = 16,
-+	.db_time   = debounce_time_mt2701,
- };
- 
- static struct mtk_pin_soc mt7629_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-index 95f32e62e02f..8e2da08e88fd 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-@@ -844,6 +844,7 @@ static const struct mtk_eint_hw mt7986a_eint_hw = {
- 	.ports = 7,
- 	.ap_num = ARRAY_SIZE(mt7986a_pins),
- 	.db_cnt = 16,
-+	.db_time = debounce_time_mt6765,
- };
- 
- static const struct mtk_eint_hw mt7986b_eint_hw = {
-@@ -851,6 +852,7 @@ static const struct mtk_eint_hw mt7986b_eint_hw = {
- 	.ports = 7,
- 	.ap_num = ARRAY_SIZE(mt7986b_pins),
- 	.db_cnt = 16,
-+	.db_time = debounce_time_mt6765,
- };
- 
- static struct mtk_pin_soc mt7986a_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-index 91c530e7b00e..e8772dcfe69e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-@@ -286,6 +286,7 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 143,
- 		.db_cnt    = 16,
-+		.db_time = debounce_time_mt2701,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-index 562846756517..cdb0252071fb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-@@ -315,6 +315,7 @@ static const struct mtk_pinctrl_devdata mt8135_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 192,
- 		.db_cnt    = 16,
-+		.db_time = debounce_time_mt2701,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-index 825167f5d020..866da2c4a890 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-@@ -319,6 +319,7 @@ static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 169,
- 		.db_cnt    = 64,
-+		.db_time = debounce_time_mt6795,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-index 1d7d11a32e7d..37d8cec1c3ce 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-@@ -327,6 +327,7 @@ static const struct mtk_pinctrl_devdata mt8173_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 224,
- 		.db_cnt    = 16,
-+		.db_time   = debounce_time_mt2701,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-index fecb1e64fff4..ddc48b725c22 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-@@ -545,6 +545,7 @@ static const struct mtk_eint_hw mt8183_eint_hw = {
- 	.ports     = 6,
- 	.ap_num    = 212,
- 	.db_cnt    = 13,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_soc mt8183_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8186.c b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-index a4dd5197abc1..a02f7c326970 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-@@ -1222,6 +1222,7 @@ static const struct mtk_eint_hw mt8186_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = 217,
- 	.db_cnt    = 32,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_soc mt8186_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8188.c b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-index d0e75c1b4417..6a3d0126288e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-@@ -1625,6 +1625,7 @@ static const struct mtk_eint_hw mt8188_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = 225,
- 	.db_cnt    = 32,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_soc mt8188_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-index 78c02b7c81f0..9695f4ec6aba 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-@@ -1371,6 +1371,7 @@ static const struct mtk_eint_hw mt8192_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = 224,
- 	.db_cnt    = 32,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_reg_calc mt8192_reg_cals[PINCTRL_PIN_REG_MAX] = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index 563693d3d4c2..89557c7ed2ab 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -935,6 +935,7 @@ static const struct mtk_eint_hw mt8195_eint_hw = {
- 	.ports     = 7,
- 	.ap_num    = 225,
- 	.db_cnt    = 32,
-+	.db_time   = debounce_time_mt6765,
- };
- 
- static const struct mtk_pin_soc mt8195_data = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-index 57f37a294063..e31b89b226b7 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-@@ -453,6 +453,7 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
- 		.ports     = 5,
- 		.ap_num = 160,
- 		.db_cnt = 160,
-+		.db_time   = debounce_time_mt6765,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-index 939a1932b8dc..e929339dd2cb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-@@ -319,6 +319,7 @@ static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
- 		.ports     = 6,
- 		.ap_num    = 169,
- 		.db_cnt    = 64,
-+		.db_time   = debounce_time_mt6795,
- 	},
- };
- 
+-
+ /**
+  * wwan_port_txon - Restart TX on WWAN port
+  * @port: WWAN port for which TX must be restarted
 -- 
-2.38.1
+2.17.0
 
 
