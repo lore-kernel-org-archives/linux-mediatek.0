@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815B7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 11:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96B8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 12:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8OtYKVWMi1GkRVogIfj4s/B5mdbZjVV1yjLy1OxRYi8=; b=TG6ZOK9iGWMMvk+WuyX/XoKMu6
-	2QuCJ/sHMNnjB8BrT5G/0taK+3RHutWh0nZ+LQdItpvdYsq2YzOG5Byl0deZ7o3GtQGqK/wCno9sF
-	DBqEpQF2L68XzdWdsUHPJO/RJvU4XLf+ovt+BnaUzq9Czo7V8EB/qNxKzJUPrQQvxVdr+7nROO+3X
-	fsCii9tVuCF85atnlUPnO2Nxd3+mXo9zE/0r3U/vWqw0jy5z9cpcxA2kWZLCrvr41UkOie8QTUWyU
-	Rr/b1KqEuPeLnVNSZ0l5T87wQ8LoHW6KsmXMLyKxnW4rxKK0Oa/K/a4RHuj+Tsl4RW8XBjrf/h13P
-	seS8FFiQ==;
+	bh=DJF/8BTnSqG+0qzLAs/+pNq+7xJdZS+ZH3azcuPryMo=; b=Va3PvWc/CuZGp4NOVFzu257cCd
+	ELGQJOW+1BeZIZmzFMdnhpwPN5mAYdc7jWsNXM7ZhVt8zUvwXNeMYqxTkgPUa+aARfg3QessjHYrZ
+	IC8JeCk3RNQj2jBwI6YqRGEXK79OLNNGWIiB/HX3NLRprIZOPbhAfxgdJXnrhVye8JtYIY/zf6B+k
+	N93Cq0Sq94wD5w+M1lMWrWALwMLIWrYEHiiqeFS+6masLv24po/cAd6rrYseSxlye7mT52Kw1VUCn
+	MR2uUyQVFW5p9sQ5oYU/sYpaPaxINU6r+goIKABGB7ayPBsVstGBkLDt7++xVZ5QhiYjXxXQ0DbuX
+	tidReg8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSaK-00FPdf-2l; Fri, 11 Nov 2022 11:52:36 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1otT36-00FZoN-E3; Fri, 11 Nov 2022 12:22:20 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otSaH-00FPaN-Cb
-	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 11:52:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=8OtYKVWMi1GkRVogIfj4s/B5mdbZjVV1yjLy1OxRYi8=; b=bO6zTklQqjTdIX2E5cEafZezoV
-	E7shapaKbRtONzaBh2WVspgBsuqfD8lGSipyMS8QUOInLxxgzt9UK347qXOR6LxGnt8c+vqOzG5Zo
-	8KomaAQ1MS2mdIg/ne4pkiJT+gGB6ewAATQpzSu5Tzjfi/Ybh0NmUKneghmyiwySTy9Q=;
-Received: from p200300daa72ee10c199752172ce6dd7a.dip0.t-ipconnect.de ([2003:da:a72e:e10c:1997:5217:2ce6:dd7a] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1otSa1-0018dc-Aj; Fri, 11 Nov 2022 12:52:17 +0100
-Message-ID: <f2f873d2-fca1-f4d0-b6df-2c69f795b449@nbd.name>
-Date: Fri, 11 Nov 2022 12:52:16 +0100
+	id 1otT2w-00FZjJ-3o; Fri, 11 Nov 2022 12:22:11 +0000
+Received: by mail-wr1-x431.google.com with SMTP id cl5so6249283wrb.9;
+        Fri, 11 Nov 2022 04:22:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DJF/8BTnSqG+0qzLAs/+pNq+7xJdZS+ZH3azcuPryMo=;
+        b=ReJtGUVtPIOZD10UwPMf/wuiKfYhAqeiyHBCvfLLM6JirZ+HESrvGnGq4lc9SZgpxT
+         HCYbKDcafWQLxeXB2azC5v8/HBZ8kFHVzNylEizSHc6K9LSZS3Km/pYwy6iNVdjsXtlW
+         QAIe01T57aYTpRw/QLp7MReKqt9RQePVfLkhnsQhaU9MfUa4ieGV5xwm8oz/XgvLz/dc
+         6+PztoAvvKIR+BiZO9jy1tmtSluVaohUaF6HYNjwClF/Y1o98bzQ/Q0epxOn4dPIXqCY
+         yBs1lpCaVlrRMrwbIxziU2N8nc4d72A1Mpcj+sQq0c+iBKh7/6fU/KaGMK/3hj56y7e7
+         dl8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DJF/8BTnSqG+0qzLAs/+pNq+7xJdZS+ZH3azcuPryMo=;
+        b=xhG2zjhmbFFo5aNue7QWOvaGKHJUJQqqWUc6pm3p7yHdxKyj4dv8wx0Y9AMhQjGAL5
+         TTAgSyCiUqQnZxOiaaQMIdN5clThBbrp/dBOwE39uGg0k5gfzVueSScwJOC393Nf7ALm
+         t7U3NEQvB+TuvzNFWJ6DoAvSX5fJUB3wlDTepflteR08NBSQCTmD8uiWbutLNI1zgyO6
+         yyD0U3amdwG/FkFSb6QYhpVTvDfmUgJavCYM4s58BHJgadHDtp3LUWWJx0yv/3SWZ1Pw
+         aPIlfloV5TL4UOPBu/fOrzLndlRXE/2cntMI8pJ85rQhX72Ij3IMOBbp0B+TK6htH/Vt
+         y7wQ==
+X-Gm-Message-State: ANoB5pmYvgWAeQu04Dq2ymflXRD1S1bZj9BbX34ySlJ09rRN83KrZ0nS
+	Va+lFtp8S/F6Yy8puAjqiAQ=
+X-Google-Smtp-Source: AA0mqf5yCmIRuMQealOe2SgKrahw6GpYmGze85fj/1zyx+KuAnlrqbktXvgYBo9gP7I7GVvBEc7nWA==
+X-Received: by 2002:adf:f207:0:b0:236:8322:4be9 with SMTP id p7-20020adff207000000b0023683224be9mr1090927wro.171.1668169324130;
+        Fri, 11 Nov 2022 04:22:04 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id g11-20020a5d540b000000b0022cdeba3f83sm1751168wrv.84.2022.11.11.04.22.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Nov 2022 04:22:02 -0800 (PST)
+Message-ID: <73e5491a-9720-ea52-48ff-cc506c6dc582@gmail.com>
+Date: Fri, 11 Nov 2022 13:22:01 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.4.2
-Subject: Re: [PATCH v3 6/7] wifi: mt76: mt7921: introduce remain_on_channel
- support
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Subject: Re: [PATCH v4 2/4] arm64: dts: mt8195: Add edptx and dptx nodes
 Content-Language: en-US
-To: sean.wang@mediatek.com, lorenzo.bianconi@redhat.com
-Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- jenhao.yang@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
- ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com,
- abhishekpandit@google.com, shawnku@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <cover.1668068326.git.objelf@gmail.com>
- <8e285c5f1b4fe477c477bf01156b26b8b5e65bc8.1668068326.git.objelf@gmail.com>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <8e285c5f1b4fe477c477bf01156b26b8b5e65bc8.1668068326.git.objelf@gmail.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
+ <20221110063716.25677-3-rex-bc.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221110063716.25677-3-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_035233_536783_A2B3215A 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20221111_042210_189121_B6970650 
+X-CRM114-Status: GOOD (  19.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,99 +95,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10.11.22 22:23, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Introduce remain_on_channel support. Additionally, we add
-> mt7921_check_offload_capability to disable .remain_on_channel and
-> .cancel_remain_on_channel and related configuration because those
-> operations would rely on the fundamental MCU commands that will be only
-> supported with newer firmware.
-> 
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->   .../net/wireless/mediatek/mt76/mt7921/init.c  |  63 +++++++
->   .../net/wireless/mediatek/mt76/mt7921/main.c  | 165 ++++++++++++++++++
->   .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  24 +++
->   .../wireless/mediatek/mt76/mt7921/mt7921.h    |  49 ++++++
->   .../net/wireless/mediatek/mt76/mt7921/pci.c   |  26 ++-
->   .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  17 +-
->   .../net/wireless/mediatek/mt76/mt7921/usb.c   |  16 +-
->   7 files changed, 346 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> index 82df5fa4fbc7..82837ccc104d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -1573,6 +1683,61 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
->   	mt7921_mutex_release(dev);
->   }
->   
-> +const struct ieee80211_ops mt7921_ops_chanctx = {
-> +	.tx = mt7921_tx,
-> +	.start = mt7921_start,
-> +	.stop = mt7921_stop,
-> +	.add_interface = mt7921_add_interface,
-> +	.remove_interface = mt7921_remove_interface,
-> +	.config = mt7921_config,
-> +	.conf_tx = mt7921_conf_tx,
-> +	.configure_filter = mt7921_configure_filter,
-> +	.bss_info_changed = mt7921_bss_info_changed,
-> +	.start_ap = mt7921_start_ap,
-> +	.stop_ap = mt7921_stop_ap,
-> +	.sta_state = mt7921_sta_state,
-> +	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
-> +	.set_key = mt7921_set_key,
-> +	.sta_set_decap_offload = mt7921_sta_set_decap_offload,
-> +#if IS_ENABLED(CONFIG_IPV6)
-> +	.ipv6_addr_change = mt7921_ipv6_addr_change,
-> +#endif /* CONFIG_IPV6 */
-> +	.ampdu_action = mt7921_ampdu_action,
-> +	.set_rts_threshold = mt7921_set_rts_threshold,
-> +	.wake_tx_queue = mt76_wake_tx_queue,
-> +	.release_buffered_frames = mt76_release_buffered_frames,
-> +	.channel_switch_beacon = mt7921_channel_switch_beacon,
-> +	.get_txpower = mt76_get_txpower,
-> +	.get_stats = mt7921_get_stats,
-> +	.get_et_sset_count = mt7921_get_et_sset_count,
-> +	.get_et_strings = mt7921_get_et_strings,
-> +	.get_et_stats = mt7921_get_et_stats,
-> +	.get_tsf = mt7921_get_tsf,
-> +	.set_tsf = mt7921_set_tsf,
-> +	.get_survey = mt76_get_survey,
-> +	.get_antenna = mt76_get_antenna,
-> +	.set_antenna = mt7921_set_antenna,
-> +	.set_coverage_class = mt7921_set_coverage_class,
-> +	.hw_scan = mt7921_hw_scan,
-> +	.cancel_hw_scan = mt7921_cancel_hw_scan,
-> +	.sta_statistics = mt7921_sta_statistics,
-> +	.sched_scan_start = mt7921_start_sched_scan,
-> +	.sched_scan_stop = mt7921_stop_sched_scan,
-> +	CFG80211_TESTMODE_CMD(mt7921_testmode_cmd)
-> +	CFG80211_TESTMODE_DUMP(mt7921_testmode_dump)
-> +#ifdef CONFIG_PM
-> +	.suspend = mt7921_suspend,
-> +	.resume = mt7921_resume,
-> +	.set_wakeup = mt7921_set_wakeup,
-> +	.set_rekey_data = mt7921_set_rekey_data,
-> +#endif /* CONFIG_PM */
-> +	.flush = mt7921_flush,
-> +	.set_sar_specs = mt7921_set_sar_specs,
-> +	.remain_on_channel = mt7921_remain_on_channel,
-> +	.cancel_remain_on_channel = mt7921_cancel_remain_on_channel,
-> +};
-> +EXPORT_SYMBOL_GPL(mt7921_ops_chanctx);
-> +
->   const struct ieee80211_ops mt7921_ops = {
->   	.tx = mt7921_tx,
->   	.start = mt7921_start,
-Please avoid creating a copy&paste ops struct, since that adds extra 
-maintenance overhead.
-For some devices we already use devm_kmemdup to duplicate and modify 
-ops. Please use the same for chanctx. You could add a common function 
-that fills in the remain_on_channel/chanctx part into the duplicated ops.
 
-- Felix
+
+On 10/11/2022 07:37, Bo-Chen Chen wrote:
+> In MT8195, we use edptx as the internal display interface and use
+> dptx as the external display interface. Therefore, we need to add
+> these nodes to support the internal display and the external display.
+> 
+> - Add dp calibration data in the efuse node.
+> - Add edptx and dptx nodes for MT8195.
+> 
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 25 ++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index c380738d10cb..7acbef5a4517 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1244,6 +1244,9 @@
+>   				reg = <0x189 0x2>;
+>   				bits = <7 5>;
+>   			};
+> +			dp_calibration: dp-data@1ac {
+> +				reg = <0x1ac 0x10>;
+> +			};
+>   		};
+>   
+>   		u3phy2: t-phy@11c40000 {
+> @@ -2205,5 +2208,27 @@
+>   			clock-names = "engine", "pixel", "pll";
+>   			status = "disabled";
+>   		};
+> +
+> +		edp_tx: edp-tx@1c500000 {
+> +			compatible = "mediatek,mt8195-edp-tx";
+> +			reg = <0 0x1c500000 0 0x8000>;
+> +			nvmem-cells = <&dp_calibration>;
+> +			nvmem-cell-names = "dp_calibration_data";
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_EPD_TX>;
+> +			interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			max-linkrate-mhz = <8100>;
+> +			status = "disabled";
+> +		};
+> +
+> +		dp_tx: dp-tx@1c600000 {
+> +			compatible = "mediatek,mt8195-dp-tx";
+> +			reg = <0 0x1c600000 0 0x8000>;
+> +			nvmem-cells = <&dp_calibration>;
+> +			nvmem-cell-names = "dp_calibration_data";
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
+> +			interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			max-linkrate-mhz = <8100>;
+> +			status = "disabled";
+> +		};
+
+For some not really obvious reasons we get the following errors with
+make CHECK_DTBS=1 mediatek/mt8195-cherry-tomato-r2.dtb
+
+arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb:0:0: 
+/soc/edp-tx@1c500000: failed to match any schema with compatible: 
+['mediatek,mt8195-edp-tx']
+arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dtb:0:0: 
+/soc/dp-tx@1c600000: failed to match any schema with compatible: 
+['mediatek,mt8195-dp-tx']
+
+Can you please see how to fix this. Tested with next-20221111.
+
+Regards,
+Matthias
+
+>   	};
+>   };
 
