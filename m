@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA9EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 08:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2986C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 08:48:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v4c1vWTv1GfIFv4FejqWxX3mxKdVbbgHYO6F6Nc9yOY=; b=deethpY/2LhYcLCXXW/8HqAA3W
-	HKk4NmeSkkAckEH6QtqjD7C+ajLzAWqNg3WttOTfpIbbd3X6darwfKZN9VskTa2GYPDix1EnllZuq
-	IBwjRZHBg98mVfqAw9lgkFI3tfhILbs3QbmPCipVLiWWlrtHQ12IGwIfueGGkeMlxZ+r3Jdw8kdwV
-	oYkxbDrO/tqmlUPyCZ3lwnRqik4eB1WdwoINTK03rAQJ+VL7uWTOnI1RurmxsNy8QajlFsrWF4BGf
-	Ml3c+Z3d9zpUpzIKlOGVo8p6uReowGUwZVdlKgOU99sYCHrzoqT560HlusHI6+HfTUrRuVDXXOfs0
-	Og5n61aQ==;
+	bh=jel38J1a9uL1OPaQKUSp38nO5k1Zrs1cWfc+j0Y3MDg=; b=vwkeDFCxi+08vs0gXZt4sg0VKY
+	o9OdgDXbuh+NdjVj3nBfbqeFvO2Q654mjnLn7DTyTJoNZiFKFi1Dj0IDQ2Jfd4EA+Nf7jThRP5F2p
+	aAO+KXLDWe1vuL+5YvMQ6RfHGuFcLrmB3a9Y1AhpqmjGvnb1QrVa5FGM4lxB11AaRJIcEm2pPVVXl
+	LrvWRjuYFmHTkk3hCsMoSbR9YsQM+Z8RMRZLqa+BCrwmhuAzcDV2efdx1SqZ6IfzDHaJV6p2FR4NF
+	8OHsbcd+In2YdxhvodKG6RRdcSClv+0i9P8IQVQWIJdz9rbzP40d1D4FwQmUOys2d7awnxmD/Mfwx
+	f+G48vFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPeY-00EIQg-5V; Fri, 11 Nov 2022 08:44:46 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1otPhg-00EJb9-7A; Fri, 11 Nov 2022 08:48:00 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPeU-00EIPk-Ox
-	for linux-mediatek@lists.infradead.org; Fri, 11 Nov 2022 08:44:44 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id k8so5575752wrh.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Nov 2022 00:44:42 -0800 (PST)
+	id 1otPhc-00EJXL-GL; Fri, 11 Nov 2022 08:47:58 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id y16so5538448wrt.12;
+        Fri, 11 Nov 2022 00:47:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=v4c1vWTv1GfIFv4FejqWxX3mxKdVbbgHYO6F6Nc9yOY=;
-        b=EafFpKN2+LMnRJJXIorUl5YAPj/pbU3D42b4GqlqWPqxYqkvYzTMNs937HOW6b5wm1
-         FXKusGms/isQXr9V0h/XUesFhud1SlSsTCqiaXFa23eMG2gDVoC34Y2vmHcLVmpNB99+
-         tuOMhSg9ELl3wVJigGWzscLAjCJCHFl8E/4qVnP57yPkULYF2EGaRLym02/uTi0t3oJJ
-         dnfh8r+AzgaOT9JEYKn/UWTr7ILs/I2URyb3bauINGYDlbpUCa0KwkfeemqByic1Srl6
-         GyfYOwStnEC4mpbzMfcxw5JOEkg5qz9kBf3ZX0Pw8vTxRYn2SZeY12tePzuYtXvnB3Iz
-         g9nw==
+        bh=jel38J1a9uL1OPaQKUSp38nO5k1Zrs1cWfc+j0Y3MDg=;
+        b=Fm7G0bOk0tvTIcN5yeEQS5af4MwHmAmvhaSXVhGM7Wc2pa2bz5xYMqreRxOOFa4XEe
+         gx7SDj+1vBsqz6MYun8KjivOWx0jwMx1wBaaf3AsKKaJCbhvgt33WGghHf5wp45KVhci
+         0k7iqo4XI25XnD76+iHBUTgtjLt4s0unzaWRdGZNHauSkOpmOPFUNy2jPN2/nvpdzT2Y
+         Hvgj9lfjlUm/lG0LYdZ/N3vsBP+HGxVnxTwREE9WD19i5l6Ci57UC3BUnuZKhkL9xIxL
+         tbciCHUYQV9rW486W4HmNoMdSwqqsaxU2hYrj0L9t+0GnYFXEMwEIetM2Ri2liF019Jg
+         9TUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=v4c1vWTv1GfIFv4FejqWxX3mxKdVbbgHYO6F6Nc9yOY=;
-        b=xOhGanqrNtIhBfq87eKhqvBfKctgfcSeJZsR8ayWxlA/O7fBfAw7XU9uc2R1GLgv96
-         /2Irqc6o16y9COLNLFp60534fu8hOciuvtHIei9TfXGuE0LzJRrmG5KIetVndZgxdX3M
-         OjVQlYSlGg2tjwlZe4JueeYcDtd//GrNz3ri5qkA26fTEWHykQRXwf7+uqbFkVbcxXK4
-         w12m+EYcfJMT7TsTIDmjSaz786+YXrkHd4NSQAkv0yuBFwsg47aO6/LAI2U3qdbfRCtB
-         1zFtRKiPIhZTw9l538RGdjUZtjd3Gq7blwrJFuU0N46u4gj4ZsxpiINgGLyLG9QLTTmI
-         0NZQ==
-X-Gm-Message-State: ANoB5pmB+ws8lquEsRq9ztTkbYi1Ddg9aVP74W6p784NaoOO28cpLKLF
-	YhFEZq2TuZGb+dKDxwTlEh4=
-X-Google-Smtp-Source: AA0mqf5a0ZFm7qyv5Y27nujbB0ybS2Cgt6RYgcSeHFFMzInDq7yW17Vrlc/b7wm+2kvtSDbTLGvOYg==
-X-Received: by 2002:adf:eb45:0:b0:22c:deef:de9e with SMTP id u5-20020adfeb45000000b0022cdeefde9emr596861wrn.333.1668156280853;
-        Fri, 11 Nov 2022 00:44:40 -0800 (PST)
+        bh=jel38J1a9uL1OPaQKUSp38nO5k1Zrs1cWfc+j0Y3MDg=;
+        b=hIvFXy0LU0XgduFlUKuXIPZrTP2MoxbqYZD62AhdqsgoEAXsmrsw8eAWewZXzlcsC3
+         XwJjcA7xUSAa1LmeZ1ZaU5nH7amzf04fSp76SQBS7ckI6Jo6V1raea/rLhthr5cH4wQN
+         f3rLEgAen6qer/FyVHr+n3tUs4XLMcc6mcRaMX2edG6sMIWst73259bi8ozzycZy35cD
+         QPK6cuZmtN3zPX6kjakwznMh2Wwvsg+aKx1h1/R7FB9E+Z3gWVC8+YwlclpnMxRx/gnR
+         dkQ4uvKWUlt8oNiWWxXnKTDpnFM7lrQzeApchIbkYcbggF7bGd2U3O8odzLts3xAB/Qv
+         kvYA==
+X-Gm-Message-State: ANoB5plwHsx/naIHwAS9fcvKUb7nuYU6aVyYojar7V62RaSbYZrbNrk0
+	gWroCDKWdEiU4ob+aNk8YDE=
+X-Google-Smtp-Source: AA0mqf5jHGLCbHg6kRQS6wlZ8SNwRCkkqeGaAsG2XNoT6746K/UtemlW/nWekvFCpiGrr3GvyRFSxA==
+X-Received: by 2002:a5d:4386:0:b0:22e:3177:1401 with SMTP id i6-20020a5d4386000000b0022e31771401mr594871wrq.148.1668156472076;
+        Fri, 11 Nov 2022 00:47:52 -0800 (PST)
 Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id az9-20020adfe189000000b002367ad808a9sm1337674wrb.30.2022.11.11.00.44.38
+        by smtp.gmail.com with ESMTPSA id q189-20020a1c43c6000000b003cf483ee8e0sm8043194wma.24.2022.11.11.00.47.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Nov 2022 00:44:39 -0800 (PST)
-Message-ID: <eb1ac3e7-8652-6690-0f86-b46b6a1e0cb8@gmail.com>
-Date: Fri, 11 Nov 2022 09:44:37 +0100
+        Fri, 11 Nov 2022 00:47:49 -0800 (PST)
+Message-ID: <50a2022c-d535-1162-e1b5-ae6b6e7bbd32@gmail.com>
+Date: Fri, 11 Nov 2022 09:47:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.1
-Subject: Re: [PATCH v4 net-next 0/8] introduce WED RX support to MT7986 SoC
+Subject: Re: [PATCH v5 2/3] arm64: dts: mt8195: Add pcie and pcie phy nodes
 Content-Language: en-US
-To: patchwork-bot+netdevbpf@kernel.org, Lorenzo Bianconi
- <lorenzo@kernel.org>, David Miller <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com, ryder.Lee@mediatek.com,
- evelyn.tsai@mediatek.com, devicetree@vger.kernel.org, robh+dt@kernel.org,
- daniel@makrotopia.org, krzysztof.kozlowski+dt@linaro.org,
- angelogioacchino.delregno@collabora.com
-References: <cover.1667687249.git.lorenzo@kernel.org>
- <166815481641.32563.14048666303133746703.git-patchwork-notify@kernel.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221103025656.8714-1-tinghan.shen@mediatek.com>
+ <20221103025656.8714-3-tinghan.shen@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <166815481641.32563.14048666303133746703.git-patchwork-notify@kernel.org>
+In-Reply-To: <20221103025656.8714-3-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_004442_840428_06E591F9 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20221111_004756_594743_6E0ED3C7 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,53 +98,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi David,
 
-On 11/11/2022 09:20, patchwork-bot+netdevbpf@kernel.org wrote:
-> Hello:
-> 
-> This series was applied to netdev/net-next.git (master)
-> by David S. Miller <davem@davemloft.net>:
-> 
-> On Sat,  5 Nov 2022 23:36:15 +0100 you wrote:
->> Similar to TX counterpart available on MT7622 and MT7986, introduce
->> RX Wireless Ethernet Dispatch available on MT7986 SoC in order to
->> offload traffic received by wlan nic to the wired interfaces (lan/wan).
->>
->> Changes since v3:
->> - remove reset property in ethsys dts node
->> - rely on readx_poll_timeout in wo mcu code
->> - fix typos
->> - move wo-ccif binding in soc folder
->> - use reserved-memory for wo-dlm
->> - improve wo-ccif binding
->>
->> [...]
-> 
-> Here is the summary with links:
->    - [v4,net-next,1/8] arm64: dts: mediatek: mt7986: add support for RX Wireless Ethernet Dispatch
->      https://git.kernel.org/netdev/net-next/c/eed4f1ddad8c
 
-As I mentioned in the series, DTS changes should go through my tree to avoid 
-merge conflicts. Please let me know if you drop the patch and I'll take it then.
-
-Regards,
-Matthias
-
->    - [v4,net-next,2/8] dt-bindings: net: mediatek: add WED RX binding for MT7986 eth driver
->      https://git.kernel.org/netdev/net-next/c/ceb82ac2e745
->    - [v4,net-next,3/8] net: ethernet: mtk_wed: introduce wed mcu support
->      https://git.kernel.org/netdev/net-next/c/cc514101a97e
->    - [v4,net-next,4/8] net: ethernet: mtk_wed: introduce wed wo support
->      https://git.kernel.org/netdev/net-next/c/799684448e3e
->    - [v4,net-next,5/8] net: ethernet: mtk_wed: rename tx_wdma array in rx_wdma
->      https://git.kernel.org/netdev/net-next/c/084d60ce0c6c
->    - [v4,net-next,6/8] net: ethernet: mtk_wed: add configure wed wo support
->      https://git.kernel.org/netdev/net-next/c/4c5de09eb0d0
->    - [v4,net-next,7/8] net: ethernet: mtk_wed: add rx mib counters
->      https://git.kernel.org/netdev/net-next/c/51ef685584e2
->    - [v4,net-next,8/8] MAINTAINERS: update MEDIATEK ETHERNET entry
->      https://git.kernel.org/netdev/net-next/c/90050f80509c
+On 03/11/2022 03:56, Tinghan Shen wrote:
+> Add pcie and pcie phy nodes for mt8195.
 > 
-> You are awesome, thank you!
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied thanks!
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 150 +++++++++++++++++++++++
+>   1 file changed, 150 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..7d74a5211091 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -13,6 +13,7 @@
+>   #include <dt-bindings/phy/phy.h>
+>   #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+>   #include <dt-bindings/power/mt8195-power.h>
+> +#include <dt-bindings/reset/mt8195-resets.h>
+>   
+>   / {
+>   	compatible = "mediatek,mt8195";
+> @@ -1182,6 +1183,110 @@
+>   			status = "disabled";
+>   		};
+>   
+> +		pcie0: pcie@112f0000 {
+> +			compatible = "mediatek,mt8195-pcie",
+> +				     "mediatek,mt8192-pcie";
+> +			device_type = "pci";
+> +			#address-cells = <3>;
+> +			#size-cells = <2>;
+> +			reg = <0 0x112f0000 0 0x4000>;
+> +			reg-names = "pcie-mac";
+> +			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			bus-range = <0x00 0xff>;
+> +			ranges = <0x81000000 0 0x20000000
+> +				  0x0 0x20000000 0 0x200000>,
+> +				 <0x82000000 0 0x20200000
+> +				  0x0 0x20200000 0 0x3e00000>;
+> +
+> +			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE0 0x2>;
+> +			iommu-map-mask = <0x0>;
+> +
+> +			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
+> +				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
+> +			clock-names = "pl_250m", "tl_26m", "tl_96m",
+> +				      "tl_32k", "peri_26m", "peri_mem";
+> +			assigned-clocks = <&topckgen CLK_TOP_TL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
+> +
+> +			phys = <&pciephy>;
+> +			phy-names = "pcie-phy";
+> +
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
+> +
+> +			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P0_SWRST>;
+> +			reset-names = "mac";
+> +
+> +			#interrupt-cells = <1>;
+> +			interrupt-map-mask = <0 0 0 7>;
+> +			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> +					<0 0 0 2 &pcie_intc0 1>,
+> +					<0 0 0 3 &pcie_intc0 2>,
+> +					<0 0 0 4 &pcie_intc0 3>;
+> +			status = "disabled";
+> +
+> +			pcie_intc0: interrupt-controller {
+> +				interrupt-controller;
+> +				#address-cells = <0>;
+> +				#interrupt-cells = <1>;
+> +			};
+> +		};
+> +
+> +		pcie1: pcie@112f8000 {
+> +			compatible = "mediatek,mt8195-pcie",
+> +				     "mediatek,mt8192-pcie";
+> +			device_type = "pci";
+> +			#address-cells = <3>;
+> +			#size-cells = <2>;
+> +			reg = <0 0x112f8000 0 0x4000>;
+> +			reg-names = "pcie-mac";
+> +			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			bus-range = <0x00 0xff>;
+> +			ranges = <0x81000000 0 0x24000000
+> +				  0x0 0x24000000 0 0x200000>,
+> +				 <0x82000000 0 0x24200000
+> +				  0x0 0x24200000 0 0x3e00000>;
+> +
+> +			iommu-map = <0 &iommu_infra IOMMU_PORT_INFRA_PCIE1 0x2>;
+> +			iommu-map-mask = <0x0>;
+> +
+> +			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
+> +				 <&clk26m>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
+> +				 <&clk26m>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
+> +				 /* Designer has connect pcie1 with peri_mem_p0 clock */
+> +				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
+> +			clock-names = "pl_250m", "tl_26m", "tl_96m",
+> +				      "tl_32k", "peri_26m", "peri_mem";
+> +			assigned-clocks = <&topckgen CLK_TOP_TL_P1>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4_D4>;
+> +
+> +			phys = <&u3port1 PHY_TYPE_PCIE>;
+> +			phy-names = "pcie-phy";
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
+> +
+> +			resets = <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
+> +			reset-names = "mac";
+> +
+> +			#interrupt-cells = <1>;
+> +			interrupt-map-mask = <0 0 0 7>;
+> +			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> +					<0 0 0 2 &pcie_intc1 1>,
+> +					<0 0 0 3 &pcie_intc1 2>,
+> +					<0 0 0 4 &pcie_intc1 3>;
+> +			status = "disabled";
+> +
+> +			pcie_intc1: interrupt-controller {
+> +				interrupt-controller;
+> +				#address-cells = <0>;
+> +				#interrupt-cells = <1>;
+> +			};
+> +		};
+> +
+>   		nor_flash: spi@1132c000 {
+>   			compatible = "mediatek,mt8195-nor",
+>   				     "mediatek,mt8173-nor";
+> @@ -1241,6 +1346,34 @@
+>   				reg = <0x189 0x2>;
+>   				bits = <7 5>;
+>   			};
+> +			pciephy_rx_ln1: pciephy-rx-ln1@190,1 {
+> +				reg = <0x190 0x1>;
+> +				bits = <0 4>;
+> +			};
+> +			pciephy_tx_ln1_nmos: pciephy-tx-ln1-nmos@190,2 {
+> +				reg = <0x190 0x1>;
+> +				bits = <4 4>;
+> +			};
+> +			pciephy_tx_ln1_pmos: pciephy-tx-ln1-pmos@191,1 {
+> +				reg = <0x191 0x1>;
+> +				bits = <0 4>;
+> +			};
+> +			pciephy_rx_ln0: pciephy-rx-ln0@191,2 {
+> +				reg = <0x191 0x1>;
+> +				bits = <4 4>;
+> +			};
+> +			pciephy_tx_ln0_nmos: pciephy-tx-ln0-nmos@192,1 {
+> +				reg = <0x192 0x1>;
+> +				bits = <0 4>;
+> +			};
+> +			pciephy_tx_ln0_pmos: pciephy-tx-ln0-pmos@192,2 {
+> +				reg = <0x192 0x1>;
+> +				bits = <4 4>;
+> +			};
+> +			pciephy_glb_intr: pciephy-glb-intr@193 {
+> +				reg = <0x193 0x1>;
+> +				bits = <0 4>;
+> +			};
+>   		};
+>   
+>   		u3phy2: t-phy@11c40000 {
+> @@ -1461,6 +1594,23 @@
+>   			};
+>   		};
+>   
+> +		pciephy: phy@11e80000 {
+> +			compatible = "mediatek,mt8195-pcie-phy";
+> +			reg = <0 0x11e80000 0 0x10000>;
+> +			reg-names = "sif";
+> +			nvmem-cells = <&pciephy_glb_intr>, <&pciephy_tx_ln0_pmos>,
+> +				      <&pciephy_tx_ln0_nmos>, <&pciephy_rx_ln0>,
+> +				      <&pciephy_tx_ln1_pmos>, <&pciephy_tx_ln1_nmos>,
+> +				      <&pciephy_rx_ln1>;
+> +			nvmem-cell-names = "glb_intr", "tx_ln0_pmos",
+> +					   "tx_ln0_nmos", "rx_ln0",
+> +					   "tx_ln1_pmos", "tx_ln1_nmos",
+> +					   "rx_ln1";
+> +			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_PHY>;
+> +			#phy-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>   		ufsphy: ufs-phy@11fa0000 {
+>   			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
+>   			reg = <0 0x11fa0000 0 0xc000>;
 
