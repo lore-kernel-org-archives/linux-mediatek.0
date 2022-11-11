@@ -4,78 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E29C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3DAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=; b=RAY8q3kDHt4oLh
-	SQqntauZXtGV29CA9pROD5p/9ZF+vPhbZuSMjLkbybvoaerIlIZA6lXdTqZMSREp/lR6kv01JBT42
-	hBkczlZN77eifeZqAw+iUnIDUtWkSe1Ys8uS1GikbdZB8N/PzLXmc4D1Lu492kCn429FmqWcLzSdz
-	39w+rmMr4eJmYG8IzogECV0LeUxKj5+2etaseWNlqDJHg2HQv9i/TND9an40NsRD8vL7t1UyWsiti
-	XK/EbKPd+D3tYWD7yacf9hgmf1LZH8Ik0d5fGmWbcnU4wi5/sQP+QJ8RDdWSCsB9matSOtZqBTHLm
-	q/WS04YjBqf9gIdMUH4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XIwwONpUR9SdSPR3A4IDAkq7FO9Vi6bAN02Uo080t4Q=; b=xpwXeCYZ0LqqXW0MHhUDM9WFk9
+	7yrOt6rPyhdS39UE0Pnmb279IF0lR6l9DOXpWZMrcILndwTUlTtkpzH8bKc6nrxvjHnACe+vKM6/e
+	Np/Kf9N9dI/N0zSnosMGtiQNCt0dEeDvzU1OYxM+WQUVDREIYI2RamkSp3IRJhhsP5W+ny0clN0AX
+	qu2QRTofhNYC/BroH+nlYl++Aoz1UAuQXwz0Nb0NqpCNipx8Ry6cx/NBie++gYdjXk7doSwVJcR03
+	2kn6Neoxb2Of1pT53/l4RrIBNAe+hOxZ4V4cZWh0+PvdoCgSF56tFBuq87E3IWDqNbtSh19Cks6FS
+	zdZX8ZRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPzF-00EUgM-HV; Fri, 11 Nov 2022 09:06:09 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1otPzw-00EV2D-4V; Fri, 11 Nov 2022 09:06:52 +0000
+Received: from mail.astralinux.ru ([217.74.38.119])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otPzC-00EUdU-TG; Fri, 11 Nov 2022 09:06:08 +0000
-Received: by mail-wr1-x433.google.com with SMTP id cl5so5601208wrb.9;
-        Fri, 11 Nov 2022 01:06:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=;
-        b=NbF4F7dz0fofp/f43N2ow0yB/tAABhFhEVMbbwLgVZndPW6oTtV6gh8DOaaOdIMNpr
-         pUOTcRj3CvL1AdR8JZuB99ujecuBtJ/0wC3FCevUUbOlsrb6GjYi0pwQ7U1C9Adl230+
-         TC3VqpN8as2xq9K+IrPNrIK7gjV5l9lzxIovFesk8zAlRozMYMOAjZL3I8Dm/Xzthw5H
-         5q6nDg32nXx7vzbKn9gemP0SoTYg834FtwkZsYAt4vNRFBGVl5jJ2qEFSA+Xxk+Tl/qM
-         slYN6velNyNjsYR4fTMHFjipz+SUcKPpPUxRODiJrTHBOiMN8YOyTTKMaKorzvVte4lo
-         aLxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5exqSysqc7YHZXiStWHpWi8OBaqisnDZY31klCw8FDo=;
-        b=qX7p+ocowyIbvd5VLR5APsx0MFlwz2Zwdkwnymt9awjSTP/F4WcEutXrKriPBf8q+7
-         11J72ACu/Fhleximn3ctyeJ0IXwmrQuqFvdDDIKFrgie6/l/FttL+TkUicZS36T3O5G0
-         AldYhKJLRnHlppTl6d3ZG5wp5M6BX2DL71ZaQwJmnXemz8URatbU+A/2WK3092V67VXd
-         g+gOAGu0CP2NqCm8juFpwbADYLmPPwZA2hQQv/qUsTEsNTaNnaX2XynDf9L5dZUWsSE/
-         CZMmdQ2KSwZky1WPJtlKMHu6hsbFt/75RWWwzsG7/ATK+yShmzCQDHAkUsV5qOLryzQj
-         Tdsw==
-X-Gm-Message-State: ANoB5pkI5ji59jcABwdqnbhXgzfVnt/ZVXvTyaP8rSfwAgGd6kzLaAUV
-	MriNa/JgZbJ1aTNBymIP3Vc=
-X-Google-Smtp-Source: AA0mqf7NqydisRfGc/xHd5/cqwAgF58CN4sU4/ZLqyyjDVsYUbAuedLMEKJjiAC5d/zeN5+rhpPjnA==
-X-Received: by 2002:a5d:6a12:0:b0:22e:3664:ffce with SMTP id m18-20020a5d6a12000000b0022e3664ffcemr664681wru.131.1668157565241;
-        Fri, 11 Nov 2022 01:06:05 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05600c430700b003cf6a55d8e8sm2202375wme.7.2022.11.11.01.06.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Nov 2022 01:06:03 -0800 (PST)
-Message-ID: <68e4f061-af72-fe13-2a49-f62a9c542685@gmail.com>
-Date: Fri, 11 Nov 2022 10:06:02 +0100
+	id 1otPzb-00EUjp-Qs; Fri, 11 Nov 2022 09:06:34 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.astralinux.ru (Postfix) with ESMTP id D34BD1864129;
+	Fri, 11 Nov 2022 12:06:13 +0300 (MSK)
+Received: from mail.astralinux.ru ([127.0.0.1])
+	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10032)
+	with ESMTP id 7TDjB1JgeUte; Fri, 11 Nov 2022 12:06:13 +0300 (MSK)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.astralinux.ru (Postfix) with ESMTP id 83FF11863D99;
+	Fri, 11 Nov 2022 12:06:13 +0300 (MSK)
+X-Virus-Scanned: amavisd-new at astralinux.ru
+Received: from mail.astralinux.ru ([127.0.0.1])
+	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id aOBzQVoBem_j; Fri, 11 Nov 2022 12:06:13 +0300 (MSK)
+Received: from rbta-msk-lt-106062.astralinux.ru (unknown [10.177.20.20])
+	by mail.astralinux.ru (Postfix) with ESMTPSA id A20F61863D98;
+	Fri, 11 Nov 2022 12:06:12 +0300 (MSK)
+From: Anastasia Belova <abelova@astralinux.ru>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Anastasia Belova <abelova@astralinux.ru>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	lvc-project@linuxtesting.org
+Subject: [PATCH v3] vcodec: mediatek: add check for NULL for vsi->frm_bufs[vsi->new_fb_idx].buf.fb in vp9_swap_frm_bufs
+Date: Fri, 11 Nov 2022 12:06:04 +0300
+Message-Id: <20221111090604.10327-1-abelova@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Subject: Re: [RFC v3 06/11] arm64: dts: mt7986: add i2c node
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20221106085034.12582-1-linux@fw-web.de>
- <20221106085034.12582-7-linux@fw-web.de>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221106085034.12582-7-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_010606_973040_A0764A72 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20221111_010632_082690_3D6F16BE 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,48 +76,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Any time calling vp9_is_sf_ref_fb we need fb !=3D NULL after checks.
 
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-On 06/11/2022 09:50, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add i2c Node to mt7986 devicetree.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video De=
+coder Driver")
 
-Applied, thanks
+Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+---
+ drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index 32c26b239ae6..a1a788db113a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -261,6 +261,20 @@ uart2: serial@11004000 {
->   			status = "disabled";
->   		};
->   
-> +		i2c0: i2c@11008000 {
-> +			compatible = "mediatek,mt7986-i2c";
-> +			reg = <0 0x11008000 0 0x90>,
-> +			      <0 0x10217080 0 0x80>;
-> +			interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>;
-> +			clock-div = <5>;
-> +			clocks = <&infracfg CLK_INFRA_I2C0_CK>,
-> +				 <&infracfg CLK_INFRA_AP_DMA_CK>;
-> +			clock-names = "main", "dma";
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			status = "disabled";
-> +		};
-> +
->   		ssusb: usb@11200000 {
->   			compatible = "mediatek,mt7986-xhci",
->   				     "mediatek,mtk-xhci";
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/=
+drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+index 70b8383f7c8e..776468cd834a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
+@@ -208,6 +208,9 @@ static bool vp9_is_sf_ref_fb(struct vdec_vp9_inst *in=
+st, struct vdec_fb *fb)
+ 	int i;
+ 	struct vdec_vp9_vsi *vsi =3D inst->vsi;
+=20
++	if (!fb)
++		return true;
++
+ 	for (i =3D 0; i < ARRAY_SIZE(vsi->sf_ref_fb); i++) {
+ 		if (fb =3D=3D &vsi->sf_ref_fb[i].fb)
+ 			return true;
+--=20
+2.30.2
+
 
