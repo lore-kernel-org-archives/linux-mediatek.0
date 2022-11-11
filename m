@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAC43C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D528C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Nov 2022 09:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:From:References:To
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jovw191tkqhEY/091trHnhlrx/URL9SGNNv7OLPeWTQ=; b=zb0eV6nioceuvf
-	/zr3Fg23v9lxD+GNE5W3fuL3BX0k4GsLgQLeu1W7ijTojMKtY7J/I2LGtfWuoyCqfms0FvjgtDbi/
-	UoPiYrqq2KTvVh+61J/VZxS8j6XA6gQWje1uhPBaYEECHwJ2GRITWlrHfGh3t5MYz+ldhUpdvwBlv
-	g4GUXq/GZMiDoP8DtHhimKb8cGHvw8tK5Pye5bS+XbZSq5dGGyjIfp5L57L8huLfI3uckjFP2Fxv8
-	Z/N2eTxLZ+zO7c7u4CCE16LEGGoI0RxXF0ELTqAJ2bCyefJExtoE7FSoLlWDSsnaVfFV/xZBsOgbK
-	wteaTw+BUuZCWbtF7NVg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7LUyx8XYJbvTeeiPlQWzO3ZYLE3ulIRwGdwC2rTigGU=; b=s5gH2s0NB7LpWQiMQuz8SxV7IB
+	KBt7fbslXKiPy6KuG6PM8dGti+xLhxl4OI4wlyePgbCAKaUpobOBiqdIH3PFSWlcT4aAPQ/Yr4aEB
+	KCJT8LIrUAzlkfN5X5Q6mqRgsSy/aE0wK/acX4S0s+zC2G/68WCsvR5uguEF9IVy28FGgQIe7+JmY
+	oA8irHu1nzM+N/QHc1DNQdFfvNbIPeZFw48SnE0y0YzEvvfA3sew6C0NUY4gj9BFEfWhV/N6g6aZA
+	AHrs4CAfrsVSM+wMGiQHRDAZAvue9z8HoTARlf0QnfkGyCq4xUImItuBjnC+gbXpaMTTUNieJAs/4
+	2vK8VJaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otQ9a-00EXkZ-B8; Fri, 11 Nov 2022 09:16:50 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1otQ9t-00EXp5-RG; Fri, 11 Nov 2022 09:17:09 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otQ9X-00EXj7-7M; Fri, 11 Nov 2022 09:16:48 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id cl5so5636250wrb.9;
-        Fri, 11 Nov 2022 01:16:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jovw191tkqhEY/091trHnhlrx/URL9SGNNv7OLPeWTQ=;
-        b=QZ4qUEYywU25+PgljwAk53ASLfWTPNIIJylvWVU4Y8JyQX9plUYn0ALvKbih/5RMPE
-         GvSYY90MsMVyO4vtRwyieahWlG2iWiNESdeN572tvMSzNAOL8xKRoy1BbamgRnG/jblx
-         Uy+x5C3JondEUg6F1GniqGmCeP/nKKXnXTKsBMlL6QRSyfSiA2yIjml1ZVWGdCb6r5t7
-         gu4gLkxEXy4Rp9IFqrJjApbZmZMkMlMQV5rezaNZ+NHfSkfqwE1wMCsKb5fpRJtyk19v
-         vo/RqVu0A7hEROSQdZaCsQw1bdLzFu3Pd3WgiSYbsCsId8CCP4M+Z64UlISJ0EuLvPkZ
-         kCJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jovw191tkqhEY/091trHnhlrx/URL9SGNNv7OLPeWTQ=;
-        b=iJhQsIAOAQWxBMd8aKtg/SUZHDpv1zDZjZRjItv7RBSxOPyftjVefkheX3c+gsPBSn
-         3iMUzCafA6nlzvOko5gMUrL6xRRNCRdFRyzMGbBE9Jr9C4AoUDgVuwIJ9w9/lzCOQwyx
-         iCrzBZJZjFCbqFL3MRkN173fMgOLpmEiURCNNoGcQdZV/KVh17QEHpBtzKvnniQn3O7C
-         bH28Tn0AR+RHkI20mAIxpZJhmTu32on4F1krYDCkCC2JMPgbGXxfa8CgZxn4xCtNkAsi
-         RsLGOTCmMKlgQ5LNeWjM77+nQoJJIP6XSc+Ptj12002hgHKSWGmRxsKs9Sc7/asX1Pl2
-         zjDg==
-X-Gm-Message-State: ANoB5plwwriO3zQi41Jd6thiYpvzjmstFt5e+sQBlzbzcWJqRbcWJMQz
-	ExAXF2ALKLzI3/JgOZOVRMc=
-X-Google-Smtp-Source: AA0mqf4WOo4GYRvJTD5FEYyn6wAGMohgHK1JIfF6SWmlWvK2hyBZhFpiw9mF2RR/u7NBQe9HXADfWA==
-X-Received: by 2002:a05:6000:181c:b0:236:60ce:7c10 with SMTP id m28-20020a056000181c00b0023660ce7c10mr673951wrh.440.1668158205774;
-        Fri, 11 Nov 2022 01:16:45 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id fc18-20020a05600c525200b003b49bd61b19sm8545557wmb.15.2022.11.11.01.16.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Nov 2022 01:16:44 -0800 (PST)
-Message-ID: <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
-Date: Fri, 11 Nov 2022 10:16:43 +0100
+	id 1otQ9W-00EXik-TV; Fri, 11 Nov 2022 09:16:48 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DB096602A31;
+	Fri, 11 Nov 2022 09:16:42 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1668158203;
+	bh=fXz2EtPdQdEQa/qt3zwi6Zf4WPBPrjSTTzWiSWHTcog=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FF0bQLOoX5nlH1pJjV8fEtkatoNtjST5s4M41J/AsMLQxTUfz4Rd9DhyCAkW3aX36
+	 CQbIPTlzLLDFPJuA2FwyZmOLtMC6o3dMpCJm4HG2NgSj/LbPtXOptgpDjXE4EFW2ZF
+	 llYG/TnRZMroIxLKfDTmiwQSl/UU572f4haQKcEK4IKrh8mlFxDRaA7tKPAaHiJMX/
+	 6pwUIFQI6Sfuq9+0TVPmhyvowPYqj52LqdWbq7AJBv5q9UCqAf4Nkeij5ttpUxWZKh
+	 Kv+XhKqj0A99KFarguf11OTmnBxGMvdNFRoxnxl6a7djWoWf+Bm8fEGu/HcAU/Hi+J
+	 QC8Kwo1DLqqog==
+Message-ID: <34de22c0-1773-10b4-c3fd-387fd311ac11@collabora.com>
+Date: Fri, 11 Nov 2022 10:16:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v1] spi: spi-mtk-nor: Optimize timeout for dma read
 Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-References: <20221106085034.12582-1-linux@fw-web.de>
- <20221106085034.12582-12-linux@fw-web.de>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-In-Reply-To: <20221106085034.12582-12-linux@fw-web.de>
+To: =?UTF-8?B?QmF5aSBDaGVuZyAo56iL5YWr5oSPKQ==?= <bayi.cheng@mediatek.com>,
+ "David.Laight@ACULAB.COM" <David.Laight@ACULAB.COM>,
+ "broonie@kernel.org" <broonie@kernel.org>
+Cc: "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "gch981213@gmail.com" <gch981213@gmail.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20221103052843.2025-1-bayi.cheng@mediatek.com>
+ <20221103052843.2025-2-bayi.cheng@mediatek.com>
+ <10529948-a9b8-2121-7adb-0e94cf3cbf6a@collabora.com>
+ <c612cc0eb4fc463a9bfd9094ff652ac9@AcuMS.aculab.com>
+ <617c0b563a2602668fde7d96e1bc98648870d30c.camel@mediatek.com>
+ <794a0249500bf90a79f30a3522108e721fe06e17.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <794a0249500bf90a79f30a3522108e721fe06e17.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221111_011647_316659_BFE8F72A 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20221111_011647_336249_ECC4FECD 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,180 +84,154 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rob, Krzysztof,
-
-On 06/11/2022 09:50, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Il 11/11/22 05:16, Bayi Cheng (程八意) ha scritto:
+> On Fri, 2022-11-04 at 07:53 +0000, Bayi Cheng (程八意) wrote:
+>> On Thu, 2022-11-03 at 22:35 +0000, David Laight wrote:
+>>> From: AngeloGioacchino Del Regno
+>>>> Sent: 03 November 2022 09:44
+>>>>
+>>>> Il 03/11/22 06:28, Bayi Cheng ha scritto:
+>>>>> From: bayi cheng <bayi.cheng@mediatek.com>
+>>>>>
+>>>>> The timeout value of the current dma read is unreasonable. For
+>>>>> example,
+>>>>> If the spi flash clock is 26Mhz, It will takes about 1.3ms to
+>>>>> read a
+>>>>> 4KB data in spi mode. But the actual measurement exceeds 50s
+>>>>> when
+>>>>> a
+>>>>> dma read timeout is encountered.
+>>>>>
+>>>>> In order to be more accurately, It is necessary to use
+>>>>> msecs_to_jiffies,
+>>>>> After modification, the measured timeout value is about 130ms.
+>>>>>
+>>>>> Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
+>>>>> ---
+>>>>>    drivers/spi/spi-mtk-nor.c | 7 ++++---
+>>>>>    1 file changed, 4 insertions(+), 3 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-
+>>>>> nor.c
+>>>>> index d167699a1a96..3d989db80ee9 100644
+>>>>> --- a/drivers/spi/spi-mtk-nor.c
+>>>>> +++ b/drivers/spi/spi-mtk-nor.c
+>>>>> @@ -354,7 +354,7 @@ static int mtk_nor_dma_exec(struct mtk_nor
+>>>>> *sp, u32 from, unsigned int length,
+>>>>>    			    dma_addr_t dma_addr)
+>>>>>    {
+>>>>>    	int ret = 0;
+>>>>> -	ulong delay;
+>>>>> +	ulong delay, timeout;
+>>>>>    	u32 reg;
+>>>>>
+>>>>>    	writel(from, sp->base + MTK_NOR_REG_DMA_FADR);
+>>>>> @@ -376,15 +376,16 @@ static int mtk_nor_dma_exec(struct
+>>>>> mtk_nor
+>>>>> *sp, u32 from, unsigned int length,
+>>>>>    	mtk_nor_rmw(sp, MTK_NOR_REG_DMA_CTL, MTK_NOR_DMA_START,
+>>>>> 0);
+>>>>>
+>>>>>    	delay = CLK_TO_US(sp, (length + 5) * BITS_PER_BYTE);
+>>>>> +	timeout = (delay + 1) * 100;
+>>>>>
+>>>>>    	if (sp->has_irq) {
+>>>>>    		if (!wait_for_completion_timeout(&sp->op_done,
+>>>>> -						 (delay + 1) *
+>>>>> 100))
+>>>>> +		    msecs_to_jiffies(max_t(size_t, timeout /
+>>>>> 1000,
+>>>>> 10))))
+>>>>
+>>>> You're giving a `size_t` variable to msecs_to_jiffies(), but
+>>>> checking `jiffies.h`,
+>>>> this function takes a `const unsigned int` param.
+>>>> Please change the type to match that.
+>>>
+>>> The type shouldn't matter at all.
+>>> What matters is the domain of the value.
+>>>
+>>> Quite why you need to use max_t(size_t, ...) is another matter.
+>>> timeout is ulong so max(timeout/1000, 10ul) should be fine.
+>>>
+>>> But is ulong even right?
+>>> The domain of the value is almost certainly the same on 32bit and
+>>> 64bit.
+>>> So you almost certainly need u32 or u64.
+>>>
+>>> 	David
+>>>
+>>
+>> Hi David & Angelo
+>>
+>> Thank you for your comments!
+>> To sum up, I think the next version will make the following two
+>> changes:
+>> 1, The timeout value will not exceed u32, so the type of timeout will
+>> be changed from ulong to u32.
+>> 2, Change msecs_to_jiffies(max_t(size_t, timeout / 1000, 10)) to be
+>> msecs_to_jiffies(max(timeout / 1000, 10U)).
+>>
+>> If you think these changes are not enough, please let me know,
+>> Thanks！
+>>
+>> Best Regards,
+>> Bayi
+>>
 > 
-> Add devicetree overlays for using nand and nor on BPI-R3.
+> Hi Angelo, Hi David,
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
->   .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 53 +++++++++++++++
->   .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 67 +++++++++++++++++++
->   3 files changed, 122 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
+> Just a gentle ping on this.
+> Could you please review this patch and give us some suggestion?
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index e8902f2cc58f..d42208c4090d 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
+> PS: With your permission, I will make the following changes in the next
+> version:
+> 
+> Change in v2:
+>    -Change the type of "timeout" from ulong to u32.
+>    -Replace max_t with max.
+> 
 
-Do we allow the inclusion of overlays in the kernel?
-I don't think so. I see there are some dtbos for some freescale platforms, but I 
-wasn't aware that we support that. I thought it is all about dtsi includes.
+I still recommend to use usecs_to_jiffies() when appropriate, instead of
+converting usecs to msecs and using msecs_to_jiffies().
 
-@frank In any case we would need to apply these overlays to some base board to 
-create a valis dtb.
+As for the rest in your list: yes, please.
 
 Regards,
-Matthias
+Angelo
 
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-> new file mode 100644
-> index 000000000000..e12ff825bb50
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-> @@ -0,0 +1,53 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-> +
-> +/dts-v1/;
-> +/plugin/;
-> +
-> +//dtc -O dtb -o bpi-r3-nand.dtbo mt7986a-bananapi-bpi-r3-nand.dts
-> +
-> +/ {
-> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
-> +
-> +	fragment@0 {
-> +		target-path = "/soc/spi@1100a000";
-> +		__overlay__ {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			spi_nand: spi_nand@0 {
-> +				compatible = "spi-nand";
-> +				reg = <0>;
-> +				spi-max-frequency = <10000000>;
-> +				spi-tx-buswidth = <4>;
-> +				spi-rx-buswidth = <4>;
-> +
-> +				partitions {
-> +					compatible = "fixed-partitions";
-> +					#address-cells = <1>;
-> +					#size-cells = <1>;
-> +
-> +					partition@0 {
-> +						label = "bl2";
-> +						reg = <0x0 0x80000>;
-> +						read-only;
-> +					};
-> +
-> +					partition@80000 {
-> +						label = "reserved";
-> +						reg = <0x80000 0x300000>;
-> +					};
-> +
-> +					partition@380000 {
-> +						label = "fip";
-> +						reg = <0x380000 0x200000>;
-> +						read-only;
-> +					};
-> +
-> +					partition@580000 {
-> +						label = "ubi";
-> +						reg = <0x580000 0x7a80000>;
-> +					};
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-> new file mode 100644
-> index 000000000000..f11ffd9c4bce
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-> @@ -0,0 +1,67 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-> +
-> +/dts-v1/;
-> +/plugin/;
-> +
-> +//dtc -O dtb -o bpi-r3-nor.dtbo mt7986a-bananapi-bpi-r3-nor.dts
-> +
-> +/ {
-> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
-> +
-> +	fragment@0 {
-> +		target-path = "/soc/spi@1100a000";
-> +		__overlay__ {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			flash@0 {
-> +				compatible = "jedec,spi-nor";
-> +				reg = <0>;
-> +				spi-max-frequency = <10000000>;
-> +
-> +				partitions {
-> +					compatible = "fixed-partitions";
-> +					#address-cells = <1>;
-> +					#size-cells = <1>;
-> +
-> +					partition@0 {
-> +						label = "bl2";
-> +						reg = <0x0 0x20000>;
-> +						read-only;
-> +					};
-> +
-> +					partition@20000 {
-> +						label = "reserved";
-> +						reg = <0x20000 0x20000>;
-> +					};
-> +
-> +					partition@40000 {
-> +						label = "u-boot-env";
-> +						reg = <0x40000 0x40000>;
-> +					};
-> +
-> +					partition@80000 {
-> +						label = "reserved2";
-> +						reg = <0x80000 0x80000>;
-> +					};
-> +
-> +					partition@100000 {
-> +						label = "fip";
-> +						reg = <0x100000 0x80000>;
-> +						read-only;
-> +					};
-> +
-> +					partition@180000 {
-> +						label = "recovery";
-> +						reg = <0x180000 0xa80000>;
-> +					};
-> +
-> +					partition@c00000 {
-> +						label = "fit";
-> +						reg = <0xc00000 0x1400000>;
-> +						compatible = "denx,fit";
-> +					};
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
+> 
+> Thanks.
+> 
+> BRs,
+> Bayi Cheng
+> 
+>>>>
+>>>> Aside from that, your `timeout` variable contains a timeout in
+>>>> microseconds and
+>>>> this means that actually using msecs_to_jiffies() is suboptimal
+>>>> here.
+>>>>
+>>>> Please use usecs_to_jiffies() instead.
+>>>>
+>>>> Regards,
+>>>> Angelo
+>>>
+>>> -
+>>> Registered Address Lakeside, Bramley Road, Mount Farm, Milton
+>>> Keynes,
+>>> MK1 1PT, UK
+>>> Registration No: 1397386 (Wales)
+
+-- 
+AngeloGioacchino Del Regno
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
+
 
