@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF28C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:17:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E36FDC43219
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:17:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OaWf3qjjR7qXqnVUdNYm0fg2Fkt2lXEHVHwEltIrxBA=; b=oc6H4bGzfaQgPJ
-	Y9uTeqSHzkdYzoShm3uvSdwEvZaMV0hRPImbi7o3zEhby+hyYhcEZLqzuDQglOuQJ93T8XpDWLuey
-	9y6WXuWWU9eUPCrdQdw5s5XlQj/RJsEUTsG69ahskk1Epz/B5WbZT5fYNdhzte4bepWL4lLRhjqtI
-	dKDSIxTOD2ssNU4yxKXf1FE0BnJ8dmoMmr2W/jPdSKv8ss97lIb7H5Aeo+V0GKqw3Eot7TtuSKTRu
-	Pe/Ij07IY71x83MJ2UIbUReP5J74BuvULQ6cjegE0wPutl8Om8GJkvWjRs0ecpg6QKyT99ldhn6GX
-	wZ/09PmOQn/DH2m0HBgg==;
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8h7HnuaIbJzS+1bSDsJciWFXEu36biz2822mlX20rAg=; b=Lx1niXo6ataHJz
+	WiKjKuvMTWZRJH8RFFZ5ve6LmFeLWyEHYG+2c/F8Q3iGvs20jrUy4B6NRqef+sx9BDPsnm8gFz6ws
+	CWdyf4q4I/AGqzqnUxxYfNSy3HZPGYkMbGkoPMnJXM8hQFTRWMLF1htzTtQ2Gs92gucS6RoZEAquW
+	SIo1rNg4W5K8ctq3ggbFYOyiSkDu8m/Y9hRt20pcaT2ESO0lQxNkuDTtFdTEhEw2UV6Y74rL4VUGN
+	tDBKyl2LPynINHkeAPTGa686JcQkGdoj1ywF9jCZve3Xcg2GjDr+Tm9f0inL/Y542Gt/1oojtS9xM
+	BTnKw6iJtvYygMUmwK/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmde-004ZJ2-LC; Sat, 12 Nov 2022 09:17:22 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1otmdg-004ZKX-UO; Sat, 12 Nov 2022 09:17:24 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmcI-004YRv-2q; Sat, 12 Nov 2022 09:16:01 +0000
+	id 1otmcI-004YRl-2n; Sat, 12 Nov 2022 09:16:01 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id EDC9E4049F;
-	Sat, 12 Nov 2022 09:15:37 +0000 (UTC)
+	by mxout3.routing.net (Postfix) with ESMTP id 10353604CC;
+	Sat, 12 Nov 2022 09:15:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668244538;
+	s=20200217; t=1668244534;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OaWf3qjjR7qXqnVUdNYm0fg2Fkt2lXEHVHwEltIrxBA=;
-	b=vpRZ03LYG+i3I6+Min23afHPEBbMWy7Wz8iiDaYybbM08KY+aGpddbRH5IFTPL/QyusYuQ
-	fUV5sc89N////scmAyRiXllnJ+35VZwlcJ08sxqAf1ZmVBn1erI3EKg8UeDcSMl8RVkykY
-	lKKK8aZXjKtfwPFrYig38gPq9JYlfdg=
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=8h7HnuaIbJzS+1bSDsJciWFXEu36biz2822mlX20rAg=;
+	b=UPzPkiLVH4L2++lfu6zi7oUxA268Vr2ju1R+3f2m/ygukvVgXaWrE6m+bkH9cR0mcI+NIj
+	lnzjGcQHWRCJpioXY7EQkMBP+iuU+JihfHO5m48yVXDCbsOt+/N4mHMuj8+zfvQbczNNHl
+	yL747nbEtwLFdA+2JgzENhWT57d19Es=
 Received: from frank-G5.. (fttx-pool-157.180.227.41.bambit.de [157.180.227.41])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id D6583360217;
-	Sat, 12 Nov 2022 09:15:36 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 931A4360217;
+	Sat, 12 Nov 2022 09:15:31 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 04/11] dt-bindings: PCI: mediatek-gen3: add SoC based clock config
-Date: Sat, 12 Nov 2022 10:15:11 +0100
-Message-Id: <20221112091518.7846-5-linux@fw-web.de>
+Subject: [PATCH v4 00/11] Add BananaPi R3
+Date: Sat, 12 Nov 2022 10:15:07 +0100
+Message-Id: <20221112091518.7846-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221112091518.7846-1-linux@fw-web.de>
-References: <20221112091518.7846-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 9d62bb0d-11b4-4200-84cf-08d93f4e105f
+X-Mail-ID: 0a530238-cec0-442a-b8de-6e8f0e31b058
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_011558_420126_949D2D8B 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221112_011558_427651_9B64D6AF 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,100 +62,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-The PCIe driver covers different SOC which needing different clock
-configs. Define them based on compatible.
+This Series adds some Nodes to mt7986 devicetree and the BananaPi R3
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
-v2:
-- fix typo in mediatek,mt8192-pcie
+This version is rebased on Matthias' DTS64 next Branch from 2022/11/11.
+
+i included sams series for mt7986 DTS with small changes
+https://patchwork.kernel.org/project/linux-mediatek/cover/20220427124741.18245-1-sam.shih@mediatek.com/
+
+i had run full dtbs-check but i end up with some strange warnings in
+ethernet-node that should not come up as phy-handle and sfp/managed
+properties are already defined.
+
+phy-handle made optional
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n265
+
+property sfp/managed (which is included for mac subnode in yaml above):
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml#n137
+
+changes:
+v4:
+- dropped RFC prefix
+- rebase on matthias' mtk dts-next (for 6.2) branch
+- added author information to overlays
+- fixed sfp binding error
+- added fix for moving wed_pcie node
+- readded missing compatible patches
 v3:
-- remove contains to match only if compatible is no fallback
-  tested with series "Add driver nodes for MT8195 SoC" and mt7986
-  pcie-nodes, dtbs_check is now clean
----
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 47 ++++++++++++++-----
- 1 file changed, 35 insertions(+), 12 deletions(-)
+- changed mmc pull-ups
+- added patch for board binding (sent separately before)
+- added pcie node in mt7986 (not yet again in r3)
+- added dt overlays
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index c00be39af64e..5d7369debff2 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -43,9 +43,6 @@ description: |+
-   each set has its own address for MSI message, and supports 32 MSI vectors
-   to generate interrupt.
- 
--allOf:
--  - $ref: /schemas/pci/pci-bus.yaml#
--
- properties:
-   compatible:
-     oneOf:
-@@ -84,15 +81,7 @@ properties:
-     maxItems: 6
- 
-   clock-names:
--    items:
--      - const: pl_250m
--      - const: tl_26m
--      - const: tl_96m
--      - const: tl_32k
--      - const: peri_26m
--      - enum:
--          - top_133m        # for MT8192
--          - peri_mem        # for MT8188/MT8195
-+    maxItems: 6
- 
-   assigned-clocks:
-     maxItems: 1
-@@ -138,6 +127,40 @@ required:
-   - '#interrupt-cells'
-   - interrupt-controller
- 
-+allOf:
-+  - $ref: /schemas/pci/pci-bus.yaml#
-+  - if:
-+      properties:
-+        compatible:
-+          const: mediatek,mt8192-pcie
-+    then:
-+      properties:
-+        clock-names:
-+          items:
-+            - const: pl_250m
-+            - const: tl_26m
-+            - const: tl_96m
-+            - const: tl_32k
-+            - const: peri_26m
-+            - const: top_133m
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8188-pcie
-+              - mediatek,mt8195-pcie
-+    then:
-+      properties:
-+        clock-names:
-+          items:
-+            - const: pl_250m
-+            - const: tl_26m
-+            - const: tl_96m
-+            - const: tl_32k
-+            - const: peri_26m
-+            - const: peri_mem
-+
- unevaluatedProperties: false
- 
- examples:
+
+Frank Wunderlich (7):
+  arm64: dts: mt7986: move wed_pcie node
+  dt-bindings: phy: mediatek,tphy: add support for mt7986
+  dt-bindings: usb: mtk-xhci: add support for mt7986
+  dt-bindings: PCI: mediatek-gen3: add SoC based clock config
+  dt-bindings: PCI: mediatek-gen3: add support for mt7986
+  arm64: dts: mt7986: add Bananapi R3
+  arm64: dts: mt7986: add BPI-R3 nand/nor overlays
+
+Sam Shih (4):
+  arm64: dts: mt7986: add spi related device nodes
+  arm64: dts: mt7986: add usb related device nodes
+  arm64: dts: mt7986: add mmc related device nodes
+  arm64: dts: mt7986: add pcie related device nodes
+
+ .../bindings/pci/mediatek-pcie-gen3.yaml      |  64 ++-
+ .../bindings/phy/mediatek,tphy.yaml           |   1 +
+ .../bindings/usb/mediatek,mtk-xhci.yaml       |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   4 +
+ .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  31 ++
+ .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts |  55 +++
+ .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  |  69 +++
+ .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  25 +
+ .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 458 ++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  | 166 +++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 162 ++++++-
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |  63 +++
+ 12 files changed, 1081 insertions(+), 18 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+
 -- 
 2.34.1
 
