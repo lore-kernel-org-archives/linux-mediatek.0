@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B28EFC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D3BC43217
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6RdqFs+/qnxtKlo6uhtY74umRGRykwDJsQSXUGsGUDA=; b=0rrzC6JQImCsda
-	+j3YtlEY431rFmL3h2fd253Nnctb21PgsxKN12PLwSu9Iqcr8+4tpPHGjs5PtLUO0BqpT2jsa4mY4
-	lRbcwQeQ7TuyOt15iVRY/nlOdiNFbwTADhcdQjZ+9a1tgFdPaLkDyq6Vr8/FPKRMCIm6tFnxAcyoP
-	zLLoS31cwhHE778smZCeOzj5i1C/l2LoMd7q/8oD5wK/iuuALlRS39zufmhvGOm0F/ZF57xcEZJIt
-	xHV0Vl7kiIiCy+qf1L/pDL+zIaedngRJRFwCtNzfai3RsqpBZEWL09HH2lZubeMUJYRz1vgtQDQV7
-	4aoFPbZLqdeKM+B/aiHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UQPfVhMRXZEQgGhN/ELTm0I/Iufk8zrbsK/zXU7Smus=; b=V+uyNF4bwgSaKH6pffHDdCzvJE
+	Hv6Oo0NTrvmzhRbQ7mxmz2zop68b+IdlVnLOEYhh5A+MugcKTobwYySMbEu9LB7LRMKuWlWeSejdF
+	XkB/YCrnUmHqiSD0rfTC0cxXep3vZITyWadK6vAaewP+3JgfjNKCNrMPUsGRS27LgqvjIZQgEpwke
+	hfdQpWAM7Y9vG0E0Cpl0TsoDDmJqko8YLU2SMZV3L3DK3+bcU8VIA2u5OWlzllAC0W/0ua+45GrGJ
+	vn59zELk2CA71SFIqOfoZ6wycCNBxMEGBI4MzGfFzi9I37dDnryVHcsc5q/YvafgnHP6IsQ18C09R
+	bCAuG49w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmgU-004bEt-EH; Sat, 12 Nov 2022 09:20:18 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1otn1U-004kGY-RP; Sat, 12 Nov 2022 09:42:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmg9-004avg-9Z; Sat, 12 Nov 2022 09:20:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668244777;
-	bh=tuqut74UZqWZODN1QpAhPVRlE49i8ImsqmOIOqF0/qo=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Lt3QdQ3tyYgD9SudXw0ZjqHbx9PKGycyoiiLILga9dNvnWpy6W9wV7+eJs5q3D1IH
-	 eirSZCw50+2O1NCqyMNJuFybHxznr56S1eAKQMqJcGSpsJ5TrF/ZHSa5e+09XeVs2g
-	 JC20Loz1sQayusdOdTgtoFj29+BRLVoakEjrkVhQOa4/2fkXW5D7qQCFosESPUiUnJ
-	 50oOyFzPaQIxW/LOMdHp3evxWWilqkT7pfeZd36dWZS2/PuzCs09pFlDboazIFhrT1
-	 narnI4/mqQe8KN65NoHZ/btyZMamA0wzpOTAfiwHhPDMYjGlW4zYxPR4swGZYOYeB1
-	 yUuIFFuGxyykA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-G5 ([157.180.227.41]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MNKm0-1odnKE3Y7u-00OrcK; Sat, 12
- Nov 2022 10:19:36 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-Date: Sat, 12 Nov 2022 10:19:23 +0100
-Message-Id: <20221112091923.9562-2-frank-w@public-files.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221112091923.9562-1-frank-w@public-files.de>
-References: <20221112091923.9562-1-frank-w@public-files.de>
+	id 1otn1S-004kFI-5n; Sat, 12 Nov 2022 09:41:59 +0000
+X-UUID: d1ecc3927003497eb364bae7f4860127-20221112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=UQPfVhMRXZEQgGhN/ELTm0I/Iufk8zrbsK/zXU7Smus=;
+	b=OJeD5TyEYYhOIZ3h0Mk40T4mxU1eHL3BDRi1h7X6+5mt7EmMZz2VsDH9FzZFYPBzFidQxtoTbLvdIWC1RSU4L/Kvb07sCr4fN5CeShzH+7tuC+VoKwM84jp3ng97cDTwlybEblAfwk0eLVlOx7TkDHcBDd4uIiqsi8AeoDm4JhI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:2619b311-e0b1-4895-8faf-33e3dee79c07,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:95
+X-CID-INFO: VERSION:1.1.12,REQID:2619b311-e0b1-4895-8faf-33e3dee79c07,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:95
+X-CID-META: VersionHash:62cd327,CLOUDID:c1e71286-088c-4756-8f76-577be701e693,B
+	ulkID:221112174151CPNIC4ZV,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d1ecc3927003497eb364bae7f4860127-20221112
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1851012817; Sat, 12 Nov 2022 02:41:49 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sat, 12 Nov 2022 17:41:46 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Sat, 12 Nov 2022 17:41:45 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 0/5] media: mediatek: vcodec: Fix decode random crash for PLT test
+Date: Sat, 12 Nov 2022 17:41:39 +0800
+Message-ID: <20221112094144.4256-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:kKjaW9aI7wAg0CdKWw9t+9h2N0yWI8C1ic20qYJbFdx1SXsJukP
- uPR44ZUAe6EWerEtW0dXW5xmg1XUkpe6B1L5fA2n02283EId0pWWnwzL23CEwzx4ps2gFt0
- P0J7XfxpftQfZVSUxyCieVNqNLgs8raCEFVFYV6YR41GDvWOuvQR7FQWC+CIONmjUZ7ONXK
- KsLi4v3N1mpziL3jyXgng==
-UI-OutboundReport: notjunk:1;M01:P0:ard/iJETmyI=;KPC3jaRpk4xcD3byMkdfvKRcTIv
- xWie5/oLRUaj8Zjk7ca2wpGRmzITD+Q6pBjXB99CTvr+enrJ50vZyLltQ9tK2ViNBYQDgCsYY
- 6vlhtB3ZYemsLwazxPp8HxkT3EMbUO40BKZqGjvIkdLMkpZevM6KT9vIyPIw5wo2Aw9I2TgpJ
- aL7DBl/t9UQxqRYcm8vdhX3g5OPiEKZBYW270MjM5YLzfe9pSJFgNhvCj3zwPWC9r8N4QP0sc
- IMY3HKsx5+AAz9ZGo70INMz6glEQEJjKHrBd/zPz6xAEGdlaY3LvELPz15B916ELH3+GL3Y5C
- db0RdLWG9ALfAVjsjD+RTvPqjqjB7LGZOym6xetErXbuks2758is0UYmWBpgg5b2MyvLGby9p
- HDoPrPHAksy1j5XnGaKxKTFw99HXP2SK87Am3HzFUSlYUtwJhVDuruHDAG0nmMqGa03MMPPwj
- B5Uz5k6f+/Xklbgj9pWSjbpvWeSNs7z6ly37bdm2SQnjnY6CnT0fcpRoqKD5U8BWuesF1OHHr
- 5rq0KjUC23Js8qTxRo1vjrgowNto1QDh5jAH6b7qGatYUGqcvpUTCTIuVUVZOffv29DORqQj3
- iqd6FQl9Jhi/KFc/dV/Jhe0eiuudpj//a0nHeEe3c42hSzqdFd8cVSN4iP26raGjGm1m4zRDj
- NmWCZ2iEvKbaZwUwwGQgaDYjb1Qj166ogyhECwwRzacP+EWel4BkiBcCHidKYTyfYRh9l9nvH
- 1jTPJmBaVJSHYg3P9xYV4EpdY5uHtMO9NMzL2QmQu7IpEbzIIHehxJREdVsxJcmJ0P3U1/6AD
- dmP82ZZsnV7BZ5Uro0LGSNDc4JsSIlmwG465Suo2Z+jijq+KUm4gQ3JWuDHVZbHbRAeQQnyqQ
- Oq3Uw3SkfnQqEC2HFApmltc7K3pveVYdo6tf3LkUlfQmGVtNRGu3v04DMfChbmqV2/vL0v3Me
- bgXFl0P6TlFQwPqvqeZIwm9zGx0=
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_011957_827996_695009FC 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20221112_014158_244875_435CD820 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,186 +87,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add devicetree overlays for using nand and nor on BPI-R3.
+Decoder may decode timeout or error when PLT test, fix some error
+condition not reasonable.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-=2D--
-maybe rename to dtso?
+patch 1 fix getting dst buffer NULL.
+patch 2 fix inner racing mode fail condition.
+patch 3 fix h264 crash.
+patch 4 fix vp9 crash.
+patch 5 fix core thread empty list.
+---
+Yunfei Dong (5):
+  media: mediatek: vcodec: Fix getting NULL pointer for dst buffer
+  media: mediatek: vcodec: Can't set dst buffer to done when lat decode
+    error
+  media: mediatek: vcodec: Fix h264 set lat buffer error
+  media: mediatek: vcodec: Setting lat buf to lat_list when lat decode
+    error
+  media: mediatek: vcodec: Core thread depends on core_list
 
-"kbuild: Allow DTB overlays to built from .dtso named source files"
-https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?h=
-=3Ddt/next&id=3D363547d2191cbc32ca954ba75d72908712398ff2
-=2D--
-v4:
-- drop compile-comment from overlays
-- add author-information to dt-overlays
-=2D--
- arch/arm64/boot/dts/mediatek/Makefile         |  2 +
- .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 55 +++++++++++++++
- .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 69 +++++++++++++++++++
- 3 files changed, 126 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-n=
-and.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-n=
-or.dts
+ .../vcodec/mtk_vcodec_dec_stateless.c         | 13 +++++++----
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      | 23 ++++++++++++-------
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 15 ++++++++----
+ .../platform/mediatek/vcodec/vdec_msg_queue.c |  2 +-
+ 4 files changed, 34 insertions(+), 19 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/m=
-ediatek/Makefile
-index e8902f2cc58f..d42208c4090d 100644
-=2D-- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-bananapi-bpi-r64.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts=
- b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-new file mode 100644
-index 000000000000..15ee8c568f3c
-=2D-- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-+/*
-+ * Authors: Daniel Golle <daniel@makrotopia.org>
-+ *          Frank Wunderlich <frank-w@public-files.de>
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+/ {
-+	compatible =3D "bananapi,bpi-r3", "mediatek,mt7986a";
-+
-+	fragment@0 {
-+		target-path =3D "/soc/spi@1100a000";
-+		__overlay__ {
-+			#address-cells =3D <1>;
-+			#size-cells =3D <0>;
-+			spi_nand: spi_nand@0 {
-+				compatible =3D "spi-nand";
-+				reg =3D <0>;
-+				spi-max-frequency =3D <10000000>;
-+				spi-tx-buswidth =3D <4>;
-+				spi-rx-buswidth =3D <4>;
-+
-+				partitions {
-+					compatible =3D "fixed-partitions";
-+					#address-cells =3D <1>;
-+					#size-cells =3D <1>;
-+
-+					partition@0 {
-+						label =3D "bl2";
-+						reg =3D <0x0 0x80000>;
-+						read-only;
-+					};
-+
-+					partition@80000 {
-+						label =3D "reserved";
-+						reg =3D <0x80000 0x300000>;
-+					};
-+
-+					partition@380000 {
-+						label =3D "fip";
-+						reg =3D <0x380000 0x200000>;
-+						read-only;
-+					};
-+
-+					partition@580000 {
-+						label =3D "ubi";
-+						reg =3D <0x580000 0x7a80000>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts =
-b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-new file mode 100644
-index 000000000000..f18643a9089c
-=2D-- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-@@ -0,0 +1,69 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-+/*
-+ * Authors: Daniel Golle <daniel@makrotopia.org>
-+ *          Frank Wunderlich <frank-w@public-files.de>
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+/ {
-+	compatible =3D "bananapi,bpi-r3", "mediatek,mt7986a";
-+
-+	fragment@0 {
-+		target-path =3D "/soc/spi@1100a000";
-+		__overlay__ {
-+			#address-cells =3D <1>;
-+			#size-cells =3D <0>;
-+			flash@0 {
-+				compatible =3D "jedec,spi-nor";
-+				reg =3D <0>;
-+				spi-max-frequency =3D <10000000>;
-+
-+				partitions {
-+					compatible =3D "fixed-partitions";
-+					#address-cells =3D <1>;
-+					#size-cells =3D <1>;
-+
-+					partition@0 {
-+						label =3D "bl2";
-+						reg =3D <0x0 0x20000>;
-+						read-only;
-+					};
-+
-+					partition@20000 {
-+						label =3D "reserved";
-+						reg =3D <0x20000 0x20000>;
-+					};
-+
-+					partition@40000 {
-+						label =3D "u-boot-env";
-+						reg =3D <0x40000 0x40000>;
-+					};
-+
-+					partition@80000 {
-+						label =3D "reserved2";
-+						reg =3D <0x80000 0x80000>;
-+					};
-+
-+					partition@100000 {
-+						label =3D "fip";
-+						reg =3D <0x100000 0x80000>;
-+						read-only;
-+					};
-+
-+					partition@180000 {
-+						label =3D "recovery";
-+						reg =3D <0x180000 0xa80000>;
-+					};
-+
-+					partition@c00000 {
-+						label =3D "fit";
-+						reg =3D <0xc00000 0x1400000>;
-+						compatible =3D "denx,fit";
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-=2D-
-2.34.1
+-- 
+2.18.0
 
 
