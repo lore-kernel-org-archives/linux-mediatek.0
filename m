@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52E99C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 10:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B373C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 11:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lENu3a5A9J6wdwuret1odYFBW6/Is27YNxGGEEqEMjQ=; b=Cns1N5waRz4Quq4sUWPY6cR/e7
-	JbTpycp6Rkw/u3T96/HXDYevEaBKa8sBceFiYjwy48L2vVEXadTdLPi7Z9VDevbYaBbRd322Q1Pvf
-	659Y3KbedEUAvE67QYvKLh+thw6+ICNRvY6MNuzJXY9/R+aEmtY7xObGhbvLfwUoo6fI0tHXwN4tx
-	/x9DdnpeMh4KpeTEX+eeRAovcvlIKJ6XYoojEkJc/GYdii9e8n/nGbUnhIEtoRJSN36SncFdhVdZ1
-	08gJM8FMYj6K2Os4HLjGQspVFStXAHI3xaKgBvIZeZ0rv8JKOzUfNPplrEU7z9QqCBfuh1SoMbmLM
-	Wh8PIjJQ==;
+	bh=pCQDOALh79Wg0//BO+hwd+gUI9nb61JMC5A9n1oxDJo=; b=PTpqA7bFIVh5GtbUziOKM71zCN
+	e6kDeZ+FWm11aACXQpmmeSemXnXCwZy/8K/nSHuZi1v4y9FDdJv3aT3XT22u4vSbKq4kI4uLNOCcI
+	LY4KyG/LdKJwqXMfitrC3MK7llJbOmEoSBQ0LBvd8QPg5B7emn9goy/6rBudZWrjNDyJnKLzghgv/
+	zmuxVMU2RW9E3IhZeMSQb2dijbJ2dQ1AAkc00CBIN3SzfCQhzPU0vRZponPh/3r/VlIFADFCwTqJ2
+	lqDC88dP4YXazT1hfc8Bt48KxR5wsbNS3uWR82Q1D0/+6Zrxe9uFLqnzOo29M/jzrVA5epjL712+S
+	mB5Nz7NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otnxV-0054Ga-NT; Sat, 12 Nov 2022 10:41:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1otoWn-005Hmg-4J; Sat, 12 Nov 2022 11:18:25 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otnxT-0054FO-Ic; Sat, 12 Nov 2022 10:41:56 +0000
-X-UUID: f066390fb2be40c598f840eec159e3f1-20221112
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lENu3a5A9J6wdwuret1odYFBW6/Is27YNxGGEEqEMjQ=;
-	b=ON/ZeKnv9G5dlXrHM8zRx6cIvZ2WPGTywjpRan1BnKie02/KYfd33q7KcV63GzLuA5SXwXSjVF7jHdFouJomEvQ/BrA/7RtPBlG/UtwPUgp7ZV4hQkrSWphfAOuTJDntl70b8PFZWptyYT606ES3ablyAD+R0/lI8NKoVgAn7Vg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:ae3f5e3a-01fc-4c54-a7aa-555d54f2bb35,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:b1875b5d-100c-4555-952b-a62c895efded,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f066390fb2be40c598f840eec159e3f1-20221112
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1746691216; Sat, 12 Nov 2022 03:41:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 12 Nov 2022 17:41:47 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sat, 12 Nov 2022 17:41:46 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
-	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 1/5] media: mediatek: vcodec: Fix getting NULL pointer for dst buffer
-Date: Sat, 12 Nov 2022 17:41:40 +0800
-Message-ID: <20221112094144.4256-2-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221112094144.4256-1-yunfei.dong@mediatek.com>
-References: <20221112094144.4256-1-yunfei.dong@mediatek.com>
+	id 1otoWk-005Hlw-ES; Sat, 12 Nov 2022 11:18:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1668251878;
+	bh=pCQDOALh79Wg0//BO+hwd+gUI9nb61JMC5A9n1oxDJo=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=tC3jbkeFkyX2cGN5JP1yoh4sVVWUa5ymY5NF+It/5QcNljZdruXu1yBVIN1g7T1qe
+	 A9EZgSPfohPm/l3mHuWUeS7927l1fYBKiP92ZCzzfkBYfSPL6g9MJKb5L6xUFkg/Ev
+	 Zs83RBF1wRw1eWZzTCO53hJPyo4Qyx3iucl4Ubpg5VuJb9njcoms2FNpgpo8MArnfT
+	 Ih2beDS9/awFyP+bWyZYtoxCk7MOHZUYLjpGuqCRsGAkmR0KZBHzVSThSGMoyPOes6
+	 t0lAgaAU0zI5LXWOfKpRfmNlOZ2VWyBKNCcj8LM4bWG+heAeLkxJpZx8861Zjdh7Mk
+	 sjTeHAcdWDPbg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [157.180.227.41] ([157.180.227.41]) by web-mail.gmx.net
+ (3c-app-gmx-bs18.server.lan [172.19.170.70]) (via HTTP); Sat, 12 Nov 2022
+ 12:17:58 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <trinity-33afde2b-7023-45f4-844c-db49f68e38aa-1668251877983@3c-app-gmx-bs18>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod
+ Koul <vkoul@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-usb@vger.kernel.org
+Subject: Aw: [PATCH v4 02/11] dt-bindings: phy: mediatek,tphy: add support
+ for mt7986
+Content-Type: text/plain; charset=UTF-8
+Date: Sat, 12 Nov 2022 12:17:58 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20221112091518.7846-3-linux@fw-web.de>
+References: <20221112091518.7846-1-linux@fw-web.de>
+ <20221112091518.7846-3-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:IdjKRZAc4G6HLMosS9W3l4ACXAgHyMBKtsfZjV4glKnOIzpgLETAF/Ge5C5uC/JhQ6zhZ
+ /Zvg98qbTZFOmoFYCHzhZG5sxbYMoGDfz5NyaC58aArUlPzICX8mFJZzw2ZfO9S3lKXGy3BetKKi
+ 339Em2xQ9y3WF05mYO60eRivo3jDP2APs7nYnDZn9c/qjxP/IGwmfTaMoq30YO1xt8nfdyTEj7R7
+ O9m8Dghdk8Dqr+rq2rF69B43EIqlU6iSuD3jvw35BgDi6pJ7SDX59buR56WIYe8gzXP8s1CDX/Oa
+ Ik=
+UI-OutboundReport: notjunk:1;M01:P0:Wc91JkxEs9I=;xIIdT2P6VfTS19OEOCIzPeazsU1
+ n1qm5hLpvysdWBP1oqyWMAFpe5vNdlKFVrtIPzSrbmEmH2ED6XNLsi46eP617uq7hhQJH/zBM
+ DS8FrSx2mFuk38mJsDr4xMLcinXuQswZN/dpJH/qHFTSHwxlonxzT24tZNsYn2UABe0C4Ulgk
+ rlbfKzC1cEbF9kYOWByhDvnWQKEq0RvuB9QM3uPOFiXec3DAchkKMrwJIRgtG+z5bjs5EkHll
+ 6DoZGD9DgxJxQ5ToSH2nKlNyq52WLWXYWWikIJCano2QLV816u2+i2L72C/h4nXsUsdDIP5d/
+ CBeRv6+U3qcDm4Pi6RnFU/xgqFNqsLdKIlYRRRcB24qZt0aBPpnJlkwGU4YMGgnCjbdEW/Dex
+ sqRrXwV3Kqyssq6xwMvlQd5Yp3Acgw0BNy3gv7p6bwO7DtrMVf3PUNmsurROoX42gHKseyAc7
+ qskz+HyFSwMlwl3EUGwgviSYfHjp2BpBLjyhAh6EhgLuKpQR9f1rc3f1W8txvGBN/7W6gywdq
+ LTdwp3Sisurq1EyHwhxINCvnziH6Kvx9X8316+4ipx1QJwO/918v99elQFXmL+c5Qxh2AxP9d
+ dnXPTRbigZEa/VgW4Pd/W+bw9nLTlAggS5LA1w7ZrJ65ybPFvJobDAdrN4tdk9lfoJb1uillM
+ UsfOV8TItHB+Moe2oYOJzqyH3aS17kHLAq0SIXMuhYHiujRTCLsfZ5/oMjepyVcm+s5fQ95T6
+ QGAQg5UQxreUGlHKg/3bGRhWCzrRRevxxfmd4FCOhM5vhi7vSEb5YfTDJZpH1LqIX0ebqHQM+
+ sCXz0Qoiz9HGFjvpLC87PgYg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_024155_644485_114475E8 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20221112_031822_790344_1D00894C 
+X-CRM114-Status: UNSURE (   6.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +100,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver may can't get v4l2 buffer when lat or core decode timeout,
-will lead to crash when call v4l2_m2m_buf_done to set dst buffer
-(NULL pointer) done.
+i've noticed that i missed the Ack from Krzysztof i've got in v1 [1]
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/mtk_vcodec_dec_stateless.c        | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-index c45bd2599bb2..e86809052a9f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-@@ -138,10 +138,13 @@ static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_ctx *ctx, int error
- 		state = VB2_BUF_STATE_DONE;
- 
- 	vb2_dst = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
--	v4l2_m2m_buf_done(vb2_dst, state);
--
--	mtk_v4l2_debug(2, "free frame buffer id:%d to done list",
--		       vb2_dst->vb2_buf.index);
-+	if (vb2_dst) {
-+		v4l2_m2m_buf_done(vb2_dst, state);
-+		mtk_v4l2_debug(2, "free frame buffer id:%d to done list",
-+			       vb2_dst->vb2_buf.index);
-+	} else {
-+		mtk_v4l2_err("dst buffer is NULL");
-+	}
- 
- 	if (src_buf_req)
- 		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
--- 
-2.18.0
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20221017104141.7338-2-linux@fw-web.de/
 
+regards Frank
 
