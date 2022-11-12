@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A18C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A5B3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Nov 2022 09:17:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SEI4bX6ZbGFvxrOMba7516wjM479jvcDqzWDjK5rS6g=; b=oe+fnO2ht3aKV2
-	REBpPukXVE3ubFT50CRXARXOGy9I+sr2ZA9jCE5jlj8HBFixC9mzqa5hsFAPrmuz+m4cymajdr3AU
-	AFYfiErkzAf1MIm+TdiKChlCSUvkp5vfZCpt0oM2Pwcqt0PFDgpT8UQSJKhWQCUI2pTO5tn9nzZvJ
-	PBi0R158w53DdumFJ2SqlkmDEwS3yHBYmp98cagJBQ2I6t04kwWRmUNb0TofJmd9cqp+11rAH0D/z
-	vgpOxQXaxihSh4rD57lfGX7Wdlr73l34cEpTc+CqnqgpQq4MZZQ6U5FAxG5RACwRwe7uttjSUxksN
-	R95oJ7xAy/oqMkkCDvHA==;
+	List-Owner; bh=BMoGK6t6fYgg/EQRDzZCZ4FUszG8HE/2N6GDwKaceWc=; b=1Jofs3AvpGxwZL
+	lPURSNSrXgBXqODgpTITEKU9bcVq96+dNHzEOTnOmtwH0yq1RUpM9toud+TW3DmHlX/SuL3f3cVAG
+	yrno132CHwjbWWAJLlMl6md+2/8xBDWUuY9d+TOYzK8CFEzujV4/IiBRP9QYq0U0E7s12N0b7577L
+	vr9Aju4vrDsDRG9q5+lwpj8vLJH8944HXRLmIY9VsZBPx+oq6AORvtBL0fXJmqkYCL9bB+qcG7WVY
+	KbKYwCOvLCduu0q46ymcenqLRr3edS8PwTlwtiynZDcJU1+UNlfCHrHYLPswV7SMEWDo+o8AvTyls
+	S8prLEG0IM03wv186iQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmd6-004YpQ-IQ; Sat, 12 Nov 2022 09:16:48 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1otmdc-004ZH3-1z; Sat, 12 Nov 2022 09:17:20 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1otmcI-004YRr-2f; Sat, 12 Nov 2022 09:16:00 +0000
+	id 1otmcI-004YRm-2q; Sat, 12 Nov 2022 09:16:01 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout3.routing.net (Postfix) with ESMTP id ED28C60552;
+	by mxout2.routing.net (Postfix) with ESMTP id 04ED15FBEB;
 	Sat, 12 Nov 2022 09:15:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668244537;
+	s=20200217; t=1668244536;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=SEI4bX6ZbGFvxrOMba7516wjM479jvcDqzWDjK5rS6g=;
-	b=wwj2Si6ikFdLcbZtgtvYsw7RKUqXdPHDwkJFs+g/H+cKUn/LSVqr2zUOC1Vh43n5nn+PfF
-	lUk/fptLRb6ZlK3i31sDtPN/rIdNEDkEg45aoKWki/yrxBFVbNwk+Fq6Zf3Ts3JrOV+VsP
-	Uz1sub/MaQVfXSa1QxNvcOKnhCvCQ38=
+	bh=BMoGK6t6fYgg/EQRDzZCZ4FUszG8HE/2N6GDwKaceWc=;
+	b=GSVIPMwrtsKXa8RZQJZBlfEJRdROnJpz5GqUNACy/KOQkgIXIhCtrPCWNlosjvB4Yf/WYl
+	Y4A0DA8Q0X234nvlrRe1/3z9LKWySjl8zrhS4oeqQCR9GuHxtInB8SxJUcJ9cpFxNfHPPu
+	LqhlBa5e+VRRmUjci07QBs8nHxqxKVc=
 Received: from frank-G5.. (fttx-pool-157.180.227.41.bambit.de [157.180.227.41])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id DEE04360D0E;
-	Sat, 12 Nov 2022 09:15:35 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E007836065F;
+	Sat, 12 Nov 2022 09:15:34 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 03/11] dt-bindings: usb: mtk-xhci: add support for mt7986
-Date: Sat, 12 Nov 2022 10:15:10 +0100
-Message-Id: <20221112091518.7846-4-linux@fw-web.de>
+Subject: [PATCH v4 02/11] dt-bindings: phy: mediatek,tphy: add support for mt7986
+Date: Sat, 12 Nov 2022 10:15:09 +0100
+Message-Id: <20221112091518.7846-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221112091518.7846-1-linux@fw-web.de>
 References: <20221112091518.7846-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 5285a62d-990c-4c48-be6a-b2182c6881ef
+X-Mail-ID: 588d4fd9-a5c1-4e37-a075-c3c1c4c7a0d9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221112_011558_411270_8689333B 
+X-CRM114-CacheID: sfid-20221112_011558_465390_9BC82880 
 X-CRM114-Status: UNSURE (   7.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -76,21 +76,21 @@ Add compatible string for mt7986.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
+ Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-index 939623867a64..a3c37944c630 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -28,6 +28,7 @@ properties:
-           - mediatek,mt7622-xhci
-           - mediatek,mt7623-xhci
-           - mediatek,mt7629-xhci
-+          - mediatek,mt7986-xhci
-           - mediatek,mt8173-xhci
-           - mediatek,mt8183-xhci
-           - mediatek,mt8186-xhci
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index 5613cc5106e3..230a17f24966 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -79,6 +79,7 @@ properties:
+           - enum:
+               - mediatek,mt2712-tphy
+               - mediatek,mt7629-tphy
++              - mediatek,mt7986-tphy
+               - mediatek,mt8183-tphy
+               - mediatek,mt8186-tphy
+               - mediatek,mt8192-tphy
 -- 
 2.34.1
 
