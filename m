@@ -4,125 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACECFC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Nov 2022 22:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A37BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Nov 2022 23:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2UWIwxNMt9Li5DI9V3Ue/+A2ETbpfwK4uJjlNth28Ps=; b=Fs+SRjTgPOoFTygXiiL50/sl/k
-	o36eEbFPdRv3opr+JUGo+KT6hE4V84nzuA+9VoCdQaPuCzNqVPnZo4sIN8Kpsp5wVQfZH36UPX+g2
-	x97Cx8sntZfyrPYiItv+Gdpf5TfVyhvDedZ28W0VlBrAWsUAFcVB3+BWT+Cz2iEJX5EDB87ErACo/
-	GzR56YE195fliIq23di2dL9HZdCPWMbSZLGzoWmXS1y60y/ZmXAGt6rRI3671mNuad2/c7HN3jOuF
-	Z0MvAS2nwgYq3BphOCGoqwzK5K5JIfIqmY2rZfJwA7Jr8XX2kwmhbOrzxlelGgS9gDpaY/0Cr8gnZ
-	2VZSyC4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+agLLhk6BMbVRZoe5tEakKsNVKflbvH0K6ZAw7GtKnY=; b=OzpAMvv9XQ62J8TpqOjC8oqYdW
+	ASn5LQk1gJPskib5/WnTrmMEYrCdehbX8sYzHP9MtB4YvcjYoQEMWo+aq4hIoUTYC9qS+zKgLt5Gv
+	R6zDAD/B9u5/GbaX50+0QjlMJgs2or0CqkINowTucPcZD2034PZXLmmQCe3EgO8NZ64AkbTiGdh9p
+	etM5PPK7xdmSMC4S4crmlcp0rQ1kcjd4Sa0Y4jTNbLMtrJqTJaboy1B6tW7muwHpShMUnJpAKZayu
+	OD8Mw3ksu7dScrThu0kndehmdPciCbCMXHCKSbK7a/PwooDmJnasn+LDGtA+7qTVjxUeuiNJMioCe
+	ygwlZEDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouLa1-00EglY-72; Sun, 13 Nov 2022 22:35:57 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1ouMUc-00Erus-Pb; Sun, 13 Nov 2022 23:34:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouLZx-00Egij-N8; Sun, 13 Nov 2022 22:35:55 +0000
-Received: by mail-qt1-x836.google.com with SMTP id e15so5932959qts.1;
-        Sun, 13 Nov 2022 14:35:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2UWIwxNMt9Li5DI9V3Ue/+A2ETbpfwK4uJjlNth28Ps=;
-        b=cxos6M6SEMWjz70hcYfwJn7Qy9x3ScQZdWjcWHcTUuPDd6QIkxHfs4TdC7er0cgTfw
-         Zecl1ammtXTh3CRumNopuCdrO/B9HdufOATVFx7LmHWfcuepu8nGRPAXZimVwU33NdJY
-         fSpdh/6V9x/8s+acnZlcPXnCq3SzIgJYAOJ+MdHag7DONXMIur05Qu2T29C+PPj+G5FS
-         51vaHNJTqtvQKEh0MKIsH8wIeeMtk/77Zn6zHSFYDKwwTYJrTvxOcJz1pI56sykta8ez
-         ucf+QXApfLU7u3dxQYz1YwJFVAwCWBLrNvZsrMdMSVYHA3yVHW95iD4uAWPO1ebw8AQZ
-         l5aQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2UWIwxNMt9Li5DI9V3Ue/+A2ETbpfwK4uJjlNth28Ps=;
-        b=27ni8QBuW9LkP3cC/fp2wEn2EzTeKXADSx+ZxXctpBZaz0eC8XyzE6UxtV9L2pFTVJ
-         DQytlV5gh0XaJ6L/3NvHJxYK3rWCvsuCh5MqPb77uJja44z2VR0z90ngnYFYfnEQSAHP
-         jouZtZz6QLUqkgfLA3oZ+dEe/Flx5I9yQ3u03EbpptA9Ra6iUt4mHcLkzFMbkJR2cLIn
-         P6mCYtWWa1M6WV8QL3fpfY4tvApuwYF0HPVUGDW/RziMzdhdN7UOIeHM/tBMQcGIgj8r
-         TZMqN7RGlymalsAHX+YjTzqVHln8zbIm3G9Er34msw2rpfrzxzy2+K/C3lDQdVHB1MCN
-         qqAQ==
-X-Gm-Message-State: ANoB5pkSo1m/76wRaENU7Dms+INrcXiEBlO83j2ciMzcVQbKrPsHN5Qn
-	vE7SnqorKO8HR7pGiAf4jjU=
-X-Google-Smtp-Source: AA0mqf6n/LTjELlMgOPAUHKCZj998ajlsJmr6FJtHheLBD4DRKv0w+DZx/+jLTxZzLzeUXXjccj7Rg==
-X-Received: by 2002:a05:622a:4806:b0:3a4:f140:f707 with SMTP id fb6-20020a05622a480600b003a4f140f707mr10057169qtb.317.1668378951056;
-        Sun, 13 Nov 2022 14:35:51 -0800 (PST)
-Received: from shaak (modemcable055.92-163-184.mc.videotron.ca. [184.163.92.55])
-        by smtp.gmail.com with ESMTPSA id bk8-20020a05620a1a0800b006f9f3c0c63csm5482646qkb.32.2022.11.13.14.35.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Nov 2022 14:35:50 -0800 (PST)
-Date: Sun, 13 Nov 2022 17:35:46 -0500
-From: Liam Beguin <liambeguin@gmail.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
-	Fabio Estevam <festevam@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Abel Vesa <abelvesa@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Peter De Schrijver <pdeschrijver@nvidia.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Takashi Iwai <tiwai@suse.com>, David Airlie <airlied@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Lechner <david@lechnology.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Mark Brown <broonie@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 13/65] clk: lmk04832: clkout: Add a determine_rate hook
-Message-ID: <Y3FxQsT240Wm0G6g@shaak>
-References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
- <20221018-clk-range-checks-fixes-v2-13-f6736dec138e@cerno.tech>
+	id 1ouMUS-00Ersq-Kp; Sun, 13 Nov 2022 23:34:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3C5EE60BF0;
+	Sun, 13 Nov 2022 23:34:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B22EC433C1;
+	Sun, 13 Nov 2022 23:34:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668382454;
+	bh=qAqHRLjgH1Z78cZZXlR1l2VU3CVTYWFxyboPeadk8Lg=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=USV2DdzmKvfV1pNyBC2N0uRvMMGCR8N2fGmeAeOUru9d4t8C97H8qI9g16dYC+sdF
+	 N/LgIhRuXSnD2WZCoXC9PB0cziHKYJ+u6+F0p/mHZrQewruI70BdWAaJCFm4yJNLi5
+	 nU37q/kFYiunlIiRCc91I8oE7nUO7SBQIOJGd9lluOgTuDn/XMtPW6zoD60p512Skl
+	 VAsm1X80nyiAMGetQG+ClUMuzDetlF7NLqITiF5WuvXkikTm73mN+rn3lPZnTuRCtn
+	 fzDSufB98+HUllPTjbN2yuLYxKYitA7cxDJGlUzLTaj+BnQ/e2rP1x6IlOEuFkYGym
+	 09kUz8rf4nOhg==
+Received: by mail-ot1-f45.google.com with SMTP id w26-20020a056830061a00b0066c320f5b49so5821374oti.5;
+        Sun, 13 Nov 2022 15:34:14 -0800 (PST)
+X-Gm-Message-State: ANoB5pkY6Hs3E+I6EME3sheF9d+JguG96XzQ4A2W89CYgynXuIHP5iHL
+	Y1C6+fBGDsBX/AAW0jjW60z7eRIKETK1vVpu0w==
+X-Google-Smtp-Source: AA0mqf45+HuGE5seimLLJAfjPAwkfwMduSg/tJPjE7vi7m7eddcBfPkq/IbcnwKPOkfdj5XXlI9YM4JNrPwRFu5Jnm8=
+X-Received: by 2002:a9d:4b02:0:b0:661:b04c:41d9 with SMTP id
+ q2-20020a9d4b02000000b00661b04c41d9mr5380307otf.92.1668382453776; Sun, 13 Nov
+ 2022 15:34:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221018-clk-range-checks-fixes-v2-13-f6736dec138e@cerno.tech>
+References: <1667988059-8635-1-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1667988059-8635-1-git-send-email-xinlei.lee@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 14 Nov 2022 07:33:57 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-6Y5LmmkJXL5gigwuZjAfQHOJAoy_G+NYUmfgjxuef_w@mail.gmail.com>
+Message-ID: <CAAOTY_-6Y5LmmkJXL5gigwuZjAfQHOJAoy_G+NYUmfgjxuef_w@mail.gmail.com>
+Subject: Re: [PATCH v4] drm: mediatek: Modify dpi power on/off sequence.
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, jitao.shi@mediatek.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221113_143553_809421_5D5B5304 
-X-CRM114-Status: GOOD (  31.96  )
+X-CRM114-CacheID: sfid-20221113_153416_799998_5CFF4C13 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,75 +82,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Hi, Xinlei:
 
-On Fri, Nov 04, 2022 at 02:17:30PM +0100, Maxime Ripard wrote:
-> The LKM04832 "CLKOUT" clock implements a mux with a set_parent hook, but
-> doesn't provide a determine_rate implementation.
-> 
-> This is a bit odd, since set_parent() is there to, as its name implies,
-> change the parent of a clock. However, the most likely candidate to
-> trigger that parent change is a call to clk_set_rate(), with
-> determine_rate() figuring out which parent is the best suited for a
-> given rate.
-> 
-> The other trigger would be a call to clk_set_parent(), but it's far less
-> used, and it doesn't look like there's any obvious user for that clock.
-> 
-> So, the set_parent hook is effectively unused, possibly because of an
-> oversight. However, it could also be an explicit decision by the
-> original author to avoid any reparenting but through an explicit call to
-> clk_set_parent().
+<xinlei.lee@mediatek.com> =E6=96=BC 2022=E5=B9=B411=E6=9C=889=E6=97=A5 =E9=
+=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:01=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+>
+> Modify dpi power on/off sequence so that the first gpio operation will ta=
+ke effect.
 
-This is correct, the set_parent hook is effectively unused at the
-moment. It was implemented as a way for consumers to select the parent
-themselves.
+Applied to mediatek-drm-next [1], thanks.
 
-The LMK04832 is used in JESD204 applications where devices need a device
-clock as well as a sysref clock. Since this is determined by the
-hardware layout, a devicetree option is used to select the inital state
-of the clkout mux. This is set at the end of lmk04832_register_clkout().
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-> The latter case would be equivalent to setting the flag
-> CLK_SET_RATE_NO_REPARENT, together with setting our determine_rate hook
-> to __clk_mux_determine_rate(). Indeed, if no determine_rate
-> implementation is provided, clk_round_rate() (through
-> clk_core_round_rate_nolock()) will call itself on the parent if
-> CLK_SET_RATE_PARENT is set, and will not change the clock rate
-> otherwise. __clk_mux_determine_rate() has the exact same behavior when
-> CLK_SET_RATE_NO_REPARENT is set.
-> 
-> And if it was an oversight, then we are at least explicit about our
-> behavior now and it can be further refined down the line.
-> 
-> Since the CLK_SET_RATE_NO_REPARENT flag was already set though, it seems
-> unlikely.
-> 
-> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+Regards,
+Chun-Kuang.
 
-Reviewed-by: Liam Beguin <liambeguin@gmail.com>
-
-Cheers,
-Liam
-
+>
+> Fixes: 6bd4763fd532 ("drm/mediatek: set dpi pin mode to gpio low to avoid=
+ leakage current")
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 > ---
->  drivers/clk/clk-lmk04832.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/clk/clk-lmk04832.c b/drivers/clk/clk-lmk04832.c
-> index f416f8bc2898..f68bb0affdad 100644
-> --- a/drivers/clk/clk-lmk04832.c
-> +++ b/drivers/clk/clk-lmk04832.c
-> @@ -1281,6 +1281,7 @@ static const struct clk_ops lmk04832_clkout_ops = {
->  	.is_enabled = lmk04832_clkout_is_enabled,
->  	.prepare = lmk04832_clkout_prepare,
->  	.unprepare = lmk04832_clkout_unprepare,
-> +	.determine_rate = __clk_mux_determine_rate,
->  	.set_parent = lmk04832_clkout_set_parent,
->  	.get_parent = lmk04832_clkout_get_parent,
->  };
-> 
-> -- 
-> b4 0.11.0-dev-99e3a
-> 
+> change note:
+> v3: Moved pull-down pin control after mtk_dpi_power_off.
+>
+> v2: Remove the empty line between Fixes: and S-o-b.
+>
+> v1: Rebase on linus/master v6.1-rc1. Change nothing.
+>
+> Because dpi power_on/off is protected by dpi->refcount, the first time
+> it cannot be powered on and off successfully, it will cause leakage.
+> ---
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
+k/mtk_dpi.c
+> index 508a6d994e83..1f5d39a4077c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -461,9 +461,6 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+>         if (--dpi->refcount !=3D 0)
+>                 return;
+>
+> -       if (dpi->pinctrl && dpi->pins_gpio)
+> -               pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+> -
+>         mtk_dpi_disable(dpi);
+>         clk_disable_unprepare(dpi->pixel_clk);
+>         clk_disable_unprepare(dpi->engine_clk);
+> @@ -488,9 +485,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+>                 goto err_pixel;
+>         }
+>
+> -       if (dpi->pinctrl && dpi->pins_dpi)
+> -               pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+> -
+>         return 0;
+>
+>  err_pixel:
+> @@ -721,12 +715,18 @@ static void mtk_dpi_bridge_disable(struct drm_bridg=
+e *bridge)
+>         struct mtk_dpi *dpi =3D bridge_to_dpi(bridge);
+>
+>         mtk_dpi_power_off(dpi);
+> +
+> +       if (dpi->pinctrl && dpi->pins_gpio)
+> +               pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+>  }
+>
+>  static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
+>  {
+>         struct mtk_dpi *dpi =3D bridge_to_dpi(bridge);
+>
+> +       if (dpi->pinctrl && dpi->pins_dpi)
+> +               pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+> +
+>         mtk_dpi_power_on(dpi);
+>         mtk_dpi_set_display_mode(dpi, &dpi->mode);
+>         mtk_dpi_enable(dpi);
+> --
+> 2.18.0
+>
 
