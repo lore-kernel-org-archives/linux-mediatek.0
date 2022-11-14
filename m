@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91084C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 10:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B8E4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 11:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G/6hqGuL7tdHQDLsHpXHVJkp70IHsdxPldR1MaHdJFw=; b=jZrkP7M70R0E76clvuCTsLaXjW
-	SuCRHnXfJIiW/PG2EUxOhk07Kcg4Ftrr/5fNvhQJoxWskJwxbo8Idy/IPQf/y/ctqROrMgafs9ofs
-	ljVXOJ3PSZOBOSp6Yn61TxmiEHyi/I2jfXFA6J4bsv1VDMeQgUGVX6noPXVgqS1LpEbb187j3Gtjd
-	VEbS66rwupfjZWKsvoS+2xUKq2fvLhwghbPR1KY7Qsfj7aGlRj06+zu4lEjQNKisgzW4cxzU10gZm
-	QmaBA8IXUAlUUNCwQFyLelI/9kF9NysEi8eu3vsvqnQO/yRWiNXEXj6FhFfZAx3aYmSYEG5pAs2/v
-	Stpzh7sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CTAIShT4ejiwcdAZYmu1frQ1WA1PtPTK9mkypxJnrVg=; b=xGA/NwqRuw5P1q5FtP6P8B4ZBZ
+	A//RLVaXSXduZZu0AYpFrx5/VKEDGYhd8vZRaX3HufG1lVtHwRtgPO4kk1ShacosZnXScgFt0JZ0v
+	1VkVTb69xC0Ll4l9ZkWLL2SvTz6rGows+UVxmMdi05QotIBSXuDrKnvqiesgfyFluuUUZSIcy3GuZ
+	KhZkCJgmwo5trnebnQ64cWIDi4mzCVWt6D43meUHcC2sUSveBYLufbXk1ARflOmbDaEKZCTfHp/eg
+	iEapadRotZrYS690yQFd46/RUmZ97cuwhgLIPt0mzMIwghCxm0FM1U7cdTjdowSOuogquK13A9y+/
+	j5c4lC3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouWuT-0001tc-6z; Mon, 14 Nov 2022 10:41:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ouXEm-000Azz-Nu; Mon, 14 Nov 2022 11:02:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouWuH-0001oM-I6; Mon, 14 Nov 2022 10:41:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1ouXEZ-000AvD-DM; Mon, 14 Nov 2022 11:02:36 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CF2E4B80DAE;
-	Mon, 14 Nov 2022 10:41:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5636C433D6;
-	Mon, 14 Nov 2022 10:41:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1668422494;
-	bh=+NWKJ+0AC8Jgz8dRFVwYfGZ7NuudhxZusORMCmUpF6k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RF2dcXrTT36pZVRaXF0AlMUvVQGzwdW6CpY5JTYmMjEeLeHr0zVCMkIyvprQJq/Qx
-	 UDHD/Y8en3Fp5M8JBUazicfZGksvR7QwVMIDPhMnFVRX8A8A8yHRFZTd4ovPKvaX/J
-	 YgOBoVx3JASJQAHv6V7UitYZF7sOkCpAnRy9NvAI=
-Date: Mon, 14 Nov 2022 11:41:31 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Lee Jones <lee@kernel.org>, Gene Chen <gene_chen@richtek.com>,
-	Andrew Jeffery <andrew@aj.id.au>, linux-leds@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
-Message-ID: <Y3IbW5/yTWE7z0cO@kroah.com>
-References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
- <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
- <Y1+NHVS5ZJLFTBke@google.com>
- <Y1/qisszTjUL9ngU@smile.fi.intel.com>
- <Y2pmqBXYq3WQa97u@smile.fi.intel.com>
- <Y3IUTUr/MXf9RQEP@google.com>
- <Y3IWMe5nGePMAEFv@smile.fi.intel.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2F8A26601E4C;
+	Mon, 14 Nov 2022 11:02:33 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1668423753;
+	bh=Vdfc8dY/vI6TMkcQxnexuBFAvBXuoQ1lTIkgbdeds7Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SOzYkjV4PcS+7Fp5HVYXPg5UfEmPi5X/LU0D7bnQqtw8C05Bxa5hoojhVeu+6buoO
+	 lbV+ff1Oc0eAyBYzSbYYGo32GimqE5r1AdKNOLi9H80htfVqhfGCds6nsIUkJpw1d5
+	 AMG4HzseXAZovbHUWS2fNr8+wVcR9biVT1ZxawcZ6l97/ov9H1m+LEt0MK7GR3IsLh
+	 1CP2etsIE5oLM+jIvK5sD1oc3MttCb/hDd+UMbNeSeo5S4Cosox/K7JXHR1vaM3Dw0
+	 HESmvu3OhtOaXQVcdh4+7xza1vaGPSyPFxH9SGyo5dlHRikq0KfZoJPq/ySMIZr4gB
+	 QAZJvHQUSzoCw==
+Message-ID: <1683603c-8486-b7a7-e9d7-bddd28c1cd8c@collabora.com>
+Date: Mon, 14 Nov 2022 12:02:30 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y3IWMe5nGePMAEFv@smile.fi.intel.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7986: Add SoC compatible
+Content-Language: en-US
+To: matthias.bgg@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ frank-w@public-files.de
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <mbrugger@suse.com>
+References: <20221111113635.4603-1-matthias.bgg@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221111113635.4603-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_024137_754541_B54F9936 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20221114_030235_615758_7C5314E5 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,36 +76,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 14, 2022 at 12:19:29PM +0200, Andy Shevchenko wrote:
-> On Mon, Nov 14, 2022 at 10:11:25AM +0000, Lee Jones wrote:
-> > On Tue, 08 Nov 2022, Andy Shevchenko wrote:
-> > > On Mon, Oct 31, 2022 at 05:32:26PM +0200, Andy Shevchenko wrote:
-> > > > On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
-> > > > > On Tue, 25 Oct 2022, Andy Shevchenko wrote:
-> > > > > 
-> > > > > > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
-> > > > > > > There are several users of LED framework that reimplement the
-> > > > > > > functionality of led_init_default_state_get(). In order to
-> > > > > > > deduplicate them move the declaration to the global header
-> > > > > > > (patch 2) and convert users (patche 3-11).
-> > > > > > 
-> > > > > > Dear LED maintainers, is there any news on this series? It's hanging around
-> > > > > > for almost 2 months now...
-> > > > > 
-> > > > > My offer still stands if help is required.
-> > > > 
-> > > > From my point of view the LED subsystem is quite laggish lately (as shown by
-> > > > this patch series, for instance), which means that _in practice_ the help is
-> > > > needed, but I haven't got if we have any administrative agreement on that.
-> > > > 
-> > > > Pavel?
-> > > 
-> > > So, Pavel seems quite unresponsive lately... Shall we just move on and take
-> > > maintainership?
-> > 
-> > I had an off-line conversation with Greg who advised me against that.
+Il 11/11/22 12:36, matthias.bgg@kernel.org ha scritto:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> OK. What the reasonable option we have then?
+> Missing SoC compatible in the board file causes dt bindings check.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 2 +-
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 2 ++
+>   2 files changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> index afe37b702eef9..0e3b603159477 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> @@ -9,7 +9,7 @@
+>   
+>   / {
+>   	model = "MediaTek MT7986a RFB";
+> -	compatible = "mediatek,mt7986a-rfb";
+> +	compatible = "mediatek,mt7986a-rfb", "mediatek,mt7986a";
+>   
+>   	aliases {
+>   		serial0 = &uart0;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 72e0d9722e07a..1191ecf345a7d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -14,6 +14,8 @@ / {
+>   	#address-cells = <2>;
+>   	#size-cells = <2>;
+>   
+> +	compatible = "mediatek,mt7986a";
+> +
 
-I thought there is now a new LED maintainer, is that not working out?
+It's DTS that shall declare the machine compatible and it's expected that they
+all declare their own, so please drop this one.
+
+Also, while at it, the same should happen with mt7986b-rfb.dts: can you fix that
+one too?
+
+	compatible = "mediatek,mt7986b-rfb", "mediatek,mt7986b";
+
+Cheers,
+Angelo
+
+
 
