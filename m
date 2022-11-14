@@ -4,71 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3E9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 15:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70DA4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 20:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mRQycgmJHNIcZlNtAmasMmUVkHafTZVMmeNiOSvU3F8=; b=LMAom6j9bUimoU/gVXyXQgvqzM
-	BL5RanAtJ/BiNLKCFnLjFYt0EwxKEG1Ter13NPLJGKEFA0bhqBnlHzwXZ6359ycvaO/agns24xQW2
-	XPUgS+n54NHxWtw7yZ5f+eBHqepSq2MxPwrzvk9WRT86rb27wHqnCUnh9eIS8jhRCcpfGUu8zOM84
-	U1cqsepmUMQWCWXLhziUg2x9BChHlGXF28Lg9Ev0UD2KI0xYoEPPV+BYkEvw+t1amV38qn2NFviCc
-	MLn/cdDNjSyw48GViheWpVAl13NCQcQfWZtJhK2sOHjz0LEjwFoFLp7JQ6d/r4OmW8oSXAvrV89ot
-	bL6QdEVg==;
+	bh=rXJf8DUe+GljbluhhaH+sIK0Dch+Q5AMeV6azEr5owk=; b=yABWbt7DCbYkWW6jxpzUoEcyiP
+	wLAJhRuY/u13P1hIfPSa1Aq04WSf2KJ7usElX4dmyvPJtT6NcKDukQRt/k+5uYpEsF6QJOiSJ9APj
+	6FQEWn/OJ2aZyF/Q2znWZX48NKwzClHgKWUw/XPnO6zNLYHJ39a8x3Em82/IWR19ae4bxxTWEYnI+
+	NOT7DRRzXKqToyGJF4SfZPDG/1Ax8AGtiqqtTK2/AbKc7LU5mLaPuR+vLvoPOh7FT0HxAEMPuMTVG
+	E/AlTjlep2y07N9vli/Adp2IXXTIsVEkA+waN/TlUNtu1rKmXv8IFTvXayXQakRQFF6TJMTfz4xa5
+	IJGcGWew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oub3x-0026jx-5J; Mon, 14 Nov 2022 15:07:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ougCC-004iyb-1R; Mon, 14 Nov 2022 20:36:44 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oub3u-0026j4-7d
-	for linux-mediatek@lists.infradead.org; Mon, 14 Nov 2022 15:07:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 724B560F0E
-	for <linux-mediatek@lists.infradead.org>; Mon, 14 Nov 2022 15:07:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D53DAC433C1
-	for <linux-mediatek@lists.infradead.org>; Mon, 14 Nov 2022 15:07:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668438468;
-	bh=Ivw5XBABOyJuBnGwlAzEH5Q6RA8XiAqWrdjlXmuiKTI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=hUgV+O8PxRYcCZO1hNKEIwNFjESsT3q4+UA3frjGl1WigJfHJBGaihn8FCRJIiCSn
-	 oBALD2+8J0g5sXlzXfr99RNvDEz4UQ1KQg7TigWBlGkODMrP/5i8z6sppEAOdKKXnp
-	 Dg+PBAtLqCtrJcq6e9TwvPPt/Ytt7XW7nv+gwF+ipeH//nkb4h2p14AUKapUBzzNzz
-	 Flcf9L1+DxOQbW0DLuUNVqBE9uVdVYl2BpUcVFvrLKOKcADT8BG988hjwNvZbCyucD
-	 hPfxiF0CO2P9y0k+StYZfeSruY/QBNvaLmDkr2NzKhhNUQR5g0MemO4RBigNWMVgHN
-	 5EGwbU8y8NE4g==
-Received: by mail-oi1-f170.google.com with SMTP id n205so11677455oib.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Nov 2022 07:07:48 -0800 (PST)
-X-Gm-Message-State: ANoB5pmLFLsFznzGDaRaJCMwx0mhvSs5DKK7wV2vsjlyd8iTJ5wDWzEw
-	y/PsX8FX6/gp65ppGWvqairuRyLyXorWgEQ1vQ==
-X-Google-Smtp-Source: AA0mqf4qIXnu3N442KhWUv8wh4YYiM3MyGXztdqd2tP1XZOb19sA3PVGXxWkSfqIWZAgXczC7JP/5Lc+WWZf2DNa4rk=
-X-Received: by 2002:a54:4d03:0:b0:354:7a3c:6984 with SMTP id
- v3-20020a544d03000000b003547a3c6984mr5736904oix.269.1668438467842; Mon, 14
- Nov 2022 07:07:47 -0800 (PST)
+	id 1ougBz-004iwE-Ni
+	for linux-mediatek@lists.infradead.org; Mon, 14 Nov 2022 20:36:34 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id p13-20020a05600c468d00b003cf8859ed1bso8824969wmo.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Nov 2022 12:36:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=rXJf8DUe+GljbluhhaH+sIK0Dch+Q5AMeV6azEr5owk=;
+        b=Godcagv2q6iSd1mebLm36/ERyS3Z/Q4wDP+EHBIH2nJwZbsRthPs3TE5bPjzklbpWE
+         5TukgWzKbR6RaqgXfs5+nYxG6lmK4ksk8Zec//ZVNFoZcJVUYmyGdz1nNCz8sd8tTrMD
+         buyI/idKHjoVtcxGX8bWM3e9/2PsgFTOPKge8hQgAToltV6lihkc3EmIqzqP+W5BKWMD
+         H4JTya0H5JixRsHHFM1obguSc4C77RRykDAd8cAGxI+ARbOe31qlU3ecQAvq0tZgplMa
+         aYYedPDaGQuxL9GhN6zjOMOqsuh1T/dkz13jqp0fLiGalcQI3rHldnGcD3hHA3PlmNxu
+         YWhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rXJf8DUe+GljbluhhaH+sIK0Dch+Q5AMeV6azEr5owk=;
+        b=T5AAD4lnWT8TifhVuhdDGiDgeZL+t5lPUFH4xGqIu22lo7sxqPnHT3sjUcCPCWwPN1
+         WS5A8kT6h/d/AUwM+LDGfKK3qdk1X7dTE48pohMqBJqochWZ85wWtqxNBLwKereD3npe
+         0fBCadEUEm8s1Pnj5BRHdshz516TNo8DsYm7fg2hPGiuDqzAuZOptIGQ1+HMezE6buw4
+         FedyqZUAx0fN8T9dO934aDXp8m4/U8Ecdt4ydlYZBEvwGoZ/27JnQdVZyMv4LUxUYOIt
+         xt4xF8IXlHJA2Wp2brdB6pkuP8BR3RoZ3iIKGA/3rE/yEPeXONkKL/xyVLZYSvhlhn1o
+         oZqA==
+X-Gm-Message-State: ANoB5pl9VH0HY9wAWqrDAkQL4Tvk8IeeicbK8YjUVZH6Vq/RVdu5rZq/
+	BXGVloIjI5nS/XfLPKxL5m5UOQ==
+X-Google-Smtp-Source: AA0mqf5vBYllEHNCzsahQ14HUAgGaMg2bogCAsd2tQqfKBieqVKHI45YmTTKXeMlgblS7QZyf96kWQ==
+X-Received: by 2002:a05:600c:2d05:b0:3cf:a3b0:df6a with SMTP id x5-20020a05600c2d0500b003cfa3b0df6amr9072126wmf.126.1668458188788;
+        Mon, 14 Nov 2022 12:36:28 -0800 (PST)
+Received: from [192.168.0.20] (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.gmail.com with ESMTPSA id n128-20020a1ca486000000b003cfd4a50d5asm10481561wme.34.2022.11.14.12.36.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Nov 2022 12:36:28 -0800 (PST)
+Message-ID: <6ef7a3e2-5cd4-808c-a165-01eb4d2edd1c@baylibre.com>
+Date: Mon, 14 Nov 2022 21:36:26 +0100
 MIME-Version: 1.0
-References: <20221012191226.1646315-1-greenjustin@chromium.org>
-In-Reply-To: <20221012191226.1646315-1-greenjustin@chromium.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 14 Nov 2022 23:07:35 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__e43sEkXCc=F0oFopqm=4N22zpbVBqLpLqj1fc1Sn1wg@mail.gmail.com>
-Message-ID: <CAAOTY__e43sEkXCc=F0oFopqm=4N22zpbVBqLpLqj1fc1Sn1wg@mail.gmail.com>
-Subject: Re: [PATCH v3] drm/mediatek: Add AFBC support to Mediatek DRM driver
-To: Justin Green <greenjustin@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, wenst@chromium.org, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com, 
-	daniel@ffwll.ch
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v6 4/4] thermal: mediatek: add another get_temp ops for
+ thermal sensors
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>, Amit Kucheria <amitk@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh@kernel.org>, Markus Schneider-Pargmann <msp@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20221018-up-i350-thermal-bringup-v6-0-c87b9f75550b@baylibre.com>
+ <20221018-up-i350-thermal-bringup-v6-4-c87b9f75550b@baylibre.com>
+ <904faa39-9435-b8a8-fa6f-1ade8d5b61f4@linaro.org>
+ <5eb0cdc2-e9f9-dd42-bf80-b7dcd8bcc196@baylibre.com>
+Content-Language: en-US
+In-Reply-To: <5eb0cdc2-e9f9-dd42-bf80-b7dcd8bcc196@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_070750_382797_69E9CE03 
-X-CRM114-Status: GOOD (  28.51  )
+X-CRM114-CacheID: sfid-20221114_123631_780896_536E56D1 
+X-CRM114-Status: GOOD (  42.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,384 +104,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- * , ,
- Hi, Justin:
+Hi Daniel,
 
-Justin Green <greenjustin@chromium.org> =E6=96=BC 2022=E5=B9=B410=E6=9C=881=
-3=E6=97=A5 =E9=80=B1=E5=9B=9B =E5=87=8C=E6=99=A83:12=E5=AF=AB=E9=81=93=EF=
-=BC=9A
->
-> Tested on MT8195 and confirmed both correct video output and improved DRA=
-M
-> bandwidth performance.
->
-> v3:
-> * Replaced pitch bitshift math with union based approach.
-> * Refactored overlay register writes to shared code between non-AFBC and
->   AFBC.
-> * Minor code cleanups.
->
-> v2:
-> * Marked mtk_ovl_set_afbc as static.
-> * Reflowed some lines to fit column limit.
->
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 90 +++++++++++++++++++++++-
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 37 +++++++++-
->  drivers/gpu/drm/mediatek/mtk_drm_plane.h |  8 +++
->  3 files changed, 131 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/me=
-diatek/mtk_disp_ovl.c
-> index 002b0f6cae1a..3f89b5f5064f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -29,17 +29,24 @@
->  #define DISP_REG_OVL_DATAPATH_CON              0x0024
->  #define OVL_LAYER_SMI_ID_EN                            BIT(0)
->  #define OVL_BGCLR_SEL_IN                               BIT(2)
-> +#define OVL_LAYER_AFBC_EN(n)                           BIT(4+n)
->  #define DISP_REG_OVL_ROI_BGCLR                 0x0028
->  #define DISP_REG_OVL_SRC_CON                   0x002c
->  #define DISP_REG_OVL_CON(n)                    (0x0030 + 0x20 * (n))
->  #define DISP_REG_OVL_SRC_SIZE(n)               (0x0038 + 0x20 * (n))
->  #define DISP_REG_OVL_OFFSET(n)                 (0x003c + 0x20 * (n))
-> +#define DISP_REG_OVL_PITCH_MSB(n)              (0x0040 + 0x20 * (n))
-> +#define OVL_PITCH_MSB_2ND_SUBBUF                       BIT(16)
-> +#define OVL_PITCH_MSB_YUV_TRANS                        BIT(20)
-
-Useless, so drop it.
-
->  #define DISP_REG_OVL_PITCH(n)                  (0x0044 + 0x20 * (n))
-> +#define DISP_REG_OVL_CLIP(n)                   (0x004c + 0x20 * (n))
-
-Useless, so drop it.
-
->  #define DISP_REG_OVL_RDMA_CTRL(n)              (0x00c0 + 0x20 * (n))
->  #define DISP_REG_OVL_RDMA_GMC(n)               (0x00c8 + 0x20 * (n))
->  #define DISP_REG_OVL_ADDR_MT2701               0x0040
->  #define DISP_REG_OVL_ADDR_MT8173               0x0f40
->  #define DISP_REG_OVL_ADDR(ovl, n)              ((ovl)->data->addr + 0x20=
- * (n))
-> +#define DISP_REG_OVL_HDR_ADDR(ovl, n)          ((ovl)->data->addr + 0x20=
- * (n) + 0x04)
-> +#define DISP_REG_OVL_HDR_PITCH(ovl, n)         ((ovl)->data->addr + 0x20=
- * (n) + 0x08)
->
->  #define GMC_THRESHOLD_BITS     16
->  #define GMC_THRESHOLD_HIGH     ((1 << GMC_THRESHOLD_BITS) / 4)
-> @@ -67,6 +74,7 @@ struct mtk_disp_ovl_data {
->         unsigned int layer_nr;
->         bool fmt_rgb565_is_0;
->         bool smi_id_en;
-> +       bool supports_afbc;
->  };
->
->  /*
-> @@ -172,7 +180,22 @@ void mtk_ovl_stop(struct device *dev)
->                 reg =3D reg & ~OVL_LAYER_SMI_ID_EN;
->                 writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON=
-);
->         }
-> +}
-> +
-> +static void mtk_ovl_set_afbc(struct device *dev, struct cmdq_pkt *cmdq_p=
-kt,
-> +                            int idx, bool enabled)
-> +{
-> +       struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
-
-This is a ovl internal function, so you could pass ovl directly into
-this function.
-
-> +       unsigned int reg;
->
-> +       reg =3D readl(ovl->regs + DISP_REG_OVL_DATAPATH_CON);
-> +       if (enabled)
-> +               reg =3D reg | OVL_LAYER_AFBC_EN(idx);
-> +       else
-> +               reg =3D reg & ~OVL_LAYER_AFBC_EN(idx);
-> +
-> +       mtk_ddp_write_relaxed(cmdq_pkt, reg, &ovl->cmdq_reg,
-> +                             ovl->regs, DISP_REG_OVL_DATAPATH_CON);
-
-In normal case, read/write register by cmdq, so
-
-mtk_ddp_write_mask(cmdq_pkt, enable ? OVL_LAYER_AFBC_EN(idx) : 0,
-                               &ovl->cmdq_reg, ovl->regs,
-DISP_REG_OVL_DATAPATH_CON,
-                               OVL_LAYER_AFBC_EN(idx));
-
-
-
->  }
->
->  void mtk_ovl_config(struct device *dev, unsigned int w,
-> @@ -226,6 +249,32 @@ int mtk_ovl_layer_check(struct device *dev, unsigned=
- int idx,
->         if (state->fb->format->is_yuv && rotation !=3D 0)
->                 return -EINVAL;
->
-> +       if (state->fb->modifier) {
-> +               unsigned long long modifier;
-> +               unsigned int fourcc;
-> +               struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
-> +
-> +               if (!ovl->data->supports_afbc)
-> +                       return -EINVAL;
-> +
-> +               modifier =3D state->fb->modifier;
-> +
-> +               if (modifier !=3D DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD=
-_BLOCK_SIZE_32x8 |
-> +                                                       AFBC_FORMAT_MOD_S=
-PLIT |
-> +                                                       AFBC_FORMAT_MOD_S=
-PARSE))
-> +                       return -EINVAL;
-> +
-> +               fourcc =3D state->fb->format->format;
-> +               if (fourcc !=3D DRM_FORMAT_BGRA8888 &&
-> +                   fourcc !=3D DRM_FORMAT_ABGR8888 &&
-> +                   fourcc !=3D DRM_FORMAT_ARGB8888 &&
-> +                   fourcc !=3D DRM_FORMAT_XRGB8888 &&
-> +                   fourcc !=3D DRM_FORMAT_XBGR8888 &&
-> +                   fourcc !=3D DRM_FORMAT_RGB888 &&
-> +                   fourcc !=3D DRM_FORMAT_BGR888)
-> +                       return -EINVAL;
-> +       }
-> +
->         state->rotation =3D rotation;
->
->         return 0;
-> @@ -310,11 +359,23 @@ void mtk_ovl_layer_config(struct device *dev, unsig=
-ned int idx,
->         struct mtk_disp_ovl *ovl =3D dev_get_drvdata(dev);
->         struct mtk_plane_pending_state *pending =3D &state->pending;
->         unsigned int addr =3D pending->addr;
-> -       unsigned int pitch =3D pending->pitch & 0xffff;
-> +       unsigned int hdr_addr =3D pending->hdr_addr;
-> +       unsigned int pitch =3D pending->pitch;
-> +       unsigned int hdr_pitch =3D pending->hdr_pitch;
->         unsigned int fmt =3D pending->format;
->         unsigned int offset =3D (pending->y << 16) | pending->x;
->         unsigned int src_size =3D (pending->height << 16) | pending->widt=
-h;
->         unsigned int con;
-> +       bool is_afbc =3D pending->modifier;
-> +       union overlay_pitch {
-> +               struct split_pitch {
-> +                       u16 lsb;
-> +                       u16 msb;
-> +               } split_pitch;
-> +               u32 pitch;
-> +       } overlay_pitch;
-> +
-> +       overlay_pitch.pitch =3D pitch;
->
->         if (!pending->enable) {
->                 mtk_ovl_layer_off(dev, idx, cmdq_pkt);
-> @@ -335,9 +396,10 @@ void mtk_ovl_layer_config(struct device *dev, unsign=
-ed int idx,
->                 addr +=3D pending->pitch - 1;
->         }
->
-> +       mtk_ovl_set_afbc(dev, cmdq_pkt, idx, is_afbc);
->         mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_CON(idx));
-> -       mtk_ddp_write_relaxed(cmdq_pkt, pitch, &ovl->cmdq_reg, ovl->regs,
-> +       mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &o=
-vl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_PITCH(idx));
-
-Is this general for all MediaTek SoC? If so, separate this to an
-independent patch. Otherwise, use a device variable to separate this
-setting.
-
->         mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->re=
-gs,
->                               DISP_REG_OVL_SRC_SIZE(idx));
-> @@ -345,6 +407,19 @@ void mtk_ovl_layer_config(struct device *dev, unsign=
-ed int idx,
->                               DISP_REG_OVL_OFFSET(idx));
->         mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
->                               DISP_REG_OVL_ADDR(ovl, idx));
-> +       if (is_afbc) {
-> +               mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg,=
- ovl->regs,
-> +                                     DISP_REG_OVL_HDR_ADDR(ovl, idx));
-> +               mtk_ddp_write_relaxed(cmdq_pkt,
-> +                                     OVL_PITCH_MSB_2ND_SUBBUF | overlay_=
-pitch.split_pitch.msb,
-> +                                     &ovl->cmdq_reg, ovl->regs, DISP_REG=
-_OVL_PITCH_MSB(idx));
-> +               mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg=
-, ovl->regs,
-> +                                     DISP_REG_OVL_HDR_PITCH(ovl, idx));
-> +       } else {
-> +               mtk_ddp_write_relaxed(cmdq_pkt,
-> +                                     overlay_pitch.split_pitch.msb,
-> +                                     &ovl->cmdq_reg, ovl->regs, DISP_REG=
-_OVL_PITCH_MSB(idx));
-> +       }
->
->         mtk_ovl_layer_on(dev, idx, cmdq_pkt);
->  }
-> @@ -492,6 +567,15 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_=
-driver_data =3D {
->         .smi_id_en =3D true,
->  };
->
-> +static const struct mtk_disp_ovl_data mt8195_ovl_driver_data =3D {
-
-In this binding document, mt8195 ovl is compatible to mt8133 ovl.
-Please confirm that mt8195 is not identical with mt8133.
-
-> +       .addr =3D DISP_REG_OVL_ADDR_MT8173,
-> +       .gmc_bits =3D 10,
-> +       .layer_nr =3D 4,
-> +       .fmt_rgb565_is_0 =3D true,
-> +       .smi_id_en =3D true,
-> +       .supports_afbc =3D true,
-> +};
-> +
->  static const struct of_device_id mtk_disp_ovl_driver_dt_match[] =3D {
->         { .compatible =3D "mediatek,mt2701-disp-ovl",
->           .data =3D &mt2701_ovl_driver_data},
-> @@ -505,6 +589,8 @@ static const struct of_device_id mtk_disp_ovl_driver_=
-dt_match[] =3D {
->           .data =3D &mt8192_ovl_driver_data},
->         { .compatible =3D "mediatek,mt8192-disp-ovl-2l",
->           .data =3D &mt8192_ovl_2l_driver_data},
-> +       { .compatible =3D "mediatek,mt8195-disp-ovl",
-> +         .data =3D &mt8195_ovl_driver_data},
->         {},
->  };
->  MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.c
-> index 5c0d9ce69931..a285b9ff5081 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -12,6 +12,7 @@
->  #include <drm/drm_framebuffer.h>
->  #include <drm/drm_gem_atomic_helper.h>
->  #include <drm/drm_plane_helper.h>
-> +#include <linux/align.h>
->
->  #include "mtk_drm_crtc.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -52,6 +53,7 @@ static void mtk_plane_reset(struct drm_plane *plane)
->
->         state->base.plane =3D plane;
->         state->pending.format =3D DRM_FORMAT_RGB565;
-> +       state->pending.modifier =3D 0;
->  }
->
->  static struct drm_plane_state *mtk_plane_duplicate_state(struct drm_plan=
-e *plane)
-> @@ -120,21 +122,52 @@ static void mtk_plane_update_new_state(struct drm_p=
-lane_state *new_state,
->         struct drm_gem_object *gem;
->         struct mtk_drm_gem_obj *mtk_gem;
->         unsigned int pitch, format;
-> +       unsigned long long modifier;
->         dma_addr_t addr;
-> +       dma_addr_t hdr_addr =3D 0;
-> +       unsigned int hdr_pitch =3D 0;
->
->         gem =3D fb->obj[0];
->         mtk_gem =3D to_mtk_gem_obj(gem);
->         addr =3D mtk_gem->dma_addr;
->         pitch =3D fb->pitches[0];
->         format =3D fb->format->format;
-> +       modifier =3D fb->modifier;
->
-> -       addr +=3D (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> -       addr +=3D (new_state->src.y1 >> 16) * pitch;
-> +       if (!modifier) {
-> +               addr +=3D (new_state->src.x1 >> 16) * fb->format->cpp[0];
-> +               addr +=3D (new_state->src.y1 >> 16) * pitch;
-> +       } else {
-> +               int width_in_blocks =3D ALIGN(fb->width, AFBC_DATA_BLOCK_=
-WIDTH)
-> +                                     / AFBC_DATA_BLOCK_WIDTH;
-> +               int height_in_blocks =3D ALIGN(fb->height, AFBC_DATA_BLOC=
-K_HEIGHT)
-> +                                      / AFBC_DATA_BLOCK_HEIGHT;
-> +               int x_offset_in_blocks =3D (new_state->src.x1 >> 16) / AF=
-BC_DATA_BLOCK_WIDTH;
-> +               int y_offset_in_blocks =3D (new_state->src.y1 >> 16) / AF=
-BC_DATA_BLOCK_HEIGHT;
-> +               int hdr_size;
-> +
-> +               hdr_pitch =3D width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
-> +               pitch =3D width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
-> +                       AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
-> +
-> +               hdr_size =3D ALIGN(hdr_pitch * height_in_blocks, AFBC_HEA=
-DER_ALIGNMENT);
-
-Usually the pitch needs alignment. So I guess the formula is
-
-hdr_pitch =3D ALIGN(width_in_blocks * AFBC_HEADER_BLOCK_SIZE,
-AFBC_HEADER_ALIGNMENT);
-hdr_size =3D hdr_pitch * height_in_blocks;
-
-Could you explain the meaning of hdr_pitch?
+Do you have any feedback about my comments on your review before I send V7 ?
 
 Regards,
-Chun-Kuang.
 
-> +
-> +               hdr_addr =3D addr + hdr_pitch * y_offset_in_blocks +
-> +                          AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
-> +               /* The data plane is offset by 1 additional block. */
-> +               addr =3D addr + hdr_size +
-> +                      pitch * y_offset_in_blocks +
-> +                      AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
-> +                      fb->format->cpp[0] * (x_offset_in_blocks + 1);
-> +       }
+Amjad
+
+On 11/3/22 15:26, Amjad Ouled-Ameur wrote:
+> Hi Daniel,
 >
->         mtk_plane_state->pending.enable =3D true;
->         mtk_plane_state->pending.pitch =3D pitch;
-> +       mtk_plane_state->pending.hdr_pitch =3D hdr_pitch;
->         mtk_plane_state->pending.format =3D format;
-> +       mtk_plane_state->pending.modifier =3D modifier;
->         mtk_plane_state->pending.addr =3D addr;
-> +       mtk_plane_state->pending.hdr_addr =3D hdr_addr;
->         mtk_plane_state->pending.x =3D new_state->dst.x1;
->         mtk_plane_state->pending.y =3D new_state->dst.y1;
->         mtk_plane_state->pending.width =3D drm_rect_width(&new_state->dst=
-);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/m=
-ediatek/mtk_drm_plane.h
-> index 2d5ec66e3df1..8f39011cdbfc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> @@ -10,12 +10,20 @@
->  #include <drm/drm_crtc.h>
->  #include <linux/types.h>
+> Thank you for the review.
 >
-> +#define AFBC_DATA_BLOCK_WIDTH 32
-> +#define AFBC_DATA_BLOCK_HEIGHT 8
-> +#define AFBC_HEADER_BLOCK_SIZE 16
-> +#define AFBC_HEADER_ALIGNMENT 1024
-> +
->  struct mtk_plane_pending_state {
->         bool                            config;
->         bool                            enable;
->         dma_addr_t                      addr;
-> +       dma_addr_t                      hdr_addr;
->         unsigned int                    pitch;
-> +       unsigned int                    hdr_pitch;
->         unsigned int                    format;
-> +       unsigned long long              modifier;
->         unsigned int                    x;
->         unsigned int                    y;
->         unsigned int                    width;
-> --
-> 2.38.0.rc1.362.ged0d419d3c-goog
+> On 10/22/22 19:03, Daniel Lezcano wrote:
+>> On 19/10/2022 16:17, Amjad Ouled-Ameur wrote:
+>>> Provide thermal zone to read thermal sensor in the SoC. We can read all the
+>>> thermal sensors value in the SoC by the node /sys/class/thermal/
+>>>
+>>> In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
+>>> on the first read of sensor that often are bogus values.
+>>> This can avoid following warning on boot:
+>>>
+>>>    thermal thermal_zone6: failed to read out thermal zone (-13)
+>>>
+>>> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+>>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+>>> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+>>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>> Overall the series looks good to me, however there is a couple of things to fix. See below
+>>
+>>> ---
+>>>   drivers/thermal/mtk_thermal.c | 104 ++++++++++++++++++++++++++++++++----------
+>>>   1 file changed, 79 insertions(+), 25 deletions(-)
+>>>
+>>> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+>>> index 3a5df1440822..311ad611fdab 100644
+>>> --- a/drivers/thermal/mtk_thermal.c
+>>> +++ b/drivers/thermal/mtk_thermal.c
+>>> @@ -259,6 +259,11 @@ enum mtk_thermal_version {
+>>>     struct mtk_thermal;
+>>>   +struct mtk_thermal_zone {
+>>> +    struct mtk_thermal *mt;
+>>> +    int id;
+>>> +};
+>>
+>> Do you really need to create a new structure for that ?
 >
+> We need to store the sensor index in the private data, along with mtk_thermal.
+>
+> Aside from having this new structure, I don't see how .get_temp() can tell which
+>
+> sensor index to read.
+>
+>>
+>>>   struct thermal_bank_cfg {
+>>>       unsigned int num_sensors;
+>>>       const int *sensors;
+>>> @@ -307,6 +312,8 @@ struct mtk_thermal {
+>>>         const struct mtk_thermal_data *conf;
+>>>       struct mtk_thermal_bank banks[MAX_NUM_ZONES];
+>>> +
+>>> +    int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
+>>>   };
+>>>     /* MT8183 thermal sensor data */
+>>> @@ -709,6 +716,29 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
+>>>           mutex_unlock(&mt->lock);
+>>>   }
+>>>   +static int _get_sensor_temp(struct mtk_thermal *mt, int id)
+>>> +{
+>>> +    u32 raw;
+>>> +    int temp;
+>>> +
+>>> +    const struct mtk_thermal_data *conf = mt->conf;
+>>> +
+>>> +    raw = readl(mt->thermal_base + conf->msr[id]);
+>>> +
+>>> +    temp = mt->raw_to_mcelsius(mt, id, raw);
+>>> +
+>>> +    /*
+>>> +     * The first read of a sensor often contains very high bogus
+>>> +     * temperature value. Filter these out so that the system does
+>>> +     * not immediately shut down.
+>>> +     */
+>>> +
+>>> +    if (temp > 200000)
+>>> +        return -EAGAIN;
+>>> +    else
+>>> +        return temp;
+>>> +}
+>>> +
+>>>   /**
+>>>    * mtk_thermal_bank_temperature - get the temperature of a bank
+>>>    * @bank:    The bank
+>>> @@ -721,26 +751,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>>       struct mtk_thermal *mt = bank->mt;
+>>>       const struct mtk_thermal_data *conf = mt->conf;
+>>>       int i, temp = INT_MIN, max = INT_MIN;
+>>> -    u32 raw;
+>>>         for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
+>>> -        raw = readl(mt->thermal_base + conf->msr[i]);
+>>> -
+>>> -        if (mt->conf->version == MTK_THERMAL_V1) {
+>>> -            temp = raw_to_mcelsius_v1(
+>>> -                mt, conf->bank_data[bank->id].sensors[i], raw);
+>>> -        } else {
+>>> -            temp = raw_to_mcelsius_v2(
+>>> -                mt, conf->bank_data[bank->id].sensors[i], raw);
+>>> -        }
+>>> -
+>>> -        /*
+>>> -         * The first read of a sensor often contains very high bogus
+>>> -         * temperature value. Filter these out so that the system does
+>>> -         * not immediately shut down.
+>>> -         */
+>>> -        if (temp > 200000)
+>>> -            temp = 0;
+>>> +        temp = _get_sensor_temp(mt, i);
+>>>             if (temp > max)
+>>>               max = temp;
+>>> @@ -749,9 +762,10 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>>       return max;
+>>>   }
+>>>   -static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+>>> +static int mtk_read_temp(struct thermal_zone_device *tzdev, int *temperature)
+>>>   {
+>>> -    struct mtk_thermal *mt = tz->devdata;
+>>> +    struct mtk_thermal_zone *tz = tzdev->devdata;
+>>> +    struct mtk_thermal *mt = tz->mt;
+>>>       int i;
+>>>       int tempmax = INT_MIN;
+>>>   @@ -770,10 +784,28 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+>>>       return 0;
+>>>   }
+>>>   +static int mtk_read_sensor_temp(struct thermal_zone_device *tzdev, int *temperature)
+>>> +{
+>>> +    struct mtk_thermal_zone *tz = tzdev->devdata;
+>>> +    struct mtk_thermal *mt = tz->mt;
+>>> +    int id = tz->id - 1;
+>>> +
+>>> +    if (id < 0)
+>>> +        return -EACCES;
+>>> +
+>>> +    *temperature = _get_sensor_temp(mt, id);
+>>> +
+>>> +    return 0;
+>>> +}
+>>> +
+>>>   static const struct thermal_zone_device_ops mtk_thermal_ops = {
+>>>       .get_temp = mtk_read_temp,
+>>>   };
+>>>   +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
+>>> +    .get_temp = mtk_read_sensor_temp,
+>>> +};
+>>> +
+>>>   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+>>>                     u32 apmixed_phys_base, u32 auxadc_phys_base,
+>>>                     int ctrl_id)
+>>> @@ -1072,6 +1104,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>>       u64 auxadc_phys_base, apmixed_phys_base;
+>>>       struct thermal_zone_device *tzdev;
+>>>       void __iomem *apmixed_base, *auxadc_base;
+>>> +    struct mtk_thermal_zone *tz;
+>>>         mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+>>>       if (!mt)
+>>> @@ -1150,6 +1183,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>>         mtk_thermal_turn_on_buffer(mt, apmixed_base);
+>>>   +    mt->raw_to_mcelsius = (mt->conf->version == MTK_THERMAL_V1) ?
+>>> +                raw_to_mcelsius_v1 : raw_to_mcelsius_v2;
+>>> +
+>>>       if (mt->conf->version == MTK_THERMAL_V2) {
+>>>           mtk_thermal_release_periodic_ts(mt, auxadc_base);
+>>>       }
+>>> @@ -1161,11 +1197,29 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>>         platform_set_drvdata(pdev, mt);
+>>>   -    tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+>>> -                          &mtk_thermal_ops);
+>>> -    if (IS_ERR(tzdev)) {
+>>> -        ret = PTR_ERR(tzdev);
+>>> -        goto err_disable_clk_peri_therm;
+>>> +    for (i = 0; i < mt->conf->num_sensors + 1; i++) {
+>>> +        tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+>>> +        if (!tz)
+>>> +            return -ENOMEM;
+>>> +
+>>> +        tz->mt = mt;
+>>> +        tz->id = i;
+>>> +
+>>> +        tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
+>>> +                                 &mtk_thermal_ops :
+>>> + &mtk_thermal_sensor_ops);
+>>
+>> We want to prevent the aggregation from the different sensors within a driver. I know there is already a function doing that for the previous sensor version but that is something we don't want to continue.
+>>
+>> Using mtk_thermal_ops tries to overcome this.
+>>
+> So would it be more proper to have to distinct thermal drivers for each sensor ? Or relatively to the above implementation,
+>
+> I think it might be better to have only one thermal_zone_device_ops, with storing the right get_temp callback in mtk_thermal_zone structure.
+>
+>
+>> Also, the userspace needs to know to which device a thermal zone is related to. Here all the thermal zones have the same name so the userspace does not know if it is the GPU, the CPU, the chassis, the NPU, ...
+>
+> Which names are you referring to ? In case it is "sys/class/thermal/*/type", it is based on DT thermal nodes, the first sensor is marked as CPU-related,
+>
+> The others are used for debugging purposes only.
+>
+>>
+>>
+>>> +
+>>> +        if (IS_ERR(tzdev)) {
+>>> +            if (PTR_ERR(tzdev) == -ENODEV) {
+>>> +                dev_warn(&pdev->dev,
+>>> +                     "sensor %d not registered in thermal zone in dt\n", i);
+>>
+>> ENODEV is not considered an error, so the warning can be removed
+> Agreed, will drop this.
+>>
+>>> +                continue;
+>>> +            }
+>>> +            if (PTR_ERR(tzdev) == -EACCES) {
+>>
+>> When devm_thermal_of_zone_register() returns -EACCES ?
+>
+> Right, I verified the code, -EACCES is never returned by devm_thermal_of_zone_register().
+>
+>
+> Regards,
+>
+> Amjad
+>
+>>
+>>> +                ret = PTR_ERR(tzdev);
+>>> +                goto err_disable_clk_peri_therm;
+>>> +            }
+>>> +        }
+>>>       }
+>>>         ret = devm_thermal_add_hwmon_sysfs(tzdev);
+>>>
+>>
 
