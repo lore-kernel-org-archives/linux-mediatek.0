@@ -4,46 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8469C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 10:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1BB6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 10:19:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfVDESu9BQGAgxW1ROMaN7pi1Bz1O3OPm87qys5IRvA=; b=WTDvvYqFfsyhr/VnD/F9/majT4
-	xS/zu6UPL+kRQ2FoHz/nje62zZVDZVaiJJAV5LRBTCTGGzCJRwE2zuRfLlx1PNMDWH6Gh/HdTp7/m
-	27aEYsSzyy1i9vZop3y8lN/P73lr7UqxRF5/7wlJQQzvpgWNDhj9WeMODiNxCMhGUANHTGTA86GR/
-	o09gWZBWO4z06qmB4gLCEmSpZixAJqMgDJuFWZL3n43L6STdXXByDoaaXucsHZ1ZGOyZ8l+essx9J
-	OocHAS/vTopWU6fMQu6b/mwYmMOhC0zCRzQS6UDBQ9E6pzbgcrt4yaje+YtfgUlKYiV9DQI7lRzcv
-	5Fi9IkWA==;
+	bh=SaGmAwHVZx/43wuOYwzGE61uNq+yS8hRAKprJHUM9NE=; b=I5bbSkErTkth9/76YGq2o0oCus
+	/H3ERoHNz5BUtjgxKLHs71mIYfg//A0jSMhvc2G2jLi0YAp2DF0daRmkMDW6ZSjPx5kao1+FR8pWu
+	qFnf9X+rdsLtA4XhK1ognD9p7fihWowe/7Zm3HVhGhHtf+meFHo8SFL29COR+Xw2Jz+rAvxpQI7fj
+	VwOtWRRag6eVqfLCUDG30M5lXsU3jHQNKT4TN9MfSE36uK6E7eKZE+kROFPQa4Tgy/Ib9HApM1BrJ
+	VZKyiiX93P+iMASA2mBh/7fi1VwUrl4j3rzD6DHCZVwNfC6s9dkeWzh57ySMloant2hurIlS6mZ+7
+	aF0QMAIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouWRP-00HRaG-5i; Mon, 14 Nov 2022 10:11:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ouWZC-00HU8y-Uw; Mon, 14 Nov 2022 10:19:50 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouWRB-00HRVb-Rj; Mon, 14 Nov 2022 10:11:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3507560FAF;
-	Mon, 14 Nov 2022 10:11:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61B2DC433D6;
-	Mon, 14 Nov 2022 10:11:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668420692;
-	bh=QwvAOVq2fJvIwPsgNt5K4VGQpKMoNtnaEe10rICI774=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KXIPBygAW4o4Cd6O22Jbnovr6UA54g8AiWNlc2E5/N52DHrjPdi3UAOZRO1NuxBih
-	 cRAMsqrkAmeXxsISPxeZ5S6tcu03r4T9ka5UhaUxotBqeXFHTEeJWQIbFq5FNPTUzo
-	 bB/gDtRzhAvzcT3TqDe9axGHz/l07p6FjIPC0986OglCfffqO2Q0lbDeM3cqs5K23+
-	 0wJ5hW2SGiZEDhlcNIQ7gQSssC7jXJVDT5vnGeY00U26k9AHXP7e/90I3EVpany2q7
-	 EOESr8yFzlWmmzeMpjI6WqXpwKTz3X+MOjcSWlHMWPO3COxqVyTugDo7RN6A8EU/Nw
-	 hBq4rXhw2p7wQ==
-Date: Mon, 14 Nov 2022 10:11:25 +0000
-From: Lee Jones <lee@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+	id 1ouWZ1-00HU3t-Nl; Mon, 14 Nov 2022 10:19:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1668421179; x=1699957179;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=KcbCz+Nkr/BeXhgReuHAK11MwVuA/5RoWL91hSAe1P8=;
+  b=Z9WhW1uTNXQC/IvqFPJlgzTlq3KnYcxP8h53RHEnENDisOWD1FNc5CjO
+   k2ghsOVATa3kSY+6MyQMEIvS2siXWumgYD6WyeGqs46bpoz2XPy6Qc9nP
+   0Q8u9YV1FDQMQPwzclWZM0wCFM5JjNXSZ9EbP3ZMcZ4fXJoqSLJPQC1lc
+   oGadW4/EoL5M9HTY8ZhA3800W6L5gDcztu7mOIcX31DSrpyCj4evTvWXB
+   ESKr3r1IfTXva9zh5/6CP7k7EQ3snmubwn3ABGFfdQfJl78x4qG70Ep0b
+   OQBEY7oCiNoSYFzNMEnfcl+V8xLg0NQpOzEYhuv/fv/UOGC7NuzJw4Gbe
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10530"; a="313737843"
+X-IronPort-AV: E=Sophos;i="5.96,161,1665471600"; 
+   d="scan'208";a="313737843"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Nov 2022 02:19:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10530"; a="589314455"
+X-IronPort-AV: E=Sophos;i="5.96,161,1665471600"; 
+   d="scan'208";a="589314455"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga003.jf.intel.com with ESMTP; 14 Nov 2022 02:19:32 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1ouWYr-00C7Kz-1G;
+	Mon, 14 Nov 2022 12:19:29 +0200
+Date: Mon, 14 Nov 2022 12:19:29 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Lee Jones <lee@kernel.org>
 Cc: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
 	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,20 +70,21 @@ Cc: Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [PATCH v3 00/11] leds: deduplicate led_init_default_state_get()
-Message-ID: <Y3IUTUr/MXf9RQEP@google.com>
+Message-ID: <Y3IWMe5nGePMAEFv@smile.fi.intel.com>
 References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
  <Y1gZ/zBtc2KgXlbw@smile.fi.intel.com>
  <Y1+NHVS5ZJLFTBke@google.com>
  <Y1/qisszTjUL9ngU@smile.fi.intel.com>
  <Y2pmqBXYq3WQa97u@smile.fi.intel.com>
+ <Y3IUTUr/MXf9RQEP@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <Y2pmqBXYq3WQa97u@smile.fi.intel.com>
+In-Reply-To: <Y3IUTUr/MXf9RQEP@google.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_021133_952046_1A5242CF 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20221114_021939_840859_4EFC8C91 
+X-CRM114-Status: GOOD (  20.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +99,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 08 Nov 2022, Andy Shevchenko wrote:
-
-> On Mon, Oct 31, 2022 at 05:32:26PM +0200, Andy Shevchenko wrote:
-> > On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
-> > > On Tue, 25 Oct 2022, Andy Shevchenko wrote:
-> > > 
-> > > > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
-> > > > > There are several users of LED framework that reimplement the
-> > > > > functionality of led_init_default_state_get(). In order to
-> > > > > deduplicate them move the declaration to the global header
-> > > > > (patch 2) and convert users (patche 3-11).
+On Mon, Nov 14, 2022 at 10:11:25AM +0000, Lee Jones wrote:
+> On Tue, 08 Nov 2022, Andy Shevchenko wrote:
+> > On Mon, Oct 31, 2022 at 05:32:26PM +0200, Andy Shevchenko wrote:
+> > > On Mon, Oct 31, 2022 at 08:53:49AM +0000, Lee Jones wrote:
+> > > > On Tue, 25 Oct 2022, Andy Shevchenko wrote:
 > > > > 
-> > > > Dear LED maintainers, is there any news on this series? It's hanging around
-> > > > for almost 2 months now...
+> > > > > On Tue, Sep 06, 2022 at 04:49:53PM +0300, Andy Shevchenko wrote:
+> > > > > > There are several users of LED framework that reimplement the
+> > > > > > functionality of led_init_default_state_get(). In order to
+> > > > > > deduplicate them move the declaration to the global header
+> > > > > > (patch 2) and convert users (patche 3-11).
+> > > > > 
+> > > > > Dear LED maintainers, is there any news on this series? It's hanging around
+> > > > > for almost 2 months now...
+> > > > 
+> > > > My offer still stands if help is required.
 > > > 
-> > > My offer still stands if help is required.
+> > > From my point of view the LED subsystem is quite laggish lately (as shown by
+> > > this patch series, for instance), which means that _in practice_ the help is
+> > > needed, but I haven't got if we have any administrative agreement on that.
+> > > 
+> > > Pavel?
 > > 
-> > From my point of view the LED subsystem is quite laggish lately (as shown by
-> > this patch series, for instance), which means that _in practice_ the help is
-> > needed, but I haven't got if we have any administrative agreement on that.
-> > 
-> > Pavel?
+> > So, Pavel seems quite unresponsive lately... Shall we just move on and take
+> > maintainership?
 > 
-> So, Pavel seems quite unresponsive lately... Shall we just move on and take
-> maintainership?
+> I had an off-line conversation with Greg who advised me against that.
 
-I had an off-line conversation with Greg who advised me against that.
+OK. What the reasonable option we have then?
 
 -- 
-Lee Jones [李琼斯]
+With Best Regards,
+Andy Shevchenko
+
+
 
