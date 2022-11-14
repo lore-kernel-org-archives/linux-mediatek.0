@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B246C43219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 12:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2C4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 13:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=28+5OR0aYRLcARp6ZCFbRP38vXPboMXzA307Ks+YLvQ=; b=X3+IAfoBl17Fs4Cqxevlw+lE3o
-	2ZUlcn9h7zn5VJTUHzLgK7IOKgC/00lk5u8ZQmavUaAmR2Xe5tlTepClp0eE4JsJ0lxKqbnfWnFu3
-	X2eMy6Chy0yMNC03lmDO0I01JUh7Hf0/vKuaUTqzpYH7L+/HH/CpRxcrkQt45Egaarks6nYBD2RlX
-	oJvNzzanQfmLEzjKumfgIkIr4+veBrv/2WORNlN8YYsaJWVTnLdE51Dyv2y6ORB2frZFfichzL061
-	Wmp7HYQ+nh2MytAZ7lCK+0BDzb7cJymSv+DFNAd7U1hTBRZ8KfJ0111UJg30ua98qMdAM2ComcEOe
-	TFAeCtnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HdjlbixNksyWUmSwVA0oszzukvQJyBdRdSXeK1Q7UgM=; b=AQc82821owfY4FAwuoRtSVsOEX
+	/qtIzPknQumXRZo3tnogghA9LJLXUjNXcXnWOA58zikEYdGbtEXqpEqs1z9jKbxtqwwwqk8sVxnX7
+	epNg+8H4Jm82u+O9nis0Qq2sFEB+3btD0a2KGd/t3M9HxefeUTeUXKtfKk3rnt2JgzZOnJQjuzGIZ
+	tnStoY/zQDIuzjje4I9s5bGCPVLib34Bz/BoWEj0fDQ8hRBrxmDG53drbneaW+7X+Vxl9YjN2GLjj
+	xpT+E4CltfCQ/2O4qsA4Y9aL+9HcMtQvg55M11fgRoHD6DNpiAznan1KcCH5WujTBh+ruUJDhbIKl
+	3H/evKcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYo1-000sSH-3W; Mon, 14 Nov 2022 12:43:17 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1ouZcG-001GZy-8t; Mon, 14 Nov 2022 13:35:12 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYnP-000s5m-RJ; Mon, 14 Nov 2022 12:42:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=28+5OR0aYRLcARp6ZCFbRP38vXPboMXzA307Ks+YLvQ=; b=nqwmnvjGWRlEJOK5JJm3of44Os
-	jp4SUfWTJJTuJtU/SLnG9jGjfxDALCgcWRk+h/LR/1QD8B3mJkKaDXh4QbaEIzGHs1QlIXc+OvCYl
-	vntMzxMyW9hlFRhAhUFzGkobxmADRa104B+fi3wDxlspMk/aCSgYqRyMmlPEHLS9lN38=;
-Received: from p54ae9c3f.dip0.t-ipconnect.de ([84.174.156.63] helo=Maecks.lan)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1ouYn9-0021wc-LY; Mon, 14 Nov 2022 13:42:23 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Russell King <linux@armlinux.org.uk>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v4 4/4] net: ethernet: mtk_eth_soc: enable hardware DSA untagging
-Date: Mon, 14 Nov 2022 13:42:14 +0100
-Message-Id: <20221114124214.58199-5-nbd@nbd.name>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221114124214.58199-1-nbd@nbd.name>
-References: <20221114124214.58199-1-nbd@nbd.name>
+	id 1ouZQb-001BGh-Ju
+	for linux-mediatek@lists.infradead.org; Mon, 14 Nov 2022 13:23:11 +0000
+Received: by mail-ed1-x535.google.com with SMTP id z18so17249252edb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Nov 2022 05:23:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HdjlbixNksyWUmSwVA0oszzukvQJyBdRdSXeK1Q7UgM=;
+        b=Voqp3oaFTueqHJ5jpTyX8MHk0ZEQn9jwK4nyyO0uhP+iTVeqdQKo/TXXxQmvVEBdPs
+         Sw+iGKIUvtqYYOgR8ZFhVsWwU9c9UGAn2jVLOADgMynXMR9S8b55F+Hkl9Ak5nDgDDQb
+         hJH08eEp53gOqcf5QzZ4w3yVVyoXcmy20HWIx+cpcyirc0MmNzXD0yYHFTR9kmEwebUR
+         OSI6EFp7MGMenJBOhgzAZ5DaRe1oI04e5wFHP3YWiQHPQCoQ7aIyiBmnPK3Btvjos1Bf
+         uKXhcGKHVb8TZSBpaqBIKbV9T7qsGpFfQneHeBnmnRoyFVs273eVwMDtRCpo2P8pQLpu
+         frfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HdjlbixNksyWUmSwVA0oszzukvQJyBdRdSXeK1Q7UgM=;
+        b=wsQTscnuf08wKbtCA7eQyPccNUga27TqQ3OBnEUOevBPgD3CR4b0e0qxT8IWeR8cGp
+         g8fgYEmJcVT48ljN4O3pO7YGGO/ZQGcbARNQpeddJ8xPFKeyG5Ht2NqPZQ8BYWRFE4YO
+         W/71BJxrZlAg39CXEoSopsm8RhqmEwU9XKmiyoJtFsxU04KH0dxNpGcrlKWzc0eJlR/m
+         7/Ed36Q1fI1Q9QUV6axTp+PaWcJwxaxiioq1WxC15FJtl0UoN0+MrJydSN9tJcC/1KMQ
+         +Tdv7krxHFAHmdGpaG9LArezZd6o2V47Qf3qdlE4XOECj/hMvCX9HB3x5CA8MsePc7DK
+         wIEw==
+X-Gm-Message-State: ANoB5pk+DeEBazPuU5flMdSl/IhZyaB5tweW9WGVhPVx3kcKYTSVyuUy
+	hzyaUK2VM/kNKsFs2xJ5DREQpjmvBqqANDiJKpBC7Q==
+X-Google-Smtp-Source: AA0mqf6K9UdLNkuoM1yV47dlYKLSc/9xdfJA+YA8IMuwuRw1bt7cE7J5tOY7mfFjmQ/o8fEmPNLBHZ7WiHiycebyGkQ=
+X-Received: by 2002:a05:6402:2931:b0:463:ce05:c00e with SMTP id
+ ee49-20020a056402293100b00463ce05c00emr11088202edb.46.1668432185632; Mon, 14
+ Nov 2022 05:23:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20221111094106.18486-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221111094106.18486-1-angelogioacchino.delregno@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 14 Nov 2022 14:22:54 +0100
+Message-ID: <CACRpkdZ_FYHBn+d9Q4w3U4=CzCaC0U81n3kJeCDKwKtSi9+RPQ@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Fix EINT pins input debounce time configuration
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sean.wang@kernel.org, matthias.bgg@gmail.com, nfraprado@collabora.com, 
+	marijn.suijten@somainline.org, jami.kettunen@somainline.org, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_044239_923506_F30B1BED 
-X-CRM114-Status: GOOD (  21.81  )
+X-CRM114-CacheID: sfid-20221114_052309_703790_88B7C47B 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,163 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- pass the tag to DSA via metadata dst
-- disabled on 7986 for now, since it's not working yet
-- disabled if a MAC is enabled that does not use DSA
+On Fri, Nov 11, 2022 at 10:41 AM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 
-This improves performance by bypassing the DSA tag driver and avoiding extra
-skb data mangling
+> The External Interrupt Controller (EINTC) on all of the supported
+> MediaTek SoCs does support input debouncing, but not all of them
+> index the debounce time values (DBNC_SETTING registers) the same way.
+>
+> Before this change, in some cases, as an example, requesting a debounce
+> time of 16 milliseconds would mistakenly set the relative DBNC_SETTING
+> register to 0x2, resulting in a way shorter debounce time of 500uS.
+>
+> To fix the aforementioned issue, define three different debounce_time
+> arrays, reflecting the correct register index for each value and for
+> each register index variant, and make sure that each SoC pinctrl
+> driver uses the right one.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 66 ++++++++++++++++++---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  8 +++
- 2 files changed, 67 insertions(+), 7 deletions(-)
+Patch applied for v6.1 fixes.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index a118c715b09b..3e9f5536f0f3 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -23,6 +23,7 @@
- #include <linux/jhash.h>
- #include <linux/bitfield.h>
- #include <net/dsa.h>
-+#include <net/dst_metadata.h>
- 
- #include "mtk_eth_soc.h"
- #include "mtk_wed.h"
-@@ -1939,13 +1940,19 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 				__vlan_hwaccel_put_tag(skb, htons(RX_DMA_VPID(trxd.rxd3)),
- 						       RX_DMA_VID(trxd.rxd3));
- 			}
-+		}
-+
-+		/* When using VLAN untagging in combination with DSA, the
-+		 * hardware treats the MTK special tag as a VLAN and untags it.
-+		 */
-+		if (skb_vlan_tag_present(skb) && netdev_uses_dsa(netdev)) {
-+			unsigned int port = ntohs(skb->vlan_proto) & GENMASK(2, 0);
- 
--			/* If the device is attached to a dsa switch, the special
--			 * tag inserted in VLAN field by hw switch can * be offloaded
--			 * by RX HW VLAN offload. Clear vlan info.
--			 */
--			if (netdev_uses_dsa(netdev))
--				__vlan_hwaccel_clear_tag(skb);
-+			if (port < ARRAY_SIZE(eth->dsa_meta) &&
-+			    eth->dsa_meta[port])
-+				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
-+
-+			__vlan_hwaccel_clear_tag(skb);
- 		}
- 
- 		skb_record_rx_queue(skb, 0);
-@@ -2990,11 +2997,46 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 config)
- 	mtk_w32(eth, 0, MTK_RST_GL);
- }
- 
-+
-+static bool mtk_uses_dsa(struct net_device *dev)
-+{
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	return netdev_uses_dsa(dev) &&
-+	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
-+#else
-+	return false;
-+#endif
-+}
-+
- static int mtk_open(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
--	int err;
-+	int i, err;
-+
-+	if (mtk_uses_dsa(dev) && !eth->prog) {
-+		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+			struct metadata_dst *md_dst = eth->dsa_meta[i];
-+
-+			if (md_dst)
-+				continue;
-+
-+			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
-+						    GFP_KERNEL);
-+			if (!md_dst)
-+				return -ENOMEM;
-+
-+			md_dst->u.port_info.port_id = i;
-+			eth->dsa_meta[i] = md_dst;
-+		}
-+	} else {
-+		/* Hardware special tag parsing needs to be disabled if at least
-+		 * one MAC does not use DSA.
-+		 */
-+		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		val &= ~MTK_CDMP_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
-+	}
- 
- 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
- 	if (err) {
-@@ -3321,6 +3363,10 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	 */
- 	val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
- 	mtk_w32(eth, val | MTK_CDMQ_STAG_EN, MTK_CDMQ_IG_CTRL);
-+	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
-+	}
- 
- 	/* Enable RX VLan Offloading */
- 	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-@@ -3538,6 +3584,12 @@ static int mtk_free_dev(struct mtk_eth *eth)
- 		free_netdev(eth->netdev[i]);
- 	}
- 
-+	for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+		if (!eth->dsa_meta[i])
-+			break;
-+		metadata_dst_free(eth->dsa_meta[i]);
-+	}
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 589f27ddc401..a572416e25de 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -22,6 +22,9 @@
- #include <linux/bpf_trace.h>
- #include "mtk_ppe.h"
- 
-+#define MTK_MAX_DSA_PORTS	7
-+#define MTK_DSA_PORT_MASK	GENMASK(2, 0)
-+
- #define MTK_QDMA_PAGE_SIZE	2048
- #define MTK_MAX_RX_LENGTH	1536
- #define MTK_MAX_RX_LENGTH_2K	2048
-@@ -91,6 +94,9 @@
- #define MTK_CDMQ_IG_CTRL	0x1400
- #define MTK_CDMQ_STAG_EN	BIT(0)
- 
-+/* CDMQ Exgress Control Register */
-+#define MTK_CDMQ_EG_CTRL	0x1404
-+
- /* CDMP Ingress Control Register */
- #define MTK_CDMP_IG_CTRL	0x400
- #define MTK_CDMP_STAG_EN	BIT(0)
-@@ -1121,6 +1127,8 @@ struct mtk_eth {
- 
- 	int				ip_align;
- 
-+	struct metadata_dst		*dsa_meta[MTK_MAX_DSA_PORTS];
-+
- 	struct mtk_ppe			*ppe[2];
- 	struct rhashtable		flow_table;
- 
--- 
-2.38.1
+> I know, this commit is a good candidate to get a Fixes tag, but I
+> couldn't find a way to actually do that cleanly...
 
+I don't super much care. If you need this backported to stable,
+suggest it to linux-stable once it hits Torvalds' tree.
+
+> The only way would be to split this in one commit for each pinctrl
+> driver, but that would result in a series containing 21 commits, of
+> which 20 are one-liners... and that didn't look right.
+
+Ugh no this is way better.
+
+Thanks for fixing this!
+
+Yours,
+Linus Walleij
 
