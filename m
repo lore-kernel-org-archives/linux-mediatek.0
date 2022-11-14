@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E1BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 12:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BCBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 12:43:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sb9mbfISfXOuTwXYbmCh3eWTQjNhtd1x8mN2o6zpoTY=; b=wmf2cZ75YIhAvNS9CkzDDa7eoP
-	4KtgSqBuwA41DZlwwKN+HyjslwPcDNPK2o6nZQMpoH+ni4UdiSsC4pC7QUgxkdGmPBZZ+JMqsAFUm
-	AtaXcbSwJugLBIWBUPumT7oU9MZJn8xC+ZFfApp31JqrMzNxlDqqoT2h5076fOrg5RnhtALAoKpbx
-	sVT0xHG983bQQZF7ZlOvE1uMIM753jZhEWPGDaj7OTLwbcptJod36VFO35koKqJe/3W5Q3PthXv/X
-	pBoRgbPsxuzHhYIkKuFR6SeGGtL5GBzUD6I1mo5Myqp6PKF8tvFmH2X+RHj7lriJAeuYd61gQCl0R
-	hRA6fEoQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XKOsIjWD9UiWHhSPTpYvwZctofSL/DoRkI6SCzJGFi8=; b=r7bJ9elPDwRSvUxniWs426Z6BU
+	N5GHnjPINuacPYywzlt5sp+EAIEvyAW3un76rKRsnJsfQBTiEKzHhzyNgcn66yJhi26uR0wQJ0pRZ
+	dJ7UNSYZiL1ApgunYptaP/PtxyR2rZ+9GvKSLC1yT2UAUcTN381JTn/LCm6uN+zTID77MouqDrVO0
+	bA8JMPno6hZ5SO7UDxLfUhE6ZSubPWCaNCAMvpk1yIz6u9dnCZaF0bCsyMCNSiDEi5qXVFlPQW9r5
+	vfQCFPr/5C1w7A3TASCarYLyw1uDfIKHJBlW2HMYbaWYZJ+Xe9qYup0EkqtuK+ICVH3rdnXUhf4/d
+	ooEpnBKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYOv-000knc-0W; Mon, 14 Nov 2022 12:17:21 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ouYnf-000sAb-Pz; Mon, 14 Nov 2022 12:42:55 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYOf-000key-1f; Mon, 14 Nov 2022 12:17:06 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 30037B80D20;
-	Mon, 14 Nov 2022 12:17:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E76D4C433C1;
-	Mon, 14 Nov 2022 12:16:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668428221;
-	bh=UH+GWkwtfms2AOzvG2j6b82aSdcxdwm3nMRBgLF6O14=;
-	h=From:To:Cc:Subject:Date:From;
-	b=d1PUskdkK8fQfRAqaWSguZqyt5ak+ENLkFQEh5ZoLq7cmDRLS8xmGFF6ytUPwgdBy
-	 LqE6iqeC5bPYUOKMAQV0IgesFXwVaPpvYNW9tMsAdEX+nRYuDAs3u9Fx4H+rH+SJxz
-	 EOp5Dj2tGDHj4cPaj3BJGf5zWMyQJ+HjfIH2VFbuXqRPaO8QogsWSz0fyZKjc1c4Bu
-	 7/pj4AuddXeSz01oiG4Ggl2a16RVHUxGOT/Lnt3ul55K7a6WXncOxL4vzwE/VDlVuO
-	 5ArUt/AdxOYHP4MWksraFb4Uo+rnRgAcW11N3XFvlIicZeFnFVnFqqrSz97kYjN7Y6
-	 SmdKUT4fydJPA==
-From: matthias.bgg@kernel.org
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	frank-w@public-files.de
-Cc: devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1ouYnN-000s1L-KU; Mon, 14 Nov 2022 12:42:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=XKOsIjWD9UiWHhSPTpYvwZctofSL/DoRkI6SCzJGFi8=; b=mpH1bONmjSCvOi0+J+hPhjU8mC
+	1oswAP9yAi37PrMZNA8IxVosUeXdtgxMiZvyEb5db48xJYzlS24FUVO8xJoKMkJYuBPLajw02u9CN
+	paP0lkBfKFQjAbPqtNyfTDwXTmoyjO1ZXjP0OwGobN6abNAkVW8u4sq9bOrF+5zqzam4=;
+Received: from p54ae9c3f.dip0.t-ipconnect.de ([84.174.156.63] helo=Maecks.lan)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1ouYn8-0021wc-7O; Mon, 14 Nov 2022 13:42:22 +0100
+From: Felix Fietkau <nbd@nbd.name>
+To: netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	Matthias Brugger <mbrugger@suse.com>
-Subject: [PATCH v2] arm64: dts: mediatek: mt7986: Add SoC compatible
-Date: Mon, 14 Nov 2022 13:16:53 +0100
-Message-Id: <20221114121653.14739-1-matthias.bgg@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net-next v4 2/4] net: ethernet: mtk_eth_soc: pass correct VLAN protocol ID to the network stack
+Date: Mon, 14 Nov 2022 13:42:12 +0100
+Message-Id: <20221114124214.58199-3-nbd@nbd.name>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221114124214.58199-1-nbd@nbd.name>
+References: <20221114124214.58199-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_041705_277725_A4A6DC8E 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20221114_044237_733450_3E92D40B 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,76 +78,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+Use the id from the DMA descriptor instead of hardcoding 802.1q
 
-Missing SoC compatible in the board file causes dt bindings check.
-
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
-Changes since v1:
-- Move SoC compatible to first line of the block
-- Add SoC compatible to mt7986b
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 2 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 1 +
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 2 +-
- arch/arm64/boot/dts/mediatek/mt7986b.dtsi    | 3 +++
- 4 files changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index afe37b702eef9..0e3b603159477 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -9,7 +9,7 @@
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 1cf76fd7afbc..891dd6937f89 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1936,7 +1936,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 						htons(RX_DMA_VPID(trxd.rxd4)),
+ 						RX_DMA_VID(trxd.rxd4));
+ 			} else if (trxd.rxd2 & RX_DMA_VTAG) {
+-				__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
++				__vlan_hwaccel_put_tag(skb, htons(RX_DMA_VPID(trxd.rxd3)),
+ 						       RX_DMA_VID(trxd.rxd3));
+ 			}
  
- / {
- 	model = "MediaTek MT7986a RFB";
--	compatible = "mediatek,mt7986a-rfb";
-+	compatible = "mediatek,mt7986a-rfb", "mediatek,mt7986a";
- 
- 	aliases {
- 		serial0 = &uart0;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 72e0d9722e07a..3c52ec3f99a31 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -10,6 +10,7 @@
- #include <dt-bindings/reset/mt7986-resets.h>
- 
- / {
-+	compatible = "mediatek,mt7986a";
- 	interrupt-parent = <&gic>;
- 	#address-cells = <2>;
- 	#size-cells = <2>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-index 3443013b5971e..d03e66a84c5d4 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-@@ -9,7 +9,7 @@
- 
- / {
- 	model = "MediaTek MT7986b RFB";
--	compatible = "mediatek,mt7986b-rfb";
-+	compatible = "mediatek,mt7986b-rfb", "mediatek,mt7986b";
- 
- 	aliases {
- 		serial0 = &uart0;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-index 23923b9f8944b..db5189664c29b 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-@@ -5,6 +5,9 @@
-  */
- 
- #include "mt7986a.dtsi"
-+/ {
-+	compatible = "mediatek,mt7986b";
-+};
- 
- &pio {
- 	compatible = "mediatek,mt7986b-pinctrl";
 -- 
 2.38.1
 
