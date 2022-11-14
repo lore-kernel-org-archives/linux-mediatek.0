@@ -4,83 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FEEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 11:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D20C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 11:41:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BpB2oPfcCl953l9Nc6zvxu1rc4i33gMywmwJqfFMt4k=; b=wn7DbWst47hSAX+XsSethmtENs
-	wfsUPt5NdCszqBbmCr4ZY+eUriAkSyNOljWLf99mqw603EXhMcs6zFRquxBwwaXlB7dbLwrjKmouu
-	vvd26gawGLBj0rCdtGyg/+o1QoMFpPnz0NqjMZDkYvbX38q7ND4pDJLyyFkOieEV4MBF3p3EOoaU4
-	5AAw1iXE7hcQV//wq9CuKlGdW1Go80J5A9rgjXBj5Ygxs9pVRcq/usLJvlrJUMKym4xtuWQhaVTYX
-	NDh9J26qMSRZyAnh0EiXiD7tV30dGijwnhsYCQxOkmhZgoJ+TekrTUaK9mtkVv1X1Ryyss1m1P84q
-	poTC5RbQ==;
+	bh=muqyub+JyYDaUEML9O8bU6onxSSTful63jEXUoSrUCA=; b=syWIpLbxTGVYu20EoWKoU3zHut
+	6V31PP/YJihvOmwQltRbe/6vQLST1Dfr6A+ewMr8A7PkSRXE2Vq2oZiEx8faYLlMI+bMo3sNsNSNA
+	/DE55jmQF3+PLWg6z/2wh3uDtc2W2pA/jP50isD6kMM8QmZRToAg19TdNuanyl3iSMG5oV30EXw2C
+	oiF89daYqp6tfZw+QbHQxm5qv5Ovq4HeaKgVNYEIqvb9+W3Pm0p2lNyuZ5rbw3MBEcvyyZEz/SRZp
+	nKAwszwbaN49T11P9Deuta+c5V5ru1y2mRaZ4IuoPOvwskNmsinW5f205z0Fgk85SiUIS8aDlayHb
+	EfaXLz7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouXpH-000Scv-J0; Mon, 14 Nov 2022 11:40:31 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ouXqU-000TFU-3P; Mon, 14 Nov 2022 11:41:46 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouXp2-000SQj-W9; Mon, 14 Nov 2022 11:40:19 +0000
+	id 1ouXqP-000TCl-L0; Mon, 14 Nov 2022 11:41:43 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 42904B80E6C;
-	Mon, 14 Nov 2022 11:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25EECC433D6;
-	Mon, 14 Nov 2022 11:40:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1668426013;
-	bh=GT3VZNYIhMGDOg7rLWaUnnZ1FVKV70ahkY/v86oWAWo=;
+	by ams.source.kernel.org (Postfix) with ESMTPS id 052FBB80E6C;
+	Mon, 14 Nov 2022 11:41:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77942C433B5;
+	Mon, 14 Nov 2022 11:41:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668426098;
+	bh=6D6hVNiZU/7ohRvqBuzhJil3F0K7wsJf9shuuz0C8mY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QemPfybwnr41UjfgwuxeYtmf7ZurGLUDrh0ptjCeQ2t5fUdWWqP9Tjxv3XP+g38HB
-	 aPnFMxWeI9Tga8KrWqKV7tFGdQLt7QpL5s9MmAi+dWIoTxfL7W5d8t8aXAH/2aDn2u
-	 YRmM9210+LfyEsJXKkKNXsJ8fXI13RGmIEEnMQGI=
-Date: Mon, 14 Nov 2022 12:40:10 +0100
-From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-To: Haozhe Chang =?utf-8?B?KOW4uOa1qeWTsik=?= <Haozhe.Chang@mediatek.com>
-Cc: "stephan@gerhold.net" <stephan@gerhold.net>,
-	"oneukum@suse.com" <oneukum@suse.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
-	"linuxwwan@intel.com" <linuxwwan@intel.com>,
-	"m.chetan.kumar@intel.com" <m.chetan.kumar@intel.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Hua Yang =?utf-8?B?KOadqOWNjik=?= <Hua.Yang@mediatek.com>,
-	"chiranjeevi.rapolu@linux.intel.com" <chiranjeevi.rapolu@linux.intel.com>,
-	Haijun Liu =?utf-8?B?KOWImOa1t+WGmyk=?= <haijun.liu@mediatek.com>,
-	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"loic.poulain@linaro.org" <loic.poulain@linaro.org>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
-	"chandrashekar.devegowda@intel.com" <chandrashekar.devegowda@intel.com>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"shangxiaojing@huawei.com" <shangxiaojing@huawei.com>,
-	Lambert Wang =?utf-8?B?KOeOi+S8nyk=?= <Lambert.Wang@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"ricardo.martinez@linux.intel.com" <ricardo.martinez@linux.intel.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Xiayu Zhang =?utf-8?B?KOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>
-Subject: Re: [PATCH v3] wwan: core: Support slicing in port TX flow of WWAN
- subsystem
-Message-ID: <Y3IpGs0SFSgvS0kw@kroah.com>
-References: <20221111100840.105305-1-haozhe.chang@mediatek.com>
- <Y25j7fTdvCRqr26k@kroah.com>
- <82c8728b0b0b20c7da4e25642e90de27af52feca.camel@mediatek.com>
+	b=l8RMPVQphsi+/fPvPr9IrVDIsMPl//vBLf9NcA6X3/XOxJojhCVkdF2dtyB8K/lfM
+	 JcKrg9YNEMLhjqHUoaf48h4lwpthX8yNJct4MML0FydlurOis/xXInTPNnpCFvac8Q
+	 3pyHAC04Y6v48EI+N7spU5Arf+W9b7FyrNbelo9/RSfwWpOhvEZF+ybQsgkHPz8Fvx
+	 sy0La28rWToC+HUMKWQGuv7qLidhktM8MPsiiCaeNAGlw2e3G4fPTB4OnX/LQtMYe+
+	 8KwHeABAicXCXDvTMKgRKiqO6LzF8Sm+U8ESE8JPDL/5IXRBaeJYtPeHv7sCBwkqM+
+	 OXwBVl8HYginQ==
+Date: Mon, 14 Nov 2022 19:41:04 +0800
+From: Shawn Guo <shawnguo@kernel.org>
+To: Pierre Gondois <pierre.gondois@arm.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Brijesh Singh <brijeshkumar.singh@amd.com>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Tom Lendacky <thomas.lendacky@amd.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	William Zhang <william.zhang@broadcom.com>,
+	Anand Gore <anand.gore@broadcom.com>,
+	Kursad Oney <kursad.oney@broadcom.com>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Li Yang <leoyang.li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, Chester Lin <clin@suse.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Matthias Brugger <mbrugger@suse.com>,
+	NXP S32 Linux Team <s32@nxp.com>, Wei Xu <xuwei5@hisilicon.com>,
+	Chanho Min <chanho.min@lge.com>, Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Jisheng Zhang <jszhang@kernel.org>, Nishanth Menon <nm@ti.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tero Kristo <kristo@kernel.org>,
+	Viorel Suman <viorel.suman@nxp.com>,
+	Abel Vesa <abelvesa@kernel.org>,
+	Shenwei Wang <shenwei.wang@nxp.com>,
+	Shijie Qin <shijie.qin@nxp.com>, Ming Qian <ming.qian@nxp.com>,
+	Peng Fan <peng.fan@nxp.com>, Adam Ford <aford173@gmail.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Tim Harvey <tharvey@gateworks.com>, Li Jun <jun.li@nxp.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Joakim Zhang <qiangqing.zhang@nxp.com>,
+	Markus Niebel <Markus.Niebel@ew.tq-group.com>,
+	Marek Vasut <marex@denx.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Martin Kepplinger <martink@posteo.de>,
+	David Heidelberg <david@ixit.cz>, Liu Ying <victor.liu@nxp.com>,
+	Oliver Graute <oliver.graute@kococonnector.com>,
+	Zhou Peng <eagle.zhou@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
+	Ahmad Fatoum <a.fatoum@pengutronix.de>,
+	Clark Wang <xiaoning.wang@nxp.com>, Jacky Bai <ping.bai@nxp.com>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	Vadym Kochan <vadym.kochan@plvision.eu>,
+	Sameer Pujar <spujar@nvidia.com>,
+	Prathamesh Shete <pshete@nvidia.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Akhil R <akhilrajeev@nvidia.com>, Sumit Gupta <sumitg@nvidia.com>,
+	Diogo Ivo <diogo.ivo@tecnico.ulisboa.pt>,
+	Vidya Sagar <vidyas@nvidia.com>, Ashish Mhetre <amhetre@nvidia.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Aswani Reddy <aswani.reddy@samsung.com>,
+	Shashank Prashar <s.prashar@samsung.com>,
+	Ajay Kumar <ajaykumar.rs@samsung.com>, devicetree@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+	linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-realtek-soc@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 08/23] arm64: dts: Update cache properties for
+ freescale
+Message-ID: <20221114114104.GX2649582@dragon>
+References: <20221107155825.1644604-1-pierre.gondois@arm.com>
+ <20221107155825.1644604-9-pierre.gondois@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <82c8728b0b0b20c7da4e25642e90de27af52feca.camel@mediatek.com>
+In-Reply-To: <20221107155825.1644604-9-pierre.gondois@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_034017_352782_32DB79E0 
-X-CRM114-Status: GOOD (  36.90  )
+X-CRM114-CacheID: sfid-20221114_034142_004957_22475D49 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,101 +167,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 14, 2022 at 11:23:19AM +0000, Haozhe Chang (常浩哲) wrote:
-> Hi Greg Kroah-Hartman
+On Mon, Nov 07, 2022 at 04:57:01PM +0100, Pierre Gondois wrote:
+> The DeviceTree Specification v0.3 specifies that the cache node
+> 'compatible' and 'cache-level' properties are 'required'. Cf.
+> s3.8 Multi-level and Shared Cache Nodes
+> The 'cache-unified' property should be present if one of the
+> properties for unified cache is present ('cache-size', ...).
 > 
-> On Fri, 2022-11-11 at 16:02 +0100, Greg Kroah-Hartman wrote:
-> > On Fri, Nov 11, 2022 at 06:08:36PM +0800, haozhe.chang@mediatek.com
-> > wrote:
-> > > From: haozhe chang <haozhe.chang@mediatek.com>
-> > > 
-> > > wwan_port_fops_write inputs the SKB parameter to the TX callback of
-> > > the WWAN device driver. However, the WWAN device (e.g., t7xx) may
-> > > have an MTU less than the size of SKB, causing the TX buffer to be
-> > > sliced and copied once more in the WWAN device driver.
-> > > 
-> > > This patch implements the slicing in the WWAN subsystem and gives
-> > > the WWAN devices driver the option to slice(by frag_len) or not. By
-> > > doing so, the additional memory copy is reduced.
-> > > 
-> > > Meanwhile, this patch gives WWAN devices driver the option to
-> > > reserve
-> > > headroom in fragments for the device-specific metadata.
-> > > 
-> > > Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
-> > > 
-> > > ---
-> > > Changes in v2
-> > >   -send fragments to device driver by skb frag_list.
-> > > 
-> > > Changes in v3
-> > >   -move frag_len and headroom_len setting to wwan_create_port.
-> > > ---
-> > >  drivers/net/wwan/iosm/iosm_ipc_port.c  |  3 +-
-> > >  drivers/net/wwan/mhi_wwan_ctrl.c       |  2 +-
-> > >  drivers/net/wwan/rpmsg_wwan_ctrl.c     |  2 +-
-> > >  drivers/net/wwan/t7xx/t7xx_port_wwan.c | 34 +++++++--------
-> > >  drivers/net/wwan/wwan_core.c           | 59 ++++++++++++++++++++
-> > > ------
-> > >  drivers/net/wwan/wwan_hwsim.c          |  2 +-
-> > >  drivers/usb/class/cdc-wdm.c            |  2 +-
-> > >  include/linux/wwan.h                   |  6 ++-
-> > >  8 files changed, 73 insertions(+), 37 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/wwan/iosm/iosm_ipc_port.c
-> > > b/drivers/net/wwan/iosm/iosm_ipc_port.c
-> > > index b6d81c627277..dc43b8f0d1af 100644
-> > > --- a/drivers/net/wwan/iosm/iosm_ipc_port.c
-> > > +++ b/drivers/net/wwan/iosm/iosm_ipc_port.c
-> > > @@ -63,7 +63,8 @@ struct iosm_cdev *ipc_port_init(struct iosm_imem
-> > > *ipc_imem,
-> > >  	ipc_port->ipc_imem = ipc_imem;
-> > >  
-> > >  	ipc_port->iosm_port = wwan_create_port(ipc_port->dev,
-> > > port_type,
-> > > -					       &ipc_wwan_ctrl_ops,
-> > > ipc_port);
-> > > +					       &ipc_wwan_ctrl_ops, 0,
-> > > 0,
-> > > +					       ipc_port);
-> > 
-> > How is 0, 0 a valid option here?
-> > 
-> > and if it is a valid option, shouldn't you just have 2 different
-> > functions, one that needs these values and one that does not?  That
-> > would make it more descriptive as to what those options are, and
-> > ensure
-> > that you get them right.
-> > 
-> 0 is a valid option. 
-> frag_len set to 0 means no split, and headroom set to 0 means no 
-> reserved headroom in skb. 
+> Update the Device Trees accordingly.
 > 
-> Sorry, I can't understand why it's more descriptive, could you help
-> with more information? It seems to me that the device driver needs to
-> know what each parameter is and how to set them, and that process is
-> also required in your proposed solution - "with 2 different functions",
-> right?
+> Signed-off-by: Pierre Gondois <pierre.gondois@arm.com>
 
-When you see random integers in the middle of a function call like this,
-you then have to go and look up the function call to determine what
-exactly those values are and what is happening.  Using 0, 0 as valid
-values helps no one out here at all.
-
-While if the code said:
-	ipc_port->iosm_port = wwan_create_port(ipc_port->dev, port_type,
-						&ipc_wwan_ctrl_ops,
-						NO_SPLIT,
-						NO_RESERVED_HEADROOM,
-						ipc_port);
-
-
-or something like that, it would make more sense, right?
-
-Remember, we write code for people to read and understand and maintain
-it over time first, for the compiler second.
-
-thanks,
-
-greg k-h
+Applied, thanks!
 
