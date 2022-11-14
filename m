@@ -4,67 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B41FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 08:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4657BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 09:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=16ql8s7UXjz7QayRZm19LzIg6ERRvCYLZDA5lHE/kUI=; b=uoW9hCqZ3NmuPce39TuA5ws1li
-	7MOk32KHx500aiA4diNol5V7kZXuTMhMxScWjnZ09Zj5anPDQwDQ7Z/XFI992h7l9ZY6jSsy9u7XJ
-	ffScgyElgLkd5s8zm+0vzKlJdF0YPx8iD+pM8LHvO+f/jcMILEyZXAAzKakCn9rmhOkbhYzXpzEmn
-	IfzQPo6lH7XNqHXwGmEBFS16Iy/5dWAubSv7AYLjWE7MA5hZRx0F3J8K+uQdxVh0bo0aqg4CIOLIs
-	cKewAyXc0W9GViyczbZ1zJ3YeL2uhaWLrFrHnGrkBWNMNc6YM0KhzqlQL+Uu30wcvrgqtI9V1KzRX
-	NxeP5V6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0Sg9d40Iyhsxnl4XA0r15nKc3FEvDOkUcLrGdwE3PJ8=; b=DzLhpvzgPeBZHU/MwJuw0VcLHY
+	+rBfUIJgRengU0yeywQuhTxy2FnXqrW7DOEkvcxJw/cKGwNCFFbwEMQax8zuCrm485F/tVOowKzso
+	piG0NlDhob15IqgeRB9nRUtFrq/z19ia6JNOsy5q0gQHFbyHyhlgzWk+VzpYIQvE1t2BM+pcO3phm
+	RWgghu0wCqOKk1pT1ht6HhmAvOBjqogzaIfYP5Nkk5rqLwWEKre4Zh84yo5kKCF/J6aubDOEmx+uC
+	UW5ejyE61oq/Fp2MyO6v+ADJxfbUVvc46WnCjjvHRlorGT7TACHfv+gbCvJfC311Whjlm29GPP/Lz
+	lWfbh26Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouV5C-00Gumi-Ea; Mon, 14 Nov 2022 08:44:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ouVUN-00H6eB-Oj; Mon, 14 Nov 2022 09:10:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouV59-00Gujo-H4; Mon, 14 Nov 2022 08:44:44 +0000
-X-UUID: e7c19f23aef440aaa631a33b53c3fe5d-20221114
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=16ql8s7UXjz7QayRZm19LzIg6ERRvCYLZDA5lHE/kUI=;
-	b=ttFZPNcKo29ZvIlbZeKZbUTxeLqC1lGuSef9jhMhrtqKci8yvLH9AmeG0C/PDbLO1gdII++uOiwrGDiLudRfrcAFh2KDqYpDh61FioWL6CMcL/KjNcGekQRVRBBFNiSbapWwancHy0lhFejaW1YuSYd0cU1ftHTUdFx6c6+tTgc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f5c17a52-8062-4b09-829a-a49b540c09a9,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:d132aedd-c087-4fa8-aefb-7a0acf417f59,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e7c19f23aef440aaa631a33b53c3fe5d-20221114
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <bayi.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 561581450; Mon, 14 Nov 2022 01:44:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 14 Nov 2022 16:13:52 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 14 Nov 2022 16:13:46 +0800
-From: Bayi Cheng <bayi.cheng@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
-CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, bayi cheng
-	<bayi.cheng@mediatek.com>
-Subject: [PATCH v2] spi: spi-mtk-nor: Optimize timeout for dma read
-Date: Mon, 14 Nov 2022 16:13:27 +0800
-Message-ID: <20221114081327.25750-1-bayi.cheng@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1ouVPc-00H3SA-Br; Mon, 14 Nov 2022 09:05:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0AC7E60F67;
+	Mon, 14 Nov 2022 09:05:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AA65C433C1;
+	Mon, 14 Nov 2022 09:05:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668416750;
+	bh=D7WS1/Iq9HsSGiJfZeeNpWeUbfN2wCTKHRwR1waF5b8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gu23KWX+hkd2VrW8L8cgRL+RvzQoNmHr4ZHYqyx7b9ggw62j+4gl+srj7mMWbYEWO
+	 eMq9AeoWeTXuHN/JCWdPJOC4s9/SfymP7ivydCT3Rc5lzvj0XxUfCGvOXg+FUovve3
+	 mBjFDbEU8fbv5pZjeBcZG4yoTG+UTWC2w0hMhrdGaf5jiuivlIjmg6M0icdu4BayDd
+	 QORZ6I5Y6XZL3p7KDrZaQgns3WiyBQD5S5uJ7AJ3isJBuf/JmKGDVf410NdJ4z5Krb
+	 lm/rhmS+2/v3szQ2Sg6geE8bZDNcFgYVQt+IzZj3PeuYYzaH8viYNnTeheDKRc95zq
+	 VsYSZrpR3L72Q==
+Date: Mon, 14 Nov 2022 09:05:34 +0000
+From: Lee Jones <lee@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Maxime Ripard <maxime@cerno.tech>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>, Daniel Vetter <daniel@ffwll.ch>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Shawn Guo <shawnguo@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Abel Vesa <abelvesa@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	Peter De Schrijver <pdeschrijver@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vinod Koul <vkoul@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Sekhar Nori <nsekhar@ti.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>, David Airlie <airlied@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	David Lechner <david@lechnology.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Mark Brown <broonie@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-clk@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	patches@opensource.cirrus.com, linux-tegra@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 35/65] clk: ux500: sysctrl: Add a determine_rate hook
+Message-ID: <Y3IE3ta8hLLUcu7H@google.com>
+References: <20221018-clk-range-checks-fixes-v2-0-f6736dec138e@cerno.tech>
+ <20221018-clk-range-checks-fixes-v2-35-f6736dec138e@cerno.tech>
+ <CAPDyKFoycVedCJMy0=UK+q5SiPQHqje_8bSN-gdkpBa6KhFfkg@mail.gmail.com>
+ <CACRpkdYOj8uozJZO4MV-_OAKeOsQHhoEM=PyynVuNY-JkpgTOw@mail.gmail.com>
+ <CAPDyKFr6VeF3s47JfzJ9urtMsEem+GiBtHeU=_S8jNaz-D+qnw@mail.gmail.com>
+ <CACRpkdb8uYfs6w99FVjD_t6nZgDhPUx=yB1j=CmpHTHAM2QGQw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <CACRpkdb8uYfs6w99FVjD_t6nZgDhPUx=yB1j=CmpHTHAM2QGQw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_004443_596944_1BB36624 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20221114_010552_524881_E3E4F38D 
+X-CRM114-Status: GOOD (  37.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +124,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bayi cheng <bayi.cheng@mediatek.com>
+On Fri, 11 Nov 2022, Linus Walleij wrote:
 
-The timeout value of the current dma read is unreasonable. For example,
-If the spi flash clock is 26Mhz, It will takes about 1.3ms to read a
-4KB data in spi mode. But the actual measurement exceeds 50s when a
-dma read timeout is encountered.
+> On Thu, Nov 10, 2022 at 2:05 PM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> > On Thu, 10 Nov 2022 at 12:39, Linus Walleij <linus.walleij@linaro.org> wrote:
+> > >
+> > > On Thu, Nov 10, 2022 at 12:29 PM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> > > > On Fri, 4 Nov 2022 at 14:32, Maxime Ripard <maxime@cerno.tech> wrote:
+> > > > >
+> > > > > The UX500 sysctrl "set_parent" clocks implement a mux with a set_parent
+> > > > > hook, but doesn't provide a determine_rate implementation.
+> > > > >
+> > > > > This is a bit odd, since set_parent() is there to, as its name implies,
+> > > > > change the parent of a clock. However, the most likely candidate to
+> > > > > trigger that parent change is a call to clk_set_rate(), with
+> > > > > determine_rate() figuring out which parent is the best suited for a
+> > > > > given rate.
+> > > > >
+> > > > > The other trigger would be a call to clk_set_parent(), but it's far less
+> > > > > used, and it doesn't look like there's any obvious user for that clock.
+> > > >
+> > > > If I recall correctly, that is the use case we did target for these
+> > > > types of clocks. See sound/soc/ux500/ux500_ab85xx.c, for example.
+> > >
+> > > Hm I am trying to get that driver to work ... from time to time.
+> > > It's just that ALSA SoC DT has changed to much that it turns out
+> > > into a complete rewrite :/
+> > >
+> > > So in sound/soc/ux500/mop500_ab8500.c
+> > > I see this:
+> > >
+> > >         status = clk_set_parent(drvdata->clk_ptr_intclk, clk_ptr);
+> > >         if (status)
+> > > (...)
+> > >
+> > > and there is elaborate code to switch between "SYSCLK" and
+> > > "ULPCLK" (ulta-low power clock). Just like you say... however
+> > > a clock named SYSCLK or ULPCLK does not appear in the
+> > > code in drivers/clk/ux500 or any DT bindings so... it seems to
+> > > be non-working for the time being.
+> >
+> > It's definitely not working, but the corresponding clocks ("ulpclk",
+> > "intclk", "audioclk", etc) are being registered in ab8500_reg_clks().
+> >
+> > What seems to be missing is a DT conversion for these clocks, so they
+> > can be consumed properly. Right?
+> 
+> Yeps that and a few more things, I have a scratch rewrite here:
+> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-stericsson.git/log/?h=ux500-audio-rewrite
+> 
+> I remember Lee said he had audio working with the mainline kernel
+> on Snowball at one point, unfortunately I think that was before we
+> started with the DT conversions and then we probably broke it.
 
-In order to be more accurately, It is necessary to use usecs_to_jiffies,
-After modification, the measured timeout value is about 130ms.
+That was also 100 years ago. :)
 
-Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
----
-Change in v2:
-  -Change the type of "timeout" from ulong to u32.
-  -Replace max_t with max.
-  -Replace msecs_to_jiffies with usecs_to_jiffies.
----
----
- drivers/spi/spi-mtk-nor.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+But yes, it used to work at one point.
 
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index d167699a1a96..58eca18b28b0 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -354,7 +354,7 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
- 			    dma_addr_t dma_addr)
- {
- 	int ret = 0;
--	ulong delay;
-+	u32 delay, timeout;
- 	u32 reg;
- 
- 	writel(from, sp->base + MTK_NOR_REG_DMA_FADR);
-@@ -376,15 +376,16 @@ static int mtk_nor_dma_exec(struct mtk_nor *sp, u32 from, unsigned int length,
- 	mtk_nor_rmw(sp, MTK_NOR_REG_DMA_CTL, MTK_NOR_DMA_START, 0);
- 
- 	delay = CLK_TO_US(sp, (length + 5) * BITS_PER_BYTE);
-+	timeout = (delay + 1) * 100;
- 
- 	if (sp->has_irq) {
- 		if (!wait_for_completion_timeout(&sp->op_done,
--						 (delay + 1) * 100))
-+		    usecs_to_jiffies(max(timeout, 10000U))))
- 			ret = -ETIMEDOUT;
- 	} else {
- 		ret = readl_poll_timeout(sp->base + MTK_NOR_REG_DMA_CTL, reg,
- 					 !(reg & MTK_NOR_DMA_START), delay / 3,
--					 (delay + 1) * 100);
-+					 timeout);
- 	}
- 
- 	if (ret < 0)
 -- 
-2.25.1
-
+Lee Jones [李琼斯]
 
