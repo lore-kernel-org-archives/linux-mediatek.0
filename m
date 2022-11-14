@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FECFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 12:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF1EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Nov 2022 12:10:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v0Chla6FrbvsRj/V7o93Jwb0K9dJDq2Z+82QL/7CPMc=; b=GNY3c3s56j0vKAF3PXgZCOhdry
-	BbhB4ACQxrlL5n8KuCRbLq9RoaM+Nm9xetPGJTB8piPZdlZY5W9HP9LDPu3xxteD0x1BgLa1BBMjY
-	sRhzTXGhy03CedXsIK7F5XNm4jPQDonbKTLgJRywdWVAmIwFpRsCFdWtUoRwND6xFquACP7KQO8hn
-	WGWIqkGkduH/51nNk0uidaGMRsAU5kZxx9p8gSQA5CC2TGfOJMcIqxELEBW8Bvs05+fodmejwojEJ
-	ccrMInfxwEv4+enjrFDnpAEh74mbCmQm/GP1725Ooch5GiOo+S9pabTGSzGUR8nSNxJ04yU2ch1sE
-	Yz2dD59A==;
+	bh=IuJ7yuL/ZabeLcqysch/6yWhUBuUv1uihLVJExawXRc=; b=qDEjtLkYzjuCe2Sy6XkZrDqTYu
+	Aa4eodCTb6MzQKS3bJAnZkjcOc/FPbkXbrdQn/bMAyy83jBwr7MRIcQW9U8PHGfaG6tXh7jgtkFCl
+	9DJfqFjKZv1RuS6jh5AEw/Psc2nj/+JgDsAY7HlvNfQIGjIiqriugwlbzb4EkhanH7+B1yB9AZ+uK
+	c2EhkFOF0YDkgez0qyVUg5M6ZBYQKQSgLZJmHEuOy8O0RJGJlji3s6drH6Tc1uOxdloncA/gt8qiT
+	5Jt8oNpwhzI9CC5TEfJ0s0JwZEMBMzNgHArqtf/SzCFpIV3h+s02knqs2BVAiqYVVMJpcjHk/bmlV
+	OiGVWSCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYFx-000gsw-BU; Mon, 14 Nov 2022 12:08:05 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1ouYIL-000hyQ-D0; Mon, 14 Nov 2022 12:10:33 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouYFj-000gp7-Up; Mon, 14 Nov 2022 12:07:53 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id h9so17855525wrt.0;
-        Mon, 14 Nov 2022 04:07:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=v0Chla6FrbvsRj/V7o93Jwb0K9dJDq2Z+82QL/7CPMc=;
-        b=NU0DJYEl7x+p33l8H4eTIkVmbzTGMYwmrBWF0JqU20kwNL3WwShZM0I+Zt9PxTbTpV
-         pIzqiwqouRIu55CvOpCYY1aM0/IozRM8SfvVIwNwHc73WpvVU4lM+MSKKCz7bd5cP1c1
-         1J2aZ498vCXxcvDy82NnXgOWozRCNxPNIpAjePwdF9RrvS0dsx3s/k2OqhjTdFL3R2Jc
-         GKTrAgzquYBlo++pdyHo2Y0aith7l0OsWRkdAt+/Nys9a6+NLSiLqFt8BN9aG2XmbIJd
-         mSaWVfkytWAL8DZ5/GSE9+MLJB2sHKciVe1yRPCPmfgLKFhX6Ksm2TP9PhMqS0jlnEc5
-         9cEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=v0Chla6FrbvsRj/V7o93Jwb0K9dJDq2Z+82QL/7CPMc=;
-        b=QKIC7dEpjud9nX7ypqN7aAVY3LkYNVJ6i2pMQjaIcgj93p1Ar3fMevRLhigExrTWMN
-         pwJkxCrHuI3FdQImwjdiX8eudfwdZq7wVZqXqH4jFucivK/xpMpRQNZ2BbFnueYS0MCe
-         pLWm6g9Mr5ftZdOof3fjmUR4XPZwLI24geYbtAnz15KyWVQ1yzbN2TQob0tLz0X4Ce2N
-         RzC4sPNr4vk/qrUgu/tG/TduHCeB3JF1RcqgZevada17rNK2NaFpcW9g+pIUbnv+wVLZ
-         aCpLMRE0DoJyLTu0xaQDwWy7fYQrDeEDqp+u9EZHV059jJ9JiSNqhOcPrOdEaNpr2LOp
-         kGhw==
-X-Gm-Message-State: ANoB5pmpCS966P7o5fj0lYSAK0dmEPm8B4t434t6zwaDBYau+ByNr2au
-	GyQCogamqJCoYSTfrDXYc7Y=
-X-Google-Smtp-Source: AA0mqf48iZU6uRKsDDAM/vO3CslLT70Dh+24sB8ylByYPvNix4AxyR3/oAJb9j7gwCPlcvP+hZYcPw==
-X-Received: by 2002:a5d:4110:0:b0:236:7cdb:3c8b with SMTP id l16-20020a5d4110000000b002367cdb3c8bmr7165739wrp.280.1668427670067;
-        Mon, 14 Nov 2022 04:07:50 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id o15-20020a05600c510f00b003c6d21a19a0sm13684389wms.29.2022.11.14.04.07.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Nov 2022 04:07:48 -0800 (PST)
-Message-ID: <7d674c0c-4cff-d142-225d-80c3309a57ec@gmail.com>
-Date: Mon, 14 Nov 2022 13:07:47 +0100
+	id 1ouYI9-000ht8-VF; Mon, 14 Nov 2022 12:10:23 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 49C74660231C;
+	Mon, 14 Nov 2022 12:10:19 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1668427820;
+	bh=dx8y/g3WohBsZ27OyP/AIlNklm8U3hPwF4o+Z1udj+w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SPQSPsXQeim5Y+H7GKLFPg1VcJM12PHQ1BjIEK2Orot+ACy1o7770oH1MTEZSjKi2
+	 OWiwwd7I2CKwIYBWTACopUjBDtj5F/Sq93OyjHKTexT2kj7Y0w8vZvLkqXNDi/39f0
+	 QZInlaHGvJRQHlSUD3gi+8eRwXuf8p6WlZ/OhpWIwyXyCqrYqZdWPYeq2TZDSjI2wX
+	 Z+Q5gLZWeRud6JugoP+kPQP0XbuYARgS11EEqm6PY1NnfFLcKld3l/iJjTHDdBtcag
+	 iCriPiysO3ZxCiV0FzsMlQR89yKZrqOtGu3rQnO8HeZe6rnCKvjzLI9EGzL0O5FKfg
+	 QEqEVMizPky7g==
+Message-ID: <288b510c-1ff3-ddad-1e80-dfe3de4b2a84@collabora.com>
+Date: Mon, 14 Nov 2022 13:10:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2] soc: mediatek: Add deprecated compatible to mmsys
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v4 10/11] arm64: dts: mt7986: add Bananapi R3
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Bo Jiao <Bo.Jiao@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
+References: <20221112091518.7846-1-linux@fw-web.de>
+ <20221112091518.7846-11-linux@fw-web.de>
+ <ee410f80-1697-6146-9755-981f2d45e88f@collabora.com>
+ <A22EB676-EBD4-4E07-8E8F-BC200EDBCE1A@fw-web.de>
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- matthias.bgg@kernel.org, nancy.lin@mediatek.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221111082912.14557-1-matthias.bgg@kernel.org>
- <46c17d4b-d130-86a7-b5f8-73c30d7fdfdd@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <46c17d4b-d130-86a7-b5f8-73c30d7fdfdd@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <A22EB676-EBD4-4E07-8E8F-BC200EDBCE1A@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221114_040752_056414_692D3B1A 
-X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-CacheID: sfid-20221114_041022_172083_7D2B16DA 
+X-CRM114-Status: UNSURE (   8.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,20 +87,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 14/11/2022 12:58, AngeloGioacchino Del Regno wrote:
-> Il 11/11/22 09:29, matthias.bgg@kernel.org ha scritto:
->> From: Matthias Brugger <matthias.bgg@gmail.com>
+Il 14/11/22 13:03, Frank Wunderlich ha scritto:
+> Am 14. November 2022 12:50:40 MEZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>> Il 12/11/22 10:15, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> +/ {
+>>> +	model = "Bananapi BPI-R3";
+>>> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
 >>
->> For backward compatibility we add the deprecated compatible.
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>> You have to add the machine compatible to devicetree/bindings/arm/mediatek.yaml
+>> or you get dtb check issues.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Have already:
 > 
-> ...And tested on MT8195 Cherry Chromebook.
+> https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v6.1-next/dts64&id=8c80453864efea0a0ed5ca2b399fd97f2f55a5ae
 > 
 
-Applied, thanks for testing!
+Sorry, had missed that one.
+
+In this case:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
