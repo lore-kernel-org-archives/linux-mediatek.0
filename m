@@ -4,82 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DB9C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 16:50:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D63C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 19:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0pHXTN5UXRyh8g53m06aJ1O4pdRE+ZlKdzDpUzPXnA=; b=xVFfE1OWX3JBFrWsRQ5obPlLqn
-	w4NCvSaqtaUNgnG2sj86/kXHBVPZ6JojbuZ7950a07bjdPUjsHtIbQMziHoKBvAdpLhTqf7ZUbmsz
-	tWQpNGTpjpetgifI3Hg2B9rSQGLJUd8TNCssuqA8whf5EwLkTmKKVm2tBUO/sTfAkzmdH4iJ8En0M
-	yCZAVlbrhSjzecmHM8yiz+V2ZQlvZberN3jZcRJ8QBWeazWvR4hu9tvEuicpsmenSCihK02yRGijI
-	RyXYNioc8MEUQGm8JwbwXV3D4d5TH6HfEKmHjgQp4tAt0Wz/C8EH3RupsSvKKjjD8VY89OufZIL/c
-	sMektDSA==;
+	bh=8ycYa0l03y2Xy+lTC9umglVnxHlMT3eNSgIFIhpuUdo=; b=IG9L0o5KwRIFxuxYAGMImPgMed
+	1rhfelxenIL9oNSactZAgjxOQRSjwc9/BgtpMxiGmUm032u/0a8ZadbUs790gPdm6PmHwsTvHuMIJ
+	Yk9B8Aq3dnuiOnYvYePx17+yQrECm9we4mI6QIDGBOzLfKXmAdaLyTWp/p33TER++tHDkSkBPPvXe
+	ayxrpMCnEyxKiC7vf7H/D8B6ISLuTaUCR6CF/q5tNAnaO1oZYY92m+Y5ZnV/+F7888UzNWDdM92Oy
+	4tyKfqr8TNiwKD1hX/SviPCE16u76lny+hGAREtTB4o7Vu8syWe/GxhsNYugDBHZFkxB6apbgXrKp
+	oWnVC78w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouz8i-00DEht-L2; Tue, 15 Nov 2022 16:50:24 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1ov21B-00ERk2-Ah; Tue, 15 Nov 2022 19:54:49 +0000
+Received: from mail1.systemli.org ([2a11:7980:3::36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouz8f-00DEek-6U; Tue, 15 Nov 2022 16:50:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668531009;
-	bh=8KBr+dIwP/E3nNmJhfiOtBZ1JSdlPyiU8UUhwKa1DSs=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=qOrFoIcZd8TjeDnJMhYqAJrSVirE4ig1f8tkGTZeV7s4nLlfwNpLhrPKgB2tIa5F+
-	 KUnSgPvx67kWVZF3ykn/VtwSVYpTsYm/bZ8ZcvW49J74zNcJSn1eMrM0+FudsjbimW
-	 6Bm2WtmBrvPoorwfiAh1W+AZ6wUt49YxlvJjcMufpCiCPCq7cGx00khkPR9hzPlncb
-	 u1XJ33Wb1RjbwJlJfQO2svUSzaG+2A+UkRy8a7WFj6eMssVWz9rveTXm6TTkWbmbLJ
-	 T9CcN6PcMZBApL3InbW75d98eBRUEYDB8OTnXvbGsrZZPikw5ByBeElqsi9SdiLVmA
-	 4Lem90/JQuFLQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.148.186] ([217.61.148.186]) by web-mail.gmx.net
- (3c-app-gmx-bs03.server.lan [172.19.170.52]) (via HTTP); Tue, 15 Nov 2022
- 17:50:09 +0100
+	id 1ov20z-00ERgT-0c; Tue, 15 Nov 2022 19:54:39 +0000
+Message-ID: <bf8d2a8f-7654-29be-1104-a842c6657b5e@systemli.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
+	s=default; t=1668541490;
+	bh=8ycYa0l03y2Xy+lTC9umglVnxHlMT3eNSgIFIhpuUdo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Qx9AQKBJMTw172ansrvl8rdCaXJZDz8n1dim4r1ghWqbryDa2A+mdZNpTv4AnTFSH
+	 VbWDdGoLCPzsaAEYH8LM83yJFw0qwRvlyKkOcNDgZCetKK6TkXkrB+KZnI1Gao34mL
+	 9LTzpsKtZJTS0wSUUTHocxJBuJuKZz+XP9A6ksIbdQl0ax2mm14JdqfjgxP9lO/jzK
+	 PpTqUJFib0ElGgN6nnNPdPhsTvYYQ1M6YhKNFtRtiE1zteHegeyBLULOpsqbPgRNMQ
+	 paGXxwWmo1bzVfOv++XNRCjMVn9r6x5OOOP7peVGTfLw3xRX/pMv9uVks7nYjY1JML
+	 bomuTrzr4deJQ==
+Date: Tue, 15 Nov 2022 20:44:47 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-8aa3b798-0819-43e6-beef-f04dd821b664-1668531009359@3c-app-gmx-bs03>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Aw: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor
- overlays
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 15 Nov 2022 17:50:09 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
-References: <20221106085034.12582-1-linux@fw-web.de>
- <20221106085034.12582-12-linux@fw-web.de>
- <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:SQl+29+ImbUvKrSPHRXSWUbo2yuDKo4wgq4m9hI8/KdxHmt0dogqarVIDiBshOyUXu6KS
- PVlVkWH6vY85K4YqnQXo2XT5Y3b3MLWUsTTXAZorsBUMVCfJGv80gM0vdUzA0G5wNbhWH8S4RFa3
- xNHO8TVrsCFDhdGCQoxzMGA9MIpgblcJWWK4IlpLN9li2e6seCu5fLwYVwfsyt/rCa1h9F5IV5mM
- AXdg15jEhGJ512Ne6Wrw5i2PpexmhPHrvzieQbd397gnvz5L6868jlRWij68CNycqRrNZQZUCCxG
- TQ=
-UI-OutboundReport: notjunk:1;M01:P0:mgoznSFtpkg=;qZru3duK4QSUWnNUEd/j4FW8s7z
- edoRdzgUFm8wr6wNkYtomyHg/m60LnXYJ9/xoSmPYjER8U9qCMkmt7m8v88O6AEQ60V0dWyet
- NA/YlkLL5w7n19/QqKBg9cZ887F4/1SLyfH3yXKviNTGcCFfmlQgr3LEozE7otAmJPSJci30i
- facc5D63urBbv1cs68BxsfcGWr8dVF/vvSev1C35090PUJ5+Kao25OppMqGJi6MmUJosAv8O9
- wNx87WAjjRQjI8QLkVBb0xinAvihij2RQoVwzdQtY/5Uhs1gQDmTOqHpvLQ0kYhCy3vtvTeDz
- xapdJzZ4phJ0J4THheYYlGUJ2MYlZ5WXoXbe7EFP2XHoaAMbNEmvBz4mRljHepi+YzQhQnR3h
- 6aogZwbh1y8MIX7kcDLwZyosJTZ9efJZqvXrErB0TZLPNrzNRRZUCOIPv4MCPAH+dv/fCHsog
- 239+fAv9FoYTdZm9McbJWIm2Kv7llKTTM2ltWKP39I7rwZNOmaiGx55NQJal+pGgmwFbIBxtb
- Jw5KGSTWH1oyBjqlL4DRpbnVHZqH9tjXn8z9JuPW6u/h9enb9KRidp4v88qHoa23XmB5p3mCI
- ru9Xt+h+yQ92jX2ZCbZ5CN6VmZyW/IWFQYQDe2jxXj6TLfnGkFeXaKgvlHQQ0QmZS6fIfP48j
- HymSdaiiSBmZGOMvVjjMPVIRfvsuR/z+85052gIfx7FXvUWBFCF36Ihb3g0eYPndYDWIML4wG
- ZHigqdfpk6W2+frrOqmOHHtlUIHzv2/xl1VLgctEuVpEmTZ8wQjLDyzug08VCfQlGWnObOM8F
- /QWuP/yKK/9ZUg/9ziLUnvDw==
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
+ mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
+Content-Language: en-US
+To: Matthias Brugger <matthias.bgg@gmail.com>, jia-wei.chang@mediatek.com,
+ rex-bc.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
+ viresh.kumar@linaro.org, Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Daniel Golle <daniel@makrotopia.org>,
+ =?UTF-8?Q?H=c3=bchn=2c_Thomas?= <thomas.huehn@hs-nordhausen.de>
+References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+ <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
+From: Nick <vincent@systemli.org>
+In-Reply-To: <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_085021_648829_10311274 
-X-CRM114-Status: GOOD (  19.14  )
+X-CRM114-CacheID: sfid-20221115_115437_230199_8CDE321F 
+X-CRM114-Status: GOOD (  18.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,77 +71,261 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi,
+I used now the linux-next kernel tree (with 
+https://patchwork.ozlabs.org/project/linux-mtd/list/?series=327227 so 
+single uImage.FIT will work). Same issue:
 
-
-> Gesendet: Freitag, 11. November 2022 um 10:16 Uhr
-> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
-> An: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
-.org, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozlowski" <krzysztof=
-.kozlowski+dt@linaro.org>
-> Cc: "Frank Wunderlich" <frank-w@public-files.de>, linux-arm-kernel@lists=
-.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-> Betreff: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor over=
-lays
+> [ 0.886209] Kernel BUG at regulator_check_voltage+0xb0/0xf0 [verbose 
+> debug info unavailable]
 >
-> Rob, Krzysztof,
+> [ 0.894663] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
 >
-> On 06/11/2022 09:50, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add devicetree overlays for using nand and nor on BPI-R3.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
-> >   .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 53 +++++++++++++++
-> >   .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 67 +++++++++++++++++=
-++
-> >   3 files changed, 122 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi=
--r3-nand.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi=
--r3-nor.dts
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
-ts/mediatek/Makefile
-> > index e8902f2cc58f..d42208c4090d 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-x20-dev.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-rfb1.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-bananapi-bpi-r64.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
+> [ 0.900759] Modules linked in:
 >
-> Do we allow the inclusion of overlays in the kernel?
-> I don't think so. I see there are some dtbos for some freescale platform=
-s, but I
-> wasn't aware that we support that. I thought it is all about dtsi includ=
-es.
+> [ 0.903819] CPU: 1 PID: 79 Comm: kworker/1:1 Tainted: G S 
+> 6.1.0-rc5-next-20221115+ #0
 >
-> @frank In any case we would need to apply these overlays to some base bo=
-ard to
-> create a valis dtb.
+> [ 0.904360] pstore: Using crash dump compression: deflate
+>
+> [ 0.913038] Hardware name: Bananapi BPI-R64 (DT)
+>
+> [ 0.913043] Workqueue: events dbs_work_handler
+>
+> [ 0.913056] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS 
+> BTYPE=--)
+>
+> [ 0.913063] pc : regulator_check_voltage+0xb0/0xf0
+>
+> [ 0.913070] lr : regulator_set_voltage_unlocked+0x88/0x110
+>
+> [ 0.913077] sp : ffffffc00cef3b30
+>
+> [ 0.913080] x29: ffffffc00cef3b30 x28: ffffff8006f6f800 x27: 
+> ffffff8006f6fa00
+>
+> [ 0.931243] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 ranges:
+>
+> [ 0.934474]
+>
+> [ 0.934475] x26: 00000000001312d0 x25: 0000000000000024
+>
+> [ 0.939298] mtk-pcie 1a143000.pcie: Parsing ranges property...
+>
+> [ 0.944730] x24: 0000000000118c30
+>
+> [ 0.948038] mtk-pcie 1a143000.pcie: MEM 0x0020000000..0x0027ffffff -> 
+> 0x0020000000
+>
+> [ 0.955155]
+>
+> [ 0.955157] x23: 0000000000149970 x22: ffffff8000861800 x21: 
+> ffffff8006f6f800
+>
+> [ 0.955166] x20: 00000000001312d0 x19: 0000000000000000 x18: 
+> 00000000cfad1bd3
+>
+> [ 0.955174] x17: 000000000000000c x16: 0000000000000005 x15: 
+> 0000000000000000
+>
+> [ 1.008473] x14: 0000000000000000 x13: 0000000000000165 x12: 
+> 0101010101010101
+>
+> [ 1.015608] x11: 00000000017d7840 x10: 0000000000000850 x9 : 
+> ffffffc00cef3900
+>
+> [ 1.017014] mmc0: new HS200 MMC card at address 0001
+>
+> [ 1.022740] x8 : ffffff8005ee9f30 x7 : 0000000000000001 x6 : 
+> 00000000001312d0
+>
+> [ 1.022748] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 
+> 0000000000000000
+>
+> [ 1.022756] x2 : ffffffc00cef3b68 x1 : ffffffc00cef3b6c
+>
+> [ 1.029034] mmcblk0: mmc0:0001 008G30 7.28 GiB
+>
+> [ 1.034833] x0 : ffffff8000861800
+>
+> [ 1.034838] Call trace:
+>
+> [ 1.044528] Alternate GPT is invalid, using primary GPT.
+>
+> [ 1.047175] regulator_check_voltage+0xb0/0xf0
+>
+> [ 1.052603] FIT: Selected configuration: "config-1" (OpenWrt 
+> bananapi_bpi-r64)
+>
+> [ 1.055090] regulator_set_voltage+0x3c/0x64
+>
+> [ 1.057539] FIT: kernel sub-image 0x00001000..0x005200f9 "kernel-1" 
+> (ARM64 OpenWrt Linux-6.1-rc2)
+>
+> [ 1.062824] mtk_cpufreq_voltage_tracking+0x12c/0x27c
+>
+> [ 1.062831] mtk_cpufreq_set_target+0x1c4/0x350
+>
+> [ 1.062837] __cpufreq_driver_target+0x2dc/0x660
+>
+> [ 1.067289] FIT: flat_dt sub-image 0x00521000..0x005272d9 "fdt-1" 
+> (ARM64 OpenWrt bananapi_bpi-r64 device tree blob)
+>
+> [ 1.074484] od_dbs_update+0xb8/0x19c
+>
+> [ 1.074490] dbs_work_handler+0x3c/0x7c
+>
+> [ 1.078774] FIT: filesystem sub-image 0x00528000..0x00829fff 
+> "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 rootfs)
+>
+> [ 1.088560] process_one_work+0x200/0x3a0
+>
+> [ 1.093624] mmcblk0: p1 p2 p3 p4 p65(rootfs-1) p66(rootfs_data) p128
+>
+> [ 1.098116] worker_thread+0x170/0x4c0
+>
+> [ 1.104575] mmcblk0boot0: mmc0:0001 008G30 4.00 MiB
+>
+> [ 1.114009] kthread+0xd4/0xe0
+>
+> [ 1.114016] ret_from_fork+0x10/0x20
+>
+> [ 1.114028] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
+>
+> [ 1.114033] ---[ end trace 0000000000000000 ]---
+> [ 0.878926] ------------[ cut here ]------------
+>
 
-yes of course, the "base board" is either the sd or the emmc fdt i added 1=
- patch before.
-This way it allows all 4 combinations (sd+nand, sd+nor, emmc+nand, emmc+no=
-r).
+Full log:
+https://gist.github.com/PolynomialDivision/4a555079887b288f4795b28eb3607aa9
 
-as i pointed in v4 of this Patch there is a commit in robs tree allow buil=
-ding dt overlays
-from dtso-files...
+Big thanks to Daniel helping me to build a vanilla kernel with OpenWrt 
+build system.
 
-"kbuild: Allow DTB overlays to built from .dtso named source files"
-    https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/=
-?h=3Ddt/next&id=3D363547d2191cbc32ca954ba75d72908712398ff2
+Bests
+Nick
 
-maybe this is the right way to go (rename my current dts to dtso)?
-
+On 11/10/22 12:26, Matthias Brugger wrote:
+> Hi Nick,
+>
+> On 09/11/2022 14:35, Nick wrote:
+>> Hi,
+>> while trying to bump OpenWrt Kernel to 6.1rc2 I noticed that the 
+>> kernel is crashing while booting on a Banana Pi R64 (MT7622):
+>>
+>>> [    1.055565] ------------[ cut here ]------------
+>>> [    1.060204] Kernel BUG at regulator_check_voltage+0xb0/0xf0 
+>>> [verbose debug info unavailable]
+>>> [    1.062418] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 
+>>> ranges:
+>>> [    1.068656] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
+>>> [    1.075248] mtk-pcie 1a143000.pcie: Parsing ranges property...
+>>> [    1.081257] Modules linked in:
+>>> [    1.081264] CPU: 1 PID: 328 Comm: kworker/1:7 Tainted: G 
+>>> S                 6.1-rc2 #0
+>>> [    1.087088] mtk-pcie 1a143000.pcie:      MEM 
+>>> 0x0020000000..0x0027ffffff -> 0x0020000000
+>>> [    1.090126] Hardware name: Bananapi BPI-R64 (DT)
+>>> [    1.110541] Workqueue: events dbs_work_handler
+>>> [    1.114988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS 
+>>> BTYPE=--)
+>>> [    1.121944] pc : regulator_check_voltage+0xb0/0xf0
+>>> [    1.126728] lr : regulator_set_voltage_unlocked+0x88/0x110
+>>> [    1.129638] mmc1: host does not support reading read-only switch, 
+>>> assuming write-enable
+>>> [    1.132207] sp : ffffffc00956bb30
+>>> [    1.132209] x29: ffffffc00956bb30 x28: ffffff8000efb400 x27: 
+>>> 0000000000000024
+>>> [    1.132219] x26: 00000000001312d0 x25: 0000000000118c30 x24: 
+>>> 00000000001312d0
+>>> [    1.132227] x23: 0000000000149970
+>>> [    1.146036] mmc1: new high speed SDHC card at address e624
+>>> [    1.150642]  x22: ffffff800038f800
+>>> [    1.159192] mmcblk1: mmc1:e624 SL16G 14.8 GiB
+>>> [    1.161068]  x21: ffffff8000efb100
+>>> [    1.161072] x20: 00000000001312d0
+>>> [    1.175424] GPT:partition_entry_array_crc32 values don't match: 
+>>> 0xa0b5ce6d != 0xab54d286
+>>> [    1.177757]  x19: 0000000000000000 x18: 00000000799b2550
+>>> [    1.181067] GPT:Primary header thinks Alt. header is not at the 
+>>> end of the disk.
+>>> [    1.189143] x17: 0000000000000003 x16: 0000000000000001 x15: 
+>>> 0000000000000000
+>>> [    1.189151] x14: 0000000000000000 x13: 0000000000000146 x12: 
+>>> 00000000fa83b2da
+>>> [    1.189159] x11: 000000000000013d x10: 0000000000000850
+>>> [    1.194472] GPT:305184 != 31116287
+>>> [    1.201842]  x9 : ffffffc00956b910
+>>> [    1.201846] x8 : ffffff8000b9edf0 x7 : 0000000000000001
+>>> [    1.208970] GPT:Alternate GPT header not at the end of the disk.
+>>> [    1.216092]  x6 : 00000000001312d0
+>>> [    1.216095] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 
+>>> 0000000000000000
+>>> [    1.216103] x2 : ffffffc00956bb68 x1 : ffffffc00956bb6c
+>>> [    1.221321] GPT:305184 != 31116287
+>>> [    1.224706]  x0 : ffffff800038f800
+>>> [    1.228095] GPT: Use GNU Parted to correct GPT errors.
+>>> [    1.233307]
+>>> [    1.233309] Call trace:
+>>> [    1.233312]  regulator_check_voltage+0xb0/0xf0
+>>> [    1.242680] FIT: Selected configuration: 
+>>> "config-mt7622-bananapi-bpi-r64-pcie1" (OpenWrt bananapi_bpi-r64 
+>>> with mt7622-bananapi-bpi-r64-pcie1)
+>>> [    1.242694]  regulator_set_voltage+0x3c/0x64
+>>> [    1.249831] FIT:           kernel sub-image 
+>>> 0x00001000..0x0052fd0a "kernel-1" (ARM64 OpenWrt Linux-6.1-rc2)
+>>> [    1.255030]  mtk_cpufreq_voltage_tracking+0x11c/0x26c
+>>> [    1.255039]  mtk_cpufreq_set_target+0x1c4/0x350
+>>> [    1.258444] FIT:          flat_dt sub-image 
+>>> 0x00530000..0x005380c5 "fdt-1" (ARM64 OpenWrt bananapi_bpi-r64 
+>>> device tree blob)
+>>> [    1.261820]  __cpufreq_driver_target+0x2f4/0x674
+>>> [    1.261826]  od_dbs_update+0xb8/0x19c
+>>> [    1.266969] FIT:          flat_dt sub-image 
+>>> 0x00539000..0x0053911a "fdt-mt7622-bananapi-bpi-r64-pcie1" (ARM64 
+>>> OpenWrt bananapi_bpi-r64 device tree overlay 
+>>> mt7622-bananapi-bpi-r64-pcie1)
+>>> [    1.268431]  dbs_work_handler+0x3c/0x7c
+>>> [    1.270883] FIT:          flat_dt sub-image 
+>>> 0x0053a000..0x0053a20f "fdt-mt7622-bananapi-bpi-r64-sata" (ARM64 
+>>> OpenWrt bananapi_bpi-r64 device tree overlay 
+>>> mt7622-bananapi-bpi-r64-sata)
+>>> [    1.275297]  process_one_work+0x200/0x3a0
+>>> [    1.287998] FIT:       filesystem sub-image 
+>>> 0x0053b000..0x00859fff "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 
+>>> rootfs)
+>>> [    1.292237]  worker_thread+0x170/0x4c0
+>>> [    1.292244]  kthread+0xd4/0xe0
+>>> [    1.302066] FIT: selecting configured loadable "rootfs-1" to be 
+>>> root filesystem
+>>> [    1.307092]  ret_from_fork+0x10/0x20
+>>> [    1.311631]  mmcblk1: p1 p2 p3 p4 p5 p6 p65(rootfs-1) 
+>>> p66(rootfs_data) p128
+>>> [    1.322903] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
+>>> [    1.413322] ---[ end trace 0000000000000000 ]---
+>> The complete log can be found here:
+>> https://gist.githubusercontent.com/PolynomialDivision/395d009c84b426d780549c5fa1f64ff1/raw/886d621d2bf6f03429586adf8a14a6c37c8d8a7d/mt7622-6-1.log 
+>>
+>>
+>> Reverting commit "cpufreq: mediatek: Refine 
+>> mtk_cpufreq_voltage_tracking()" fixes the kernel bug:
+>> https://github.com/torvalds/linux/commit/6a17b3876bc8303612d7ad59ecf7cbc0db418bcd 
+>>
+>>
+>> The revert commit can be found here:
+>> https://github.com/PolynomialDivision/openwrt/commit/1df941d0334000e3aced43b7d50cdac0da8bf427 
+>>
+>>
+>> The branch I use to build the 6.1rc2 on a Banana Pi R64 can be found 
+>> here:
+>> https://github.com/PolynomialDivision/openwrt/commits/bump-mt7622-rebase
+>>
+>
+> Thanks for the report.
+> Could you test with a plain upstream kernel? That would help us to 
+> verify that this is a upstream problem and not introduced by some 
+> openwrt patches.
+>
 > Regards,
 > Matthias
-
-regards Frank
 
