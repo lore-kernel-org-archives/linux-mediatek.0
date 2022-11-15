@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59871C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 13:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E7A1C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 13:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=83HRjZKoyBhiQsQuC/2fimMYvWtEYyPCZTwB6HczlYU=; b=nkoDouN0/rAtF43advovBKc1Vp
-	iJdA4kK0xXnNF6K2ao6Q9cP2Va69XTZBVIn5pvinb91jWsxZJ76sTZ1hKXdlhP64Kse0LSRZGeKx3
-	flDPIqqVOA4ML7xYPvo/q4H8SDZ+9x52dN/BpDCbL3xOabyRT8RTDXIsKSKlUoDUfbx02GphMti1t
-	zGBSiAnlvLAtyZlr3PCZkdcb18VEXdFeVEXq1z1JooUabEjvAgBdI5gMTM/8CoDFsMF7DAwgZSRQz
-	o9kdS5VbRAyGb9lUjL587VKQx/0PDEm+AvHhemmwOf3wRoTfr5ivhlJXjRFuGvMVUvGM/S7duhpnR
-	IybONs3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2tJo2LBnY1zBMYmoeYVZXODudXysjv47CHxMSezRhas=; b=L4L1mhQtQRYcrWn4hyvkuXw/cT
+	z9chnR5BY9yR7XDH8ndEO59ZP3aMNnGiY35WtDhBJnE35lRLoEoS5RwI4QMGeraF/bd1uft83C916
+	wTA7Ylr7MZrE/5PchpF0HLhNZFAZ8rOEMhisPZGftYVN2FOR8zMgqAmPm4bVM+3pVs7hDaCiKockH
+	ETKc/jX1i/Qi+E8IgXEq8PhZtQvfvMIMTOsUQxPJLmbVW2FGV0tDVzRZKDKHfCHNlM6Z8cb/+6dyF
+	44zwVEK885sQILsXeNQ5XOKDCozCW7RB6b5nEfihznhSPXgFlxY6y8UmvazF26Xc7gMxbj9ygeAv4
+	vByrKrBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouwK1-00BawV-Ry; Tue, 15 Nov 2022 13:49:53 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1ouwL4-00BcRe-4D; Tue, 15 Nov 2022 13:50:58 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouwJz-00BauG-5e
-	for linux-mediatek@lists.infradead.org; Tue, 15 Nov 2022 13:49:52 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id j4so24565321lfk.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Nov 2022 05:49:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=83HRjZKoyBhiQsQuC/2fimMYvWtEYyPCZTwB6HczlYU=;
-        b=U8aNfCV8mQrF6+8xUdV+q1DsV+b4rovI818ppeddszlbjp3ubxcnLzMH/ZKp/GV5CV
-         WqprIGc12o1WqT1enKPpTj+fFsbBNfFsRvFXB3A6iLwW0YjmguEY9dWOD91hoVQHja5N
-         bH+LMyA8vFfleHQJO2H0Su2/6fhpHECFf3GaxoSQ+Ki2VrRAICyhdymSGlVfvfjiwj9H
-         prrmSrf2iDSpt9owuBHRQg/LT4JczPXiMqNTtJEg+lPV7WvtzNkoKxbJ3KvnhAfBtuzE
-         ekUPmQdYhjp7nrd19MVz5LD253YiMUNvMvI4nGJrL5Job5/tpnfxr3uQbEwrJhZGqngA
-         nIiw==
+	id 1ouwL1-00BcNl-Ud; Tue, 15 Nov 2022 13:50:57 +0000
+Received: by mail-ot1-f45.google.com with SMTP id w26-20020a056830061a00b0066c320f5b49so8533996oti.5;
+        Tue, 15 Nov 2022 05:50:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=83HRjZKoyBhiQsQuC/2fimMYvWtEYyPCZTwB6HczlYU=;
-        b=rF43vuCKHlrqYlbHol19oo5mVAav+LQ0bCn4TEX9ml5ZhRGCg4dXEImmelY3yZverz
-         7qTMUx9AL4k3S43shPx4qOKa9iXSUYg3LcbLgM93F5PeANHU2P3EOWVwMeWzWuOyrNzw
-         o4Op2z9z3jw4PmcxTZPWV21CoPjgWdxw9duZ1f+04zSochtbH9cmF898Zi9bnkCrSu0n
-         vyKDWpn030ukotoZJKQA0mP0/6c9yZIoj7zsuJV60okXmshwX73Srq9QVMtqi4vXrskW
-         vUFSRMDfIIRl8fDMIKMmBEBAxffVmkIV+f0QGZWk7UVr6vwaTU0y315BsNbH1XRGxtZU
-         1oUw==
-X-Gm-Message-State: ANoB5pkyU67pJM/nGDslhEptzriTxEubMZ/wrrlNJXHvxhlfz0wl9dlO
-	E/emh/2ZN1ISxfd2Ief0IwktFA==
-X-Google-Smtp-Source: AA0mqf5HS5gfxzBVMqFriEE4HJoPWmEr5IGzGDfjoRndsB7SSJmPfMrJ7RjHxXmJSplQzZN4BQIGTQ==
-X-Received: by 2002:ac2:5c10:0:b0:4b4:6ca6:c658 with SMTP id r16-20020ac25c10000000b004b46ca6c658mr6341920lfp.359.1668520189681;
-        Tue, 15 Nov 2022 05:49:49 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id t14-20020a2e8e6e000000b0026bf0d71b1esm2508099ljk.93.2022.11.15.05.49.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Nov 2022 05:49:49 -0800 (PST)
-Message-ID: <dcb65352-64c7-774f-3933-42f9dfe95cba@linaro.org>
-Date: Tue, 15 Nov 2022 14:49:47 +0100
+        bh=2tJo2LBnY1zBMYmoeYVZXODudXysjv47CHxMSezRhas=;
+        b=pUp1qFJDVqc0CABAWAFWtM37QpRRNXQVUZdkykkSTGujqQq6P2cxCOFLBDRWMMn18s
+         PVZES/G5NCOYXqE+as5lEJVBlOycT3sa8u7ZkWJ/XHH1ufp943woU333u7mqvJgX7FDr
+         GDwwx954VqYZum4Y0btMBC4+8BeBedPdt89Xl0YfqzPSEBi5LP0OuJM6ZN8U2Yfl/Mxh
+         iPeV26t7j1JJFB1h2zU+P2zys/fFjNZnBh6d+smYzuKioOTQ2SxclabVElV9FWJl4+wa
+         36foiYV+y2Tqzr2WS1v3pbGEp8Ol/qN43DJYnP1Abn1Pp+GlTvztaAcPvvAF0revKgoH
+         mBRg==
+X-Gm-Message-State: ANoB5pl4IYxA2BuVVFiJr4P8FWhIuIM5Vwc/jX7oPzK/CSuy5hOMZfly
+	pAAfyHujdKWakE56zfoQrw==
+X-Google-Smtp-Source: AA0mqf5lGkrgRN7jeCCRXlRu8timVYbU71gGIpGJj2PitosXKdwnkQmjCOrN+Axy5U4VY6Fjsuh0Ww==
+X-Received: by 2002:a9d:2dc9:0:b0:66d:7a33:7c91 with SMTP id g67-20020a9d2dc9000000b0066d7a337c91mr5822157otb.227.1668520253573;
+        Tue, 15 Nov 2022 05:50:53 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id l9-20020a056870f14900b00127fbb7afffsm6548399oac.5.2022.11.15.05.50.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Nov 2022 05:50:53 -0800 (PST)
+Received: (nullmailer pid 880448 invoked by uid 1000);
+	Tue, 15 Nov 2022 13:50:55 -0000
+Date: Tue, 15 Nov 2022 07:50:55 -0600
+From: Rob Herring <robh@kernel.org>
+To: Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
+Subject: Re: [PATCH v2 00/15] Initial Mediatek MT8365 SOC and MT8365-EVK
+ board support
+Message-ID: <20221115135055.GA870211-robh@kernel.org>
+References: <20221107211001.257393-1-bero@baylibre.com>
+ <20221115025421.59847-1-bero@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v4 2/9] dt-bindings: rtc: mediatek: convert MT6397 rtc
- documentation
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: a.zummo@towertech.it, alexandre.belloni@bootlin.com,
- angelogioacchino.delregno@collabora.com, broonie@kernel.org,
- chen.zhong@mediatek.com, devicetree@vger.kernel.org,
- dmitry.torokhov@gmail.com, fabien.parent@linaro.org, fparent@baylibre.com,
- krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, lgirdwood@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
- matthias.bgg@gmail.com, mkorpershoek@baylibre.com, pavel@ucw.cz,
- robh@kernel.org, sean.wang@mediatek.com
-References: <09495553-e563-e12b-056e-bed95531ab6b@linaro.org>
- <ba0901a0-56c5-4e60-49b3-356899921934@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <ba0901a0-56c5-4e60-49b3-356899921934@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221115025421.59847-1-bero@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_054951_283688_37CCA885 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221115_055056_005633_0C1C3A00 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,18 +80,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/11/2022 11:34, Alexandre Mergnat wrote:
-> I think I understand my error.
-> Actually, the RTC (HW) support the "start-year" feature, then I suggest
-> to fix the binding like that:
+On Tue, Nov 15, 2022 at 03:54:06AM +0100, Bernhard Rosenkränzer wrote:
+> This adds minimal support for the MediaTek 8365 SOC and the EVK reference
+> board, allowing the board to boot to initramfs with serial port I/O.
 > 
-> allOf:
->    - $ref: "rtc.yaml#"
+> GPIO keys are supported, MMC is partially supported (needs the clocks
+> driver for full support).
+> 
+> v2:
+>   - Add missing dt-bindings documentation
+>   - Small cleanups addressing issues in v1 pointed out by Krzysztof Kozlowski
 
-No quotes.
+Other than this email, your patches are missing Content-Type headers yet 
+are UTF-8 encoded. Looks like they've been edited in mutt as there are 
+some mutt headers.
 
-
-Best regards,
-Krzysztof
-
+Rob
 
