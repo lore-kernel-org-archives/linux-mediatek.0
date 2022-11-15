@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B3CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 12:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A40D6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 13:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M5TRJ92JPSujVV77tXKFEvHsZ6iHftmWR79uxeFROKU=; b=Vp3ZrMvJdhLbrdcj2aJGLwRxcj
-	etWBo2alA6aPzCFmMWn9ON+v/a4pZCngJalfebgkrEOlkP+pdHVas8SbQ0RN5/zlJIsZWnuVIoP9o
-	ORwOHePVQhAxbdx1X11bPjlukLtM/tufvc+XCln03AtiZ6UzScmtvCZdH+fKJowLGFfNAkuA8zgXh
-	tAk4+o1iJov9xV2jFv0o2krHt0S3fQhCQgR3vtBglevfhG8OM3s52gfwAVL6xC2+OsozJmpu0Kwkv
-	fMo+a4UxpvarzoZ9PW8P7fzNiW0xcmuNxUcyHX1+xjlu4kgNNkDhQfaMQTxmAHjhj+thVG+d22HRI
-	fexCLv5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GKSVED77pBiwPpJ2Rxir+nKGuTDM1BFyofF1Zlc2DKM=; b=JUlcOkstFCArGAnOoL57N8zBa4
+	SPGgXyxmRENGM7LpMpd8Qvh3X0EW3lzpjtVy7Sh7+8P5szGVGPTWENiKRBXfIJ8/D5wKTHz8whASz
+	kmGZ92ia7PX0ylqWrVJr2vhl8G9cH8O4P5xf4D4zm0Fjo9NZoFm8AdcefkwBFJI958aDjmuzgXO9p
+	cFOVcZT2UrZrvRizlnOXP4d8sCSZ5oxWGwNjnzrOAbK6Z337K3c4WfrADANoDx0ViQ9P9QD2H/iQj
+	oCjUcTccRs8PS5fBsa2CMhxUtebOvQG7KqylkbhSJfzfLEYMglKcJsRjADjcNKQJ+2tmwEBIBneok
+	a8Hgo0lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouvLJ-00BAIL-KS; Tue, 15 Nov 2022 12:47:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ouwH6-00BYrb-SY; Tue, 15 Nov 2022 13:46:52 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouvLG-00BAGq-94; Tue, 15 Nov 2022 12:47:07 +0000
-X-UUID: a8ffa9fa3336421386f2a070f2f72167-20221115
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M5TRJ92JPSujVV77tXKFEvHsZ6iHftmWR79uxeFROKU=;
-	b=tS4Ny40JlbmEW8uvBh/y4Y9Om/qp2ScQBGESjgKaKFephpBbuuOjeaSbHJdj+IOqfNY7O2xoIly5xzuZamcIyE9n1hF1SZDUKIxXXenF8VyXgi+Y4zGfRnx3c/ihN5CTE+mSH9Wro5bJVYtztvbB8yVBP+xoL1myXuHickckbeU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:8b308bc2-6207-4d17-aa8c-0eb38f2d490b,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:a27fbfac-70f0-4e5b-83e6-c0b7915231c3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a8ffa9fa3336421386f2a070f2f72167-20221115
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <bayi.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1634162989; Tue, 15 Nov 2022 05:47:00 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 15 Nov 2022 20:46:58 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 15 Nov 2022 20:46:57 +0800
-From: Bayi Cheng <bayi.cheng@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
-CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, bayi cheng
-	<bayi.cheng@mediatek.com>
-Subject: [PATCH v1] spi: spi-mtk-nor: Unify write buffer on/off
-Date: Tue, 15 Nov 2022 20:46:55 +0800
-Message-ID: <20221115124655.10124-1-bayi.cheng@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1ouwH3-00BYkO-83
+	for linux-mediatek@lists.infradead.org; Tue, 15 Nov 2022 13:46:51 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id m7-20020a05600c090700b003cf8a105d9eso10252855wmp.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Nov 2022 05:46:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=GKSVED77pBiwPpJ2Rxir+nKGuTDM1BFyofF1Zlc2DKM=;
+        b=ajV3q/DBWIST9XnzaLUBlOUEBSdLAQqK1xUrmmix8OMOMNlF/Sky2+pKt3h41v2pMv
+         2Q8zfjga/05QO/Wxrbr1kdI9Ma6O/pKaRDIldQDP44LRSMEViXjU9XDgH0/gT8sOvzAE
+         EUjTyy+ZdQnV3JCE39/AJKutOV29A49uSWi7iKVNl/UYVnw0lpNLb8AEXub5gqIslSbM
+         he8yGZs62o0EBrjHVoOtJn/kylV44U5prleVZz35sA5yx2RbfGgl7aafIyusiNN4vSBL
+         wYX6b3mO/Nb787I28cQvLlaCLPRQrAdAxbII3jScpr67IxabycomE/+wHPF4ced7/QSA
+         uhoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=GKSVED77pBiwPpJ2Rxir+nKGuTDM1BFyofF1Zlc2DKM=;
+        b=PBExhayC2t0q3+I6jm9U/LpBHQmbCimRNHio6O6YYb0bz5DNfB4kCK1Zf7kZ4KWcYP
+         Bk6jtuoISFX2UUrZ3Pp+uCNxi6db6bYwPzBFUkQgMCcShtZHOkkNAFxQktpx0sty3muZ
+         r2Q8FIT4K8BJX7IRApq2/uaJ830qaEsNkPZMamWFhM1XmbUKBxOC1osSZpaH14MjnO0j
+         t/oXMAFD9RSIky3L/zdsYAq2Aszm5VR+0MiasZINe7AcGotXuUSTyQ+isqnbX7c5YhPk
+         EFa4YkrYoccGrmV0BLq5FiqgE8efVrZfiR1214oltJv9DBaCHlzzRYK83U6iCUjtBNpk
+         AuiQ==
+X-Gm-Message-State: ANoB5plZMElx0QMECYQWp3FK4Z/VQM3VVtqRDaOaSUOSRpgOHMwJqGSw
+	3+uRF/x1rcDgooBglO51NbKzUQ==
+X-Google-Smtp-Source: AA0mqf5X5syFwbQSMWDFIqO7dVJyWje/diBdKJ0N7P3JuWEdDQfvhb0INF8arqz3z9IEe8X96oBSqA==
+X-Received: by 2002:a05:600c:1c1d:b0:3cf:5d41:bea1 with SMTP id j29-20020a05600c1c1d00b003cf5d41bea1mr1630709wms.118.1668520003893;
+        Tue, 15 Nov 2022 05:46:43 -0800 (PST)
+Received: from [192.168.99.239] ([95.178.111.30])
+        by smtp.gmail.com with ESMTPSA id ay19-20020a05600c1e1300b003c6bbe910fdsm26460343wmb.9.2022.11.15.05.46.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Nov 2022 05:46:43 -0800 (PST)
+Message-ID: <f2667872-c9e9-69aa-8196-12f58c2e9316@baylibre.com>
+Date: Tue, 15 Nov 2022 14:46:41 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v6 4/4] thermal: mediatek: add another get_temp ops for
+ thermal sensors
+To: Pin-yen Lin <treapking@chromium.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>, Amit Kucheria <amitk@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh@kernel.org>, Markus Schneider-Pargmann <msp@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20221018-up-i350-thermal-bringup-v6-0-c87b9f75550b@baylibre.com>
+ <20221018-up-i350-thermal-bringup-v6-4-c87b9f75550b@baylibre.com>
+ <CAEXTbpd2zLdk-VmkGvpk2_Qz0TDyC9aOsQbCz=FpopnMqs9djg@mail.gmail.com>
+Content-Language: en-US
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+In-Reply-To: <CAEXTbpd2zLdk-VmkGvpk2_Qz0TDyC9aOsQbCz=FpopnMqs9djg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_044706_350274_6E3E2DD0 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20221115_054649_298047_05796124 
+X-CRM114-Status: GOOD (  27.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,105 +104,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bayi cheng <bayi.cheng@mediatek.com>
+Hi Pin-yen,
 
-The logical structures of mtk_nor_write_buffer_enable and
-mtk_nor_write_buffer_disable are very similar, So it is necessary to
-combine them into one.
+On 11/15/22 11:49, Pin-yen Lin wrote:
+> Hi Amjad,
+>
+> On Wed, Oct 19, 2022 at 10:17 PM Amjad Ouled-Ameur
+> <aouledameur@baylibre.com> wrote:
+>> Provide thermal zone to read thermal sensor in the SoC. We can read all the
+>> thermal sensors value in the SoC by the node /sys/class/thermal/
+>>
+>> In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
+>> on the first read of sensor that often are bogus values.
+>> This can avoid following warning on boot:
+>>
+>>    thermal thermal_zone6: failed to read out thermal zone (-13)
+>>
+>> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+>> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/thermal/mtk_thermal.c | 104 ++++++++++++++++++++++++++++++++----------
+>>   1 file changed, 79 insertions(+), 25 deletions(-)
+>>
+>> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+>> index 3a5df1440822..311ad611fdab 100644
+>> --- a/drivers/thermal/mtk_thermal.c
+>> +++ b/drivers/thermal/mtk_thermal.c
+>> @@ -259,6 +259,11 @@ enum mtk_thermal_version {
+>>
+>>   struct mtk_thermal;
+>>
+>> +struct mtk_thermal_zone {
+>> +       struct mtk_thermal *mt;
+>> +       int id;
+>> +};
+>> +
+>>   struct thermal_bank_cfg {
+>>          unsigned int num_sensors;
+>>          const int *sensors;
+>> @@ -307,6 +312,8 @@ struct mtk_thermal {
+>>
+>>          const struct mtk_thermal_data *conf;
+>>          struct mtk_thermal_bank banks[MAX_NUM_ZONES];
+>> +
+>> +       int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
+>>   };
+>>
+>>   /* MT8183 thermal sensor data */
+>> @@ -709,6 +716,29 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
+>>                  mutex_unlock(&mt->lock);
+>>   }
+>>
+>> +static int _get_sensor_temp(struct mtk_thermal *mt, int id)
+>> +{
+>> +       u32 raw;
+>> +       int temp;
+>> +
+>> +       const struct mtk_thermal_data *conf = mt->conf;
+>> +
+>> +       raw = readl(mt->thermal_base + conf->msr[id]);
+>> +
+>> +       temp = mt->raw_to_mcelsius(mt, id, raw);
+>> +
+>> +       /*
+>> +        * The first read of a sensor often contains very high bogus
+>> +        * temperature value. Filter these out so that the system does
+>> +        * not immediately shut down.
+>> +        */
+>> +
+>> +       if (temp > 200000)
+>> +               return -EAGAIN;
+>> +       else
+>> +               return temp;
+>> +}
+>> +
+>>   /**
+>>    * mtk_thermal_bank_temperature - get the temperature of a bank
+>>    * @bank:      The bank
+>> @@ -721,26 +751,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>          struct mtk_thermal *mt = bank->mt;
+>>          const struct mtk_thermal_data *conf = mt->conf;
+>>          int i, temp = INT_MIN, max = INT_MIN;
+>> -       u32 raw;
+>>
+>>          for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
+>> -               raw = readl(mt->thermal_base + conf->msr[i]);
+>> -
+>> -               if (mt->conf->version == MTK_THERMAL_V1) {
+>> -                       temp = raw_to_mcelsius_v1(
+>> -                               mt, conf->bank_data[bank->id].sensors[i], raw);
+>> -               } else {
+>> -                       temp = raw_to_mcelsius_v2(
+>> -                               mt, conf->bank_data[bank->id].sensors[i], raw);
+>> -               }
+>> -
+>> -               /*
+>> -                * The first read of a sensor often contains very high bogus
+>> -                * temperature value. Filter these out so that the system does
+>> -                * not immediately shut down.
+>> -                */
+>> -               if (temp > 200000)
+>> -                       temp = 0;
+>> +               temp = _get_sensor_temp(mt, i);
+>>
+>>                  if (temp > max)
+>>                          max = temp;
+>> @@ -749,9 +762,10 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+>>          return max;
+>>   }
+>>
+>> -static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+>> +static int mtk_read_temp(struct thermal_zone_device *tzdev, int *temperature)
+>>   {
+>> -       struct mtk_thermal *mt = tz->devdata;
+>> +       struct mtk_thermal_zone *tz = tzdev->devdata;
+>> +       struct mtk_thermal *mt = tz->mt;
+>>          int i;
+>>          int tempmax = INT_MIN;
+>>
+>> @@ -770,10 +784,28 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+>>          return 0;
+>>   }
+>>
+>> +static int mtk_read_sensor_temp(struct thermal_zone_device *tzdev, int *temperature)
+>> +{
+>> +       struct mtk_thermal_zone *tz = tzdev->devdata;
+>> +       struct mtk_thermal *mt = tz->mt;
+>> +       int id = tz->id - 1;
+>> +
+>> +       if (id < 0)
+>> +               return -EACCES;
+>> +
+>> +       *temperature = _get_sensor_temp(mt, id);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>>   static const struct thermal_zone_device_ops mtk_thermal_ops = {
+>>          .get_temp = mtk_read_temp,
+>>   };
+>>
+>> +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
+>> +       .get_temp = mtk_read_sensor_temp,
+>> +};
+>> +
+>>   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+>>                                    u32 apmixed_phys_base, u32 auxadc_phys_base,
+>>                                    int ctrl_id)
+>> @@ -1072,6 +1104,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>          u64 auxadc_phys_base, apmixed_phys_base;
+>>          struct thermal_zone_device *tzdev;
+>>          void __iomem *apmixed_base, *auxadc_base;
+>> +       struct mtk_thermal_zone *tz;
+>>
+>>          mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+>>          if (!mt)
+>> @@ -1150,6 +1183,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>
+>>          mtk_thermal_turn_on_buffer(mt, apmixed_base);
+>>
+>> +       mt->raw_to_mcelsius = (mt->conf->version == MTK_THERMAL_V1) ?
+>> +                               raw_to_mcelsius_v1 : raw_to_mcelsius_v2;
+>> +
+>>          if (mt->conf->version == MTK_THERMAL_V2) {
+>>                  mtk_thermal_release_periodic_ts(mt, auxadc_base);
+>>          }
+>> @@ -1161,11 +1197,29 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>
+>>          platform_set_drvdata(pdev, mt);
+>>
+>> -       tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+>> -                                             &mtk_thermal_ops);
+>> -       if (IS_ERR(tzdev)) {
+>> -               ret = PTR_ERR(tzdev);
+>> -               goto err_disable_clk_peri_therm;
+>> +       for (i = 0; i < mt->conf->num_sensors + 1; i++) {
+>> +               tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+>> +               if (!tz)
+>> +                       return -ENOMEM;
+>> +
+>> +               tz->mt = mt;
+>> +               tz->id = i;
+>> +
+>> +               tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
+>> +                                                            &mtk_thermal_ops :
+>> +                                                            &mtk_thermal_sensor_ops);
+>> +
+>> +               if (IS_ERR(tzdev)) {
+>> +                       if (PTR_ERR(tzdev) == -ENODEV) {
+>> +                               dev_warn(&pdev->dev,
+>> +                                        "sensor %d not registered in thermal zone in dt\n", i);
+>> +                               continue;
+>> +                       }
+>> +                       if (PTR_ERR(tzdev) == -EACCES) {
+>> +                               ret = PTR_ERR(tzdev);
+>> +                               goto err_disable_clk_peri_therm;
+>> +                       }
+>> +               }
+>>          }
+>>
+>>          ret = devm_thermal_add_hwmon_sysfs(tzdev);
+> tzdev can be an error pointer here. I think we should move the line
+> into the loop above, so hwmon sysfs is not added when IS_ERR(tzdev) ==
+> true.
 
-Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
----
-Change in v1:
-  -Delete mtk_nor_write_buffer_enable.
-  -Delete mtk_nor_write_buffer_disable.
-  -Add mtk_nor_setup_write_buffer.
----
----
- drivers/spi/spi-mtk-nor.c | 40 ++++++++++++++++-----------------------
- 1 file changed, 16 insertions(+), 24 deletions(-)
+Good catch, will fix this in next rev.
 
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index d167699a1a96..e8b355f5be56 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -443,36 +443,28 @@ static int mtk_nor_read_pio(struct mtk_nor *sp, const struct spi_mem_op *op)
- 	return ret;
- }
- 
--static int mtk_nor_write_buffer_enable(struct mtk_nor *sp)
-+static int mtk_nor_setup_write_buffer(struct mtk_nor *sp, bool on)
- {
- 	int ret;
- 	u32 val;
- 
--	if (sp->wbuf_en)
-+	if (!(sp->wbuf_en ^ on))
- 		return 0;
- 
- 	val = readl(sp->base + MTK_NOR_REG_CFG2);
--	writel(val | MTK_NOR_WR_BUF_EN, sp->base + MTK_NOR_REG_CFG2);
--	ret = readl_poll_timeout(sp->base + MTK_NOR_REG_CFG2, val,
--				 val & MTK_NOR_WR_BUF_EN, 0, 10000);
--	if (!ret)
--		sp->wbuf_en = true;
--	return ret;
--}
--
--static int mtk_nor_write_buffer_disable(struct mtk_nor *sp)
--{
--	int ret;
--	u32 val;
-+	if (on) {
-+		writel(val | MTK_NOR_WR_BUF_EN, sp->base + MTK_NOR_REG_CFG2);
-+		ret = readl_poll_timeout(sp->base + MTK_NOR_REG_CFG2, val,
-+					 val & MTK_NOR_WR_BUF_EN, 0, 10000);
-+	} else {
-+		writel(val & ~MTK_NOR_WR_BUF_EN, sp->base + MTK_NOR_REG_CFG2);
-+		ret = readl_poll_timeout(sp->base + MTK_NOR_REG_CFG2, val,
-+					 !(val & MTK_NOR_WR_BUF_EN), 0, 10000);
-+	}
- 
--	if (!sp->wbuf_en)
--		return 0;
--	val = readl(sp->base + MTK_NOR_REG_CFG2);
--	writel(val & ~MTK_NOR_WR_BUF_EN, sp->base + MTK_NOR_REG_CFG2);
--	ret = readl_poll_timeout(sp->base + MTK_NOR_REG_CFG2, val,
--				 !(val & MTK_NOR_WR_BUF_EN), 0, 10000);
- 	if (!ret)
--		sp->wbuf_en = false;
-+		sp->wbuf_en = on;
-+
- 	return ret;
- }
- 
-@@ -482,7 +474,7 @@ static int mtk_nor_pp_buffered(struct mtk_nor *sp, const struct spi_mem_op *op)
- 	u32 val;
- 	int ret, i;
- 
--	ret = mtk_nor_write_buffer_enable(sp);
-+	ret = mtk_nor_setup_write_buffer(sp, true);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -501,7 +493,7 @@ static int mtk_nor_pp_unbuffered(struct mtk_nor *sp,
- 	const u8 *buf = op->data.buf.out;
- 	int ret;
- 
--	ret = mtk_nor_write_buffer_disable(sp);
-+	ret = mtk_nor_setup_write_buffer(sp, false);
- 	if (ret < 0)
- 		return ret;
- 	writeb(buf[0], sp->base + MTK_NOR_REG_WDATA);
-@@ -608,7 +600,7 @@ static int mtk_nor_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
- 	}
- 
- 	if ((op->data.dir == SPI_MEM_DATA_IN) && mtk_nor_match_read(op)) {
--		ret = mtk_nor_write_buffer_disable(sp);
-+		ret = mtk_nor_setup_write_buffer(sp, false);
- 		if (ret < 0)
- 			return ret;
- 		mtk_nor_setup_bus(sp, op);
--- 
-2.25.1
+Regards,
 
+Amjad
+
+> Regards,
+> Pin-yen
 
