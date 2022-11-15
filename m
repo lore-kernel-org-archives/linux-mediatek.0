@@ -4,89 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F5B3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 11:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D77C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 11:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9HmQSNgbeAnuAmyJ//N8rl1O/DoZ4K7/mSpROb1E7nw=; b=q2PIiiPdsYCyh1u1gCcReTQarq
-	AAnW6aOknYizQOo5DNxIQ10YHrVG6bsPvjeJQHsycUHLfLLeQ+68r1DzNOLn3vg7KtBc+3XTn9auC
-	5UctWYePSTxBR5Y6UUEmtC5z/79zzR2fcjheJeQU0iQVgSvDQ+NFWCEgTp/1KMD+O+JKRRuOOYmiH
-	R/LTpekWKrVSswbSJU78neGSzZTyIgJzDBeLCjo9JB9twtggoSEGxFhn4EevsgNPJhLEMovmisaZF
-	FVadRyuvR+sCl9cOZ6W78OZFqBpvfI3LfIeWK/rfciS4ilPrFa/kX7rslPnEcpkolJsJG3bqeW/Pa
-	w04DAHXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+KDFcDI174F4+2BtSki4EO2v2RYQC8geLom77Dhpmbo=; b=jelvcBlGxAasNvxTGQkHaBDlPZ
+	DUqF9mlamREcbGA7h1mU87BZFhedZ0vGC+wPsEuWE3zjDEQYV/gxrmbq6+lZkkwjnwsmQK5RD3vEH
+	lKtrmzKqSqgJ/RSOtVOq8EAs4ygUXQUMuH1z3yPrKjhXDNiLoWABsS8gxLatDMnWx/49MJck4bnvw
+	/0+wSBqSwDWzn4jn3qK3DGvUMZ4ebUhpVrC/3aRqowktrxh6Nm6BAXx66QJGYixSXj6IeTHjykZRV
+	fza9LELLhQwOi1ycTISwL0m+jQDhlQJ/dbFPE/rExwIQ0aX/x8FIiDsLVRvw4ceaD+9LUgWwtFoJo
+	BA977EtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouuRO-00AioG-82; Tue, 15 Nov 2022 11:49:22 +0000
-Received: from ewsoutbound.kpnmail.nl ([195.121.94.183])
+	id 1ouuRb-00Aise-PI; Tue, 15 Nov 2022 11:49:35 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouuRK-00Aila-EY
-	for linux-mediatek@lists.infradead.org; Tue, 15 Nov 2022 11:49:21 +0000
-X-KPN-MessageId: 03a5e7f5-64db-11ed-888a-005056992ed3
-Received: from smtp.kpnmail.nl (unknown [10.31.155.6])
-	by ewsoutbound.so.kpn.org (Halon) with ESMTPS
-	id 03a5e7f5-64db-11ed-888a-005056992ed3;
-	Tue, 15 Nov 2022 12:45:34 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xs4all.nl; s=xs4all01;
-	h=content-type:from:to:subject:mime-version:date:message-id;
-	bh=9HmQSNgbeAnuAmyJ//N8rl1O/DoZ4K7/mSpROb1E7nw=;
-	b=GLaLkVCMvQlGJyTNqq6NAK+FYyoFKGLZqKVH+FDShyNmcfe6YYkS9SCbTjpp3oHP4wgObBiLg5Gui
-	 Gu0wKUQeFGJF2l4ZClJ4dHEG6zebb6Zrv14nZLmIWexvDhK0BurjnRqLtSX+kbjo7yRUS2iTVJXrEm
-	 csTXyHjeLjhOTrooqULTIo+psEqb8KFgWsualRR/Cngoo2rrR0nR0zilUsReXuiuagfNp5KR55BVlU
-	 FF8YBlU76sNqbFDdc3aUSEurFI01UvrRRXeS045Xbz+CQsgy16RR6sqYN5olXPFJbyMC7jpmdkd4yj
-	 jaYg2edVH84QPIQ8mySHHvoDaJM5+PQ==
-X-KPN-MID: 33|rXukB6Fhm70IJI8my3JcBZxo1C9PC67ixhmJDZgGMsK4jKmNSrbBuYK7BxT/x50
- HQ9pHZI0HdqQqGLYrJweUeP01C+M5cywlmmo6Lc8GE5I=
-X-KPN-VerifiedSender: Yes
-X-CMASSUN: 33|qFgCJVZLrOjSmXDsOsPFe36X9/J5Zvn6k8bgzvFgKeyRPVF+JMMX7ZI+fEfchp1
- kLO5r0eeC3yUJ3R0nZsuceQ==
-X-Originating-IP: 173.38.220.59
-Received: from [10.47.77.219] (unknown [173.38.220.59])
-	by smtp.xs4all.nl (Halon) with ESMTPSA
-	id 83bee959-64db-11ed-ad2a-00505699772e;
-	Tue, 15 Nov 2022 12:49:10 +0100 (CET)
-Message-ID: <ac1f56bc-2d38-8d0c-83ea-f5e36eb15e25@xs4all.nl>
-Date: Tue, 15 Nov 2022 12:49:08 +0100
+	id 1ouuRQ-00Aino-Jk
+	for linux-mediatek@lists.infradead.org; Tue, 15 Nov 2022 11:49:26 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ouuRD-0003ZJ-80; Tue, 15 Nov 2022 12:49:11 +0100
+Date: Tue, 15 Nov 2022 11:49:09 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Jianhui Zhao <zhaojh329@gmail.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	Sam Shih =?utf-8?B?KOWPsueiqeS4iSk=?= <Sam.Shih@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: add mt7981 clock support
+Message-ID: <Y3N8tVWUSYtO3tx1@makrotopia.org>
+References: <20221115020606.46584-1-zhaojh329@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Skip unsupported h264 encoder
- profile
-Content-Language: en-US
-To: =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
- "hsinyi@chromium.org" <hsinyi@chromium.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "acourbot@chromium.org" <acourbot@chromium.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?TG9uZ2ZlaSBXYW5nICjnjovpvpnpo54p?= <Longfei.Wang@mediatek.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?=
- <Maoguang.Meng@mediatek.com>, =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?=
- <Yunfei.Dong@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20220926093501.26466-1-irui.wang@mediatek.com>
- <a386f704b43b117d8857a7d7f51b1652ddb40663.camel@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <a386f704b43b117d8857a7d7f51b1652ddb40663.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221115020606.46584-1-zhaojh329@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_034918_823670_D87C7598 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20221115_034924_673142_FB1C8758 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,77 +60,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Irui,
+Hi Jianhui,
 
-On 11/15/22 12:40, Irui Wang (王瑞) wrote:
-> Dear Hans,
+On Tue, Nov 15, 2022 at 02:06:06AM +0000, Jianhui Zhao wrote:
+> Signed-off-by: Jianhui Zhao <zhaojh329@gmail.com>
+> ---
+>  .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
+>  .../bindings/clock/mediatek,topckgen.yaml     |   1 +
+>  drivers/clk/mediatek/Kconfig                  |  17 +
+>  drivers/clk/mediatek/Makefile                 |   4 +
+>  drivers/clk/mediatek/clk-mt7981-apmixed.c     | 103 +++++
+>  drivers/clk/mediatek/clk-mt7981-eth.c         | 138 ++++++
+>  drivers/clk/mediatek/clk-mt7981-infracfg.c    | 323 +++++++++++++
+>  drivers/clk/mediatek/clk-mt7981-topckgen.c    | 431 ++++++++++++++++++
+>  include/dt-bindings/clock/mt7981-clk.h        | 253 ++++++++++
+>  9 files changed, 1271 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt7981-apmixed.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt7981-eth.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt7981-infracfg.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt7981-topckgen.c
+>  create mode 100644 include/dt-bindings/clock/mt7981-clk.h
 > 
-> Gently ping for this patch.
-> May I know this patch current status? It seems is under your reviewing
-> state?
+> ...
+> diff --git a/drivers/clk/mediatek/clk-mt7981-infracfg.c b/drivers/clk/mediatek/clk-mt7981-infracfg.c
+> new file mode 100644
+> index 000000000000..d483e654606f
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt7981-infracfg.c
+> @@ -0,0 +1,323 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Sam Shih <sam.shih@mediatek.com>
+> + * Author: Wenzhen Yu <wenzhen.yu@mediatek.com>
+> + * Author: Jianhui Zhao <zhaojh329@gmail.com>
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include "clk-mtk.h"
+> +#include "clk-gate.h"
+> +#include "clk-mux.h"
+> +
+> +#include <dt-bindings/clock/mt7981-clk.h>
+> +#include <linux/clk.h>
+> +
+> +static DEFINE_SPINLOCK(mt7981_clk_lock);
+> +
+> +static const struct mtk_fixed_factor infra_divs[] = {
+> +	FACTOR(CLK_INFRA_CK_F26M, "infra_ck_f26m", "csw_f26m_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_UART, "infra_uart", "uart_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_ISPI0, "infra_ispi0", "spi_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_I2C, "infra_i2c", "i2c_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_ISPI1, "infra_ispi1", "spim_mst_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_PWM, "infra_pwm", "pwm_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_66M_MCK, "infra_66m_mck", "sysaxi_sel", 1, 2),
+> +	FACTOR(CLK_INFRA_CK_F32K, "infra_ck_f32k", "cb_rtc_32p7k", 1, 1),
+> +	FACTOR(CLK_INFRA_PCIE_CK, "infra_pcie", "pextp_tl_ck_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_PWM_BCK, "infra_pwm_bck", "infra_pwm_bsel", 1, 1),
+> +	FACTOR(CLK_INFRA_PWM_CK1, "infra_pwm_ck1", "infra_pwm1_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_PWM_CK2, "infra_pwm_ck2", "infra_pwm2_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_133M_HCK, "infra_133m_hck", "sysaxi", 1, 1),
+> +	FACTOR(CLK_INFRA_66M_PHCK, "infra_66m_phck", "infra_133m_hck", 1, 1),
+> +	FACTOR(CLK_INFRA_FAUD_L_CK, "infra_faud_l", "aud_l", 1, 1),
+> +	FACTOR(CLK_INFRA_FAUD_AUD_CK, "infra_faud_aud", "a1sys", 1, 1),
+> +	FACTOR(CLK_INFRA_FAUD_EG2_CK, "infra_faud_eg2", "a_tuner", 1, 1),
+> +	FACTOR(CLK_INFRA_I2CS_CK, "infra_i2cs", "i2c_bck", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_UART0, "infra_mux_uart0", "infra_uart0_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_UART1, "infra_mux_uart1", "infra_uart1_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_UART2, "infra_mux_uart2", "infra_uart2_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_NFI_CK, "infra_nfi", "nfi1x", 1, 1),
+> +	FACTOR(CLK_INFRA_SPINFI_CK, "infra_spinfi", "spinfi_bck", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_SPI0, "infra_mux_spi0", "infra_spi0_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_SPI1, "infra_mux_spi1", "infra_spi1_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_MUX_SPI2, "infra_mux_spi2", "infra_spi2_sel", 1, 1),
+> +	FACTOR(CLK_INFRA_RTC_32K, "infra_rtc_32k", "cb_rtc_32k", 1, 1),
+> +	FACTOR(CLK_INFRA_FMSDC_CK, "infra_fmsdc", "emmc_400m", 1, 1),
+> +	FACTOR(CLK_INFRA_FMSDC_HCK_CK, "infra_fmsdc_hck", "emmc_208m", 1, 1),
+> +	FACTOR(CLK_INFRA_PERI_133M, "infra_peri_133m", "sysaxi", 1, 1),
+> +	FACTOR(CLK_INFRA_133M_PHCK, "infra_133m_phck", "sysaxi", 1, 1),
+> +	FACTOR(CLK_INFRA_USB_SYS_CK, "infra_usb_sys", "u2u3_sys", 1, 1),
+> +	FACTOR(CLK_INFRA_USB_CK, "infra_usb", "u2u3_ref", 1, 1),
+> +	FACTOR(CLK_INFRA_USB_XHCI_CK, "infra_usb_xhci", "u2u3_xhci", 1, 1),
+> +	FACTOR(CLK_INFRA_PCIE_GFMUX_TL_O_PRE, "infra_pcie_mux", "pextp_tl", 1, 1),
+> +	FACTOR(CLK_INFRA_F26M_CK0, "infra_f26m_ck0", "csw_f26m", 1, 1),
+> +	FACTOR(CLK_INFRA_133M_MCK, "infra_133m_mck", "sysaxi", 1, 1),
+> +};
+> +
 
-Mauro was on vacation last week, but he said that he hopes to merge
-the pending PRs tomorrow. Fingers crossed...
+Just splitting the SDK driver into clock domains will have us end up
+with lots of unnessesary aliases.
+Please take a look at how clocks have been reorganized for MT7986:
+Remove all duplicate 1:1 clock factors while keeping clock drivers
+still working. Ie. there is no need to have both, infracfg and
+infracfg_ao, for example, things can be simplified.
 
-Regards,
+To understand what I mean in practise, please compare the clk-mt7986.c
+driver from MediaTek SDK with the clk-mt7986-*.c drivers which have
+been merged to Linux.
 
-	Hans
+And did you actually test this? Can you publish your working tree for
+MT7981 based on linux-next somewhere?
+I'm asking because when I tried to do the same as you are doing now,
+the MT7981 sample board I've been provided hangs early during boot...
 
-> 
-> Thanks
-> Best Regards
-> 
-> On Mon, 2022-09-26 at 17:35 +0800, Irui Wang wrote:
->> The encoder driver support h264 baseline, main, high encoder
->> profile, set mask for V4L2_CID_MPEG_VIDEO_H264_PROFILE to skip
->> the unsupported profile.
->> 
->> get supported h264_profile by command: v4l2-ctl -d /dev/videoX -L
->> h264_profile 0x00990a6b (menu) : min=0 max=4 default=4 value=4
->>         0: Baseline
->>         2: Main
->>         4: High
->> 
->> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
->> ---
->>  drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 5 ++++-
->>  1 file changed, 4 insertions(+), 1 deletion(-)
->> 
->> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
->> b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
->> index d810a78dde51..d65800a3b89d 100644
->> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
->> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
->> @@ -1397,7 +1397,10 @@ int mtk_vcodec_enc_ctrls_setup(struct
->> mtk_vcodec_ctx *ctx)
->>  0, V4L2_MPEG_VIDEO_HEADER_MODE_SEPARATE);
->>  v4l2_ctrl_new_std_menu(handler, ops,
->> V4L2_CID_MPEG_VIDEO_H264_PROFILE,
->>  V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->> -0, V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
->> +~((1 << V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE)
->> |
->> +  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_MAIN) |
->> +  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_HIGH)),
->> +V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
->>  v4l2_ctrl_new_std_menu(handler, ops,
->> V4L2_CID_MPEG_VIDEO_H264_LEVEL,
->>         h264_max_level,
->>         0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
-> 
-> ************* MEDIATEK Confidentiality Notice
->  ********************
-> The information contained in this e-mail message (including any 
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be 
-> conveyed only to the designated recipient(s). Any use, dissemination, 
-> distribution, printing, retaining or copying of this e-mail (including its 
-> attachments) by unintended recipient(s) is strictly prohibited and may 
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
->  
-> that you have received this e-mail in error, please notify the sender 
-> immediately (by replying to this e-mail), delete any and all copies of 
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
 
+Cheers
+
+
+Daniel
 
