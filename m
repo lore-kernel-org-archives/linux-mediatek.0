@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D63C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 19:54:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1560C43219
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 22:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8ycYa0l03y2Xy+lTC9umglVnxHlMT3eNSgIFIhpuUdo=; b=IG9L0o5KwRIFxuxYAGMImPgMed
-	1rhfelxenIL9oNSactZAgjxOQRSjwc9/BgtpMxiGmUm032u/0a8ZadbUs790gPdm6PmHwsTvHuMIJ
-	Yk9B8Aq3dnuiOnYvYePx17+yQrECm9we4mI6QIDGBOzLfKXmAdaLyTWp/p33TER++tHDkSkBPPvXe
-	ayxrpMCnEyxKiC7vf7H/D8B6ISLuTaUCR6CF/q5tNAnaO1oZYY92m+Y5ZnV/+F7888UzNWDdM92Oy
-	4tyKfqr8TNiwKD1hX/SviPCE16u76lny+hGAREtTB4o7Vu8syWe/GxhsNYugDBHZFkxB6apbgXrKp
-	oWnVC78w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fvfuGN6XqZ2+87dOkfnflq66NXs3CDteAN2PbMJpvxU=; b=R/OU4XcOF9AMfQhzTg7uXFtPcs
+	yQXiwNiFx17Pk9B7T6evlvyyVf/OD9Qyez0wNiR7bq1JZlke5pIJGU14UFCZx3qaxWkILMExAnsu/
+	OGgrgW/TPAtOwrVm8qAHymy4BvIw5bDSl/Rx4oHJIk5q0ZeSQvQ1xaS6BTj+COPcARWj5z8AIatta
+	MzF7Fufvdn1e1DN732wvFMgXfbw0cXuwWkgZEKZwHdn8lI1cQqqmCcS1MXqvrFv4wWWi0+ZKzdDwd
+	fdxMc0FvoESwwSEaDhse6lOVc3yIeBS4WWNfT0f42mwvND/0XfGIxbwgeBdS2KtGfDwvJelBziwXD
+	xHVF5yHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ov21B-00ERk2-Ah; Tue, 15 Nov 2022 19:54:49 +0000
-Received: from mail1.systemli.org ([2a11:7980:3::36])
+	id 1ov3zo-00FJBA-UM; Tue, 15 Nov 2022 22:01:32 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ov20z-00ERgT-0c; Tue, 15 Nov 2022 19:54:39 +0000
-Message-ID: <bf8d2a8f-7654-29be-1104-a842c6657b5e@systemli.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
-	s=default; t=1668541490;
-	bh=8ycYa0l03y2Xy+lTC9umglVnxHlMT3eNSgIFIhpuUdo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Qx9AQKBJMTw172ansrvl8rdCaXJZDz8n1dim4r1ghWqbryDa2A+mdZNpTv4AnTFSH
-	 VbWDdGoLCPzsaAEYH8LM83yJFw0qwRvlyKkOcNDgZCetKK6TkXkrB+KZnI1Gao34mL
-	 9LTzpsKtZJTS0wSUUTHocxJBuJuKZz+XP9A6ksIbdQl0ax2mm14JdqfjgxP9lO/jzK
-	 PpTqUJFib0ElGgN6nnNPdPhsTvYYQ1M6YhKNFtRtiE1zteHegeyBLULOpsqbPgRNMQ
-	 paGXxwWmo1bzVfOv++XNRCjMVn9r6x5OOOP7peVGTfLw3xRX/pMv9uVks7nYjY1JML
-	 bomuTrzr4deJQ==
-Date: Tue, 15 Nov 2022 20:44:47 +0100
+	id 1ov3zk-00FJ7N-NT; Tue, 15 Nov 2022 22:01:31 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ov3zf-0005N6-Q3; Tue, 15 Nov 2022 23:01:24 +0100
+Date: Tue, 15 Nov 2022 22:01:20 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 10/11] arm64: dts: mt7986: add Bananapi R3
+Message-ID: <Y3QMMKGc6uNFyfWb@makrotopia.org>
+References: <20221112091923.9562-1-frank-w@public-files.de>
 MIME-Version: 1.0
-Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
- mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, jia-wei.chang@mediatek.com,
- rex-bc.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
- viresh.kumar@linaro.org, Frank Wunderlich <frank-w@public-files.de>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Daniel Golle <daniel@makrotopia.org>,
- =?UTF-8?Q?H=c3=bchn=2c_Thomas?= <thomas.huehn@hs-nordhausen.de>
-References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
- <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
-From: Nick <vincent@systemli.org>
-In-Reply-To: <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221112091923.9562-1-frank-w@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_115437_230199_8CDE321F 
-X-CRM114-Status: GOOD (  18.01  )
+X-CRM114-CacheID: sfid-20221115_140129_108185_13987F4E 
+X-CRM114-Status: GOOD (  29.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,261 +71,611 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-I used now the linux-next kernel tree (with 
-https://patchwork.ozlabs.org/project/linux-mtd/list/?series=327227 so 
-single uImage.FIT will work). Same issue:
+On Sat, Nov 12, 2022 at 10:19:22AM +0100, Frank Wunderlich wrote:
+> Add support for Bananapi R3 SBC.
+> 
+> - SD/eMMC support (switching first 4 bits of data-bus with sw6/D)
+> - all rj45 ports and both SFP working (eth1/lan4)
+> - all USB-Ports + SIM-Slot tested
+> - i2c and all uarts tested
+> - wifi tested (with eeprom calibration data)
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> SPI-NAND/NOR switched (CS by sw5/C) not yet included
+>   this is done with DT-Overlays in my tree, don't know how to do it
+>   in upstream the right way...added dts files for dtbo and added them
+>   with dtbo extension to Makefile works.
 
-> [ 0.886209] Kernel BUG at regulator_check_voltage+0xb0/0xf0 [verbose 
-> debug info unavailable]
->
-> [ 0.894663] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
->
-> [ 0.900759] Modules linked in:
->
-> [ 0.903819] CPU: 1 PID: 79 Comm: kworker/1:1 Tainted: G S 
-> 6.1.0-rc5-next-20221115+ #0
->
-> [ 0.904360] pstore: Using crash dump compression: deflate
->
-> [ 0.913038] Hardware name: Bananapi BPI-R64 (DT)
->
-> [ 0.913043] Workqueue: events dbs_work_handler
->
-> [ 0.913056] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS 
-> BTYPE=--)
->
-> [ 0.913063] pc : regulator_check_voltage+0xb0/0xf0
->
-> [ 0.913070] lr : regulator_set_voltage_unlocked+0x88/0x110
->
-> [ 0.913077] sp : ffffffc00cef3b30
->
-> [ 0.913080] x29: ffffffc00cef3b30 x28: ffffff8006f6f800 x27: 
-> ffffff8006f6fa00
->
-> [ 0.931243] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 ranges:
->
-> [ 0.934474]
->
-> [ 0.934475] x26: 00000000001312d0 x25: 0000000000000024
->
-> [ 0.939298] mtk-pcie 1a143000.pcie: Parsing ranges property...
->
-> [ 0.944730] x24: 0000000000118c30
->
-> [ 0.948038] mtk-pcie 1a143000.pcie: MEM 0x0020000000..0x0027ffffff -> 
-> 0x0020000000
->
-> [ 0.955155]
->
-> [ 0.955157] x23: 0000000000149970 x22: ffffff8000861800 x21: 
-> ffffff8006f6f800
->
-> [ 0.955166] x20: 00000000001312d0 x19: 0000000000000000 x18: 
-> 00000000cfad1bd3
->
-> [ 0.955174] x17: 000000000000000c x16: 0000000000000005 x15: 
-> 0000000000000000
->
-> [ 1.008473] x14: 0000000000000000 x13: 0000000000000165 x12: 
-> 0101010101010101
->
-> [ 1.015608] x11: 00000000017d7840 x10: 0000000000000850 x9 : 
-> ffffffc00cef3900
->
-> [ 1.017014] mmc0: new HS200 MMC card at address 0001
->
-> [ 1.022740] x8 : ffffff8005ee9f30 x7 : 0000000000000001 x6 : 
-> 00000000001312d0
->
-> [ 1.022748] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 
-> 0000000000000000
->
-> [ 1.022756] x2 : ffffffc00cef3b68 x1 : ffffffc00cef3b6c
->
-> [ 1.029034] mmcblk0: mmc0:0001 008G30 7.28 GiB
->
-> [ 1.034833] x0 : ffffff8000861800
->
-> [ 1.034838] Call trace:
->
-> [ 1.044528] Alternate GPT is invalid, using primary GPT.
->
-> [ 1.047175] regulator_check_voltage+0xb0/0xf0
->
-> [ 1.052603] FIT: Selected configuration: "config-1" (OpenWrt 
-> bananapi_bpi-r64)
->
-> [ 1.055090] regulator_set_voltage+0x3c/0x64
->
-> [ 1.057539] FIT: kernel sub-image 0x00001000..0x005200f9 "kernel-1" 
-> (ARM64 OpenWrt Linux-6.1-rc2)
->
-> [ 1.062824] mtk_cpufreq_voltage_tracking+0x12c/0x27c
->
-> [ 1.062831] mtk_cpufreq_set_target+0x1c4/0x350
->
-> [ 1.062837] __cpufreq_driver_target+0x2dc/0x660
->
-> [ 1.067289] FIT: flat_dt sub-image 0x00521000..0x005272d9 "fdt-1" 
-> (ARM64 OpenWrt bananapi_bpi-r64 device tree blob)
->
-> [ 1.074484] od_dbs_update+0xb8/0x19c
->
-> [ 1.074490] dbs_work_handler+0x3c/0x7c
->
-> [ 1.078774] FIT: filesystem sub-image 0x00528000..0x00829fff 
-> "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 rootfs)
->
-> [ 1.088560] process_one_work+0x200/0x3a0
->
-> [ 1.093624] mmcblk0: p1 p2 p3 p4 p65(rootfs-1) p66(rootfs_data) p128
->
-> [ 1.098116] worker_thread+0x170/0x4c0
->
-> [ 1.104575] mmcblk0boot0: mmc0:0001 008G30 4.00 MiB
->
-> [ 1.114009] kthread+0xd4/0xe0
->
-> [ 1.114016] ret_from_fork+0x10/0x20
->
-> [ 1.114028] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
->
-> [ 1.114033] ---[ end trace 0000000000000000 ]---
-> [ 0.878926] ------------[ cut here ]------------
->
+The device can boot from all 4 storage options. Both, SPI and MMC, can
+be switched using hardware switches on the board, see
+https://wiki.banana-pi.org/Banana_Pi_BPI-R3#Jumper_setting
 
-Full log:
-https://gist.github.com/PolynomialDivision/4a555079887b288f4795b28eb3607aa9
+So why do the SPI-NAND vs. SPI-NOR switching with device tree overlays
+and the SD card vs. eMMC switching with dtsi + 2x dts? To me this looks
+inconsitent. Use either one or the other method.
 
-Big thanks to Daniel helping me to build a vanilla kernel with OpenWrt 
-build system.
 
-Bests
-Nick
-
-On 11/10/22 12:26, Matthias Brugger wrote:
-> Hi Nick,
->
-> On 09/11/2022 14:35, Nick wrote:
->> Hi,
->> while trying to bump OpenWrt Kernel to 6.1rc2 I noticed that the 
->> kernel is crashing while booting on a Banana Pi R64 (MT7622):
->>
->>> [    1.055565] ------------[ cut here ]------------
->>> [    1.060204] Kernel BUG at regulator_check_voltage+0xb0/0xf0 
->>> [verbose debug info unavailable]
->>> [    1.062418] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 
->>> ranges:
->>> [    1.068656] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
->>> [    1.075248] mtk-pcie 1a143000.pcie: Parsing ranges property...
->>> [    1.081257] Modules linked in:
->>> [    1.081264] CPU: 1 PID: 328 Comm: kworker/1:7 Tainted: G 
->>> S                 6.1-rc2 #0
->>> [    1.087088] mtk-pcie 1a143000.pcie:      MEM 
->>> 0x0020000000..0x0027ffffff -> 0x0020000000
->>> [    1.090126] Hardware name: Bananapi BPI-R64 (DT)
->>> [    1.110541] Workqueue: events dbs_work_handler
->>> [    1.114988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS 
->>> BTYPE=--)
->>> [    1.121944] pc : regulator_check_voltage+0xb0/0xf0
->>> [    1.126728] lr : regulator_set_voltage_unlocked+0x88/0x110
->>> [    1.129638] mmc1: host does not support reading read-only switch, 
->>> assuming write-enable
->>> [    1.132207] sp : ffffffc00956bb30
->>> [    1.132209] x29: ffffffc00956bb30 x28: ffffff8000efb400 x27: 
->>> 0000000000000024
->>> [    1.132219] x26: 00000000001312d0 x25: 0000000000118c30 x24: 
->>> 00000000001312d0
->>> [    1.132227] x23: 0000000000149970
->>> [    1.146036] mmc1: new high speed SDHC card at address e624
->>> [    1.150642]  x22: ffffff800038f800
->>> [    1.159192] mmcblk1: mmc1:e624 SL16G 14.8 GiB
->>> [    1.161068]  x21: ffffff8000efb100
->>> [    1.161072] x20: 00000000001312d0
->>> [    1.175424] GPT:partition_entry_array_crc32 values don't match: 
->>> 0xa0b5ce6d != 0xab54d286
->>> [    1.177757]  x19: 0000000000000000 x18: 00000000799b2550
->>> [    1.181067] GPT:Primary header thinks Alt. header is not at the 
->>> end of the disk.
->>> [    1.189143] x17: 0000000000000003 x16: 0000000000000001 x15: 
->>> 0000000000000000
->>> [    1.189151] x14: 0000000000000000 x13: 0000000000000146 x12: 
->>> 00000000fa83b2da
->>> [    1.189159] x11: 000000000000013d x10: 0000000000000850
->>> [    1.194472] GPT:305184 != 31116287
->>> [    1.201842]  x9 : ffffffc00956b910
->>> [    1.201846] x8 : ffffff8000b9edf0 x7 : 0000000000000001
->>> [    1.208970] GPT:Alternate GPT header not at the end of the disk.
->>> [    1.216092]  x6 : 00000000001312d0
->>> [    1.216095] x5 : 0000000000118c30 x4 : 0000000000000000 x3 : 
->>> 0000000000000000
->>> [    1.216103] x2 : ffffffc00956bb68 x1 : ffffffc00956bb6c
->>> [    1.221321] GPT:305184 != 31116287
->>> [    1.224706]  x0 : ffffff800038f800
->>> [    1.228095] GPT: Use GNU Parted to correct GPT errors.
->>> [    1.233307]
->>> [    1.233309] Call trace:
->>> [    1.233312]  regulator_check_voltage+0xb0/0xf0
->>> [    1.242680] FIT: Selected configuration: 
->>> "config-mt7622-bananapi-bpi-r64-pcie1" (OpenWrt bananapi_bpi-r64 
->>> with mt7622-bananapi-bpi-r64-pcie1)
->>> [    1.242694]  regulator_set_voltage+0x3c/0x64
->>> [    1.249831] FIT:           kernel sub-image 
->>> 0x00001000..0x0052fd0a "kernel-1" (ARM64 OpenWrt Linux-6.1-rc2)
->>> [    1.255030]  mtk_cpufreq_voltage_tracking+0x11c/0x26c
->>> [    1.255039]  mtk_cpufreq_set_target+0x1c4/0x350
->>> [    1.258444] FIT:          flat_dt sub-image 
->>> 0x00530000..0x005380c5 "fdt-1" (ARM64 OpenWrt bananapi_bpi-r64 
->>> device tree blob)
->>> [    1.261820]  __cpufreq_driver_target+0x2f4/0x674
->>> [    1.261826]  od_dbs_update+0xb8/0x19c
->>> [    1.266969] FIT:          flat_dt sub-image 
->>> 0x00539000..0x0053911a "fdt-mt7622-bananapi-bpi-r64-pcie1" (ARM64 
->>> OpenWrt bananapi_bpi-r64 device tree overlay 
->>> mt7622-bananapi-bpi-r64-pcie1)
->>> [    1.268431]  dbs_work_handler+0x3c/0x7c
->>> [    1.270883] FIT:          flat_dt sub-image 
->>> 0x0053a000..0x0053a20f "fdt-mt7622-bananapi-bpi-r64-sata" (ARM64 
->>> OpenWrt bananapi_bpi-r64 device tree overlay 
->>> mt7622-bananapi-bpi-r64-sata)
->>> [    1.275297]  process_one_work+0x200/0x3a0
->>> [    1.287998] FIT:       filesystem sub-image 
->>> 0x0053b000..0x00859fff "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 
->>> rootfs)
->>> [    1.292237]  worker_thread+0x170/0x4c0
->>> [    1.292244]  kthread+0xd4/0xe0
->>> [    1.302066] FIT: selecting configured loadable "rootfs-1" to be 
->>> root filesystem
->>> [    1.307092]  ret_from_fork+0x10/0x20
->>> [    1.311631]  mmcblk1: p1 p2 p3 p4 p5 p6 p65(rootfs-1) 
->>> p66(rootfs_data) p128
->>> [    1.322903] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
->>> [    1.413322] ---[ end trace 0000000000000000 ]---
->> The complete log can be found here:
->> https://gist.githubusercontent.com/PolynomialDivision/395d009c84b426d780549c5fa1f64ff1/raw/886d621d2bf6f03429586adf8a14a6c37c8d8a7d/mt7622-6-1.log 
->>
->>
->> Reverting commit "cpufreq: mediatek: Refine 
->> mtk_cpufreq_voltage_tracking()" fixes the kernel bug:
->> https://github.com/torvalds/linux/commit/6a17b3876bc8303612d7ad59ecf7cbc0db418bcd 
->>
->>
->> The revert commit can be found here:
->> https://github.com/PolynomialDivision/openwrt/commit/1df941d0334000e3aced43b7d50cdac0da8bf427 
->>
->>
->> The branch I use to build the 6.1rc2 on a Banana Pi R64 can be found 
->> here:
->> https://github.com/PolynomialDivision/openwrt/commits/bump-mt7622-rebase
->>
->
-> Thanks for the report.
-> Could you test with a plain upstream kernel? That would help us to 
-> verify that this is a upstream problem and not introduced by some 
-> openwrt patches.
->
-> Regards,
-> Matthias
+> 
+> changes:
+> v4:
+> - add PCIe nodes
+> - fix sfp-properties of sfp-1 (need to be plural)
+>   thx to Denis Odintsov for this
+> 
+> v3:
+> - rename factory-key to reset-key
+> - add dcin regulator and add it as input for 3v3 (with renaming)
+> - remove memory-node
+> - dropped wifi eeprom (calibration) data
+> - move mmc0 pinctrl to common dtsi and drop sdcard comment
+> - change mmc pull-up/down to have generic bias-pull*
+> 
+> v2:
+> - remove pcie to be added later (discussion about clocks)
+> - some fixes based on suggestions on ML
+>   - add key suffix like it's done in mt7622-bpi-r64 devicetree
+>   - add dash in sfp node names
+>   - use reg as unit for switch-node
+>   - drop "-3-4" suffix from i2c-pins node name
+>   - fix order in Makefile
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>  .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  31 ++
+>  .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  25 +
+>  .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 458 ++++++++++++++++++
+>  4 files changed, 516 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 0ec90cb3ef28..e8902f2cc58f 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -7,6 +7,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> new file mode 100644
+> index 000000000000..a0ca35b5977e
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
+> @@ -0,0 +1,31 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (emmc)";
+> +};
+> +
+> +&mmc0 {
+> +	bus-width = <8>;
+> +	max-frequency = <200000000>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	mmc-hs400-1_8v;
+> +	hs400-ds-delay = <0x14014>;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	non-removable;
+> +	no-sd;
+> +	no-sdio;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> new file mode 100644
+> index 000000000000..06e4691cb815
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
+> @@ -0,0 +1,25 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +
+> +#include "mt7986a-bananapi-bpi-r3.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 (sdmmc)";
+> +};
+> +
+> +&mmc0 {
+> +	bus-width = <4>;
+> +	max-frequency = <52000000>;
+> +	cap-sd-highspeed;
+> +	vmmc-supply = <&reg_3p3v>;
+> +	vqmmc-supply = <&reg_1p8v>;
+> +	status = "okay";
+> +};
+> +
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> new file mode 100644
+> index 000000000000..def16e36f1e6
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
+> @@ -0,0 +1,458 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Authors: Sam.Shih <sam.shih@mediatek.com>
+> + *          Frank Wunderlich <frank-w@public-files.de>
+> + *          Daniel Golle <daniel@makrotopia.org>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/pinctrl/mt65xx.h>
+> +
+> +#include "mt7986a.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3";
+> +	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +
+> +	dcin: regulator-12vd {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "12vd";
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +	};
+> +
+> +	gpio-keys {
+> +		compatible = "gpio-keys";
+> +
+> +		reset-key {
+> +			label = "reset";
+> +			linux,code = <KEY_RESTART>;
+> +			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+> +		};
+> +
+> +		wps-key {
+> +			label = "wps";
+> +			linux,code = <KEY_WPS_BUTTON>;
+> +			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+> +		};
+> +	};
+> +
+> +	/* i2c of the left SFP cage (wan) */
+> +	i2c_sfp1: i2c-gpio-0 {
+> +		compatible = "i2c-gpio";
+> +		sda-gpios = <&pio 16 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		scl-gpios = <&pio 17 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		i2c-gpio,delay-us = <2>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +
+> +	/* i2c of the right SFP cage (lan) */
+> +	i2c_sfp2: i2c-gpio-1 {
+> +		compatible = "i2c-gpio";
+> +		sda-gpios = <&pio 18 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		scl-gpios = <&pio 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+> +		i2c-gpio,delay-us = <2>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +
+> +		green_led: led-0 {
+> +			color = <LED_COLOR_ID_GREEN>;
+> +			function = LED_FUNCTION_POWER;
+> +			gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
+> +			default-state = "on";
+> +		};
+> +
+> +		blue_led: led-1 {
+> +			color = <LED_COLOR_ID_BLUE>;
+> +			function = LED_FUNCTION_STATUS;
+> +			gpios = <&pio 86 GPIO_ACTIVE_HIGH>;
+> +			default-state = "off";
+> +		};
+> +	};
+> +
+> +	reg_1p8v: regulator-1p8v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "1.8vd";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +		vin-supply = <&dcin>;
+> +	};
+> +
+> +	reg_3p3v: regulator-3p3v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "3.3vd";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +		vin-supply = <&dcin>;
+> +	};
+> +
+> +	reg_5v: regulator-5v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name  = "fixed-5p1";
+> +		regulator-min-microvolt = <5100000>;
+> +		regulator-max-microvolt = <5100000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +		vin-supply = <&dcin>;
+> +	};
+> +
+> +	/* left SFP cage (wan) */
+> +	sfp1: sfp-1 {
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp1>;
+> +		los-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
+> +		mod-def0-gpios = <&pio 49 GPIO_ACTIVE_LOW>;
+> +		tx-disable-gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
+> +	};
+> +
+> +	/* right SFP cage (lan) */
+> +	sfp2: sfp-2 {
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp2>;
+> +		los-gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
+> +		mod-def0-gpios = <&pio 47 GPIO_ACTIVE_LOW>;
+> +		tx-disable-gpios = <&pio 15 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
+> +	};
+> +};
+> +
+> +&crypto {
+> +	status = "okay";
+> +};
+> +
+> +&eth {
+> +	status = "okay";
+> +
+> +	gmac0: mac@0 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <0>;
+> +		phy-mode = "2500base-x";
+> +
+> +		fixed-link {
+> +			speed = <2500>;
+> +			full-duplex;
+> +			pause;
+> +		};
+> +	};
+> +
+> +	gmac1: mac@1 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <1>;
+> +		phy-mode = "2500base-x";
+> +		sfp = <&sfp1>;
+> +		managed = "in-band-status";
+> +	};
+> +
+> +	mdio: mdio-bus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +	};
+> +};
+> +
+> +&mdio {
+> +	switch: switch@31 {
+> +		compatible = "mediatek,mt7531";
+> +		reg = <31>;
+> +		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
+> +	};
+> +};
+> +
+> +&mmc0 {
+> +	pinctrl-names = "default", "state_uhs";
+> +	pinctrl-0 = <&mmc0_pins_default>;
+> +	pinctrl-1 = <&mmc0_pins_uhs>;
+> +};
+> +
+> +&i2c0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&pcie {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +&pio {
+> +	i2c_pins: i2c-pins {
+> +		mux {
+> +			function = "i2c";
+> +			groups = "i2c";
+> +		};
+> +	};
+> +
+> +	mmc0_pins_default: mmc0-pins {
+> +		mux {
+> +			function = "emmc";
+> +			groups = "emmc_51";
+> +		};
+> +		conf-cmd-dat {
+> +			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
+> +			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
+> +			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
+> +			input-enable;
+> +			drive-strength = <4>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
+> +		};
+> +		conf-clk {
+> +			pins = "EMMC_CK";
+> +			drive-strength = <6>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
+> +		};
+> +		conf-ds {
+> +			pins = "EMMC_DSL";
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
+> +		};
+> +		conf-rst {
+> +			pins = "EMMC_RSTB";
+> +			drive-strength = <4>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
+> +		};
+> +	};
+> +
+> +	mmc0_pins_uhs: mmc0-uhs-pins {
+> +		mux {
+> +			function = "emmc";
+> +			groups = "emmc_51";
+> +		};
+> +		conf-cmd-dat {
+> +			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
+> +			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
+> +			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
+> +			input-enable;
+> +			drive-strength = <4>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
+> +		};
+> +		conf-clk {
+> +			pins = "EMMC_CK";
+> +			drive-strength = <6>;
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
+> +		};
+> +		conf-ds {
+> +			pins = "EMMC_DSL";
+> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
+> +		};
+> +		conf-rst {
+> +			pins = "EMMC_RSTB";
+> +			drive-strength = <4>;
+> +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
+> +		};
+> +	};
+> +
+> +	pcie_pins: pcie-pins {
+> +		mux {
+> +			function = "pcie";
+> +			groups = "pcie_clk", "pcie_pereset";
+> +		};
+> +	};
+> +
+> +	spi_flash_pins: spi-flash-pins {
+> +		mux {
+> +			function = "spi";
+> +			groups = "spi0", "spi0_wp_hold";
+> +		};
+> +	};
+> +
+> +	spic_pins: spic-pins {
+> +		mux {
+> +			function = "spi";
+> +			groups = "spi1_0";
+> +		};
+> +	};
+> +
+> +	uart1_pins: uart1-pins {
+> +		mux {
+> +			function = "uart";
+> +			groups = "uart1_rx_tx";
+> +		};
+> +	};
+> +
+> +	uart2_pins: uart2-pins {
+> +		mux {
+> +			function = "uart";
+> +			groups = "uart2_0_rx_tx";
+> +		};
+> +	};
+> +
+> +	wf_2g_5g_pins: wf-2g-5g-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_2g", "wf_5g";
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+> +
+> +	wf_dbdc_pins: wf-dbdc-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_dbdc";
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+> +
+> +	wf_led_pins: wf-led-pins {
+> +		mux {
+> +			function = "led";
+> +			groups = "wifi_led";
+> +		};
+> +	};
+> +};
+> +
+> +&spi0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&spi_flash_pins>;
+> +	cs-gpios = <0>, <0>;
+> +	status = "okay";
+> +};
+> +
+> +&spi1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&spic_pins>;
+> +	cs-gpios = <0>, <0>;
+> +	status = "okay";
+> +};
+> +
+> +&ssusb {
+> +	vusb33-supply = <&reg_3p3v>;
+> +	vbus-supply = <&reg_5v>;
+> +	status = "okay";
+> +};
+> +
+> +&switch {
+> +	ports {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		port@0 {
+> +			reg = <0>;
+> +			label = "wan";
+> +		};
+> +
+> +		port@1 {
+> +			reg = <1>;
+> +			label = "lan0";
+> +		};
+> +
+> +		port@2 {
+> +			reg = <2>;
+> +			label = "lan1";
+> +		};
+> +
+> +		port@3 {
+> +			reg = <3>;
+> +			label = "lan2";
+> +		};
+> +
+> +		port@4 {
+> +			reg = <4>;
+> +			label = "lan3";
+> +		};
+> +
+> +		port5: port@5 {
+> +			reg = <5>;
+> +			label = "lan4";
+> +			phy-mode = "2500base-x";
+> +			sfp = <&sfp2>;
+> +			managed = "in-band-status";
+> +		};
+> +
+> +		port@6 {
+> +			reg = <6>;
+> +			label = "cpu";
+> +			ethernet = <&gmac0>;
+> +			phy-mode = "2500base-x";
+> +
+> +			fixed-link {
+> +				speed = <2500>;
+> +				full-duplex;
+> +				pause;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&trng {
+> +	status = "okay";
+> +};
+> +
+> +&uart0 {
+> +	status = "okay";
+> +};
+> +
+> +&uart1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart1_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart2_pins>;
+> +	status = "okay";
+> +};
+> +
+> +&usb_phy {
+> +	status = "okay";
+> +};
+> +
+> +&watchdog {
+> +	status = "okay";
+> +};
+> +
+> +&wifi {
+> +	status = "okay";
+> +	pinctrl-names = "default", "dbdc";
+> +	pinctrl-0 = <&wf_2g_5g_pins>, <&wf_led_pins>;
+> +	pinctrl-1 = <&wf_dbdc_pins>, <&wf_led_pins>;
+> +};
+> +
+> --
+> 2.34.1
+> 
+> 
 
