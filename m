@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2174AC43219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 15:54:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DB9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Nov 2022 16:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MXw2DcIrd4sYwZp2Qf6GO0lRe5Jh56EBfVUnFYKu6RE=; b=Z5CMT+Pilkq1JzdiuxW7n2HixD
-	p9YepV2yQyoRWEIApxDR0MdPm79TS5HzS9kwa1KURTFF39/cXYQMw8r0uj+GrB3H0s9bR90Q33M6b
-	pcpLCrkROQqcilqqJYBNRjuWlN3ZxMCZJdkFa/xIDGc2TPH1mBk5mya6ykmcLBdy1nwk5MhxDaVzq
-	AH8pJ25yqfMxV40xBIK6mmU3ljH4ycBjFZKmC2CPtZvJDZPSYEG/Dyf4buG9wL/JzYVUdtMInEiE5
-	xrnFLuroBBRxARSretOMMR3T98UVpEvCgPpSKPzTjp5BBzEwuC7r/DtKZEUTNIdz7CdZkoI+dbTR+
-	Dze0Jydg==;
+	bh=E0pHXTN5UXRyh8g53m06aJ1O4pdRE+ZlKdzDpUzPXnA=; b=xVFfE1OWX3JBFrWsRQ5obPlLqn
+	w4NCvSaqtaUNgnG2sj86/kXHBVPZ6JojbuZ7950a07bjdPUjsHtIbQMziHoKBvAdpLhTqf7ZUbmsz
+	tWQpNGTpjpetgifI3Hg2B9rSQGLJUd8TNCssuqA8whf5EwLkTmKKVm2tBUO/sTfAkzmdH4iJ8En0M
+	yCZAVlbrhSjzecmHM8yiz+V2ZQlvZberN3jZcRJ8QBWeazWvR4hu9tvEuicpsmenSCihK02yRGijI
+	RyXYNioc8MEUQGm8JwbwXV3D4d5TH6HfEKmHjgQp4tAt0Wz/C8EH3RupsSvKKjjD8VY89OufZIL/c
+	sMektDSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouyGq-00CVJK-Ma; Tue, 15 Nov 2022 15:54:44 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1ouz8i-00DEht-L2; Tue, 15 Nov 2022 16:50:24 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ouyGe-00CVD9-UQ
-	for linux-mediatek@lists.infradead.org; Tue, 15 Nov 2022 15:54:35 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id v17so22473057edc.8
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Nov 2022 07:54:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MXw2DcIrd4sYwZp2Qf6GO0lRe5Jh56EBfVUnFYKu6RE=;
-        b=VdrMWd2C0zRlIU+FT+lgMorBgLSdXIaGdRiqQEjfe8ICZQFWZbSQJdhtD35B6a6TBT
-         esMxNNkTUrQltwheZBCw0jpTcMirEaF3UBLCAQJNGSC5SvqsykCjHUMWADXOU4zkzN3N
-         zRcvodFQ2fJTRSA/8SKxycjIaZ3P/YHyvJCNDYCbN9ow9C19ZSnTmkk8bvOL0M3lRLf8
-         gtDCM0hKPwxajoUeptIpXUgt8dlhddD74sFXXX+qYapzoehSlThwIpxBYUp3g2URDHqf
-         VdCp91/IM06Ap6P8h7XkNAyZa/Qo7AIm/hG/vv/5oRLcpePO4Rzhv5JYp3oS756qwqg/
-         M58A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MXw2DcIrd4sYwZp2Qf6GO0lRe5Jh56EBfVUnFYKu6RE=;
-        b=LGAes33iFXKtG4lbcFiCBXZykMwWBKIu3dPWCxU9vC6uEfXsREF3lQQac5tgYqstZS
-         8QOaq4WLPjE3zIXFsyhsxjNpWSdKo9V/CHgW0u3whN2QXhz6ft5HVAKGXSP/Q/TyY0Vx
-         iWpAqfF4Op8fcQSebqGHJVerNEaoGDJnX3CiYihG4Tvrm2ZRc8tKkqB5vkrzJVkhvGim
-         wm0NgSYeaSOj652uJTKOLQKW2vn2b5m/kQDXS4fzlwGR+qYE7OWM9afUPwOeKqdDKrRE
-         8sy8pyiMm3XPL/+5MN8pkDAZjBdiJjWQN+B/Ea+X3rgYqITV2CSVtcW5XhYxUu5SkVr8
-         m71w==
-X-Gm-Message-State: ANoB5pkndphwNMjNBccUz3rYlc/hv1/qlRFYWfYxk+mNtTHNB5iFa9RN
-	5iup/U/vKQsds5gP8nTKTGCHhxA1mERJ0Mu1RW7Wjw==
-X-Google-Smtp-Source: AA0mqf5TE5bV3zOgHOtylol+IUxKYYKrgvfQtjxF4BS+55SiwwnZkcIcQo0LiUhdzLshA1UMU7fopza3TqY0XOlXoGY=
-X-Received: by 2002:a50:fd9a:0:b0:461:b279:1175 with SMTP id
- o26-20020a50fd9a000000b00461b2791175mr15686083edt.124.1668527668323; Tue, 15
- Nov 2022 07:54:28 -0800 (PST)
+	id 1ouz8f-00DEek-6U; Tue, 15 Nov 2022 16:50:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1668531009;
+	bh=8KBr+dIwP/E3nNmJhfiOtBZ1JSdlPyiU8UUhwKa1DSs=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=qOrFoIcZd8TjeDnJMhYqAJrSVirE4ig1f8tkGTZeV7s4nLlfwNpLhrPKgB2tIa5F+
+	 KUnSgPvx67kWVZF3ykn/VtwSVYpTsYm/bZ8ZcvW49J74zNcJSn1eMrM0+FudsjbimW
+	 6Bm2WtmBrvPoorwfiAh1W+AZ6wUt49YxlvJjcMufpCiCPCq7cGx00khkPR9hzPlncb
+	 u1XJ33Wb1RjbwJlJfQO2svUSzaG+2A+UkRy8a7WFj6eMssVWz9rveTXm6TTkWbmbLJ
+	 T9CcN6PcMZBApL3InbW75d98eBRUEYDB8OTnXvbGsrZZPikw5ByBeElqsi9SdiLVmA
+	 4Lem90/JQuFLQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.148.186] ([217.61.148.186]) by web-mail.gmx.net
+ (3c-app-gmx-bs03.server.lan [172.19.170.52]) (via HTTP); Tue, 15 Nov 2022
+ 17:50:09 +0100
 MIME-Version: 1.0
-References: <20221005-mt6357-support-v4-0-5d2bb58e6087@baylibre.com>
- <20221005-mt6357-support-v4-5-5d2bb58e6087@baylibre.com> <fe898d24-54fa-56bb-8067-b422a3a52ff5@collabora.com>
- <CAFGrd9r70XRd=4Ogei+U2QXQny7LhWr9bDCRNYco+Bsy+2XqrA@mail.gmail.com> <c426918a-8d63-5c40-4340-6c918296814f@linaro.org>
-In-Reply-To: <c426918a-8d63-5c40-4340-6c918296814f@linaro.org>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 15 Nov 2022 16:54:17 +0100
-Message-ID: <CAFGrd9o5GmqMS=MRq+EM+_T5kcHS2qftP0g0smu2W4QXBLozLA@mail.gmail.com>
-Subject: Re: [PATCH v4 5/9] dt-bindings: soc: mediatek: convert pwrap documentation
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Fabien Parent <fabien.parent@linaro.org>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>, 
-	Chen Zhong <chen.zhong@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-leds@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-input@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, 
-	linux-rtc@vger.kernel.org, Rob Herring <robh@kernel.org>, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <trinity-8aa3b798-0819-43e6-beef-f04dd821b664-1668531009359@3c-app-gmx-bs03>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor
+ overlays
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 15 Nov 2022 17:50:09 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
+References: <20221106085034.12582-1-linux@fw-web.de>
+ <20221106085034.12582-12-linux@fw-web.de>
+ <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:SQl+29+ImbUvKrSPHRXSWUbo2yuDKo4wgq4m9hI8/KdxHmt0dogqarVIDiBshOyUXu6KS
+ PVlVkWH6vY85K4YqnQXo2XT5Y3b3MLWUsTTXAZorsBUMVCfJGv80gM0vdUzA0G5wNbhWH8S4RFa3
+ xNHO8TVrsCFDhdGCQoxzMGA9MIpgblcJWWK4IlpLN9li2e6seCu5fLwYVwfsyt/rCa1h9F5IV5mM
+ AXdg15jEhGJ512Ne6Wrw5i2PpexmhPHrvzieQbd397gnvz5L6868jlRWij68CNycqRrNZQZUCCxG
+ TQ=
+UI-OutboundReport: notjunk:1;M01:P0:mgoznSFtpkg=;qZru3duK4QSUWnNUEd/j4FW8s7z
+ edoRdzgUFm8wr6wNkYtomyHg/m60LnXYJ9/xoSmPYjER8U9qCMkmt7m8v88O6AEQ60V0dWyet
+ NA/YlkLL5w7n19/QqKBg9cZ887F4/1SLyfH3yXKviNTGcCFfmlQgr3LEozE7otAmJPSJci30i
+ facc5D63urBbv1cs68BxsfcGWr8dVF/vvSev1C35090PUJ5+Kao25OppMqGJi6MmUJosAv8O9
+ wNx87WAjjRQjI8QLkVBb0xinAvihij2RQoVwzdQtY/5Uhs1gQDmTOqHpvLQ0kYhCy3vtvTeDz
+ xapdJzZ4phJ0J4THheYYlGUJ2MYlZ5WXoXbe7EFP2XHoaAMbNEmvBz4mRljHepi+YzQhQnR3h
+ 6aogZwbh1y8MIX7kcDLwZyosJTZ9efJZqvXrErB0TZLPNrzNRRZUCOIPv4MCPAH+dv/fCHsog
+ 239+fAv9FoYTdZm9McbJWIm2Kv7llKTTM2ltWKP39I7rwZNOmaiGx55NQJal+pGgmwFbIBxtb
+ Jw5KGSTWH1oyBjqlL4DRpbnVHZqH9tjXn8z9JuPW6u/h9enb9KRidp4v88qHoa23XmB5p3mCI
+ ru9Xt+h+yQ92jX2ZCbZ5CN6VmZyW/IWFQYQDe2jxXj6TLfnGkFeXaKgvlHQQ0QmZS6fIfP48j
+ HymSdaiiSBmZGOMvVjjMPVIRfvsuR/z+85052gIfx7FXvUWBFCF36Ihb3g0eYPndYDWIML4wG
+ ZHigqdfpk6W2+frrOqmOHHtlUIHzv2/xl1VLgctEuVpEmTZ8wQjLDyzug08VCfQlGWnObOM8F
+ /QWuP/yKK/9ZUg/9ziLUnvDw==
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_075433_277334_1C5E3D00 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20221115_085021_648829_10311274 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +94,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mar. 15 nov. 2022 =C3=A0 15:18, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
-> >>> +maintainers:
-> >>> +  - Alexandre Mergnat <amergnat@baylibre.com>
-> >>
-> >> I say that the maintainer for pwrap is Flora Fu <flora.fu@mediatek.com=
->....
-> >
-> > Flora Fu is the driver maintainer. As described in
-> > Documentation/devicetree/bindings/writing-schema.rst:
-> > maintainers
-> >   A DT specific property. Contains a list of email address(es)
-> >   for maintainers of this binding.
-> >
-> > My  understanding is this field is only for binding maintainers, but
-> > not related driver maintainers. Are we aligned ?
+Hi
+
+
+> Gesendet: Freitag, 11. November 2022 um 10:16 Uhr
+> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
+> An: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead=
+.org, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozlowski" <krzysztof=
+.kozlowski+dt@linaro.org>
+> Cc: "Frank Wunderlich" <frank-w@public-files.de>, linux-arm-kernel@lists=
+.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+> Betreff: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor over=
+lays
 >
-> Usually driver maintainer should be also binding maintainer. You can
-> have more binding maintainers than drivers (and vice versa), but it's
-> less usual to maintain driver and do not care about its Devicetree
-> binding (unless driver is also for ACPI etc. but that's not the case here=
-?).
+> Rob, Krzysztof,
+>
+> On 06/11/2022 09:50, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > Add devicetree overlays for using nand and nor on BPI-R3.
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+> >   .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 53 +++++++++++++++
+> >   .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 67 +++++++++++++++++=
+++
+> >   3 files changed, 122 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi=
+-r3-nand.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi=
+-r3-nor.dts
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
+ts/mediatek/Makefile
+> > index e8902f2cc58f..d42208c4090d 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-x20-dev.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-rfb1.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-bananapi-bpi-r64.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
+>
+> Do we allow the inclusion of overlays in the kernel?
+> I don't think so. I see there are some dtbos for some freescale platform=
+s, but I
+> wasn't aware that we support that. I thought it is all about dtsi includ=
+es.
+>
+> @frank In any case we would need to apply these overlays to some base bo=
+ard to
+> create a valis dtb.
 
-Ok, thanks for the explanations
+yes of course, the "base board" is either the sd or the emmc fdt i added 1=
+ patch before.
+This way it allows all 4 combinations (sd+nand, sd+nor, emmc+nand, emmc+no=
+r).
 
-Regards,
-Alex
+as i pointed in v4 of this Patch there is a commit in robs tree allow buil=
+ding dt overlays
+from dtso-files...
+
+"kbuild: Allow DTB overlays to built from .dtso named source files"
+    https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/=
+?h=3Ddt/next&id=3D363547d2191cbc32ca954ba75d72908712398ff2
+
+maybe this is the right way to go (rename my current dts to dtso)?
+
+> Regards,
+> Matthias
+
+regards Frank
 
