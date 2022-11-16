@@ -4,65 +4,175 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178F7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 05:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F8CDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 05:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+ZtGWy5OlTS7BVIaJTCUlCxEvUNtV4jJl10SUtieZZA=; b=BJNpIYvx5eq3nurusFpbAz0A7Y
-	ILTDFyz8YgWvC0rHSaomwMiEW02If6N5WyvS/9Ox61eTVsXwaPrsHHpjilJm/WxQmYxJTDzDqVYJA
-	aigrSxmhFm6E1Rp6NQznVfweZGhAdovpT7mCykA7xB7JWAputwlmIbYyCS9vhd/eWpCAGjOG0w1bf
-	ez7EhxdZGwiqUJO+NGNEC1b/Ok0o1uqv9d1nZi1S6+Iq4tRQiLQaBYuIRI1XKKpjkjUdE0fym8RJs
-	pSPrQxtkSTJ3IznFew3NzpMf8maZf5zDU8vrbO6G4D7DUvv/pfG44PP4Dc4/Y8pVIWSEVMU1XAgyA
-	viZBGlDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wF0SH/H3D1XPfxxyd2+TFRCXjMixTnd/8CngWf6vwGw=; b=bjs6T0AljCvNcvbni8JFXBxA32
+	KrjV2IdnN+yKBDr3T0vRU5S6nF276eZ/WK/GOczciu0OP2rWUh0/L3LwH/+Vh3AI5xfzCL4gm2kZA
+	dAFpUMcrhRXY6EkKa6oxVHzGYBdhCzdxEt1Zgpa90Rw8GVpQHl3fHEKGuhYEcHXMLTgfotmFzgBVd
+	3T8pn/YQAfwCh7F6tQ71IsW4e55JI4mIRgUVvG3zy0Wgi5puumpt7Nl6EBJgbEpLsWfg+lbXVeSM/
+	quWfDj0cGzQd8IOiRFSSwN91rz9h5XeaqeNHcltO8KVpFdPjWYDY6qWIAtnJ5dzlQlCvMZUZ0uIiY
+	6isKokHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovAeO-00HG9v-Kp; Wed, 16 Nov 2022 05:07:52 +0000
+	id 1ovBOl-0008X1-N2; Wed, 16 Nov 2022 05:55:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovAeL-00HG6x-HO
-	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 05:07:51 +0000
-X-UUID: 006e967c00ba42c18da0bd3ee16fe432-20221115
+	id 1ovBOZ-0008Sh-PV; Wed, 16 Nov 2022 05:55:37 +0000
+X-UUID: c14f30f34d8b4af2b492557a14f63f79-20221115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+ZtGWy5OlTS7BVIaJTCUlCxEvUNtV4jJl10SUtieZZA=;
-	b=XKsxZM0UTyv8KUs5IJJmnGrfDyw74RwhQvEkibjW8iR7TPf8zilAJKi5cbd38im4t84+WvUJgRGs4oRJPIqmJ8luQ8Qme0LQBUvIXspc0TcHkzwHeXTa8fX3UeT/BiESRAVoyLAyvc0ZrffzBjk730Ub8Ib1C28vwWcx7udzHUE=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=wF0SH/H3D1XPfxxyd2+TFRCXjMixTnd/8CngWf6vwGw=;
+	b=DJu/28ln5+1gPLalZSHDCI1xAsQM7Yw1vZB34qYbd9ck1z9ErWhuORusZxAljM+tSSSAARsoOBz394PueJMkpRV45e2Hfzsf/OdGAo8Wdp43m6GpO62NX5tvx4uXPjcDP+029xk7PhS1D9qnPEeA96lry+ftFN/RqvD3VY2gHr4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:f11def21-d753-4350-b9cb-eeb8a1598f92,IP:0,U
+X-CID-O-INFO: VERSION:1.1.12,REQID:6c1506a2-07e9-4e06-8dcd-92dea887ef6c,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:62bb4a28-7328-4d53-af97-37d3ca89e562,B
+X-CID-META: VersionHash:62cd327,CLOUDID:20ed4b28-7328-4d53-af97-37d3ca89e562,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 006e967c00ba42c18da0bd3ee16fe432-20221115
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
+X-UUID: c14f30f34d8b4af2b492557a14f63f79-20221115
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2002033146; Tue, 15 Nov 2022 22:07:40 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+	with ESMTP id 2022415338; Tue, 15 Nov 2022 22:55:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 16 Nov 2022 12:07:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 16 Nov 2022 12:07:06 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7915: add support to configure spatial reuse parameter set
-Date: Wed, 16 Nov 2022 12:07:02 +0800
-Message-ID: <46d16c8c5a265a68fae2f380fbd38a9c07e0f86c.1668571383.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.2.792.15; Wed, 16 Nov 2022 13:54:52 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 16 Nov 2022 13:54:52 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oJ6nCQVPoltW/mN1JedIXBNKWiXxuUKpYRTS6buZbmwpZPybepF/vH3EiuqOkb0fwX43JDvaFDhtHjoqFdy09hkI2eUKVQtBpoLxPDMq96aN+tBpjLCO6PygFW6eGENJD1OSd9XOLmJYf3/QYqPxh5l+fzIYe0DICLSOobUyGD5OavbkurIAzZcaqCS2WX/7FY6pamNkEmAVybsftEi6lIaBWwtVeP6IOB2utp7tq+GP/j7sDCGOiV3QvBEte0EHLhW1cWM+n3gUIIexuph8DPvyFS2SQ+Jo7ZHdcHEaBnkAnlFg2nHsetNZiJAsUkZxg+jb8ThZSn09iPAq0FPzYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wF0SH/H3D1XPfxxyd2+TFRCXjMixTnd/8CngWf6vwGw=;
+ b=hxO5MV4b7uNARInYgKN6p5Y02gsHuv3wTFWtMBye/PZ369mggWCuu38tQjovdbhnl8ngFkVmosPR6xZW66pzYCU5ZHYZ8ZVUk11bReVX2l+c7ZkMkdjAN62Q2mq2kiOgdMUaeEGzMipW22xFYvnWlwy74Er8BEL+in7wwCNuL3LtqyF4u5Cz5VQOfB+br/tYXCwwOj8ERJ0wfadR29khRfC8iagvZbxbfJKHpDd2vY3uJnkY+KWI6r0IAxjq7oOMI+oP7WTUD6MonD/lYEpBuiu1yALOX1SH4KMdqgT9SyWezy1UJzgTkls+8/VunxD5DwvJ8C6rKljdmAm09bK49Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wF0SH/H3D1XPfxxyd2+TFRCXjMixTnd/8CngWf6vwGw=;
+ b=Xy1RZvsfhdk2o6w3CmUeQ8NPzaS4rrcd7cNTn+nMFZpqxHthwGlwi5cBiEnW/YZDZaBtKQBnoNwnPdtOwC4drJ7WL/BLxT6uGpuCU6DjviJ0kPursgRU3RYkqJN1JZWAXu7xayucG3q0jnTft4J1JU2lB11wHz8tSnjhVDTBTbY=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by SG2PR03MB6327.apcprd03.prod.outlook.com (2603:1096:4:177::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5813.17; Wed, 16 Nov
+ 2022 05:54:50 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b%6]) with mapi id 15.20.5813.017; Wed, 16 Nov 2022
+ 05:54:50 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "wenst@chromium.org" <wenst@chromium.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"nicolas@ndufresne.ca" <nicolas@ndufresne.ca>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "benjamin.gaignard@collabora.com"
+	<benjamin.gaignard@collabora.com>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>
+CC: =?utf-8?B?WGlhb3lvbmcgTHUgKOWNouWwj+WLhyk=?= <Xiaoyong.Lu@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org"
+	<stevecho@chromium.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "mchehab@kernel.org"
+	<mchehab@kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
+	<hsinyi@chromium.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] media: mediatek: vcodec: fix h264 cavlc bitstream fail
+Thread-Topic: [PATCH v2] media: mediatek: vcodec: fix h264 cavlc bitstream
+ fail
+Thread-Index: AQHY4uayXmm78Htl6U2l3cOFODO/Xa4+bRWAgALM/AA=
+Date: Wed, 16 Nov 2022 05:54:49 +0000
+Message-ID: <70a85f8eb168cf57b2a38807d0ca852b27b67d80.camel@mediatek.com>
+References: <20221018114122.26785-1-yunfei.dong@mediatek.com>
+	 <f301a43a-5d55-1607-b8d3-5cd057977397@collabora.com>
+In-Reply-To: <f301a43a-5d55-1607-b8d3-5cd057977397@collabora.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|SG2PR03MB6327:EE_
+x-ms-office365-filtering-correlation-id: 8cb4e0f6-939f-41c6-ad08-08dac797130c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Pkvll1x+C1yR4f89o3ADVYJKiQvAe4BsIVOVUIfGaL6R1dJbMDvInHDxg+45a+1zyjyF2KDRRsOMeLE75DRRI7sBK63Ld3HbScXDrkbxdGPw3nU6ZgRiFtWiTu9mi8nPNs870C7zeX4sDulFJMnLbfJM/HwyZ1D0EZpnghx245SQKRhuZH72v1aizKANfgelWGZSuilRd4kHh+cKyorhy4iqYc5S1w6+Ly2dKGDivn4OotFhRFlA/7acD5gYH89XM+p9XaTqp1pwpN+93gjn4DW1F20GcrkgNB49Vst4eKLWJNVF+B0PJUhlqtTu7CyiT93thfrkBUjAMQ2nqqPEy6EKPAdJroan7Re4aJGrpV2OHC6KUNk5nzToSUafdC4aXvQRgN4gorX05E6vFwGihgOlymRYyWRt2KO3biIWqf11mP8SQRUoMs25tPlZeRahIQX4r4VDup9xs+26Q8TLgcdBFxMo+h+gdsLK4E6om7HCetb2lRtF0Lsn8f5F0/6Y96zR6J6rhkrxSreTYdRSqfdJCWqTgF3eM2/8oP95HSKLuTvj8LyNwSBzlgzckzOQY4CzS7pz1SJv0IuiWkOTh1tT+/J/gjWFF8yEuCVa7XmM9ZU6d/rsle93xeio3G2vks5ARSHh3IVi8hA5FbUcEvJ/RBGuNVcdCDcGGonH9r3srLPbc3CQMMHz5AjoI57d+R6m8eRSfiYM70ataqdXtoSs2dTvrkPwF9Wj0gWwE0kOW7mYiCN3BHX0OPvDACexTTUFGg+JUutXEGiZA0Yw2PFW4i4VIacQBuBQVvS61Ii96H7WG7ZcmwVa/I2igI/rjiP8W/yMYLpqAuoXYMYf1Q==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(396003)(366004)(39860400002)(346002)(136003)(451199015)(71200400001)(26005)(6486002)(41300700001)(6506007)(478600001)(91956017)(8676002)(4326008)(54906003)(316002)(110136005)(76116006)(122000001)(6512007)(38100700002)(38070700005)(66946007)(66446008)(66556008)(66476007)(186003)(83380400001)(2616005)(86362001)(64756008)(36756003)(2906002)(8936002)(85182001)(5660300002)(7416002)(4001150100001)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RzI1ZjZvS2pBU25KcFkxS2FZRklUM1g0eHduNUFSRnBuYVRpeU9MdDRCaUN0?=
+ =?utf-8?B?dEkvbmNlc1J2NDZDcEtCQzdla1Nvb1lyR2pYb2pndEwxdXJpaCtTQjlDczdy?=
+ =?utf-8?B?SnB1bDFORllVWUxjWU5YMVZ3OURUYThEK0szcGRDdFZueVN4bkoyWm1OQjNK?=
+ =?utf-8?B?NjgybmYzei9nUVRRL0FYOHJUN0g4S0I2K0tpWjZuQmlJQjM3RnlnN2xwbWs1?=
+ =?utf-8?B?R05seXpDS0I4NmZpVEtrN1YwVWRDUFlyc3Y0OWNJUTYzUWlsb3YwMVBnTVVZ?=
+ =?utf-8?B?aElsdm83alR1U3YxanYvTVd0cVc3YTBNVm9IUGJhM1VpQkJiN3pkYm81anhk?=
+ =?utf-8?B?TlpraTc0aEhFSzgvd0hCWmtoWVl6Y1FQU2E2SlROQVhsVjl3YXh5NEFmdysy?=
+ =?utf-8?B?cWNnNllITU5zb0JVeUhUSlEwME1jaE1xdU11SjdRUkhuMmxsdG95Z2tCa2Fn?=
+ =?utf-8?B?VnZSdHowcUpLS0U3eWZpeUR4OVpJTWo4dUI4eUR0YnFVOWR3dGtFNVExdlM1?=
+ =?utf-8?B?b1FQVTFjODVFVThodnR1Z0lmL09TYnZ2RU80MVRYbFdmSVJldXlhc2hoWlpY?=
+ =?utf-8?B?SE9xY0xQNmpzWHJzY0JjYWlZdEFJUUFMNDZDM0N1NGk1b1dnVDd6Z1B4dThn?=
+ =?utf-8?B?VVlzaW1icEZLU3dwN1hHRGNyL2RpN2lKQ0pNYklDSGs3Yll2R1Mxc2hZN1Bk?=
+ =?utf-8?B?Vk52OHNVNGNQNWU0SGV1S21LbzIyakl4ZUN0ajNvWmpmWGZURnQ1YU9YUHFE?=
+ =?utf-8?B?SXlWV0V2N0FINmR2eDVmV3pMTWNEbC81YUhQMnVQNG5teEZkd2FHNmltVXZ2?=
+ =?utf-8?B?N2JIeEFRdnlwdTdJa252Ri9lTlNucTloTGcyUU9VdXpXNG1TZHRxSmZFZzlF?=
+ =?utf-8?B?VGV0SGRLaWxLUEVwSEpwdmFUTTQ1OXE1bWZBYTVSbGxSWDNyTTZHU2NpV1Zn?=
+ =?utf-8?B?c0NRK3J3aEJ6dXB2bjhDUENKdEgxQTEvWUptcWVOcjdRNEUzWFBEQTVmNmEw?=
+ =?utf-8?B?Z0ZOZWY4VkY1bU0ydWRRK05kdXBHQmNxTHk5KzhXS1U3Y3d3ckJhZjFBVmht?=
+ =?utf-8?B?NCtJZkVYdGdlOEhKVHlmN0pUa2ZiaTRiVkFhSEJqb1lnSzJ2eXZVUGVGT1BE?=
+ =?utf-8?B?Tkc0MmRuU0tXVGQ2TTllV1BPY0s2VloxSkZTWWx4QllDL0FYbVQzYXR6NVl6?=
+ =?utf-8?B?NElXMGErNCtubmhGb29CWkNhUENjSHY0b2tPamVOdVZLZnA1TTRRWXd0dnAz?=
+ =?utf-8?B?YmpIS2NzbkZVdGhtWmZmeE1lRHE5OE45VTNBQ0JwL3ExK2VtRDFTbGZjUndz?=
+ =?utf-8?B?RUo3WUdhc3pHNDYrWHhyaTROMHRuc1dvYnJGS05JQzBCZ1NnNXJ3VDFORkE2?=
+ =?utf-8?B?RjNYbUlzZzh3TEV4amE5RUR5MjVldS9rTk5qYjVOVUJScVJwMGtBeXJtd3NX?=
+ =?utf-8?B?TjBSSVJTb3VPMFVmeGptK3RZUHNCS2h4ZEJvMUdJQTl3enNnL2NsdzFycTd1?=
+ =?utf-8?B?ZUZVcytkNHpPaW1zUmIrd1VDOWhTMjBHdGR3d0VGa1NlTG4yMXJwOU15K0tG?=
+ =?utf-8?B?U0xKZk1wMEV1YWh1cGJPZnF6cU8rR2FaYVdFaXh0Mmt4VldLc1NlOVN4Vjdk?=
+ =?utf-8?B?NHJ6b2dXRmo2UmIxL2h1ZUdmb0hpankzTElyemRwdGt3WXBMZHlyWHo3Ympj?=
+ =?utf-8?B?Q29zaDdud1JrQld4d04vUW9yTVlyZVZ1Z2xyd3A2OVAySFpod1Uyd1hXK256?=
+ =?utf-8?B?Z0VMSHRlc0tBbzd0QlZYb2UyekN4d0lnb05YRk5aWjdOaVF6aU1ybmRiNXRY?=
+ =?utf-8?B?QWlwWHNwUkgrY2xKNmpXQlRSZWxsa2hSWERiN2VnWkJ0TkVCd0Zvc08yV2J1?=
+ =?utf-8?B?UXFrblpNdUgvK1FJeEVXejV2RHgyeGdLaW9hbEUxSW12NWhzQjg4TWlLcTRt?=
+ =?utf-8?B?V0NsaVNiTllmTXBkU3U2VHQ5dmhoUk16ZEYxbThpaFZkeVJMY2FVUjRxUWw1?=
+ =?utf-8?B?TkpScGJUdG1kNk0rdDRaR3IwN2VId3grQkZmQWxLaVIvZUZXK3NYRUlObHpI?=
+ =?utf-8?B?TzVvTHBsSllJdm9DancwRkM3a3FHdHdoS3A0RDlqcWlVUGUrZ28xVXRZczZl?=
+ =?utf-8?B?YjA5b1JzZStJaDZIZFFwdENKeXphOStrODZqaWs4RmlSQktZNEtQak5EMFU1?=
+ =?utf-8?B?M1E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <5798529EC5626741BD027DA93C830940@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8cb4e0f6-939f-41c6-ad08-08dac797130c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2022 05:54:49.9620
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ZcKqou2+j6AxG+mAvL946whSisYLCP2/0M64KZiO3T1ZwfprG9CPnHgLhcyMmg2haXQTlwFxjDei/JgArj740UaYK5j5zg5Xz/MuRSWhSdg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR03MB6327
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221115_210749_613971_DB8ECA24 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20221115_215535_847404_4B404235 
+X-CRM114-Status: GOOD (  28.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,326 +187,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SPR parameter set comprises OBSS PD threshold for SRG and
-non SRG and Bitmap of BSS color and partial BSSID. This adds
-support to configure fields of SPR element to firmware.
-
-User can disable firmware SR algorithms by turning sr_scene_detect off.
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-change since v2 - update default values to align SPEC
----
- .../net/wireless/mediatek/mt76/mt7915/main.c  |   6 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 195 ++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  22 ++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   4 +-
- 4 files changed, 206 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 3933f4f2d71d..a29cbdb47801 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -601,10 +601,8 @@ static void mt7915_bss_info_changed(struct ieee80211_hw *hw,
- 		mt7915_mcu_add_sta(dev, vif, NULL, join);
- 	}
- 
--	if (changed & BSS_CHANGED_ASSOC) {
-+	if (changed & BSS_CHANGED_ASSOC)
- 		mt7915_mcu_add_bss_info(phy, vif, vif->cfg.assoc);
--		mt7915_mcu_add_obss_spr(dev, vif, info->he_obss_pd.enable);
--	}
- 
- 	if (changed & BSS_CHANGED_ERP_CTS_PROT)
- 		mt7915_mac_enable_rtscts(dev, vif, info->use_cts_prot);
-@@ -628,7 +626,7 @@ static void mt7915_bss_info_changed(struct ieee80211_hw *hw,
- 		mt7915_mcu_set_tx(dev, vif);
- 
- 	if (changed & BSS_CHANGED_HE_OBSS_PD)
--		mt7915_mcu_add_obss_spr(dev, vif, info->he_obss_pd.enable);
-+		mt7915_mcu_add_obss_spr(phy, vif, &info->he_obss_pd);
- 
- 	if (changed & BSS_CHANGED_HE_BSS_COLOR)
- 		mt7915_update_bss_color(hw, vif, &info->he_bss_color);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 8b903a7636a8..7eee9a616218 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -32,6 +32,9 @@
- #define HE_PHY(p, c)			u8_get_bits(c, IEEE80211_HE_PHY_##p)
- #define HE_MAC(m, c)			u8_get_bits(c, IEEE80211_HE_MAC_##m)
- 
-+static bool sr_scene_detect = true;
-+module_param(sr_scene_detect, bool, 0644);
-+
- static u8
- mt7915_mcu_get_sta_nss(u16 mcs_map)
- {
-@@ -3270,31 +3273,193 @@ int mt7915_mcu_set_txbf(struct mt7915_dev *dev, u8 action)
- 				 sizeof(req), true);
- }
- 
--int mt7915_mcu_add_obss_spr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--			    bool enable)
-+static int
-+mt7915_mcu_enable_obss_spr(struct mt7915_phy *phy, u8 action, u8 val)
-+{
-+	struct mt7915_dev *dev = phy->dev;
-+	struct mt7915_mcu_sr_ctrl req = {
-+		.action = action,
-+		.argnum = 1,
-+		.band_idx = phy != &dev->phy,
-+		.val = cpu_to_le32(val),
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(SET_SPR), &req,
-+				 sizeof(req), true);
-+}
-+
-+static int
-+mt7915_mcu_set_obss_spr_pd(struct mt7915_phy *phy,
-+			   struct ieee80211_he_obss_pd *he_obss_pd)
-+{
-+	struct mt7915_dev *dev = phy->dev;
-+	struct {
-+		struct mt7915_mcu_sr_ctrl ctrl;
-+		struct {
-+			u8 pd_th_non_srg;
-+			u8 pd_th_srg;
-+			u8 period_offs;
-+			u8 rcpi_src;
-+			__le16 obss_pd_min;
-+			__le16 obss_pd_min_srg;
-+			u8 resp_txpwr_mode;
-+			u8 txpwr_restrict_mode;
-+			u8 txpwr_ref;
-+			u8 rsv[3];
-+		} __packed param;
-+	} __packed req = {
-+		.ctrl = {
-+			.action = SPR_SET_PARAM,
-+			.argnum = 9,
-+			.band_idx = phy != &dev->phy,
-+		},
-+	};
-+	int ret;
-+	u8 max_th = 82, non_srg_max_th = 62;
-+
-+	/* disable firmware dynamical PD asjustment */
-+	ret = mt7915_mcu_enable_obss_spr(phy, SPR_ENABLE_DPD, false);
-+	if (ret)
-+		return ret;
-+
-+	if (he_obss_pd->sr_ctrl &
-+	    IEEE80211_HE_SPR_NON_SRG_OBSS_PD_SR_DISALLOWED)
-+		req.param.pd_th_non_srg = max_th;
-+	else if (he_obss_pd->sr_ctrl & IEEE80211_HE_SPR_NON_SRG_OFFSET_PRESENT)
-+		req.param.pd_th_non_srg  = max_th - he_obss_pd->non_srg_max_offset;
-+	else
-+		req.param.pd_th_non_srg  = non_srg_max_th;
-+
-+	if (he_obss_pd->sr_ctrl & IEEE80211_HE_SPR_SRG_INFORMATION_PRESENT)
-+		req.param.pd_th_srg = max_th - he_obss_pd->max_offset;
-+
-+	req.param.obss_pd_min = 82;
-+	req.param.obss_pd_min_srg = 82;
-+	req.param.txpwr_restrict_mode = 2;
-+	req.param.txpwr_ref = 21;
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(SET_SPR), &req,
-+				 sizeof(req), true);
-+}
-+
-+static int
-+mt7915_mcu_set_obss_spr_siga(struct mt7915_phy *phy, struct ieee80211_vif *vif,
-+			     struct ieee80211_he_obss_pd *he_obss_pd)
- {
--#define MT_SPR_ENABLE		1
- 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct mt7915_dev *dev = phy->dev;
-+	u8 omac = mvif->mt76.omac_idx;
- 	struct {
--		u8 action;
--		u8 arg_num;
--		u8 band_idx;
--		u8 status;
--		u8 drop_tx_idx;
--		u8 sta_idx;	/* 256 sta */
--		u8 rsv[2];
--		__le32 val;
-+		struct mt7915_mcu_sr_ctrl ctrl;
-+		struct {
-+			u8 omac;
-+			u8 rsv[3];
-+			u8 flag[20];
-+		} __packed siga;
-+	} __packed req = {
-+		.ctrl = {
-+			.action = SPR_SET_SIGA,
-+			.argnum = 1,
-+			.band_idx = phy != &dev->phy,
-+		},
-+		.siga = {
-+			.omac = omac > HW_BSSID_MAX ? omac - 12 : omac,
-+		},
-+	};
-+	int ret;
-+
-+	if (he_obss_pd->sr_ctrl & IEEE80211_HE_SPR_HESIGA_SR_VAL15_ALLOWED)
-+		req.siga.flag[req.siga.omac] = 0xf;
-+	else
-+		return 0;
-+
-+	/* switch to normal AP mode */
-+	ret = mt7915_mcu_enable_obss_spr(phy, SPR_ENABLE_MODE, 0);
-+	if (ret)
-+		return ret;
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(SET_SPR), &req,
-+				 sizeof(req), true);
-+}
-+
-+static int
-+mt7915_mcu_set_obss_spr_bitmap(struct mt7915_phy *phy,
-+			       struct ieee80211_he_obss_pd *he_obss_pd)
-+{
-+	struct mt7915_dev *dev = phy->dev;
-+	struct {
-+		struct mt7915_mcu_sr_ctrl ctrl;
-+		struct {
-+			__le32 color_l[2];
-+			__le32 color_h[2];
-+			__le32 bssid_l[2];
-+			__le32 bssid_h[2];
-+		} __packed bitmap;
- 	} __packed req = {
--		.action = MT_SPR_ENABLE,
--		.arg_num = 1,
--		.band_idx = mvif->mt76.band_idx,
--		.val = cpu_to_le32(enable),
-+		.ctrl = {
-+			.action = SPR_SET_SRG_BITMAP,
-+			.argnum = 4,
-+			.band_idx = phy != &dev->phy,
-+		},
- 	};
-+	u32 bitmap;
-+
-+	memcpy(&bitmap, he_obss_pd->bss_color_bitmap, sizeof(bitmap));
-+	req.bitmap.color_l[req.ctrl.band_idx] = cpu_to_le32(bitmap);
-+
-+	memcpy(&bitmap, he_obss_pd->bss_color_bitmap + 4, sizeof(bitmap));
-+	req.bitmap.color_h[req.ctrl.band_idx] = cpu_to_le32(bitmap);
-+
-+	memcpy(&bitmap, he_obss_pd->partial_bssid_bitmap, sizeof(bitmap));
-+	req.bitmap.bssid_l[req.ctrl.band_idx] = cpu_to_le32(bitmap);
-+
-+	memcpy(&bitmap, he_obss_pd->partial_bssid_bitmap + 4, sizeof(bitmap));
-+	req.bitmap.bssid_h[req.ctrl.band_idx] = cpu_to_le32(bitmap);
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(SET_SPR), &req,
- 				 sizeof(req), true);
- }
- 
-+int mt7915_mcu_add_obss_spr(struct mt7915_phy *phy, struct ieee80211_vif *vif,
-+			    struct ieee80211_he_obss_pd *he_obss_pd)
-+{
-+	int ret;
-+
-+	/* enable firmware scene detection algorithms */
-+	ret = mt7915_mcu_enable_obss_spr(phy, SPR_ENABLE_SD, sr_scene_detect);
-+	if (ret)
-+		return ret;
-+
-+	/* enable spatial reuse */
-+	ret = mt7915_mcu_enable_obss_spr(phy, SPR_ENABLE, he_obss_pd->enable);
-+	if (ret)
-+		return ret;
-+
-+	if (!he_obss_pd->enable)
-+		return 0;
-+
-+	ret = mt7915_mcu_enable_obss_spr(phy, SPR_ENABLE_TX, true);
-+	if (ret)
-+		return ret;
-+
-+	/* firmware dynamically adjusts PD threshold so skip manual control */
-+	if (sr_scene_detect)
-+		return 0;
-+
-+	/* set SRG/non-SRG OBSS PD threshold */
-+	ret = mt7915_mcu_set_obss_spr_pd(phy, he_obss_pd);
-+	if (ret)
-+		return ret;
-+
-+	/* Set SR prohibit */
-+	ret = mt7915_mcu_set_obss_spr_siga(phy, vif, he_obss_pd);
-+	if (ret)
-+		return ret;
-+
-+	/* set SRG BSS color/BSSID bitmap */
-+	return mt7915_mcu_set_obss_spr_bitmap(phy, he_obss_pd);
-+}
-+
- int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta, struct rate_info *rate)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index c19b5d66c0e1..2fc09fd53777 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -129,6 +129,17 @@ struct mt7915_mcu_background_chain_ctrl {
- 	u8 rsv[2];
- } __packed;
- 
-+struct mt7915_mcu_sr_ctrl {
-+	u8 action;
-+	u8 argnum;
-+	u8 band_idx;
-+	u8 status;
-+	u8 drop_ta_idx;
-+	u8 sta_idx;	/* 256 sta */
-+	u8 rsv[2];
-+	__le32 val;
-+} __packed;
-+
- struct mt7915_mcu_eeprom {
- 	u8 buffer_mode;
- 	u8 format;
-@@ -408,6 +419,17 @@ enum {
- #define RATE_CFG_PHY_TYPE		GENMASK(27, 24)
- #define RATE_CFG_HE_LTF			GENMASK(31, 28)
- 
-+enum {
-+	SPR_ENABLE = 0x1,
-+	SPR_ENABLE_SD = 0x3,
-+	SPR_ENABLE_MODE = 0x5,
-+	SPR_ENABLE_DPD = 0x23,
-+	SPR_ENABLE_TX = 0x25,
-+	SPR_SET_SRG_BITMAP = 0x80,
-+	SPR_SET_PARAM = 0xc2,
-+	SPR_SET_SIGA = 0xdc,
-+};
-+
- enum {
- 	THERMAL_PROTECT_PARAMETER_CTRL,
- 	THERMAL_PROTECT_BASIC_INFO,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 9cb680e7f223..0bad78cf32c7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -501,8 +501,8 @@ int mt7915_mcu_update_bss_color(struct mt7915_dev *dev, struct ieee80211_vif *vi
- 				struct cfg80211_he_bss_color *he_bss_color);
- int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			  int enable, u32 changed);
--int mt7915_mcu_add_obss_spr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--                            bool enable);
-+int mt7915_mcu_add_obss_spr(struct mt7915_phy *phy, struct ieee80211_vif *vif,
-+			    struct ieee80211_he_obss_pd *he_obss_pd);
- int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 			     struct ieee80211_sta *sta, bool changed);
- int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--- 
-2.36.1
-
+SGkgQW5nZWxvR2lvYWNjaGlubywNCg0KVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb24uDQoNCkZp
+eGVkIGluIHBhdGNoIHYzLCBjb3VsZCB5b3UgcGxlYXNlIGhlbHAgdG8gcmV2aWV3IGl0IGFnYWlu
+Lg0KRm9yIHRoaXMgZmxhZyBvbmx5IGJlIHVzZWQgaW4gSDI2NCwgYWRkIHRoZSBmbGFnIGluIEgy
+NjQgaW5zdGFuY2UuDQoNCkJlc3QgUmVnYXJkcywNCll1bmZlaSBEb25nIA0KDQpPbiBNb24sIDIw
+MjItMTEtMTQgYXQgMTI6MDggKzAxMDAsIEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIHdyb3Rl
+Og0KPiBJbCAxOC8xMC8yMiAxMzo0MSwgWXVuZmVpIERvbmcgaGEgc2NyaXR0bzoNCj4gPiBTb21l
+IGNhdmxjIGJpc3RyZWFtIHdpbGwgZGVjb2RlIGZhaWwgd2hlbiB0aGUgZnJhbWUgc2l6ZSBpcyBz
+bWFsbA0KPiA+IHRoYW4NCj4gDQo+IHMvc21hbGwvc21hbGxlci9nDQo+IA0KPiA+IDIwIGJ5dGVz
+LiBOZWVkIHRvIGFkZCBwZW5kaW5nIGRhdGEgYXQgdGhlIGVuZCBvZiB0aGUgYml0c3RyZWFtLg0K
+PiA+IA0KPiA+IEZvciB0aGUgbWluaW11bSBzaXplIG9mIG1hcHBlZCBtZW1vcnkgaXMgMjU2IGJ5
+dGVzKDE2eDE2KSwgYWRkaW5nDQo+ID4gZm91ciBieXRlcyBkYXRhDQo+ID4gd29uJ3QgbGVhZCB0
+byBhY2Nlc3MgdW5rbm93biB2aXJ0dWFsIG1lbW9yeS4NCj4gPiANCj4gPiBGaXhlczogNTlmYmE5
+ZWVkNWE3ICgibWVkaWE6IG1lZGlhdGVrOiB2Y29kZWM6IHN1cHBvcnQgc3RhdGVsZXNzDQo+ID4g
+SC4yNjQgZGVjb2RpbmcgZm9yIG10ODE5MiIpDQo+ID4gU2lnbmVkLW9mZi1ieTogWXVuZmVpIERv
+bmcgPHl1bmZlaS5kb25nQG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiBjb21wYXJlZCB3aXRo
+IHYxOg0KPiA+IC0gYWRkIGRldGFpbCBjb21tZW50cyBmb3IgZnVuY3Rpb246IHZkZWNfaDI2NF9p
+bnNlcnRfc3RhcnRjb2RlLg0KPiA+IC0gcmUtd3JpdGUgY29tbWl0IG1lc3NhZ2UuDQo+ID4gLS0t
+DQo+ID4gICAuLi4vdmNvZGVjL3ZkZWMvdmRlY19oMjY0X3JlcV9tdWx0aV9pZi5jICAgICAgfCAz
+Mg0KPiA+ICsrKysrKysrKysrKysrKysrLS0NCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAyOSBpbnNl
+cnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQNCj4gPiBhL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL3ZkZWMvdmRlY19oMjY0X3JlcV9t
+dWx0aV9pDQo+ID4gZi5jDQo+ID4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zj
+b2RlYy92ZGVjL3ZkZWNfaDI2NF9yZXFfbXVsdGlfaQ0KPiA+IGYuYw0KPiA+IGluZGV4IDRjYzky
+NzAwNjkyYi4uMThlMDQ4NzU1ZDExIDEwMDY0NA0KPiA+IC0tLQ0KPiA+IGEvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvdmRlYy92ZGVjX2gyNjRfcmVxX211bHRpX2kNCj4g
+PiBmLmMNCj4gPiArKysNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNv
+ZGVjL3ZkZWMvdmRlY19oMjY0X3JlcV9tdWx0aV9pDQo+ID4gZi5jDQo+ID4gQEAgLTUzOSw2ICs1
+MzksMjkgQEAgc3RhdGljIGludCB2ZGVjX2gyNjRfc2xpY2VfY29yZV9kZWNvZGUoc3RydWN0DQo+
+ID4gdmRlY19sYXRfYnVmICpsYXRfYnVmKQ0KPiA+ICAgCXJldHVybiAwOw0KPiA+ICAgfQ0KPiA+
+ICAgDQo+ID4gK3N0YXRpYyB2b2lkIHZkZWNfaDI2NF9pbnNlcnRfc3RhcnRjb2RlKHN0cnVjdCBt
+dGtfdmNvZGVjX2Rldg0KPiA+ICp2Y29kZWNfZGV2LCB1bnNpZ25lZCBjaGFyICpidWYsDQo+ID4g
+KwkJCQkgICAgICAgc2l6ZV90ICpic19zaXplLCBzdHJ1Y3QNCj4gPiBtdGtfaDI2NF9wcHNfcGFy
+YW0gKnBwcykNCj4gPiArew0KPiA+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJnZjb2RlY19kZXYt
+PnBsYXRfZGV2LT5kZXY7DQo+ID4gKw0KPiA+ICsJLyogTmVlZCB0byBhZGQgcGVuZGluZyBkYXRh
+IGF0IHRoZSBlbmQgb2YgYml0c3RyZWFtIHdoZW4gYnNfc3oNCj4gPiBpcyBzbWFsbCB0aGFuDQo+
+ID4gKwkgKiAyMCBieXRlcyBmb3IgY2F2bGMgYml0c3RyZWFtLCBvciBsYXQgd2lsbCBkZWNvZGUg
+ZmFpbC4gVGhpcw0KPiA+IHBlbmRpbmcgZGF0YSBpcw0KPiA+ICsJICogdXNlZnVsIGZvciBtdDgx
+OTIgYW5kIG10ODE5NSBwbGF0Zm9ybS4NCj4gDQo+IFdoYXQgaXMgdGhlIHJlYXNvbiB3aHkgb3Ro
+ZXIgU29DcyBkb24ndCBuZWVkIHRoaXM/DQo+IA0KPiA+ICsJICoNCj4gPiArCSAqIGNhdmxjIGJp
+dHN0cmVhbSB3aGVuIGVudHJvcHlfY29kaW5nX21vZGVfZmxhZyBpcyBmYWxzZS4NCj4gPiArCSAq
+Lw0KPiA+ICsJaWYgKHBwcy0+ZW50cm9weV9jb2RpbmdfbW9kZV9mbGFnIHx8ICpic19zaXplID4g
+MjAgfHwNCj4gPiArCSAgICAhKG9mX2RldmljZV9pc19jb21wYXRpYmxlKGRldi0+b2Zfbm9kZSwg
+Im1lZGlhdGVrLG10ODE5Mi0NCj4gPiB2Y29kZWMtZGVjIikgfHwNCj4gPiArCSAgICBvZl9kZXZp
+Y2VfaXNfY29tcGF0aWJsZShkZXYtPm9mX25vZGUsICJtZWRpYXRlayxtdDgxOTUtDQo+ID4gdmNv
+ZGVjLWRlYyIpKSkNCj4gDQo+IEknbSBub3QgY29tZm9ydGFibGUgc2VlaW5nIG9mX2RldmljZV9p
+c19jb21wYXRpYmxlLi4uIHRoaXMgbGlzdCB3aWxsDQo+IGdyb3cgd2hlbmV2ZXINCj4gYSBuZXcg
+U29DIG5lZWRpbmcgdGhpcyBhcHBlYXJzLg0KPiBQbGVhc2UgdGhpbmsgYWJvdXQgYSBnb29kIG5h
+bWUgZm9yIGEgZmxhZy9xdWlyaywgb3IgYSBib29sLCBpbiB0aGUNCj4gcGxhdGZvcm0gZGF0YQ0K
+PiBmb3IgdGhlc2UgdHdvIFNvQ3MgYW5kIHVzZSBpdC4NCj4gDQo+IFJlZ2FyZHMsDQo+IEFuZ2Vs
+bw0KPiANCj4gDQo=
 
