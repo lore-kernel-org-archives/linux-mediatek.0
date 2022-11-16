@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A1BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 17:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3270C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 18:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d94m8A4mnC43bFCgCMyqlrhWiu3NByipxHjP5JFmrF8=; b=2ZM6IP43VriVlFZvgNehlDrGAF
-	oIVlaj/vtb/SMZ6jYg9rSIgMU0kXNvpwTym0gTJ4qMCak6RqIxExpfKA47S6Rn1dWTFnPGah2wznC
-	ngJjYniUppVmQobTXhUL0SH8yiuzExfqmp8X0M/3y6l3NB8DKewckOpDsn1Z9G92DLhts+XjtrYoV
-	8dQSjpLlK0EfduMfaeAlzybcFsk+gHC0oCfF+hbOC+Ha5b/gXRcXXfLyUO4dMO6EwNuKniHcnFUvi
-	dcHhEGffbCBV6t5sUU+NZxZUQKmqHX2/wX8FXp40xyxNIqHKC9G7pO8P9nzDgeVOEG+4EQ7o5hj9m
-	Ebw4+h3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J6IVpnek7jp7RQNs0vIif8yhh7QCajs41fZS8TKx6p0=; b=FJZ6/WweUwtKa+sUEWBjIDde2K
+	wWS6rXjs/rackYL7FujEEjiapHeILfHfte9w+oddJQYyfvOQE+RDtYWDgeviuaPTS09AO0SqNxsqL
+	Z6AS3PYzb7angaNxxP3+nI5BuRQvTTs2GIzYPdEirlNWZ+b1S3lps/do+S5Mtm0b9jC4GChP4utCZ
+	bA0WkegHgSFVkPIpr6OJHIipcs7fIsoHNdTauJQ05mdK+kvdr5nRz+JAgmIGcEAcxPdcYMlvKxlEv
+	O8RUgN6OD6ezzumz4LLFUFfqCqpYgAzWNqmYWD5YhTn1B46LOMZo4Vo1Ye6oKxEug9my3yp2HuiGP
+	1PqxQd4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovMFF-006R5E-Ab; Wed, 16 Nov 2022 17:30:41 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+	id 1ovN7p-006xaG-1M; Wed, 16 Nov 2022 18:27:05 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovMFC-006R3O-TW; Wed, 16 Nov 2022 17:30:40 +0000
-Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-141ca09c2fbso11283550fac.6;
-        Wed, 16 Nov 2022 09:30:37 -0800 (PST)
+	id 1ovN7Y-006xPU-Rx; Wed, 16 Nov 2022 18:26:50 +0000
+Received: by mail-qk1-x729.google.com with SMTP id s20so12236597qkg.5;
+        Wed, 16 Nov 2022 10:26:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=J6IVpnek7jp7RQNs0vIif8yhh7QCajs41fZS8TKx6p0=;
+        b=h1qkaXFxcj98WnQoGy/PtLTyHKGmkvuMbnDfgO5LBZfcK0V831Al4rsNV3cGUNNLrY
+         WGUAVyJEckfwatgwNiwuAcVIjSLufaTfSe14kj5G/QN4zlXUYVmBkJfPQgz+7VE0/mVf
+         2Z8QYszEBNZa5kS+o8tpcRPTs1Qa0wgtxT9g0Ke4aR6CM/3PoWNelOqZ1kF9XqfJeW6e
+         7zj/2gQcIDUR4gtTF/I1MbVxGIH9iap1yRfoh+FV9ySicHqPIJD3dEruBWQDBLFE1BwS
+         S/wXPsTZlWw3VvIt+3me5p7VO5ZxwhHK3XDMrVuCtLb1gti16n7jXE+zyGjwVYq5p+Pu
+         8utA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d94m8A4mnC43bFCgCMyqlrhWiu3NByipxHjP5JFmrF8=;
-        b=PS1VVXjVrg762e5ygdPLNdDO9YjxZkev9RRUJ2sUclKdTjrvYfXREkceuL6XyWTQa3
-         z9c/YObOYZGXhgmF7NlgU6XKoCloVc/By9n/aKm6lMKeodwgQ9pICMmUnImEhHzowiSE
-         4SiJexwWEcJ7hKvqcPWAOkrGd/QSxHES4xIVegsqt/PCYFlD7S9pJSAFe+DwvHwF8oKq
-         nHA7kFckkfKBr+Hx+HPbvJLd4FFC356Ko77iERT5lDKWgyc81z7zituOtX09/5UOX1Gk
-         b9J67OApbndBdUsSns85+udI6rhioISaVOByUxtyp32p4EFFgCwx6Nb7QFV/dgERDrkI
-         3Oqg==
-X-Gm-Message-State: ANoB5plQfNW8li0HjvI4JDSpnFNFOEux9dwWe+57Ygsh/l8dTIZaDrHj
-	rK+eHaQ1sCQpWM7JY/vS7w==
-X-Google-Smtp-Source: AA0mqf4W9ic8trKFbcLCupIweHpywnpJAlbo74qba9pJnN/1t1QeCfL5Lgix9ZRfDFycFgC2Pz6D9Q==
-X-Received: by 2002:a05:6870:b40d:b0:136:b625:9d4b with SMTP id x13-20020a056870b40d00b00136b6259d4bmr2234868oap.247.1668619836444;
-        Wed, 16 Nov 2022 09:30:36 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id o2-20020a4aa802000000b0047537233dfasm6208359oom.21.2022.11.16.09.30.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Nov 2022 09:30:35 -0800 (PST)
-Received: (nullmailer pid 555476 invoked by uid 1000);
-	Wed, 16 Nov 2022 17:30:38 -0000
-Date: Wed, 16 Nov 2022 11:30:38 -0600
-From: Rob Herring <robh@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Project_Global_Chrome_Upstream_Group@mediatek.com, Daniel Vetter <daniel@ffwll.ch>, Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, Steve Cho <stevecho@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2,2/3] media: dt-bindings: media: mediatek: vcodec:
- Adding racing control register base
-Message-ID: <166861983726.555415.9641697136442986438.robh@kernel.org>
-References: <20221110102834.8946-1-yunfei.dong@mediatek.com>
- <20221110102834.8946-2-yunfei.dong@mediatek.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=J6IVpnek7jp7RQNs0vIif8yhh7QCajs41fZS8TKx6p0=;
+        b=G36CvNial5M0CdD6EAovOv5C7dcpiE9rsReg/j9qQzpIIr2Ys661t4DCwaYUqnoewk
+         3qnmpwvpjJxGPnmhyVMEBNPxehVVc9lpZ1qhxpYNyvcMUhmVLL81Ajp9LcHw08TtQl3t
+         8pY5gWbqYPRYnye7VyJA070lhupCR8Z8q1SjLPDX9TLKs/KMD40lgyz2VqLuGOSD0Ok6
+         heJs3YWD0KpY5tdPwm9QvOMvLoYnK8d9M614+1JDpnN2XhodgNNm/GiRgD84wXE8G///
+         0UR87pmYb+JlZh9CeCOw19kiY8stTrn0KDTuEj7dPG09g9MXVv9NstqWX9RgTkQvPC6Q
+         dlaQ==
+X-Gm-Message-State: ANoB5pndIiGvdiVlLXMIi3C3uLxklxVR/TlpyFZfrkvukcDmrSfHNhyB
+	bxzCC7zPc1Qe8EiZBMYsbzM=
+X-Google-Smtp-Source: AA0mqf53yxUvhGGS5Xx6pm5ju9mEcwGhd4nEqXg+sOyj8VWQ8fxrID1w4+NG5cvcE8lwWIQ2enh/rg==
+X-Received: by 2002:ae9:ed81:0:b0:6fb:9f9c:fb1d with SMTP id c123-20020ae9ed81000000b006fb9f9cfb1dmr7126989qkg.499.1668623207254;
+        Wed, 16 Nov 2022 10:26:47 -0800 (PST)
+Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
+        by smtp.gmail.com with ESMTPSA id cm26-20020a05622a251a00b0039cc82a319asm9126221qtb.76.2022.11.16.10.26.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Nov 2022 10:26:46 -0800 (PST)
+Message-ID: <623b0d5d-98b7-0ef0-6622-69686ea49269@gmail.com>
+Date: Wed, 16 Nov 2022 10:26:43 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221110102834.8946-2-yunfei.dong@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH net-next 5/6] net: dsa: tag_mtk: assign per-port queues
+Content-Language: en-US
+To: Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221116080734.44013-1-nbd@nbd.name>
+ <20221116080734.44013-6-nbd@nbd.name>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20221116080734.44013-6-nbd@nbd.name>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_093038_965097_C7F135B4 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20221116_102648_932372_48DEC74F 
+X-CRM114-Status: UNSURE (   4.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,24 +100,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 10 Nov 2022 18:28:33 +0800, Yunfei Dong wrote:
-> Need to add racing control register base in device node for mt8195 support
-> inner racing mode. Removing 'maxItems' and adding 'minItems'.
-> 
-> Adding description for each reg.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> compared with v1:
-> - add description for 'VDEC_SYS'
-> - add description for 'VDEC_RACING_CTRL'
-> - add description for 'VDEC_MISC'
-> - change maxItems -> minItems according to AngeloGioacchino's suggestion
-> - Fix dt_binding_check fail
-> ---
->  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On 11/16/2022 12:07 AM, Felix Fietkau wrote:
+> Keeps traffic sent to the switch within link speed limits
+> 
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
