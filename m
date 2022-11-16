@@ -4,74 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5701C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 16:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3266AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 16:26:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=; b=ZGP3M1Q2B7+G/D3Q/NU0IQxw6o
-	0QiEm6Qbz6oDKFYTWz7XhzUR/N5yUuxpseip2HBT0RMcOimMy9dhFTcAISyfFmcOFamhjGWb9Alno
-	23QdLZc9AzoD11VYlayh9DlBadjHMal5yHpjkveGhsvtfc92raJs8nFCogieCx815KybV3B1XN4a7
-	zGK9CSS+3W6g58EA+v9n/ReEeqh6a8WJTgTMZ+0s6xLkNYcfaBEAZVlclSzApDFDQqsJ/AEZvv3gJ
-	MrkfE6JUiqpHODfp4Kw2tCf83pPtpl/u1mczkLnkwsyHJazeQ09BgQez+2zJWub/8NzV1x2bWlRYm
-	ipuM7S3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/GcqxyNxQ2i04UVF1iE2MHRUWTa6OtN0e3MQ8qjNro8=; b=dHGYDcNR1W2z1n6o8qpj6WMgQr
+	cywvpkOC1Nrj1Ucu27RhKuHlyXPzeHqKvDdlCrdHAYEivAUjdxS5ij6kftx+ur64oF0B9UbMUsSEx
+	5csqsN3mZl1FrhKl00uJysPoz449ykLalnVUm3dlEjnZAS/naX0lMSixxq0Y3Yp9/ohooERn9Gz/N
+	BXr25b0zM3UrHSTeBQZ6UEY/pNDKObOkSRF2nM4FiC2qAbwtIkgdhfoL8CxujfDUjv9ayhqyM95h2
+	cNsomnR4ddAJQYZSGx8xKaL5CQ/BpUINyWScYn/CtGeXulK3xC3GMrMUDDx48sSfJEH23k6VXXvK1
+	KjTmQJhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovL7I-005n7U-7d; Wed, 16 Nov 2022 16:18:24 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1ovLFM-005qaM-PN; Wed, 16 Nov 2022 16:26:44 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovL7F-005n5K-CJ
-	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 16:18:22 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id gw22so16973651pjb.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Nov 2022 08:18:18 -0800 (PST)
+	id 1ovLFI-005qXB-NW
+	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 16:26:42 +0000
+Received: by mail-ed1-x534.google.com with SMTP id l11so27381576edb.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Nov 2022 08:26:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=;
-        b=uuC6XXHVG9Amxc061f3zNUOSdEnIEF4TjDWOnctoTMuFscut4Itv7mLnBGqCfgs0al
-         L+c/6HzzyuYppun8NsFwkMKhAp5vuR0lJkvjp0Yz5s3NOtHEoezqavVS9o1XoDOkXRp2
-         nqljq8Xzfl5NVYp/FgHWjOUh+fYjzcJCl7moBfmRkCKQLPemXAavMLERLsUbzejrOh3g
-         sGecALTxxhB0T3feWWlLZDsacHgB4UyWhkhOqkh529nWjGvMUHJ+j4rmzbEUntYWrui9
-         +lVi3b7o7oneBIJGhYCYDGHbBxGQ56+iebIAoJY2gK5JwDxBEF9X3O2nublK5wBYf97X
-         8/Qg==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/GcqxyNxQ2i04UVF1iE2MHRUWTa6OtN0e3MQ8qjNro8=;
+        b=gqXs9ZRxNaAaMLsaERJlYwPG7r3b24XDY6OQOS3QsEXqGfhw9X43KJLNreM1IYIqub
+         dB9lv/Zk0WN3SHi2xzGk7psL5/Xve6O5ukGpax0UM9QS/C6fKwUSKbS4Y6M67r6NjKBW
+         FLC1c65yVmMR/AkRMoxpEZRWWBFKb+6QVYIAwA/kYTcg2gsgamaq7fgMACv/9AF4mkda
+         J+6xOJpes4DCcqAheTEJJgJQ8KQJKg1pQ8tE80PNT5gvkJlBbe9ActINJEfnUepyRvHw
+         nWZV73NRAvGO7al24DAUSqf6co6okGZYqcgs64bKZfAy7HPZZXYfaA23JVTEJp/vuh9W
+         qpng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=;
-        b=BhWmD9yv0u8N4ZDOFBsDjSxM/iTasXwYKRTJfjrsQin7GChaZWg0dMk98lGOsCk/HR
-         q2C6Kg8F1trmgclwRsFCulErISbc6BWFrUB8AtAcdzIaVt5ONTqz42bIjNb8r9c4ovCR
-         1pdtoi5vRZfkUC9Qse3Ct2CK5IhejSyDE+9uiJYg3/GYyxpuK0vwk6Lp3TYQoKbkBmeB
-         AaHgd/tboTVofXThZTs+BVnClM/1niWT8b3nQQ0qNt3sJMfjt3EXETB6nt4KE91j7rek
-         +ZRIxBBrZ1KDnv726SBlhYO7XcrFazsNDfJ7gSnBBouNizAmA+Kh/suTACd50Kw4d+/D
-         lH8w==
-X-Gm-Message-State: ANoB5pngY0LCW7zElV7iZzlH+ngTuGwI1PgFV3r4hhde81wsbhX+TLdX
-	fJ3F4r24LDrcNa5OoklePYEQWjrHp2QCKLUOC9N0mw==
-X-Google-Smtp-Source: AA0mqf4Wa1H27TGFSnM/a1m63gk9/L+t2q1xko8YOBEh2/dkruP1K3xLmmg6L38tevF4sFxaktwBmh2GNWgpZ2zVkB4=
-X-Received: by 2002:a17:902:d48a:b0:188:6baf:2011 with SMTP id
- c10-20020a170902d48a00b001886baf2011mr9115763plg.165.1668615498412; Wed, 16
- Nov 2022 08:18:18 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/GcqxyNxQ2i04UVF1iE2MHRUWTa6OtN0e3MQ8qjNro8=;
+        b=jJzcQWrj2k9d3e+sL6Pk4yxxtKHbALwecM4AyylSK3KbbsKZ7ibfaGCrjtmFkSJws/
+         2O+oU6sv6Rm+hkq8/TCb5BZw+OIfthpchsmWqgOSLEbNUGkVY8xL+O6TVjbIRlTJrZ65
+         3W3TNZLCyfJfgLsEYrMFCbup5iOlr+mxz/eu+fpXblunIiDu6h1Xve2CdzEL5pr2Uor9
+         s6SYf2H0jh2hng2D10v1NyGicFX0WvU6lmHtP1pmssvW8duIC9JN2tG38kxW3rKLNLXD
+         r6h1Se02CpT4nq1R2Havf31fnjQy7MEFuCQ9XGszMa82AG321lx+vKpFpzspxV1eQ8/O
+         hP+g==
+X-Gm-Message-State: ANoB5pngIoZqFjQacJPgsknTQc3GVlQ3pDr+dAcereLMyHNBuPrHpLbA
+	/zY1aWYGFI8/x6927mDLDrP9EK6l5N3rC+0rgdzHxg==
+X-Google-Smtp-Source: AA0mqf5yB4S9XPGZ42v1UMyUILQ/PUGJvppH/sS1fbiyT79Tdf9o/FqO2PJG27Yz+Fnrnz8ST33S7OTxVys2IUPOPzU=
+X-Received: by 2002:a50:fd9a:0:b0:461:b279:1175 with SMTP id
+ o26-20020a50fd9a000000b00461b2791175mr19892498edt.124.1668615998007; Wed, 16
+ Nov 2022 08:26:38 -0800 (PST)
 MIME-Version: 1.0
-References: <20221110072819.11530-1-yuzhe@nfschina.com>
-In-Reply-To: <20221110072819.11530-1-yuzhe@nfschina.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 16 Nov 2022 17:17:41 +0100
-Message-ID: <CAPDyKFrW+FaDNc+YPjrR1eAYhjPc6BHj4zqghBRnMC0P+A_jKA@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: fix two spelling mistakes in comment
-To: Yu Zhe <yuzhe@nfschina.com>
-Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
-	linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel-janitors@vger.kernel.org, liqiong@nfschina.com
+References: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
+ <20221005-mt6357-support-v5-5-8210d955dd3d@baylibre.com> <166861435469.151514.16192567175686360100.robh@kernel.org>
+In-Reply-To: <166861435469.151514.16192567175686360100.robh@kernel.org>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Wed, 16 Nov 2022 17:26:27 +0100
+Message-ID: <CAFGrd9qz7w=aqiDjfdi_pM_y_1hiRoLs_AJVbptChs8=U66+aA@mail.gmail.com>
+Subject: Re: [PATCH v5 05/10] dt-bindings: mfd: mediatek: Add bindings for
+ MT6357 PMIC
+To: Rob Herring <robh@kernel.org>
+Cc: linux-input@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, 
+	Fabien Parent <fabien.parent@linaro.org>, linux-leds@vger.kernel.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	Alessandro Zummo <a.zummo@towertech.it>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Mattijs Korpershoek <mkorpershoek@baylibre.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, 
+	Pavel Machek <pavel@ucw.cz>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Fabien Parent <fparent@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen Zhong <chen.zhong@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_081821_443875_CC37FCAD 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20221116_082641_010752_AB10E5C9 
+X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +101,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Nov 2022 at 08:29, Yu Zhe <yuzhe@nfschina.com> wrote:
->
-> spelling mistake fix : "alreay" -> "already"
->                        "checksume" -> "checksum"
->
-> Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
+Le mer. 16 nov. 2022 =C3=A0 17:03, Rob Herring <robh@kernel.org> a =C3=A9cr=
+it :
 
-Applied for next, thanks!
+> doc reference errors (make refcheckdocs):
+> Warning: Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml refer=
+ences a file that doesn't exist: Documentation/devicetree/bindings/soc/medi=
+atek/mediatek,pwrap.yaml
+> Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml: Documentation=
+/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
 
-Kind regards
-Uffe
+Ok, This should be fixed by swapping the order of the 2 following commits:
+[PATCH v5 05/10] dt-bindings: mfd: mediatek: Add bindings for MT6357 PMIC
+[PATCH v5 06/10] dt-bindings: soc: mediatek: convert pwrap documentation
 
-
-> ---
->  drivers/mmc/host/mtk-sd.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index df941438aef5..a10aca76dfb3 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -735,7 +735,7 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
->                 else
->                         bd[j].bd_info &= ~BDMA_DESC_EOL;
->
-> -               /* checksume need to clear first */
-> +               /* checksum need to clear first */
->                 bd[j].bd_info &= ~BDMA_DESC_CHECKSUM;
->                 bd[j].bd_info |= msdc_dma_calcs((u8 *)(&bd[j]), 16) << 8;
->         }
-> @@ -1212,7 +1212,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
->                      !host->hs400_tuning))
->                         /*
->                          * should not clear fifo/interrupt as the tune data
-> -                        * may have alreay come when cmd19/cmd21 gets response
-> +                        * may have already come when cmd19/cmd21 gets response
->                          * CRC error.
->                          */
->                         msdc_reset_hw(host);
-> --
-> 2.11.0
->
+Regards,
+Alex
 
