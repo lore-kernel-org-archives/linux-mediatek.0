@@ -4,66 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7070C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 11:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C73C43217
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 12:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DYZzixU+G9Z13P/mjEXm5tqsN/MuV+82bQqD6HGEpiU=; b=C91axtODdpIEO/irxJbk+Wy2RN
-	M0tp/uhK7+jyhrvgNlhOuyDHmU7XMtkKLFjb2eunF3su10AGzJ0g/2JNtsFvWXZwaiMr9A7EBAv3P
-	azameqFDxuQ8pbtbgfiFShIpHBpUdNJ4jTtyeOrp1PKv+MYpq7Uwf1dLduRzCdnGp1NKkZXoUgEPa
-	Z5njeah+kFEfDx/6940oL2DxNCQvP5MhXqXJwQ+umBUPfBM2LOh4fsdzcbbY/J/r4iyThfgCfzFTc
-	8Y8TCBKXb8q1SZS4vPdJJ0rdGSRqfYfqBt1LEGSLYuRoU2N9bQJCLkbRr4vxVIYmDfjA6nblnZeh/
-	VfFYr2FQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vlDqIjsLXTsLOVaB8vd3OkA5S2UoaPdLtsIDpj43x2c=; b=Bfj1oFur4QGTDQEy8upvjQZ7lP
+	xYIntQjadhv+g0An0KojsFP94PQ2nJx+p1fHh8WHJvc7Erk/EbThYmm44XW1+qUWt9Sg68udH/f2l
+	IcUsqXTpcb/dBDWWHTEQZ51U3HtUklHH09Zjzs7HUYtfoyFQ+oxhy/dNq+v4v2xZb7zbdM2/B9Ib4
+	Bs8TCiIgAGRnBmJAgSOA//NVKb/HhyLpgSKZ7CESbDt3Azn78Ehxrx2FbNv/cjWt40y1GWIysbfEu
+	zgDLs/659NoSwczfVXOHKy2SRu5TRTJolTxEZcVIDzXYWQhmM4qWrNodzaH2I5mNnl5CL82yIWS1O
+	sAFVifPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovGMz-002i8v-AX; Wed, 16 Nov 2022 11:14:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ovHbp-003Qcp-3x; Wed, 16 Nov 2022 12:33:41 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovGMw-002hup-MZ
-	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 11:14:16 +0000
-X-UUID: 638bb7c4343d4cd19af3e0ee7224e896-20221116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DYZzixU+G9Z13P/mjEXm5tqsN/MuV+82bQqD6HGEpiU=;
-	b=t0pDbap9nkrC1JRWRXSf69A39HMTlv6c/R7jMl2caHhooM0wo/7+aWn18+6HUeCInimkch2jwoiZ8CZZSbt5Ud2T9L5Z/rc2UkXjlkT4WYPeQLw5y50cJc0oj/0vl2TAkZiiQIsSavJ6xWWa+WZgtqCKW94vSmuJQ6Nu2hWSkAg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:da4cf5b3-25d1-4124-bd87-332777d563e8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:62cd327,CLOUDID:d4d991e5-09aa-415c-8e59-7d84d4424d8b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 638bb7c4343d4cd19af3e0ee7224e896-20221116
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1421830917; Wed, 16 Nov 2022 04:13:55 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 16 Nov 2022 18:43:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Nov 2022 18:43:17 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7996: fix gcc warnings with sparc options
-Date: Wed, 16 Nov 2022 18:42:26 +0800
-Message-ID: <20221116104226.4174-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ovHbm-003Qac-Jq
+	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 12:33:40 +0000
+Received: by mail-wr1-x430.google.com with SMTP id o4so29549091wrq.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Nov 2022 04:33:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vlDqIjsLXTsLOVaB8vd3OkA5S2UoaPdLtsIDpj43x2c=;
+        b=N5Qau5w1q+ta61PU32aq1W73jjurOXJ7QB6mrINGYz8JGlm7YiHbNptMvdBvqyRHpX
+         x2aQGDSwWKSmQfRP+1rZuZihXc+ctqJZjh7TRzPAuFMQUXGwBBHIZpXe+daPtxGGBQD7
+         auWFcoNf2jUTB/SKk1melaNMZbVvhAFxmtq/3Y/uVeCUQ2t+HI/0LbrsRZPtmB4PcP82
+         O95MxLH8nqchV2YlDgvWs0sHxoA3P+xTWRFvuLV5uZQbahhF1huH9GoOu3R/0szwDmu7
+         l9fY17ZUursXayRKgsiRVc8NzZJzgfQ+NL+zXgPzv3c3zJ7cYeDn1Wt7TZ26AGyD7lyD
+         7MzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vlDqIjsLXTsLOVaB8vd3OkA5S2UoaPdLtsIDpj43x2c=;
+        b=eQoKB7WdFWFFjMz7K07JwMnOG62kCXWJ/SlhtyHe4kk3hq9VmjqfD4Kno/RHu8uMcO
+         mFXI2rmaPluYnWUF4l1Av1Wo8Lb2zlPY+CsfLqGNk43inPZHIxASsMfNqSGNLdXfuT7z
+         ZpkGV8JXkl8GhCcRfLWAl8/MHzlSC0mfuImmxVl6hQgQES5vTehbznAQ+K6an3OxpHjK
+         WEgKqnlKQAkVm9m3g2bIcygwX01m0yFS7ImZkRWzYDsuhD7GsK1RMact4b/wR/gmSs/4
+         0ZNtOKXIigyrGOTHrA68r+IIzMkvyJ3g/eQTjYOJbgy1eVRsrao/g/vdLkoL16Sn0VpF
+         65Rw==
+X-Gm-Message-State: ANoB5pn3CaCbOBa83aNIVnWgAI8iU0fkLK2g6aMAvo0X0+FeZBDdJ9oy
+	d7jQ169EZmGE2GGQHMypI0Sfdw==
+X-Google-Smtp-Source: AA0mqf6y5ltxqD503f540II09FLjpO4HvSCV9W2mYXH6FjVOTyPqmzQUiAKRkAHEnyXIdbgVMduGZA==
+X-Received: by 2002:a5d:6885:0:b0:22e:3460:5e28 with SMTP id h5-20020a5d6885000000b0022e34605e28mr13894652wru.211.1668602017069;
+        Wed, 16 Nov 2022 04:33:37 -0800 (PST)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id z13-20020adff1cd000000b0024166413a4fsm15051607wro.37.2022.11.16.04.33.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Nov 2022 04:33:36 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Wed, 16 Nov 2022 13:32:55 +0100
+Subject: [PATCH v5 01/10] dt-bindings: input: mtk-pmic-keys: add binding for MT6357
+ PMIC
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20221005-mt6357-support-v5-1-8210d955dd3d@baylibre.com>
+References: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
+In-Reply-To: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
+To: Flora Fu <flora.fu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Tianping Fang <tianping.fang@mediatek.com>,
+ Fabien Parent <fabien.parent@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Brown <broonie@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, Pavel Machek <pavel@ucw.cz>,
+ Lee Jones <lee@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh@kernel.org>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-leds@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rtc@vger.kernel.org,
+ linux-input@vger.kernel.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1006; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=acIU37N8P1oQiEeAFVfuuIgjK7XT7A/zFtqy1fGJDhM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjdNieji5otehDDxz/kRWwqw1b5mYJLkZ5CQYL7Two
+ eWQWJrCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY3TYngAKCRArRkmdfjHURXutD/
+ 0X4V7TScc9d20t+Fd8nUv2ogeANV+FtdcuYX3ygHTbNVDlJTe7pA+APbUcmqoNUrEkq82GPT5o3XsE
+ 9lAwSf/zWJv+7/Rb21k9ivYWGnwlIbvg53nx1ScopyptvXvNICPnjEwluUvQ524y7JPkfglAM85i5i
+ yJZ2jg4sUW7wzXgLt+IoDRDaHHk8rI8BBZMg8xsTzsZbtkBrC10fP5rytGzX0YIDkl0mtwpZRvaozo
+ 3CN4Z6RnNgbcDQR9NY4wgG5hzAwx9DyDfci0Onyd9tpr+9racXGv0XwDnlUepG4yaoOfrJNJAfGs3U
+ Qqnzc4gN9Tc1Dcis9kdovEunAT6Sx92AcuEbHa1R55+ZdaIPNk2P0qfRbSgCHldzjdq9DhHq+91E8A
+ UfnNCdyFALC+4bbTYijjJmO2u8w8rLXu5F65ZPm0J2YCpvgOGnS6X+kYEcAjYsZ0x3TBajjW2nm1K4
+ yVEA413D3P5++OsviP3XWL429+udy5OQJujDRs27/KMwzinzP16v85ALwRDWf4sryDFoD+/eiJuYsp
+ ZhLU4xNvFgdUKk418lWwjbFq1gtehDgeCsh0fy7DIseVgqo2CVcWRvZ2Uafyd2U5evgT7s6Xv9c3zq
+ yH/Faki6mlcheo9kDT3+GNZX2iA8qru0VdIiRxCf9Idy1wmL5ui1lKwYO9Jg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_031414_763560_272575F6 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20221116_043338_674415_0092B958 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,79 +116,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following warnings:
+From: Fabien Parent <fparent@baylibre.com>
 
->> drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:2377:5: warning: no previous prototype for 'mt7996_mcu_restart' [-Wmissing-prototypes]
-    2377 | int mt7996_mcu_restart(struct mt76_dev *dev)
-         |     ^~~~~~~~~~~~~~~~~~
-   In file included from include/linux/byteorder/big_endian.h:5,
-                    from arch/sparc/include/uapi/asm/byteorder.h:5,
-                    from include/asm-generic/qrwlock_types.h:6,
-                    from arch/sparc/include/asm/spinlock_types.h:17,
-                    from include/linux/spinlock_types_raw.h:7,
-                    from include/linux/ratelimit_types.h:7,
-                    from include/linux/printk.h:9,
-                    from include/asm-generic/bug.h:22,
-                    from arch/sparc/include/asm/bug.h:25,
-                    from include/linux/bug.h:5,
-                    from include/linux/thread_info.h:13,
-                    from include/asm-generic/preempt.h:5,
-                    from ./arch/sparc/include/generated/asm/preempt.h:1,
-                    from include/linux/preempt.h:78,
-                    from include/linux/spinlock.h:56,
-                    from include/linux/mmzone.h:8,
-                    from include/linux/gfp.h:7,
-                    from include/linux/firmware.h:7,
-                    from drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:6:
-   drivers/net/wireless/mediatek/mt76/mt7996/mcu.c: In function 'mt7996_mcu_set_tx':
->> include/uapi/linux/byteorder/big_endian.h:36:26: warning: conversion from 'short unsigned int' to 'u8' {aka 'unsigned char'} changes value from '2560' to '0' [-Woverflow]
-      36 | #define __cpu_to_le16(x) ((__force __le16)__swab16((x)))
-         |                          ^
-   include/linux/byteorder/generic.h:90:21: note: in expansion of macro '__cpu_to_le16'
-      90 | #define cpu_to_le16 __cpu_to_le16
-         |                     ^~~~~~~~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7996/mcu.c:2546:37: note: in expansion of macro 'cpu_to_le16'
-    2546 |                         e->cw_max = cpu_to_le16(10);
-         |                                     ^~~~~~~~~~~
+Add binding documentation for the PMIC keys on MT6357.
 
-Fixes: 23c307666f69 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
-@Felix, could you please help to fold this patch? Thanks.
----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index adc80b9930bd..bf83d0862988 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -2373,7 +2373,8 @@ mt7996_mcu_init_rx_airtime(struct mt7996_dev *dev)
- 				     MCU_WM_UNI_CMD(VOW), true);
- }
+diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+index 2f72ec418415..037c3ae9f1c3 100644
+--- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
++++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+@@ -26,6 +26,7 @@ properties:
+     enum:
+       - mediatek,mt6323-keys
+       - mediatek,mt6331-keys
++      - mediatek,mt6357-keys
+       - mediatek,mt6358-keys
+       - mediatek,mt6397-keys
  
--int mt7996_mcu_restart(struct mt76_dev *dev)
-+static int
-+mt7996_mcu_restart(struct mt76_dev *dev)
- {
- 	struct {
- 		u8 __rsv1[4];
-@@ -2540,10 +2541,11 @@ int mt7996_mcu_set_tx(struct mt7996_dev *dev, struct ieee80211_vif *vif)
- 			e->cw_min = 5;
- 
- 		if (q->cw_max)
--			e->cw_max = cpu_to_le16(fls(q->cw_max));
-+			e->cw_max = fls(q->cw_max);
- 		else
--			e->cw_max = cpu_to_le16(10);
-+			e->cw_max = 10;
- 	}
-+
- 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
- 				     MCU_WM_UNI_CMD(EDCA_UPDATE), true);
- }
+
 -- 
-2.25.1
-
+b4 0.10.1
 
