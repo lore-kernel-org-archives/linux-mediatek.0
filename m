@@ -4,58 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1E2DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 14:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73CDAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 14:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nppynM5Z8Ar1AVvCi2YPZPdM/07vAJ7n6SJpobggLps=; b=24fAW/G+lWueb5x+Ub3OI0bQQo
-	PT7/lCkp+bk54NuRAjhCH2cmDo1vpzblDRzOD5bnpXaMsfA0i6P6ZEq14GjrUmc7Jqc5pPpNx0C4R
-	ndjpauM2chBBw3QAmRTBG0rlccHURKoiR/v5DzDzyOhlaCpoELcUqt3RfcKoOPuDV0sUW6BhCMecT
-	W4FbMZMXY3Ny2VDx3Y6u/2M4QlGY1zLZF2P5dBgBsChmV2NeKbsl3toobIvRS++oBE9YpP2RX3mNi
-	48YVcBQc7C+aU9o+dIMozo2oBMgTEAgtNCd34cFsaEiCV7tnA1u8rQs5GpyD2sVXm0gThv5TyQ9g6
-	w403FWeg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=03AO/d+34sX5YN3fjNIOuZvahaBINhyoO8pKIANrSLg=; b=xXeaq3X/XDYyO1/6q9AeMx/Xq6
+	H6DK/YxsAbwKwgaPO2eqcFgiTVEPlYb26ySG/yAWPkTpQVozlgOemNRTl+TdIdwNb7LmGbH7N1A66
+	8cuMs+eZB25rtY2G4b7fn2/jmr644X5KUdvm6sH7wZLfcERkyc6JVoOBHUNmKAr78y1dUt8qliWw3
+	yFS21CJZVc+5yuhyGnhtz9UeMaCLifKhF5bLRQ30gr2UXDKwx+3auPc9SfwnQpm7vCpbi3I0zECXm
+	YNeawRq+gkJYjDd/rz6XaodqnaKcm9bgQC9xEXqJlB3PgiN7Al29LFjWbZt3IWJVouSVFs9AGoNUS
+	NJB0jAaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovIz6-004N40-Mp; Wed, 16 Nov 2022 14:01:48 +0000
-Received: from relay06.th.seeweb.it ([5.144.164.167])
+	id 1ovJE0-004UYC-9g; Wed, 16 Nov 2022 14:17:12 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovIz3-004N03-QY
-	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 14:01:47 +0000
-Received: from SoMainline.org (94-209-172-39.cable.dynamic.v4.ziggo.nl [94.209.172.39])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by m-r2.th.seeweb.it (Postfix) with ESMTPSA id 1627C3F308;
-	Wed, 16 Nov 2022 15:01:41 +0100 (CET)
-Date: Wed, 16 Nov 2022 15:01:39 +0100
-From: Marijn Suijten <marijn.suijten@somainline.org>
-To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>
-Subject: Re: [PATCH] docs: dt: writing-schema: Document usage of CHECK_DTBS
- make flag
-Message-ID: <20221116140139.gjfsgekz4t4pxekz@SoMainline.org>
-References: <20221102214300.309347-1-nfraprado@collabora.com>
- <20221116135504.mdmgm6ce2cynt5yt@SoMainline.org>
+	id 1ovJDx-004UVR-Aa; Wed, 16 Nov 2022 14:17:10 +0000
+Received: by mail-lf1-x130.google.com with SMTP id j16so29660934lfe.12;
+        Wed, 16 Nov 2022 06:17:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=03AO/d+34sX5YN3fjNIOuZvahaBINhyoO8pKIANrSLg=;
+        b=FdKmOSWs5xFN+58wikER67yYa5Vny4ZcI3G1EZaRA47K3g3cxQSoYX2Rf5H2vc84iv
+         5hYP4a1AOLTId+qe9ZTmuf6dKhq+6CqIPWkHjQFgCulwkXfOlrbnkEV/t+MAbPVoG0hk
+         d8k2SKK1PsulPklunT7RtLkWS560LFjyi1EGSVvH4ymKDViaJdZXdz6xk9ZguePd1R0/
+         s8Nq3AkP+h/E8dzSguyzN0C4v3NzhkyF/xmfOoJzWprJC14pMjq47vQkuQZNU0ECOGG5
+         ePrAG4QUC+b9qEwIvud9lAp0SnxJtnfwGagSY3+BwLIrtQh7Uy55vM1BPeHJi2LDK67b
+         urAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=03AO/d+34sX5YN3fjNIOuZvahaBINhyoO8pKIANrSLg=;
+        b=r6nbYrzvvt5obKhpd0xx8j4w2/NkY9q4I4i9oItkZVCykN6qu5ze1NXqZtkmy4glCT
+         RIAuUWt5pJIgZuLw41UVqNvYeUd2aEyMvd1Nk4SCbZetQTZo+Q1VIveumzb6Tis7TkJ6
+         b0xsheAfc+VHoK2bmVw71QMKZAHvbC0vAiYWeS3eiXxdSCNK8JWcbvYnkQ3+WTZ8IpjX
+         PsorjntPsSD47mNyzxamGaFPA6csWXvxEYjmye0ze9Dc0A51fLBzjnRnqpSc94qaSNRd
+         wcYhAK/znHqch80WCmmU8K34fHElENR3FES74rS6PjNRLDwx9yKeLe4XbsRscMIH/rjg
+         Ls6A==
+X-Gm-Message-State: ANoB5pmXhtzcxpzCIh4FWDeWV+HTwf9E62UcQYQXGijW3oPIBzmqKXmk
+	j8AiB3Cqf6uA+bYqxkd5nWU=
+X-Google-Smtp-Source: AA0mqf6JWruVUZBOSSlDanBIhDMGzTs2Upx3yEKchOpWuoY6srpCJEpuwyeVU+HZlq5crpJBj2gaAw==
+X-Received: by 2002:a05:6512:3ba8:b0:4b0:7a03:60dc with SMTP id g40-20020a0565123ba800b004b07a0360dcmr6789861lfv.567.1668608224875;
+        Wed, 16 Nov 2022 06:17:04 -0800 (PST)
+Received: from ?IPV6:2001:14ba:16f3:4a00::7? (dc75zzyyyyyyyyyyyyydt-3.rev.dnainternet.fi. [2001:14ba:16f3:4a00::7])
+        by smtp.gmail.com with ESMTPSA id v15-20020a2ea44f000000b0027738fd1eb6sm3018470ljn.110.2022.11.16.06.17.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Nov 2022 06:17:04 -0800 (PST)
+Message-ID: <d61d8c22-fce5-74d5-6d2b-0eda6f2ace9e@gmail.com>
+Date: Wed, 16 Nov 2022 16:17:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221116135504.mdmgm6ce2cynt5yt@SoMainline.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Flora Fu <flora.fu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Tianping Fang <tianping.fang@mediatek.com>,
+ Fabien Parent <fabien.parent@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Mark Brown <broonie@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, Pavel Machek <pavel@ucw.cz>,
+ Lee Jones <lee@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh@kernel.org>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-leds@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-rtc@vger.kernel.org, linux-input@vger.kernel.org
+References: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
+ <20221005-mt6357-support-v5-9-8210d955dd3d@baylibre.com>
+From: Matti Vaittinen <mazziesaccount@gmail.com>
+Subject: Re: [PATCH v5 09/10] regulator: add mt6357 regulator
+In-Reply-To: <20221005-mt6357-support-v5-9-8210d955dd3d@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_060146_040458_161F3EBF 
-X-CRM114-Status: GOOD (  32.93  )
+X-CRM114-CacheID: sfid-20221116_061709_464221_B4167611 
+X-CRM114-Status: GOOD (  27.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,83 +109,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+CC Konrad and Dmitry whom I discussed this with before.
+Hi Alexandre, All
 
-On 2022-11-16 14:55:04, Marijn Suijten wrote:
-> Hi Nícolas,
+Please, treat my review more as initiation for discussion than 'hard 
+requirements' for this driver. I am in no point or no "confidence level" 
+to give you any requirements ;)
+
+On 11/16/22 14:33, Alexandre Mergnat wrote:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> On 2022-11-02 17:43:00, Nícolas F. R. A. Prado wrote:
-> > It is possible to run checks on a Devicetree by passing the CHECK_DTBS
-> > flag when building. This is a useful shortcut to the dtbs_check make
-> > target since it avoids checking unrelated Devicetrees, which can take
-> > some time and is unnecessary if no bindings were modified. Document it.
-> > 
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > ---
-> > 
-> >  Documentation/devicetree/bindings/writing-schema.rst | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/writing-schema.rst b/Documentation/devicetree/bindings/writing-schema.rst
-> > index 4a381d20f2b4..55ad556472b4 100644
-> > --- a/Documentation/devicetree/bindings/writing-schema.rst
-> > +++ b/Documentation/devicetree/bindings/writing-schema.rst
-> > @@ -167,6 +167,13 @@ setting the ``DT_SCHEMA_FILES`` variable to a specific schema file or pattern.
-> >      make dt_binding_check DT_SCHEMA_FILES=/gpio/
-> >      make dtbs_check DT_SCHEMA_FILES=trivial-devices.yaml
-> >  
-> > +Note that ``make dtbs_check`` will validate every DT source file that is
-> > +enabled. When making changes to a DT but not to the bindings, a possible
-> > +shortcut to validate only the DT in question is to explicitly build it with
-> > +the ``CHECK_DTBS`` flag enabled. For example::
-> > +
-> > +    make CHECK_DTBS=y mediatek/mt8192-evb.dtb
+> Add regulator driver for the MT6357 PMIC.
 > 
-> I have a bit of trouble getting this to work on a _clean_ out directory
-> (perhaps this should have been reported at the original patch, I had
-> always been using Dmitry's version [1] which didn't suffer from this
-> problem).
-> 
-> Consider running with the following:
-> 
->     rm out -r
->     make ARCH=arm64 O=out defconfig
->     make ARCH=arm64 O=out CHECK_DTBS=y qcom/sm8450-sony-xperia-nagara-pdx223.dtb
-> 
-> After compiling preliminaries, it exits with:
-> 
->     make[3]: *** No rule to make target 'arch/arm64/boot/dts/qcom/sm8450-sony-xperia-nagara-pdx223.dtb'.  Stop.
->     make[2]: *** [../scripts/Makefile.build:500: arch/arm64/boot/dts/qcom] Error 2
->     make[1]: *** [/kernel/Makefile:1460: qcom/sm8450-sony-xperia-nagara-pdx223.dtb] Error 2
->     make[1]: Leaving directory '/kernel/out'
->     make: *** [Makefile:231: __sub-make] Error 2
-> 
-> However, if I lint all DTBs first by running `dtbs_check`, it seems the
-> schema preliminaries are built:
-> 
->       LINT    Documentation/devicetree/bindings
->       CHKDT   Documentation/devicetree/bindings/processed-schema.json
->     ... bunch of warnings
->       SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-> 
-> And here I ctrl+c the build so that it doesn't run DTC_CHK over every
-> dts.  If I now re-run the original command on my .dtb of choice, it
-> completes successfully with the warnings that I expect.  Is the logic
-> behind `CHECK_DTBS=y` simply missing a step to make sure SCHEMA is built
-> and up-to-date?
-> 
-> Aside from not working in a clean output directly, could this imply
-> schema changes (edits in Documentation/devicetree/bindings) _are not_
-> propagated when running with `CHECK_DTBS=y?
-> 
-> At the same time running this command twice results in no output the
-> second time around, supposedly because the dtb has "already been built".
-> Is that also something we can improve?
-> 
-> [1]: https://lore.kernel.org/linux-arm-msm/20220623144357.297252-1-dmitry.baryshkov@linaro.org/
-> 
-> Thanks!
-> - Marijn
-> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+
+//snip
+
+> +/*
+> + * MT6357 regulators' information
+> + *
+> + * @desc: standard fields of regulator description.
+> + * @da_vsel_reg: Monitor register for query buck's voltage.
+> + * @da_vsel_mask: Mask for query buck's voltage.
+> + */
+> +struct mt6357_regulator_info {
+> +	struct regulator_desc desc;
+> +	u32 da_vsel_reg;
+> +	u32 da_vsel_mask;
+> +};
+> +
+
+//snip
+
+> +/**
+> + * mt6357_get_buck_voltage_sel - get_voltage_sel for regmap users
+> + *
+> + * @rdev: regulator to operate on
+> + *
+> + * Regulators that use regmap for their register I/O can set the
+> + * da_vsel_reg and da_vsel_mask fields in the info structure and
+> + * then use this as their get_voltage_vsel operation.
+> + */
+> +static int mt6357_get_buck_voltage_sel(struct regulator_dev *rdev)
+> +{
+> +	int ret, regval;
+> +	struct mt6357_regulator_info *info = rdev_get_drvdata(rdev);
+> +
+> +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
+> +	if (ret != 0) {
+> +		dev_err(&rdev->dev,
+> +			"Failed to get mt6357 Buck %s vsel reg: %d\n",
+> +			info->desc.name, ret);
+> +		return ret;
+> +	}
+> +
+> +	regval &= info->da_vsel_mask;
+> +	regval >>= ffs(info->da_vsel_mask) - 1;
+> +
+> +	return regval;
+> +}
+
+If I read this right, the device has separate register(s) for writing 
+and reading the voltage? I wonder if this is a completely unique setup?
+
+If this is not unique, then it might be worth adding another field for 
+'vsel_get' register and a flag in regulator desc - and modify the 
+generic regmap helpers to handle this in common code if the special 
+register? Not sure if this HW design is common enough to warrant the 
+added confusion though. You and Mark may have more insight.
+
+> +
+> +static const struct linear_range buck_volt_range1[] = {
+> +	REGULATOR_LINEAR_RANGE(518750, 0, 0x7f, 6250),
+> +};
+> +
+> +static const struct linear_range buck_volt_range2[] = {
+> +	REGULATOR_LINEAR_RANGE(500000, 0, 0x7f, 6250),
+> +};
+> +
+> +static const struct linear_range buck_volt_range3[] = {
+> +	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
+> +};
+> +
+> +static const struct linear_range buck_volt_range4[] = {
+> +	REGULATOR_LINEAR_RANGE(1200000, 0, 0x7f, 12500),
+> +};
+
+I am unsure if we should aim for dropping the REGULATOR_LINEAR_RANGE() 
+and using the LINEAR_RANGE(). If yes, then it might simplify things if 
+new drivers used LINEAR_RANGE() from the day 1. If we don't, then it 
+makes sense to keep consistently using REGULATOR_LINEAR_RANGE() for all 
+of the drivers. I am not sure which way is the right way.
+
+> +static int mt6357_regulator_probe(struct platform_device *pdev)
+> +{
+> +	struct mt6397_chip *mt6357 = dev_get_drvdata(pdev->dev.parent);
+
+I am unsure what data do you need from the parent. If it is just the 
+regmap / device-tree node / device, then it does not (in my opinion) 
+really warrant using parent's drvdata. One can often get away with the
+dev_get_regmap(pdev->dev.parent, NULL).
+
+Anyways, the driver looks good to me.
+
+Yours,
+	-- Matti Vaittinen
+
+-- 
+Matti Vaittinen
+Linux kernel developer at ROHM Semiconductors
+Oulu Finland
+
+~~ When things go utterly wrong vim users can always type :help! ~~
+
 
