@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C703C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 16:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5701C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 16:18:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GFur9ztajNJgyC/h1WU/MLh+XU5LTzLRomeO0X20AEM=; b=qTjSWg0WEhF2ej+KA3a0nXzbas
-	BKA769IwbBgIHCBJ6V2PE+IunRNBv0b68ZEMICoDEeMsoaOfIdN3YHO4Abt9UTpzQLCP9gbjZhjNj
-	4FzX8e27vioYsuTbUewmhX5yp0CX6vRm/7yyJGf+KI4LG4cgl+7+LX72FCnPILMKq6WrpY83peUHF
-	TRRd2SimD2UDvGyPR92p2OC3987yuHYdo40NYhGqboxWm0POZ/i11blNBIRfMqMXXXzuitJX6kQsS
-	Uz4lUHFMlWdbHuGkwtabUb5Xd6oFYqsVF9lyAGLWH5IqxgjXmqK5J2VFmMjDNNk1s7q4t/LH95rXi
-	M7PrePDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=; b=ZGP3M1Q2B7+G/D3Q/NU0IQxw6o
+	0QiEm6Qbz6oDKFYTWz7XhzUR/N5yUuxpseip2HBT0RMcOimMy9dhFTcAISyfFmcOFamhjGWb9Alno
+	23QdLZc9AzoD11VYlayh9DlBadjHMal5yHpjkveGhsvtfc92raJs8nFCogieCx815KybV3B1XN4a7
+	zGK9CSS+3W6g58EA+v9n/ReEeqh6a8WJTgTMZ+0s6xLkNYcfaBEAZVlclSzApDFDQqsJ/AEZvv3gJ
+	MrkfE6JUiqpHODfp4Kw2tCf83pPtpl/u1mczkLnkwsyHJazeQ09BgQez+2zJWub/8NzV1x2bWlRYm
+	ipuM7S3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovKsj-005fqS-BD; Wed, 16 Nov 2022 16:03:21 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1ovL7I-005n7U-7d; Wed, 16 Nov 2022 16:18:24 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovKsh-005foX-1N; Wed, 16 Nov 2022 16:03:20 +0000
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-13ae8117023so20562046fac.9;
-        Wed, 16 Nov 2022 08:03:17 -0800 (PST)
+	id 1ovL7F-005n5K-CJ
+	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 16:18:22 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id gw22so16973651pjb.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Nov 2022 08:18:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=;
+        b=uuC6XXHVG9Amxc061f3zNUOSdEnIEF4TjDWOnctoTMuFscut4Itv7mLnBGqCfgs0al
+         L+c/6HzzyuYppun8NsFwkMKhAp5vuR0lJkvjp0Yz5s3NOtHEoezqavVS9o1XoDOkXRp2
+         nqljq8Xzfl5NVYp/FgHWjOUh+fYjzcJCl7moBfmRkCKQLPemXAavMLERLsUbzejrOh3g
+         sGecALTxxhB0T3feWWlLZDsacHgB4UyWhkhOqkh529nWjGvMUHJ+j4rmzbEUntYWrui9
+         +lVi3b7o7oneBIJGhYCYDGHbBxGQ56+iebIAoJY2gK5JwDxBEF9X3O2nublK5wBYf97X
+         8/Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=GFur9ztajNJgyC/h1WU/MLh+XU5LTzLRomeO0X20AEM=;
-        b=f6Z7inT/COSuh2hRKCH7SbEG3moQ/SE5S6VrfL1Q+mKhyOPvBevf/iZ4NusT0g0283
-         7qXBPWQNBlt3MSMH94LJb0+1bLfgZ1ifXgJZkXRie2pM9cpt8ngEyX2jGwbOMrST93s8
-         UNZA97g7qk68uxmos49PqZQxHEfIZUmGy7i+wYCp55pXBjz3awyCTfM231xfqDmPCsAI
-         Mj4UwDoKVpgE6W747fmnDDFS2IhSx1KSbwkkhQPMlyB8dKm11ryOKBNdxOiotxG0lWYT
-         TRW42uu8hJzJJwYMwcsY81Ly0GdPUucAc1c3CJKvjQn5RmhEJkdgdqqWlFhpKn1zUr07
-         BMhA==
-X-Gm-Message-State: ANoB5plPQTzJgKjqfygz/U5QtyRX6bSTBehULWPe2WTBvydtIL9L0uzL
-	KXF3/KCLE3MuzJuD71L0ww==
-X-Google-Smtp-Source: AA0mqf5XdhzHlaYo1ZV4BEyVQHRU/bRF0T8tEBEf7/gwzL9OR8nfhFXlbYyBvHSwysBdzNF8BwK8yQ==
-X-Received: by 2002:a05:6870:f10f:b0:137:5344:7776 with SMTP id k15-20020a056870f10f00b0013753447776mr2013082oac.208.1668614596948;
-        Wed, 16 Nov 2022 08:03:16 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id n19-20020a9d7413000000b0066cb9069e0bsm6863694otk.42.2022.11.16.08.03.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Nov 2022 08:03:16 -0800 (PST)
-Received: (nullmailer pid 158015 invoked by uid 1000);
-	Wed, 16 Nov 2022 16:03:18 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3vuu78aZaHK7VJ8++7/BN17PpF7VX0jC0oheW36hmIs=;
+        b=BhWmD9yv0u8N4ZDOFBsDjSxM/iTasXwYKRTJfjrsQin7GChaZWg0dMk98lGOsCk/HR
+         q2C6Kg8F1trmgclwRsFCulErISbc6BWFrUB8AtAcdzIaVt5ONTqz42bIjNb8r9c4ovCR
+         1pdtoi5vRZfkUC9Qse3Ct2CK5IhejSyDE+9uiJYg3/GYyxpuK0vwk6Lp3TYQoKbkBmeB
+         AaHgd/tboTVofXThZTs+BVnClM/1niWT8b3nQQ0qNt3sJMfjt3EXETB6nt4KE91j7rek
+         +ZRIxBBrZ1KDnv726SBlhYO7XcrFazsNDfJ7gSnBBouNizAmA+Kh/suTACd50Kw4d+/D
+         lH8w==
+X-Gm-Message-State: ANoB5pngY0LCW7zElV7iZzlH+ngTuGwI1PgFV3r4hhde81wsbhX+TLdX
+	fJ3F4r24LDrcNa5OoklePYEQWjrHp2QCKLUOC9N0mw==
+X-Google-Smtp-Source: AA0mqf4Wa1H27TGFSnM/a1m63gk9/L+t2q1xko8YOBEh2/dkruP1K3xLmmg6L38tevF4sFxaktwBmh2GNWgpZ2zVkB4=
+X-Received: by 2002:a17:902:d48a:b0:188:6baf:2011 with SMTP id
+ c10-20020a170902d48a00b001886baf2011mr9115763plg.165.1668615498412; Wed, 16
+ Nov 2022 08:18:18 -0800 (PST)
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: linux-input@vger.kernel.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, 
-	Fabien Parent <fabien.parent@linaro.org>, linux-leds@vger.kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	Alessandro Zummo <a.zummo@towertech.it>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Mattijs Korpershoek <mkorpershoek@baylibre.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, 
-	Pavel Machek <pavel@ucw.cz>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
-	Fabien Parent <fparent@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen Zhong <chen.zhong@mediatek.com>
-In-Reply-To: <20221005-mt6357-support-v5-5-8210d955dd3d@baylibre.com>
-References: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
- <20221005-mt6357-support-v5-5-8210d955dd3d@baylibre.com>
-Message-Id: <166861435469.151514.16192567175686360100.robh@kernel.org>
-Subject:  Re: [PATCH v5 05/10] dt-bindings: mfd: mediatek: Add bindings for MT6357 PMIC
-Date: Wed, 16 Nov 2022 10:03:18 -0600
+References: <20221110072819.11530-1-yuzhe@nfschina.com>
+In-Reply-To: <20221110072819.11530-1-yuzhe@nfschina.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 16 Nov 2022 17:17:41 +0100
+Message-ID: <CAPDyKFrW+FaDNc+YPjrR1eAYhjPc6BHj4zqghBRnMC0P+A_jKA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: fix two spelling mistakes in comment
+To: Yu Zhe <yuzhe@nfschina.com>
+Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
+	linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel-janitors@vger.kernel.org, liqiong@nfschina.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_080319_096687_137C38AF 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20221116_081821_443875_CC37FCAD 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,47 +86,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 10 Nov 2022 at 08:29, Yu Zhe <yuzhe@nfschina.com> wrote:
+>
+> spelling mistake fix : "alreay" -> "already"
+>                        "checksume" -> "checksum"
+>
+> Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
 
-On Wed, 16 Nov 2022 13:32:59 +0100, Alexandre Mergnat wrote:
-> Currently, almost all MT63XX PMIC are documented mfd/mt6397.txt.
-> Unfortunately, the PMICs haven't always similar HW sub-features.
-> To have a better human readable schema, I chose to make one PMIC schema
-> to match the exact HW capabilities instead of convert mt6397.txt to
-> mediatek,mt63xx.yaml and put a bunch of properties behind
-> "if contain ... then ..."
-> 
-> - add interrupt property
-> - change property refs to match with new yaml documentation
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Applied for next, thanks!
+
+Kind regards
+Uffe
+
+
 > ---
->  .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 105 +++++++++++++++++++++
->  1 file changed, 105 insertions(+)
-> 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-
-
-doc reference errors (make refcheckdocs):
-Warning: Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml references a file that doesn't exist: Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml: Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+>  drivers/mmc/host/mtk-sd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index df941438aef5..a10aca76dfb3 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -735,7 +735,7 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
+>                 else
+>                         bd[j].bd_info &= ~BDMA_DESC_EOL;
+>
+> -               /* checksume need to clear first */
+> +               /* checksum need to clear first */
+>                 bd[j].bd_info &= ~BDMA_DESC_CHECKSUM;
+>                 bd[j].bd_info |= msdc_dma_calcs((u8 *)(&bd[j]), 16) << 8;
+>         }
+> @@ -1212,7 +1212,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+>                      !host->hs400_tuning))
+>                         /*
+>                          * should not clear fifo/interrupt as the tune data
+> -                        * may have alreay come when cmd19/cmd21 gets response
+> +                        * may have already come when cmd19/cmd21 gets response
+>                          * CRC error.
+>                          */
+>                         msdc_reset_hw(host);
+> --
+> 2.11.0
+>
 
