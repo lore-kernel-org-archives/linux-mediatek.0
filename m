@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66C1DC4321E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 15:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89AFBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 15:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TVhbvRUqZQu6uk1nSlOpC0Wl3O1+Ha3Mzov9EJw71XE=; b=oNdvS1WpoieqXcjtLA4u4E060X
-	+z7aacP3SllIQgvpHPCw6ECMnAVhGy8JFW2I03Z3uGA9euHdTk6Rt5OMHbJSeqHrukf/QorrfZHqx
-	LdUYAivi80ytFkvYyegZcsIuf7g+Q+mRG/zM7pogR3Gn8/OeEhQZw+y4iUYUPI2/N395Qzgi1uj/t
-	SLDGYlm90eWy8+5Z3zDrLZpn2E9d8K8DdWS8aK8j36EjM7nH9JlTsPVDqQ60Pr6Nu8H7aP6lOd/6o
-	qvSbF7/aEtmpwgfP3ShcrKjU9QzfqArvCdC3JNHZW+SjA118uoY2mCgqBIT3dzgfKTfmk4UrpFJZV
-	BJcTCNJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Lgeyqq4V2xeaVGb3HNx7wFZLtkDW7im+x1haPklssOU=; b=zCUGPOjpQVfLPR6l2JQQAJvQJR
+	6B2BY1wQVFBHcnRejZAid1jHvCzD+8lS/uRaBD5L4hmfRxOiRhzxMBB2Z1nRFPsTqVKykUjZRnqMB
+	TZ7CH4ONQSRD8YyQDdsRGRT3/v4Tda7DOZ3cgXMH7qmiSl7oGjY0ul4N/R2zVQ6SiMaqUlEYtLRBy
+	HgpDc5cDMvxFj8t6x0ty5w9zew11xMuN9m5iJQ2z8nqyxdkxAghhgOt5G7i2dEXN5u3frgOTZ74+k
+	YIdqEKK1mai37Dkv/UTeX6ZqL2jl4bASoW0ggck4j7IoiXaKRSKY1fmDRSewSYo/M1rSov4phywXk
+	r4DaxdLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovgzb-00FRyN-RI; Thu, 17 Nov 2022 15:39:55 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1ovhCp-00FZaf-3h; Thu, 17 Nov 2022 15:53:35 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovgzY-00FRub-9A; Thu, 17 Nov 2022 15:39:54 +0000
-Received: by mail-ot1-f50.google.com with SMTP id g51-20020a9d12b6000000b0066dbea0d203so1264502otg.6;
-        Thu, 17 Nov 2022 07:39:49 -0800 (PST)
+	id 1ovhCm-00FZYb-9Y; Thu, 17 Nov 2022 15:53:34 +0000
+Received: by mail-wr1-x433.google.com with SMTP id w14so4558375wru.8;
+        Thu, 17 Nov 2022 07:53:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Lgeyqq4V2xeaVGb3HNx7wFZLtkDW7im+x1haPklssOU=;
+        b=COleCBgGfskJyMtBdjyzQ5TJAu6BVoUip0XI2qaMKzeWYtVroAKQ7km0EsnQBtSdJe
+         rXeZtFpTu/oQFowU9hS4+AndKvwRgXo0qxQg4wPHtIDeYqqSef9QFiD/TptIXzFA6pqJ
+         vv64a5vwXLnQFE0oHMQIAWF3AdszFQ4+muH7lSj4np6Yzg8LmDQ1Q81+tYsN0/dLJcl2
+         rqYr52FAiIV2j0cMqXXuZY5GOumjiVvX/xAWE058y/vXy3BScU8moxvB1j51Nwj7Phup
+         LgcHAwGleOm+NlYwuM1Q9AlsivIjX6Tamr45Bpa/sIX2bXXy9S14d1emCeXPGXQ4eSsj
+         KBXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TVhbvRUqZQu6uk1nSlOpC0Wl3O1+Ha3Mzov9EJw71XE=;
-        b=u+6dX5MOy78iqnUc/do0MTx4QDhwyiCIi+jichM/9uZ783K6GW6MvouRNSE4iyEJXg
-         s/wlvsvPLUEjj3dvt+qjlWEsD9jxCbMQe9zkWn1Ubwq/vTOZHOuYQZYXaZGkG40wljbB
-         dXYSWW87pkJfgpT1SCOi+TuVxr9QImSqm3/XmGoBUkhppyVHhWSsPkmhh3z+Fud5EaOW
-         nXSb7vu8E8n/Wx5QvycsxryJV021DgXjg8CagoJTwhrh2jp11O0O69qpLw4cgG0gIUYM
-         eP44Buzn8DRFrnzvtFWwd+4Kn/ug3OlolTPLS9nu1tF3h6v5ehPoYQ0gS44o8vS4V5J+
-         gjOw==
-X-Gm-Message-State: ANoB5pmIw8gND6ApBQWWH+ifqQi4WTCCSljR9E4lB4WZlWYpalLOTj4H
-	SnmjH1CrIvwXoldaaKymxRBwOMtpqQ==
-X-Google-Smtp-Source: AA0mqf4f8AEtQBCEXoach04sei0JgrD/an2wLNFUiFJXCBqskIg7Lnw9MEjrMzhIfDsicIRmbX4Fng==
-X-Received: by 2002:a05:6830:1d66:b0:66c:5b70:2396 with SMTP id l6-20020a0568301d6600b0066c5b702396mr1626581oti.357.1668699589169;
-        Thu, 17 Nov 2022 07:39:49 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id 44-20020a9d04af000000b0066101e9dccdsm450844otm.45.2022.11.17.07.39.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Nov 2022 07:39:48 -0800 (PST)
-Received: (nullmailer pid 2918390 invoked by uid 1000);
-	Thu, 17 Nov 2022 15:39:50 -0000
-Date: Thu, 17 Nov 2022 09:39:50 -0600
-From: Rob Herring <robh@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Flora Fu <flora.fu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Tianping Fang <tianping.fang@mediatek.com>, Fabien Parent <fabien.parent@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Brown <broonie@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Mattijs Korpershoek <mkorpershoek@baylibre.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-leds@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rtc@vger.kernel.org, linux-input@vger.kernel.org
-Subject: Re: [PATCH v5 02/10] dt-bindings: rtc: mediatek: convert MT6397 rtc
- documentation
-Message-ID: <20221117153950.GA2913522-robh@kernel.org>
-References: <20221005-mt6357-support-v5-0-8210d955dd3d@baylibre.com>
- <20221005-mt6357-support-v5-2-8210d955dd3d@baylibre.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Lgeyqq4V2xeaVGb3HNx7wFZLtkDW7im+x1haPklssOU=;
+        b=bEFDDpfW4x171r6OuW2AQn5IavHLbdvE6HyaN1pAxr3X7DH+xzol5oVpT8PULdj6yj
+         631Mbmrei5APSe16EPoJiS9X+yE92ps7z+K+PEPE3Avvyk3A9oWY5s/MSRlY5LuwhL79
+         8YX44smnsR43T6EEDzKvOiZrw+UwVQzSjk9JPILxvNd3ea6wiAfx+fHCMDwAsQynsOPn
+         9UvAKgn9Hu6ASprZXEDfPNTDw4J/VPLbtgKcoxOqUySeU1p8VUSHcvajwHoLn51zn0tI
+         Fpqd0GMRaBml3wNw9oE7cbOeS8jIQd9NcenjTihSGe5dIKLnM7a+JmlLjRWSx5QbfzLq
+         ijaA==
+X-Gm-Message-State: ANoB5pkN4UWLe4gFjBzkDfiapRO6m34Q8CIPluqoMbXNXqbDY1o97Zty
+	V6BN1yGRevVpgTn9gmpzS3I=
+X-Google-Smtp-Source: AA0mqf6CSXvB7fJEGy8sU3KquiMYDpizvrXZNaALs1X9u0ExYmw9K8LKvME/eHVIFW4lj8rV1Xqoiw==
+X-Received: by 2002:adf:f601:0:b0:236:55a7:348f with SMTP id t1-20020adff601000000b0023655a7348fmr1913435wrp.331.1668700408256;
+        Thu, 17 Nov 2022 07:53:28 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id c15-20020a05600c0acf00b003c21ba7d7d6sm1571445wmr.44.2022.11.17.07.53.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Nov 2022 07:53:26 -0800 (PST)
+Message-ID: <fd2a6390-9395-6fd2-04bc-8d9d55c2efdd@gmail.com>
+Date: Thu, 17 Nov 2022 16:53:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221005-mt6357-support-v5-2-8210d955dd3d@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7986: Add SoC compatible
+Content-Language: en-US
+To: matthias.bgg@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, frank-w@public-files.de
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <mbrugger@suse.com>
+References: <20221114121653.14739-1-matthias.bgg@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221114121653.14739-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_073952_352396_BDF684FA 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20221117_075332_388152_B02135A2 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,84 +93,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 16, 2022 at 01:32:56PM +0100, Alexandre Mergnat wrote:
-> - Convert rtc/rtc-mt6397.txt to rtc/mt6397-rtc.yaml
-> - Add maintainer
-> - Remove the .txt binding file
+
+
+On 14/11/2022 13:16, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Missing SoC compatible in the board file causes dt bindings check.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> 
+
+Applied!
+
 > ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt   |  2 +-
->  .../bindings/rtc/mediatek,mt6397-rtc.yaml          | 43 ++++++++++++++++++++++
->  .../devicetree/bindings/rtc/rtc-mt6397.txt         | 31 ----------------
->  3 files changed, 44 insertions(+), 32 deletions(-)
+> Changes since v1:
+> - Move SoC compatible to first line of the block
+> - Add SoC compatible to mt7986b
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 0088442efca1..79aaf21af8e9 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -33,7 +33,7 @@ Optional subnodes:
->  		- compatible: "mediatek,mt6331-rtc"
->  		- compatible: "mediatek,mt6358-rtc"
->  		- compatible: "mediatek,mt6397-rtc"
-> -	For details, see ../rtc/rtc-mt6397.txt
-> +	For details, see ../rtc/mediatek,mt6397-rtc.yaml
->  - regulators
->  	Required properties:
->  		- compatible: "mediatek,mt6323-regulator"
-> diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
-> new file mode 100644
-> index 000000000000..f5a323597f1d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
-> @@ -0,0 +1,43 @@
-> + # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/rtc/mediatek,mt6397-rtc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6397/MT6366/MT6358/MT6323 RTC
-> +
-> +maintainers:
-> +  - Tianping Fang <tianping.fang@mediatek.com>
-> +  - Alexandre Mergnat <amergnat@baylibre.com>
-> +
-> +description: |
-
-Don't need '|' if no formatting.
-
-> +  MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
-> +  as a type of multi-function device (MFD). The RTC can be configured and set up
-> +  with PMIC wrapper bus which is a common resource shared with the other
-> +  functions found on the same PMIC.
-> +
-> +allOf:
-> +  - $ref: rtc.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt6323-rtc
-> +      - mediatek,mt6358-rtc
-> +      - mediatek,mt6366-rtc
-> +      - mediatek,mt6397-rtc
-> +
-> +  start-year: true
-> +
-> +additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +
-> +examples:
-> +  - |
-> +    pmic {
-> +        rtc {
-> +            compatible = "mediatek,mt6397-rtc";
-> +        };
-> +    };
-
-Please drop the example here. Just one complete example in the MFD 
-schema.
+> 
+>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 2 +-
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 1 +
+>   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 2 +-
+>   arch/arm64/boot/dts/mediatek/mt7986b.dtsi    | 3 +++
+>   4 files changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> index afe37b702eef9..0e3b603159477 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> @@ -9,7 +9,7 @@
+>   
+>   / {
+>   	model = "MediaTek MT7986a RFB";
+> -	compatible = "mediatek,mt7986a-rfb";
+> +	compatible = "mediatek,mt7986a-rfb", "mediatek,mt7986a";
+>   
+>   	aliases {
+>   		serial0 = &uart0;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index 72e0d9722e07a..3c52ec3f99a31 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -10,6 +10,7 @@
+>   #include <dt-bindings/reset/mt7986-resets.h>
+>   
+>   / {
+> +	compatible = "mediatek,mt7986a";
+>   	interrupt-parent = <&gic>;
+>   	#address-cells = <2>;
+>   	#size-cells = <2>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> index 3443013b5971e..d03e66a84c5d4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> @@ -9,7 +9,7 @@
+>   
+>   / {
+>   	model = "MediaTek MT7986b RFB";
+> -	compatible = "mediatek,mt7986b-rfb";
+> +	compatible = "mediatek,mt7986b-rfb", "mediatek,mt7986b";
+>   
+>   	aliases {
+>   		serial0 = &uart0;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+> index 23923b9f8944b..db5189664c29b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+> @@ -5,6 +5,9 @@
+>    */
+>   
+>   #include "mt7986a.dtsi"
+> +/ {
+> +	compatible = "mediatek,mt7986b";
+> +};
+>   
+>   &pio {
+>   	compatible = "mediatek,mt7986b-pinctrl";
 
