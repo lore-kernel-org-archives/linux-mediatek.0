@@ -4,82 +4,175 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE0DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Nov 2022 19:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE950C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 02:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5/wDQQ4xL4afiQvOqf0HCqMSIaXcrvP18VpW6c+unRk=; b=18UN+SOrC9B1CTaCl6s2sqRjW+
-	R7oxZqktzzb6fQKt4MNDd6lN0yi/SIY4Uh8k4bRyrkWya1AFCzi4340WFtUakoQEHDPXqluNJYOoj
-	PlX/vjTPU9Pe16LdrCi4M3+uY+VsAEMo3DGRxR1/dud4+Tv/SUVoNDOqzBBq4vL36YNddU1qGcrPI
-	ho6yuOTW8fENthXLHWc4yj3Txr3kI82El4LEiRmlMUZCQVviHeBBqCZgoZM4tELM1VuBv7MGgvR3e
-	EElhM1WhUi13diaj8Ko5ojQQyIxzfiL2XHuQ2pTtYySdeyiQXQHpypqSIJURr71nY3ciKjrdkkbFJ
-	fx0Fy6RA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BjOIDViY7rMz0QwihaDRFDZ5sR/r2h77j7ZQbZFCnMs=; b=u+hzsoP8fp2tPYy586nRZWbFIb
+	CTnGtBKaX0zG/PJsRqH7ruzhxtE5HSN0vvuCVM3n5Joz9yDkhpbkJBOg2p8J/OeC6YeI2fp3T3JTa
+	yJ0hgFMcs8DPAC0qRNTDClSik3ZNQ463NtbZoMzRj5CtMKOAlyDZqDgydLbqzeWZgv13Pw89Zrytg
+	USy6lX7F9OkFF2SAMUG4SpU3jZ7S5m8WKoJ7kDn3FnT0kKJhyZwYrkX/guYIdOi00Xa4k6ylWX5+o
+	lUSioUMU3rW62QACwPTEGELcFodoY7/Jzn3z182RkalM9By7VXf2h4R32JJXLuKFut4emMliLOGq5
+	m3k6awiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovOAY-007NEv-Pi; Wed, 16 Nov 2022 19:33:58 +0000
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+	id 1ovUTK-009aaD-9z; Thu, 17 Nov 2022 02:17:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovOAV-007NDa-FU
-	for linux-mediatek@lists.infradead.org; Wed, 16 Nov 2022 19:33:57 +0000
-Received: by mail-qt1-x82e.google.com with SMTP id e15so11401767qts.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Nov 2022 11:33:53 -0800 (PST)
+	id 1ovUT8-009aZ0-Gg; Thu, 17 Nov 2022 02:17:36 +0000
+X-UUID: 445bbd441dad4454ab27168775598b80-20221116
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=BjOIDViY7rMz0QwihaDRFDZ5sR/r2h77j7ZQbZFCnMs=;
+	b=UBkRY98VFMV5z5kgqNFdL/irWb2pZI401liRp9tcLlMDWX+zhAfJd8qVntSPulJLAfvd5f6rl5Q0leBAryYomX/X/TmNmYUsA6wzokoRGxAgEiIeKlxxOxASCTqJsbAYuZfkDVzaXFbN8dToDhN60Z0nMiuO+dQ1s4JnMiF0J2A=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:53bfe6ab-e2e3-4940-bbf5-877121000d45,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:54
+X-CID-INFO: VERSION:1.1.12,REQID:53bfe6ab-e2e3-4940-bbf5-877121000d45,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_HamU,ACTION:
+	release,TS:54
+X-CID-META: VersionHash:62cd327,CLOUDID:0006a1e5-09aa-415c-8e59-7d84d4424d8b,B
+	ulkID:221117012954N1RTK23O,BulkQuantity:14,Recheck:0,SF:28|16|19|48|102,TC
+	:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 445bbd441dad4454ab27168775598b80-20221116
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1220444529; Wed, 16 Nov 2022 19:17:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 17 Nov 2022 10:16:50 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 17 Nov 2022 10:16:50 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FgMAl1fZu4kJQXqMBG6gVKP35hdqrQxoqAqesdWKsjolMEuJ1xC4ywQ5l+MKRtPMirQyQ9WMmmePPH9X4SZuGcLI11XKdr8CrGzhYt3l46FYufVUv8YQBPIUKALYfaxoR/JJmVbwZdGWraKw3V32qmnm/X8rVjSwja70bCPaZfYBve/PSM9zSjQcMMuv6otZ4dk4v7Oc5H4OdYSGSV3VlNyOvxjU7+6dxTuCoetYtpj2xShZx9pcx62C5ob4P0+2wYUPTs6YDd0o3usDctz5SmoO3ll+u0jUvC3DqtwAdLKgSvhOelzjmRKjg+n3lSfxjcsu8ggx2ZMmD64jD8ztuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BjOIDViY7rMz0QwihaDRFDZ5sR/r2h77j7ZQbZFCnMs=;
+ b=JaY4rPORfPDbn/gpAmO/KK3PAI6nI4XtGrhDEUTiyC9xYGgKWzsRnZb3z6oWnDSVQU9+S27YETX3dpJ5m06A2gjk+whKXjTBF5EQddZK3/eDJ3wNU9YRZXcccFDtIogMZCadQDBwayHslMvdtxOfXtob5YiBVo6HvxqX30Tnv233Bd34FDIf5DCnxlb+xsRFV5xERJs4D2I4ctOZpUj/fwL6TngAJntStJ7limDyQskByRBwd6YqBlGPN6MQmwbDaq6OIyw6U4QMt0SGRqQ2Iw5VJfosqlqUzIu5Bo49EUUwMEDn0ir84pJ2HfWETNBs1libyZtYnb6rf1mhReB3zw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=5/wDQQ4xL4afiQvOqf0HCqMSIaXcrvP18VpW6c+unRk=;
-        b=XZBJeQAcK1B7hTyww3ks8ElUUIprJC/IKfbTboJer8Rm3uX9g2ouxX3ck0b/SUb9iO
-         50WGxq0oRwnq7dX6sNnw/lFdWURLNGJ3w6M7htFzPyeDNkjjfRbLA9CIJPH7jPfk7nUT
-         IWJz12hhtCtHEgZOhQrx5yRBJn61Mq68GM4qY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5/wDQQ4xL4afiQvOqf0HCqMSIaXcrvP18VpW6c+unRk=;
-        b=hdUvUW9lGtunhr4gRgD896LSv9XWH9P40Ijc7xAxq5dPiTDWESWj0ZyZM+WrrC49Cs
-         5sv7BsnneQBlKpe4rknjFLK9VNJ4Jz1sd6pEAWkEZ1iHs6aMtkht6il9HTp/8kgIt8yy
-         jDX0DWkSa8F8r21RI7XsUYDUZcj5bNxFM5khqQh28U/jTtkKHz4g4FUFl0f0nylEN1hJ
-         CSbuakMpIIThgvSgxydhZ1ornd/0TnWDZQNyQydsOS6cqzT7F8JEShj0E4otMljk4gmU
-         IBMk8qT3rMjvAXa5wF3QxeDUluv/yUcNtAPTeX1b/wlblGt4eCxbE4IQ2MOiTCxTy7fe
-         KXSg==
-X-Gm-Message-State: ANoB5pn+hSD1uhJaaI71Z2ETcE8P+Eb3n2VC86Uj4l1hXQAvrTPKyONE
-	2EsPEBFlThI2SIl4KxXE7KER/Dc11WsLaA==
-X-Google-Smtp-Source: AA0mqf7SUAHxZ7Moj8raVcO+cvrowK947of2vTTzFpUaoe0apgHgRkg9lKkIItJ4BOS0XgbVtx66yQ==
-X-Received: by 2002:a05:622a:198a:b0:3a4:fa82:c3b8 with SMTP id u10-20020a05622a198a00b003a4fa82c3b8mr22742876qtc.261.1668627232918;
-        Wed, 16 Nov 2022 11:33:52 -0800 (PST)
-Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:6ddf:dc29:1b8c:43bc])
-        by smtp.gmail.com with ESMTPSA id br7-20020a05620a460700b006eeca296c00sm10687066qkb.104.2022.11.16.11.33.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Nov 2022 11:33:52 -0800 (PST)
-From: Justin Green <greenjustin@chromium.org>
-X-Google-Original-From: Justin Green <greenjustin@google.com>
-To: linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Cc: angelogioacchino.delregno@collabora.com,
-	jason-jh.lin@mediatek.com,
-	justin.yeh@mediatek.com,
-	wenst@chromium.org,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@linux.ie,
-	matthias.bgg@gmail.com,
-	daniel@ffwll.ch,
-	daniel@fooishbar.org,
-	Justin Green <greenjustin@chromium.org>
-Subject: [PATCH v5] drm/mediatek: Add AFBC support to Mediatek DRM driver
-Date: Wed, 16 Nov 2022 14:33:35 -0500
-Message-Id: <20221116193335.36320-1-greenjustin@google.com>
-X-Mailer: git-send-email 2.38.1.431.g37b22c650d-goog
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BjOIDViY7rMz0QwihaDRFDZ5sR/r2h77j7ZQbZFCnMs=;
+ b=AKthKDl8oh9Kt7xe4G3kNTg7yafLlGedkc1nC6Ek9lZw+f4OmfYgKrlMwkrXLEOwkNKT17v+h8OsWJgvmIgQKc+4VodUZNbofizzfBbnE4UwLRq2qfUK6TLw2cHUe2JSqlDnEWbWAfsHBfGPouIn9RFjlvqNCoAiknmylEGsRP4=
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com (2603:1096:100:4e::10)
+ by TY0PR03MB6882.apcprd03.prod.outlook.com (2603:1096:400:265::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5813.19; Thu, 17 Nov
+ 2022 02:16:49 +0000
+Received: from SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b]) by SL2PR03MB4153.apcprd03.prod.outlook.com
+ ([fe80::a0e1:17bd:db1c:f57b%6]) with mapi id 15.20.5813.017; Thu, 17 Nov 2022
+ 02:16:49 +0000
+From: =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>
+To: "robh@kernel.org" <robh@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"wenst@chromium.org" <wenst@chromium.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "stevecho@chromium.org"
+	<stevecho@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
+	<hsinyi@chromium.org>, "benjamin.gaignard@collabora.com"
+	<benjamin.gaignard@collabora.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2,1/3] media: dt-bindings: media: mediatek: vcodec: Fix
+ clock num not correctly
+Thread-Topic: [PATCH v2,1/3] media: dt-bindings: media: mediatek: vcodec: Fix
+ clock num not correctly
+Thread-Index: AQHY9O9JtBuSy65JiUSbaCxiUr6+YK5B2DMAgACTNwA=
+Date: Thu, 17 Nov 2022 02:16:49 +0000
+Message-ID: <b31b0928147804323149ced94fe284cc595ffca1.camel@mediatek.com>
+References: <20221110102834.8946-1-yunfei.dong@mediatek.com>
+	 <20221116172952.GA461876-robh@kernel.org>
+In-Reply-To: <20221116172952.GA461876-robh@kernel.org>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SL2PR03MB4153:EE_|TY0PR03MB6882:EE_
+x-ms-office365-filtering-correlation-id: 39206c69-9d5b-4c45-c56b-08dac841c8b1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 5wQfFiXLnpONYdkmTEwKvwtODSeF8VbZ1JtTLfd/DxoHINxgZFPL47TP6hiRdKPapMtAxWktuvQzfmWagtjc2JX/HSTryaUFOJcscqCUfKjz8bcDF9q9jobqZox3BIMn4qoQGlZXYMHYTDnVHPG2acNMTAxDsBS7TMW6dyQ8401TUhRIdKmIb89TaMsN4wh4ck0e6c/Y0iInYvZBCZm/4lWTTyGOr/Cer1310Ie1dL/0GjGEjK3tv7JakdQZEwKtJqbPcGaCXt85IYNyN/IRRX3U7O5fAuQNvrdn7XDuvYt3l5mG1PXLhD8n1SbwTsQl4Tv74fnup2pDpg3TcHNOss4Rlrjy39ecCuTBwzH2PbAUvk9AiLmS7E6MXWaAP8gNq9LGBR8Vd7pDx/DKK3EtLbhiE+3NyCq9h+Knw9M+cBFa1/I/Apq45EQw23jrmYe6oD4lMUDSgRLfwkmLjuc4W031s8R+++nZzygjAeo3uFGEqKoSq/hxP37lTcCGFkLY2LpuOimTV7u6FOjHV1cNDs7e7Gst7t3JG4IWslfWwb/L7jPNoA03UqtVByVEb3Ez0qxHjFPxVZf6U2O2ZX5PjDb9Y0NdzvJnBFM5ZeTfU4M8DtYcg1tAmTkDo4McG5UCGJ1Le5sYj0unrDoMYyXqr5PY3QO2/7WjZp5/aq3976jy/CCiWdJqII985WqIL6+ZMQ90oprDMhenNifjjnskRVigBQeHkX/kYpgR5Zn7aWoHXBKsTaVmtvXx/3LjR9fqVXDVCqeAQGCKa+ioGADLU9/INc79w8yI7SXQAR6pK58=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2PR03MB4153.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(39860400002)(376002)(396003)(136003)(346002)(451199015)(6506007)(2616005)(6512007)(26005)(38100700002)(186003)(83380400001)(122000001)(7416002)(5660300002)(4001150100001)(2906002)(71200400001)(6486002)(478600001)(54906003)(64756008)(4326008)(8936002)(8676002)(76116006)(41300700001)(66446008)(66556008)(316002)(66946007)(66476007)(6916009)(91956017)(36756003)(85182001)(38070700005)(86362001)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RVEzTnJKc1ArS0d6NEVhMnMyUURzS05SajEyMDZCLythbUUwVFJhUkhaK1Vp?=
+ =?utf-8?B?WndORFJPaEdyV3VUSERFblNtelhhcGROa2J4TWQ0b1FGdTFzeDdrV2dKUGFF?=
+ =?utf-8?B?QW53bi9UWUdYMUxCNkg3dlpCdisrdFg3V0dLTHNBR3F4RjlGWUpSZnUyOFBs?=
+ =?utf-8?B?WVg0QjhwQjB3NEpWak56ejR6cmI5Nko5UTZqc0cxb0tTSnl0WEwyVHVZRWg3?=
+ =?utf-8?B?V2pDT0x5dE4zRERlSlZSWFY2Nkw2cktyOCtBUWRaV0E1QWNvL2JJcStLR21t?=
+ =?utf-8?B?WHArVkZDUzE0Y2txRHBETGZSdjR6R0lmT3BENEowZnRsc0xPa1JRd2s4R3Fm?=
+ =?utf-8?B?c2RBVEc0NTQvbURURGZhOVBoUWJiYlhGVk5CU3JUS2ZDRTkyQ2dqd2tIc3gz?=
+ =?utf-8?B?dVBKcG5yUnJjUlBsWjNKcTRsOE5vUk1XMGkrL1VYcm8vRngrRGI2VXcyVXk2?=
+ =?utf-8?B?SW9Uc1VUU0VOeGNKcExEb043VTY4VVJvQWR4OFAxbU1IeHVPcVcvRU9tTG1x?=
+ =?utf-8?B?RGJLbDB4QU1jeVdQSnBzeUtwcHpJN2VBNFFJYjFUQXF3cFVZQnVjSWpqcU8w?=
+ =?utf-8?B?Rzg5WndsS3pLYmYwbFlVVVlVVytMU2NZN2tWUVlKa3lmWnlibnRla2ZObjlW?=
+ =?utf-8?B?OFpKZmp6dUhCeTkvRWMwUWN1bkV3cGl1TVNxYzY3Qkk4N05VazdmVnJvcTdm?=
+ =?utf-8?B?S3hFVVNWdlZxSWRWSU81SFUrKzBmM01iaExhTWtFaURkVWRWTDFpUmRSbE5l?=
+ =?utf-8?B?NzVvUndoRUx4WjdsYmM3SmFqeENKTHk5WFZuVFlZQWxYcE0wWFpwa1NYdjZu?=
+ =?utf-8?B?Tm4wZVYwMkl2ckg0b2xhRkpSYnNnaklHdXhTVFA5MXMrWUpEUUNjSmJqeHc3?=
+ =?utf-8?B?WlJWU1ZuUEFxTUJ0Z1U2UzBVSDZPQThsUGRXbnlLY1VQRVJxazBrelpwUHlj?=
+ =?utf-8?B?ZU8xMGJickFvSFZwKy9jTVg1eTNVdzFOTjZidktSY2Q4S21UMXM1RGhBcGh0?=
+ =?utf-8?B?RE1wdC9hdGdGSEhNcjFkNUhDNHdvR3Znd0Q2cGltQW9YcHpBOG1vQjJ1ZWRl?=
+ =?utf-8?B?YXVnZ0YzSjYzQXY5eHJ1b29pek5PWEVsL2h6aXRGUUQwc0dVbkN6Rk9zSXFL?=
+ =?utf-8?B?RVNFSkVZL09zL2dKWGtJNnNzeVdCVlVaQVB6b1FnaVpVMVhqYVptd0E5OWlp?=
+ =?utf-8?B?VGRRSzM3c1VnYWZTcVltUXpxR2lCTzFBT2xZN3orVFdPalpxeUdoazd1R3RO?=
+ =?utf-8?B?aUVoRE83UmVReTVYdDY0dHZDb0NiclorL2pReWZHRmxGNXNYVElJalJMWWdG?=
+ =?utf-8?B?Y2ZOdHJuUkNaRTQ3dUV1TCttbUJLT0FUTitpbENZZkU5NUNoTDV0Q1o1YVdv?=
+ =?utf-8?B?dlpmQmpHdzhQUmlzOHY1YmZyK0RlOUFjVHBjMndkelNTZWR4UnBrcldKL3Fl?=
+ =?utf-8?B?VjliQ1JjajZyaisramlUdGIwdkgzSEYwTldKMG9CQzlrMVExU2d6Ylc1Nko2?=
+ =?utf-8?B?WkcwZjczMng2ZnRtQmhQVWFuS3V0bnJ0dTI3UTAxMzU3Y2wySEIzcEJmekpD?=
+ =?utf-8?B?TmRTMlorNTQyM3lXUkh2Z1p0YmFVQlB1MjFlSVFQREwzelJDMmpOUXFWSlYx?=
+ =?utf-8?B?TjFGN2hyTkZoVk5yWGplbDh1YVdGVWpoT1Z0SkRFdUNqWWJDYXdHdUJsZVda?=
+ =?utf-8?B?YkFoVFR3WWQrUmt6QnAvdFVBMHZQRlZ5V1NxTnFtcGFwOGY3SFN0ejZXenFJ?=
+ =?utf-8?B?T0gyNnRCSWFydjRVYlY1U2U1cDdZVlJ6bkUvb0dKV0NxOWN2ZWF1bGUzb3NB?=
+ =?utf-8?B?bW04ajA5YUJhWDdRVlo3ZkQwN1l4WW1ZTDZoV0JxTUlCN1c4VUtkVElJaGx4?=
+ =?utf-8?B?Z1JuMklockRWYVlGUHNMVEJ4eUNValhrYzRqandLZmY0MjhxSExkZHUzc3J0?=
+ =?utf-8?B?cURqRDhZdG5wVkdRWVNrcjN5ajhvRXNVNGlnOXJBRGRTN0VGakVDUDhRU0Z1?=
+ =?utf-8?B?WlVDZUdDRnRWME0yekFJa3krb09HMFM1K2o5TU9jaVRRQTNTaFhOQjBKei8r?=
+ =?utf-8?B?bzFpRVJWY09wa1ZKOWd4TUt3Tm9rVGh1MW1oWUo4MnI5SWc1bWRibFJNNEZR?=
+ =?utf-8?B?Q0F5ZVlPMVdtZmtvZUFEWTBJTFNRNGs1NVBnQ2grTlZrWHMxOTB1OTIzZ3Ev?=
+ =?utf-8?B?TUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <93C221CF3EB33C48944CF9743A7DCDCD@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SL2PR03MB4153.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 39206c69-9d5b-4c45-c56b-08dac841c8b1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Nov 2022 02:16:49.1713
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VrUFluB1RkHjFyGtOzA74PyAQWM+OrqCWL/NXUBP4giFvRBeLkR4ePLWASYu6xUeVyB4gnEjskY9qAOyg6NgyjuCjcMjidF4p51uy2PDWtk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR03MB6882
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221116_113355_592134_DA83BFD6 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20221116_181734_576338_7591AA9C 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,340 +187,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Justin Green <greenjustin@chromium.org>
-
-Tested on MT8195 and confirmed both correct video output and improved DRAM
-bandwidth performance.
-
-v5:
-* Removed some dead defines.
-* Refactored mtk_ovl_set_afbc().
-
-v4:
-* Move modifier validation to format_mod_supported function.
-* Add modifiers to drm_universal_plane_init() call.
-* Make comparisons to DRM_FORMAT_MOD_LINEAR explicit rather than relying on
-  DRM_FORMAT_LINEAR being equal to 0.
-* Gate AFBC control bit writes on device compatibility.
-
-v3:
-* Replaced pitch bitshift math with union based approach.
-* Refactored overlay register writes to shared code between non-AFBC and
-  AFBC.
-* Minor code cleanups.
-
-v2:
-* Marked mtk_ovl_set_afbc as static.
-* Reflowed some lines to fit column limit.
-
-Signed-off-by: Justin Green <greenjustin@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 57 +++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 74 +++++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_plane.h |  8 +++
- 3 files changed, 134 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 002b0f6cae1a..5a59e7b99c5d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -29,17 +29,22 @@
- #define DISP_REG_OVL_DATAPATH_CON		0x0024
- #define OVL_LAYER_SMI_ID_EN				BIT(0)
- #define OVL_BGCLR_SEL_IN				BIT(2)
-+#define OVL_LAYER_AFBC_EN(n)				BIT(4+n)
- #define DISP_REG_OVL_ROI_BGCLR			0x0028
- #define DISP_REG_OVL_SRC_CON			0x002c
- #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
- #define DISP_REG_OVL_SRC_SIZE(n)		(0x0038 + 0x20 * (n))
- #define DISP_REG_OVL_OFFSET(n)			(0x003c + 0x20 * (n))
-+#define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
-+#define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
- #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
- #define DISP_REG_OVL_ADDR_MT8173		0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
-+#define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
-+#define DISP_REG_OVL_HDR_PITCH(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x08)
- 
- #define GMC_THRESHOLD_BITS	16
- #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
-@@ -67,6 +72,7 @@ struct mtk_disp_ovl_data {
- 	unsigned int layer_nr;
- 	bool fmt_rgb565_is_0;
- 	bool smi_id_en;
-+	bool supports_afbc;
- };
- 
- /*
-@@ -172,7 +178,14 @@ void mtk_ovl_stop(struct device *dev)
- 		reg = reg & ~OVL_LAYER_SMI_ID_EN;
- 		writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
- 	}
-+}
- 
-+static void mtk_ovl_set_afbc(struct mtk_disp_ovl *ovl, struct cmdq_pkt *cmdq_pkt,
-+			     int idx, bool enabled)
-+{
-+	mtk_ddp_write_mask(cmdq_pkt, enabled ? OVL_LAYER_AFBC_EN(idx) : 0,
-+                           &ovl->cmdq_reg, ovl->regs,
-+                           DISP_REG_OVL_DATAPATH_CON, OVL_LAYER_AFBC_EN(idx));
- }
- 
- void mtk_ovl_config(struct device *dev, unsigned int w,
-@@ -310,11 +323,23 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
- 	struct mtk_plane_pending_state *pending = &state->pending;
- 	unsigned int addr = pending->addr;
--	unsigned int pitch = pending->pitch & 0xffff;
-+	unsigned int hdr_addr = pending->hdr_addr;
-+	unsigned int pitch = pending->pitch;
-+	unsigned int hdr_pitch = pending->hdr_pitch;
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
- 	unsigned int con;
-+	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
-+	union overlay_pitch {
-+		struct split_pitch {
-+			u16 lsb;
-+			u16 msb;
-+		} split_pitch;
-+		u32 pitch;
-+	} overlay_pitch;
-+
-+	overlay_pitch.pitch = pitch;
- 
- 	if (!pending->enable) {
- 		mtk_ovl_layer_off(dev, idx, cmdq_pkt);
-@@ -335,9 +360,12 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 		addr += pending->pitch - 1;
- 	}
- 
-+	if (ovl->data->supports_afbc)
-+		mtk_ovl_set_afbc(ovl, cmdq_pkt, idx, is_afbc);
-+
- 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_CON(idx));
--	mtk_ddp_write_relaxed(cmdq_pkt, pitch, &ovl->cmdq_reg, ovl->regs,
-+	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_PITCH(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_SRC_SIZE(idx));
-@@ -346,6 +374,20 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	mtk_ddp_write_relaxed(cmdq_pkt, addr, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_ADDR(ovl, idx));
- 
-+	if (is_afbc) {
-+		mtk_ddp_write_relaxed(cmdq_pkt, hdr_addr, &ovl->cmdq_reg, ovl->regs,
-+				      DISP_REG_OVL_HDR_ADDR(ovl, idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt,
-+				      OVL_PITCH_MSB_2ND_SUBBUF | overlay_pitch.split_pitch.msb,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, hdr_pitch, &ovl->cmdq_reg, ovl->regs,
-+				      DISP_REG_OVL_HDR_PITCH(ovl, idx));
-+	} else {
-+		mtk_ddp_write_relaxed(cmdq_pkt,
-+				      overlay_pitch.split_pitch.msb,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH_MSB(idx));
-+	}
-+
- 	mtk_ovl_layer_on(dev, idx, cmdq_pkt);
- }
- 
-@@ -492,6 +534,15 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
- 	.smi_id_en = true,
- };
- 
-+static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 4,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+	.supports_afbc = true,
-+};
-+
- static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = &mt2701_ovl_driver_data},
-@@ -505,6 +556,8 @@ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	  .data = &mt8192_ovl_driver_data},
- 	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
- 	  .data = &mt8192_ovl_2l_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-ovl",
-+	  .data = &mt8195_ovl_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 5c0d9ce69931..07092e27ff24 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -12,6 +12,7 @@
- #include <drm/drm_framebuffer.h>
- #include <drm/drm_gem_atomic_helper.h>
- #include <drm/drm_plane_helper.h>
-+#include <linux/align.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -33,6 +34,14 @@ static const u32 formats[] = {
- 	DRM_FORMAT_YUYV,
- };
- 
-+static const u64 modifiers[] = {
-+	DRM_FORMAT_MOD_LINEAR,
-+	DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-+				AFBC_FORMAT_MOD_SPLIT |
-+				AFBC_FORMAT_MOD_SPARSE),
-+	DRM_FORMAT_MOD_INVALID,
-+};
-+
- static void mtk_plane_reset(struct drm_plane *plane)
- {
- 	struct mtk_plane_state *state;
-@@ -52,6 +61,7 @@ static void mtk_plane_reset(struct drm_plane *plane)
- 
- 	state->base.plane = plane;
- 	state->pending.format = DRM_FORMAT_RGB565;
-+	state->pending.modifier = DRM_FORMAT_MOD_LINEAR;
- }
- 
- static struct drm_plane_state *mtk_plane_duplicate_state(struct drm_plane *plane)
-@@ -72,6 +82,32 @@ static struct drm_plane_state *mtk_plane_duplicate_state(struct drm_plane *plane
- 	return &state->base;
- }
- 
-+static bool mtk_plane_format_mod_supported(struct drm_plane *plane,
-+					   uint32_t format,
-+					   uint64_t modifier)
-+{
-+	if (modifier == DRM_FORMAT_MOD_LINEAR)
-+		return true;
-+
-+	if (modifier != DRM_FORMAT_MOD_ARM_AFBC(
-+				AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-+				AFBC_FORMAT_MOD_SPLIT |
-+				AFBC_FORMAT_MOD_SPARSE))
-+		return false;
-+
-+	if (format != DRM_FORMAT_XRGB8888 &&
-+	    format != DRM_FORMAT_ARGB8888 &&
-+	    format != DRM_FORMAT_BGRX8888 &&
-+	    format != DRM_FORMAT_BGRA8888 &&
-+	    format != DRM_FORMAT_ABGR8888 &&
-+	    format != DRM_FORMAT_XBGR8888 &&
-+	    format != DRM_FORMAT_RGB888 &&
-+	    format != DRM_FORMAT_BGR888)
-+		return false;
-+
-+	return true;
-+}
-+
- static void mtk_drm_plane_destroy_state(struct drm_plane *plane,
- 					struct drm_plane_state *state)
- {
-@@ -120,21 +156,52 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
- 	struct drm_gem_object *gem;
- 	struct mtk_drm_gem_obj *mtk_gem;
- 	unsigned int pitch, format;
-+	u64 modifier;
- 	dma_addr_t addr;
-+	dma_addr_t hdr_addr = 0;
-+	unsigned int hdr_pitch = 0;
- 
- 	gem = fb->obj[0];
- 	mtk_gem = to_mtk_gem_obj(gem);
- 	addr = mtk_gem->dma_addr;
- 	pitch = fb->pitches[0];
- 	format = fb->format->format;
-+	modifier = fb->modifier;
- 
--	addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
--	addr += (new_state->src.y1 >> 16) * pitch;
-+	if (modifier == DRM_FORMAT_MOD_LINEAR) {
-+		addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
-+		addr += (new_state->src.y1 >> 16) * pitch;
-+	} else {
-+		int width_in_blocks = ALIGN(fb->width, AFBC_DATA_BLOCK_WIDTH)
-+				      / AFBC_DATA_BLOCK_WIDTH;
-+		int height_in_blocks = ALIGN(fb->height, AFBC_DATA_BLOCK_HEIGHT)
-+				       / AFBC_DATA_BLOCK_HEIGHT;
-+		int x_offset_in_blocks = (new_state->src.x1 >> 16) / AFBC_DATA_BLOCK_WIDTH;
-+		int y_offset_in_blocks = (new_state->src.y1 >> 16) / AFBC_DATA_BLOCK_HEIGHT;
-+		int hdr_size;
-+
-+		hdr_pitch = width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
-+		pitch = width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
-+			AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
-+
-+		hdr_size = ALIGN(hdr_pitch * height_in_blocks, AFBC_HEADER_ALIGNMENT);
-+
-+		hdr_addr = addr + hdr_pitch * y_offset_in_blocks +
-+			   AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
-+		/* The data plane is offset by 1 additional block. */
-+		addr = addr + hdr_size +
-+		       pitch * y_offset_in_blocks +
-+		       AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
-+		       fb->format->cpp[0] * (x_offset_in_blocks + 1);
-+	}
- 
- 	mtk_plane_state->pending.enable = true;
- 	mtk_plane_state->pending.pitch = pitch;
-+	mtk_plane_state->pending.hdr_pitch = hdr_pitch;
- 	mtk_plane_state->pending.format = format;
-+	mtk_plane_state->pending.modifier = modifier;
- 	mtk_plane_state->pending.addr = addr;
-+	mtk_plane_state->pending.hdr_addr = hdr_addr;
- 	mtk_plane_state->pending.x = new_state->dst.x1;
- 	mtk_plane_state->pending.y = new_state->dst.y1;
- 	mtk_plane_state->pending.width = drm_rect_width(&new_state->dst);
-@@ -173,6 +240,7 @@ static const struct drm_plane_funcs mtk_plane_funcs = {
- 	.reset = mtk_plane_reset,
- 	.atomic_duplicate_state = mtk_plane_duplicate_state,
- 	.atomic_destroy_state = mtk_drm_plane_destroy_state,
-+	.format_mod_supported = mtk_plane_format_mod_supported,
- };
- 
- static int mtk_plane_atomic_check(struct drm_plane *plane,
-@@ -254,7 +322,7 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
- 
- 	err = drm_universal_plane_init(dev, plane, possible_crtcs,
- 				       &mtk_plane_funcs, formats,
--				       ARRAY_SIZE(formats), NULL, type, NULL);
-+				       ARRAY_SIZE(formats), modifiers, type, NULL);
- 	if (err) {
- 		DRM_ERROR("failed to initialize plane\n");
- 		return err;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-index 2d5ec66e3df1..8f39011cdbfc 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-@@ -10,12 +10,20 @@
- #include <drm/drm_crtc.h>
- #include <linux/types.h>
- 
-+#define AFBC_DATA_BLOCK_WIDTH 32
-+#define AFBC_DATA_BLOCK_HEIGHT 8
-+#define AFBC_HEADER_BLOCK_SIZE 16
-+#define AFBC_HEADER_ALIGNMENT 1024
-+
- struct mtk_plane_pending_state {
- 	bool				config;
- 	bool				enable;
- 	dma_addr_t			addr;
-+	dma_addr_t			hdr_addr;
- 	unsigned int			pitch;
-+	unsigned int			hdr_pitch;
- 	unsigned int			format;
-+	unsigned long long		modifier;
- 	unsigned int			x;
- 	unsigned int			y;
- 	unsigned int			width;
--- 
-2.38.1.431.g37b22c650d-goog
-
+SGkgUm9iLA0KDQpUaGFua3MgZm9yIHlvdXIgY29tbWVudHMuDQpPbiBXZWQsIDIwMjItMTEtMTYg
+YXQgMTE6MjkgLTA2MDAsIFJvYiBIZXJyaW5nIHdyb3RlOg0KPiBPbiBUaHUsIE5vdiAxMCwgMjAy
+MiBhdCAwNjoyODozMlBNICswODAwLCBZdW5mZWkgRG9uZyB3cm90ZToNCj4gPiBtdDgxOTUgYW5k
+IG10ODE5MiBoYXZlIGRpZmZlcmVudCBjbG9jayBudW1iZXJzLCBjYW4ndCB3cml0ZQ0KPiA+ICdj
+bG9ja3MnIGFuZA0KPiA+ICdjbG9jay1uYW1lcycgd2l0aCBjb25zdCB2YWx1ZS4NCj4gDQo+IE5v
+dCBhIGNvbXBhdGlibGUgY2hhbmdlLiBFeHBsYWluIHdoeSB0aGF0IGlzIG9rYXkgaWYgaXQgaXMu
+DQo+IA0KVGhpcyBjaGFuZ2UgaXMgdXNlZCBmb3IgbXQ4MTk1IHBsYXRmb3JtIGZvciBzb21lIGFy
+Y2hpdGVjdHVyZSBjaGFuZ2VkLg0KTmVlZCB0byBzZXBhcmF0ZSB2Y29kZWMtbGF0IHdpdGggdmNv
+ZGVjLWxhdC1zb2MgaW50byBkaWZmZXJlbnQgY2hpbGQNCm5vZGUuDQoNCkF0IHRoZSBzYW1lIHRp
+bWUsIHZjb2RlYy1sYXQtc29jIGRvbid0IGhhdmUgaW50ZXJydXB0LCBidXQgaGF2aW5nIHBvd2Vy
+DQpkb21haW4gYW5kIGNsa3MuDQo+ID4gDQo+ID4gTW92ZSAnYXNzaWduZWQtY2xvY2tzJyBhbmQg
+J2Fzc2lnbmVkLWNsb2NrLXBhcmVudHMnIHRvIHBhcmVudCBub2RlLg0KPiA+IA0KPiA+IFNpZ25l
+ZC1vZmYtYnk6IFl1bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+DQo+ID4gLS0t
+DQo+ID4gIC4uLi9tZWRpYS9tZWRpYXRlayx2Y29kZWMtc3ViZGV2LWRlY29kZXIueWFtbCB8IDEx
+OSArKysrKysrKysrKy0tLQ0KPiA+IC0tLS0NCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDcyIGluc2Vy
+dGlvbnMoKyksIDQ3IGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQNCj4gPiBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayx2Y29kZWMtc3Vi
+ZGV2LQ0KPiA+IGRlY29kZXIueWFtbA0KPiA+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy1zdWJkZXYtDQo+ID4gZGVjb2Rlci55YW1sDQo+
+ID4gaW5kZXggYzRmMjBhY2RjMWY4Li43OTQwMTI4NTM4MzQgMTAwNjQ0DQo+ID4gLS0tIGEvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy0NCj4g
+PiBzdWJkZXYtZGVjb2Rlci55YW1sDQo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZjb2RlYy0NCj4gPiBzdWJkZXYtZGVjb2Rlci55YW1s
+DQo+ID4gQEAgLTg5LDIzICs4OSwzMyBAQCBwcm9wZXJ0aWVzOg0KPiA+ICANCj4gPiAgICByYW5n
+ZXM6IHRydWUNCj4gPiAgDQo+ID4gKyAgY2xvY2tzOg0KPiA+ICsgICAgbWluSXRlbXM6IDENCj4g
+PiArICAgIG1heEl0ZW1zOiA1DQo+ID4gKw0KPiA+ICsgIGNsb2NrLW5hbWVzOg0KPiA+ICsgICAg
+bWluSXRlbXM6IDENCj4gPiArICAgIG1heEl0ZW1zOiA1DQo+IA0KPiBXaHkgZG8gYm90aCB0aGUg
+cGFyZW50IGFuZCBjaGlsZCBoYXZlIGNsb2Nrcz8NCj4gDQpJZiBtb3ZlIGFzc2lnbmVkLWNsb2Nr
+LXBhcmVudHMgdG8gY2hpbGQgbm9kZSwgbmVlZCB0byBhZGQgJ3NzaWduZWQtDQpjbG9jay1wYXJl
+bnRzJyBhbmQgJ2Fzc2lnbmVkLWNsb2NrcycgZm9yIGVhY2ggY2hpbGQgbm9kZS4gT25seSBuZWVk
+IHRvDQphZGQgb25lIGluIHBhcmVudCBub2RlLCBjaGlsZCBub2RlIG5vIG5lZWQgdG8gYWRkIGlm
+IGFkZCAnc3NpZ25lZC0NCmNsb2NrLXBhcmVudHMnIGFuZCAnYXNzaWduZWQtY2xvY2tzJyBpbiBw
+YXJlbnQgbm9kZS4NCg0KQWRkaW5nICdhc3NpZ25lZC1jbG9jay1wYXJlbnRzJyBhbmQgJ2Fzc2ln
+bmVkLWNsb2NrcycgbmVlZCB0byBhZGQNCidjbG9ja3MnIGFuZCAnY2xvY2stbmFtZXMnLCBvciB3
+aWxsIGNoZWNrIGZhaWwuDQo+ID4gKw0KPiA+ICsgIGFzc2lnbmVkLWNsb2NrczoNCj4gPiArICAg
+IG1heEl0ZW1zOiAxDQo+ID4gKw0KPiA+ICsgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHM6DQo+ID4g
+KyAgICBtYXhJdGVtczogMQ0KPiANCj4gWW91IGNhbiBqdXN0IGRyb3AgYXNzaWduZWQtY2xvY2sg
+cHJvcGVydGllcy4gVGhleSBhcmUgYWxsb3dlZCBpbiBhbnkgDQo+IG5vZGUgd2l0aCAnY2xvY2tz
+Jy4NCj4gDQpPbmx5IG5lZWQgdG8gYWRkIG9uZSBpbiBwYXJlbnQgbm9kZSwgb3IgbmVlZCB0byBh
+ZGQgZm9yIGVhY2ggY2hpbGQNCm5vZGUuDQo+ID4gKw0KPiA+ICAjIFJlcXVpcmVkIGNoaWxkIG5v
+ZGU6DQo+ID4gIHBhdHRlcm5Qcm9wZXJ0aWVzOg0KPiA+IC0gICdedmNvZGVjLWxhdEBbMC05YS1m
+XSskJzoNCj4gPiArICAnXnZjb2RlYy1sYXQtc29jQFswLTlhLWZdKyQnOg0KPiA+ICAgICAgdHlw
+ZTogb2JqZWN0DQo+ID4gIA0KPiA+ICAgICAgcHJvcGVydGllczoNCj4gPiAgICAgICAgY29tcGF0
+aWJsZToNCj4gPiAgICAgICAgICBlbnVtOg0KPiA+IC0gICAgICAgICAgLSBtZWRpYXRlayxtdGst
+dmNvZGVjLWxhdA0KPiA+ICAgICAgICAgICAgLSBtZWRpYXRlayxtdGstdmNvZGVjLWxhdC1zb2MN
+Cj4gPiAgDQo+ID4gICAgICAgIHJlZzoNCj4gPiAgICAgICAgICBtYXhJdGVtczogMQ0KPiA+ICAN
+Cj4gPiAtICAgICAgaW50ZXJydXB0czoNCj4gPiAtICAgICAgICBtYXhJdGVtczogMQ0KPiA+IC0N
+Cj4gDQo+IERyb3BwaW5nIGludGVycnVwdHM/IE5vdCBleHBsYWluZWQgaW4gdGhlIGNvbW1pdCBt
+c2cgKHdoeT8pLg0KPiANCnZjb2RlYy1sYXQtc29jIG5vIG5lZWQgaW50ZXJydXB0cywgd2lsbCBh
+ZGQgZGV0YWlsIGNvbW1pdCBtZXNzYWdlIGluDQpuZXh0IHBhdGNoLg0KPiA+ICAgICAgICBpb21t
+dXM6DQo+ID4gICAgICAgICAgbWluSXRlbXM6IDENCj4gPiAgICAgICAgICBtYXhJdGVtczogMzIN
+Cj4gPiBAQCAtMTE0LDIyICsxMjQsNTUgQEAgcGF0dGVyblByb3BlcnRpZXM6DQo+ID4gICAgICAg
+ICAgICBSZWZlciB0byBiaW5kaW5ncy9pb21tdS9tZWRpYXRlayxpb21tdS55YW1sLg0KPiA+ICAN
+Cj4gPiAgICAgICAgY2xvY2tzOg0KPiA+ICsgICAgICAgIG1pbkl0ZW1zOiAxDQo+ID4gICAgICAg
+ICAgbWF4SXRlbXM6IDUNCj4gPiAgDQo+ID4gICAgICAgIGNsb2NrLW5hbWVzOg0KPiA+IC0gICAg
+ICAgIGl0ZW1zOg0KPiA+IC0gICAgICAgICAgLSBjb25zdDogc2VsDQo+ID4gLSAgICAgICAgICAt
+IGNvbnN0OiBzb2MtdmRlYw0KPiA+IC0gICAgICAgICAgLSBjb25zdDogc29jLWxhdA0KPiA+IC0g
+ICAgICAgICAgLSBjb25zdDogdmRlYw0KPiA+IC0gICAgICAgICAgLSBjb25zdDogdG9wDQo+ID4g
+KyAgICAgICAgbWluSXRlbXM6IDENCj4gPiArICAgICAgICBtYXhJdGVtczogNQ0KPiANCj4gV2Ug
+aGFkIG5hbWVzIGRlZmluZWQgYW5kIG5vdyB3ZSBkb24ndC4gVGhhdCdzIGEgc3RlcCBiYWNrd2Fy
+ZHMuDQo+IA0KTXQ4MTk1L210ODE5Mi9tdDgxODYvbXQ4MTg4IGhhdmUgZGlmZmVyZW50IGNsb2Nr
+IG51bWJlciBhbmQgY2xvY2sNCm5hbWVzLCBzbyBjaGFuZ2UgaXQgbGlrZSB0aGlzLCBkbyB5b3Ug
+aGF2ZSBhbnkgb3RoZXIgc3VnZ2VzdGlvbj8NCj4gPiAgDQo+ID4gLSAgICAgIGFzc2lnbmVkLWNs
+b2NrczoNCj4gPiArICAgICAgcG93ZXItZG9tYWluczoNCj4gDQo+IEFkZGluZyBwb3dlci1kb21h
+aW5zPw0KVmNvZGVjLWxhdC1zb2MgbmVlZCBwb3dlciBkb21haW4gYW5kIGFkZCBvbmUgbmV3IGNo
+aWxkIG5vZGUgdmNvZGVjLWxhdC0NCnNvYy4NCg0KQmVzdCBSZWdhcmRzLA0KWXVuZmVpIERvbmcN
+Cj4gDQo+IFJvYg0K
 
