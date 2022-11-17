@@ -4,53 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 216A7C46467
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 16:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EED2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 16:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gJcKjc3U/1ZgUtZqBtBqjQ25Ma5XTx9jmqwsXvu8sJ8=; b=p21s9llXCYCcYm
-	Xfojv34Y++lZzPEyXQSFEsRX8GqAxf8Pt5W5TIaVHXc5BvpSsrx+IMxLJ1i3DJnUshA8hZ67/GdvU
-	rD/VU58POrgfLpW8bClJPG4GsUgmFUk3ucoRjZLVZSOnuGLkJcLMQxVRCAIa/HjHcNRgnDncfXJVS
-	005LX4+Gy9gsavKydlLU2PKoyvMKFE98MxTgTqd99pUahS/A1syTmHtmwEmyN/9jfNULqLUqJT/Mg
-	Q1hWkgtYB2tQdDWa/KZrlSh4V/A0YP10p/uK0aPlZ0GIRn0FH9yWMA9Etgm/y25XUHLZxZa9o3rml
-	tY/v+qyhdnFkUmfmz7Sg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0Eg6qfW6qnoIGNWMEkWI28OqVxUuUlvMaObGz3u+6SQ=; b=B4YGlA4kEPFHw7
+	zXQOzj5YCGfVEdJK2W17ODOc0enB2KVoonGlUc9C5efF4DUwWuiQSYZIq1PkYVnw21my3ohAmxU5y
+	TNTz0jVkfHZOh/oPaknRaxEVCcqQFufKc+gwbxuAAxRTtB9Z+LtI+hznRYUgol4iH5ky0RMvdjSrE
+	l8y5vS8rhNXAoAQH6nyVqR9vax1rYUN1lZhFC4dbYo6e6xT75DiVkjjQH9mIrZmJWsxTgXZuLglZQ
+	yZ3iQkGZnq9QlAX13bLsITAQEE0yaA0qI9xBmLEKvPbtNMBA8cbOy8WvNPg5w64EdICBnacuacpgj
+	h+40xmhMB6CgA6k3b2jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovhlb-00Fvst-SP; Thu, 17 Nov 2022 16:29:31 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1ovhme-00FwWk-JK; Thu, 17 Nov 2022 16:30:36 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovhjp-00Fv2o-Jr; Thu, 17 Nov 2022 16:27:45 +0000
+	id 1ovhjs-00Fv78-VE; Thu, 17 Nov 2022 16:27:47 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout3.routing.net (Postfix) with ESMTP id CC97562631;
-	Thu, 17 Nov 2022 16:27:33 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id 364D441ADA;
+	Thu, 17 Nov 2022 16:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668702454;
+	s=20200217; t=1668702463;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=gJcKjc3U/1ZgUtZqBtBqjQ25Ma5XTx9jmqwsXvu8sJ8=;
-	b=YF2QEJksGC+YKvEzRPajXrUawr/zW5CrAmEt+nZJ80HVWBJo0fG+WOqRxUVMUPqKt7u+CY
-	E7pwGQ9EGTW9/QTyCIgZfs0icZgE2wHQDsuCE2PsJiUBEvuOZFceN/5Mj5fMm0ODsri6Ln
-	EWy3oCXTXbOVI70qyZ15vfhiVtBectM=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0Eg6qfW6qnoIGNWMEkWI28OqVxUuUlvMaObGz3u+6SQ=;
+	b=lFFrGZeDu7DEUQvazOUxSTWqsEriNQtUoFeCo+TroLfvWPPVTeV+TObvWaj9AwBnNEoxPZ
+	8VkhOT52mNxpH0TeNRhEuy7q69sxIK937rEq+ndqlIyXxbMM4XLd1/uxeI3AwLw4PkPo1y
+	7Djdpme3ulpm7O3eOZA+BVV+vrsoa/U=
 Received: from frank-G5.. (fttx-pool-80.245.75.65.bambit.de [80.245.75.65])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 40E96100501;
-	Thu, 17 Nov 2022 16:27:32 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 015A31003D5;
+	Thu, 17 Nov 2022 16:27:41 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 00/11] Add BananaPi R3
-Date: Thu, 17 Nov 2022 17:27:17 +0100
-Message-Id: <20221117162728.20608-1-linux@fw-web.de>
+Subject: [PATCH v5 08/11] arm64: dts: mt7986: add mmc related device nodes
+Date: Thu, 17 Nov 2022 17:27:25 +0100
+Message-Id: <20221117162728.20608-9-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221117162728.20608-1-linux@fw-web.de>
+References: <20221117162728.20608-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: ef396687-64f9-4e40-a6f7-12ef3db568a6
+X-Mail-ID: 54a41e5f-2d31-4909-a177-66ebc1d2d453
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_082741_915378_38188CBC 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20221117_082745_396868_8E1E03BC 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,97 +65,167 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-phy@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+From: Sam Shih <sam.shih@mediatek.com>
 
-This Series adds some Nodes to mt7986 devicetree and the BananaPi R3
+This patch adds mmc support for MT7986.
 
-This version is rebased on Matthias' DTS64 next Branch from 2022/11/11.
-
-i included sams series for mt7986 DTS with small changes
-https://patchwork.kernel.org/project/linux-mediatek/cover/20220427124741.18245->
-
-6.2 will support dtso extension for dt overlays:
-
-"kbuild: Allow DTB overlays to built from .dtso named source files"
-https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?h=dt/next&id=363547d2191cbc32ca954ba75d72908712398ff2
-
-There is some discussion about inclusion of dt-overlays and if it is
-better to support mmc also by these:
-
-https://patchwork.kernel.org/comment/25092116/
-https://patchwork.kernel.org/comment/25085681/
-
-i had run full dtbs-check but i end up with some strange warnings in
-ethernet-node that should not come up as phy-handle and sfp/managed
-properties are already defined.
-
-phy-handle made optional
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documen>
-
-property sfp/managed (which is included for mac subnode in yaml above):
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documen>
-
-changes:
-v5:
-- changed usb ranges/reg/unit-adress
-- added reviewd-by's except usb-part due to changes
-
-v4:
-- dropped RFC prefix
-- rebase on matthias' mtk dts-next (for 6.2) branch
-- added author information to overlays
-- fixed sfp binding error
-- added fix for moving wed_pcie node
-- readded missing compatible patches
-
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 v3:
-- changed mmc pull-ups
-- added patch for board binding (sent separately before)
-- added pcie node in mt7986 (not yet again in r3)
-- added dt overlays
+- fix pullups/pulldowns for mt7986a-rfb to have generic bias-pull-*
 
+v2:
+- update mmc-node because clocks changed
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 87 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 15 ++++
+ 2 files changed, 102 insertions(+)
 
-
-
-
-Frank Wunderlich (7):
-  arm64: dts: mt7986: move wed_pcie node
-  dt-bindings: phy: mediatek,tphy: add support for mt7986
-  dt-bindings: usb: mtk-xhci: add support for mt7986
-  dt-bindings: PCI: mediatek-gen3: add SoC based clock config
-  dt-bindings: PCI: mediatek-gen3: add support for mt7986
-  arm64: dts: mt7986: add Bananapi R3
-  arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-
-Sam Shih (4):
-  arm64: dts: mt7986: add spi related device nodes
-  arm64: dts: mt7986: add usb related device nodes
-  arm64: dts: mt7986: add mmc related device nodes
-  arm64: dts: mt7986: add pcie related device nodes
-
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  64 ++-
- .../bindings/phy/mediatek,tphy.yaml           |   1 +
- .../bindings/usb/mediatek,mtk-xhci.yaml       |   1 +
- arch/arm64/boot/dts/mediatek/Makefile         |   4 +
- .../mediatek/mt7986a-bananapi-bpi-r3-emmc.dts |  31 ++
- .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts |  55 +++
- .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  |  69 +++
- .../mediatek/mt7986a-bananapi-bpi-r3-sd.dts   |  25 +
- .../dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi | 458 ++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  | 166 +++++++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 162 ++++++-
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |  63 +++
- 12 files changed, 1081 insertions(+), 18 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dtsi
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 2b5d7ea31b4d..e1a0331aaa5f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -5,6 +5,8 @@
+  */
+ 
+ /dts-v1/;
++#include <dt-bindings/pinctrl/mt65xx.h>
++
+ #include "mt7986a.dtsi"
+ 
+ / {
+@@ -24,6 +26,15 @@ memory@40000000 {
+ 		reg = <0 0x40000000 0 0x40000000>;
+ 	};
+ 
++	reg_1p8v: regulator-1p8v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-1.8V";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
+ 	reg_3p3v: regulator-3p3v {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "fixed-3.3V";
+@@ -76,7 +87,83 @@ switch: switch@0 {
+ 	};
+ };
+ 
++&mmc0 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	hs400-ds-delay = <0x14014>;
++	vmmc-supply = <&reg_3p3v>;
++	vqmmc-supply = <&reg_1p8v>;
++	non-removable;
++	no-sd;
++	no-sdio;
++	status = "okay";
++};
++
+ &pio {
++	mmc0_pins_default: mmc0-pins {
++		mux {
++			function = "emmc";
++			groups = "emmc_51";
++		};
++		conf-cmd-dat {
++			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
++			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
++			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
++			input-enable;
++			drive-strength = <4>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
++		};
++		conf-clk {
++			pins = "EMMC_CK";
++			drive-strength = <6>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
++		};
++		conf-ds {
++			pins = "EMMC_DSL";
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
++		};
++		conf-rst {
++			pins = "EMMC_RSTB";
++			drive-strength = <4>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
++		};
++	};
++
++	mmc0_pins_uhs: mmc0-uhs-pins {
++		mux {
++			function = "emmc";
++			groups = "emmc_51";
++		};
++		conf-cmd-dat {
++			pins = "EMMC_DATA_0", "EMMC_DATA_1", "EMMC_DATA_2",
++			       "EMMC_DATA_3", "EMMC_DATA_4", "EMMC_DATA_5",
++			       "EMMC_DATA_6", "EMMC_DATA_7", "EMMC_CMD";
++			input-enable;
++			drive-strength = <4>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
++		};
++		conf-clk {
++			pins = "EMMC_CK";
++			drive-strength = <6>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
++		};
++		conf-ds {
++			pins = "EMMC_DSL";
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>; /* pull-down 50K */
++		};
++		conf-rst {
++			pins = "EMMC_RSTB";
++			drive-strength = <4>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>; /* pull-up 10K */
++		};
++	};
++
+ 	spi_flash_pins: spi-flash-pins {
+ 		mux {
+ 			function = "spi";
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index c69b8bff7f4a..b3ad8978b563 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -304,6 +304,21 @@ ssusb: usb@11200000 {
+ 			status = "disabled";
+ 		};
+ 
++		mmc0: mmc@11230000 {
++			compatible = "mediatek,mt7986-mmc";
++			reg = <0 0x11230000 0 0x1000>,
++			      <0 0x11c20000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
++				 <&infracfg CLK_INFRA_MSDC_HCK_CK>,
++				 <&infracfg CLK_INFRA_MSDC_CK>,
++				 <&infracfg CLK_INFRA_MSDC_133M_CK>,
++				 <&infracfg CLK_INFRA_MSDC_66M_CK>;
++			clock-names = "source", "hclk", "source_cg", "bus_clk",
++				      "sys_cg";
++			status = "disabled";
++		};
++
+ 		usb_phy: t-phy@11e10000 {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
 -- 
 2.34.1
 
