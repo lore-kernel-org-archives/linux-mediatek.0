@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B68BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134F6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6tGv5+8jDfP55uNG1NgeWBLAtWF09bhT5vkBg1/BBF4=; b=U1o4MewrnoXlDilaQeM8wPl7tR
-	tB92VaAEPchu/BsRhi9xTcM4D1r87pamL1QzYjARLXVnwc2RcT2nyuZI+ebFDspnLq6E9q79Yc+h3
-	ceFRL9Wwsgi8ejCMiYS+6J951yWtLtlbLU2SwI9LZ25XO8TVccMAqWhxRigYqWspby1SQf/j0f+b7
-	BJUOjKR3539s+qR+5Fxkinapi2kFE1W3lvS1U8R6boobZdahg1s7NZ8jEpZJXH3Jvz8EOEDoSbc0h
-	XtxeMQMz8Mv45od8NfUkO8gVFJrK7ocVRb9nYnF1YaVCf/yZt7YIStVDbPqrRLYW3A2kpI+MO4LiU
-	yHsvTyiA==;
+	bh=mysm+qTVyD0BglvhjenjXy58bLV5qsrHmjbdcwJlic4=; b=Hgjt/DH6cZYTvl4b1SjJKLJxy8
+	S+77y+fwCYjEuXbf+kbo22hXkUuUh6QBZDTcIsr0VyFyv1i1vx9ctDZnIdAJKXJemi79C58PZQ/Nj
+	9cFQEBNCPKEerMfHOyju4vu5zSWfre44b07obbIkTFuy9DNeLtxNuXea1t/Pohtu19K1gfpNeBTHE
+	cmOpbph0/HE3oTClWSfRbo93J0DSM/rHG7uGbsu+lpceSh5HmQEqVSLSBLQ4sXF3zaY+n2NuscPjg
+	9g2WmwRK67IEn2Nx7OVBCyz+h7Idytv4C69YPXlk4xPOgSIp/hiX53uiYkYr9MDTNT9fHbbRntp7N
+	GpuGx58Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovyJS-003JCp-Q8; Fri, 18 Nov 2022 10:09:34 +0000
+	id 1ovyKZ-003Jhl-Om; Fri, 18 Nov 2022 10:10:43 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovyJ9-003J4S-Rx; Fri, 18 Nov 2022 10:09:17 +0000
+	id 1ovyKL-003JbS-53; Fri, 18 Nov 2022 10:10:30 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BE9796602AAB;
-	Fri, 18 Nov 2022 10:09:12 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F1DD36602AA7;
+	Fri, 18 Nov 2022 10:10:26 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668766153;
-	bh=UnL9wkeR7m5ts4yqDKWZfymPVaulqbGW5ILVOZUGguY=;
+	s=mail; t=1668766227;
+	bh=36XHqXHW9/4pThD2dF/5JFo7f13qGtp3LHEod+p8KXQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=avltAjeP69GgZgDh6cHxaEomdtD4fm43H/dec0zrbRmveZbgKkCqgs1WDPKf4fuLH
-	 ZpVCiiFvNzwwyXKD46etXlTCAER9/lteoK9c9u0/qyOcolsPrUuv8OeikPKwaCynW9
-	 7CVYqi45mQ3NhcgevLzSn6w43qPUj+TJGCWlZRXtbZZlgWdHWC9PPNqAhGxfdIjV3W
-	 piKTLUB0Y4o809FkBJjH2Xt0e+aDpBpsJvQpQ+FxpwzngKWKjB8dvr5X5uxFSbfD5Q
-	 PmyZVEUdK9dYSd2v+UXCaahYm/RsHuOwcsBKJEB6dY8SXDLHJnzVTW8T/Kn6r3NQY9
-	 wjVg9I7hQkfqw==
-Message-ID: <facc72b4-8eaa-0b16-19df-7a5a30ba26ea@collabora.com>
-Date: Fri, 18 Nov 2022 11:09:09 +0100
+	b=GnB3VAJyaDI54TY0WKGzD12xkMUnqgE1NeVQZNzB0IdnmQfjabbST7saZMjqNShtu
+	 MAeFO1+tfRr2nchORINd5e1PzClkQgrD4Lusa8NuQszuRWaUGXE7VCbO4CemhgHBoO
+	 k7AYWhyB8ItQXbeLxUKUSKZ1CgSbUuB3XOcrdD0eG5zRU7imUkb2SGpvwz1OeC+Aku
+	 AnKR0ZIkTcFRZGTVS9ZiT2Ys5pYHDkKNFe04KFhhnGHHoStCriNNR96BahtyAGaPvp
+	 +tpsfrT7sWAvd0yIviDiySTotR+RVM5YYFGvdCK8Lu5fbHcnMo8XkuF/YvFsUHGAEz
+	 XsQ3Br4H2ocWA==
+Message-ID: <b09a64fb-262b-6ed3-0399-de0c9f438385@collabora.com>
+Date: Fri, 18 Nov 2022 11:10:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH v2,3/5] media: mediatek: vcodec: Fix h264 set lat buffer
- error
+Subject: Re: [PATCH v2,4/5] media: mediatek: vcodec: Setting lat buf to
+ lat_list when lat decode error
+Content-Language: en-US
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
  <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -63,15 +64,14 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20221117092453.31366-1-yunfei.dong@mediatek.com>
- <20221117092453.31366-4-yunfei.dong@mediatek.com>
-Content-Language: en-US
+ <20221117092453.31366-5-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221117092453.31366-4-yunfei.dong@mediatek.com>
+In-Reply-To: <20221117092453.31366-5-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_020916_060984_ECB0EA15 
-X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-CacheID: sfid-20221118_021029_376670_44FC3912 
+X-CRM114-Status: UNSURE (   7.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,12 +88,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 17/11/22 10:24, Yunfei Dong ha scritto:
-> Will set lat buffer to lat_list two times when lat decode timeout for
-> inner racing mode.
+> Need to set lat buf to lat_list when lat decode error, or lat buffer will lost.
 > 
-> If core thread can't get frame buffer, need to return error value.
-> 
-> Fixes: 59fba9eed5a7 ("media: mediatek: vcodec: support stateless H.264 decoding for mt8192")
+> Fixes: 5d418351ca8f ("media: mediatek: vcodec: support stateless VP9 decoding")
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
