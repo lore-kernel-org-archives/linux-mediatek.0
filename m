@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4699DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:38:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0F6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QlcEqE0ke2FCaouRpi3dpA3z8DfmtsgAf0plYIvm8xk=; b=YhYLVNAK8D6IoO3CeT7LxFwQYB
-	mNWY2aixmVpmGEiwr4Cf/dG+VgN4XsMEoXLHDG+jWqgpkI1r8rsxkNfIuAAXwc7WXktbnOwIjwpHo
-	2OET6Jec8WOmIJRyBXg92lUE70XupY7trAL9V8fovfKJ8ynztzolXQqE3nuGxWuCP6b4vjsv88wYU
-	0lk8n4rbzJdwhqPQsGx1VjurhKWpQuqo2ydd0VcWjzTq0JCpnUIsvNo8jDYu0FRG7+ObPv45quEno
-	TOC+aFE71SUIammUh8Bw+ItatHgrtIbx/G9S4iZxJUeYwEU+l3D/ZPxfTvm0ULwZiommpv+u5Dff1
-	drVziMQQ==;
+	bh=1GKtQk5fxs0AAQ27/UkGOiAL6NgnMfsd8EpuNVBXL3o=; b=0ZNE9OiBSvnnYRSRgMCaqW7856
+	Pad/IkyVgZEwuu2HIxb1Rz5aZVty/98NmWke0E3JoI7KuPzo37+URID8t8LGR+8xRdiTV6luk87Wa
+	AtIztUFuCiXnJF0hxwBY+QOb/YsbHerBi9zYoSLGKeSNe5MKv/ZxHVCM3vx100ndTkFWl3PrGV/8l
+	QArq4Xkyg/5/xnb//Mq4LFGVhf8xba2VGGOuR1RWJc8jjGiwZQI9T2byYf16kptWaHQj/x3RSgFxl
+	XAxJPMNSRHMaOlirSX3Nfami+V4gKIOczSW/75LmU+88YBOIfq0HvqHa0Jn9Ts8TlFIyXxnxPnudf
+	eHVqRlBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovylY-003Ppj-Pr; Fri, 18 Nov 2022 10:38:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ovymV-003QCB-Vb; Fri, 18 Nov 2022 10:39:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovylW-003PoP-HR
-	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 10:38:35 +0000
+	id 1ovymT-003QAv-Gc
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 10:39:34 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B6DE66601639;
-	Fri, 18 Nov 2022 10:38:32 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BA4BC6601639;
+	Fri, 18 Nov 2022 10:39:31 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668767913;
-	bh=Q9cDNMUrZzaaoL8GfB/cLKhDVomk3bjfsVkS+dBopu8=;
+	s=mail; t=1668767972;
+	bh=oFMDujIPAAMn77bKnuEJQwag89/0lNbWafcLhGJMaPA=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=edY2m/6dcmzj22RlipFIaeO9mO84SReGq0zRskP7/cd0WHWU+EDIT4mTNPrQkWrlL
-	 d6menzinaCQz0Xx6zhtwS0vlRWT24HKTXobwmIPISibVhSgD9uVpB71D8wfPvN30g7
-	 a4ekSd3NWzAKKHVO5Wba20LmwuNhTCPlb4RFjE6I7SycNH9omosuVuH+xXCAfoBPr4
-	 3tat8HR8sOXm7X9a42d8lUSyU8hHXP0h5LY+GYcC/3LNZQJrcfkwrBiGMmFY4mN7jR
-	 9SqWUMTGG3LZiYUOBV2/amgltL97ggBbQCZ02DiH2oQil4nSsft72Tx7zvVvzDA2PT
-	 u9FuN/6x1oPvA==
-Message-ID: <21582859-513e-953e-37f5-49b6cc0941a6@collabora.com>
-Date: Fri, 18 Nov 2022 11:38:30 +0100
+	b=EEaC1m8BCzNf+WdXitUzWOZsPzcnRQZgLQU/YwjNXOzyq81lL1Y5lVwAtsVFddlSp
+	 CwlhWiCGOFy6iLxLTtji5A/PUf/4lO5aChkkQHwEe6REqyb8P61gpDfhL2sBsTLFTG
+	 mq01vaqsyS+PWjL9wKHlkjAzfj+AH3rekouO31/8w90+apC/Tk9TWRHV9j3W+nzlnP
+	 6rIP4jDx9iyRyh2+O3/q9J9OgPTv6wMkbA/TONS+ub9h62dL1ZL2JAw9G8w/50vgJd
+	 khlVbfdDhXaNDtOpx3euAaLEavf7pOYSAJmWVJkZA8oRqV7a6R7dqC4DbN+wEvQWni
+	 JeU0X/ICqUkhA==
+Message-ID: <1d695cb4-2e29-b957-00cc-c0c39a47ff30@collabora.com>
+Date: Fri, 18 Nov 2022 11:39:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Remove unneeded code
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Modify the return value
 Content-Language: en-US
 To: Chanwoo Lee <cw9316.lee@samsung.com>, stanley.chu@mediatek.com,
  jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com,
  linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <CGME20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07@epcas1p1.samsung.com>
- <20221118044136.921-1-cw9316.lee@samsung.com>
+References: <CGME20221118045326epcas1p408c9e16a58201043c9eb3c99110fab0c@epcas1p4.samsung.com>
+ <20221118045242.2770-1-cw9316.lee@samsung.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221118044136.921-1-cw9316.lee@samsung.com>
+In-Reply-To: <20221118045242.2770-1-cw9316.lee@samsung.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_023834_733784_04B99163 
-X-CRM114-Status: UNSURE (   5.36  )
+X-CRM114-CacheID: sfid-20221118_023933_711416_3EC37EAC 
+X-CRM114-Status: UNSURE (   7.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,15 +76,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/11/22 05:41, Chanwoo Lee ha scritto:
+Il 18/11/22 05:52, Chanwoo Lee ha scritto:
 > From: ChanWoo Lee <cw9316.lee@samsung.com>
 > 
-> Remove unnecessary if/goto code.
+> Change the same as the other code to return bool type.
+>    91: 	return !!(host->caps & UFS_MTK_CAP_BOOST_CRYPT_ENGINE);
+>    98: 	return !!(host->caps & UFS_MTK_CAP_VA09_PWR_CTRL);
+>    105:	return !!(host->caps & UFS_MTK_CAP_BROKEN_VCC);
 > 
 > Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
 > Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
 
