@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F687C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C90AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:18:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=anPDs/4TCvtbO7YnDuWwStrovW6zwEuztic4Z6KFJxI=; b=Ju5gK4HBosGC2M
-	vcMZO6t3a9JIZisLnSPG7Fq/leW3jOhu9yTNI/z6HlzfcuifL6xomwrqh6Nya5SlJdM6pYSK+bVLL
-	wvYSDGWZy0ZEMgf3j4hm5P6PL5xX8++JsdZGNAwHq/+M3hc5SjlljjLruUmcbV12e12PLC6bI7e09
-	WXUsEtGC2WBK2nz4/gFM1HXlw132Ouqv21qNmhO9DXaBOpZadyZ0MwtD+V64N2tVYnPp30ohJa4Mt
-	3N3ZPT/LesQFOHTOsHjrOz93ByJiuCQHkayCEdzSyTo9i5NMQ7hFF0CwL4sL9tA9Ss+ponX8yOOyB
-	hjSDE6i0+c1Bbmgnx5+Q==;
+	List-Owner; bh=0G8A0Vfo5m7AIOUJk0K0IJlgKB0iQp40ZYsUGIkco0E=; b=C/6P4zpBN8ZvVl
+	VrYg2tDcNwqmio+77C9m6GtYd2I40VCSuQC6UC8iWbaJ3CHUWyX/S6eo5Eb92bFGlAplNWTiZWLXT
+	iM5gqR69Ehfk+5kxYJINWxHPoC/2FORrmkvQjk8pGI3IGbqzvX28B/tZJv7sM2/VvS6POSsXXavlg
+	2c9F7EgmyXeKkiKY1SBTL1pd5Nv7vTEk3Renoe7XEkN6dNGuIWXZi4XRNg8+0OwJY+b+7OHl9SIvf
+	lh17iFc5o7Rz/PB5PWO3Gt4ieScABpLeaUnMOPMr41KHs+hStyJ8pI3WEy4Wzb9DnRK55eSI1/MbT
+	yh/aHUb31HH/bG8GqAqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6sb-007WG0-LA; Fri, 18 Nov 2022 19:18:25 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1ow6sh-007WJR-HN; Fri, 18 Nov 2022 19:18:31 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6cV-007OiW-GV; Fri, 18 Nov 2022 19:01:50 +0000
+	id 1ow6cR-007Od8-PZ; Fri, 18 Nov 2022 19:01:47 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id 5B87261CEF;
-	Fri, 18 Nov 2022 19:01:39 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id D092F4039D;
+	Fri, 18 Nov 2022 19:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668798099;
+	s=20200217; t=1668798097;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=anPDs/4TCvtbO7YnDuWwStrovW6zwEuztic4Z6KFJxI=;
-	b=oK886iYEKQxOY7iDP5qwTCmu33i+kMZuHH0I57HmBj6w23z9ydheGnkGMceeS7C4w6/6pP
-	zjuiLT8VuO4dySkFySsF9jAQGCkI+utzGeTtgSjD3bBK94tKZwUcc2aQYeKVUhwL4X5rXp
-	dV2R2Asvh3ezEXv7YNsdjkMDdcdOz68=
+	bh=0G8A0Vfo5m7AIOUJk0K0IJlgKB0iQp40ZYsUGIkco0E=;
+	b=miuTTB51NT/kO2sKHO/2VyDlH4Kc5NLo6WnZxaMyP4eIt/g9EX3Kxz2ZrQUQRDJPo357nW
+	EKDcCfvHT4l7gcTBVRKJMg6gHPWbvrg5/ptkSesICi7iyy+/D8hstXwaKO8UY3zbSoISKA
+	EPHLN7RTg+sp3cIzwiZnkqip8AcwvVM=
 Received: from frank-G5.. (fttx-pool-80.245.77.125.bambit.de [80.245.77.125])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 0705912271E;
-	Fri, 18 Nov 2022 19:01:39 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 76AC81226BC;
+	Fri, 18 Nov 2022 19:01:36 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v6 09/11] arm64: dts: mt7986: add pcie related device nodes
-Date: Fri, 18 Nov 2022 20:01:24 +0100
-Message-Id: <20221118190126.100895-10-linux@fw-web.de>
+Subject: [PATCH v6 02/11] dt-bindings: phy: mediatek,tphy: add support for mt7986
+Date: Fri, 18 Nov 2022 20:01:17 +0100
+Message-Id: <20221118190126.100895-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221118190126.100895-1-linux@fw-web.de>
 References: <20221118190126.100895-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_110148_051354_534964BC 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20221118_110144_023002_6FB87184 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,135 +65,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-phy@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Jieyy Yang <jieyy.yang@mediatek.com>, devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
+Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-phy@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sam Shih <sam.shih@mediatek.com>
+From: Frank Wunderlich <frank-w@public-files.de>
 
-This patch adds PCIe support for MT7986.
+Add compatible string for mt7986.
 
-Signed-off-by: Jieyy Yang <jieyy.yang@mediatek.com>
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-changes compared to sams original version:
+ Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-- add clock-names to pcie node
-- update clocks to new binding
----
-bindings-patches:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=690172
----
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 16 ++++++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 52 ++++++++++++++++++++
- 2 files changed, 68 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index 4c0b879d6703..8eaee9ff1822 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -93,6 +93,15 @@ &mmc0 {
- 	non-removable;
- 	no-sd;
- 	no-sdio;
-+};
-+
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_pins>;
-+	status = "okay";
-+};
-+
-+&pcie_phy {
- 	status = "okay";
- };
- 
-@@ -155,6 +164,13 @@ conf-rst {
- 		};
- 	};
- 
-+	pcie_pins: pcie-pins {
-+		mux {
-+			function = "pcie";
-+			groups = "pcie_clk", "pcie_wake", "pcie_pereset";
-+		};
-+	};
-+
- 	spi_flash_pins: spi-flash-pins {
- 		mux {
- 			function = "spi";
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index b3ad8978b563..b310abc02dcc 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/clock/mt7986-clk.h>
- #include <dt-bindings/reset/mt7986-resets.h>
-+#include <dt-bindings/phy/phy.h>
- 
- / {
- 	interrupt-parent = <&gic>;
-@@ -319,6 +320,57 @@ mmc0: mmc@11230000 {
- 			status = "disabled";
- 		};
- 
-+		pcie: pcie@11280000 {
-+			compatible = "mediatek,mt7986-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0x00 0x11280000 0x00 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x82000000 0x00 0x20000000 0x00
-+				  0x20000000 0x00 0x10000000>;
-+			clocks = <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-+				 <&infracfg CLK_INFRA_IPCIE_CK>,
-+				 <&infracfg CLK_INFRA_IPCIER_CK>,
-+				 <&infracfg CLK_INFRA_IPCIEB_CK>;
-+			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
-+			status = "disabled";
-+
-+			phys = <&pcie_port PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 0x7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+					<0 0 0 2 &pcie_intc 1>,
-+					<0 0 0 3 &pcie_intc 2>,
-+					<0 0 0 4 &pcie_intc 3>;
-+			pcie_intc: interrupt-controller {
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-controller;
-+			};
-+		};
-+
-+		pcie_phy: t-phy@11c00000 {
-+			compatible = "mediatek,mt7986-tphy",
-+				     "mediatek,generic-tphy-v2";
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			pcie_port: pcie-phy@11c00000 {
-+				reg = <0 0x11c00000 0 0x20000>;
-+				clocks = <&clk40m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
- 		usb_phy: t-phy@11e10000 {
- 			compatible = "mediatek,mt7986-tphy",
- 				     "mediatek,generic-tphy-v2";
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index 5613cc5106e3..230a17f24966 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -79,6 +79,7 @@ properties:
+           - enum:
+               - mediatek,mt2712-tphy
+               - mediatek,mt7629-tphy
++              - mediatek,mt7986-tphy
+               - mediatek,mt8183-tphy
+               - mediatek,mt8186-tphy
+               - mediatek,mt8192-tphy
 -- 
 2.34.1
 
