@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC4DBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 05:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613FBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 05:43:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S1Idlevq+1pR9IxtCs+CXM/bKSijLUs0q/kM+1SG5ps=; b=bWPJH6zT0pyGeHr3EYymf0QVwb
-	7/bGAoH5TH6vuYJ2C9OKRO6ETxbSaSJ6sHNwtvh4DZbA1xNSkbZWf4mlKd1jH0Z5IeQWbcSrLMXsH
-	PjGGhqy//vOehPffG3IEKSDjSOggvMC/uWl/bGC3Ek2rglsOT7FmwF6Txfxw7zQNAQ/yv+LXnEoUs
-	NerMGb03qWo2wGqXggU1Tx2mcH5V/+d+JEmeFOnUIX2qg5cEGkdwOYVJwpfKrGyNCf/5D0nl3KleP
-	HvRMqT2xxue/93o0M0UPgeKI3sYBhWU7LFvf6RR7r+Tezrn/TKxZGXTXsddK+ZqMBHqREQgTvcl8H
-	BThWdjgA==;
+	bh=PknBuTZr0FbgH0swf5hFiHuXgYTaMvN22ZAv7CpcJ8Y=; b=PYYjdyQiYQp+OgqyEjeVo6lcuo
+	h2tdMUNhHKKcbXWNq3qPgprpGG2QCeSNusSz2bJF/mbjSEbef5/JTHqZALCbIBfx+SXRP54RSC6e0
+	Ae++EfCQauWlaa4Rf4ft9N8NJ2cPMjXiwoC5lXsV5JB2jqL5Wg/4jpK0Q7NXUqb95ILOg5OtOGFcY
+	UhYRMtpfhk0UK1nlycWVL39F1FThyQvxz+w9cvIhsrx9x5LEmf6ftlSA7Gxn7sgpKSvo0FiiwdSxc
+	fpUvvQpUUlFq7IDEVbYy8aORYnoWlj6mo3HryUzplzVITJ/AHb5pt91SHllgTFA4d3Q/b0WZJChCM
+	rze4AaAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovu9D-00258H-Ts; Fri, 18 Nov 2022 05:42:43 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1ovu9l-0025OF-Qm; Fri, 18 Nov 2022 05:43:17 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovu9B-00257S-Ku
-	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 05:42:42 +0000
-Received: by mail-lf1-x133.google.com with SMTP id c1so6511850lfi.7
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Nov 2022 21:42:38 -0800 (PST)
+	id 1ovu9i-0025NU-JD
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 05:43:15 +0000
+Received: by mail-lf1-x135.google.com with SMTP id j4so6586605lfk.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Nov 2022 21:43:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=S1Idlevq+1pR9IxtCs+CXM/bKSijLUs0q/kM+1SG5ps=;
-        b=fBKazR34EOd9IlI9Z3uxVpTitXx+sJREyfYAuv/2nS/cJ19yUV2MKRFyD1oEss/1j9
-         +MHg0mcaiTi2MMxt7yEXrvDrfD2sCvtsJ1OBYXgBfPpdNGa8yYny06olNgyQQOgcm3QA
-         ErUkjqP9drM1I5wv2ZRGA6e4jpqynTCzXRTbpLJbDXHKBx0Mon33tqQM5FqP6FGstFFO
-         lidM4GxdjYa3/m2gkZpmccF/f1yyeIiKNjbDxUECXHQ3RaZpEpMmxj6Hq/s4Q1zwFWNb
-         0v52SApEvPBlEiWrfE9+zWt1C8fzWrzILBI7de6+7XcmAQgf35hVtXKozazjmz7Tq2kK
-         kJcw==
+        bh=PknBuTZr0FbgH0swf5hFiHuXgYTaMvN22ZAv7CpcJ8Y=;
+        b=Z+j1JGrIcXFWgvLfYoL2pm6aQ8Ilb6U6izVwzYosCWSl+RpUe1YftGgB1bwBbv9SR0
+         5k+PdvTBml+yMs2N18073QvPvL9yw3GdDAOZJOppxOVNPrW+XAnLZdkoKxdQoyXQv5xU
+         Oi8dYWTr5IWBB1pkQW/7nMlHLlpQZW9Nt/+s52bVpyo5kgAoDAzqjnNX7fYBDn9GU9mg
+         4Sp88iHeBfjuM42Z2Dd3/ZqwBCI63QXpmUsu+4G8VCVZD4lkqTEPW0k5TrAqCGLpnKbt
+         0syavJCcT22PuWL0m2zFyJbnQ2xZ5qu3FNBYpoFv4pFF6f0Lc3oTC/6VtMRHmJl4dvSA
+         6JlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=S1Idlevq+1pR9IxtCs+CXM/bKSijLUs0q/kM+1SG5ps=;
-        b=NMtGvhm61G3XchpHtC/q2hOGpW3/g0Emm6CfRNETBaEn9hr1RaHUE+9+0FHXSDEs9v
-         vMvOHrydZ5zm8+PBNJP4O/nYo3v8ocOCMRJQQXMvUwgsRg/s/O9dumnDypWJgwwDCO5m
-         2IRlW3gL8g4JY8dFWmnrWR/SuSlcMyVz+fqdQd/GeIBmcJKPQexd2uQCJZfGR2DZLEWv
-         a9iP4BMlO0RwUBfj49DhUU4hTON6FV1JMWXOJfk5o+fjVgifdAfwHp4zaLW8lKpIsT3C
-         KGta7CWsX8/d4uebMfgGGfysQ0BtkEh5hbs5QAUIoNmIOwq8rY6q22yUNDtbTlrKvHVN
-         vDpg==
-X-Gm-Message-State: ANoB5pmE8IHDq3J4v6I1S+Q9ursn2EKNbLrRq4kYd3NG1OnsO6ClYjGU
-	KjYjDRwDBNn5kn7iaxTe/s6q/FWxXi69/x7JZQ==
-X-Google-Smtp-Source: AA0mqf6mk3iGB58/qI/27zszWRU2A1nPFyd7t7C79yoW0QG06IVxbpzAHRBvKv9dVGVjPu3C8R88gMBdXmNQnHzYu9Q=
-X-Received: by 2002:a19:8c1e:0:b0:4a2:48d6:2181 with SMTP id
- o30-20020a198c1e000000b004a248d62181mr2094023lfd.591.1668750156585; Thu, 17
- Nov 2022 21:42:36 -0800 (PST)
+        bh=PknBuTZr0FbgH0swf5hFiHuXgYTaMvN22ZAv7CpcJ8Y=;
+        b=4+kXsaOC7ZfQ4RIXiPjcb0ZxZWBEei4mW2tae611TI29DFk1Y5zn0BIWsK3UHDth+l
+         NTvAZ8E08kwPEv3/CK6fbdLa+z/ABOOybhLeMFy0TIxFnlTwCXWIMnKZoQXuGGe8iu6o
+         o762e1cHXVARU3+UNHJcMJe8B6ISr/Z5XapJhQsMzQUMzkW58Z17NG9L8B3B7VoM7Piv
+         lSKm4ztfBB/nr2h11GEAes8q2+ZcQOtd3Z8y91H/8+3eSYSl/pmZ5JVMw0yTQOe1drA4
+         RsYONZ9oCgp4YzzBcC48DrJIV5SLCFidSALpD7cDulo9bdyEWb2HeqGMr/d8M2Ii1CyC
+         kJkw==
+X-Gm-Message-State: ANoB5pkgH8IHk+yWT3M1T/DCBTvQ/TiU0qwUx3eo35butMGWLovtB4mi
+	Iklvjs2izZl2FfMGXAkfw9oijO7mVNhsaYYWNg==
+X-Google-Smtp-Source: AA0mqf4StMWwt3iJHTzVw0CF0Y0XvqTbQVw98z8nfJyQ5d2bNSU0LmbrgYKxcuOfjY4aurPEwf9wV1sJ+zGHmI35kKk=
+X-Received: by 2002:a05:6512:3f10:b0:4b1:5463:a55f with SMTP id
+ y16-20020a0565123f1000b004b15463a55fmr2172729lfa.215.1668750190785; Thu, 17
+ Nov 2022 21:43:10 -0800 (PST)
 MIME-Version: 1.0
-References: <CGME20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07@epcas1p1.samsung.com>
- <20221118044136.921-1-cw9316.lee@samsung.com>
-In-Reply-To: <20221118044136.921-1-cw9316.lee@samsung.com>
+References: <CGME20221118045326epcas1p408c9e16a58201043c9eb3c99110fab0c@epcas1p4.samsung.com>
+ <20221118045242.2770-1-cw9316.lee@samsung.com>
+In-Reply-To: <20221118045242.2770-1-cw9316.lee@samsung.com>
 From: Stanley Chu <chu.stanley@gmail.com>
-Date: Fri, 18 Nov 2022 13:42:24 +0800
-Message-ID: <CAGaU9a-FVGqeQB+97WGgWaMcFJUtKbsT_N7sWDza=NWkApBK1A@mail.gmail.com>
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Remove unneeded code
+Date: Fri, 18 Nov 2022 13:42:59 +0800
+Message-ID: <CAGaU9a_uRWrQfVQjOh_KnfhQJvwkx_0G367t_R3audP0B6nVow@mail.gmail.com>
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Modify the return value
 To: Chanwoo Lee <cw9316.lee@samsung.com>
 Cc: stanley.chu@mediatek.com, jejb@linux.ibm.com, martin.petersen@oracle.com, 
 	matthias.bgg@gmail.com, linux-scsi@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_214241_705742_7EE259E0 
-X-CRM114-Status: UNSURE (   5.01  )
+X-CRM114-CacheID: sfid-20221117_214314_652915_83525C4C 
+X-CRM114-Status: UNSURE (   6.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,11 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 18, 2022 at 12:50 PM Chanwoo Lee <cw9316.lee@samsung.com> wrote:
+On Fri, Nov 18, 2022 at 12:57 PM Chanwoo Lee <cw9316.lee@samsung.com> wrote:
 >
 > From: ChanWoo Lee <cw9316.lee@samsung.com>
 >
-> Remove unnecessary if/goto code.
+> Change the same as the other code to return bool type.
+>   91:   return !!(host->caps & UFS_MTK_CAP_BOOST_CRYPT_ENGINE);
+>   98:   return !!(host->caps & UFS_MTK_CAP_VA09_PWR_CTRL);
+>   105:  return !!(host->caps & UFS_MTK_CAP_BROKEN_VCC);
 >
 > Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
 
