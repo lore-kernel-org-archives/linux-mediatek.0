@@ -4,99 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7C60C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 16:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68406C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 16:31:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References
+	:Message-Id:Date:Subject:Mime-Version:From:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/wnRgCcV3AiHPPTbEx9QfSO0KqJlH3RLrNUc7EgFqm4=; b=ebr78l9zdIblRE4LbB6TumcDai
-	MQGg3KWVpocqVYj1fyjpic/ibxTuOddGaMFSVlpVsziGsljuXhVQWprMfMlcrTLRgp7/UmMFWFP/0
-	Gs2s2Ipm0zVKjVZ9wv6UD6Y1zaSs0IlEcfHfWo8CcLBjbhWVtd22BYdUQfwuUhxQFF/EWkJ/lr9aP
-	b8nuxnSN3eHSe6JVpqfKWk1Sgr9VTo3k8GPb6CovfnPt3TxTtAO2pyIk+keMb+nCAJUygG6Z8jEGF
-	cdS8aslhRxH0WmEBVBlI3xWU+yLwSpQlsI/0f9Y6yfvZzu4UmEdmVd0O8X0xR3EKL7jW4wXE7k7D1
-	if3bKPiA==;
+	bh=hv3wattWbtjbSTdeYjK2ZDT7gtCeh5K4SfrhrDsjmCA=; b=iOdzyji0aRGXyA1zQy8LKnUMG5
+	CEe3sJH97CtN4UAKvYMnXvk+YIAV3FJ9k2kB42OqD8prLz/28t8oxKxkb8990hWuXMBHeuFmHCmRD
+	ByFTumLDA/LvcwEe5609Yj5Rg+ZZjVUQaefRATfc9EGz/x1F5U1I6rD3IWmbn81Tfn5YVw84+5zXA
+	3H5m/bFCEiqpJ67VfnuZtZYgC8OmixoMzJJrhw3HtFhJgvHiK42a84H5Kc7qYP2DfRIsLHyQo6pfp
+	t6ftnK59w2DQPVDDvfJwAtCW1jZ9IYOYvvO+kjzREw7UieN3U0IYcCLg+IQ7a2WurqksgemVq7JvR
+	dokHsqNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow401-005CUo-VN; Fri, 18 Nov 2022 16:13:53 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1ow4H8-005LGv-R5; Fri, 18 Nov 2022 16:31:34 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow3zn-005CMX-Uz; Fri, 18 Nov 2022 16:13:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1668788003;
-	bh=uNoPoaQqsCt3VB34ViP+juUR5EdI/2W4QHKFds0rL6w=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=hY8tQ6CNTTJC+x1cb7eDcgorID2yCPG1M5c4N0Pie0wg/7HMdCXE4WDJUO9znrn2T
-	 WlCARUm9sEejFEczneQ40EisfjlkQLikKcMsSoUxFoq5pdJ+wWdfONCFfETLVnQema
-	 XLQQQo4Pd0P6C4F+H32YffH0CfFzgmlkME+xuZ176eJdkmRh1lvjhdGVCCX74bcdqs
-	 1wc7FF5VBLCKQ4K/6nz4dtdA3kRWCivzLRaF/A5YNfqY8Tgevtw8+YRDgT6cuBDc9v
-	 HzW0iQyNUPTFtio3XxMYlKgfKq7A4v2WYuEnZs8yV2JTrl5Fm9VvKCWhgGXT4TNRP6
-	 a+Sngah0EG/Hw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.77.125] ([80.245.77.125]) by web-mail.gmx.net
- (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Fri, 18 Nov 2022
- 17:13:22 +0100
-MIME-Version: 1.0
-Message-ID: <trinity-923a3ba9-8956-490e-9e4a-0dc4ff59aba5-1668788002736@3c-app-gmx-bs01>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: =?UTF-8?Q?Chunfeng_Yun_=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?=
- <Chunfeng.Yun@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, "linux@fw-web.de" <linux@fw-web.de>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- =?UTF-8?Q?Sam_Shih_=28=E5=8F=B2=E7=A2=A9=E4=B8=89=29?=
- <Sam.Shih@mediatek.com>, "kishon@ti.com" <kishon@ti.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "lorenzo@kernel.org" <lorenzo@kernel.org>, "pabeni@redhat.com"
- <pabeni@redhat.com>,
- =?UTF-8?Q?Jianjun_Wang_=28=E7=8E=8B=E5=BB=BA=E5=86=9B=29?=
- <Jianjun.Wang@mediatek.com>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>, "krzysztof.kozlowski+dt@linaro.org"
- <krzysztof.kozlowski+dt@linaro.org>, "vkoul@kernel.org" <vkoul@kernel.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>, "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>, "linux-phy@lists.infradead.org"
- <linux-phy@lists.infradead.org>, Ryder Lee <Ryder.Lee@mediatek.com>,
- =?UTF-8?Q?Bo_Jiao_=28=E7=84=A6=E6=B3=A2=29?= <Bo.Jiao@mediatek.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-Subject: Aw: Re: [PATCH v5 07/11] arm64: dts: mt7986: add usb related device
- nodes
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 18 Nov 2022 17:13:22 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <6417076e019640b23fff85e27798b277c74eeb74.camel@mediatek.com>
-References: <20221117162728.20608-1-linux@fw-web.de>
- <20221117162728.20608-8-linux@fw-web.de>
- <6417076e019640b23fff85e27798b277c74eeb74.camel@mediatek.com>
+	id 1ow4Gs-005L5K-Cu; Fri, 18 Nov 2022 16:31:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=To:In-Reply-To:Cc:References:Message-Id:Date:Subject:
+	Mime-Version:From:Content-Transfer-Encoding:Content-Type:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=hv3wattWbtjbSTdeYjK2ZDT7gtCeh5K4SfrhrDsjmCA=; b=Vw52GubctujRSSahq1c7EVle+S
+	dmmzjJubKd0E5hkAWgBNj0UX5Zo2BSGlCJ+0ysPloa8J0W12twiXJ2M54qkOA4/u4VZspHLsd48nB
+	o6rYFcmAf3trVw3Pagq238S/DfxNL8ehh8iaGbL6t6n7PpEpgBFuUG9uUFe6qaJxq3kk=;
+Received: from [2a01:598:b1b7:5a55:79cf:cd83:9b5c:5b05] (helo=smtpclient.apple)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1ow4GX-0032wy-4s; Fri, 18 Nov 2022 17:30:57 +0100
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:HYGMb/xYz+XeZpM3XpDKsxgdGc8ewqlZVEcSbPVlQwkmfScvHH2RpSAexRIVX40RRQW9r
- 3pALC9qSqnC8awb8gvvin71249NFff0BFoJeO9TvalmQr02KVaF0++xTTsArljvYBYoCqLPZuTZK
- 8daI4anoIVL1aPxDipKLCD9KDXfKpGEIwIBx9RNSy+Pa4E03uA5M76bozqEnWWb4/omyYJsS75k3
- 0VTpzQyYvkxhjAtMwX2f2fqjgVHKukLUKgXyER9Jh5tDwN/PHpnXs22d0OBM7o35hFZyUPDWilA+
- eg=
-UI-OutboundReport: notjunk:1;M01:P0:gwvebTmYFlo=;HK+XyCP7s+prHXZyAzTEO+vkRgf
- yRjlVD4aEyd3O/vVQzvVscZQBDlD5IP5gc39H9LNhVF1PAa4Oi9zAFC920tYDRwayFi+mIv2W
- l6gFf8GhywPm0Pm0ZfK9pzZNGZjy22wciu3nXga8V9NMtKVumPHAT5v0W4IpY0dRz1krzP5Gg
- qbq3Uram4uEGdcCh+p+s775RshRXAp/btPkYXZHbex1qPUD5qQBQXWXLlKtHcFFNtPjZ7JX30
- qeZs7NObqS8dc8d/duY7ApDlNLxJqfuUVAC9MFs51CnsbMXz9LPiJ7X9LWJSWzGjd7p/Rzf6U
- 94OjCWkPlI76EEOmo1LIhqGu8yehTdemGzEEnUfbelsSIvkocTEl7T6uSiW2ZfeFm5rI+ZpG2
- FCcaDM/ojIgD5ZDyphVqahPaBlviPwMTIALDTZUhsq1eTeCtWtdDM7NVxjYB7PWUXL4Cfo0/G
- reM4XXKH5zO1LGLQSFHZKti5ukMY+GY6bEuB8UfEjHmkBp8WVBadc4azhIPD09JtIOsqQXJ2t
- vNe/0hphKteHYmm1kEL3fjjqknDhgVuoeYsZg53hitIcRJJHOK3Ck1eXFNGRjD+WdXpAFUhfX
- QPd73TUB/yP8hk/jLtafiIkn9fk2OLNzBqVfnpIHINw7/EC3K3tUs7GozMUH7pwMJx7OAKPl2
- IBXAnWjpYtzT7SQRmFJ10d+IdoAV1tykIXfI7brBlRmHiIttqzvMWDNUdrPksv2qPoGrWieoi
- mZs1Tkn4z/rQ9PA3hHkhxyF2Nc47LivgIktlosjIa+DUt+M9ym4KQFsOSS/ljKEAa1whrbtmk
- e+kxfbJmfKZXeV0oZxvVsQvI8zcGM29/6n6NlxvJul5Vw=
+From: Felix Fietkau <nbd@nbd.name>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH net-next 4/6] net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues
+Date: Fri, 18 Nov 2022 17:30:46 +0100
+Message-Id: <8EC28201-A848-4078-812A-AFE08ED12F7B@nbd.name>
+References: <20221118151331.4694574f@javelin>
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20221118151331.4694574f@javelin>
+To: Alexander 'lynxis' Couzens <lynxis@fe80.eu>
+X-Mailer: iPhone Mail (20B101)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_081340_300652_7932D908 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20221118_083118_590414_B9B7098D 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,79 +74,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
 
-> Gesendet: Freitag, 18=2E November 2022 um 07:43 Uhr
-> Von: "Chunfeng Yun (=E4=BA=91=E6=98=A5=E5=B3=B0)" <Chunfeng=2EYun@mediat=
-ek=2Ecom>
-> On Thu, 2022-11-17 at 17:27 +0100, Frank Wunderlich wrote:
-> > From: Sam Shih <sam=2Eshih@mediatek=2Ecom>
-> >=20
-> > This patch adds USB support for MT7986=2E
-> >=20
-> > Signed-off-by: Sam Shih <sam=2Eshih@mediatek=2Ecom>
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
-> > ---
-> > changes compared to sams original version:
-> > - reorder xhci-clocks based on yaml binding
-> >=20
-> > v5:
-> >  - update ranges/reg of usb-phy
-> >  - not added RB from AngeloGioacchino for v4 because of these changes
+> On 18. Nov 2022, at 16:13, Alexander 'lynxis' Couzens <lynxis@fe80.eu> wro=
+te:
+>=20
+> =EF=BB=BFHi Felix,
+>=20
+>> On Wed, 16 Nov 2022 09:07:32 +0100
+>> Felix Fietkau <nbd@nbd.name> wrote:
+>>=20
+>> @@ -614,6 +618,75 @@ static void mtk_mac_link_down(struct phylink_config *=
+config, unsigned int mode,
+>>    mtk_w32(mac->hw, mcr, MTK_MAC_MCR(mac->id));
+>> }
+>>=20
+>> +static void mtk_set_queue_speed(struct mtk_eth *eth, unsigned int idx,
+>> +                int speed)
+>> +{
+>> +    const struct mtk_soc_data *soc =3D eth->soc;
+>> +    u32 ofs, val;
+>> +
+>> +    if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+>> +        return;
+>> +
+>> +    val =3D MTK_QTX_SCH_MIN_RATE_EN |
+>> +          /* minimum: 10 Mbps */
+>> +          FIELD_PREP(MTK_QTX_SCH_MIN_RATE_MAN, 1) |
+>> +          FIELD_PREP(MTK_QTX_SCH_MIN_RATE_EXP, 4) |
+>> +          MTK_QTX_SCH_LEAKY_BUCKET_SIZE;
+>> +    if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
+>> +        val |=3D MTK_QTX_SCH_LEAKY_BUCKET_EN;
+>> +
+>> +    if (IS_ENABLED(CONFIG_SOC_MT7621)) {
+>> +        switch (speed) {
+>> +        case SPEED_10:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 103) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 2) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
+>> +            break;
+>> +        case SPEED_100:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 103) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 3);
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
+>> +            break;
+>> +        case SPEED_1000:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 105) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 4) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 10);
+>> +            break;
+>> +        default:
+>> +            break;
+>> +        }
+>> +    } else {
+>> +        switch (speed) {
+>> +        case SPEED_10:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 1) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 4) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
+>> +            break;
+>> +        case SPEED_100:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 1) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5);
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 1);
+>> +            break;
+>> +        case SPEED_1000:
+>> +            val |=3D MTK_QTX_SCH_MAX_RATE_EN |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_MAN, 10) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_EXP, 5) |
+>> +                   FIELD_PREP(MTK_QTX_SCH_MAX_RATE_WEIGHT, 10);
+>> +            break;
+>> +        default:
+>> +            break;
+>> +        }
+>> +    }
+>> +
+>> +    ofs =3D MTK_QTX_OFFSET * idx;
+>> +    mtk_w32(eth, val, soc->reg_map->qdma.qtx_sch + ofs);
+>> +}
+>> +
+>> static void mtk_mac_link_up(struct phylink_config *config,
+>>                struct phy_device *phy,
+>>                unsigned int mode, phy_interface_t interface,
+>> @@ -639,6 +712,8 @@ static void mtk_mac_link_up(struct phylink_config *co=
+nfig,
+>=20
+>=20
+> What's happening to 2.5Gbit ports (e.g. on mt7622)? Should be SPEED_2500 a=
+lso in the switch/case?
+> E.g. a direct connected 2.5Gbit phy to GMAC0.
+> Or a mt7622 GMAC0 to mt7531 port 6 and a 2.5Gbit phy to port 5.
 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb=2Edts
-> > b/arch/arm64/boot/dts/mediatek/mt7986a-rfb=2Edts
-> > index 006878e3f2b2=2E=2E2b5d7ea31b4d 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb=2Edts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb=2Edts
-> > @@ -23,6 +23,24 @@ memory@40000000 {
-> >  		device_type =3D "memory";
-> >  		reg =3D <0 0x40000000 0 0x40000000>;
-> >  	};
-> > +
-> > +	reg_3p3v: regulator-3p3v {
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "fixed-3=2E3V";
-> > +		regulator-min-microvolt =3D <3300000>;
-> > +		regulator-max-microvolt =3D <3300000>;
-> > +		regulator-boot-on;
-> > +		regulator-always-on;
-> > +	};
-> > +
-> > +	reg_5v: regulator-5v {
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "fixed-5V";
-> > +		regulator-min-microvolt =3D <5000000>;
-> > +		regulator-max-microvolt =3D <5000000>;
-> > +		regulator-boot-on;
-> > +		regulator-always-on;
-> > +	};
-> >  };
-> Usually if we use a gpio to control a switch to turn on/off power, we
-> model it as a fixed regulator, but here no gpio provided in reg_3p3v
-> and reg_5v, if no gpio used, no need these two fixed regulators too=2E
+On 2.5 Gbit/s, the code disables rate limiting, since it=E2=80=99s not neede=
+d. That=E2=80=99s why it=E2=80=99s not handled here
 
-i can drop 5v regulator, but 3v3 is used by emmc, so i would move that to =
-the mmc-patch
-
-> > =20
-> >  &crypto {
-> > @@ -140,6 +158,12 @@ &spi1 {
-> >  	status =3D "okay";
-> >  };
-> > =20
-> > +&ssusb {
-> > +	vusb33-supply =3D <&reg_3p3v>;
-> > +	vbus-supply =3D <&reg_5v>;
-> These two supply can be removed if no swith to control them, they are
-> optional=2E
-
-ok, i drop the references=2E
-
-anything else ok?
-
-prepared patch here (now yet squashed):
-https://github=2Ecom/frank-w/BPI-R2-4=2E14/commits/6=2E1-r3dts
-
-regards Frank
+- Felix=
 
