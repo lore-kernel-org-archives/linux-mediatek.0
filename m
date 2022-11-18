@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63685C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD508C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HCq6Ar2PkhD4OoGWAuL/w2DeeuE2Tk+RaLJ97BRtlww=; b=V9yVZbQhLoZZTU
-	/PfyBfEr4Nupr3PBIdTmoydE5FqnHdDBDDL+mnVM3tpS88hynmRRNYy6Fef5p5JI1Zq6kNFC1XF/r
-	NWXQsrLqn8Z3bZ6WuYCytdlXMgkvcudordHxkE0H9dTkvOPx8QVct4fslRYWbLc016y9dQrG3oJJV
-	fD1CN+YwfRIvoBSj4ZXj1zQRCUynCaeFN5RQkMj388bOVXR8dVFNk8HHa872onsUETpomRvpJTPxp
-	98PAHyPSQU21+RqSk1ejnofi3IxwqdUwaSTDbSQ60IdmH79f0/AlomKR1fD1GPYMXQUV+yAJOZM8m
-	R3LSyEW7eFfLbYOfcwBg==;
+	List-Owner; bh=6YDvN14LGzYl2jRSkK1fRlKatqJWzuwYk+eXtAY5bVg=; b=OWZvPTCYuMcWrg
+	pBV3iqh5mic0e4HvTIfXdpHWmJmXXf6nBx//mcxt/QRaOF4/nF7VZJdnNgMVt4eHswJR772u3OAts
+	Z6yCXYNe97kKNs+lybqeeZEuRSm9zSq43PUfRUqmkKrT5yKVi7hsGcPqLcS1kKJqkKxWY33slRqvr
+	JW/aF0038Kp5We9xxbISbtCYraJc5t9IqeiXyHwC8aFiMbQybpHCN1ldBwb7dDZTU2wWEV6oqe9cf
+	SCaHAlBo//kwOMaDI9WOf1Y8UBQ30152xkyIzXBZFXfio8LtjaCw2mNj6TF+8E5O9EWft2xK4eJVQ
+	JeXmpV/WesbEV0ZQ8H3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6o7-007U5h-3a; Fri, 18 Nov 2022 19:13:47 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1ow6pw-007Us7-5T; Fri, 18 Nov 2022 19:15:40 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6cQ-007OdO-Gz; Fri, 18 Nov 2022 19:01:44 +0000
+	id 1ow6cQ-007OdM-Mp; Fri, 18 Nov 2022 19:01:44 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id DF7D2604EB;
+	by mxout4.routing.net (Postfix) with ESMTP id 8838A100995;
 	Fri, 18 Nov 2022 19:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668798098;
+	s=20200217; t=1668798097;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HCq6Ar2PkhD4OoGWAuL/w2DeeuE2Tk+RaLJ97BRtlww=;
-	b=dLbEK6OqXg4Y29VGLlzXLdLUH0vx5bhiykL7giT8Qpi4c26CS+xjB+UgQ0p3F1Fq5x9MNH
-	Rkv9anDKeIBvGeq6dRSAYGkwLMlcaiw+gjQWeBPmwY88S9FSVYLwdzhTdniZe8ZvhYsYnJ
-	UV81cKeBFe15ZH0GZ88c0YAvwI5HnmY=
+	bh=6YDvN14LGzYl2jRSkK1fRlKatqJWzuwYk+eXtAY5bVg=;
+	b=Bg8VOojRqjXpMbnvcQ0BS7YLdq0qU/ixxmd4qWW8aTSiRMhNppN9n3ZX6yXL3D63iLfYKj
+	RmsCghVZLHDx+vGs+y0zv+f0pci1vrv67b1npT/kLsrner+k1nETyiF2ELJfEXbvJPfkCH
+	oS6CyKYn3XmZdV61b/HV8DvuS1oWzow=
 Received: from frank-G5.. (fttx-pool-80.245.77.125.bambit.de [80.245.77.125])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 900D612271E;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 365341226BC;
 	Fri, 18 Nov 2022 19:01:37 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v6 05/11] dt-bindings: PCI: mediatek-gen3: add support for mt7986
-Date: Fri, 18 Nov 2022 20:01:20 +0100
-Message-Id: <20221118190126.100895-6-linux@fw-web.de>
+Subject: [PATCH v6 04/11] dt-bindings: PCI: mediatek-gen3: add SoC based clock config
+Date: Fri, 18 Nov 2022 20:01:19 +0100
+Message-Id: <20221118190126.100895-5-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221118190126.100895-1-linux@fw-web.de>
 References: <20221118190126.100895-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_110142_778373_9BE4DF46 
-X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-CacheID: sfid-20221118_110142_998832_2FE9F804 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,70 +65,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-phy@lists.infradead.org, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add compatible string and clock-definition for mt7986. It needs 4 clocks
-for PCIe, define them in binding.
+The PCIe driver covers different SOC which needing different clock
+configs. Define them based on compatible.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: Rob Herring <robh@kernel.org>
 Acked-by: Jianjun Wang <jianjun.wang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
 v2:
-- squashed patch 2+3 (compatible and clock definition)
+- fix typo in mediatek,mt8192-pcie
+v3:
+- remove contains to match only if compatible is no fallback
+  tested with series "Add driver nodes for MT8195 SoC" and mt7986
+  pcie-nodes, dtbs_check is now clean
 ---
- .../bindings/pci/mediatek-pcie-gen3.yaml        | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ .../bindings/pci/mediatek-pcie-gen3.yaml      | 47 ++++++++++++++-----
+ 1 file changed, 35 insertions(+), 12 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index 5d7369debff2..f7a02019daea 100644
+index c00be39af64e..5d7369debff2 100644
 --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
 +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -48,6 +48,7 @@ properties:
-     oneOf:
-       - items:
-           - enum:
-+              - mediatek,mt7986-pcie
-               - mediatek,mt8188-pcie
-               - mediatek,mt8195-pcie
-           - const: mediatek,mt8192-pcie
-@@ -78,9 +79,11 @@ properties:
-       - const: mac
+@@ -43,9 +43,6 @@ description: |+
+   each set has its own address for MSI message, and supports 32 MSI vectors
+   to generate interrupt.
  
-   clocks:
-+    minItems: 4
+-allOf:
+-  - $ref: /schemas/pci/pci-bus.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -84,15 +81,7 @@ properties:
      maxItems: 6
  
    clock-names:
-+    minItems: 4
-     maxItems: 6
+-    items:
+-      - const: pl_250m
+-      - const: tl_26m
+-      - const: tl_96m
+-      - const: tl_32k
+-      - const: peri_26m
+-      - enum:
+-          - top_133m        # for MT8192
+-          - peri_mem        # for MT8188/MT8195
++    maxItems: 6
  
    assigned-clocks:
-@@ -160,6 +163,20 @@ allOf:
-             - const: tl_32k
-             - const: peri_26m
-             - const: peri_mem
+     maxItems: 1
+@@ -138,6 +127,40 @@ required:
+   - '#interrupt-cells'
+   - interrupt-controller
+ 
++allOf:
++  - $ref: /schemas/pci/pci-bus.yaml#
 +  - if:
 +      properties:
 +        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt7986-pcie
++          const: mediatek,mt8192-pcie
 +    then:
 +      properties:
 +        clock-names:
 +          items:
 +            - const: pl_250m
 +            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
 +            - const: peri_26m
 +            - const: top_133m
- 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8188-pcie
++              - mediatek,mt8195-pcie
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: pl_250m
++            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
++            - const: peri_26m
++            - const: peri_mem
++
  unevaluatedProperties: false
  
+ examples:
 -- 
 2.34.1
 
