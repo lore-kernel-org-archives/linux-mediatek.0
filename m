@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628C4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 21:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F3BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 21:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ro6AsXlXIrKhb60zReRlANZHKUr4qOa9kHx7oYfaRrE=; b=X3iyAd6ggwzpzPSc9xK21XUIdJ
-	pvDTp0hH1qTdd7oKLeJJs8AxcO8bJ0jigre0OcdKZCX2F5KdHZnMv5S4Oocl1pJ7iAyEX2yYviT7r
-	lpVmZ3DfHGVRaKA23qEwTTzZrXhHUciKxc8CykSTfz6V260o85+nK/aMRqYo3BBU+gzGPfqERfu68
-	jsn/66WeLZ9gX2ByNDb3qB7ys9MkHNzY9gaQO8bD06//yGiOI+kusV0yKoHJjBiRp3vCuyl8bBcKD
-	cXUnXPcx4e1IO9LvU1ZOjYzWiyOfXRV/2AS2pmRnSfheOtDeQJe7sZaTdNufuqhfvgx2hYxikfran
-	x/HwjMqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RkFTIrtdwyX2TNUxD2qJjCXIPObhIeqFxCdl7ZlUGmo=; b=Xa/LSyi9ZrdzYM5dN2jbOy2Qg4
+	ah4w/V+AWImhYPhNlr2M1HDylj9Iy8pa+r7qG8UkR2RiPPsdGeZUZYMmrv3Vda02hkBwqxbD1mys+
+	kUb9PkgNZYty90DxmOlDGzY+gKLJ/X73yIUVSz3txCNxXUpSUT2Ox4QYNBJfxBAebEpQjYVSMTI+q
+	MT1bArF62W0zbsIy6U37XiGBIbnJK8GWG7UcDAuYinL8l+fQ8KmJLQZCLL7obrB0TUjtTCne+bOAo
+	7QHhl0aQmTlUTRb31iMHbytFuOVj6969S1N2lMWNatsxou14klrnTJxmB+5mrzCJHxwabRJwsoy/W
+	J6Xqy3RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow9AL-008NQc-OP; Fri, 18 Nov 2022 21:44:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ow9AO-008NU6-Sd; Fri, 18 Nov 2022 21:44:56 +0000
+Received: from mail-pg1-f182.google.com ([209.85.215.182])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow9A6-008NEb-Ou; Fri, 18 Nov 2022 21:44:40 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5115562579;
-	Fri, 18 Nov 2022 21:44:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3984C43470;
-	Fri, 18 Nov 2022 21:44:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668807877;
-	bh=Ro6AsXlXIrKhb60zReRlANZHKUr4qOa9kHx7oYfaRrE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=TeOmRVfobV7yYb1UQSCU9V8jYLTo8QS4T+Bb0vu3a5KzzrRxwll6C87rA4yOd9/sa
-	 4H6F62uXVusVVxyHOVrmJOuwTf/BQv70I+IPq77odKuRhBuuPZz7OfjHs1KKg7ydZn
-	 femEKyZfbkZBiNd40NM7I6x0izwr1RJ8Yjh2CmUxInvAnfMpnTtSkGiFQFL5+dc9O2
-	 JZbWlcegU3y/NK25ZCKw3BPhWLH7am1fymrn6a1sQ9wfJpVVbMZ+wZbvE+qtxK4dH6
-	 CwfP6wx1HOFqLNkeBkFiRvwXHruOsbhLBgH9tY9Fw+MyPrYLL3lHxUubOsRTn7BVX3
-	 Pv7eWp5YGuUsw==
-Received: by mail-lf1-f51.google.com with SMTP id p8so10275275lfu.11;
-        Fri, 18 Nov 2022 13:44:37 -0800 (PST)
-X-Gm-Message-State: ANoB5pm0obrCjmUmIdTjWNUzm/SK7Y5S7xwSAqGIXsgZFofTHOkYNBhd
-	ajo/5lW72W/cvOVR2GzNxjXdvRB9lI+PvP3ruQ==
-X-Google-Smtp-Source: AA0mqf5Bn9XdvTzEAk8cfU7PcXIdAzaVCDQ4++OuMxbWnF5OZcAMFxIc1mQBZI4fKU1avrBB58hKEt1CGiPeef4tFLk=
-X-Received: by 2002:a05:6512:32cb:b0:4ab:5a19:3455 with SMTP id
- f11-20020a05651232cb00b004ab5a193455mr2857438lfg.462.1668807875715; Fri, 18
- Nov 2022 13:44:35 -0800 (PST)
+	id 1ow9A9-008NFT-Og
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 21:44:42 +0000
+Received: by mail-pg1-f182.google.com with SMTP id q1so6068950pgl.11
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Nov 2022 13:44:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=RkFTIrtdwyX2TNUxD2qJjCXIPObhIeqFxCdl7ZlUGmo=;
+        b=MsjnoeBu53p0gdbA1586WCQkU81avv2/xaVE778G2MlNG7WA9/MsHg6tBWKV1ho/Pu
+         0e4Cx+B7qDjN5QEazro/t64ogz0t0RdkRLYbIt92clc6ep+rR7x2oSozsshfno0QPH3f
+         jVbTUulZHjN2ptz57yIT+bbmAyF3yIyTpbDZnyqnDccVbEZE6Mo1xDuDbnqN886qFQT4
+         tl0fHuraEwF5KpVy0AZV8ryAN2VBZuNDx04omkktdxfwKoF2krN3VxG5vcbhoYpw1nBC
+         HFsZaCH09T5tBbEnmvwHKNvcdLnD6LHPn9deVgV4mP6OSPihIqH+WGIQj30ckCjCg8DM
+         ZdBw==
+X-Gm-Message-State: ANoB5pn/uCKw8V0P3VR2sV9qp1shSfz1DBHk7UGZp3b24whChr6pnFit
+	CdTgM02tBkJTCeayFvV3PGs=
+X-Google-Smtp-Source: AA0mqf5fbBfts4orvzhHSKFQnZ47lpMAoImHSv5eqLfE89nX7xdyPt634pCIiyOtVtRngEXPvBYPIg==
+X-Received: by 2002:a63:1659:0:b0:46e:f23a:e9aa with SMTP id 25-20020a631659000000b0046ef23ae9aamr8092182pgw.428.1668807880591;
+        Fri, 18 Nov 2022 13:44:40 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:5392:f94c:13ff:af1a? ([2620:15c:211:201:5392:f94c:13ff:af1a])
+        by smtp.gmail.com with ESMTPSA id w11-20020a170902ca0b00b001867fdec154sm4126856pld.224.2022.11.18.13.44.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 18 Nov 2022 13:44:39 -0800 (PST)
+Message-ID: <5379c0ec-8dd3-f1bf-0a08-a621c68a3b6d@acm.org>
+Date: Fri, 18 Nov 2022 13:44:38 -0800
 MIME-Version: 1.0
-References: <20221112091923.9562-1-frank-w@public-files.de>
- <Y3QMMKGc6uNFyfWb@makrotopia.org> <46481C3B-3B46-440F-B923-02934E0445F1@public-files.de>
-In-Reply-To: <46481C3B-3B46-440F-B923-02934E0445F1@public-files.de>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 18 Nov 2022 15:44:27 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLrgj97gCSvN7_WbHck5zpJECfVicUhV1P2cw0GONO_Sw@mail.gmail.com>
-Message-ID: <CAL_JsqLrgj97gCSvN7_WbHck5zpJECfVicUhV1P2cw0GONO_Sw@mail.gmail.com>
-Subject: Re: [PATCH v4 10/11] arm64: dts: mt7986: add Bananapi R3
-To: frank-w@public-files.de
-Cc: Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, 
-	Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, 
-	Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Modify the return value
+Content-Language: en-US
+To: Finn Thain <fthain@linux-m68k.org>
+Cc: Chanwoo Lee <cw9316.lee@samsung.com>, stanley.chu@mediatek.com,
+ jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com,
+ linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <CGME20221118045326epcas1p408c9e16a58201043c9eb3c99110fab0c@epcas1p4.samsung.com>
+ <20221118045242.2770-1-cw9316.lee@samsung.com>
+ <db25901b-8537-ca16-aaac-0daaa636d84d@acm.org>
+ <c561e1ca-7739-efe7-5c36-952b01634a26@linux-m68k.org>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <c561e1ca-7739-efe7-5c36-952b01634a26@linux-m68k.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_134438_872466_571FCCE6 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20221118_134441_831929_C023345E 
+X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,26 +85,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 16, 2022 at 3:07 AM Frank Wunderlich
-<frank-w@public-files.de> wrote:
->
-> Am 15. November 2022 23:01:20 MEZ schrieb Daniel Golle <daniel@makrotopia.org>:
->
->
-> >The device can boot from all 4 storage options. Both, SPI and MMC, can
-> >be switched using hardware switches on the board, see
-> >https://wiki.banana-pi.org/Banana_Pi_BPI-R3#Jumper_setting
-> >
-> >So why do the SPI-NAND vs. SPI-NOR switching with device tree overlays
-> >and the SD card vs. eMMC switching with dtsi + 2x dts? To me this looks
-> >inconsitent. Use either one or the other method.
->
-> Hi Daniel
->
-> It is still in discussion,if mainline-kernel will support devicetree-overlays [1].
+On 11/18/22 13:34, Finn Thain wrote:
+> On Fri, 18 Nov 2022, Bart Van Assche wrote:
+> 
+>> There is more Linux kernel code that [...] than code that [...].
+> 
+> Thus mediocrity prevails.
 
-No it's not. We're just in the middle of renaming overlay .dts files
-to .dtso. Overlays have been supported for the last 1.5 years.
+Mediocrity? I don't understand the above comment. Personally I prefer 
+the style without !! and I don't think that it's a mediocre style.
 
-Rob
+Bart.
 
