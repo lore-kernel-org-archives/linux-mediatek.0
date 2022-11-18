@@ -4,67 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF68EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 11:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EEB4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 11:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gEw4Gu5Gnt8zOHhIWW+1I9wzg2APCr+opeqeiUE5TEE=; b=1bHuohq9s9hcw6+Jrv2RSenyRJ
-	FuU9NYDEjnzyElP/FTn5L0q75AkZh3i/CgNlf96FJjDahQ9yDHlFvuVS4CGJ4zt4h6yNDkyL+GGk8
-	Me56DyT6RivdUcsilwLUftgFnmb6Cb5gxRGwkSyHCJjgPqBcXgk6PcLMTcVl4vdyDnWDf8SOdNzAP
-	YBP0+iFD0QqlicFLu1FbXuwALgi+oh33Cn7qFlQX1OB0Kh3e5GKJMheoxoY5sMed19xPa42h1cg1p
-	RrzsFbPTR9/D5fix0CcojZ2zQSLf0cJz9v/ogn7BlmTQmfCZW3ZO+yUZ4ezsrCaaVGqpDdWN0AFD5
-	eHRfR0YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=W5utuasYQCY2PHwGIWNvE6GgspjSjL4TUNPHSyHes/I=; b=ApZL9wM96bl+gYVwgwudKTHFJJ
+	1Tg8obH+lD+5xYqYcppzjp4WKsdBEwQ84GZls+gZHRjJwHejmhGABTqG7sWakSm7Y/RNZxmvMEsT+
+	QLaA/a+aJzP6cC1TtVLt38T2b3gU8T1EAAf14e1i56XaJyJa+csRONDThpuvK2peV81unGX735Zha
+	0WxpkTSitRTqFvhH6TSkm+rGIeJuD18rL7KJDsb35qJkdSzNenbZxyye4qIes4Cc//XUxlpI8Iqw9
+	Jrw/wZ/bi6yekipODCOj1+0N3ONPAGTb7bC47ccH8w2Q8T2/Up8xhVsubqZt+CsajBFAjC1SFgMbn
+	Z1eeHxCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovz8P-003Wkb-FN; Fri, 18 Nov 2022 11:02:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ovzAy-003XKy-Sh; Fri, 18 Nov 2022 11:04:52 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovz8M-003WjJ-Va; Fri, 18 Nov 2022 11:02:12 +0000
-X-UUID: c4bfbc03fbfd466eb9c7ae977c556caa-20221118
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=gEw4Gu5Gnt8zOHhIWW+1I9wzg2APCr+opeqeiUE5TEE=;
-	b=MCAj3A8P+cjwi6PaRieaXBLrJdn5Lhzqtz6BE/1aqNKlR8CAJVQJuW16N5JYBIpIb3hatk7oNAuRf+/8t8QkdJovjJ8xDwAg1jNqHwFosNY2PDM49h3wc1BmofdiFbMnItGGgRt+18P55FwTDJKFNmVsTFotIjHVELOPkad4XF4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:dd94a9ef-feef-404a-b12d-d0fc0c17ddbe,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-30
-X-CID-META: VersionHash:62cd327,CLOUDID:05c82c2f-2938-482e-aafd-98d66723b8a9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c4bfbc03fbfd466eb9c7ae977c556caa-20221118
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1025382390; Fri, 18 Nov 2022 04:02:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 18 Nov 2022 19:01:25 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 18 Nov 2022 19:01:24 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Mathias Nyman <mathias.nyman@intel.com>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
- Hung" <eddie.hung@mediatek.com>
-Subject: [PATCH] usb: host: xhci-mtk: omit shared hcd if either root hub has no ports
-Date: Fri, 18 Nov 2022 19:01:16 +0800
-Message-ID: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1ovzAr-003XHA-9g
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 11:04:52 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 84-20020a1c0257000000b003cfe48519a6so1012814wmc.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Nov 2022 03:04:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date:message-id:reply-to;
+        bh=W5utuasYQCY2PHwGIWNvE6GgspjSjL4TUNPHSyHes/I=;
+        b=rSp9wAeTTAd+4EW6fNzgLlHHLU+EUHjuaCW7QbiIc2imX1FEIYxAES8RXClaTTvszF
+         W8YsZh4otqH2pIO/hYL8a9lO0CzpX76WgvRaP99NHKhQPMvWn26pyWvD3xYNoNfDbUqL
+         BtVrBxGY06h/2Yywyu7E8uHCdbLTDMkhLrMfhId2OnRzAcnS8g7Ryw0TpXqxWAWKSUrE
+         +lcxoiJKVtwx8on9X8mrNfx0dheTs1cYexAJ991Y24BajwzMQkfXuH8zT6MmW+zSrG44
+         /1MM9wk07INizSU6dquUIgv1gCP0YliHX2OABjs34fgun6+YPuQXbL9GXvuboPXqRqJB
+         1bbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=W5utuasYQCY2PHwGIWNvE6GgspjSjL4TUNPHSyHes/I=;
+        b=mVqCg2RgV3DC5ya+Hl+20nXVGiWu8gY1BtvvJFNaXQSM2LmixQndukH6EWFMswI/4U
+         9HnwXcmNfB81SLnG+AeqpBauBGir6x3lfDovhKMSgFbII8nif/wFk3iUj96kXTkbe6sN
+         QR1/oH3qzy4EOKkblQkepCaR7WY0TEWh3SHrUOCnTHL1eZOFmHiUzV9VE1Z+NIM6FNJV
+         3gzxCWfuGsHNctfBa8YkW4Ygj2nRuK8Aw2y38hH81WPFTBd/D3cmu1fQKiR8lkfXX2xu
+         xyx283X2ruhwb2Ys7CXXMdJL6UBIV2VDhyMlaeHUxIDR4p8vaGeX6MA3Ig9uY1eJGZIE
+         RG9A==
+X-Gm-Message-State: ANoB5pnn0/oGtnU86+DhSZwPieFep2UF09PVcCYo1suuhv3Qlq7dM+a/
+	Wqg3cRqtNqcxYdHEd34bahcfXw==
+X-Google-Smtp-Source: AA0mqf7vxiK6P3WffMyqgJ/8O3L40bk6P5sB2XrwVhiaTgxXC7+NTxtdHsFvSQzKB4yODDsSh9V93g==
+X-Received: by 2002:a05:600c:2241:b0:3cf:9ced:dce4 with SMTP id a1-20020a05600c224100b003cf9ceddce4mr4440637wmm.120.1668769482928;
+        Fri, 18 Nov 2022 03:04:42 -0800 (PST)
+Received: from [127.0.1.1] (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.googlemail.com with ESMTPSA id i14-20020adff30e000000b002368a6deaf8sm3316948wro.57.2022.11.18.03.04.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Nov 2022 03:04:42 -0800 (PST)
+Subject: [PATCH v7 0/4] thermal: mediatek: Add support for MT8365 SoC
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-b4-tracking: H4sIALpmd2MC/4WNQQqDMBREryJ/3ZSoJLFd9R6liyR+zYcYJVFBxLv30wt0NbwZZuaEgpmwwLM6Ie
+ NOhebEYG4V+GDTiIJ6Zmhk09Sy7sS2CGqVFGvAPNkoXKY0smn7ttN9a6TSA3Db2YIc2uQD99MWI5uB
+ yjrn4/e2a5b3/+FdCyl8Z9xjMEop6V7OHpFcxrufJ/hc1/UFFjuc5sYAAAA=
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Date: Fri, 18 Nov 2022 12:04:26 +0100
+Message-Id: <20221018-up-i350-thermal-bringup-v7-0-ebf08ff2eddb@baylibre.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Zhang Rui <rui.zhang@intel.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fabien Parent <fparent@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, Michael Kao <michael.kao@mediatek.com>, linux-kernel@vger.kernel.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1668769481; l=1063;
+ i=aouledameur@baylibre.com; s=20220920; h=from:subject:message-id;
+ bh=pMaGIEwsrzpZmq4GokUNu2T3+sSq40Jxnt5PukxJb8M=;
+ b=q8wORfumvupXVJQ0eIbhIXe7py+37KKcDffQKokfWVSbm5S8yMAD9qYJilKiWAIgwU25Mw2RsN52
+ 5oNC9SGcABiEPep3Vj6BgcRGwlaB+KYwjBL+tHIyQHhDJ5OZEqfc
+X-Developer-Key: i=aouledameur@baylibre.com; a=ed25519;
+ pk=HgYWawSL4qLGPx+RzJ+Cuu+V8Pi/KQnDDm1wjWPMOFE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_030211_044960_2826D2C5 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20221118_030445_587936_3DBB5038 
+X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,171 +103,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is error log when add a usb3 root hub without ports:
-"hub 4-0:1.0: config failed, hub doesn't have any ports! (err -19)"
+This patchset adds thermal support for MT8365 SoC which contains three
+thermal sensors.
 
-so omit the shared hcd if either of the root hubs has no ports, but
-usually there is no usb3 port.
+Changes in v7:
+- Fix devm_thermal_of_zone_register() error checks.
+- Link to v6: https://lore.kernel.org/r/20221018-up-i350-thermal-bringup-
+v6-0-c87b9f75550b@baylibre.com
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 ---
- drivers/usb/host/xhci-mtk.c | 72 +++++++++++++++++++++++--------------
- 1 file changed, 46 insertions(+), 26 deletions(-)
+Amjad Ouled-Ameur (1):
+      thermal: mediatek: add another get_temp ops for thermal sensors
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 01705e559c42..cff3c4aea036 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -485,6 +485,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	const struct hc_driver *driver;
- 	struct xhci_hcd *xhci;
- 	struct resource *res;
-+	struct usb_hcd *usb3_hcd;
- 	struct usb_hcd *hcd;
- 	int ret = -ENODEV;
- 	int wakeup_irq;
-@@ -593,6 +594,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 
- 	xhci = hcd_to_xhci(hcd);
- 	xhci->main_hcd = hcd;
-+	xhci->allow_single_roothub = 1;
- 
- 	/*
- 	 * imod_interval is the interrupt moderation value in nanoseconds.
-@@ -602,24 +604,29 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	xhci->imod_interval = 5000;
- 	device_property_read_u32(dev, "imod-interval-ns", &xhci->imod_interval);
- 
--	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
--			dev_name(dev), hcd);
--	if (!xhci->shared_hcd) {
--		ret = -ENOMEM;
--		goto disable_device_wakeup;
--	}
--
- 	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
- 	if (ret)
--		goto put_usb3_hcd;
-+		goto disable_device_wakeup;
- 
--	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
-+	if (!xhci_has_one_roothub(xhci)) {
-+		xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
-+							 dev_name(dev), hcd);
-+		if (!xhci->shared_hcd) {
-+			ret = -ENOMEM;
-+			goto dealloc_usb2_hcd;
-+		}
-+	}
-+
-+	usb3_hcd = xhci_get_usb3_hcd(xhci);
-+	if (usb3_hcd && HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
- 	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
--		xhci->shared_hcd->can_do_streams = 1;
-+		usb3_hcd->can_do_streams = 1;
- 
--	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
--	if (ret)
--		goto dealloc_usb2_hcd;
-+	if (xhci->shared_hcd) {
-+		ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-+		if (ret)
-+			goto put_usb3_hcd;
-+	}
- 
- 	if (wakeup_irq > 0) {
- 		ret = dev_pm_set_dedicated_wake_irq_reverse(dev, wakeup_irq);
-@@ -641,13 +648,13 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	usb_remove_hcd(xhci->shared_hcd);
- 	xhci->shared_hcd = NULL;
- 
--dealloc_usb2_hcd:
--	usb_remove_hcd(hcd);
--
- put_usb3_hcd:
--	xhci_mtk_sch_exit(mtk);
- 	usb_put_hcd(xhci->shared_hcd);
- 
-+dealloc_usb2_hcd:
-+	xhci_mtk_sch_exit(mtk);
-+	usb_remove_hcd(hcd);
-+
- disable_device_wakeup:
- 	device_init_wakeup(dev, false);
- 
-@@ -679,10 +686,15 @@ static int xhci_mtk_remove(struct platform_device *pdev)
- 	dev_pm_clear_wake_irq(dev);
- 	device_init_wakeup(dev, false);
- 
--	usb_remove_hcd(shared_hcd);
--	xhci->shared_hcd = NULL;
-+	if (shared_hcd) {
-+		usb_remove_hcd(shared_hcd);
-+		xhci->shared_hcd = NULL;
-+	}
- 	usb_remove_hcd(hcd);
--	usb_put_hcd(shared_hcd);
-+
-+	if (shared_hcd)
-+		usb_put_hcd(shared_hcd);
-+
- 	usb_put_hcd(hcd);
- 	xhci_mtk_sch_exit(mtk);
- 	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
-@@ -700,13 +712,16 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
- 	struct usb_hcd *hcd = mtk->hcd;
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+	struct usb_hcd *shared_hcd = xhci->shared_hcd;
- 	int ret;
- 
- 	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
- 	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
- 	del_timer_sync(&hcd->rh_timer);
--	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
--	del_timer_sync(&xhci->shared_hcd->rh_timer);
-+	if (shared_hcd) {
-+		clear_bit(HCD_FLAG_POLL_RH, &shared_hcd->flags);
-+		del_timer_sync(&shared_hcd->rh_timer);
-+	}
- 
- 	ret = xhci_mtk_host_disable(mtk);
- 	if (ret)
-@@ -718,8 +733,10 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
- 
- restart_poll_rh:
- 	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
--	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
--	usb_hcd_poll_rh_status(xhci->shared_hcd);
-+	if (shared_hcd) {
-+		set_bit(HCD_FLAG_POLL_RH, &shared_hcd->flags);
-+		usb_hcd_poll_rh_status(shared_hcd);
-+	}
- 	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
- 	usb_hcd_poll_rh_status(hcd);
- 	return ret;
-@@ -730,6 +747,7 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
- 	struct usb_hcd *hcd = mtk->hcd;
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+	struct usb_hcd *shared_hcd = xhci->shared_hcd;
- 	int ret;
- 
- 	usb_wakeup_set(mtk, false);
-@@ -742,8 +760,10 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
- 		goto disable_clks;
- 
- 	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
--	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
--	usb_hcd_poll_rh_status(xhci->shared_hcd);
-+	if (shared_hcd) {
-+		set_bit(HCD_FLAG_POLL_RH, &shared_hcd->flags);
-+		usb_hcd_poll_rh_status(shared_hcd);
-+	}
- 	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
- 	usb_hcd_poll_rh_status(hcd);
- 	return 0;
+Fabien Parent (2):
+      dt-bindings: thermal: mediatek: add binding documentation for MT8365 SoC
+      thermal: mediatek: add support for MT8365 SoC
+
+Markus Schneider-Pargmann (1):
+      thermal: mediatek: control buffer enablement tweaks
+
+ .../bindings/thermal/mediatek-thermal.txt          |   1 +
+ drivers/thermal/mtk_thermal.c                      | 192 +++++++++++++++++----
+ 2 files changed, 161 insertions(+), 32 deletions(-)
+---
+base-commit: 9d2bc364f67793cdd115f3ab92a18eaf85fee66f
+change-id: 20221018-up-i350-thermal-bringup-ad386d37056f
+
+Best regards,
 -- 
-2.18.0
-
+Amjad Ouled-Ameur <aouledameur@baylibre.com>
 
