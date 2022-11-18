@@ -4,84 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 802F2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Nov 2022 22:16:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C5C7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 04:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dVFv0ZYWJm+czwpapzS3FVHb5/n9bwLJ9LGCNHM7+Zw=; b=T1rjyYAmcTH1TZ2/pBC5ewMuUA
-	ed9QjxDyg+VewDYrapSK03On8mzfO5O51zaTi+x03qbmaatjH1wuh7/laiT6/KpJ/mc7n7p5tBYhh
-	DsKuUMhpEpBVJFAUh5V7zcukaT5yYveEaSi+JW1MmiSNkOc5tQFZk0Q3nAeX5WEfkuQfunMfl5l1K
-	P2CaR+51KQF51Ffr3WRDmqedt6Nw8YIELRgPT0Hc/WxrAlFOnpVjuC7gbOxtLWjxIP5Rj6+A3a309
-	OgKVJQbtF+6eyuQfuw3cuBHcfcjg3JJ7iNN+IIQtgg57Eek/XBFpkEXpz8pwXJYjX+wU9WI6bQ/AP
-	x2kX3lEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=MlF1sZiYBVQ0qZEpubzGClUXF5vF7cVXiXBcKx7fIkA=; b=nGdvB9i2cAQt4cOGESnij10cKt
+	s6kWAb2NvDE1uQ2Ck+3qSl75GHeoB+jA2SbKhbnodYrW6/P+KDfVcBTqwqx0eouWkGn493dgK+nox
+	tNX8qBFwFBwRFvrV9NcrBNRETRqypBf3yjRiu/4Y93X/bG3cNXtHgIXzMohO4hYTIuPLr1w4FJb/L
+	5tousjLVAypUh4T1jSiNFjuM8K/f76jh3jvltIFrioVgvSaP0EFK/DHOM9HM7DHyjthWzPufxrefh
+	52+hDv8M8ikSSKn7otLoVXGnW8P/jItX3dVxonHn7VdFkqkzuXNM56ABeq9OzpDgFfZ4dE4E42Ufr
+	9riJWiLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovnBU-000HlY-5A; Thu, 17 Nov 2022 22:16:36 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1ovtD7-001r7C-CR; Fri, 18 Nov 2022 04:42:41 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovm3O-00HU6X-1b
-	for linux-mediatek@lists.infradead.org; Thu, 17 Nov 2022 21:04:13 +0000
-Received: by mail-ed1-x536.google.com with SMTP id x102so4467033ede.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Nov 2022 13:04:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dVFv0ZYWJm+czwpapzS3FVHb5/n9bwLJ9LGCNHM7+Zw=;
-        b=i7k0OLXj2/WWwaBXCA/cEiGc9ExFDBEUZCK2EArBa6y/X36LkcG3I9Pp2OEeoGKUUB
-         y+weSlCuEkx8c9+P3wA3a4zu1cBbaYKF6AsN/41zKTEnkHfQlWf3xDYUMiObfXxzj3Ey
-         T/PRWyug4oTopCC4glQuRXcf/diBrM3aqYD1VZz80rg4PBQCC1xOO2KuN2TKQ8Kke5ET
-         258pau0TJJsnT9IEyNSymedZDyG2ttkhAChnxzSZWft1549fFuvAyAky3qhptR26ydTv
-         QhjYB4/ZXLm7ST0DsOD2SqBMntgWQvvztR0a08GLjNb+4WiMqJEUBGMH35SrRH0ZtEnz
-         SZug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dVFv0ZYWJm+czwpapzS3FVHb5/n9bwLJ9LGCNHM7+Zw=;
-        b=sgqDJIhEDr4K5uUOYVqFppv1+waGU1760MQA/6uG6FIbLKMHRbpEL0iqcxwiy6ONMI
-         qLVJXIUKX0Xq3+ykb9TavFOztbKRSDUEXhPhCjpmtkTz9S/CTYraC7DbDYGndThYHsuF
-         Y3gBsQvo4GJu6F0J05Mc3MegCuQ+XgzJjR/WMEklvpG9RaazKEGpsb7weeMHyCeYQTUY
-         HHfe/usGkhcXzAMtMTe8GpG3+Vf7IkaV73aWblrVShlx8HPlaV5PKOgKhjVGJnYSckU7
-         kmcTIRfJheEjqkgAv4CWw5We66x4yrYrWVuyVtQ/t1gHsLe/97S+BvMUWL1H0/aXKXAO
-         gBrQ==
-X-Gm-Message-State: ANoB5pmGlqGpUChy1pdC5lo3eLpuU2DsbHr0SUvDArz3DJSK92dk2o4C
-	60n7Sh42xHLATzMjr843ieMsshRhb0UtiTfR
-X-Google-Smtp-Source: AA0mqf5oFKvTzcnfw4MfXoII8BHLgmW+ZXKWvoseTaXfRamunlD79P0LrSuKRP+9Vq4JUoFdXfqfwg==
-X-Received: by 2002:a50:ed0a:0:b0:468:ff2d:def8 with SMTP id j10-20020a50ed0a000000b00468ff2ddef8mr1330945eds.399.1668719046388;
-        Thu, 17 Nov 2022 13:04:06 -0800 (PST)
-Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
-        by smtp.gmail.com with ESMTPSA id p15-20020aa7cc8f000000b00461c6e8453dsm970807edt.23.2022.11.17.13.04.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Nov 2022 13:04:06 -0800 (PST)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogiocchino.delregno@collabora.com
-Subject: [PATCH v3 3/7] dt-bindings: mfd: syscon: Add mt8365-syscfg
-Date: Thu, 17 Nov 2022 22:03:52 +0100
-Message-Id: <20221117210356.3178578-4-bero@baylibre.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221117210356.3178578-1-bero@baylibre.com>
-References: <20221117210356.3178578-1-bero@baylibre.com>
+	id 1ovtD3-001r6a-G4
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 04:42:39 +0000
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+	by mailout2.samsung.com (KnoxPortal) with ESMTP id 20221118044228epoutp02d8caaa117fb35c0bd65450abfd5f6ca3~olCUYYtGQ2405924059epoutp02i
+	for <linux-mediatek@lists.infradead.org>; Fri, 18 Nov 2022 04:42:28 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com 20221118044228epoutp02d8caaa117fb35c0bd65450abfd5f6ca3~olCUYYtGQ2405924059epoutp02i
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1668746549;
+	bh=MlF1sZiYBVQ0qZEpubzGClUXF5vF7cVXiXBcKx7fIkA=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=QrvDvJ/WkbVHQev9pRGwMH4JG23snzbs9TE889n9tWrLvoMPLAflEg0F5I9kUhRrS
+	 VQDiESSI5yg7YkmOb6hT7+31b2tEpD7lhhnIyg47XVU6ixdW6loWOww2QZzqV9nzaE
+	 RyTnqy0I6KdfODd6Fzh8cBb+XwsqqDnrrjwyQ6ls=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+	epcas1p2.samsung.com (KnoxPortal) with ESMTP id
+	20221118044228epcas1p22573e3f3a53081fb39e56f7fe08de71d~olCUIYyen1731817318epcas1p21;
+	Fri, 18 Nov 2022 04:42:28 +0000 (GMT)
+Received: from epsmges1p1.samsung.com (unknown [182.195.38.247]) by
+	epsnrtp4.localdomain (Postfix) with ESMTP id 4ND3zm08vjz4x9Pq; Fri, 18 Nov
+	2022 04:42:28 +0000 (GMT)
+Received: from epcas1p2.samsung.com ( [182.195.41.46]) by
+	epsmges1p1.samsung.com (Symantec Messaging Gateway) with SMTP id
+	79.A3.07146.F2D07736; Fri, 18 Nov 2022 13:42:23 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+	epcas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07~olCPZV-NC2823128231epcas1p1Q;
+	Fri, 18 Nov 2022 04:42:23 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20221118044223epsmtrp183d4feab942c8753f658dc9b6e661741~olCPYe4mD0345403454epsmtrp1F;
+	Fri, 18 Nov 2022 04:42:23 +0000 (GMT)
+X-AuditID: b6c32a35-205ff70000021bea-23-63770d2f24f0
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+	epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	AE.36.14392.F2D07736; Fri, 18 Nov 2022 13:42:23 +0900 (KST)
+Received: from localhost.localdomain (unknown [10.253.100.232]) by
+	epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20221118044223epsmtip1c5765ba1b29903bc5dad98061bc543ea~olCPJW4Zq2640026400epsmtip1c;
+	Fri, 18 Nov 2022 04:42:23 +0000 (GMT)
+From: Chanwoo Lee <cw9316.lee@samsung.com>
+To: stanley.chu@mediatek.com, jejb@linux.ibm.com,
+	martin.petersen@oracle.com, matthias.bgg@gmail.com,
+	linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: ChanWoo Lee <cw9316.lee@samsung.com>
+Subject: [PATCH] scsi: ufs: ufs-mediatek: Remove unneeded code
+Date: Fri, 18 Nov 2022 13:41:36 +0900
+Message-Id: <20221118044136.921-1-cw9316.lee@samsung.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpjk+LIzCtJLcpLzFFi42LZdlhTT9eYtzzZYEm7iMWMU22sFotubGOy
+	uNx8kdGi+/oONovlx/8xWTS1GFss3XqT0YHdY+esu+weExYdYPTYvKTeo+XkfhaPj09vsXj0
+	bVnF6PF5k1wAe1S2TUZqYkpqkUJqXnJ+SmZeuq2Sd3C8c7ypmYGhrqGlhbmSQl5ibqqtkotP
+	gK5bZg7QOUoKZYk5pUChgMTiYiV9O5ui/NKSVIWM/OISW6XUgpScArMCveLE3OLSvHS9vNQS
+	K0MDAyNToMKE7IyZk/YyF2xirXj88gBbA+Nuli5GTg4JAROJ92+XMIHYQgI7GCVOnM7oYuQC
+	sj8xSnzaeIwRIvGNUWLHzGCYhqUtF1gg4nsZJXofWkM0fGGU2DZnBlCCg4NNQEvi9jFvkLiI
+	wApGiauHn4E1MAtoSJyc9YQdxBYWsJNYfmEFWD2LgKrEhHY5kDCvgKXEmytHGSF2yUv8ud/D
+	DBEXlDg58wnUGHmJ5q2zmUHmSwjcYpf4NXMVO0SDi8TKB29YIWxhiVfHt0DFpSRe9rexQzQ0
+	Ax369RIThNPBKLGx9QXUOmOJT58/M4JcxCygKbF+lz5EWFFi5++5jBCb+STefe1hBSmREOCV
+	6GgTgihRkZjTdY4NZtfHG4+hbvCQeLd5OTsksGIldj3azDqBUX4Wkn9mIflnFsLiBYzMqxjF
+	UguKc9NTiw0LDOFxmpyfu4kRnCC1THcwTnz7Qe8QIxMH4yFGCQ5mJRHe3IulyUK8KYmVValF
+	+fFFpTmpxYcYTYEBPJFZSjQ5H5ii80riDU0sDUzMjEwsjC2NzZTEeRtmaCULCaQnlqRmp6YW
+	pBbB9DFxcEo1MD0NaXxxMHWaYA5LxTWVj3Oeffq8XevNggZ2zXlNxc+XSQk3VEi9ulXCl7v3
+	m0LBxi+/dfZ5da33eM67/MXmeUWrmdc8OLt8urjr3ozwOA7XSI5j148e5b/cM7n48o9r1Q93
+	WTOu8RcSrP+RNds0pWb39cNlSepnLzBVPIp95dIipfSu58TS88YX7+Zqf7+oGh+6fvbEqZOC
+	3H9Xda8puLRizaxNsdVh8qu/XD+2c839xCnFKd3Lhaf5PepdImQlG5RfVvRbqtBxqsP5sHu5
+	d1t1nAWaFm1yCVGpigk7sk/E5H+FUe41f2+D9PqWyZckis9f4uctdRfdqZVR/rmj6LdRtRrH
+	vStPMife/FX58rMSS3FGoqEWc1FxIgDXW2OYGQQAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrKLMWRmVeSWpSXmKPExsWy7bCSnK4+b3myQf86OYsZp9pYLRbd2MZk
+	cbn5IqNF9/UdbBbLj/9jsmhqMbZYuvUmowO7x85Zd9k9Jiw6wOixeUm9R8vJ/SweH5/eYvHo
+	27KK0ePzJrkA9igum5TUnMyy1CJ9uwSujJmT9jIXbGKtePzyAFsD426WLkZODgkBE4mlLReA
+	bC4OIYHdjBJbN7xgg0hISezefx7I5gCyhSUOHy6GqPnEKPGr4xg7SJxNQEvi9jFvkLiIwDpG
+	iTPbfjOC9DILaEicnPWEHcQWFrCTWH5hBQtIPYuAqsSEdjmQMK+ApcSbK0cZIVbJS/y538MM
+	EReUODnzCQvEGHmJ5q2zmScw8s1CkpqFJLWAkWkVo2RqQXFuem6xYYFhXmq5XnFibnFpXrpe
+	cn7uJkZwyGpp7mDcvuqD3iFGJg7GQ4wSHMxKIry5F0uThXhTEiurUovy44tKc1KLDzFKc7Ao
+	ifNe6DoZLySQnliSmp2aWpBaBJNl4uCUamByV/ycfVV15tEA99MWx4qy9nQ2ZqfO0sto1DUq
+	8GngtG54y98vpK8rKXZmVf08duc7sw2v/k21FXJ8ZGbrrxKetncD539L06uHn+w6t11C7cec
+	oLO2AkazLTx22ihs/vlthdws6U/LU8zVG1ki9xeL23/dZHlh6Rc5j2txuh/qrYtLavw6/4vu
+	lxfTvSV48ivPWXWRR+w9XLNOfOCfVr21/87eezpLnKecOf5JerHAzrC8eY+kNrAE3wu8sf3N
+	8jy/46vcGd7alzRPKn8zpXNrY84TVc/IC06pa3r+zt9z7UIQY+Qaw436uSm/vNqKkoRbZvy6
+	mP/L6JuotHPJopUbqmL2mbsE7Dy8aUK+cbgSS3FGoqEWc1FxIgB6dmaHyAIAAA==
+X-CMS-MailID: 20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07
+References: <CGME20221118044223epcas1p12eab9a6fb08ec382625b3fb43f401e07@epcas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221117_130410_122074_89133C0E 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221117_204238_269116_95271DFA 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,26 +130,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document Mediatek mt8365-syscfg
+From: ChanWoo Lee <cw9316.lee@samsung.com>
 
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Remove unnecessary if/goto code.
+
+Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/ufs/host/ufs-mediatek.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 1b01bd0104316..7beeb0abc4db0 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -50,6 +50,7 @@ properties:
-               - marvell,armada-3700-usb2-host-misc
-               - mediatek,mt8135-pctl-a-syscfg
-               - mediatek,mt8135-pctl-b-syscfg
-+              - mediatek,mt8365-syscfg
-               - microchip,lan966x-cpu-syscon
-               - microchip,sparx5-cpu-syscon
-               - mstar,msc313-pmsleep
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 7309f3f87eac..7d13878dff47 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -441,8 +441,6 @@ static int ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
+ 		if (ufs_mtk_is_va09_supported(hba)) {
+ 			ufs_mtk_va09_pwr_ctrl(res, 0);
+ 			ret = regulator_disable(host->reg_va09);
+-			if (ret < 0)
+-				goto out;
+ 		}
+ 	}
+ out:
 -- 
-2.38.1
+2.29.0
 
 
