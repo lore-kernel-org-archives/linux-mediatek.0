@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD16C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B68BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 10:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=htrBdDCEQaxufGYr+N24jOf/fMdNFnyilMLIKZ1f6r8=; b=TRDO7F01JtURttdvphuoDEEh+4
-	JcqyIGmed8IsOK1QAYbntuN5LgkMBvRF6GhGohEnxyGibPyqlgIK+dV94PoSd/oLiOx3UDI2rZEWH
-	gCu2hAHuSm/JEvhvt7Rp3rz8RiCPcKZlybiLqrqsLkUIFgLJqtFtjo1SGoZkfAnmYU3BIVWPT2VQ+
-	C/gT2qoJCalV+5Rq1zNJ5DH1G1ZDPlyApxJKTtjeKLQ3ltkcN5omUki6xLw5ZSnrn58mDiwqxf+Nq
-	hXRjGHMMBO7A2JVws2TLg6s33BBmn6597yDBv4hpsz/mRsT9OaU+8k4X5EgFv9r96zZqFZ3GXN/9T
-	TTyEpsig==;
+	bh=6tGv5+8jDfP55uNG1NgeWBLAtWF09bhT5vkBg1/BBF4=; b=U1o4MewrnoXlDilaQeM8wPl7tR
+	tB92VaAEPchu/BsRhi9xTcM4D1r87pamL1QzYjARLXVnwc2RcT2nyuZI+ebFDspnLq6E9q79Yc+h3
+	ceFRL9Wwsgi8ejCMiYS+6J951yWtLtlbLU2SwI9LZ25XO8TVccMAqWhxRigYqWspby1SQf/j0f+b7
+	BJUOjKR3539s+qR+5Fxkinapi2kFE1W3lvS1U8R6boobZdahg1s7NZ8jEpZJXH3Jvz8EOEDoSbc0h
+	XtxeMQMz8Mv45od8NfUkO8gVFJrK7ocVRb9nYnF1YaVCf/yZt7YIStVDbPqrRLYW3A2kpI+MO4LiU
+	yHsvTyiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovyIA-003IVz-4Z; Fri, 18 Nov 2022 10:08:14 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ovyJS-003JCp-Q8; Fri, 18 Nov 2022 10:09:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ovyGr-003HtP-W2; Fri, 18 Nov 2022 10:06:57 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1ovyJ9-003J4S-Rx; Fri, 18 Nov 2022 10:09:17 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91E446602AA5;
-	Fri, 18 Nov 2022 10:06:48 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BE9796602AAB;
+	Fri, 18 Nov 2022 10:09:12 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668766009;
-	bh=wPHPCMj7i9crbfMFAZjYN9WOVm5VI57WehML5RuHHc0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OYfuN31W0XwJvdc1KoLUb+YljXaVIfui1PA7A/tGgliaJRcB+ZuRjkkGytNmeMBRw
-	 ptXG85699/bAYmu7oOC+LqxIGNBQ4kpGaFKGaZwIqqCRcbaPSYN2u6earinQy1XkXw
-	 EExQd1VA69ZDpMxRixic+qUkKUIyN0Pyr2FQYDBlqCh7g7fpVkgUubooJtTno4v/vw
-	 lCY2nUbFFaIFzJv4JDuwJfT8FGcSzvhTTIdbLj7yohXBtfHd3MyLKm8naQnN2rgogN
-	 KDiCeb4UlV71s5CeZbR8vUW7Q6NpUN3BXuxpcV+sS0tISAK3ohuNNQUssWVvJBDkNE
-	 dkJgrO7jrc3Fg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: tglx@linutronix.de
-Cc: maz@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	youlin.pei@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 1/4] dt-bindings: interrupt-controller: mediatek,cirq: Migrate to dt schema
-Date: Fri, 18 Nov 2022 11:06:36 +0100
-Message-Id: <20221118100639.33704-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221118100639.33704-1-angelogioacchino.delregno@collabora.com>
-References: <20221118100639.33704-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1668766153;
+	bh=UnL9wkeR7m5ts4yqDKWZfymPVaulqbGW5ILVOZUGguY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=avltAjeP69GgZgDh6cHxaEomdtD4fm43H/dec0zrbRmveZbgKkCqgs1WDPKf4fuLH
+	 ZpVCiiFvNzwwyXKD46etXlTCAER9/lteoK9c9u0/qyOcolsPrUuv8OeikPKwaCynW9
+	 7CVYqi45mQ3NhcgevLzSn6w43qPUj+TJGCWlZRXtbZZlgWdHWC9PPNqAhGxfdIjV3W
+	 piKTLUB0Y4o809FkBJjH2Xt0e+aDpBpsJvQpQ+FxpwzngKWKjB8dvr5X5uxFSbfD5Q
+	 PmyZVEUdK9dYSd2v+UXCaahYm/RsHuOwcsBKJEB6dY8SXDLHJnzVTW8T/Kn6r3NQY9
+	 wjVg9I7hQkfqw==
+Message-ID: <facc72b4-8eaa-0b16-19df-7a5a30ba26ea@collabora.com>
+Date: Fri, 18 Nov 2022 11:09:09 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH v2,3/5] media: mediatek: vcodec: Fix h264 set lat buffer
+ error
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221117092453.31366-1-yunfei.dong@mediatek.com>
+ <20221117092453.31366-4-yunfei.dong@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221117092453.31366-4-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_020654_324207_6E127F81 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20221118_020916_060984_ECB0EA15 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,139 +87,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Migrate mediatek,cirq.txt to dt schema as mediatek,mtk-cirq.yaml.
-While at it, I've also fixed some typos that were present in the
-original txt binding, as it was suggesting that the compatible
-string would have "mediatek,cirq" as compatible but, in reality,
-that's supposed to be "mediatek,mtk-cirq" instead.
+Il 17/11/22 10:24, Yunfei Dong ha scritto:
+> Will set lat buffer to lat_list two times when lat decode timeout for
+> inner racing mode.
+> 
+> If core thread can't get frame buffer, need to return error value.
+> 
+> Fixes: 59fba9eed5a7 ("media: mediatek: vcodec: support stateless H.264 decoding for mt8192")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-Little rewording on property descriptions also happened for
-them to be more concise.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../interrupt-controller/mediatek,cirq.txt    | 33 ---------
- .../mediatek,mtk-cirq.yaml                    | 70 +++++++++++++++++++
- 2 files changed, 70 insertions(+), 33 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
- create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
-
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-deleted file mode 100644
-index 5865f4f2c69d..000000000000
---- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-+++ /dev/null
-@@ -1,33 +0,0 @@
--* Mediatek 27xx cirq
--
--In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
--work outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
--The external interrupts (outside MCUSYS) will feed through CIRQ and connect
--to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
--interrupts and generate a pulse signal to parent interrupt controller when
--flush command is executed. With CIRQ, MCUSYS can be completely turned off
--to improve the system power consumption without losing interrupts.
--
--Required properties:
--- compatible: should be one of
--  - "mediatek,mt2701-cirq" for mt2701 CIRQ
--  - "mediatek,mt8135-cirq" for mt8135 CIRQ
--  - "mediatek,mt8173-cirq" for mt8173 CIRQ
--  and "mediatek,cirq" as a fallback.
--- interrupt-controller : Identifies the node as an interrupt controller.
--- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
--- reg: Physical base address of the cirq registers and length of memory
--  mapped region.
--- mediatek,ext-irq-range: Identifies external irq number range in different
--  SOCs.
--
--Example:
--	cirq: interrupt-controller@10204000 {
--		compatible = "mediatek,mt2701-cirq",
--			     "mediatek,mtk-cirq";
--		interrupt-controller;
--		#interrupt-cells = <3>;
--		interrupt-parent = <&sysirq>;
--		reg = <0 0x10204000 0 0x400>;
--		mediatek,ext-irq-start = <32 200>;
--	};
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
-new file mode 100644
-index 000000000000..21e709169907
---- /dev/null
-+++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
-@@ -0,0 +1,70 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/interrupt-controller/mediatek,mtk-cirq.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek System Interrupt Controller
-+
-+maintainers:
-+  - Youlin Pei <youlin.pei@mediatek.com>
-+
-+description:
-+  In MediaTek SoCs, the CIRQ is a low power interrupt controller designed to
-+  work outside of MCUSYS which comprises with Cortex-Ax cores, CCI and GIC.
-+  The external interrupts (outside MCUSYS) will feed through CIRQ and connect
-+  to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
-+  interrupts and generate a pulse signal to parent interrupt controller when
-+  flush command is executed. With CIRQ, MCUSYS can be completely turned off
-+  to improve the system power consumption without losing interrupts.
-+
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt2701-cirq
-+          - mediatek,mt8135-cirq
-+          - mediatek,mt8173-cirq
-+      - const: mediatek,mtk-cirq
-+
-+  reg:
-+    maxItems: 1
-+    description: Address and size of the CIRQ registers
-+
-+  '#interrupt-cells':
-+    const: 3
-+
-+  interrupt-controller: true
-+
-+  mediatek,ext-irq-range:
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+    maxItems: 1
-+    items:
-+      items:
-+        - description: First CIRQ interrupt
-+        - description: Last CIRQ interrupt
-+    description:
-+      Identifies the range of external interrupts in different SoCs
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#interrupt-cells'
-+  - interrupt-controller
-+  - mediatek,ext-irq-range
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    cirq: interrupt-controller@10204000 {
-+        compatible = "mediatek,mt2701-cirq", "mediatek,mtk-cirq";
-+        reg = <0x10204000 0x400>;
-+        #interrupt-cells = <3>;
-+        interrupt-controller;
-+        interrupt-parent = <&sysirq>;
-+        mediatek,ext-irq-range = <32 200>;
-+    };
--- 
-2.38.1
 
 
