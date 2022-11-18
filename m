@@ -4,55 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89895C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:18:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329F0C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 19:57:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Uac+pNoJWvk1YG3xnBZ9E1dKIbudwUnPsApI3M6W8c=; b=JysXbbsEl7Wgy/
-	o3XGsDfG5ttQXoQsTBLHLPHpGdC0aTZMk2SBGyt15JQ+PksM/l3qkmcjqwDfZdtsyMK7J3sdHdkCF
-	M09daPlH1txnbbyJIgxn1eX3TaDQSM0/1/Xz7QbDOhVStL+ej5Es7wVHS91Dfq+dZw1Wu7mx+kV7+
-	dlF6mrM3m5++25SSF2Z9FTFHfq9nb7q0Gx3KEQqpv46RDebqyWsbzIbYjGMDQTlMclM5t0xIQMFGF
-	9SHosRdGxc9jfWlZjfL3wgbGzCDvRuONc3w9KfhHTmQQY/RyEMIYol1lwMgW5NcEm4jYuFOKQjJcG
-	qYKqywbHP4j1xuZgNz/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V9pF5mpVc3B6b5fPqNSwwVAKIqb3BcTax6YAV4Xry14=; b=q6pS08WtY7EwIOYMUtX9GIR3F8
+	TQ+mNxTK3NxsqZ/70EJSp+ldSMc45nobbiOqjnP3bEiWo2FlVz3G4jiWkSadBOBjrK0yE5ou9+XMM
+	BzsrdYuRAbKTIpO5l8hy0GA8DVmfiM971dM09vrMCI8yNx5TT8LG1KLlVDEnsbq5INdiexk8N9Bys
+	4C5F8FqEnetupnL2mIyGO/A7bFgOY30Suo7XTdlx2lGnhsxkzBaY7ZAbuArMhpdyi441E8c9KBw09
+	50dWrqX2AoWIZQN+W0gwoMwhCeCx7AihWb6rTHO9LbDhwD2DT2OrCxuoJlw9VZtKwHpnPQjO8fsKz
+	MidvM2Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6sq-007WPw-Ek; Fri, 18 Nov 2022 19:18:40 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1ow7U9-007maH-18; Fri, 18 Nov 2022 19:57:13 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow6cX-007OjE-2r; Fri, 18 Nov 2022 19:01:51 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id 0F02D408F1;
-	Fri, 18 Nov 2022 19:01:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1668798100;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9Uac+pNoJWvk1YG3xnBZ9E1dKIbudwUnPsApI3M6W8c=;
-	b=rEfhhMJ3SboHRT66Ds97LMw4Prt6m2LdIp8j/pJq0RJi/cRmOuZhtWo8Gg2AWjHhtqh3nj
-	O6hRq/0NzC8aDMEb9xgx2gfhffakhtDe5u3Agq79EmH818/AULPZ47ZZx3yGXASCXzr5m7
-	DLqNPIVx/MLCDOs4QgZWRTWMy1kGaXM=
-Received: from frank-G5.. (fttx-pool-80.245.77.125.bambit.de [80.245.77.125])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id B670D12271E;
-	Fri, 18 Nov 2022 19:01:39 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v6 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-Date: Fri, 18 Nov 2022 20:01:26 +0100
-Message-Id: <20221118190126.100895-12-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221118190126.100895-1-linux@fw-web.de>
-References: <20221118190126.100895-1-linux@fw-web.de>
+	id 1ow7Pe-007k1h-43
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 19:52:37 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id h14so5387329pjv.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Nov 2022 11:52:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=V9pF5mpVc3B6b5fPqNSwwVAKIqb3BcTax6YAV4Xry14=;
+        b=qNg0CIGaljUFzhEfI4vH3ilp1WNLxwEYLuLTg2/nDaXyF8RtJ5J3fgSt4pPrMuPHR/
+         3fX9ZMJkyKJ1L7i9ZYga96hfG9qF/5dKmouAS75cDgAltrEShqqjpKRVJBjeWrGs84s8
+         zb2FOwrJSVJdoIW3D6bJ254XqCIvEAc84niDnr+CWTj59FHI1er80f1dLbL+G2DnlM01
+         dWAtjzn1xEu0sLWlhAdPV677CD6o87LRCx83oGwqmm0HmYSjMRKkbki5Q/xWGpUob1r2
+         tm7wTT5W2DjIlJv37BC3hQ22uIsDDggSkg9opQG56JJeDw+vQFmGP6MRbPfDpWt9X/ZL
+         23WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V9pF5mpVc3B6b5fPqNSwwVAKIqb3BcTax6YAV4Xry14=;
+        b=KoxjCvzozeU/Nj3netD3fJCLtp6AdhP0aZyajK9QmiRhyJ9FVOATU6f9mI6kZ/ooQ3
+         2OAvcloIWEOJB4JphD99vpzU/bwi610Clpc/8SDYym1HtVD79PjGiMKMJlTG4FiT8TQk
+         PF/DbfJEPWi7uGvLLHvq/UCDPdkhjmMPNaWCt3GINoXyS4lqR4eOaeCwikNKAnLROdea
+         PBjzJPQviHGqidWxI+dDO1NPjoZ8oKzS0gCx1uARIeOqosagCK5EC4KkpJCm7zRNsqi6
+         kGEUlS+Awyn/r3AHSYbXp0bNmXNL+1OtI1Q63OX/jMXS2Qsh2cmGdAZPzt4sgdvj5yA1
+         fXiQ==
+X-Gm-Message-State: ANoB5pkGR5nCht8MLHHdTJkS6XbTp4NYI9BxZvVVrCphIshvN3gj9UAj
+	NINrAxCnGPYYgg/bV+ZjgOBETQ==
+X-Google-Smtp-Source: AA0mqf7FWoYKybRn5fseRjhUf3xjBQFYjHdmdctR3NDS0M1rjX+qWJeY5s1nwX21Y9ulybgSC9iwJw==
+X-Received: by 2002:a17:902:ebc1:b0:176:a6c5:20c9 with SMTP id p1-20020a170902ebc100b00176a6c520c9mr1028458plg.57.1668801151469;
+        Fri, 18 Nov 2022 11:52:31 -0800 (PST)
+Received: from localhost ([75.172.139.56])
+        by smtp.gmail.com with ESMTPSA id w10-20020a63160a000000b00473c36ea150sm3106891pgl.92.2022.11.18.11.52.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Nov 2022 11:52:30 -0800 (PST)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bernhard
+ =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+ linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ angelogiocchino.delregno@collabora.com
+Subject: Re: [PATCH v3 4/7] dt-bindings: pinctrl: add bindings for Mediatek
+ MT8365 SoC
+In-Reply-To: <06e916b7-f8f2-6de5-f86e-7b020c052451@linaro.org>
+References: <20221117210356.3178578-1-bero@baylibre.com>
+ <20221117210356.3178578-5-bero@baylibre.com>
+ <06e916b7-f8f2-6de5-f86e-7b020c052451@linaro.org>
+Date: Fri, 18 Nov 2022 11:52:30 -0800
+Message-ID: <7ha64o9h1d.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_110149_528319_CAC0FE9B 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20221118_115234_400399_4767E5CB 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,187 +93,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hi Krzysztof,
 
-Add devicetree overlays for using nand and nor on BPI-R3.
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-maybe rename to dtso?
+> On 17/11/2022 22:03, Bernhard Rosenkr=C3=A4nzer wrote:
+>> Add devicetree bindings for Mediatek MT8365 pinctrl driver.
+>>=20
+>> Signed-off-by: Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com>
+>
+> Thank you for your patch. There is something to discuss/improve.
+>
+>> +
+>> +  pins-are-numbered:
+>> +    $ref: /schemas/types.yaml#/definitions/flag
+>> +    description: |
+>> +      Specify the subnodes are using numbered pinmux to specify pins.
+>
+> Why would you name pins differently per board? And why this different
+> naming of the same pins is a property of hardware?
+>
+> This looks like something to drop.
 
-"kbuild: Allow DTB overlays to built from .dtso named source files"
-https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?h=dt/next&id=363547d2191cbc32ca954ba75d72908712398ff2
+Yeah, having this as a flag kind of implies that this could be present
+for some boards but not others.  But in practice, the driver requires it
+to be present or just fails[1].  What's the right way to describe that?
+We're just trying to add a binding that reflects the existing driver.
 
-more comments about the dt overlay-support:
+We also noticed that there's another documented binding with this
+same flag[2] where similiarily, the driver simply requires it to be
+present[2].
 
-https://patchwork.kernel.org/comment/25092116/
-https://patchwork.kernel.org/comment/25085681/
----
-v4:
-- drop compile-comment from overlays
-- add author-information to dt-overlays
----
- arch/arm64/boot/dts/mediatek/Makefile         |  2 +
- .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 55 +++++++++++++++
- .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 69 +++++++++++++++++++
- 3 files changed, 126 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
+So is the way this flag is documented in the stm32 binding OK for the
+mediatek one also?  If not, what would you suggest?
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index e8902f2cc58f..d42208c4090d 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-new file mode 100644
-index 000000000000..15ee8c568f3c
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-+/*
-+ * Authors: Daniel Golle <daniel@makrotopia.org>
-+ *          Frank Wunderlich <frank-w@public-files.de>
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+/ {
-+	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
-+
-+	fragment@0 {
-+		target-path = "/soc/spi@1100a000";
-+		__overlay__ {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			spi_nand: spi_nand@0 {
-+				compatible = "spi-nand";
-+				reg = <0>;
-+				spi-max-frequency = <10000000>;
-+				spi-tx-buswidth = <4>;
-+				spi-rx-buswidth = <4>;
-+
-+				partitions {
-+					compatible = "fixed-partitions";
-+					#address-cells = <1>;
-+					#size-cells = <1>;
-+
-+					partition@0 {
-+						label = "bl2";
-+						reg = <0x0 0x80000>;
-+						read-only;
-+					};
-+
-+					partition@80000 {
-+						label = "reserved";
-+						reg = <0x80000 0x300000>;
-+					};
-+
-+					partition@380000 {
-+						label = "fip";
-+						reg = <0x380000 0x200000>;
-+						read-only;
-+					};
-+
-+					partition@580000 {
-+						label = "ubi";
-+						reg = <0x580000 0x7a80000>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-new file mode 100644
-index 000000000000..f18643a9089c
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-@@ -0,0 +1,69 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-+/*
-+ * Authors: Daniel Golle <daniel@makrotopia.org>
-+ *          Frank Wunderlich <frank-w@public-files.de>
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+/ {
-+	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
-+
-+	fragment@0 {
-+		target-path = "/soc/spi@1100a000";
-+		__overlay__ {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			flash@0 {
-+				compatible = "jedec,spi-nor";
-+				reg = <0>;
-+				spi-max-frequency = <10000000>;
-+
-+				partitions {
-+					compatible = "fixed-partitions";
-+					#address-cells = <1>;
-+					#size-cells = <1>;
-+
-+					partition@0 {
-+						label = "bl2";
-+						reg = <0x0 0x20000>;
-+						read-only;
-+					};
-+
-+					partition@20000 {
-+						label = "reserved";
-+						reg = <0x20000 0x20000>;
-+					};
-+
-+					partition@40000 {
-+						label = "u-boot-env";
-+						reg = <0x40000 0x40000>;
-+					};
-+
-+					partition@80000 {
-+						label = "reserved2";
-+						reg = <0x80000 0x80000>;
-+					};
-+
-+					partition@100000 {
-+						label = "fip";
-+						reg = <0x100000 0x80000>;
-+						read-only;
-+					};
-+
-+					partition@180000 {
-+						label = "recovery";
-+						reg = <0x180000 0xa80000>;
-+					};
-+
-+					partition@c00000 {
-+						label = "fit";
-+						reg = <0xc00000 0x1400000>;
-+						compatible = "denx,fit";
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
--- 
-2.34.1
+Thanks for the review,
+
+Kevin
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/drivers/pinctrl/mediatek/pinctrl-mtk-common.c#n1053
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml#n37
+[3] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/drivers/pinctrl/stm32/pinctrl-stm32.c#n1499
 
 
