@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D63A7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 12:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB8AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 14:11:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qL0MWfk0whbJBdZgcjuWJByj5YAKiFsWU1H3uPv0QrY=; b=kDm2btelwAlp8rFzTilaUYKO6W
-	pxgqycGnUTNIXCxMNt1NiiPAF7cMZblm98zvFitNFpJwea3BQNppqM61oU9LSVl7heQdAmkVkxn0p
-	Bl7/Oy+0qGSzHwiLOdhQM7xxzoXapXO8rs0IcfDo5n/0JuUNZpy6PRsZhWWgEz5wx0YkdXMaYaRS7
-	DxEl9tmUCgvLe9+JOIQDF4eYmQPgazeoQI7IOFAuPbbPfJm3DNdJxqxcvW+kMa5AH4kRaACbzw/Bi
-	AOeObMtm+Ddbn4cVK2TpiZ+xQrUsa2HGl6ZdPmNf2358NMbwO1Tjm5rO0mLwAdNaFoT1Q8vXc3DTG
-	Mkitw8vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A2cL0nTPuR5xQuL10qHBuhsUjQPi941uGHc5xe/DYXc=; b=r4u3TkkU317wgsFohZd9RPqZZc
+	LfwruUjoczdVTJRFukJr4yD1tfgmMitlPV4mIivDik8xIOcm8MLvosAkxzLI+lePgC7pnUqXjZTAB
+	RUaIvSkhqUwsRiGBn5rb+TUPROBM9CjHM2iyecuZLWKTFL6pg/Y2s1KAXov3XEH7rb58EbgvM1o2Z
+	kIKoXWTe7LCofvvosVS6U1dXD7A/VyC4ADLrCziJ9fp/fv8fRtpGW/clqECkYCJzzZEaqThmAvBV6
+	VG6PUD+B06w+b6IfJGKK52FGh+w1OGXq/UbEoGFBpa4OJgwzrx0kPK3PwYb1VYsLmhCqRtcfiySle
+	1ziSAR5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow0SD-003sLg-Lc; Fri, 18 Nov 2022 12:26:45 +0000
+	id 1ow257-004K6Q-Rl; Fri, 18 Nov 2022 14:11:01 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow0S1-003sIV-NP; Fri, 18 Nov 2022 12:26:35 +0000
-Received: from [192.168.15.130] (unknown [194.152.46.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1ow24v-004JyS-Ah; Fri, 18 Nov 2022 14:10:51 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ABEF96602AB2;
-	Fri, 18 Nov 2022 12:26:27 +0000 (GMT)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AAFAA6602A3B;
+	Fri, 18 Nov 2022 14:10:43 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1668774388;
-	bh=j00aZO+NDvxxNv4Ex5q1J/k6GVW5ZjtAsEcGyBIHILI=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=XvGN1rr80SkGZAX41h1EW5AQp/607Z4LBayXwxrsqjLq3fFJRCAzUCQhWEbOh5LqB
-	 41iQMd56+70Ria0SVmZgI5nmuIRHdiuS25l3GhW/fUG6BlJkTxhq+yVYlVx1DvMJ/G
-	 iiYnpRhcbEgmiFfBs7oSp6hUux5nML+DTWrQPBH9034LNSEaiU9PeKbolyCeMkq4I+
-	 1hSKvku6osLUPK760X8GD6acGejQa3AakDoNNc6DNDVQxiYxFgMWsiTOpokEYh5XRT
-	 Fb8iyAsIR/2/Y2PdVsC38pdikcIWIolD27LAEAlAxmuFgjGLYG5LUaDh3yKyJ3oQhO
-	 Bo6YV2enLcirQ==
-Message-ID: <64f08478-16a7-1d33-e520-9f0fbcab47b9@collabora.com>
-Date: Fri, 18 Nov 2022 13:26:25 +0100
+	s=mail; t=1668780645;
+	bh=pRPLysf0FJETMjuGSkgqfys84EBTLQ8RPJqmeUpzLus=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hPDjIVrjv+RcBBumuWkCUzkAJKbmtQJSvAVRHQJDzBuEhgWdBss5qhwg/aj+UO+uT
+	 jSy2KjzAuFvp77R98uQBiVXDGgC2TZ1EpWn0IoMIreoHlxO001spqMe8+IfhKaUHNT
+	 HVzPV5uhKpFFZoncWs6Oo2i//qZszII2CKvzuoLNfHzK7cWc41qhL2/VoXFuXkQKM7
+	 fqcXar9iztIYLbcddpGHfR0CkUBKCmFnSviQIfbdDoT/T4a/jtJsGfuFz2rB517LrQ
+	 A4YWZEA6qlRb6YMqvbh0JDQQjYXgMa/Zo6Ke6I22b29XITeMFDtajeRSVztdKa7f65
+	 lHteVNz0/JSzg==
+Date: Fri, 18 Nov 2022 09:10:39 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 2/2] arm64: dts: mt8192: Add vcodec lat and core nodes
+Message-ID: <20221118141039.y2ap7dzdp26ih2la@notapiano>
+References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
+ <20220930112237.14411-3-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [RFC PATCH v6] media: mediatek: vcodec: support stateless AV1
- decoder
-Content-Language: en-US
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221117061742.29702-1-xiaoyong.lu@mediatek.com>
- <0672e801-1489-f222-2143-e0e7317d7eaf@collabora.com>
-In-Reply-To: <0672e801-1489-f222-2143-e0e7317d7eaf@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220930112237.14411-3-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_042634_118780_5B02F855 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20221118_061049_740883_79327EEA 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,112 +78,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi again,
+On Fri, Sep 30, 2022 at 07:22:37PM +0800, Allen-KH Cheng wrote:
+> Add vcodec lat and core nodes for mt8192 SoC.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 60 ++++++++++++++++++++++++
+>  1 file changed, 60 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 6b20376191a7..92a20f87468b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -1449,6 +1449,66 @@
+>  			power-domains = <&spm MT8192_POWER_DOMAIN_ISP2>;
+>  		};
+>  
+> +		vcodec_dec: video-codec@16000000 {
+> +			compatible = "mediatek,mt8192-vcodec-dec";
+> +			reg = <0 0x16000000 0 0x1000>;
+> +			mediatek,scp = <&scp>;
+> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
 
-W dniu 17.11.2022 o 13:42, Andrzej Pietrasiewicz pisze:
-> Hi Xiaoyong Lu,
-> 
-> Sorry about chiming in only at v6. Please see inline below.
-> 
-> Andrzej
-> 
-> W dniu 17.11.2022 o 07:17, Xiaoyong Lu pisze:
->> Add mediatek av1 decoder linux driver which use the stateless API in
->> MT8195.
->>
->> Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
->> ---
->> Changes from v5:
->>
->> - change av1 PROFILE and LEVEL cfg
->> - test by av1 fluster, result is 173/239
->>
->> Changes from v4:
->>
->> - convert vb2_find_timestamp to vb2_find_buffer
->> - test by av1 fluster, result is 173/239
->>
->> Changes from v3:
->>
->> - modify comment for struct vdec_av1_slice_slot
->> - add define SEG_LVL_ALT_Q
->> - change use_lr/use_chroma_lr parse from av1 spec
->> - use ARRAY_SIZE to replace size for loop_filter_level and 
->> loop_filter_mode_deltas
->> - change array size of loop_filter_mode_deltas from 4 to 2
->> - add define SECONDARY_FILTER_STRENGTH_NUM_BITS
->> - change some hex values from upper case to lower case
->> - change *dpb_sz equal to V4L2_AV1_TOTAL_REFS_PER_FRAME + 1
->> - test by av1 fluster, result is 173/239
->>
->> Changes from v2:
->>
->> - Match with av1 uapi v3 modify
->> - test by av1 fluster, result is 173/239
->>
->> ---
->> Reference series:
->> [1]: v3 of this series is presend by Daniel Almeida.
->>       message-id: 20220825225312.564619-1-daniel.almeida@collabora.com
->>
->>   .../media/platform/mediatek/vcodec/Makefile   |    1 +
->>   .../vcodec/mtk_vcodec_dec_stateless.c         |   47 +-
->>   .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
->>   .../vcodec/vdec/vdec_av1_req_lat_if.c         | 2234 +++++++++++++++++
->>   .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
->>   .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
->>   .../platform/mediatek/vcodec/vdec_msg_queue.c |   27 +
->>   .../platform/mediatek/vcodec/vdec_msg_queue.h |    4 +
->>   8 files changed, 2318 insertions(+), 1 deletion(-)
->>   create mode 100644 
->> drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
->>
+Hi,
 
-<snip>
+since commit 951d48855d86 ("of: Make of_dma_get_range() work on bus nodes") [1]
+was merged this no longer works as is. Running the fluster codec tests results
+in IOMMU faults:
 
->> +
->> +static void *vdec_av1_get_ctrl_ptr(struct mtk_vcodec_ctx *ctx, int id)
->> +{
->> +    struct v4l2_ctrl *ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl, id);
->> +
->> +    if (!ctrl)
->> +        return ERR_PTR(-EINVAL);
->> +
->> +    return ctrl->p_cur.p;
->> +}
-> 
-> I see we keep repeating this kind of a v4l2_ctrl_find() wrapper in drivers.
-> The only reason this code cannot be factored out is the "context" struct pointer
-> pointing at structs of different types. Maybe we could
-> 
-> #define v4l2_get_ctrl_ptr(ctx, member, id) \
->      __v4l2_get_ctrl_ptr((ctx), offsetof(typeof(*ctx), (member)), (id))
-> 
-> void *__v4l2_get_ctrl_ptr(void *ctx, size_t offset, u32 id)
-> {
->      struct v4l2_ctrl_handler *hdl = (struct v4l2_ctrl_handler *)(ctx + offset);
->      struct v4l2_ctrl *ctrl = v4l2_ctrl_find(hdl, id);
-> 
->      if (!ctrl)
->          return ERR_PTR(-EINVAL);
-> 
->      return ctrl->p_cur.p;
-> }
-> 
-> and reuse v4l2_get_ctrl_ptr() in drivers?
-> 
-> A similar kind of void* arithmetic happens in container_of, only with '-'.
-> 
+	[  386.233976] mtk-iommu 1401d000.m4u: fault type=0x280 iova=0x1fcdc0000 pa=0x0 master=0x500041c(larb=4 port=7) layer=0 read
+	[  386.250666] mtk_vdec_worker(),241: [MTK_V4L2][ERROR]  <===[138], src_buf[0] sz=0x298 pts=0 vdec_if_decode() ret=1 res_chg=0===>
 
-When I think of it it seems a bit over-engineered to me now, it would
-be better to give up the macro and simply pass struct v4l2_ctrl_handler *hdl.
+The issue is that the DMA configuration supplied by dma-ranges is now looked for
+in the parent node, so the vcodec_dec node no longer gets the configuration it
+expected.
 
-Another second thought is that including such a wrapper in this patch
-would make it too noisy if all potential users were to be updated.
-A separate series would make more sense.
+That said, given that the node already uses the IOMMU for the address
+translations (iommus property), there shouldn't even be a dma-ranges property.
+Indeed simply removing the dma-ranges property from this node fixes the issue
+and gets the decoder working again.
 
-Regards,
+Thanks,
+N�colas
 
-Andrzej
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f1ad5338a4d57fe1fe6475003acb8c70bf9d1bdf
 
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			ranges = <0 0 0 0x16000000 0 0x26000>;
+> +
+> +			video-codec-lat@10000 {
+> +				compatible = "mediatek,mtk-vcodec-lat";
+> +				reg = <0x0 0x10000 0 0x800>;
+> +				interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
+> +				iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+> +					 <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+> +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> +					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
+> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
+> +					 <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
+> +					 <&topckgen CLK_TOP_MAINPLL_D4>;
+> +				clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
+> +				assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> +				assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
+> +				power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
+> +			};
+> +
+> +			video-codec-core@25000 {
+> +				compatible = "mediatek,mtk-vcodec-core";
+> +				reg = <0 0x25000 0 0x1000>;
+> +				interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
+> +				iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+> +					 <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+> +				clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> +					 <&vdecsys CLK_VDEC_VDEC>,
+> +					 <&vdecsys CLK_VDEC_LAT>,
+> +					 <&vdecsys CLK_VDEC_LARB1>,
+> +					 <&topckgen CLK_TOP_MAINPLL_D4>;
+> +				clock-names = "sel", "soc-vdec", "soc-lat", "vdec", "top";
+> +				assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> +				assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
+> +				power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
+> +			};
+> +		};
+> +
 
