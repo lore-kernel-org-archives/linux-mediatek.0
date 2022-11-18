@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B78C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 21:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 237E6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 21:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ds1uWo+x8dLTwb+pOu9wYnAIjnjKj8wYXFb8TgcM+lo=; b=DDD2aLeDVG+TL5NXnpPW05l97x
-	GKm9NotlHn/FodVlbGVJuj4Ih8q6ec3arac7UWEb7xW+GHUC00b1m/BtoUwzK7RkOxOLtGPOiu2TQ
-	Yp1fRqtxQQ0FcXHt2OHZgpq7Pw9VR6/a4Hv2vXJPGWUHb0QKbu6c7ddmwcMLyt2rM190MA9Ie1B1J
-	p+CQ6ILQS/GUSt/HT7C+Cq/04yaClpXrqcgJg9fQxvVqDeA/HGrcSB5pNB+5enb5vMwQJyecDA8SG
-	DnQiiku17q7+holVycVpVkWn6U2ZvwYXmn6omyzvqRh1Pq6yipU+CsqXFMLjNuU5Q031y6CmCHZX1
-	b0kOyrmw==;
+	bh=zy9zfSxGgygHU3QKXELj5gWny0p3j9DJBoAoG1+XBFI=; b=B30OBoCGf/Bo15ECJrlAbeZZI0
+	aBXezhC39KJYt/dL49xDptHifTSc8ktPQkn2kvWpzn8zj4w3OCtVtq80Vt/JMgpl1mG9PGAn8J1n5
+	D4JiIJKyL4QHUU+PqTruUgGPMXO1KOwGQ3EQXknkQdaHoO/5w42+0VzuK0k2wzuE/9HLK+QA3+VLr
+	2ZRq2Z41njLuXcg6O6CnumCvIVTFtk0FYdImgzk+pBKUuJDxDdklxSbOYrIr3xES4dDAvk9ktsqPi
+	tUilX9l4wab1jtxrztRxb64ysqBzdLa7Vxy9gdsS+lUU2IBb67WJ7Ju8BkLNI0Xb+QAUopDiNHunH
+	dBKSL4Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow8qM-0089qt-2G; Fri, 18 Nov 2022 21:24:14 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ow93P-008EqZ-RG; Fri, 18 Nov 2022 21:37:43 +0000
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ow8qB-0089k4-La; Fri, 18 Nov 2022 21:24:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 69631B82527;
-	Fri, 18 Nov 2022 21:23:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 181BCC433C1;
-	Fri, 18 Nov 2022 21:23:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668806638;
-	bh=mtZwhXDF+3XRcueQS8GYk6YH7EKVzSJYMCs2J1Z9w3A=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=UVFQhAZqjkOPybZV3BjmP/iJkMwmr9Lxh0+VR7QSw3/urHqQsWdMq2Rv7RdzsiX9m
-	 +L33+3ggJZIy93hnHyXZJGm6SQsEaRO5gLPM3IoqcS44rBZUyz60+yS49Ec3N728yf
-	 oOFZlciWKy/Obldz0p/lby3+IgHP781G53t/Zmyrj+VvfNIQcXyNco8jGBg6BQf+fw
-	 96vyJzDAG5KvORkuZAPrT94bFCEPoPuJy10/g5HUBzbc+sQt/OjavPnC2hcXZF+6Gn
-	 scLP0yKZxzi01EWTWFpq50uqMbYrBDp+YMEtpLknZdaTLcKgVzSGmaiyv0p7xhp30j
-	 eg7oBw1yYcrDw==
-Received: by mail-lf1-f44.google.com with SMTP id d6so10220635lfs.10;
-        Fri, 18 Nov 2022 13:23:57 -0800 (PST)
-X-Gm-Message-State: ANoB5pkGOJFUK2eZeoW4c1c/ndRyU2Z17XXue9v2AjAoPouGgk6bZo6X
-	CAIwMrE49+B7kTlHnBF/5JjzhMgPgOEhNrccrQ==
-X-Google-Smtp-Source: AA0mqf7ABgqeOepd4ak9gVR8kmoWpiHBAjzq5UkfrGYgfyqi7atqrFjpIs7BhnC8Tf0F/GS6aAb0ind9WjfasW4imEE=
-X-Received: by 2002:a05:6512:1291:b0:4af:eabf:3c57 with SMTP id
- u17-20020a056512129100b004afeabf3c57mr2774151lfs.449.1668806636064; Fri, 18
- Nov 2022 13:23:56 -0800 (PST)
+	id 1ow93N-008Egw-E5
+	for linux-mediatek@lists.infradead.org; Fri, 18 Nov 2022 21:37:43 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id 939085C02B6;
+	Fri, 18 Nov 2022 16:34:13 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute5.internal (MEProxy); Fri, 18 Nov 2022 16:34:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; t=1668807253; x=1668893653; bh=zy9zfSxGgygHU3QKXELj5gWny0p3
+	j9DJBoAoG1+XBFI=; b=MtRLXpefJ+alywWKWXEspuM4omh9vNKVgudrGJFOrccG
+	Wi+d6CYBxKox/R/C/YHbzVIOYhjp0o1Sil4FItWbpQZt8bAxOcOhJ1tg1hAEBuVa
+	mBGswF/4PmgpXBX8+FSrBOFku/3ODq2NRbE85TPzufKCSDTvGTflzFqo9Dw5A/GX
+	pgniozyqHLgj2vdMWinmJgqrKeELZQ2OUqhe1c1RED1nioqq+N8KOMnBsEEf5lNX
+	1Es0MGJoeHf8EJGj54zg83vD2T0PCa2QMVhurqgEYQt2LgDkLU/bhWx3/qQqipw3
+	HtvJLD3HY44R2WKuIWV77SDMTSQA9lI4PUW9abzAzw==
+X-ME-Sender: <xms:VPp3Y5wDOeASLt2uqFhcrxxrUJzlk40wz0HTuyPuIQ7LDQWxzdr0Gg>
+    <xme:VPp3Y5TNSpWhp3M7fUE963PcVzUPL_1Ddq69REjAnBoQvHkCPAmN4NSzLU4ngezgI
+    guk4oRDrBtbF44eeG8>
+X-ME-Received: <xmr:VPp3YzXYXJluBYDZDxBDnyYB_iYrMKmO4l-KX6s7JoIMqoGYmbZDlRsm7JWjjWNasFcpQEeEb_WxgkenAcQ5TGboY2a5Fu1qlSQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvgedrhedtgdduheefucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevufgjkfhfgggtsehttdertddttddvnecuhfhrohhmpefhihhnnhcu
+    vfhhrghinhcuoehfthhhrghinheslhhinhhugidqmheikehkrdhorhhgqeenucggtffrrg
+    htthgvrhhnpeelueehleehkefgueevtdevteejkefhffekfeffffdtgfejveekgeefvdeu
+    heeuleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hfthhhrghinheslhhinhhugidqmheikehkrdhorhhg
+X-ME-Proxy: <xmx:VPp3Y7gYh0LK5BPOhR84I8si6E0s5e__V-qeIg4URIa6xV8qn6EFMA>
+    <xmx:VPp3Y7CanklhUSWZ0rGWAJkDFP9qqlA-zUnzLhhEH9Y4jrhJ2plBAQ>
+    <xmx:VPp3Y0KZqJLDrZpAUfs81tP5GxX-QrFYsuzVjMu8yGL4-bFYnCvENA>
+    <xmx:Vfp3Y26syCETOIUWTbL8xDYskIg9cFHtg4jasmik2zvFieT8Yo1G1w>
+Feedback-ID: i58a146ae:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 18 Nov 2022 16:34:10 -0500 (EST)
+Date: Sat, 19 Nov 2022 08:34:43 +1100 (AEDT)
+From: Finn Thain <fthain@linux-m68k.org>
+To: Bart Van Assche <bvanassche@acm.org>
+cc: Chanwoo Lee <cw9316.lee@samsung.com>, stanley.chu@mediatek.com, 
+    jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com, 
+    linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Modify the return value
+In-Reply-To: <db25901b-8537-ca16-aaac-0daaa636d84d@acm.org>
+Message-ID: <c561e1ca-7739-efe7-5c36-952b01634a26@linux-m68k.org>
+References: <CGME20221118045326epcas1p408c9e16a58201043c9eb3c99110fab0c@epcas1p4.samsung.com> <20221118045242.2770-1-cw9316.lee@samsung.com> <db25901b-8537-ca16-aaac-0daaa636d84d@acm.org>
 MIME-Version: 1.0
-References: <20221106085034.12582-1-linux@fw-web.de> <20221106085034.12582-12-linux@fw-web.de>
- <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
-In-Reply-To: <5ece2b19-cbc7-5ecf-c29a-8f0258f260f4@gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 18 Nov 2022 15:23:47 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJzM9y4pbN9UQpNENm9fB7-jGcch6n4w98eBuidL9rNsw@mail.gmail.com>
-Message-ID: <CAL_JsqJzM9y4pbN9UQpNENm9fB7-jGcch6n4w98eBuidL9rNsw@mail.gmail.com>
-Subject: Re: [RFC v3 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_132404_024004_0CD91434 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20221118_133741_554739_49C519D5 
+X-CRM114-Status: UNSURE (   4.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,55 +88,13 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 11, 2022 at 3:16 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
-> Rob, Krzysztof,
->
-> On 06/11/2022 09:50, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add devicetree overlays for using nand and nor on BPI-R3.
 
-Overlays are necessary because ...?
+On Fri, 18 Nov 2022, Bart Van Assche wrote:
 
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
-> >   .../mediatek/mt7986a-bananapi-bpi-r3-nand.dts | 53 +++++++++++++++
-> >   .../mediatek/mt7986a-bananapi-bpi-r3-nor.dts  | 67 +++++++++++++++++++
-> >   3 files changed, 122 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dts
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> > index e8902f2cc58f..d42208c4090d 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
->
-> Do we allow the inclusion of overlays in the kernel?
-> I don't think so. I see there are some dtbos for some freescale platforms, but I
-> wasn't aware that we support that. I thought it is all about dtsi includes.
+> There is more Linux kernel code that [...] than code that [...]. 
 
-Yes, we do.
-
-> @frank In any case we would need to apply these overlays to some base board to
-> create a valis dtb.
-
-Indeed. The build system supports this and it's a requirement (though
-not easily enforced) that overlays apply to something. It works much
-like how kbuild combines multiple .o files into a module.
-
-Please rename to .dtso though. I copied you all on the PR I just sent.
-
-Rob
+Thus mediocrity prevails.
 
