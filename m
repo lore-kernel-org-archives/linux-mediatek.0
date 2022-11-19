@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D500DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Nov 2022 23:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE0BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Nov 2022 03:50:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MZ6hdqwUQaYK66H/IIV2YsM8zaSVYrloCQf90JTpj3A=; b=Gn1KeDH/9/1CY2f7d9k4Gs2u90
-	hM2KVMeg/FIdX/h6JwOv0SQ0H39wdVUGIzvPTDy9x6bqOYJO99ODPY3N8on7EFb/oLcbUqiwE3WjS
-	YY4K5pB/jdSsHwGZ2Obw5gs8uOI/JqrZj08c+Lv5XNJxhTGySdxfvOPvE9WQ6ncGF1ZLWGcgegGt/
-	MmS42H2agSqNTO+AnxZHWZPTZyGReO9SMhpts8cPPBmvF82eQAVZ9ktexN2DpGWVrcUBdwyJE7Bsj
-	ydVtjaPetdrTMJI72Qxx41g1NHYJ5D/0ThwOrqfiQydihO7PSiBOijH0W3Zv8ezxk+M0UgT+aLoXP
-	L8RxKGSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zXCnLmmfEnDhitVihkLk8kIzUz0WSIhSo7s4LTMea6A=; b=ewEQPsoXQ2BQqFBXXOIUKBTf/U
+	G3wJrCDGMYTpwOwV7tCFZHCK9hb3Ja3li/ET8Pl489hNboF0TEo+0NggZxUFREYlzz5nWr598gCqF
+	O1z4YHieRUu/aa1kuuKdTvKmZmc8CoguvFcYfwGGGkx+uNJ5ilrXDiE3ILltYoLL78Fo4xkzHjkFV
+	QYrw4vmNQB19baMyZB1kWe7HhN/PTbavrwP/KGyqjZyxPq7JeS++Za8CXyN/cPXvvQJNTQDVH7qdl
+	gD4CcHJ7m0ZBquIifZhzo0rmZo1R7EVr2hGnCwlU4vamga0fHzbiPF2gJ4CSg7xMNzOMUlww9N1pp
+	zV+zi2HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owAaD-0098eE-IO; Fri, 18 Nov 2022 23:15:41 +0000
+	id 1owEsN-00AqrD-MQ; Sat, 19 Nov 2022 03:50:43 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owAa0-0098SD-QJ; Fri, 18 Nov 2022 23:15:30 +0000
+	id 1owEs1-00Aqei-Li; Sat, 19 Nov 2022 03:50:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4B201B825A7;
-	Fri, 18 Nov 2022 23:15:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16F15C4347C;
-	Fri, 18 Nov 2022 23:15:26 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2D596B8268C;
+	Sat, 19 Nov 2022 03:50:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 41FB3C4347C;
+	Sat, 19 Nov 2022 03:50:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1668813326;
-	bh=WZ8PKekF+dncjbvSjEZDmCUz4Gtb/LLsdxmayfMcHhY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=uUiNErb6Tgnfb5oEusUI+JFCYQV1AQQE05w7FhzIsK2QfXqv5WsrIBGnaJv18JYvC
-	 US6ufr5tGWw4TNPSFjoVvPs7U73mqwT1Iif0fsS9HXuEbFaQoIp9RziFSIfk2BPtoE
-	 8l5WjmxXsF7+ApkuRNUWknyBnVBp4pvUXVu8CxIOSuojIfmmxBescMXFY6IZVe1blp
-	 AJJ8nA9+lDruS2WhwLVsVCcGwMAA7v822zB/DmdeFXNSPcHARY4PQoJnUkiOA7XuZE
-	 ddwQAvFkqqhmpHMN9HEF3cuyJhmo7NkpzDNBR0yjGLXO1VC2dp/SMfJS5h2xPCjZfo
-	 8tIBa4wckr4xg==
-Received: by mail-lf1-f41.google.com with SMTP id l12so10570706lfp.6;
-        Fri, 18 Nov 2022 15:15:25 -0800 (PST)
-X-Gm-Message-State: ANoB5pkI5waslGDC+NcLYX10ogI2RFFmFNkwz2nkv1oNwHmwv3kLjril
-	LdOwnG9VmJVLhErw7J58kUV6TeaxEKuA3GOvCw==
-X-Google-Smtp-Source: AA0mqf7ny5ZctZuI1Cpiin0JrEQILuNcodrW4ZzJpLZW7EwRw7CspieqMwRy4PVq7H6JZQt+lTyd0ysP9CVMaXrkZpU=
-X-Received: by 2002:ac2:442f:0:b0:4a2:8d76:abaa with SMTP id
- w15-20020ac2442f000000b004a28d76abaamr3212413lfl.74.1668813323939; Fri, 18
- Nov 2022 15:15:23 -0800 (PST)
+	s=k20201202; t=1668829818;
+	bh=BSAu+2s2PAYaODqLvKk9kbx/7WwQq7m+WZPP9j73cLc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=hxsctMeSELcPjEoZrkpTgT/Usialyu61JzhBTT93qfj9EYmEmxDeIAIf3EEZyIkU+
+	 wuNl1+rQj2Fl+9QtheURaw8HRwlkIAlxFQxtfDbtdw18zw/iAZq2bhQitJtweP7qhv
+	 seHlHbGCai380XzaczDm+uhLnEv79U4/bOhB0LJvVFNN5hOVOsEEGwDHTU1YtccSaA
+	 zpXWQMw9tv+PuL+KyUie52ELGsdOmW1NLZTuh+K6DabueCk+OiqD25hy7pOyY2uCPg
+	 XXdcdA3pCT2N+C8cfogsI6PZI9KyzdZvgBI7qpml97z3GPNBikNngpwHBMlTkZZ1wk
+	 Dw9T7e1Bpp3lg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1D77BE50D71;
+	Sat, 19 Nov 2022 03:50:18 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20221118190126.100895-1-linux@fw-web.de> <20221118190126.100895-12-linux@fw-web.de>
- <CAL_JsqKiRzRToSzk3q+csWR5DEZjZpQWChqZ3mH8MLruvfe=Dw@mail.gmail.com> <99114D73-22EF-43CD-848E-88A37B29B953@public-files.de>
-In-Reply-To: <99114D73-22EF-43CD-848E-88A37B29B953@public-files.de>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Tue, 8 Nov 2022 08:45:49 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKz1qQFZnStLnApraJvp=-cQoW6x5=p7-GBcftYKVMErg@mail.gmail.com>
-Message-ID: <CAL_JsqKz1qQFZnStLnApraJvp=-cQoW6x5=p7-GBcftYKVMErg@mail.gmail.com>
-Subject: Re: [PATCH v6 11/11] arm64: dts: mt7986: add BPI-R3 nand/nor overlays
-To: frank-w@public-files.de
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org, 
-	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>, 
-	linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org, linux-usb@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix error handling in
+ mtk_open()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <166882981811.27279.4909635102411295940.git-patchwork-notify@kernel.org>
+Date: Sat, 19 Nov 2022 03:50:18 +0000
+References: <20221117111356.161547-1-liujian56@huawei.com>
+In-Reply-To: <20221117111356.161547-1-liujian56@huawei.com>
+To: Liu Jian <liujian56@huawei.com>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ linux@armlinux.org.uk, opensource@vdorst.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221118_151529_173652_07181FA3 
-X-CRM114-Status: GOOD (  32.43  )
+X-CRM114-CacheID: sfid-20221118_195021_911971_8A3F4CEC 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,101 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 18, 2022 at 4:05 PM Frank Wunderlich
-<frank-w@public-files.de> wrote:
->
-> Am 18. November 2022 22:39:52 MEZ schrieb Rob Herring <robh+dt@kernel.org>:
-> >On Fri, Nov 18, 2022 at 1:01 PM Frank Wunderlich <linux@fw-web.de> wrote:
-> >>
-> >> From: Frank Wunderlich <frank-w@public-files.de>
-> >>
-> >> Add devicetree overlays for using nand and nor on BPI-R3.
-> >
-> >Can you not tell at runtime which one you booted from? If not, how
-> >does one choose which overlay to apply? If you can, why not populate
-> >both nodes and enable the right one? IMO, if all h/w is present, it
-> >should all be in the DT. Selecting what h/w to use is a separate
-> >problem and overlays aren't a great solution for that.
->
-> It is not the decision about bootdevice,more available devices.
->
-> Only 1 spi device (nand OR nor) is available
-> at boottime as they share same spi bus and
-> chipselect is set via hw jumper.
-> Both nodes have reg 0,which is imho not
-> supported in linux.
+Hello:
 
-As long as one is set to disabled, it should be fine.
+This patch was applied to netdev/net.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 17 Nov 2022 19:13:56 +0800 you wrote:
+> If mtk_start_dma() fails, invoke phylink_disconnect_phy() to perform
+> cleanup. phylink_disconnect_phy() contains the put_device action. If
+> phylink_disconnect_phy is not performed, the Kref of netdev will leak.
+> 
+> Fixes: b8fc9f30821e ("net: ethernet: mediatek: Add basic PHYLINK support")
+> Signed-off-by: Liu Jian <liujian56@huawei.com>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net] net: ethernet: mtk_eth_soc: fix error handling in mtk_open()
+    https://git.kernel.org/netdev/net/c/f70074140524
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-> I choosed overlays to add the right spi
-> device on the right mmc device where
-> similar selection happens (see patch 10).
-> Either sd OR emmc can be used (1 mmc
-> controller,first 4bits from bus switched by
-> hardware jumper).But for mmc i use it as
-> base fdt because i see mmc as primary
-> device which holds rootfs too. Nand/nor is
-> imho helping device for accessing emmc or
-> like rescue system (only uboot).
-
-No way to read the jumper state or know what you booted from I gues?
-
-> I probe in uboot if emmc is available (mmc
->  partconf) and choose emmc else sd. For
->  spi i try with sf command to check for nor,if
->  this does not work i apply nand overlay.
-
-Instead of applying overlays, wouldn't just changing 'status' be easier?
-
->
-> >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >> ---
-> >> maybe rename to dtso?
-> >>
-> >> "kbuild: Allow DTB overlays to built from .dtso named source files"
-> >> https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?h=dt/next&id=363547d2191cbc32ca954ba75d72908712398ff2
->
-> Should i do this?
-
-Yes. .dts -> .dtbo is going to be removed.
-
-> >> more comments about the dt overlay-support:
-> >>
-> >> https://patchwork.kernel.org/comment/25092116/
-> >> https://patchwork.kernel.org/comment/25085681/
->
-> Daniel suggest define sd/emmc as overlay too...with way you mention below we could create 4 full fdt without applying overlays in uboot.
-
-Yes, but if you are going to do that, then you can just do all this
-with includes.
-
-> >> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> >> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> >> @@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> >>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
-> >> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-> >> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
-> >
-> >These need rules to apply them to the base dtb(s). You just need:
-> >
-> >full.dtb := base.dtb overlay.dtb
-> >dtb-y += full.dtb
->
-> I would prefer to do this in bootloader to allow all 4 possible configurations:
->
-> Sd+nand
-> Sd+nor
-> Emmc+nand
-> Emmc+nor
-
-That's fine. The purpose here is to document what the overlays apply
-to, check that they actually apply, and validate them when applied
-(unless someone wants to figure out all the issues with validating
-just an overlay and make that work). You for example have an
-undocumented compatible in yours (denx,fit).
-
-Rob
 
