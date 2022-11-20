@@ -4,89 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93D5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 11:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D179C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 11:57:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eFFRtDG3SnY31rS3/TY9saZ3cpDv+kx8E+R9eiFK10I=; b=MDOhBrXOTL94xLvZmATHZE8Kdy
-	mOEWiU3acPeKLNmb/QBlavJJvGDjut6OnBMDbczXeQ0dujJ7Ly/sUOThJv2Kkplbhn03b66q8xZUY
-	jMQWebyai1tksCFkIiDkAirN3fswgdPvCWBOV5LYMYN01UH+lUBHoxwclF9EEzMwun2dZc1ul+X9X
-	c5y+jCjq9XmhmsNfqh8ynJiC7TiEcfJGaDLGD/saAmB9QjZhb1tY37mQpZa68x7Xjh+hOJFe4f1Fo
-	gY5ZeKDOg4XFrMUOwD6lKi34Zz0DTI1sv+rLcUUZWkjOj/nw93g0YvzjkoF8/4I6FSxuq17bpEpWu
-	pA+YI87A==;
+	bh=5ggy0qQWOQikRZXdP6PhBP9SY1KAh6GYvEPfkQOJ5x0=; b=BqzZ0mHYCFOYf2zni0xnSUACyH
+	eYJg5cgeJs290ZcO1Pizj4LWn6xkz80+iX1DohiArf5W7iIWuD9adhaaPFLyuNaqMPvSdlOYotvPg
+	OOmdPWxGTFcHAU5+RUrGPNSGUIMUni3Aqtpd7K9BvtJfeCs4KYoVNeQi1zP3535ycd/yWD7UbpVVJ
+	cRZiqJgqktkZzExbjaEE2zLy8G6opVhIqmCjAKIdWAvbZ+FExUn/igxaF1PQ+BgUcjHOvfiMn+mxZ
+	0EVxnxRctL7Cao5uu9VCYYbvFBFL535sNd0wS/BqhkPdvvnfmoNN5cALgfMdcl9Msy9rnPSVbq1HO
+	2SQ4hyKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owip8-00457e-FI; Sun, 20 Nov 2022 11:49:22 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1owixG-0048YV-6Z; Sun, 20 Nov 2022 11:57:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owiox-00451o-OG
-	for linux-mediatek@lists.infradead.org; Sun, 20 Nov 2022 11:49:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1668944947;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eFFRtDG3SnY31rS3/TY9saZ3cpDv+kx8E+R9eiFK10I=;
-	b=QcMrffzZSfwBoEAtK1sberGc+k2aeBzqCBqQuldXlK7gxFKqCUvrmRdXsPX4vHXgUlNRKz
-	jWNWCZtnrZ3TYrFgxbWeXsX5fw59bE/1YaJf5PKfmxtic+aIOKNTdgjC50fYwsI+E9fD0z
-	oYIZkbAni2UrCw/x5kfcfVqaOFL8uLY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-6-qrBFSzOcNMaqaDkq8PlC_w-1; Sun, 20 Nov 2022 06:49:05 -0500
-X-MC-Unique: qrBFSzOcNMaqaDkq8PlC_w-1
-Received: by mail-wm1-f70.google.com with SMTP id c187-20020a1c35c4000000b003cfee3c91cdso5017341wma.6
-        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 03:49:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eFFRtDG3SnY31rS3/TY9saZ3cpDv+kx8E+R9eiFK10I=;
-        b=dDff7kneURGianTju6RzAH7GvSbp2izaz86gagdcr4I04zJ5YRX723CyMD2V5lzX5X
-         4GUlibMPDBC9CJT0DTnEtdwuC5RPEciWDUVl45V33R8wXe13+blFK041w0XyJUNBqvsI
-         fjSWNfFbshlHuq5+BdzxWSd0h9TEX/uWIXGnHQ49saJ7DX0zqB5t1eGl1q2CfSeKDSgQ
-         YPf7Ld5AHC1NiQQt5EHMeCWlWJ9ytwvTd3LIb9qeWLPccTWccwVpxsiozuVadY2hjm8j
-         MrYzCn0HT26tykWgK425DZF7guyCjjJkcH0YlGsFaalIhdJt/kIDCtdfkYbu9ZdEYRf5
-         BYkA==
-X-Gm-Message-State: ANoB5pm6kitywBU7G2Ad+lMRQgdS1qRxxBDO/59RcjUt+e5h/Da5Jgoh
-	HB6gv6ai/QnUXGpiqDtgiAdhdAWJSNEaMNzACXp69nBSfqp5iLjYKO0SyLRESZ56BtCWIo2FYVF
-	CSvYHP5fQC2dWjB38ya/CZJTJpO3ppz4I
-X-Received: by 2002:adf:f74d:0:b0:236:4e3c:7720 with SMTP id z13-20020adff74d000000b002364e3c7720mr8545078wrp.674.1668944944671;
-        Sun, 20 Nov 2022 03:49:04 -0800 (PST)
-X-Google-Smtp-Source: AA0mqf7udSW6/pfqawh/yYUkdpdhzbG5vE8EEGEBnisT1ahzb5hGEDLmfhdqECpSPgvVpZoIghYixw==
-X-Received: by 2002:adf:f74d:0:b0:236:4e3c:7720 with SMTP id z13-20020adff74d000000b002364e3c7720mr8545068wrp.674.1668944944420;
-        Sun, 20 Nov 2022 03:49:04 -0800 (PST)
-Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it. [188.216.77.84])
-        by smtp.gmail.com with ESMTPSA id t11-20020adff60b000000b0022e035a4e93sm8629318wrp.87.2022.11.20.03.49.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Nov 2022 03:49:03 -0800 (PST)
-Date: Sun, 20 Nov 2022 12:49:01 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: Ziyang Xuan <william.xuanziyang@huawei.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux@armlinux.org.uk, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	lorenzo@kernel.org
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix potential memory
- leak in mtk_rx_alloc()
-Message-ID: <Y3oULSsTwbDY2Bvv@lore-desk>
-References: <20221120035405.1464341-1-william.xuanziyang@huawei.com>
+	id 1owix3-0048VA-TF; Sun, 20 Nov 2022 11:57:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 36D9A60C44;
+	Sun, 20 Nov 2022 11:57:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16A86C433C1;
+	Sun, 20 Nov 2022 11:57:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1668945451;
+	bh=5ggy0qQWOQikRZXdP6PhBP9SY1KAh6GYvEPfkQOJ5x0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CoQOfYMy1c33U6h/6Si4Kkdk/nYqh1lkdFXZ7pJNL5n9vK4HQ3DUmgzTQOLTi3J/+
+	 4L3CB5IjyqYzX7X6zG+dkWGYwvA0hdGuc7N8jgmhdeJrVuTqN/xj+dhNjZlfZ7J+m8
+	 NQ3W2f0KvfT6p0noOZ/qXVAUIyJBbjFLwkXHWLqq4vnB57jfFy83AYkdplnSgmAaxg
+	 zCmdzQLQ0WFjr9mXKc4j8OxmQ84ISEza82CabM3W7gyfz8kIdxOd4eSw2xfIjVG+7w
+	 QNO+he23TglDYzyGgKk5ZjXVMQ7a3tWEdMTEYRmF8wOpAKAo7Hnk/oHDUutDwNLNGQ
+	 zJucDyu29NEnA==
+Date: Sun, 20 Nov 2022 11:57:25 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Ilia Lin <ilia.lin@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Jean Delvare <jdelvare@suse.com>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Yangtao Li <tiny.windzz@gmail.com>, Nishanth Menon <nm@ti.com>,
+	Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Javier Martinez Canillas <javier@dowhile0.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Maxime Ripard <mripard@kernel.org>, Daniel Mack <zonque@gmail.com>,
+	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>, linux-pm@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, alsa-devel@alsa-project.org,
+	linux-spi@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: Add missing start and/or end of line regex
+ anchors
+Message-ID: <Y3oWJQRtgbHbqz0I@sirena.org.uk>
+References: <20221118223728.1721589-1-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Mg3mLB7M7b1XKZaD"
+	protocol="application/pgp-signature"; boundary="Q3GCr2oBFfh1LNvT"
 Content-Disposition: inline
-In-Reply-To: <20221120035405.1464341-1-william.xuanziyang@huawei.com>
+In-Reply-To: <20221118223728.1721589-1-robh@kernel.org>
+X-Cookie: Ego sum ens omnipotens.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221120_034911_926011_06BA0527 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20221120_035734_232961_F39BABD7 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,62 +105,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Mg3mLB7M7b1XKZaD
+--Q3GCr2oBFfh1LNvT
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> When fail to dma_map_single() in mtk_rx_alloc(), it returns directly.
-> But the memory allocated for local variable data is not freed, and
-> local variabel data has not been attached to ring->data[i] yet, so the
-> memory allocated for local variable data will not be freed outside
-> mtk_rx_alloc() too. Thus memory leak would occur in this scenario.
->=20
-> Add skb_free_frag(data) when dma_map_single() failed.
->=20
-> Fixes: 23233e577ef9 ("net: ethernet: mtk_eth_soc: rely on page_pool for s=
-ingle page buffers")
-> Signed-off-by: Ziyang Xuan <william.xuanziyang@huawei.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+On Fri, Nov 18, 2022 at 04:37:27PM -0600, Rob Herring wrote:
+> json-schema patterns by default will match anywhere in a string, so
+> typically we want at least the start or end anchored. Fix the obvious
+> cases where the anchors were forgotten.
 
-Acked-by: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Acked-by: Mark Brown <broonie@kernel.org>
 
->=20
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/et=
-hernet/mediatek/mtk_eth_soc.c
-> index 7cd381530aa4..bc47ef1e4dd5 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2378,8 +2378,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int r=
-ing_no, int rx_flag)
->  				data + NET_SKB_PAD + eth->ip_align,
->  				ring->buf_size, DMA_FROM_DEVICE);
->  			if (unlikely(dma_mapping_error(eth->dma_dev,
-> -						       dma_addr)))
-> +						       dma_addr))) {
-> +				skb_free_frag(data);
->  				return -ENOMEM;
-> +			}
->  		}
->  		rxd->rxd1 =3D (unsigned int)dma_addr;
->  		ring->data[i] =3D data;
-> --=20
-> 2.25.1
->=20
-
---Mg3mLB7M7b1XKZaD
+--Q3GCr2oBFfh1LNvT
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY3oULQAKCRA6cBh0uS2t
-rB+XAQC1NS342yCNR/mijZECnJw0DZzDUciWxdRU9qpQUcIisAD8C9l7RVkWprf7
-ZY5de9YVDFIspT/WErMrTjJIkJRU4g8=
-=vshG
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmN6FiQACgkQJNaLcl1U
+h9AA2wf/bx63PKQM05br3AtOVY9zdnicSS3gPjXP1RhIZFx5DzHwpwd0ubzHQeEN
+Kk6JXxiJGRd6UUsifgfE3wHiKuDzN/eqx3PrQeCPxvUM70Uz2XifdEqmnhRhR/ow
+HSxPCKrdL/VnVCE4OGskhnQnuNKdomuoEv5pKw5+0Ue8/O2O24vxh+Ckm/qdedgr
+oN+ptQEN4r+FDCGwsc98OKacDLoBwXp0NKSqoflhG0+AzYS3Pv4CWoSJyW7PPzYR
+Na7vdI9pcZxlPhOQilQUYKQWmFt0yl7+uUldCPsQXO/0XTBa1KTcI9H2bRK1MsOw
+EN4xxqC1SJ9Q0J7wg7TTl77qIj7PPA==
+=lgNY
 -----END PGP SIGNATURE-----
 
---Mg3mLB7M7b1XKZaD--
-
+--Q3GCr2oBFfh1LNvT--
 
