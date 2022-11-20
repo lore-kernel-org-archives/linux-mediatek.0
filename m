@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43472C433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Nov 2022 09:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E69C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 03:54:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LhKasjGG3HcoK+Oubn1Au35QshHsoc35c1Bnzk9pzaY=; b=FcasiDJoCeeKhcGjmhU/y9SORr
-	JLVqbLUJxHYbRCBiUktCvFVVXuO9qplGQ08y5OoR7K2rGxXcpHtVi+IrjrmiKiMnMnLgvnI5ENkTv
-	BIL6hd14FB/9EUqvM0nOuZidC3sFUEtl4ux3WCiLla1CdUj8Hs8fXkk2mtxj4gKRxjzFHLcngn8DQ
-	PZ101cYcOB1I0wZEAMXVx0UkXnLrpFjkzzgwas1Rn+fW8rkxkMM8oNechSEovqTT4IdMy2brixLGi
-	KUgjg5ePvlYgae5QRVoe2tFdoJfcclUIB94XH62eW3FDa/C6jaft0eOiUGjT7mVxs9b7NqOxsBsZV
-	A3kS1fKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ClLd2szB4mOT6KzQOprKAl17yD2rLgC0rUAVkDSzZwI=; b=Ps9leGlwt4KfZiwjg/oVaWiLdp
+	umaiNux460dm8ayx+o+PcEZQBWbEW79puMO7avsk2imToZc66iiikXmCADxIEIJauu5VouATkvocS
+	KKnTOXkmGD0VHa0o7xR6a5eCfkDsIj6IS+9yACnmcs6Em+GIbdIDq0VDKIqdhXy1Jzr5bxDCOpOeW
+	EFEFy8Zasi1wOVmguHe/oN3VTNeItsrvdDYboYJp/bhoyarVVZ3vmgWoe++y5fTSKo3YVeuz7qFs/
+	0uD6VzHJXxfK1jcB7ZFwf0hvDGb8oUJ/8bfrY4le3SD1M+DDRZVhx2y16pyqGg1DJwbGn6atrU5FI
+	EsyHXKgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owJtP-00Cc4x-5G; Sat, 19 Nov 2022 09:12:07 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owJtF-00Cc3X-Ep; Sat, 19 Nov 2022 09:11:58 +0000
-Received: from 8bytes.org (p200300c27724780086ad4f9d2505dd0d.dip0.t-ipconnect.de [IPv6:2003:c2:7724:7800:86ad:4f9d:2505:dd0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id C49A62A02E2;
-	Sat, 19 Nov 2022 10:11:55 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1668849116;
-	bh=Mnj+XKy1eq+cpp4M1nNQ/BJ5gwNgtt/9NmvCYlk98lM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TkWUk44EuE6Qzf35kclftWpLfCtg5ilCYc4uaPR850QcfeUrf1tp1Xm1Ey8URAcvp
-	 KPyU/rgiN1ln6vSNBM325IHlDDXjPBHs0iRmodqDjuzaL0p3qOU0jV6SjJOmUGXy32
-	 aZCZXRxrcB3MT4F88H565tRMhKpsaqIv/5Iu9xz2zYZh4FZtMcZJGNcoekVl8hpuD6
-	 q+2xw5rkrkBCeqXuPxDrwFq4N3LAGWW/kFPJHKks3Z+8eA6drLrbp/T4p/aQQ/WV6k
-	 2f07Coc9oEeoftLXAwMzfR04vHUrJaWJYUqa4xmZkeRSNkDOGSIR6xRVYz9lNp8aSb
-	 7XISudJwIVM+w==
-Date: Sat, 19 Nov 2022 10:11:54 +0100
-From: Joerg Roedel <joro@8bytes.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>, linux-kernel@vger.kernel.org,
-	iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	Amjad Ouled-Ameur <aouledameur@baylibre.com>,
-	Markus Schneider-Pargmann <msp@baylibre.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Fabien Parent <fparent@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v6 0/3] iommu/mediatek: Add mt8365 iommu support
-Message-ID: <Y3id2iJdLxdr6L5o@8bytes.org>
-References: <20221001-iommu-support-v6-0-be4fe8da254b@baylibre.com>
+	id 1owbPc-001toF-1E; Sun, 20 Nov 2022 03:54:32 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1owbPQ-001tWF-EK; Sun, 20 Nov 2022 03:54:22 +0000
+Received: from canpemm500006.china.huawei.com (unknown [172.30.72.57])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NFGpS25yJzHvbn;
+	Sun, 20 Nov 2022 11:53:36 +0800 (CST)
+Received: from localhost.localdomain (10.175.104.82) by
+ canpemm500006.china.huawei.com (7.192.105.130) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Sun, 20 Nov 2022 11:54:09 +0800
+From: Ziyang Xuan <william.xuanziyang@huawei.com>
+To: <nbd@nbd.name>, <john@phrozen.org>, <sean.wang@mediatek.com>,
+	<Mark-MC.Lee@mediatek.com>, <davem@davemloft.net>, <edumazet@google.com>,
+	<kuba@kernel.org>, <pabeni@redhat.com>, <matthias.bgg@gmail.com>,
+	<linux@armlinux.org.uk>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <linux-kernel@vger.kernel.org>, <lorenzo@kernel.org>
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix potential memory leak in mtk_rx_alloc()
+Date: Sun, 20 Nov 2022 11:54:05 +0800
+Message-ID: <20221120035405.1464341-1-william.xuanziyang@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221001-iommu-support-v6-0-be4fe8da254b@baylibre.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.82]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ canpemm500006.china.huawei.com (7.192.105.130)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221119_011157_662898_C4515C87 
-X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-CacheID: sfid-20221119_195420_692621_E4FF8FE2 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,11 +67,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 02, 2022 at 04:18:06PM +0100, Alexandre Mergnat wrote:
-> Fabien Parent (3):
->       dt-bindings: iommu: mediatek: add binding documentation for MT8365 SoC
->       iommu/mediatek: add support for 6-bit encoded port IDs
->       iommu/mediatek: add support for MT8365 SoC
+When fail to dma_map_single() in mtk_rx_alloc(), it returns directly.
+But the memory allocated for local variable data is not freed, and
+local variabel data has not been attached to ring->data[i] yet, so the
+memory allocated for local variable data will not be freed outside
+mtk_rx_alloc() too. Thus memory leak would occur in this scenario.
 
-Applied, thanks.
+Add skb_free_frag(data) when dma_map_single() failed.
+
+Fixes: 23233e577ef9 ("net: ethernet: mtk_eth_soc: rely on page_pool for single page buffers")
+Signed-off-by: Ziyang Xuan <william.xuanziyang@huawei.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 7cd381530aa4..bc47ef1e4dd5 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2378,8 +2378,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 				data + NET_SKB_PAD + eth->ip_align,
+ 				ring->buf_size, DMA_FROM_DEVICE);
+ 			if (unlikely(dma_mapping_error(eth->dma_dev,
+-						       dma_addr)))
++						       dma_addr))) {
++				skb_free_frag(data);
+ 				return -ENOMEM;
++			}
+ 		}
+ 		rxd->rxd1 = (unsigned int)dma_addr;
+ 		ring->data[i] = data;
+-- 
+2.25.1
+
 
