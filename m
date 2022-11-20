@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951E5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 20:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF4ADC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 21:22:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YxB1fiIgt/3uLd5dByiY9a+zVMB4RqpEs95S7FjYBU0=; b=eV4MqcSHK54LZxfCN8LXaNR+Xz
-	Qq98oHP2u6JtSvuS0GpEWVe5QxlV7hBW9FG781rcZlu/cPeQsgI6zsOoM2/ZmsWMPO6MZbaeOsO4+
-	aXShNa+cSeAeFSsXDRwGJCL73+imnuqyji3/VZ3K9GYbHXVdyZn8Xf3f8rc4iLegYgSs1IzYqbhVe
-	BMP6CTUwoZhkSygE8VLQPFRMSNNu8g3J9XizPCEIBnlXEV626DTUVW68aMAZzIpVs4SgyA/ySRakJ
-	KCfwPG8Q4MlRtcCUhNwiYJi9legG8Vr8d9dG9CIUxROkXZ4G8abF4icI1sY6vDw/36HZdARsrThkX
-	aWPscDjA==;
+	bh=FJ9CZnpTUcwMqf4ihmpIJM7YZPqQhfaqzkOhwCN61mg=; b=l72sGrbp4WxltuiRa69XDcnGcr
+	XJmZVIE6Y0TNLevk9I8cJ1CJWD4EHA5e8n+7V9CEpQTApqWtCwiwEojDcNojatGjpmjE5rd9NCjuv
+	QHW1dk5KSL5H4Tm2HtZmmuWF2RYSHMYbWq0J2Ks4YaLGKqm5hccQBs6XfMElYvGmqAcssPHYzihG2
+	BnRgjQxE5tTj2xh0WupkAlBmRgWtng74WmhGGh8cqWVGSGnOeQVJDzfc/OojzEZdFT46xauOHuWBt
+	KNgk6JmewOHjMa/yPp++sMQtculV1iJSZ/l0P1iT+oIdVoMMYm8sOyjgEcSMdfr+bFFF0LrNdT80n
+	qgkXlSCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owqfJ-006lEz-6E; Sun, 20 Nov 2022 20:11:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1owrlG-0072Al-Fu; Sun, 20 Nov 2022 21:21:58 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owqfF-006lE5-W7
-	for linux-mediatek@lists.infradead.org; Sun, 20 Nov 2022 20:11:44 +0000
-X-UUID: b0aeb201a8134a4cb83a0f443681185f-20221120
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YxB1fiIgt/3uLd5dByiY9a+zVMB4RqpEs95S7FjYBU0=;
-	b=IsshJFs032vz6QVkLgRzXe9m+Uo41qbKXM21TMbRLkXp/hI/ePiioiOX5yFg5gejvOreZjQ3vm6XNxHoZ12zYIg6x2y/Kjd50kTMCd0DHKID58Zf+i88babm5EvIeh5WG2Kj4pA1g7CG3N1iWHkPU9Peke0Yi04vUpIPT+dskyA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:9f5ad2a9-f348-4dd7-a615-21785e528e9f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:f6f0b4db-6ad4-42ff-91f3-18e0272db660,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b0aeb201a8134a4cb83a0f443681185f-20221120
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 538194441; Sun, 20 Nov 2022 13:11:36 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 21 Nov 2022 03:51:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 21 Nov 2022 03:51:32 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 3/3] wifi: mt76: mt7915: fix band_idx usage
-Date: Mon, 21 Nov 2022 03:51:30 +0800
-Message-ID: <e1e48c1d1b20b8617091aadd3a3e867b5768ec1d.1668973479.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <c73db8d9bb03efe8cb403434aeedad25d958e258.1668973479.git.ryder.lee@mediatek.com>
+	id 1owrlC-00728v-RJ
+	for linux-mediatek@lists.infradead.org; Sun, 20 Nov 2022 21:21:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1668979312;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FJ9CZnpTUcwMqf4ihmpIJM7YZPqQhfaqzkOhwCN61mg=;
+	b=Lcuj/9O+evsBkiRz2arjwyxDyQrdK4HJXI7KsigUjY1S1iLhLa2yo+oqfutss6UKf/WBBD
+	3LdEjjfsPxCIJ2T6jf0AMX36+Io39waiWHHgNzB6WaEPByl/oFlWo1JayZNjVoQkC3aBpA
+	bjnFTT/E8r7f8EAbe8dcetARBHBE7BQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-301-b5dFxepCM3OwmDOeDTjNKQ-1; Sun, 20 Nov 2022 16:21:50 -0500
+X-MC-Unique: b5dFxepCM3OwmDOeDTjNKQ-1
+Received: by mail-wm1-f71.google.com with SMTP id c187-20020a1c35c4000000b003cfee3c91cdso5593898wma.6
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 13:21:50 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FJ9CZnpTUcwMqf4ihmpIJM7YZPqQhfaqzkOhwCN61mg=;
+        b=bg75M2z8lQC3dFBJGB2wDZSA4M+GZqQnQ+fx/yGGWNoEqOcXL9lxaFo38oo1Ft4kej
+         g7D3tMO3VHiiKisZjhPx3tTKyYkjq4++ndDcBrycCKxNg5mZQfe0PXcjlpyOsdNhzUCg
+         60XQMrYyvsODRoFqcN4vpwG+nFELHX2xebrUI0e0ZDlxB/9AKMW2YT4BHPO5rLzS01BW
+         NxIAHpXg0PBOYcyRoT9SNp4sQMmNCvVE0tKc/W4oBbUtxrCPqZPjTHe23eOz0rkvC2bn
+         frirdYjCS8C+hCD5FyuCgPcWbQcP3/W95QfGxmC4Rf7b3qSFdo5xN33WxIPJXFJWrqH5
+         ECAg==
+X-Gm-Message-State: ANoB5pkzDWSS9nD90eN1AT6EdcvoQ2VK8gaKEXZ7ao2757K2/Srw4Cr7
+	MxVwjGM4qoG1sBgLA9gt2S8NXcdM3DP96S23rThnwiojR3+EyiW8VREjIIaVDvmNGQgEo3OqR9z
+	T1d5MqfHBYrql3jtOK2LV8ekHeDHOKpVI
+X-Received: by 2002:adf:ce0c:0:b0:22e:34c2:c6f0 with SMTP id p12-20020adfce0c000000b0022e34c2c6f0mr9215650wrn.232.1668979308371;
+        Sun, 20 Nov 2022 13:21:48 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf7pjMZAilKCfwy3p+OSy3gXJ8HsEy92GKeyF9OXaaCxCguK5aagexZxU9fLXH4epKCygqxehA==
+X-Received: by 2002:adf:ce0c:0:b0:22e:34c2:c6f0 with SMTP id p12-20020adfce0c000000b0022e34c2c6f0mr9215637wrn.232.1668979308002;
+        Sun, 20 Nov 2022 13:21:48 -0800 (PST)
+Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it. [188.216.77.84])
+        by smtp.gmail.com with ESMTPSA id r4-20020a05600c35c400b003c6b874a0dfsm13629807wmq.14.2022.11.20.13.21.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Nov 2022 13:21:47 -0800 (PST)
+Date: Sun, 20 Nov 2022 22:21:45 +0100
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/3] wifi: mt76: mt7915: enable .sta_set_txpwr support
+Message-ID: <Y3qaafXBuVgjxXR2@lore-desk>
 References: <c73db8d9bb03efe8cb403434aeedad25d958e258.1668973479.git.ryder.lee@mediatek.com>
+ <c843e72587751adf0438f6e85de9e9c5b8323bf4.1668973479.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cpPvvVISQbvq9kas"
+Content-Disposition: inline
+In-Reply-To: <c843e72587751adf0438f6e85de9e9c5b8323bf4.1668973479.git.ryder.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221120_121142_066769_C1DC4A14 
-X-CRM114-Status: GOOD (  17.13  )
+X-CRM114-CacheID: sfid-20221120_132155_015720_503099A5 
+X-CRM114-Status: GOOD (  29.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,505 +98,300 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The commit 006b9d4ad5bf introduced phy->band_idx to accommodate the
-band definition change for mt7986 so that the band_idx of main_phy
-can be 0 or 1. Accordingly, the source of band_idx 1 has switched to
-"phy != &dev->phy" or "dev->phy.band_idx = 1".
 
-We still use ext_phy to represent band 1 somewhere in driver, so fix it.
-Also, band_idx sounds more reasonable than dbdc_idx, so change it.
+--cpPvvVISQbvq9kas
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 006b9d4ad5bf ("mt76: mt7915: introduce band_idx in mt7915_phy")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 10 ++---
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 13 +++---
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 36 +++++++--------
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 44 +++++++++----------
- .../wireless/mediatek/mt76/mt7915/testmode.c  | 18 ++++----
- 5 files changed, 60 insertions(+), 61 deletions(-)
+> This adds support for adjusting the Txpower level while pushing
+> traffic to an associated station. The allowed range is from 0 to
+> the maximum power of channel.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 1244f5c4172b..f6069a858927 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -51,7 +51,7 @@ mt7915_sys_recovery_set(struct file *file, const char __user *user_buf,
- {
- 	struct mt7915_phy *phy = file->private_data;
- 	struct mt7915_dev *dev = phy->dev;
--	bool ext_phy = phy != &dev->phy;
-+	bool band = phy->band_idx;
- 	char buf[16];
- 	int ret = 0;
- 	u16 val;
-@@ -83,7 +83,7 @@ mt7915_sys_recovery_set(struct file *file, const char __user *user_buf,
- 	 * 8: trigger firmware crash.
- 	 */
- 	case SER_QUERY:
--		ret = mt7915_mcu_set_ser(dev, 0, 0, ext_phy);
-+		ret = mt7915_mcu_set_ser(dev, 0, 0, band);
- 		break;
- 	case SER_SET_RECOVER_L1:
- 	case SER_SET_RECOVER_L2:
-@@ -91,17 +91,17 @@ mt7915_sys_recovery_set(struct file *file, const char __user *user_buf,
- 	case SER_SET_RECOVER_L3_TX_ABORT:
- 	case SER_SET_RECOVER_L3_TX_DISABLE:
- 	case SER_SET_RECOVER_L3_BF:
--		ret = mt7915_mcu_set_ser(dev, SER_ENABLE, BIT(val), ext_phy);
-+		ret = mt7915_mcu_set_ser(dev, SER_ENABLE, BIT(val), band);
- 		if (ret)
- 			return ret;
- 
--		ret = mt7915_mcu_set_ser(dev, SER_RECOVER, val, ext_phy);
-+		ret = mt7915_mcu_set_ser(dev, SER_RECOVER, val, band);
- 		break;
- 
- 	/* enable full chip reset */
- 	case SER_SET_RECOVER_FULL:
- 		mt76_set(dev, MT_WFDMA0_MCU_HOST_INT_ENA, MT_MCU_CMD_WDT_MASK);
--		ret = mt7915_mcu_set_ser(dev, 1, 3, ext_phy);
-+		ret = mt7915_mcu_set_ser(dev, 1, 3, band);
- 		if (ret)
- 			return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 117ddb00348c..6cd8930a10f2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1228,18 +1228,18 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
- 		   MT_ARB_SCR_TX_DISABLE | MT_ARB_SCR_RX_DISABLE);
- }
- 
--void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool ext_phy)
-+void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool band)
- {
- 	u32 reg;
- 
--	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RXTD12(ext_phy) :
--		MT_WF_PHY_RXTD12_MT7916(ext_phy);
-+	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RXTD12(band) :
-+				      MT_WF_PHY_RXTD12_MT7916(band);
- 	mt76_set(dev, reg,
- 		 MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY |
- 		 MT_WF_PHY_RXTD12_IRPI_SW_CLR);
- 
--	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RX_CTRL1(ext_phy) :
--		MT_WF_PHY_RX_CTRL1_MT7916(ext_phy);
-+	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_RX_CTRL1(band) :
-+				      MT_WF_PHY_RX_CTRL1_MT7916(band);
- 	mt76_set(dev, reg, FIELD_PREP(MT_WF_PHY_RX_CTRL1_IPI_EN, 0x5));
- }
- 
-@@ -1948,7 +1948,6 @@ void mt7915_mac_update_stats(struct mt7915_phy *phy)
- static void mt7915_mac_severe_check(struct mt7915_phy *phy)
- {
- 	struct mt7915_dev *dev = phy->dev;
--	bool ext_phy = phy != &dev->phy;
- 	u32 trb;
- 
- 	if (!phy->omac_mask)
-@@ -1966,7 +1965,7 @@ static void mt7915_mac_severe_check(struct mt7915_phy *phy)
- 	     FIELD_GET(MT_TRB_RXPSR0_RX_WTBL_PTR, phy->trb_ts)) &&
- 	    trb == phy->trb_ts)
- 		mt7915_mcu_set_ser(dev, SER_RECOVER, SER_SET_RECOVER_L3_RX_ABORT,
--				   ext_phy);
-+				   phy->band_idx);
- 
- 	phy->trb_ts = trb;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 9792831090c7..e6315ca16308 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -30,31 +30,31 @@ int mt7915_run(struct ieee80211_hw *hw)
- 	running = mt7915_dev_running(dev);
- 
- 	if (!running) {
--		ret = mt76_connac_mcu_set_pm(&dev->mt76, 0, 0);
-+		ret = mt76_connac_mcu_set_pm(&dev->mt76, dev->phy.band_idx, 0);
- 		if (ret)
- 			goto out;
- 
--		ret = mt7915_mcu_set_mac(dev, 0, true, true);
-+		ret = mt7915_mcu_set_mac(dev, dev->phy.band_idx, true, true);
- 		if (ret)
- 			goto out;
- 
--		mt7915_mac_enable_nf(dev, 0);
-+		mt7915_mac_enable_nf(dev, dev->phy.band_idx);
- 	}
- 
--	if (phy != &dev->phy || phy->band_idx) {
--		ret = mt76_connac_mcu_set_pm(&dev->mt76, 1, 0);
-+	if (phy != &dev->phy) {
-+		ret = mt76_connac_mcu_set_pm(&dev->mt76, phy->band_idx, 0);
- 		if (ret)
- 			goto out;
- 
--		ret = mt7915_mcu_set_mac(dev, 1, true, true);
-+		ret = mt7915_mcu_set_mac(dev, phy->band_idx, true, true);
- 		if (ret)
- 			goto out;
- 
--		mt7915_mac_enable_nf(dev, 1);
-+		mt7915_mac_enable_nf(dev, phy->band_idx);
- 	}
- 
- 	ret = mt76_connac_mcu_set_rts_thresh(&dev->mt76, 0x92b,
--					     phy != &dev->phy);
-+					     phy->band_idx);
- 	if (ret)
- 		goto out;
- 
-@@ -107,13 +107,13 @@ static void mt7915_stop(struct ieee80211_hw *hw)
- 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
- 
- 	if (phy != &dev->phy) {
--		mt76_connac_mcu_set_pm(&dev->mt76, 1, 1);
--		mt7915_mcu_set_mac(dev, 1, false, false);
-+		mt76_connac_mcu_set_pm(&dev->mt76, phy->band_idx, 1);
-+		mt7915_mcu_set_mac(dev, phy->band_idx, false, false);
- 	}
- 
- 	if (!mt7915_dev_running(dev)) {
--		mt76_connac_mcu_set_pm(&dev->mt76, 0, 1);
--		mt7915_mcu_set_mac(dev, 0, false, false);
-+		mt76_connac_mcu_set_pm(&dev->mt76, dev->phy.band_idx, 1);
-+		mt7915_mcu_set_mac(dev, dev->phy.band_idx, false, false);
- 	}
- 
- 	mutex_unlock(&dev->mt76.mutex);
-@@ -440,7 +440,6 @@ static int mt7915_config(struct ieee80211_hw *hw, u32 changed)
- {
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
--	bool band = phy != &dev->phy;
- 	int ret;
- 
- 	if (changed & IEEE80211_CONF_CHANGE_CHANNEL) {
-@@ -468,6 +467,7 @@ static int mt7915_config(struct ieee80211_hw *hw, u32 changed)
- 
- 	if (changed & IEEE80211_CONF_CHANGE_MONITOR) {
- 		bool enabled = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
-+		bool band = phy->band_idx;
- 
- 		if (!enabled)
- 			phy->rxfilter |= MT_WF_RFCR_DROP_OTHER_UC;
-@@ -506,7 +506,7 @@ static void mt7915_configure_filter(struct ieee80211_hw *hw,
- {
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
--	bool band = phy != &dev->phy;
-+	bool band = phy->band_idx;
- 	u32 ctl_flags = MT_WF_RFCR1_DROP_ACK |
- 			MT_WF_RFCR1_DROP_BF_POLL |
- 			MT_WF_RFCR1_DROP_BA |
-@@ -743,7 +743,7 @@ static int mt7915_set_rts_threshold(struct ieee80211_hw *hw, u32 val)
- 	int ret;
- 
- 	mutex_lock(&dev->mt76.mutex);
--	ret = mt76_connac_mcu_set_rts_thresh(&dev->mt76, val, phy != &dev->phy);
-+	ret = mt76_connac_mcu_set_rts_thresh(&dev->mt76, val, phy->band_idx);
- 	mutex_unlock(&dev->mt76.mutex);
- 
- 	return ret;
-@@ -846,7 +846,7 @@ u64 __mt7915_get_tsf(struct ieee80211_hw *hw, struct mt7915_vif *mvif)
- {
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
--	bool band = phy != &dev->phy;
-+	bool band = phy->band_idx;
- 	union {
- 		u64 t64;
- 		u32 t32[2];
-@@ -891,7 +891,7 @@ mt7915_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
--	bool band = phy != &dev->phy;
-+	bool band = phy->band_idx;
- 	union {
- 		u64 t64;
- 		u32 t32[2];
-@@ -922,7 +922,7 @@ mt7915_offset_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
--	bool band = phy != &dev->phy;
-+	bool band = phy->band_idx;
- 	union {
- 		u64 t64;
- 		u32 t32[2];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index d911512f31a6..9e977684a61d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -599,7 +599,7 @@ mt7915_mcu_muar_config(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		.mode = !!mask || enable,
- 		.entry_count = 1,
- 		.write = 1,
--		.band = phy != &dev->phy,
-+		.band = phy->band_idx,
- 		.index = idx * 2 + bssid,
- 	};
- 
-@@ -1693,7 +1693,7 @@ int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
- 	struct {
- 		struct req_hdr {
- 			u8 omac_idx;
--			u8 dbdc_idx;
-+			u8 band_idx;
- 			__le16 tlv_num;
- 			u8 is_tlv_append;
- 			u8 rsv[3];
-@@ -1702,13 +1702,13 @@ int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
- 			__le16 tag;
- 			__le16 len;
- 			u8 active;
--			u8 dbdc_idx;
-+			u8 band_idx;
- 			u8 omac_addr[ETH_ALEN];
- 		} __packed tlv;
- 	} data = {
- 		.hdr = {
- 			.omac_idx = mvif->mt76.omac_idx,
--			.dbdc_idx = mvif->mt76.band_idx,
-+			.band_idx = mvif->mt76.band_idx,
- 			.tlv_num = cpu_to_le16(1),
- 			.is_tlv_append = 1,
- 		},
-@@ -1716,7 +1716,7 @@ int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
- 			.tag = cpu_to_le16(DEV_INFO_ACTIVE),
- 			.len = cpu_to_le16(sizeof(struct req_tlv)),
- 			.active = enable,
--			.dbdc_idx = mvif->mt76.band_idx,
-+			.band_idx = mvif->mt76.band_idx,
- 		},
- 	};
- 
-@@ -2563,7 +2563,7 @@ mt7915_mcu_background_chain_ctrl(struct mt7915_phy *phy,
- 		req.monitor_central_chan =
- 			ieee80211_frequency_to_channel(chandef->center_freq1);
- 		req.monitor_bw = mt76_connac_chan_bw(chandef);
--		req.band_idx = phy != &dev->phy;
-+		req.band_idx = phy->band_idx;
- 		req.scan_mode = 1;
- 		break;
- 	}
-@@ -2571,7 +2571,7 @@ mt7915_mcu_background_chain_ctrl(struct mt7915_phy *phy,
- 		req.monitor_chan = chandef->chan->hw_value;
- 		req.monitor_central_chan =
- 			ieee80211_frequency_to_channel(chandef->center_freq1);
--		req.band_idx = phy != &dev->phy;
-+		req.band_idx = phy->band_idx;
- 		req.scan_mode = 2;
- 		break;
- 	case CH_SWITCH_BACKGROUND_SCAN_STOP:
-@@ -2975,7 +2975,7 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
- 	}
- 
- 	for (i = 0; i < 5; i++) {
--		req[i].band = cpu_to_le32(phy != &dev->phy);
-+		req[i].band = cpu_to_le32(phy->band_idx);
- 		req[i].offs = cpu_to_le32(offs[i + start]);
- 
- 		if (!is_mt7915(&dev->mt76) && i == 3)
-@@ -3020,11 +3020,11 @@ int mt7915_mcu_get_temperature(struct mt7915_phy *phy)
- 	struct {
- 		u8 ctrl_id;
- 		u8 action;
--		u8 dbdc_idx;
-+		u8 band_idx;
- 		u8 rsv[5];
- 	} req = {
- 		.ctrl_id = THERMAL_SENSOR_TEMP_QUERY,
--		.dbdc_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 	};
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_CTRL), &req,
-@@ -3093,7 +3093,7 @@ int mt7915_mcu_set_txpower_frame_min(struct mt7915_phy *phy, s8 txpower)
- 		s8 txpower_min;
- 	} __packed req = {
- 		.format_id = TX_POWER_LIMIT_FRAME_MIN,
--		.band_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 		.txpower_min = txpower * 2, /* 0.5db */
- 	};
- 
-@@ -3117,7 +3117,7 @@ int mt7915_mcu_set_txpower_frame(struct mt7915_phy *phy,
- 		s8 txpower_offs[48];
- 	} __packed req = {
- 		.format_id = TX_POWER_LIMIT_FRAME,
--		.band_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 		.txpower_max = DIV_ROUND_UP(phy->mt76->txpower_cur, 2),
- 		.wcid = cpu_to_le16(msta->wcid.idx),
- 	};
-@@ -3171,11 +3171,11 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
- 	struct mt7915_sku_val {
- 		u8 format_id;
- 		u8 limit_type;
--		u8 dbdc_idx;
-+		u8 band_idx;
- 		s8 val[MT7915_SKU_RATE_NUM];
- 	} __packed req = {
- 		.format_id = TX_POWER_LIMIT_TABLE,
--		.dbdc_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 	};
- 	struct mt76_power_limits limits_array;
- 	s8 *la = (s8 *)&limits_array;
-@@ -3221,12 +3221,12 @@ int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int len)
- 	struct {
- 		u8 format_id;
- 		u8 category;
--		u8 band;
-+		u8 band_idx;
- 		u8 _rsv;
- 	} __packed req = {
- 		.format_id = TX_POWER_LIMIT_INFO,
- 		.category = RATE_POWER_INFO,
--		.band = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 	};
- 	s8 txpower_sku[MT7915_SKU_RATE_NUM][2];
- 	struct sk_buff *skb;
-@@ -3275,11 +3275,11 @@ int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, bool enable)
- 	struct mt7915_sku {
- 		u8 format_id;
- 		u8 sku_enable;
--		u8 dbdc_idx;
-+		u8 band_idx;
- 		u8 rsv;
- 	} __packed req = {
- 		.format_id = TX_POWER_LIMIT_ENABLE,
--		.dbdc_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 		.sku_enable = enable,
- 	};
- 
-@@ -3361,7 +3361,7 @@ mt7915_mcu_enable_obss_spr(struct mt7915_phy *phy, u8 action, u8 val)
- 	struct mt7915_mcu_sr_ctrl req = {
- 		.action = action,
- 		.argnum = 1,
--		.band_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 		.val = cpu_to_le32(val),
- 	};
- 
-@@ -3392,7 +3392,7 @@ mt7915_mcu_set_obss_spr_pd(struct mt7915_phy *phy,
- 		.ctrl = {
- 			.action = SPR_SET_PARAM,
- 			.argnum = 9,
--			.band_idx = phy != &dev->phy,
-+			.band_idx = phy->band_idx,
- 		},
- 	};
- 	int ret;
-@@ -3441,7 +3441,7 @@ mt7915_mcu_set_obss_spr_siga(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		.ctrl = {
- 			.action = SPR_SET_SIGA,
- 			.argnum = 1,
--			.band_idx = phy != &dev->phy,
-+			.band_idx = phy->band_idx,
- 		},
- 		.siga = {
- 			.omac = omac > HW_BSSID_MAX ? omac - 12 : omac,
-@@ -3480,7 +3480,7 @@ mt7915_mcu_set_obss_spr_bitmap(struct mt7915_phy *phy,
- 		.ctrl = {
- 			.action = SPR_SET_SRG_BITMAP,
- 			.argnum = 4,
--			.band_idx = phy != &dev->phy,
-+			.band_idx = phy->band_idx,
- 		},
- 	};
- 	u32 bitmap;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-index a979460fad2d..7ace05e0b63b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-@@ -44,14 +44,14 @@ mt7915_tm_set_tx_power(struct mt7915_phy *phy)
- 	int ret;
- 	struct {
- 		u8 format_id;
--		u8 dbdc_idx;
-+		u8 band_idx;
- 		s8 tx_power;
- 		u8 ant_idx;	/* Only 0 is valid */
- 		u8 center_chan;
- 		u8 rsv[3];
- 	} __packed req = {
- 		.format_id = 0xf,
--		.dbdc_idx = phy != &dev->phy,
-+		.band_idx = phy->band_idx,
- 		.center_chan = ieee80211_frequency_to_channel(freq),
- 	};
- 	u8 *tx_power = NULL;
-@@ -77,7 +77,7 @@ mt7915_tm_set_freq_offset(struct mt7915_phy *phy, bool en, u32 val)
- 	struct mt7915_tm_cmd req = {
- 		.testmode_en = en,
- 		.param_idx = MCU_ATE_SET_FREQ_OFFSET,
--		.param.freq.band = phy != &dev->phy,
-+		.param.freq.band = phy->band_idx,
- 		.param.freq.freq_offset = cpu_to_le32(val),
- 	};
- 
-@@ -111,7 +111,7 @@ mt7915_tm_set_trx(struct mt7915_phy *phy, int type, bool en)
- 		.param_idx = MCU_ATE_SET_TRX,
- 		.param.trx.type = type,
- 		.param.trx.enable = en,
--		.param.trx.band = phy != &dev->phy,
-+		.param.trx.band = phy->band_idx,
- 	};
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ATE_CTRL), &req,
-@@ -126,7 +126,7 @@ mt7915_tm_clean_hwq(struct mt7915_phy *phy, u8 wcid)
- 		.testmode_en = 1,
- 		.param_idx = MCU_ATE_CLEAN_TXQUEUE,
- 		.param.clean.wcid = wcid,
--		.param.clean.band = phy != &dev->phy,
-+		.param.clean.band = phy->band_idx,
- 	};
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ATE_CTRL), &req,
-@@ -144,7 +144,7 @@ mt7915_tm_set_slot_time(struct mt7915_phy *phy, u8 slot_time, u8 sifs)
- 		.param.slot.sifs = sifs,
- 		.param.slot.rifs = 2,
- 		.param.slot.eifs = cpu_to_le16(60),
--		.param.slot.band = phy != &dev->phy,
-+		.param.slot.band = phy->band_idx,
- 	};
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ATE_CTRL), &req,
-@@ -488,7 +488,7 @@ mt7915_tm_set_rx_frames(struct mt7915_phy *phy, bool en)
- 		mt7915_tm_update_channel(phy);
- 
- 		/* read-clear */
--		mt76_rr(dev, MT_MIB_SDR3(phy != &dev->phy));
-+		mt76_rr(dev, MT_MIB_SDR3(phy->band_idx));
- 		mt7915_tm_set_trx(phy, TM_MAC_RX_RXV, en);
- 	}
- }
-@@ -526,7 +526,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
- 	tx_cont->control_ch = chandef->chan->hw_value;
- 	tx_cont->center_ch = freq1;
- 	tx_cont->tx_ant = td->tx_antenna_mask;
--	tx_cont->band = phy != &dev->phy;
-+	tx_cont->band = phy->band_idx;
- 
- 	switch (chandef->width) {
- 	case NL80211_CHAN_WIDTH_40:
-@@ -558,7 +558,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
- 	}
- 
- 	if (!en) {
--		req.op.rf.param.func_data = cpu_to_le32(phy != &dev->phy);
-+		req.op.rf.param.func_data = cpu_to_le32(phy->band_idx);
- 		goto out;
- 	}
- 
--- 
-2.36.1
+Very cool, iiuc the hw/fw is capable of adjusting tx power according to the=
+ trasmitted
+frame, right? Is it possible to specify it on per-packet basis or just
+per-station?
+
+>=20
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  .../net/wireless/mediatek/mt76/mt7915/init.c  |  3 +
+>  .../net/wireless/mediatek/mt76/mt7915/main.c  | 33 +++++++
+>  .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 92 +++++++++++++++++--
+>  .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  8 ++
+>  .../wireless/mediatek/mt76/mt7915/mt7915.h    |  4 +
+>  5 files changed, 134 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7915/init.c
+> index b48c2ba9273d..79bd7bf93f33 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> @@ -355,6 +355,9 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
+>  	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_FILS_DISCOVERY);
+>  	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
+> =20
+> +	if (!is_mt7915(&dev->mt76))
+> +		wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_STA_TX_PWR);
+> +
+>  	if (!mdev->dev->of_node ||
+>  	    !of_property_read_bool(mdev->dev->of_node,
+>  				   "mediatek,disable-radar-background"))
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7915/main.c
+> index a29cbdb47801..9792831090c7 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> @@ -1126,6 +1126,38 @@ static void mt7915_sta_set_decap_offload(struct ie=
+ee80211_hw *hw,
+>  	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
+>  }
+> =20
+> +static int mt7915_sta_set_txpwr(struct ieee80211_hw *hw,
+> +				struct ieee80211_vif *vif,
+> +				struct ieee80211_sta *sta)
+> +{
+> +	struct mt7915_phy *phy =3D mt7915_hw_phy(hw);
+> +	struct mt7915_dev *dev =3D mt7915_hw_dev(hw);
+> +	s16 txpower =3D sta->deflink.txpwr.power;
+> +	int ret;
+> +
+> +	if (sta->deflink.txpwr.type =3D=3D NL80211_TX_POWER_AUTOMATIC)
+> +		txpower =3D 0;
+> +
+> +	mutex_lock(&dev->mt76.mutex);
+> +
+> +	/* NOTE: temporarily use 0 as minimum limit, which is a
+> +	 * global setting and will be applied to all stations.
+> +	 */
+> +	ret =3D mt7915_mcu_set_txpower_frame_min(phy, 0);
+> +	if (ret)
+
+we need to relase the lock here
+
+Regards,
+Lorenzo
+
+> +		return ret;
+> +
+> +	/* This only applies to data frames while pushing traffic,
+> +	 * whereas the management frames or other packets that are
+> +	 * using fixed rate can be configured via TxD.
+> +	 */
+> +	ret =3D mt7915_mcu_set_txpower_frame(phy, vif, sta, txpower);
+> +
+> +	mutex_unlock(&dev->mt76.mutex);
+> +
+> +	return ret;
+> +}
+> +
+>  static const char mt7915_gstrings_stats[][ETH_GSTRING_LEN] =3D {
+>  	"tx_ampdu_cnt",
+>  	"tx_stop_q_empty_cnt",
+> @@ -1491,6 +1523,7 @@ const struct ieee80211_ops mt7915_ops =3D {
+>  	.set_bitrate_mask =3D mt7915_set_bitrate_mask,
+>  	.set_coverage_class =3D mt7915_set_coverage_class,
+>  	.sta_statistics =3D mt7915_sta_statistics,
+> +	.sta_set_txpwr =3D mt7915_sta_set_txpwr,
+>  	.sta_set_4addr =3D mt7915_sta_set_4addr,
+>  	.sta_set_decap_offload =3D mt7915_sta_set_decap_offload,
+>  	.add_twt_setup =3D mt7915_mac_add_twt_setup,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mcu.c
+> index 3a0d97dad96f..d911512f31a6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -3083,6 +3083,86 @@ int mt7915_mcu_set_thermal_throttling(struct mt791=
+5_phy *phy, u8 state)
+>  				 &req, sizeof(req), false);
+>  }
+> =20
+> +int mt7915_mcu_set_txpower_frame_min(struct mt7915_phy *phy, s8 txpower)
+> +{
+> +	struct mt7915_dev *dev =3D phy->dev;
+> +	struct {
+> +		u8 format_id;
+> +		u8 rsv;
+> +		u8 band_idx;
+> +		s8 txpower_min;
+> +	} __packed req =3D {
+> +		.format_id =3D TX_POWER_LIMIT_FRAME_MIN,
+> +		.band_idx =3D phy !=3D &dev->phy,
+> +		.txpower_min =3D txpower * 2, /* 0.5db */
+> +	};
+> +
+> +	return mt76_mcu_send_msg(&dev->mt76,
+> +				 MCU_EXT_CMD(TX_POWER_FEATURE_CTRL), &req,
+> +				 sizeof(req), true);
+> +}
+> +
+> +int mt7915_mcu_set_txpower_frame(struct mt7915_phy *phy,
+> +				 struct ieee80211_vif *vif,
+> +				 struct ieee80211_sta *sta, s8 txpower)
+> +{
+> +	struct mt7915_sta *msta =3D (struct mt7915_sta *)sta->drv_priv;
+> +	struct mt7915_dev *dev =3D phy->dev;
+> +	struct {
+> +		u8 format_id;
+> +		u8 rsv[3];
+> +		u8 band_idx;
+> +		s8 txpower_max;
+> +		__le16 wcid;
+> +		s8 txpower_offs[48];
+> +	} __packed req =3D {
+> +		.format_id =3D TX_POWER_LIMIT_FRAME,
+> +		.band_idx =3D phy !=3D &dev->phy,
+> +		.txpower_max =3D DIV_ROUND_UP(phy->mt76->txpower_cur, 2),
+> +		.wcid =3D cpu_to_le16(msta->wcid.idx),
+> +	};
+> +	int ret;
+> +	s8 txpower_sku[MT7915_SKU_RATE_NUM];
+> +
+> +	ret =3D mt7915_mcu_get_txpower_sku(phy, txpower_sku, sizeof(txpower_sku=
+));
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (txpower > req.txpower_max || txpower < 0)
+> +		return -EINVAL;
+> +
+> +	if (txpower) {
+> +		u32 offs, len, i;
+> +
+> +		if (sta->deflink.ht_cap.ht_supported) {
+> +			const u8 *sku_len =3D mt7915_sku_group_len;
+> +
+> +			offs =3D sku_len[SKU_CCK] + sku_len[SKU_OFDM];
+> +			len =3D sku_len[SKU_HT_BW20] + sku_len[SKU_HT_BW40];
+> +
+> +			if (sta->deflink.vht_cap.vht_supported) {
+> +				offs +=3D len;
+> +				len =3D sku_len[SKU_VHT_BW20] * 4;
+> +
+> +				if (sta->deflink.he_cap.has_he) {
+> +					offs +=3D len + sku_len[SKU_HE_RU26] * 3;
+> +					len =3D sku_len[SKU_HE_RU242] * 4;
+> +				}
+> +			}
+> +		} else {
+> +			return -EINVAL;
+> +		}
+> +
+> +		for (i =3D 0; i < len; i++, offs++)
+> +			req.txpower_offs[i] =3D
+> +				txpower - DIV_ROUND_UP(txpower_sku[offs], 2);
+> +	}
+> +
+> +	return mt76_mcu_send_msg(&dev->mt76,
+> +				 MCU_EXT_CMD(TX_POWER_FEATURE_CTRL), &req,
+> +				 sizeof(req), true);
+> +}
+> +
+>  int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
+>  {
+>  	struct mt7915_dev *dev =3D phy->dev;
+> @@ -3094,7 +3174,7 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *p=
+hy)
+>  		u8 dbdc_idx;
+>  		s8 val[MT7915_SKU_RATE_NUM];
+>  	} __packed req =3D {
+> -		.format_id =3D 4,
+> +		.format_id =3D TX_POWER_LIMIT_TABLE,
+>  		.dbdc_idx =3D phy !=3D &dev->phy,
+>  	};
+>  	struct mt76_power_limits limits_array;
+> @@ -3144,11 +3224,11 @@ int mt7915_mcu_get_txpower_sku(struct mt7915_phy =
+*phy, s8 *txpower, int len)
+>  		u8 band;
+>  		u8 _rsv;
+>  	} __packed req =3D {
+> -		.format_id =3D 7,
+> +		.format_id =3D TX_POWER_LIMIT_INFO,
+>  		.category =3D RATE_POWER_INFO,
+>  		.band =3D phy !=3D &dev->phy,
+>  	};
+> -	s8 res[MT7915_SKU_RATE_NUM][2];
+> +	s8 txpower_sku[MT7915_SKU_RATE_NUM][2];
+>  	struct sk_buff *skb;
+>  	int ret, i;
+> =20
+> @@ -3158,9 +3238,9 @@ int mt7915_mcu_get_txpower_sku(struct mt7915_phy *p=
+hy, s8 *txpower, int len)
+>  	if (ret)
+>  		return ret;
+> =20
+> -	memcpy(res, skb->data + 4, sizeof(res));
+> +	memcpy(txpower_sku, skb->data + 4, sizeof(txpower_sku));
+>  	for (i =3D 0; i < len; i++)
+> -		txpower[i] =3D res[i][req.band];
+> +		txpower[i] =3D txpower_sku[i][req.band_idx];
+> =20
+>  	dev_kfree_skb(skb);
+> =20
+> @@ -3198,7 +3278,7 @@ int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, b=
+ool enable)
+>  		u8 dbdc_idx;
+>  		u8 rsv;
+>  	} __packed req =3D {
+> -		.format_id =3D 0,
+> +		.format_id =3D TX_POWER_LIMIT_ENABLE,
+>  		.dbdc_idx =3D phy !=3D &dev->phy,
+>  		.sku_enable =3D enable,
+>  	};
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mcu.h
+> index 2fc09fd53777..46c517e50ae4 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> @@ -419,6 +419,14 @@ enum {
+>  #define RATE_CFG_PHY_TYPE		GENMASK(27, 24)
+>  #define RATE_CFG_HE_LTF			GENMASK(31, 28)
+> =20
+> +enum {
+> +	TX_POWER_LIMIT_ENABLE,
+> +	TX_POWER_LIMIT_TABLE =3D 0x4,
+> +	TX_POWER_LIMIT_INFO =3D 0x7,
+> +	TX_POWER_LIMIT_FRAME =3D 0x11,
+> +	TX_POWER_LIMIT_FRAME_MIN =3D 0x12,
+> +};
+> +
+>  enum {
+>  	SPR_ENABLE =3D 0x1,
+>  	SPR_ENABLE_SD =3D 0x3,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers=
+/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> index 0bad78cf32c7..015c7190d79f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> @@ -526,6 +526,10 @@ int mt7915_mcu_set_ser(struct mt7915_dev *dev, u8 ac=
+tion, u8 set, u8 band);
+>  int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, bool enable);
+>  int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy);
+>  int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int =
+len);
+> +int mt7915_mcu_set_txpower_frame_min(struct mt7915_phy *phy, s8 txpower);
+> +int mt7915_mcu_set_txpower_frame(struct mt7915_phy *phy,
+> +				 struct ieee80211_vif *vif,
+> +				 struct ieee80211_sta *sta, s8 txpower);
+>  int mt7915_mcu_set_txbf(struct mt7915_dev *dev, u8 action);
+>  int mt7915_mcu_set_fcc5_lpn(struct mt7915_dev *dev, int val);
+>  int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
+> --=20
+> 2.36.1
+>=20
+
+--cpPvvVISQbvq9kas
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY3qaaAAKCRA6cBh0uS2t
+rNOrAPsHH1JSEIYyMupWzWPiYvXacAafYrZRE3v2MYwfu7RxowD/REQjzYN9JNt1
+44FRxoUhOnZb4zJeGRmsZcNRoBa92Qg=
+=w2Ox
+-----END PGP SIGNATURE-----
+
+--cpPvvVISQbvq9kas--
 
 
