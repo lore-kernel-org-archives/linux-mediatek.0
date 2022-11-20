@@ -4,108 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52439C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 13:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B130C433FE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Nov 2022 14:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R3o7MxftPnsiuByCDpeTAo1VzY2DRAHijDZ+Q9Ek5VE=; b=PmLjJepo1fs1hnsESB09RuT7T/
-	DJjuK2PMoQfSp2oopTPvO4bmD9XT23OHNmvOl80lytvpxNgYRHa7R9QwEVcKVA5EUzqjPg8sbqaKr
-	V0/W/96JxAYvybAMXY8l95vOn1yEH2zzPhd0hr7nWSVCmU8HP6/0uTRJTQveiVcMZaYWBpsF29FQP
-	GltcYRY14scP1Ulw5PpVpgHTCbLzHzjupXLwYVcV4+Ns9Nr5FUu+SnN5XSMs+AXMVoE6bRGogPI63
-	6nCNB+EgNEWNLPBxrVACkVI2oYXEu3MGYM84l5+Y4fc4O+JvqWm99OXLEFAwMRUpX05Bi5EmKW4Oo
-	II/B76eA==;
+	bh=UkF984r0jfTzyI7tT6A37vG6Dq6NrZDLkNTSQzJ1szs=; b=cBbpeVyPGIaPg8Syv1O28VvPRO
+	z3el2Mh51YdOxTpmarG6pViiOpRMnQ9YbNa7zZbRCWuRQTbOS/XEaEWt1B+EyP/TgSOH1QBh53dyw
+	v/0fa7ciQrKhisnVrPJlga1KZ/s+8o6PYB625IEoVNUk1TbDXy6O5HpKVzEXARniAkbxGcbpoBorh
+	kJaXXnLXAguSnSKZyEsLoeK6rVvTFqBo51x6/w7xYZiLAZf8p5txwwLgg+GjplnBCF55vUZw1uNHX
+	Yiuqi6vPeE3wjz4y1pCXLy31JlZgc033JU8IfctdRuEwAr+Ie2kXfuLjUhOZgkfz383hchEQl+fS3
+	88dQm6JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owklA-004efe-Th; Sun, 20 Nov 2022 13:53:25 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1owlTn-004uBg-V4; Sun, 20 Nov 2022 14:39:32 +0000
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owkkx-004eXk-GG; Sun, 20 Nov 2022 13:53:13 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id d7so6514618qkk.3;
-        Sun, 20 Nov 2022 05:53:11 -0800 (PST)
+	id 1owlTM-004tyt-Ae
+	for linux-mediatek@lists.infradead.org; Sun, 20 Nov 2022 14:39:07 +0000
+Received: by mail-ot1-x333.google.com with SMTP id 94-20020a9d0067000000b0066c8d13a33dso5936248ota.12
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 06:39:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=R3o7MxftPnsiuByCDpeTAo1VzY2DRAHijDZ+Q9Ek5VE=;
-        b=JIVFY4robx7oRRUQfCLInbCxqPNNQRhFvRFnSzYIldrdG2Je2WB2jAJK7by2FAyGkd
-         AclJ4+pXvNKd3bNZrE1MOULb31JbFqHgy5mXs4qao1kSwz+0d7uXTIk7E8t7rzKZgE+C
-         svWAWmtiT1mr6y8ZLgSxKiiFC+DqvkDkZWvb5uAqYhf01luNS1B3nwOfHl/0VuJ+eZEN
-         NMvaeM7Mfii8P4clfnTRfFf0udrY44fA0mGlLxkhnv7c0dDeJ/eVlbkxawEYq9dBiQw5
-         tKxoSnSrS2k7jerbcuo6Vzh9DzzMOXTXQWwsaWsJYrGVMPtjX3UyjfW1PyvR/BacjkLC
-         Z5lA==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=UkF984r0jfTzyI7tT6A37vG6Dq6NrZDLkNTSQzJ1szs=;
+        b=FkknNl8+w+PHZAEsszcaj6TK9kPpmxhf8hqcerwxC5O1stx9ns4RZ/+42f5YcrjFSO
+         b32/pr9TNcXXKesgg09UNuGx/jmd/g+11KmGXLwieKzKJHeF800iLkUuBcU0dJJRkNjy
+         gPBTauQfrp90FjVVT6H5FFR8u+s6b9eRHJfS3Wt6IXY5SI3nhq3vntva8f/TCjn2WjT6
+         preWJI5H9/6wxtXb25uUg6Q48J6/ze3hhMgSJusetrcOTg3BvSU6Bhwqe/HNCatc3jWv
+         BKrIwhku5hdXbu/LsFyaPxR9lIXF5sDPAgyvW4Y0v0QBU8AAxZH4P0RFo0ymCPOY0Tq+
+         umiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=R3o7MxftPnsiuByCDpeTAo1VzY2DRAHijDZ+Q9Ek5VE=;
-        b=ZCvsS/mlK6ZYkI9fDouSMuyLvHDq1MJ5KJKY9/sSmuFbQcn8/Mtab9OmsE4xSKzEKW
-         icMnfUKvdTR4UdrXoipuwiknkTunbyUilChO/LhYhZjrOQBGE3FTONzaDvsciS6ouMno
-         ak99GEH/xHaoLmnXZKIKwhDmbCRhvOjVw6dwJ6jsG9XZnL4qdPhxoZkWGsQRcth2ShTa
-         L4rVuuVDgkb3NHjixe0yAE+dMfeyacg/U116Aqfx5sxK66bwayPGW+aoPuCPmkaYZ4nA
-         wJ3CoMqREBTSmWZ5O4DVWOHGU4JfgesOKGFrNTgV0sFZcBGrC60lRcxkRUoj+fjeM8sq
-         ZZpA==
-X-Gm-Message-State: ANoB5pkPn1R+1GMFUF/z+EQ3qMQ95xWNLyEwzPvCDOe9/u7bTPJdvxym
-	Nd757s/le9HGAdJP69f52t8=
-X-Google-Smtp-Source: AA0mqf6lqRt0pi9+3h33Jkhzmoe8fof4ax9VZl7N0LFXcDLx5t4h1eFk7Zl7LZYKqldtMBKSAXnLLA==
-X-Received: by 2002:a05:620a:1427:b0:6f9:ffc7:a9e4 with SMTP id k7-20020a05620a142700b006f9ffc7a9e4mr838228qkj.277.1668952390120;
-        Sun, 20 Nov 2022 05:53:10 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id s6-20020a05620a254600b006e07228ed53sm6523055qko.18.2022.11.20.05.53.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Nov 2022 05:53:09 -0800 (PST)
-Date: Sun, 20 Nov 2022 05:53:08 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Rob Herring <robh@kernel.org>
-Cc: Ilia Lin <ilia.lin@kernel.org>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Jean Delvare <jdelvare@suse.com>,
-	Yangtao Li <tiny.windzz@gmail.com>, Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Javier Martinez Canillas <javier@dowhile0.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Maxime Ripard <mripard@kernel.org>, Daniel Mack <zonque@gmail.com>,
-	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>, linux-pm@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, alsa-devel@alsa-project.org,
-	linux-spi@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: Add missing start and/or end of line regex
- anchors
-Message-ID: <20221120135308.GA1787641@roeck-us.net>
-References: <20221118223728.1721589-1-robh@kernel.org>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UkF984r0jfTzyI7tT6A37vG6Dq6NrZDLkNTSQzJ1szs=;
+        b=bGQTaZdxPO9RooTgPWyfCWj/x7FznshRtTRLFLS0iE0H/HzdAF5NIpKTFfdN/bnEGn
+         fW0lG9heWir1fyxDb2qeYCvSIqq6v8sMK41ECgSnbcqAoZlZ/P5LpbqasHHrAyOX1C0f
+         WauVMPbeKbwSAPwYE3zikfsfNpPxX6NNJtfi+w3+iszlfnY27Ki7214vlPYEsOBJ6spC
+         8n7fFAYGjGEhepJitpYwLNUBpdYAJe06S5lqM8bynAOGKuCJwZIMiBr7VgaKETyX1nTv
+         Cu09atENLeLAiTtyiYOfdFVMnER8f+ej9f6cRWsYnK2Bakv3gkQO0KL2liO9iDfkHw7K
+         cE5A==
+X-Gm-Message-State: ANoB5plRRX8XfmgNCiTpjpF/oWEaIj0e9rIAXxAgdekdbP8+Fp3h/hoL
+	PPtRwQOqg3/qLzAMaVzf1MF9J/aHvw+LOlKakqOtxQ==
+X-Google-Smtp-Source: AA0mqf5QbUJkXVIDNzWd1p6fxDx5nruCaRzVAH4gg+pHDxWzbCNuyfH+tzGeQnV8UhP7ITbVDOo+859w3u2Hq+bHCA0=
+X-Received: by 2002:a9d:6c4f:0:b0:66d:2671:da35 with SMTP id
+ g15-20020a9d6c4f000000b0066d2671da35mr7528322otq.137.1668955142399; Sun, 20
+ Nov 2022 06:39:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221118223728.1721589-1-robh@kernel.org>
+References: <20221117210356.3178578-1-bero@baylibre.com> <20221117210356.3178578-5-bero@baylibre.com>
+ <06e916b7-f8f2-6de5-f86e-7b020c052451@linaro.org> <7ha64o9h1d.fsf@baylibre.com>
+ <76cae9bf-c81a-684a-c22b-9548dd82c8d4@linaro.org>
+In-Reply-To: <76cae9bf-c81a-684a-c22b-9548dd82c8d4@linaro.org>
+From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Date: Sun, 20 Nov 2022 15:38:51 +0100
+Message-ID: <CAP2ifjMQAx23xc0p_LZ9Dj79Hx1cyLZ-tx8HrGUbtDR-SmdECw@mail.gmail.com>
+Subject: Re: [PATCH v3 4/7] dt-bindings: pinctrl: add bindings for Mediatek
+ MT8365 SoC
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kevin Hilman <khilman@baylibre.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221120_055311_591661_1B2ED67C 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20221120_063904_568104_F18E85FA 
+X-CRM114-Status: GOOD (  22.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,192 +90,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 18, 2022 at 04:37:27PM -0600, Rob Herring wrote:
-> json-schema patterns by default will match anywhere in a string, so
-> typically we want at least the start or end anchored. Fix the obvious
-> cases where the anchors were forgotten.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> Acked-by: Mark Brown <broonie@kernel.org>
-> ---
->  .../devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml       | 2 +-
->  Documentation/devicetree/bindings/hwmon/adt7475.yaml          | 4 ++--
+Hi Krzysztof,
 
-For hwmon: 
+On Sun, Nov 20, 2022 at 11:40 AM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> >>> +  pins-are-numbered:
+> >
+> > Yeah, having this as a flag kind of implies that this could be present
+> > for some boards but not others.  But in practice, the driver requires it
+> > to be present or just fails[1].  What's the right way to describe that?
+> > We're just trying to add a binding that reflects the existing driver.
+>
+> Uh, what an interesting property. What's the point of it then? Why
+> failing to probe on a missing property which does nothing else?
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
+I couldn't find any other use of it in the kernel, and also checked
+u-boot (where the property also appears in some devicetree files, but
+isn't used anywhere).
+Both the MTK and STM drivers use it just to refuse it if it isn't there.
 
->  .../bindings/opp/allwinner,sun50i-h6-operating-points.yaml    | 4 ++--
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 2 +-
->  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
->  Documentation/devicetree/bindings/regulator/max8660.yaml      | 2 +-
->  .../devicetree/bindings/regulator/maxim,max77802.yaml         | 2 +-
->  Documentation/devicetree/bindings/regulator/regulator.yaml    | 2 +-
->  .../devicetree/bindings/regulator/rohm,bd9576-regulator.yaml  | 2 +-
->  Documentation/devicetree/bindings/sound/renesas,rsnd.yaml     | 2 +-
->  .../devicetree/bindings/spi/nvidia,tegra210-quad.yaml         | 2 +-
->  11 files changed, 13 insertions(+), 13 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml b/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
-> index a11e1b867379..3c00ad09eeaa 100644
-> --- a/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
-> +++ b/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
-> @@ -38,7 +38,7 @@ properties:
->      type: object
->  
->      patternProperties:
-> -      'cpu@[0-9a-f]+':
-> +      '^cpu@[0-9a-f]+$':
->          type: object
->  
->          properties:
-> diff --git a/Documentation/devicetree/bindings/hwmon/adt7475.yaml b/Documentation/devicetree/bindings/hwmon/adt7475.yaml
-> index ea595102a86e..051c976ab711 100644
-> --- a/Documentation/devicetree/bindings/hwmon/adt7475.yaml
-> +++ b/Documentation/devicetree/bindings/hwmon/adt7475.yaml
-> @@ -61,7 +61,7 @@ patternProperties:
->      $ref: /schemas/types.yaml#/definitions/uint32
->      enum: [0, 1]
->  
-> -  "adi,pin(5|10)-function":
-> +  "^adi,pin(5|10)-function$":
->      description: |
->        Configures the function for pin 5 on the adi,adt7473 and adi,adt7475. Or
->        pin 10 on the adi,adt7476 and adi,adt7490.
-> @@ -70,7 +70,7 @@ patternProperties:
->        - pwm2
->        - smbalert#
->  
-> -  "adi,pin(9|14)-function":
-> +  "^adi,pin(9|14)-function$":
->      description: |
->        Configures the function for pin 9 on the adi,adt7473 and adi,adt7475. Or
->        pin 14 on the adi,adt7476 and adi,adt7490
-> diff --git a/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml b/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
-> index 385b0692261c..51f62c3ae194 100644
-> --- a/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
-> +++ b/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
-> @@ -41,7 +41,7 @@ required:
->    - nvmem-cells
->  
->  patternProperties:
-> -  "opp-[0-9]+":
-> +  "^opp-[0-9]+$":
->      type: object
->  
->      properties:
-> @@ -49,7 +49,7 @@ patternProperties:
->        clock-latency-ns: true
->  
->      patternProperties:
-> -      "opp-microvolt-.*": true
-> +      "^opp-microvolt-speed[0-9]$": true
->  
->      required:
->        - opp-hz
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> index d60f43fd9c5a..e63e6458cea8 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
-> @@ -31,7 +31,7 @@ properties:
->      maxItems: 2
->  
->  patternProperties:
-> -  'pcie@[0-2],0':
-> +  '^pcie@[0-2],0$':
->      type: object
->      $ref: /schemas/pci/pci-bus.yaml#
->  
-> diff --git a/Documentation/devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml b/Documentation/devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml
-> index 0f18cceba3d5..5a0d64d3ae6b 100644
-> --- a/Documentation/devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml
-> +++ b/Documentation/devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml
-> @@ -65,7 +65,7 @@ properties:
->      maxItems: 1
->  
->  patternProperties:
-> -  'usb@[0-1],0':
-> +  '^usb@[0-1],0$':
->      type: object
->  
->      description:
-> diff --git a/Documentation/devicetree/bindings/regulator/max8660.yaml b/Documentation/devicetree/bindings/regulator/max8660.yaml
-> index 9c038698f880..4d550ca396eb 100644
-> --- a/Documentation/devicetree/bindings/regulator/max8660.yaml
-> +++ b/Documentation/devicetree/bindings/regulator/max8660.yaml
-> @@ -24,7 +24,7 @@ properties:
->      type: object
->  
->      patternProperties:
-> -      "regulator-.+":
-> +      "^regulator-.+$":
->          $ref: "regulator.yaml#"
->  
->      additionalProperties: false
-> diff --git a/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml b/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
-> index 71138c611b6c..b704f05ea454 100644
-> --- a/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
-> +++ b/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
-> @@ -77,7 +77,7 @@ patternProperties:
->        regulator-initial-mode: false
->  
->      patternProperties:
-> -      regulator-state-(standby|mem|disk):
-> +      "^regulator-state-(standby|mem|disk)$":
->          type: object
->          additionalProperties: true
->          properties:
-> diff --git a/Documentation/devicetree/bindings/regulator/regulator.yaml b/Documentation/devicetree/bindings/regulator/regulator.yaml
-> index 6e8aa9eed3aa..53b81d8a2d41 100644
-> --- a/Documentation/devicetree/bindings/regulator/regulator.yaml
-> +++ b/Documentation/devicetree/bindings/regulator/regulator.yaml
-> @@ -231,7 +231,7 @@ patternProperties:
->    ".*-supply$":
->      description: Input supply phandle(s) for this node
->  
-> -  regulator-state-(standby|mem|disk):
-> +  "^regulator-state-(standby|mem|disk)$":
->      type: object
->      description:
->        sub-nodes for regulator state in Standby, Suspend-to-RAM, and
-> diff --git a/Documentation/devicetree/bindings/regulator/rohm,bd9576-regulator.yaml b/Documentation/devicetree/bindings/regulator/rohm,bd9576-regulator.yaml
-> index 7cb74cc8c5d9..54be194bb244 100644
-> --- a/Documentation/devicetree/bindings/regulator/rohm,bd9576-regulator.yaml
-> +++ b/Documentation/devicetree/bindings/regulator/rohm,bd9576-regulator.yaml
-> @@ -21,7 +21,7 @@ description: |
->    regulator-voutl1, regulator-vouts1
->  
->  patternProperties:
-> -  "regulator-.+":
-> +  "^regulator-.+$":
->      type: object
->      description:
->        Properties for single regulator.
-> diff --git a/Documentation/devicetree/bindings/sound/renesas,rsnd.yaml b/Documentation/devicetree/bindings/sound/renesas,rsnd.yaml
-> index 679a246dd666..7df40c38e865 100644
-> --- a/Documentation/devicetree/bindings/sound/renesas,rsnd.yaml
-> +++ b/Documentation/devicetree/bindings/sound/renesas,rsnd.yaml
-> @@ -115,7 +115,7 @@ properties:
->    ports:
->      $ref: /schemas/graph.yaml#/properties/ports
->      patternProperties:
-> -      port(@[0-9a-f]+)?:
-> +      '^port(@[0-9a-f]+)?$':
->          $ref: audio-graph-port.yaml#
->          unevaluatedProperties: false
->  
-> diff --git a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> index 6b733e5c1163..899100e783c9 100644
-> --- a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> +++ b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> @@ -48,7 +48,7 @@ properties:
->        - const: tx
->  
->  patternProperties:
-> -  "@[0-9a-f]+":
-> +  "@[0-9a-f]+$":
->      type: object
->  
->      properties:
+Unfortunately "git blame" only shows pins-are-numbered being added as
+part of a larger commit ("add the driver"), so there's no "add check
+for pins-are-numbered because xyz" commit message.
+
+I can think of 3 possible explanations, but none of them are good:
+1. It's something that had a purpose at some point, but doesn't
+anymore (but that would likely leave some trace in "git blame"...)
+2. It's something that was added in preparation for another patch (but
+I can't find any queued/suggested patches that make use of it)
+3. It's for the sake of userland -- check if pins-are-numbered is set
+(which will be true for MTK and STM because these drivers enforce it,
+false for anything else because the schemas don't mention it) and then
+do different things. But this seems unlikely as well, the usual
+suspects (libgpiod and friends) don't do any such lookup, and there
+are ways to look up pins without that property - and I'd expect pins
+are numbered on many controllers outside of MTK and STM, so looking up
+that property would give a false response there.
+
+> I would like to understand why do we need this property and what is
+> described by it.
+
+Same here...
+
+> Because if it's purpose is only to fail or not fail
+> driver probe, then we should just drop it everywhere.
+
+Agreed (and I think more likely than not, that is the only purpose),
+but probably a "add support for another board" patchset isn't the
+right context for that.
+
+I can prepare a "remove pins-are-numbered" patchset, but given it will
+likely take time to track down someone who knows why this was added in
+the first place, I don't think it should block the MT8365 patchset.
+
+Best regards
+bero
 
