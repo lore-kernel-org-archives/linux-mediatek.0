@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D8D1C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D32FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwSyV+uSv2qiI8lAnG3+DLtGPvEFmv0f18azhE+7j5E=; b=04Or2wDUqB/fw8k6qMv0c1RTH/
-	FAmM7Lx74A21C4pA9eSPg0iV3bY76zftm1WWIyBOTdwEUKZiFVRjeVHkbHwSxhEOtROOYn8hM2m22
-	prYeKxxl4yCbFGW0OIajga1YEikXjTTpO/aUmOJRMACRfsLNmi+1tHDcM9a2ZWeo/Ik+EUm85Et8L
-	UKhxPZkm/ZOuoPuXXWtvuraoGB9Pj3E7a6AZAG62sbFWmbeBUOhjNvJL4ff0nzxlb9RtFEaJUfHiz
-	E0DNy/iJC+a7AKJNTshPwRF5aZo9z/LF1ByMylUwOmUgQ79Wkw451WVIYkZ+8t8VQCXaaNvI1gG/M
-	FodoZXKg==;
+	bh=ehQ/Lzfp8IZLfQftdHi/v/fZtolI2jl+a8nDV8sEG2Y=; b=ISugu+Gpb1+xvdGCpTA7WGsCXa
+	hAqiQgOleowzearXge3EgTjtwhT3HHZeEkjXHPRrbQjI0CO4bTqqr9MNnzVnl18jEJlBpqyBHCMQN
+	4zs5SWbiwTomFeLGbkn9tsKJ4UplYVSC/nANmGUUdPFoc3bVlXxweQIHvtozKa3U69THvdAnfcz2x
+	FIHrlFXtNQCWSs+quXi3FbZU3WIcIFElXOxhNb1z45JQtatArWUggyhkX4T5IyIBNiGE+wTxsST2z
+	D+QDnftz7QJ0NPK73wjq+D3wV/naStYyi4XVaveKSzV8em050qdoRFYNgmLnCH1ii326PQcs/o3kC
+	aVS0IQRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2fq-00BaDL-Uv; Mon, 21 Nov 2022 09:01:06 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ox2ki-00Bddf-8L; Mon, 21 Nov 2022 09:06:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2fI-00BZki-5q; Mon, 21 Nov 2022 09:00:33 +0000
+	id 1ox2kW-00BdHv-7I; Mon, 21 Nov 2022 09:05:57 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5DEDE66003EF;
-	Mon, 21 Nov 2022 09:00:29 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1B61C660159C;
+	Mon, 21 Nov 2022 09:05:54 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669021229;
-	bh=GjoD6+ESt/0nC7WvRsDYNODjgEOQgbj3D/vo0DNgFs8=;
+	s=mail; t=1669021554;
+	bh=oYdPeMNEX2Rrmz5Dlvw9fvA18GDij/SA6IU1bFcqUtE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GX7ndQFc90mDHy9IVvkFjC11UQildBuY3gKGx5XKCYxu2dnDae9C9I1haWu3O3clb
-	 4P3a5dBkRdW9cUo2QValv+k2lr27sWD6c6kEzfLFYfAHlxpEuyx+Gvkc84pyA/1K5z
-	 ab+Y6oXZmDDujBGsEOpK6zDF44lpnE6mKZyxB/3xqXdHA4LIMSkqmipcFYDysdadNL
-	 Qt18/u7pLXy2ASnjC1lm9jpJhu8hJOm7f8thB9Zf4b785JWYXYY0jsOu5M60YcZ/3L
-	 j3bOvJV4YFLR7wm8Naa3B6kHbgKY/OSRNdm6Sk2CBiKcvEWdRZmd3CU6QgAPLog6mT
-	 VjY7470Ij803Q==
-Message-ID: <0ccc4c54-c60f-72eb-6efe-31915b6277d7@collabora.com>
-Date: Mon, 21 Nov 2022 10:00:26 +0100
+	b=dYYG43t7UPlFu0jI1EavN7PAIlw1d3ek7C9ujtFX7sj15AkrTpI4x2+EoYu914LYz
+	 W8lG6SfTDkKRceeYARgJQbreqeVZQIKtf0++BF6wQcI1rTKoCCpQiQfiXTNEya1Utl
+	 pw9tu6/uqHIrAFftb/BJZk204SPPzL7mEbJxHNtRGoumCs+iVWNQ3jH24jqjuSe7HK
+	 WdfekXjBDsLhXTvmN3fm1NN2cPay3318W8cdOeu9lbj/knezkhqI0WQHN0KaK2aTiE
+	 sjHY19OCL4aXP6RSsEJsuYmm0uuYm04iQ5SIVQQ5taje83jXXa1k7Ipk4fpM6+FyDr
+	 AZZjyQOYqjHnA==
+Message-ID: <2545400a-e821-ce05-5c59-67b9838f4644@collabora.com>
+Date: Mon, 21 Nov 2022 10:05:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH 1/9] pinctrl: mediatek: common: Remove check for
- pins-are-numbered
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- devicetree@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski@linaro.org,
- khilman@baylibre.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, matthias.bgg@gmail.com
-References: <20221121015451.2471196-1-bero@baylibre.com>
- <20221121015451.2471196-2-bero@baylibre.com>
+Subject: Re: [PATCH] usb: host: xhci-mtk: omit shared hcd if either root hub
+ has no ports
 Content-Language: en-US
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
+References: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221121015451.2471196-2-bero@baylibre.com>
+In-Reply-To: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_010032_382552_2DEFE837 
-X-CRM114-Status: UNSURE (   6.48  )
+X-CRM114-CacheID: sfid-20221121_010556_425344_60387D55 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,10 +78,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/11/22 02:54, Bernhard Rosenkränzer ha scritto:
-> Remove the check for the unnecessary pins-are-numbered Devicetree property.
+Il 18/11/22 12:01, Chunfeng Yun ha scritto:
+> There is error log when add a usb3 root hub without ports:
+> "hub 4-0:1.0: config failed, hub doesn't have any ports! (err -19)"
 > 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> so omit the shared hcd if either of the root hubs has no ports, but
+> usually there is no usb3 port.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
