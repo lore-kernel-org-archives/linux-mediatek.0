@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D020C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25827C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uCCt6KvagSM68uSAjbhvPPQYe86VWyZadntpOpcR1hg=; b=kPBCJNBCatB62Uy/tZjHan6jdH
-	B4mrda9q+c5LwTGLPtGHJ6v/HVmAF0KtGD6/cvtXzqfVFb1uBiwZyrDx207GMvVRfFCSoNPMxqxoy
-	OTq/GCDSz6F8AT8AeJlwRlNBr71IKSuW2OMQS3OjFof/jlMF2dxcqAiZaSLUAHnqFZuEje8mUNWgF
-	vWIppiVkEsnhIJu8J+nomceZdiwgI3gdqgoYpKtVQhCRINJvE8FgcoTaKZEjVYAF1RlUZE0EV004q
-	sa/LemjcjalxdJs+HC87SWFR57WRqrdsGAdxdWUhwKmxGLmxsXjfDxqBGlMsVmrtK5ALse+PRlssc
-	D1jeME7Q==;
+	bh=6j/sv8+MlIcU1bbu9IPkm15J+ov9E8TV/CSRC0BZc1w=; b=Q37jk6Evlzh6WJ0bBWj02VwlRF
+	AXnEgNKRlXvfWKygBwFRhdU3JzLuHYLPq/V437gzvsTtgroQsk/VzTIsltVm+5q/tQo8MHav7JiC1
+	lC5MEhP1fqIYs/xIrMFYj6EdUMlqcV2+IsCT59mU/FVR2CEpRKopGiXtKqYgHtsitTVsW5JJRCgSJ
+	QePth8LBFZAjSc3pPKKb8v0PmJk7BU1kUrHSSE8MJu7yNpQeu/uPSgj+BuqPHDf/1lyzLfIGboXiS
+	LaODroUeMI4nj+OB52PcXqIb44JOIFTUkUGfukHhPONguU96dOFSAU6SYINIP2UpSdlPma+XLvBET
+	Fcy5+O+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2f2-00BZWQ-6L; Mon, 21 Nov 2022 09:00:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ox2f8-00BZbu-Us; Mon, 21 Nov 2022 09:00:22 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2ez-00BZV7-2A
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 09:00:14 +0000
+	id 1ox2f6-00BZZY-1c
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 09:00:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A10F060F37;
-	Mon, 21 Nov 2022 09:00:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF2DFC433C1;
-	Mon, 21 Nov 2022 09:00:11 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id BDD04CE0F31;
+	Mon, 21 Nov 2022 09:00:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 936DAC433D6;
+	Mon, 21 Nov 2022 09:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669021212;
-	bh=QoNX4n5yKUnksQs6IHlT8R25KCm57YTFGMPSuoUZgy4=;
+	s=k20201202; t=1669021215;
+	bh=VAxlfHGPNx1lu1vw5SdguG4crB3iyMWNPr0oYTvjPQ8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RGm5Lvqtbw7Oo8Bfyz7FGqGCZ3M0LbgN20+WqSGD+zVSnUJc62fL/RVjQCM6V/gU6
-	 O6hKLPag+1vsmMfPmTd+KRgKsuvb07fh6jjvhkouZdsk2clT1SbqlqDm3jkiYVLu1t
-	 Mb//FJhM+/K4PwAgh4bRqaFaZZ9u7OcysQTMNaQ7/qkWkJ9kZMvEe8PZHbL1IjTwov
-	 JfikaVUspMRldaUS8EyzFjtWuZccQ8jLj/XfZ1ba0MPaDKIgjV58mAJkDwyqHGq2Cg
-	 T9AJgKdhQDEunHDGCejikFPcyUGkAEewEfTM4rFF5byOgQuP4Y3VKVwjcP7IwOHYkV
-	 IJGs8A+VXY/NQ==
+	b=e8fIdvMfMuL+6Vr95Fo1PGNERePjsf6L33iOl4ygtq47J/bu/4Q+RL0jYwdUXXkDy
+	 1NgE133NvL0Ihnu7Nr5FyYfR+nnzthZLXCBSwVmgn4/Gl+WKUAcY9oN7AMzzY40A+y
+	 2uLav86HBhYlDiAgjoo1NjclvL7omQtHVJqeTmErXPdjIEjpijNH53U5mm7oKCzjhW
+	 spkEI4n4TMBqlCY4v5WgaeIi0NZ/KNnN+yGG7+HjtTLlf8Huwic3p55SminrJ6kDAf
+	 ibwxB23PuDwSKcK2reE7zyi6pJCZYpOCajrI2Pw76Bc5hJCylRU7t0KV48ED9QSlAj
+	 T/VaWH21q/STQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -55,17 +55,17 @@ Cc: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com,
 	sujuan.chen@mediatek.com,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 2/5] net: ethernet: mtk_wed: move MTK_WDMA_RESET_IDX_TX configuration in mtk_wdma_tx_reset
-Date: Mon, 21 Nov 2022 09:59:22 +0100
-Message-Id: <00f8791e9d386d9a8110f60a0f73033587b6227f.1669020847.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 3/5] net: ethernet: mtk_wed: update mtk_wed_stop
+Date: Mon, 21 Nov 2022 09:59:23 +0100
+Message-Id: <96544565423ca4715ecb97f10ae092345cf6c97a.1669020847.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <cover.1669020847.git.lorenzo@kernel.org>
 References: <cover.1669020847.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_010013_158864_37B29B23 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20221121_010020_445613_1FD553F0 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +80,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove duplicated code. This is a preliminary patch to add Wireless
-Ethernet Dispatcher reset support.
+Update mtk_wed_stop routine and rename old mtk_wed_stop() to
+mtk_wed_deinit(). This is a preliminary patch to add Wireless Ethernet
+Dispatcher reset support.
 
 Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 32 ++++++++++++++++++-------
+ include/linux/soc/mediatek/mtk_wed.h    |  4 ++++
+ 2 files changed, 27 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index dc898ded2f05..0fb51fb31407 100644
+index 0fb51fb31407..f43652e72728 100644
 --- a/drivers/net/ethernet/mediatek/mtk_wed.c
 +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -135,16 +135,15 @@ mtk_wdma_tx_reset(struct mtk_wed_device *dev)
+@@ -539,14 +539,8 @@ mtk_wed_dma_disable(struct mtk_wed_device *dev)
+ static void
+ mtk_wed_stop(struct mtk_wed_device *dev)
+ {
+-	mtk_wed_dma_disable(dev);
+ 	mtk_wed_set_ext_int(dev, false);
  
- 	wdma_clr(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_TX_DMA_EN);
- 	if (readx_poll_timeout(mtk_wdma_read_reset, dev, status,
--			       !(status & mask), 0, 1000))
-+			       !(status & mask), 0, 10000))
- 		dev_err(dev->hw->dev, "tx reset failed\n");
+-	wed_clr(dev, MTK_WED_CTRL,
+-		MTK_WED_CTRL_WDMA_INT_AGENT_EN |
+-		MTK_WED_CTRL_WPDMA_INT_AGENT_EN |
+-		MTK_WED_CTRL_WED_TX_BM_EN |
+-		MTK_WED_CTRL_WED_TX_FREE_AGENT_EN);
+ 	wed_w32(dev, MTK_WED_WPDMA_INT_TRIGGER, 0);
+ 	wed_w32(dev, MTK_WED_WDMA_INT_TRIGGER, 0);
+ 	wdma_w32(dev, MTK_WDMA_INT_MASK, 0);
+@@ -558,7 +552,27 @@ mtk_wed_stop(struct mtk_wed_device *dev)
  
--	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++) {
--		if (dev->tx_wdma[i].desc)
--			continue;
-+	wdma_w32(dev, MTK_WDMA_RESET_IDX, MTK_WDMA_RESET_IDX_TX);
-+	wdma_w32(dev, MTK_WDMA_RESET_IDX, 0);
- 
-+	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
- 		wdma_w32(dev,
- 			 MTK_WDMA_RING_TX(i) + MTK_WED_RING_OFS_CPU_IDX, 0);
--	}
+ 	wed_w32(dev, MTK_WED_EXT_INT_MASK1, 0);
+ 	wed_w32(dev, MTK_WED_EXT_INT_MASK2, 0);
+-	wed_clr(dev, MTK_WED_CTRL, MTK_WED_CTRL_WED_RX_BM_EN);
++}
++
++static void
++mtk_wed_deinit(struct mtk_wed_device *dev)
++{
++	mtk_wed_stop(dev);
++	mtk_wed_dma_disable(dev);
++
++	wed_clr(dev, MTK_WED_CTRL,
++		MTK_WED_CTRL_WDMA_INT_AGENT_EN |
++		MTK_WED_CTRL_WPDMA_INT_AGENT_EN |
++		MTK_WED_CTRL_WED_TX_BM_EN |
++		MTK_WED_CTRL_WED_TX_FREE_AGENT_EN);
++
++	if (dev->hw->version == 1)
++		return;
++
++	wed_clr(dev, MTK_WED_CTRL,
++		MTK_WED_CTRL_RX_ROUTE_QM_EN |
++		MTK_WED_CTRL_WED_RX_BM_EN |
++		MTK_WED_CTRL_RX_RRO_QM_EN);
  }
  
  static void
-@@ -573,12 +572,6 @@ mtk_wed_detach(struct mtk_wed_device *dev)
+@@ -568,7 +582,7 @@ mtk_wed_detach(struct mtk_wed_device *dev)
+ 
+ 	mutex_lock(&hw_lock);
+ 
+-	mtk_wed_stop(dev);
++	mtk_wed_deinit(dev);
  
  	mtk_wdma_rx_reset(dev);
  	mtk_wed_reset(dev, MTK_WED_RESET_WED);
--	if (mtk_wed_get_rx_capa(dev)) {
--		wdma_clr(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_TX_DMA_EN);
--		wdma_w32(dev, MTK_WDMA_RESET_IDX, MTK_WDMA_RESET_IDX_TX);
--		wdma_w32(dev, MTK_WDMA_RESET_IDX, 0);
--	}
--
- 	mtk_wed_free_tx_buffer(dev);
- 	mtk_wed_free_tx_rings(dev);
+@@ -670,7 +684,7 @@ mtk_wed_hw_init_early(struct mtk_wed_device *dev)
+ {
+ 	u32 mask, set;
  
+-	mtk_wed_stop(dev);
++	mtk_wed_deinit(dev);
+ 	mtk_wed_reset(dev, MTK_WED_RESET_WED);
+ 	mtk_wed_set_wpdma(dev);
+ 
+diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
+index 8294978f4bca..0bbba50cf929 100644
+--- a/include/linux/soc/mediatek/mtk_wed.h
++++ b/include/linux/soc/mediatek/mtk_wed.h
+@@ -231,6 +231,8 @@ mtk_wed_get_rx_capa(struct mtk_wed_device *dev)
+ 	(_dev)->ops->ppe_check(_dev, _skb, _reason, _hash)
+ #define mtk_wed_device_update_msg(_dev, _id, _msg, _len) \
+ 	(_dev)->ops->msg_update(_dev, _id, _msg, _len)
++#define mtk_wed_device_stop(_dev) (_dev)->ops->stop(_dev)
++#define mtk_wed_device_dma_reset(_dev) (_dev)->ops->reset_dma(_dev)
+ #else
+ static inline bool mtk_wed_device_active(struct mtk_wed_device *dev)
+ {
+@@ -247,6 +249,8 @@ static inline bool mtk_wed_device_active(struct mtk_wed_device *dev)
+ #define mtk_wed_device_rx_ring_setup(_dev, _ring, _regs) -ENODEV
+ #define mtk_wed_device_ppe_check(_dev, _skb, _reason, _hash)  do {} while (0)
+ #define mtk_wed_device_update_msg(_dev, _id, _msg, _len) -ENODEV
++#define mtk_wed_device_stop(_dev) do {} while (0)
++#define mtk_wed_device_dma_reset(_dev) do {} while (0)
+ #endif
+ 
+ #endif
 -- 
 2.38.1
 
