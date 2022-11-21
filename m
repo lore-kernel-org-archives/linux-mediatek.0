@@ -4,81 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC168C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 18:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33C94C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 19:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l97CFMxK013jbwqr86PBB0+4UzVCHm4yLdQdXZhW1zs=; b=McMWxmuD3uKOWVd1BOBmgcZ3XZ
-	V21/4vCWMITHzSIf/4F5YgusxtdpdE/cKrq1iwtU0VGT2DVdIaWqBlAPB8IROtru81nb2Czxl2Wvy
-	u5SdOp5mRvsOGHmRQS6l4lBBKyOMjjHu0wlYAuns90gOzVtrh04nKhI0IM7uUI5kdIJMoCS322S/5
-	BQpXq0sVAyZ3wp6RAMzSEP2q6eYH+GelJYTs8RfwHJUOc7DBrgRrBPUxtCd5fJZHwwwrSXZgV9RvJ
-	R8m7W4ZZXcuV1JDbkPIrOJ4YeEDAf41Gnqzc0AruxxVPeTP1aBG+CS9/kM/Z+0hfd+nSxI9fCc3My
-	+AmCaXJA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lFl6W+hJWN2bBrYpxjrjqhS8rEn7D4qA6sOkPbKFAnk=; b=id9AO2Y2EwJ5O55mGT2I8OoT6K
+	hyhV7IOruQmpPGpWVdyy8gT0I1lUa1KQkVj8DZt1fKJPCQE6YGRh28AzwUHhfNDl7njxYJbcKc2XE
+	OcvLy2iZSxCbQlZBJx28sflL60FSlvUHQqQ1ElXoFakOh3fGJhWZXwaoTLEQhuKn7G0rTJr+Ye0+1
+	4wJtkWQBrqyH6Ff3tlE7TIl+dVLbckNa6OVcInnzQGeOmEDLDrsAM5dUNtK7Xyh4SAmvraNyc/GLg
+	RaU/shINhmMjWkjDkxu5O3DHeAiPQWUM3J9j1HaPlv7WnS0pck5Kk6rMA5m9mTgMriyD1V3i+a8MA
+	z3QTDLIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBqr-00H8oJ-5j; Mon, 21 Nov 2022 18:49:05 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oxCLK-00HDl2-Pe; Mon, 21 Nov 2022 19:20:34 +0000
+Received: from mail-pl1-f171.google.com ([209.85.214.171])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBqn-00H8nU-Mz; Mon, 21 Nov 2022 18:49:03 +0000
-Received: by mail-wr1-x436.google.com with SMTP id z4so6621390wrr.3;
-        Mon, 21 Nov 2022 10:49:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:subject:from:cc:to:content-language
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=l97CFMxK013jbwqr86PBB0+4UzVCHm4yLdQdXZhW1zs=;
-        b=kv5O+q+4J0Dbvr9/kbtg9lBOaSHuygjekbTq73oxC6WmcqYF+4p/c1l4U+LzBCSPNp
-         JISTCgAqmg2lkzEbTna0iJG0WSLsNwmmNto/HLzLhlcx1W+Y3GDPJSqqFRHtwWrLcAJ+
-         kzfbaPfWByxvKQo2afv7h0nFdzhefyQ1hG9/xrPhR65vsh2EvkGG8OrWo/adM9SlmKju
-         Qzk4rtbzXFiyjpe26jFCXmDTGOh9baUdqPRps76jZH/T7hsRiOiETz4CC3pyJbfXkvOM
-         JhsIqjlWZWzTKaEIXhFEVqpiDSIuKg13BDzYwFexhRGrpFIOPmfhTYYzmVImqlZDgGyz
-         xKkg==
+	id 1oxCLI-00HDjz-8k
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 19:20:33 +0000
+Received: by mail-pl1-f171.google.com with SMTP id g10so11455012plo.11
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 11:20:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:subject:from:cc:to:content-language
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=l97CFMxK013jbwqr86PBB0+4UzVCHm4yLdQdXZhW1zs=;
-        b=OCnCE4CFfgaNQcmsUJn3GjH3K4nqs5B/c9rMDNwvIPlWTJ5wVCHLpIURDtcJ+xz0hO
-         Yp77nytWUppTFze1bgVTml7fKiKZd+RQxoi4bvKzkSsZ9AvCduXPVji6GLhcL1/VNGAg
-         ZB1cQLjhG5T+zw2Kob8WIL9kcrcNXLasIlgV93qUFaSaSKgk+Jx0HHDzAoRf223St9Ny
-         kbQMEAeVBSkvDWC31Xhz29+9eXo0/9RXpGeT4QneC3OlyhrTKQR+6zMKmrIUQoDey8i5
-         E/AdDoQ1ZSm3YSUJEsPDAKiQNDyq2wifvE4CTXzKNwsXGsyENaX3s62wCNr9i+zrEtR0
-         7MiA==
-X-Gm-Message-State: ANoB5plcXTMDC4jbOioWxzHo6w3iNa7Bpxf0tgXBGHjdKCEvOmYOUD/L
-	2Xx/FlPlWx6mjBm935G8mVs=
-X-Google-Smtp-Source: AA0mqf5SxIjT9Ke9s3gwPHWa5/eDwUkP9WIJotQNGSGS0b1ho7FUkY2SJWOIkn1yiTqehQ0a1IR9FQ==
-X-Received: by 2002:adf:f6ca:0:b0:241:dc52:5556 with SMTP id y10-20020adff6ca000000b00241dc525556mr2408875wrp.291.1669056539489;
-        Mon, 21 Nov 2022 10:48:59 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id q125-20020a1c4383000000b003c6cd82596esm19135941wma.43.2022.11.21.10.48.57
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lFl6W+hJWN2bBrYpxjrjqhS8rEn7D4qA6sOkPbKFAnk=;
+        b=7CTM/rsidhVYg+uq3ZumEMT30VQItSZd/BbdVmenIausQC2YPnaJIM3V6QRV1B1kpn
+         pkOk8wBqaEtxMZOzETquqdUCo9nMqKLfMDrSKjWwks7YBndfYnNqGYDoPrJ8mC3EuVC2
+         e4MsUNTh2/AC6ty2tHXheB/zrcAvghXjauzOcpLbOE0sVLrDndDgA9vZvmcxKMnf4Vf8
+         UXSQFNCwbmnWRxArX+6r86YchmBasRcKQOHH6TsFlG3Ko2w124Q/Ohvb/22pLEqQjbbT
+         46npaDhKYIBYmywXV1gxD27WiBKXcyBuCicHVzdx7lqK3rD0Mz5oMLaUMOkzmhNStvy8
+         A4hA==
+X-Gm-Message-State: ANoB5plAzQZLSHVEO9QvgF+tYboKF8DPUpfuvlum9txQkOGnGG61KmgX
+	LywDskbVuKdhS4vLlhhyiE4=
+X-Google-Smtp-Source: AA0mqf7mssBevcyEoi7qDQBmDzSoUMpnQItLUjvd39bg3ZFkO02GqAAEYvbYar7IOPBTgdxWhfdFmg==
+X-Received: by 2002:a17:902:b407:b0:186:9c25:7ef0 with SMTP id x7-20020a170902b40700b001869c257ef0mr12999580plr.164.1669058430008;
+        Mon, 21 Nov 2022 11:20:30 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:545d:bfd:7b53:8e94? ([2620:15c:211:201:545d:bfd:7b53:8e94])
+        by smtp.gmail.com with ESMTPSA id y15-20020aa79aef000000b00565cbad9616sm9034114pfp.6.2022.11.21.11.20.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 10:48:58 -0800 (PST)
-Message-ID: <610edfca-0a3a-fd41-5208-71978866be4f@gmail.com>
-Date: Mon, 21 Nov 2022 19:48:57 +0100
+        Mon, 21 Nov 2022 11:20:29 -0800 (PST)
+Message-ID: <daa50593-d7a4-ce50-fda1-662c3ee89252@acm.org>
+Date: Mon, 21 Nov 2022 11:20:27 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
+ Thunderbird/102.4.0
+Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Remove unnecessary return code
 Content-Language: en-US
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] defconfig: mediatek updates for v6.2
+To: Chanwoo Lee <cw9316.lee@samsung.com>, stanley.chu@mediatek.com,
+ jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com,
+ linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <CGME20221121003431epcas1p1429429bf4bc1670c7b82b3889c017049@epcas1p1.samsung.com>
+ <20221121003338.11034-1-cw9316.lee@samsung.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20221121003338.11034-1-cw9316.lee@samsung.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_104901_769696_F629AB96 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221121_112032_333846_571ACD0F 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +81,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd,
+On 11/20/22 16:33, Chanwoo Lee wrote:
+> From: ChanWoo Lee <cw9316.lee@samsung.com>
+> 
+> Modify to remove unnecessary 'return 0' code.
+> 
+> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
+> ---
+>   drivers/ufs/host/ufs-mediatek.c | 11 ++++-------
+>   1 file changed, 4 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+> index ef5816d82326..21d9b047539f 100644
+> --- a/drivers/ufs/host/ufs-mediatek.c
+> +++ b/drivers/ufs/host/ufs-mediatek.c
+> @@ -1095,7 +1095,7 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
+>   	}
+>   }
+>   
+> -static int ufs_mtk_post_link(struct ufs_hba *hba)
+> +static void ufs_mtk_post_link(struct ufs_hba *hba)
+>   {
+>   	/* enable unipro clock gating feature */
+>   	ufs_mtk_cfg_unipro_cg(hba, true);
+> @@ -1106,8 +1106,6 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
+>   			FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3);
+>   
+>   	ufs_mtk_setup_clk_gating(hba);
+> -
+> -	return 0;
+>   }
+>   
+>   static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+> @@ -1120,7 +1118,7 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+>   		ret = ufs_mtk_pre_link(hba);
+>   		break;
+>   	case POST_CHANGE:
+> -		ret = ufs_mtk_post_link(hba);
+> +		ufs_mtk_post_link(hba);
+>   		break;
+>   	default:
+>   		ret = -EINVAL;
+> @@ -1272,9 +1270,8 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
+>   	struct arm_smccc_res res;
+>   
+>   	if (status == PRE_CHANGE) {
+> -		if (!ufshcd_is_auto_hibern8_supported(hba))
+> -			return 0;
+> -		ufs_mtk_auto_hibern8_disable(hba);
+> +		if (ufshcd_is_auto_hibern8_supported(hba))
+> +			ufs_mtk_auto_hibern8_disable(hba);
+>   		return 0;
+>   	}
 
-Please have a look on the only patch for defconfig. We basically enable drivers 
-needed to support MT8183 based Chromebooks.
+The last hunk is not related to the other hunks and hence probably 
+should have been a separate patch. Anyway:
 
-Regards,
-Matthias
-
----
-The following changes since commit 9abf2313adc1ca1b6180c508c25f22f9395cc780:
-
-   Linux 6.1-rc1 (2022-10-16 15:36:24 -0700)
-
-are available in the Git repository at:
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v6.1-next-defconfig
-
-for you to fetch changes up to 83f3da58682861327e571b3b5149d51a0d8bab27:
-
-   arm64: defconfig: Enable missing configs for mt8183-jacuzzi-juniper 
-(2022-11-11 09:41:16 +0100)
-
-----------------------------------------------------------------
-- enable missing drivers for to boot from MT8183 based chromebooks
-
-----------------------------------------------------------------
-Nícolas F. R. A. Prado (1):
-       arm64: defconfig: Enable missing configs for mt8183-jacuzzi-juniper
-
-  arch/arm64/configs/defconfig | 18 ++++++++++++++++++
-  1 file changed, 18 insertions(+)
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
