@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECC9C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAC4AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zmBIpBwmGEB6+X5TtFNnIkbSdMUzu9DpYDUSRNirV6w=; b=OXxZKHdtnt5psXFEkkmFGP5KKd
-	z5vdaH7ZNsy1C63ZNZAn734sQJhc4y0uY37MLTrY/DUU+fikLOlNlR/sWAPyxtp6LmgR2ZLbEhJeF
-	jH5vRi0YTybxD+dWPazgx1OINq9pnoc+1sQdQpNB19nW2Zidwccwwf/CDJiMz5kCvwMuTg5uXr5Fn
-	Vz2H5qkP2ZKlbf9jo1OE3o0XMin8xojTa0DQs0ywtK2WFpSvITcGMDU4s1g9yzutiCBKZx/Vx+0/v
-	N1OQsjdOfRnhXI/piy1bhoXbr9Vahc8N+aM6TWnWaY+YxhlaGoCMuQ4vUp/TmsJEXoK1EC5verkuP
-	IS0xo5XQ==;
+	bh=5XQKcVJbCKdPNL3r284+FMGZ1NmD17SxEaB1YH/7mOI=; b=UaNxQQb6lW004Y7nSbAWx3u2Fr
+	ivw7pL+kOwTGIKIOt2zOLRlmhUKK2XW4RxPb2rqPVGS8YyT/RxN7JRLrazaphRC+HcooufOagx3+J
+	UhgQIbbESRegC0EMHqfrSyMawyXeWweY30QHOHGFIoboG0fXR4ABetmbAjFXxv4WtO14nje0l0YJQ
+	C8vVOCIULHzq3WRJg2EXewRpohNLF+AENAyzgWHcCJ7nt/uFYcY3A3s9xFjEM8n1oefk3IuxBhupd
+	vDYz60E9J2Sgtv2Y1PhySX3oIiqvH67ahv3nDoOhrr+pH3E9vdMasuWsx6w2jCkBStvYZCTGoUdcd
+	N1tVIEFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5UJ-00DAVM-KV; Mon, 21 Nov 2022 12:01:23 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ox5Wb-00DBQI-Re; Mon, 21 Nov 2022 12:03:45 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5U3-00DAOv-IL; Mon, 21 Nov 2022 12:01:10 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 911C56601DEA;
-	Mon, 21 Nov 2022 12:01:04 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669032065;
-	bh=NG4/5IZyY1SjaNQIs07uOPi5SzQEZBoAwoUix43JLXs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LSI7kAIwIu50oezePtCjqfxfuIvevXPcNXKDyuI9AY4GQ8FgHigIbZJ1+JVWGceT+
-	 3goVHzSb8N52oAF7e7DhODUzHfmnP2XppXjR89IBL8Ybcv0t+JYz7qsMqhmNFfABai
-	 AUtnJWjme+rJP3J2McXymBiFYY0xsn2cSfcOKA9Q1aETredpw0XVbiXRMkl+0r00wK
-	 jKO/YgKA01vBiNS8+Viihnr2hFAeDmuUYjOsQ+k+tKz3/q7Xwg/JB6PbrAZm2ObnDw
-	 bIfp3i/vm2PQ9g7E+s1ToJgeS8QUJES+HkL8WsF4hcGEdJX+SfpHFrXF1U9+hN9i/j
-	 fenV9NvXxM0Cw==
-Message-ID: <fe236ad5-c4e0-1649-6521-ab7c14a1ff15@collabora.com>
-Date: Mon, 21 Nov 2022 13:01:02 +0100
+	id 1ox5WQ-00DBLB-1V; Mon, 21 Nov 2022 12:03:35 +0000
+Received: by mail-wr1-x433.google.com with SMTP id z4so4928671wrr.3;
+        Mon, 21 Nov 2022 04:03:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5XQKcVJbCKdPNL3r284+FMGZ1NmD17SxEaB1YH/7mOI=;
+        b=HS4vlJyCkWEfvsMOQSvAWS+nanJLMMyJYUkeOp9QiSi5pcTW25aPdUB4POvsIUg42S
+         U2pw9eI2yOW3OJ0EDFEnKkYe3whh+ZB3hEdVMCoOg7gB+HkjsWWlcaNmC4emBztTdWMH
+         Fs6yFRbnD1oeutuPcrsEa0gQeC41VuSb9lMiuBe4qH8iwnCnvVYXik3aOtGdKGEnpqyC
+         HIma+9c42zoh9IyN7ATszGdxjlHsMqod7Vw/BIX9D8eKrL+h4xO3ucJqEYSPGaVubbV3
+         3EHcHVkaTf57RWC20Zz/AeNtQGoX6LFcmsgVkxHBMIAg8c+oiXqsYk0I3Nvo2c9Z+/H9
+         mlFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5XQKcVJbCKdPNL3r284+FMGZ1NmD17SxEaB1YH/7mOI=;
+        b=QjJqhjEogfBArKIoH9fOl6Dq1XFDVDC740jUP1LTd73UNRTCHeSXWFsXxzxxud5ux4
+         KRM8aMIOWzvzGd4RopXF/oJ4SFmwjarMGSpP50aNKKywHUOk5J03u7SpanV9F0Ob4tkl
+         hoK9e4iD8Iq7uCn/NMkXNm68tH3OFJcGvE0adwKd7p2MoCnYYYHqesELdrGSBKVJ7MHH
+         gi0jPynEf61ZB18cgq9vbN3Ayl9qa05p48DEsBTKukGOoj+uAp6xRunvAouVzThqsBUO
+         8xVxY6xLNIKS0yjSn6AlZ1gOi84Se+JuA96TYt9tvkuamNymOYTHd+J80uhrRDbmfks/
+         y5SA==
+X-Gm-Message-State: ANoB5plt1oikOuWkhGzrp5+Z70+4lkChF0QUOCoXsHQPxXxslR4zRn9L
+	/HucpQyyK4h4Bbhwxdmv66M=
+X-Google-Smtp-Source: AA0mqf47dsNMrYKK7mFgXn4kWq2UQ8QtuBdL10SrDfVoUPuHM0hhxm2Q3t5E/IRwQgQzWf+z0J0ydQ==
+X-Received: by 2002:a05:6000:1181:b0:22e:53c0:ead8 with SMTP id g1-20020a056000118100b0022e53c0ead8mr10898826wrx.210.1669032210282;
+        Mon, 21 Nov 2022 04:03:30 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id z2-20020a1c4c02000000b003cfe1376f68sm13335036wmf.9.2022.11.21.04.03.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Nov 2022 04:03:28 -0800 (PST)
+Message-ID: <89ceb49a-edfc-2d55-ebf5-cc5ff6d2d52f@gmail.com>
+Date: Mon, 21 Nov 2022 13:03:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [RESEND PATCH v3] soc: mediatek: Introduce
- mediatek-regulator-coupler driver
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 0/8] ARM64 MediaTek devicetree fixes - Part 1
 Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org,
- alyssa.rosenzweig@collabora.com, nfraprado@collabora.com,
- dmitry.osipenko@collabora.com
-References: <20221006115816.66853-1-angelogioacchino.delregno@collabora.com>
- <e04d15ee-9570-c919-5218-91109a88c0cb@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e04d15ee-9570-c919-5218-91109a88c0cb@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ sam.shih@mediatek.com, hanks.chen@mediatek.com, weiyi.lu@mediatek.com,
+ zhiyong.tao@mediatek.com, andrew-sh.cheng@mediatek.com,
+ viresh.kumar@linaro.org, chunfeng.yun@mediatek.com, fparent@baylibre.com,
+ mars.cheng@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221013152212.416661-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_040107_892342_F4FDAF41 
-X-CRM114-Status: GOOD (  41.97  )
+X-CRM114-CacheID: sfid-20221121_040334_133526_FF4CBEC4 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,278 +96,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/11/22 12:44, Matthias Brugger ha scritto:
+
+
+On 13/10/2022 17:22, AngeloGioacchino Del Regno wrote:
+> This series fixes devicetree warnings for some MediaTek DTs.
 > 
+> Since there's a lot to be done and since not all fixes are trivial,
+> I decided to do this in more than one step, as to ease work for
+> reviewers, maintainers and for .. me.
+> This being part 1 means that there's more to come... a bit later :-)
 > 
-> On 06/10/2022 13:58, AngeloGioacchino Del Regno wrote:
->> This driver currently deals with GPU-SRAM regulator coupling, ensuring
->> that the SRAM voltage is always between a specific range of distance to
->> the GPU voltage, depending on the SoC, necessary in order to achieve
->> system stability across the full range of supported GPU frequencies.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->> ---
->>
->> This driver was successfully tested for more than 3 months.
->> GPU DVFS works correctly with no stability issues.
->>
->> Changes in RESEND,v3:
->>   Rebased over next-20221005
->>
->> Changes in v3:
->>   - Added braces to else-if branch
->>
->> Changes in v2:
->>   - Added check for n_coupled
->>   - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
->>
->> Context:
->> This driver is the last of the pieces of a bigger puzzle, aiming to finally
->> enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
->> SoCs on the fully open source graphics stack (Panfrost driver).
->>
->> No devicetree bindings are provided because this does not require any
->> driver-specific binding at all.
->>
->> Last but not least: it was chosen to have this driver enabled for
->> ( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
->> choice because, once the DVFS mechanism will be fully working, using one
->> of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
->> to unstabilities and system crashes.
->> For COMPILE_TEST, choice is given for obvious reasons.
->>
->>   drivers/soc/mediatek/Kconfig                 |   5 +
->>   drivers/soc/mediatek/Makefile                |   1 +
->>   drivers/soc/mediatek/mtk-regulator-coupler.c | 159 +++++++++++++++++++
->>   3 files changed, 165 insertions(+)
->>   create mode 100644 drivers/soc/mediatek/mtk-regulator-coupler.c
->>
->> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
->> index 40d0cc600cae..30b5afc0e51d 100644
->> --- a/drivers/soc/mediatek/Kconfig
->> +++ b/drivers/soc/mediatek/Kconfig
->> @@ -44,6 +44,11 @@ config MTK_PMIC_WRAP
->>         on different MediaTek SoCs. The PMIC wrapper is a proprietary
->>         hardware to connect the PMIC.
->> +config MTK_REGULATOR_COUPLER
->> +    bool "MediaTek SoC Regulator Coupler" if COMPILE_TEST
->> +    default ARCH_MEDIATEK
->> +    depends on REGULATOR
->> +
->>   config MTK_SCPSYS
->>       bool "MediaTek SCPSYS Support"
->>       default ARCH_MEDIATEK
->> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
->> index 0e9e703c931a..8c0ddacbcde8 100644
->> --- a/drivers/soc/mediatek/Makefile
->> +++ b/drivers/soc/mediatek/Makefile
->> @@ -3,6 +3,7 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
->>   obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
->>   obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->>   obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->> +obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
->>   obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
->>   obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
->>   obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
->> diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c 
->> b/drivers/soc/mediatek/mtk-regulator-coupler.c
->> new file mode 100644
->> index 000000000000..ad2ed42aa697
->> --- /dev/null
->> +++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
->> @@ -0,0 +1,159 @@
->> +// SPDX-License-Identifier: GPL-2.0-only
->> +/*
->> + * Voltage regulators coupler for MediaTek SoCs
->> + *
->> + * Copyright (C) 2022 Collabora, Ltd.
->> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> + */
->> +
->> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
->> +
->> +#include <linux/init.h>
->> +#include <linux/kernel.h>
->> +#include <linux/of.h>
->> +#include <linux/regulator/coupler.h>
->> +#include <linux/regulator/driver.h>
->> +#include <linux/regulator/machine.h>
->> +#include <linux/suspend.h>
->> +
->> +#define to_mediatek_coupler(x)    container_of(x, struct 
->> mediatek_regulator_coupler, coupler)
->> +
->> +struct mediatek_regulator_coupler {
->> +    struct regulator_coupler coupler;
->> +    struct regulator_dev *vsram_rdev;
->> +};
->> +
->> +/*
->> + * We currently support only couples of not more than two vregs and
->> + * modify the vsram voltage only when changing voltage of vgpu.
->> + *
->> + * This function is limited to the GPU<->SRAM voltages relationships.
->> + */
->> +static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
->> +                          struct regulator_dev *rdev,
->> +                          suspend_state_t state)
->> +{
->> +    struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
->> +    int max_spread = rdev->constraints->max_spread[0];
->> +    int vsram_min_uV = mrc->vsram_rdev->constraints->min_uV;
->> +    int vsram_max_uV = mrc->vsram_rdev->constraints->max_uV;
->> +    int vsram_target_min_uV, vsram_target_max_uV;
->> +    int min_uV = 0;
->> +    int max_uV = INT_MAX;
->> +    int ret;
->> +
->> +    /*
->> +     * If the target device is on, setting the SRAM voltage directly
->> +     * is not supported as it scales through its coupled supply voltage.
->> +     *
->> +     * An exception is made in case the use_count is zero: this means
->> +     * that this is the first time we power up the SRAM regulator, which
->> +     * implies that the target device has yet to perform initialization
->> +     * and setting a voltage at that time is harmless.
->> +     */
->> +    if (rdev == mrc->vsram_rdev) {
->> +        if (rdev->use_count == 0)
->> +            return regulator_do_balance_voltage(rdev, state, true);
->> +
->> +        return -EPERM;
->> +    }
->> +
->> +    ret = regulator_check_consumers(rdev, &min_uV, &max_uV, state);
->> +    if (ret < 0)
->> +        return ret;
->> +
->> +    if (min_uV == 0) {
->> +        ret = regulator_get_voltage_rdev(rdev);
->> +        if (ret < 0)
->> +            return ret;
->> +        min_uV = ret;
->> +    }
->> +
->> +    ret = regulator_check_voltage(rdev, &min_uV, &max_uV);
->> +    if (ret < 0)
->> +        return ret;
->> +
->> +    /*
->> +     * If we're asked to set a voltage less than VSRAM min_uV, set
->> +     * the minimum allowed voltage on VSRAM, as in this case it is
->> +     * safe to ignore the max_spread parameter.
->> +     */
->> +    vsram_target_min_uV = max(vsram_min_uV, min_uV + max_spread);
->> +    vsram_target_max_uV = min(vsram_max_uV, vsram_target_min_uV + max_spread);
->> +
->> +    /* Make sure we're not out of range */
->> +    vsram_target_min_uV = min(vsram_target_min_uV, vsram_max_uV);
->> +
->> +    pr_debug("Setting voltage %d-%duV on %s (minuV %d)\n",
->> +         vsram_target_min_uV, vsram_target_max_uV,
->> +         rdev_get_name(mrc->vsram_rdev), min_uV);
->> +
->> +    ret = regulator_set_voltage_rdev(mrc->vsram_rdev, vsram_target_min_uV,
->> +                     vsram_target_max_uV, state);
->> +    if (ret)
->> +        return ret;
->> +
->> +    /* The sram voltage is now balanced: update the target vreg voltage */
->> +    return regulator_do_balance_voltage(rdev, state, true);
->> +}
->> +
->> +static int mediatek_regulator_attach(struct regulator_coupler *coupler,
->> +                     struct regulator_dev *rdev)
->> +{
->> +    struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
->> +    const char *rdev_name = rdev_get_name(rdev);
->> +
->> +    /*
->> +     * If we're getting a coupling of more than two regulators here and
->> +     * this means that this is surely not a GPU<->SRAM couple: in that
->> +     * case, we may want to use another coupler implementation, if any,
->> +     * or the generic one: the regulator core will keep walking through
->> +     * the list of couplers when any .attach_regulator() cb returns 1.
->> +     */
->> +    if (rdev->coupling_desc.n_coupled > 2)
->> +        return 1;
->> +
->> +    if (strstr(rdev_name, "sram")) {
-> 
-> My understanding is, that we have to have either a DT node with regulator-name = 
-> "sram" property to pollute rdev->constraints->name or some regulator_desc->name 
-> populated in the drivers/regulator/mt*.c
+> AngeloGioacchino Del Regno (8):
+>    arm64: dts: mt7896a: Fix unit_address_vs_reg warning for oscillator
+>    arm64: dts: mt6779: Fix devicetree build warnings
+>    arm64: dts: mt2712e: Fix unit_address_vs_reg warning for oscillators
+>    arm64: dts: mt2712e: Fix unit address for pinctrl node
+>    arm64: dts: mt2712-evb: Fix vproc fixed regulators unit names
+>    arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
+>    arm64: dts: mediatek: pumpkin-common: Fix devicetree warnings
+>    arm64: dts: mediatek: mt6797: Fix 26M oscillator unit name
 > 
 
-No, it's not trying to find a regulator named "sram", but any regulator that
-*contains* the "sram" string in its name, but checks only regulators that are
-coupled to others. This is the same for the "Vgpu" / "vgpu".
-
-Example:
-
-Regulator A, coupled to Regulator B.
-
-Regulator A name = "Vgpu" or "vgpu", or *vgpu*, or *Vgpu*
-                    (name must contain either Vgpu or vgpu)
-
-Regulator B name = "vsram" or "sram_gpu" or *sram*
-                    (name must contain "sram").
-
-mrc->vsram_rdev = rdev
-
-rdev == our Regulator B.
-
-We hence return 0 to the coupling API: this will produce the effect of making
-it use this driver's .balance_voltage() callback instead of the generic one
-on vgpu<->vsram.
+Whole series applied, thanks!
 
 
-> I wasn't able to find either of this, so I wonder how this is supposed to work. 
-> Please provide pointers to a working and complete implementation of this, so that 
-> I'm able to judge what is going on and if the approach is the correct one.
+>   arch/arm64/boot/dts/mediatek/mt2712-evb.dts   | 12 +++++-----
+>   arch/arm64/boot/dts/mediatek/mt2712e.dtsi     | 22 +++++++++----------
+>   arch/arm64/boot/dts/mediatek/mt6779.dtsi      |  8 +++----
+>   arch/arm64/boot/dts/mediatek/mt6797.dtsi      |  2 +-
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  2 +-
+>   .../boot/dts/mediatek/pumpkin-common.dtsi     |  6 ++---
+>   6 files changed, 26 insertions(+), 26 deletions(-)
 > 
-> I tried to figure out using mt8195-tracking-master-rolling
-
-That's the right branch.
-
-Let's take MT8192 Asurada as an example of how this works....
-
-`mt6359_vsram_others_ldo_reg´ is the SRAM regulator for the GPU:
-https://gitlab.collabora.com/google/chromeos-kernel/-/blob/mt8195-tracking-master-rolling/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi#L551
-
-`mt6359_vsram_others_ldo_reg` regulator-name = "vsram_others";
-                                                  ^^^^
-Contains "sram", and this regulator is also
-
-	regulator-coupled-with = <&mt6315_7_vbuck1>;
-
-`mt6315_7_vbuck1` regulator-name = "Vgpu";
-                                     ^^^^
-Contains "Vgpu", and this regulator is also
-
-	regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
-
-That's how the coupling works in this case.
-
-
-Now, looking at case exclusions:
-In MT8192 Asurada (or, actually, mt6359.dtsi) we have other regulators that do
-actually contain "sram" in their name, like "vsram_proc1" and "vsram_others_sshub".
-
-These regulators will be ignored, as they are *not* coupled with Vgpu.
-
-
-What this driver currently does in this regard is:
-1. Regulator attach is called only on *coupled* regulators, not on the others
-2. If the regulator contains name "vgpu" or "Vgpu" or "sram" we're good,
-    otherwise we don't attach the balance_voltage logic of this driver to
-    the unmatched regulators.
-
-
-Does this explanation clarify your doubts?
-
-Regards,
-Angelo
-
 
