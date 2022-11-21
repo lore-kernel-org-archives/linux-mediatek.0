@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33C94C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 19:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F805C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 19:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lFl6W+hJWN2bBrYpxjrjqhS8rEn7D4qA6sOkPbKFAnk=; b=id9AO2Y2EwJ5O55mGT2I8OoT6K
-	hyhV7IOruQmpPGpWVdyy8gT0I1lUa1KQkVj8DZt1fKJPCQE6YGRh28AzwUHhfNDl7njxYJbcKc2XE
-	OcvLy2iZSxCbQlZBJx28sflL60FSlvUHQqQ1ElXoFakOh3fGJhWZXwaoTLEQhuKn7G0rTJr+Ye0+1
-	4wJtkWQBrqyH6Ff3tlE7TIl+dVLbckNa6OVcInnzQGeOmEDLDrsAM5dUNtK7Xyh4SAmvraNyc/GLg
-	RaU/shINhmMjWkjDkxu5O3DHeAiPQWUM3J9j1HaPlv7WnS0pck5Kk6rMA5m9mTgMriyD1V3i+a8MA
-	z3QTDLIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZDtrqJqyAAB4TBCUonI2IN7i3sDJI2wzUGUaxKd9Kkc=; b=omblxIL6USCbFEcECSxkBnXT+d
+	AKuxrFV/KyNx411e2VaEJL44oQ3Czjy6t1z20U0uG5Dl6w+Xz9YZpJ4pCQbJZtgsDX56JzmXQT/aO
+	qkzddi1ZDbCZrlmimPuflaj5yUcNowx+dKx5ak+Qem9SUTtXDgXmYCX0gaBl736X5No8SXGlHYmap
+	9vWj5Q7PwE3BO0Ynu8geRpk2Vm4bJZCBNiux65iPCxN3MlLsBI8kgCB0tyGeeVT2ICmXT7u+uWbU+
+	8Y4RLPc87XIXijfKU+D3HoI3qYZnxLGMVCnKVb2mBLKYnBxVDYeQ2UYq7C2RbAEn7ApM2RZR3aA4C
+	FFBdbJDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxCLK-00HDl2-Pe; Mon, 21 Nov 2022 19:20:34 +0000
-Received: from mail-pl1-f171.google.com ([209.85.214.171])
+	id 1oxCVa-00HGBX-AP; Mon, 21 Nov 2022 19:31:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxCLI-00HDjz-8k
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 19:20:33 +0000
-Received: by mail-pl1-f171.google.com with SMTP id g10so11455012plo.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 11:20:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lFl6W+hJWN2bBrYpxjrjqhS8rEn7D4qA6sOkPbKFAnk=;
-        b=7CTM/rsidhVYg+uq3ZumEMT30VQItSZd/BbdVmenIausQC2YPnaJIM3V6QRV1B1kpn
-         pkOk8wBqaEtxMZOzETquqdUCo9nMqKLfMDrSKjWwks7YBndfYnNqGYDoPrJ8mC3EuVC2
-         e4MsUNTh2/AC6ty2tHXheB/zrcAvghXjauzOcpLbOE0sVLrDndDgA9vZvmcxKMnf4Vf8
-         UXSQFNCwbmnWRxArX+6r86YchmBasRcKQOHH6TsFlG3Ko2w124Q/Ohvb/22pLEqQjbbT
-         46npaDhKYIBYmywXV1gxD27WiBKXcyBuCicHVzdx7lqK3rD0Mz5oMLaUMOkzmhNStvy8
-         A4hA==
-X-Gm-Message-State: ANoB5plAzQZLSHVEO9QvgF+tYboKF8DPUpfuvlum9txQkOGnGG61KmgX
-	LywDskbVuKdhS4vLlhhyiE4=
-X-Google-Smtp-Source: AA0mqf7mssBevcyEoi7qDQBmDzSoUMpnQItLUjvd39bg3ZFkO02GqAAEYvbYar7IOPBTgdxWhfdFmg==
-X-Received: by 2002:a17:902:b407:b0:186:9c25:7ef0 with SMTP id x7-20020a170902b40700b001869c257ef0mr12999580plr.164.1669058430008;
-        Mon, 21 Nov 2022 11:20:30 -0800 (PST)
-Received: from ?IPV6:2620:15c:211:201:545d:bfd:7b53:8e94? ([2620:15c:211:201:545d:bfd:7b53:8e94])
-        by smtp.gmail.com with ESMTPSA id y15-20020aa79aef000000b00565cbad9616sm9034114pfp.6.2022.11.21.11.20.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 11:20:29 -0800 (PST)
-Message-ID: <daa50593-d7a4-ce50-fda1-662c3ee89252@acm.org>
-Date: Mon, 21 Nov 2022 11:20:27 -0800
+	id 1oxCVX-00HG9B-5H
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 19:31:08 +0000
+X-UUID: aab8e41361c447b1ae4564dc8fb85f76-20221121
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZDtrqJqyAAB4TBCUonI2IN7i3sDJI2wzUGUaxKd9Kkc=;
+	b=Cuu5Zz75NlI13PIAXDb4GDJvjiT9lwJUoJpZ5p2N+10D+uFkBj9hXXwVhUKFpvcxI4YQccuKZucq2NpywxNDrIQOGjAOLcnVsWM59QaSuv9ysbFrGuXLNv4MXGBsl9IUmVFClZq1Lsjd3tOizM4JMDC9xNxFfGLgwl6sXRkE4rI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:5bfc8450-385b-4ef9-9c3b-f7538e521998,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:0b69d2db-6ad4-42ff-91f3-18e0272db660,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: aab8e41361c447b1ae4564dc8fb85f76-20221121
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2043345460; Mon, 21 Nov 2022 12:30:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 22 Nov 2022 03:20:54 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 22 Nov 2022 03:20:54 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+	<abhishekpandit@chromium.org>, <mcchou@chromium.org>, <shawnku@google.com>,
+	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH v3 1/3] Bluetooth: btusb: mediatek: use readx_poll_timeout instead of open coding
+Date: Tue, 22 Nov 2022 03:20:51 +0800
+Message-ID: <caf41c6a33b1ceeb36ec7261b0cc894082352c46.1669057170.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: Remove unnecessary return code
-Content-Language: en-US
-To: Chanwoo Lee <cw9316.lee@samsung.com>, stanley.chu@mediatek.com,
- jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com,
- linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <CGME20221121003431epcas1p1429429bf4bc1670c7b82b3889c017049@epcas1p1.samsung.com>
- <20221121003338.11034-1-cw9316.lee@samsung.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20221121003338.11034-1-cw9316.lee@samsung.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_112032_333846_571ACD0F 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20221121_113107_235811_DB1B22A7 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,61 +85,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/20/22 16:33, Chanwoo Lee wrote:
-> From: ChanWoo Lee <cw9316.lee@samsung.com>
-> 
-> Modify to remove unnecessary 'return 0' code.
-> 
-> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
-> ---
->   drivers/ufs/host/ufs-mediatek.c | 11 ++++-------
->   1 file changed, 4 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-> index ef5816d82326..21d9b047539f 100644
-> --- a/drivers/ufs/host/ufs-mediatek.c
-> +++ b/drivers/ufs/host/ufs-mediatek.c
-> @@ -1095,7 +1095,7 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
->   	}
->   }
->   
-> -static int ufs_mtk_post_link(struct ufs_hba *hba)
-> +static void ufs_mtk_post_link(struct ufs_hba *hba)
->   {
->   	/* enable unipro clock gating feature */
->   	ufs_mtk_cfg_unipro_cg(hba, true);
-> @@ -1106,8 +1106,6 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
->   			FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3);
->   
->   	ufs_mtk_setup_clk_gating(hba);
-> -
-> -	return 0;
->   }
->   
->   static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
-> @@ -1120,7 +1118,7 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
->   		ret = ufs_mtk_pre_link(hba);
->   		break;
->   	case POST_CHANGE:
-> -		ret = ufs_mtk_post_link(hba);
-> +		ufs_mtk_post_link(hba);
->   		break;
->   	default:
->   		ret = -EINVAL;
-> @@ -1272,9 +1270,8 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
->   	struct arm_smccc_res res;
->   
->   	if (status == PRE_CHANGE) {
-> -		if (!ufshcd_is_auto_hibern8_supported(hba))
-> -			return 0;
-> -		ufs_mtk_auto_hibern8_disable(hba);
-> +		if (ufshcd_is_auto_hibern8_supported(hba))
-> +			ufs_mtk_auto_hibern8_disable(hba);
->   		return 0;
->   	}
+From: Sean Wang <sean.wang@mediatek.com>
 
-The last hunk is not related to the other hunks and hence probably 
-should have been a separate patch. Anyway:
+Use readx_poll_timeout instead of open coding to poll the hardware reset
+status until it is done.
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+The patch is built and tested on the top of the patches
+[v6,1/3] Bluetooth: Add support for hci devcoredump
+[v6,2/3] Bluetooth: btusb: Add btusb devcoredump support
+[v6,3/3] Bluetooth: btintel: Add Intel devcoredump support
+which are contributed from Manish Mandlik
+
+v2: use 20ms as the unit to poll according to the requirement of
+    readx_poll_timeout
+
+v3: refine btusb_mtk_reset_done and drop the necessary error check
+    in btusb_mtk_cmd_timeout
+---
+ drivers/bluetooth/btusb.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 8d076efdf6a8..791bd3f620fc 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2321,8 +2321,6 @@ static int btusb_send_frame_intel(struct hci_dev *hdev, struct sk_buff *skb)
+ #define MTK_EP_RST_OPT		0x74011890
+ #define MTK_EP_RST_IN_OUT_OPT	0x00010001
+ #define MTK_BT_RST_DONE		0x00000100
+-#define MTK_BT_RESET_WAIT_MS	100
+-#define MTK_BT_RESET_NUM_TRIES	10
+ 
+ static void btusb_mtk_wmt_recv(struct urb *urb)
+ {
+@@ -2679,6 +2677,16 @@ static int btusb_mtk_id_get(struct btusb_data *data, u32 reg, u32 *id)
+ 	return btusb_mtk_reg_read(data, reg, id);
+ }
+ 
++static u32 btusb_mtk_reset_done(struct hci_dev *hdev)
++{
++	struct btusb_data *data = hci_get_drvdata(hdev);
++	u32 val = 0;
++
++	btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
++
++	return val & MTK_BT_RST_DONE;
++}
++
+ static int btusb_mtk_setup(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+@@ -2868,7 +2876,7 @@ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	u32 val;
+-	int err, retry = 0;
++	int err;
+ 
+ 	/* It's MediaTek specific bluetooth reset mechanism via USB */
+ 	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
+@@ -2899,18 +2907,10 @@ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
+ 	btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
+ 	btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
+ 
+-	/* Poll the register until reset is completed */
+-	do {
+-		btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
+-		if (val & MTK_BT_RST_DONE) {
+-			bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
+-			break;
+-		}
+-
+-		bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
+-		retry++;
+-		msleep(MTK_BT_RESET_WAIT_MS);
+-	} while (retry < MTK_BT_RESET_NUM_TRIES);
++	err = readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
++				 val & MTK_BT_RST_DONE, 20000, 1000000);
++	if (err < 0)
++		bt_dev_err(hdev, "Reset timeout");
+ 
+ 	btusb_mtk_id_get(data, 0x70010200, &val);
+ 	if (!val)
+-- 
+2.25.1
+
 
