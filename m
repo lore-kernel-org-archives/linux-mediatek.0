@@ -4,63 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E470C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C9E2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 10:16:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5YgAN802osfEThVo49vJEB+qTcdOAVAYtMlcIVpjYOw=; b=N2cZud84X97mesrzxdWtw57Vmy
-	3l7+y9IXuPci34OLlL7HHCF825+g3A5DiBEW3DQ7bzjRd14YTS+hMRzIzj/Sf5VAfyAT9hr9Ln3af
-	bSN9cb1MvPKflqgmmAXiZBo4VMsWtRW8Wf8wwDQZCSzLQwhCXIO32qvHljAwUnoYquhiHKYh+Zn1/
-	vGa/C9j/qoZaTNE0NNQy95dzVW5EuPUqYyQVPwtxP3/L1HpoywljLuQvX78vZFWFDH+VKCcw0/gbv
-	JmI38A45IvJAHuAT9LY75UjTpklnOhHvHYWWPw2izD6jNRDM6fikWgx1Yv7Lc8Rw0Hdj3NgKC7L4m
-	1ca0OTKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=phJFVLoc9/POc6nbD0liFwrgYsKAiaNUs+VrsQZny0U=; b=4Z6BFYpyLfwbdUqR/VgIA8hUUA
+	ZdLuMIe43Z9/y+5/ytvF2qoAP1SRKhkN8z4C5aba4ld1sEV0QCJlf2Bwexs5KIQAF2FCIrsK6eTO+
+	XBrNOgcpMo3k2aCgTDGb2aVjFsbVVHypSIeOkcEcr84a27v2LqF6BcNQoYsTULVGjPcibwEYKszun
+	PRc49vd6lP95wjffBipVdCVOKK0kbxrBF6U4PTduUn6M5EqMvxFeBxAJwYbvbuo8l9FeZ3QKAgTdR
+	onS75z0kdTO/aAOb9C+FAwOVkBXsgs3PfV1a28X76ya3UpWLhZqG/SBiepMPDhJtBKHG86OFvhqGG
+	RBSzcm7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2zn-00BmTK-Sh; Mon, 21 Nov 2022 09:21:43 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ox3rB-00CDNx-AC; Mon, 21 Nov 2022 10:16:53 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2zl-00BmSi-Fg
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 09:21:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 276CEB80D81;
-	Mon, 21 Nov 2022 09:21:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78860C433D6;
-	Mon, 21 Nov 2022 09:21:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669022498;
-	bh=wMnIkGX/+4CxQcSMr92gcyLZT+n15ZtIVaEimSz4LIc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oQlTkqlHZsG9b1RY8j0kqin6sAa9sRQEjwGjYROr+CEfGsKEarzDENqptitdxDBZH
-	 NCY5opgI9IGFIBm1AFhj4KOp5C9gUx33+ADg83lGVKQ6GCeLKOnr1gP6rxjhx5XVYP
-	 rn1/Z7tGDiHV2YNpziS/PQfRycKh8meZItQ+Hn/TLQozfYZ1ajts17+7ZUbYoQprns
-	 /OzxeU809dSRU8Vq/iOCjpGDt7uRdimdo00q49OM+nNoOwnZjsSZzd87AHEPRZXQ2C
-	 Mty0ZJvliiV+SvzdKAuKfjQRZ4k+nGwZl0Q8/OY/bZantRx8E0WoA4ZsX+M2U0KKre
-	 e27i2vLNunLGg==
-Date: Mon, 21 Nov 2022 10:21:35 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Sujuan Chen <sujuan.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, linux-kernel@vger.kernel.org,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Bo Jiao <bo.jiao@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] net: ethernet: mtk_wed: add wcid overwritten support for
- wed v1
-Message-ID: <Y3tDH13Pf9f6uRc7@lore-desk>
-References: <217932f091aa9d9cb5e876a2e958ca25f80f80b2.1668997816.git.sujuan.chen@mediatek.com>
+	id 1ox3qy-00CD7O-JL; Mon, 21 Nov 2022 10:16:41 +0000
+Received: by mail-lf1-x131.google.com with SMTP id d6so18087678lfs.10;
+        Mon, 21 Nov 2022 02:16:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=phJFVLoc9/POc6nbD0liFwrgYsKAiaNUs+VrsQZny0U=;
+        b=HMQtLNQC6JHUcpQnXKaMPeLJYNEXESjWqW9Jm9fxHdDsyxq3fD2y+gUbum8cazGLlS
+         0Nzot0o7wlI3aHmX0JtEp59ASN04zoUP5cBLwhJUS8UWXS1vrDPK5s0nm6MtNyPRkAXr
+         i9HRjhzMXJwfcX+oinAm/OP6xU5bC2NyVL00djub62igijCsqVS/+Gs3g8Ob67GV62e5
+         lbpACEGBVz+P7gegvEedJPLtYc/UAuXuZCP3D6YMe70yXUQfK1oo2OuCbl17wDJsWOWJ
+         juioZPmih2Q2tDZ+3ZlWsJUEwqpG6mEfuUGwVkFA5iKPxQNEPbzHK7gtA/8R8W2wDMdd
+         a+Uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=phJFVLoc9/POc6nbD0liFwrgYsKAiaNUs+VrsQZny0U=;
+        b=a2NxsPc8sf4eN8yF6RwLLMTcr9FegfuIOTjzWV7saa90S79Vad9zAUlY9462kWzxXH
+         bt1wC01AREBN8zQzd+sxlKk4vej4+0QN1lz+PS1CS8/sgo3d03OTIVJ0bZRdMf+KJHNQ
+         jXUfXH8JCuP4XcI2BxdJ5zsoWvAfJudp4YGf7BiWvKYSG03yhSE2nJlbi95GQFO9g3Uv
+         qVlVmA82SPrlIwKXHKym1AhGGYmm6+mG6shyRnQUHoSQ8lrpyWYK93zIWbUFznyPj7SS
+         yErRq2j92rs2+P9xy1T9IM6vJd6f3XysCTlxgUYBxeDDcIHfKvnjogcHNb5BGTTnbaki
+         AGPA==
+X-Gm-Message-State: ANoB5pn/m60KwyNPngPXJbusFvNPT8Abi7WmpBBzoERsmeJQ/BXJU1es
+	u5CjORcLEa0P6uP0DEm6C1c=
+X-Google-Smtp-Source: AA0mqf4ot1dRfz4XcQJOzbIEVDNmvoy9FxZf/F3Gx+j1WTmSwhOpMtvOjIltFzq0/t2LrM51x6qHTA==
+X-Received: by 2002:a05:6512:2521:b0:4a4:5e83:e07d with SMTP id be33-20020a056512252100b004a45e83e07dmr1937785lfb.409.1669025797870;
+        Mon, 21 Nov 2022 02:16:37 -0800 (PST)
+Received: from [172.16.196.95] ([213.255.186.46])
+        by smtp.gmail.com with ESMTPSA id e8-20020a05651236c800b004a03d5c2140sm1957388lfs.136.2022.11.21.02.16.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Nov 2022 02:16:36 -0800 (PST)
+Message-ID: <20825b50-c2ef-7efb-efbf-ac00cc4ab9f4@gmail.com>
+Date: Mon, 21 Nov 2022 12:16:24 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4eo3k1jS5flplOqN"
-Content-Disposition: inline
-In-Reply-To: <217932f091aa9d9cb5e876a2e958ca25f80f80b2.1668997816.git.sujuan.chen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+From: Matti Vaittinen <mazziesaccount@gmail.com>
+Subject: Re: [PATCH] dt-bindings: Add missing start and/or end of line regex
+ anchors
+To: Rob Herring <robh@kernel.org>, Ilia Lin <ilia.lin@kernel.org>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@somainline.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ Yangtao Li <tiny.windzz@gmail.com>, Nishanth Menon <nm@ti.com>,
+ Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Javier Martinez Canillas <javier@dowhile0.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Maxime Ripard <mripard@kernel.org>,
+ Daniel Mack <zonque@gmail.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-spi@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20221118223728.1721589-1-robh@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20221118223728.1721589-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_012141_840947_534D25B3 
-X-CRM114-Status: GOOD (  20.24  )
+X-CRM114-CacheID: sfid-20221121_021640_685451_EBA31603 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,114 +120,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---4eo3k1jS5flplOqN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> All wed versions should enable wcid overwritten feature,
-> since the wcid size is controlled by the wlan driver.
->=20
-
-I guess this patch should be posted to netdev mailing list
-(netdev@vger.kernel.org) since it should go through net-next tree.
-
-Regards,
-Lorenzo
-
-> Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
-> Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+On 11/19/22 00:37, Rob Herring wrote:
+> json-schema patterns by default will match anywhere in a string, so
+> typically we want at least the start or end anchored. Fix the obvious
+> cases where the anchors were forgotten.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  drivers/net/ethernet/mediatek/mtk_wed.c      | 9 ++++++---
->  drivers/net/ethernet/mediatek/mtk_wed_regs.h | 2 ++
->  include/linux/soc/mediatek/mtk_wed.h         | 3 +++
->  3 files changed, 11 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethern=
-et/mediatek/mtk_wed.c
-> index 7d8842378c2b..a20093803e04 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> @@ -526,9 +526,9 @@ mtk_wed_dma_disable(struct mtk_wed_device *dev)
->  			MTK_WED_WPDMA_RX_D_RX_DRV_EN);
->  		wed_clr(dev, MTK_WED_WDMA_GLO_CFG,
->  			MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK);
-> -
-> -		mtk_wed_set_512_support(dev, false);
->  	}
-> +
-> +	mtk_wed_set_512_support(dev, false);
->  }
-> =20
->  static void
-> @@ -1290,9 +1290,10 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_=
-mask)
->  		if (mtk_wed_rro_cfg(dev))
->  			return;
-> =20
-> -		mtk_wed_set_512_support(dev, dev->wlan.wcid_512);
->  	}
-> =20
-> +	mtk_wed_set_512_support(dev, dev->wlan.wcid_512);
-> +
->  	mtk_wed_dma_enable(dev);
->  	dev->running =3D true;
->  }
-> @@ -1338,6 +1339,8 @@ mtk_wed_attach(struct mtk_wed_device *dev)
->  	dev->irq =3D hw->irq;
->  	dev->wdma_idx =3D hw->index;
->  	dev->version =3D hw->version;
-> +	if (hw->version !=3D 1)
-> +		dev->rev_id =3D wed_r32(dev, MTK_WED_REV_ID);
-> =20
->  	if (hw->eth->dma_dev =3D=3D hw->eth->dev &&
->  	    of_dma_is_coherent(hw->eth->dev->of_node))
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/e=
-thernet/mediatek/mtk_wed_regs.h
-> index 9e39dace95eb..873d50b9a6e6 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> @@ -20,6 +20,8 @@ struct mtk_wdma_desc {
->  	__le32 info;
->  } __packed __aligned(4);
-> =20
-> +#define MTK_WED_REV_ID					0x004
-> +
->  #define MTK_WED_RESET					0x008
->  #define MTK_WED_RESET_TX_BM				BIT(0)
->  #define MTK_WED_RESET_TX_FREE_AGENT			BIT(4)
-> diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/med=
-iatek/mtk_wed.h
-> index 8294978f4bca..1b1ef57609f7 100644
-> --- a/include/linux/soc/mediatek/mtk_wed.h
-> +++ b/include/linux/soc/mediatek/mtk_wed.h
-> @@ -85,6 +85,9 @@ struct mtk_wed_device {
->  	int irq;
->  	u8 version;
-> =20
-> +	/* used by wlan driver */
-> +	u32 rev_id;
-> +
->  	struct mtk_wed_ring tx_ring[MTK_WED_TX_QUEUES];
->  	struct mtk_wed_ring rx_ring[MTK_WED_RX_QUEUES];
->  	struct mtk_wed_ring txfree_ring;
-> --=20
-> 2.18.0
->=20
 
---4eo3k1jS5flplOqN
-Content-Type: application/pgp-signature; name="signature.asc"
+>   .../devicetree/bindings/regulator/rohm,bd9576-regulator.yaml  | 2 +-
 
------BEGIN PGP SIGNATURE-----
+Acked-by: Matti Vaittinen <mazziesaccount@gmail.com>
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY3tDHwAKCRA6cBh0uS2t
-rEzWAP9YAtui+5jejaI/UWop4jE+qY+dgvA440pi888pffHuZAEA9tJ9A7MfLMD5
-gxef2frPRzvMlZ8USpaRzIcLD3DAZwI=
-=YJnc
------END PGP SIGNATURE-----
 
---4eo3k1jS5flplOqN--
+-- 
+Matti Vaittinen
+Linux kernel developer at ROHM Semiconductors
+Oulu Finland
+
+~~ When things go utterly wrong vim users can always type :help! ~~
+
+
 
