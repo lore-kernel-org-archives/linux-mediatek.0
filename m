@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B237C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 11:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4A4BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 11:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6cJNFpgX+WPgKtF2uKtRz218Ghby59uXyddoumWPaKU=; b=cl+3D8HDNcfIdnrs8IJx5OUdfk
-	aRPOH7O8acL2MpIWp1g1aaCAjEbj+8XHQjV56bngaUyh8cnS+d8Ai/1FWFcVUU7NRdz4QWJD7fSti
-	ENg/TnUwH/net8diXWKzFBvDdAcvQQeW2+VZybLjhc1Twav2/ZkG1OeimFnCyP010yOV7jzJGt5yL
-	dS1TmKnOO80tWIesA33Gsi85Ic6YPL/AUFXekiLQ8PuuCTzlL04nsZqIIrZO/Q42uHWjc5+xLV96D
-	IONCoHSZIHLGkcys1OH2R9h1ifG2jIiexJTgC7oI0m4/l4XHdIQNxT3blzi21V8U0YNRRPmByiIYQ
-	Xai3T1Qw==;
+	bh=QB3gNY6yaJMnXhVV7emf4yfo6x5OMz0IYCSWMhi+hEc=; b=e2SbWKNCORAf4RKNe3PZdm/hU8
+	Hw0l/Ymv/vbifPg9+sUITbTIszb/+1rKPs5dNRIKr8FDR7dgai1j+oJhgIGsrIqJMHyW9Lb9iNOqE
+	43VdnGYAvP4p56Q7NKQpxpaacl11i0OO8NmObyrDn5Go68+9ABkOg2KSQVvZwJgI+sKeN1ak9FlKf
+	/DJ6I/G6bB3sze0Y9jRd1bRAQXgz/laF0BV6gUemgGguFCJldZ2bRqbZ0i0jE2jlzdBj5GxMxk6Cw
+	W4QbstiTvlbpaNbXUDysdA/jsWMp2Dl+orNBkBSgbb1rSVGPP3TMI2V+IsKgRXV5mzGSh3kGlg0Dq
+	YY3XCqtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5EV-00D29E-Sq; Mon, 21 Nov 2022 11:45:03 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1ox5O3-00D6uP-M1; Mon, 21 Nov 2022 11:54:55 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5EH-00D20m-8v; Mon, 21 Nov 2022 11:44:51 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id m7-20020a05600c090700b003cf8a105d9eso8809018wmp.5;
-        Mon, 21 Nov 2022 03:44:47 -0800 (PST)
+	id 1ox5Np-00D6me-8i; Mon, 21 Nov 2022 11:54:42 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 84-20020a1c0257000000b003cfe48519a6so6314282wmc.0;
+        Mon, 21 Nov 2022 03:54:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6cJNFpgX+WPgKtF2uKtRz218Ghby59uXyddoumWPaKU=;
-        b=OaEuUKyfoAaMdgYQNKRmoDkhwSAE7/QuMoSzftzYufK7FWPHhkdJM6w2YSC4dnw+yq
-         k2igenvromNW1CPaKH9zofthP0JkTaIENP/TdasLCiACMGbcV7nDt8mxx6KOLXtGi5OM
-         MbIooZj/KO5J6gLBCWK3zp/wiYi1Fp26lSaWlYaT/XcLm0zAGSwzvOXvieWBBS41mE+z
-         FOlSwoM62yiSSGD9fC4xVn7PkSuD287izy/yfygUkkLqQ+Ix7YbTCYY+r6yshpD0yf+Y
-         1Qr2+3OAxRnO1dF7FFsmwwx6yG+luAkB/7K6KAVN4wj1TTwQdTDIt7ko21VDQaqoZkN2
-         Qfrw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QB3gNY6yaJMnXhVV7emf4yfo6x5OMz0IYCSWMhi+hEc=;
+        b=P+U1OHpHssZT7auV7/xQp9Brb8pDG6DU/KV7YI8GMe86bDpGxYvSv30QBbAWThUDJF
+         FY6ychSgiFKhH8qFbXbsbp0b2ZJ/nlQBVL8V9JRNA9DBgG8xFA3pF/bWQgjmD4OHCnZz
+         HmiJrKUozvlHT1cRscyxWXgUPsr+y47pZTb27di//zCtLKi2VxciO74sArOihoYsS8Uo
+         KE4UiSSAPhd24pzMvJRhGCvbjb5Fi0Byc3RtX9ZnLzZLHd178saR07bvEt4kLnQY2uIe
+         Mgvw+6FHZXZwL5CC5RAwblaXjI3voRomDYrV9M+zafQopTsTZB7v3a9gDlZibkSlbod4
+         eMPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6cJNFpgX+WPgKtF2uKtRz218Ghby59uXyddoumWPaKU=;
-        b=Y/nwAaPe6kF50GwyyModZhb0xihp911atC5JFYXOBAbKsz+Tavtixh/qj4OEWBa/jT
-         JK3thHUZ6pxeMmvOnRN7G90mUZacgpdh72exrpwOQgFugKuT7nnLa55HU1MHTMogETRn
-         FrvJ6GgmMesuinaPyB0UJX8uaz16RUHrNJ1zzuXxy/WuVJYiVuVcmOMNN/w9K+5ykShg
-         FAbsnPYgMJYyVMa7318JpqsdvIKHQgIjzfBDEKel7K1syQXx9c8yUQwvJJtV/Zr0S2GC
-         VSlXvOQL/hkoPNO+/YPCHYilsRmegttFyocm3GzfSxul5K/IFmZh0GBsnMttbT4bQuV+
-         JNxQ==
-X-Gm-Message-State: ANoB5pl2IyZjlFq4ZQxXij0mxG5xG/Ynu0/PDJsaOx33+W0WUcpx3p8m
-	2gmx6gBj+sB7eLs9vRMtF3U=
-X-Google-Smtp-Source: AA0mqf4IlsGiJBNapasCkSsZHk2LZYzeWXyxCUrHNCkbynrN76CSm13L3kk/6i7If8rIVKzhdK8HGA==
-X-Received: by 2002:a05:600c:5014:b0:3cf:72d9:10b0 with SMTP id n20-20020a05600c501400b003cf72d910b0mr15836099wmr.26.1669031085933;
-        Mon, 21 Nov 2022 03:44:45 -0800 (PST)
+        bh=QB3gNY6yaJMnXhVV7emf4yfo6x5OMz0IYCSWMhi+hEc=;
+        b=EaT7fbkqkmmZzGBHpt8sk8V1bcni2vbzfy71PIA0s7bazuupD5AAwKwdtEJbnjKyHl
+         x+uMHmugWy5kbtAHExu7r4LLEFEv02dOJs5brnerYQzYo6jHqfoKQNeFPjLNCr6/nckq
+         5YzcgF/y32J4Y1Qpgp/zcTOnGssAzzb36W/BmFX6cI/oLM5E1gzpUAAIjfPzVilR2GPM
+         boE15tm6e0flpv8OfRuXCJmzu6eyq5exqTztCo/rGCfy9S0grseafzP47sUBTBKqdKzL
+         bu0kX5HkGz6+GH4NimwbwWMlPhh5N4TKyXxfRmx4/YaEvbLhDUW3kJa3zh2sPbG58jA1
+         9jgQ==
+X-Gm-Message-State: ANoB5pn+BNT5UQEIpXygcZU+7NF3Nd/9PzXeokrPIY4Br2GUHPxCcqR1
+	z6slPxZ8e1rx+Z3K4hjkwWh44cKBUcg=
+X-Google-Smtp-Source: AA0mqf5yPHbwfASaKwZ0hgwUWI2wZ/5w3j0QHXDZp6K/Ira6H0o+d3uT1LxH0796iYp7TEGBTIBqDg==
+X-Received: by 2002:a7b:ce89:0:b0:3c6:c986:f2b9 with SMTP id q9-20020a7bce89000000b003c6c986f2b9mr12282679wmj.53.1669031676568;
+        Mon, 21 Nov 2022 03:54:36 -0800 (PST)
 Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id m28-20020a05600c3b1c00b003cfd0bd8c0asm14806911wms.30.2022.11.21.03.44.42
+        by smtp.gmail.com with ESMTPSA id i6-20020a05600c354600b003cf894c05e4sm18918780wmq.22.2022.11.21.03.53.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 03:44:43 -0800 (PST)
-Message-ID: <e04d15ee-9570-c919-5218-91109a88c0cb@gmail.com>
-Date: Mon, 21 Nov 2022 12:44:41 +0100
+        Mon, 21 Nov 2022 03:54:34 -0800 (PST)
+Message-ID: <c1fbe477-8991-2ac4-7f0a-11360868ca11@gmail.com>
+Date: Mon, 21 Nov 2022 12:53:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Fix CPUs capacity-dmips-mhz
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org,
- alyssa.rosenzweig@collabora.com, nfraprado@collabora.com,
- dmitry.osipenko@collabora.com
-References: <20221006115816.66853-1-angelogioacchino.delregno@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, tinghan.shen@mediatek.com,
+ seiya.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221005093404.33102-1-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH v3] soc: mediatek: Introduce
- mediatek-regulator-coupler driver
-In-Reply-To: <20221006115816.66853-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221005093404.33102-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_034449_371996_C8EFB54B 
-X-CRM114-Status: GOOD (  47.06  )
+X-CRM114-CacheID: sfid-20221121_035441_340960_4036D915 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,255 +96,78 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 06/10/2022 13:58, AngeloGioacchino Del Regno wrote:
-> This driver currently deals with GPU-SRAM regulator coupling, ensuring
-> that the SRAM voltage is always between a specific range of distance to
-> the GPU voltage, depending on the SoC, necessary in order to achieve
-> system stability across the full range of supported GPU frequencies.
+On 05/10/2022 11:34, AngeloGioacchino Del Regno wrote:
+> The capacity-dmips-mhz parameter was miscalculated: this SoC runs
+> the first (Cortex-A55) cluster at a maximum of 2000MHz and the
+> second (Cortex-A78) cluster at a maximum of 3000MHz.
 > 
+> In order to calculate the right capacity-dmips-mhz, the following
+> test was performed:
+> 1. CPUFREQ governor was set to 'performance' on both clusters
+> 2. Ran dhrystone with 500000000 iterations for 10 times on each cluster
+> 3. Calculate the mean result for each cluster
+> 4. Calculate DMIPS/MHz: dmips_mhz = dmips_per_second / cpu_mhz
+> 5. Scale results to 1024:
+>     result_c0 = (dmips_mhz_c0 - min_dmips_mhz(c0, c1)) /
+>                 (max_dmips_mhz(c0, c1) - min_dmips_mhz(c0, c1)) * 1024
+> 
+> The mean results for this SoC are:
+> Cluster 0 (LITTLE): 11990400 Dhry/s
+> Cluster 1 (BIG): 59809036 Dhry/s
+> 
+> The calculated scaled results are:
+> Cluster 0: 307,934312801831 (rounded to 308)
+> Cluster 1: 1024
+> 
+> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+
+Applied,
+
+Thanks!
+
 > ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> This driver was successfully tested for more than 3 months.
-> GPU DVFS works correctly with no stability issues.
-> 
-> Changes in RESEND,v3:
->   Rebased over next-20221005
-> 
-> Changes in v3:
->   - Added braces to else-if branch
-> 
-> Changes in v2:
->   - Added check for n_coupled
->   - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
-> 
-> Context:
-> This driver is the last of the pieces of a bigger puzzle, aiming to finally
-> enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
-> SoCs on the fully open source graphics stack (Panfrost driver).
-> 
-> No devicetree bindings are provided because this does not require any
-> driver-specific binding at all.
-> 
-> Last but not least: it was chosen to have this driver enabled for
-> ( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
-> choice because, once the DVFS mechanism will be fully working, using one
-> of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
-> to unstabilities and system crashes.
-> For COMPILE_TEST, choice is given for obvious reasons.
-> 
->   drivers/soc/mediatek/Kconfig                 |   5 +
->   drivers/soc/mediatek/Makefile                |   1 +
->   drivers/soc/mediatek/mtk-regulator-coupler.c | 159 +++++++++++++++++++
->   3 files changed, 165 insertions(+)
->   create mode 100644 drivers/soc/mediatek/mtk-regulator-coupler.c
-> 
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index 40d0cc600cae..30b5afc0e51d 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -44,6 +44,11 @@ config MTK_PMIC_WRAP
->   	  on different MediaTek SoCs. The PMIC wrapper is a proprietary
->   	  hardware to connect the PMIC.
->   
-> +config MTK_REGULATOR_COUPLER
-> +	bool "MediaTek SoC Regulator Coupler" if COMPILE_TEST
-> +	default ARCH_MEDIATEK
-> +	depends on REGULATOR
-> +
->   config MTK_SCPSYS
->   	bool "MediaTek SCPSYS Support"
->   	default ARCH_MEDIATEK
-> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> index 0e9e703c931a..8c0ddacbcde8 100644
-> --- a/drivers/soc/mediatek/Makefile
-> +++ b/drivers/soc/mediatek/Makefile
-> @@ -3,6 +3,7 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
->   obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
->   obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->   obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-> +obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
->   obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
->   obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
->   obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
-> diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> new file mode 100644
-> index 000000000000..ad2ed42aa697
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> @@ -0,0 +1,159 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Voltage regulators coupler for MediaTek SoCs
-> + *
-> + * Copyright (C) 2022 Collabora, Ltd.
-> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> + */
-> +
-> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-> +
-> +#include <linux/init.h>
-> +#include <linux/kernel.h>
-> +#include <linux/of.h>
-> +#include <linux/regulator/coupler.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/suspend.h>
-> +
-> +#define to_mediatek_coupler(x)	container_of(x, struct mediatek_regulator_coupler, coupler)
-> +
-> +struct mediatek_regulator_coupler {
-> +	struct regulator_coupler coupler;
-> +	struct regulator_dev *vsram_rdev;
-> +};
-> +
-> +/*
-> + * We currently support only couples of not more than two vregs and
-> + * modify the vsram voltage only when changing voltage of vgpu.
-> + *
-> + * This function is limited to the GPU<->SRAM voltages relationships.
-> + */
-> +static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
-> +					      struct regulator_dev *rdev,
-> +					      suspend_state_t state)
-> +{
-> +	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-> +	int max_spread = rdev->constraints->max_spread[0];
-> +	int vsram_min_uV = mrc->vsram_rdev->constraints->min_uV;
-> +	int vsram_max_uV = mrc->vsram_rdev->constraints->max_uV;
-> +	int vsram_target_min_uV, vsram_target_max_uV;
-> +	int min_uV = 0;
-> +	int max_uV = INT_MAX;
-> +	int ret;
-> +
-> +	/*
-> +	 * If the target device is on, setting the SRAM voltage directly
-> +	 * is not supported as it scales through its coupled supply voltage.
-> +	 *
-> +	 * An exception is made in case the use_count is zero: this means
-> +	 * that this is the first time we power up the SRAM regulator, which
-> +	 * implies that the target device has yet to perform initialization
-> +	 * and setting a voltage at that time is harmless.
-> +	 */
-> +	if (rdev == mrc->vsram_rdev) {
-> +		if (rdev->use_count == 0)
-> +			return regulator_do_balance_voltage(rdev, state, true);
-> +
-> +		return -EPERM;
-> +	}
-> +
-> +	ret = regulator_check_consumers(rdev, &min_uV, &max_uV, state);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (min_uV == 0) {
-> +		ret = regulator_get_voltage_rdev(rdev);
-> +		if (ret < 0)
-> +			return ret;
-> +		min_uV = ret;
-> +	}
-> +
-> +	ret = regulator_check_voltage(rdev, &min_uV, &max_uV);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	/*
-> +	 * If we're asked to set a voltage less than VSRAM min_uV, set
-> +	 * the minimum allowed voltage on VSRAM, as in this case it is
-> +	 * safe to ignore the max_spread parameter.
-> +	 */
-> +	vsram_target_min_uV = max(vsram_min_uV, min_uV + max_spread);
-> +	vsram_target_max_uV = min(vsram_max_uV, vsram_target_min_uV + max_spread);
-> +
-> +	/* Make sure we're not out of range */
-> +	vsram_target_min_uV = min(vsram_target_min_uV, vsram_max_uV);
-> +
-> +	pr_debug("Setting voltage %d-%duV on %s (minuV %d)\n",
-> +		 vsram_target_min_uV, vsram_target_max_uV,
-> +		 rdev_get_name(mrc->vsram_rdev), min_uV);
-> +
-> +	ret = regulator_set_voltage_rdev(mrc->vsram_rdev, vsram_target_min_uV,
-> +					 vsram_target_max_uV, state);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* The sram voltage is now balanced: update the target vreg voltage */
-> +	return regulator_do_balance_voltage(rdev, state, true);
-> +}
-> +
-> +static int mediatek_regulator_attach(struct regulator_coupler *coupler,
-> +				     struct regulator_dev *rdev)
-> +{
-> +	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-> +	const char *rdev_name = rdev_get_name(rdev);
-> +
-> +	/*
-> +	 * If we're getting a coupling of more than two regulators here and
-> +	 * this means that this is surely not a GPU<->SRAM couple: in that
-> +	 * case, we may want to use another coupler implementation, if any,
-> +	 * or the generic one: the regulator core will keep walking through
-> +	 * the list of couplers when any .attach_regulator() cb returns 1.
-> +	 */
-> +	if (rdev->coupling_desc.n_coupled > 2)
-> +		return 1;
-> +
-> +	if (strstr(rdev_name, "sram")) {
-
-My understanding is, that we have to have either a DT node with regulator-name = 
-"sram" property to pollute rdev->constraints->name or some regulator_desc->name 
-populated in the drivers/regulator/mt*.c
-
-I wasn't able to find either of this, so I wonder how this is supposed to work. 
-Please provide pointers to a working and complete implementation of this, so 
-that I'm able to judge what is going on and if the approach is the correct one.
-
-I tried to figure out using mt8195-tracking-master-rolling
-
-Regards,
-Matthias
-
-> +		if (mrc->vsram_rdev)
-> +			return -EINVAL;
-> +		mrc->vsram_rdev = rdev;
-> +	} else if (!strstr(rdev_name, "vgpu") && !strstr(rdev_name, "Vgpu")) {
-> +		return 1;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mediatek_regulator_detach(struct regulator_coupler *coupler,
-> +				     struct regulator_dev *rdev)
-> +{
-> +	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-> +
-> +	if (rdev == mrc->vsram_rdev)
-> +		mrc->vsram_rdev = NULL;
-> +
-> +	return 0;
-> +}
-> +
-> +static struct mediatek_regulator_coupler mediatek_coupler = {
-> +	.coupler = {
-> +		.attach_regulator = mediatek_regulator_attach,
-> +		.detach_regulator = mediatek_regulator_detach,
-> +		.balance_voltage = mediatek_regulator_balance_voltage,
-> +	},
-> +};
-> +
-> +static int mediatek_regulator_coupler_init(void)
-> +{
-> +	if (!of_machine_is_compatible("mediatek,mt8183") &&
-> +	    !of_machine_is_compatible("mediatek,mt8186") &&
-> +	    !of_machine_is_compatible("mediatek,mt8192"))
-> +		return 0;
-> +
-> +	return regulator_coupler_register(&mediatek_coupler.coupler);
-> +}
-> +arch_initcall(mediatek_regulator_coupler_init);
-> +
-> +MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-> +MODULE_DESCRIPTION("MediaTek Regulator Coupler driver");
-> +MODULE_LICENSE("GPL");
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..0b85b5874a4f 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -36,7 +36,7 @@ cpu0: cpu@0 {
+>   			enable-method = "psci";
+>   			performance-domains = <&performance 0>;
+>   			clock-frequency = <1701000000>;
+> -			capacity-dmips-mhz = <578>;
+> +			capacity-dmips-mhz = <308>;
+>   			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+>   			next-level-cache = <&l2_0>;
+>   			#cooling-cells = <2>;
+> @@ -49,7 +49,7 @@ cpu1: cpu@100 {
+>   			enable-method = "psci";
+>   			performance-domains = <&performance 0>;
+>   			clock-frequency = <1701000000>;
+> -			capacity-dmips-mhz = <578>;
+> +			capacity-dmips-mhz = <308>;
+>   			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+>   			next-level-cache = <&l2_0>;
+>   			#cooling-cells = <2>;
+> @@ -62,7 +62,7 @@ cpu2: cpu@200 {
+>   			enable-method = "psci";
+>   			performance-domains = <&performance 0>;
+>   			clock-frequency = <1701000000>;
+> -			capacity-dmips-mhz = <578>;
+> +			capacity-dmips-mhz = <308>;
+>   			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+>   			next-level-cache = <&l2_0>;
+>   			#cooling-cells = <2>;
+> @@ -75,7 +75,7 @@ cpu3: cpu@300 {
+>   			enable-method = "psci";
+>   			performance-domains = <&performance 0>;
+>   			clock-frequency = <1701000000>;
+> -			capacity-dmips-mhz = <578>;
+> +			capacity-dmips-mhz = <308>;
+>   			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
+>   			next-level-cache = <&l2_0>;
+>   			#cooling-cells = <2>;
 
