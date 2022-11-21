@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD775C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 17:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B052C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 17:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P1qsfyzWWq81pJ5ku2X5n7HBixEnB8TtH7K3GGYie9I=; b=mZZ1BGaqTC5GYwh9iLFBWrfNzt
-	R3TVRTthZS2EbXj7QV51L2W5PJCLb4IV5xVnA05HPgYyCvSYWTbrui6D3JpTZOFVKOAkCnHy3nmn5
-	DcC42k6Ti+SEEG2Nl6zYB+AV3IjGYeJ8tUc4qIVA4g7rd8yrRKRVgKmwYNv8XC32Qe4Tnxg/F1xNa
-	zGpR5Tci0N6/OJUM657MuYUqlXIIpviVsl+xHw1MfmIY8JeeY1N3qlFpYGReaZK1WdZQHgLr22Yxz
-	AZL2zfXQUUgqif0YXy7GSFlddjZ7UyrxF4Q+qxZcItJyS7bQ66f+stz/FCORVoiLNF7DceP8O95zz
-	WcvodYhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H739gohkJQiXvKefWiLyqitYzOD/5OYfD2uRzWxJMv0=; b=YZyWN8n0WI5J9UPQFoaKjqAvz/
+	N5y8pgJAXlmuA8Y2e2AGiSk0BCyzCSCfEkk59zT2WvklLcAxHSasfHuhKSeVMIz8vWZ5NUxg9hngt
+	uNtIL0AK6tQjQXHxCt5urBOWQKnyDkpIvOJdcv97jAHuYWpWRdny75BtNtitchMsgGvh4oavwKjb5
+	Y6YDA5lN42k2loKUVjNpaf2CvoUg+ibMb1cqDcOIh3AFdAtMvlvgYlAgjHycWIaT5p8HAMa6N/sKB
+	sMphFUqbbIeIZSppAqaTyFYd5RtCP59QJLXdXc2Vr2azdHrV/S2hhMhUm/Q5u3e51L783zEq+OIHV
+	wUwR/PKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxAgM-00GMOq-P5; Mon, 21 Nov 2022 17:34:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oxAhl-00GNG4-Mw; Mon, 21 Nov 2022 17:35:37 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxAgI-00GMKC-Sd
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 17:34:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E3EA26134E;
-	Mon, 21 Nov 2022 17:34:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4438C433C1;
-	Mon, 21 Nov 2022 17:34:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669052045;
-	bh=WoHgYE2RYULinnf+Grea8HLwRU6ayhN3s2m++MmUh48=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gtNbDAQLh8xzGG9y1Xv73V3PRNzVinb63/e2VbAfPKPV1mQ3LBy19NFUeiln48gc2
-	 Y7CkLbm4KCpVVehQUS46HYSfiDmI7fSQJDv10ooXlTzW8paxjqOtzDlLhMWTp50WTz
-	 NVFzr8oB3BTNqG5HXYCnfkEE6Gvv3sXqRUPAsJQt9zRZr63BXSJw37c5JkXPdlFpEd
-	 EiReHMSd1JE3Y5I93KYv7nGsKk3f8ABSzA2B2wKv1V9x6QD+Eo+2oh/6OxdS4KzAEk
-	 CG8GbWlh8o/4eTTgq6Q7rrifkRQShGbSOe72Mzi5T+f7mTgxj8yuxArp48hnyVFEQj
-	 hbDp9IRNvFRmg==
-Date: Mon, 21 Nov 2022 18:34:01 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Alexander Lobakin <alexandr.lobakin@intel.com>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, lorenzo.bianconi@redhat.com,
-	sujuan.chen@mediatek.com, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 1/5] net: ethernet: mtk_wed: return status value
- in mtk_wdma_rx_reset
-Message-ID: <Y3u2iWXXhpmapOxu@lore-desk>
-References: <cover.1669020847.git.lorenzo@kernel.org>
- <8917d87eded7142a3a792c3ba64434a983278247.1669020847.git.lorenzo@kernel.org>
- <20221121165521.396686-1-alexandr.lobakin@intel.com>
+	id 1oxAhF-00GMxa-Ho; Mon, 21 Nov 2022 17:35:08 +0000
+Received: by mail-wr1-x435.google.com with SMTP id x17so7479205wrn.6;
+        Mon, 21 Nov 2022 09:35:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=H739gohkJQiXvKefWiLyqitYzOD/5OYfD2uRzWxJMv0=;
+        b=Sw4vUrpV+2ZKerURpiiaRPbic/zppeNW8NcdRE+SOtCQaKWeI7Z9q6CLWu9trUZVX0
+         dOBHa2KaSZV9zAL9fOGSNVWmAyEmP5pBTfbUFA3Z6/SlswhOql+H3ZPXezC9oKFC8Ckw
+         HffyxJS3QDcqeJM7CFeNaVIFlWHCEEthmCXJ2PeL9qAt4BjS0e+gfd7/XDJy68WlnYeS
+         W44A6uI+xi0e77dXoiRLxzlGsBM2JbtLVr3w9WD6z4Sy/+e9JhPsiVUzutWxv2MA1oXq
+         dvbvHUUfW1aFUpOZAwFZZ4KaRgF+Mk39DfSO5njA/EmDr3vdoVecxTtm82RlS+tV12v/
+         aonA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=H739gohkJQiXvKefWiLyqitYzOD/5OYfD2uRzWxJMv0=;
+        b=xJ4GN1ni6Q20lOPeEDkl94YGVxD4I5IMNkRhU7wsBDp7QYU+UH6Q8+w9/YWsWkGox0
+         pVfF6lcMEsYXTin9uvlMvKB2fG/6NxNEL9KcvjG10BJDUXbPLXyCkmFiq8Ysl7lm/Da5
+         jvdXDBb7C4Nfgrgjoe0j/SAa6GHEUubzq+1cJfh5bJuOQMlwFN02hjhowrLhGM0NyQS2
+         trw/YxyCgdT4WVEi92rnWRJXUw2ndQ5mBgPQZeiAHhH4oYnNuHwJdLNn18cwgGfjL4bA
+         3SdiyQYIO7DSNfMWTLCwTbun/z5bWjFKkfIdEc19BYEHDxDGQ8GD909kf2nCK4VSueaS
+         EPbQ==
+X-Gm-Message-State: ANoB5pnZ8MQ39KEk4nxnPFNOSkrjp47fGzvXm7QxrH5ipnWWYxsULpK+
+	9Z8mfbQ8Zu2Kb2vKDx8S7r8=
+X-Google-Smtp-Source: AA0mqf6s5UrB6KSQzIfGircalN42vcOhoXNt66f+1gAnQqi9w65qZfja19jeAbwazXHd+sfm6fd/Aw==
+X-Received: by 2002:a5d:538b:0:b0:241:c3c2:24cf with SMTP id d11-20020a5d538b000000b00241c3c224cfmr3225033wrv.587.1669052103907;
+        Mon, 21 Nov 2022 09:35:03 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id l18-20020a05600c4f1200b003c6f3f6675bsm20780645wmq.26.2022.11.21.09.35.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Nov 2022 09:35:02 -0800 (PST)
+Message-ID: <1c33cf07-900a-7acf-92d9-ad40f8543db8@gmail.com>
+Date: Mon, 21 Nov 2022 18:35:00 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="D6UKkadRkug9UHO+"
-Content-Disposition: inline
-In-Reply-To: <20221121165521.396686-1-alexandr.lobakin@intel.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v4 1/3] dt-bindings: phy: mediatek: hdmi-phy: Add mt8195
+ compatible
+Content-Language: en-US
+To: Guillaume Ranquet <granquet@baylibre.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, CK Hu <ck.hu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Jitao shi <jitao.shi@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ stuart.lee@mediatek.com, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mac.shen@mediatek.com, linux-phy@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20220919-v4-0-bdc21e1307e9@baylibre.com>
+ <20220919-v4-1-bdc21e1307e9@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220919-v4-1-bdc21e1307e9@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_093407_079399_0ECD8BB5 
-X-CRM114-Status: GOOD (  21.89  )
+X-CRM114-CacheID: sfid-20221121_093505_662131_36A713FD 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,89 +105,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---D6UKkadRkug9UHO+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
->=20
-> From: Lorenzo Bianconi <lorenzo@kernel.org>
-> Date: Mon, 21 Nov 2022 09:59:21 +0100
->=20
-> > Move MTK_WDMA_RESET_IDX configuration in mtk_wdma_rx_reset routine.
-> > This is a preliminary patch to add Wireless Ethernet Dispatcher reset
-> > support.
-> >=20
-> > Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> > Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  drivers/net/ethernet/mediatek/mtk_wed.c | 25 ++++++++++++-------------
-> >  1 file changed, 12 insertions(+), 13 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethe=
-rnet/mediatek/mtk_wed.c
-> > index 7d8842378c2b..dc898ded2f05 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> > @@ -101,17 +101,21 @@ mtk_wdma_read_reset(struct mtk_wed_device *dev)
-> >  	return wdma_r32(dev, MTK_WDMA_GLO_CFG);
-> >  }
-> > =20
-> > -static void
-> > +static int
-> >  mtk_wdma_rx_reset(struct mtk_wed_device *dev)
-> >  {
-> >  	u32 status, mask =3D MTK_WDMA_GLO_CFG_RX_DMA_BUSY;
-> > -	int i;
-> > +	int i, ret;
-> > =20
-> >  	wdma_clr(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_RX_DMA_EN);
-> > -	if (readx_poll_timeout(mtk_wdma_read_reset, dev, status,
-> > -			       !(status & mask), 0, 1000))
-> > +	ret =3D readx_poll_timeout(mtk_wdma_read_reset, dev, status,
-> > +				 !(status & mask), 0, 10000);
->=20
-> You didn't mention anywhere this change of the timeout from 1000 to
-> 10000, and for example for me it's not clear from the code why you
-> did this. Maybe leave a comment in the commitmsg?
-> Same in 2/5 for Tx, also 1000 -> 10000.
+On 21/11/2022 15:19, Guillaume Ranquet wrote:
+> Add a compatible for the HDMI PHY on MT8195
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 
-ops I forgot them, sorry. I actually aligned the these values to the vendor=
- sdk.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Lorenzo
-
->=20
-> > +	if (ret)
-> >  		dev_err(dev->hw->dev, "rx reset failed\n");
-> > =20
-> > +	wdma_w32(dev, MTK_WDMA_RESET_IDX, MTK_WDMA_RESET_IDX_RX);
-> > +	wdma_w32(dev, MTK_WDMA_RESET_IDX, 0);
-> > +
-> >  	for (i =3D 0; i < ARRAY_SIZE(dev->rx_wdma); i++) {
-> >  		if (dev->rx_wdma[i].desc)
-> >  			continue;
->=20
-> [...]
->=20
-> > --=20
-> > 2.38.1
->=20
-> Thanks,
-> Olek
-
---D6UKkadRkug9UHO+
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY3u2iQAKCRA6cBh0uS2t
-rLRFAP9YtkOiRlkkeWw3D1wAHIzJguolL5YjFqGopi33a9mNjAD/fvo9xMJiV7H+
-HxEvuLk7+eIH9SoTEhh8FD8I5NAxGw0=
-=NV9O
------END PGP SIGNATURE-----
-
---D6UKkadRkug9UHO+--
+> ---
+>   Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
+> index 0d94950b84ca..71c75a11e189 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
+> @@ -28,6 +28,7 @@ properties:
+>             - const: mediatek,mt2701-hdmi-phy
+>         - const: mediatek,mt2701-hdmi-phy
+>         - const: mediatek,mt8173-hdmi-phy
+> +      - const: mediatek,mt8195-hdmi-phy
+>   
+>     reg:
+>       maxItems: 1
+> 
 
