@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFE7C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 18:41:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDD47C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 18:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=D490D0JZjZZBSCRXGD1ZT2ILibnfjFk5In0W7vg80co=; b=EB3oxtaTU+YW6AX4rIwZsKBByQ
-	kpiIGJj0hnI2UMI6jd9yuJs7SkEi31XiJtQ1b6Tw5+ZKhOH+SD7I/SgW7sh6sQqg/zT7QnZ6D1naB
-	TAnV2klsWgP7W9+HxHa6ZaKo1SMv+IuSOa+CHq4c0kpYxrZ4+6kb5c/lryVW+ZOFyMbLX/FDmJukA
-	nEhY4dIjEwOyhhIdeVzaUw7x4Snngx0E/zohfH2uwTbEwb/y0+X56g0AxA2jQW53gcctTM0upvh6K
-	YsyKRh6cBx/Lx6P82l9PnZjME6V4OjJ8J7DwIArKXqXQfL6eB2ENm+k8vut2XF0Me3CGD8nTTWOmt
-	YQGQ39YQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Subject:From:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oyd7CAiQasMEjV0UrlEB9KTbfh3f8ai09wLGi3B5N8I=; b=SG4zikWi3sNRPg
+	Mv9TQuV96IoZ9NtSGPQFDksmNmFIiNMPdqUWdwVxjYGX5yoC1jO/8gm4NXC5/mqloAalKfV+UUdYX
+	UJuyJUYKUYnApXgPng99oP6woHh5iq3kdR1QIsvgo/0YnLfi6VUn1bVjhcLQKos7mhcxZ7glFLqxQ
+	lqqKQBuEEY4t3qI/cZ5OhPUbN+cqWD3A/oL34ULGR/9lwPr7DskeJ47In9RhUXbDY+EB8yIYKIZOk
+	Chy1hnRj0dfZRcuD1XjtJrMCYZ9HI3n9ZCntNHh+Cus805zxy88XQ01HVvxY+RkqswaZ72wSl/vM0
+	lp7w9ZyY0TcjJRhlsIAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBjT-00H2dV-HP; Mon, 21 Nov 2022 18:41:27 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1oxBpP-00H8Ou-Ux; Mon, 21 Nov 2022 18:47:35 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxBjP-00H2R1-QQ; Mon, 21 Nov 2022 18:41:25 +0000
-Received: by mail-wm1-x329.google.com with SMTP id t25-20020a1c7719000000b003cfa34ea516so10862090wmi.1;
-        Mon, 21 Nov 2022 10:41:21 -0800 (PST)
+	id 1oxBpM-00H8NB-PL; Mon, 21 Nov 2022 18:47:34 +0000
+Received: by mail-wr1-x430.google.com with SMTP id l14so2323076wrw.13;
+        Mon, 21 Nov 2022 10:47:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:subject:from:cc:to:content-language
          :user-agent:mime-version:date:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=D490D0JZjZZBSCRXGD1ZT2ILibnfjFk5In0W7vg80co=;
-        b=B99duKO75tej602Ya3gRRC/93VTK8692SIujBlOZBESz6kOqjegM2KN7wLv5E4QLZi
-         iC06t0CDHRcfOiVYke183n9CtHDufC8XPgPStOp873bU/RTIulRD/7ozjJ1rb8PSKt1w
-         7Tpb6WeRB+x+827JWbF9OsLA80CTzQz2Kth7U/oJzoWt8R6kFmr7FoSgKuwldH/4V+aA
-         AA/tr07W9IrSEFL5P9lYfkj1z3XoSrRr6FxLruj0qhOOSRv6vtkbVFawH2M1zX2qsy36
-         b7QAcTUZJ6xlySQSg9tUu7PWFpofqW4A77qIt8We2oduLVO9jSO8IqjEBmOH2Uz2G5KD
-         dc8Q==
+        bh=oyd7CAiQasMEjV0UrlEB9KTbfh3f8ai09wLGi3B5N8I=;
+        b=hb9CcICSgIbE98+jDxGR2LLIHzrsClboL2t/egatytCM9rfHxDa/wcQeUGIF2xj/Dh
+         cfI8beXuCRYK40z7gj/v1g9MIzOmazfQslK7XwvKZDdIiuOhVIolLUNMrGr0IqWE+DVb
+         AZBeg8fni+jPtUYdhtpsGqIqlPP4sIRO2yXi8krb2pOr3ezsthuGp70MKd5Lg5YUWqQg
+         1m0F63De9Ug6NzoALVN8ygbaJWWfS+2usFfIildavFT7Ju8SLEkQ0k2myU7dvmr9Jpwt
+         4r3Qd0z/J3epntz+ocHVDyfQRIxIeVUc0Ud8lAgfx+tXdZsGvYwfRR/tkD/pCh3G4/dG
+         lh4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:subject:from:cc:to:content-language
          :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=D490D0JZjZZBSCRXGD1ZT2ILibnfjFk5In0W7vg80co=;
-        b=o5xCuAoEDZSi3V5KrSVq4DnnphO9bc+aH0BcDgNBJTDeSDCy8qeKKyhgummc6bLVlW
-         Kkr6VcZShhI0tEikkidoc+ohhQGbY/D6OVePXceNKQfSJ8iKF+mFvs+z5anEwRNieEuP
-         TOFj2InXSkNEXf8VuCVtYGixqyvOD9FISXPBWE5ZaALq0CgGwdWblUHy6iZeKu59DFX1
-         XIAvsEFCdlT4dUkfpaMdYdwTjAOFodGg4Qsq3xgsnDXA5dMt5qQ5622XBQTxovmOwbUP
-         fRcGBYy5d00bQTAxQkyLg6FWoJAZmt6a9cvHZ6DOplywElm5CtDN9AR4cDGVADdpwZhj
-         5mUg==
-X-Gm-Message-State: ANoB5plzec4/ABSLE9TFP/p+HHE+qkhSLu9iFY/mbJe52sywi0DBj69g
-	yRY8p+HxTtzA3p69HqLqWrs=
-X-Google-Smtp-Source: AA0mqf6RzPJysA+UpcRDSFesEUNAvwSPepHv9+Gfs/mXsh3vTqiTeLQq5eT1dWrep1/wIYbrl0cgpg==
-X-Received: by 2002:a05:600c:19d1:b0:3cf:ca1a:332a with SMTP id u17-20020a05600c19d100b003cfca1a332amr17523442wmq.118.1669056079784;
-        Mon, 21 Nov 2022 10:41:19 -0800 (PST)
+        bh=oyd7CAiQasMEjV0UrlEB9KTbfh3f8ai09wLGi3B5N8I=;
+        b=mNa1QxphCvL13Fo11QEDoTHB5iqIO8PXf2v0Lw9NAOU6ZvwFHfKZkaSgwylBjrR+Kt
+         5BGJoASbCryu8FMOdOE1FZxwklfLTLzbpHpRELrLaXMrk5H0KdjpYWsO5iUO924Q/NC4
+         uhezzNZE1RRCXo7fEDE5ekm4jvMnK9a5a2cgCBRs11XVDDqmAGpKAsaUx9JtG+1ygZz3
+         Bci0Hvz3gM4LurTC82SZgKp2THmuX1EMy4t9C5tKXOdTph8x0D0WXVoCXlHlCIiscDSY
+         hcrCJTcDgV5inDtFv4N+x+V/QjXYL1Ghouyq6GVjUIuxVdtovb0awneTm6NnLzRxmsGp
+         rtQQ==
+X-Gm-Message-State: ANoB5plVBtDj2EPMfyd/pmIry9qI4viyKNymHs9aBpxxmsfMGLmmq9Tx
+	JUOPpeKxgdhvDILxNhWWQ8I=
+X-Google-Smtp-Source: AA0mqf5OhBj/7Lq8rRjG45P21kz8UUgCv1OUUzQtebk2WGAkLWTA1uZHvQqTDQw0ER/8y9OuOpTv2A==
+X-Received: by 2002:adf:f90d:0:b0:236:6efd:ed6a with SMTP id b13-20020adff90d000000b002366efded6amr12774492wrr.32.1669056447896;
+        Mon, 21 Nov 2022 10:47:27 -0800 (PST)
 Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n1-20020a5d6b81000000b00226dba960b4sm11975714wrx.3.2022.11.21.10.41.17
+        by smtp.gmail.com with ESMTPSA id iv7-20020a05600c548700b003cf87623c16sm21979766wmb.4.2022.11.21.10.47.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 10:41:18 -0800 (PST)
-Message-ID: <cc756001-a942-90b0-b79d-62c1fc189828@gmail.com>
-Date: Mon, 21 Nov 2022 19:41:17 +0100
+        Mon, 21 Nov 2022 10:47:26 -0800 (PST)
+Message-ID: <8933d687-71f0-e9ad-a7c6-2e5a8993463d@gmail.com>
+Date: Mon, 21 Nov 2022 19:47:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
 Content-Language: en-US
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- =?UTF-8?B?WGlubGVpIExlZSAo5p2O5piV56OKKQ==?= <xinlei.lee@mediatek.com>,
- Fadwa CHIBY <fchiby@baylibre.com>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] soc: mediatek: updates for v6.2
+Subject: [GIT PULL] arm64: dts: mediatek updates for v6.2
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_104123_960137_844DB660 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221121_104732_877430_B5A90EFD 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,18 +84,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Pierre Gondois <pierre.gondois@arm.com>, Yassine Oudjana <y.oudjana@protonmail.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, Sam Shih <sam.shih@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Bo-Chen Chen <rex-bc.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Olof and Arnd,
 
-Please have a look on the latest patches for the SoC divers.
+Please have a look on the latest and greatest DT patches for MediaTek. We got 
+basic support for the Sony Xperia M5 (Helios X10 based). Apart from that we have 
+activity around the MT7986 which is on the BananPi R3. Hopefully support the 
+latter will be ready in the next merge window.
+Apart from that, MT8195 based Chromebooks have now support for video encoder, 
+PCIe and display port (internal and external one).
 
 Best regards,
 Matthias
 
 ---
-
 The following changes since commit 9abf2313adc1ca1b6180c508c25f22f9395cc780:
 
    Linux 6.1-rc1 (2022-10-16 15:36:24 -0700)
@@ -111,43 +108,104 @@ The following changes since commit 9abf2313adc1ca1b6180c508c25f22f9395cc780:
 are available in the Git repository at:
 
    https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v6.1-next-soc
+tags/v6.1-next-dts64
 
-for you to fetch changes up to 7fd731a8264346bbcaed7d47058533a4de686219:
+for you to fetch changes up to 885e153ed7c1b0ec8bc25651f0644b3cb65ecaf4:
 
-   soc: mediatek: Add deprecated compatible to mmsys (2022-11-21 19:25:34 +0100)
-
-----------------------------------------------------------------
-mmsys:
-- add support for MT8186
-- add correct compatible solution for vdosys[0,1] on MT8195
-
-pmic wrapper:
-- add support for MT8365
+   arm64: dts: mt7986: add spi related device nodes (2022-11-21 18:17:35 +0100)
 
 ----------------------------------------------------------------
-Fabien Parent (3):
-       dt-bindings: soc: mediatek: pwrap: add MT8365 SoC bindings
-       soc: mediatek: pwrap: add support for sys & tmr clocks
-       soc: mediatek: pwrap: add mt8365 SoC support
+Fix check warnings all over the place.
 
-Jason-JH.Lin (3):
-       dt-bindings: arm: mediatek: mmsys: change compatible for MT8195
-       Revert "soc: mediatek: add mtk-mmsys support for mt8195 vdosys0"
-       soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+mt7986:
+- Add crypto, I2C and SPI nodes
+
+mt6795:
+- Add clock nodes
+- Add DMA support for UARTs
+- Add MMC nodes
+- Add basic support for Sonyx Xperia M5
+
+mt8195:
+- Add video enconder node
+- Add PCIe support
+- Fine tune capacity-dmips-mhz
+- Add support for internal and external display port
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (15):
+       arm64: dts: mediatek: mt8195: Fix CPUs capacity-dmips-mhz
+       arm64: dts: mt7896a: Fix unit_address_vs_reg warning for oscillator
+       arm64: dts: mt6779: Fix devicetree build warnings
+       arm64: dts: mt2712e: Fix unit_address_vs_reg warning for oscillators
+       arm64: dts: mt2712e: Fix unit address for pinctrl node
+       arm64: dts: mt2712-evb: Fix vproc fixed regulators unit names
+       arm64: dts: mt2712-evb: Fix usb vbus regulators unit names
+       arm64: dts: mediatek: pumpkin-common: Fix devicetree warnings
+       arm64: dts: mediatek: mt6797: Fix 26M oscillator unit name
+       arm64: dts: mediatek: mt6795: Add topckgen, infra, peri clocks/resets
+       arm64: dts: mediatek: mt6795: Replace UART dummy clocks with pericfg
+       arm64: dts: mediatek: mt6795: Add support for APDMA and wire up UART DMAs
+       arm64: dts: mediatek: mt6795: Add support for eMMC/SD/SDIO controllers
+       dt-bindings: arm: mediatek: Add compatible for MT6795 Sony Xperia M5
+       arm64: dts: mediatek: Add support for MT6795 Sony Xperia M5 smartphone
+
+Bo-Chen Chen (4):
+       arm64: dts: mt8195: Add dp-intf nodes
+       arm64: dts: mt8195: Add edptx and dptx nodes
+       arm64: dts: mediatek: cherry: Add dp-intf ports
+       arm64: dts: mediatek: cherry: Add edptx and dptx support
+
+Frank Wunderlich (7):
+       arm64: dts: mediatek: mt2712e: swap last 2 clocks to match binding
+       arm64: dts: mt8183: drop drv-type from mmc-node
+       arm64: dts: mt7622: drop r_smpl property from mmc node
+       arm64: dts: mt7986: fix trng node name
+       arm64: dts: mt7986: add i2c node
+       dt-bindings: arm64: dts: mediatek: add compatible for bananapi r3
+       arm64: dts: mt7986: move wed_pcie node
 
 Matthias Brugger (1):
-       soc: mediatek: Add deprecated compatible to mmsys
+       arm64: dts: mediatek: mt7986: Add SoC compatible
 
-Xinlei Lee (1):
-       soc: mediatek: Add all settings to mtk_mmsys_ddp_dpi_fmt_config func
+Nícolas F. R. A. Prado (1):
+       arm64: dts: mediatek: kukui: Remove i2s-share properties
 
-  .../bindings/arm/mediatek/mediatek,mmsys.yaml      |  14 +-
-  .../devicetree/bindings/soc/mediatek/pwrap.txt     |   3 +
-  drivers/soc/mediatek/mt8186-mmsys.h                |   8 +-
-  drivers/soc/mediatek/mtk-mmsys.c                   | 176 +++++----------------
-  drivers/soc/mediatek/mtk-mmsys.h                   |   6 -
-  drivers/soc/mediatek/mtk-pmic-wrap.c               | 114 ++++++++++++-
-  include/linux/soc/mediatek/mtk-mmsys.h             |   7 +
-  7 files changed, 176 insertions(+), 152 deletions(-)
+Pierre Gondois (1):
+       arm64: dts: Update cache properties for mediatek
+
+Sam Shih (3):
+       arm64: dts: mt7986: harmonize device node order
+       arm64: dts: mt7986: add crypto related device nodes
+       arm64: dts: mt7986: add spi related device nodes
+
+Tinghan Shen (2):
+       arm64: dts: mt8195: Add venc node
+       arm64: dts: mt8195: Add pcie and pcie phy nodes
+
+Yassine Oudjana (1):
+       arm64: dts: mediatek: mt6779: Remove syscon compatible from pin controller
+
+  .../devicetree/bindings/arm/mediatek.yaml          |   2 +
+  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+  arch/arm64/boot/dts/mediatek/mt2712-evb.dts        |  12 +-
+  arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |  28 +--
+  arch/arm64/boot/dts/mediatek/mt6779.dtsi           |  10 +-
+  .../boot/dts/mediatek/mt6795-sony-xperia-m5.dts    |  88 ++++++++
+  arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 109 +++++++++-
+  arch/arm64/boot/dts/mediatek/mt6797.dtsi           |   2 +-
+  .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts  |   1 -
+  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |   1 -
+  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts       | 135 +++++++-----
+  arch/arm64/boot/dts/mediatek/mt7986a.dtsi          |  74 ++++++-
+  arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts       |  57 ++++-
+  arch/arm64/boot/dts/mediatek/mt7986b.dtsi          |   3 +
+  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi     |   6 -
+  arch/arm64/boot/dts/mediatek/mt8186.dtsi           |   3 +
+  arch/arm64/boot/dts/mediatek/mt8192.dtsi           |   3 +
+  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi    |  86 ++++++++
+  arch/arm64/boot/dts/mediatek/mt8195.dtsi           | 233 ++++++++++++++++++++-
+  arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi   |   6 +-
+  20 files changed, 750 insertions(+), 110 deletions(-)
+  create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
 
