@@ -4,85 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3639C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 03:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA79EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 05:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pVZ6+cmK/ek0Z/OEVG5B02bFoCV8UTRj8V3VuqIql3A=; b=cdmdID7PFUegeaT1imfbnYFgsA
-	UZBOHJRxFxNj3/ERajVljwvAwEfCMJwpa+kvz4AJ0mT9nRoeCSfU11oyHWsqkAoQXUqpc9ikCJUer
-	TA2NQAGs5kWjSP1W3Si2WMtTE8z5/k29TPyLMnh4Bd9PB/EXuRFnKmJwlul/QXQFvehM6ymXPvzif
-	FRkW4oynAk+piK02YyatwIL4i/qeF+DnpZPu9JQv+N1dwbL8WJu70Mc9nWv65w7JB7KGNHYvAfpbC
-	i5Z/7z0zHkSFZEWtQ/nVkYPCb4rivZwcNydRUNAHrRqgs/aFWpHHF8PH/XmiKe1eUIuUW2NOHyl7v
-	u38WKWUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oM4t9dSTJRNYdl1z0tkjCktIi2YLG2NdBqaOTxJOnfw=; b=f7MPWINQa827lnAoeWgSaPT8F0
+	BYxEkyrWazIRpgPeB3OviQGUgCgWzxEB8t2JMg70JoPLgZQT/hVGeq1h3ZQATYPJZ7YyOB2t0nC7k
+	sdUQfxg1dNUOgUdLZTq3YeFOPkQeeU6vWIixIamsRSHIjaTUVZbGRN5kNf1x0VN9OyobCIakWgS4P
+	HpioduwfNTkX1Lup065yqbAwc7vHYIy9tUlrSTpv743GndeKqSsByh8COryjBf5XPy2Ld9AO+66lf
+	OZL0u0yj2ZUPKVoRwAfhekmoUcX3Wy2qZ/Iqlyk9i2vK9OPYTwcz5IWIN7mXxwd4VVM3wPZWhI4WS
+	+YX+kvjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1owx2q-008coZ-Nz; Mon, 21 Nov 2022 03:00:28 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1owz38-009TqA-VM; Mon, 21 Nov 2022 05:08:54 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oww1m-008JPV-3T
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 01:55:22 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id z20so12802790edc.13
-        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 17:55:13 -0800 (PST)
+	id 1owz35-009Tp1-VX
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 05:08:53 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 71-20020a17090a09cd00b00218adeb3549so1832300pjo.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 21:08:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pVZ6+cmK/ek0Z/OEVG5B02bFoCV8UTRj8V3VuqIql3A=;
-        b=UrZTAU9DJ91/ITNl8HBksYIBkH6PPckbtPpV792SFacfk+4D8+k2NXH2+EUpJNmgLi
-         uDsKe6l9kRIqsecIWROxsPAn+MfQLVtFsp7YUd+k+o8hRng3lFTFNlzQO3TDzVFPr6aK
-         4JnEprNBokf9bp0dZfv1CnX9xkkoIHKgUHO6PlR67nKmOhK9h5pi3Rz4eZtPMQOASyBz
-         Puo2UHqRbwkcXmHQBQ2OvWiZrv62489icvqDBSDMdem+E5/2blNL0Ru9jBPIbIiaiaj2
-         1KzAh7krletOJP/ZBL+mgysaqbQ25eUdXSU8boWzASinkoju6TZuDIEl93CNeMeN1CQV
-         ylpw==
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=oM4t9dSTJRNYdl1z0tkjCktIi2YLG2NdBqaOTxJOnfw=;
+        b=LWtOZYu4jsTpQIJaiOHNEV7J1U5Hekz/2o745TGAHoP4cneloLCtSQcf2+7QCorM2v
+         /xUrXy8tc3AyizxEql9WLY1OdpX3pQbIVxJtcFYql5RA3M4NDSaLMbPVj5dbObnT+KSU
+         mczGTwZmAOwUux/wZ8ifvi0F01VtKfJ2/n71J43DQXUfTPipabpUdKiLGhjOMu1er+fR
+         qpGgEsviAEicpqjzPwJSF+kZar5OCuUon7HJXQSuacsEE6kvxwtPpgVtTm/A/sLEJVHN
+         qxeu2eQb8ByOQLwRwijUs3sPFsoh7Q/NUQWZepaz/G6oM8gj5IAM41nqgSYfzxRnFHnj
+         8Fkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pVZ6+cmK/ek0Z/OEVG5B02bFoCV8UTRj8V3VuqIql3A=;
-        b=ZfbNDrvu8hSyVmmc/6aAYfbPml7klkpNKp+3WgF0t4IyPnKlqjgcPVH4fpT76jtLuw
-         m61W1RySsPK/2nnywu2NfGjJsbf9O00TggnijKZnB63FbjcbEef945IWyXSubQmTVB4U
-         oI+UiZDtFmTxKkF+VmIcdWeiT0g3YK2vcFtXNWMGy29+tyEngkjBMkkBComqk3Pbw4KX
-         +gNnPjBsPvw4yaRfp5Tm88xuSCnxvNh0kAHNpfE+oViRvz0rGaqqGbg63eOUb88KyCdk
-         WtjpHeV5+nbkljc/Zeiv5UFItVo59B9qPLY/8DBDX9CT0k2+LozugtfxzTWl0+v2Q1PL
-         bBKw==
-X-Gm-Message-State: ANoB5plPvty4c/hCu7aINBFJft5S3hhfddjFYF4lBMlr5E//uRmF8wzJ
-	cMnyFjfMQ++RzHBRMQaoaIT+lcYVNqhp048d
-X-Google-Smtp-Source: AA0mqf6N+HSBBDHGUKvlzZE7JOxzEzxy5+r1AOj/V71TY0IIoaheXBi34rQqarLYme7K/40AR6Argw==
-X-Received: by 2002:a05:6402:2925:b0:461:d2ab:3e05 with SMTP id ee37-20020a056402292500b00461d2ab3e05mr13768801edb.286.1668995712524;
-        Sun, 20 Nov 2022 17:55:12 -0800 (PST)
-Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
-        by smtp.gmail.com with ESMTPSA id g2-20020a170906538200b00782e3cf7277sm4415513ejo.120.2022.11.20.17.55.11
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oM4t9dSTJRNYdl1z0tkjCktIi2YLG2NdBqaOTxJOnfw=;
+        b=DOFK3TPRlxNHd8e/s50AVVyvpnsz7qf+1neXgfVbvRyphJbDeOV/HEF13kEkuX1Nrk
+         OYPUj95TDYtKb7/PmMVOwVjMAELPqYVjWDAR8izj95LuoODCn/qb7/qjQGrJ75tdI3nj
+         VTlIxrmsQlX8iJC6gtqWqt0iYZh3YCQruOaXQb6VRxoXc3tX1UN+9vy5gVg8an5w+djb
+         YvpnC2AbVtDV9iAfDoFAta6E9Q+/nCid7TRloq+ZlN1381kTj+WuKxYGqkc0hE0uyUtj
+         tobCd+6Z50fZ/gM8Jeh1IEQfvJEpe3bEfjmQuASYV9KL1CCopL5s3u9a2OVBlaDvl8UO
+         F3+Q==
+X-Gm-Message-State: ANoB5pnKmbahxLknqVUqvXIJg1OrZZd1decXhnwvvZ341JNy6dASbJ68
+	Nst7KCfwHg4i9Y8H0zE+QCHD/Q==
+X-Google-Smtp-Source: AA0mqf7JM7TMYC6I8OTgp5yVOi9dOvfTXAD2akuhU7ByBbq+4L3OQY/x8/g9Bql+etELz/ggxI+lHw==
+X-Received: by 2002:a17:90a:b706:b0:212:e75b:1602 with SMTP id l6-20020a17090ab70600b00212e75b1602mr18701960pjr.139.1669007329319;
+        Sun, 20 Nov 2022 21:08:49 -0800 (PST)
+Received: from localhost ([122.172.85.60])
+        by smtp.gmail.com with ESMTPSA id z7-20020aa79f87000000b005625d5ae760sm7895356pfr.11.2022.11.20.21.08.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Nov 2022 17:55:12 -0800 (PST)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: devicetree@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski@linaro.org,
-	khilman@baylibre.com,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	matthias.bgg@gmail.com
-Subject: [PATCH 7/9] ARM: dts: stm32: Remove the pins-are-numbered property
-Date: Mon, 21 Nov 2022 02:54:49 +0100
-Message-Id: <20221121015451.2471196-8-bero@baylibre.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221121015451.2471196-1-bero@baylibre.com>
-References: <20221121015451.2471196-1-bero@baylibre.com>
+        Sun, 20 Nov 2022 21:08:48 -0800 (PST)
+Date: Mon, 21 Nov 2022 10:38:46 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Ilia Lin <ilia.lin@kernel.org>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Jean Delvare <jdelvare@suse.com>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Yangtao Li <tiny.windzz@gmail.com>, Nishanth Menon <nm@ti.com>,
+	Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Javier Martinez Canillas <javier@dowhile0.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Maxime Ripard <mripard@kernel.org>, Daniel Mack <zonque@gmail.com>,
+	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>, linux-pm@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, alsa-devel@alsa-project.org,
+	linux-spi@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: Add missing start and/or end of line regex
+ anchors
+Message-ID: <20221121050846.m7w52iygltb5xivt@vireshk-i7>
+References: <20221118223728.1721589-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221118223728.1721589-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221120_175518_416015_6BC3473D 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221120_210852_110112_7A6D6B39 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,86 +120,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the pins-are-numbered property from STM32 DeviceTrees
+On 18-11-22, 16:37, Rob Herring wrote:
+> json-schema patterns by default will match anywhere in a string, so
+> typically we want at least the start or end anchored. Fix the obvious
+> cases where the anchors were forgotten.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml       | 2 +-
+>  Documentation/devicetree/bindings/hwmon/adt7475.yaml          | 4 ++--
+>  .../bindings/opp/allwinner,sun50i-h6-operating-points.yaml    | 4 ++--
+>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 2 +-
+>  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
+>  Documentation/devicetree/bindings/regulator/max8660.yaml      | 2 +-
+>  .../devicetree/bindings/regulator/maxim,max77802.yaml         | 2 +-
+>  Documentation/devicetree/bindings/regulator/regulator.yaml    | 2 +-
+>  .../devicetree/bindings/regulator/rohm,bd9576-regulator.yaml  | 2 +-
+>  Documentation/devicetree/bindings/sound/renesas,rsnd.yaml     | 2 +-
+>  .../devicetree/bindings/spi/nvidia,tegra210-quad.yaml         | 2 +-
+>  11 files changed, 13 insertions(+), 13 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml b/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
+> index a11e1b867379..3c00ad09eeaa 100644
+> --- a/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
+> +++ b/Documentation/devicetree/bindings/cpufreq/qcom-cpufreq-nvmem.yaml
+> @@ -38,7 +38,7 @@ properties:
+>      type: object
+>  
+>      patternProperties:
+> -      'cpu@[0-9a-f]+':
+> +      '^cpu@[0-9a-f]+$':
+>          type: object
+>  
+>          properties:
 
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
----
- arch/arm/boot/dts/stm32f4-pinctrl.dtsi | 1 -
- arch/arm/boot/dts/stm32f7-pinctrl.dtsi | 1 -
- arch/arm/boot/dts/stm32h743.dtsi       | 1 -
- arch/arm/boot/dts/stm32mp131.dtsi      | 1 -
- arch/arm/boot/dts/stm32mp151.dtsi      | 2 --
- 5 files changed, 6 deletions(-)
+> diff --git a/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml b/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
+> index 385b0692261c..51f62c3ae194 100644
+> --- a/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
+> +++ b/Documentation/devicetree/bindings/opp/allwinner,sun50i-h6-operating-points.yaml
+> @@ -41,7 +41,7 @@ required:
+>    - nvmem-cells
+>  
+>  patternProperties:
+> -  "opp-[0-9]+":
+> +  "^opp-[0-9]+$":
+>      type: object
+>  
+>      properties:
+> @@ -49,7 +49,7 @@ patternProperties:
+>        clock-latency-ns: true
+>  
+>      patternProperties:
+> -      "opp-microvolt-.*": true
+> +      "^opp-microvolt-speed[0-9]$": true
+>  
+>      required:
+>        - opp-hz
 
-diff --git a/arch/arm/boot/dts/stm32f4-pinctrl.dtsi b/arch/arm/boot/dts/stm32f4-pinctrl.dtsi
-index 500bcc302d422..4523c63475e4c 100644
---- a/arch/arm/boot/dts/stm32f4-pinctrl.dtsi
-+++ b/arch/arm/boot/dts/stm32f4-pinctrl.dtsi
-@@ -51,7 +51,6 @@ pinctrl: pinctrl@40020000 {
- 			ranges = <0 0x40020000 0x3000>;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&syscfg 0x8>;
--			pins-are-numbered;
- 
- 			gpioa: gpio@40020000 {
- 				gpio-controller;
-diff --git a/arch/arm/boot/dts/stm32f7-pinctrl.dtsi b/arch/arm/boot/dts/stm32f7-pinctrl.dtsi
-index 8f37aefa73150..c8e6c52fb248e 100644
---- a/arch/arm/boot/dts/stm32f7-pinctrl.dtsi
-+++ b/arch/arm/boot/dts/stm32f7-pinctrl.dtsi
-@@ -15,7 +15,6 @@ pinctrl: pinctrl@40020000 {
- 			ranges = <0 0x40020000 0x3000>;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&syscfg 0x8>;
--			pins-are-numbered;
- 
- 			gpioa: gpio@40020000 {
- 				gpio-controller;
-diff --git a/arch/arm/boot/dts/stm32h743.dtsi b/arch/arm/boot/dts/stm32h743.dtsi
-index 28e3deb20e1e1..f30796f7adf36 100644
---- a/arch/arm/boot/dts/stm32h743.dtsi
-+++ b/arch/arm/boot/dts/stm32h743.dtsi
-@@ -588,7 +588,6 @@ pinctrl: pinctrl@58020000 {
- 			ranges = <0 0x58020000 0x3000>;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&syscfg 0x8>;
--			pins-are-numbered;
- 
- 			gpioa: gpio@58020000 {
- 				gpio-controller;
-diff --git a/arch/arm/boot/dts/stm32mp131.dtsi b/arch/arm/boot/dts/stm32mp131.dtsi
-index 2a9b3a5bba830..adaee0f9e1263 100644
---- a/arch/arm/boot/dts/stm32mp131.dtsi
-+++ b/arch/arm/boot/dts/stm32mp131.dtsi
-@@ -549,7 +549,6 @@ pinctrl: pinctrl@50002000 {
- 			ranges = <0 0x50002000 0x8400>;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&exti 0x60 0xff>;
--			pins-are-numbered;
- 
- 			gpioa: gpio@50002000 {
- 				gpio-controller;
-diff --git a/arch/arm/boot/dts/stm32mp151.dtsi b/arch/arm/boot/dts/stm32mp151.dtsi
-index 5491b6c4dec20..4e437d3f2ed66 100644
---- a/arch/arm/boot/dts/stm32mp151.dtsi
-+++ b/arch/arm/boot/dts/stm32mp151.dtsi
-@@ -1660,7 +1660,6 @@ pinctrl: pinctrl@50002000 {
- 			ranges = <0 0x50002000 0xa400>;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&exti 0x60 0xff>;
--			pins-are-numbered;
- 
- 			gpioa: gpio@50002000 {
- 				gpio-controller;
-@@ -1789,7 +1788,6 @@ pinctrl_z: pinctrl@54004000 {
- 			#size-cells = <1>;
- 			compatible = "st,stm32mp157-z-pinctrl";
- 			ranges = <0 0x54004000 0x400>;
--			pins-are-numbered;
- 			interrupt-parent = <&exti>;
- 			st,syscfg = <&exti 0x60 0xff>;
- 
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+
 -- 
-2.38.1
-
+viresh
 
