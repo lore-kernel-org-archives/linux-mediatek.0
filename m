@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 569FFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 13:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC92FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 13:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UNUKk5+kFTflIU4SzzD/lQI7lJ01s9/rey3PP4SDPOQ=; b=w4Jz1y009vHYGBWR/3htkwj4RN
-	Jc4vFM4yPPwIEL9HyREw93ng4RpEKgmIrIE8zMTjqSbpwQcR+CJ+tLH8SjOZuQXLtWXF/YHm9in9/
-	hbmgCB2EBZ72PW1lmjQDWADg7Si8x4xtf46Qu0ozlxAl03Jw7o+yRsW/7+YyxWExjl9TljmML6avV
-	efdJXMRpDtnDSkB73gNCDtfkB+224WVyjWGSflTQB3g+JAK4he+vOMmkf2/lnfXlyBCEcWexTWxnF
-	N+3G2XdcszP89/9rtzVVXJBS+JeqvWaVZw51XJev+G8WYDQpl/gqVtwB+5j2lL22q36prmB4CzWKl
-	EkhzCTJg==;
+	bh=F/3TZBA7wngMbPoRF9J9OQnH3p7LhbyrXDZ/t7LVDUo=; b=3FV6/tXyO/CQcLIFepo8cOqDuK
+	zQl8kq27y+5SudlUfJGjVB2XlKIx9rNfSncN1QAxsc1lTAsId0sO80ms73th9UzSTQqY8qcS1uNzD
+	06MTXLtreo4dv3dIz+1Lcq4DoQNaOvwwFr17vREULjVgBqABJaxornV4gLvCO4LsADXDv/1M8IttH
+	b5iASKrRauvYBX8tm1aYR3AfjdRakqGQR7u3krSRIL2XpCu61621Ndf2DL1WG0+iyLZNqQh14xu43
+	VttAxnN3NP0tcEHmsL9YR80Do++NZpCGaXf0IKOiJhCM7FJswapqD6e7GhIcClmXLJWcIIbSNfwvv
+	lJnZ3rjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox6zS-00E0xZ-8E; Mon, 21 Nov 2022 13:37:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ox73m-00E322-7N; Mon, 21 Nov 2022 13:42:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox6zA-00E0m4-Gt; Mon, 21 Nov 2022 13:37:21 +0000
+	id 1ox73a-00E2wy-Az; Mon, 21 Nov 2022 13:41:55 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 95A7C6602A03;
-	Mon, 21 Nov 2022 13:37:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1862E6600368;
+	Mon, 21 Nov 2022 13:41:52 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669037839;
-	bh=0ZarEsE3Y3qiEP5ljnmmLq9buKbi0r2iD6ogpZeIH6U=;
+	s=mail; t=1669038112;
+	bh=LEKyP7Lh1CGJUl09TE0Fs4DL19+CS3JViR/Mmqqgwrs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z7AHKbYAMlBZMWLa6cbytuRAib1GjBl5guYz+SQ+3dE1dwTdhoQTbtZabVszQZ+Hj
-	 Mg1pcLHqwiI4u9+ccKFDWx5pPikI6//1vPvO9vYFRl+KAgRrHtBTqh1dIii+x2fcsi
-	 +a4My+eLhNZPB+wJOfVtmp+5p6d7UnoMATZuYxH1tyBkqC0LQzPf1vlkhnylob5t/m
-	 /lFgrIot8ctoOkK3F8CTuMWfUhgHpx3NmJUU+nx3+qhYOg6goJR0anLia80aiciaH8
-	 bRe5o/x/sDqtFWywSXnYYNYibaAF5DFZcuGubdPA/eXoYChjw21ow4yoAxkEaQDlbl
-	 2xnSZ4WzKuHtg==
-Message-ID: <1b4b8b62-2768-24b6-08c9-0d05bd051199@collabora.com>
-Date: Mon, 21 Nov 2022 14:37:16 +0100
+	b=cSpESSFnz3CedZ2akD3CYVMgONzrJw4c6KypoOO4AiFgKjce6U8DtFf5C/iftIiRj
+	 iC2XUupLKdaWDA2M8B6Bwlzy1tN8+s31SRO39vEwA3RVQzpwgbTGjUUZMWrizMjsab
+	 WpiJSvJvudOO9HW7TxXmjiss9ddm+DRt9G/r7RlQGtGEcjvowgraMk8g4yosyyGRuT
+	 d+0dAQUAnymgfIpGTdA8uEI2VDatrig6KfcSVnsvraOJ8oskUL8QLW00ab37sdYi0V
+	 gmySM/oUrY7iQFcjDm6PPzAOFYwkrtBXv4+C0VFP8vssN0JFYzVTbQIBPwQ//VYXD1
+	 nySEVAS7dOwuw==
+Message-ID: <fce278a4-b983-ffd2-52bd-0cbfed6e5294@collabora.com>
+Date: Mon, 21 Nov 2022 14:41:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH v5 4/7] arm64: dts: mediatek: mt6797: Make pin
- configuration nodes follow DT bindings
+Subject: Re: [PATCH v5 5/7] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Document MT6765 pin controller
 Content-Language: en-US
 To: Yassine Oudjana <yassine.oudjana@gmail.com>,
  Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
@@ -57,16 +57,16 @@ To: Yassine Oudjana <yassine.oudjana@gmail.com>,
 Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>
 References: <20221118113028.145348-1-y.oudjana@protonmail.com>
- <20221118113028.145348-5-y.oudjana@protonmail.com>
+ <20221118113028.145348-6-y.oudjana@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221118113028.145348-5-y.oudjana@protonmail.com>
+In-Reply-To: <20221118113028.145348-6-y.oudjana@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_053720_725286_14418BD2 
-X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-CacheID: sfid-20221121_054154_531617_3679B072 
+X-CRM114-Status: UNSURE (   9.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,10 +85,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 18/11/22 12:30, Yassine Oudjana ha scritto:
 > From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Add -pins suffix to pin configuration nodes to follow DT bindings
-> and pass dtbs_check.
+> The MT6765 pin controller has had a driver for a while, but DT
+> bindings were never documented for it.
 > 
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
