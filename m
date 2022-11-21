@@ -4,69 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49898C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:40:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9665AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ew6+L9aqHqlZQywPj238kgI7CvZBeJY2YyKt211tEzo=; b=ComKt42aFKjVHFFOjYLspHDb8T
-	IhYJC43xnSt64vAGO9pmXlRSCOfkD91XVnTlo4KijlsITe4HJIFPJR44z3/A9OZL3XXz7f09l3X+r
-	XvVa0WSqITqPoXUAbvLc7IMpYy1KW3g56JqBvA7q5odc4S2U+2JFO5zYA+Y8XnsGNNof13+H0IEEk
-	3UfaiHbLTc9xfI++ZHdp0Qe5U5oUlN1zOTMyDIEfQO4LMY5cRjNqMwqEbMKq8FzMRINLN+1LoHAhX
-	jb18r7Z6Iimt0bE/rJeLFE3gdFgfkhOFRujhxjETVcm55GFQ9eFk4PJoHEkRDT29eXqevNwpUR6il
-	xTiXlDKQ==;
+	bh=8SKgTZ7Kumx9R0XsThUS+c1u0VDbKZJLG8lGGOFT3u4=; b=fVxfIYBsT6shLPVINFoz+nLvHh
+	KDECzgWWlnGeoXI00jmodjkkaZctzJYaub+H9yxOl/mZbtkhjeOTRl3+7Aet+FVHAA/KGPHEfzEqi
+	nnuCH44AmRAIroC5p9ZPPUxNSGJZ8p1Ya8mIBetWtDF3Twra8t8T7TTbyMjiyof2gPdY9lmwhVVbn
+	RExan0jn4AQbE+K4bClCkjUyPlQ7tSf6G6dw18BrV4abIYeFNmPNxmEic0DXjErWMPDpDFssFXtrg
+	0y4fevcXe10lTNDRuczRH3gjg49Ei5YFGykl0Jmq2t/a350gWUWiwyqLSJpV3vXCzWU5I6ttW+25M
+	9XgN+LJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox65t-00DdYc-4Z; Mon, 21 Nov 2022 12:40:13 +0000
+	id 1ox67D-00DeLn-4f; Mon, 21 Nov 2022 12:41:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox65o-00DdVF-Fc; Mon, 21 Nov 2022 12:40:10 +0000
-X-UUID: b69daf2ff61f4021847bdb44056d46bb-20221121
+	id 1ox66R-00DdlW-Km; Mon, 21 Nov 2022 12:40:49 +0000
+X-UUID: 840d426888ef478ea6668d064b393c8c-20221121
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ew6+L9aqHqlZQywPj238kgI7CvZBeJY2YyKt211tEzo=;
-	b=pbWWk8BJEmmvmxYf0EUa302PrvYbWCSFeM8EIiWfkTbABGJfh8Wj9IRs6Q8YYbL94dTXfGNSdOnUCsR6DGRT57uZiJQzulNeqM6z3JKxb73vUi7as5GuYrXNi+O2iWCMlWobF7YwIKxP28uleM2tKW5CdZyUzQnU6lSFD9Bt7kI=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=8SKgTZ7Kumx9R0XsThUS+c1u0VDbKZJLG8lGGOFT3u4=;
+	b=UyHAhz1/KyRDQqbonufHmzo9dv8UFjZ5vaEkEioefFjayisRwvdU1JnUCxrYxhrfLBrxPUwHnwoc0/8i5X24uap61sUFHk96LX8bJ8Wl5vuhwj4ix8g6Q8gVxAetG6FFo1wQDShjOiYvjM3vM+ncMinKRZK13kcUMgBGlT/Ri54=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:e15fa230-7376-4e55-9340-9003675eea6c,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:62cd327,CLOUDID:6cfbccdb-6ad4-42ff-91f3-18e0272db660,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:e3babbe2-1bf4-4ac1-b27f-b8f2d949a5f2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:6648622f-2938-482e-aafd-98d66723b8a9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b69daf2ff61f4021847bdb44056d46bb-20221121
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 840d426888ef478ea6668d064b393c8c-20221121
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <johnson.wang@mediatek.com>)
+	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 904609022; Mon, 21 Nov 2022 05:40:02 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 21 Nov 2022 20:29:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 21 Nov 2022 20:29:58 +0800
-From: Johnson Wang <johnson.wang@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<angelogioacchino.delregno@collabora.com>, <sboyd@kernel.org>
-CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
-	<johnson.wang@mediatek.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>
-Subject: [PATCH v5 1/4] clk: mediatek: Export PLL operations symbols
-Date: Mon, 21 Nov 2022 20:29:54 +0800
-Message-ID: <20221121122957.21611-2-johnson.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221121122957.21611-1-johnson.wang@mediatek.com>
-References: <20221121122957.21611-1-johnson.wang@mediatek.com>
+	with ESMTP id 1525708975; Mon, 21 Nov 2022 05:40:43 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 21 Nov 2022 20:30:40 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 21 Nov 2022 20:30:40 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JcAfK0jaqLDFRK0dsnaEDIn0aTjVvCMul4hAXKYpzO/hhE0my+LhmrkWvmymyZp6J7aTA2WK2/T1vtz8jbe2+vU4+FPefH62oHJ0o3c+jswgj56YdWolhbc3R82mmZW36Iwr49Nwjj7Thsbyux64fSHJv/7swpac1JWwL9HtjLJ5L7pBh2yQn4aL2mpm5jWVFrWcQ1//t8e4abY/YLtIacrRnZOvfW4/eKmCg9B0NtLE1Kvl5u4F70cvwp84tJvomJLlnFXLYKjJCYsTk7Z3ZD4BPQ9+iJGBIdeQ1HW4foSzjhZK4wagiNx1CXq57xQmdZjUMi+mNulX+2sG5n0cZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8SKgTZ7Kumx9R0XsThUS+c1u0VDbKZJLG8lGGOFT3u4=;
+ b=ON+hJJ+8aleHpBFswnv0bj7/ZjIqi+HdSiP+ab6nN4mQaCeYeJd6ZsqDPUgi8Wl8cOPqmtFLo5wc3gNgVIh5xnCgOzZZcz31vWTv8iAs+PgIu+pB0Ft/oCJ4af0T5r4VnMk+3wGR6TVSx331kbBQzii/dCx0sLy5R7zAOg3n73AYIx4Dam3VV7IB5PNSL9av+O3jr92LGW6lFHJSVK063A/ivS8PCsoASRC0ciSzTHGiFTqMEYEGzT1qwJe86wfTU7C+1mbmaNHs5XYD3V1xOLpBMGZwMxr/z/2obvMXwyMFDzfn1QGt58rwgECVnBAycYMnF97yEqktFZq21QAHUQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8SKgTZ7Kumx9R0XsThUS+c1u0VDbKZJLG8lGGOFT3u4=;
+ b=Cu4jRE3d/vAUEzu0KsKFvUWG9XNhRnbXpI9fwGA/SLCov9AMA28FPJNbPN+3DwbENwXJ47bwO9XeW7WbehOmpSmYJNsLMLMWKSxde/SqfRChd/j2W156/FZ5OlhK4uYGtIVbvKaem96FmWhiHZZcMaHMLMHCXDHB+j//uT8IPwQ=
+Received: from TYZPR03MB6919.apcprd03.prod.outlook.com (2603:1096:400:28c::9)
+ by SEZPR03MB6492.apcprd03.prod.outlook.com (2603:1096:101:3b::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5834.11; Mon, 21 Nov
+ 2022 12:30:38 +0000
+Received: from TYZPR03MB6919.apcprd03.prod.outlook.com
+ ([fe80::7e10:1fdf:c6f6:597e]) by TYZPR03MB6919.apcprd03.prod.outlook.com
+ ([fe80::7e10:1fdf:c6f6:597e%7]) with mapi id 15.20.5834.009; Mon, 21 Nov 2022
+ 12:30:37 +0000
+From: =?utf-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
+	<Allen-KH.Cheng@mediatek.com>
+To: "nfraprado@collabora.com" <nfraprado@collabora.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"mchehab@kernel.org" <mchehab@kernel.org>, "krzysztof.kozlowski@linaro.org"
+	<krzysztof.kozlowski@linaro.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 2/2] arm64: dts: mt8192: Add vcodec lat and core nodes
+Thread-Topic: [PATCH v4 2/2] arm64: dts: mt8192: Add vcodec lat and core nodes
+Thread-Index: AQHY1L8uCwcOtsh1BUCWcyixrdoU7a5FBZSAgASbCAA=
+Date: Mon, 21 Nov 2022 12:30:37 +0000
+Message-ID: <5bb52e10002be4ea00ccb97d08235ebb97161756.camel@mediatek.com>
+References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
+	 <20220930112237.14411-3-allen-kh.cheng@mediatek.com>
+	 <20221118141039.y2ap7dzdp26ih2la@notapiano>
+In-Reply-To: <20221118141039.y2ap7dzdp26ih2la@notapiano>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6919:EE_|SEZPR03MB6492:EE_
+x-ms-office365-filtering-correlation-id: 02ef24f8-04e0-441e-b976-08dacbbc31f1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: MP/KdLZ/bDi0OSi6YF0ef6Ee9qLBY7o8A3eRAVtng0rCsoh5/3+fL0bog5N5siRT4IE5GIAmb2likVQJfLxhB2Q79iMl9y7q+mJoOpcOH9iIqZwOQ2eIK/LYrunqroyJiMnNP9czwyPCLrySR5XpnOu7WvtI7IKfSI36j7XedpFzyb8hgO1RAhjMnWwj7vMWVE2qDk17P+QcaJWwM2VLiMWGb7v/thWBX7MTjH9NSqECUgi8r+7OOZ+IGMwE5BMJSFli9oUn09D2d2vE22b1DdkK8YcHEkoJCH4LaDjUooWvBaw2IX5wtb+QqgFj+3gigXJ6JVBmKBHbL91Z1Com+bOUZZbjFUdsY/K3BtrMgWgmuTRlDyxjAQ2E1Ux2IeNxQoG/D61qHG3QI87PAsvYpo8NV+ytgu92dfruov8wf7Sp+psjxHhkBlNWKxBpprC6qPSjW+cf5Iln2zEFCxJwS5cZXTciI0wXMw+0Bc6pKz66MwMmxOQ77O7cixAnSD1sBUNPb7FZhye0j8IgqPGU66ZjbvRQtaQCBl4uvXnlnqlZ/W1Utk56ymb4AK61mo83CtcfD4E1VNmIaS11pXlTF3z5ZTO9NWdP9nOm5R0QabuQcPV1xxB6Tm1B2ld0r+GcoRpWk0CswJ+VzKHweHsOzPd6wQGzQwmwPzJg6Bah3JhlGxtZ7hWJ8gzCjuIlMoE91vfoHrCr3appamREtqTl5mL7XlhfU4tYMeq6pgJD594WVCnK1J+IU0d9d6/p9IQL/wUFepBlSg7J5qwBosQ1Rw==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6919.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(396003)(346002)(136003)(366004)(39860400002)(451199015)(4001150100001)(83380400001)(2906002)(91956017)(76116006)(2616005)(41300700001)(66556008)(66476007)(85182001)(36756003)(66946007)(86362001)(54906003)(6916009)(6506007)(38100700002)(6512007)(122000001)(38070700005)(5660300002)(8936002)(186003)(7416002)(8676002)(66446008)(64756008)(4326008)(966005)(6486002)(26005)(316002)(71200400001)(478600001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RVkyYWpBdURFY09BalpodGxOTG1VZ0pVMGdoSlcvY3FwSFFiQkpQbklRSksw?=
+ =?utf-8?B?NTArREV2ek0zRXVHeDFVdlpNaDRrNm9TcFlBMDlaM1hSZVpSMmUxNTBzYytF?=
+ =?utf-8?B?eHZkUUZXcWJ3aHZiZW95Z0xXRmE5SzZCYy9YSzJwWTkvQU41WnZBQ3RsR2dE?=
+ =?utf-8?B?YTdjNzlDSDhINkFzTXF0MDBhU1BLZnlwQjY2OUIyQ3JnZFZmaTNtMWVDLzkx?=
+ =?utf-8?B?NkNXdllMZElXVUpkYjJwTHQrTzYyZXc3RE85d1NoME5QcE9sbXFOMFoxWnlX?=
+ =?utf-8?B?UWxWaHJCMmxja0t0bkVzeDU4RWkrb3JLTnRTQkFWNXVyZTdLMU82blphQkx3?=
+ =?utf-8?B?NW9La2loZ0RyRWYyNlhHSk80NGZlVlMzeURGYkdMQXEyN0JrREtEemQwNFJ3?=
+ =?utf-8?B?NVk0ODVrYUkzMEd0cHJKM28rWjlYK2NUdlBPUFYrTC9WWU93TzVYclNnWVZH?=
+ =?utf-8?B?bWpNZmIwSkpXdWlyWm9QbU94Mjc3d09DWElDNmorZVRaa2laWWR4Y3hXWkxh?=
+ =?utf-8?B?cXRZRHRhU0szY0ozRUdUV3c5VURqcXVobWo3UnprNGJ4QVdwSDZiSitiRnFr?=
+ =?utf-8?B?WTYvWkZyZjN2VUtzQ2FycWphZFRRaS82TytDMTdZZVlzblNlQTJBR0lvWFc0?=
+ =?utf-8?B?ZDFBanR4Sklkek9RdmdaZlpUV3IzSGozT1BvczFPeWpJZGpFQ3Q1djRIcDdS?=
+ =?utf-8?B?Yjd6ZTlrcUtScnV6VFZLNC9FUU0reWVhZXptUmhNbzdTMGFUQWZnb0lON2I0?=
+ =?utf-8?B?U1BmTHVDaUdHL1d6bXRNV2RMc294TmgxNnAyb1h0VndIY2NGNUE3Z0NhTkg1?=
+ =?utf-8?B?WURNZGJWZlZxNUZQbmp1V3lUT3BVTVdvcEthSy9SeUR2Qy81aVFhcklLWDJ4?=
+ =?utf-8?B?d2Q4SEp1R1Z0RmN4aTNOYk0wenBCajZ5SEwzNEtkNkxFN3pmNDlNeERxaFNa?=
+ =?utf-8?B?WkZmUGo0MEFydGQ1Z3VlNVU4bTdyU2Y4di9waGN3R3hZNzFKNjVMSHlqa2Z6?=
+ =?utf-8?B?dGExWE9nb2l6RjJWLys3WTg5ZDNydjhneFljWHYzREZlNzRwM0FLRThUbkNR?=
+ =?utf-8?B?blVWdlpCVk9uU3NjbDNyQVRtSllZOHJLNnN3TlBrWlBJVlFYVlV6UERqQ2E5?=
+ =?utf-8?B?UkUyUlMxclpnRnF2a2JWQkpRak1lZnBJZytnUlBzTmErK2Y5bU1VRkRuWS9K?=
+ =?utf-8?B?U0tnSWhCSnVqblhvcEY0VHBQUXJ5YUdKTkFCUExNVFd6cDRvajM5cjJNYk9n?=
+ =?utf-8?B?NVNUQ1Z4TGxURlQ1My9jd1JrOHg1eDlsUzkxWlVHd1E5VXIrTmpqaDhvMUhq?=
+ =?utf-8?B?aElSSFJRWVZwdm8wYnVjd2x2TXZYOW1yWDE3RG1LOTV5Y3FMYnRPNmt2SWJx?=
+ =?utf-8?B?c3dNMUY3OVIwMnp1VnFqQm5lQzM3dUlpbnJwUXFsQzJQZzdHeEpMYXA0cjJX?=
+ =?utf-8?B?MWdxSXd4ZVFrUHpRRGxudkM0bHRNNGQvczl0YmdHWDd1RWhVcjRmS2k1Z3Na?=
+ =?utf-8?B?R1B1eGZSZE1xUi84ZlRZaFRjUWNPNHgwT2RaelhJQm5tTjIxK2xKMWVWekUz?=
+ =?utf-8?B?ckZuUnZELzZjR2xQYlhhVVZ3Z1VYSkNmTUlmZXJwWmRWTlFndFBYTFRaR3VR?=
+ =?utf-8?B?ckFBS0ZUNTl4bDJYeXdTMTBUTk9uWERROVhqNm9Ba05PbWRUSldHSjBCdG90?=
+ =?utf-8?B?dTlOOGw1NEhhYXdvSHZBSEZVR1ZsWXE2YlNZK1NGaWk2S0JnRlUvZnFReEZy?=
+ =?utf-8?B?Wk12MnhucHpEU2RoZCtHV3A5NDUvL2JKV081d2xLTnl4VVF4ZWtmcHJPVGJj?=
+ =?utf-8?B?aXdoaVN5eC94YXkwQTlveC9nU09iTDlqUUk3ZWt6QXVnbzRLTG5LRm9nN1ln?=
+ =?utf-8?B?SGVDZEJGNGtJSXZuUFdlVkJMc2N6ZHlGU283K1piOGR6N3QrcmpjdDRPWito?=
+ =?utf-8?B?R1lyUEg2cStnYnhiQ0Q5UTNRSCtpUkR5bmJReUFEN08rdVYxWkljbnkwOGNI?=
+ =?utf-8?B?NHlJNCtkd2FEZWZVT3F4UmNka1l3TklXRmRXTW9zVlVqL1pIZ0NVQU84WDl0?=
+ =?utf-8?B?V0xQWkJPM2NJUkoyZUhxckxubXYwZjhCNUZ2b0E2UlZUaU5LRkxvcU9rakQx?=
+ =?utf-8?B?R0VyY0ZhTHpLRWNyMENWRzFFa253TndObGVYNjl2bTlLZ2ZxRUN5cnFBSHFJ?=
+ =?utf-8?Q?bgjiHBkAGf/Q1O8KuqIv3tE=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <3E7BCF0FBEF3E0468F5DAFA62E697BC5@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6919.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 02ef24f8-04e0-441e-b976-08dacbbc31f1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2022 12:30:37.7937
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: dF4pKlqQ3hLS6aueIfllYKq5ux1HqbLCsDYRkrvyN+adpAqovmR5I2fX41BmD+7ouUKFADT6MKXoAap3KT8LfbjZKQYsUigsCA1S/uq+hPM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB6492
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_044008_592763_1F8C938C 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20221121_044047_727079_E2D4AAC9 
+X-CRM114-Status: GOOD (  24.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,283 +177,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Export PLL operations and register functions for different type
-of clock driver used.
-
-Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-pll.c | 84 ++++++++++++++--------------------
- drivers/clk/mediatek/clk-pll.h | 55 ++++++++++++++++++++++
- 2 files changed, 89 insertions(+), 50 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 54e6cfd29dfc..a4eca5fd539c 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -27,37 +27,10 @@
- 
- #define AUDPLL_TUNER_EN		BIT(31)
- 
--#define POSTDIV_MASK		0x7
--
- /* default 7 bits integer, can be overridden with pcwibits. */
- #define INTEGER_BITS		7
- 
--/*
-- * MediaTek PLLs are configured through their pcw value. The pcw value describes
-- * a divider in the PLL feedback loop which consists of 7 bits for the integer
-- * part and the remaining bits (if present) for the fractional part. Also they
-- * have a 3 bit power-of-two post divider.
-- */
--
--struct mtk_clk_pll {
--	struct clk_hw	hw;
--	void __iomem	*base_addr;
--	void __iomem	*pd_addr;
--	void __iomem	*pwr_addr;
--	void __iomem	*tuner_addr;
--	void __iomem	*tuner_en_addr;
--	void __iomem	*pcw_addr;
--	void __iomem	*pcw_chg_addr;
--	void __iomem	*en_addr;
--	const struct mtk_pll_data *data;
--};
--
--static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
--{
--	return container_of(hw, struct mtk_clk_pll, hw);
--}
--
--static int mtk_pll_is_prepared(struct clk_hw *hw)
-+int mtk_pll_is_prepared(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
-@@ -161,8 +134,8 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-  * @fin:	The input frequency
-  *
-  */
--static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
--		u32 freq, u32 fin)
-+void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-+			 u32 freq, u32 fin)
- {
- 	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
- 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
-@@ -198,8 +171,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 	*pcw = (u32)_pcw;
- }
- 
--static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
--		unsigned long parent_rate)
-+int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-+		     unsigned long parent_rate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 pcw = 0;
-@@ -211,8 +184,7 @@ static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return 0;
- }
- 
--static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
--		unsigned long parent_rate)
-+unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 postdiv;
-@@ -227,8 +199,8 @@ static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
- 	return __mtk_pll_recalc_rate(pll, parent_rate, pcw, postdiv);
- }
- 
--static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--		unsigned long *prate)
-+long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			unsigned long *prate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 pcw = 0;
-@@ -239,7 +211,7 @@ static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 	return __mtk_pll_recalc_rate(pll, *prate, pcw, postdiv);
- }
- 
--static int mtk_pll_prepare(struct clk_hw *hw)
-+int mtk_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-@@ -273,7 +245,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	return 0;
- }
- 
--static void mtk_pll_unprepare(struct clk_hw *hw)
-+void mtk_pll_unprepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-@@ -301,7 +273,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- }
- 
--static const struct clk_ops mtk_pll_ops = {
-+const struct clk_ops mtk_pll_ops = {
- 	.is_prepared	= mtk_pll_is_prepared,
- 	.prepare	= mtk_pll_prepare,
- 	.unprepare	= mtk_pll_unprepare,
-@@ -310,18 +282,15 @@ static const struct clk_ops mtk_pll_ops = {
- 	.set_rate	= mtk_pll_set_rate,
- };
- 
--static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
--		void __iomem *base)
-+struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
-+					const struct mtk_pll_data *data,
-+					void __iomem *base,
-+					const struct clk_ops *pll_ops)
- {
--	struct mtk_clk_pll *pll;
- 	struct clk_init_data init = {};
- 	int ret;
- 	const char *parent_name = "clk26m";
- 
--	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
--	if (!pll)
--		return ERR_PTR(-ENOMEM);
--
- 	pll->base_addr = base + data->reg;
- 	pll->pwr_addr = base + data->pwr_reg;
- 	pll->pd_addr = base + data->pd_reg;
-@@ -343,7 +312,7 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 
- 	init.name = data->name;
- 	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
--	init.ops = &mtk_pll_ops;
-+	init.ops = pll_ops;
- 	if (data->parent_name)
- 		init.parent_names = &data->parent_name;
- 	else
-@@ -360,7 +329,22 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 	return &pll->hw;
- }
- 
--static void mtk_clk_unregister_pll(struct clk_hw *hw)
-+struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
-+				    void __iomem *base)
-+{
-+	struct mtk_clk_pll *pll;
-+	struct clk_hw *hw;
-+
-+	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
-+	if (!pll)
-+		return ERR_PTR(-ENOMEM);
-+
-+	hw = mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
-+
-+	return hw;
-+}
-+
-+void mtk_clk_unregister_pll(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll;
- 
-@@ -423,8 +407,8 @@ int mtk_clk_register_plls(struct device_node *node,
- }
- EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
- 
--static __iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
--					  const struct mtk_pll_data *data)
-+__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
-+				   const struct mtk_pll_data *data)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
-diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
-index fe3199715688..f17278ff15d7 100644
---- a/drivers/clk/mediatek/clk-pll.h
-+++ b/drivers/clk/mediatek/clk-pll.h
-@@ -7,6 +7,7 @@
- #ifndef __DRV_CLK_MTK_PLL_H
- #define __DRV_CLK_MTK_PLL_H
- 
-+#include <linux/clk-provider.h>
- #include <linux/types.h>
- 
- struct clk_ops;
-@@ -20,6 +21,7 @@ struct mtk_pll_div_table {
- 
- #define HAVE_RST_BAR	BIT(0)
- #define PLL_AO		BIT(1)
-+#define POSTDIV_MASK	GENMASK(2, 0)
- 
- struct mtk_pll_data {
- 	int id;
-@@ -48,10 +50,63 @@ struct mtk_pll_data {
- 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
- 
-+/*
-+ * MediaTek PLLs are configured through their pcw value. The pcw value describes
-+ * a divider in the PLL feedback loop which consists of 7 bits for the integer
-+ * part and the remaining bits (if present) for the fractional part. Also they
-+ * have a 3 bit power-of-two post divider.
-+ */
-+
-+struct mtk_clk_pll {
-+	struct clk_hw	hw;
-+	void __iomem	*base_addr;
-+	void __iomem	*pd_addr;
-+	void __iomem	*pwr_addr;
-+	void __iomem	*tuner_addr;
-+	void __iomem	*tuner_en_addr;
-+	void __iomem	*pcw_addr;
-+	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
-+	const struct mtk_pll_data *data;
-+};
-+
- int mtk_clk_register_plls(struct device_node *node,
- 			  const struct mtk_pll_data *plls, int num_plls,
- 			  struct clk_hw_onecell_data *clk_data);
- void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
- 			     struct clk_hw_onecell_data *clk_data);
- 
-+extern const struct clk_ops mtk_pll_ops;
-+
-+static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
-+{
-+	return container_of(hw, struct mtk_clk_pll, hw);
-+}
-+
-+int mtk_pll_is_prepared(struct clk_hw *hw);
-+
-+int mtk_pll_prepare(struct clk_hw *hw);
-+
-+void mtk_pll_unprepare(struct clk_hw *hw);
-+
-+unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate);
-+
-+void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-+			 u32 freq, u32 fin);
-+int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-+		     unsigned long parent_rate);
-+long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			unsigned long *prate);
-+
-+struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
-+					const struct mtk_pll_data *data,
-+					void __iomem *base,
-+					const struct clk_ops *pll_ops);
-+struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
-+				    void __iomem *base);
-+void mtk_clk_unregister_pll(struct clk_hw *hw);
-+
-+__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
-+				   const struct mtk_pll_data *data);
-+
- #endif /* __DRV_CLK_MTK_PLL_H */
--- 
-2.18.0
-
+SGkgTsOtY29sYXMsDQoNCk9uIEZyaSwgMjAyMi0xMS0xOCBhdCAwOToxMCAtMDUwMCwgTsOtY29s
+YXMgRi4gUi4gQS4gUHJhZG8gd3JvdGU6DQo+IE9uIEZyaSwgU2VwIDMwLCAyMDIyIGF0IDA3OjIy
+OjM3UE0gKzA4MDAsIEFsbGVuLUtIIENoZW5nIHdyb3RlOg0KPiA+IEFkZCB2Y29kZWMgbGF0IGFu
+ZCBjb3JlIG5vZGVzIGZvciBtdDgxOTIgU29DLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IEFs
+bGVuLUtIIENoZW5nIDxhbGxlbi1raC5jaGVuZ0BtZWRpYXRlay5jb20+DQo+ID4gVGVzdGVkLWJ5
+OiBDaGVuLVl1IFRzYWkgPHdlbnN0QGNocm9taXVtLm9yZz4NCj4gPiBSZXZpZXdlZC1ieTogQW5n
+ZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPA0KPiA+IGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9A
+Y29sbGFib3JhLmNvbT4NCj4gPiAtLS0NCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
+ay9tdDgxOTIuZHRzaSB8IDYwDQo+ID4gKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gIDEg
+ZmlsZSBjaGFuZ2VkLCA2MCBpbnNlcnRpb25zKCspDQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kNCj4gPiBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kNCj4gPiBpbmRleCA2YjIwMzc2MTkxYTcuLjky
+YTIwZjg3NDY4YiAxMDA2NDQNCj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
+L210ODE5Mi5kdHNpDQo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
+OTIuZHRzaQ0KPiA+IEBAIC0xNDQ5LDYgKzE0NDksNjYgQEANCj4gPiAgCQkJcG93ZXItZG9tYWlu
+cyA9IDwmc3BtDQo+ID4gTVQ4MTkyX1BPV0VSX0RPTUFJTl9JU1AyPjsNCj4gPiAgCQl9Ow0KPiA+
+ICANCj4gPiArCQl2Y29kZWNfZGVjOiB2aWRlby1jb2RlY0AxNjAwMDAwMCB7DQo+ID4gKwkJCWNv
+bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTkyLXZjb2RlYy1kZWMiOw0KPiA+ICsJCQlyZWcgPSA8
+MCAweDE2MDAwMDAwIDAgMHgxMDAwPjsNCj4gPiArCQkJbWVkaWF0ZWssc2NwID0gPCZzY3A+Ow0K
+PiA+ICsJCQlpb21tdXMgPSA8JmlvbW11MCBNNFVfUE9SVF9MNF9WREVDX01DX0VYVD47DQo+ID4g
+KwkJCWRtYS1yYW5nZXMgPSA8MHgxIDB4MCAweDAgMHg0MDAwMDAwMCAweDANCj4gPiAweGZmZjAw
+MDAwPjsNCj4gDQo+IEhpLA0KPiANCj4gc2luY2UgY29tbWl0IDk1MWQ0ODg1NWQ4NiAoIm9mOiBN
+YWtlIG9mX2RtYV9nZXRfcmFuZ2UoKSB3b3JrIG9uIGJ1cw0KPiBub2RlcyIpIFsxXQ0KPiB3YXMg
+bWVyZ2VkIHRoaXMgbm8gbG9uZ2VyIHdvcmtzIGFzIGlzLiBSdW5uaW5nIHRoZSBmbHVzdGVyIGNv
+ZGVjDQo+IHRlc3RzIHJlc3VsdHMNCj4gaW4gSU9NTVUgZmF1bHRzOg0KPiANCj4gCVsgIDM4Ni4y
+MzM5NzZdIG10ay1pb21tdSAxNDAxZDAwMC5tNHU6IGZhdWx0IHR5cGU9MHgyODANCj4gaW92YT0w
+eDFmY2RjMDAwMCBwYT0weDAgbWFzdGVyPTB4NTAwMDQxYyhsYXJiPTQgcG9ydD03KSBsYXllcj0w
+IHJlYWQNCj4gCVsgIDM4Ni4yNTA2NjZdIG10a192ZGVjX3dvcmtlcigpLDI0MToNCj4gW01US19W
+NEwyXVtFUlJPUl0gIDw9PT1bMTM4XSwgc3JjX2J1ZlswXSBzej0weDI5OCBwdHM9MA0KPiB2ZGVj
+X2lmX2RlY29kZSgpIHJldD0xIHJlc19jaGc9MD09PT4NCj4gDQo+IFRoZSBpc3N1ZSBpcyB0aGF0
+IHRoZSBETUEgY29uZmlndXJhdGlvbiBzdXBwbGllZCBieSBkbWEtcmFuZ2VzIGlzIG5vdw0KPiBs
+b29rZWQgZm9yDQo+IGluIHRoZSBwYXJlbnQgbm9kZSwgc28gdGhlIHZjb2RlY19kZWMgbm9kZSBu
+byBsb25nZXIgZ2V0cyB0aGUNCj4gY29uZmlndXJhdGlvbiBpdA0KPiBleHBlY3RlZC4NCj4gDQo+
+IFRoYXQgc2FpZCwgZ2l2ZW4gdGhhdCB0aGUgbm9kZSBhbHJlYWR5IHVzZXMgdGhlIElPTU1VIGZv
+ciB0aGUgYWRkcmVzcw0KPiB0cmFuc2xhdGlvbnMgKGlvbW11cyBwcm9wZXJ0eSksIHRoZXJlIHNo
+b3VsZG4ndCBldmVuIGJlIGEgZG1hLXJhbmdlcw0KPiBwcm9wZXJ0eS4NCj4gSW5kZWVkIHNpbXBs
+eSByZW1vdmluZyB0aGUgZG1hLXJhbmdlcyBwcm9wZXJ0eSBmcm9tIHRoaXMgbm9kZSBmaXhlcw0K
+PiB0aGUgaXNzdWUNCj4gYW5kIGdldHMgdGhlIGRlY29kZXIgd29ya2luZyBhZ2Fpbi4NCj4gDQo+
+IFRoYW5rcywNCj4gTsOtY29sYXMNCj4gDQo+IFsxXSANCj4gaHR0cHM6Ly91cmxkZWZlbnNlLmNv
+bS92My9fX2h0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3Rv
+cnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPWYxYWQ1MzM4YTRkNTdmZTFmZTY0NzUwMDNhY2I4
+YzcwYmY5ZDFiZGZfXzshIUNUUk5LQTl3TWcwQVJidyF4ZGhobnZYTVk1LUJqSTJCWFBIUUktSHc4
+emd0WjFsdkZ5RkZ2N0t0TnVDRHhXMTdWQzdScUFhVzlCX3VYc1F1Y1Qxc0xrX0RVbC1jOTlpakY5
+ZEY4UVhiSlEkDQo+ICANCg0KTm90ZWQhDQoNClRoZSBwYXJldCBub2RlIHNob3VsZCBiZQ0KDQp2
+Y29kZWNfZGVjOiB2aWRlby1jb2RlY0AxNjAwMDAwMCB7DQoJY29tcGF0aWJsZSA9ICJtZWRpYXRl
+ayxtdDgxOTItdmNvZGVjLWRlYyI7DQoJcmVnID0gPDAgMHgxNjAwMDAwMCAwIDB4MTAwMD47DQoJ
+bWVkaWF0ZWssc2NwID0gPCZzY3A+Ow0KCWlvbW11cyA9IDwmaW9tbXUwIE00VV9QT1JUX0w0X1ZE
+RUNfTUNfRVhUPjsNCgkjYWRkcmVzcy1jZWxscyA9IDwyPjsNCgkjc2l6ZS1jZWxscyA9IDwyPjsN
+CglyYW5nZXMgPSA8MCAwIDAgMHgxNjAwMDAwMCAwIDB4MjYwMDA+Ow0KCQ0KCXZpZGVvLWNvZGVj
+LWxhdEAxMDAwMCB7DQouLi4NCg0KfQ0KDQpBbSBJIHJpZ2h0Pw0KDQpUaGFua3MsDQpBbGxlbg0K
+DQo+IA0KPiA+ICsJCQkjYWRkcmVzcy1jZWxscyA9IDwyPjsNCj4gPiArCQkJI3NpemUtY2VsbHMg
+PSA8Mj47DQo+ID4gKwkJCXJhbmdlcyA9IDwwIDAgMCAweDE2MDAwMDAwIDAgMHgyNjAwMD47DQo+
+ID4gKw0KPiA+ICsJCQl2aWRlby1jb2RlYy1sYXRAMTAwMDAgew0KPiA+ICsJCQkJY29tcGF0aWJs
+ZSA9ICJtZWRpYXRlayxtdGstdmNvZGVjLWxhdCI7DQo+ID4gKwkJCQlyZWcgPSA8MHgwIDB4MTAw
+MDAgMCAweDgwMD47DQo+ID4gKwkJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNDI2DQo+ID4gSVJR
+X1RZUEVfTEVWRUxfSElHSCAwPjsNCj4gPiArCQkJCWlvbW11cyA9IDwmaW9tbXUwDQo+ID4gTTRV
+X1BPUlRfTDVfVkRFQ19MQVQwX1ZMRF9FWFQ+LA0KPiA+ICsJCQkJCSA8JmlvbW11MA0KPiA+IE00
+VV9QT1JUX0w1X1ZERUNfTEFUMF9WTEQyX0VYVD4sDQo+ID4gKwkJCQkJIDwmaW9tbXUwDQo+ID4g
+TTRVX1BPUlRfTDVfVkRFQ19MQVQwX0FWQ19NVl9FWFQ+LA0KPiA+ICsJCQkJCSA8JmlvbW11MA0K
+PiA+IE00VV9QT1JUX0w1X1ZERUNfTEFUMF9QUkVEX1JEX0VYVD4sDQo+ID4gKwkJCQkJIDwmaW9t
+bXUwDQo+ID4gTTRVX1BPUlRfTDVfVkRFQ19MQVQwX1RJTEVfRVhUPiwNCj4gPiArCQkJCQkgPCZp
+b21tdTANCj4gPiBNNFVfUE9SVF9MNV9WREVDX0xBVDBfV0RNQV9FWFQ+LA0KPiA+ICsJCQkJCSA8
+JmlvbW11MA0KPiA+IE00VV9QT1JUX0w1X1ZERUNfTEFUMF9SR19DVFJMX0RNQV9FWFQ+LA0KPiA+
+ICsJCQkJCSA8JmlvbW11MA0KPiA+IE00VV9QT1JUX0w1X1ZERUNfVUZPX0VOQ19FWFQ+Ow0KPiA+
+ICsJCQkJY2xvY2tzID0gPCZ0b3Bja2dlbiBDTEtfVE9QX1ZERUNfU0VMPiwNCj4gPiArCQkJCQkg
+PCZ2ZGVjc3lzX3NvYw0KPiA+IENMS19WREVDX1NPQ19WREVDPiwNCj4gPiArCQkJCQkgPCZ2ZGVj
+c3lzX3NvYw0KPiA+IENMS19WREVDX1NPQ19MQVQ+LA0KPiA+ICsJCQkJCSA8JnZkZWNzeXNfc29j
+DQo+ID4gQ0xLX1ZERUNfU09DX0xBUkIxPiwNCj4gPiArCQkJCQkgPCZ0b3Bja2dlbg0KPiA+IENM
+S19UT1BfTUFJTlBMTF9END47DQo+ID4gKwkJCQljbG9jay1uYW1lcyA9ICJzZWwiLCAic29jLXZk
+ZWMiLCAic29jLQ0KPiA+IGxhdCIsICJ2ZGVjIiwgInRvcCI7DQo+ID4gKwkJCQlhc3NpZ25lZC1j
+bG9ja3MgPSA8JnRvcGNrZ2VuDQo+ID4gQ0xLX1RPUF9WREVDX1NFTD47DQo+ID4gKwkJCQlhc3Np
+Z25lZC1jbG9jay1wYXJlbnRzID0gPCZ0b3Bja2dlbg0KPiA+IENMS19UT1BfTUFJTlBMTF9END47
+DQo+ID4gKwkJCQlwb3dlci1kb21haW5zID0gPCZzcG0NCj4gPiBNVDgxOTJfUE9XRVJfRE9NQUlO
+X1ZERUM+Ow0KPiA+ICsJCQl9Ow0KPiA+ICsNCj4gPiArCQkJdmlkZW8tY29kZWMtY29yZUAyNTAw
+MCB7DQo+ID4gKwkJCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ay12Y29kZWMtDQo+ID4gY29y
+ZSI7DQo+ID4gKwkJCQlyZWcgPSA8MCAweDI1MDAwIDAgMHgxMDAwPjsNCj4gPiArCQkJCWludGVy
+cnVwdHMgPSA8R0lDX1NQSSA0MjUNCj4gPiBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Ow0KPiA+ICsJ
+CQkJaW9tbXVzID0gPCZpb21tdTANCj4gPiBNNFVfUE9SVF9MNF9WREVDX01DX0VYVD4sDQo+ID4g
+KwkJCQkJIDwmaW9tbXUwDQo+ID4gTTRVX1BPUlRfTDRfVkRFQ19VRk9fRVhUPiwNCj4gPiArCQkJ
+CQkgPCZpb21tdTANCj4gPiBNNFVfUE9SVF9MNF9WREVDX1BQX0VYVD4sDQo+ID4gKwkJCQkJIDwm
+aW9tbXUwDQo+ID4gTTRVX1BPUlRfTDRfVkRFQ19QUkVEX1JEX0VYVD4sDQo+ID4gKwkJCQkJIDwm
+aW9tbXUwDQo+ID4gTTRVX1BPUlRfTDRfVkRFQ19QUkVEX1dSX0VYVD4sDQo+ID4gKwkJCQkJIDwm
+aW9tbXUwDQo+ID4gTTRVX1BPUlRfTDRfVkRFQ19QUFdSQVBfRVhUPiwNCj4gPiArCQkJCQkgPCZp
+b21tdTANCj4gPiBNNFVfUE9SVF9MNF9WREVDX1RJTEVfRVhUPiwNCj4gPiArCQkJCQkgPCZpb21t
+dTANCj4gPiBNNFVfUE9SVF9MNF9WREVDX1ZMRF9FWFQ+LA0KPiA+ICsJCQkJCSA8JmlvbW11MA0K
+PiA+IE00VV9QT1JUX0w0X1ZERUNfVkxEMl9FWFQ+LA0KPiA+ICsJCQkJCSA8JmlvbW11MA0KPiA+
+IE00VV9QT1JUX0w0X1ZERUNfQVZDX01WX0VYVD4sDQo+ID4gKwkJCQkJIDwmaW9tbXUwDQo+ID4g
+TTRVX1BPUlRfTDRfVkRFQ19SR19DVFJMX0RNQV9FWFQ+Ow0KPiA+ICsJCQkJY2xvY2tzID0gPCZ0
+b3Bja2dlbiBDTEtfVE9QX1ZERUNfU0VMPiwNCj4gPiArCQkJCQkgPCZ2ZGVjc3lzIENMS19WREVD
+X1ZERUM+LA0KPiA+ICsJCQkJCSA8JnZkZWNzeXMgQ0xLX1ZERUNfTEFUPiwNCj4gPiArCQkJCQkg
+PCZ2ZGVjc3lzIENMS19WREVDX0xBUkIxPiwNCj4gPiArCQkJCQkgPCZ0b3Bja2dlbg0KPiA+IENM
+S19UT1BfTUFJTlBMTF9END47DQo+ID4gKwkJCQljbG9jay1uYW1lcyA9ICJzZWwiLCAic29jLXZk
+ZWMiLCAic29jLQ0KPiA+IGxhdCIsICJ2ZGVjIiwgInRvcCI7DQo+ID4gKwkJCQlhc3NpZ25lZC1j
+bG9ja3MgPSA8JnRvcGNrZ2VuDQo+ID4gQ0xLX1RPUF9WREVDX1NFTD47DQo+ID4gKwkJCQlhc3Np
+Z25lZC1jbG9jay1wYXJlbnRzID0gPCZ0b3Bja2dlbg0KPiA+IENMS19UT1BfTUFJTlBMTF9END47
+DQo+ID4gKwkJCQlwb3dlci1kb21haW5zID0gPCZzcG0NCj4gPiBNVDgxOTJfUE9XRVJfRE9NQUlO
+X1ZERUMyPjsNCj4gPiArCQkJfTsNCj4gPiArCQl9Ow0KPiA+ICsNCg==
 
