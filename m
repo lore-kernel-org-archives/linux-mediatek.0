@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C3BBC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70EBFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:36:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Jxn+RBGVERxukoZ0CuXSdveFCdESK0kHT4i7qD/8lo=; b=kI/vWV5+QgFhR2DEabZ02E1YVn
-	eAVaIIxQ6IR+SFSQr+DU65IjyUoI73WRHjoSkkSacb95SoJRV3Q67Cny1Qc9qWKR09CAou1+UG//X
-	xgooLx75Bx0rWjNLBbxpuA+dnB5uRysK5+WuZonZFrFUSHOLRUC/1ADtIqm0nZIKsoh9/UJOqXhIe
-	gWIsHlwJbCXjmrs5pN3tK8Cma9f4r5JPjKH/hXs1yg0FjCzYMHY/lIWopnrLIe1uAiEjuhgv5FJH6
-	l65CiadXv7iHiAgWNTI6RY7O13mra3mtl7SQtjoAAgnyneiBtBovhzpYivvuVrQQL78AacYqfhkOk
-	rqw3RM5A==;
+	bh=DFZS31orYUzmE7Oui/y7eLseJom8bGmCVAt+PCCfPxg=; b=RF92CWI0/KbXfXmrXy1N1DIPGc
+	dg6W5O/7Heeop1eZk7mo0gnil/e6cwGLEdaDKbm0sTseZWA41IZQouaMcX9eyMRJeJTxVAXreqz+U
+	KIPW4Ii3cski/G2CCI1GUETlunwDdnta3riuPg1NoSRMsY3SMJ4TugGc3Yhj1wD9E5MAgmKL7q3Hw
+	29ktu4K9FXQJihc+TMptO4NMGdawyXN/WT4SBsDx0b/ZXF+HLdjfalBNRKZl4haUugeAZ34DxVUho
+	aDugL/Outr8QEZKcUOA6LkC/GGnlbqStmhtfpAw/l8yC7yq4XOPS5F1/i0CNf9oNwVVW0SL3oaMoy
+	Q4rjpXpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox61s-00DaTV-TU; Mon, 21 Nov 2022 12:36:04 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1ox62G-00DauJ-2s; Mon, 21 Nov 2022 12:36:28 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox61Q-00DZvC-TN
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 12:35:40 +0000
-Received: by mail-lj1-x232.google.com with SMTP id l8so14310386ljh.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 04:35:33 -0800 (PST)
+	id 1ox62D-00Daqn-4b; Mon, 21 Nov 2022 12:36:26 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id n3so3094763wrp.5;
+        Mon, 21 Nov 2022 04:36:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=5Jxn+RBGVERxukoZ0CuXSdveFCdESK0kHT4i7qD/8lo=;
-        b=avTYR9olrnBS5pqSQmPHd3LPji94CnINQOtQsHzD/a+P0PPDtjb7NtjWXQa97kE2vK
-         fk3AK8/yOUIXdoDjgYWT3cYk7YXlSbWrYLT+PWH/3xN8Euwi8N1xwjIOZWHXZlFlE03R
-         cBGPWwUdWnvNGqruZU3mkCNmhGTZEJ7TtRIJRMVH8LHN59VBmHBRas0nz96tmNjVspYY
-         ptAgVFOC6j/i/Ae1DFAVFQ23BX3fi6QGMm9nF+5eUikDw5eD6OBm+CFF8zXRYz1WWPAn
-         bFUxrG11c+fveNxp8F1qc8rdv5bgJxfQ99Spzob3tH6r8NSjp8eMS9EsSwkk4dfTlw2z
-         90lQ==
+        bh=DFZS31orYUzmE7Oui/y7eLseJom8bGmCVAt+PCCfPxg=;
+        b=fW5Mp6sgNTEJLfxwwpa6BIHYLAfya0or8LXwcsASGLmIq9mn1KR9RFWRL/2tWjqqAV
+         lqiutzi4AG6MRhTQ4IXBpyEUf/lrKm1bRXVYDE3J7USVRAEZzfY5DHPpfA2sCaPCz9FR
+         1WKF62zxbCIT5Eol+OpNmMlDQltt4rdDe5l+YyWNMe1KBTtDcWeeG53oEoI7TpRmWqAW
+         MII2+ZrqXss/yMjy24JnfZcXyO+8ZYJG5p9S4xVSnRP/JZExG+jmX0i+siq4xk+M+X4q
+         aK1N6gZkupNjcummiw+CrMzd8Cvr7+ctnrzsM/Xui4t94xPO8j0cXaGHiw1p0HvCi3u1
+         fuFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5Jxn+RBGVERxukoZ0CuXSdveFCdESK0kHT4i7qD/8lo=;
-        b=t65T30CbSRHAByce/nf/qV/aoqWoiGUTcGT+pmIUKmx9zfxG6kgBwzAG9exrLV/DSV
-         YHb2xVNau6jHi6HExoiveMiZdP3Kkqq3NlgTvJ1GWNvGYrcdWajye/pKAOO6BYeeU5HS
-         WfiXchjCqJBhvHi0TERLfGSg3K7V2WJi9I6T53XgMTeQ6A88q9VG6cnN2ZZQavxGzrd1
-         C71RRAW69tBWTT7NRkBBkRdqPx6uJsyog/vxdtimxiSRxMasCThyUbGIJ9oCCz8arSTL
-         +vHjGYH+1WS1SAxTMXg/rHP4dvqqgVJkDWfa/VFY/WYFLCD1VsgmyEYWCh2c7TidhJ1J
-         mY6w==
-X-Gm-Message-State: ANoB5plPb/xbaPZK8GlJY1OE1FZy6YouOL99ny891F/NaRjX2xqYY41T
-	Z0GHO807fBQ2qKwTbQ3puuQwZQ==
-X-Google-Smtp-Source: AA0mqf7v4KL+NRJmcW0UYDlYDyKz+pQ9NEJ+GlFkjY0ap9YTKo5dYcob7MHvqYFoPtRRPIYpyxeGHg==
-X-Received: by 2002:a05:651c:1ce:b0:278:a696:2781 with SMTP id d14-20020a05651c01ce00b00278a6962781mr5482892ljn.401.1669034132326;
-        Mon, 21 Nov 2022 04:35:32 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id e5-20020a196905000000b004996fbfd75esm1980456lfc.71.2022.11.21.04.35.31
+        bh=DFZS31orYUzmE7Oui/y7eLseJom8bGmCVAt+PCCfPxg=;
+        b=MlvOIGgziemtQO9MrpF/Op2HdFQSrwHGqU/cUw82W2xO4nPMZ9Vq9jnQQSA+DrpJGx
+         Ev83RN8IeHaxkdXnIiClGbbnSNu4rcarJVRn5+deYrzsImU88AK1adqJ5z9f+oGyuF56
+         821Lv++gsG4VcvD6FQVJm0UwBu6w5CTnMl87uJ3b5J3S2xgSz20g2PPft9zuCo7W8wJh
+         toFu23GHwYUQ5i8BldRKz11MP2rp3IMuHjmLwtkD8BqV1kfehSHAhvtG45C+BKtiHope
+         HM1XL52hrVyX8cVSOJh4Nw7q8Ywu0v2lMacfRZbUWKu2+OtaIzHX7sum0/UdKPE+mLXg
+         NjaQ==
+X-Gm-Message-State: ANoB5pn2O/fv+ccwJa3oFPgyVi4FKFegnZjZq9hZGnYaiFhG9as3utAl
+	ffx8K1Fm52uMqiXf73rDRO4=
+X-Google-Smtp-Source: AA0mqf5gaD4WIQX2sbEeb8QjK494DhuNzsLQ1Cu8gU+8er0XjItCmVLNx0maWmXAjD+rlO90gKR4Qw==
+X-Received: by 2002:a5d:5a95:0:b0:241:65d4:8b41 with SMTP id bp21-20020a5d5a95000000b0024165d48b41mr10628536wrb.470.1669034183276;
+        Mon, 21 Nov 2022 04:36:23 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id 6-20020a05600c024600b003b50428cf66sm13335494wmj.33.2022.11.21.04.36.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 04:35:31 -0800 (PST)
-Message-ID: <b97059c0-1ec5-cd66-f55b-0203dc9eba70@linaro.org>
-Date: Mon, 21 Nov 2022 13:35:30 +0100
+        Mon, 21 Nov 2022 04:36:22 -0800 (PST)
+Message-ID: <f3697559-efd0-b3f9-9d64-17d2f8131a97@gmail.com>
+Date: Mon, 21 Nov 2022 13:36:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH 2/9] pinctrl: stm32: Remove check for pins-are-numbered
+Subject: Re: [PATCH 3/9] dt-bindings: pinctrl: mediatek,mt65xx: Make
+ pins-are-numbered optional
 Content-Language: en-US
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+From: Matthias Brugger <matthias.bgg@gmail.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
  devicetree@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, khilman@baylibre.com,
- mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
- matthias.bgg@gmail.com
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com
 References: <20221121015451.2471196-1-bero@baylibre.com>
- <20221121015451.2471196-3-bero@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221121015451.2471196-3-bero@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
+ <20221121015451.2471196-4-bero@baylibre.com>
+ <8afd5100-9cef-50bd-2b53-e1a550973835@linaro.org>
+ <5b28a9b0-3c31-75bd-3161-0ff9bddf0c54@gmail.com>
+In-Reply-To: <5b28a9b0-3c31-75bd-3161-0ff9bddf0c54@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_043536_994812_1EC9F5C3 
-X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-CacheID: sfid-20221121_043625_213068_9D383784 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,18 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2022 02:54, Bernhard Rosenkränzer wrote:
-> Remove the check for the unnecessary pins-are-numbered
-> DeviceTree property
+
+
+On 21/11/2022 13:32, Matthias Brugger wrote:
 > 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> ---
+> 
+> On 21/11/2022 09:00, Krzysztof Kozlowski wrote:
+>> On 21/11/2022 02:54, Bernhard Rosenkränzer wrote:
+>>> Don't list the pins-are-numbered property as required
+>>>
+>>> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+>>> ---
+>>
+>> And how about making them deprecated? (deprecated: true)
+>>
+> 
+> I think that's we want to do.
+> 
 
-FWIW:
+Also squash 8/9 into this patch.
+Same comments holds for 4/9.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
-
+Regards,
+Matthias
 
