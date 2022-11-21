@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8A27C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 01:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAC7BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 01:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9CB+PKSY77gd3fDCjTpTtL8yvYXbKEU7hxFHC5zM8QI=; b=EQZZfRhnd6vyDRST3IDg5zDJRW
-	odDQSgEXgqALDkF7e6CyadbCipUR+Tv5V05r+83JJh7YGg2R2Fs2zZM38SarUtwdraqyWq11uSSvw
-	IETCXHqOrPXTIUE07oiRVuCTh03WNyW+THt/eqS85BEU+W0AgKcVuJuJyGOpr1Hrkz5oAX1AYCaaE
-	Ji6ZhG2RGvNIah/PCZn5788lORz2gW2PDiWnjr5kYdnHusYN+ycVN2+vJtm0WzcPpuhgFuQNIdTHu
-	r4D9hQ4mGfm73luDFlytCK4efu3wGvfmgNko2NRd5lD9eYUw3LJlgXGruVLi7EucgQGYdukHYa54D
-	p/HGX5sQ==;
+	bh=nw7lJeHpRVDFo2y9OeZfhTiqPLPx6ObPD3zTI8pHiMo=; b=Pbt3TuFI6EHc/pjWTMj90jnv22
+	MkzTxSPBvrDOY4DI0O3elY9qOBfgx3dv3fsUM40oFwEBxO/yXV5aQjRAE1nAtp6QKaloU5FSN6esJ
+	a1YgxlRO8zB5jA6QL1Rf1mVAAzPVPKs+jy3eRXVQ89+TqGlXuKmCrQ+HbPfy8xDzfQ+scSiR6nBux
+	aogZZOzsCy5e4JbQHFhaJ/Rk7AJIl9MiRo0KAESL+FGYxwAAiIe7XpHyJH9qNocyl4KiN2q6g2+a+
+	5DcWmLx5jyYwVoOTJV6rKzCSy4M157pzDddiH4sz3Cczi+stdcf7tYYzas7m8Cn9pSdQW3dZKU3us
+	FOaocLuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oww2o-008K7J-Sx; Mon, 21 Nov 2022 01:56:22 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1oww5O-008LTu-JD; Mon, 21 Nov 2022 01:59:02 +0000
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oww1m-008JN5-3b
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 01:55:25 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id h23so6377306edj.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 17:55:10 -0800 (PST)
+	id 1oww4x-008LHp-FM
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 01:58:36 +0000
+Received: by mail-oo1-xc32.google.com with SMTP id r10-20020a4aa2ca000000b0049dd7ad4128so1602814ool.13
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Nov 2022 17:58:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9CB+PKSY77gd3fDCjTpTtL8yvYXbKEU7hxFHC5zM8QI=;
-        b=Y/jhLVoxc5NITt+vyfGKjmI2MXk68J/n5/gDbcTVHtDrq+qHydLcpWCsqOLT+1tx4K
-         vJGHmCzBcZprPMxttoFB4QAqBGD5FTiUZurSUlx8DwZbnsbuBN5KPdfLfSh12xI5q+45
-         ewkXZiWodF0uOn4CbYPKzFB+wkOvdmACfiHT6TIbZ9oR1yWZ2VZV07itjNQh0y0ERljn
-         72Pp4i82m1BgTZfFpIEihqSdWbivHdk9jukMKe9aFRW5kzdT9k7mPZiEcYoeksjZMeQi
-         /4zaGQxnrqeC5FbdRmBZ5Fsw2EP2rTwytcD718KgJENUc9W0BT2cS1f0N20MjqK6Xjum
-         +j2A==
+        bh=nw7lJeHpRVDFo2y9OeZfhTiqPLPx6ObPD3zTI8pHiMo=;
+        b=BslRvuvHwq4RffX7b09RlXn1jTkjG3TGMGXA/Vyqku5kVB+AvSsZSpQQpQ44pA20x2
+         rpBsAj4NEStFpWGiZHIaz39M8+PYkky8wvkZxNnVIkXfNtSWDYiQWbAHyf6NFTdp0xsP
+         CNlb5ycaWaWzmfBaWf2JVAsG7DpnhdaULtnw39l3mWKvPC2h1PkeBh8s07QFpsBUrYMq
+         TgmdZ3Znp5HLFu298d6/UGS4Dwk0x4HBYyqUkmT7g1JRhJEAGNznk8Cf1j80PMsyIFs8
+         oW+jtkPwt6PBnIIvNk+ILl5gGUUwDHpZfKEiEySXiaY3cxJ7VPy+n1F7QA8m2tqUkgCb
+         w+6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9CB+PKSY77gd3fDCjTpTtL8yvYXbKEU7hxFHC5zM8QI=;
-        b=lv/tOpg7YSx3rT9qszTTZ+C/uqowK2Sy/V6rbTRzAZIn9nKzwjdlmcyaHY2Rgui4Of
-         uL2V/FDBU3gZiSAWcoArcjDADRfu1k66NAJoaToFxfwRi95PIwM/XXn8CSXBdeggmyZt
-         Po/va363TjRXfKesWr5uhmGZgvhfTcZmSSVLdCc0n6lRRblf5wSk5lWcQzmPvQyBnzd3
-         AIiA6IbfnOJ7nE887TPD5PfHR8avln0cSVDVreM0K88J85WXhEPTaM6KKtWWH7UTovnP
-         /biDkK/WhqKk8H3e1in+lhxcNPTmZaJrQdTlfrZJLvudR1+60BZ7U27ZT4+NreiCXH98
-         0efg==
-X-Gm-Message-State: ANoB5plKVaG5FEHZfdUUEum0ULbWGFlSlE0N79jLp79pNn4fkaRvDFGx
-	Pm3FddJtefbUVPr0wN9ymIzbCQ==
-X-Google-Smtp-Source: AA0mqf4SwjNK10hTsB4MvtZoRkF217NrnXjf0sIG6lLeKQigxLHaLKrlPchFql7FjvHVNq3vPF2dIA==
-X-Received: by 2002:aa7:c055:0:b0:45a:1af2:ed6d with SMTP id k21-20020aa7c055000000b0045a1af2ed6dmr52132edo.364.1668995708996;
-        Sun, 20 Nov 2022 17:55:08 -0800 (PST)
-Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
-        by smtp.gmail.com with ESMTPSA id g2-20020a170906538200b00782e3cf7277sm4415513ejo.120.2022.11.20.17.55.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Nov 2022 17:55:08 -0800 (PST)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: devicetree@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski@linaro.org,
-	khilman@baylibre.com,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	matthias.bgg@gmail.com
-Subject: [PATCH 3/9] dt-bindings: pinctrl: mediatek,mt65xx: Make pins-are-numbered optional
-Date: Mon, 21 Nov 2022 02:54:45 +0100
-Message-Id: <20221121015451.2471196-4-bero@baylibre.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221121015451.2471196-1-bero@baylibre.com>
-References: <20221121015451.2471196-1-bero@baylibre.com>
+        bh=nw7lJeHpRVDFo2y9OeZfhTiqPLPx6ObPD3zTI8pHiMo=;
+        b=gZSNhgm+j5txiMRxCpHIuoK+yKobLK1sT+nlPzlkLgaWxKeKEwCsuW8A58D+Wcst1n
+         DLlKtgKiXdglGFSz169r0XgCufyr9kA9lNlp2hL85zkVgkAJWSKoBjsOor3Y8n+/Z/qC
+         XY/AZQ8LqbDgwnvONdETj5nytmWXiPpQcsalWuF2gbYZOOxG65B3WDlOiznZuoQVKpr+
+         9/tItFqkj5meTZJqpebakHPUEgPXeIufOpKU+uzar1t/oVS27s1PTEDmygLRa9PylGc1
+         WPUYTQ4eR5HU39+hdlck/T94wle8gRspKYBBAln1DdW47vtyelruG/3DlBpuKRRSB+Cn
+         mVNw==
+X-Gm-Message-State: ANoB5pmgLrkk6r/JRojzQFHAvgCs8rmLwzRqAUIBxgPfsCC1tixHG12h
+	6Mrx8RNFNt3Vq7wzmn+pSu9egv2jKeL5cGLf6/gMxg==
+X-Google-Smtp-Source: AA0mqf5hC3CJKCmoMVgnBmKcIAMXKJfznqI2sQVGVTw1Ezc/VASK11qwClHjwj9WF5iZe3T6Z8EE7/1wxyO7PEjW+jI=
+X-Received: by 2002:a4a:1486:0:b0:49f:542:819 with SMTP id 128-20020a4a1486000000b0049f05420819mr7638371ood.71.1668995913588;
+ Sun, 20 Nov 2022 17:58:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20221117210356.3178578-1-bero@baylibre.com> <20221117210356.3178578-5-bero@baylibre.com>
+ <06e916b7-f8f2-6de5-f86e-7b020c052451@linaro.org> <7ha64o9h1d.fsf@baylibre.com>
+ <76cae9bf-c81a-684a-c22b-9548dd82c8d4@linaro.org> <CAP2ifjMQAx23xc0p_LZ9Dj79Hx1cyLZ-tx8HrGUbtDR-SmdECw@mail.gmail.com>
+In-Reply-To: <CAP2ifjMQAx23xc0p_LZ9Dj79Hx1cyLZ-tx8HrGUbtDR-SmdECw@mail.gmail.com>
+From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Date: Mon, 21 Nov 2022 02:58:22 +0100
+Message-ID: <CAP2ifjNeGqrr+LcMBAsVjEm8ciZ=zXxZxq3wppQ3Y37LbmvroQ@mail.gmail.com>
+Subject: Re: [PATCH v3 4/7] dt-bindings: pinctrl: add bindings for Mediatek
+ MT8365 SoC
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Kevin Hilman <khilman@baylibre.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221120_175523_252185_1CD89281 
-X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-CacheID: sfid-20221120_175835_542049_6D542192 
+X-CRM114-Status: UNSURE (   5.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,26 +92,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Don't list the pins-are-numbered property as required
+On Sun, Nov 20, 2022 at 3:38 PM Bernhard Rosenkr=C3=A4nzer <bero@baylibre.c=
+om> wrote:
+> I can prepare a "remove pins-are-numbered" patchset
 
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
----
- .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml     | 1 -
- 1 file changed, 1 deletion(-)
+... and I did.
+https://lore.kernel.org/linux-devicetree/20221121015451.2471196-1-bero@bayl=
+ibre.com/
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-index 33b5f79e741ab..cca9cc58a6934 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-@@ -62,7 +62,6 @@ properties:
- 
- required:
-   - compatible
--  - pins-are-numbered
-   - gpio-controller
-   - "#gpio-cells"
- 
--- 
-2.38.1
-
+Best regards
+bero
 
