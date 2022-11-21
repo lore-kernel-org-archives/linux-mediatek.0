@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7194C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 17:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BCC7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 17:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=; b=EUcr4I3KAuwc3p
-	tauhJvoXr6/rD5/6eL+ytp+XMs4OH/NJBbOqH4Gi/WGrPzwDDAxcc3X+yAAubeUFF2S5lyRLnu9xU
-	9OUpoR5sr2M2iVMaFcjhIr+ocMgnvrqoweH5KlhyKW0FYEDLsPWPweDxCfcJCzW56xGCcUW9u2ouw
-	qFqZbycoZOeZZv/9eXzSRU/Os85lGj7fmPsQSLd+Xb0O0ahwuCYV/mQ3zATrjVN0f2xxQZ4FCAYbl
-	B/oeulfCvSSs+DUq0xEtSYaIFSsEnOPjsSOYmky5gVgt3fcHJ1+4iDvRpP5sWJUPRRFSsjvBPc54s
-	IR+ahWClXIHTUOFhS1+Q==;
+	List-Owner; bh=PLhvLLxdnr82yFgkcTDUhrmPJ/2i+VJZ5fXC3LePZUI=; b=NiDeOOmPPjfNTo
+	ZOzOynzcTflpC630vcoDpREdk+HRfAP+tOL130rsvCJF+vfEO3lBHbdToFU310tynaP0ZR4SQVwym
+	FtZMV6a/nCT/r06X4msw2kFMozmb7OX8KJIq5+bEZ6LZUuwYZcI7+t8bS+27qfCClwxlk7CPLys+m
+	BopQI6G2K2O4Cuz0xRzVhVH9/b7PAOVC1PAvb2FTJjoyqeD+96Iwx6ISNozCXYMzet4Hksw2NQWoU
+	eAHEHdaLzLRwnjj6Mou7fr14q9UMcI6189ZgWIRFQly/mkuBpjM2AxHYmwwSxYtm+frOBlFjSh9x4
+	whdYqhygW9m82pXuaI7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxADb-00G8gq-Jv; Mon, 21 Nov 2022 17:04:27 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1oxAEG-00G8vi-IQ; Mon, 21 Nov 2022 17:05:08 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxADZ-00G8fV-Qm; Mon, 21 Nov 2022 17:04:27 +0000
-Received: by mail-wm1-x331.google.com with SMTP id o30so8939970wms.2;
-        Mon, 21 Nov 2022 09:04:23 -0800 (PST)
+	id 1oxAEE-00G8qS-6x; Mon, 21 Nov 2022 17:05:07 +0000
+Received: by mail-wm1-x333.google.com with SMTP id j5-20020a05600c410500b003cfa9c0ea76so9481551wmi.3;
+        Mon, 21 Nov 2022 09:04:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=;
-        b=SOzH1U73ZCGPIl43YAXV6NsMIfqJufbn/wt/jIDoIOp6GOyDnyNUbweXEzy6k7i/GC
-         U7kDF6zkGTZJaKsG8HlSLw6o4jH+zrzamUK2ttsK/v0Ev0UHeFKF0cgO56PL/UfJ/VJq
-         P5tegS169frMGQLFONlxqSDw7DKPL4qSX28m2Y8oxjCQK9OaNMfJcmdEA58NrNYCcXMD
-         tVeexNRwQNzZfTAaPFiTj34BZsAFgPj6pDjykwWIRKBwlD0kuFXmIK8+OSHKMvwmpdIz
-         xqrzkxoEMdn0qCvI3EfBZ+LkJcoeDhsKeEQYm3cS36/rtajPjkuv9RSkbX50qFpzKnan
-         569A==
+        bh=PLhvLLxdnr82yFgkcTDUhrmPJ/2i+VJZ5fXC3LePZUI=;
+        b=gcABP5CoXN7ynrdgJn1f4C4bB7+xxVA/eSyGbcs3RWFf/rp0Rjfau7KV0Jpg1/Aa9Z
+         SxJAcOcIL3CKcI9sQOk4/lsN09MhXCSkLT2fz/LlzK3BSU0vzdQn9e+hosHVqEsIXbeZ
+         FxbHCOPsEp7kXVLkrGq6fzl3wwyW76s0gjTN1NnV8xRLKUfvlfogAKrJ5IkdBWOSYwnG
+         zfPhsv2CYFcbpXegykj6P9p15t7KcwdchTdcglmhQMfZLbFQ/E49IeB5kBr+ShCZAey1
+         sciCIOvUUMwRLtBqx5diwGlWHcRAKVhN+ikOMOcFxrSvuw5XBpBWcpz6fc3OtNB0I0+w
+         bv5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=;
-        b=2xSftteKc0UKWhvTlyThykVC2NkKNsVx7KYeCrM0RwKiC5yemO9gGeHjhFrUNNrail
-         oQKLxRFSNeAeH/ZmwCMtGrNljCb5ZCPzAYDh6Ceqv3VBmzJwnN3gG6vEkm8Esfuz5c8l
-         MapyYqhAr05OG+lQjibky38ifybBPpAkOqB5Q5DFoI5x3NTC1br7GanujCYIPOhFj2lt
-         ERDFBcc1sEW/5uPLa+3doVTjCHPSEcDH5EsT7kitQNDsVBinW4n1/3F6Iujah5FQZcCE
-         Q3Rn6SNfLA1/I++wUyV4ljjb9N4o2J86wKPuRS1xXNGeBWBBtFwYNds8LBLor7yhfqum
-         5A1g==
-X-Gm-Message-State: ANoB5plvmSBNWbestdlImCM3o5G2oYx5bplezMuS12+FceGOOc2/VdF3
-	ESvUVUnhbENq76fBUGY6V0A=
-X-Google-Smtp-Source: AA0mqf7NevCCp2kHDxm/siKILqFB87Rj2TAPdnv2R9chC5DSXsq7GJxVOqlYf2BRJ2sM75AZqf8HGg==
-X-Received: by 2002:a05:600c:35c8:b0:3cf:cf89:2f02 with SMTP id r8-20020a05600c35c800b003cfcf892f02mr2889036wmq.2.1669050262379;
-        Mon, 21 Nov 2022 09:04:22 -0800 (PST)
+        bh=PLhvLLxdnr82yFgkcTDUhrmPJ/2i+VJZ5fXC3LePZUI=;
+        b=ixpIXS1CmhOkq5NHzBfqUWw8IdDRUdJEKbWHHFdQG+GCRUk1BvKzNq6V2OGZOba6by
+         OPn2JtkfkUReQ5BJd66glGqX33CTXgJDtpaUnuwBpkEXflpK56Iq9W7HWFV0Mxqs1bw9
+         AAkkTzSEYM5S76oi6jOVb29z+UyBEpR3JxQ5+Aae5BMhwZNMrEqhmdBeo9rJ9TYwTRnj
+         mscSEQYyFbr21NLSyVhIsdh79cBXxIGD/V7NYMy5ghxzEkMvnwY18+SbRGdHd54DT22S
+         1X9hixg3orfudodV9Ie6wrMJvPhpuRuBLTYXXR9c1q6MXY0F6LApjxZNgOPURmxb1RCW
+         70uA==
+X-Gm-Message-State: ANoB5pksX1pXc6A1Wlj8dtUdUhqoc96fJ0Fhp944AhDxwVYFs7Vz6Nfw
+	AJ2RvSq+FUiszH7UfW6IYIM=
+X-Google-Smtp-Source: AA0mqf7jXBGPovWHgEF0yL5d09f1cRbLRadoicFFPQ5P6vSaIEjcofGj5md04kELqxA0my3TLDwuQA==
+X-Received: by 2002:a1c:7318:0:b0:3cf:cb16:f24a with SMTP id d24-20020a1c7318000000b003cfcb16f24amr16687766wmb.182.1669050295782;
+        Mon, 21 Nov 2022 09:04:55 -0800 (PST)
 Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g17-20020a05600c4ed100b003c701c12a17sm21447872wmq.12.2022.11.21.09.04.19
+        by smtp.gmail.com with ESMTPSA id z11-20020a05600c0a0b00b003c6f1732f65sm21161090wmp.38.2022.11.21.09.04.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 09:04:20 -0800 (PST)
-Message-ID: <a257049b-d3a8-e0ac-d887-5bb0420579ad@gmail.com>
-Date: Mon, 21 Nov 2022 18:04:18 +0100
+        Mon, 21 Nov 2022 09:04:54 -0800 (PST)
+Message-ID: <a002bf30-2f39-48a7-d339-bc4740e9e2d8@gmail.com>
+Date: Mon, 21 Nov 2022 18:04:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v6 01/11] arm64: dts: mt7986: move wed_pcie node
+Subject: Re: [PATCH v6 02/11] dt-bindings: phy: mediatek,tphy: add support for
+ mt7986
 Content-Language: en-US
 To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
 References: <20221118190126.100895-1-linux@fw-web.de>
- <20221118190126.100895-2-linux@fw-web.de>
+ <20221118190126.100895-3-linux@fw-web.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221118190126.100895-2-linux@fw-web.de>
+In-Reply-To: <20221118190126.100895-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_090425_892768_1398A16E 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20221121_090506_285359_FEAD6EF7 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,7 +88,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
@@ -96,46 +97,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 18/11/2022 20:01, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Move the wed_pcie node to have node aligned by address.
+> Add compatible string for mt7986.
 > 
-> Fixes: 00b9903996b3 ("arm64: dts: mediatek: mt7986: add support for Wireless Ethernet Dispatch")
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied, thanks!
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+>   Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index a22e10e89ab9..afc01abfa99c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -112,6 +112,12 @@ infracfg: infracfg@10001000 {
->   			#clock-cells = <1>;
->   		};
->   
-> +		wed_pcie: wed-pcie@10003000 {
-> +			compatible = "mediatek,mt7986-wed-pcie",
-> +				     "syscon";
-> +			reg = <0 0x10003000 0 0x10>;
-> +		};
-> +
->   		topckgen: topckgen@1001b000 {
->   			compatible = "mediatek,mt7986-topckgen", "syscon";
->   			reg = <0 0x1001B000 0 0x1000>;
-> @@ -257,12 +263,6 @@ ethsys: syscon@15000000 {
->   			 #reset-cells = <1>;
->   		};
->   
-> -		wed_pcie: wed-pcie@10003000 {
-> -			compatible = "mediatek,mt7986-wed-pcie",
-> -				     "syscon";
-> -			reg = <0 0x10003000 0 0x10>;
-> -		};
-> -
->   		wed0: wed@15010000 {
->   			compatible = "mediatek,mt7986-wed",
->   				     "syscon";
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> index 5613cc5106e3..230a17f24966 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> @@ -79,6 +79,7 @@ properties:
+>             - enum:
+>                 - mediatek,mt2712-tphy
+>                 - mediatek,mt7629-tphy
+> +              - mediatek,mt7986-tphy
+>                 - mediatek,mt8183-tphy
+>                 - mediatek,mt8186-tphy
+>                 - mediatek,mt8192-tphy
 
