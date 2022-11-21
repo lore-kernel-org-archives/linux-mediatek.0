@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018E6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B844C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 12:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dau72eMFobVjeX858MKpIQt+w+Vj109653tn0bOEToE=; b=REkbTVoKOSeHHvBZvCxazj9Hms
-	SSNUd0pqysq0Ivz49PyQ2iJeBeZiK+P7kcQ7XYEFBsbXsnoc8QjlxRmHoGRnx5GeQyMV4IIwzdanv
-	CvIXxK4JPGTL7LygwMNub7X/Ls1GXEsCN6OniVlGKPPiNlKPrUCtr7G6UKQwJjKkUDfhmcduxpa+Q
-	EuxvioQk7FSHNQoYU8Bi0fZUZVNfZ88dgvceZuNKu5LSjnooyObaYbf6cNTqydoCdQHNGdeKzTwf4
-	f4zv7qzPWZQTOCPtX7giwHwmVbGdOEs/wNIx2mktt82O1nsbiPOcCjDHlezh7/u+3pFBdKAP3ILRh
-	+ei4YK7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Jj0xKO78J994+Xb/7+4NEwIzjmVOKi8XbGyIIc9e5a8=; b=WzLn1YQbvTZBpHX4DmUtkThpbg
+	dO99uKncuMXBVeBuyUiXHPIkhdu+wELIkHKTEm/s0mpCBf40tdsGQoaZqaDcvF+x9CZF8nCzaBRG/
+	yav01KVxaNS+sy+A53PMv1qEtGEEDsywQqoh6XdP4KgOgCshuFPjBkKuPHfUxOWbWqmwmKWDog7Ld
+	OSHMrVqxiiKBNLwcg99yGlMEnqcDp8ASd+WhIoiiODD9ZsF59T6r0dQIm7YstCtaMp2uCJSnrwfqM
+	UAuviHzs5hHmFrLMHH2hbrxW6NVM1a+Duuhw1t46UD5FqcdLCSHz9sk3RttO45PsLMjLl0FproQ2+
+	QS2SG6RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5ky-00DQq2-MK; Mon, 21 Nov 2022 12:18:36 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1ox5l3-00DQtV-Cu; Mon, 21 Nov 2022 12:18:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox5kL-00DPw5-9q; Mon, 21 Nov 2022 12:17:58 +0000
-Received: by mail-wr1-x434.google.com with SMTP id cl5so19581055wrb.9;
-        Mon, 21 Nov 2022 04:17:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Dau72eMFobVjeX858MKpIQt+w+Vj109653tn0bOEToE=;
-        b=LZ9ntN+4DTSrbOgtfOrnpUBwBrbpV7qmRH/ljp2H/dZdMQuirrWvAdZk2R/bGkpO9p
-         qC11WmNqXSMvmjgG7ofh8dwut6KCDI2MVrANuQg1egUOPzNFHakWsZ6fR88Nryg/7gzi
-         DXSZUc61z46nnPxXGxqoL3rIsG2jkL997JUWk6wyWodMIBjdZ1K/nd6gaYEYNtVygHz3
-         dIEaeNdSjezKh5Kzt2l0j+tTscWRhu+dKN/rVmpRtleKI5mx/w5GqWUIi+y2SkAGSw03
-         zluYjzYDXohiwomidyNMjAOiXEFbr1LAFEzJxDoYzW1wT7fYyBDWQlzBCHnq5eRekgvR
-         Of4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Dau72eMFobVjeX858MKpIQt+w+Vj109653tn0bOEToE=;
-        b=0qwW2chMQZ6XOxzqiedCnxvoQtxu9uK59m7Lh3ajhbD0IKlIqbsHn5yNv0RCxO3Y9X
-         GkOAFltQIuSgo7nSwtmORWIHtv4EozN/PRHxIOX1xOqtlXklAeESy9NVtkX5lHELz0hL
-         mNrIvMtOYVM6zFzkcF1OR0oOprqG/su8MyeBvRVK0MBBbmOPM2ijkn69R+pFlfipMJGY
-         o0x60sTJUFnxhmsDYLaANvuXVoGmisoJ1meOSpmveBATK33NYqa8GShRVPuIHCvB3FwV
-         YvSpbz1Rjcpp5eDYA9RUnPrjk7sCkliNrBoycVEh38esSHsG57LaZzP5C1W9mzmFpbuj
-         eNQg==
-X-Gm-Message-State: ANoB5pk0oWZkP5D6/MXaxEN1rn6zF0xEvK+yEdKsedej9/EXJlvbWl3i
-	LjLFd1Cmh7zBgSjhtQ4jZes=
-X-Google-Smtp-Source: AA0mqf5fGkC5GjLrWjBo6zV31RUokHzCtGY/Ltn3f1prZofGpBm/8pSWUcDd/u4xQilm5VMtM63W1A==
-X-Received: by 2002:adf:ff89:0:b0:22e:38b:95ff with SMTP id j9-20020adfff89000000b0022e038b95ffmr1287478wrr.202.1669033057477;
-        Mon, 21 Nov 2022 04:17:37 -0800 (PST)
-Received: from [192.168.1.131] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id e21-20020a05600c219500b003cf894dbc4fsm13444667wme.25.2022.11.21.04.17.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 04:17:24 -0800 (PST)
-Message-ID: <065b5ff5-fbae-2ec5-a06a-8aad015612f9@gmail.com>
-Date: Mon, 21 Nov 2022 13:16:58 +0100
+	id 1ox5kN-00DQIx-PO
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 12:18:06 +0000
+X-UUID: 1f6b1778235040f69c5c4e10ae3a6892-20221121
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Jj0xKO78J994+Xb/7+4NEwIzjmVOKi8XbGyIIc9e5a8=;
+	b=YgDMwJ4XV+Yh7YExJxmoLgCAC/MQ4HYa5PQ17zqJgFsJt+SLs41KRqNXuC+0CYWphohDPV4Vi8Hc3OmhCew8/hHt3kMbZrK96WLOg4DG8+c8mm5RCuejdnVVmxAV74COqYgeCWmJFspnnCPwYD+I8NZBFsV/1xrAB774DZTqavE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:e69ce7ad-3b29-42bd-8848-a2b1d92faab0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:62cd327,CLOUDID:371fdef8-3a34-4838-abcf-dfedf9dd068e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 1f6b1778235040f69c5c4e10ae3a6892-20221121
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sujuan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1932339591; Mon, 21 Nov 2022 05:17:50 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 21 Nov 2022 19:37:46 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 21 Nov 2022 19:37:45 +0800
+From: Sujuan Chen <sujuan.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Sujuan Chen <sujuan.chen@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: add wds support when wed is enabled
+Date: Mon, 21 Nov 2022 19:37:43 +0800
+Message-ID: <af04db938bf9633225c4358058a39aa3be0e218e.1669022945.git.sujuan.chen@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v4 0/4] Add dp-intf and dp nodes
-Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221110063716.25677-1-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_041757_380180_ACC3001D 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20221121_041759_901554_F13F85E0 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,34 +78,376 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The current WED only supports 256 wcid, whereas mt7986 can support up to 512 entries,
+so firmware provides a rule to get sta_info by DA when wcid is set to 0x3ff by txd.
+Also, WED provides a register to overwrite txd wcid, that is, wcid[9:8] can
+be overwritten by 0x3 and wcid[7:0] is set to 0xff by host driver.
 
+However, firmware is unable to get sta_info from DA as DA != RA for 4addr cases,
+so firmware and wifi host driver both use wcid (256 - 271) and (768 ~ 783)
+for sync up to get correct sta_info
 
-On 10/11/2022 07:37, Bo-Chen Chen wrote:
-> This series add MediaTek dp-intf nodes and dp nodes.
-> This series is based on linux-next-20220915.
-> 
-> Changes for v4:
-> 1. Rebase to linux-next 20221109.
-> 
-> Changes for v3:
-> 1. Update commit message for "arm64: dts: mediatek: cherry: Add edptx and dptx support".
-> 
-> Changes for v2:
-> 1. Update commit messages.
-> 2. reorder the place of "status = "disabled";"
-> 3. reorder the place of dp-intf.
-> 
-> Bo-Chen Chen (4):
->    arm64: dts: mt8195: Add dp-intf nodes
->    arm64: dts: mt8195: Add edptx and dptx nodes
->    arm64: dts: mediatek: cherry: Add dp-intf ports
->    arm64: dts: mediatek: cherry: Add edptx and dptx support
-> 
+Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+---
+This patch is based on 
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=697444
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  6 +++
+ .../net/wireless/mediatek/mt76/mt7603/main.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7615/main.c  |  2 +-
+ .../wireless/mediatek/mt76/mt7615/pci_init.c  |  2 +-
+ .../wireless/mediatek/mt76/mt7615/usb_sdio.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt76x02_util.c |  2 +-
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 24 +++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 11 ++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
+ .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  3 ++
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  2 +-
+ drivers/net/wireless/mediatek/mt76/util.c     | 42 ++++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/util.h     |  2 +-
+ 17 files changed, 91 insertions(+), 18 deletions(-)
 
-Whole series applied, thanks!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 33f87e518d68..1763b582c020 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -38,6 +38,12 @@
+ #define MT_WED_Q_RX(_n)		__MT_WED_Q(MT76_WED_Q_RX, _n)
+ #define MT_WED_Q_TXFREE		__MT_WED_Q(MT76_WED_Q_TXFREE, 0)
+ 
++enum mt76_wed_state {
++	MT76_WED_DISABLED,
++	MT76_WED_ACTIVE,
++	MT76_WED_WDS_ACTIVE,
++};
++
+ struct mt76_dev;
+ struct mt76_phy;
+ struct mt76_wcid;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+index ca50feb0b3a9..d788bb59a113 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+@@ -347,7 +347,7 @@ mt7603_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	int idx;
+ 	int ret = 0;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7603_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7603_WTBL_STA - 1, 0);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index ab4c1b4478aa..5e2901a21e4c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -625,7 +625,7 @@ int mt7615_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	struct mt7615_phy *phy;
+ 	int idx, err;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1, 0);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+index 87b4aa52ee0f..8e0ef9ce5b68 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+@@ -55,7 +55,7 @@ static int mt7615_init_hardware(struct mt7615_dev *dev)
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1, 0);
+ 	if (idx)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
+index 0052d103e276..9dcd1f6970b3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
+@@ -292,7 +292,7 @@ static int mt7663_usb_sdio_init_hardware(struct mt7615_dev *dev)
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1, 0);
+ 	if (idx)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+index 604ddcc21123..253c8ce32f8f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -246,7 +246,7 @@ int mt76x02_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 
+ 	memset(msta, 0, sizeof(*msta));
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT76x02_N_WCIDS);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT76x02_N_WCIDS, 0);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index b48c2ba9273d..e5c85f422621 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -710,7 +710,7 @@ mt7915_init_hardware(struct mt7915_dev *dev, struct mt7915_phy *phy2)
+ 	}
+ 
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA, 0);
+ 	if (idx)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 90c5d8fe4f73..3cab2f73ce23 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -662,8 +662,15 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
+ 	bool ext_phy = mvif->phy != &dev->phy;
+ 	int ret, idx;
++	u8 flag = MT76_WED_DISABLED;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76)) {
++		flag = test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ?
++		       MT76_WED_WDS_ACTIVE : MT76_WED_ACTIVE;
++	}
++
++	idx = mt76_wcid_alloc(mdev->wcid_mask, MT7915_WTBL_STA, flag);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+@@ -1117,6 +1124,13 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
+ 	else
+ 		clear_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
+ 
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76)) {
++		mt7915_sta_remove(hw, vif, sta);
++		mt76_sta_pre_rcu_remove(hw, vif, sta);
++		mt7915_sta_add(hw, vif, sta);
++	}
++
+ 	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
+ }
+ 
+@@ -1448,15 +1462,19 @@ mt7915_net_fill_forward_path(struct ieee80211_hw *hw,
+ 	if (!mtk_wed_device_active(wed))
+ 		return -ENODEV;
+ 
+-	if (msta->wcid.idx > 0xff)
++	if (msta->wcid.idx > MT7915_WTBL_STA)
+ 		return -EIO;
+ 
+ 	path->type = DEV_PATH_MTK_WDMA;
+ 	path->dev = ctx->dev;
+ 	path->mtk_wdma.wdma_idx = wed->wdma_idx;
+ 	path->mtk_wdma.bss = mvif->mt76.idx;
+-	path->mtk_wdma.wcid = is_mt7915(&dev->mt76) ? msta->wcid.idx : 0x3ff;
+ 	path->mtk_wdma.queue = phy != &dev->phy;
++	if (test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ||
++	    is_mt7915(&dev->mt76))
++		path->mtk_wdma.wcid = msta->wcid.idx;
++	else
++		path->mtk_wdma.wcid = 0x3ff;
+ 
+ 	ctx->dev = NULL;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 2769d6c897d9..aeeeff9b2143 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2303,8 +2303,15 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (mtk_wed_device_active(&dev->mt76.mmio.wed) && is_mt7915(&dev->mt76))
+-		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
++		if (is_mt7915(&dev->mt76))
++			mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
++					  0, 0, 0);
++		else
++			mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
++					  MCU_WA_PARAM_WED_VERSION,
++					  dev->mt76.mmio.wed.rev_id, 0);
++	}
+ 
+ 	ret = mt7915_mcu_set_mwds(dev, 1);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index c19b5d66c0e1..59e1ea35f77f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -260,6 +260,7 @@ enum {
+ 	MCU_WA_PARAM_PDMA_RX = 0x04,
+ 	MCU_WA_PARAM_CPU_UTIL = 0x0b,
+ 	MCU_WA_PARAM_RED = 0x0e,
++	MCU_WA_PARAM_WED_VERSION = 0x32,
+ };
+ 
+ enum mcu_mmps_mode {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index 1fcf34f57a16..d90793d082b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -773,6 +773,9 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
+ 
+ 	dev->mt76.rx_token_size = wed->wlan.rx_npkt;
+ 
++	if (!is_mt7915(&dev->mt76))
++		wed->wlan.wcid_512 = true;
++
+ 	if (mtk_wed_device_attach(wed))
+ 		return 0;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 79b8055ce4c4..702ff300f8f7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -283,7 +283,7 @@ static int mt7921_init_wcid(struct mt7921_dev *dev)
+ 	int idx;
+ 
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1, 0);
+ 	if (idx)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 41df17efdb3a..3d8771fcb847 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -814,7 +814,7 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
+ 	int ret, idx;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7921_WTBL_STA - 1, 0);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index cd1657e3585d..4cf055040519 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -433,7 +433,7 @@ static int mt7996_init_hardware(struct mt7996_dev *dev)
+ 		return ret;
+ 
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7996_WTBL_STA);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7996_WTBL_STA, 0);
+ 	if (idx)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 21dea3fa7dc1..fd40b515cc5b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -579,7 +579,7 @@ int mt7996_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	u8 band_idx = mvif->phy->mt76->band_idx;
+ 	int ret, idx;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7996_WTBL_STA);
++	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7996_WTBL_STA, 0);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/util.c b/drivers/net/wireless/mediatek/mt76/util.c
+index 581964425468..0850149f4200 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.c
++++ b/drivers/net/wireless/mediatek/mt76/util.c
+@@ -42,9 +42,14 @@ bool __mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
+ }
+ EXPORT_SYMBOL_GPL(__mt76_poll_msec);
+ 
+-int mt76_wcid_alloc(u32 *mask, int size)
++int mt76_wcid_alloc(u32 *mask, int size, u8 flag)
+ {
++#define MT76_WED_WDS_MIN    256
++#define MT76_WED_WDS_CNT    16
++
+ 	int i, idx = 0, cur;
++	int min = MT76_WED_WDS_MIN;
++	int max = min + MT76_WED_WDS_CNT;
+ 
+ 	for (i = 0; i < DIV_ROUND_UP(size, 32); i++) {
+ 		idx = ffs(~mask[i]);
+@@ -53,13 +58,46 @@ int mt76_wcid_alloc(u32 *mask, int size)
+ 
+ 		idx--;
+ 		cur = i * 32 + idx;
+-		if (cur >= size)
++
++		switch (flag) {
++		case MT76_WED_DISABLED:
++			if (cur >= size)
++				goto error;
++
+ 			break;
++		case MT76_WED_ACTIVE:
++			if (cur >= min && cur < max)
++				continue;
++
++			if (cur >= size) {
++				u32 end = MT76_WED_WDS_CNT - 1;
++
++				i = min / 32;
++				idx = ffs(~mask[i] & GENMASK(end, 0));
++				if (!idx)
++					goto error;
++				idx--;
++				cur = min + idx;
++			}
++
++			break;
++		case MT76_WED_WDS_ACTIVE:
++			if (cur < min)
++				continue;
++			if (cur >= max)
++				goto error;
++
++			break;
++		default:
++			WARN_ON(1);
++			break;
++		}
+ 
+ 		mask[i] |= BIT(idx);
+ 		return cur;
+ 	}
+ 
++error:
+ 	return -1;
+ }
+ EXPORT_SYMBOL_GPL(mt76_wcid_alloc);
+diff --git a/drivers/net/wireless/mediatek/mt76/util.h b/drivers/net/wireless/mediatek/mt76/util.h
+index 260965dde94c..c72460e78389 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.h
++++ b/drivers/net/wireless/mediatek/mt76/util.h
+@@ -27,7 +27,7 @@ enum {
+ #define MT76_INCR(_var, _size) \
+ 	(_var = (((_var) + 1) % (_size)))
+ 
+-int mt76_wcid_alloc(u32 *mask, int size);
++int mt76_wcid_alloc(u32 *mask, int size, u8 flag);
+ 
+ static inline void
+ mt76_wcid_mask_set(u32 *mask, int idx)
+-- 
+2.18.0
 
->   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 86 +++++++++++++++++++
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 48 +++++++++++
->   2 files changed, 134 insertions(+)
-> 
 
