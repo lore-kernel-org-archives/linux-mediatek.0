@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2015DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 16:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7194C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 17:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SC7kU/RjxjlrzONN6C/wdXNeo0hHtz4sZV7GR4/xunI=; b=O0RqPvnR3zGk+P0fJIhyGfgmMC
-	cV2sC5rK9pswsr362Wv+wGQCIgo2bCXkNz2lPm5o++CuOz2SdhHDnV6kMveUqABWAK39VDrQuYQpF
-	ZMmBzd6h5DJwukOaJWOLbUDD3xGPaQMcPakWLBq1sAhcmL/ob9j5qpACqS02v1L43kZP3SMGafa8J
-	wvWHDGHpmoQqPdc2to6uI1n8ZfBWQmxenr8YnB2OtCTs7Nuvyo0sqfYwyoJukW6ohY1YcHCdNWAXd
-	2BI0AGadiK3tS5PxVIRLo1kUTIKsYwsgVGKkr2dZ1MpxoInwGDViSPPrIWhbvzb8QNfa+kc4PMgDA
-	mfr+AWyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=; b=EUcr4I3KAuwc3p
+	tauhJvoXr6/rD5/6eL+ytp+XMs4OH/NJBbOqH4Gi/WGrPzwDDAxcc3X+yAAubeUFF2S5lyRLnu9xU
+	9OUpoR5sr2M2iVMaFcjhIr+ocMgnvrqoweH5KlhyKW0FYEDLsPWPweDxCfcJCzW56xGCcUW9u2ouw
+	qFqZbycoZOeZZv/9eXzSRU/Os85lGj7fmPsQSLd+Xb0O0ahwuCYV/mQ3zATrjVN0f2xxQZ4FCAYbl
+	B/oeulfCvSSs+DUq0xEtSYaIFSsEnOPjsSOYmky5gVgt3fcHJ1+4iDvRpP5sWJUPRRFSsjvBPc54s
+	IR+ahWClXIHTUOFhS1+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxA5L-00G7YD-La; Mon, 21 Nov 2022 16:55:55 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oxADb-00G8gq-Jv; Mon, 21 Nov 2022 17:04:27 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxA5I-00G7XT-OM
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 16:55:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1669049752; x=1700585752;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=G2iJcXvS0zhaskTE1Pfig9C99ZUTxBpWV4h6OI7DZ3A=;
-  b=S54dAJWlUN5ROlF33Mf8R80CQLwTn1erwgiiPMrQrEcvpxDO6H/kvq9u
-   4VFbQhpZAlPL1O+jX0/bRRXPRfzIdDCyWKqwFl35OhIuJockLDwJe/48R
-   UItCC8VFHnCukhKftErmwXJKk1CPzHl9SWpE0lpJ50oXOqBaPc/Vc9HKG
-   yrVSBXwzsZy7lpXAAblVOEC7TC2xaezerz6xqavl7qleAePQO3lpVnkZ6
-   aOJ8YvdfVq/Bk0r6tVOg6+8UtL00eUd+/pexH1C1sJKBUHwzE6cJQvWS3
-   mjynCmdpOVR9zN2640PeFjGujGEXKWZCNUwwrbe9canIhZwn/az+59M40
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10538"; a="311235582"
-X-IronPort-AV: E=Sophos;i="5.96,182,1665471600"; 
-   d="scan'208";a="311235582"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Nov 2022 08:55:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10538"; a="970138771"
-X-IronPort-AV: E=Sophos;i="5.96,182,1665471600"; 
-   d="scan'208";a="970138771"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
-  by fmsmga005.fm.intel.com with ESMTP; 21 Nov 2022 08:55:47 -0800
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com [10.102.20.203])
-	by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id 2ALGtjnc025169;
-	Mon, 21 Nov 2022 16:55:45 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Alexander Lobakin <alexandr.lobakin@intel.com>, netdev@vger.kernel.org,
-        nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
-        Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
-        kuba@kernel.org, pabeni@redhat.com, lorenzo.bianconi@redhat.com,
-        sujuan.chen@mediatek.com, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 1/5] net: ethernet: mtk_wed: return status value in mtk_wdma_rx_reset
-Date: Mon, 21 Nov 2022 17:55:21 +0100
-Message-Id: <20221121165521.396686-1-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <8917d87eded7142a3a792c3ba64434a983278247.1669020847.git.lorenzo@kernel.org>
-References: <cover.1669020847.git.lorenzo@kernel.org> <8917d87eded7142a3a792c3ba64434a983278247.1669020847.git.lorenzo@kernel.org>
+	id 1oxADZ-00G8fV-Qm; Mon, 21 Nov 2022 17:04:27 +0000
+Received: by mail-wm1-x331.google.com with SMTP id o30so8939970wms.2;
+        Mon, 21 Nov 2022 09:04:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=;
+        b=SOzH1U73ZCGPIl43YAXV6NsMIfqJufbn/wt/jIDoIOp6GOyDnyNUbweXEzy6k7i/GC
+         U7kDF6zkGTZJaKsG8HlSLw6o4jH+zrzamUK2ttsK/v0Ev0UHeFKF0cgO56PL/UfJ/VJq
+         P5tegS169frMGQLFONlxqSDw7DKPL4qSX28m2Y8oxjCQK9OaNMfJcmdEA58NrNYCcXMD
+         tVeexNRwQNzZfTAaPFiTj34BZsAFgPj6pDjykwWIRKBwlD0kuFXmIK8+OSHKMvwmpdIz
+         xqrzkxoEMdn0qCvI3EfBZ+LkJcoeDhsKeEQYm3cS36/rtajPjkuv9RSkbX50qFpzKnan
+         569A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NoFx71q/N+0qvQAXga+00ibSeehFlmzztyqyJ4eQ8tU=;
+        b=2xSftteKc0UKWhvTlyThykVC2NkKNsVx7KYeCrM0RwKiC5yemO9gGeHjhFrUNNrail
+         oQKLxRFSNeAeH/ZmwCMtGrNljCb5ZCPzAYDh6Ceqv3VBmzJwnN3gG6vEkm8Esfuz5c8l
+         MapyYqhAr05OG+lQjibky38ifybBPpAkOqB5Q5DFoI5x3NTC1br7GanujCYIPOhFj2lt
+         ERDFBcc1sEW/5uPLa+3doVTjCHPSEcDH5EsT7kitQNDsVBinW4n1/3F6Iujah5FQZcCE
+         Q3Rn6SNfLA1/I++wUyV4ljjb9N4o2J86wKPuRS1xXNGeBWBBtFwYNds8LBLor7yhfqum
+         5A1g==
+X-Gm-Message-State: ANoB5plvmSBNWbestdlImCM3o5G2oYx5bplezMuS12+FceGOOc2/VdF3
+	ESvUVUnhbENq76fBUGY6V0A=
+X-Google-Smtp-Source: AA0mqf7NevCCp2kHDxm/siKILqFB87Rj2TAPdnv2R9chC5DSXsq7GJxVOqlYf2BRJ2sM75AZqf8HGg==
+X-Received: by 2002:a05:600c:35c8:b0:3cf:cf89:2f02 with SMTP id r8-20020a05600c35c800b003cfcf892f02mr2889036wmq.2.1669050262379;
+        Mon, 21 Nov 2022 09:04:22 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id g17-20020a05600c4ed100b003c701c12a17sm21447872wmq.12.2022.11.21.09.04.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Nov 2022 09:04:20 -0800 (PST)
+Message-ID: <a257049b-d3a8-e0ac-d887-5bb0420579ad@gmail.com>
+Date: Mon, 21 Nov 2022 18:04:18 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v6 01/11] arm64: dts: mt7986: move wed_pcie node
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20221118190126.100895-1-linux@fw-web.de>
+ <20221118190126.100895-2-linux@fw-web.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221118190126.100895-2-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_085552_831665_E4643996 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20221121_090425_892768_1398A16E 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,66 +87,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 21 Nov 2022 09:59:21 +0100
 
-> Move MTK_WDMA_RESET_IDX configuration in mtk_wdma_rx_reset routine.
-> This is a preliminary patch to add Wireless Ethernet Dispatcher reset
-> support.
+On 18/11/2022 20:01, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Move the wed_pcie node to have node aligned by address.
+> 
+> Fixes: 00b9903996b3 ("arm64: dts: mediatek: mt7986: add support for Wireless Ethernet Dispatch")
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied, thanks!
+
 > ---
->  drivers/net/ethernet/mediatek/mtk_wed.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> index 7d8842378c2b..dc898ded2f05 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> @@ -101,17 +101,21 @@ mtk_wdma_read_reset(struct mtk_wed_device *dev)
->  	return wdma_r32(dev, MTK_WDMA_GLO_CFG);
->  }
->  
-> -static void
-> +static int
->  mtk_wdma_rx_reset(struct mtk_wed_device *dev)
->  {
->  	u32 status, mask = MTK_WDMA_GLO_CFG_RX_DMA_BUSY;
-> -	int i;
-> +	int i, ret;
->  
->  	wdma_clr(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_RX_DMA_EN);
-> -	if (readx_poll_timeout(mtk_wdma_read_reset, dev, status,
-> -			       !(status & mask), 0, 1000))
-> +	ret = readx_poll_timeout(mtk_wdma_read_reset, dev, status,
-> +				 !(status & mask), 0, 10000);
-
-You didn't mention anywhere this change of the timeout from 1000 to
-10000, and for example for me it's not clear from the code why you
-did this. Maybe leave a comment in the commitmsg?
-Same in 2/5 for Tx, also 1000 -> 10000.
-
-> +	if (ret)
->  		dev_err(dev->hw->dev, "rx reset failed\n");
->  
-> +	wdma_w32(dev, MTK_WDMA_RESET_IDX, MTK_WDMA_RESET_IDX_RX);
-> +	wdma_w32(dev, MTK_WDMA_RESET_IDX, 0);
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index a22e10e89ab9..afc01abfa99c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -112,6 +112,12 @@ infracfg: infracfg@10001000 {
+>   			#clock-cells = <1>;
+>   		};
+>   
+> +		wed_pcie: wed-pcie@10003000 {
+> +			compatible = "mediatek,mt7986-wed-pcie",
+> +				     "syscon";
+> +			reg = <0 0x10003000 0 0x10>;
+> +		};
 > +
->  	for (i = 0; i < ARRAY_SIZE(dev->rx_wdma); i++) {
->  		if (dev->rx_wdma[i].desc)
->  			continue;
-
-[...]
-
-> -- 
-> 2.38.1
-
-Thanks,
-Olek
+>   		topckgen: topckgen@1001b000 {
+>   			compatible = "mediatek,mt7986-topckgen", "syscon";
+>   			reg = <0 0x1001B000 0 0x1000>;
+> @@ -257,12 +263,6 @@ ethsys: syscon@15000000 {
+>   			 #reset-cells = <1>;
+>   		};
+>   
+> -		wed_pcie: wed-pcie@10003000 {
+> -			compatible = "mediatek,mt7986-wed-pcie",
+> -				     "syscon";
+> -			reg = <0 0x10003000 0 0x10>;
+> -		};
+> -
+>   		wed0: wed@15010000 {
+>   			compatible = "mediatek,mt7986-wed",
+>   				     "syscon";
 
