@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE47C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 08:38:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2971C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 09:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=majJ1avGrA5sKHgff1+tjzzyZx4Q8F2N6bTI30UoVN0=; b=gGaIhhycvp8Ioa97Nxf+gBh7QC
-	3uP8MVQH6nVU/5NLmDoWT1bzheUzb5dmvfKyy669Jiz5XNFcl7JWyMn/auK7dtqtPGgdSvlJDAMQj
-	U9jjvxe10BIgmI+JsjiLP/8m4sb88o3GX0K1m/s1pDKHDnABT+z3nj78JpNF5ZAWekJ10jydFUjoU
-	o3Ictsg/pX9YjuRoH7uw9LMlryNhbR93Gq6yDbADxLUgRWbR8zKqVa54cmu+AYWQkWICDKyXmy5Iq
-	rDSbnkT5YkEeau7p6ZNy7nsEFEPq11C5DJxWbkPqcCxjrFMycBegmmPU4J/p1scxml99rf3UtIVj7
-	3NvlHU3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3I7qIu0URYZb11lbf+H1Ipds2Erv5vxzGCDbkXQFHc4=; b=XASH/wm2fFEp1pZghMyqqUQ07/
+	eApBpruk88eAf864VX6vh+Ufyhq430I9/nRcKF5tfNGGnuu4TiLxNQXuiQPEXmtctpR5P0umGWrsC
+	OLB4DnkQ6LX47Rd09Mlepk5an+Rs/hVgv87gu4UAZlcgwKlWvMAZY0u6WsIKd0XGWf3XNGWtOA0lJ
+	jWyFGd1VG93mtDnamS2PYhLULwrb5/zmCWzO60fng2aCE7kjT8YqZT6Y6iR/bX/a67uGsASNcNxov
+	kfm/mFp5/Mwpdx6b/nk2wlA4lQAVMvSp6yJjEMOUF607QBaTYwhRTsB/6vhhtKaifrbGi5EWBrLGv
+	WNwJSLVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2K2-00BMKS-PU; Mon, 21 Nov 2022 08:38:34 +0000
-Received: from mail-qk1-f181.google.com ([209.85.222.181])
+	id 1ox2ev-00BZU8-H8; Mon, 21 Nov 2022 09:00:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ox2Ja-00BLm0-QA; Mon, 21 Nov 2022 08:38:08 +0000
-Received: by mail-qk1-f181.google.com with SMTP id s20so7556779qkg.5;
-        Mon, 21 Nov 2022 00:38:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=majJ1avGrA5sKHgff1+tjzzyZx4Q8F2N6bTI30UoVN0=;
-        b=bFNJ+4ET1AEu9WWK9l+Mh2XDG5pcMUb9/9dGlmZR/KdGK8BEvQIxIK372V+d0+oDRe
-         SrNpbu9OgkNH5ySGuRM3RqQ+cv8nEqO2BE5Pr4d129l0+Qsz1gHa0y9+zJmFA1N/kPOq
-         LGV3k9p8Yl80Izg9sAUEqWEIB1kgu9Mfa0hEUQFle+IByp6IfpF/I9/q71K7MDYoAf4e
-         g2j2wFZpMuGw7TnpP2rVFr8TCmqO/SZ7pL+BTnwSQ5dqMfbP7VHEgqiX6LutPWdJa984
-         CwSBIpALevQQGNJhKUOfzQGimMAaT8At3/dW/zQKxKVBBIlkfGhRji9hKccW8aj4oV3t
-         5veg==
-X-Gm-Message-State: ANoB5pkzQgh+FnP1NCZviOHs34x9xMteyghUrVfT/YpjO0mCI1vT/02e
-	e+I5Hf1WIwZ4fiN2Pr/J8bSo2w26/L+WKQ==
-X-Google-Smtp-Source: AA0mqf5KdxCdUBFdFtlJ6XtQtrT2YT/rqOXLz4l6PVw0uJ/k7f90gKJi6BvkEjDfsl50xUT0eOrprQ==
-X-Received: by 2002:a37:86c6:0:b0:6ee:96d8:962d with SMTP id i189-20020a3786c6000000b006ee96d8962dmr14994848qkd.209.1669019884424;
-        Mon, 21 Nov 2022 00:38:04 -0800 (PST)
-Received: from mail-yb1-f180.google.com (mail-yb1-f180.google.com. [209.85.219.180])
-        by smtp.gmail.com with ESMTPSA id c8-20020ac853c8000000b003972790deb9sm6375924qtq.84.2022.11.21.00.38.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Nov 2022 00:38:03 -0800 (PST)
-Received: by mail-yb1-f180.google.com with SMTP id k84so12771884ybk.3;
-        Mon, 21 Nov 2022 00:38:02 -0800 (PST)
-X-Received: by 2002:a5b:24b:0:b0:6ca:3b11:8d76 with SMTP id
- g11-20020a5b024b000000b006ca3b118d76mr16184146ybp.202.1669019882500; Mon, 21
- Nov 2022 00:38:02 -0800 (PST)
+	id 1ox2es-00BZIh-VB
+	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 09:00:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id D130BCE0F31;
+	Mon, 21 Nov 2022 09:00:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9113C433D6;
+	Mon, 21 Nov 2022 08:59:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669021200;
+	bh=MVcO3ogxAd/KcHMWx684Sc9JzdpDv0NfQ0bb44ZRPKg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZZTwf31oNK+xdYrwCPNbeKvC0eaT9ZD3bbg9uBgWiLmXj+1GnJ6UTicTUo+WACi0D
+	 +NCp73Tp9VxmOjYCxod0kZ8L1BxvD26X1qXALYTcUm3yoQ2mzym+4Y/y8CkCYkNJYL
+	 jpSeAhIXDBhbpqVMtsic7vfa8q7N/v2kPYvS7keMNaKnF/OnJ1gwIMQi9tM2O6ynjY
+	 T3C3vrPArSuVP+hBXnV4VJQazW+1yPBen9qB+X/2Qw9qqcf3+3iFTlNC5DKXKZfmOZ
+	 ft1J81CS+HSv9nO2SYRFoem+k/iKgf/wTRawP3iPWvWqhPndevcT2dYY/6KQa3CpPV
+	 qPaWPDGwNxWGA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	lorenzo.bianconi@redhat.com,
+	sujuan.chen@mediatek.com,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 0/5] refactor mtk_wed code to introduce SER support
+Date: Mon, 21 Nov 2022 09:59:20 +0100
+Message-Id: <cover.1669020847.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-References: <20221118223728.1721589-1-robh@kernel.org>
-In-Reply-To: <20221118223728.1721589-1-robh@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 21 Nov 2022 09:37:51 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdXevKD5uq9k+gWygy0rZ_AVjxBW1vrE_Gzzu8=mJu1vjQ@mail.gmail.com>
-Message-ID: <CAMuHMdXevKD5uq9k+gWygy0rZ_AVjxBW1vrE_Gzzu8=mJu1vjQ@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Add missing start and/or end of line regex anchors
-To: Rob Herring <robh@kernel.org>
-Cc: Ilia Lin <ilia.lin@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Jean Delvare <jdelvare@suse.com>, 
-	Guenter Roeck <linux@roeck-us.net>, Yangtao Li <tiny.windzz@gmail.com>, Nishanth Menon <nm@ti.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Javier Martinez Canillas <javier@dowhile0.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Maxime Ripard <mripard@kernel.org>, Daniel Mack <zonque@gmail.com>, 
-	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	linux-pm@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-hwmon@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	alsa-devel@alsa-project.org, linux-spi@vger.kernel.org, 
-	linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_003806_903062_8F64E978 
-X-CRM114-Status: GOOD (  18.89  )
+X-CRM114-CacheID: sfid-20221121_010007_214653_B384F040 
+X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,26 +79,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 18, 2022 at 11:43 PM Rob Herring <robh@kernel.org> wrote:
-> json-schema patterns by default will match anywhere in a string, so
-> typically we want at least the start or end anchored. Fix the obvious
-> cases where the anchors were forgotten.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Refactor mtk_wed support in order to introduce proper integration for hw reset
+between mtk_eth_soc/mtk_wed and mt76 drivers.
 
->  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
->  Documentation/devicetree/bindings/sound/renesas,rsnd.yaml     | 2 +-
+Lorenzo Bianconi (5):
+  net: ethernet: mtk_wed: return status value in mtk_wdma_rx_reset
+  net: ethernet: mtk_wed: move MTK_WDMA_RESET_IDX_TX configuration in
+    mtk_wdma_tx_reset
+  net: ethernet: mtk_wed: update mtk_wed_stop
+  net: ethernet: mtk_wed: add mtk_wed_rx_reset routine
+  net: ethernet: mtk_wed: add reset to tx_ring_setup callback
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+ drivers/net/ethernet/mediatek/mtk_wed.c      | 279 ++++++++++++++-----
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h |   9 +
+ drivers/net/wireless/mediatek/mt76/dma.c     |   2 +-
+ include/linux/soc/mediatek/mtk_wed.h         |  12 +-
+ 4 files changed, 220 insertions(+), 82 deletions(-)
 
-Gr{oetje,eeting}s,
+-- 
+2.38.1
 
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
