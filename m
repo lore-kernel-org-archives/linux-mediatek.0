@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8031EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 09:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB6DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 09:12:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0wQK6rFUoShHhGlr0hNprX/8fEbuw4qQrSI8ec4h5j8=; b=jBTTd1KPGUkAmeJyulusp7DAHA
-	sW/hEEEY71XYoXAHncszEbCCcv+F+/JGe2e1eP9gMl+51bxZtHBi5z/hxLPadUrlvROsxXYRrLQIU
-	8pvuZ5lcsuqideuBVkcV/Koz+lM9h1hhrbfwdyAomW02X+Z240cfuvKXXuBwY6KunBBgdWDCee0Vh
-	37x2F0uw+v1Ge88mu2dPtPihx/kVGO6QPCFQYw+iuzmW5z6TD5PkRwOB8iL1ICk+URoNigDNyDDTE
-	b0W3EHymTfSUyJt6XWcEo2RnBxTD6IVfnVeqhUS1hIHmwQpyDllM1pPrgI6QOJDVTwM3M9ElmWeCi
-	Q0HufYiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yauqpBX2S8mCdfVRXBU/hH7WgdxSH3iokDslKSp1jvE=; b=NYm3bzjBf1sZ3Q0GHCagk1XSy+
+	FglhgYK0AOPaSUWakOObbnPtMuvCZi/6kair9K7m3RyKQg00iVOlYY0oTlODHSM3pruOyc4bLfrqF
+	DNyeLSSrj4S16Fh1RiNmCWZhG+TW6OznWZHtetwed0cBhSNPdmgsmGDaAMxGKZxjCbo22kVgRjMDx
+	GU97vTZUT/7Er1CoQKOpcCYkQ9/k8n05gY3SX8nrBtrbKecCgQZlQT4j6O3CDDRA9ptLsNOy675qD
+	0QIZ/r5RRKzsJpH+7u8i3xZWJZqa32hbvgR1ckD36KPsx/p3lZjs5fkOk9mW+VojmSvI/rS7YRtUL
+	m+k03sJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxPKS-006pv7-PH; Tue, 22 Nov 2022 09:12:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oxPKa-006q12-Au; Tue, 22 Nov 2022 09:12:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxPKC-006pl9-Ui; Tue, 22 Nov 2022 09:12:18 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E202B6602AC7;
-	Tue, 22 Nov 2022 09:12:09 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669108330;
-	bh=XQs9y9qnM68EyMoHPrxiDgq88Oc9TnrG2mdHxwEI2sQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CVkZzf1bm1eq3dnFoEDL8E2t9w+rllcHe6eClLcXsHRs+VHN3hKPjLV5NNgxlWMET
-	 eCx0667iQP4uhsgDs0Ept2jcZ+WRzK2yvZ+iscJPNmW3/3ygNLS+BSQh90MtVLdVD/
-	 MWNJoQHV0S4QC2P5aJ+ftzSDFA4sDFr9UU6JgqR+1Qse4U7PDJb3mdOK0v1Ea5O1oX
-	 dYDT2WE7ySmP1NVyuln3YcUSAec7mQqv7o+88+519dSNMboAtN0GUhGifNWE0UzpW4
-	 Y4O/McoElEA37GpxO7TJ9v+kFSWtsRDMXUk/tTthX6tDSzp7UWo/Uz+SgOZx2FgzhS
-	 /s9t1wFc4bXNg==
-Message-ID: <1ff98f52-93e1-d375-47ae-30b74068ea5b@collabora.com>
-Date: Tue, 22 Nov 2022 10:12:07 +0100
+	id 1oxPKV-006pvt-W7
+	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 09:12:37 +0000
+X-UUID: b528cdeefbe74f848834b9ef935877e9-20221122
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yauqpBX2S8mCdfVRXBU/hH7WgdxSH3iokDslKSp1jvE=;
+	b=L5yhdohvV9HzujW+MuPucjfTgkau8z27IbrKv7LdAHqMZkypCCzzmearedOr0K09P0c5xJrEP59tKR0m8J1HgXbUIDGrdRdU8bhlzKQz3ChkA1/f63dRMebfccuVVvfZaFJlZaSlwbM8b71eI4XD/yX4zBEOnaGZnWUU3MhXg08=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:7bf5bb16-83d8-47f1-98a2-1be6b31cc81d,IP:0,U
+	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-META: VersionHash:62cd327,CLOUDID:5b25f8f8-3a34-4838-abcf-dfedf9dd068e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
+	il,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b528cdeefbe74f848834b9ef935877e9-20221122
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 907293701; Tue, 22 Nov 2022 02:12:30 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 22 Nov 2022 16:51:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 22 Nov 2022 16:51:57 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>, Howard Hsu
+	<howard-yh.hsu@mediatek.com>, MeiChia Chiu <meichia.chiu@mediatek.com>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>, Money Wang
+	<Money.Wang@mediatek.com>
+Subject: [PATCH 0/9] wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices
+Date: Tue, 22 Nov 2022 16:45:45 +0800
+Message-ID: <20221122084554.9494-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH] drm/mediatek: Clean dangling pointer on bind error path
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: kernel@collabora.com, "Nancy . Lin" <nancy.lin@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20221121223717.3429913-1-nfraprado@collabora.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221121223717.3429913-1-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_011217_137350_92FD4603 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20221122_011236_069354_3165C77E 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,39 +82,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/11/22 23:37, Nícolas F. R. A. Prado ha scritto:
-> mtk_drm_bind() can fail, in which case drm_dev_put() is called,
-> destroying the drm_device object. However a pointer to it was still
-> being held in the private object, and that pointer would be passed along
-> to DRM in mtk_drm_sys_prepare() if a suspend were triggered at that
-> point, resulting in a panic. Clean the pointer when destroying the
-> object in the error path to prevent this from happening.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
+Add MediaTek new mac80211 driver mt7996 for Wi-Fi 7 (802.11be) devices.
+The driver first supports Filogic 680 PCI device, which is a Wi-Fi 7
+chipset supporting concurrent tri-band operation at 6 GHz, 5 GHz, and
+2.4 GHz with 4x4 antennas on each band.
 
-Fixes tag please! :-)
+Currently, mt7996 only supports tri-band HE or older mode.
+EHT mode and more variants of Filogic 680 support will be introduced
+in further patches.
 
-Cheers,
-Angelo
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Co-developed-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+Co-developed-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Co-developed-by: Money Wang <Money.Wang@mediatek.com>
+Signed-off-by: Money Wang <Money.Wang@mediatek.com>
+Co-developed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 
-> ---
-> 
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 39a42dc8fb85..a21ff1b3258c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -514,6 +514,7 @@ static int mtk_drm_bind(struct device *dev)
->   err_deinit:
->   	mtk_drm_kms_deinit(drm);
->   err_free:
-> +	private->drm = NULL;
->   	drm_dev_put(drm);
->   	return ret;
->   }
+----------------[commit message cut here]----------------
 
+This series is based on the following series with fixes folded:
+- https://patchwork.kernel.org/project/linux-wireless/cover/20221110093525.29649-1-shayne.chen@mediatek.com/
+
+For easier review, the big patch has been splitted into multiple patches
+per functionality. These patches will be folded into a single patch in
+the final version.
+
+Shayne Chen (9):
+  wifi: mt76: mt7996: add PCI support
+  wifi: mt76: mt7996: add DMA support
+  wifi: mt76: mt7996: add MCU support
+  wifi: mt76: mt7996: add EEPROM support
+  wifi: mt76: mt7996: add MAC support
+  wifi: mt76: mt7996: add ieee80211_ops
+  wifi: mt76: mt7996: add debugfs support
+  wifi: mt76: mt7996: add module support
+  wifi: mt76: add mt7996 module support
+
+ drivers/net/wireless/mediatek/mt76/Kconfig    |    1 +
+ drivers/net/wireless/mediatek/mt76/Makefile   |    1 +
+ .../net/wireless/mediatek/mt76/mt7996/Kconfig |   12 +
+ .../wireless/mediatek/mt76/mt7996/Makefile    |    6 +
+ .../wireless/mediatek/mt76/mt7996/debugfs.c   |  851 ++++
+ .../net/wireless/mediatek/mt76/mt7996/dma.c   |  360 ++
+ .../wireless/mediatek/mt76/mt7996/eeprom.c    |  229 ++
+ .../wireless/mediatek/mt76/mt7996/eeprom.h    |   75 +
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  816 ++++
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 2468 ++++++++++++
+ .../net/wireless/mediatek/mt76/mt7996/mac.h   |  398 ++
+ .../net/wireless/mediatek/mt76/mt7996/main.c  | 1325 +++++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 3429 +++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  662 ++++
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  |  385 ++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  516 +++
+ .../net/wireless/mediatek/mt76/mt7996/pci.c   |  222 ++
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  533 +++
+ 18 files changed, 12289 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/Makefile
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/eeprom.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/init.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mac.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/main.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/pci.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+
+-- 
+2.25.1
 
 
