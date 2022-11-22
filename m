@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC64C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 16:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFE1CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 16:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ri7F1S4pLcMxIqjAu0KioPz4x8UzFumJZoJlr3Ul9aA=; b=d6tCwSPK2OpvLslinw+2j5kCj3
-	5D/azLZK0DTaulqB03kkG2gas++bmMysV9+oIw3bNcsgP1Ez+jHJ+NRSoPfCVKweR/2QDyZXUTpxu
-	GlJsfUo+KBcGydi+lKOiFNnA9H588kU17FICRsnOECdGrjOEdXvRGSCw+uWcuyAoG9NYTM560DIaD
-	AJWc99RdOZ/jPRb/Wt9uaqA/rvRv09E/l+Ihp8Ngo1S+z3mh5Lf8t8RhSlYoaz5EsC6s70i26/H6+
-	ft1wXXE4d9kmptFNsvTy9Vejv4ojNWDI70XYlFzjqO6l1jiSr+gpRT0pKmSO+7g7UZIBXBQ4jtI4e
-	D6ijso7Q==;
+	bh=tP8o2qeHXoHC6ulVNsIBHcsYBkHGaXQH2ePC4lnEEXg=; b=s1NSLYlqxvj97Mps8/il6gAmnz
+	z8I67XCBBgCWReyLvQ5SRlcilvo9c1jXpuzA7NjcRQsW9HgTcePta1Md+bseb9COqIt6Jnkkv9qqp
+	pRJKfhsDEmxBJoxE6zNdx25r03xlomzG0CCHMOdwZN+R6+BdV9Utbtcl/vs4n7OMCkQYz9PxFZW9c
+	LXHfy6gEiQPc8eOeuKQnPO9waTN+8t/GTPX5NToZqEpN6kxGZ2M3Pl8LyU7UZ6QjpXT0zHfe5IiRR
+	J30nirP6uNLNG4H8gxPJlUO+yuWZWY9RfCoAtTfRlKclXHfokyeGdlxSRekPweYf7lzllIfxYqAtq
+	SPhApeGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxW8y-00AinP-3i; Tue, 22 Nov 2022 16:29:08 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1oxWD3-00AkLH-ND; Tue, 22 Nov 2022 16:33:21 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxW8u-00Ailu-Q6; Tue, 22 Nov 2022 16:29:06 +0000
-Received: by mail-wr1-x430.google.com with SMTP id bs21so25546923wrb.4;
-        Tue, 22 Nov 2022 08:29:03 -0800 (PST)
+	id 1oxWCf-00AkCO-0t; Tue, 22 Nov 2022 16:32:58 +0000
+Received: by mail-wm1-x332.google.com with SMTP id h187-20020a1c21c4000000b003d03017c6efso93862wmh.4;
+        Tue, 22 Nov 2022 08:32:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Ri7F1S4pLcMxIqjAu0KioPz4x8UzFumJZoJlr3Ul9aA=;
-        b=iL/3dbSN6JIadgGbQyFSPNrufc3sS6tL14gE5qWA17O3qnMAnv6s9s58mHJW0vJhc1
-         I9iB0a8c/s821dbPo47o00RNEptev9gj4jjk96mgDX8AHw+1Kz3hWwYVgWg+qVpf5BfJ
-         z+W/L1i5dCz7tjzVG+vRZUJoPSubD36hiUdokWG/EfAH0JYjxiy6FWF5lvDzx8YOpJQ6
-         q7XyEVcymhYVAsc/w48eeZz15SNtkPNG3oMcQxDYsaageSkF73V+V82e6W8+I3DsU6zt
-         snqM0RIseGnmnJXCSMFJtjtSYxsMKBtKhtt2unbslggojpPBqIHSGExVkBb25JaqKpKY
-         K4hw==
+        bh=tP8o2qeHXoHC6ulVNsIBHcsYBkHGaXQH2ePC4lnEEXg=;
+        b=PYjoG1xoo59ZH+t/QsWjfv2FKr9FaZRvnkvbrQGj0ALZy6VUc62MnwiJqjedlETq6Y
+         oNxAFPDWaSKT03DWcBCAKD+eMpVQEOgrMrNnuCrDUPLdQ0FHxMrSCaMMQpuEIalRLN0D
+         u7zRUrGe6QULUakhwdeB3tnWXG6Vrw1QDVOLG8RDEjAd4i1xc3sIuMLu44uvK0gwIdYP
+         SYJe+l2UZPYKlfbtoTcJQjHzh+BQe3DFJRHmRth8lppKU+4fYWyK30q3Hs+O3H9QhMQv
+         V0OQaoTcaOSIDTsuUGp+/3xTRmGt0MVq3Iz3hisiK5QlZYSkH3yl2ehVQ0jw9NdGSbcs
+         bYXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ri7F1S4pLcMxIqjAu0KioPz4x8UzFumJZoJlr3Ul9aA=;
-        b=19go3U2fJIB5UvC4Zjwu6qyWr/dYDkYfdLRmhysF7pSGsxUf1qfPW4+lxqKVz3z9Gh
-         tsLZFz3zU1K29Ojff9ULnu1AHYpP+bJt4wX4W83ERzwoj4VToIa3cuN23ukXg9I+G3zP
-         GRGNera1+x7czfiVPxJRaVN/h/M3vxWiJ8kU/Es+WXTBYUES8fxfOP2icbY3GOhNak5M
-         pKLg8Hhw8wFqbhBqJ3weotcM1vZFLk71MPRh2brVLooqPHJ1/zGAn+pC5YwcohkgKFwV
-         +YwkiRkr0KUTxe10duU3HK5I2zFiBelV3zX8oS7fKhROU5cNczG74uyqfE277DKlP99D
-         yxAQ==
-X-Gm-Message-State: ANoB5pmwxH0dYXUKrsyOZ1H78gEDkBI/Pkgg8ahFV2KJ++5fm5bq5NDL
-	y7Q38vjuihogDcAEDkQuWZQ=
-X-Google-Smtp-Source: AA0mqf4+ga2CUanb3QmE8qQV12cTEWEsslAcVL4sAJOytJ1vcghhfvz3fGBaJJDGVjoIHbM2vU2/Dg==
-X-Received: by 2002:a5d:4568:0:b0:241:e8b0:cdcc with SMTP id a8-20020a5d4568000000b00241e8b0cdccmr640819wrc.581.1669134542632;
-        Tue, 22 Nov 2022 08:29:02 -0800 (PST)
+        bh=tP8o2qeHXoHC6ulVNsIBHcsYBkHGaXQH2ePC4lnEEXg=;
+        b=enk6EWIWcSpJrBXU5jMy4L/6Ba/Qn7N6lOYKjY9iRw5NJlHMRkhFz5Nm1D5oJ/X3m9
+         mlUiWcz4OVE/lJYNARyg9K12Wa87n27dSFZOn5egxwsty4hlXsJuIL4cCuGn6y8lsA1d
+         bg3B5C1U9Qc521mp7FyouNpHX5qxyJ4UVE12VOT9DK7/TeH/hCBfviUs52Zr+zdL/Tol
+         lPkqrFwgxvQYaKB9uw5bhvWjXADiTYaL7jK5iHNfBZO3h84CQOPlBXwW7uCtBvkUmWKe
+         Vbx03/8mOkOdqQFunnksV75QdI1A0beWjDHQEK9cuFVtNmI84yCC5FSM3Ynjr2d11ZU6
+         LjbA==
+X-Gm-Message-State: ANoB5pk6QqM2g0QWBJMXBS833LbN0J40g7c1ZPUW3uzSrzcAqnl/vwLF
+	wU/oiEHHfOQmy0cJKjh5byA=
+X-Google-Smtp-Source: AA0mqf6SfVYhWPWFSmXZgMUDEYgeh//Ch89S4WClJdJLReB0bGvjBL3aIzmPYRi0FFtshEhJAG4pCA==
+X-Received: by 2002:a1c:4b0f:0:b0:3cf:735c:9d5a with SMTP id y15-20020a1c4b0f000000b003cf735c9d5amr10377045wma.113.1669134774264;
+        Tue, 22 Nov 2022 08:32:54 -0800 (PST)
 Received: from [192.168.0.25] ([37.222.251.204])
-        by smtp.gmail.com with ESMTPSA id p11-20020a05600c468b00b003c65c9a36dfsm19810612wmo.48.2022.11.22.08.29.00
+        by smtp.gmail.com with ESMTPSA id b8-20020adff908000000b0022ca921dc67sm14162699wrr.88.2022.11.22.08.32.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 08:29:01 -0800 (PST)
-Message-ID: <451e69dc-ad89-9ffc-1e91-70796e908003@gmail.com>
-Date: Tue, 22 Nov 2022 17:28:58 +0100
+        Tue, 22 Nov 2022 08:32:53 -0800 (PST)
+Message-ID: <de8a7833-6983-1d40-55b6-f985473d8201@gmail.com>
+Date: Tue, 22 Nov 2022 17:32:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v7 2/6] iommu/mediatek: Use component_match_add
+Subject: Re: [PATCH v7 3/6] iommu/mediatek: Add error path for loop of
+ mm_dts_parse
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>
@@ -77,14 +78,14 @@ Cc: Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
  xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
  Dan Carpenter <dan.carpenter@oracle.com>
 References: <20221018024258.19073-1-yong.wu@mediatek.com>
- <20221018024258.19073-3-yong.wu@mediatek.com>
+ <20221018024258.19073-4-yong.wu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221018024258.19073-3-yong.wu@mediatek.com>
+In-Reply-To: <20221018024258.19073-4-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_082904_927493_C6A06C59 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20221122_083257_117253_7C18019F 
+X-CRM114-Status: GOOD (  23.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,51 +103,82 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 18/10/2022 04:42, Yong Wu wrote:
-> In order to simplify the error patch(avoid call of_node_put), Use
-> component_match_add instead component_match_add_release since we are only
-> interested in the "device" here. Then we could always call of_node_put in
-> normal path.
+> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
+> larb is parsed fail, we should put_device for the i..0 larbs.
 > 
-> Strictly this is not a fixes patch, but it is a prepare for adding the
-> error path, thus I add a Fixes tag too.
+> There are two places need to comment:
+> 1) The larbid may be not linear mapping, we should loop whole
+>     the array in the error path.
+> 2) I move this line position: "data->larb_imu[id].dev = &plarbdev->dev;"
+>     before "if (!plarbdev->dev.driver)", That means set
+>     data->larb_imu[id].dev before the error path. then we don't need
+>     "platform_device_put(plarbdev)" again in probe_defer case. All depend
+>     on "put_device" of the error path in error cases.
 > 
 > Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
+
 > ---
->   drivers/iommu/mtk_iommu.c | 10 ++++------
->   1 file changed, 4 insertions(+), 6 deletions(-)
+>   drivers/iommu/mtk_iommu.c | 27 ++++++++++++++++++++-------
+>   1 file changed, 20 insertions(+), 7 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 3189b585725f..38112ad87d70 100644
+> index 38112ad87d70..912322494bc0 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1068,19 +1068,17 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   			id = i;
+> @@ -1055,8 +1055,10 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   		u32 id;
+>   
+>   		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+> -		if (!larbnode)
+> -			return -EINVAL;
+> +		if (!larbnode) {
+> +			ret = -EINVAL;
+> +			goto err_larbdev_put;
+> +		}
+>   
+>   		if (!of_device_is_available(larbnode)) {
+>   			of_node_put(larbnode);
+> @@ -1069,14 +1071,16 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
 >   
 >   		plarbdev = of_find_device_by_node(larbnode);
-> -		if (!plarbdev) {
-> -			of_node_put(larbnode);
-> +		of_node_put(larbnode);
-> +		if (!plarbdev)
->   			return -ENODEV;
-> -		}
-> +
+>   		of_node_put(larbnode);
+> -		if (!plarbdev)
+> -			return -ENODEV;
+> +		if (!plarbdev) {
+> +			ret = -ENODEV;
+> +			goto err_larbdev_put;
+> +		}
+> +		data->larb_imu[id].dev = &plarbdev->dev;
+>   
 >   		if (!plarbdev->dev.driver) {
-> -			of_node_put(larbnode);
->   			platform_device_put(plarbdev);
->   			return -EPROBE_DEFER;
+> -			platform_device_put(plarbdev);
+> -			return -EPROBE_DEFER;
+> +			ret = -EPROBE_DEFER;
+> +			goto err_larbdev_put;
 >   		}
->   		data->larb_imu[id].dev = &plarbdev->dev;
+> -		data->larb_imu[id].dev = &plarbdev->dev;
 >   
-> -		component_match_add_release(dev, match, component_release_of,
-> -					    component_compare_of, larbnode);
-> +		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
+>   		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
 >   		platform_device_put(plarbdev);
+> @@ -1111,6 +1115,15 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   		return -EINVAL;
 >   	}
+>   	return 0;
+> +
+> +err_larbdev_put:
+> +	/* id may be not linear mapping, loop whole the array */
+> +	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i++) {
+> +		if (!data->larb_imu[i].dev)
+> +			continue;
+> +		put_device(data->larb_imu[i].dev);
+> +	}
+> +	return ret;
+>   }
 >   
+>   static int mtk_iommu_probe(struct platform_device *pdev)
 
