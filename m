@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FF1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 01:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22997C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 01:08:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=; b=IkZEvrQQ5CoXKf/BM8gAWDTd97
-	BBKPGkSm5XWsqBv+2jnsvlwO/qs/ICdRN1vjtXmprISdaxs1JaornEdR+XlohffeADxFYjPPllUOl
-	/RJ2jcxrXc5maXxXgR0p+287S/61RTWyAKdiIX7N3e4qV0rJCV1kLn05b7btdp8LLYLnIFWRvFEK5
-	mzaU0k1KOSDaqw+fYPHmTaf6PxdXL6j72Tp9kT7OSLybAkDZ0sEZo1ulgVpI8zEJQKT8kBLVhk4hh
-	/uJ8wmSwvBWsfF/YMgKoXvCdS6eYH+hVUumooRNpvAD2LYXrMLkLCf/5XV7E03+BrBG2o07xAPNER
-	a82nfeqQ==;
+	bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=; b=opzsKqhAIIrF01x7oRYEitFfy4
+	cOMcXSQhVSo8qRH/5Rd27UAdYN42mO7l0TvSpXUdhgGVJ4UL1CGN9HZ/l25+382AwJCQAJeYGon9N
+	+0fGh56z8tudqfCSYr3IFWA/Jnq946OYYMoipzWXcNrnERvMvPybakWB5TIcZfkJpl98mT9JS2KJB
+	4JWqzSiogbYvYwfHDOobutAPMC6YqudOlGapjJE6lOqMw/MNsJuPt9wrNyjxwClHdqVVW13AyqgoD
+	7ESlL5g65s2CsT0q+7OnJlgwu7VK3G3CH0nRMjk+vgYpw1HEKd10nHGtil9uW+DXeksclGxiSZadY
+	p5zP8zfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxHm0-001nP3-Gc; Tue, 22 Nov 2022 01:08:28 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1oxHm1-001nPQ-Ne; Tue, 22 Nov 2022 01:08:29 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxHlx-001nJq-63
+	id 1oxHlx-001nJm-FV
 	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 01:08:27 +0000
-Received: by mail-ed1-x529.google.com with SMTP id x2so18639129edd.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 17:08:10 -0800 (PST)
+Received: by mail-ej1-x634.google.com with SMTP id gv23so32381160ejb.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 17:08:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=;
-        b=tDoF3baarEZ/xbXDm7tk2HrsTGWpICgpqIAtSi03HywXzuaphjgJW54N71ewodQGgL
-         W3DIwAOD1Z+BTxjyIkWFvBX4mFMnFV6j8xFwuUOGN12ePggI/v+RjoA02TWEeTP2sdUB
-         b19ybRxEdtNpRoJbrGhyvTC63KxBZu0QuPH42XbY9BQ6XwdYDpUBkbYG9WVACRZguDXI
-         uubWjH05gIC4oZ8NkoFPdw7iGNLrlZVwK13hQWmbYnFDT5k7s9ROcyPaUvx/rR96GmO+
-         E3EWKEI7TuP6eoRMaarAKrk4dV5iR2Q08YMiomF6wF98eCjp67l9VMJ6TtBixdO9LbvS
-         hztA==
+        bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=;
+        b=LxkapDROlNg89vbfyOnHNwYtPPUfl2VexbTmKnYd0BjumMyVcRkoBcbPgGQNiCR76Z
+         lu71Zfj0axIJ5DX8GAYZYxOcUEcnNsw19VoSTfGwI3jpbvJTC7fpGmm28fhX55YGIDul
+         q6HM6mtWmwwZgWn/Jxl0R+IFpAHdrkfwzeiDNe3JLDvu58K0AmooRZlP42VhOD+nOtu8
+         Wpn2B0vMSsS3VTfpWqyvY0El80MtzxkC3ni7qpQS2roMk2Nk5Sl0U6kG15gzcX8U/yqw
+         CM+eVkiPmV3UsNrgQxJ4fPA3bBMV8yMTG2Cb9YD/l1IjmFGKuLPm6gS44TXGKTDI6kW7
+         9BIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=;
-        b=iDy6U77kISff3hF75cQzVmLZURbHjqLhBmzgNwE+kR2RYtjbvPrxsKpP9kqzUQ4ClT
-         DyJZWXbNjWhozh7Nh0RuE3FQ8afTCwncDHJWs0MZRe7xJMNxb5BGjdxtbevBDJ6yhCei
-         115pX4fmadSzMzME1CxtviroJ76nY1KCJ5l6IJWDRZJdU9L1I4iO/PqwzKEbwdqYtNEj
-         o5D8IqT5F2zATWQhWdEh+s7HXG6czTuBSdS35pZHj7HoAgortardzc7EXrkzKjTgr5nn
-         jZb1Im2nUTnvtOb6sp/33Fs+Cy/7KB9QVk8y1iWGkoqDWuioABUeLf53oiCTTMyKY07V
-         NyiQ==
-X-Gm-Message-State: ANoB5pkTRzqAWuSgUisTE7WfYn7MZ+viR2yomkzWk/lVx47ItXAjClaK
-	vo1m5xFnimrP6RSqknsZEod7Rw==
-X-Google-Smtp-Source: AA0mqf6r3Zdf5ruet9qXDuVjd6GpPw7JVMSyJT9jBcH+eBdwhPNkdmCtSnW+kRAmDvWyunfZrvyPYQ==
-X-Received: by 2002:a05:6402:3886:b0:463:ab08:2bc6 with SMTP id fd6-20020a056402388600b00463ab082bc6mr2102790edb.143.1669079289585;
-        Mon, 21 Nov 2022 17:08:09 -0800 (PST)
+        bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=;
+        b=QohVJrX3xB7c5TFriL0AcEQbf0d0kD0B7nCgC8guTFAB2qPyWGa6ypHWPcW7rW6o5t
+         gLdSeCtexaBcSV/IChD0pcMWQbWRqgWoJuqTWZ9fyPNJ32yCE/fJLd1vTjuLFJmiLdZv
+         7fbokDn5syCEkpmpoCW+tgNTn8yBfsU78x1YBY6dm+s7AJJVj949WJoTvMVdx2O8p91G
+         H3NpdHXzIzwIBEnoF0+1E5qBr8j+lMOdF0vjSn7jKg4pPyLSUXHYkdgkZZEd9jJPn+z1
+         6JrrXxsEfov27+kNg9wGwQraIxiOwUNMwkaHT+5CE8dozeDIcR7fMaxw+9G9wWnjmG/t
+         x0qQ==
+X-Gm-Message-State: ANoB5pmRViqpiZlz3KPRcyahC4tpMrF9Mj/tysX24zWKASnRUSPdVwoo
+	Tvu9MdasYjS4DlOwR4Nw4a02qQ==
+X-Google-Smtp-Source: AA0mqf7VrdKpG04LpKtWDcLfh9W2BtI6C/41tDew40mV/sen6b/FETzkdsA3/5/JhMJG+02LOvmq5w==
+X-Received: by 2002:a17:906:3810:b0:7b5:cab5:2ea8 with SMTP id v16-20020a170906381000b007b5cab52ea8mr1036389ejc.222.1669079288692;
+        Mon, 21 Nov 2022 17:08:08 -0800 (PST)
 Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
-        by smtp.gmail.com with ESMTPSA id f13-20020a1709064dcd00b007030c97ae62sm5514683ejw.191.2022.11.21.17.08.08
+        by smtp.gmail.com with ESMTPSA id f13-20020a1709064dcd00b007030c97ae62sm5514683ejw.191.2022.11.21.17.08.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Nov 2022 17:08:09 -0800 (PST)
+        Mon, 21 Nov 2022 17:08:08 -0800 (PST)
 From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
 To: devicetree@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org,
@@ -72,9 +72,9 @@ Cc: linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
 	khilman@baylibre.com
-Subject: [PATCH v2 2/7] pinctrl: stm32: Remove check for pins-are-numbered
-Date: Tue, 22 Nov 2022 02:07:48 +0100
-Message-Id: <20221122010753.3126828-3-bero@baylibre.com>
+Subject: [PATCH v2 1/7] pinctrl: mediatek: common: Remove check for pins-are-numbered
+Date: Tue, 22 Nov 2022 02:07:47 +0100
+Message-Id: <20221122010753.3126828-2-bero@baylibre.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221122010753.3126828-1-bero@baylibre.com>
 References: <20221122010753.3126828-1-bero@baylibre.com>
@@ -82,8 +82,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_170825_266332_26778D6D 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20221121_170825_599248_EA9A53A8 
+X-CRM114-Status: UNSURE (   8.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,32 +99,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the check for the unnecessary pins-are-numbered
-DeviceTree property
+Remove the check for the unnecessary pins-are-numbered Devicetree property.
 
 Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Kevin Hilman <khilman@baylibre.com>
 ---
- drivers/pinctrl/stm32/pinctrl-stm32.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
-index cc9472b284047..1cddca506ad7e 100644
---- a/drivers/pinctrl/stm32/pinctrl-stm32.c
-+++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
-@@ -1499,11 +1499,6 @@ int stm32_pctl_probe(struct platform_device *pdev)
- 	if (!match_data)
- 		return -EINVAL;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 076ae0b38e3d7..553d16703475b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1057,7 +1057,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 	struct pinctrl_pin_desc *pins;
+ 	struct mtk_pinctrl *pctl;
+ 	struct device_node *np = pdev->dev.of_node, *node;
+-	struct property *prop;
+ 	int ret, i;
  
--	if (!device_property_present(dev, "pins-are-numbered")) {
--		dev_err(dev, "only support pins-are-numbered format\n");
--		return -EINVAL;
--	}
+ 	pctl = devm_kzalloc(&pdev->dev, sizeof(*pctl), GFP_KERNEL);
+@@ -1066,11 +1065,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	platform_set_drvdata(pdev, pctl);
+ 
+-	prop = of_find_property(np, "pins-are-numbered", NULL);
+-	if (!prop)
+-		return dev_err_probe(dev, -EINVAL,
+-				     "only support pins-are-numbered format\n");
 -
- 	pctl = devm_kzalloc(dev, sizeof(*pctl), GFP_KERNEL);
- 	if (!pctl)
- 		return -ENOMEM;
+ 	node = of_parse_phandle(np, "mediatek,pctl-regmap", 0);
+ 	if (node) {
+ 		pctl->regmap1 = syscon_node_to_regmap(node);
 -- 
 2.38.1
 
