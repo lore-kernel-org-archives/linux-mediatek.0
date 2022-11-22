@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D22EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 01:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE00FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 01:09:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=22cpIMVo0mA6Jzd/hOHKABBmcBen8QvMhPR2HSaKBfQ=; b=L9YZCZJL1ukv6Dc7lOIIUQej9+
-	3tIw3qdJBmn2EPCL021CQIYhtmJeB2POocPgs6MytygDY1WGZSQPoq+ARaZPqQEatvsmBl/a7jhEp
-	Lpk96CF3+NYqdr4fZyTg3ibXcgyFARXaaUF/K0lIbg+X6Q/z3n9CS1efr+emeGTTs37WyTlO1xSUy
-	D3qddfySUEo5QRrb/RFhdO92MZcrQhPhXvPwk+W5Q2ZspzNYlNxHrCsVy47LKfgJeG2ifuGsW+hoN
-	0XpjQ3qUAX9lY0uMMeFBL4rOIkSiyF3aT+b4Sn5pt3P7D2GKfxjqd9FmPZH/LhX2ggRjUX9hXMjMU
-	BK8ycVcQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NXlietmMDnMDDCbd3vt3QmKB/26LHM3Ufg/KK8xRGJ8=; b=17EQup2QbyQRP1AMxNJgrbk/kU
+	u4GhaCgpVx12XGTXnGAYc/m7xq8B7qGSmMNYU9eMWJcl9wKnedcjMkmNS1w5mqZje4J5L1Vas4l0m
+	33nk72j6Y4nAHITImI3n+Sd2Ub0G5QLg2SHDBNO4lgsqU9cBBBHnJ0qZXm0Q8VYXZYTWd+OwgE1Xv
+	qrgLVEvZycRVBaBXBidDPomFLl8fU+Ww9Tl+HuanK07iJ0tKSuusCaF9iJrkKvmRfcsr9ihc6Sx4P
+	7A0zYDXO2LCQou+8i9lCxHibomgA6I7C+tYMWW8Kku9hDJy+jmJApX+jMTkq3TYaM/3KrMjxQ9l9V
+	IW70kU4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxHmW-001nZe-4k; Tue, 22 Nov 2022 01:09:00 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1oxHmn-001ngi-5r; Tue, 22 Nov 2022 01:09:17 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxHlx-001nK1-Fb
-	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 01:08:29 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id x102so18671514ede.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 17:08:13 -0800 (PST)
+	id 1oxHlx-001nJj-Fa
+	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 01:08:31 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id f7so18614231edc.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 17:08:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=22cpIMVo0mA6Jzd/hOHKABBmcBen8QvMhPR2HSaKBfQ=;
-        b=LRmSuVMnncjGcUb8pM7UB1DOpIbSDESZoRfDOnAXZaN8BoBbkDvlUt+uVm4Hib7uuS
-         Ip4tdmCk4thVn2IupNxpnmo1/gud2XUpxZ5lmFTOJMZlkMAQlalllgrI/ZKc78NbCJtt
-         hjEpqtqtgkUp2f0J5r2ERbSih32Ldc2ngjNALYTeJgfp8nmZr+qQb5rf1RCzjLkiTxOJ
-         eESiK3Vp8E6sc+ZXFvyaux4WvrRI0dW/uHOv2QtvgcDyzhbY5HYHOaWfrHEB6gY9vuL9
-         Klx5jJBW6hCdUfkWEqDsrKxSW0TgClohG3ZW5l3SDYPr7pctr1KJlnlY1mWBI/yOt6pU
-         s0Qg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NXlietmMDnMDDCbd3vt3QmKB/26LHM3Ufg/KK8xRGJ8=;
+        b=m0TewJWW7KhTdSXchwcIkyxlc1EkvKyFWq5uJQv+yKMBp+IF5UtjELWqTQSb6qyCew
+         kJHBq5X2f6gtjHpqsgh3S4R+eSNqeSybw4Z++QF6NViBx9aQNs9n6HbaVslpThBjx+8Y
+         z85ErMR41r9qSXqg2hznA9QNL6CaZ4N3UymM3Ml9fqxpmgFNJHzKuK3g51mbb04B14oL
+         6Cc1EOYi14h1Qu7wmDAPRkY4+Ot8gdVQMu+ubmNtFivjU97hBzmtHhCtlwuUdI9UF9ee
+         kueWGK/JDg0GEw9aVPF4x3B+j2tCzomWngtlys7Z8cxOYlblZulqOdR0txPc88AqW6W2
+         nhPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=22cpIMVo0mA6Jzd/hOHKABBmcBen8QvMhPR2HSaKBfQ=;
-        b=olCSxVS8s14QhbGHaCmWpnn7uo4UO3q6FQkIiCrV+UmkbyD6dzaDzwYgh08kNmqDMW
-         6sOTj6mswS0dYO8Ff2U7aV5nz4vCRAX4mTtE1bVlIEbXam9VAC7gW7vBXfLD5QpiTV7q
-         pmpe0Z5Qqr4Kns2PFAiAcQuSWLLDbiBP9U/c60UucuPT6uAOMgRNt4XZ45J+qNGAjQk3
-         LIfqpLfxBjQlxO+kcWZX/xp7p/E3T9HP5CaDEVymFjB8/6bryu5whim54CFcNotimAhK
-         OJCb7NNIqSyhmvO4qa5r/jE5kZGxasPX1pcaEVygyPUrSS00O+z19qBgz3b5blLPiWP5
-         gKKQ==
-X-Gm-Message-State: ANoB5pk2JCUd3t4xXI/LSJuVsOS5S0F/a3au18uFENNZPu4Ecuj7BJ2a
-	3jij7Rg00cIz0ewDpFgb4O3NeQ==
-X-Google-Smtp-Source: AA0mqf6RkthBpqU68CQBd+vmDxOO1uiFkhkP9+BnLWGQjYO0j8vRPC7xMyHfe5FD8ZpgEeJ9TX4Szg==
-X-Received: by 2002:a05:6402:294b:b0:458:cd82:91a with SMTP id ed11-20020a056402294b00b00458cd82091amr18650253edb.15.1669079292221;
-        Mon, 21 Nov 2022 17:08:12 -0800 (PST)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NXlietmMDnMDDCbd3vt3QmKB/26LHM3Ufg/KK8xRGJ8=;
+        b=ybqbndITMzuUdaHrBKzm+IiTD1kw8/64LqzIvvYMp+4DUw/x9cbqZ2FogFQfdABg7M
+         Osa40M3o55xKaJ4b6HXyef9ArCIcxVsEayxq4sLdsJheSRoMNn28kEc1JiZc6RGBrN7e
+         7izvYQKiEB36O2afL0mK8D+vHH9qa2E0WH9zTFnph9eeaVLy4/Ynirch9+H66M+bidPt
+         xXCQ+Q5uk8y94rkbAVU4Zqt0hkavMkQtAVXmABmVYvTP+zvBCYDOqBr/Vrh/Yc4LSeKy
+         RWPXcCMNqvUYFwuMPfkA8M7l0CvIqtQ/Jz65iT5BbaXSi1T7GDyBo7vTSzBX4n5nzO3R
+         ucAw==
+X-Gm-Message-State: ANoB5pnDuYAYiW00ZKtFVfj9QA5WIznPQp7l3+lX8EXiXT0m+j9+FkQ3
+	ycz7BM3wH3rBZHS9ENd9xNogSQ==
+X-Google-Smtp-Source: AA0mqf6YHtIfMeR6UPTvsarDA6CMoaDvypsfuFvEc487eJW3bla0HrQAC73iEkA2LGGrx+B9tWkmow==
+X-Received: by 2002:aa7:cc14:0:b0:468:58d4:a10e with SMTP id q20-20020aa7cc14000000b0046858d4a10emr19202803edt.222.1669079287797;
+        Mon, 21 Nov 2022 17:08:07 -0800 (PST)
 Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
-        by smtp.gmail.com with ESMTPSA id f13-20020a1709064dcd00b007030c97ae62sm5514683ejw.191.2022.11.21.17.08.11
+        by smtp.gmail.com with ESMTPSA id f13-20020a1709064dcd00b007030c97ae62sm5514683ejw.191.2022.11.21.17.08.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Nov 2022 17:08:11 -0800 (PST)
+        Mon, 21 Nov 2022 17:08:07 -0800 (PST)
 From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
 To: devicetree@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org,
@@ -72,19 +71,16 @@ Cc: linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
 	khilman@baylibre.com
-Subject: [PATCH v2 5/7] arm64: dts: mediatek: Remove pins-are-numbered property
-Date: Tue, 22 Nov 2022 02:07:51 +0100
-Message-Id: <20221122010753.3126828-6-bero@baylibre.com>
+Subject: [PATCH v2 0/7] Remove the pins-are-numbered DT property
+Date: Tue, 22 Nov 2022 02:07:46 +0100
+Message-Id: <20221122010753.3126828-1-bero@baylibre.com>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221122010753.3126828-1-bero@baylibre.com>
-References: <20221122010753.3126828-1-bero@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_170825_604029_D4944D70 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221121_170825_674308_B9BFADEB 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,81 +95,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the unnecessary pins-are-numbered property from
-arm64 Mediatek DeviceTrees
+During the review of my MT8365 support patchset
+(https://lore.kernel.org/linux-mediatek/20221117210356.3178578-1-bero@baylibre.com/),
+the issue of the "pins-are-numbered" DeviceTree property has come up.
 
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Kevin Hilman <khilman@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi    | 1 -
- arch/arm64/boot/dts/mediatek/mt8167.dtsi     | 1 -
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 1 -
- arch/arm64/boot/dts/mediatek/mt8173.dtsi     | 1 -
- arch/arm64/boot/dts/mediatek/mt8516.dtsi     | 1 -
- 5 files changed, 5 deletions(-)
+This property is unique to Mediatek MT65xx and STM32 pinctrls, and
+doesn't seem to serve any purpose (both the Mediatek and STM32 drivers
+simply refuse to deal with a device unless pins-are-numbered is set to
+true).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 9dc0794fcd2e6..ace8e751c8ea4 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -270,7 +270,6 @@ pio: pinctrl@10005000 {
- 		compatible = "mediatek,mt2712-pinctrl";
- 		reg = <0 0x1000b000 0 0x1000>;
- 		mediatek,pctl-regmap = <&syscfg_pctl_a>;
--		pins-are-numbered;
- 		gpio-controller;
- 		#gpio-cells = <2>;
- 		interrupt-controller;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index fbe1a1128cc6a..6a54315cf6502 100644
---- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -117,7 +117,6 @@ pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8167-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
- 			mediatek,pctl-regmap = <&syscfg_pctl>;
--			pins-are-numbered;
- 			gpio-controller;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index e21feb85d822b..18e214464a2d3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -929,7 +929,6 @@ clock: mt6397clock {
- 
- 		pio6397: pinctrl {
- 			compatible = "mediatek,mt6397-pinctrl";
--			pins-are-numbered;
- 			gpio-controller;
- 			#gpio-cells = <2>;
- 		};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 7640b5158ff9d..c47d7d900f283 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -375,7 +375,6 @@ pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8173-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
- 			mediatek,pctl-regmap = <&syscfg_pctl_a>;
--			pins-are-numbered;
- 			gpio-controller;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index d1b67c82d7617..118025263a29b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -229,7 +229,6 @@ pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8516-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
- 			mediatek,pctl-regmap = <&syscfg_pctl>;
--			pins-are-numbered;
- 			gpio-controller;
- 			#gpio-cells = <2>;
- 			interrupt-controller;
--- 
-2.38.1
+There is no other use of this property in the kernel or in other projects
+using DeviceTrees (checked u-boot and FreeBSD -- in both of those, the
+flag is present in Mediatek and STM devicetrees, but not used anywhere).
+
+There is also no known use in userspace (in fact, a userland application
+relying on the property would be broken because it would get true on
+any Mediatek or STM chipset and false on all others, even though other
+chipsets use numbered pins).
+
+This patchset removes all uses of pins-are-numbered and marks the
+property as deprecated.
+
+v2:
+  - Deprecate the property instead of removing it completely from
+    schemas
+  - squash some related commits
+
+ Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml | 5 ++---
+ Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml        | 7 +++----
+ arch/arm/boot/dts/mt2701.dtsi                                          | 1 -
+ arch/arm/boot/dts/mt7623.dtsi                                          | 1 -
+ arch/arm/boot/dts/mt8135.dtsi                                          | 1 -
+ arch/arm/boot/dts/stm32f4-pinctrl.dtsi                                 | 1 -
+ arch/arm/boot/dts/stm32f7-pinctrl.dtsi                                 | 1 -
+ arch/arm/boot/dts/stm32h743.dtsi                                       | 1 -
+ arch/arm/boot/dts/stm32mp131.dtsi                                      | 1 -
+ arch/arm/boot/dts/stm32mp151.dtsi                                      | 2 --
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi                              | 1 -
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi                               | 1 -
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi                           | 1 -
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi                               | 1 -
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi                               | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c                          | 6 ------
+ drivers/pinctrl/stm32/pinctrl-stm32.c                                  | 5 -----
+ 17 files changed, 5 insertions(+), 32 deletions(-)
+
+
 
 
