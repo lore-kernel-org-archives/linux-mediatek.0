@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98CDC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 16:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC0CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 17:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=; b=IyJoRhxC57i8Z8Nf+dtLXstHL8
-	DTjMOYjYeOGCq/XkTJdu82Pskemxuzup459DEq2kD4GobUDWd4THc5ZIESbIIYwIX00xJX7Pq8VMI
-	tm9B327+8dWjEcCZEs0ckf/O42yrrR5Emz5pbnRFQgWFwSVKIf4RwahGzSbIIfmjkpCeBc+QOxV/t
-	axUy0coKn9QoNO6R7F1AhiCpqdBytV64bjZ+lwfPHY/JwSGz/Z4Yv+rQJih821JykXO+Tq6rR2ciZ
-	0pGqgmWhLAv+5t3+Ce72fBwwwSPvwz6AF3kZOE1cxqd26IBeO0QEoQJy6mT/dShOoTlJBeaECzxs3
-	hWL/SDow==;
+	bh=lUcHxKNUlASZz/X8KuXB0tRt7hDcsZtxJiE2XAUFgK0=; b=CeL5YRnHDJwHJGrEt6rE3TUXBT
+	Mr8rvn4FGQqdtglUC9WssKcmerZM8jUcTMZ+pnFcBPF/6ktKuYAVnNKUtF6ri0lHdb7w1R7GK7rpq
+	pzlYHDkxPCvE9g+JunJSonTvoWbQAUw4lhXNCL8Js0C3bo+BzXD0JPHzjHuUWsSmM94f2oi3bOeOG
+	Gxl/F/STsJISQhQZalfmAbJFPLY9Ag8dgbsc84lMLK02CrkbUK6VB5uBx23JNz4Ch7sYZTOICf1hh
+	z6hDPPvuBxAbZif/DuM4dPiPGiaoFA3gG88fCf2NsbxDhb5m+HhHEUsUGPRjOT79dmEnQ1sHdcsi+
+	llL9w5SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxWSO-00AqVy-2k; Tue, 22 Nov 2022 16:49:12 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1oxWfJ-00Auqu-Uz; Tue, 22 Nov 2022 17:02:33 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxWSL-00AqU0-30; Tue, 22 Nov 2022 16:49:10 +0000
-Received: by mail-wm1-x336.google.com with SMTP id p13-20020a05600c468d00b003cf8859ed1bso11751833wmo.1;
-        Tue, 22 Nov 2022 08:49:05 -0800 (PST)
+	id 1oxWfG-00Auop-Uq; Tue, 22 Nov 2022 17:02:32 +0000
+Received: by mail-wr1-x435.google.com with SMTP id d1so13567435wrs.12;
+        Tue, 22 Nov 2022 09:02:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=;
-        b=GdK7IiaGPYoYt2Cullz/bFXz5P3zaEbhbB2t0ZpbwFzBQeOMMKazdbcRBwospX37Ui
-         pqMiIGLcaq9zFfPEICfldvKXfL31lnz0AaqH4lHRW1xbnHaDy/Lg4rdvd7XQjNxtq+ay
-         1iqBc+fexaXnaY8vB2aO3JXyzKh/ipGhRImpUWnP3k8BcfmZebvEe4wqfSsUE5LZmN+8
-         LmM6RhNUPnWyN7PHzsyFSneAEOivB3ucTrbdj4p7TsX7scxtByO6GWlpXTANw65+rSSo
-         fJQ6zBeq9qJWeAL4dyugp+BKONx4Qikr+2fGiGvQOWJomWt9c7/sR/U9dBCEYOn2FDML
-         9FtQ==
+        bh=lUcHxKNUlASZz/X8KuXB0tRt7hDcsZtxJiE2XAUFgK0=;
+        b=QfIK0hXCjKJVeI0i0Z8r3P7A0TRBhzEwfNMv7GdcuQ8byRz9v9xDE1/xQXpXzScshj
+         gcRiFXtjXNZv8/4+2XGXaKQt8HqXk2FNxHeKAyh92mO8RGEB+hLOLB9m7vlps76+bIZs
+         +8VQgUPMrH3lPvJKzA8vevmS9h3ST7QFsdmJBR+FidD4wLQSSf8trA1H01D2AxOYnm2W
+         FmWn0UuBVuq5+M7gsiPS8D4iilJqrUkJeDotVIm2JtWeJw3UwpGxtlKBn4VOLRd2TSg9
+         LHOv924/g2YRJXGzw6O09VPW72nD14vEKGIey3znmEbYYiQC5/AG/ggvVYgqVastnsMC
+         OmGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=;
-        b=oerHMzGbCYJQOnaSz/qtFHepwIPbBjt+pbcOlsHc/hDPelrnwF9j5VspfQySbepR0n
-         ErP1xXQQYLOgvjq+U41o4Q0VCrAw/dF9sPgnhvUXdPf5jvIQGGuNSSB70EiB/mQ0baTd
-         X1JXiXktPNBcUz8uY+N0xQXeZ5fKRt4kYiVQvtf90I3dFP2Co5FdquCv21jsO9qi7TF6
-         JRXAWNv083zsJ1S862d5cfB/svx3nVBx58y9pLcQ4fnipKd5pX6vDz7a9EZDr4TApnDY
-         xv0fyprpW+znAD942IO6nmm7A+sEsUg7+IPs2x4wUbs6SwA+nD8dXarLwog/ud2QAP2i
-         lnMA==
-X-Gm-Message-State: ANoB5pm5tvkO+IXsougp7MSd4t/hXfiso8Li0FrUMHJl+6LEiieTqYZK
-	nqucb2oFQzQApS9gTiBGqoQ=
-X-Google-Smtp-Source: AA0mqf5ZtsT30GoUH/4TBViJcG2p2xVpb/2WXR2KXr7wvrCOOAoP5enGR17CBNRPJryrNLruXod8Yg==
-X-Received: by 2002:a05:600c:3590:b0:3d0:1489:78c4 with SMTP id p16-20020a05600c359000b003d0148978c4mr5836156wmq.167.1669135744520;
-        Tue, 22 Nov 2022 08:49:04 -0800 (PST)
+        bh=lUcHxKNUlASZz/X8KuXB0tRt7hDcsZtxJiE2XAUFgK0=;
+        b=0gRMzOJhFqZdzfq1QI10Dnyg7mAd7XizQvIynXn7BkAS+HOG5ELtST+D+RXOQN9qEo
+         eyItdxgXmRrSYMF+uJZVvyQThMUPgJhhVtaHB01MAhoGIUsqw+HFrnVsE/PkZfic7fa9
+         jLJyCH0S1Z9B04GbwuPme7dK6NIEDGLnKssmS/26xT9mVq4L2/C7Ia7+qqH8h6Y3RS6H
+         OKHoDUoEw+4IzIiTCmBeM0saHY6mkNrQJU6vMuGBpOcvL2oTBz4Cvh/9E+GAW0rwvZBB
+         apzgdtQA6/DPR1toIq4GLu3W4/1KE+wjyjJWV8W4OyVJDMIErowKxmV1HrvQsnWxQxMx
+         /4UQ==
+X-Gm-Message-State: ANoB5pnbOvyAl78pL5NmpgVjIFk+ltQkO8wBZ7evjIGkZiHX8ZgumMHK
+	f1Z0FezuZFg96qw48ZhKqc8=
+X-Google-Smtp-Source: AA0mqf49HIMZSzdOoEtBJ9tRmIBfPJn16ehrqs2keL04CLnigLwdWrXYnLZc4qam3NRENhayvSEnGA==
+X-Received: by 2002:adf:dd10:0:b0:22e:4f2e:e57 with SMTP id a16-20020adfdd10000000b0022e4f2e0e57mr15005618wrm.698.1669136546331;
+        Tue, 22 Nov 2022 09:02:26 -0800 (PST)
 Received: from [192.168.0.25] ([37.222.251.204])
-        by smtp.gmail.com with ESMTPSA id x9-20020a5d6509000000b0023c8026841csm14497653wru.23.2022.11.22.08.49.02
+        by smtp.gmail.com with ESMTPSA id n27-20020a05600c3b9b00b003cfa81e2eb4sm19846292wms.38.2022.11.22.09.02.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 08:49:03 -0800 (PST)
-Message-ID: <f51c7f56-4c62-0351-3b01-ae2f6432fb05@gmail.com>
-Date: Tue, 22 Nov 2022 17:49:01 +0100
+        Tue, 22 Nov 2022 09:02:25 -0800 (PST)
+Message-ID: <6945a20d-098b-fad3-766e-f4bcb3c37da8@gmail.com>
+Date: Tue, 22 Nov 2022 18:02:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v7 5/6] iommu/mediatek: Improve safety for mediatek,smi
- property in larb nodes
+Subject: Re: [PATCH v2 3/7] dt-bindings: pinctrl: mediatek,mt65xx: Deprecate
+ pins-are-numbered
 Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
- xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <20221018024258.19073-1-yong.wu@mediatek.com>
- <20221018024258.19073-6-yong.wu@mediatek.com>
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ devicetree@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ krzysztof.kozlowski@linaro.org, angelogioacchino.delregno@collabora.com,
+ khilman@baylibre.com
+References: <20221122010753.3126828-1-bero@baylibre.com>
+ <20221122010753.3126828-4-bero@baylibre.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221018024258.19073-6-yong.wu@mediatek.com>
+In-Reply-To: <20221122010753.3126828-4-bero@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_084909_207321_094DFB2E 
-X-CRM114-Status: GOOD (  25.86  )
+X-CRM114-CacheID: sfid-20221122_090231_014086_D29EDA1E 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,106 +99,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 18/10/2022 04:42, Yong Wu wrote:
-> No functional change. Just improve safety from dts.
+On 22/11/2022 02:07, Bernhard Rosenkränzer wrote:
+> Make pins-are-numbered optional and deprecate it
 > 
-> All the larbs that connect to one IOMMU must connect with the same
-> smi-common. This patch checks all the mediatek,smi property for each
-> larb, If their mediatek,smi are different, it will return fails.
-> Also avoid there is no available smi-larb nodes.
-> 
-> Suggested-by: Guenter Roeck <groeck@chromium.org>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   drivers/iommu/mtk_iommu.c | 53 +++++++++++++++++++++++++++------------
->   1 file changed, 37 insertions(+), 16 deletions(-)
+>   .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 9cbff48f03c0..f7ac102e343f 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1042,7 +1042,7 @@ static const struct component_master_ops mtk_iommu_com_ops = {
->   static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **match,
->   				  struct mtk_iommu_data *data)
->   {
-> -	struct device_node *larbnode, *smicomm_node, *smi_subcomm_node;
-> +	struct device_node *larbnode, *frst_avail_smicomm_node = NULL;
->   	struct platform_device *plarbdev, *pcommdev;
->   	struct device_link *link;
->   	int i, larb_nr, ret;
-> @@ -1054,6 +1054,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   		return -EINVAL;
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+> index 33b5f79e741ab..1b44335b1e947 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+> @@ -31,7 +31,8 @@ properties:
+>     pins-are-numbered:
+>       $ref: /schemas/types.yaml#/definitions/flag
+>       description: |
+> -      Specify the subnodes are using numbered pinmux to specify pins.
+> +      Specify the subnodes are using numbered pinmux to specify pins. (UNUSED)
+> +    deprecated: true
 >   
->   	for (i = 0; i < larb_nr; i++) {
-> +		struct device_node *smicomm_node, *smi_subcomm_node;
->   		u32 id;
+>     gpio-controller: true
 >   
->   		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
-> @@ -1094,27 +1095,47 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   			goto err_larbdev_put;
->   		}
+> @@ -62,7 +63,6 @@ properties:
 >   
-> +		/* Get smi-(sub)-common dev from the last larb. */
-> +		smi_subcomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
-> +		if (!smi_subcomm_node) {
-> +			ret = -EINVAL;
-> +			goto err_larbdev_put;
-> +		}
-> +
-> +		/*
-> +		 * It may have two level smi-common. the node is smi-sub-common if it
-> +		 * has a new mediatek,smi property. otherwise it is smi-commmon.
-> +		 */
-> +		smicomm_node = of_parse_phandle(smi_subcomm_node, "mediatek,smi", 0);
-> +		if (smicomm_node)
-> +			of_node_put(smi_subcomm_node);
-> +		else
-> +			smicomm_node = smi_subcomm_node;
-> +
-> +		/*
-> +		 * All the larbs that connect to one IOMMU must connect with the same
-> +		 * smi-common.
-> +		 */
-> +		if (!frst_avail_smicomm_node) {
-> +			frst_avail_smicomm_node = smicomm_node;
-> +		} else if (frst_avail_smicomm_node != smicomm_node) {
-> +			dev_err(dev, "mediatek,smi property is not right @larb%d.", id);
-> +			of_node_put(smicomm_node);
-> +			ret = -EINVAL;
-> +			goto err_larbdev_put;
-> +		} else {
-> +			of_node_put(smicomm_node);
-> +		}
-> +
->   		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
->   		platform_device_put(plarbdev);
->   	}
+>   required:
+>     - compatible
+> -  - pins-are-numbered
+>     - gpio-controller
+>     - "#gpio-cells"
 >   
-> -	/* Get smi-(sub)-common dev from the last larb. */
-> -	smi_subcomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
-> -	if (!smi_subcomm_node)
-> +	if (!frst_avail_smicomm_node)
->   		return -EINVAL;
->   
-> -	/*
-> -	 * It may have two level smi-common. the node is smi-sub-common if it
-> -	 * has a new mediatek,smi property. otherwise it is smi-commmon.
-> -	 */
-> -	smicomm_node = of_parse_phandle(smi_subcomm_node, "mediatek,smi", 0);
-> -	if (smicomm_node)
-> -		of_node_put(smi_subcomm_node);
-> -	else
-> -		smicomm_node = smi_subcomm_node;
-> -
-> -	pcommdev = of_find_device_by_node(smicomm_node);
-> -	of_node_put(smicomm_node);
-> +	pcommdev = of_find_device_by_node(frst_avail_smicomm_node);
-> +	of_node_put(frst_avail_smicomm_node);
->   	if (!pcommdev)
->   		return -ENODEV;
->   	data->smicomm_dev = &pcommdev->dev;
+> @@ -150,7 +150,6 @@ examples:
+>             compatible = "mediatek,mt8135-pinctrl";
+>             reg = <0 0x1000B000 0 0x1000>;
+>             mediatek,pctl-regmap = <&syscfg_pctl_a>, <&syscfg_pctl_b>;
+> -          pins-are-numbered;
+>             gpio-controller;
+>             #gpio-cells = <2>;
+>             interrupt-controller;
 
