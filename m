@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E69D6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 17:39:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548FEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 17:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=; b=0iG2DbVPGGkUB9FTLipvgYUAEq
-	W1CELf+SCrsv1MFavh8gL22RX0An3Mbyc11InE6whyjZ2TCrbRIOUPGo4eKiln42BbOLmHM3EQjLO
-	UCtjJARjcgxmHDWBxxsGqezt0hVhKhx/4ipiGiUelxBeF2sO1tbwalNUzlbjQWewUu2t/pJjCDlt/
-	Ev2bCqad+NuQH9ejJb0OdM0yywRvHI848ZdoyZ5C2NAii5lXO6F7de4lePLUxMGOgXTZDGu1qnVfp
-	K+XtoEtZOEErqwir3Kx8pL1EDOJpt6eCQyilP7by7WPgnvIPs/M040kdi6WYlAeffGyQpfKlsOfKv
-	aSHJ/BjA==;
+	bh=QiUhg3FHHbL4yCRYUiDHX0EGd7vPMcRRXz/Ys0GPzoA=; b=151HJTjpiJhmsjCCZVsGLuimos
+	iX7/AMS/VIEK5voNDKm/OCNNMPJIcLSR6tnz6TnljAIX5ysn4scFXoOEzzaH0ViGdzOpc9jFkAcYn
+	IsjSLyNfi6YsSa4bZWkx2d7XISnkzwM3jjHywEzqwuE2IUxY58YR5nVrgcrqocgQzTcx8Y1Eoaif3
+	+Hq4MPPUftlCUmfTo+czRmyV0/Fc6S5KMfh774INdgXiV9a0ZYHgdrMsUTI/0BRRWzCOc+c2Bz8WV
+	rCPjuCnzwlFc6ckn2T0NagfxyJhxKS8WEs4uR0HxHOKPhU585WRU9TwfKw/lgWs/3IzvlJwhwwEQG
+	poIEIEJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxXEf-00B6gg-J9; Tue, 22 Nov 2022 17:39:05 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1oxXJN-00B87d-2v; Tue, 22 Nov 2022 17:43:57 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxXER-00B6dH-VZ; Tue, 22 Nov 2022 17:38:53 +0000
-Received: by mail-wm1-x331.google.com with SMTP id o7-20020a05600c510700b003cffc0b3374so11677945wms.0;
-        Tue, 22 Nov 2022 09:38:51 -0800 (PST)
+	id 1oxXJC-00B84V-EX; Tue, 22 Nov 2022 17:43:47 +0000
+Received: by mail-wm1-x329.google.com with SMTP id v7so11291527wmn.0;
+        Tue, 22 Nov 2022 09:43:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=;
-        b=EqZFphm6mu/6vZej+M7COtDqt5dpwClyQiLRA4vFvDa3RXQ2e1bOKYrCHrBHZHM2c0
-         QmJAO2mpAsh1jWNNJyK+Yvb05EblWec7imFqb40zHbynjXLLTN1+oj5aGzKmDHz4odiv
-         uhsbiY2OHCeLV2Og7WDcAHXDjuVJEZoBeq0LdrG5OR7dZ4HHouUzhFljSnDrT/fZYRJY
-         6aJwEf+4/3bQQ8d7dZOrXjiT9cdduoikisCib1WHxg46wL8T6DkgAnKIj/KleqogPTT+
-         u6wDM3210bf8rpP/g2DP0lZo9PDtmMuYniVXIrDxrdk3WWmvl86qNWWS0cv2AfGegiVH
-         GnNA==
+        bh=QiUhg3FHHbL4yCRYUiDHX0EGd7vPMcRRXz/Ys0GPzoA=;
+        b=CdHYD/SYZJ9EVvNAFs8NUzwgDUesRc9t6zBFahz6oVfS3h82z2sduYPwvdOQW9hdDr
+         ddUz7nPSjT3EiD2rj64TLMK/hmr2AsfujkOxJQCnl58gF8q6ah03sUD0XRXBoKcKaOdC
+         d8kFjaF6l01ZT5TVq7oUHC/0juq6WezIArgbAkMjkifETlqZF/yAyWHFO8WgzB667FsQ
+         fYOGjzYkuEL7bmYYkO6O/xQecuNz84+3il4y8AZGUZ9Rl39DIS5fO6tc+3X7f6J3HQLK
+         MIDM/Alv/j3ov6oy5g88CkGJ/g7mtU4MaLLDGOxS1REnsfCAsqeVm6GFm0Lb4wwnVhCx
+         cOOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=;
-        b=dMVVlP6Pgkzuqvoi5dOUH61l9xtZb6DAWfNLziijXvv1UmdP56ENaoVXIDkCrqWFKy
-         qPnJLLTb+i+bQEK6DJ/rSXhOCOWHODoye+OGGElNb06gqATbMJ3XL+yeDTQRfW6FTpJ3
-         +TFF2G3p86mOvGn3mnp0kawizvstd2LtNa99AJGMA/5PUz3wSACmpZ5egoKzF89UPhLn
-         XwnvmVhsEoYEtzsK/9YXTERE6k/kqzhrE4BrCvKAQ4WiQKZNzsKxBfQYoUKVoOqzxz7+
-         1xtknawWzrwtSJTsktUdGECzuNsDC+2bqSz4N/Chq/pyepve565lv/1IvMWz6SFVYmqj
-         HlbQ==
-X-Gm-Message-State: ANoB5pn+CQOB0DpolEZcXQFe7pDnN92fBhZKzu62TtKX6sz3lIvcNWhn
-	4XEDd/N9x1NF8WZjj/Zwq78=
-X-Google-Smtp-Source: AA0mqf7Lcc8odQYBjV/PBGGjFzwvPElZiX4Vw/d75C/ERxuf9H4WD3Ghxg7YYtikN0Eo2Ta6fcNTlg==
-X-Received: by 2002:a05:600c:348d:b0:3cf:88e7:f808 with SMTP id a13-20020a05600c348d00b003cf88e7f808mr3503934wmq.200.1669138730275;
-        Tue, 22 Nov 2022 09:38:50 -0800 (PST)
+        bh=QiUhg3FHHbL4yCRYUiDHX0EGd7vPMcRRXz/Ys0GPzoA=;
+        b=fiwmDBxpwSBVhzOgIbil7P8nabh8I+IAPH9EPNTdf/9DtDNJAImoWBpEoInWwmLpPR
+         Q224NgEFVBHuOvea44aoPivVStFlu7BAZPL53P+zQKLcYLN0rBQU3wMe0AgUgMMrvcvg
+         3TM++gg1CYbi2BbA1DtCVVwZjatBuSNzx8MBqAS2DhHy4llN4ObO9FhqFWC/M3PvEokM
+         521iUhkE5KtR9Gj+sd92jMk7v02QwFSrXortPkzYWGewLmgUvwMyJ6tk0BYNLaX51FnF
+         OIqRIiM963qouEK0+NPAtJ9PfWGIpzv0ii2f3G6Mwmw+7EqbvarnTB74ree10k6NaC9p
+         bp6Q==
+X-Gm-Message-State: ANoB5pmwyGkqD0QObjmiv60f0oeHO8BdXPFck0agPSicZwUXVkqg2oZL
+	fWbvah6lWnGdFy2+n1fAHBJTBOOGL8w4pQ==
+X-Google-Smtp-Source: AA0mqf7ouF49HDBxoi6CEP4X5o2rlfUkOmvfj65dtk7FUzN6WJ3TpQbjfDwvzGAdcSuiVoGRCcHRfg==
+X-Received: by 2002:a05:600c:4894:b0:3b4:91f1:da83 with SMTP id j20-20020a05600c489400b003b491f1da83mr6850890wmp.127.1669139025009;
+        Tue, 22 Nov 2022 09:43:45 -0800 (PST)
 Received: from [192.168.0.25] ([37.222.251.204])
-        by smtp.gmail.com with ESMTPSA id g15-20020adff40f000000b00241db7deb57sm4886755wro.114.2022.11.22.09.38.48
+        by smtp.gmail.com with ESMTPSA id u17-20020a05600c19d100b003c6f8d30e40sm24181615wmq.31.2022.11.22.09.43.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 09:38:49 -0800 (PST)
-Message-ID: <4a08b689-4592-86cb-7eba-cca49970a489@gmail.com>
-Date: Tue, 22 Nov 2022 18:38:48 +0100
+        Tue, 22 Nov 2022 09:43:43 -0800 (PST)
+Message-ID: <0d5dd24c-2386-c3b1-8143-0a00eac44ad0@gmail.com>
+Date: Tue, 22 Nov 2022 18:43:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH] soc: mediatek: pm-domains: Fix the power glitch issue
+Subject: Re: [PATCH 1/2] arm: dts: mt7629: Remove extra interrupt from timer
+ node
 Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ daniel.lezcano@linaro.org
+Cc: tglx@linutronix.de, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>
-References: <20221014102029.1162-1-allen-kh.cheng@mediatek.com>
+ linux-mediatek@lists.infradead.org
+References: <20220929122901.614315-1-angelogioacchino.delregno@collabora.com>
+ <20220929122901.614315-2-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221014102029.1162-1-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220929122901.614315-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_093852_048993_F2C5CA46 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20221122_094346_517635_E366CF8B 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +98,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/10/2022 12:20, Allen-KH Cheng wrote:
-> From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+On 29/09/2022 14:29, AngeloGioacchino Del Regno wrote:
+> There's only one system timer event interrupt.
 > 
-> Power reset maybe generate unexpected signal. In order to avoid
-> the glitch issue, we need to enable isolation first to guarantee the
-> stable signal when power reset is triggered.
-> 
-> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied to fixes now, thanks!
+Queued now for the next merge window.
+
+Matthias
 
 > ---
->    Resend a PATCH from
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220310011548.2487-1-chun-jie.chen@mediatek.com/
+>   arch/arm/boot/dts/mt7629.dtsi | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
->   [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
-> ---
-> ---
->   drivers/soc/mediatek/mtk-pm-domains.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index 09e3c38b8466..474b272f9b02 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -275,9 +275,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->   	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
->   
->   	/* subsys power off */
-> -	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
->   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
->   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
-> +	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
->   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_2ND_BIT);
->   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
->   
+> diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
+> index 46fc236e1b89..acab0883a3bb 100644
+> --- a/arch/arm/boot/dts/mt7629.dtsi
+> +++ b/arch/arm/boot/dts/mt7629.dtsi
+> @@ -106,8 +106,7 @@ timer: timer@10009000 {
+>   			compatible = "mediatek,mt7629-timer",
+>   				     "mediatek,mt6765-timer";
+>   			reg = <0x10009000 0x60>;
+> -			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>,
+> -				     <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
+> +			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
+>   			clocks = <&clk20m>;
+>   			clock-names = "clk20m";
+>   		};
 
