@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 753F7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 08:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF988C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 08:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kFNWZX6nqcPRLAP3+p36POBcq2PQuLvUG582lwuLDsU=; b=QaY6TPX8ldbgxdBeibyoKcCZ3D
-	731k/dC06cj/k+HBlnrnS9Uoc2OBg3F1gHfyAB693Pi/aiMISOikqTkaZ6X+2OCZF9WnJNzEdlGo9
-	JEpwHdNm8b0Wf6kURtnr0AY88xWZvplfKnWKfPMArmMISgE8wbTZZoBkJh596PN0Y/Qi2BLFbS7ZS
-	4PN8JNg4zDTyhJjt97EEE51db64yoW3gwDQDqkGAH2oCAbDJD0MD0euUFDlSeeZ0CHp1vKGae3nEW
-	ca8wxrDa6r/ZybgOl9lKBlcbLxRfMYm/+bvGrosb2p+5ZCetXzNCRN2Aukl3JeqJvT94ibFVRU4L0
-	Ul12u4hA==;
+	bh=nNKzdXulPYqj0Gp9ooAOh/o+mTRfVfsdPXAg5bt+9Ok=; b=QMNO1wz6ukwAA7i3s9fwU5efqa
+	yWAxwI0qXbV5wcYPl6dvyKjAoIdzHuu+tMsiHFysO+d4mbZqCw68EA2y6uXdWB02Nx6403DBHrX6Q
+	rFyOVKTKEeK4Qxc0/EM8ac+FcUnlTFq8qPng2jDHTx4H7ExznYFCQvJTeXwiiFSrW3L0ecFoF8Jmp
+	xTa99NlrMdMGZ9qR4f+8WYReGYrxUMWap55R1H/dHGxoETWTJjXCCNfPERSAN6kenW/uZIuJ3QP6d
+	QHoN0laJtuJUM5Zu08kbvi+OsfpvcD0rYur21xjpfT4ru9XplewMAfvq96yuXzsuMgInUTqYEXbKp
+	mBHblQ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOk2-006Jdk-PU; Tue, 22 Nov 2022 08:34:54 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1oxP1C-006bc6-Ut; Tue, 22 Nov 2022 08:52:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxOjz-006Jax-KL
-	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 08:34:53 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-3876f88d320so137469697b3.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Nov 2022 00:34:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=kFNWZX6nqcPRLAP3+p36POBcq2PQuLvUG582lwuLDsU=;
-        b=LQ3kFeWQ2ww95B+4OGM/Xi7/EhnpNDt1EmBmwI4DT0yUXiW6umbD9hx++bvotDI8K3
-         CX9Yix/41xJH9FKCIELQkCUCRfZxBZrgPQqQ1OV9qCn3RIAZaQNnEkjQGyfVVW/7leQk
-         hjzkwVSOKuILe7qujZovTjJBAFnjYaABa92WQkUVNY4ErS7bfEbTBeNeWjewcpZoZNTY
-         zTcwNKruUOGSTfcHRvypjheI1dWtxsxaNdJJ97yirVI1wOImVd2TCcV7TFzRa8cY4UtS
-         1KQ0eid0pYmANe+Pu3gcXhXYOCHwwsyWwh8g0M1joaKs3+STGH5K8ujgOUyU82A0URV1
-         +P9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kFNWZX6nqcPRLAP3+p36POBcq2PQuLvUG582lwuLDsU=;
-        b=SRhwF0fTZikqcBgODJGdx66wqI+DlV47EOT8gFydGRLTqnLF/tybLfy5CH77pA6CYl
-         mDY2uYBx3OHmQuU/5QlchcwdoKqh6tJAev8hPeQ4pXief34oyHGVXkIkQ+t+vFB6wY2i
-         ABHM8uZ/Ihnusi50mGWi/n2RAz1N0ESesMXSacP6qz+WMhwv3xQ9R9hTrFt7jQefDRkY
-         wq7vTUSqV+Qt6UPV1+csdU4gBM+NyA8YKa3Sis7MQ/kmFBdhZ+iyQw8DhO2M5T1P/Jxg
-         D7Mvq28xHEy3pc+U7//yfT9mtxEXqxFdnfuvfGr453MdsSQpPObLmQOyRndd7dS7pLam
-         Ku7Q==
-X-Gm-Message-State: ANoB5plVqQMq7acxRhNpRGRXky1HR4XZPT0Z9P7PME5VcEAU4MO/7bil
-	j35SkJcrW7HStKa2PnigxW1AhoetdAqAvSpbYhBp+A==
-X-Google-Smtp-Source: AA0mqf75SduNvhVQKDFmQuCeAd5sRLnb4nLRDUoaE1P/ORcJuPDqFvjop2ZWxhYR92NufjgI1Gwz6IZA4WKX4793LGs=
-X-Received: by 2002:a81:7909:0:b0:36f:d2d9:cdc4 with SMTP id
- u9-20020a817909000000b0036fd2d9cdc4mr5218311ywc.380.1669106089855; Tue, 22
- Nov 2022 00:34:49 -0800 (PST)
+	id 1oxP1A-006bZp-QS
+	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 08:52:38 +0000
+X-UUID: b1c53e9dda684085b04e5e9aca255998-20221122
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nNKzdXulPYqj0Gp9ooAOh/o+mTRfVfsdPXAg5bt+9Ok=;
+	b=e+YPRORmweHj7tJy1keMYGlDjxwKsPIaTZoycbCOYB/1Cw9IGKaTnS26rJTRif7BKuEo7v9jZz8JslTA3RnI9xSYC3plz3QnGRB1W+eVK81aYRfC9b72u0LgStBYb1y3vw2n2wD1lyg4Ks545aT+wuuXBChYozcMz2qXhoXbs2c=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:b6d6f9d3-3587-47dd-9480-1750910234ea,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:0564f7f8-3a34-4838-abcf-dfedf9dd068e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b1c53e9dda684085b04e5e9aca255998-20221122
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 702798821; Tue, 22 Nov 2022 01:52:26 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 22 Nov 2022 16:51:59 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 22 Nov 2022 16:51:59 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 9/9] wifi: mt76: add mt7996 module support
+Date: Tue, 22 Nov 2022 16:45:54 +0800
+Message-ID: <20221122084554.9494-10-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221122084554.9494-1-shayne.chen@mediatek.com>
+References: <20221122084554.9494-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-References: <20221122-mtk-pinctrl-v1-0-bedf5655a3d2@chromium.org> <20221122-mtk-pinctrl-v1-1-bedf5655a3d2@chromium.org>
-In-Reply-To: <20221122-mtk-pinctrl-v1-1-bedf5655a3d2@chromium.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 22 Nov 2022 09:34:38 +0100
-Message-ID: <CACRpkdZUjcO3hDwibCL1qTiSiLPQVYo5FaH3rzxygUBBwVHTwg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] pinctrl: meditatek: Startup with the IRQs disabled
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
-	Steven Rostedt <rostedt@goodmis.org>, Ross Zwisler <zwisler@kernel.org>, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, 
-	"Joel Fernandes (Google)" <joel@joelfernandes.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_003451_788692_693D0D8B 
-X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-CacheID: sfid-20221122_005236_874783_71C3541A 
+X-CRM114-Status: UNSURE (   8.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,19 +81,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 22, 2022 at 12:39 AM Ricardo Ribalda <ribalda@chromium.org> wrote:
+(Split the big patch into smaller intermediate patches by functionality
+for easier review. Refer to the cover letter for more info.)
 
-> If the system is restarted via kexec(), the peripherals do not start
-> with a known state.
->
-> If the previous system had enabled an IRQs we will receive unexected
-> IRQs that can lock the system.
-(...)
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/Kconfig  | 1 +
+ drivers/net/wireless/mediatek/mt76/Makefile | 1 +
+ 2 files changed, 2 insertions(+)
 
-This is obviously the right thing to do, so I just applied this
-patch for fixes. Any ACKs and reviewed-by can be added
-while this is tested in linux-next.
+diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+index 9ff43f1fc50d..d7f90a0eb21e 100644
+--- a/drivers/net/wireless/mediatek/mt76/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+@@ -34,3 +34,4 @@ source "drivers/net/wireless/mediatek/mt76/mt7603/Kconfig"
+ source "drivers/net/wireless/mediatek/mt76/mt7615/Kconfig"
+ source "drivers/net/wireless/mediatek/mt76/mt7915/Kconfig"
+ source "drivers/net/wireless/mediatek/mt76/mt7921/Kconfig"
++source "drivers/net/wireless/mediatek/mt76/mt7996/Kconfig"
+diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
+index c78ae4b89761..84c99b7e57f9 100644
+--- a/drivers/net/wireless/mediatek/mt76/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/Makefile
+@@ -35,3 +35,4 @@ obj-$(CONFIG_MT7603E) += mt7603/
+ obj-$(CONFIG_MT7615_COMMON) += mt7615/
+ obj-$(CONFIG_MT7915E) += mt7915/
+ obj-$(CONFIG_MT7921_COMMON) += mt7921/
++obj-$(CONFIG_MT7996E) += mt7996/
+-- 
+2.25.1
 
-Yours,
-Linus Walleij
 
