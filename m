@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C25FEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 16:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98CDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 16:49:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QZEV3ONJefJj1H5plqVub6jL7aLk8MUsgBjZIyffLHc=; b=Yj8TlTxOvMz4fK/IUbENDwMTcz
-	waHGpnExWiXwo1KoanbSr2ekDeiUAEVZ26wMmPFmRLPUO6WbiB/iNEwg8DmlMZiekFQNrJLDDvFyx
-	p/DUrep4cZ7k82Ys1bb1KOo5f5pA3FE2jVzRkkKygg3iunEd7K/pn5yxPmxbkV4QyTgdF68jX2FEy
-	7ewk2GznPOkp70Ee+RtktF+7N9VCnEJU240j0O8Gwb23RB/4uuInugfsCtJShVCaIifwazl39b2tl
-	UUE0VvYXVs6DJS/Q9cjC/e1ACZwfq84siPscYegjKoQ+W6QpeQQdI7NnE++dMatNkloOIAFWdlt2p
-	XEYI4S3g==;
+	bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=; b=IyJoRhxC57i8Z8Nf+dtLXstHL8
+	DTjMOYjYeOGCq/XkTJdu82Pskemxuzup459DEq2kD4GobUDWd4THc5ZIESbIIYwIX00xJX7Pq8VMI
+	tm9B327+8dWjEcCZEs0ckf/O42yrrR5Emz5pbnRFQgWFwSVKIf4RwahGzSbIIfmjkpCeBc+QOxV/t
+	axUy0coKn9QoNO6R7F1AhiCpqdBytV64bjZ+lwfPHY/JwSGz/Z4Yv+rQJih821JykXO+Tq6rR2ciZ
+	0pGqgmWhLAv+5t3+Ce72fBwwwSPvwz6AF3kZOE1cxqd26IBeO0QEoQJy6mT/dShOoTlJBeaECzxs3
+	hWL/SDow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxWNG-00ApAO-EZ; Tue, 22 Nov 2022 16:43:54 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oxWSO-00AqVy-2k; Tue, 22 Nov 2022 16:49:12 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxWND-00Ap8c-Sj; Tue, 22 Nov 2022 16:43:53 +0000
-Received: by mail-wr1-x436.google.com with SMTP id x5so21531956wrt.7;
-        Tue, 22 Nov 2022 08:43:49 -0800 (PST)
+	id 1oxWSL-00AqU0-30; Tue, 22 Nov 2022 16:49:10 +0000
+Received: by mail-wm1-x336.google.com with SMTP id p13-20020a05600c468d00b003cf8859ed1bso11751833wmo.1;
+        Tue, 22 Nov 2022 08:49:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=QZEV3ONJefJj1H5plqVub6jL7aLk8MUsgBjZIyffLHc=;
-        b=pKGGkWMvt7udHJ04Un7aA7GLATGb+YsuQ/iINuTHrA/6okbGTmY81YBVGwNPdrQVOv
-         Oud9UKnRqqyja0Fwa1jlF6cgRoQmH3pxATXVk6aYZ/q/VXzGchtFX5MbjfFJbd2xaMXu
-         xdQ/kIQYqOmkxc/TXRl56eWhItwC9VQ3QCUOkIlPOhQDh0Cq8fZWbk+jpEE2Ys/251/p
-         4jJz55qJG1An51S8pfZ5Ydan1jFspY6P72GJgOPU88Idi4VHPJsBC1dzcTT026Opiq01
-         7EqAOm4L3SYxKDW44o0krEF44aKxmZqOltBGq2l+wn/xj4aD9JZk/06tdkOutx8Fsyek
-         tjWw==
+        bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=;
+        b=GdK7IiaGPYoYt2Cullz/bFXz5P3zaEbhbB2t0ZpbwFzBQeOMMKazdbcRBwospX37Ui
+         pqMiIGLcaq9zFfPEICfldvKXfL31lnz0AaqH4lHRW1xbnHaDy/Lg4rdvd7XQjNxtq+ay
+         1iqBc+fexaXnaY8vB2aO3JXyzKh/ipGhRImpUWnP3k8BcfmZebvEe4wqfSsUE5LZmN+8
+         LmM6RhNUPnWyN7PHzsyFSneAEOivB3ucTrbdj4p7TsX7scxtByO6GWlpXTANw65+rSSo
+         fJQ6zBeq9qJWeAL4dyugp+BKONx4Qikr+2fGiGvQOWJomWt9c7/sR/U9dBCEYOn2FDML
+         9FtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QZEV3ONJefJj1H5plqVub6jL7aLk8MUsgBjZIyffLHc=;
-        b=QBvFsQ/WgZizVams4427zLR/Vr4xh5aizMhupE/AF2LbGS8KKDSHjnblqc+WhOgVHC
-         kBZqfGs5ajoj8hYGqUIk2tu97YkNCn4PTfvz5r8tJfTwpyzrRFCSZ4CZ+HVamffObf/X
-         JEOe94idFUDJ5d5hjxaaMCKASkJc1GB8m8x6i10ToX/gFKC8nADsGkN24E/27YFVNV60
-         H1lrQm8sCFOWSyT5kGQIqXwgMRZJBloDCJtw1FIA2YH66ndDPyrpQWnQ9cBQ9LnRqIda
-         eSj4Z9dvRveB0Th+Clk8vt3BMlH1KiLjPpzDFHDdl/551AGWtn0y/aIuCSo9AwO9D3xr
-         Fpww==
-X-Gm-Message-State: ANoB5pkmPplUAUC1CnsMS9pIKBx8Dur8Wo2qFprFfWJYGYQbSuneQzMf
-	YiNq38T664XmmaeGVy20e7s=
-X-Google-Smtp-Source: AA0mqf6WanR/TJ+ZU+8PUxq4CBmgmbSqoFtEAXiJebu/YtVtA+nRrx786Q5Ef9GQwuISQANV5s/qcw==
-X-Received: by 2002:a5d:6503:0:b0:22e:35e8:382d with SMTP id x3-20020a5d6503000000b0022e35e8382dmr14817028wru.475.1669135427963;
-        Tue, 22 Nov 2022 08:43:47 -0800 (PST)
+        bh=z3fcqOHVduVIIg4z4ijk3ykjn2RM3trgK5/ehZ3bY1M=;
+        b=oerHMzGbCYJQOnaSz/qtFHepwIPbBjt+pbcOlsHc/hDPelrnwF9j5VspfQySbepR0n
+         ErP1xXQQYLOgvjq+U41o4Q0VCrAw/dF9sPgnhvUXdPf5jvIQGGuNSSB70EiB/mQ0baTd
+         X1JXiXktPNBcUz8uY+N0xQXeZ5fKRt4kYiVQvtf90I3dFP2Co5FdquCv21jsO9qi7TF6
+         JRXAWNv083zsJ1S862d5cfB/svx3nVBx58y9pLcQ4fnipKd5pX6vDz7a9EZDr4TApnDY
+         xv0fyprpW+znAD942IO6nmm7A+sEsUg7+IPs2x4wUbs6SwA+nD8dXarLwog/ud2QAP2i
+         lnMA==
+X-Gm-Message-State: ANoB5pm5tvkO+IXsougp7MSd4t/hXfiso8Li0FrUMHJl+6LEiieTqYZK
+	nqucb2oFQzQApS9gTiBGqoQ=
+X-Google-Smtp-Source: AA0mqf5ZtsT30GoUH/4TBViJcG2p2xVpb/2WXR2KXr7wvrCOOAoP5enGR17CBNRPJryrNLruXod8Yg==
+X-Received: by 2002:a05:600c:3590:b0:3d0:1489:78c4 with SMTP id p16-20020a05600c359000b003d0148978c4mr5836156wmq.167.1669135744520;
+        Tue, 22 Nov 2022 08:49:04 -0800 (PST)
 Received: from [192.168.0.25] ([37.222.251.204])
-        by smtp.gmail.com with ESMTPSA id q14-20020a05600c46ce00b003c5571c27a1sm22110175wmo.32.2022.11.22.08.43.45
+        by smtp.gmail.com with ESMTPSA id x9-20020a5d6509000000b0023c8026841csm14497653wru.23.2022.11.22.08.49.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 08:43:46 -0800 (PST)
-Message-ID: <f3c1c76c-ef61-ab68-e6db-ebcf408d42d6@gmail.com>
-Date: Tue, 22 Nov 2022 17:43:45 +0100
+        Tue, 22 Nov 2022 08:49:03 -0800 (PST)
+Message-ID: <f51c7f56-4c62-0351-3b01-ae2f6432fb05@gmail.com>
+Date: Tue, 22 Nov 2022 17:49:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v7 4/6] iommu/mediatek: Validate number of phandles
- associated with "mediatek,larbs"
+Subject: Re: [PATCH v7 5/6] iommu/mediatek: Improve safety for mediatek,smi
+ property in larb nodes
 Content-Language: en-US
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>
@@ -78,14 +78,14 @@ Cc: Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
  xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
  Dan Carpenter <dan.carpenter@oracle.com>
 References: <20221018024258.19073-1-yong.wu@mediatek.com>
- <20221018024258.19073-5-yong.wu@mediatek.com>
+ <20221018024258.19073-6-yong.wu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221018024258.19073-5-yong.wu@mediatek.com>
+In-Reply-To: <20221018024258.19073-6-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_084351_979487_B2887E85 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20221122_084909_207321_094DFB2E 
+X-CRM114-Status: GOOD (  25.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,69 +103,105 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 18/10/2022 04:42, Yong Wu wrote:
-> From: Guenter Roeck <groeck@chromium.org>
+> No functional change. Just improve safety from dts.
 > 
-> Fix the smatch warnings:
-> drivers/iommu/mtk_iommu.c:878 mtk_iommu_mm_dts_parse() error: uninitialized
-> symbol 'larbnode'.
+> All the larbs that connect to one IOMMU must connect with the same
+> smi-common. This patch checks all the mediatek,smi property for each
+> larb, If their mediatek,smi are different, it will return fails.
+> Also avoid there is no available smi-larb nodes.
 > 
-> If someone abuse the dtsi node(Don't follow the definition of dt-binding),
-> for example "mediatek,larbs" is provided as boolean property, "larb_nr"
-> will be zero and cause abnormal.
-> 
-> To fix this problem and improve the code safety, add some checking
-> for the invalid input from dtsi, e.g. checking the larb_nr/larbid valid
-> range, and avoid "mediatek,larb-id" property conflicts in the smi-larb
-> nodes.
-> 
-> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Signed-off-by: Guenter Roeck <groeck@chromium.org>
+> Suggested-by: Guenter Roeck <groeck@chromium.org>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   drivers/iommu/mtk_iommu.c | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
+>   drivers/iommu/mtk_iommu.c | 53 +++++++++++++++++++++++++++------------
+>   1 file changed, 37 insertions(+), 16 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 912322494bc0..9cbff48f03c0 100644
+> index 9cbff48f03c0..f7ac102e343f 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1050,6 +1050,8 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   	larb_nr = of_count_phandle_with_args(dev->of_node, "mediatek,larbs", NULL);
->   	if (larb_nr < 0)
->   		return larb_nr;
-> +	if (larb_nr == 0 || larb_nr > MTK_LARB_NR_MAX)
-> +		return -EINVAL;
+> @@ -1042,7 +1042,7 @@ static const struct component_master_ops mtk_iommu_com_ops = {
+>   static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **match,
+>   				  struct mtk_iommu_data *data)
+>   {
+> -	struct device_node *larbnode, *smicomm_node, *smi_subcomm_node;
+> +	struct device_node *larbnode, *frst_avail_smicomm_node = NULL;
+>   	struct platform_device *plarbdev, *pcommdev;
+>   	struct device_link *link;
+>   	int i, larb_nr, ret;
+> @@ -1054,6 +1054,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   		return -EINVAL;
 >   
 >   	for (i = 0; i < larb_nr; i++) {
+> +		struct device_node *smicomm_node, *smi_subcomm_node;
 >   		u32 id;
-> @@ -1068,6 +1070,11 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   		ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
->   		if (ret)/* The id is consecutive if there is no this property */
->   			id = i;
-> +		if (id >= MTK_LARB_NR_MAX) {
-> +			of_node_put(larbnode);
+>   
+>   		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+> @@ -1094,27 +1095,47 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   			goto err_larbdev_put;
+>   		}
+>   
+> +		/* Get smi-(sub)-common dev from the last larb. */
+> +		smi_subcomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
+> +		if (!smi_subcomm_node) {
 > +			ret = -EINVAL;
 > +			goto err_larbdev_put;
 > +		}
->   
->   		plarbdev = of_find_device_by_node(larbnode);
->   		of_node_put(larbnode);
-> @@ -1075,6 +1082,11 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   			ret = -ENODEV;
->   			goto err_larbdev_put;
->   		}
-> +		if (data->larb_imu[id].dev) {
-> +			platform_device_put(plarbdev);
-> +			ret = -EEXIST;
+> +
+> +		/*
+> +		 * It may have two level smi-common. the node is smi-sub-common if it
+> +		 * has a new mediatek,smi property. otherwise it is smi-commmon.
+> +		 */
+> +		smicomm_node = of_parse_phandle(smi_subcomm_node, "mediatek,smi", 0);
+> +		if (smicomm_node)
+> +			of_node_put(smi_subcomm_node);
+> +		else
+> +			smicomm_node = smi_subcomm_node;
+> +
+> +		/*
+> +		 * All the larbs that connect to one IOMMU must connect with the same
+> +		 * smi-common.
+> +		 */
+> +		if (!frst_avail_smicomm_node) {
+> +			frst_avail_smicomm_node = smicomm_node;
+> +		} else if (frst_avail_smicomm_node != smicomm_node) {
+> +			dev_err(dev, "mediatek,smi property is not right @larb%d.", id);
+> +			of_node_put(smicomm_node);
+> +			ret = -EINVAL;
 > +			goto err_larbdev_put;
+> +		} else {
+> +			of_node_put(smicomm_node);
 > +		}
->   		data->larb_imu[id].dev = &plarbdev->dev;
+> +
+>   		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
+>   		platform_device_put(plarbdev);
+>   	}
 >   
->   		if (!plarbdev->dev.driver) {
+> -	/* Get smi-(sub)-common dev from the last larb. */
+> -	smi_subcomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
+> -	if (!smi_subcomm_node)
+> +	if (!frst_avail_smicomm_node)
+>   		return -EINVAL;
+>   
+> -	/*
+> -	 * It may have two level smi-common. the node is smi-sub-common if it
+> -	 * has a new mediatek,smi property. otherwise it is smi-commmon.
+> -	 */
+> -	smicomm_node = of_parse_phandle(smi_subcomm_node, "mediatek,smi", 0);
+> -	if (smicomm_node)
+> -		of_node_put(smi_subcomm_node);
+> -	else
+> -		smicomm_node = smi_subcomm_node;
+> -
+> -	pcommdev = of_find_device_by_node(smicomm_node);
+> -	of_node_put(smicomm_node);
+> +	pcommdev = of_find_device_by_node(frst_avail_smicomm_node);
+> +	of_node_put(frst_avail_smicomm_node);
+>   	if (!pcommdev)
+>   		return -ENODEV;
+>   	data->smicomm_dev = &pcommdev->dev;
 
