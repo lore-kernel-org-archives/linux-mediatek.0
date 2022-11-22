@@ -4,92 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F10CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Nov 2022 23:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FF1C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 01:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ehabT/SWyuxZAFQVGOlc3gf5GNfQZBfPsZlMRjNRcE=; b=VA9vPVhdK1uVDMO/xam+Y33H9g
-	WI+FnqnEGFVBTaJIPKBVjDiSx/d58i/yqB1Qic/ZfLjyt8EHrU1zs7WPHoUtJwm59jrYzxZxNxgrH
-	rOVliZRCdy3wafC9uU1sPxmGRzD5kFExhbjkhDzFlfULWGU+1OBc8xdg6Vjkw/ZewACH4vzg8jXdo
-	uMcMHnivbi61rSaeP1kAPn2yCeD5l49F22HbNMS9u7Z68Ujm4H7l7Q/rod4vWAy0R8XTXgnRxUXd+
-	iALTkDDg485KfYRFmCfbJXSABUYSXq3OGUU4j6ehcJel0g1vldogDcnuljjgu5F3ii9rIpuW7HxcK
-	kMC41DHw==;
+	bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=; b=IkZEvrQQ5CoXKf/BM8gAWDTd97
+	BBKPGkSm5XWsqBv+2jnsvlwO/qs/ICdRN1vjtXmprISdaxs1JaornEdR+XlohffeADxFYjPPllUOl
+	/RJ2jcxrXc5maXxXgR0p+287S/61RTWyAKdiIX7N3e4qV0rJCV1kLn05b7btdp8LLYLnIFWRvFEK5
+	mzaU0k1KOSDaqw+fYPHmTaf6PxdXL6j72Tp9kT7OSLybAkDZ0sEZo1ulgVpI8zEJQKT8kBLVhk4hh
+	/uJ8wmSwvBWsfF/YMgKoXvCdS6eYH+hVUumooRNpvAD2LYXrMLkLCf/5XV7E03+BrBG2o07xAPNER
+	a82nfeqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxGO3-001Iyg-E3; Mon, 21 Nov 2022 23:39:39 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1oxHm0-001nP3-Gc; Tue, 22 Nov 2022 01:08:28 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxGNk-001IoS-UB
-	for linux-mediatek@lists.infradead.org; Mon, 21 Nov 2022 23:39:22 +0000
-Received: by mail-ej1-x632.google.com with SMTP id me22so15462039ejb.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 15:39:19 -0800 (PST)
+	id 1oxHlx-001nJq-63
+	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 01:08:27 +0000
+Received: by mail-ed1-x529.google.com with SMTP id x2so18639129edd.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Nov 2022 17:08:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4ehabT/SWyuxZAFQVGOlc3gf5GNfQZBfPsZlMRjNRcE=;
-        b=Z9Ppn1iS94cKQXbFfqIKO6UCL8nYmxAOoDhKQaH/HqikOla9W1FmIIM4OUciRY+9PW
-         mMLQ9BgPKROkY8OtqIgLH3EuQ0onG+GmXdwbnejEZFay+OVzsJ3bKl9OaLj4FsBvW+iZ
-         bUjdMT4NzMxTDubjC4llZsxWCuMD+Iad7Q1vI=
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=;
+        b=tDoF3baarEZ/xbXDm7tk2HrsTGWpICgpqIAtSi03HywXzuaphjgJW54N71ewodQGgL
+         W3DIwAOD1Z+BTxjyIkWFvBX4mFMnFV6j8xFwuUOGN12ePggI/v+RjoA02TWEeTP2sdUB
+         b19ybRxEdtNpRoJbrGhyvTC63KxBZu0QuPH42XbY9BQ6XwdYDpUBkbYG9WVACRZguDXI
+         uubWjH05gIC4oZ8NkoFPdw7iGNLrlZVwK13hQWmbYnFDT5k7s9ROcyPaUvx/rR96GmO+
+         E3EWKEI7TuP6eoRMaarAKrk4dV5iR2Q08YMiomF6wF98eCjp67l9VMJ6TtBixdO9LbvS
+         hztA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4ehabT/SWyuxZAFQVGOlc3gf5GNfQZBfPsZlMRjNRcE=;
-        b=pkEPRFUZk5q53TtOdR7tY3cTyg8mEiVJ+nTU9Z+wXOBD/TPNfGL8vI3X+52q58u5mI
-         KPux/i13pt5Zx6sA8YlEkFdKqw76A7ePCljtrJH5IPf9V4wko3h3/KMNS8xfTgHr07dl
-         GyCwecOWBGbOGeyZXohTnh1IilQ/4IcepGBzYoUZPQCLK+5HrEJ7vBhvAu1T42WR8j6+
-         +72i8lp/7XkQVdkYUuc1cH0T25oRXAKww8kyPfNt1L71abwc2F1uVLpANt+ShExCUJzK
-         sg/gll36oDMcS7FGLYwEENlQ4NX3ZRt+yoOMTrC/ztqiA7on2baTqpXiaekQVMBhvHGp
-         Q3pg==
-X-Gm-Message-State: ANoB5pmgWecdc6OYxgdZ+3utLqYbj5JWkVOxSbUjXpQV3MhrcynJSvX5
-	nA3TO/nAW0FcH9+ddDZ8fyvgfg==
-X-Google-Smtp-Source: AA0mqf6BvPDUi/dw2PVwPuhGcem2sPVKE+0SnBNbp3pnF6iT+L/QymDwd4laUxejvVIIaoQj+R5yXg==
-X-Received: by 2002:a17:907:8c0d:b0:7ae:70f9:114 with SMTP id ta13-20020a1709078c0d00b007ae70f90114mr17121024ejc.44.1669073956335;
-        Mon, 21 Nov 2022 15:39:16 -0800 (PST)
-Received: from alco.roam.corp.google.com (80.71.134.83.ipv4.parknet.dk. [80.71.134.83])
-        by smtp.gmail.com with ESMTPSA id f26-20020a17090631da00b007b27aefc578sm5411835ejf.126.2022.11.21.15.39.15
+        bh=770v95sUrIlvtNLFG2ZFJPK2miGjPEzCsACcRdRH3P0=;
+        b=iDy6U77kISff3hF75cQzVmLZURbHjqLhBmzgNwE+kR2RYtjbvPrxsKpP9kqzUQ4ClT
+         DyJZWXbNjWhozh7Nh0RuE3FQ8afTCwncDHJWs0MZRe7xJMNxb5BGjdxtbevBDJ6yhCei
+         115pX4fmadSzMzME1CxtviroJ76nY1KCJ5l6IJWDRZJdU9L1I4iO/PqwzKEbwdqYtNEj
+         o5D8IqT5F2zATWQhWdEh+s7HXG6czTuBSdS35pZHj7HoAgortardzc7EXrkzKjTgr5nn
+         jZb1Im2nUTnvtOb6sp/33Fs+Cy/7KB9QVk8y1iWGkoqDWuioABUeLf53oiCTTMyKY07V
+         NyiQ==
+X-Gm-Message-State: ANoB5pkTRzqAWuSgUisTE7WfYn7MZ+viR2yomkzWk/lVx47ItXAjClaK
+	vo1m5xFnimrP6RSqknsZEod7Rw==
+X-Google-Smtp-Source: AA0mqf6r3Zdf5ruet9qXDuVjd6GpPw7JVMSyJT9jBcH+eBdwhPNkdmCtSnW+kRAmDvWyunfZrvyPYQ==
+X-Received: by 2002:a05:6402:3886:b0:463:ab08:2bc6 with SMTP id fd6-20020a056402388600b00463ab082bc6mr2102790edb.143.1669079289585;
+        Mon, 21 Nov 2022 17:08:09 -0800 (PST)
+Received: from c64.fritz.box ([2a01:2a8:8108:8301:7643:bec8:f62b:b074])
+        by smtp.gmail.com with ESMTPSA id f13-20020a1709064dcd00b007030c97ae62sm5514683ejw.191.2022.11.21.17.08.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Nov 2022 15:39:15 -0800 (PST)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Tue, 22 Nov 2022 00:38:55 +0100
-Subject: [PATCH v1 1/1] pinctrl: meditatek: Startup with the IRQs disabled
+        Mon, 21 Nov 2022 17:08:09 -0800 (PST)
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+To: devicetree@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com,
+	krzysztof.kozlowski@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	khilman@baylibre.com
+Subject: [PATCH v2 2/7] pinctrl: stm32: Remove check for pins-are-numbered
+Date: Tue, 22 Nov 2022 02:07:48 +0100
+Message-Id: <20221122010753.3126828-3-bero@baylibre.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221122010753.3126828-1-bero@baylibre.com>
+References: <20221122010753.3126828-1-bero@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221122-mtk-pinctrl-v1-1-bedf5655a3d2@chromium.org>
-References: <20221122-mtk-pinctrl-v1-0-bedf5655a3d2@chromium.org>
-In-Reply-To: <20221122-mtk-pinctrl-v1-0-bedf5655a3d2@chromium.org>
-To:  Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: Steven Rostedt <rostedt@goodmis.org>, Ross Zwisler <zwisler@kernel.org>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Sergey Senozhatsky <senozhatsky@chromium.org>, "Joel Fernandes (Google)" <joel@joelfernandes.org>,
- Ricardo Ribalda <ribalda@chromium.org>
-X-Mailer: b4 0.11.0-dev-d93f8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3212; i=ribalda@chromium.org;
- h=from:subject:message-id; bh=ULSRbYzh0w9ZAWNFdOlTTU/M16f8fiyJqpNG4+AGQnI=;
- b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjfAwfzhyYWIqnakB+IO0fgl8p763kk9dDJ1yT//Eb
- pC9/5NqJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY3wMHwAKCRDRN9E+zzrEiHr7D/
- 9lpg4m76+Y9UreH5QlwV4hPqKvzA2p1T6cb5XqoDvEv108OZStLOpQa+Nv/TFqLJuDLKz7GsRFn1AU
- rtiCLFLurNf7a8PNQkaPb2nYISiYS4uNl73QVNWwgpcBXNBGoiHPV9yvTpKb1f258JXu6Ek4Hov1OL
- u4/Wb9GwRWzd3UoJWQljRwjqpDlLtKFba4f//3Tx1OOTYHcM2VNuTbaAtFqNp6GNRYVv4b2yp3mM46
- k2Fvsgzu9XL0LamP0PDkWUZqncRQtgnCOiNptvMRZEYrRbiiPihfbxl2K2gZJ7fXv6PmQr+CT/IAas
- 9yWZT/xcjbt+Z9eq8vwQadAIRF3R4x82DWyMtVx1IkSNVqMzjODmdTYh9ak3YKOsV86lO+A/UnHgmi
- O++6IdmC/MELcw17t7E29N+ci2hnzqCLRmj83MlMlSV9syAyO9mY6Eleqg2+NItBpRNIjsMYZhivWx
- Qp5a2g8i2HSip7CY/AWrYkSeYerruih+K6rHB5cRsUguSb4I9bUiH0qg2X5dxhugBBIQ1D+WSxHfT2
- RnYSvamJXiiTR8SmAXzGv14j6p+3RvQJltlzZyAtdSmhU1c02dvSEGBUi7C8CQGpezwuB+sgGRXogT
- oO2SbXKlaHSKpyJIZJXiMsLtD5YtZ8V2YOtZoQFLpRmrK3FcoCHpdTM+7+Qg==
-X-Developer-Key: i=ribalda@chromium.org; a=openpgp;
- fpr=9EC3BB66E2FC129A6F90B39556A0D81F9F782DA9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221121_153920_979502_1021EBCE 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20221121_170825_266332_26778D6D 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,89 +99,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the system is restarted via kexec(), the peripherals do not start
-with a known state.
+Remove the check for the unnecessary pins-are-numbered
+DeviceTree property
 
-If the previous system had enabled an IRQs we will receive unexected
-IRQs that can lock the system.
+Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/pinctrl/stm32/pinctrl-stm32.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-[   28.109251] watchdog: BUG: soft lockup - CPU#0 stuck for 26s!
-[swapper/0:0]
-[   28.109263] Modules linked in:
-[   28.109273] CPU: 0 PID: 0 Comm: swapper/0 Not tainted
-5.15.79-14458-g4b9edf7b1ac6 #1 9f2e76613148af94acccd64c609a552fb4b4354b
-[   28.109284] Hardware name: Google Elm (DT)
-[   28.109290] pstate: 40400005 (nZcv daif +PAN -UAO -TCO -DIT -SSBS
-		BTYPE=--)
-[   28.109298] pc : __do_softirq+0xa0/0x388
-[   28.109309] lr : __do_softirq+0x70/0x388
-[   28.109316] sp : ffffffc008003ee0
-[   28.109321] x29: ffffffc008003f00 x28: 000000000000000a x27:
-0000000000000080
-[   28.109334] x26: 0000000000000001 x25: ffffffefa7b350c0 x24:
-ffffffefa7b47480
-[   28.109346] x23: ffffffefa7b3d000 x22: 0000000000000000 x21:
-ffffffefa7b0fa40
-[   28.109358] x20: ffffffefa7b005b0 x19: ffffffefa7b47480 x18:
-0000000000065b6b
-[   28.109370] x17: ffffffefa749c8b0 x16: 000000000000018c x15:
-00000000000001b8
-[   28.109382] x14: 00000000000d3b6b x13: 0000000000000006 x12:
-0000000000057e91
-[   28.109394] x11: 0000000000000000 x10: 0000000000000000 x9 :
-ffffffefa7b47480
-[   28.109406] x8 : 00000000000000e0 x7 : 000000000f424000 x6 :
-0000000000000000
-[   28.109418] x5 : ffffffefa7dfaca0 x4 : ffffffefa7dfadf0 x3 :
-000000000000000f
-[   28.109429] x2 : 0000000000000000 x1 : 0000000000000100 x0 :
-0000000001ac65c5
-[   28.109441] Call trace:
-[   28.109447]  __do_softirq+0xa0/0x388
-[   28.109454]  irq_exit+0xc0/0xe0
-[   28.109464]  handle_domain_irq+0x68/0x90
-[   28.109473]  gic_handle_irq+0xac/0xf0
-[   28.109480]  call_on_irq_stack+0x28/0x50
-[   28.109488]  do_interrupt_handler+0x44/0x58
-[   28.109496]  el1_interrupt+0x30/0x58
-[   28.109506]  el1h_64_irq_handler+0x18/0x24
-[   28.109512]  el1h_64_irq+0x7c/0x80
-[   28.109519]  arch_local_irq_enable+0xc/0x18
-[   28.109529]  default_idle_call+0x40/0x140
-[   28.109539]  do_idle+0x108/0x290
-[   28.109547]  cpu_startup_entry+0x2c/0x30
-[   28.109554]  rest_init+0xe8/0xf8
-[   28.109562]  arch_call_rest_init+0x18/0x24
-[   28.109571]  start_kernel+0x338/0x42c
-[   28.109578]  __primary_switched+0xbc/0xc4
-[   28.109588] Kernel panic - not syncing: softlockup: hung tasks
-
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 65d312967619..27f0a54e12bf 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -303,12 +303,15 @@ static struct irq_chip mtk_eint_irq_chip = {
+diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
+index cc9472b284047..1cddca506ad7e 100644
+--- a/drivers/pinctrl/stm32/pinctrl-stm32.c
++++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+@@ -1499,11 +1499,6 @@ int stm32_pctl_probe(struct platform_device *pdev)
+ 	if (!match_data)
+ 		return -EINVAL;
  
- static unsigned int mtk_eint_hw_init(struct mtk_eint *eint)
- {
--	void __iomem *reg = eint->base + eint->regs->dom_en;
-+	void __iomem *dom_en = eint->base + eint->regs->dom_en;
-+	void __iomem *mask_set = eint->base + eint->regs->mask_set;
- 	unsigned int i;
- 
- 	for (i = 0; i < eint->hw->ap_num; i += 32) {
--		writel(0xffffffff, reg);
--		reg += 4;
-+		writel(0xffffffff, dom_en);
-+		writel(0xffffffff, mask_set);
-+		dom_en += 4;
-+		mask_set += 4;
- 	}
- 
- 	return 0;
-
+-	if (!device_property_present(dev, "pins-are-numbered")) {
+-		dev_err(dev, "only support pins-are-numbered format\n");
+-		return -EINVAL;
+-	}
+-
+ 	pctl = devm_kzalloc(dev, sizeof(*pctl), GFP_KERNEL);
+ 	if (!pctl)
+ 		return -ENOMEM;
 -- 
-b4 0.11.0-dev-d93f8
+2.38.1
+
 
