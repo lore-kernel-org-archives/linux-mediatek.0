@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68924C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 12:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 362ACC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 12:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UPVYXybqHdkNefD2nI/WDgupd5oCIdOMKakDKFgr6ck=; b=wyamQJ+CKOOGNVwi0bPrg7/VuE
-	o35GnTBiEmFERQp2IWbJmHqeFBVm2qz0s8NhlWV/SWgarJbLkQP5lR5Mbq5UrEKX+fEciADwwtTka
-	Zc7MUq62wHqFSq8R3UuKU3vqfM/2O6LFcOThDf5ITewU36RQQT9rRUCLqrUxxcQlQvkMoI8y3TBX1
-	HmE9f3fMhi6iKOp5PA2DDx9RAiQy5ruHHwjCI9ItRKNwazxTyFHS37GIt5uWi5DaytGLhn7iGEQij
-	KJsOke6wYleHpAgA2GzCA9DZOWoLifn0IZsBcDc0MI0TqJi29xmk3Q5o/dqTqiNLWX0bLnVRT0Gzq
-	mXglfXvw==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gPQ5B+gEfn3XCjbg4Rjff52wNdxbfyG/GbCFrOA/3Po=; b=C+v6uxwt7aFJiY3GKAyTOhE0Q3
+	pYUuB/7dIX4OLhOzpqMha0rbq8HBe1lERjnZZSpSd1zSusOqReIFqarKpxILhqOsiLse3zQLXfXt4
+	WWoVrABVlJ2/fTPvsT5RFgxj3PESZ0JB5Co40+m5igx4TxkofZiyIPVtFzaUABPTGDcSSdIB1Quu+
+	k4/3YlGNouOhHZl3GRkqSA8tq4/Ax3PS2L6HuoxC+iWUyNXrVwXkFMMhYaYn+QducYIIZo9Eu7A0L
+	ivvR8JNFEonJ3K0iXuOHE5VC1oSjs5PfdhVl8FCbt0AIVGabZsfuayM836v3Y7KvnLjkdbWPgKQE1
+	OyqbWXkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxS1e-008m4H-Ae; Tue, 22 Nov 2022 12:05:18 +0000
+	id 1oxSBD-008uPJ-Gm; Tue, 22 Nov 2022 12:15:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxS1V-008lw8-Bc
-	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 12:05:16 +0000
-X-UUID: 229acd19866d4a348dc7cc850560f4f3-20221122
+	id 1oxSB8-008uKa-OU
+	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 12:15:10 +0000
+X-UUID: fccdca4eeaab4211b1e11d96829620d3-20221122
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UPVYXybqHdkNefD2nI/WDgupd5oCIdOMKakDKFgr6ck=;
-	b=Sa6cXoU4mIJ0SAGUPRv11k+kfHtyzu7VzvoTaLA4DeZ8aN2wwQEXO74IO/v1PE7peKkJtm6j9vXj7FCa9FhK80ZHDPFZ2faQeJf8ZBKQ5ZmfUvS2FqEn2+0Cdbz1aLbI6eQID2qu5Dmi8mgP7duXugDz201yZLd3R4xbmN/Tapg=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=gPQ5B+gEfn3XCjbg4Rjff52wNdxbfyG/GbCFrOA/3Po=;
+	b=iOZHQgthBocG55wF+xvLPIXXjT7qWfCT/WjvfmFqq/sqWzixFmURT/JjZsggVezsC+ZKgCXH7arozoGE8zngeCJMaCX0tM+w+55gkdlXxZ8//ysgIzS9JX6U81seBWIhQkhMo6QwIsl23GJrk+g2upvPXr1YCx8ea5AAahEc4hc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.12,REQID:fcfd90e3-2705-457e-9cd3-7b5fb25d6093,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:62cd327,CLOUDID:24cfeadb-6ad4-42ff-91f3-18e0272db660,B
+X-CID-O-INFO: VERSION:1.1.12,REQID:7b34c3f2-8e44-4abe-8471-4462b8dd99a5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:62cd327,CLOUDID:0774fcf8-3a34-4838-abcf-dfedf9dd068e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 229acd19866d4a348dc7cc850560f4f3-20221122
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fccdca4eeaab4211b1e11d96829620d3-20221122
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yanchao.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 551378218; Tue, 22 Nov 2022 05:05:05 -0700
+	with ESMTP id 1974619834; Tue, 22 Nov 2022 05:15:02 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 22 Nov 2022 19:14:25 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 22 Nov 2022 19:24:26 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 22 Nov 2022 19:14:23 +0800
+ 15.2.792.15 via Frontend Transport; Tue, 22 Nov 2022 19:24:24 +0800
 From: Yanchao Yang <yanchao.yang@mediatek.com>
 To: Loic Poulain <loic.poulain@linaro.org>, Sergey Ryazanov
 	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "David S
@@ -64,18 +64,16 @@ CC: MTK ML <linux-mediatek@lists.infradead.org>, Liang Lu
 	Mingchuang Qiao <mingchuang.qiao@mediatek.com>, Xiayu Zhang
 	<xiayu.zhang@mediatek.com>, Haozhe Chang <haozhe.chang@mediatek.com>,
 	MediaTek Corporation <linuxwwan@mediatek.com>
-Subject: [PATCH net-next v1 02/13] net: wwan: tmi: Add buffer management
-Date: Tue, 22 Nov 2022 19:11:41 +0800
-Message-ID: <20221122111152.160377-3-yanchao.yang@mediatek.com>
+Subject: [PATCH net-next v1 11/13] net: wwan: tmi: Add exception handling service
+Date: Tue, 22 Nov 2022 19:24:16 +0800
+Message-ID: <20221122112417.160844-1-yanchao.yang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221122111152.160377-1-yanchao.yang@mediatek.com>
-References: <20221122111152.160377-1-yanchao.yang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_040509_474796_2F985214 
-X-CRM114-Status: GOOD (  26.39  )
+X-CRM114-CacheID: sfid-20221122_041506_912088_C4EB5662 
+X-CRM114-Status: GOOD (  30.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,548 +90,736 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: MediaTek Corporation <linuxwwan@mediatek.com>
 
-To malloc I/O memory as soon as possible, buffer management comes into being.
-It creates buffer pools that reserve some buffers through deferred works when
-the driver isn't busy.
+The exception handling service aims to recover the entire system when the host
+driver detects some exceptions.
 
-The buffer management provides unified memory allocation/de-allocation
-interfaces for other modules. It supports two buffer types of SKB and page.
-Two reload work queues with different priority values are provided to meet
-various requirements of the control plane and the data plane.
+The scenarios that could trigger exceptions include:
+- Read/Write error from the transaction layer when the PCIe link brokes.
+- An RGU interrupt is received.
+- The OS reports PCIe link failure, e.g., an AER is detected.
 
-When the reserved buffer count of the pool is less than a threshold (default
-is 2/3 of the pool size), the reload work will restart to allocate buffers
-from the OS until the buffer pool becomes full. When the buffer pool fills,
-the OS will recycle the buffer freed by the user.
+When an exception happens, the exception module will receive an exception
+event, and it will use FLDR or PLDR to reset the device. The exception module
+will also start a timer to check if the PCIe link is back by reading the vendor
+ID of the device, and it will re-initialize the host driver when the PCIe link
+comes back.
 
 Signed-off-by: Mingliang Xu <mingliang.xu@mediatek.com>
 Signed-off-by: MediaTek Corporation <linuxwwan@mediatek.com>
 ---
- drivers/net/wwan/mediatek/Makefile  |   3 +-
- drivers/net/wwan/mediatek/mtk_bm.c  | 369 ++++++++++++++++++++++++++++
- drivers/net/wwan/mediatek/mtk_bm.h  |  79 ++++++
- drivers/net/wwan/mediatek/mtk_dev.c |  11 +-
- drivers/net/wwan/mediatek/mtk_dev.h |   1 +
- 5 files changed, 461 insertions(+), 2 deletions(-)
- create mode 100644 drivers/net/wwan/mediatek/mtk_bm.c
- create mode 100644 drivers/net/wwan/mediatek/mtk_bm.h
+ drivers/net/wwan/mediatek/Makefile            |   3 +-
+ drivers/net/wwan/mediatek/mtk_cldma.c         |  21 ++-
+ drivers/net/wwan/mediatek/mtk_dev.c           |   8 +
+ drivers/net/wwan/mediatek/mtk_dev.h           |  78 ++++++++
+ drivers/net/wwan/mediatek/mtk_dpmaif.c        |  16 +-
+ drivers/net/wwan/mediatek/mtk_dpmaif_drv.h    |  10 +-
+ drivers/net/wwan/mediatek/mtk_except.c        | 176 ++++++++++++++++++
+ drivers/net/wwan/mediatek/mtk_fsm.c           |   2 +
+ .../wwan/mediatek/pcie/mtk_cldma_drv_t800.c   |  15 +-
+ drivers/net/wwan/mediatek/pcie/mtk_pci.c      |  47 +++++
+ 10 files changed, 358 insertions(+), 18 deletions(-)
+ create mode 100644 drivers/net/wwan/mediatek/mtk_except.c
 
 diff --git a/drivers/net/wwan/mediatek/Makefile b/drivers/net/wwan/mediatek/Makefile
-index ae5f8a5ba05a..122a791e1683 100644
+index 72655ce948bf..f0601d2eb604 100644
 --- a/drivers/net/wwan/mediatek/Makefile
 +++ b/drivers/net/wwan/mediatek/Makefile
-@@ -4,7 +4,8 @@ MODULE_NAME := mtk_tmi
- 
- mtk_tmi-y = \
- 	pcie/mtk_pci.o	\
--	mtk_dev.o
-+	mtk_dev.o	\
-+	mtk_bm.o
+@@ -15,7 +15,8 @@ mtk_tmi-y = \
+ 	mtk_fsm.o \
+ 	mtk_dpmaif.o \
+ 	mtk_wwan.o \
+-	mtk_ethtool.o
++	mtk_ethtool.o \
++	mtk_except.o
  
  ccflags-y += -I$(srctree)/$(src)/
  ccflags-y += -I$(srctree)/$(src)/pcie/
-diff --git a/drivers/net/wwan/mediatek/mtk_bm.c b/drivers/net/wwan/mediatek/mtk_bm.c
+diff --git a/drivers/net/wwan/mediatek/mtk_cldma.c b/drivers/net/wwan/mediatek/mtk_cldma.c
+index 723237547650..4c8852f8ae9c 100644
+--- a/drivers/net/wwan/mediatek/mtk_cldma.c
++++ b/drivers/net/wwan/mediatek/mtk_cldma.c
+@@ -180,19 +180,29 @@ static int mtk_cldma_submit_tx(void *dev, struct sk_buff *skb)
+ 	struct tx_req *req;
+ 	struct virtq *vq;
+ 	struct txq *txq;
++	int ret = 0;
+ 	int err;
+ 
+ 	vq = cd->trans->vq_tbl + trb->vqno;
+ 	hw = cd->cldma_hw[vq->hif_id & HIF_ID_BITMASK];
+ 	txq = hw->txq[vq->txqno];
+ 
+-	if (!txq->req_budget)
+-		return -EAGAIN;
++	if (!txq->req_budget) {
++		if (mtk_hw_mmio_check(hw->mdev)) {
++			mtk_except_report_evt(hw->mdev, EXCEPT_LINK_ERR);
++			ret = -EFAULT;
++		} else {
++			ret = -EAGAIN;
++		}
++		goto err;
++	}
+ 
+ 	err = mtk_dma_map_single(hw->mdev, &data_dma_addr, skb->data,
+ 				 skb->len, DMA_TO_DEVICE);
+-	if (err)
+-		return -EFAULT;
++	if (err) {
++		ret = -EFAULT;
++		goto err;
++	}
+ 
+ 	mutex_lock(&txq->lock);
+ 	txq->req_budget--;
+@@ -213,7 +223,8 @@ static int mtk_cldma_submit_tx(void *dev, struct sk_buff *skb)
+ 
+ 	wmb(); /* ensure GPD setup done before HW start */
+ 
+-	return 0;
++err:
++	return ret;
+ }
+ 
+ /* cldma_trb_process() - Dispatch trb request to low-level CLDMA routine
+diff --git a/drivers/net/wwan/mediatek/mtk_dev.c b/drivers/net/wwan/mediatek/mtk_dev.c
+index d4472491ce9a..d64cbca5b56d 100644
+--- a/drivers/net/wwan/mediatek/mtk_dev.c
++++ b/drivers/net/wwan/mediatek/mtk_dev.c
+@@ -29,6 +29,13 @@ int mtk_dev_init(struct mtk_md_dev *mdev)
+ 	if (ret)
+ 		goto err_data_init;
+ 
++	ret = mtk_except_init(mdev);
++	if (ret)
++		goto err_except_init;
++
++	return 0;
++err_except_init:
++	mtk_data_exit(mdev);
+ err_data_init:
+ 	mtk_ctrl_exit(mdev);
+ err_ctrl_init:
+@@ -46,6 +53,7 @@ void mtk_dev_exit(struct mtk_md_dev *mdev)
+ 	mtk_data_exit(mdev);
+ 	mtk_ctrl_exit(mdev);
+ 	mtk_bm_exit(mdev);
++	mtk_except_exit(mdev);
+ 	mtk_fsm_exit(mdev);
+ }
+ 
+diff --git a/drivers/net/wwan/mediatek/mtk_dev.h b/drivers/net/wwan/mediatek/mtk_dev.h
+index 2739b8068a31..010c789e4dda 100644
+--- a/drivers/net/wwan/mediatek/mtk_dev.h
++++ b/drivers/net/wwan/mediatek/mtk_dev.h
+@@ -39,6 +39,7 @@ enum mtk_reset_type {
+ 	RESET_FLDR,
+ 	RESET_PLDR,
+ 	RESET_RGU,
++	RESET_NONE
+ };
+ 
+ enum mtk_reinit_type {
+@@ -51,6 +52,15 @@ enum mtk_l1ss_grp {
+ 	L1SS_EXT_EVT,
+ };
+ 
++enum mtk_except_evt {
++	EXCEPT_LINK_ERR,
++	EXCEPT_RGU,
++	EXCEPT_AER_DETECTED,
++	EXCEPT_AER_RESET,
++	EXCEPT_AER_RESUME,
++	EXCEPT_MAX
++};
++
+ #define L1SS_BIT_L1(grp)     BIT(((grp) << 2) + 1)
+ #define L1SS_BIT_L1_1(grp)   BIT(((grp) << 2) + 2)
+ #define L1SS_BIT_L1_2(grp)   BIT(((grp) << 2) + 3)
+@@ -83,6 +93,7 @@ struct mtk_md_dev;
+  * @get_ext_evt_status:Callback to get HW Layer external event status.
+  * @reset:          Callback to reset device.
+  * @reinit:         Callback to execute device re-initialization.
++ * @link_check:     Callback to execute hardware link check.
+  * @get_hp_status:  Callback to get link hotplug status.
+  */
+ struct mtk_hw_ops {
+@@ -119,10 +130,18 @@ struct mtk_hw_ops {
+ 
+ 	int (*reset)(struct mtk_md_dev *mdev, enum mtk_reset_type type);
+ 	int (*reinit)(struct mtk_md_dev *mdev, enum mtk_reinit_type type);
++	bool (*link_check)(struct mtk_md_dev *mdev);
+ 	bool (*mmio_check)(struct mtk_md_dev *mdev);
+ 	int (*get_hp_status)(struct mtk_md_dev *mdev);
+ };
+ 
++struct mtk_md_except {
++	atomic_t flag;
++	enum mtk_reset_type type;
++	int pci_ext_irq_id;
++	struct timer_list timer;
++};
++
+ /* mtk_md_dev defines the structure of MTK modem device */
+ struct mtk_md_dev {
+ 	struct device *dev;
+@@ -136,6 +155,7 @@ struct mtk_md_dev {
+ 	void *ctrl_blk;
+ 	void *data_blk;
+ 	struct mtk_bm_ctrl *bm_ctrl;
++	struct mtk_md_except except;
+ };
+ 
+ int mtk_dev_init(struct mtk_md_dev *mdev);
+@@ -429,6 +449,17 @@ static inline int mtk_hw_reinit(struct mtk_md_dev *mdev, enum mtk_reinit_type ty
+ 	return mdev->hw_ops->reinit(mdev, type);
+ }
+ 
++/* mtk_hw_link_check() -Check if the link is down.
++ *
++ * @mdev: Device instance.
++ *
++ * Return: 0 indicates link normally, other value indicates link down.
++ */
++static inline bool mtk_hw_link_check(struct mtk_md_dev *mdev)
++{
++	return mdev->hw_ops->link_check(mdev);
++}
++
+ /* mtk_hw_mmio_check() -Check if the PCIe MMIO is ready.
+  *
+  * @mdev: Device instance.
+@@ -517,4 +548,51 @@ static inline int mtk_dma_unmap_page(struct mtk_md_dev *mdev,
+ 	return 0;
+ }
+ 
++/* mtk_except_report_evt() - Report exception event.
++ *
++ * @mdev: pointer to mtk_md_dev
++ * @evt: exception event
++ *
++ * Return:
++ *   0 - OK
++ *   -EFAULT - exception feature is not ready
++ */
++int mtk_except_report_evt(struct mtk_md_dev *mdev, enum mtk_except_evt evt);
++
++/* mtk_except_start() - Start exception service.
++ *
++ * @mdev: pointer to mtk_md_dev
++ *
++ * Return:
++ *   void
++ */
++void mtk_except_start(struct mtk_md_dev *mdev);
++
++/* mtk_except_stop() - Stop exception service.
++ *
++ * @mdev: pointer to mtk_md_dev
++ *
++ * Return:
++ *   void
++ */
++void mtk_except_stop(struct mtk_md_dev *mdev);
++
++/* mtk_except_init() - Initialize exception feature.
++ *
++ * @mdev: pointer to mtk_md_dev
++ *
++ * Return:
++ *   0 - OK
++ */
++int mtk_except_init(struct mtk_md_dev *mdev);
++
++/* mtk_except_exit() - De-Initialize exception feature.
++ *
++ * @mdev: pointer to mtk_md_dev
++ *
++ * Return:
++ *   0 - OK
++ */
++int mtk_except_exit(struct mtk_md_dev *mdev);
++
+ #endif /* __MTK_DEV_H__ */
+diff --git a/drivers/net/wwan/mediatek/mtk_dpmaif.c b/drivers/net/wwan/mediatek/mtk_dpmaif.c
+index 27b7a5dee707..b6085110c62a 100644
+--- a/drivers/net/wwan/mediatek/mtk_dpmaif.c
++++ b/drivers/net/wwan/mediatek/mtk_dpmaif.c
+@@ -536,10 +536,12 @@ static void mtk_dpmaif_common_err_handle(struct mtk_dpmaif_ctlb *dcb, bool is_hw
+ 		return;
+ 	}
+ 
+-	if (mtk_hw_mmio_check(DCB_TO_MDEV(dcb)))
++	if (mtk_hw_mmio_check(DCB_TO_MDEV(dcb))) {
+ 		dev_err(DCB_TO_DEV(dcb), "Failed to access mmio\n");
+-	else
++		mtk_except_report_evt(DCB_TO_MDEV(dcb), EXCEPT_LINK_ERR);
++	} else {
+ 		mtk_dpmaif_trigger_dev_exception(dcb);
++	}
+ }
+ 
+ static unsigned int mtk_dpmaif_pit_bid(struct dpmaif_pd_pit *pit_info)
+@@ -1354,7 +1356,7 @@ static unsigned int mtk_dpmaif_poll_tx_drb(struct dpmaif_txq *txq)
+ 	old_sw_rd_idx = txq->drb_rd_idx;
+ 	ret = mtk_dpmaif_drv_get_ring_idx(dcb->drv_info, DPMAIF_DRB_RIDX, txq->id);
+ 	if (unlikely(ret < 0)) {
+-		dev_err(DCB_TO_DEV(dcb), "Failed to read txq%u drb_rd_idx, ret=%d", txq->id, ret);
++		dev_err(DCB_TO_DEV(dcb), "Failed to read txq%u drb_rd_idx, ret=%d\n", txq->id, ret);
+ 		mtk_dpmaif_common_err_handle(dcb, true);
+ 		return 0;
+ 	}
+@@ -2274,7 +2276,6 @@ static void mtk_dpmaif_trans_disable(struct mtk_dpmaif_ctlb *dcb)
+ static void mtk_dpmaif_trans_ctl(struct mtk_dpmaif_ctlb *dcb, bool enable)
+ {
+ 	mutex_lock(&dcb->trans_ctl_lock);
+-
+ 	if (enable) {
+ 		if (!dcb->trans_enabled) {
+ 			if (dcb->dpmaif_state == DPMAIF_STATE_PWRON &&
+@@ -2641,7 +2642,8 @@ static int mtk_dpmaif_drv_res_init(struct mtk_dpmaif_ctlb *dcb)
+ 	if (DPMAIF_GET_HW_VER(dcb) == 0x0800) {
+ 		dcb->drv_info->drv_ops = &dpmaif_drv_ops_t800;
+ 	} else {
+-		dev_err(DCB_TO_DEV(dcb), "Unsupported mdev, hw_ver=0x%x", DPMAIF_GET_HW_VER(dcb));
++		devm_kfree(DCB_TO_DEV(dcb), dcb->drv_info);
++		dev_err(DCB_TO_DEV(dcb), "Unsupported mdev, hw_ver=0x%x\n", DPMAIF_GET_HW_VER(dcb));
+ 		ret = -EFAULT;
+ 	}
+ 
+@@ -2791,7 +2793,8 @@ static int mtk_dpmaif_irq_init(struct mtk_dpmaif_ctlb *dcb)
+ 		irq_param->dpmaif_irq_src = irq_src;
+ 		irq_param->dev_irq_id = mtk_hw_get_irq_id(DCB_TO_MDEV(dcb), irq_src);
+ 		if (irq_param->dev_irq_id < 0) {
+-			dev_err(DCB_TO_DEV(dcb), "Failed to allocate irq id, irq_src=%d", irq_src);
++			dev_err(DCB_TO_DEV(dcb), "Failed to allocate irq id, irq_src=%d\n",
++				irq_src);
+ 			ret = -EINVAL;
+ 			goto err_reg_irq;
+ 		}
+@@ -3489,6 +3492,7 @@ static int mtk_dpmaif_pit_bid_frag_check(struct dpmaif_rxq *rxq, unsigned int cu
+ 
+ 	bat_ring = &rxq->dcb->bat_info.frag_bat_ring;
+ 	cur_bat_record = bat_ring->sw_record_base + cur_bid;
++
+ 	if (unlikely(!cur_bat_record->frag.page || cur_bid >= bat_ring->bat_cnt)) {
+ 		dev_err(DCB_TO_DEV(dcb),
+ 			"Invalid parameter rxq%u bat%d, bid=%u, bat_cnt=%u\n",
+diff --git a/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h b/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
+index 34ec846e6336..29b6c99bba42 100644
+--- a/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
++++ b/drivers/net/wwan/mediatek/mtk_dpmaif_drv.h
+@@ -84,12 +84,12 @@ enum mtk_drv_err {
+ 
+ enum {
+ 	DPMAIF_CLEAR_INTR,
+-	DPMAIF_UNMASK_INTR
++	DPMAIF_UNMASK_INTR,
+ };
+ 
+ enum dpmaif_drv_dlq_id {
+ 	DPMAIF_DLQ0 = 0,
+-	DPMAIF_DLQ1
++	DPMAIF_DLQ1,
+ };
+ 
+ struct dpmaif_drv_dlq {
+@@ -132,7 +132,7 @@ enum dpmaif_drv_ring_type {
+ 	DPMAIF_PIT,
+ 	DPMAIF_BAT,
+ 	DPMAIF_FRAG,
+-	DPMAIF_DRB
++	DPMAIF_DRB,
+ };
+ 
+ enum dpmaif_drv_ring_idx {
+@@ -143,7 +143,7 @@ enum dpmaif_drv_ring_idx {
+ 	DPMAIF_FRAG_WIDX,
+ 	DPMAIF_FRAG_RIDX,
+ 	DPMAIF_DRB_WIDX,
+-	DPMAIF_DRB_RIDX
++	DPMAIF_DRB_RIDX,
+ };
+ 
+ struct dpmaif_drv_irq_en_mask {
+@@ -184,7 +184,7 @@ enum dpmaif_drv_intr_type {
+ 	DPMAIF_INTR_DL_FRGCNT_LEN_ERR,
+ 	DPMAIF_INTR_DL_PITCNT_LEN_ERR,
+ 	DPMAIF_INTR_DL_DONE,
+-	DPMAIF_INTR_MAX,
++	DPMAIF_INTR_MAX
+ };
+ 
+ #define DPMAIF_INTR_COUNT ((DPMAIF_INTR_MAX) - (DPMAIF_INTR_MIN) - 1)
+diff --git a/drivers/net/wwan/mediatek/mtk_except.c b/drivers/net/wwan/mediatek/mtk_except.c
 new file mode 100644
-index 000000000000..fa5abb82d038
+index 000000000000..e35592d9d2c3
 --- /dev/null
-+++ b/drivers/net/wwan/mediatek/mtk_bm.c
-@@ -0,0 +1,369 @@
++++ b/drivers/net/wwan/mediatek/mtk_except.c
+@@ -0,0 +1,176 @@
 +// SPDX-License-Identifier: BSD-3-Clause-Clear
 +/*
 + * Copyright (c) 2022, MediaTek Inc.
 + */
 +
-+#include <linux/list.h>
-+#include <linux/netdevice.h>
-+#include <linux/slab.h>
-+#include <linux/workqueue.h>
-+
-+#include "mtk_bm.h"
-+
-+#define MTK_RELOAD_TH 3
-+#define MTK_WQ_NAME_LEN 48
-+
-+static int mtk_bm_page_pool_create(struct mtk_bm_pool *pool)
-+{
-+	INIT_LIST_HEAD(&pool->list.buff_list);
-+
-+	return 0;
-+}
-+
-+static void mtk_bm_page_pool_destroy(struct mtk_bm_pool *pool)
-+{
-+	struct mtk_buff *mb, *next;
-+
-+	list_for_each_entry_safe(mb, next, &pool->list.buff_list, entry) {
-+		list_del(&mb->entry);
-+		skb_free_frag(mb->data);
-+		kmem_cache_free(pool->bm_ctrl->list_cache_pool, mb);
-+	}
-+}
-+
-+static void *mtk_bm_page_buff_alloc(struct mtk_bm_pool *pool)
-+{
-+	struct mtk_buff *mb;
-+	void *data;
-+
-+	spin_lock_bh(&pool->lock);
-+	mb = list_first_entry_or_null(&pool->list.buff_list, struct mtk_buff, entry);
-+	if (!mb) {
-+		spin_unlock_bh(&pool->lock);
-+		data = netdev_alloc_frag(pool->buff_size);
-+	} else {
-+		list_del(&mb->entry);
-+		pool->curr_cnt--;
-+		spin_unlock_bh(&pool->lock);
-+		data = mb->data;
-+		kmem_cache_free(pool->bm_ctrl->list_cache_pool, mb);
-+	}
-+
-+	if (pool->curr_cnt < pool->threshold)
-+		queue_work(pool->reload_workqueue, &pool->reload_work);
-+
-+	return data;
-+}
-+
-+static void mtk_bm_page_buff_free(struct mtk_bm_pool *pool, void *data)
-+{
-+	struct mtk_buff *mb;
-+
-+	if (pool->curr_cnt >= pool->buff_cnt) {
-+		skb_free_frag(data);
-+		return;
-+	}
-+
-+	mb = kmem_cache_alloc(pool->bm_ctrl->list_cache_pool, GFP_KERNEL);
-+	if (mb) {
-+		mb->data = data;
-+		spin_lock_bh(&pool->lock);
-+		list_add_tail(&mb->entry, &pool->list.buff_list);
-+		pool->curr_cnt++;
-+		spin_unlock_bh(&pool->lock);
-+	} else {
-+		skb_free_frag(data);
-+	}
-+}
-+
-+static void mtk_bm_page_pool_reload(struct work_struct *work)
-+{
-+	struct mtk_bm_pool *pool = container_of(work, struct mtk_bm_pool, reload_work);
-+	struct mtk_buff *mb;
-+
-+	while (pool->curr_cnt < pool->buff_cnt && !atomic_read(&pool->work_stop)) {
-+		mb = kmem_cache_alloc(pool->bm_ctrl->list_cache_pool, GFP_KERNEL);
-+		if (!mb)
-+			break;
-+
-+		mb->data = netdev_alloc_frag(pool->buff_size);
-+		if (!mb->data) {
-+			kmem_cache_free(pool->bm_ctrl->list_cache_pool, mb);
-+			break;
-+		}
-+
-+		spin_lock_bh(&pool->lock);
-+		list_add_tail(&mb->entry, &pool->list.buff_list);
-+		pool->curr_cnt++;
-+		spin_unlock_bh(&pool->lock);
-+	}
-+}
-+
-+static struct mtk_buff_ops page_buf_ops = {
-+	.pool_create = mtk_bm_page_pool_create,
-+	.pool_destroy = mtk_bm_page_pool_destroy,
-+	.buff_alloc = mtk_bm_page_buff_alloc,
-+	.buff_free = mtk_bm_page_buff_free,
-+	.pool_reload = mtk_bm_page_pool_reload,
-+};
-+
-+static int mtk_bm_skb_pool_create(struct mtk_bm_pool *pool)
-+{
-+	skb_queue_head_init(&pool->list.skb_list);
-+
-+	return 0;
-+}
-+
-+static void mtk_bm_skb_pool_destroy(struct mtk_bm_pool *pool)
-+{
-+	skb_queue_purge(&pool->list.skb_list);
-+}
-+
-+static void *mtk_bm_skb_buff_alloc(struct mtk_bm_pool *pool)
-+{
-+	gfp_t gfp = GFP_KERNEL;
-+	struct sk_buff *skb;
-+
-+	spin_lock_bh(&pool->lock);
-+	skb = __skb_dequeue(&pool->list.skb_list);
-+	spin_unlock_bh(&pool->lock);
-+	if (!skb) {
-+		if (in_irq() || in_softirq())
-+			gfp = GFP_ATOMIC;
-+		skb = __dev_alloc_skb(pool->buff_size, gfp);
-+	}
-+
-+	if (pool->list.skb_list.qlen < pool->threshold)
-+		queue_work(pool->reload_workqueue, &pool->reload_work);
-+
-+	return skb;
-+}
-+
-+static void mtk_bm_skb_buff_free(struct mtk_bm_pool *pool, void *data)
-+{
-+	struct sk_buff *skb = data;
-+
-+	if (pool->list.skb_list.qlen < pool->buff_cnt) {
-+		/* reset sk_buff (take __alloc_skb as ref.) */
-+		skb->data = skb->head;
-+		skb->len = 0;
-+		skb_reset_tail_pointer(skb);
-+		/* reserve memory as netdev_alloc_skb */
-+		skb_reserve(skb, NET_SKB_PAD);
-+
-+		spin_lock_bh(&pool->lock);
-+		__skb_queue_tail(&pool->list.skb_list, skb);
-+		spin_unlock_bh(&pool->lock);
-+	} else {
-+		dev_kfree_skb_any(skb);
-+	}
-+}
-+
-+static void mtk_bm_skb_pool_reload(struct work_struct *work)
-+{
-+	struct mtk_bm_pool *pool = container_of(work, struct mtk_bm_pool, reload_work);
-+	struct sk_buff *skb;
-+
-+	while (pool->list.skb_list.qlen < pool->buff_cnt && !atomic_read(&pool->work_stop)) {
-+		skb = __dev_alloc_skb(pool->buff_size, GFP_KERNEL);
-+		if (!skb)
-+			break;
-+
-+		spin_lock_bh(&pool->lock);
-+		__skb_queue_tail(&pool->list.skb_list, skb);
-+		spin_unlock_bh(&pool->lock);
-+	}
-+}
-+
-+static struct mtk_buff_ops skb_buf_ops = {
-+	.pool_create = mtk_bm_skb_pool_create,
-+	.pool_destroy = mtk_bm_skb_pool_destroy,
-+	.buff_alloc = mtk_bm_skb_buff_alloc,
-+	.buff_free = mtk_bm_skb_buff_free,
-+	.pool_reload = mtk_bm_skb_pool_reload,
-+};
-+
-+/* mtk_bm_init - Init struct mtk_bm_ctrl
-+ *
-+ * @mdev: pointer to mtk_md_dev
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_bm_init(struct mtk_md_dev *mdev)
-+{
-+	char wq_name[MTK_WQ_NAME_LEN];
-+	struct mtk_bm_ctrl *bm;
-+
-+	bm = devm_kzalloc(mdev->dev, sizeof(*bm), GFP_KERNEL);
-+	if (!bm)
-+		return -ENOMEM;
-+
-+	bm->list_cache_pool = kmem_cache_create(mdev->dev_str, sizeof(struct mtk_buff), 0, 0, NULL);
-+	if (unlikely(!bm->list_cache_pool))
-+		goto err_free_buf;
-+
-+	snprintf(wq_name, sizeof(wq_name), "mtk_pool_reload_work_h_%s", mdev->dev_str);
-+	bm->pool_reload_workqueue_h = alloc_workqueue(wq_name,
-+						      WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_HIGHPRI, 0);
-+	if (!bm->pool_reload_workqueue_h)
-+		goto err_destroy_cache_pool;
-+
-+	snprintf(wq_name, sizeof(wq_name), "mtk_pool_reload_work_l_%s", mdev->dev_str);
-+	bm->pool_reload_workqueue_l = alloc_workqueue(wq_name,
-+						      WQ_UNBOUND | WQ_MEM_RECLAIM, 0);
-+	if (!bm->pool_reload_workqueue_l)
-+		goto err_destroy_wq;
-+
-+	mutex_init(&bm->pool_list_mtx);
-+	INIT_LIST_HEAD(&bm->pool_list);
-+
-+	bm->m_ops[MTK_BUFF_SKB] = &skb_buf_ops;
-+	bm->m_ops[MTK_BUFF_PAGE] = &page_buf_ops;
-+	mdev->bm_ctrl = bm;
-+
-+	return 0;
-+
-+err_destroy_wq:
-+	flush_workqueue(bm->pool_reload_workqueue_h);
-+	destroy_workqueue(bm->pool_reload_workqueue_h);
-+err_destroy_cache_pool:
-+	kmem_cache_destroy(bm->list_cache_pool);
-+err_free_buf:
-+	devm_kfree(mdev->dev, bm);
-+	return -ENOMEM;
-+}
-+
-+/* mtk_bm_pool_create - Create a buffer pool
-+ *
-+ * @mdev: pointer to mtk_md_dev
-+ * @type: pool type
-+ * @buff_size: the buffer size
-+ * @buff_cnt: the buffer count
-+ * @prio: the priority of reload work
-+ *
-+ * Return: return value is a buffer pool on success, a NULL pointer on failure.
-+ */
-+struct mtk_bm_pool *mtk_bm_pool_create(struct mtk_md_dev *mdev,
-+				       enum mtk_buff_type type, unsigned int buff_size,
-+				       unsigned int buff_cnt, unsigned int prio)
-+{
-+	struct mtk_bm_ctrl *bm = mdev->bm_ctrl;
-+	struct mtk_bm_pool *pool;
-+
-+	pool = devm_kzalloc(mdev->dev, sizeof(*pool), GFP_KERNEL);
-+	if (!pool)
-+		return NULL;
-+
-+	pool->type = type;
-+	pool->buff_size = buff_size;
-+	pool->buff_cnt = buff_cnt;
-+	pool->pool_id = bm->pool_seq++;
-+	pool->threshold = pool->buff_cnt - pool->buff_cnt / MTK_RELOAD_TH;
-+	pool->dev = mdev->dev;
-+
-+	if (prio == MTK_BM_HIGH_PRIO)
-+		pool->reload_workqueue = bm->pool_reload_workqueue_h;
-+	else
-+		pool->reload_workqueue = bm->pool_reload_workqueue_l;
-+	pool->prio = prio;
-+
-+	spin_lock_init(&pool->lock);
-+	pool->ops = bm->m_ops[pool->type];
-+	INIT_WORK(&pool->reload_work, pool->ops->pool_reload);
-+	if (pool->ops->pool_create(pool))
-+		goto err_free_buf;
-+	queue_work(pool->reload_workqueue, &pool->reload_work);
-+	atomic_set(&pool->work_stop, 0);
-+	pool->bm_ctrl = bm;
-+
-+	mutex_lock(&bm->pool_list_mtx);
-+	list_add_tail(&pool->entry, &bm->pool_list);
-+	mutex_unlock(&bm->pool_list_mtx);
-+
-+	return pool;
-+
-+err_free_buf:
-+	dev_err(mdev->dev, "Failed to create bm pool\n");
-+	devm_kfree(mdev->dev, pool);
-+	return NULL;
-+}
-+
-+/* mtk_bm_alloc - alloc a block of buffer from bm pool
-+ *
-+ * @pool: the buffer pool
-+ *
-+ * Return: return value is a block of buffer from bm pool on success, a NULL pointer on failure.
-+ */
-+void *mtk_bm_alloc(struct mtk_bm_pool *pool)
-+{
-+	return pool->ops->buff_alloc(pool);
-+}
-+
-+/* mtk_bm_free - free a block of buffer to bm pool
-+ *
-+ * @pool: the buffer pool
-+ * @data: the buffer need to free to pool
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_bm_free(struct mtk_bm_pool *pool, void *data)
-+{
-+	if (!data)
-+		return -EINVAL;
-+
-+	pool->ops->buff_free(pool, data);
-+
-+	return 0;
-+}
-+
-+/* mtk_bm_pool_destroy - destroy a buffer pool
-+ * rule: we must stop calling alloc/free before this function is called.
-+ *
-+ * @mdev: pointer to mtk_md_dev
-+ * @pool: the buffer pool need to destroy
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_bm_pool_destroy(struct mtk_md_dev *mdev, struct mtk_bm_pool *pool)
-+{
-+	struct mtk_bm_ctrl *bm = mdev->bm_ctrl;
-+
-+	atomic_set(&pool->work_stop, 1);
-+	cancel_work_sync(&pool->reload_work);
-+	spin_lock_bh(&pool->lock);
-+	pool->curr_cnt = 0;
-+	spin_unlock_bh(&pool->lock);
-+
-+	mutex_lock(&bm->pool_list_mtx);
-+	list_del(&pool->entry);
-+	mutex_unlock(&bm->pool_list_mtx);
-+
-+	pool->ops->pool_destroy(pool);
-+
-+	devm_kfree(mdev->dev, pool);
-+	return 0;
-+}
-+
-+/* mtk_bm_exit - deinit struct mtk_bm_ctrl
-+ *
-+ * @mdev : pointer to mtk_md_dev
-+ *
-+ * Return: return value is 0 on success, a negative error code on failure.
-+ */
-+int mtk_bm_exit(struct mtk_md_dev *mdev)
-+{
-+	struct mtk_bm_ctrl *bm = mdev->bm_ctrl;
-+
-+	flush_workqueue(bm->pool_reload_workqueue_h);
-+	destroy_workqueue(bm->pool_reload_workqueue_h);
-+	flush_workqueue(bm->pool_reload_workqueue_l);
-+	destroy_workqueue(bm->pool_reload_workqueue_l);
-+
-+	if (unlikely(!list_empty(&bm->pool_list)))
-+		dev_warn(mdev->dev, "bm pool not destroyed\n");
-+
-+	kmem_cache_destroy(bm->list_cache_pool);
-+	devm_kfree(mdev->dev, bm);
-+
-+	return 0;
-+}
-diff --git a/drivers/net/wwan/mediatek/mtk_bm.h b/drivers/net/wwan/mediatek/mtk_bm.h
-new file mode 100644
-index 000000000000..6ac473c05296
---- /dev/null
-+++ b/drivers/net/wwan/mediatek/mtk_bm.h
-@@ -0,0 +1,79 @@
-+/* SPDX-License-Identifier: BSD-3-Clause-Clear
-+ *
-+ * Copyright (c) 2022, MediaTek Inc.
-+ */
-+
-+#ifndef __MTK_BM_H__
-+#define __MTK_BM_H__
-+
-+#include <linux/skbuff.h>
-+#include <linux/spinlock.h>
++#include <linux/delay.h>
++#include <linux/kernel.h>
++#include <linux/timer.h>
 +
 +#include "mtk_dev.h"
++#include "mtk_fsm.h"
 +
-+#define MTK_BM_LOW_PRIO 0
-+#define MTK_BM_HIGH_PRIO 1
++#define MTK_EXCEPT_HOST_RESET_TIME		(2)
++#define MTK_EXCEPT_SELF_RESET_TIME		(35)
++#define MTK_EXCEPT_RESET_TYPE_PLDR		BIT(26)
++#define MTK_EXCEPT_RESET_TYPE_FLDR		BIT(27)
 +
-+enum mtk_buff_type {
-+	MTK_BUFF_SKB = 0,
-+	MTK_BUFF_PAGE,
-+	MTK_BUFF_MAX
-+};
++static void mtk_except_start_monitor(struct mtk_md_dev *mdev, unsigned long expires)
++{
++	struct mtk_md_except *except = &mdev->except;
 +
-+struct mtk_bm_ctrl {
-+	unsigned int pool_seq;
-+	struct workqueue_struct *pool_reload_workqueue_h;
-+	struct workqueue_struct *pool_reload_workqueue_l;
-+	struct kmem_cache *list_cache_pool;
-+	struct list_head pool_list;
-+	struct mutex pool_list_mtx;	/* protects the pool list */
-+	struct mtk_buff_ops *m_ops[MTK_BUFF_MAX];
-+};
++	if (!timer_pending(&except->timer) && !mtk_hw_get_hp_status(mdev)) {
++		except->timer.expires = jiffies + expires;
++		add_timer(&except->timer);
++		dev_info(mdev->dev, "Add timer to monitor PCI link\n");
++	}
++}
 +
-+struct mtk_buff {
-+	struct list_head entry;
-+	void *data;
-+};
++int mtk_except_report_evt(struct mtk_md_dev *mdev, enum mtk_except_evt evt)
++{
++	struct mtk_md_except *except = &mdev->except;
++	int err, val;
 +
-+union mtk_buff_list {
-+	struct sk_buff_head skb_list;
-+	struct list_head buff_list;
-+};
++	if (atomic_read(&except->flag) != 1)
++		return -EFAULT;
 +
-+struct mtk_bm_pool {
-+	unsigned int pool_id;
-+	enum mtk_buff_type type;
-+	unsigned int threshold;
-+	unsigned int buff_size;
-+	unsigned int buff_cnt;
-+	unsigned int curr_cnt;
-+	unsigned int prio;
-+	atomic_t work_stop;
-+	spinlock_t lock;		/* protects the buffer operation */
-+	union mtk_buff_list list;
-+	struct device *dev;
-+	struct work_struct reload_work;
-+	struct workqueue_struct *reload_workqueue;
-+	struct list_head entry;
-+	struct mtk_bm_ctrl *bm_ctrl;
-+	struct mtk_buff_ops *ops;
-+};
++	switch (evt) {
++	case EXCEPT_LINK_ERR:
++		err = mtk_hw_mmio_check(mdev);
++		if (err)
++			mtk_fsm_evt_submit(mdev, FSM_EVT_LINKDOWN, FSM_F_DFLT, NULL, 0, 0);
++		break;
++	case EXCEPT_RGU:
++		/* delay 20ms to make sure device ready for reset */
++		msleep(20);
 +
-+struct mtk_buff_ops {
-+	int (*pool_create)(struct mtk_bm_pool *pool);
-+	void (*pool_destroy)(struct mtk_bm_pool *pool);
-+	void *(*buff_alloc)(struct mtk_bm_pool *pool);
-+	void (*buff_free)(struct mtk_bm_pool *pool, void *data);
-+	void (*pool_reload)(struct work_struct *work);
-+};
++		val = mtk_hw_get_dev_state(mdev);
++		dev_info(mdev->dev, "dev_state:0x%x, hw_ver:0x%x, fsm state:%d\n",
++			 val, mdev->hw_ver, mdev->fsm->state);
 +
-+int mtk_bm_init(struct mtk_md_dev *mdev);
-+int mtk_bm_exit(struct mtk_md_dev *mdev);
-+struct mtk_bm_pool *mtk_bm_pool_create(struct mtk_md_dev *mdev,
-+				       enum mtk_buff_type type, unsigned int buff_size,
-+				       unsigned int buff_cnt, unsigned int prio);
-+int mtk_bm_pool_destroy(struct mtk_md_dev *mdev, struct mtk_bm_pool *pool);
-+void *mtk_bm_alloc(struct mtk_bm_pool *pool);
-+int mtk_bm_free(struct mtk_bm_pool *pool, void *data);
++		/* Invalid dev state will trigger PLDR */
++		if (val & MTK_EXCEPT_RESET_TYPE_PLDR) {
++			except->type = RESET_PLDR;
++		} else if (val & MTK_EXCEPT_RESET_TYPE_FLDR) {
++			except->type = RESET_FLDR;
++		} else if (mdev->fsm->state >= FSM_STATE_READY) {
++			dev_info(mdev->dev, "HW reboot\n");
++			except->type = RESET_NONE;
++		} else {
++			dev_info(mdev->dev, "RGU ignored\n");
++			break;
++		}
++		mtk_fsm_evt_submit(mdev, FSM_EVT_DEV_RESET_REQ, FSM_F_DFLT, NULL, 0, 0);
++		break;
++	case EXCEPT_AER_DETECTED:
++		mtk_fsm_evt_submit(mdev, FSM_EVT_AER, FSM_F_DFLT, NULL, 0, EVT_MODE_BLOCKING);
++		break;
++	case EXCEPT_AER_RESET:
++		err = mtk_hw_reset(mdev, RESET_FLDR);
++		if (err)
++			mtk_hw_reset(mdev, RESET_RGU);
++		break;
++	case EXCEPT_AER_RESUME:
++		mtk_except_start_monitor(mdev, HZ);
++		break;
++	default:
++		break;
++	}
 +
-+#endif /* __MTK_BM_H__ */
-diff --git a/drivers/net/wwan/mediatek/mtk_dev.c b/drivers/net/wwan/mediatek/mtk_dev.c
-index d3d7bf940d78..513aac37cb9c 100644
---- a/drivers/net/wwan/mediatek/mtk_dev.c
-+++ b/drivers/net/wwan/mediatek/mtk_dev.c
-@@ -3,15 +3,24 @@
-  * Copyright (c) 2022, MediaTek Inc.
-  */
++	return 0;
++}
++
++void mtk_except_start(struct mtk_md_dev *mdev)
++{
++	struct mtk_md_except *except = &mdev->except;
++
++	mtk_hw_unmask_irq(mdev, except->pci_ext_irq_id);
++}
++
++void mtk_except_stop(struct mtk_md_dev *mdev)
++{
++	struct mtk_md_except *except = &mdev->except;
++
++	mtk_hw_mask_irq(mdev, except->pci_ext_irq_id);
++}
++
++static void mtk_except_fsm_handler(struct mtk_fsm_param *param, void *data)
++{
++	struct mtk_md_except *except = data;
++	enum mtk_reset_type reset_type;
++	struct mtk_md_dev *mdev;
++	unsigned long expires;
++	int err;
++
++	mdev = container_of(except, struct mtk_md_dev, except);
++
++	switch (param->to) {
++	case FSM_STATE_POSTDUMP:
++		mtk_hw_mask_irq(mdev, except->pci_ext_irq_id);
++		mtk_hw_clear_irq(mdev, except->pci_ext_irq_id);
++		mtk_hw_unmask_irq(mdev, except->pci_ext_irq_id);
++		break;
++	case FSM_STATE_OFF:
++		if (param->evt_id == FSM_EVT_DEV_RESET_REQ)
++			reset_type = except->type;
++		else if (param->evt_id == FSM_EVT_LINKDOWN)
++			reset_type = RESET_FLDR;
++		else
++			break;
++
++		if (reset_type == RESET_NONE) {
++			expires = MTK_EXCEPT_SELF_RESET_TIME * HZ;
++		} else {
++			err = mtk_hw_reset(mdev, reset_type);
++			if (err)
++				expires = MTK_EXCEPT_SELF_RESET_TIME * HZ;
++			else
++				expires = MTK_EXCEPT_HOST_RESET_TIME * HZ;
++		}
++
++		mtk_except_start_monitor(mdev, expires);
++		break;
++	default:
++		break;
++	}
++}
++
++static void mtk_except_link_monitor(struct timer_list *timer)
++{
++	struct mtk_md_except *except = container_of(timer, struct mtk_md_except, timer);
++	struct mtk_md_dev *mdev = container_of(except, struct mtk_md_dev, except);
++	int err;
++
++	err = mtk_hw_link_check(mdev);
++	if (!err) {
++		mtk_fsm_evt_submit(mdev, FSM_EVT_REINIT, FSM_F_FULL_REINIT, NULL, 0, 0);
++		del_timer(&except->timer);
++	} else {
++		mod_timer(timer, jiffies + HZ);
++	}
++}
++
++int mtk_except_init(struct mtk_md_dev *mdev)
++{
++	struct mtk_md_except *except = &mdev->except;
++
++	except->pci_ext_irq_id = mtk_hw_get_irq_id(mdev, MTK_IRQ_SRC_SAP_RGU);
++
++	mtk_fsm_notifier_register(mdev, MTK_USER_EXCEPT,
++				  mtk_except_fsm_handler, except, FSM_PRIO_1, false);
++	timer_setup(&except->timer, mtk_except_link_monitor, 0);
++	atomic_set(&except->flag, 1);
++
++	return 0;
++}
++
++int mtk_except_exit(struct mtk_md_dev *mdev)
++{
++	struct mtk_md_except *except = &mdev->except;
++
++	atomic_set(&except->flag, 0);
++	del_timer(&except->timer);
++	mtk_fsm_notifier_unregister(mdev, MTK_USER_EXCEPT);
++
++	return 0;
++}
+diff --git a/drivers/net/wwan/mediatek/mtk_fsm.c b/drivers/net/wwan/mediatek/mtk_fsm.c
+index d754a34ade6c..4ba83134a149 100644
+--- a/drivers/net/wwan/mediatek/mtk_fsm.c
++++ b/drivers/net/wwan/mediatek/mtk_fsm.c
+@@ -516,6 +516,8 @@ static int mtk_fsm_early_bootup_handler(u32 status, void *__fsm)
+ 	dev_stage = dev_state & REGION_BITMASK;
+ 	if (dev_stage >= DEV_STAGE_MAX) {
+ 		dev_err(mdev->dev, "Invalid dev state 0x%x\n", dev_state);
++		if (mtk_hw_link_check(mdev))
++			mtk_except_report_evt(mdev, EXCEPT_LINK_ERR);
+ 		return -ENXIO;
+ 	}
  
-+#include "mtk_bm.h"
- #include "mtk_dev.h"
+diff --git a/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.c b/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.c
+index 42b4358f2653..c58ec64a59bf 100644
+--- a/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.c
++++ b/drivers/net/wwan/mediatek/pcie/mtk_cldma_drv_t800.c
+@@ -364,8 +364,10 @@ static void mtk_cldma_tx_done_work(struct work_struct *work)
+ 	state = mtk_cldma_check_intr_status(mdev, txq->hw->base_addr,
+ 					    DIR_TX, txq->txqno, QUEUE_XFER_DONE);
+ 	if (state) {
+-		if (unlikely(state == LINK_ERROR_VAL))
++		if (unlikely(state == LINK_ERROR_VAL)) {
++			mtk_except_report_evt(mdev, EXCEPT_LINK_ERR);
+ 			return;
++		}
  
- int mtk_dev_init(struct mtk_md_dev *mdev)
+ 		mtk_cldma_clr_intr_status(mdev, txq->hw->base_addr, DIR_TX,
+ 					  txq->txqno, QUEUE_XFER_DONE);
+@@ -452,6 +454,11 @@ static void mtk_cldma_rx_done_work(struct work_struct *work)
+ 		if (!state)
+ 			break;
+ 
++		if (unlikely(state == LINK_ERROR_VAL)) {
++			mtk_except_report_evt(mdev, EXCEPT_LINK_ERR);
++			return;
++		}
++
+ 		mtk_cldma_clr_intr_status(mdev, rxq->hw->base_addr, DIR_RX,
+ 					  rxq->rxqno, QUEUE_XFER_DONE);
+ 
+@@ -750,6 +757,9 @@ int mtk_cldma_txq_free_t800(struct cldma_hw *hw, int vqno)
+ 	devm_kfree(hw->mdev->dev, txq);
+ 	hw->txq[txqno] = NULL;
+ 
++	if (active == LINK_ERROR_VAL)
++		mtk_except_report_evt(hw->mdev, EXCEPT_LINK_ERR);
++
+ 	return 0;
+ }
+ 
+@@ -915,6 +925,9 @@ int mtk_cldma_rxq_free_t800(struct cldma_hw *hw, int vqno)
+ 	devm_kfree(mdev->dev, rxq);
+ 	hw->rxq[rxqno] = NULL;
+ 
++	if (active == LINK_ERROR_VAL)
++		mtk_except_report_evt(mdev, EXCEPT_LINK_ERR);
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.c b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
+index 7c7cb1f733de..47727567b0c5 100644
+--- a/drivers/net/wwan/mediatek/pcie/mtk_pci.c
++++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
+@@ -536,6 +536,8 @@ static int mtk_pci_reset(struct mtk_md_dev *mdev, enum mtk_reset_type type)
+ 		return mtk_pci_fldr(mdev);
+ 	case RESET_PLDR:
+ 		return mtk_pci_pldr(mdev);
++	default:
++		break;
+ 	}
+ 
+ 	return -EINVAL;
+@@ -547,6 +549,12 @@ static int mtk_pci_reinit(struct mtk_md_dev *mdev, enum mtk_reinit_type type)
+ 	struct mtk_pci_priv *priv = mdev->hw_priv;
+ 	int ret, ltr, l1ss;
+ 
++	if (type == REINIT_TYPE_EXP) {
++		/* We have saved it in probe() */
++		pci_load_saved_state(pdev, priv->saved_state);
++		pci_restore_state(pdev);
++	}
++
+ 	/* restore ltr */
+ 	ltr = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_LTR);
+ 	if (ltr) {
+@@ -571,6 +579,9 @@ static int mtk_pci_reinit(struct mtk_md_dev *mdev, enum mtk_reinit_type type)
+ 			mtk_pci_set_msix_merged(priv, priv->irq_cnt);
+ 	}
+ 
++	if (type == REINIT_TYPE_EXP)
++		mtk_pci_clear_irq(mdev, priv->rgu_irq_id);
++
+ 	mtk_pci_unmask_irq(mdev, priv->rgu_irq_id);
+ 	mtk_pci_unmask_irq(mdev, priv->mhccif_irq_id);
+ 
+@@ -634,6 +645,7 @@ static const struct mtk_hw_ops mtk_pci_ops = {
+ 	.get_ext_evt_status    = mtk_mhccif_get_evt_status,
+ 	.reset                 = mtk_pci_reset,
+ 	.reinit                = mtk_pci_reinit,
++	.link_check            = mtk_pci_link_check,
+ 	.mmio_check            = mtk_pci_mmio_check,
+ 	.get_hp_status         = mtk_pci_get_hp_status,
+ };
+@@ -654,6 +666,7 @@ static void mtk_mhccif_isr_work(struct work_struct *work)
+ 	if (unlikely(stat == U32_MAX && mtk_pci_link_check(mdev))) {
+ 		/* When link failed, we don't need to unmask/clear. */
+ 		dev_err(mdev->dev, "Failed to check link in MHCCIF handler.\n");
++		mtk_except_report_evt(mdev, EXCEPT_LINK_ERR);
+ 		return;
+ 	}
+ 
+@@ -778,6 +791,7 @@ static void mtk_rgu_work(struct work_struct *work)
+ 	struct mtk_pci_priv *priv;
+ 	struct mtk_md_dev *mdev;
+ 	struct pci_dev *pdev;
++	int ret;
+ 
+ 	priv = container_of(to_delayed_work(work), struct mtk_pci_priv, rgu_work);
+ 	mdev = priv->mdev;
+@@ -788,6 +802,10 @@ static void mtk_rgu_work(struct work_struct *work)
+ 	mtk_pci_mask_irq(mdev, priv->rgu_irq_id);
+ 	mtk_pci_clear_irq(mdev, priv->rgu_irq_id);
+ 
++	ret = mtk_except_report_evt(mdev, EXCEPT_RGU);
++	if (ret)
++		dev_err(mdev->dev, "Failed to report exception with EXCEPT_RGU\n");
++
+ 	if (!pdev->msix_enabled)
+ 		return;
+ 
+@@ -800,8 +818,14 @@ static int mtk_rgu_irq_cb(int irq_id, void *data)
+ 	struct mtk_pci_priv *priv;
+ 
+ 	priv = mdev->hw_priv;
++
++	if (delayed_work_pending(&priv->rgu_work))
++		goto exit;
++
+ 	schedule_delayed_work(&priv->rgu_work, msecs_to_jiffies(1));
++	dev_info(mdev->dev, "RGU IRQ arrived\n");
+ 
++exit:
+ 	return 0;
+ }
+ 
+@@ -1129,16 +1153,39 @@ static void mtk_pci_remove(struct pci_dev *pdev)
+ static pci_ers_result_t mtk_pci_error_detected(struct pci_dev *pdev,
+ 					       pci_channel_state_t state)
  {
--	return 0;
++	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
 +	int ret;
 +
-+	ret = mtk_bm_init(mdev);
++	ret = mtk_except_report_evt(mdev, EXCEPT_AER_DETECTED);
 +	if (ret)
-+		goto err_bm_init;
++		dev_err(mdev->dev, "Failed to call excpetion report API with EXCEPT_AER_DETECTED!\n");
++	dev_info(mdev->dev, "AER detected: pci_channel_state_t=%d\n", state);
 +
-+err_bm_init:
-+	return ret;
+ 	return PCI_ERS_RESULT_NEED_RESET;
  }
  
- void mtk_dev_exit(struct mtk_md_dev *mdev)
+ static pci_ers_result_t mtk_pci_slot_reset(struct pci_dev *pdev)
  {
-+	mtk_bm_exit(mdev);
++	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
++	int ret;
++
++	ret = mtk_except_report_evt(mdev, EXCEPT_AER_RESET);
++	if (ret)
++		dev_err(mdev->dev, "Failed to call excpetion report API with EXCEPT_AER_RESET!\n");
++	dev_info(mdev->dev, "Slot reset!\n");
++
+ 	return PCI_ERS_RESULT_RECOVERED;
  }
  
- int mtk_dev_start(struct mtk_md_dev *mdev)
-diff --git a/drivers/net/wwan/mediatek/mtk_dev.h b/drivers/net/wwan/mediatek/mtk_dev.h
-index bd7b1dc11daf..0c4b727b9c53 100644
---- a/drivers/net/wwan/mediatek/mtk_dev.h
-+++ b/drivers/net/wwan/mediatek/mtk_dev.h
-@@ -130,6 +130,7 @@ struct mtk_md_dev {
- 	u32 hw_ver;
- 	int msi_nvecs;
- 	char dev_str[MTK_DEV_STR_LEN];
-+	struct mtk_bm_ctrl *bm_ctrl;
- };
+ static void mtk_pci_io_resume(struct pci_dev *pdev)
+ {
++	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
++	int ret;
++
++	ret = mtk_except_report_evt(mdev, EXCEPT_AER_RESUME);
++	if (ret)
++		dev_err(mdev->dev, "Failed to call excpetion report API with EXCEPT_AER_RESUME!\n");
++	dev_info(mdev->dev, "IO resume!\n");
+ }
  
- int mtk_dev_init(struct mtk_md_dev *mdev);
+ static const struct pci_error_handlers mtk_pci_err_handler = {
 -- 
 2.32.0
 
