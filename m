@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B35FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 17:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E69D6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 17:39:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jzklqbfAAgvj9PC/0pw5WYxo6LOoMPvVtiBugerBwFg=; b=X6fYdQtkdOvkQS52M5MnullNTu
-	tPdMB+aleJWAPC12XBTEnIiz7KqCJtH09Vym4ZK67D1Tq8fzYr3pvE1SJlCJqL6J1qQ2ijIzqddjs
-	nVluU1WMDLYH4QjP1gvZEieXw5sRJxWzJn6/eRJcl1U/HU4Q858IGC5BTZ9h3ucVadS50Jx9v0LH3
-	xifDJkuQt6xlXPtn4obuA4meC7RMhUJjUIdlskSDLOS/cphSMMD7JmQTsxpXxyFvFxWTLEmDXV3PZ
-	UIE80YoLntrXgPFePkYhEwctKYT4O8YPTqBkWe3T1ChTpPx6khcQqL6flZTuZpXQQr/X0nnaK9xXI
-	u/Z59mZw==;
+	bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=; b=0iG2DbVPGGkUB9FTLipvgYUAEq
+	W1CELf+SCrsv1MFavh8gL22RX0An3Mbyc11InE6whyjZ2TCrbRIOUPGo4eKiln42BbOLmHM3EQjLO
+	UCtjJARjcgxmHDWBxxsGqezt0hVhKhx/4ipiGiUelxBeF2sO1tbwalNUzlbjQWewUu2t/pJjCDlt/
+	Ev2bCqad+NuQH9ejJb0OdM0yywRvHI848ZdoyZ5C2NAii5lXO6F7de4lePLUxMGOgXTZDGu1qnVfp
+	K+XtoEtZOEErqwir3Kx8pL1EDOJpt6eCQyilP7by7WPgnvIPs/M040kdi6WYlAeffGyQpfKlsOfKv
+	aSHJ/BjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxXA9-00B5GL-0s; Tue, 22 Nov 2022 17:34:25 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1oxXEf-00B6gg-J9; Tue, 22 Nov 2022 17:39:05 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxX9w-00B5Ac-Jp; Tue, 22 Nov 2022 17:34:13 +0000
-Received: by mail-wm1-x330.google.com with SMTP id h126-20020a1c2184000000b003d03017c6efso1513wmh.4;
-        Tue, 22 Nov 2022 09:34:10 -0800 (PST)
+	id 1oxXER-00B6dH-VZ; Tue, 22 Nov 2022 17:38:53 +0000
+Received: by mail-wm1-x331.google.com with SMTP id o7-20020a05600c510700b003cffc0b3374so11677945wms.0;
+        Tue, 22 Nov 2022 09:38:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=jzklqbfAAgvj9PC/0pw5WYxo6LOoMPvVtiBugerBwFg=;
-        b=EKtdox0xep5n1ykg8tUe1ZitEUVy3X4qOlX6tw80klPHuM5HhHANHAoUfT3eFrX7FR
-         RvkApEzx7Q0CwVoCN6HkAlfMBsP6yWjiBoAGe5POkLQNhnTp+27KP2V8TcYrJbSfNJio
-         2jH8+C7VUOW3j3alnRhZPkT/Yw+QMbFE+sOXSkqn0fOXMDAgXNy0aOP+sbtMakwJoFXK
-         +R2BDroACspKPngkpxElwSbBshYr4xmLnFYpy+oi0svr0YW6OUfcoOsdoyQy22nG1cdv
-         bhsv2upJN9LdMWcYVHmV5aNuq8lc021wmGPMCgNn9rFZHg9MYqBWTEuN8a1xYah3lIyg
-         +J9A==
+        bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=;
+        b=EqZFphm6mu/6vZej+M7COtDqt5dpwClyQiLRA4vFvDa3RXQ2e1bOKYrCHrBHZHM2c0
+         QmJAO2mpAsh1jWNNJyK+Yvb05EblWec7imFqb40zHbynjXLLTN1+oj5aGzKmDHz4odiv
+         uhsbiY2OHCeLV2Og7WDcAHXDjuVJEZoBeq0LdrG5OR7dZ4HHouUzhFljSnDrT/fZYRJY
+         6aJwEf+4/3bQQ8d7dZOrXjiT9cdduoikisCib1WHxg46wL8T6DkgAnKIj/KleqogPTT+
+         u6wDM3210bf8rpP/g2DP0lZo9PDtmMuYniVXIrDxrdk3WWmvl86qNWWS0cv2AfGegiVH
+         GnNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jzklqbfAAgvj9PC/0pw5WYxo6LOoMPvVtiBugerBwFg=;
-        b=yfnph2QgeXJqEk/RXTRs7XrWbfFDSBoq6vqTlbEpOGFLCITlRgv5yFr5hiXUReHvKp
-         /HYgiKmI9IiJaeTLYcrqsyOSo0bjQGGApdSiUrKrS9Rwz9QUUPob7Uz0MSOcu4cZ/lQx
-         GSCXleoxmiVXCWRd8Pyl9us6Va3JmnpdK7AgWfcdYToQMFagsJGHs9f5T9Je7RE1tBHr
-         H8CrWkBo7OIqyehy1uRiaxbN5mlMtCixSW6m/7p7y9sOJM5pW6Sae7MqzNlZHO0E4Ihb
-         h+WEG+0QXpntNkciFrIHSYW8jB4brWr3tPdpnRdwvmTVK3toN/gpIugedPHqUJrsGW4B
-         50gw==
-X-Gm-Message-State: ANoB5pmHxtvcCEcx26ka6odeHvNG4ivKRM5x4Rcpy1cyrbZ/pgzCFZBU
-	Haq2Uu1XUlGVI3FpBGZMN3g=
-X-Google-Smtp-Source: AA0mqf5OOBdBWL4D+WDfrKGFanO92z4WqAf2USzQOiVUkhIBJXKLZCjTrty3XrW4md5tyWVWd9jvSg==
-X-Received: by 2002:a05:600c:3393:b0:3cf:81f3:1e4a with SMTP id o19-20020a05600c339300b003cf81f31e4amr21285684wmp.4.1669138448948;
-        Tue, 22 Nov 2022 09:34:08 -0800 (PST)
+        bh=h+ftqIfdkSVX9/E+y5CjNrH9E0Z7Pga+p2819VhJF+g=;
+        b=dMVVlP6Pgkzuqvoi5dOUH61l9xtZb6DAWfNLziijXvv1UmdP56ENaoVXIDkCrqWFKy
+         qPnJLLTb+i+bQEK6DJ/rSXhOCOWHODoye+OGGElNb06gqATbMJ3XL+yeDTQRfW6FTpJ3
+         +TFF2G3p86mOvGn3mnp0kawizvstd2LtNa99AJGMA/5PUz3wSACmpZ5egoKzF89UPhLn
+         XwnvmVhsEoYEtzsK/9YXTERE6k/kqzhrE4BrCvKAQ4WiQKZNzsKxBfQYoUKVoOqzxz7+
+         1xtknawWzrwtSJTsktUdGECzuNsDC+2bqSz4N/Chq/pyepve565lv/1IvMWz6SFVYmqj
+         HlbQ==
+X-Gm-Message-State: ANoB5pn+CQOB0DpolEZcXQFe7pDnN92fBhZKzu62TtKX6sz3lIvcNWhn
+	4XEDd/N9x1NF8WZjj/Zwq78=
+X-Google-Smtp-Source: AA0mqf7Lcc8odQYBjV/PBGGjFzwvPElZiX4Vw/d75C/ERxuf9H4WD3Ghxg7YYtikN0Eo2Ta6fcNTlg==
+X-Received: by 2002:a05:600c:348d:b0:3cf:88e7:f808 with SMTP id a13-20020a05600c348d00b003cf88e7f808mr3503934wmq.200.1669138730275;
+        Tue, 22 Nov 2022 09:38:50 -0800 (PST)
 Received: from [192.168.0.25] ([37.222.251.204])
-        by smtp.gmail.com with ESMTPSA id o9-20020a056000010900b00228692033dcsm14294563wrx.91.2022.11.22.09.34.07
+        by smtp.gmail.com with ESMTPSA id g15-20020adff40f000000b00241db7deb57sm4886755wro.114.2022.11.22.09.38.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Nov 2022 09:34:07 -0800 (PST)
-Message-ID: <2ef0ba5d-0c3c-df67-94f8-046ad22c1d53@gmail.com>
-Date: Tue, 22 Nov 2022 18:34:06 +0100
+        Tue, 22 Nov 2022 09:38:49 -0800 (PST)
+Message-ID: <4a08b689-4592-86cb-7eba-cca49970a489@gmail.com>
+Date: Tue, 22 Nov 2022 18:38:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [RESEND PATCH v2] arm64: dts: mediatek: mt8195-demo: fix the
- memory size of node secmon
+Subject: Re: [PATCH] soc: mediatek: pm-domains: Fix the power glitch issue
 Content-Language: en-US
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Miles Chen <miles.chen@mediatek.com>, Bear Wang <bear.wang@mediatek.com>,
- Pablo Sun <pablo.sun@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, linux-usb@vger.kernel.org,
- stable@vger.kernel.org
-References: <20221111095540.28881-1-macpaul.lin@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: angelogioacchino.delregno@collabora.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>
+References: <20221014102029.1162-1-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221111095540.28881-1-macpaul.lin@mediatek.com>
+In-Reply-To: <20221014102029.1162-1-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_093412_687087_CE5368BC 
-X-CRM114-Status: GOOD (  25.89  )
+X-CRM114-CacheID: sfid-20221122_093852_048993_F2C5CA46 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,58 +96,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/11/2022 10:55, Macpaul Lin wrote:
-> The size of device tree node secmon (bl31_secmon_reserved) was
-> incorrect. It should be increased to 2MiB (0x200000).
+On 14/10/2022 12:20, Allen-KH Cheng wrote:
+> From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 > 
-> The origin setting will cause some abnormal behavior due to
-> trusted-firmware-a and related firmware didn't load correctly.
-> The incorrect behavior may vary because of different software stacks.
-> For example, it will cause build error in some Yocto project because
-> it will check if there was enough memory to load trusted-firmware-a
-> to the reserved memory.
+> Power reset maybe generate unexpected signal. In order to avoid
+> the glitch issue, we need to enable isolation first to guarantee the
+> stable signal when power reset is triggered.
 > 
-> When mt8195-demo.dts sent to the upstream, at that time the size of
-> BL31 was small. Because supported functions and modules in BL31 are
-> basic sets when the board was under early development stage.
-> 
-> Now BL31 includes more firmwares of coprocessors and maturer functions
-> so the size has grown bigger in real applications. According to the value
-> reported by customers, we think reserved 2MiB for BL31 might be enough
-> for maybe the following 2 or 3 years.
-> 
-> Cc: stable@vger.kernel.org      # v5.19
-> Fixes: 6147314aeedc ("arm64: dts: mediatek: Add device-tree for MT8195 Demo board")
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 
-Applied now to v6.1-next/fixes
-
-Thanks!
+Applied to fixes now, thanks!
 
 > ---
-> Changes for v2
->   - Add more information about the size difference for BL31 in commit message.
->     Thanks for Miles's review.
+>    Resend a PATCH from
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220310011548.2487-1-chun-jie.chen@mediatek.com/
 > 
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
+> ---
+> ---
+>   drivers/soc/mediatek/mtk-pm-domains.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> index 4fbd99eb496a..dec85d254838 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> @@ -56,10 +56,10 @@
->   		#size-cells = <2>;
->   		ranges;
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 09e3c38b8466..474b272f9b02 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -275,9 +275,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
 >   
-> -		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> +		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
->   		bl31_secmon_reserved: secmon@54600000 {
->   			no-map;
-> -			reg = <0 0x54600000 0x0 0x30000>;
-> +			reg = <0 0x54600000 0x0 0x200000>;
->   		};
+>   	/* subsys power off */
+> -	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+>   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
+>   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
+> +	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+>   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_2ND_BIT);
+>   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
 >   
->   		/* 12 MiB reserved for OP-TEE (BL32)
 
