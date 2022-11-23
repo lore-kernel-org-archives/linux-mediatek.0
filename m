@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1ED0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 16:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA923C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 16:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KKJVQ/x0v8/dAabzQOh03zOnQjNtyIkkhND82iVe8PA=; b=UA0b4KeKytn8YaIOEQqHwkY50M
-	PwXft7PhaM4x7wtTs+hSQBLc9UhdlLgMX47cmoR0rHMQsnGht86O4az0Ytprwlhmk+0cVryHZ0CCw
-	Xnj5/XVw21Grx8vjFx6XBItPST+PafJeOFjXZQynYPIsasCbaHjXpaa/NzksORRpABC7WC+B/QP7G
-	g01yPhvmYt5FK1KezRdhVQye+gTIlRicHWJWr5fw5mLbNXTK0zfC1+DCbpSiW9+4Bg8mmE5XCUugU
-	LWWVQjqJ3YoVFO6YZpkkCFhTg2x4GdDnIqN9iKUoLCjHWmt/IE1CqyLHus3TJNhwbVh+YzwatHXYd
-	r8wsnDCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ay8A75HoyxvplujOTHQyxz8M6JvUh8cGnz8gaZT2i2g=; b=sg3LwbF+NISD5PengsWQ0g8uX/
+	4f7a0QYUQkYw77axEhY6X2YF7WyhYl5c/xNvl4Y4XLQ2h0ePSbu05A8mswTMzGRTInfV0S9gMP7yr
+	ezTath/tWTm3oyUpucDoM9hnhb41uB8JCH1YgXBitKfTOanFLocSGJlAyKDGO9V+7uTf9CtfyABmb
+	+T3sB86RE1mHtH5Q9sNUdmHVxDm18XVFx26UV37+YXR9Iv7UFO0vnQIwzHbtjnZf9qxUKe7hNrQ51
+	g0mi0aa08kVlzIoKqMuLDnv/GJ0XWGVOEbDWolIwrdo/ZiSTT6LhNxPT++7Mvgs7m4/P6fZosRo4g
+	AnCWbEOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxsS0-000nal-FC; Wed, 23 Nov 2022 16:18:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oxsc5-000rF2-59; Wed, 23 Nov 2022 16:28:41 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxsRU-000nXD-Nj; Wed, 23 Nov 2022 16:17:46 +0000
+	id 1oxsbd-000r9n-PP; Wed, 23 Nov 2022 16:28:15 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1529161DE4;
-	Wed, 23 Nov 2022 16:17:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E0F5C433D6;
-	Wed, 23 Nov 2022 16:17:40 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 745EDB82102;
+	Wed, 23 Nov 2022 16:28:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F6C2C433C1;
+	Wed, 23 Nov 2022 16:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669220263;
-	bh=nIHvw2215u8yi3qmy0MJsRsU0YAgnU/WLNFUep5lX70=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bGmSakbnmBl/tYZC+pcD7Sj6xtS5HhXz8vu7MHz0jLaDx7UnmmjlxaNnTAImpfHHJ
-	 PeUbSwQg17pBOSs4SSV8Fn3P8evp8llu1rvFH+TA9LI6YL5IdHzv25UME/Njz81Aie
-	 WIbm+e2/oYB72rzh1vCNUBltMUGLEOLV46oSEADI78kh9FT4qnmf/zNjuK8+fJIejG
-	 5jrdv7kETcsYO67n0qWMFVNFegVNg1dtYD5EcUra/2AxNOJy8qQHCeA2tmqrJ76Ur/
-	 WSyLpoDMk06ZEipj86ZexAEwwd0uqVs2Uzq+dLxReTlKrtpdPTe0X3g7JreHujAPxW
-	 MD/Xo1FnVP3jQ==
-Message-ID: <7af73fa4-3783-a2c3-bea3-29167fc49ec2@kernel.org>
-Date: Wed, 23 Nov 2022 17:17:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v2] dt-bindings: pwm: mediatek: Add compatible for MT7986
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Thierry Reding
- <thierry.reding@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
- <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, Zhi Mao <zhi.mao@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>
-References: <6f28ccf3-ea27-9d5e-bd67-14f7729f713f@linaro.org>
- <e2170b37f28238c59b2f43309822b63a4d0ac9b1.1667243978.git.daniel@makrotopia.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <e2170b37f28238c59b2f43309822b63a4d0ac9b1.1667243978.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+	s=k20201202; t=1669220891;
+	bh=dzyLXMtXy6cZx8prGfrgAfjTZ0RmbKIX+ZoSI6qBS64=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=TeKWyCsb0x1vF39wYLZlLwM1ixgeT9Lc+UFTMLHCRbYi1iEX8CJ2cAtesLH7YwQRH
+	 W3cwmGxh7O3jVnag4/VBgrfUs7zNaQ2UxORA/1eUpvm+xhCWG+z2c1xVVMAsNuBGfP
+	 EA+S+OyTpggjyn3MOt0fGvKSSDnOfwXdcBAQD/Hdiz77iifLk94jZmC/uQi+TndxN5
+	 vUDzHhJ+Aje6QGm38V4QKDMAEhrOooTxEH8sgPVL78KAMYk/IY43abnYGHB9r+NofI
+	 ZkRz9P54Xfsf6w51qsyxhviU8drf83DY7lwxEuHRo6d/EQOQ5km179S14YEf2BI+in
+	 4VVe28o60E4jQ==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1oxsbY-008BGI-QG;
+	Wed, 23 Nov 2022 16:28:08 +0000
+Date: Wed, 23 Nov 2022 16:28:08 +0000
+Message-ID: <86cz9doctj.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: tglx@linutronix.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	youlin.pei@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/4] irqchip: irq-mtk-cirq: Move register offsets to const array
+In-Reply-To: <c8174977-2995-811a-83e2-9f941057acd8@collabora.com>
+References: <20221123112249.98281-1-angelogioacchino.delregno@collabora.com>
+	<20221123112249.98281-4-angelogioacchino.delregno@collabora.com>
+	<86fse9ok3y.wl-maz@kernel.org>
+	<c8174977-2995-811a-83e2-9f941057acd8@collabora.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: angelogioacchino.delregno@collabora.com, tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_081744_851807_CBD7D4C0 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20221123_082813_988625_183A5D17 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +92,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/10/2022 20:23, Daniel Golle wrote:
-> Add new compatible string for MT7986 PWM and list compatible units for
-> existing entries. Also make sure the number of pwm1-X clocks is listed
-> for all supported units.
+On Wed, 23 Nov 2022 14:57:02 +0000,
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../devicetree/bindings/pwm/pwm-mediatek.txt  | 20 +++++++++++--------
->  1 file changed, 12 insertions(+), 8 deletions(-)
+> >> +					 enum mtk_cirq_reg_index idx,
+> >> +					 unsigned int cirq_num)
+> > 
+> > What does cirq_num mean for registers that are not relative to an
+> > interrupt? Create a separate helper for those.
+> > 
+> Means literally nothing, so yes I agree, but...
 > 
+> ... mtk_cirq_irq_reg(), mtk_cirq_reg() feels too similar and may lead to
+> confusion while reading the code.
+> 
+> Any advice about a possibly clear-er name?
 
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC.  It might happen, that command when run on an older
-kernel, gives you outdated entries.  Therefore please be sure you base
-your patches on recent Linux kernel.
+I think the names are OK. Passing an interrupt number as a parameter
+is a good discriminant anyway.
 
-You managed to miss all folks from DT :/
+Please wait for a few days before posting the next version though.
 
-Best regards,
-Krzysztof
+	M.
 
+-- 
+Without deviation from the norm, progress is not possible.
 
