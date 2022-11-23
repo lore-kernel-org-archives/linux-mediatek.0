@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1351C3A59F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 11:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 695FBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 11:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mh9pfAJNDjjPFtFWAhVTAyBHmQ4tYAbZKfwiZdqYM9c=; b=ie9mOmQEutV0VncxgnIRKyXTrK
-	h3OUqhGZ+QFlaa3W90uKvvx9HjLvn5/rRsNa1Gc65YaPSkD7mXSy8X9R/V+fvK0ZPYglnKCEJ42WV
-	8g4BZckcsQSo/T0k27jnBqe4Cz+dQ3XOtUhd1IUXQxrl8eKF1fUnFPcTJlGSOzBnjPz8Vpbqny/3j
-	ui0ZkX+Qt1n7oGDG2YoZgNQgkezzHqudk9zmyn2AIGkf3rAHWGlGbxePkaAYdJjX8FfmZIZaj9Co/
-	nBjJG7JB7Uc3kCfNslS9953x1NA8gB4p9IoR6jJzFnnFknDsVE3r2BDYImgERn/hLWQ4EW28P0IRq
-	co8MdlCw==;
+	bh=AQy/AVpcf6nocqEPr2r2lilyVn9dXFeimCksJLoRHuc=; b=Palsxr8vr/Eetfy5GPDdH0kVue
+	cQSvIQU2F5AS7yHpFIS8yxQhIxB9jpHGCwEmQusSpzr55/yUNkyD7ieirjzAG+dyR29p9L07S2yrM
+	DfZ2J27GghLs0nPetP/bv18Tu0dZ/MU+JC9MvCDWXvQqpNWRQBM18SRg3oqxsw4VI7UpiG1cHMYg4
+	KZnXwsxPq+5apfhpO/I8Holxf38ZV6UvCRCFyGDnio71trFiJcF3vUWhCcu8rhG8CqKjah1bX4M3I
+	zjbAhqrsapon1qFRo7tIZf8i2Nrwk8p42iWE8czRCs3Vv+gsVFu965fCyjOloh9LP3wh4Y5sZF/gi
+	uDizocfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxncb-00GY4L-Ii; Wed, 23 Nov 2022 11:08:53 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1oxnqi-00Gdis-TB; Wed, 23 Nov 2022 11:23:28 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxncL-00GXvB-0m; Wed, 23 Nov 2022 11:08:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1669201717; x=1700737717;
-  h=message-id:date:mime-version:to:cc:references:from:
-   subject:in-reply-to:content-transfer-encoding;
-  bh=nEqvAW5e5WrGa/oW+eUTBhZKa268bM9z28Wl13BAzN8=;
-  b=oAOKg5NaXnouLhXEr9uFEYaxDsGyMMr8I/eBuk+ybQI1dTlIsJkCDSwp
-   Q1Gff3cmeIFinzyJ9EOdB9Ozev60FGB2J/9I1sivZaK7FKYMlRc0wleON
-   ErDw75T1+YBCCgN7GS6nPh/uCb+bH8yFKgKeuBjpvAgsdSIR7Ud7sUHj+
-   j8IxHygdJwbCxjFzeB3lJ3pUnwsYJ14DJF4P+G5PAyd95H0kqpNx0HmRJ
-   PipG2MLB2G8IeAe/hGZ86Mx4nOdMbedvOVfCRv+hJx/2H+68pyuYP2aBv
-   A6gGjxPakFT2CFI4hfVm4gGWV46NtxihMOK7HjulHSeCkCXcl3FSc5/IP
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10539"; a="376187057"
-X-IronPort-AV: E=Sophos;i="5.96,187,1665471600"; 
-   d="scan'208";a="376187057"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2022 03:08:34 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10539"; a="766683403"
-X-IronPort-AV: E=Sophos;i="5.96,187,1665471600"; 
-   d="scan'208";a="766683403"
-Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.199]) ([10.237.72.199])
-  by orsmga004.jf.intel.com with ESMTP; 23 Nov 2022 03:08:30 -0800
-Message-ID: <a384d15d-c1df-160c-030b-fddd5d965996@linux.intel.com>
-Date: Wed, 23 Nov 2022 13:10:08 +0200
+	id 1oxnqH-00Gdbk-M7; Wed, 23 Nov 2022 11:23:03 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C0EA86602AA1;
+	Wed, 23 Nov 2022 11:22:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669202579;
+	bh=NwKmpaNcpbD7LP5LEcTP4r+ZafVpwkZH2doF2FPT2FA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=IEO4VhcCJqOVvSnNfKrgM/79lZKPBHuXXAjSFloFJTCeQRCN7qhCP7cMj//jK8Cxl
+	 E+CSWnWfFosMFC0zYkWwidESQ51LlagQYHo2jKcCbjEYwuQgLM5X69YdxwofqIOX/x
+	 VSJ6qrW5/0h1HEdYixVM5EpdjcqE5xCJElopRDNaR6cCHZXyjO24ikD5Jqpdyj96Xa
+	 GjAjz/1kw8YduVJ3gNhelUhd+a6eVnel8nLOBbbwjPcX15fCVhdLPCAT5F6fHrsuqJ
+	 YrIfxQWj8zr7H/vSmqy6m9NM56xaRKt5GrzwYd3Ouu7mGH1kXU4wbLBeAZbdwN8NM0
+	 n9D1ohwg4uf5A==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: tglx@linutronix.de
+Cc: maz@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	youlin.pei@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 2/4] dt-bindings: interrupt-controller: mediatek,cirq: Document MT8192
+Date: Wed, 23 Nov 2022 12:22:47 +0100
+Message-Id: <20221123112249.98281-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221123112249.98281-1-angelogioacchino.delregno@collabora.com>
+References: <20221123112249.98281-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.2.2
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
-References: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
-Content-Language: en-US
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [PATCH] usb: host: xhci-mtk: omit shared hcd if either root hub
- has no ports
-In-Reply-To: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_030837_207174_6CB181B6 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20221123_032301_871993_7AE3C5CA 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,92 +80,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.11.2022 13.01, Chunfeng Yun wrote:
-> There is error log when add a usb3 root hub without ports:
-> "hub 4-0:1.0: config failed, hub doesn't have any ports! (err -19)"
-> 
-> so omit the shared hcd if either of the root hubs has no ports, but
-> usually there is no usb3 port.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   drivers/usb/host/xhci-mtk.c | 72 +++++++++++++++++++++++--------------
->   1 file changed, 46 insertions(+), 26 deletions(-)
-> 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 01705e559c42..cff3c4aea036 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -485,6 +485,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->   	const struct hc_driver *driver;
->   	struct xhci_hcd *xhci;
->   	struct resource *res;
-> +	struct usb_hcd *usb3_hcd;
->   	struct usb_hcd *hcd;
->   	int ret = -ENODEV;
->   	int wakeup_irq;
-> @@ -593,6 +594,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->   
->   	xhci = hcd_to_xhci(hcd);
->   	xhci->main_hcd = hcd;
-> +	xhci->allow_single_roothub = 1;
->   
->   	/*
->   	 * imod_interval is the interrupt moderation value in nanoseconds.
-> @@ -602,24 +604,29 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->   	xhci->imod_interval = 5000;
->   	device_property_read_u32(dev, "imod-interval-ns", &xhci->imod_interval);
->   
-> -	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
-> -			dev_name(dev), hcd);
-> -	if (!xhci->shared_hcd) {
-> -		ret = -ENOMEM;
-> -		goto disable_device_wakeup;
-> -	}
-> -
->   	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
->   	if (ret)
-> -		goto put_usb3_hcd;
-> +		goto disable_device_wakeup;
->   
-> -	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
-> +	if (!xhci_has_one_roothub(xhci)) {
-> +		xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
-> +							 dev_name(dev), hcd);
-> +		if (!xhci->shared_hcd) {
-> +			ret = -ENOMEM;
-> +			goto dealloc_usb2_hcd;
-> +		}
-> +	}
-> +
-> +	usb3_hcd = xhci_get_usb3_hcd(xhci);
-> +	if (usb3_hcd && HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
->   	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
-> -		xhci->shared_hcd->can_do_streams = 1;
-> +		usb3_hcd->can_do_streams = 1;
->   
-> -	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-> -	if (ret)
-> -		goto dealloc_usb2_hcd;
-> +	if (xhci->shared_hcd) {
-> +		ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-> +		if (ret)
-> +			goto put_usb3_hcd;
-> +	}
->   
->   	if (wakeup_irq > 0) {
->   		ret = dev_pm_set_dedicated_wake_irq_reverse(dev, wakeup_irq);
-	
-dev_pm_set_dedicated_wake_irq_reverse() can be called with just one hcd, if it fails
-it will goto dealloc_usb3_hcd:
+Add compatible to support the SYS_CIRQ controller found on MT8192.
 
-dealloc_usb3_hcd:
-	usb_remove_hcd(xhci->shared_hcd);   // xhci->shared_hcd may be null
-	xhci->shared_hcd = NULL; // causes usb_put_hcd() issues if shared_hcd exists
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/interrupt-controller/mediatek,mtk-cirq.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-put_usb3_hcd:
-         usb_put_hcd(xhci->shared_hcd); // shared_hcd may be set NULL above
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
+index 4f1132c077ff..fdcb4d8db818 100644
+--- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
++++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt2701-cirq
+           - mediatek,mt8135-cirq
+           - mediatek,mt8173-cirq
++          - mediatek,mt8192-cirq
+       - const: mediatek,mtk-cirq
+ 
+   reg:
+-- 
+2.38.1
 
--Mathias
-  
 
