@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42557C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Nov 2022 19:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C84C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 03:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5rkIIa47FdS0SsJdnX84P25cJLf/taO2XkXBmyE0rRY=; b=Xl2iBZlQYf7i1BsFybs8Gw4h2s
-	tk+zqJQ71wy0pgjIMg6jdJXlYPh3QcuRuX8f3edzOAJgUy97e2ujOvpS0mzqFoj8RWDdLf0AJ2AFG
-	u/GoI82DO0X01xx7SACwXGNgs0LJ1QNBp4sTaQ/wW/C/FOLoBWomc5hrq9Lid/TG9bkKmyxWeFS04
-	7LfnWyDNbqVwC3kK2+gWjYSqRicg/3PNtRfydO7pj1yNjCYRPSIdKjZNGWSYNOgoLdvXLShaTQvD7
-	dn/Nyw+PPrL+tBq5pe1JmIeoW/nj5hAn7+qQkojTbtwopskaaukJlIThxyJOOobh87xIAjWZM6A85
-	SBQwfMGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kGHy36ZtA8h4E5YA98AYuTnh9TORx8/F6wm6G4zU9PQ=; b=BZc3Xqe3AOXDNGSAcT/6N8rUcT
+	50GbNdTFB7ObJbG22BtdO02mf94ttiE6QoFMlAPqhxmXIKn/bSPR58PHYd93lZPGs4fv4owLFFcjX
+	Ghkh2WCAX7M94YFGSym7Pnq+JbcGD2F9h5q7FSWoTUEFFcf9uwcuuaQG09isRLDoN+3Pm+eJ9a3a1
+	sBmRlRpR5sFoQZRf1s4P+9oAk8qhR1CfjMpvwLHvzkg4+Z3wTj5iDKvgvwVOkp78oWu+fK1nrCLD1
+	pdR/sRMWeYc+iHfdEbHsC7D/SxZ/TmcWTfQEk+RBHB0DgBTRz2ZbezVL7c6iV4A6CuUdBz/NHud9N
+	8NRSt6Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxYiS-00BX9R-QE; Tue, 22 Nov 2022 19:13:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oxgpv-00DfxN-KI; Wed, 23 Nov 2022 03:54:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxYiP-00BX7o-AU
-	for linux-mediatek@lists.infradead.org; Tue, 22 Nov 2022 19:13:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EF51A61862;
-	Tue, 22 Nov 2022 19:13:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1573C433D6;
-	Tue, 22 Nov 2022 19:13:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669144431;
-	bh=BzY1j8UXgqGOA0ByBqb0ncDAZprAVGgykyt3l+5pq3I=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=FvdSvM74+9X3hcBwXgI4uMB7rtGHGx/59I+4LvuYaEzYeio9txt2f3TqhjlaOu1QS
-	 7oVp19yqyc7oL18KqtJq6SxUCfj78WcDRUqPqoSLmdOrkIXGILA4zZAWWC7jAA36oL
-	 E+KC7hvE9IuDmWdlAu2bQ5AUU1C/BB7vIh+h8kVuc4XZQIMeGnnBCFAs3M4LfCh2Ao
-	 RLrqoeiFMJTbShfnPg+WMW0d5Vkn6B89lEs2JcsPV++xnBCHp96UJCJ9q0bo1xn+N7
-	 0MsyIpwptBpU69Kp/dnSEphzsnQh3sJkkAfxrHlLhO8ooGa/HLcqF3rXTm7IV0KYBB
-	 8lxzh/w38exiA==
-Date: Tue, 22 Nov 2022 11:13:50 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
- lorenzo.bianconi@redhat.com, sujuan.chen@mediatek.com,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 5/5] net: ethernet: mtk_wed: add reset to
- tx_ring_setup callback
-Message-ID: <20221122111350.1f18aa44@kernel.org>
-In-Reply-To: <0193456e-0acb-75d6-8c6f-be0917990708@nbd.name>
-References: <cover.1669020847.git.lorenzo@kernel.org>
-	<9c4dded2b7a35a8e44b255a74e776a703359797b.1669020847.git.lorenzo@kernel.org>
-	<20221121121718.4cc2afe5@kernel.org>
-	<Y3vrKcqlmxksq1rC@lore-desk>
-	<20221121201917.080365ce@kernel.org>
-	<0193456e-0acb-75d6-8c6f-be0917990708@nbd.name>
+	id 1oxgpr-00Dfvz-G1
+	for linux-mediatek@lists.infradead.org; Wed, 23 Nov 2022 03:54:09 +0000
+X-UUID: eea296fd66054426ba857f1caa3d84d4-20221122
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=kGHy36ZtA8h4E5YA98AYuTnh9TORx8/F6wm6G4zU9PQ=;
+	b=ReyO6mpsS120LswVMKN5AlZmjDHnRGJBRcZHd2hdqTvJfagk2TmsoWrPiJBujbcd0f9xhesMdhFyypZ9ThSsT5AG41Z/rZMCuAIAZMy43yUPXRQPysnPzy5PLPnYKvlw5vnq4ruCxXYfxASDCb1HVfe38iACQBnEels96l/eJhI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:1646536f-088f-42d3-895b-724918d097b3,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:81080cf9-3a34-4838-abcf-dfedf9dd068e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: eea296fd66054426ba857f1caa3d84d4-20221122
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sujuan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1595048422; Tue, 22 Nov 2022 20:53:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 23 Nov 2022 11:23:22 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 23 Nov 2022 11:23:21 +0800
+From: Sujuan Chen <sujuan.chen@mediatek.com>
+To: <netdev@vger.kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, <linux-kernel@vger.kernel.org>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Evelyn
+ Tsai <evelyn.tsai@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Sujuan Chen
+	<sujuan.chen@mediatek.com>
+Subject: [PATCH,v2] net: ethernet: mtk_wed: add wcid overwritten support for wed v1
+Date: Wed, 23 Nov 2022 11:23:19 +0800
+Message-ID: <217932f091aa9d9cb5e876a2e958ca25f80f80b2.1668997816.git.sujuan.chen@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_111353_468598_7A228465 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20221122_195407_693806_CF832FF3 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,16 +78,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20221123032319.gPOAeRjaCAeUASAb3zFcA-qpI-8h_v_PL2XQM6SmBxA@z>
 
-On Tue, 22 Nov 2022 10:41:28 +0100 Felix Fietkau wrote:
-> > That's a tiny bit better, yes, saves the reader one lookup.
-> > 
-> > Are the ops here serving as a HAL or a way of breaking the dependency
-> > between the SoC/Eth and the WiFi drivers?  
-> The latter. For a multi-platform kernel it's important that the wifi 
-> driver does not depend on mtk_eth_soc directly, even when support for 
-> WED is enabled.
+All wed versions should enable the wcid overwritten feature,
+since the wcid size is controlled by the wlan driver.
 
-Ah, I see, that's more legit. In the stmmac case it was just a poorly
-designed abstraction. I'll try to remember not to complain again.
+Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+---
+v2: get rid of the unnecessary if condition
+---
+ drivers/net/ethernet/mediatek/mtk_wed.c      | 13 ++++++++-----
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h |  2 ++
+ include/linux/soc/mediatek/mtk_wed.h         |  3 +++
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 7d8842378c2b..a20093803e04 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -526,9 +526,9 @@ mtk_wed_dma_disable(struct mtk_wed_device *dev)
+ 			MTK_WED_WPDMA_RX_D_RX_DRV_EN);
+ 		wed_clr(dev, MTK_WED_WDMA_GLO_CFG,
+ 			MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK);
+-
+-		mtk_wed_set_512_support(dev, false);
+ 	}
++
++	mtk_wed_set_512_support(dev, false);
+ }
+ 
+ static void
+@@ -1290,9 +1290,10 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+ 		if (mtk_wed_rro_cfg(dev))
+ 			return;
+ 
+-		mtk_wed_set_512_support(dev, dev->wlan.wcid_512);
+ 	}
+ 
++	mtk_wed_set_512_support(dev, dev->wlan.wcid_512);
++
+ 	mtk_wed_dma_enable(dev);
+ 	dev->running = true;
+ }
+@@ -1358,11 +1359,13 @@ mtk_wed_attach(struct mtk_wed_device *dev)
+ 	}
+ 
+ 	mtk_wed_hw_init_early(dev);
+-	if (hw->version == 1)
++	if (hw->version == 1) {
+ 		regmap_update_bits(hw->hifsys, HIFSYS_DMA_AG_MAP,
+ 				   BIT(hw->index), 0);
+-	else
++	} else {
++		dev->rev_id = wed_r32(dev, MTK_WED_REV_ID);
+ 		ret = mtk_wed_wo_init(hw);
++	}
+ out:
+ 	if (ret)
+ 		mtk_wed_detach(dev);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+index 9e39dace95eb..873d50b9a6e6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
++++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+@@ -20,6 +20,8 @@ struct mtk_wdma_desc {
+ 	__le32 info;
+ } __packed __aligned(4);
+ 
++#define MTK_WED_REV_ID					0x004
++
+ #define MTK_WED_RESET					0x008
+ #define MTK_WED_RESET_TX_BM				BIT(0)
+ #define MTK_WED_RESET_TX_FREE_AGENT			BIT(4)
+diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
+index 8294978f4bca..1b1ef57609f7 100644
+--- a/include/linux/soc/mediatek/mtk_wed.h
++++ b/include/linux/soc/mediatek/mtk_wed.h
+@@ -85,6 +85,9 @@ struct mtk_wed_device {
+ 	int irq;
+ 	u8 version;
+ 
++	/* used by wlan driver */
++	u32 rev_id;
++
+ 	struct mtk_wed_ring tx_ring[MTK_WED_TX_QUEUES];
+ 	struct mtk_wed_ring rx_ring[MTK_WED_RX_QUEUES];
+ 	struct mtk_wed_ring txfree_ring;
+-- 
+2.18.0
+
 
