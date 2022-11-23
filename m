@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19BEDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 09:59:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD252C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 10:20:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uVx3KRo/C/G0ui2KpZnnX+FbaLjwsIru9WpAcauxMms=; b=k77ELShu72s6wHKGVANXCrMxaa
-	O4lk4i/+MVWoK3bTOg37mQRsw7yrQN0LCsqvGuhaybA349g3dYHMzMa1jlvr8ZtAwN+FU+zIJRLej
-	3uB05V6y9GIvjMuraZEJ11jYUlyczfzFnxgLRugtuG1SdNf0vvfmkTfAa2PNxPZOkraKOQL5Y4+ay
-	4M2+4sX1dOtO5K9ytbJDckSlOxcBkBCa3A+Xws2AevHfoLGf5Hg4GZkUXXUMRVPQQzwqhM496k3HX
-	fqDx4qUz4LraFQSqG5knVNZfipeZ6+0gAEHhtc8EHH57QdE8p428E/RP7H2idpuKNpLfbOIklcVUh
-	mJcgqyew==;
+	bh=evmqZal6P0Gh2KtjmqsYtpngHK9nsZsmphCRedKA3xE=; b=hSFX9BsfV737Gxv3gZufDuzC9F
+	6rlhfWO3qch/kbvrC3xIVHvaLxAXfEJNk8UnSHt2tBe1pYEjdULTz8N1m0indf5iRBjollORZPEYb
+	OwdI+znTiUN9V3uytPa7mxDjTogGxB+ZrnlHG/UYg+Biro6l9E67nVMkVanNf9d/RblLhORtn+360
+	Q9hRhhl4js6pBfbWutKcGa3Qy5n6Y3n+h9fjIRILpri0NhPVH+BChs6d1M3ySBUIh3SEDMZ4fOKAr
+	21tMZ0te9/Chb+Fn7XoCP++itbVc+VYoFIjsap10zAs+FLZCuuPmCJQlYAFnnivn2ZIJw7z3OMntl
+	lgZiyCYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxmXg-00GAAF-Gl; Wed, 23 Nov 2022 09:59:44 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1oxmrb-00GJTc-4p; Wed, 23 Nov 2022 10:20:19 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxmWF-00G9OA-0b; Wed, 23 Nov 2022 09:58:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=uVx3KRo/C/G0ui2KpZnnX+FbaLjwsIru9WpAcauxMms=; b=TnjRoNGm8ZtagZSU01NBuZbUgN
-	TF9p571I8n1UZ/crkxuuuwkeLdss6gCnfZNpvjIclMuWKAf/+F7dStFP8QEL3fHcXCw0bh43Wi3A5
-	PWVHsE72xpjm53xMDomO5sswFbwj4pUXP4o8BSNtIc9pM6tt07k0lgI+mgMSC9CLG8xY=;
-Received: from p200300daa7225c0894d890dd9e4669b3.dip0.t-ipconnect.de ([2003:da:a722:5c08:94d8:90dd:9e46:69b3] helo=Maecks.lan)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1oxmVy-003vzk-8S; Wed, 23 Nov 2022 10:57:58 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Russell King <linux@armlinux.org.uk>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 5/5] net: ethernet: mtk_eth_soc: drop generic vlan rx offload, only use DSA untagging
-Date: Wed, 23 Nov 2022 10:57:54 +0100
-Message-Id: <20221123095754.36821-5-nbd@nbd.name>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221123095754.36821-1-nbd@nbd.name>
-References: <20221123095754.36821-1-nbd@nbd.name>
+	id 1oxmrQ-00GJPy-96; Wed, 23 Nov 2022 10:20:09 +0000
+Received: by mail-wr1-x429.google.com with SMTP id bs21so28676293wrb.4;
+        Wed, 23 Nov 2022 02:20:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=evmqZal6P0Gh2KtjmqsYtpngHK9nsZsmphCRedKA3xE=;
+        b=lkh9GncI+CNngHOJwLpl5TTT0pzTnHj78uPilgOF9t71J+w51UpkVUSfzl0VkzLb4s
+         CTHaQcIifgKEM+P8bw9mPpIT9jIwxu6DcVxVfp7bLcT4YCLo4azv516Cz6/82DsaKDy+
+         dXimePNiTsxoOLOfTkelN6SaS9fxtyIbB4D3gDJGtwbnGDaPLjKPieoW3+ynnVXErG6I
+         QjLW6PQ1+gUrnjUnVU96UbftOBk4QVupMII4tnGGl42yZ3be69RhlVAoVlmHMd0CFOxA
+         6DcOvWMUHgVF+5OY7dYnQ4d6OowIf29f2RTVH7kImDDS/5n3tJQPGU/1+sZbaXP4GDgE
+         5Lew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=evmqZal6P0Gh2KtjmqsYtpngHK9nsZsmphCRedKA3xE=;
+        b=qjIOzAFSUJYi9zYKwDvRiU3r2kM1IznNJhSATlgYMU2U2lWKOC7OcKcJHTmM9Ik134
+         Tt98d1uyha0Q2uTzR07GIek2LIbSTiQ8YPANToIJjfPEpHkhYis5kAUoPpaCU/fyN5LP
+         lgodujmQomILzWGceaOE8rpaW9GlmUO3faFNHaUnVRgSFpxkG5FeWCPbrkdkxKEk2Srn
+         NbW501pefZAUroiYuk4N4SEfPy6qRo62Cu4lAGWUHgJY/hPng4iqrQaAMmxpXQaqiCRk
+         A05GHBRO1zmLzZoRPs2EZT2gjCFx4pB/TMqupoRzvI+7fDJlnVGyMbPsX0T4CUBUiYvx
+         WjyA==
+X-Gm-Message-State: ANoB5plxkKh2+XuVg5DcVG1W0WuvRFqSeudwmdiGJIFLvEr5Fxwzdm5Y
+	vJD12nQcz9m9nNb/skQbVjU=
+X-Google-Smtp-Source: AA0mqf4VoZcQFHNMjX7NzjbJPyyRNRq8XZnr59GZjTGNVCKozWfAGWsr4g0ZjkqCfYy/YSJJLcWrIQ==
+X-Received: by 2002:adf:f805:0:b0:236:ef0b:68c5 with SMTP id s5-20020adff805000000b00236ef0b68c5mr17363638wrp.373.1669198804459;
+        Wed, 23 Nov 2022 02:20:04 -0800 (PST)
+Received: from [192.168.1.131] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id f14-20020a05600c154e00b003c6f3e5ba42sm1898268wmg.46.2022.11.23.02.20.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Nov 2022 02:20:03 -0800 (PST)
+Message-ID: <ce1c6a1a-9183-e56d-6757-947f5fc8133d@gmail.com>
+Date: Wed, 23 Nov 2022 11:20:02 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v1] soc: mediatek: mtk-pm-domains: Allow mt8186 ADSP
+ default power on
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: allen-kh.cheng@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221012075434.30009-1-tinghan.shen@mediatek.com>
+Content-Language: en-US
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221012075434.30009-1-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_015815_230995_FA7B95FF 
-X-CRM114-Status: GOOD (  20.36  )
+X-CRM114-CacheID: sfid-20221123_022008_380509_31E4CC91 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,194 +93,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Through testing I found out that hardware vlan rx offload support seems to
-have some hardware issues. At least when using multiple MACs and when receiving
-tagged packets on the secondary MAC, the hardware can sometimes start to emit
-wrong tags on the first MAC as well.
 
-In order to avoid such issues, drop the feature configuration and use the
-offload feature only for DSA hardware untagging on MT7621/MT7622 devices which
-only use one MAC.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 101 ++++++++------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |   1 -
- 2 files changed, 39 insertions(+), 63 deletions(-)
+On 12/10/2022 09:54, Tinghan Shen wrote:
+> In the use case of configuring the access permissions of the ADSP core,
+> the mt8186 SoC ADSP power will be switched on in the bootloader because
+> the permission control registers are located in the ADSP subsys.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index e63d2c034ca3..d5843660f259 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2040,29 +2040,16 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
- 			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
- 
--		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
--			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
--				if (trxd.rxd3 & RX_DMA_VTAG_V2)
--					__vlan_hwaccel_put_tag(skb,
--						htons(RX_DMA_VPID(trxd.rxd4)),
--						RX_DMA_VID(trxd.rxd4));
--			} else if (trxd.rxd2 & RX_DMA_VTAG) {
--				__vlan_hwaccel_put_tag(skb, htons(RX_DMA_VPID(trxd.rxd3)),
--						       RX_DMA_VID(trxd.rxd3));
--			}
--		}
--
- 		/* When using VLAN untagging in combination with DSA, the
- 		 * hardware treats the MTK special tag as a VLAN and untags it.
- 		 */
--		if (skb_vlan_tag_present(skb) && netdev_uses_dsa(netdev)) {
--			unsigned int port = ntohs(skb->vlan_proto) & GENMASK(2, 0);
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2) &&
-+		    (trxd.rxd2 & RX_DMA_VTAG) && netdev_uses_dsa(netdev)) {
-+			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
- 
- 			if (port < ARRAY_SIZE(eth->dsa_meta) &&
- 			    eth->dsa_meta[port])
- 				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
--
--			__vlan_hwaccel_clear_tag(skb);
- 		}
- 
- 		skb_record_rx_queue(skb, 0);
-@@ -2885,29 +2872,11 @@ static netdev_features_t mtk_fix_features(struct net_device *dev,
- 
- static int mtk_set_features(struct net_device *dev, netdev_features_t features)
- {
--	struct mtk_mac *mac = netdev_priv(dev);
--	struct mtk_eth *eth = mac->hw;
- 	netdev_features_t diff = dev->features ^ features;
--	int i;
- 
- 	if ((diff & NETIF_F_LRO) && !(features & NETIF_F_LRO))
- 		mtk_hwlro_netdev_disable(dev);
- 
--	/* Set RX VLAN offloading */
--	if (!(diff & NETIF_F_HW_VLAN_CTAG_RX))
--		return 0;
--
--	mtk_w32(eth, !!(features & NETIF_F_HW_VLAN_CTAG_RX),
--		MTK_CDMP_EG_CTRL);
--
--	/* sync features with other MAC */
--	for (i = 0; i < MTK_MAC_COUNT; i++) {
--		if (!eth->netdev[i] || eth->netdev[i] == dev)
--			continue;
--		eth->netdev[i]->features &= ~NETIF_F_HW_VLAN_CTAG_RX;
--		eth->netdev[i]->features |= features & NETIF_F_HW_VLAN_CTAG_RX;
--	}
--
- 	return 0;
- }
- 
-@@ -3207,30 +3176,6 @@ static int mtk_open(struct net_device *dev)
- 	struct mtk_eth *eth = mac->hw;
- 	int i, err;
- 
--	if (mtk_uses_dsa(dev) && !eth->prog) {
--		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
--			struct metadata_dst *md_dst = eth->dsa_meta[i];
--
--			if (md_dst)
--				continue;
--
--			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
--						    GFP_KERNEL);
--			if (!md_dst)
--				return -ENOMEM;
--
--			md_dst->u.port_info.port_id = i;
--			eth->dsa_meta[i] = md_dst;
--		}
--	} else {
--		/* Hardware special tag parsing needs to be disabled if at least
--		 * one MAC does not use DSA.
--		 */
--		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
--		val &= ~MTK_CDMP_STAG_EN;
--		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
--	}
--
- 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
- 	if (err) {
- 		netdev_err(dev, "%s: could not attach PHY: %d\n", __func__,
-@@ -3267,6 +3212,39 @@ static int mtk_open(struct net_device *dev)
- 	phylink_start(mac->phylink);
- 	netif_tx_start_all_queues(dev);
- 
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return 0;
-+
-+	if (mtk_uses_dsa(dev) && !eth->prog) {
-+		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+			struct metadata_dst *md_dst = eth->dsa_meta[i];
-+
-+			if (md_dst)
-+				continue;
-+
-+			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
-+						    GFP_KERNEL);
-+			if (!md_dst)
-+				return -ENOMEM;
-+
-+			md_dst->u.port_info.port_id = i;
-+			eth->dsa_meta[i] = md_dst;
-+		}
-+	} else {
-+		/* Hardware special tag parsing needs to be disabled if at least
-+		 * one MAC does not use DSA.
-+		 */
-+		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		val &= ~MTK_CDMP_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
-+
-+		val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
-+		val &= ~MTK_CDMQ_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMQ_IG_CTRL);
-+
-+		mtk_w32(eth, 0, MTK_CDMP_EG_CTRL);
-+	}
-+
- 	return 0;
- }
- 
-@@ -3593,10 +3571,9 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
- 		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
- 		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
--	}
- 
--	/* Enable RX VLan Offloading */
--	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-+		mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-+	}
- 
- 	/* set interrupt delays based on current Net DIM sample */
- 	mtk_dim_rx(&eth->rx_dim.work);
-@@ -4197,7 +4174,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 		eth->netdev[id]->hw_features |= NETIF_F_LRO;
- 
- 	eth->netdev[id]->vlan_features = eth->soc->hw_features &
--		~(NETIF_F_HW_VLAN_CTAG_TX | NETIF_F_HW_VLAN_CTAG_RX);
-+		~NETIF_F_HW_VLAN_CTAG_TX;
- 	eth->netdev[id]->features |= eth->soc->hw_features;
- 	eth->netdev[id]->ethtool_ops = &mtk_ethtool_ops;
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 628ed72911bd..fa1907b62ffd 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -48,7 +48,6 @@
- #define MTK_HW_FEATURES		(NETIF_F_IP_CSUM | \
- 				 NETIF_F_RXCSUM | \
- 				 NETIF_F_HW_VLAN_CTAG_TX | \
--				 NETIF_F_HW_VLAN_CTAG_RX | \
- 				 NETIF_F_SG | NETIF_F_ALL_TSO | \
- 				 NETIF_F_IPV6_CSUM |\
- 				 NETIF_F_HW_TC)
--- 
-2.38.1
+Do we need a fixes tag here?
+My bet is:
+Fixes: 88590cbc1703 ("soc: mediatek: pm-domains: Add support for mt8186")
 
+Or is this not yet a problem but needed to be able to implement access 
+permission configuration in the ADSP driver?
+
+Regards,
+Matthias
+
+> ---
+>   drivers/soc/mediatek/mt8186-pm-domains.h | 4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mt8186-pm-domains.h b/drivers/soc/mediatek/mt8186-pm-domains.h
+> index 108af61854a3..fce86f79c505 100644
+> --- a/drivers/soc/mediatek/mt8186-pm-domains.h
+> +++ b/drivers/soc/mediatek/mt8186-pm-domains.h
+> @@ -304,7 +304,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
+>   		.ctl_offs = 0x9FC,
+>   		.pwr_sta_offs = 0x16C,
+>   		.pwr_sta2nd_offs = 0x170,
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>   	},
+>   	[MT8186_POWER_DOMAIN_ADSP_INFRA] = {
+>   		.name = "adsp_infra",
+> @@ -312,7 +311,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
+>   		.ctl_offs = 0x9F8,
+>   		.pwr_sta_offs = 0x16C,
+>   		.pwr_sta2nd_offs = 0x170,
+> -		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
+>   	},
+>   	[MT8186_POWER_DOMAIN_ADSP_TOP] = {
+>   		.name = "adsp_top",
+> @@ -332,7 +330,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
+>   				MT8186_TOP_AXI_PROT_EN_3_CLR,
+>   				MT8186_TOP_AXI_PROT_EN_3_STA),
+>   		},
+> -		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_ACTIVE_WAKEUP,
+> +		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_ACTIVE_WAKEUP,
+>   	},
+>   };
+>   
 
