@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C09EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 11:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB75EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 11:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LhbrjQZbYhHn2g0+i2QtWopM9nry/S/jHRoyDq8716I=; b=lNvvShj2yxkbSl3s8BYLqZF+sc
-	CgSShgsqhOpRPHvbhVXJTUzd04+uYDIOZRsC3uwLaDCoxCEYZD/UI3ktjgxTpXUeIpGW4/GGFggiU
-	RYE/N2vFttWamES/17+aGh0hdNL4kh47Uf+1JAevGrI1JNZ2mNvSojpmtUmjpkKO4afUNkSMkI4UU
-	9nOCJuUcdn+vJJh4PPTuu21y7wdlnRQgW3oNb+DknXQH1/xxl0/wLTYPjpdGnFjJe/pEZBd3Ymaox
-	LHDCOJIuzI8XVI2NNe90doK+Nig0XLdxglj96DOWBZePkdmFjjpBxAlnPP357ROybyGfOkzl4ukbn
-	81iQIE9g==;
+	bh=Jg6k2EBgIItsO1ImQVATwrquNffE9UfKIwGEVOtqEn8=; b=UTdDzotxrme3clwAeTIUQN09sc
+	/9lG3NH2YWxny3HBiQnokw9q/ktOROfXZyPc6UcaTSANBZmcMWed68vzhn44bm669IKwiiHIameoA
+	V2ZB7iYbDcwESMzA55gIMKbayhk6mGUEOnMfkWdTGspfPDvoLlkQsDJwYr7Ejzaxl3iAyET43AZu5
+	6CaIBS9AuWm6436lk0i424Wxyc9vLgyJWyhl5bXw5f/M/+qi8D0m1yPmIXlpoB9jds4gRgxAi+si2
+	KUWcwVoi5CJar5kPTV0O8noJmD0zUxLn6JQ+JWg8js4O2hiYxCq57+B6WAaDeGNM4p4VB/1/ETB7v
+	xrauBfQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxnsO-00GeSV-P8; Wed, 23 Nov 2022 11:25:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oxnsw-00Ger6-Vh; Wed, 23 Nov 2022 11:25:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxnqH-00Gdc5-M7; Wed, 23 Nov 2022 11:23:04 +0000
+	id 1oxnqL-00GdcX-Bu; Wed, 23 Nov 2022 11:23:06 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C0796602ACF;
-	Wed, 23 Nov 2022 11:22:59 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C7426602AE2;
+	Wed, 23 Nov 2022 11:23:00 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1669202580;
-	bh=EJD6I92pNgZOKf1m2pbzHsK9AlMSapcDK1LvROWOq0M=;
+	bh=SS5h0AcRIuCYZwAghSxIqcJiZsZkfQ+w6DNodr6pz3o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ya21qjtuxUFM+5FEgG20Rs6g74UDEH3ts3Hd60N6n3REVkhXycLdCqILmpfeK8W1F
-	 lKc4T8aRIy1/X9JII8eIcGTiAEqYI2l0ifDIoTc95P7m7uU2YrUzdvLmGdXlsVNefS
-	 Eq8AP362tyBB2/8QMqcRi4v/v4gjsO13RLL1UWfBDqOMlc6/XlI4zyeZSopCYt//8G
-	 5X+PFZ4e6i890DkG8CFKynvsSopdp90/A5UHo6SJp5xNZgxNM2Ke4ncVfcE36N36Vk
-	 RZcqnHk8XoXkaEle5+CIUnJWraO6bVeCpQSWQ6HNX8YW09PEWdIMAZ678OguNKv2F8
-	 F6ZNlwY1AYnfA==
+	b=V20LmNqEDP+RZ0vAsiU/DQZGF5/FzpEzVBLshk46yMDkXxGYO4LWXx9JEi0+gutz8
+	 7kkJmsbuS0HechadCgfeRB/dAcVA+ZGOHCZdkS6XOipqkEsbdkZ+W80o0YoLoZryIg
+	 E+rNNVZNt9nbw0qBMh3Axy7Y0Do+7bzWppxD8u7S4leSJnC7gqdZFLMOZAKAx7RWo3
+	 nzHCHgq83zmjzyDz+ettN+5uq7XAQBcTtioiPlt1XLAKPiDWkdLlfGEXmH1f2XU2m7
+	 oVFRA55Z8wDuOJOMAzg/E+QXMHFj31rhFH7LxhejhrrflUQsKd/Y7jneWSXQLWo7tz
+	 lvioMV7HT09qg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: tglx@linutronix.de
 Cc: maz@kernel.org,
@@ -53,17 +53,17 @@ Cc: maz@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 3/4] irqchip: irq-mtk-cirq: Move register offsets to const array
-Date: Wed, 23 Nov 2022 12:22:48 +0100
-Message-Id: <20221123112249.98281-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/4] irqchip: irq-mtk-cirq: Add support for System CIRQ on MT8192
+Date: Wed, 23 Nov 2022 12:22:49 +0100
+Message-Id: <20221123112249.98281-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221123112249.98281-1-angelogioacchino.delregno@collabora.com>
 References: <20221123112249.98281-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_032302_018297_63DE9D19 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20221123_032305_564551_0629EFA4 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,184 +78,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation to add support for new SoCs having a different
-register layout, add an enumeration that documents register
-offsets and move the definitions for the same to a u32 array;
+On some SoCs the System CIRQ register layout is slightly different,
+as there are more registers per function and in some cases other
+differences later in the layout: this is seen on at least MT8192,
+but it's also valid for some other "contemporary" SoCs both for
+Chromebooks and for smartphones.
 
-Selecting the right register offsets array is done by adding an
-of_device_id array containing all of the currently supported
-compatible strings pointing to the "v1" offsets array (as data):
-since no devicetree declares the `mediatek,mtk-cirq` compatible
-without a SoC-specific one, it wasn't necessary to provide any
-legacy fallback.
-
-Every usage of the aforemementioned definitions was changed to
-get a register address through a newly introduced `mtk_cirq_reg()`
-accessor.
-
-This change brings no functional changes.
+Add the new "v2" register layout and use it if the compatible
+"mediatek,mt8192-cirq" is found.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/irqchip/irq-mtk-cirq.c | 78 ++++++++++++++++++++++++++--------
- 1 file changed, 61 insertions(+), 17 deletions(-)
+ drivers/irqchip/irq-mtk-cirq.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
-index 9bca0918078e..4d873d2ba0fd 100644
+index 4d873d2ba0fd..57452d389b47 100644
 --- a/drivers/irqchip/irq-mtk-cirq.c
 +++ b/drivers/irqchip/irq-mtk-cirq.c
-@@ -15,14 +15,29 @@
- #include <linux/slab.h>
- #include <linux/syscore_ops.h>
- 
--#define CIRQ_ACK	0x40
--#define CIRQ_MASK_SET	0xc0
--#define CIRQ_MASK_CLR	0x100
--#define CIRQ_SENS_SET	0x180
--#define CIRQ_SENS_CLR	0x1c0
--#define CIRQ_POL_SET	0x240
--#define CIRQ_POL_CLR	0x280
--#define CIRQ_CONTROL	0x300
-+enum mtk_cirq_reg_index {
-+	CIRQ_STA,
-+	CIRQ_ACK,
-+	CIRQ_MASK_SET,
-+	CIRQ_MASK_CLR,
-+	CIRQ_SENS_SET,
-+	CIRQ_SENS_CLR,
-+	CIRQ_POL_SET,
-+	CIRQ_POL_CLR,
-+	CIRQ_CONTROL
-+};
-+
-+static const u32 mtk_cirq_regs_v1[] = {
-+	[CIRQ_STA]	= 0x0,
-+	[CIRQ_ACK]	= 0x40,
-+	[CIRQ_MASK_SET]	= 0xc0,
-+	[CIRQ_MASK_CLR]	= 0x100,
-+	[CIRQ_SENS_SET]	= 0x180,
-+	[CIRQ_SENS_CLR]	= 0x1c0,
-+	[CIRQ_POL_SET]	= 0x240,
-+	[CIRQ_POL_CLR]	= 0x280,
-+	[CIRQ_CONTROL]	= 0x300,
-+};
- 
- #define CIRQ_EN	0x1
- #define CIRQ_EDGE	0x2
-@@ -32,18 +47,28 @@ struct mtk_cirq_chip_data {
- 	void __iomem *base;
- 	unsigned int ext_irq_start;
- 	unsigned int ext_irq_end;
-+	const u32 *offsets;
- 	struct irq_domain *domain;
+@@ -39,6 +39,18 @@ static const u32 mtk_cirq_regs_v1[] = {
+ 	[CIRQ_CONTROL]	= 0x300,
  };
  
- static struct mtk_cirq_chip_data *cirq_data;
- 
--static void mtk_cirq_write_mask(struct irq_data *data, unsigned int offset)
-+static inline void __iomem *mtk_cirq_reg(struct mtk_cirq_chip_data *chip_data,
-+					 enum mtk_cirq_reg_index idx,
-+					 unsigned int cirq_num)
-+{
-+	void __iomem *reg = chip_data->base + chip_data->offsets[idx];
-+
-+	return reg + (cirq_num / 32) * 4;
-+}
-+
-+static void mtk_cirq_write_mask(struct irq_data *data, enum mtk_cirq_reg_index idx)
- {
- 	struct mtk_cirq_chip_data *chip_data = data->chip_data;
- 	unsigned int cirq_num = data->hwirq;
- 	u32 mask = 1 << (cirq_num % 32);
- 
--	writel_relaxed(mask, chip_data->base + offset + (cirq_num / 32) * 4);
-+	writel_relaxed(mask, mtk_cirq_reg(chip_data, idx, cirq_num));
- }
- 
- static void mtk_cirq_mask(struct irq_data *data)
-@@ -160,6 +185,7 @@ static const struct irq_domain_ops cirq_domain_ops = {
- #ifdef CONFIG_PM_SLEEP
- static int mtk_cirq_suspend(void)
- {
-+	void __iomem *reg;
- 	u32 value, mask;
- 	unsigned int irq, hwirq_num;
- 	bool pending, masked;
-@@ -200,31 +226,34 @@ static int mtk_cirq_suspend(void)
- 				continue;
- 		}
- 
-+		reg = mtk_cirq_reg(cirq_data, CIRQ_ACK, i);
- 		mask = 1 << (i % 32);
--		writel_relaxed(mask, cirq_data->base + CIRQ_ACK + (i / 32) * 4);
-+		writel_relaxed(mask, reg);
- 	}
- 
- 	/* set edge_only mode, record edge-triggerd interrupts */
- 	/* enable cirq */
--	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
-+	reg = mtk_cirq_reg(cirq_data, CIRQ_CONTROL, 0);
-+	value = readl_relaxed(reg);
- 	value |= (CIRQ_EDGE | CIRQ_EN);
--	writel_relaxed(value, cirq_data->base + CIRQ_CONTROL);
-+	writel_relaxed(value, reg);
- 
- 	return 0;
- }
- 
- static void mtk_cirq_resume(void)
- {
-+	void __iomem *reg = mtk_cirq_reg(cirq_data, CIRQ_CONTROL, 0);
- 	u32 value;
- 
- 	/* flush recorded interrupts, will send signals to parent controller */
--	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
--	writel_relaxed(value | CIRQ_FLUSH, cirq_data->base + CIRQ_CONTROL);
-+	value = readl_relaxed(reg);
-+	writel_relaxed(value | CIRQ_FLUSH, reg);
- 
- 	/* disable cirq */
--	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
-+	value = readl_relaxed(reg);
- 	value &= ~(CIRQ_EDGE | CIRQ_EN);
--	writel_relaxed(value, cirq_data->base + CIRQ_CONTROL);
-+	writel_relaxed(value, reg);
- }
- 
- static struct syscore_ops mtk_cirq_syscore_ops = {
-@@ -240,10 +269,18 @@ static void mtk_cirq_syscore_init(void)
- static inline void mtk_cirq_syscore_init(void) {}
- #endif
- 
-+static const struct of_device_id mtk_cirq_of_match[] = {
-+	{ .compatible = "mediatek,mt2701-cirq", .data = &mtk_cirq_regs_v1 },
-+	{ .compatible = "mediatek,mt8135-cirq", .data = &mtk_cirq_regs_v1 },
-+	{ .compatible = "mediatek,mt8173-cirq", .data = &mtk_cirq_regs_v1 },
-+	{ /* sentinel */ }
++static const u32 mtk_cirq_regs_v2[] = {
++	[CIRQ_STA]	= 0x0,
++	[CIRQ_ACK]	= 0x80,
++	[CIRQ_MASK_SET]	= 0x180,
++	[CIRQ_MASK_CLR]	= 0x200,
++	[CIRQ_SENS_SET]	= 0x300,
++	[CIRQ_SENS_CLR]	= 0x380,
++	[CIRQ_POL_SET]	= 0x480,
++	[CIRQ_POL_CLR]	= 0x500,
++	[CIRQ_CONTROL]	= 0x600,
 +};
 +
- static int __init mtk_cirq_of_init(struct device_node *node,
- 				   struct device_node *parent)
- {
- 	struct irq_domain *domain, *domain_parent;
-+	const struct of_device_id *match;
- 	unsigned int irq_num;
- 	int ret;
+ #define CIRQ_EN	0x1
+ #define CIRQ_EDGE	0x2
+ #define CIRQ_FLUSH	0x4
+@@ -273,6 +285,7 @@ static const struct of_device_id mtk_cirq_of_match[] = {
+ 	{ .compatible = "mediatek,mt2701-cirq", .data = &mtk_cirq_regs_v1 },
+ 	{ .compatible = "mediatek,mt8135-cirq", .data = &mtk_cirq_regs_v1 },
+ 	{ .compatible = "mediatek,mt8173-cirq", .data = &mtk_cirq_regs_v1 },
++	{ .compatible = "mediatek,mt8192-cirq", .data = &mtk_cirq_regs_v2 },
+ 	{ /* sentinel */ }
+ };
  
-@@ -274,6 +311,13 @@ static int __init mtk_cirq_of_init(struct device_node *node,
- 	if (ret)
- 		goto out_unmap;
- 
-+	match = of_match_node(mtk_cirq_of_match, node);
-+	if (!match) {
-+		ret = -ENODEV;
-+		goto out_unmap;
-+	}
-+	cirq_data->offsets = match->data;
-+
- 	irq_num = cirq_data->ext_irq_end - cirq_data->ext_irq_start + 1;
- 	domain = irq_domain_add_hierarchy(domain_parent, 0,
- 					  irq_num, node,
 -- 
 2.38.1
 
