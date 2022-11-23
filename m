@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21714C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 18:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4E5CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 20:00:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0y1sbJ9vFI4LVfc3u24iiCTU1Hx70cpkbSV6O0VdDbs=; b=Bd0w0fOlK1h5j87yuggZD4JQqy
-	CYugbgtMzgdOKajjqLupBE2k1riMGkfmO2MavHnAsw/ChViLbNCYbX4CF5afNaNXdLetESmFdxf9I
-	E07XVDutrS3fVrrIuRCHskodByvRpHVJQFIYc9KF3XDMScBvx5fp05KSHuoCNak/kZi7WBTNR/DW0
-	DnmmFzF2jWLRMbD4ODX1C24LmopE6SaAeptTZzS6d20KzV2+L4i587LD3B9+3YsHM2Dc9KVoM01Ys
-	aeN+Dac6OePFm4LlQhumKsipH+vizowLvngCHv9G+LgktYUIik/f608kOBdwx1GeckTBplUr5h0d9
-	ZsQbOfRg==;
+	bh=8MqiZGksT3UxUWNd4zRXhvcbQhKNqIPwNaE5Rb34cnk=; b=1/TRZ11BohOaTPTAdcELPwPTZg
+	U1/8SDTp82Z7gOWWC30w8iafm8BZ7sxTCI02vDrO/I02qQxDAqY6kb8xb1uHLOKl6vNvCJk3isrvr
+	jXTZm6hAqH7lGt6M9S44bnSJHgRhOcGaYn1ccipPFJk/DaZb7pCbL1hgNapVd6ngrLQytgiHHlet2
+	RGvFUQz3Y7Y15PrP2/8zaJa+ALeGjLR3vCtUTXSn2rdcolJ44yKZrLDc6OWXo7balddiveRfzXfqC
+	/YIME0ixT8qCejOoZ5BM+tpIiOrjIDlLDP9mOWxcmK49TmxuQvu01IZGkN2ztqrSqLdW8outfniNN
+	u+vSPs+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxuDW-001SoT-Ki; Wed, 23 Nov 2022 18:11:26 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oxvuc-0026Zh-KG; Wed, 23 Nov 2022 20:00:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxu8R-001Q3q-Rt; Wed, 23 Nov 2022 18:06:13 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 30EBA6600014;
-	Wed, 23 Nov 2022 18:06:05 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669226767;
-	bh=VkdBVLf6PQKIQJO5DDFSN1vQB/6ESgX35dSNtG4ynI8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PgoQBnUGv8ddeQErPYf+crVHXVCMUcSW/khqsSqmcAHWz5do81TouoAdsnSkVM39G
-	 X6SlkkwTySVDB/MXAcxhF3BdhYQAVzsxzoiBq2k2X3CbiLSGwvYBDO9qItMUotDDXC
-	 4RgWKv9Flkw6ABTo7Uisva7agqC+oEpvAskzZuZH3w0e+69tWAtV6WzUC7XKxoxmZC
-	 Kdyw6khXuXR9328AcpzjUi94/YSQo283G5IGMgB//FmFb67+t2vPDsyBjk+n71Gv0l
-	 zP/3MJkftdobYN8ChJkOyhq7CLlTCQTjiMmTj3QaYFp8FsML4frkA8FPLsHB+myJnZ
-	 4948FkBNCR0lw==
-Date: Wed, 23 Nov 2022 13:06:00 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
-	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsyk=?= <Allen-KH.Cheng@mediatek.com>
-Subject: Re: [PATCH v2,3/3] arm64: dts: mt8195: Add video decoder node
-Message-ID: <20221123180600.a4w5e2jzydwer7h6@notapiano>
-References: <20221110102834.8946-1-yunfei.dong@mediatek.com>
- <20221110102834.8946-3-yunfei.dong@mediatek.com>
+	id 1oxvuZ-0026WS-Ap
+	for linux-mediatek@lists.infradead.org; Wed, 23 Nov 2022 20:00:01 +0000
+X-UUID: 59ad656f77c647318f12894f2b86ddca-20221123
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8MqiZGksT3UxUWNd4zRXhvcbQhKNqIPwNaE5Rb34cnk=;
+	b=Pk76BrZQyaRyGYF0JmN1T0EQgyXFKoeBkD7icV4tZtyClX7c/BeL/KdNKP2RlzB6r2B7rsZaSGXb62e8fCpur1TZBxZVNtYvVR2TybItFAt1xEorlHlvsVQe7NT4VzgPFNIxTDbd+akFKV76uBQiWyfnJyqtd70Lipon9CJZ5UQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.12,REQID:b5c35db8-46d1-4fc1-b344-57062f8fcef0,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:62cd327,CLOUDID:dc2ba32f-2938-482e-aafd-98d66723b8a9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 59ad656f77c647318f12894f2b86ddca-20221123
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1003477636; Wed, 23 Nov 2022 12:59:47 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 24 Nov 2022 03:59:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 24 Nov 2022 03:59:13 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2 2/2] wifi: mt76: mt7915: enable per bandwidth power limit support
+Date: Thu, 24 Nov 2022 03:59:11 +0800
+Message-ID: <0ad3220cfe7c61480379d571700e202832d4372c.1669232969.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <9a67f1617249be2c73bb5900d2df971b682f8772.1669232969.git.ryder.lee@mediatek.com>
+References: <9a67f1617249be2c73bb5900d2df971b682f8772.1669232969.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221110102834.8946-3-yunfei.dong@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_100612_298293_039329C1 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20221123_115959_403345_2A8B78C5 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,111 +79,292 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 10, 2022 at 06:28:34PM +0800, Yunfei Dong wrote:
-> Add video decoder node to mt8195 device tree.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> Compared with v1:
-> - add description in yaml, and remove /* ... */ for each reg.
-> ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 63 ++++++++++++++++++++++++
->  1 file changed, 63 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 905d1a90b406..3ef7eef02415 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1874,6 +1874,69 @@
->  			power-domains = <&spm MT8195_POWER_DOMAIN_CAM>;
->  		};
->  
-> +		video-codec@18000000 {
-> +			compatible = "mediatek,mt8195-vcodec-dec";
-> +			mediatek,scp = <&scp>;
-> +			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
-> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+This power should override the per bandwidth max power that the
+device emits.
 
-Hi,
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v2 - add a missing lock
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 200 +++++++++++++++---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   |   9 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |   7 +
+ 3 files changed, 184 insertions(+), 32 deletions(-)
 
-similarly to what I've commented for the mt8192 node [1], having dma-ranges
-on this node causes IOMMU faults on the latest next. Since the iommu is already
-used in this node, please drop the dma-ranges property.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index fef0ec83185b..5c15233b1595 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -957,48 +957,198 @@ mt7915_xmit_queues_show(struct seq_file *file, void *data)
+ 
+ DEFINE_SHOW_ATTRIBUTE(mt7915_xmit_queues);
+ 
+-static int
+-mt7915_rate_txpower_show(struct seq_file *file, void *data)
++#define mt7915_txpower_puts(prefix, rate)					\
++({										\
++	len += scnprintf(buf + len, sz - len, "%-16s:", #prefix " (tmac)");	\
++	for (i = 0; i < mt7915_sku_group_len[rate]; i++, offs++)		\
++		len += scnprintf(buf + len, sz - len, " %6d", txpwr[offs]);	\
++	len += scnprintf(buf + len, sz - len, "\n");				\
++})
++
++#define mt7915_txpower_sets(rate, pwr, flag)			\
++({								\
++	offs += len;						\
++	len = mt7915_sku_group_len[rate];			\
++	if (mode == flag) {					\
++		for (i = 0; i < len; i++)			\
++			req.txpower_sku[offs + i] = pwr;	\
++	}							\
++})
++
++static ssize_t
++mt7915_rate_txpower_get(struct file *file, char __user *user_buf,
++			size_t count, loff_t *ppos)
+ {
+-	static const char * const sku_group_name[] = {
+-		"CCK", "OFDM", "HT20", "HT40",
+-		"VHT20", "VHT40", "VHT80", "VHT160",
+-		"RU26", "RU52", "RU106", "RU242/SU20",
+-		"RU484/SU40", "RU996/SU80", "RU2x996/SU160"
+-	};
+-	struct mt7915_phy *phy = file->private;
++	struct mt7915_phy *phy = file->private_data;
+ 	struct mt7915_dev *dev = phy->dev;
+-	s8 txpower[MT7915_SKU_RATE_NUM], *buf;
++	static const size_t sz = 2048;
++	int i, offs = 0, len = 0;
++	ssize_t ret;
++	char *buf;
++	s8 txpwr[MT7915_SKU_RATE_NUM];
+ 	u32 reg;
+-	int i, ret;
+ 
+-	ret = mt7915_mcu_get_txpower_sku(phy, txpower, sizeof(txpower));
++	buf = kzalloc(sz, GFP_KERNEL);
++	if (!buf)
++		return -ENOMEM;
++
++	ret = mt7915_mcu_get_txpower_sku(phy, txpwr, sizeof(txpwr));
+ 	if (ret)
+ 		return ret;
+ 
+ 	/* Txpower propagation path: TMAC -> TXV -> BBP */
+-	seq_printf(file, "\nPhy %d\n", phy != &dev->phy);
++	len += scnprintf(buf + len, sz - len,
++			 "\nPhy%d Tx power table (channel %d)\n",
++			 phy != &dev->phy, phy->mt76->chandef.chan->hw_value);
++	len += scnprintf(buf + len, sz - len, "%-16s  %6s %6s %6s %6s\n",
++			 " ", "1m", "2m", "5m", "11m");
++	mt7915_txpower_puts(CCK, SKU_CCK);
++
++	len += scnprintf(buf + len, sz - len,
++			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
++			 " ", "6m", "9m", "12m", "18m", "24m", "36m", "48m",
++			 "54m");
++	mt7915_txpower_puts(OFDM, SKU_OFDM);
++
++	len += scnprintf(buf + len, sz - len,
++			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
++			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4",
++			 "mcs5", "mcs6", "mcs7");
++	mt7915_txpower_puts(HT20, SKU_HT_BW20);
++
++	len += scnprintf(buf + len, sz - len,
++			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
++			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++			 "mcs6", "mcs7", "mcs32");
++	mt7915_txpower_puts(HT40, SKU_HT_BW40);
++
++	len += scnprintf(buf + len, sz - len,
++			 "%-16s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
++			 " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++			 "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11");
++	mt7915_txpower_puts(VHT20, SKU_VHT_BW20);
++	mt7915_txpower_puts(VHT40, SKU_VHT_BW40);
++	mt7915_txpower_puts(VHT80, SKU_VHT_BW80);
++	mt7915_txpower_puts(VHT160, SKU_VHT_BW160);
++	mt7915_txpower_puts(HE26, SKU_HE_RU26);
++	mt7915_txpower_puts(HE52, SKU_HE_RU52);
++	mt7915_txpower_puts(HE106, SKU_HE_RU106);
++	mt7915_txpower_puts(HE242, SKU_HE_RU242);
++	mt7915_txpower_puts(HE484, SKU_HE_RU484);
++	mt7915_txpower_puts(HE996, SKU_HE_RU996);
++	mt7915_txpower_puts(HE996x2, SKU_HE_RU2x996);
+ 
+-	for (i = 0, buf = txpower; i < ARRAY_SIZE(mt7915_sku_group_len); i++) {
+-		u8 mcs_num = mt7915_sku_group_len[i];
++	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_TPC_CTRL_STAT(phy->band_idx) :
++	      MT_WF_PHY_TPC_CTRL_STAT_MT7916(phy->band_idx);
+ 
+-		if (i >= SKU_VHT_BW20 && i <= SKU_VHT_BW160)
+-			mcs_num = 10;
++	len += scnprintf(buf + len, sz - len, "\nTx power (bbp)  : %6ld\n",
++			 mt76_get_field(dev, reg, MT_WF_PHY_TPC_POWER));
++
++	ret = simple_read_from_buffer(user_buf, count, ppos, buf, len);
++	kfree(buf);
++	return ret;
++}
++
++static ssize_t
++mt7915_rate_txpower_set(struct file *file, const char __user *user_buf,
++			size_t count, loff_t *ppos)
++{
++	struct mt7915_phy *phy = file->private_data;
++	struct mt7915_dev *dev = phy->dev;
++	struct mt76_phy *mphy = phy->mt76;
++	struct mt7915_mcu_txpower_sku req = {
++		.format_id = TX_POWER_LIMIT_TABLE,
++		.band_idx = phy->band_idx,
++	};
++	char buf[100];
++	int i, ret, pwr160 = 0, pwr80 = 0, pwr40 = 0, pwr20 = 0;
++	enum mac80211_rx_encoding mode;
++	u32 offs = 0, len = 0;
++
++	if (count >= sizeof(buf))
++		return -EINVAL;
++
++	if (copy_from_user(buf, user_buf, count))
++		return -EFAULT;
+ 
+-		mt76_seq_puts_array(file, sku_group_name[i], buf, mcs_num);
+-		buf += mt7915_sku_group_len[i];
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++	else
++		buf[count] = '\0';
++
++	if (sscanf(buf, "%u %u %u %u %u",
++		   &mode, &pwr160, &pwr80, &pwr40, &pwr20) != 5) {
++		dev_warn(dev->mt76.dev,
++			 "per bandwidth power limit: Mode BW160 BW80 BW40 BW20");
++		return -EINVAL;
+ 	}
+ 
+-	reg = is_mt7915(&dev->mt76) ? MT_WF_PHY_TPC_CTRL_STAT(phy->band_idx) :
+-	      MT_WF_PHY_TPC_CTRL_STAT_MT7916(phy->band_idx);
++	if (mode > RX_ENC_HE)
++		return -EINVAL;
+ 
+-	seq_printf(file, "\nBaseband transmit power %ld\n",
+-		   mt76_get_field(dev, reg, MT_WF_PHY_TPC_POWER));
++	if (pwr160)
++		pwr160 = mt7915_get_power_bound(phy, pwr160);
++	if (pwr80)
++		pwr80 = mt7915_get_power_bound(phy, pwr80);
++	if (pwr40)
++		pwr40 = mt7915_get_power_bound(phy, pwr40);
++	if (pwr20)
++		pwr20 = mt7915_get_power_bound(phy, pwr20);
+ 
+-	return 0;
++	if (pwr160 < 0 || pwr80 < 0 || pwr40 < 0 || pwr20 < 0)
++		return -EINVAL;
++
++	mutex_lock(&dev->mt76.mutex);
++	ret = mt7915_mcu_get_txpower_sku(phy, req.txpower_sku,
++					 sizeof(req.txpower_sku));
++	if (ret)
++		goto out;
++
++	mt7915_txpower_sets(SKU_CCK, pwr20, RX_ENC_LEGACY);
++	mt7915_txpower_sets(SKU_OFDM, pwr20, RX_ENC_LEGACY);
++	if (mode == RX_ENC_LEGACY)
++		goto skip;
++
++	mt7915_txpower_sets(SKU_HT_BW20, pwr20, RX_ENC_HT);
++	mt7915_txpower_sets(SKU_HT_BW40, pwr40, RX_ENC_HT);
++	if (mode == RX_ENC_HT)
++		goto skip;
++
++	mt7915_txpower_sets(SKU_VHT_BW20, pwr20, RX_ENC_VHT);
++	mt7915_txpower_sets(SKU_VHT_BW40, pwr40, RX_ENC_VHT);
++	mt7915_txpower_sets(SKU_VHT_BW80, pwr80, RX_ENC_VHT);
++	mt7915_txpower_sets(SKU_VHT_BW160, pwr160, RX_ENC_VHT);
++	if (mode == RX_ENC_VHT)
++		goto skip;
++
++	mt7915_txpower_sets(SKU_HE_RU26, pwr20, RX_ENC_HE + 1);
++	mt7915_txpower_sets(SKU_HE_RU52, pwr20, RX_ENC_HE + 1);
++	mt7915_txpower_sets(SKU_HE_RU106, pwr20, RX_ENC_HE + 1);
++	mt7915_txpower_sets(SKU_HE_RU242, pwr20, RX_ENC_HE);
++	mt7915_txpower_sets(SKU_HE_RU484, pwr40, RX_ENC_HE);
++	mt7915_txpower_sets(SKU_HE_RU996, pwr80, RX_ENC_HE);
++	mt7915_txpower_sets(SKU_HE_RU2x996, pwr160, RX_ENC_HE);
++skip:
++	ret = mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(TX_POWER_FEATURE_CTRL),
++				&req, sizeof(req), true);
++	if (ret)
++		goto out;
++
++	mphy->txpower_cur = max(mphy->txpower_cur,
++				max(pwr160, max(pwr80, max(pwr40, pwr20))));
++out:
++	mutex_unlock(&dev->mt76.mutex);
++
++	return ret ? ret : count;
+ }
+ 
+-DEFINE_SHOW_ATTRIBUTE(mt7915_rate_txpower);
++static const struct file_operations mt7915_rate_txpower_fops = {
++	.write = mt7915_rate_txpower_set,
++	.read = mt7915_rate_txpower_get,
++	.open = simple_open,
++	.owner = THIS_MODULE,
++	.llseek = default_llseek,
++};
+ 
+ static int
+ mt7915_twt_stats(struct seq_file *s, void *data)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 8a2546699c3b..d8389bc8ee82 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3170,12 +3170,7 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct mt76_phy *mphy = phy->mt76;
+ 	struct ieee80211_hw *hw = mphy->hw;
+-	struct mt7915_sku_val {
+-		u8 format_id;
+-		u8 limit_type;
+-		u8 band_idx;
+-		s8 val[MT7915_SKU_RATE_NUM];
+-	} __packed req = {
++	struct mt7915_mcu_txpower_sku req = {
+ 		.format_id = TX_POWER_LIMIT_TABLE,
+ 		.band_idx = phy->band_idx,
+ 	};
+@@ -3203,7 +3198,7 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
+ 		}
+ 
+ 		for (j = 0; j < min_t(u8, mcs_num, len); j++)
+-			req.val[idx + j] = la[j];
++			req.txpower_sku[idx + j] = la[j];
+ 
+ 		la += mcs_num;
+ 		idx += len;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 382dcbda50bb..29b5434bfdb8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -184,6 +184,13 @@ enum mt7915_chan_mib_offs {
+ 	MIB_NON_WIFI_TIME_V2
+ };
+ 
++struct mt7915_mcu_txpower_sku {
++	u8 format_id;
++	u8 limit_type;
++	u8 band_idx;
++	s8 txpower_sku[MT7915_SKU_RATE_NUM];
++} __packed;
++
+ struct edca {
+ 	u8 queue;
+ 	u8 set;
+-- 
+2.36.1
 
-The binding will also need updating to remove this property (given it was marked
-as required), so please include that change in either your or Allen's series.
-
-+cc Allen
-
-[1] https://lore.kernel.org/all/20221118141039.y2ap7dzdp26ih2la@notapiano
-
-Thanks,
-Nícolas
-
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			reg = <0 0x18000000 0 0x1000>,
-> +			      <0 0x18004000 0 0x1000>;
-> +			ranges = <0 0 0 0x18000000 0 0x26000>;
-> +			clocks = <&topckgen CLK_TOP_VDEC>,
-> +			         <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +			clock-names = "vdec-sel", "top";
-> +			assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-> +
-> +			vcodec-lat-soc@2000 {
-> +				compatible = "mediatek,mtk-vcodec-lat-soc";
-> +				reg = <0 0x2000 0 0x800>;
-> +				iommus = <&iommu_vpp M4U_PORT_L23_VDEC_UFO_ENC_EXT>,
-> +					 <&iommu_vpp M4U_PORT_L23_VDEC_RDMA_EXT>;
-> +				clocks = <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>;
-> +				clock-names = "vdec-soc-vdec", "vdec-soc-lat";
-> +				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-> +			};
-> +
-> +			vcodec-lat@10000 {
-> +				compatible = "mediatek,mtk-vcodec-lat";
-> +				reg = <0 0x10000 0 0x800>;
-> +				interrupts = <GIC_SPI 708 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				iommus = <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD2_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_AVC_MC_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_PRED_RD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_TILE_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_WDMA_EXT>;
-> +				clocks = <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> +					 <&vdecsys_soc CLK_VDEC_SOC_LAT>;
-> +				clock-names = "vdec-soc-vdec", "vdec-soc-lat";
-> +				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-> +			};
-> +
-> +			vcodec-core@25000 {
-> +				compatible = "mediatek,mtk-vcodec-core";
-> +				reg = <0 0x25000 0 0x1000>;
-> +				interrupts = <GIC_SPI 707 IRQ_TYPE_LEVEL_HIGH 0>;
-> +				iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_UFO_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_PP_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_RD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_WR_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_PPWRAP_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_TILE_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD2_EXT>,
-> +					 <&iommu_vdo M4U_PORT_L21_VDEC_AVC_MV_EXT>;
-> +				clocks = <&vdecsys CLK_VDEC_VDEC>, <&vdecsys CLK_VDEC_LAT>;
-> +				clock-names = "vdec-vdec", "vdec-lat";
-> +				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
-> +			};
-> +		};
-> +
->  		larb24: larb@1800d000 {
->  			compatible = "mediatek,mt8195-smi-larb";
->  			reg = <0 0x1800d000 0 0x1000>;
-> -- 
-> 2.18.0
-> 
-> 
-> 
 
