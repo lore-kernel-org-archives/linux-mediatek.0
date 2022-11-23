@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D0FEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 07:37:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E62ECC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Nov 2022 08:18:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XvJn98X8XPV3Nq54YXdhMknCnK53tr/EmI8RAl4B4Ok=; b=TkQ9LbPLpbgPq044xrTEkP9rDp
-	7624h6qSNzc5mAxVJ38dZ/mLV5qluc+1B12g/VEmHu6a+Id3CmCaGp4RkDCaMFcETK07TG33n1wAA
-	FI5BFKZUcVZwBaEG1/W1Bu4fX60R/q83c1xuSBg2oUDVq3sbreL96oGVlqhc9zyXWNW56750w0QlJ
-	MTV4eO54M3OghtujQGfzEosAZiGxJhssMe4ZEFXZb1+bJZbU5NkxxYe3wZi7FZtbEoQtGVuDihCOR
-	aVjX4kq94TEDu+PUFWbk7SY0A4QFTRDgV0UF/EuXsGH9svmxzUhUKsW3X1xGImSTGZUPi2jAE0XU5
-	KzSjndcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fL0RQ9V3lsCHjFuI9X5q3hTnnfNaNlsOWbPGogwO7Tk=; b=ZDqeCHHv7vvXmoFmm7ntABbsmJ
+	7+Nms+iS0TLbMdqOOdmVuzhC0FLdac5MHSEtfEVLzCfDFM/Yf2Gy84wFgYSI8zDP3q2x3cwSjxEgz
+	JScYDHTUjGOagW2jVMn92dmJ89dgjVhS9M2JHaEZZm7RIkHj0WNTxroox9CFkQXIRNLgm6PCt94L5
+	mKanbQ1mOCwnw1a41ZA21o8H3ORHpBQLX/BmC186n1w/DmJ4eAsZf8PU5LZYzXYSHFpVEL/WF5glP
+	VdGAsNvAEHvbkPiq0UZRYMKrHTwiIWUvC9UBAlzZoUYBheENMAFlUkHgsKF1TvV2bYVNiib/yJDlB
+	2gI8dkcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxkJn-00FEJs-8f; Wed, 23 Nov 2022 07:37:15 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oxkxg-00FSxB-IM; Wed, 23 Nov 2022 08:18:28 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oxkJk-00FEHr-LB
-	for linux-mediatek@lists.infradead.org; Wed, 23 Nov 2022 07:37:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 200CEB81EDA;
-	Wed, 23 Nov 2022 07:37:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35C77C433D6;
-	Wed, 23 Nov 2022 07:37:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669189028;
-	bh=DkMxWFiG8y7zqTgwJQjsxzyy9YxJGvEU4ofwChdGo24=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=d1h+bYJHsowHzhPgWLTRj8v6FjJ2pUpZ2NLH+6g1Fh73B5OLNBdkXQZYtyfPpgngg
-	 ipBRG85vzD+QDjp04UzDRh8Q4dDpT0W3IHTm7gKMhA6Smo+QqRJNKtcl9Jaw9OGCIj
-	 lUiNIzF2rGikvUPZW7Uw4NQz9muhwY2EPMmsU7NMkbE+tyb2BWa5sRAZHhmv+tBSuN
-	 Zf9+H2P9iQeXbMa+AObglzC7rmt8OlHmT6BtkSmtBD7afuFn4QC4r5+za2oDSioQKE
-	 RZ0pebMX1/QaBcWHlM+45khL0KEqr3L60/M3USuOHGHzdEMfoaQ+hnmrtXczcH5ZK5
-	 WXhkrfYy84OIQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: shayne.chen@mediatek.com
-Cc: =?utf-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-  "linux-mediatek\@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,  =?utf-8?Q?Howard-YH_Hsu_=28?=
- =?utf-8?Q?=E8=A8=B1=E8=82=B2=E8=B1=AA=29?= <Howard-YH.Hsu@mediatek.com>,
-  =?utf-8?B?TWVpQ2hpYSBDaGl1ICjpgrHnvo7lmIkp?= <MeiChia.Chiu@mediatek.com>,
-  =?utf-8?B?TW9uZXkgV2FuZyAo546L5L+h5a6JKQ==?= <Money.Wang@mediatek.com>,
-  "nbd\@nbd.name" <nbd@nbd.name>,  =?utf-8?Q?StanleyYP_Wang_=28=E7=8E=8B?=
- =?utf-8?Q?=E4=BE=91=E9=82=A6=29?= <StanleyYP.Wang@mediatek.com>,
-  "lorenzo\@kernel.org" <lorenzo@kernel.org>,  =?utf-8?Q?Chui-hao_Chiu_=28?=
- =?utf-8?Q?=E9=82=B1=E5=9E=82=E6=B5=A9=29?= <Chui-hao.Chiu@mediatek.com>,
-  Ryder Lee <Ryder.Lee@mediatek.com>,  "linux-wireless\@vger.kernel.org"
- <linux-wireless@vger.kernel.org>,  =?utf-8?B?Qm8gSmlhbyAo54Sm5rOiKQ==?=
- <Bo.Jiao@mediatek.com>
-Subject: Re: [PATCH v2 9/9] wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices
-References: <20221110093525.29649-1-shayne.chen@mediatek.com>
-	<20221110093525.29649-10-shayne.chen@mediatek.com>
-	<87ilj8pcqr.fsf@kernel.org>
-	<83f60433f893331337012a6ce8ed920db67639c4.camel@mediatek.com>
-Date: Wed, 23 Nov 2022 09:37:04 +0200
-In-Reply-To: <83f60433f893331337012a6ce8ed920db67639c4.camel@mediatek.com>
-	(shayne chen's message of "Tue, 22 Nov 2022 09:04:30 +0000")
-Message-ID: <871qpup1en.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1oxkxW-00FSu9-10
+	for linux-mediatek@lists.infradead.org; Wed, 23 Nov 2022 08:18:20 +0000
+Received: by mail-lj1-x235.google.com with SMTP id x21so20504486ljg.10
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Nov 2022 00:18:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fL0RQ9V3lsCHjFuI9X5q3hTnnfNaNlsOWbPGogwO7Tk=;
+        b=lgfpAulgNwQyAsUYf92b42NDgYv4N76VOGD/OP/HSSTSBJcxgrReakyMNG+pVkl61t
+         9DGBRp5UkjtO4P0q1WDFvUtAe5WlNEYHeSBa6GhXVhoE1+Tr8lt1CGUmNdXv4fRKIMWH
+         JbX3V42YRa44xrUiHrH4rZmABG5PpWrxUta/nniWfk/LrKvfAbYwToDFB7lPDlJtchc0
+         gQqR3Sr8VfS+mRRfmcXEAlwH/U/MPC3NM0pFspbpOgXNuV+6RQ+FrmMLxuRBNqS+Zqbt
+         SUn82DCoy2dD5pLdHTmHjlrCH2aPpgTAs9OgPSB2U5sBqShu4QbKnOFsQRiNY8FGf6gs
+         +I5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fL0RQ9V3lsCHjFuI9X5q3hTnnfNaNlsOWbPGogwO7Tk=;
+        b=lnxInq0AQgwbQyegQv6M7et54RkXzaWBxqk1MNyTPWWvsXjss6O4k63PkXNkPlpIl5
+         A8pafwz/N0Wd8CSrnoBrpiuZ3KW58HsRz/sg+4sYVgBGD3ZFkgsbUUQ9TC10Fp+EmgD8
+         y3uTngJiKfWmsPvkqZaX47CmBhKMzm6YdiUEk/TwihLVYpy58so33LR1Qaow0kokUgN4
+         d5kisXyBe+lfp2CdxP2nbRouXrVjHFpe8X6GbTsg+FVSQispcCg5k838jTYfi5PlrbQl
+         D59GSSdMx7X/uP13gEY0ZJRur/RULQbw8LhoP7Z6IwHhkLgHA11nWcOCEeJzsUvyUebv
+         xEAw==
+X-Gm-Message-State: ANoB5pkf04OZA4t45mnOGiMSuj7XE0EjkjnAMCmL6AssuPXl78mQyYAv
+	Ioet0NKo2dnb3DFsInU8969hAQ==
+X-Google-Smtp-Source: AA0mqf6qdnORHkVtPLBs2odty+zr62ZdV3b3E3AHmbLeJ/v/hIe3N/3e/3cwDklJV2X74Rt7spHKmw==
+X-Received: by 2002:a05:651c:205d:b0:26f:b445:8c8a with SMTP id t29-20020a05651c205d00b0026fb4458c8amr2918141ljo.156.1669191494829;
+        Wed, 23 Nov 2022 00:18:14 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id m6-20020a056512358600b0049468f9e697sm2766578lfr.236.2022.11.23.00.18.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Nov 2022 00:18:14 -0800 (PST)
+Message-ID: <51389853-35db-5162-e488-f5b3cfc25f27@linaro.org>
+Date: Wed, 23 Nov 2022 09:18:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v2 3/7] dt-bindings: pinctrl: mediatek,mt65xx: Deprecate
+ pins-are-numbered
+Content-Language: en-US
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ devicetree@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ khilman@baylibre.com
+References: <20221122010753.3126828-1-bero@baylibre.com>
+ <20221122010753.3126828-4-bero@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221122010753.3126828-4-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221122_233712_854428_693CD704 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20221123_001818_098865_2C454683 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,25 +99,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-shayne.chen@mediatek.com writes:
+On 22/11/2022 02:07, Bernhard Rosenkränzer wrote:
+> Make pins-are-numbered optional and deprecate it
+> 
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> ---
+>  .../devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml | 5 ++
 
->> >  18 files changed, 12288 insertions(+)
->> 
->> This patch is too big, please split it. One patch per file is a good
->> rule of thumb.
->> 
->> I did see some suspicious static variables in pci.c, but otherwise I
->> basically skipped everything.
->
-> Thanks for your reminder.
->
-> I've splitted the big patch into smaller patches by functionality for
-> easier review.
 
-Nice, thanks Shayne.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Best regards,
+Krzysztof
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
