@@ -4,176 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CABC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 08:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B0BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 08:55:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nfj0uLLTZuj/OOqsVVBRb917YRDEGsRta0X4TBogZM4=; b=PMOM+Opam5sZ2HskcBGOWTWX17
-	sBXiogPbkbwaoZMftHwcPj7ivpBfoLFDFJ0cNEE4+KiZLf2k0QuSVh/TliYjjiU1UxcHs4vvrGKqI
-	Mr7WM5TPvpaW9CLzFU7skxSBR46FeG0K3TK5sANrHC0PtMZiH8AyjbwXaDKtaLY10yK/rOAgn1U3I
-	10Or5XmXn5Lik2N363i7ZlF4EJRypQxg4H3kfzMjXGdhNJSAjwI03oE2k1542Ui7+JoK2uf+xVkKu
-	rCTK//8HDHxolPsR/7tMJvBR3TtiT7qRi7xy9FI+qr/Glzi2/CuN1bir4TmOu0MulCKPP5QY4Lzy/
-	TFFFde3Q==;
+	bh=vz32to7zdlLJ3qNpyb8VnolqTMd0LD/XvVaG+ohQNDo=; b=1vzLHSn06mTZKvxhiOZHuE0H0C
+	S/VKwDZVJdPf1kKFUZQhEHABMuxO8lq3bF1zTk9He1L9vznHE6+FLP+MBtXX8qxjBsfedtd9TEiN+
+	SWWOBOwWpjKR7yBF+xvqtmz/N5vDf3wGEzyOYI12CUatzA9T28ktwBnJEJoCLRi0I6Ik5tvCp7P9Z
+	kTQ+5UMhsHmP5jtE9rZbu5W0DAr1YVtVTKqJHn1YtQTxwIE+gG+msHE3vu7vMM58uvM6/mJ3lQP+e
+	L1FKtrD2qw5eBLii2TOHWWPVelXz3LEXl5qv1oM15TOevj+6rEnHEKmfOQe2SvMsq8HBGaoGInS7m
+	oRpHxDZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy7hS-006aD2-GL; Thu, 24 Nov 2022 08:35:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oy81B-006kiq-Ju; Thu, 24 Nov 2022 08:55:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy7hP-006aAe-QK; Thu, 24 Nov 2022 08:35:13 +0000
-X-UUID: 64ab1a4a3ef4448eaf66c07c908cc726-20221124
+	id 1oy80v-006kXL-5A; Thu, 24 Nov 2022 08:55:23 +0000
+X-UUID: 380bcf8939464b5db708ae9621a8dcdc-20221124
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=nfj0uLLTZuj/OOqsVVBRb917YRDEGsRta0X4TBogZM4=;
-	b=O7eGLA+QfQ1yiwboTHWWfn9jHBCzMSW/XmTs9j00ULx2+6wxTLfAplXQrEz5YaQAhVyM8XsNVKFQCWA4HbyMyLoif/V3SH4NiKC1SpJbugHi2qfpDbUdCLk7pA0lk3i+pIxvKeySC5Y6F5j3AAIHmFJmkFSB52/olDoMenoK4lA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vz32to7zdlLJ3qNpyb8VnolqTMd0LD/XvVaG+ohQNDo=;
+	b=sup8TiFduXrY0r4zf8XjEecKkTbuO+vMjjII35GMGEZmZ/GPJm1+mboYnNuLrWMhAY+WLUM8swuBkTGoB/KcGvj/PTZujBkLE3crIcchlw5vU51QTsiS/RBzda2osf7NoT1CFG2ZFcgQ/ExU1Uayg30siMrKuNqmH1C8wkd1Omw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:8688c062-2716-4263-9946-6a4046947b38,IP:0,U
+X-CID-O-INFO: VERSION:1.1.14,REQID:3be0ca0f-f21e-465d-ac3b-b799d1427a39,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:4933b52f-2938-482e-aafd-98d66723b8a9,B
+X-CID-META: VersionHash:dcaaed0,CLOUDID:b9c7b52f-2938-482e-aafd-98d66723b8a9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 64ab1a4a3ef4448eaf66c07c908cc726-20221124
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 380bcf8939464b5db708ae9621a8dcdc-20221124
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jiaxin.yu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 562989174; Thu, 24 Nov 2022 01:35:06 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1297409551; Thu, 24 Nov 2022 01:55:08 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 24 Nov 2022 15:34:30 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 24 Nov 2022 15:34:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BawrTPuzigXrwAeMR44iHZRqs0+J8nbrlQse6vA5wv5Tu4md2cXV85VMagHCD6RP2agRXFURpooXm2KHpltssgbJQ8trjCVLfJzMZxZ8z/hW8G4EyOS5Ueq6RdRo29wAO4MjAxHbXtnP2wiNXIsICOQeUcW1yhVtczfLK89VMHeoxic8uAuSSFBjY0Eg261lVF/UcpJBIZfK1n6n0cNrUL+z2dv6RawQTe9l5R9i73hZHKh9GFgSeAAz0X4tuA7Wv41NogEi7+ZR3auO2aB7fWZxM+hStLRPAMOnqPicKyCl84UXzTtiBeQt+vtpOC7YQCkaQcQl/mRRDQrZaQAmlA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nfj0uLLTZuj/OOqsVVBRb917YRDEGsRta0X4TBogZM4=;
- b=QJ7NsjByOxn95tLNhkvEoYfsMbi8CHFj83MWzyXf5A9LNw7ngie932+tQc6/yvPp6yHpU53Te0ZPiA4/vh9XMxZEtNh3wuzzut39e+BL4UQT30YIhXn3mNQVHIw6Y2Na1C+npNGrzFuPiI0c4EMcW37+JYvycKhYWY0LoE93IaBz9MV0cf8ZAgdRFdJMH5EvFYBx8nRxYdmuoEaf7IHP5oSQxt21vPKT0+THz9MxS6oOulHjjF75iNCYDrNUyklFLOIIM7NHuIHcK2iPTbH42NkhbjneMmTgigyd6vH6FLvrPrgUjR25g3F2usiay6ATb6vvOxdWSoTMmJWhT073CQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nfj0uLLTZuj/OOqsVVBRb917YRDEGsRta0X4TBogZM4=;
- b=kcdgOan3h0g6eD2ccVVWOAVD9SCpX7c7R/kM//eB1mVp2c3MesysZqchRWy2WVkfKRg1lPirSP7UcggrqB647V6G8Ipq67A3s8aSkeZevtw7fkbON1BEExjb2qaABNJW1NZL2QX79khxSiQiCvNTUC6YjsZ0cb37nR/DcszGLAc=
-Received: from KL1PR03MB5175.apcprd03.prod.outlook.com (2603:1096:820:8::11)
- by PSAPR03MB5349.apcprd03.prod.outlook.com (2603:1096:301:45::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.19; Thu, 24 Nov
- 2022 07:34:26 +0000
-Received: from KL1PR03MB5175.apcprd03.prod.outlook.com
- ([fe80::9386:8c80:d06e:1c5b]) by KL1PR03MB5175.apcprd03.prod.outlook.com
- ([fe80::9386:8c80:d06e:1c5b%5]) with mapi id 15.20.5857.017; Thu, 24 Nov 2022
- 07:34:26 +0000
-From: =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>
-To: "robh+dt@kernel.org" <robh+dt@kernel.org>, "krzk@kernel.org"
-	<krzk@kernel.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"linux@roeck-us.net" <linux@roeck-us.net>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "nfraprado@collabora.com"
-	<nfraprado@collabora.com>
-CC: =?utf-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?=
-	<yongqiang.niu@mediatek.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?=
-	<Singo.Chang@mediatek.com>, "nathan@kernel.org" <nathan@kernel.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "airlied@linux.ie"
-	<airlied@linux.ie>, "llvm@lists.linux.dev" <llvm@lists.linux.dev>,
-	"ndesaulniers@google.com" <ndesaulniers@google.com>
-Subject: Re: [PATCH v28 01/11] dt-bindings: arm: mediatek: mmsys: add vdosys1
- compatible for MT8195
-Thread-Topic: [PATCH v28 01/11] dt-bindings: arm: mediatek: mmsys: add vdosys1
- compatible for MT8195
-Thread-Index: AQHY8nnSexf5uHq4NEqdiRYMbNh8ra5MxgMAgAEDY4A=
-Date: Thu, 24 Nov 2022 07:34:26 +0000
-Message-ID: <8c71e2466f2eeda3f15bb1d73443202203167516.camel@mediatek.com>
-References: <20221107072243.15748-1-nancy.lin@mediatek.com>
-	 <20221107072243.15748-2-nancy.lin@mediatek.com>
-	 <9b74bde1-53e8-0435-9913-af88f626d737@kernel.org>
-In-Reply-To: <9b74bde1-53e8-0435-9913-af88f626d737@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB5175:EE_|PSAPR03MB5349:EE_
-x-ms-office365-filtering-correlation-id: 74c8eef2-e236-4e5b-fc58-08dacdee50ac
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: EFhg3kBatEOp04utdDUF3IPjHLZl7AUs7cmmcHrW/eVtPINzwP81FonPK8Lwryl7vf9MJLge8xdHRgMZidF5W/15/R0NeRDEh3YwtyzUo9y7fIE7GRRITLA2hre5aKx6YGesGvabPyME6RkXmpwNm8GFYa7ZAZu8wgKISJXzUbElg6MFXlyRyDPBBXKNI7YA6sKrdWkqgSdy1nYrXWVoc2jiuFptrMJ3amp6ErmiIkVEZ5cVpVgBMWW4O9BQ/pDA1hgE1trGDFbgHC5tyoUywV8XQ+izW2wzcR8XiXE6PvaHkVTFiSd8sC4aSRsERx1KsJTiVlueWCqLX11YRFUr6zihrKrpfL2tGC0b2eMbTFM29CGlcRTM+9uMhBntXAWPRviN34diuyeZNDL/dV7B3S6sWwyFDTALJ8Gk2t9SNKyqBenYRdCmtyRrmKCdbpmJHJTfiJnINK9fLipyTIueheFaRYGN8XLqgbKywRulnTi0jPKnQfvLMqSjrpVPhPn9bHhmBD7SjhpT1W9j45iQfcLWSq1BBheug2XO39BhJRQgud24bnc4IDAb5wy8vg29ijzZR7c4BgibuIfd3e2ve+9EO1kTbfuvieTbYKrafc150xBp/ZjPPb1Li8HaN4YYceprV7tIp/YuPU7a7xSzTpIO1ILbRaHKcJ8UW4hopt5y7YFiYiFqTNVm0RhkY3jDDE8a0m48hwLBoE8YuHwvUw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5175.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(346002)(136003)(39860400002)(376002)(366004)(451199015)(2906002)(4001150100001)(83380400001)(5660300002)(478600001)(2616005)(4744005)(8936002)(66574015)(7416002)(186003)(6506007)(41300700001)(6486002)(85182001)(53546011)(122000001)(4326008)(86362001)(66446008)(91956017)(66946007)(71200400001)(76116006)(66476007)(8676002)(64756008)(66556008)(38100700002)(38070700005)(6512007)(36756003)(26005)(54906003)(110136005)(316002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MnVudHY1RENleHNxTEJRdmVPR0FnazN4VFJ4QkQ5MFdlb2xVRzNtOWo0bnpE?=
- =?utf-8?B?Q0EvNXNTTlVIM3ZUcFM4RHZTQ0VUTVFLVkZ2bi9YMWF6YWlMckVPeTQ0QzVG?=
- =?utf-8?B?LzlyWUd2NEJrOFVEaDRiblBZOWI3VXZhdE8rOXpBRU14T2ZKNkthS2wwSkNM?=
- =?utf-8?B?U1ZydjZSamVMU3RpaXZJaHgwOSs3aGFwQkx1WDZFb1NMcC85bXd5emZoTHFq?=
- =?utf-8?B?RW1aTlBQdU80R1dWZUdYQXZOSmxRREtVUHlTcnlPaFdNVG81Uk1KVzNHekt6?=
- =?utf-8?B?ZTZxRWRRYk50Y1VDTEdpUTNPbUlMejlmQXg1NXNKNGpuSmZNNy9mKzRTVysw?=
- =?utf-8?B?STRXckI4STFmckRpTTVycXJNTFhoTmROeEpMQncvc2tjYVNwTVROd1FQemwx?=
- =?utf-8?B?YitHaVRJdlNNR1lMMGt5aTFWMldvYkdqT1U0NXV5ZlVmRmxvOVY2Y1RqcHpy?=
- =?utf-8?B?WFkvRCtENW5LQjlzWVljT0Erb0xUc09WdjZGM2hLbW1zWnlVZVJ0SjVCbXZr?=
- =?utf-8?B?MGpFdkQzcXZkcDNyQXk3dXI5NlhXNlJKcHZzdzE5TmtkWVRTTGk5VlBEWWZx?=
- =?utf-8?B?UWo2VTY3eXAxemVSMmRFWVFrSjV4bEFVRlUvV2l6R1liOTlwNVB5V2dqUU9U?=
- =?utf-8?B?QjUrcTNVaW9UWmFzRmxNZ0ZqS2FHc0tHWkQwN1Fma3JxZDVycHpYRWJDQ1Nr?=
- =?utf-8?B?SkVLaEliYklqM3E5eFNBSWpiQW81TkZ0YmE2NkRKQmNBaUJPd2tSRWVsL1BD?=
- =?utf-8?B?QWlkUTI0YzVMcmV1eHQ4ZnRNVWQxNk5KK29KT1ZKdHBHWWk3K3pFVWZ0NDF2?=
- =?utf-8?B?QmFoN1ZIWjB0L0lMSU9kYXNqaHZqUmtDbHdZVVNyTzhwU1d6a3BYWFVEbWU0?=
- =?utf-8?B?VnQzaVNlb0ZyMW9YSUlvMVhTdmlyeEtqRHBzS2xvaXJNRnJnTGdKd0IzOW9B?=
- =?utf-8?B?SFA3Uld3aDJ1MS9tMm9vck9xV01wMGUxQ0pQejc2dU5MZ29LVGp6b29YdjU0?=
- =?utf-8?B?YmdLUXp1UHFJendPbTgzd25TNTFjK3FRUTVxMFlkZEo4MnZWanpOMnZEN0xa?=
- =?utf-8?B?RFZmclA1bWlkc2VrOGlrZkFCY2diUXo5SHhCOVZoakhvcVpNZFgrUXA2QVZB?=
- =?utf-8?B?UnQvL3ovOUhJWWc1UkNGVFZqcStORmZVQnNGc010dEJkck85Y1EyL1RMSE5G?=
- =?utf-8?B?dkNTaitrRlExK3dnNjkvNmY0aXp1Q2kwL3FqUXBBcVhxYUs3c0dYbDB3NU9l?=
- =?utf-8?B?MzhzY3RHTno4akVMYVg5Z1JZZ0JlWTZydXNXUjI4VFV0WkhLOVlOWElqbmpS?=
- =?utf-8?B?SzBRVmZWQlJnQjNZenI1eVptSkN5ZUhmVnp5a3FqMkZETWk0UmJPYmNkeEti?=
- =?utf-8?B?SWN4cDViN2xVTS9scGt1a3RseHQ0OFptZjlNR2dIcWVQOG1FMzNzZVdUZ09j?=
- =?utf-8?B?NEhGdFhnMlpnVDVpMkxkWmZmMEVuWkpwcGFYRWNTSzFMaURTWjBxTnFFZzdE?=
- =?utf-8?B?d1BuazVRUnlEcENwZURjUFB6VHJOM3dFdHhCOHUrMjhvREpWbDhXNkpXR3Vl?=
- =?utf-8?B?S3JFQjVQbGZJSFZjWU1VTHExVS9LVzBsMU5RQzZRbERacEkyUkdOaXVKeE0z?=
- =?utf-8?B?aEJwc1g5L1F6TkE1aVBOZUgvNC9jQkZQTlhDaklsNWsvVVRFZGk0dmVnRWFT?=
- =?utf-8?B?WWlRYUttWjRENnQxUWU5NHJmTE5NczhsQk5EN2tWaWcxVzFMRkxIQVBkVmpE?=
- =?utf-8?B?MEwrRHZMZFNCMlc0blcvM240bzJIODlGWE4zVkpzbXA1TzdqVmxIZHU3bFg4?=
- =?utf-8?B?NnNLYy9EVFQzcStEVC8vZmtOWDdQL1NDNlB6NUFtREZQVDRrRGlJVzYrdmRO?=
- =?utf-8?B?M3pta2pncnc3Q1Q2cXhjZGJaZXQ0RnpQZGNQNXZjdnRqUTNYQ2pzdUFZRU8x?=
- =?utf-8?B?ZU8rbGhUTk1VRFB2L2Z1R015NjBFMXFYWE9hazNnNlhmeE4vd3IyZW51enRp?=
- =?utf-8?B?ZnQyTVdxQTI0dW1iS2g4U0I3d2JxTlBzOEZROXVkdStWTnN1cWpOajYwblB6?=
- =?utf-8?B?bStHS1R2SXFMT2dkZTBnazd4MnpXYzJPN0pFZnhIbFBJc3lHL3ptbjUxNWVC?=
- =?utf-8?B?S3VWRDFzYlpjNVdJa1IxZUhKOVBSbS9reVhSU1VxdDJqWFpDOTJnR2dzNmtz?=
- =?utf-8?B?M3c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <CAD519A45F9EF74FAE5631F151323C05@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.792.15; Thu, 24 Nov 2022 16:54:40 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 24 Nov 2022 16:54:39 +0800
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: <broonie@kernel.org>, <andrzej.hajda@intel.com>,
+	<neil.armstrong@linaro.org>, <robert.foss@linaro.org>,
+	<Laurent.pinchart@ideasonboard.com>, <kuninori.morimoto.gx@renesas.com>,
+	<angelogioacchino.delregno@collabora.com>, <nfraprado@collabora.com>
+CC: <chunxu.li@mediatek.com>, <ajye_huang@compal.corp-partner.google.com>,
+	<allen-kh.cheng@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
+	<jiaxin.yu@mediatek.com>
+Subject: [PATCH 2/3] ASoC: hdmi-codec: Add event handler for hdmi TX
+Date: Thu, 24 Nov 2022 16:54:35 +0800
+Message-ID: <20221124085436.24900-3-jiaxin.yu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221124085436.24900-1-jiaxin.yu@mediatek.com>
+References: <20221124085436.24900-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5175.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 74c8eef2-e236-4e5b-fc58-08dacdee50ac
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2022 07:34:26.5302
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DUjamC7jz+5CmbJuCATStRXBVcumh09XmmUr473DU1/DP6ilETx7Rr7HQF9hGDydFrakFb1QwryDLnzU4e5hAg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PSAPR03MB5349
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_003512_062810_7AC7048B 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20221124_005521_246887_BD4DE8E8 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,19 +85,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RGVhciBLcnp5c3p0b2YsDQoNClRoYW5rcyBmb3IgdGhlIHJldmlldy4NCg0KT24gV2VkLCAyMDIy
-LTExLTIzIGF0IDE3OjA2ICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOg0KPiBPbiAw
-Ny8xMS8yMDIyIDA4OjIyLCBOYW5jeS5MaW4gd3JvdGU6DQo+ID4gQWRkIHZkb3N5czEgbW1zeXMg
-Y29tcGF0aWJsZSBmb3IgTVQ4MTk1IHBsYXRmb3JtLg0KPiA+IA0KPiA+IEZvciBNVDgxOTUsIFZE
-T1NZUzAgYW5kIFZET1NZUzEgYXJlIDIgZGlzcGxheSBIVyBwaXBlbGluZXMgYmluZGluZw0KPiA+
-IHRvDQo+ID4gMiBkaWZmZXJlbnQgcG93ZXIgZG9tYWlucywgZGlmZmVyZW50IGNsb2NrIGRyaXZl
-cnMgYW5kIGRpZmZlcmVudA0KPiA+IG1lZGlhdGVrLWRybSBkcml2ZXJzLg0KPiA+IA0KPiA+IFNp
-Z25lZC1vZmYtYnk6IE5hbmN5LkxpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNvbT4NCj4gPiBSZXZp
-ZXdlZC1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29t
-Pg0KPiANCj4gQW55IHJlYXNvbiBmb3Igbm90IENDLWluZyBtYWludGFpbmVycyBwb2ludGVkIG91
-dCBieQ0KPiBnZXRfbWFpbnRhaW5lcnMucGw/DQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlz
-enRvZg0KPiANCg0KPiBJIHVzZWQgdGhlIHJlY29yZGVkIG1haW50YWluZXIgbGlzdCwgaW5zdGVh
-ZCBvZiBleGVjdXRpbmcgdGhlDQo+IG1haW50YWluZXIucGwgZXZlcnkgdGltZS4gSSB3aWxsIHVw
-ZGF0ZSBtYWludGFpbmVyIGluIHRoZSBuZXh0DQo+IHJldmlzaW9uIHNvb24uIFNvcnJ5IGZvciB0
-aGUgaW5jb252aW5lbmNlLg0KDQpSZWdhcmRzLA0KTmFuY3kNCg==
+If the speaker and hdmi are connect to the same port of I2S,
+when try to switch to speaker playback, we will find that hdmi
+is always turned on automatically. The way of switching is
+through SOC_DAPM_PIN_SWITCH, however, such events can not be
+handled in hdmi-codec driver.
+
+So add event handler for hdmi TX to solve the above issue.
+
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+---
+ include/sound/hdmi-codec.h    |  6 ++++++
+ sound/soc/codecs/hdmi-codec.c | 37 +++++++++++++++++++++++++++++++----
+ 2 files changed, 39 insertions(+), 4 deletions(-)
+
+diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+index 48ad33aba393..dcbc09254144 100644
+--- a/include/sound/hdmi-codec.h
++++ b/include/sound/hdmi-codec.h
+@@ -81,6 +81,12 @@ struct hdmi_codec_ops {
+ 		       struct hdmi_codec_daifmt *fmt,
+ 		       struct hdmi_codec_params *hparms);
+ 
++	/*
++	 * PCM trigger callback.
++	 * Mandatory
++	 */
++	int (*trigger)(struct device *dev, int cmd);
++
+ 	/*
+ 	 * Shuts down the audio stream.
+ 	 * Mandatory
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 0b1cdb2d6049..cb4479372e09 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -276,7 +276,31 @@ struct hdmi_codec_priv {
+ 	u8 iec_status[AES_IEC958_STATUS_SIZE];
+ };
+ 
++static int hdmi_tx_event(struct snd_soc_dapm_widget *w,
++		struct snd_kcontrol *kcontrol, int event)
++{
++	struct snd_soc_component *component = snd_soc_dapm_to_component(w->dapm);
++	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
++
++	switch (event) {
++	case SND_SOC_DAPM_PRE_PMU:
++		if (hcp->hcd.ops->trigger)
++			hcp->hcd.ops->trigger(component->dev->parent, SNDRV_PCM_TRIGGER_START);
++		break;
++	case SND_SOC_DAPM_POST_PMD:
++		if (hcp->hcd.ops->trigger)
++			hcp->hcd.ops->trigger(component->dev->parent, SNDRV_PCM_TRIGGER_STOP);
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++
+ static const struct snd_soc_dapm_widget hdmi_widgets[] = {
++	SND_SOC_DAPM_OUT_DRV_E("SDB", SND_SOC_NOPM, 0, 0, NULL, 0, hdmi_tx_event,
++			       SND_SOC_DAPM_POST_PMD | SND_SOC_DAPM_PRE_PMU),
+ 	SND_SOC_DAPM_OUTPUT("TX"),
+ 	SND_SOC_DAPM_OUTPUT("RX"),
+ };
+@@ -808,18 +832,23 @@ static int hdmi_dai_probe(struct snd_soc_dai *dai)
+ 	struct hdmi_codec_daifmt *daifmt;
+ 	struct snd_soc_dapm_route route[] = {
+ 		{
+-			.sink = "TX",
++			.sink = dai->driver->capture.stream_name,
++			.source = "RX",
++		},
++		{
++			.sink = "SDB",
+ 			.source = dai->driver->playback.stream_name,
+ 		},
+ 		{
+-			.sink = dai->driver->capture.stream_name,
+-			.source = "RX",
++			.sink = "TX",
++			.source = "SDB",
+ 		},
++
+ 	};
+ 	int ret;
+ 
+ 	dapm = snd_soc_component_get_dapm(dai->component);
+-	ret = snd_soc_dapm_add_routes(dapm, route, 2);
++	ret = snd_soc_dapm_add_routes(dapm, route, ARRAY_SIZE(route));
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.18.0
+
 
