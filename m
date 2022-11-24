@@ -4,56 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A203C43219
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 12:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F593C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 12:39:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uq7+8K4TLfup8iDXFNKwzXgG7wKnWmGQ804QPvGdAXA=; b=3cyQwBNb+uyv4G79ns773jw2nG
-	SLB5VUzcS+RC4YDzJojfF/ghRYCLccdzSv0mx4EQxDCLuEFI1qwOD/21uSEHH/3Iyq8HFlmuoISNp
-	ce6lUD41agtWOeFxPlLxF0lQG23kDU1VtXiXDi9RLd8N8EbwyDa5oDS1FSxAzLeNUda4K1rMg+1oF
-	xGDOIc4iJWobHGPN+UbhpGGv/0Mt1FaQWlu0A2vppw1rA0W4rim3JH42p/VVBRab/cRAHsgP2Z5um
-	/qbl8NXVC0AQiv4UEU8T9k22ODhSl5Aj71rIH+cxhuDA4ZmMH+L/KWrDvV7lyvMwY/iz9RtI4QYF+
-	1fqDxa6Q==;
+	bh=RVnHnjZIbc03C/0P+k/dMEPQcRFLgg8+dULkY97lXN8=; b=0qSi9lQOJKceS9kJH7QlobZmfP
+	WG3EBko7itUhgW/NUY5HrOsSLzee+iO+pVxhSl2NxbkdoY1P+Cld3o1m8iurZM/F2i/NPoKzGMsWG
+	HYGO6gKbR+twtUBiuyIqVcKKQz6YAJ7uvGsDC5+EXqCjhW6DkNlTy7oZtBH9ZQCPWAWgTHi7Nm41f
+	tmfvAHefVIFIptWWX5PoQQxAnjYUTzcnXCl7oI//An7+8FZKW1XcOGyLtFa+2avt1lguIXSpUIww4
+	ZDf5WcLDDQrmFTXNcy1ahFFJkeBUfho8ZT+uyCzGgC/4+PDjeb/HKq3xsNA9Zn6tROIQ+ouaJqC7S
+	dd54WDUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyB5P-008ICe-7H; Thu, 24 Nov 2022 12:12:11 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1oyBVi-008O1S-7X; Thu, 24 Nov 2022 12:39:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyB5M-008IA1-G2; Thu, 24 Nov 2022 12:12:10 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1oyB50-0000iC-Sv; Thu, 24 Nov 2022 13:11:47 +0100
-Date: Thu, 24 Nov 2022 12:11:39 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-pwm@vger.kernel.or,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	Zhi Mao <zhi.mao@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH RESEND v2] dt-bindings: pwm: mediatek: Add compatible for
- MT7986
-Message-ID: <Y39fe3oHgMTyAHBm@makrotopia.org>
-References: <Y39PjU1BqBB8tZ98@makrotopia.org>
- <e5e87795-12d7-699e-1539-2e60b8b51957@linaro.org>
+	id 1oyBVd-008Nvi-2q
+	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 12:39:19 +0000
+X-UUID: e310918107c64ed781bb0a3e34458a37-20221124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RVnHnjZIbc03C/0P+k/dMEPQcRFLgg8+dULkY97lXN8=;
+	b=r/XA/CDG2XV1FPGBL7abSaaqJu9HLMHRR7siaWKGmlZzRYq2XxilsVgpfVIwnaoMHob5Zd2VZBEyN4Hi/DVAC+qTUchm64jbnIkK3tfBSqqY8HAgfgd/yqdtsFWDH+8WXKs5fjuUaXoA1mJ3mr+6ozIHca2UnxUBF3mn12iUWhI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:463e7ab2-a737-4909-a4b3-3bf925be7088,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.14,REQID:463e7ab2-a737-4909-a4b3-3bf925be7088,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:dcaaed0,CLOUDID:ae8c25dc-6ad4-42ff-91f3-18e0272db660,B
+	ulkID:221124203905EGA8MR5C,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e310918107c64ed781bb0a3e34458a37-20221124
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 989845558; Thu, 24 Nov 2022 05:39:03 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 24 Nov 2022 20:39:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 24 Nov 2022 20:39:01 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v4 1/9] media: platform: mtk-mdp3: add chip configuration header file
+Date: Thu, 24 Nov 2022 20:38:51 +0800
+Message-ID: <20221124123859.24395-2-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221124123859.24395-1-moudy.ho@mediatek.com>
+References: <20221124123859.24395-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e5e87795-12d7-699e-1539-2e60b8b51957@linaro.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_041208_550057_54F8F332 
-X-CRM114-Status: GOOD (  26.01  )
+X-CRM114-CacheID: sfid-20221124_043917_152843_5B121358 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,68 +84,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 24, 2022 at 12:30:44PM +0100, Krzysztof Kozlowski wrote:
-> On 24/11/2022 12:03, Daniel Golle wrote:
-> > Add new compatible string for MT7986 PWM and list compatible units for
-> > existing entries. Also make sure the number of pwm1-X clocks is listed
-> > for all supported units.
-> > 
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > Changes since v1: list compatibles, fix pwm1-n clocks for all SoCs
-> > 
-> > Rebased on linux-next and re-run scripts/get_maintainers.pl on patch to
-> > makes sure dt maintainers are included. This has been requested by
-> > Krzysztof Kozlowski.
-> > 
-> >  .../devicetree/bindings/pwm/pwm-mediatek.txt  | 20 +++++++++++--------
-> >  1 file changed, 12 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > index 554c96b6d0c3..952a338e06e7 100644
-> > --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > @@ -2,14 +2,15 @@ MediaTek PWM controller
-> >  
-> >  Required properties:
-> >   - compatible: should be "mediatek,<name>-pwm":
-> > -   - "mediatek,mt2712-pwm": found on mt2712 SoC.
-> > +   - "mediatek,mt2712-pwm", "mediatek,mt6795-pwm": found on mt2712 SoC.
-> >     - "mediatek,mt6795-pwm": found on mt6795 SoC.
-> > -   - "mediatek,mt7622-pwm": found on mt7622 SoC.
-> > -   - "mediatek,mt7623-pwm": found on mt7623 SoC.
-> > +   - "mediatek,mt7622-pwm", "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt7622 SoC.
-> 
-> This does not look right. What you are saying is mt7622 is compatible
-> with mt8195, which is compatible with mt8183, which is compatible with
-> mt7986. It could be true, but I feel you wanted to say something else -
-> mt7622 is compatible with one SoC which is generic and common to all
-> other implementations.
+In order to be compatible with more MDP3 chip settings in the future,
+move the chip-related configuration to a separate header file.
 
-MT7622 has 6 PWM channels, it does have CK_26M_SEL register and does
-not need pwm45_fixup. Hence, when using a driver made for MT8195, only
-4 out of 6 channels woukd work. MT8183 PWM is identical to MT8195,
-hence also compatible. When using driver for MT7986, only 2 channels
-would work, but otherwise it is also compatible.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ .../mediatek/mdp3/mt8183/mdp3-plat-mt8183.h   | 35 +++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 27 ++------------
+ 2 files changed, 37 insertions(+), 25 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
 
-So unfortunately, that one generic implementation ("common ancestor")
-does not exist and development of the PWM unit found in MediaTek SoCs
-did not necessarily increase features in more recent iterations, but
-rather just reduce or increase the number of PWM channels available.
-Ironically, the unit with least features (only 2 channels) is found in
-the most recent SoC (MT7986).
+diff --git a/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+new file mode 100644
+index 000000000000..3084f62e7df5
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mt8183/mdp3-plat-mt8183.h
+@@ -0,0 +1,35 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP3_PLAT_MT8183_H__
++#define __MDP3_PLAT_MT8183_H__
++
++static const struct mdp_platform_config mt8183_plat_cfg = {
++	.rdma_support_10bit		= true,
++	.rdma_rsz1_sram_sharing		= true,
++	.rdma_upsample_repeat_only	= true,
++	.rsz_disable_dcm_small_sample	= false,
++	.wrot_filter_constraint		= false,
++};
++
++static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
++	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
++	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
++	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
++};
++
++static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
++	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
++	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
++	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
++	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
++	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
++	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
++	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
++};
++
++#endif  /* __MDP3_PLAT_MT8183_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 2d1f6ae9f080..658037d06250 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -12,33 +12,10 @@
+ #include <linux/remoteproc.h>
+ #include <linux/remoteproc/mtk_scp.h>
+ #include <media/videobuf2-dma-contig.h>
++
+ #include "mtk-mdp3-core.h"
+ #include "mtk-mdp3-m2m.h"
+-
+-static const struct mdp_platform_config mt8183_plat_cfg = {
+-	.rdma_support_10bit		= true,
+-	.rdma_rsz1_sram_sharing		= true,
+-	.rdma_upsample_repeat_only	= true,
+-	.rsz_disable_dcm_small_sample	= false,
+-	.wrot_filter_constraint		= false,
+-};
+-
+-static const struct of_device_id mt8183_mdp_probe_infra[MDP_INFRA_MAX] = {
+-	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8183-mmsys" },
+-	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8183-disp-mutex" },
+-	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8183-scp" }
+-};
+-
+-static const u32 mt8183_mutex_idx[MDP_MAX_COMP_COUNT] = {
+-	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
+-	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
+-	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
+-	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
+-	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
+-	[MDP_COMP_WDMA] = MUTEX_MOD_IDX_MDP_WDMA,
+-	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
+-	[MDP_COMP_CCORR0] = MUTEX_MOD_IDX_MDP_CCORR0,
+-};
++#include "mt8183/mdp3-plat-mt8183.h"
+ 
+ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.mdp_probe_infra = mt8183_mdp_probe_infra,
+-- 
+2.18.0
 
-> 
-> > +   - "mediatek,mt7623-pwm", "mediatek,mt7628-pwm": found on mt7623 SoC.
-> >     - "mediatek,mt7628-pwm": found on mt7628 SoC.
-> >     - "mediatek,mt7629-pwm": found on mt7629 SoC.
-> > -   - "mediatek,mt8183-pwm": found on mt8183 SoC.
-> > -   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm": found on mt8195 SoC.
-> > +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
-> > +   - "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8183 SoC.
-> > +   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8195 SoC.
-> 
-> This as well looks excessive.
-
-I agree. But it's difficult to say which one should be ommitted.
 
