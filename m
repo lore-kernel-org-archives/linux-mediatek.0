@@ -4,81 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB40C43219
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 11:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C43C43219
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 11:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=leESmumvWsQksy1wUVn0lcLdypMwxQXkahuTTMZugjg=; b=eH3KpjxeMl6pOujpK5KTCOz1fs
-	Cv8Y1gNg1SY9rnuBezj+i02pKB8OlcJSywfow0mxd0Hh/6T7M0KkvFFfdRCx77KrU+OjiwgDn9i3G
-	U/iwPkHtdS3n90HAWotcuM/l2kCEg5jCB+TBHYexXLlhAeu3ncq/gTSnkk2b3V168YvuR3EqK1tQx
-	4KW698gU4HfrCkVnhBeBmq4hDYrLl/jiYO/AjetiRRf5tVT0RPYGNZoqr3iPjnaZiOJh40zKy/ISb
-	65G7k3QVrNKaNObIS2uowuH1ZLMXQx489N7QX8/ff4rXy/w6RVOxBQ+tiUUCAvoNh46gloHUImiUj
-	dZTr3yvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mrIAgvMXfWfHerH7mZc58m1HMzuY6JLLCqXhj582NUU=; b=Bcr1d9s3+hOYzDUjDVnhVD5FzH
+	mcVeK2kbkz9rkkARyPEUQBKtU/Y7v/VAv4cMzpz+OupcU/4kBuEZh68lzOdZ0GqKjlwOhBy9xNC4c
+	PZjgXlZ6WbS7j2Oo5LsnVIvaGE5g2oALvG5RbrM9AvwYDl0l99d1R1fmMqVWJqzXm5W5JL3c7/UhF
+	OUmHsEj6IUkHkrH6o3ubmdqnppY0c/EDkEgubwEjwhUh8Kgt8qjx0wN5XLWV9oVoijlFPTCnWTUUT
+	iR6V02iVv2DzLIMhWKhpAouFTD+VK+FBmprwH7SRyMkbV8jCApsqGOD7f3akYo1OC6r2/K6dEsF1F
+	fXjw9JEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyA46-007v1g-4K; Thu, 24 Nov 2022 11:06:46 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oyA60-007w33-Vh; Thu, 24 Nov 2022 11:08:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyA40-007uu8-Ku
-	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 11:06:45 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CAA9E6602B26;
-	Thu, 24 Nov 2022 11:06:36 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669287998;
-	bh=EAdJ8/Ctvli+18UrOl71S8MZLWWHbw1S0aNFi8PNlrI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n78Ei8tpmc9P51fFKKo+xA6eTdu7aZsmZXGfLvF5EnX7tsx1OlZNqFA8/b7Wfuq5e
-	 d9fzF/CirGRNAlU6EfpZGJX/JKw2rsxmCsVJC83h7lmiJjIk+LAtekHWGtIM+ECcbJ
-	 ms+e7JsY6jEosoH2DmAXK3UX1AqQy4U08T5HbxqFTQ9qKZ1GwTrQoHBESEBydHUpGt
-	 xMvNUmSfalbcCUzFBEgVb1TxwXQ67hjDVmWaXz22w2XTkRPQzwfnwD4GmS5bRSpcgh
-	 KIZVapy7Y4fj36iCKYo7BwGXZXko4c3u49al1thgnaQkwABzsfzO67tjUYTPyW/m3Q
-	 8KeyNLcz+YoNA==
-Message-ID: <1cca2790-5805-b4fc-f8e8-2c490db487f6@collabora.com>
-Date: Thu, 24 Nov 2022 12:06:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH net-next v1 01/13] net: wwan: tmi: Add PCIe core
+	id 1oyA5y-007w1l-P3; Thu, 24 Nov 2022 11:08:44 +0000
+X-UUID: 023ce7e6bff64db8a83a979bd2e8d51a-20221124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=mrIAgvMXfWfHerH7mZc58m1HMzuY6JLLCqXhj582NUU=;
+	b=Z7SojgAJ1MFUdBbRSP9VFL2ArxW43jpGjIxP1dUtpocG7EUbyBgocXQ2HQjQCIAHaUlQDFQo/jU3Z9BZVlBvSYNa37zzce0TA0k+VGSVjVp3OQZzfrWiIr348xhO4vlUaEFxfdRUvrtT85/4845WxWCZeDRbxk9lwoNQ5+9e3eI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:57e1d3bb-72b7-4ea0-932a-774092e1463a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:413e24dc-6ad4-42ff-91f3-18e0272db660,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 023ce7e6bff64db8a83a979bd2e8d51a-20221124
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 604605782; Thu, 24 Nov 2022 04:08:39 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 24 Nov 2022 18:38:02 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 24 Nov 2022 18:38:02 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GpIi7cDL86tEGQT8KSIklWo/Sz2O/muk+H8WMICFnKLqC7oEbf2jpAY1J/jZBuQhtuH7wbDIZJvmUQZ1MCOK36kOWtl6UcwQVi4CS4sOvAAvhpfRe30zCFyJtDvv2ZwKftzNU6DMdmuMLquQ/ZW9ttV477Hv4AqFJPt+Ah1UAlZi/awq4EkJey+sHzLkB2Z6mN495zybgqVyP58vCc8K9yLlwRQjuNEnZvzAIFE5VOPeT81KsZI4QQ1RimgZDrH+MXePqxXOb1EdyBsZzAxuWtxBc4y++5vVCeaDmWCcAfJc51nz5q9L2Bpt9DJ9iC2wrqtuQ4AiitPmw+Ojdq/DBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mrIAgvMXfWfHerH7mZc58m1HMzuY6JLLCqXhj582NUU=;
+ b=JyAI9RKU84txGBARYQvT7iVVP+2G9kxWBqftNQrP1n/QwQD3LkXqTRQOhfp4AI4u/jubrcSIOXrVJrUIZ3PXk0Y6Hg5ql+08hleLylhrwrzKlVW1FCCXoQbhJ7NpOhs7pegf6wMGRKYarPy1gASucBKWee6WBysm/muGB5/NQTTHCLMOqz0M50NgjmjtQENCGceBeQXDM/Sk7kHhWYYMGGE4e9++zMeMnNbV7eRifpcSc6otiYRrJ+aU4DnRRMvU7eFoPpf6jN/3X3DP9oz9XF6izNcOLakWSiO64ePV/Gbw4MwFiz11Z4QzgBL6zTN5y8FIws7wWoFteo9f8CKrFQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mrIAgvMXfWfHerH7mZc58m1HMzuY6JLLCqXhj582NUU=;
+ b=rhZRi35lkK5U+u495DE/UOzDIwVlFIUYZfAW7Y4sAD4xsG2T5Ul0xgFP8/rRPO+4hdlU1cTkvpfdFrnTroZMVZ6jEBA8COyj5YUJZ6dSjI8TDX9LD+T0qT/VaBLU0ZNDbyhGv7i3QFceJTIp6HA0z+43i2fPBfBrUSWvc59luLw=
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com (2603:1096:820:1a::22)
+ by SI2PR03MB5659.apcprd03.prod.outlook.com (2603:1096:4:15e::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.19; Thu, 24 Nov
+ 2022 10:38:00 +0000
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::9585:3a04:b796:b696]) by KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::9585:3a04:b796:b696%5]) with mapi id 15.20.5834.015; Thu, 24 Nov 2022
+ 10:38:00 +0000
+From: =?utf-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
+To: "mathias.nyman@linux.intel.com" <mathias.nyman@linux.intel.com>,
+	"mathias.nyman@intel.com" <mathias.nyman@intel.com>
+CC: "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?RWRkaWUgSHVuZyAo5rSq5q2j6ZGrKQ==?= <Eddie.Hung@mediatek.com>,
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] usb: host: xhci-mtk: omit shared hcd if either root hub
+ has no ports
+Thread-Topic: [PATCH] usb: host: xhci-mtk: omit shared hcd if either root hub
+ has no ports
+Thread-Index: AQHY+z0cVRMPp1EvGkKE/tItjF/i765MYdAAgAGJWoA=
+Date: Thu, 24 Nov 2022 10:38:00 +0000
+Message-ID: <02552cc60b3aae16b2c2e9717b42c800180e3a87.camel@mediatek.com>
+References: <20221118110116.20165-1-chunfeng.yun@mediatek.com>
+	 <a384d15d-c1df-160c-030b-fddd5d965996@linux.intel.com>
+In-Reply-To: <a384d15d-c1df-160c-030b-fddd5d965996@linux.intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Yanchao Yang <yanchao.yang@mediatek.com>,
- Loic Poulain <loic.poulain@linaro.org>,
- Sergey Ryazanov <ryazanov.s.a@gmail.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>,
- kernel ML <linux-kernel@vger.kernel.org>
-Cc: MTK ML <linux-mediatek@lists.infradead.org>,
- Liang Lu <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>,
- Hua Yang <hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>,
- Felix Chen <felix.chen@mediatek.com>,
- Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong <min.dong@mediatek.com>,
- Aiden Wang <aiden.wang@mediatek.com>,
- Guohao Zhang <guohao.zhang@mediatek.com>,
- Chris Feng <chris.feng@mediatek.com>,
- Lambert Wang <lambert.wang@mediatek.com>,
- Mingchuang Qiao <mingchuang.qiao@mediatek.com>,
- Xiayu Zhang <xiayu.zhang@mediatek.com>,
- Haozhe Chang <haozhe.chang@mediatek.com>,
- MediaTek Corporation <linuxwwan@mediatek.com>
-References: <20221122111152.160377-1-yanchao.yang@mediatek.com>
- <20221122111152.160377-2-yanchao.yang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221122111152.160377-2-yanchao.yang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR03MB5062:EE_|SI2PR03MB5659:EE_
+x-ms-office365-filtering-correlation-id: 39d10701-acde-4d4d-ecad-08dace07f55e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 9MNXNIS5OqUyecI9QUxOX4uZ30I6uXwnobiQ1ux5sbuaRwB7h2lfRdZt7x/uR6BGYT69zZzFOlmhy0DMrXc6riSiRP2D25b7ihwc2+TNzYzu2WNMVXl4kccqPqtF5Czhhi6CSCA5DJVJ1SlLs2Zy4mDi+2bWMT+7t/ih0nY/c6Pl/PAEY54QD1oWtXZ83HAvlGnh1OXkSBnV0U05SZp4efRYRPMFLIwN1mvbQ/ZYVqxAY0qrHjidflbY43tstr9VNxEF3odo5ptN5KewyNBs77alhWGn0I7+8eY+ctUubqFSPwZ2mxo4ieZsn0dBiaqCW1MuYrT5jbzwEOLpCUQeQJm/eStsFFneCs9KhNh8m0tiQzE1aniYJda19j8KhuAcufKZL60g1xHsVRyG8fmeRe4vK9/aCEDDbxyIZ8KaXO05jnSpowBzgR2Mstd4wDzBffN8MeN5XIpSBGGLOWH5uP8TmvjW3/CV/1pmC4xuV9kbcG83eDql01YqzYL9Ul463hd9H8oU+wrdu2UGJ24GIg/5TBnNjtFDAcNh2hofX9iRVmTDgQQ62ZYHhQ0kC0d0+kzDbssw/Uh7FiqwMda5PJSSrxIUH081RrnSPFZml7HlarRyGceX4fin2fjqbBBCNvFHuh5nyOC37DhA0JidE65/rcU46u1cHT6JF/2iHokQ7oM6Y8BW9lDfnhB2z7F7Wd/CEd3HfsIxmYZhAgxJBGygrnxacOOGAAY5d1BBCa8=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5062.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(39860400002)(376002)(366004)(346002)(396003)(136003)(451199015)(86362001)(66946007)(38070700005)(38100700002)(110136005)(41300700001)(76116006)(4326008)(66556008)(8676002)(64756008)(66476007)(66446008)(91956017)(54906003)(316002)(83380400001)(5660300002)(8936002)(6486002)(4001150100001)(2906002)(122000001)(71200400001)(478600001)(6506007)(2616005)(186003)(26005)(6512007)(66899015)(85182001)(36756003)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RnhSaVd1bzl1VENESVNYN0ZaWXBCWW5HeExyU1dyVGZiNFF2MWxwU2EyYmtL?=
+ =?utf-8?B?dm1rMGNrcmNrWFIzaXZ3Q2ZOcVM5M1E1NWFvZjR4ZC9WdjR5bTBMK3FFZUVQ?=
+ =?utf-8?B?KzY2bFFjckl5YkdDQXkrWFo3aFh5MnF2UDFxVVd1RUljeVpWcTVGT0RpT0I3?=
+ =?utf-8?B?dmFKYU9JczRiY2ZBYmJYeUxtRGphNTVmUzRJTllLWTlCQ2lpbnFqNmZCYWls?=
+ =?utf-8?B?OWNod0xmSWxCRitnOEc5L3lLZjhuTUdMeVdwNVpnMUdmR2VYMVBRL3ZWTUhh?=
+ =?utf-8?B?VXorbVdEeU8zWExMek1FK0hrU3NRaXI5dDRqQytydk9YS1Z3NG0xalM2c3Q4?=
+ =?utf-8?B?elh4cGlFTE9EWk1CekorbVNZTnNuSTA4MnRvK3Z5UmNUNDBUVmt6N0Yvb0ho?=
+ =?utf-8?B?bkNjRkRBTVpNaEFkTFRyMGlVSk0vVzdiQlg0cVNOaHM3dFNUSzFnR2xnaC9q?=
+ =?utf-8?B?ZzExcm1zcHhnVHFRRHRNRjgyLzlEcWJIelJXbnRQOGV0aDI2VkJaYm9yaFZK?=
+ =?utf-8?B?RHp3UjFUMHA2SWVvc0N1K2JxVDBqbVArUXpjYzZvQkk0TEVPS1diUmpkQkJi?=
+ =?utf-8?B?N1YwOTlScnRFaVI4aVVqQnVmdEQzelpoYStlUm9Vcjc1UDl1bnovVFVNbFFB?=
+ =?utf-8?B?RWFNbFdNaDdZK3dvV3RTalRId1lrTllQeG5VaVgxOE5MakNCN0NUbzB6c3ZT?=
+ =?utf-8?B?dmx4TmZZaG1yNG8xbjVZZlBSRmZxNnJkSUorYjBxQStXNHhaYlRRQnlnNHZB?=
+ =?utf-8?B?ZU5aWm16a1JaS1NWYnNNekhCUUdJUlVmZzNSbTE0eVVWK2kxck5hUzVWVEpy?=
+ =?utf-8?B?dERjaHl2NzFsVkg4YnpaaXZTSjRQMEVpdEVSRDVNdmIyd2tkTWQ3d0c1WmNS?=
+ =?utf-8?B?L29xZFdSL2FuVWd2eXYrOHBVbU5nNko0TjZLWEhKUnhoT1AxODFDQVBPTFNz?=
+ =?utf-8?B?MHBYdjdEUUtuRjNxWnpDMkU4RC9lZFFyM1dvSUZwNGFTSXh2SklBQlNZcWl1?=
+ =?utf-8?B?NzRBQ21oYWFYS0JtVnhWY2RrdENSZ0g0eC9FZDd6c0tZZW13VC9aZFVMSkpn?=
+ =?utf-8?B?bStnQlBOSDF4VHR2V1pDT2RWNyt0ZHNySVBSVGRKUzZ1ZTlFUW51RXlVQ0Vt?=
+ =?utf-8?B?NnVTK1lyT21hRVdNd1hWby9qbERwU3N3dEg2MXZUeHdjYlA3RjU5akNYVHE0?=
+ =?utf-8?B?dlhPMXZRRzFDYXVJT0VsVC9OZHZYWUw4QlpxM0lqcVZpLzl3c2RacmFKNzNk?=
+ =?utf-8?B?VTJWbE9vYzk0blhReENhZmFaZmpXaVNwbVJTaThKZXRqWFFpVWJuNUJGL2xW?=
+ =?utf-8?B?Q1VTTm1xZHRKc3dBWnVLMEppSEZ1NkdycFBpcUg1SG9kaFVQa2VTYTRsdVhQ?=
+ =?utf-8?B?RVM3QStkVWtBSDFoQnVxQW1QUzl1S3pnZHRsUVRGd3lQRUROT0Q3ZzhIV2F5?=
+ =?utf-8?B?RVRiNG1rSzAwcHRzS2VyTGlReVpqaWhySTVZb0Y3MTQrZTJMbFR6TEpjOU9X?=
+ =?utf-8?B?KzFaMWpkT0VPZ3luVkg0RFlrSjdGZnppQ0svQ0M5cFJ3MkxPK2oyOHJlM3lJ?=
+ =?utf-8?B?RGZ4SlBDVkZFaERZZGNsTVAvK0g2dVdGUnQxV1NTRkpZZm5IbTJoM04rWXdN?=
+ =?utf-8?B?b0xRQTZVMU9jTGlIeVBQelpoYzJQdGJvSGhQb2U3NzN5TkgzYytxekl0Tm5z?=
+ =?utf-8?B?SmMrZEwyd1pyZzk2MXVXZktVVHd4Um9FUG1VdlF6b0gycElZcU5udzdMdzN2?=
+ =?utf-8?B?b1NTaVhQWmtjUGFVSC9Qb3EwSHZkSGFReDYvUVBZNWR6aFRDc044SzduWDFx?=
+ =?utf-8?B?ZVRjSVlsVkt5MUE5YTJOOXRaSDZEa0o0OU5TVmV6U09vTkZHT0ZkODdvQ1J2?=
+ =?utf-8?B?RlBHZGp1R05wUnh1VFVTS3dJbnYyT3V0cmhad1Y1N1g0akczQ2d0SHUvOUxx?=
+ =?utf-8?B?dXRZdjZHZk1JVnRYdGV0VDFtbFRrUnd1ekNPUDhrTEtxVC80TVkyVHd4VG1X?=
+ =?utf-8?B?UW1abXdnZVFmTS9GeHZFRUkvRUNKcEozb3o5R1JMNnJkTlR5Wkt5OFZzYisx?=
+ =?utf-8?B?TU5YWG1kTzY5T3NZRi8wVHNSVDZmVk5IYmQ4VFUwYythVGhTZWczQVFPUWRp?=
+ =?utf-8?B?aHJHR210ejVPd2pvbHR5L0pvV0hneG5QOGpDcmVvM3ZZZ3E1ZllQYTRlTE52?=
+ =?utf-8?B?QlE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <2520CF88A12D4945A678B104198E7409@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5062.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 39d10701-acde-4d4d-ecad-08dace07f55e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2022 10:38:00.2453
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: DGNtK9rSXZITvINvvjDhjDth6eZpCogg+tsiah2p7+F+03+IJSKvWVJ6glnJCiZ+VmHV2nBA1RJB1oMvJO679wj6q7BtePQOMBwr0k9lWys=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5659
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_030641_104857_94BF1EE8 
-X-CRM114-Status: GOOD (  36.34  )
+X-CRM114-CacheID: sfid-20221124_030842_848891_D050F314 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,733 +177,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/11/22 12:11, Yanchao Yang ha scritto:
-> From: MediaTek Corporation <linuxwwan@mediatek.com>
-> 
-> Registers the TMI device driver with the kernel. Set up all the fundamental
-> configurations for the device: PCIe layer, Modem Host Cross Core Interface
-> (MHCCIF), Reset Generation Unit (RGU), modem common control operations and
-> build infrastructure.
-> 
-> * PCIe layer code implements driver probe and removal, MSI-X interrupt
-> initialization and de-initialization, and the way of resetting the device.
-> * MHCCIF provides interrupt channels to communicate events such as handshake,
-> PM and port enumeration.
-> * RGU provides interrupt channels to generate notifications from the device
-> so that the TMI driver could get the device reset.
-> * Modem common control operations provide the basic read/write functions of
-> the device's hardware registers, mask/unmask/get/clear functions of the
-> device's interrupt registers and inquiry functions of the device's status.
-> 
-> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
-> Signed-off-by: MediaTek Corporation <linuxwwan@mediatek.com>
-
-Hello Yanchao,
-thanks for the patch! However, there are some things to improve...
-
-First of all, you have to signoff (in your name) all patches that you send.
-Check below for more comments...
-
-> ---
->   drivers/net/wwan/Kconfig                 |   11 +
->   drivers/net/wwan/Makefile                |    1 +
->   drivers/net/wwan/mediatek/Makefile       |   12 +
->   drivers/net/wwan/mediatek/mtk_common.h   |   30 +
->   drivers/net/wwan/mediatek/mtk_dev.c      |   50 +
->   drivers/net/wwan/mediatek/mtk_dev.h      |  503 ++++++++++
->   drivers/net/wwan/mediatek/pcie/mtk_pci.c | 1164 ++++++++++++++++++++++
->   drivers/net/wwan/mediatek/pcie/mtk_pci.h |  150 +++
->   drivers/net/wwan/mediatek/pcie/mtk_reg.h |   69 ++
->   9 files changed, 1990 insertions(+)
->   create mode 100644 drivers/net/wwan/mediatek/Makefile
->   create mode 100644 drivers/net/wwan/mediatek/mtk_common.h
->   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.c
->   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
-> 
-
-
-> diff --git a/drivers/net/wwan/Makefile b/drivers/net/wwan/Makefile
-> index 3960c0ae2445..198d8074851f 100644
-> --- a/drivers/net/wwan/Makefile
-> +++ b/drivers/net/wwan/Makefile
-> @@ -14,3 +14,4 @@ obj-$(CONFIG_QCOM_BAM_DMUX) += qcom_bam_dmux.o
->   obj-$(CONFIG_RPMSG_WWAN_CTRL) += rpmsg_wwan_ctrl.o
->   obj-$(CONFIG_IOSM) += iosm/
->   obj-$(CONFIG_MTK_T7XX) += t7xx/
-> +obj-$(CONFIG_MTK_TMI) += mediatek/
-> diff --git a/drivers/net/wwan/mediatek/Makefile b/drivers/net/wwan/mediatek/Makefile
-> new file mode 100644
-> index 000000000000..ae5f8a5ba05a
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/Makefile
-> @@ -0,0 +1,12 @@
-> +# SPDX-License-Identifier: BSD-3-Clause-Clear
-> +
-> +MODULE_NAME := mtk_tmi
-> +
-> +mtk_tmi-y = \
-> +	pcie/mtk_pci.o	\
-> +	mtk_dev.o
-> +
-> +ccflags-y += -I$(srctree)/$(src)/
-> +ccflags-y += -I$(srctree)/$(src)/pcie/
-> +
-> +obj-$(CONFIG_MTK_TMI) += mtk_tmi.o
-> diff --git a/drivers/net/wwan/mediatek/mtk_common.h b/drivers/net/wwan/mediatek/mtk_common.h
-> new file mode 100644
-> index 000000000000..516d3d9e02cf
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/mtk_common.h
-> @@ -0,0 +1,30 @@
-> +/* SPDX-License-Identifier: BSD-3-Clause-Clear
-> + *
-> + * Copyright (c) 2022, MediaTek Inc.
-> + */
-> +
-> +#ifndef _MTK_COMMON_H
-> +#define _MTK_COMMON_H
-> +
-> +#include <linux/device.h>
-> +
-> +#define MTK_UEVENT_INFO_LEN 128
-> +
-> +/* MTK uevent */
-> +enum mtk_uevent_id {
-> +	MTK_UEVENT_FSM = 1,
-> +	MTK_UEVENT_MAX
-> +};
-> +
-> +static inline void mtk_uevent_notify(struct device *dev, enum mtk_uevent_id id, const char *info)
-> +{
-> +	char buf[MTK_UEVENT_INFO_LEN];
-> +	char *ext[2] = {NULL, NULL};
-> +
-> +	snprintf(buf, MTK_UEVENT_INFO_LEN, "%s:event_id=%d, info=%s",
-> +		 dev->kobj.name, id, info);
-> +	ext[0] = buf;
-> +	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, ext);
-> +}
-> +
-> +#endif /* _MTK_COMMON_H */
-> diff --git a/drivers/net/wwan/mediatek/mtk_dev.c b/drivers/net/wwan/mediatek/mtk_dev.c
-> new file mode 100644
-> index 000000000000..d3d7bf940d78
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/mtk_dev.c
-> @@ -0,0 +1,50 @@
-> +// SPDX-License-Identifier: BSD-3-Clause-Clear
-> +/*
-> + * Copyright (c) 2022, MediaTek Inc.
-> + */
-> +
-> +#include "mtk_dev.h"
-> +
-> +int mtk_dev_init(struct mtk_md_dev *mdev)
-
-Empty function: not needed.
-
-I know that you're actually populating this one later, but each commit
-must be fine, so please introduce this function in a later commit, where
-you actually make use of it.
-
-> +{
-> +	return 0;
-> +}
-> +
-> +void mtk_dev_exit(struct mtk_md_dev *mdev)
-> +{
-
-Same here.
-
-> +}
-> +
-> +int mtk_dev_start(struct mtk_md_dev *mdev)
-> +{
-
-And same here, and for the remaining two functions in this file.
-
-> +	return 0;
-> +}
-> +
-> +int mtk_dma_map_single(struct mtk_md_dev *mdev, dma_addr_t *addr,
-> +		       void *mem, size_t size, int direction)
-> +{
-> +	if (!addr)
-> +		return -EINVAL;
-
-Further comments on this one: you're not doing anything MediaTek specific here.
-You're only doing
-
-> +
-> +	*addr = dma_map_single(mdev->dev, mem, size, direction);
-> +	if (unlikely(dma_mapping_error(mdev->dev, *addr))) {
-> +		dev_err(mdev->dev, "Failed to map dma!\n");
-> +		return -ENOMEM;
-
-I know that dma_mapping_error() either returns -ENOMEM or zero, but you should
-*not* assume that it won't ever change (even if that's very unlikely).
-
-ret = dma_mapping_error(...);
-if (unlikely(ret)) {
-	dev_err(...)
-	return ret;
-}
-
-return 0;
-
-
-...also, I'm not sure that you really need this helper, but that's for another day.
-
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +int mtk_dma_map_page(struct mtk_md_dev *mdev, dma_addr_t *addr,
-> +		     struct page *page, unsigned long offset, size_t size, int direction)
-
-Same comments as mtk_dma_map_single() here too.
-
-> +{
-> +	if (!addr)
-> +		return -EINVAL;
-> +
-> +	*addr = dma_map_page(mdev->dev, page, offset, size, direction);
-> +	if (unlikely(dma_mapping_error(mdev->dev, *addr))) {
-> +		dev_err(mdev->dev, "Failed to map dma!\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	return 0;
-> +}
-> diff --git a/drivers/net/wwan/mediatek/mtk_dev.h b/drivers/net/wwan/mediatek/mtk_dev.h
-> new file mode 100644
-> index 000000000000..bd7b1dc11daf
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/mtk_dev.h
-> @@ -0,0 +1,503 @@
-> +/* SPDX-License-Identifier: BSD-3-Clause-Clear
-> + *
-> + * Copyright (c) 2022, MediaTek Inc.
-> + */
-> +
-> +#ifndef __MTK_DEV_H__
-> +#define __MTK_DEV_H__
-> +
-> +#include <linux/dma-mapping.h>
-> +#include <linux/dmapool.h>
-> +
-> +#define MTK_DEV_STR_LEN 16
-> +
-> +enum mtk_irq_src {
-> +	MTK_IRQ_SRC_MIN,
-> +	MTK_IRQ_SRC_MHCCIF,
-> +	MTK_IRQ_SRC_SAP_RGU,
-> +	MTK_IRQ_SRC_DPMAIF,
-> +	MTK_IRQ_SRC_DPMAIF2,
-> +	MTK_IRQ_SRC_CLDMA0,
-> +	MTK_IRQ_SRC_CLDMA1,
-> +	MTK_IRQ_SRC_CLDMA2,
-> +	MTK_IRQ_SRC_CLDMA3,
-> +	MTK_IRQ_SRC_PM_LOCK,
-> +	MTK_IRQ_SRC_DPMAIF3,
-> +	MTK_IRQ_SRC_MAX
-> +};
-> +
-> +enum mtk_user_id {
-> +	MTK_USER_HW,
-> +	MTK_USER_CTRL,
-> +	MTK_USER_DPMAIF,
-> +	MTK_USER_PM,
-> +	MTK_USER_EXCEPT,
-> +	MTK_USER_MAX
-> +};
-> +
-> +enum mtk_reset_type {
-> +	RESET_FLDR,
-> +	RESET_PLDR,
-> +	RESET_RGU,
-> +};
-> +
-> +enum mtk_reinit_type {
-> +	REINIT_TYPE_RESUME,
-> +	REINIT_TYPE_EXP,
-> +};
-> +
-> +enum mtk_l1ss_grp {
-> +	L1SS_PM,
-> +	L1SS_EXT_EVT,
-> +};
-> +
-> +#define L1SS_BIT_L1(grp)     BIT(((grp) << 2) + 1)
-> +#define L1SS_BIT_L1_1(grp)   BIT(((grp) << 2) + 2)
-> +#define L1SS_BIT_L1_2(grp)   BIT(((grp) << 2) + 3)
-> +
-> +struct mtk_md_dev;
-> +
-> +/* struct mtk_hw_ops - The HW layer operations provided to transaction layer.
-
-That's good documentation. You should fix some indentation and, after that, you
-should actually make it kerneldoc.
-
-/**
-  * struct mtk_hw_ops - ....
-  * (etc)
-
-https://docs.kernel.org/doc-guide/kernel-doc.html
-
-> + * @read32:         Callback to read 32-bit register.
-> + * @write32:        Callback to write 32-bit register.
-> + * @get_dev_state:  Callback to get the device's state.
-> + * @ack_dev_state:  Callback to acknowledge device state.
-> + * @get_ds_status:  Callback to get device deep sleep status.
-> + * @ds_lock:        Callback to lock the deep sleep of device.
-> + * @ds_unlock:      Callback to unlock the deep sleep of device.
-> + * @set_l1ss:       Callback to set the link L1 and L1ss enable/disable.
-> + * @get_resume_state:Callback to get PM resume information that device writes.
-> + * @get_irq_id:     Callback to get the irq id specific IP on a chip.
-> + * @get_virq_id:     Callback to get the system virtual IRQ.
-> + * @register_irq:   Callback to register callback function to specific hardware IP.
-> + * @unregister_irq: Callback to unregister callback function to specific hardware IP.
-> + * @mask_irq:       Callback to mask the interrupt of specific hardware IP.
-> + * @unmask_irq:     Callback to unmask the interrupt of specific hardware IP.
-> + * @clear_irq:      Callback to clear the interrupt of specific hardware IP.
-> + * @register_ext_evt:Callback to register HW Layer external event.
-> + * @unregister_ext_evt:Callback to unregister HW Layer external event.
-> + * @mask_ext_evt:   Callback to mask HW Layer external event.
-> + * @unmask_ext_evt: Callback to unmask HW Layer external event.
-> + * @clear_ext_evt:  Callback to clear HW Layer external event status.
-> + * @send_ext_evt:   Callback to send HW Layer external event.
-> + * @get_ext_evt_status:Callback to get HW Layer external event status.
-> + * @reset:          Callback to reset device.
-> + * @reinit:         Callback to execute device re-initialization.
-> + * @get_hp_status:  Callback to get link hotplug status.
-> + */
-> +struct mtk_hw_ops {
-> +	/* Read value from MD. For PCIe, it's BAR 2/3 MMIO read */
-
-Compress all these comments in the kerneldoc description: you either document
-the members here inline, or up there.
-I prefer up there.
-
-> +	u32 (*read32)(struct mtk_md_dev *mdev, u64 addr);
-
-..snip..
-
-> +
-> +/* mtk_md_dev defines the structure of MTK modem device */
-
-This structure is already partially documented: it takes 2 minutes to finish
-the documentation as kerneldoc. Please do that.
-
-> +struct mtk_md_dev {
-> +	struct device *dev;
-> +	const struct mtk_hw_ops *hw_ops; /* The operations provided by hw layer */
-> +	void *hw_priv;
-> +	u32 hw_ver;
-> +	int msi_nvecs;
-> +	char dev_str[MTK_DEV_STR_LEN];
-> +};
-> +
-> +int mtk_dev_init(struct mtk_md_dev *mdev);
-> +void mtk_dev_exit(struct mtk_md_dev *mdev);
-> +int mtk_dev_start(struct mtk_md_dev *mdev);
-> +
-> +/* mtk_hw_read32() -Read dword from register.
-
-Same here and everywhere else, this won't get parsed by kerneldoc: please fix.
-
-/**
-  * mtk_hw_read32() - Read dword from register
-  *
-  * @mdev .....etc
-
-> + *
-> + * @mdev: Device instance.
-> + * @addr: Register address.
-> + *
-> + * Return: Dword register value.
-> + */
-> +static inline u32 mtk_hw_read32(struct mtk_md_dev *mdev, u64 addr)
-> +{
-> +	return mdev->hw_ops->read32(mdev, addr);
-> +}
-> +
-
-..snip..
-
-> +static inline void *mtk_dma_alloc_coherent(struct mtk_md_dev *mdev,
-> +					   size_t size, dma_addr_t *addr, gfp_t flag)
-> +{
-> +	if (addr)
-> +		return dma_alloc_coherent(mdev->dev, size, addr, flag);
-> +	return NULL;
-
-You're not doing anything special here: drop this function.
-
-> +}
-> +
-> +static inline int mtk_dma_free_coherent(struct mtk_md_dev *mdev,
-> +					size_t size, void *cpu_addr, dma_addr_t addr)
-> +{
-> +	if (!addr)
-> +		return -EINVAL;
-> +	dma_free_coherent(mdev->dev, size, cpu_addr, addr);
-
-Same here.
-
-> +	return 0;
-> +}
-> +
-> +static inline struct dma_pool *mtk_dma_pool_create(struct mtk_md_dev *mdev,
-> +						   const char *name, size_t size,
-> +						   size_t align, size_t allocation)
-> +{
-> +	return dma_pool_create(name, mdev->dev, size, align, allocation);
-
-Ditto.
-
-> +}
-> +
-> +static inline void mtk_dma_pool_destroy(struct dma_pool *pool)
-> +{
-> +	dma_pool_destroy(pool);
-
-Again...
-
-> +}
-> +
-> +static inline void *mtk_dma_pool_alloc(struct dma_pool *pool, gfp_t mem_flags, dma_addr_t *addr)
-> +{
-> +	if (!pool || !addr)
-> +		return NULL;
-> +	return dma_pool_zalloc(pool, mem_flags, addr);
-
-...and again...
-
-> +}
-> +
-> +static inline int mtk_dma_pool_free(struct dma_pool *pool, void *cpu_addr, dma_addr_t addr)
-> +{
-> +	if (!pool || !addr)
-> +		return -EINVAL;
-> +	dma_pool_free(pool, cpu_addr, addr);
-
-...this too..
-
-> +	return 0;
-> +}
-> +
-> +int mtk_dma_map_single(struct mtk_md_dev *mdev, dma_addr_t *addr,
-> +		       void *mem, size_t size, int direction);
-> +static inline int mtk_dma_unmap_single(struct mtk_md_dev *mdev,
-> +				       dma_addr_t addr, size_t size, int direction)
-> +{
-> +	if (!addr)
-> +		return -EINVAL;
-> +	dma_unmap_single(mdev->dev, addr, size, direction);
-
-and this
-
-> +	return 0;
-> +}
-> +
-> +int mtk_dma_map_page(struct mtk_md_dev *mdev, dma_addr_t *addr,
-> +		     struct page *page, unsigned long offset, size_t size, int direction);
-> +static inline int mtk_dma_unmap_page(struct mtk_md_dev *mdev,
-> +				     dma_addr_t addr, size_t size, int direction)
-> +{
-> +	if (!addr)
-> +		return -EINVAL;
-> +	dma_unmap_page(mdev->dev, addr, size, direction);
-
-...and this.
-
-> +	return 0;
-> +}
-> +
-> +#endif /* __MTK_DEV_H__ */
-> diff --git a/drivers/net/wwan/mediatek/pcie/mtk_pci.c b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-> new file mode 100644
-> index 000000000000..5be61178d30d
-> --- /dev/null
-> +++ b/drivers/net/wwan/mediatek/pcie/mtk_pci.c
-> @@ -0,0 +1,1164 @@
-> +// SPDX-License-Identifier: BSD-3-Clause-Clear
-> +/*
-> + * Copyright (c) 2022, MediaTek Inc.
-> + */
-> +
-> +#include <linux/acpi.h>
-> +#include <linux/aer.h>
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +
-> +#include "mtk_pci.h"
-> +#include "mtk_reg.h"
-> +
-> +#define MTK_PCI_TRANSPARENT_ATR_SIZE	(0x3F)
-> +
-> +/* This table records which bits of the interrupt status register each interrupt corresponds to
-> + * when there are different numbers of msix interrupts.
-> + */
-
-Whenever >= 80 columns is possible, please use that boundary: it doesn't really
-make a lot of sense to have a 96 columns comment.
-
-/*
-  * This table records which bits of the interrupt status register
-  * corresponds to which interrupt when there are different numbers
-  * of MSI-X interrupts.
-  */
-
-> +static const u32 mtk_msix_bits_map[MTK_IRQ_CNT_MAX / 2][5] = {
-> +	{0xFFFFFFFF, 0x55555555, 0x11111111, 0x01010101, 0x00010001},
-> +	{0x00000000, 0xAAAAAAAA, 0x22222222, 0x02020202, 0x00020002},
-> +	{0x00000000, 0x00000000, 0x44444444, 0x04040404, 0x00040004},
-> +	{0x00000000, 0x00000000, 0x88888888, 0x08080808, 0x00080008},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x10101010, 0x00100010},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x20202020, 0x00200020},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x40404040, 0x00400040},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x80808080, 0x00800080},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x01000100},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x02000200},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x04000400},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x08000800},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x10001000},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x20002000},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x40004000},
-> +	{0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x80008000},
-> +};
-> +
-> +static u32 mtk_pci_mac_read32(struct mtk_pci_priv *priv, u64 addr)
-> +{
-> +	return ioread32(priv->mac_reg_base + addr);
-> +}
-> +
-> +static void mtk_pci_mac_write32(struct mtk_pci_priv *priv, u64 addr, u32 val)
-> +{
-> +	iowrite32(val, priv->mac_reg_base + addr);
-> +}
-> +
-> +static void mtk_pci_set_msix_merged(struct mtk_pci_priv *priv, int irq_cnt)
-> +{
-> +	mtk_pci_mac_write32(priv, REG_PCIE_CFG_MSIX, ffs(irq_cnt) * 2 - 1);
-> +}
-> +
-> +static int mtk_pci_setup_atr(struct mtk_md_dev *mdev, struct mtk_atr_cfg *cfg)
-> +{
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	u32 addr, val, size_h, size_l;
-> +	int atr_size, pos, offset;
-> +
-> +	if (cfg->transparent) {
-> +		atr_size = MTK_PCI_TRANSPARENT_ATR_SIZE; /* No address conversion is performed */
-> +	} else {
-> +		if (cfg->src_addr & (cfg->size - 1)) {
-> +			dev_err(mdev->dev, "Invalid atr src addr is not aligned to size\n");
-> +			return -EFAULT;
-> +		}
-> +		if (cfg->trsl_addr & (cfg->size - 1)) {
-> +			dev_err(mdev->dev, "Invalid atr trsl addr is not aligned to size, %llx, %llx\n",
-> +				cfg->trsl_addr, cfg->size - 1);
-> +			return -EFAULT;
-> +		}
-> +
-> +		size_l = cfg->size & 0xFFFFFFFF;
-
-You're using bitfields a lot, please use the macros that you can find in
-include/linux/bitfield.h - that will simplify things a lot, other than adding
-a couple of build-time checks that will help sanitizing in case something is
-horribly wrong (or becomes horribly wrong in the future).
-
-size_l = FIELD_PREP(SOME_FIELD, cfg->size);
-
-Whenever it does not make sense to use bitfield macros, you should anyway never
-use magic numbers, and you should actually make use of other kernel provided
-bit macros, such as GENMASK() and others (which you *are* using later).
-
-> +		size_h = cfg->size >> 32;
-> +		pos = ffs(size_l);
-> +		if (pos) {
-> +			/* Address Translate Space Size is equal to 2^(atr_size+1)
-> +			 * "-2" means "-1-1", the first "-1" is because of the atr_size register,
-> +			 * the second is because of the ffs() will increase by one.
-> +			 */
-> +			atr_size = pos - 2;
-> +		} else {
-> +			pos = ffs(size_h);
-> +			/* "+30" means "+32-1-1", the meaning of "-1-1" is same as above,
-> +			 * "+32" is because atr_size is large, exceeding 32-bits.
-> +			 */
-> +			atr_size = pos + 30;
-> +		}
-> +	}
-> +
-> +	/* Calculate table offset */
-> +	offset = ATR_PORT_OFFSET * cfg->port + ATR_TABLE_OFFSET * cfg->table;
-> +	/* SRC_ADDR_H */
-> +	addr = REG_ATR_PCIE_WIN0_T0_SRC_ADDR_MSB + offset;
-> +	val = (u32)(cfg->src_addr >> 32);
-> +	mtk_pci_mac_write32(priv, addr, val);
-> +	/* SRC_ADDR_L */
-> +	addr = REG_ATR_PCIE_WIN0_T0_SRC_ADDR_LSB + offset;
-> +	val = (u32)(cfg->src_addr & 0xFFFFF000) | (atr_size << 1) | 0x1;
-> +	mtk_pci_mac_write32(priv, addr, val);
-> +
-> +	/* TRSL_ADDR_H */
-> +	addr = REG_ATR_PCIE_WIN0_T0_TRSL_ADDR_MSB + offset;
-> +	val = (u32)(cfg->trsl_addr >> 32);
-> +	mtk_pci_mac_write32(priv, addr, val);
-> +	/* TRSL_ADDR_L */
-> +	addr = REG_ATR_PCIE_WIN0_T0_TRSL_ADDR_LSB + offset;
-> +	val = (u32)(cfg->trsl_addr & 0xFFFFF000);
-> +	mtk_pci_mac_write32(priv, addr, val);
-> +
-> +	/* TRSL_PARAM */
-> +	addr = REG_ATR_PCIE_WIN0_T0_TRSL_PARAM + offset;
-> +	val = (cfg->trsl_param << 16) | cfg->trsl_id;
-> +	mtk_pci_mac_write32(priv, addr, val);
-> +
-> +	return 0;
-> +}
-> +
-
-..snip..
-
-> +
-> +static int mtk_pci_reinit(struct mtk_md_dev *mdev, enum mtk_reinit_type type)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +	struct mtk_pci_priv *priv = mdev->hw_priv;
-> +	int ret, ltr, l1ss;
-> +
-> +	/* restore ltr */
-> +	ltr = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_LTR);
-> +	if (ltr) {
-> +		pci_write_config_word(pdev, ltr + PCI_LTR_MAX_SNOOP_LAT,
-> +				      priv->ltr_max_snoop_lat);
-> +		pci_write_config_word(pdev, ltr + PCI_LTR_MAX_NOSNOOP_LAT,
-> +				      priv->ltr_max_nosnoop_lat);
-> +	}
-> +	/* restore l1ss */
-> +	l1ss = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_L1SS);
-> +	if (l1ss) {
-> +		pci_write_config_dword(pdev, l1ss + PCI_L1SS_CTL1, priv->l1ss_ctl1);
-> +		pci_write_config_dword(pdev, l1ss + PCI_L1SS_CTL2, priv->l1ss_ctl2);
-> +	}
-> +
-> +	ret = mtk_pci_atr_init(mdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (priv->irq_type == PCI_IRQ_MSIX) {
-> +		if (priv->irq_cnt != MTK_IRQ_CNT_MAX)
-> +			mtk_pci_set_msix_merged(priv, priv->irq_cnt);
-> +	}
-> +
-> +	mtk_pci_unmask_irq(mdev, priv->rgu_irq_id);
-> +	mtk_pci_unmask_irq(mdev, priv->mhccif_irq_id);
-> +
-> +	/* In L2 resume, device would disable PCIe interrupt,
-> +	 * and this step would re-enable PCIe interrupt.
-> +	 * For L3, just do this with no effect.
-> +	 */
-> +	if (type == REINIT_TYPE_RESUME)
-> +		mtk_pci_mac_write32(priv, priv->cfg->istatus_host_ctrl_addr, 0);
-> +
-> +	dev_info(mdev->dev, "PCIe reinit type=%d\n", type);
-
-I'm not sure that this message provides any valuable information to the user,
-this should be a dev_dbg().
-
-> +
-> +	return 0;
-> +}
-> +
-
-..snip..
-
-> +
-> +static void mtk_mhccif_isr_work(struct work_struct *work)
-> +{
-> +	struct mtk_pci_priv *priv = container_of(work, struct mtk_pci_priv, mhccif_work);
-> +	struct mtk_md_dev *mdev = priv->irq_desc->mdev;
-> +	struct mtk_mhccif_cb *cb;
-> +	unsigned long flag;
-> +	u32 stat, mask;
-> +
-> +	stat = mtk_mhccif_get_evt_status(mdev);
-> +	mask = mtk_pci_read32(mdev, priv->cfg->mhccif_rc_base_addr
-> +		+ MHCCIF_EP2RC_SW_INT_EAP_MASK);
-> +	dev_info(mdev->dev, "External events: mhccif_stat=0x%08X mask=0x%08X\n", stat, mask);
-
-This print is going to be a bit spammy... dev_dbg().
-
-> +
-> +	if (unlikely(stat == U32_MAX && mtk_pci_link_check(mdev))) {
-> +		/* When link failed, we don't need to unmask/clear. */
-> +		dev_err(mdev->dev, "Failed to check link in MHCCIF handler.\n");
-> +		return;
-> +	}
-> +
-> +	stat &= ~mask;
-> +	spin_lock_irqsave(&priv->mhccif_lock, flag);
-> +	list_for_each_entry(cb, &priv->mhccif_cb_list, entry) {
-> +		if (cb->chs & stat)
-> +			cb->evt_cb(cb->chs & stat, cb->data);
-> +	}
-> +	spin_unlock_irqrestore(&priv->mhccif_lock, flag);
-> +
-> +	mtk_pci_clear_irq(mdev, priv->mhccif_irq_id);
-> +	mtk_pci_unmask_irq(mdev, priv->mhccif_irq_id);
-> +}
-> +
-
-..snip..
-
-> +
-> +static int mtk_pci_request_irq(struct mtk_md_dev *mdev, int max_irq_cnt, int irq_type)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
-> +	int irq_cnt;
-> +	int ret;
-> +
-> +	irq_cnt = pci_alloc_irq_vectors(pdev, MTK_IRQ_CNT_MIN, max_irq_cnt, irq_type);
-> +	mdev->msi_nvecs = irq_cnt;
-> +
-> +	if (irq_cnt < MTK_IRQ_CNT_MIN) {
-> +		dev_err(mdev->dev,
-> +			"Unable to alloc pci irq vectors. ret=%d maxirqcnt=%d irqtype=0x%x\n",
-> +			irq_cnt, max_irq_cnt, irq_type);
-> +		ret = -EFAULT;
-> +		goto err;
-
-
-		return -EFAULT;
-
-
-> +	}
-> +
-> +	ret = mtk_pci_request_irq_msix(mdev, irq_cnt);
-
-
-	return mtk_pci_request_irq_msix(dev, irq_cnt);
-}
-
-
-> +err:
-> +	return ret;
-> +}
-> +
-
-Regards,
-Angelo
-
+T24gV2VkLCAyMDIyLTExLTIzIGF0IDEzOjEwICswMjAwLCBNYXRoaWFzIE55bWFuIHdyb3RlOg0K
+PiBPbiAxOC4xMS4yMDIyIDEzLjAxLCBDaHVuZmVuZyBZdW4gd3JvdGU6DQo+ID4gVGhlcmUgaXMg
+ZXJyb3IgbG9nIHdoZW4gYWRkIGEgdXNiMyByb290IGh1YiB3aXRob3V0IHBvcnRzOg0KPiA+ICJo
+dWIgNC0wOjEuMDogY29uZmlnIGZhaWxlZCwgaHViIGRvZXNuJ3QgaGF2ZSBhbnkgcG9ydHMhIChl
+cnIgLTE5KSINCj4gPiANCj4gPiBzbyBvbWl0IHRoZSBzaGFyZWQgaGNkIGlmIGVpdGhlciBvZiB0
+aGUgcm9vdCBodWJzIGhhcyBubyBwb3J0cywgYnV0DQo+ID4gdXN1YWxseSB0aGVyZSBpcyBubyB1
+c2IzIHBvcnQuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogQ2h1bmZlbmcgWXVuIDxjaHVuZmVu
+Zy55dW5AbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICAgZHJpdmVycy91c2IvaG9zdC94aGNp
+LW10ay5jIHwgNzIgKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0NCj4gPiAtLS0tLQ0K
+PiA+ICAgMSBmaWxlIGNoYW5nZWQsIDQ2IGluc2VydGlvbnMoKyksIDI2IGRlbGV0aW9ucygtKQ0K
+PiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi9ob3N0L3hoY2ktbXRrLmMgYi9kcml2
+ZXJzL3VzYi9ob3N0L3hoY2ktDQo+ID4gbXRrLmMNCj4gPiBpbmRleCAwMTcwNWU1NTljNDIuLmNm
+ZjNjNGFlYTAzNiAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL3VzYi9ob3N0L3hoY2ktbXRrLmMN
+Cj4gPiArKysgYi9kcml2ZXJzL3VzYi9ob3N0L3hoY2ktbXRrLmMNCj4gPiBAQCAtNDg1LDYgKzQ4
+NSw3IEBAIHN0YXRpYyBpbnQgeGhjaV9tdGtfcHJvYmUoc3RydWN0DQo+ID4gcGxhdGZvcm1fZGV2
+aWNlICpwZGV2KQ0KPiA+ICAgCWNvbnN0IHN0cnVjdCBoY19kcml2ZXIgKmRyaXZlcjsNCj4gPiAg
+IAlzdHJ1Y3QgeGhjaV9oY2QgKnhoY2k7DQo+ID4gICAJc3RydWN0IHJlc291cmNlICpyZXM7DQo+
+ID4gKwlzdHJ1Y3QgdXNiX2hjZCAqdXNiM19oY2Q7DQo+ID4gICAJc3RydWN0IHVzYl9oY2QgKmhj
+ZDsNCj4gPiAgIAlpbnQgcmV0ID0gLUVOT0RFVjsNCj4gPiAgIAlpbnQgd2FrZXVwX2lycTsNCj4g
+PiBAQCAtNTkzLDYgKzU5NCw3IEBAIHN0YXRpYyBpbnQgeGhjaV9tdGtfcHJvYmUoc3RydWN0DQo+
+ID4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+ICAgDQo+ID4gICAJeGhjaSA9IGhjZF90b194
+aGNpKGhjZCk7DQo+ID4gICAJeGhjaS0+bWFpbl9oY2QgPSBoY2Q7DQo+ID4gKwl4aGNpLT5hbGxv
+d19zaW5nbGVfcm9vdGh1YiA9IDE7DQo+ID4gICANCj4gPiAgIAkvKg0KPiA+ICAgCSAqIGltb2Rf
+aW50ZXJ2YWwgaXMgdGhlIGludGVycnVwdCBtb2RlcmF0aW9uIHZhbHVlIGluDQo+ID4gbmFub3Nl
+Y29uZHMuDQo+ID4gQEAgLTYwMiwyNCArNjA0LDI5IEBAIHN0YXRpYyBpbnQgeGhjaV9tdGtfcHJv
+YmUoc3RydWN0DQo+ID4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+ICAgCXhoY2ktPmltb2Rf
+aW50ZXJ2YWwgPSA1MDAwOw0KPiA+ICAgCWRldmljZV9wcm9wZXJ0eV9yZWFkX3UzMihkZXYsICJp
+bW9kLWludGVydmFsLW5zIiwgJnhoY2ktDQo+ID4gPmltb2RfaW50ZXJ2YWwpOw0KPiA+ICAgDQo+
+ID4gLQl4aGNpLT5zaGFyZWRfaGNkID0gdXNiX2NyZWF0ZV9zaGFyZWRfaGNkKGRyaXZlciwgZGV2
+LA0KPiA+IC0JCQlkZXZfbmFtZShkZXYpLCBoY2QpOw0KPiA+IC0JaWYgKCF4aGNpLT5zaGFyZWRf
+aGNkKSB7DQo+ID4gLQkJcmV0ID0gLUVOT01FTTsNCj4gPiAtCQlnb3RvIGRpc2FibGVfZGV2aWNl
+X3dha2V1cDsNCj4gPiAtCX0NCj4gPiAtDQo+ID4gICAJcmV0ID0gdXNiX2FkZF9oY2QoaGNkLCBp
+cnEsIElSUUZfU0hBUkVEKTsNCj4gPiAgIAlpZiAocmV0KQ0KPiA+IC0JCWdvdG8gcHV0X3VzYjNf
+aGNkOw0KPiA+ICsJCWdvdG8gZGlzYWJsZV9kZXZpY2Vfd2FrZXVwOw0KPiA+ICAgDQo+ID4gLQlp
+ZiAoSENDX01BWF9QU0EoeGhjaS0+aGNjX3BhcmFtcykgPj0gNCAmJg0KPiA+ICsJaWYgKCF4aGNp
+X2hhc19vbmVfcm9vdGh1Yih4aGNpKSkgew0KPiA+ICsJCXhoY2ktPnNoYXJlZF9oY2QgPSB1c2Jf
+Y3JlYXRlX3NoYXJlZF9oY2QoZHJpdmVyLCBkZXYsDQo+ID4gKwkJCQkJCQkgZGV2X25hbWUoZGV2
+KSwNCj4gPiBoY2QpOw0KPiA+ICsJCWlmICgheGhjaS0+c2hhcmVkX2hjZCkgew0KPiA+ICsJCQly
+ZXQgPSAtRU5PTUVNOw0KPiA+ICsJCQlnb3RvIGRlYWxsb2NfdXNiMl9oY2Q7DQo+ID4gKwkJfQ0K
+PiA+ICsJfQ0KPiA+ICsNCj4gPiArCXVzYjNfaGNkID0geGhjaV9nZXRfdXNiM19oY2QoeGhjaSk7
+DQo+ID4gKwlpZiAodXNiM19oY2QgJiYgSENDX01BWF9QU0EoeGhjaS0+aGNjX3BhcmFtcykgPj0g
+NCAmJg0KPiA+ICAgCSAgICAhKHhoY2ktPnF1aXJrcyAmIFhIQ0lfQlJPS0VOX1NUUkVBTVMpKQ0K
+PiA+IC0JCXhoY2ktPnNoYXJlZF9oY2QtPmNhbl9kb19zdHJlYW1zID0gMTsNCj4gPiArCQl1c2Iz
+X2hjZC0+Y2FuX2RvX3N0cmVhbXMgPSAxOw0KPiA+ICAgDQo+ID4gLQlyZXQgPSB1c2JfYWRkX2hj
+ZCh4aGNpLT5zaGFyZWRfaGNkLCBpcnEsIElSUUZfU0hBUkVEKTsNCj4gPiAtCWlmIChyZXQpDQo+
+ID4gLQkJZ290byBkZWFsbG9jX3VzYjJfaGNkOw0KPiA+ICsJaWYgKHhoY2ktPnNoYXJlZF9oY2Qp
+IHsNCj4gPiArCQlyZXQgPSB1c2JfYWRkX2hjZCh4aGNpLT5zaGFyZWRfaGNkLCBpcnEsIElSUUZf
+U0hBUkVEKTsNCj4gPiArCQlpZiAocmV0KQ0KPiA+ICsJCQlnb3RvIHB1dF91c2IzX2hjZDsNCj4g
+PiArCX0NCj4gPiAgIA0KPiA+ICAgCWlmICh3YWtldXBfaXJxID4gMCkgew0KPiA+ICAgCQlyZXQg
+PSBkZXZfcG1fc2V0X2RlZGljYXRlZF93YWtlX2lycV9yZXZlcnNlKGRldiwNCj4gPiB3YWtldXBf
+aXJxKTsNCj4gDQo+IAkNCj4gZGV2X3BtX3NldF9kZWRpY2F0ZWRfd2FrZV9pcnFfcmV2ZXJzZSgp
+IGNhbiBiZSBjYWxsZWQgd2l0aCBqdXN0IG9uZQ0KPiBoY2QsIGlmIGl0IGZhaWxzDQo+IGl0IHdp
+bGwgZ290byBkZWFsbG9jX3VzYjNfaGNkOg0KPiANCj4gZGVhbGxvY191c2IzX2hjZDoNCj4gCXVz
+Yl9yZW1vdmVfaGNkKHhoY2ktPnNoYXJlZF9oY2QpOyAgIC8vIHhoY2ktPnNoYXJlZF9oY2QgbWF5
+IGJlIA0KPiBudWxsDQp1c2JfcmVtb3ZlX2hjZCgpIGhhcyBoYW5kbGVkIE5VTEwgYXJndW1lbnQs
+IG5vIG5lZWQgY2hlY2sgaXQgaGVyZQ0KDQo+IAl4aGNpLT5zaGFyZWRfaGNkID0gTlVMTDsgLy8g
+Y2F1c2VzIHVzYl9wdXRfaGNkKCkgaXNzdWVzIGlmDQo+IHNoYXJlZF9oY2QgZXhpc3RzDQpUaGlz
+IGxpbmUgc2hhbGwgYmUgcmVtb3ZlZCwgSSdsbCBwcmVwYXJlIGEgcGF0Y2guDQoNCj4gDQo+IHB1
+dF91c2IzX2hjZDoNCj4gICAgICAgICAgdXNiX3B1dF9oY2QoeGhjaS0+c2hhcmVkX2hjZCk7IC8v
+IHNoYXJlZF9oY2QgbWF5IGJlIHNldCBOVUxMDQo+IGFib3ZlDQp1c2JfcHV0X2hjZCgpIGhhcyBo
+YW5kbGVkIE5VTEwgYXJndW1lbnQsIG5vIG5lZWQgY2hlY2sgaXQgaGVyZQ0KDQpUaGFua3MgYSBs
+b3QNCg0KPiANCj4gLU1hdGhpYXMNCj4gICANCg==
 
