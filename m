@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE79C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 14:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA09C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 15:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GVzM5l2GS7m5hxXVnuN7dbH8/RAxpC9QEiR0fzxFXVQ=; b=dtqjhhTUmwqSGu3TFpckLMzbyM
-	ppQAi/K9jVYWhqjiBrADXIiGxuNVeKq4yTggUGKaJYalg1TJF64wS5rs5e4TxYikAWYKU4Xx7yS/s
-	sc8cybSPOP7zYT5J5Jv6lGQEXiuYZXjrDP41L6zragOgnCe88uPFT3KrBN61uurxAJ6RopgVU9a99
-	AZ3BQYBdQj8raXDSSJ6OSNIGnwOiPmxU52fdV06ZtGhHjDeC6p0gyugaNg/QyU8LqBUWKck7z9MdW
-	rU/eJ09my95OeRFXrzyMsWQ1RVnFpOANwvDFG9rHZXYipCwXfD4MrdPPf0Ro1J1yCsn6xXe7Mgipc
-	IYsGE6cQ==;
+	bh=c96Ul1/TL2U3SKdWaGX1MDNis5GBzk2e/zSXZs3N3TM=; b=XE3Em0y8eGgZrFb6LaF+4zNcDE
+	LC4lPE1ErFjR+mggIi6U/foCxxBDD2hQjLoeYjvQ0loEXpNVZkpMOkZ/vOCQ6NageaX9Qb6e4AI3r
+	6JJ93gUWZuCS+/o3PBb0hh2WyI6YTCM6d2L/qhWtNqI8V2a3kvgBSbu1J908Obep1UHbg829WW6Zh
+	tr8ytkezHsJqjNm3D7SQe/hV693Hkh4KlSd+Gpjs8Z8lgI6G0M1HoCAhLKCYYlJkLBcSH+8a52Z7k
+	P3x7APOGJsDwMRrbHENPSCibnwjtHvqTfduvbNVX7650Lg2RBAZsVmRL6kjaaqQqExcZvJ4vUcKCX
+	+LVH2mTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyD6d-009FRR-6M; Thu, 24 Nov 2022 14:21:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oyE4G-009ezj-MS; Thu, 24 Nov 2022 15:23:12 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyD6X-009FN1-Kk
-	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 14:21:31 +0000
-X-UUID: 7369f70d5d7448c6bfd26e8177f15583-20221124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GVzM5l2GS7m5hxXVnuN7dbH8/RAxpC9QEiR0fzxFXVQ=;
-	b=eRcA7G33+IRYPmewb775OK8Dg3yDbI62VvEzrTH73zg32BnOV/Siqjx9Or7w2ZJEiNQkePO3JfoL/g+zFYnWt+ictSsVFfMDpHRQQ29hL0lG+q7F1KAG7zUKYWEadfUS/cr9STlOwq6XcQuunPK5eTWz30J6koJGjZRk384xqTo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:2bee5980-4eb9-451c-862e-1ad489271832,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:a526bc2f-2938-482e-aafd-98d66723b8a9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 7369f70d5d7448c6bfd26e8177f15583-20221124
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1365618082; Thu, 24 Nov 2022 07:21:21 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 24 Nov 2022 22:20:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 24 Nov 2022 22:20:47 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] wifi: mt76: do not send firmware FW_FEATURE_NON_DL region
-Date: Thu, 24 Nov 2022 22:20:38 +0800
-Message-ID: <9cdf601d03c7e68e0dfe771b03e42badd4b65489.1669297971.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oyE4D-009ewx-6Q
+	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 15:23:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0E70AB8284E;
+	Thu, 24 Nov 2022 15:23:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34022C433C1;
+	Thu, 24 Nov 2022 15:23:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669303385;
+	bh=gRYYTAEJr3fe2c9lFj3Q9D4ENhny0lOxwI/+OWY2074=;
+	h=From:To:Cc:Subject:Date:From;
+	b=G5P5s7hdRx9Adzn6NlYklNr5jJ+qnIe/FNwXbMRydzZssykK5oBLnoPcBnjU+3Jhq
+	 B7eufUKVB8Lt1K5Ov5iEeFoj174Yw0fbnMo+VLqQe67AQBYjBj4RjPSXAchQMxtgMo
+	 r8V0g6ZKs5zKYVpU6czQicLVqTlBQbwqdnKvY4Mb64DTSqndRWn3S0mR8+YzUby2ur
+	 ShV0O98K1nS15xdTRHGwTrMnVAt8qQ8bl90utbVuVnuTxzl4K9tzPSgLoYcIUVC3GR
+	 oCqMTL6tlzHrBND1mKCJkaUlyslOJ6SN0GdRm9PCMytk//Clj27cynLWMMD8V6m2VX
+	 yZuv8cBIiEXSw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	lorenzo.bianconi@redhat.com,
+	sujuan.chen@mediatek.com,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 net-next 0/5] refactor mtk_wed code to introduce SER support
+Date: Thu, 24 Nov 2022 16:22:50 +0100
+Message-Id: <cover.1669303154.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_062129_736634_4B500D4C 
-X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-CacheID: sfid-20221124_072309_417018_47803BD3 
+X-CRM114-Status: UNSURE (   7.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,39 +79,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Refactor mtk_wed support in order to introduce proper integration for hw reset
+between mtk_eth_soc/mtk_wed and mt76 drivers.
 
-skip invalid section to avoid potential risks
+Changes since v1:
+- improve commit logs
 
-Fixes: 23bdc5d8cadf ("wifi: mt76: mt7921: introduce Country Location Control support")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Lorenzo Bianconi (5):
+  net: ethernet: mtk_wed: return status value in mtk_wdma_rx_reset
+  net: ethernet: mtk_wed: move MTK_WDMA_RESET_IDX_TX configuration in
+    mtk_wdma_tx_reset
+  net: ethernet: mtk_wed: update mtk_wed_stop
+  net: ethernet: mtk_wed: add mtk_wed_rx_reset routine
+  net: ethernet: mtk_wed: add reset to tx_ring_setup callback
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 96d91238ad8d..5a047e630860 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -2906,6 +2906,9 @@ mt76_connac_mcu_send_ram_firmware(struct mt76_dev *dev,
- 		len = le32_to_cpu(region->len);
- 		addr = le32_to_cpu(region->addr);
- 
-+		if (region->feature_set & FW_FEATURE_NON_DL)
-+			goto next;
-+
- 		if (region->feature_set & FW_FEATURE_OVERRIDE_ADDR)
- 			override = addr;
- 
-@@ -2922,6 +2925,7 @@ mt76_connac_mcu_send_ram_firmware(struct mt76_dev *dev,
- 			return err;
- 		}
- 
-+next:
- 		offset += len;
- 	}
- 
+ drivers/net/ethernet/mediatek/mtk_wed.c      | 279 ++++++++++++++-----
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h |   9 +
+ drivers/net/wireless/mediatek/mt76/dma.c     |   2 +-
+ include/linux/soc/mediatek/mtk_wed.h         |  12 +-
+ 4 files changed, 220 insertions(+), 82 deletions(-)
+
 -- 
-2.18.0
+2.38.1
 
 
