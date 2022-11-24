@@ -4,97 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99486C43219
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 11:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1939C43219
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 11:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g3sDEE3qa8mV6Z8JLdbIcpk1y3W4FOR+C6lE//MJGBA=; b=F33s1QTWBMXuTmnxNLoNPXCiZN
-	MkW85YaqEjjQh8iJmrPy4ADQRhga6Z+2l7w7LYSHLaSz3sramPI+Mttv/xJM3xEfz+t2kTQi1IpiR
-	0yQyyWAXKGI4NKOhi/ZvIWeuTI376Yh9KETUCjlj40BK5ogATq86MhBBUsxoAX4cHEEswvdBQRqMk
-	RpLD8ABPlC85NU0ZRUclIL/q5gAI/C25crQiAsG/esApAnNS6PSLpHNatwWfrVJYae2ciDrvdrvkf
-	6wSfQ/uZKoncG2oTbi0z+DADe+qIrF/CxWi9ORXUULfBQe+AhuxtEUOIiv/bQAJppqGgbzPYeGw1y
-	YpTwFXQw==;
+	bh=Fyb8cWovIHqjfoKBUsRkxLqfHtzttGTVJMM1/mMniBc=; b=n/1TuTuTR0Cc7kGO+0quContyt
+	UZHCpa/7aqiLQQg3nA6eiVH+uewjjmjEAty7UTNSjrOpfM++1pzJC8kSR9fzUcziJPUczGY6NTvwP
+	sbQgcXjiVgCCfLAuLzU6kyIAN4RYuFgu2CjI4Ca9Ri4TPfJPr/89AVFxy/EmQRROQ9FTb3cHzewpR
+	h50Y4Q4GGWRtIQ4hGozKCFSXKXhwjOGV3IBD87q5kkAi0DchKRblae94OVt8/uxN7N4BCdAT+ksGD
+	cm/4AD0Dsq9KGn6dgrY8b2IwmJsDJpWXDCqVZoRFJ3A21bxFRlGXa48hcqFKcTlfziUzSQHdkdVoO
+	kyoTejWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyA6n-007wPG-K4; Thu, 24 Nov 2022 11:09:33 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1oyAS2-0085TL-Hj; Thu, 24 Nov 2022 11:31:30 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyA6T-007wEI-7U
-	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 11:09:14 +0000
-Received: by mail-lj1-x235.google.com with SMTP id z4so1611578ljq.6
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Nov 2022 03:09:10 -0800 (PST)
+	id 1oyARP-0085EB-8w
+	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 11:30:53 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id bn5so1690021ljb.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Nov 2022 03:30:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=g3sDEE3qa8mV6Z8JLdbIcpk1y3W4FOR+C6lE//MJGBA=;
-        b=YwQsbws8Gdut4vqlvVwAGqR8yxlaet5b02SqRYH3b0ZOLIOkqiXHr0liDJUuIBNQyW
-         cVkcsW6I8skCy4wXVnS+/xcCumMDaz5WbutbsK1JL/l4IE9Hsgul8ap1f92eYSEckq2P
-         v5lmf34VWNXMvRyZkGdjoSNe0ReDIaw8qUsnpO+Pe//H72gJCw123DL4Jp9JSan1t6ba
-         sFFMTZr+y+jq5hyy56MCzDOG1hQIcaCu4tX1KhmLiQrwNehIyQLgOgv0WcTIf8a6TaMa
-         q0IBbHrj0u1x6rzKuOzKYlFWes7H/+dHxcVeCxPUM/8JPmq1zZmcndQxWBN0+kvYipjB
-         kzrw==
+        bh=Fyb8cWovIHqjfoKBUsRkxLqfHtzttGTVJMM1/mMniBc=;
+        b=QZk3tIfbzK4rNT+vIGPYUeXn4gNgs+gW6dkAXRxipvRcU4xuaMIl3agnzv/tg6k1s4
+         LKxEj/JapkraxMo0L3Y9KUV69bri62FuZyfBMDZ7Grj59z5hpR6L4Sxg6fh+E14Ll2Qw
+         kwbdatuLICRroPArSIXGB3rUucBLjcZITeEizV/yp5Mge5dWj3Cy75qb6k7pYAu5etFQ
+         O1N2dks6mhny2t+RRF/bvCEyJ+Jre9HzBZSIhsXvuWZ5/Ijw/W2ILeYfZYpeA/X3pwvP
+         nomzsP11aNAY4hKRCJOE7t/rWNKRoMmCh+DYBwAkmzvrT/9DGP6OXAl6o5EdTwPHsJv0
+         P6dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=g3sDEE3qa8mV6Z8JLdbIcpk1y3W4FOR+C6lE//MJGBA=;
-        b=PKLU3js8PkUeX09yZdIIEM2mo7a7gKjFPOdpyluOFZn5zbN4uhpivpjut8ReuLc93w
-         h9cooJN1HWQWDnLCj9SDXzKYxT/cbaE7fmsc4IonNEdXN6l0QOrujv3DcHsfSjl77GiX
-         yJOy47ts87TzX2Z2UEXHs5qbvoukF8dvH+0G0pQ33QnFT6UIn7tjhZH9b67E3AtkFElc
-         mFxT0Z2jTOcdWj78pgugCc3/6vjPsmElUG2bQGsVeNijfJHdCLoPOO0vs8oJ5S6l2bjh
-         7pHQhD8yHvote7rnBxfUPgvQQdDEXq/7XbRGE60sPsUsyJ7/bve2W4drcDqizEGeD69F
-         C5Yg==
-X-Gm-Message-State: ANoB5pmqBrPtQwhlO+NsB1ACHtnQQLtG2WfE1kDhzePqDbpY0IzdEugt
-	qpqFhpJNiZgtBYDAFH9V8j4n/AO9NcogcO9S
-X-Google-Smtp-Source: AA0mqf6LyBiVykGyk7kCz9xb1VAXnYbL3E7n7XIc4SDO7ASJrU0aMhqJ7FUYBvNj2MY6wbI+eH7zYw==
-X-Received: by 2002:a2e:7017:0:b0:277:18ee:c91e with SMTP id l23-20020a2e7017000000b0027718eec91emr10976398ljc.363.1669288149407;
-        Thu, 24 Nov 2022 03:09:09 -0800 (PST)
+        bh=Fyb8cWovIHqjfoKBUsRkxLqfHtzttGTVJMM1/mMniBc=;
+        b=2FITgxmepavWgOXhj2nzPvf+XdjyPq2CFSrlHx7ZM3ccKLBdKsgT9lNZ3b/Fze87ac
+         5yNSYNSNOBEwlYYSf3z76FK6DBZZag2NWm+UjBPdMSxOJScvgQx+526361ZG97wpkaF0
+         OgHv3LtEjds+gSWE50Bpm15NSZHajvB+MGHYv8C2ji5JBAL/UejQ2p8sTX4d1pY1RV3d
+         Au9W+QdM7b5ZINWwkJqy4mAIcuolWzA2zL35DCPVDyCngqsaO9QGAfDGXOrg6i8UG8to
+         EaA4Rd4LGH3JofRmCfSrXRzBN2VzuPrrnrsSkZ6L7LXWTTDAgrj9tAib6D7J82zjIsJ0
+         Kehw==
+X-Gm-Message-State: ANoB5pnNWPKWCM7WFBDgv0uiI2Jg3b3ur3UpJ9yM84rEnH5ZTWUSok+v
+	GvQLmqn/RIAwRNLaUs96Yjlouw==
+X-Google-Smtp-Source: AA0mqf7BKwwl8DQ9FRp+pIXisHGgV5Q1UBV/4F4DMWyHmsPYWp4b2sHCx8CXTm7yLTzau1VK7KZLWw==
+X-Received: by 2002:a2e:824e:0:b0:26f:be8e:5298 with SMTP id j14-20020a2e824e000000b0026fbe8e5298mr5653251ljh.418.1669289445821;
+        Thu, 24 Nov 2022 03:30:45 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id u4-20020ac248a4000000b0049944ab6895sm85882lfg.260.2022.11.24.03.09.07
+        by smtp.gmail.com with ESMTPSA id p19-20020ac24ed3000000b004b4f1ea713csm95584lfr.73.2022.11.24.03.30.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Nov 2022 03:09:08 -0800 (PST)
-Message-ID: <3012ca1a-c583-4148-8a96-f9ecf61a07dd@linaro.org>
-Date: Thu, 24 Nov 2022 12:09:06 +0100
+        Thu, 24 Nov 2022 03:30:45 -0800 (PST)
+Message-ID: <e5e87795-12d7-699e-1539-2e60b8b51957@linaro.org>
+Date: Thu, 24 Nov 2022 12:30:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH v4 1/2] media: dt-bindings: mediatek: Rename child node
- names for decoder
+Subject: Re: [PATCH RESEND v2] dt-bindings: pwm: mediatek: Add compatible for
+ MT7986
 Content-Language: en-US
-To: Hans Verkuil <hverkuil@xs4all.nl>,
- =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
- <Allen-KH.Cheng@mediatek.com>, "robh@kernel.org" <robh@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
- <20220930112237.14411-2-allen-kh.cheng@mediatek.com>
- <20220930220011.GA1107972-robh@kernel.org>
- <ffc56eb60a3ef74c815c8d3c170a0df51958e20d.camel@mediatek.com>
- <24361bea-ecfe-b6e1-e755-5151220767f2@linaro.org>
- <722194a3d413ca15069554ebab1f34dec25057eb.camel@mediatek.com>
- <de2198dd-16a7-f412-932d-a75cccf801e0@xs4all.nl>
+To: Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-pwm@vger.kernel.or,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Thierry Reding <thierry.reding@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, Zhi Mao <zhi.mao@mediatek.com>,
+ Sam Shih <sam.shih@mediatek.com>
+References: <Y39PjU1BqBB8tZ98@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <de2198dd-16a7-f412-932d-a75cccf801e0@xs4all.nl>
+In-Reply-To: <Y39PjU1BqBB8tZ98@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_030913_291015_2F1B60CD 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20221124_033051_369538_78475F2E 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,81 +100,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/11/2022 12:05, Hans Verkuil wrote:
-> Hi Krzysztof,
+On 24/11/2022 12:03, Daniel Golle wrote:
+> Add new compatible string for MT7986 PWM and list compatible units for
+> existing entries. Also make sure the number of pwm1-X clocks is listed
+> for all supported units.
 > 
-> On 05/10/2022 13:58, Allen-KH Cheng (程冠勳) wrote:
->> Hi Krzysztof,
->>
->> On Wed, 2022-10-05 at 09:30 +0200, Krzysztof Kozlowski wrote:
->>> On 05/10/2022 09:21, Allen-KH Cheng (程冠勳) wrote:
->>>> Hi Rob,
->>>>
->>>> On Fri, 2022-09-30 at 17:00 -0500, Rob Herring wrote:
->>>>> On Fri, Sep 30, 2022 at 07:22:36PM +0800, Allen-KH Cheng wrote:
->>>>>> In order to make the names of the child nodes more generic, we
->>>>>> rename
->>>>>> "vcodec" to "video-codec" for decoder in patternProperties and
->>>>>> example.
->>>>>
->>>>> They are either generic or they aren't. Until something generic
->>>>> is 
->>>>> defined, I don't think it's worth the churn to change.
->>>>>
->>>>>
->>>>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
->>>>>> Reviewed-by: AngeloGioacchino Del Regno <
->>>>>> angelogioacchino.delregno@collabora.com>
->>>>>> ---
->>>>>>  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8
->>>>>> ++++----
->>>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
->>>>>>
->>>>>> diff --git
->>>>>> a/Documentation/devicetree/bindings/media/mediatek,vcodec-
->>>>>> subdev-
->>>>>> decoder.yaml
->>>>>> b/Documentation/devicetree/bindings/media/mediatek,vcodec-
->>>>>> subdev-
->>>>>> decoder.yaml
->>>>>> index c4f20acdc1f8..67fde48f991c 100644
->>>>>> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
->>>>>> subdev-decoder.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
->>>>>> subdev-decoder.yaml
->>>>>> @@ -91,7 +91,7 @@ properties:
->>>>>>  
->>>>>>  # Required child node:
->>>>>>  patternProperties:
->>>>>> -  '^vcodec-lat@[0-9a-f]+$':
->>>>>> +  '^video-codec-lat@[0-9a-f]+$':
->>>>>
->>>>> Just 'video-codec' doesn't work?
->>>>>
->>>>
->>>> Thanks for your reply.
->>>>
->>>> hmm, I think 'vidoe-codec' does wrok.
->>>>
->>>> There are two seperate hardwares for the MTK video codec.
->>>> codec-lat and codec-core.
->>>>
->>>> Is it ok to keep two child node names for various hardwares?
->>>>
->>>
->>> Aren't they still codecs?
->>>
->>> Best regards,
->>> Krzysztof
->>
->> Yes, They are both hardware deocders. Lat is responsible for the
->> bitstream and write the outcome to the lat buffer. Core will decode the
->> lat buffer and write the outcome to the output buffer. Each frame will
->> be decoded cyclically by these two hardware deocders.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> Changes since v1: list compatibles, fix pwm1-n clocks for all SoCs
 > 
-> So is this patch OK to be merged? Or do you still want changes?
+> Rebased on linux-next and re-run scripts/get_maintainers.pl on patch to
+> makes sure dt maintainers are included. This has been requested by
+> Krzysztof Kozlowski.
+> 
+>  .../devicetree/bindings/pwm/pwm-mediatek.txt  | 20 +++++++++++--------
+>  1 file changed, 12 insertions(+), 8 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> index 554c96b6d0c3..952a338e06e7 100644
+> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> @@ -2,14 +2,15 @@ MediaTek PWM controller
+>  
+>  Required properties:
+>   - compatible: should be "mediatek,<name>-pwm":
+> -   - "mediatek,mt2712-pwm": found on mt2712 SoC.
+> +   - "mediatek,mt2712-pwm", "mediatek,mt6795-pwm": found on mt2712 SoC.
+>     - "mediatek,mt6795-pwm": found on mt6795 SoC.
+> -   - "mediatek,mt7622-pwm": found on mt7622 SoC.
+> -   - "mediatek,mt7623-pwm": found on mt7623 SoC.
+> +   - "mediatek,mt7622-pwm", "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt7622 SoC.
 
-The patch should be changed as Rob pointed out - use "video-codec" name.
+This does not look right. What you are saying is mt7622 is compatible
+with mt8195, which is compatible with mt8183, which is compatible with
+mt7986. It could be true, but I feel you wanted to say something else -
+mt7622 is compatible with one SoC which is generic and common to all
+other implementations.
+
+> +   - "mediatek,mt7623-pwm", "mediatek,mt7628-pwm": found on mt7623 SoC.
+>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
+>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
+> -   - "mediatek,mt8183-pwm": found on mt8183 SoC.
+> -   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm": found on mt8195 SoC.
+> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
+> +   - "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8183 SoC.
+> +   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8195 SoC.
+
+This as well looks excessive.
 
 Best regards,
 Krzysztof
