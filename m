@@ -4,79 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7796C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 07:56:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D2FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 08:06:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lyffu8/VZ3rXBqY5LKX2OqRHXuF19YU8nElgz5QAR+o=; b=Llc9nl3sFIQJH6zNvtDGwO45u8
-	nDgNG7JBPSKYQbYS6AmfCAh2TxVnZWdxbx+aM0HueCamEVOhDgQ0xvx7R23G8yMPkCmN65LAvleFF
-	ZTn9YNJsn581N7h+FMvz5zTuf/aaqWMIGHTLxIzAeLv2EmX5QCfnsxZpGd0UQGxuyaQNn1FZ1aISB
-	DnOGg00Ie6JYuLMs0O6IHMv4BClnnEN1JiSUFLXAXAP/Ac2X2aebTCvxoc6JDyFodDZ3yb7FM4Zkd
-	QZq84AZoMXUPWqEioafH/vPy/ecMz/HQ+j80fELGO1MrRIwibPvDQaiVRc0lm3w3eS6W/ey1d5KeY
-	semnmzrw==;
+	bh=U0KyzH6iF/2h8WKmxHwC7DvzsHzEnM46mvo7z/nvS0E=; b=fLL4EFgFscC6LhHOWi/d8AOuNZ
+	5b50KkcAfsFAcpxSG4IkV/Maz1XSL/DBvOvdNdpzvnMukewDnbikQHYN7YVxooX5qZh6lsgI8r49n
+	Ap2jnAoR2HgWaPnt+vE3ceyVjOU/MDKYWDQ+Vk1S4XK1WTJ73Vhn/cfMw7MIkf6vBuCJuwnprFhBF
+	gNYC/fBSAzFhcpfSFcjmMfIh69X0HlexBw+NU91qv6A4NUH1g4TNe2rjoJAul5nbobR9jFtHzTioI
+	BF4vo4Bcer7anVFSvPB2jiyWsfBvsRGNVAI9hIlMJaBNJJRcSXfIsnTpA6IvcclV5Hl6oW4Z8hDXu
+	iyh0TLeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy760-006OOl-7b; Thu, 24 Nov 2022 07:56:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oy7Fv-006RKd-Av; Thu, 24 Nov 2022 08:06:47 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy75n-006OJ0-RI; Thu, 24 Nov 2022 07:56:21 +0000
-X-UUID: 1b46a019487b473eac700d5d6647e46b-20221124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Lyffu8/VZ3rXBqY5LKX2OqRHXuF19YU8nElgz5QAR+o=;
-	b=Kf7DajNWDgRhoCsqj3+EGGTHTgvdVeno02hVv/7Q/fzcjidJBrcvzQdQ8HNdBEX2an7b9vWx8by8kJeCiGc3qPAQQ4I+J0Bsw1hEiB/iESl5/2rHksnwHKdKzPjLL7E05y7gSFXx/eEosXQ4Inngdy/R9kcDqvPAbwvcJWpmV0A=;
-X-CID-UNFAMILIAR: 1
-X-CID-P-RULE: Spam_GS6885AD
-X-CID-O-INFO: VERSION:1.1.14,REQID:a21569f2-7e88-4605-9265-7448c24bef77,IP:0,U
-	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS6885AD,A
-	CTION:quarantine,TS:200
-X-CID-INFO: VERSION:1.1.14,REQID:a21569f2-7e88-4605-9265-7448c24bef77,IP:0,URL
-	:0,TC:0,Content:100,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_HTS54396,ACT
-	ION:quarantine,TS:200
-X-CID-META: VersionHash:dcaaed0,CLOUDID:b4deb32f-2938-482e-aafd-98d66723b8a9,B
-	ulkID:2211241555411V7KIS32,BulkQuantity:1,Recheck:0,SF:38|28|16|19|48|801,
-	TC:nil,Content:3,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,CO
-	L:0
-X-UUID: 1b46a019487b473eac700d5d6647e46b-20221124
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <elvis.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1907809654; Thu, 24 Nov 2022 00:56:15 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 24 Nov 2022 15:55:38 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 24 Nov 2022 15:55:37 +0800
-From: Elvis.Wang <Elvis.Wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Elvis Wang
-	<Elvis.Wang@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 2/2] dt-bindings: mailbox: mediatek,gce-mailbox: add mt8188 compatible name
-Date: Thu, 24 Nov 2022 15:55:16 +0800
-Message-ID: <20221124075516.1669-3-Elvis.Wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221124075516.1669-1-Elvis.Wang@mediatek.com>
-References: <20221124075516.1669-1-Elvis.Wang@mediatek.com>
+	id 1oy7Fs-006RJE-L8
+	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 08:06:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D845B62015;
+	Thu, 24 Nov 2022 08:06:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5DEDC433C1;
+	Thu, 24 Nov 2022 08:06:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669277202;
+	bh=+hdVqNbGzl+XUzfQ1p3+T+Rghb2DWU3+wt8Ww6Qy7jU=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=j55+x6av7TgZLYbiVh3pJoDs0aKnvGLNyVdNT5zborUjYzts+yQnJ0kz02D5BNhqO
+	 dHyTGXnZLxY+LIC+hBFi5h9sdlTQS0hZFtyU2jHPOzeS9Ivwz6ktKmnxD3WaA3FAYg
+	 JWpRTu+li9J9nnaVLXgJlDOjP1llGvrsLWO2u9HRcwvaNM4CSExop2K3T9smYrOhzQ
+	 mp6IgDVSmFf0I8FWrIl8V8k2Reg+mdPu11UAJIRbLyifZ4cCMDd04xnTSw3Wziv5ZZ
+	 JmOPE+wjZkH+jW6TG6FVASt5ldQYC6M2ztI15KqqdNtX122LXGosHgQhxfaL893ons
+	 WuOBlHwEkotCA==
+From: Kalle Valo <kvalo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  linux-wireless <linux-wireless@vger.kernel.org>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee <ryder.lee@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  Bo Jiao <Bo.Jiao@mediatek.com>,  linux-mediatek <linux-mediatek@lists.infradead.org>,  Peter Chiu <chui-hao.chiu@mediatek.com>,  Howard Hsu <howard-yh.hsu@mediatek.com>,  MeiChia Chiu <meichia.chiu@mediatek.com>,  StanleyYP Wang <StanleyYP.Wang@mediatek.com>,  Money Wang <Money.Wang@mediatek.com>
+Subject: Re: [PATCH 0/9] wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices
+References: <20221122084554.9494-1-shayne.chen@mediatek.com>
+Date: Thu, 24 Nov 2022 10:06:33 +0200
+In-Reply-To: <20221122084554.9494-1-shayne.chen@mediatek.com> (Shayne Chen's
+	message of "Tue, 22 Nov 2022 16:45:45 +0800")
+Message-ID: <87k03kojxy.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221123_235619_912241_46C9B8A1 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221124_000644_785127_2676A01A 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +71,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Elvis Wang <Elvis.Wang@mediatek.com>
+Shayne Chen <shayne.chen@mediatek.com> writes:
 
-Add mt8188 compatible name.
+> Add MediaTek new mac80211 driver mt7996 for Wi-Fi 7 (802.11be) devices.
+> The driver first supports Filogic 680 PCI device, which is a Wi-Fi 7
+> chipset supporting concurrent tri-band operation at 6 GHz, 5 GHz, and
+> 2.4 GHz with 4x4 antennas on each band.
+>
+> Currently, mt7996 only supports tri-band HE or older mode.
+> EHT mode and more variants of Filogic 680 support will be introduced
+> in further patches.
+>
+> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+> Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+> Co-developed-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+> Co-developed-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+> Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+> Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+> Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+> Co-developed-by: Money Wang <Money.Wang@mediatek.com>
+> Signed-off-by: Money Wang <Money.Wang@mediatek.com>
+> Co-developed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+> Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+>
+> ----------------[commit message cut here]----------------
+>
+> This series is based on the following series with fixes folded:
+> - https://patchwork.kernel.org/project/linux-wireless/cover/20221110093525.29649-1-shayne.chen@mediatek.com/
+>
+> For easier review, the big patch has been splitted into multiple patches
+> per functionality. These patches will be folded into a single patch in
+> the final version.
 
-Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml        | 1 +
- 1 file changed, 1 insertion(+)
+I wish you had split the patches per file like I asked, it makes
+reviewing a new driver so much easier. Reviewing is hard, please always
+take us reviewers into consideration when submitting patches.
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-index c579ac074ca7..d383b2ab3ce8 100644
---- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-+++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-@@ -21,6 +21,7 @@ properties:
-       - mediatek,mt8173-gce
-       - mediatek,mt8183-gce
-       - mediatek,mt8186-gce
-+      - mediatek,mt8188-gce
-       - mediatek,mt8192-gce
-       - mediatek,mt8195-gce
- 
+No need to resend because of this, but I am grumpy.
+
 -- 
-2.18.0
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
