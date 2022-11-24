@@ -4,59 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D2FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 08:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19824C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 08:14:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U0KyzH6iF/2h8WKmxHwC7DvzsHzEnM46mvo7z/nvS0E=; b=fLL4EFgFscC6LhHOWi/d8AOuNZ
-	5b50KkcAfsFAcpxSG4IkV/Maz1XSL/DBvOvdNdpzvnMukewDnbikQHYN7YVxooX5qZh6lsgI8r49n
-	Ap2jnAoR2HgWaPnt+vE3ceyVjOU/MDKYWDQ+Vk1S4XK1WTJ73Vhn/cfMw7MIkf6vBuCJuwnprFhBF
-	gNYC/fBSAzFhcpfSFcjmMfIh69X0HlexBw+NU91qv6A4NUH1g4TNe2rjoJAul5nbobR9jFtHzTioI
-	BF4vo4Bcer7anVFSvPB2jiyWsfBvsRGNVAI9hIlMJaBNJJRcSXfIsnTpA6IvcclV5Hl6oW4Z8hDXu
-	iyh0TLeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DeUefraTLOsYVw9xLhjc2jCiF4qkVOolmQaF127DKVk=; b=VG8IZO4jmU/Ea8KT3n6f0qSAJ3
+	h1WXq2AC4LMWcQ9DtVUmG2AfHRLXUHR/73on2CiRd4jEQPHOQL1Sg2OW81yBef0wo+bpcGNvs917j
+	nDXYQFvaEf4D89t32gExqYD6HLkzihL2BASYWcgI3Q2SPjrF9vK7+5e0P5aQgr95lYIwR/SESiTZz
+	q4r0S1ViESosK596C7MoyzIa97hBIKSJivPpBY0RaW9Req8v6uMpl8UbvWywkBt79vVO4t0coUt78
+	DhppEWvzPcBfT1GtfxMb7rNxg7wjiI/f1R9BknUhGmpx7xY9rYbIMZaoMtT614FE05Py29VJ5p1tS
+	kQ7qkeQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy7Fv-006RKd-Av; Thu, 24 Nov 2022 08:06:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oy7NT-006TU3-Qz; Thu, 24 Nov 2022 08:14:35 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oy7Fs-006RJE-L8
-	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 08:06:46 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D845B62015;
-	Thu, 24 Nov 2022 08:06:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5DEDC433C1;
-	Thu, 24 Nov 2022 08:06:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669277202;
-	bh=+hdVqNbGzl+XUzfQ1p3+T+Rghb2DWU3+wt8Ww6Qy7jU=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=j55+x6av7TgZLYbiVh3pJoDs0aKnvGLNyVdNT5zborUjYzts+yQnJ0kz02D5BNhqO
-	 dHyTGXnZLxY+LIC+hBFi5h9sdlTQS0hZFtyU2jHPOzeS9Ivwz6ktKmnxD3WaA3FAYg
-	 JWpRTu+li9J9nnaVLXgJlDOjP1llGvrsLWO2u9HRcwvaNM4CSExop2K3T9smYrOhzQ
-	 mp6IgDVSmFf0I8FWrIl8V8k2Reg+mdPu11UAJIRbLyifZ4cCMDd04xnTSw3Wziv5ZZ
-	 JmOPE+wjZkH+jW6TG6FVASt5ldQYC6M2ztI15KqqdNtX122LXGosHgQhxfaL893ons
-	 WuOBlHwEkotCA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  linux-wireless <linux-wireless@vger.kernel.org>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee <ryder.lee@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  Bo Jiao <Bo.Jiao@mediatek.com>,  linux-mediatek <linux-mediatek@lists.infradead.org>,  Peter Chiu <chui-hao.chiu@mediatek.com>,  Howard Hsu <howard-yh.hsu@mediatek.com>,  MeiChia Chiu <meichia.chiu@mediatek.com>,  StanleyYP Wang <StanleyYP.Wang@mediatek.com>,  Money Wang <Money.Wang@mediatek.com>
-Subject: Re: [PATCH 0/9] wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices
-References: <20221122084554.9494-1-shayne.chen@mediatek.com>
-Date: Thu, 24 Nov 2022 10:06:33 +0200
-In-Reply-To: <20221122084554.9494-1-shayne.chen@mediatek.com> (Shayne Chen's
-	message of "Tue, 22 Nov 2022 16:45:45 +0800")
-Message-ID: <87k03kojxy.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1oy7My-006T8U-Cd; Thu, 24 Nov 2022 08:14:05 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id u2so1156407ljl.3;
+        Thu, 24 Nov 2022 00:14:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DeUefraTLOsYVw9xLhjc2jCiF4qkVOolmQaF127DKVk=;
+        b=PAL/4lgO3qwcAfVMsmymoQQ9m3TeqyOkDETk9KBNX6z/o9HLwn8RaXvTDlHWiBBDvg
+         atY0ccAGfcCtVElHLwQsrm0QhHkHvKqJqM7RMLGPIFIPWuhF0QyVvPm9wRCzT9iCxASw
+         LN5V+FcWg/SEJM7UxqmH+AYRIOqBhulcXZfzgGab0XACfOxuhyQKNDmHdtNHKaj/8Zfl
+         FplfjNLMeze2dGtr55IUGmbCnmpZu5oViaQ4LvbS85ZhO261UmBzZe6bsie2P1qRpMeU
+         ZCqIYWK6+QBAocMAgO6/neFsIvtKZ8dEs27C22xWp0mQ/KCBXyWacaXLkPM597S1fqZP
+         NN0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DeUefraTLOsYVw9xLhjc2jCiF4qkVOolmQaF127DKVk=;
+        b=G1RhUDOwbQIa1U4pi9i3v5NTOMHZ31B4jdjMD7rUTJ7GaU6VM01NHwu6Wac7ZkOgLw
+         ATcVSpcNXl/BjEbXTOxXfhCGklQRrQ3Mc/C6r3aw3E1tgZaIVxCjPRetkE8PmhXJ8sid
+         DOWmrPEnTyfwJ+0lc3pPPFcn1TaywcY/CF0pWIvFJ4/urk7VZtwPpN/J/BTIgiTpHFiR
+         +q24zlh6fZv5abx++VwU4FwqTlBKTkRFijo2YCpANwzid6aLCANQ1q0/Ku5hIVvfw3Yw
+         CDHPeU0AoI8/eWNBnhiOVqaxLOKqNmwpr+jVCVQ0gEhobFI9mqe/ZBWHsNRFEt6iwy41
+         jv/g==
+X-Gm-Message-State: ANoB5pnqhdUTtKq7xXSmGbA7RGId4XHOzKf/ZhZOepCz+8oFIpOXxmdO
+	LC63u6W2VP0X82ERccbWJ9A=
+X-Google-Smtp-Source: AA0mqf6hK0Yfc6U0TtdSmI9ZQLi93h7zpR/we4ftZe8kBmfGIWxQNqL4Gq2HZFwudP2QWyuNPdZNhg==
+X-Received: by 2002:a2e:c52:0:b0:277:9bf:9411 with SMTP id o18-20020a2e0c52000000b0027709bf9411mr4006863ljd.504.1669277641653;
+        Thu, 24 Nov 2022 00:14:01 -0800 (PST)
+Received: from ?IPV6:2001:999:485:946b:e412:ce24:16c6:ba10? ([2001:999:485:946b:e412:ce24:16c6:ba10])
+        by smtp.gmail.com with ESMTPSA id p12-20020ac24ecc000000b0049a5a59aa68sm52803lfr.10.2022.11.24.00.13.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 24 Nov 2022 00:14:01 -0800 (PST)
+Message-ID: <b2a00199-fccf-5887-1029-99f9e7e55e7f@gmail.com>
+Date: Thu, 24 Nov 2022 10:15:11 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v3] dmaengine: drivers: Use
+ devm_platform_ioremap_resource()
+Content-Language: en-US
+To: Tudor Ambarus <tudor.ambarus@microchip.com>, vkoul@kernel.org
+Cc: f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, lars@metafoo.de, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr,
+ agross@kernel.org, andersson@kernel.org, konrad.dybcio@somainline.org,
+ green.wan@sifive.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ samuel@sholland.org, ldewangan@nvidia.com, jonathanh@nvidia.com,
+ thierry.reding@gmail.com, michal.simek@xilinx.com, tony@atomide.com,
+ krzysztof.kozlowski@linaro.org, trix@redhat.com,
+ radhey.shyam.pandey@xilinx.com, shravya.kumbham@xilinx.com,
+ harini.katakam@xilinx.com, swati.agarwal@amd.com, dmaengine@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, ye.xingchen@zte.com.cn, quic_mojha@quicinc.com
+References: <20221110152528.7821-1-tudor.ambarus@microchip.com>
+From: =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@gmail.com>
+In-Reply-To: <20221110152528.7821-1-tudor.ambarus@microchip.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_000644_785127_2676A01A 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20221124_001404_489715_BAD8E7D4 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +107,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Shayne Chen <shayne.chen@mediatek.com> writes:
 
-> Add MediaTek new mac80211 driver mt7996 for Wi-Fi 7 (802.11be) devices.
-> The driver first supports Filogic 680 PCI device, which is a Wi-Fi 7
-> chipset supporting concurrent tri-band operation at 6 GHz, 5 GHz, and
-> 2.4 GHz with 4x4 antennas on each band.
->
-> Currently, mt7996 only supports tri-band HE or older mode.
-> EHT mode and more variants of Filogic 680 support will be introduced
-> in further patches.
->
-> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> Co-developed-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-> Co-developed-by: MeiChia Chiu <meichia.chiu@mediatek.com>
-> Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
-> Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> Co-developed-by: Money Wang <Money.Wang@mediatek.com>
-> Signed-off-by: Money Wang <Money.Wang@mediatek.com>
-> Co-developed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-> Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
->
-> ----------------[commit message cut here]----------------
->
-> This series is based on the following series with fixes folded:
-> - https://patchwork.kernel.org/project/linux-wireless/cover/20221110093525.29649-1-shayne.chen@mediatek.com/
->
-> For easier review, the big patch has been splitted into multiple patches
-> per functionality. These patches will be folded into a single patch in
-> the final version.
 
-I wish you had split the patches per file like I asked, it makes
-reviewing a new driver so much easier. Reviewing is hard, please always
-take us reviewers into consideration when submitting patches.
+On 10/11/2022 17:25, Tudor Ambarus wrote:
+> platform_get_resource() and devm_ioremap_resource() are wrapped up in the
+> devm_platform_ioremap_resource() helper. Use the helper and get rid of the
+> local variable for struct resource *. We now have a function call less.
+> 
+> Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
+> Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> ---
+> v3:
+> - fix errors reported-by lkp@intel.com
+> - lkp@intel.com built successfully few configs, all should be good now.
+> 
+> v2:
+> - rebase on dma/next. s3c24xx was removed, thus drop the changes for it.
+> - collect Acked-by
+> 
+>   drivers/dma/bcm2835-dma.c                      |  4 +---
+>   drivers/dma/dma-axi-dmac.c                     |  4 +---
+>   drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c |  4 +---
+>   drivers/dma/fsl-edma.c                         |  8 +++-----
+>   drivers/dma/fsl-qdma.c                         | 10 +++-------
+>   drivers/dma/idma64.c                           |  4 +---
+>   drivers/dma/img-mdc-dma.c                      |  4 +---
+>   drivers/dma/imx-dma.c                          |  4 +---
+>   drivers/dma/imx-sdma.c                         |  4 +---
+>   drivers/dma/mcf-edma.c                         |  5 +----
+>   drivers/dma/mediatek/mtk-hsdma.c               |  4 +---
+>   drivers/dma/mmp_pdma.c                         |  4 +---
+>   drivers/dma/mmp_tdma.c                         |  4 +---
+>   drivers/dma/moxart-dma.c                       |  4 +---
+>   drivers/dma/mv_xor_v2.c                        |  7 ++-----
+>   drivers/dma/mxs-dma.c                          |  4 +---
+>   drivers/dma/nbpfaxi.c                          |  4 +---
+>   drivers/dma/pxa_dma.c                          |  4 +---
+>   drivers/dma/qcom/bam_dma.c                     |  4 +---
+>   drivers/dma/sf-pdma/sf-pdma.c                  |  4 +---
+>   drivers/dma/sh/usb-dmac.c                      |  4 +---
+>   drivers/dma/stm32-dmamux.c                     |  4 +---
+>   drivers/dma/stm32-mdma.c                       |  4 +---
+>   drivers/dma/sun4i-dma.c                        |  4 +---
+>   drivers/dma/sun6i-dma.c                        |  4 +---
+>   drivers/dma/tegra210-adma.c                    |  4 +---
+>   drivers/dma/ti/cppi41.c                        | 10 +++-------
+>   drivers/dma/ti/omap-dma.c                      |  4 +---
 
-No need to resend because of this, but I am grumpy.
+For omap-dma:
+Acked-by: Peter Ujfalusi <peter.ujfalusi@gmail.com>
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+>   drivers/dma/xilinx/zynqmp_dma.c                |  4 +---
+>   29 files changed, 36 insertions(+), 100 deletions(-)
+> -- 
+Péter
 
