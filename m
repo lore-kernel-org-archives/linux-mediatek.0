@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9494C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 13:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DE3C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 13:12:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1MthmATFQNfNnvP0lOFpmusCFZR/WLYgS8eeinmcLUA=; b=TqqHY633GjqRDXCekQeOxxK3lU
-	rRXbT0OjHGedf/nQ+vjhih7wMHTR4AnXya0EjQIlnWg0Yz5NA+3/Hlil1UjNxcG27Jdir3axRw1yW
-	3aYYu537WNg7XEOAm9X5iwp/UjIvJFPtybSNJEJhu0ZLIt2RMcI+4owSpUMTI8TGtJA3ikcqCDJbV
-	U8u66MY+LfAz2hA4mAhhvwWe809dVN4P+dlWJQ4tfxARxgXWaP1lqj6nXmifOLTfDP4XOdrRm4QDH
-	CPdoHM+6IoXnhF7GuJUjfYGQpMnRovApbVDd+ziEWILJDJjhGxa0fwap0w/HeSzDLE9Zh3wTd37I9
-	jNVFl6rA==;
+	bh=XGWtzqysHWwyBDnERg/YWC0l0GaSJFvhb+qWs3XLQOk=; b=FZRXnqwDdtMQE3yYJGQVViEsTu
+	ln5HwMsGdZSxckX9/Pa7Jq8UkA30pDPNA7GxiuwAZu/czpHyUZS+hwaAMh7okO78PD9onVwKlbkuk
+	an/mGAdlinmJZ7LVzRk3Dklmr02SIKCaS587HguF5+uKIIXwA4KiIwPq0aq677hpeouV2ylWLSl0c
+	vZRjtCgRGg218K+aeJmtLqDCOd/BVtpwoJKbO3KYUyMJdPNWULIUMpfoVoPquEcfc63vpyJgBAXoX
+	sYwabsz+lpiUK7hhIOGqR33Pd2fPCzAZPjn5zYsj8+SG3M52JWlxQcR+tp21DOmzVOPiufVZFnDqf
+	eXZnQuSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyC14-008dxy-41; Thu, 24 Nov 2022 13:11:46 +0000
+	id 1oyC1B-008e1M-JJ; Thu, 24 Nov 2022 13:11:53 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyBjV-008VY9-AH
-	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 12:53:39 +0000
-X-UUID: 0026da85b826402c8812448d310a8a9f-20221124
+	id 1oyBjX-008VY9-9d
+	for linux-mediatek@lists.infradead.org; Thu, 24 Nov 2022 12:53:41 +0000
+X-UUID: 17fa5f8283e748869bed19bb18920efc-20221124
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1MthmATFQNfNnvP0lOFpmusCFZR/WLYgS8eeinmcLUA=;
-	b=GbIGzf0zUp7R+UmHQkxw0oH7dYENyLenWXgbAUuSL8QqjhkOQe954bUKsDPlaLqAmud9TBSIPrJNyUfoWOXNwpw7oF/0toZg+bbWEygM6JI9L0HuqTDFjByYO0M8pj+YIYwo7yMiw0NqxCvdRDcTHIVdX/x/X5xVzAkBfrN+yeg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XGWtzqysHWwyBDnERg/YWC0l0GaSJFvhb+qWs3XLQOk=;
+	b=Ae1moGnaj0wM9cunjL20JW+jkQX61XkYbhCkcqms5fBT2Kf0yBQCDMVJCJx86MZNHeCb/Qh0MpB6cP5amIG/UV0KAsrfBeK+UBSoFGNLQQ+n7OfXO8760Jt0H3XlLnfCyMyQH4eMcOrTGHuFxUBotDZ9NQMYuMpPLH6/Yz7V8Qo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:0d1768f8-fdc7-4d6e-badb-bd9d6169a450,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:dd4837f9-3a34-4838-abcf-dfedf9dd068e,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:52819d39-c95f-4972-b02e-a0a0144e3b43,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:0d4937f9-3a34-4838-abcf-dfedf9dd068e,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 0026da85b826402c8812448d310a8a9f-20221124
+X-UUID: 17fa5f8283e748869bed19bb18920efc-20221124
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1431679985; Thu, 24 Nov 2022 05:53:32 -0700
+	with ESMTP id 494293174; Thu, 24 Nov 2022 05:53:33 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Thu, 24 Nov 2022 20:52:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 24 Nov 2022 20:52:27 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 24 Nov 2022 20:52:28 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
@@ -55,9 +55,9 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v1 05/12] media: platform: mtk-mdp3: introduce more pipelines from 8195
-Date: Thu, 24 Nov 2022 20:52:18 +0800
-Message-ID: <20221124125225.24538-6-moudy.ho@mediatek.com>
+Subject: [PATCH v1 08/12] media: platform: mtk-mdp3: avoid multiple driver registrations
+Date: Thu, 24 Nov 2022 20:52:21 +0800
+Message-ID: <20221124125225.24538-9-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221124125225.24538-1-moudy.ho@mediatek.com>
 References: <20221124125225.24538-1-moudy.ho@mediatek.com>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_045337_461265_01DA53AD 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20221124_045339_470915_4895D221 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,184 +81,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-By expanding the MMSYS and MUTEX of each two sets in MT8195,
-more pipelines can be arranged.
+The number of MDP3 driver probes depends on the registered clocks of MMSYS.
+Because VPPSYS0 and VPPSYS1 are used in MT8195 MDP3, it is necessary to
+avoid multiple driver registrations.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 80 ++++++++++++-------
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  7 ++
- 2 files changed, 60 insertions(+), 27 deletions(-)
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 7 ++++++-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 5472d7183a5e..365efe6a6c92 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -56,6 +56,43 @@ static struct mtk_mutex *__get_mutex(const struct mdp_dev *mdp_dev,
- 	return m;
- }
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 56c42bd3f16b..6e3abadef6cd 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -187,6 +187,11 @@ static int mdp_probe(struct platform_device *pdev)
+ 	mdp->pdev = pdev;
+ 	mdp->mdp_data = of_device_get_match_data(&pdev->dev);
  
-+static enum mdp_pipe_id __get_pipe(const struct mdp_dev *mdp_dev,
-+				   enum mtk_mdp_comp_id id)
-+{
-+	enum mdp_pipe_id pipe_id;
-+
-+	switch (id) {
-+	case MDP_COMP_RDMA0:
-+		pipe_id = MDP_PIPE_RDMA0;
-+		break;
-+	case MDP_COMP_ISP_IMGI:
-+		pipe_id = MDP_PIPE_IMGI;
-+		break;
-+	case MDP_COMP_WPEI:
-+		pipe_id = MDP_PIPE_WPEI;
-+		break;
-+	case MDP_COMP_WPEI2:
-+		pipe_id = MDP_PIPE_WPEI2;
-+		break;
-+	case MDP_COMP_RDMA1:
-+		pipe_id = MDP_PIPE_RDMA1;
-+		break;
-+	case MDP_COMP_RDMA2:
-+		pipe_id = MDP_PIPE_RDMA2;
-+		break;
-+	case MDP_COMP_RDMA3:
-+		pipe_id = MDP_PIPE_RDMA3;
-+		break;
-+	default:
-+		/* Avoid exceptions when operating MUTEX */
-+		pipe_id = MDP_PIPE_RDMA0;
-+		dev_err(&mdp_dev->pdev->dev, "Unknown pipeline id %d", id);
-+		break;
++	if (strcmp(dev->of_node->name, MDP_NODE_NAME)) {
++		platform_set_drvdata(pdev, mdp);
++		goto success_return;
 +	}
 +
-+	return pipe_id;
-+}
-+
- static int mdp_path_subfrm_require(const struct mdp_path *path,
- 				   struct mdp_cmdq_cmd *cmd,
- 				   struct mdp_pipe_info *p, u32 count)
-@@ -63,7 +100,6 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
- 	const int plat_id = path->mdp_dev->mdp_data->mdp_plat_id;
- 	const struct mdp_comp_ctx *ctx;
- 	const struct mtk_mdp_driver_data *data = path->mdp_dev->mdp_data;
--	struct device *dev = &path->mdp_dev->pdev->dev;
- 	struct mtk_mutex *mutex;
- 	int id, index;
- 	u32 num_comp = 0;
-@@ -72,23 +108,7 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
- 		num_comp = CFG_GET(MT8183, path->config, num_components);
- 
- 	/* Decide which mutex to use based on the current pipeline */
--	switch (path->comps[0].comp->public_id) {
--	case MDP_COMP_RDMA0:
--		index = MDP_PIPE_RDMA0;
--		break;
--	case MDP_COMP_ISP_IMGI:
--		index = MDP_PIPE_IMGI;
--		break;
--	case MDP_COMP_WPEI:
--		index = MDP_PIPE_WPEI;
--		break;
--	case MDP_COMP_WPEI2:
--		index = MDP_PIPE_WPEI2;
--		break;
--	default:
--		dev_err(dev, "Unknown pipeline and no mutex is assigned");
--		return -EINVAL;
--	}
-+	index = __get_pipe(path->mdp_dev, path->comps[0].comp->public_id);
- 	memcpy(p, &data->pipe_info[index], sizeof(struct mdp_pipe_info));
- 	mutex = __get_mutex(path->mdp_dev, p);
- 
-@@ -342,11 +362,13 @@ static void mdp_auto_release_work(struct work_struct *work)
- 	struct mdp_cmdq_cmd *cmd;
- 	struct mdp_dev *mdp;
- 	struct mtk_mutex *mutex;
-+	enum mdp_pipe_id pipe_id;
- 
- 	cmd = container_of(work, struct mdp_cmdq_cmd, auto_release_work);
- 	mdp = cmd->mdp;
- 
--	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
-+	pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
-+	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
- 	mtk_mutex_unprepare(mutex);
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 			    cmd->num_comps);
-@@ -367,6 +389,7 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
- 	struct cmdq_cb_data *data;
- 	struct mdp_dev *mdp;
- 	struct device *dev;
-+	enum mdp_pipe_id pipe_id;
- 
- 	if (!mssg) {
- 		pr_info("%s:no callback data\n", __func__);
-@@ -394,7 +417,8 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
- 		struct mtk_mutex *mutex;
- 
- 		dev_err(dev, "%s:queue_work fail!\n", __func__);
--		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
-+		pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
-+		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
- 		mtk_mutex_unprepare(mutex);
- 		mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 				    cmd->num_comps);
-@@ -417,6 +441,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	struct mdp_comp *comps = NULL;
- 	struct device *dev = &mdp->pdev->dev;
- 	struct mtk_mutex *mutex = NULL;
-+	enum mdp_pipe_id pipe_id;
- 	const int id = mdp->mdp_data->mdp_plat_id;
- 	int i, ret;
- 	u32 num_comp = 0;
-@@ -453,13 +478,6 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_free_comps;
- 	}
- 
--	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
--	ret = mtk_mutex_prepare(mutex);
--	if (ret) {
--		dev_err(dev, "Fail to enable mutex clk\n");
--		goto err_free_path;
--	}
+ 	mm_pdev = __get_pdev_by_id(pdev, NULL, MDP_INFRA_MMSYS);
+ 	if (IS_ERR_OR_NULL(mm_pdev)) {
+ 		ret = -ENODEV;
+@@ -224,7 +229,6 @@ static int mdp_probe(struct platform_device *pdev)
+ 		p = (id && mm2_pdev) ? mm2_pdev : mm_pdev;
+ 		m = (id && mm2_pdev) ?
+ 			mdp->mdp_mutex2 : mdp->mdp_mutex;
 -
- 	path->mdp_dev = mdp;
- 	path->config = param->config;
- 	path->param = param->param;
-@@ -479,6 +497,14 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_free_path;
+ 		if (m[mutex_id])
+ 			continue;
+ 		m[mutex_id] = mtk_mutex_get(&p->dev);
+@@ -293,6 +297,7 @@ static int mdp_probe(struct platform_device *pdev)
+ 		goto err_unregister_device;
  	}
  
-+	pipe_id = __get_pipe(mdp, path->comps[0].comp->public_id);
-+	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
-+	ret = mtk_mutex_prepare(mutex);
-+	if (ret) {
-+		dev_err(dev, "Fail to enable mutex clk\n");
-+		goto err_free_path;
-+	}
-+
- 	ret = mdp_path_config(mdp, cmd, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_config error\n");
++success_return:
+ 	dev_dbg(dev, "mdp-%d registered successfully\n", pdev->id);
+ 	return 0;
+ 
 diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index 3ffad6be95ad..49b6e9c8e089 100644
+index 49b6e9c8e089..e5bd75ff90ee 100644
 --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
 +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -49,6 +49,13 @@ enum mdp_pipe_id {
- 	MDP_PIPE_IMGI,
- 	MDP_PIPE_WPEI,
- 	MDP_PIPE_WPEI2,
-+	MDP_PIPE_RDMA1,
-+	MDP_PIPE_RDMA2,
-+	MDP_PIPE_RDMA3,
-+	MDP_PIPE_SPLIT,
-+	MDP_PIPE_SPLIT2,
-+	MDP_PIPE_VPP0_SOUT,
-+	MDP_PIPE_VPP1_SOUT,
- 	MDP_PIPE_MAX
- };
+@@ -14,6 +14,7 @@
+ #include "mtk-mdp3-comp.h"
+ #include "mtk-mdp3-vpu.h"
  
++#define MDP_NODE_NAME		"mdp3-rdma0"
+ #define MDP_MODULE_NAME		"mtk-mdp3"
+ #define MDP_DEVICE_NAME		"MediaTek MDP3"
+ #define MDP_PHANDLE_NAME	"mediatek,mdp3"
 -- 
 2.18.0
 
