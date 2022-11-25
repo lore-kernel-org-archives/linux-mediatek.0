@@ -4,59 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22914C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 16:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A1FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 17:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V3bVJBWsI0HOddrdtALMADwhYzO13my+/zEJnDGLD4M=; b=SHCiRrK+0Y9HZLw3ONu8NedIff
-	d9rKW1sHrU/COCKqbMSeNMbPy44+zwVHXjD2+aAq2+Z8kuREk4yzg9qKWgw9RduceAO68TkElQSR/
-	edYPrV8maKzaGMoIo3iXbmqs85AcpNTM440N/TRnIozpkTcsGu4onAqyPqfdTPm1GWiXOWRnpKC5F
-	+wQfvDvBqTQX9tT/rctY7HyElWoXeyzFoiOTEZuMmbbISuo6maz36Ios5qoWf2xDX1+oHgkM8ZjSg
-	1kSQL6HLSnF2AJGUXF5D4UJegD3/DnvKg15hmW8d+prvv2pHZty7YvdMD4GJtfZl/waYhG+PBHVW9
-	0vlyQavw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lXbFx4TDUVZVlZDC1XJ2usb/1mpokpQm7jkDk24Hu+k=; b=YS4bqNWDd0tWFOLMZosDFWLhfF
+	Nhzpb/Z566hH+eXkRDiwAIKgF5Olrojf7Jr28VQnBm/2FjmiwGgive900TsnXgb3FyaK7ouBpF1MS
+	CbuXtZnUddxolZggSbh6B5ZlokR1lfFq+f2ADWSfsWcF/jt9NO+a4gdsN2/5+gqzBiS3ZTeituiWe
+	f/CoqQqd7ohnxlW3mudBfP/+PEx1Pr9sC5RAyDl/IG/00OIS4hIlltIxNTZxEL1uSkmK+VbcVYqUw
+	bIv2hF/K+pVoWigKARsQQqRs1Mw1ZLqB8KLfLU4tscoO6aoToM2xQNzncPeVp4jJNISlk8wt8R629
+	fT81n+Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oybey-000MWr-Fg; Fri, 25 Nov 2022 16:34:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oybej-000MMb-ES; Fri, 25 Nov 2022 16:34:27 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E2A0666029AD;
-	Fri, 25 Nov 2022 16:34:16 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669394058;
-	bh=OKxuRBtVrLA0hEMqW7Fa7oVob2TE0H0WQ2LnA4uvrW8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YZERWgiF/H9wakj+GRjsVIXARA2n+4O2Fsg7tIog+TUQwqly1gowAdnMEDZguCFA5
-	 QoLMnW/5qmsbZd9wQrs4GtI/tz7zZFt/Tc/cjAPYKvmI+3pbV+SbdNnZCV7NRhnJgE
-	 ess94HHrQHzWgV9Wv292qZhTZrmIdJSgUH4Pb7aiGswtbBv80lXaZMKyO6AtIpkNVn
-	 wHpLOy3X8youzJQ94tUivjiTM1Gn7QKrggN4+6cQPDr/pJlKr23sF6/IxPyuQYZFZn
-	 blV5afE3/4aDw+4Sa/FtxQglves0BZGrJdwI6W1lGAiRlDjUbb/k8fxEZlOaFDfU0A
-	 MSNhd1zUxxaEQ==
-Date: Fri, 25 Nov 2022 11:34:13 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] drm/mediatek: Clean dangling pointer on bind error
- path
-Message-ID: <20221125163413.jwutjr5uxey6b32o@notapiano>
-References: <20221122143949.3493104-1-nfraprado@collabora.com>
- <a67594cf-eb7f-873f-1c11-ccb4317b6bdf@collabora.com>
+	id 1oyc6R-000aEs-JO; Fri, 25 Nov 2022 17:03:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oyc6F-000a9w-EW; Fri, 25 Nov 2022 17:02:53 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E59622B;
+	Fri, 25 Nov 2022 09:02:53 -0800 (PST)
+Received: from [10.57.71.118] (unknown [10.57.71.118])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D9FE23F73B;
+	Fri, 25 Nov 2022 09:02:45 -0800 (PST)
+Message-ID: <b5682296-4844-863c-83c1-1fb9a35009d8@arm.com>
+Date: Fri, 25 Nov 2022 17:02:41 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a67594cf-eb7f-873f-1c11-ccb4317b6bdf@collabora.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH] iommu/mediatek: Fix crash on isr after kexec()
+Content-Language: en-GB
+To: Ricardo Ribalda <ribalda@chromium.org>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Yong Wu <yong.wu@mediatek.com>,
+ Will Deacon <will@kernel.org>
+Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20221125-mtk-iommu-v1-0-bb5ecac97a28@chromium.org>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20221125-mtk-iommu-v1-0-bb5ecac97a28@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_083425_640576_A87CB911 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20221125_090251_563703_EB19518F 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,76 +61,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 23, 2022 at 10:15:25AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 22/11/22 15:39, Nícolas F. R. A. Prado ha scritto:
-> > mtk_drm_bind() can fail, in which case drm_dev_put() is called,
-> > destroying the drm_device object. However a pointer to it was still
-> > being held in the private object, and that pointer would be passed along
-> > to DRM in mtk_drm_sys_prepare() if a suspend were triggered at that
-> > point, resulting in a panic. Clean the pointer when destroying the
-> > object in the error path to prevent this from happening.
-> > 
-> > Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > ---
-> > 
-> > Changes in v2:
-> > - Added Fixes tag
-> > 
-> >   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 +
-> >   1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 39a42dc8fb85..a21ff1b3258c 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -514,6 +514,7 @@ static int mtk_drm_bind(struct device *dev)
-> >   err_deinit:
-> >   	mtk_drm_kms_deinit(drm);
-> >   err_free:
-> > +	private->drm = NULL;
+On 2022-11-25 16:28, Ricardo Ribalda wrote:
+> If the system is rebooted via isr(), the IRQ handler might be triggerd
+> before the domain is initialized. Resulting on an invalid memory access
+> error.
 > 
-> Sorry for not noticing that in v1, but I've rechecked this function and, while this
-> commit does indeed actually solve the described issue, I think it's incomplete.
-> 
-> A few lines before, we have a loop that sets
-> 
-> 		private->all_drm_private[i]->drm = drm;
+> Fix:
+> [    0.500930] Unable to handle kernel read from unreadable memory at virtual address 0000000000000070
+> [    0.501166] Call trace:
+> [    0.501174]  report_iommu_fault+0x28/0xfc
+> [    0.501180]  mtk_iommu_isr+0x10c/0x1c0
 
-Actually that line only exists with [1] applied, but that commit hasn't been
-merged as of yet. I debated whether it would be better to send this fix as is,
-or ask Nancy Lin to add the tweaked fix you mention below to that series, but
-sending this fix as is seemed better since it can be backported to older kernel
-versions.
-
-So assuming this commit gets merged first, Nancy should make that tweak you
-mentioned below to ensure all the pointers are zeroed out, which is why I've
-added Nancy to CC. (As a side note, given that only the mmsys with drm_master =
-true would ever call the drm suspend helper, even this patch as is is enough to
-avoid the panic even with that series applied, still we should zero out all
-pointers for good measure)
-
-[1] https://lore.kernel.org/linux-mediatek/20221107072413.16178-6-nancy.lin@mediatek.com/
+Hmm, shouldn't we clear any pending faults at probe in 
+mtk_iommu_hw_init(), before the IRQ is requested? mtk_iommu_isr() might 
+still want to be robust against a spurious interrupt, but then it can 
+simply return without doing anything at all if the domain is NULL, since 
+we'll know that's the case.
 
 Thanks,
-Nícolas
+Robin.
 
+(It might be nice if request_irq() had a flag to say "if this IRQ looks 
+pending already just clear it" for drivers that know it could only be 
+spurious at that point; kexec seems to lead to this problem quite a lot...)
+
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+> To: Yong Wu <yong.wu@mediatek.com>
+> To: Joerg Roedel <joro@8bytes.org>
+> To: Will Deacon <will@kernel.org>
+> To: Robin Murphy <robin.murphy@arm.com>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: iommu@lists.linux.dev
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+>   drivers/iommu/mtk_iommu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> ...so here you should do...
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 2ab2ecfe01f8..17f6be5a5097 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -454,7 +454,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+>   		fault_larb = data->plat_data->larbid_remap[fault_larb][sub_comm];
+>   	}
+>   
+> -	if (report_iommu_fault(&dom->domain, bank->parent_dev, fault_iova,
+> +	if (dom && report_iommu_fault(&dom->domain, bank->parent_dev, fault_iova,
+>   			       write ? IOMMU_FAULT_WRITE : IOMMU_FAULT_READ)) {
+>   		dev_err_ratelimited(
+>   			bank->parent_dev,
 > 
-> 	private->drm = NULL;
+> ---
+> base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
+> change-id: 20221125-mtk-iommu-13023f971298
 > 
-> 	while (i--) /* a for loop will also do, your choice */
-> 		private->all_drm_private[i]->drm = NULL;
-> 		
-> That makes sure that you cleanup *everything* :-)
-> 
-> Cheers,
-> Angelo
-> 
+> Best regards,
 
