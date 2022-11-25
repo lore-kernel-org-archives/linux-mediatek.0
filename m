@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCDAC43217
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 14:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD43C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 14:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OilpxlfCgd6H4m5VAhZYyn0dzb4eCK0CVjSRiHN5c9Y=; b=T340czuzZIOShto2bt3R01BUuy
-	GY1FV45TWexwJUP7hJU0MoIVKlnyCV36/stR/4bbeRIpl3JsNR+XWQiIIeq89F+to4pfpFZX/vKjy
-	AllF6xsJHIiuPJX0Uuq0N9/u6vvQe+x4HT6Rh/Q25MIBZJBR9xX4TvvNuu2zPKqmPoDBW3yduhMV8
-	1Kon9Fpv5AzbMe4D+RbqHbNyXR1WD8JAGIcMglYBLTqrRXJ8Ceaskc2ItdYXL3YPy+zOhCfysk1Pu
-	FLvaHu1o+kKRtfqeG5O4l35kkpD93TKzoZ9HVYRpFZXDyIIEyKSzFDESTS8CQtjmTn0GrDu7Lvjac
-	/BlrlTvg==;
+	bh=8y3a98agTTuTX1jVNEjy44NE9w3cHQ5Lb1+gIhtRkWA=; b=bNT1boTLhWfs3Ftb8dxiz/lhYw
+	fYp0kkhntiVZeRb5TvZ06bXkobEAcqN+xux9OzaTFeiH4mqRxe5YKpJDLr35qTSzl+7RLqGHlLXXS
+	S8y3ACEIeNH6ZAgqwDbQhPSN3wWzpwycbra6TMLRFKAzItwHNlpZESfZ5tIiAXFdjvu0CZhjA1Y07
+	R3kammSyPUAebTxla1vUZaNpo0v2pnx1rFcUDXTmlh3EaxZPiSiqQa+LkCC8vmSs/wQIlI7oJPy8e
+	gUMe0GWYBIL2q0HYvmpH+34W+rxxl79+TesNGuID2XL27lcfWCG59GHe6Xwwh6U98oOFK35QhnpQc
+	C103IknA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyZgT-00H263-SP; Fri, 25 Nov 2022 14:28:05 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oyZlz-00H4un-7V; Fri, 25 Nov 2022 14:33:47 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyZfN-00H1cp-3j; Fri, 25 Nov 2022 14:26:59 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CFB2EB82B02;
-	Fri, 25 Nov 2022 14:26:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84E64C433D7;
-	Fri, 25 Nov 2022 14:26:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669386413;
-	bh=1hTsLsAyt9tlsWhWVofHJBaSZd45+Oiiml90QdlACHA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=d7i1XVyeymPD/W1dB8wSyfn631s2sYLxwcYl+RLcNcsR+oLFw/bWQO3xFUVKojZuW
-	 bq1AjRZFEQcjgWYrWDTD7sWLkBB8W+lc8T/KxjeshziQBlA+4xcpUtHlFCBHP8CSI/
-	 h6HfX42vHxnmYXUtcjxW0+U27Yn2g0dg9Hy0aIsA3mg/fRbeBbF5azaLBzpMHOtkUi
-	 FJ9XxcdliNtIir2Hh+545ihzDwwM9aDJP9ojpV+mS9Ycpub+z9RD8CC4Mxa8og/VWR
-	 XKW1tQZ7HxiLjAKKbasWJI1ZhTduyIvhfOQFQbfGywhD9tE+fuf7Eq0SXOUGwRm/vQ
-	 J5QG5vKihy7xw==
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, angelogioacchino.delregno@collabora.com, nfraprado@collabora.com
-Cc: linux-kernel@vger.kernel.org, ajye_huang@compal.corp-partner.google.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, chunxu.li@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-In-Reply-To: <20221123161130.543-1-jiaxin.yu@mediatek.com>
-References: <20221123161130.543-1-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Correct I2S shared clocks
-Message-Id: <166938641125.506633.2366556842342118458.b4-ty@kernel.org>
-Date: Fri, 25 Nov 2022 14:26:51 +0000
+	id 1oyZlr-00H4oe-8o
+	for linux-mediatek@lists.infradead.org; Fri, 25 Nov 2022 14:33:42 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id b9so5369116ljr.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Nov 2022 06:33:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8y3a98agTTuTX1jVNEjy44NE9w3cHQ5Lb1+gIhtRkWA=;
+        b=hS5c0+dIHOjIZqq0x2fAc5Qzoj15r81Mw73Pnu8/JJIerGbiPo3MpuJeeS5VxlUsvD
+         p2sjNHNL1sLRn1lHftzKw1JIn27GlIRh+ynJfUEh1A0c7O2LtdrYDA1DyY/88SvmXib0
+         hkgXuKlGqC7NxEwJMC1g1A2AHkuvefwdyVbSuBpKMuJFXtTiTRQANJHype5IIv9IqQPq
+         Z2hKOKX9RUOCuBpm9DcFG1QcZElpaiTQqrQaX7/8npQRD5CP4T161oNGGutsuxygtwWp
+         Hq5WnZwydHGXdFq37Jb7iRjpz+0AkQuSB8dMUnf8/naXq4M0gNrTDK0rWJgJdP6pTRwk
+         yfSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8y3a98agTTuTX1jVNEjy44NE9w3cHQ5Lb1+gIhtRkWA=;
+        b=cTgTJscfB8qQZxtRCSCwkeGR3lOT0Homa26e0vXyPVoUsVzP+cR16Cv8Bt5448PwtU
+         xvgdC9ThXdJrnDRnAAUx/PFFD6m7DdBp9U0NKzbgCyKwsfyFhgilMyARNwqWxjdP5To8
+         25GrchooAeNEDV9+Q5i9IFuI08W/QUuAE2DMyLOk2BjAYW29Z8NotxavMliWuoI4zTBj
+         22OnSdP7a6maZlpUsTHX43pEM86dVW2ShxVulLVjeAiaMIb07dhO2ozOCQ9DZzrs+RpO
+         Ltdgm/o5dG8vM8Pl37zOA4NpnWpdbFJi31PL9OF98bYRYy4S2WVoXmZJ7z05jHwQChde
+         kKWg==
+X-Gm-Message-State: ANoB5pkPDXFQ7FljEf8RkxH5fJQ7Kxhpw/UPPE6sHUp+tAVv0Q7Pp9ZJ
+	KpR+iRvH4x/9nB834hvt0wNFoQ==
+X-Google-Smtp-Source: AA0mqf5wzZeyZBpsU1bGgU8eBUDra12IZlK9ZLIMvAYF9zIMTKhgrtoY4kXxrXfa5x6MW42EPVLtKA==
+X-Received: by 2002:a2e:a26a:0:b0:277:34bb:ea2 with SMTP id k10-20020a2ea26a000000b0027734bb0ea2mr7824151ljm.427.1669386816879;
+        Fri, 25 Nov 2022 06:33:36 -0800 (PST)
+Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id k26-20020a05651c10ba00b002798ab42fffsm312966ljn.129.2022.11.25.06.33.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Nov 2022 06:33:36 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Pavel Machek <pavel@ucw.cz>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Vincent Knecht <vincent.knecht@mailoo.org>,
+	Nikita Travkin <nikitos.tr@gmail.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Andrew Davis <afd@ti.com>,
+	Gene Chen <gene_chen@richtek.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	Luca Weiss <luca@z3ntu.xyz>,
+	- NeilBrown <neilb@suse.de>,
+	linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 3/4] dt-bindings: leds: lp55xx: rework to match multi-led
+Date: Fri, 25 Nov 2022 15:33:30 +0100
+Message-Id: <20221125143331.473981-3-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221125143331.473981-1-krzysztof.kozlowski@linaro.org>
+References: <20221125143331.473981-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_062657_387104_31ED40CB 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20221125_063339_393129_03F7BFCB 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,38 +105,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Nov 2022 00:11:30 +0800, Jiaxin Yu wrote:
-> In mt8186 platform, I2S2 should be the main I2S port that will provide the
-> clock, on the contrary I2S3 should be the second I2S port that will use
-> this clock.
-> 
-> 
+The binding allows two type of LEDs - single and multi-color.  They
+differ with properties, so fix the bindings to accept both cases.
 
-Applied to
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../devicetree/bindings/leds/leds-lp55xx.yaml | 43 ++++++++++++++++++-
+ 1 file changed, 42 insertions(+), 1 deletion(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+diff --git a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
+index dfaa957eee74..0018e963f83a 100644
+--- a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
+@@ -67,9 +67,50 @@ properties:
+     const: 0
+ 
+ patternProperties:
+-  "(^led@[0-9a-f]$|led)":
++  '^multi-led@[0-8]$':
++    type: object
++    $ref: leds-class-multicolor.yaml#
++    unevaluatedProperties: false
++
++    properties:
++      reg:
++        maximum: 8
++
++      '#address-cells':
++        const: 1
++
++      '#size-cells':
++        const: 0
++
++    patternProperties:
++      "^led@[0-8]$":
++        type: object
++        $ref: common.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          led-cur:
++            $ref: /schemas/types.yaml#/definitions/uint8
++            description: |
++              Current setting at each LED channel (mA x10, 0 if LED is not connected)
++            minimum: 0
++            maximum: 255
++
++          max-cur:
++            $ref: /schemas/types.yaml#/definitions/uint8
++            description: Maximun current at each LED channel.
++
++          reg:
++            maximum: 8
++
++        required:
++          - reg
++
++  "^led@[0-8]$":
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
++
+     properties:
+       led-cur:
+         $ref: /schemas/types.yaml#/definitions/uint8
+-- 
+2.34.1
 
-Thanks!
-
-[1/1] ASoC: mediatek: mt8186: Correct I2S shared clocks
-      commit: 248579fc9a4f3bf36e7cfe9f6a354cee0f9848dc
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
