@@ -4,79 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B63FFC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 14:46:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7374EC43219
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 15:12:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oT9bhK87PoOgc+UQN81Jxh3OJPRzTWLz+k1QQ++u5DM=; b=gFKmlFhadWKbTdRs0+A3Ra4yGS
-	XFyQtcj4mxql7TF3ddb0QAWgRRUHEhL2ngsetMiDqy425OUyQJ8gcom3mLHYFK74NgBO1/W44pfbP
-	x2/4lSppL7s5MYgy/sKhl0M5FGZMd6zpr1DuQESQ1lTtFTQ1h3u9pCGVg2Kg2nDhAg8gcOwCSuaji
-	8oD1em7FnU9VLVboR+Gmsortas8nAE+tEadfnTfHlz/vwMRYtQmU2k7Fb47fqMtEFTkGYWZAKI5y5
-	P2fpkuKnyJDJT4bx7CeZcBRB6Z+/+o7sukGUglBDVfGYGImv8HdDTprKaFu+Xl+294cqWc4yElMPh
-	FNdgvg3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LtaodGVpC5RT6XYiK+eOY0rwcK2uWhEYktwBYDm+D3U=; b=oEvQwtF0vG7yPID6q2Ho0JN/34
+	0K1AjS6vzdVuu9dRLrtXFSqnPCZ/GVjOgyoPzoOpkM01tML/2tGII6HIz98yj6pPaYkxbn1xce65l
+	ywZahdRwmxrbjBK29wuBCyn5chX7/YCVw8FRhXJa0TyRVlh5Ltc1e5zg9dk0MuAe3FEXCGRKcDhzM
+	4I0URR6oQeRAMX9eSYo4oX6mKs8CZ7UACZJ7H/U9DsR7RF8S+7D6+D3gf7UseAwvPp47FGS9NJEQb
+	nvSIULXX8Znn6HLm4a2h7b8+kUgbfF0Be4zTvow+Nqct8cFR4uxFaQfVE/Vo5Ul0iLDtEzGjvvjKi
+	/lY9C9sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyZyS-00HAoj-WA; Fri, 25 Nov 2022 14:46:41 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1oyaMx-00HNcl-BO; Fri, 25 Nov 2022 15:11:59 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyZtd-00H8UY-6c
-	for linux-mediatek@lists.infradead.org; Fri, 25 Nov 2022 14:41:43 +0000
-Received: by mail-lf1-x135.google.com with SMTP id j4so7254558lfk.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Nov 2022 06:41:41 -0800 (PST)
+	id 1oyaMQ-00HNNA-Oe
+	for linux-mediatek@lists.infradead.org; Fri, 25 Nov 2022 15:11:32 +0000
+Received: by mail-wm1-x330.google.com with SMTP id t4so3671241wmj.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Nov 2022 07:11:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=oT9bhK87PoOgc+UQN81Jxh3OJPRzTWLz+k1QQ++u5DM=;
-        b=DGDj3a00luO5QD/2oq3vZVkAXSYF+M3uDqGG/5wG5ZOk4BHFJ/F61KE+o06ObuZ+mO
-         9LGoMDia8S/pBPet9RvexMAxvHa3HE+HTxmKPP3wkA6zfJCxTBialemKCYxRTB3jb6la
-         WgoxJdLwDgeX6Vp3gaJfqZXEIdGuaYnJch61IoPMzE+785dtXi285w9SWfFFYyaywXtj
-         DUEW38nVprTLsSeaaHVMJDHF6jsSiQ8hBYRaVa+PqlmGA4V4SGQn9wX4JMMZYVf18oP5
-         iZq1MHuBlNtrRWL1HNh0Gz/Q5+yvoggPqOE2U79e+4egkJiuAzEuw3MIl7lq8OdBNhmE
-         R1mg==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LtaodGVpC5RT6XYiK+eOY0rwcK2uWhEYktwBYDm+D3U=;
+        b=cHgcsWDMIqHdG9vIOjx3pGbnzji09i6C/57tbtdajxuwQin3LJIy/otdn9HakMSAaV
+         BAYil3kI7Zkw5G2sDuV5fky92NeDeMOafch2EtwF0XalxCBbIDTBMslaHe9myzp3z/CM
+         27neY6DmjCGt/vh0gIYAHW84hOO/ut96SIAvr1bLt2Xk76/zN4kUcxt8XUdBq8oB4q/q
+         TRguZd4h84BRFgfBqGed8tubSQjD1Ud4avL0tZ+TJIGkyTWWV77GS+LTimU6OKI+xmON
+         NJhwyJBlKgh7bVhy4kYjPWiCc6GcWkZT1aJExOWuVfQmHiX2NYI5P6JlZgLcaXmF6bIt
+         Bbbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oT9bhK87PoOgc+UQN81Jxh3OJPRzTWLz+k1QQ++u5DM=;
-        b=4RzXaMOYkdZkDd/DHHnAM1NJmhQBWgSnCkX7vnJ/dLG9mbF/CiXFNywe+7oRagZjTZ
-         1x69HCF13HbOP6ECcH29LG28mJ/z607p+14taOwt/3D8QEGobARfmHyWOjO4kbH9o27X
-         C6WMv1pMURbxlz7MeGnSuwslr+IX2BkrdJ4JCunICCuhhO+Av/us3rtMK6ZHEDoNLgOa
-         TxdTLf9pHWSwChlhxdR2bVsiCc73hPrgrijwgOo5CXBTllGssJHoukug2R/TblG0Oc8l
-         vqaraK+4GbICMyy5ipp+kuGp+MqU+VwWbM8/KdXH+UJRaboi8By+zheJdOy2xVNGxl+j
-         aIsA==
-X-Gm-Message-State: ANoB5plZIwiVbEfd6AQRpIcUUfIq1RrAQ84lMSG/b3gHSFW8cMYb/JEu
-	PiDVT56jHRMgQYDRsPxPU/xXEw==
-X-Google-Smtp-Source: AA0mqf78JuJ3NaKsrAsCue8KFCzbl6OQek5fgSU+nZXWnFtNz5bZklzf7SZcA3XKLYSMmFMkma21Fw==
-X-Received: by 2002:a05:6512:238d:b0:4ad:5f5c:2b31 with SMTP id c13-20020a056512238d00b004ad5f5c2b31mr12320259lfv.422.1669387299753;
-        Fri, 25 Nov 2022 06:41:39 -0800 (PST)
-Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id x13-20020a056512078d00b004aac3944314sm549069lfr.249.2022.11.25.06.41.38
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LtaodGVpC5RT6XYiK+eOY0rwcK2uWhEYktwBYDm+D3U=;
+        b=31dI/gYO800Kv+mRGYql0N3OJEQm+lisd83zR7GDKY4mrPtmPr0kKB0WJNRnik+FRy
+         suJgThLQ6dDA/rwGjoiW54gsV0sPR1VWIcg3/ZR6U4a9c55QLBWlqpzA8ckFee2ocAhm
+         EerH9cN7c+D3ciVRwZfs30y7yYIKfftauVQuneVeGbGO8NvE3zwbGcj9Ln4ZZY38GMVl
+         Lb8tgAK+e304SblRt/PySIpSSAC/tO1WLAlktJJ9LUX1vq5mj8io7C91YH/yzgefGVKQ
+         se/OcE3idt5cONr/yfQ/x4Ls5YH4gRWys0EXty6/HywK8zz6KGbBwZ5HzySIKXorFp5u
+         V/WQ==
+X-Gm-Message-State: ANoB5plwmE6RY5kj5FTT6qSQcRrVSiNHkERerQYHhEJq+zMMI0cybDD9
+	djVFWchebBv2LVUds4H2ehJ63Q==
+X-Google-Smtp-Source: AA0mqf7kS6Tz5quZlQxyKibRuFvfNP/J7F+sa3rlIYYznVcbfnJ73G8BTJTH5t51EQwIS0NI1o/fXw==
+X-Received: by 2002:a05:600c:3543:b0:3cf:74bb:feb1 with SMTP id i3-20020a05600c354300b003cf74bbfeb1mr27647631wmq.102.1669389082982;
+        Fri, 25 Nov 2022 07:11:22 -0800 (PST)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id w10-20020a05600c474a00b003b435c41103sm11565885wmo.0.2022.11.25.07.11.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Nov 2022 06:41:39 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] arm64: dts: mediatek: align LED node names with dtschema
-Date: Fri, 25 Nov 2022 15:41:38 +0100
-Message-Id: <20221125144138.477198-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        Fri, 25 Nov 2022 07:11:22 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Fri, 25 Nov 2022 16:10:13 +0100
+Subject: [PATCH v6 02/10] dt-bindings: rtc: mediatek: convert MT6397 rtc documentation
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+Message-Id: <20221005-mt6357-support-v6-2-4f589756befa@baylibre.com>
+References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
+In-Reply-To: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>,
+ Fabien Parent <fabien.parent@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Mark Brown <broonie@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Flora Fu <flora.fu@mediatek.com>,
+ Tianping Fang <tianping.fang@mediatek.com>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>, Alexandre Mergnat <amergnat@baylibre.com>,
+ Rob Herring <robh@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-leds@vger.kernel.org
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3564; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=CtchvNUNYKQ+sRRXF+yBXQCgDbmvYDamNuPU/DlwH4k=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjgNsWBup/boE8Lq7PLq5YmKC0aWKnYNDwZdf/JlDr
+ xt36kAKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY4DbFgAKCRArRkmdfjHURddkD/
+ 9zvzIvPq1+3Cpu/j5+tk7ih7fpJnVPzD77DkXewOg33pWoCx6R801Pll71H/M4kA4aTOdJTwP3Tf30
+ gi1HMRFOWbXgt3b7sKwh20Dxtze5EsaVItBwcintwufuPqBft5aaGTgtYLTEXDYvNZvRJqqBr3NzBv
+ oP6DbwOwshLRTnkd7CiHOcldrQHmlKlV0jGijF90IQI+6x9//I3FuNdsPrkp0rh7pIkqhWjWKSMQ2l
+ Z3k8Tw8SR2hjnNRdeah4BineZFlFzAU8nPWP/XlmDMf8aWQbQZ3mIvsmFqKzlHGd1kSmvFLjw58F6R
+ HAcvn4sEZOukScbDhpYFZMftpXtNT2VIx74E1PtkdglxKtwkDu/D6p6T6tKa/o+ZBMmF4mcXxGc22W
+ gI9xc9bGkZEg7kjQHMkA2fuOqecibRV/+PhrxZDa3mt9qr2baES47gbc46qeOqD/7RtASyVgCyMmqP
+ TB7wLMkzNAQwv8G5Nnt1pfomjnY+BIeeD2F7w6sK5YH0OwXFSDGmTbimBVkilFTgqZCt9rOuFugP8K
+ ToCmVX3L1X1jw17Zar/CPYAP9FtVbLJ/krIpi6Wa+EavsSXap92KI+bcyvT6cHhAC4sFfmP8FQkATJ
+ K1eb7AikJbJV6VW5FuwdKgN2Axk5uhQjfawxo6vwERasEbDQt1dqdmZAeqGQ==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_064141_372281_36621864 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20221125_071126_808346_30E3DBA9 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +113,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The node names should be generic and DT schema expects certain pattern:
+- Convert rtc/rtc-mt6397.txt to rtc/mt6397-rtc.yaml
+- Add maintainer
+- Remove the .txt binding file
 
-  mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb: pwmleds: 'keyboard-backlight' does not match any of the regexes: '^led(-[0-9a-f]+)?$', 'pinctrl-[0-9]+'
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts      | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |  2 +-
+ .../bindings/rtc/mediatek,mt6397-rtc.yaml          | 35 ++++++++++++++++++++++
+ .../devicetree/bindings/rtc/rtc-mt6397.txt         | 31 -------------------
+ 3 files changed, 36 insertions(+), 32 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-index dec11a4eb59e..77b96ddf648e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-@@ -13,7 +13,7 @@ / {
- 
- 	pwmleds {
- 		compatible = "pwm-leds";
--		keyboard_backlight: keyboard-backlight {
-+		keyboard_backlight: led-0 {
- 			label = "cros_ec::kbd_backlight";
- 			pwms = <&cros_ec_pwm 0>;
- 			max-brightness = <1023>;
+diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+index 0088442efca1..79aaf21af8e9 100644
+--- a/Documentation/devicetree/bindings/mfd/mt6397.txt
++++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+@@ -33,7 +33,7 @@ Optional subnodes:
+ 		- compatible: "mediatek,mt6331-rtc"
+ 		- compatible: "mediatek,mt6358-rtc"
+ 		- compatible: "mediatek,mt6397-rtc"
+-	For details, see ../rtc/rtc-mt6397.txt
++	For details, see ../rtc/mediatek,mt6397-rtc.yaml
+ - regulators
+ 	Required properties:
+ 		- compatible: "mediatek,mt6323-regulator"
+diff --git a/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
+new file mode 100644
+index 000000000000..97b09c81e548
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rtc/mediatek,mt6397-rtc.yaml
+@@ -0,0 +1,35 @@
++ # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/rtc/mediatek,mt6397-rtc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6397/MT6366/MT6358/MT6323 RTC
++
++maintainers:
++  - Tianping Fang <tianping.fang@mediatek.com>
++  - Alexandre Mergnat <amergnat@baylibre.com>
++
++description:
++  MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
++  as a type of multi-function device (MFD). The RTC can be configured and set up
++  with PMIC wrapper bus which is a common resource shared with the other
++  functions found on the same PMIC.
++
++allOf:
++  - $ref: rtc.yaml#
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6323-rtc
++      - mediatek,mt6358-rtc
++      - mediatek,mt6366-rtc
++      - mediatek,mt6397-rtc
++
++  start-year: true
++
++additionalProperties: false
++
++required:
++  - compatible
+diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+deleted file mode 100644
+index 7212076a8f1b..000000000000
+--- a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
++++ /dev/null
+@@ -1,31 +0,0 @@
+-Device-Tree bindings for MediaTek PMIC based RTC
+-
+-MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
+-as a type of multi-function device (MFD). The RTC can be configured and set up
+-with PMIC wrapper bus which is a common resource shared with the other
+-functions found on the same PMIC.
+-
+-For MediaTek PMIC MFD bindings, see:
+-../mfd/mt6397.txt
+-
+-For MediaTek PMIC wrapper bus bindings, see:
+-../soc/mediatek/pwrap.txt
+-
+-Required properties:
+-- compatible: Should be one of follows
+-       "mediatek,mt6323-rtc": for MT6323 PMIC
+-       "mediatek,mt6358-rtc": for MT6358 PMIC
+-       "mediatek,mt6366-rtc", "mediatek,mt6358-rtc": for MT6366 PMIC
+-       "mediatek,mt6397-rtc": for MT6397 PMIC
+-
+-Example:
+-
+-       pmic {
+-               compatible = "mediatek,mt6323";
+-
+-               ...
+-
+-               rtc {
+-                       compatible = "mediatek,mt6323-rtc";
+-               };
+-       };
+
 -- 
-2.34.1
-
+b4 0.10.1
 
