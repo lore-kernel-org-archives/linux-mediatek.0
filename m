@@ -4,58 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE322C43219
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Nov 2022 20:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10818C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 01:43:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xCzf+a3tzKAYYDbCPayy8w9w6ZRz3iuyukpNvNHr9jc=; b=OMwT6o7OURpTqqxXxXR0LBUW6Y
-	fOjtAoCfxYMxs/OXX0LuEnGu3uHyFrSoW5w1pyxZuaIjP2o+7kmzwF/zdl5TQThofw/Kg9ROuW9PD
-	kwMDP2u9foyJMwYGPDH9w71/km0BcWD+Se1iQZ6hwFBCxDMrG1WUbYrqM1WTm0HhnxSwDb7V2h/eX
-	UZkyqJnoVAIIfRVq2HBRQwX3dy/e5fUrHYkEd7Xx6xzCqD9Yp7WIGxaA13VpZvwXr72lXkRJI0743
-	7TpF3e7o4GSgjLQqOY4bB8bZSvzflRZ75EwNZKFzVQbiu+vkfv5M/tU6hzaSs3IuZMO9LNR7Jb0w5
-	nbDLWD9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pIgQU/3TNhigx5QfD6YXZDo2tYjLYFZ0KrSZ9IqYQrU=; b=zZPRkgFOxwSMZM1fpHww+RlsZ+
+	KB18ww6Non+jZt8r5jlaCdgoPo47yMoRZnDLKNQzTlkxz3vJ5rhmVVL0qcLusvTiCUEjLc7tb+NYS
+	f6HCJlThVsw6e6TPWT+Xa1WcWtHm17t0yT9ECcM3GrKN/Qrncf2OFUDreS6jni/i2QBU5mLwHdYBY
+	zh8s3OKOPuvfVAA0qMsttjUzJYyCFyFaovcvY9Vv3RYc8onS4a1SxO6gIkcMoZJ40AR+tUjRZ4glt
+	/U4Jz8IJlmbiyRMdDxH7nW5ANzIgu5stVS9+LBiiVHl692YXWxj2zY2ljqytLdRuoj7asxAgMbAwq
+	uBVqjiMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyIOP-00BMcL-Dc; Thu, 24 Nov 2022 20:00:17 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1oyNkj-00C844-C2; Fri, 25 Nov 2022 01:43:41 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyIOL-00BMXp-8v; Thu, 24 Nov 2022 20:00:14 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1oyIOB-00027b-Hj; Thu, 24 Nov 2022 21:00:03 +0100
-Date: Thu, 24 Nov 2022 20:00:00 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-pwm@vger.kernel.or,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	Zhi Mao <zhi.mao@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH RESEND v2] dt-bindings: pwm: mediatek: Add compatible for
- MT7986
-Message-ID: <Y3/NQBzU/R6XubBf@makrotopia.org>
-References: <Y39PjU1BqBB8tZ98@makrotopia.org>
- <e5e87795-12d7-699e-1539-2e60b8b51957@linaro.org>
- <Y39fe3oHgMTyAHBm@makrotopia.org>
- <add5675c-b7a9-7f6e-e977-ac79c5c4086a@linaro.org>
+	id 1oyNkY-00C803-18; Fri, 25 Nov 2022 01:43:31 +0000
+Received: from dggpeml500024.china.huawei.com (unknown [172.30.72.53])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4NJHc858g2zJnv4;
+	Fri, 25 Nov 2022 09:40:08 +0800 (CST)
+Received: from huawei.com (10.175.112.208) by dggpeml500024.china.huawei.com
+ (7.185.36.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Fri, 25 Nov
+ 2022 09:43:26 +0800
+From: Yuan Can <yuancan@huawei.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <stu.hsieh@mediatek.com>,
+	<ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+CC: <yuancan@huawei.com>
+Subject: [PATCH] drm/mediatek: Add checks for devm_kcalloc
+Date: Fri, 25 Nov 2022 01:41:23 +0000
+Message-ID: <20221125014123.121268-1-yuancan@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <add5675c-b7a9-7f6e-e977-ac79c5c4086a@linaro.org>
+Content-Type: text/plain
+X-Originating-IP: [10.175.112.208]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpeml500024.china.huawei.com (7.185.36.10)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221124_120013_337281_3517B4FD 
-X-CRM114-Status: GOOD (  34.33  )
+X-CRM114-CacheID: sfid-20221124_174330_268629_657EA9C2 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,100 +65,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+As the devm_kcalloc may return NULL, the return value needs to be checked
+to avoid NULL poineter dereference.
 
-On Thu, Nov 24, 2022 at 02:33:35PM +0100, Krzysztof Kozlowski wrote:
-> On 24/11/2022 13:11, Daniel Golle wrote:
-> > On Thu, Nov 24, 2022 at 12:30:44PM +0100, Krzysztof Kozlowski wrote:
-> >> On 24/11/2022 12:03, Daniel Golle wrote:
-> >>> Add new compatible string for MT7986 PWM and list compatible units for
-> >>> existing entries. Also make sure the number of pwm1-X clocks is listed
-> >>> for all supported units.
-> >>>
-> >>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> >>> ---
-> >>> Changes since v1: list compatibles, fix pwm1-n clocks for all SoCs
-> >>>
-> >>> Rebased on linux-next and re-run scripts/get_maintainers.pl on patch to
-> >>> makes sure dt maintainers are included. This has been requested by
-> >>> Krzysztof Kozlowski.
-> >>>
-> >>>  .../devicetree/bindings/pwm/pwm-mediatek.txt  | 20 +++++++++++--------
-> >>>  1 file changed, 12 insertions(+), 8 deletions(-)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> >>> index 554c96b6d0c3..952a338e06e7 100644
-> >>> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> >>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> >>> @@ -2,14 +2,15 @@ MediaTek PWM controller
-> >>>  
-> >>>  Required properties:
-> >>>   - compatible: should be "mediatek,<name>-pwm":
-> >>> -   - "mediatek,mt2712-pwm": found on mt2712 SoC.
-> >>> +   - "mediatek,mt2712-pwm", "mediatek,mt6795-pwm": found on mt2712 SoC.
-> >>>     - "mediatek,mt6795-pwm": found on mt6795 SoC.
-> >>> -   - "mediatek,mt7622-pwm": found on mt7622 SoC.
-> >>> -   - "mediatek,mt7623-pwm": found on mt7623 SoC.
-> >>> +   - "mediatek,mt7622-pwm", "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt7622 SoC.
-> >>
-> >> This does not look right. What you are saying is mt7622 is compatible
-> >> with mt8195, which is compatible with mt8183, which is compatible with
-> >> mt7986. It could be true, but I feel you wanted to say something else -
-> >> mt7622 is compatible with one SoC which is generic and common to all
-> >> other implementations.
-> > 
-> > MT7622 has 6 PWM channels, it does have CK_26M_SEL register and does
-> > not need pwm45_fixup. Hence, when using a driver made for MT8195, only
-> > 4 out of 6 channels woukd work. MT8183 PWM is identical to MT8195,
-> > hence also compatible. When using driver for MT7986, only 2 channels
-> > would work, but otherwise it is also compatible.
-> > 
-> > So unfortunately, that one generic implementation ("common ancestor")
-> > does not exist and development of the PWM unit found in MediaTek SoCs
-> > did not necessarily increase features in more recent iterations, but
-> > rather just reduce or increase the number of PWM channels available.
-> > Ironically, the unit with least features (only 2 channels) is found in
-> > the most recent SoC (MT7986).
-> 
-> None of these explain listing four compatibles.
+Fixes: 66b2cf9623fa ("drm/mediatek: use layer_nr function to get layer number to init plane")
+Signed-off-by: Yuan Can <yuancan@huawei.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-So do I understand correctly that in this case only the newly
-introduced "mediatek,mt7986-pwm" should be listed as more generic
-compatible after the more specific "mediatek,mt7622-pwm", everything in
-between should be dropped? Or only drop "mediatek,mt8195-pwm" here?
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 112615817dcb..5071f1263216 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -945,6 +945,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 
+ 	mtk_crtc->planes = devm_kcalloc(dev, num_comp_planes,
+ 					sizeof(struct drm_plane), GFP_KERNEL);
++	if (!mtk_crtc->planes)
++		return -ENOMEM;
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+ 		ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
+-- 
+2.17.1
 
-I'm asking because in your message from 23/10/2022 you were quoting
-Devicetree specification:
-> "The property value consists of a concatenated list of null terminated
-> strings, from most specific to most general. They allow a device to
-> express its compatibility with a family of similar devices, potentially
-> allowing a single device driver to match against several devices."
-
-And we have discussed in great length (as I had misunderstood it) that
-this should mean that units with the lowest number of channels are to
-be considered the "most general" if otherwise identical.
-
-
-> 
-> > 
-> >>
-> >>> +   - "mediatek,mt7623-pwm", "mediatek,mt7628-pwm": found on mt7623 SoC.
-> >>>     - "mediatek,mt7628-pwm": found on mt7628 SoC.
-> >>>     - "mediatek,mt7629-pwm": found on mt7629 SoC.
-> >>> -   - "mediatek,mt8183-pwm": found on mt8183 SoC.
-> >>> -   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm": found on mt8195 SoC.
-> >>> +   - "mediatek,mt7986-pwm": found on mt7986 SoC.
-> >>> +   - "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8183 SoC.
-> >>> +   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm", "mediatek,mt7986-pwm": found on mt8195 SoC.
-> >>
-> >> This as well looks excessive.
-> > 
-> > I agree. But it's difficult to say which one should be ommitted.
-
-So are you suggesting to drop the "mediatek,mt8183-pwm" string here?
-
-Thank you for your patience!
-
-
-Daniel
 
