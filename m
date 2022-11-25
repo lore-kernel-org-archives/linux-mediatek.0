@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25822C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 12:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8BDBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 14:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CDhC/pXQLRN9ahyohFHgOCjh1eUxY+LM0kUDdUK1hko=; b=D4j4e05HiOTZOIIHkxahwbtciB
-	aAnjG1WABAYtHT4PMjiNlRRah9Opb4+r4RKwylJes9QhZuC8HoaZyUYPdoilUC3yNGcV7XhAxifl1
-	76Dm5dprzno9GREXs7awhmhgiV2TpanRW0UOV0oANo/WkwRG8LZO2C+cRIT74AJnEIz980VVFFlWE
-	D+ySePEZ/QzQqjnJA/mrFdyYsvGnSgs2kReOGjDuogsjQ1c5cleexPJMKE8fdE3kgi32YhoPHU1IE
-	Zi1AfnOYG4ZioLXBG9o46THWtAiOww/ZKsiAOMSR63aP6FZzCjnktpKwMBSpUW155VXv9o+VvvpJe
-	bnqYWBrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sRRYK/U/CJzk5eMXpf6INDdoQGruqkss9pGzO0PlvwQ=; b=dk5XhSnvnAkROReJZeNEd5byIa
+	PvROVXaQ1MI+OCn1LtCqrP0BN+IXuIrDev7a56QFtQFP3Nv/CHMbqodoWUnvx4YVOVC6BYEt3NjGN
+	UnHSnCDpS1TGQoUr70lNOg+JkNpNnnqmLN37GVd+VZKPrrBv/GwA4IdC9SdK8PQhBuFKTzX3r7Fl6
+	8mObhiji7pDhD824Sfuq/4EP7bHWU0JakkuYxN6GtZ853y16a1IInFsBLqbxostQY4sB2Wfw85oue
+	mGOTHWQCC6llwNS1qrSbeICVUsvDHmhSbWT1GbEE38aNRDdNRI69caHVRXwXwN5hOiHc36qnmlgE+
+	hTBq8WJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyXfu-00GN3l-6L; Fri, 25 Nov 2022 12:19:22 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oyZgS-00H25E-NL; Fri, 25 Nov 2022 14:28:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyXfi-00GMy6-Rb; Fri, 25 Nov 2022 12:19:12 +0000
+	id 1oyZfN-00H1d0-6K; Fri, 25 Nov 2022 14:26:59 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3D647B82985;
-	Fri, 25 Nov 2022 12:19:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59DE8C433B5;
-	Fri, 25 Nov 2022 12:19:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 84EFA62478;
+	Fri, 25 Nov 2022 14:26:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1007C433C1;
+	Fri, 25 Nov 2022 14:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669378748;
-	bh=mZOp0vsvzRrNngwKyz7HgmROJmugzd6BQQN4kzDGk24=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=G5wlKNylGWwR6ccZnV/INSMAmpV0EY9BkrXiiJe/AQR0G5sNqfMBGGACQyjqJUA91
-	 WQQJpKRH91kDEgfcIP8P1MnpMeDgzSLbZ1m3fc/5nqmVx0NrTQw0WCIm2PQPLCG26Z
-	 bsYrl4UMvlHkFGB41Lqgs2Z/Dy9okY7qAotKMH1vvBDGSx2LTUaF3I0ieN7VTwWHx2
-	 i1Nw+hxV+2g6R0dw44LxzAs+X8zw2uppIAi+zggmEC4W8zMX8dt1Qc7ZcrQtiuCYSw
-	 zqJ6lKysbpar/wNHQoF2+hoBADLgTFJe/JEu5P+dHV8n+OwVcGTsc48biZoyqRl6tM
-	 P8Cq6ZRKhRidA==
-Date: Fri, 25 Nov 2022 12:18:58 +0000
+	s=k20201202; t=1669386415;
+	bh=JKtC7qtcSxIuqkmHYKE7URD9FuSd5HE3xVKxSH1HLmI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=boEIeSQ60G4VOhUzILoGxqAFKjsRD3RAa89jJdeEiMtSsb5jtOkjlljXyeoUjrwaC
+	 rVJFj3zAkyPfLGc3KD5KThRNL3ilM/lYEXKlKcprXpX5mtBV+/xj+gewBL4JX+ikTf
+	 s/GcOZ4EF7jjYnPhoGa+ZMYFDSw+4zqYQfVoEKF/id5m5tAFJZjO6iPkZXG6UqtvYr
+	 xCH3+wrJahNDLiiSG2sE3/JCOgfsnbTQ3a5ygBzBVi/yDtXdP6bLgfgHpyJDp7ViEb
+	 qlEX/8df2nk/Hb9uCTlD9Qj+XSWBRn2C8dA4OdWa2xxv3Jl84jQ4a2YpIPv+KeZ/1p
+	 77AwQzFJdGxzQ==
 From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org,
-	robert.foss@linaro.org, Laurent.pinchart@ideasonboard.com,
-	kuninori.morimoto.gx@renesas.com,
-	angelogioacchino.delregno@collabora.com, nfraprado@collabora.com,
-	chunxu.li@mediatek.com, ajye_huang@compal.corp-partner.google.com,
-	allen-kh.cheng@mediatek.com, dri-devel@lists.freedesktop.org,
-	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Message-ID: <Y4Cysgk5Gic5ae9B@sirena.org.uk>
-References: <20221125094413.4940-1-jiaxin.yu@mediatek.com>
- <20221125094413.4940-2-jiaxin.yu@mediatek.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, angelogioacchino.delregno@collabora.com, nfraprado@collabora.com
+Cc: linux-kernel@vger.kernel.org, ajye_huang@compal.corp-partner.google.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, chunxu.li@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20221124023050.4470-1-jiaxin.yu@mediatek.com>
+References: <20221124023050.4470-1-jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH v2] ASoC: mediatek: mt8186: Correct I2S shared clocks
+Message-Id: <166938641371.506633.11848933919826451690.b4-ty@kernel.org>
+Date: Fri, 25 Nov 2022 14:26:53 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kNT+QONpsQiODP63"
-Content-Disposition: inline
-In-Reply-To: <20221125094413.4940-2-jiaxin.yu@mediatek.com>
-X-Cookie: Time and tide wait for no man.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_041911_062160_DC251002 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20221125_062657_308240_01E3835E 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,51 +72,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 24 Nov 2022 10:30:50 +0800, Jiaxin Yu wrote:
+> In mt8186 platform, I2S2 should be the main I2S port that provide
+> the clock, on the contrary I2S3 should be the second I2S port that
+> use this clock.
+> 
+> 
 
---kNT+QONpsQiODP63
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Applied to
 
-On Fri, Nov 25, 2022 at 05:44:11PM +0800, Jiaxin Yu wrote:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-> +	/*
-> +	 * PCM trigger callback.
-> +	 * Mandatory
-> +	 */
-> +	int (*trigger)(struct device *dev, int cmd);
-> +
+Thanks!
 
-Making this mandatory would break all existing users, though...
+[1/1] ASoC: mediatek: mt8186: Correct I2S shared clocks
+      commit: 248579fc9a4f3bf36e7cfe9f6a354cee0f9848dc
 
-> +	switch (event) {
-> +	case SND_SOC_DAPM_PRE_PMU:
-> +		if (hcp->hcd.ops->trigger)
-> +			hcp->hcd.ops->trigger(component->dev->parent, SNDRV_PCM_TRIGGER_START);
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-...it's not actually mandatory so it's just the comment that's wrong.
-I'm a little unclear why this is being implemented as a DAPM operation
-rather than having the driver forward the PCM trigger op if it's needed?
-Or alternatively if a DAPM callback is needed why not provide one
-directly rather than hooking into the trigger function - that's going to
-be called out of sequence with the rest of DAPM and be potentially
-confusing given the very different environments that trigger and DAPM
-operations run in.  A quick glance at the it6505 driver suggests it'd be
-happier with a DAPM callback.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---kNT+QONpsQiODP63
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmOAsrEACgkQJNaLcl1U
-h9CCdgf+JzEvQcOa+cudwzO1Ok98aky4qGZCuKQnnWtkrCayv8eiu7wd7w5G9dpU
-VciYfLQ8bgQ3UOImbANerH2+FJhMtldcF8Vn5FJCG1eXpJGMRbWrjguA15/n88uT
-bQ2wEInMii6ecKtSyULg3ie9tuLseZfS3jJHOwJeYFANRmaef0UUAQyPkHnnVsj8
-luaShk6424tDgSWY1es5RVtOOzPH/JpBXK1DKuCEBI7DFYuAJtmqgXXIZvfwNPHe
-sCV/N6DVZNU152PRSiyAX3Y8/x3NzYiSs6BXexv10OlCq44sCPYZ+HdbgY7qQL4y
-w7JwiNOcmvN0sbAhK0jjSKmJ3/spKw==
-=ReC2
------END PGP SIGNATURE-----
-
---kNT+QONpsQiODP63--
+Thanks,
+Mark
 
