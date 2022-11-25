@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18211C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 15:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8515EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Nov 2022 15:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/WfPFIvXQkUy4+HZsCcjoOy5HXh/OR2xwCOtqD43AE4=; b=S86ayyjBho8z6Ph3QK1R9i66Tc
-	nv6ZOJuOJyInzlEjpWrb6t1k9no6MKV4xDvJfEK+aN7ghx5YqAMkckVAVXVGhEVTY1AGbyK1623rC
-	HWUerMccKU0jV+3X/PtJZoGRKsLZvWnQNqGywlf4QVScUgBpQTqNboM7cWCy8CoLHb/ccbOSv3ihB
-	X2W37Mdpzwl/PzurNvqMGnjHB4UoyUOX3Q+Wa/6xMFd7nczfDLJm257kJvB9UHVjoZCvlilDzeLaY
-	XMlLq71/+lNkcCBE6DTRRtH1HqHq9ShhYff5SwayAqIpd5IlcGIZuUMf3ZU5PtvEZDw5iaahY8yCg
-	6UHlpp7A==;
+	bh=I+WYtC3mBmE4HBeCSm4jFYtF3t8u3124l8X3DjUJU0g=; b=UHkr3IQEdnXcwH5f9tSIOGPozh
+	Fk4O4UcBNzUH8RqwM2pG/HXkdHdXWBnexufSiwovuUWB1rwhvjR/gJyZl53POm7JDM+5F0owgvgxQ
+	Hd6HH1RP4Nb8eZxF3tPn1N8W8SDAUhIND1RVr7Zt9bOiqSkKsV88cBct427zsIekefUx0KzJxkwKP
+	Sw7nxvHrfw1H99Q0s5mwNrAUE9sEhcuRm5uZuJMR0U93DdtfU46hTFpUitb0m7jUY7OCvTcxpYxAm
+	nxie2NNOQH/nTNeQNY4h6SF6EhPvYTWh85jIiSd5l+fDI7o5QlZgcHeqBuoH1qBuST6hgrtP3lxEf
+	YjCM0IEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyaQL-00HP6Y-6N; Fri, 25 Nov 2022 15:15:29 +0000
+	id 1oyaRY-00HPg2-6T; Fri, 25 Nov 2022 15:16:44 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyaMf-00HNVo-Ut
-	for linux-mediatek@bombadil.infradead.org; Fri, 25 Nov 2022 15:11:42 +0000
+	id 1oyaMi-00HNVo-7H
+	for linux-mediatek@bombadil.infradead.org; Fri, 25 Nov 2022 15:11:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=/WfPFIvXQkUy4+HZsCcjoOy5HXh/OR2xwCOtqD43AE4=; b=JPDUYEP6d4vLXWDIbARaZunHwB
-	kNaKR5F2ZUPR2jJtDhbJ2s0d0pv/aDAnWLCOGwiYcFyVLpPaoyujtYtouU2GvwuRSVsafG/Z8qtR6
-	zy6HZ3xslNUDLCbjuyP9OJQoDSkwWPoH+NxfTIADfoXesUx/ekP5qCXM6tTHKRmwVgcpTU9metFkC
-	nLIw6KsxiwMP64ezR4DnUAroye7GUu4CnbYXDwRrjnxljCDamZYaDV2vF+n0YCV7KeWo19nzeQfta
-	iLPcz3dN1FxpiHfP7z5RnONEEitx3bdBNdF63RWpzSzHAsvHBSB9tKAoth19XePoHXDpG03wXH4X7
-	1YOGfxBg==;
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	bh=I+WYtC3mBmE4HBeCSm4jFYtF3t8u3124l8X3DjUJU0g=; b=hofVQn7rAL7lyjDL+SH7oPJvfv
+	6HXdNQOQyoVGLa98SSD4DQM+03O3rmwjz4gbSvwINw1lT0zJdslvUFceNW65UpU3WaxAR0QaP+lPd
+	Qy+eYtcDsMt1KyhBAJ+gH/6GSXAhNN6Seb8pW2rWoRD2HYcAY6BgOmprxNhnQmKdLM/DkY1XgoUHF
+	DwEbFut270es2/IyxEMS9yffgQoYzUJVQrHRLeYqBqA5S+JQtiHLWn6D2Ygd3RSJy3BbnkNtvKQ/O
+	MH3sFoBiCxSrESas7xAr628XORU7+R9oYrUwC5jQIlShFHA2fArKqIRLT+kZV5IEgzEtdR9q3tDIB
+	RkX9qzaA==;
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oyaMY-004YfF-VO
-	for linux-mediatek@lists.infradead.org; Fri, 25 Nov 2022 15:11:39 +0000
-Received: by mail-wr1-x433.google.com with SMTP id n7so7158621wrr.13
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Nov 2022 07:11:28 -0800 (PST)
+	id 1oyaMY-004YgN-V7
+	for linux-mediatek@lists.infradead.org; Fri, 25 Nov 2022 15:11:40 +0000
+Received: by mail-wm1-x329.google.com with SMTP id o30so3685484wms.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Nov 2022 07:11:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/WfPFIvXQkUy4+HZsCcjoOy5HXh/OR2xwCOtqD43AE4=;
-        b=w1SA1ZGNoJjU/F7vhzubxvZtSsnxd1ZwkoI7EfV/TKpuOm5638uSKo9CbCktX28O51
-         +wsAkEKOvNcbEzW897EPDQqoFdTCz0saDTVeThjteBmSYXn5MHj8fiWn0e4Q1EZ7LM7x
-         jrkCahK4ICAgxMTRYNXA93+jEQnAv7rHTBpVWYvItytfe7F8C8gLDLOC2FMLK6w6prUj
-         EGw2LBxg8r7DIZVXe8/ajGuhcfyQbFMhUuAbU0XUrNrE0155jxzOcdLJzaH7+BQYoSe+
-         6XEDeyKQ1J3YsAwUkSpdMpAWQZs+TvrLLFtoCugWaahiJYycTptgorVCeYSFOwI7TsFl
-         l+hQ==
+        bh=I+WYtC3mBmE4HBeCSm4jFYtF3t8u3124l8X3DjUJU0g=;
+        b=tKdwOqeUUtpYkHxhDIic6WxhmF7Sm/o3BNoVWjVyf24t8qGEmvAULev1njq22iu2h+
+         9FiNdxVdSVtU1pB34Wzn8jdN8+Y3Xixs+/5/IkzmX8kNsdFX1lHizerpNcSFw17JGkje
+         ZBxtdboqcbBeXGgvWAzyh39h+mutnO1ZP2KiX8wHE9G63Pp19YHyh39BZAnK3QtDOceG
+         DquhBRxTEjjLqY/Ip32s8yci5Z6nTYDYXbIMbquhiZXF7av7YjtLlSSr38fa3pJqG1ZT
+         pFJkxZQFznuUg6vD2liRoABbFSFkCfXORcizC7tenu15jQ4JxmYSvDPYG1pcpMXrDkcD
+         acUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/WfPFIvXQkUy4+HZsCcjoOy5HXh/OR2xwCOtqD43AE4=;
-        b=UmiMX+CRNoIPCy3HajgSkuCS/EUouA8peC+cL5o+EleDAPTZeFK0oDIcdKtetUDUaf
-         8fCGmRcc0GCLZM10NLgaXPVPY3rfxOn2S1oKMfHUfktEhzUel4qwLdJLLCiyTOyUD7ur
-         FuMiE4w4AIs77eUgzCanyovmheD39Px8wjg6TV75ZRqKsIiQbeZhqfmB42EUaypoErCO
-         fifNWHI9KNtfGmlIeKu2TTYfCpYYVGMuFUZf51DElhYm3VtsfmZrhTPDpATlj0hdC6Rw
-         FTgKHxfX0uRGNPbi15R6YvwVPSoAF6xuyo++of1ooDFwknkIVrLKyRNtgxQm69wNTkyK
-         t/Jw==
-X-Gm-Message-State: ANoB5pmCuJ39gvXSjIIfG4/aASiR2xXz6meyEpe5mawUHp0cvLtb/btl
-	VvXV799MaK9yYBbd9yHrAVsIyw==
-X-Google-Smtp-Source: AA0mqf4jxSywcBqwD02kLxE1mauRD2tbT4mXFuMK2P6OZ3jYffHhwCnVXNLquJaHNL8fzoH3Foy1fA==
-X-Received: by 2002:a5d:6409:0:b0:241:f7ae:b1dd with SMTP id z9-20020a5d6409000000b00241f7aeb1ddmr7131169wru.138.1669389087744;
-        Fri, 25 Nov 2022 07:11:27 -0800 (PST)
+        bh=I+WYtC3mBmE4HBeCSm4jFYtF3t8u3124l8X3DjUJU0g=;
+        b=t+hpCwpInROhaBJ32DPfjXJwCNiJYyHCDX0D+QmaIokIQ9JwcRRn4VxgRjqiCJassj
+         Dz68/qYRB6EW+eci/Y3jzAHwOXZE3MQNMBLFC5D9L63GBY/9sViDMT0KCDgRInucHYSN
+         6AgsOrQJuIrrnAldO5a/2Epu0FQ0aiwTO5swdG7fpC2HWm3sGqBdrwlM++1ujw9jYmhX
+         +zi+SZwzSXncmDwvh2VdN3FGbnVRfP5NBKBgErPwvXeifg2DL/XunndLHYCntEmmfEct
+         xqZCc8r6wuYTO3Wm3Vwvqvsqw7WvSlK/J6XUcLiKDXTCn74/nl2K8f7EkCqcTWwXhZ+p
+         Xclw==
+X-Gm-Message-State: ANoB5pn1hTgouUG54gXLm5QqUj/AnsIgNVJ292cevXDz3l8VEkxjuAPU
+	wqaexPG3XxhFoOG6V/JC68+jKg==
+X-Google-Smtp-Source: AA0mqf4ryQtntPLvq7v934Ywv5cEcthT5nQkZmHhQ13Wvf4EawNAMa2N8h+HJB9NFNsm4DAEEKRFqQ==
+X-Received: by 2002:a1c:ed17:0:b0:3cf:cfce:9d9e with SMTP id l23-20020a1ced17000000b003cfcfce9d9emr16152932wmh.66.1669389091172;
+        Fri, 25 Nov 2022 07:11:31 -0800 (PST)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id w10-20020a05600c474a00b003b435c41103sm11565885wmo.0.2022.11.25.07.11.26
+        by smtp.googlemail.com with ESMTPSA id w10-20020a05600c474a00b003b435c41103sm11565885wmo.0.2022.11.25.07.11.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Nov 2022 07:11:27 -0800 (PST)
+        Fri, 25 Nov 2022 07:11:30 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 25 Nov 2022 16:10:17 +0100
-Subject: [PATCH v6 06/10] dt-bindings: mfd: mediatek: Add bindings for MT6357 PMIC
+Date: Fri, 25 Nov 2022 16:10:20 +0100
+Subject: [PATCH v6 09/10] regulator: add mt6357 regulator
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221005-mt6357-support-v6-6-4f589756befa@baylibre.com>
+Message-Id: <20221005-mt6357-support-v6-9-4f589756befa@baylibre.com>
 References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
 In-Reply-To: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
@@ -95,24 +95,25 @@ Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>, Alexandre Mergnat <amergnat
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
  linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-leds@vger.kernel.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3860; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=hsHJv7tXwGtDI1+UamHOo/TefFAouJ5xvx7nyDsqMfU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjgNsX/pZnd9dSqEQRhOJBuPEJnpnh/RqRO18ivjZi
- 9fbakmCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY4DbFwAKCRArRkmdfjHURVZQEA
- DDNYSSMiJ3lzTJ50OXfaQgj/FSv3bSM7tetVpMTLXk4uizebewWfqZ/8gek76u6K6I3kiTea8srWbl
- 4DaXtUAP7PI9rTS7MhX8PG5FaKbElkLXTL8pCa5KhRlFnB52tpHhMVgh17PsbMkNbL5u2fAqn1WspR
- qqMIBASLied/bQ9ix5YDJ2Uq28bPqBR7/ooxMb1dXh6wSXvRY6Pea+ZUcCjtLCeVtOZEfCBeAHKJrJ
- uxafx2C5sHdhlh/4Nqa2iO9uDLD8/OGfJ5LsUQJxyl45C2RxrnQq27GJLWJD+vCdObuJJG7iyGLquZ
- L73uTAYMtLIbzFPEIe0okMQIrVRlXwcEzsHMW7SyKAzPSNggx49IvO/8g6B6ybz+dYq+/4HVv6gixl
- 2AxrNBUX9OeceSG4ix2GcKi0AGgo6m4LW3uptSnWWBki9bEoCVqgJ1HjjTgFsKnoczc65JTH6WKPG0
- gd/x5CoyhwhE0zOTXGGUZNiFDuwLYsXya6y6I660rtlsSG7fOSh4l10A7PWzAHuGL/TfH5+Rj7T7pR
- IohWUhVIjvcf+qMQFfrLUMHvAu/yUGUlglxftIKaQ1HNo7Q5PGZHekCoYGChCBFqMYxRRedz9st/4p
- kWfOoNAXjTyLZbrWLC77sffUr9yPxplF4Rk0FgKVFbWBeP65fODCyFAsp0EQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=15592;
+ i=amergnat@baylibre.com; h=from:subject:message-id;
+ bh=FjHm7XarKGTIp+0w1oTz5v6T1oFuXdTPbkzeC2DNWpw=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjgNsXKXtTvyC3B5v+S5OaWp+Vgpu5muqeIyubu6bb
+ h7WDpWiJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY4DbFwAKCRArRkmdfjHURdEhEA
+ CYsj/PhOobj/WJ12f9hcGlO2eH8uRd9qKcVhL1tgOuvSiCxEsxrukjGEF8pPJ4Gm8mIXgm9jJzuMVK
+ am4RKjK9leCoUSNrmMw1jDn+vwad+dm+Z7zhzkwFESij2ryfBpqc1V7OrIDFEyjAZmI4qO21+QxjkM
+ ++UwegzyKHtBZRUQGm0NI266ZIa58oM5RjlSBFVT85WZNPIvVr8M0z64VIesHINzoS2y4+XdywGq81
+ w64U9tbnMJ/OT8imt+kR03jKQsXiWHj8coXrbVjfJNDta3ZEONyiuQxlMkyo2MSUzMkmD1BO9Acuzx
+ sBsReGt5Wb7k2LbSLuZfiL7CvragmELy47F4Vy7jD6IUcCTt1bX4Rdnx84S8LFSIOVfzF8Vnjm2/1a
+ +1NouE6OXjTu24CdE3iGCNw9jhZ5VC3mlVArQliavtPkgOsftweW/Is6GKB8SV1QuaG4zMaF8eo+5b
+ 8+zpIvf1/7yN8uoiJdVWcrJ6TpapcZ8kBTCnyX60RPorvya3iDksv7cgBmIYIq9ZKc7toCO20lWm8U
+ STj8dTW7mTjXnQIJooi4Oz7RNjeVfO7FbKDFr5FJHPTEHgjHqOV3goD/NHSzRnjNGcUqAzIAGjEtyG
+ ZiUnPv13m2sjBssplmrM9FE3DDEvPM3kudbGv4HReB+uv1Dy14bHL192yrtw==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221125_151135_366314_6F569C48 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20221125_151135_396732_283F9784 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,132 +128,568 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, almost all MT63XX PMIC are documented mfd/mt6397.txt.
-Unfortunately, the PMICs haven't always similar HW sub-features.
-To have a better human readable schema, I chose to make one PMIC schema
-to match the exact HW capabilities instead of convert mt6397.txt to
-mediatek,mt63xx.yaml and put a bunch of properties behind
-"if contain ... then ..."
+From: Fabien Parent <fparent@baylibre.com>
 
-- add interrupt property
-- change property refs to match with new yaml documentation
+Add regulator driver for the MT6357 PMIC.
 
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 105 +++++++++++++++++++++
- 1 file changed, 105 insertions(+)
+ drivers/regulator/Kconfig                  |   9 +
+ drivers/regulator/Makefile                 |   1 +
+ drivers/regulator/mt6357-regulator.c       | 453 +++++++++++++++++++++++++++++
+ include/linux/regulator/mt6357-regulator.h |  51 ++++
+ 4 files changed, 514 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index 070e4403c6c2..a659a57438f4 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -805,6 +805,15 @@ config REGULATOR_MT6332
+ 	  This driver supports the control of different power rails of device
+ 	  through regulator interface
+ 
++config REGULATOR_MT6357
++	tristate "MediaTek MT6357 PMIC"
++	depends on MFD_MT6397
++	help
++	  Say y here to select this option to enable the power regulator of
++	  MediaTek MT6357 PMIC.
++	  This driver supports the control of different power rails of device
++	  through regulator interface.
++
+ config REGULATOR_MT6358
+ 	tristate "MediaTek MT6358 PMIC"
+ 	depends on MFD_MT6397
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index 5962307e1130..e4d67b7b1af6 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -97,6 +97,7 @@ obj-$(CONFIG_REGULATOR_MT6315) += mt6315-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6331)	+= mt6331-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6332)	+= mt6332-regulator.o
++obj-$(CONFIG_REGULATOR_MT6357)	+= mt6357-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6359)	+= mt6359-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
+diff --git a/drivers/regulator/mt6357-regulator.c b/drivers/regulator/mt6357-regulator.c
 new file mode 100644
-index 000000000000..2aa8025d1e24
+index 000000000000..b2352b96aed2
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-@@ -0,0 +1,105 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/regulator/mt6357-regulator.c
+@@ -0,0 +1,453 @@
++// SPDX-License-Identifier: GPL-2.0
++//
++// Copyright (c) 2022 MediaTek Inc.
++// Copyright (c) 2022 BayLibre, SAS.
++// Author: Chen Zhong <chen.zhong@mediatek.com>
++// Author: Fabien Parent <fparent@baylibre.com>
++// Author: Alexandre Mergnat <amergnat@baylibre.com>
++//
++// Based on mt6397-regulator.c
++//
 +
-+title: MediaTek MT6357 PMIC
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/mfd/mt6397/core.h>
++#include <linux/mfd/mt6357/registers.h>
++#include <linux/regulator/driver.h>
++#include <linux/regulator/machine.h>
++#include <linux/regulator/mt6357-regulator.h>
++#include <linux/regulator/of_regulator.h>
 +
-+maintainers:
-+  - Flora Fu <flora.fu@mediatek.com>
-+  - Alexandre Mergnat <amergnat@baylibre.com>
++/*
++ * MT6357 regulators' information
++ *
++ * @desc: standard fields of regulator description.
++ * @da_vsel_reg: Monitor register for query buck's voltage.
++ * @da_vsel_mask: Mask for query buck's voltage.
++ */
++struct mt6357_regulator_info {
++	struct regulator_desc desc;
++	u32 da_vsel_reg;
++	u32 da_vsel_mask;
++};
 +
-+description: |
-+  MT6357 is a power management system chip containing 5 buck
-+  converters and 29 LDOs. Supported features are audio codec,
-+  USB battery charging, fuel gauge, RTC
++#define MT6357_BUCK(match, vreg, min, max, step,		\
++	volt_ranges, vosel_reg, vosel_mask, _da_vsel_mask)	\
++[MT6357_ID_##vreg] = {		\
++	.desc = {		\
++		.name = #vreg,	\
++		.of_match = of_match_ptr(match),		\
++		.regulators_node = "regulators",		\
++		.ops = &mt6357_volt_range_ops,	\
++		.type = REGULATOR_VOLTAGE,	\
++		.id = MT6357_ID_##vreg,		\
++		.owner = THIS_MODULE,		\
++		.n_voltages = ((max) - (min)) / (step) + 1,	\
++		.linear_ranges = volt_ranges,			\
++		.n_linear_ranges = ARRAY_SIZE(volt_ranges),	\
++		.vsel_reg = vosel_reg,		\
++		.vsel_mask = vosel_mask,	\
++		.enable_reg = MT6357_BUCK_##vreg##_CON0,	\
++		.enable_mask = BIT(0),		\
++	},	\
++	.da_vsel_reg = MT6357_BUCK_##vreg##_DBG0,		\
++	.da_vsel_mask = vosel_mask,		\
++}
 +
-+  This is a multifunction device with the following sub modules:
-+  - Regulator
-+  - RTC
-+  - Keys
++#define MT6357_LDO(match, vreg, ldo_volt_table,	\
++	enreg, vosel, vosel_mask)		\
++[MT6357_ID_##vreg] = {		\
++	.desc = {		\
++		.name = #vreg,	\
++		.of_match = of_match_ptr(match),		\
++		.regulators_node = "regulators",		\
++		.ops = &mt6357_volt_table_ops,	\
++		.type = REGULATOR_VOLTAGE,	\
++		.id = MT6357_ID_##vreg,		\
++		.owner = THIS_MODULE,		\
++		.n_voltages = ARRAY_SIZE(ldo_volt_table),	\
++		.volt_table = ldo_volt_table,	\
++		.vsel_reg = vosel,		\
++		.vsel_mask = vosel_mask,	\
++		.enable_reg = enreg,		\
++		.enable_mask = BIT(0),		\
++	},	\
++}
 +
-+  It is interfaced to host controller using SPI interface by a proprietary hardware
-+  called PMIC wrapper or pwrap. This MFD is a child device of pwrap.
-+  See the following for pwrap node definitions:
-+  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
++#define MT6357_LDO1(match, vreg, min, max, step, volt_ranges,	\
++	enreg, vosel, vosel_mask)		\
++[MT6357_ID_##vreg] = {		\
++	.desc = {		\
++		.name = #vreg,	\
++		.of_match = of_match_ptr(match),		\
++		.regulators_node = "regulators",		\
++		.ops = &mt6357_volt_range_ops,	\
++		.type = REGULATOR_VOLTAGE,	\
++		.id = MT6357_ID_##vreg,		\
++		.owner = THIS_MODULE,		\
++		.n_voltages = ((max) - (min)) / (step) + 1,	\
++		.linear_ranges = volt_ranges,	\
++		.n_linear_ranges = ARRAY_SIZE(volt_ranges),	\
++		.vsel_reg = vosel,		\
++		.vsel_mask = vosel_mask,	\
++		.enable_reg = enreg,		\
++		.enable_mask = BIT(0),		\
++	},	\
++	.da_vsel_reg = MT6357_LDO_##vreg##_DBG0,		\
++	.da_vsel_mask = 0x7f00,	\
++}
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt6357
++#define MT6357_REG_FIXED(match, vreg, volt)	\
++[MT6357_ID_##vreg] = {					\
++	.desc = {					\
++		.name = #vreg,				\
++		.of_match = of_match_ptr(match),	\
++		.regulators_node = "regulators",	\
++		.ops = &mt6357_volt_fixed_ops,		\
++		.type = REGULATOR_VOLTAGE,		\
++		.id = MT6357_ID_##vreg,			\
++		.owner = THIS_MODULE,			\
++		.n_voltages = 1,			\
++		.enable_reg = MT6357_LDO_##vreg##_CON0,	\
++		.enable_mask = BIT(0),			\
++		.min_uV = volt,				\
++	},						\
++}
 +
-+  interrupts:
-+    maxItems: 1
++/**
++ * mt6357_get_buck_voltage_sel - get_voltage_sel for regmap users
++ *
++ * @rdev: regulator to operate on
++ *
++ * Regulators that use regmap for their register I/O can set the
++ * da_vsel_reg and da_vsel_mask fields in the info structure and
++ * then use this as their get_voltage_vsel operation.
++ */
++static int mt6357_get_buck_voltage_sel(struct regulator_dev *rdev)
++{
++	int ret, regval;
++	struct mt6357_regulator_info *info = rdev_get_drvdata(rdev);
 +
-+  interrupt-controller: true
++	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
++	if (ret != 0) {
++		dev_err(&rdev->dev,
++			"Failed to get mt6357 Buck %s vsel reg: %d\n",
++			info->desc.name, ret);
++		return ret;
++	}
 +
-+  "#interrupt-cells":
-+    const: 2
++	regval &= info->da_vsel_mask;
++	regval >>= ffs(info->da_vsel_mask) - 1;
 +
-+  regulators:
-+    type: object
-+    $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
-+    description:
-+      List of MT6357 BUCKs and LDOs regulators.
++	return regval;
++}
 +
-+  rtc:
-+    type: object
-+    $ref: /schemas/rtc/mediatek,mt6397-rtc.yaml
-+    description:
-+      MT6357 Real Time Clock.
++static const struct regulator_ops mt6357_volt_range_ops = {
++	.list_voltage = regulator_list_voltage_linear_range,
++	.map_voltage = regulator_map_voltage_linear_range,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = mt6357_get_buck_voltage_sel,
++	.set_voltage_time_sel = regulator_set_voltage_time_sel,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++};
 +
-+  keys:
-+    type: object
-+    $ref: /schemas/input/mediatek,pmic-keys.yaml
-+    description:
-+      MT6357 power and home keys.
++static const struct regulator_ops mt6357_volt_table_ops = {
++	.list_voltage = regulator_list_voltage_table,
++	.map_voltage = regulator_map_voltage_iterate,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_voltage_time_sel = regulator_set_voltage_time_sel,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++};
 +
-+required:
-+  - compatible
-+  - regulators
++static const struct regulator_ops mt6357_volt_fixed_ops = {
++	.list_voltage = regulator_list_voltage_linear,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++};
 +
-+additionalProperties: false
++static const int vxo22_voltages[] = {
++	2200000,
++	0,
++	2400000,
++};
 +
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
++static const int vefuse_voltages[] = {
++	1200000,
++	1300000,
++	1500000,
++	0,
++	1800000,
++	0,
++	0,
++	0,
++	0,
++	2800000,
++	2900000,
++	3000000,
++	0,
++	3300000,
++};
 +
-+    pwrap {
-+        pmic {
-+            compatible = "mediatek,mt6357";
++static const int vcn33_voltages[] = {
++	0,
++	3300000,
++	3400000,
++	3500000,
++};
 +
-+            interrupt-parent = <&pio>;
-+            interrupts = <145 IRQ_TYPE_LEVEL_HIGH>;
-+            interrupt-controller;
-+            #interrupt-cells = <2>;
++static const int vcama_voltages[] = {
++	0,
++	0,
++	0,
++	0,
++	0,
++	0,
++	0,
++	2500000,
++	0,
++	0,
++	2800000,
++};
 +
-+            regulators {
-+                mt6357_vproc_reg: buck-vproc {
-+                    regulator-name = "vproc";
-+                    regulator-min-microvolt = <518750>;
-+                    regulator-max-microvolt = <1312500>;
-+                    regulator-ramp-delay = <6250>;
-+                    regulator-enable-ramp-delay = <220>;
-+                    regulator-always-on;
-+                };
++static const int vcamd_voltages[] = {
++	0,
++	0,
++	0,
++	0,
++	1000000,
++	1100000,
++	1200000,
++	1300000,
++	0,
++	1500000,
++	0,
++	0,
++	1800000,
++};
 +
-+                // ...
++static const int vldo28_voltages[] = {
++	0,
++	2800000,
++	0,
++	3000000,
++};
 +
-+                mt6357_vusb33_reg: ldo-vusb33 {
-+                    regulator-name = "vusb33";
-+                    regulator-min-microvolt = <3000000>;
-+                    regulator-max-microvolt = <3100000>;
-+                    regulator-enable-ramp-delay = <264>;
-+                };
-+            };
++static const int vdram_voltages[] = {
++	0,
++	1100000,
++	1200000,
++};
 +
-+            rtc {
-+                compatible = "mediatek,mt6357-rtc";
-+            };
++static const int vsim_voltages[] = {
++	0,
++	0,
++	0,
++	1700000,
++	1800000,
++	0,
++	0,
++	0,
++	2700000,
++	0,
++	0,
++	3000000,
++	3100000,
++};
 +
-+            keys {
-+                compatible = "mediatek,mt6357-keys";
-+            };
-+        };
-+    };
++static const int vibr_voltages[] = {
++	1200000,
++	1300000,
++	1500000,
++	0,
++	1800000,
++	2000000,
++	0,
++	0,
++	0,
++	2800000,
++	0,
++	3000000,
++	0,
++	3300000,
++};
++
++static const int vmc_voltages[] = {
++	0,
++	0,
++	0,
++	0,
++	1800000,
++	0,
++	0,
++	0,
++	0,
++	0,
++	2900000,
++	3000000,
++	0,
++	3300000,
++};
++
++static const int vmch_voltages[] = {
++	0,
++	0,
++	2900000,
++	3000000,
++	0,
++	3300000,
++};
++
++static const int vemc_voltages[] = {
++	0,
++	0,
++	2900000,
++	3000000,
++	0,
++	3300000,
++};
++
++static const int vusb_voltages[] = {
++	0,
++	0,
++	0,
++	3000000,
++	3100000,
++};
++
++static const struct linear_range buck_volt_range1[] = {
++	REGULATOR_LINEAR_RANGE(518750, 0, 0x7f, 6250),
++};
++
++static const struct linear_range buck_volt_range2[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 0x7f, 6250),
++};
++
++static const struct linear_range buck_volt_range3[] = {
++	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
++};
++
++static const struct linear_range buck_volt_range4[] = {
++	REGULATOR_LINEAR_RANGE(1200000, 0, 0x7f, 12500),
++};
++
++/* The array is indexed by id(MT6357_ID_XXX) */
++static struct mt6357_regulator_info mt6357_regulators[] = {
++	/* Bucks */
++	MT6357_BUCK("buck-vcore", VCORE, 518750, 1312500, 6250,
++		buck_volt_range1, MT6357_BUCK_VCORE_ELR0, 0x7f, 0x7f),
++	MT6357_BUCK("buck-vproc", VPROC, 518750, 1312500, 6250,
++		buck_volt_range1, MT6357_BUCK_VPROC_ELR0, 0x7f, 0x7f),
++	MT6357_BUCK("buck-vmodem", VMODEM, 500000, 1293750, 6250,
++		buck_volt_range2, MT6357_BUCK_VMODEM_ELR0, 0x7f, 0x7f),
++	MT6357_BUCK("buck-vpa", VPA, 500000, 3650000, 50000,
++		buck_volt_range3, MT6357_BUCK_VPA_CON1, 0x3f, 0x3f),
++	MT6357_BUCK("buck-vs1", VS1, 1200000, 2787500, 12500,
++		buck_volt_range4, MT6357_BUCK_VS1_ELR0, 0x7f, 0x7f),
++
++	/* LDOs */
++	MT6357_LDO("ldo-vcama", VCAMA, vcama_voltages,
++		   MT6357_LDO_VCAMA_CON0, MT6357_VCAMA_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vcamd", VCAMD, vcamd_voltages,
++		   MT6357_LDO_VCAMD_CON0, MT6357_VCAMD_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vcn33-bt", VCN33_BT, vcn33_voltages,
++		   MT6357_LDO_VCN33_CON0_0, MT6357_VCN33_ANA_CON0, 0x300),
++	MT6357_LDO("ldo-vcn33-wifi", VCN33_WIFI, vcn33_voltages,
++		   MT6357_LDO_VCN33_CON0_1, MT6357_VCN33_ANA_CON0, 0x300),
++	MT6357_LDO("ldo-vdram", VDRAM, vdram_voltages,
++		   MT6357_LDO_VDRAM_CON0, MT6357_VDRAM_ELR_2, 0x300),
++	MT6357_LDO("ldo-vefuse", VEFUSE, vefuse_voltages,
++		   MT6357_LDO_VEFUSE_CON0, MT6357_VEFUSE_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vemc", VEMC, vemc_voltages,
++		   MT6357_LDO_VEMC_CON0, MT6357_VEMC_ANA_CON0, 0x700),
++	MT6357_LDO("ldo-vibr", VIBR, vibr_voltages,
++		   MT6357_LDO_VIBR_CON0, MT6357_VIBR_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vldo28", VLDO28, vldo28_voltages,
++		   MT6357_LDO_VLDO28_CON0_0, MT6357_VLDO28_ANA_CON0, 0x300),
++	MT6357_LDO("ldo-vmc", VMC, vmc_voltages,
++		   MT6357_LDO_VMC_CON0, MT6357_VMC_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vmch", VMCH, vmch_voltages,
++		   MT6357_LDO_VMCH_CON0, MT6357_VMCH_ANA_CON0, 0x700),
++	MT6357_LDO("ldo-vsim1", VSIM1, vsim_voltages,
++		   MT6357_LDO_VSIM1_CON0, MT6357_VSIM1_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vsim2", VSIM2, vsim_voltages,
++		   MT6357_LDO_VSIM2_CON0, MT6357_VSIM2_ANA_CON0, 0xf00),
++	MT6357_LDO("ldo-vusb33", VUSB33, vusb_voltages,
++		   MT6357_LDO_VUSB33_CON0_0, MT6357_VUSB33_ANA_CON0, 0x700),
++	MT6357_LDO("ldo-vxo22", VXO22, vxo22_voltages,
++		   MT6357_LDO_VXO22_CON0, MT6357_VXO22_ANA_CON0, 0x300),
++
++	MT6357_LDO1("ldo-vsram-proc", VSRAM_PROC, 518750, 1312500, 6250,
++		   buck_volt_range1, MT6357_LDO_VSRAM_PROC_CON0,
++		   MT6357_LDO_VSRAM_CON0, 0x7f00),
++	MT6357_LDO1("ldo-vsram-others", VSRAM_OTHERS, 518750, 1312500, 6250,
++		   buck_volt_range1, MT6357_LDO_VSRAM_OTHERS_CON0,
++		   MT6357_LDO_VSRAM_CON1, 0x7f00),
++
++	MT6357_REG_FIXED("ldo-vaud28", VAUD28, 2800000),
++	MT6357_REG_FIXED("ldo-vaux18", VAUX18, 1800000),
++	MT6357_REG_FIXED("ldo-vcamio18", VCAMIO, 1800000),
++	MT6357_REG_FIXED("ldo-vcn18", VCN18, 1800000),
++	MT6357_REG_FIXED("ldo-vcn28", VCN28, 2800000),
++	MT6357_REG_FIXED("ldo-vfe28", VFE28, 2800000),
++	MT6357_REG_FIXED("ldo-vio18", VIO18, 1800000),
++	MT6357_REG_FIXED("ldo-vio28", VIO28, 2800000),
++	MT6357_REG_FIXED("ldo-vrf12", VRF12, 1200000),
++	MT6357_REG_FIXED("ldo-vrf18", VRF18, 1800000),
++};
++
++static int mt6357_regulator_probe(struct platform_device *pdev)
++{
++	struct mt6397_chip *mt6357 = dev_get_drvdata(pdev->dev.parent);
++	struct regulator_config config = {};
++	struct regulator_dev *rdev;
++	int i;
++
++	pdev->dev.of_node = pdev->dev.parent->of_node;
++
++	for (i = 0; i < MT6357_MAX_REGULATOR; i++) {
++		config.dev = &pdev->dev;
++		config.driver_data = &mt6357_regulators[i];
++		config.regmap = mt6357->regmap;
++
++		rdev = devm_regulator_register(&pdev->dev,
++					       &mt6357_regulators[i].desc,
++					       &config);
++		if (IS_ERR(rdev)) {
++			dev_err(&pdev->dev, "failed to register %s\n",
++				mt6357_regulators[i].desc.name);
++			return PTR_ERR(rdev);
++		}
++	}
++
++	return 0;
++}
++
++static const struct platform_device_id mt6357_platform_ids[] = {
++	{ "mt6357-regulator" },
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(platform, mt6357_platform_ids);
++
++static struct platform_driver mt6357_regulator_driver = {
++	.driver = {
++		.name = "mt6357-regulator",
++	},
++	.probe = mt6357_regulator_probe,
++	.id_table = mt6357_platform_ids,
++};
++
++module_platform_driver(mt6357_regulator_driver);
++
++MODULE_AUTHOR("Chen Zhong <chen.zhong@mediatek.com>");
++MODULE_AUTHOR("Fabien Parent <fabien.parent@linaro.org>");
++MODULE_AUTHOR("Alexandre Mergnat <amergnat@baylibre.com>");
++MODULE_DESCRIPTION("Regulator Driver for MediaTek MT6357 PMIC");
++MODULE_LICENSE("GPL");
+diff --git a/include/linux/regulator/mt6357-regulator.h b/include/linux/regulator/mt6357-regulator.h
+new file mode 100644
+index 000000000000..238b1ee77ea6
+--- /dev/null
++++ b/include/linux/regulator/mt6357-regulator.h
+@@ -0,0 +1,51 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ */
++
++#ifndef __LINUX_REGULATOR_MT6357_H
++#define __LINUX_REGULATOR_MT6357_H
++
++enum {
++	/* Bucks */
++	MT6357_ID_VCORE,
++	MT6357_ID_VMODEM,
++	MT6357_ID_VPA,
++	MT6357_ID_VPROC,
++	MT6357_ID_VS1,
++
++	/* LDOs */
++	MT6357_ID_VAUX18,
++	MT6357_ID_VAUD28,
++	MT6357_ID_VCAMA,
++	MT6357_ID_VCAMD,
++	MT6357_ID_VCAMIO,
++	MT6357_ID_VCN18,
++	MT6357_ID_VCN28,
++	MT6357_ID_VCN33_BT,
++	MT6357_ID_VCN33_WIFI,
++	MT6357_ID_VDRAM,
++	MT6357_ID_VEFUSE,
++	MT6357_ID_VEMC,
++	MT6357_ID_VFE28,
++	MT6357_ID_VIBR,
++	MT6357_ID_VIO18,
++	MT6357_ID_VIO28,
++	MT6357_ID_VLDO28,
++	MT6357_ID_VMC,
++	MT6357_ID_VMCH,
++	MT6357_ID_VRF12,
++	MT6357_ID_VRF18,
++	MT6357_ID_VSIM1,
++	MT6357_ID_VSIM2,
++	MT6357_ID_VSRAM_OTHERS,
++	MT6357_ID_VSRAM_PROC,
++	MT6357_ID_VUSB33,
++	MT6357_ID_VXO22,
++
++	MT6357_ID_RG_MAX,
++};
++
++#define MT6357_MAX_REGULATOR	MT6357_ID_RG_MAX
++
++#endif /* __LINUX_REGULATOR_MT6357_H */
 
 -- 
 b4 0.10.1
