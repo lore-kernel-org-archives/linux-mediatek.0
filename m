@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80ABEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31A46C46467
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=; b=ta5JFnnjmt6bBPlXIo3lqhOJAy
-	OBN9zYh38NR5vdGk5GLfZrrOpO7GtJrEs2EV8KWDA4PIAwGkP20OhJIFlxunUWpjkBySWkULHvvWn
-	Z46ak8vVhFlEm+PcrdIjVJ5sLe7+lx0+mSl5on8Zl0qTnGkCz824OlD0AGDmxZNRcqnGdZYVZaKCG
-	E3s4grB5zURZNCB+6nyNYJ9z3u6huPYoQABa7zsCwc54OTMKjpygWqWvrJIJJJCT9BJRamBDRNsPv
-	qg+qJ2WABs4K1a7x+iqt/W1ZQaPJ7wVi+jSpzsoK5mbqcS1Pm5syDg67PPOpL66HYBmR8DHW66mMn
-	bUC0PGTg==;
+	bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=; b=VMwoU9I00+/OCZihm/ANYUd7ox
+	/OBrhW1NirhBGOoDjNAH4xAb65pimucNMPKf3E3frM73fKyLgVh25zBzXG8r/km6ohLO+i15TtQ8t
+	JR3arWorQGBwdd5iDQzYRMFib0gladhfsQ6AEC9jrQylu7Yx1a6+DwsVoAXjjK2FwDUSGLjeXOOug
+	Ji2FnjWvhZPY4jGU//y08jbfEy62nWJygXazHFyiWQY1AMM9XPwRqWbJYVom0q2A8vCBIc88HMMsF
+	s10AOs1AFN2K05y4nODRDs7zAW/Z6xifuinhe6E7/V0zCEKDgITcxne0ZrR+3mdkIJB32gjmdBKwt
+	+BlimPFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozPSm-00DnwR-C9; Sun, 27 Nov 2022 21:45:24 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1ozPSn-00Dnwe-0z; Sun, 27 Nov 2022 21:45:25 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOSY-00DY0B-SF
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:10 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id p8so14528446lfu.11
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:05 -0800 (PST)
+	id 1ozOSX-00DXzX-2b
+	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:11 +0000
+Received: by mail-lj1-x236.google.com with SMTP id d3so11063918ljl.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=;
-        b=d3jnqhwgV+iA6GcPuBtwyOCQEQeVQuXMje2Yq8vUbum5/zrwX0DR68A9MpR0kFimOo
-         Qrygewdp7nUvUyCGwliIOgQ4Ys8ZY0ElyLOK7Rdhdvs9LnOCp61rabMG4vRkHT19AoXQ
-         A46i6yJijhds8JhaIvGE5C61lbWI3DGbJlXAAqI/it2mH83OBqa6+IeVWuByIoNUK16v
-         qpRqZCD6rst1XD9MfGfUzMl/oQbrS4nF0joWUJwDg6+1uolP/FrOx+MQwyPY4pcOghFd
-         X1inSMEpy8Pn3FHOG2Sw7Yk5vB/0DU054+J7hhPQ3t3EehRQBgPOgnVjDbbAtQnnZSMX
-         YU/Q==
+        bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=;
+        b=nwaxkdhZ4DN5k/R6IH8bbOjgnMj10tWrlkVFBqcaSVRKYpbEfnesnq1liiCvq49Mw6
+         /hSn6dqMJltJFY/LZfYbuwDcJ6XED9WHbKw/GSs73o8GGSa74CmFyy8BiEcfS1oLlZFm
+         ip9k/Wc0Ldhh+AdL5Cj4eHYMy9dOF0dGlONteMh89IjFLEZttZsFhzfT4SmzyvQdEdpD
+         3/YI0lM++TZIKQsc0/9RNYwCEKQOPU4oxv7KvYX3vKIbLcr8kHRrUf2GAM8XYpyioybh
+         t0RtPqtbdCl3xIRqmnPWAe1jzhKQ9Pj+NeHdP2jZqsLo3G1cK4T14+u1LOC4L8EZsDxg
+         qI+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=;
-        b=PuCKpCMoHLtxWjgDpQ1SmgJ0DU8lY6S917K472IsEP17kbrW3L+D4NfomY7BuIv2at
-         07vpXMy1uKD5yMaL9CGC2Icki+ZrDj6DR96krEC1jqxPrbxhbagvzQyqC8Z0Z0SMXe6Z
-         gyqkYizgMbfFrMq0FVSF+u0k2Arr5OvEtudGLIZjIXy6lXZebUsVjffROrHyNNoqTloV
-         HZQXxMRRSDN28h95/bH+00wGy8HUsgI2ugokfk5Re+tZyMe8Ss80WpNn2+kJzdpSIsZR
-         tg1SbHyH9EoAqgJYdhKOYnmKn7F2yeVLkfI0XEroPKScmk0fzk+fdydpERes2Nkk6wIk
-         CPgQ==
-X-Gm-Message-State: ANoB5pkjWfwOxh7I2WeM0hXD3tYSuCFCDFvTzgJ3Y7Xpjcd/AenJlOgZ
-	u9KBuuGim0kQbbkDKFToa1h6og==
-X-Google-Smtp-Source: AA0mqf4MIUAbuFwcGvYcH41oYYkbfEqD9y1cRNS51qz0kBy2pxfU9tMJMCGRZHdofLv65jWUGuSiZw==
-X-Received: by 2002:a05:6512:692:b0:4a2:58f0:c0df with SMTP id t18-20020a056512069200b004a258f0c0dfmr14940029lfe.268.1669581664453;
-        Sun, 27 Nov 2022 12:41:04 -0800 (PST)
+        bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=;
+        b=F4e5YzNAFCj7nalY0jQVTC1p0BylCJk2ecsh8bcPaHod8wOCOv2jUoPExSGpADIZKi
+         Ln7/T7eaoXQPdEgMU710Y+0PZNWz/G3nMIWUh4VQE02GmFqXtf0KIWrYm3vAgnl25psT
+         Qbnwe8C3xMPxKmQzEVtpclmM4d0D/anhKe6V4adPkOXHUkjFqsB0DCqXHQYbC4bo7I/+
+         uJr9+53nTxPN0If0zjEZ2Ab6sP240SLfASbok8SruduRxNSZd35Hn2VBhSwn13PUsJzY
+         /mFcewq5FSPpg7emhScyFT7/zdjJJpozIVRXcVp6ZwWkEngXl5pImXJ7u46ulPLbNmok
+         UzQQ==
+X-Gm-Message-State: ANoB5pkfWwlCbvCz+PMTuwY0iNFATu46pOiFNRUtk1zCKbIadwM7fuie
+	5y7R8wcWzLevlqGc7u9OXPSZjw==
+X-Google-Smtp-Source: AA0mqf6pTDKs6NES1VpquDFIMXzG3rHRmFl7tbVum6ZhfTc6vzbNQJxSmQRtXXQVDfJoEGUtN9CHMw==
+X-Received: by 2002:a05:651c:b0e:b0:277:3ca2:dac6 with SMTP id b14-20020a05651c0b0e00b002773ca2dac6mr14570830ljr.143.1669581663153;
+        Sun, 27 Nov 2022 12:41:03 -0800 (PST)
 Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.03
+        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Nov 2022 12:41:04 -0800 (PST)
+        Sun, 27 Nov 2022 12:41:02 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -80,18 +80,17 @@ To: Pavel Machek <pavel@ucw.cz>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 2/6] dt-bindings: leds: lp55xx: allow label
-Date: Sun, 27 Nov 2022 21:40:54 +0100
-Message-Id: <20221127204058.57111-3-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/6] dt-bindings: leds: use unevaluatedProperties for common.yaml
+Date: Sun, 27 Nov 2022 21:40:53 +0100
+Message-Id: <20221127204058.57111-2-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
 References: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_124106_937523_FBC2DC52 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221127_124105_154219_A840205E 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,28 +105,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Linux driver and at least one upstream board use 'label' property:
-
-  qcom/msm8996-xiaomi-gemini.dtb: lp5562@30: 'label' does not match any of the regexes: '^led@[0-8]$', '^multi-led@[0-8]$', 'pinctrl-[0-9]+'
+The common.yaml schema allows further properties, so the bindings using
+it should restrict it with unevaluatedProperties:false.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/leds/leds-lp55xx.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ .../devicetree/bindings/leds/issi,is31fl319x.yaml    |  1 +
+ .../devicetree/bindings/leds/leds-aw2013.yaml        |  1 +
+ .../devicetree/bindings/leds/leds-gpio.yaml          |  2 +-
+ .../devicetree/bindings/leds/leds-lp50xx.yaml        |  8 ++++++++
+ Documentation/devicetree/bindings/leds/leds-pwm.yaml |  2 +-
+ .../devicetree/bindings/leds/leds-qcom-lpg.yaml      | 12 +++++++++++-
+ .../devicetree/bindings/leds/leds-rt4505.yaml        |  1 +
+ .../devicetree/bindings/leds/leds-sgm3140.yaml       |  1 +
+ .../devicetree/bindings/leds/ti,tca6507.yaml         |  2 +-
+ 9 files changed, 26 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
-index 7ec676e53851..dfaa957eee74 100644
---- a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
-@@ -48,6 +48,8 @@ properties:
-     description: |
-       GPIO attached to the chip's enable pin
+diff --git a/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml b/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
+index 940333f2d69c..2929382625b6 100644
+--- a/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
++++ b/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
+@@ -57,6 +57,7 @@ patternProperties:
+   "^led@[1-9]$":
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
  
-+  label: true
+     properties:
+       reg:
+diff --git a/Documentation/devicetree/bindings/leds/leds-aw2013.yaml b/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
+index e24b0d15ef01..6c3ea0f06cef 100644
+--- a/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
+@@ -33,6 +33,7 @@ patternProperties:
+   "^led@[0-2]$":
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       reg:
+diff --git a/Documentation/devicetree/bindings/leds/leds-gpio.yaml b/Documentation/devicetree/bindings/leds/leds-gpio.yaml
+index 7ad2baeda0b0..7e11703acbd6 100644
+--- a/Documentation/devicetree/bindings/leds/leds-gpio.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-gpio.yaml
+@@ -23,8 +23,8 @@ patternProperties:
+   # node name to at least catch some child nodes.
+   "(^led-[0-9a-f]$|led)":
+     type: object
+-
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       gpios:
+diff --git a/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
+index 63da380748bf..402c25424525 100644
+--- a/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
+@@ -77,6 +77,14 @@ patternProperties:
+       "^led@[0-9a-f]+$":
+         type: object
+         $ref: common.yaml#
++        unevaluatedProperties: false
 +
-   pwr-sel:
-     $ref: /schemas/types.yaml#/definitions/uint8
-     description: |
++        properties:
++          reg:
++            maxItems: 1
++
++        required:
++          - reg
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/leds/leds-pwm.yaml b/Documentation/devicetree/bindings/leds/leds-pwm.yaml
+index fe4d5fd25913..7de6da58be3c 100644
+--- a/Documentation/devicetree/bindings/leds/leds-pwm.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-pwm.yaml
+@@ -20,8 +20,8 @@ properties:
+ patternProperties:
+   "^led(-[0-9a-f]+)?$":
+     type: object
+-
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       pwms:
+diff --git a/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml b/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
+index 497db289169d..1df837798249 100644
+--- a/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
+@@ -72,14 +72,24 @@ properties:
+       "^led@[0-9a-f]$":
+         type: object
+         $ref: common.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          reg:
++            maxItems: 1
++
++        required:
++          - reg
+ 
+ patternProperties:
+   "^led@[0-9a-f]$":
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+-      reg: true
++      reg:
++        maxItems: 1
+ 
+     required:
+       - reg
+diff --git a/Documentation/devicetree/bindings/leds/leds-rt4505.yaml b/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
+index 5b0c74aa6723..cb71fec173c1 100644
+--- a/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
+@@ -27,6 +27,7 @@ properties:
+   led:
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml b/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
+index f68259619488..56b2b2630108 100644
+--- a/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
+@@ -34,6 +34,7 @@ properties:
+   led:
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
+index 32c600387895..9ce5c0f16e17 100644
+--- a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
++++ b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
+@@ -38,8 +38,8 @@ properties:
+ patternProperties:
+   "^led@[0-6]$":
+     type: object
+-
+     $ref: common.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       reg:
 -- 
 2.34.1
 
