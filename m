@@ -4,93 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31A46C46467
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD08C47088
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 22:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=; b=VMwoU9I00+/OCZihm/ANYUd7ox
-	/OBrhW1NirhBGOoDjNAH4xAb65pimucNMPKf3E3frM73fKyLgVh25zBzXG8r/km6ohLO+i15TtQ8t
-	JR3arWorQGBwdd5iDQzYRMFib0gladhfsQ6AEC9jrQylu7Yx1a6+DwsVoAXjjK2FwDUSGLjeXOOug
-	Ji2FnjWvhZPY4jGU//y08jbfEy62nWJygXazHFyiWQY1AMM9XPwRqWbJYVom0q2A8vCBIc88HMMsF
-	s10AOs1AFN2K05y4nODRDs7zAW/Z6xifuinhe6E7/V0zCEKDgITcxne0ZrR+3mdkIJB32gjmdBKwt
-	+BlimPFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bWqmAsxGEqCHpnf5VYOCyVMh+tFsVdWiQUD69klJ4yM=; b=cJe2u3uXtX9PhG1B8hcpWkdI+I
+	K4pBmIs3yMdjPnYHG8ZIuhUHlSCP3W2sOgHxC9aCyTa2vFRIhUGxWk49kRPzPl2wVMlU+dBCWdgpC
+	IpTO89+morxvNEHOAGli3Nw0gm0ndYbRAj7zFFIYCp9ArucYwuTwjFXD6YK7gb8+dHdFKOj//7aY6
+	mN5/qMhwQwwFmalbQkm+vCe32JPBYl9UxYWk5IIS8NePmY6k8XjlEBGna2aVoVRIZ0SQ12ARpEw+t
+	o7Xi5tJ+mn8kDM9wNh2hWQWTlyCS0WoKtcgDKkotzOaM1kDmvahELqMakbrJlOQ+VAIy6+whRGz+O
+	z7c02dTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozPSn-00Dnwe-0z; Sun, 27 Nov 2022 21:45:25 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1ozQRX-00E0mg-J0; Sun, 27 Nov 2022 22:48:11 +0000
+Received: from mail-mw2nam10on2072c.outbound.protection.outlook.com ([2a01:111:f400:7e89::72c] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOSX-00DXzX-2b
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:11 +0000
-Received: by mail-lj1-x236.google.com with SMTP id d3so11063918ljl.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:04 -0800 (PST)
+	id 1ozQRG-00E0cz-Ra; Sun, 27 Nov 2022 22:47:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OqsDrH3CK+CCLyjDxDQ5GHZjKskl33SKwRgFtVNtxm0HlXpFHa9EKi/n2zHGgGuDT9dA5ZcQdEsEOM47/CsNi0H2OzKzpDFMqKq4GjP/rj+RbWuCNwlWGiGJeUeVsXoopVeb+Llmqeq86CbZU4ABy8pRAkm2/UrowYTpRaGaq8XVgNaJ+gE+TBpJIro59VVfUNMIaXjh79DNcNk8ZmlvmfGzPTNqWXuYwxqwgeXZvgGTbcagayuIyBaS+DzO5hgbLdf0TL85/ouHKwA2YyURX7Nvf/2UYIkODbX/Y1oK5Yu8WG//ns/hr3bU1youBVlrx0ZR/yN7KedmK+7FBf/UnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bWqmAsxGEqCHpnf5VYOCyVMh+tFsVdWiQUD69klJ4yM=;
+ b=LHi4aqxlSBtcK3e+lYR5IHQxmfxWgXiu3ciXlynHzIt1gzv48DNxm0KGCteXFCbJlle3p7xSFwKot5Lne1jhYZTdMK0WTSfObdh0hKIFpyOUcO13k/geT9NI6DqRy5K4ntoT6/niX1l/x99O+62KYeelVZJswmByujlQZLT9JFLksARgSMTL9oYPdnsrH2r4Ad1bjzP2aevRrpo/QTMmBOUPTkxtD63NByWegczpUa22lpxWME+8EnuBxc2VHqDoP6gUAzIYtzaPsMoZ0a/GMZkz8DC9EX9elHoy3VHr24Q5Y+1CZ/1jOUh2qBoc63Uy4ZlGNZ7hsfP/sH0onGA/cQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=;
-        b=nwaxkdhZ4DN5k/R6IH8bbOjgnMj10tWrlkVFBqcaSVRKYpbEfnesnq1liiCvq49Mw6
-         /hSn6dqMJltJFY/LZfYbuwDcJ6XED9WHbKw/GSs73o8GGSa74CmFyy8BiEcfS1oLlZFm
-         ip9k/Wc0Ldhh+AdL5Cj4eHYMy9dOF0dGlONteMh89IjFLEZttZsFhzfT4SmzyvQdEdpD
-         3/YI0lM++TZIKQsc0/9RNYwCEKQOPU4oxv7KvYX3vKIbLcr8kHRrUf2GAM8XYpyioybh
-         t0RtPqtbdCl3xIRqmnPWAe1jzhKQ9Pj+NeHdP2jZqsLo3G1cK4T14+u1LOC4L8EZsDxg
-         qI+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uCo1AkWD2FgarCrXoedmAiqLbycN5G3SgzmeYSK7Dpg=;
-        b=F4e5YzNAFCj7nalY0jQVTC1p0BylCJk2ecsh8bcPaHod8wOCOv2jUoPExSGpADIZKi
-         Ln7/T7eaoXQPdEgMU710Y+0PZNWz/G3nMIWUh4VQE02GmFqXtf0KIWrYm3vAgnl25psT
-         Qbnwe8C3xMPxKmQzEVtpclmM4d0D/anhKe6V4adPkOXHUkjFqsB0DCqXHQYbC4bo7I/+
-         uJr9+53nTxPN0If0zjEZ2Ab6sP240SLfASbok8SruduRxNSZd35Hn2VBhSwn13PUsJzY
-         /mFcewq5FSPpg7emhScyFT7/zdjJJpozIVRXcVp6ZwWkEngXl5pImXJ7u46ulPLbNmok
-         UzQQ==
-X-Gm-Message-State: ANoB5pkfWwlCbvCz+PMTuwY0iNFATu46pOiFNRUtk1zCKbIadwM7fuie
-	5y7R8wcWzLevlqGc7u9OXPSZjw==
-X-Google-Smtp-Source: AA0mqf6pTDKs6NES1VpquDFIMXzG3rHRmFl7tbVum6ZhfTc6vzbNQJxSmQRtXXQVDfJoEGUtN9CHMw==
-X-Received: by 2002:a05:651c:b0e:b0:277:3ca2:dac6 with SMTP id b14-20020a05651c0b0e00b002773ca2dac6mr14570830ljr.143.1669581663153;
-        Sun, 27 Nov 2022 12:41:03 -0800 (PST)
-Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Nov 2022 12:41:02 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Pavel Machek <pavel@ucw.cz>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Vincent Knecht <vincent.knecht@mailoo.org>,
-	Nikita Travkin <nikitos.tr@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Andrew Davis <afd@ti.com>,
-	Gene Chen <gene_chen@richtek.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	Luca Weiss <luca@z3ntu.xyz>,
-	Neil Brown <neilb@suse.de>,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bWqmAsxGEqCHpnf5VYOCyVMh+tFsVdWiQUD69klJ4yM=;
+ b=AZ67X7p0haHyHYVODn/MH05UJh2C1STi+6Vn86/N54kSikuUpqqiFZ6UaNUV2hxjv332COzccSBZzPrtoA1TogvDH72541saaJbHR8fmzXk6glyukj/j/3X4nLqmDhSgSrAgtrwK0CdP/Bzvj+yOgAGPFN/C66cN6M0z6pP1q2Y=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by BN0PR10MB4998.namprd10.prod.outlook.com
+ (2603:10b6:408:120::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.22; Sun, 27 Nov
+ 2022 22:47:46 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5857.022; Sun, 27 Nov 2022
+ 22:47:46 +0000
+From: Colin Foster <colin.foster@in-advantage.com>
+To: linux-renesas-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 1/6] dt-bindings: leds: use unevaluatedProperties for common.yaml
-Date: Sun, 27 Nov 2022 21:40:53 +0100
-Message-Id: <20221127204058.57111-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
-References: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
-MIME-Version: 1.0
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Marek Vasut <marex@denx.de>,
+	Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?UTF-8?q?n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
+	=?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	UNGLinuxDriver@microchip.com,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	George McCollister <george.mccollister@gmail.com>
+Subject: [PATCH v3 net-next 00/10] dt-binding preparation for ocelot switches
+Date: Sun, 27 Nov 2022 14:47:24 -0800
+Message-Id: <20221127224734.885526-1-colin.foster@in-advantage.com>
+X-Mailer: git-send-email 2.25.1
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR05CA0027.namprd05.prod.outlook.com
+ (2603:10b6:a03:33b::32) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|BN0PR10MB4998:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0207d6c2-2448-4bb3-85ed-08dad0c966f6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	2wvTFUzjNytosAcIieJlJiROOmsfrn0OtCUjQMHzW6Y8t6QS+n3t7B7/rg9aDKqIxqe6AKJucIqEaSS9hYb7sQYBZMzkuNqNj38VB9x2JBoOS+WVlCXTqwh9lbOTb9fCv3snnoX50tEry8BhMsnv3M+ziqVhu/RqHTG05XDKQWLdRDyLi6dvKKV5q/vEBaGLqORRmK0EE3RwdurQ6fkfpVASMsuu1A7BMJIVVT7R2VqptAwG9/K52/3gLPGc1oF+xrOqmJBwwK3xRRULsKUHSxJJJMjioV7ayqqOV3zT47K+PtzUosTDGzDMgYUVx1DEMNqu1hY7+Lkv39DU/fWG9d8Evf5BoBDaMudh+LLMrmqyQIoOsmPfVZGepFCQDTHJavxKJ+MVNF/Z5DxBb95br5QiaiRmrLC9R/JEWr4Fum++hb1P8buUd4LqaSxusmlEnyaikIHcXbWQ001BcCMHeEQwXEw4k5i6ltI8qHUPl9qcE361jSr2IR89EC3WrTIqgk8t7bhQwIj+x4o5mlZxZW5pTMtH2DiqFQoAp1xQ91JsVqefADRcO3xG/VrKow0BYdaipUBEkmWSIfSTDGq8adH1DPMFp/XccXHgCgvjsj3b64q5WMPU6JKxlDUgEICPZxLuE/ve9hcGbJDi0ywChTrnlmvkSsCZ8GckT91Qxq4HdX5Lws1/fmU2luhlvZqNmaKGkyFUnjXk1t2I5o+7pUs0YZsIduXDOsZNKYoSe0E=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(136003)(396003)(39830400003)(376002)(346002)(366004)(451199015)(6506007)(2906002)(36756003)(86362001)(7416002)(7406005)(966005)(6486002)(478600001)(52116002)(53546011)(316002)(66946007)(66556008)(66476007)(6666004)(41300700001)(4326008)(5660300002)(8936002)(54906003)(8676002)(44832011)(38100700002)(38350700002)(2616005)(26005)(186003)(1076003)(83380400001)(6512007)(66899015);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?TCt4TitTc0I1NUZTMmxZNkNwN0ljTzJ1MytPenhtZ2xUSjZmWFhmRktpK1o3?=
+ =?utf-8?B?YVpiaFQ0cUVkMXlmV0V0SmpZNzJlUkNGSkcwTkVFTWhCMTRwajBvNS9IclhQ?=
+ =?utf-8?B?eS9jaTVUSVBzQXVodFUzRXpZSzNsbWN3QWZPMXNKeW4vdzAyZ29pUkRnd0l4?=
+ =?utf-8?B?TUZsY1ZCM08xMkx6SFRtNHZncklTM0IzdjVZVWltRkMyeWpjVGhxYS9LSGpM?=
+ =?utf-8?B?RlhvRUdnQnFKdXFRamt0NTZ0WE9WMm45dDhQQUc2Zzk0c0p5Z2l4SUYvbGpN?=
+ =?utf-8?B?L2c1RTBITHh2TzBueHVsZEVUZjNGb0dkcEQ0THUrNDJQODlac240SHdiQzRN?=
+ =?utf-8?B?NEY2Z2tJYkMzdFJ0UlpqQ1BTMGhSVThKSDlYMHdpSHNxYWpHdGM0aDc3NDBp?=
+ =?utf-8?B?RWg3eGZmTmQraUFCVEZ1alR5RmgrR3ZWR3BZWEx3NHFrbXJTWW55UEtNRmt4?=
+ =?utf-8?B?ZENtV29BL1FkRTVvSEd0QnRpZFZaZWp4aHI2amora0RZTVFaZjduTTBRb0Iy?=
+ =?utf-8?B?Rm1xM29QejlaWlU1dzg5MXd3Qnp4RDBmQTlGRUxSTWpSQTZIWjRkZmNwb3lF?=
+ =?utf-8?B?WmpyWXRPcWhaKy9vZktQOXFnN2c5cEQzU3lrcWl3eG5CMXpMZTlzSGVKbkRH?=
+ =?utf-8?B?ai9hVkx6VllzNUxPVnlnUmtUaHBhTnVCcnF2c1FFNnBpaG96VlVQZ25ZMFFr?=
+ =?utf-8?B?UVNqdlQrY3BodWRSTExzYTkxRWFsREIwOStrYWx4TWhBK1JTd1BmdGxJalFU?=
+ =?utf-8?B?NnlPNTRMOTE2MWZnWWZoUmFockdUamdFNFAzaE5vMGsxanVHTnhINGx5dEpp?=
+ =?utf-8?B?c3dCSEtWVjZiWDFNK2I0NG5tdnY0MTFSSTVEQzF4TXdFcnA3Y3lRWXZyWnVE?=
+ =?utf-8?B?Y2VIb05OMUdpN2h0NVc3U2pEWkRsUit2anRCWTRwWFNOOVNIejlmYVZKcCtX?=
+ =?utf-8?B?UVJ1MWNXcm5NR0NaZW9zOHpjd3ptaHExT1dDV1JvUWY2ZmdDdUJ0aWhnNU1D?=
+ =?utf-8?B?MkFxL0Q2cTkwbzZ6SlRHTGhTczFnUUphWnNhZStsU1pLNTBwKzhNM0FhZjhh?=
+ =?utf-8?B?Q3J5QnhGTEQ1bjMzZnZMYWxmNW5aZGxFYzZSbnRkdWxFVnhkWVFMc3hIUE5n?=
+ =?utf-8?B?dUZzSlViV3E4SHI1a3RiZlpyaTVGN2l3QjVwblJ6UFVqY2MvR2VYK2lKdlNo?=
+ =?utf-8?B?b1F5ckZHL21TcldPS3NzeWhGZU5vOUFDbC84WUt4Smp2eDljeEFRYUYzTXla?=
+ =?utf-8?B?WWQ1amR3bUg1TlY1QzVKbThxaE4yMjRRRThjcGNpUmk3S0NuWW11dmxRRklO?=
+ =?utf-8?B?R0diVmgrSTl6Yi8xd2tTbHRlSFMrVElleVpRd1VNL2JSSHVVaytxL0pKaDI2?=
+ =?utf-8?B?anZ3RnhnaEFPRUpEQXVzZEozT2R4aDcrQUdoNWhpUkZPN2tnWFdnRU5abkcx?=
+ =?utf-8?B?VVc0dEtzOGNYTVljSHhUejVvOEdaekY1Rll3WWVEUWFaSkRhUStkc0tvdUxt?=
+ =?utf-8?B?c2VKRDRyU3RtTk5pMHFibWlocE90ZWRpbThTMXRxblRKOGptZThJRVV4eVcz?=
+ =?utf-8?B?OGg5cE1UN3dUYlc2YnpiWnlMbWlsdTlGTEhHMVluSmpGREd3K3BiUTMrVjBF?=
+ =?utf-8?B?UjMyT01KRjAvWFlXeE13RjlWVGZBcDl3MEVuUTcxVDVrMXhBZ0duczNEU0lh?=
+ =?utf-8?B?ZzdPUGFXdHRubTQrajVwZmNGY0wxRDVDbjVGdm80N0ZOZk0wdjFzYk1hN2NM?=
+ =?utf-8?B?U2RuWTRlVFFSeUMvdTB0eWRqZ2xDNzBQRFgvRytiWFdqeGl5VmRNanJsUFZ6?=
+ =?utf-8?B?ZFlFN0xjdXFxZVI2eElTNkVtYmlpR1NmNTJ6b1lzTENNTmtnVnpYTWtSdURv?=
+ =?utf-8?B?amJpMmpKWVd4Z1o5K1d6Nk93WjV0aTFRRDJKY2N5V1cwQnk5a3FwZy8rOGMy?=
+ =?utf-8?B?bEFnc2pDcW5iSDBGdThDOWNJeFlpVkgrbWptNnZ0UGh3L3g4RzZoWXl1a0Jq?=
+ =?utf-8?B?K2R5L1NJajJWWEpZOEN0eTQ1TCsyWExMMUxHSThJanlOU3JJZkNnZHgwZ0l5?=
+ =?utf-8?B?RzZ2cEEyMEE1WW8vN2RQWXk2Ujcwenl4QXM4VHl4bnhzeDBiejB2NURWL1Y0?=
+ =?utf-8?B?WEo5S1gxYk1OUzhpV2U2a0xpeW9TWXFLL2hnUWdZYnliOUlOMG53dTdMRFBS?=
+ =?utf-8?B?TXc9PQ==?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0207d6c2-2448-4bb3-85ed-08dad0c966f6
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2022 22:47:46.2813
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: iFIVrosDCTWyQr8z1S+BhwyL7dVf5C/f7j86RzI/hkAn2wSTZnkoTJnjI3yjWiZMATr+FeXH77lsnIsvB4WfU106Tfl5Z3/9MkgCUgQfjMs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB4998
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_124105_154219_A840205E 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20221127_144755_208556_C41E71F6 
+X-CRM114-Status: GOOD (  23.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,162 +167,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The common.yaml schema allows further properties, so the bindings using
-it should restrict it with unevaluatedProperties:false.
+Ocelot switches have the abilitiy to be used internally via
+memory-mapped IO or externally via SPI or PCIe. This brings up issues
+for documentation, where the same chip might be accessed internally in a
+switchdev manner, or externally in a DSA configuration. This patch set
+is perparation to bring DSA functionality to the VSC7512, utilizing as
+much as possible with an almost identical VSC7514 chip.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+This patch set changed quite a bit from v2, so I'll omit the background
+of how those sets came to be. Rob offered a lot of very useful guidance.
+My thanks.
+
+At the end of the day, with this patch set, there should be a framework
+to document Ocelot switches (and any switch) in scenarios where they can
+be controlled internally (ethernet-switch) or externally (dsa-switch).
+
 ---
- .../devicetree/bindings/leds/issi,is31fl319x.yaml    |  1 +
- .../devicetree/bindings/leds/leds-aw2013.yaml        |  1 +
- .../devicetree/bindings/leds/leds-gpio.yaml          |  2 +-
- .../devicetree/bindings/leds/leds-lp50xx.yaml        |  8 ++++++++
- Documentation/devicetree/bindings/leds/leds-pwm.yaml |  2 +-
- .../devicetree/bindings/leds/leds-qcom-lpg.yaml      | 12 +++++++++++-
- .../devicetree/bindings/leds/leds-rt4505.yaml        |  1 +
- .../devicetree/bindings/leds/leds-sgm3140.yaml       |  1 +
- .../devicetree/bindings/leds/ti,tca6507.yaml         |  2 +-
- 9 files changed, 26 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml b/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
-index 940333f2d69c..2929382625b6 100644
---- a/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
-+++ b/Documentation/devicetree/bindings/leds/issi,is31fl319x.yaml
-@@ -57,6 +57,7 @@ patternProperties:
-   "^led@[1-9]$":
-     type: object
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
-       reg:
-diff --git a/Documentation/devicetree/bindings/leds/leds-aw2013.yaml b/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
-index e24b0d15ef01..6c3ea0f06cef 100644
---- a/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-aw2013.yaml
-@@ -33,6 +33,7 @@ patternProperties:
-   "^led@[0-2]$":
-     type: object
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
-       reg:
-diff --git a/Documentation/devicetree/bindings/leds/leds-gpio.yaml b/Documentation/devicetree/bindings/leds/leds-gpio.yaml
-index 7ad2baeda0b0..7e11703acbd6 100644
---- a/Documentation/devicetree/bindings/leds/leds-gpio.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-gpio.yaml
-@@ -23,8 +23,8 @@ patternProperties:
-   # node name to at least catch some child nodes.
-   "(^led-[0-9a-f]$|led)":
-     type: object
--
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
-       gpios:
-diff --git a/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
-index 63da380748bf..402c25424525 100644
---- a/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-lp50xx.yaml
-@@ -77,6 +77,14 @@ patternProperties:
-       "^led@[0-9a-f]+$":
-         type: object
-         $ref: common.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          reg:
-+            maxItems: 1
-+
-+        required:
-+          - reg
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/leds/leds-pwm.yaml b/Documentation/devicetree/bindings/leds/leds-pwm.yaml
-index fe4d5fd25913..7de6da58be3c 100644
---- a/Documentation/devicetree/bindings/leds/leds-pwm.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-pwm.yaml
-@@ -20,8 +20,8 @@ properties:
- patternProperties:
-   "^led(-[0-9a-f]+)?$":
-     type: object
--
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
-       pwms:
-diff --git a/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml b/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
-index 497db289169d..1df837798249 100644
---- a/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-qcom-lpg.yaml
-@@ -72,14 +72,24 @@ properties:
-       "^led@[0-9a-f]$":
-         type: object
-         $ref: common.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          reg:
-+            maxItems: 1
-+
-+        required:
-+          - reg
- 
- patternProperties:
-   "^led@[0-9a-f]$":
-     type: object
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
--      reg: true
-+      reg:
-+        maxItems: 1
- 
-     required:
-       - reg
-diff --git a/Documentation/devicetree/bindings/leds/leds-rt4505.yaml b/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
-index 5b0c74aa6723..cb71fec173c1 100644
---- a/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-rt4505.yaml
-@@ -27,6 +27,7 @@ properties:
-   led:
-     type: object
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml b/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
-index f68259619488..56b2b2630108 100644
---- a/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-sgm3140.yaml
-@@ -34,6 +34,7 @@ properties:
-   led:
-     type: object
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-index 32c600387895..9ce5c0f16e17 100644
---- a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-+++ b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-@@ -38,8 +38,8 @@ properties:
- patternProperties:
-   "^led@[0-6]$":
-     type: object
--
-     $ref: common.yaml#
-+    unevaluatedProperties: false
- 
-     properties:
-       reg:
+v2 -> v3
+  * Restructured everything to use a "base" iref for devices that don't
+    have additional properties, and simply a "ref" for devices that do.
+  * New patches to fix up brcm,sf2, qca8k, and mt7530
+  * Fix unevaluatedProperties errors from previous sets (see specific
+    patches for more detail)
+  * Removed redundant "Device Tree Binding" from titles, where applicable.
+
+v1 -> v2
+  * Two MFD patches were brought into the MFD tree, so are dropped
+  * Add first patch 1/6 to allow DSA devices to add ports and port
+    properties
+  * Test qca8k against new dt-bindings and fix warnings. (patch 2/6)
+  * Add tags (patch 3/6)
+  * Fix vsc7514 refs and properties
+
+---
+
+Colin Foster (10):
+  dt-bindings: net: dsa: sf2: fix brcm,use-bcm-hdr documentation
+  dt-bindings: net: dsa: qca8k: remove address-cells and size-cells from
+    switch node
+  dt-bindings: net: dsa: utilize base definitions for standard dsa
+    switches
+  dt-bindings: net: dsa: allow additional ethernet-port properties
+  dt-bindings: net: dsa: qca8k: utilize shared dsa.yaml
+  dt-bindings: net: dsa: mediatek,mt7530: fix port description location
+  dt-bindings: net: dsa: mediatek,mt7530: remove unnecessary dsa-port
+    reference
+  dt-bindings: net: add generic ethernet-switch
+  dt-bindings: net: add generic ethernet-switch-port binding
+  dt-bindings: net: mscc,vsc7514-switch: utilize generic
+    ethernet-switch.yaml
+
+ .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
+ .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
+ .../devicetree/bindings/net/dsa/brcm,sf2.yaml | 15 +++--
+ .../devicetree/bindings/net/dsa/dsa-port.yaml | 24 +------
+ .../devicetree/bindings/net/dsa/dsa.yaml      | 37 +++++------
+ .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 17 ++---
+ .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
+ .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
+ .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
+ .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
+ .../devicetree/bindings/net/dsa/qca8k.yaml    | 15 +----
+ .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
+ .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
+ .../bindings/net/ethernet-switch-port.yaml    | 25 ++++++++
+ .../bindings/net/ethernet-switch.yaml         | 62 +++++++++++++++++++
+ .../bindings/net/mscc,vsc7514-switch.yaml     | 31 +---------
+ MAINTAINERS                                   |  2 +
+ 18 files changed, 134 insertions(+), 112 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch.yaml
+
 -- 
-2.34.1
+2.25.1
+
+From 20867224faa46fc375f31b11aece705af091151a Mon Sep 17 00:00:00 2001
+From: Colin Foster <colin.foster@in-advantage.com>
+Date: Thu, 3 Nov 2022 21:10:02 -0700
+Subject: [PATCH v2 net-next 0/6] dt-binding preparation for ocelot switches
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Ocelot switches have the abilitiy to be used internally via
+memory-mapped IO or externally via SPI or PCIe. This brings up issues
+for documentation, where the same chip might be accessed internally in a
+switchdev manner, or externally in a DSA configuration. This patch set
+is perparation to bring DSA functionality to the VSC7512, utilizing as
+much as possible with an almost identical VSC7514 chip.
+
+During the most recent RFC for internal ethernet switch functionality to
+the VSC7512, there were 10 steps laid out to adequately prepare
+documentation:
+
+https://lore.kernel.org/all/20221010174856.nd3n4soxk7zbmcm7@skbuf/
+
+The full context is quoted below. This patch set represents steps 1-7 of
+the 10 steps, with the remaining steps to likely be part of what was the
+original RFC.
+
+The first two patches are specifically rewording and fixing of the MFD
+bindings. I kept them in this patch set since they might cause conflicts
+with future documentation changes that will be part of the net-next
+tree. I can separate them if desired.
+
+
+
+Context:
+
+```
+To end the discussion on a constructive note, I think if I were Colin,
+I would do the following, in the following order, according to what was
+expressed as a constraint:
+
+1. Reword the "driver" word out of mscc,vsc7514-switch.yaml and express
+   the description in terms of what the switch can do, not what the
+   driver can do.
+
+2. Make qca8k.yaml have "$ref: dsa.yaml#". Remove "$ref: dsa-port.yaml#"
+   from the same schema.
+
+3. Remove "- $ref: dsa-port.yaml#" from mediatek,mt7530.yaml. It doesn't
+   seem to be needed, since dsa.yaml also has this. We need this because
+   we want to make sure no one except dsa.yaml references dsa-port.yaml.
+
+4. Move the DSA-unspecific portion from dsa.yaml into a new
+   ethernet-switch.yaml. What remains in dsa.yaml is "dsa,member".
+   The dsa.yaml schema will have "$ref: ethernet-switch.yaml#" for the
+   "(ethernet-)switch" node, plus its custom additions.
+
+5. Move the DSA-unspecific portion from dsa-port.yaml into a new
+   ethernet-switch-port.yaml. What remains in dsa-port.yaml is:
+   * ethernet phandle
+   * link phandle
+   * label property
+   * dsa-tag-protocol property
+   * the constraint that CPU and DSA ports must have phylink bindings
+
+6. The ethernet-switch.yaml will have "$ref: ethernet-switch-port.yaml#"
+   and "$ref: dsa-port.yaml". The dsa-port.yaml schema will *not* have
+   "$ref: ethernet-switch-port.yaml#", just its custom additions.
+   I'm not 100% on this, but I think there will be a problem if:
+   - dsa.yaml references ethernet-switch.yaml
+     - ethernet-switch.yaml references ethernet-switch-port.yaml
+   - dsa.yaml also references dsa-port.yaml
+     - dsa-port.yaml references ethernet-switch-port.yaml
+   because ethernet-switch-port.yaml will be referenced twice. Again,
+   not sure if this is a problem. If it isn't, things can be simpler,
+   just make dsa-port.yaml reference ethernet-switch-port.yaml, and skip
+   steps 2 and 3 since dsa-port.yaml containing just the DSA specifics
+   is no longer problematic.
+
+7. Make mscc,vsc7514-switch.yaml have "$ref: ethernet-switch.yaml#" for
+   the "mscc,vsc7514-switch.yaml" compatible string. This will eliminate
+   its own definitions for the generic properties: $nodename and
+   ethernet-ports (~45 lines of code if I'm not mistaken).
+
+8. Introduce the "mscc,vsc7512-switch" compatible string as part of
+   mscc,vsc7514-switch.yaml, but this will have "$ref: dsa.yaml#" (this
+   will have to be referenced by full path because they are in different
+   folders) instead of "ethernet-switch.yaml". Doing this will include
+   the common bindings for a switch, plus the DSA specifics.
+
+9. Optional: rework ti,cpsw-switch.yaml, microchip,lan966x-switch.yaml,
+   microchip,sparx5-switch.yaml to have "$ref: ethernet-switch.yaml#"
+   which should reduce some duplication in existing schemas.
+
+10. Question for future support of VSC7514 in DSA mode: how do we decide
+    whether to $ref: ethernet-switch.yaml or dsa.yaml? If the parent MFD
+    node has a compatible string similar to "mscc,vsc7512", then use DSA,
+    otherwise use generic ethernet-switch?
+```
+
+Colin Foster (6):
+  dt-bindings: net: dsa: allow additional ethernet-port properties
+  dt-bindings: net: dsa: qca8k: utilize shared dsa.yaml
+  dt-bindings: net: dsa: mediatek,mt7530: remove unnecessary dsa-port
+    reference
+  dt-bindings: net: add generic ethernet-switch
+  dt-bindings: net: add generic ethernet-switch-port binding
+  dt-bindings: net: mscc,vsc7514-switch: utilize generic
+    ethernet-switch.yaml
+
+ .../devicetree/bindings/net/dsa/dsa-port.yaml | 27 +---------
+ .../devicetree/bindings/net/dsa/dsa.yaml      | 26 +---------
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  3 --
+ .../devicetree/bindings/net/dsa/qca8k.yaml    | 18 +++----
+ .../bindings/net/ethernet-switch-port.yaml    | 44 ++++++++++++++++
+ .../bindings/net/ethernet-switch.yaml         | 51 +++++++++++++++++++
+ .../bindings/net/mscc,vsc7514-switch.yaml     | 40 ++-------------
+ MAINTAINERS                                   |  2 +
+ 8 files changed, 112 insertions(+), 99 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch.yaml
+
+-- 
+2.25.1
 
 
