@@ -4,65 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDE9C4321E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 08:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20AA5C352A1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 11:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=degEPpez7R0PK8gPSumCmltIgpOy/w9YTRhbX2/Q2qU=; b=FFVVMSSP1okgZED5bXLDmQI9dS
-	8BNtsyU6EFF/kVVTnZohW1lIdWjzWJ/Lc4mPHj35L1K81dmj+SASo+/I9Bz3y9V4rO9nj/YtDvr0Z
-	oBGFUZZaT6v+KRV51e7pR5KvytCFubDXnN0X8WApvkS9Mw2URjPJUn0fnaKbDm92hGWAsMzbhNr8Z
-	mRC6Qtf841A2aE7eYlNcz1lzEpuMPKD28G1HCypkXZBjiYpLchTzM3Oab84gNYKmPT7ZhxxGhnYMc
-	j1P2d6yshdRuXzDzcmAkGJQJdiUCD5Nsq8RqNWo8zDpMf+VPKsWuaXqYiZSTCs4Nkp370TqSB9i+U
-	FZ/hpqWQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TXaEWxtn0uFZdcMKR1HVawy7OAcOEaMqyiThbbGx/JQ=; b=2choevq/AfSVrQ
+	vayCOYFdv8DBrUKOEyCmoBdwEoay0UapuiOruE22cP9gKSPmnvzXSF6GW1FTMmTrCchVheTpT0gDV
+	6o4VQuE0AWbul8kLulNEtYnC46nZqHGNWNl7Sp8ej5JF0xX2byyyVIWrLymMyKSX9VAwTqVI8fVTp
+	w82ZE5LGfaEeYB75jVfpGhCTWr4GjghyN0SfBT38Y6pMiHAL7ek1wHWdOJwSKmgI/E4Gf8h0UBRA6
+	+/z1JTDBq1mCTeM7I1hbhZsoruKISExQMX30KJ+1+2TIRYx4TQEwMNvHK/1P9dkoeKB+4uDDSIm5X
+	shXdeFT2lcP/c9k9/7Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozDRU-00AaAl-DT; Sun, 27 Nov 2022 08:55:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ozG30-00B5Oc-Rx; Sun, 27 Nov 2022 11:42:10 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozDRR-00Aa9V-LI
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 08:55:15 +0000
-X-UUID: 004fd29f62ad43ad9703477da30fac7d-20221127
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=degEPpez7R0PK8gPSumCmltIgpOy/w9YTRhbX2/Q2qU=;
-	b=kdSOkbyNAhtELS80VWWThKcV8xhLJg9xyLUKMIv7amiMVkmLhwblRFWDrOF1jg5n1xzAEjWdH8Hff8q4voAGDl0InE4PjCDSEnQAyjj6Ob81C30/p+AbDZsNWFAjnbkwg89ST8WqrcIo2pcvVVfIvMKwMaUn0E4aciLPvD540Y4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:c00c9d16-23ec-4c94-9375-23c829471a78,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:6eb056dc-6ad4-42ff-91f3-18e0272db660,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 004fd29f62ad43ad9703477da30fac7d-20221127
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1187184312; Sun, 27 Nov 2022 01:55:05 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Sun, 27 Nov 2022 16:45:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sun, 27 Nov 2022 16:45:02 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7915: fix endianness of mt7915_mcu_set_obss_spr_pd()
-Date: Sun, 27 Nov 2022 16:45:00 +0800
-Message-ID: <ff2080860ee5b28f7dcde70bada720ba55b0bac5.1669538240.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ozG2o-00B5JH-7Y; Sun, 27 Nov 2022 11:41:59 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout1.routing.net (Postfix) with ESMTP id B3FC9401E5;
+	Sun, 27 Nov 2022 11:41:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1669549313;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TXaEWxtn0uFZdcMKR1HVawy7OAcOEaMqyiThbbGx/JQ=;
+	b=RTkTl+SXoG0E6g0M0S3JjtdCmOf0cTkv7RgYAn1JZAIOO9Bq/3GcYNaNGAvDcMVeNuCcH+
+	hB6DXRFKMN/vayaKLP/6rwicfRNZHA/s3LIEbfZU0UzxYZFUXkY8KNSx/7SR9Uj3RMXFEV
+	9Bww7OBZ92IbXOL6AoXamfxiR70rolw=
+Received: from frank-G5.. (fttx-pool-217.61.157.144.bambit.de [217.61.157.144])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 62797122713;
+	Sun, 27 Nov 2022 11:41:53 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Subject: [next v7 1/8] dt-bindings: phy: mediatek,tphy: add support for mt7986
+Date: Sun, 27 Nov 2022 12:41:35 +0100
+Message-Id: <20221127114142.156573-2-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221127114142.156573-1-linux@fw-web.de>
+References: <20221127114142.156573-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_005513_747387_A3A2AC8D 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20221127_034158_485515_02C381C9 
+X-CRM114-Status: UNSURE (   7.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,33 +65,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix sparse: sparse: incorrect type in assignment (different base types).
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Fixes: a6335031eb96 ("wifi: mt76: mt7915: add support to configure spatial reuse parameter set")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Add compatible string for mt7986.
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 7a6cb25fdaed..9e479d41eab5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3438,8 +3438,8 @@ mt7915_mcu_set_obss_spr_pd(struct mt7915_phy *phy,
- 	if (he_obss_pd->sr_ctrl & IEEE80211_HE_SPR_SRG_INFORMATION_PRESENT)
- 		req.param.pd_th_srg = max_th - he_obss_pd->max_offset;
- 
--	req.param.obss_pd_min = 82;
--	req.param.obss_pd_min_srg = 82;
-+	req.param.obss_pd_min = cpu_to_le16(82);
-+	req.param.obss_pd_min_srg = cpu_to_le16(82);
- 	req.param.txpwr_restrict_mode = 2;
- 	req.param.txpwr_ref = 21;
- 
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index 5613cc5106e3..230a17f24966 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -79,6 +79,7 @@ properties:
+           - enum:
+               - mediatek,mt2712-tphy
+               - mediatek,mt7629-tphy
++              - mediatek,mt7986-tphy
+               - mediatek,mt8183-tphy
+               - mediatek,mt8186-tphy
+               - mediatek,mt8192-tphy
 -- 
-2.36.1
+2.34.1
 
 
