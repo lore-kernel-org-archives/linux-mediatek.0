@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06AD8C4321E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 13:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 768F7C4321E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 20:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ymMQqhpUEMJO+b52K8VIsBNlBPxjfHjs+nxko8CCAkA=; b=01k13WqC87JYqALhB78AKqRV6A
-	HB4UeWP60CVCZgsOG/qAfEk+DZMLXUdZzKL1pjNg6z+fOIRXSs/IvxiD7CN1QehkF5etinuGE0XrG
-	Dp+oYco182QTZGG2JjtE5zUkI/gGpNv0rBqLDxL1DnvVvRRTkicTKYDNRYA4DdhUc3TE5v4pqhu8n
-	uu/nw8rA6kRslvBGsVZvghA5ldzji4Vem1Jh8lAhLBq1s/p79bY/Ss3RhzqDdTX1fEPG5TW/pfJB6
-	Ukldd15Nk3Jlay7XQnT4bzgW3DUBqa6RUb+7mVC8sBoe1pueJCowxHnh6wJIaA6emKgaveI1TaiSl
-	y8iDU6JA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+PQ8C4HY8GI4Ih4606HRpgDC5j1lzCXOLCR0j10k4og=; b=lo4eA1fLuvKxYJFtTZW+cdIn0i
+	13BP/GXqgVqhyuTarsxPGstllWtGbZYpK+JatOYKSGclZ+qCAIVC8t76FHuBc510Tx9PymSoYtSHc
+	02CVaJ3vwIK1JiX9lz0mO97N/3DHrtXWdxp3WzOrS6sy7uznXUC8dznmt+BMSSQ5ubS9dpfsNWr6x
+	b7BfckVU3y4wNNNliTc5tWOoD976OZ2lybwns89VbkCS46aIb4Kkv2CpU5CLetO28NbzjaRTYsaxi
+	agYmSQpWfbHCgXkhuYgbSA7UOtmomScLvkXoSu2uCCoc3oCh1d9jiITlVrQyr51ftL7Oty8U6lIQg
+	IW9lgCzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozHTK-00BM90-Ek; Sun, 27 Nov 2022 13:13:26 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1ozNtT-00DQMJ-9U; Sun, 27 Nov 2022 20:04:51 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozHTA-00BM6A-3J
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 13:13:17 +0000
-Received: by mail-lf1-x132.google.com with SMTP id g7so13569234lfv.5
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 05:13:15 -0800 (PST)
+	id 1ozNtQ-00DQKr-Ep
+	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:04:49 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id ho10so21302332ejc.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:04:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ymMQqhpUEMJO+b52K8VIsBNlBPxjfHjs+nxko8CCAkA=;
-        b=JSJGXxblDGy1qS3qoTAjnackIDa+wZQBCsH0kr+qVnprwKK4TvbG4yjfrTjRMcLql1
-         1/e+fiJF3Z/UVAeIUWKRj6FaNjBu9wi9TrKIRBtQxz/IZqBeGexTtdjndE7H5zu6iqO9
-         7lXjgqaJXGArz2D0S4kx3cW8vYTaGZ0lDqJv7aNL9FkECn4XUPIicchnBYJX4sM0vE15
-         ATZw2hWO7+IGJTSvZaatmyjY/pFguaRyguEdPBt/uSX106j6vbVhNh6EE12222/w6SBM
-         24tGqUVwQIkAJDrip3cPHR6Y5HcWJxtWyj4tRTOnxuY9YpevZ2nvnY8vuljqbbwEH9Di
-         Z7ow==
+        d=chromium.org; s=google;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+PQ8C4HY8GI4Ih4606HRpgDC5j1lzCXOLCR0j10k4og=;
+        b=U7ppHaFyl2uoDpwagB2uxHAl3qXc867gSP+EYCeh+Ekig4WP0Bj22uBXpJjS8d8vEE
+         LfkOFhLIy9pJy18/nyFhYljoO5jFByJETKBHVuWQFPnFRy774YGv7VpFp+RRKYcrp1if
+         819lzsJqo5p6Lm3XpekIHPbmMZ0zCSiwwxfNY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ymMQqhpUEMJO+b52K8VIsBNlBPxjfHjs+nxko8CCAkA=;
-        b=NSEJ+1vwRChxYYtZ3nvB1M9WR2Xt/SWekyaBaXucsgJSm4B92IIV983EG0rSFBlMR3
-         tLBOEEijIArxPqogHHFuqFcLfJW6kZllrvsZ1KYvlhIEO3nbNm0w/XxNXl43SWhuTHPe
-         zmJ1m07miUJTEbtwDkNcRdULAY9oT0wHSO+rRRdc66kmcmaPLe6GdDrztQllP1WB+GVA
-         9W/QGbBPsAFAJiiOmz6PMtPyALKQ6jFP53gX0oUFoJT1cZkm0K7Dr+KM+X5BCSn5+5ZW
-         7THoLgic/D68s2JQiuGjH3nSUvZUEYh972hHWEJ09NxQ5c/e+phDiZkRDprtX1RzHTFc
-         iJ9Q==
-X-Gm-Message-State: ANoB5pm/EhOCrdAO6cb/vsz+RPMoF8Bh+XslGjMwtaPJBcSPO1alNd7k
-	YV0QeCMNbjf0J3OIxkg9EGHWIQ==
-X-Google-Smtp-Source: AA0mqf7qTvx4Q0DD8LmdqDNmzQypbQWAj1Cy/SzOTvxmHHY8KN/okl4/hczpu04jclcNSh1fjuMl9g==
-X-Received: by 2002:ac2:58d7:0:b0:4b4:fbce:606b with SMTP id u23-20020ac258d7000000b004b4fbce606bmr4336087lfo.27.1669554794552;
-        Sun, 27 Nov 2022 05:13:14 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id 6-20020ac25f46000000b004ac393ecc32sm1297941lfz.304.2022.11.27.05.13.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 27 Nov 2022 05:13:13 -0800 (PST)
-Message-ID: <f893330f-8fcd-044b-5bc9-f2c80813bb40@linaro.org>
-Date: Sun, 27 Nov 2022 14:13:12 +0100
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+PQ8C4HY8GI4Ih4606HRpgDC5j1lzCXOLCR0j10k4og=;
+        b=KC7anX6ZvKXqLjy8kN56sJJZAz49tfMK85eKb0Lu2J+Yvb6sOW5Ir0QKVt1w9dGW5V
+         mMn8ltCZ4Si+lQmZsFNDn77k9tmFf6rl71zWlq6dXaX+NvDGuMoS/nYZdRSEFDPj73Cw
+         5IbzLE9ynhwcjR0pDfWhqZtoomJ5n13rBE7ScWlbIuHiPXm7tGDNN2GcmIbXglMN9AVk
+         FJT5GV3JKJ1mqQ0vkLRGgHcVl+29I3mXG1NjUQFj2b5WgciN1KQS41n5IIoW82ZKQzbH
+         AqNqul4AWxE9VFb7Ir57Q0kauLMVqWeSnqoBDs2ZAFgoR+w0wGm8m+9WZ5I1YGeEeRwE
+         dogw==
+X-Gm-Message-State: ANoB5pkW6x+2Ww9Mm1EqrJFpC4lA8yywYXKIgHFFYjDwO8i3YYjMkdHh
+	LSOE9kBBXQUjGIoKGS54lgMniQ==
+X-Google-Smtp-Source: AA0mqf42mS5Gm+YoLaWqTwXnCwIMBQWeQRJjTw5H5MATSu9YOsyjAoJB9z+d52K7UVjI1cU0rqhGNg==
+X-Received: by 2002:a17:907:2c45:b0:7b8:bbbe:5ca with SMTP id hf5-20020a1709072c4500b007b8bbbe05camr23250340ejc.544.1669579483314;
+        Sun, 27 Nov 2022 12:04:43 -0800 (PST)
+Received: from alco.roam.corp.google.com (80.71.134.83.ipv4.parknet.dk. [80.71.134.83])
+        by smtp.gmail.com with ESMTPSA id y5-20020aa7ccc5000000b0045b3853c4b7sm4365211edt.51.2022.11.27.12.04.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Nov 2022 12:04:42 -0800 (PST)
+From: Ricardo Ribalda <ribalda@chromium.org>
+Date: Sun, 27 Nov 2022 21:04:15 +0100
+Subject: [PATCH] ASoC: SOF: mediatek: add shutdown callback
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v6 06/10] dt-bindings: mfd: mediatek: Add bindings for
- MT6357 PMIC
-Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chen Zhong <chen.zhong@mediatek.com>,
- Fabien Parent <fabien.parent@linaro.org>,
- Alessandro Zummo <a.zummo@towertech.it>, Mark Brown <broonie@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Flora Fu <flora.fu@mediatek.com>, Tianping Fang
- <tianping.fang@mediatek.com>, Pavel Machek <pavel@ucw.cz>,
- Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- Rob Herring <robh@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-leds@vger.kernel.org
-References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
- <20221005-mt6357-support-v6-6-4f589756befa@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221005-mt6357-support-v6-6-4f589756befa@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20221127-mtk-snd-v1-0-b7886faa612b@chromium.org>
+To: Takashi Iwai <tiwai@suse.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown <broonie@kernel.org>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ sound-open-firmware@alsa-project.org, linux-kernel@vger.kernel.org,
+ Ricardo Ribalda <ribalda@chromium.org>, alsa-devel@alsa-project.org
+X-Mailer: b4 0.11.0-dev-696ae
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2277; i=ribalda@chromium.org;
+ h=from:subject:message-id; bh=s1hlyXlFMcsbbpy4qR3m3W7fS0UNSJO46JANbYHIp7k=;
+ b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjg8LGMFtVpE68zXEwJMlnmGcwIe5eTlR8bzX79ra4
+ AxIafBCJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY4PCxgAKCRDRN9E+zzrEiFtXEA
+ Cf5Sg6YXeWg5yplb+YZwdBmNJiO11ksXUZ3IaGKVDn17qaPvhSLMD/2JjzzMLAh20rsOEke/qO/fjK
+ 341aMOWWArQ0zVwVdBdnDuC6xqfzdUJbH3DxKiElpYI9Zi6R2v6T8U+CRLhVLl6pWc917giiYK1AUI
+ cuxoIhteEClZYg+9lIehzMJszaHDDPY6upPC1Dc2sOmHh1zfjqHB1vZAqMc0qXW8rsRUQMmkhvShs/
+ kV+AtdLGWzdvE0jx8KN0XtUWIcwQg5O2EdN0xYbE4AkKaXCskBhKanLbblN6ajBDnh/qKb+6vwsWiB
+ UBT2+KVYWh22KI3ry5+hx4O7KNixHflRtNZ8+67TmFEizc9EC+m5TGT98ek84Gr99KZo9YSXAom571
+ QuAJ7RMaEcFmUJWo5lwZM0rRnAxaLp4UmA8QgpR0CqPDsA3VDMWmRVoYb0hNFBRPXAgPPju9S4wnWJ
+ ma9Eug+OfJBSaJrVzFX7QUJC3h2XL2AeddGWR8ztI3d2gK/PNHMzbR35taHoM+E1nHOz3SnsWzB/N3
+ eTYnx1sAnYNbNHqko7qj3c4CF2yp6J2emRGKTw9XnsAfrqXtNMJd8+eqBsV1pCMM6n9vP2X0Y0LAnV
+ ooib9iObWJi/rL13BKkBNmNtEWN0VmDYGopctoP8eP79KJxn6iNehmddVjrw==
+X-Developer-Key: i=ribalda@chromium.org; a=openpgp;
+ fpr=9EC3BB66E2FC129A6F90B39556A0D81F9F782DA9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_051316_191510_CBFCB8E8 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20221127_120448_553749_400F6842 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,24 +109,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/11/2022 16:10, Alexandre Mergnat wrote:
-> Currently, almost all MT63XX PMIC are documented mfd/mt6397.txt.
-> Unfortunately, the PMICs haven't always similar HW sub-features.
-> To have a better human readable schema, I chose to make one PMIC schema
-> to match the exact HW capabilities instead of convert mt6397.txt to
-> mediatek,mt63xx.yaml and put a bunch of properties behind
-> "if contain ... then ..."
-> 
-> - add interrupt property
-> - change property refs to match with new yaml documentation
-> 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> ---
+If we do not shutdown the peripheral properly at shutdown, the whole system
+crashes after kexec() on the first io access.
 
+Let's implement the appropriate callback.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+---
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+To: Liam Girdwood <lgirdwood@gmail.com>
+To: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
+To: Bard Liao <yung-chuan.liao@linux.intel.com>
+To: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
+To: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+To: Daniel Baluta <daniel.baluta@nxp.com>
+To: Mark Brown <broonie@kernel.org>
+To: Jaroslav Kysela <perex@perex.cz>
+To: Takashi Iwai <tiwai@suse.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: sound-open-firmware@alsa-project.org
+Cc: alsa-devel@alsa-project.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+---
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 181189e00e02..79da25725987 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -430,6 +430,11 @@ static int mt8186_dsp_remove(struct snd_sof_dev *sdev)
+ 	return 0;
+ }
+ 
++static int mt8186_dsp_shutdown(struct snd_sof_dev *sdev)
++{
++	return snd_sof_suspend(sdev->dev);
++}
++
+ static int mt8186_dsp_suspend(struct snd_sof_dev *sdev, u32 target_state)
+ {
+ 	mt8186_sof_hifixdsp_shutdown(sdev);
+@@ -538,6 +543,7 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	/* probe and remove */
+ 	.probe		= mt8186_dsp_probe,
+ 	.remove		= mt8186_dsp_remove,
++	.shutdown	= mt8186_dsp_shutdown,
+ 
+ 	/* DSP core boot */
+ 	.run		= mt8186_run,
+@@ -629,6 +635,7 @@ MODULE_DEVICE_TABLE(of, sof_of_mt8186_ids);
+ static struct platform_driver snd_sof_of_mt8186_driver = {
+ 	.probe = sof_of_probe,
+ 	.remove = sof_of_remove,
++	.shutdown = sof_of_shutdown,
+ 	.driver = {
+ 	.name = "sof-audio-of-mt8186",
+ 		.pm = &sof_of_pm,
+
+---
+base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
+change-id: 20221127-mtk-snd-e0abf36be4c0
 
 Best regards,
-Krzysztof
-
+-- 
+Ricardo Ribalda <ribalda@chromium.org>
 
