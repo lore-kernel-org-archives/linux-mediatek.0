@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF59C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80ABEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fnqM8n9PGKGOvzAFEIiFMORJd4lJURGGn2BL+kEfNIQ=; b=1jy525rFhlmpF/MLqBNSEiIb5S
-	MF0b/PfzxOLL4dPLt6dRcgysH5zp3KMshd7DKpP2rfoS2fiQuxNmh4h2a04Ka7+97foVdWKK5WfzV
-	xtyai/IWWItQLvRphpWXlkUapmKqMbILaaTq15Hs0fb4rP3V6hpRHEBA9iK8UF+Y0zTjCrxyFSXNZ
-	TRNRcqdmTL4+jk7SAh7Tcg0GyxyRkWppVlgmeQ1w0pEuljDmOAVwIDkgfgf9EULPF+ZgcRLLDXshO
-	DjeZ28LXBwsEqAbgSUDDIHTjt+jDCTa4lJ39g2CUNzreSdFS57VbIeqd9RTQfS4s8M9McSBLOT0CR
-	XV3SbUDQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=; b=ta5JFnnjmt6bBPlXIo3lqhOJAy
+	OBN9zYh38NR5vdGk5GLfZrrOpO7GtJrEs2EV8KWDA4PIAwGkP20OhJIFlxunUWpjkBySWkULHvvWn
+	Z46ak8vVhFlEm+PcrdIjVJ5sLe7+lx0+mSl5on8Zl0qTnGkCz824OlD0AGDmxZNRcqnGdZYVZaKCG
+	E3s4grB5zURZNCB+6nyNYJ9z3u6huPYoQABa7zsCwc54OTMKjpygWqWvrJIJJJCT9BJRamBDRNsPv
+	qg+qJ2WABs4K1a7x+iqt/W1ZQaPJ7wVi+jSpzsoK5mbqcS1Pm5syDg67PPOpL66HYBmR8DHW66mMn
+	bUC0PGTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozPSd-00Dntf-8q; Sun, 27 Nov 2022 21:45:15 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1ozPSm-00DnwR-C9; Sun, 27 Nov 2022 21:45:24 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOSW-00DXzL-Hv
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:09 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id u27so3534135lfc.9
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:03 -0800 (PST)
+	id 1ozOSY-00DY0B-SF
+	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:10 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id p8so14528446lfu.11
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=fnqM8n9PGKGOvzAFEIiFMORJd4lJURGGn2BL+kEfNIQ=;
-        b=vs2qhd9D4zvjiwLqg3Vfjy1XJCOSrrmrj9Fm4gBeZv2riWyP8Sbzb/j6TDcAv3txKL
-         /Ojqg6f2+NrgPtRI5vVr8cTH/7W4ZEoNEc/9r2uJ1FKQDTK7Lehoj2VsgMh4wJQiUQie
-         14qb2VlBUnJhmJ5CxVhjDeUBlLSWNhR646cAGp9fmymUw5Fw/jIKd/7bTrwCHLr6HS/I
-         LIeXh09TwEVuvfCo3E6RpwDl2VGeEFUrI1ouKieKaLg4u+Du1U/WPLV46T2L6XapopGE
-         o2wUlBgL2md+QslIWkOPzmqVhdRm+HuJqVbvgMrRMud6AEfJ4oA4AOevIHIj5qLL3F+s
-         Y59A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=;
+        b=d3jnqhwgV+iA6GcPuBtwyOCQEQeVQuXMje2Yq8vUbum5/zrwX0DR68A9MpR0kFimOo
+         Qrygewdp7nUvUyCGwliIOgQ4Ys8ZY0ElyLOK7Rdhdvs9LnOCp61rabMG4vRkHT19AoXQ
+         A46i6yJijhds8JhaIvGE5C61lbWI3DGbJlXAAqI/it2mH83OBqa6+IeVWuByIoNUK16v
+         qpRqZCD6rst1XD9MfGfUzMl/oQbrS4nF0joWUJwDg6+1uolP/FrOx+MQwyPY4pcOghFd
+         X1inSMEpy8Pn3FHOG2Sw7Yk5vB/0DU054+J7hhPQ3t3EehRQBgPOgnVjDbbAtQnnZSMX
+         YU/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=fnqM8n9PGKGOvzAFEIiFMORJd4lJURGGn2BL+kEfNIQ=;
-        b=bKDchjKlF2fFtELUCFGUvAQllzjoKjdgBPBD8cCPxkKlCkNIwNk0xfB9vl+q1a9CNM
-         gEYo1/ZEYx5vU9sc+6nk7ORT7QZmYQYgiNsGvcZeUXM86Aw+zoCg5zdnRSaEu7JQ+k9K
-         jeILQHeOqrQX2a0hsEteZOxO3y2Ct/ITVkBhAiRYEqCBewXZc1CBPTG23IaZFumaQZcI
-         67jIagXNcjbs4mCEniAphDmYKsCOD4z5jxxCGechK4fVy7C0GE6wf4dgA9tBalOsVc3k
-         SAGbphXmdBY8Qo/UrcSzSHvGi6l90uGMfakhCMaUXaKkgGKAO7dIh+3vkzTcsSsW42B8
-         hLyw==
-X-Gm-Message-State: ANoB5pnCG7txFsYASFE/dsSkRZbfLLPwIY479dIDeEmToAGI2BOm0N/q
-	366ljh/7XRxIbGhZD6IxGsjBtg==
-X-Google-Smtp-Source: AA0mqf6p5Yvfm9RBuO07olapiME1mbnRSXDUX3FGr319MQtgH4Z6VWefEbtTH5wZlK3lshfJ9H7zGQ==
-X-Received: by 2002:a05:6512:e9d:b0:4b1:8698:9f3e with SMTP id bi29-20020a0565120e9d00b004b186989f3emr15263055lfb.421.1669581661879;
-        Sun, 27 Nov 2022 12:41:01 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VxlrZWPFCrFQp2sHfL4Kx3y4fi4AGKGpCjaVKusjlG8=;
+        b=PuCKpCMoHLtxWjgDpQ1SmgJ0DU8lY6S917K472IsEP17kbrW3L+D4NfomY7BuIv2at
+         07vpXMy1uKD5yMaL9CGC2Icki+ZrDj6DR96krEC1jqxPrbxhbagvzQyqC8Z0Z0SMXe6Z
+         gyqkYizgMbfFrMq0FVSF+u0k2Arr5OvEtudGLIZjIXy6lXZebUsVjffROrHyNNoqTloV
+         HZQXxMRRSDN28h95/bH+00wGy8HUsgI2ugokfk5Re+tZyMe8Ss80WpNn2+kJzdpSIsZR
+         tg1SbHyH9EoAqgJYdhKOYnmKn7F2yeVLkfI0XEroPKScmk0fzk+fdydpERes2Nkk6wIk
+         CPgQ==
+X-Gm-Message-State: ANoB5pkjWfwOxh7I2WeM0hXD3tYSuCFCDFvTzgJ3Y7Xpjcd/AenJlOgZ
+	u9KBuuGim0kQbbkDKFToa1h6og==
+X-Google-Smtp-Source: AA0mqf4MIUAbuFwcGvYcH41oYYkbfEqD9y1cRNS51qz0kBy2pxfU9tMJMCGRZHdofLv65jWUGuSiZw==
+X-Received: by 2002:a05:6512:692:b0:4a2:58f0:c0df with SMTP id t18-20020a056512069200b004a258f0c0dfmr14940029lfe.268.1669581664453;
+        Sun, 27 Nov 2022 12:41:04 -0800 (PST)
 Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.00
+        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Nov 2022 12:41:01 -0800 (PST)
+        Sun, 27 Nov 2022 12:41:04 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -79,15 +80,17 @@ To: Pavel Machek <pavel@ucw.cz>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 0/6] leds: dt-bindings: use unevaluatedProperties:false and few fixes
-Date: Sun, 27 Nov 2022 21:40:52 +0100
-Message-Id: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 2/6] dt-bindings: leds: lp55xx: allow label
+Date: Sun, 27 Nov 2022 21:40:54 +0100
+Message-Id: <20221127204058.57111-3-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
+References: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_124104_623530_E0AC3846 
-X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-CacheID: sfid-20221127_124106_937523_FBC2DC52 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,42 +106,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The Linux driver and at least one upstream board use 'label' property:
 
-Changes since v1
-================
-1. New patch #3: dt-bindings: leds: lp55xx: switch to preferred 'gpios' suffix
-   (Fixing DTS in separate patches, see [1] [2] which superseded [3])
-2. New patch #6: dt-bindings: leds: ti,tca6507: correct Neil's name
+  qcom/msm8996-xiaomi-gemini.dtb: lp5562@30: 'label' does not match any of the regexes: '^led@[0-8]$', '^multi-led@[0-8]$', 'pinctrl-[0-9]+'
 
-[1] https://lore.kernel.org/linux-devicetree/20221127203240.54955-1-krzysztof.kozlowski@linaro.org/T/#md1ccb03ee81f820e0c7b8043111d56b5ed0d1e2f
-[2] https://lore.kernel.org/linux-devicetree/20221127203034.54092-1-krzysztof.kozlowski@linaro.org/T/#m17f1d2f79a35fce43509edc351a84bc9dab980c1
-[3] https://lore.kernel.org/linux-devicetree/20221125173602.cnipos5oo4ncxsac@mercury.elektranox.org/
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/leds/leds-lp55xx.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Best regards,
-Krzysztof
-
-Krzysztof Kozlowski (6):
-  dt-bindings: leds: use unevaluatedProperties for common.yaml
-  dt-bindings: leds: lp55xx: allow label
-  dt-bindings: leds: lp55xx: switch to preferred 'gpios' suffix
-  dt-bindings: leds: lp55xx: rework to match multi-led
-  dt-bindings: leds: mt6360: rework to match multi-led
-  dt-bindings: leds: ti,tca6507: correct Neil's name
-
- .../bindings/leds/issi,is31fl319x.yaml        |  1 +
- .../devicetree/bindings/leds/leds-aw2013.yaml |  1 +
- .../devicetree/bindings/leds/leds-gpio.yaml   |  2 +-
- .../devicetree/bindings/leds/leds-lp50xx.yaml |  8 ++++
- .../devicetree/bindings/leds/leds-lp55xx.yaml | 47 ++++++++++++++++++-
- .../devicetree/bindings/leds/leds-mt6360.yaml | 43 +++++++++++++++--
- .../devicetree/bindings/leds/leds-pwm.yaml    |  2 +-
- .../bindings/leds/leds-qcom-lpg.yaml          | 12 ++++-
- .../devicetree/bindings/leds/leds-rt4505.yaml |  1 +
- .../bindings/leds/leds-sgm3140.yaml           |  1 +
- .../devicetree/bindings/leds/ti,tca6507.yaml  |  4 +-
- 11 files changed, 111 insertions(+), 11 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
+index 7ec676e53851..dfaa957eee74 100644
+--- a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
++++ b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
+@@ -48,6 +48,8 @@ properties:
+     description: |
+       GPIO attached to the chip's enable pin
+ 
++  label: true
++
+   pwr-sel:
+     $ref: /schemas/types.yaml#/definitions/uint8
+     description: |
 -- 
 2.34.1
 
