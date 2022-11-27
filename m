@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 225CFC4321E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 20:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6960C4321E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 20:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fOZoVt4W+lcxF9f/uabO01wFDTt/KZZXxvtLpd6GcEU=; b=aGlzTUDPLAiY+LlD9/1Hh/AiAM
-	0VnB86lorJfTckQhq1S68S3LbJW2IV0x0YBeQhCc6Xt5dmpYFOiqqeRBpffXeDDx+4ehZMQhO/Hf9
-	OcuvriX7gmfGLnkDivvngo7HfbguWGw/VElwdiOriQarqwdU7uyUxLBizUNWCIUAchPkpWrfzW+89
-	CuZV/H8bdYoeHKCdpkPHOD76DwfRBP4MDrTCM90Si1Gr23yA+NehR6zQFU4ySOtvaxV9jfePtJWp/
-	p9SkKxtFldETGHJes/0xf4OJAaFC4RHUE1EQ8vpTlRjvGhT2nxVxbtJy9zAvYJpZuTxn8dFIV1opz
-	ySJ49C+w==;
+	bh=fDL3bxnlhrToJ87AqhpKdM36cndBJ8Gx26Dybv1sMno=; b=pivP6NjKt9jMLyfjRk5mg22I6x
+	50rgf9Zls4Pj918LPjwKwdDwSDPSYccIhOWKWM2iq5ViHaFVkuQA3ktM1GqOYzARkw/ZzxWbOALfX
+	C1cwRze/+4ORYhlt8CuiJKKD8Bx6XXQ9ajubPm0kSM0umhYDo2L0wIQRDTIeJB8m7UuVxfpwuQUAs
+	H8wMgwpkNluQ9tCuICpUbw+2Z+WQ0lMKqHJcPWGrXzJufwJDPEzoEHmMsQL5Wl49A78LJ5Az0uwe1
+	dHPm32hxeVmok0KHX9O/SOsKXsI0yfvISX+bQmv945KJO+wCHz7t/qgyDOjfuYVTmH6SrdhJTiW3u
+	np7nU7kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOTG-00DYHE-TQ; Sun, 27 Nov 2022 20:41:50 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1ozOTV-00DYOK-9t; Sun, 27 Nov 2022 20:42:05 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOSZ-00DY1O-Kz
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:12 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id z4so11041387ljq.6
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:07 -0800 (PST)
+	id 1ozOSa-00DY1z-Th
+	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:13 +0000
+Received: by mail-lj1-x231.google.com with SMTP id e15so3252870ljl.7
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fOZoVt4W+lcxF9f/uabO01wFDTt/KZZXxvtLpd6GcEU=;
-        b=OFOl6Tiuk2EJnZ+H7210boETaHKYs5EM+OlbSujUfTjA3Blu82yWfJYE7AOXExUQDA
-         cf14LqDa7er8/vucmRje1ik314TFQI053W14ZScQBqJnx/YopkUQKKcIY469gCMRPLwC
-         +Um+QoGkb0LY1F28qYshrA2sRIWl60kKjoSx0PyQ9C0SFN4uiBHbCdx6OEVkq/qUu/id
-         yZH8svuG6lP2jIQ16SWBrbACLs6jdjeCJrV5uoikCWqfxofjy6jHZOTpqBMd1M6IcoI5
-         5fpWncOz9Sa3qNXHR6LngkYFqdQtCzX00c1+g0fXWuXydxC0vZCW7LtQdDfVss4VN13m
-         A3wQ==
+        bh=fDL3bxnlhrToJ87AqhpKdM36cndBJ8Gx26Dybv1sMno=;
+        b=tS+SpjB3/m1Y20fT1JtVV+5T7NKAGZXGuQ1uFalFM7wjGUMQdCR9doi8Xtw8YIg79s
+         muOgrImr6KJL0hzoMTo1Cn3jqQP7XdfbSmuY7zzMRw+Ntj2yyxal99SNWo6BcE4pzCFi
+         Ut0fO/xDd9UOa51jgkpWX+1JMHp8bjUnI9DMQOr5aa1K8EjB28dgtt4CLHIyLVofu67e
+         5LzM751ss2sWd96qS4++BY9ayDxqMopgzX3V5S7tu0B0jYYF80ozOO2gygKOfUhwOAc3
+         6ko+39RoKaEnsxXHT1sGzBH6zeOSkrexbvbTHzlcviwgCwhv+2VIALBNay/8WBdx2Qr/
+         0LUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fOZoVt4W+lcxF9f/uabO01wFDTt/KZZXxvtLpd6GcEU=;
-        b=E30ZUPmbkTb9bzSZ80Ra5OjfAK7ey0NITcHal6greZ53lkc3xWtRQlVKsl7dqIFUCd
-         0FYxfeuXwNixj5dlyUBg0E+PKmHy/nxz3qSONuDX3G3DzSXPxMByxC7u3kkZElRaqvsO
-         GfcC3MMzdcRhnmzdbKBDiCy8OhlbldXslfiXAm9KqLYf8z6P0KeGPTT32hY0RCDX6diS
-         3r1yRkKO518F4woyPd10cF6gaHMrBWbwfnen08wa/0udsJh1caJQqn6T7mbZ0lVJEDYr
-         0H3kIITHLbcOz/Mxnq5ZV0M80S41lD7iUlrR66esyK3157XvluDIz5ohVPBWcK5KmBxD
-         nx5g==
-X-Gm-Message-State: ANoB5pnQflf7wYhqGvnv4KKZY2jfFGlBkA1WUe2vhBqW2vx5YAYRezRh
-	t4U1uvKUMRJBY59eK23XSt1y1g==
-X-Google-Smtp-Source: AA0mqf4PbVbjiI63poW81OvqdUlewSeDUZ8M7xGwA3CsG0+c4K+ZxOuzuyxbwV+a7yxTRjNplz75kA==
-X-Received: by 2002:a05:651c:1551:b0:277:6132:ec9b with SMTP id y17-20020a05651c155100b002776132ec9bmr14385014ljp.466.1669581665800;
-        Sun, 27 Nov 2022 12:41:05 -0800 (PST)
+        bh=fDL3bxnlhrToJ87AqhpKdM36cndBJ8Gx26Dybv1sMno=;
+        b=SkoB55Rq6MzDxJ7OUf78Kgu24skeFwmKJtCZVsgq7Fy+taOmv6arqmtEpSvBCpieyK
+         8k0dN6TzWdSrRyRyUroUynlqyq6tzDRMcsIfK6mlsWuGwQU+T4dttLwKk/xdZmikiCEt
+         Vzwf42U4yq+dAnIQpj50XMgRz7d3RWVh/BiFgSlnXYsMRdTfNzcMINwz2HomRljJSwbE
+         tFq6SE3MA4zVz+jEaRMOe7xLz+9+9RahRP4dn6ZAifvP2lM4lrW4XMOJ3fatfrjZIGXi
+         1ef1z7aZZgY5IR+Fgr1jaxoC7H4ZAYRcQtXWTahZjbbe8VG8ZkFBBBB8vkLE7KWIy0PD
+         R6lg==
+X-Gm-Message-State: ANoB5pmMAi5fk/bNdu5c7XM7hCEwoxp0ilC/dIKfBNNNvh1B3HEGmJPt
+	qYpOrchL+elik+AnMLVqiXrh5w==
+X-Google-Smtp-Source: AA0mqf7OihlRS/gxN74EB3cI3w/EoGWSf4v88lVbhgM+8UeFTHdNFtfIy1yXQi9S4ztKYo2g1YOa7A==
+X-Received: by 2002:a2e:8e23:0:b0:26c:4f23:d346 with SMTP id r3-20020a2e8e23000000b0026c4f23d346mr14263929ljk.304.1669581667031;
+        Sun, 27 Nov 2022 12:41:07 -0800 (PST)
 Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.04
+        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Nov 2022 12:41:05 -0800 (PST)
+        Sun, 27 Nov 2022 12:41:06 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -80,17 +80,17 @@ To: Pavel Machek <pavel@ucw.cz>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 3/6] dt-bindings: leds: lp55xx: switch to preferred 'gpios' suffix
-Date: Sun, 27 Nov 2022 21:40:55 +0100
-Message-Id: <20221127204058.57111-4-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 4/6] dt-bindings: leds: lp55xx: rework to match multi-led
+Date: Sun, 27 Nov 2022 21:40:56 +0100
+Message-Id: <20221127204058.57111-5-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
 References: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_124107_729108_8B002FEC 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20221127_124108_962836_DE8A5DED 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,30 +105,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The preferred name suffix for properties with single and multiple GPIOs
-is "gpios".  Linux GPIO core code supports both.  The DTS has mixed
-usage, so switch to preferred naming:
-
-  omap3-n900.dtb: lp5523@32: 'enable-gpios' does not match any of the regexes: '^led@[0-8]$', '^multi-led@[0-8]$', 'pinctrl-[0-9]+'
+The binding allows two type of LEDs - single and multi-color.  They
+differ with properties, so fix the bindings to accept both cases.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/leds/leds-lp55xx.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../devicetree/bindings/leds/leds-lp55xx.yaml | 43 ++++++++++++++++++-
+ 1 file changed, 42 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
-index dfaa957eee74..9a38e5ee43fe 100644
+index 9a38e5ee43fe..ae607911f1db 100644
 --- a/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
 +++ b/Documentation/devicetree/bindings/leds/leds-lp55xx.yaml
-@@ -43,7 +43,7 @@ properties:
-       - 1 # internal
-       - 2 # external
+@@ -67,9 +67,50 @@ properties:
+     const: 0
  
--  enable-gpio:
-+  enable-gpios:
-     maxItems: 1
-     description: |
-       GPIO attached to the chip's enable pin
+ patternProperties:
+-  "(^led@[0-9a-f]$|led)":
++  '^multi-led@[0-8]$':
++    type: object
++    $ref: leds-class-multicolor.yaml#
++    unevaluatedProperties: false
++
++    properties:
++      reg:
++        maximum: 8
++
++      '#address-cells':
++        const: 1
++
++      '#size-cells':
++        const: 0
++
++    patternProperties:
++      "^led@[0-8]$":
++        type: object
++        $ref: common.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          led-cur:
++            $ref: /schemas/types.yaml#/definitions/uint8
++            description: |
++              Current setting at each LED channel (mA x10, 0 if LED is not connected)
++            minimum: 0
++            maximum: 255
++
++          max-cur:
++            $ref: /schemas/types.yaml#/definitions/uint8
++            description: Maximun current at each LED channel.
++
++          reg:
++            maximum: 8
++
++        required:
++          - reg
++
++  "^led@[0-8]$":
+     type: object
+     $ref: common.yaml#
++    unevaluatedProperties: false
++
+     properties:
+       led-cur:
+         $ref: /schemas/types.yaml#/definitions/uint8
 -- 
 2.34.1
 
