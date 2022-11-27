@@ -4,93 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6813EC46467
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 20:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A4AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 21:22:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o6gNym63NgF+XTZH1xbf0NrIpXmryBatnYIRGs7yiA8=; b=2rDn2fQzQ7LuimvzDDKVydA6CU
-	QacIyOGtVECp5l6lepZoYSvEDdkUi0miblUheOgqmov3OhfjVUedqZYlxSFtrzqMQkVVyQRISIR1s
-	o9GQfyhm8p22Zf8/0SO02HeOWeD+148rR+WFni94oRmHVwF92DKp/5CfMOjgj7fQPOE4tcp0J+QM8
-	O6638SqalU+knd/ZgxmYRIiaZrB2fFdFIBqGpz13UKtuP1E08szMbx0lPNChfuy6+R5A6ZoEddp3n
-	/nQBDGX40+S8Irhg9O60M2rp2rWreIMvw/fkit6AL5KYH0rikbD0UXCtdbupUq2cSDikEcfh+Hf98
-	dRlHnbrw==;
+	bh=v2oVo+43zmeK6HbNWh8c2mpz+ay7hEaecDlku06A02M=; b=COtYIVJZyzxNbJdyY4YwvXHgCT
+	csyCO2emBWKjqYlMhDGBWo1J0+9zfAsL5b8lcYSwzJWTHMg/9M8DzqdoQ0hycWLTBob6+L+JAl4F+
+	ejCv7gbkGRdlevZPmS+Ilny5aeTxZKVPAW0h7iBH9fuvzKjisCoi/aw1j9nwVhOWIrjHrVz1UMWiq
+	XxJdodWzU9S4THtmNX9KQC9HjH8NvWcTQBrSKm+vi58RVeBX7oviLGTZO1IBqmBagUf3xWRkN8O/f
+	r5H9keT9ukMLZ3MS2Pded06JY6IccjZ3LzJlphALNZlC0OgETBroZ2l/mXgbxF9y5soaDcVHkh5ee
+	Toi/rLKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOTs-00DYZ2-Ls; Sun, 27 Nov 2022 20:42:28 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1ozP6u-00Diql-OJ; Sun, 27 Nov 2022 21:22:48 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozOSc-00DXzK-3T
-	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 20:41:15 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id p8so14528594lfu.11
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 12:41:10 -0800 (PST)
+	id 1ozP6r-00Dipr-S8
+	for linux-mediatek@lists.infradead.org; Sun, 27 Nov 2022 21:22:47 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id h5so6892788ljk.11
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Nov 2022 13:22:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=o6gNym63NgF+XTZH1xbf0NrIpXmryBatnYIRGs7yiA8=;
-        b=k8oaQKmaomgkAAn4gJZ6oz32ISeg+f7NDfvedrkcJke0EM6slwU20AqrWqz1Qz6RYK
-         fIhTcalN17IvM4dsYhOaQ0fpwL9ECK9z/7la/ySHXY4lly8cV6FufBwEBdFmXxWQOtQb
-         jPKe1cxmxY0r1cbtc12jE6NlqUOf1avSmAsYJJGWZzltlmoNFVaOJHtUthLVbYGZlMNx
-         0pDYFPTG5la8qLXlRG6hTmvbA29MeVOOscMTetTzK0v23Sbc/sQUGGE4sJH4PfFMAfwu
-         T2kurnS+tjWiwrgKn034hotN65ap0OkMKQxTzwG1RrmIL2FrLtspFa7gPjmJRE8HfE7Y
-         aarg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=v2oVo+43zmeK6HbNWh8c2mpz+ay7hEaecDlku06A02M=;
+        b=Q3RJCMgSoPY0hWhrSjRoOLAAYMadkTwIXQd5vosuyq/Jb9tLYnaBsinLUnJ3aFypBu
+         0dThMOONCKHd43pP0Z9GSEdsktriZ9OWgEJkyJ9p4Txqop6QFFMVrb4Q/csothrjhHOX
+         /CLlad8GNU5SVf0cpbazh+VHlP69SoT8ojUW1Fox93PABPtmUVaP+zSE+ADbJETuoLGi
+         6D4cTzlsUI1Ey48Ku35lVqhUyqbYqfX7tPCKwZgBf8OuUOsMPp9GZM0Oi7RCFExon6BZ
+         3aev6CV9AJ0E46lKF7Yr8tp5gs7qsmSNjWjY6i6+OL3Vj/6Xy8Z3QMqhR5F22i/ojiG6
+         U+KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=o6gNym63NgF+XTZH1xbf0NrIpXmryBatnYIRGs7yiA8=;
-        b=hHVqeECp9yj7PxcgZWy8BJd855m6LWiPQvDy3yAzrqpce/+dc9Phg9hx1CAYPJuOlC
-         NfNPEfk7ZPzzl+VIMayRakvao/Uui3kPtAlUwjfhgSbioUsLZJSKBlVvXLjqIUuneo/7
-         Qtl7NLkHCXyCv5IRHzO/CpAaGYfAbXMOIgT1lDkIAMN8Mhr/ziU7ljfKHQmQN+VXBwgi
-         syRp4bvDUXHEsfeZFteXZQUXRfSQB/ziutrmaG6J5sbWj+Lc9Zz4BDZuW7n3WOQm8x2Q
-         pApedVWT/RRtWIsSl+J6Qg9W5LmlzdUweJJdnv+Wp5wlSUUPtv+N+0MxIJhelTpd1oDb
-         dmcw==
-X-Gm-Message-State: ANoB5pl1KIZ3mj9sUYQJMDorNGgZt5DrcFoP2Czyt3fHFvxhR3Wh6Mwt
-	mH9Yr2J4QaU42GkzMJPFl9eOCA==
-X-Google-Smtp-Source: AA0mqf7XYe3dUPoZMSEuEg/TAgy3ISspZE7CBYTflFcarO7QXTtqRm76Xx4NbAeRKrEux9dBLHLiEg==
-X-Received: by 2002:a19:6a14:0:b0:4b4:e24d:c617 with SMTP id u20-20020a196a14000000b004b4e24dc617mr8650030lfu.61.1669581669649;
-        Sun, 27 Nov 2022 12:41:09 -0800 (PST)
-Received: from krzk-bin.NAT.warszawa.vectranet.pl (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bi39-20020a05651c232700b002773ac59697sm644607ljb.0.2022.11.27.12.41.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Nov 2022 12:41:09 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Pavel Machek <pavel@ucw.cz>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Vincent Knecht <vincent.knecht@mailoo.org>,
-	Nikita Travkin <nikitos.tr@gmail.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Andrew Davis <afd@ti.com>,
-	Gene Chen <gene_chen@richtek.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	Luca Weiss <luca@z3ntu.xyz>,
-	Neil Brown <neilb@suse.de>,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 6/6] dt-bindings: leds: ti,tca6507: correct Neil's name
-Date: Sun, 27 Nov 2022 21:40:58 +0100
-Message-Id: <20221127204058.57111-7-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
-References: <20221127204058.57111-1-krzysztof.kozlowski@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=v2oVo+43zmeK6HbNWh8c2mpz+ay7hEaecDlku06A02M=;
+        b=17S52aYA5MP2mgH6eZ5zHNhwCxcaugdtazL9O/rIr7MAldEgia7W7vtV379W8VFWbS
+         WIDXoBe+tkBe6kTXDVBa2XgKDj1RJ9b+jWBCrxxdQ+iIwu6FTCw+Jml64jMIRGwWnpMC
+         Puxb3Givh8qct2mPGasfO3rueAiSFCTTTDUoEbI4BdYhXB6MGTs+IQGDIbSZlHYde5cl
+         fHqGEjANEKWw96/TQ0DI0aS6OHh/0wnEKnmUBiwWZ3dZ9Dho+9iid0aoz15Je1iF4GjZ
+         V1j8MlbXidTRZA9XF+MkNtxmP90fJtxNvRDlIN5+qTBIq1CIYJx4++XEHByMaG0eYPYx
+         n+qA==
+X-Gm-Message-State: ANoB5pkbJKQ7vOFyuIFXKBwJt3d6lodA1Z4SwH6QHXFmNGMC1x4Tol0E
+	jA+SqS2XMxzs+iOJgYNPPn4Skmn2w3u131FL
+X-Google-Smtp-Source: AA0mqf4RNzyaBDUFlxhGZ8/JLSvugK+xDQYNI8xd8Qios8WyzPg9FVP0avj/TuKFjR356WkfQ2WEeA==
+X-Received: by 2002:a2e:b8d3:0:b0:277:388:3fa5 with SMTP id s19-20020a2eb8d3000000b0027703883fa5mr10820217ljp.41.1669584164133;
+        Sun, 27 Nov 2022 13:22:44 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id w11-20020a05651c118b00b0027758f0619fsm1067182ljo.132.2022.11.27.13.22.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 27 Nov 2022 13:22:43 -0800 (PST)
+Message-ID: <d58e3488-110f-cae0-6f44-c9bc54d301fe@linaro.org>
+Date: Sun, 27 Nov 2022 22:22:42 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v4 1/2] dt-bindings: gce: add gce header file for mt8188
+Content-Language: en-US
+To: "Elvis.Wang" <Elvis.Wang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221124075516.1669-1-Elvis.Wang@mediatek.com>
+ <20221124075516.1669-2-Elvis.Wang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221124075516.1669-2-Elvis.Wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_124110_168186_49C6C7F5 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20221127_132245_965867_6B7B7B13 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +99,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-scripts/get_maintainers.pl is confused when name and family name are
-without space:
+On 24/11/2022 08:55, Elvis.Wang wrote:
+> From: Elvis Wang <Elvis.Wang@mediatek.com>
 
-  $ scripts/get_maintainer.pl -f Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-  - NeilBrown <neilb@suse.de> (in file)
+Subject: dt-bindings: mailbox: .......
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/leds/ti,tca6507.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-index 9ce5c0f16e17..f2c4e94b33c3 100644
---- a/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-+++ b/Documentation/devicetree/bindings/leds/ti,tca6507.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: TCA6507 LED and GPIO controller
- 
- maintainers:
--  - NeilBrown <neilb@suse.de>
-+  - Neil Brown <neilb@suse.de>
- 
- description:
-   The TCA6507 is a programmable LED controller connected via I2C that can drive
--- 
-2.34.1
+> 
+> add gce header file to define the gce thread priority, gce subsys id,
+
+Start with capital letter. gce->GCE, right? So use capitals for acronym
+and also explain what that acronym mean.
+
+> event and constant for mt8188.>
+> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
+> ---
+>  .../dt-bindings/mailbox/mediatek,mt8188-gce.h | 966 ++++++++++++++++++
+>  1 file changed, 966 insertions(+)
+>  create mode 100644 include/dt-bindings/mailbox/mediatek,mt8188-gce.h
+> 
+
+(...)
+
+> +#define CMDQ_SYNC_TOKEN_DISP_VA_START			1012
+> +#define CMDQ_SYNC_TOKEN_DISP_VA_END			1013
+
+One blank line here.
+
+> +#endif
+
+With all above changes:
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
