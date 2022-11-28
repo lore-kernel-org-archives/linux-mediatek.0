@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87ED8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF02CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hVmjuIL+831lIR3D3S8cWjaSho1NurBAAfrxYwR+6BE=; b=ur7B+IxCTTXGM35qKcIzwqk6Hf
-	r4YXBlKFbxBEZjiMNv4FPlny1y3jEI0v2NhOFa17Np0z1vC3bxZMYGA3sj7w5xWYdQq2Ie3W4m1Jh
-	U8FL5O7vQkDwrqbzI6MeaUXHTKBTOhPjX77jtP+XHVbF9KDNPn3uRjvKSRclDBcFzvXw5TGbIScGK
-	LUWIh60mV2QmRlmWMNpZy2O/rqtslyWPdh0QBD51VO/dh7JH4zf4Pu0IpXTlxPNmzc3+iE4O+a+0Z
-	CjVohrfT0qAR8375814djri4Vy6fyryEqXnxt6HuflHu5dMj09Hh4kqmL+EgHS9FsaEVnXb8RnqG7
-	JIcfs1vA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Vx9r4K8c2AmypEnlXhjtUj3PToclJWeeeHtuSZMQl/0=; b=bS6DF1j4v0jCR/25hg461j4Ywc
+	1ZgJ/fTEEyxdKRZFvNYRgbkNBKFFbeA1EVWz+wfl5fQRbIfrrbkGzCM+zFVHFvDCEIHd2dONJp9u0
+	uCSc0kRjqtiwK3z7ICxMd4Tb1f4VGygHBBRkyOmEWKSbjsy5phhodv/aw7C5oYbWyPN69nMmw0DmF
+	U2JQT+V1k+DNXjfR1zwQh+kQYNjMeFvbEUSvEebGhrYJVgXioza5KhBGfpfgjWc5gR9GtJEXqaaxH
+	e0ZefT9Eh+J2kf/hB7JDlVUpNJffZncfYR27O8f2DzEHQ+SwDKZgtaH/lgJgJYeSAJJn7bBGjhW/0
+	Gtb9Vkow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTsy-00F0ct-Ls; Mon, 28 Nov 2022 02:28:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ozU28-00F5qH-Jx; Mon, 28 Nov 2022 02:38:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTsi-00F0Wo-O8; Mon, 28 Nov 2022 02:28:30 +0000
-X-UUID: 20e23d61f3ab4e35b30ded9545581acc-20221127
+	id 1ozU26-00F5oK-1J; Mon, 28 Nov 2022 02:38:11 +0000
+X-UUID: 82bba189138c48728bd9fc94488a99d5-20221127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hVmjuIL+831lIR3D3S8cWjaSho1NurBAAfrxYwR+6BE=;
-	b=RFVuwCw6e3w1hjKzWRH6bZKL+bxGpI/+DuGlvTz3HF6rnXnjzZ6KvFkvoBGGaVdmZd5yjOneUX9ETsp90URH9j1IObbrgd/4gwgUqkzs03dBDbDDTSGL6CgVBJmeQgHNo+lILKakrDs2xHUiyyCiZO2m1iIQAaTXnSBNwi9R//Q=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Vx9r4K8c2AmypEnlXhjtUj3PToclJWeeeHtuSZMQl/0=;
+	b=dAllR7dtiduK1fbYK88xkooh17LMapd6qeLL49sWQjvVDX2uU+lCbLlJ4K/a5vjPgBCjAGjcgNdAb4KG1BlFXZl+gSGfNS7bfUKUxwriG56IY8GEzPE6+gVGhSJu4LCfp0yYPo55kBtCJVPny+VROj1Ay/IFk66bocigb141PIA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:14585ffa-278a-4f66-81b4-c1f34a669eff,IP:0,U
+X-CID-O-INFO: VERSION:1.1.14,REQID:7fd7c9d9-3828-4f5b-91c7-738237acf0fb,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:b8d6f72f-2938-482e-aafd-98d66723b8a9,B
+X-CID-META: VersionHash:dcaaed0,CLOUDID:bf2cf82f-2938-482e-aafd-98d66723b8a9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 20e23d61f3ab4e35b30ded9545581acc-20221127
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 82bba189138c48728bd9fc94488a99d5-20221127
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 93156631; Sun, 27 Nov 2022 19:28:22 -0700
+	with ESMTP id 730989145; Sun, 27 Nov 2022 19:38:05 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 28 Nov 2022 10:07:44 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 28 Nov 2022 10:07:31 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 28 Nov 2022 10:07:43 +0800
+ Transport; Mon, 28 Nov 2022 10:07:30 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
 	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
@@ -59,19 +59,18 @@ CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
 	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
-Subject: [PATCH 3/9] spi: mtk-snfi: add optional nfi_hclk which needed for mt7986
-Date: Mon, 28 Nov 2022 10:06:07 +0800
-Message-ID: <20221128020613.14821-4-xiangsheng.hou@mediatek.com>
+Subject: [PATCH 0/9] Add MediaTek MT7986 SPI NAND and ECC support
+Date: Mon, 28 Nov 2022 10:06:04 +0800
+Message-ID: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
-References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_182828_849275_CC35253C 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20221127_183810_106857_16C0279E 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,64 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add optional nfi_hclk which needed for mt7986
+This patch series add MediaTek MT7986 SPI NAND and ECC controller
+support, split ECC engine with rawnand controller in bindings and
+change to YAML schema.
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
----
- drivers/spi/spi-mtk-snfi.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Xiangsheng Hou (9):
+  spi: mtk-snfi: add snfi support for mt7986 IC
+  spi: mtk-snfi: change default page format to setup default setting
+  spi: mtk-snfi: add optional nfi_hclk which needed for mt7986
+  mtd: nand: ecc-mtk: add ecc support fot mt7986 IC
+  dt-bindings: spi: mtk-snfi: add mt7986 IC snfi bindings
+  spi: mtk-snfi: add snfi sample delay and read latency adjustment
+  dt-bindings: spi: mtk-snfi: add two timing delay property
+  dt-bindings: mtd: Split ECC engine with rawnand controller
+  dt-bindings: mtd: ecc-mtk: add mt7986 IC ecc bindings
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index 719fc6f53ab1..85644308df23 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -297,6 +297,7 @@ struct mtk_snand {
- 	struct device *dev;
- 	struct clk *nfi_clk;
- 	struct clk *pad_clk;
-+	struct clk *nfi_hclk;
- 	void __iomem *nfi_base;
- 	int irq;
- 	struct completion op_done;
-@@ -1339,7 +1340,16 @@ static int mtk_snand_enable_clk(struct mtk_snand *ms)
- 		dev_err(ms->dev, "unable to enable pad clk\n");
- 		goto err1;
- 	}
-+	ret = clk_prepare_enable(ms->nfi_hclk);
-+	if (ret) {
-+		dev_err(ms->dev, "unable to enable nfi hclk\n");
-+		goto err2;
-+	}
-+
- 	return 0;
-+
-+err2:
-+	clk_disable_unprepare(ms->pad_clk);
- err1:
- 	clk_disable_unprepare(ms->nfi_clk);
- 	return ret;
-@@ -1347,6 +1357,7 @@ static int mtk_snand_enable_clk(struct mtk_snand *ms)
- 
- static void mtk_snand_disable_clk(struct mtk_snand *ms)
- {
-+	clk_disable_unprepare(ms->nfi_hclk);
- 	clk_disable_unprepare(ms->pad_clk);
- 	clk_disable_unprepare(ms->nfi_clk);
- }
-@@ -1401,6 +1412,13 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 		goto release_ecc;
- 	}
- 
-+	ms->nfi_hclk = devm_clk_get_optional(&pdev->dev, "nfi_hclk");
-+	if (IS_ERR(ms->nfi_hclk)) {
-+		ret = PTR_ERR(ms->nfi_hclk);
-+		dev_err(&pdev->dev, "unable to get nfi_hclk, err = %d\n", ret);
-+		goto release_ecc;
-+	}
-+
- 	ret = mtk_snand_enable_clk(ms);
- 	if (ret)
- 		goto release_ecc;
+ .../bindings/mtd/mtk,nand-ecc-engine.yaml     |  61 ++++++
+ .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ------------------
+ .../devicetree/bindings/mtd/mtk-nand.yaml     |  92 +++++++++
+ .../bindings/spi/mediatek,spi-mtk-snfi.yaml   |  22 +++
+ drivers/mtd/nand/ecc-mtk.c                    |  18 ++
+ drivers/spi/spi-mtk-snfi.c                    |  63 ++++++-
+ 6 files changed, 252 insertions(+), 180 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mtd/mtk,nand-ecc-engine.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+ create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.yaml
+
 -- 
 2.25.1
 
