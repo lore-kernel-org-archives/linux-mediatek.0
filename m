@@ -4,87 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F46C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 14:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84686C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 14:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zygFH3C0HCyE/GmLBlI4erRi5TTs6QvY4G7d/Jx5gtk=; b=1PfytSxfuj4awIizCwHjRSQOQA
-	86xEjW5JveGc3b4OIrYXBc31JBLmUgsNtpbM/00BD7OQxtjZZWYrZy8pD29vxeYeMB5zuXDFSoaCr
-	jiIu70xUaIItf+DcTHQCJZYhzX8CPG7Xdyy8GWaj5Xw0CiO/QN3wW8silN4MZiSn5/gfaB3YB6+dQ
-	gOwx3P/omyHm/7Mwus5CoxId6h0zxhm5BacQVvmxTiLBdSfKLylpFitBwYkCUX3e5DztoX4+9czuQ
-	5Cz9MGoln2cCZylXw+6nAb5Xi8lnjLZeALtP2a/HUA4c+y85tKdDJ7MTsN6pvS0Og8ECDI30FXRSS
-	No7bwDFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=D8EbibBJSd7z4MfmeAczsshWIFf4TRYZ+btw4WjPL7o=; b=iZlSEDQRba+Xv1w+L6RnTwbkgj
+	6SS9uP2MxII31vx9/wJ9PvHfZJNDn6TnateADcXu0dwdbAiishSZVPJKIpW2DBMVxMlB2JuH8v3mc
+	cxiHYP5vem5+WW7fh4BW9UKPhWQeqo4q7NjbzXuFcuSwMzsqaKMuo5hkJ/BB5thR2DaryCh/KJ0G3
+	0WLxIQXvSeGmEwJrDL8nhHAJkxqAR/pDtfeW2/e9ChqNNhAwy2bGVJHaJGr8gj1ON2Xkbrf/D+8ti
+	1Sh0HH0cZTGYwjIH7Jeu/5NjL3pDxh80UXWQR3kUAtzydYnwUI4h/R5YxTWee9rxmsTABWJvBoWH8
+	GdbeQ0Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozejp-0023Xs-OL; Mon, 28 Nov 2022 14:04:01 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1ozfGz-002FvH-3O; Mon, 28 Nov 2022 14:38:17 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozeje-0023Tx-OV
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 14:03:52 +0000
-Received: by mail-ed1-x532.google.com with SMTP id x2so15584640edd.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 06:03:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zygFH3C0HCyE/GmLBlI4erRi5TTs6QvY4G7d/Jx5gtk=;
-        b=Dn0wZMFZCBiSUOy3MR8qgPiAfaoxuvZkJTAsFiSrMLVeGFxV9Repk5BiwfPTy3N8XT
-         W9M+0YX8+efYC4xDqmVtNcgexKzjUIL6BPzynngSPCSEId9T+l1GwNc4F2cbOrOIHKjJ
-         wzImkn5Oxu6LkxnQ8nO061HWlzpn5Y3kGlnLE0Bj7byBj+tIEEc3W6bHUYhgOH0vEj14
-         1DyL1CF/DKXYYANdii68cyHjJ8LAnivhF2G3d+oujcYFfqamwUwxaunxpR1HyZp/7zyX
-         TYQB4U+JnOMsrcTOEDej79HpPMXuU6Yhd9uDObPA7efbLEwFfaRDxnbdjbuTI6FQoKOk
-         Qe6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zygFH3C0HCyE/GmLBlI4erRi5TTs6QvY4G7d/Jx5gtk=;
-        b=NjHWmVyiy5oh9n7IgaVXRMr8fpBH3No90yxSjmpsnEF4m/mtgosLoonXzF+8HMJRWA
-         v44fbJzVqRTK9NwHidiwZRfQnx3TxlPtdguAZmpxqafHE7nAOVzOdnHSkzd9mnwI1nH8
-         tQ1rqSZJ/M1i0QsyhUVqVxOFwkT49/ag+obrTpFf+jLNWDOYGqVQpQ6aNHKTKDhb9moG
-         mJFvo8IsJUQY/0zVaJr3rroB8NMnYD1CoEFlrTXUroVEve7obS4rfS+SCZxQ8nqdZw/r
-         jDjL9/KOQgQB1NlIlpPLTsYzGS+bl170XJXsbD4dJHMmHOYm5tGxXSpX4p+IkgeWsSQX
-         0npg==
-X-Gm-Message-State: ANoB5pmA8FICD4dGWs58i0UYBVlkerFtvq/rqQI9ezH/yqAmtO/C/+Cs
-	gdf1YWjYwhV0jeb0hWRxgDBYTd3dkFyt/OyPZgbAmQ==
-X-Google-Smtp-Source: AA0mqf4G4fhVU8w+DttZ3I3UxPAgiaBDQuB51NYNfRQ3JXQ1lw3xInj3Qa9i3uU5+uGApZakiSG/gtoAil6IEl2XlDc=
-X-Received: by 2002:aa7:dbc3:0:b0:461:6b61:81ae with SMTP id
- v3-20020aa7dbc3000000b004616b6181aemr47156519edt.62.1669644222784; Mon, 28
- Nov 2022 06:03:42 -0800 (PST)
+	id 1ozfGw-002FsR-7m
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 14:38:16 +0000
+Received: from dggpemm500020.china.huawei.com (unknown [172.30.72.57])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NLSjY0gmKzHwCy;
+	Mon, 28 Nov 2022 22:37:21 +0800 (CST)
+Received: from dggpemm500007.china.huawei.com (7.185.36.183) by
+ dggpemm500020.china.huawei.com (7.185.36.49) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 28 Nov 2022 22:38:02 +0800
+Received: from huawei.com (10.175.103.91) by dggpemm500007.china.huawei.com
+ (7.185.36.183) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Mon, 28 Nov
+ 2022 22:38:01 +0800
+From: Yang Yingliang <yangyingliang@huawei.com>
+To: <lee@kernel.org>, <cy_huang@richtek.com>, <matthias.bgg@gmail.com>
+CC: <linux-mediatek@lists.infradead.org>, <yangyingliang@huawei.com>
+Subject: [PATCH] mfd: mt6370: fix potential null-ptr-deref and uaf while removing device
+Date: Mon, 28 Nov 2022 22:36:01 +0800
+Message-ID: <20221128143601.1698148-1-yangyingliang@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
- <20221005-mt6357-support-v6-5-4f589756befa@baylibre.com> <a9a47e08-1a08-abe5-1dbe-1537d3414af6@linaro.org>
- <c94d15bf-c5ed-b400-abdf-8cca4102b078@linaro.org>
-In-Reply-To: <c94d15bf-c5ed-b400-abdf-8cca4102b078@linaro.org>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 28 Nov 2022 15:03:31 +0100
-Message-ID: <CAFGrd9pueans7Z_GHassY7ouGOwDmj4oJHAXS4ZtbYK4KH58Bw@mail.gmail.com>
-Subject: Re: [PATCH v6 05/10] dt-bindings: soc: mediatek: convert pwrap documentation
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Chen Zhong <chen.zhong@mediatek.com>, Fabien Parent <fabien.parent@linaro.org>, 
-	Alessandro Zummo <a.zummo@towertech.it>, Mark Brown <broonie@kernel.org>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Flora Fu <flora.fu@mediatek.com>, 
-	Tianping Fang <tianping.fang@mediatek.com>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>, Rob Herring <robh@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rtc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-leds@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.103.91]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpemm500007.china.huawei.com (7.185.36.183)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_060350_806962_EF8F6388 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20221128_063814_664901_05C5F4DC 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,90 +67,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le dim. 27 nov. 2022 =C3=A0 14:11, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
->
-> >> +  pmic:
-> >> +    type: object
-> >
-> > What's here? Other schema? If not then maybe compatible? What about
-> > description?
->
-> I guess this was comment from Rob, so it's fine.
+I got the a UAF and a null-ptr-deref reports while
+doing module loading test:
 
-Yes it is.
+==================================================================
+BUG: KASAN: use-after-free in regulator_register.cold.70+0x191/0xe78
+Read of size 8 at addr ffff888118fb8c28 by task systemd-udevd/261
 
-> >> +allOf:
-> >> +  - if:
-> >> +      properties:
-> >> +        compatible:
-> >> +          contains:
-> >> +            const: mediatek,mt8365-pwrap
-> >> +    then:
-> >> +      properties:
-> >> +        clocks:
-> >> +          minItems: 4
-> >> +
-> >> +        clock-names:
-> >> +          minItems: 4
-> >
-> > else:
-> > ???
->
-> Actually this looks less complete than your previous patch.
->
-> else:
->   clocks:
->     maxItems: 2
-> same for clock-names
->
+CPU: 2 PID: 261 Comm: systemd-udevd Tainted: G                 N 6.1.0-rc3+
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x67/0x83
+ print_report+0x178/0x4b0
+ kasan_report+0x90/0x190
+ regulator_register.cold.70+0x191/0xe78
+ devm_regulator_register+0x57/0xb0
+ mt6370_regulator_probe.cold.1+0xd8/0x222 [mt6370_regulator]
 
-I think I=E2=80=99ve followed the feedback done here [1]
-I=E2=80=99ve declared `minItems: 2` globally and override it to 4 if
-mediatek,mt8365-pwrap is used. Isn=E2=80=99t it the right way to implement =
-it
-?
+Allocated by task 261:
+ kasan_save_stack+0x1c/0x40
+ kasan_set_track+0x21/0x30
+ __kasan_kmalloc+0x7e/0x90
+ __kmalloc_node_track_caller+0x55/0x1b0
+ devm_kmalloc+0x5e/0x110
+ of_get_regulator_init_data+0x9e/0xd60
+ regulator_of_get_init_data+0x1a3/0x270
+ regulator_register+0x227/0x620
+ devm_regulator_register+0x57/0xb0
+ mt6370_regulator_probe.cold.1+0xd8/0x222 [mt6370_regulator]
 
-> >> +            compatible =3D "mediatek,mt8135-pwrap";
-> >> +            reg =3D <0 0x1000f000 0 0x1000>,
-> >
-> > This does not match your unit address. No warnings when compile testing=
-?
-> >
+Freed by task 250:
+ kasan_save_stack+0x1c/0x40
+ kasan_set_track+0x21/0x30
+ kasan_save_free_info+0x2a/0x50
+ __kasan_slab_free+0x102/0x190
+ __kmem_cache_free+0xca/0x400
+ release_nodes+0x9b/0xb9
+ devres_release_group.cold.10+0x5f/0x64
+ i2c_device_remove+0x60/0xf0
+ device_remove+0x73/0xc0
+ device_release_driver_internal+0x12d/0x210
+ bus_remove_device+0x1bd/0x240
+ device_del+0x357/0x770
+ i2c_unregister_device.part.22+0xe2/0x100
+ i2c_unregister_device+0x29/0x30
+==================================================================
 
-There are no warnings when compile testing. I will fix the unit
-address anyway, sorry.
+Here is how UAF happens:
 
-> >> +                  <0 0x11017000 0 0x1000>;
-> >> +            reg-names =3D "pwrap", "pwrap-bridge";
-> >> +            interrupts =3D <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>;
-> >> +            clocks =3D <&clk26m>, <&clk26m>;
-> >> +            clock-names =3D "spi", "wrap";
-> >> +            resets =3D <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
-> >> +                     <&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
-> >> +            reset-names =3D "pwrap", "pwrap-bridge";
-> >
-> > Missing pmic. Make your example complete.
->
-> Probably pmic should be skipped, I understand it is described in MFD
-> binding.
->
+CPU A				|CPU B
+mt6370_probe()			|
+  devm_mfd_add_devices()	|
+				|mt6370_regulator_probe()
+				|  regulator_register()
+				|    //allocate init_data and add it to devres
+				|    regulator_of_get_init_data()
+i2c_unregister_device()		|
+  device_del()			|
+    devres_release_all()	|
+      // init_data is freed	|
+      release_nodes()		|
+				|  // using init_data causes UAF
+				|  regulator_register()
 
-Put the pmic in the example have 2 constraints:
-- The original pmic "mediatek,mt6397" isn=E2=80=99t supported by a yaml
-schema, so I=E2=80=99ve a dt_binding_check fail: `failed to match any schem=
-a
-with compatible: ['mediatek,mt6397']`
-- If I put another pmic that supports a yaml schema, I need to put all
-required properties for the pmic, which I thought was unnecessary
-since it=E2=80=99s already done in its own schema and can change for anothe=
-r
-pmic, so less consistent.
+While probing mt6370 regulator, the init_data is allocated in
+regulator_of_get_init_data(), and it's added to devres of
+device mt6370. When the device mt6370 is deleting, the devres
+is freed, then it causes a UAF in regulator_register().
 
-Then yes, IMHO, PMIC should be skipped in the example.
+==================================================================
+BUG: kernel NULL pointer dereference, address: 0000000000000354
+CPU: 2 PID: 261 Comm: systemd-udevd Tainted: G    B            N 6.1.0-rc3+
+RIP: 0010:regmap_read+0x21/0xc0
+Call Trace:
+ <TASK>
+ regulator_get_voltage_sel_regmap+0x98/0x110
+ regulator_attr_is_visible+0x2da/0x4c0
+ internal_create_group+0x1f5/0x6b0
+ internal_create_groups.part.4+0x65/0xe0
+ sysfs_create_groups+0x24/0x50
+ device_add+0x5a9/0x1100
+ regulator_register.cold.70+0xb06/0xe78
+ devm_regulator_register+0x57/0xb0
+ mt6370_regulator_probe.cold.1+0xd8/0x222 [mt6370_regulator]
+==================================================================
 
-[1] https://lore.kernel.org/all/fe898d24-54fa-56bb-8067-b422a3a52ff5@collab=
-ora.com/
+Here is how null-ptr-deref happens:
 
-Alex
+CPU A				|CPU B
+mt6370_probe()			|
+  // add regmap to devres	|
+  devm_regmap_init()		|
+  devm_mfd_add_devices()	|
+				|
+i2c_unregister_device()		|
+  device_del()			|
+    devres_release_all()	|
+      // regmap is removed	|
+      remove_nodes()		|
+				|mt6370_regulator_probe()
+				|  regulator_register()
+				|  // can't find regmap, it's NULL
+				|  devm_get_regmap()
+				|  device_add()
+				|    // causes null-ptr-deref
+				|    regulator_get_voltage_sel_regmap()
+
+While probing mt6370 regulator, the mt6370 is deleting, the devres
+are removed including regmap, so in regulator_register() get a NULL
+regmap pointer, then it causes null-ptr-derf while using it in
+regulator_get_voltage_sel_regmap().
+
+To fix theses races, switch to use non-devm function to add mfd
+devices, make removing child(regulator) devices earlier than
+freeing parent device resources, so the devres can not be freed
+until mt6370_regulator_probe() is finished.
+
+Fixes: b2adf788e603 ("mfd: mt6370: Add MediaTek MT6370 support")
+Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+---
+ drivers/mfd/mt6370.c | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
+index cf19cce2fdc0..dd19146612cf 100644
+--- a/drivers/mfd/mt6370.c
++++ b/drivers/mfd/mt6370.c
+@@ -268,28 +268,33 @@ static int mt6370_probe(struct i2c_client *i2c)
+ 	switch (vid) {
+ 	case MT6370_VENID_MT6372P:
+ 	case MT6370_VENID_MT6372CP:
+-		ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
+-					   mt6372_exclusive_devices,
+-					   ARRAY_SIZE(mt6372_exclusive_devices),
+-					   NULL, 0,
+-					   regmap_irq_get_domain(info->irq_data));
++		ret = mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
++				      mt6372_exclusive_devices,
++				      ARRAY_SIZE(mt6372_exclusive_devices),
++				      NULL, 0,
++				      regmap_irq_get_domain(info->irq_data));
+ 		break;
+ 	default:
+-		ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
+-					   mt6370_exclusive_devices,
+-					   ARRAY_SIZE(mt6370_exclusive_devices),
+-					   NULL, 0,
+-					   regmap_irq_get_domain(info->irq_data));
++		ret = mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
++				      mt6370_exclusive_devices,
++				      ARRAY_SIZE(mt6370_exclusive_devices),
++				      NULL, 0,
++				      regmap_irq_get_domain(info->irq_data));
+ 		break;
+ 	}
+ 
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to add the exclusive devices\n");
+ 
+-	return devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
+-				    mt6370_devices, ARRAY_SIZE(mt6370_devices),
+-				    NULL, 0,
+-				    regmap_irq_get_domain(info->irq_data));
++	return mfd_add_devices(dev, PLATFORM_DEVID_AUTO,
++			       mt6370_devices, ARRAY_SIZE(mt6370_devices),
++			       NULL, 0,
++			       regmap_irq_get_domain(info->irq_data));
++}
++
++static void mt6370_remove(struct i2c_client *i2c)
++{
++	mfd_remove_devices(&i2c->dev);
+ }
+ 
+ static const struct of_device_id mt6370_match_table[] = {
+@@ -304,6 +309,7 @@ static struct i2c_driver mt6370_driver = {
+ 		.of_match_table = mt6370_match_table,
+ 	},
+ 	.probe_new = mt6370_probe,
++	.remove = mt6370_remove,
+ };
+ module_i2c_driver(mt6370_driver);
+ 
+-- 
+2.25.1
+
 
