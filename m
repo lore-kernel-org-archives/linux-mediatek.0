@@ -4,65 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40AB9C43217
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 00:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50987C43217
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 00:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q5dZdPYvUfozQhqkmlonGbI8EniXavdtqXfZRx36D18=; b=SP8K12oyNH2fWFzmzKXS6x+2N1
-	ExnonyIIYz6mNmZESEP6qtvViAv2KEsTG6oezgdMxUD5ss5GMMZU6C/G5H0ww45OWWaZBgqycooUK
-	vOuvi0gqn+0YvH+rmQuFV0UkmbFovSB2pumz06z4rTRiYiaY5/+di2debDfC5tTq4ObHfU6tUwVQn
-	5ZwaTQnIRlyQJrbs3pVnyalLlkw6j4z+HhAUFZtf/kHp1+pHwti5R9EXZEIkgpfcvyUicijmfKT0S
-	BoJNTa2CRFiy7H99GALH7L/ESaYTcsbxwbEsXQotFdUClfnatPpJZZoLRnS8SGBP2q/WkOBpwxGJG
-	VKJKoXmw==;
+	bh=Tkm1rZJjYKH+0e9XPZ9u8/k0fPDDDPFuGFSeOnuxztc=; b=V6r/Cmgw7uMTmFYZkv49hFyE1l
+	7LY2YeSlwYWmpIAdA4/hfvKR9kY41OIMNx8s8EOrV1TEC+a/H1Uppz6Qb6TfwVQQYY3CFzbBn5Vbl
+	WUf4tBUdBkxweLnl5sDhjzRtoocjSyrU5cgFWkcsn0lx2j2xxq6ThBO878sYdS3ccNOfsYJDdJBcn
+	PiMTnM+NsIN+G08YJnElbyf4o78iMLPNo69yMIHcQE1eCMVPHuG1Mgij+iR321seh4Xtex0w+Uc1S
+	L0l/Xe70oV68sQ7GnRVfxT01/5ve19Gdfb5k5Hk5kl5cHXK/HqgfXTW+BoCpfwMS5/nsvYlFKlkOb
+	VKueH/wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozoTT-004tQ8-1s; Tue, 29 Nov 2022 00:27:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ozoW2-004tns-UJ; Tue, 29 Nov 2022 00:30:26 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozoTP-004tPe-OS; Tue, 29 Nov 2022 00:27:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=q5dZdPYvUfozQhqkmlonGbI8EniXavdtqXfZRx36D18=; b=YnS0o0CiBLdxEav/AqEn4Um7se
-	Y2nJU02RkgEDqPSRTFbZCKtjS4ACvwNrFXznEmF/sX7Z8xqQPr/NLRvGc5wUhI905XRkJiAfcPeUd
-	vFAb5/bkDmJIYqZXmtbsbUb9Jmp7cvLAs/WLRSRaMM3PiaJwAGbNZPihK4VNvS2+U7GHwasu4OVs1
-	qCrULJ2samTXmSGBhd5Re9FHsA3cGaKjHwNEK7JZZZP1DCJpkpSBWWRb5jATMvkUlve9Npu1G+WWW
-	FPfxfbektaZJbW7rNYmzDjha/LtXZFXRsRxb+NKPyie2AzBwHbHCt5Ue7ug/kwaPFTPsyKqoUwm36
-	LzBi/sJQ==;
-Received: from mail-oi1-f180.google.com ([209.85.167.180])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oznTT-005e4c-32; Mon, 28 Nov 2022 23:23:45 +0000
-Received: by mail-oi1-f180.google.com with SMTP id s206so13393942oie.3;
-        Mon, 28 Nov 2022 15:23:41 -0800 (PST)
+	id 1oznXf-004m9p-6C; Mon, 28 Nov 2022 23:28:04 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-1322d768ba7so15043688fac.5;
+        Mon, 28 Nov 2022 15:28:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=q5dZdPYvUfozQhqkmlonGbI8EniXavdtqXfZRx36D18=;
-        b=Fm7Z68hIYtQw/Bfu8GkgLEQnkMxvYefajIsvwEQVOpHJttFuf5JpJPLAMgF9IVSRoM
-         jxA1nkU2IY6n+nsUdApCp49nQKFu/D/yGhtdgoDJtagpJvBns9peB0aQ7Z0iWPGLRITH
-         2IJIRcBF9zFjQO9tQgOzKFXX3kew9t94eqMMNiUa0mmhfN0xQBMZmbP29s1DsD0Tphq4
-         5nhjvdtN1DA7LyCSej8Ox3KeiNrmYruFFwJlDQXB3J0Oj9Xb+4iISY0zeX6ylbrxFb6z
-         UDf0lC7UVvj0h7gwOvZ5KxmVrj8s3mXgGJQpbUgCgqexqdXVSgl2ejV+8geOOzBzIg/4
-         drxQ==
-X-Gm-Message-State: ANoB5pkh7T49A30IifkWGGjmfABz9JJk3EWvHaJ8/IkS8h1Hks9kaxUw
-	/2GfQIOKeZKpMaguUNg56g==
-X-Google-Smtp-Source: AA0mqf6Xi0RitObRTHWEfRmcg3CLjY1g6LEw6t9+uwWWjYPmvv4KJPFIiDn1ezDuYbdQF9T8u3CZeQ==
-X-Received: by 2002:aca:c108:0:b0:354:946b:f72f with SMTP id r8-20020acac108000000b00354946bf72fmr19606267oif.48.1669677820060;
-        Mon, 28 Nov 2022 15:23:40 -0800 (PST)
+        bh=Tkm1rZJjYKH+0e9XPZ9u8/k0fPDDDPFuGFSeOnuxztc=;
+        b=1MBXuytYtEcok4JJ90dJvXQKlZIS+lTDS4KUxLjjjhEAvYBBOWaJTrfpumGKCC4mq8
+         yiccjqigXJcT0QfHzd/bQ6qm+w9MEav9na9yxAC3cke32tqmoCq/nVH98NGMlLParncR
+         4EP5KaYdXflziORQzlG/Y6VoUQMhPwr3sWvuKoJ3oXp8SI+6qA4q63vjjw5yo9cmzZLJ
+         gz3rOa9bb0I4qUTdYEhKcfgicOXr0k8hrguErvaYoAj01SFcn3mVGZ6QsCyA/pnP0gN+
+         K85zfx9vnsd2xDgXVKDNa1afkM8n/ztXXyNO5ZU/XeIgzJHkKiKk2QNLGWsRxZgsaWiC
+         jCMA==
+X-Gm-Message-State: ANoB5pnJw32H6WxnPNJUiaFztCVOUadjLywG1pdeq64FqofcmkhmxQF3
+	Qbc+2WqDF8IQ9OUG82/8jw==
+X-Google-Smtp-Source: AA0mqf6qF068jOcZq5Clqc6PLJt0qCSUkbx+Op8bIK1f/R2Musri8+9p2qalTkmaXTGmtt/SSb+sHw==
+X-Received: by 2002:a05:6871:438a:b0:13b:a9ac:ad64 with SMTP id lv10-20020a056871438a00b0013ba9acad64mr21826598oab.290.1669678081277;
+        Mon, 28 Nov 2022 15:28:01 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id m25-20020a056870059900b001422f9b5c17sm6565028oap.8.2022.11.28.15.23.38
+        by smtp.gmail.com with ESMTPSA id b5-20020a056870d1c500b00143776f70d3sm5043217oac.29.2022.11.28.15.27.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Nov 2022 15:23:39 -0800 (PST)
-Received: (nullmailer pid 1685201 invoked by uid 1000);
-	Mon, 28 Nov 2022 23:23:37 -0000
-Date: Mon, 28 Nov 2022 17:23:37 -0600
+        Mon, 28 Nov 2022 15:28:00 -0800 (PST)
+Received: (nullmailer pid 1691394 invoked by uid 1000);
+	Mon, 28 Nov 2022 23:27:59 -0000
+Date: Mon, 28 Nov 2022 17:27:59 -0600
 From: Rob Herring <robh@kernel.org>
 To: Colin Foster <colin.foster@in-advantage.com>
 Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
@@ -82,18 +69,18 @@ Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	"David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, 
 	Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
 	George McCollister <george.mccollister@gmail.com>
-Subject: Re: [PATCH v3 net-next 03/10] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-Message-ID: <20221128232337.GA1513198-robh@kernel.org>
+Subject: Re: [PATCH v3 net-next 04/10] dt-bindings: net: dsa: allow
+ additional ethernet-port properties
+Message-ID: <20221128232759.GB1513198-robh@kernel.org>
 References: <20221127224734.885526-1-colin.foster@in-advantage.com>
- <20221127224734.885526-4-colin.foster@in-advantage.com>
+ <20221127224734.885526-5-colin.foster@in-advantage.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221127224734.885526-4-colin.foster@in-advantage.com>
+In-Reply-To: <20221127224734.885526-5-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_232343_401084_D584F653 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20221128_152803_250285_1931A5C6 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,112 +95,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 27, 2022 at 02:47:27PM -0800, Colin Foster wrote:
-> DSA switches can fall into one of two categories: switches where all ports
-> follow standard '(ethernet-)?port' properties, and switches that have
-> additional properties for the ports.
+On Sun, Nov 27, 2022 at 02:47:28PM -0800, Colin Foster wrote:
+> Explicitly allow additional properties for both the ethernet-port and
+> ethernet-ports properties. This specifically will allow the qca8k.yaml
+> binding to use shared properties.
 > 
-> The scenario where DSA ports are all standardized can be handled by
-> swtiches with a reference to 'dsa.yaml#'.
-> 
-> The scenario where DSA ports require additional properties can reference
-> the new '$dsa.yaml#/$defs/base'. This will allow switches to reference
-> these base defitions of the DSA switch, but add additional properties under
-> the port nodes.
-
-You have this backwards. '$dsa.yaml#/$defs/base' can't be extended. 
-Perhaps '$defs/ethernet-ports' would be a better name.
-
-> 
-> Suggested-by: Rob Herring <robh@kernel.org>
 > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
 > ---
 > 
-> v3
+> v2 -> v3
+>   * No change
+> 
+> v1 -> v2
 >   * New patch
 > 
 > ---
->  .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
->  .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
->  .../devicetree/bindings/net/dsa/dsa.yaml      | 19 ++++++++++++++++---
->  .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
->  .../bindings/net/dsa/mediatek,mt7530.yaml     |  2 +-
->  .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
->  .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
->  .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
->  .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
->  .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
->  .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
->  11 files changed, 26 insertions(+), 13 deletions(-)
+>  Documentation/devicetree/bindings/net/dsa/dsa.yaml | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> index 259a0c6547f3..8d5abb05abdf 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->  title: Arrow SpeedChips XRS7000 Series Switch Device Tree Bindings
->  
->  allOf:
-> -  - $ref: dsa.yaml#
-> +  - $ref: dsa.yaml#/$defs/base
->  
->  maintainers:
->    - George McCollister <george.mccollister@gmail.com>
-> diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> index 1219b830b1a4..f323fc01b224 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> @@ -66,7 +66,7 @@ required:
->    - reg
->  
->  allOf:
-> -  - $ref: dsa.yaml#
-> +  - $ref: dsa.yaml#/$defs/base
->    - if:
->        properties:
->          compatible:
 > diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> index b9d48e357e77..bd1f0f7c14a8 100644
+> index bd1f0f7c14a8..87475c2ab092 100644
 > --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
 > +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> @@ -19,9 +19,6 @@ description:
->  select: false
+> @@ -38,6 +38,8 @@ patternProperties:
+>        '#size-cells':
+>          const: 0
 >  
->  properties:
-> -  $nodename:
-> -    pattern: "^(ethernet-)?switch(@.*)?$"
-> -
->    dsa,member:
->      minItems: 2
->      maxItems: 2
-> @@ -58,4 +55,20 @@ oneOf:
+> +    additionalProperties: true
+> +
+
+Where then do we restrict adding properties to ethernet-ports nodes?
+
+>      patternProperties:
+>        "^(ethernet-)?port@[0-9]+$":
+>          type: object
+> @@ -45,7 +47,7 @@ patternProperties:
 >  
->  additionalProperties: true
+>          $ref: dsa-port.yaml#
 >  
-> +$defs:
-> +  base:
-> +    description: A DSA switch without any extra port properties
-> +    $ref: '#/'
-> +
-> +    patternProperties:
-> +      "^(ethernet-)?ports$":
+> -        unevaluatedProperties: false
+> +        unevaluatedProperties: true
 
-This node at the top level needs 'additionalProperties: false' assuming 
-we don't allow extra properties in 'ports' nodes. If we do, then we'll 
-need to be able to reference the 'ports' schema to extend it like is 
-done with dsa-ports.yaml.
+Same question for ethernet-port nodes.
 
-> +        type: object
-> +
-> +        patternProperties:
-> +          "^(ethernet-)?ports@[0-9]+$":
-> +            description: Ethernet switch ports
-> +            $ref: dsa-port.yaml#
-> +            unevaluatedProperties: false
-> +
-> +
-
-One blank line.
-
->  ...
+>  
+>  oneOf:
+>    - required:
+> -- 
+> 2.25.1
+> 
+> 
 
