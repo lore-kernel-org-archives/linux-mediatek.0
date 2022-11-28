@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3EAAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 08:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55597C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 08:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Sy0Jic1K5VgHl1u0yikgnqy04/Pvcv8bFLTccHuhyQM=; b=B+LiC37dOGNOrQSihhn2eGB5h9
-	W23LLDI9r+PbsLwO2jEkL1YKUHRgCbSxvaq5zYg35dIT9WdbLdL5TZ5NYptGURygR3YQzliWSCTxx
-	wgFm3okN5+ypO2E+b+T3ZJsFN5kVdWQIUn9zFsOFDaEaHo7BUYeg2s7wRdftwsr60OAcQ2PMQrlzt
-	wekXaFP0mmD8iEaP5EXsL50/9cgaHRo4p2qKG2HcgDNP/vFXSiOXe8zv73ATyrdF+cxZn1dG00S9y
-	rBpiffSBtKQI+IGUMs9QB/NkHIgPV9in4D3Z2NTaBEHslUhBXL9QeFC6P49G1PSm+eVPUPpqVgJzA
-	lcug7q9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=; b=P3F6xV8GvDEzAMteNRY1RsJkiV
+	7VjzMnzoiruWe70uFkqcy2eiwbAXj/lVYCH3Nu90d+yDxCjX93AglmLLTlGJNhXEPuclVuUcDTjNG
+	IeXQy/7DoJb7uBCXJppJN5lX0bsXWHuoAWGhk3fAzz7H8rkoODrso+rSekHbxrwFhLCztHVjW29DB
+	zPGinwZ8qK/BWI9C+7NeajyNmI9GCtKA/39Nghvt1GVfrXBiy5XLW82MRha+9oGqLPuTkXcu/Mq3X
+	Yn4EXKozdfWBdnWx0Ajbk4mWKuiQG9kvS/Rmf4Jb2lotKa0Bdaf2dGfB2uILKnOprnfS5szn3eoQi
+	GTBOJdWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozZ76-00HZUy-9y; Mon, 28 Nov 2022 08:03:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ozZW0-000EIb-V4; Mon, 28 Nov 2022 08:29:24 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozYzb-00HUi4-TD
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 07:55:57 +0000
-X-UUID: 16bbe3ce52814ecfb3ae37ac754f2fd5-20221128
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Sy0Jic1K5VgHl1u0yikgnqy04/Pvcv8bFLTccHuhyQM=;
-	b=dK4hf0JClqiDV9cp/y2bn5ws3Igx9pYHo8pWMJli3DBVhgDPcMySwEUtNn5NNi0BLDbHmWomDBISMmjya5h8SBtt/veUotffpn8a2EE0tG4yzWF4YKeYoSnEgsIozyzBWtzjZgKI5HuLqmV7xKonHYMBjYbZ05xi6xNFuSiL8ig=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:123bf885-39da-4c71-b177-059e5084a3c0,IP:0,U
-	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-META: VersionHash:dcaaed0,CLOUDID:1d496cdc-6ad4-42ff-91f3-18e0272db660,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
-	il,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 16bbe3ce52814ecfb3ae37ac754f2fd5-20221128
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 580864356; Mon, 28 Nov 2022 00:55:46 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 28 Nov 2022 15:05:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 28 Nov 2022 15:05:07 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7921: Add missing __packed annotation of struct mt7921_clc
-Date: Mon, 28 Nov 2022 15:04:21 +0800
-Message-ID: <f69bcbaa2eb9c848964c8187495031ee4539d337.1669618694.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ozZVw-000EFf-Ta; Mon, 28 Nov 2022 08:29:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669624122; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SlruZNjijJZzyYkvFL6OElHpvJ5NcnjnDm7tGquBFAJmCmXXZ7xyEIdvDkQNKukAaVmlVi9Bc3+T1BoMHqR4WMPHWfitmKcMQV9Qj1Z0RpcsXmHFVX1okyuAaL25m94+FDZ1/45k0UH9DWRCBCIZN2m+OW5eV4U6+fKAV6njUKw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1669624122; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=; 
+	b=bIFBF87ok3heWqT6Z4w322m6ip6W7S6qKVz4ihZKSzxbjoH2NheiWIRQf32n7ELZm2Vq4IubEexB1TCaDl8wy/4B5zClr8J6End6YIxYT0Y2H67doigDBMLbzLKl2UlubFKSOiQ62YMWZZZ0RB3eSViz+aWppC9gr/3t0rlMZAI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669624122;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=;
+	b=JyGzTO7/cV3Df/8rep2Kwe+HTHBxB6ASQWVOwe3f4YCQRiaxNNvQEndBCMwcYe5k
+	1aua5HNDimYl5QcSpfwqtl1Hw4ilAqL50Uwa9FKyisQG2QyEKCeOG0XJ0pzEb3v/dgJ
+	+dE3f36wwKkyE/vzjVCX1quNzRai5Ua82TU22g74=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1669624120094627.872459276059; Mon, 28 Nov 2022 00:28:40 -0800 (PST)
+Message-ID: <08784493-7e85-9224-acfa-9a87cbd325e7@arinc9.com>
+Date: Mon, 28 Nov 2022 11:28:31 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3 net-next 06/10] dt-bindings: net: dsa: mediatek,mt7530:
+ fix port description location
+To: Colin Foster <colin.foster@in-advantage.com>,
+ linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, netdev@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
+ Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
+ Woojung Huh <woojung.huh@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
+ <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>,
+ George McCollister <george.mccollister@gmail.com>,
+ Rob Herring <robh@kernel.org>
+References: <20221127224734.885526-1-colin.foster@in-advantage.com>
+ <20221127224734.885526-7-colin.foster@in-advantage.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20221127224734.885526-7-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_235556_062372_CDAC5AB1 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221128_002921_323726_325257AB 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +100,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On 28.11.2022 01:47, Colin Foster wrote:
+> The description property was located where it applies to every port, not
+> just ports 5 or 6 (CPU ports). Fix this description.
 
-Add __packed annotation to avoid potential CLC parsing error
+I'm not sure I understand. The description for reg does apply to every 
+port. Both CPU ports and user ports are described. This patch moves the 
+description to under CPU ports only.
 
-Fixes: 23bdc5d8cadf ("wifi: mt76: mt7921: introduce Country Location Control support")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+> ---
+> 
+> v2 -> v3
+>    * New patch.
+> 
+> ---
+>   .../bindings/net/dsa/mediatek,mt7530.yaml          | 14 +++-----------
+>   1 file changed, 3 insertions(+), 11 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> index 7df4ea1901ce..415e6c40787e 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -156,17 +156,6 @@ patternProperties:
+>   
+>       patternProperties:
+>         "^(ethernet-)?port@[0-9]+$":
+> -        type: object
+> -        description: Ethernet switch ports
+> -
+> -        unevaluatedProperties: false
+> -
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 6fc04ed34ec3..15d6b7fe1c6c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -224,7 +224,7 @@ struct mt7921_clc {
- 	u8 type;
- 	u8 rsv[8];
- 	u8 data[];
--};
-+} __packed;
- 
- struct mt7921_phy {
- 	struct mt76_phy *mt76;
--- 
-2.18.0
+Would be nice to mention these being removed on the patch log. Or remove 
+them while doing ("dt-bindings: net: dsa: utilize base definitions for 
+standard dsa switches").
 
+> -        properties:
+> -          reg:
+> -            description:
+> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
+> -              for user ports.
+> -
+>           allOf:
+>             - $ref: dsa-port.yaml#
+>             - if:
+> @@ -174,6 +163,9 @@ patternProperties:
+>               then:
+>                 properties:
+>                   reg:
+> +                  description:
+> +                    Port address described must be 5 or 6 for CPU port and from
+> +                    0 to 5 for user ports
+>                     enum:
+>                       - 5
+>                       - 6
+
+Thank you for your efforts.
+
+Arınç
 
