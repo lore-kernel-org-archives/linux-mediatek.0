@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6685C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 09:23:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 835A9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 09:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KZ+H1CLPYQt5Uf1FAylagrid89lMCXjJWU6X34EUgrA=; b=pY2QNJ9NLAh4I53bdRkb7GA463
-	2R1QOuML2vC+aogkPV76jT3BQ+yHudycZNA94lfv/49POhFCGStpu8Fa+xSkCP+cFqgiSBDNYi/Q3
-	qF+wfYeM6HLT2MEj7XpsB/Q0jEr0sSI8/iapNszj3XSn6jZn4E20ZqBIdXsxqTFTUpmhLEtUbOKIV
-	NHv+s7BWYUIQPm+V22aAShcvy/e+pzrVGqho+EA0BkbB6mec1jB1/ne5c1+Hc2Yqs4oDkXZPmxwZZ
-	0Sv93y/lq3Tb/IQhhPt7XagQvgqNftPIxPp/Znq4k1qEi5u1CZCCVzcs8TlnmUcMLylm1bFi8iCFC
-	mPl0O1uw==;
+	bh=g6MFH1scv5uKbfQTXIbowtuwn/4+2Qeygz1VdwFcDYg=; b=19sTKHp3wN/O8n5JblP7ZpQfO4
+	EFsfDrP7gN/umJY3M7Gash3l5EoCxUQ2RosLizsrKtXd0lhi/H7uLnjS+aLbPRzIkzlNfFbzcKFOn
+	4GxorcIrDxAgarben9WkoOQJhnox6F+C47SO8wnX2ViXk+E8utLlPIr7xpjqdYk//OxlWojVsPq+I
+	/psuN64HvgBxPzZ18Qnn29/hyo97Mw6VuPfKU5qIQ7wh9wokArZ1XWfrIbV+v9BHhgLIZ4Cd9hthj
+	WXo2vFbrYAlqXNM83SE5wbFDDqJpBG0P2kVNA/bHQ0wY4vBEuyQKnWFUxQw1HkTwE8rN6KarEmKs3
+	5goZg9aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozaMe-000bMK-3p; Mon, 28 Nov 2022 09:23:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ozaPb-000dEf-OY; Mon, 28 Nov 2022 09:26:51 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozaLM-000aks-77; Mon, 28 Nov 2022 09:22:29 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B950C6602ACE;
-	Mon, 28 Nov 2022 09:22:24 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669627345;
-	bh=l7ZG9TkqTdWaBRyskK4GczkMCb93J8ROfY3OVmuNmtg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oInpZUHXB7zOPYbBezlIZaWdf4PJgphAs20BHl/Gd0PfZj6uUQ/Xa3Zozwx68YaEV
-	 ny2z2PDfEjPaPXJkTuFd8/sVLlKe2qp+URst9xrhokjCaCEVGzAAAGt+erk8Ec1/R/
-	 AuINwOOSWAZPl9KXcI/K7C+029TB3hyAmf2blEZhiqmnsZcap23pG8rCg38UKi7vOR
-	 uyzdZl1Lah7K5fb+f3WK8/kB5QBkoKAPO3IKfL4JZBGrsbUpvvB4Fia0/G/ghi1nWg
-	 ijPdoxi227Ax/6l2osmpAXJeLP92bmqHNuqgU8v9uWD0knIB7D2etLp6sRvisWqqu9
-	 BhG1zWyDniF1g==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: tglx@linutronix.de
-Cc: maz@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	youlin.pei@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 4/4] irqchip: irq-mtk-cirq: Add support for System CIRQ on MT8192
-Date: Mon, 28 Nov 2022 10:22:17 +0100
-Message-Id: <20221128092217.36552-5-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221128092217.36552-1-angelogioacchino.delregno@collabora.com>
-References: <20221128092217.36552-1-angelogioacchino.delregno@collabora.com>
+	id 1ozaPY-000dAP-Mj
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 09:26:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=g6MFH1scv5uKbfQTXIbowtuwn/4+2Qeygz1VdwFcDYg=; b=n0ZjmQdSCitDeu367PSL5NciQR
+	+GNNftLYUTAycdBTYVhXzrUuzTHoDvILYKpGq/8m8bViZ+N9zgTZyYayWKsTHozKICY1amdhv+f9M
+	I4JGYNnsnQ3LHhgRq4+8nnFO7higw8eEbwBV9QjE/pvGF3VetksN79+eTf6sqXJUoND0=;
+Received: from p200300daa7225c0824436b361c345cd2.dip0.t-ipconnect.de ([2003:da:a722:5c08:2443:6b36:1c34:5cd2] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1ozaPL-004ytl-1G; Mon, 28 Nov 2022 10:26:35 +0100
+Message-ID: <14f4381a-d424-f84a-bc85-f4b25e6f1641@nbd.name>
+Date: Mon, 28 Nov 2022 10:26:33 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.0
+Subject: Re: [PATCH] wifi: mt76: mt7921e: introduce reboot notifier support
+Content-Language: en-US
+To: Deren Wu <Deren.Wu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <28482de35c4f1589dcf96b662a48bc558fe46e8f.1669361180.git.deren.wu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <28482de35c4f1589dcf96b662a48bc558fe46e8f.1669361180.git.deren.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_012228_431733_F0C4FCF1 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20221128_012648_854203_BE583DF8 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On some SoCs the System CIRQ register layout is slightly different,
-as there are more registers per function and in some cases other
-differences later in the layout: this is seen on at least MT8192,
-but it's also valid for some other "contemporary" SoCs both for
-Chromebooks and for smartphones.
+On 25.11.22 08:36, Deren Wu wrote:
+> From: Leon Yen <Leon.Yen@mediatek.com>
+> 
+> Some combinations of hosts cannnot detect mt7921e after reboot. The
+> interoperability issue is caused by the status mismatch between host
+> and chip fw. In such cases, the driver should stop chip activities
+> and reset chip to default state before reboot.
+> 
+> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+This doesn't just affect mt7921. There are some platforms where similar 
+issues have been reported with mt7915 or mt7615.
+I think we should move some parts of this to mt76 (and mt76-connac) core.
 
-Add the new "v2" register layout and use it if the compatible
-"mediatek,mt8192-cirq" is found.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/irqchip/irq-mtk-cirq.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
-index 4776ed6492fb..76bc0283e3b9 100644
---- a/drivers/irqchip/irq-mtk-cirq.c
-+++ b/drivers/irqchip/irq-mtk-cirq.c
-@@ -39,6 +39,18 @@ static const u32 mtk_cirq_regoffs_v1[] = {
- 	[CIRQ_CONTROL]	= 0x300,
- };
- 
-+static const u32 mtk_cirq_regoffs_v2[] = {
-+	[CIRQ_STA]	= 0x0,
-+	[CIRQ_ACK]	= 0x80,
-+	[CIRQ_MASK_SET]	= 0x180,
-+	[CIRQ_MASK_CLR]	= 0x200,
-+	[CIRQ_SENS_SET]	= 0x300,
-+	[CIRQ_SENS_CLR]	= 0x380,
-+	[CIRQ_POL_SET]	= 0x480,
-+	[CIRQ_POL_CLR]	= 0x500,
-+	[CIRQ_CONTROL]	= 0x600,
-+};
-+
- #define CIRQ_EN	0x1
- #define CIRQ_EDGE	0x2
- #define CIRQ_FLUSH	0x4
-@@ -277,6 +289,7 @@ static const struct of_device_id mtk_cirq_of_match[] = {
- 	{ .compatible = "mediatek,mt2701-cirq", .data = &mtk_cirq_regoffs_v1 },
- 	{ .compatible = "mediatek,mt8135-cirq", .data = &mtk_cirq_regoffs_v1 },
- 	{ .compatible = "mediatek,mt8173-cirq", .data = &mtk_cirq_regoffs_v1 },
-+	{ .compatible = "mediatek,mt8192-cirq", .data = &mtk_cirq_regoffs_v2 },
- 	{ /* sentinel */ }
- };
- 
--- 
-2.38.1
-
+- Felix
 
