@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA1D2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 20:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E0FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 20:47:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nBb+P0/n49Id7n7ZlG8fSGtAH3uSOCjmcnFinIp66gs=; b=N8OPdPtdrY2rHZ8oWovgRbjzGX
-	4b0+kW6Vk4xVzNDHVd4n46xzRvIPIl/UIKqQvR6rLKvEWTzsvjrPLkn1/8KlesP259QLjrWsHGMyh
-	61EfVd74bNAgATth5oYlwkfDt+d952mvA6IwUl+8qAO8ksNYmpmY8KDusHrUf55OHTce+58CBrUyQ
-	7mXXdPpotzXj8a1OZCEiO1gyY7eZyFaSVjKkvURb54kyqeEVhHw8/iGSQxPiFnSvUyWi6TP3J5+zt
-	4piqc6HjXIwuUSed+KLqYmcI5zr4bXfMQOHKOgghr46ZebxncLuzIUDYwH1xoAalK60Z98ItnY7Po
-	+VMv0RmQ==;
+	bh=+a308E9n0+BsJ+GD+yH9OTTarCe7rpTnFkBE4bloDA4=; b=oyuUTufeLtjOg70/vs9OJoPWjI
+	h+wTV1PI1QCcXq27EMM3o0+GI/NjZ+PDrMf7ZOWzAIEBvXON52JUc4HLJLNwoOfsSn7ah4Op5vuq2
+	6GgaSdKOq5Iredpkdfc+o9rnQbckMbkWIcZ9kyUakrUcv1iiiKBhkYZRNGQqt1nLt7KQmtStLfRl8
+	hzJeSHGNHo2Yz7ecOfWBJo752gX8CyhRn8a/G5VOTAmCU714tzry6qVEDvJvBvCU0Wo9UVGYmBWoD
+	n3kwM9UeUQP4RD+UxzY3JtDljQKTJn5t7si7aLrBXyDO2xuP/VZTPrMiOJ6mP5T9OSp7dRZ/iuW6P
+	M3sB6OIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozkzV-004LdA-7P; Mon, 28 Nov 2022 20:44:37 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1ozl2I-004MWa-Ta; Mon, 28 Nov 2022 20:47:30 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozkzR-004LaX-7V; Mon, 28 Nov 2022 20:44:35 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id k2-20020a17090a4c8200b002187cce2f92so15239034pjh.2;
-        Mon, 28 Nov 2022 12:44:29 -0800 (PST)
+	id 1ozl2G-004MVt-K1; Mon, 28 Nov 2022 20:47:29 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id w23so11351099ply.12;
+        Mon, 28 Nov 2022 12:47:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=nBb+P0/n49Id7n7ZlG8fSGtAH3uSOCjmcnFinIp66gs=;
-        b=fU8qukFdsMAw9M3IR/Uz+aCBg+OcMJv/R1U1B7fnrh1//qeaceCwWyi+wwn8n+b40C
-         UvFWgbeALna8ygBhyV2QnUs2CK8C4zeqFevfHGggvBwAtwok3G5ym5TuhvtlZSxPEidj
-         mCu78GsYp1MVJYemhrWgsnnS3u9LTlGWraMi1a6FLzTAUX37cEizr1JUxB2WWuMa4IOH
-         AAnMB9+pHJiF5iiJa6I3SUmvoOevK5GC276VR+BAj927mGJHbGeX77mAWvSxKPKG0LP7
-         qz7gjgE92DWvLbCi18WUNWS4TjfukB6yMOu9d4P1OwrSF/dcn/r2c7azW2G1ikt+rRu3
-         Bbmw==
+        bh=+a308E9n0+BsJ+GD+yH9OTTarCe7rpTnFkBE4bloDA4=;
+        b=KiOS99RBN/UCbLYsrhj0wGDMNNpqML3eSh3NkVw79KVu/q2xbFsucge1Fx8Vajm+p0
+         c+2z4unDH7Z4To9kAqmpgp2UA0PfpjjCnKNmCvpdScnjACHKayTBbRrFVgkwb4FxBZF7
+         0z7AwARUOAvjkl3FApNj1r+Sk0+FVTkVcxsgG3/Z1/1f+n8xRXc21D3ONcYzfo+YAhS7
+         4WUrruMY+5sLtfKwwDLJq6BthKWl6iRCYJIJCAcZi1koLvwqoqArp5aDX3GGFFwZtbRM
+         PWUfXplz1KHNY6q3Wi1sxKyiXzEF17s8ok52iwmUQvGKwrdoJ04xxScEihmBbTEIeXh9
+         7i+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nBb+P0/n49Id7n7ZlG8fSGtAH3uSOCjmcnFinIp66gs=;
-        b=M/6ajRj9PMIFKo8eF3Uhjeo+MQzUT7llQfduaSrDdvW+3Ipn8lY5IZlZkZ4gGoAppy
-         dbbjo30OU8b4Q8B0D7TSMFp+Viu90YqzMtwnP38AKxr6vCsLA+sLYixvJUvW1XoXK5W8
-         eaQrgotKzYpcATYj3i/ikRy0lpBR5Pz2mCezzsRurXvrz9OerQv3TtjQq6UmwftgxZmh
-         JEb5+21RznQsWIY0ZtTbiVm/LsVIlQxxgRPTkljjI/DOX3SrSkEfQ8Sb3UAIDcVuDNAF
-         054/g3s/yaefciR8XG4rNH5GC8EA9GrYXoSDMA6RI/2HBHpjPMeVU8+9XB+oA68YKZkZ
-         7wLQ==
-X-Gm-Message-State: ANoB5pnYDpkCmZpxk7K1sf5G6QBu4tSCTPt1WH1Kg93PNXm0EP7T0XWO
-	GAWZwOOHIGFVXGVoxn20Jko=
-X-Google-Smtp-Source: AA0mqf6vQCiSvx/+6VWhAHkNMd1v1xkv3c2ocMTBBfl1gCa5YPuS3GX/NyDzDEA3kZ6nnq4P03GRuA==
-X-Received: by 2002:a17:902:ecca:b0:189:ee1:23f with SMTP id a10-20020a170902ecca00b001890ee1023fmr35017558plh.75.1669668268572;
-        Mon, 28 Nov 2022 12:44:28 -0800 (PST)
+        bh=+a308E9n0+BsJ+GD+yH9OTTarCe7rpTnFkBE4bloDA4=;
+        b=eZumXFNcZuNx7SQ7QJkoyQ4FlMXeFY+eMLE9cUh6yfWsaiV65gBteE9eBYNb5rnDXM
+         TW7Itxt8t/lIaTomHo7eF7YZMCVtiHkYlxwTVdnKrcdLVZS1Wzut1iMw+3NOvs0TrLz0
+         bG4Tv6B9czn9R2lJh4q7C6mPpEBBBxhzFNuuPT4Pbv3F2q2OYT+lStXJ4cq1Q4afGdzy
+         6AEuva0SguY8UgOMPwTK1FrUpwsjSIHcryolc22Bh5xNYe/jKWjrtoqccs7CcVLdCN9T
+         hQq1G+1xivsyDM+tzjl1kiQ9Pq22L3tJRJHwv8SYWHYx91Z46ijZl72oA7UlZFL8nX9I
+         2A+Q==
+X-Gm-Message-State: ANoB5pm7a0lVO1VXyt+C+FknR2bk/AA+0GydNF2ergQoxnnr49OpXYCz
+	Di32IFVIi5FVnS84zOP7vHk=
+X-Google-Smtp-Source: AA0mqf5KR5J4KA6OryCqEhwhS5fiBTncCvtZXnlE1zasZUm34SA+YWcLNxdEIn+euwoZ//iuHt8gJA==
+X-Received: by 2002:a17:90a:de93:b0:219:4139:7589 with SMTP id n19-20020a17090ade9300b0021941397589mr4432484pjv.188.1669668447924;
+        Mon, 28 Nov 2022 12:47:27 -0800 (PST)
 Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id c17-20020a6566d1000000b0046f469a2661sm7257597pgw.27.2022.11.28.12.44.18
+        by smtp.googlemail.com with ESMTPSA id s6-20020a170902ea0600b0017f36638010sm9184618plg.276.2022.11.28.12.47.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Nov 2022 12:44:28 -0800 (PST)
-Message-ID: <c07e6089-5d87-2a4a-df1f-fbbd0c94136d@gmail.com>
-Date: Mon, 28 Nov 2022 12:44:16 -0800
+        Mon, 28 Nov 2022 12:47:27 -0800 (PST)
+Message-ID: <515a94f2-95b3-3c00-58d7-488deb16b64b@gmail.com>
+Date: Mon, 28 Nov 2022 12:47:15 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v3 net-next 08/10] dt-bindings: net: add generic
- ethernet-switch
+Subject: Re: [PATCH v3 net-next 09/10] dt-bindings: net: add generic
+ ethernet-switch-port binding
 Content-Language: en-US
 To: Colin Foster <colin.foster@in-advantage.com>,
  linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -90,14 +90,14 @@ Cc: John Crispin <john@phrozen.org>,
  <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  George McCollister <george.mccollister@gmail.com>
 References: <20221127224734.885526-1-colin.foster@in-advantage.com>
- <20221127224734.885526-9-colin.foster@in-advantage.com>
+ <20221127224734.885526-10-colin.foster@in-advantage.com>
 From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20221127224734.885526-9-colin.foster@in-advantage.com>
+In-Reply-To: <20221127224734.885526-10-colin.foster@in-advantage.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_124433_322807_672382AC 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20221128_124728_705719_B0795DCB 
+X-CRM114-Status: UNSURE (   9.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,10 +114,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 11/27/22 14:47, Colin Foster wrote:
-> The dsa.yaml bindings had references that can apply to non-dsa switches. To
-> prevent duplication of this information, keep the dsa-specific information
-> inside dsa.yaml and move the remaining generic information to the newly
-> created ethernet-switch.yaml.
+> The dsa-port.yaml binding had several references that can be common to all
+> ethernet ports, not just dsa-specific ones. Break out the generic bindings
+> to ethernet-switch-port.yaml they can be used by non-dsa drivers.
 > 
 > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
 > Suggested-by: Vladimir Oltean <olteanv@gmail.com>
