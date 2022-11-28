@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445EEC43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E78C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:10:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P0lzjUqPkXtCw2u3E1g0XvfNQEmHlZGE4XKWJ8ANQgc=; b=OJFjmfYhCR9gjDMl2rGt4mYpT3
-	lCDxETSVvghNhVACzW/CT/YskO2rxpqsPhXu7Ampds/EeAc9V3rc80iDVYWAAZdIdNZfbvpwqKzux
-	S7G8G2gvD4bCRchE5BA35MQN1yqnu+eUo0ZNXj0CXqu4zW6Zu1R0WZ53MgBkWVRxxnO6WUF+Z2zo0
-	Pz3PhdqHKpENBAYWdgmTaolA9kYeLaJh+6GYBKIr53P9TspUgX/CEc0ejZPpPeCLA+JvWdbfAmW7/
-	7OnFulQ6Y8kbkrjAeHmSZkFLkXK3e6FsljsC5M21YD+F/2Gm0K4Ixv4sgsCDal5QUfTRwj3aithXn
-	MzCMJ5YQ==;
+	bh=RAHYx+yC2L4aeoYHMLJ9WFBo8b/lAMkyPT/4vIdkWEk=; b=UxjsKwmrM+6Z1P1FKzyxcSj5Ug
+	GkZ2Xg6xSdDN1P8BAGYuoF8Deswt8pr3wvqOwveGLhdkr2fhzDHa2tS+CZ910xYloDStM3AEQ/TvV
+	/SRrz4F9b0G3UZOjt0i6r/FQMbsS+oEbKN5D8+XQ5Qa60T3/hHBOyiDX/1Aw/95m73bDZOYgf4cVj
+	WVwS0GRKR7daOJtAZTeemd0i9DcNaYXLmJYppAuaG8j4Gzx9vhp/EVjPlyq0CDiQOugTQENwbRnl+
+	08BmS1WUKAPesYgnwCBrXheqnwZicvroLEZo2RvbAPmNCAGnbhVRa1vLB/MComQzy3uNk+fOKqvSJ
+	E7zFQU/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTak-00Ep8d-FA; Mon, 28 Nov 2022 02:09:54 +0000
+	id 1ozTbI-00EpR5-6N; Mon, 28 Nov 2022 02:10:28 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTZf-00Eoef-C3; Mon, 28 Nov 2022 02:08:48 +0000
-X-UUID: b5eb4204810b4325953c64cb8720a479-20221127
+	id 1ozTZg-00Eof6-CG; Mon, 28 Nov 2022 02:08:49 +0000
+X-UUID: edf32a5f44764cf69fb207177c51f931-20221127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=P0lzjUqPkXtCw2u3E1g0XvfNQEmHlZGE4XKWJ8ANQgc=;
-	b=Dt3g9x33pAKLE695tnCh0SHI33sJdp2cj2Ssf+GzvPZg/Ry8cgrPiyeX1FXEhs4GLo5/2ZwNWE2bIGkcaSRr5N/rkLUB8FeL3QxPRcsbnmj1H2DwqdzOVgw3cS4ASuY40mBzdFusREM1WiDKusoZTAK5BLt0A3gr9e5zjGIQm0g=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RAHYx+yC2L4aeoYHMLJ9WFBo8b/lAMkyPT/4vIdkWEk=;
+	b=TY1jsitmzG9e5n4k6zMMRA+QxALcn4H2+2NghJVQjQbipvdvUkyIItGrwp46MyOzsOXF81BUUOBW96v2YX9Vccgh1zI24zMeKjaWBkpH8o/Go+hazf9bm6i/mN2Xz7gsOKHI4d1bxYaC3bClh950G5mOliULyFghA0SJxx5SLlc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:5f79c98a-cae2-4aba-8f15-9760e2f2ad01,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:2220f72f-2938-482e-aafd-98d66723b8a9,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:145e4303-0306-4ed0-a917-f4c985d81118,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:67a7721e-5e1d-4ab5-ab8e-3e04efc02b30,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b5eb4204810b4325953c64cb8720a479-20221127
+X-UUID: edf32a5f44764cf69fb207177c51f931-20221127
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 548800862; Sun, 27 Nov 2022 19:08:45 -0700
+	with ESMTP id 176038048; Sun, 27 Nov 2022 19:08:45 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 28 Nov 2022 10:07:49 +0800
+ 15.2.792.15; Mon, 28 Nov 2022 10:07:53 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 28 Nov 2022 10:07:49 +0800
+ Transport; Mon, 28 Nov 2022 10:07:51 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
 	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
@@ -59,9 +59,9 @@ CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
 	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
-Subject: [PATCH 5/9] dt-bindings: spi: mtk-snfi: add mt7986 IC snfi bindings
-Date: Mon, 28 Nov 2022 10:06:09 +0800
-Message-ID: <20221128020613.14821-6-xiangsheng.hou@mediatek.com>
+Subject: [PATCH 6/9] spi: mtk-snfi: add snfi sample delay and read latency adjustment
+Date: Mon, 28 Nov 2022 10:06:10 +0800
+Message-ID: <20221128020613.14821-7-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
 References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
@@ -70,9 +70,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_180847_447771_ACEA799E 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221127_180848_490662_AD0FC3F1 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,46 +86,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. add mt7986 IC bindings
-2. add optional nfi_hclk property which needed for mt7986
+Add snfi sample delay and read latency adjustment which can get
+from dts property.
 
 Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 ---
- .../devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml      | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/spi/spi-mtk-snfi.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-index 6e6e02c91780..ee20075cd0e7 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-@@ -26,6 +26,7 @@ properties:
-     enum:
-       - mediatek,mt7622-snand
-       - mediatek,mt7629-snand
-+      - mediatek,mt7986-snand
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index 85644308df23..e8587cf2aff2 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -195,6 +195,8 @@
+ #define DATA_READ_MODE_X4 2
+ #define DATA_READ_MODE_DUAL 5
+ #define DATA_READ_MODE_QUAD 6
++#define DATA_READ_LATCH_LAT GENMASK(9, 8)
++#define DATA_READ_LATCH_LAT_S 8
+ #define PG_LOAD_CUSTOM_EN BIT(7)
+ #define DATARD_CUSTOM_EN BIT(6)
+ #define CS_DESELECT_CYC_S 0
+@@ -205,6 +207,7 @@
  
-   reg:
-     items:
-@@ -36,14 +37,19 @@ properties:
-       - description: NFI interrupt
+ #define SNF_DLY_CTL3 0x548
+ #define SFCK_SAM_DLY_S 0
++#define SFCK_SAM_DLY GENMASK(5, 0)
  
-   clocks:
-+    minItems: 2
-     items:
-       - description: clock used for the controller
-       - description: clock used for the SPI bus
-+      - description: clock used for the AHB bus dma bus, this depends on
-+                     hardware design, so this is optional.
+ #define SNF_STA_CTL1 0x550
+ #define CUS_PG_DONE BIT(28)
+@@ -1368,6 +1371,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 	const struct of_device_id *dev_id;
+ 	struct spi_controller *ctlr;
+ 	struct mtk_snand *ms;
++	u32 val = 0;
+ 	int ret;
  
-   clock-names:
-+    minItems: 2
-     items:
-       - const: nfi_clk
-       - const: pad_clk
-+      - const: nfi_hclk
+ 	dev_id = of_match_node(mtk_snand_ids, np);
+@@ -1446,6 +1450,15 @@ static int mtk_snand_probe(struct platform_device *pdev)
+ 	// switch to SNFI mode
+ 	nfi_write32(ms, SNF_CFG, SPI_MODE);
  
-   nand-ecc-engine:
-     description: device-tree node of the accompanying ECC engine.
++	ret = of_property_read_u32(np, "rx-sample-delay", &val);
++	if (!ret)
++		nfi_rmw32(ms, SNF_DLY_CTL3, SFCK_SAM_DLY, val);
++
++	ret = of_property_read_u32(np, "rx-latch-latency", &val);
++	if (!ret)
++		nfi_rmw32(ms, SNF_MISC_CTL, DATA_READ_LATCH_LAT,
++			  val << DATA_READ_LATCH_LAT_S);
++
+ 	// setup an initial page format for ops matching page_cache_op template
+ 	// before ECC is called.
+ 	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
 -- 
 2.25.1
 
