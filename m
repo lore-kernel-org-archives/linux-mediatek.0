@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 625A3C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 10:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B34C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 11:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Vs91y4YHGaU4u34bShI3KgPuCoRDr3inolegFmFOmPY=; b=hcDN7gLmWWjF0FE4C24+5Diqoa
-	Xqjl+3ah52a9dPODlDvMRb/HgqkABSseRbMnhbQEkUbxNjXudY2zm0kHdzzUaSeIfVrzIEkmcJE/3
-	WFxjuz2oAk2fvs0kuUsqVYA/1dL4fP1SydVs5SF/fChqDecyGv+ym8J34bnxSpzUoxOeBCVSdcXS6
-	Dsng3XeHnnC1pJBu3nO16exeWq7P7w60ZtxjOX0J8ebpkY+LmjbvpcpD0Uizb6mjy6xTmU9QzRAL7
-	h/6ht3Ifw3urkE55MY7qk2lRAyDFood3WTNeBpHrPsBTkmeF90r7o6wxNBkepKmK8S1BcEQBTBNn/
-	Eo7Ju1yw==;
+	bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=; b=alrEtGKVFIE0bdgt6l+Xt1LTlT
+	stFoBMdbJ90+vJRhWkssaH/hVWQK5WCbgYwEhzXaD9Ovj7gnobJT26poOKJrlvpVh7RgaYlzDTQzg
+	u/HrZmRDAqqeFTzvGkaVz8JnzBiucahdUSXADQETLZMIpXwfu/JmmtrMIZ1atdRsNiSrdNjGP3FOf
+	khVbF+1VM/88W5OBDOTiUzAQFLt7wnLU0+1CALZ/HnPxnGXBEMJ19WLBbF6WNlDrm6shK7ONqIrg3
+	5nIVV4gV0y/QEjSGA8zsfLdYmzlx31TDUKmBjbcylPo4Hfi6QWY/VE7+s1ZGbADqqtc6anhJmLw4q
+	dNYzNLHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozbhX-0016l1-Ij; Mon, 28 Nov 2022 10:49:27 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1ozbs7-0019ZZ-3M; Mon, 28 Nov 2022 11:00:23 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozbhU-0016jk-Ml
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 10:49:26 +0000
-Received: by mail-ed1-x529.google.com with SMTP id d20so4077042edn.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 02:49:23 -0800 (PST)
+	id 1ozbru-0019UV-M2
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 11:00:11 +0000
+Received: by mail-ej1-x633.google.com with SMTP id bj12so24695348ejb.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 03:00:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:message-id:content-transfer-encoding:mime-version:subject
          :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vs91y4YHGaU4u34bShI3KgPuCoRDr3inolegFmFOmPY=;
-        b=g1wT1jbJufkUIzwh72l46wsx1uYKO6vUXth/QRDGsWDYmz2itJuh2wgRz8gFB54ual
-         76YJb90ReXIyTt4Key/8F9QfduafhRtX1068ym/ARwB/w3JJhr4W7HkfdQ4HaSrDoWWJ
-         9yhqFuIIlIl5iPlcxM9r1KT+oCOFR18mXqDpQ=
+        bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=;
+        b=h5o9ZaEMnmeJX3u40x3jnQaj68fWIfoDhpsEQ+uOJwWZ26WPgcBwccF8lp6Py+GV1y
+         EaWDSfD1LmPrSaszCw2l58dT9n2shvErQOB1QYrBOtp20rTPAzaGGutEvhKFo8zaDjvV
+         1b3L8pQY4TzcHVDoUv9BmoLbS7difwkG2VgbY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:message-id:content-transfer-encoding:mime-version:subject
          :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Vs91y4YHGaU4u34bShI3KgPuCoRDr3inolegFmFOmPY=;
-        b=bcP/djGTSyt9gGxfYfQpJR/IUIqALqy4qld87RR3MjNMLQUmGwAuvKZ3OHBejF4Mdg
-         O8LtIG9c7im2KkcUey/7Hj+CjeWpPQwbgoDigPhuYZFTehOuZrpbqgqytDgJGWduSWqM
-         PL2tVAHlImggATcFbDa38jZwFehTAxE1oLPGstjZnhsc5pD06XGKy9CD7JoCgnDMxg+u
-         11IWzyBDxBqQlNBJyH1VzdWF4ZlwYhhgfjcLF4SNo4+LyvA5ppFHLh3xbkn0x8u72ueU
-         NxstDTnnevzKY8fZ50eJa03KEfAdG6S24mpXu5Nu46mEpcqolGkp8sWYevmUlGidbZS2
-         +4iw==
-X-Gm-Message-State: ANoB5plY91Zpr6sgBnBshzw3rprIYCtKyAp4VvzNSMSZLzzqu7SYtdUf
-	Pm79ryObbLS/qfE/+ZJfap2m7A==
-X-Google-Smtp-Source: AA0mqf5hrXjmKOSXxjiJqKrhc6FaO+hU2zOidPRgql2hNwlfmPs5esNtOtTjU/0Dp9iwo7rwPZ433w==
-X-Received: by 2002:a05:6402:25c6:b0:461:b825:d7cb with SMTP id x6-20020a05640225c600b00461b825d7cbmr23424438edb.167.1669632562801;
-        Mon, 28 Nov 2022 02:49:22 -0800 (PST)
+        bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=;
+        b=OYou00guuTTVhV1bJDdNgdYIfwjnFNtWFLItqs/QXtI2O33KUZ7XoRmVXC/QnrHO0b
+         BXCIELbg4fcZFfWgC6N8u24KEyT1HjaSJCWoIVMbXpo5oDGgtenApeFtrZ6Rg6bIAVvZ
+         SUod2UbewY7jNzDEIy660IuHiVRvYq3HQtS5e1QdGvbv1V/fCCon0S7oGwqdeQaQ5o/2
+         FjONIJ1hjARERjiry5EhFvKknm5fXwo/H7XI7mT4QgokSuO0YwbAhxuaiXEyfP9/HBfW
+         3t+HxA4+xh3QS+TdrFdOvPUPpcxWTmTeglgkO17QPZU+I4tosHSqIHllEftYawD1LMPM
+         5cbA==
+X-Gm-Message-State: ANoB5pko34TfyyZuxoCG3GnrnhwzpvK+q1wKQTYRk//vqyhuiUQ62njp
+	G0GvW46vPSRnwQcr5N6NV0FJDQ==
+X-Google-Smtp-Source: AA0mqf4LpBI8mH+rTkJern/KmNlS838lVLrfISixZ5MmZ7sHkwspV51Z2RZT6R3QzAH/MKuIJ0nhHQ==
+X-Received: by 2002:a17:906:a983:b0:7b8:31b1:b23f with SMTP id jr3-20020a170906a98300b007b831b1b23fmr26249228ejb.591.1669633206252;
+        Mon, 28 Nov 2022 03:00:06 -0800 (PST)
 Received: from alco.roam.corp.google.com (80.71.134.83.ipv4.parknet.dk. [80.71.134.83])
-        by smtp.gmail.com with ESMTPSA id e16-20020a170906315000b0078d793e7927sm4804807eje.4.2022.11.28.02.49.22
+        by smtp.gmail.com with ESMTPSA id ku3-20020a170907788300b0078c213ad441sm4812218ejc.101.2022.11.28.03.00.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Nov 2022 02:49:22 -0800 (PST)
+        Mon, 28 Nov 2022 03:00:05 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 28 Nov 2022 11:49:16 +0100
-Subject: [PATCH] ASoC: mediatek: mt8173: Enable IRQ when pdata is ready
+Date: Mon, 28 Nov 2022 12:00:01 +0100
+Subject: [PATCH] spi: mediatek: Enable irq when pdata is ready
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221128-mt8173-afe-v1-0-70728221628f@chromium.org>
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
- Ricardo Ribalda <ribalda@chromium.org>
+Message-Id: <20221128-spi-mt65xx-v1-0-509266830665@chromium.org>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ricardo Ribalda <ribalda@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org
 X-Mailer: b4 0.11.0-dev-696ae
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2420; i=ribalda@chromium.org;
- h=from:subject:message-id; bh=1iNfBQprbCL5uuwJdOOHqaHKJMFyiY6IxXgcAY+v+5g=;
- b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjhJIviHDnwbhEMYFc1DDyoI7BOTyJsA2fKfNMrK8p
- kvF64PuJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY4SSLwAKCRDRN9E+zzrEiP7nD/
- 44biNT3txpSfvfha5zX+nfGnR6vEZ5/aUznIE7t3v5EjRczkRaxGRDUahFKxVrfRp0FA49fA7X4sFd
- KVwoYZDahx0sO2UZxEkDCC2LgvSbZzCEdIBWK5khVTH5HskDhrUhnGNGMnla7oNl7syeaiWE2TK0M9
- N1fva9c3htr0ZJ4TTVsX3/QgzTcX3yjBBGsWuEEMKJOsZbv2Etaxg5SdJ9iiHbLW/Hy9Zf5gHWTx1J
- gscAlxKYeJVhkbwzm14KK4VZvycIxGcN7ct4cPbdxBz9r7fmPE1hSgAgqGX8Bw2awcXoEpEe0eOuCs
- yxvMeHXMK7dqnwhM+kXYPhljHkACNAwQORPRj1kvh+UnQQ/rE9yW9+5vyXrUGT0h8YsjMYqXSdMu9p
- fqp2TviL9spcEmukM+bgvHcAr/gzuJE+2xWosZ9Jt+Ybc0kwbc2pk755JkN7A5i2TdRHUz86L2xwhZ
- Qqz5NG6qp+qhX6wxx/dEiBOKhrr3MlAyVNVRohBN+iuAJ4ZfirvCLaI6Q/9YgyvlXszvfCWDna9Len
- bTmuYjX7Dqe1S6kyc25W/v6t+rlWao7KXbvFxUuRa0trMISstb93p+uLXVzc9eHR5uqgp+sralQNnL
- hu3L2ogYp6R3e3Gj58KOCtpPWzOgnY4fNwe77KAuxySKgrqpyu2TSBpelY0g==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1943; i=ribalda@chromium.org;
+ h=from:subject:message-id; bh=ZM8EpoUpJvky3qvHPm0h+aUGkH0jg+w0Hxbl4l42SQ0=;
+ b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjhJSy24ik16jMlF5x2yBj1XDSVYbw1Ttx2xgaYpdg
+ PRJjjOqJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY4SUsgAKCRDRN9E+zzrEiEgYEA
+ CGG7z/n18b8jhUn+olLZ/7A7n4m4s1/aTx0bJ8nwXO5rPTAuq6kV6cpMiiYj1duMK6N+1MLRuVHHPg
+ c7i1Hj32bRjRv+XNNGsd3r5Yty83sMQDkva9tsj2IJ3+hNn0scOHih16CacBebGdLfaiU0sgBKwM28
+ uiqcCwcTh1gtxaGJx3EeK56m1E4PJc8EzuhqM5Blzj1PdoJyChKtkiZY8eXrlifGem0LoqUzHgXyHs
+ XBR2JYEIfUNDGOhKbScPHgYNWdMwWpOFBtybfouI1oTnEk0soJtOaS7FxfnP9bctHouLnakmVkcwEz
+ YJqq14kU5nT/XZBw5CLgowtPaVoLFCQ2x2SiZ8JKBGUDwspHJfvHwqTdghuRCcZpA5ZCz/WzGv2xg+
+ ODGEjhNYOi0s09zBYEOnJh6TAVKkTKjqIVsX7WsN/g8yWSbkblCqXnv/k7ewoyXVSw2JzuE5IhGEkN
+ HtOcAQla8GLdwknrrJghh/kSo8cF0KtcK7+YOMAzfU8dptYovwUp0oaYZnrOFn4Z3WUVKBXyE5m5iu
+ 8S65QPBq4cf8i/mKPM/UZSmH5p9OUwVTQz3I7LrrNq0oViGapj3+J8HOPHX9kOjkWO3y093TU4uXww
+ 3Sb/4IHqTcla56jtdqq6CCIZQFwik8/pTr8pgA9mRkBBXrr6pgvTT1qES6pg==
 X-Developer-Key: i=ribalda@chromium.org; a=openpgp;
  fpr=9EC3BB66E2FC129A6F90B39556A0D81F9F782DA9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_024924_795667_09692334 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20221128_030010_729502_62E68DC4 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,70 +105,58 @@ before we are ready to handle it.
 
 Fixes:
 
-[    2.334737] Unable to handle kernel read from unreadable memory at virtual address 00000000000001e4
-[    2.522601] Call trace:
-[    2.525040]  regmap_read+0x1c/0x80
-[    2.528434]  mt8173_afe_irq_handler+0x40/0xf0
+[    0.832328] Unable to handle kernel read from unreadable memory at virtual address 0000000000000010
+[    1.040343] Call trace:
+[    1.040347]  mtk_spi_can_dma+0xc/0x40
 ...
-[    2.598921]  start_kernel+0x338/0x42c
+[    1.262265]  start_kernel+0x338/0x42c
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
-To: Liam Girdwood <lgirdwood@gmail.com>
 To: Mark Brown <broonie@kernel.org>
-To: Jaroslav Kysela <perex@perex.cz>
-To: Takashi Iwai <tiwai@suse.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: alsa-devel@alsa-project.org
+Cc: linux-spi@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-mediatek@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 ---
- sound/soc/mediatek/mt8173/mt8173-afe-pcm.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/spi/spi-mt65xx.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-index dcaeeeb8aac7..bc155dd937e0 100644
---- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-@@ -1070,16 +1070,6 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index d6aff909fc36..6de8360e5c2a 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -1192,11 +1192,6 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 	else
+ 		dma_set_max_seg_size(dev, SZ_256K);
  
- 	afe->dev = &pdev->dev;
- 
--	irq_id = platform_get_irq(pdev, 0);
--	if (irq_id <= 0)
--		return irq_id < 0 ? irq_id : -ENXIO;
--	ret = devm_request_irq(afe->dev, irq_id, mt8173_afe_irq_handler,
--			       0, "Afe_ISR_Handle", (void *)afe);
--	if (ret) {
--		dev_err(afe->dev, "could not request_irq\n");
--		return ret;
--	}
+-	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
+-			       IRQF_TRIGGER_NONE, dev_name(dev), master);
+-	if (ret)
+-		return dev_err_probe(dev, ret, "failed to register irq\n");
 -
- 	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(afe->base_addr))
- 		return PTR_ERR(afe->base_addr);
-@@ -1185,6 +1175,16 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto err_cleanup_components;
+ 	mdata->parent_clk = devm_clk_get(dev, "parent-clk");
+ 	if (IS_ERR(mdata->parent_clk))
+ 		return dev_err_probe(dev, PTR_ERR(mdata->parent_clk),
+@@ -1266,6 +1261,13 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, ret, "failed to register master\n");
+ 	}
  
-+	irq_id = platform_get_irq(pdev, 0);
-+	if (irq_id <= 0)
-+		return irq_id < 0 ? irq_id : -ENXIO;
-+	ret = devm_request_irq(afe->dev, irq_id, mt8173_afe_irq_handler,
-+			       0, "Afe_ISR_Handle", (void *)afe);
++	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
++			       IRQF_TRIGGER_NONE, dev_name(dev), master);
 +	if (ret) {
-+		dev_err(afe->dev, "could not request_irq\n");
-+		goto err_pm_disable;
++		pm_runtime_disable(dev);
++		return dev_err_probe(dev, ret, "failed to register irq\n");
 +	}
 +
- 	dev_info(&pdev->dev, "MT8173 AFE driver initialized.\n");
  	return 0;
+ }
  
 
 ---
 base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
-change-id: 20221128-mt8173-afe-5fda4512e8b5
+change-id: 20221128-spi-mt65xx-b92c9ca96ffa
 
 Best regards,
 -- 
