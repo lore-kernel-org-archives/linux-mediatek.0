@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61C5C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B24D8C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7G/kY4Z4RzGLCu0pIWPbVRiL871EYMi+z76vihOlYOg=; b=2k0jDZhLTidoBMsAL8+dlsNrX7
-	750omjqx7K0IbJqjM/5WVRy+Cw2+nKmjufiiIgK7BykTsrAiJ30PJQyn7IJ0krDoPzG8sw56TxMYQ
-	yMDhEbsHmrhASlZkvN5aa+iUqpAi/JJ+0mkdKd4Igl2HOwwuCXUCJ+MUqHBmfngTU0y94rjO0949o
-	hJXJtE0mzEsJIRFr9IQdl3wwg+rJkyZkbDgbK5oA7ZM3MJtCED3xWctOU8GkGItafiYIkTGQ+XD53
-	lU3bwHPimn3q8trTOwtTnZOYmEDeDpEgPmMLrfhcKlopyPRBoVlqswNkZUDbSgcoFABjh/0rOIKNj
-	40lkY27w==;
+	bh=479YBqB7D3YUT4aLc4suZrRCmV+3rhzglGjA8sFA9To=; b=kbwH1H4YPX88MUHP7a9OOvoajZ
+	ob2esC0mW4x8jqWRzP0B/f2TRJQnpi5uk5MgjTc1hWTNCz9W8hHuzG+nrsOuAKwTA3JB4T0iQ01KH
+	z4klSTtcIJp8R5QkHKYf3I14fYMD9G/NPfaDyQmb/yjbXrCfvuVzzRGeLRqRtXRIuf6UtWej9/rja
+	O2JhxeXII+1B6euVi+cv16lQvcSOGM2JeNWikid33+BDQW3+aTv/L54/VEnTLJkvB2YkiwqPspAc1
+	gNJojf+90J3KGPTaeApbsXBwx5G0N+Fek270vVhtj3q9TGfug1rnd7TYJneN0dnHBOfP7XwiIJr0N
+	NAvttlYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTZW-00EocS-Fk; Mon, 28 Nov 2022 02:08:38 +0000
+	id 1ozTZr-00EoiO-Mq; Mon, 28 Nov 2022 02:08:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozTZR-00EoWf-8K; Mon, 28 Nov 2022 02:08:36 +0000
-X-UUID: 9eab75704ecd4acd994ea4c1f5fe5f04-20221127
+	id 1ozTZR-00EoXK-8q; Mon, 28 Nov 2022 02:08:36 +0000
+X-UUID: 7948868615f04ce496ab05be8b3e5025-20221127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7G/kY4Z4RzGLCu0pIWPbVRiL871EYMi+z76vihOlYOg=;
-	b=roFZtU+DZ/6IpsXATm51WxO6KWnpLc2k1xCLapGCU9JkJ6OUUupzqVsR0b0eBHn5+0huKc4t/vIwz9crgU+LDIeeVakL0TAQjpL/zebC3dU5UGVocIryV9yT6sKRPMXitjIdMNAXsM5A2CYsIm3VGEYy3FV9PEFc7cI08Zmifp4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=479YBqB7D3YUT4aLc4suZrRCmV+3rhzglGjA8sFA9To=;
+	b=mWKzeOWCbpOBmBlP7ZQUkcXdrAr6DfZrpQZGY0lWOJ9bnnpDd7JoKUbtjhvcyh8Ym/Ti1o63RFywQLEiZOpem4EZ/jj4E7KhvXHFeJ/AlojPVeEAWrXRH0VbRatvKrcZ2MKiFKs/fPPvLgJvayw/bqBETZDT1v3bjt5Ypwgnkow=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:bfcfe70e-8b5f-46ce-a9bf-296a02860099,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:22a4721e-5e1d-4ab5-ab8e-3e04efc02b30,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:ccc7f7d5-6ac0-4263-ad00-b411dae56474,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:7f1cf72f-2938-482e-aafd-98d66723b8a9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 9eab75704ecd4acd994ea4c1f5fe5f04-20221127
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 7948868615f04ce496ab05be8b3e5025-20221127
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1770886313; Sun, 27 Nov 2022 19:08:25 -0700
+	with ESMTP id 1726154957; Sun, 27 Nov 2022 19:08:23 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 28 Nov 2022 10:07:38 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 28 Nov 2022 10:07:47 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 28 Nov 2022 10:07:37 +0800
+ Transport; Mon, 28 Nov 2022 10:07:45 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
 	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
@@ -59,9 +59,9 @@ CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
 	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
-Subject: [PATCH 1/9] spi: mtk-snfi: add snfi support for mt7986 IC
-Date: Mon, 28 Nov 2022 10:06:05 +0800
-Message-ID: <20221128020613.14821-2-xiangsheng.hou@mediatek.com>
+Subject: [PATCH 4/9] mtd: nand: ecc-mtk: add ecc support fot mt7986 IC
+Date: Mon, 28 Nov 2022 10:06:08 +0800
+Message-ID: <20221128020613.14821-5-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
 References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
@@ -70,8 +70,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_180833_342009_5D4D95D6 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20221127_180833_345529_0B391DBE 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,106 +86,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add snfi support for mt7986 IC
+add ecc support fot mt7986 IC
 
 Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 ---
- drivers/spi/spi-mtk-snfi.c | 29 +++++++++++++++++++++++++++--
- 1 file changed, 27 insertions(+), 2 deletions(-)
+ drivers/mtd/nand/ecc-mtk.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index d66bf9762557..fa8412ba20e2 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -126,7 +126,8 @@
- #define STR_DATA BIT(0)
- 
- #define NFI_STA 0x060
--#define NFI_NAND_FSM GENMASK(28, 24)
-+#define NFI_NAND_FSM_7622 GENMASK(28, 24)
-+#define NFI_NAND_FSM_7986 GENMASK(29, 23)
- #define NFI_FSM GENMASK(19, 16)
- #define READ_EMPTY BIT(12)
- 
-@@ -158,6 +159,7 @@
- #define MAS_WR GENMASK(5, 3)
- #define MAS_RDDLY GENMASK(2, 0)
- #define NFI_MASTERSTA_MASK_7622 (MAS_ADDR | MAS_RD | MAS_WR | MAS_RDDLY)
-+#define NFI_MASTERSTA_MASK_7986 3
- 
- // SNFI registers
- #define SNF_MAC_CTL 0x500
-@@ -220,6 +222,11 @@
- 
- static const u8 mt7622_spare_sizes[] = { 16, 26, 27, 28 };
- 
-+static const u8 mt7986_spare_sizes[] = {
-+	16, 26, 27, 28, 32, 36, 40, 44, 48, 49, 50, 51, 52, 62, 61, 63, 64, 67,
-+	74
-+};
-+
- struct mtk_snand_caps {
- 	u16 sector_size;
- 	u16 max_sectors;
-@@ -230,6 +237,7 @@ struct mtk_snand_caps {
- 	bool bbm_swap;
- 	bool empty_page_check;
- 	u32 mastersta_mask;
-+	u32 nandfsm_mask;
- 
- 	const u8 *spare_sizes;
- 	u32 num_spare_size;
-@@ -244,6 +252,7 @@ static const struct mtk_snand_caps mt7622_snand_caps = {
- 	.bbm_swap = false,
- 	.empty_page_check = false,
- 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
-+	.nandfsm_mask = NFI_NAND_FSM_7622,
- 	.spare_sizes = mt7622_spare_sizes,
- 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
- };
-@@ -257,10 +266,25 @@ static const struct mtk_snand_caps mt7629_snand_caps = {
- 	.bbm_swap = true,
- 	.empty_page_check = false,
- 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
-+	.nandfsm_mask = NFI_NAND_FSM_7622,
- 	.spare_sizes = mt7622_spare_sizes,
- 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
+diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
+index 9f9b201fe706..c2f6cfa76a04 100644
+--- a/drivers/mtd/nand/ecc-mtk.c
++++ b/drivers/mtd/nand/ecc-mtk.c
+@@ -79,6 +79,10 @@ static const u8 ecc_strength_mt7622[] = {
+ 	4, 6, 8, 10, 12
  };
  
-+static const struct mtk_snand_caps mt7986_snand_caps = {
-+	.sector_size = 1024,
-+	.max_sectors = 8,
-+	.fdm_size = 8,
-+	.fdm_ecc_size = 1,
-+	.fifo_size = 64,
-+	.bbm_swap = true,
-+	.empty_page_check = true,
-+	.mastersta_mask = NFI_MASTERSTA_MASK_7986,
-+	.nandfsm_mask = NFI_NAND_FSM_7986,
-+	.spare_sizes = mt7986_spare_sizes,
-+	.num_spare_size = ARRAY_SIZE(mt7986_spare_sizes)
++static const u8 ecc_strength_mt7986[] = {
++	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
 +};
 +
- struct mtk_snand_conf {
- 	size_t page_size;
- 	size_t oob_size;
-@@ -360,7 +384,7 @@ static int mtk_nfi_reset(struct mtk_snand *snf)
- 	}
+ enum mtk_ecc_regs {
+ 	ECC_ENCPAR00,
+ 	ECC_ENCIRQ_EN,
+@@ -483,6 +487,17 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
+ 	.pg_irq_sel = 0,
+ };
  
- 	ret = readl_poll_timeout(snf->nfi_base + NFI_STA, val,
--				 !(val & (NFI_FSM | NFI_NAND_FSM)), 0,
-+				 !(val & (NFI_FSM | snf->caps->nandfsm_mask)), 0,
- 				 SNFI_POLL_INTERVAL);
- 	if (ret) {
- 		dev_err(snf->dev, "Failed to reset NFI\n");
-@@ -1295,6 +1319,7 @@ static irqreturn_t mtk_snand_irq(int irq, void *id)
- static const struct of_device_id mtk_snand_ids[] = {
- 	{ .compatible = "mediatek,mt7622-snand", .data = &mt7622_snand_caps },
- 	{ .compatible = "mediatek,mt7629-snand", .data = &mt7629_snand_caps },
-+	{ .compatible = "mediatek,mt7986-snand", .data = &mt7986_snand_caps },
++static const struct mtk_ecc_caps mtk_ecc_caps_mt7986 = {
++	.err_mask = 0x1f,
++	.err_shift = 8,
++	.ecc_strength = ecc_strength_mt7986,
++	.ecc_regs = mt2712_ecc_regs,
++	.num_ecc_strength = 11,
++	.ecc_mode_shift = 5,
++	.parity_bits = 14,
++	.pg_irq_sel = 1,
++};
++
+ static const struct of_device_id mtk_ecc_dt_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt2701-ecc",
+@@ -493,6 +508,9 @@ static const struct of_device_id mtk_ecc_dt_match[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt7622-ecc",
+ 		.data = &mtk_ecc_caps_mt7622,
++	}, {
++		.compatible = "mediatek,mt7986-ecc",
++		.data = &mtk_ecc_caps_mt7986,
+ 	},
  	{},
  };
- 
 -- 
 2.25.1
 
