@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B34C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 11:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 419B5C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 11:21:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=; b=alrEtGKVFIE0bdgt6l+Xt1LTlT
-	stFoBMdbJ90+vJRhWkssaH/hVWQK5WCbgYwEhzXaD9Ovj7gnobJT26poOKJrlvpVh7RgaYlzDTQzg
-	u/HrZmRDAqqeFTzvGkaVz8JnzBiucahdUSXADQETLZMIpXwfu/JmmtrMIZ1atdRsNiSrdNjGP3FOf
-	khVbF+1VM/88W5OBDOTiUzAQFLt7wnLU0+1CALZ/HnPxnGXBEMJ19WLBbF6WNlDrm6shK7ONqIrg3
-	5nIVV4gV0y/QEjSGA8zsfLdYmzlx31TDUKmBjbcylPo4Hfi6QWY/VE7+s1ZGbADqqtc6anhJmLw4q
-	dNYzNLHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Dj5C/7n4mNWmATWSgG/BPuJr8HGmEzaAhNT6x901UFU=; b=ouehlHNSUn4RrUpSt9yWjtSXT/
+	GbqWDkVIF4BDGPeAq8trgCLM7ScFnD3YRGkjmsN+wRpsw3CTL17DYXzWVEVjfX4WynMdIwfJ6px4u
+	1ld7S0Q28gw9rMRaT/U3712o+Gmt68MzOY4RrwFKybLhbwkT1RfylkUbe6jxmZhEqFxVRhTkBMKu9
+	baiTDbBj1JRQTUIuhvNpTaKiugXYwOjPK1GYYWi3FFqS6mZOqH2XB0k9jUXchvBkQzn+NnHkAFBXt
+	uQ/h185i5wDV3ymPxwRgQQwSATBLGhzKi5ZilkQ6yiclx39iPsSd9V5iRAVc4WLbCtDysabYf1316
+	WSL0TWTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozbs7-0019ZZ-3M; Mon, 28 Nov 2022 11:00:23 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1ozcC1-001FZM-KG; Mon, 28 Nov 2022 11:20:57 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozbru-0019UV-M2
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 11:00:11 +0000
-Received: by mail-ej1-x633.google.com with SMTP id bj12so24695348ejb.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 03:00:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=;
-        b=h5o9ZaEMnmeJX3u40x3jnQaj68fWIfoDhpsEQ+uOJwWZ26WPgcBwccF8lp6Py+GV1y
-         EaWDSfD1LmPrSaszCw2l58dT9n2shvErQOB1QYrBOtp20rTPAzaGGutEvhKFo8zaDjvV
-         1b3L8pQY4TzcHVDoUv9BmoLbS7difwkG2VgbY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=n/FObQx7gNNEzu7Fz/r+02A9P2+kih+CkY8d1AEZ/l8=;
-        b=OYou00guuTTVhV1bJDdNgdYIfwjnFNtWFLItqs/QXtI2O33KUZ7XoRmVXC/QnrHO0b
-         BXCIELbg4fcZFfWgC6N8u24KEyT1HjaSJCWoIVMbXpo5oDGgtenApeFtrZ6Rg6bIAVvZ
-         SUod2UbewY7jNzDEIy660IuHiVRvYq3HQtS5e1QdGvbv1V/fCCon0S7oGwqdeQaQ5o/2
-         FjONIJ1hjARERjiry5EhFvKknm5fXwo/H7XI7mT4QgokSuO0YwbAhxuaiXEyfP9/HBfW
-         3t+HxA4+xh3QS+TdrFdOvPUPpcxWTmTeglgkO17QPZU+I4tosHSqIHllEftYawD1LMPM
-         5cbA==
-X-Gm-Message-State: ANoB5pko34TfyyZuxoCG3GnrnhwzpvK+q1wKQTYRk//vqyhuiUQ62njp
-	G0GvW46vPSRnwQcr5N6NV0FJDQ==
-X-Google-Smtp-Source: AA0mqf4LpBI8mH+rTkJern/KmNlS838lVLrfISixZ5MmZ7sHkwspV51Z2RZT6R3QzAH/MKuIJ0nhHQ==
-X-Received: by 2002:a17:906:a983:b0:7b8:31b1:b23f with SMTP id jr3-20020a170906a98300b007b831b1b23fmr26249228ejb.591.1669633206252;
-        Mon, 28 Nov 2022 03:00:06 -0800 (PST)
-Received: from alco.roam.corp.google.com (80.71.134.83.ipv4.parknet.dk. [80.71.134.83])
-        by smtp.gmail.com with ESMTPSA id ku3-20020a170907788300b0078c213ad441sm4812218ejc.101.2022.11.28.03.00.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Nov 2022 03:00:05 -0800 (PST)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 28 Nov 2022 12:00:01 +0100
-Subject: [PATCH] spi: mediatek: Enable irq when pdata is ready
+	id 1ozcBi-001FLp-Fc; Mon, 28 Nov 2022 11:20:40 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 770D46600012;
+	Mon, 28 Nov 2022 11:20:33 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669634434;
+	bh=dE20A2/OTzcHoFZjonpiFTdjhVa0lqqfrLGgjF3xe2I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=RPdzqVktr1JSiTCwjxg5t2lBvjIZVJu8cFhNojXxoE1yABV6riAbAgdmQ+XRbf/nW
+	 XeedMk8iCjPyspka3o+GP7OSVq26m4IOMiNAAEPYuMu+3oYD5B+Ofk2ftlQ6gRXd3D
+	 tZT3T9GHpRqzA7fneYJ78q6eL5uZ0htJm32mscIouWjEAFwNzsb9LBbNu44hBOkJN8
+	 VO/EljAOUlrbGjOLJEu/qWjNVBqS1TQmyuTicEoZ1xoRT8A2zVq3dLgpHccpWwzPjh
+	 5jcOWVV0+R61xODESb57J6nXijp+4DSXrJ0xdhVbY6GZjrYBOQDMWHp+g2HIufSU40
+	 yvyyXPiptvQNA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: krzysztof.kozlowski+dt@linaro.org
+Cc: thierry.reding@gmail.com,
+	u.kleine-koenig@pengutronix.de,
+	robh+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 0/2] pwm-mediatek: Convert to schema and fixes
+Date: Mon, 28 Nov 2022 12:20:26 +0100
+Message-Id: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20221128-spi-mt65xx-v1-0-509266830665@chromium.org>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Ricardo Ribalda <ribalda@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org
-X-Mailer: b4 0.11.0-dev-696ae
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1943; i=ribalda@chromium.org;
- h=from:subject:message-id; bh=ZM8EpoUpJvky3qvHPm0h+aUGkH0jg+w0Hxbl4l42SQ0=;
- b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjhJSy24ik16jMlF5x2yBj1XDSVYbw1Ttx2xgaYpdg
- PRJjjOqJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY4SUsgAKCRDRN9E+zzrEiEgYEA
- CGG7z/n18b8jhUn+olLZ/7A7n4m4s1/aTx0bJ8nwXO5rPTAuq6kV6cpMiiYj1duMK6N+1MLRuVHHPg
- c7i1Hj32bRjRv+XNNGsd3r5Yty83sMQDkva9tsj2IJ3+hNn0scOHih16CacBebGdLfaiU0sgBKwM28
- uiqcCwcTh1gtxaGJx3EeK56m1E4PJc8EzuhqM5Blzj1PdoJyChKtkiZY8eXrlifGem0LoqUzHgXyHs
- XBR2JYEIfUNDGOhKbScPHgYNWdMwWpOFBtybfouI1oTnEk0soJtOaS7FxfnP9bctHouLnakmVkcwEz
- YJqq14kU5nT/XZBw5CLgowtPaVoLFCQ2x2SiZ8JKBGUDwspHJfvHwqTdghuRCcZpA5ZCz/WzGv2xg+
- ODGEjhNYOi0s09zBYEOnJh6TAVKkTKjqIVsX7WsN/g8yWSbkblCqXnv/k7ewoyXVSw2JzuE5IhGEkN
- HtOcAQla8GLdwknrrJghh/kSo8cF0KtcK7+YOMAzfU8dptYovwUp0oaYZnrOFn4Z3WUVKBXyE5m5iu
- 8S65QPBq4cf8i/mKPM/UZSmH5p9OUwVTQz3I7LrrNq0oViGapj3+J8HOPHX9kOjkWO3y093TU4uXww
- 3Sb/4IHqTcla56jtdqq6CCIZQFwik8/pTr8pgA9mRkBBXrr6pgvTT1qES6pg==
-X-Developer-Key: i=ribalda@chromium.org; a=openpgp;
- fpr=9EC3BB66E2FC129A6F90B39556A0D81F9F782DA9
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_030010_729502_62E68DC4 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20221128_032038_754753_1FD71B69 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,65 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the device does not come straight from reset, we might receive an IRQ
-before we are ready to handle it.
+This series converts pwm-mediatek.txt to schema and fixes
+mt7622.dtsi to declare the needed #pwm-cells on the pwm node,
+required to not trigger a dtbs_check warning... and to make
+that node actually usable.
 
-Fixes:
+AngeloGioacchino Del Regno (2):
+  arm64: dts: mediatek: mt7622: Add missing pwm-cells to pwm node
+  dt-bindings: pwm: mediatek: Convert pwm-mediatek to dt schema
 
-[    0.832328] Unable to handle kernel read from unreadable memory at virtual address 0000000000000010
-[    1.040343] Call trace:
-[    1.040347]  mtk_spi_can_dma+0xc/0x40
-...
-[    1.262265]  start_kernel+0x338/0x42c
+ .../bindings/pwm/mediatek,mt2712-pwm.yaml     | 93 +++++++++++++++++++
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  | 52 -----------
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  1 +
+ 3 files changed, 94 insertions(+), 52 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+ delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
----
-To: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-spi@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
----
- drivers/spi/spi-mt65xx.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index d6aff909fc36..6de8360e5c2a 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1192,11 +1192,6 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 	else
- 		dma_set_max_seg_size(dev, SZ_256K);
- 
--	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
--			       IRQF_TRIGGER_NONE, dev_name(dev), master);
--	if (ret)
--		return dev_err_probe(dev, ret, "failed to register irq\n");
--
- 	mdata->parent_clk = devm_clk_get(dev, "parent-clk");
- 	if (IS_ERR(mdata->parent_clk))
- 		return dev_err_probe(dev, PTR_ERR(mdata->parent_clk),
-@@ -1266,6 +1261,13 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, ret, "failed to register master\n");
- 	}
- 
-+	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
-+			       IRQF_TRIGGER_NONE, dev_name(dev), master);
-+	if (ret) {
-+		pm_runtime_disable(dev);
-+		return dev_err_probe(dev, ret, "failed to register irq\n");
-+	}
-+
- 	return 0;
- }
- 
-
----
-base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
-change-id: 20221128-spi-mt65xx-b92c9ca96ffa
-
-Best regards,
 -- 
-Ricardo Ribalda <ribalda@chromium.org>
+2.38.1
+
 
