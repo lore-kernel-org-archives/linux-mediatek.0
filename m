@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9293EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 18:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 465DEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 20:22:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aai0KioWPQgAO4CRqx1wiH29NdbcR4aLCiBs7Tbqrqs=; b=XG2OEC4FwH9Vp++DC+lMYq5Vj1
-	BxMI28qYoHPjxVH4f9mSm/8zhisesIfo90P5nyniT5rqjupgqnFM/gP4ZPCExL7DtwHYyQJC5V+Rt
-	9egO6YPVITyt0zpqt4sVJ/HgaKFmBoh45LDAfx1KuX8Gll4fyn413v1fRik+WnQOBFutdozRKpJrS
-	sk5cGbOz7q8loztxHH2Ajz+xjcAbUIlYTRRcYvBWc+CGBLHJZFOV6wqurp9iQEtAK0USJA9CmEyoY
-	VvN0Hdw+7ybL6bFsAnvPmXdCbHd6o5w4dCtRxvgOci9hXfjG0Otunw396DTkOv7MFrWqXp5u9jtOg
-	PkTsWNlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TjoT5TDE+r7cM4/cxzaRtmx/EQ7hkpYtYFeVLk7DIiw=; b=Wn995OCZiTjJdiypF3805OhaLM
+	Ab2nBcVK8u7/fBpQBEWg7Xocj6XwA1bpoXkrmhIafXd1x6UC87DEp93dHGGr/6x7XipJOPAQ0X6OS
+	8s5mOkcmYio/AKSeIOvWWb9gyFXw2Nri6guJ9Wk0GhnYye5t0S8KYUJdsMK88EIeG5BXDFzD/pUtI
+	dPg1m6KguaSNFqFuv2CPMhdd2vyuTFKpJ1fC5hG8fN8GeUfU0PYzz3iAxGqmPVGMIbApSIG2oBBWB
+	AcDJz8B3/zJWlJIIeJrxViAIub4vaE8Qqan3kx/6m01wJS55ND3ov2uhf7PmWlS2WTYnltkb0fUA0
+	LpspdtPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oziR3-003L7Y-Rx; Mon, 28 Nov 2022 18:00:53 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ozkdX-004ILt-3P; Mon, 28 Nov 2022 20:21:55 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozi7m-003ABm-Q4; Mon, 28 Nov 2022 17:41:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6C599B80E9C;
-	Mon, 28 Nov 2022 17:40:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38E24C433C1;
-	Mon, 28 Nov 2022 17:40:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669657256;
-	bh=XYArURAkXAvAkbmm+Cm1Z/1xfusRTaI91j3+d8JHuUM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RRPEq0NnShENUTt/gp+19LWwVT3rkY1PX+GqFzGDG1XVWi+QJZ3s+VhDPHXEoWA6H
-	 fjDb8r/FScSsxN0XtkuMTgsWEVQk2qWbzdG6SnPincLYj20s6cPj/iocTR7D9PQYjT
-	 h/CcIwPnVElsI/Nt6ftstOBt0rOeWD4OxmaU9y6w/TmVx+2ewFwS63QPuyF5CAvdlE
-	 2DyKQ5E7ieB2jOAinxLJtZ8YguIO401qtWkaK8otnhYuD8oRFivuay3IKpAgv+t0J+
-	 Uu5Ysy8GDgQKRXzhg3V1SK8fSBo45yGSnsZbM7Hbda1uoCbu0p5okhr+9quoycomRA
-	 JqCfML/Kti1Kg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Zhichao Liu <zhichao.liu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	matthias.bgg@gmail.com,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 11/24] spi: mediatek: Fix DEVAPC Violation at KO Remove
-Date: Mon, 28 Nov 2022 12:40:11 -0500
-Message-Id: <20221128174027.1441921-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221128174027.1441921-1-sashal@kernel.org>
-References: <20221128174027.1441921-1-sashal@kernel.org>
+	id 1ozkdL-004IK4-PO
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 20:21:45 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 205so14826480ybf.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 12:21:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=TjoT5TDE+r7cM4/cxzaRtmx/EQ7hkpYtYFeVLk7DIiw=;
+        b=Tegs0vU1lxQyFLgxYk9K/CgMgnC3Pug93SCFq53nyd8nzGJFVZJe23sizEt7pAyTem
+         IErvnVRzqlmlKT8L7idEBMGUl0OsPoEeDls+BSiW2tEJcDGNgBTTTn35rBQU5C49182V
+         M43e8H+uwGNAr2zT8a6aW435ngKhS5gW173hkUYK5w2MOAaemyokfXHeMyxktV6njc77
+         Z6FXjai4FguNQtN0iDvjE21EOKLjNVzWrYNZ6nn3EbY8b+H87pOdScxPL0AA9acF048p
+         s+AS5YxXJZyISbxkMe7AbtDLGelZwQrP/itQkKBUgnVQeLBlOYLqsSfRMbtVT0+nCtJx
+         RF9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TjoT5TDE+r7cM4/cxzaRtmx/EQ7hkpYtYFeVLk7DIiw=;
+        b=fB29iUD9LTEH4/pkKxgrzMNnMJNsmHie8tBFlLF34M+jiGFireUhqH1nfPR8qzuBCZ
+         ZkXSX/KJdcHmOF3qQBn/QPQboPwnmf3Vj3+ulB1oJYMskZT9Oxg+shm4Q2qGB5X8Pxan
+         29kB4K0L8+GJFmuBz0apdLILYgxDDOo4kniEC6pENiDQbWbtiuHO/MHNVOS+U/W1+Dtx
+         XBwHuf2+Wa7z/F3EyatmDOtLDePLveu8iKvYja2rHQbv+vRJFJdEaBYP/tEEJLotwkmx
+         hsIqtOC0ECdM3p7u1HavzK0i5iGa2Lh5f1G7t7ueD5MNtftXOPOFOHjl7OcW8cHXxsDM
+         wgQA==
+X-Gm-Message-State: ANoB5plUEkNPC+ezYKyNPsWZZ6r1qbu1YP7mHVs27YVyP/o3AU1w+aTg
+	eo868hT/NSE/Vy4mRb4jXcny5EiAtgs9Ey7qtBahzg==
+X-Google-Smtp-Source: AA0mqf6BPbabzFNaWtiGqHDoUARIK1B690FEkWvfP29g/kDoV64k/3lLmcND0FoPdk1PeTC8p8tl5cIhxajriwjMB8A=
+X-Received: by 2002:a25:c7c8:0:b0:6bd:1ca1:afd6 with SMTP id
+ w191-20020a25c7c8000000b006bd1ca1afd6mr48535520ybe.43.1669666897696; Mon, 28
+ Nov 2022 12:21:37 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+References: <20221127224734.885526-1-colin.foster@in-advantage.com> <20221127224734.885526-4-colin.foster@in-advantage.com>
+In-Reply-To: <20221127224734.885526-4-colin.foster@in-advantage.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 28 Nov 2022 21:21:26 +0100
+Message-ID: <CACRpkdYkD-=y0mCnVkkQ9+4m9-nx6jQu=TfL-TPePbps6x+7Xw@mail.gmail.com>
+Subject: Re: [PATCH v3 net-next 03/10] dt-bindings: net: dsa: utilize base
+ definitions for standard dsa switches
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, netdev@vger.kernel.org, 
+	John Crispin <john@phrozen.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>, 
+	Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
+	Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>, 
+	Vivien Didelot <vivien.didelot@gmail.com>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, 
+	=?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
+	UNGLinuxDriver@microchip.com, Woojung Huh <woojung.huh@microchip.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, 
+	"David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	George McCollister <george.mccollister@gmail.com>, Rob Herring <robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_094059_084939_A185210F 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20221128_122143_866107_F92D3FC9 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +99,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zhichao Liu <zhichao.liu@mediatek.com>
+On Sun, Nov 27, 2022 at 11:47 PM Colin Foster
+<colin.foster@in-advantage.com> wrote:
 
-[ Upstream commit 0d10e90cee9eb57882b0f7e19fd699033722e226 ]
+> DSA switches can fall into one of two categories: switches where all ports
+> follow standard '(ethernet-)?port' properties, and switches that have
+> additional properties for the ports.
+>
+> The scenario where DSA ports are all standardized can be handled by
+> swtiches with a reference to 'dsa.yaml#'.
+>
+> The scenario where DSA ports require additional properties can reference
+> the new '$dsa.yaml#/$defs/base'. This will allow switches to reference
+> these base defitions of the DSA switch, but add additional properties under
+> the port nodes.
+>
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
 
-A DEVAPC violation occurs when removing the module
-due to accessing HW registers without base clock.
-To fix this bug, the correct method is:
-1. Call the runtime resume function to enable the
-   clock;
-2. Operate the registers to reset the HW;
-3. Turn off the clocks and disable the device
-   RPM mechanism.
+This is neat.
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Signed-off-by: Zhichao Liu <zhichao.liu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20221110072839.30961-1-zhichao.liu@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/spi/spi-mt65xx.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 2ca19b01948a..49acba1dea1e 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -912,14 +912,20 @@ static int mtk_spi_remove(struct platform_device *pdev)
- {
- 	struct spi_master *master = platform_get_drvdata(pdev);
- 	struct mtk_spi *mdata = spi_master_get_devdata(master);
-+	int ret;
- 
--	pm_runtime_disable(&pdev->dev);
-+	ret = pm_runtime_resume_and_get(&pdev->dev);
-+	if (ret < 0)
-+		return ret;
- 
- 	mtk_spi_reset(mdata);
- 
- 	if (mdata->dev_comp->no_need_unprepare)
- 		clk_unprepare(mdata->spi_clk);
- 
-+	pm_runtime_put_noidle(&pdev->dev);
-+	pm_runtime_disable(&pdev->dev);
-+
- 	return 0;
- }
- 
--- 
-2.35.1
-
+Yours,
+Linus Walleij
 
