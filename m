@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C7FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 08:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C3F3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 09:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=; b=GJzpnMZluCGL2jBUfQimHt/Pmv
-	1/y4pVsGs1V6K3RQBvvcfkQljZf8EF3fWKZ9aT5/7+UqgzqTTpiNi9LtP11C8oWJKTyObgbPRHq/+
-	fCagiS+54jrvtaouC9NH0qwIetX+2NvwLo++3V88SBBPnGrt/EDyzdxBf0M1qzWO4xQXAvb3gd1wu
-	2R09Cw3wyg/RdNZ0jI2wrAqI16ETDuAMVbUKo85BrsEr6dhB+5h+g0vMTb8zLJk4S7IhXKF6oyzfa
-	YHMmA3t3NDyhLFN0IkL3I7sP6k1cuNOSs/rLcZzrH7GhjB69W1yVORfTV3zX+hzV77vtra6fyAbhR
-	+3Xr5zXA==;
+	bh=uxQ4Op4wJkfy+E4USfATcQwka4uMnYgoKUlk7fhdGSE=; b=Lgnbxoegp45ai5vCioseVLe/sl
+	3XUg91J2yITkIsoiIA1AFaSc1JakVuHU3KVUhuQUb7QxgSQVQndS799dct6XuAUoOF6RlHwCOhy3F
+	WEDkOl7hqtcAY9dslKRJ8hriBynEmKIj/8ziUrKZ6mM+Mhi1fOdc4NoiyqfJJE5H9VbUoOqCtnT23
+	EUM0XfG9Ak8T3RRh6v8HIBZhlOr206Rb8n85INpWnSjZp2aysYOJSl+tAl6Ybf6/3G3UrOIAPhRtG
+	nPiKtMwbJ+YRb7DzWKPjBlnj51dhLjs3r9BoKQb543rynXTBxe+tTP8YxgeFlNYzS6IzAwkqhPS2c
+	bN1QrJEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozZwv-000Qw4-Rf; Mon, 28 Nov 2022 08:57:13 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1ozZzz-000S07-E0; Mon, 28 Nov 2022 09:00:23 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozZwj-000QrO-LL
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 08:57:04 +0000
-Received: by mail-ej1-x635.google.com with SMTP id vp12so22728462ejc.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 00:56:58 -0800 (PST)
+	id 1ozZzv-000Rx2-03
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 09:00:20 +0000
+Received: by mail-lf1-x136.google.com with SMTP id j16so16255607lfe.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 01:00:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=;
-        b=62u2Rfj+8hqBycQ942lIdMJxOmRUxzLFS88338/bWaX64SRCze08nOErchZZjD79e9
-         jxBkgmmaQb3aktcKJuwqGmxQRHDn0HXvZJXpscXmgRAEUMeHLbrHyPMYJW/j82zk0XYp
-         6gsJAbx5GUzNoNIIq6D0uaEI3LTbltrvXUIxmJkV5yRRZ5FbMm3Poiyu/RsHYa1lRF0T
-         zAL7YK9GDAm5n9zem/EG7R7+zkUqLeAThB0+xci9RvHt6jIf1rQnf3D7tTwsSt7O+pCo
-         3ZZJhl8mYjGanyUk4utkZbvWtSfrwXeyNwbLSF+ofpay5bEraiGSMglDjxaUVeB5Bns4
-         WJVw==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uxQ4Op4wJkfy+E4USfATcQwka4uMnYgoKUlk7fhdGSE=;
+        b=vYdb5XXPSaGwuCoLSVoXRdQxnPaAziy9sgNBD8ranp2ceRSNgedYCPqR4S0vLEMnU5
+         P7HmMByv0VoBFVxh3uq65mFCK6MQA3c0f560kARTzEWaiHCOOyVKCJTkHV4l3S0g0eq6
+         vyrw/O9/ZX1QkVXD18yE6C+NWMpaloiZ48EArn/TOG2veHbj9d1Vcemour9Z1xigBKa3
+         RpQk3CTgz6qadxdn6IuvgcjwozjTQ3KcPOCBhwr3enogTDQR0PzTks2bn9+1k7OhHpBq
+         tbyLx/EFDgvPrd35WmKItzN43WvkclKutLtUhhSEvey4QSfvY342K6flzqPRcf5xJC5F
+         updg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=;
-        b=Du/pI42IZBPsbqjZJSjClkQ4PHUkYRapPUi1OJKBXf6xadRQkGJHT0i6NDjnGRcgue
-         nKhtZgjvq5yfno2r2HdiQ6WwqAu7beKpuXYqdEyajUgqV2rW0N0NJ5Air3Uwnx1vxlEX
-         A9gIu8mezT4CPgH1H3WumflsmKBsYKQwVrzsJ6jRIUqtkipukEmkhmkn5xZwNnSS20Y1
-         sdmd5q1TQKzk1zSvYBcxcbWM0A6VTyIdTElO/vb8tNMc9mTvO6gvueotflbjtBWcxD7P
-         dlEKHz7g+6NngR9bU6k77I92fgPeBrd3aNU+U/AHuzsaC+UI3R/1icnypL62lWXhXfEp
-         j+Sg==
-X-Gm-Message-State: ANoB5pnkqtvWW5tO1mCAskp8ykA7RjqXEMEz1WK4HuK4OhQtXdH+TDvA
-	qId0NXCFSC/UBL98f7s3YhBvRD9d2ascTmab74B2RA==
-X-Google-Smtp-Source: AA0mqf7iybltDA7hXJL9yAT+SXbkybtSOfTzeliT8SvsSM8emlSdXZtrfN5+duEiN2skEXcM7mCKyxD7tFoNefo+WI0=
-X-Received: by 2002:a17:906:7f05:b0:7be:26f2:909f with SMTP id
- d5-20020a1709067f0500b007be26f2909fmr7248255ejr.86.1669625817752; Mon, 28 Nov
- 2022 00:56:57 -0800 (PST)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uxQ4Op4wJkfy+E4USfATcQwka4uMnYgoKUlk7fhdGSE=;
+        b=KyJbZY7VJQIcC45p76a9n9WOlLZIJNnEVrR4BIbUpYfEvgUjO9vL0OeqhzNEFbOVip
+         tVWVCOOB93aEQT6mV1xpnR1dTki9oer8n/gHX90XCC5apE/rnkIrAWnu4kyfqjE4eZxH
+         GsmY4jjVjALlDQwawLnzlLhgA4x9mQIop/1R+CCDOHV/jPCR+3l5HxwyqJJneE51723y
+         okETEv5RfBSiM/6sdDN5FZyHM61Oax9kzLE88zWtcQazXvwpS09Fr2OW9inFJ15Tw6Gl
+         hE1L0DXJUsPGu5DPrGztQqoPps2WfTFbl90lBxg0s0kBj0i8tfCz1P3ZW/P8vdJkfDm6
+         HsUw==
+X-Gm-Message-State: ANoB5pniVLFum3q96+8iRzQx+QgHq0yS0MHHfKAp5HyLEGI+4tYPq0pZ
+	w0Ur6NcXHytGLwCJ5ndkvTdx0A==
+X-Google-Smtp-Source: AA0mqf4yCrmsZoHkLNUdgjrfnhNmrW+jAyoF8Yth5MPBnrKTzOxQXVV9S2/fv4YTu9XRNKVY+0RP+Q==
+X-Received: by 2002:ac2:52aa:0:b0:4b1:fc9:429f with SMTP id r10-20020ac252aa000000b004b10fc9429fmr17759584lfm.84.1669626015128;
+        Mon, 28 Nov 2022 01:00:15 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id v28-20020a05651203bc00b0048a757d1303sm1655307lfp.217.2022.11.28.01.00.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Nov 2022 01:00:14 -0800 (PST)
+Message-ID: <8b8e4b23-a3bc-7e3d-199a-e8f591d05d71@linaro.org>
+Date: Mon, 28 Nov 2022 10:00:13 +0100
 MIME-Version: 1.0
-References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
- <20221005-mt6357-support-v6-2-4f589756befa@baylibre.com> <f7f0753c-f0bc-b87c-b99a-8b1bc3ef40b2@linaro.org>
-In-Reply-To: <f7f0753c-f0bc-b87c-b99a-8b1bc3ef40b2@linaro.org>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 28 Nov 2022 09:56:46 +0100
-Message-ID: <CAFGrd9rK184_mqpPmHsSRXyE=Y3OxaWe_RaYBh5P1F-aOhPGvg@mail.gmail.com>
-Subject: Re: [PATCH v6 02/10] dt-bindings: rtc: mediatek: convert MT6397 rtc documentation
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Chen Zhong <chen.zhong@mediatek.com>, Fabien Parent <fabien.parent@linaro.org>, 
-	Alessandro Zummo <a.zummo@towertech.it>, Mark Brown <broonie@kernel.org>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Flora Fu <flora.fu@mediatek.com>, 
-	Tianping Fang <tianping.fang@mediatek.com>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>, Rob Herring <robh@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rtc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-leds@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH 5/9] dt-bindings: spi: mtk-snfi: add mt7986 IC snfi
+ bindings
+Content-Language: en-US
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
+ <20221128020613.14821-6-xiangsheng.hou@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221128020613.14821-6-xiangsheng.hou@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_005701_707126_6CAF9773 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221128_010019_076340_DB1B70C3 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,17 +102,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le dim. 27 nov. 2022 =C3=A0 13:59, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
->
-> Regardless of it, Rob suggested squashing it into MFD device schema and
-> I think his proposal is still valid - you have here only two properties..=
-.
->
+On 28/11/2022 03:06, Xiangsheng Hou wrote:
+> 1. add mt7986 IC bindings
 
-Ok, I thought the conversion was worth it with the latest changes. I
-will remove this patch and write RTC properties directly in the MFD
-schema.
+Subject: drop second, redundant "bindings".
 
-Alex
+> 2. add optional nfi_hclk property which needed for mt7986
+> 
+> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> ---
+>  .../devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml      | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+> index 6e6e02c91780..ee20075cd0e7 100644
+> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
+> @@ -26,6 +26,7 @@ properties:
+>      enum:
+>        - mediatek,mt7622-snand
+>        - mediatek,mt7629-snand
+> +      - mediatek,mt7986-snand
+>  
+>    reg:
+>      items:
+> @@ -36,14 +37,19 @@ properties:
+>        - description: NFI interrupt
+>  
+>    clocks:
+> +    minItems: 2
+>      items:
+>        - description: clock used for the controller
+>        - description: clock used for the SPI bus
+> +      - description: clock used for the AHB bus dma bus, this depends on
+> +                     hardware design, so this is optional.
+
+Optional for which variants? For all of them?
+
+>  
+>    clock-names:
+> +    minItems: 2
+>      items:
+>        - const: nfi_clk
+>        - const: pad_clk
+> +      - const: nfi_hclk
+
+
+
+Best regards,
+Krzysztof
+
 
