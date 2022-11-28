@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202ACC43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 13:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D4BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 14:01:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5WWumrqiTDYq5uOZBAPJFRzs6vcelTvSCtUZimwYyKk=; b=ooc0zWMMx3eT06DgsxCuQtMz5Q
-	m3KBhavg+MHbkUid8SjkACN02OmiZfatIwhHkKARh2j8VfMPyo7GwTgUEMflyHfOvIWzyKn0I+Yh6
-	2Zzorv7jqL//SKl48nG6sffWZ1Q3Uc7eQ+6fNqZZNShUpg0XrxspwHbzAYYuSlZ9tGC7qH/GTYpL4
-	nssi1n/foF12Xir5wAOBwWhgDWKpBGEVszHtslNhh0zrTObKdyYHP8dj12YenCqdfDSerIVA7HbfT
-	25nQY/ZrDnd8uSWOeg9TvE8Vov/HPf0hJ5td2EERcH3D8c81eTwaqiC1giO3K3GKbjTTZm2hgKYHt
-	dVS7sMTw==;
+	bh=/RsElrJ4fTpZwQGc5X/fuTrHyuS75pyOL1EdjY8Plxg=; b=y2x7N1uS3tu2UEKmeNQZxnjOIC
+	nAadYvVapupPuFbnGu2IVk8qo2/5geOXjwWCMFj6sr8FKFhwmjXZPg4QzXCz7m4ygitmxCSWdSz99
+	do1GOmaVC49rXzh/wFM81nD+wnSnqQRzFn8ta1acud8yXBYzDQThShZ0aukdV+7lR6H34JNqJmeT3
+	awYeIWfjT9TyZk8K5Eljzz9UZn1tLudAmaXpJh9BOOsz8N0e3XxTUOW0INwuXkaoalBhDAjGiXSEy
+	Nf4t39E02RSduph0A1u0PYVzZVuEEiMsA5jiEdQb/5MqB9Z6yL0hvIBIW7cxpvWAHDcRn2Mc0wXNc
+	H/cR64+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozeVb-001y7W-Lj; Mon, 28 Nov 2022 13:49:19 +0000
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e])
+	id 1ozehU-0022ji-VY; Mon, 28 Nov 2022 14:01:36 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozeVY-001y6H-Vc
-	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 13:49:18 +0000
-Received: by mail-io1-xd2e.google.com with SMTP id c7so7558134iof.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 05:49:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=5WWumrqiTDYq5uOZBAPJFRzs6vcelTvSCtUZimwYyKk=;
-        b=JaLWK4hY8LgNiPiKh9CCSm+56V2c4Rm7Q59ef1OdxUY5vA0ZNzGYJh8zBSh2Cg6W64
-         eEKR+qLTv/MU1cSh80KUT8bP9gfduZ5u5xWY/RRkgkx433VnWoMLQFoAUQzLsnHsYWJW
-         YGsPYd+Hr+yIoAkDDGPvqs9pyqr1YJYebXF1g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5WWumrqiTDYq5uOZBAPJFRzs6vcelTvSCtUZimwYyKk=;
-        b=cZOCFDx+QdKYG4qz8Nm6vX19FOlkKU8Q6oyA7e/guF0GalGimOLsKjSuSfVpExL70k
-         L418fGHXbDdwEEeyAsBX0JF8LBEAQkD5Zd5Z5M2mOYVlZkVrcOWufwkaTo8wxPA4Vb1D
-         KT0pYVRO+93rwf0yhmEmzi12YIFfbR2d75qBptF2WIlAFJ+TMl8X+lZgN50lAFWe2i9c
-         qWJAFftWZU33t73Z1+vUE2U7m8kBZh2j74NvuaNzJ2a1x70r3jaEz6i1BbrjB7c6UmtP
-         H2180R5hAWlpd1WBC7mHaXgNp0rzrVUUFBtq1RF+jR/9bQs2WmfB9Lg20OK4Aaj0Tl9t
-         6DVA==
-X-Gm-Message-State: ANoB5pnM5anTTt/+rGpLZh2/SZB/p9U+ONzmOKNL2s+ommv1ENMOVObL
-	OtzakzWOtvTKVlbd8dKmfQuCQpyueLBWVS7J
-X-Google-Smtp-Source: AA0mqf4DUkUChp2rjV4VWu6M4K74moEFmjadkbZHmlSy9wz2ITVLtFYFT3OCWUYLoLvpr4ygt/69Jw==
-X-Received: by 2002:a05:6638:381a:b0:389:e3ba:464f with SMTP id i26-20020a056638381a00b00389e3ba464fmr1487907jav.25.1669643355419;
-        Mon, 28 Nov 2022 05:49:15 -0800 (PST)
-Received: from mail-io1-f41.google.com (mail-io1-f41.google.com. [209.85.166.41])
-        by smtp.gmail.com with ESMTPSA id t193-20020a0254ca000000b003757ab96c08sm4391423jaa.67.2022.11.28.05.49.13
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Nov 2022 05:49:14 -0800 (PST)
-Received: by mail-io1-f41.google.com with SMTP id c7so7558022iof.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 05:49:13 -0800 (PST)
-X-Received: by 2002:a02:ccfb:0:b0:373:9d0a:33a0 with SMTP id
- l27-20020a02ccfb000000b003739d0a33a0mr1950090jaq.286.1669643353517; Mon, 28
- Nov 2022 05:49:13 -0800 (PST)
+	id 1ozehT-0022hi-4c; Mon, 28 Nov 2022 14:01:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=/RsElrJ4fTpZwQGc5X/fuTrHyuS75pyOL1EdjY8Plxg=; b=xY
+	R6f5DBIUtCPgDzvdOMVTFzCvO0KVS6tiBc4qDT6PwCyrku33r2WcWfkTQEggH0ZX9v3eH0/8REaSp
+	leaw7ev/I/etiU1oFPJGr6nl0ydANI7EKEN//tmCTSWidBJTf4iqh3MXZWcXyjSikAKq9S9tDHAHi
+	fh8OnGlFTox4hyA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1ozegs-003evG-3k; Mon, 28 Nov 2022 15:00:58 +0100
+Date: Mon, 28 Nov 2022 15:00:58 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
+Cc: "vkoul@kernel.org" <vkoul@kernel.org>,
+	"llvm@lists.linux.dev" <llvm@lists.linux.dev>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"nathan@kernel.org" <nathan@kernel.org>,
+	"kishon@ti.com" <kishon@ti.com>,
+	Eddie Hung =?utf-8?B?KOa0quato+mRqyk=?= <Eddie.Hung@mediatek.com>,
+	Tianping Fang =?utf-8?B?KOaWueWkqeW5syk=?= <Tianping.Fang@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+	"trix@redhat.com" <trix@redhat.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"ndesaulniers@google.com" <ndesaulniers@google.com>
+Subject: Re: [PATCH v4 3/3] phy: mediatek: tphy: add debugfs files
+Message-ID: <Y4S/GhUcrxJ9W/gE@lunn.ch>
+References: <20221110132716.12294-1-chunfeng.yun@mediatek.com>
+ <20221110132716.12294-3-chunfeng.yun@mediatek.com>
+ <Y3+uGjpMQcEWQrew@matsya>
+ <70407a789b48a4fbd498e392450eb9db76e025bf.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20221128-mt8173-afe-v1-0-70728221628f@chromium.org>
- <a214fe55-fb5e-04b8-348b-895902470b18@collabora.com> <Y4S43XjRyrdm4Tha@sirena.org.uk>
-In-Reply-To: <Y4S43XjRyrdm4Tha@sirena.org.uk>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 28 Nov 2022 14:49:02 +0100
-X-Gmail-Original-Message-ID: <CANiDSCv8Ai2W10cOjBgthshi8XPCDoCvGxXfoL-47eFrRjrseg@mail.gmail.com>
-Message-ID: <CANiDSCv8Ai2W10cOjBgthshi8XPCDoCvGxXfoL-47eFrRjrseg@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8173: Enable IRQ when pdata is ready
-To: Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	alsa-devel@alsa-project.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <70407a789b48a4fbd498e392450eb9db76e025bf.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_054917_058909_C2A6DF89 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20221128_060135_198927_D4B4616F 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +82,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+On Mon, Nov 28, 2022 at 07:26:02AM +0000, Chunfeng Yun (云春峰) wrote:
+> On Thu, 2022-11-24 at 23:17 +0530, Vinod Koul wrote:
+> > On 10-11-22, 21:27, Chunfeng Yun wrote:
+> > > These debugfs files are mainly used to make eye diagram test
+> > > easier,
+> > > especially helpful to do HQA test for a new IC without efuse
+> > > enabled.
 
-On Mon, 28 Nov 2022 at 14:34, Mark Brown <broonie@kernel.org> wrote:
->
-> On Mon, Nov 28, 2022 at 02:17:53PM +0100, AngeloGioacchino Del Regno wrote:
->
-> > This commit needs a Fixes tag, as this is indeed a fix.... kexec isn't anything
-> > new, so all kernel versions are affected by this bug.
->
-> Fixes tags are a nice to have, they're not 100% a requirement - they're
-> a lot more useful when they're fixing a bug that was introduced rather
-> than just something that never worked.
+Exporting data for eye diagrams seems like something many PHYs could
+use. Please consider adding an official uniform API which any PHY
+could use, so we don't end up with lots of incompatible formats in
+debugfs.
 
-I do not have any strong opinion here. If you want to add the tag. It should be:
-
-Fixes: ee0bcaff109f ("ASoC: mediatek: Add AFE platform driver")
-
-Let me know if I shall resend.
-
-Thanks!
-
--- 
-Ricardo Ribalda
+	Andrew
 
