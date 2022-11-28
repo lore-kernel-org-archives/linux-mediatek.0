@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D3F1C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 20:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0183C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 20:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0cSg9x/ccvep07LQXRqXIRSRKMxrUjkPjTlD/qxYYyA=; b=HpasvttGJ7yaBO+j5z6t27Fngy
-	VwFwGuxTx9KdljlXZmqBI/SmaCivsrm8mcCn9rZrLJkMmjTVV+4nMG7KUvP90W8u19CCkYRwpbqF3
-	RviaD2nwafujBAYCrC0muLGUZoxiSxx7h2cJFzRtA2K6VkiZ1Y002cw6M4dI9D0z/9af141NXDIlM
-	ZSO8dO6Q1uHcdcL7So0qe9HVoCWoUQNlxtAbfZWdG+1Al5Ngpee/R60DL0++MrTkiRwa11vJlqPMg
-	tgDrCIsjHn6VWoBS38mZz67mQi6LT1PPxUiCWehZgCK5koXx6woPLLve3gRUq0jj+Vs5bgGLMVUjN
-	AZFErA7w==;
+	bh=yShKpOzbDuo08Rg5O/TzApxhHvkpQuPMiQfCmDQcZ/U=; b=nTCXkJ2zRbzM2EqoNqObCkVSed
+	sJvE/MXmFk/prROh0haUs9MiI6APads7/6cysarTAThMFyV6gc5RiCb+UZ4fPGTVyfwJtVGfTmuZQ
+	l5eEmRieQXkrWlZwQVsWfDy7mzdAW8WDOJ3nHo1KXdTzihl3bfER3qmlZ27Jbtq4PJuXvlCMtw8Ak
+	cktAac9dyg7/THlciqKksX0XTj+KmQ3ZqS4ire1D9cUhqK7FDDjqwlAuCBpCmCeNR9LoikdoeoLao
+	EUUSR9MBouS1c3WommWi/PI+MDkcQYSGpVi49oANS9dLvGrwXxWlyK7LWTb04mSVE/DhkDKNs5g9G
+	RIfEBmxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozkxN-004Knv-2m; Mon, 28 Nov 2022 20:42:25 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1ozky6-004L52-4u; Mon, 28 Nov 2022 20:43:10 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozkxK-004Kle-D7; Mon, 28 Nov 2022 20:42:23 +0000
-Received: by mail-pf1-x432.google.com with SMTP id c15so2373720pfb.13;
-        Mon, 28 Nov 2022 12:42:19 -0800 (PST)
+	id 1ozky4-004L2k-1u; Mon, 28 Nov 2022 20:43:09 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d3so6374145plr.10;
+        Mon, 28 Nov 2022 12:43:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0cSg9x/ccvep07LQXRqXIRSRKMxrUjkPjTlD/qxYYyA=;
-        b=S0DuPK6TEGCJ7JyEmFc8u5RL+2tGc8suNcD0riR8/Yu3fSNWayulBRhUpXNtSWef2P
-         nVW59s7DRIwzuHW4MAmF3FlsqwG1AN/79k+Xb2QzphMwBJ7RLutWrJRaaAz8d1QsrZPv
-         ZcmaPU3MHCgZlxQ5ZCH8c3b8/Vg6ybCshJXWyZU3DHkhkFc5pJwlO5vA3NVZvYIuZsdu
-         9MBdRtSRJY3Tg+07WXUSIl4sHp/iqv7KgNkSmpZVgZkq4eA+El4guVU7r6OuzCy/PIjT
-         aNVeMe3QaYiqOcmwlt3eGwGcHLAi3xctj3eGdJBOieaHK6FMEWbzi7J/MSaGsaCUDNsD
-         iEjw==
+        bh=yShKpOzbDuo08Rg5O/TzApxhHvkpQuPMiQfCmDQcZ/U=;
+        b=Tn4UgNSh5PJ/a6+F/p3bEfoiPnJaEa3KxeftDRiIY64KDKcdZUVjA9UunfGanCITt0
+         8RyFa+NNeDcpN0vrC+kn38gnjXjA3DxFBHr+z9Ao7XIh6et50vA7aguBDVjwhrBCDlJP
+         aELgJRviyv5MBueGEUofC7KVQQ/NuC2/lvYWmFscYc4mPunq9N2zKwS1mOfCWAkRiJ/P
+         Ac/WoFpFYjlLzPhhJblON8gZMvIX5kFHAxilBD845ZCbVOmH9Z9YlK7PiF0VvjKbL6qY
+         TBFo9gz3aPQq19d/8yb62YcR1u7OTLBPTxQeXrse7xfxaPSzDEBiK8dh+auCuHk6j5Ff
+         vTEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0cSg9x/ccvep07LQXRqXIRSRKMxrUjkPjTlD/qxYYyA=;
-        b=RIF3muNV/KYFEV1TYjll+7bpvy5wWdAz4LU6ytzhYHOgAXf3LdqKoP0sOZJMf8oWR3
-         KQQV7I/EBeqEiTtKGQqgumlWWojqGmo8p2uffagHfRsMSFztTMwyGZw0lA85Q25RyZPx
-         ndH1/0LRMMCHGO9yqnEiJtVU8A7wV3w8s3eTyci4G5jCGi8UfWZH+PfobDTEn4YMxtrA
-         h+gwfmQf+KKf6+NKaTCGMaSQku1HsAre8tI09kY/Ry6aFMnFVH5sbjUIl+ayrG8+cKPj
-         /1/aSlXvlWwm8rLhrsCOpsHiFjd2tEWdlmPcfsZyu0zxMAMaiIfbuWziF9Z0CcSxT500
-         d1FA==
-X-Gm-Message-State: ANoB5pm9I+smkSfa5ZJHZGQ8QhkRGDrNh0VLFjU5vhrKaJcZ3vonGnyx
-	VBSJyu/tMfLp5unn/5yXR54=
-X-Google-Smtp-Source: AA0mqf4nfHopmFULKIYvx0fPGZ3A6Rthh28Y+yrTorZs36JLYJwEXiFWELazalo3brIHfrsrPkDupA==
-X-Received: by 2002:aa7:80d0:0:b0:565:c4e2:2634 with SMTP id a16-20020aa780d0000000b00565c4e22634mr37235658pfn.0.1669668138462;
-        Mon, 28 Nov 2022 12:42:18 -0800 (PST)
+        bh=yShKpOzbDuo08Rg5O/TzApxhHvkpQuPMiQfCmDQcZ/U=;
+        b=eoLKGkDQXRTInpbDBUCO2q3n2+6cmsKPI22/JujzVXr57R+SrvmAT1KD9ey+dufxWf
+         K8OC0RtZgsMWf/aRBXpAOGytgGaLTz0vI+689ATJ/89QRZE9Fqwtd1bFuBDk8lJGqZJi
+         M9VkoCgzUvSj+WD7yjIcqbnFATFwkp8n44PlMitk8IpRidY8MGq4qIVBp/fSjRH7an7i
+         Iib08JbX35dnbmYxRbrZyD7R+1PZJaR782uLyI8sX6j5XGnNopSd9Wf6urE8NpEXOibM
+         7vIqbryKfqcxUagFJM7DipMb1TLi58v9UCuQHOXbUB5aOstmx0/D0Ycne/Qb0avLjNCV
+         w8BA==
+X-Gm-Message-State: ANoB5pmNkdOGG/xBgqXmu7CCAHpzCDfnsTv41RomCosFjoRWV3kE5Yo1
+	TohiqoQpjmqdUe8ebbT3it0=
+X-Google-Smtp-Source: AA0mqf6ZzYK1KKUuoQS9eiyjwmePFmysShUH5q2ZzrN08M8GAsZ1Xf4AikNPKbV1iym4f4q7vs1Ccw==
+X-Received: by 2002:a17:90b:3c0a:b0:213:7030:b2ec with SMTP id pb10-20020a17090b3c0a00b002137030b2ecmr62028618pjb.95.1669668183410;
+        Mon, 28 Nov 2022 12:43:03 -0800 (PST)
 Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id q6-20020a170902a3c600b0017e64da44c5sm9210604plb.203.2022.11.28.12.42.08
+        by smtp.googlemail.com with ESMTPSA id x2-20020a634a02000000b0043c22e926f8sm7149770pga.84.2022.11.28.12.42.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Nov 2022 12:42:18 -0800 (PST)
-Message-ID: <0477095e-3db5-850e-2dd8-5163a05ac0e2@gmail.com>
-Date: Mon, 28 Nov 2022 12:42:06 -0800
+        Mon, 28 Nov 2022 12:43:02 -0800 (PST)
+Message-ID: <fdb3463f-a41a-9490-a3a6-5b091445543d@gmail.com>
+Date: Mon, 28 Nov 2022 12:42:50 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.4.2
-Subject: Re: [PATCH v3 net-next 04/10] dt-bindings: net: dsa: allow additional
- ethernet-port properties
+Subject: Re: [PATCH v3 net-next 05/10] dt-bindings: net: dsa: qca8k: utilize
+ shared dsa.yaml
 Content-Language: en-US
 To: Colin Foster <colin.foster@in-advantage.com>,
  linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -90,14 +90,14 @@ Cc: John Crispin <john@phrozen.org>,
  <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  George McCollister <george.mccollister@gmail.com>
 References: <20221127224734.885526-1-colin.foster@in-advantage.com>
- <20221127224734.885526-5-colin.foster@in-advantage.com>
+ <20221127224734.885526-6-colin.foster@in-advantage.com>
 From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20221127224734.885526-5-colin.foster@in-advantage.com>
+In-Reply-To: <20221127224734.885526-6-colin.foster@in-advantage.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_124222_479901_9D44B059 
-X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-CacheID: sfid-20221128_124308_138891_50FCC03B 
+X-CRM114-Status: UNSURE (   9.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,11 +114,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 11/27/22 14:47, Colin Foster wrote:
-> Explicitly allow additional properties for both the ethernet-port and
-> ethernet-ports properties. This specifically will allow the qca8k.yaml
-> binding to use shared properties.
+> The dsa.yaml binding contains duplicated bindings for address and size
+> cells, as well as the reference to dsa-port.yaml. Instead of duplicating
+> this information, remove the reference to dsa-port.yaml and include the
+> full reference to dsa.yaml.
 > 
 > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 
 Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
 -- 
