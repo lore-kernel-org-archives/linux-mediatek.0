@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4695C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 13:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CCA5C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 13:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n20aAkd3QzGfUc+ikNsZHPJK+Vv6Rr4dIzRVWWi5nfU=; b=iyYZ0Qu86Q8eyYyigIxvbI/MIM
-	gFnkhK1VaNOKZdwX7dqQKPdtVRxcCoUq8SLSLfd9RO68lngbCHbxGEDjruhIz7X+2avBzN/Mmr5U0
-	xJSAb4lAF+XvPSV9xfYUMhJ0vk3RazKo6orsv/ndwFfYQ5seO1HAtTA1G5nF+IRaiSknhkcEKDFAi
-	cRBPnQr2+QmcwmHQ9yqggHIavZC43kxpjkPjlBMSO3TWfX2zBJRTI14WV7iI6X24wT4oExBxTc5tp
-	jJpnZm7J0TQddUOACNHVKutJ6fmq+xKqL5kVlAYCLm2SYm3p4n7AjJ5UoHowm/484YGI012pY5TAW
-	FrPGpOtg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6ZyoE61TU6oOaDkCB796SpvFg4qPHeIhaVpyfOHlwng=; b=2pf3EBZLq8LYtRZnDjVIOshTa0
+	xkz1rqrvu7xHFNXjU3Y31pZNDhidzwPkbhnj0vcBJQDaZPUfJB17Zhy7/0dupe+I5XX24slhAPcoR
+	rThwVLheCf2DwxA95qT+QLw50FHjdyCxCFC2OA0D6ydC6YjaCX4w1b92El7NbOplmA3gk6eLqGsOH
+	LQUtkIfu2/LrBQPyj+kbxqIrlxZ0ZF08hy4y9Ehd4UhCp/AJNKivVWnLh+RFh7OUYJwFDQJb3BIjR
+	cSUbMbHNf9wS/kdS5jxHS+eW85HonkSKBhw1MFTYcr3FbzaY696NZA+xIU3DjksAzxls1X4FWYhJ4
+	KiPaMoDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozeFd-001pMO-TT; Mon, 28 Nov 2022 13:32:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ozeHa-001qq7-27; Mon, 28 Nov 2022 13:34:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozeFQ-001pDX-IX; Mon, 28 Nov 2022 13:32:38 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1ozeHI-001qXw-6b; Mon, 28 Nov 2022 13:34:33 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 81351660239A;
-	Mon, 28 Nov 2022 13:32:33 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669642353;
-	bh=XJTvBmQ2k1bHpiozbV7N2H6jFS+y6PUBq1kYOY6o0lM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Uyz1aEMSnOaVfIlvQMJfkoc/TJsEMrB3D2iKl3BTPPvHl7dO0qF102SUQu+cjS8D5
-	 rvpveTlJnmbjAfTDjO+p041sP6FuHGiUOVPhVxd83SpSeAFlGRrLW2RyhS79IGJ9eG
-	 d0uvwyOc67fXuJrHDVxJ0jXsIViPW6p02Z99U9vK9VvykmdqKtIcpSM4mzYxsy0ORJ
-	 FM1R0N8k2juWY0qUVLfPo8ge37fWffTkU0M79rwFOn2wEcKWYyZ53cEOuJDBGMaySb
-	 RIE0i09Xn0Y6PdCUEu4KyoUtqcUzt4YWRE02fvHsd6gEsrO+rmA6eqVVpsQN6PZHKy
-	 fwk6dnwJOdo7g==
-Message-ID: <14cba472-87b1-001e-30fa-674e4102130d@collabora.com>
-Date: Mon, 28 Nov 2022 14:32:31 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E4ADD61018;
+	Mon, 28 Nov 2022 13:34:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 338E6C433C1;
+	Mon, 28 Nov 2022 13:34:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669642467;
+	bh=6ZyoE61TU6oOaDkCB796SpvFg4qPHeIhaVpyfOHlwng=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HnGFuAvrwQanpdHYFHp1Z8ly5ChADa7N19NtPaqRgL0JXq2wyj2idESDwAVskm7JZ
+	 xO6M2XGDQtyeZQvJ6kfQ4+G35OpL8xjL0qbzoRaHHefC4aq3pmSixrGSNRfJGM78NE
+	 h0xoGGry9xCZn3cmOYqcqPR4C4DKph5p63KbH66PyEJdS3xLa2jY0iFRYOAOxslqEN
+	 I6IfBd5VRrQL55KcYV/ZbwncDmW2Zbe1qibzaObdHznFt3LPNEEKfq9J4tEnVeuxL3
+	 tx75jYutMgYkkYJU9iqlwT9TpUnKACzMJmc1fy6S2T472PbQQ8kLOO7TTuwRUk0Hy+
+	 by2DR0Y3BAqHQ==
+Date: Mon, 28 Nov 2022 13:34:21 +0000
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Ricardo Ribalda <ribalda@chromium.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org
+Subject: Re: [PATCH] ASoC: mediatek: mt8173: Enable IRQ when pdata is ready
+Message-ID: <Y4S43XjRyrdm4Tha@sirena.org.uk>
+References: <20221128-mt8173-afe-v1-0-70728221628f@chromium.org>
+ <a214fe55-fb5e-04b8-348b-895902470b18@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH] spi: mediatek: Enable irq when pdata is ready
-Content-Language: en-US
-To: Ricardo Ribalda <ribalda@chromium.org>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20221128-spi-mt65xx-v1-0-509266830665@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221128-spi-mt65xx-v1-0-509266830665@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mXbGyhu5lsnY5RXX"
+Content-Disposition: inline
+In-Reply-To: <a214fe55-fb5e-04b8-348b-895902470b18@collabora.com>
+X-Cookie: In the next world, you're on your own.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_053236_812057_9EDE63ED 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221128_053432_318745_A4F7700C 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,21 +77,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/11/22 12:00, Ricardo Ribalda ha scritto:
-> If the device does not come straight from reset, we might receive an IRQ
-> before we are ready to handle it.
-> 
-> Fixes:
-> 
-> [    0.832328] Unable to handle kernel read from unreadable memory at virtual address 0000000000000010
-> [    1.040343] Call trace:
-> [    1.040347]  mtk_spi_can_dma+0xc/0x40
-> ...
-> [    1.262265]  start_kernel+0x338/0x42c
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--mXbGyhu5lsnY5RXX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Mon, Nov 28, 2022 at 02:17:53PM +0100, AngeloGioacchino Del Regno wrote:
 
+> This commit needs a Fixes tag, as this is indeed a fix.... kexec isn't anything
+> new, so all kernel versions are affected by this bug.
+
+Fixes tags are a nice to have, they're not 100% a requirement - they're
+a lot more useful when they're fixing a bug that was introduced rather
+than just something that never worked.
+
+--mXbGyhu5lsnY5RXX
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmOEuN0ACgkQJNaLcl1U
+h9BVzwf/W/HVqeLRVgVFl3uE+TfDAXzjIy9TDRW7DrWbkN7i2uH7bVGlYEoAecj8
+VJD5KtVKChD32froEJ2N+lbaEjonWwUDQyB8tP9yNe/jXjqwUqROmAoUlLKYaGuL
+vZZw8pKHpTo/UXf497QSCSARIrRu6fCZcCbFPrj9QUKsvXjJoLCgqgNcVlz/u0gG
+uI14fz9Jw/YZUYuD6ESLnwFQqjgWQ0jBP0R/FeW0B0juWdoo6n83K98EC3Zv5FWW
+u0RTdWzRWf/wnMuQE0pdt+Dc9qdygMXbmEO1oz8axtoxac0VlMXVSR85yzZ75Y60
+cb2bOJZXHcYZZSz2WkiFVLOLZiCpdg==
+=G3Pk
+-----END PGP SIGNATURE-----
+
+--mXbGyhu5lsnY5RXX--
 
