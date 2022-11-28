@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B5DC433FE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6685C4332F
 	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 09:23:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FiRxof4+y8SOmnlRNZqpBGO16GgrWx8YOI9oR2aJs+c=; b=Q5u13IrmgeD9wHfq362JRDAhDo
-	wXBZFPprR6fboYFPmcVQCoc9q/SyUb9lqC/C5yF70gxNfWRqB1P1boIv5ut4pEbH6aloK/W8+uZAI
-	lDxbWtZQY+i/0u6mgX73WBV0ckpInhtikx3gbRzMm5GIxvGoTRdRpyXG6Tb5LUA90wc2OdkiNib/Q
-	nNB5XndFTt15sQAzZ6pYXssWfjPe4Ve8HATc3y4zzCRjC5jaGyr1oOmvu+wIuRL3lI25kuOFbT42K
-	iK0fWgE6jXgaVx9Cfvinp1VYqW330Fg2gM8cvFboGiQn1gInrT7uVNUSGrvRERv/iQPovq/WN7dfs
-	046IfFyQ==;
+	bh=KZ+H1CLPYQt5Uf1FAylagrid89lMCXjJWU6X34EUgrA=; b=pY2QNJ9NLAh4I53bdRkb7GA463
+	2R1QOuML2vC+aogkPV76jT3BQ+yHudycZNA94lfv/49POhFCGStpu8Fa+xSkCP+cFqgiSBDNYi/Q3
+	qF+wfYeM6HLT2MEj7XpsB/Q0jEr0sSI8/iapNszj3XSn6jZn4E20ZqBIdXsxqTFTUpmhLEtUbOKIV
+	NHv+s7BWYUIQPm+V22aAShcvy/e+pzrVGqho+EA0BkbB6mec1jB1/ne5c1+Hc2Yqs4oDkXZPmxwZZ
+	0Sv93y/lq3Tb/IQhhPt7XagQvgqNftPIxPp/Znq4k1qEi5u1CZCCVzcs8TlnmUcMLylm1bFi8iCFC
+	mPl0O1uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozaMd-000bLc-30; Mon, 28 Nov 2022 09:23:47 +0000
+	id 1ozaMe-000bMK-3p; Mon, 28 Nov 2022 09:23:48 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozaLL-000akA-1o; Mon, 28 Nov 2022 09:22:29 +0000
+	id 1ozaLM-000aks-77; Mon, 28 Nov 2022 09:22:29 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2ED796602A89;
-	Mon, 28 Nov 2022 09:22:22 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B950C6602ACE;
+	Mon, 28 Nov 2022 09:22:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669627342;
-	bh=8E9V/iMHvBxjB98xrLavQ6uGlM/JoXxCkUogZXNGwB4=;
+	s=mail; t=1669627345;
+	bh=l7ZG9TkqTdWaBRyskK4GczkMCb93J8ROfY3OVmuNmtg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lUrC4WjzwumMeYZvcEh7NGbHTOaZphbCWSXFLGRsIXSbnFWikcmqvT0cncOmZxOxd
-	 KWD9siIn7IGBhe/BJUs7Lksl9o3KiHXGIaFB/0S/oQi6LKQwtBUj2mF0Hzetf5D9h7
-	 4b7UG72zgRceULxQ+sqcKSMD2XYb58J7fg5m3SDNDRATU75JJVBMKu6IAOKw3rqjDP
-	 pPNPl/tnaoVRDUxLgiGO/47WCEQ8NYU4uh5aOiCURwxMoM6HktbXLHUtPpWOUPH5Oe
-	 rqc9VMbwGIYbyqm9CYc61MH6uVqJpcxgbNl8uvKQeESXUQOjXeH7/VLH4xG+1x/clw
-	 iQGaRLJ/Fg5SA==
+	b=oInpZUHXB7zOPYbBezlIZaWdf4PJgphAs20BHl/Gd0PfZj6uUQ/Xa3Zozwx68YaEV
+	 ny2z2PDfEjPaPXJkTuFd8/sVLlKe2qp+URst9xrhokjCaCEVGzAAAGt+erk8Ec1/R/
+	 AuINwOOSWAZPl9KXcI/K7C+029TB3hyAmf2blEZhiqmnsZcap23pG8rCg38UKi7vOR
+	 uyzdZl1Lah7K5fb+f3WK8/kB5QBkoKAPO3IKfL4JZBGrsbUpvvB4Fia0/G/ghi1nWg
+	 ijPdoxi227Ax/6l2osmpAXJeLP92bmqHNuqgU8v9uWD0knIB7D2etLp6sRvisWqqu9
+	 BhG1zWyDniF1g==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: tglx@linutronix.de
 Cc: maz@kernel.org,
@@ -52,19 +52,18 @@ Cc: maz@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/4] dt-bindings: interrupt-controller: mediatek,cirq: Migrate to dt schema
-Date: Mon, 28 Nov 2022 10:22:14 +0100
-Message-Id: <20221128092217.36552-2-angelogioacchino.delregno@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 4/4] irqchip: irq-mtk-cirq: Add support for System CIRQ on MT8192
+Date: Mon, 28 Nov 2022 10:22:17 +0100
+Message-Id: <20221128092217.36552-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221128092217.36552-1-angelogioacchino.delregno@collabora.com>
 References: <20221128092217.36552-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_012227_377700_1523CB21 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20221128_012228_431733_F0C4FCF1 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,136 +78,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Migrate mediatek,cirq.txt to dt schema as mediatek,mtk-cirq.yaml.
-While at it, I've also fixed some typos that were present in the
-original txt binding, as it was suggesting that the compatible
-string would have "mediatek,cirq" as compatible but, in reality,
-that's supposed to be "mediatek,mtk-cirq" instead.
+On some SoCs the System CIRQ register layout is slightly different,
+as there are more registers per function and in some cases other
+differences later in the layout: this is seen on at least MT8192,
+but it's also valid for some other "contemporary" SoCs both for
+Chromebooks and for smartphones.
 
-Little rewording on property descriptions also happened for
-them to be more concise.
+Add the new "v2" register layout and use it if the compatible
+"mediatek,mt8192-cirq" is found.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../interrupt-controller/mediatek,cirq.txt    | 33 ---------
- .../mediatek,mtk-cirq.yaml                    | 67 +++++++++++++++++++
- 2 files changed, 67 insertions(+), 33 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
- create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
+ drivers/irqchip/irq-mtk-cirq.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-deleted file mode 100644
-index 5865f4f2c69d..000000000000
---- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-+++ /dev/null
-@@ -1,33 +0,0 @@
--* Mediatek 27xx cirq
--
--In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
--work outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
--The external interrupts (outside MCUSYS) will feed through CIRQ and connect
--to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
--interrupts and generate a pulse signal to parent interrupt controller when
--flush command is executed. With CIRQ, MCUSYS can be completely turned off
--to improve the system power consumption without losing interrupts.
--
--Required properties:
--- compatible: should be one of
--  - "mediatek,mt2701-cirq" for mt2701 CIRQ
--  - "mediatek,mt8135-cirq" for mt8135 CIRQ
--  - "mediatek,mt8173-cirq" for mt8173 CIRQ
--  and "mediatek,cirq" as a fallback.
--- interrupt-controller : Identifies the node as an interrupt controller.
--- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
--- reg: Physical base address of the cirq registers and length of memory
--  mapped region.
--- mediatek,ext-irq-range: Identifies external irq number range in different
--  SOCs.
--
--Example:
--	cirq: interrupt-controller@10204000 {
--		compatible = "mediatek,mt2701-cirq",
--			     "mediatek,mtk-cirq";
--		interrupt-controller;
--		#interrupt-cells = <3>;
--		interrupt-parent = <&sysirq>;
--		reg = <0 0x10204000 0 0x400>;
--		mediatek,ext-irq-start = <32 200>;
--	};
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
-new file mode 100644
-index 000000000000..4f1132c077ff
---- /dev/null
-+++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mtk-cirq.yaml
-@@ -0,0 +1,67 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/interrupt-controller/mediatek,mtk-cirq.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
+index 4776ed6492fb..76bc0283e3b9 100644
+--- a/drivers/irqchip/irq-mtk-cirq.c
++++ b/drivers/irqchip/irq-mtk-cirq.c
+@@ -39,6 +39,18 @@ static const u32 mtk_cirq_regoffs_v1[] = {
+ 	[CIRQ_CONTROL]	= 0x300,
+ };
+ 
++static const u32 mtk_cirq_regoffs_v2[] = {
++	[CIRQ_STA]	= 0x0,
++	[CIRQ_ACK]	= 0x80,
++	[CIRQ_MASK_SET]	= 0x180,
++	[CIRQ_MASK_CLR]	= 0x200,
++	[CIRQ_SENS_SET]	= 0x300,
++	[CIRQ_SENS_CLR]	= 0x380,
++	[CIRQ_POL_SET]	= 0x480,
++	[CIRQ_POL_CLR]	= 0x500,
++	[CIRQ_CONTROL]	= 0x600,
++};
 +
-+title: MediaTek System Interrupt Controller
-+
-+maintainers:
-+  - Youlin Pei <youlin.pei@mediatek.com>
-+
-+description:
-+  In MediaTek SoCs, the CIRQ is a low power interrupt controller designed to
-+  work outside of MCUSYS which comprises with Cortex-Ax cores, CCI and GIC.
-+  The external interrupts (outside MCUSYS) will feed through CIRQ and connect
-+  to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
-+  interrupts and generate a pulse signal to parent interrupt controller when
-+  flush command is executed. With CIRQ, MCUSYS can be completely turned off
-+  to improve the system power consumption without losing interrupts.
-+
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt2701-cirq
-+          - mediatek,mt8135-cirq
-+          - mediatek,mt8173-cirq
-+      - const: mediatek,mtk-cirq
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#interrupt-cells':
-+    const: 3
-+
-+  interrupt-controller: true
-+
-+  mediatek,ext-irq-range:
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+    items:
-+      - description: First CIRQ interrupt
-+      - description: Last CIRQ interrupt
-+    description:
-+      Identifies the range of external interrupts in different SoCs
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#interrupt-cells'
-+  - interrupt-controller
-+  - mediatek,ext-irq-range
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    cirq: interrupt-controller@10204000 {
-+        compatible = "mediatek,mt2701-cirq", "mediatek,mtk-cirq";
-+        reg = <0x10204000 0x400>;
-+        #interrupt-cells = <3>;
-+        interrupt-controller;
-+        interrupt-parent = <&sysirq>;
-+        mediatek,ext-irq-range = <32 200>;
-+    };
+ #define CIRQ_EN	0x1
+ #define CIRQ_EDGE	0x2
+ #define CIRQ_FLUSH	0x4
+@@ -277,6 +289,7 @@ static const struct of_device_id mtk_cirq_of_match[] = {
+ 	{ .compatible = "mediatek,mt2701-cirq", .data = &mtk_cirq_regoffs_v1 },
+ 	{ .compatible = "mediatek,mt8135-cirq", .data = &mtk_cirq_regoffs_v1 },
+ 	{ .compatible = "mediatek,mt8173-cirq", .data = &mtk_cirq_regoffs_v1 },
++	{ .compatible = "mediatek,mt8192-cirq", .data = &mtk_cirq_regoffs_v2 },
+ 	{ /* sentinel */ }
+ };
+ 
 -- 
 2.38.1
 
