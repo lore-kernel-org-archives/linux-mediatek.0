@@ -4,148 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AEF6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Nov 2022 22:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61C5C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 02:08:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JKRBHoo1Zn5alHlfxxHQnLRUFosT6+Rl7Z/qnLMxuq4=; b=qcnCTpQmqFvpXpDlttddMW1mjd
-	Rv6s13e+fh6WFwieRBaD5hy3W3dc6ASS6q5vqdyjUViHGDBnTyKTL9onrPHIUhCmB82Du/tqy0Bh1
-	r+6BTLehvqjeuWHIRUoMcqGNmD0Ewx3NKZN1v7uN4C60SGAB1GSHAnEvbgD8wgRxDQTJGDnIUw+0v
-	wfQCCLrvqdYtIgDIT+6/nSsuD7aI5OGe7NWTFbnQfQ1eMPbOB6EjEax0judpfyHlNI9hzZszu+Ltw
-	5KyF/mOM368Q66KKi+9uj65cvw19atuSw8gga4KIBuIpdtSCKN02liH04Zfll5a6dWHzYCmUJOCYI
-	91T8eScg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7G/kY4Z4RzGLCu0pIWPbVRiL871EYMi+z76vihOlYOg=; b=2k0jDZhLTidoBMsAL8+dlsNrX7
+	750omjqx7K0IbJqjM/5WVRy+Cw2+nKmjufiiIgK7BykTsrAiJ30PJQyn7IJ0krDoPzG8sw56TxMYQ
+	yMDhEbsHmrhASlZkvN5aa+iUqpAi/JJ+0mkdKd4Igl2HOwwuCXUCJ+MUqHBmfngTU0y94rjO0949o
+	hJXJtE0mzEsJIRFr9IQdl3wwg+rJkyZkbDgbK5oA7ZM3MJtCED3xWctOU8GkGItafiYIkTGQ+XD53
+	lU3bwHPimn3q8trTOwtTnZOYmEDeDpEgPmMLrfhcKlopyPRBoVlqswNkZUDbSgcoFABjh/0rOIKNj
+	40lkY27w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozQXj-00E3Kr-A6; Sun, 27 Nov 2022 22:54:35 +0000
-Received: from mail-mw2nam10on20717.outbound.protection.outlook.com ([2a01:111:f400:7e89::717] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1ozTZW-00EocS-Fk; Mon, 28 Nov 2022 02:08:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozQRU-00E0fb-Nz; Sun, 27 Nov 2022 22:48:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bk06QBHSlMAvSySyykFQp/gs6Jag+Ho9+flAxqeKWpbO/rxPy1eOyjktc0RIKL4b9VJ5rM/xKdNtF+zqXoB39K+hlioprsoLO+j5saSsScx7OQQ0MhRDM39HnxUJXncpKoQ1nvmRSX3t5DjVvHlP9N81TUKwWNo9y6od3fRYISKDS3htAELt70scVQJSuTTb/2zEPMWNo8iOmvbLMk6M4rIcIGLO+2eI/fvuRJ1kIEBKQJ067VwtnhRyUpLgmVeJCmWnhBt1bcfybog/qi4Je+3BYuIszOqXru35WyEXHDYFzlkld2PWvCjzUffR7l1ib6Y2cw8e9ZXv9dTtvbJw/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JKRBHoo1Zn5alHlfxxHQnLRUFosT6+Rl7Z/qnLMxuq4=;
- b=Vve9N/vDB9kaj7yuY/L27ex6Qz6Xu6/uZ469s3CDEIBKdgBoDtXuH2pue0O+w5H4oT76eKjvoNNeWbTnljf/lyfcw93AcQFQdckkkj+BnrLWP5TS5NeskoyWMhYosSkOmlowyw9zjEkYf3tduWKcSJ7xjLeHPbp3MD0GVbYUQmuZVgkSi9erA+GGw7SmHOcyxU5ZpDe8A8riqhgzkqz3i5Gt4JgDcxEqOuNTE/FsMUGmsGCPLS7E3IApMix4Fl+vmPd/FjLdH6pfOHyn8kTzmTeIVIv8zuYXmrSbdLn9tJmdgGbCPC/FiHS+bin7HZkfMUDXB4+uje78xyUNXShFAg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JKRBHoo1Zn5alHlfxxHQnLRUFosT6+Rl7Z/qnLMxuq4=;
- b=ZJ4xpcqCbuLR/U2xZ06+zDZlYiKaPYJl6yms7OKt6mmh92fKRwHUX8iimENTQPBPYz7B/q+sS2zb+tnhZ2Mt8Es6zrb93K2j1JP0NvmATDySSFbQAKpkdW0G0ytdttNfeVT1URdQYVO0VX3qJdNGkKWOpZB1Xw1ZqezSicgechQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by BN0PR10MB4998.namprd10.prod.outlook.com
- (2603:10b6:408:120::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.22; Sun, 27 Nov
- 2022 22:48:07 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5857.022; Sun, 27 Nov 2022
- 22:48:07 +0000
-From: Colin Foster <colin.foster@in-advantage.com>
-To: linux-renesas-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>,
-	Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?UTF-8?q?n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	=?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>
-Subject: [PATCH v3 net-next 10/10] dt-bindings: net: mscc,vsc7514-switch: utilize generic ethernet-switch.yaml
-Date: Sun, 27 Nov 2022 14:47:34 -0800
-Message-Id: <20221127224734.885526-11-colin.foster@in-advantage.com>
+	id 1ozTZR-00EoWf-8K; Mon, 28 Nov 2022 02:08:36 +0000
+X-UUID: 9eab75704ecd4acd994ea4c1f5fe5f04-20221127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7G/kY4Z4RzGLCu0pIWPbVRiL871EYMi+z76vihOlYOg=;
+	b=roFZtU+DZ/6IpsXATm51WxO6KWnpLc2k1xCLapGCU9JkJ6OUUupzqVsR0b0eBHn5+0huKc4t/vIwz9crgU+LDIeeVakL0TAQjpL/zebC3dU5UGVocIryV9yT6sKRPMXitjIdMNAXsM5A2CYsIm3VGEYy3FV9PEFc7cI08Zmifp4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:bfcfe70e-8b5f-46ce-a9bf-296a02860099,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:22a4721e-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 9eab75704ecd4acd994ea4c1f5fe5f04-20221127
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1770886313; Sun, 27 Nov 2022 19:08:25 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 28 Nov 2022 10:07:38 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 28 Nov 2022 10:07:37 +0800
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
+	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
+	<gch981213@gmail.com>
+CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
+	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
+Subject: [PATCH 1/9] spi: mtk-snfi: add snfi support for mt7986 IC
+Date: Mon, 28 Nov 2022 10:06:05 +0800
+Message-ID: <20221128020613.14821-2-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221127224734.885526-1-colin.foster@in-advantage.com>
-References: <20221127224734.885526-1-colin.foster@in-advantage.com>
+In-Reply-To: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
+References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR05CA0027.namprd05.prod.outlook.com
- (2603:10b6:a03:33b::32) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|BN0PR10MB4998:EE_
-X-MS-Office365-Filtering-Correlation-Id: e67f645e-530c-4688-461f-08dad0c97359
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	RiwdVUZA5oBLG+/xglwLnXmvW0b5fMfkrUpU4jCryxEsa3sXrlIABN2rGxKPSQTqEbBMzAbsG+wLT365ZMAgSX2K5wQ+Y7R9ENTObQihYYbR9rTlHpyF/dtjuMtW8pfptYjN94GIrRoZBZMqfQXuEnPqgZ00Rqf0sfFPEm8EVEwApQP6XBRa2fCrrzMlXp/tjHa8B1KWdIk7fn8d8WYbGJjDm101O39ImMcsf5D2+//PuhOxzgmyfJlBKUBK4q4ez31xJLaKSUe+VeRjWJy3IfB2bpS5lg1yRt3+ldukkRKPVVGVVrPNztFOtNbd4J2biqGIMlPrBunkCWMkHXUcyrGkKTfWiVkTlEm1RTgQRju3eBQH6214Gv4Aq00K+OM9+MR8bZ0BvvX1lfp2fylRT4APnw4uXxX36CXRcdF4xJxJY2A5r90Ot/lhDn2XnnqXV6EmmiS/2SJNvvIze5TLttZK2h+eYhEu5AFNG0IsHoChugCbCcaC0SUNKXNxr5xeslN6lMlGiEWRq6fC+Iahh55+tYy89+gxvmvR7r6IyTo9LFYizfRDbRHb5qhDADuIZAIKQ0fqxnw5DzKDeXTN4WA0hEjTX40KSWVNxb59iw5UoYq2kT8xVABrBdjhThfmlaEjzWkvckBuBlsgSTuMLglMVDmMkapx/AGr7DhUXlCsQ1t0FjX6g4E2/wiGjKykGNBiOlL1ls1ANtV/pTF7YQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(136003)(396003)(376002)(346002)(39840400004)(366004)(451199015)(6506007)(2906002)(36756003)(86362001)(7416002)(7406005)(6486002)(478600001)(52116002)(316002)(66946007)(66556008)(66476007)(6666004)(41300700001)(4326008)(5660300002)(8936002)(54906003)(8676002)(44832011)(38100700002)(38350700002)(2616005)(26005)(186003)(1076003)(83380400001)(6512007)(41533002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?ccBOsnLOby3ojQT/UKtb19nOfC+7CqDhR5dOuacVM+c8m8T2tT/sVSIYRcUJ?=
- =?us-ascii?Q?ZQWvRYW6nHzzFpQ4CD0J4V+rfJrqkaaExYChph1IYu0nDxD84jEmRb16L5tX?=
- =?us-ascii?Q?A6NFz1DMbqRtmf16U2C93y6eJC3nzLcDUr8pWXYB532lmks0jKtTTGOooaPN?=
- =?us-ascii?Q?YGi2McrgHYN2yScmsIJGHNiK+KPBlCmsVsCKAQzDNZ7/S04AIoCg4PLXkFxt?=
- =?us-ascii?Q?vuX8Hepsu2+keUQwg2bAocvWatv9e36aZAOCMJyiT330/TbOygno0sTLBd8V?=
- =?us-ascii?Q?716aGWrs1Zgg2OQ0sJIfm6oUAKzSSvR7UI5NGlpf5N1fkBckH9Eciui2lKEM?=
- =?us-ascii?Q?ePgxsRTwL54SSTKOhc9Z4isIvgrcM5J24s049D6DGC9w+qA8I8io0VTvbQB9?=
- =?us-ascii?Q?rT1FSpQF53gxVGXC0GhUz736H37VUKNDBtZQiNnY0w/ZlracU7UufmGGsgo/?=
- =?us-ascii?Q?dwO5t0p/O2tCC/pTVz+/MMGCJfiY4n/1s4DobDwVIfM0KdsxpUjfZ7TQtnSf?=
- =?us-ascii?Q?Di/gLBBMOTi0A9i+56BjnC5nU4nojJUTyAxxkfNNUBpjw39S45JN9yTXboaB?=
- =?us-ascii?Q?f8YTWRzv9Y+hf0Zm1lEB1AQh2+NG/7GPleyDj5oSa1VExZCEfkvBqFI7ROBJ?=
- =?us-ascii?Q?Mj+kOzOGSJjI2q26rtAlkv5nD6Warx0+ybGGKld0NeweP4f/2cUBXU0oRAg3?=
- =?us-ascii?Q?ry7zMaD6Lnmw6EGlkbfUZe1l1dexrgmrlRh+qXvyLda13/hRCWrDLM1n5u//?=
- =?us-ascii?Q?Wh4KueVhnKw+QY8syRX1FcNWqnRGfbn6Myb+OBj+XWQgVOggcbll2tf5hnoC?=
- =?us-ascii?Q?sT44FSy4W6IvtLGMR6e3TfK8Plho/i5LrKy6WaC1P08dDzZSuWX2sd1xbS+r?=
- =?us-ascii?Q?IjnKhXScAyLEWMJoXeJWngJUpEMu2+dzh7aD4L6r6lOnqglEmlSxtwRCtDq5?=
- =?us-ascii?Q?+mrRnWvpEx49kcY7tcZ7KyUi72YSGri3X8gioFnOEBZ/Hu6WJali4fgKhBSt?=
- =?us-ascii?Q?mvbinHpqCFTlxXrfnwMcVHE/y26fmCQOLzk/nPFJUG+ImVG5a6hhcCqbMkB0?=
- =?us-ascii?Q?gfdGN1Ouw/cFBkb+5WXGXchT5HolKojXruftZkCz2phLCJOEfNnuPoySR3ED?=
- =?us-ascii?Q?/WKoAyE6PFUoMqMQ0cdzstIQTa9sT+m04biMh/t9Mh4sRWdqG4q0wNooTpBs?=
- =?us-ascii?Q?inQKfw7cU78PZpsctgRmQVR6qkQ25iNEAVy6jtXGOJu2PDm3Cznt04wsGSN4?=
- =?us-ascii?Q?IMmexXwso5t2k5IYB9yFPXOVJYGhscXldmluJRV4+ql4toNpG3TlFnRsN6AN?=
- =?us-ascii?Q?4m5M6V8rhWNH0nBO+BEVNgBJK6yF5Jepu0dtDcsFlMRGESK0ltd7vb9aDLHP?=
- =?us-ascii?Q?PUxruL4qLtMH2hNBO2QXAdqELBo7avX+Pfx5AZH/7xmxocRvk2rYxU5HXgjP?=
- =?us-ascii?Q?e1qIlBnZLUDVknUHcjKInSDQ9JgSLDLWq2Ohe6S/Q2vHQB2Wo58sQFUWHzsb?=
- =?us-ascii?Q?Q7CA+nQT/001Np48U01DfKe1rwuLImuBF6BOyoC2HMLB+okN11q1HVd2GfIq?=
- =?us-ascii?Q?NcXj3IVEg9XdnBOA44O+LtUSCNM2sudkjg6yWboBcJGs5Y1DtMcAxjGIj+Kd?=
- =?us-ascii?Q?35ESJXYpDZD2LnoZ+jXj0ik=3D?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e67f645e-530c-4688-461f-08dad0c97359
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2022 22:48:07.0612
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: M+ZEczLNcB2cNSoccORefcknYEv8iLPMkME3EyMAGPSYv3v8u26lMtzjxFrBD0ZqJP+6A/QGw2ifNe0HrEH16oR4eH0Nwulmx/YJksrWnjY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB4998
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221127_144808_855008_36226C97 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20221127_180833_342009_5D4D95D6 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,85 +86,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several bindings for ethernet switches are available for non-dsa switches
-by way of ethernet-switch.yaml. Remove these duplicate entries and utilize
-the common bindings for the VSC7514.
+add snfi support for mt7986 IC
 
-Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 ---
+ drivers/spi/spi-mtk-snfi.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
-v2 -> v3:
-  * Reference ethernet-switch-port.yaml# instead of ethernet-controller
-  * Undo the addition of "unevaluatedProperties: true" from v2. Those
-    were only added because of my misunderstandings.
-  * Keep #address-cells and #size-cells in the ports node.
-
-v1 -> v2:
-  * Fix "$ref: ethernet-switch.yaml" placement. Oops.
-  * Add "unevaluatedProperties: true" to ethernet-ports layer so it
-    can correctly read into ethernet-switch.yaml
-  * Add "unevaluatedProperties: true" to ethernet-port layer so it can
-    correctly read into ethernet-controller.yaml
-
----
- .../bindings/net/mscc,vsc7514-switch.yaml     | 31 ++-----------------
- 1 file changed, 3 insertions(+), 28 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-index ee0a504bdb24..5ffe831e59e4 100644
---- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-@@ -18,10 +18,9 @@ description: |
-   packets using CPU. Additionally, PTP is supported as well as FDMA for faster
-   packet extraction/injection.
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index d66bf9762557..fa8412ba20e2 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -126,7 +126,8 @@
+ #define STR_DATA BIT(0)
  
--properties:
--  $nodename:
--    pattern: "^switch@[0-9a-f]+$"
-+$ref: ethernet-switch.yaml#
+ #define NFI_STA 0x060
+-#define NFI_NAND_FSM GENMASK(28, 24)
++#define NFI_NAND_FSM_7622 GENMASK(28, 24)
++#define NFI_NAND_FSM_7986 GENMASK(29, 23)
+ #define NFI_FSM GENMASK(19, 16)
+ #define READ_EMPTY BIT(12)
  
-+properties:
-   compatible:
-     const: mscc,vsc7514-switch
+@@ -158,6 +159,7 @@
+ #define MAS_WR GENMASK(5, 3)
+ #define MAS_RDDLY GENMASK(2, 0)
+ #define NFI_MASTERSTA_MASK_7622 (MAS_ADDR | MAS_RD | MAS_WR | MAS_RDDLY)
++#define NFI_MASTERSTA_MASK_7986 3
  
-@@ -100,35 +99,11 @@ properties:
+ // SNFI registers
+ #define SNF_MAC_CTL 0x500
+@@ -220,6 +222,11 @@
  
-     patternProperties:
-       "^port@[0-9a-f]+$":
--        type: object
--        description: Ethernet ports handled by the switch
+ static const u8 mt7622_spare_sizes[] = { 16, 26, 27, 28 };
  
--        $ref: ethernet-controller.yaml#
-+        $ref: ethernet-switch-port.yaml#
++static const u8 mt7986_spare_sizes[] = {
++	16, 26, 27, 28, 32, 36, 40, 44, 48, 49, 50, 51, 52, 62, 61, 63, 64, 67,
++	74
++};
++
+ struct mtk_snand_caps {
+ 	u16 sector_size;
+ 	u16 max_sectors;
+@@ -230,6 +237,7 @@ struct mtk_snand_caps {
+ 	bool bbm_swap;
+ 	bool empty_page_check;
+ 	u32 mastersta_mask;
++	u32 nandfsm_mask;
  
-         unevaluatedProperties: false
+ 	const u8 *spare_sizes;
+ 	u32 num_spare_size;
+@@ -244,6 +252,7 @@ static const struct mtk_snand_caps mt7622_snand_caps = {
+ 	.bbm_swap = false,
+ 	.empty_page_check = false,
+ 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
++	.nandfsm_mask = NFI_NAND_FSM_7622,
+ 	.spare_sizes = mt7622_spare_sizes,
+ 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
+ };
+@@ -257,10 +266,25 @@ static const struct mtk_snand_caps mt7629_snand_caps = {
+ 	.bbm_swap = true,
+ 	.empty_page_check = false,
+ 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
++	.nandfsm_mask = NFI_NAND_FSM_7622,
+ 	.spare_sizes = mt7622_spare_sizes,
+ 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
+ };
  
--        properties:
--          reg:
--            description: Switch port number
--
--          phy-handle: true
--
--          phy-mode: true
--
--          fixed-link: true
--
--          mac-address: true
--
--        required:
--          - reg
--          - phy-mode
--
--        oneOf:
--          - required:
--              - phy-handle
--          - required:
--              - fixed-link
--
- required:
-   - compatible
-   - reg
++static const struct mtk_snand_caps mt7986_snand_caps = {
++	.sector_size = 1024,
++	.max_sectors = 8,
++	.fdm_size = 8,
++	.fdm_ecc_size = 1,
++	.fifo_size = 64,
++	.bbm_swap = true,
++	.empty_page_check = true,
++	.mastersta_mask = NFI_MASTERSTA_MASK_7986,
++	.nandfsm_mask = NFI_NAND_FSM_7986,
++	.spare_sizes = mt7986_spare_sizes,
++	.num_spare_size = ARRAY_SIZE(mt7986_spare_sizes)
++};
++
+ struct mtk_snand_conf {
+ 	size_t page_size;
+ 	size_t oob_size;
+@@ -360,7 +384,7 @@ static int mtk_nfi_reset(struct mtk_snand *snf)
+ 	}
+ 
+ 	ret = readl_poll_timeout(snf->nfi_base + NFI_STA, val,
+-				 !(val & (NFI_FSM | NFI_NAND_FSM)), 0,
++				 !(val & (NFI_FSM | snf->caps->nandfsm_mask)), 0,
+ 				 SNFI_POLL_INTERVAL);
+ 	if (ret) {
+ 		dev_err(snf->dev, "Failed to reset NFI\n");
+@@ -1295,6 +1319,7 @@ static irqreturn_t mtk_snand_irq(int irq, void *id)
+ static const struct of_device_id mtk_snand_ids[] = {
+ 	{ .compatible = "mediatek,mt7622-snand", .data = &mt7622_snand_caps },
+ 	{ .compatible = "mediatek,mt7629-snand", .data = &mt7629_snand_caps },
++	{ .compatible = "mediatek,mt7986-snand", .data = &mt7986_snand_caps },
+ 	{},
+ };
+ 
 -- 
 2.25.1
 
