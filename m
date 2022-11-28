@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55597C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 08:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C7FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Nov 2022 08:57:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=; b=P3F6xV8GvDEzAMteNRY1RsJkiV
-	7VjzMnzoiruWe70uFkqcy2eiwbAXj/lVYCH3Nu90d+yDxCjX93AglmLLTlGJNhXEPuclVuUcDTjNG
-	IeXQy/7DoJb7uBCXJppJN5lX0bsXWHuoAWGhk3fAzz7H8rkoODrso+rSekHbxrwFhLCztHVjW29DB
-	zPGinwZ8qK/BWI9C+7NeajyNmI9GCtKA/39Nghvt1GVfrXBiy5XLW82MRha+9oGqLPuTkXcu/Mq3X
-	Yn4EXKozdfWBdnWx0Ajbk4mWKuiQG9kvS/Rmf4Jb2lotKa0Bdaf2dGfB2uILKnOprnfS5szn3eoQi
-	GTBOJdWQ==;
+	bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=; b=GJzpnMZluCGL2jBUfQimHt/Pmv
+	1/y4pVsGs1V6K3RQBvvcfkQljZf8EF3fWKZ9aT5/7+UqgzqTTpiNi9LtP11C8oWJKTyObgbPRHq/+
+	fCagiS+54jrvtaouC9NH0qwIetX+2NvwLo++3V88SBBPnGrt/EDyzdxBf0M1qzWO4xQXAvb3gd1wu
+	2R09Cw3wyg/RdNZ0jI2wrAqI16ETDuAMVbUKo85BrsEr6dhB+5h+g0vMTb8zLJk4S7IhXKF6oyzfa
+	YHMmA3t3NDyhLFN0IkL3I7sP6k1cuNOSs/rLcZzrH7GhjB69W1yVORfTV3zX+hzV77vtra6fyAbhR
+	+3Xr5zXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozZW0-000EIb-V4; Mon, 28 Nov 2022 08:29:24 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1ozZwv-000Qw4-Rf; Mon, 28 Nov 2022 08:57:13 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozZVw-000EFf-Ta; Mon, 28 Nov 2022 08:29:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1669624122; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SlruZNjijJZzyYkvFL6OElHpvJ5NcnjnDm7tGquBFAJmCmXXZ7xyEIdvDkQNKukAaVmlVi9Bc3+T1BoMHqR4WMPHWfitmKcMQV9Qj1Z0RpcsXmHFVX1okyuAaL25m94+FDZ1/45k0UH9DWRCBCIZN2m+OW5eV4U6+fKAV6njUKw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1669624122; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=; 
-	b=bIFBF87ok3heWqT6Z4w322m6ip6W7S6qKVz4ihZKSzxbjoH2NheiWIRQf32n7ELZm2Vq4IubEexB1TCaDl8wy/4B5zClr8J6End6YIxYT0Y2H67doigDBMLbzLKl2UlubFKSOiQ62YMWZZZ0RB3eSViz+aWppC9gr/3t0rlMZAI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669624122;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=AS/14WaE2LN43smbHuSpmejZfg+JalHV2YhgqWmQEAE=;
-	b=JyGzTO7/cV3Df/8rep2Kwe+HTHBxB6ASQWVOwe3f4YCQRiaxNNvQEndBCMwcYe5k
-	1aua5HNDimYl5QcSpfwqtl1Hw4ilAqL50Uwa9FKyisQG2QyEKCeOG0XJ0pzEb3v/dgJ
-	+dE3f36wwKkyE/vzjVCX1quNzRai5Ua82TU22g74=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1669624120094627.872459276059; Mon, 28 Nov 2022 00:28:40 -0800 (PST)
-Message-ID: <08784493-7e85-9224-acfa-9a87cbd325e7@arinc9.com>
-Date: Mon, 28 Nov 2022 11:28:31 +0300
+	id 1ozZwj-000QrO-LL
+	for linux-mediatek@lists.infradead.org; Mon, 28 Nov 2022 08:57:04 +0000
+Received: by mail-ej1-x635.google.com with SMTP id vp12so22728462ejc.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 00:56:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=;
+        b=62u2Rfj+8hqBycQ942lIdMJxOmRUxzLFS88338/bWaX64SRCze08nOErchZZjD79e9
+         jxBkgmmaQb3aktcKJuwqGmxQRHDn0HXvZJXpscXmgRAEUMeHLbrHyPMYJW/j82zk0XYp
+         6gsJAbx5GUzNoNIIq6D0uaEI3LTbltrvXUIxmJkV5yRRZ5FbMm3Poiyu/RsHYa1lRF0T
+         zAL7YK9GDAm5n9zem/EG7R7+zkUqLeAThB0+xci9RvHt6jIf1rQnf3D7tTwsSt7O+pCo
+         3ZZJhl8mYjGanyUk4utkZbvWtSfrwXeyNwbLSF+ofpay5bEraiGSMglDjxaUVeB5Bns4
+         WJVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UlT6JqjPReHXe7EcP6Bm9RZ1YVa4h6RI/hRicIEgKs4=;
+        b=Du/pI42IZBPsbqjZJSjClkQ4PHUkYRapPUi1OJKBXf6xadRQkGJHT0i6NDjnGRcgue
+         nKhtZgjvq5yfno2r2HdiQ6WwqAu7beKpuXYqdEyajUgqV2rW0N0NJ5Air3Uwnx1vxlEX
+         A9gIu8mezT4CPgH1H3WumflsmKBsYKQwVrzsJ6jRIUqtkipukEmkhmkn5xZwNnSS20Y1
+         sdmd5q1TQKzk1zSvYBcxcbWM0A6VTyIdTElO/vb8tNMc9mTvO6gvueotflbjtBWcxD7P
+         dlEKHz7g+6NngR9bU6k77I92fgPeBrd3aNU+U/AHuzsaC+UI3R/1icnypL62lWXhXfEp
+         j+Sg==
+X-Gm-Message-State: ANoB5pnkqtvWW5tO1mCAskp8ykA7RjqXEMEz1WK4HuK4OhQtXdH+TDvA
+	qId0NXCFSC/UBL98f7s3YhBvRD9d2ascTmab74B2RA==
+X-Google-Smtp-Source: AA0mqf7iybltDA7hXJL9yAT+SXbkybtSOfTzeliT8SvsSM8emlSdXZtrfN5+duEiN2skEXcM7mCKyxD7tFoNefo+WI0=
+X-Received: by 2002:a17:906:7f05:b0:7be:26f2:909f with SMTP id
+ d5-20020a1709067f0500b007be26f2909fmr7248255ejr.86.1669625817752; Mon, 28 Nov
+ 2022 00:56:57 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v3 net-next 06/10] dt-bindings: net: dsa: mediatek,mt7530:
- fix port description location
-To: Colin Foster <colin.foster@in-advantage.com>,
- linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
- Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
- Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
- <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>,
- George McCollister <george.mccollister@gmail.com>,
- Rob Herring <robh@kernel.org>
-References: <20221127224734.885526-1-colin.foster@in-advantage.com>
- <20221127224734.885526-7-colin.foster@in-advantage.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20221127224734.885526-7-colin.foster@in-advantage.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+References: <20221005-mt6357-support-v6-0-4f589756befa@baylibre.com>
+ <20221005-mt6357-support-v6-2-4f589756befa@baylibre.com> <f7f0753c-f0bc-b87c-b99a-8b1bc3ef40b2@linaro.org>
+In-Reply-To: <f7f0753c-f0bc-b87c-b99a-8b1bc3ef40b2@linaro.org>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 28 Nov 2022 09:56:46 +0100
+Message-ID: <CAFGrd9rK184_mqpPmHsSRXyE=Y3OxaWe_RaYBh5P1F-aOhPGvg@mail.gmail.com>
+Subject: Re: [PATCH v6 02/10] dt-bindings: rtc: mediatek: convert MT6397 rtc documentation
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Chen Zhong <chen.zhong@mediatek.com>, Fabien Parent <fabien.parent@linaro.org>, 
+	Alessandro Zummo <a.zummo@towertech.it>, Mark Brown <broonie@kernel.org>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Flora Fu <flora.fu@mediatek.com>, 
+	Tianping Fang <tianping.fang@mediatek.com>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>, Rob Herring <robh@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rtc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-leds@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_002921_323726_325257AB 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20221128_005701_707126_6CAF9773 
+X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,65 +99,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28.11.2022 01:47, Colin Foster wrote:
-> The description property was located where it applies to every port, not
-> just ports 5 or 6 (CPU ports). Fix this description.
+Le dim. 27 nov. 2022 =C3=A0 13:59, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
+>
+> Regardless of it, Rob suggested squashing it into MFD device schema and
+> I think his proposal is still valid - you have here only two properties..=
+.
+>
 
-I'm not sure I understand. The description for reg does apply to every 
-port. Both CPU ports and user ports are described. This patch moves the 
-description to under CPU ports only.
+Ok, I thought the conversion was worth it with the latest changes. I
+will remove this patch and write RTC properties directly in the MFD
+schema.
 
-> 
-> Suggested-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> ---
-> 
-> v2 -> v3
->    * New patch.
-> 
-> ---
->   .../bindings/net/dsa/mediatek,mt7530.yaml          | 14 +++-----------
->   1 file changed, 3 insertions(+), 11 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index 7df4ea1901ce..415e6c40787e 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -156,17 +156,6 @@ patternProperties:
->   
->       patternProperties:
->         "^(ethernet-)?port@[0-9]+$":
-> -        type: object
-> -        description: Ethernet switch ports
-> -
-> -        unevaluatedProperties: false
-> -
-
-Would be nice to mention these being removed on the patch log. Or remove 
-them while doing ("dt-bindings: net: dsa: utilize base definitions for 
-standard dsa switches").
-
-> -        properties:
-> -          reg:
-> -            description:
-> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
-> -              for user ports.
-> -
->           allOf:
->             - $ref: dsa-port.yaml#
->             - if:
-> @@ -174,6 +163,9 @@ patternProperties:
->               then:
->                 properties:
->                   reg:
-> +                  description:
-> +                    Port address described must be 5 or 6 for CPU port and from
-> +                    0 to 5 for user ports
->                     enum:
->                       - 5
->                       - 6
-
-Thank you for your efforts.
-
-Arınç
+Alex
 
