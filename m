@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73665C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 15:57:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E666C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 15:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wK0CnlZOX9M/iM8SewTczZ0sLEDRfVMf5U5O9npWUVY=; b=pIHdn/rz/u57Y9nyONs3yrlSzI
-	emEzLuwxgdXKv7fNSzkZnwqxEaqvlFbI7tU0xQl6vI2HLoiVdB6C8/vxGaukKPbZl5tEzhkBv/xxS
-	NlQhYIdSGd6DgeqtDkhnQN51W3gryx2eBnuc5UhMMxXS3QUE/41G4qkFe7pY5z88Z9EbmO1jFNFSW
-	s+WnmPRQF4rALCzPgn8uDeuLSWnz5auLTR27Km0W7oy//65N6XNhahqklhWcl4SzpsNGKKE6QvlXE
-	Iw3G9a4eLu4NA+WGDC6BPp4wC5yjrwyz5iWWbai3hmQ4h/VaP78TfHE+pZSVttMzrTSzbFe0eGkTq
-	ZJBnXFqg==;
+	bh=ZBEMKkU5Jf78zjhTP42yrtwbbgdcFAxazcCxLhs1i2o=; b=Pov5OwZEBEbEwECuac95K15tvI
+	MmC4IzwoOYvd45kSqMLsNyhVywDn5f37fV8MOYEF/aF1EFlNCOVI2a6eR6/b1uax6UgH9d1YSZpEj
+	euIJBpHDMqFZu95l3eIXInpSZ8tht5rPdEdye9aFTQ0/e9jQREN9fVJxLcP3+Dj4HV1fD2qvSFnA0
+	0wxT4efsw0QZs7yDi6H7vD8Kjz2HwdLwkQgM6HKyR0mN3xL/+6rdtMVojc9pq7wnGoQbCshInaWT9
+	FKUfkwiG3kaUMMsbpmp6oISqO2j10DGr0ZXJpfkUlq9NhYeQ2UB/IKb2awTGD851a6KN5dr27f66U
+	hk1GoO3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p02zM-009tRs-Gp; Tue, 29 Nov 2022 15:57:40 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1p02zX-009tWQ-Ne; Tue, 29 Nov 2022 15:57:51 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p02yx-009tEh-Je
-	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 15:57:19 +0000
-Received: by mail-wm1-x336.google.com with SMTP id c65-20020a1c3544000000b003cfffd00fc0so14731475wma.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Nov 2022 07:57:12 -0800 (PST)
+	id 1p02yx-009tEY-Hs
+	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 15:57:20 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id w15so9603014wrl.9
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Nov 2022 07:57:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=wK0CnlZOX9M/iM8SewTczZ0sLEDRfVMf5U5O9npWUVY=;
-        b=JZYlyDFZIHL8IN5vKdYIEr5dUASpUp0vEDyjxnBcVUE74KxJZvLGc1l+HVVa4wxmQc
-         9RV2HD4J/oDUTFKz85hFMmcASWjWIc4NncKVFMQc3hR6E6fja7s50VJDzGAs3wiR45Pa
-         VYacBV16Jar0NvqE0Oji7OGdx8w6cvkQNLPnrpGiA9cTRLynX+C62BYesPjRzAqd3W+f
-         xzhA/6YGBZ18DYTMnkGFsIDBEOpUO+ZMib3SdBkjB6pNDyogEMjT7bJ+ylbAtikRWr+1
-         N92X3Z1AVQv11/tUukZ/8PmpZ4JP9jRn3A3Hs787C3texHFYFsPSbW9k8npA8RVzpQWs
-         d1MA==
+        bh=ZBEMKkU5Jf78zjhTP42yrtwbbgdcFAxazcCxLhs1i2o=;
+        b=xfoOuWSZqyMyOIKY7rBPH2i53/duEI2uIFWNKjRjVItORcEK8rKcU1KWrMr3TUqU9P
+         6za0UXBiEETgq6pAAVVTQK2yxf4nZXUyJPpazSZot8DWo4dglWmkKVfQI9/zTFMVd/yr
+         Zcu/X/LPEFXwzyGtGmhKXZwbXYLtXtLyPhqzwIwk+c8REy9btGh6MWQHUHuQ5cSKWNO2
+         GmhnqZoM3gzNEQzPzR6R6vWOTkbbtsZRYlEzb6GMUXCDJb8w9ZfpjDaE1bEvVyxAZsII
+         bnB+T7+ZvXya0+HIrI4t2Vu/mBinhRzmAjZaomsyWrXvzaY7Kzc8YjU/e2enHw89L3X6
+         dYKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wK0CnlZOX9M/iM8SewTczZ0sLEDRfVMf5U5O9npWUVY=;
-        b=t5VcvixGaMQmhNQu0kRaeEi9sD5mHslbPCGv5AIte9hNLu+4YnjrY2l5w4Bk7Nu/U1
-         60FjmnEbX3XaFQUFGHnC2dLp/fYLCWpHJMv6bh8j1vLgMnvZao29ZoNZlkkP+A6m+KEX
-         BWpiM786PSy9rAGhUHXo+nkTMm4UwOIr6CkFdE7ymI4AywknQlJHud6z79mDRyl6VdPd
-         XpHILExAw3UNdArQN+3g6gjz0Khp6NuuYyRDU0W7kGDtBqExkx55IgsCiSqmSWAH1+Eh
-         HlDjhBOR4eZMpYNy1C6T5Fsf1fP/W6Xu9/oqWSsPBYI20LJ97Mo9iFkFvmLj/iO3wzWs
-         R9sQ==
-X-Gm-Message-State: ANoB5pkBSsuI6qmuh3U05rU07eWyV7UQXdUvmH5Y1WWQdyvukKjADtN0
-	ldOseyEPdHJKbPc8fXZY0DjYvQ==
-X-Google-Smtp-Source: AA0mqf6PuzacnzmyesbE6G1qQRnWsrIiu2CVIsNSFXBXVf21Oc/ouJD0AhoC2g+HlvFkvpsbuMRu5w==
-X-Received: by 2002:a05:600c:92a:b0:3cf:69d4:72ee with SMTP id m42-20020a05600c092a00b003cf69d472eemr28401740wmp.122.1669737431630;
-        Tue, 29 Nov 2022 07:57:11 -0800 (PST)
+        bh=ZBEMKkU5Jf78zjhTP42yrtwbbgdcFAxazcCxLhs1i2o=;
+        b=U+UFdPjPtPV+eIWvbOqW+sRGk7V86k24S/7BKph8jlDQUpMGZMoEc8KL/Xhk36UgOq
+         jGL7tHdc1Qf6SbAK/Ap1NW8TO0Tn6UTeKk18+VymC1U0ZOnKyXt8P3s+emcx27J/3Ias
+         Vsz/W6/UKzcQCqoyi8gi7JNii9PySGMq1wpr8z04jlpM95T+d8wT5VGnet4xkRz0HITK
+         ipIdH/HUXoOLTKzQbFl/nN9t5UAGkq9OvyOkficK32iQf231wvWcyNww/9XbJ1h1fFya
+         YUZx9YWP4e/jGNeA6QxN+XksdJeh/7siDk43OSE1xggp5EQfNHYGE9QbkMae0bjPKnO+
+         yM9w==
+X-Gm-Message-State: ANoB5pnysa6WkxpNqN2iQjg91MrfSiF9nWoo0/kjVF3dL//VqoRacqbR
+	lSODF0pwFWRqcDMLFi+AB7YU8A==
+X-Google-Smtp-Source: AA0mqf4On90wvRcTiqcwXp55MGsSJPFm/4r9Mi8bAqomdqBkBCRU3ZBB9nFMyyRw6wQhVjCuIVuBQQ==
+X-Received: by 2002:a5d:484d:0:b0:242:22a9:ff72 with SMTP id n13-20020a5d484d000000b0024222a9ff72mr2178802wrs.281.1669737429509;
+        Tue, 29 Nov 2022 07:57:09 -0800 (PST)
 Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id f2-20020a7bc8c2000000b003cfb7c02542sm2601550wml.11.2022.11.29.07.57.10
+        by smtp.googlemail.com with ESMTPSA id f2-20020a7bc8c2000000b003cfb7c02542sm2601550wml.11.2022.11.29.07.57.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Nov 2022 07:57:11 -0800 (PST)
+        Tue, 29 Nov 2022 07:57:09 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 29 Nov 2022 16:57:05 +0100
-Subject: [PATCH v7 6/8] arm64: dts: mt8173: change node name
+Date: Tue, 29 Nov 2022 16:57:03 +0100
+Subject: [PATCH v7 4/8] dt-bindings: mfd: mediatek: Add bindings for MT6357 PMIC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20221005-mt6357-support-v7-6-477e60126749@baylibre.com>
+Message-Id: <20221005-mt6357-support-v7-4-477e60126749@baylibre.com>
 References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
 In-Reply-To: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
 To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
@@ -81,24 +81,24 @@ Cc: linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacc
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Fabien Parent <fparent@baylibre.com>, linux-leds@vger.kernel.org
 X-Mailer: b4 0.10.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1289; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=sciAdvxNeIHiHj/noxHzFC381BQRCLfnWiRAfVX/Ztg=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjhivPlrcjP7DysJg2iocsnLcP01P6bHyqXN9tUGhS
- kubYFiyJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY4YrzwAKCRArRkmdfjHURevgEA
- DA8oW2+nxfgPT9x8H9Bn4iUpI7bpkr6XZ99iu7hXpzTRIlGEg8U2XCyw+BrT4hDzCodYnUCtWnu846
- QEPZCcrbCbZOD3rTa+3zC/DdkEWWkYrRDiKoD1FEyVBJ19v72revWuJ5oJIkNRRacwK3FY04vxHna8
- a9NFhD0UaMvj49AYSoFAvu4Z/JBtmqXHhfTsXTzOAcpoS45vt1CiTL6Z+SelAsEX9+gMMb8OZNr3em
- UlmJmaAsVn9yEFqxz1IoR8gBJKrEMZXWYYOXtbPASyezGBx/VBXQZU3aTOxH7xRyTxfWHbAFjmKjCX
- jkN6QGK/Zb9sml8JPQQrW5ttJS9dzl7afKbWM2Tr0crppiHlJXjIlpvVFkdeTM8G4owMRkk0PZZhtI
- EpHPPeJeIuBkJpYyIE2pzAbGXK5v6DjvBJviOoIl5loMeKQM3uy6XrtxFbiPOFF9XVI+SfQIkIkSuk
- lFUbVksNCfloxBbqA6XGeHmlTSmG72+tWeN1yy0M7evha9O9rHQ2uW6zXWqE85kd2OJiBiwJr/jGds
- 7JUKyqg2XxFbRFXqsFkXGBMGLDRmeQaR4b8A1kyTA36UDHhpppjz1r7H+hKVVCjTa9ixlykag/cSGR
- nlfwFnv+PmQEmaqe5uNy83u0YLnSHr1HeBji++LkIRKFDu6X6A9IYggPHpIQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4049; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=uKuF7biK8c+btRJLJuyALjWX3u9C1resjYMNnQJShXI=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjhivPLKePPwTHV0AdahqJYOr6Gp1yZ4zFY/+8aXs5
+ BT/1numJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCY4YrzwAKCRArRkmdfjHURQbTD/
+ 9RPSSL0Wgi+YOM6r71qng1P22fsNB2SFQdxmBjBByjd2CgLjrcaF1fezd0rnelnS6HrY6WGuV3FpBW
+ kUNsmGg8FYuIhTtrTyp3S+ox/xsDbN23JPNu1fFPoHpja4RF4ma6FbVLXP2Oll9E/9Qt2nZazj5Qtj
+ EG5MUiNNlZ4zOi1z3/ZBtO8PHKvg1IoBcVV1uRmbDP9y5B8LuvwUBNA0hUJP9ELcmjPpL96TnA9Rp3
+ Ohg4KtnRgvkG0JL1NarIFtRNQmvDcxScct41LzweaF1ByHW4sQYZYaun167CrnuH5cqmdw61ARByAT
+ nvX/9Xyc67AmcL+ilu7eODGT53kc+9tjjO1s+vfUhvh57Hb97UVdiS/0sKQrY08x4j+hD8mw7/fVjB
+ +nU4MQ0QaugC92B2UqhbfZJF48BT6ctIKOlSHKoLN5IMV16BiFrVchG0YNmL11D1NJi4Z1S4zW2Dqi
+ +7tpinHG8E6lhz6muNSg9xDx4xWr6TPtM+OSg4c3Qum9BdrUYCeoGgdy5HESuM9/ILf8bWtHciZfjO
+ AjfI387TL6lruRpVcJ0+xEboaL6HKyXsMiTR2ZroEzjISA/DFTXl0Yl9Tk32cpwRBuA51/vKXq51mD
+ 53Wb39apPijHJIpYf0CIi0+3/jon2b+kKvo4HSnMGHaq9DSrQGXFluOFmDoA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_075715_883398_C4E6DEC9 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20221129_075715_942630_26065CEB 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,41 +113,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Change the node name from "mt6397" to "pmic" to be consistent
-with the generic names recommendation.
+Currently, almost all MT63XX PMIC are documented mfd/mt6397.txt.
+Unfortunately, the PMICs haven't always similar HW sub-features.
+To have a better human readable schema, I chose to make one PMIC schema
+to match the exact HW capabilities instead of convert mt6397.txt to
+mediatek,mt63xx.yaml and put a bunch of properties behind
+"if contain ... then ..."
 
+- add interrupt property
+- change property refs to match with new yaml documentation
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 111 +++++++++++++++++++++
+ 1 file changed, 111 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index e21feb85d822..a8f5c48e1782 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -913,7 +913,7 @@ &pwm0 {
- };
- 
- &pwrap {
--	pmic: mt6397 {
-+	pmic: pmic {
- 		compatible = "mediatek,mt6397";
- 		#address-cells = <1>;
- 		#size-cells = <1>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 0b5f154007be..755df5694234 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -300,7 +300,7 @@ &pwrap {
- 	/* Only MT8173 E1 needs USB power domain */
- 	power-domains = <&spm MT8173_POWER_DOMAIN_USB>;
- 
--	pmic: mt6397 {
-+	pmic: pmic {
- 		compatible = "mediatek,mt6397";
- 		interrupt-parent = <&pio>;
- 		interrupts = <11 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+new file mode 100644
+index 000000000000..837a77013d57
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+@@ -0,0 +1,111 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6357 PMIC
++
++maintainers:
++  - Flora Fu <flora.fu@mediatek.com>
++  - Alexandre Mergnat <amergnat@baylibre.com>
++
++description: |
++  MT6357 is a power management system chip containing 5 buck
++  converters and 29 LDOs. Supported features are audio codec,
++  USB battery charging, fuel gauge, RTC
++
++  This is a multifunction device with the following sub modules:
++  - Regulator
++  - RTC
++  - Keys
++
++  It is interfaced to host controller using SPI interface by a proprietary hardware
++  called PMIC wrapper or pwrap. This MFD is a child device of pwrap.
++  See the following for pwrap node definitions:
++  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
++
++properties:
++  compatible:
++    const: mediatek,mt6357
++
++  interrupts:
++    maxItems: 1
++
++  interrupt-controller: true
++
++  "#interrupt-cells":
++    const: 2
++
++  regulators:
++    type: object
++    $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
++    description:
++      List of MT6357 BUCKs and LDOs regulators.
++
++  rtc:
++    type: object
++    $ref: /schemas/rtc/rtc.yaml#
++    description:
++      MT6357 Real Time Clock.
++    properties:
++      compatible:
++        const: mediatek,mt6357-rtc
++      start-year: true
++    required:
++      - compatible
++
++  keys:
++    type: object
++    $ref: /schemas/input/mediatek,pmic-keys.yaml
++    description:
++      MT6357 power and home keys.
++
++required:
++  - compatible
++  - regulators
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    pwrap {
++        pmic {
++            compatible = "mediatek,mt6357";
++
++            interrupt-parent = <&pio>;
++            interrupts = <145 IRQ_TYPE_LEVEL_HIGH>;
++            interrupt-controller;
++            #interrupt-cells = <2>;
++
++            regulators {
++                mt6357_vproc_reg: buck-vproc {
++                    regulator-name = "vproc";
++                    regulator-min-microvolt = <518750>;
++                    regulator-max-microvolt = <1312500>;
++                    regulator-ramp-delay = <6250>;
++                    regulator-enable-ramp-delay = <220>;
++                    regulator-always-on;
++                };
++
++                // ...
++
++                mt6357_vusb33_reg: ldo-vusb33 {
++                    regulator-name = "vusb33";
++                    regulator-min-microvolt = <3000000>;
++                    regulator-max-microvolt = <3100000>;
++                    regulator-enable-ramp-delay = <264>;
++                };
++            };
++
++            rtc {
++                compatible = "mediatek,mt6357-rtc";
++            };
++
++            keys {
++                compatible = "mediatek,mt6357-keys";
++            };
++        };
++    };
 
 -- 
 b4 0.10.1
