@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D17C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 15:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D7CC4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 15:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S9TIwYuj5BZOO0P4954yAO+riVM9mIQN2SCvZ98NoxM=; b=WrmOhiJ1ygLTx06u22EH3pKh+w
-	Rl/xwaoyc/bkxEvapmiboHbzu/5WtN8pvrD80oawBt6km6ncMxDiK1tRKfJLxmP3QiD2frCddsOs+
-	hrxuduBVHbksArNi30fDndIyiTN/hy924vTDOhnPs6JEcu+MCBe9lgteiRTqV2hig0S2e579IcHOX
-	crceLvy7+RM5DDCSQZJ8lKBXivrlhe4fw2qKlKSdSepidhLpN1r0Qe6obRV49MyiWhcXEGYzs940s
-	xeDyHvvvND3VCZnV0QGNJ21g8PtJ5twWmKD2LFSOblu4SiEuEuYyqV6ja9gHLKYiK977pml9DF7fG
-	a1T+AjHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kRyhx3Fq28mWB9nM9S7WBS41xK0O65PrJbhpK68kh3g=; b=A9VNeRMpfQZTpm95iE+4PYqlZf
+	tp7q8VygqSDQ9r5RMHHnDXeCN/hNeb/y1QpCEGbKaqpwV/n1pVzS98Mm0pkANApcHgVxAvgyAIR9c
+	9S0LJpmBKeHzu3R76iN0EB5AlpU8V5xnFarrY1BM6Aa6CqssZwLeeYCmJ5aX04pr7XJu8xdyAvl/L
+	993kPME3XyhvnhS3CUZvrDuLFRJA+DpDJ4/wNxJhgG3urKFVh4FU845cfpF2gTknyGDKqjT9tCZlw
+	K2daLuqU9rOzLPMXJgLHGgmmjQq0on8tP89i+J+O3GIXpebGzACoGzXeAnmFJjSPx70ziYA4l9+tK
+	H49CRNeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p02AT-009Z28-Sf; Tue, 29 Nov 2022 15:05:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p02BP-009ZNH-7X; Tue, 29 Nov 2022 15:06:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p02AR-009YzB-1E
-	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 15:05:04 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E110B660165C;
-	Tue, 29 Nov 2022 15:04:57 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669734298;
-	bh=Zt6+6zk5Sq08WO06c/3RsDKZoTGXt8kyWvLZNd9EsoQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P72O6Oz0aoPXxI5/vDQ1ww9E75aU9okDQfwZLn9dMTKbDjV8qBzY+8EhZ4J1FdXNR
-	 7E1sAMUr0NEICbbw0lJbyZEKhqMog10K3BFtUtxC4lrZPK7plzvglncOk1/449C1p3
-	 l+Jg92yQi6YqZ6uEmSchs6O4Taq3oSAUr2zr1vvm37uVOw8VlyLbMtqnFxwGXKRaew
-	 H4Wqw2VpUPtNvuc7tzRCMEOJQzDBHLX/0cApeozB/m/CFX8WWA34rVmFRkUTnppQHK
-	 NFokAGZVc5u0gBDebH4yYIQi4+gHd5YNatkPCDdvCxUjiiU2RPjOq8fl3uiO6rSL2J
-	 4TN58IZmyqPQw==
-Message-ID: <fa5f8821-ec1d-1def-1f59-33ede6096629@collabora.com>
-Date: Tue, 29 Nov 2022 16:04:55 +0100
+	id 1p02BM-009ZKd-BV; Tue, 29 Nov 2022 15:06:01 +0000
+X-UUID: c0c8619faff445b6ab48b9fe90bd0cae-20221129
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kRyhx3Fq28mWB9nM9S7WBS41xK0O65PrJbhpK68kh3g=;
+	b=Et8J0vhRoj0Ha3rTvftaopfphbz6HPi0sXTlxI/zYkHdvR3KM6MqXbnWrRTMTqtX+j6r4AkGvZDYX91pYi5ygkUggOvoEsyPMzC3wqwZCFq075BDNzq6AnCjtHCvcShpxzgzQzIp0L7Z/Dd4NTlknFOqXpBYjUXuNCpMUMUYLLk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:3285420b-182d-4a23-9e09-9b7e8e280f02,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:35f02730-2938-482e-aafd-98d66723b8a9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c0c8619faff445b6ab48b9fe90bd0cae-20221129
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <nathan.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1310641854; Tue, 29 Nov 2022 08:05:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 29 Nov 2022 22:35:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 29 Nov 2022 22:35:13 +0800
+From: nathan.lu <nathan.lu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rex-BC
+ Chen <rex-bc.chen@mediatek.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <lancelot.wu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 2/6] dt-bindings: mediatek: modify VDOSYS0 mmsys device tree Documentations for MT8188
+Date: Tue, 29 Nov 2022 22:34:59 +0800
+Message-ID: <20221129143503.16638-3-nathan.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221129143503.16638-1-nathan.lu@mediatek.com>
+References: <20221129143503.16638-1-nathan.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v2 2/2] wifi: mt76: mt7921e: add reboot notifier support
-Content-Language: en-US
-To: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
- Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
- Posh Sun <posh.sun@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <d44631bcc74cce3f32a72f616a99d1bd2837690f.1669711916.git.deren.wu@mediatek.com>
- <dbde826071f59f03e52efc632a8b2f5bf11752d5.1669711916.git.deren.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <dbde826071f59f03e52efc632a8b2f5bf11752d5.1669711916.git.deren.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_070503_255767_AC2F4217 
-X-CRM114-Status: GOOD (  19.47  )
+X-CRM114-CacheID: sfid-20221129_070600_409730_D86988FF 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,71 +90,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/11/22 10:16, Deren Wu ha scritto:
-> From: Leon Yen <Leon.Yen@mediatek.com>
-> 
-> cleanup/reset chip fw before reboot to avoid unstable problems in next run.
-> 
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-Apart from the comment in patch [1/1] ....
+modify VDOSYS0 mmsys device tree Documentations for MT8188.
 
-I've noticed that this issue is present also on MT7915E: in my case, I have
-two of these cards installed on a nVidia Xavier NX Developer Kit and one on
-a Raspberry Pi 4 Compute Module mounted on an original CM4 IO Board.
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-The two on Xavier NX are not showing this issue, but the Pi CM4 cannot see
-the card when rebooting the system... so that chip cleanup action should
-actually be replicated on mt7915/pci.c as well, if possible.
-
-Regards,
-Angelo
-
-> ---
->   .../net/wireless/mediatek/mt76/mt7921/pci.c   | 21 +++++++++++++++++++
->   1 file changed, 21 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> index 28342ec940f0..4e9021c349b9 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -226,6 +226,25 @@ static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
->   	return dev->bus_ops->rmw(mdev, addr, mask, val);
->   }
->   
-> +static int mt7921e_reboot_notifier(struct notifier_block *nb,
-> +				   unsigned long code, void *unused)
-> +{
-> +	struct mt76_dev *mdev = container_of(nb, struct mt76_dev,
-> +					     reboot_nb);
-> +	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> +	struct mt76_connac_pm *pm = &dev->pm;
-> +
-> +	cancel_delayed_work_sync(&pm->ps_work);
-> +	cancel_work_sync(&pm->wake_work);
-> +
-> +	/* chip cleanup before reboot */
-> +	mt7921_mcu_drv_pmctrl(dev);
-> +	mt7921_dma_cleanup(dev);
-> +	mt7921_wfsys_reset(dev);
-> +
-> +	return NOTIFY_DONE;
-> +}
-> +
->   static int mt7921_pci_probe(struct pci_dev *pdev,
->   			    const struct pci_device_id *id)
->   {
-> @@ -357,6 +376,8 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->   	if (ret)
->   		goto err_free_irq;
->   
-> +	mdev->reboot_nb.notifier_call = mt7921e_reboot_notifier;
-> +
->   	ret = mt7921_register_device(dev);
->   	if (ret)
->   		goto err_free_irq;
-> 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 0711f1834fbd..3e7fb33201c5 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -47,6 +47,10 @@ properties:
+           - const: mediatek,mt2701-mmsys
+           - const: syscon
+ 
++      - items:
++          - const: mediatek,mt8188-vdosys0
++          - const: syscon
++
+       - items:
+           - const: mediatek,mt8195-vdosys0
+           - const: mediatek,mt8195-mmsys
+-- 
+2.18.0
 
 
