@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA205C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 19:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A833CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 19:21:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=otLZTlXQs3lS98jbgn2cwZ6QYH6xDeRXlcMO9hILBzA=; b=2+7YvSc7hula/40qatzR3S8seR
-	drOc3h8s7bNyrKFrwF1fE4FKt/3glsTVCmgcK9NfQgZO1vhOfnE6pA3XVXtb6o27cypgKSWkIZqy2
-	7CxdVe4IaY2E8Xjmc1oe0IVutZhGhUVa3Q/bS1mOIZZGjQLF9PP6H4dqk7ilRvLNQivrqfDuOUp0b
-	nFAdvdXrIlgG8xtvBc1VuQalJhBz6WxbhGgC9R5NCfMtCtTdecp7+ih6QYPTnw6Z4qKkd6oyJobbF
-	SlKr42JXGvjq1K2zTOfi6kRlMVzmU3iK8OuY1Xzr63Wn93CvB7b7QaF39smV0OncPacX+sfFkJzRM
-	WMa67log==;
+	bh=otLZTlXQs3lS98jbgn2cwZ6QYH6xDeRXlcMO9hILBzA=; b=lAuy0tMeJUteUgzzEYT117fL4U
+	vVjJvbKvjh1saL5Y8HZAZETuswo7zMyjdUJ5CXMpADiiUF2TQCvUgFa5Z1+hyVD+qjL7QKL8lnp8h
+	Gt0RCuhYqfwlWS5UYA0UkcHhT3ia0Pi/fjMS5I0+bitZTYKCrFBGElMFXE5KmjCuVmRpGTtDRamUS
+	NuDvaj4AxalrMx+C/DTXKy+PTuvxldb2DVmQE82FdwTtP+7T10XCTlMmWgT17VlYuZO3qnTSR5S5S
+	1JIzgLchwyVnwuayu2aKx3aknBXHbGyc2IhihMdtz9Ltjkr3zQ9x4bU3/dTrMpoSKzFNMPp5IijWT
+	hr09rgJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p06AH-00B0eO-UE; Tue, 29 Nov 2022 19:21:09 +0000
+	id 1p06Ag-00B11M-Qq; Tue, 29 Nov 2022 19:21:34 +0000
 Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p068B-00AzBh-81; Tue, 29 Nov 2022 19:19:00 +0000
+	id 1p0695-00Azru-Be; Tue, 29 Nov 2022 19:19:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1669749488; h=from:from:sender:reply-to:subject:subject:date:date:
+	s=mail; t=1669749593; h=from:from:sender:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
 	bh=otLZTlXQs3lS98jbgn2cwZ6QYH6xDeRXlcMO9hILBzA=;
-	b=UYNvi9KM8FyzLtek/9nDkBtAr9MMSAPiPJ1G+o482i7+TTza69bcPSFZLMjP++lYk+JwDu
-	yLzrzjF5kkozlyWmjVhB4zMXtnFD/m6gevw8w6T6ekRFxc7STBxg31VM+/81Tgg3k2rcEP
-	MI/skGMaJeHgQrCNYgIhU5fwHn9xrx0=
+	b=Vcu3dIzy72Pv8eXVbs2yPpjXGsVi/HZwA8f23CDsiNB1+5Vlkva4ITx2p+y2ViTdLAM1pF
+	rn5lFJkUSY9TvZKr8uTb8ojxS3DxWzWNKRPGr2jBTJ/b2jZURNMv1xCCkMGeIlFcimGpEy
+	eh0vMm9lfbzOiINuvLLqezm1OwMxK0Y=
 From: Paul Cercueil <paul@crapouillou.net>
 To: David Airlie <airlied@gmail.com>,
 	Daniel Vetter <daniel@ffwll.ch>
@@ -45,14 +45,14 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
 Subject: [PATCH v2 14/26] drm: mediatek: Remove #ifdef guards for PM related functions
-Date: Tue, 29 Nov 2022 19:17:21 +0000
-Message-Id: <20221129191733.137897-15-paul@crapouillou.net>
+Date: Tue, 29 Nov 2022 19:19:30 +0000
+Message-Id: <20221129191942.138244-1-paul@crapouillou.net>
 In-Reply-To: <20221129191733.137897-1-paul@crapouillou.net>
 References: <20221129191733.137897-1-paul@crapouillou.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_111859_463232_33B87C30 
+X-CRM114-CacheID: sfid-20221129_111955_577776_79675491 
 X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
