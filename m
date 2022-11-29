@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99CA4C4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 10:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FED7C4321E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 11:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P333UHY+O0jMJ1DqFLSjAomhGD9nGwYJsDScNHQ2400=; b=V9dgA49RU5ubjbcA9V6hZz4VJn
-	j3IXg3M9yHgS/olPqBYI1yGiCKHi7YCw7Io5NREbs0QKfUfxM27aR7F9BpKMzZbcpCagVWuqIFUwe
-	A4ETa2XRJ9vzRf6FolvDWvuyz2CRUrEjir0rt6J0+2JMLbq0CBA5f6CWfEVA9kE5VpGBt34TPE6rf
-	YaPdxPWN6/EOoG4ty9jfRPztbFdjBJOFlpGVF5ubfRC3i7T0BJUh8DBWAwJqRFgCjLeg8GPEBMbTm
-	oBJGmCKSjrFuQ5p002kvR0+6Wzqs0kfyMoMndleqBXkDhqWlZmOC/radnZElXBA2vWLLjLNbLf9M4
-	CCf/nsOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=; b=M8WfIBBYLzBu3heXiheWD4y/Uz
+	WIOIoR1GHSWDt1d37WzzU9t51AIUbD8jMP4YI2+ERO+cx+TageDRt8sMP7BDB3cWEVSjdFeT0+D3F
+	sFHcu2PPSv4BG8kiS67myeX4G6D5iU1ZohiGrNsX2eMKDtYjmIGcVz6Ud8yO9NV/dZDTu4VauWTwp
+	B6jtq4p3VgKsKCE65PyV0HubKorplMVEl0DbmnIdA0mE+U6XkpIH5BN8r2RSBK9T8EBwslcODuvql
+	SLhETswun7cjPoPR5Y4jh2HBgeRr3u6F8xlMJKgs10hoaWm7T/A9i44p+9X4V2tXtKy/zn4WCFEir
+	ajxQoEAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozyBx-008MWI-Ek; Tue, 29 Nov 2022 10:50:21 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ozycO-008RK4-5U; Tue, 29 Nov 2022 11:17:40 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozyBu-008MVa-Jr
-	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 10:50:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 40E29B8125A;
-	Tue, 29 Nov 2022 10:50:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 03E0CC433B5;
-	Tue, 29 Nov 2022 10:50:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669719016;
-	bh=GG5Li7PCSZhVOrt8aMqLZLPn+/RbnpjPbWLk1rZ4jAw=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=AO3sQuYqQoRduMdJd0t+ZbjkVTUJC094zsK9+jGfgO0/fcSdoJmyClenvwrkTo+Zx
-	 NlUat8MG1URon2sGIe7+w+EyAqror+Wgqu1lQrwnjwYimr13MG92ElAnagNQmAAWG2
-	 xTqKb5umyxPd9KIs7HRobvl1F4gbZgDdqQm1mKUBQlQ5IgA5uE4amuE35UhpwBqR4r
-	 iHAao2ltPSR1M5cefltnIkuXDhgQsEMGnrt2MVJuqKlLzMFCRzjOCEp0nQCVPxflFq
-	 RmL66nqoVxrJCoIsK6MAXLyrb7LTGENSwHQKLDmDF37EMWch0+O4qs3fm2KuNr+jWl
-	 UdaCLWHUM0n2g==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id DA1D9E21EF5;
-	Tue, 29 Nov 2022 10:50:15 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1ozycC-008RIU-S0; Tue, 29 Nov 2022 11:17:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669720643; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=NzHdiQtyKF/lIeeCj234BMnDVnChfQiZ4TMMUtRxWQ/hyZoV5gAl27aNoWKxRwnbgyQ/fCQzVgT0C6PQP97Yr8TUS7luOlo+GHN5u0s+6f5DSQyqi6uQ+AVFLFGvQOHqh2ZAG/0m7uS06gSfk1UrvbaE+3PxK2nr5HzEMHnIc04=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1669720643; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=; 
+	b=e8S+Dgn1tw8kEdp9CuAn04PRXtg3P1tIDdpSLxD11tZczlxy3m4A+/uUKIc0Jb+G6VEHTrxzHCm51QJ46x3YrSZlgDhU/KzLrM2rINd/TGcmj+JXPIv5OcGbfx6L8iB6/1Uym9hhGT1gAzAYS7k6AcvfkoIVXOX8l7FhDYr0mY4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669720643;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=;
+	b=g0PWVxHbZb0J/8V1o4Y1dd0u14cyZz5T6Fd5s7vZ9ILfCAcTajdu+7WZCEeiOYCv
+	mxMqzgbP0VuYoAPw7NFgjCJ7tQYp191JpmEI5rcl6bVAG/ZIWXPHNDerQi1on+uTvee
+	thMd9BQuaHfy734PYvJOAETCTQuQFMZwd+AJ4UHs=
+Received: from arinc9-Xeront.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1669720640742618.9209820853164; Tue, 29 Nov 2022 03:17:20 -0800 (PST)
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH] mips: ralink: mt7621: change DSA port labels to generic naming
+Date: Tue, 29 Nov 2022 14:17:11 +0300
+Message-Id: <20221129111711.2739-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 net-next 0/5] refactor mtk_wed code to introduce SER
- support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166971901588.19778.10630700860391594929.git-patchwork-notify@kernel.org>
-Date: Tue, 29 Nov 2022 10:50:15 +0000
-References: <cover.1669303154.git.lorenzo@kernel.org>
-In-Reply-To: <cover.1669303154.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- lorenzo.bianconi@redhat.com, sujuan.chen@mediatek.com,
- linux-mediatek@lists.infradead.org
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_025018_820676_144B10B8 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20221129_031728_974965_100FBFF7 
+X-CRM114-Status: UNSURE (   9.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,44 +82,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Change the labels of the DSA ports to generic naming for switch ports.
 
-This series was applied to netdev/net-next.git (master)
-by Paolo Abeni <pabeni@redhat.com>:
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-On Thu, 24 Nov 2022 16:22:50 +0100 you wrote:
-> Refactor mtk_wed support in order to introduce proper integration for hw reset
-> between mtk_eth_soc/mtk_wed and mt76 drivers.
-> 
-> Changes since v1:
-> - improve commit logs
-> 
-> Lorenzo Bianconi (5):
->   net: ethernet: mtk_wed: return status value in mtk_wdma_rx_reset
->   net: ethernet: mtk_wed: move MTK_WDMA_RESET_IDX_TX configuration in
->     mtk_wdma_tx_reset
->   net: ethernet: mtk_wed: update mtk_wed_stop
->   net: ethernet: mtk_wed: add mtk_wed_rx_reset routine
->   net: ethernet: mtk_wed: add reset to tx_ring_setup callback
-> 
-> [...]
-
-Here is the summary with links:
-  - [v2,net-next,1/5] net: ethernet: mtk_wed: return status value in mtk_wdma_rx_reset
-    https://git.kernel.org/netdev/net-next/c/b0488c4598a5
-  - [v2,net-next,2/5] net: ethernet: mtk_wed: move MTK_WDMA_RESET_IDX_TX configuration in mtk_wdma_tx_reset
-    https://git.kernel.org/netdev/net-next/c/92b1169660eb
-  - [v2,net-next,3/5] net: ethernet: mtk_wed: update mtk_wed_stop
-    https://git.kernel.org/netdev/net-next/c/f78cd9c783e0
-  - [v2,net-next,4/5] net: ethernet: mtk_wed: add mtk_wed_rx_reset routine
-    https://git.kernel.org/netdev/net-next/c/b08134c6e109
-  - [v2,net-next,5/5] net: ethernet: mtk_wed: add reset to tx_ring_setup callback
-    https://git.kernel.org/netdev/net-next/c/23dca7a90017
-
-You are awesome, thank you!
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index f3f4c1f26e01..1a601d7c73d7 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -357,31 +357,31 @@ ports {
+ 					port@0 {
+ 						status = "disabled";
+ 						reg = <0>;
+-						label = "lan0";
++						label = "swp0";
+ 					};
+ 
+ 					port@1 {
+ 						status = "disabled";
+ 						reg = <1>;
+-						label = "lan1";
++						label = "swp1";
+ 					};
+ 
+ 					port@2 {
+ 						status = "disabled";
+ 						reg = <2>;
+-						label = "lan2";
++						label = "swp2";
+ 					};
+ 
+ 					port@3 {
+ 						status = "disabled";
+ 						reg = <3>;
+-						label = "lan3";
++						label = "swp3";
+ 					};
+ 
+ 					port@4 {
+ 						status = "disabled";
+ 						reg = <4>;
+-						label = "lan4";
++						label = "swp4";
+ 					};
+ 
+ 					port@6 {
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.34.1
 
 
