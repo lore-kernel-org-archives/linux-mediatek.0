@@ -4,146 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99D3DC46467
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 02:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB35C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 02:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LJzpjVWlurb1T3fP4jNHqVCjcg9qz0Jt+CrPLOBWq38=; b=2MNTHGnz7jTZb1CmJmpTN6mnaC
-	vOjL3UpwXVK5OaPC3snKOw4HsNU+RSWycdjH48CGVz1ej8Qg1jL4tyTQnMBu1aD1rZHls5ucaHzD5
-	WH8jkTpak8sY5metlifrw76KGrGkDb3HipZ8LzjqTM4wewxWYXhxwdeBvmelSpvzYnuEIVZhwEJjE
-	NhfuamlzBWr4Xybe/mnjtd37sMggdLlHVn3xPaBHFs003vazsNrp4eNXOc/gQ1u6lwMMHsAhUdFsn
-	AN4++IsOdcNtKHPVLaAnvUNEnG1qoLWry0X+dn2U6rNdJeWjIyEmC8cD0j+fv99C3e4QRTJWiaMS3
-	28xOXdcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=; b=VhZ9c6LEPEfoYWEfxktumx28z/
+	ThWjS1++V2K9s1Xshamxz3lLigfxeteeqmaVcOztvVW9gHray7Fl+EbV5tnHsIeaVw01wZ54tNbdh
+	X/+YC7rf99k8hbN25BmKAVwvHYfmfSXZ8ng4aI6E1o6TMO+Fll2aZRWrHwIpWQAuQDfn5hHuSNLHn
+	/vwRDjbW5u+TKcEEplo7y3bKzCLB0N5Xpxsi4Yo+PGA9Ug6VXy2y7alnVmRmx6Q9QHF9DfJz9B9RE
+	LfPXK6kok9i/Ye65LxdUFJ8p66Ux/ztFTp/oqZfFMHzzXZtHRtcCzpR37Pfe+IteG1zKTiBKPLXZg
+	PdCFlnAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozqEr-005FQE-Bq; Tue, 29 Nov 2022 02:20:49 +0000
-Received: from mail-bn8nam04on2072f.outbound.protection.outlook.com ([2a01:111:f400:7e8d::72f] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1ozqRn-005KFg-4W; Tue, 29 Nov 2022 02:34:11 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozqEg-005FPD-GZ; Tue, 29 Nov 2022 02:20:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Huh7pFKVTK3PEYMIsAzKZ1fWnteLQ+08cWFAJS2ojwasDXulETV0Af07UxWQz9gjZgzuiQPNAawc7mb1FBuxoN5+Jc2Ldkfl2/3ZGYJzQYv/S12nPcvmSOR1lcAHqDiGTthqVtDXViIG7EkttXPsPhngeSeYVkZSpjkej5QoPLwiC7NYyiTEkWHwUuKGID7tJwUunhYzPua+ueqEeZbZ7wDhoswAEX4rxFi8Dcfi3pdsfVvcDUA67HMM2HFoyRJAnOuCvasFKGGo0kViO9/BiXYYbo1XEP+/uojy14YpNOqObMZrX5A8EAz/yrhD9xCs92VE9OssJSm0MBCtfarBaA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LJzpjVWlurb1T3fP4jNHqVCjcg9qz0Jt+CrPLOBWq38=;
- b=ijWY7jiM3bSr6kLF0Rm6Q/jqBRr7uiS10F2YwBYPz/7lE20namLHhCSRfgvzNjM+T4KhaOCAOqiJh6d+A8aaS18cAuxusmz44mpRpF9xedmzmyTFt/wT8UHfjBxjN8PKkdIOubLUplFlx4l49vEgfMKH9Y+wdDMQzfQa0bvWC1VVeo5SnNSiW/LXS1S1SChdJ4Oba/FB1uhkhST6VsN9rku1Z0HlhhdP7lt9o58Z5ODGri7Xnp6QgCW2+Gehn/sZFRefHXI5A93VKbdQX9sH5Fi+6nKqEUvoNBvk15fT4PBjDcoPB9e7mEAtT+KrctQ56a0mu1//vMZlwz3FFrntYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+	id 1ozqRj-005KB3-De
+	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 02:34:09 +0000
+Received: by mail-ej1-x631.google.com with SMTP id n21so30477057ejb.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 18:34:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LJzpjVWlurb1T3fP4jNHqVCjcg9qz0Jt+CrPLOBWq38=;
- b=MLoJdN8/J2IBl91NrnK3W0CIPgUcYBQ8LPDqkaZuh81pTFek417nBIXWd/LYlOWUjWZSgms6CRJjvPluxGRfpcwWNwaAgYbRhs85ktlSZs/ImIYqpQzbvT2zAJIkEYk1MvBUABl9HjNlPY0HME/7UzHsuA61WcjigHWR4Um0DUg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by CH0PR10MB5084.namprd10.prod.outlook.com
- (2603:10b6:610:dc::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.23; Tue, 29 Nov
- 2022 02:20:32 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5857.023; Tue, 29 Nov 2022
- 02:20:31 +0000
-Date: Tue, 29 Nov 2022 01:20:21 -0800
-From: Colin Foster <colin.foster@in-advantage.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>,
-	Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 net-next 03/10] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-Message-ID: <Y4XO1T/M47bXqIBY@COLIN-DESKTOP1.localdomain>
-References: <20221127224734.885526-1-colin.foster@in-advantage.com>
- <20221127224734.885526-4-colin.foster@in-advantage.com>
- <CACRpkdYkD-=y0mCnVkkQ9+4m9-nx6jQu=TfL-TPePbps6x+7Xw@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CACRpkdYkD-=y0mCnVkkQ9+4m9-nx6jQu=TfL-TPePbps6x+7Xw@mail.gmail.com>
-X-ClientProxiedBy: BYAPR06CA0066.namprd06.prod.outlook.com
- (2603:10b6:a03:14b::43) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=;
+        b=zdPnBz8LuT1eYde2dmjuvmer7HQPreaOkL/J34wCWMTbFXn/rlUkZgCRefXxmTxSd6
+         ynHItCJhUlhX/oB2no2KlunwGK6IeCorVQeNAtZFV3oyjteMsRZVQXkWRXhjrRtoPFfv
+         5dTvbspYt2uIpdh6UQQCegMEKg5YRfpqkfvCrZnv6NCgczSc7qKFiDJhgpL7nq5Ix5Yw
+         JDv1wHyuf8+45dqkj6Blp5k9x5lc7FxsVJyBNVTlGlCM/p0CjKi6p8sx7XCmaYgR/Pso
+         n4+SrZ1GsX9KXdHppUTzlSbDJaxWGT0Of3R5Nsw2oApzRycZvxrSZv00CIsPOmdE/UTR
+         YTyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZTx+TtbHQiuyemeCcK5ytUKmVUVmCoh0H5eAmJ4K4qk=;
+        b=jTYzGZLTqsO1R/GLo1CNGPkoo3mr5zq9zW+8Lc4nKcn9WSxZLf4Bm/wnkeUBgxgmVO
+         nZvVhOikjNI4pnEkuO1n39vc+pdF2X/tacBK0Kc0fketcpx9ucqd3R6EMx+fsYQWU6J3
+         9incgHmDCai8quZsEtS4a+W6cidqBX0wjMcvhDbkm2PEleVecT68HcbvtVAji26trdIi
+         OGynJjLxR8GJ1DrMoKswSgDyv3KJjtj560QLIf3+oQ2F9N3EbwfrPhW+/iczqoH9+p+d
+         jskWWiNQ8lynbxOH704VD6psASLF87XBEk47qrGfpMHmUIjmkSHJj0MIiZe/3zMQ4GEI
+         JNfQ==
+X-Gm-Message-State: ANoB5pkW7sniZMCChORVluxVKWMjFPOmdXPxzU0IayacLdL5izOezslo
+	PR5kuAfKfgg4JQyTixpFgdUXKA==
+X-Google-Smtp-Source: AA0mqf7cNqtLS8XZxcIEfqpN/Zg8AfFILEVbgilC7PIW1LJ9tdQClOSPyxdLvja1MaMQAwYiJDpXfQ==
+X-Received: by 2002:a17:906:8465:b0:7bd:7253:457a with SMTP id hx5-20020a170906846500b007bd7253457amr13730873ejc.81.1669689244396;
+        Mon, 28 Nov 2022 18:34:04 -0800 (PST)
+Received: from c64.fritz.box ([81.221.122.240])
+        by smtp.gmail.com with ESMTPSA id a4-20020aa7d744000000b004615f7495e0sm5733817eds.8.2022.11.28.18.34.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Nov 2022 18:34:04 -0800 (PST)
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+To: devicetree@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com,
+	krzysztof.kozlowski@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	khilman@baylibre.com,
+	linux-gpio@vger.kernel.org,
+	linus.walleij@linaro.org
+Subject: [PATCH v3 1/7] pinctrl: mediatek: common: Remove check for pins-are-numbered
+Date: Tue, 29 Nov 2022 03:33:55 +0100
+Message-Id: <20221129023401.278780-2-bero@baylibre.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221129023401.278780-1-bero@baylibre.com>
+References: <20221129023401.278780-1-bero@baylibre.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|CH0PR10MB5084:EE_
-X-MS-Office365-Filtering-Correlation-Id: 10df13f4-5c1d-4965-34a6-08dad1b04a20
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	yzfiMXdAFFN2ycWef4vbY2HEKymKzXi2HOo4r8pBdlY4+z2wZ71cE9L0I2+TFxgsYjwpvf/ccHKn3e2OIlfFkxafxlvtr67C7/fDbnS8Y17dXypv5XJPfPFq1mWXrbhEpxdKtn/dbN44bgB/Ng6ucBQEhyYEyZNQwAsidVx2q0PGBaI2vkgcuJ5N714QtqRTQDfD/wa9EoRhbh0ji/rBKDuJzftyb3e0WJ03lXBwQeEkBgCgu6uMWS2vH91SJMb20JS3y7/92JdSGMSObgAUed62djFWalKXcqckXmNlVvprS8JokH+hbHPhiK7sUsoj34X/JQy/z7wWYUhrvxyHr8tsIIu+/0rlLXqazV59Td+8lmRN5aRzpedf47E/MPn3f7RVuD/h+CbNcZsBF1lPdnIokyWXpye/5cJfjwmco79+vp/NjopYPoiJBQ8Euo6BeI1F2o2x5DFpIzPvUlu6iFjGtpP+YaSfhvNR53VXK2d8ucpU7agTywAQJ72H20d5nl6FOnXhEuxk9nkQsAAlRm2YaVZSRoi5pO5dhP5PFn0tnEudpqXRDOfCSUKiVRApa/fFdmtRfDT88Ec+j+R8Wyfjb6RNEjAq+a2hGMiD8aUgoS5FI4DcN8TxioCrexfJ
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(366004)(39830400003)(136003)(396003)(376002)(346002)(451199015)(86362001)(54906003)(6916009)(6666004)(6506007)(6486002)(6512007)(9686003)(38100700002)(26005)(186003)(7406005)(7416002)(8936002)(44832011)(5660300002)(8676002)(53546011)(66476007)(478600001)(41300700001)(66946007)(4326008)(2906002)(66556008)(316002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?23tJppmi52bea75EECEjEozSS7pDTpRD6mHdYDaRMlIZNKYwL03BMpDTZZuC?=
- =?us-ascii?Q?OPg+PRty64RdiZRsLll7GnjxMqB8pAaOccR/WMBWtVpSZHGjBy7Tujthh1jU?=
- =?us-ascii?Q?VogbHa3rgCsQxHppldmjalRnWm9PGdR2vByCZiGcyOXuiDWkkcZIUyqcFc+L?=
- =?us-ascii?Q?86021MckFiZriGANsyB4orgC1dn8hpQyAJChg6xjr9QP47qm2vHijkkeFENx?=
- =?us-ascii?Q?tEMzQRZYkfZI15xNAyF/5OqbKj5da1TYgEVydZfOdwoh3hKIkIco4v+oRan4?=
- =?us-ascii?Q?meW59bD2PIiVnRvkRQ44QwkMW8IZzhz4EcwvgudHsuKNjRZaQ91VISirweeq?=
- =?us-ascii?Q?aAIBKPTGSIGNNlTkLMaFCjDSuGGZClv7ebOjydUc7as8EGc4fRoJV/j9w92K?=
- =?us-ascii?Q?l9jWXNM/bD5qw4koS5H7yLI+tSHmcIoMxcIdagB303bX+4dIrSOgWLtp6w5J?=
- =?us-ascii?Q?rFoXzzlkUnQGnI9LqA3KwlSYZDIz9re1MdYTIJ6BFKtdcrdYilVAHAICjGv2?=
- =?us-ascii?Q?l2fcx+eyhAzRt/UuJ3YaqUFqp9EPWKjDWfGyxSCwn2lkdoXnb3bfQZs13KWs?=
- =?us-ascii?Q?siTSm1r/+gFjcYmxstUSpV+KSnLozN3eQs3qEm0o9ab4+hYttzBBZCTsx5Rh?=
- =?us-ascii?Q?REazU6OTQihfMYbkafzr3bYF3iwxJTMo375pHr9IOa6l23Kt7gT1w/In0+By?=
- =?us-ascii?Q?Gm6VvPFj5makDBaotoNH6pia2LAlKq5+5+zy9tDui7J5m8IBsiU7uSMgQKUw?=
- =?us-ascii?Q?7R/P1D2fuL/R2E8dQuJDreWttlcDBLbgSua3bBmuE9NEI1CwSLHNMPAUE1xV?=
- =?us-ascii?Q?wRFG/yI1zgT/hA75IfEyCxSozaydGmtTDVX/MmJJRFHjCkRGp0w9G3BKJQEn?=
- =?us-ascii?Q?48uVV3HX9yd5yvAXj38BJ6ubc08Lse+nKmNGRSHBf65JM44wcygCMvDFp4c+?=
- =?us-ascii?Q?OOI+NUPobDMjMthC6J6vDM+WxVfPkb1bJ6IIXbcY9ZMLx9/wRiD2XOezAPHY?=
- =?us-ascii?Q?zOhe7bfcAs7O4nNn08JtefB4wAY9FH8gOfnVNqAxZPQv+NCKrsfP5GrSGBnk?=
- =?us-ascii?Q?2jMGXcai4sBOEa3ZRPyZjm4k0CcjUiemB5Th59Gm7DkXiW5Wd1Ev63lXt+AY?=
- =?us-ascii?Q?V1jEiK0Zjsdoo6SHARWkga5F0kGJha8Er7Trtr1VKkGJV1OOnxmzsubWAC6u?=
- =?us-ascii?Q?MxhrZst/A91QErSMHYsoSDnQH6QtA7Hot9Q+UMQCUu7hW27R96ORBXcIBDVD?=
- =?us-ascii?Q?0dey3yM9KaWL8Oz/6H33LKnKWdLMADcbq9jYx4prPGTpkWf2yFYzacr898du?=
- =?us-ascii?Q?0NCLEjTr5IJ0n3jfacj93d/V4WWaE7lOcvjCHybzCFGCNcRw9/0pWgwXTZkm?=
- =?us-ascii?Q?h+ZzfYsFRhA8nCU3LyQ5ok01BTfZ4aaj7E3VfMi4XqbCCUt5igxXa4AQlISS?=
- =?us-ascii?Q?kgc1HYHX5V7dniD9K4v0x/Ubn47orDPyvrY13UP5dfo829Ctsj59Lg6MI9c8?=
- =?us-ascii?Q?tNW6iyM6K68E41D7E0rAGU11BVCxp80q4/LdV2zuEpEzpSv5lwItQ+fl7ArT?=
- =?us-ascii?Q?x1wifGhRnI+m9WkoTLsboBS8Nj/PNTn9Knh/W7cJpH3B1AKemi1zdIjKi+xq?=
- =?us-ascii?Q?Uw=3D=3D?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 10df13f4-5c1d-4965-34a6-08dad1b04a20
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Nov 2022 02:20:31.6920
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QoBaS/uq4o4AlMDkKVgryxisDOfhtlp3gcLajIB2o5qVp0pGiBn8IqIaKrs2nvOEcPZtYPKFOjZ5FnsuCtUHdkdySMmpia/9qv6a3MriSc8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR10MB5084
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_182038_818528_471E565E 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20221128_183407_700880_C9D7CC05 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,31 +101,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 28, 2022 at 09:21:26PM +0100, Linus Walleij wrote:
-> On Sun, Nov 27, 2022 at 11:47 PM Colin Foster
-> <colin.foster@in-advantage.com> wrote:
-> 
-> > DSA switches can fall into one of two categories: switches where all ports
-> > follow standard '(ethernet-)?port' properties, and switches that have
-> > additional properties for the ports.
-> >
-> > The scenario where DSA ports are all standardized can be handled by
-> > swtiches with a reference to 'dsa.yaml#'.
-> >
-> > The scenario where DSA ports require additional properties can reference
-> > the new '$dsa.yaml#/$defs/base'. This will allow switches to reference
-> > these base defitions of the DSA switch, but add additional properties under
-> > the port nodes.
-> >
-> > Suggested-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> 
-> This is neat.
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Remove the check for the unnecessary pins-are-numbered Devicetree property.
 
-Thanks. All credit goes to Rob (except the bugs - those are mine)
+Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Kevin Hilman <khilman@baylibre.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-> 
-> Yours,
-> Linus Walleij
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 076ae0b38e3d7..553d16703475b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1057,7 +1057,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 	struct pinctrl_pin_desc *pins;
+ 	struct mtk_pinctrl *pctl;
+ 	struct device_node *np = pdev->dev.of_node, *node;
+-	struct property *prop;
+ 	int ret, i;
+ 
+ 	pctl = devm_kzalloc(&pdev->dev, sizeof(*pctl), GFP_KERNEL);
+@@ -1066,11 +1065,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	platform_set_drvdata(pdev, pctl);
+ 
+-	prop = of_find_property(np, "pins-are-numbered", NULL);
+-	if (!prop)
+-		return dev_err_probe(dev, -EINVAL,
+-				     "only support pins-are-numbered format\n");
+-
+ 	node = of_parse_phandle(np, "mediatek,pctl-regmap", 0);
+ 	if (node) {
+ 		pctl->regmap1 = syscon_node_to_regmap(node);
+-- 
+2.38.1
+
 
