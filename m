@@ -4,70 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FED7C4321E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 11:17:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7E29C4321E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 11:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=; b=M8WfIBBYLzBu3heXiheWD4y/Uz
-	WIOIoR1GHSWDt1d37WzzU9t51AIUbD8jMP4YI2+ERO+cx+TageDRt8sMP7BDB3cWEVSjdFeT0+D3F
-	sFHcu2PPSv4BG8kiS67myeX4G6D5iU1ZohiGrNsX2eMKDtYjmIGcVz6Ud8yO9NV/dZDTu4VauWTwp
-	B6jtq4p3VgKsKCE65PyV0HubKorplMVEl0DbmnIdA0mE+U6XkpIH5BN8r2RSBK9T8EBwslcODuvql
-	SLhETswun7cjPoPR5Y4jh2HBgeRr3u6F8xlMJKgs10hoaWm7T/A9i44p+9X4V2tXtKy/zn4WCFEir
-	ajxQoEAw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e9vFnE/zCmftdvIN1j30LO71E3qILb/EXYHdtaGoK2w=; b=PiheeNx5ei7V3vFZFL2zl5TDnu
+	JWn+PoxoSNMXxCx8bPsI4uzqzuJrHdSH/QFpBZTKfhfF+2jVZlJI0322U285C8UkVbfgs8DXMEV7r
+	cADzhR4e6Ku2gHANemTP6drGRkKS1Dx5IzgYPArCXW/Cr/1QNgmCfU5QilxZQaKOYDLkonh/nxGaD
+	V4jqwklr9s18bXcozFPLIPghX0QO4OjmZwRIab3c8OjtnSk5zbOKGW0IgVCGYl3vovVrvSvJbnmeM
+	+1J49klojGo996I0Yq+ec3+bewr/Q1cj8mS6v7N2PbKJIUkqLecLlKrs+TdaJbh2mBQHA8MrC1kYp
+	H8kHyzDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozycO-008RK4-5U; Tue, 29 Nov 2022 11:17:40 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozycC-008RIU-S0; Tue, 29 Nov 2022 11:17:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1669720643; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=NzHdiQtyKF/lIeeCj234BMnDVnChfQiZ4TMMUtRxWQ/hyZoV5gAl27aNoWKxRwnbgyQ/fCQzVgT0C6PQP97Yr8TUS7luOlo+GHN5u0s+6f5DSQyqi6uQ+AVFLFGvQOHqh2ZAG/0m7uS06gSfk1UrvbaE+3PxK2nr5HzEMHnIc04=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1669720643; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
-	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=; 
-	b=e8S+Dgn1tw8kEdp9CuAn04PRXtg3P1tIDdpSLxD11tZczlxy3m4A+/uUKIc0Jb+G6VEHTrxzHCm51QJ46x3YrSZlgDhU/KzLrM2rINd/TGcmj+JXPIv5OcGbfx6L8iB6/1Uym9hhGT1gAzAYS7k6AcvfkoIVXOX8l7FhDYr0mY4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669720643;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=wuTnTkxy7g0Gw/TD9R0MRukx2llcST0fSdcHE1S5IGA=;
-	b=g0PWVxHbZb0J/8V1o4Y1dd0u14cyZz5T6Fd5s7vZ9ILfCAcTajdu+7WZCEeiOYCv
-	mxMqzgbP0VuYoAPw7NFgjCJ7tQYp191JpmEI5rcl6bVAG/ZIWXPHNDerQi1on+uTvee
-	thMd9BQuaHfy734PYvJOAETCTQuQFMZwd+AJ4UHs=
-Received: from arinc9-Xeront.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1669720640742618.9209820853164; Tue, 29 Nov 2022 03:17:20 -0800 (PST)
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mips@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH] mips: ralink: mt7621: change DSA port labels to generic naming
-Date: Tue, 29 Nov 2022 14:17:11 +0300
-Message-Id: <20221129111711.2739-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.34.1
+	id 1ozz6D-008WsA-1q; Tue, 29 Nov 2022 11:48:29 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1ozz61-008Wq5-Ha; Tue, 29 Nov 2022 11:48:19 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BC6B2D6E;
+	Tue, 29 Nov 2022 03:48:21 -0800 (PST)
+Received: from [10.57.71.118] (unknown [10.57.71.118])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C5EF03F73D;
+	Tue, 29 Nov 2022 03:48:13 -0800 (PST)
+Message-ID: <da0f6ffc-efa2-66cf-770b-1fd007894f3a@arm.com>
+Date: Tue, 29 Nov 2022 11:48:07 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v2] iommu/mediatek: Fix crash on isr after kexec()
+Content-Language: en-GB
+To: Ricardo Ribalda <ribalda@chromium.org>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Yong Wu <yong.wu@mediatek.com>,
+ Will Deacon <will@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20221125-mtk-iommu-v2-0-e168dff7d43e@chromium.org>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20221125-mtk-iommu-v2-0-e168dff7d43e@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_031728_974965_100FBFF7 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221129_034817_654005_ECAE88D6 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +64,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the labels of the DSA ports to generic naming for switch ports.
+On 2022-11-28 22:16, Ricardo Ribalda wrote:
+> If the system is rebooted via isr(), the IRQ handler might be triggerd
+> before the domain is initialized. Resulting on an invalid memory access
+> error.
+> 
+> Fix:
+> [    0.500930] Unable to handle kernel read from unreadable memory at virtual address 0000000000000070
+> [    0.501166] Call trace:
+> [    0.501174]  report_iommu_fault+0x28/0xfc
+> [    0.501180]  mtk_iommu_isr+0x10c/0x1c0
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- arch/mips/boot/dts/ralink/mt7621.dtsi | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index f3f4c1f26e01..1a601d7c73d7 100644
---- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -357,31 +357,31 @@ ports {
- 					port@0 {
- 						status = "disabled";
- 						reg = <0>;
--						label = "lan0";
-+						label = "swp0";
- 					};
- 
- 					port@1 {
- 						status = "disabled";
- 						reg = <1>;
--						label = "lan1";
-+						label = "swp1";
- 					};
- 
- 					port@2 {
- 						status = "disabled";
- 						reg = <2>;
--						label = "lan2";
-+						label = "swp2";
- 					};
- 
- 					port@3 {
- 						status = "disabled";
- 						reg = <3>;
--						label = "lan3";
-+						label = "swp3";
- 					};
- 
- 					port@4 {
- 						status = "disabled";
- 						reg = <4>;
--						label = "lan4";
-+						label = "swp4";
- 					};
- 
- 					port@6 {
--- 
-2.34.1
-
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+> To: Yong Wu <yong.wu@mediatek.com>
+> To: Joerg Roedel <joro@8bytes.org>
+> To: Will Deacon <will@kernel.org>
+> To: Robin Murphy <robin.murphy@arm.com>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: iommu@lists.linux.dev
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+> Changes in v2:
+> - Also print the error message if !dom (Thanks Yong)
+> - Link to v1: https://lore.kernel.org/r/20221125-mtk-iommu-v1-0-bb5ecac97a28@chromium.org
+> ---
+>   drivers/iommu/mtk_iommu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 2ab2ecfe01f8..3d913ab5029c 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -454,7 +454,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+>   		fault_larb = data->plat_data->larbid_remap[fault_larb][sub_comm];
+>   	}
+>   
+> -	if (report_iommu_fault(&dom->domain, bank->parent_dev, fault_iova,
+> +	if (!dom || report_iommu_fault(&dom->domain, bank->parent_dev, fault_iova,
+>   			       write ? IOMMU_FAULT_WRITE : IOMMU_FAULT_READ)) {
+>   		dev_err_ratelimited(
+>   			bank->parent_dev,
+> 
+> ---
+> base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
+> change-id: 20221125-mtk-iommu-13023f971298
+> 
+> Best regards,
 
