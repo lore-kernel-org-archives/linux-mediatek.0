@@ -4,56 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A833CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 19:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B605C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 20:32:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=otLZTlXQs3lS98jbgn2cwZ6QYH6xDeRXlcMO9hILBzA=; b=lAuy0tMeJUteUgzzEYT117fL4U
-	vVjJvbKvjh1saL5Y8HZAZETuswo7zMyjdUJ5CXMpADiiUF2TQCvUgFa5Z1+hyVD+qjL7QKL8lnp8h
-	Gt0RCuhYqfwlWS5UYA0UkcHhT3ia0Pi/fjMS5I0+bitZTYKCrFBGElMFXE5KmjCuVmRpGTtDRamUS
-	NuDvaj4AxalrMx+C/DTXKy+PTuvxldb2DVmQE82FdwTtP+7T10XCTlMmWgT17VlYuZO3qnTSR5S5S
-	1JIzgLchwyVnwuayu2aKx3aknBXHbGyc2IhihMdtz9Ltjkr3zQ9x4bU3/dTrMpoSKzFNMPp5IijWT
-	hr09rgJA==;
+	bh=UBR0dTHnWTEQ+rm9IH7GSA4md4wYn5q6badDeJXV+Gs=; b=n4HAWraxPtBNGXU6kIqZ8nqFlD
+	lVjThRz8qJCa2X0c+FOSPE8ttR/nRN/O2s1ghjJiQBCGWRwj7KcF9tEi7p1XMkxcuTSh5CZnYU2qk
+	kyuQ8ibNFezChi1KzASlBYjhnBtWNXVPTdTFJLx5Paj0RKwhbS3q+SKL3y60hvuU0/L9+B+Mn+MhW
+	GRuDD44BVpJJODCQum8egx+uecDF+/tWUus9dgFKiotda15q/lrthcrrtasAwEyo/eE1AxYqX8Jop
+	MiDLGN9xYXN9takG/ImYvrCDw6cioDL+MCQC6hAW5dL1RRK5liqerGCztqhEfyu617s9svcg/z5WB
+	Ye0i09YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p06Ag-00B11M-Qq; Tue, 29 Nov 2022 19:21:34 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1p07HC-00BHiV-4v; Tue, 29 Nov 2022 20:32:22 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0695-00Azru-Be; Tue, 29 Nov 2022 19:19:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1669749593; h=from:from:sender:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=otLZTlXQs3lS98jbgn2cwZ6QYH6xDeRXlcMO9hILBzA=;
-	b=Vcu3dIzy72Pv8eXVbs2yPpjXGsVi/HZwA8f23CDsiNB1+5Vlkva4ITx2p+y2ViTdLAM1pF
-	rn5lFJkUSY9TvZKr8uTb8ojxS3DxWzWNKRPGr2jBTJ/b2jZURNMv1xCCkMGeIlFcimGpEy
-	eh0vMm9lfbzOiINuvLLqezm1OwMxK0Y=
-From: Paul Cercueil <paul@crapouillou.net>
-To: David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Paul Cercueil <paul@crapouillou.net>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 14/26] drm: mediatek: Remove #ifdef guards for PM related functions
-Date: Tue, 29 Nov 2022 19:19:30 +0000
-Message-Id: <20221129191942.138244-1-paul@crapouillou.net>
-In-Reply-To: <20221129191733.137897-1-paul@crapouillou.net>
-References: <20221129191733.137897-1-paul@crapouillou.net>
+	id 1p07HA-00BHhb-2P
+	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 20:32:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id D3F5DCE16C9;
+	Tue, 29 Nov 2022 20:32:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6E4FC433D7;
+	Tue, 29 Nov 2022 20:32:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669753934;
+	bh=JyLkOv6qe8XoJmjUwZu4AkrIj/J83ky0BnWFQEsVcek=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=itasrGJ1a2etQH/UdTZXRLMvSnUofxXW2jFFfOUsmGEJ+VrPQiffHpiQa+U7sncKi
+	 P6TieZ8GBD7m8akhvFzJMnZyaZKGhcSo7ajhSAilVfvpRqtm025PoIVgWj3HiFyIj1
+	 zBOxOkeX416JvfWVul/VqHHN/xcqHLaQGxlXYg1obzDCW6BMYwXuclhIp3wGoB4Iw7
+	 7ACNRbqRcG+ij8OTUBYeL5iatD4VNtuUaWaeEzobRC3jKvk/zBXSumOTd+ASyZXmm3
+	 FYKI+UYytzXHj4JV1cEKEy0153JxokmDeEbXhlxcC3YkoUSDIhuSFbObT2NCLaG8Z6
+	 2JbaRRFt6Vx6A==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <Y4WxN+u0nB4gg39Z@google.com>
+References: <Y4WxN+u0nB4gg39Z@google.com>
+Subject: Re: [GIT PULL] MediaTek Clock Changes for 6.2
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Chen-Yu Tsai <wenst@chromium.org>, Michael Turquette <mturquette@baylibre.com>
+Date: Tue, 29 Nov 2022 12:32:11 -0800
+User-Agent: alot/0.10
+Message-Id: <20221129203214.B6E4FC433D7@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_111955_577776_79675491 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20221129_123220_313626_26570B37 
+X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,96 +72,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the DEFINE_SIMPLE_DEV_PM_OPS() and pm_sleep_ptr() macros to handle
-the .suspend/.resume callbacks.
+Quoting Chen-Yu Tsai (2022-11-28 23:13:59)
+> The following changes since commit 9abf2313adc1ca1b6180c508c25f22f9395cc7=
+80:
+>=20
+>   Linux 6.1-rc1 (2022-10-16 15:36:24 -0700)
+>=20
+> are available in the Git repository at:
+>=20
+>   https://git.kernel.org/pub/scm/linux/kernel/git/wens/linux.git tags/mtk=
+-clk-for-6.2
+>=20
+> for you to fetch changes up to a46315295489933209e902638cd287aeb5f982ab:
+>=20
+>   clk: mediatek: fix dependency of MT7986 ADC clocks (2022-11-29 14:49:29=
+ +0800)
+>=20
+> ----------------------------------------------------------------
 
-These macros allow the suspend and resume functions to be automatically
-dropped by the compiler when CONFIG_SUSPEND is disabled, without having
-to use #ifdef guards.
-
-This has the advantage of always compiling these functions in,
-independently of any Kconfig option. Thanks to that, bugs and other
-regressions are subsequently easier to catch.
-
-Signed-off-by: Paul Cercueil <paul@crapouillou.net>
----
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
----
- drivers/gpu/drm/mediatek/mtk_dp.c   | 6 ++----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 ++++-----
- 2 files changed, 6 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 9d085c05c49c..00861a914855 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2590,7 +2590,6 @@ static int mtk_dp_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int mtk_dp_suspend(struct device *dev)
- {
- 	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
-@@ -2613,9 +2612,8 @@ static int mtk_dp_resume(struct device *dev)
- 
- 	return 0;
- }
--#endif
- 
--static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
- 
- static const struct mtk_dp_data mt8195_edp_data = {
- 	.bridge_type = DRM_MODE_CONNECTOR_eDP,
-@@ -2650,7 +2648,7 @@ static struct platform_driver mtk_dp_driver = {
- 	.driver = {
- 		.name = "mediatek-drm-dp",
- 		.of_match_table = mtk_dp_of_match,
--		.pm = &mtk_dp_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_dp_pm_ops),
- 	},
- };
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 0a8e0a13f516..52f77a6af10f 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1755,7 +1755,6 @@ static int mtk_drm_hdmi_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int mtk_hdmi_suspend(struct device *dev)
- {
- 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-@@ -1778,9 +1777,9 @@ static int mtk_hdmi_resume(struct device *dev)
- 
- 	return 0;
- }
--#endif
--static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
--			 mtk_hdmi_suspend, mtk_hdmi_resume);
-+
-+static DEFINE_SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
-+				mtk_hdmi_suspend, mtk_hdmi_resume);
- 
- static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 = {
- 	.tz_disabled = true,
-@@ -1810,7 +1809,7 @@ static struct platform_driver mtk_hdmi_driver = {
- 	.driver = {
- 		.name = "mediatek-drm-hdmi",
- 		.of_match_table = mtk_drm_hdmi_of_ids,
--		.pm = &mtk_hdmi_pm_ops,
-+		.pm = pm_sleep_ptr(&mtk_hdmi_pm_ops),
- 	},
- };
- 
--- 
-2.35.1
-
+Thanks. Pulled into clk-next
 
