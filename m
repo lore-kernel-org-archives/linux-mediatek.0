@@ -4,100 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1851C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 07:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D010C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 08:04:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=etxMVrTTVJSTddGDgARHAHEO1RrGD5Hs7SuIw9ap/3I=; b=vXohkSEveCLQAc8LoqhZwqQVaO
-	99AID4TFyJYUkXILsU+yFA2hpHVyeS8SSPfElPWxyo2KxdjUyOB0SNNvlglbfmQDgo8Vo9Pbqh/Hk
-	GmzU3QTaexcKETvlmw+HOjlhPWgxLnV2cSdZmiNtrs6qu/8L3+S8koxdlu4cyjUn6sxuWGggV3d9a
-	PCZeAIAp8T+bnzJmUBdc/DI/p83jd5EASZb3UTV6zi54v7HLeav4Sz6WQ17K1myrO0/jLqFzv91LR
-	xu2/TqxoJ3X1HWIth2R898glOoUTFPApBFgetszgu4/oUzHifzPOMff6RKW8YibSUdvlw40U6v+T1
-	wTrZo0/g==;
+	bh=SFqgWmLTPu6Efm5uqI8QHWhAPlyBeMn1zR3+/c+MyV4=; b=OexhZDycmmIH9cFRCCbDRDkwtr
+	Y1uzEAvLkSDGImCuSvY1uHDbs0D2wa02QoNU51FB0H3+992thG1d8jZ78iGGqlz+sMHU/GRPjkECq
+	XUunX7vjuO7BbfL3kCfug2aLWjnvN64cNRlW7bEo14RHX6fhIP/W7PS7FLBYbzj43acYl/ps7Uudn
+	ukrOByC8uWAVwvp0INodTJoY+VwSSoZFF15ORhvLT8Z/5JN0G8UQU+si7WLIpTytbRcbogLRXKERa
+	ZcXFR1Zo5d9WCvoLECmMrCQppJE4Lyx9M6vx+gTQ+APsqVWtknQ7blkjvrh6q/rq6L8oTPsCOF3Ke
+	uCjpV3Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozvLm-0073fe-29; Tue, 29 Nov 2022 07:48:18 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1ozvbI-007CXe-0E; Tue, 29 Nov 2022 08:04:20 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ozvLP-0073WG-WC
-	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 07:47:58 +0000
-Received: by mail-lf1-x136.google.com with SMTP id c1so21182685lfi.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Nov 2022 23:47:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=etxMVrTTVJSTddGDgARHAHEO1RrGD5Hs7SuIw9ap/3I=;
-        b=rJ2CHbAyVDgULRTpj4MDVg2dwBK1HADystIZFbvhbTYoLIME+/tt+UNXjiftguq7ib
-         w244K+6QPoVERfMg79BoElJO38d82eLScZZat5sFVE49snZOfOK2/+f0fnJIKBPDeYwr
-         FMbKUIjfcevvcaBgXAKIO3MbRsFR3P6ZtMV7rNa9PIY4woHjOWMCcZuqv4pX0tOMHtUg
-         i6K9FHqMYrX/NmhNXcCLLkLhSjNQEx5ifmowHQHPkWFrl7Bjgf4qKioahqfbJwtbyu+O
-         kUj+dvJ58qD1SX7rLqgkoUAxuWicMcWgz3BzKtCsL8WBGDD+0gJi4HnxuReDXO62n9lO
-         ykmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=etxMVrTTVJSTddGDgARHAHEO1RrGD5Hs7SuIw9ap/3I=;
-        b=Jd2ZTspFqiKVKxcyKWMJCHnP0D6S4GTPXu+H24VQ6rWbjpu2eWzlSJCqFVOCKNf7fD
-         HmDpHXBB7BUxI7SPdbzmBvtt5oSDry4TVRVi6/OmQRUyNKw3ENX9e74dc1cTcUPksKEI
-         Ta8F4Bla6brRvaXR9lrfrDniDCBJXZhE5hvjqQEdqatlF0EqqV4KtdAEN8DdnzGTcVNL
-         Xz9AWvlJOlL954pfHQLQw77H7QXTveesKYbHp8rnMEX0oIaCyyE0HOszP81EWWwg/CJ4
-         rMHHBoXZQstVJiOnhgg/MP2oBfbFEEEjYrO1apq8Ls9XcODkKgPy8flG9mov5nDPBf+d
-         5Y7A==
-X-Gm-Message-State: ANoB5pmz7T4mFwpepBA4ooOyXD/8BScUG25iPhRrUYoF7Z0jBupVzHrm
-	oS3vYP3y+5u6giSuPG23sl7jqg==
-X-Google-Smtp-Source: AA0mqf67TcbUg0koPs/HiroxNXgbbcwrSRcrk/nihBw0w3MO/AQgLVDwdMtZH+S68ivSZKmzzQx01Q==
-X-Received: by 2002:a19:ae18:0:b0:4aa:c879:5bc with SMTP id f24-20020a19ae18000000b004aac87905bcmr12172113lfc.498.1669708074608;
-        Mon, 28 Nov 2022 23:47:54 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id k16-20020a0565123d9000b0049e9122bd1bsm2080686lfv.164.2022.11.28.23.47.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Nov 2022 23:47:54 -0800 (PST)
-Message-ID: <e512b7fd-3404-3c2d-dbf6-dc66ee662a06@linaro.org>
-Date: Tue, 29 Nov 2022 08:47:53 +0100
+	id 1ozvYb-007Aga-GI; Tue, 29 Nov 2022 08:01:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669708863; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Mt8zflQluXrktvTMy1+7/wqUymDJuNvxcCt9uUvUKw10sGTDK0MmA+82aNr+WwHy9LSPljlTOlsgEk2qQ+EFoOjz+teCuYjgTlWnrXhLgNnE8tc4Ud3W0t3AncJ7vXMDugqp76mqGhM2nALe85m0kzUnLVwq/PXuz8TkjBabTtQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1669708863; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=SFqgWmLTPu6Efm5uqI8QHWhAPlyBeMn1zR3+/c+MyV4=; 
+	b=XrJLcU4oGZ6bewSlAoGFPefar0lVihXpG2DX7/j5p01eou8CQKfswf1NEdKjTW33pEsGgoBnOvPF1JHhQyILjBt9OXmPxSquYOZ1IP3sOuLQzdbv22MSDzh9ZRPSZDdndb8TawlE4FdHYC54PhKac4RuD6J1t+Fne3mLQOnEN/w=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669708863;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=SFqgWmLTPu6Efm5uqI8QHWhAPlyBeMn1zR3+/c+MyV4=;
+	b=NzMQ77o6X9I3VrDmPEHUQN1icfGztgC2EGc0z02LnLq1jMb3ZETBFPplSN2gf4gy
+	SoLMOp5SVhwl/Ioye3A0wg2ZZtIwr++hN1PXGbga2DP1ttKOv/OC9+9KCKhrBTR8ucQ
+	zyYoL7Sc7+oh6Um8H7311lXEphsGe+F/tIg5zvrU=
+Received: from [10.10.10.3] (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
+	with SMTPS id 1669708862210987.5702214730692; Tue, 29 Nov 2022 00:01:02 -0800 (PST)
+Message-ID: <25533005-60bf-a9bb-d6a0-d14e1804291a@arinc9.com>
+Date: Tue, 29 Nov 2022 11:00:53 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH 5/9] dt-bindings: spi: mtk-snfi: add mt7986 IC snfi
- bindings
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3 net-next 06/10] dt-bindings: net: dsa: mediatek,mt7530:
+ fix port description location
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, netdev@vger.kernel.org,
+ John Crispin <john@phrozen.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
+ Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
+ Woojung Huh <woojung.huh@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
+ <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>,
+ George McCollister <george.mccollister@gmail.com>,
+ Rob Herring <robh@kernel.org>
+References: <20221127224734.885526-1-colin.foster@in-advantage.com>
+ <20221127224734.885526-7-colin.foster@in-advantage.com>
+ <08784493-7e85-9224-acfa-9a87cbd325e7@arinc9.com> <Y4WnjiE2IxDgi5mc@euler>
 Content-Language: en-US
-To: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?=
- <Xiangsheng.Hou@mediatek.com>,
- "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "gch981213@gmail.com" <gch981213@gmail.com>,
- "vigneshr@ti.com" <vigneshr@ti.com>, "richard@nod.at" <richard@nod.at>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?=
- <Benliang.Zhao@mediatek.com>,
- "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
-References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
- <20221128020613.14821-6-xiangsheng.hou@mediatek.com>
- <8b8e4b23-a3bc-7e3d-199a-e8f591d05d71@linaro.org>
- <5f76482d33933c19e191ea618f8622cd0660597f.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <5f76482d33933c19e191ea618f8622cd0660597f.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <Y4WnjiE2IxDgi5mc@euler>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221128_234756_055652_10342160 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20221129_000133_691829_24787EFF 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,33 +101,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/11/2022 03:50, Xiangsheng Hou (侯祥胜) wrote:
-> Hi Krzysztof,
+Hey Colin,
+
+On 29.11.2022 09:32, Colin Foster wrote:
+> Hi Arınç,
 > 
-> On Mon, 2022-11-28 at 10:00 +0100, Krzysztof Kozlowski wrote:
->> On 28/11/2022 03:06, Xiangsheng Hou wrote:
->>> 1. add mt7986 IC bindings
+> On Mon, Nov 28, 2022 at 11:28:31AM +0300, Arınç ÜNAL wrote:
+>> On 28.11.2022 01:47, Colin Foster wrote:
+>>> The description property was located where it applies to every port, not
+>>> just ports 5 or 6 (CPU ports). Fix this description.
 >>
->> Subject: drop second, redundant "bindings".
-> Will be fixed in next series.
+>> I'm not sure I understand. The description for reg does apply to every port.
+>> Both CPU ports and user ports are described. This patch moves the
+>> description to under CPU ports only.
 > 
->>>    clocks:
->>> +    minItems: 2
->>>      items:
->>>        - description: clock used for the controller
->>>        - description: clock used for the SPI bus
->>> +      - description: clock used for the AHB bus dma bus, this
->>> depends on
->>> +                     hardware design, so this is optional.
+> You're right. I misinterpreted what Rob suggested, so the commit message
+> isn't correct. I see now that reg applies to every port, but is only
+> restricted for CPU ports (if: required: [ ethernet ]).  I'll clean this
+> message up.
+> 
 >>
->> Optional for which variants? For all of them?
-> It`s only needed for the item 3 nfi_hclk. Is it proper with this
-> description or any other suggestion.
+>>>
+>>> Suggested-by: Rob Herring <robh@kernel.org>
+>>> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+>>> ---
+>>>
+>>> v2 -> v3
+>>>     * New patch.
+>>>
+>>> ---
+>>>    .../bindings/net/dsa/mediatek,mt7530.yaml          | 14 +++-----------
+>>>    1 file changed, 3 insertions(+), 11 deletions(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> index 7df4ea1901ce..415e6c40787e 100644
+>>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>>> @@ -156,17 +156,6 @@ patternProperties:
+>>>        patternProperties:
+>>>          "^(ethernet-)?port@[0-9]+$":
+>>> -        type: object
+>>> -        description: Ethernet switch ports
+>>> -
+>>> -        unevaluatedProperties: false
+>>> -
+>>
+>> Would be nice to mention these being removed on the patch log. Or remove
+>> them while doing ("dt-bindings: net: dsa: utilize base definitions for
+>> standard dsa switches").
+> 
+> Agreed. My gut is telling me this wants to be in a separate patch from
+> the generic DSA base definitions patch... but I can't say why for
+> certain. I'll plan to move these to the patch you suggest and add a comment
 
-I understand third clock is optional. For which variants/compatibles it
-is optional? Add allOf:if:then restricting it.
+If I understand correctly, with ("dt-bindings: net: dsa: utilize base 
+definitions for standard dsa switches"), these properties are now 
+defined on dsa.yaml#/$defs/base and no longer needed to be defined here 
+since mediatek,mt7530.yaml was also made to refer to it. It'd make sense 
+to remove these properties there as there's continuity.
 
-Best regards,
-Krzysztof
+> in there about how the type, description, and unevaluatedProperties of
+> mediatek,mt7530 is no longer needed as a result? Keep this patch as more
+> of a "restrict custom port description to CPU ports only" patch?
 
+I'd say get rid of this patch and do above. Trust your gut though. ;P
+
+Arınç
 
