@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E40F3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 17:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF52EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Nov 2022 17:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bAXWficdb5Gh5FzYn9UMAwDhZ8CYJoMoqCIJ7//eDF4=; b=BdDKOiVOgpnEqq7tWu7Plla6Xz
-	POf3KCvbMBuWPni3m2PqMOsKVW0YXYoh6EhSJViRyyHbaFvxq6tWECQHBUIxz7f0q0D5bmk+d0Uht
-	TQrPljzFZOGfFmvhtdfUUkIh6I1WJtqp6fIXMTB4cqKofgYCANt0WsVZSL2qQdJePMC5O0kp5EmdR
-	KusHqRZx1q/Xa1zBrD9XD7AypblF9VA/jlTFA73M7V01iie39WjZWC4gXYmjmgNQBQMRMBE6RdUir
-	5mh2KR5WKpt25o3qiD9KOXFyy+tlJItMij1MGuO8lNk7ynu1fsAtNBzcQkVRyBuu2Q6Yo3hJ5y9C4
-	QoutpClQ==;
+	bh=2IWe64Fgbt+mPoOcx1XYaGQ7wclJ3ZWDWFYw2Rca7GE=; b=vwFNwZq1BtXkUMa2IQ0GGvDwH/
+	g8uHBoJuqjWjRCNj8LCyZIsonIZK4UNOQ+/oJMPI9mQJViJ4Khv0UyiNpaLbApBr0wojAcsDWRWvZ
+	v4ZeWdAG8Xt5u3JqaTgQNXrAm/cAwT8ncg7V0h6dAexkrRg5XyD95R/HwzfXTZzWygsiyZTfj8jnk
+	VvXXF2+jgWeuW2FXRp7yKl5SZ51HoKl6Xf9ddfHdjZP0R92FX4o24Z3bEvoUsUebiIYfsPCjD6wr8
+	2VwFrxgDGqW2kgIxsQhfOde60sEl1gjMTw9rf4Z7lThjfsnvBro2e4hOZ/FyDuOgiG/rtNP27sUw4
+	Jx7jkvYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p041W-00AMek-EX; Tue, 29 Nov 2022 17:03:58 +0000
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+	id 1p04JN-00AU4U-Cj; Tue, 29 Nov 2022 17:22:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p041B-00AMVh-RF
-	for linux-mediatek@lists.infradead.org; Tue, 29 Nov 2022 17:03:39 +0000
-Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-141ca09c2fbso17778069fac.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Nov 2022 09:03:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bAXWficdb5Gh5FzYn9UMAwDhZ8CYJoMoqCIJ7//eDF4=;
-        b=ljTM73sTaDXWg3oaSywePDjqX298nSKxGHlaRqrv/LsDQrh3Mk9juSNxGkuzLumWxy
-         /O1+AvGM4FAywdTpyxCQGuYt9iKWmSXYzMbOF8AqODsFHqIaEIKHAcDeYgoOxqm3Fr4o
-         TBRSen1aQi9VAoZMPuBILu+kBDk8UQm+R3FRy3pdzsmnDkxBuftdOqpEmxAanK+Th54j
-         b8OVtjKBlDakl7FEtLr3q1dHi6yezL2+/uByMQUdbFwTiXZVM3v9O0eFVdNSo9ZoknNt
-         vw3QrBqFV9EaNlDr4769W5eAGUfmEToEGJFnua/uUW+Qw2+N1owsFPR77QI/qPD9Wf6L
-         rAGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bAXWficdb5Gh5FzYn9UMAwDhZ8CYJoMoqCIJ7//eDF4=;
-        b=Nb25TmmXqy4nw29aRtXSCr1cqw9EdmSIdLoK+Vi1lDhPGqA3lzUfvSQwYWYAw9qfEO
-         y0sCNq2tGYYnxPK6T31QetxM7w9IE3Hrt+BwlD7OMUO538+nHYb3l1aPCBCNHt5rxPy1
-         QTZL7UauF8flidqnp0T37mSxjbXlvs6ok9qWEnjxQsQ0R6x+8UX7AZZ4cVmAkClJRob3
-         D+GL4TXrLMS/Of34bCknlcwxWebWjGg6IYWsSzxbTh+RwvHEPGt2h+wBt6RoqRYxfyva
-         3n06vxtUqM2ekX8vqiinE9Ia/1E6XastuMD77Nr23DM5iTFVYb6gBdNt2kEtQ84hG+DD
-         eXgw==
-X-Gm-Message-State: ANoB5pm1jbwhDSpvUoNWdxmir73g2OzCtQvYTK7stGWFosPgrwkN9Feb
-	2tk+QVfnQ7dPW+iXv7yfRT0QjTMza6K4w3MqwyM3vQ==
-X-Google-Smtp-Source: AA0mqf6Tdo6X8IWcObQq2o/3ErG6HPcwPrWCjYttmbMFTp3CWvG1wKOXHHCA+4UMzfOIMYG1UrxXlV2FAe3l3HjF3RI=
-X-Received: by 2002:a05:6870:7988:b0:13c:84e6:96d2 with SMTP id
- he8-20020a056870798800b0013c84e696d2mr36802093oab.72.1669741416887; Tue, 29
- Nov 2022 09:03:36 -0800 (PST)
+	id 1p04JB-00ATzG-BV; Tue, 29 Nov 2022 17:22:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C9C3E6185F;
+	Tue, 29 Nov 2022 17:22:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCC4EC433D6;
+	Tue, 29 Nov 2022 17:22:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669742531;
+	bh=Lb4SESpHMOhPIMCGrj+WFGcavPsOts6fRzahyn7Voxg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PjTj6DhMx9pbN6mtsEBac0RpBaIgx0ceKlawxs+e723Pfw3jj6mOMdV77XaMIhWfg
+	 hMb7PgKA0m0sm0En1h6+9dw4XaBiiNvZVmKq07dAcGOWUGrcgeJ2QqpNHHoGUlrQu9
+	 r9eDvvbD5OUdP0M940aNyZA+36L2jgE70sgKTYXzQ2sOxiFDH2SEJSG8OpWSz64NIE
+	 UipxIbRQ5UAihMlMTwBWPd4RJCIC3wrwGEikJjdG+i/cw3ILVrc0ylT6SbE9ErI9CM
+	 BrElCNX+gkrCcjvJGwSZnuiPFUkKNY+rdzX5hV72TeJw81iawEU2UyEGTM0v5ZySqv
+	 RkfuEDuUxjSpg==
+Date: Tue, 29 Nov 2022 17:22:04 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu =?utf-8?B?KOS/nuWutumRqyk=?= <Jiaxin.Yu@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	Chunxu Li =?utf-8?B?KOadjuaYpeaXrSk=?= <Chunxu.Li@mediatek.com>,
+	"ajye_huang@compal.corp-partner.google.com" <ajye_huang@compal.corp-partner.google.com>,
+	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsyk=?= <Allen-KH.Cheng@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>,
+	"andrzej.hajda@intel.com" <andrzej.hajda@intel.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"robert.foss@linaro.org" <robert.foss@linaro.org>,
+	"Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>,
+	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"nfraprado@collabora.com" <nfraprado@collabora.com>,
+	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
+Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
+Message-ID: <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
+References: <20221125094413.4940-1-jiaxin.yu@mediatek.com>
+ <20221125094413.4940-2-jiaxin.yu@mediatek.com>
+ <Y4Cysgk5Gic5ae9B@sirena.org.uk>
+ <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20221124085436.24900-1-jiaxin.yu@mediatek.com> <20221124085436.24900-3-jiaxin.yu@mediatek.com>
-In-Reply-To: <20221124085436.24900-3-jiaxin.yu@mediatek.com>
-From: Robert Foss <robert.foss@linaro.org>
-Date: Tue, 29 Nov 2022 18:03:26 +0100
-Message-ID: <CAG3jFyvLAHfxtKVoFFUOwUacO+t+FC3x5J9Eg-qWOUVBnU8JfQ@mail.gmail.com>
-Subject: Re: [PATCH 2/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: broonie@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org, 
-	Laurent.pinchart@ideasonboard.com, kuninori.morimoto.gx@renesas.com, 
-	angelogioacchino.delregno@collabora.com, nfraprado@collabora.com, 
-	chunxu.li@mediatek.com, ajye_huang@compal.corp-partner.google.com, 
-	allen-kh.cheng@mediatek.com, dri-devel@lists.freedesktop.org, 
-	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qzMUDJamuQN8FqwP"
+Content-Disposition: inline
+In-Reply-To: <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
+X-Cookie: An apple a day makes 365 apples a year.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221129_090337_958190_F9794F9D 
-X-CRM114-Status: GOOD (  24.17  )
+X-CRM114-CacheID: sfid-20221129_092213_509237_42ECD8A4 
+X-CRM114-Status: GOOD (  27.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,115 +89,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Nov 2022 at 09:54, Jiaxin Yu <jiaxin.yu@mediatek.com> wrote:
->
-> If the speaker and hdmi are connect to the same port of I2S,
-> when try to switch to speaker playback, we will find that hdmi
-> is always turned on automatically. The way of switching is
-> through SOC_DAPM_PIN_SWITCH, however, such events can not be
-> handled in hdmi-codec driver.
->
-> So add event handler for hdmi TX to solve the above issue.
->
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> ---
->  include/sound/hdmi-codec.h    |  6 ++++++
->  sound/soc/codecs/hdmi-codec.c | 37 +++++++++++++++++++++++++++++++----
->  2 files changed, 39 insertions(+), 4 deletions(-)
->
-> diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
-> index 48ad33aba393..dcbc09254144 100644
-> --- a/include/sound/hdmi-codec.h
-> +++ b/include/sound/hdmi-codec.h
-> @@ -81,6 +81,12 @@ struct hdmi_codec_ops {
->                        struct hdmi_codec_daifmt *fmt,
->                        struct hdmi_codec_params *hparms);
->
-> +       /*
-> +        * PCM trigger callback.
-> +        * Mandatory
-> +        */
-> +       int (*trigger)(struct device *dev, int cmd);
-> +
->         /*
->          * Shuts down the audio stream.
->          * Mandatory
-> diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-> index 0b1cdb2d6049..cb4479372e09 100644
-> --- a/sound/soc/codecs/hdmi-codec.c
-> +++ b/sound/soc/codecs/hdmi-codec.c
-> @@ -276,7 +276,31 @@ struct hdmi_codec_priv {
->         u8 iec_status[AES_IEC958_STATUS_SIZE];
->  };
->
-> +static int hdmi_tx_event(struct snd_soc_dapm_widget *w,
-> +               struct snd_kcontrol *kcontrol, int event)
 
-checkpatch --strict caught this alignment issue.
+--qzMUDJamuQN8FqwP
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-ASoC: hdmi-codec: Add event handler for hdmi TX
--:44: CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
-#44: FILE: sound/soc/codecs/hdmi-codec.c:280:
-+static int hdmi_tx_event(struct snd_soc_dapm_widget *w,
-+        struct snd_kcontrol *kcontrol, int event)
+On Mon, Nov 28, 2022 at 03:07:22PM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=E9=
+=91=AB) wrote:
+> On Fri, 2022-11-25 at 12:18 +0000, Mark Brown wrote:
+> > On Fri, Nov 25, 2022 at 05:44:11PM +0800, Jiaxin Yu wrote:
 
+> > I'm a little unclear why this is being implemented as a DAPM
+> > operation
+> > rather than having the driver forward the PCM trigger op if it's
+> > needed?
+> > Or alternatively if a DAPM callback is needed why not provide one
+> > directly rather than hooking into the trigger function - that's going
+> > to
+> > be called out of sequence with the rest of DAPM and be potentially
+> > confusing given the very different environments that trigger and DAPM
+> > operations run in.  A quick glance at the it6505 driver suggests it'd
+> > be
+> > happier with a DAPM callback.
 
+> Let me describe the hardware connection about mt8186 with it6505(hdmi)
+> and rt1015p(speakers).
 
-> +{
-> +       struct snd_soc_component *component = snd_soc_dapm_to_component(w->dapm);
-> +       struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
-> +
-> +       switch (event) {
-> +       case SND_SOC_DAPM_PRE_PMU:
-> +               if (hcp->hcd.ops->trigger)
-> +                       hcp->hcd.ops->trigger(component->dev->parent, SNDRV_PCM_TRIGGER_START);
-> +               break;
-> +       case SND_SOC_DAPM_POST_PMD:
-> +               if (hcp->hcd.ops->trigger)
-> +                       hcp->hcd.ops->trigger(component->dev->parent, SNDRV_PCM_TRIGGER_STOP);
-> +               break;
-> +       default:
-> +               break;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  static const struct snd_soc_dapm_widget hdmi_widgets[] = {
-> +       SND_SOC_DAPM_OUT_DRV_E("SDB", SND_SOC_NOPM, 0, 0, NULL, 0, hdmi_tx_event,
-> +                              SND_SOC_DAPM_POST_PMD | SND_SOC_DAPM_PRE_PMU),
->         SND_SOC_DAPM_OUTPUT("TX"),
->         SND_SOC_DAPM_OUTPUT("RX"),
->  };
-> @@ -808,18 +832,23 @@ static int hdmi_dai_probe(struct snd_soc_dai *dai)
->         struct hdmi_codec_daifmt *daifmt;
->         struct snd_soc_dapm_route route[] = {
->                 {
-> -                       .sink = "TX",
-> +                       .sink = dai->driver->capture.stream_name,
-> +                       .source = "RX",
-> +               },
-> +               {
-> +                       .sink = "SDB",
->                         .source = dai->driver->playback.stream_name,
->                 },
->                 {
-> -                       .sink = dai->driver->capture.stream_name,
-> -                       .source = "RX",
-> +                       .sink = "TX",
-> +                       .source = "SDB",
->                 },
-> +
->         };
->         int ret;
->
->         dapm = snd_soc_component_get_dapm(dai->component);
-> -       ret = snd_soc_dapm_add_routes(dapm, route, 2);
-> +       ret = snd_soc_dapm_add_routes(dapm, route, ARRAY_SIZE(route));
->         if (ret)
->                 return ret;
->
-> --
-> 2.18.0
->
+>                        =3D=3D>it6505=20
+>                      =3D=20
+> DL1(FE) =3D=3D>I2S3(BE) =3D
+>                      =3D
+>                        =3D=3D>rt1015p
+
+> They shared the same one i2s port, but we'd like to control them
+> separately. So if hdmi-codec use the PCM trigger op, whne we turn on
+> the speaker, hdmi-codec's PCM trigger op is also executed, resulting in
+> sound on both devices.
+> Is there another way to control them separately? Thank you.
+
+If you just need power control for one or both devices then the machine
+driver can add a _PIN_SWITCH() on the output of the device, that'll
+cause DAPM to keep the device powered down when not in use.  That should
+work well with the suggestion to provide a DAPM callback instead of a a
+trigger operation.
+
+--qzMUDJamuQN8FqwP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmOGP7wACgkQJNaLcl1U
+h9DZ8gf+PisMggrT6FuPtNTRpRKtS7VgpBbYiJRYI4/X3DFs3Vlj30D150dJWC/g
+WqIhVaoDn6R5wsvhGw9YmtJKNT/A2SKeoUGksnstpvkd9KXkCeaKgfiFL877s9mK
++YHxZOH6Eb/w5XFAEo+3TEr+LEDj6ooKflpE/DEXs1rfcVPr0wwVdLoXp1I7b6jw
+jQkRxRPfPSaszug+TYwzb6aXlXl2iAerXKo8pSkjSYI/GbLSEUb7Od/tCgoIXOmz
+hP2ksKt/u+NNptKSgXMv6ZMDTyRcioBZPUZgDhBrOWQ6hwxEDD9XioMA/6tSRqtE
+zRqubSrRrmnLXC2AeI1DJ0NKBo1gjQ==
+=qgcp
+-----END PGP SIGNATURE-----
+
+--qzMUDJamuQN8FqwP--
 
