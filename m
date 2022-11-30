@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A05AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 14:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD2CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 14:51:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a7VdVRgP9VHgi7HsQG70wephacfbNkhpd/gsmgXbQ/o=; b=c0WHDxFp6dC3l6Tx++LPitUnUA
-	NcESF9oesBPlCyoNT6fZ0wKjNIIB5abf5ISEi6YX8/6Egvc66c+xbhzGHkxjKswgRMDBzguulHX+C
-	34461zgBX0xLALLrUwGxanhjkm180Pk4SoDqjB0RNFkOuVxfz11SEcS3+wnjQrv732dAXW4R0N86k
-	ryB0yj7Uv5nY4o+AnFxMikWSrK6voxGzVMqzOendkfWJ9/DV1OJSy4mEdFRCERSt/1LK2NUCiLCsb
-	/bQONnn7LybRf458EuR/CZFx+JIXKxTXTIvvrBOf/ZwVyZjCtgkgYZJzmlWye2gc0tKOS20T75IM7
-	yCesH/aA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rbewHNiIDPrh2vDJAS18QQyUgoqR1U2XFbW+RCOiyVY=; b=qiyURx1s+ompX8
+	ogEdymiIbrOscT7+swwwFIB1fzYTBtI3oqqYhjiUj/KFdFU2qLpqZ4xJvIFLqN4CQDZhqatK4BASM
+	GDFiNsvYc/Ukzq/QE2lclQOs50rhjn8jGUJpiEbRdGaZqUQGelF6rAX1XlROJ1G7sFUe4J7dQdij8
+	N9caWGWnU6lFRCFluJ9Gs1QLERomSZ/RfL1TgMwpfOpBZnjpg60AkOWZs4n86FdYmUskT1eC3QV6q
+	gRtEhr/fJWoEQv29nYRwu3iCQm9GTzrkfUaWcwL+CWg+AgGfcQ9plUFb5LJaun4QbiRL6+T67REzk
+	3zHSFumeLGQqiX2UilqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OMK-00H2tD-Cb; Wed, 30 Nov 2022 14:46:48 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1p0OQs-00H5Nt-KY; Wed, 30 Nov 2022 14:51:30 +0000
+Received: from mail-qv1-f46.google.com ([209.85.219.46])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OMH-00H2qs-NF
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 14:46:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8791061C31;
-	Wed, 30 Nov 2022 14:46:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F324C433D6;
-	Wed, 30 Nov 2022 14:46:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669819601;
-	bh=YVchIPb+wlDzlDK920Vs4DKwioM3oS1YihgCiriHvzU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RQ1iULdoEhZOi07uGkG7h6xg4lNrKADKjoRlYhmO+6Jvw55SVfLEwyUiNqVILfid7
-	 fC3Emr52JAvDKTxypUhovKJLTGOVHRobU3D3xyrq5BKxQAIQWiwXPGPoXXiEZsUs32
-	 cfDW+dInt7VaMk6aVBM15nWaAWCacgbtYleca69AF4VEl+tlvjYYgHXAVyZDnEoWwT
-	 y9+3UAQexlx7ovJejTMmUp1FEsIA2FWqXbW6pRcrqryzUyAmWHSAPe3TWzaaOpq4GI
-	 onYlRQorqRWOqwkeQXXckR2lUHoSXL4Wz5zFn4s1zfXFhMLMYbif/Amn2YSwl9Gv4r
-	 dOrudNanIRLTg==
-Date: Wed, 30 Nov 2022 15:46:38 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] wifi: mt76: mt7921s: fix slab-out-of-bounds access in
- sdio host
-Message-ID: <Y4dsznJ+GBalfzvx@lore-desk>
-References: <631e6a06fb640ec4f81c92b57d31eb0f7b23c351.1669814212.git.deren.wu@mediatek.com>
+	id 1p0OQp-00H5K9-1k; Wed, 30 Nov 2022 14:51:28 +0000
+Received: by mail-qv1-f46.google.com with SMTP id e18so10717928qvs.1;
+        Wed, 30 Nov 2022 06:51:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rbewHNiIDPrh2vDJAS18QQyUgoqR1U2XFbW+RCOiyVY=;
+        b=bx5mQUAq01GPNrPkPC0BGz4gSQtCGcPvwJOFihbcmNyzsmT450IJLUdJNmUDAx04+V
+         G+7wS1bUGCMbNd7JIWLjHFFyHXjxK1fO9393/2rNx5MH3k+gPLPKBGgFiuvG1fOkXdoG
+         sALE5a99Gdk7jDfUmwiXNCOD1bOoxnZGJQOpWDaNKx9DI3bXHt7GAElbuLgyptmaRVSr
+         F5RE1vtUbY5hkOzzIH+4+077doHKB++XClo2PyTcNEVUw5gKHmCrOI6sVTJFoG79bpKm
+         4kEh2gDS6Ms5uvQacx4WRjGIwVrLjMic6VmAHBw5gR6XDU2o2tvipTJ5Jdv33D+EH+SW
+         7I3Q==
+X-Gm-Message-State: ANoB5plc1XR+JoLqSh1jVh2KZiI2Q2tpn1edojA0IJsizTGYjiRv6blg
+	ZHFlMxORJyol+F+FopUQYJyGB7Yd7kyFGw==
+X-Google-Smtp-Source: AA0mqf7pFM4RRZ1uqEBGDtiBdz0B3ovwyH3NMQJdPKfWAcv0pQz5OUd1mrKuJy0Uz234y/oiP1jWZA==
+X-Received: by 2002:a0c:d646:0:b0:4b1:d133:a4a8 with SMTP id e6-20020a0cd646000000b004b1d133a4a8mr40036136qvj.130.1669819885342;
+        Wed, 30 Nov 2022 06:51:25 -0800 (PST)
+Received: from mail-yb1-f173.google.com (mail-yb1-f173.google.com. [209.85.219.173])
+        by smtp.gmail.com with ESMTPSA id s12-20020a05620a0bcc00b006ee7e223bb8sm1330541qki.39.2022.11.30.06.51.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Nov 2022 06:51:24 -0800 (PST)
+Received: by mail-yb1-f173.google.com with SMTP id v206so5121219ybv.7;
+        Wed, 30 Nov 2022 06:51:23 -0800 (PST)
+X-Received: by 2002:a81:f80f:0:b0:38e:e541:d8ca with SMTP id
+ z15-20020a81f80f000000b0038ee541d8camr55824371ywm.283.1669819872327; Wed, 30
+ Nov 2022 06:51:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5xJ5KHOAxWbSzZPZ"
-Content-Disposition: inline
-In-Reply-To: <631e6a06fb640ec4f81c92b57d31eb0f7b23c351.1669814212.git.deren.wu@mediatek.com>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com> <20221130141040.32447-3-arinc.unal@arinc9.com>
+In-Reply-To: <20221130141040.32447-3-arinc.unal@arinc9.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 30 Nov 2022 15:51:00 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdVBZiWxORfb2hd0hn_En6yFEwm8uJXr553YfB8gv1sOFw@mail.gmail.com>
+Message-ID: <CAMuHMdVBZiWxORfb2hd0hn_En6yFEwm8uJXr553YfB8gv1sOFw@mail.gmail.com>
+Subject: Re: [PATCH 2/5] arm: dts: remove label = "cpu" from DSA dt-binding
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_064645_904423_522E7CA9 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20221130_065127_117480_A3D7FC16 
+X-CRM114-Status: GOOD (  19.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,127 +77,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Tim Harvey <tharvey@gateworks.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, Peng Fan <peng.fan@nxp.com>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Ray Jui <rjui@broadcom.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, linuxppc-dev@lists.ozlabs.org, Nicholas Piggin <npiggin@gmail.com>, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, "David S. Miller" <davem@davemloft.net>, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Riesch <michael.riesch@wolfvision.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+CC cleger
 
---5xJ5KHOAxWbSzZPZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Wed, Nov 30, 2022 at 3:33 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc=
+9.com> wrote:
+> This is not used by the DSA dt-binding, so remove it from all devicetrees=
+.
+>
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 
-> SDIO may need addtional 512 bytes to align bus operation. If the tailroom
-> of this skb is not big enough, we would access invalid memory region.
-> For low level operation, take xmit_buf instead of skb to keep valid memory
-> access in SDIO.
-> Note: xmit_buf is big enough for single skb size
->=20
-> Error message:
-> [69.951] BUG: KASAN: slab-out-of-bounds in sg_copy_buffer+0xe9/0x1a0
-> [69.951] Read of size 64 at addr ffff88811c9cf000 by task kworker/u16:7/4=
-51
-> [69.951] CPU: 4 PID: 451 Comm: kworker/u16:7 Tainted: G W  OE  6.1.0-rc5 =
-#1
-> [69.951] Workqueue: kvub300c vub300_cmndwork_thread [vub300]
-> [69.951] Call Trace:
-> [69.951]  <TASK>
-> [69.952]  dump_stack_lvl+0x49/0x63
-> [69.952]  print_report+0x171/0x4a8
-> [69.952]  kasan_report+0xb4/0x130
-> [69.952]  kasan_check_range+0x149/0x1e0
-> [69.952]  memcpy+0x24/0x70
-> [69.952]  sg_copy_buffer+0xe9/0x1a0
-> [69.952]  sg_copy_to_buffer+0x12/0x20
-> [69.952]  __command_write_data.isra.0+0x23c/0xbf0 [vub300]
-> [69.952]  vub300_cmndwork_thread+0x17f3/0x58b0 [vub300]
-> [69.952]  process_one_work+0x7ee/0x1320
-> [69.952]  worker_thread+0x53c/0x1240
-> [69.952]  kthread+0x2b8/0x370
-> [69.952]  ret_from_fork+0x1f/0x30
-> [69.952]  </TASK>
->=20
-> [69.952] Allocated by task 854:
-> [69.952]  kasan_save_stack+0x26/0x50
-> [69.952]  kasan_set_track+0x25/0x30
-> [69.952]  kasan_save_alloc_info+0x1b/0x30
-> [69.952]  __kasan_kmalloc+0x87/0xa0
-> [69.952]  __kmalloc_node_track_caller+0x63/0x150
-> [69.952]  kmalloc_reserve+0x31/0xd0
-> [69.952]  __alloc_skb+0xfc/0x2b0
-> [69.952]  __mt76_mcu_msg_alloc+0xbf/0x230 [mt76]
-> [69.952]  mt76_mcu_send_and_get_msg+0xab/0x110 [mt76]
-> [69.952]  __mt76_mcu_send_firmware.cold+0x94/0x15d [mt76]
-> [69.952]  mt76_connac_mcu_send_ram_firmware+0x415/0x54d [mt76_connac_lib]
-> [69.952]  mt76_connac2_load_ram.cold+0x118/0x4bc [mt76_connac_lib]
-> [69.952]  mt7921_run_firmware.cold+0x2e9/0x405 [mt7921_common]
-> [69.952]  mt7921s_mcu_init+0x45/0x80 [mt7921s]
-> [69.953]  mt7921_init_work+0xe1/0x2a0 [mt7921_common]
-> [69.953]  process_one_work+0x7ee/0x1320
-> [69.953]  worker_thread+0x53c/0x1240
-> [69.953]  kthread+0x2b8/0x370
-> [69.953]  ret_from_fork+0x1f/0x30
-> [69.953] The buggy address belongs to the object at ffff88811c9ce800
->              which belongs to the cache kmalloc-2k of size 2048
-> [69.953] The buggy address is located 0 bytes to the right of
->              2048-byte region [ffff88811c9ce800, ffff88811c9cf000)
->=20
-> [69.953] Memory state around the buggy address:
-> [69.953]  ffff88811c9cef00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 =
-00
-> [69.953]  ffff88811c9cef80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 =
-00
-> [69.953] >ffff88811c9cf000: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc =
-fc
-> [69.953]                    ^
-> [69.953]  ffff88811c9cf080: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc =
-fc
-> [69.953]  ffff88811c9cf100: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc =
-fc
->=20
-> Fixes: 764dee47e2c1 ("mt76: sdio: move common code in mt76_sdio module")
-> Tested-by: YN Chen <YN.Chen@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/sdio_txrx.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net=
-/wireless/mediatek/mt76/sdio_txrx.c
-> index bfc4de50a4d2..ebea5c4e8da5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> @@ -254,7 +254,8 @@ static int mt76s_tx_run_queue(struct mt76_dev *dev, s=
-truct mt76_queue *q)
-> =20
->  		if (!test_bit(MT76_STATE_MCU_RUNNING, &dev->phy.state)) {
->  			__skb_put_zero(e->skb, 4);
-> -			err =3D __mt76s_xmit_queue(dev, e->skb->data,
-> +			memcpy(sdio->xmit_buf, e->skb->data, e->skb->len);
+>  arch/arm/boot/dts/r9a06g032.dtsi                          | 1 -
 
-(even if it is not critical for performance) iirc the skb from the mcu is
-always linear, I guess we can use __skb_grow() instead. What do you think?
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-Regards,
-Lorenzo
+> --- a/arch/arm/boot/dts/r9a06g032.dtsi
+> +++ b/arch/arm/boot/dts/r9a06g032.dtsi
+> @@ -401,7 +401,6 @@ switch_port3: port@3 {
+>                                 switch_port4: port@4 {
+>                                         reg =3D <4>;
+>                                         ethernet =3D <&gmac2>;
+> -                                       label =3D "cpu";
+>                                         phy-mode =3D "internal";
+>                                         status =3D "disabled";
+>                                         fixed-link {
 
-> +			err =3D __mt76s_xmit_queue(dev, sdio->xmit_buf,
->  						 e->skb->len);
->  			if (err)
->  				return err;
-> --=20
-> 2.18.0
->=20
+Gr{oetje,eeting}s,
 
---5xJ5KHOAxWbSzZPZ
-Content-Type: application/pgp-signature; name="signature.asc"
+                        Geert
 
------BEGIN PGP SIGNATURE-----
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY4dszgAKCRA6cBh0uS2t
-rAgTAPwMIJ9KUCyWclUFy5IDZIpNv5DeKfZeKOYQaRjRj6mtWAEAjPCYaotcj+uz
-bP2qte9vjlIvKenXO0LYTwhIpkYc8AQ=
-=ffuc
------END PGP SIGNATURE-----
-
---5xJ5KHOAxWbSzZPZ--
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
