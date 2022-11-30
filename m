@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D88C352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 10:08:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E09FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 10:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O/MyJQGQxAWUPqzsdi5YUvB8LKAaC8Kalic7LvLGuok=; b=4Hdr1UzouYPmSUj2EygllFYGNT
-	+eEMnfhBGR8yHVCf32hxjX7CF6YRXkNa70sqioT3KuUb5hljnzudXYtpZbULXA+m6mlbhL+RFLKj/
-	43L2RpYFS7uW9WCt8ZmtV2yCUrOzKcPBZvBv0nWfdBecSoXsoqNf28LMpksSK6E/Hi1bp4SMvMOvT
-	GgdxK5bXJfgKKbq9NNWsPlBnprxwAIXQf2YPDt2osyxzCVKdM6r/UXe7o6VL5ZGrGocPevJhlD0eV
-	tnVNlG4nXVHJy4c4d1Acr+qfpIMi0cnAGvxil4FQX4usKUkY+FjGbQvNkWl0wX3sD6vkc9l29s21z
-	g1TJOcGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ehOioe6XBZuoxzLfxLeRVX6uIAYjarPS7/ok+wFzxCM=; b=k9kW5CivS5O6QlRK2mRNFLXsVl
+	XpT9eMHvNW/xNi8fQ7PtXSjtaRtA4XvsoRZkUQU0TnHW9uoQ6jFrSLEEKdUH+KpqZlCUvG0r8D860
+	HcKwQEsndTrWETyKWvc6tJ2DSKBL1u+e5lJLUMdLEHLO1imr2oJXycYPCL43ICSTYWdlNY7fR8TmU
+	GYN8n+9nunh69qoNPPlzYpFWBU9cdjbkdGLFpjn3WpGUmbmthIMGX9jOZ0wc8EqZU4KhRiJc5sGhp
+	9oJB61eJi9j6+oAZog3E0Sr3Dj/Ov5BnoZlMaPA4oiDUTPZ/KiQwj2v7xxjNgpv5NVnXFSTAcRT/D
+	ptOe1cnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0K1D-00FLMk-SS; Wed, 30 Nov 2022 10:08:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p0K9s-00FPIu-Ps; Wed, 30 Nov 2022 10:17:40 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0K0n-00FLCd-PS; Wed, 30 Nov 2022 10:08:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9F4FB619E9;
-	Wed, 30 Nov 2022 10:08:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7617C433D7;
-	Wed, 30 Nov 2022 10:08:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669802896;
-	bh=9FvSvVLzySD8LbTfnoYpcK38CCZwnNYjsIckhInqktQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P0Yd5YZnMurOBSMnc+1boBGbX7+HW/x6DAtfPeXD3vOX+NZu9c/rTJbwa3nYtQfC1
-	 5jh51yyT0/rdJ4UyhXfKtJHzmPV9i89AaDWJnydAV4vGaKLbcY0Y5LlPeXTqt9cqvP
-	 jFQownQSEWgOAUhX3swf4M67FWa8XssUy2yhee7Z2hpva2KCXq/6vWJSqS59m1nf3W
-	 Dze7SR7/FcFULDdvElVuJkbbbgDokuz4ek9aJFqaI2NpZ/nXNu7gNbWqdh2W2b+6AS
-	 2nDwZOiWdgh8LV5V5V48cKLdEvX2/0sglK4kNObcAoltdrMboWzfzMN0uXeG2yndoH
-	 POpULBl8lpocA==
-Date: Wed, 30 Nov 2022 10:08:07 +0000
-From: Lee Jones <lee@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Fabien Parent <fabien.parent@linaro.org>,
-	Tianping Fang <tianping.fang@mediatek.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Pavel Machek <pavel@ucw.cz>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>,
-	linux-rtc@vger.kernel.org, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Fabien Parent <fparent@baylibre.com>, linux-leds@vger.kernel.org
-Subject: Re: [PATCH v7 4/8] dt-bindings: mfd: mediatek: Add bindings for
- MT6357 PMIC
-Message-ID: <Y4crh0Ob3sz20s5T@google.com>
-References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
- <20221005-mt6357-support-v7-4-477e60126749@baylibre.com>
+	id 1p0K9q-00FPGd-5C
+	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 10:17:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1669803458; x=1701339458;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=bByuVskl/8XPlxn6hYxVCcRye/G/AXccEKig7foijVg=;
+  b=bAuQCT8LV7UIkBVMojYshr75SD/hO5hCw8znbvKkQrJIxmUJ/bVso7Tr
+   Jo04IohLO0OHc7Mrmrnf0SgLpgEBLlbnUZGKLLUMkIQ8moJaTm6XmAxtL
+   MNXB9xXNCKGS9ZCFIhb8F8K8xe1VX2C4AAKDKiEMQBEwv9tkmgWpH4zO1
+   yxRxLqQcomPIb3sGbGuPeNY0Zw0yLfZru/aS6RgD+yXdLJDzC92Utb1EB
+   D3tPg0kIbSfN/r1kyLxBdlET23+nUHSstKknJWGReorY570Ab01Q3h4mJ
+   ELJCWoHUMEsom9iu1DKw21aRQADToMWPHL+Yz6vY7khANt5Eeu5BZpg5A
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10546"; a="401639917"
+X-IronPort-AV: E=Sophos;i="5.96,206,1665471600"; 
+   d="scan'208";a="401639917"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2022 02:17:13 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10546"; a="594612031"
+X-IronPort-AV: E=Sophos;i="5.96,206,1665471600"; 
+   d="scan'208";a="594612031"
+Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.53.75])
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2022 02:17:08 -0800
+Message-ID: <98bfafd3-c7b7-89b5-497a-aa694d0152dd@intel.com>
+Date: Wed, 30 Nov 2022 12:17:04 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221005-mt6357-support-v7-4-477e60126749@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.5.0
+Subject: Re: [PATCH v1] ufs: core: wlun suspend SSU fail recovery
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20221101142410.31463-1-peter.wang@mediatek.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <20221101142410.31463-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_020817_952764_9685F203 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20221130_021738_256568_E7825D2B 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,146 +87,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 29 Nov 2022, Alexandre Mergnat wrote:
-
-> Currently, almost all MT63XX PMIC are documented mfd/mt6397.txt.
-> Unfortunately, the PMICs haven't always similar HW sub-features.
-> To have a better human readable schema, I chose to make one PMIC schema
-> to match the exact HW capabilities instead of convert mt6397.txt to
-> mediatek,mt63xx.yaml and put a bunch of properties behind
-> "if contain ... then ..."
+On 1/11/22 16:24, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
 > 
-> - add interrupt property
-> - change property refs to match with new yaml documentation
+> When SSU fail in wlun suspend flow, trigger error handlder and
+
+handlder -> handler
+
+Why / how does SSU fail?
+
+> return busy to break the suspend.
+> If not, wlun runtime pm status become error and the consumer will
+> stuck in runtime suspend status.
 > 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-
-Acked-by: Lee Jones <lee@kernel.org>
-
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 > ---
->  .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 111 +++++++++++++++++++++
->  1 file changed, 111 insertions(+)
+>  drivers/ufs/core/ufshcd.c | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> new file mode 100644
-> index 000000000000..837a77013d57
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> @@ -0,0 +1,111 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6357 PMIC
-> +
-> +maintainers:
-> +  - Flora Fu <flora.fu@mediatek.com>
-> +  - Alexandre Mergnat <amergnat@baylibre.com>
-> +
-> +description: |
-> +  MT6357 is a power management system chip containing 5 buck
-> +  converters and 29 LDOs. Supported features are audio codec,
-> +  USB battery charging, fuel gauge, RTC
-> +
-> +  This is a multifunction device with the following sub modules:
-> +  - Regulator
-> +  - RTC
-> +  - Keys
-> +
-> +  It is interfaced to host controller using SPI interface by a proprietary hardware
-> +  called PMIC wrapper or pwrap. This MFD is a child device of pwrap.
-> +  See the following for pwrap node definitions:
-> +  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6357
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  "#interrupt-cells":
-> +    const: 2
-> +
-> +  regulators:
-> +    type: object
-> +    $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
-> +    description:
-> +      List of MT6357 BUCKs and LDOs regulators.
-> +
-> +  rtc:
-> +    type: object
-> +    $ref: /schemas/rtc/rtc.yaml#
-> +    description:
-> +      MT6357 Real Time Clock.
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mt6357-rtc
-> +      start-year: true
-> +    required:
-> +      - compatible
-> +
-> +  keys:
-> +    type: object
-> +    $ref: /schemas/input/mediatek,pmic-keys.yaml
-> +    description:
-> +      MT6357 power and home keys.
-> +
-> +required:
-> +  - compatible
-> +  - regulators
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    pwrap {
-> +        pmic {
-> +            compatible = "mediatek,mt6357";
-> +
-> +            interrupt-parent = <&pio>;
-> +            interrupts = <145 IRQ_TYPE_LEVEL_HIGH>;
-> +            interrupt-controller;
-> +            #interrupt-cells = <2>;
-> +
-> +            regulators {
-> +                mt6357_vproc_reg: buck-vproc {
-> +                    regulator-name = "vproc";
-> +                    regulator-min-microvolt = <518750>;
-> +                    regulator-max-microvolt = <1312500>;
-> +                    regulator-ramp-delay = <6250>;
-> +                    regulator-enable-ramp-delay = <220>;
-> +                    regulator-always-on;
-> +                };
-> +
-> +                // ...
-> +
-> +                mt6357_vusb33_reg: ldo-vusb33 {
-> +                    regulator-name = "vusb33";
-> +                    regulator-min-microvolt = <3000000>;
-> +                    regulator-max-microvolt = <3100000>;
-> +                    regulator-enable-ramp-delay = <264>;
-> +                };
-> +            };
-> +
-> +            rtc {
-> +                compatible = "mediatek,mt6357-rtc";
-> +            };
-> +
-> +            keys {
-> +                compatible = "mediatek,mt6357-keys";
-> +            };
-> +        };
-> +    };
-> 
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index b1f59a5fe632..2f2d3d5d8684 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -8970,6 +8970,7 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  	enum ufs_pm_level pm_lvl;
+>  	enum ufs_dev_pwr_mode req_dev_pwr_mode;
+>  	enum uic_link_state req_link_state;
+> +	unsigned long flags;
+>  
+>  	hba->pm_op_in_progress = true;
+>  	if (pm_op != UFS_SHUTDOWN_PM) {
+> @@ -9049,8 +9050,21 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  
+>  		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+>  			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+> -			if (ret)
+> +			if (ret) {
+> +				/*
+> +				 * If retrun err in suspend flow, IO will hang.
 
--- 
-Lee Jones [李琼斯]
+retrun -> return
+
+> +				 * Trigger error handler and break suspend for
+> +				 * error recovery.
+> +				 */
+> +				spin_lock_irqsave(hba->host->host_lock, flags);
+> +				hba->force_reset = true;
+> +				ufshcd_schedule_eh_work(hba);
+
+__ufshcd_wl_suspend() is also used for shutdown and poweroff
+where scheduling EH is not appropriate.
+
+> +				spin_unlock_irqrestore(hba->host->host_lock,
+> +					flags);
+> +
+> +				ret = -EBUSY;
+>  				goto enable_scaling;
+> +			}
+>  		}
+>  	}
+>  
+
 
