@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935F7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 14:14:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A388EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 14:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QF5pLbXUIUVP28HpDZnKqlToc38teR4R32c+jesH+QM=; b=vIDsiF20+QY5mGwmRvCdJ4Naft
-	P7/BCy2whbgaxfb/IcR/FeLl5vY/kySkEgpPgeAlDAlGuqE6MgjLq22UY34qNiP+8AZR2HYfZj57b
-	Myl+j+2RTT26rzAZKrkfsjo5N7W+oJvYbhqUpc9JplNpGt75ColjOlvVCvej+Qgh+KOpZh+MRQRgO
-	H73tKbZ34j+trmE2LNUC8lyJj9d74QCnGWJbXtPEhAAt7m7vUFLQKTaSIiQ/TBG86RzXDdPzmCCid
-	7Ty79lTpqugqgv7UHSpkIAeieGIIJxbGj9nvHcjoh1uKHKAWb52HrJA0ByyUhv2wkQ85pe6U7biPv
-	bQP9QkLw==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2B4sSRKM9H708KgEDwj/zzkG1j8ieB57hrBlaL/4VHg=; b=2qpO/NBz03QvfzvE867apaMvgF
+	MiYqNxiHlZFlr3bl8r4JA4pL0Q07ZFryD6aaAXpa01ucyrtwQlHNeA2AeA6+HavwwLMaGYgybp4Ea
+	D7l3SnAs3LU4i1iH6Z3gh8/KDSHLcaE7t21F0CZL6iraiStmNLgG3662QvkIaAB1at/NHabZz7LOm
+	cQn8KB2fiwzH43tw9dYxE0SON5i13TLjFcmzbpwYTZv2T3gajsfHCNN3iMyZQbaL5q5MMw1yUu/ZJ
+	hmtpw/dNzmhAlgpsDisqjYH+u7pxdTja7FdNKa4Ie4Y9b4w+SIH9hrdvPL7GmVlXamsCqwRhP+9fw
+	IBl/eSNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Nr5-00GmTs-QY; Wed, 30 Nov 2022 14:14:31 +0000
+	id 1p0NrH-00Gmaq-KI; Wed, 30 Nov 2022 14:14:43 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Nqy-00GmMc-1u; Wed, 30 Nov 2022 14:14:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1669817506; cv=none; 
+	id 1p0Nqx-00GmMS-Jm; Wed, 30 Nov 2022 14:14:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669817552; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=MBcgFbrxBMjCUsYG5JPRrKKOle/H+6CLvHLsKhUx7pGZLSo7InNJY1XoZh2orec8LiN/fuMmkzcItQOuWc/Oggq4K+ooy2GsQTgCZopz0ITgJ7F4AJjYcXkOgFtZGIDyF/Tn6FBiWEp7A4+dyD+Hdg3v0fIBLNLvbvcpb9fPBq8=
+	b=dRQSRbWBpNAmHYqKHn9SeS2Jmo1Q3++qOHfmAu+Mz4Gxdlw7lOW6DAtGWKnry9tOK6f0p9FkzsmDwZ52KlGsmSH26rEq4vA5+0NTfEJ4HhiSVP+S8YV+pHDM3xyJza09rtXhBfowydmwVgmaaTKMQoFyrDujaucBJ+6117+Rd04=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1669817506; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
-	bh=QF5pLbXUIUVP28HpDZnKqlToc38teR4R32c+jesH+QM=; 
-	b=TUNQ8cHrgqns0eHBc3DfXD+rwLkdzqPFztq0Ens1q4Zt1GNyinG8t3QVugkQj7nYzeGT5iZRg3ZGY9NBCMcqf6mfCOBhZ5qZhBxo3uw9/X9o3OXvbuXEXBncGS8d0munLxduoEP5BKia9DYBqh3wBR+nZ9st98uToRtnBgFSTSY=
+	t=1669817552; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=2B4sSRKM9H708KgEDwj/zzkG1j8ieB57hrBlaL/4VHg=; 
+	b=fHzcyw/z207E0/sNkbvbnr5VH8CFGHNdweVfl7z4xFjTQzL2BJywJID5Zu9UkDfnpT4DzhEckg/rDMqkBfmfmHfiNxE2GzQxew8AqUFDwnL40RbnTIRJ/BTSj9RnOGz6+gCCsBaOBByzlNAX8onIugzm1uXmSfBVIjBwa+x/Waw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669817506;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669817552;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=QF5pLbXUIUVP28HpDZnKqlToc38teR4R32c+jesH+QM=;
-	b=HfKAf4+Fel3coxytPwxCdcvr10bO6It6KMz9XQGSx8zBhVPLMBNwvphkDbv4PRBH
-	46P1LoZCIUxZawUHkV429aO6CGMJEcZ9QLB02hIwx4g/Dp5bRfd5jX7+E5Rxcd0iWFW
-	XVs2bsC3ntk6QlmzoL111TFrzu1K8SiYvYhUQudo=
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=2B4sSRKM9H708KgEDwj/zzkG1j8ieB57hrBlaL/4VHg=;
+	b=H3Et7UoeAKtG+TrCYNYtAb9aCZOLhBjNNKd5oUqhhZcZz7ckSfTuanezuZ+qgRgx
+	KFe4Jj/qLLsk4yWRkmmeASCOpocjQghaP66ANrnWN3Cfz0U0ZdsEXQxSQJ0bO17w8HA
+	flva0QJzM+fZI9LUjCRbSpsdAikqv5gC3lGenfh0=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1669817503309623.081549759161; Wed, 30 Nov 2022 06:11:43 -0800 (PST)
+	with SMTPS id 1669817551034914.5728790085885; Wed, 30 Nov 2022 06:12:31 -0800 (PST)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Vladimir Oltean <vladimir.oltean@nxp.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
@@ -111,18 +111,19 @@ Cc: netdev@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-mips@vger.kernel.org,
 	linuxppc-dev@lists.ozlabs.org
-Subject: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
-Date: Wed, 30 Nov 2022 17:10:35 +0300
-Message-Id: <20221130141040.32447-1-arinc.unal@arinc9.com>
+Subject: [PATCH 3/5] arm64: dts: remove label = "cpu" from DSA dt-binding
+Date: Wed, 30 Nov 2022 17:10:38 +0300
+Message-Id: <20221130141040.32447-4-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20221130141040.32447-1-arinc.unal@arinc9.com>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_061424_296837_3E260469 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221130_061423_851453_388047A6 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,45 +138,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello folks,
+This is not used by the DSA dt-binding, so remove it from all devicetrees.
 
-With this patch series, we're completely getting rid of 'label = "cpu";'
-which is not used by the DSA dt-binding at all.
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ arch/arm64/boot/dts/freescale/imx8mm-venice-gw7901.dts     | 1 -
+ arch/arm64/boot/dts/freescale/imx8mp-venice-gw74xx.dts     | 1 -
+ arch/arm64/boot/dts/freescale/imx8mq-zii-ultra.dtsi        | 1 -
+ arch/arm64/boot/dts/marvell/armada-3720-espressobin.dtsi   | 1 -
+ arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts     | 2 --
+ arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts       | 1 -
+ arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts | 1 -
+ arch/arm64/boot/dts/marvell/cn9130-crb.dtsi                | 1 -
+ arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts   | 1 -
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts               | 1 -
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts               | 1 -
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts               | 1 -
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts         | 1 -
+ 13 files changed, 14 deletions(-)
 
-Information for taking the patches for maintainers:
-Patch 1: netdev maintainers (based off netdev/net-next.git main)
-Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
-Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
-Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
-
-I've been meaning to submit this for a few months. Find the relevant
-conversation here:
-https://lore.kernel.org/netdev/20220913155408.GA3802998-robh@kernel.org/
-
-Here's how I did it, for the interested (or suggestions):
-
-Find the platforms which have got 'label = "cpu";' defined.
-grep -rnw . -e 'label = "cpu";'
-
-Remove the line where 'label = "cpu";' is included.
-sed -i /'label = "cpu";'/,+d arch/arm/boot/dts/*
-sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/freescale/*
-sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/marvell/*
-sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/mediatek/*
-sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/rockchip/*
-sed -i /'label = "cpu";'/,+d arch/mips/boot/dts/qca/*
-sed -i /'label = "cpu";'/,+d arch/mips/boot/dts/ralink/*
-sed -i /'label = "cpu";'/,+d arch/powerpc/boot/dts/turris1x.dts
-sed -i /'label = "cpu";'/,+d Documentation/devicetree/bindings/net/qca,ar71xx.yaml
-
-Restore the symlink files which typechange after running sed.
-
-Arınç ÜNAL (5):
-  dt-bindings: net: qca,ar71xx: remove label = "cpu" from examples
-  arm: dts: remove label = "cpu" from DSA dt-binding
-  arm64: dts: remove label = "cpu" from DSA dt-binding
-  mips: dts: remove label = "cpu" from DSA dt-binding
-  powerpc: dts: remove label = "cpu" from DSA dt-binding
-
+diff --git a/arch/arm64/boot/dts/freescale/imx8mm-venice-gw7901.dts b/arch/arm64/boot/dts/freescale/imx8mm-venice-gw7901.dts
+index 750a1f07ecb7..2b1fd70acdec 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mm-venice-gw7901.dts
++++ b/arch/arm64/boot/dts/freescale/imx8mm-venice-gw7901.dts
+@@ -662,7 +662,6 @@ lan4: port@3 {
+ 
+ 			port@5 {
+ 				reg = <5>;
+-				label = "cpu";
+ 				ethernet = <&fec1>;
+ 				phy-mode = "rgmii-id";
+ 
+diff --git a/arch/arm64/boot/dts/freescale/imx8mp-venice-gw74xx.dts b/arch/arm64/boot/dts/freescale/imx8mp-venice-gw74xx.dts
+index ceeca4966fc5..7a70eb2d1275 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mp-venice-gw74xx.dts
++++ b/arch/arm64/boot/dts/freescale/imx8mp-venice-gw74xx.dts
+@@ -546,7 +546,6 @@ lan5: port@4 {
+ 
+ 			port@5 {
+ 				reg = <5>;
+-				label = "cpu";
+ 				ethernet = <&fec>;
+ 				phy-mode = "rgmii-id";
+ 
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq-zii-ultra.dtsi b/arch/arm64/boot/dts/freescale/imx8mq-zii-ultra.dtsi
+index 4e05120c62d4..efa895b2316d 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mq-zii-ultra.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq-zii-ultra.dtsi
+@@ -177,7 +177,6 @@ port@1 {
+ 
+ 				port@2 {
+ 					reg = <2>;
+-					label = "cpu";
+ 					ethernet = <&fec1>;
+ 
+ 					fixed-link {
+diff --git a/arch/arm64/boot/dts/marvell/armada-3720-espressobin.dtsi b/arch/arm64/boot/dts/marvell/armada-3720-espressobin.dtsi
+index 5fc613d24151..21e7fb64515c 100644
+--- a/arch/arm64/boot/dts/marvell/armada-3720-espressobin.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-3720-espressobin.dtsi
+@@ -159,7 +159,6 @@ ports {
+ 
+ 			switch0port0: port@0 {
+ 				reg = <0>;
+-				label = "cpu";
+ 				ethernet = <&eth0>;
+ 				phy-mode = "rgmii-id";
+ 				fixed-link {
+diff --git a/arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts b/arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
+index ada164d423f3..d8601b188cca 100644
+--- a/arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
++++ b/arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
+@@ -400,7 +400,6 @@ port@8 {
+ 
+ 			port@9 {
+ 				reg = <0x9>;
+-				label = "cpu";
+ 				ethernet = <&eth1>;
+ 				phy-mode = "2500base-x";
+ 				managed = "in-band-status";
+@@ -485,7 +484,6 @@ port@4 {
+ 
+ 			port@5 {
+ 				reg = <0x5>;
+-				label = "cpu";
+ 				phy-mode = "2500base-x";
+ 				managed = "in-band-status";
+ 				ethernet = <&eth1>;
+diff --git a/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts b/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
+index 7ca71f2d7afb..7c65c0772208 100644
+--- a/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
++++ b/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
+@@ -344,7 +344,6 @@ swport4: port@4 {
+ 
+ 			port@5 {
+ 				reg = <5>;
+-				label = "cpu";
+ 				ethernet = <&cp0_eth1>;
+ 				phy-mode = "2500base-x";
+ 				managed = "in-band-status";
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts b/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
+index 4125202028c8..60b11eeaeb9e 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
+@@ -534,7 +534,6 @@ port@4 {
+ 
+ 			port@5 {
+ 				reg = <5>;
+-				label = "cpu";
+ 				ethernet = <&cp1_eth2>;
+ 				phy-mode = "2500base-x";
+ 				managed = "in-band-status";
+diff --git a/arch/arm64/boot/dts/marvell/cn9130-crb.dtsi b/arch/arm64/boot/dts/marvell/cn9130-crb.dtsi
+index 8e4ec243fb8f..cc4b9daf52c6 100644
+--- a/arch/arm64/boot/dts/marvell/cn9130-crb.dtsi
++++ b/arch/arm64/boot/dts/marvell/cn9130-crb.dtsi
+@@ -282,7 +282,6 @@ port@9 {
+ 
+ 			port@a {
+ 				reg = <10>;
+-				label = "cpu";
+ 				ethernet = <&cp0_eth0>;
+ 			};
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index af3fe61e4093..42369ca3df8a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -183,7 +183,6 @@ port@4 {
+ 
+ 				port@6 {
+ 					reg = <6>;
+-					label = "cpu";
+ 					ethernet = <&gmac0>;
+ 					phy-mode = "2500base-x";
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index b74e774c6eba..f029198a63cd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -156,7 +156,6 @@ port@4 {
+ 
+ 				port@6 {
+ 					reg = <6>;
+-					label = "cpu";
+ 					ethernet = <&gmac0>;
+ 					phy-mode = "2500base-x";
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 9b83925893b7..1e98210959e1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -172,7 +172,6 @@ port@4 {
+ 
+ 		port@6 {
+ 			reg = <6>;
+-			label = "cpu";
+ 			ethernet = <&gmac0>;
+ 			phy-mode = "2500base-x";
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+index 243760cd3011..6e4f349e965a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -84,7 +84,6 @@ port@4 {
+ 
+ 				port@6 {
+ 					reg = <6>;
+-					label = "cpu";
+ 					ethernet = <&gmac0>;
+ 					phy-mode = "2500base-x";
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+index c282f6e79960..b71162d65d2e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+@@ -552,7 +552,6 @@ port@4 {
+ 
+ 			port@5 {
+ 				reg = <5>;
+-				label = "cpu";
+ 				ethernet = <&gmac0>;
+ 				phy-mode = "rgmii";
+ 
+-- 
+2.34.1
 
 
