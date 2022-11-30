@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 161AAC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 17:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E77C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 17:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uhSFBxEWAdwUeN2k0lrDRPSZ1FF+VOfj1b7dA06FCR8=; b=EfrYg/yrGHXz/mPLLyt2CGMWYO
-	8HWSPyKxBpBNgFcXckktj2qGlA4pSRYZ29Mon8iUfXSNm3we3TyDDEMJY6Hy0qN78l8tlKFE6VMxT
-	9ABgH83QmKwE+5okntUEt+am54fzvB8iECUoSzO0OaYedE8Mh1svDQYMIqVacZodROINPvsc09rHo
-	poZdZN/SqpXVlZKCOG3ePE1+kXBj2M8tJrlMKx9HFWUSdxFeWASx93ltjYC+frRm4/YnbqM7j2jFu
-	fAf3H9bnmeNj+2mLwTlOY58dxO3vIFY7mJnAg9wtNccgJgGSxfAq1YBKNe8VMnQz52ISb7nHXDPk7
-	2BRJcNcg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=; b=VOGn9jJFU68hsD
+	zXql5PMqZICkpPYS4Y47irOcKpfGUMjboY79RwM9kZ8M+Gs9pfVy3AVcCjQRi6FDgA+haQSaRu0cv
+	KUDieeoJUkr8KR9xiLFfd8PloZMBZGlL+lHnfYYB4CCq/93OMEDZRXfd0b3YHJ3FtLDx/dNOWV6De
+	qfH7AxSE8WtA6kg8c+DPd74ugQGHR4BskVm1IpsA2zowjg9bVu6XWIFFj0Z6KgubbcmTOQmwn7yvK
+	HHH08MqL8sq9bKjq3M2m4Mly0jI804dDwTnekfMmYKpSgoW0RdSpTocE24Q9FLPzF4kNBxGQcNOlc
+	S4nUr4GE1ngpbz/obSJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Qas-000q7z-FO; Wed, 30 Nov 2022 17:09:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1p0REx-001CJ6-Gz; Wed, 30 Nov 2022 17:51:23 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0QaW-000put-1U
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 17:09:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 24F3F61D01;
-	Wed, 30 Nov 2022 17:09:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08056C433D7;
-	Wed, 30 Nov 2022 17:09:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669828173;
-	bh=egobHfAE82ERuhdrxaZwV1hKFHc2d2ZHkUMGyEs1SHo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fhMphUQUpRIjtXcmvOl5pDwhSRhlkxjIRqFcCVq1eyQ599mqwohh2HAfeR9OMJ6Dp
-	 QXmWZcCZBm/Fy2PjE4iX3Mp0Lz4eTAcFi0u8J9Zfv+jFSiheb8238fvku+5JAmoFjo
-	 lVEkqP7vZ+ztftxEV8lxq16qgSCRVriZlB/p0B68xlfcI8/fXlamgcM7Q7nQUy51Oy
-	 m+sIsPC0YFKwzYFlofn3qnDnyFe/a0HviIJqrwACEwMPbKaFRIoTTum3PQ66LF6sfd
-	 sqhnCcynPhzMCwUdNKOW7Gq+sCvyCQ1HNq6KMBKo54R8+haFMBKoOmz/OjvFKFRyL9
-	 OQ90QJSDDoIHA==
-Date: Wed, 30 Nov 2022 18:09:29 +0100
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Deren Wu =?utf-8?B?KOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
-Cc: Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Leon Yen =?utf-8?B?KOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
-	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	"nbd@nbd.name" <nbd@nbd.name>,
-	Stella Chang =?utf-8?B?KOW8teabieS9qSk=?= <Stella.Chang@mediatek.com>,
-	Sean Wang <Sean.Wang@mediatek.com>,
-	KM Lin =?utf-8?B?KOael+aYhuawkSk=?= <km.lin@mediatek.com>,
-	Soul Huang =?utf-8?B?KOm7g+iHs+aYtik=?= <Soul.Huang@mediatek.com>,
-	YN Chen =?utf-8?B?KOmZs+W9peWvpyk=?= <YN.Chen@mediatek.com>,
-	Posh Sun =?utf-8?B?KOWtq+eRnuW7tyk=?= <posh.sun@mediatek.com>,
-	Eric-SY Chang =?utf-8?B?KOW8teabuOa6kCk=?= <Eric-SY.Chang@mediatek.com>,
-	CH Yeh =?utf-8?B?KOiRieW/l+ixqik=?= <ch.yeh@mediatek.com>,
-	Robin Chiu =?utf-8?B?KOmCseWci+a/sSk=?= <robin.chiu@mediatek.com>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
-Subject: Re: [PATCH] wifi: mt76: mt7921s: fix slab-out-of-bounds access in
- sdio host
-Message-ID: <Y4eOSUzLAW8x802i@lore-desk>
-References: <631e6a06fb640ec4f81c92b57d31eb0f7b23c351.1669814212.git.deren.wu@mediatek.com>
- <Y4dsznJ+GBalfzvx@lore-desk>
- <5b41c02ace6538122ebd656db5bec748fcd6e14e.camel@mediatek.com>
+	id 1p0Qoe-000yFM-FA; Wed, 30 Nov 2022 17:24:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669828953; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=S/tfmU/bGGwQvtztH48Ct75lrbtqrXhXhFaZ/qxNerqJ91kUiHyxbc1jZgMG+4D0FKKkKH/4VQ3BLtqRTavpPoP0qk/GhDBztMZabk/SDYZC/2nEdVUnHFj4lt4oCEoZYdqNVJlYpWtQohH7Xk7iafENArs6IvnxKDn4lbCO+NY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1669828953; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=; 
+	b=C23QGjP6pvzkPw8IT2Uuj+OI28I1OxDdVDda3ZHxJKaLJwmEtBXvApFXi3zZ/mEx84iI22v9FKFVcEQyP1mwTeNAA8c8CIyncscoEw3nyF5RjPbZJoaHJj5B5pIq3hX61yGE+U4Eyaav9m6qghMn5BR1/svu5KRcXCc4bCqS2NY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669828952;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=;
+	b=fgVncX7MMGMyEBfpkO8jiLauPmhaMoiVDaHCHtIu1b+XSbYbH5rq3QxvQ66+UjGq
+	V03JuP9AIYknMLnVMBa8W3NqAG1KZGS1eLpr23f5DQnweBY5641jnmU3F92tMwbCwcF
+	9EJMyICQRP12neK7zmEutFcDRBKbw0f9SP1sI86M=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1669828951728942.0277054948851; Wed, 30 Nov 2022 09:22:31 -0800 (PST)
+Message-ID: <32638470-b074-3b14-bfb2-10b49307b9e3@arinc9.com>
+Date: Wed, 30 Nov 2022 20:22:15 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="IsI5c3S3RXYk6V18"
-Content-Disposition: inline
-In-Reply-To: <5b41c02ace6538122ebd656db5bec748fcd6e14e.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
+To: Andrew Lunn <andrew@lunn.ch>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com>
+ <Y4d9B7VSHvqJn0iS@lunn.ch>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <Y4d9B7VSHvqJn0iS@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_090936_240509_7C68B861 
-X-CRM114-Status: GOOD (  27.93  )
+X-CRM114-CacheID: sfid-20221130_092412_676797_DEA5708D 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,102 +73,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Tim Harvey <tharvey@gateworks.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, Peng Fan <peng.fan@nxp.com>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Ray Jui <rjui@broadcom.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, linuxppc-dev@lists.ozlabs.org, Nicholas Piggin <npiggin@gmail.com>, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, "David S. Miller" <davem@davemloft.net>, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Riesch <michael.riesch@wolfvision.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 30.11.2022 18:55, Andrew Lunn wrote:
+> On Wed, Nov 30, 2022 at 05:10:35PM +0300, Arınç ÜNAL wrote:
+>> Hello folks,
+>>
+>> With this patch series, we're completely getting rid of 'label = "cpu";'
+>> which is not used by the DSA dt-binding at all.
+>>
+>> Information for taking the patches for maintainers:
+>> Patch 1: netdev maintainers (based off netdev/net-next.git main)
+>> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
+>> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
+>> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
+> 
+> Hi Arınç
+> 
+> So your plan is that each architecture maintainer merges one patch?
 
---IsI5c3S3RXYk6V18
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Initially, I sent this series to soc@kernel.org to take it all but Rob 
+said it must be this way instead.
 
-> Hi Lore,
->=20
-> On Wed, 2022-11-30 at 15:46 +0100, Lorenzo Bianconi wrote:
-> > > SDIO may need addtional 512 bytes to align bus operation. If the
-> > > tailroom
-> > > of this skb is not big enough, we would access invalid memory
-> > > region.
-> > > For low level operation, take xmit_buf instead of skb to keep valid
-> > > memory
-> > > access in SDIO.
-> > > Note: xmit_buf is big enough for single skb size
-> > >=20
-> > > Fixes: 764dee47e2c1 ("mt76: sdio: move common code in mt76_sdio
-> > > module")
-> > > Tested-by: YN Chen <YN.Chen@mediatek.com>
-> > > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > > ---
-> > >  drivers/net/wireless/mediatek/mt76/sdio_txrx.c | 3 ++-
-> > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> > > b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> > > index bfc4de50a4d2..ebea5c4e8da5 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-> > > @@ -254,7 +254,8 @@ static int mt76s_tx_run_queue(struct mt76_dev
-> > > *dev, struct mt76_queue *q)
-> > > =20
-> > >  		if (!test_bit(MT76_STATE_MCU_RUNNING, &dev->phy.state))=20
-> > > {
-> > >  			__skb_put_zero(e->skb, 4);
-> > > -			err =3D __mt76s_xmit_queue(dev, e->skb->data,
-> > > +			memcpy(sdio->xmit_buf, e->skb->data, e->skb-
-> > > >len);
-> >=20
-> > (even if it is not critical for performance) iirc the skb from the
-> > mcu is
-> > always linear, I guess we can use __skb_grow() instead. What do you
-> > think?
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
->=20
-> _skb_grow() looks good for me. It's a balance solution for this case.
-> If you have no concern about the patch below, I will post v2 after UT.
-> :)
->=20
->         if (!test_bit(MT76_STATE_MCU_RUNNING, &dev->phy.state)) {
->                 __skb_put_zero(e->skb, 4);
-> +               err =3D __skb_grow(e->skb, roundup(e->skb->len,
-> +                                                sdio->func-
-> >cur_blksize));
+> 
+> That is fine, but it is good to be explicit, otherwise patches will
+> fall through the cracks because nobody picks them up. I generally use
+> To: to indicate who i expect to merge a patch, and everybody else in
+> the Cc:
 
-can we merge __skb_put_zero() and __skb_grow()? Does sdio chip require the 4
-last bytes to be 0?
+Thanks for this, I'll follow suit if I don't see any activity for a few 
+weeks.
 
-Regards,
-Lorenzo
+> 
+> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> 
+>      Andrew
 
-> +               if (err)
-> +                       return err;
->                 err =3D __mt76s_xmit_queue(dev, e->skb->data,
->                                                  e->skb->len);
->=20
->=20
-> Regards,
-> Deren
->=20
-> > > +			err =3D __mt76s_xmit_queue(dev, sdio->xmit_buf,
-> > >  						 e->skb->len);
-> > >  			if (err)
-> > >  				return err;
-> > > --=20
-> > > 2.18.0
-> > >=20
-
---IsI5c3S3RXYk6V18
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY4eOSQAKCRA6cBh0uS2t
-rIE7AQDEqCVfDhShTRqXBb5ZtxyFKVj/QHV60c8Gz7LUNX07SAEA15WjsxxuSzBQ
-utdndpZ+ufqI77vcexMCLwUaQ03cbQY=
-=4eey
------END PGP SIGNATURE-----
-
---IsI5c3S3RXYk6V18--
+Arınç
 
