@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E77C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 17:51:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E28C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 18:01:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=; b=VOGn9jJFU68hsD
-	zXql5PMqZICkpPYS4Y47irOcKpfGUMjboY79RwM9kZ8M+Gs9pfVy3AVcCjQRi6FDgA+haQSaRu0cv
-	KUDieeoJUkr8KR9xiLFfd8PloZMBZGlL+lHnfYYB4CCq/93OMEDZRXfd0b3YHJ3FtLDx/dNOWV6De
-	qfH7AxSE8WtA6kg8c+DPd74ugQGHR4BskVm1IpsA2zowjg9bVu6XWIFFj0Z6KgubbcmTOQmwn7yvK
-	HHH08MqL8sq9bKjq3M2m4Mly0jI804dDwTnekfMmYKpSgoW0RdSpTocE24Q9FLPzF4kNBxGQcNOlc
-	S4nUr4GE1ngpbz/obSJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QODGe8XQrN2AfrxhMBF7VvZeMPDvCS3eDqJW1xbLQYg=; b=mhC9NFB6crjiLG0ryhnSCzY0Wf
+	NflUZqGD3CVrVMD6g9NEQsmvdgRvj1oWFLI2+Z5Kb8ETvEKkiUxg98YtqMuMoAC7VYrRtzaFbc1qZ
+	LZZHP2rcMT7veshperiWclB/Hr36vHg746B30fbSSG0dgjmwovdUuYWDli/04idMIWN1XtgSEj6rR
+	HEsR/8JEegKcozmvWJKer03SctI44JBiRM+4bHDES0a3xR+JOSHPYR1z//g/0EReOSvc6GxOW9mMG
+	yvYsusyhKf92wCHRk34p+SV5E2P1gPOoaPzmh2ruYIDp7Ya5OnJuHJ0k1lL+c2WbxFHu0CE/00l4b
+	uBT6ThYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0REx-001CJ6-Gz; Wed, 30 Nov 2022 17:51:23 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1p0ROW-001Jty-EH; Wed, 30 Nov 2022 18:01:16 +0000
+Received: from mail-pg1-f169.google.com ([209.85.215.169])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Qoe-000yFM-FA; Wed, 30 Nov 2022 17:24:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1669828953; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=S/tfmU/bGGwQvtztH48Ct75lrbtqrXhXhFaZ/qxNerqJ91kUiHyxbc1jZgMG+4D0FKKkKH/4VQ3BLtqRTavpPoP0qk/GhDBztMZabk/SDYZC/2nEdVUnHFj4lt4oCEoZYdqNVJlYpWtQohH7Xk7iafENArs6IvnxKDn4lbCO+NY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1669828953; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=; 
-	b=C23QGjP6pvzkPw8IT2Uuj+OI28I1OxDdVDda3ZHxJKaLJwmEtBXvApFXi3zZ/mEx84iI22v9FKFVcEQyP1mwTeNAA8c8CIyncscoEw3nyF5RjPbZJoaHJj5B5pIq3hX61yGE+U4Eyaav9m6qghMn5BR1/svu5KRcXCc4bCqS2NY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669828952;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=NbXEpZ0aVb9mBV+yGpUjXQNqRrz9CwkBfjyCJADEE7w=;
-	b=fgVncX7MMGMyEBfpkO8jiLauPmhaMoiVDaHCHtIu1b+XSbYbH5rq3QxvQ66+UjGq
-	V03JuP9AIYknMLnVMBa8W3NqAG1KZGS1eLpr23f5DQnweBY5641jnmU3F92tMwbCwcF
-	9EJMyICQRP12neK7zmEutFcDRBKbw0f9SP1sI86M=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1669828951728942.0277054948851; Wed, 30 Nov 2022 09:22:31 -0800 (PST)
-Message-ID: <32638470-b074-3b14-bfb2-10b49307b9e3@arinc9.com>
-Date: Wed, 30 Nov 2022 20:22:15 +0300
+	id 1p0RCw-001BBq-W1
+	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 17:49:20 +0000
+Received: by mail-pg1-f169.google.com with SMTP id w37so11619515pga.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Nov 2022 09:49:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QODGe8XQrN2AfrxhMBF7VvZeMPDvCS3eDqJW1xbLQYg=;
+        b=ClCwAHNC6I2CqndfBAOswZuW+kFVjzAS5ApHti4sJHlvhCtaUqrqkzE9SUz1DfxKTw
+         xVKkAAg5TUbq02CAyH8Ipuisus0QbBC2mUHr+0t1gPt2Xr8lkwguIhQljDZEy1YHOmUF
+         J3yXKNj8r8FmZGT8+V/PHsUskGpioh4T97cQOMPTd8vU7Cetxp0XwVwl/iVhmJhazW7B
+         2T0VHzxSm+Ix0aNngOF3cCtJTCPlgCXlekh1EHpyv/u4qU00MSQ6ZJ3NZU1GejgMR2cy
+         /GvjOSeNauf3W3yrDJ+iM3pGOXRHtkGmzbd1sSus5drgNTisg5Rho4f4orqwl1lCLUjs
+         DsRQ==
+X-Gm-Message-State: ANoB5pnm48QW5qMynV7vR97PXsKt4wuP77/zUJvVcgibzhvxNXAMDgWw
+	lT++E3Lf626Rhbrbgh6Fkr4=
+X-Google-Smtp-Source: AA0mqf7Thgy/URFKtK7bJBJgxBHxENZbJRZTowkER0TCYeV6b7x7JFFIrmvxitWNrTDEKMJpsmTZvg==
+X-Received: by 2002:a62:84c5:0:b0:574:32ac:a47a with SMTP id k188-20020a6284c5000000b0057432aca47amr39706827pfd.7.1669830555943;
+        Wed, 30 Nov 2022 09:49:15 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:3729:bd90:53d2:99e3? ([2620:15c:211:201:3729:bd90:53d2:99e3])
+        by smtp.gmail.com with ESMTPSA id e68-20020a621e47000000b00574db8ca00fsm1652367pfe.185.2022.11.30.09.49.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Nov 2022 09:49:14 -0800 (PST)
+Message-ID: <5e00ce60-3859-4964-11f7-e036f6dda56a@acm.org>
+Date: Wed, 30 Nov 2022 09:49:12 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
-To: Andrew Lunn <andrew@lunn.ch>
-References: <20221130141040.32447-1-arinc.unal@arinc9.com>
- <Y4d9B7VSHvqJn0iS@lunn.ch>
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v1] ufs: core: wlun suspend SSU fail recovery
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Y4d9B7VSHvqJn0iS@lunn.ch>
+To: Adrian Hunter <adrian.hunter@intel.com>, peter.wang@mediatek.com,
+ stanley.chu@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20221101142410.31463-1-peter.wang@mediatek.com>
+ <98bfafd3-c7b7-89b5-497a-aa694d0152dd@intel.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <98bfafd3-c7b7-89b5-497a-aa694d0152dd@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_092412_676797_DEA5708D 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20221130_094919_070924_FD4FE3E3 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +85,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Tim Harvey <tharvey@gateworks.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, Peng Fan <peng.fan@nxp.com>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Ray Jui <rjui@broadcom.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, linuxppc-dev@lists.ozlabs.org, Nicholas Piggin <npiggin@gmail.com>, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, "David S. Miller" <davem@davemloft.net>, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Riesch <michael.riesch@wolfvision.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30.11.2022 18:55, Andrew Lunn wrote:
-> On Wed, Nov 30, 2022 at 05:10:35PM +0300, Arınç ÜNAL wrote:
->> Hello folks,
+On 11/30/22 02:17, Adrian Hunter wrote:
+> On 1/11/22 16:24, peter.wang@mediatek.com wrote:
+>> From: Peter Wang <peter.wang@mediatek.com>
 >>
->> With this patch series, we're completely getting rid of 'label = "cpu";'
->> which is not used by the DSA dt-binding at all.
->>
->> Information for taking the patches for maintainers:
->> Patch 1: netdev maintainers (based off netdev/net-next.git main)
->> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
->> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
->> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
+>> When SSU fail in wlun suspend flow, trigger error handlder and
 > 
-> Hi Arınç
+> handlder -> handler
 > 
-> So your plan is that each architecture maintainer merges one patch?
+> Why / how does SSU fail?
 
-Initially, I sent this series to soc@kernel.org to take it all but Rob 
-said it must be this way instead.
+I'm not sure but the issue that Peter is trying to fix with this patch 
+may already have been fixed by my patch series "Fix a deadlock in the 
+UFS driver".
 
-> 
-> That is fine, but it is good to be explicit, otherwise patches will
-> fall through the cracks because nobody picks them up. I generally use
-> To: to indicate who i expect to merge a patch, and everybody else in
-> the Cc:
+Thanks,
 
-Thanks for this, I'll follow suit if I don't see any activity for a few 
-weeks.
+Bart.
 
-> 
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> 
->      Andrew
-
-Arınç
 
