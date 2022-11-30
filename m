@@ -4,115 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1EC3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 15:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16CDFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 15:45:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WrkubmqCOlg6WI/4bC8phRkRNDcChp8eAl3cPZ9CIqg=; b=JyuO2QkfWIMjCgYR3fSSz0vNht
-	czBHwKiUJgpGb6joZAxjsuCitdS7zNDOAOda+EEnM6yKzqzDNmaJxwUkOXDV88brl+8aUwvuDI0Pl
-	rOuAq/UhSjEZEJv6+7hb1qqQ7KBvFe9VDfKXELpVDwcCBqTCshZdDi4erzAnn1hNd89OXqdvKKPLv
-	otVhcSeROQhFS/xCWXQ4DbvgaCfjmIaFuppbXLfbR5gcP8+/TWVT2dbdzvkXfUVVqb25FdGeCUnfy
-	Iq6ehS9SYFBrHgMbObUXS0anHS07vj1WQYUWHo3F03cZs6Tz+7/mEvKhcNWRg6Sg0XQYrvsnxiCOX
-	3ug2ApUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L8RHFi4AkG5Wqzi2VIYHybDJEHMf4iXNT3B9gnefXHg=; b=AzdhgoEkfEydHaryWAKFCiwAIO
+	cVvrLTMvN+JP1BBCxKRWXZlJBLFDtfksU0hyJKo82JnkwzATNJUXfOLysi+55DDTqqMsLUMUUE0CT
+	DejB3XMsWR6BZQcTG04Q/o7mgY5yv/kkEs6h/60kUWE0pLcd6c/hjFZu0/jXBCakXVBEVIel8LoG9
+	7r3rAQiYJ54X4K2IOcXb0HKp8Vw7E29blSAgUY5JUVeXbJuid7Vyn9mFvZzUZw3cVAMfICa3VTCMZ
+	DWc2Byc+LYGIN/l3o5nK02To1TUfhghJNJTRZW/9OEWLBPUa4HdEk7kaAI2tao9zbBr087FTZVFSq
+	qFhMoXpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Oxm-00HOi3-0v; Wed, 30 Nov 2022 15:25:30 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1p0PGf-0002S1-50; Wed, 30 Nov 2022 15:45:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OvU-00HNKi-QQ
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 15:23:23 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuS-00009t-Vo; Wed, 30 Nov 2022 16:22:05 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuJ-001LdS-Sq; Wed, 30 Nov 2022 16:21:56 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuJ-001Vqc-PU; Wed, 30 Nov 2022 16:21:55 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Conor Dooley <conor.dooley@microchip.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Douglas Anderson <dianders@chromium.org>,
-	Pavel Machek <pavel@ucw.cz>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Michael Walle <michael@walle.cc>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Hammer Hsieh <hammerh0314@gmail.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Sean Anderson <sean.anderson@seco.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Matthias Kaehlcke <mka@chromium.org>,
-	Satya Priya <quic_c_skakit@quicinc.com>,
-	linux-pwm@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev
-Subject: [PATCH v2 01/11] pwm: Make .get_state() callback return an error code
-Date: Wed, 30 Nov 2022 16:21:38 +0100
-Message-Id: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
-References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+	id 1p0PGc-0002Ox-Ty
+	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 15:45:00 +0000
+X-UUID: 66e77c30b1774319a310b8116c9e987d-20221130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=L8RHFi4AkG5Wqzi2VIYHybDJEHMf4iXNT3B9gnefXHg=;
+	b=nk8k/mc1akmngn8bIYhpyXjsgSPFeL6olmlIIkbpbqTWhH10XZ+4/ELs6cLiKWZhn4UuggKtcGMFYs7wisuQMZCbuIaXIN6Ab1f0YA9nCJy4b2mHISJDcLKQlAh/rzT2TN4UU02yFsOSeIEbYEvor6/aBQ5Nt1HP9T1ak6fHPdc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:6d96bed7-c1fe-4b53-aa72-10c14175fd4e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:e1a5c21e-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 66e77c30b1774319a310b8116c9e987d-20221130
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1996042007; Wed, 30 Nov 2022 08:44:52 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 30 Nov 2022 23:44:50 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 30 Nov 2022 23:44:50 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y3eUbueW0MnG6GUHThFjibWkIz8BqDTMqQ+IN12wm+hdLXXw8WHoHZwXCO9ZbBMn5DHa0FAieVqeEFUzJHWB9p8hPeMQGpS4GH6R4Q9W73LI1eU5+kgFj4SM+embzjn+3Mh8yo4u2Ozg8wLc7qdNRff3yuO5H2/UUuanuosd7YwzjszO89RqRJvDlQkOhFbrdHvSG3LXScQ1Rd052d9NofufnAc7jIwizBDWfDYl8pgWIUlLsYrneIQqt+sZNtw8nn4VGrvw8CHX+qaBW77kQHqI99G5VO/O4OOd1Wi3ylpVvxIVAHVYulvpPyASE2jSe34R/TAnq38/xix8On37Zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L8RHFi4AkG5Wqzi2VIYHybDJEHMf4iXNT3B9gnefXHg=;
+ b=GGtNK4LrIdy+YVEEvFkZ1FjYTNAp0IlCFMdumhnYPItPUzZJcQxzljY3ELiAe96UfAFCZRE6EkB7fKHMHBeNvTl+YOmQeynYcoOeo29DWWXcRPUh7eitJFBxLNxByNwfgy6MCotHTCF3Awb6iBzGOvTMna5FdICikwfDxOPOlA/q+n5CnHG7ofx7hPyUAzfB3Bz7mrrICucZLK4kEauyiupla/1ZtB0xNn/v8Uhn5tXzgrUrs9N1rM5CqZKg5WocjzyVcWAsQL8YjSv4sYfyqz4irj5W688k01UJYHtA+CPThKayN0D68EQ6WLbGocmH4OHCKh3dkk9/RqI0zLfJhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L8RHFi4AkG5Wqzi2VIYHybDJEHMf4iXNT3B9gnefXHg=;
+ b=Xy9kL3KcGOQzffYMeX2ctXfXPgFkPrqL8zd2cCbCkxgpsAxyd+A8UNjSEjgX1p4uGcQQTfQ5hwBf/SSAxj8AzWP6JaomdfbHg+ZkNRWqFDcqxsPK6rTL87R7i2J5DIe/0Z8tB6mvPPXprg4ah7xOb9YO0Zw3mXdBOfjf+gZTs/E=
+Received: from SI2PR03MB6194.apcprd03.prod.outlook.com (2603:1096:4:14e::9) by
+ TYZPR03MB5373.apcprd03.prod.outlook.com (2603:1096:400:3f::11) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5857.23; Wed, 30 Nov 2022 15:44:48 +0000
+Received: from SI2PR03MB6194.apcprd03.prod.outlook.com
+ ([fe80::68ac:ad8a:b244:2fa9]) by SI2PR03MB6194.apcprd03.prod.outlook.com
+ ([fe80::68ac:ad8a:b244:2fa9%5]) with mapi id 15.20.5857.023; Wed, 30 Nov 2022
+ 15:44:48 +0000
+From: =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>
+To: "lorenzo@kernel.org" <lorenzo@kernel.org>
+CC: =?utf-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
+	=?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	"nbd@nbd.name" <nbd@nbd.name>, =?utf-8?B?U3RlbGxhIENoYW5nICjlvLXmm4nkvakp?=
+	<Stella.Chang@mediatek.com>, Sean Wang <Sean.Wang@mediatek.com>,
+	=?utf-8?B?S00gTGluICjmnpfmmIbmsJEp?= <km.lin@mediatek.com>,
+	=?utf-8?B?U291bCBIdWFuZyAo6buD6Iez5pi2KQ==?= <Soul.Huang@mediatek.com>,
+	=?utf-8?B?WU4gQ2hlbiAo6Zmz5b2l5a+nKQ==?= <YN.Chen@mediatek.com>,
+	=?utf-8?B?UG9zaCBTdW4gKOWtq+eRnuW7tyk=?= <posh.sun@mediatek.com>,
+	=?utf-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
+	<Eric-SY.Chang@mediatek.com>, =?utf-8?B?Q0ggWWVoICjokYnlv5fosaop?=
+	<ch.yeh@mediatek.com>, =?utf-8?B?Um9iaW4gQ2hpdSAo6YKx5ZyL5r+xKQ==?=
+	<robin.chiu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
+Subject: Re: [PATCH] wifi: mt76: mt7921s: fix slab-out-of-bounds access in
+ sdio host
+Thread-Topic: [PATCH] wifi: mt76: mt7921s: fix slab-out-of-bounds access in
+ sdio host
+Thread-Index: AQHZBMBjcDJXFCmH9Eyn5erWHic5rK5Xi5kAgAAQOwA=
+Date: Wed, 30 Nov 2022 15:44:48 +0000
+Message-ID: <5b41c02ace6538122ebd656db5bec748fcd6e14e.camel@mediatek.com>
+References: <631e6a06fb640ec4f81c92b57d31eb0f7b23c351.1669814212.git.deren.wu@mediatek.com>
+	 <Y4dsznJ+GBalfzvx@lore-desk>
+In-Reply-To: <Y4dsznJ+GBalfzvx@lore-desk>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB6194:EE_|TYZPR03MB5373:EE_
+x-ms-office365-filtering-correlation-id: 389e72ad-53c3-43fb-9a79-08dad2e9cffd
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: z5ZLFMZSrhAQNkDQr94w79c0CvYfwwggimq9a7yj3Ou42gNnaia04DoG3fx0db1JwulTZDg/xdhrww/UXkWrOsMwn0TqW/iXv9UuvlE8dgz6PKQakJ7/Mp/YxCnlaoTJgJHaF32hMTq6j3UjJq7HMh4AB1xtrP22Qw+DHxeyshi4fhRWZHw9x5tpj2Sb3PZRjt6SmBFVRDMLJkbIkJDb9PK0oTeMb4hST86BtJV7WBKuhV78LVkaapJJY21MEDKpDUi3/fnmcrIaZx1xOkFC2l6mJUq23TNDQePgfSWqi5FgJC6UHaWAQndbB3wvSeEAf540gNix05rxMe+grpE1mc+67+uY0V/X4G29lrTgeF1/diAfEnShSnWa2TmaJHlQBswewCFFSrSI1ZWKUNpVOrxQAShl934rZCltZTSdMau85W/+sNgj47znMPbnFgwWQCPETz2uzBqunXEPIwRzMwcZATUVjpEYqhHuIcEL1KEQXxAraAhzsz1G/+hC4zqE5/hRrI32BIzlodCSoWsIKrR3hPeV7jXqJDYNoL/fj7mkJaGSrsgfn4LAn3jhTeuH8SoTiKyP2YPqlZdwNht8hib6TBV8NbFXk7l2d9rW5lXIkhsbDfN9QPxXeHl3hrP1HaDNwojvbtBg9nCB6rGP4ACt5wljU9exP/d0jB+OOWvrJqAYEmOI5xoPJ444QOj5Oy4GMseRY5e5yz6uhDv5ow==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB6194.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(136003)(366004)(376002)(39860400002)(346002)(396003)(451199015)(6486002)(38100700002)(66446008)(66556008)(66946007)(76116006)(64756008)(66476007)(41300700001)(4326008)(478600001)(8676002)(316002)(36756003)(2906002)(54906003)(6916009)(122000001)(4001150100001)(8936002)(38070700005)(5660300002)(86362001)(85182001)(2616005)(186003)(83380400001)(71200400001)(26005)(6512007)(6506007);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WEVtQ1FRVzBEMDh5V2VHbU9OZzhDM2tqY2pFaExOOXpHRitWeFZRby8yK3pC?=
+ =?utf-8?B?dXBvcVJKNG5GenhFTEVCbDczakRUN0ZJMit5L3R2blc0b2phM3dJenZoNFI0?=
+ =?utf-8?B?WmRmN2QxSi93aG8yL1R5dWc0NEUwRTBtYkNmUllzOTFicmpQRTVmaFRIOEtY?=
+ =?utf-8?B?QkhtZ0FkM29DMGdvM0ZnOGFjVGxLNlRmdndDK2ZxTW5TSnNKaEpNcmVqWWJa?=
+ =?utf-8?B?ZmJVWFc3UzFqSDN4VXVKVG5GT2d1dWo3OEpZR0lsNmlLNGF0aGdOaXRCMkRF?=
+ =?utf-8?B?OEhDZEh6SXl2TUZRaFlvbm96cjlWOUgvMVNmcVYrdkZIRmpjR1o1UzZGQVUw?=
+ =?utf-8?B?eUFnZk1MYXVuTEJIWUtSb3V3STU5eEE1WjB1OHRwdXhDMTVYdkJVaW5yWVYy?=
+ =?utf-8?B?UkhHc0dZb2JGVjZnM2hOMUJSNTdXUTV6Z0c3d0RGZndVaTlzb3AyOUdvcTVR?=
+ =?utf-8?B?bFZKNXNySjRXaVpVYVJOMnYxeE92ajNTY3g1ZU1saXgwZ2JzT3J0TnlZVmsv?=
+ =?utf-8?B?RFdZWXlyQWN4QkU3WndIU0JqeDROODM3UlZzaGdNN3NvQjdxS1E2MjRnd0Nm?=
+ =?utf-8?B?TGROeU9zdDRyTFBBYkRZTWVxcXJFdnhqMnYrU1phbWlPcUtVZ2ZNOW5OVzdW?=
+ =?utf-8?B?N1ZnUlRHNFJ5RklOZ1Y2Z3dHajBQT3R4dmgzK091Y2t4SXdyQlQxUWtRVnc2?=
+ =?utf-8?B?S2lEL1FRTjAzVkZaVnNaakVjdU5QZnlCa1NvSXNjbGdyQmIydlpybFd6cTRj?=
+ =?utf-8?B?dXI1RVl6ZTlaWTRjRHBBQkMvRm1zY1VXK2hRUktvTlpxYWJ6clhMVnFtZ1Bi?=
+ =?utf-8?B?VjUxeGtORUlwcWRUNEJjcWRUaHhqemtZeG5NbS9rbWRBV083K0UwaW02Nlp1?=
+ =?utf-8?B?ajhPUjgzZzhQZ1hxMzBWY2JleW5Pbmo3M3ZNbXBVUTV6Kzd5VmFMQU5QaC9Q?=
+ =?utf-8?B?aElGNjFCTUNQaHpHZk1uU2Zub0xqTzFyYm9MR3k5czYyc25FeVA5cnd4RGwz?=
+ =?utf-8?B?ejVXYnFCajBTeGhyckEwbU9kdkg2TkFRQXlsYUdzekVIM0J6UFMrR3BWUEJG?=
+ =?utf-8?B?ZmxONXNkR0tCS1hvVzJHOGtGYnQ1Qm96RWxlVzlrclYrbzFucUc2OXk0VC9Y?=
+ =?utf-8?B?aTdvNnYwQ2dTM1RKTWIwWDdsYUE1MEFFUzdkMTBFaTZzMzhQMG15MVI5dGl4?=
+ =?utf-8?B?ajVYQS9SSHFkVnh0ZC9oRDNCYVZIbHNZQ1N2dlZqQUlLT1R1MlFnOXZIYkNk?=
+ =?utf-8?B?YWV3NlIvOU5yMVUvZmM2SjZUQ0p5dWJPcktuZFBVYjZqMUxoWEpSdUNBbVky?=
+ =?utf-8?B?SEZyZ0hKc0lFRXliZytycHJ3TFNkdUlFTlhzK0hVeStRcDYyeUc0b2g1b2VP?=
+ =?utf-8?B?bFZub0RxcU1GWVVQTWpFY0w0bkVCc01UbzQzMkswb0NwalNSS0dxUkpZbjBM?=
+ =?utf-8?B?cS8zRWlXa2ZEcVhWTVFRejJob1MwSFhiK2Q1WWdyTE1TSnpIWkY0R2krZ1FX?=
+ =?utf-8?B?L3E4TjNWL3FWWnlKbFRrM3pLMnhMMFF6emw4K1BwcC9zdWsxcDhZaXRCY254?=
+ =?utf-8?B?RW9sV0l6QmF0ekhRTzR0TWc3MEZHenA5SU5COEpoMC8ybGMrY1hEYkV3dVJl?=
+ =?utf-8?B?L0NsRW96dzdJSUorbWphclJaVk5aaldtTzEwdVhqOWFzVUdKQk5nMUVLREF2?=
+ =?utf-8?B?NHRhQzFpamsxSWF1VWNDWE5pdEFCSFJxY2NnNXFyc3ZOU2loWHZqak1rZ1FT?=
+ =?utf-8?B?SUN6amZ6RHhYK0QrdmdrcDdDRVhjcHYxQjFWSlcyeGdSRm0xREwwSDdCcldW?=
+ =?utf-8?B?NTFFMS93U2pRYkU3RTNVY0VsQVc5eWF6STVwcFBSRExNRzVGc0t5TTVTYXB3?=
+ =?utf-8?B?MngzNTc0bjcwN3ZQWm1RNkdGU0o2a1o4VDZuZFgvY0o1VzNaYWRWbndvQTVP?=
+ =?utf-8?B?OSsrYkZwVW5rMnlxMWtWaXRKRUFYYzE3TE1tTHRFOXROTVRHeG5JNHA3cGNN?=
+ =?utf-8?B?MjFnM0pDL1VIVFo1T3lDRHoyLzMxSk1JR0Jwdk52VWh5cmNCNVg0WnAxcXNG?=
+ =?utf-8?B?MEFBbmRXZU4rNjdrUFZSOXdsSUJHSFVFSERhRHhvbHd2TGNtM3BuTUFoaFBU?=
+ =?utf-8?B?SWNqZkxrYk9nOU1vRGJMa3hJV3Vldlo5V2V5SmdBWXFtRmMxdUdOZ2pGd1lH?=
+ =?utf-8?B?b1E9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <532F495822F1B94B9E6DA0E3BB68F77B@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=33730; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=6aKwDQeWFfhk7HNIUIW+KFczG8dz0Cbl6n6wGeYnRI0=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBjh3TheqBOZnA37N8EiQMSn8aVt1bApU3hGZu9W2/8 Lk3LwJ+JATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCY4d04QAKCRDB/BR4rcrsCaikCA CHUvfaYuPDw9QNqML6mJZ8m6CeaoJG8CMLK9nxftXBxxPYpQqGDOyOOB/ScP6OgtbdFTUj/GxdeHtK x5pBgrOrJMvaKiqONoJEUEcVb22lzmWgsGOzjyjfUChlljfw+e06BJe6uunideRUW3Pf1dRw3G5/sI Jcp/YWEzuM26Bjnp6guP4OYMLZiL1cPMZgvK16TaE6AY/ECbVyf5eOs8NhzSugjwavxp2Fot8omx2T n5TCOyO02/LoLYwff8tF9SWW3Cw6FkoeW4MuUm9B3kF7o5iG0ECNqUqJFNy5R4PEj3jXbJjJpBf+OK UsUTssaW73uOGg6t8ZRtwPYauMF8ce
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB6194.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 389e72ad-53c3-43fb-9a79-08dad2e9cffd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Nov 2022 15:44:48.4907
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: l/MrH56DsHW5rZcUEYNgXmJTXRbO4Xn+2QkRonlYTW5c1uRhLY5DjWwKtesboNh+kFw+FbYZMqLncPevpPTOcw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB5373
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_072309_290662_66B3E950 
-X-CRM114-Status: GOOD (  23.25  )
+X-CRM114-CacheID: sfid-20221130_074459_188395_F88A9CFC 
+X-CRM114-Status: GOOD (  21.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,955 +181,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-.get_state() might fail in some cases. To make it possible that a driver
-signals such a failure change the prototype of .get_state() to return an
-error code.
-
-This patch was created using coccinelle and the following semantic patch:
-
-@p1@
-identifier getstatefunc;
-identifier driver;
-@@
- struct pwm_ops driver = {
-        ...,
-        .get_state = getstatefunc
-        ,...
- };
-
-@p2@
-identifier p1.getstatefunc;
-identifier chip, pwm, state;
-@@
--void
-+int
- getstatefunc(struct pwm_chip *chip, struct pwm_device *pwm, struct pwm_state *state)
- {
-   ...
--  return;
-+  return 0;
-   ...
- }
-
-plus the actual change of the prototype in include/linux/pwm.h (plus some
-manual fixing of indentions and empty lines).
-
-So for now all drivers return success unconditionally. They are adapted
-in the following patches to make the changes easier reviewable.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/gpio/gpio-mvebu.c             |  9 ++++++---
- drivers/gpu/drm/bridge/ti-sn65dsi86.c | 14 ++++++++------
- drivers/leds/rgb/leds-qcom-lpg.c      | 14 ++++++++------
- drivers/pwm/pwm-atmel.c               |  6 ++++--
- drivers/pwm/pwm-bcm-iproc.c           |  8 +++++---
- drivers/pwm/pwm-crc.c                 | 10 ++++++----
- drivers/pwm/pwm-cros-ec.c             |  8 +++++---
- drivers/pwm/pwm-dwc.c                 |  6 ++++--
- drivers/pwm/pwm-hibvt.c               |  6 ++++--
- drivers/pwm/pwm-imx-tpm.c             |  8 +++++---
- drivers/pwm/pwm-imx27.c               |  8 +++++---
- drivers/pwm/pwm-intel-lgm.c           |  6 ++++--
- drivers/pwm/pwm-iqs620a.c             |  6 ++++--
- drivers/pwm/pwm-keembay.c             |  6 ++++--
- drivers/pwm/pwm-lpss.c                |  6 ++++--
- drivers/pwm/pwm-meson.c               |  8 +++++---
- drivers/pwm/pwm-mtk-disp.c            | 12 +++++++-----
- drivers/pwm/pwm-pca9685.c             |  8 +++++---
- drivers/pwm/pwm-raspberrypi-poe.c     |  8 +++++---
- drivers/pwm/pwm-rockchip.c            | 12 +++++++-----
- drivers/pwm/pwm-sifive.c              |  6 ++++--
- drivers/pwm/pwm-sl28cpld.c            |  8 +++++---
- drivers/pwm/pwm-sprd.c                |  8 +++++---
- drivers/pwm/pwm-stm32-lp.c            |  8 +++++---
- drivers/pwm/pwm-sun4i.c               | 12 +++++++-----
- drivers/pwm/pwm-sunplus.c             |  6 ++++--
- drivers/pwm/pwm-visconti.c            |  6 ++++--
- drivers/pwm/pwm-xilinx.c              |  8 +++++---
- include/linux/pwm.h                   |  4 ++--
- 29 files changed, 146 insertions(+), 89 deletions(-)
-
-diff --git a/drivers/gpio/gpio-mvebu.c b/drivers/gpio/gpio-mvebu.c
-index 1bb317b8dcce..91a4232ee58c 100644
---- a/drivers/gpio/gpio-mvebu.c
-+++ b/drivers/gpio/gpio-mvebu.c
-@@ -657,9 +657,10 @@ static void mvebu_pwm_free(struct pwm_chip *chip, struct pwm_device *pwm)
- 	spin_unlock_irqrestore(&mvpwm->lock, flags);
- }
- 
--static void mvebu_pwm_get_state(struct pwm_chip *chip,
--				struct pwm_device *pwm,
--				struct pwm_state *state) {
-+static int mvebu_pwm_get_state(struct pwm_chip *chip,
-+			       struct pwm_device *pwm,
-+			       struct pwm_state *state)
-+{
- 
- 	struct mvebu_pwm *mvpwm = to_mvebu_pwm(chip);
- 	struct mvebu_gpio_chip *mvchip = mvpwm->mvchip;
-@@ -693,6 +694,8 @@ static void mvebu_pwm_get_state(struct pwm_chip *chip,
- 		state->enabled = false;
- 
- 	spin_unlock_irqrestore(&mvpwm->lock, flags);
-+
-+	return 0;
- }
- 
- static int mvebu_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi86.c b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-index 3c3561942eb6..6826d2423ae9 100644
---- a/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-+++ b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-@@ -1500,8 +1500,8 @@ static int ti_sn_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void ti_sn_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				struct pwm_state *state)
-+static int ti_sn_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			       struct pwm_state *state)
- {
- 	struct ti_sn65dsi86 *pdata = pwm_chip_to_ti_sn_bridge(chip);
- 	unsigned int pwm_en_inv;
-@@ -1512,19 +1512,19 @@ static void ti_sn_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	ret = regmap_read(pdata->regmap, SN_PWM_EN_INV_REG, &pwm_en_inv);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	ret = ti_sn65dsi86_read_u16(pdata, SN_BACKLIGHT_SCALE_REG, &scale);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	ret = ti_sn65dsi86_read_u16(pdata, SN_BACKLIGHT_REG, &backlight);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	ret = regmap_read(pdata->regmap, SN_PWM_PRE_DIV_REG, &pre_div);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	state->enabled = FIELD_GET(SN_PWM_EN_MASK, pwm_en_inv);
- 	if (FIELD_GET(SN_PWM_INV_MASK, pwm_en_inv))
-@@ -1539,6 +1539,8 @@ static void ti_sn_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	if (state->duty_cycle > state->period)
- 		state->duty_cycle = state->period;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops ti_sn_pwm_ops = {
-diff --git a/drivers/leds/rgb/leds-qcom-lpg.c b/drivers/leds/rgb/leds-qcom-lpg.c
-index 02f51cc61837..741cc2fd817d 100644
---- a/drivers/leds/rgb/leds-qcom-lpg.c
-+++ b/drivers/leds/rgb/leds-qcom-lpg.c
-@@ -968,8 +968,8 @@ static int lpg_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			      struct pwm_state *state)
-+static int lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			     struct pwm_state *state)
- {
- 	struct lpg *lpg = container_of(chip, struct lpg, pwm);
- 	struct lpg_channel *chan = &lpg->channels[pwm->hwpwm];
-@@ -982,20 +982,20 @@ static void lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	ret = regmap_read(lpg->map, chan->base + LPG_SIZE_CLK_REG, &val);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	refclk = lpg_clk_rates[val & PWM_CLK_SELECT_MASK];
- 	if (refclk) {
- 		ret = regmap_read(lpg->map, chan->base + LPG_PREDIV_CLK_REG, &val);
- 		if (ret)
--			return;
-+			return 0;
- 
- 		pre_div = lpg_pre_divs[FIELD_GET(PWM_FREQ_PRE_DIV_MASK, val)];
- 		m = FIELD_GET(PWM_FREQ_EXP_MASK, val);
- 
- 		ret = regmap_bulk_read(lpg->map, chan->base + PWM_VALUE_REG, &pwm_value, sizeof(pwm_value));
- 		if (ret)
--			return;
-+			return 0;
- 
- 		state->period = DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * LPG_RESOLUTION * pre_div * (1 << m), refclk);
- 		state->duty_cycle = DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * pwm_value * pre_div * (1 << m), refclk);
-@@ -1006,13 +1006,15 @@ static void lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	ret = regmap_read(lpg->map, chan->base + PWM_ENABLE_CONTROL_REG, &val);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	state->enabled = FIELD_GET(LPG_ENABLE_CONTROL_OUTPUT, val);
- 	state->polarity = PWM_POLARITY_NORMAL;
- 
- 	if (state->duty_cycle > state->period)
- 		state->duty_cycle = state->period;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops lpg_pwm_ops = {
-diff --git a/drivers/pwm/pwm-atmel.c b/drivers/pwm/pwm-atmel.c
-index 8e00a4286145..cdbc23649032 100644
---- a/drivers/pwm/pwm-atmel.c
-+++ b/drivers/pwm/pwm-atmel.c
-@@ -356,8 +356,8 @@ static int atmel_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void atmel_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				struct pwm_state *state)
-+static int atmel_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			       struct pwm_state *state)
- {
- 	struct atmel_pwm_chip *atmel_pwm = to_atmel_pwm_chip(chip);
- 	u32 sr, cmr;
-@@ -396,6 +396,8 @@ static void atmel_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 		state->polarity = PWM_POLARITY_INVERSED;
- 	else
- 		state->polarity = PWM_POLARITY_NORMAL;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops atmel_pwm_ops = {
-diff --git a/drivers/pwm/pwm-bcm-iproc.c b/drivers/pwm/pwm-bcm-iproc.c
-index 7251037d4dd5..97ec131eb7c1 100644
---- a/drivers/pwm/pwm-bcm-iproc.c
-+++ b/drivers/pwm/pwm-bcm-iproc.c
-@@ -68,8 +68,8 @@ static void iproc_pwmc_disable(struct iproc_pwmc *ip, unsigned int channel)
- 	ndelay(400);
- }
- 
--static void iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				 struct pwm_state *state)
-+static int iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				struct pwm_state *state)
- {
- 	struct iproc_pwmc *ip = to_iproc_pwmc(chip);
- 	u64 tmp, multi, rate;
-@@ -91,7 +91,7 @@ static void iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (rate == 0) {
- 		state->period = 0;
- 		state->duty_cycle = 0;
--		return;
-+		return 0;
- 	}
- 
- 	value = readl(ip->base + IPROC_PWM_PRESCALE_OFFSET);
-@@ -107,6 +107,8 @@ static void iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	value = readl(ip->base + IPROC_PWM_DUTY_CYCLE_OFFSET(pwm->hwpwm));
- 	tmp = (value & IPROC_PWM_PERIOD_MAX) * multi;
- 	state->duty_cycle = div64_u64(tmp, rate);
-+
-+	return 0;
- }
- 
- static int iproc_pwmc_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-crc.c b/drivers/pwm/pwm-crc.c
-index 7b357d1cf642..4099850117ba 100644
---- a/drivers/pwm/pwm-crc.c
-+++ b/drivers/pwm/pwm-crc.c
-@@ -121,8 +121,8 @@ static int crc_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void crc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			      struct pwm_state *state)
-+static int crc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			     struct pwm_state *state)
- {
- 	struct crystalcove_pwm *crc_pwm = to_crc_pwm(chip);
- 	struct device *dev = crc_pwm->chip.dev;
-@@ -132,13 +132,13 @@ static void crc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	error = regmap_read(crc_pwm->regmap, PWM0_CLK_DIV, &clk_div_reg);
- 	if (error) {
- 		dev_err(dev, "Error reading PWM0_CLK_DIV %d\n", error);
--		return;
-+		return 0;
- 	}
- 
- 	error = regmap_read(crc_pwm->regmap, PWM0_DUTY_CYCLE, &duty_cycle_reg);
- 	if (error) {
- 		dev_err(dev, "Error reading PWM0_DUTY_CYCLE %d\n", error);
--		return;
-+		return 0;
- 	}
- 
- 	clk_div = (clk_div_reg & ~PWM_OUTPUT_ENABLE) + 1;
-@@ -149,6 +149,8 @@ static void crc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 		DIV_ROUND_UP_ULL(duty_cycle_reg * state->period, PWM_MAX_LEVEL);
- 	state->polarity = PWM_POLARITY_NORMAL;
- 	state->enabled = !!(clk_div_reg & PWM_OUTPUT_ENABLE);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops crc_pwm_ops = {
-diff --git a/drivers/pwm/pwm-cros-ec.c b/drivers/pwm/pwm-cros-ec.c
-index 7f10f56c3eb6..11684edc0620 100644
---- a/drivers/pwm/pwm-cros-ec.c
-+++ b/drivers/pwm/pwm-cros-ec.c
-@@ -183,8 +183,8 @@ static int cros_ec_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				 struct pwm_state *state)
- {
- 	struct cros_ec_pwm_device *ec_pwm = pwm_to_cros_ec_pwm(chip);
- 	struct cros_ec_pwm *channel = pwm_get_chip_data(pwm);
-@@ -193,7 +193,7 @@ static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	ret = cros_ec_pwm_get_duty(ec_pwm, pwm->hwpwm);
- 	if (ret < 0) {
- 		dev_err(chip->dev, "error getting initial duty: %d\n", ret);
--		return;
-+		return 0;
- 	}
- 
- 	state->enabled = (ret > 0);
-@@ -212,6 +212,8 @@ static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 		state->duty_cycle = channel->duty_cycle;
- 	else
- 		state->duty_cycle = ret;
-+
-+	return 0;
- }
- 
- static struct pwm_device *
-diff --git a/drivers/pwm/pwm-dwc.c b/drivers/pwm/pwm-dwc.c
-index 7568300bb11e..bd2308812096 100644
---- a/drivers/pwm/pwm-dwc.c
-+++ b/drivers/pwm/pwm-dwc.c
-@@ -163,8 +163,8 @@ static int dwc_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void dwc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			      struct pwm_state *state)
-+static int dwc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			     struct pwm_state *state)
- {
- 	struct dwc_pwm *dwc = to_dwc_pwm(chip);
- 	u64 duty, period;
-@@ -188,6 +188,8 @@ static void dwc_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	state->polarity = PWM_POLARITY_INVERSED;
- 
- 	pm_runtime_put_sync(chip->dev);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops dwc_pwm_ops = {
-diff --git a/drivers/pwm/pwm-hibvt.c b/drivers/pwm/pwm-hibvt.c
-index 333f1b18ff4e..12c05c155cab 100644
---- a/drivers/pwm/pwm-hibvt.c
-+++ b/drivers/pwm/pwm-hibvt.c
-@@ -128,8 +128,8 @@ static void hibvt_pwm_set_polarity(struct pwm_chip *chip,
- 				PWM_POLARITY_MASK, (0x0 << PWM_POLARITY_SHIFT));
- }
- 
--static void hibvt_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				struct pwm_state *state)
-+static int hibvt_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			       struct pwm_state *state)
- {
- 	struct hibvt_pwm_chip *hi_pwm_chip = to_hibvt_pwm_chip(chip);
- 	void __iomem *base;
-@@ -146,6 +146,8 @@ static void hibvt_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	value = readl(base + PWM_CTRL_ADDR(pwm->hwpwm));
- 	state->enabled = (PWM_ENABLE_MASK & value);
-+
-+	return 0;
- }
- 
- static int hibvt_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-imx-tpm.c b/drivers/pwm/pwm-imx-tpm.c
-index e5e7b7c339a8..ed1aad96fff0 100644
---- a/drivers/pwm/pwm-imx-tpm.c
-+++ b/drivers/pwm/pwm-imx-tpm.c
-@@ -132,9 +132,9 @@ static int pwm_imx_tpm_round_state(struct pwm_chip *chip,
- 	return 0;
- }
- 
--static void pwm_imx_tpm_get_state(struct pwm_chip *chip,
--				  struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int pwm_imx_tpm_get_state(struct pwm_chip *chip,
-+				 struct pwm_device *pwm,
-+				 struct pwm_state *state)
- {
- 	struct imx_tpm_pwm_chip *tpm = to_imx_tpm_pwm_chip(chip);
- 	u32 rate, val, prescale;
-@@ -164,6 +164,8 @@ static void pwm_imx_tpm_get_state(struct pwm_chip *chip,
- 
- 	/* get channel status */
- 	state->enabled = FIELD_GET(PWM_IMX_TPM_CnSC_ELS, val) ? true : false;
-+
-+	return 0;
- }
- 
- /* this function is supposed to be called with mutex hold */
-diff --git a/drivers/pwm/pwm-imx27.c b/drivers/pwm/pwm-imx27.c
-index ea91a2f81a9f..3a22c2fddc45 100644
---- a/drivers/pwm/pwm-imx27.c
-+++ b/drivers/pwm/pwm-imx27.c
-@@ -118,8 +118,8 @@ static void pwm_imx27_clk_disable_unprepare(struct pwm_imx27_chip *imx)
- 	clk_disable_unprepare(imx->clk_ipg);
- }
- 
--static void pwm_imx27_get_state(struct pwm_chip *chip,
--				struct pwm_device *pwm, struct pwm_state *state)
-+static int pwm_imx27_get_state(struct pwm_chip *chip,
-+			       struct pwm_device *pwm, struct pwm_state *state)
- {
- 	struct pwm_imx27_chip *imx = to_pwm_imx27_chip(chip);
- 	u32 period, prescaler, pwm_clk, val;
-@@ -128,7 +128,7 @@ static void pwm_imx27_get_state(struct pwm_chip *chip,
- 
- 	ret = pwm_imx27_clk_prepare_enable(imx);
- 	if (ret < 0)
--		return;
-+		return 0;
- 
- 	val = readl(imx->mmio_base + MX3_PWMCR);
- 
-@@ -170,6 +170,8 @@ static void pwm_imx27_get_state(struct pwm_chip *chip,
- 	state->duty_cycle = DIV_ROUND_UP_ULL(tmp, pwm_clk);
- 
- 	pwm_imx27_clk_disable_unprepare(imx);
-+
-+	return 0;
- }
- 
- static void pwm_imx27_sw_reset(struct pwm_chip *chip)
-diff --git a/drivers/pwm/pwm-intel-lgm.c b/drivers/pwm/pwm-intel-lgm.c
-index b66c35074087..0cd7dd548e82 100644
---- a/drivers/pwm/pwm-intel-lgm.c
-+++ b/drivers/pwm/pwm-intel-lgm.c
-@@ -86,8 +86,8 @@ static int lgm_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return lgm_pwm_enable(chip, 1);
- }
- 
--static void lgm_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			      struct pwm_state *state)
-+static int lgm_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			     struct pwm_state *state)
- {
- 	struct lgm_pwm_chip *pc = to_lgm_pwm_chip(chip);
- 	u32 duty, val;
-@@ -100,6 +100,8 @@ static void lgm_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	regmap_read(pc->regmap, LGM_PWM_FAN_CON0, &val);
- 	duty = FIELD_GET(LGM_PWM_FAN_DC_MSK, val);
- 	state->duty_cycle = DIV_ROUND_UP(duty * pc->period, LGM_PWM_MAX_DUTY_CYCLE);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops lgm_pwm_ops = {
-diff --git a/drivers/pwm/pwm-iqs620a.c b/drivers/pwm/pwm-iqs620a.c
-index 54bd95a5cab0..15aae53db5ab 100644
---- a/drivers/pwm/pwm-iqs620a.c
-+++ b/drivers/pwm/pwm-iqs620a.c
-@@ -104,8 +104,8 @@ static int iqs620_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void iqs620_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				 struct pwm_state *state)
-+static int iqs620_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				struct pwm_state *state)
- {
- 	struct iqs620_pwm_private *iqs620_pwm;
- 
-@@ -126,6 +126,8 @@ static void iqs620_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	mutex_unlock(&iqs620_pwm->lock);
- 
- 	state->period = IQS620_PWM_PERIOD_NS;
-+
-+	return 0;
- }
- 
- static int iqs620_pwm_notifier(struct notifier_block *notifier,
-diff --git a/drivers/pwm/pwm-keembay.c b/drivers/pwm/pwm-keembay.c
-index 733811b05721..ac02d8bb4a0b 100644
---- a/drivers/pwm/pwm-keembay.c
-+++ b/drivers/pwm/pwm-keembay.c
-@@ -89,8 +89,8 @@ static void keembay_pwm_disable(struct keembay_pwm *priv, int ch)
- 				KMB_PWM_LEADIN_OFFSET(ch));
- }
- 
--static void keembay_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int keembay_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				 struct pwm_state *state)
- {
- 	struct keembay_pwm *priv = to_keembay_pwm_dev(chip);
- 	unsigned long long high, low;
-@@ -113,6 +113,8 @@ static void keembay_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	state->duty_cycle = DIV_ROUND_UP_ULL(high, clk_rate);
- 	state->period = DIV_ROUND_UP_ULL(high + low, clk_rate);
- 	state->polarity = PWM_POLARITY_NORMAL;
-+
-+	return 0;
- }
- 
- static int keembay_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-lpss.c b/drivers/pwm/pwm-lpss.c
-index accdef5dd58e..81ac297b8ba5 100644
---- a/drivers/pwm/pwm-lpss.c
-+++ b/drivers/pwm/pwm-lpss.c
-@@ -205,8 +205,8 @@ static int pwm_lpss_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void pwm_lpss_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			       struct pwm_state *state)
-+static int pwm_lpss_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      struct pwm_state *state)
- {
- 	struct pwm_lpss_chip *lpwm = to_lpwm(chip);
- 	unsigned long base_unit_range;
-@@ -236,6 +236,8 @@ static void pwm_lpss_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	state->enabled = !!(ctrl & PWM_ENABLE);
- 
- 	pm_runtime_put(chip->dev);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops pwm_lpss_ops = {
-diff --git a/drivers/pwm/pwm-meson.c b/drivers/pwm/pwm-meson.c
-index 57112f438c6d..16d79ca5d8f5 100644
---- a/drivers/pwm/pwm-meson.c
-+++ b/drivers/pwm/pwm-meson.c
-@@ -318,8 +318,8 @@ static unsigned int meson_pwm_cnt_to_ns(struct pwm_chip *chip,
- 	return cnt * fin_ns * (channel->pre_div + 1);
- }
- 
--static void meson_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				struct pwm_state *state)
-+static int meson_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			       struct pwm_state *state)
- {
- 	struct meson_pwm *meson = to_meson_pwm(chip);
- 	struct meson_pwm_channel_data *channel_data;
-@@ -327,7 +327,7 @@ static void meson_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	u32 value, tmp;
- 
- 	if (!state)
--		return;
-+		return 0;
- 
- 	channel = &meson->channels[pwm->hwpwm];
- 	channel_data = &meson_pwm_per_channel_data[pwm->hwpwm];
-@@ -357,6 +357,8 @@ static void meson_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 		state->period = 0;
- 		state->duty_cycle = 0;
- 	}
-+
-+	return 0;
- }
- 
- static const struct pwm_ops meson_pwm_ops = {
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index c605013e4114..9a6bb334a31b 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -172,9 +172,9 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
--				   struct pwm_device *pwm,
--				   struct pwm_state *state)
-+static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
-+				  struct pwm_device *pwm,
-+				  struct pwm_state *state)
- {
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
- 	u64 rate, period, high_width;
-@@ -184,14 +184,14 @@ static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
- 	err = clk_prepare_enable(mdp->clk_main);
- 	if (err < 0) {
- 		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
--		return;
-+		return 0;
- 	}
- 
- 	err = clk_prepare_enable(mdp->clk_mm);
- 	if (err < 0) {
- 		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
- 		clk_disable_unprepare(mdp->clk_main);
--		return;
-+		return 0;
- 	}
- 
- 	rate = clk_get_rate(mdp->clk_main);
-@@ -211,6 +211,8 @@ static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
- 	state->polarity = PWM_POLARITY_NORMAL;
- 	clk_disable_unprepare(mdp->clk_mm);
- 	clk_disable_unprepare(mdp->clk_main);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops mtk_disp_pwm_ops = {
-diff --git a/drivers/pwm/pwm-pca9685.c b/drivers/pwm/pwm-pca9685.c
-index f230c10d28bb..41be244e7dd3 100644
---- a/drivers/pwm/pwm-pca9685.c
-+++ b/drivers/pwm/pwm-pca9685.c
-@@ -431,8 +431,8 @@ static int pca9685_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void pca9685_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int pca9685_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				 struct pwm_state *state)
- {
- 	struct pca9685 *pca = to_pca(chip);
- 	unsigned long long duty;
-@@ -458,12 +458,14 @@ static void pca9685_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 		 */
- 		state->duty_cycle = 0;
- 		state->enabled = false;
--		return;
-+		return 0;
- 	}
- 
- 	state->enabled = true;
- 	duty = pca9685_pwm_get_duty(pca, pwm->hwpwm);
- 	state->duty_cycle = DIV_ROUND_DOWN_ULL(duty * state->period, PCA9685_COUNTER_RANGE);
-+
-+	return 0;
- }
- 
- static int pca9685_pwm_request(struct pwm_chip *chip, struct pwm_device *pwm)
-diff --git a/drivers/pwm/pwm-raspberrypi-poe.c b/drivers/pwm/pwm-raspberrypi-poe.c
-index 6ff73029f367..2939b71a7ba7 100644
---- a/drivers/pwm/pwm-raspberrypi-poe.c
-+++ b/drivers/pwm/pwm-raspberrypi-poe.c
-@@ -82,9 +82,9 @@ static int raspberrypi_pwm_get_property(struct rpi_firmware *firmware,
- 	return 0;
- }
- 
--static void raspberrypi_pwm_get_state(struct pwm_chip *chip,
--				      struct pwm_device *pwm,
--				      struct pwm_state *state)
-+static int raspberrypi_pwm_get_state(struct pwm_chip *chip,
-+				     struct pwm_device *pwm,
-+				     struct pwm_state *state)
- {
- 	struct raspberrypi_pwm *rpipwm = raspberrypi_pwm_from_chip(chip);
- 
-@@ -93,6 +93,8 @@ static void raspberrypi_pwm_get_state(struct pwm_chip *chip,
- 					 RPI_PWM_MAX_DUTY);
- 	state->enabled = !!(rpipwm->duty_cycle);
- 	state->polarity = PWM_POLARITY_NORMAL;
-+
-+	return 0;
- }
- 
- static int raspberrypi_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index a5af859217c1..3ec7d1756903 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -57,9 +57,9 @@ static inline struct rockchip_pwm_chip *to_rockchip_pwm_chip(struct pwm_chip *c)
- 	return container_of(c, struct rockchip_pwm_chip, chip);
- }
- 
--static void rockchip_pwm_get_state(struct pwm_chip *chip,
--				   struct pwm_device *pwm,
--				   struct pwm_state *state)
-+static int rockchip_pwm_get_state(struct pwm_chip *chip,
-+				  struct pwm_device *pwm,
-+				  struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = pc->data->enable_conf;
-@@ -70,11 +70,11 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
- 
- 	ret = clk_enable(pc->pclk);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	ret = clk_enable(pc->clk);
- 	if (ret)
--		return;
-+		return 0;
- 
- 	clk_rate = clk_get_rate(pc->clk);
- 
-@@ -96,6 +96,8 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
- 
- 	clk_disable(pc->clk);
- 	clk_disable(pc->pclk);
-+
-+	return 0;
- }
- 
- static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
-index 2d4fa5e5fdd4..1e9870aa29e9 100644
---- a/drivers/pwm/pwm-sifive.c
-+++ b/drivers/pwm/pwm-sifive.c
-@@ -105,8 +105,8 @@ static void pwm_sifive_update_clock(struct pwm_sifive_ddata *ddata,
- 		"New real_period = %u ns\n", ddata->real_period);
- }
- 
--static void pwm_sifive_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				 struct pwm_state *state)
-+static int pwm_sifive_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				struct pwm_state *state)
- {
- 	struct pwm_sifive_ddata *ddata = pwm_sifive_chip_to_ddata(chip);
- 	u32 duty, val;
-@@ -123,6 +123,8 @@ static void pwm_sifive_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	state->duty_cycle =
- 		(u64)duty * ddata->real_period >> PWM_SIFIVE_CMPWIDTH;
- 	state->polarity = PWM_POLARITY_INVERSED;
-+
-+	return 0;
- }
- 
- static int pwm_sifive_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-sl28cpld.c b/drivers/pwm/pwm-sl28cpld.c
-index 589aeaaa6ac8..e64900ad4ba1 100644
---- a/drivers/pwm/pwm-sl28cpld.c
-+++ b/drivers/pwm/pwm-sl28cpld.c
-@@ -87,9 +87,9 @@ struct sl28cpld_pwm {
- #define sl28cpld_pwm_from_chip(_chip) \
- 	container_of(_chip, struct sl28cpld_pwm, pwm_chip)
- 
--static void sl28cpld_pwm_get_state(struct pwm_chip *chip,
--				   struct pwm_device *pwm,
--				   struct pwm_state *state)
-+static int sl28cpld_pwm_get_state(struct pwm_chip *chip,
-+				  struct pwm_device *pwm,
-+				  struct pwm_state *state)
- {
- 	struct sl28cpld_pwm *priv = sl28cpld_pwm_from_chip(chip);
- 	unsigned int reg;
-@@ -115,6 +115,8 @@ static void sl28cpld_pwm_get_state(struct pwm_chip *chip,
- 	 * the PWM core.
- 	 */
- 	state->duty_cycle = min(state->duty_cycle, state->period);
-+
-+	return 0;
- }
- 
- static int sl28cpld_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-sprd.c b/drivers/pwm/pwm-sprd.c
-index 7004f55bbf11..bda8bc5af976 100644
---- a/drivers/pwm/pwm-sprd.c
-+++ b/drivers/pwm/pwm-sprd.c
-@@ -65,8 +65,8 @@ static void sprd_pwm_write(struct sprd_pwm_chip *spc, u32 hwid,
- 	writel_relaxed(val, spc->base + offset);
- }
- 
--static void sprd_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--			       struct pwm_state *state)
-+static int sprd_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      struct pwm_state *state)
- {
- 	struct sprd_pwm_chip *spc =
- 		container_of(chip, struct sprd_pwm_chip, chip);
-@@ -83,7 +83,7 @@ static void sprd_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (ret) {
- 		dev_err(spc->dev, "failed to enable pwm%u clocks\n",
- 			pwm->hwpwm);
--		return;
-+		return 0;
- 	}
- 
- 	val = sprd_pwm_read(spc, pwm->hwpwm, SPRD_PWM_ENABLE);
-@@ -113,6 +113,8 @@ static void sprd_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	/* Disable PWM clocks if the PWM channel is not in enable state. */
- 	if (!state->enabled)
- 		clk_bulk_disable_unprepare(SPRD_PWM_CHN_CLKS_NUM, chn->clks);
-+
-+	return 0;
- }
- 
- static int sprd_pwm_config(struct sprd_pwm_chip *spc, struct pwm_device *pwm,
-diff --git a/drivers/pwm/pwm-stm32-lp.c b/drivers/pwm/pwm-stm32-lp.c
-index 3115abb3f52a..39364c52cfe4 100644
---- a/drivers/pwm/pwm-stm32-lp.c
-+++ b/drivers/pwm/pwm-stm32-lp.c
-@@ -157,9 +157,9 @@ static int stm32_pwm_lp_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return ret;
- }
- 
--static void stm32_pwm_lp_get_state(struct pwm_chip *chip,
--				   struct pwm_device *pwm,
--				   struct pwm_state *state)
-+static int stm32_pwm_lp_get_state(struct pwm_chip *chip,
-+				  struct pwm_device *pwm,
-+				  struct pwm_state *state)
- {
- 	struct stm32_pwm_lp *priv = to_stm32_pwm_lp(chip);
- 	unsigned long rate = clk_get_rate(priv->clk);
-@@ -185,6 +185,8 @@ static void stm32_pwm_lp_get_state(struct pwm_chip *chip,
- 	tmp = prd - val;
- 	tmp = (tmp << presc) * NSEC_PER_SEC;
- 	state->duty_cycle = DIV_ROUND_CLOSEST_ULL(tmp, rate);
-+
-+	return 0;
- }
- 
- static const struct pwm_ops stm32_pwm_lp_ops = {
-diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
-index c8445b0a3339..37d75e252d4e 100644
---- a/drivers/pwm/pwm-sun4i.c
-+++ b/drivers/pwm/pwm-sun4i.c
-@@ -108,9 +108,9 @@ static inline void sun4i_pwm_writel(struct sun4i_pwm_chip *chip,
- 	writel(val, chip->base + offset);
- }
- 
--static void sun4i_pwm_get_state(struct pwm_chip *chip,
--				struct pwm_device *pwm,
--				struct pwm_state *state)
-+static int sun4i_pwm_get_state(struct pwm_chip *chip,
-+			       struct pwm_device *pwm,
-+			       struct pwm_state *state)
- {
- 	struct sun4i_pwm_chip *sun4i_pwm = to_sun4i_pwm_chip(chip);
- 	u64 clk_rate, tmp;
-@@ -132,7 +132,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
- 		state->duty_cycle = DIV_ROUND_UP_ULL(state->period, 2);
- 		state->polarity = PWM_POLARITY_NORMAL;
- 		state->enabled = true;
--		return;
-+		return 0;
- 	}
- 
- 	if ((PWM_REG_PRESCAL(val, pwm->hwpwm) == PWM_PRESCAL_MASK) &&
-@@ -142,7 +142,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
- 		prescaler = prescaler_table[PWM_REG_PRESCAL(val, pwm->hwpwm)];
- 
- 	if (prescaler == 0)
--		return;
-+		return 0;
- 
- 	if (val & BIT_CH(PWM_ACT_STATE, pwm->hwpwm))
- 		state->polarity = PWM_POLARITY_NORMAL;
-@@ -162,6 +162,8 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
- 
- 	tmp = (u64)prescaler * NSEC_PER_SEC * PWM_REG_PRD(val);
- 	state->period = DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
-+
-+	return 0;
- }
- 
- static int sun4i_pwm_calculate(struct sun4i_pwm_chip *sun4i_pwm,
-diff --git a/drivers/pwm/pwm-sunplus.c b/drivers/pwm/pwm-sunplus.c
-index e776fd16512d..d6ebe9f03b35 100644
---- a/drivers/pwm/pwm-sunplus.c
-+++ b/drivers/pwm/pwm-sunplus.c
-@@ -124,8 +124,8 @@ static int sunplus_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void sunplus_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				  struct pwm_state *state)
-+static int sunplus_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				 struct pwm_state *state)
- {
- 	struct sunplus_pwm *priv = to_sunplus_pwm(chip);
- 	u32 mode0, dd_freq, duty;
-@@ -155,6 +155,8 @@ static void sunplus_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	}
- 
- 	state->polarity = PWM_POLARITY_NORMAL;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops sunplus_pwm_ops = {
-diff --git a/drivers/pwm/pwm-visconti.c b/drivers/pwm/pwm-visconti.c
-index 927c4cbb1daf..e3fb79b3e2a7 100644
---- a/drivers/pwm/pwm-visconti.c
-+++ b/drivers/pwm/pwm-visconti.c
-@@ -103,8 +103,8 @@ static int visconti_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
- 
--static void visconti_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
--				   struct pwm_state *state)
-+static int visconti_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
-+				  struct pwm_state *state)
- {
- 	struct visconti_pwm_chip *priv = visconti_pwm_from_chip(chip);
- 	u32 period, duty, pwmc0, pwmc0_clk;
-@@ -122,6 +122,8 @@ static void visconti_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm
- 		state->polarity = PWM_POLARITY_NORMAL;
- 
- 	state->enabled = true;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops visconti_pwm_ops = {
-diff --git a/drivers/pwm/pwm-xilinx.c b/drivers/pwm/pwm-xilinx.c
-index 4dab2b86c427..f7a50fdcd9a5 100644
---- a/drivers/pwm/pwm-xilinx.c
-+++ b/drivers/pwm/pwm-xilinx.c
-@@ -169,9 +169,9 @@ static int xilinx_pwm_apply(struct pwm_chip *chip, struct pwm_device *unused,
- 	return 0;
- }
- 
--static void xilinx_pwm_get_state(struct pwm_chip *chip,
--				 struct pwm_device *unused,
--				 struct pwm_state *state)
-+static int xilinx_pwm_get_state(struct pwm_chip *chip,
-+				struct pwm_device *unused,
-+				struct pwm_state *state)
- {
- 	struct xilinx_timer_priv *priv = xilinx_pwm_chip_to_priv(chip);
- 	u32 tlr0, tlr1, tcsr0, tcsr1;
-@@ -191,6 +191,8 @@ static void xilinx_pwm_get_state(struct pwm_chip *chip,
- 	 */
- 	if (state->period == state->duty_cycle)
- 		state->duty_cycle = 0;
-+
-+	return 0;
- }
- 
- static const struct pwm_ops xilinx_pwm_ops = {
-diff --git a/include/linux/pwm.h b/include/linux/pwm.h
-index d70c6e5a839d..4de09163c968 100644
---- a/include/linux/pwm.h
-+++ b/include/linux/pwm.h
-@@ -276,8 +276,8 @@ struct pwm_ops {
- 		       struct pwm_capture *result, unsigned long timeout);
- 	int (*apply)(struct pwm_chip *chip, struct pwm_device *pwm,
- 		     const struct pwm_state *state);
--	void (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,
--			  struct pwm_state *state);
-+	int (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,
-+			 struct pwm_state *state);
- 	struct module *owner;
- };
- 
--- 
-2.38.1
-
+SGkgTG9yZSwNCg0KT24gV2VkLCAyMDIyLTExLTMwIGF0IDE1OjQ2ICswMTAwLCBMb3JlbnpvIEJp
+YW5jb25pIHdyb3RlOg0KPiA+IFNESU8gbWF5IG5lZWQgYWRkdGlvbmFsIDUxMiBieXRlcyB0byBh
+bGlnbiBidXMgb3BlcmF0aW9uLiBJZiB0aGUNCj4gPiB0YWlscm9vbQ0KPiA+IG9mIHRoaXMgc2ti
+IGlzIG5vdCBiaWcgZW5vdWdoLCB3ZSB3b3VsZCBhY2Nlc3MgaW52YWxpZCBtZW1vcnkNCj4gPiBy
+ZWdpb24uDQo+ID4gRm9yIGxvdyBsZXZlbCBvcGVyYXRpb24sIHRha2UgeG1pdF9idWYgaW5zdGVh
+ZCBvZiBza2IgdG8ga2VlcCB2YWxpZA0KPiA+IG1lbW9yeQ0KPiA+IGFjY2VzcyBpbiBTRElPLg0K
+PiA+IE5vdGU6IHhtaXRfYnVmIGlzIGJpZyBlbm91Z2ggZm9yIHNpbmdsZSBza2Igc2l6ZQ0KPiA+
+IA0KPiA+IEZpeGVzOiA3NjRkZWU0N2UyYzEgKCJtdDc2OiBzZGlvOiBtb3ZlIGNvbW1vbiBjb2Rl
+IGluIG10NzZfc2Rpbw0KPiA+IG1vZHVsZSIpDQo+ID4gVGVzdGVkLWJ5OiBZTiBDaGVuIDxZTi5D
+aGVuQG1lZGlhdGVrLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBEZXJlbiBXdSA8ZGVyZW4ud3VA
+bWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRl
+ay9tdDc2L3NkaW9fdHhyeC5jIHwgMyArKy0NCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0
+aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25l
+dC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L3NkaW9fdHhyeC5jDQo+ID4gYi9kcml2ZXJzL25ldC93
+aXJlbGVzcy9tZWRpYXRlay9tdDc2L3NkaW9fdHhyeC5jDQo+ID4gaW5kZXggYmZjNGRlNTBhNGQy
+Li5lYmVhNWM0ZThkYTUgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVk
+aWF0ZWsvbXQ3Ni9zZGlvX3R4cnguYw0KPiA+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21l
+ZGlhdGVrL210NzYvc2Rpb190eHJ4LmMNCj4gPiBAQCAtMjU0LDcgKzI1NCw4IEBAIHN0YXRpYyBp
+bnQgbXQ3NnNfdHhfcnVuX3F1ZXVlKHN0cnVjdCBtdDc2X2Rldg0KPiA+ICpkZXYsIHN0cnVjdCBt
+dDc2X3F1ZXVlICpxKQ0KPiA+ICANCj4gPiAgCQlpZiAoIXRlc3RfYml0KE1UNzZfU1RBVEVfTUNV
+X1JVTk5JTkcsICZkZXYtPnBoeS5zdGF0ZSkpIA0KPiA+IHsNCj4gPiAgCQkJX19za2JfcHV0X3pl
+cm8oZS0+c2tiLCA0KTsNCj4gPiAtCQkJZXJyID0gX19tdDc2c194bWl0X3F1ZXVlKGRldiwgZS0+
+c2tiLT5kYXRhLA0KPiA+ICsJCQltZW1jcHkoc2Rpby0+eG1pdF9idWYsIGUtPnNrYi0+ZGF0YSwg
+ZS0+c2tiLQ0KPiA+ID5sZW4pOw0KPiANCj4gKGV2ZW4gaWYgaXQgaXMgbm90IGNyaXRpY2FsIGZv
+ciBwZXJmb3JtYW5jZSkgaWlyYyB0aGUgc2tiIGZyb20gdGhlDQo+IG1jdSBpcw0KPiBhbHdheXMg
+bGluZWFyLCBJIGd1ZXNzIHdlIGNhbiB1c2UgX19za2JfZ3JvdygpIGluc3RlYWQuIFdoYXQgZG8g
+eW91DQo+IHRoaW5rPw0KPiANCj4gUmVnYXJkcywNCj4gTG9yZW56bw0KPiANCg0KX3NrYl9ncm93
+KCkgbG9va3MgZ29vZCBmb3IgbWUuIEl0J3MgYSBiYWxhbmNlIHNvbHV0aW9uIGZvciB0aGlzIGNh
+c2UuDQpJZiB5b3UgaGF2ZSBubyBjb25jZXJuIGFib3V0IHRoZSBwYXRjaCBiZWxvdywgSSB3aWxs
+IHBvc3QgdjIgYWZ0ZXIgVVQuDQo6KQ0KDQogICAgICAgIGlmICghdGVzdF9iaXQoTVQ3Nl9TVEFU
+RV9NQ1VfUlVOTklORywgJmRldi0+cGh5LnN0YXRlKSkgew0KICAgICAgICAgICAgICAgIF9fc2ti
+X3B1dF96ZXJvKGUtPnNrYiwgNCk7DQorICAgICAgICAgICAgICAgZXJyID0gX19za2JfZ3Jvdyhl
+LT5za2IsIHJvdW5kdXAoZS0+c2tiLT5sZW4sDQorICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgc2Rpby0+ZnVuYy0NCj5jdXJfYmxrc2l6ZSkpOw0KKyAgICAg
+ICAgICAgICAgIGlmIChlcnIpDQorICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gZXJyOw0K
+ICAgICAgICAgICAgICAgIGVyciA9IF9fbXQ3NnNfeG1pdF9xdWV1ZShkZXYsIGUtPnNrYi0+ZGF0
+YSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlLT5z
+a2ItPmxlbik7DQoNCg0KUmVnYXJkcywNCkRlcmVuDQoNCj4gPiArCQkJZXJyID0gX19tdDc2c194
+bWl0X3F1ZXVlKGRldiwgc2Rpby0+eG1pdF9idWYsDQo+ID4gIAkJCQkJCSBlLT5za2ItPmxlbik7
+DQo+ID4gIAkJCWlmIChlcnIpDQo+ID4gIAkJCQlyZXR1cm4gZXJyOw0KPiA+IC0tIA0KPiA+IDIu
+MTguMA0KPiA+IA0K
 
