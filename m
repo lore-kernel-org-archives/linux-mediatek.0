@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE49EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 09:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CAFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 09:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NhaAoMbJhGQMnMhdyosjIQZJTrE7LNn7NxDqAdkTKn8=; b=tp2m51y5WUks/btFs536DEN7dr
-	1l04grB1incwPwHkE/eyB9q767HAx5yb3o4PPz2GXrWhZR4MR6/ngOTrAg7p2noN6WuX9ZVWDjNET
-	FBuVb7a9jlxlzaCuOYrDoxy+QUfr2QYmk5hRymHvWsXDFAIogLY570w1ch9EvDjCM4ubIe5JH0lj0
-	jHSq/tNknZpuXEyUTtOI+lcrF+nZC7klDeQxB2KIHpBxX+qlcm2jBPv7a02LukYnuu6K0nNpZu4F0
-	tCL9xv4BQqHC3iogkgl3Iqr9RITqfNg2MNVRhfJ8PY75CHd918eOJ+Nx5G2FgxiqzCdDwO91nggTK
-	QPThg6tg==;
+	bh=+xnXIoiWTSwBrwNmbJWLnpmPz4Db09gWBmu9XYMDJTs=; b=ZHFsYTHdNAP2SqRj63p+JKvqsS
+	OqS63q5zK0IXSg6DtKQzjXgJ2Sez7REdOAeEGIdCZxs3C22uuOs0eWyQAIE42OPAAZypGwez4L7hH
+	fpmoqEsQBDvCDdz97iABrvDyH1vIrjs3skut62Wp6AbHWp8tYtOXYZyKkdFpDnVpljAnFv7zxhvhy
+	MIYFQUt3ibOP+Vre5cQ4HJTjqJ0SV9ke0RQ92fDhCckeQN/Zg8fs92iu7C00yEt36x9OkBPw66APD
+	vyrmrZoTxeANi1mRWLz7/vAC5lsYE+9nEt5aeEWiIpnLkkjYROUnfdWTqG3fU3WEXaAnNZO4NqhlI
+	IGJp/0ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0JME-00F02W-Dy; Wed, 30 Nov 2022 09:26:22 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p0JeA-00FBSj-Fo; Wed, 30 Nov 2022 09:44:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0JJs-00Eymf-Ed; Wed, 30 Nov 2022 09:23:58 +0000
+	id 1p0JdO-00FB4a-H9; Wed, 30 Nov 2022 09:44:09 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DB6D660036C;
-	Wed, 30 Nov 2022 09:23:53 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 020AF6602B56;
+	Wed, 30 Nov 2022 09:44:03 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669800234;
-	bh=b/rlfin9Tu9Zg934405VE93p9gBOHlJBLcSBvPpyPXY=;
+	s=mail; t=1669801444;
+	bh=iSy5K/9Oym2Y4hj48BtEydq7EQhDRhCIlMJ13ol2HcQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TU92YAgRkOWnyIP3bvJqgwHT2x7OsuuBfGtxWnADsoddRRL8dVNwSOLIIq9iXGClu
-	 ZDyOpAR+4FH4w9JKcC44yCrAf4ixqxqnVDX5y+K75zqEWqfKgMip80ugRc6dDiETe/
-	 9zWuM7Na3x2jr/eQrOfmVK2+5Thg9HnFJ3w8hjUdULKHkDeHnNCs4Az1H4oJ0WlWNV
-	 UqX5DNxYmvAdcMmXYji0csNn9FYeBB0kM0zF4/9R/meuF9UXgo41Z+kOdQciVMRs4q
-	 yRajDFgWP2KaE6U/ctk5oMmNuB6ojJs5YGZigiTQW8HaZtO0YFNUeeqAjuRxQ/FBV2
-	 DBUYJpgsDmQEg==
-Message-ID: <a1c556de-a9a4-5f90-1c46-a9e54daf463b@collabora.com>
-Date: Wed, 30 Nov 2022 10:23:51 +0100
+	b=O6HbZJ0E3KV/fMjZlggLp/zWf0hhywnQr/KM/2tOStuGzLOyhKWV5AxnP6gkUVUeH
+	 artscZj5VJihiL/Yk4882Rd3ljZCUKKLvTK04oZIAxyE75d7NBrdhO1KIHz2f76xRM
+	 InuLBBqjLTmNPvEXMebONWzupbO8F50Y3BMzMXy+BPlYM15GzhOYvwHRi61YUkRLgh
+	 1akurVnLaTFDtmVqTwHDXzUQovTunZ/1vEdGTp8vCBkWZX6SoEUbPgdY1URigKTWd9
+	 lP5NPuYc1Ppt5ZUtlGYRDxSV+leTN+BNnx9Meu2Ya0YcW5VHIyZkQ7MCvWdbEz/7CT
+	 dieCBt3MtTXXA==
+Message-ID: <fc7ac761-eb81-347b-1c51-cdc9c786ee5b@collabora.com>
+Date: Wed, 30 Nov 2022 10:44:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH v3 2/6] dt-bindings: mediatek: modify VDOSYS0 mmsys device
- tree Documentations for MT8188
+Subject: Re: [PATCH] media: platform: mtk-mdp3: Fix return value check in
+ mdp_probe()
 Content-Language: en-US
-To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, lancelot.wu@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221129143503.16638-1-nathan.lu@mediatek.com>
- <20221129143503.16638-3-nathan.lu@mediatek.com>
+To: Qiheng Lin <linqiheng@huawei.com>, mchehab@kernel.org,
+ matthias.bgg@gmail.com
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20221130081312.35523-1-linqiheng@huawei.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221129143503.16638-3-nathan.lu@mediatek.com>
+In-Reply-To: <20221130081312.35523-1-linqiheng@huawei.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_012356_755700_A1D3EF40 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20221130_014406_833090_187DCA99 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +75,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/11/22 15:34, nathan.lu ha scritto:
-> From: Nathan Lu <nathan.lu@mediatek.com>
+Il 30/11/22 09:13, Qiheng Lin ha scritto:
+> In case of error, the function mtk_mutex_get()
+> returns ERR_PTR() and never returns NULL. The NULL test in the
+> return value check should be replaced with IS_ERR().
 > 
-> modify VDOSYS0 mmsys device tree Documentations for MT8188.
-> 
-> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+> Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
+> Signed-off-by: Qiheng Lin <linqiheng@huawei.com>
 > ---
->   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 ++++
->   1 file changed, 4 insertions(+)
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 0711f1834fbd..3e7fb33201c5 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -47,6 +47,10 @@ properties:
->             - const: mediatek,mt2701-mmsys
->             - const: syscon
->   
-> +      - items:
-> +          - const: mediatek,mt8188-vdosys0
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> index c413e59d4286..7a2d992dd842 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -207,8 +207,8 @@ static int mdp_probe(struct platform_device *pdev)
+>   	}
+>   	for (i = 0; i < MDP_PIPE_MAX; i++) {
+>   		mdp->mdp_mutex[i] = mtk_mutex_get(&mm_pdev->dev);
+> -		if (!mdp->mdp_mutex[i]) {
+> -			ret = -ENODEV;
+> +		if (IS_ERR(mdp->mdp_mutex[i])) {
+> +			ret = PTR_ERR(mdp->mdp_mutex[i]);
+>   			goto err_return;
+>   		}
+>   	}
+> 
 
-The devicetree node will be like:
-	something: something@somewhere {
-		compatible = "mediatek,mt8188-vdosys0", "syscon";
-		....
-	};
+That's true, and I fully agree.
+While you're at it, can you also fix the err_return case?
 
-....and will never get any additional compatible string, as when you'll add
-vdosys1 support, we'll get a similar node like:
+if (mdp)
+	for ...
+		if (!IS_ERR_OR_NULL(mdp->mdp_mutex[i]))
+			mtk_mutex_put(...)
 
-	something_else: something_else@somewhere_else {
-		comaptible = "mediatek,mt8188-vdosys1", "syscon";
-		....
-	};
 
-...so this should go upper in the enum that's listing all of the
-mediatek,mtXXXX-mmsys compatibles, specifically after `mediatek,mt8186-mmsys`.
-
-Please fix.
-
-Regards,
+Thanks,
 Angelo
-
 
