@@ -4,102 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76219C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 08:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47673C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 08:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bInR2egbUtB2hdBJUO3XKA2gh33pftK8BC1pboCK4Cw=; b=GCMjS2dx3QsuqoToGV9t1OuDJ+
-	0m5PtJfKaZpLxk23YE2S32/67NfAR94dxK8t/DqrPrOjfZguieCKW2sqHaScRNBpAAm0JLl4gyekl
-	fCXtgGX8bVLHJfvHDRSw2WqW9q8BQss3wQUUswid5bo0RuE6aRVMsLgNvzMiOWsn/SYD63gzoaLor
-	ArjjK7YQyw2w6AKwnG7V2G9C05oUJ/WoXZDm53wtgoy1ZHZqWfR5+044Inbh5DaZ5f4AQTfMXX9nR
-	V2reCw/M70+eYFkjyAlFmuvniquoEISUcD6Y3q4duHbcWDXyPMrXSUhz09ztcCkc/S8DhWa2Pc3OP
-	0E5Agd9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1ih/5AZ7VH4p7skGfYkFy1TDMephGSqfFTBm8ZbhGsk=; b=x2N68Jv7FE0w/wDWRZbpnuDAzU
+	HeeOKqdcPtsBY8KwqNW5wam3/09L3F99FhG2jeNyz/MrBhlunUxEChH86VVEgDBix1TOQX7Ah0Le+
+	AKHsu9uIv2ng8PHZTcNWL4zA4KuMqzfEFc0OQuMmWCLRVBrivHJusJnmlrfpZdf6MtL9NgJ3xPvel
+	7UygOyJ0uB1tvDY9Kn9HCmPKQVJbvQv0kp2EwSB270wAfdWhv3munwRTNVgYj/4WSoKRhbewuBEKl
+	FbShJ+eshrF8HztxjVBt95JfJq6eXeUwgqO/I/Ul6o9g5TfjjiI7HwtouP9mpC1sFHeEAvV4VaRVv
+	60Pb5nnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0IXo-00EZeZ-CG; Wed, 30 Nov 2022 08:34:16 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1p0IYH-00EZtn-Fg; Wed, 30 Nov 2022 08:34:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0IXY-00EZWa-16
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 08:34:02 +0000
-Received: by mail-lf1-x131.google.com with SMTP id j4so25843459lfk.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Nov 2022 00:33:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bInR2egbUtB2hdBJUO3XKA2gh33pftK8BC1pboCK4Cw=;
-        b=zcjMf5MiAzYT57sPm6IN9blQQbOHLzrtaEsAe7mOQqNQvADeYMPI6oVtT7tEITeYcV
-         DagPXMaBFptf7ab5MlLq3GvjTGyfkxJym+RiU8PnSWHwog0c7q/EAgdXvIGj5hBB7Yuc
-         CBUcKNqdu1JTahD0Eym6DaDoPS/zGPNtZqbIBLtsrQWEMz+adpWWlKy2qMfXmb9j7KWi
-         amSs0oAAQRlsisUu7q0gT75bG2xBY8l5S3FMwNTVJt0GgdLHoprXxlaD6asuPtqDu0QG
-         FvvxlX4k8VOxiqiOVj0w0KO5kcAt1yb1ChuyULvXbQMzPNaesCIpu9ZnuTN4cEN8dW+n
-         dUBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bInR2egbUtB2hdBJUO3XKA2gh33pftK8BC1pboCK4Cw=;
-        b=5laC929qqe95+mGKi0SskwlPVq/DsilXYTK3pGvXIwOTyCDbbIEoy3kM9sZ9g4gfnF
-         wcLw0G2dbD+vSKJH40Ep9uC/k/AHR5iQJdPe4HLtDdWZsEUb9TkH6aDNtVm7Ogu2W67S
-         LXlvyC5+PUIjNwZI80QD19BOC4pyuC9nJvPmH98waIQhNxhpHOctT5lwN7GZTiHzRp4z
-         OCpjOj/Ifhb610VgL4lNoSY29P3EOPk1xD8eZpeFEhURyVM93MZAmHUvOKLj9qbEbtqE
-         fL2kjtzV/93DG4gbTldV5TrHhtf7sZL03+X3JeUbn0DAOBev/ASNf5qK6PbpnQQdTCxY
-         zdUA==
-X-Gm-Message-State: ANoB5pl6hYO/uwSbZcjiNuuXUAshCmppWXkPHul3CcfFKqu7ynMa8W0B
-	mo5AhxRvxWf02RJ/xDh/sFhujw==
-X-Google-Smtp-Source: AA0mqf5ij2hVTbkErt4ghcZygMlO+KN57N0P9UqggTllmp6/9wSbhnOoztToCTHGNxgcaruT7tXxuA==
-X-Received: by 2002:a05:6512:5d4:b0:4b0:8622:662f with SMTP id o20-20020a05651205d400b004b08622662fmr21180119lfo.316.1669797235649;
-        Wed, 30 Nov 2022 00:33:55 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id m2-20020a195202000000b004a47e7b91c4sm163429lfb.195.2022.11.30.00.33.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Nov 2022 00:33:55 -0800 (PST)
-Message-ID: <cc2f8ded-f88b-66d0-3ec1-9e1cd74b493f@linaro.org>
-Date: Wed, 30 Nov 2022 09:33:54 +0100
+	id 1p0IY2-00EZhz-1z; Wed, 30 Nov 2022 08:34:31 +0000
+X-UUID: 658d0a44816948968c7f727d287f55f3-20221130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1ih/5AZ7VH4p7skGfYkFy1TDMephGSqfFTBm8ZbhGsk=;
+	b=FcII+bSoo/NSaB5tOGDmAEsu7MGK95o6KlK8dPvz3utWjM39luFj66v5AwcXxcYbBXDUzJ4or5BA7khTg4kYXgfTcSdSCD8hq3Wu1ZNo/KtbHQ4kdUl14790zpL6nAd9B/GeZQuGKjInwYHTiLY2xQX88A5m1+BeWJ3c2POv8Yk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:d9a7efeb-360b-4b99-849b-821be70a9838,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:6794216c-41fe-47b6-8eb4-ec192dedaf7d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 658d0a44816948968c7f727d287f55f3-20221130
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <andrew.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1351694469; Wed, 30 Nov 2022 01:34:11 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 30 Nov 2022 16:23:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 30 Nov 2022 16:23:06 +0800
+From: Andrew Yang <andrew.yang@mediatek.com>
+To: <rostedt@goodmis.org>
+CC: <andrew.yang@mediatek.com>, <casper.li@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+	<mhiramat@kernel.org>
+Subject: Re: [PATCH v2] mm/writeback: fix dereferencing NULL mapping->host
+Date: Wed, 30 Nov 2022 16:23:03 +0800
+Message-ID: <20221130082303.30859-2-andrew.yang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221130082303.30859-1-andrew.yang@mediatek.com>
+References: <20221129095620.4c1a8056@gandalf.local.home>
+ <20221130082303.30859-1-andrew.yang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH 5/9] dt-bindings: spi: mtk-snfi: add mt7986 IC snfi
- bindings
-Content-Language: en-US
-To: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?=
- <Xiangsheng.Hou@mediatek.com>,
- "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "gch981213@gmail.com" <gch981213@gmail.com>,
- "vigneshr@ti.com" <vigneshr@ti.com>, "richard@nod.at" <richard@nod.at>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?=
- <Benliang.Zhao@mediatek.com>,
- "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
-References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
- <20221128020613.14821-6-xiangsheng.hou@mediatek.com>
- <8b8e4b23-a3bc-7e3d-199a-e8f591d05d71@linaro.org>
- <5f76482d33933c19e191ea618f8622cd0660597f.camel@mediatek.com>
- <e512b7fd-3404-3c2d-dbf6-dc66ee662a06@linaro.org>
- <36d71d033f6926dfaefed7010bced94b4cd4b339.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <36d71d033f6926dfaefed7010bced94b4cd4b339.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_003400_116028_B6CA858E 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20221130_003430_143644_4AEF4D7E 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,39 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/11/2022 09:18, Xiangsheng Hou (侯祥胜) wrote:
-> Hi Krzysztof,
+On Tue, 2022-11-29 at 09:56 -0500, Steven Rostedt wrote:
+> On Tue, 29 Nov 2022 11:32:59 +0800
+> Andrew Yang <andrew.yang@mediatek.com> wrote:
 > 
-> On Tue, 2022-11-29 at 08:47 +0100, Krzysztof Kozlowski wrote:
->> On 29/11/2022 03:50, Xiangsheng Hou (侯祥胜) wrote:
->>>
->>>>>    clocks:
->>>>> +    minItems: 2
->>>>>      items:
->>>>>        - description: clock used for the controller
->>>>>        - description: clock used for the SPI bus
->>>>> +      - description: clock used for the AHB bus dma bus, this
->>>>> depends on
->>>>> +                     hardware design, so this is optional.
->>>>
->>>> Optional for which variants? For all of them?
->>>
->>> It`s only needed for the item 3 nfi_hclk. Is it proper with this
->>> description or any other suggestion.
->>
->> I understand third clock is optional. For which variants/compatibles
->> it
->> is optional? Add allOf:if:then restricting it.
+> > From: "andrew.yang" <andrew.yang@mediatek.com>
+> > 
+> > Check before dereferencing mapping->host
+> > 
+> > Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
+> > ---
+> >  include/trace/events/writeback.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/include/trace/events/writeback.h
+> > b/include/trace/events/writeback.h
+> > index 86b2a82da546..56f6e114d3ed 100644
+> > --- a/include/trace/events/writeback.h
+> > +++ b/include/trace/events/writeback.h
+> > @@ -68,7 +68,7 @@ DECLARE_EVENT_CLASS(writeback_folio_template,
+> >  		strscpy_pad(__entry->name,
+> >  			    bdi_dev_name(mapping ?
+> > inode_to_bdi(mapping->host) :
+> >  					 NULL), 32);
+> > -		__entry->ino = mapping ? mapping->host->i_ino : 0;
+> > +		__entry->ino = mapping && mapping->host ? mapping-
+> > >host->i_ino : 0;
 > 
-> The MediaTek SPI NAND controller IP used by MT7986 is the newest.
-> In the future, there will have other SoCs.
-> If add restricting on this, may not easy to maintain.
-> Does this acceptable?
-
-I don't think it is not easy to maintain. We have it in many, many
-bindings...
-
-Best regards,
-Krzysztof
-
+> I hate remembering precedence. Can we add parenthesis around this to
+> be
+> clear?
+> 
+> 		__entry->ino = (mapping && mapping->host) ? mapping-
+> >host->i_ino : 0;
+> 
+> Thanks,
+> 
+> -- Steve
+> 
+> 
+> >  		__entry->index = folio->index;
+> >  	),
+> >  
+> 
+> 
+Sure, that's a good suggestion
 
