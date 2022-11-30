@@ -4,68 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 971EEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 11:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B88C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 12:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wtw3viLufrNMyaqM5DWZS1sfqZXPVHJbOtLFNMg7BsI=; b=qc5KRqhxvjYB8TeBCk7LCse7/B
-	GghYJHWe/Kdct1YsdUEX9R1VZtkFkx+563bRbx2BwStPTNa4alfPzlscTj0skZYd/CbikRbkElPuh
-	9zrJ/BOh3riNgV1a1CZ5rRKlDHNNbmsx40B17hqfOqOa1cydlMEBzRwRwBD506Irjy3dcv0qdpD+q
-	PRhm71+Bqi4YnNEKb1Rzt+si7/Hc53bxt6IGGp4nKmOGuGOcopIw6WAwhRzrEexzfr8sMTDdx1+rQ
-	te0qGDxq+uoXy6ku66a9H3pB0kYfHpfFsTVOqxsmpyKPV2z2oAUJZvAfZAEpKAgBttL6fKM2aXde4
-	cpgtvPPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=efQ1auvrx5joRwcznVTM3EMV1vhSADvgXQLY7x3fP0E=; b=H9hqFOaNrZl2nljB1BMkQ+0efV
+	nLpE4YF/JzLfGG7iCacFIzqzJ/5ieVk0w1PIaTQ+Td3jqm4EHMIsX5mM0a/1QO8YIAXRY6CEV5jV7
+	gbhLqrNY368eUZvZqk13JH1rK61l0KGzzn1gx0QghNyGTdC/Jm8J14NKliGmug6BdE3T+peuAKZV2
+	18vSnKcKvnsOupoTS4YY8T6MLVjFF1FdYYt1bevP3AxVoPxzUBvSo829EHVxttXdlpQw4rrd5RaF5
+	TxUE1pr7ufjed9OtE0/ZIuGY0M2u0MugKlIo0wZchPBJrmAFo/kXEiMqfHZCvlLlTZhYTg7yCcBuy
+	wNfpwvjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0LFt-00Fo4z-AG; Wed, 30 Nov 2022 11:27:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p0Lui-00G2fq-An; Wed, 30 Nov 2022 12:10:08 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0LFX-00Fnug-Qd; Wed, 30 Nov 2022 11:27:37 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9C8F16602B54;
-	Wed, 30 Nov 2022 11:27:33 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669807654;
-	bh=kWjNWvSSWzmMWFlVFsu7JLK0HHOMIvZT6PtRFM1iPPY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n06qiu0wTRMYK0ayVkLisLO4lHylw8YLI9bcrNnrn62e48f9rST8I0TSHWbLTBb79
-	 MEtMaa4S/dKv1Oc4h8BTqTV6pTbW4k4vBt5wrA8V9W23J8cjoyTMQjNeNRdIvpsXLv
-	 f1BMly73nthosBDqCpYoriQTE3LcN/ya5j/GV7ZWExTmvezYOeWtGbkiT6azXMtSCL
-	 DppGfPtR+/BWd1v8ovi5v7yjgwr9Uehf+f+U4wM0t0tmeKQ4dbAZ8Uv/K0HDxbJyVU
-	 4EvGYmasu3oXZEFLOyNQpZzT0Zu4DLPdQ8RHJLeORMlbz92vTpWPX+D01xXF3aRNBr
-	 1r7hyd09xu5Pw==
-Message-ID: <d97d1fb3-3fa1-beaf-a351-3cc8ded2ca5f@collabora.com>
-Date: Wed, 30 Nov 2022 12:27:31 +0100
+	id 1p0LuW-00G2az-3C; Wed, 30 Nov 2022 12:09:58 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1p0LuK-0005r4-P3; Wed, 30 Nov 2022 13:09:44 +0100
+Date: Wed, 30 Nov 2022 12:09:41 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.or,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: [PATCH 2/2] dt-bindings: thermal: mediatek: add compatible
+ string for MT7986 SoC
+Message-ID: <Y4dIBW4Kped5klgD@makrotopia.org>
+References: <136157bd1f94c64504f87ee2db6b3ed0a8dcc3de.1667254476.git.daniel@makrotopia.org>
+ <1216e96b279d08230cb2aa61d536f44c1e9b800a.1667254476.git.daniel@makrotopia.org>
+ <cdc79d9b-7afe-1aaf-3692-171370abaa3c@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v5 3/3] arm64: dts: mt8192: Add video-codec nodes
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
-References: <20221128143832.25584-1-allen-kh.cheng@mediatek.com>
- <20221128143832.25584-4-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221128143832.25584-4-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cdc79d9b-7afe-1aaf-3692-171370abaa3c@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_032736_021904_065D6B22 
-X-CRM114-Status: UNSURE (   8.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221130_040956_151092_F65EE76C 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,11 +67,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/11/22 15:38, Allen-KH Cheng ha scritto:
-> Add video-codec lat and core nodes for mt8192 SoC.
+On Wed, Nov 02, 2022 at 04:43:35PM -0400, Krzysztof Kozlowski wrote:
+> On 31/10/2022 18:16, Daniel Golle wrote:
+> > Add compatible string 'mediatek,mt7986-thermal' for V3 thermal unit
+> > found in MT7981 and MT7986 SoCs.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> >  Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > index 5c7e7bdd029abf..efc16ab5b22b5d 100644
+> > --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > @@ -13,6 +13,7 @@ Required properties:
+> >    - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+> >    - "mediatek,mt2712-thermal" : For MT2712 family of SoCs
+> >    - "mediatek,mt7622-thermal" : For MT7622 SoC
+> > +  - "mediatek,mt7986-thermal" : For MT7981 and MT7986 SoC
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Then recommended is to have specific compatible followed by fallback (so
+> 7986 followed by 7981)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I'm a bit confused about the order you are suggesting. It may seem
+counter-intuitive, but MT7986 was released before MT7981, the thermal
+units found in both SoCs seems to be exactly identical.
+Or are you suggesting to list MT7981 first to maintain alphabetical
+order? Because in terms of precedence, MT7986 has been there first, and
+hence I'd list 7986 first, followed by 7981, ie. the opposite of the
+order you were suggesting.
 
 
