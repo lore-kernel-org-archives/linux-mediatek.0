@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E45C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 15:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F82C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 15:24:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zyuvq3O8CXHRjlTYRf7CwN3pztUKSzOVWUoLoffPYEA=; b=1TgEECV5ca2ADt8yA4WmCnbs9K
-	Q5X4GjpggzcBrYRNnn2LHeS0/lwUKWQPs+ysCscC+v3XN5SsHbghtJO1m1rvrvHkqpjAX4eLJFjJr
-	PWIthlUMh6y7u5pSKzkWK7eutzpgjlQKqdXEALt7UL1B3G3+JhKp5VyNMvRReBl09NyBNxzffkSkK
-	Kh5nc0KaiX7GScjo+FhLEETdbf+oGyvBcC3m7yLuasn22bhxuvsMRkp+MEioBInuaDjMkZ537F5C2
-	t9xTmqpx3T+SKL1r5PN9ZlCfz7l92XwD/Vuab8ooQdgcdCpdoMW/Gpv+EgT1vyvdHLRyabtYQtbGn
-	ZRPdhGHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KPaJ5QKuqa6JT5D+gY9tfaRaUFIibFo858rAr7vgvks=; b=e1YnuKI1Ic0jdSNJWIq6gMkwsY
+	ajaA64r2MNabiPup6p7N0yl9ZHQYjXjGQdgYZsF0l5enVuCGMipOOk1vRcm9YtLJ/7RPoM4dKkGJz
+	agdBiP7BVHzk8cpGLRLB08w2qMfC/TuDdX7PdIo1fsSMiCdkq3v99zVsYQxEunAPEg0BNMLQ4l9aU
+	eypr14VSJS+ubW8i7dJgNsm3u/E57yePEg/zC/zEPd5f7CfLyT5hq0tdhB/hpvKXmQ0EwSg7BRpnu
+	a+So62hTykzx5bzhOwW+xOYIO06QH0FqbvFla058vL2dhr+vI3Ge7+yoC7qHBn3d+FmFyixsgJJQF
+	sYmDjkvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OwV-00HNoX-8i; Wed, 30 Nov 2022 15:24:11 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1p0Ox6-00HOEB-PA; Wed, 30 Nov 2022 15:24:48 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0OuY-00HMoJ-MG
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 15:22:12 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuN-0000AW-0c; Wed, 30 Nov 2022 16:21:59 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuL-001Ldw-I8; Wed, 30 Nov 2022 16:21:58 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1p0OuL-001Vr1-DG; Wed, 30 Nov 2022 16:21:57 +0100
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Conor Dooley <conor.dooley@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 08/11] pwm: mtk-disp: Propagate errors in .get_state() to the caller
-Date: Wed, 30 Nov 2022 16:21:45 +0100
-Message-Id: <20221130152148.2769768-9-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
-References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+	id 1p0Ov5-00HN6U-W8; Wed, 30 Nov 2022 15:22:46 +0000
+Received: by mail-ot1-f49.google.com with SMTP id g51-20020a9d12b6000000b0066dbea0d203so11399336otg.6;
+        Wed, 30 Nov 2022 07:22:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KPaJ5QKuqa6JT5D+gY9tfaRaUFIibFo858rAr7vgvks=;
+        b=bko/M2Qr84dIPG9Zd747XoYCGaYbxyg54+ccN++qf1sZ7WZXBnxm51p80lZ4Y81Wjn
+         pShKV6eyL/nD8qZIOtAV+7uipTIBrRkZBBeF1A82C83hZQo76+CbaxQxRQPaXoumi/oF
+         aZ1Uy7hh/1NDAAnVz3AqFXYrJLWa1VgjEWj/sN2jYqwr6NygcKxFcX7twU87NR+kUiUX
+         o5cYvQKpHvKiWrUyKgAUSLpsRhuKYRbBlNjZ4jpfDs7UBZdkaOqYcAa7MJjRv9Rz9x0s
+         B2AqoDq64yK6LLH3wi+X5epLLalU6blWD4mjSr4nFMQljn6Yjq8bQzbALLWjfdmUTubV
+         An/Q==
+X-Gm-Message-State: ANoB5pn/r9e+Gh1oHnq9KuDse7RVCKNaO//ojAP1bNuHP2Cto9IWa/rv
+	mFrgEiv9v68xM0OlS+I57g==
+X-Google-Smtp-Source: AA0mqf7dVbk+/jtsj/44vjUhHrvULs52JnWmrmOJCkOc/Gmn2xkA8Fwx/65Db1wL3k47Y4ManV1BRA==
+X-Received: by 2002:a05:6830:1c7:b0:663:d3ce:ca26 with SMTP id r7-20020a05683001c700b00663d3ceca26mr21656129ota.67.1669821761469;
+        Wed, 30 Nov 2022 07:22:41 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id p186-20020aca5bc3000000b00359a9663053sm748103oib.4.2022.11.30.07.22.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Nov 2022 07:22:41 -0800 (PST)
+Received: (nullmailer pid 2190680 invoked by uid 1000);
+	Wed, 30 Nov 2022 15:22:40 -0000
+Date: Wed, 30 Nov 2022 09:22:40 -0600
+From: Rob Herring <robh@kernel.org>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Andy Teng <andy.teng@mediatek.com>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Yassine Oudjana <y.oudjana@protonmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 3/7] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Add MT6795
+Message-ID: <166982175979.2190622.1334007053392502335.robh@kernel.org>
+References: <20221118113028.145348-1-y.oudjana@protonmail.com>
+ <20221118113028.145348-4-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=965; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=Oif9jO/ANaV2n8mI1Wq5VGoWZKNoCZbLOMG3XU4Hj2w=; b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBjh3T7YqPl7JZhWa8Pa2lUKahY1hm5Te0uFIv3uqcp pRHSC+SJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCY4d0+wAKCRDB/BR4rcrsCc8fB/ 47kl5AVu6pGuHI/CsRRxJJS4Dskp2blmJE5duNo9j12Cpt3gsaP2ZuE7z4Lu0nwEQL/Ak6JBUkDrvl 0Ka3WDtNz8PRWRowPY1oqoi6s7hn/4zwBaMOks7f4qJvUyBtitXgDCA/8jgQ4KZyla8XhwnLAyncCq vK7iRM7lq4hurTEtxtzu0yY2ReLKJ1tk27EMBSo53Wv3HzbjnKEaluegwUcSnmlpiiZgjk1Oj1hFQt LR43Bne71SZH96jscnRGgSwh191M8po5Zcp22LHIreoGGSsPWtEAmd5SxuQl6WxnQL/Mp9dY7nTk7r QCx73jbJyahSah2nbNjRHy5aoXSqGi
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221118113028.145348-4-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_072210_757628_D1E98120 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20221130_072244_094648_7311CB05 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +79,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-.get_state() can return an error indication. Make use of it to propagate
-failing hardware accesses.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/pwm/pwm-mtk-disp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, 18 Nov 2022 14:30:24 +0300, Yassine Oudjana wrote:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> Combine MT6795 pin controller document into MT6779 one. In the
+> process, amend the example with comments and additional pinctrl
+> nodes from the MT6795 example, replace the current interrupts
+> property description with the one from the MT6795 document since
+> it makes more sense and define its items using conditionals
+> as they now vary between variants. Also use conditionals to define
+> valid values for the drive-strength property as well as items of
+> the interrupts property for each variant since they are different
+> on MT6795.
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>  .../pinctrl/mediatek,mt6779-pinctrl.yaml      |  78 +++++-
+>  .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 227 ------------------
+>  2 files changed, 73 insertions(+), 232 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+> 
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 9a6bb334a31b..67e5799dd157 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -184,14 +184,14 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
- 	err = clk_prepare_enable(mdp->clk_main);
- 	if (err < 0) {
- 		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
--		return 0;
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(mdp->clk_mm);
- 	if (err < 0) {
- 		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
- 		clk_disable_unprepare(mdp->clk_main);
--		return 0;
-+		return err;
- 	}
- 
- 	rate = clk_get_rate(mdp->clk_main);
--- 
-2.38.1
-
+Acked-by: Rob Herring <robh@kernel.org>
 
