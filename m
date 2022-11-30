@@ -4,87 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A89C47088
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 09:09:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCCA2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 09:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=; b=xXK4WeR05iojxqr4ziztLfjoaV
-	sjQWTbCoMjU49pqq5S2ru3H0i0lwtYTv6xI7xMzOZ+lmkbeEtsVlslKG4fVI+14X5RgGdCcjhY8ni
-	N4JNYzT0PIEXmxVd9F2dBwe9k1TiMKP2/Td2zRVMrhBy/B3RuZtgjxOc1GtYhuO63uMjLd91FjMRF
-	WVFB9wYUr3/YisC3xMfIqJvV0hF8IlOtOHXhVthydZmTOZwTqcU5qDoMGPPdITvWLVVKXsBElpnNL
-	tN6ng+TXSKO7P4+E6fffyW5i0p3DgRU/+0DoX66JFV4dCx7j1lQzg9d5BX3N590tqdZgfJ/FdQjmv
-	epNyZK4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VKAwywMBrR4lqlBjjyNSUzpugTODKhbuD4X55nHPtiI=; b=udKNiH/nlGdWwlMe5nyxjAGFND
+	ZSfSWY2NrMs4nssw2nRbuBJILcwcyuEisX6JO6l6LSjRLVrpFYalDf64bwM1gNGjfQNh3Xzqp6DY1
+	+W9F+UpeiHf0L2xxfb/XZtOe0zg5H6o4/XW+lSkLDq+U9elpVEkvB6597DHKcUSbVuUXscNmb3Z2B
+	Ro3opjfzG0lrs49YfWgEqytH1GfHWbU4gfHF+Cm4A38t1YgMjPu8lSc316d7YaLioS560GtZWqUWp
+	VqNeH0qYBW5rXs5Fi4aZkOp9QZ9hjOgFIE0Wx3bCihPYzt7w8psJh1bNu2QVJHz/rBVksbSpmdZpL
+	oLDAJhYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0J5e-00ErzH-3i; Wed, 30 Nov 2022 09:09:14 +0000
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+	id 1p0JEP-00Evnq-EL; Wed, 30 Nov 2022 09:18:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0J5b-00Erwh-2q; Wed, 30 Nov 2022 09:09:12 +0000
-Received: by mail-ot1-x332.google.com with SMTP id t19-20020a9d7753000000b0066d77a3d474so10784181otl.10;
-        Wed, 30 Nov 2022 01:09:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=;
-        b=mDQvEm1QplQg6YYyArNrM+4YH1l2ZwXmiBdYl+pswyW6I5sLmbPz+bUOW4saQgm5SV
-         RMRttnO718bCX4d3B+3FwynDrnMldjqGzetgTSaNlnVtSvj+4xku8XUOP8A/dgHajeJk
-         G2H67Y/u8tSQwfwqME8/zkA+9/kIHQEsf0QU+bEcJuekgJ2jbgemUkdGgjZjfmdz99/+
-         zJq9gQyWw8I31QzZ+DqfYr1UCpDwHfMaX5ZqsEfjJ6OPhnHVg1pOT211oX8D9BuMpbtz
-         ro+HKT4vqeAsQP94N3hhmkGgz/mkzFcctqftEofv/88pdAlXzy04dWkeQpvv7tBO/1+S
-         TjsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=;
-        b=y9Lu3DLw4tf28yhBia4hKD+evTrob4SfTxWPT8nxUP1jebU7IIOr7g+RcZF6BW+lxr
-         pHD6GRLcWBkPT2Qh66OfJKDVj0pGo/V5gCKgdPtxYmzQvqHvxWAlQfIDE8dsEmOe/VNX
-         5ralPY1Mqo9m/LQPPOqLaBW5bl0mIHpm1VUuitclfFkorhbnjBOKvRGoweVikZOy/Oku
-         VS7qAISPhNzVa0tkLum5rfRmczIxjJ/ntHXxHbhQWuDRUD2TgfLAIj2hIXra8INkXUaT
-         v/nv3a4c9fH9GZoiZqc3SnKa2l3zPmZdJhIiEjWKxZkmKFROQlbVQttuLxohq2/dQekG
-         KaVA==
-X-Gm-Message-State: ANoB5pmTUwe1t937gF0mRCIKsc2p2LTIOgYN0ypOO5G+YPvWETSIU2L+
-	/DpYkMVpxnIJhU+MyhLaiPzz/elOBWK6pi3jy/Q=
-X-Google-Smtp-Source: AA0mqf4iveLTZYV/xPRmj2emARsFD/Nu70y1nVjqfEd3HoFurktQjGnoPWWEZdf5U2qztxEjQN3owWB4HNcmz+Z3LBs=
-X-Received: by 2002:a9d:161:0:b0:66e:65dc:18e1 with SMTP id
- 88-20020a9d0161000000b0066e65dc18e1mr2106886otu.83.1669799349116; Wed, 30 Nov
- 2022 01:09:09 -0800 (PST)
+	id 1p0JE3-00EvfM-A6; Wed, 30 Nov 2022 09:17:57 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 852496602B30;
+	Wed, 30 Nov 2022 09:17:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669799872;
+	bh=oJk0u1gvG6u0fT9jRnNEv5n4mqHGBTjbT57397eebF8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mMe6SC6y4lpt55TGa348e93vzjkCAwifANM0Yu8ItP0UmwwdsYsmts3ySRUblZUru
+	 gGDxZcTMkf8u7/IvPDjRqlS1yGWH2fm3bhpCTtfnXu/Cw1iLtI+l/lr8gZMMPKnUhd
+	 mxATiBmdOxu1idai30XIURtwvdLp51WDspFLBrkskKDIZcmpkbJua+OO76bs969g5n
+	 Q+gzbqxxyYcQnbGNzRS2IbBkKbN3k/Y58XjR++JqP23XbZclF6Wows0vL6rCTMhqVC
+	 5yT1aAFacOFylrgWtpktXOXaU6vvozgQSOKcTr9tB8e9AU4WVwu0BfM1uwbUZd/Uvo
+	 OiwWAL77RWYDA==
+Message-ID: <88f21574-1a41-3231-3aa7-e6285ac14fc2@collabora.com>
+Date: Wed, 30 Nov 2022 10:17:48 +0100
 MIME-Version: 1.0
-References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
- <20221128020613.14821-8-xiangsheng.hou@mediatek.com> <9985d44e-977e-d7ea-0932-4879a3ccd14d@linaro.org>
- <f83184ae803dbe0afd37a31a8a83a369a9772880.camel@mediatek.com>
- <08ebc76a-0220-f984-b546-23dba8677be9@linaro.org> <741d7ce16df25450b08c92e508190bc7c91fc8d9.camel@mediatek.com>
- <bc356f96-600a-64df-c0fe-00c807fa605c@linaro.org>
-In-Reply-To: <bc356f96-600a-64df-c0fe-00c807fa605c@linaro.org>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Wed, 30 Nov 2022 17:08:57 +0800
-Message-ID: <CAJsYDVKdV7Pzt4fhc+OFWto6hK9U=WBe7LkPZU5sJHX1nyXTDw@mail.gmail.com>
-Subject: Re: [PATCH 7/9] dt-bindings: spi: mtk-snfi: add two timing delay property
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?= <Xiangsheng.Hou@mediatek.com>, 
-	"miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
-	"broonie@kernel.org" <broonie@kernel.org>, 
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "vigneshr@ti.com" <vigneshr@ti.com>, 
-	"richard@nod.at" <richard@nod.at>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	=?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?= <Benliang.Zhao@mediatek.com>, 
-	"linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	=?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v3 6/6] drm/mediatek: add mediatek-drm of vdosys0 support
+ for mt8188
+Content-Language: en-US
+To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, lancelot.wu@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ amy zhang <Amy.Zhang@mediatek.com>
+References: <20221129143503.16638-1-nathan.lu@mediatek.com>
+ <20221129143503.16638-7-nathan.lu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221129143503.16638-7-nathan.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_010911_165402_B17FBB91 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20221130_011755_647233_9337C55D 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,42 +88,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Il 29/11/22 15:35, nathan.lu ha scritto:
+> From: Nathan Lu <nathan.lu@mediatek.com>
+> 
+> add driver data of mt8188 vdosys0 to mediatek-drm and the sub driver.
+> 
+> Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
+> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
 
-On Wed, Nov 30, 2022 at 4:35 PM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> >>> Will change to other private property. The read sample delay with
-> >>> MediaTek SPI NAND controller can be set with values from 0 to 47.
-> >>> However, it`s difficult to say the unit of each vaule, because the
-> >>> unit
-> >>> value will be difference with different chip process or different
-> >>> corner IC.
-> >>
-> >> Why you cannot use same formula as other SPI drivers for sample-
-> >> delay?
-> >> And divide/multiple by some factor specific to SoC, which is taken
-> >> from
-> >> driver_data?
-> >
-> > Even for specific SoC, the unit of sample delay may be various with
-> > different corner IC.
->
-> Which is easy to achieve with driver_data as I said.
+Since series [1] was explicitly requested by maintainers...
 
-I think Xiangsheng means this:
-This sample delay isn't achieved using a fixed clock signal. It's
-probably some kind of delay circuit whose delay value varies
-due to its manufacturing process. Every single chip made got
-different delay units, so it's impossible to specify a single unit
-for one chip model.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-If that's true, shouldn't this be a value calibrated on-the-fly
-on probe instead? A single device-tree is supposed to be
-applied to all devices of the same model, so a value that
-varies on a device-by-device basis probably shouldn't
-be a device-tree property.
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=699386
 
--- 
-Regards,
-Chuanhong Guo
 
