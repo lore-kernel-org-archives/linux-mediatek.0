@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2B7C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 08:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A89C47088
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 09:09:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MUWs0peHeFh8I8V0mHaov2V5/9takFBfLQgSzUIxJn0=; b=oO8rsfMqz3F4X33307qpgbj3YS
-	VAWLjC1EzjSFstdBIbmOWCJDMB4Wv8T5oMOexIqXxQ7ZSym04vsmRDbNsUyWPwlswcQ3uJx5gcrSl
-	wITjpOQ/b8Nz3vNQzpjRW6HXTZJ/tqFC0k7Ii7cZTw48src1dM0r3Ldj2+J4lnn1xZ6X/2RFBVsQB
-	aNisICKAsRLcR05yR+ek0SL6YXt6PjF01OoFuQi1IlIoONdlxIYkHUzSEyARdU6X0xI4AWmtB9+zQ
-	0DQ3i0XbAujvJDgJVf2/TMWg8XTR5o2hfq/uv/Zk4CD6WiErS49HShusqSmVOvW1/QKvL1ph+mslL
-	ECO0mZuQ==;
+	bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=; b=xXK4WeR05iojxqr4ziztLfjoaV
+	sjQWTbCoMjU49pqq5S2ru3H0i0lwtYTv6xI7xMzOZ+lmkbeEtsVlslKG4fVI+14X5RgGdCcjhY8ni
+	N4JNYzT0PIEXmxVd9F2dBwe9k1TiMKP2/Td2zRVMrhBy/B3RuZtgjxOc1GtYhuO63uMjLd91FjMRF
+	WVFB9wYUr3/YisC3xMfIqJvV0hF8IlOtOHXhVthydZmTOZwTqcU5qDoMGPPdITvWLVVKXsBElpnNL
+	tN6ng+TXSKO7P4+E6fffyW5i0p3DgRU/+0DoX66JFV4dCx7j1lQzg9d5BX3N590tqdZgfJ/FdQjmv
+	epNyZK4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Iqi-00EkMf-MA; Wed, 30 Nov 2022 08:53:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p0J5e-00ErzH-3i; Wed, 30 Nov 2022 09:09:14 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Iqf-00EkKI-V5; Wed, 30 Nov 2022 08:53:47 +0000
-X-UUID: 64b755c79e204cec93815e84da08d6d0-20221130
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MUWs0peHeFh8I8V0mHaov2V5/9takFBfLQgSzUIxJn0=;
-	b=JUgDJersQILyGgks6V+jTGR4BNCqTeBDlr7wVwFoPiNTcaXa2F77UVDQvw9HsEZw22R5+kW20stFeJNQ0iRMYesii4tlQmIgIQFxd0Ej9sBj4Dk0MCkWkPm+edPiwalDKJUlZC7jnBi7zrurHNEqt+swkl37eNjnw7YwzDHCJ2I=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:000308e4-f949-4607-90c3-f61983389893,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:22503f30-2938-482e-aafd-98d66723b8a9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 64b755c79e204cec93815e84da08d6d0-20221130
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <andrew.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1583882258; Wed, 30 Nov 2022 01:53:42 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 30 Nov 2022 16:23:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 30 Nov 2022 16:23:06 +0800
-From: Andrew Yang <andrew.yang@mediatek.com>
-To: <rostedt@goodmis.org>
-CC: <andrew.yang@mediatek.com>, <casper.li@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
-	<mhiramat@kernel.org>
-Subject: [PATCH v2] mm/writeback: fix dereferencing NULL mapping->host
-Date: Wed, 30 Nov 2022 16:23:02 +0800
-Message-ID: <20221130082303.30859-1-andrew.yang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221129095620.4c1a8056@gandalf.local.home>
-References: <20221129095620.4c1a8056@gandalf.local.home>
+	id 1p0J5b-00Erwh-2q; Wed, 30 Nov 2022 09:09:12 +0000
+Received: by mail-ot1-x332.google.com with SMTP id t19-20020a9d7753000000b0066d77a3d474so10784181otl.10;
+        Wed, 30 Nov 2022 01:09:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=;
+        b=mDQvEm1QplQg6YYyArNrM+4YH1l2ZwXmiBdYl+pswyW6I5sLmbPz+bUOW4saQgm5SV
+         RMRttnO718bCX4d3B+3FwynDrnMldjqGzetgTSaNlnVtSvj+4xku8XUOP8A/dgHajeJk
+         G2H67Y/u8tSQwfwqME8/zkA+9/kIHQEsf0QU+bEcJuekgJ2jbgemUkdGgjZjfmdz99/+
+         zJq9gQyWw8I31QzZ+DqfYr1UCpDwHfMaX5ZqsEfjJ6OPhnHVg1pOT211oX8D9BuMpbtz
+         ro+HKT4vqeAsQP94N3hhmkGgz/mkzFcctqftEofv/88pdAlXzy04dWkeQpvv7tBO/1+S
+         TjsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B04fj9P00rqNhYYFd7+/64238rHa0D4FG/P5nQ2+7wA=;
+        b=y9Lu3DLw4tf28yhBia4hKD+evTrob4SfTxWPT8nxUP1jebU7IIOr7g+RcZF6BW+lxr
+         pHD6GRLcWBkPT2Qh66OfJKDVj0pGo/V5gCKgdPtxYmzQvqHvxWAlQfIDE8dsEmOe/VNX
+         5ralPY1Mqo9m/LQPPOqLaBW5bl0mIHpm1VUuitclfFkorhbnjBOKvRGoweVikZOy/Oku
+         VS7qAISPhNzVa0tkLum5rfRmczIxjJ/ntHXxHbhQWuDRUD2TgfLAIj2hIXra8INkXUaT
+         v/nv3a4c9fH9GZoiZqc3SnKa2l3zPmZdJhIiEjWKxZkmKFROQlbVQttuLxohq2/dQekG
+         KaVA==
+X-Gm-Message-State: ANoB5pmTUwe1t937gF0mRCIKsc2p2LTIOgYN0ypOO5G+YPvWETSIU2L+
+	/DpYkMVpxnIJhU+MyhLaiPzz/elOBWK6pi3jy/Q=
+X-Google-Smtp-Source: AA0mqf4iveLTZYV/xPRmj2emARsFD/Nu70y1nVjqfEd3HoFurktQjGnoPWWEZdf5U2qztxEjQN3owWB4HNcmz+Z3LBs=
+X-Received: by 2002:a9d:161:0:b0:66e:65dc:18e1 with SMTP id
+ 88-20020a9d0161000000b0066e65dc18e1mr2106886otu.83.1669799349116; Wed, 30 Nov
+ 2022 01:09:09 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221128020613.14821-1-xiangsheng.hou@mediatek.com>
+ <20221128020613.14821-8-xiangsheng.hou@mediatek.com> <9985d44e-977e-d7ea-0932-4879a3ccd14d@linaro.org>
+ <f83184ae803dbe0afd37a31a8a83a369a9772880.camel@mediatek.com>
+ <08ebc76a-0220-f984-b546-23dba8677be9@linaro.org> <741d7ce16df25450b08c92e508190bc7c91fc8d9.camel@mediatek.com>
+ <bc356f96-600a-64df-c0fe-00c807fa605c@linaro.org>
+In-Reply-To: <bc356f96-600a-64df-c0fe-00c807fa605c@linaro.org>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Wed, 30 Nov 2022 17:08:57 +0800
+Message-ID: <CAJsYDVKdV7Pzt4fhc+OFWto6hK9U=WBe7LkPZU5sJHX1nyXTDw@mail.gmail.com>
+Subject: Re: [PATCH 7/9] dt-bindings: spi: mtk-snfi: add two timing delay property
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?= <Xiangsheng.Hou@mediatek.com>, 
+	"miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
+	"broonie@kernel.org" <broonie@kernel.org>, 
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "vigneshr@ti.com" <vigneshr@ti.com>, 
+	"richard@nod.at" <richard@nod.at>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	=?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?= <Benliang.Zhao@mediatek.com>, 
+	"linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	=?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_005346_023708_577081D9 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20221130_010911_165402_B17FBB91 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +99,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "andrew.yang" <andrew.yang@mediatek.com>
+Hi!
 
-Check before dereferencing mapping->host
+On Wed, Nov 30, 2022 at 4:35 PM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> >>> Will change to other private property. The read sample delay with
+> >>> MediaTek SPI NAND controller can be set with values from 0 to 47.
+> >>> However, it`s difficult to say the unit of each vaule, because the
+> >>> unit
+> >>> value will be difference with different chip process or different
+> >>> corner IC.
+> >>
+> >> Why you cannot use same formula as other SPI drivers for sample-
+> >> delay?
+> >> And divide/multiple by some factor specific to SoC, which is taken
+> >> from
+> >> driver_data?
+> >
+> > Even for specific SoC, the unit of sample delay may be various with
+> > different corner IC.
+>
+> Which is easy to achieve with driver_data as I said.
 
-Suggested-by: Steven Rostedt <rostedt@goodmis.org>
-Signed-off-by: andrew.yang <andrew.yang@mediatek.com>
----
-v2: add parenthesis
----
- include/trace/events/writeback.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think Xiangsheng means this:
+This sample delay isn't achieved using a fixed clock signal. It's
+probably some kind of delay circuit whose delay value varies
+due to its manufacturing process. Every single chip made got
+different delay units, so it's impossible to specify a single unit
+for one chip model.
 
-diff --git a/include/trace/events/writeback.h b/include/trace/events/writeback.h
-index 86b2a82da546..54e353c9f919 100644
---- a/include/trace/events/writeback.h
-+++ b/include/trace/events/writeback.h
-@@ -68,7 +68,7 @@ DECLARE_EVENT_CLASS(writeback_folio_template,
- 		strscpy_pad(__entry->name,
- 			    bdi_dev_name(mapping ? inode_to_bdi(mapping->host) :
- 					 NULL), 32);
--		__entry->ino = mapping ? mapping->host->i_ino : 0;
-+		__entry->ino = (mapping && mapping->host) ? mapping->host->i_ino : 0;
- 		__entry->index = folio->index;
- 	),
- 
+If that's true, shouldn't this be a value calibrated on-the-fly
+on probe instead? A single device-tree is supposed to be
+applied to all devices of the same model, so a value that
+varies on a device-by-device basis probably shouldn't
+be a device-tree property.
+
 -- 
-2.18.0
-
+Regards,
+Chuanhong Guo
 
