@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC3AC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 10:43:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609CCC352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 11:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZGPlL9lZ5xvH+B3mVmAc8JvO5zer6RowH0S3PzS9r9U=; b=KFu+mloQGc2Cp+Ojf3uE4nh6rc
-	6hWRddMhk6Ej+LY30fHojVkvePN1QzzNRyCvc+ItVAU/uDmdsFYAM7o65k+NElBvAocN3Wxyf5nG1
-	rPASavxXsmtWoy4m8+HkICsPJzHho4bfPRv/uu8wV+TSNMHT0lc3moCIYITntPgEPfKZjxWCDui9q
-	t3dBjuuNcvmHCZnwkPZVULP2rNSpb/m4mKsxTpOJBz/D7VQZpd7I3NDBzxHrDaT6BCqq9s3WAaPKq
-	UsRamDWhQGDqknVS+5er2fm40djlqgjmkzBvMlzS3U6z2mBjnMI3YnUbsR6hkhegbVQWqK3v0Dh+k
-	88MObrfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JURzasF/WKUjop+Fvd9SLhPeoCEPFt8/WOeMl0QT0Jk=; b=mDxdD76wvW31N2f7qScH8hP5Dp
+	/VkDYtmTanbJFK+tOlXIVh0Tq+no69Q0F1gNywOLtZRBbggkA0QukQGG+uCV1KdiA4EISQe4TKFFj
+	f3jrLr2K7ezqpL8YCYC6nfpi8CCykgtOINzZgFpd0A5jNSwMWd9RFDDotfSuY1HuFre9WbbJpblS/
+	6DE1h59cQ2NnWL5p+tkzoD3FhsNShPHs36MNRg2h0SRz+A8TO14Au67OUOORQkZrGHGSjdqQOpHY6
+	uLZ92FyGbtmZ9wFBpIJcx54DnqyymQCv8Kv448kpfeqvSrcYzt2DgMGeKAnH6v2mCAQ1Noxqw2Yg8
+	Alza0HYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0KYt-00FWmS-NX; Wed, 30 Nov 2022 10:43:31 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1p0KpW-00FcQT-0w; Wed, 30 Nov 2022 11:00:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0KYr-00FWl7-Hz
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 10:43:31 +0000
-Received: by mail-wr1-x434.google.com with SMTP id m14so2448152wrh.7
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Nov 2022 02:43:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZGPlL9lZ5xvH+B3mVmAc8JvO5zer6RowH0S3PzS9r9U=;
-        b=lGx7StVF6qQsTDaKmvZp1gvL21/xrmMNCXvQCyuBtp8eB26CGM1s1CyQUOXlCtsWu2
-         LITUGy35uTtfdtsLvH3Y9gQCe9YK3oEMsCWdZEejvtuz4KD40BeCevLY8D+pOe23TonI
-         Xf9c1QuM/kypVlj5DMeqPKfePUBqzqNEx/u9g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZGPlL9lZ5xvH+B3mVmAc8JvO5zer6RowH0S3PzS9r9U=;
-        b=feK/yos3VMHPumqN1HzbJ5VN7ouZvJ1N7ojrxrsxitmrsUTMlRy9nsiF0jVt16AXNu
-         pgwwmJgr3+6bLnVmtosEGPtdD7Gk7esa41lMOcuWR+Srz5QmnrXjyspYlIQOtn/M1o0L
-         X383TJL1GMqZGYMCO/LtPXcIeBdgs++vGM3gp243KVq2jNNW4BgNjAH7F5+JvldsHcVq
-         pHaRuI/0AwYjcas2/G1fjMXHQ+xO/tTdvxmG5IKX3hvjoe/2iuh5jnm14jcUMOb3z/fj
-         wq2LwWMk5xNoXsYH+7wGbYF4VzO8/5HrZEKBEEmZapi3q58Z/q8+mVAhaoHNPT+5YPbK
-         zKUw==
-X-Gm-Message-State: ANoB5pkQy7YC8ZtD5fPH9oz+8R4bi7828VLmpRMgxVZmQqMg4lDfcqql
-	U6OwXvCdZJk9Fq/4YokYe1+3tQ==
-X-Google-Smtp-Source: AA0mqf5PE/wnU0Q+X6aw1n886cna9WKQ3FZBAb/LMVn5jwenWpq7cUhFELwzoBfWPFlUu5dm72yMWQ==
-X-Received: by 2002:a5d:4441:0:b0:242:2b6b:da5 with SMTP id x1-20020a5d4441000000b002422b6b0da5mr1353255wrr.535.1669805007024;
-        Wed, 30 Nov 2022 02:43:27 -0800 (PST)
-Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net. [212.51.149.33])
-        by smtp.gmail.com with ESMTPSA id o37-20020a05600c512500b003cf5ec79bf9sm1683349wms.40.2022.11.30.02.43.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Nov 2022 02:43:26 -0800 (PST)
-Date: Wed, 30 Nov 2022 11:43:24 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Yuan Can <yuancan@huawei.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-	daniel@ffwll.ch, matthias.bgg@gmail.com, stu.hsieh@mediatek.com,
-	ck.hu@mediatek.com, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] drm/mediatek: Add checks for devm_kcalloc
-Message-ID: <Y4czzLVPKsdKZCN8@phenom.ffwll.local>
-References: <20221125014123.121268-1-yuancan@huawei.com>
+	id 1p0KpF-00FcI7-8s; Wed, 30 Nov 2022 11:00:28 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 35FC36602B30;
+	Wed, 30 Nov 2022 11:00:21 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669806021;
+	bh=u9Hf8fb2wkuZTn14GmxwJyRB86szK4ksntM7PiVG0SY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HRvIXJ1/iWohl8AyG5Zl/CkNVTrdyazzQ8aBH2BDVYoLG8sc1lTF8H/bVqxUtwB4R
+	 nZQVd9bQosAo2rgf4J2uyAX9iSzGwFwj0R5Bs11GlXijpbKnFi/NR/SNXLN4FZH4wi
+	 WHreNcd95chi4SzQv5H3tO+RB+fThoYR6PAUfdAy2sw8XRWLZC/qBBdYiJj6D9TCfw
+	 RzBjgpHsMiIPsSaO/JDKwq3wmKKWS6OsK61wjvpvJw9XSJAtKVvRrPpQ1z2J0tA3Al
+	 +7cuBycU5FNNQlv5OUqYOhJfx0iX6awXthFgF6xgwSf6qnPuca2/C9AzS3oZXXgvpW
+	 oGxUK8RXsJndQ==
+Message-ID: <d683a2e7-b886-9bf6-27df-d8c67cedbbdd@collabora.com>
+Date: Wed, 30 Nov 2022 12:00:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221125014123.121268-1-yuancan@huawei.com>
-X-Operating-System: Linux phenom 5.19.0-2-amd64 
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH] soc: mediatek: mtk-svs: Enable the IRQ later
+Content-Language: en-US
+To: Ricardo Ribalda <ribalda@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20221127-mtk-svs-v1-0-7a5819595838@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221127-mtk-svs-v1-0-7a5819595838@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_024329_612231_9B2B2110 
-X-CRM114-Status: GOOD (  19.62  )
+X-CRM114-CacheID: sfid-20221130_030025_493613_967D8F9A 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +75,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 25, 2022 at 01:41:23AM +0000, Yuan Can wrote:
-> As the devm_kcalloc may return NULL, the return value needs to be checked
-> to avoid NULL poineter dereference.
+Il 27/11/22 21:22, Ricardo Ribalda ha scritto:
+> If the system does not come from reset (like when is booted via
+> kexec()), the peripheral might triger an IRQ before the data structures
+> are initialised.
 > 
-> Fixes: 66b2cf9623fa ("drm/mediatek: use layer_nr function to get layer number to init plane")
-> Signed-off-by: Yuan Can <yuancan@huawei.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 2 ++
->  1 file changed, 2 insertions(+)
+> Fixes:
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 112615817dcb..5071f1263216 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -945,6 +945,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->  
->  	mtk_crtc->planes = devm_kcalloc(dev, num_comp_planes,
->  					sizeof(struct drm_plane), GFP_KERNEL);
-> +	if (!mtk_crtc->planes)
-> +		return -ENOMEM;
-
-These (= drm object allocations like drm_planes, drm_crtc) should all be
-moved over to drmm_, since devm_ has the wrong lifetimes.
-
-Just in case you want to spend a pile of time in here, the error handling
-needs to be fixed either way.
--Daniel
-
->  
->  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->  		ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
-> -- 
-> 2.17.1
+> [    0.227710] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000f08
+> [    0.227913] Call trace:
+> [    0.227918]  svs_isr+0x8c/0x538
 > 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
