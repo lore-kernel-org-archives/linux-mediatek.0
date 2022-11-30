@@ -4,90 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F0DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 12:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C7BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Nov 2022 13:22:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VZK/oG0G2NuDkN3Zt9Gzw1YbRQao+w/pvv7GC7syMzY=; b=GBmqFUYPgVcw4y9B6Ju999/JH+
-	2g2sPjjgeVC8i8qnvpwerGsFqwe5GZQmD7nLL041WDp/R+pJuQx/He6oAJhvAQvizZXVlt5LlaEot
-	chRZ1mxCWzBHzWIKa23D3K3I1RiEbUrrhzRT41Vt5KycRpVcXDtbdARWhjRBlGEnL9nNghIwJ4bm0
-	Pshcpy/FNi7qBjP/D+INY6bkHNpdXDS8Sh6y3ENQFJfwDqWk54F+E8rb1637b41ZwXFbCkY2Wz+Cv
-	wHh0xVQuubCRGOureVCQQA6nKlFiJUahvRF3Y9MPNvzV/oRKO6+wpILdh7uBO318sTYfPMYEx32WO
-	IddcYldA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DFHT8QXxYUZr+XrKJX3b6Dcw8IemN6+tDUwpbICW5kA=; b=TI8FVSibXI69moEXO6VQbgXIm0
+	tn0/X/z4LnPzeynMwWtekGqRrXIqzdbwayvE4el8UPeMlygfVS8iuDK94VSjdiq1qjmn9xfdYYeSn
+	FWx0HK2K/m4Vu7V55jAh4gp8nwpYOoUZqCjLs9Xq24g1YEV0hnCS43//DZ7EmAVzOFBl+qwEK46jn
+	GX4dPD398zOCcujqa5CwgekBYwKtYps0fJHb970SJ9Z+MT+DD25Mz5+s/TMBX+0xefsfiPan2/g9o
+	lNT7j2sOgZ6MKDPTyYsyQLgBUzF46awQ5n0dMYnqEx3ppxYJ4hYw0/TrjwTYfzNF+YpzUAohDAIfT
+	2+2F14XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Mfr-00GJG5-QA; Wed, 30 Nov 2022 12:58:51 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1p0N2g-00GS1R-DB; Wed, 30 Nov 2022 13:22:26 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Mfo-00GJEr-MG
-	for linux-mediatek@lists.infradead.org; Wed, 30 Nov 2022 12:58:50 +0000
-Received: by mail-ej1-x636.google.com with SMTP id ud5so41131454ejc.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Nov 2022 04:58:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=VZK/oG0G2NuDkN3Zt9Gzw1YbRQao+w/pvv7GC7syMzY=;
-        b=cax1DoaooXKpn0DF2NXjX+cZUNFQzeHQsCF3ZlsrPv1mureGxgy8+ADefVUXNM9uIW
-         CKdRCuZ1qiDSLkuA/mpqLbMJT48eBQA4KsmIXG17gTWU82KIzEJXH3n38mFc6HfFhK5+
-         ril5KOr3MFDTFh3dl6cvFxSrNY3+19bKzJ7HU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VZK/oG0G2NuDkN3Zt9Gzw1YbRQao+w/pvv7GC7syMzY=;
-        b=BngDz8M6T0ULvhpHBc9ur0La1kVaUKPkT2C9VO96uYF63PyqTkAlI3rkyMxCARE00O
-         o3b866AVC82P6uLMZOaGZoh2dnhdZ6QrPMuhmjaJ+yLRTI0/0mXto/Fm4/4qHLdchAic
-         zTxcr8FTslHn0++gPI9BCqgu8XGYOEMxKh7ZbCwWrfsQCeIwkp9y/yW6XS7K0Js1xrsY
-         XnfCF+/t3/919g6oLz9CClFqS9A0/8yxXuG4UsLcgG16Dpv5bAEaD/6N8i2/++cZkgXI
-         5mKkG2B3uMCL6xatewbzoiplZt6Q3RibfD0+dyF5vaO9K4d2YT+LS0YLp8SUH1+fnZH5
-         C3+g==
-X-Gm-Message-State: ANoB5pmVsghYSGwbdNZSGCFfLnhhvCAA45ll6olDuUOdvpT3OC9ITsAt
-	yroMLAji5SnOPrrQJRS6qB01W5kIbJmLoz2e
-X-Google-Smtp-Source: AA0mqf7o7/gIBBokSQZ3QX/bREXblDhig+YjdUuH56LgZKXBvfJV2rnrsfAhMcMRbMa/ZSeYTImISQ==
-X-Received: by 2002:a17:906:dfc1:b0:78d:894d:e123 with SMTP id jt1-20020a170906dfc100b0078d894de123mr1246435ejc.112.1669813126359;
-        Wed, 30 Nov 2022 04:58:46 -0800 (PST)
-Received: from alco.roam.corp.google.com ([2620:0:1059:10:29cf:b72a:5a9b:a4aa])
-        by smtp.gmail.com with ESMTPSA id j10-20020a50ed0a000000b0046892e493dcsm619872eds.26.2022.11.30.04.58.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Nov 2022 04:58:46 -0800 (PST)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Wed, 30 Nov 2022 13:58:22 +0100
-Subject: [PATCH v3] mailbox: mtk-cmdq: Do not request irq until we are ready
+	id 1p0N0D-00GQix-SG; Wed, 30 Nov 2022 13:19:56 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1p0N05-0006BA-NZ; Wed, 30 Nov 2022 14:19:45 +0100
+Date: Wed, 30 Nov 2022 13:19:39 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: Steven Liu <steven.liu@mediatek.com>,
+	Henry Yen <Henry.Yen@mediatek.com>
+Subject: [PATCH v2 1/2] thermal: mediatek: add support for MT7986 and MT7981
+Message-ID: <Y4dYazyXF02eRGC5@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
-To: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org,
- Ricardo Ribalda <ribalda@chromium.org>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.11.0-dev-696ae
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2213; i=ribalda@chromium.org;
- h=from:subject:message-id; bh=JaMGeOMpmAXuv3OKor0whCcN0kyMhzBZsPq/TlDMCd0=;
- b=owEBbQKS/ZANAwAKAdE30T7POsSIAcsmYgBjh1N1HmjWa3ZkM+ohfEpYfD/yTFRjgkqcXvs7TAbz
- iHD9waiJAjMEAAEKAB0WIQREDzjr+/4oCDLSsx7RN9E+zzrEiAUCY4dTdQAKCRDRN9E+zzrEiNVbD/
- 997bPhkM4Tp0Vm9eaTCHZ8XZDPLNvOrVogWdgK/ByjYWNQ4137QEZwgW+YLN7LCGEm6Z5ByeTACf0+
- 3dSNgK+4ftYeEsYPIEzOVSVkfK+bWMz4H/y4/OrzicCKQOJTXsO9r47SmwYHLLM/7YL09pdpuGxAIG
- 7Aa2DYVQ8cQy0WctP5qFfZ7W6iGXFdZKRtTSCX2eHGwb6iPjCXAc1l+INxVyF8URkCIHF3zIF3zTL+
- 3uyntHRoTPECk+hDVXm+htEE/l40MiVxoR6+/BH2YzMOJK4n0h8nhU4zTwok1Vkt5x8q9SpJsOnZFA
- nn3LauNEQJSHpUwhac+Y04QnL1FZCg6nhGOxLGtleSNrc3wDuLtHI0oMMx82SvGI7gH4FQgaP9yQte
- fvEClF21UVBxwTm0ZwEJG779oWAFitYo1NhkZOL2UN9/PytWLjI+NA8rj0bJVP+FNrvcQuMivvUbAv
- Xo6N5hFPbfCetD0jkRt0UGQ/FylvHNNzURWVIamvdZCuUTZUHcRQmojrT8EFSQKTprna5Q5HVYELKz
- LG/ze+fwSOUyskGXYl4KLaNvEjB7qZ/Q7t2YRAG1GnhHdZIlTEVrsiYL+e9OwA6eUSSvF+gxqAsqBx
- GaoDFXUS7nA3mDn7Joo3MvwEqbtrdjczM91St6Jt3JqhzuRpChFdNKAbrdYA==
-X-Developer-Key: i=ribalda@chromium.org; a=openpgp;
- fpr=9EC3BB66E2FC129A6F90B39556A0D81F9F782DA9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_045849_239894_D8F51212 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20221130_051954_113579_D4F42270 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,67 +62,234 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the system comes from kexec() the peripheral might trigger an IRQ
-befoe we are ready for it. Triggering a crash due to an access to
-invalid memory.
+Add support for V3 generation thermal found in MT7986 and MT7981 SoCs.
+Brings code to assign values from efuse as well as new function to
+convert raw temperature to millidegree celsius, as found in MediaTek's
+SDK sources (but cleaned up and de-duplicated)
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+[1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/baf36c7eef477aae1f8f2653b6c29e2caf48475b
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
----
-Changes in v3:
-- Rebase on top of https://patchwork.kernel.org/project/linux-mediatek/patch/20221102100736.37815-1-angelogioacchino.delregno@collabora.com/
-- Link to v2: https://lore.kernel.org/r/20221125-mtk-mailbox-v2-0-886f70c7173c@chromium.org
+Changes since v1: Drop use of adc_oe field in efuse, Henry Yen confirmed
+its use has been dropped intentionally in MTK SDK as well.
 
-Changes in v2:
-- I have managed to repro a different panic. Moving the irq enabling to the very end of probe.
-- Link to v1: https://lore.kernel.org/r/20221125-mtk-mailbox-v1-0-2e3ee120850c@chromium.org
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ drivers/thermal/mtk_thermal.c | 122 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 119 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index a460ee26eb11..b18d47ea13a0 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -569,12 +569,6 @@ static int cmdq_probe(struct platform_device *pdev)
- 	}
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 8440692e3890..6a69419f8960 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -150,6 +150,21 @@
+ #define CALIB_BUF1_VALID_V2(x)		(((x) >> 4) & 0x1)
+ #define CALIB_BUF1_O_SLOPE_SIGN_V2(x)	(((x) >> 3) & 0x1)
  
- 	cmdq->irq_mask = GENMASK(cmdq->pdata->thread_nr - 1, 0);
--	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
--			       "mtk_cmdq", cmdq);
--	if (err < 0) {
--		dev_err(dev, "failed to register ISR (%d)\n", err);
--		return err;
--	}
- 
- 	dev_dbg(dev, "cmdq device: addr:0x%p, va:0x%p, irq:%d\n",
- 		dev, cmdq->base, cmdq->irq);
-@@ -641,6 +635,13 @@ static int cmdq_probe(struct platform_device *pdev)
- 
- 	cmdq_init(cmdq);
- 
-+	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
-+			       "mtk_cmdq", cmdq);
-+	if (err < 0) {
-+		dev_err(dev, "failed to register ISR (%d)\n", err);
-+		return err;
-+	}
++/*
++ * Layout of the fuses providing the calibration data
++ * These macros can be used for MT7981 and MT7986.
++ */
++#define CALIB_BUF0_ADC_GE_V3(x)		(((x) >> 0) & 0x3ff)
++#define CALIB_BUF0_ADC_OE_V3(x)		(((x) >> 10) & 0x3ff)
++#define CALIB_BUF0_DEGC_CALI_V3(x)	(((x) >> 20) & 0x3f)
++#define CALIB_BUF0_O_SLOPE_V3(x)	(((x) >> 26) & 0x3f)
++#define CALIB_BUF1_VTS_TS1_V3(x)	(((x) >> 0) & 0x1ff)
++#define CALIB_BUF1_VTS_TS2_V3(x)	(((x) >> 21) & 0x1ff)
++#define CALIB_BUF1_VTS_TSABB_V3(x)	(((x) >> 9) & 0x1ff)
++#define CALIB_BUF1_VALID_V3(x)		(((x) >> 18) & 0x1)
++#define CALIB_BUF1_O_SLOPE_SIGN_V3(x)	(((x) >> 19) & 0x1)
++#define CALIB_BUF1_ID_V3(x)		(((x) >> 20) & 0x1)
 +
+ enum {
+ 	VTS1,
+ 	VTS2,
+@@ -163,6 +178,7 @@ enum {
+ enum mtk_thermal_version {
+ 	MTK_THERMAL_V1 = 1,
+ 	MTK_THERMAL_V2,
++	MTK_THERMAL_V3,
+ };
+ 
+ /* MT2701 thermal sensors */
+@@ -245,6 +261,27 @@ enum mtk_thermal_version {
+ /* The calibration coefficient of sensor  */
+ #define MT8183_CALIBRATION	153
+ 
++/* AUXADC channel 11 is used for the temperature sensors */
++#define MT7986_TEMP_AUXADC_CHANNEL	11
++
++/* The total number of temperature sensors in the MT7986 */
++#define MT7986_NUM_SENSORS		1
++
++/* The number of banks in the MT7986 */
++#define MT7986_NUM_ZONES		1
++
++/* The number of sensing points per bank */
++#define MT7986_NUM_SENSORS_PER_ZONE	1
++
++/* MT7986 thermal sensors */
++#define MT7986_TS1			0
++
++/* The number of controller in the MT7986 */
++#define MT7986_NUM_CONTROLLER		1
++
++/* The calibration coefficient of sensor  */
++#define MT7986_CALIBRATION		165
++
+ struct mtk_thermal;
+ 
+ struct thermal_bank_cfg {
+@@ -386,6 +423,14 @@ static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
+ static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
+ static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
+ 
++/* MT7986 thermal sensor data */
++static const int mt7986_bank_data[MT7986_NUM_SENSORS] = { MT7986_TS1, };
++static const int mt7986_msr[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_MSR0, };
++static const int mt7986_adcpnp[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_ADCPNP0, };
++static const int mt7986_mux_values[MT7986_NUM_SENSORS] = { 0, };
++static const int mt7986_vts_index[MT7986_NUM_SENSORS] = { VTS1 };
++static const int mt7986_tc_offset[MT7986_NUM_CONTROLLER] = { 0x0, };
++
+ /*
+  * The MT8173 thermal controller has four banks. Each bank can read up to
+  * four temperature sensors simultaneously. The MT8173 has a total of 5
+@@ -549,6 +594,30 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
+ 	.version = MTK_THERMAL_V1,
+ };
+ 
++/*
++ * MT7986 uses AUXADC Channel 11 for raw data access.
++ */
++static const struct mtk_thermal_data mt7986_thermal_data = {
++	.auxadc_channel = MT7986_TEMP_AUXADC_CHANNEL,
++	.num_banks = MT7986_NUM_ZONES,
++	.num_sensors = MT7986_NUM_SENSORS,
++	.vts_index = mt7986_vts_index,
++	.cali_val = MT7986_CALIBRATION,
++	.num_controller = MT7986_NUM_CONTROLLER,
++	.controller_offset = mt7986_tc_offset,
++	.need_switch_bank = true,
++	.bank_data = {
++		{
++			.num_sensors = 1,
++			.sensors = mt7986_bank_data,
++		},
++	},
++	.msr = mt7986_msr,
++	.adcpnp = mt7986_adcpnp,
++	.sensor_mux_values = mt7986_mux_values,
++	.version = MTK_THERMAL_V3,
++};
++
+ /**
+  * raw_to_mcelsius - convert a raw ADC value to mcelsius
+  * @mt:	The thermal controller
+@@ -603,6 +672,22 @@ static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw)
+ 	return (format_2 - tmp) * 100;
+ }
+ 
++static int raw_to_mcelsius_v3(struct mtk_thermal *mt, int sensno, s32 raw)
++{
++	s32 tmp;
++
++	if (raw == 0)
++		return 0;
++
++	raw &= 0xfff;
++	tmp = 100000 * 15 / 16 * 10000;
++	tmp /= 4096 - 512 + mt->adc_ge;
++	tmp /= 1490;
++	tmp *= raw - mt->vts[sensno] - 2900;
++
++	return mt->degc_cali * 500 - tmp;
++}
++
+ /**
+  * mtk_thermal_get_bank - get bank
+  * @bank:	The bank
+@@ -659,9 +744,12 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 		if (mt->conf->version == MTK_THERMAL_V1) {
+ 			temp = raw_to_mcelsius_v1(
+ 				mt, conf->bank_data[bank->id].sensors[i], raw);
+-		} else {
++		} else if (mt->conf->version == MTK_THERMAL_V2) {
+ 			temp = raw_to_mcelsius_v2(
+ 				mt, conf->bank_data[bank->id].sensors[i], raw);
++		} else {
++			temp = raw_to_mcelsius_v3(
++				mt, conf->bank_data[bank->id].sensors[i], raw);
+ 		}
+ 
+ 		/*
+@@ -887,6 +975,26 @@ static int mtk_thermal_extract_efuse_v2(struct mtk_thermal *mt, u32 *buf)
  	return 0;
  }
  
-
----
-base-commit: 1642107db81361b4339643eb90af4839e2cf229f
-change-id: 20221125-mtk-mailbox-ba6cbd1d91b6
-
-Best regards,
++static int mtk_thermal_extract_efuse_v3(struct mtk_thermal *mt, u32 *buf)
++{
++	if (!CALIB_BUF1_VALID_V3(buf[1]))
++		return -EINVAL;
++
++	mt->adc_oe = CALIB_BUF0_ADC_OE_V3(buf[0]);
++	mt->adc_ge = CALIB_BUF0_ADC_GE_V3(buf[0]);
++	mt->degc_cali = CALIB_BUF0_DEGC_CALI_V3(buf[0]);
++	mt->o_slope = CALIB_BUF0_O_SLOPE_V3(buf[0]);
++	mt->vts[VTS1] = CALIB_BUF1_VTS_TS1_V3(buf[1]);
++	mt->vts[VTS2] = CALIB_BUF1_VTS_TS2_V3(buf[1]);
++	mt->vts[VTSABB] = CALIB_BUF1_VTS_TSABB_V3(buf[1]);
++	mt->o_slope_sign = CALIB_BUF1_O_SLOPE_SIGN_V3(buf[1]);
++
++	if (CALIB_BUF1_ID_V3(buf[1]) == 0)
++		mt->o_slope = 0;
++
++	return 0;
++}
++
+ static int mtk_thermal_get_calibration_data(struct device *dev,
+ 					    struct mtk_thermal *mt)
+ {
+@@ -897,6 +1005,7 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+ 
+ 	/* Start with default values */
+ 	mt->adc_ge = 512;
++	mt->adc_oe = 512;
+ 	for (i = 0; i < mt->conf->num_sensors; i++)
+ 		mt->vts[i] = 260;
+ 	mt->degc_cali = 40;
+@@ -924,8 +1033,10 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+ 
+ 	if (mt->conf->version == MTK_THERMAL_V1)
+ 		ret = mtk_thermal_extract_efuse_v1(mt, buf);
+-	else
++	else if (mt->conf->version == MTK_THERMAL_V2)
+ 		ret = mtk_thermal_extract_efuse_v2(mt, buf);
++	else
++		ret = mtk_thermal_extract_efuse_v3(mt, buf);
+ 
+ 	if (ret) {
+ 		dev_info(dev, "Device not calibrated, using default calibration values\n");
+@@ -955,6 +1066,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
+ 		.compatible = "mediatek,mt7622-thermal",
+ 		.data = (void *)&mt7622_thermal_data,
+ 	},
++	{
++		.compatible = "mediatek,mt7986-thermal",
++		.data = (void *)&mt7986_thermal_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8183-thermal",
+ 		.data = (void *)&mt8183_thermal_data,
+@@ -1070,7 +1185,8 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		goto err_disable_clk_auxadc;
+ 	}
+ 
+-	if (mt->conf->version == MTK_THERMAL_V2) {
++	if (mt->conf->version == MTK_THERMAL_V2 ||
++	    mt->conf->version == MTK_THERMAL_V3) {
+ 		mtk_thermal_turn_on_buffer(apmixed_base);
+ 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
+ 	}
 -- 
-Ricardo Ribalda <ribalda@chromium.org>
+2.38.1
+
 
