@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6E12C47088
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 11:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B080AC43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 12:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qE/q8OTGX/vukPXHLJF5f0ZobL7IbidYs5xkC1/4Glo=; b=BDy8HBCzZctVqYcKyWBoQ7PUNt
-	546Y9jreIuFRdjXCC3JforamLdOKQXsTE9ooHSq34OK9gMbBbgf77wi3vTaCoTssujeDeE9EThJaR
-	5xpeaShQFRXqVJycyFchyqgM7kWl0kKYiclGmtJWUUDMOljay5k9WKG5xWNyQevDpRK1yCrJxh75m
-	hMJs0EbKGXH7K32ql0gnMCL8vb/MHE6EAO0y2DVs5wxs8jWR5t+BMimPstDsr8YrkA8d4lB19aavD
-	/pABbJf/jq2SfgIdP0af7Uea5VKH32XuYkNlGy6Koo8ZaQhW19pDmLvOCoxM0KiiZiCBCOQNgfBAF
-	oJBu7fzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RxbOQ6p3JJB3+Vds4c+Jn49mpu7Mr7VeBd2xkXe4ZDo=; b=mJLUg9/n6cd4SfFTpoRfm9TfhJ
+	fV/Akq0uOGk0+dZ5Kzeg/Qg7EDmp3CZ2q94iaFd2s384eEeYbObZZobugw6LJTJWGdvJpfWxAy9FR
+	FQvzhEJpD2m9kYLkX+gyB4/CBZWuk3mhVc4Fn0aEYQq5DB64Zfg33KixlMa4FeYhy7XUBAbaZnnJT
+	S6qeR0FO4vMoQ3oyP7IfLwScBZ/s/dS8Z0HmWJaBz328avY0BmJnx0sRGZJdDMGuDoAZgrjoOv9WJ
+	7m9kLIk2I2DuHNEu4PiIaqx3ZfAHTIq43vVuCX/Fgyfjt8exV9Jq1txdu8qCYHrGHzYk4RFHGGnkM
+	rXg6ga5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0i0F-0078m1-Ow; Thu, 01 Dec 2022 11:45:19 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1p0iTj-007GWF-QL; Thu, 01 Dec 2022 12:15:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0i03-0078gi-OB
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 11:45:09 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id 125so1276613vsi.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 03:45:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qE/q8OTGX/vukPXHLJF5f0ZobL7IbidYs5xkC1/4Glo=;
-        b=EzvNjsK/64biWBOqAzlM7ZmFo/qswGF8E2psYeSj0xdD6287yOJeqmtxtWiDCeeRne
-         HLae+HG1stNZu59moUdMxeVYOQDp9sfWFNA6V3VypSXCAVupelhw74Ch1etHO5XDWI0m
-         ybBlh0c2Z/irb2/MSL4MDBPlinBeHrffEoJ60=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qE/q8OTGX/vukPXHLJF5f0ZobL7IbidYs5xkC1/4Glo=;
-        b=j9zuqOJfb5vAFp09Wtl3S9QjvyZM/KqvMucAiUwdKCHJFVGvtOc+5x0s4WhkSqSwgg
-         gZqHANCltjwenhkaCD3SJDlFLWVONM8L46enBNJJ6ISp5gxEacJgcTfk7pDKXdh/lBVN
-         oNu9/PPMCGLiapMPWClXZVkZRdhmKkv/0uY+IbY8F7YCgUU5tsdd6uBO/gunHzx3Y2gE
-         oMGw8jEbLaAsbV5Ig5JsMwkeqjEXPljyWo3tjd5vEszjbVHE3Is1N9lAW0lPX0eBVPnH
-         1wyeUCyTk9Y8V+zLR/XqhNfk8f7OFCAuwIPsNze96Gs4IkQ1k5PB2KLTck2nH8Js6Oh8
-         csng==
-X-Gm-Message-State: ANoB5pkP37jY7t7tjh1oWEOxi7E6YKys0pNMZwrrKIAOD5sQ2XKgxRwL
-	gYIk6bsQnrGdrRlZXvajVPODtuIkjd6lR801FIGA5A==
-X-Google-Smtp-Source: AA0mqf4u5I2OZaSiq21veOJJ1DavEQccozE6Z/lEVW/v7HrTmm4H19hg9RZ5yAmVKH9lnRtk1UUPSAMKL03w0XsTCgg=
-X-Received: by 2002:a67:c98e:0:b0:3ad:3d65:22b with SMTP id
- y14-20020a67c98e000000b003ad3d65022bmr28646035vsk.65.1669895106580; Thu, 01
- Dec 2022 03:45:06 -0800 (PST)
+	id 1p0iTh-007GTp-7R; Thu, 01 Dec 2022 12:15:46 +0000
+X-UUID: 62e3e6a91e4b4f3fbbc2d9743abb36ce-20221201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RxbOQ6p3JJB3+Vds4c+Jn49mpu7Mr7VeBd2xkXe4ZDo=;
+	b=uqAOUFs2qz3cX7mOxvwYStHnOGqy/TnAB0xKdXhKGC3+PEmd8pReZyeKTXof6j+EtmDbiDE9jev1tzRYYnjAzxfgTXH6w0viBtY0Y/KjDfSeNsEvLdaNNd/B1BS93yuPz2PYKMFuMJPGusshI4puuH4gUnrn6HBO0v+hipt6Gtc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:3ee9839e-a84f-4043-b360-826a0d38563b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:6985df1e-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 62e3e6a91e4b4f3fbbc2d9743abb36ce-20221201
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 297821849; Thu, 01 Dec 2022 05:15:32 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 1 Dec 2022 20:15:29 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 1 Dec 2022 20:15:28 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
+	<tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,3/3] arm64: dts: mt8195: Add video decoder node
+Date: Thu, 1 Dec 2022 20:15:24 +0800
+Message-ID: <20221201121525.30777-3-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221201121525.30777-1-yunfei.dong@mediatek.com>
+References: <20221201121525.30777-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-References: <20221107072243.15748-1-nancy.lin@mediatek.com> <20221107072243.15748-6-nancy.lin@mediatek.com>
-In-Reply-To: <20221107072243.15748-6-nancy.lin@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 1 Dec 2022 19:44:55 +0800
-Message-ID: <CAGXv+5Hj-H6Q3N+j2tEntd9M=9p0o7TxWYn_4aawhqFUbX7+PQ@mail.gmail.com>
-Subject: Re: [PATCH v28 05/11] soc: mediatek: refine code to use
- mtk_mmsys_update_bits API
-To: "Nancy.Lin" <nancy.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux@roeck-us.net, 
-	nfraprado@collabora.com, devicetree@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, 
-	"jason-jh . lin" <jason-jh.lin@mediatek.com>, singo.chang@mediatek.com, llvm@lists.linux.dev, 
-	Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, Nathan Chancellor <nathan@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_034507_828333_4325169E 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20221201_041545_321406_2FE83D47 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,73 +88,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 7, 2022 at 3:23 PM Nancy.Lin <nancy.lin@mediatek.com> wrote:
->
-> Simplify code for update  mmsys reg.
->
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
-a.com>
-> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  drivers/soc/mediatek/mtk-mmsys.c | 45 ++++++++++++--------------------
->  1 file changed, 16 insertions(+), 29 deletions(-)
->
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-=
-mmsys.c
-> index 9a327eb5d9d7..73c8bd27e6ae 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
 
-[...]
+Add video decoder node to mt8195 device tree.
 
-> @@ -124,27 +129,14 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
->  {
->         struct mtk_mmsys *mmsys =3D dev_get_drvdata(dev);
->         const struct mtk_mmsys_routes *routes =3D mmsys->data->routes;
-> -       u32 reg;
->         int i;
->
->         for (i =3D 0; i < mmsys->data->num_routes; i++)
-> -               if (cur =3D=3D routes[i].from_comp && next =3D=3D routes[=
-i].to_comp) {
-> -                       reg =3D readl_relaxed(mmsys->regs + routes[i].add=
-r);
-> -                       reg &=3D ~routes[i].mask;
-> -                       writel_relaxed(reg, mmsys->regs + routes[i].addr)=
-;
-> -               }
-> +               if (cur =3D=3D routes[i].from_comp && next =3D=3D routes[=
-i].to_comp)
-> +                       mtk_mmsys_update_bits(mmsys, routes[i].addr, rout=
-es[i].mask, 0);
->  }
->  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
->
-> -static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u=
-32 mask, u32 val)
-> -{
-> -       u32 tmp;
-> -
-> -       tmp =3D readl_relaxed(mmsys->regs + offset);
-> -       tmp =3D (tmp & ~mask) | val;
-> -       writel_relaxed(tmp, mmsys->regs + offset);
-> -}
-> -
->  void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val)
->  {
->         if (val)
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 70 ++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
 
-This hunk now doesn't apply due to
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 905d1a90b406..2f6f87a8e90b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1874,6 +1874,76 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_CAM>;
+ 		};
+ 
++		video-codec@18000000 {
++			compatible = "mediatek,mt8195-vcodec-dec";
++			mediatek,scp = <&scp>;
++			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			reg = <0 0x18000000 0 0x1000>,
++			      <0 0x18004000 0 0x1000>;
++			ranges = <0 0 0 0x18000000 0 0x26000>;
++
++			video-codec@2000 {
++				compatible = "mediatek,mtk-vcodec-lat-soc";
++				reg = <0 0x2000 0 0x800>;
++				iommus = <&iommu_vpp M4U_PORT_L23_VDEC_UFO_ENC_EXT>,
++					 <&iommu_vpp M4U_PORT_L23_VDEC_RDMA_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-lat", "vdec-top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
++			};
++
++			video-codec@10000 {
++				compatible = "mediatek,mtk-vcodec-lat";
++				reg = <0 0x10000 0 0x800>;
++				interrupts = <GIC_SPI 708 IRQ_TYPE_LEVEL_HIGH 0>;
++				iommus = <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD2_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_AVC_MC_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_PRED_RD_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_TILE_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_WDMA_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-lat", "vdec-top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
++			};
++
++			video-codec@25000 {
++				compatible = "mediatek,mtk-vcodec-core";
++				reg = <0 0x25000 0 0x1000>;		/* VDEC_CORE_MISC */
++				interrupts = <GIC_SPI 707 IRQ_TYPE_LEVEL_HIGH 0>;
++				iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_UFO_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PP_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_RD_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_WR_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PPWRAP_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_TILE_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD2_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_AVC_MV_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys CLK_VDEC_VDEC>,
++					 <&vdecsys CLK_VDEC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "vdec-sel", "vdec-vdec", "vdec-lat", "vdec-top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
++			};
++		};
++
+ 		larb24: larb@1800d000 {
+ 			compatible = "mediatek,mt8195-smi-larb";
+ 			reg = <0 0x1800d000 0 0x1000>;
+-- 
+2.18.0
 
-    soc: mediatek: Add all settings to mtk_mmsys_ddp_dpi_fmt_config func
-
-touching mtk_mmsys_ddp_dpi_fmt_config() as well. It's trivial to resolve
-though.
-
-ChenYu
 
