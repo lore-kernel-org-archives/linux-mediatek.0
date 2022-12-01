@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A051C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 09:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A959BC43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 09:15:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ALhdSAWsghUtCus/0uCzkcW2mIgHq/m8cptp/lUwSm8=; b=d0E/M00MDxmBgQGBozGtIIJINs
-	4H+N20pCzPss0/oqGHM4yG27JHdw3ZiuxoCDcGIqU2kzi4+sV0WJLvodR63ML3czqV7IWXn7z6bkO
-	vNVRmOI8J1rlowwiVceyy47tvekfoRM9bF1+SR1qGM4E312eQnzNanlHkd7AUH7vqBuCGWm6S0Svc
-	iDzham2kdAHAkpINat91sHu2xdkxy1vBWuTjGuRZRfI+sq/+mdLwJ4unfNM8kYiWbIBW1CxgXty5d
-	rSyK0F+tU019EoBzBcFwCYtHR/jBPZfUkzSn340zz0znISzOcX198c1eYF3qIGExHeLp8cm+sNM8I
-	Jnc63/pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rmnGX0as+j0mWZhRBwCINR7c9wsJ33DTrPhAflpkh7k=; b=vQoBH+QNwVUDUlVb81K0R36w1J
+	eTMzcldqijWu12P+2+dF8lz71kYE7kDejZnuN3Ehdb9z7hGMlDaza+xDjlPwhmbINel8P4CBiHvup
+	e0i+hvpnqr1UFHfVExXA9uOJvUv9zcxeYYl9ZGxHxrxFlnMcum3bCFgl+zg9v7S5/14agDBPFPJIH
+	6/Y2wTQTlKm9yQTVK7rPLvA6ISx1i1X7Ayl259I8TXQKH5mpOyoMy1SbTcxrFqfXTPOT18Vi3yA+z
+	X46ygjPvvgyof9PK9+4csnIOrSIT86xMNZFVuDDdRD+yUQlpcDohuge6jKm3IaD21w8IqA4LiVMUm
+	o8OWgfFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0fcV-006Dy7-SL; Thu, 01 Dec 2022 09:12:39 +0000
-Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
+	id 1p0fey-006FK0-3m; Thu, 01 Dec 2022 09:15:12 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0fcQ-006DtE-U7
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 09:12:37 +0000
-Received: by mail-vs1-xe35.google.com with SMTP id k185so949217vsc.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 01:12:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ALhdSAWsghUtCus/0uCzkcW2mIgHq/m8cptp/lUwSm8=;
-        b=Of0kh94fnlxSCsdiTYxtv2RE7VW9Z88mWIB1zYKB8gIOj/TP0UcYpIEZ3A8aAWTQSa
-         CRxETJdf6LJi3Ts6AkhEPxKvB1kEjcHUhYjljn0vVUsuXSlGffqnGoElOFXQK3TcBE4M
-         bEQ4YiR2kv7KDz6EKDjYE9lHKgebvbJvQHBsg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ALhdSAWsghUtCus/0uCzkcW2mIgHq/m8cptp/lUwSm8=;
-        b=ow7YetbF6I9AgFtXnZMetZasjOGhcCLhXSLNzkgifd3sbZu7bjh1NAQPCvdsw5Bo/x
-         KeiDB2zytMJ624874AFFALf/rPt6QQM7rZ1igp97MoP19zXkGgMTBGbnzyDSyhJPzmDO
-         vJYrjbfV72xUNZznIwLNdC8kWkl9OF02Gfdj4AFF1wDlUzwE2W7auXeuAttEt1yjcdXa
-         VCHaFfuv7gqtob7u+84dOcGalr4dokQxQpLXKb3lGbDNrVqCkvWB1DC0EWdiihzMirYD
-         IH/+6gLfb4T538DMNPIwM1JIB4V80uQhGJdUy78gjvV9e+jpifCYIlSevimZhd7ROi8o
-         I6hA==
-X-Gm-Message-State: ANoB5plgDAfx4qRvXKbTZOVXbIFM6c0smCqwVrAg8pm0NittB1RdNcdZ
-	MzYek4JHQk9ZtrrDfyyUSOOyimD06V2bv3XGglxxtQ==
-X-Google-Smtp-Source: AA0mqf5pDznuHdDmJa9FSw5s9Zyzj4ltqrR+GmrxSGK2M9Q3odMRAnvw6pHvQG/QVV0dO+6EmPnGmOEejJGbGfsV6Lw=
-X-Received: by 2002:a67:1c85:0:b0:3b0:92e2:37b0 with SMTP id
- c127-20020a671c85000000b003b092e237b0mr13239162vsc.9.1669885952671; Thu, 01
- Dec 2022 01:12:32 -0800 (PST)
+	id 1p0fef-006F6a-04; Thu, 01 Dec 2022 09:14:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1669886069; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=PuFREHxuJ3FoD3zI0cgmwgxXBACrFbsNXtmB1ZUDMZF0Vw7u5go+yLfWIyRlKmsI4dy/C4JBEgDliSKn1GHoNmOpzBqaWl6iXr8io/eTVI3oCPsCmOMRaRxdzRXptLt4DP3hnV53GkO6NAhhWer+prEaTAbxrLXw/JqtvaQrzWo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1669886069; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=rmnGX0as+j0mWZhRBwCINR7c9wsJ33DTrPhAflpkh7k=; 
+	b=fw/MEtbCpCH9VgI82wo0vE16g6dZ8NV1Le4xk0BjWdTYK38rt7XBr8kXPBBPo3YRUN6Qe0dqE8w6e3UHXsxU9mNhstxy2c3zRoUP/VEPwky/wlzovr2sCQ7tztCh20i22nk9oPAoF3GnSvN5RPlNAcT6sNLjUOovaigMSm1VuKI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669886069;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=rmnGX0as+j0mWZhRBwCINR7c9wsJ33DTrPhAflpkh7k=;
+	b=kC5OJuaedGtqPWAXavS8QBOXmOzGAN9KVKeFTZblN5hQvtgIY+bZgMHEmvSv5xeL
+	m50GcHUsZyBhq0mNsX+aCeIwwvLqFeeWwtPZKWwBHrfnYXDUeClaEjUb82O6yrKKDVx
+	OifNFxxqXQi0y0KKnh1zyARvxBzbuGAfmR/P71Bk=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1669886067241836.827775278157; Thu, 1 Dec 2022 01:14:27 -0800 (PST)
+Message-ID: <b5ed90cf-1b5d-9306-7b06-ded7c331ca2a@arinc9.com>
+Date: Thu, 1 Dec 2022 12:14:21 +0300
 MIME-Version: 1.0
-References: <20221128143832.25584-1-allen-kh.cheng@mediatek.com>
-In-Reply-To: <20221128143832.25584-1-allen-kh.cheng@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 1 Dec 2022 17:12:21 +0800
-Message-ID: <CAGXv+5HVVYb2RGE+dJ7JWpoJ5_QDnvvFEn=xo+17it-OFDCMNg@mail.gmail.com>
-Subject: Re: [PATCH v5 0/3] Add vcodec lat and core nodes for mt8192
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
+Content-Language: en-US
+To: Jakub Kicinski <kuba@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ soc@kernel.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Michael Ellerman <mpe@ellerman.id.au>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <vladimir.oltean@nxp.com>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20221130141040.32447-1-arinc.unal@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_011234_989708_3C106F35 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20221201_011453_165199_766E77ED 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,35 +84,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 28, 2022 at 10:38 PM Allen-KH Cheng
-<allen-kh.cheng@mediatek.com> wrote:
->
-> This series is based on linux-next.
->
-> Change from v4:
->  - Add patch for removing dma-ranges
->  - Update child names to video-codec
->  - Update patch title and message
->
-> Change from v3:
->  - Drop `vcodec_lat:` and `vcodec_core:`
->
-> Change from v2:
->  - Add a dt-bindings patch for changing "vcodec" to "video-codec"
->  - Rename child names for vcodec lat and core nodes
->
-> Change from v1:
->  - Replace node names with video-codec
->   [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
->
-> Allen-KH Cheng (3):
->   media: dt-bindings: media: mediatek: Rename child node names for
->     decoder
->   media: dt-bindings: media: mediatek: Remove "dma-ranges" property for
->     decoder
->   arm64: dts: mt8192: Add video-codec nodes
+I'm sending a more specific mail to make sure this series doesn't fall 
+through the cracks like Andrew said. I'd like this merged this week 
+before the merge window closes.
 
-Whole series is:
+Jakub, please take patch 1.
+Arnd, please take patch 2 and 3.
+Thomas, please take patch 4.
+Michael, please take patch 5.
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Arınç
+
+On 30.11.2022 17:10, Arınç ÜNAL wrote:
+> Hello folks,
+> 
+> With this patch series, we're completely getting rid of 'label = "cpu";'
+> which is not used by the DSA dt-binding at all.
+> 
+> Information for taking the patches for maintainers:
+> Patch 1: netdev maintainers (based off netdev/net-next.git main)
+> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
+> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
+> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
+> 
+> I've been meaning to submit this for a few months. Find the relevant
+> conversation here:
+> https://lore.kernel.org/netdev/20220913155408.GA3802998-robh@kernel.org/
+> 
+> Here's how I did it, for the interested (or suggestions):
+> 
+> Find the platforms which have got 'label = "cpu";' defined.
+> grep -rnw . -e 'label = "cpu";'
+> 
+> Remove the line where 'label = "cpu";' is included.
+> sed -i /'label = "cpu";'/,+d arch/arm/boot/dts/*
+> sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/freescale/*
+> sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/marvell/*
+> sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/mediatek/*
+> sed -i /'label = "cpu";'/,+d arch/arm64/boot/dts/rockchip/*
+> sed -i /'label = "cpu";'/,+d arch/mips/boot/dts/qca/*
+> sed -i /'label = "cpu";'/,+d arch/mips/boot/dts/ralink/*
+> sed -i /'label = "cpu";'/,+d arch/powerpc/boot/dts/turris1x.dts
+> sed -i /'label = "cpu";'/,+d Documentation/devicetree/bindings/net/qca,ar71xx.yaml
+> 
+> Restore the symlink files which typechange after running sed.
+> 
+> Arınç ÜNAL (5):
+>    dt-bindings: net: qca,ar71xx: remove label = "cpu" from examples
+>    arm: dts: remove label = "cpu" from DSA dt-binding
+>    arm64: dts: remove label = "cpu" from DSA dt-binding
+>    mips: dts: remove label = "cpu" from DSA dt-binding
+>    powerpc: dts: remove label = "cpu" from DSA dt-binding
+> 
+> 
 
