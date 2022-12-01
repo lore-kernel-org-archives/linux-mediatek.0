@@ -4,81 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53AA4C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 08:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F87C4321E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 08:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V298lkV5QtI9GGd+VqJ9vB4qdc38PxeAIxTF+s8oIPU=; b=TqzSBh3opSHABmf+4QQu+vdT0A
-	2GRsgrwbX1qGpZM5NI49qZz4EWfaLfZVSlPxxoDHNOx4thLEZepiPxxE7KfGK7cO18TAfUSO91hxv
-	4bGUGDhzvKh2Zf6zP98fij+JhsC9TAninBKRuYDnLhrmqQq5+eiq6weD633jAGaP1k/uFMVNqLYea
-	uPYeksIadThgvu6Zj2wGK5N7Ejge2mGO1kg6ntKRQU6M2SnnCeBozFOGWh4pkUnhs+4Fvu2SAjWmr
-	nMN0MkKnEwqcXhOvynff5vNyeiptqVKYYtJ8vv28kozehEdR2TQErU5T6hA4OXysL6YTC1QxDJ/Kk
-	lt/+uzeA==;
+	bh=Q+w2xjkAkAwueTKsnPAAzjGgOfM9pbBn6HnDyrivJKM=; b=KpDfZ+mCzgEguiyyzn5XqEQ4eA
+	0CBA5zAZFJO3hoDYmHtLhNsMNBna4vLTahJjOKk9YOAISB9OTw87GloUx47mRI3TrpzO+BHAZHF+u
+	gUa6ckwhAb0afGkzguyalG6nqyaEg+RpFdrNnhh1NZIEsamYqDaDhy3R/q9x0ixeQBuTpRuEIh8JW
+	ChuJb+cLoQNDRPy2FjCaO3fPHvh7z93oyxVnzW1f1SghsMTYRfJVKsmGVibQhDphZPv95PRbxst9Y
+	9enUAUZcwVg17xpksLjfNu+/JO+bsl4mST1DYsVKQn57EdfFNRgRAWj2u+rfDPXoU9YTH4r7cVPf6
+	xzt+9afQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0fAv-005zJW-2B; Thu, 01 Dec 2022 08:44:09 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1p0fF2-0061di-Ix; Thu, 01 Dec 2022 08:48:24 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0f9a-005yb5-Cc
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 08:42:47 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id jn7so969143plb.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 00:42:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=V298lkV5QtI9GGd+VqJ9vB4qdc38PxeAIxTF+s8oIPU=;
-        b=HXNerBkWxszjzmqR+65CvsTOErf+iOTLkDjru19S6a7Uz08AbN/rnneQjLsuIJvrwr
-         Dg4WpD9aZ6NDY+2mQzKl90XlI6RelVXlXhdV3g6eI1GbO5rHFK0JkQSA/Uh9EvY/A0St
-         ykQNoytvUS9qE6UxB7Ts+ItS8hkq2vLt19GbE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=V298lkV5QtI9GGd+VqJ9vB4qdc38PxeAIxTF+s8oIPU=;
-        b=i1T7ooAHfsM8uHUpAnKNOJ5ZNUdsiT5FoITFsWcjiI2xiNG/3wid2d16c8dnA2f5bY
-         ClTpWR5KdCdknSHw3v3/IUkS0PVIY+x7kqNSSmk0FffBrjc08sFOtbfFrVfnH0xvp6Lo
-         Vgm0FoDaGk2OscPHWPEAaQw/SpmIMjkJCMyRdcqaww4EYf52o/DHoWhbUfYfznlL4W+k
-         ct1r3Vvsf+Dpax0snkjiTQlsLsKn4W9YQ4ksAvVcrNCBIzOUaxZxueG52NDCqNDheOqf
-         UX6oCvSvfhPdfrqsrjvCat1D+Fmh76ri9+ZaHqYIN261H86EPdbg2yeN4ijvq1KhxNQO
-         kXDQ==
-X-Gm-Message-State: ANoB5pm42azoW5t2jO4YD6SiTSDAqgre9TtDgekOBqgOvvv2A07v/h2H
-	QlUVaewvNI9RGlx+MQhS0nRwMQ==
-X-Google-Smtp-Source: AA0mqf665+1a7uoBaUKEuv2A7tuu9y7S3ALImhvKQOwgh7iwjPQZ077I2pm6cCd4wI2XcxO8yLOpyQ==
-X-Received: by 2002:a17:90a:4594:b0:218:f745:76fe with SMTP id v20-20020a17090a459400b00218f74576femr37452609pjg.245.1669884163980;
-        Thu, 01 Dec 2022 00:42:43 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:2416:fa4e:4eeb:fcde])
-        by smtp.gmail.com with ESMTPSA id j5-20020a170902690500b001708c4ebbaesm2932293plk.309.2022.12.01.00.42.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Dec 2022 00:42:43 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>
-Subject: [PATCH 4/4] arm64: dts: mediatek: mt8186: Fix systimer 13 MHz clock description
-Date: Thu,  1 Dec 2022 16:42:29 +0800
-Message-Id: <20221201084229.3464449-5-wenst@chromium.org>
-X-Mailer: git-send-email 2.38.1.584.g0f3c55d4c2-goog
-In-Reply-To: <20221201084229.3464449-1-wenst@chromium.org>
-References: <20221201084229.3464449-1-wenst@chromium.org>
+	id 1p0fE5-0061BZ-2L; Thu, 01 Dec 2022 08:47:27 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4525E6602A81;
+	Thu,  1 Dec 2022 08:47:14 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669884434;
+	bh=TB5bLrpKXkDRMFvWFAAHuFF1CR0GtLXdKBtS2KeNsgk=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
+	b=WdKKvLiDbZ5CL/lgLFU5onzxpqdklw229IC7HfGsRNaIQ6uOgX6IONurkSzOCHoeK
+	 rxUavI8ph2aaXDzEWpIr4mJab/E/hBwRm8WEBNHpZ+0vYt5SNgZi3LUwWle7DQLtC8
+	 QXCsnqZ3SE56b4IImBdljrDWT6pkObBJZtXL+OJP85fN4D2ILKsC2BpHBtMkMLviQ4
+	 xvqa242prCZd7fSPGXwgqRuA5yr07wTVV1aTnyKwu3y1bmzqKz3FvRMVaZFCG89ADq
+	 E8DS+tzoUVUs33qPwjWYstxgSzBR11dfF0h7mins8qs1Wi/IuZz16wbBrhZ0/waAud
+	 pTjMmWysnytMw==
+Message-ID: <eee83c7f-441d-997c-de6b-56ea351f70cd@collabora.com>
+Date: Thu, 1 Dec 2022 09:47:11 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3] mailbox: mtk-cmdq: Do not request irq until we are
+ ready
+To: Ricardo Ribalda <ribalda@chromium.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
+Content-Language: en-US
+In-Reply-To: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_004246_459099_2DE79398 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20221201_004726_066332_4E09B14E 
+X-CRM114-Status: UNSURE (   6.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,40 +77,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The systimer block derives its 13 MHz clock by dividing the main 26 MHz
-oscillator clock by 2 internally. The 13 MHz clock is not a separate
-oscillator.
+Il 30/11/22 13:58, Ricardo Ribalda ha scritto:
+> If the system comes from kexec() the peripheral might trigger an IRQ
+> befoe we are ready for it. Triggering a crash due to an access to
+> invalid memory.
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Fix this by making the 13 MHz clock a divide-by-2 fixed factor clock,
-taking its input from the main 26 MHz oscillator.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Fixes: 2e78620b1350 ("arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 4a2f7ad3c6f0..209f26f12dbc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -215,10 +215,12 @@ l3_0: l3-cache {
- 		};
- 	};
- 
--	clk13m: oscillator-13m {
--		compatible = "fixed-clock";
-+	clk13m: fixed-factor-clock-13m {
-+		compatible = "fixed-factor-clock";
- 		#clock-cells = <0>;
--		clock-frequency = <13000000>;
-+		clocks = <&clk26m>;
-+		clock-div = <2>;
-+		clock-mult = <1>;
- 		clock-output-names = "clk13m";
- 	};
- 
--- 
-2.38.1.584.g0f3c55d4c2-goog
 
 
