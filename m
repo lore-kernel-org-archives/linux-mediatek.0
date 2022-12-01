@@ -4,66 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBA2C47088
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 15:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14CA9C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 15:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8JnTm447EXIh0WWkuyX4u7YsPtzOsfyUYuE/CKoAxUQ=; b=AAW/A0tOSNFOu4VzV8mo75onl2
-	g+7ZVab/2cqWBras2ZZWxXEAY7SF5xTWDwoHqMiLdhwubjdgr1nn/PUNo6jEx9oBYhn++FNLXsmMq
-	cSYkz//qd2P50Dq5OFKGHxXTVHC5VXuvEZnWSC58E9oF6AYfFaMBC6fOHGUEbIpBIvFYzNV5FSU8o
-	jSNtMdiZnvnvU7G0V0h4gFpRaSfthpfi+sELFkhXdRwq1Fu9XtavDAhaVeEb5Jx5l0y8pLPBeM+nZ
-	ugbrkYHEeoIzee7l+ND0HeYFzk41IxL/6/YZEMFjRjrkgvE728nqgkUSELZKBCqBGZNqIY+2cm4cy
-	dDICw5mA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6qA7vnsx32MX5OyyLLYdKVb/qpjIQ2Ysp6Y93djMIBE=; b=wjD6jAswWhzzUIeyfnXOAuA+VF
+	D5HTUo+ZfOK0y10epMnFY//ryqJnIj30T1N13IJMoNozCaEWHhSvPM72IYsaDL1evcZBna2AEbnUj
+	c51oipwAjbpFwMpTZbm/WVmlKV4zmJPzBFSS65Blypa+Krjd5TVnpdMaPy/02lHAVVfOHXV0bKTOv
+	f0FR23xMao/RPX4I3uz0jvkWyjaT60FM52oYVJOrIWgWQZmWEoPDmDbZFWlu49J4dQwCW6+wDtltr
+	0YM2yZNjom26eYqgZUcuXI9RhvLDaSQY8NJvQEd6Tw/PGsJrKrtnrNbAinPqvA4n6utjssjfN40ew
+	oyWQIv+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0lTB-008DYZ-0n; Thu, 01 Dec 2022 15:27:25 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p0lTN-008Dcg-IK; Thu, 01 Dec 2022 15:27:37 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0lT7-008DWK-Dl
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 15:27:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 38858B81F59;
-	Thu,  1 Dec 2022 15:27:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A137FC433D6;
-	Thu,  1 Dec 2022 15:27:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669908438;
-	bh=fjBkFSHXsfnsna0pkKiMUUzJlNUEorxvMDs0l/ALuZw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Ee/B22uKb/cFiI9/KlaoIh5LAQweauDguc70tsKFG5EvKotk7zh8iD52IT3TMNUr2
-	 lh2bBc1LDXt/RpwA7u6zR/rh9vOx/+rwtq4EcyTo0u0MO4IlpCnHMkjA/PhCDOqZSp
-	 8Q8uvATwL5SoPiS291hG2TZa8XyxWmPy2gg43zX0AvDTLPLPeVAzW3J1bBCCTJkaeo
-	 GFeE3ory3BeKO0ukalGhO8oJKFcNhVt9WomsL3EChCb8p15lHKlFPPCjbgtzPl/KVP
-	 Y4HI4b4IAw3D0ioLet6qTegm16Y3qoEwLNFrUOZPI+lpyyDQEoKGOLqGIC6pEwp+7a
-	 zO9Ui2hLPTu+w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com
-Subject: [PATCH net-next] net: ethernet: mtk_wed: fix sleep while atomic in mtk_wed_wo_queue_refill
-Date: Thu,  1 Dec 2022 16:26:53 +0100
-Message-Id: <67ca94bdd3d9eaeb86e52b3050fbca0bcf7bb02f.1669908312.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.38.1
+	id 1p0lTA-008DX1-VN; Thu, 01 Dec 2022 15:27:27 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.94.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1p0lSo-0002JZ-28; Thu, 01 Dec 2022 16:27:02 +0100
+Date: Thu, 1 Dec 2022 15:26:54 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Thorsten Leemhuis <regressions@leemhuis.info>
+Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
+ mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
+Message-ID: <Y4jHvomTrU8guBox@makrotopia.org>
+References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+ <eb142a22-b35e-ec3f-ee0a-9e3e7b24cea6@gmail.com>
+ <bf8d2a8f-7654-29be-1104-a842c6657b5e@systemli.org>
+ <02c2c955-940b-b315-0474-85d0eddad7a3@leemhuis.info>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <02c2c955-940b-b315-0474-85d0eddad7a3@leemhuis.info>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_072721_789480_34D9C1F5 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20221201_072725_213886_7CC30519 
+X-CRM114-Status: GOOD (  27.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,109 +58,293 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, Nick <vincent@systemli.org>, viresh.kumar@linaro.org, linux-pm@vger.kernel.org, "regressions@lists.linux.dev" <regressions@lists.linux.dev>, rex-bc.chen@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, =?iso-8859-1?B?SPxobiw=?= Thomas <thomas.huehn@hs-nordhausen.de>, jia-wei.chang@mediatek.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to fix the following sleep while atomic bug always alloc pages
-with GFP_ATOMIC in mtk_wed_wo_queue_refill since page_frag_alloc runs in
-spin_lock critical section.
+On Thu, Dec 01, 2022 at 04:08:50PM +0100, Thorsten Leemhuis wrote:
+> Hi, this is your Linux kernel regression tracker. Top-posting for once,
+> to make this easily accessible to everyone.
+> 
+> I noticed this regression didn't make any progress
+> 
+> Matthias, is that because Nick didn't exactly do what you asked for (he
+> afaics tried -next, but nevertheless patches it)? Or is there another
+> reason?
 
-[    9.049719] Hardware name: MediaTek MT7986a RFB (DT)
-[    9.054665] Call trace:
-[    9.057096]  dump_backtrace+0x0/0x154
-[    9.060751]  show_stack+0x14/0x1c
-[    9.064052]  dump_stack_lvl+0x64/0x7c
-[    9.067702]  dump_stack+0x14/0x2c
-[    9.071001]  ___might_sleep+0xec/0x120
-[    9.074736]  __might_sleep+0x4c/0x9c
-[    9.078296]  __alloc_pages+0x184/0x2e4
-[    9.082030]  page_frag_alloc_align+0x98/0x1ac
-[    9.086369]  mtk_wed_wo_queue_refill+0x134/0x234
-[    9.090974]  mtk_wed_wo_init+0x174/0x2c0
-[    9.094881]  mtk_wed_attach+0x7c8/0x7e0
-[    9.098701]  mt7915_mmio_wed_init+0x1f0/0x3a0 [mt7915e]
-[    9.103940]  mt7915_pci_probe+0xec/0x3bc [mt7915e]
-[    9.108727]  pci_device_probe+0xac/0x13c
-[    9.112638]  really_probe.part.0+0x98/0x2f4
-[    9.116807]  __driver_probe_device+0x94/0x13c
-[    9.121147]  driver_probe_device+0x40/0x114
-[    9.125314]  __driver_attach+0x7c/0x180
-[    9.129133]  bus_for_each_dev+0x5c/0x90
-[    9.132953]  driver_attach+0x20/0x2c
-[    9.136513]  bus_add_driver+0x104/0x1fc
-[    9.140333]  driver_register+0x74/0x120
-[    9.144153]  __pci_register_driver+0x40/0x50
-[    9.148407]  mt7915_init+0x5c/0x1000 [mt7915e]
-[    9.152848]  do_one_initcall+0x40/0x25c
-[    9.156669]  do_init_module+0x44/0x230
-[    9.160403]  load_module+0x1f30/0x2750
-[    9.164135]  __do_sys_init_module+0x150/0x200
-[    9.168475]  __arm64_sys_init_module+0x18/0x20
-[    9.172901]  invoke_syscall.constprop.0+0x4c/0xe0
-[    9.177589]  do_el0_svc+0x48/0xe0
-[    9.180889]  el0_svc+0x14/0x50
-[    9.183929]  el0t_64_sync_handler+0x9c/0x120
-[    9.188183]  el0t_64_sync+0x158/0x15c
+I've also tried this on plain linux-next, also using the BPi-R64 and
+can confirm the issue exists also there, without any additional patches
+applied.
 
-Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+Reverting commit 6a17b3876b ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
+fixes the issue. Unfortunately, by now it no longer reverts cleanly and
+requires a tiny amount of manual clean-up...
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 4754b6db009e..a219da85f4db 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -133,17 +133,18 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
- 
- static int
- mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
--			gfp_t gfp, bool rx)
-+			bool rx)
- {
- 	enum dma_data_direction dir = rx ? DMA_FROM_DEVICE : DMA_TO_DEVICE;
- 	int n_buf = 0;
- 
- 	spin_lock_bh(&q->lock);
- 	while (q->queued < q->n_desc) {
--		void *buf = page_frag_alloc(&q->cache, q->buf_size, gfp);
- 		struct mtk_wed_wo_queue_entry *entry;
- 		dma_addr_t addr;
-+		void *buf;
- 
-+		buf = page_frag_alloc(&q->cache, q->buf_size, GFP_ATOMIC);
- 		if (!buf)
- 			break;
- 
-@@ -215,7 +216,7 @@ mtk_wed_wo_rx_run_queue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
- 			mtk_wed_mcu_rx_unsolicited_event(wo, skb);
- 	}
- 
--	if (mtk_wed_wo_queue_refill(wo, q, GFP_ATOMIC, true)) {
-+	if (mtk_wed_wo_queue_refill(wo, q, true)) {
- 		u32 index = (q->head - 1) % q->n_desc;
- 
- 		mtk_wed_wo_queue_kick(wo, q, index);
-@@ -432,7 +433,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
- 	if (ret)
- 		goto error;
- 
--	mtk_wed_wo_queue_refill(wo, &wo->q_tx, GFP_KERNEL, false);
-+	mtk_wed_wo_queue_refill(wo, &wo->q_tx, false);
- 	mtk_wed_wo_queue_reset(wo, &wo->q_tx);
- 
- 	regs.desc_base = MTK_WED_WO_CCIF_DUMMY5;
-@@ -446,7 +447,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
- 	if (ret)
- 		goto error;
- 
--	mtk_wed_wo_queue_refill(wo, &wo->q_rx, GFP_KERNEL, true);
-+	mtk_wed_wo_queue_refill(wo, &wo->q_rx, true);
- 	mtk_wed_wo_queue_reset(wo, &wo->q_rx);
- 
- 	/* rx queue irqmask */
--- 
-2.38.1
 
+> 
+> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+> 
+> P.S.: As the Linux kernel's regression tracker I deal with a lot of
+> reports and sometimes miss something important when writing mails like
+> this. If that's the case here, don't hesitate to tell me in a public
+> reply, it's in everyone's interest to set the public record straight.
+> 
+> On 15.11.22 20:44, Nick wrote:
+> > I used now the linux-next kernel tree (with
+> > https://patchwork.ozlabs.org/project/linux-mtd/list/?series=327227 so
+> > single uImage.FIT will work).
+> >
+> > Same issue:
+> > 
+> >> [ 0.886209] Kernel BUG at regulator_check_voltage+0xb0/0xf0 [verbose
+> >> debug info unavailable]
+> >>
+> >> [ 0.894663] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
+> >>
+> >> [ 0.900759] Modules linked in:
+> >>
+> >> [ 0.903819] CPU: 1 PID: 79 Comm: kworker/1:1 Tainted: G S
+> >> 6.1.0-rc5-next-20221115+ #0
+> >>
+> >> [ 0.904360] pstore: Using crash dump compression: deflate
+> >>
+> >> [ 0.913038] Hardware name: Bananapi BPI-R64 (DT)
+> >>
+> >> [ 0.913043] Workqueue: events dbs_work_handler
+> >>
+> >> [ 0.913056] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS
+> >> BTYPE=--)
+> >>
+> >> [ 0.913063] pc : regulator_check_voltage+0xb0/0xf0
+> >>
+> >> [ 0.913070] lr : regulator_set_voltage_unlocked+0x88/0x110
+> >>
+> >> [ 0.913077] sp : ffffffc00cef3b30
+> >>
+> >> [ 0.913080] x29: ffffffc00cef3b30 x28: ffffff8006f6f800 x27:
+> >> ffffff8006f6fa00
+> >>
+> >> [ 0.931243] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000 ranges:
+> >>
+> >> [ 0.934474]
+> >>
+> >> [ 0.934475] x26: 00000000001312d0 x25: 0000000000000024
+> >>
+> >> [ 0.939298] mtk-pcie 1a143000.pcie: Parsing ranges property...
+> >>
+> >> [ 0.944730] x24: 0000000000118c30
+> >>
+> >> [ 0.948038] mtk-pcie 1a143000.pcie: MEM 0x0020000000..0x0027ffffff ->
+> >> 0x0020000000
+> >>
+> >> [ 0.955155]
+> >>
+> >> [ 0.955157] x23: 0000000000149970 x22: ffffff8000861800 x21:
+> >> ffffff8006f6f800
+> >>
+> >> [ 0.955166] x20: 00000000001312d0 x19: 0000000000000000 x18:
+> >> 00000000cfad1bd3
+> >>
+> >> [ 0.955174] x17: 000000000000000c x16: 0000000000000005 x15:
+> >> 0000000000000000
+> >>
+> >> [ 1.008473] x14: 0000000000000000 x13: 0000000000000165 x12:
+> >> 0101010101010101
+> >>
+> >> [ 1.015608] x11: 00000000017d7840 x10: 0000000000000850 x9 :
+> >> ffffffc00cef3900
+> >>
+> >> [ 1.017014] mmc0: new HS200 MMC card at address 0001
+> >>
+> >> [ 1.022740] x8 : ffffff8005ee9f30 x7 : 0000000000000001 x6 :
+> >> 00000000001312d0
+> >>
+> >> [ 1.022748] x5 : 0000000000118c30 x4 : 0000000000000000 x3 :
+> >> 0000000000000000
+> >>
+> >> [ 1.022756] x2 : ffffffc00cef3b68 x1 : ffffffc00cef3b6c
+> >>
+> >> [ 1.029034] mmcblk0: mmc0:0001 008G30 7.28 GiB
+> >>
+> >> [ 1.034833] x0 : ffffff8000861800
+> >>
+> >> [ 1.034838] Call trace:
+> >>
+> >> [ 1.044528] Alternate GPT is invalid, using primary GPT.
+> >>
+> >> [ 1.047175] regulator_check_voltage+0xb0/0xf0
+> >>
+> >> [ 1.052603] FIT: Selected configuration: "config-1" (OpenWrt
+> >> bananapi_bpi-r64)
+> >>
+> >> [ 1.055090] regulator_set_voltage+0x3c/0x64
+> >>
+> >> [ 1.057539] FIT: kernel sub-image 0x00001000..0x005200f9 "kernel-1"
+> >> (ARM64 OpenWrt Linux-6.1-rc2)
+> >>
+> >> [ 1.062824] mtk_cpufreq_voltage_tracking+0x12c/0x27c
+> >>
+> >> [ 1.062831] mtk_cpufreq_set_target+0x1c4/0x350
+> >>
+> >> [ 1.062837] __cpufreq_driver_target+0x2dc/0x660
+> >>
+> >> [ 1.067289] FIT: flat_dt sub-image 0x00521000..0x005272d9 "fdt-1"
+> >> (ARM64 OpenWrt bananapi_bpi-r64 device tree blob)
+> >>
+> >> [ 1.074484] od_dbs_update+0xb8/0x19c
+> >>
+> >> [ 1.074490] dbs_work_handler+0x3c/0x7c
+> >>
+> >> [ 1.078774] FIT: filesystem sub-image 0x00528000..0x00829fff
+> >> "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64 rootfs)
+> >>
+> >> [ 1.088560] process_one_work+0x200/0x3a0
+> >>
+> >> [ 1.093624] mmcblk0: p1 p2 p3 p4 p65(rootfs-1) p66(rootfs_data) p128
+> >>
+> >> [ 1.098116] worker_thread+0x170/0x4c0
+> >>
+> >> [ 1.104575] mmcblk0boot0: mmc0:0001 008G30 4.00 MiB
+> >>
+> >> [ 1.114009] kthread+0xd4/0xe0
+> >>
+> >> [ 1.114016] ret_from_fork+0x10/0x20
+> >>
+> >> [ 1.114028] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
+> >>
+> >> [ 1.114033] ---[ end trace 0000000000000000 ]---
+> >> [ 0.878926] ------------[ cut here ]------------
+> >>
+> > 
+> > Full log:
+> > https://gist.github.com/PolynomialDivision/4a555079887b288f4795b28eb3607aa9
+> > 
+> > Big thanks to Daniel helping me to build a vanilla kernel with OpenWrt
+> > build system.
+> > 
+> > Bests
+> > Nick
+> > 
+> > On 11/10/22 12:26, Matthias Brugger wrote:
+> >> Hi Nick,
+> >>
+> >> On 09/11/2022 14:35, Nick wrote:
+> >>> Hi,
+> >>> while trying to bump OpenWrt Kernel to 6.1rc2 I noticed that the
+> >>> kernel is crashing while booting on a Banana Pi R64 (MT7622):
+> >>>
+> >>>> [    1.055565] ------------[ cut here ]------------
+> >>>> [    1.060204] Kernel BUG at regulator_check_voltage+0xb0/0xf0
+> >>>> [verbose debug info unavailable]
+> >>>> [    1.062418] mtk-pcie 1a143000.pcie: host bridge /pcie@1a143000
+> >>>> ranges:
+> >>>> [    1.068656] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
+> >>>> [    1.075248] mtk-pcie 1a143000.pcie: Parsing ranges property...
+> >>>> [    1.081257] Modules linked in:
+> >>>> [    1.081264] CPU: 1 PID: 328 Comm: kworker/1:7 Tainted: G
+> >>>> S                 6.1-rc2 #0
+> >>>> [    1.087088] mtk-pcie 1a143000.pcie:      MEM
+> >>>> 0x0020000000..0x0027ffffff -> 0x0020000000
+> >>>> [    1.090126] Hardware name: Bananapi BPI-R64 (DT)
+> >>>> [    1.110541] Workqueue: events dbs_work_handler
+> >>>> [    1.114988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS
+> >>>> BTYPE=--)
+> >>>> [    1.121944] pc : regulator_check_voltage+0xb0/0xf0
+> >>>> [    1.126728] lr : regulator_set_voltage_unlocked+0x88/0x110
+> >>>> [    1.129638] mmc1: host does not support reading read-only switch,
+> >>>> assuming write-enable
+> >>>> [    1.132207] sp : ffffffc00956bb30
+> >>>> [    1.132209] x29: ffffffc00956bb30 x28: ffffff8000efb400 x27:
+> >>>> 0000000000000024
+> >>>> [    1.132219] x26: 00000000001312d0 x25: 0000000000118c30 x24:
+> >>>> 00000000001312d0
+> >>>> [    1.132227] x23: 0000000000149970
+> >>>> [    1.146036] mmc1: new high speed SDHC card at address e624
+> >>>> [    1.150642]  x22: ffffff800038f800
+> >>>> [    1.159192] mmcblk1: mmc1:e624 SL16G 14.8 GiB
+> >>>> [    1.161068]  x21: ffffff8000efb100
+> >>>> [    1.161072] x20: 00000000001312d0
+> >>>> [    1.175424] GPT:partition_entry_array_crc32 values don't match:
+> >>>> 0xa0b5ce6d != 0xab54d286
+> >>>> [    1.177757]  x19: 0000000000000000 x18: 00000000799b2550
+> >>>> [    1.181067] GPT:Primary header thinks Alt. header is not at the
+> >>>> end of the disk.
+> >>>> [    1.189143] x17: 0000000000000003 x16: 0000000000000001 x15:
+> >>>> 0000000000000000
+> >>>> [    1.189151] x14: 0000000000000000 x13: 0000000000000146 x12:
+> >>>> 00000000fa83b2da
+> >>>> [    1.189159] x11: 000000000000013d x10: 0000000000000850
+> >>>> [    1.194472] GPT:305184 != 31116287
+> >>>> [    1.201842]  x9 : ffffffc00956b910
+> >>>> [    1.201846] x8 : ffffff8000b9edf0 x7 : 0000000000000001
+> >>>> [    1.208970] GPT:Alternate GPT header not at the end of the disk.
+> >>>> [    1.216092]  x6 : 00000000001312d0
+> >>>> [    1.216095] x5 : 0000000000118c30 x4 : 0000000000000000 x3 :
+> >>>> 0000000000000000
+> >>>> [    1.216103] x2 : ffffffc00956bb68 x1 : ffffffc00956bb6c
+> >>>> [    1.221321] GPT:305184 != 31116287
+> >>>> [    1.224706]  x0 : ffffff800038f800
+> >>>> [    1.228095] GPT: Use GNU Parted to correct GPT errors.
+> >>>> [    1.233307]
+> >>>> [    1.233309] Call trace:
+> >>>> [    1.233312]  regulator_check_voltage+0xb0/0xf0
+> >>>> [    1.242680] FIT: Selected configuration:
+> >>>> "config-mt7622-bananapi-bpi-r64-pcie1" (OpenWrt bananapi_bpi-r64
+> >>>> with mt7622-bananapi-bpi-r64-pcie1)
+> >>>> [    1.242694]  regulator_set_voltage+0x3c/0x64
+> >>>> [    1.249831] FIT:           kernel sub-image
+> >>>> 0x00001000..0x0052fd0a "kernel-1" (ARM64 OpenWrt Linux-6.1-rc2)
+> >>>> [    1.255030]  mtk_cpufreq_voltage_tracking+0x11c/0x26c
+> >>>> [    1.255039]  mtk_cpufreq_set_target+0x1c4/0x350
+> >>>> [    1.258444] FIT:          flat_dt sub-image
+> >>>> 0x00530000..0x005380c5 "fdt-1" (ARM64 OpenWrt bananapi_bpi-r64
+> >>>> device tree blob)
+> >>>> [    1.261820]  __cpufreq_driver_target+0x2f4/0x674
+> >>>> [    1.261826]  od_dbs_update+0xb8/0x19c
+> >>>> [    1.266969] FIT:          flat_dt sub-image
+> >>>> 0x00539000..0x0053911a "fdt-mt7622-bananapi-bpi-r64-pcie1" (ARM64
+> >>>> OpenWrt bananapi_bpi-r64 device tree overlay
+> >>>> mt7622-bananapi-bpi-r64-pcie1)
+> >>>> [    1.268431]  dbs_work_handler+0x3c/0x7c
+> >>>> [    1.270883] FIT:          flat_dt sub-image
+> >>>> 0x0053a000..0x0053a20f "fdt-mt7622-bananapi-bpi-r64-sata" (ARM64
+> >>>> OpenWrt bananapi_bpi-r64 device tree overlay
+> >>>> mt7622-bananapi-bpi-r64-sata)
+> >>>> [    1.275297]  process_one_work+0x200/0x3a0
+> >>>> [    1.287998] FIT:       filesystem sub-image
+> >>>> 0x0053b000..0x00859fff "rootfs-1" (ARM64 OpenWrt bananapi_bpi-r64
+> >>>> rootfs)
+> >>>> [    1.292237]  worker_thread+0x170/0x4c0
+> >>>> [    1.292244]  kthread+0xd4/0xe0
+> >>>> [    1.302066] FIT: selecting configured loadable "rootfs-1" to be
+> >>>> root filesystem
+> >>>> [    1.307092]  ret_from_fork+0x10/0x20
+> >>>> [    1.311631]  mmcblk1: p1 p2 p3 p4 p5 p6 p65(rootfs-1)
+> >>>> p66(rootfs_data) p128
+> >>>> [    1.322903] Code: 6b04001f 54fffe6b 2a0003e4 17fffff3 (d4210000)
+> >>>> [    1.413322] ---[ end trace 0000000000000000 ]---
+> >>> The complete log can be found here:
+> >>> https://gist.githubusercontent.com/PolynomialDivision/395d009c84b426d780549c5fa1f64ff1/raw/886d621d2bf6f03429586adf8a14a6c37c8d8a7d/mt7622-6-1.log
+> >>>
+> >>> Reverting commit "cpufreq: mediatek: Refine
+> >>> mtk_cpufreq_voltage_tracking()" fixes the kernel bug:
+> >>> https://github.com/torvalds/linux/commit/6a17b3876bc8303612d7ad59ecf7cbc0db418bcd
+> >>>
+> >>> The revert commit can be found here:
+> >>> https://github.com/PolynomialDivision/openwrt/commit/1df941d0334000e3aced43b7d50cdac0da8bf427
+> >>>
+> >>> The branch I use to build the 6.1rc2 on a Banana Pi R64 can be found
+> >>> here:
+> >>> https://github.com/PolynomialDivision/openwrt/commits/bump-mt7622-rebase
+> >>>
+> >>
+> >> Thanks for the report.
+> >> Could you test with a plain upstream kernel? That would help us to
+> >> verify that this is a upstream problem and not introduced by some
+> >> openwrt patches.
+> >>
+> >> Regards,
+> >> Matthias
+> 
+> #regzbot ignore-activity
 
