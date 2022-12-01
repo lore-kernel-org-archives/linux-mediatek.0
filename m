@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5698C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 09:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE469C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 09:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UWsR0p4KUStOCSudRVEQuJywJLLSPf3GnL/CoWbyXiY=; b=Jw5x0Y8LCM14X9MTV25X3eFT4k
-	Vnprpl2bNbKBYobFoyHpb/OM/ysshB+y7rzXZa/RjhYeQlkA3jDhcGfPjd65JWAXVZB4/ai6Zfgqn
-	U6i3P5NGcu1nY31276p2Ca6xTzrsb+0SLWeBPPlY0a+ha07P6RQEQmIK7OxnKIqu/xScv7F6gnh6a
-	Xz2P5Zf6wWBxAJx4G2iPeQC9+Te2MaP4wm7ffmPfHuTw6G1h4jVFLoBamd88qHEZf7JVxaMj/0ANM
-	IyMkOyYJjn58tpcRKU4YvkOeDZJ3yXnqp9eeZam/0LZky+bl5O1+5rMRj73GjNONcyFr/by/sbhl7
-	YikhKzaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=P587dA8Aha5RLNm5yWfcKiJxxnQVVKASOviRpQBreb8=; b=jM+EjwYA6A4ATsb7sGhDPWW8mF
+	JajG3Fm6r7sGwPPC5xFIizjIJbjUw3CzLaVplUGWIhFxprCIJz+C5Bvr9I6eEq6d83dcQ+rAGLHD6
+	NNJ1VD+5WV93utJOW2m8sE4Gkqr+76d7dBKZK3dgoe31EnikrGlsI4R+g43skX7HXdUgUYZek38b+
+	ShiaYSWbWB6bZWGLTpkCz2/gJp8TNT8t01PJlKC2YE1Bmhppz4JHwGhjOA4caBjiIZ5EO/jV2M9TI
+	wPYwIv/iHmglsznMPB9A5ppu9++f7R5w36bIdYG33+KLcZqrlrDcca7RVDf/5Fl7G9bezdu2bSc6Y
+	urC7khyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0g5K-006QhT-8C; Thu, 01 Dec 2022 09:42:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p0g7a-006RXS-W3; Thu, 01 Dec 2022 09:44:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0g57-006Qd3-VR; Thu, 01 Dec 2022 09:42:16 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DA94D66025DF;
-	Thu,  1 Dec 2022 09:42:10 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669887731;
-	bh=VdGBaS0XWeFJmcCrunXO7sc+tv9eoriihu4qmG553GA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NSZBzHBUHkeY2OuO+h2pNjHg/Ubz8w5zyptGtmmW3HASRCOA42oynDVSQVo17MNCD
-	 q2iF4uFpLXRhPRW8FTQLVr5VkrdMzGnXuXswiZFFsnqcF+1SX2Ctiu9AsphaJJ7eDy
-	 QSR52YDp3Hvy55/9AAI/lIviHHxrFoX9xSGYbsyUbIvvJgIElR9E4A/xAhPem2w1Hn
-	 LGqEwhkb+AMaJmfEHXbwfvUTJe0rIC6At1+MSgkM5DrB0fYCKZKjxjMdshAAhVYJ7Q
-	 zLq1djNofBb3WKjH7DaUaBivb50xgjZg7lydi3X2SLo5jSYC9R0NMubNuiDlHyM6n6
-	 5foWAcXBfpV5A==
-Message-ID: <6c8343c4-a8ed-1a4c-a518-1c49a9d6b056@collabora.com>
-Date: Thu, 1 Dec 2022 10:42:08 +0100
+	id 1p0g7Y-006RVF-Ks
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 09:44:46 +0000
+X-UUID: 02863724162247e583a64156c9b6db40-20221201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=P587dA8Aha5RLNm5yWfcKiJxxnQVVKASOviRpQBreb8=;
+	b=h1M35Jvcab5aLqVEbmVUddZFWv/NGjA4jEjsvvE+S2JbQtyFrwUFz5fWlb/3f+LQltlM7lLh86qwuKsJJbjCshm31dwuxyd6v7YtqQruRNneWhYpkNii+bXnCzAWeQzDZtD/g0s6/5xT32PTkV3DTdxjaUsLOpDdA+5ucRoG6mU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:67215128-f972-4ac6-80f0-ecc6fa83cab0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:ef18dc1e-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 02863724162247e583a64156c9b6db40-20221201
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1778990161; Thu, 01 Dec 2022 02:44:39 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 1 Dec 2022 17:44:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 1 Dec 2022 17:44:01 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>
+Subject: [PATCH v2] ufs: core: wlun suspend SSU/enter hibern8 fail recovery
+Date: Thu, 1 Dec 2022 17:43:58 +0800
+Message-ID: <20221201094358.20700-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v2 03/12] ASoC: mediatek: mt8188: support audsys clock
-Content-Language: en-US
-To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>, "tiwai@suse.com"
- <tiwai@suse.com>, "broonie@kernel.org" <broonie@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20221021082719.18325-1-trevor.wu@mediatek.com>
- <20221021082719.18325-4-trevor.wu@mediatek.com>
- <de66f0e3-7694-7315-c896-9211259a1a17@collabora.com>
- <776557c0fda5a538549ee0d4f4b7f482b0d69934.camel@mediatek.com>
- <473d67ed-198f-82c6-9f32-5827c1f8c852@collabora.com>
- <500f80b1ac84101af482bdfcb46671d523d51068.camel@mediatek.com>
- <360a5f27-8abc-938c-04c7-13ea65b5a89f@collabora.com>
- <7dfdb4866ccf7356c2a8beb0359e5b62df4f245f.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <7dfdb4866ccf7356c2a8beb0359e5b62df4f245f.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_014214_588314_39E36E4E 
-X-CRM114-Status: GOOD (  31.32  )
+X-CRM114-CacheID: sfid-20221201_014444_738144_1BE8D1A8 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,212 +84,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/12/22 09:43, Trevor Wu (吳文良) ha scritto:
-> On Wed, 2022-10-26 at 10:18 +0200, AngeloGioacchino Del Regno wrote:
->> Il 26/10/22 06:10, Trevor Wu (吳文良) ha scritto:
->>> On Tue, 2022-10-25 at 12:18 +0200, AngeloGioacchino Del Regno
->>> wrote:
->>>> Il 21/10/22 11:58, Trevor Wu (吳文良) ha scritto:
->>>>> On Fri, 2022-10-21 at 10:41 +0200, AngeloGioacchino Del Regno
->>>>> wrote:
->>>>>> Il 21/10/22 10:27, Trevor Wu ha scritto:
->>>>>>> Add mt8188 audio cg clock control. Audio clock gates are
->>>>>>> registered
->>>>>>> to CCF
->>>>>>> for reference count and clock parent management.
->>>>>>>
->>>>>>> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
->>>>>>> ---
->>>>>>>      sound/soc/mediatek/mt8188/mt8188-audsys-clk.c | 206
->>>>>>> ++++++++++++++++++
->>>>>>>      sound/soc/mediatek/mt8188/mt8188-audsys-clk.h |  15 ++
->>>>>>>      .../soc/mediatek/mt8188/mt8188-audsys-clkid.h |  83
->>>>>>> +++++++
->>>>>>>      3 files changed, 304 insertions(+)
->>>>>>>      create mode 100644 sound/soc/mediatek/mt8188/mt8188-
->>>>>>> audsys-
->>>>>>> clk.c
->>>>>>>      create mode 100644 sound/soc/mediatek/mt8188/mt8188-
->>>>>>> audsys-
->>>>>>> clk.h
->>>>>>>      create mode 100644 sound/soc/mediatek/mt8188/mt8188-
->>>>>>> audsys-
->>>>>>> clkid.h
->>>>>>>
->>>>>>> diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>>>> b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>>>> new file mode 100644
->>>>>>> index 000000000000..1f294231d4c2
->>>>>>> --- /dev/null
->>>>>>> +++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
->>>>>>> @@ -0,0 +1,206 @@
->>>>>>> +// SPDX-License-Identifier: GPL-2.0
->>>>>>> +/*
->>>>>>> + * mt8188-audsys-clk.c  --  MediaTek 8188 audsys clock
->>>>>>> control
->>>>>>> + *
->>>>>>> + * Copyright (c) 2022 MediaTek Inc.
->>>>>>> + * Author: Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
->>>>>>> + */
->>>>>>> +
->>>>>>> +#include <linux/clk.h>
->>>>>>> +#include <linux/clk-provider.h>
->>>>>>> +#include <linux/clkdev.h>
->>>>>>> +#include "mt8188-afe-common.h"
->>>>>>> +#include "mt8188-audsys-clk.h"
->>>>>>> +#include "mt8188-audsys-clkid.h"
->>>>>>> +#include "mt8188-reg.h"
->>>>>>> +
->>>>>>> +struct afe_gate {
->>>>>>> +	int id;
->>>>>>> +	const char *name;
->>>>>>> +	const char *parent_name;
->>>>>>> +	int reg;
->>>>>>> +	u8 bit;
->>>>>>> +	const struct clk_ops *ops;
->>>>>>> +	unsigned long flags;
->>>>>>> +	u8 cg_flags;
->>>>>>> +};
->>>>>>> +
->>>>>>> +#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,
->>>>>>> _flags,
->>>>>>> _cgflags) {\
->>>>>>> +		.id = _id,					
->>>>>>> \
->>>>>>> +		.name = _name,					
->>>>>>> \
->>>>>>> +		.parent_name = _parent,				
->>>>>>> \
->>>>>>> +		.reg = _reg,					
->>>>>>> \
->>>>>>> +		.bit = _bit,					
->>>>>>> \
->>>>>>> +		.flags = _flags,				
->>>>>>> \
->>>>>>> +		.cg_flags = _cgflags,				
->>>>>>> \
->>>>>>> +	}
->>>>>>> +
->>>>>>> +#define GATE_AFE(_id, _name, _parent, _reg, _bit)		
->>>>>>> \
->>>>>>> +	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		
->>>>>>> \
->>>>>>> +		       CLK_SET_RATE_PARENT | CLK_IGNORE_UNUSED,
->>>>>>> CLK_GATE_SET_TO_DISABLE)
->>>>>>
->>>>>> Can you please explain what's the reason for
->>>>>> CLK_IGNORE_UNUSED
->>>>>> here?
->>>>>> Maybe we can solve some issue that you're facing in a cleaner
->>>>>> way.
->>>>>>
->>>>>> Regards,
->>>>>> Angelo
->>>>>
->>>>> Hi Angelo,
->>>>>
->>>>> Because clk_disable_unused() calls clk_core_is_enabled(),
->>>>> register
->>>>> access happens in is_enabled() ops.
->>>>> At the moment, the power for register access is not enabled, so
->>>>> the
->>>>> register read results in CPU hang.
->>>>>
->>>>> That's why I added CLK_IGNORE_UNUSED here, but it can't resolve
->>>>> all
->>>>> issues. Actually, we met same problem when "cat
->>>>> /sys/kernel/debug/clk/clk_summary" is used. We are still
->>>>> suffering
->>>>> the
->>>>> problem.
->>>>>
->>>>> I'm not sure if I can implement clk ops by myself, and exclude
->>>>> the
->>>>> registration of is_enabled() ops.
->>>>>
->>>>
->>>> Is the power for register access enabled with a power domain?
->>>>
->>>> Check drivers/clk/clk.c, grep for core->rpm_enabled.
->>>>
->>>> If you enable runtime PM before registering the clocks, and you
->>>> register them
->>>> with the right struct device, the clock API will enable power for
->>>> you
->>>> before
->>>> trying to read the clock enable status.
->>>>
->>>> Regards,
->>>> Angelo
->>>>
->>>
->>> Hi Angelo,
->>>
->>> I tried the way in MT8195, but it caused circular lock problem.
->>>
->>> Because mtcmos depends on some clocks, clk_bulk_prepare_enable is
->>> also
->>> used in scpsys_power_on()[1].
->>> If the clock also depends on the power domain, this results in the
->>> circular lock problem.
->>> That's why I don't bind the power domain with these clocks.
->>>
->>
->> This is not supposed to happen... can you please give me a (MT8195)
->> patch to
->> reproduce the issue that you're seeing?
->>
->> I would like to investigate that to check if I can come up with a
->> good solution.
->>
->> Thanks,
->> Angelo
-> 
-> 
-> Hi Angelo,
-> 
-> Sorry for replying late.
-> The original implementation about clock depending on power domain was a
-> cusotomized request, and it's not based on upstream code base. So I
-> can't apply the implementation directly. I tried to implement the
-> suggested solution in upstream code, but I can't reproduce the problem
-> successfully.
-> 
-> At the same time, we reviewed the difference between MT8195 and MT8188.
-> It's found that ADSP_INFRA should be kept ON to resolve the register
-> r/w access limitation in MT8188, so we can match the hardware design in
-> MT8195.
-> 
-> After discussing internally, we decided in favour of ADSP_INFRA
-> soloution. Althought the lock problem can't be seen, the new lock
-> relationship(prepare_lock -> genpd lock) is actually created.
-> 
-> In conclusion, ADSP_INFRA will be kept always on and I will remove
-> CLK_IGNORE_UNUSED flag in V3.
-> 
+From: Peter Wang <peter.wang@mediatek.com>
 
-As far as the power consumption increase is ignorable (so, power consumption
-is very little more), that's a good decision and I support that.
+When SSU/enter hibern8 fail in wlun suspend flow, trigger error
+handler and return busy to break the suspend.
+If not, wlun runtime pm status become error and the consumer will
+stuck in runtime suspend status.
 
-Regards,
-Angelo
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-> Thanks,
-> Trevor
-> 
->>
->>> [1]
->>>
-> https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v6.1-rc2/source/drivers/soc/mediatek/mtk-pm-domains.c__;!!CTRNKA9wMg0ARbw!yVFCD-B4VZOxDXTGgDtpB0mJbVoY9tHODeICxthAC33lXMq6LRVTGS-4V-Dj129_cA$
->>>   
->>>
->>> Thanks,
->>> Trevor
->>>
->>>
->>
->>
->>
-
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index b1f59a5fe632..8e5f7d9fe7c2 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -8970,6 +8970,7 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	enum ufs_pm_level pm_lvl;
+ 	enum ufs_dev_pwr_mode req_dev_pwr_mode;
+ 	enum uic_link_state req_link_state;
++	unsigned long flags;
+ 
+ 	hba->pm_op_in_progress = true;
+ 	if (pm_op != UFS_SHUTDOWN_PM) {
+@@ -9049,6 +9050,20 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 
+ 		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+ 			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
++			if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {
++				/*
++				 * If return err in suspend flow, IO will hang.
++				 * Trigger error handler and break suspend for
++				 * error recovery.
++				 */
++				spin_lock_irqsave(hba->host->host_lock, flags);
++				hba->force_reset = true;
++				ufshcd_schedule_eh_work(hba);
++				spin_unlock_irqrestore(hba->host->host_lock,
++					flags);
++
++				ret = -EBUSY;
++			}
+ 			if (ret)
+ 				goto enable_scaling;
+ 		}
+@@ -9060,6 +9075,20 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	 */
+ 	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
+ 	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
++	if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {
++		/*
++		 * If return err in suspend flow, IO will hang.
++		 * Trigger error handler and break suspend for
++		 * error recovery.
++		 */
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		hba->force_reset = true;
++		ufshcd_schedule_eh_work(hba);
++		spin_unlock_irqrestore(hba->host->host_lock,
++			flags);
++
++		ret = -EBUSY;
++	}
+ 	if (ret)
+ 		goto set_dev_active;
+ 
+-- 
+2.18.0
 
 
