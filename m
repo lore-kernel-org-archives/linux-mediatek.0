@@ -4,79 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45CFEC4321E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 15:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBA2C47088
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 15:27:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qaW+Y5gxK4xonSBAz6mJtyLDD27CG2+TRVJWwlhcLBc=; b=AulEmqiGivKHlAj3ZeA1VhVSHa
-	Son7cjYWU8BDHh3mlSJ+K6SPmq1WqgusKEZjRXJqor/D64bzcfUFOSEOOmKKDAMKrzs33GAzK4ofu
-	DNasAYXawM5bccafS1SRHJD1DxBkc8E3adrUYtj+RA4y8TmYL+3l4oZ/lDlYSXnp86v5MBAlu/XP6
-	qjHj4rNeq/0zEAcVHp55SEGptcEuLIkkQIORUmX9TjmS5elix56JiEc65v3xITCjZrRK8xYD4iHMm
-	E3gBX77Yyn1l9x4MDwOXG5mhPEJOfLu4al5mNNEZtgmmfae1C4q1k0fiVhPqWJpIFoPbdrneH/RiL
-	mVPDBuXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8JnTm447EXIh0WWkuyX4u7YsPtzOsfyUYuE/CKoAxUQ=; b=AAW/A0tOSNFOu4VzV8mo75onl2
+	g+7ZVab/2cqWBras2ZZWxXEAY7SF5xTWDwoHqMiLdhwubjdgr1nn/PUNo6jEx9oBYhn++FNLXsmMq
+	cSYkz//qd2P50Dq5OFKGHxXTVHC5VXuvEZnWSC58E9oF6AYfFaMBC6fOHGUEbIpBIvFYzNV5FSU8o
+	jSNtMdiZnvnvU7G0V0h4gFpRaSfthpfi+sELFkhXdRwq1Fu9XtavDAhaVeEb5Jx5l0y8pLPBeM+nZ
+	ugbrkYHEeoIzee7l+ND0HeYFzk41IxL/6/YZEMFjRjrkgvE728nqgkUSELZKBCqBGZNqIY+2cm4cy
+	dDICw5mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0lQ2-008CJa-5m; Thu, 01 Dec 2022 15:24:10 +0000
+	id 1p0lTB-008DYZ-0n; Thu, 01 Dec 2022 15:27:25 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0lPn-008C8z-GS; Thu, 01 Dec 2022 15:23:57 +0000
+	id 1p0lT7-008DWK-Dl
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 15:27:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B6B54B81F0A;
-	Thu,  1 Dec 2022 15:23:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B016C433D7;
-	Thu,  1 Dec 2022 15:23:47 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 38858B81F59;
+	Thu,  1 Dec 2022 15:27:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A137FC433D6;
+	Thu,  1 Dec 2022 15:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669908231;
-	bh=12sVLJi1eV03nDA+i/p257FYeSwqbJxoO6cnJV24q0M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jibOnvj+ceP+BR55o6l9sQb1r8X/aMrdlpGQOisuZrWI+9WRbIhyylj+kTZFfYlvp
-	 hNGiLmS9l2xxf4fif7DL8ttkIl9exc9XMydLUEKvtGaFge7cHgtYyVALiK4S3x9f4o
-	 Gs4i+gzT4cS/dUW9koQ9VPgpSC6PSh9B6CXmXTFIFDvniE1wJjsWxP7xiBEoQXf5DF
-	 Z/mYIB+yybJptD2yMIELxwqgd2Xst42X0OumPYHkleZk2z/on9OjZnlP0orCmE7XgZ
-	 BXnkX1uV/88dBrZr3qN651U5LdpGE6+aRW7Hye2gsi9gVtqf+EBKwFjDnsLhaCnWp2
-	 8HGX6KLuok7WQ==
-Date: Thu, 1 Dec 2022 15:23:44 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu =?utf-8?B?KOS/nuWutumRqyk=?= <Jiaxin.Yu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"ajye_huang@compal.corp-partner.google.com" <ajye_huang@compal.corp-partner.google.com>,
-	Chunxu Li =?utf-8?B?KOadjuaYpeaXrSk=?= <Chunxu.Li@mediatek.com>,
-	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsyk=?= <Allen-KH.Cheng@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>,
-	"andrzej.hajda@intel.com" <andrzej.hajda@intel.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"robert.foss@linaro.org" <robert.foss@linaro.org>,
-	"Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>,
-	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"nfraprado@collabora.com" <nfraprado@collabora.com>,
-	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
-Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Message-ID: <Y4jHAJgmz/P58Q/C@sirena.org.uk>
-References: <20221125094413.4940-1-jiaxin.yu@mediatek.com>
- <20221125094413.4940-2-jiaxin.yu@mediatek.com>
- <Y4Cysgk5Gic5ae9B@sirena.org.uk>
- <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
- <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
- <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
+	s=k20201202; t=1669908438;
+	bh=fjBkFSHXsfnsna0pkKiMUUzJlNUEorxvMDs0l/ALuZw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ee/B22uKb/cFiI9/KlaoIh5LAQweauDguc70tsKFG5EvKotk7zh8iD52IT3TMNUr2
+	 lh2bBc1LDXt/RpwA7u6zR/rh9vOx/+rwtq4EcyTo0u0MO4IlpCnHMkjA/PhCDOqZSp
+	 8Q8uvATwL5SoPiS291hG2TZa8XyxWmPy2gg43zX0AvDTLPLPeVAzW3J1bBCCTJkaeo
+	 GFeE3ory3BeKO0ukalGhO8oJKFcNhVt9WomsL3EChCb8p15lHKlFPPCjbgtzPl/KVP
+	 Y4HI4b4IAw3D0ioLet6qTegm16Y3qoEwLNFrUOZPI+lpyyDQEoKGOLqGIC6pEwp+7a
+	 zO9Ui2hLPTu+w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com
+Subject: [PATCH net-next] net: ethernet: mtk_wed: fix sleep while atomic in mtk_wed_wo_queue_refill
+Date: Thu,  1 Dec 2022 16:26:53 +0100
+Message-Id: <67ca94bdd3d9eaeb86e52b3050fbca0bcf7bb02f.1669908312.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="w3piYtER9tAyOK42"
-Content-Disposition: inline
-In-Reply-To: <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
-X-Cookie: Leveraging always beats prototyping.
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_072355_861599_E99472F3 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20221201_072721_789480_34D9C1F5 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,48 +78,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In order to fix the following sleep while atomic bug always alloc pages
+with GFP_ATOMIC in mtk_wed_wo_queue_refill since page_frag_alloc runs in
+spin_lock critical section.
 
---w3piYtER9tAyOK42
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[    9.049719] Hardware name: MediaTek MT7986a RFB (DT)
+[    9.054665] Call trace:
+[    9.057096]  dump_backtrace+0x0/0x154
+[    9.060751]  show_stack+0x14/0x1c
+[    9.064052]  dump_stack_lvl+0x64/0x7c
+[    9.067702]  dump_stack+0x14/0x2c
+[    9.071001]  ___might_sleep+0xec/0x120
+[    9.074736]  __might_sleep+0x4c/0x9c
+[    9.078296]  __alloc_pages+0x184/0x2e4
+[    9.082030]  page_frag_alloc_align+0x98/0x1ac
+[    9.086369]  mtk_wed_wo_queue_refill+0x134/0x234
+[    9.090974]  mtk_wed_wo_init+0x174/0x2c0
+[    9.094881]  mtk_wed_attach+0x7c8/0x7e0
+[    9.098701]  mt7915_mmio_wed_init+0x1f0/0x3a0 [mt7915e]
+[    9.103940]  mt7915_pci_probe+0xec/0x3bc [mt7915e]
+[    9.108727]  pci_device_probe+0xac/0x13c
+[    9.112638]  really_probe.part.0+0x98/0x2f4
+[    9.116807]  __driver_probe_device+0x94/0x13c
+[    9.121147]  driver_probe_device+0x40/0x114
+[    9.125314]  __driver_attach+0x7c/0x180
+[    9.129133]  bus_for_each_dev+0x5c/0x90
+[    9.132953]  driver_attach+0x20/0x2c
+[    9.136513]  bus_add_driver+0x104/0x1fc
+[    9.140333]  driver_register+0x74/0x120
+[    9.144153]  __pci_register_driver+0x40/0x50
+[    9.148407]  mt7915_init+0x5c/0x1000 [mt7915e]
+[    9.152848]  do_one_initcall+0x40/0x25c
+[    9.156669]  do_init_module+0x44/0x230
+[    9.160403]  load_module+0x1f30/0x2750
+[    9.164135]  __do_sys_init_module+0x150/0x200
+[    9.168475]  __arm64_sys_init_module+0x18/0x20
+[    9.172901]  invoke_syscall.constprop.0+0x4c/0xe0
+[    9.177589]  do_el0_svc+0x48/0xe0
+[    9.180889]  el0_svc+0x14/0x50
+[    9.183929]  el0t_64_sync_handler+0x9c/0x120
+[    9.188183]  el0t_64_sync+0x158/0x15c
 
-On Thu, Dec 01, 2022 at 03:06:04PM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=E9=
-=91=AB) wrote:
-> On Tue, 2022-11-29 at 17:22 +0000, Mark Brown wrote:
+Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-> >  static const struct snd_kcontrol_new
-> >  mt8186_mt6366_rt1019_rt5682s_controls[] =3D {
-> >          SOC_DAPM_PIN_SWITCH("Speakers"),
-> >          SOC_DAPM_PIN_SWITCH("Headphone"),
-> >          SOC_DAPM_PIN_SWITCH("Headset Mic"),
-> >          SOC_DAPM_PIN_SWITCH("HDMI1"),
-> >  };
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index 4754b6db009e..a219da85f4db 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -133,17 +133,18 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
+ 
+ static int
+ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
+-			gfp_t gfp, bool rx)
++			bool rx)
+ {
+ 	enum dma_data_direction dir = rx ? DMA_FROM_DEVICE : DMA_TO_DEVICE;
+ 	int n_buf = 0;
+ 
+ 	spin_lock_bh(&q->lock);
+ 	while (q->queued < q->n_desc) {
+-		void *buf = page_frag_alloc(&q->cache, q->buf_size, gfp);
+ 		struct mtk_wed_wo_queue_entry *entry;
+ 		dma_addr_t addr;
++		void *buf;
+ 
++		buf = page_frag_alloc(&q->cache, q->buf_size, GFP_ATOMIC);
+ 		if (!buf)
+ 			break;
+ 
+@@ -215,7 +216,7 @@ mtk_wed_wo_rx_run_queue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
+ 			mtk_wed_mcu_rx_unsolicited_event(wo, skb);
+ 	}
+ 
+-	if (mtk_wed_wo_queue_refill(wo, q, GFP_ATOMIC, true)) {
++	if (mtk_wed_wo_queue_refill(wo, q, true)) {
+ 		u32 index = (q->head - 1) % q->n_desc;
+ 
+ 		mtk_wed_wo_queue_kick(wo, q, index);
+@@ -432,7 +433,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
+ 	if (ret)
+ 		goto error;
+ 
+-	mtk_wed_wo_queue_refill(wo, &wo->q_tx, GFP_KERNEL, false);
++	mtk_wed_wo_queue_refill(wo, &wo->q_tx, false);
+ 	mtk_wed_wo_queue_reset(wo, &wo->q_tx);
+ 
+ 	regs.desc_base = MTK_WED_WO_CCIF_DUMMY5;
+@@ -446,7 +447,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
+ 	if (ret)
+ 		goto error;
+ 
+-	mtk_wed_wo_queue_refill(wo, &wo->q_rx, GFP_KERNEL, true);
++	mtk_wed_wo_queue_refill(wo, &wo->q_rx, true);
+ 	mtk_wed_wo_queue_reset(wo, &wo->q_rx);
+ 
+ 	/* rx queue irqmask */
+-- 
+2.38.1
 
-> Which operation should I use to inform bridge driver to control audio
-> on or off? I'm curious why I don't see .trigger in the structure
-> hdmi_codec_ops compared to the structure snd_soc_dai_ops?
-
-You'd need to add a callback that the user of hdmi-codec passes in which
-would be triggered by an event on a DAPM widget added in the audio path
-rather than trying to shoehorn this into a PCM operation - a big part of
-the problem here is that you're trying to add something that doesn't fit
-into a PCM operation.
-
---w3piYtER9tAyOK42
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmOIxv8ACgkQJNaLcl1U
-h9Ar2Af+KORDgtT/ighVT+gTBJm3oFdl9XsZhX6jFBIroRtVZqlgV0n2nL7IWrfL
-oJQg0v/yecie2DMkQ5waSBz5RuFJktM6GkBBS21lztK1l/SpikqkDgNVAdiAEz10
-FUldzHAK0zmjpp+jLHkJrATrzeMkJWDqyKXc7CVR6z8pStwYFJ9Ag6fkuKR7Y+CX
-schrnd9I3hhtjcEfIG861/h8N9zVv2sRsG65nM4zjHFTMCWqxPwN8h2Ds7JialV7
-gygMUpRaIdyoN79I/RllLk04yYtzQS3iVAS4KJevkYI/T9+zP3RLcuwSbzQJYdya
-l5qY5/GtaQ3DiQVkOzLSxa4KfxCOmQ==
-=fvZ3
------END PGP SIGNATURE-----
-
---w3piYtER9tAyOK42--
 
