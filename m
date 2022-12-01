@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48B0C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 09:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 186ECC43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 10:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1kx0jr6iQJBdI7n19m8fhu/gw5LbN1tE/Li1THtvucI=; b=m7Lxv5qy1J6G6teB9bjj+mIpIc
-	G8HRFyaYsModrRGGvnqHRXlWaUxK8JNH1/vy/MVakQq4w90BedTT2mACSasqT7E0DnZ0YKKfHD09E
-	Nv/51isSusk8EiU5oos9E0VpovFyQIJA6RZ3XXfsm+DWmO21vZMEayZhoryWFAEeUU+OmyEQVRpTg
-	Cs/jCuwuIEB3LhW1OtEdR6ekpeihlZd8u8L0aQdXcH9PNXEMaY0ZZ07txrJjoxxfUgA0KMtWJsCLW
-	gLyV8xIlGNlTvV/s1S5xicl3HC6ucJlvWVFzf1vRCfO/0n9WqUaeHqE+iZgW1laZZLmEN6tNQ1NB6
-	ZG2p1mQQ==;
+	bh=XrM8HiqXnZzTUWvDOAD7xr6db8l4mNmr+646ESgVc/Q=; b=0foRnbRSC5AZSoEPTdH04qTF52
+	Vt2sN8O31z4AlkSwcyBlCIiHJ7Ani0ej51LUBNyogd6MvWOWnkUKYyu7ALAzrRsJInkwDXJeORCJe
+	JRkgwp9/IiAox+WbJlDlWPDeE87DtFztPsSEIUVIFHqCAKYPDzTjZuoahM1CA38Uhk8HULKf49v6s
+	p4yKdMA1amaqvV4JTUUQIrs+35LlKbmjW5DQEQzLf+IV52fLuILCT0uNJkkgTdewvOwT0r4uCQysG
+	CoQnKHU71e7XX+c1jgNcY/qOfkbkd7tNxA4yB3Kj8aj73hvr7ugd7XFPt80pTrVkWTndJT+/t4W1M
+	HniWa1HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gK0-006WGg-2V; Thu, 01 Dec 2022 09:57:36 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1p0gSB-006ZHD-M7; Thu, 01 Dec 2022 10:06:03 +0000
+Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gJo-006WAZ-1k
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 09:57:25 +0000
-Received: by mail-wm1-x335.google.com with SMTP id v124-20020a1cac82000000b003cf7a4ea2caso3460121wme.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 01:57:22 -0800 (PST)
+	id 1p0gS0-006ZDo-QI
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 10:05:54 +0000
+Received: by mail-vk1-xa29.google.com with SMTP id bi15so583628vkb.11
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 02:05:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=1kx0jr6iQJBdI7n19m8fhu/gw5LbN1tE/Li1THtvucI=;
-        b=KEKMHsEb3yFB2gFZmV6K9MRknX/7TQp8PLqjSDztCIcOZmjK44ShfAtpydvOKHciza
-         LOOZWO4k7ZESZSSOOmpyFlTekAHYODH8gkS4EB8j4Ddz3JrwUFW9Tb1KLmJNXV/j3rVL
-         Sd1EC3kZG/mRFsIF7il3jAJ93BvMwipxG2nbW3xW9TU614kqsmkXhVswBHMLhl4cAq2T
-         CQtcdrDx8btPeUyvtUckJvE0xhkjpZaAH96+TluFpet/yEqQbVhad39RkBOJkfX4Uv2C
-         MbzoUBhTMvq97GMPYwOpRAdw8knSUbLbZv6vnvtWkYEOuYGJupSVgpSI4Vi2FkLRIIMw
-         czdw==
+        bh=XrM8HiqXnZzTUWvDOAD7xr6db8l4mNmr+646ESgVc/Q=;
+        b=cJbZWSetyvmZNNWfKs/XjqCxg926Jsjxx8jgSzxrFnHfI9lA7CTAQmRtPIFXhfNX8k
+         tPeidGD0TdPRJA0MAxXbWI1LLJ6kadkbOW8vukkZjIKO9kmuJglBgh1/d3QABwZtbP66
+         JzLAAQPysycvtiJyWjdqKtej8VBeKHxyXOWHY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=1kx0jr6iQJBdI7n19m8fhu/gw5LbN1tE/Li1THtvucI=;
-        b=n/NPMAGzUyCU3VTa7qtq2fNtilqL9Ojf3jXPgk8byEhMyRhoRcQh4opI2J6vEDjdoa
-         7D9yK5tNrRGccGbs+d0u3YUEozMZn26n1aNJ3rF6T2ElzXK6LiQf17cLz8OFloCI5rVa
-         ELeyPoiMoIxmR85Xb0szra2/XndNMI++dpKWPHPLLsr41D6rG8/OgNA6wV27Fd0IemBr
-         UhgwFRW9FwiMteh0Yt3zqNDTbWYTK3AXYZVhzckLoz5iZhxi14tlAQwyqwuD7CAdOhtg
-         d6w8ku2AHvLxG02vL5mB9eorpXTbWmSQpKQ4i8BqI0xcrFB7YWj1uEuV7xtBl09eJ5CD
-         RYiw==
-X-Gm-Message-State: ANoB5pkU6jnnU0dNCjiZ1xtYY0/ZxV60C/QKKk4u2rL9Ey7MZkcHKvxt
-	1Q6Nf3h+uIL7g/B2BortgOLN/PngjuES88Bjf35Qjg==
-X-Google-Smtp-Source: AA0mqf4RQuT3o5dVODYuifcFa7oAG27rTPoh0EMVG7YVp4qUfFAgO9EocfzkH2534iz0neovTigMa97nRDMKlUjfjG4=
-X-Received: by 2002:a05:600c:4f05:b0:3d0:3d33:a629 with SMTP id
- l5-20020a05600c4f0500b003d03d33a629mr24471844wmq.126.1669888641094; Thu, 01
- Dec 2022 01:57:21 -0800 (PST)
+        bh=XrM8HiqXnZzTUWvDOAD7xr6db8l4mNmr+646ESgVc/Q=;
+        b=VzzABJDJqzSdL/GVJjcHb5fm7gFh+foR6aEnatDcReIShXlY3loRRPJ998xLpClYyD
+         +BMZ6aPQHNPuRbdiGBiOpKWr2SUuN3WSY/r1+qtEs74QEiCzj9AyOjqTwdDQfPG63D65
+         OcGSRGIcFLIpqkqLSZuBJO+1SS527C1XcZZMvfS/bO5D+DhvXCnrI3PCCJyBjlCT/Rw/
+         orD/cJJilTQNYshJlMDjZGEmAIQOqwh8+96ZalaCKPaZ2xlLNTanCg6URLF/vqKOyJAl
+         wctFqHrGe7rZKd20aU1sZlABcdhuycJjlFrQT3zPq1heQg4Sq6erZfhx2VRC8/z8cEbS
+         ofEw==
+X-Gm-Message-State: ANoB5pmFA9P26YBd85ees2B02ZfP3t1w96n750Nbat442F/3VF5QNLC7
+	ysOWIl7lutFrxaOnerL9H2YodVmGdJTQAhukIwKQAA==
+X-Google-Smtp-Source: AA0mqf6wG7AHF7XHQDT3r9jZs+UyadRR5/kyoPUrjBZc8SEmqo1csGnX4esmgX79FQS+PCnjOUsVyvbK5w5//Z/TLs8=
+X-Received: by 2002:a1f:9f0f:0:b0:3b6:90df:eb0 with SMTP id
+ i15-20020a1f9f0f000000b003b690df0eb0mr37365702vke.30.1669889150895; Thu, 01
+ Dec 2022 02:05:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20221124074725.74325-1-haozhe.chang@mediatek.com>
-In-Reply-To: <20221124074725.74325-1-haozhe.chang@mediatek.com>
-From: Loic Poulain <loic.poulain@linaro.org>
-Date: Thu, 1 Dec 2022 10:56:45 +0100
-Message-ID: <CAMZdPi9JOQpmhQepBMeG5jzncP8t5mp68O2nfSOFUUZ9e_fDsQ@mail.gmail.com>
-Subject: Re: [PATCH v5] wwan: core: Support slicing in port TX flow of WWAN subsystem
-To: haozhe.chang@mediatek.com
-Cc: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation <linuxwwan@intel.com>, 
-	Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Stephan Gerhold <stephan@gerhold.net>, 
-	Chandrashekar Devegowda <chandrashekar.devegowda@intel.com>, 
-	Chiranjeevi Rapolu <chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>, 
-	Ricardo Martinez <ricardo.martinez@linux.intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Oliver Neukum <oneukum@suse.com>, Shang XiaoJing <shangxiaojing@huawei.com>, 
-	"open list:INTEL WWAN IOSM DRIVER" <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..." <linux-remoteproc@vger.kernel.org>, 
-	"open list:USB SUBSYSTEM" <linux-usb@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, lambert.wang@mediatek.com, 
-	xiayu.zhang@mediatek.com, hua.yang@mediatek.com
+References: <20221201073328.1559-1-allen-kh.cheng@mediatek.com>
+ <ba14a46f-477f-70af-761d-696fe8a4f41c@collabora.com> <CAGXv+5Gg6ozYQcp_NPrAiH1kF-ZkfjVZhQZVhLnbSmjQBwsFwQ@mail.gmail.com>
+ <8ae2a510-abf6-6e1b-9893-293db7d930e7@collabora.com>
+In-Reply-To: <8ae2a510-abf6-6e1b-9893-293db7d930e7@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 1 Dec 2022 18:05:39 +0800
+Message-ID: <CAGXv+5H+msQ1ct5CUzYnT_BmYPnS72HbivvyO39uOfMfXbo5qg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8192: Add adsp power domain controller
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_015724_095744_9DAA1D88 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20221201_020552_857916_060F0255 
+X-CRM114-Status: GOOD (  31.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,23 +86,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Nov 2022 at 08:47, <haozhe.chang@mediatek.com> wrote:
+On Thu, Dec 1, 2022 at 5:39 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> From: haozhe chang <haozhe.chang@mediatek.com>
+> Il 01/12/22 10:10, Chen-Yu Tsai ha scritto:
+> > On Thu, Dec 1, 2022 at 5:07 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 01/12/22 08:33, Allen-KH Cheng ha scritto:
+> >>> Add adsp power domain controller node for mt8192 SoC.
+> >>>
+> >>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> >>> ---
+> >>> Ref: https://lore.kernel.org/all/2ec80bd8-dfef-d2e6-eb41-6e6088043e33@collabora.com/
+> >>>       [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
+> >>> ---
+> >>> ---
+> >>>    arch/arm64/boot/dts/mediatek/mt8192.dtsi | 8 ++++++++
+> >>>    include/dt-bindings/power/mt8192-power.h | 1 +
+> >>>    2 files changed, 9 insertions(+)
+> >>>
+> >>
+> >> Allen, thanks for this one, but it's incomplete...
+> >>
+> >> First of all, you must add the power domain on the driver itself, specifically,
+> >> in drivers/soc/mediatek/mt8192-pm-domains.h - otherwise this change will have no
+> >> effect!
+> >
+> > Actually it's worse. The driver doesn't know about the new power domain,
+> > and so it will fail to probe. We might need to make the power domain driver
+> > fail gracefully and skip unknown power domains.
+> >
 >
-> wwan_port_fops_write inputs the SKB parameter to the TX callback of
-> the WWAN device driver. However, the WWAN device (e.g., t7xx) may
-> have an MTU less than the size of SKB, causing the TX buffer to be
-> sliced and copied once more in the WWAN device driver.
+> Right. It's worse. I don't know, though, if gracefully skipping unknown power
+> domains in the driver would be a good decision... as sometimes error messages
+> go unnoticed.
 >
-> This patch implements the slicing in the WWAN subsystem and gives
-> the WWAN devices driver the option to slice(by frag_len) or not. By
-> doing so, the additional memory copy is reduced.
->
-> Meanwhile, this patch gives WWAN devices driver the option to reserve
-> headroom in fragments for the device-specific metadata.
->
-> Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
+> When the platform "explodes" instead, you're forced to read that log carefully
+> and get it working again... Anyway, I'm only thinking out loud, nothing less and
+> nothing more than that :-)
 
-Reviewed-by: Loic Poulain <loic.poulain@linaro.org>
+Me too. :)
+
+> By the way, we can probably expand on that topic a bit later, as it's outside of
+> the scope of this specific change.
+>
+> Back to topic, if we get one series containing both changes (devicetree, bindings
+> and driver) with the right Fixes tags and/or Cc stable, we shouldn't have such
+> issue on backports so we can probably ignore that potential issue, I think? :-)
+
+Everything goes through the soc tree, so they should appear in Linus's tree
+and get picked by stable at more or less the same time. I think we would
+want the driver change to appear before the dts change, for bisectability's
+sake (because of header dependencies and driver errors).
+
+So we probably want:
+1. driver + binding header changes
+2. dtsi changes
+
+And have these merged through fixes so that the history between them is linear.
+
+
+ChenYu
+
+> Cheers,
+> Angelo
+>
+> > ChenYu
+> >
+> >> ...Then, as Chen-Yu said, you should also add the power domain to the scp_adsp
+> >> clock node as that's solving the lockup issue...
+> >>
+> >> .......and last, but not least: we need a Fixes tag to backport this fix, here
+> >> and on the commit that adds the missing power domain in the driver.
+> >>
+> >> Thanks,
+> >> Angelo
+> >>
+> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> >>> index 424fc89cc6f7..e71afba871fc 100644
+> >>> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> >>> @@ -514,6 +514,14 @@
+> >>>                                                };
+> >>>                                        };
+> >>>                                };
+> >>> +
+> >>> +                             power-domain@MT8192_POWER_DOMAIN_ADSP {
+> >>> +                                     reg = <MT8192_POWER_DOMAIN_ADSP>;
+> >>> +                                     clocks = <&topckgen CLK_TOP_ADSP_SEL>;
+> >>> +                                     clock-names = "adsp";
+> >>> +                                     mediatek,infracfg = <&infracfg>;
+> >>> +                                     #power-domain-cells = <0>;
+> >>> +                             };
+> >>>                        };
+> >>>                };
+> >>>
+> >>> diff --git a/include/dt-bindings/power/mt8192-power.h b/include/dt-bindings/power/mt8192-power.h
+> >>> index 4eaa53d7270a..63e81cd0d06d 100644
+> >>> --- a/include/dt-bindings/power/mt8192-power.h
+> >>> +++ b/include/dt-bindings/power/mt8192-power.h
+> >>> @@ -28,5 +28,6 @@
+> >>>    #define MT8192_POWER_DOMAIN_CAM_RAWA        18
+> >>>    #define MT8192_POWER_DOMAIN_CAM_RAWB        19
+> >>>    #define MT8192_POWER_DOMAIN_CAM_RAWC        20
+> >>> +#define MT8192_POWER_DOMAIN_ADSP     21
+> >>>
+> >>>    #endif /* _DT_BINDINGS_POWER_MT8192_POWER_H */
+> >>>
+> >>
+>
+>
 
