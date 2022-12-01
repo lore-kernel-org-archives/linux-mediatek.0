@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FCECC43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 13:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0489C4321E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 13:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4e//UnYwRuCx6wFkhLuLJQ+Q10mQL8BlS1DcGhHVEis=; b=RujQiG6bMrp/LNmh0wEiQ2vGUW
-	VaCepVm16hYWf1N+3IaBKAEA3/nUgjdwm94ZkOfnz7kQ4YVCqrFsPQ+MQkE8fwhxbcxAtpbIOlzi5
-	2ZPqqfwc27g8+iskuXe9006F9PO0U6oQWK90cK3sv4TUHnsxf9atU1VOKcHKqS3zm8h+wU/6KEoTF
-	J7Pj8qteiGQTqQ8P9MJfYnfaPGprKMkaq0CdHd9X5+ln6CCtn3KzXQ90JDkoHTTBWjNV6FRlRfgkJ
-	HRKjhOsIiHYE1Nnem8Iv1pai68cYZi0ndrEpzrJNnR/6pOQQ6P5z/cQFGL0XP8wPFSVeuIkRcDcI1
-	YaHnUdgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RP1Bt7I23wnyHevBO/NSu9E6gUAunGoxWgpR/m8zrHY=; b=xUKPw3NV0vFHKHrDFktKDoD/4l
+	0Tcp8X01pDos7sZJtqA/l7U9aDYOlotvxYpQd3dnrQkIFqslxLh8EIRE1TcdaLP4KPi5W5uJuOLkZ
+	zK8YtisoGq29kh9esz1VMjvVA3PnCFkPWSMquu+akN3cWD+a/x5N4xZ4FGvoeH1P66kch7smJ+Imq
+	BMBlmMIjIuZqV5l1TO7GoRiL/IKzlqFZzEdGM+IQqG1rE3Ir4o3RTJ9L1AxnAnA5wwumZlhLJN+b2
+	1QQp2wakg1/o5OQLR2UDy0AQVPSllDBzL2VpCbqF0KTw+Lx40/eelTHK4NCRktXe/lwQA2G8gls2A
+	rdigDoWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0jYK-007g2a-1U; Thu, 01 Dec 2022 13:24:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p0jd1-007hGa-13; Thu, 01 Dec 2022 13:29:27 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0jY8-007fzO-4c; Thu, 01 Dec 2022 13:24:27 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 002906602AA1;
-	Thu,  1 Dec 2022 13:24:20 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1669901061;
-	bh=W4oiVr5wu3WAPK6sr8VuvGqiEL/dy9kQpNxqOD3eRpA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ofQVYHGP2yx6yoxUD13+v3tIREioSOMoxBXNNyhSYE5Q9Xx2arU1P7HTdqDYRF5xa
-	 FNLIKtdVQuRMjwSx0iEQp1vzvZAK0C+KnwF6juunWlsVfDnpw6Zv2roAmexkuybXos
-	 LjKoOYg1SGihvhQakzEV8KDhf3Scn/5NyuB31u1i0LzcJoufmFFx422iW2vYAdPFeL
-	 F3iAD23XyYQYaVPm20CUNaDuq2ALwhza6eJWId2YpoAVjBpFAPUDJfEktqidh01SzL
-	 SMeVrvtYyp7fvhZdNEST7UVRl6pHXZhHBUlp4/yPdJAsZj3KG3sIcY2eqFJ6XhSbOj
-	 NWPiOfL7uPHKA==
-Message-ID: <0b72a12c-286f-79d0-09e9-b1761530850a@collabora.com>
-Date: Thu, 1 Dec 2022 14:24:17 +0100
+	id 1p0jcx-007hEc-FN; Thu, 01 Dec 2022 13:29:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1669901363; x=1701437363;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=uzYyfpe5ovcmHtziruShrAihFDRO3ojyXNM6UnYgYzM=;
+  b=rZxb5+hfjDXxjtZu937XvgDrAjM36daIPnVrCIzmd93mSr2H5Kc5O2mH
+   WXY59NT9pt5M8Gv5e0hUGGIYl64nJ48mtaCwYhf6rpwTub4m/nE/gp1YN
+   6cl2xVV0NZFsHkAeR4vvkV1j4BJEITOAdu6ozOmOwNRbBjhLx+iCV6os8
+   fbbq+86k282FAse3AIBr30+pBsXYRi+rOcbBvQieX+WF0IicJftcDWXNw
+   Kyh6TbTtadQI7xwfLZGGP2g5Yo+lqgRsCwKKa34xij9RU/mZkfDk5ejV7
+   92/rR3cxTsGxr6Qhyrc068eKcPGra2tB2YdWgOfMCYFauCxZ+xnI5df3+
+   A==;
+X-IronPort-AV: E=Sophos;i="5.96,209,1665471600"; 
+   d="scan'208";a="125998122"
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 01 Dec 2022 06:29:21 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.12; Thu, 1 Dec 2022 06:29:09 -0700
+Received: from wendy (10.10.115.15) by chn-vm-ex01.mchp-main.com
+ (10.10.85.143) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.12 via Frontend
+ Transport; Thu, 1 Dec 2022 06:29:01 -0700
+Date: Thu, 1 Dec 2022 13:28:42 +0000
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+CC: Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, <dri-devel@lists.freedesktop.org>, "Douglas
+ Anderson" <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+	Satya Priya <quic_c_skakit@quicinc.com>, Pavel Machek <pavel@ucw.cz>,
+	"Guenter Roeck" <groeck@chromium.org>, Marijn Suijten
+	<marijn.suijten@somainline.org>, Nobuhiro Iwamatsu
+	<nobuhiro1.iwamatsu@toshiba.co.jp>, <linux-riscv@lists.infradead.org>,
+	<linux-leds@vger.kernel.org>, "Jerome Brunet" <jbrunet@baylibre.com>,
+	<chrome-platform@lists.linux.dev>, "Florian Fainelli" <f.fainelli@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, "Sean Anderson"
+	<sean.anderson@seco.com>, Kevin Hilman <khilman@baylibre.com>, Bartosz
+ Golaszewski <brgl@bgdev.pl>, Michal Simek <michal.simek@xilinx.com>,
+	<linux-stm32@st-md-mailman.stormreply.com>, Hammer Hsieh
+	<hammerh0314@gmail.com>, <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai
+	<wens@csie.org>, Matthias Kaehlcke <mka@chromium.org>, "Broadcom internal
+ kernel review list" <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team
+	<linux-imx@nxp.com>, Orson Zhai <orsonzhai@gmail.com>,
+	<linux-sunxi@lists.linux.dev>, <linux-pwm@vger.kernel.org>, "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>, Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>, Ray Jui <rjui@broadcom.com>, "Sascha
+ Hauer" <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
+	"Stephen Boyd" <swboyd@chromium.org>, <linux-gpio@vger.kernel.org>, Fabrice
+ Gasnier <fabrice.gasnier@foss.st.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-rpi-kernel@lists.infradead.org>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	<linux-amlogic@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	Scott Branden <sbranden@broadcom.com>, Bjorn Andersson
+	<andersson@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, "Michael
+ Walle" <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>, "Masami
+ Hiramatsu" <mhiramat@kernel.org>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Shawn Guo
+	<shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
+Subject: Re: [PATCH v2 00/11] pwm: Allow .get_state to fail
+Message-ID: <Y4isCnKP9pTacksl@wendy>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+ <Y4iL9xf5bJM5pyeR@wendy>
+ <20221201131907.bmrenldnua7uaeab@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v2 1/2] thermal: mediatek: add support for MT7986 and
- MT7981
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Steven Liu <steven.liu@mediatek.com>, Henry Yen <Henry.Yen@mediatek.com>
-References: <Y4dYazyXF02eRGC5@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Y4dYazyXF02eRGC5@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221201131907.bmrenldnua7uaeab@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_052425_214345_E2902B4F 
-X-CRM114-Status: GOOD (  32.77  )
+X-CRM114-CacheID: sfid-20221201_052923_604677_ABC41199 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,243 +112,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/11/22 14:19, Daniel Golle ha scritto:
-> Add support for V3 generation thermal found in MT7986 and MT7981 SoCs.
-> Brings code to assign values from efuse as well as new function to
-> convert raw temperature to millidegree celsius, as found in MediaTek's
-> SDK sources (but cleaned up and de-duplicated)
+On Thu, Dec 01, 2022 at 02:19:07PM +0100, Uwe Kleine-König wrote:
+> Hello Conor,
 > 
-> [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/baf36c7eef477aae1f8f2653b6c29e2caf48475b
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Reviewed-by: Henry Yen <henry.yen@mediatek.com>
-> ---
-> Changes since v1: Drop use of adc_oe field in efuse, Henry Yen confirmed
-> its use has been dropped intentionally in MTK SDK as well.
+> On Thu, Dec 01, 2022 at 11:11:51AM +0000, Conor Dooley wrote:
+> > TL;DR, I quite like the ability to return an error and not mislead the
+> > caller.
 > 
->   drivers/thermal/mtk_thermal.c | 122 +++++++++++++++++++++++++++++++++-
->   1 file changed, 119 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 8440692e3890..6a69419f8960 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -150,6 +150,21 @@
->   #define CALIB_BUF1_VALID_V2(x)		(((x) >> 4) & 0x1)
->   #define CALIB_BUF1_O_SLOPE_SIGN_V2(x)	(((x) >> 3) & 0x1)
->   
-> +/*
-> + * Layout of the fuses providing the calibration data
-> + * These macros can be used for MT7981 and MT7986.
-> + */
-> +#define CALIB_BUF0_ADC_GE_V3(x)		(((x) >> 0) & 0x3ff)
-> +#define CALIB_BUF0_ADC_OE_V3(x)		(((x) >> 10) & 0x3ff)
-> +#define CALIB_BUF0_DEGC_CALI_V3(x)	(((x) >> 20) & 0x3f)
-> +#define CALIB_BUF0_O_SLOPE_V3(x)	(((x) >> 26) & 0x3f)
-> +#define CALIB_BUF1_VTS_TS1_V3(x)	(((x) >> 0) & 0x1ff)
-> +#define CALIB_BUF1_VTS_TS2_V3(x)	(((x) >> 21) & 0x1ff)
-> +#define CALIB_BUF1_VTS_TSABB_V3(x)	(((x) >> 9) & 0x1ff)
-> +#define CALIB_BUF1_VALID_V3(x)		(((x) >> 18) & 0x1)
-> +#define CALIB_BUF1_O_SLOPE_SIGN_V3(x)	(((x) >> 19) & 0x1)
-> +#define CALIB_BUF1_ID_V3(x)		(((x) >> 20) & 0x1)
-> +
->   enum {
->   	VTS1,
->   	VTS2,
-> @@ -163,6 +178,7 @@ enum {
->   enum mtk_thermal_version {
->   	MTK_THERMAL_V1 = 1,
->   	MTK_THERMAL_V2,
-> +	MTK_THERMAL_V3,
->   };
->   
->   /* MT2701 thermal sensors */
-> @@ -245,6 +261,27 @@ enum mtk_thermal_version {
->   /* The calibration coefficient of sensor  */
->   #define MT8183_CALIBRATION	153
->   
-> +/* AUXADC channel 11 is used for the temperature sensors */
-> +#define MT7986_TEMP_AUXADC_CHANNEL	11
-> +
-> +/* The total number of temperature sensors in the MT7986 */
-> +#define MT7986_NUM_SENSORS		1
-> +
-> +/* The number of banks in the MT7986 */
-> +#define MT7986_NUM_ZONES		1
-> +
-> +/* The number of sensing points per bank */
-> +#define MT7986_NUM_SENSORS_PER_ZONE	1
-> +
-> +/* MT7986 thermal sensors */
-> +#define MT7986_TS1			0
-> +
-> +/* The number of controller in the MT7986 */
-> +#define MT7986_NUM_CONTROLLER		1
-> +
-> +/* The calibration coefficient of sensor  */
-> +#define MT7986_CALIBRATION		165
-> +
->   struct mtk_thermal;
->   
->   struct thermal_bank_cfg {
-> @@ -386,6 +423,14 @@ static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
->   static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
->   static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
->   
-> +/* MT7986 thermal sensor data */
-> +static const int mt7986_bank_data[MT7986_NUM_SENSORS] = { MT7986_TS1, };
-> +static const int mt7986_msr[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_MSR0, };
-> +static const int mt7986_adcpnp[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_ADCPNP0, };
-> +static const int mt7986_mux_values[MT7986_NUM_SENSORS] = { 0, };
-> +static const int mt7986_vts_index[MT7986_NUM_SENSORS] = { VTS1 };
-> +static const int mt7986_tc_offset[MT7986_NUM_CONTROLLER] = { 0x0, };
-> +
->   /*
->    * The MT8173 thermal controller has four banks. Each bank can read up to
->    * four temperature sensors simultaneously. The MT8173 has a total of 5
-> @@ -549,6 +594,30 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
->   	.version = MTK_THERMAL_V1,
->   };
->   
-> +/*
-> + * MT7986 uses AUXADC Channel 11 for raw data access.
-> + */
-> +static const struct mtk_thermal_data mt7986_thermal_data = {
-> +	.auxadc_channel = MT7986_TEMP_AUXADC_CHANNEL,
-> +	.num_banks = MT7986_NUM_ZONES,
-> +	.num_sensors = MT7986_NUM_SENSORS,
-> +	.vts_index = mt7986_vts_index,
-> +	.cali_val = MT7986_CALIBRATION,
-> +	.num_controller = MT7986_NUM_CONTROLLER,
-> +	.controller_offset = mt7986_tc_offset,
-> +	.need_switch_bank = true,
-> +	.bank_data = {
-> +		{
-> +			.num_sensors = 1,
-> +			.sensors = mt7986_bank_data,
-> +		},
-> +	},
-> +	.msr = mt7986_msr,
-> +	.adcpnp = mt7986_adcpnp,
-> +	.sensor_mux_values = mt7986_mux_values,
-> +	.version = MTK_THERMAL_V3,
-> +};
-> +
->   /**
->    * raw_to_mcelsius - convert a raw ADC value to mcelsius
->    * @mt:	The thermal controller
-> @@ -603,6 +672,22 @@ static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw)
->   	return (format_2 - tmp) * 100;
->   }
->   
-> +static int raw_to_mcelsius_v3(struct mtk_thermal *mt, int sensno, s32 raw)
-> +{
-> +	s32 tmp;
-> +
-> +	if (raw == 0)
-> +		return 0;
-> +
-> +	raw &= 0xfff;
-> +	tmp = 100000 * 15 / 16 * 10000;
-> +	tmp /= 4096 - 512 + mt->adc_ge;
-> +	tmp /= 1490;
-> +	tmp *= raw - mt->vts[sensno] - 2900;
-> +
-> +	return mt->degc_cali * 500 - tmp;
-> +}
-> +
->   /**
->    * mtk_thermal_get_bank - get bank
->    * @bank:	The bank
-> @@ -659,9 +744,12 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->   		if (mt->conf->version == MTK_THERMAL_V1) {
->   			temp = raw_to_mcelsius_v1(
->   				mt, conf->bank_data[bank->id].sensors[i], raw);
-> -		} else {
-> +		} else if (mt->conf->version == MTK_THERMAL_V2) {
->   			temp = raw_to_mcelsius_v2(
->   				mt, conf->bank_data[bank->id].sensors[i], raw);
-> +		} else {
-> +			temp = raw_to_mcelsius_v3(
-> +				mt, conf->bank_data[bank->id].sensors[i], raw);
->   		}
+> Is this an Ack?
 
-What about optimizing this with assigning a function pointer?
-Like that, we wouldn't check any version in there... as in that case we'd
-simply do something like
+It is if you want it to be! I didn't really feel qualified to do so
+which is why I gave some context etc.
 
-temp = conf->raw_to_mcelsius(mt, conf->bank...blahblah...);
+I did check out the callsites for the non-void returning op, and it
+looked good to me, so sure, why not:
 
-...and this would also mean that the snippet saying "the first read of a sensor
-often contains very high bogus temperature value [...]" would get merged in the v2
-of raw_to_mcelsius (as that function is used only in mtk_thermal_bank_temperature).
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
->   
->   		/*
-> @@ -887,6 +975,26 @@ static int mtk_thermal_extract_efuse_v2(struct mtk_thermal *mt, u32 *buf)
->   	return 0;
->   }
->   
-> +static int mtk_thermal_extract_efuse_v3(struct mtk_thermal *mt, u32 *buf)
-> +{
-> +	if (!CALIB_BUF1_VALID_V3(buf[1]))
-> +		return -EINVAL;
-> +
-> +	mt->adc_oe = CALIB_BUF0_ADC_OE_V3(buf[0]);
-> +	mt->adc_ge = CALIB_BUF0_ADC_GE_V3(buf[0]);
-> +	mt->degc_cali = CALIB_BUF0_DEGC_CALI_V3(buf[0]);
-> +	mt->o_slope = CALIB_BUF0_O_SLOPE_V3(buf[0]);
-> +	mt->vts[VTS1] = CALIB_BUF1_VTS_TS1_V3(buf[1]);
-> +	mt->vts[VTS2] = CALIB_BUF1_VTS_TS2_V3(buf[1]);
-> +	mt->vts[VTSABB] = CALIB_BUF1_VTS_TSABB_V3(buf[1]);
-> +	mt->o_slope_sign = CALIB_BUF1_O_SLOPE_SIGN_V3(buf[1]);
-> +
-> +	if (CALIB_BUF1_ID_V3(buf[1]) == 0)
-> +		mt->o_slope = 0;
-> +
-> +	return 0;
-> +}
-> +
->   static int mtk_thermal_get_calibration_data(struct device *dev,
->   					    struct mtk_thermal *mt)
->   {
-> @@ -897,6 +1005,7 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
->   
->   	/* Start with default values */
->   	mt->adc_ge = 512;
-> +	mt->adc_oe = 512;
->   	for (i = 0; i < mt->conf->num_sensors; i++)
->   		mt->vts[i] = 260;
->   	mt->degc_cali = 40;
-> @@ -924,8 +1033,10 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
->   
->   	if (mt->conf->version == MTK_THERMAL_V1)
->   		ret = mtk_thermal_extract_efuse_v1(mt, buf);
-> -	else
-> +	else if (mt->conf->version == MTK_THERMAL_V2)
->   		ret = mtk_thermal_extract_efuse_v2(mt, buf);
-> +	else
-> +		ret = mtk_thermal_extract_efuse_v3(mt, buf);
-
-I propose to use a switch here instead.
-
-	switch(mt->conf->version) {
-	case MTK_THERMAL_V1:
-		....
-	case MTK_THERMAL_V2:
-		....
-	case MTK_THERMAL_V3:
-		....
-	default:
-		ret = -EINVAL;
-		break;
-	};
-
-This would also prevent a potential issue with getting an invalid calibration
-due to us calling the wrong version of the get_calibration() function, in which
-case, using the default calibration values would be at that point preferred.
-
-Regards,
-Angelo
-
+Thanks,
+Conor.
 
 
