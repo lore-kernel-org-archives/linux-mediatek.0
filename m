@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67293C4321E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 10:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA53C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 10:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jGtvBY5nBr5Ddyial7NAbAiuwGVMPW3OVR1PKnkZiQg=; b=3k3HD725f0EElSXE5amH/IvMTh
-	ysPxziWj2HXNEfEQfBf7hDSLlyDxUkfy16kNRWJcxTaRUt3+kj+DWjHtD4TtmLdasrKRKYgyHt+ij
-	NWB3WXAS+H0UUZm0sbrKtF/+b9+4562eMqt2qSVaNXJDNH3MkKp18IZLUE/yns4WmINMaugVGWK6A
-	bP5DeQMok00gPgqzkCp3ZedwrrAJpx8x/gxmGEsl95ptR+BoU9Oh2V7DuTgwZQ5LTBpIi4Aa7YBGB
-	89aE0Qicd08qifRNwORm3GX1lugG1J67xAA7JHyigz3kJL8KpYrTkiJ6UPzAsVtSDsWh56wHSn8vW
-	K6uvzCSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=; b=scWRBlFZLTGDPYvdlXoKS4eaLo
+	T/PpbNQyMa3a7mvw1mEFpMF96nZ5V1e5T2hTrHFFOaNsdzm74/X35XXYO4Il6quPRLW7RQeztNMty
+	NsdxL96zhKXC99y6V9BLjxdD7Sb/E8fkmGIBok07AcSZmOSruMmQ5ZJppSigCk1+sZRSSSi4UiRq1
+	2rjDtYSP6axIERaZVrRYFq8XmVQE5Gz1Km8q5ilF/K+ApqKdbfcRj0P/V2muEpy17b0sa7x6LUHHm
+	IdwPPqSAHwJAFWsWVA5uEnPrg1CcgBZ7DWfNrdZIqPSky3dY/1qL5u3ed+mqm3wWxVXukvgmCQbS6
+	v2QPzu8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gim-006gAc-Kr; Thu, 01 Dec 2022 10:23:12 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gih-006g6F-2d; Thu, 01 Dec 2022 10:23:09 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 175C1D6E;
-	Thu,  1 Dec 2022 02:23:09 -0800 (PST)
-Received: from donnerap.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D4DF93F67D;
-	Thu,  1 Dec 2022 02:22:55 -0800 (PST)
-Date: Thu, 1 Dec 2022 10:22:52 +0000
-From: Andre Przywara <andre.przywara@arm.com>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Conor Dooley
- <conor.dooley@microchip.com>, Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Douglas Anderson
- <dianders@chromium.org>, Pavel Machek <pavel@ucw.cz>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Ray Jui <rjui@broadcom.com>, Scott Branden
- <sbranden@broadcom.com>, Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Benson Leung
- <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko
- Stuebner <heiko@sntech.de>, Palmer Dabbelt <palmer@dabbelt.com>, Paul
- Walmsley <paul.walmsley@sifive.com>, Michael Walle <michael@walle.cc>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, Samuel
- Holland <samuel@sholland.org>, Hammer Hsieh <hammerh0314@gmail.com>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Sean Anderson
- <sean.anderson@seco.com>, Michal Simek <michal.simek@xilinx.com>, Bjorn
- Andersson <andersson@kernel.org>, Stephen Boyd <swboyd@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, Satya Priya
- <quic_c_skakit@quicinc.com>, linux-pwm@vger.kernel.org,
- linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an
- error code
-Message-ID: <20221201102252.52ace284@donnerap.cambridge.arm.com>
-In-Reply-To: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
-References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
-	<20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
-Organization: ARM
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
+	id 1p0gtY-006kt3-Ms; Thu, 01 Dec 2022 10:34:20 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1p0gtT-006kpi-Sh
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 10:34:17 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id d185so1159257vsd.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 02:34:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=;
+        b=IwOFeehWF+oYg12+9ZkiwGVadxZFj01NXaOuCnRgTZZLpM+Fn5sqOhpu1UxUlQzM6i
+         xc1P4SeeF/9DaTcEWv4zIFhgg5o4km4geZx+Kts4fY4wOM0jADweJiizzcHbZl3S2X6R
+         twBoFlgb6kiWQg4lDniO80Jub/yfTWo1qyCOQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=;
+        b=B53xyyFL93ZcBG6dPQevL+Zu9RLHCViGGjiWHFAvZqDjKSKA6ou9NT28Fux89xWPjF
+         exHdhI7Je1QFQFypCHnBaPAYHtViQlWOCPz9V4sksYvuFHd7Bd4n4dd0e9Ih5YFbYy58
+         W77SNND7g/koBwMxCgB9Ci2mMWuv7yUYrhR9RibXaq1mzU34xJ7qJ81fU1Z2CODW/0TT
+         ZaUoumrq1ezg+2utVE9jDNw4ilbvEhmK+HtceOaI6xeZzrX2W39MVw1TXwhztUvrm9Qp
+         KQ11rBykxWXPq3eHV5OKTQ9CRaNAEYtZVQCwEuMGvLJV2m5JqexVzQa/d1PO2vbBnRbf
+         ogaw==
+X-Gm-Message-State: ANoB5plQLl3BPY4crvlna+nhUEz+q9dc4tGLrpXDpcBjTNdV4RkpcnVU
+	BcaECgXJuiaW3BG+16bri9/eqZdddlUXSdjXmeO8Sg==
+X-Google-Smtp-Source: AA0mqf5Qao8vLv1WxRsnp96mIE7XC+68JCjxa9YlTVwuYfJ+F04VjR31/MXn43r9GYB1R+7pgmupfpOHqY8MQlfAy4g=
+X-Received: by 2002:a05:6102:e0c:b0:3b0:6da7:39ba with SMTP id
+ o12-20020a0561020e0c00b003b06da739bamr24540024vst.26.1669890851122; Thu, 01
+ Dec 2022 02:34:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+References: <20221201084229.3464449-1-wenst@chromium.org> <20221201084229.3464449-2-wenst@chromium.org>
+ <5250d7d3-ff46-e08d-926c-4efd92390d88@collabora.com>
+In-Reply-To: <5250d7d3-ff46-e08d-926c-4efd92390d88@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 1 Dec 2022 18:33:59 +0800
+Message-ID: <CAGXv+5E63+dE-=KbD_LW+BV+fBWnfaD+oH0+e9T_aS-XEffN5w@mail.gmail.com>
+Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183: Fix systimer 13 MHz
+ clock description
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_022307_257666_4BD03F7D 
-X-CRM114-Status: GOOD (  25.50  )
+X-CRM114-CacheID: sfid-20221201_023415_969273_E2189866 
+X-CRM114-Status: GOOD (  32.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,142 +86,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Nov 2022 16:21:38 +0100
-Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de> wrote:
+On Thu, Dec 1, 2022 at 5:31 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 01/12/22 09:42, Chen-Yu Tsai ha scritto:
+> > The systimer block derives its 13 MHz clock by dividing the main 26 MHz
+> > oscillator clock by 2 internally, not through the TOPCKGEN clock
+> > controller.
+> >
+> > On the MT8183 this divider is set either by power-on-reset or by the
+> > bootloader. The bootloader may then make the divider unconfigurable to,
+> > but can be read out by, the operating system.
+> >
+> > Making the systimer block take the 26 MHz clock directly requires
+> > changing the implementations. As an ABI compatible fix, change the
+> > input clock of the systimer block a fixed factor divide-by-2 clock
+> > that takes the 26 MHz oscillator as its input.
+> >
+> > Fixes: 5bc8e2875ffb ("arm64: dts: mt8183: add systimer0 device node")
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> I generally not just like - but *love* - this change, I had that in my mind
+> for a couple of months now and forgot about it because reasons.
+>
+> There's just one thing that, since we're doing this now, we can clarify (and
+> that's important to avoid questions like "why isn't this board-specific"):
+> the 26MHz clock "clk26m" oscillator that we're using for the system timers
+> is a SoC-provided clock, and its name is "SYSCLK" as in "System bus clock".
 
-Hi,
+Looking at the schematics it is terribly more complicated. :(
 
-> .get_state() might fail in some cases. To make it possible that a driver
-> signals such a failure change the prototype of .get_state() to return an
-> error code.
->=20
-> This patch was created using coccinelle and the following semantic patch:
->=20
-> @p1@
-> identifier getstatefunc;
-> identifier driver;
-> @@
->  struct pwm_ops driver =3D {
->         ...,
->         .get_state =3D getstatefunc
->         ,...
->  };
->=20
-> @p2@
-> identifier p1.getstatefunc;
-> identifier chip, pwm, state;
-> @@
-> -void
-> +int
->  getstatefunc(struct pwm_chip *chip, struct pwm_device *pwm, struct pwm_s=
-tate *state)
->  {
->    ...
-> -  return;
-> +  return 0;
->    ...
->  }
->=20
-> plus the actual change of the prototype in include/linux/pwm.h (plus some
-> manual fixing of indentions and empty lines).
->=20
-> So for now all drivers return success unconditionally. They are adapted
-> in the following patches to make the changes easier reviewable.
->=20
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/gpio/gpio-mvebu.c             |  9 ++++++---
->  drivers/gpu/drm/bridge/ti-sn65dsi86.c | 14 ++++++++------
->  drivers/leds/rgb/leds-qcom-lpg.c      | 14 ++++++++------
->  drivers/pwm/pwm-atmel.c               |  6 ++++--
->  drivers/pwm/pwm-bcm-iproc.c           |  8 +++++---
->  drivers/pwm/pwm-crc.c                 | 10 ++++++----
->  drivers/pwm/pwm-cros-ec.c             |  8 +++++---
->  drivers/pwm/pwm-dwc.c                 |  6 ++++--
->  drivers/pwm/pwm-hibvt.c               |  6 ++++--
->  drivers/pwm/pwm-imx-tpm.c             |  8 +++++---
->  drivers/pwm/pwm-imx27.c               |  8 +++++---
->  drivers/pwm/pwm-intel-lgm.c           |  6 ++++--
->  drivers/pwm/pwm-iqs620a.c             |  6 ++++--
->  drivers/pwm/pwm-keembay.c             |  6 ++++--
->  drivers/pwm/pwm-lpss.c                |  6 ++++--
->  drivers/pwm/pwm-meson.c               |  8 +++++---
->  drivers/pwm/pwm-mtk-disp.c            | 12 +++++++-----
->  drivers/pwm/pwm-pca9685.c             |  8 +++++---
->  drivers/pwm/pwm-raspberrypi-poe.c     |  8 +++++---
->  drivers/pwm/pwm-rockchip.c            | 12 +++++++-----
->  drivers/pwm/pwm-sifive.c              |  6 ++++--
->  drivers/pwm/pwm-sl28cpld.c            |  8 +++++---
->  drivers/pwm/pwm-sprd.c                |  8 +++++---
->  drivers/pwm/pwm-stm32-lp.c            |  8 +++++---
->  drivers/pwm/pwm-sun4i.c               | 12 +++++++-----
->  drivers/pwm/pwm-sunplus.c             |  6 ++++--
->  drivers/pwm/pwm-visconti.c            |  6 ++++--
->  drivers/pwm/pwm-xilinx.c              |  8 +++++---
->  include/linux/pwm.h                   |  4 ++--
->  29 files changed, 146 insertions(+), 89 deletions(-)
->=20
+The crystal feeds the DCXO in the PMIC, which also acts as a buffer.
+The PMIC then feeds the SoC and any other chips, such as a modem.
 
-[ ... ]
-> diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
-> index c8445b0a3339..37d75e252d4e 100644
-> --- a/drivers/pwm/pwm-sun4i.c
-> +++ b/drivers/pwm/pwm-sun4i.c
-> @@ -108,9 +108,9 @@ static inline void sun4i_pwm_writel(struct sun4i_pwm_=
-chip *chip,
->  	writel(val, chip->base + offset);
->  }
-> =20
-> -static void sun4i_pwm_get_state(struct pwm_chip *chip,
-> -				struct pwm_device *pwm,
-> -				struct pwm_state *state)
-> +static int sun4i_pwm_get_state(struct pwm_chip *chip,
-> +			       struct pwm_device *pwm,
-> +			       struct pwm_state *state)
->  {
->  	struct sun4i_pwm_chip *sun4i_pwm =3D to_sun4i_pwm_chip(chip);
->  	u64 clk_rate, tmp;
-> @@ -132,7 +132,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
->  		state->duty_cycle =3D DIV_ROUND_UP_ULL(state->period, 2);
->  		state->polarity =3D PWM_POLARITY_NORMAL;
->  		state->enabled =3D true;
-> -		return;
-> +		return 0;
->  	}
-> =20
->  	if ((PWM_REG_PRESCAL(val, pwm->hwpwm) =3D=3D PWM_PRESCAL_MASK) &&
-> @@ -142,7 +142,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
->  		prescaler =3D prescaler_table[PWM_REG_PRESCAL(val, pwm->hwpwm)];
-> =20
->  	if (prescaler =3D=3D 0)
-> -		return;
-> +		return 0;
-> =20
->  	if (val & BIT_CH(PWM_ACT_STATE, pwm->hwpwm))
->  		state->polarity =3D PWM_POLARITY_NORMAL;
-> @@ -162,6 +162,8 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
-> =20
->  	tmp =3D (u64)prescaler * NSEC_PER_SEC * PWM_REG_PRD(val);
->  	state->period =3D DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
-> +
-> +	return 0;
->  }
-> =20
->  static int sun4i_pwm_calculate(struct sun4i_pwm_chip *sun4i_pwm,
+On other platforms we describe the oscillator at the dtsi level as well.
+The reason why it isn't board-specific is that the requirements and
+properties of the crystal are specified in the platform's datasheet,
+i.e. it is a design requirement that every board use the same crystal.
 
-For sunxi:
+I don't see the datasheet spelling out SYSCLK though. The TOPCKGEN part
+mostly just refers to it as CLK26M, or some variant of it, which likely
+denotes some fan-out branch. The system timer part also just says "26M"
+or "26 MHz clock source".
 
-Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+Also, we can't change the clock name, as "clk26m" is hard-coded into
+the clk drivers.
 
-Just one comment: I don't see a sunxi specific patch later in the series,
-though it seems we have at least one error error exit (see prescaler =3D=3D=
- 0
-above). Plus potentially another exit if clk_get_rate() (at the very
-beginning) fails.
-Shall I send a patch for that?
+> I know that your target is to describe how we get from 26M to 13M, but at
+> this point it may be worth it to use the right names to help preventing
+> confusion about that clock not being an external crystal on the board but
+> something internal to the SoC.
 
-Cheers,
-Andre.
+But as I described above, it is an actual crystal on the board. We are
+simply omitting parts of the signal path. Notably the PMIC needs to be
+excluded due to circular dependency reasons. And also we most definitely
+don't want the system to be touching it.
 
+ChenYu
 
+> So, I propose:
+> 1. Change `clk26m: oscillator` to `clk26m: sysclk` or `clk26m: sysclk-26m`;
+> 2. Add the divider as `clk13m: sysclk-div2`.
+>
+> What do you think?
+>
+> Cheers,
+> Angelo
+>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 12 ++++++++++--
+> >   1 file changed, 10 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index 19ff1babc359..0cbbaebe1213 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -585,6 +585,15 @@ psci {
+> >               method = "smc";
+> >       };
+> >
+> > +     clk13m: fixed-factor-clock-13m {
+> > +             compatible = "fixed-factor-clock";
+> > +             #clock-cells = <0>;
+> > +             clocks = <&clk26m>;
+> > +             clock-div = <2>;
+> > +             clock-mult = <1>;
+> > +             clock-output-names = "clk13m";
+> > +     };
+> > +
+> >       clk26m: oscillator {
+> >               compatible = "fixed-clock";
+> >               #clock-cells = <0>;
+> > @@ -968,8 +977,7 @@ systimer: timer@10017000 {
+> >                                    "mediatek,mt6765-timer";
+> >                       reg = <0 0x10017000 0 0x1000>;
+> >                       interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_HIGH>;
+> > -                     clocks = <&topckgen CLK_TOP_CLK13M>;
+> > -                     clock-names = "clk13m";
+> > +                     clocks = <&clk13m>;
+> >               };
+> >
+> >               iommu: iommu@10205000 {
+>
+>
 
