@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BA53C43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 10:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED84C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 10:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=; b=scWRBlFZLTGDPYvdlXoKS4eaLo
-	T/PpbNQyMa3a7mvw1mEFpMF96nZ5V1e5T2hTrHFFOaNsdzm74/X35XXYO4Il6quPRLW7RQeztNMty
-	NsdxL96zhKXC99y6V9BLjxdD7Sb/E8fkmGIBok07AcSZmOSruMmQ5ZJppSigCk1+sZRSSSi4UiRq1
-	2rjDtYSP6axIERaZVrRYFq8XmVQE5Gz1Km8q5ilF/K+ApqKdbfcRj0P/V2muEpy17b0sa7x6LUHHm
-	IdwPPqSAHwJAFWsWVA5uEnPrg1CcgBZ7DWfNrdZIqPSky3dY/1qL5u3ed+mqm3wWxVXukvgmCQbS6
-	v2QPzu8Q==;
+	bh=IcEiNeIHfhjQOz/UE8eyz9B4mtOnpXK5F0RGas0C0to=; b=PsAc+HFnHG81bJft6J5ebu4asF
+	jYs4mXX9QhXg8fvdosXH9qZW7U3rL507D/JYwTxSzOlHAf2mIg8Lunglx6AS+iZPsAWygKURcuMJ/
+	MCgcTeyxp6PPS8xYsAwGFNWPjZe6b2z5WEPXwSo6WcFSHoDsLvYNCrR3yMkKTeJQmTm8DD7HDujSP
+	baMTsAOcXHhpjLCfnFgMQdOU/34ED7MDKE5L3/5ZJVDujNSFL9UJysSzh4HYxQ6f/RZC8NAs0XnJ/
+	/wFZeRs7SeV7S7NXE0uGk/yTeUGim+TvjZ8joDA0W156YOAoVOuJ1aiMdb4LBWpiJbxnpu8bY5H7Z
+	3kgrgETA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gtY-006kt3-Ms; Thu, 01 Dec 2022 10:34:20 +0000
-Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
+	id 1p0gyT-006mqn-SF; Thu, 01 Dec 2022 10:39:25 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0gtT-006kpi-Sh
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 10:34:17 +0000
-Received: by mail-vs1-xe33.google.com with SMTP id d185so1159257vsd.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 02:34:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=;
-        b=IwOFeehWF+oYg12+9ZkiwGVadxZFj01NXaOuCnRgTZZLpM+Fn5sqOhpu1UxUlQzM6i
-         xc1P4SeeF/9DaTcEWv4zIFhgg5o4km4geZx+Kts4fY4wOM0jADweJiizzcHbZl3S2X6R
-         twBoFlgb6kiWQg4lDniO80Jub/yfTWo1qyCOQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rAH21UNUqbLO3zijQeQTjTfJALMFYCO0nKI/Gngxo3k=;
-        b=B53xyyFL93ZcBG6dPQevL+Zu9RLHCViGGjiWHFAvZqDjKSKA6ou9NT28Fux89xWPjF
-         exHdhI7Je1QFQFypCHnBaPAYHtViQlWOCPz9V4sksYvuFHd7Bd4n4dd0e9Ih5YFbYy58
-         W77SNND7g/koBwMxCgB9Ci2mMWuv7yUYrhR9RibXaq1mzU34xJ7qJ81fU1Z2CODW/0TT
-         ZaUoumrq1ezg+2utVE9jDNw4ilbvEhmK+HtceOaI6xeZzrX2W39MVw1TXwhztUvrm9Qp
-         KQ11rBykxWXPq3eHV5OKTQ9CRaNAEYtZVQCwEuMGvLJV2m5JqexVzQa/d1PO2vbBnRbf
-         ogaw==
-X-Gm-Message-State: ANoB5plQLl3BPY4crvlna+nhUEz+q9dc4tGLrpXDpcBjTNdV4RkpcnVU
-	BcaECgXJuiaW3BG+16bri9/eqZdddlUXSdjXmeO8Sg==
-X-Google-Smtp-Source: AA0mqf5Qao8vLv1WxRsnp96mIE7XC+68JCjxa9YlTVwuYfJ+F04VjR31/MXn43r9GYB1R+7pgmupfpOHqY8MQlfAy4g=
-X-Received: by 2002:a05:6102:e0c:b0:3b0:6da7:39ba with SMTP id
- o12-20020a0561020e0c00b003b06da739bamr24540024vst.26.1669890851122; Thu, 01
- Dec 2022 02:34:11 -0800 (PST)
+	id 1p0gyP-006mnv-Fc
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 10:39:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6F72FB81EA1;
+	Thu,  1 Dec 2022 10:39:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93A74C433D7;
+	Thu,  1 Dec 2022 10:39:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669891158;
+	bh=6HpDL5+INCtBpEEy8dHsD96qaaRPVHYBzx/FxGGFGBA=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=GShxMvi6wsH6WZPhK1cDVmSP2184tK1y+0EXFrfZGpRErT+OfTWNK6yip4kn4xIfR
+	 T3spuPKNdbTTiPwgVVae9s2xy9PkCoe73UVq11V5xwvMVrNkctS4jUzF9ur7qwAxdW
+	 9n0bR0WFQlsLxlusG27XnMQtfapdS3Mb5hKLGQKtASo6NE8Jj02RiLIr+A0nts69gp
+	 /HmoloTNQv69WFO213x6EpFheXlvHsqSkvQv6tunsBkIweinJ4+fvDH9VfKOZHAx/f
+	 6CEm482EVEH/egY8WgcWMn9yKQqakejExU2NGt3nfCQBVCJvV//rAclOnaerC1URLq
+	 oWa5EBfr2QuOQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  linux-wireless <linux-wireless@vger.kernel.org>,  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee <ryder.lee@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  Bo Jiao <Bo.Jiao@mediatek.com>,  linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 5/9] wifi: mt76: mt7996: add MAC support
+References: <20221122084554.9494-1-shayne.chen@mediatek.com>
+	<20221122084554.9494-6-shayne.chen@mediatek.com>
+Date: Thu, 01 Dec 2022 12:39:07 +0200
+In-Reply-To: <20221122084554.9494-6-shayne.chen@mediatek.com> (Shayne Chen's
+	message of "Tue, 22 Nov 2022 16:45:50 +0800")
+Message-ID: <87zgc7mmr8.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20221201084229.3464449-1-wenst@chromium.org> <20221201084229.3464449-2-wenst@chromium.org>
- <5250d7d3-ff46-e08d-926c-4efd92390d88@collabora.com>
-In-Reply-To: <5250d7d3-ff46-e08d-926c-4efd92390d88@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 1 Dec 2022 18:33:59 +0800
-Message-ID: <CAGXv+5E63+dE-=KbD_LW+BV+fBWnfaD+oH0+e9T_aS-XEffN5w@mail.gmail.com>
-Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183: Fix systimer 13 MHz
- clock description
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_023415_969273_E2189866 
-X-CRM114-Status: GOOD (  32.19  )
+X-CRM114-CacheID: sfid-20221201_023921_684683_87FAE17E 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,107 +72,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 1, 2022 at 5:31 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+Shayne Chen <shayne.chen@mediatek.com> writes:
+
+> (Split the big patch into smaller intermediate patches by functionality
+> for easier review. Refer to the cover letter for more info.)
 >
-> Il 01/12/22 09:42, Chen-Yu Tsai ha scritto:
-> > The systimer block derives its 13 MHz clock by dividing the main 26 MHz
-> > oscillator clock by 2 internally, not through the TOPCKGEN clock
-> > controller.
-> >
-> > On the MT8183 this divider is set either by power-on-reset or by the
-> > bootloader. The bootloader may then make the divider unconfigurable to,
-> > but can be read out by, the operating system.
-> >
-> > Making the systimer block take the 26 MHz clock directly requires
-> > changing the implementations. As an ABI compatible fix, change the
-> > input clock of the systimer block a fixed factor divide-by-2 clock
-> > that takes the 26 MHz oscillator as its input.
-> >
-> > Fixes: 5bc8e2875ffb ("arm64: dts: mt8183: add systimer0 device node")
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> I generally not just like - but *love* - this change, I had that in my mind
-> for a couple of months now and forgot about it because reasons.
->
-> There's just one thing that, since we're doing this now, we can clarify (and
-> that's important to avoid questions like "why isn't this board-specific"):
-> the 26MHz clock "clk26m" oscillator that we're using for the system timers
-> is a SoC-provided clock, and its name is "SYSCLK" as in "System bus clock".
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 
-Looking at the schematics it is terribly more complicated. :(
+[...]
 
-The crystal feeds the DCXO in the PMIC, which also acts as a buffer.
-The PMIC then feeds the SoC and any other chips, such as a modem.
+> +static void mt7996_mac_sta_poll(struct mt7996_dev *dev)
+> +{
+> +	static const u8 ac_to_tid[] = {
+> +		[IEEE80211_AC_BE] = 0,
+> +		[IEEE80211_AC_BK] = 1,
+> +		[IEEE80211_AC_VI] = 4,
+> +		[IEEE80211_AC_VO] = 6
+> +	};
+> +	struct ieee80211_sta *sta;
+> +	struct mt7996_sta *msta;
+> +	struct rate_info *rate;
+> +	u32 tx_time[IEEE80211_NUM_ACS], rx_time[IEEE80211_NUM_ACS];
+> +	LIST_HEAD(sta_poll_list);
+> +	int i;
+> +
+> +	spin_lock_bh(&dev->sta_poll_lock);
+> +	list_splice_init(&dev->sta_poll_list, &sta_poll_list);
+> +	spin_unlock_bh(&dev->sta_poll_lock);
+> +
+> +	rcu_read_lock();
+> +
+> +	while (true) {
 
-On other platforms we describe the oscillator at the dtsi level as well.
-The reason why it isn't board-specific is that the requirements and
-properties of the crystal are specified in the platform's datasheet,
-i.e. it is a design requirement that every board use the same crystal.
+In upstream we have a preference that there's some kind of limit for
+loops, to avoid neverending loops.
 
-I don't see the datasheet spelling out SYSCLK though. The TOPCKGEN part
-mostly just refers to it as CLK26M, or some variant of it, which likely
-denotes some fan-out branch. The system timer part also just says "26M"
-or "26 MHz clock source".
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-Also, we can't change the clock name, as "clk26m" is hard-coded into
-the clk drivers.
-
-> I know that your target is to describe how we get from 26M to 13M, but at
-> this point it may be worth it to use the right names to help preventing
-> confusion about that clock not being an external crystal on the board but
-> something internal to the SoC.
-
-But as I described above, it is an actual crystal on the board. We are
-simply omitting parts of the signal path. Notably the PMIC needs to be
-excluded due to circular dependency reasons. And also we most definitely
-don't want the system to be touching it.
-
-ChenYu
-
-> So, I propose:
-> 1. Change `clk26m: oscillator` to `clk26m: sysclk` or `clk26m: sysclk-26m`;
-> 2. Add the divider as `clk13m: sysclk-div2`.
->
-> What do you think?
->
-> Cheers,
-> Angelo
->
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 12 ++++++++++--
-> >   1 file changed, 10 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index 19ff1babc359..0cbbaebe1213 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -585,6 +585,15 @@ psci {
-> >               method = "smc";
-> >       };
-> >
-> > +     clk13m: fixed-factor-clock-13m {
-> > +             compatible = "fixed-factor-clock";
-> > +             #clock-cells = <0>;
-> > +             clocks = <&clk26m>;
-> > +             clock-div = <2>;
-> > +             clock-mult = <1>;
-> > +             clock-output-names = "clk13m";
-> > +     };
-> > +
-> >       clk26m: oscillator {
-> >               compatible = "fixed-clock";
-> >               #clock-cells = <0>;
-> > @@ -968,8 +977,7 @@ systimer: timer@10017000 {
-> >                                    "mediatek,mt6765-timer";
-> >                       reg = <0 0x10017000 0 0x1000>;
-> >                       interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_HIGH>;
-> > -                     clocks = <&topckgen CLK_TOP_CLK13M>;
-> > -                     clock-names = "clk13m";
-> > +                     clocks = <&clk13m>;
-> >               };
-> >
-> >               iommu: iommu@10205000 {
->
->
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
