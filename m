@@ -4,89 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11E9C47088
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 12:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 334A3C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 12:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+qaQnzUFR6jEc6/BTtzhr5L0OwEmeK71QdZTFbxUz8E=; b=a65siQjUv4iEM9uBAk92rEngap
-	1X+ju4NPLHcmwD39QdFipeTY2NbWrMJB555iIPUEMhWlqNjQeapYCyrcnzUqI/1QGrFhW+pHtshem
-	F/E12H++Ok21tooUO196Y3rv9xyW02TEdP2NMWA53SDNLRiTzBISZ9Y5cNvUzs7mQnyy7UkISWpeq
-	CEp7Nn0Td+6TfKL97lToCbl3HluQVWt9TnRIYanABy6OAf6eiQO5kYq0iwJWQO917VxvJOeo6BCPf
-	BpSC6AvQrZU1MziiDUDcIPMDHJCN3N6SG5hwkKFzuCOs6Xr+GCo1HpGwCksTYKaoWk1DSchgb9Vm6
-	RrX553qQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zwCnPW0NbYvNEoaTQBbhYwyaePWVmhmcxuF1yC02UB0=; b=ue0hiK7WMy3gPtqksQv2bd6ERb
+	1DPURu+OON31vR1jT/27qNlsQO0fuCTsA37S9TFUF9yNnSwPV2+SG0P8dKrz4Ayy0Ac3Bd2M9W7yr
+	aRKTXRqTPOaZc+wNHpCz2yoQUFnAdCrFhzweqTrav7Pk3WlU95OD7lVH7fBJrDPlBAhxpjMvVYzuu
+	iGamRL2DX5qHhGauYzgai/KI89u7jFTitmuhCs0L5zNKJJrNXzRov5JxqSfCqdz87Ir/xIGpKRFc6
+	SV4KUuqPVeABegHm/pD5Kgh+GOjDk0w9B616Z0MDuIbiXHHoRUj/SGEImX8wbpvDvu1tJqDBgiYCs
+	jp3Wx5nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0iUT-007GmX-5e; Thu, 01 Dec 2022 12:16:33 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1p0ixb-007Mz4-T2; Thu, 01 Dec 2022 12:46:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0iUD-007Gfa-Mn
-	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 12:16:19 +0000
-Received: by mail-lj1-x231.google.com with SMTP id z4so1665849ljq.6
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Dec 2022 04:16:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+qaQnzUFR6jEc6/BTtzhr5L0OwEmeK71QdZTFbxUz8E=;
-        b=sOWXzQoCSZLsJZmc13U6bfD5H/L6IPlnYQdftDEmYjI50/EIuxERFnlkJufQUJdi60
-         v87bCX3G11oWdxLgVfQZyl20NwbaRIQ+S1h47FECuTvi1pK0BjjfyPE52HH5KDQqjGv7
-         riknohuZ4jnAI065GNANBYIWSJ6lXEOKfomopCrUKnJBekNmMmhtfnVx4dRJiQUaqO/C
-         6Sg7zMO38p8ZiUXgXd3QGk/e8dqdKaT7Q6Hn6XwhYngqN2M9SzprkeWR/MtV22iPz5lu
-         iCRUL36LM964arkGNYIPFeYnuJUsc4bNLxZNrX6wimvEwe/VlEndjgYcy4py2KNabAim
-         AzRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+qaQnzUFR6jEc6/BTtzhr5L0OwEmeK71QdZTFbxUz8E=;
-        b=WaYPKOCdAsvYpyxK651kTVusv9nKui+IoTzAPCMBIdKhmhCn+dGGh2V3sawcsNOt8I
-         PyoVDOOZC9qwL/Tgq4tHHDssXQpLoj6v5/angB+g35Xm9/zsDKxfFJ6M6uPnnqJ1tFCU
-         VvDrvnVVvWTc99Mujkao6tJzpsrPJejoaB6DCVBXgADC+vY/3gNzGYb/8JXJeENnDSqY
-         VDn4uegpKxSSULjvsZeBmLjyeCYRdjtyIyqeLfAsQmyroxV63gtNCeVuZMTLXDGHGfnz
-         eSjh3BTcCF1IIH5J+IOfl6w/4LNAzOvZggMGKSuGwQo5O6CWodtn4IVTqXPwH5LAq8TQ
-         xCvw==
-X-Gm-Message-State: ANoB5pk24CgzHpxyWUsAyQRPOASh9t8ShACs2/aMIs1Y6aBMxOTf99tZ
-	n/mffe5jkjOWe3qdeFIAqAr3oA==
-X-Google-Smtp-Source: AA0mqf7+IQJ/XtOhZfRpM+10zUvVxsU5YE5EoyCx5d1tIv03ZdI2hGAYOBCVQTJ9Bqkgw5n/0a36mA==
-X-Received: by 2002:a05:651c:82:b0:277:2f15:4179 with SMTP id 2-20020a05651c008200b002772f154179mr15340293ljq.408.1669896973304;
-        Thu, 01 Dec 2022 04:16:13 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id s3-20020a05651c200300b0026df5232c7fsm363309ljo.42.2022.12.01.04.16.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Dec 2022 04:16:11 -0800 (PST)
-Message-ID: <2cac7d40-1807-63b2-9be7-9e88e721b68c@linaro.org>
-Date: Thu, 1 Dec 2022 13:16:10 +0100
+	id 1p0ixY-007MxC-RC; Thu, 01 Dec 2022 12:46:38 +0000
+X-UUID: 061527577eef4d64a6b4a1f48b182708-20221201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zwCnPW0NbYvNEoaTQBbhYwyaePWVmhmcxuF1yC02UB0=;
+	b=IbIBAuYc9TMXt0jzHOuWkAtpaNd9kchUYcOAxNmspN7IYCN77khC0puJuuz6aI9JCoLFoHJ/9sJKQhmBWUAZetyGe2H/b8Tj+0bibO9a3vDHtgcaktImcfxgjyAs7+c1+mIiG7YoYT7V7LOguCivWAjQIJ7VVAoOFnE/bwhRCbc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:bab7e370-9d7a-48c1-b5b5-d33b74b46336,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:cd55476c-41fe-47b6-8eb4-ec192dedaf7d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 061527577eef4d64a6b4a1f48b182708-20221201
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2127818299; Thu, 01 Dec 2022 05:46:32 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 1 Dec 2022 20:15:27 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 1 Dec 2022 20:15:26 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
+	<tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3,1/3] media: dt-bindings: media: mediatek: vcodec: Fix clock num not correctly
+Date: Thu, 1 Dec 2022 20:15:22 +0800
+Message-ID: <20221201121525.30777-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v5 1/2] dt-bindings: mailbox: add GCE header file for
- mt8188
-Content-Language: en-US
-To: "Elvis.Wang" <Elvis.Wang@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20221201071316.24583-1-Elvis.Wang@mediatek.com>
- <20221201071316.24583-2-Elvis.Wang@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221201071316.24583-2-Elvis.Wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_041617_748831_307A4520 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20221201_044637_715789_203A38F8 
+X-CRM114-Status: UNSURE (   8.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,21 +86,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2022 08:13, Elvis.Wang wrote:
-> From: Elvis Wang <Elvis.Wang@mediatek.com>
-> 
-> Add Global Command Engine(GCE) header file to define the GCE thread priority,
-> GCE subsys id, event and constant for mt8188.
-> 
-> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
-> ---
+From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
 
-You got my ack here already.
+mt8195 and mt8192 have different clock numbers, can't write 'clocks' and
+'clock-names' with const value.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+Reference series:
+[1]: v5 of this series is presend by Allen-KH Cheng.
+     message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
+---
+ .../bindings/media/mediatek,vcodec-subdev-decoder.yaml   | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index 7c5b4a91c59b..09781ef02193 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -110,15 +110,12 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
+ 
+       clocks:
++        minItems: 1
+         maxItems: 5
+ 
+       clock-names:
+-        items:
+-          - const: sel
+-          - const: soc-vdec
+-          - const: soc-lat
+-          - const: vdec
+-          - const: top
++        minItems: 1
++        maxItems: 5
+ 
+       assigned-clocks:
+         maxItems: 1
+-- 
+2.18.0
 
 
