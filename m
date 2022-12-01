@@ -4,52 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4804DC4321E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 02:19:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B19C4321E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 02:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UT6w43qR8toBRiiAyvAZHIOqxyE+6N7oX9Cu1pIV0Qo=; b=1dQ6d5sJQjtA0rUYZ4Lh21TqTV
-	QQNGqxhYgwi1P+BqBceUjyklunflfYx6JENaePWS/zJZU0qHCbpVMy+aycHopvp5dNdSveLKvvnOx
-	l045jJ1swk5Swme1Y1DAkvP6Sd6t1xnoqEth1KXGVy62iogj72NqYsVzSXGsSZrpN0m0oGaovPgF0
-	hPqiR5fu5zajCPUmkSrkhEFWxbPFLrz0Az3xQhd1Gw8eAreHaezA5S81sZYMowD6lyGDo76QVW/fK
-	/5fbHCelKKJwNlRPCagSzTataJzxljisELwu6/vbmMGFX/r+NN84sOyauIKIYjI5h8WDCHYIOzBQF
-	fW0VXcRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UypHRYT0clroG1oCM45Pj3lOdHiqz3YxtQ0h+Ckc+eI=; b=VK1Cv8D/njSa3vTtE61BELAQHe
+	ip03FEK64kTN9qC/2+pjmR87Tj5QJfWQZgfFlXv7/jN6Inezy83Kn8A04PC4G+MVLVAiIMTkjRui0
+	OJucUAF5aiTk2MhZCyOO//9WyNq/aQvj7SY/MEfoPZnnxzpF4QbiUUMf8L6rt04cfyPrbWvHGUa2y
+	EwJROj8gitCJWRCcYcgyw2SyuAUjMrZdfmipqyHP1WcZcbqy7MmvvP8DlezrsKMcEcJkbilp5zdOv
+	J2Z2C3Oma47kgIG/3DFtG1ciLl0B78l0qZAk11sq7re0tCqBR8RCmsCczgo2JglnEjIL856tVBhEE
+	bjkYnE/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0ZA5-003u8h-3n; Thu, 01 Dec 2022 02:18:53 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1p0ZVr-003zHk-Gn; Thu, 01 Dec 2022 02:41:23 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0Z9t-003u5q-Eb; Thu, 01 Dec 2022 02:18:43 +0000
-Received: from kwepemi500014.china.huawei.com (unknown [172.30.72.53])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NN08y6QGGzRpZP;
-	Thu,  1 Dec 2022 10:17:54 +0800 (CST)
-Received: from localhost.localdomain (10.175.112.70) by
- kwepemi500014.china.huawei.com (7.221.188.232) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 1 Dec 2022 10:18:35 +0800
-From: Qiheng Lin <linqiheng@huawei.com>
-To: <mchehab@kernel.org>, <matthias.bgg@gmail.com>
-CC: <angelogioacchino.delregno@collabora.com>, <linux-media@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Qiheng Lin <linqiheng@huawei.com>
-Subject: [PATCH v2] media: platform: mtk-mdp3: Fix return value check in mdp_probe()
-Date: Thu, 1 Dec 2022 10:35:05 +0800
-Message-ID: <20221201023505.48015-1-linqiheng@huawei.com>
-X-Mailer: git-send-email 2.32.0
+	id 1p0ZVo-003zG2-6S; Thu, 01 Dec 2022 02:41:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C136061E43;
+	Thu,  1 Dec 2022 02:41:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40610C433B5;
+	Thu,  1 Dec 2022 02:41:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669862478;
+	bh=oEKpzlNT5/2REuZbJ9nJL8V6rmg/O7EETT/KejHSD8k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TH8159Vsmt/10ITe/zhNEMAr0DJShK7lsDLNDN2pIZAVofrn3gusqAdnBs2Qu1cSN
+	 XCcRLrdtEkYyNEI8SEx6SJRIKDIfDVpLhJHBOP8HqdCgkPwJb3zObY5B7KiqXqV5dU
+	 YfnDxebKZS69mB2aEBYlCb+U3U7FjKzExxd/CI1VOI09SsnQ0ZvEFiiDbtdXex5IWG
+	 DBHET0gvgxZrW9389IzXKRfWjYTgc2EntD3p+73FzHGNoSLfnluPj2RUUWlbsAOWtR
+	 7osJ2K8rd4L8EqCVdL03V/id7vZ6u9INSzhje+ZXfzQM9dAVuQaVr5VyJGNqZHVtHm
+	 ohZr0MuVoVdZQ==
+Date: Thu, 1 Dec 2022 10:41:06 +0800
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Douglas Anderson <dianders@chromium.org>,
+	Pavel Machek <pavel@ucw.cz>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Stephen Boyd <swboyd@chromium.org>,
+	Matthias Kaehlcke <mka@chromium.org>,
+	Satya Priya <quic_c_skakit@quicinc.com>, linux-pwm@vger.kernel.org,
+	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an error
+ code
+Message-ID: <Y4gUQhdeZGm67Js2@google.com>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+ <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.112.70]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepemi500014.china.huawei.com (7.221.188.232)
-X-CFilter-Loop: Reflected
+In-Reply-To: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221130_181841_671644_92ED7599 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20221130_184120_358150_88470745 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,51 +120,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In case of error, the function mtk_mutex_get()
-returns ERR_PTR() and never returns NULL. The NULL test in the
-return value check should be replaced with IS_ERR().
-And also fix the err_return case.
+On Wed, Nov 30, 2022 at 04:21:38PM +0100, Uwe Kleine-König wrote:
+> diff --git a/drivers/pwm/pwm-cros-ec.c b/drivers/pwm/pwm-cros-ec.c
+> index 7f10f56c3eb6..11684edc0620 100644
+> --- a/drivers/pwm/pwm-cros-ec.c
+> +++ b/drivers/pwm/pwm-cros-ec.c
+> @@ -183,8 +183,8 @@ static int cros_ec_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>  	return 0;
+>  }
+>  
+> -static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+> -				  struct pwm_state *state)
+> +static int cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+> +				 struct pwm_state *state)
+>  {
+>  	struct cros_ec_pwm_device *ec_pwm = pwm_to_cros_ec_pwm(chip);
+>  	struct cros_ec_pwm *channel = pwm_get_chip_data(pwm);
+> @@ -193,7 +193,7 @@ static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+>  	ret = cros_ec_pwm_get_duty(ec_pwm, pwm->hwpwm);
+>  	if (ret < 0) {
+>  		dev_err(chip->dev, "error getting initial duty: %d\n", ret);
+> -		return;
+> +		return 0;
+>  	}
+>  
+>  	state->enabled = (ret > 0);
+> @@ -212,6 +212,8 @@ static void cros_ec_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+>  		state->duty_cycle = channel->duty_cycle;
+>  	else
+>  		state->duty_cycle = ret;
+> +
+> +	return 0;
+>  }
 
-Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-Signed-off-by: Qiheng Lin <linqiheng@huawei.com>
----
-
-v2:
- - Add fix the err_return case.
-
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index c413e59d4286..48f3e32fe54e 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -207,8 +207,8 @@ static int mdp_probe(struct platform_device *pdev)
- 	}
- 	for (i = 0; i < MDP_PIPE_MAX; i++) {
- 		mdp->mdp_mutex[i] = mtk_mutex_get(&mm_pdev->dev);
--		if (!mdp->mdp_mutex[i]) {
--			ret = -ENODEV;
-+		if (IS_ERR(mdp->mdp_mutex[i])) {
-+			ret = PTR_ERR(mdp->mdp_mutex[i]);
- 			goto err_return;
- 		}
- 	}
-@@ -288,9 +288,10 @@ static int mdp_probe(struct platform_device *pdev)
- err_deinit_comp:
- 	mdp_comp_destroy(mdp);
- err_return:
--	for (i = 0; i < MDP_PIPE_MAX; i++)
--		if (mdp)
--			mtk_mutex_put(mdp->mdp_mutex[i]);
-+	if (mdp)
-+		for (i = 0; i < MDP_PIPE_MAX; i++)
-+			if (!IS_ERR_OR_NULL(mdp->mdp_mutex[i]))
-+				mtk_mutex_put(mdp->mdp_mutex[i]);
- 	kfree(mdp);
- 	dev_dbg(dev, "Errno %d\n", ret);
- 	return ret;
--- 
-2.32.0
-
+For the cros-ec part:
+Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
 
