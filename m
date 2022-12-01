@@ -4,65 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E02C4708E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 11:40:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE267C43217
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 11:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dfOEXnlaPDTQyh5hwojKntKZbR0Ct6BYQNOU/3518PU=; b=IJuaokzXFowCED
-	aWFJzbMZYX9xT+nvlkX0XT/l/go5R1IrMyk5L0AJdnaFM6BJVmvG5/oVp4MaqQoRszorOjfoqAOgS
-	DNOLhkA4XuLwQYpNYAfUXzSOM+AQbJ+KKYsg4YxJWfWVnXHd2nzHYRy9HOItBJeIWO8BiQB66K9ec
-	4knWGc8lY28rgrW/Mji8pejxo2NXwyleaduF3UPt+NkwMwSe9KfIB5e707uF4j87c6iw5NpqRVZfV
-	JRE+7o+9zrGmGZHWoOdAdS0mGOIDudvL5Tbf/cw1Ztw5XDkMzdSyaM8j9Avwtm1tq5jmXrUmMYIZ5
-	icu3VLgSXMhuJF7nnAqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1DpeR0fOlb5PAMGmnpXX+od9r16gR+9q1pKLo2N9KRI=; b=rwz/tDx7i07JRMrP6pag0COpO3
+	PMH8o0cI+Ag0L1nE2xMuxqlVQrjbWUEYC2Sg8ESBQQF7MUPX82VvBH2dTPLz4c9lIP0Iu/ndpxr1s
+	Fh45dhRY2TK12ZjQaPt/9CmorlkhcQDfLxMTe7ZtQ6CCjTSi8qHludzYAl1MFs1suKk9wrKcyfjed
+	vp16Sq+J3IwqHO9X8pE52CBy+EYiG71Xf+ZNTLdDeTFaSGMU6+O7/qnAKI+NqtD3KSDuqFp1ZtY7A
+	gS8hh4xNVLt87fC/FsGz8ps3QsEtTYrHR8nhAFWc80AI/TjYMFaMcFztoQO810H8g0o3TIsZ7gQU/
+	zWAIKEyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0hv4-0076sn-92; Thu, 01 Dec 2022 11:39:58 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1p0hxl-0077hM-Jt; Thu, 01 Dec 2022 11:42:45 +0000
+Received: from mail-40141.protonmail.ch ([185.70.40.141])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0hv1-0076rA-7l; Thu, 01 Dec 2022 11:39:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1669894669; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QTQmm9pOeLgmKb8bWo/bk1tmntAG21CY8mqL5Y7GzMv84vMVC3VrVna9NzX1hngi7eK1jcFyuiSXXvVA9bOp7v2JNs+2P/yWem+qMtXkZfdIeULvLO4Rfg8yQmTObIt1kyNHO2k94mTkgHZvRKbMyIMAcRvOxm9qMfK6qb3t88g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1669894669; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=dfOEXnlaPDTQyh5hwojKntKZbR0Ct6BYQNOU/3518PU=; 
-	b=OYF7SwvD1mv3O+HAFCbq9CfMSGf7fvV73aJ926EunEgVq/bUTdRUCCmRrZD9+8rTw9wNG3PDjimgO76TJJ6VPC/P/vttun+Obu5Dzyp0sS31x9L5iYLvG+rdO6kZvZ2wtK6Gn86PgqwwiOO9sfMtbOWsOMExVMcejf44MYA+nAo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1669894669;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=dfOEXnlaPDTQyh5hwojKntKZbR0Ct6BYQNOU/3518PU=;
-	b=Sxoe6pf0viFvg95RBI3wMeoXYd0syHO9a0cEcwxKEbUeNP5X1PyRVz24a8qLfztM
-	cNOs3+XlOAmEYW4Cspyrx9xPr6rdVmINXwU/r6bTSOpPefuylQ7S/DIWSUhazWPCj3l
-	ohbSEg1Td2+qDT3JhrnQZaDjIZ9aCibjEQyIlKI4=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1669894667415837.5294444284028; Thu, 1 Dec 2022 03:37:47 -0800 (PST)
-Message-ID: <83ed1490-4d87-98c5-2616-54b5f1ab64b7@arinc9.com>
-Date: Thu, 1 Dec 2022 14:37:31 +0300
+	id 1p0hxj-0077f8-8f
+	for linux-mediatek@lists.infradead.org; Thu, 01 Dec 2022 11:42:44 +0000
+Date: Thu, 01 Dec 2022 11:42:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1669894957; x=1670154157;
+	bh=1DpeR0fOlb5PAMGmnpXX+od9r16gR+9q1pKLo2N9KRI=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=yDI7s0HlJ4McXxo+2ufuGpE4pXDth5CZgcjcV3rSuMzzH6q3wJU2Tk8xl6O17cNkC
+	 HGXaHumIUcAtIEKBNwYce9+vZ6SE7uaW92ikgpJXsWAVzP2llfPOvr8KTm04XlizD+
+	 qqmrGlCY6Vr+H0QkM3W/9jf6/hOxA26eKCS8YCl+DJk0go0urf5JB+gwEDYNDa+OO5
+	 1T8hQYX7JoMQ/eCuypvX3exrqCVOMjP+g6FcbGegvHOS8NPTUhCiVXC8ifRf/Od0W+
+	 SNowSPaq79Rn4U19KPuffPal7gPFjk3PQGZv2gIZTRDFaB0Mv+3fBjN1Wz7ItilgIJ
+	 mhsl3c7GMLCkg==
+To: Rob Herring <robh@kernel.org>
+From: Yassine Oudjana <y.oudjana@protonmail.com>
+Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Andy Teng <andy.teng@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 1/7] dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Pull pinctrl node changes from MT6795 document
+Message-ID: <OlpG9EaFtnZPPSHGKPeAj0wrG-hceDitxke8L1MrF58nBbOf4Q8bsw1FC8O12qj_3GFxNpM4p_LeKwbCzchvZGaD0a_S56_uKhg7YWszZ9A=@protonmail.com>
+In-Reply-To: <20221130152041.GA2183918-robh@kernel.org>
+References: <20221118113028.145348-1-y.oudjana@protonmail.com> <20221118113028.145348-2-y.oudjana@protonmail.com> <20221130152041.GA2183918-robh@kernel.org>
+Feedback-ID: 6882736:user:proton
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
-To: Michael Ellerman <mpe@ellerman.id.au>, Andrew Lunn <andrew@lunn.ch>
-References: <20221130141040.32447-1-arinc.unal@arinc9.com>
- <Y4d9B7VSHvqJn0iS@lunn.ch> <32638470-b074-3b14-bfb2-10b49307b9e3@arinc9.com>
- <877czbs8w7.fsf@mpe.ellerman.id.au>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <877czbs8w7.fsf@mpe.ellerman.id.au>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_033955_353922_1ABC6FB2 
-X-CRM114-Status: GOOD (  17.73  )
+X-CRM114-CacheID: sfid-20221201_034243_491638_550246F1 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,50 +63,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Tim Harvey <tharvey@gateworks.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, Peng Fan <peng.fan@nxp.com>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, linux-rockchip@lists.infradead.org, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Ray Jui <rjui@broadcom.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, linuxppc-dev@lists.ozlabs.org, Nicholas Piggin <npiggin@gmail.com>, linux-mips@vger.kernel.org, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, "David S. Miller" <davem@davemloft.net>, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Riesch <michael.riesch@wolfvision.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1.12.2022 13:42, Michael Ellerman wrote:
-> Arınç ÜNAL <arinc.unal@arinc9.com> writes:
->> On 30.11.2022 18:55, Andrew Lunn wrote:
->>> On Wed, Nov 30, 2022 at 05:10:35PM +0300, Arınç ÜNAL wrote:
->>>> Hello folks,
->>>>
->>>> With this patch series, we're completely getting rid of 'label = "cpu";'
->>>> which is not used by the DSA dt-binding at all.
->>>>
->>>> Information for taking the patches for maintainers:
->>>> Patch 1: netdev maintainers (based off netdev/net-next.git main)
->>>> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
->>>> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
->>>> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
->>>
->>> Hi Arınç
->>>
->>> So your plan is that each architecture maintainer merges one patch?
->>
->> Initially, I sent this series to soc@kernel.org to take it all but Rob
->> said it must be this way instead.
->>
->>>
->>> That is fine, but it is good to be explicit, otherwise patches will
->>> fall through the cracks because nobody picks them up. I generally use
->>> To: to indicate who i expect to merge a patch, and everybody else in
->>> the Cc:
->>
->> Thanks for this, I'll follow suit if I don't see any activity for a few
->> weeks.
-> 
-> IMHO the best solution if the patches are truly independent is to send
-> them independantly to each maintainer. That way there's no confusion
-> about whether someone else will take the series.
-> 
-> It's also simpler for maintainers to apply a single standalone patch vs
-> pick a single patch from a larger series.
+On Wednesday, November 30th, 2022 at 6:20 PM, Rob Herring <robh@kernel.org>=
+ wrote:
 
-I agree. I'll do that next time.
+> On Fri, Nov 18, 2022 at 02:30:22PM +0300, Yassine Oudjana wrote:
+>=20
+> > From: Yassine Oudjana y.oudjana@protonmail.com
+> >=20
+> > mediatek,pinctrl-mt6795.yaml has different node name patterns which mat=
+ch
+> > bindings of other MediaTek pin controllers, ref for pinmux-node.yaml wh=
+ich
+> > has a description of the pinmux property, as well as some additional
+> > descriptions for some pin configuration properties. Pull those changes
+> > into mediatek,mt6779-pinctrl.yaml and adjust the example DTS to match i=
+n
+> > preparation to combine the MT6795 document into it.
+> >=20
+> > Signed-off-by: Yassine Oudjana y.oudjana@protonmail.com
+> > ---
+> > .../pinctrl/mediatek,mt6779-pinctrl.yaml | 38 ++++++++++++++-----
+> > 1 file changed, 28 insertions(+), 10 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-=
+pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pi=
+nctrl.yaml
+> > index a2141eb0854e..d6231d11e949 100644
+> > --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl=
+.yaml
+> > +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl=
+.yaml
+> > @@ -111,19 +111,21 @@ allOf:
+> > - "#interrupt-cells"
+> >=20
+> > patternProperties:
+> > - '-[0-9]*$':
+> > + '-pins$':
+> > type: object
+> > additionalProperties: false
+> >=20
+> > patternProperties:
+> > - '-pins*$':
+> > + '^pins':
+> > type: object
+> > description: |
+> > A pinctrl node should contain at least one subnodes representing the
+> > pinctrl groups available on the machine. Each subnode will list the
+> > pins it needs, and how they should be configured, with regard to muxer
+> > configuration, pullups, drive strength, input enable/disable and input =
+schmitt.
+> > - $ref: "/schemas/pinctrl/pincfg-node.yaml"
+> > + allOf:
+> > + - $ref: pinmux-node.yaml
+> > + - $ref: pincfg-node.yaml
+> >=20
+> > properties:
+> > pinmux:
+> > @@ -134,9 +136,25 @@ patternProperties:
+> >=20
+> > bias-disable: true
+> >=20
+> > - bias-pull-up: true
+> > -
+> > - bias-pull-down: true
+> > + bias-pull-up:
+> > + oneOf:
+> > + - type: boolean
+> > + - enum: [100, 101, 102, 103]
+> > + description: Pull up PUPD/R0/R1 type define value.
+> > + description: |
+> > + For normal pull up type, it is not necessary to specify R1R0
+> > + values; When pull up type is PUPD/R0/R1, adding R1R0 defines
+> > + will set different resistance values.
+> > +
+> > + bias-pull-down:
+> > + oneOf:
+> > + - type: boolean
+> > + - enum: [100, 101, 102, 103]
+>=20
+>=20
+> 'bias-pull-down' is defined to be in Ohms. This doesn't look like it's
+> Ohms.
 
-Cheers.
-Arınç
+That's right, these numbers appear to correspond to MTK_PUPD_SET_R1R0_*
+values defined in include/dt-bindings/pinctrl/mt65xx.h, and work similar
+to mediatek,pull-down-adv as defined in mediatek,mt8183-pinctrl.yaml.
+
+Now I think the easiest thing to do in order to sort this out would be
+be to stop supporting bias-pull-[up/down] properties and replace them
+with mediatek,pull-[up/down]-adv, but I guess that would break old DT.
+Changing the supported values to represent ohms and modifying drivers
+to accommodate for that would be quite tedious since every pin group
+on every SoC has different supported pull resistances, and it would
+still break compatibility with old DT anyway.
+
+Does anyone have a better idea on this? Or perhaps we could leave fixing
+this for another time since issues with these bindings seem to never end
+and this patch series just keeps growing.
+
 
