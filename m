@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F261CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 23:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61613C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 23:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EV6CjuoOmDJCrT3HK8JiKWVQT6lYUA0pH9U3EEboe7E=; b=pemq9ZqSzUYByhSZzlKAbL1SLX
-	RmhZow1txwZc+QWQswNvhIuDhigLRE6Le5X5H3C6ZiQfZae/XkE73IllFQUwynO9cYehQJ+F0eUNg
-	g9QqQj9xM8AQookjq6rp6TT19aphTv/YkbGFuZVVyO1vS/7nulvyekagxXkaaozC5RcmecHv+nOT8
-	+/sgYwDVD0pGu1GMr/+4cTy41bI983Cb/o8lzB+6aPljHD7plSExg3b7Vu4Oab1V+nBt1IhRy3HJv
-	x9RwIg4H3H6HO9wOnOfMH4iFYcKjZZOd4cd1xu0ND8QQoNr2ntQCYBnpFcL3DQzv6QZnnXm9ibodr
-	a1yg4FcQ==;
+	bh=kku18D3Y88MWUX/tUqbmMS28F2KQx7nmZY37oV7FZwE=; b=ExjdbFqt682Ifg0F9OD4AqMswO
+	DrMdwSa2vob8Hf+UrJijBMj3CVDM7ojIXm0NTnW4P0fjtt6znZzJJbb0q9fWgKiaoz8lSSzPd9B4K
+	S/ucv2C6WGT8i23BcX9hGSZ+IlIu+QRLs71Fr5L8WH3x5VpVR67CT0q4eti4Ei+L3EC3iYcQJRhau
+	AzA0Sp+xsdPYabbNopKpKuBPdgHeq5TRQucxvu52LNjeiQmP1bVPjbG6qs36EPBov5itV9EhTOowa
+	vhUmOkLHNabPxTS8VzCgaycImMu6f0C/6XH+FVW/83vJh99V5JCS1JbfisUXhkQx51kSbIbCpmfz9
+	NwVOsDYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0tJZ-00BrGV-62; Thu, 01 Dec 2022 23:50:01 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1p0tKk-00BroP-Oe; Thu, 01 Dec 2022 23:51:14 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0t3Z-00BiYQ-Cu; Thu, 01 Dec 2022 23:33:30 +0000
-Received: by mail-oo1-f44.google.com with SMTP id j1-20020a4ad181000000b0049e6e8c13b4so493843oor.1;
-        Thu, 01 Dec 2022 15:33:26 -0800 (PST)
+	id 1p0tGC-00BpXA-Bb; Thu, 01 Dec 2022 23:46:34 +0000
+Received: by mail-ot1-f48.google.com with SMTP id a13-20020a9d6e8d000000b00668d65fc44fso1978419otr.9;
+        Thu, 01 Dec 2022 15:46:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EV6CjuoOmDJCrT3HK8JiKWVQT6lYUA0pH9U3EEboe7E=;
-        b=0zQ7dWPBmcFh++WseC9TqJt616qZl/p2KU1crhmtqMNW6421Dzeldfv2nwQMa84bMv
-         F8LxVcrqRJhwZX/vLW4Xt1fixfe9bjaQBggyTG0uTGWwKJx905CfBKxt8QjKPgXqDsDh
-         nfZQaTZGCL8oOfCNbktrT8Mvn/1EP4UXao07RUF2MAoKBwW1liZIaMKsmJyLDCN5pGHH
-         vE4DtuT/YTwGrj/0xLi37hJxvlpOhR7CjTPqLziKGqAdYgS6D3StyVRtOlPSWVq1Bs1+
-         mGVpk9KPvr67ze7bOz81ZAJ2RMuRRw3pP6liQwzNpXwajMT7eVwtyirkRG9FZwKL3bm4
-         o0ZQ==
-X-Gm-Message-State: ANoB5pllZ0I5SfRS7t2R0VqJ6oAm8YZWMnDoH2tmbJldwo6rrIhsjkl8
-	8Dk4DGLovDqPkbxH/K6ciw==
-X-Google-Smtp-Source: AA0mqf5M9nJX9KDi3rKXW1IQ32Xx7g8ROHxHwlWwX5hwmRYB/D8rbNNcafvpX5yJhj0k3R6jjdm63A==
-X-Received: by 2002:a4a:ad49:0:b0:49b:c0e:3d5f with SMTP id s9-20020a4aad49000000b0049b0c0e3d5fmr29549672oon.69.1669937605311;
-        Thu, 01 Dec 2022 15:33:25 -0800 (PST)
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kku18D3Y88MWUX/tUqbmMS28F2KQx7nmZY37oV7FZwE=;
+        b=Ka92hniqmOZB5GKCLVArQKDD82/u8o4yjfX/Gg3S4OTWmyxSF7e+RnlFTCF8l45X6J
+         cAulZnpJZCcnCuxVkAqkZtPShQywdvVEcnwkn2fDDB/1aUqzcPpoyvDP3Tm1Mdk6xUkL
+         ZNLxwPrmj2+ufOdrJEomb/4jMk2EQjraIBtAUZrJR1+2q5/tBzNnembcg0ThAwv5j1dL
+         4nr1iYl+pigyuzTR3ayZDeR+QcQSFHjnTs2zr3f+z8W4Tw7PJxdzdHKWHRRlYXJH79zM
+         UFW5O7lcH8ECNSH7yA/0p35+Z6XDP0ygdm0nkvKgX0k7Fe4bYEkb6Xq6Ry5B2uh8BWUv
+         HNtQ==
+X-Gm-Message-State: ANoB5plgDnn4ESuqC+67qae7kupqU+yKjgwf+v0oCecWyJ2BvKoBAvBi
+	mhhOX2CsDs88fysz4EkJaA==
+X-Google-Smtp-Source: AA0mqf5ZGQasomoBdeMHUbWi+cUm7mHzdtQUSRq09o1u9VxkbZV92Lxt3/8ZuyZgJD7FgCKGDpaDTA==
+X-Received: by 2002:a05:6830:1e63:b0:661:9030:6480 with SMTP id m3-20020a0568301e6300b0066190306480mr24758975otr.147.1669938390899;
+        Thu, 01 Dec 2022 15:46:30 -0800 (PST)
 Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id s34-20020a056870612200b0013d9bd4ad2esm3361315oae.12.2022.12.01.15.33.23
+        by smtp.gmail.com with ESMTPSA id y2-20020a4ae702000000b0049427725e62sm2292185oou.19.2022.12.01.15.46.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Dec 2022 15:33:24 -0800 (PST)
-Received: (nullmailer pid 1686225 invoked by uid 1000);
-	Thu, 01 Dec 2022 23:33:23 -0000
-Date: Thu, 1 Dec 2022 17:33:23 -0600
+        Thu, 01 Dec 2022 15:46:30 -0800 (PST)
+Received: (nullmailer pid 1704103 invoked by uid 1000);
+	Thu, 01 Dec 2022 23:46:28 -0000
+Date: Thu, 1 Dec 2022 17:46:28 -0600
 From: Rob Herring <robh@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, Fabien Parent <fparent@baylibre.com>, 
-	devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, 
-	Sean Wang <sean.wang@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, 
-	Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	Tianping Fang <tianping.fang@mediatek.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Fabien Parent <fabien.parent@linaro.org>, Flora Fu <flora.fu@mediatek.com>, 
-	Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, 
-	Mattijs Korpershoek <mkorpershoek@baylibre.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, 
-	linux-input@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-kernel@vger.kernel.org, 
-	linux-leds@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v7 3/8] dt-bindings: soc: mediatek: convert pwrap
- documentation
-Message-ID: <166993759991.1686069.16535756664012746082.robh@kernel.org>
-References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
- <20221005-mt6357-support-v7-3-477e60126749@baylibre.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH 1/5] dt-bindings: net: qca,ar71xx: remove label = "cpu"
+ from examples
+Message-ID: <166993831623.1702506.4546645219900752750.robh@kernel.org>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com>
+ <20221130141040.32447-2-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20221005-mt6357-support-v7-3-477e60126749@baylibre.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221130141040.32447-2-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_153329_469363_5BDFF971 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20221201_154632_472006_08642D64 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,23 +76,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: ", Andrew Lunn" <andrew@lunn.ch>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Vladimir Oltean <vladimir.oltean@nxp.com>, linux-arm-msm@vger.kernel.org, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-mips@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Michael Riesch <michael.riesch@wolfvision.net>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Shawn Guo <shawnguo@kernel.org>, Peng Fan <peng.fan@nxp.com>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Tim Harvey <tharvey@gateworks.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, devicetree@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Ray Jui <rjui@broadcom.com>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, Nicholas Piggin <npiggin@gmail.com>, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, linux-sunxi@lists.linux.dev, linux-renesas-soc@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 29 Nov 2022 16:57:02 +0100, Alexandre Mergnat wrote:
-> - Convert soc/mediatek/pwrap.txt to soc/mediatek/mediatek,pwrap.yaml
-> - Add syscon compatible const for mt8186 and mt8195 to match the DTS needs,
->   which is missing from pwrap.txt.
+On Wed, 30 Nov 2022 17:10:36 +0300, Arınç ÜNAL wrote:
+> This is not used by the DSA dt-binding, so remove it from the examples.
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > ---
->  .../devicetree/bindings/leds/leds-mt6323.txt       |   2 +-
->  Documentation/devicetree/bindings/mfd/mt6397.txt   |   2 +-
->  .../bindings/soc/mediatek/mediatek,pwrap.yaml      | 147 +++++++++++++++++++++
->  .../devicetree/bindings/soc/mediatek/pwrap.txt     |  75 -----------
->  4 files changed, 149 insertions(+), 77 deletions(-)
+>  Documentation/devicetree/bindings/net/qca,ar71xx.yaml | 1 -
+>  1 file changed, 1 deletion(-)
 > 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 
