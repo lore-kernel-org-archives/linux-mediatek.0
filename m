@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB40C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Dec 2022 23:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA27AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 03:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MWVVNliZTYEWF5fFNtzs+9P9giHEjE14UGyme1WyflI=; b=2XHfcauetjpsV2/eebdFxQHCEa
-	/pOC5LBS+vQ15owaNXZTmzE7QBSA4AyOTwPfXIWGgc7p40kSa36WdLZJ84UxmFnV5tzCC/8pfj8ES
-	WKJ7YeeeFqkJhnG7+HEJLWMHJhsAGJJm/HmdW8tX8vf3JpAKzIAoHQ8SH08oWU6hi0J1BXQCWBpHA
-	z63c5iSoYIye7A9eHuO3N6huD2u3ul4LsczJ9Nw0IOhYNO9YOJVMgqtwr+HJE2oWXXpQDed5MfLdl
-	ps74Q7XUsW7mWHJy9BdOnmYBCrDPsbxVK5agxpH+rBSR7QcQEYLtEiiTvtNCsARKPrOFHa/3khJRp
-	xecsoGvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x3IEJJUdCdGG8U1WrhDSRoS/ptvIHsxOFNuOE68d/I0=; b=ajNnFCc4meDayFwtm6VNmYxFLD
+	rB6LALJTbG/D3DqFESXyr1i1rGWmdBDyicTVcQczvfdL/fkCMW67eFGNSqgw7b0pFRPEWSuGr4StQ
+	cSFmQ+OsF3dwuRnVYdjwTVAbsQrH3dPFMfVfpKuxFgKrvDMlrtOYXL/Ttdwersry4M0UhqcvdOi72
+	cPn9nCuIMSTbEis1QnLoY4THrxScpIbPcU/Q7jq6fWvlonw0ThiMbD2Fmkhhir4s6XBabOALmxu1A
+	n6BI50yKIpMsmq6iiqxHMxRCZ3r3ZQcPuoRLDUtfvEtvYg4qi/2Iv2d7u9bXuJFA3DhdIa7Yq6Bdm
+	Mlb1bh4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0tRa-00Buc8-7q; Thu, 01 Dec 2022 23:58:18 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1p0wqN-00CwU4-DV; Fri, 02 Dec 2022 03:36:07 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0tRL-00BuRV-QZ; Thu, 01 Dec 2022 23:58:05 +0000
-Received: by mail-oi1-f174.google.com with SMTP id h132so3788294oif.2;
-        Thu, 01 Dec 2022 15:58:02 -0800 (PST)
+	id 1p0wqB-00CwQZ-5l; Fri, 02 Dec 2022 03:35:56 +0000
+Received: by mail-wr1-x436.google.com with SMTP id m14so5940956wrh.7;
+        Thu, 01 Dec 2022 19:35:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=x3IEJJUdCdGG8U1WrhDSRoS/ptvIHsxOFNuOE68d/I0=;
+        b=oneK4l5oRB68i/urz6v9XuyXXIAzS8mXuk7hrFMm6ySyZDysNQoJkWSAtrpATrU1gE
+         qu/ph2JckzhdE/sll6ROKUMH9k5HMpskTdvwS9yz/9SpZh9V2uIvX4RqAVXyO88WNMHo
+         YEIxENk68RvtdLvRiPzRNzEoUkRKGenRv7jwE013/jqnejh97o7+cnccW3SUdV8DzNEZ
+         Bk2L3n3MwjHg6WwxMmwNjhAwOxlmx7pPf6KObVS08iT/mSnEwQdcFJ1s4zCQDit8JJGN
+         e+W8y9Xh/RbV11aI9550ywUTpBt0iAEawQksFGtkWp2YEeLYJRtmo5C3hWhLwfRJFXs7
+         Be7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MWVVNliZTYEWF5fFNtzs+9P9giHEjE14UGyme1WyflI=;
-        b=ndDoF2i8o2XCw7aIvfKRD+T1Lhxt3wHkiMu2uC7aw+pxSgx1aOVqa7U2wCq+rn4LLH
-         xKCKHEWUGWDZ9VutqPmOx9SfyybTQIqwZTdVR5qxdlsVT9bjKQI3a0/mNT6llL0TqExN
-         JuhveyZy3rbgIZb/mQDEyZDv5ZPUMYyBXiZ8VKqLUGNDveVbjV+RC0ALaURLa+bqYFfz
-         VSi2EE8kRIZyTyQcGnxXqofMqtSh5YBotZCSMSTVnYOeRIFmy+8nYPTR1PFmaXoRUYKD
-         UvdQ8rCbd4tupSHdr/xmBKmEvTXYidWNaAd9QZ7wX2xpKmvo6t39EhoL6bxhBagpvXQ2
-         Q8Rw==
-X-Gm-Message-State: ANoB5pm4LUnFoPgoce+pQNJOiMUGhLC/qCbLPXkjKY+cXchIFZ2LEM1M
-	E3z85r++LeOMrpoYlL7B7g==
-X-Google-Smtp-Source: AA0mqf4YVTkuZvfflbzP+Mc3FwFsYD5Oo+5FxUcIgBACGlK4Na2GfKNmSrAZRDWlBHAEh8J3UbTh3A==
-X-Received: by 2002:a05:6808:81:b0:354:b67e:611d with SMTP id s1-20020a056808008100b00354b67e611dmr34806088oic.210.1669939081714;
-        Thu, 01 Dec 2022 15:58:01 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id ca19-20020a056830611300b00661a3f4113bsm2731191otb.64.2022.12.01.15.58.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Dec 2022 15:58:01 -0800 (PST)
-Received: (nullmailer pid 1720098 invoked by uid 1000);
-	Thu, 01 Dec 2022 23:58:00 -0000
-Date: Thu, 1 Dec 2022 17:58:00 -0600
-From: Rob Herring <robh@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Chen-Yu Tsai <wenst@chromium.org>, devicetree@vger.kernel.org, Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3,2/3] media: dt-bindings: media: mediatek: vcodec:
- Change the max reg value to 2
-Message-ID: <166993907978.1720037.12508933639302184491.robh@kernel.org>
-References: <20221201121525.30777-1-yunfei.dong@mediatek.com>
- <20221201121525.30777-2-yunfei.dong@mediatek.com>
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x3IEJJUdCdGG8U1WrhDSRoS/ptvIHsxOFNuOE68d/I0=;
+        b=IPBxzFGuVwtlYL2FnH0mQnRb2RwGcWds81UGrdqh9avdAEZLnE60Uv9ptqIdQ412+N
+         YjEoRvydSNzaDiMkRNk/qQYn4ANKmSzgfE0MRIRL7yPYIdhq8uC/9m3sNZlo6RHRccSg
+         sgUmaeE/klz0C7Idcjz5vxAanE9FvnChpczzI8mjfTjC/5WlgKl0LcOa76+W0bwB0dWy
+         txjqoNC11behNIerBS8TV8oeexbu7AIjrVaweHvlWfnQs3pUmQ6yvOoNKsukN7tcDwqI
+         4AFY7CrAV1uddu673nhB3NX0zhvIIklFLDiqhgEDneErXwR3h+ckg+PzH59eS8xGThPL
+         NiUA==
+X-Gm-Message-State: ANoB5plBc3boiBTtQ0TWu1lRcQCUTt9I7eFYSGycCtWl/ahL4ZFJLaig
+	vcT12Mww8fbiKAmaFrqthSui4GKE8Z3bZZ6GT2A=
+X-Google-Smtp-Source: AA0mqf5zltDU33DVT2ReMBUccg4qtzilym5j7/G+wHcvegLvavRcRsRjBnvW+BJWA/7y6crSrtPYvambJKRmYHUaEcw=
+X-Received: by 2002:a5d:55c9:0:b0:242:1057:40b8 with SMTP id
+ i9-20020a5d55c9000000b00242105740b8mr16070380wrw.182.1669952147042; Thu, 01
+ Dec 2022 19:35:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221201121525.30777-2-yunfei.dong@mediatek.com>
+References: <1669797463-24887-1-git-send-email-u0084500@gmail.com> <Y4iTVmOA5P/aN2yb@sirena.org.uk>
+In-Reply-To: <Y4iTVmOA5P/aN2yb@sirena.org.uk>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Fri, 2 Dec 2022 11:35:35 +0800
+Message-ID: <CADiBU3-gr1OrH0_OtuWyAN8WwvZtPghC6zfB3NYuVTq4b+DZBw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] regulator: mt6370: Fix potential UAF issue
+To: Mark Brown <broonie@kernel.org>
+Cc: lgirdwood@gmail.com, lee@kernel.org, matthias.bgg@gmail.com, 
+	yangyingliang@huawei.com, chiaen_wu@richtek.com, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	ChiYuan Huang <cy_huang@richtek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_155803_880744_E5D85B73 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20221201_193555_264372_EEA1821B 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +87,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Mark Brown <broonie@kernel.org> =E6=96=BC 2022=E5=B9=B412=E6=9C=881=E6=97=
+=A5 =E9=80=B1=E5=9B=9B =E6=99=9A=E4=B8=8A7:43=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Wed, Nov 30, 2022 at 04:37:42PM +0800, cy_huang wrote:
+>
+> > The original code uses i2c dev as the parent in order to reuse
+> > the 'regulator_of_get_init_data'. But this will cause regulation
+> > constraint devres attached to i2c dev, not the mfd cell platform
+> > device.
+>
+> This is a general issue which will affect a lot of MFDs, we would be
+> better to fix this by changing the API to provide a device to be used
+> for the devres allocations separately to the one used for looking up the
+> DT.
 
-On Thu, 01 Dec 2022 20:15:23 +0800, Yunfei Dong wrote:
-> From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
-> 
-> Need to add racing control register base in device node for mt8195 support
-> inner racing mode. Changing the max reg value from 1 to 2.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml      | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
+Not to affect too much, the better way may change the 'regulator_register' =
+API.
+Append it as regulator_register(dev, .....
+This could separate device object with devres allocation and DT lookup.
 
