@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C34C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D91C4167B
 	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 03:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TAJ3T2+YM9j4HIm1trlpMZQnx74SQADR1vSM+bYGurk=; b=ZLmt4R2iwRAJPc8enhffODuCbv
-	AmRS/q/IF2yNdL1hWyxXyRt1VWplr8JeuvWPY6U9kdHbyFY1EaYOWdioO+asI0nw9tM5n0simO346
-	oF4lhj1lyddV9Ar24o2MbMtW6edrXyfwCckcMNfcpe2aiq0qhwMJK1pxX0O3bV9zV2l57xNVwXDQN
-	eJGxGQ16AIiijyaBTxEerXA9shqrAf/+Awew0I+YE9oz+XPKk2zm+K7hyqNQp8VjLXe/BrGi/+Wz6
-	lsct5WUn8oPqu3VAuMx9iUWTcbQIC9lzE7M0agmg5BBgurLdnHbdWEPDSVRv0vQFFhR5Agkkwt4NE
-	Tf9zNHcw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VCzoXxASQ6qGnA6F6VYifoo4ULC7Kk/0LQh8ibSLUMk=; b=hRfZMYXoIPV9urggmyoJt2KhDH
+	TDBrysH3VH2CG+Ozeo5exu/LmHNz+Lj/K9ArMb/0LF90xboXafODqPMeF87GTljLBfQKegjVYDjBO
+	qULSrnp/8EDqZrSR6YbAtjaa6TGVAkAqDDXdgqyBZoJ637i4iIbXSHMyu4bGZ3AXkZKUJjSYrmdib
+	YhtxDXFeFTShJhL30TqyhFd9HeNlT7zVLqfHO3eqjcaOZNQYsHgJCPqBIdAHeEtIuv32o5DEy3bzM
+	sThm9j8y9diSC9054B2q44olprAF1Wb5ZldUG4yf5QS323Enki4HW+zPQoNbDP5+gMDe8XRn8fkzn
+	s6S7tBOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0wzX-00CzXX-Nv; Fri, 02 Dec 2022 03:45:35 +0000
+	id 1p0wzY-00CzXg-Dd; Fri, 02 Dec 2022 03:45:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0wzU-00CzVG-O9; Fri, 02 Dec 2022 03:45:34 +0000
-X-UUID: 64f42f7654984c4ebec361b6d8349d6d-20221201
+	id 1p0wzU-00CzVV-OA; Fri, 02 Dec 2022 03:45:34 +0000
+X-UUID: 0a23e6cf98e04e9db6a11a75f5b4b855-20221201
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TAJ3T2+YM9j4HIm1trlpMZQnx74SQADR1vSM+bYGurk=;
-	b=qXGOMAUQ//PZt5PLL7MoU7/h/vywAm9givDZt1eV9ULCWf8yiBmA0UCvjW23tnkFP7Re0yWnMwauhCCP6iRwT7N2vI9C9bo20A6sB8slTDeL6fmZIFksZ5tICumiCGPWdCnWNtaiWKcKIdYnLldjVEo0gC9ynRihQXgmZJa50rw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VCzoXxASQ6qGnA6F6VYifoo4ULC7Kk/0LQh8ibSLUMk=;
+	b=KogGqveBfRmDHCBUfCY5XzffsbOMYJyXo8tfO0vIdJv7vRnH2tKn+fc/+0cfkHus5gk+pr+b9Arle+TBaoGy007XaHZuEyH2a+oz6z2w3402xwprAhHnPjYjOVvd+FQrvAbpAC1XhH34hR/s6wn87dENqgxfNSox03wshm5VmHI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:e67a0323-9ba5-4395-9517-a3cae6ed2c0b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:573def1e-5e1d-4ab5-ab8e-3e04efc02b30,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:1dead4e6-7a92-46e9-ae4b-04c0bb7da9ca,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:563def1e-5e1d-4ab5-ab8e-3e04efc02b30,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 64f42f7654984c4ebec361b6d8349d6d-20221201
+X-UUID: 0a23e6cf98e04e9db6a11a75f5b4b855-20221201
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1139751797; Thu, 01 Dec 2022 20:45:26 -0700
+	with ESMTP id 1345951234; Thu, 01 Dec 2022 20:45:27 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 2 Dec 2022 11:44:52 +0800
+ 15.2.792.15; Fri, 2 Dec 2022 11:44:55 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 2 Dec 2022 11:44:52 +0800
+ Transport; Fri, 2 Dec 2022 11:44:54 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
 	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -60,17 +60,19 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,1/3] media: dt-bindings: media: mediatek: vcodec: adapt to the 'clock-names' of different platforms
-Date: Fri, 2 Dec 2022 11:44:48 +0800
-Message-ID: <20221202034450.3808-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v4,3/3] arm64: dts: mt8195: Add video decoder node
+Date: Fri, 2 Dec 2022 11:44:50 +0800
+Message-ID: <20221202034450.3808-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221202034450.3808-1-yunfei.dong@mediatek.com>
+References: <20221202034450.3808-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_194532_801347_B216EE32 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20221201_194532_801973_93519D7D 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,83 +87,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8195 and mt8192 have different clock numbers, separate 'clock-names'
-according to compatible name.
+Add video decoder node to mt8195 device tree.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-compared with v3:
-- rewrite clock-names according to different platforms.
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 70 ++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
 
-Reference series:
-[1]: v5 of this series is presend by Allen-KH Cheng.
-     message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
----
- .../media/mediatek,vcodec-subdev-decoder.yaml | 41 ++++++++++++++++---
- 1 file changed, 35 insertions(+), 6 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index 7c5b4a91c59b..a08b2c814f40 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -110,15 +110,12 @@ patternProperties:
-           Refer to bindings/iommu/mediatek,iommu.yaml.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 905d1a90b406..6829aa0dcf4c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1874,6 +1874,76 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_CAM>;
+ 		};
  
-       clocks:
-+        minItems: 1
-         maxItems: 5
- 
-       clock-names:
--        items:
--          - const: sel
--          - const: soc-vdec
--          - const: soc-lat
--          - const: vdec
--          - const: top
-+        minItems: 1
-+        maxItems: 5
- 
-       assigned-clocks:
-         maxItems: 1
-@@ -159,6 +156,38 @@ then:
-   required:
-     - interrupts
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8192-vcodec-dec
-+    then:
-+      properties:
-+        clock-names:
-+          items:
-+            - const: sel
-+            - const: soc-vdec
-+            - const: soc-lat
-+            - const: vdec
-+            - const: top
++		video-codec@18000000 {
++			compatible = "mediatek,mt8195-vcodec-dec";
++			mediatek,scp = <&scp>;
++			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			reg = <0 0x18000000 0 0x1000>,
++			      <0 0x18004000 0 0x1000>;
++			ranges = <0 0 0 0x18000000 0 0x26000>;
 +
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8195-vcodec-dec
-+    then:
-+      properties:
-+        clock-names:
-+          items:
-+            - const: sel
-+            - const: vdec
-+            - const: lat
-+            - const: top
++			video-codec@2000 {
++				compatible = "mediatek,mtk-vcodec-lat-soc";
++				reg = <0 0x2000 0 0x800>;
++				iommus = <&iommu_vpp M4U_PORT_L23_VDEC_UFO_ENC_EXT>,
++					 <&iommu_vpp M4U_PORT_L23_VDEC_RDMA_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "sel", "vdec", "lat", "top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
++			};
 +
- additionalProperties: false
- 
- examples:
++			video-codec@10000 {
++				compatible = "mediatek,mtk-vcodec-lat";
++				reg = <0 0x10000 0 0x800>;
++				interrupts = <GIC_SPI 708 IRQ_TYPE_LEVEL_HIGH 0>;
++				iommus = <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD2_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_AVC_MC_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_PRED_RD_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_TILE_EXT>,
++					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_WDMA_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "sel", "vdec", "lat", "top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
++			};
++
++			video-codec@25000 {
++				compatible = "mediatek,mtk-vcodec-core";
++				reg = <0 0x25000 0 0x1000>;		/* VDEC_CORE_MISC */
++				interrupts = <GIC_SPI 707 IRQ_TYPE_LEVEL_HIGH 0>;
++				iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_UFO_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PP_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_RD_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_WR_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_PPWRAP_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_TILE_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD2_EXT>,
++					 <&iommu_vdo M4U_PORT_L21_VDEC_AVC_MV_EXT>;
++				clocks = <&topckgen CLK_TOP_VDEC>,
++					 <&vdecsys CLK_VDEC_VDEC>,
++					 <&vdecsys CLK_VDEC_LAT>,
++					 <&topckgen CLK_TOP_UNIVPLL_D4>;
++				clock-names = "sel", "vdec", "lat", "top";
++				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
++				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
++			};
++		};
++
+ 		larb24: larb@1800d000 {
+ 			compatible = "mediatek,mt8195-smi-larb";
+ 			reg = <0 0x1800d000 0 0x1000>;
 -- 
 2.18.0
 
