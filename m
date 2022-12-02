@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D745C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 08:08:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AADBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 08:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bPVJ4HD67kSdr1B+Qf4E0I6iZPFBxHYruEPf9LHSuFA=; b=gseqCYlFkXmb1ZFGRv+BqwPQ7V
-	EswM6agMaqWd/4zhFSrF4USV1rUZ/nO4Z/vbhVhejwiF/xmuC3qPpREn1egv0SudF9KN54ZAmmQeZ
-	qItLD2dWsm0u3TP/9zC+pCfdpSMfvTitPvGCWDqPX2TfQCwbM1kH740E5I3bp40WJRWchAQmlK2zQ
-	0MKpMhlAb8pmW+VrNoZUJEIj85QbF8Fe2cIf7QWtuxV0mzUds8b7VntK8eZhcGKg1o0cN4f9xCo2g
-	bfMQKyXlWn9YSihCdjnP5fo52hr2rHNwgjmNIPc8sZpFRZIQgtROMk3pcR09r7daUE6Dj52dDpUZD
-	9oocu2Gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UqueYWppDEGU6Cv2s67VkKAzMUQP2H9NiIRyR42aWU4=; b=oThE2+YDzcOsW21JgQEpeshulu
+	/nisUynVp5OUIi8iZtWQVqRGa4IayqDEwPgOyqHmIeT6dFzbox5P2N/6E7itvyBMpjTj3N8sgFsHW
+	0pIoL/605a9lBkYSb/CagOS8pZBKpejXcSSAVTAOdix16uOwft1iAZIMCSqkscPC4gl3Ne75/dlz3
+	vzJYQMAOXK69jEYQ1zObgyidUyFrrK5w96xq8dL1lXg8hT3l5NptP4ekVtjU4mD+C3dm5jMOTzIy5
+	kN9FMCRclSjIyemhcPBG72NSVzwnKmXNpgbsjfvAHr2S0u3kP/QOYbc1STUcJSGsPJfwpm8fPxlY6
+	cQ/+Sf3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p115T-00ENBy-5b; Fri, 02 Dec 2022 08:07:59 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1p11Nb-00EVAD-3w; Fri, 02 Dec 2022 08:26:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p115Q-00EN4e-Bd
-	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 08:07:58 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id v206so5118079ybv.7
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Dec 2022 00:07:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bPVJ4HD67kSdr1B+Qf4E0I6iZPFBxHYruEPf9LHSuFA=;
-        b=hFE4HKWbIFNOaxoMHMCE/Jc2twAkiM78DsTT3X+5A8DxqHJqo69xRrq5G+RWQO01QW
-         Dbz/p/Dor28UYd8SvQQwOAEafwzakIRvCkPC79mkAgvlFO5gBROPQP0qlqWEqxWd5Zmp
-         KDq7vJohzPwoDxh9K8QfGxxxXJshGm71jySbE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bPVJ4HD67kSdr1B+Qf4E0I6iZPFBxHYruEPf9LHSuFA=;
-        b=hT1m91SFDWOL2est8YUu5QXHapzCsN1q59ZSdHIGmIOBnD234be8sQq8AMPRQoTfFQ
-         +16t0C67NO3w3T20sT13vLbMZuySHurkAAk7PaxgZ/QlDy09weMFzyl/8RCSEfOw2sOh
-         Usq5GRbmLepIsELBQABw17a+tA/jHLgWcisMCzEjLIUaIcQW3a+KbAtHw/Nrd1m/aYrq
-         kczYuk52pX44vN23Bgd0UPR6sYm/WVqtMnMgSpMxXvxG9tHge+4C4aBj+juc9QRLSZ9+
-         IJdkAm80P0m13ZK/u/7Y4FRYmByxE4pjYptnAu+6ZVwWtWwX6TQpcX93jpjYIRg/cNxi
-         W4DA==
-X-Gm-Message-State: ANoB5pnp4gJm45aKcW0Ba9eOx62kFsRcC3sYjL9LSwT76FigO3k9VP+D
-	OYJ6aIoFTL15fT+B25PsaS9XzOWamnXjQ5utVfz/Bw==
-X-Google-Smtp-Source: AA0mqf74M8ikolS1J/n6aVJWEyFxrAxwvTJm27le1NzNbssFmVfFoX386kHpGQIiuftsKD+1id56N1XEMwc4Kaz+PQM=
-X-Received: by 2002:a25:dcca:0:b0:6fb:67c7:33e9 with SMTP id
- y193-20020a25dcca000000b006fb67c733e9mr941536ybe.70.1669968468967; Fri, 02
- Dec 2022 00:07:48 -0800 (PST)
+	id 1p11NY-00EV8p-BX
+	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 08:26:41 +0000
+X-UUID: 6e6bd326eada4a20989a0b0dc838e034-20221202
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=UqueYWppDEGU6Cv2s67VkKAzMUQP2H9NiIRyR42aWU4=;
+	b=dpMEn37cfNA4VG8qFRSpENYLxYKfjaLC3myqYgLEBcB6AKcCgO92QVduBtnqe3U13KXialNl0i74SnrGMBCBae4P4eWF1JH7nHwurNfg0ImG8HkKPYUCx3nlNLE3pVSrbaaXSx4FaewJxaMZhxjfcMdho+g4WTIB61rh1tmeydw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:68710f71-deb6-45bf-a2e1-c021ddef534a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:58e47b30-2938-482e-aafd-98d66723b8a9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6e6bd326eada4a20989a0b0dc838e034-20221202
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2128650852; Fri, 02 Dec 2022 01:16:12 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 2 Dec 2022 15:35:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 2 Dec 2022 15:35:34 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>
+Subject: [PATCH v3] ufs: core: wlun suspend SSU/enter hibern8 fail recovery
+Date: Fri, 2 Dec 2022 15:35:32 +0800
+Message-ID: <20221202073532.7884-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <67ca94bdd3d9eaeb86e52b3050fbca0bcf7bb02f.1669908312.git.lorenzo@kernel.org>
-In-Reply-To: <67ca94bdd3d9eaeb86e52b3050fbca0bcf7bb02f.1669908312.git.lorenzo@kernel.org>
-From: Pavan Chebbi <pavan.chebbi@broadcom.com>
-Date: Fri, 2 Dec 2022 13:37:38 +0530
-Message-ID: <CALs4sv0fjaaYf-s6b_ArT2U8=0ySLUZEwvgM2rZ-f1F8ap3+fg@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: fix sleep while atomic
- in mtk_wed_wo_queue_refill
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org, 
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net, 
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, 
-	lorenzo.bianconi@redhat.com
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="00000000000067151305eed3d52d"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_000756_433719_63030ED0 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20221202_002640_436105_55C798F0 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,197 +84,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---00000000000067151305eed3d52d
-Content-Type: text/plain; charset="UTF-8"
+From: Peter Wang <peter.wang@mediatek.com>
 
-On Thu, Dec 1, 2022 at 8:57 PM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
->
-> In order to fix the following sleep while atomic bug always alloc pages
-> with GFP_ATOMIC in mtk_wed_wo_queue_refill since page_frag_alloc runs in
-> spin_lock critical section.
->
-> [    9.049719] Hardware name: MediaTek MT7986a RFB (DT)
-> [    9.054665] Call trace:
-> [    9.057096]  dump_backtrace+0x0/0x154
-> [    9.060751]  show_stack+0x14/0x1c
-> [    9.064052]  dump_stack_lvl+0x64/0x7c
-> [    9.067702]  dump_stack+0x14/0x2c
-> [    9.071001]  ___might_sleep+0xec/0x120
-> [    9.074736]  __might_sleep+0x4c/0x9c
-> [    9.078296]  __alloc_pages+0x184/0x2e4
-> [    9.082030]  page_frag_alloc_align+0x98/0x1ac
-> [    9.086369]  mtk_wed_wo_queue_refill+0x134/0x234
-> [    9.090974]  mtk_wed_wo_init+0x174/0x2c0
-> [    9.094881]  mtk_wed_attach+0x7c8/0x7e0
-> [    9.098701]  mt7915_mmio_wed_init+0x1f0/0x3a0 [mt7915e]
-> [    9.103940]  mt7915_pci_probe+0xec/0x3bc [mt7915e]
-> [    9.108727]  pci_device_probe+0xac/0x13c
-> [    9.112638]  really_probe.part.0+0x98/0x2f4
-> [    9.116807]  __driver_probe_device+0x94/0x13c
-> [    9.121147]  driver_probe_device+0x40/0x114
-> [    9.125314]  __driver_attach+0x7c/0x180
-> [    9.129133]  bus_for_each_dev+0x5c/0x90
-> [    9.132953]  driver_attach+0x20/0x2c
-> [    9.136513]  bus_add_driver+0x104/0x1fc
-> [    9.140333]  driver_register+0x74/0x120
-> [    9.144153]  __pci_register_driver+0x40/0x50
-> [    9.148407]  mt7915_init+0x5c/0x1000 [mt7915e]
-> [    9.152848]  do_one_initcall+0x40/0x25c
-> [    9.156669]  do_init_module+0x44/0x230
-> [    9.160403]  load_module+0x1f30/0x2750
-> [    9.164135]  __do_sys_init_module+0x150/0x200
-> [    9.168475]  __arm64_sys_init_module+0x18/0x20
-> [    9.172901]  invoke_syscall.constprop.0+0x4c/0xe0
-> [    9.177589]  do_el0_svc+0x48/0xe0
-> [    9.180889]  el0_svc+0x14/0x50
-> [    9.183929]  el0t_64_sync_handler+0x9c/0x120
-> [    9.188183]  el0t_64_sync+0x158/0x15c
->
-> Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
+When SSU/enter hibern8 fail in wlun suspend flow, trigger error
+handler and return busy to break the suspend.
+If not, wlun runtime pm status become error and the consumer will
+stuck in runtime suspend status.
 
-Looks OK to me.
-Reviewed-by: Pavan Chebbi <pavan.chebbi@broadcom.com>
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
->  drivers/net/ethernet/mediatek/mtk_wed_wo.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> index 4754b6db009e..a219da85f4db 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> @@ -133,17 +133,18 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
->
->  static int
->  mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
-> -                       gfp_t gfp, bool rx)
-> +                       bool rx)
->  {
->         enum dma_data_direction dir = rx ? DMA_FROM_DEVICE : DMA_TO_DEVICE;
->         int n_buf = 0;
->
->         spin_lock_bh(&q->lock);
->         while (q->queued < q->n_desc) {
-> -               void *buf = page_frag_alloc(&q->cache, q->buf_size, gfp);
->                 struct mtk_wed_wo_queue_entry *entry;
->                 dma_addr_t addr;
-> +               void *buf;
->
-> +               buf = page_frag_alloc(&q->cache, q->buf_size, GFP_ATOMIC);
->                 if (!buf)
->                         break;
->
-> @@ -215,7 +216,7 @@ mtk_wed_wo_rx_run_queue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q)
->                         mtk_wed_mcu_rx_unsolicited_event(wo, skb);
->         }
->
-> -       if (mtk_wed_wo_queue_refill(wo, q, GFP_ATOMIC, true)) {
-> +       if (mtk_wed_wo_queue_refill(wo, q, true)) {
->                 u32 index = (q->head - 1) % q->n_desc;
->
->                 mtk_wed_wo_queue_kick(wo, q, index);
-> @@ -432,7 +433,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
->         if (ret)
->                 goto error;
->
-> -       mtk_wed_wo_queue_refill(wo, &wo->q_tx, GFP_KERNEL, false);
-> +       mtk_wed_wo_queue_refill(wo, &wo->q_tx, false);
->         mtk_wed_wo_queue_reset(wo, &wo->q_tx);
->
->         regs.desc_base = MTK_WED_WO_CCIF_DUMMY5;
-> @@ -446,7 +447,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
->         if (ret)
->                 goto error;
->
-> -       mtk_wed_wo_queue_refill(wo, &wo->q_rx, GFP_KERNEL, true);
-> +       mtk_wed_wo_queue_refill(wo, &wo->q_rx, true);
->         mtk_wed_wo_queue_reset(wo, &wo->q_rx);
->
->         /* rx queue irqmask */
-> --
-> 2.38.1
->
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index b1f59a5fe632..a0dbf2c410b1 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -9049,6 +9049,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 
+ 		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+ 			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
++			if (ret && (pm_op != UFS_SHUTDOWN_PM)) {
++				/*
++				 * If return err in suspend flow, IO will hang.
++				 * Trigger error handler and break suspend for
++				 * error recovery.
++				 */
++				spin_lock_irq(hba->host->host_lock);
++				hba->force_reset = true;
++				ufshcd_schedule_eh_work(hba);
++				spin_unlock_irq(hba->host->host_lock);
++
++				ret = -EBUSY;
++			}
+ 			if (ret)
+ 				goto enable_scaling;
+ 		}
+@@ -9060,6 +9073,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	 */
+ 	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
+ 	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
++	if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {
++		/*
++		 * If return err in suspend flow, IO will hang.
++		 * Trigger error handler and break suspend for
++		 * error recovery.
++		 */
++		spin_lock_irq(hba->host->host_lock);
++		hba->force_reset = true;
++		ufshcd_schedule_eh_work(hba);
++		spin_unlock_irq(hba->host->host_lock);
++
++		ret = -EBUSY;
++	}
+ 	if (ret)
+ 		goto set_dev_active;
+ 
+-- 
+2.18.0
 
---00000000000067151305eed3d52d
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-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
-OltyqaGBuzv+bJTUL+bmV7E4QBLIqGt4jVr1R9hJdH6KxXwJdyfHZ9C6qXmoe2NQhiFUyBOJ0wgk
-dB9Z1IU7nCwvNKYg2JMoJs93tIgbhPJg/D7pqW8gabkCAwEAAaOCAdowggHWMA4GA1UdDwEB/wQE
-AwIFoDCBowYIKwYBBQUHAQEEgZYwgZMwTgYIKwYBBQUHMAKGQmh0dHA6Ly9zZWN1cmUuZ2xvYmFs
-c2lnbi5jb20vY2FjZXJ0L2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNydDBBBggrBgEFBQcw
-AYY1aHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyM3BlcnNvbmFsc2lnbjJjYTIwMjAw
-TQYDVR0gBEYwRDBCBgorBgEEAaAyASgKMDQwMgYIKwYBBQUHAgEWJmh0dHBzOi8vd3d3Lmdsb2Jh
-bHNpZ24uY29tL3JlcG9zaXRvcnkvMAkGA1UdEwQCMAAwSQYDVR0fBEIwQDA+oDygOoY4aHR0cDov
-L2NybC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWduMmNhMjAyMC5jcmwwJAYDVR0R
-BB0wG4EZcGF2YW4uY2hlYmJpQGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggrBgEFBQcDBDAfBgNV
-HSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUEV6y/89alKPoFbKUaJXsvWu5
-fdowDQYJKoZIhvcNAQELBQADggEBAEHSIB6g652wVb+r2YCmfHW47Jo+5TuCBD99Hla8PYhaWGkd
-9HIyD3NPhb6Vb6vtMWJW4MFGQF42xYRrAS4LZj072DuMotr79rI09pbOiWg0FlRRFt6R9vgUgebu
-pWSH7kmwVXcPtY94XSMMak4b7RSKig2mKbHDpD4bC7eGlwl5RxzYkgrHtMNRmHmQor5Nvqe52cFJ
-25Azqtwvjt5nbrEd81iBmboNTEnLaKuxbbCtLaMEP8xKeDjAKnNOqHUMps0AsQT8c0EGq39YHpjp
-Wn1l67VU0rMShbEFsiUf9WYgE677oinpdm0t2mdCjxr35tryxptoTZXKHDxr/Yy6l6ExggJtMIIC
-aQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQD
-EyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwV/XkICjVscn4SNZMw
-DQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEILNcCCnedK/xQjPcu4gD81rlUCFnHUXB
-KeAc/Hec0c10MBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIyMTIw
-MjA4MDc0OVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCG
-SAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQC
-ATANBgkqhkiG9w0BAQEFAASCAQB1XrkWRVrOJP/S/jPG2toH1CnL/Fgc7M4HuKr7J1O6hKEPbEXl
-KI8bbELTqhdnc8cBu6aWmqCIXdo8lFUb/oflmdRClB01fiEvrHepRoP5tS8Gt5Fb2ED/3C4x534Q
-kkWPupiW9Whdh8F5kdrGMyhzFdNFV0b1wSuJh2XvtAXSG8z/KswT71gCn9ZPY3czAuD4UsgCdKvz
-h09Iqx5Wqvrus3AEnKHQXzvNQdTnqBymLKXCxEHycHZ6Nw0ATqEhbdFqqvgLSBPp2E8XlCcHcqXR
-F/yS+vW7eXKExJBoZmGNiUvhE+v2gwBE9OClLRhT4B8qDVbVbuekZH8gMVTlauQm
---00000000000067151305eed3d52d--
 
