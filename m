@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00A3C4321E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 11:09:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB28C4321E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 11:37:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bC265sB92WUy60EDMEoKwHbK9TI5f/5traRQYAD0SHE=; b=IkPQ4he4rfvHSWr9CTuthLRWdC
-	++cXFctRgWKD3tYxLqXr6Y/wtD88lVQ+7PZX/WFCc586jaQpprcWeDP0duIIkiFod16FcZ5ZSU6Jm
-	paX6horYWmmGqeMWSgsQsMNrKVKGRCux45ngH3qHVNtjFykRb2ivkfyBMnADOWkb4S9gPwoTejyKq
-	vDO2Xie3e9GiJbG8U//QJj1RtpP2B3z/7O7qy0NVhV/hnXuHxPb/+ym161f3DhJDtR7VAWtVwIoUB
-	OxJ56Qte7P0wHCWTVsWC/wKcu5NXbNOIdBoI1y+3PvyPMSaiKm7SMpQQD72BTeBJhUe29y/Ww1hae
-	EwUO29Gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dJHNBl/e0YVQN+9X9kV+N3R7CzwPHND90U6ex4gmzhg=; b=hombZdvfMbinmUKR06bYYztukn
+	2V65PqJbfLGX7KfAgB99SBo1XAmpmANTRelEuNwXgC5o+Yx2Yo7AWPFGrBbh/6/79u863Uxb4IfA+
+	ehelE1eOaWoN8BDmb/l3lRCGhZA2P3fBz8v5LG1zz0zvXoME1AezOMbPOpnvdoW4pf6qgDpIgNh1N
+	d8RgbzB1AH/ZbYFx/U135OhxNM3qljXU+xUhIo8xMm/0f/IEfwvxMsuzcZD4tQB3BVxMw0DSKmUsZ
+	VTtsw7vBDsK5CSYuPFSZXsrwA2Zs8o0sbOPVK1A/imj3NlrHQIAaw5fS+LSfcq+Q+D2vYFcEL9kr3
+	po3TvNrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p13us-00FsFK-1z; Fri, 02 Dec 2022 11:09:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p14MK-00G2j6-2G; Fri, 02 Dec 2022 11:37:36 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p13uo-00FsCj-T3; Fri, 02 Dec 2022 11:09:12 +0000
-X-UUID: feb47465132a4b38a8c4ff5f6110c0a5-20221202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bC265sB92WUy60EDMEoKwHbK9TI5f/5traRQYAD0SHE=;
-	b=h4Rosn9bbrhbc3b7U2zBqgIfMk8g1WHQius171HKZCmP5mLfnJAN49UADMR+2tniWb/Olzj8XhHdHP1hn2t++sQsW9GLgMhMvftvUeUsbN/2PdCtjQ2+zje6fTdW4k+RWSYzXLQObE0gYX9EW/u/2olUU1MlN0qi4TIyZIRlFsk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:7ae9717a-5678-411f-94fc-277eb82771ec,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.14,REQID:7ae9717a-5678-411f-94fc-277eb82771ec,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:dcaaed0,CLOUDID:af64fc1e-5e1d-4ab5-ab8e-3e04efc02b30,B
-	ulkID:2212021909048DE5GKP2,BulkQuantity:1,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: feb47465132a4b38a8c4ff5f6110c0a5-20221202
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <mason.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 217819833; Fri, 02 Dec 2022 04:09:03 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 2 Dec 2022 19:09:01 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 2 Dec 2022 19:09:00 +0800
-From: Mason Zhang <mason.zhang@mediatek.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E . J . Bottomley"
-	<jejb@linux.ibm.com>, "Martin K . Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
-	Stanley Chu <stanley.chu@mediatek.com>, Jinyoung Choi
-	<j-young.choi@samsung.com>
-CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Peter Wang <peter.wang@mediatek.com>, Peng Zhou <peng.zhou@mediatek.com>,
-	<wsd_upstream@mediatek.com>, Mason Zhang <Mason.Zhang@mediatek.com>
-Subject: [PATCH v1 1/1] scsi: ufs: core: fix device management cmd timeout flow
-Date: Fri, 2 Dec 2022 18:58:17 +0800
-Message-ID: <20221202105817.19801-1-mason.zhang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1p14M8-00G2cM-Fa; Fri, 02 Dec 2022 11:37:26 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFE466602BB1;
+	Fri,  2 Dec 2022 11:37:18 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1669981039;
+	bh=TG1tR14lwEhWzIhO276peoN8Dts5HIQpHk5GGVbesoU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m9xgWo7TF1ceWgfOjWkfOQ+tCmRAMW6BRWWXKe5M10C2WVQ1o2hFOveHiJ3Q2uUMG
+	 a26sLdI7R66CZAC3wOZZ/P1ABwDkZgfAK/MRwxYmp4ERI6HVt8fsMZ8yswDaCEiNtP
+	 Vgp660jCKIcF68l2BgxotyRMlg95F7saJUDTMLcz4zAkusyT/Vr7BWZE6NU6Jp01yN
+	 xk/nh7MdI/oaCH0qmaYa2h4v474e3uvWSGgG6xwpnat8xogQOwmMK+sn4jUaV4pvTw
+	 grAjg3MyXItqdYnv5rkEXASJB8v/snXspxjcI27E8Q4v5LI/AcVyIyia458o4KdQz8
+	 pIrCyRGKgOesg==
+Message-ID: <f98a2f4a-737c-fef5-551b-04a92d255d0e@collabora.com>
+Date: Fri, 2 Dec 2022 12:37:16 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v3,1/3] media: dt-bindings: media: mediatek: vcodec: Fix
+ clock num not correctly
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Rob Herring <robh@kernel.org>
+References: <20221201121525.30777-1-yunfei.dong@mediatek.com>
+ <20221201235729.GA1718283-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221201235729.GA1718283-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_030911_170462_EB4CB5D4 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20221202_033724_792933_2E7E6BBC 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,104 +85,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mason Zhang <Mason.Zhang@mediatek.com>
+Il 02/12/22 00:57, Rob Herring ha scritto:
+> On Thu, Dec 01, 2022 at 08:15:22PM +0800, Yunfei Dong wrote:
+>> From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+>>
+>> mt8195 and mt8192 have different clock numbers, can't write 'clocks' and
+>> 'clock-names' with const value.
+>>
+>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>> ---
+>> Reference series:
+>> [1]: v5 of this series is presend by Allen-KH Cheng.
+>>       message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
+>> ---
+>>   .../bindings/media/mediatek,vcodec-subdev-decoder.yaml   | 9 +++------
+>>   1 file changed, 3 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+>> index 7c5b4a91c59b..09781ef02193 100644
+>> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+>> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+>> @@ -110,15 +110,12 @@ patternProperties:
+>>             Refer to bindings/iommu/mediatek,iommu.yaml.
+>>   
+>>         clocks:
+>> +        minItems: 1
+>>           maxItems: 5
+>>   
+>>         clock-names:
+>> -        items:
+>> -          - const: sel
+>> -          - const: soc-vdec
+>> -          - const: soc-lat
+>> -          - const: vdec
+>> -          - const: top
+>> +        minItems: 1
+>> +        maxItems: 5
+> 
+> Names need to be defined. This is a step backwards.
+> 
 
-In ufs error handler flow, host will send device management cmd(NOP OUT)
-to device for recovery link. If cmd response timeout, and clear doorbell
-fail, ufshcd_wait_for_dev_cmd will do nothing and return,
-hba->dev_cmd.complete struct not set to null.
+I was thinking the same but wanted to wait for someone else's opinion before.
 
-In this time, if cmd has been responsed by device, then it will
-call complete() in __ufshcd_transfer_req_compl, because of complete
-struct is alloced in stack, then the KE will occur.
+Yunfei, this would be...
 
-Fix the following crash:
-  ipanic_die+0x24/0x38 [mrdump]
-  die+0x344/0x748
-  arm64_notify_die+0x44/0x104
-  do_debug_exception+0x104/0x1e0
-  el1_dbg+0x38/0x54
-  el1_sync_handler+0x40/0x88
-  el1_sync+0x8c/0x140
-  queued_spin_lock_slowpath+0x2e4/0x3c0
-  __ufshcd_transfer_req_compl+0x3b0/0x1164
-  ufshcd_trc_handler+0x15c/0x308
-  ufshcd_host_reset_and_restore+0x54/0x260
-  ufshcd_reset_and_restore+0x28c/0x57c
-  ufshcd_err_handler+0xeb8/0x1b6c
-  process_one_work+0x288/0x964
-  worker_thread+0x4bc/0xc7c
-  kthread+0x15c/0x264
-  ret_from_fork+0x10/0x30
+- if:
+     properties:
+       compatible:
+         .... mt8192
+   then:
+      clock-names:
+         .... whatever we have
 
-Change-Id: Id17da259894294b61bef41cf7dfb94506e7e0310
-Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 46 ++++++++++++++++++---------------------
- 1 file changed, 21 insertions(+), 25 deletions(-)
+- if:
+    properties... blah mt8195
+   then:
+     clock-names:
+         ..... new ones
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index b1f59a5fe632..2b4934a562a6 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -2979,35 +2979,31 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
- 		err = -ETIMEDOUT;
- 		dev_dbg(hba->dev, "%s: dev_cmd request timedout, tag %d\n",
- 			__func__, lrbp->task_tag);
--		if (ufshcd_clear_cmds(hba, 1U << lrbp->task_tag) == 0) {
-+		if (ufshcd_clear_cmds(hba, 1U << lrbp->task_tag) == 0)
- 			/* successfully cleared the command, retry if needed */
- 			err = -EAGAIN;
-+		/*
-+		 * Since clearing the command succeeded we also need to
-+		 * clear the task tag bit from the outstanding_reqs
-+		 * variable.
-+		 */
-+		spin_lock_irqsave(&hba->outstanding_lock, flags);
-+		pending = test_bit(lrbp->task_tag,
-+				   &hba->outstanding_reqs);
-+		if (pending) {
-+			hba->dev_cmd.complete = NULL;
-+			__clear_bit(lrbp->task_tag,
-+				    &hba->outstanding_reqs);
-+		}
-+		spin_unlock_irqrestore(&hba->outstanding_lock, flags);
-+
-+		if (!pending) {
- 			/*
--			 * Since clearing the command succeeded we also need to
--			 * clear the task tag bit from the outstanding_reqs
--			 * variable.
-+			 * The completion handler ran while we tried to
-+			 * clear the command.
- 			 */
--			spin_lock_irqsave(&hba->outstanding_lock, flags);
--			pending = test_bit(lrbp->task_tag,
--					   &hba->outstanding_reqs);
--			if (pending) {
--				hba->dev_cmd.complete = NULL;
--				__clear_bit(lrbp->task_tag,
--					    &hba->outstanding_reqs);
--			}
--			spin_unlock_irqrestore(&hba->outstanding_lock, flags);
--
--			if (!pending) {
--				/*
--				 * The completion handler ran while we tried to
--				 * clear the command.
--				 */
--				time_left = 1;
--				goto retry;
--			}
--		} else {
--			dev_err(hba->dev, "%s: failed to clear tag %d\n",
--				__func__, lrbp->task_tag);
-+			time_left = 1;
-+			goto retry;
- 		}
- 	}
- 
--- 
-2.18.0
+...you should know already, but I'm just trying to speed up things here.
+
+Cheers,
+Angelo
+
+> Rob
+> 
+>>   
+>>         assigned-clocks:
+>>           maxItems: 1
+>> -- 
+>> 2.18.0
+>>
+>>
+
 
 
