@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D98C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 21:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E543AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 22:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JTgtnJqoI3mBOnlXVRuirNE3H0rwkt9IzKJ3dXVz2R0=; b=pDu9nFDkl71zI1UG7dBS256GH6
-	c9iTDwvcBqk0o0YH2+omVXauplDIqGp50cfk+0kZjD1cRPjiUeOY2FFKZ/ZIldUUeIKN+n9B4x7IK
-	NaPFh+Pe6qJO8wu3qRzWnpVv+6mv8jEqoiK4jV0ajumgkPVv9lnVJCvfWOWehiq9P6K9VkEwftiaA
-	8yy+P6eqKGiTUtnKDcFp7nNddexygAPVgSL/QeaEJdesBZKIdNNOPXBB6x30LSeUTThXffr8mW9UD
-	T/29qn2z7mj1sE1ulyCGZnkDAbYUXSwsIfUKxvgoxn9gWtdu46E7ZlECU/AWhaFb7c6fhachyEbqo
-	wzXVU1iQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:Date:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=; b=h0HxoZfWZe18qyMQTZUnge/Deb
+	MHYhpTdg7WU4v9ESLSOQnKuCrROVdUcnBYgZmUKUWRCc3ROrmt+KPEug2kLUMvL8GpPyIJ+AuuFBa
+	5HIE2fE2S80zGYQVNJmLTblNDAA9u5Z3VABri7mZIjjAVh98d6Q5r6uHA1O7P8xHopkbBt5M+VsFg
+	2pHzml8BjquN2/W02285xG7QPdUeN4S1ciO5Cy0kumiYRyYId58wuoKNXg4TihjVBP4lBhSM1IaNA
+	rzz6eIfpviKOmRFOB340PQxzG+4DyGfgaLL26zSzRyDM448CwVTlwHmYi5nuLgMczpqaF1qtl56/I
+	4hW3n5PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1DrP-001Qej-BG; Fri, 02 Dec 2022 21:46:19 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1p1EAW-001TTD-1d; Fri, 02 Dec 2022 22:06:04 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1DrM-001QNp-C6; Fri, 02 Dec 2022 21:46:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1670017546; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=DnXhT2OUlhlC5DwILJKEz4FKOfX14rJuU1Z5pzoNKTHRt0IUEa9cKCxGC4LhhHuaTHuIVkQLu9THL5C9MN53zX4Lw32mj3sFgx+Ie6bN410Bu32ZGi8nu3VMyzkgRbo05Xn8LajJ48A+CPQiVZ0T9zuAwYnAJANtBLQAwfNb/ZY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1670017546; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=JTgtnJqoI3mBOnlXVRuirNE3H0rwkt9IzKJ3dXVz2R0=; 
-	b=UQF4RXBepui+yim0KwIXhj7dIhvabk1ebfPx5aBM/OJRRVD6h9B8XSbiylbUJV+tZHQL36Y4iJfWYF+VdvHoF1PXZ7gMR8OXrmh3SCTSa4m6FYGWRfT2VZbwTMq6/KIDyBCGu6sJHv5q6FsnmmHLdUsfXpwsDfS1Q21BO4D0uhQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1670017546;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=JTgtnJqoI3mBOnlXVRuirNE3H0rwkt9IzKJ3dXVz2R0=;
-	b=bFc/Twx+wSKbN8cptiRq7XpT5s0ryu0P35a+jvbqT8ZRJwgPIDEnK6Ps6plwEu81
-	w0cLAsN8BAPiqk64Tf8fnP6ZotcTzZJaT2y0LQeZqZ/qb55X7oq1a6rVSyUT44eQhXw
-	Igl7pFg4wtB7Ywjk7u/WCAm/0bsT69eVVbU85i2c=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1670017543642787.7203324647592; Fri, 2 Dec 2022 13:45:43 -0800 (PST)
-Message-ID: <bfc6810b-3c21-201b-3c4f-a0def3928597@arinc9.com>
-Date: Sat, 3 Dec 2022 00:45:34 +0300
+	id 1p1EAL-001TQn-Cl
+	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 22:05:54 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id 140so6132566pfz.6
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Dec 2022 14:05:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-disposition:mime-version:message-id:subject:cc:to:date:from
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=;
+        b=TSqUQgbjbBdg6dvDWR1KVKuTEI3gAe6/W+8DLD7nw2mWi+QX+pcwtPxwJFoxQmJGEe
+         uNxgwfWgkBGeh75QcHsRkRMQfxOkr6GVNv7M9DU6N537BAZNupUYZmYR8DdUZWlAAwbR
+         KMF3Htct7RWcrCqmWw5tW/Ic0PXvyQHTzFYVE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:date:from
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=;
+        b=S8MSXLbqmn7W2FgRtzVBB7StcXgZjHiaaI3r2/v1q3pkxrgjZHqMFJ0uLSlVnR8QcJ
+         6ECLzp0Cg+q23caQMCPL4xDRTYtAEh0epI6y/WFa2qe2Z99Ezszttl4hHtBX9wbo7vF8
+         k/C6kOpx6vf9+rQdwZcNcgg2+JY38tplMZAauOVog+LUnOTavnLeH07C9+jXQ+hSA3id
+         rZhr2FFutt6FYG1nEMy0xxtMiwmMSDPVaAaxk5255iPeUgfPnyOAWu6QcRg2jyEqfSh/
+         o+/xS5PJdcL/yl2ipCWZLDbAWeQNG2Hs/Q6FHD57Gx5mszEY3uvCQTMG5Ykyqhya+iMH
+         ZjOg==
+X-Gm-Message-State: ANoB5plLuu3rZP9oBC9KtduniRATcLRbpe3NHkEJ56V/R52iCrjyzPTu
+	25LxIWBt4LSU03JWaoihryAeWQ==
+X-Google-Smtp-Source: AA0mqf5DhG6zysI+aj3WH5KAazaNoxWHCLIcnDeHYGVOYKMWwq4jAur5eQGJ0+dbDGN2a+EriUvEoA==
+X-Received: by 2002:a05:6a00:4009:b0:563:2ada:30a3 with SMTP id by9-20020a056a00400900b005632ada30a3mr55402742pfb.27.1670018745233;
+        Fri, 02 Dec 2022 14:05:45 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+        by smtp.gmail.com with ESMTPSA id s24-20020a17090ad49800b00210125b789dsm5170014pju.54.2022.12.02.14.05.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Dec 2022 14:05:44 -0800 (PST)
+From: coverity-bot <keescook@chromium.org>
+X-Google-Original-From: coverity-bot <keescook+coverity-bot@chromium.org>
+Date: Fri, 2 Dec 2022 14:05:43 -0800
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, linux-wireless@vger.kernel.org,
+	Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@kernel.org>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Money Wang <Money.Wang@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	linux-mediatek@lists.infradead.org, Felix Fietkau <nbd@nbd.name>,
+	"David S. Miller" <davem@davemloft.net>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	MeiChia Chiu <meichia.chiu@mediatek.com>,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	"Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+	linux-next@vger.kernel.org, linux-hardening@vger.kernel.org
+Subject: Coverity: mt7996_rf_regval_set(): Integer handling issues
+Message-ID: <202212021405.93CF11D2A@keescook>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v4 net-next 3/9] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-To: Colin Foster <colin.foster@in-advantage.com>,
- linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
- Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
- Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
- <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>,
- George McCollister <george.mccollister@gmail.com>,
- Rob Herring <robh@kernel.org>
-References: <20221202204559.162619-1-colin.foster@in-advantage.com>
- <20221202204559.162619-4-colin.foster@in-advantage.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20221202204559.162619-4-colin.foster@in-advantage.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_134616_466429_38E6617B 
-X-CRM114-Status: GOOD (  21.80  )
+X-CRM114-CacheID: sfid-20221202_140553_457464_227A8375 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,168 +101,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2.12.2022 23:45, Colin Foster wrote:
-> DSA switches can fall into one of two categories: switches where all ports
-> follow standard '(ethernet-)?port' properties, and switches that have
-> additional properties for the ports.
-> 
-> The scenario where DSA ports are all standardized can be handled by
-> swtiches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
-> 
-> The scenario where DSA ports require additional properties can reference
-> '$dsa.yaml#' directly. This will allow switches to reference these standard
-> defitions of the DSA switch, but add additional properties under the port
-> nodes.
-> 
-> Suggested-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-> Acked-by: Alvin Šipraga <alsi@bang-olufsen.dk> # realtek
-> ---
-> 
-> v3 -> v4
->    * Rename "$defs/base" to "$defs/ethernet-ports" to avoid implication of a
->      "base class" and fix commit message accordingly
->    * Add the following to the common etherent-ports node:
->        "additionalProperties: false"
->        "#address-cells" property
->        "#size-cells" property
->    * Fix "etherenet-ports@[0-9]+" to correctly be "ethernet-port@[0-9]+"
->    * Remove unnecessary newline
->    * Apply changes to mediatek,mt7530.yaml that were previously in a separate patch
->    * Add Reviewed and Acked tags
-> 
-> v3
->    * New patch
-> 
-> ---
->   .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
->   .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
->   .../devicetree/bindings/net/dsa/dsa.yaml      | 25 ++++++++++++++++---
->   .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
->   .../bindings/net/dsa/mediatek,mt7530.yaml     | 16 +++---------
->   .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
->   .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
->   .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
->   .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
->   .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
->   .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
->   11 files changed, 35 insertions(+), 24 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> index 259a0c6547f3..5888e3a0169a 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->   title: Arrow SpeedChips XRS7000 Series Switch Device Tree Bindings
->   
->   allOf:
-> -  - $ref: dsa.yaml#
-> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->   
->   maintainers:
->     - George McCollister <george.mccollister@gmail.com>
-> diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> index 1219b830b1a4..5bef4128d175 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> @@ -66,7 +66,7 @@ required:
->     - reg
->   
->   allOf:
-> -  - $ref: dsa.yaml#
-> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->     - if:
->         properties:
->           compatible:
-> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> index b9d48e357e77..b9e366e46aed 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> @@ -19,9 +19,6 @@ description:
->   select: false
->   
->   properties:
-> -  $nodename:
-> -    pattern: "^(ethernet-)?switch(@.*)?$"
-> -
->     dsa,member:
->       minItems: 2
->       maxItems: 2
-> @@ -58,4 +55,26 @@ oneOf:
->   
->   additionalProperties: true
->   
-> +$defs:
-> +  ethernet-ports:
-> +    description: A DSA switch without any extra port properties
-> +    $ref: '#/'
-> +
-> +    patternProperties:
-> +      "^(ethernet-)?ports$":
-> +        type: object
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          '#address-cells':
-> +            const: 1
-> +          '#size-cells':
-> +            const: 0
-> +
-> +        patternProperties:
-> +          "^(ethernet-)?port@[0-9]+$":
-> +            description: Ethernet switch ports
-> +            $ref: dsa-port.yaml#
-> +            unevaluatedProperties: false
-> +
->   ...
-> diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> index 73b774eadd0b..748ef9983ce2 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->   title: Hirschmann Hellcreek TSN Switch Device Tree Bindings
->   
->   allOf:
-> -  - $ref: dsa.yaml#
-> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->   
->   maintainers:
->     - Andrew Lunn <andrew@lunn.ch>
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index f2e9ff3f580b..b815272531fa 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -156,17 +156,6 @@ patternProperties:
->   
->       patternProperties:
->         "^(ethernet-)?port@[0-9]+$":
-> -        type: object
-> -        description: Ethernet switch ports
-> -
-> -        unevaluatedProperties: false
-> -
-> -        properties:
-> -          reg:
-> -            description:
-> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
-> -              for user ports.
+Hello!
 
-This shouldn't be moved. Please reread our conversation on the previous 
-version.
+This is an experimental semi-automated report about issues detected by
+Coverity from a scan of next-20221202 as part of the linux-next scan project:
+https://scan.coverity.com/projects/linux-next-weekly-scan
 
-> -
->           allOf:
->             - $ref: dsa-port.yaml#
->             - if:
-> @@ -174,6 +163,9 @@ patternProperties:
->               then:
->                 properties:
->                   reg:
-> +                  description:
-> +                    Port address described must be 5 or 6 for CPU port and from
-> +                    0 to 5 for user ports
+You're getting this email because you were associated with the identified
+lines of code (noted below) that were touched by commits:
 
-Arınç
+  Thu Dec 1 17:29:14 2022 +0100
+    98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+
+Coverity reported the following:
+
+*** CID 1527816:  Integer handling issues  (INCOMPATIBLE_CAST)
+drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:657 in mt7996_rf_regval_set()
+651
+652     static int
+653     mt7996_rf_regval_set(void *data, u64 val)
+654     {
+655     	struct mt7996_dev *dev = data;
+656
+vvv     CID 1527816:  Integer handling issues  (INCOMPATIBLE_CAST)
+vvv     Pointer "&val" points to an object whose effective type is "unsigned long long" (64 bits, unsigned) but is dereferenced as a narrower "unsigned int" (32 bits, unsigned). This may lead to unexpected results depending on machine endianness.
+657     	return mt7996_mcu_rf_regval(dev, dev->mt76.debugfs_reg, (u32 *)&val, true);
+658     }
+659
+660     DEFINE_DEBUGFS_ATTRIBUTE(fops_rf_regval, mt7996_rf_regval_get,
+661     			 mt7996_rf_regval_set, "0x%08llx\n");
+662
+
+If this is a false positive, please let us know so we can mark it as
+such, or teach the Coverity rules to be smarter. If not, please make
+sure fixes get into linux-next. :) For patches fixing this, please
+include these lines (but double-check the "Fixes" first):
+
+Reported-by: coverity-bot <keescook+coverity-bot@chromium.org>
+Addresses-Coverity-ID: 1527816 ("Integer handling issues")
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+
+Thanks for your attention!
+
+-- 
+Coverity-bot
 
