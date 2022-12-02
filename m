@@ -4,178 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7BDDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 06:51:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBADCC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 07:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TJywfxZ34b0JzlZUDvxawgqLWrEJOMzz+Wvl0+RspN4=; b=oA6Ga2jZZMBD9U5u+s83wT4CAy
-	a9SUcP5YQVhEMrO4qdFSMGLeg0hR0ru5tcqGWI1Z8y4/wmu4Aw2AlXJ1kdVCWqLDAqXjawWfPzg4A
-	sHIt5iBlzQj7KbwDPZ1QBokZqoGz8lbHSll7MA5ZjR2bvZJp9MwyTnOoVIvUycoJWJl7dV4ipuhrM
-	QyrdPODWhNiia1gJ5bCHpr0uBaVwYymMjAOLu/puPNHFBdgZRmCuqCyjGEdaw0qTqoECesVF/jcKO
-	BEqm2w8Z8N7if6DvifErR+2oH/Dgxh9YpBVfOkU3C9hkHxYnCGwySkMk9ITKJa2N56R7goBQNX1qy
-	dlf4CoTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vgduVIOHUsmEHqgZONx8uKnlTWsJSWncFzmVVWh4R04=; b=OT1sthdf5fj+0Fy4nO7aI72W/1
+	/zC2Eo98+3VXWaOx1L0uZ/hzjjgbFNIC3rhvIwx1OKEBTxYpWk92WXfD50IEKZ+bz5P42bKlH4BdD
+	vJ+hjkqJXGwkDqhKnm8dytH2Xs31ORQQvnIu4E+JvKZvykIyYPPLZ8nPzVPBxsqKi2cKJ2TgJmQpD
+	Vc5T4Hc+O8SOGBNQSdb/YgrMHOnymykd+YqsJ/oRMmlXhaJIcc15X6XaPLzZQXP4xyYc/QxReQ52N
+	xrR/LcxH4iuea4K66D9HDxSFdb0Pf0S/T/TZMaBSVFlmXRNzOY6E+HUrB97a9hQn1BJGwtgqNFZSi
+	zM5czReg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0ztf-00DyDI-KV; Fri, 02 Dec 2022 06:51:43 +0000
+	id 1p10Wh-00EACy-Ro; Fri, 02 Dec 2022 07:32:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0ztc-00Dy8q-Rj
-	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 06:51:42 +0000
-X-UUID: 4d9cef82ef344a82ba1e007d69c49170-20221201
+	id 1p10WW-00EA9X-2L; Fri, 02 Dec 2022 07:31:54 +0000
+X-UUID: 7055c5dc94e3426d8aa22503b3b17b74-20221202
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=TJywfxZ34b0JzlZUDvxawgqLWrEJOMzz+Wvl0+RspN4=;
-	b=krjmfk7L8M2hIXbnjKhYUCAAgKi4/BqAIawYSL3WrsfMNnSUloVBjPXouFowFcb1idIKhMpr38HKBmeyh1uf9h0kfnlPCUOscIn2Cmk4WusH4ziNinmi4USmM1ovaNtSC325NdLs0ac3DRvxjKPu3SqI4gNTdvXmLbSFwVFOyF0=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=vgduVIOHUsmEHqgZONx8uKnlTWsJSWncFzmVVWh4R04=;
+	b=LnHtU8iTqzY3Q7b2poOLpiPvOdsLGF+NwZkCTxJOBNGvv9gL1qpmZuS/z38lPBTGlPE4w+R6k4JoCvsBuLi1jBwVchW3OqfqoAhebZkLTiTLiG1YKC5na2jv+K/HvCIr07MaWOanpe57oKymhXbuecHDizO1mpAutd1CfVuuqM8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:6f104771-a65f-4082-9f65-c2bb04215ad2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:cef15b6c-41fe-47b6-8eb4-ec192dedaf7d,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:abdfc13c-82a5-4c07-9e8b-1c5a6b52d569,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:87c7f51e-5e1d-4ab5-ab8e-3e04efc02b30,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 4d9cef82ef344a82ba1e007d69c49170-20221201
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 7055c5dc94e3426d8aa22503b3b17b74-20221202
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
+	(envelope-from <haozhe.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 965081442; Thu, 01 Dec 2022 23:51:36 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1561463403; Fri, 02 Dec 2022 00:31:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 2 Dec 2022 14:41:02 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 2 Dec 2022 14:41:02 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=H0W3YK6NEIQwazBSlz6wxWFPUiNdxTutE3+58nIyIVqf+bV8VoFLEW4dRLEHFuDCZRIU7PGs8e46OALzC08mN5CMLqLOHClMGFubgw6EIPwcHiemhuCvh+ATGm5A/mmSD9KgJfbCyUAgnBqg265rg/ujQaavY2LuhLCQJMoGz+wJLW1ZBF2rgxsC5qY8n5+jGItKa6x64lMHNVTCt7032i+bVnGgOP2CW5HTTd9qMROMmTMKzmO+Ht0dI8lj1gRFeUjhTAmcU9wXnwG1wA8TOfUTjI5aE8yz0jTZI4nI8P/5DCjqGG64C6G29iAGi9OTQ4/qnbf+ml0ydOhTaJKR6Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TJywfxZ34b0JzlZUDvxawgqLWrEJOMzz+Wvl0+RspN4=;
- b=Uq2jJbTaepbvOP+syDOcdpHizhMncKj6Utg71mcbk0Wbpg/4vLxL42p5h4dCgMUW3JKdRets1pKvyZV45Xpwc8gwOf1WyQZskG4PqTwQ1f3azBSZRhPGi441UWbaIqoRsfWGaSU1u3BoOLW5BeJRDkL2rsPo5UzA83/fqhQ57U7JJiSaDQdNZ2m5SsNDfOHbQprA3XQl1hSi14qk4s87U+svxL5BH6538f1oY8it/vO4JPq0HhHhahf2YkQdAIIO9oz2aBkchPoknZ40WjqG0SPbgnLYBWgww0KhD9Uurne7tt2fzxsDV31WfMCkDREWZUEVYdxAlnGqfj2ojjXpZg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TJywfxZ34b0JzlZUDvxawgqLWrEJOMzz+Wvl0+RspN4=;
- b=qbgl16EVT+3ZRcZBPYKtesas3JlYkZp/YWmuCIZsNEkVsQgifCyRwzvC5jLMGO1FAP5DmhRfgqiKtpaHjenDfEKdIYfe3lv32S6TYTzm3S3u+3RhCbSE+M9NR0IcM631MF5p0n/kL/8Fmj57UbKvz7ezvSkCUCRrA8wiDlRe8Jc=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by TYUPR03MB7163.apcprd03.prod.outlook.com (2603:1096:400:356::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.10; Fri, 2 Dec
- 2022 06:41:00 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::2aa2:27f2:1d96:c1cb]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::2aa2:27f2:1d96:c1cb%4]) with mapi id 15.20.5880.008; Fri, 2 Dec 2022
- 06:41:00 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "bvanassche@acm.org" <bvanassche@acm.org>, "dlunev@chromium.org"
-	<dlunev@chromium.org>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, wsd_upstream
-	<wsd_upstream@mediatek.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
-	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
-	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
-	<Powen.Kao@mediatek.com>, =?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
-	<Naomi.Chu@mediatek.com>, =?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
-	<stanley.chu@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
-	<Qilin.Tan@mediatek.com>, "adrian.hunter@intel.com" <adrian.hunter@intel.com>
-Subject: Re: [PATCH v1] ufs: core: wlun suspend SSU fail recovery
-Thread-Topic: [PATCH v1] ufs: core: wlun suspend SSU fail recovery
-Thread-Index: AQHY7f2ebQ5oIqIDLEuxQKxEnr9j6a5Xbc0AgAB+UwCAAfJbgIAAd5qA
-Date: Fri, 2 Dec 2022 06:40:59 +0000
-Message-ID: <c92655563231dd79ed6d4287d7d5bad4de142a18.camel@mediatek.com>
-References: <20221101142410.31463-1-peter.wang@mediatek.com>
-	 <98bfafd3-c7b7-89b5-497a-aa694d0152dd@intel.com>
-	 <5e00ce60-3859-4964-11f7-e036f6dda56a@acm.org>
-	 <CAONX=-e1NA--3taTmfbUV+hR_LOSqvBqz_=1mPmYZWaKGGR=ig@mail.gmail.com>
-In-Reply-To: <CAONX=-e1NA--3taTmfbUV+hR_LOSqvBqz_=1mPmYZWaKGGR=ig@mail.gmail.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|TYUPR03MB7163:EE_
-x-ms-office365-filtering-correlation-id: 8a3bcce0-555c-4e23-cf4b-08dad4302ca8
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FAIH+Jh2+Z4EokbKghjKtiOtU94GkScYmgdEaEJ6/wEqcRqnaN67b1jk3TDJ5Za9mXqjr6whUYbJ7XlkFqKoVhH3J0AGOrNXyzqmOMg7bSOefu4qOkAchMK2mdyqxyEsxC4K5QfVg+ltbQ885NjXqRpuO5QUlVzrowXFLPGSj788qa16u1JTjERMHwq5815J8wkYlia6gtyW1dgHZlwvIPmZ6FMlwguK559QG29Nl6urbK7JUo8rMH2m4EryEt75gzRz8sh2ZztRkwuGnPozig0hqWYvh3/AIWB2H3nz+BG2UyY+TkqtLjiVH+4Auk8APTri3KkzdmHviZbjoEG9zPuyOxE6WRGFsAM74Udh2rS+fe9W05dJDBZ8hbl2QuVVWQDOFclbfKqs7wuPLGprvLs24B9Ku4vn52syXaQikVk1UQaS7YgwWsSQwDTMxbxf9Eby9GP2eoBkZNTOKbL/2+9n0R4J8SvYggXAhY6ApmUbD+5DyUX26N4vKWzJjcPvoR4UF9ygysMGuxIGcf4oRhXGnL064N9nwo0RjmidfIg1ee5ZVaZbhx724M69XExyPjE3xzl75dLygeDmjhnYE3ayWsHSoQSkJNT4LrRou0Lpnj1BSlb7F1IdB82ocF9qm1zt6D+YeZFzI8W+FPataArOU08YrkUtbMciiUeznRJqwD534RH+VQTCmstMopHA35lH+kxYVo20wqgJvh6HLw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(376002)(346002)(136003)(39860400002)(366004)(396003)(451199015)(4326008)(8676002)(41300700001)(5660300002)(66446008)(76116006)(64756008)(66556008)(66476007)(66946007)(91956017)(15650500001)(316002)(2906002)(8936002)(54906003)(110136005)(6486002)(85182001)(36756003)(478600001)(71200400001)(53546011)(6512007)(26005)(6506007)(38070700005)(186003)(83380400001)(2616005)(86362001)(38100700002)(122000001)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Mmd3dkp3ODJma2NENGRHeS9qTVdqMnMvajlhbjNEcUtmMjYraGY2dW9MSFcx?=
- =?utf-8?B?L2JLK1Y2WmJhLys2azJVWHpKTUNxRXdGREZOcUYwSnArL29wbm05SGN2OGJK?=
- =?utf-8?B?OHlrM1MvcTBzZmtDU3drUVBFUk9FSmJ3cGFKbzhzU3ZoOGhyV1JTNElXMkdW?=
- =?utf-8?B?YzZWdVFTWmlLVGpqVEVkd1hpQjlHMEI1ZHE0R2ZvU3UvQTE0NGpOR3htY0hW?=
- =?utf-8?B?Q0M3MjNLajdVRzZJV2lLbEhZY1M1SklUSVJwRlNxVmJ1QmNsNW9xemFQRCtX?=
- =?utf-8?B?VlNGTUNkRktFQXFkM25qa0dRaXFXYnk0cUtEajVvRzFhdG5aQUVEc2plSStj?=
- =?utf-8?B?Sks5TE9xc24wMUk4Q2FKZGRPNnBWUDUrNTBMZnNLUFMrdFYzc0IzNGx5MGFj?=
- =?utf-8?B?RnFObnYzNkdXZVNvRi8xUkcxV2NLYm9EUUdyM0pFc1NOVS9CQXp0UlZsSXBC?=
- =?utf-8?B?WWVBZURhcDd6eVNVSVIxeFMyNUw3Q1oxYkJRUjNRdGVwSkZzZ2ZRdzNSK1pu?=
- =?utf-8?B?dnhFRVprWmJ2T09Ja2o3V05kYXMwU3FKY0NkR1ltb25pNklSUjQ0bkVrSC9O?=
- =?utf-8?B?UWYrUDk4R3ZEK3VxZjFhbG10cE51bUlQU09vS1AvMDN6Mi85YVNkUlRFa2xF?=
- =?utf-8?B?S1lLNlVpNVZWZittVC9oR2lNS2hGaWd0Wmw4dlplaFdMNk5RNkpYUVd5b2pG?=
- =?utf-8?B?U2REVzZCVVQ0cjEvZlNEZ1N6bGtLQnJ5MFdXei9HVzQ1emxpUEZZLzNBTUhR?=
- =?utf-8?B?NFJTc3BBMDdkcVhYcVh6TUZYT1V5NGpxUzloRktBQnZIdWV6VEM5aytUemli?=
- =?utf-8?B?elhkUFl4d0g3SXcyTHZOc3I5eHk3a1BzUmFtanJWbXB4TDFjZ3lEc1liaGZJ?=
- =?utf-8?B?dGovdGl0OEtiU1NhQ0VKblcyTS9FSjk0L0g1RGtuMzFqcjR3d0gxYVg3bTY1?=
- =?utf-8?B?dDRJQlY3VFZweENBVllUNkw5WEtlVHQrb25nZGJLcG1ORkE3aVQxN2orY2FW?=
- =?utf-8?B?UUorVHVaRjFxNXhDOEtMWHBrRTRMamg4M3I2bkEyUEY2WHJhZm52ZkZCMk9t?=
- =?utf-8?B?TUhNSUhOZVBnSDlYcXlOUVFORkJKbEsyTkEwOG5CNnZsWFMyd0FXZWVRM2xv?=
- =?utf-8?B?UlVncW1nVDB5a0JvSnV2ZUY0RElpckRzbXEwRW0vQk44ZFBCZEpnY2RXbU53?=
- =?utf-8?B?SW9TeWFhNDY3dTlCeDVNZXVNeGp2THRuRHFKL3ArVXdSWnR0M1NYV2MwQXBH?=
- =?utf-8?B?TzJtYWk3amQrRzh4QjRWMlQrQ2FuZGxXSysycGpBdC83UWh3UHdUZGVTZStN?=
- =?utf-8?B?VmJaQWtST0MvVm1TRHI0aXBJUnJPQUxSYkxUZ2RSUWZPanhvOUx0RWk4NHdW?=
- =?utf-8?B?dExkZVB1MVVyQnhCUTJ3dlBKNkttM1dtNENZdFFyaGdEKzZRRkNIT1JXTi8z?=
- =?utf-8?B?WHpMZ0pxU3Q1Y0pnSjd2bUxmNmk1bitIR0M2VStVaFgzWVB3RnBQd2YySWFP?=
- =?utf-8?B?NUY4dmppK2pLV2x1MUZmMHplNHlTSExwblJlSExNL1JISlhqRmlaVWlQTlVk?=
- =?utf-8?B?K3F5aXBhdnhYMmV6bzRRaU9tc0Y4M29na0pEc09IM3hKb3FHVGFjMW1hcWpI?=
- =?utf-8?B?OFBHT1UyRENMSDV1UGlOeUZrazlkckkzbkJTM2c0bCtmajcvYVlXZEJZQk9F?=
- =?utf-8?B?SEFOM28xRTRlaVcwRmZNQVhwckpyQjRjNVNnSnZWY2E4aDBwa2ZVVzZnQTc4?=
- =?utf-8?B?WThoa1c1bFJpa3V6YW5TWkJRUmtBdDJQYXJXdCtsMmcyV3dkOHB0NEFhNnZo?=
- =?utf-8?B?VXNTSjBWU2psQktyS0JPV0RnQ0trNmQydFVMR3BSaHV0cmVtSk4rNEc5TjJR?=
- =?utf-8?B?SThkd3k1czBldXNPYnhHY1c5VmtaaUVwanN1WDJRSzE2UW9WbCsrWU4rU2VR?=
- =?utf-8?B?b3JxYkEyN1RhSjhzd1F6V1FsSHlqNVp1bkdHbTZhYUZjbXk5eFF0aXpRbVpY?=
- =?utf-8?B?UFo0RGVvZWJ2cmJFbGE2eTlSSEZFQmlTb3dKbXVnbEZSZVAreUczcTlJRnZs?=
- =?utf-8?B?RWwzN1dWaWh6MGM5eTNjSjUweGhBSHNDUUh3Um9sMDc4RlZTWExQZlFuV25a?=
- =?utf-8?B?Vm4xVjJKQjhSMWhWaGR2RzB2biszNVQwZ3VxRkE3Ny9nUWFpbXFuUy83MkVu?=
- =?utf-8?B?bUE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <88F522EAA75A7047A3B2206522B65BFA@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.792.15; Fri, 2 Dec 2022 14:41:03 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 2 Dec 2022 14:41:00 +0800
+From: <haozhe.chang@mediatek.com>
+To: M Chetan Kumar <m.chetan.kumar@intel.com>, Intel Corporation
+	<linuxwwan@intel.com>, Loic Poulain <loic.poulain@linaro.org>, Sergey
+ Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Stephan
+ Gerhold <stephan@gerhold.net>, Chandrashekar Devegowda
+	<chandrashekar.devegowda@intel.com>, Chiranjeevi Rapolu
+	<chiranjeevi.rapolu@linux.intel.com>, Liu Haijun <haijun.liu@mediatek.com>,
+	Ricardo Martinez <ricardo.martinez@linux.intel.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Oliver Neukum <oneukum@suse.com>, Shang XiaoJing <shangxiaojing@huawei.com>,
+	haozhe chang <haozhe.chang@mediatek.com>, "open list:INTEL WWAN IOSM DRIVER"
+	<netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "open
+ list:REMOTE PROCESSOR MESSAGING (RPMSG) WWAN CONTROL..."
+	<linux-remoteproc@vger.kernel.org>, "open list:USB SUBSYSTEM"
+	<linux-usb@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <lambert.wang@mediatek.com>, <xiayu.zhang@mediatek.com>,
+	<hua.yang@mediatek.com>
+Subject: [PATCH v6] wwan: core: Support slicing in port TX flow of WWAN subsystem
+Date: Fri, 2 Dec 2022 14:40:32 +0800
+Message-ID: <20221202064035.57197-1-haozhe.chang@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a3bcce0-555c-4e23-cf4b-08dad4302ca8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Dec 2022 06:40:59.8657
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: O8QYgb3oKdijr4pYq4+b8WaMvjQ5yhBR+7OwZvybIKbqQ3QiBXA5ZHcgaZv9rauoG0fK856Q/sOb9U2HNiig5g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR03MB7163
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_225140_926882_10B62D63 
-X-CRM114-Status: GOOD (  21.69  )
+X-CRM114-CacheID: sfid-20221201_233152_155450_FE369C16 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,29 +92,338 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIyLTEyLTAyIGF0IDEwOjMyICsxMTAwLCBEYW5paWwgTHVuZXYgd3JvdGU6DQo+
-IE9uIFRodSwgRGVjIDEsIDIwMjIgYXQgNDo1MCBBTSBCYXJ0IFZhbiBBc3NjaGUgPGJ2YW5hc3Nj
-aGVAYWNtLm9yZz4NCj4gd3JvdGU6DQo+ID4gDQo+ID4gT24gMTEvMzAvMjIgMDI6MTcsIEFkcmlh
-biBIdW50ZXIgd3JvdGU6DQo+ID4gPiBPbiAxLzExLzIyIDE2OjI0LCBwZXRlci53YW5nQG1lZGlh
-dGVrLmNvbSB3cm90ZToNCj4gPiA+ID4gRnJvbTogUGV0ZXIgV2FuZyA8cGV0ZXIud2FuZ0BtZWRp
-YXRlay5jb20+DQo+ID4gPiA+IA0KPiA+ID4gPiBXaGVuIFNTVSBmYWlsIGluIHdsdW4gc3VzcGVu
-ZCBmbG93LCB0cmlnZ2VyIGVycm9yIGhhbmRsZGVyIGFuZA0KPiA+ID4gDQo+ID4gPiBoYW5kbGRl
-ciAtPiBoYW5kbGVyDQo+ID4gPiANCj4gPiA+IFdoeSAvIGhvdyBkb2VzIFNTVSBmYWlsPw0KPiA+
-IA0KPiA+IEknbSBub3Qgc3VyZSBidXQgdGhlIGlzc3VlIHRoYXQgUGV0ZXIgaXMgdHJ5aW5nIHRv
-IGZpeCB3aXRoIHRoaXMNCj4gPiBwYXRjaA0KPiA+IG1heSBhbHJlYWR5IGhhdmUgYmVlbiBmaXhl
-ZCBieSBteSBwYXRjaCBzZXJpZXMgIkZpeCBhIGRlYWRsb2NrIGluDQo+ID4gdGhlDQo+ID4gVUZT
-IGRyaXZlciIuDQo+IA0KPiBXZSBvYnNlcnZlIGEgc2ltaWxhciBmYWlsdXJlIHNjZW5hcmlvIHdo
-ZW4gYSBkZXZpY2UgdHJpZXMgdG8gY2hhbmdlDQo+IHBvd2VyIG1vZGUgKGUuZy4gZHVlIHRvIGF1
-dG9zdXNwZW5kKSB3aGlsZSAicHVyZ2UiIGlzIGluIHByb2dyZXNzLiBJdA0KPiBhcHBlYXJzIHRo
-YXQgaW4gdGhpcyBjYXNlIHRoZSAicG1fb25seSIgY291bnRlciBpcyBpbmNyZWFzZWQgb24gdGhl
-DQo+IGRldmljZSBxdWV1ZSBwcmlvciB0byB0aGUgYXR0ZW1wdCBvZiBlbnRlcmluZyBhIHJ1bnRp
-bWUgc3VzcGVuZGVkDQo+IHN0YXRlLCBidXQgbm90IHJlZHVjZWQgdXBvbiBpdCBmYWlsaW5nIGR1
-ZSB0byB0aGUgZGV2aWNlIGJlaW5nIGJ1c3kNCj4gd2l0aCBhbiBvbmdvaW5nIHB1cmdlLiBUaGF0
-IGxlYWRzIHRvIGEgZGVhZGxvY2sgb2Ygc3Vic2VxdWVudCBJTw0KPiBvcGVyYXRpb25zIHRvIHRo
-ZSBkZXZpY2UuDQo+IA0KPiAtLURhbmlpbA0KDQpIaSBEYW5paWwsDQoNCk1heSBJIGhhdmUgYSBx
-dWVzdGlvbiwgd2hpY2ggZGlldmNlIHlvdSB1c2UgaW4gdGhpcyBmYWlsdXJlIHNjZW5hcmlvPyAg
-DQpJIHRoaW5rIGl0IGlzIHNhbWUgaXNzdWUgZHVlIHRvIFNTVSBmYWlsLCBhbmQgd2x1biBkZXZj
-aWUgcG0gZW50ZXINCmVycm9yIHN0YXRlLiBTbyB0aGUgY3Vuc29tZXIoc2NzaSBsdSBkZXZpY2Up
-IGlzIGJsb2NrIGluIHN1c3BlbmQgc3RhdGUNCmFuZCBjb25ub3QgcmVzdW1lIHRvIHJlZHVjZSBw
-bV9vbmx5IGxlYWQgdG8gSU8gaGFuZy4NCg0KVGhhbmtzLg0KQlINClBldGVyDQoNCg0K
+From: haozhe chang <haozhe.chang@mediatek.com>
+
+wwan_port_fops_write inputs the SKB parameter to the TX callback of
+the WWAN device driver. However, the WWAN device (e.g., t7xx) may
+have an MTU less than the size of SKB, causing the TX buffer to be
+sliced and copied once more in the WWAN device driver.
+
+This patch implements the slicing in the WWAN subsystem and gives
+the WWAN devices driver the option to slice(by frag_len) or not. By
+doing so, the additional memory copy is reduced.
+
+Meanwhile, this patch gives WWAN devices driver the option to reserve
+headroom in fragments for the device-specific metadata.
+
+Signed-off-by: haozhe chang <haozhe.chang@mediatek.com>
+Reviewed-by: Loic Poulain <loic.poulain@linaro.org>
+
+---
+Changes in v2
+  -send fragments to device driver by skb frag_list.
+
+Changes in v3
+  -move frag_len and headroom_len setting to wwan_create_port.
+
+Changes in v4
+  -change unreadable parameters to macro definition.
+
+Changes in v5
+  -optimize comments for WWAN_NO_HEADROOM, WWAN_NO_FRAGMENT.
+
+Changes in v6
+  -add reviewer to patch commit.
+---
+ drivers/net/wwan/iosm/iosm_ipc_port.c  |  3 +-
+ drivers/net/wwan/mhi_wwan_ctrl.c       |  3 +-
+ drivers/net/wwan/rpmsg_wwan_ctrl.c     |  3 +-
+ drivers/net/wwan/t7xx/t7xx_port_wwan.c | 34 +++++++--------
+ drivers/net/wwan/wwan_core.c           | 59 ++++++++++++++++++++------
+ drivers/net/wwan/wwan_hwsim.c          |  1 +
+ drivers/usb/class/cdc-wdm.c            |  3 +-
+ include/linux/wwan.h                   | 16 +++++++
+ 8 files changed, 87 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/net/wwan/iosm/iosm_ipc_port.c b/drivers/net/wwan/iosm/iosm_ipc_port.c
+index b6d81c627277..7798348f61d0 100644
+--- a/drivers/net/wwan/iosm/iosm_ipc_port.c
++++ b/drivers/net/wwan/iosm/iosm_ipc_port.c
+@@ -63,7 +63,8 @@ struct iosm_cdev *ipc_port_init(struct iosm_imem *ipc_imem,
+ 	ipc_port->ipc_imem = ipc_imem;
+ 
+ 	ipc_port->iosm_port = wwan_create_port(ipc_port->dev, port_type,
+-					       &ipc_wwan_ctrl_ops, ipc_port);
++					       &ipc_wwan_ctrl_ops, WWAN_NO_FRAGMENT,
++					       WWAN_NO_HEADROOM, ipc_port);
+ 
+ 	return ipc_port;
+ }
+diff --git a/drivers/net/wwan/mhi_wwan_ctrl.c b/drivers/net/wwan/mhi_wwan_ctrl.c
+index f7ca52353f40..c397aa53db5d 100644
+--- a/drivers/net/wwan/mhi_wwan_ctrl.c
++++ b/drivers/net/wwan/mhi_wwan_ctrl.c
+@@ -237,7 +237,8 @@ static int mhi_wwan_ctrl_probe(struct mhi_device *mhi_dev,
+ 
+ 	/* Register as a wwan port, id->driver_data contains wwan port type */
+ 	port = wwan_create_port(&cntrl->mhi_dev->dev, id->driver_data,
+-				&wwan_pops, mhiwwan);
++				&wwan_pops, WWAN_NO_FRAGMENT, WWAN_NO_HEADROOM,
++				mhiwwan);
+ 	if (IS_ERR(port)) {
+ 		kfree(mhiwwan);
+ 		return PTR_ERR(port);
+diff --git a/drivers/net/wwan/rpmsg_wwan_ctrl.c b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+index 31c24420ab2e..fc6c228b7e1c 100644
+--- a/drivers/net/wwan/rpmsg_wwan_ctrl.c
++++ b/drivers/net/wwan/rpmsg_wwan_ctrl.c
+@@ -129,7 +129,8 @@ static int rpmsg_wwan_ctrl_probe(struct rpmsg_device *rpdev)
+ 
+ 	/* Register as a wwan port, id.driver_data contains wwan port type */
+ 	port = wwan_create_port(parent, rpdev->id.driver_data,
+-				&rpmsg_wwan_pops, rpwwan);
++				&rpmsg_wwan_pops, WWAN_NO_FRAGMENT,
++				WWAN_NO_HEADROOM, rpwwan);
+ 	if (IS_ERR(port))
+ 		return PTR_ERR(port);
+ 
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_wwan.c b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+index 33931bfd78fd..b75bb272f861 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
++++ b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+@@ -54,13 +54,13 @@ static void t7xx_port_ctrl_stop(struct wwan_port *port)
+ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ {
+ 	struct t7xx_port *port_private = wwan_port_get_drvdata(port);
+-	size_t len, offset, chunk_len = 0, txq_mtu = CLDMA_MTU;
+ 	const struct t7xx_port_conf *port_conf;
++	struct sk_buff *cur = skb, *cloned;
+ 	struct t7xx_fsm_ctl *ctl;
+ 	enum md_state md_state;
++	int cnt = 0, ret;
+ 
+-	len = skb->len;
+-	if (!len || !port_private->chan_enable)
++	if (!port_private->chan_enable)
+ 		return -EINVAL;
+ 
+ 	port_conf = port_private->port_conf;
+@@ -72,23 +72,21 @@ static int t7xx_port_ctrl_tx(struct wwan_port *port, struct sk_buff *skb)
+ 		return -ENODEV;
+ 	}
+ 
+-	for (offset = 0; offset < len; offset += chunk_len) {
+-		struct sk_buff *skb_ccci;
+-		int ret;
+-
+-		chunk_len = min(len - offset, txq_mtu - sizeof(struct ccci_header));
+-		skb_ccci = t7xx_port_alloc_skb(chunk_len);
+-		if (!skb_ccci)
+-			return -ENOMEM;
+-
+-		skb_put_data(skb_ccci, skb->data + offset, chunk_len);
+-		ret = t7xx_port_send_skb(port_private, skb_ccci, 0, 0);
++	while (cur) {
++		cloned = skb_clone(cur, GFP_KERNEL);
++		cloned->len = skb_headlen(cur);
++		ret = t7xx_port_send_skb(port_private, cloned, 0, 0);
+ 		if (ret) {
+-			dev_kfree_skb_any(skb_ccci);
++			dev_kfree_skb(cloned);
+ 			dev_err(port_private->dev, "Write error on %s port, %d\n",
+ 				port_conf->name, ret);
+-			return ret;
++			return cnt ? cnt + ret : ret;
+ 		}
++		cnt += cur->len;
++		if (cur == skb)
++			cur = skb_shinfo(skb)->frag_list;
++		else
++			cur = cur->next;
+ 	}
+ 
+ 	dev_kfree_skb(skb);
+@@ -154,13 +152,15 @@ static int t7xx_port_wwan_disable_chl(struct t7xx_port *port)
+ static void t7xx_port_wwan_md_state_notify(struct t7xx_port *port, unsigned int state)
+ {
+ 	const struct t7xx_port_conf *port_conf = port->port_conf;
++	unsigned int header_len = sizeof(struct ccci_header);
+ 
+ 	if (state != MD_STATE_READY)
+ 		return;
+ 
+ 	if (!port->wwan_port) {
+ 		port->wwan_port = wwan_create_port(port->dev, port_conf->port_type,
+-						   &wwan_ops, port);
++						   &wwan_ops, CLDMA_MTU - header_len,
++						   header_len, port);
+ 		if (IS_ERR(port->wwan_port))
+ 			dev_err(port->dev, "Unable to create WWWAN port %s", port_conf->name);
+ 	}
+diff --git a/drivers/net/wwan/wwan_core.c b/drivers/net/wwan/wwan_core.c
+index 62e9f7d6c9fe..8d35513bcd4c 100644
+--- a/drivers/net/wwan/wwan_core.c
++++ b/drivers/net/wwan/wwan_core.c
+@@ -67,6 +67,8 @@ struct wwan_device {
+  * @rxq: Buffer inbound queue
+  * @waitqueue: The waitqueue for port fops (read/write/poll)
+  * @data_lock: Port specific data access serialization
++ * @headroom_len: SKB reserved headroom size
++ * @frag_len: Length to fragment packet
+  * @at_data: AT port specific data
+  */
+ struct wwan_port {
+@@ -79,6 +81,8 @@ struct wwan_port {
+ 	struct sk_buff_head rxq;
+ 	wait_queue_head_t waitqueue;
+ 	struct mutex data_lock;	/* Port specific data access serialization */
++	size_t headroom_len;
++	size_t frag_len;
+ 	union {
+ 		struct {
+ 			struct ktermios termios;
+@@ -422,6 +426,8 @@ static int __wwan_port_dev_assign_name(struct wwan_port *port, const char *fmt)
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   size_t frag_len,
++				   unsigned int headroom_len,
+ 				   void *drvdata)
+ {
+ 	struct wwan_device *wwandev;
+@@ -455,6 +461,8 @@ struct wwan_port *wwan_create_port(struct device *parent,
+ 
+ 	port->type = type;
+ 	port->ops = ops;
++	port->frag_len = frag_len ? frag_len : SIZE_MAX;
++	port->headroom_len = headroom_len;
+ 	mutex_init(&port->ops_lock);
+ 	skb_queue_head_init(&port->rxq);
+ 	init_waitqueue_head(&port->waitqueue);
+@@ -698,30 +706,53 @@ static ssize_t wwan_port_fops_read(struct file *filp, char __user *buf,
+ static ssize_t wwan_port_fops_write(struct file *filp, const char __user *buf,
+ 				    size_t count, loff_t *offp)
+ {
++	struct sk_buff *skb, *head = NULL, *tail = NULL;
+ 	struct wwan_port *port = filp->private_data;
+-	struct sk_buff *skb;
++	size_t frag_len, remain = count;
+ 	int ret;
+ 
+ 	ret = wwan_wait_tx(port, !!(filp->f_flags & O_NONBLOCK));
+ 	if (ret)
+ 		return ret;
+ 
+-	skb = alloc_skb(count, GFP_KERNEL);
+-	if (!skb)
+-		return -ENOMEM;
++	do {
++		frag_len = min(remain, port->frag_len);
++		skb = alloc_skb(frag_len + port->headroom_len, GFP_KERNEL);
++		if (!skb) {
++			ret = -ENOMEM;
++			goto freeskb;
++		}
++		skb_reserve(skb, port->headroom_len);
++
++		if (!head) {
++			head = skb;
++		} else if (!tail) {
++			skb_shinfo(head)->frag_list = skb;
++			tail = skb;
++		} else {
++			tail->next = skb;
++			tail = skb;
++		}
+ 
+-	if (copy_from_user(skb_put(skb, count), buf, count)) {
+-		kfree_skb(skb);
+-		return -EFAULT;
+-	}
++		if (copy_from_user(skb_put(skb, frag_len), buf + count - remain, frag_len)) {
++			ret = -EFAULT;
++			goto freeskb;
++		}
+ 
+-	ret = wwan_port_op_tx(port, skb, !!(filp->f_flags & O_NONBLOCK));
+-	if (ret) {
+-		kfree_skb(skb);
+-		return ret;
+-	}
++		if (skb != head) {
++			head->data_len += skb->len;
++			head->len += skb->len;
++			head->truesize += skb->truesize;
++		}
++	} while (remain -= frag_len);
++
++	ret = wwan_port_op_tx(port, head, !!(filp->f_flags & O_NONBLOCK));
++	if (!ret)
++		return count;
+ 
+-	return count;
++freeskb:
++	kfree_skb(head);
++	return ret;
+ }
+ 
+ static __poll_t wwan_port_fops_poll(struct file *filp, poll_table *wait)
+diff --git a/drivers/net/wwan/wwan_hwsim.c b/drivers/net/wwan/wwan_hwsim.c
+index ff09a8cedf93..7fb54cb51628 100644
+--- a/drivers/net/wwan/wwan_hwsim.c
++++ b/drivers/net/wwan/wwan_hwsim.c
+@@ -205,6 +205,7 @@ static struct wwan_hwsim_port *wwan_hwsim_port_new(struct wwan_hwsim_dev *dev)
+ 
+ 	port->wwan = wwan_create_port(&dev->dev, WWAN_PORT_AT,
+ 				      &wwan_hwsim_port_ops,
++				      WWAN_NO_FRAGMENT, WWAN_NO_HEADROOM,
+ 				      port);
+ 	if (IS_ERR(port->wwan)) {
+ 		err = PTR_ERR(port->wwan);
+diff --git a/drivers/usb/class/cdc-wdm.c b/drivers/usb/class/cdc-wdm.c
+index 1f0951be15ab..e0f0bc878bbd 100644
+--- a/drivers/usb/class/cdc-wdm.c
++++ b/drivers/usb/class/cdc-wdm.c
+@@ -929,7 +929,8 @@ static void wdm_wwan_init(struct wdm_device *desc)
+ 		return;
+ 	}
+ 
+-	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops, desc);
++	port = wwan_create_port(&intf->dev, desc->wwanp_type, &wdm_wwan_port_ops,
++				WWAN_NO_FRAGMENT, WWAN_NO_HEADROOM, desc);
+ 	if (IS_ERR(port)) {
+ 		dev_err(&intf->dev, "%s: Unable to create WWAN port\n",
+ 			dev_name(intf->usb_dev));
+diff --git a/include/linux/wwan.h b/include/linux/wwan.h
+index 5ce2acf444fb..adaf1f4a8652 100644
+--- a/include/linux/wwan.h
++++ b/include/linux/wwan.h
+@@ -62,11 +62,25 @@ struct wwan_port_ops {
+ 			    poll_table *wait);
+ };
+ 
++/*
++ * Used to indicate that the WWAN core should not fragment control packages.
++ */
++#define WWAN_NO_FRAGMENT	0
++
++/*
++ * Used to indicate that the WWAN core should not reserve headroom in control packages.
++ */
++#define WWAN_NO_HEADROOM	0
++
+ /**
+  * wwan_create_port - Add a new WWAN port
+  * @parent: Device to use as parent and shared by all WWAN ports
+  * @type: WWAN port type
+  * @ops: WWAN port operations
++ * @frag_len: WWAN port TX fragments length, if WWAN_NO_FRAGMENT is set,
++ *            the WWAN core don't fragment control packages.
++ * @headroom_len: WWAN port TX fragments reserved headroom length, if WWAN_NO_HEADROOM
++ *                is set, the WWAN core don't reserve headroom in control packages.
+  * @drvdata: Pointer to caller driver data
+  *
+  * Allocate and register a new WWAN port. The port will be automatically exposed
+@@ -84,6 +98,8 @@ struct wwan_port_ops {
+ struct wwan_port *wwan_create_port(struct device *parent,
+ 				   enum wwan_port_type type,
+ 				   const struct wwan_port_ops *ops,
++				   size_t frag_len,
++				   unsigned int headroom_len,
+ 				   void *drvdata);
+ 
+ /**
+-- 
+2.17.0
+
 
