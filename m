@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB89AC4321E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 04:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D0EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 04:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
-	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hmGXJylT7/ZdFrctmGuMzbIEvJaG4YNaVyTKZPqtRtU=; b=Cr7TpPaEZ4C3dsZkDw4MkKoFvm
-	r2tOZEGl1lODlZLq5cXBrEi6arwxVD6u71SOtQRH+924TCeZGkSEGzuqSL0c0I/K7mLnMYG6esOP5
-	O3a1AaqzPv7Si0dXb6s2zevxRIqiGk1ME8cKtuiUeSwkTjPieve+yc1pkJITRngZlTpwiaYTx7xMc
-	N9X0+FnIAOLVzzwp8/s+nMyAkQs60kU8gZOHJMGUEaFrePt03Jf9j1tZKihgPFzkDEfJ6L9rv9YTv
-	o8fiKk5SObDa6rpvT+axnH9cj7CDY667ww0p7RFFcTGbSwk1a6x2Yd5yRm9u7dNQ7qNlUnoYg3d0E
-	dDe/EyNg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4vZnZiRiuzvJXiBOwiquPZDeka/mensDAmVnj/q79Rk=; b=uQV280VxDeDZYYSg+1SQHbNfCM
+	WpbcCENJgb6UltrMhbSnSZoQk94QExSYe8qJPE8MW9jpG07B3we+drgYVtv8m0AFAif2igukWUo86
+	ohfmpa+HqPJD4q71yal1RUC6lzKsESOrrEu1vzNFEwQu1eKPvxw2JG9UElMXmWClg6JlLpLWn2qAL
+	4tIdJ2eW+8W1FsHtGLjJgxmEf/k5HapPqLNAWTRPvrOwmqhfVOQsSsb2N4dmmxfso1ey0qsA1+U/4
+	qDcoT+B+CL+EOTjFIItyx6cWdjqeCDjYSvYg+6WsQHDMG1KnsjhrcUi06acqk8gMP7Ot6N8lhW87N
+	a75SfsEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0xNf-00D6bR-59; Fri, 02 Dec 2022 04:10:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p0xm2-00DDfM-Nr; Fri, 02 Dec 2022 04:35:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0xNT-00D6Xm-7U; Fri, 02 Dec 2022 04:10:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6AF8B61198;
-	Fri,  2 Dec 2022 04:10:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2FAD9C43470;
-	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1669954217;
-	bh=HaP17cY8bC6Z7s7UbiuxYbq8Tj2YqlDJaygBIxTtgLE=;
-	h=Subject:From:Date:References:In-Reply-To:To:List-Id:Cc:From;
-	b=ceAE5Mxrl5cb2x2vxCvkWYLuAKVIUSda9eDgrj/v/dsN0Vo4tt9V/HX2M1h78crwH
-	 d03jz31h574qWxU5y0Q6ocFqqylNVBdzBI9uTKgsYl38Y8QLSLrfk+o4bDBD8VeCNC
-	 hOf+Q9VR7k40jlRRbcnmmPma/ihKnDAxNqujnGgx/nv1JtJ94HtmmJ+5QA/ZoM/ljG
-	 RbLwj0w3XtuqtUeWwYO5QEIDqRz2znS9lfFPx2OW5XdmmmHyWdfTLPeNqAhADtZ0Ow
-	 Pk/KqULn6e3dQaK9ZYBlnyp5ewEhowWzruyM0J9zZHiExqyTEM2UT4whZS83/WJftY
-	 F7YUJMQy9oi4w==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0DDFCE52545;
-	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1p0xlz-00DDdv-Hl; Fri, 02 Dec 2022 04:35:40 +0000
+X-UUID: 6624ea7122644178988600240bbe1b3f-20221201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4vZnZiRiuzvJXiBOwiquPZDeka/mensDAmVnj/q79Rk=;
+	b=hDR0N7qoL3bwF/ziHWnRhvD7px5iRMdePQwoD9dH/CWhKEzm9ymkaV+p5SE+OIhXNu0Ox8lG2efGCrDgwxR/rTN32BM4B8ibQ+N7F/+Wq4GUdua+fvwiya/llWtLy484duvCrswH4lx8esix9A8+hcSoFdkSDvStr1bsGtWLv5g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:bb3f29da-d25e-4522-b10b-2f9be2e4593a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:ba7c7530-2938-482e-aafd-98d66723b8a9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6624ea7122644178988600240bbe1b3f-20221201
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 733403209; Thu, 01 Dec 2022 21:35:33 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 2 Dec 2022 11:44:54 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 2 Dec 2022 11:44:53 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
+	<tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4,2/3] media: dt-bindings: media: mediatek: vcodec: Change the max reg value to 2
+Date: Fri, 2 Dec 2022 11:44:49 +0800
+Message-ID: <20221202034450.3808-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221202034450.3808-1-yunfei.dong@mediatek.com>
+References: <20221202034450.3808-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166995421705.16716.5360501255567828327.git-patchwork-notify@kernel.org>
-Date: Fri, 02 Dec 2022 04:10:17 +0000
-References: <20221130141040.32447-1-arinc.unal@arinc9.com>
-In-Reply-To: <20221130141040.32447-1-arinc.unal@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPg==?=@ci.codeaurora.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_201019_365741_4E6F7717 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20221201_203539_614981_60EE764D 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +84,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, alexandre.belloni@bootlin.com, heiko@sntech.de, geert+renesas@glider.be, tharvey@gateworks.com, vladimir.oltean@nxp.com, linus.walleij@linaro.org, konrad.dybcio@somainline.org, alexandre.torgue@foss.st.com, stefan@agner.ch, linux-kernel@vger.kernel.org, edumazet@google.com, christophe.leroy@csgroup.eu, krzysztof.kozlowski+dt@linaro.org, linux@rempel-privat.de, festevam@gmail.com, peng.fan@nxp.com, f.fainelli@gmail.com, samuel@sholland.org, mpe@ellerman.id.au, gregory.clement@bootlin.com, zajec5@gmail.com, magnus.damm@gmail.com, linux@armlinux.org.uk, jernej.skrabec@gmail.com, linux-stm32@st-md-mailman.stormreply.com, sergio.paracuellos@gmail.com, wens@csie.org, agross@kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, rjui@broadcom.com, kuba@kernel.org, pabeni@redhat.com, s.hauer@pengutronix.de, sebastian.hesselbarth@gmail.com, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, mcoquelin.stm32@gmail.com, hauke@hauke-m.de, ulli.kroll@googlemail.com, linuxppc-dev@lists.ozlabs.org, npiggin@gmail.com, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, tsbogend@alpha.franken.de, sbranden@broadcom.com, netdev@vger.kernel.org, andersson@kernel.org, rasmus.villemoes@prevas.dk, nicolas.ferre@microchip.com, davem@davemloft.net, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, krzysztof.kozlowski@linaro.org, kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com, michael.riesch@wolfvision.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Need to add racing control register base in device node for mt8195 support
+inner racing mode. Changing the max reg value from 1 to 2.
 
-This series was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
+Adding the description for VDEC_SYS and VDEC_MISC.
 
-On Wed, 30 Nov 2022 17:10:35 +0300 you wrote:
-> Hello folks,
-> 
-> With this patch series, we're completely getting rid of 'label = "cpu";'
-> which is not used by the DSA dt-binding at all.
-> 
-> Information for taking the patches for maintainers:
-> Patch 1: netdev maintainers (based off netdev/net-next.git main)
-> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
-> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
-> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
-> 
-> [...]
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/media/mediatek,vcodec-subdev-decoder.yaml      | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-Here is the summary with links:
-  - [1/5] dt-bindings: net: qca,ar71xx: remove label = "cpu" from examples
-    https://git.kernel.org/netdev/net-next/c/ce36d7ef4e08
-  - [2/5] arm: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [3/5] arm64: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [4/5] mips: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-  - [5/5] powerpc: dts: remove label = "cpu" from DSA dt-binding
-    (no matching commit)
-
-You are awesome, thank you!
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index a08b2c814f40..fffed7f515ae 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -61,7 +61,10 @@ properties:
+       - mediatek,mt8195-vcodec-dec
+ 
+   reg:
+-    maxItems: 1
++    minItems: 1
++    items:
++      - description: VDEC_SYS register space
++      - description: VDEC_RACING_CTRL register space
+ 
+   iommus:
+     minItems: 1
+@@ -98,6 +101,7 @@ patternProperties:
+ 
+       reg:
+         maxItems: 1
++        description: VDEC_MISC register space
+ 
+       interrupts:
+         maxItems: 1
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.18.0
 
 
