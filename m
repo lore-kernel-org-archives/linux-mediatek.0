@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D91C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 03:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB89AC4321E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 04:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VCzoXxASQ6qGnA6F6VYifoo4ULC7Kk/0LQh8ibSLUMk=; b=hRfZMYXoIPV9urggmyoJt2KhDH
-	TDBrysH3VH2CG+Ozeo5exu/LmHNz+Lj/K9ArMb/0LF90xboXafODqPMeF87GTljLBfQKegjVYDjBO
-	qULSrnp/8EDqZrSR6YbAtjaa6TGVAkAqDDXdgqyBZoJ637i4iIbXSHMyu4bGZ3AXkZKUJjSYrmdib
-	YhtxDXFeFTShJhL30TqyhFd9HeNlT7zVLqfHO3eqjcaOZNQYsHgJCPqBIdAHeEtIuv32o5DEy3bzM
-	sThm9j8y9diSC9054B2q44olprAF1Wb5ZldUG4yf5QS323Enki4HW+zPQoNbDP5+gMDe8XRn8fkzn
-	s6S7tBOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hmGXJylT7/ZdFrctmGuMzbIEvJaG4YNaVyTKZPqtRtU=; b=Cr7TpPaEZ4C3dsZkDw4MkKoFvm
+	r2tOZEGl1lODlZLq5cXBrEi6arwxVD6u71SOtQRH+924TCeZGkSEGzuqSL0c0I/K7mLnMYG6esOP5
+	O3a1AaqzPv7Si0dXb6s2zevxRIqiGk1ME8cKtuiUeSwkTjPieve+yc1pkJITRngZlTpwiaYTx7xMc
+	N9X0+FnIAOLVzzwp8/s+nMyAkQs60kU8gZOHJMGUEaFrePt03Jf9j1tZKihgPFzkDEfJ6L9rv9YTv
+	o8fiKk5SObDa6rpvT+axnH9cj7CDY667ww0p7RFFcTGbSwk1a6x2Yd5yRm9u7dNQ7qNlUnoYg3d0E
+	dDe/EyNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0wzY-00CzXg-Dd; Fri, 02 Dec 2022 03:45:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p0xNf-00D6bR-59; Fri, 02 Dec 2022 04:10:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p0wzU-00CzVV-OA; Fri, 02 Dec 2022 03:45:34 +0000
-X-UUID: 0a23e6cf98e04e9db6a11a75f5b4b855-20221201
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VCzoXxASQ6qGnA6F6VYifoo4ULC7Kk/0LQh8ibSLUMk=;
-	b=KogGqveBfRmDHCBUfCY5XzffsbOMYJyXo8tfO0vIdJv7vRnH2tKn+fc/+0cfkHus5gk+pr+b9Arle+TBaoGy007XaHZuEyH2a+oz6z2w3402xwprAhHnPjYjOVvd+FQrvAbpAC1XhH34hR/s6wn87dENqgxfNSox03wshm5VmHI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:1dead4e6-7a92-46e9-ae4b-04c0bb7da9ca,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:563def1e-5e1d-4ab5-ab8e-3e04efc02b30,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 0a23e6cf98e04e9db6a11a75f5b4b855-20221201
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1345951234; Thu, 01 Dec 2022 20:45:27 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 2 Dec 2022 11:44:55 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 2 Dec 2022 11:44:54 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
-	<tiffany.lin@mediatek.com>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter
-	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,3/3] arm64: dts: mt8195: Add video decoder node
-Date: Fri, 2 Dec 2022 11:44:50 +0800
-Message-ID: <20221202034450.3808-3-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221202034450.3808-1-yunfei.dong@mediatek.com>
-References: <20221202034450.3808-1-yunfei.dong@mediatek.com>
+	id 1p0xNT-00D6Xm-7U; Fri, 02 Dec 2022 04:10:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6AF8B61198;
+	Fri,  2 Dec 2022 04:10:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2FAD9C43470;
+	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1669954217;
+	bh=HaP17cY8bC6Z7s7UbiuxYbq8Tj2YqlDJaygBIxTtgLE=;
+	h=Subject:From:Date:References:In-Reply-To:To:List-Id:Cc:From;
+	b=ceAE5Mxrl5cb2x2vxCvkWYLuAKVIUSda9eDgrj/v/dsN0Vo4tt9V/HX2M1h78crwH
+	 d03jz31h574qWxU5y0Q6ocFqqylNVBdzBI9uTKgsYl38Y8QLSLrfk+o4bDBD8VeCNC
+	 hOf+Q9VR7k40jlRRbcnmmPma/ihKnDAxNqujnGgx/nv1JtJ94HtmmJ+5QA/ZoM/ljG
+	 RbLwj0w3XtuqtUeWwYO5QEIDqRz2znS9lfFPx2OW5XdmmmHyWdfTLPeNqAhADtZ0Ow
+	 Pk/KqULn6e3dQaK9ZYBlnyp5ewEhowWzruyM0J9zZHiExqyTEM2UT4whZS83/WJftY
+	 F7YUJMQy9oi4w==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0DDFCE52545;
+	Fri,  2 Dec 2022 04:10:17 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Subject: Re: [PATCH 0/5] remove label = "cpu" from DSA dt-binding
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <166995421705.16716.5360501255567828327.git-patchwork-notify@kernel.org>
+Date: Fri, 02 Dec 2022 04:10:17 +0000
+References: <20221130141040.32447-1-arinc.unal@arinc9.com>
+In-Reply-To: <20221130141040.32447-1-arinc.unal@arinc9.com>
+To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPg==?=@ci.codeaurora.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221201_194532_801973_93519D7D 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20221201_201019_365741_4E6F7717 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,99 +68,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew@lunn.ch, alexandre.belloni@bootlin.com, heiko@sntech.de, geert+renesas@glider.be, tharvey@gateworks.com, vladimir.oltean@nxp.com, linus.walleij@linaro.org, konrad.dybcio@somainline.org, alexandre.torgue@foss.st.com, stefan@agner.ch, linux-kernel@vger.kernel.org, edumazet@google.com, christophe.leroy@csgroup.eu, krzysztof.kozlowski+dt@linaro.org, linux@rempel-privat.de, festevam@gmail.com, peng.fan@nxp.com, f.fainelli@gmail.com, samuel@sholland.org, mpe@ellerman.id.au, gregory.clement@bootlin.com, zajec5@gmail.com, magnus.damm@gmail.com, linux@armlinux.org.uk, jernej.skrabec@gmail.com, linux-stm32@st-md-mailman.stormreply.com, sergio.paracuellos@gmail.com, wens@csie.org, agross@kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, rjui@broadcom.com, kuba@kernel.org, pabeni@redhat.com, s.hauer@pengutronix.de, sebastian.hesselbarth@gmail.com, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, mcoquelin.stm32@gmail.com, hauke@hauke-m.de, ulli.kroll@googlemail.com, linuxppc-dev@lists.ozlabs.org, npiggin@gmail.com, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, tsbogend@alpha.franken.de, sbranden@broadcom.com, netdev@vger.kernel.org, andersson@kernel.org, rasmus.villemoes@prevas.dk, nicolas.ferre@microchip.com, davem@davemloft.net, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, krzysztof.kozlowski@linaro.org, kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com, michael.riesch@wolfvision.net
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add video decoder node to mt8195 device tree.
+Hello:
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 70 ++++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
+This series was applied to netdev/net-next.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 905d1a90b406..6829aa0dcf4c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1874,6 +1874,76 @@
- 			power-domains = <&spm MT8195_POWER_DOMAIN_CAM>;
- 		};
- 
-+		video-codec@18000000 {
-+			compatible = "mediatek,mt8195-vcodec-dec";
-+			mediatek,scp = <&scp>;
-+			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			reg = <0 0x18000000 0 0x1000>,
-+			      <0 0x18004000 0 0x1000>;
-+			ranges = <0 0 0 0x18000000 0 0x26000>;
-+
-+			video-codec@2000 {
-+				compatible = "mediatek,mtk-vcodec-lat-soc";
-+				reg = <0 0x2000 0 0x800>;
-+				iommus = <&iommu_vpp M4U_PORT_L23_VDEC_UFO_ENC_EXT>,
-+					 <&iommu_vpp M4U_PORT_L23_VDEC_RDMA_EXT>;
-+				clocks = <&topckgen CLK_TOP_VDEC>,
-+					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-+					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-+					 <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				clock-names = "sel", "vdec", "lat", "top";
-+				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-+			};
-+
-+			video-codec@10000 {
-+				compatible = "mediatek,mtk-vcodec-lat";
-+				reg = <0 0x10000 0 0x800>;
-+				interrupts = <GIC_SPI 708 IRQ_TYPE_LEVEL_HIGH 0>;
-+				iommus = <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD_EXT>,
-+					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_VLD2_EXT>,
-+					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_AVC_MC_EXT>,
-+					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_PRED_RD_EXT>,
-+					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_TILE_EXT>,
-+					 <&iommu_vdo M4U_PORT_L24_VDEC_LAT0_WDMA_EXT>;
-+				clocks = <&topckgen CLK_TOP_VDEC>,
-+					 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-+					 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-+					 <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				clock-names = "sel", "vdec", "lat", "top";
-+				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
-+			};
-+
-+			video-codec@25000 {
-+				compatible = "mediatek,mtk-vcodec-core";
-+				reg = <0 0x25000 0 0x1000>;		/* VDEC_CORE_MISC */
-+				interrupts = <GIC_SPI 707 IRQ_TYPE_LEVEL_HIGH 0>;
-+				iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_UFO_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_PP_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_RD_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_PRED_WR_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_PPWRAP_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_TILE_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_VLD2_EXT>,
-+					 <&iommu_vdo M4U_PORT_L21_VDEC_AVC_MV_EXT>;
-+				clocks = <&topckgen CLK_TOP_VDEC>,
-+					 <&vdecsys CLK_VDEC_VDEC>,
-+					 <&vdecsys CLK_VDEC_LAT>,
-+					 <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				clock-names = "sel", "vdec", "lat", "top";
-+				assigned-clocks = <&topckgen CLK_TOP_VDEC>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
-+				power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
-+			};
-+		};
-+
- 		larb24: larb@1800d000 {
- 			compatible = "mediatek,mt8195-smi-larb";
- 			reg = <0 0x1800d000 0 0x1000>;
+On Wed, 30 Nov 2022 17:10:35 +0300 you wrote:
+> Hello folks,
+> 
+> With this patch series, we're completely getting rid of 'label = "cpu";'
+> which is not used by the DSA dt-binding at all.
+> 
+> Information for taking the patches for maintainers:
+> Patch 1: netdev maintainers (based off netdev/net-next.git main)
+> Patch 2-3: SoC maintainers (based off soc/soc.git soc/dt)
+> Patch 4: MIPS maintainers (based off mips/linux.git mips-next)
+> Patch 5: PowerPC maintainers (based off powerpc/linux.git next-test)
+> 
+> [...]
+
+Here is the summary with links:
+  - [1/5] dt-bindings: net: qca,ar71xx: remove label = "cpu" from examples
+    https://git.kernel.org/netdev/net-next/c/ce36d7ef4e08
+  - [2/5] arm: dts: remove label = "cpu" from DSA dt-binding
+    (no matching commit)
+  - [3/5] arm64: dts: remove label = "cpu" from DSA dt-binding
+    (no matching commit)
+  - [4/5] mips: dts: remove label = "cpu" from DSA dt-binding
+    (no matching commit)
+  - [5/5] powerpc: dts: remove label = "cpu" from DSA dt-binding
+    (no matching commit)
+
+You are awesome, thank you!
 -- 
-2.18.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
