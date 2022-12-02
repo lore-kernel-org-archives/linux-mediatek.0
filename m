@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F87CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 17:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72AFCC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 18:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Muv55VbS1lnb4nlPnTtTF/LPBA7Wvo9ol7ScMkOvl2U=; b=OFBsq9aC8PUjEqizA9cv92C04K
-	Nxy0ZUBwWmoMH+KSA4sI+7FZ4veVJCaeMgDUY9Z4e1R9vXge6aY9Cng10pLr9PcLKHblrU/hest9y
-	P8s/Y7GysBpyo10gEB6tOkgeI5dP6S0ag1xbg71UIQ6bEboKHn4pf97KGrhn650WVMpa1L6eZJD7F
-	BU0OxpxFy4yWlTKB+rbGuYW0+uSoaL7hViACCdhfBv0apL4g1LP1pJFxGYOdnH8aAjN2KKDZXrTP8
-	uMtjlAFG3unIwKa+sDJQVPL3/jPI9NZaRR6CAxNvH/UvPUnPL2H8jrXphQTTyI2Z7Z6uJ+5zUSu4/
-	ROlj1kpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QiXUg/POYoRk1AXSg1iNN7b1l54Y/uFMZIQKbej+DjM=; b=uLYWCryeYvHqfS5+MGC9PPDEzf
+	aPMR3xkQeqi6RvbCc3znFooAVnB6UMZOHBin49iPjTq2VcBhdp1iYogBIB/xSbCYRs5yOR8+AWKSb
+	tl6pkCv2C17nR+tFk5hh63HopMAmoWWvCMGSWqZzMg/lVFwwoiBE4lE4U7BU62AWJNrn0AIf0KIk6
+	mR8/t632h1kjnDVYWEzM4wC17fB06+i9AeJkKNPGxnrpEH70AQx/Rc97V0ghNh30OKFgl/INUi7G6
+	K0JJ/GUYiTuTPvt/76GAnC6IJqzgpJzw6iW8rYIH6qed6CpWjXrjVugsf+J0R3lBWrL04f2J4OZEF
+	gYcdPs+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p19xt-000O5O-6H; Fri, 02 Dec 2022 17:36:45 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1p1ATw-000Yk0-0W; Fri, 02 Dec 2022 18:09:52 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p19xq-000O4L-RQ
-	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 17:36:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CBE7862357;
-	Fri,  2 Dec 2022 17:36:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A982C433C1;
-	Fri,  2 Dec 2022 17:36:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670002601;
-	bh=z5uh3mVduXvQ/zp3qCGCz5kpqopsyvlxan0NUFQRRa0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=U0X7JI7aU8zvtbQNpSMQAiuMd2dn9630cWISy8kwZVjYdQ6y5T/ymK85OmC0UNsR1
-	 aZ9iHUVcoVfEv3w+zzmtz2HrhRZ+dEYZKS6xWw//IvK1HGR86QGjyByEhbVUfESYPe
-	 pWxTBbPPSZxbnxmp82b3/z+If0W1/LQqZj+UzGJ+EacFlh/WLxvoj2NfEALBbdwuky
-	 nlk2+05pLYhHXlVcH9gECSoQXyMPXre+1jj9cflDL4z4YQvyPnDghb94Cm14T6ukGe
-	 KSgzV1AvXS0prLNQpYkJVeEV9m1AGSAJwESqzHdSiP+CCCZQ5mxh1dHK4Zf9W9vUnE
-	 kDL90ltajjirg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com
-Subject: [PATCH net-next] net: ethernet: mtk_wed: fix possible deadlock if mtk_wed_wo_init fails
-Date: Fri,  2 Dec 2022 18:36:33 +0100
-Message-Id: <a87f05e60ea1a94b571c9c87b69cc5b0e94943f2.1669999089.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.38.1
+	id 1p1ATt-000YhS-6f
+	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 18:09:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p1ATh-0004rb-T6; Fri, 02 Dec 2022 19:09:37 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p1ATc-001rI5-EU; Fri, 02 Dec 2022 19:09:33 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p1ATc-0026R0-EL; Fri, 02 Dec 2022 19:09:32 +0100
+Date: Fri, 2 Dec 2022 19:09:32 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, thierry.reding@gmail.com,
+	robh+dt@kernel.org, matthias.bgg@gmail.com, john@phrozen.org,
+	sean.wang@mediatek.com, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7622: Add missing
+ pwm-cells to pwm node
+Message-ID: <20221202180932.5k3vymrwds5ssivq@pengutronix.de>
+References: <20221128112028.58021-1-angelogioacchino.delregno@collabora.com>
+ <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="dbscrtoucbjx3ah7"
+Content-Disposition: inline
+In-Reply-To: <20221128112028.58021-2-angelogioacchino.delregno@collabora.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_093642_999732_C8B0BD49 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20221202_100949_248203_6F3BD21D 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,123 +77,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce __mtk_wed_detach() in order to avoid a possible deadlock in
-mtk_wed_attach routine if mtk_wed_wo_init fails.
 
-Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++++++++++++-------
- drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 10 ++++++---
- drivers/net/ethernet/mediatek/mtk_wed_wo.c  |  3 +++
- 3 files changed, 26 insertions(+), 11 deletions(-)
+--dbscrtoucbjx3ah7
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index d041615b2bac..6352abd4157e 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -174,9 +174,10 @@ mtk_wed_wo_reset(struct mtk_wed_device *dev)
- 	mtk_wdma_tx_reset(dev);
- 	mtk_wed_reset(dev, MTK_WED_RESET_WED);
- 
--	mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO,
--			     MTK_WED_WO_CMD_CHANGE_STATE, &state,
--			     sizeof(state), false);
-+	if (mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO,
-+				 MTK_WED_WO_CMD_CHANGE_STATE, &state,
-+				 sizeof(state), false))
-+		return;
- 
- 	if (readx_poll_timeout(mtk_wed_wo_read_status, dev, val,
- 			       val == MTK_WED_WOIF_DISABLE_DONE,
-@@ -576,12 +577,10 @@ mtk_wed_deinit(struct mtk_wed_device *dev)
- }
- 
- static void
--mtk_wed_detach(struct mtk_wed_device *dev)
-+__mtk_wed_detach(struct mtk_wed_device *dev)
- {
- 	struct mtk_wed_hw *hw = dev->hw;
- 
--	mutex_lock(&hw_lock);
--
- 	mtk_wed_deinit(dev);
- 
- 	mtk_wdma_rx_reset(dev);
-@@ -612,6 +611,13 @@ mtk_wed_detach(struct mtk_wed_device *dev)
- 	module_put(THIS_MODULE);
- 
- 	hw->wed_dev = NULL;
-+}
-+
-+static void
-+mtk_wed_detach(struct mtk_wed_device *dev)
-+{
-+	mutex_lock(&hw_lock);
-+	__mtk_wed_detach(dev);
- 	mutex_unlock(&hw_lock);
- }
- 
-@@ -1490,8 +1496,10 @@ mtk_wed_attach(struct mtk_wed_device *dev)
- 		ret = mtk_wed_wo_init(hw);
- 	}
- out:
--	if (ret)
--		mtk_wed_detach(dev);
-+	if (ret) {
-+		dev_err(dev->hw->dev, "failed to attach wed device\n");
-+		__mtk_wed_detach(dev);
-+	}
- unlock:
- 	mutex_unlock(&hw_lock);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-index f9539e6233c9..b084009a32f9 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-@@ -176,6 +176,9 @@ int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
- 	u16 seq;
- 	int ret;
- 
-+	if (!wo)
-+		return -ENODEV;
-+
- 	skb = mtk_wed_mcu_msg_alloc(data, len);
- 	if (!skb)
- 		return -ENOMEM;
-@@ -202,13 +205,14 @@ int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, int id, int cmd,
- int mtk_wed_mcu_msg_update(struct mtk_wed_device *dev, int id, void *data,
- 			   int len)
- {
--	struct mtk_wed_wo *wo = dev->hw->wed_wo;
-+	if (!dev->hw || !dev->hw->wed_wo)
-+		return 0;
- 
- 	if (dev->hw->version == 1)
- 		return 0;
- 
--	return mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO, id, data, len,
--				    true);
-+	return mtk_wed_mcu_send_msg(dev->hw->wed_wo, MTK_WED_MODULE_ID_WO, id,
-+				    data, len, true);
- }
- 
- static int
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index a219da85f4db..92440d62e01c 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -464,6 +464,9 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
- static void
- mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
- {
-+	if (!wo)
-+		return;
-+
- 	/* disable interrupts */
- 	mtk_wed_wo_set_isr(wo, 0);
- 
--- 
-2.38.1
+On Mon, Nov 28, 2022 at 12:20:27PM +0100, AngeloGioacchino Del Regno wrote:
+> Specify #pwm-cells on pwm@11006000 to make it actually usable.
+>=20
+> Fixes: ae457b7679c4 ("arm64: dts: mt7622: add SoC and peripheral related =
+device nodes")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt7622.dtsi
+> index 146e18b5b1f4..f321c6d0fd7c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -435,6 +435,7 @@ uart3: serial@11005000 {
+>  	pwm: pwm@11006000 {
+>  		compatible =3D "mediatek,mt7622-pwm";
+>  		reg =3D <0 0x11006000 0 0x1000>;
+> +		#pwm-cells =3D <2>;
 
+3 should be possible, too. The driver does only support one
+polarity, so it's not really needed, but would be nice for consistency?
+
+Thierry, what's your take here?
+
+Other than that: Who would pick this up, I assume it to go via an ARM
+tree together with the 2nd patch in this series?
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--dbscrtoucbjx3ah7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmOKP1kACgkQwfwUeK3K
+7AkdtQf9F9zcjUhzj6zMAal2E7Hya0b+VW7ihKDYEKL2u3cIZb0g7U42fx2UlRf0
+wuHtFvUTIm1GOTBc/abeiuXLGzxXBm/J59aMlpaEIpJgbuvQTQ0yd9aGEP2EI116
+2Ed9QFpv0TNTdm1vhIdPC56P4ZSE3Z574Vv5diLTJVHMHc+Y0pjxU4XniOM9ToKy
+3P8UVB9OatIYfjN4PwYDMBDBojK680Y1X7OaWXCYRe0pBSL23UmQ5ZVXrcmRZiib
+6nDkZJiTZRIZxnYMp8dwBei1PWgWvMuAT4vBiKGCzTGXEeqT6btQ5QyXWjwDkZ5c
+KDN4UAdH/Q1+DOb+mzTaLGoigs/Mgw==
+=CI4Q
+-----END PGP SIGNATURE-----
+
+--dbscrtoucbjx3ah7--
 
