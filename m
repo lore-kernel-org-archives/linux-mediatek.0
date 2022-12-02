@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E543AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 22:06:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EDE4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Dec 2022 22:11:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:Date:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=; b=h0HxoZfWZe18qyMQTZUnge/Deb
-	MHYhpTdg7WU4v9ESLSOQnKuCrROVdUcnBYgZmUKUWRCc3ROrmt+KPEug2kLUMvL8GpPyIJ+AuuFBa
-	5HIE2fE2S80zGYQVNJmLTblNDAA9u5Z3VABri7mZIjjAVh98d6Q5r6uHA1O7P8xHopkbBt5M+VsFg
-	2pHzml8BjquN2/W02285xG7QPdUeN4S1ciO5Cy0kumiYRyYId58wuoKNXg4TihjVBP4lBhSM1IaNA
-	rzz6eIfpviKOmRFOB340PQxzG+4DyGfgaLL26zSzRyDM448CwVTlwHmYi5nuLgMczpqaF1qtl56/I
-	4hW3n5PA==;
+	bh=w0dcCRAw7breQBxRgO7vXMzRE1EKaCH1sm8fAccBDKk=; b=AMfDrCJW5Z3rzqKCfAyeCNUZ5x
+	SSkhYetCf6FbN261mTi0xI88kZR2A+uD4VkzvEsmFiaSzeppfTzJrEinU5lVatp4+qwP3bhA2sVJ/
+	LHyZ1YIDzsz4Qw6IyLdBgGiVcFmyEb941BaZNIaEv1+s4RW/hkbw0WNq8RrcKO3nBpxmP8grGawdi
+	no6YQyC7PeIILu2vHCsemA4M9s0O/Qq4JNQSVpCPiMlMtGCyj5e5y9ljuhTO909s+0m2pYDRDJ2nf
+	YYzvfU43nUboajNGOBF1mnXfOFb/P8BdmrYydcwBeJviLxFEj+uJY4e7FQGWlVoR7Xguq+Xp3QUiu
+	EJTgRGxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1EAW-001TTD-1d; Fri, 02 Dec 2022 22:06:04 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1p1EFv-001UAz-F0; Fri, 02 Dec 2022 22:11:39 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1EAL-001TQn-Cl
-	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 22:05:54 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id 140so6132566pfz.6
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Dec 2022 14:05:45 -0800 (PST)
+	id 1p1EFs-001U9n-Ev
+	for linux-mediatek@lists.infradead.org; Fri, 02 Dec 2022 22:11:37 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id t17so6154987pjo.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Dec 2022 14:11:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=content-disposition:mime-version:message-id:subject:cc:to:date:from
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=;
-        b=TSqUQgbjbBdg6dvDWR1KVKuTEI3gAe6/W+8DLD7nw2mWi+QX+pcwtPxwJFoxQmJGEe
-         uNxgwfWgkBGeh75QcHsRkRMQfxOkr6GVNv7M9DU6N537BAZNupUYZmYR8DdUZWlAAwbR
-         KMF3Htct7RWcrCqmWw5tW/Ic0PXvyQHTzFYVE=
+        bh=w0dcCRAw7breQBxRgO7vXMzRE1EKaCH1sm8fAccBDKk=;
+        b=OwVi+W7xvxR/nGjj39pmX3oRQiji/LPiwOpKAVbcIfM5DiCUEx2CVjjGCPgXGrAYj2
+         5UoXRgnzXLZKAL8W05vLqFxBXlQ6XcoYM3KtBnvhqQMVng3lNY2A1Ac0VfEk1e+mkKH0
+         2KCcNECGN1AEN2hcX554Bmw8qWfXqc5l8cIxA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-disposition:mime-version:message-id:subject:cc:to:date:from
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YGmhfz9LKketteJ29KbDn67sA38cLHNS36kuvwxlMm8=;
-        b=S8MSXLbqmn7W2FgRtzVBB7StcXgZjHiaaI3r2/v1q3pkxrgjZHqMFJ0uLSlVnR8QcJ
-         6ECLzp0Cg+q23caQMCPL4xDRTYtAEh0epI6y/WFa2qe2Z99Ezszttl4hHtBX9wbo7vF8
-         k/C6kOpx6vf9+rQdwZcNcgg2+JY38tplMZAauOVog+LUnOTavnLeH07C9+jXQ+hSA3id
-         rZhr2FFutt6FYG1nEMy0xxtMiwmMSDPVaAaxk5255iPeUgfPnyOAWu6QcRg2jyEqfSh/
-         o+/xS5PJdcL/yl2ipCWZLDbAWeQNG2Hs/Q6FHD57Gx5mszEY3uvCQTMG5Ykyqhya+iMH
-         ZjOg==
-X-Gm-Message-State: ANoB5plLuu3rZP9oBC9KtduniRATcLRbpe3NHkEJ56V/R52iCrjyzPTu
-	25LxIWBt4LSU03JWaoihryAeWQ==
-X-Google-Smtp-Source: AA0mqf5DhG6zysI+aj3WH5KAazaNoxWHCLIcnDeHYGVOYKMWwq4jAur5eQGJ0+dbDGN2a+EriUvEoA==
-X-Received: by 2002:a05:6a00:4009:b0:563:2ada:30a3 with SMTP id by9-20020a056a00400900b005632ada30a3mr55402742pfb.27.1670018745233;
-        Fri, 02 Dec 2022 14:05:45 -0800 (PST)
+        bh=w0dcCRAw7breQBxRgO7vXMzRE1EKaCH1sm8fAccBDKk=;
+        b=rbCX3SX7nT6QHCqRhgk01DoaDj4S7lJ+ESSYADKFwEwiymgfMVCS6s6K4ZeXA98EZG
+         dG8oxXNK1e9kHP5WYphd4V4cHCWDkm9/vHNZ+Zj+8gfqgBycsQ8yghlulqsU0rzln4kR
+         ZUkJxSI3VNJHQn9JSgLhaYnyIKQasHDmx68/pZOLg8ykjt9Q6ZiDtfL65cZvIWfI87le
+         n4rhlmzxomZlg6LHm5wcP7ENW28uvFHMst6FQuEnoeYQ3ymAWiXoItqR0gqsliSPgPCQ
+         WfXX3lVVd1BAjeIe+R+2podj6Xd1bYGHQbq7xNBZLx525qkZvheGiiH1gonyL4ceEJVg
+         7bXg==
+X-Gm-Message-State: ANoB5pkUeYtKfrU9Ad03+LPgbSJDJOej02LERKES1GAp8bKeLjkzTqus
+	7Pt011Tya89LLk1PohIFpuAWFg==
+X-Google-Smtp-Source: AA0mqf6QTLbmI+X8jti2r+C7tdO68/bOJUECQQLNnuZG8zdOtdYlL2NT2bZgqzSjU6DeRIsbPY36zw==
+X-Received: by 2002:a17:90a:9e5:b0:219:5139:7fa8 with SMTP id 92-20020a17090a09e500b0021951397fa8mr20815064pjo.15.1670019094904;
+        Fri, 02 Dec 2022 14:11:34 -0800 (PST)
 Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
-        by smtp.gmail.com with ESMTPSA id s24-20020a17090ad49800b00210125b789dsm5170014pju.54.2022.12.02.14.05.44
+        by smtp.gmail.com with ESMTPSA id h131-20020a628389000000b0056bb36c047asm5510216pfe.105.2022.12.02.14.11.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Dec 2022 14:05:44 -0800 (PST)
+        Fri, 02 Dec 2022 14:11:34 -0800 (PST)
 From: coverity-bot <keescook@chromium.org>
 X-Google-Original-From: coverity-bot <keescook+coverity-bot@chromium.org>
-Date: Fri, 2 Dec 2022 14:05:43 -0800
+Date: Fri, 2 Dec 2022 14:11:33 -0800
 To: Shayne Chen <shayne.chen@mediatek.com>
 Cc: Lorenzo Bianconi <lorenzo@kernel.org>, linux-wireless@vger.kernel.org,
 	Jakub Kicinski <kuba@kernel.org>, Kalle Valo <kvalo@kernel.org>,
@@ -78,14 +78,14 @@ Cc: Lorenzo Bianconi <lorenzo@kernel.org>, linux-wireless@vger.kernel.org,
 	Sujuan Chen <sujuan.chen@mediatek.com>,
 	"Gustavo A. R. Silva" <gustavo@embeddedor.com>,
 	linux-next@vger.kernel.org, linux-hardening@vger.kernel.org
-Subject: Coverity: mt7996_rf_regval_set(): Integer handling issues
-Message-ID: <202212021405.93CF11D2A@keescook>
+Subject: Coverity: mt7996_hw_queue_read(): Integer handling issues
+Message-ID: <202212021411.A5E618D3@keescook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221202_140553_457464_227A8375 
-X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-CacheID: sfid-20221202_141136_544839_CD75FA3A 
+X-CRM114-Status: UNSURE (   9.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,22 +115,22 @@ lines of code (noted below) that were touched by commits:
 
 Coverity reported the following:
 
-*** CID 1527816:  Integer handling issues  (INCOMPATIBLE_CAST)
-drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:657 in mt7996_rf_regval_set()
-651
-652     static int
-653     mt7996_rf_regval_set(void *data, u64 val)
-654     {
-655     	struct mt7996_dev *dev = data;
-656
-vvv     CID 1527816:  Integer handling issues  (INCOMPATIBLE_CAST)
-vvv     Pointer "&val" points to an object whose effective type is "unsigned long long" (64 bits, unsigned) but is dereferenced as a narrower "unsigned int" (32 bits, unsigned). This may lead to unexpected results depending on machine endianness.
-657     	return mt7996_mcu_rf_regval(dev, dev->mt76.debugfs_reg, (u32 *)&val, true);
-658     }
-659
-660     DEFINE_DEBUGFS_ATTRIBUTE(fops_rf_regval, mt7996_rf_regval_get,
-661     			 mt7996_rf_regval_set, "0x%08llx\n");
-662
+*** CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
+drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:460 in mt7996_hw_queue_read()
+454     	for (i = 0; i < size; i++) {
+455     		u32 ctrl, head, tail, queued;
+456
+457     		if (val & BIT(map[i].index))
+458     			continue;
+459
+vvv     CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
+vvv     Suspicious implicit sign extension: "map[i].qid" with type "u8" (8 bits, unsigned) is promoted in "map[i].qid << 24" to type "int" (32 bits, signed), then sign-extended to type "unsigned long" (64 bits, unsigned).  If "map[i].qid << 24" is greater than 0x7FFFFFFF, the upper bits of the result will all be 1.
+460     		ctrl = BIT(31) | (map[i].pid << 10) | (map[i].qid << 24);
+461     		mt76_wr(dev, MT_FL_Q0_CTRL, ctrl);
+462
+463     		head = mt76_get_field(dev, MT_FL_Q2_CTRL,
+464     				      GENMASK(11, 0));
+465     		tail = mt76_get_field(dev, MT_FL_Q2_CTRL,
 
 If this is a false positive, please let us know so we can mark it as
 such, or teach the Coverity rules to be smarter. If not, please make
@@ -138,7 +138,7 @@ sure fixes get into linux-next. :) For patches fixing this, please
 include these lines (but double-check the "Fixes" first):
 
 Reported-by: coverity-bot <keescook+coverity-bot@chromium.org>
-Addresses-Coverity-ID: 1527816 ("Integer handling issues")
+Addresses-Coverity-ID: 1527813 ("Integer handling issues")
 Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
 
 Thanks for your attention!
