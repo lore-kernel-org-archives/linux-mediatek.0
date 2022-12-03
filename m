@@ -4,71 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6707CC352A1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 15:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E2CC352A1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 15:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pMBdIWJI+k6xavY4EvsLlJHQHDQIGHg33bp7V0AGVxY=; b=ryGxZAsYE8D4qUf+7fuRZ+ftKs
-	q5bB+pmd1GHiPfniOR1gcTvvHVo9ZwHzJ/10Luq7RVSvs15rJZgdk1XRtL9OZKtDt7NsOi21LQ0v/
-	Uw130S1hxLXZe5jc8vQB47TZVpk93mSwPpyI85qxfExxtwkerQewJFL1NDPIE8pMVhTwGDtpsNjCK
-	PJUtV5rd+pNbt16yvmPrCq0o2ivb8wKvCAxAh1rNR1zOA+vLaPuUgT63OzzWICj8QkfFEt3pDXD2w
-	k4RqKxtbT2PK8Zakzl5v6VDmX70DhTTpoPunRqY+Ps+Yjxow5f5lN/7ItV5RSdQ/ZvczIwXpaO4Kt
-	WRXxFwaA==;
+	bh=79hzqR8BLDgmWu/344NxF9+RrdPHizNNeN4ujM2NbFk=; b=Ea9Lb1CLc0xLho9rbaV7pXO345
+	6UUspHbBPVQuoABEsXn6jRtOq/FCZ1tVF5GSv8S7AmqQhDGWyu74gRhCjAGix6qgst2iJb98YSVkJ
+	1mvHu1cdTmslrxBbWRdgCVyXbxVtfiXfuU0mbQ45NoPv6cxa4k6SRXO+TALPrOBANwtoGzRy2YyHd
+	9EWU5i1TNZtSCLAfl43kOQtZu4c1eb8myxOBtrRff6uCYLO3zOIApiQxtBVDxiZ5xrT4HAq9DGNQo
+	53GEFfOMSDkOLM9lF4JwAktTZHbH4tQWNc39z8ONIv6xpgKD0kntEakfuWpiAJw8+ekivqpw+NGqe
+	6Qb2mbBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1U5p-003s6I-30; Sat, 03 Dec 2022 15:06:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p1UMk-003tnM-Q0; Sat, 03 Dec 2022 15:23:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1U5l-003s5d-Mb; Sat, 03 Dec 2022 15:06:15 +0000
-X-UUID: c36a10d69fcd4241ba6be16c36aa7b92-20221203
+	id 1p1UMZ-003tlQ-2m; Sat, 03 Dec 2022 15:23:36 +0000
+X-UUID: d259987ee5984dd3b6d9d69bb0cdf6de-20221203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pMBdIWJI+k6xavY4EvsLlJHQHDQIGHg33bp7V0AGVxY=;
-	b=bt73zTM6Nm/1BH8bYIsFPGyInTBP/0iFUJ6rGzjqiL3+UXruGrnoUol6GrXaVKvY4sg5Ng7EKCMcv7oxDnPdAPKc3LLihaaL0FRwnHXIAPO4N5VltLfgikohs3XO1NCMdBr259fp1Sf6xy5RLaBI4ctwYVAEu4k7so/Ic91OcFU=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=79hzqR8BLDgmWu/344NxF9+RrdPHizNNeN4ujM2NbFk=;
+	b=ghFX21ZgP90Vvkjr89SEW3OMo+n0v0AuotAeJCzqAy8h6PYaxRxWxOWg8iWn/eKHo6B5i0l7tg7+rgIolmA2c4U0oqB7kCCa9XsvMqCxZpMuPSYmEC/B3tIDaCZweij46SRjRANMfzziD6CMNbyHZ518xUYeHHtdUDqHUWUrW+s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:d176032d-fa1b-488a-83d5-e1745fb26c33,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:c320746c-41fe-47b6-8eb4-ec192dedaf7d,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:773d0b5b-dd96-4921-b73e-4e5bae12fbf8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:48d20c1f-5e1d-4ab5-ab8e-3e04efc02b30,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c36a10d69fcd4241ba6be16c36aa7b92-20221203
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d259987ee5984dd3b6d9d69bb0cdf6de-20221203
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 725721016; Sat, 03 Dec 2022 08:06:08 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Sat, 3 Dec 2022 22:56:05 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 3 Dec 2022 22:56:04 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Nathan Chancellor <nathan@kernel.org>, "Nick
- Desaulniers" <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<llvm@lists.linux.dev>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH v5 3/3] phy: mediatek: tphy: add debugfs files
-Date: Sat, 3 Dec 2022 22:55:59 +0800
-Message-ID: <20221203145559.24763-3-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221203145559.24763-1-chunfeng.yun@mediatek.com>
-References: <20221203145559.24763-1-chunfeng.yun@mediatek.com>
+	with ESMTP id 954796645; Sat, 03 Dec 2022 08:23:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sat, 3 Dec 2022 22:53:24 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Sat, 3 Dec 2022 22:53:24 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=h62hmchYOFwbDmnoeSPZSjfGN5FCwVk2/OMq/xNcssNKijc3QEiJMT2S4mIEdBZxOxAnIu8Cgdon1i3n4PZAxuSQYWG9rAuLSITqHFfZPbSMA7kE2jNpzBCodTUGJ1PETm4fxqepMWLpeziduLfTeKXiStNj4rJ1uj+BXTdwvfL75B/aoh7NuLi9jpIxJpgIxsQ+eGzkVj5pQPlsq8SK9FKWNjvshC4V49nc3Gc/e+PMgQ1rJATcY9A++1qb7+35umFDT5D7ntgESQDq0jFcd7IeHztgOpXfLs9/aIP+rbq7WQ6gPv8b4fNkHFzrdan5qSz13/0aPlzenMYQhtscuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=79hzqR8BLDgmWu/344NxF9+RrdPHizNNeN4ujM2NbFk=;
+ b=Krj48mSkUTfFuhUpU2PxfPax8MkMOp7kF2WsGlZkmy8sQdTxPH4l/+TaR0GIRw+e7+Kd5yAzeatuiEQWDXzwkmzbVctpvOl9B3nD6itJZYjT2HKhcDRwE9ti5JksI6XBfNukD8BMsFeopy3eKE7Gf215TLhJwcXYKybfvBHAFN4xV/EqW6jnhZWB+DmDf3QGGIXZxzOjCkNnurVPUjbJ8uGjZV5oxlYoICR9jP5oSCM9a1kmGKzVN0tB3eK2C0oXaNorX9o/aedtxWAqfd5HlK8nlBPmZy9oPM1lQ6EMGiWe2qba/+QlbEBgosGH6Z3taZLPoqI8tmJfKJMjk2x+9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=79hzqR8BLDgmWu/344NxF9+RrdPHizNNeN4ujM2NbFk=;
+ b=liom+GvfdFw3+OFGNRan58+++oTSpyTmMVPs8ABGROkN13xtQAUs4EFOB9v5XkayTw+ftdfMFEmz49REV8TX5zTRDjqYGZ69WDVJNWOkTYLB3zv1Kiqc4ophPgI3YMv1pAOdfjsIMZJyLkhDWcavKksiYdd0y6BzsOoQLk79LFc=
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com (2603:1096:820:1a::22)
+ by KL1PR03MB5636.apcprd03.prod.outlook.com (2603:1096:820:54::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.10; Sat, 3 Dec
+ 2022 14:53:20 +0000
+Received: from KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::9585:3a04:b796:b696]) by KL1PR03MB5062.apcprd03.prod.outlook.com
+ ([fe80::9585:3a04:b796:b696%5]) with mapi id 15.20.5880.011; Sat, 3 Dec 2022
+ 14:53:19 +0000
+From: =?utf-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>
+To: "andrew@lunn.ch" <andrew@lunn.ch>
+CC: "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "nathan@kernel.org"
+	<nathan@kernel.org>, "kishon@ti.com" <kishon@ti.com>,
+	=?utf-8?B?RWRkaWUgSHVuZyAo5rSq5q2j6ZGrKQ==?= <Eddie.Hung@mediatek.com>,
+	=?utf-8?B?VGlhbnBpbmcgRmFuZyAo5pa55aSp5bmzKQ==?=
+	<Tianping.Fang@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "vkoul@kernel.org"
+	<vkoul@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+	"llvm@lists.linux.dev" <llvm@lists.linux.dev>, "trix@redhat.com"
+	<trix@redhat.com>, "ndesaulniers@google.com" <ndesaulniers@google.com>
+Subject: Re: [PATCH v4 3/3] phy: mediatek: tphy: add debugfs files
+Thread-Topic: [PATCH v4 3/3] phy: mediatek: tphy: add debugfs files
+Thread-Index: AQHY9QhG35CIOR1jTk2qYSnofBdXwa5Ob3gAgAWbzQCAAG5YAIAH6kGA
+Date: Sat, 3 Dec 2022 14:53:19 +0000
+Message-ID: <5c0cc00a37c4cfa03d91e834fb649d52d4ddb041.camel@mediatek.com>
+References: <20221110132716.12294-1-chunfeng.yun@mediatek.com>
+	 <20221110132716.12294-3-chunfeng.yun@mediatek.com>
+	 <Y3+uGjpMQcEWQrew@matsya>
+	 <70407a789b48a4fbd498e392450eb9db76e025bf.camel@mediatek.com>
+	 <Y4S/GhUcrxJ9W/gE@lunn.ch>
+In-Reply-To: <Y4S/GhUcrxJ9W/gE@lunn.ch>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR03MB5062:EE_|KL1PR03MB5636:EE_
+x-ms-office365-filtering-correlation-id: b78872e1-5fdf-4e17-4195-08dad53e1e00
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aVaYACBRMvXKhVnCB93cvALeBNZ/0uBOC5EUhzHOIqcHyt9oDSK6X3ihPpVRiTCmn21SHbYxHhGQDtsSlKgBV+s7j/aZ/9C/IVcQHaqgRUGuLVYZWnx1cgn6TL2HsQwglaB3WwcU0f4vOqFiZir8uMK1D0ETjFttaNk+Djn0tFY+rc9oZTtt+kDxJ54Lpe8pG1k8UdBDxn6b5N5EmYW63dZ1tHZuoC1/rH63kBwz6tEhjCn9Qw0r5zarJpgJxu/HVgF6thJa2B/0XV7TiXbAQOQagzYHtu756IpwpnhnMY53Udzt4NrDkrxToReYu0VsGxYV7YEMRsI3ieRX6i/SoULPh31M8goYYKT++vL4Y46A7qCHoQeU7uJcum2InUv4fRjRdHYVeXpEoLBrhPVIqBi+4VF41IZJpoKjldhAx+1RGGm1DemZ6DIgyYO6udK/c9xYz8Knhr/SBMpfXicUzjBPWGUK161GCQValDcqwoi7gjv6UF7z8ujATdn8+S79eDLyc2Zkuzh8vMznuXR5DWpUE39Bs+ee2y5o/lFSutN7z3Of1426rBCmNJat1+dcGi+jA9iWkaOy/J0EddHcnK/DWfAfrHwTmr+g8v9f6aCb3m1f5ixL0RVefslMXdJ4hPq1waONmNIhjpVtck3bKCHJBoyEGiJF08Q8938SuTRakcvCLyLFWdeJLiqwtewG2O81RyJf7vG7n7bVcYD1SUu2gsHZO2d9tDWTTQczYvOSx435YlFzlwNbzt/QbcfZDsr8tlu+8bMmVJ+aytEDfA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5062.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(136003)(396003)(366004)(376002)(346002)(39860400002)(451199015)(186003)(71200400001)(4326008)(66446008)(66476007)(54906003)(64756008)(66556008)(66946007)(76116006)(85182001)(316002)(36756003)(91956017)(6916009)(53546011)(38100700002)(6506007)(38070700005)(122000001)(478600001)(6486002)(26005)(86362001)(6512007)(2616005)(8676002)(4744005)(5660300002)(2906002)(4001150100001)(7416002)(8936002)(41300700001)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RXBzWDJaU2VvMFFIcmJRbklrNjBSbkZKOW5qckxpelVCL1FoUkRpUG0zWlNK?=
+ =?utf-8?B?NkdxUzZ0N3EwejA2ZkN3bXR4S1U4Tzk3bmRBVE5kaWJvQXhhZExBUzFKbE9u?=
+ =?utf-8?B?NENTYWM3b3pOSk1qUDdobmVsK1lSbG9MWDFmZlpocHVEblpPcSt4NmJsN0JJ?=
+ =?utf-8?B?NCsyOWJKWU1LYjgyb21JcWVneHFUZzY5Umt1bVVVdUhmUm9yczFWcGlac0pt?=
+ =?utf-8?B?M2czSFAwUXZnMjUrTmlrRnUyUnRsR1lZaTN1d1V3NmxZS1hwSEZhVDN0bHhN?=
+ =?utf-8?B?RDVYZGtDWGxRWE5aZUlvVnFKSHc1Z09qdE5oSnUvSmwrTUpvcnE2bi8yOEZ1?=
+ =?utf-8?B?WmtnWjNBQUtsb0pUSVlUWWk5M1d2eHNIUVZZUStoTDV3eGQ3emVOZGN5V2Ft?=
+ =?utf-8?B?M0gyNHFYM3RTSklzZ2dScERVL09lbFYwaytQU1J6TnNLQzNFbmd6RWlaNUZK?=
+ =?utf-8?B?VkltSHo3dnJLNmI2QVBhRk53bi9MbmtSTTRta0NyaE55Z254SHdQUENCeVBl?=
+ =?utf-8?B?YThWUXBjeThkdDdkdG9tdWVTdGJpcTZIdGQwUGNaekVuMFd5SkFIdzcxQnhF?=
+ =?utf-8?B?RUppTU9MWkJGczlIV1VkTkM3ZitFNWJJaHJGOWR2REdRbmlOQmg3ZzBCZ2VM?=
+ =?utf-8?B?dDY5WXR0MVhKS3pxeTBmSVNQOUxTbGFmakFMaWU2bjZGMEZyNnlDRVYyNHF0?=
+ =?utf-8?B?RXZ6amt6OG1mOEpZZVdzdmZXNGdGWm1RekxPWTJOclN4dThCWmg1SmVUWWti?=
+ =?utf-8?B?ZHROWlkyRU85TVlSeFFkSU9vVVdPYkFBVGpJSVI5aWZMOTlkdXhYWTRZTUpp?=
+ =?utf-8?B?S2Q4OXV0RDA4anZHbU5qc0pHQnl4WEFyYU9BQ3ZpcjU1U0MzMGp2T2R3Z093?=
+ =?utf-8?B?b2lmU0p4ZDMrMWhOaExTejRUZVdObHFWSUNtSUJyWjJwWU9kbEpiZFMzRlVx?=
+ =?utf-8?B?UjVMMFptZGp5KzJYZVZ6TlBpNGN2THFhV2poZTU1ZzIrNmFJd1N4SzNFSjk3?=
+ =?utf-8?B?dHRGTnJVUjFHTHJlVzZSTXlrZEg2Z2dIMllFQ3o2R1prMjk0UjNYWHR1VEcv?=
+ =?utf-8?B?b3d4Nm00SlJENDZ5dWRqbmdwM0xuVStHdGU2Sm9NNERnNEFURXhSOWdqSkhH?=
+ =?utf-8?B?dUc1SytoK0xHYW1PQzJ1anZ5b1pmb1RyNi85bzlBNnovZmcwOUxDTXIwRGsr?=
+ =?utf-8?B?WmorY3JRa3BlRlVZODBFNmtkN1h5aDEvczZ3UDZOWlJKM0tpSEhwR0hEdStY?=
+ =?utf-8?B?SjFQR0RDc0Rqc3pJWlJyQkpnS3M4V29ISWQ2WXUrcDZ3R1RSMFdTeTc0VFVy?=
+ =?utf-8?B?QnZGNHlYcHd1MjNaUklOSVBiSXYrZUoxYStlZktCanJyQVZCcDRrREw3QXFa?=
+ =?utf-8?B?UHVoajQ3dDExU0hXT25iZFlvL3JaaC80ZmpKeFJLWVYweGJkNzhTRnFzNEFY?=
+ =?utf-8?B?VXhyaE5IUk5OWkkxNG1XS3JTNm44OW5HMDFjNDZlVWpoNlpKUHc0K3NGNUxT?=
+ =?utf-8?B?WHlyVVdnQW5nRTJYdCtJaWg3aStZdTJRZzQyNHI3R2xtTkFuR2tsREU1cWw3?=
+ =?utf-8?B?UjQ5YmIwZnlMOHRrSVZVSXBrVWxOaTBDNEpSaWM2Qnh2ZXJyVmZhaXVBcU0z?=
+ =?utf-8?B?MnpZbEV5bDRBVVJJRXJSQkxHRTMvNko4Rm51Q2FNQXhJbHA3NkJESllCakZy?=
+ =?utf-8?B?clJQUnNTOHhocUd1M3VNUWxQM21wTkJWQ0EvdFd6SmNZQUZVYkFQVWFQQnpH?=
+ =?utf-8?B?cHJMUm4wWGFLMGpBN3U0U3dxUnRCNmNiSEVYMWdXNjBiZVNMVXo3dGlQckhN?=
+ =?utf-8?B?ckFBcW9LZ3h0YW5DSDdsSWp0VmxCMVc4T1ptcjVPREY5MHJWV2RsU0RLWlhT?=
+ =?utf-8?B?YlNEOFhKTEcvTHYxa0tPTFlpcjRQYUNhUHZoTndLSFJrblpKVEFMMENQQzE2?=
+ =?utf-8?B?VUxFQndtbEViWEpwU1NaQ1YzK1JFM2FWWFlXK3p1UFI3R1NWUjdCME9RTW9X?=
+ =?utf-8?B?WVBTYUUrRVIvdGkvUlpKTVdvakhkTW5JREE1eWJJTHpyRTJtWVdhQ3ZpcU51?=
+ =?utf-8?B?R1dVbnpNcUptOEZTL1ZxbU1Ob3p1N01xNXNvTm5SaEhUMmlyaFloYlMxa0t5?=
+ =?utf-8?B?a2x1OXlhS0M3cFo3YlRKU1F3MnpiTDFHR3ZKNGt6eVhKbEladHJPdjhMYVJL?=
+ =?utf-8?B?QWc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <6FDFDC388DB55649A6425114C58E0ACB@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5062.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b78872e1-5fdf-4e17-4195-08dad53e1e00
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Dec 2022 14:53:19.3743
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zNak1XlGZKuXDB1Fo+aUZvYJqLnoi9hbU7zwEvEf9VFipqkTUBqOY1mf+x+bdFzmuq5HxE9E0QJ8SUFjk2Zaj3e01s0p3mAXvUy1U0h2uyY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB5636
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221203_070613_777300_261C3F19 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20221203_072335_155019_FE09C7F3 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,493 +182,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These debugfs files are mainly used to make eye diagram test easier,
-especially helpful to do HQA test for a new IC without efuse enabled.
-
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v5: using common debugfs config CONFIG_DEBUG_FS
-
-v4: fix build warning of sometimes uninitialized variable
-
-v3: fix typo of "debugfs" suggested by AngeloGioacchino
-
-v2: add CONFIG_PHY_MTK_TPHY_DEBUGFS suggested by AngeloGioacchino
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 405 +++++++++++++++++++++++++++-
- 1 file changed, 404 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index e906a82791bd..923e5ee119f3 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -7,6 +7,7 @@
- 
- #include <dt-bindings/phy/phy.h>
- #include <linux/clk.h>
-+#include <linux/debugfs.h>
- #include <linux/delay.h>
- #include <linux/iopoll.h>
- #include <linux/mfd/syscon.h>
-@@ -264,6 +265,8 @@
- 
- #define TPHY_CLKS_CNT	2
- 
-+#define USER_BUF_LEN(count) min_t(size_t, 8, (count))
-+
- enum mtk_phy_version {
- 	MTK_PHY_V1 = 1,
- 	MTK_PHY_V2,
-@@ -310,6 +313,7 @@ struct mtk_phy_instance {
- 	struct clk_bulk_data clks[TPHY_CLKS_CNT];
- 	u32 index;
- 	u32 type;
-+	struct dentry *dbgfs;
- 	struct regmap *type_sw;
- 	u32 type_sw_reg;
- 	u32 type_sw_index;
-@@ -332,10 +336,391 @@ struct mtk_tphy {
- 	const struct mtk_phy_pdata *pdata;
- 	struct mtk_phy_instance **phys;
- 	int nphys;
-+	struct dentry *dbgfs_root;
- 	int src_ref_clk; /* MHZ, reference clock for slew rate calibrate */
- 	int src_coef; /* coefficient for slew rate calibrate */
- };
- 
-+#if IS_ENABLED(CONFIG_DEBUG_FS)
-+
-+enum u2_phy_params {
-+	U2P_EYE_VRT = 0,
-+	U2P_EYE_TERM,
-+	U2P_EFUSE_EN,
-+	U2P_EFUSE_INTR,
-+	U2P_DISCTH,
-+	U2P_PRE_EMPHASIS,
-+};
-+
-+enum u3_phy_params {
-+	U3P_EFUSE_EN = 0,
-+	U3P_EFUSE_INTR,
-+	U3P_EFUSE_TX_IMP,
-+	U3P_EFUSE_RX_IMP,
-+};
-+
-+static const char *const u2_phy_files[] = {
-+	[U2P_EYE_VRT] = "vrt",
-+	[U2P_EYE_TERM] = "term",
-+	[U2P_EFUSE_EN] = "efuse",
-+	[U2P_EFUSE_INTR] = "intr",
-+	[U2P_DISCTH] = "discth",
-+	[U2P_PRE_EMPHASIS] = "preemph",
-+};
-+
-+static const char *const u3_phy_files[] = {
-+	[U3P_EFUSE_EN] = "efuse",
-+	[U3P_EFUSE_INTR] = "intr",
-+	[U3P_EFUSE_TX_IMP] = "tx-imp",
-+	[U3P_EFUSE_RX_IMP] = "rx-imp",
-+};
-+
-+static int u2_phy_params_show(struct seq_file *sf, void *unused)
-+{
-+	struct mtk_phy_instance *inst = sf->private;
-+	const char *fname = file_dentry(sf->file)->d_iname;
-+	struct u2phy_banks *u2_banks = &inst->u2_banks;
-+	void __iomem *com = u2_banks->com;
-+	u32 max = 0;
-+	u32 tmp = 0;
-+	u32 val = 0;
-+	int ret;
-+
-+	ret = match_string(u2_phy_files, ARRAY_SIZE(u2_phy_files), fname);
-+	if (ret < 0)
-+		return ret;
-+
-+	switch (ret) {
-+	case U2P_EYE_VRT:
-+		tmp = readl(com + U3P_USBPHYACR1);
-+		val = FIELD_GET(PA1_RG_VRT_SEL, tmp);
-+		max = FIELD_MAX(PA1_RG_VRT_SEL);
-+		break;
-+
-+	case U2P_EYE_TERM:
-+		tmp = readl(com + U3P_USBPHYACR1);
-+		val = FIELD_GET(PA1_RG_TERM_SEL, tmp);
-+		max = FIELD_MAX(PA1_RG_TERM_SEL);
-+		break;
-+
-+	case U2P_EFUSE_EN:
-+		if (u2_banks->misc) {
-+			tmp = readl(u2_banks->misc + U3P_MISC_REG1);
-+			max = 1;
-+		}
-+
-+		val = !!(tmp & MR1_EFUSE_AUTO_LOAD_DIS);
-+		break;
-+
-+	case U2P_EFUSE_INTR:
-+		tmp = readl(com + U3P_USBPHYACR1);
-+		val = FIELD_GET(PA1_RG_INTR_CAL, tmp);
-+		max = FIELD_MAX(PA1_RG_INTR_CAL);
-+		break;
-+
-+	case U2P_DISCTH:
-+		tmp = readl(com + U3P_USBPHYACR6);
-+		val = FIELD_GET(PA6_RG_U2_DISCTH, tmp);
-+		max = FIELD_MAX(PA6_RG_U2_DISCTH);
-+		break;
-+
-+	case U2P_PRE_EMPHASIS:
-+		tmp = readl(com + U3P_USBPHYACR6);
-+		val = FIELD_GET(PA6_RG_U2_PRE_EMP, tmp);
-+		max = FIELD_MAX(PA6_RG_U2_PRE_EMP);
-+		break;
-+
-+	default:
-+		seq_printf(sf, "invalid, %d\n", ret);
-+		break;
-+	}
-+
-+	seq_printf(sf, "%s : %d [0, %d]\n", fname, val, max);
-+
-+	return 0;
-+}
-+
-+static int u2_phy_params_open(struct inode *inode, struct file *file)
-+{
-+	return single_open(file, u2_phy_params_show, inode->i_private);
-+}
-+
-+static ssize_t u2_phy_params_write(struct file *file, const char __user *ubuf,
-+				   size_t count, loff_t *ppos)
-+{
-+	const char *fname = file_dentry(file)->d_iname;
-+	struct seq_file *sf = file->private_data;
-+	struct mtk_phy_instance *inst = sf->private;
-+	struct u2phy_banks *u2_banks = &inst->u2_banks;
-+	void __iomem *com = u2_banks->com;
-+	ssize_t rc;
-+	u32 val;
-+	int ret;
-+
-+	rc = kstrtouint_from_user(ubuf, USER_BUF_LEN(count), 0, &val);
-+	if (rc)
-+		return rc;
-+
-+	ret = match_string(u2_phy_files, ARRAY_SIZE(u2_phy_files), fname);
-+	if (ret < 0)
-+		return (ssize_t)ret;
-+
-+	switch (ret) {
-+	case U2P_EYE_VRT:
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_VRT_SEL, val);
-+		break;
-+
-+	case U2P_EYE_TERM:
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_TERM_SEL, val);
-+		break;
-+
-+	case U2P_EFUSE_EN:
-+		if (u2_banks->misc)
-+			mtk_phy_update_field(u2_banks->misc + U3P_MISC_REG1,
-+					     MR1_EFUSE_AUTO_LOAD_DIS, !!val);
-+		break;
-+
-+	case U2P_EFUSE_INTR:
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_INTR_CAL, val);
-+		break;
-+
-+	case U2P_DISCTH:
-+		mtk_phy_update_field(com + U3P_USBPHYACR6, PA6_RG_U2_DISCTH, val);
-+		break;
-+
-+	case U2P_PRE_EMPHASIS:
-+		mtk_phy_update_field(com + U3P_USBPHYACR6, PA6_RG_U2_PRE_EMP, val);
-+		break;
-+
-+	default:
-+		break;
-+	}
-+
-+	return count;
-+}
-+
-+static const struct file_operations u2_phy_fops = {
-+	.open = u2_phy_params_open,
-+	.write = u2_phy_params_write,
-+	.read = seq_read,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
-+static void u2_phy_dbgfs_files_create(struct mtk_phy_instance *inst)
-+{
-+	u32 count = ARRAY_SIZE(u2_phy_files);
-+	int i;
-+
-+	for (i = 0; i < count; i++)
-+		debugfs_create_file(u2_phy_files[i], 0644, inst->dbgfs, inst, &u2_phy_fops);
-+}
-+
-+static int u3_phy_params_show(struct seq_file *sf, void *unused)
-+{
-+	struct mtk_phy_instance *inst = sf->private;
-+	const char *fname = file_dentry(sf->file)->d_iname;
-+	struct u3phy_banks *u3_banks = &inst->u3_banks;
-+	u32 val = 0;
-+	u32 max = 0;
-+	u32 tmp;
-+	int ret;
-+
-+	ret = match_string(u3_phy_files, ARRAY_SIZE(u3_phy_files), fname);
-+	if (ret < 0)
-+		return ret;
-+
-+	switch (ret) {
-+	case U3P_EFUSE_EN:
-+		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_RSV);
-+		val = !!(tmp & P3D_RG_EFUSE_AUTO_LOAD_DIS);
-+		max = 1;
-+		break;
-+
-+	case U3P_EFUSE_INTR:
-+		tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG0);
-+		val = FIELD_GET(P3A_RG_IEXT_INTR, tmp);
-+		max = FIELD_MAX(P3A_RG_IEXT_INTR);
-+		break;
-+
-+	case U3P_EFUSE_TX_IMP:
-+		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_IMPCAL0);
-+		val = FIELD_GET(P3D_RG_TX_IMPEL, tmp);
-+		max = FIELD_MAX(P3D_RG_TX_IMPEL);
-+		break;
-+
-+	case U3P_EFUSE_RX_IMP:
-+		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_IMPCAL1);
-+		val = FIELD_GET(P3D_RG_RX_IMPEL, tmp);
-+		max = FIELD_MAX(P3D_RG_RX_IMPEL);
-+		break;
-+
-+	default:
-+		seq_printf(sf, "invalid, %d\n", ret);
-+		break;
-+	}
-+
-+	seq_printf(sf, "%s : %d [0, %d]\n", fname, val, max);
-+
-+	return 0;
-+}
-+
-+static int u3_phy_params_open(struct inode *inode, struct file *file)
-+{
-+	return single_open(file, u3_phy_params_show, inode->i_private);
-+}
-+
-+static ssize_t u3_phy_params_write(struct file *file, const char __user *ubuf,
-+				   size_t count, loff_t *ppos)
-+{
-+	const char *fname = file_dentry(file)->d_iname;
-+	struct seq_file *sf = file->private_data;
-+	struct mtk_phy_instance *inst = sf->private;
-+	struct u3phy_banks *u3_banks = &inst->u3_banks;
-+	void __iomem *phyd = u3_banks->phyd;
-+	ssize_t rc;
-+	u32 val;
-+	int ret;
-+
-+	rc = kstrtouint_from_user(ubuf, USER_BUF_LEN(count), 0, &val);
-+	if (rc)
-+		return rc;
-+
-+	ret = match_string(u3_phy_files, ARRAY_SIZE(u3_phy_files), fname);
-+	if (ret < 0)
-+		return (ssize_t)ret;
-+
-+	switch (ret) {
-+	case U3P_EFUSE_EN:
-+		mtk_phy_update_field(phyd + U3P_U3_PHYD_RSV,
-+				     P3D_RG_EFUSE_AUTO_LOAD_DIS, !!val);
-+		break;
-+
-+	case U3P_EFUSE_INTR:
-+		mtk_phy_update_field(u3_banks->phya + U3P_U3_PHYA_REG0, P3A_RG_IEXT_INTR, val);
-+		break;
-+
-+	case U3P_EFUSE_TX_IMP:
-+		mtk_phy_update_field(phyd + U3P_U3_PHYD_IMPCAL0, P3D_RG_TX_IMPEL, val);
-+		mtk_phy_set_bits(phyd + U3P_U3_PHYD_IMPCAL0, P3D_RG_FORCE_TX_IMPEL);
-+		break;
-+
-+	case U3P_EFUSE_RX_IMP:
-+		mtk_phy_update_field(phyd + U3P_U3_PHYD_IMPCAL1, P3D_RG_RX_IMPEL, val);
-+		mtk_phy_set_bits(phyd + U3P_U3_PHYD_IMPCAL1, P3D_RG_FORCE_RX_IMPEL);
-+		break;
-+
-+	default:
-+		break;
-+	}
-+
-+	return count;
-+}
-+
-+static const struct file_operations u3_phy_fops = {
-+	.open = u3_phy_params_open,
-+	.write = u3_phy_params_write,
-+	.read = seq_read,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
-+static void u3_phy_dbgfs_files_create(struct mtk_phy_instance *inst)
-+{
-+	u32 count = ARRAY_SIZE(u3_phy_files);
-+	int i;
-+
-+	for (i = 0; i < count; i++)
-+		debugfs_create_file(u3_phy_files[i], 0644, inst->dbgfs, inst, &u3_phy_fops);
-+}
-+
-+static int tphy_type_show(struct seq_file *sf, void *unused)
-+{
-+	struct mtk_phy_instance *inst = sf->private;
-+	const char *type;
-+
-+	switch (inst->type) {
-+	case PHY_TYPE_USB2:
-+		type = "USB2";
-+		break;
-+	case PHY_TYPE_USB3:
-+		type = "USB3";
-+		break;
-+	case PHY_TYPE_PCIE:
-+		type = "PCIe";
-+		break;
-+	case PHY_TYPE_SGMII:
-+		type = "SGMII";
-+		break;
-+	case PHY_TYPE_SATA:
-+		type = "SATA";
-+		break;
-+	default:
-+		type = "";
-+	}
-+
-+	seq_printf(sf, "%s\n", type);
-+
-+	return 0;
-+}
-+
-+DEFINE_SHOW_ATTRIBUTE(tphy_type);
-+
-+static void tphy_debugfs_init(struct mtk_tphy *tphy, struct mtk_phy_instance *inst)
-+{
-+	char name[16];
-+
-+	snprintf(name, sizeof(name) - 1, "phy.%d", inst->index);
-+	inst->dbgfs = debugfs_create_dir(name, tphy->dbgfs_root);
-+
-+	debugfs_create_file("type", 0444, inst->dbgfs, inst, &tphy_type_fops);
-+
-+	switch (inst->type) {
-+	case PHY_TYPE_USB2:
-+		u2_phy_dbgfs_files_create(inst);
-+		break;
-+	case PHY_TYPE_USB3:
-+	case PHY_TYPE_PCIE:
-+		u3_phy_dbgfs_files_create(inst);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
-+static void tphy_debugfs_exit(struct mtk_phy_instance *inst)
-+{
-+	debugfs_remove_recursive(inst->dbgfs);
-+	inst->dbgfs = NULL;
-+}
-+
-+static void tphy_debugfs_root_create(struct mtk_tphy *tphy)
-+{
-+	tphy->dbgfs_root = debugfs_create_dir(dev_name(tphy->dev), phy_debug_root);
-+}
-+
-+static void tphy_debugfs_root_remove(struct mtk_tphy *tphy)
-+{
-+	debugfs_remove_recursive(tphy->dbgfs_root);
-+	tphy->dbgfs_root = NULL;
-+}
-+
-+#else
-+
-+static void tphy_debugfs_init(struct mtk_tphy *tphy, struct mtk_phy_instance *inst)
-+{}
-+
-+static void tphy_debugfs_exit(struct mtk_phy_instance *inst)
-+{}
-+
-+static void tphy_debugfs_root_create(struct mtk_tphy *tphy)
-+{}
-+
-+static void tphy_debugfs_root_remove(struct mtk_tphy *tphy)
-+{}
-+
-+#endif
-+
- static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 	struct mtk_phy_instance *instance)
- {
-@@ -1032,6 +1417,8 @@ static int mtk_phy_init(struct phy *phy)
- 		return -EINVAL;
- 	}
- 
-+	tphy_debugfs_init(tphy, instance);
-+
- 	return 0;
- }
- 
-@@ -1068,6 +1455,8 @@ static int mtk_phy_exit(struct phy *phy)
- 	struct mtk_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
- 
-+	tphy_debugfs_exit(instance);
-+
- 	if (instance->type == PHY_TYPE_USB2)
- 		u2_phy_instance_exit(tphy, instance);
- 
-@@ -1295,15 +1684,29 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 	}
- 
- 	provider = devm_of_phy_provider_register(dev, mtk_phy_xlate);
-+	if (IS_ERR(provider))
-+		return dev_err_probe(dev, PTR_ERR(provider), "probe failed\n");
-+
-+	tphy_debugfs_root_create(tphy);
-+	return 0;
- 
--	return PTR_ERR_OR_ZERO(provider);
- put_child:
- 	of_node_put(child_np);
- 	return retval;
- }
- 
-+static int mtk_tphy_remove(struct platform_device *pdev)
-+{
-+	struct mtk_tphy *tphy;
-+
-+	tphy = platform_get_drvdata(pdev);
-+	tphy_debugfs_root_remove(tphy);
-+	return 0;
-+}
-+
- static struct platform_driver mtk_tphy_driver = {
- 	.probe		= mtk_tphy_probe,
-+	.remove		= mtk_tphy_remove,
- 	.driver		= {
- 		.name	= "mtk-tphy",
- 		.of_match_table = mtk_tphy_id_table,
--- 
-2.18.0
-
+T24gTW9uLCAyMDIyLTExLTI4IGF0IDE1OjAwICswMTAwLCBBbmRyZXcgTHVubiB3cm90ZToNCj4g
+T24gTW9uLCBOb3YgMjgsIDIwMjIgYXQgMDc6MjY6MDJBTSArMDAwMCwgQ2h1bmZlbmcgWXVuICjk
+upHmmKXls7ApIHdyb3RlOg0KPiA+IE9uIFRodSwgMjAyMi0xMS0yNCBhdCAyMzoxNyArMDUzMCwg
+Vmlub2QgS291bCB3cm90ZToNCj4gPiA+IE9uIDEwLTExLTIyLCAyMToyNywgQ2h1bmZlbmcgWXVu
+IHdyb3RlOg0KPiA+ID4gPiBUaGVzZSBkZWJ1Z2ZzIGZpbGVzIGFyZSBtYWlubHkgdXNlZCB0byBt
+YWtlIGV5ZSBkaWFncmFtIHRlc3QNCj4gPiA+ID4gZWFzaWVyLA0KPiA+ID4gPiBlc3BlY2lhbGx5
+IGhlbHBmdWwgdG8gZG8gSFFBIHRlc3QgZm9yIGEgbmV3IElDIHdpdGhvdXQgZWZ1c2UNCj4gPiA+
+ID4gZW5hYmxlZC4NCj4gDQo+IEV4cG9ydGluZyBkYXRhIGZvciBleWUgZGlhZ3JhbXMgc2VlbXMg
+bGlrZSBzb21ldGhpbmcgbWFueSBQSFlzIGNvdWxkDQo+IHVzZS4gUGxlYXNlIGNvbnNpZGVyIGFk
+ZGluZyBhbiBvZmZpY2lhbCB1bmlmb3JtIEFQSSB3aGljaCBhbnkgUEhZDQo+IGNvdWxkIHVzZSwg
+c28gd2UgZG9uJ3QgZW5kIHVwIHdpdGggbG90cyBvZiBpbmNvbXBhdGlibGUgZm9ybWF0cyBpbg0K
+PiBkZWJ1Z2ZzLg0KR29vZCBpZGVhLCBidXQgaXQgc2VlbXMgZGlmZmljdWx0IHRvIGRvIGl0IGR1
+ZSB0byB0aGUgc2V0dGluZ3Mgb2YgcGh5DQpjb250cm9sbGVycyBhcmUgbm90IGNvbW1vbi4NCg0K
+PiANCj4gCUFuZHJldw0K
 
