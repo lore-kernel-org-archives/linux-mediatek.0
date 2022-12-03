@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC23C352A1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 19:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 842EBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 19:59:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dkqrim5MMKDqnuM1SehC9SWivtj3cFY8upiktgS3Xn4=; b=ewWnM4IMtcBwmvL5B9xeLRpG6t
-	EV0IlHSA2YpNvV5HJpIx8yhiXEhlNnVDEWeuDPNMH9kuUegCGmhivEG+B9wJzYx4gTjp9RH8Fg0ev
-	5mTBCbO/d83morBPcY/QPtzXG0FJ0pCcG9LRjnpsivWU1II7fjyR2IlmPq9yLg5wYgMKw20tHNKXk
-	/qBQvceEFQvtH5VgAu1X9BP08OTEGR+HBZwf0vqC5SUB02l6Uu3Ht7HiMsZLrsFfjOdupEa7AA7Oh
-	Mblwjp2XEYuCMnNaGWjEHHuxvwARKnv+02HS/prrRH/OtLmdcPFSP35xH25MtKhu/xbwa5OOpwT9R
-	r3SbjgWA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=o+e5JgFVSzaFAhjErXARpJtvL274Xm1EIt7wWw/9bjQ=; b=GrHvNErqhYcKlFtWUZytNl2sPT
+	CS+edX8dGi6rdiboaMo7eys/dQRBke75DxknHVLLWFts2TuLNpS41TFcMbORbPP+PP96F36ZXqsCg
+	kv+66gqDu3NkR75PAG7Jajaajh4Auo5n7UVU7sVvCVEymFnPcrLXQS5+2mGBxCZOnN9rWqOEzZCpC
+	ETZyCd0hJwwrys1lEzCUUJPbUZRGdlTMiauux6kCRWPSJ8H+aUTvlEZWjPk6Vpw9/zYnPxJxdRlH2
+	XNKGMBzV3g4pNPjtnuWErPIeHnhfyFLQXAsgUCX6Jb2p6JENeMxW86Tv2u2CbL31Qgl9ADudxI/rc
+	uDjleV1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1YDe-004u0l-BQ; Sat, 03 Dec 2022 19:30:38 +0000
+	id 1p1YfZ-0052ln-Aw; Sat, 03 Dec 2022 19:59:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1YDa-004tz7-Rs
-	for linux-mediatek@lists.infradead.org; Sat, 03 Dec 2022 19:30:36 +0000
-X-UUID: d2c6d6a60f3648dfa8b8727f487293b3-20221203
+	id 1p1YfX-0052k6-6e
+	for linux-mediatek@lists.infradead.org; Sat, 03 Dec 2022 19:59:28 +0000
+X-UUID: e3afa9326ef345eab35aa3c3d885dd98-20221203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Dkqrim5MMKDqnuM1SehC9SWivtj3cFY8upiktgS3Xn4=;
-	b=NFQ4vKKGDuE7txP71cniMD9muOZLj4N77SPUcqn/1Q7JXfboybcFltQ9GLYDEBFA26nYCoHI7suWr4JOSOKVGZ3zejzPj5qyIu9ZrwB1Jww3acbxlb/hv+EPMPP+vdYcB/UKTJWqhyLj2hYedv/QkisnzPSzarIWqqbw5BL7IPM=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=o+e5JgFVSzaFAhjErXARpJtvL274Xm1EIt7wWw/9bjQ=;
+	b=iB0OjpiRrEzt+9Hq6FFRoNZlzhF1FgvsyTQwQjgM3WkXEOGBVpNv6zws+6RX5SDA1ZWQD5ccDu3jdVxOr9+kz7gouxPJ8rh5AQUsiIYjvi0pyu7tZHHXmOZ/c7rEaiFGVBTRjJd4njnzWDvPN8h3MdY8gzIlD14X4H+fXbi/0Vc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:a61d9f13-d4b0-4fce-b1b2-639fa0b97ff7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.14,REQID:a61d9f13-d4b0-4fce-b1b2-639fa0b97ff7,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:dcaaed0,CLOUDID:ce2c766c-41fe-47b6-8eb4-ec192dedaf7d,B
-	ulkID:221204032924B55VSVO2,BulkQuantity:3,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: d2c6d6a60f3648dfa8b8727f487293b3-20221203
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.14,REQID:780306aa-33e0-402d-aef3-834457a33758,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:e3d90e1f-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e3afa9326ef345eab35aa3c3d885dd98-20221203
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 774885661; Sat, 03 Dec 2022 12:30:29 -0700
+	with ESMTP id 748407568; Sat, 03 Dec 2022 12:59:24 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Sun, 4 Dec 2022 03:29:23 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sun, 4 Dec 2022 03:29:20 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sun, 4 Dec 2022 03:29:23 +0800
+ 15.2.792.15 via Frontend Transport; Sun, 4 Dec 2022 03:29:20 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
 	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 3/3] wifi: mt76: mt7915: check the correctness of event data first
-Date: Sun, 4 Dec 2022 03:29:19 +0800
-Message-ID: <57af9227896a13eadc062b52d238f179d4ebd049.1670095617.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/3] wifi: mt76: mt7996: check return value before accessing free_block_num
+Date: Sun, 4 Dec 2022 03:29:17 +0800
+Message-ID: <ba197e342d4d99d2e1be2e731ae989f57f5cf8a9.1670095617.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <ba197e342d4d99d2e1be2e731ae989f57f5cf8a9.1670095617.git.ryder.lee@mediatek.com>
-References: <ba197e342d4d99d2e1be2e731ae989f57f5cf8a9.1670095617.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221203_113035_236136_A34DE1D5 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221203_115927_278136_4D8F8CDA 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,70 +77,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mcu event might not be reliable, so check the correctness of data
-before handling it.
+Check return value of mt7996_mcu_get_eeprom_free_block() first before
+accessing free_block_num.
 
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 21 +++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 8 +++++---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 4 ++--
+ 2 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index f9e4c3e80af0..7cb45cd55ada 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -232,8 +232,11 @@ mt7915_mcu_rx_csa_notify(struct mt7915_dev *dev, struct sk_buff *skb)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+index b9f62bedbc48..b61d12dafc9f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+@@ -66,9 +66,11 @@ static int mt7996_eeprom_load(struct mt7996_dev *dev)
+ 		u8 free_block_num;
+ 		u32 block_num, i;
  
- 	c = (struct mt7915_mcu_csa_notify *)skb->data;
- 
-+	if (c->band_idx > MT_BAND1)
-+		return;
+-		/* TODO: check free block event */
+-		mt7996_mcu_get_eeprom_free_block(dev, &free_block_num);
+-		/* efuse info not enough */
++		ret = mt7996_mcu_get_eeprom_free_block(dev, &free_block_num);
++		if (ret < 0)
++			return ret;
 +
- 	if ((c->band_idx && !dev->phy.mt76->band_idx) &&
--	     dev->mt76.phys[MT_BAND1])
-+	    dev->mt76.phys[MT_BAND1])
- 		mphy = dev->mt76.phys[MT_BAND1];
++		/* efuse info isn't enough */
+ 		if (free_block_num >= 59)
+ 			return -EINVAL;
  
- 	ieee80211_iterate_active_interfaces_atomic(mphy->hw,
-@@ -252,8 +255,11 @@ mt7915_mcu_rx_thermal_notify(struct mt7915_dev *dev, struct sk_buff *skb)
- 	if (t->ctrl.ctrl_id != THERMAL_PROTECT_ENABLE)
- 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index efb245c8ac84..e4ec395426a7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -2927,8 +2927,8 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset)
+ 	bool valid;
+ 	int ret;
  
-+	if (t->ctrl.band_idx > MT_BAND1)
-+		return;
-+
- 	if ((t->ctrl.band_idx && !dev->phy.mt76->band_idx) &&
--	     dev->mt76.phys[MT_BAND1])
-+	    dev->mt76.phys[MT_BAND1])
- 		mphy = dev->mt76.phys[MT_BAND1];
+-	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_WM_UNI_CMD_QUERY(EFUSE_CTRL), &req,
+-					sizeof(req), true, &skb);
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_WM_UNI_CMD_QUERY(EFUSE_CTRL),
++					&req, sizeof(req), true, &skb);
+ 	if (ret)
+ 		return ret;
  
- 	phy = (struct mt7915_phy *)mphy->priv;
-@@ -268,8 +274,11 @@ mt7915_mcu_rx_radar_detected(struct mt7915_dev *dev, struct sk_buff *skb)
- 
- 	r = (struct mt7915_mcu_rdd_report *)skb->data;
- 
-+	if (r->band_idx > MT_BAND1)
-+		return;
-+
- 	if ((r->band_idx && !dev->phy.mt76->band_idx) &&
--	     dev->mt76.phys[MT_BAND1])
-+	    dev->mt76.phys[MT_BAND1])
- 		mphy = dev->mt76.phys[MT_BAND1];
- 
- 	if (r->band_idx == MT_RX_SEL2)
-@@ -326,7 +335,11 @@ mt7915_mcu_rx_bcc_notify(struct mt7915_dev *dev, struct sk_buff *skb)
- 
- 	b = (struct mt7915_mcu_bcc_notify *)skb->data;
- 
--	if ((b->band_idx && !dev->phy.mt76->band_idx) && dev->mt76.phys[MT_BAND1])
-+	if (b->band_idx > MT_BAND1)
-+		return;
-+
-+	if ((b->band_idx && !dev->phy.mt76->band_idx) &&
-+	    dev->mt76.phys[MT_BAND1])
- 		mphy = dev->mt76.phys[MT_BAND1];
- 
- 	ieee80211_iterate_active_interfaces_atomic(mphy->hw,
 -- 
 2.18.0
 
