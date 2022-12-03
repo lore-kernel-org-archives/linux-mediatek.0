@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B799C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 08:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C80C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Dec 2022 09:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G7PaMZS6/hyIDt9quG3UjPne+lkluujZYa1twV0Y0Dg=; b=VFKFrSe98cyWg8D/zN9KuTODaw
-	xBVAwNmQE3jRemYfo71htutLEzmHwaWtEy0ALCs7E98hCXmUjxVIOzTmRsrFq3JUtYYPg2FZMVSkH
-	4F9TPJjF3QKETpKqci1OQ64kBgp9VIVT0/NHueamWpfeJZ4o4TQV5fX5ct/6KhAnkayXbk9ua19Fx
-	m8dPqu0Y9rFtW52guhoKtwZhtaweFKsvxUoRWu4E4OlrZkG6qwl20MP/0n1zHeZzy+W5W2CLAOflX
-	wISXkzI59btzs/eKkDgZCYtBEUaLDqvAWYjb3fdLtPoyTQulnz1FAMbfTsnNr4PltG8CzL+Qj/fLi
-	SBQXj4HQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MQEVpJWky6tIJ89XqczxI7S0ZUfSn6CIT0hg/X+OSlY=; b=1TuqJ8S6c/sgKgGx4AnNMe+bpW
+	l7crV4UQvMr0fyEWfk6hd1dHL/U9DsD5fo+kNWVkaG2XYUEXrRyhCYzcsenB6N3g9kyTX8vAUllZt
+	GdocRsalswxpcSbC6hJ0eCNBwAjafqg41kGvndtPT7qv7hv3KRnBNcQbjwpEvYTyTyK26rX4YUypz
+	3TzDBuODFGbEDy/gtz6b9Grq4iAinNW4t1qzMRaBlMzFIl4nied/Ww9DQ6IO/XALWqhz2OPEgG36x
+	R96fDy5XfuLyV0i3j7xq/p3x/g79d+QziJcghr94TRjmmy160WWAFwbWu57AeyoZHsXMEMyA6YKws
+	iU3f5Ing==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1NZJ-002pFW-0T; Sat, 03 Dec 2022 08:08:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p1Ojj-002x6I-Bw; Sat, 03 Dec 2022 09:23:07 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1NZG-002pFB-E9
-	for linux-mediatek@lists.infradead.org; Sat, 03 Dec 2022 08:08:16 +0000
-X-UUID: c3ef8ab80255421d986b5ae7ceabf77f-20221203
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=G7PaMZS6/hyIDt9quG3UjPne+lkluujZYa1twV0Y0Dg=;
-	b=Qks8/xxEbvJhIVi8jsnTiO69tob6igurHc5hX31nJymR5hcrd0Ho289NZX/nf+R1gzZ+DtLTTLB76XSbWgbl8z9HlJTuOgxLKE8UhttKVLETo8WxkgRYD0Tb7E0lUCuOE1BAdfZCXlRuxWTZJfzK/3Lc/diAg0IIlewy6qYAgss=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:5a19ebfa-56a7-4c95-adfd-9b198fc9ab72,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:70f9706c-41fe-47b6-8eb4-ec192dedaf7d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c3ef8ab80255421d986b5ae7ceabf77f-20221203
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1209277281; Sat, 03 Dec 2022 01:07:59 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 3 Dec 2022 15:37:56 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sat, 3 Dec 2022 15:37:56 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7915: split mcu chan_mib array up
-Date: Sat, 3 Dec 2022 15:37:54 +0800
-Message-ID: <51130dcbc200962672540cb726dd9841c5ad7fe9.1670049959.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1p1Ojc-002x43-7r
+	for linux-mediatek@lists.infradead.org; Sat, 03 Dec 2022 09:23:01 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id z192so8818147yba.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 03 Dec 2022 01:22:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MQEVpJWky6tIJ89XqczxI7S0ZUfSn6CIT0hg/X+OSlY=;
+        b=Rgbj5fbB+ubXc5lxB75411Bq0YmdYG16G6Y4s8Bew+CQGHNAiOQfiXNuLqe7UTm8rJ
+         DOZ9Pa8SlSBOucCgI358McADb8KVdwQOPUXPEmJInzjAs5sghOG1QuDuAsaDlEPn/f29
+         oOAov/y1c9gnUiqembRyjEXpk47JHllvwX4bxUcXP3YAfbG+ji8sqfi9v8ZiZaOgZhMK
+         Ez1ejr1CKCwK1iGF+dRePOkFRuQsU971NosoDjxupXHgb5WdafzCOLqNkATzIo5/nbeY
+         xZBo0BhSHDTV5YdM/on3vlA+1/WnKfbvvCU1xkHiRMN7bEQ93FmQLnsZKxYLYGgIkIle
+         qWUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MQEVpJWky6tIJ89XqczxI7S0ZUfSn6CIT0hg/X+OSlY=;
+        b=QupzqyEFy7e1fYUrSJPtsnsoZoQoPu66crqIku24ONwI4pQSQXNp7dev12mr8Idony
+         989XR8RgXoB3TfNFD0y/IDkGLuywwyH2Bo6Tdi5RrMwjRX2dLbXolIxphqptLlZHhX8l
+         iYQPoLk3qAJKLrhziLqjnDM7ki+Q3MJTycsUc1shQQBg31kTs7j99Jr8iIquLXuY/OVV
+         xbbjXv/Uiv2Cc+ruMIr+LSb93Q+9mb5KtsAMg+3izehZ2kkH2wsnRvy+p2zJhI+pxp08
+         A/TLuBQ8NHfVEngJOBUb8tCPkKoHVEJ/kHjjDRzzZRlp8Nmrq0SeHF+IXB5KKBS9HPQm
+         BhtA==
+X-Gm-Message-State: ANoB5plE+4ZzE0EzY/c3Fy7iGijivvO3fk3HuEiGXiNhiOShIWJNOOBK
+	h15blrQ5OifkCAmNMUkC1QTkhDwd1JM4cO10leaYpg==
+X-Google-Smtp-Source: AA0mqf5ZQfNSD0/07kd5VFeFh5McEsaO3GSOFBR7Nh6mdhMxqXu71Xyg3wJZ63scyLjajbGzBwDjWGjBa0hVSp8aKBc=
+X-Received: by 2002:a25:bc8a:0:b0:6ee:e865:c2e2 with SMTP id
+ e10-20020a25bc8a000000b006eee865c2e2mr8564584ybk.206.1670059377999; Sat, 03
+ Dec 2022 01:22:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221129023401.278780-1-bero@baylibre.com>
+In-Reply-To: <20221129023401.278780-1-bero@baylibre.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sat, 3 Dec 2022 10:22:47 +0100
+Message-ID: <CACRpkda75U=b50rK=WecNvaEoTdN2UzGyEwfPRaO6jG9FGyWhw@mail.gmail.com>
+Subject: Re: [PATCH v3 0/7] Remove the pins-are-numbered DT property
+To: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, mcoquelin.stm32@gmail.com, 
+	alexandre.torgue@foss.st.com, krzysztof.kozlowski@linaro.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	khilman@baylibre.com, linux-gpio@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221203_000814_684795_69735E39 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20221203_012300_310295_EC30DC8C 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,94 +91,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current flow confuses coverity check that leads to false reporting,
-so split the offs[] into two pieces according to chipset revision to
-silence coverity tool.
+Hi Bero,
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 50 ++++++++++---------
- 1 file changed, 27 insertions(+), 23 deletions(-)
+long time no see!
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index b2652de082ba..ca315af3905b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2974,38 +2974,42 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
- 
- int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
- {
--	/* strict order */
--	static const u32 offs[] = {
--		MIB_NON_WIFI_TIME,
--		MIB_TX_TIME,
--		MIB_RX_TIME,
--		MIB_OBSS_AIRTIME,
--		MIB_TXOP_INIT_COUNT,
--		/* v2 */
--		MIB_NON_WIFI_TIME_V2,
--		MIB_TX_TIME_V2,
--		MIB_RX_TIME_V2,
--		MIB_OBSS_AIRTIME_V2
--	};
- 	struct mt76_channel_state *state = phy->mt76->chan_state;
- 	struct mt76_channel_state *state_ts = &phy->state_ts;
- 	struct mt7915_dev *dev = phy->dev;
- 	struct mt7915_mcu_mib *res, req[5];
- 	struct sk_buff *skb;
--	int i, ret, start = 0, ofs = 20;
-+	static const u32 *offs;
-+	int i, ret, len, offs_cc;
- 	u64 cc_tx;
- 
--	if (!is_mt7915(&dev->mt76)) {
--		start = 5;
--		ofs = 0;
-+	/* strict order */
-+	if (is_mt7915(&dev->mt76)) {
-+		static const u32 chip_offs[] = {
-+			MIB_NON_WIFI_TIME,
-+			MIB_TX_TIME,
-+			MIB_RX_TIME,
-+			MIB_OBSS_AIRTIME,
-+			MIB_TXOP_INIT_COUNT,
-+		};
-+		len = ARRAY_SIZE(chip_offs);
-+		offs = chip_offs;
-+		offs_cc = 20;
-+	} else {
-+		static const u32 chip_offs[] = {
-+			MIB_NON_WIFI_TIME_V2,
-+			MIB_TX_TIME_V2,
-+			MIB_RX_TIME_V2,
-+			MIB_OBSS_AIRTIME_V2
-+		};
-+		len = ARRAY_SIZE(chip_offs);
-+		offs = chip_offs;
-+		offs_cc = 0;
- 	}
- 
--	for (i = 0; i < 5; i++) {
-+	for (i = 0; i < len; i++) {
- 		req[i].band = cpu_to_le32(phy->mt76->band_idx);
--		req[i].offs = cpu_to_le32(offs[i + start]);
--
--		if (!is_mt7915(&dev->mt76) && i == 3)
--			break;
-+		req[i].offs = cpu_to_le32(offs[i]);
- 	}
- 
- 	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD(GET_MIB_INFO),
-@@ -3013,7 +3017,7 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
- 	if (ret)
- 		return ret;
- 
--	res = (struct mt7915_mcu_mib *)(skb->data + ofs);
-+	res = (struct mt7915_mcu_mib *)(skb->data + offs_cc);
- 
- #define __res_u64(s) le64_to_cpu(res[s].data)
- 	/* subtract Tx backoff time from Tx duration */
--- 
-2.18.0
+On Tue, Nov 29, 2022 at 3:34 AM Bernhard Rosenkr=C3=A4nzer <bero@baylibre.c=
+om> wrote:
 
+> During the review of my MT8365 support patchset
+> (https://lore.kernel.org/linux-mediatek/20221117210356.3178578-1-bero@bay=
+libre.com/),
+> the issue of the "pins-are-numbered" DeviceTree property has come up.
+
+(...)
+> This patchset removes all uses of pins-are-numbered and marks the
+> property as deprecated.
+
+I don't remember any more why this property was introduced, but
+I am happy to see it go.
+
+> Bernhard Rosenkr=C3=A4nzer (7):
+>   pinctrl: mediatek: common: Remove check for pins-are-numbered
+>   pinctrl: stm32: Remove check for pins-are-numbered
+>   dt-bindings: pinctrl: mediatek,mt65xx: Deprecate pins-are-numbered
+>   dt-bindings: pinctrl: st,stm32: Deprecate pins-are-numbered
+
+I applied patches 1-4 to the pin control tree for v6.2,
+please funnel the rest through mediatek/stm32 and
+SoC trees!
+
+Yours,
+Linus Walleij
 
