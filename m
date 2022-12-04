@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD6B2C47089
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 19:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 798B4C4321E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 19:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=; b=Nvr24SddXJOrW5rygs+L35rapJ
-	ToJ/xNitIJnlZe/FdAJOFp4sqXGbzKBquG1rt8/oyGhtjPOqJpMEzWTQlKUGa4oYqg1Qcoc/EPqrM
-	XG6GO6xt/QpXlTfxDb8pKCqN08jeiNAwWIZl6Sps0aa/r8+Pk4NSMxRKKC8E4jv4UaZzMfh5v+iyW
-	m3I2pbJ6CeP4n8ou1KQsN7mLVPLliQmqALsKbCjqhQHBsbD041kNTkrcSDDvp6K9oKAJ205K1srxF
-	k2HPJQnI7HYlIJfQ2636+dlEiMySwf2i9G4eReeyVNUsaW4p0+59+ZpUibIvD95yPPFSr01L6y/KG
-	OcUzeaPg==;
+	bh=3vGbnOeq4kzljzirvL5pjkAxrpSozfhAG6ODaOPHYw4=; b=HU3+/1y7r4RIJ2sk9h0c44x9XD
+	j/9unAzzUih5NWFfXrL7NOlFB0VwvAj2hki72fQ8Dw0DYn60sx89P/suXYBSJ3UAh5Y9foMoeSXrM
+	/X2SlgXJ1VjyiUd4xK5phe4Z5GS0ShIoTLj69SFvnfe9WSaVpSkwYG+AEBoc5MJ3nRgfzHo29l5RJ
+	3OKk8ubChlmQlxLDghun070BgqGSwKvKxfD3UwJ3ODV6di8tj+SqtML8a+q9F/bD2A/66rnNXvUuC
+	MhYQSttsxbk8qbXS8RwUWiQYRHJqur8u2IRl82vB73Gg4ykBabycGPnD7dxhreDmqHviRsKQrUiA3
+	pfQRmvNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1ubG-00ArtG-VZ; Sun, 04 Dec 2022 19:24:31 +0000
+	id 1p1ucD-00At9T-78; Sun, 04 Dec 2022 19:25:29 +0000
 Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1u6Y-00APnN-8F
-	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 18:52:48 +0000
-Received: by mail-ej1-x630.google.com with SMTP id qk9so5276993ejc.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 10:52:44 -0800 (PST)
+	id 1p1uC3-00ASRY-Oh
+	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 18:58:29 +0000
+Received: by mail-ej1-x630.google.com with SMTP id vp12so23039580ejc.8
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 10:58:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=;
-        b=CUKaXErfIsP67bFO/VqI2crHhKyX6YmMOE1PKmCgRdEUaZqHUsmeW/WQdBVzF25lvd
-         FlfXhVb+DNKUaRfjDvml1dna7L4CTTUNZzaVTceLZ7OiHLSF0lYN09poBg4fo4N+PlTW
-         JMsalZ830SiPX477zBmT3sMOU3h0UmH6tZbLJAT2iDtIKEn+utNnbH0JeGtaMuzxsHOu
-         UVOQk/Ey7yTmU3uDvRpWpPr2Gf2/yPbC8oFsMUK6PYnnZ4iylG0AwqCsiKYnvvXtJhhD
-         eNBOgVSbniCqXQbmqLZaXneyoczPE3sA/jEmftGicbM6kMlhoyg/CxXyYj0sZp/r21l0
-         5mGw==
+        bh=3vGbnOeq4kzljzirvL5pjkAxrpSozfhAG6ODaOPHYw4=;
+        b=SK+J0e+cOF/gJbHdLxeV7lh37lbbvFSCOUHLAc5Bz2c7Gep4IX9vNEDlsq1rBER3C9
+         eEcrqt9aSrGir+v/mK8rWOSE1jU9xY5I21o+B3WyW646xZ7o9EgWPM38Z669uLk1lY/R
+         53Aer7L/UtA27fo/AQqxuehOcbxuyp1m9zqC1HD56dGoQs7j7wHg0FhAePCMOd+LNof3
+         8lk7yILEv2YOHjyedBQg/rDiGO+pST3ju+QQScTTp7TRZjiK7lRrkUdvAPGeS8zvpHh/
+         QXvs8k/MigJPFlxy3U46QJDTSyfqvsC+NlK6x+lXXLix61KS4vv08Ni8b9vFUX8OFNu+
+         2qEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=;
-        b=uHuwbPRVvwlE2u0dqJnDDra/KjgQA8FQYMgWvIw+xE8vwdIEu0/cLsm/KW4MOUoHUu
-         lAeYFUzBXN9HxyFPg3GLQ79xfFhAc2kRARVJWuaFeZVHB/g/7S4EgQr2ZaC3rdqJVk91
-         XghOjn4Dk5xCuWB/oO57hradWIGHsFv0RvV8YwGUwgKCskcjxw7tfOP/sA5fR79lSlqe
-         kcP8GAIXBzvzDT2BNUbqKDo8x2z1zPoXcnsXXDBt8fDKzQ0nNTn95W2wi3gddu4QfM1F
-         JCQj4iTySlLnZtUzfZ0hvrwDvd3me7nNfjEZXICPLURP+hIDEpzsmAWRqH5LVYnz2BSy
-         Qgdw==
-X-Gm-Message-State: ANoB5pk97Rdyrrn9jMrdK5EKhTGiaKWqCDQGrFFXp1ND1fDUOAnyOv+6
-	R/UJpYkW0rCmeCd9zFDUCj4=
-X-Google-Smtp-Source: AA0mqf55UyAUjqtIhhPbAj06nf+q+dxwAswo2zKiXaK4oZA9xv1RSCwv6Ru1aDgJhZv8q2pvkSo4RA==
-X-Received: by 2002:a17:907:a0ca:b0:7c0:b4bc:eed3 with SMTP id hw10-20020a170907a0ca00b007c0b4bceed3mr12331981ejc.735.1670179963240;
-        Sun, 04 Dec 2022 10:52:43 -0800 (PST)
+        bh=3vGbnOeq4kzljzirvL5pjkAxrpSozfhAG6ODaOPHYw4=;
+        b=bcwfjsq9NkfWkbFehZsz1PHzmSJN+gkTbjtJ8BqJstLqrtGwlMfPWp8libFbJZRW6O
+         U03LsPTHm0m0E/UU+mZS0YZgQOaHKBZ6Qv27ai8X7RRbg+w7qKYW2YBOHHzP77y225Sd
+         EcoBujekMcMPIRpWzPwZQ4DT0rwuy1S8oUGknjevPDAVnAHQQTNUim/zJWr/oKn2RbCS
+         poaeDV4G3FrHmmmQv3RrlB+swRoQzaO05m/ssBMOj9Ujbdl+ttKZP2E9Mx7zG/vvWEj3
+         64aCCPC/2Xwr3zMV+q+lY29GynoyFx4WhKmVHXchASrs6xlFVRPAUqH+J8n9PfSYdthe
+         e4jg==
+X-Gm-Message-State: ANoB5plaIrhU5c0kqU8NjZe2xvrYumiW8F686YrpenAq58j7eEGVmzJ6
+	l1Cpj3sEh+u0wG87QPOHoDY=
+X-Google-Smtp-Source: AA0mqf5Gj2MsqoFIDKKOFMrWYTOn+mbcGYyONEEDMSyUgTJV4h6G/l5VpcvYCMpWn0W7OFj1jdllyw==
+X-Received: by 2002:a17:906:7953:b0:7bf:944e:cf6e with SMTP id l19-20020a170906795300b007bf944ecf6emr28321277ejo.638.1670180306173;
+        Sun, 04 Dec 2022 10:58:26 -0800 (PST)
 Received: from [192.168.1.101] ([37.252.91.128])
-        by smtp.gmail.com with ESMTPSA id i9-20020a170906698900b007bff9fb211fsm5408674ejr.57.2022.12.04.10.52.40
+        by smtp.gmail.com with ESMTPSA id 14-20020a170906318e00b007aed2057ea1sm5342266ejy.167.2022.12.04.10.58.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 Dec 2022 10:52:42 -0800 (PST)
-Message-ID: <64aada78-8029-1b05-b802-a005549503c9@gmail.com>
-Date: Sun, 4 Dec 2022 22:52:38 +0400
+        Sun, 04 Dec 2022 10:58:25 -0800 (PST)
+Message-ID: <14db8809-6144-1d10-59e7-298079b2e6e2@gmail.com>
+Date: Sun, 4 Dec 2022 22:58:21 +0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH net-next v1 01/13] net: wwan: tmi: Add PCIe core
+Subject: Re: [PATCH net-next v1 02/13] net: wwan: tmi: Add buffer management
 Content-Language: en-US
-To: Yanchao Yang <yanchao.yang@mediatek.com>
-Cc: Loic Poulain <loic.poulain@linaro.org>,
+To: Yanchao Yang <yanchao.yang@mediatek.com>,
+ Loic Poulain <loic.poulain@linaro.org>,
  Johannes Berg <johannes@sipsolutions.net>,
  "David S . Miller" <davem@davemloft.net>, Eric Dumazet
  <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>,
- kernel ML <linux-kernel@vger.kernel.org>,
- MTK ML <linux-mediatek@lists.infradead.org>, Liang Lu
- <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>,
+ kernel ML <linux-kernel@vger.kernel.org>
+Cc: MTK ML <linux-mediatek@lists.infradead.org>,
+ Liang Lu <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>,
  Hua Yang <hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>,
  Felix Chen <felix.chen@mediatek.com>,
  Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong <min.dong@mediatek.com>,
@@ -88,14 +88,14 @@ Cc: Loic Poulain <loic.poulain@linaro.org>,
  Haozhe Chang <haozhe.chang@mediatek.com>,
  MediaTek Corporation <linuxwwan@mediatek.com>
 References: <20221122111152.160377-1-yanchao.yang@mediatek.com>
- <20221122111152.160377-2-yanchao.yang@mediatek.com>
+ <20221122111152.160377-3-yanchao.yang@mediatek.com>
 From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20221122111152.160377-2-yanchao.yang@mediatek.com>
+In-Reply-To: <20221122111152.160377-3-yanchao.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_105246_376401_3984F385 
-X-CRM114-Status: GOOD (  22.96  )
+X-CRM114-CacheID: sfid-20221204_105827_911789_C96B5B6D 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,88 +110,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Yanchao,
-
 On 22.11.2022 15:11, Yanchao Yang wrote:
 > From: MediaTek Corporation <linuxwwan@mediatek.com>
 > 
-> Registers the TMI device driver with the kernel. Set up all the fundamental
-> configurations for the device: PCIe layer, Modem Host Cross Core Interface
-> (MHCCIF), Reset Generation Unit (RGU), modem common control operations and
-> build infrastructure.
+> To malloc I/O memory as soon as possible, buffer management comes into being.
+> It creates buffer pools that reserve some buffers through deferred works when
+> the driver isn't busy.
 > 
-> * PCIe layer code implements driver probe and removal, MSI-X interrupt
-> initialization and de-initialization, and the way of resetting the device.
-> * MHCCIF provides interrupt channels to communicate events such as handshake,
-> PM and port enumeration.
-> * RGU provides interrupt channels to generate notifications from the device
-> so that the TMI driver could get the device reset.
-> * Modem common control operations provide the basic read/write functions of
-> the device's hardware registers, mask/unmask/get/clear functions of the
-> device's interrupt registers and inquiry functions of the device's status.
+> The buffer management provides unified memory allocation/de-allocation
+> interfaces for other modules. It supports two buffer types of SKB and page.
+> Two reload work queues with different priority values are provided to meet
+> various requirements of the control plane and the data plane.
 > 
-> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
+> When the reserved buffer count of the pool is less than a threshold (default
+> is 2/3 of the pool size), the reload work will restart to allocate buffers
+> from the OS until the buffer pool becomes full. When the buffer pool fills,
+> the OS will recycle the buffer freed by the user.
+> 
+> Signed-off-by: Mingliang Xu <mingliang.xu@mediatek.com>
 > Signed-off-by: MediaTek Corporation <linuxwwan@mediatek.com>
 > ---
->   drivers/net/wwan/Kconfig                 |   11 +
->   drivers/net/wwan/Makefile                |    1 +
->   drivers/net/wwan/mediatek/Makefile       |   12 +
->   drivers/net/wwan/mediatek/mtk_common.h   |   30 +
->   drivers/net/wwan/mediatek/mtk_dev.c      |   50 +
->   drivers/net/wwan/mediatek/mtk_dev.h      |  503 ++++++++++
->   drivers/net/wwan/mediatek/pcie/mtk_pci.c | 1164 ++++++++++++++++++++++
->   drivers/net/wwan/mediatek/pcie/mtk_pci.h |  150 +++
->   drivers/net/wwan/mediatek/pcie/mtk_reg.h |   69 ++
->   9 files changed, 1990 insertions(+)
->   create mode 100644 drivers/net/wwan/mediatek/Makefile
->   create mode 100644 drivers/net/wwan/mediatek/mtk_common.h
->   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.c
->   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
->   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
-> 
-> diff --git a/drivers/net/wwan/Kconfig b/drivers/net/wwan/Kconfig
-> index 3486ffe94ac4..a93a0c511d50 100644
-> --- a/drivers/net/wwan/Kconfig
-> +++ b/drivers/net/wwan/Kconfig
-> @@ -119,6 +119,17 @@ config MTK_T7XX
->   
->   	  If unsure, say N.
->   
-> +config MTK_TMI
-> +	tristate "TMI Driver for Mediatek T-series Device"
-> +	depends on PCI
-> +	help
-> +	  This driver enables Mediatek T-series WWAN Device communication.
-> +
-> +	  If you have one of those Mediatek T-series WWAN Modules and wish to
-> +	  use it in Linux say Y/M here.
+>   drivers/net/wwan/mediatek/Makefile  |   3 +-
+>   drivers/net/wwan/mediatek/mtk_bm.c  | 369 ++++++++++++++++++++++++++++
+>   drivers/net/wwan/mediatek/mtk_bm.h  |  79 ++++++
+>   drivers/net/wwan/mediatek/mtk_dev.c |  11 +-
+>   drivers/net/wwan/mediatek/mtk_dev.h |   1 +
+>   5 files changed, 461 insertions(+), 2 deletions(-)
+>   create mode 100644 drivers/net/wwan/mediatek/mtk_bm.c
+>   create mode 100644 drivers/net/wwan/mediatek/mtk_bm.h
 
- From this and the series descriptions, it is unclear which modem chips 
-this driver is intended for and how does it correlate with the T7xx 
-driver? Is the TMI driver a drop-in replacement for the t7xx driver, or 
-does the TMI driver support any T-series chips except t7xx?
-
-> +
-> +	  If unsure, say N.
-> +
->   endif # WWAN
->   
->   endmenu
-> diff --git a/drivers/net/wwan/Makefile b/drivers/net/wwan/Makefile
-> index 3960c0ae2445..198d8074851f 100644
-> --- a/drivers/net/wwan/Makefile
-> +++ b/drivers/net/wwan/Makefile
-> @@ -14,3 +14,4 @@ obj-$(CONFIG_QCOM_BAM_DMUX) += qcom_bam_dmux.o
->   obj-$(CONFIG_RPMSG_WWAN_CTRL) += rpmsg_wwan_ctrl.o
->   obj-$(CONFIG_IOSM) += iosm/
->   obj-$(CONFIG_MTK_T7XX) += t7xx/
-> +obj-$(CONFIG_MTK_TMI) += mediatek/
-
-The driver is called mtk_tmi, but its code is placed to the directory 
-with too generic name 'mediatek'. Do you plan too keep all possible 
-future drivers in this directory?
+Yanchao, can you share some numbers, how this custom pool is outperform 
+the regular kernel allocator?
 
 --
 Sergey
