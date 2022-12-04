@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD926C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 12:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CE9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 12:36:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8jGg2+hGIcQCb/sj1Z29SPvy2f0izgZFm1n5di77ZbE=; b=SvZMh4IfD1XWl7oB4AFrIH8Kki
-	u+Lf2QgK9MgeY73hil1Pul+hmYceMuY8AGiscyG6g5CIPEUZ9MJUZvxNK02Jyh3EReq6EOLi4LdlZ
-	iLu7ro4s7VACu/xRLJL5BdskruEsloi9YBD6BpYOaOHOkmjoxiK/v6kWJ9VraT0HNxPDC+z64ibc5
-	kuDmJkEcz4yTmB761l8/VKvP52rZv3uv+9feQK+hCL5FJg+HBZIsNaQepEdiznk1ZyT5o5VoL8ZHq
-	Hj4wPSN9KFuqw2/Lm8KUmxDeDIDX5mgRb1VDkzpcxZ0SJt+moCxb/Tr4hgLH7ixhSOLQCwr9KaOzu
-	NZbBFWyw==;
+	bh=QKmgSryl+fWz7W3RkCUzclzCEhaa4WImtJO0zq+15Zw=; b=chZfgpRIpohCxodlZILb+lkCbi
+	Zhx4/0pPbVR18BWE1VeYjy+G1YVq+yRajzybg3KqC0PWfJ4T1Wiptg7lx5mCBRI3Mvj9hkz4+pZUX
+	L6wIakjR448/hudpGraKGwVLah5ZuEX5gOsfZVaJHzQBFMnFrlSboBqCpVeFq6/Flqu0JMJP2tzg+
+	bB7i07vdTAw4RMz/+N236yrri2CQcR2GyUhEia5weNVmZM4Yav0u9ODst8fH8s1y2FIrjGIoDoHBl
+	5jpQ/MXgfGxUvUQSD7U8CQBDvn4w7DkSVoij1CVXg/G5/zbZ6WJD7Bd5xiqifJOzBSa3jssgg626Z
+	9PS5WPIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1oBH-007hRB-5i; Sun, 04 Dec 2022 12:33:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p1oEI-007jyH-12; Sun, 04 Dec 2022 12:36:22 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1oB1-007hMX-GJ; Sun, 04 Dec 2022 12:33:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D82660E87;
-	Sun,  4 Dec 2022 12:32:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E67FC433D6;
-	Sun,  4 Dec 2022 12:32:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670157176;
-	bh=iQ+pz5jxkUQV3CQlFhNyB/esFfXV4PiszQqeGxj1DHw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LtdtNu9OpHfq9fmUT8vSQ/4j3F8FCbpsUfleSd8jgScmW0L3IhW+/CgAfXGAmlQQj
-	 NI3783c/zSBwPyVXkfum5N5f+5YpPfZe8unYzVxx0lMAV00xJMgPHLfphaEw4ghJ0T
-	 rpAUlGlJwtDmvmpaswutbd56utsIDzJCch8ksxpFUi/ppTPRNRo9opImNQERh91vRb
-	 CG0GLGBCge/9b9A+1/fELSbmSz0ovHoIFTJgONxIKlg8XbzFkmlzQ7fTTcrVZjk8zP
-	 UhrAtskiR8Gu1CGZpS555coRgnEfX66qLf1PQB2n1iZXJBWH4DcusRYO4d2BkniM34
-	 eZQ4bbPXkO6xw==
-Date: Sun, 4 Dec 2022 14:32:44 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Yuan Can <yuancan@huawei.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
-	matthias.bgg@gmail.com, sujuan.chen@mediatek.com,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: ethernet: mtk_wed: Fix missing of_node_put() in
- mtk_wed_wo_hardware_init()
-Message-ID: <Y4yTbO0+7MmhTvVT@unreal>
-References: <20221202083029.87834-1-yuancan@huawei.com>
+	id 1p1oE3-007jgH-8I; Sun, 04 Dec 2022 12:36:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1670157335;
+	bh=QKmgSryl+fWz7W3RkCUzclzCEhaa4WImtJO0zq+15Zw=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Vwbzr/DWKYPnydhgSYw+CDy+dtOp8pTitcy0QkA0kQ+44cfktbPft7nNYT1bfaKUH
+	 ttyGGZno6+taom0zUiz1s4SEXnZoH2WMyOFJqSYPHULCfQPThLBqLGVUt91fXKVmbS
+	 vDOvDXFDv5qVEA/Wy7W97IpWT8stZ9qcZO47t0efffO/z+jvxurzrWEit3DLWKJ1GY
+	 S1Mt6SpNZIPwjlseQ4ImEeCiPNm2D50RBjI8mWNQLu9Gg1a8v0NndNChRWVK32rXu2
+	 WCev+WKAaCSr3K6aRpSFGBMXIQRx0lsSHjoovn40ZR40c3xVTydN4v1UYXtFwlmE0R
+	 vYK0/b9wqvFtA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.148.219] ([217.61.148.219]) by web-mail.gmx.net
+ (3c-app-gmx-bap34.server.lan [172.19.172.104]) (via HTTP); Sun, 4 Dec 2022
+ 13:35:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221202083029.87834-1-yuancan@huawei.com>
+Message-ID: <trinity-4e4e0da1-db81-4a48-986c-a68328a84b45-1670157335627@3c-app-gmx-bap34>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: [PATCH 5/5] net: ethernet: mtk_eth_soc: drop generic vlan rx
+ offload, only use DSA untagging
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 4 Dec 2022 13:35:35 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20221123095754.36821-5-nbd@nbd.name>
+References: <20221123095754.36821-1-nbd@nbd.name>
+ <20221123095754.36821-5-nbd@nbd.name>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:hPIsZNZBUMYLcObVTy2iqrd05dLeAn6ye5PtJjxYLRR03vcKJkhDpnXrmwaDGyofxU0c5
+ o9cbE6jjXfIEgLuTQjJXXT7h7f7ccS0DZFngMbVKHIW35osKA7kcZYQiHPB/3GeoXnT4XEYPYmGX
+ j1s6B1a2oERrbkSNTw/nMAq3UFNbKIuiiBsWHVwZ3YKWvcgnjOx+sN9dEAnh0blkx1B2Aa0LfCwf
+ sWSI9AAMf4m5zMR8GnS15OxMuLjAnurt5nZqTQRgtp39TEQ2C2p/zImUkqMzyjrxTHvhKvgD3p9m
+ mk=
+UI-OutboundReport: notjunk:1;M01:P0:gQi/31dsW8M=;wsNvnjdfBkK61ftkq6/PG12X12G
+ mjZYuCjTYuk/86SK+iGDbmcuCk/p/U1vP0+RXWAH0KPxPaikWw0S2sm/87K8AFIE06DF+Gf0d
+ m5nmRUu+We//cJs+43AXTfMnNsClKZSfC7GRW9SUev2u6HXqtDsR5T8BRf0pJPD4MDvfxVuug
+ 2cr6JDMJ40/wGT4IW18lTuUV0Xtd9fWLMp4S5+GYuFDWff8sTPorHq6ZO+2sMZmKUHNDUgoM0
+ dyglzt+EyCy7mc460SpIi/jQ/GZQXsyT34z+bS8uAzqqi9Pct1p1U0W5bxz3lyoibcNbjA5oj
+ 8saeHCBj+zyNHiVO4mCz8fmiUgFlL78D5BpvBgTP2bsrhj4acgy4LpRH9uauuT6Ew3MKjLiz4
+ pBmjfonmwxWgGX2qgB4S4626wZo3cSblMg3aoSApQYN3lOOoFlOSXFKmkYk37ZitykRYrNxMH
+ L5xc9tFK3j0vYon9dUJYalySUbMQpJSMvjh7YiB3cj/S0vZRTzy/Pry4ra/91ilNpby4P0k2I
+ Uyq3M5SPe8kB106OH/qW+pBDZX6tBNu4tvKhKZkXk3VjEs2xEriLN06dhqN7Co+xFtjaILeGR
+ mmyICQoHyFfOwo8c+1fFmfnj2QMUSG5meCiTlIQpcWSbJLZ156RJGBHaglrseqQ+1sxboC+Rt
+ rCosEOZMcxom8cBdPMsL3XDrhLwx6WQ7m/Cnzqlkoo+81NGcTsM18ToGDJd9sNmAOkJY9uN8i
+ nPiK9sV8pH6/2Xb0iHBkJgOpghgApqwpHL2+sNro7VAaI5jmFbJEkq25iy9RKW+nsOw6gHFq8
+ uJiTwzWwEhIC9sUpbiUIObU2ZQ/PhUZTG+cZj1Ilrv9hQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_043259_704850_21B50F41 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20221204_043607_600840_95566DC4 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,53 +96,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 02, 2022 at 08:30:29AM +0000, Yuan Can wrote:
-> The np needs to be released through of_node_put() in the error handling
-> path of mtk_wed_wo_hardware_init().
-> 
-> Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
-> Signed-off-by: Yuan Can <yuancan@huawei.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_wed_wo.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
+Hi,
 
-Please use [PATCH net-next] ... format in title.
+tested this series on 6.1-next and it fixes my vlan-issues on gmac (Bananapi-R3 sfp-wan). maybe it can be
+backported including depencies to 6.1 as this becomes the next lts?
 
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> index 4754b6db009e..d61bd0b11331 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> @@ -407,8 +407,10 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
->  		return -ENODEV;
->  
->  	wo->mmio.regs = syscon_regmap_lookup_by_phandle(np, NULL);
-> -	if (IS_ERR_OR_NULL(wo->mmio.regs))
+this series on 6.1 is not enough to fix vlan-issue...so i miss anything there
 
-syscon_regmap_lookup_by_phandle() returns or error or valid pointer.
-The right check needs to be IS_ERR(wo->mmio.regs)
+but for next
 
-Thanks
+Tested-By: Frank Wunderlich <frank-w@public-files.de>
 
-> -		return PTR_ERR(wo->mmio.regs);
-> +	if (IS_ERR_OR_NULL(wo->mmio.regs)) {
-> +		ret = PTR_ERR(wo->mmio.regs);
-> +		goto error_put;
-> +	}
->  
->  	wo->mmio.irq = irq_of_parse_and_map(np, 0);
->  	wo->mmio.irq_mask = MTK_WED_WO_ALL_INT_MASK;
-> @@ -456,7 +458,8 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
->  
->  error:
->  	devm_free_irq(wo->hw->dev, wo->mmio.irq, wo);
-> -
-> +error_put:
-> +	of_node_put(np);
->  	return ret;
->  }
->  
-> -- 
-> 2.17.1
-> 
+regards Frank
 
