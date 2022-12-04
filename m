@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C750FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 08:57:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD926C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 12:33:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4HfwTMVIfqnxQeM/flMEBiTJlOTdLbyktmNQbCgMZLs=; b=FbQ6NGcZTx/A6E0tKGGFFUBNBW
-	dQMvWCQ4U+5nj85lCOMHMBspeoTKAQZnH5YgesiVbzblu/dTemDFofkKd9FIzPNhBEmjHqhrLjFxB
-	JUoIv0gbvPu38wpWd4FmazdPDc8/NAs2tc+e5bGuw3tL3dJyFmaqL72H2YyGVB2+wcPhoyVFX1WCH
-	fi0pglqSAF1oChRMDcn02WWXYp652FaJM/7Bm5aDTmLZluB2dxluXUQIu6m7FxKwJ8np1LhJWgX6K
-	PdCfCXskv9dREuBCc1bCi6gtqced4jOzQglV+oYS+QyXRbdtjAlJ8/pH4ICkJbXBKBkSy7iiMeUnR
-	rg4Pf1Jg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8jGg2+hGIcQCb/sj1Z29SPvy2f0izgZFm1n5di77ZbE=; b=SvZMh4IfD1XWl7oB4AFrIH8Kki
+	u+Lf2QgK9MgeY73hil1Pul+hmYceMuY8AGiscyG6g5CIPEUZ9MJUZvxNK02Jyh3EReq6EOLi4LdlZ
+	iLu7ro4s7VACu/xRLJL5BdskruEsloi9YBD6BpYOaOHOkmjoxiK/v6kWJ9VraT0HNxPDC+z64ibc5
+	kuDmJkEcz4yTmB761l8/VKvP52rZv3uv+9feQK+hCL5FJg+HBZIsNaQepEdiznk1ZyT5o5VoL8ZHq
+	Hj4wPSN9KFuqw2/Lm8KUmxDeDIDX5mgRb1VDkzpcxZ0SJt+moCxb/Tr4hgLH7ixhSOLQCwr9KaOzu
+	NZbBFWyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1koE-0077yv-6n; Sun, 04 Dec 2022 08:57:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p1oBH-007hRB-5i; Sun, 04 Dec 2022 12:33:15 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1koB-0077y4-LK
-	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 08:57:13 +0000
-X-UUID: 42c8024af37f469c84587ee7fde1ddec-20221204
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4HfwTMVIfqnxQeM/flMEBiTJlOTdLbyktmNQbCgMZLs=;
-	b=KWZ2wqBa3EvUKgBWo36d7HzBXuTCUjpkcwnzza3H7hu6U1v7EhrypWe3sHLq9RMel/LpxC3bN5FD9zKNk5+XunhCw+mhGjZqGcsBNzWSrKw8bK35Gt0UZZ7Nm3MiKazDwqKpCW5O44Vyhye594LqO8f5DeLZT8qr1qRlr6kUQew=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:a8657f7c-ce9a-4386-801c-92386962fe3a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:64e17b6c-41fe-47b6-8eb4-ec192dedaf7d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 42c8024af37f469c84587ee7fde1ddec-20221204
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 621994360; Sun, 04 Dec 2022 01:56:59 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sun, 4 Dec 2022 16:26:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Sun, 4 Dec 2022 16:26:55 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-CC: linux-mmc <linux-mmc@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mmc: vub300: fix warning - do not call blocking ops when !TASK_RUNNING
-Date: Sun, 4 Dec 2022 16:24:16 +0800
-Message-ID: <87dc45b122d26d63c80532976813c9365d7160b3.1670140888.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1p1oB1-007hMX-GJ; Sun, 04 Dec 2022 12:33:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D82660E87;
+	Sun,  4 Dec 2022 12:32:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E67FC433D6;
+	Sun,  4 Dec 2022 12:32:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670157176;
+	bh=iQ+pz5jxkUQV3CQlFhNyB/esFfXV4PiszQqeGxj1DHw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LtdtNu9OpHfq9fmUT8vSQ/4j3F8FCbpsUfleSd8jgScmW0L3IhW+/CgAfXGAmlQQj
+	 NI3783c/zSBwPyVXkfum5N5f+5YpPfZe8unYzVxx0lMAV00xJMgPHLfphaEw4ghJ0T
+	 rpAUlGlJwtDmvmpaswutbd56utsIDzJCch8ksxpFUi/ppTPRNRo9opImNQERh91vRb
+	 CG0GLGBCge/9b9A+1/fELSbmSz0ovHoIFTJgONxIKlg8XbzFkmlzQ7fTTcrVZjk8zP
+	 UhrAtskiR8Gu1CGZpS555coRgnEfX66qLf1PQB2n1iZXJBWH4DcusRYO4d2BkniM34
+	 eZQ4bbPXkO6xw==
+Date: Sun, 4 Dec 2022 14:32:44 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Yuan Can <yuancan@huawei.com>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
+	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+	matthias.bgg@gmail.com, sujuan.chen@mediatek.com,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: ethernet: mtk_wed: Fix missing of_node_put() in
+ mtk_wed_wo_hardware_init()
+Message-ID: <Y4yTbO0+7MmhTvVT@unreal>
+References: <20221202083029.87834-1-yuancan@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221202083029.87834-1-yuancan@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_005711_884536_FCB48D29 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20221204_043259_704850_21B50F41 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +75,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-vub300_enable_sdio_irq() works with mutex and need TASK_RUNNING here.
-Ensure that we mark current as TASK_RUNNING for sleepable context.
+On Fri, Dec 02, 2022 at 08:30:29AM +0000, Yuan Can wrote:
+> The np needs to be released through of_node_put() in the error handling
+> path of mtk_wed_wo_hardware_init().
+> 
+> Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
+> Signed-off-by: Yuan Can <yuancan@huawei.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_wed_wo.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 
-[   77.554641] do not call blocking ops when !TASK_RUNNING; state=1 set at [<ffffffff92a72c1d>] sdio_irq_thread+0x17d/0x5b0
-[   77.554652] WARNING: CPU: 2 PID: 1983 at kernel/sched/core.c:9813 __might_sleep+0x116/0x160
-[   77.554905] CPU: 2 PID: 1983 Comm: ksdioirqd/mmc1 Tainted: G           OE      6.1.0-rc5 #1
-[   77.554910] Hardware name: Intel(R) Client Systems NUC8i7BEH/NUC8BEB, BIOS BECFL357.86A.0081.2020.0504.1834 05/04/2020
-[   77.554912] RIP: 0010:__might_sleep+0x116/0x160
-[   77.554920] RSP: 0018:ffff888107b7fdb8 EFLAGS: 00010282
-[   77.554923] RAX: 0000000000000000 RBX: ffff888118c1b740 RCX: 0000000000000000
-[   77.554926] RDX: 0000000000000001 RSI: 0000000000000004 RDI: ffffed1020f6ffa9
-[   77.554928] RBP: ffff888107b7fde0 R08: 0000000000000001 R09: ffffed1043ea60ba
-[   77.554930] R10: ffff88821f5305cb R11: ffffed1043ea60b9 R12: ffffffff93aa3a60
-[   77.554932] R13: 000000000000011b R14: 7fffffffffffffff R15: ffffffffc0558660
-[   77.554934] FS:  0000000000000000(0000) GS:ffff88821f500000(0000) knlGS:0000000000000000
-[   77.554937] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   77.554939] CR2: 00007f8a44010d68 CR3: 000000024421a003 CR4: 00000000003706e0
-[   77.554942] Call Trace:
-[   77.554944]  <TASK>
-[   77.554952]  mutex_lock+0x78/0xf0
-[   77.554973]  vub300_enable_sdio_irq+0x103/0x3c0 [vub300]
-[   77.554981]  sdio_irq_thread+0x25c/0x5b0
-[   77.555006]  kthread+0x2b8/0x370
-[   77.555017]  ret_from_fork+0x1f/0x30
-[   77.555023]  </TASK>
-[   77.555025] ---[ end trace 0000000000000000 ]---
+Please use [PATCH net-next] ... format in title.
 
-Fixes: 88095e7b473a ("mmc: Add new VUB300 USB-to-SD/SDIO/MMC driver")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/mmc/host/vub300.c | 2 ++
- 1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+> index 4754b6db009e..d61bd0b11331 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+> @@ -407,8 +407,10 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
+>  		return -ENODEV;
+>  
+>  	wo->mmio.regs = syscon_regmap_lookup_by_phandle(np, NULL);
+> -	if (IS_ERR_OR_NULL(wo->mmio.regs))
 
-diff --git a/drivers/mmc/host/vub300.c b/drivers/mmc/host/vub300.c
-index 97beece62fec..b58a1a869ed8 100644
---- a/drivers/mmc/host/vub300.c
-+++ b/drivers/mmc/host/vub300.c
-@@ -2049,6 +2049,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
- 		return;
- 	kref_get(&vub300->kref);
- 	if (enable) {
-+		set_current_state(TASK_RUNNING);
- 		mutex_lock(&vub300->irq_mutex);
- 		if (vub300->irqs_queued) {
- 			vub300->irqs_queued -= 1;
-@@ -2064,6 +2065,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
- 			vub300_queue_poll_work(vub300, 0);
- 		}
- 		mutex_unlock(&vub300->irq_mutex);
-+		set_current_state(TASK_INTERRUPTIBLE);
- 	} else {
- 		vub300->irq_enabled = 0;
- 	}
--- 
-2.18.0
+syscon_regmap_lookup_by_phandle() returns or error or valid pointer.
+The right check needs to be IS_ERR(wo->mmio.regs)
 
+Thanks
+
+> -		return PTR_ERR(wo->mmio.regs);
+> +	if (IS_ERR_OR_NULL(wo->mmio.regs)) {
+> +		ret = PTR_ERR(wo->mmio.regs);
+> +		goto error_put;
+> +	}
+>  
+>  	wo->mmio.irq = irq_of_parse_and_map(np, 0);
+>  	wo->mmio.irq_mask = MTK_WED_WO_ALL_INT_MASK;
+> @@ -456,7 +458,8 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
+>  
+>  error:
+>  	devm_free_irq(wo->hw->dev, wo->mmio.irq, wo);
+> -
+> +error_put:
+> +	of_node_put(np);
+>  	return ret;
+>  }
+>  
+> -- 
+> 2.17.1
+> 
 
