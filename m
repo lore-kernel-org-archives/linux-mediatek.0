@@ -4,92 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3957C4321E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 17:29:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD6B2C47089
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 19:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IyVxjv62ICSdTmYSJi3Pk6d9R9ZML1anTEBMQvI7O98=; b=wmG87YLe3SOCcbbgV3LJ5TJfBv
-	033R/UeAeR+AatBY5bDz4x0XtSDrfbEIgk8ftEoQvgch40bqOBB7hwD6zxxNRK2y5STpjKmXwnzOL
-	AzZECk2xadqPxcCAiKarx9B6vGPAwx7KvhNQqkyoWWWm7pOrAicI8favuZiw6ItnA8NcLrOltCEjG
-	ubVmx7pY+DREiv4TBSB5v5AZyphb52cg9TZivfyeTw+b+7xOGKgYsKFkuymSf1bD4QEVOQgI6xGUS
-	10OamlUeDqN3z1YzoSo1jPaD6b9iY+9y+Qg5d7qpOsPh4IrAZJDEG2lDjJfQUwZXaps1BJh1N1coV
-	PlqMVXNg==;
+	bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=; b=Nvr24SddXJOrW5rygs+L35rapJ
+	ToJ/xNitIJnlZe/FdAJOFp4sqXGbzKBquG1rt8/oyGhtjPOqJpMEzWTQlKUGa4oYqg1Qcoc/EPqrM
+	XG6GO6xt/QpXlTfxDb8pKCqN08jeiNAwWIZl6Sps0aa/r8+Pk4NSMxRKKC8E4jv4UaZzMfh5v+iyW
+	m3I2pbJ6CeP4n8ou1KQsN7mLVPLliQmqALsKbCjqhQHBsbD041kNTkrcSDDvp6K9oKAJ205K1srxF
+	k2HPJQnI7HYlIJfQ2636+dlEiMySwf2i9G4eReeyVNUsaW4p0+59+ZpUibIvD95yPPFSr01L6y/KG
+	OcUzeaPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1sny-00A1Oc-UB; Sun, 04 Dec 2022 17:29:30 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1p1ubG-00ArtG-VZ; Sun, 04 Dec 2022 19:24:31 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1skl-009zct-U0
-	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 17:26:14 +0000
-Received: by mail-wm1-x335.google.com with SMTP id n9-20020a05600c3b8900b003d0944dba41so3640633wms.4
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 09:26:10 -0800 (PST)
+	id 1p1u6Y-00APnN-8F
+	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 18:52:48 +0000
+Received: by mail-ej1-x630.google.com with SMTP id qk9so5276993ejc.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 10:52:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=IyVxjv62ICSdTmYSJi3Pk6d9R9ZML1anTEBMQvI7O98=;
-        b=ZchEcdQe+WoS+hV2IegjeHkiuZJHTsYsZQBliOfBF7yCt8VaH5piuSwzb+ecMWiq9D
-         YI4UTS3680++QmeX3hvanqiK3/eBiucfVgE50qKCn4/tTNgqQCnfcWMSYBeU8LDugw/E
-         HvVjQ4mLSv03zy6Xcqyeb0I+cNyYWXKIyAu84px63RDwvCIBVfNx3rxvCq1SS8h6CsGQ
-         utp6zgTKgOhQsFl+x99BhMkDLK4N63DVM4pCSUL+Elmg0mAbTP7VXP0JkOPFqMGm+E2v
-         XNzcHTh1ZWS6kVvMbimUVE5YWFHL2o14A54fpOj409LZ75qRPIl/8IWwWmjaStZY4hEv
-         dF+w==
+        bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=;
+        b=CUKaXErfIsP67bFO/VqI2crHhKyX6YmMOE1PKmCgRdEUaZqHUsmeW/WQdBVzF25lvd
+         FlfXhVb+DNKUaRfjDvml1dna7L4CTTUNZzaVTceLZ7OiHLSF0lYN09poBg4fo4N+PlTW
+         JMsalZ830SiPX477zBmT3sMOU3h0UmH6tZbLJAT2iDtIKEn+utNnbH0JeGtaMuzxsHOu
+         UVOQk/Ey7yTmU3uDvRpWpPr2Gf2/yPbC8oFsMUK6PYnnZ4iylG0AwqCsiKYnvvXtJhhD
+         eNBOgVSbniCqXQbmqLZaXneyoczPE3sA/jEmftGicbM6kMlhoyg/CxXyYj0sZp/r21l0
+         5mGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IyVxjv62ICSdTmYSJi3Pk6d9R9ZML1anTEBMQvI7O98=;
-        b=LYMo+vSePGuxf8UtiCr5cc0nxG+7w7SHx7uAHHDM9HLsS3cNnZ6U1oiQwjNnIjPzGN
-         bgQ/TpvNAnRZsnzDFot9f/1EUjjlSrpgJsNHhFRBRHDllIxZSI5xFuacs5+7EJrBV4xK
-         S9/lW6He4Yw/K2uWpQnaCDMLUk8dQs+43QsvV4ZMkS3RmqypMF17WuQRAxCgqQyXk+Tz
-         D/NYmMFssMByn8Q2yXAtOEuzQt2w10X8zg6yS9dS13amqrKOH/8agcHAfVck/hTiy2wL
-         R0sAIuPZMKrb0NZsJ2QewEY+SAg1T+/BxGdo8DiY8cm9Vlcu4aYekzfCtDyH1mzDS+DN
-         V+9Q==
-X-Gm-Message-State: ANoB5pkUzHsX88UkyGY/qXyqftfrAU/GnATD07Odpv+/ruHjlxIrIgjl
-	ZWhksr1xc6tDNFxLkKxk0znDmw==
-X-Google-Smtp-Source: AA0mqf4Dmk6Xhul/0QDQbwXSSkgcxM2Nco1IWbx4FTjdbxA83oGpudrXdh2T3PP9My4vswF6zfR4Uw==
-X-Received: by 2002:a05:600c:4386:b0:3cf:a4a6:a048 with SMTP id e6-20020a05600c438600b003cfa4a6a048mr43362304wmn.202.1670174769498;
-        Sun, 04 Dec 2022 09:26:09 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id l28-20020a05600c1d1c00b003c6b7f5567csm24874714wms.0.2022.12.04.09.26.07
+        bh=rVa4SBMWf0cJk973qfgmDDD5XVUgzDvkwfsTpMSYivQ=;
+        b=uHuwbPRVvwlE2u0dqJnDDra/KjgQA8FQYMgWvIw+xE8vwdIEu0/cLsm/KW4MOUoHUu
+         lAeYFUzBXN9HxyFPg3GLQ79xfFhAc2kRARVJWuaFeZVHB/g/7S4EgQr2ZaC3rdqJVk91
+         XghOjn4Dk5xCuWB/oO57hradWIGHsFv0RvV8YwGUwgKCskcjxw7tfOP/sA5fR79lSlqe
+         kcP8GAIXBzvzDT2BNUbqKDo8x2z1zPoXcnsXXDBt8fDKzQ0nNTn95W2wi3gddu4QfM1F
+         JCQj4iTySlLnZtUzfZ0hvrwDvd3me7nNfjEZXICPLURP+hIDEpzsmAWRqH5LVYnz2BSy
+         Qgdw==
+X-Gm-Message-State: ANoB5pk97Rdyrrn9jMrdK5EKhTGiaKWqCDQGrFFXp1ND1fDUOAnyOv+6
+	R/UJpYkW0rCmeCd9zFDUCj4=
+X-Google-Smtp-Source: AA0mqf55UyAUjqtIhhPbAj06nf+q+dxwAswo2zKiXaK4oZA9xv1RSCwv6Ru1aDgJhZv8q2pvkSo4RA==
+X-Received: by 2002:a17:907:a0ca:b0:7c0:b4bc:eed3 with SMTP id hw10-20020a170907a0ca00b007c0b4bceed3mr12331981ejc.735.1670179963240;
+        Sun, 04 Dec 2022 10:52:43 -0800 (PST)
+Received: from [192.168.1.101] ([37.252.91.128])
+        by smtp.gmail.com with ESMTPSA id i9-20020a170906698900b007bff9fb211fsm5408674ejr.57.2022.12.04.10.52.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 Dec 2022 09:26:09 -0800 (PST)
-Message-ID: <4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org>
-Date: Sun, 4 Dec 2022 18:26:07 +0100
+        Sun, 04 Dec 2022 10:52:42 -0800 (PST)
+Message-ID: <64aada78-8029-1b05-b802-a005549503c9@gmail.com>
+Date: Sun, 4 Dec 2022 22:52:38 +0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v7 4/4] thermal: mediatek: add another get_temp ops for
- thermal sensors
+ Thunderbird/102.5.0
+Subject: Re: [PATCH net-next v1 01/13] net: wwan: tmi: Add PCIe core
 Content-Language: en-US
-To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Michael Kao <michael.kao@mediatek.com>,
- linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20221018-up-i350-thermal-bringup-v7-0-ebf08ff2eddb@baylibre.com>
- <20221018-up-i350-thermal-bringup-v7-4-ebf08ff2eddb@baylibre.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20221018-up-i350-thermal-bringup-v7-4-ebf08ff2eddb@baylibre.com>
+To: Yanchao Yang <yanchao.yang@mediatek.com>
+Cc: Loic Poulain <loic.poulain@linaro.org>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, netdev ML <netdev@vger.kernel.org>,
+ kernel ML <linux-kernel@vger.kernel.org>,
+ MTK ML <linux-mediatek@lists.infradead.org>, Liang Lu
+ <liang.lu@mediatek.com>, Haijun Liu <haijun.liu@mediatek.com>,
+ Hua Yang <hua.yang@mediatek.com>, Ting Wang <ting.wang@mediatek.com>,
+ Felix Chen <felix.chen@mediatek.com>,
+ Mingliang Xu <mingliang.xu@mediatek.com>, Min Dong <min.dong@mediatek.com>,
+ Aiden Wang <aiden.wang@mediatek.com>,
+ Guohao Zhang <guohao.zhang@mediatek.com>,
+ Chris Feng <chris.feng@mediatek.com>,
+ Lambert Wang <lambert.wang@mediatek.com>,
+ Mingchuang Qiao <mingchuang.qiao@mediatek.com>,
+ Xiayu Zhang <xiayu.zhang@mediatek.com>,
+ Haozhe Chang <haozhe.chang@mediatek.com>,
+ MediaTek Corporation <linuxwwan@mediatek.com>
+References: <20221122111152.160377-1-yanchao.yang@mediatek.com>
+ <20221122111152.160377-2-yanchao.yang@mediatek.com>
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <20221122111152.160377-2-yanchao.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_092612_114048_F9D4B66D 
-X-CRM114-Status: GOOD (  29.45  )
+X-CRM114-CacheID: sfid-20221204_105246_376401_3984F385 
+X-CRM114-Status: GOOD (  22.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,207 +110,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/11/2022 12:04, Amjad Ouled-Ameur wrote:
-> Provide thermal zone to read thermal sensor in the SoC. We can read all the
-> thermal sensors value in the SoC by the node /sys/class/thermal/
+Hello Yanchao,
+
+On 22.11.2022 15:11, Yanchao Yang wrote:
+> From: MediaTek Corporation <linuxwwan@mediatek.com>
 > 
-> In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
-> on the first read of sensor that often are bogus values.
-> This can avoid following warning on boot:
+> Registers the TMI device driver with the kernel. Set up all the fundamental
+> configurations for the device: PCIe layer, Modem Host Cross Core Interface
+> (MHCCIF), Reset Generation Unit (RGU), modem common control operations and
+> build infrastructure.
 > 
->    thermal thermal_zone6: failed to read out thermal zone (-13)
+> * PCIe layer code implements driver probe and removal, MSI-X interrupt
+> initialization and de-initialization, and the way of resetting the device.
+> * MHCCIF provides interrupt channels to communicate events such as handshake,
+> PM and port enumeration.
+> * RGU provides interrupt channels to generate notifications from the device
+> so that the TMI driver could get the device reset.
+> * Modem common control operations provide the basic read/write functions of
+> the device's hardware registers, mask/unmask/get/clear functions of the
+> device's interrupt registers and inquiry functions of the device's status.
 > 
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
+> Signed-off-by: MediaTek Corporation <linuxwwan@mediatek.com>
 > ---
->   drivers/thermal/mtk_thermal.c | 99 ++++++++++++++++++++++++++++++++-----------
->   1 file changed, 74 insertions(+), 25 deletions(-)
+>   drivers/net/wwan/Kconfig                 |   11 +
+>   drivers/net/wwan/Makefile                |    1 +
+>   drivers/net/wwan/mediatek/Makefile       |   12 +
+>   drivers/net/wwan/mediatek/mtk_common.h   |   30 +
+>   drivers/net/wwan/mediatek/mtk_dev.c      |   50 +
+>   drivers/net/wwan/mediatek/mtk_dev.h      |  503 ++++++++++
+>   drivers/net/wwan/mediatek/pcie/mtk_pci.c | 1164 ++++++++++++++++++++++
+>   drivers/net/wwan/mediatek/pcie/mtk_pci.h |  150 +++
+>   drivers/net/wwan/mediatek/pcie/mtk_reg.h |   69 ++
+>   9 files changed, 1990 insertions(+)
+>   create mode 100644 drivers/net/wwan/mediatek/Makefile
+>   create mode 100644 drivers/net/wwan/mediatek/mtk_common.h
+>   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.c
+>   create mode 100644 drivers/net/wwan/mediatek/mtk_dev.h
+>   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.c
+>   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_pci.h
+>   create mode 100644 drivers/net/wwan/mediatek/pcie/mtk_reg.h
 > 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 3a5df1440822..b1f4d19edd4f 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -259,6 +259,11 @@ enum mtk_thermal_version {
+> diff --git a/drivers/net/wwan/Kconfig b/drivers/net/wwan/Kconfig
+> index 3486ffe94ac4..a93a0c511d50 100644
+> --- a/drivers/net/wwan/Kconfig
+> +++ b/drivers/net/wwan/Kconfig
+> @@ -119,6 +119,17 @@ config MTK_T7XX
 >   
->   struct mtk_thermal;
+>   	  If unsure, say N.
 >   
-> +struct mtk_thermal_zone {
-> +	struct mtk_thermal *mt;
-> +	int id;
-> +};
+> +config MTK_TMI
+> +	tristate "TMI Driver for Mediatek T-series Device"
+> +	depends on PCI
+> +	help
+> +	  This driver enables Mediatek T-series WWAN Device communication.
 > +
->   struct thermal_bank_cfg {
->   	unsigned int num_sensors;
->   	const int *sensors;
-> @@ -307,6 +312,8 @@ struct mtk_thermal {
->   
->   	const struct mtk_thermal_data *conf;
->   	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
-> +
-> +	int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
->   };
->   
->   /* MT8183 thermal sensor data */
-> @@ -709,6 +716,29 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
->   		mutex_unlock(&mt->lock);
->   }
->   
-> +static int _get_sensor_temp(struct mtk_thermal *mt, int id)
-> +{
-> +	u32 raw;
-> +	int temp;
-> +
-> +	const struct mtk_thermal_data *conf = mt->conf;
-> +
-> +	raw = readl(mt->thermal_base + conf->msr[id]);
-> +
-> +	temp = mt->raw_to_mcelsius(mt, id, raw);
-> +
-> +	/*
-> +	 * The first read of a sensor often contains very high bogus
-> +	 * temperature value. Filter these out so that the system does
-> +	 * not immediately shut down.
-> +	 */
-> +
-> +	if (temp > 200000)
-> +		return -EAGAIN;
-> +	else
-> +		return temp;
-> +}
-> +
->   /**
->    * mtk_thermal_bank_temperature - get the temperature of a bank
->    * @bank:	The bank
-> @@ -721,26 +751,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->   	struct mtk_thermal *mt = bank->mt;
->   	const struct mtk_thermal_data *conf = mt->conf;
->   	int i, temp = INT_MIN, max = INT_MIN;
-> -	u32 raw;
->   
->   	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
-> -		raw = readl(mt->thermal_base + conf->msr[i]);
-> -
-> -		if (mt->conf->version == MTK_THERMAL_V1) {
-> -			temp = raw_to_mcelsius_v1(
-> -				mt, conf->bank_data[bank->id].sensors[i], raw);
-> -		} else {
-> -			temp = raw_to_mcelsius_v2(
-> -				mt, conf->bank_data[bank->id].sensors[i], raw);
-> -		}
-> -
-> -		/*
-> -		 * The first read of a sensor often contains very high bogus
-> -		 * temperature value. Filter these out so that the system does
-> -		 * not immediately shut down.
-> -		 */
-> -		if (temp > 200000)
-> -			temp = 0;
-> +		temp = _get_sensor_temp(mt, i);
->   
->   		if (temp > max)
->   			max = temp;
-> @@ -749,9 +762,10 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
->   	return max;
->   }
->   
-> -static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
-> +static int mtk_read_temp(struct thermal_zone_device *tzdev, int *temperature)
->   {
-> -	struct mtk_thermal *mt = tz->devdata;
-> +	struct mtk_thermal_zone *tz = tzdev->devdata;
-> +	struct mtk_thermal *mt = tz->mt;
->   	int i;
->   	int tempmax = INT_MIN;
->   
-> @@ -770,10 +784,28 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
->   	return 0;
->   }
->   
-> +static int mtk_read_sensor_temp(struct thermal_zone_device *tzdev, int *temperature)
-> +{
-> +	struct mtk_thermal_zone *tz = tzdev->devdata;
-> +	struct mtk_thermal *mt = tz->mt;
-> +	int id = tz->id - 1;
-> +
-> +	if (id < 0)
-> +		return -EACCES;
-> +
-> +	*temperature = _get_sensor_temp(mt, id);
-> +
-> +	return 0;
-> +}
-> +
->   static const struct thermal_zone_device_ops mtk_thermal_ops = {
->   	.get_temp = mtk_read_temp,
->   };
->   
-> +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
-> +	.get_temp = mtk_read_sensor_temp,
-> +};
-> +
->   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
->   				  u32 apmixed_phys_base, u32 auxadc_phys_base,
->   				  int ctrl_id)
-> @@ -1072,6 +1104,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   	u64 auxadc_phys_base, apmixed_phys_base;
->   	struct thermal_zone_device *tzdev;
->   	void __iomem *apmixed_base, *auxadc_base;
-> +	struct mtk_thermal_zone *tz;
->   
->   	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
->   	if (!mt)
-> @@ -1150,6 +1183,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   
->   	mtk_thermal_turn_on_buffer(mt, apmixed_base);
->   
-> +	mt->raw_to_mcelsius = (mt->conf->version == MTK_THERMAL_V1) ?
-> +				raw_to_mcelsius_v1 : raw_to_mcelsius_v2;
-> +
->   	if (mt->conf->version == MTK_THERMAL_V2) {
->   		mtk_thermal_release_periodic_ts(mt, auxadc_base);
->   	}
-> @@ -1161,11 +1197,24 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   
->   	platform_set_drvdata(pdev, mt);
->   
-> -	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
-> -					      &mtk_thermal_ops);
-> -	if (IS_ERR(tzdev)) {
-> -		ret = PTR_ERR(tzdev);
-> -		goto err_disable_clk_peri_therm;
-> +	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
-> +		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-> +		if (!tz)
-> +			return -ENOMEM;
-> +
-> +		tz->mt = mt;
-> +		tz->id = i;
-> +
-> +		tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
-> +							     &mtk_thermal_ops :
-> +							     &mtk_thermal_sensor_ops);
+> +	  If you have one of those Mediatek T-series WWAN Modules and wish to
+> +	  use it in Linux say Y/M here.
 
-Here you use again the aggregation
+ From this and the series descriptions, it is unclear which modem chips 
+this driver is intended for and how does it correlate with the T7xx 
+driver? Is the TMI driver a drop-in replacement for the t7xx driver, or 
+does the TMI driver support any T-series chips except t7xx?
 
 > +
-> +		if (IS_ERR(tzdev)) {
-> +			ret = PTR_ERR(tzdev);
-> +			if (ret == -ENODEV)
-> +				continue;
-> +			goto err_disable_clk_peri_therm;
-> +		}
->   	}
+> +	  If unsure, say N.
+> +
+>   endif # WWAN
 >   
->   	ret = devm_thermal_add_hwmon_sysfs(tzdev);
-> 
+>   endmenu
+> diff --git a/drivers/net/wwan/Makefile b/drivers/net/wwan/Makefile
+> index 3960c0ae2445..198d8074851f 100644
+> --- a/drivers/net/wwan/Makefile
+> +++ b/drivers/net/wwan/Makefile
+> @@ -14,3 +14,4 @@ obj-$(CONFIG_QCOM_BAM_DMUX) += qcom_bam_dmux.o
+>   obj-$(CONFIG_RPMSG_WWAN_CTRL) += rpmsg_wwan_ctrl.o
+>   obj-$(CONFIG_IOSM) += iosm/
+>   obj-$(CONFIG_MTK_T7XX) += t7xx/
+> +obj-$(CONFIG_MTK_TMI) += mediatek/
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+The driver is called mtk_tmi, but its code is placed to the directory 
+with too generic name 'mediatek'. Do you plan too keep all possible 
+future drivers in this directory?
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+--
+Sergey
 
