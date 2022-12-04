@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38645C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 20:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 425FCC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Dec 2022 21:32:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iKviG0l7TUDz37Qqdid8G/FA6WnhkvY6eNdb5QDsL34=; b=LnDLSSWj5/nurQUalz/cgar1dn
-	fJfB8c5Tal3s0CjmLxnkofuh7byTbwxA30BXr5XEu0EfR3Jpob694vwpfKIRsxcCUf2eQ9lclEdP9
-	KFRuYp6f6ByHgJYXqZeT2wM/yhKBdVyOc+ucqNH5I5dMk3zVu6+pW6tp7e4A2aMmfZGqDDB4b7H6e
-	EFjBydjMj7slSkeFrlmRh9tww6ARem5QJQ1FZJpENRQ6KutqCwemfTxqyeIo5xsgG142TbAAxAxzJ
-	E4Sw4Vs/4HFQ2+V01w7hWAO78ZqPhr8C/70SJU9EaBve6bbQHfVFkPSaiDiSzaPIX2rCBE8FSmKA7
-	zeUaZvpw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lI01SEvVv3MktbLdSo/+mTT0yrIOdj+1vIgFJfDfN34=; b=saeoEp4MIN+h0P
+	XZpmQ/nte5TL+tA9SfwIfTvsKoXY21+yFWnP9pZ9kEQzURf5YKHRoB+Yk3ajnvUzJD900k9qECQGQ
+	3koOU1VHwutJmo8HefL0irliFR8iQfod7PgHUl30AznK5m/gpokvzRkr9kn93Vs55GBJewjSiakpm
+	SQph6wQtT5dndWyb961b/VHITW5fVFewnCv0e9I+LPE6tOc+m7mYaAXJLLP/3uVoXEImNj1RiVpf4
+	wzAli+ESgoMnUnR7cc9Lv+PrHYGOnlckzB6mpBiM2Vx7iKTAMxQRJDo2YRm6GgqYM6DCcOfjM++dn
+	oHVW9K9Ue5yGJHNQ+LKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1vCM-00B7lV-47; Sun, 04 Dec 2022 20:02:50 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1p1waa-00BLF1-Bc; Sun, 04 Dec 2022 21:31:56 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p1vCJ-00B7iW-M9
-	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 20:02:48 +0000
-Received: by mail-ej1-x630.google.com with SMTP id vv4so23212000ejc.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 12:02:42 -0800 (PST)
+	id 1p1waX-00BLDg-Jx
+	for linux-mediatek@lists.infradead.org; Sun, 04 Dec 2022 21:31:54 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id n184so12089867yba.6
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Dec 2022 13:31:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=iKviG0l7TUDz37Qqdid8G/FA6WnhkvY6eNdb5QDsL34=;
-        b=axNMmq1WXroii/XhJ4xM3ajgD0ifzuAwqYgUr9atJDe02FLz7wapj+u7PgG4rBs8Ko
-         13Y+R0EGC1mrdTjvW0Caaj044p8zUPFsE5zRnlHsgp6QG7NZqQlypfM4r3otR4urLAAH
-         98OmqCBJVRQVOu7/GqdOZ0h+ZlxhFlZfuwJqs=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lI01SEvVv3MktbLdSo/+mTT0yrIOdj+1vIgFJfDfN34=;
+        b=ihXgyprU2JPflAJxQ2hlVAlQWQi84KLxjubvaMjwbXraHSizz8TCIx4U240bsQyj7+
+         f4S620hisnyPfhiCwKcejyelzlojnRQY4jMp9A5DZ+yb6q2aq4EA73+dpm0+UL0Oxh1a
+         IYwnyg3VzbGB2nq4bXM6+FsV3LOGBHWgjtL25AWN7IG9Q1azGQhN55hwsfFxbGLKWiOD
+         f/a/T7Q/HJsAQI/owlcuy6xGaGqVr+p5wZVckWegEIRl5Ivc5Qji4Sl+FvX4zG7kVyuj
+         +sXdCe5JgrGyvJk71T09UvTiajH6J8eboYF7zb6jD/uuzxRFmOa9C/7E2gTQahmgh7lS
+         cwKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iKviG0l7TUDz37Qqdid8G/FA6WnhkvY6eNdb5QDsL34=;
-        b=0Hgnf6jdtRVhY6mkmUWDFlgUu6MNxzyonGez6ju73iGSLcmMxMNXx/o3BlxLLAWv1h
-         hyazSorribseXZF+8jEL9ZlEf34vriU+lx8Rct3dTs/w4Fdm0XM0+8TrT/g9FrwLqJVD
-         TOBV7QEJ0Mqd5OuMJSOv8UCeD7LotS9AAxy3MZJpo3WCSPTtYTGWaP2ZF5uVIEm4tcSV
-         /Y5qhOoOyKqE5Q+CnmAUixyg44dyzwpxzLnW8p5MugQvMsZ6DvOmDoJoCMhYoGMMBm9G
-         VfviiOm0MiKspXg4r0NLkpjP+EtOWu9spj4hLB7GX4Nx/YuFyVE4fTaVOZojaTLnihpm
-         7tOw==
-X-Gm-Message-State: ANoB5pl+9+dgZtGnlqfD81FptZRhds3QZB1unEK6jn1wNAYbMwOWW59+
-	s9Wg505hXNPJqQHvtMyxXdv7lyBqBBvLY8zNrT+gKw==
-X-Google-Smtp-Source: AA0mqf4+NKcRQLFYvmgnlKpsVsDkUIBi/wj0qkGYtGxQl5MMPw8cMu9zqWCLywEvdB/EGoTRXoExZA0rBnq25guVhT4=
-X-Received: by 2002:a17:906:c18c:b0:7b2:8a6e:c569 with SMTP id
- g12-20020a170906c18c00b007b28a6ec569mr68273173ejz.582.1670184160925; Sun, 04
- Dec 2022 12:02:40 -0800 (PST)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lI01SEvVv3MktbLdSo/+mTT0yrIOdj+1vIgFJfDfN34=;
+        b=JhJWeC30zTfSq4/+IWVCupRv96CGkzrSAniAbsVrUWIVVkesjrDCGCu11ZU7BLkXX9
+         GPLcRWN4zvFT6pcgngk0f6kGrq2s0A311iAmRbukXmoLWJhJ5JcokAIZrJz2iJUYL41a
+         KszQC+DGIHhGu6yAG5HFZ3QdcNVL8AZOEo66sBmJRvdvHcKfFaWZwGKXZ/XTzMLTWpHx
+         Ev1rFE2ed89ovZKcgwkJNTPSoqIhzpClBlDC13P4RvobC4+ZrmeCpL4C0RT/4kvzFybR
+         kjfyxdX8DXaacrGLozUQ8qfW6u2kmH9pLPRinKLtK+3Yn21EkiSQqT9Dhiu430mmSNi+
+         QFbg==
+X-Gm-Message-State: ANoB5pmir6YoZrEUx/hmv46Xr2hyk9lOqe3lxxeXB5FvJ5sUVrL/D2PK
+	nvsJ/1W+ZUFWrqDqbgvms39yqWrcczdFVtJtcFEYOw==
+X-Google-Smtp-Source: AA0mqf6AghRoYoTD/xrAAjTRoEs/YU038ITJkX/3Vhiv+Ox9xXlJbEIBdnkIbFDPiPE2mKag2EXwUYp2ImAROIxTvOc=
+X-Received: by 2002:a25:c485:0:b0:6be:8e8d:639f with SMTP id
+ u127-20020a25c485000000b006be8e8d639fmr72141889ybf.506.1670189512119; Sun, 04
+ Dec 2022 13:31:52 -0800 (PST)
 MIME-Version: 1.0
-References: <20221101142410.31463-1-peter.wang@mediatek.com>
- <98bfafd3-c7b7-89b5-497a-aa694d0152dd@intel.com> <5e00ce60-3859-4964-11f7-e036f6dda56a@acm.org>
- <CAONX=-e1NA--3taTmfbUV+hR_LOSqvBqz_=1mPmYZWaKGGR=ig@mail.gmail.com> <c92655563231dd79ed6d4287d7d5bad4de142a18.camel@mediatek.com>
-In-Reply-To: <c92655563231dd79ed6d4287d7d5bad4de142a18.camel@mediatek.com>
-From: Daniil Lunev <dlunev@chromium.org>
-Date: Mon, 5 Dec 2022 07:02:29 +1100
-Message-ID: <CAONX=-d1Hiif9WFuGVQaMr7iUFxOpOSE7bkJriTrqh-Pvtdq0A@mail.gmail.com>
-Subject: Re: [PATCH v1] ufs: core: wlun suspend SSU fail recovery
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>, 
-	=?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>, 
-	=?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, 
-	=?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>, 
-	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, wsd_upstream <wsd_upstream@mediatek.com>, 
-	"avri.altman@wdc.com" <avri.altman@wdc.com>, 
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>, =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>, 
-	=?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>, 
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, 
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>, 
-	=?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>, 
-	=?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>, 
-	=?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>, 
-	=?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>, 
-	=?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?= <Qilin.Tan@mediatek.com>, 
-	"adrian.hunter@intel.com" <adrian.hunter@intel.com>
+References: <20221130141040.32447-1-arinc.unal@arinc9.com> <20221130141040.32447-3-arinc.unal@arinc9.com>
+In-Reply-To: <20221130141040.32447-3-arinc.unal@arinc9.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sun, 4 Dec 2022 22:31:40 +0100
+Message-ID: <CACRpkdbojTVjR2G+95YS1Xqvau9XmwTkp_KtpaeE7-+v41hgeg@mail.gmail.com>
+Subject: Re: [PATCH 2/5] arm: dts: remove label = "cpu" from DSA dt-binding
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_120247_742393_1BA2DCBE 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221204_133153_712764_BED26AF9 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,22 +81,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Tim Harvey <tharvey@gateworks.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, linux-arm-msm@vger.kernel.org, Konrad Dybcio <konrad.dybcio@somainline.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Stefan Agner <stefan@agner.ch>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Oleksij Rempel <linux@rempel-privat.de>, Fabio Estevam <festevam@gmail.com>, Peng Fan <peng.fan@nxp.com>, Florian Fainelli <f.fainelli@gmail.com>, Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>, Gregory Clement <gregory.clement@bootlin.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>, Ray Jui <rjui@broadcom.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, devicetree@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>, linuxppc-dev@lists.ozlabs.org, Nicholas Piggin <npiggin@gmail.com>, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, soc@kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Scott Branden <sbranden@broadcom.com>, netdev@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Rasmus Villemoes <rasmus.villemoes@prevas.dk>, Nicolas Ferre <nicolas.ferre@microchip.com>, "David S. Miller" <davem@davemloft.net>, linux-renesas-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Michael Riesch <michael.riesch@wolfvision.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> May I have a question, which dievce you use in this failure scenario?
-> I think it is same issue due to SSU fail, and wlun devcie pm enter
-> error state. So the cunsomer(scsi lu device) is block in suspend state
-> and connot resume to reduce pm_only lead to IO hang.
+On Wed, Nov 30, 2022 at 3:13 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc=
+9.com> wrote:
+
+> This is not used by the DSA dt-binding, so remove it from all devicetrees=
+.
 >
-> Thanks.
-> BR
-> Peter
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 
-I don't think it is device specific. I am pretty sure it is the same
-problem, for it traces to the same origin and your patch fixes the
-issue (though with a lot of log spam which is a bit unfortunate, but
-we can live with that)
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
---Daniil
+Yours,
+Linus Walleij
 
