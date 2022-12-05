@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D59C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 14:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B13C47089
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 16:58:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SqkBn9mLRtJjcnUFLzlVYAa4x6ObFLh/9tHISK5m6Q0=; b=IGM844i4F0AjE+nLBvAmHbjhh8
-	O+g7zAoCpKseakhF148GCm+/wbHNV5pyg+hG7Z1DwQXLgC7eJDLh4x/jD1S6Ady4Lxi/reNhdJhTA
-	IU0yoGSqv9UbCZBM1UPl6VCkdmp1l/4MVKvtuY5W2/qi1HJXfhmBFK0RaihgP7fk3aXW2QTGS9XFC
-	1/fZ3tcP8eqBAvSh/WEgycXDZEdk9eHQby2s+f43ytRhKJIopaUMOESGd88+iZY81KawmfWLkOcLx
-	i2WJ5vV8ioyA328Fbpz6kZogGezB/UZHTPzZeaWXRrfWmUFcfH3x/wSmynsWObm35hIiB3LfeOI/u
-	c3zSe+VQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OSbbsJ74TEP47b+sUr2N86BCzXItlgefatqqCYJFGhk=; b=WcmZSg5SUxr62iRaZznTkt72uK
+	usDjs7drOin263mucBT+0G4Iv9iukaO4B3vWRlsolDp0774YRGrcx4r7viTR/kvhg0k/MyXgLGqGf
+	41fES6fAILLWLoZtx2IcDXEizMuiDGeCcWt9pYswOOiBpYEJjtGKJenIWlUye0KQT6aaBSaqgrMWg
+	9EjVCk4omq8NyMHub2jjQnY/heUDBe6XPr+3+NNvpIot9xDeUgesCtScGgVwtQPP2xtE2pr3BuMxA
+	n6FY+63g1gtpSgciE2R/o+KmHGNv1xt9sx+QlOvDk3rCvLOvyqDzo6LbYTmXtCk328rpAeUtJFFyx
+	Gi+Bh26A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2CSy-0044oa-Rj; Mon, 05 Dec 2022 14:29:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p2Enn-0075Ue-7q; Mon, 05 Dec 2022 16:58:47 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2CSv-0044nH-Ud
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 14:29:07 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1p2Enk-0075Fw-Co
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 16:58:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2377B66015ED;
-	Mon,  5 Dec 2022 14:29:04 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670250544;
-	bh=ys8fhiXpp9xvHYpKrIJjEmW2LSYWaxJot+FfCB/4JBY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=W5yslql8CovbY2VpT4REdf9LAbzb1fPe07wid9NhrEc/2QaWSSPPRHveTjyI97Sbp
-	 HWa5MJUYQROM2HltWz1UVqbITxZAcFuFTrEILseEeU5rjGwtzyiAtL0Iwlt1JVCYvC
-	 iYVIO6CwNQDomCqPCIsStEOtac/mDXh3HNuWjjP23Yp4s7zQP4vQLtYRLW8XrxIXbR
-	 BJkJAHeNBzJogQlSbj9lQFyY7mY6GErBOWQUrz35xVcpZQiysa1JFav3wJDK80Ih4a
-	 rp64vG7mtHyEVXs3oeY9bTn1xOI0A/10t5M/pFbSR6AHdQvmk5glsiTaePv1OqMBnx
-	 3asPdLkVxpu/w==
-Message-ID: <efca1639-9dcd-4d72-7c43-4b7bf20db8c4@collabora.com>
-Date: Mon, 5 Dec 2022 15:29:01 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id CC16D6122F;
+	Mon,  5 Dec 2022 16:58:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79BC7C433D6;
+	Mon,  5 Dec 2022 16:58:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670259520;
+	bh=7EV0jXWy9hOf/Ucrpiiq1MKM0P0LmE+diFld3cktmiQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VxWXHy1MF/y8NQI+fNioD1ikZJ+GqVG0pvkrscgNP9CYeJH6A5MDhC1RfHlvwiJtt
+	 6H7zakG3lBi1smYxKz5MMgvPNRIuNNZdVvcYKigRS58NoU1/wWpJ+Ra+R7C6agPDBO
+	 rpgYXETaK7byh7hWSi8c8Ob29bhmPke1utY/2soJGCUr9eBxQrZ20VQ3UXmD8b4ILC
+	 xlYghf7kwL/DG2/WU5iFWGXBy7a6fZ8mfzP3EZAwl5T3+vt8u6ZY4ovNM4qtqcxhD/
+	 LIwRjhkG+aC4f//xuVWoyAIT/QRYy2nsg7TJrBpY2otDRF7TgriJw9jJUHGOxPMKjs
+	 7jq+igAxJusVg==
+Date: Mon, 5 Dec 2022 18:58:35 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+	sujuan.chen@mediatek.com
+Subject: Re: [PATCH v2 net-next] net: ethernet: mtk_wed: fix possible
+ deadlock if mtk_wed_wo_init fails
+Message-ID: <Y44jO1ZT9RgqYtxF@unreal>
+References: <5a29aae6c4a26e807844210d4ddac7950ca5f63d.1670238731.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH] wifi: mt76: mt7915: split mcu chan_mib array up
-Content-Language: en-US
-To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- linux-wireless@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-mediatek@lists.infradead.org
-References: <51130dcbc200962672540cb726dd9841c5ad7fe9.1670049959.git.ryder.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <51130dcbc200962672540cb726dd9841c5ad7fe9.1670049959.git.ryder.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5a29aae6c4a26e807844210d4ddac7950ca5f63d.1670238731.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_062906_165937_CA659852 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20221205_085844_558504_2574394B 
+X-CRM114-Status: GOOD (  21.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,78 +76,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/12/22 08:37, Ryder Lee ha scritto:
-> The current flow confuses coverity check that leads to false reporting,
-> so split the offs[] into two pieces according to chipset revision to
-> silence coverity tool.
+On Mon, Dec 05, 2022 at 12:14:41PM +0100, Lorenzo Bianconi wrote:
+> Introduce __mtk_wed_detach() in order to avoid a possible deadlock in
+> mtk_wed_attach routine if mtk_wed_wo_init fails.
+> Check wo pointer is properly allocated before running mtk_wed_wo_reset()
+> and mtk_wed_wo_deinit() in __mtk_wed_detach routine.
+> Honor mtk_wed_mcu_send_msg return value in mtk_wed_wo_reset().
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->   .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 50 ++++++++++---------
->   1 file changed, 27 insertions(+), 23 deletions(-)
+> Changes since v1:
+> - move wo pointer checks in __mtk_wed_detach()
+> ---
+>  drivers/net/ethernet/mediatek/mtk_wed.c     | 30 ++++++++++++++-------
+>  drivers/net/ethernet/mediatek/mtk_wed_mcu.c |  3 +++
+>  2 files changed, 23 insertions(+), 10 deletions(-)
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> index b2652de082ba..ca315af3905b 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> @@ -2974,38 +2974,42 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
->   
->   int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
->   {
-> -	/* strict order */
-> -	static const u32 offs[] = {
-> -		MIB_NON_WIFI_TIME,
-> -		MIB_TX_TIME,
-> -		MIB_RX_TIME,
-> -		MIB_OBSS_AIRTIME,
-> -		MIB_TXOP_INIT_COUNT,
-> -		/* v2 */
-> -		MIB_NON_WIFI_TIME_V2,
-> -		MIB_TX_TIME_V2,
-> -		MIB_RX_TIME_V2,
-> -		MIB_OBSS_AIRTIME_V2
-> -	};
->   	struct mt76_channel_state *state = phy->mt76->chan_state;
->   	struct mt76_channel_state *state_ts = &phy->state_ts;
->   	struct mt7915_dev *dev = phy->dev;
->   	struct mt7915_mcu_mib *res, req[5];
->   	struct sk_buff *skb;
-> -	int i, ret, start = 0, ofs = 20;
-> +	static const u32 *offs;
-> +	int i, ret, len, offs_cc;
->   	u64 cc_tx;
->   
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> index d041615b2bac..2ce9fbb1c66d 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -174,9 +174,10 @@ mtk_wed_wo_reset(struct mtk_wed_device *dev)
+>  	mtk_wdma_tx_reset(dev);
+>  	mtk_wed_reset(dev, MTK_WED_RESET_WED);
+>  
+> -	mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO,
+> -			     MTK_WED_WO_CMD_CHANGE_STATE, &state,
+> -			     sizeof(state), false);
+> +	if (mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO,
+> +				 MTK_WED_WO_CMD_CHANGE_STATE, &state,
+> +				 sizeof(state), false))
+> +		return;
+>  
+>  	if (readx_poll_timeout(mtk_wed_wo_read_status, dev, val,
+>  			       val == MTK_WED_WOIF_DISABLE_DONE,
+> @@ -576,12 +577,10 @@ mtk_wed_deinit(struct mtk_wed_device *dev)
+>  }
+>  
+>  static void
+> -mtk_wed_detach(struct mtk_wed_device *dev)
+> +__mtk_wed_detach(struct mtk_wed_device *dev)
+>  {
+>  	struct mtk_wed_hw *hw = dev->hw;
+>  
+> -	mutex_lock(&hw_lock);
+> -
+>  	mtk_wed_deinit(dev);
+>  
+>  	mtk_wdma_rx_reset(dev);
+> @@ -590,9 +589,11 @@ mtk_wed_detach(struct mtk_wed_device *dev)
+>  	mtk_wed_free_tx_rings(dev);
+>  
+>  	if (mtk_wed_get_rx_capa(dev)) {
+> -		mtk_wed_wo_reset(dev);
+> +		if (hw->wed_wo)
+> +			mtk_wed_wo_reset(dev);
+>  		mtk_wed_free_rx_rings(dev);
+> -		mtk_wed_wo_deinit(hw);
+> +		if (hw->wed_wo)
+> +			mtk_wed_wo_deinit(hw);
+>  	}
+>  
+>  	if (dev->wlan.bus_type == MTK_WED_BUS_PCIE) {
+> @@ -612,6 +613,13 @@ mtk_wed_detach(struct mtk_wed_device *dev)
+>  	module_put(THIS_MODULE);
+>  
+>  	hw->wed_dev = NULL;
+> +}
+> +
+> +static void
+> +mtk_wed_detach(struct mtk_wed_device *dev)
+> +{
+> +	mutex_lock(&hw_lock);
+> +	__mtk_wed_detach(dev);
+>  	mutex_unlock(&hw_lock);
+>  }
+>  
+> @@ -1490,8 +1498,10 @@ mtk_wed_attach(struct mtk_wed_device *dev)
+>  		ret = mtk_wed_wo_init(hw);
+>  	}
+>  out:
+> -	if (ret)
+> -		mtk_wed_detach(dev);
+> +	if (ret) {
+> +		dev_err(dev->hw->dev, "failed to attach wed device\n");
+> +		__mtk_wed_detach(dev);
+> +	}
+>  unlock:
+>  	mutex_unlock(&hw_lock);
+>  
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> index f9539e6233c9..3dd02889d972 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> @@ -207,6 +207,9 @@ int mtk_wed_mcu_msg_update(struct mtk_wed_device *dev, int id, void *data,
+>  	if (dev->hw->version == 1)
+>  		return 0;
+>  
+> +	if (!wo)
+> +		return -ENODEV;
+> +
 
-A more readable option would be
+Can you please help me to understand how and when this mtk_wed_mcu_msg_update()
+function is called?
 
-	/* strict order */
-	static const u32 chip_offs_v1[] = {
-		MIB_NON_WIFI_TIME,
-		MIB_TX_TIME,
-		MIB_RX_TIME,
-		MIB_OBSS_AIRTIME,
-		MIB_TXOP_INIT_COUNT,
-	};
-
-	static const u32 chip_offs_v2[] = {
-		MIB_NON_WIFI_TIME_V2,
-		MIB_TX_TIME_V2,
-		MIB_RX_TIME_V2,
-		MIB_OBSS_AIRTIME_V2
-	};
-
-	if (is_mt7915(&dev->mt76)) {
-		len = ARRAY_SIZE(chip_offs_v1);
-		offs = chip_offs_v1;
-		offs_cc = 20;
-	} else {
-		len = ARRAY_SIZE(chip_offs_v2);
-		offs = chip_offs_v2;
-		offs_cc = 20;
-	}
-
-Regards,
-Angelo
+I see this line .msg_update = mtk_wed_mcu_msg_update, and
+relevant mtk_wed_device_update_msg() define, but nothing calls to this
+define.
 
 
+
+>  	return mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO, id, data, len,
+>  				    true);
+>  }
+> -- 
+> 2.38.1
+> 
 
