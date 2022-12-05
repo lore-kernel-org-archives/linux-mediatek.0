@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB943C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 07:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 125B5C47088
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 07:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6LulmYrZUN7lkghAcE9Wui09yeAVc9eGaXV0QR0ha8g=; b=eb+gHpjNiladGdOniYp9Cw/12d
-	iUpbgaLWWPPd5XhRmmcwYMjp6S4GYwlA8nbQABVqU/QNYeh7mStJfxRP9QwdJqmB7CI8bb3K4AOnf
-	0WTrzdp8Jve7G0FtjIKS0PSnro3wJcsaFvbwY93c79rCRt38gBL9F/cEK9ZxqKt3/01Y4yaGDmcg9
-	WfeAsAkJ8wNX2g3xlFORoX6xV1TGRcNNfaGDHY/Lakek9hLI0OXS/itQqyTTucOzBpSFWGuMKRZ4+
-	OFCI5DQvF1dlsnou9A4nMKm9qKak8mS6n5i8x4Ta3ZvfcVaHme9qSqUka3QPRp3SsnEx23q40aYdi
-	suhAyuCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=87AgBQA4Kxp3UrxJ6BvkvJGYQQbPRDGXT5DDNc+MxfM=; b=eYidnKKu5RicGGattszH09QSYJ
+	rErEdfyjJNPYJ8OlQ6rTWEAKcGJeb9iMJJUFNSeG1cGz18R6fz/ox0fRYIwELMurqDJfzWYd5QXb9
+	0Rk50DIqqZRRSSIZ30SZs/rrk9RGm/MVDE6Pu9PySDRrzBlB6XHRoegv5fBMAWnSP+tlA9BQBVi7h
+	A6M7cHhu2sZQLuQiu2Wp/7iVu/cw4KY4l8pKygwsHfK4D44QFho5h1RTfjOh9MAoCgMuWp6JggPBY
+	m3VukXLD8Kd1y/W7AF8Qx1BbeJbyTdhFSxjxc1TIJtP0X2gGs8EZsWFHNAb/cauzTdkCYn3AED+aR
+	wdzN43sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p25aD-00FKWM-8E; Mon, 05 Dec 2022 07:08:09 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p25bX-00FLfM-El; Mon, 05 Dec 2022 07:09:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p25a9-00FKSe-2T
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 07:08:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4D79860F88;
-	Mon,  5 Dec 2022 07:08:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE76BC433D6;
-	Mon,  5 Dec 2022 07:08:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670224083;
-	bh=xaI8ieGkNVAf5EJVbnS5sOjm4WQ5ODJeLJQADAuVQX0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NPw92dDrNNI0Z8iydBPT9xBzg1BJCX2TW/mLVdFP3v31qcp9KumxxSG+L8drhjuVj
-	 a2v8o1/ZHxmLoQcATOF4zyY+7qrG9Las7OK4SoqLv/8ivr1JqTmx9GNl/51PSfLpeV
-	 mqWqMUII/i2i9Z+0wWn5eMhxwuJfD8keDK5foO6V7mXIq1nr5CaoaTDwZ2G9h2WD4I
-	 P+TsFlIioCOOvOghUNF3BNjMNjJTsDrAJc1MrbNNK5qTnQAD+sDj7WzO0pOp7Pnqdn
-	 LTTA8HaVHHJbI5PoWKAP7yEV9EgSbUQ64sUdFjt+dNZKZIhkUJW0RITyjwYr/WTvfZ
-	 vmfBITKPm/8zA==
-Date: Mon, 5 Dec 2022 09:07:59 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
-	lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: add reset to
- rx_ring_setup callback
-Message-ID: <Y42Yz2hhwk1Rw1hz@unreal>
-References: <26fa16f2f212bff5edfdbe8a4f41dba7a132b0be.1670072570.git.lorenzo@kernel.org>
+	id 1p25as-00FL5j-Fw; Mon, 05 Dec 2022 07:08:52 +0000
+X-UUID: 2fbb5e313b8a45e08a4e716e43fbce1a-20221205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=87AgBQA4Kxp3UrxJ6BvkvJGYQQbPRDGXT5DDNc+MxfM=;
+	b=V5gDgz/utsO8vaEu3GIjZW/f6OfsmM3TClU7R9C2IAzbeXn3CJLu1RwQRv/dl/iDcNy55+oFTzoJP1iF52egcYQcuaEdZCnV6H7hLMJn7Gl0vAuaFZxc3aQfAMASvdMIaxEcsGjM3FN4yZYa3h4cyujubx53AJWndlIEP8ZN7Ys=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:57f351f8-540a-4af5-9b77-b8c3b2349c69,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:ad062a1f-5e1d-4ab5-ab8e-3e04efc02b30,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 2fbb5e313b8a45e08a4e716e43fbce1a-20221205
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2232624; Mon, 05 Dec 2022 00:08:41 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 5 Dec 2022 14:58:08 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 5 Dec 2022 14:58:07 +0800
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
+	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
+	<gch981213@gmail.com>
+CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
+	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
+Subject: [PATCH v2 0/9] Add MediaTek MT7986 SPI NAND and ECC support
+Date: Mon, 5 Dec 2022 14:57:47 +0800
+Message-ID: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <26fa16f2f212bff5edfdbe8a4f41dba7a132b0be.1670072570.git.lorenzo@kernel.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_230805_245272_D95B938C 
-X-CRM114-Status: GOOD (  20.00  )
+X-CRM114-CacheID: sfid-20221204_230850_631348_5F5009A0 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,132 +84,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 03, 2022 at 02:06:30PM +0100, Lorenzo Bianconi wrote:
-> Introduce reset parameter to mtk_wed_rx_ring_setup signature.
-> This is a preliminary patch to add Wireless Ethernet Dispatcher reset
-> support.
+This patch series add MediaTek MT7986 SPI NAND and ECC controller
+support, split ECC engine with rawnand controller in bindings and
+hange to YAML schema.
 
-So please submit it as part the relevant series.
+Changes since V1:
+ - Use existing sample delay property.
+ - Add restricting for optional nfi_hclk.
+ - Improve and perfect dt-bindings documentation.
+ - Change existing node name to match NAND controller DT bingings.
+ - Fix issues reported by dt_binding_check.
+ - Fix issues reported by dtbs_check.
 
-Thanks
+Xiangsheng Hou (9):
+  spi: mtk-snfi: Add snfi support for MT7986 IC
+  spi: mtk-snfi: Change default page format to setup default setting
+  spi: mtk-snfi: Add optional nfi_hclk which needed for MT7986
+  mtd: nand: ecc-mtk: Add ECC support fot MT7986 IC
+  dt-bindings: spi: mtk-snfi: Add compatible for MT7986
+  spi: mtk-snfi: Add snfi sample delay and read latency adjustment
+  dt-bindings: spi: mtk-snfi: Add read latch latency property
+  dt-bindings: mtd: Split ECC engine with rawnand controller
+  dt-bindings: mtd: ecc-mtk: Add compatible for MT7986
 
-> 
-> Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_wed.c  | 20 +++++++++++++-------
->  drivers/net/wireless/mediatek/mt76/dma.c |  2 +-
->  include/linux/soc/mediatek/mtk_wed.h     |  8 ++++----
->  3 files changed, 18 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> index 6352abd4157e..b1ec3f353b66 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> @@ -1216,7 +1216,8 @@ mtk_wed_wdma_rx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
->  }
->  
->  static int
-> -mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size)
-> +mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
-> +			   bool reset)
->  {
->  	u32 desc_size = sizeof(struct mtk_wdma_desc) * dev->hw->version;
->  	struct mtk_wed_ring *wdma;
-> @@ -1225,8 +1226,8 @@ mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size)
->  		return -EINVAL;
->  
->  	wdma = &dev->tx_wdma[idx];
-> -	if (mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE, desc_size,
-> -			       true))
-> +	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
-> +					 desc_size, true))
->  		return -ENOMEM;
->  
->  	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_BASE,
-> @@ -1236,6 +1237,9 @@ mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size)
->  	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_CPU_IDX, 0);
->  	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_DMA_IDX, 0);
->  
-> +	if (reset)
-> +		mtk_wed_ring_reset(wdma, MTK_WED_WDMA_RING_SIZE, true);
-> +
->  	if (!idx)  {
->  		wed_w32(dev, MTK_WED_WDMA_RING_TX + MTK_WED_RING_OFS_BASE,
->  			wdma->desc_phys);
-> @@ -1577,18 +1581,20 @@ mtk_wed_txfree_ring_setup(struct mtk_wed_device *dev, void __iomem *regs)
->  }
->  
->  static int
-> -mtk_wed_rx_ring_setup(struct mtk_wed_device *dev, int idx, void __iomem *regs)
-> +mtk_wed_rx_ring_setup(struct mtk_wed_device *dev, int idx, void __iomem *regs,
-> +		      bool reset)
->  {
->  	struct mtk_wed_ring *ring = &dev->rx_ring[idx];
->  
->  	if (WARN_ON(idx >= ARRAY_SIZE(dev->rx_ring)))
->  		return -EINVAL;
->  
-> -	if (mtk_wed_ring_alloc(dev, ring, MTK_WED_RX_RING_SIZE,
-> -			       sizeof(*ring->desc), false))
-> +	if (!reset && mtk_wed_ring_alloc(dev, ring, MTK_WED_RX_RING_SIZE,
-> +					 sizeof(*ring->desc), false))
->  		return -ENOMEM;
->  
-> -	if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE))
-> +	if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
-> +				       reset))
->  		return -ENOMEM;
->  
->  	ring->reg_base = MTK_WED_RING_RX_DATA(idx);
-> diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-> index 3f8c0845fcca..f795548562f5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/dma.c
-> +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-> @@ -648,7 +648,7 @@ mt76_dma_wed_setup(struct mt76_dev *dev, struct mt76_queue *q)
->  			q->wed_regs = wed->txfree_ring.reg_base;
->  		break;
->  	case MT76_WED_Q_RX:
-> -		ret = mtk_wed_device_rx_ring_setup(wed, ring, q->regs);
-> +		ret = mtk_wed_device_rx_ring_setup(wed, ring, q->regs, false);
->  		if (!ret)
->  			q->wed_regs = wed->rx_ring[ring].reg_base;
->  		break;
-> diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
-> index beb190449704..a0746d4aec20 100644
-> --- a/include/linux/soc/mediatek/mtk_wed.h
-> +++ b/include/linux/soc/mediatek/mtk_wed.h
-> @@ -160,7 +160,7 @@ struct mtk_wed_ops {
->  	int (*tx_ring_setup)(struct mtk_wed_device *dev, int ring,
->  			     void __iomem *regs, bool reset);
->  	int (*rx_ring_setup)(struct mtk_wed_device *dev, int ring,
-> -			     void __iomem *regs);
-> +			     void __iomem *regs, bool reset);
->  	int (*txfree_ring_setup)(struct mtk_wed_device *dev,
->  				 void __iomem *regs);
->  	int (*msg_update)(struct mtk_wed_device *dev, int cmd_id,
-> @@ -228,8 +228,8 @@ mtk_wed_get_rx_capa(struct mtk_wed_device *dev)
->  	(_dev)->ops->irq_get(_dev, _mask)
->  #define mtk_wed_device_irq_set_mask(_dev, _mask) \
->  	(_dev)->ops->irq_set_mask(_dev, _mask)
-> -#define mtk_wed_device_rx_ring_setup(_dev, _ring, _regs) \
-> -	(_dev)->ops->rx_ring_setup(_dev, _ring, _regs)
-> +#define mtk_wed_device_rx_ring_setup(_dev, _ring, _regs, _reset) \
-> +	(_dev)->ops->rx_ring_setup(_dev, _ring, _regs, _reset)
->  #define mtk_wed_device_ppe_check(_dev, _skb, _reason, _hash) \
->  	(_dev)->ops->ppe_check(_dev, _skb, _reason, _hash)
->  #define mtk_wed_device_update_msg(_dev, _id, _msg, _len) \
-> @@ -249,7 +249,7 @@ static inline bool mtk_wed_device_active(struct mtk_wed_device *dev)
->  #define mtk_wed_device_reg_write(_dev, _reg, _val) do {} while (0)
->  #define mtk_wed_device_irq_get(_dev, _mask) 0
->  #define mtk_wed_device_irq_set_mask(_dev, _mask) do {} while (0)
-> -#define mtk_wed_device_rx_ring_setup(_dev, _ring, _regs) -ENODEV
-> +#define mtk_wed_device_rx_ring_setup(_dev, _ring, _regs, _reset) -ENODEV
->  #define mtk_wed_device_ppe_check(_dev, _skb, _reason, _hash)  do {} while (0)
->  #define mtk_wed_device_update_msg(_dev, _id, _msg, _len) -ENODEV
->  #define mtk_wed_device_stop(_dev) do {} while (0)
-> -- 
-> 2.38.1
-> 
+ .../bindings/mtd/mediatek,mtk-nfc.yaml        | 171 +++++++++++++++++
+ .../mtd/mediatek,nand-ecc-engine.yaml         |  63 +++++++
+ .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ------------------
+ .../bindings/spi/mediatek,spi-mtk-snfi.yaml   |  58 +++++-
+ arch/arm/boot/dts/mt2701.dtsi                 |   2 +-
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   2 +-
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   2 +-
+ drivers/mtd/nand/ecc-mtk.c                    |  18 ++
+ drivers/spi/spi-mtk-snfi.c                    |  66 ++++++-
+ 9 files changed, 366 insertions(+), 192 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+ create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+
+-- 
+2.25.1
+
 
