@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1954C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 12:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21629C47089
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 13:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OSLQ0X3mNkdsosP2nwSWE/EhqCtiFodVErljvAJpau4=; b=eaE3l8QjZ0hCBJUKCbN2lVCHtQ
-	fCLAiEDjWDmh7TNK8fLPVzxTuZRTEImQYnv+O56rBhBa2zfvPSX7mUmwvOEVGmXV/anY4gay/JHeX
-	jsMHZdlgGjd2Yi3hOQBkXPGnhN6qIPCVBUqb/O7vJVEfPqp1iiJckG46UrprSq4o2NptMdbR9XCPI
-	Y4eNIGCC8suuouaZwT4HAOpIbVu765e+HA2hQ8alAviiOqAsQCVo80NXplvPepekYMxSbCOxp3SoU
-	FMk/sKK1kDl436uStcb5w2ZCT6qJUt/FqhNunAN1/o+o5/Y9oFL8AC+yaF/zGqVnNs38TjPJd3FRX
-	w8BDhzBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3eJf8i7mbE4W5KmZ65ut7au95IAJO/5SeyyJ7PBLcow=; b=4PAJXIJPHmXLKeZu0EjZooijKo
+	Pmol3gCZb1iUHgnqpdvPupWpONpdGwenEyrSMcXJWZL2AolmXHAJR0dy9pcMoDySq5e6Nog7tX1YZ
+	JvMgfF8reRkCT6oT3fDFFNqfmm82BHXummgTtL43NdECsQ5E+P5A/wQUmabNCJPCLfndHsWwSuX+p
+	NrWigcuiUM5xiajLwTwvPWAoqeemE6e9DXr7k793+GcjssN/TBLV2UQeXn9Fyiu3tTZCu85bDXBTv
+	5nNeURDWfjyx1FTN+2Sf9/ggnQhNYJONu3sd/4uofCGcWOYK9xgu+OmchxkX9d5SpndPBCqAuqjmB
+	81MmXCXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Asv-002udn-E2; Mon, 05 Dec 2022 12:47:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p2BKQ-003ILD-Lp; Mon, 05 Dec 2022 13:16:14 +0000
+Received: from mail-pf1-f172.google.com ([209.85.210.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Ass-002uRd-5E
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 12:47:47 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0EEE56601DEB;
-	Mon,  5 Dec 2022 12:47:43 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670244464;
-	bh=IX5+K1rvElPGfl6ayfERS9NPL9dQCiYw7XQDBInKEz8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fFPkiPGfeySh6X8ZoJnx7dFwSc32Woq7Me11PLLB+sprLgTD4njuPtQOZWDYOiCZU
-	 9u4FqjLPyXF7tRv0zJTpo+q3FTCgyq07C3uEiaDJdq7CJt9HgkP6Z4i8ino05LwUUl
-	 rDPR+2565rCOACH4tdU7SzaOodt/LWoFcRWRt0xS+kkJUU6cctKLK7CD8HETX0cHcq
-	 7Uo4qz9AauL3IzA6vWnxHpBZvPptbGFfiUZ3PKaMzI/sJSgq8Bh4RI6sGPSdr9AZlh
-	 7sAyzKaz39pFEca9cBE2RnaMAe5HRF+A4JrxlcjZ6cGw9da5DFdO5L2uAxusQ/c2CI
-	 s4IeZKrN/CFIQ==
-Message-ID: <4411cfd9-7286-32fd-2032-622caa099e91@collabora.com>
-Date: Mon, 5 Dec 2022 13:47:40 +0100
+	id 1p2BKN-003IKC-O1
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 13:16:13 +0000
+Received: by mail-pf1-f172.google.com with SMTP id a14so7263673pfa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 05:16:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3eJf8i7mbE4W5KmZ65ut7au95IAJO/5SeyyJ7PBLcow=;
+        b=Uv7EkCEhC+Tbfxz/MbW2eaSXDzrwPtZXT9eLOIc17El2LKdo8oujsNQuNQICto/eDy
+         YPO7h5rhzyxQ/69NLU5AbePOHB4YLicaAlKfi83WPy0tIeCGqwsC2MhujfaahPNP3FxN
+         AY6mV97HU8ndvqVt2fjzl43B6594CpkiibIeac6PIIa1HTSeGTSV+kSewyux21SsPrJB
+         S3dL8seLItwfoG3pam162oqqP9F9HkZI5/hAwyl9OG4TGSHSJQrOXYJWXQFYUF2E8SjD
+         CG4dsyFq7KKUxnnfaWYoLsGNonIOiqa9Vgl7QVwoigwYOmF40dDTY7DYXYFNKNNeZwE7
+         w1mA==
+X-Gm-Message-State: ANoB5pmKl1NDY6paf10q3qaahx/JSIDUXOfcpc65vkuaFqgSmA4T8ik3
+	FZALOtrLz5H3kGapV5RMlp4CVg==
+X-Google-Smtp-Source: AA0mqf7cuZEWFKflQSkI5L3ytUqAJesB15FOOlmdmmqL/kbAzYcaptcZPVkjel2Bw6FR7Aj4Wy6qjQ==
+X-Received: by 2002:a63:4246:0:b0:477:98cc:3d01 with SMTP id p67-20020a634246000000b0047798cc3d01mr52742551pga.505.1670246169869;
+        Mon, 05 Dec 2022 05:16:09 -0800 (PST)
+Received: from localhost (63-228-113-140.tukw.qwest.net. [63.228.113.140])
+        by smtp.gmail.com with ESMTPSA id p7-20020a625b07000000b0056246403534sm7923917pfb.88.2022.12.05.05.16.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Dec 2022 05:16:09 -0800 (PST)
+From: Kevin Hilman <khilman@kernel.org>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Mark Brown
+ <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Alexandre
+ Belloni <alexandre.belloni@bootlin.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Alessandro Zummo
+ <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, Fabien Parent <fabien.parent@linaro.org>,
+ Tianping Fang <tianping.fang@mediatek.com>, Flora Fu
+ <flora.fu@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Pavel Machek
+ <pavel@ucw.cz>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
+ <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, Rob Herring
+ <robh@kernel.org>, Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-rtc@vger.kernel.org, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Fabien Parent
+ <fparent@baylibre.com>, linux-leds@vger.kernel.org
+Subject: Re: [PATCH v7 0/8] Add MediaTek MT6357 PMIC support
+In-Reply-To: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
+References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
+Date: Mon, 05 Dec 2022 05:16:08 -0800
+Message-ID: <7hr0xe56uf.fsf@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH net-next v1 01/13] net: wwan: tmi: Add PCIe core
-Content-Language: en-US
-To: =?UTF-8?B?WWFuY2hhbyBZYW5nICjmnajlvabotoUp?= <Yanchao.Yang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "loic.poulain@linaro.org" <loic.poulain@linaro.org>,
- "edumazet@google.com" <edumazet@google.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "johannes@sipsolutions.net" <johannes@sipsolutions.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Cc: =?UTF-8?B?Q2hyaXMgRmVuZyAo5Yav5L+d5p6XKQ==?= <Chris.Feng@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?TWluZ2xpYW5nIFh1ICjlvpDmmI7kuq4p?= <mingliang.xu@mediatek.com>,
- "linuxwwan@mediatek.com" <linuxwwan@mediatek.com>,
- =?UTF-8?B?TWluIERvbmcgKOiRo+aVjyk=?= <min.dong@mediatek.com>,
- "linuxwwan@intel.com" <linuxwwan@intel.com>,
- "m.chetan.kumar@intel.com" <m.chetan.kumar@intel.com>,
- =?UTF-8?B?TGlhbmcgTHUgKOWQleS6rik=?= <liang.lu@mediatek.com>,
- =?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>,
- =?UTF-8?B?SGFvemhlIENoYW5nICjluLjmtanlk7Ip?= <Haozhe.Chang@mediatek.com>,
- =?UTF-8?B?SHVhIFlhbmcgKOadqOWNjik=?= <Hua.Yang@mediatek.com>,
- =?UTF-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>,
- =?UTF-8?B?QWlkZW4gV2FuZyAo546L5ZKP6bqSKQ==?= <Aiden.Wang@mediatek.com>,
- =?UTF-8?B?RmVsaXggQ2hlbiAo6ZmI6Z2eKQ==?= <Felix.Chen@mediatek.com>,
- =?UTF-8?B?VGluZyBXYW5nICjnjovmjLop?= <ting.wang@mediatek.com>,
- =?UTF-8?B?R3VvaGFvIFpoYW5nICjlvKDlm73osaop?= <Guohao.Zhang@mediatek.com>,
- =?UTF-8?B?TWluZ2NodWFuZyBRaWFvICjkuZTmmI7pl68p?=
- <Mingchuang.Qiao@mediatek.com>, =?UTF-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?=
- <Lambert.Wang@mediatek.com>
-References: <20221122111152.160377-1-yanchao.yang@mediatek.com>
- <20221122111152.160377-2-yanchao.yang@mediatek.com>
- <1cca2790-5805-b4fc-f8e8-2c490db487f6@collabora.com>
- <e7d3bfeed57157e8859a24f501b7efb74e21f0f9.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e7d3bfeed57157e8859a24f501b7efb74e21f0f9.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_044746_369490_78E2B288 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20221205_051611_798088_8F18C7EE 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,74 +91,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/12/22 13:40, Yanchao Yang (杨彦超) ha scritto:
-> On Thu, 2022-11-24 at 12:06 +0100, AngeloGioacchino Del Regno wrote:
->> Il 22/11/22 12:11, Yanchao Yang ha scritto:
->>> From: MediaTek Corporation <linuxwwan@mediatek.com>
->>>
->>> Registers the TMI device driver with the kernel. Set up all the
->>> fundamental
->>> configurations for the device: PCIe layer, Modem Host Cross Core
->>> Interface
->>> (MHCCIF), Reset Generation Unit (RGU), modem common control
->>> operations and
->>> build infrastructure.
->>>
->>> * PCIe layer code implements driver probe and removal, MSI-X
->>> interrupt
->>> initialization and de-initialization, and the way of resetting the
->>> device.
->>> * MHCCIF provides interrupt channels to communicate events such as
->>> handshake,
->>> PM and port enumeration.
->>> * RGU provides interrupt channels to generate notifications from
->>> the device
->>> so that the TMI driver could get the device reset.
->>> * Modem common control operations provide the basic read/write
->>> functions of
->>> the device's hardware registers, mask/unmask/get/clear functions of
->>> the
->>> device's interrupt registers and inquiry functions of the device's
->>> status.
->>>
->>> Signed-off-by: Ting Wang <ting.wang@mediatek.com>
->>> Signed-off-by: MediaTek Corporation <linuxwwan@mediatek.com>
-> 
-> Hello Angelo,
-> 
->> Hello Yanchao,
->> thanks for the patch! However, there are some things to improve...
->>
->> First of all, you have to signoff (in your name) all patches that you
->> send.
-> 
-> Thank your suggestion. Fix it next version (add Signed-off-by: Yanchao
-> Yang <yanchao.yang@mediatek.com> for all patches)
->> Check below for more comments...
->>
->>> ---
+Matthias,
 
-..snip.. :-)
+Alexandre Mergnat <amergnat@baylibre.com> writes:
 
-There's a misunderstanding here: when I write
+> This patch series adds MFD, PMIC keys, and regulator support for MT6357.
+> MT6357 is a MediaTek PMIC very similar to MT6358.
 
-"..snip.."
+The regulator driver (and bindings) were merged by Mark.  Could you take
+the rest of this series via your mediatek tree?  The input driver (and
+bindings) are ack'd by Dmitry.
 
-I mean "I'm snipping out lines of code for which I have no comments, or
-for which comments are redundant"
+Kevin
 
-I do that to increase readability of reviews and decrease the size of the
-mail that's going out, nothing else.
 
->>
->>> +	u32 (*read32)(struct mtk_md_dev *mdev, u64 addr);
->>
->> ..snip..
-> 
-> do you mean we should remove read function wrapper?
 
-No, that's fine.
 
-Regards,
-Angelo
 
