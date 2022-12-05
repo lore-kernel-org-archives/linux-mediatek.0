@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93A13C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AC16C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q0HmqT2L+hRrALpz9hs5ICFmu3LiSYWQP93q6zIDpO8=; b=UzmZch9YWg0i4lFrn1s+T/gvyy
-	KcPu+puyG4Zfvu1e4dM7dxLZtlMlOQryBW41cn/AMvz+apCOBNS9KUKOUHg/g/6CWanjFRkUZvZ8f
-	HhoyPVk3pDSVOgMzGWoRRSuArQtK+umAekm4B26ikE5ZKvbHoU90Nx58KlzK/OJ45+xr7MrTuQMrv
-	9U5F+FdJOsRujliWZDujEnY1aiekUPx/bahMZNVErFLw+UkCUFATCQhovKIxtUe7QoUl+b5bsDpRv
-	Z9Tcq7NoKObpYDO/lFrK4BduAjzWG5xKr2QFofj7gUznSrMRzJCSl7dQpLvWCaC5ZirMi/bbiqkQY
-	mV2NB6Nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GlJ2Pnimn4eRqc2TDacYNHE0ujFtrinL9YvZeTlViIw=; b=ww1IZtXSBsfRgIgpEgjn7mHitt
+	s9Vns5t+ZavPEJZGjHEZ1cxJZH98fn+Z24wM7vrheAxt99QBd2KzLexyTjfgvw5n81dkApu+v4kxI
+	T6u7sBW31+TODPtHpTMqETbXTW0dQAFj9Tv3ZuxCqgBEerCvBCM3yNUZzgg8Jkgx7YvaeKNB+SOJx
+	5GqsDlfwHHrLMxqSa0gSTubYgTb06+ECgx/hHeEf+879Fxfo8Tap5Wrxa+ZqSS0Uio72rk1IM8ZIr
+	JaGIUWOZezfJHvH3WMP6S5Pi98CUBxW4PZjJkyUzdbFSlahlISvozjQegHe68kmHPIqA0NpPCFVqM
+	W6V796bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27Ob-00Gmgo-8o; Mon, 05 Dec 2022 09:04:17 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p27PV-00Gn0R-Px; Mon, 05 Dec 2022 09:05:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27OY-00Gmeg-70
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 09:04:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A3C1EB80D9A;
-	Mon,  5 Dec 2022 09:04:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF379C433D7;
-	Mon,  5 Dec 2022 09:04:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670231051;
-	bh=bENrYC1DUTi7/2KslKN/oLUt/KX6fo/YMhSWxvmhlaw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZL43+Lq34QOg/cUthOBkNfdFvVxoqsstjEkm5gMcUEF03/Nrqx0mHux/j/9fxEMuZ
-	 Huzet9AsWE4xdhPoj+UguELC+L6mprvVsSOLB1dIsz0OYAhgmBu2conyuUOWS9oDWG
-	 fhNscjeuOmsHaTYTF3ofeN8mGq8r9HQjxfRE2Q3fWjjiwb0pcJXMTfzxFfOe0gBpiQ
-	 9cIzoinnhF38qU1kqqk+xjZKPg8KkpBZ6u1C7DIWPlmIt3FliJ3SWYyylXh1gfDqwt
-	 0WG+JRXi4kYYyka2D+fMvWPOivJqn+VdV09rJJJFPPk4/IiT1rn+p3onfLCRQcWTNk
-	 k+gbEuaJkqc2g==
-Date: Mon, 5 Dec 2022 10:04:07 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Leon Romanovsky <leon@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: fix possible deadlock
- if mtk_wed_wo_init fails
-Message-ID: <Y420B4/IpwFHJAck@lore-desk>
-References: <a87f05e60ea1a94b571c9c87b69cc5b0e94943f2.1669999089.git.lorenzo@kernel.org>
- <Y4ybbkn+nXkGsqWe@unreal>
- <Y4y4If8XXu+wErIj@lore-desk>
- <Y42d2us5Pv1UqhEj@unreal>
+	id 1p27PS-00Gmxc-Uj; Mon, 05 Dec 2022 09:05:12 +0000
+X-UUID: eee61ffd911f431f839ccad6c576c03e-20221205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GlJ2Pnimn4eRqc2TDacYNHE0ujFtrinL9YvZeTlViIw=;
+	b=BDlmM6I1mOIfFxSsSzs8dOVF1XDyW56S3YOWCdWhzHOWGPCurZbCT8qWeDvvNJLXZBflGbuHMxi2uSSyKJ218JT9tXMlb6kAijT/2wG6glZHQt9OxJ3Vdm3fo2SBt+ZEo3AHqWT6PKZMuXbih4csbWfS6AzaPun5Qb6BcRTJRWE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:bfe9dfe2-ad5a-4857-921c-e1e35d839b4d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:aad5dabc-3f71-4801-a1a6-1117dd275996,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: eee61ffd911f431f839ccad6c576c03e-20221205
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <bayi.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 564790515; Mon, 05 Dec 2022 02:04:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 5 Dec 2022 16:24:21 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 5 Dec 2022 16:24:21 +0800
+From: Bayi Cheng <bayi.cheng@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
+CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	Chuanhong Guo <gch981213@gmail.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, bayi cheng
+	<bayi.cheng@mediatek.com>
+Subject: [PATCH v1] spi: spi-mtk-nor: Add recovery mechanism for dma read timeout
+Date: Mon, 5 Dec 2022 16:24:19 +0800
+Message-ID: <20221205082419.29170-1-bayi.cheng@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b7kiYn5Wg7Rk9JEy"
-Content-Disposition: inline
-In-Reply-To: <Y42d2us5Pv1UqhEj@unreal>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_010414_609232_753FA668 
-X-CRM114-Status: GOOD (  28.28  )
+X-CRM114-CacheID: sfid-20221205_010511_019274_CBF7D95D 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,111 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: bayi cheng <bayi.cheng@mediatek.com>
 
---b7kiYn5Wg7Rk9JEy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The state machine of MTK spi nor controller may be disturbed by some
+glitch signals from the relevant BUS during dma read, Although the
+possibility of causing the dma read to fail is next to nothing,
+However, if error-handling is not implemented, which makes the feature
+somewhat risky.
 
-On Dec 05, Leon Romanovsky wrote:
-> On Sun, Dec 04, 2022 at 04:09:21PM +0100, Lorenzo Bianconi wrote:
-> > > On Fri, Dec 02, 2022 at 06:36:33PM +0100, Lorenzo Bianconi wrote:
-> > > > Introduce __mtk_wed_detach() in order to avoid a possible deadlock =
-in
-> > > > mtk_wed_attach routine if mtk_wed_wo_init fails.
-> > > >=20
-> > > > Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo =
-support")
-> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > ---
-> > > >  drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++++++++++++---=
-----
-> > > >  drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 10 ++++++---
-> > > >  drivers/net/ethernet/mediatek/mtk_wed_wo.c  |  3 +++
-> > > >  3 files changed, 26 insertions(+), 11 deletions(-)
-> > >=20
-> > > <...>
-> > >=20
-> > > > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/=
-net/ethernet/mediatek/mtk_wed_mcu.c
-> > > > index f9539e6233c9..b084009a32f9 100644
-> > > > --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> > > > +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> > > > @@ -176,6 +176,9 @@ int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo,=
- int id, int cmd,
-> > > >  	u16 seq;
-> > > >  	int ret;
-> > > > =20
-> > > > +	if (!wo)
-> > > > +		return -ENODEV;
-> > >=20
-> > > <...>
-> > >=20
-> > > >  static void
-> > > >  mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
-> > > >  {
-> > > > +	if (!wo)
-> > > > +		return;
-> > >=20
-> > > How are these changes related to the written in deadlock?
-> > > How is it possible to get internal mtk functions without valid wo?
-> >=20
-> > Hi Leon,
-> >=20
-> > if mtk_wed_rro_alloc() fails in mtk_wed_attach(), we will end up running
-> > __mtk_wed_detach() when wo struct is not allocated yet (wo is allocated=
- in
-> > mtk_wed_wo_init()).
->=20
-> IMHO, it is a culprit, proper error unwind means that you won't call to
-> uninit functions for something that is not initialized yet. It is better
-> to fix it instead of adding "if (!wo) ..." checks.
+Add an error-handling mechanism here, reset the state machine and
+re-read the data when an error occurs.
 
-So, iiuc, you would prefer to do something like:
+Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
+---
+Change in v1:
+  -Reset the state machine when dma read fails and read again.
+---
+---
+ drivers/spi/spi-mtk-nor.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-__mtk_wed_detach()
-{
-	...
-	if (mtk_wed_get_rx_capa(dev) && wo) {
-		mtk_wed_wo_reset(dev);
-		mtk_wed_free_rx_rings(dev);
-		mtk_wed_wo_deinit(hw);
-	}
-	...
-=09
-Right? I am fine both ways :)
+diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+index d167699a1a96..c77d79da9a4c 100644
+--- a/drivers/spi/spi-mtk-nor.c
++++ b/drivers/spi/spi-mtk-nor.c
+@@ -80,6 +80,9 @@
+ #define MTK_NOR_REG_DMA_FADR		0x71c
+ #define MTK_NOR_REG_DMA_DADR		0x720
+ #define MTK_NOR_REG_DMA_END_DADR	0x724
++#define MTK_NOR_REG_CG_DIS		0x728
++#define MTK_NOR_SFC_SW_RST		BIT(2)
++
+ #define MTK_NOR_REG_DMA_DADR_HB		0x738
+ #define MTK_NOR_REG_DMA_END_DADR_HB	0x73c
+ 
+@@ -616,7 +619,18 @@ static int mtk_nor_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
+ 			mtk_nor_set_addr(sp, op);
+ 			return mtk_nor_read_pio(sp, op);
+ 		} else {
+-			return mtk_nor_read_dma(sp, op);
++			ret = mtk_nor_read_dma(sp, op);
++			if (ret) {
++				dev_err(sp->dev, "try to read again\n");
++				mtk_nor_rmw(sp, MTK_NOR_REG_CG_DIS, 0, MTK_NOR_SFC_SW_RST);
++				mb(); /* flush previous writes */
++				mtk_nor_rmw(sp, MTK_NOR_REG_CG_DIS, MTK_NOR_SFC_SW_RST, 0);
++				mb(); /* flush previous writes */
++				writel(MTK_NOR_ENABLE_SF_CMD, sp->base + MTK_NOR_REG_WP);
++				mtk_nor_setup_bus(sp, op);
++				ret = mtk_nor_read_dma(sp, op);
++			}
++			return ret;
+ 		}
+ 	}
+ 
+-- 
+2.18.0
 
->=20
-> > Moreover __mtk_wed_detach() can run mtk_wed_wo_reset() and mtk_wed_wo_d=
-einit()
->=20
-> This is another side of same coin. If you can run them in parallel, you
-> need locking protection and ability to cancel work, so nothing is going
-> to be executed once cleanup succeeded.
-
-Sorry, I did not get what you mean here with 'in parallel'. __mtk_wed_detac=
-h()
-always run with hw_lock mutex help in both mtk_wed_attach() or
-mtk_wed_detach().
-
-Regards,
-Lorenzo
-
->=20
-> These were my 2 cents, totally IMHO.
->=20
-> Thanks
-
---b7kiYn5Wg7Rk9JEy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY420BwAKCRA6cBh0uS2t
-rP7CAQCPV9L7X9gyMO52Hg3Vpt1Z75bnZXcBgH59ibA6g58pYAD/XNFOw9soq3Jx
-MzkDWh5S2ZvFTFPXP7n4sxpJ+HAbMwE=
-=n8lE
------END PGP SIGNATURE-----
-
---b7kiYn5Wg7Rk9JEy--
 
