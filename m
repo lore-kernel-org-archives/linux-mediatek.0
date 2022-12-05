@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7754DC47089
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 23:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE895C47089
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 23:31:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iDF/gKKPFFdYm1Z2aXrfOeQfBC1PEKz8UeufAaOXx9E=; b=lG0U8tgxnY7Xc0kcjgbLP6ihiW
-	LRnZujqmQxM+bERR7FaH4Y0NsvmEha0whheeuHj6gQ59EOByvfxuJBPRMpiU8ZXxuber2LAtFpOLZ
-	ENMhIiIoSIsv64OA6dHu1Yc6HFU5Zr4IM6bHlkqNMdPMJBXF62Cn79WI+MSfac4HnWVXvolbtCwZk
-	8NwuLqOjyfKJ+Bdme10V/KzKl1coKyrdWQ3xkm8CuEcr4lFK9iydgtXvl8t/3xGfj+2fpdKgoMP/E
-	OrA+GBLtW+jYjbDVxqdmRHnH7UoLvAsWo0rWmMitBJgmkjnlfJQO/+T8y02x4h/WQW9qRxLvIIPxW
-	Z0HTCOmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=; b=tBvquO94Gg2UEfpJSXKqw8OjB/
+	Ek7OOaOt+UsLQpprkatxJsT1/iN3b2aY9xYVrDIq/zYupTChlz6wN0UO6ZIT4HxaMM+hLXrD+tfZp
+	elAfrbkwd3E8lj5HS+q75sfxbX1GMRq6L9P4MCy/CKcDkf9Wdy3A/6Ql5JN1jxKMeg3FAyor8UCyD
+	+X8x+oCQtz9mIkH1wf7Ba8mMaiU0CPH4DI6skE7acHoLVcsvOlDxh5Uq34tY0ENDgSgCUUQJMf7p+
+	MR43Ui3a6Rhi27DNjuJGe/Ikw6QzhIUMj3xONubqO/DV0dLpu3TibreW/IF4o+881TSC8Iy3xwbNj
+	TtLEvXsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2KhG-00BzFd-OV; Mon, 05 Dec 2022 23:16:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p2KvW-00CU87-C4; Mon, 05 Dec 2022 23:31:10 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Kh5-00Bz8k-G9; Mon, 05 Dec 2022 23:16:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5C952614C3;
-	Mon,  5 Dec 2022 23:16:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C006FC433B5;
-	Mon,  5 Dec 2022 23:16:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670282173;
-	bh=tTj6xlqwZkkawn6eAfGzgzhH58kjDBepMPSTaEkO1+o=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ZY/GeL7d56Z67JgEQuUyLY6Vqk/2mg/lRDQfmu9taP+IPjTF2dez5CemaGs4DPpYL
-	 CgyKfBXI+PqKJRC83bS6qkJfpHd/OzMbTBFn3+l80OxFvLe0BK1sPfEeZUifZZyEdE
-	 rvpR/Kt12dVHkYg+waOl98VivJ0ehO/vGyL6mU09EoTvIIemI5onOJFhyncIVpU1i2
-	 JtoJ5GkzOVP26LCAAfv3dEFLvoxqkzmuJek6SYtu6LGcP6cvJ9AYBdKzaMobtt98b4
-	 sfY87Zjv0psr4D33dFMKY8U9uGj8l5ivstsDoDLky8TPELLx6Nf2RynaYJE/JXrZeD
-	 PQTjYxbdOYcWg==
-Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-12c8312131fso15369866fac.4;
-        Mon, 05 Dec 2022 15:16:13 -0800 (PST)
-X-Gm-Message-State: ANoB5plepGbGQhRNv/I3l3C6kTE4NtdvGhWeomEzYcVDDrwE+JQKXf4O
-	MLSSXlUf9MDZvIib0D1bDs1+kZnVBt5C0bnndg==
-X-Google-Smtp-Source: AA0mqf7VhWuGDHZgIsW7euFPqGB81veoXwRhbmr7m/MxNUsi4J+BsvBrNEz7hgNDnExfLJ6wGZ3fogI8TRhYee8qtkQ=
-X-Received: by 2002:a05:6870:b00f:b0:13a:f4fd:7d81 with SMTP id
- y15-20020a056870b00f00b0013af4fd7d81mr39025319oae.139.1670282172886; Mon, 05
- Dec 2022 15:16:12 -0800 (PST)
-MIME-Version: 1.0
-References: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
-In-Reply-To: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 6 Dec 2022 07:16:02 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__8uYdjFHGTrtq-ZTqvt7gaXeEKv9T3X0e=v4iZ52EE9g@mail.gmail.com>
-Message-ID: <CAAOTY__8uYdjFHGTrtq-ZTqvt7gaXeEKv9T3X0e=v4iZ52EE9g@mail.gmail.com>
-Subject: Re: [PATCH v3] mailbox: mtk-cmdq: Do not request irq until we are ready
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	id 1p2KvR-00CTqo-3n
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 23:31:09 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id v13-20020a17090a6b0d00b00219c3be9830so5140086pjj.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 15:31:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=;
+        b=OdoCO3aIPMdfROqUjmXL7OEIA9CYBS2QJpBEQA/J/lXle82NRW52w+zlIhfg8ms1LH
+         /TaN9ef8SYhihXbLecW289xcKfk+r8jWkj++QJwpEkQ1fXVsZ/FXGTthxTDx3eTv2LqU
+         aF9+9jCAsL/TJziFYfMd+KTj2pD0QOxM5LCYt8tjyk5XsS1+uOrVx9Njw5OmkcBBVEYX
+         KSGIvwzQcHLKi0zMkznu7zvWfx7VwIEZnBvI3Jh70JzLhhauK0TvqwYPjpm562G4twQ5
+         bH2/dgjDSmgv5Ucv41xkKot6rQ9Ok5rWk8g0NNt3g0bAOZFq60lEilO/MyCxX0rMGr7l
+         LCBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=;
+        b=h0kIQmzVwDxq1LDFeQIhnUVoL8oUz1TvD3eO80FcSBQ6RRd6bUDdCgK1VuqbNYY7Z7
+         f5gfnFDrgcL4SW1aH893Hv3JPsENpnGWpG2wpIj99y0D5N/e2OW8ZODCDLi64F3VP+es
+         /nXwBLTbJn6HWPXnSJdMEPtAhDHcpPN5C3LkxCFmMuiFccJq+lkb7RhQijZqyem3IDTI
+         Zue1JyVcRoKzul7Bs+EEZCWIoJgeITBcxJJfoZEqFlSZfyzikq+cds7SAdjtt8ZzjjoH
+         KoSbtVE3VhAbjEWGS0kOOvyRNzhYpOlZzecY59XxHAe6Dl2+8N0ChVrJqBEvLA7LBJd+
+         W0KA==
+X-Gm-Message-State: ANoB5pmjb90YWJYR7W6TDGIgtgpu72CaqpURLrISmpRsWrNGu04OPfqj
+	Bv4v0QPMAwHStGzNhRJ9Q0sxiQ==
+X-Google-Smtp-Source: AA0mqf5QjTlWvI5ubzCjEUZ2XSBplUYzhwiX2VZlK2wbZvvlG5QcSd1Z2Q5+Y5Ulo+DwDdjITx4zAA==
+X-Received: by 2002:a17:902:b685:b0:186:5e2f:44b4 with SMTP id c5-20020a170902b68500b001865e2f44b4mr59374pls.29.1670283064040;
+        Mon, 05 Dec 2022 15:31:04 -0800 (PST)
+Received: from localhost ([122.172.87.149])
+        by smtp.gmail.com with ESMTPSA id e8-20020a17090301c800b00189b2b8dbedsm9188203plh.228.2022.12.05.15.31.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Dec 2022 15:31:03 -0800 (PST)
+Date: Tue, 6 Dec 2022 05:00:59 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	regressions@leemhuis.info, daniel@makrotopia.org,
+	thomas.huehn@hs-nordhausen.de, "v5 . 19+" <stable@vger.kernel.org>,
+	Nick <vincent@systemli.org>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] Revert "cpufreq: mediatek: Refine
+ mtk_cpufreq_voltage_tracking()"
+Message-ID: <20221205233059.izdqcilbhjmkh6ew@vireshk-i7>
+References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+ <18947e09733a17935af9a123ccf9b6e92faeaf9b.1669958641.git.viresh.kumar@linaro.org>
+ <CAJZ5v0ixHocQbu6-zs3dMDsiw8vdPyv=8Re7N4kUckeGkLhUzg@mail.gmail.com>
+ <CAJZ5v0hc8CsvqLKxi5iRq7iR0bkt25dRnLBd23mx-zdi2Sjgsw@mail.gmail.com>
+ <20221205043044.bgecubnw7d3xlyi5@vireshk-i7>
+ <CAJZ5v0gTV5LM_qRKncPq5Z2TRENMgVer6oZiGAKJn6ndrNSKxg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAJZ5v0gTV5LM_qRKncPq5Z2TRENMgVer6oZiGAKJn6ndrNSKxg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_151615_637225_FD40C5C9 
-X-CRM114-Status: GOOD (  21.73  )
+X-CRM114-CacheID: sfid-20221205_153105_418438_D7DEBEAB 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,82 +100,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ricardo Ribalda <ribalda@chromium.org> =E6=96=BC 2022=E5=B9=B411=E6=9C=8830=
-=E6=97=A5 =E9=80=B1=E4=B8=89 =E6=99=9A=E4=B8=8A8:59=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> If the system comes from kexec() the peripheral might trigger an IRQ
-> befoe we are ready for it. Triggering a crash due to an access to
-> invalid memory.
+On 05-12-22, 13:08, Rafael J. Wysocki wrote:
+> Well, this was a bit unclear.
 
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Hmm, yeah. I assumed that the arm stuff will go via my tree and you
+will be in sync with this. But yeah, a comment in the patch won't have
+hurt.
 
->
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
-> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> To: Jassi Brar <jassisinghbrar@gmail.com>
-> To: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> ---
-> Changes in v3:
-> - Rebase on top of https://patchwork.kernel.org/project/linux-mediatek/pa=
-tch/20221102100736.37815-1-angelogioacchino.delregno@collabora.com/
-> - Link to v2: https://lore.kernel.org/r/20221125-mtk-mailbox-v2-0-886f70c=
-7173c@chromium.org
->
-> Changes in v2:
-> - I have managed to repro a different panic. Moving the irq enabling to t=
-he very end of probe.
-> - Link to v1: https://lore.kernel.org/r/20221125-mtk-mailbox-v1-0-2e3ee12=
-0850c@chromium.org
-> ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
-q-mailbox.c
-> index a460ee26eb11..b18d47ea13a0 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -569,12 +569,6 @@ static int cmdq_probe(struct platform_device *pdev)
->         }
->
->         cmdq->irq_mask =3D GENMASK(cmdq->pdata->thread_nr - 1, 0);
-> -       err =3D devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_S=
-HARED,
-> -                              "mtk_cmdq", cmdq);
-> -       if (err < 0) {
-> -               dev_err(dev, "failed to register ISR (%d)\n", err);
-> -               return err;
-> -       }
->
->         dev_dbg(dev, "cmdq device: addr:0x%p, va:0x%p, irq:%d\n",
->                 dev, cmdq->base, cmdq->irq);
-> @@ -641,6 +635,13 @@ static int cmdq_probe(struct platform_device *pdev)
->
->         cmdq_init(cmdq);
->
-> +       err =3D devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_S=
-HARED,
-> +                              "mtk_cmdq", cmdq);
-> +       if (err < 0) {
-> +               dev_err(dev, "failed to register ISR (%d)\n", err);
-> +               return err;
-> +       }
-> +
->         return 0;
->  }
->
->
-> ---
-> base-commit: 1642107db81361b4339643eb90af4839e2cf229f
-> change-id: 20221125-mtk-mailbox-ba6cbd1d91b6
->
-> Best regards,
-> --
-> Ricardo Ribalda <ribalda@chromium.org>
->
+> Alright then, I'll assume that the proper fix will come in through
+> your pull request for 6.2 (but please send that one before the merge
+> window opens), thanks!
+
+I was ready with pull request since several days, was just waiting for
+this to get sorted out. And I think this may get delayed a bit too, so
+I better send the first pull request now and worry about this later.
+
+-- 
+viresh
 
