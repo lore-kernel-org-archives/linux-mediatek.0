@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F77C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 12:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D427BC4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 12:09:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Try3irplSKe/2aO5s/FaPFYzmob8WvVypBxxb/yEgKM=; b=zh+o2M5W7QNJJA4pdIg/F6fFUx
-	63F24XrU7lwi2+W2nUaofsIwNloRp5UrX3OZi8f7KpyS1u5bDbC74b5aLwuuIMz7u2XgzhtflTIU9
-	mHaP95+OKJz7nnspnwkG7kJR/BT3MwGMOwz15JFwBjB5X+MNEn8Sq0Wya54lH6tAGcItX6cNVHegu
-	UvczQIs8hKeoUKOwpUCjH+y8ZcEeRPTX8h0DAX2Ew9Pvn1A9ytNmkREuVf7ISBUARXKJwVs2KL74M
-	NuJTSuuIgkwkncsm/GkeHh0y0H2Gzi0stEOsf5h72IzIyLyzKQtMwvEKyqeHfXHOWiOsUM3H3Thw2
-	g2rn3j3A==;
+	bh=6MIB3xvxCZJU4GWFyhSO9TpaK2tmBFBEo8wuA140FSA=; b=itqNjyFrTCQjpjxX4q3h1QEJZk
+	PiVix2jCEthXdRWra7I2Wh1MPppcc5t051ssUF3S/LhwojOpeSTyhphRikBLxyhIKIvvF+jb6xuvD
+	pH6SRdicZCzyyKODNKVHwGugOXP8udppUZBJG9z0sSgeAtC3CjQgWuF3nAMxG9AIboxdp7UCTLG4i
+	MF67h1cd/7hiTpQvGE+VQ92mWYiJHjVQUnH1F5mumyFKQ5WtSKccPcY4njwgaN45pPQ7gCNx59hVf
+	eB9xzpxXdUM/rkwFmvVtI+72unW7BOFWgtkqIe62pFf0uzI+N6DVjkaGghOf1PCTKjBwNaY14SqcQ
+	yWUYG7HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2AGA-002Nza-0H; Mon, 05 Dec 2022 12:07:46 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1p2AHc-002QIB-QB; Mon, 05 Dec 2022 12:09:16 +0000
+Received: from mail-qk1-f175.google.com ([209.85.222.175])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2AFx-002NhG-GP; Mon, 05 Dec 2022 12:07:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 95371B80F91;
-	Mon,  5 Dec 2022 12:07:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E08C2C433C1;
-	Mon,  5 Dec 2022 12:07:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670242050;
-	bh=K+Dd7xGXTDkGOUmFSn+Tmrppo1MrzYY2Lk+azYRrNIg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m1gkj5247+U4OLnyaCx2lbX33R9pdpFcyuxaNcBbQzKrA1hlMuZw7xpg76kPEO27x
-	 kUm7v+2SXEaVcuxFuOz86wLmKDzu8jfpk5jdqtYWWkq/1y7iJm+ITBsy+uOXINE5gg
-	 D/IlOVOJUaYUQqS9NqMbjywD7kVo4V0mpp0VNEChvkZSJhIffAXsFnv/ZjJ1haKzM9
-	 xB9L/3UcEy78yD/SaFiHTyYNCWOhT+r1FIFXZsC54p7ttrL5HoYvAjVP1FUBxLIid3
-	 K9TQjW0zvBmMidab5XPUhSr1LVM/uw0Gh5Vounv45TXpabRWy0RSWfyiqpbjOyX1cI
-	 LMBCv/rdqg6ww==
-Date: Mon, 5 Dec 2022 12:07:20 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu =?utf-8?B?KOS/nuWutumRqyk=?= <Jiaxin.Yu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"ajye_huang@compal.corp-partner.google.com" <ajye_huang@compal.corp-partner.google.com>,
-	Chunxu Li =?utf-8?B?KOadjuaYpeaXrSk=?= <Chunxu.Li@mediatek.com>,
-	Allen-KH Cheng =?utf-8?B?KOeoi+WGoOWLsyk=?= <Allen-KH.Cheng@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>,
-	"andrzej.hajda@intel.com" <andrzej.hajda@intel.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"robert.foss@linaro.org" <robert.foss@linaro.org>,
-	"Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>,
-	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"nfraprado@collabora.com" <nfraprado@collabora.com>,
-	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
-Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Message-ID: <Y43e+EsNCrCpZSIH@sirena.org.uk>
-References: <20221125094413.4940-1-jiaxin.yu@mediatek.com>
- <20221125094413.4940-2-jiaxin.yu@mediatek.com>
- <Y4Cysgk5Gic5ae9B@sirena.org.uk>
- <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
- <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
- <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
- <Y4jHAJgmz/P58Q/C@sirena.org.uk>
- <7023a2c7b471d6888d9079563a6c01f22599201f.camel@mediatek.com>
+	id 1p2AHQ-002Q3M-BO; Mon, 05 Dec 2022 12:09:05 +0000
+Received: by mail-qk1-f175.google.com with SMTP id g10so4732480qkl.6;
+        Mon, 05 Dec 2022 04:09:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6MIB3xvxCZJU4GWFyhSO9TpaK2tmBFBEo8wuA140FSA=;
+        b=gCb2rm1+hRtrxmx4CuAtT7QPRGc0UknjPPjH6wETl5qfBI1ZSqbbtn+jbmi0FoUPB6
+         +bFg9/0sRA0qMpVTWdKbMMWCW8w3IHbxh9lVVshBzyIqZuCTrmZMzJgfPVK0lhIymagu
+         uRYi/hWflYQdCMdguhLH6ekcxGJc2q9hKJm6UI17A3fWODD8ZY/hraMTOo5iQmU2cgwT
+         7gQ7HyhFMS5jG6rMjbFXdVUpnHJ+/h42VKQAqqxiPxXaL5NdVwWqdc9SpNWVEqoTMnPu
+         c/wk/q10pDXO0jDc8B8VukYWxflXEpHC4gMaXp1+RimLhHe7A79CF/Y6HAJF6F6E/B1T
+         DjyA==
+X-Gm-Message-State: ANoB5pnzdBk28zSUPeZLRaW7wVD8P0RJ4Ew1MqECB5yPJYdLiRmKFpTV
+	sUeFkmXpd+TGhEu7PeldVIiGOB/twDrMjAzM1dg=
+X-Google-Smtp-Source: AA0mqf7FMTmERIGbZY2w/Q82ozUpwVdcf9Crh6uuy78ifwFCCa0OM9jDIT99xZgX8z/1kHUGB4tv5EJTfgsWNfg0mHM=
+X-Received: by 2002:a05:620a:4611:b0:6fa:af7e:927c with SMTP id
+ br17-20020a05620a461100b006faaf7e927cmr71338620qkb.443.1670242142398; Mon, 05
+ Dec 2022 04:09:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="2Zxw/Hvoq9IhDAxu"
-Content-Disposition: inline
-In-Reply-To: <7023a2c7b471d6888d9079563a6c01f22599201f.camel@mediatek.com>
-X-Cookie: If it ain't broke, don't fix it.
+References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
+ <18947e09733a17935af9a123ccf9b6e92faeaf9b.1669958641.git.viresh.kumar@linaro.org>
+ <CAJZ5v0ixHocQbu6-zs3dMDsiw8vdPyv=8Re7N4kUckeGkLhUzg@mail.gmail.com>
+ <CAJZ5v0hc8CsvqLKxi5iRq7iR0bkt25dRnLBd23mx-zdi2Sjgsw@mail.gmail.com> <20221205043044.bgecubnw7d3xlyi5@vireshk-i7>
+In-Reply-To: <20221205043044.bgecubnw7d3xlyi5@vireshk-i7>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Mon, 5 Dec 2022 13:08:47 +0100
+Message-ID: <CAJZ5v0gTV5LM_qRKncPq5Z2TRENMgVer6oZiGAKJn6ndrNSKxg@mail.gmail.com>
+Subject: Re: [PATCH] Revert "cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()"
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, 
+	Vincent Guittot <vincent.guittot@linaro.org>, regressions@leemhuis.info, 
+	daniel@makrotopia.org, thomas.huehn@hs-nordhausen.de, 
+	"v5 . 19+" <stable@vger.kernel.org>, Nick <vincent@systemli.org>, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_040733_860187_EEDD24E7 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20221205_040904_410635_634CA313 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,45 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Dec 5, 2022 at 5:30 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>
+> On 02-12-22, 20:46, Rafael J. Wysocki wrote:
+> > On Fri, Dec 2, 2022 at 1:17 PM Rafael J. Wysocki <rafael@kernel.org> wrote:
+> > >
+> > > On Fri, Dec 2, 2022 at 6:26 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
+> > > >
+> > > > This reverts commit 6a17b3876bc8303612d7ad59ecf7cbc0db418bcd.
+> > > >
+> > > > This commit caused regression on Banana Pi R64 (MT7622), revert until
+> > > > the problem is identified and fixed properly.
+> > > >
+> > > > Link: https://lore.kernel.org/all/930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org/
+> > > > Cc: v5.19+ <stable@vger.kernel.org> # v5.19+
+> > > > Reported-by: Nick <vincent@systemli.org>
+> > > > Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+> > >
+> > > Do you want me to push this revert for -rc8?
+>
+> No, I was planning to make it part of my pull request.
 
---2Zxw/Hvoq9IhDAxu
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Well, this was a bit unclear.
 
-On Mon, Dec 05, 2022 at 09:34:17AM +0000, Jiaxin Yu (=E4=BF=9E=E5=AE=B6=E9=
-=91=AB) wrote:
+> > After all, I've decided to queue it up for 6.2, thanks!
+>
+> Can you please drop that ? AngeloGioacchino already reported that
+> Reverting the proposed commit will make MT8183 unstable.
 
-> 1. I have added a DAPM widget that is "SDB", when we open or close HDMI
-> PIN_SWITCH, the callback 'hdmi_tx_event' registered in the widget will
-> be triggered. Maybe you mean I shouldn't use SNDRV_PCM_TRIGGER_START
-> and SNDRV_PCM_TRIGGER_STOP?
+OK, dropped now.
 
-No, I mean that if you want to control the enable and disable of the
-output path you should implement a DAPM widget.
+> So the right thing to do now is apply the fix, which is on the list
+> and getting tested.
 
-> 2. If I don't use hcd.ops->trigger notifies the bridge ic driver to
-> switch the audio, which ops should I use?
-> I actually want to know hdmi-codec.c and it6505.c except
-> hdmi_codec_ops, is there any other way to communicate?
-
-Like I said you should use the event on the DAPM widget.  This will
-require providing operations for the events to the drivers.
-
---2Zxw/Hvoq9IhDAxu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmON3vcACgkQJNaLcl1U
-h9Cbhgf+LMvcJgTpZwsDot1swl9dxC4R5KoASnnVtW3qUnTy6RJishGkt+FKlLX8
-aw/XM5uZSMX1WA040KY4LRSrz/jSPdW2esD5PxtNo7+z87LmRi/AL9539cd8zu89
-jNhbtBAQDyiNp1Y5mNKjEoL6wCbFS7Zt8XMnXHxddRKZClHNgn1q5/ZbfkbNP++Y
-zsXuNSRUT4lzbBlfe2tRMJ1mPdz2R1Is+7sbNZIPIU4t741icrKukcCYPOuYfQeb
-38OZ3gVyERI/AIfp7P0X5SLklXuTFFxAhbg617Bp254suyarICucIyvSvp7iTNxq
-hg3akba+kzI36lZ6YuhE4NvJC589kQ==
-=lrjL
------END PGP SIGNATURE-----
-
---2Zxw/Hvoq9IhDAxu--
+Alright then, I'll assume that the proper fix will come in through
+your pull request for 6.2 (but please send that one before the merge
+window opens), thanks!
 
