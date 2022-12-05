@@ -4,83 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB2BC4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 21:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E507C636F9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 22:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mjzds2RzECUq1xcqjJsP8nfg2ZPV+dnkXlgwu7if9PE=; b=oaeokboM3UTpslZr64gCmx2LQd
-	XKPYHKdVNo++cGPmn7bRWZt/yYvtc1647jp8ulpSuEdMSpf65I98dLEGG4DB2VyPl3oM4qQmMadHg
-	nX08dDgtzZJ7noDrKNKo+K5v01wtBK5G/sFarNzh3GKatkIftvt7rHpeJ9+dh542dWrFNl+AALikz
-	BxmdUpiVbHNKsbJCGSod2bKQdWmSTEFo9T60i6Kki+WSZpCrmhjKz9pXfX4L3uRNUT00DgBvK3qNl
-	ZpYIEabqoMLsfCn4cM7f2+Q70N2xv9lK/KkpBhdfkCp7dP/p/vvXKgW/Tol/SkT0dwLAbCjh5BHk8
-	UjZSGMvw==;
+	bh=0beeeN3x4oja6CoA48n0dgddbavIjL+s5ouQp7TTWtU=; b=rBeYCMMrRl6tiNgregrizhM2MK
+	4MYhLoR3pG96gxcj6FkNPZc69sM4Uf6dYk2V4rGFhZuVr8STOiwi6yi5GopSv2mjzqD5HvAJsjvbN
+	KWIGce3eezcr5LEUrOA6kYmkpEdU3NjviIBsjGFeadh0eyxz6bxThJrnZPitNJKL7JxBjv6bgaa7N
+	8O0jS2uaxhgmuc8gakqdVmm2BUWeC4CcMix1FN5+b17djGJqkA+V1IfX89MnNZzQcfn0Lq9YHuxa4
+	GGC6TOiwsO4bo9ojdDlBWnTAv8zJpbOvmfQJfepVsN5qBz0mleyr0nTKQcCZRMqLGsOVlxQN2SHi8
+	ZreUBMHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2JJZ-00AusJ-PM; Mon, 05 Dec 2022 21:47:53 +0000
-Received: from mail-oa1-f43.google.com ([209.85.160.43])
+	id 1p2Jz9-00BJ11-1R; Mon, 05 Dec 2022 22:30:51 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2JJX-00Aup8-8X; Mon, 05 Dec 2022 21:47:52 +0000
-Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-142b72a728fso15079991fac.9;
-        Mon, 05 Dec 2022 13:47:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Mjzds2RzECUq1xcqjJsP8nfg2ZPV+dnkXlgwu7if9PE=;
-        b=nLxcstJY+BHVG3PztOv43AKINLN1qLzF7Jx2/toiE6LY/7EiSeZfod3Rj8zC8Ac/qp
-         2BaA1ydMK/ogNxP0eleGOUKQKwLJ+6T4n7ptKcNMG4RZusGeygeSNK6UnjO9CY2VlENr
-         uXQlGLoJtJjO+ZgASK3uNxCAzh+CCrAUHXr++4P+5zbp2cW5o58kgoBdXP7Ng970Tcl2
-         Ye0PgXS/IsiS+7GmdpuKJDcDDbCnar9eyJVKDWa3MSF//94+92rolXydXTUcyJpjkXDV
-         W/GmaPf6rL8CaKWj0AayD2jsznHEhi9fSW0Y0tXh72uZIVgx786LRTWJmhZxTlrPK4I3
-         290A==
-X-Gm-Message-State: ANoB5pl+SCEkvff3d1jStunVxBorNixZpbNcIo/NwmhDDzl0CHTz2Jin
-	Y4XTaEj3822wfW8SYvXB4Q==
-X-Google-Smtp-Source: AA0mqf4QO8UMt6OJ+ls46GBA4Vjcws9My+eLdy2ZBabpLPBkFaP2SMxFEfNh2jRUy5s9QIaB0EhSmg==
-X-Received: by 2002:a05:6870:7988:b0:13c:84e6:96d2 with SMTP id he8-20020a056870798800b0013c84e696d2mr4030384oab.72.1670276869061;
-        Mon, 05 Dec 2022 13:47:49 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id y7-20020a4ac407000000b0049ea9654facsm7064489oop.32.2022.12.05.13.47.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Dec 2022 13:47:48 -0800 (PST)
-Received: (nullmailer pid 2682645 invoked by uid 1000);
-	Mon, 05 Dec 2022 21:47:47 -0000
-Date: Mon, 5 Dec 2022 15:47:47 -0600
-From: Rob Herring <robh@kernel.org>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, netdev@vger.kernel.org, 
-	John Crispin <john@phrozen.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>, 
-	Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
-	Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>, 
-	Vivien Didelot <vivien.didelot@gmail.com>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, 
-	=?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
-	Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com, 
-	Woojung Huh <woojung.huh@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Kurt Kanzenbach <kurt@linutronix.de>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, 
-	"David S. Miller" <davem@davemloft.net>, Vladimir Oltean <olteanv@gmail.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	George McCollister <george.mccollister@gmail.com>
-Subject: Re: [PATCH v4 net-next 7/9] dt-bindings: net: add generic
- ethernet-switch
-Message-ID: <20221205214747.GA2679200-robh@kernel.org>
-References: <20221202204559.162619-1-colin.foster@in-advantage.com>
- <20221202204559.162619-8-colin.foster@in-advantage.com>
+	id 1p2Jz2-00BIs2-D0; Mon, 05 Dec 2022 22:30:46 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+	id 73F5F1C09F4; Mon,  5 Dec 2022 23:30:36 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
+	t=1670279436;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0beeeN3x4oja6CoA48n0dgddbavIjL+s5ouQp7TTWtU=;
+	b=Glfr3eDW908ut8l8ZtyxnivFsAwFhKrd91OZ8Hn4B5DsYqkFacSwVHpMdO+0ZJbEke3io+
+	rZJ6H6RfHZXL+x1iQ654lTF809RKZz+X/69jMIvQbgjOVGWGx/4uVo747OBUmRhyZzWmxv
+	I6Gh8EjJUSygmU/FfosMXAkJOwmFGvg=
+Date: Mon, 5 Dec 2022 23:30:35 +0100
+From: Pavel Machek <pavel@ucw.cz>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Douglas Anderson <dianders@chromium.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Stephen Boyd <swboyd@chromium.org>,
+	Matthias Kaehlcke <mka@chromium.org>,
+	Satya Priya <quic_c_skakit@quicinc.com>, linux-pwm@vger.kernel.org,
+	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an error
+ code
+Message-ID: <Y45xC/Gwhrr+fctN@duo.ucw.cz>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+ <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ZBm0pYJnT4srarSL"
 Content-Disposition: inline
-In-Reply-To: <20221202204559.162619-8-colin.foster@in-advantage.com>
+In-Reply-To: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_134751_373377_D9C6CF2A 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20221205_143045_076527_22FDF8DA 
+X-CRM114-Status: GOOD (  23.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,64 +113,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 02, 2022 at 12:45:57PM -0800, Colin Foster wrote:
-> The dsa.yaml bindings had references that can apply to non-dsa switches. To
-> prevent duplication of this information, keep the dsa-specific information
-> inside dsa.yaml and move the remaining generic information to the newly
-> created ethernet-switch.yaml.
-> 
-> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-> ---
-> 
-> v3 -> v4
->   * Update ethernet-ports and ethernet-port nodes to match what the new
->     dsa.yaml has. Namely:
->       "unevaluatedProperties: false" instead of "additionalProperties: true"
->       "additionalProperties: true" instead of "unevaluatedProperties: true"
->     for ethernet-ports and ethernet-port, respectively.
->   * Add Florian Reviewed tag
-> 
-> v2 -> v3
->   * Change ethernet-switch.yaml title from "Ethernet Switch Device
->     Tree Bindings" to "Generic Ethernet Switch"
->   * Rework ethernet-switch.yaml description
->   * Add base defs structure for switches that don't have any additional
->     properties.
->   * Add "additionalProperties: true" under "^(ethernet-)?ports$" node
->   * Correct port reference from /schemas/net/dsa/dsa-port.yaml# to
->     ethernet-controller.yaml#
-> 
-> v1 -> v2
->   * No net change, but deletions from dsa.yaml included the changes for
->     "addionalProperties: true" under ports and "unevaluatedProperties:
->     true" under port.
-> 
-> ---
->  .../devicetree/bindings/net/dsa/dsa.yaml      | 28 +-------
->  .../bindings/net/ethernet-switch.yaml         | 66 +++++++++++++++++++
->  MAINTAINERS                                   |  1 +
->  3 files changed, 69 insertions(+), 26 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/net/ethernet-switch.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> index 5081f4979f1b..843205ea722d 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> @@ -18,6 +18,8 @@ description:
->  
->  select: false
->  
-> +$ref: "/schemas/net/ethernet-switch.yaml#"
 
-You can drop quotes here.
+--ZBm0pYJnT4srarSL
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-With that,
+Hi!
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+> .get_state() might fail in some cases. To make it possible that a driver
+> signals such a failure change the prototype of .get_state() to return an
+> error code.
+>=20
+> This patch was created using coccinelle and the following semantic patch:
+>=20
+> @p1@
+> identifier getstatefunc;
+> identifier driver;
+> @@
+>  struct pwm_ops driver =3D {
+>         ...,
+>         .get_state =3D getstatefunc
+>         ,...
+>  };
+>=20
+> @p2@
+> identifier p1.getstatefunc;
+> identifier chip, pwm, state;
+> @@
+> -void
+> +int
+>  getstatefunc(struct pwm_chip *chip, struct pwm_device *pwm, struct pwm_s=
+tate *state)
+>  {
+>    ...
+> -  return;
+> +  return 0;
+>    ...
+>  }
+>=20
+> plus the actual change of the prototype in include/linux/pwm.h (plus some
+> manual fixing of indentions and empty lines).
+>=20
+> So for now all drivers return success unconditionally. They are adapted
+> in the following patches to make the changes easier reviewable.
+>=20
+> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-This is a nice clean-up.
+LED part:
 
-Rob
+Acked-by: Pavel Machek <pavel@ucw.cz>
+
+Best regards,
+							Pavel
+
+>  static const struct pwm_ops ti_sn_pwm_ops =3D {
+> diff --git a/drivers/leds/rgb/leds-qcom-lpg.c b/drivers/leds/rgb/leds-qco=
+m-lpg.c
+> index 02f51cc61837..741cc2fd817d 100644
+> --- a/drivers/leds/rgb/leds-qcom-lpg.c
+> +++ b/drivers/leds/rgb/leds-qcom-lpg.c
+> @@ -968,8 +968,8 @@ static int lpg_pwm_apply(struct pwm_chip *chip, struc=
+t pwm_device *pwm,
+>  	return ret;
+>  }
+> =20
+> -static void lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *=
+pwm,
+> -			      struct pwm_state *state)
+> +static int lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *p=
+wm,
+> +			     struct pwm_state *state)
+>  {
+>  	struct lpg *lpg =3D container_of(chip, struct lpg, pwm);
+>  	struct lpg_channel *chan =3D &lpg->channels[pwm->hwpwm];
+> @@ -982,20 +982,20 @@ static void lpg_pwm_get_state(struct pwm_chip *chip=
+, struct pwm_device *pwm,
+> =20
+>  	ret =3D regmap_read(lpg->map, chan->base + LPG_SIZE_CLK_REG, &val);
+>  	if (ret)
+> -		return;
+> +		return 0;
+> =20
+>  	refclk =3D lpg_clk_rates[val & PWM_CLK_SELECT_MASK];
+>  	if (refclk) {
+>  		ret =3D regmap_read(lpg->map, chan->base + LPG_PREDIV_CLK_REG, &val);
+>  		if (ret)
+> -			return;
+> +			return 0;
+> =20
+>  		pre_div =3D lpg_pre_divs[FIELD_GET(PWM_FREQ_PRE_DIV_MASK, val)];
+>  		m =3D FIELD_GET(PWM_FREQ_EXP_MASK, val);
+> =20
+>  		ret =3D regmap_bulk_read(lpg->map, chan->base + PWM_VALUE_REG, &pwm_va=
+lue, sizeof(pwm_value));
+>  		if (ret)
+> -			return;
+> +			return 0;
+> =20
+>  		state->period =3D DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * LPG_RESOLUTION =
+* pre_div * (1 << m), refclk);
+>  		state->duty_cycle =3D DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * pwm_value *=
+ pre_div * (1 << m), refclk);
+> @@ -1006,13 +1006,15 @@ static void lpg_pwm_get_state(struct pwm_chip *ch=
+ip, struct pwm_device *pwm,
+> =20
+>  	ret =3D regmap_read(lpg->map, chan->base + PWM_ENABLE_CONTROL_REG, &val=
+);
+>  	if (ret)
+> -		return;
+> +		return 0;
+> =20
+>  	state->enabled =3D FIELD_GET(LPG_ENABLE_CONTROL_OUTPUT, val);
+>  	state->polarity =3D PWM_POLARITY_NORMAL;
+> =20
+>  	if (state->duty_cycle > state->period)
+>  		state->duty_cycle =3D state->period;
+> +
+> +	return 0;
+>  }
+
+--=20
+People of Russia, stop Putin before his war on Ukraine escalates.
+
+--ZBm0pYJnT4srarSL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCY45xCwAKCRAw5/Bqldv6
+8qEdAKCcIFDwtp8cJpPtW1EpTb0IJOYYKwCdGtyKdQYCFKVLwV+BGw7lryK0MC8=
+=gb+Q
+-----END PGP SIGNATURE-----
+
+--ZBm0pYJnT4srarSL--
 
