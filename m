@@ -4,68 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AC16C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:05:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6381C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GlJ2Pnimn4eRqc2TDacYNHE0ujFtrinL9YvZeTlViIw=; b=ww1IZtXSBsfRgIgpEgjn7mHitt
-	s9Vns5t+ZavPEJZGjHEZ1cxJZH98fn+Z24wM7vrheAxt99QBd2KzLexyTjfgvw5n81dkApu+v4kxI
-	T6u7sBW31+TODPtHpTMqETbXTW0dQAFj9Tv3ZuxCqgBEerCvBCM3yNUZzgg8Jkgx7YvaeKNB+SOJx
-	5GqsDlfwHHrLMxqSa0gSTubYgTb06+ECgx/hHeEf+879Fxfo8Tap5Wrxa+ZqSS0Uio72rk1IM8ZIr
-	JaGIUWOZezfJHvH3WMP6S5Pi98CUBxW4PZjJkyUzdbFSlahlISvozjQegHe68kmHPIqA0NpPCFVqM
-	W6V796bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GqNU7BdzxXArJ1hxutAZbvizBnSeo/vOF+Ym8qXlYBw=; b=wnwHcgi+hzkCMSKR1FFQ/6rmM0
+	PhdNz1uQCbpzfjReikpnw3GtvWLdonKEJNhdPJLLU3MIygBQYVqYb5uoTLZGbqud3xM5sSTc0KVWd
+	1W4QU/TNDnGK/s4F1za14Du3kv6muzsCYvyi78wYivrqU66iKcHX9s87UcPNqNNzzZ0MnuVqZ8z+F
+	bOK9Cxhr5X7zDrPyEWs2WXuWg9lC/FHs2QnwL/IayKcFe3tWKkQV1nTdfEiem1JkjFuzcfcUizYcC
+	cM4HCh07SJzmpAOUKX+uXNcX5A82L/rZh1IC7mCeu8Q3tlKn0U0ksX6XKYgKfeyRbNwjMsTWfKWiv
+	B4lKzPNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27PV-00Gn0R-Px; Mon, 05 Dec 2022 09:05:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p27QH-00GnL9-Ai; Mon, 05 Dec 2022 09:06:01 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27PS-00Gmxc-Uj; Mon, 05 Dec 2022 09:05:12 +0000
-X-UUID: eee61ffd911f431f839ccad6c576c03e-20221205
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GlJ2Pnimn4eRqc2TDacYNHE0ujFtrinL9YvZeTlViIw=;
-	b=BDlmM6I1mOIfFxSsSzs8dOVF1XDyW56S3YOWCdWhzHOWGPCurZbCT8qWeDvvNJLXZBflGbuHMxi2uSSyKJ218JT9tXMlb6kAijT/2wG6glZHQt9OxJ3Vdm3fo2SBt+ZEo3AHqWT6PKZMuXbih4csbWfS6AzaPun5Qb6BcRTJRWE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:bfe9dfe2-ad5a-4857-921c-e1e35d839b4d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:aad5dabc-3f71-4801-a1a6-1117dd275996,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: eee61ffd911f431f839ccad6c576c03e-20221205
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <bayi.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 564790515; Mon, 05 Dec 2022 02:04:57 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 5 Dec 2022 16:24:21 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 5 Dec 2022 16:24:21 +0800
-From: Bayi Cheng <bayi.cheng@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
-CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	Chuanhong Guo <gch981213@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, bayi cheng
-	<bayi.cheng@mediatek.com>
-Subject: [PATCH v1] spi: spi-mtk-nor: Add recovery mechanism for dma read timeout
-Date: Mon, 5 Dec 2022 16:24:19 +0800
-Message-ID: <20221205082419.29170-1-bayi.cheng@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1p27QB-00GnHm-GZ
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 09:05:58 +0000
+Received: by mail-lj1-x232.google.com with SMTP id bn5so12781878ljb.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 01:05:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=GqNU7BdzxXArJ1hxutAZbvizBnSeo/vOF+Ym8qXlYBw=;
+        b=ml1UTgwnXNIPc0W8ib4GfMRsHG60XL9gSKPj/qRbbV6GJkzlUj1At0dMUzoOFb60iW
+         tb6annGiyDBjRt7m54+FeXCJAG1k6zyZpV4PZGuHxYm7VptGQ4HE5z/sdf0nd4XNnbM5
+         mqZTLznBvYZ9IvNHoVEltgkurJq2dZTDmC3DBg6SerflSf29uDbJtRwzM6t2VzZKZeKH
+         W3Hdrx+z2zDRhEmNvWjcF8C5cjMzT8oFOD2s9Yr7hkx7NoDA25fDHiauNl77Q6m3BHlu
+         /XzYeQvCP1vLSSqEuf2R0EKAZk20F6w17K7jjdophOvRCEg7i+u82iAK96sKUi78Hro0
+         PT2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=GqNU7BdzxXArJ1hxutAZbvizBnSeo/vOF+Ym8qXlYBw=;
+        b=Bwxw3aDnHWbkREeWQ5G8cn1NhePkHDHFM8SSOP2WW108TjaZL2LBbfqfwN4btalGXA
+         e4b26dLya5wlfxxgnHsebLMrVMx+W2qyFiHYD1EJYFUfgcl2YD4y1Z8Rpaqmu42h3oc3
+         l1PIdClmCFVDvC0LIxYk9fl5cBa2trvrQeIaiClVdPeD2imhGpRbSx74/lpaMBoe3F5Q
+         4VyT0Rm1X3ooTHLTIOR2qcdA7+ayS5UgZd0hVRPIriO+YsITXFr0PS+V725i7f5m0wIv
+         WtcfYyPZ8glAlZQ3DHbrqmdRGIjdkoaLoh1Xm096odPwIITrQZyKfIfxTBfKLPB7q3pm
+         sBdg==
+X-Gm-Message-State: ANoB5pnjwJIpGAFYzyDq5PFstGF9NppZ5qb3Yl0yJyeRs6Zqm/kOFv7n
+	PApiVfjyDt2dYQ2oXWkF3Uytpg==
+X-Google-Smtp-Source: AA0mqf70Cu3Bsc7Sg6w1pGgBN0DBMF+g70wtdk9SSpETzjM7LJKRxqb71DhL1ffyntt/+W0ANkRx6A==
+X-Received: by 2002:a2e:a881:0:b0:26f:a855:c415 with SMTP id m1-20020a2ea881000000b0026fa855c415mr12377855ljq.443.1670231152713;
+        Mon, 05 Dec 2022 01:05:52 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id g22-20020a2eb5d6000000b00267232d0652sm1322528ljn.46.2022.12.05.01.05.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Dec 2022 01:05:52 -0800 (PST)
+Message-ID: <3e141d37-497b-e9dd-44af-22ec57881b04@linaro.org>
+Date: Mon, 5 Dec 2022 10:05:50 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v2 5/9] dt-bindings: spi: mtk-snfi: Add compatible for
+ MT7986
+Content-Language: en-US
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+References: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
+ <20221205065756.26875-6-xiangsheng.hou@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221205065756.26875-6-xiangsheng.hou@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_010511_019274_CBF7D95D 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20221205_010555_618657_6A8A3418 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,61 +103,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bayi cheng <bayi.cheng@mediatek.com>
+On 05/12/2022 07:57, Xiangsheng Hou wrote:
+> 1. Add dt-bindings documentation of SPI NAND controller
+> for MediaTek MT7986 SoC platform.
+> 2. Add optional nfi_hclk property which needed for MT7986.
+> 
+> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> ---
 
-The state machine of MTK spi nor controller may be disturbed by some
-glitch signals from the relevant BUS during dma read, Although the
-possibility of causing the dma read to fail is next to nothing,
-However, if error-handling is not implemented, which makes the feature
-somewhat risky.
 
-Add an error-handling mechanism here, reset the state machine and
-re-read the data when an error occurs.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: bayi cheng <bayi.cheng@mediatek.com>
----
-Change in v1:
-  -Reset the state machine when dma read fails and read again.
----
----
- drivers/spi/spi-mtk-nor.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index d167699a1a96..c77d79da9a4c 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -80,6 +80,9 @@
- #define MTK_NOR_REG_DMA_FADR		0x71c
- #define MTK_NOR_REG_DMA_DADR		0x720
- #define MTK_NOR_REG_DMA_END_DADR	0x724
-+#define MTK_NOR_REG_CG_DIS		0x728
-+#define MTK_NOR_SFC_SW_RST		BIT(2)
-+
- #define MTK_NOR_REG_DMA_DADR_HB		0x738
- #define MTK_NOR_REG_DMA_END_DADR_HB	0x73c
- 
-@@ -616,7 +619,18 @@ static int mtk_nor_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
- 			mtk_nor_set_addr(sp, op);
- 			return mtk_nor_read_pio(sp, op);
- 		} else {
--			return mtk_nor_read_dma(sp, op);
-+			ret = mtk_nor_read_dma(sp, op);
-+			if (ret) {
-+				dev_err(sp->dev, "try to read again\n");
-+				mtk_nor_rmw(sp, MTK_NOR_REG_CG_DIS, 0, MTK_NOR_SFC_SW_RST);
-+				mb(); /* flush previous writes */
-+				mtk_nor_rmw(sp, MTK_NOR_REG_CG_DIS, MTK_NOR_SFC_SW_RST, 0);
-+				mb(); /* flush previous writes */
-+				writel(MTK_NOR_ENABLE_SF_CMD, sp->base + MTK_NOR_REG_WP);
-+				mtk_nor_setup_bus(sp, op);
-+				ret = mtk_nor_read_dma(sp, op);
-+			}
-+			return ret;
- 		}
- 	}
- 
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
