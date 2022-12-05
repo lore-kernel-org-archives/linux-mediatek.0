@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA503C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 18:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD63C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 18:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9HVdrBThZ7f9kI3x9rrZ++0Pvhvtd65Mi6XXfbUOn9c=; b=W0GfMlrv/F7a8JS9jjsp24QOKG
-	2RzHozLzjN2KZQdauKD/ag9eZSmf+kyujeTV4JBbvlPT/hWH9/nPFP8FxgsNCXLKyBAKYgFYSVEIo
-	Zu80whZKgVYkA6hS7aWYNeFELP71z/8if2Rty5mUoupfDSSb1G4E/CmbbhCcFQUhA3VUIp/gfyj3a
-	JLujm7KfDv76drMnFIrksSU8MKJcp0+as/EQXk3aXvjZNlKb2bx+SjYDUV2yQCGAbB7w+OSNcsvhw
-	9p2emqTOkExt46PPqiZO9T2nmUE6mMinmcC0ZRWrUll8fM7a8Sf6Nj+XdffbEi/INa5AiAa9/KA7F
-	PJ4+m4wA==;
+	bh=PyzTPV6X9xNiTCbyGstKIWGMGMo8e5LT5ChhPCYnMlc=; b=5EPGw59id8my3Qt8oRtt7BYHCx
+	07VMC7L2Bdxi+B/frhCzXhF0vhrZc+FWfhA6n7KCtGAYqNWi8D7Oa+a7C46DdY9LU/NxrEgo8duvo
+	mY/fspexAt1X3AgPWjfY3XNOqk2MX5+/bMGdGpoHjMIlQXnKebUG0WMwBHGMaGnVZOXiJ8P5ZTDLb
+	GT40qq7NVLvfqB0MLPjR+84C4WNb5J7BVnATtqEWY2DY9SzCtVFLIe6PdHXV6MbKcejMLPRQVJleD
+	Q+iYppzRekSf+b/Q2DEa/GPpnYKUr7FdbMrgeiRrqWSIdYEiMUpv3i7LtvPtadokNyB08x3sofJ/q
+	9hUQoNLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2GF1-008Nus-8U; Mon, 05 Dec 2022 18:30:59 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1p2GPp-008Z2U-3S; Mon, 05 Dec 2022 18:42:09 +0000
+Received: from mail-pj1-f50.google.com ([209.85.216.50])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2GEy-008Ntj-OF; Mon, 05 Dec 2022 18:30:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1670265002; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=d39PER/uA0WU7GJHb00ysvyLArJZ6UUUuKcmZ84WE9VEHbhHR2Q4D9NcZ6+x5W6zfAXtxaVtNmYTNH7ZFDAtIQJOi6bS/u0crLgjLNK6RPBRr3IQMUT6rtnKRVSjtqJtxaPLJ1ol0baxxOFSzKAaQSe6O54UswOlJug2jrWrjjI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1670265002; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=9HVdrBThZ7f9kI3x9rrZ++0Pvhvtd65Mi6XXfbUOn9c=; 
-	b=AL2nQEsnMcKMtUOYykXfMvmcbkQLcpedDcvrdxyjy5fiMTZjK9pMeg2rBO0+1j3NHRi63c57ikBPN3sRl+oOZeAJ972EMH22w9j6SOReZFHsmkKwGE66XzMS4AYafqoRXU53e/pbMsaZPJ9SDvnh5G6oqVQ6kmUllHPfzuJylmI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1670265002;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=9HVdrBThZ7f9kI3x9rrZ++0Pvhvtd65Mi6XXfbUOn9c=;
-	b=XhdGy4YeG9Falqel0Qndo43n2Mp+f7bOMMrpz6rL/JRYMsWSXTxLZRYkakSfPPhG
-	CICCMMpu3VUk1yS49eAIOUYLP0i2pGDGwB+m34k7Zg0pVoCgUzqvBCilnadCSLJb/UA
-	N6hPXawTLamOoRrjmsBVoQmHwVI7JHubtr63QQoQ=
-Received: from [192.168.100.172] (86.121.172.71 [86.121.172.71]) by mx.zohomail.com
-	with SMTPS id 1670264999977312.89271187774307; Mon, 5 Dec 2022 10:29:59 -0800 (PST)
-Message-ID: <25804819-f767-6272-4ef1-9b9e92d825cb@arinc9.com>
-Date: Mon, 5 Dec 2022 21:29:50 +0300
+	id 1p2GPm-008Yu7-MV
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 18:42:08 +0000
+Received: by mail-pj1-f50.google.com with SMTP id q15so11059302pja.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 10:42:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PyzTPV6X9xNiTCbyGstKIWGMGMo8e5LT5ChhPCYnMlc=;
+        b=QiB1vO+LE9Qca4lFjVNLaYYnBZ4P3/Nvte16AUvxichWojDubLwtZx0TAxNiOT7CK4
+         3V+99wPYxSd+iR+9wcE1QhU8OSXATDJ8T+jUvHBKKHecIaBWGIAwhH+EVeodry0JNzCD
+         Ir8zlufQRDOYbqSVLg4Gh08mYnw9zgtDaK52U4078jkSj8WtfvjrWwoJ/YcDKM4HsH2W
+         K+D3ICytzyDPwJDMA8dLmqgMVi2DG74ddN4grjVti0vYj5ZHiI0pk1WK8LI/V23QoJPI
+         xvC7CDCxrxFadNCOb3mzzeQOhca2bdyrjOXhjVtEPuMvAY+t09xdbpRsX5M30jtu/TLq
+         mflw==
+X-Gm-Message-State: ANoB5pnj07KWWNMLAVhqLDeeS4dWEJfk5P2JbgFg8gCBfF/7uZI/NpqI
+	P3YozpKCpfwWHMWXJKwDJ6g=
+X-Google-Smtp-Source: AA0mqf7YcuHB/+S/cPgfuJ0vxZsTspMf7KptxrrWaSD1oWJBYRYRq9ExUjSUrPOI7HRt0+It34rSpQ==
+X-Received: by 2002:a17:902:b608:b0:189:7a8b:537d with SMTP id b8-20020a170902b60800b001897a8b537dmr44459287pls.95.1670265723486;
+        Mon, 05 Dec 2022 10:42:03 -0800 (PST)
+Received: from ?IPV6:2620:15c:211:201:c22a:d200:1ba3:dcca? ([2620:15c:211:201:c22a:d200:1ba3:dcca])
+        by smtp.gmail.com with ESMTPSA id h15-20020a056a00000f00b00574d38f4d37sm10244237pfk.45.2022.12.05.10.42.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Dec 2022 10:42:02 -0800 (PST)
+Message-ID: <6785696a-cb52-5934-dbd6-28472b4cd7c6@acm.org>
+Date: Mon, 5 Dec 2022 10:41:59 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v4 net-next 3/9] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, netdev@vger.kernel.org,
- John Crispin <john@phrozen.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
- Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
- Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
- <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>,
- George McCollister <george.mccollister@gmail.com>,
- Rob Herring <robh@kernel.org>
-References: <20221202204559.162619-1-colin.foster@in-advantage.com>
- <20221202204559.162619-4-colin.foster@in-advantage.com>
- <bfc6810b-3c21-201b-3c4f-a0def3928597@arinc9.com>
- <Y46m3/oqtoqJWFlv@COLIN-DESKTOP1.localdomain>
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v3] ufs: core: wlun suspend SSU/enter hibern8 fail
+ recovery
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Y46m3/oqtoqJWFlv@COLIN-DESKTOP1.localdomain>
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20221202073532.7884-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20221202073532.7884-1-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_103056_869918_8765650B 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20221205_104206_762389_01ECD115 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,157 +86,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6.12.2022 05:20, Colin Foster wrote:
-> On Sat, Dec 03, 2022 at 12:45:34AM +0300, Arınç ÜNAL wrote:
->> On 2.12.2022 23:45, Colin Foster wrote:
->>> DSA switches can fall into one of two categories: switches where all ports
->>> follow standard '(ethernet-)?port' properties, and switches that have
->>> additional properties for the ports.
->>>
->>> The scenario where DSA ports are all standardized can be handled by
->>> swtiches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
->>>
->>> The scenario where DSA ports require additional properties can reference
->>> '$dsa.yaml#' directly. This will allow switches to reference these standard
->>> defitions of the DSA switch, but add additional properties under the port
->>> nodes.
->>>
->>> Suggested-by: Rob Herring <robh@kernel.org>
->>> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
->>> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
->>> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
->>> Acked-by: Alvin Šipraga <alsi@bang-olufsen.dk> # realtek
->>> ---
->>>
->>> v3 -> v4
->>>     * Rename "$defs/base" to "$defs/ethernet-ports" to avoid implication of a
->>>       "base class" and fix commit message accordingly
->>>     * Add the following to the common etherent-ports node:
->>>         "additionalProperties: false"
->>>         "#address-cells" property
->>>         "#size-cells" property
->>>     * Fix "etherenet-ports@[0-9]+" to correctly be "ethernet-port@[0-9]+"
->>>     * Remove unnecessary newline
->>>     * Apply changes to mediatek,mt7530.yaml that were previously in a separate patch
->>>     * Add Reviewed and Acked tags
->>>
->>> v3
->>>     * New patch
->>>
->>> ---
->>>    .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
->>>    .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
->>>    .../devicetree/bindings/net/dsa/dsa.yaml      | 25 ++++++++++++++++---
->>>    .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
->>>    .../bindings/net/dsa/mediatek,mt7530.yaml     | 16 +++---------
->>>    .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
->>>    .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
->>>    .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
->>>    .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
->>>    .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
->>>    .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
->>>    11 files changed, 35 insertions(+), 24 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
->>> index 259a0c6547f3..5888e3a0169a 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
->>> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->>>    title: Arrow SpeedChips XRS7000 Series Switch Device Tree Bindings
->>>    allOf:
->>> -  - $ref: dsa.yaml#
->>> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->>>    maintainers:
->>>      - George McCollister <george.mccollister@gmail.com>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
->>> index 1219b830b1a4..5bef4128d175 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
->>> @@ -66,7 +66,7 @@ required:
->>>      - reg
->>>    allOf:
->>> -  - $ref: dsa.yaml#
->>> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->>>      - if:
->>>          properties:
->>>            compatible:
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
->>> index b9d48e357e77..b9e366e46aed 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
->>> @@ -19,9 +19,6 @@ description:
->>>    select: false
->>>    properties:
->>> -  $nodename:
->>> -    pattern: "^(ethernet-)?switch(@.*)?$"
->>> -
->>>      dsa,member:
->>>        minItems: 2
->>>        maxItems: 2
->>> @@ -58,4 +55,26 @@ oneOf:
->>>    additionalProperties: true
->>> +$defs:
->>> +  ethernet-ports:
->>> +    description: A DSA switch without any extra port properties
->>> +    $ref: '#/'
->>> +
->>> +    patternProperties:
->>> +      "^(ethernet-)?ports$":
->>> +        type: object
->>> +        additionalProperties: false
->>> +
->>> +        properties:
->>> +          '#address-cells':
->>> +            const: 1
->>> +          '#size-cells':
->>> +            const: 0
->>> +
->>> +        patternProperties:
->>> +          "^(ethernet-)?port@[0-9]+$":
->>> +            description: Ethernet switch ports
->>> +            $ref: dsa-port.yaml#
->>> +            unevaluatedProperties: false
->>> +
->>>    ...
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
->>> index 73b774eadd0b..748ef9983ce2 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
->>> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->>>    title: Hirschmann Hellcreek TSN Switch Device Tree Bindings
->>>    allOf:
->>> -  - $ref: dsa.yaml#
->>> +  - $ref: dsa.yaml#/$defs/ethernet-ports
->>>    maintainers:
->>>      - Andrew Lunn <andrew@lunn.ch>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> index f2e9ff3f580b..b815272531fa 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> @@ -156,17 +156,6 @@ patternProperties:
->>>        patternProperties:
->>>          "^(ethernet-)?port@[0-9]+$":
->>> -        type: object
->>> -        description: Ethernet switch ports
->>> -
->>> -        unevaluatedProperties: false
->>> -
->>> -        properties:
->>> -          reg:
->>> -            description:
->>> -              Port address described must be 5 or 6 for CPU port and from 0 to 5
->>> -              for user ports.
->>
->> This shouldn't be moved. Please reread our conversation on the previous
->> version.
+On 12/1/22 23:35, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
 > 
-> I see - I missed your point. My apologies. This binding should keep the
-> reg properties where they were. I'll wait a few more days for any
-> additional feedback.
+> When SSU/enter hibern8 fail in wlun suspend flow, trigger error
+> handler and return busy to break the suspend.
+> If not, wlun runtime pm status become error and the consumer will
+> stuck in runtime suspend status.
+> 
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+> ---
+>   drivers/ufs/core/ufshcd.c | 26 ++++++++++++++++++++++++++
+>   1 file changed, 26 insertions(+)
+> 
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index b1f59a5fe632..a0dbf2c410b1 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -9049,6 +9049,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   
+>   		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+>   			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+> +			if (ret && (pm_op != UFS_SHUTDOWN_PM)) {
+> +				/*
+> +				 * If return err in suspend flow, IO will hang.
+> +				 * Trigger error handler and break suspend for
+> +				 * error recovery.
+> +				 */
+> +				spin_lock_irq(hba->host->host_lock);
+> +				hba->force_reset = true;
+> +				ufshcd_schedule_eh_work(hba);
+> +				spin_unlock_irq(hba->host->host_lock);
+> +
+> +				ret = -EBUSY;
+> +			}
+>   			if (ret)
+>   				goto enable_scaling;
+>   		}
+> @@ -9060,6 +9073,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   	 */
+>   	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
+>   	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
+> +	if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {
+> +		/*
+> +		 * If return err in suspend flow, IO will hang.
+> +		 * Trigger error handler and break suspend for
+> +		 * error recovery.
+> +		 */
+> +		spin_lock_irq(hba->host->host_lock);
+> +		hba->force_reset = true;
+> +		ufshcd_schedule_eh_work(hba);
+> +		spin_unlock_irq(hba->host->host_lock);
+> +
+> +		ret = -EBUSY;
+> +	}
+>   	if (ret)
+>   		goto set_dev_active;
+>   
 
-Feel free to add my acked-by with the next version.
+Please follow the coding style that is used elsewhere in the kernel and
+remove the superfluous parentheses from this patch. "if (ret && (pm_op !=
+UFS_SHUTDOWN_PM)) {" can be changed into "if (ret && pm_op !=
+UFS_SHUTDOWN_PM) {" and "if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {" can be
+changed into "if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {".
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Otherwise this patch looks good to me.
 
-Arınç
+Thanks,
+
+Bart.
 
