@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C7EC4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15CAC4708E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 09:32:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ifApAlZTQFbWg5ohlrPWCvJNXEFvsjQ5YMa0cqLSe/Q=; b=ZPEGQx1JQYJ63odvvk9dosxuVW
-	Ru1DgmEQd9z+0oQkP5zzz7e8ScxK7hSRh3CQro6kpKVRYG8nuP3BeWaNqpfSUWJYW180mKo08hDwp
-	u0UsZyCFfHG82DdvjhuvmYy/mlotzZvmQm4mhmey8UQWENywvwVet9NENEyn8K+AxzuK/X+wgCvce
-	59cnjjEYNUGjNdnjvqGA+kacDUQGaKOc5lDVR09RUhLaPMyECIITxgu+3O36QQsSXq8WuoZGLFsng
-	1ZgXurITGp/YV2EXj+qwFPdm58YFYDO0095muQEixszpg0b8vN8+0f5Z6C2zncg8UzAPtlUeqt+vh
-	ZKxIahog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MEuM7cPCJTfj/NpgzHd4JGMRaSwjqo39X0sGHXyT59E=; b=p/iFK7uN1HehVuD2DdAGisUYVV
+	9Oytlml+mCMPloEjrn+cvnd9R7vOywxN+7WtBeDK41NoPHKjXmCPd3UhSW/eHLgDFo8yo9Ug/LOK7
+	oE6e9AKnuCeOgfx+UmP2T2U3NmD2qT8ZA7mR8rj3rJA7SMepGIUkLuCIPHZxaCwWJYSVYgGVWH9ig
+	csHCVitr2oC5N00lb33tgjWaBH+3ztj76GloO23qGu7UPrWUrFh8h3EGjy3ho3h/pdJkF+d95MoTE
+	VozuZ1/QZ6u/EYQ+UIK7KqkmDIXBv8D+vnb5TULtVnIKmIxTGCSLTTJ/sybalGaK3qG+27glcRgpm
+	40uJDGRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27gr-00GzgI-LO; Mon, 05 Dec 2022 09:23:09 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1p27pg-00H9Tz-K4; Mon, 05 Dec 2022 09:32:16 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p27gc-00GzJD-RN
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 09:22:56 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id a19so12864852ljk.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 01:22:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ifApAlZTQFbWg5ohlrPWCvJNXEFvsjQ5YMa0cqLSe/Q=;
-        b=SMRaKuNVOMEMtKb9Ghp1P5LbxZ2NAL0PdCBOihZKAP3eyoOLXSa4aR9S/qbj0z3r8T
-         T7cFDebZRT0b0vN/E23WFhNOKpi64lihKYO1rHt/APkYNJNso3Kv+0uO7VQv2WnYHLMW
-         Z5Y6PuivtqO8N3JMa7TwdqZ9/H9rF41rYI+a8pkXjIIAqFUvA5wuLFpg85oxro8jtEws
-         F9HU6sZnpuzQhmH3r5cRvhb7H43hB4aW1q3oeeElxjSDF+HvJ+5yhTJxms9NbPLGa7hm
-         9lh89zB/V6Zy1S9+pqOFmgOe9hSVr566UMQTgYe4xuB7GgAaFYcaqhGTdZxUvKQFx6tu
-         jemw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ifApAlZTQFbWg5ohlrPWCvJNXEFvsjQ5YMa0cqLSe/Q=;
-        b=ltc/3Lv65gk5AoV7N0Yu5oR+bOnLIcxzmdoudkjweG2KG8OHvQQW7O3IwnHOMPFgeR
-         0JdteW2k7qLrEzABrg1iqr5edm37dfAo+lNP45CHbe655YvpOciA/2zgK5SJlKEn6VQM
-         ihn+QDo7ZkA7FTQRFOWmHUalpe1Vw133pLVIBJnQsXWnyEK8MtqP9UVVPaf+YIZe1KgJ
-         /1Zrux6ALjk2ivuSjKAeV+UyLqk0/TuSoSIf0NsO+g+9ORdJ7L8vFQiFxyo15OLm7toK
-         xC9uRxVGTMTZRkFGklbzPEHpYhXXxgjrqQT4aMzhVLPjMtS5KeHgWKgM/PfInNkcM1b4
-         TBkQ==
-X-Gm-Message-State: ANoB5pnVU6zqUt77qNDKXg/1Tft4iTvV9Yxkg33yHp3XtAzp4b6qljlI
-	WQPcfaSuJODFkY/OsUaMe2KZaA==
-X-Google-Smtp-Source: AA0mqf5ubdilEPhhSGVBVAmanSy+eKOOTQiyr5re3MOtJ+WUJkcNhxnD/whPCuSsjcoLuGGPaa2jmA==
-X-Received: by 2002:a05:651c:2211:b0:26c:66c1:87f9 with SMTP id y17-20020a05651c221100b0026c66c187f9mr20482455ljq.47.1670232170396;
-        Mon, 05 Dec 2022 01:22:50 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id k1-20020ac257c1000000b004b55075f813sm1304683lfo.227.2022.12.05.01.22.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 01:22:50 -0800 (PST)
-Message-ID: <6ba5f4c6-d725-0bee-9fb2-eddfae5760ca@linaro.org>
-Date: Mon, 5 Dec 2022 10:22:48 +0100
+	id 1p27pa-00H9Ii-EV
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 09:32:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id CB0E5B80D5F;
+	Mon,  5 Dec 2022 09:32:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 157C6C433C1;
+	Mon,  5 Dec 2022 09:32:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670232727;
+	bh=WOC4NGSKcpE3psehYws6xoUdfp+/+TNrXzZHo7XVmas=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iG0XrvLqHIBCkpesgAG8ZeHH6uezRpKKkjKF9WI4v0UClNi5HBuISupRm/Ef+8Tik
+	 Njn2VtTYhiFN7uEc++EJQL0fbANBwl+ktGrYI/8VZlpLHQ9h6rlhcynpYyZJ1xcUq6
+	 vV1qXs1hVmUTr0c7cNWbUEIDICFhLRxGPNokTjoo0O7N8DHWin8qE3bkE79QXknXKl
+	 Qv3CaKYDH7cjy5pxsLn41lNSLydVBV4TVAqqsbNNRIai2GCGyk1PC74G5NLWkQOylt
+	 AN+wGUfM6NMRajwivjHyLOVksmaFKfFCssOs9oZnpcw9TxNx3bV1Y/woXoHSqePkZt
+	 aqktQI2JhZUUQ==
+Date: Mon, 5 Dec 2022 11:32:03 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com
+Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: fix possible deadlock
+ if mtk_wed_wo_init fails
+Message-ID: <Y426k9VzOzYlXuOo@unreal>
+References: <a87f05e60ea1a94b571c9c87b69cc5b0e94943f2.1669999089.git.lorenzo@kernel.org>
+ <Y4ybbkn+nXkGsqWe@unreal>
+ <Y4y4If8XXu+wErIj@lore-desk>
+ <Y42d2us5Pv1UqhEj@unreal>
+ <Y420B4/IpwFHJAck@lore-desk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v2 9/9] dt-bindings: mtd: ecc-mtk: Add compatible for
- MT7986
-Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
- Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- benliang.zhao@mediatek.com, bin.zhang@mediatek.com
-References: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
- <20221205065756.26875-10-xiangsheng.hou@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221205065756.26875-10-xiangsheng.hou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <Y420B4/IpwFHJAck@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_012254_904114_F72E3167 
-X-CRM114-Status: UNSURE (   7.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221205_013210_804991_9270B1D0 
+X-CRM114-Status: GOOD (  30.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,16 +80,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/12/2022 07:57, Xiangsheng Hou wrote:
-> Add dt-bindings documentation of ECC for MediaTek MT7986 SoC
-> platform.
-> 
+On Mon, Dec 05, 2022 at 10:04:07AM +0100, Lorenzo Bianconi wrote:
+> On Dec 05, Leon Romanovsky wrote:
+> > On Sun, Dec 04, 2022 at 04:09:21PM +0100, Lorenzo Bianconi wrote:
+> > > > On Fri, Dec 02, 2022 at 06:36:33PM +0100, Lorenzo Bianconi wrote:
+> > > > > Introduce __mtk_wed_detach() in order to avoid a possible deadloc=
+k in
+> > > > > mtk_wed_attach routine if mtk_wed_wo_init fails.
+> > > > >=20
+> > > > > Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed w=
+o support")
+> > > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > > > ---
+> > > > >  drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++++++++++++-=
+------
+> > > > >  drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 10 ++++++---
+> > > > >  drivers/net/ethernet/mediatek/mtk_wed_wo.c  |  3 +++
+> > > > >  3 files changed, 26 insertions(+), 11 deletions(-)
+> > > >=20
+> > > > <...>
+> > > >=20
+> > > > > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/driver=
+s/net/ethernet/mediatek/mtk_wed_mcu.c
+> > > > > index f9539e6233c9..b084009a32f9 100644
+> > > > > --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> > > > > +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+> > > > > @@ -176,6 +176,9 @@ int mtk_wed_mcu_send_msg(struct mtk_wed_wo *w=
+o, int id, int cmd,
+> > > > >  	u16 seq;
+> > > > >  	int ret;
+> > > > > =20
+> > > > > +	if (!wo)
+> > > > > +		return -ENODEV;
+> > > >=20
+> > > > <...>
+> > > >=20
+> > > > >  static void
+> > > > >  mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
+> > > > >  {
+> > > > > +	if (!wo)
+> > > > > +		return;
+> > > >=20
+> > > > How are these changes related to the written in deadlock?
+> > > > How is it possible to get internal mtk functions without valid wo?
+> > >=20
+> > > Hi Leon,
+> > >=20
+> > > if mtk_wed_rro_alloc() fails in mtk_wed_attach(), we will end up runn=
+ing
+> > > __mtk_wed_detach() when wo struct is not allocated yet (wo is allocat=
+ed in
+> > > mtk_wed_wo_init()).
+> >=20
+> > IMHO, it is a culprit, proper error unwind means that you won't call to
+> > uninit functions for something that is not initialized yet. It is better
+> > to fix it instead of adding "if (!wo) ..." checks.
+>=20
+> So, iiuc, you would prefer to do something like:
+>=20
+> __mtk_wed_detach()
+> {
+> 	...
+> 	if (mtk_wed_get_rx_capa(dev) && wo) {
+> 		mtk_wed_wo_reset(dev);
+> 		mtk_wed_free_rx_rings(dev);
+> 		mtk_wed_wo_deinit(hw);
+> 	}
+> 	...
+> =09
+> Right? I am fine both ways :)
 
-Now your subject prefix does not match file. Filename is
-"mediatek,nand-ecc-engine." so use it instead of "ecc-mtk".
+Yes
 
+>=20
+> >=20
+> > > Moreover __mtk_wed_detach() can run mtk_wed_wo_reset() and mtk_wed_wo=
+_deinit()
+> >=20
+> > This is another side of same coin. If you can run them in parallel, you
+> > need locking protection and ability to cancel work, so nothing is going
+> > to be executed once cleanup succeeded.
+>=20
+> Sorry, I did not get what you mean here with 'in parallel'. __mtk_wed_det=
+ach()
+> always run with hw_lock mutex help in both mtk_wed_attach() or
+> mtk_wed_detach().
 
-Best regards,
-Krzysztof
+Lock is not enough, you need to make sure that no underlying code is
+called without wo. You suggestion above is fine. The less low level code
+will have "if (!wo) ...", the better will be.
+
+Thanks
+
+>=20
+> Regards,
+> Lorenzo
+>=20
+> >=20
+> > These were my 2 cents, totally IMHO.
+> >=20
+> > Thanks
+
 
 
