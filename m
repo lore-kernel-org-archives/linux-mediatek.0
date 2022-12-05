@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8A7C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 07:29:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50229C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 07:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CveOrbVF2/uaY1cUDeZzIO6XscERmowLRm0zEKBO8XI=; b=0qylJURBj1O+QKbu945tIUtFF7
-	iF15nOVObfIBNTu3o/9tBkYYJTZ+ycjULRTo2D++WKbNlVBBEcEw7BAB/cFlAgFzXJNzS5W1Vqj1o
-	quUT/EapA1ilRF8nYhTInCgDGGZ3uhyoaSwxE7l/jhU5bAXomQZ41xiVz5mWsSXmccD84ijIBpa1A
-	0lWI/1UjB9TW80LVxEESp0kzX3lLg3OXrXGxlbvO2jK2jrIUYudB49KjtKqonmST/7cxdt3ErECzi
-	QLhXQJsxee6JpDjoCpDmngePbWs7TVIYiiumUSff1bUuWpmCkMIFzLIiFcKtoJN4GUaexpP4eBpHS
-	6bD4t/2A==;
+	bh=1WMPHgGT2Vc06cNDWGV7eQXxRmPqVm37oCGD2yTJxvQ=; b=Wcoi8KtW8vmReDZ2u60a5J/gRd
+	5pWgkpHTtKg47IKfvdcQObPm6+Oror94prlluJ5nxb+wI8buHRelqqzbtiM6unCXacHsIpP51UoUA
+	4D5WNxPvtoipWVzmcr/a88fa+mWGYx7FKP+85SO5p7R6HWvBkbUoMcFQHmWR0WjTiZpG5oKjKC1NG
+	I2NUaMaS/SGB7AjXdYU8giAFB5MEUDJvAQgjM4lVZxlgVBwIYI/+KUsYaNf9nUXPPVlrHXgGjYUXS
+	atvf3S6L93hjrIv0Bqp5Jz/FnShKQBX1BEYhc24ty1hAg+HDZdRi7amlJ2pWGJIDkg6bsTdw7nK0b
+	YQkZLpIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p25v4-00FZeQ-2T; Mon, 05 Dec 2022 07:29:42 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p26Dp-00FqKj-TU; Mon, 05 Dec 2022 07:49:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p25uz-00FZdL-Ml
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 07:29:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 15DB3B80CA8;
-	Mon,  5 Dec 2022 07:29:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AABFC433C1;
-	Mon,  5 Dec 2022 07:29:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670225374;
-	bh=fx8DijmljxFft2vuBcvu+su0yNi3F7HjMQ2QA0Z/qsA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ArPxW/i43FgeOiVQwWsnHQz8lP9FM7g1jZ82IQgQoJNy+5y/JXTULJu2m/eQmA8kw
-	 MkvrBPqvGOfHjxkvGzQEUhLA3oZnB/1X3Hf9B9deqirDJTkD50z+/ChnRqAn5fGJJT
-	 wraL883KEEQdChnvBqmOZBznbVuQwzytrs8/oKMSvohcewZs8VtpvywCrVTz3wc6CH
-	 mxAZZyGMuh5PSzXSprPY+hkbY1H7klD0Z5LmJCl4PsMl6K+vpRrTB//NZwJlkWli6q
-	 2dS33bfzZwQmYVH+hSS1EP94T7L20cLg3kkZe2CEPPMuz7W7pvkHFKEy612JupzKgO
-	 gTCbvuGm6esEA==
-Date: Mon, 5 Dec 2022 09:29:30 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: fix possible deadlock
- if mtk_wed_wo_init fails
-Message-ID: <Y42d2us5Pv1UqhEj@unreal>
-References: <a87f05e60ea1a94b571c9c87b69cc5b0e94943f2.1669999089.git.lorenzo@kernel.org>
- <Y4ybbkn+nXkGsqWe@unreal>
- <Y4y4If8XXu+wErIj@lore-desk>
+	id 1p26Dc-00FqGy-J4; Mon, 05 Dec 2022 07:48:54 +0000
+X-UUID: 85cc204b41ab45378d28218139a48226-20221205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1WMPHgGT2Vc06cNDWGV7eQXxRmPqVm37oCGD2yTJxvQ=;
+	b=DOLBopSdwrxYRACR642xEdclstPqvpiA15BQILD3PwlcKb9dYkhO9ZHgwReZgPTj2hG5d2I1MM+cmcg9/YvWSSMIlCY7IM3JaswwpivhfEDHtEniCOitZogRYfClAFMRbcmQX52eus4zpeskonYOegjmiHzzEmoEUBq+AvXYudQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:e27d2e44-f329-49cc-ab86-26ed1d16fc0c,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:4e21b030-2938-482e-aafd-98d66723b8a9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 85cc204b41ab45378d28218139a48226-20221205
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 175316104; Mon, 05 Dec 2022 00:48:48 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 5 Dec 2022 14:58:09 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 5 Dec 2022 14:58:08 +0800
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
+	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
+	<gch981213@gmail.com>
+CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
+	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
+Subject: [PATCH v2 1/9] spi: mtk-snfi: Add snfi support for MT7986 IC
+Date: Mon, 5 Dec 2022 14:57:48 +0800
+Message-ID: <20221205065756.26875-2-xiangsheng.hou@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
+References: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <Y4y4If8XXu+wErIj@lore-desk>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221204_232937_923143_A093AAE6 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20221204_234852_658581_E0ED9E01 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +86,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 04, 2022 at 04:09:21PM +0100, Lorenzo Bianconi wrote:
-> > On Fri, Dec 02, 2022 at 06:36:33PM +0100, Lorenzo Bianconi wrote:
-> > > Introduce __mtk_wed_detach() in order to avoid a possible deadlock in
-> > > mtk_wed_attach routine if mtk_wed_wo_init fails.
-> > >=20
-> > > Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo su=
-pport")
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > ---
-> > >  drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++++++++++++-----=
---
-> > >  drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 10 ++++++---
-> > >  drivers/net/ethernet/mediatek/mtk_wed_wo.c  |  3 +++
-> > >  3 files changed, 26 insertions(+), 11 deletions(-)
-> >=20
-> > <...>
-> >=20
-> > > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/ne=
-t/ethernet/mediatek/mtk_wed_mcu.c
-> > > index f9539e6233c9..b084009a32f9 100644
-> > > --- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> > > +++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
-> > > @@ -176,6 +176,9 @@ int mtk_wed_mcu_send_msg(struct mtk_wed_wo *wo, i=
-nt id, int cmd,
-> > >  	u16 seq;
-> > >  	int ret;
-> > > =20
-> > > +	if (!wo)
-> > > +		return -ENODEV;
-> >=20
-> > <...>
-> >=20
-> > >  static void
-> > >  mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
-> > >  {
-> > > +	if (!wo)
-> > > +		return;
-> >=20
-> > How are these changes related to the written in deadlock?
-> > How is it possible to get internal mtk functions without valid wo?
->=20
-> Hi Leon,
->=20
-> if mtk_wed_rro_alloc() fails in mtk_wed_attach(), we will end up running
-> __mtk_wed_detach() when wo struct is not allocated yet (wo is allocated in
-> mtk_wed_wo_init()).
+Add snfi support for MT7986 IC.
 
-IMHO, it is a culprit, proper error unwind means that you won't call to
-uninit functions for something that is not initialized yet. It is better
-to fix it instead of adding "if (!wo) ..." checks.
+Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+---
+ drivers/spi/spi-mtk-snfi.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
-> Moreover __mtk_wed_detach() can run mtk_wed_wo_reset() and mtk_wed_wo_dei=
-nit()
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index d66bf9762557..fa8412ba20e2 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -126,7 +126,8 @@
+ #define STR_DATA BIT(0)
+ 
+ #define NFI_STA 0x060
+-#define NFI_NAND_FSM GENMASK(28, 24)
++#define NFI_NAND_FSM_7622 GENMASK(28, 24)
++#define NFI_NAND_FSM_7986 GENMASK(29, 23)
+ #define NFI_FSM GENMASK(19, 16)
+ #define READ_EMPTY BIT(12)
+ 
+@@ -158,6 +159,7 @@
+ #define MAS_WR GENMASK(5, 3)
+ #define MAS_RDDLY GENMASK(2, 0)
+ #define NFI_MASTERSTA_MASK_7622 (MAS_ADDR | MAS_RD | MAS_WR | MAS_RDDLY)
++#define NFI_MASTERSTA_MASK_7986 3
+ 
+ // SNFI registers
+ #define SNF_MAC_CTL 0x500
+@@ -220,6 +222,11 @@
+ 
+ static const u8 mt7622_spare_sizes[] = { 16, 26, 27, 28 };
+ 
++static const u8 mt7986_spare_sizes[] = {
++	16, 26, 27, 28, 32, 36, 40, 44, 48, 49, 50, 51, 52, 62, 61, 63, 64, 67,
++	74
++};
++
+ struct mtk_snand_caps {
+ 	u16 sector_size;
+ 	u16 max_sectors;
+@@ -230,6 +237,7 @@ struct mtk_snand_caps {
+ 	bool bbm_swap;
+ 	bool empty_page_check;
+ 	u32 mastersta_mask;
++	u32 nandfsm_mask;
+ 
+ 	const u8 *spare_sizes;
+ 	u32 num_spare_size;
+@@ -244,6 +252,7 @@ static const struct mtk_snand_caps mt7622_snand_caps = {
+ 	.bbm_swap = false,
+ 	.empty_page_check = false,
+ 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
++	.nandfsm_mask = NFI_NAND_FSM_7622,
+ 	.spare_sizes = mt7622_spare_sizes,
+ 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
+ };
+@@ -257,10 +266,25 @@ static const struct mtk_snand_caps mt7629_snand_caps = {
+ 	.bbm_swap = true,
+ 	.empty_page_check = false,
+ 	.mastersta_mask = NFI_MASTERSTA_MASK_7622,
++	.nandfsm_mask = NFI_NAND_FSM_7622,
+ 	.spare_sizes = mt7622_spare_sizes,
+ 	.num_spare_size = ARRAY_SIZE(mt7622_spare_sizes)
+ };
+ 
++static const struct mtk_snand_caps mt7986_snand_caps = {
++	.sector_size = 1024,
++	.max_sectors = 8,
++	.fdm_size = 8,
++	.fdm_ecc_size = 1,
++	.fifo_size = 64,
++	.bbm_swap = true,
++	.empty_page_check = true,
++	.mastersta_mask = NFI_MASTERSTA_MASK_7986,
++	.nandfsm_mask = NFI_NAND_FSM_7986,
++	.spare_sizes = mt7986_spare_sizes,
++	.num_spare_size = ARRAY_SIZE(mt7986_spare_sizes)
++};
++
+ struct mtk_snand_conf {
+ 	size_t page_size;
+ 	size_t oob_size;
+@@ -360,7 +384,7 @@ static int mtk_nfi_reset(struct mtk_snand *snf)
+ 	}
+ 
+ 	ret = readl_poll_timeout(snf->nfi_base + NFI_STA, val,
+-				 !(val & (NFI_FSM | NFI_NAND_FSM)), 0,
++				 !(val & (NFI_FSM | snf->caps->nandfsm_mask)), 0,
+ 				 SNFI_POLL_INTERVAL);
+ 	if (ret) {
+ 		dev_err(snf->dev, "Failed to reset NFI\n");
+@@ -1295,6 +1319,7 @@ static irqreturn_t mtk_snand_irq(int irq, void *id)
+ static const struct of_device_id mtk_snand_ids[] = {
+ 	{ .compatible = "mediatek,mt7622-snand", .data = &mt7622_snand_caps },
+ 	{ .compatible = "mediatek,mt7629-snand", .data = &mt7629_snand_caps },
++	{ .compatible = "mediatek,mt7986-snand", .data = &mt7986_snand_caps },
+ 	{},
+ };
+ 
+-- 
+2.25.1
 
-This is another side of same coin. If you can run them in parallel, you
-need locking protection and ability to cancel work, so nothing is going
-to be executed once cleanup succeeded.
-
-These were my 2 cents, totally IMHO.
-
-Thanks
 
