@@ -4,101 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E507C636F9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 22:31:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7754DC47089
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 23:16:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0beeeN3x4oja6CoA48n0dgddbavIjL+s5ouQp7TTWtU=; b=rBeYCMMrRl6tiNgregrizhM2MK
-	4MYhLoR3pG96gxcj6FkNPZc69sM4Uf6dYk2V4rGFhZuVr8STOiwi6yi5GopSv2mjzqD5HvAJsjvbN
-	KWIGce3eezcr5LEUrOA6kYmkpEdU3NjviIBsjGFeadh0eyxz6bxThJrnZPitNJKL7JxBjv6bgaa7N
-	8O0jS2uaxhgmuc8gakqdVmm2BUWeC4CcMix1FN5+b17djGJqkA+V1IfX89MnNZzQcfn0Lq9YHuxa4
-	GGC6TOiwsO4bo9ojdDlBWnTAv8zJpbOvmfQJfepVsN5qBz0mleyr0nTKQcCZRMqLGsOVlxQN2SHi8
-	ZreUBMHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iDF/gKKPFFdYm1Z2aXrfOeQfBC1PEKz8UeufAaOXx9E=; b=lG0U8tgxnY7Xc0kcjgbLP6ihiW
+	LRnZujqmQxM+bERR7FaH4Y0NsvmEha0whheeuHj6gQ59EOByvfxuJBPRMpiU8ZXxuber2LAtFpOLZ
+	ENMhIiIoSIsv64OA6dHu1Yc6HFU5Zr4IM6bHlkqNMdPMJBXF62Cn79WI+MSfac4HnWVXvolbtCwZk
+	8NwuLqOjyfKJ+Bdme10V/KzKl1coKyrdWQ3xkm8CuEcr4lFK9iydgtXvl8t/3xGfj+2fpdKgoMP/E
+	OrA+GBLtW+jYjbDVxqdmRHnH7UoLvAsWo0rWmMitBJgmkjnlfJQO/+T8y02x4h/WQW9qRxLvIIPxW
+	Z0HTCOmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Jz9-00BJ11-1R; Mon, 05 Dec 2022 22:30:51 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1p2KhG-00BzFd-OV; Mon, 05 Dec 2022 23:16:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Jz2-00BIs2-D0; Mon, 05 Dec 2022 22:30:46 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 73F5F1C09F4; Mon,  5 Dec 2022 23:30:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1670279436;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0beeeN3x4oja6CoA48n0dgddbavIjL+s5ouQp7TTWtU=;
-	b=Glfr3eDW908ut8l8ZtyxnivFsAwFhKrd91OZ8Hn4B5DsYqkFacSwVHpMdO+0ZJbEke3io+
-	rZJ6H6RfHZXL+x1iQ654lTF809RKZz+X/69jMIvQbgjOVGWGx/4uVo747OBUmRhyZzWmxv
-	I6Gh8EjJUSygmU/FfosMXAkJOwmFGvg=
-Date: Mon, 5 Dec 2022 23:30:35 +0100
-From: Pavel Machek <pavel@ucw.cz>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Douglas Anderson <dianders@chromium.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Michael Walle <michael@walle.cc>, Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
-	Hammer Hsieh <hammerh0314@gmail.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Sean Anderson <sean.anderson@seco.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Matthias Kaehlcke <mka@chromium.org>,
-	Satya Priya <quic_c_skakit@quicinc.com>, linux-pwm@vger.kernel.org,
-	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 01/11] pwm: Make .get_state() callback return an error
- code
-Message-ID: <Y45xC/Gwhrr+fctN@duo.ucw.cz>
-References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
- <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
+	id 1p2Kh5-00Bz8k-G9; Mon, 05 Dec 2022 23:16:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5C952614C3;
+	Mon,  5 Dec 2022 23:16:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C006FC433B5;
+	Mon,  5 Dec 2022 23:16:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670282173;
+	bh=tTj6xlqwZkkawn6eAfGzgzhH58kjDBepMPSTaEkO1+o=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ZY/GeL7d56Z67JgEQuUyLY6Vqk/2mg/lRDQfmu9taP+IPjTF2dez5CemaGs4DPpYL
+	 CgyKfBXI+PqKJRC83bS6qkJfpHd/OzMbTBFn3+l80OxFvLe0BK1sPfEeZUifZZyEdE
+	 rvpR/Kt12dVHkYg+waOl98VivJ0ehO/vGyL6mU09EoTvIIemI5onOJFhyncIVpU1i2
+	 JtoJ5GkzOVP26LCAAfv3dEFLvoxqkzmuJek6SYtu6LGcP6cvJ9AYBdKzaMobtt98b4
+	 sfY87Zjv0psr4D33dFMKY8U9uGj8l5ivstsDoDLky8TPELLx6Nf2RynaYJE/JXrZeD
+	 PQTjYxbdOYcWg==
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-12c8312131fso15369866fac.4;
+        Mon, 05 Dec 2022 15:16:13 -0800 (PST)
+X-Gm-Message-State: ANoB5plepGbGQhRNv/I3l3C6kTE4NtdvGhWeomEzYcVDDrwE+JQKXf4O
+	MLSSXlUf9MDZvIib0D1bDs1+kZnVBt5C0bnndg==
+X-Google-Smtp-Source: AA0mqf7VhWuGDHZgIsW7euFPqGB81veoXwRhbmr7m/MxNUsi4J+BsvBrNEz7hgNDnExfLJ6wGZ3fogI8TRhYee8qtkQ=
+X-Received: by 2002:a05:6870:b00f:b0:13a:f4fd:7d81 with SMTP id
+ y15-20020a056870b00f00b0013af4fd7d81mr39025319oae.139.1670282172886; Mon, 05
+ Dec 2022 15:16:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ZBm0pYJnT4srarSL"
-Content-Disposition: inline
-In-Reply-To: <20221130152148.2769768-2-u.kleine-koenig@pengutronix.de>
+References: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
+In-Reply-To: <20221125-mtk-mailbox-v3-0-c4b635052b65@chromium.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 6 Dec 2022 07:16:02 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__8uYdjFHGTrtq-ZTqvt7gaXeEKv9T3X0e=v4iZ52EE9g@mail.gmail.com>
+Message-ID: <CAAOTY__8uYdjFHGTrtq-ZTqvt7gaXeEKv9T3X0e=v4iZ52EE9g@mail.gmail.com>
+Subject: Re: [PATCH v3] mailbox: mtk-cmdq: Do not request irq until we are ready
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_143045_076527_22FDF8DA 
-X-CRM114-Status: GOOD (  23.56  )
+X-CRM114-CacheID: sfid-20221205_151615_637225_FD40C5C9 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,138 +81,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Ricardo Ribalda <ribalda@chromium.org> =E6=96=BC 2022=E5=B9=B411=E6=9C=8830=
+=E6=97=A5 =E9=80=B1=E4=B8=89 =E6=99=9A=E4=B8=8A8:59=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> If the system comes from kexec() the peripheral might trigger an IRQ
+> befoe we are ready for it. Triggering a crash due to an access to
+> invalid memory.
 
---ZBm0pYJnT4srarSL
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
-Hi!
-
-> .get_state() might fail in some cases. To make it possible that a driver
-> signals such a failure change the prototype of .get_state() to return an
-> error code.
->=20
-> This patch was created using coccinelle and the following semantic patch:
->=20
-> @p1@
-> identifier getstatefunc;
-> identifier driver;
-> @@
->  struct pwm_ops driver =3D {
->         ...,
->         .get_state =3D getstatefunc
->         ,...
->  };
->=20
-> @p2@
-> identifier p1.getstatefunc;
-> identifier chip, pwm, state;
-> @@
-> -void
-> +int
->  getstatefunc(struct pwm_chip *chip, struct pwm_device *pwm, struct pwm_s=
-tate *state)
->  {
->    ...
-> -  return;
-> +  return 0;
->    ...
->  }
->=20
-> plus the actual change of the prototype in include/linux/pwm.h (plus some
-> manual fixing of indentions and empty lines).
->=20
-> So for now all drivers return success unconditionally. They are adapted
-> in the following patches to make the changes easier reviewable.
->=20
-> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-
-LED part:
-
-Acked-by: Pavel Machek <pavel@ucw.cz>
-
-Best regards,
-							Pavel
-
->  static const struct pwm_ops ti_sn_pwm_ops =3D {
-> diff --git a/drivers/leds/rgb/leds-qcom-lpg.c b/drivers/leds/rgb/leds-qco=
-m-lpg.c
-> index 02f51cc61837..741cc2fd817d 100644
-> --- a/drivers/leds/rgb/leds-qcom-lpg.c
-> +++ b/drivers/leds/rgb/leds-qcom-lpg.c
-> @@ -968,8 +968,8 @@ static int lpg_pwm_apply(struct pwm_chip *chip, struc=
-t pwm_device *pwm,
->  	return ret;
->  }
-> =20
-> -static void lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *=
-pwm,
-> -			      struct pwm_state *state)
-> +static int lpg_pwm_get_state(struct pwm_chip *chip, struct pwm_device *p=
-wm,
-> +			     struct pwm_state *state)
->  {
->  	struct lpg *lpg =3D container_of(chip, struct lpg, pwm);
->  	struct lpg_channel *chan =3D &lpg->channels[pwm->hwpwm];
-> @@ -982,20 +982,20 @@ static void lpg_pwm_get_state(struct pwm_chip *chip=
-, struct pwm_device *pwm,
-> =20
->  	ret =3D regmap_read(lpg->map, chan->base + LPG_SIZE_CLK_REG, &val);
->  	if (ret)
-> -		return;
-> +		return 0;
-> =20
->  	refclk =3D lpg_clk_rates[val & PWM_CLK_SELECT_MASK];
->  	if (refclk) {
->  		ret =3D regmap_read(lpg->map, chan->base + LPG_PREDIV_CLK_REG, &val);
->  		if (ret)
-> -			return;
-> +			return 0;
-> =20
->  		pre_div =3D lpg_pre_divs[FIELD_GET(PWM_FREQ_PRE_DIV_MASK, val)];
->  		m =3D FIELD_GET(PWM_FREQ_EXP_MASK, val);
-> =20
->  		ret =3D regmap_bulk_read(lpg->map, chan->base + PWM_VALUE_REG, &pwm_va=
-lue, sizeof(pwm_value));
->  		if (ret)
-> -			return;
-> +			return 0;
-> =20
->  		state->period =3D DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * LPG_RESOLUTION =
-* pre_div * (1 << m), refclk);
->  		state->duty_cycle =3D DIV_ROUND_UP_ULL((u64)NSEC_PER_SEC * pwm_value *=
- pre_div * (1 << m), refclk);
-> @@ -1006,13 +1006,15 @@ static void lpg_pwm_get_state(struct pwm_chip *ch=
-ip, struct pwm_device *pwm,
-> =20
->  	ret =3D regmap_read(lpg->map, chan->base + PWM_ENABLE_CONTROL_REG, &val=
-);
->  	if (ret)
-> -		return;
-> +		return 0;
-> =20
->  	state->enabled =3D FIELD_GET(LPG_ENABLE_CONTROL_OUTPUT, val);
->  	state->polarity =3D PWM_POLARITY_NORMAL;
-> =20
->  	if (state->duty_cycle > state->period)
->  		state->duty_cycle =3D state->period;
+>
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> To: Jassi Brar <jassisinghbrar@gmail.com>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> ---
+> Changes in v3:
+> - Rebase on top of https://patchwork.kernel.org/project/linux-mediatek/pa=
+tch/20221102100736.37815-1-angelogioacchino.delregno@collabora.com/
+> - Link to v2: https://lore.kernel.org/r/20221125-mtk-mailbox-v2-0-886f70c=
+7173c@chromium.org
+>
+> Changes in v2:
+> - I have managed to repro a different panic. Moving the irq enabling to t=
+he very end of probe.
+> - Link to v1: https://lore.kernel.org/r/20221125-mtk-mailbox-v1-0-2e3ee12=
+0850c@chromium.org
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
+q-mailbox.c
+> index a460ee26eb11..b18d47ea13a0 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -569,12 +569,6 @@ static int cmdq_probe(struct platform_device *pdev)
+>         }
+>
+>         cmdq->irq_mask =3D GENMASK(cmdq->pdata->thread_nr - 1, 0);
+> -       err =3D devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_S=
+HARED,
+> -                              "mtk_cmdq", cmdq);
+> -       if (err < 0) {
+> -               dev_err(dev, "failed to register ISR (%d)\n", err);
+> -               return err;
+> -       }
+>
+>         dev_dbg(dev, "cmdq device: addr:0x%p, va:0x%p, irq:%d\n",
+>                 dev, cmdq->base, cmdq->irq);
+> @@ -641,6 +635,13 @@ static int cmdq_probe(struct platform_device *pdev)
+>
+>         cmdq_init(cmdq);
+>
+> +       err =3D devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_S=
+HARED,
+> +                              "mtk_cmdq", cmdq);
+> +       if (err < 0) {
+> +               dev_err(dev, "failed to register ISR (%d)\n", err);
+> +               return err;
+> +       }
 > +
-> +	return 0;
+>         return 0;
 >  }
-
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
-
---ZBm0pYJnT4srarSL
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCY45xCwAKCRAw5/Bqldv6
-8qEdAKCcIFDwtp8cJpPtW1EpTb0IJOYYKwCdGtyKdQYCFKVLwV+BGw7lryK0MC8=
-=gb+Q
------END PGP SIGNATURE-----
-
---ZBm0pYJnT4srarSL--
+>
+>
+> ---
+> base-commit: 1642107db81361b4339643eb90af4839e2cf229f
+> change-id: 20221125-mtk-mailbox-ba6cbd1d91b6
+>
+> Best regards,
+> --
+> Ricardo Ribalda <ribalda@chromium.org>
+>
 
