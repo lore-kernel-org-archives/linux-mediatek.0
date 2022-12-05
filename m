@@ -4,175 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFF1C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 10:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BC48C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 10:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0mUweo9lU6te/N9U7XhWFi4SaD+0FRbkHjT8h/zMHqU=; b=Oy1omRj4r1K+cPSUg0bJas1iZr
-	lr1wsuOmwn3fLZqbfjONuN5Ac5EwhBNZrTLqaCDeKmfdLo1FC/d0WoFjNWOdlY9pQQebhIgdQ5pJY
-	gUeDN+k2o0wXfGjmLZyvVBGRdkVXaP75++3Ib24wYiTzw0NKnJFAqNg5oFf8P9qLvHd9eP/XfQWET
-	8fKuLBNPPkrHQUTpXVEVKVUzvAqkkSe6CIdzByjVnRoeOevsxeZK3+QiMCg3Xfj63k57omHbb/qvu
-	8JsPIMC3eK8wwb/lQRgTvxosJ/03S+kkGfnvAMVeu34bgOzeZuyLmJsgqGKmJ5cmwgSJNI7oTMFf1
-	4dSkwS6Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pEZDR9MixyZslezXS4PNgDrQYBbdRV5NbPbWrTwavko=; b=mkuceRu3Se2w8B
+	A5FzeWqc8inRNgdazvytt8YL5iX531t7FpRBzCGAHbT2vFqYdzwpN3T5IibIHbb/Rz48iAcKVyoCC
+	uoe3HuBy66oJPzmK3TUo6vMkbjjfgB6WUjgZOKWLYjsmpLJ1zM4meDj6xjdK7YlX6gi2Zrdzm2nqG
+	antb7Pgmc3YuQ+XObmgbmWGjCLJHi5/NJbTK5JMc3zhjFMcaaXgmIB7u290lFfiWCtPqtFgmy37Tw
+	9zQUTcujiofTJyAxe0KZqTsxt/s9o6fSDj5k4lRUGj4kwz1t9A0Grb87NjyPf0b930N3VJO6wMQFw
+	n3WM3B+WfyIz0cYEprMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p28f3-000bPy-Tg; Mon, 05 Dec 2022 10:25:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p28qv-000r7L-Ec; Mon, 05 Dec 2022 10:37:37 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p28eq-000b1O-Aw; Mon, 05 Dec 2022 10:25:10 +0000
-X-UUID: 7dd1020a581549be9fa718526bd1c3bd-20221205
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=0mUweo9lU6te/N9U7XhWFi4SaD+0FRbkHjT8h/zMHqU=;
-	b=pwPcFuxOxWrugtYzjVgJ+TKS3DEygfU4a/rJYkHcuqrybByEssr+NZskCiphkNtPtx4lGr3I2iE6hm4gvcDFJHPFV5qGjGDodUy/Cgg77MQ4n2GTQrNgiMdBbQok+xGXD69EmL9vHWgeV7+uSLyA3ZKfK2fLSpkgEBIPdSHfSfM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:2bf91bbe-40b6-4cc4-96e4-7651f574ad21,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:d7b5add1-652d-43fd-a13a-a5dd3c69a43d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 7dd1020a581549be9fa718526bd1c3bd-20221205
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jiaxin.yu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 12555630; Mon, 05 Dec 2022 03:25:00 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 5 Dec 2022 17:34:19 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 5 Dec 2022 17:34:19 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=i6CZkt/uIJDzXIfiy9Km/ebOx0jgxHtQzrsUSTer7F4maLH2CBeV7JJgszsmJyVUZVdGsmJ27M9JrfrouBHAxC84mqw654ht6oaOv2XB6cI0bsdYt1bWYrpoozo2bqb3fK4NbQZ99hsSYzyp9fBexWBoB4f54KcWjb2E2cIAPlAkWAaU+GfOEaMRiX10iVRxhzmIwcJw9mZQ1NfEIe8dv0AvdZDqGoFBKjhhB952JaO+Q3RW+WzOrvhSLA/uehiu2ItA8oH725Wg1/trUAMmWu0+rmp1+YO2J4dp4zrSYwrBXa7vfL7EL10ubrqGbCKGVK6GCTKDHa7wPSoM8uDIiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0mUweo9lU6te/N9U7XhWFi4SaD+0FRbkHjT8h/zMHqU=;
- b=M3O0YRryGu8FMnwnymyjk6GaVLeT4cplisZ8QbMGE+vup+FBzM0aNoyDXuDCFGEue9FkSxvatPLqrkJzNVDuvpe6Uz1x/y5UFBXirzenDMt+xmdOPZ00QMkHNV7EF2WygykLalVj7fjCEKjDv8YuDZCybf2MsA9GD78ALF0QkjUdo5JXFO/9PhRlsafr0hUPcgTaxhSEmw/I4oKpf8TBy6jW3SVHbIGjda+6by9zmhDcb2MWugipVuJ/OJhJPJF+/+gHTpB7OZCL43HY7pyJbZkd8BE5qrZjPwuAtxRQN9Qn1Uue3tYjPXwWAOD98PwJ0tAPdng/du++Ld0q20C95w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0mUweo9lU6te/N9U7XhWFi4SaD+0FRbkHjT8h/zMHqU=;
- b=l0ezlf0XtfvLzyRPsAxac+m0/JsnGkIH7xeDdCJUTgUokuvozpowwFe6jSZMFd22oouQUjJ0AmWfKC9HA+AqRpFZ4F3oTfOd5NUQMPn+xFJbtOyjbeQl7s/Qs6GcA9obsoqRkgY2zizcUvyYS289XL6jb7wcHzPnLp1eDpUkMsY=
-Received: from PS1PR03MB3384.apcprd03.prod.outlook.com (2603:1096:803:49::13)
- by SI2PR03MB5484.apcprd03.prod.outlook.com (2603:1096:4:124::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.13; Mon, 5 Dec
- 2022 09:34:17 +0000
-Received: from PS1PR03MB3384.apcprd03.prod.outlook.com
- ([fe80::2e82:cce2:3b26:ab6f]) by PS1PR03MB3384.apcprd03.prod.outlook.com
- ([fe80::2e82:cce2:3b26:ab6f%7]) with mapi id 15.20.5880.011; Mon, 5 Dec 2022
- 09:34:17 +0000
-From: =?utf-8?B?SmlheGluIFl1ICjkv57lrrbpkasp?= <Jiaxin.Yu@mediatek.com>
-To: "broonie@kernel.org" <broonie@kernel.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"ajye_huang@compal.corp-partner.google.com"
-	<ajye_huang@compal.corp-partner.google.com>,
-	=?utf-8?B?Q2h1bnh1IExpICjmnY7mmKXml60p?= <Chunxu.Li@mediatek.com>,
-	=?utf-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
-	<Allen-KH.Cheng@mediatek.com>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "kuninori.morimoto.gx@renesas.com"
-	<kuninori.morimoto.gx@renesas.com>, "andrzej.hajda@intel.com"
-	<andrzej.hajda@intel.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "robert.foss@linaro.org"
-	<robert.foss@linaro.org>, "Laurent.pinchart@ideasonboard.com"
-	<Laurent.pinchart@ideasonboard.com>, "neil.armstrong@linaro.org"
-	<neil.armstrong@linaro.org>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "nfraprado@collabora.com"
-	<nfraprado@collabora.com>, "alsa-devel@alsa-project.org"
-	<alsa-devel@alsa-project.org>
-Subject: Re: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Thread-Topic: [PATCH v2 1/3] ASoC: hdmi-codec: Add event handler for hdmi TX
-Thread-Index: AQHZALKPLtjy9JnSM0qA0l4xMT7+Dq5PjsoAgATmBQCAAbf+AIAC/qmAgAAE8QCABeevAA==
-Date: Mon, 5 Dec 2022 09:34:17 +0000
-Message-ID: <7023a2c7b471d6888d9079563a6c01f22599201f.camel@mediatek.com>
-References: <20221125094413.4940-1-jiaxin.yu@mediatek.com>
-	 <20221125094413.4940-2-jiaxin.yu@mediatek.com>
-	 <Y4Cysgk5Gic5ae9B@sirena.org.uk>
-	 <18c82f6f723cd97a9d6b9a7ff16c6ed62fd005d6.camel@mediatek.com>
-	 <Y4Y/vEWe3dw0FPQH@sirena.org.uk>
-	 <cf9ea98a3263ffb8fc8b542888ad0ad680facfc7.camel@mediatek.com>
-	 <Y4jHAJgmz/P58Q/C@sirena.org.uk>
-In-Reply-To: <Y4jHAJgmz/P58Q/C@sirena.org.uk>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PS1PR03MB3384:EE_|SI2PR03MB5484:EE_
-x-ms-office365-filtering-correlation-id: 0c76e415-0d8a-4d1b-6232-08dad6a3e130
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: AP5Nr2LnsbaHs4/95ssGmJrDoWUjDTOgSNfUiFn/5eLo/y/0vcyRqTJB5lOBZBRVkjTkUSJCE0jsRK4PztyLsDYF+vVrnUXjSdZJxnyLWjy7Ak4qyUny51ClsjU4BJ5O75LtjF1zbsqniiR8S8Yba/Phtc1H3ctA6lsq5V64Z9oR/99nquO8UnNQXKhMRVvxLytnJhYGcgpJMXQ395DNrI9CLa1mSVCz2JX2yZ8rqY5CFXP/T6XLHY4OCfNfYjkUKrSUZC0tO6+ziPqu6ri+2TREbytHPXvbkJQ7w3P5yg7yvIUiMutCml9D3wwfjIERuuBUlHpEPCG9ZlsRUeSxexAx/in03jMi9a9Iw5f1b6GVzBYlbMiTfah2pzNPxQgE2VQCOFU6y64uZnegPEh4NhI4/YE+P9WNMI3M3NSNr6JpBm6oU0sh0nYqgumgXHrqPWwb98a9pdX0Sv6KwQIvPGw1oCHavzsxtxPfsVuxLXJ1pWOSVid9vTeD8zHQNc7R725h/m3j0g+UKHHxVIL4AZ6BXQlthiP+HRb0DMpge797maNxtJFF+juvSzbF36iEJdzMjtA7XCHHT1/XmZaJaZeLu/CgbFKDl6hDkztQ9r7mZvwZX/1gwHtOcNR0B0iS9X2f3/vs6JiZCs8IaRIl+G97GcsdTkkmTX4SzcWS/yIWNxdQF3npEk9tz6wyrMTRXjJF14cGNNThg5BamxpxBQ==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PS1PR03MB3384.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(136003)(366004)(376002)(346002)(39860400002)(451199015)(38070700005)(36756003)(85182001)(86362001)(71200400001)(478600001)(6486002)(26005)(64756008)(186003)(54906003)(6916009)(5660300002)(6512007)(7416002)(4326008)(8676002)(6506007)(41300700001)(8936002)(66556008)(316002)(66446008)(66476007)(4001150100001)(91956017)(2906002)(66946007)(76116006)(122000001)(38100700002)(2616005)(83380400001);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?c2NuaEVsOXRRbWZjQ091YTVVYWZueDMwSWV3dmI4dFUvVE0xWkFNYllZOHY4?=
- =?utf-8?B?ZmZ3aW5vUGQzRVRheHdMUnZTbXFMR21KQ09zVVJydmhuOE9mZjdCNWsyOXpH?=
- =?utf-8?B?M1FPR0lHVTVOVnRyUDF5YWprZU5NQkRKajhxZHZRNkdZeklrU1RncGZkVnY4?=
- =?utf-8?B?WnVOaWRlbGJoSWlTQWk1MTJPOHZqRE82RjFwTHVMdmJBaG5NV2IxQlJjYktv?=
- =?utf-8?B?aEhOWkRlY2o5S1RpSHBCZGhLWm9SMk1ucDcrc2l4STRiMlBwVmM2QUlwcFpo?=
- =?utf-8?B?aDAvZFcwd2RJdk04L2FITXM1ZUlLOSs3Q1NSYWNlVUNjdzZxejhHb1M0WHFt?=
- =?utf-8?B?cjNmcHd3YjY4VE03cWlZeHdvRzJGMmZ2UGg0bzVZeDUrbTdTbytYa0I4VkFs?=
- =?utf-8?B?d2lseU1Md0hkUjVsRGdLeEw1bzh1NC83Y0xTSHpUaE5iZDh3S0ljLytLMVlP?=
- =?utf-8?B?d0F3RHFCTnpJMXduY3QreitDNGpVTkZaa3hRbHc0aFloZlZlSGFmOUJYL1hQ?=
- =?utf-8?B?aXVFc3EvNXZ5bWhxR2c0RnY5TWRHWlhHZXU3ZWJXTHNuYUtQTTFzNWxXZE5P?=
- =?utf-8?B?SGFESG53NG1EbUordDF0MU80WGExYzNBdTVselFKNm9aQk5RcWtsMW9FaDFR?=
- =?utf-8?B?cGVxTkI2dllEbmIzVVgyT1BkNGVjMm1TbGZmK0Q5SU10KzNuWlR5Y2k0R0R4?=
- =?utf-8?B?djc0dDJ3czE5eGFpMkxnYWFHRFlXSXIxR0NMVDl1S0ZVdWdzSU1wL1VrS1JS?=
- =?utf-8?B?QTZDdmdldzRXaFVlZThRZnFGcFpJTXFHZko4ZjBXU04xQ2xWMkRVbS9YMWVt?=
- =?utf-8?B?RzNpMzZCSnFHVU5TT2YvOFFRUm1mZ01Zd3oxV1c1cmllQWhFT1h1MllEbFE0?=
- =?utf-8?B?TE1GZUl0Um9ScDY3VWxWdFhrYnlEZVppanE0NHVDZXFsWFV2a01MTjYyczVH?=
- =?utf-8?B?TkZ1U2c1djBoR1ZsM2h1MThQVUpCTkZMbFRHTmo4Y1lvMFROaFFnMDVubWRJ?=
- =?utf-8?B?Tmw0Mm5vaXovUFd0bnBGdm5hb1o1WFNQYXRscU9MZm1XMUNsREZxQ0NKU1N6?=
- =?utf-8?B?RG1Xc2drM3lQYWdGRHQxcVpZa0xaSUs1WTlSREVkNzdUUFE4L2k0akVjdkpM?=
- =?utf-8?B?WnEvSGh3WlpzUjEwT0tVQjlQeU1KZ1FWV1RaSEYwbGkwbjR3V281NjJ6bU1I?=
- =?utf-8?B?T1Q4cE9ibjMrYU9SQ2xQZzVCMy9LR2tiSlZmcFk2R3B2RkpkUmFkZXU0TUtL?=
- =?utf-8?B?dGI3ZWFocG9VZUEzNEUzZmtIRllkUVNsMmxDbnJPUDljSHBaV0pKcVpqcW5Y?=
- =?utf-8?B?bktQUVdFVnUzWEFjRXpCeEREaXB5aHNXZlB6czJ3QW9PTEl0UkdWTmVVS0U1?=
- =?utf-8?B?UnluZXdNRWFSYzdIOHpLYU5FTlZzVlBGYjA1TmVxN25qRFlzZHUvR0dGelg4?=
- =?utf-8?B?NTlnVlF6WVp4RCsvMllPZDg4ZC9QUFdRZGNjS28zRnBoTk5WQjRKVTlZWDBt?=
- =?utf-8?B?L3lCSnN1YUl3WisyaUcyWjl3ZkN2QVdoVzRST0NJVWVDM2R0YU5KRjZDU0px?=
- =?utf-8?B?Y1RoUFJmdzFLV1NXb0tLUXJYWGg1bDRLS2xpL2xxT0x5V0p0NW4wZHJDZGw0?=
- =?utf-8?B?S2JYZHN1ZUNuVkNJbDBheS9BbmgrbFBWQ1pUOHRVWUN3azBEWWthcFdQa1pC?=
- =?utf-8?B?RjNZeE9wWVlZYTgwdkJleGUzMndGSjNWQm5sTXFIUjJCYnloa3FrNWYvbmZl?=
- =?utf-8?B?RktMN1lpYjRJZHhyVEpsK0Z1eVhuSWZaMFkvSXFNN0szcnpPTkpEL05saTJ2?=
- =?utf-8?B?Z01hdE9paGh2QzRlZ3BVYklTejUzQmZ3RWltWlI2WEVNSWpJWldrQ3dhcC9K?=
- =?utf-8?B?OUY0V3haNkJHS1hrenJXc3RqeEpaNjRvYTVoZVlFWGVnTVJ5OUNyamFEQXlW?=
- =?utf-8?B?K1lwNXRNbW5OcFljN1dYbEl0cmlXOWRXMWxsRUFlNllhUDZBWkF0bXhGM2pV?=
- =?utf-8?B?WEFDQ3djbU5IZ25kbGJRcEFJZ2RGM29sMHEzVklTeGlhU1ZiclAzWmJkNmd3?=
- =?utf-8?B?ckowOXlBeVJjdG1ab3RoMTZaT3BwZ1BJWGNPVVNORDdoakJ6QVBqLytlY2Nk?=
- =?utf-8?B?UHlSTXdLUGVCNEl0N05CY0VwbGwwQTAySmxuY0YxSnB0emwycGpOMFJ3OHcx?=
- =?utf-8?B?aWc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <A1FCA03A0DCAC74EB0829A091B273323@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1p28qg-000qR5-JG; Mon, 05 Dec 2022 10:37:25 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 62BD366015ED;
+	Mon,  5 Dec 2022 10:37:17 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1670236638;
+	bh=wGqb7ACQ+MHfk+veHSj5RJ2KW3qb/huM5iIZKEw4K08=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=M+JupQ1rW6I493IZz4illgYstesxy0BsgG+SqGiOupm/st42LrVWYE5Y/wgME82l4
+	 772FW1OS2KF388EsPf8PzShW7XUtFpBkku4jw8QMai2aS1ppMEFJjL4aDV0Ndyn58G
+	 3LlLEaSz+ahxygFOB4K8OyHl4VycL1GLQzJ13Df6uvJij1BJvfKWFVTRnBWOxUn9VM
+	 649wKVFwZOoDwIYpvSqDfLtQ8JIX5JDSM0nr9HeiR4+ZDh34W5oF3TQuE8fG4U6jDK
+	 uL+yUUHAQaHfy56y49BwveE6XS2UGxc2vDuCbxfAto6V06SAmxk5Tw5kLvnCP+D8GH
+	 5y6OmtYcjJYgw==
+Message-ID: <4ab6ce42-4769-8a8b-495a-8a7edda91dea@collabora.com>
+Date: Mon, 5 Dec 2022 11:37:14 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PS1PR03MB3384.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0c76e415-0d8a-4d1b-6232-08dad6a3e130
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2022 09:34:17.2248
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7ps0uZT4Ij9/P6dMZHOZD6+wOWf+lzobS8j3Vn0f4pfjgslM+crLiyqpUm7UWowa6pctzFd5qvbEaJHMBW7VXw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5484
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH] cpufreq: mediatek: Raise proc and sram max voltage for
+ MT7622/7623
+Content-Language: en-US
+To: Nick <vincent@systemli.org>, viresh.kumar@linaro.org
+References: <20221202095227.167492-1-angelogioacchino.delregno@collabora.com>
+ <75216e0c-9d36-7ada-1507-1bb4a91a3326@systemli.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <75216e0c-9d36-7ada-1507-1bb4a91a3326@systemli.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_022508_426388_4C1B68EA 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20221205_023722_949196_B1B2E566 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,56 +70,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-pm@vger.kernel.org, rafael@kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.org, rex-bc.chen@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, jia-wei.chang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTEyLTAxIGF0IDE1OjIzICswMDAwLCBNYXJrIEJyb3duIHdyb3RlOg0KPiBP
-biBUaHUsIERlYyAwMSwgMjAyMiBhdCAwMzowNjowNFBNICswMDAwLCBKaWF4aW4gWXUgKOS/nuWu
-tumRqykgd3JvdGU6DQo+ID4gT24gVHVlLCAyMDIyLTExLTI5IGF0IDE3OjIyICswMDAwLCBNYXJr
-IEJyb3duIHdyb3RlOg0KPiA+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc25kX2tjb250cm9sX25l
-dw0KPiA+ID4gIG10ODE4Nl9tdDYzNjZfcnQxMDE5X3J0NTY4MnNfY29udHJvbHNbXSA9IHsNCj4g
-PiA+ICAgICAgICAgIFNPQ19EQVBNX1BJTl9TV0lUQ0goIlNwZWFrZXJzIiksDQo+ID4gPiAgICAg
-ICAgICBTT0NfREFQTV9QSU5fU1dJVENIKCJIZWFkcGhvbmUiKSwNCj4gPiA+ICAgICAgICAgIFNP
-Q19EQVBNX1BJTl9TV0lUQ0goIkhlYWRzZXQgTWljIiksDQo+ID4gPiAgICAgICAgICBTT0NfREFQ
-TV9QSU5fU1dJVENIKCJIRE1JMSIpLA0KPiA+ID4gIH07DQo+ID4gV2hpY2ggb3BlcmF0aW9uIHNo
-b3VsZCBJIHVzZSB0byBpbmZvcm0gYnJpZGdlIGRyaXZlciB0byBjb250cm9sDQo+ID4gYXVkaW8N
-Cj4gPiBvbiBvciBvZmY/IEknbSBjdXJpb3VzIHdoeSBJIGRvbid0IHNlZSAudHJpZ2dlciBpbiB0
-aGUgc3RydWN0dXJlDQo+ID4gaGRtaV9jb2RlY19vcHMgY29tcGFyZWQgdG8gdGhlIHN0cnVjdHVy
-ZSBzbmRfc29jX2RhaV9vcHM/DQo+IA0KPiBZb3UnZCBuZWVkIHRvIGFkZCBhIGNhbGxiYWNrIHRo
-YXQgdGhlIHVzZXIgb2YgaGRtaS1jb2RlYyBwYXNzZXMgaW4NCj4gd2hpY2gNCj4gd291bGQgYmUg
-dHJpZ2dlcmVkIGJ5IGFuIGV2ZW50IG9uIGEgREFQTSB3aWRnZXQgYWRkZWQgaW4gdGhlIGF1ZGlv
-DQo+IHBhdGgNCj4gcmF0aGVyIHRoYW4gdHJ5aW5nIHRvIHNob2Vob3JuIHRoaXMgaW50byBhIFBD
-TSBvcGVyYXRpb24gLSBhIGJpZyBwYXJ0DQo+IG9mDQo+IHRoZSBwcm9ibGVtIGhlcmUgaXMgdGhh
-dCB5b3UncmUgdHJ5aW5nIHRvIGFkZCBzb21ldGhpbmcgdGhhdCBkb2Vzbid0DQo+IGZpdA0KPiBp
-bnRvIGEgUENNIG9wZXJhdGlvbi4NCg0KRGVhciBNYXJrLA0KDQoxLiBJIGhhdmUgYWRkZWQgYSBE
-QVBNIHdpZGdldCB0aGF0IGlzICJTREIiLCB3aGVuIHdlIG9wZW4gb3IgY2xvc2UgSERNSQ0KUElO
-X1NXSVRDSCwgdGhlIGNhbGxiYWNrICdoZG1pX3R4X2V2ZW50JyByZWdpc3RlcmVkIGluIHRoZSB3
-aWRnZXQgd2lsbA0KYmUgdHJpZ2dlcmVkLiBNYXliZSB5b3UgbWVhbiBJIHNob3VsZG4ndCB1c2Ug
-U05EUlZfUENNX1RSSUdHRVJfU1RBUlQNCmFuZCBTTkRSVl9QQ01fVFJJR0dFUl9TVE9QPw0KDQoy
-LiBJZiBJIGRvbid0IHVzZSBoY2Qub3BzLT50cmlnZ2VyIG5vdGlmaWVzIHRoZSBicmlkZ2UgaWMg
-ZHJpdmVyIHRvDQpzd2l0Y2ggdGhlIGF1ZGlvLCB3aGljaCBvcHMgc2hvdWxkIEkgdXNlPw0KSSBh
-Y3R1YWxseSB3YW50IHRvIGtub3cgaGRtaS1jb2RlYy5jIGFuZCBpdDY1MDUuYyBleGNlcHQNCmhk
-bWlfY29kZWNfb3BzLCBpcyB0aGVyZSBhbnkgb3RoZXIgd2F5IHRvIGNvbW11bmljYXRlPw0KDQpN
-eSB1bmRlcnN0YW5kaW5nIGlzIG5vdCBkZWVwIGVub3VnaCwgc28gcGxlYXNlIGhlbHAgZXhwbGFp
-biBtb3JlIGluDQpkZXRhaWwsIHRoYW5rIHlvdSB2ZXJ5IG11Y2ghDQoNCitzdGF0aWMgaW50IGhk
-bWlfdHhfZXZlbnQoc3RydWN0IHNuZF9zb2NfZGFwbV93aWRnZXQgKncsDQorICAgICAgICAgICAg
-ICAgc3RydWN0IHNuZF9rY29udHJvbCAqa2NvbnRyb2wsIGludCBldmVudCkNCit7DQorICAgICAg
-IHN0cnVjdCBzbmRfc29jX2NvbXBvbmVudCAqY29tcG9uZW50ID0NCnNuZF9zb2NfZGFwbV90b19j
-b21wb25lbnQody0+ZGFwbSk7DQorICAgICAgIHN0cnVjdCBoZG1pX2NvZGVjX3ByaXYgKmhjcCA9
-DQpzbmRfc29jX2NvbXBvbmVudF9nZXRfZHJ2ZGF0YShjb21wb25lbnQpOw0KKw0KKyAgICAgICBz
-d2l0Y2ggKGV2ZW50KSB7DQorICAgICAgIGNhc2UgU05EX1NPQ19EQVBNX1BSRV9QTVU6DQorICAg
-ICAgICAgICAgICAgaWYgKGhjcC0+aGNkLm9wcy0+dHJpZ2dlcikNCisgICAgICAgICAgICAgICAg
-ICAgICAgIGhjcC0+aGNkLm9wcy0+dHJpZ2dlcihjb21wb25lbnQtPmRldi0+cGFyZW50LA0KU05E
-UlZfUENNX1RSSUdHRVJfU1RBUlQpOw0KKyAgICAgICAgICAgICAgIGJyZWFrOw0KKyAgICAgICBj
-YXNlIFNORF9TT0NfREFQTV9QT1NUX1BNRDoNCisgICAgICAgICAgICAgICBpZiAoaGNwLT5oY2Qu
-b3BzLT50cmlnZ2VyKQ0KKyAgICAgICAgICAgICAgICAgICAgICAgaGNwLT5oY2Qub3BzLT50cmln
-Z2VyKGNvbXBvbmVudC0+ZGV2LT5wYXJlbnQsDQpTTkRSVl9QQ01fVFJJR0dFUl9TVE9QKTsNCisg
-ICAgICAgICAgICAgICBicmVhazsNCisgICAgICAgZGVmYXVsdDoNCisgICAgICAgICAgICAgICBi
-cmVhazsNCisgICAgICAgfQ0KKw0KKyAgICAgICByZXR1cm4gMDsNCit9DQorDQogc3RhdGljIGNv
-bnN0IHN0cnVjdCBzbmRfc29jX2RhcG1fd2lkZ2V0IGhkbWlfd2lkZ2V0c1tdID0gew0KKyAgICAg
-ICBTTkRfU09DX0RBUE1fT1VUX0RSVl9FKCJTREIiLCBTTkRfU09DX05PUE0sIDAsIDAsIE5VTEws
-IDAsDQpoZG1pX3R4X2V2ZW50LA0KKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNORF9T
-T0NfREFQTV9QT1NUX1BNRCB8DQpTTkRfU09DX0RBUE1fUFJFX1BNVSksDQogICAgICAgIFNORF9T
-T0NfREFQTV9PVVRQVVQoIlRYIiksDQogICAgICAgIFNORF9TT0NfREFQTV9PVVRQVVQoIlJYIiks
-DQogfTsNCg==
+Il 02/12/22 13:37, Nick ha scritto:
+> It now starts, however, with a lot of those messages (I applied the patch to 
+> linux/master and not to linux-next, because next is currently not compiling anymore 
+> for me):
+> 
+>> [   10.777041] cpufreq: __target_index: Failed to change cpu frequency: -22
+>> [   10.791577] cpu cpu0: cpu0: failed to scale up voltage!
+> The complete log:
+> https://gist.githubusercontent.com/PolynomialDivision/267c83c7a21a359cbb4e8d99d0303201/raw/28d3568a26634bebef2d91ebe37fc5f76ae58add/mt7622-patch-cpufreq.log
+> 
+
+Thanks for the feedback!
+
+I am totally sure that the platform_data is correct as that's based on datasheets.
+
+Checking mt6380-regulator.c and mt6380.dtsi also confirms that the min/max volt
+shift and proc/sram max voltage that I've specified is currently supported.
+
+That "failed to scale up voltage!" is a bit strange, as this means that
+the regulator_set_voltage() call returns -EINVAL for .. reasons, and that's a bit
+strange, since the constraints look good in the code, unless there's anything that
+I'm missing here.
+
+Can you please try a vanilla kernel?
+
+Also, since I don't have any MT7622/7623 board to test with, if the issue persists,
+it would be helpful if you could place some debugging prints in mediatek-cpufreq.c
+to specifically check which regulator_set_voltage() call fails, as to try to make
+me have a better overview on the problem that you're facing.
+
+Alternatively, we can eventually setup a debugging session on IRC to make things
+a bit faster.
+
+Cheers,
+Angelo
+
+> Bests
+> Nick
+> 
+> On 12/2/22 10:52, AngeloGioacchino Del Regno wrote:
+>> During the addition of SRAM voltage tracking for CCI scaling, this
+>> driver got some voltage limits set for the vtrack algorithm: these
+>> were moved to platform data first, then enforced in a later commit
+>> 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
+>> using these as max values for the regulator_set_voltage() calls.
+>>
+>> In this case, the vsram/vproc constraints for MT7622 and MT7623
+>> were supposed to be the same as MT2701 (and a number of other SoCs),
+>> but that turned out to be a mistake because the aforementioned two
+>> SoCs' maximum voltage for both VPROC and VPROC_SRAM is 1.36V.
+>>
+>> Fix that by adding new platform data for MT7622/7623 declaring the
+>> right {proc,sram}_max_volt parameter.
+>>
+>> Fixes: ead858bd128d ("cpufreq: mediatek: Move voltage limits to platform data")
+>> Fixes: 6a17b3876bc8 ("cpufreq: mediatek: Refine mtk_cpufreq_voltage_tracking()")
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/cpufreq/mediatek-cpufreq.c | 13 +++++++++++--
+>>   1 file changed, 11 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+>> index 7f2680bc9a0f..f9a9f08c75c4 100644
+>> --- a/drivers/cpufreq/mediatek-cpufreq.c
+>> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+>> @@ -695,6 +695,15 @@ static const struct mtk_cpufreq_platform_data 
+>> mt2701_platform_data = {
+>>       .ccifreq_supported = false,
+>>   };
+>> +static const struct mtk_cpufreq_platform_data mt7622_platform_data = {
+>> +    .min_volt_shift = 100000,
+>> +    .max_volt_shift = 200000,
+>> +    .proc_max_volt = 1360000,
+>> +    .sram_min_volt = 0,
+>> +    .sram_max_volt = 1360000,
+>> +    .ccifreq_supported = false,
+>> +};
+>> +
+>>   static const struct mtk_cpufreq_platform_data mt8183_platform_data = {
+>>       .min_volt_shift = 100000,
+>>       .max_volt_shift = 200000,
+>> @@ -717,8 +726,8 @@ static const struct mtk_cpufreq_platform_data 
+>> mt8186_platform_data = {
+>>   static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
+>>       { .compatible = "mediatek,mt2701", .data = &mt2701_platform_data },
+>>       { .compatible = "mediatek,mt2712", .data = &mt2701_platform_data },
+>> -    { .compatible = "mediatek,mt7622", .data = &mt2701_platform_data },
+>> -    { .compatible = "mediatek,mt7623", .data = &mt2701_platform_data },
+>> +    { .compatible = "mediatek,mt7622", .data = &mt7622_platform_data },
+>> +    { .compatible = "mediatek,mt7623", .data = &mt7622_platform_data },
+>>       { .compatible = "mediatek,mt8167", .data = &mt2701_platform_data },
+>>       { .compatible = "mediatek,mt817x", .data = &mt2701_platform_data },
+>>       { .compatible = "mediatek,mt8173", .data = &mt2701_platform_data },
+
 
