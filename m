@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1610AC4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 21:32:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20191C4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 21:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Po/Vnp740e9T+tDgfbAWj+RPcPol9ZJzo1R1BoQoilk=; b=iJ9sSMCaK7eRi/cGA3HfhmCz9D
-	7E6Sg/J/R1ZmzPkm6OwKVQHif7DV2SBYJhs73OIPQCkUtSH8MjvJC3mxtG6zd1/+YbORTFf8nTxVY
-	HfAgXJlNAtdgmfEuqNU9GLUkZ6QrXPQw7Ut6sMyJ24djNA8ynDn2N6AxnLC5pqDyn2cv7PHOnTpcp
-	jDBwxK0MHj0rcFVgkhp/1MobxAlx6MVo7mJw5NHpyRsocWtzT9+vmMch1u2YmcvtX5i0LIFhrVjRW
-	wWVEgat6hH/87tSbHEos3GiDYy1/U8PgC6Mf/jMwlNpbXTcwKiGaOKCBFpRSfqLZwGcmj7j0rksKc
-	mYY3Jr3w==;
+	bh=At/Iy89jbSM+uM6oAL5A4QbrrbFSKepIZsFF2MdZt+I=; b=WDs6rNH6dEB63DFeIG2QW3yV0S
+	YnXugS285P973q+/EUBsSJKRukmDPuSNoYPncS0GbgQjYoXvqWDwhdrtaYA2u2qaKpT/IIteSFCq+
+	z8nCEp1+6+fafXXWz8lKeDjcNhhfdnzHcX7mOZJEDfgax3fYEZmNBLh8kCGGQnHirREqw8KQyzPK9
+	IuURF0LJqmkFi56z9kD4sxWmvzYVZrrFEGeaIfR4ep3YL09KokIoYgGQ1zZQet44HFNEA5+0uitKI
+	QOivJ2v643DO7w4e3S9fyw5xuYIJrL8NT/Dk+akFNtvcgC4ruf5OgJHS1DBU6eEgzdKdOnTL1SzQS
+	7zPzvx3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2J4c-00AlHx-PN; Mon, 05 Dec 2022 21:32:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p2JE9-00Ar0X-5p; Mon, 05 Dec 2022 21:42:17 +0000
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2J4R-00AlDh-6N; Mon, 05 Dec 2022 21:32:16 +0000
-Received: from notapiano (unknown [IPv6:2804:14c:1a9:3b3c::1000])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7E9CA66015B4;
-	Mon,  5 Dec 2022 21:32:09 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670275933;
-	bh=50/6QIo85oB6JxRj95P+uB219lfikFqskeQx/8eOvno=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lRQUJmwna1Fd3WRydn/u93hKBrfttIOdTcafin+jSSCYjr8s1GC7M6p2HGiatKbtM
-	 dw3/omlPJCPUvvIgvS1mZkuutCWS18K758oZj6pZrK96KiwBrh6PwsBhwsS6x8WRCZ
-	 D/ZviTmlAkrpSKOigl4ACIML7N9J6ZGh3CkfXhuMDK2mQa37es2OIctUDX5itDZT+m
-	 neu34try3QNXbu4wn3s9rqq7sE/HkJagVPpvFShgr97iqqxw4NfM0evX5yysOwVWFU
-	 /tHa61VDvgghxpot4Q/5Q1TbgR4WHQZPJBtA1C1RFFEjnjCVpsTxLiyOiQ0t99oyby
-	 //suG3cbYJkKw==
-Date: Mon, 5 Dec 2022 18:32:04 -0300
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
-Subject: Re: [PATCH v5 1/3] media: dt-bindings: media: mediatek: Rename child
- node names for decoder
-Message-ID: <20221205213204.ftnarhtsk33pprq3@notapiano>
-References: <20221128143832.25584-1-allen-kh.cheng@mediatek.com>
- <20221128143832.25584-2-allen-kh.cheng@mediatek.com>
+	id 1p2JE6-00AqxG-6Z; Mon, 05 Dec 2022 21:42:15 +0000
+Received: by mail-ot1-f54.google.com with SMTP id q18-20020a056830441200b006704633f258so1767846otv.0;
+        Mon, 05 Dec 2022 13:42:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=At/Iy89jbSM+uM6oAL5A4QbrrbFSKepIZsFF2MdZt+I=;
+        b=HVaV/TW66er5jVVJJviWs88vttuksn89ZiePmA92xJdiZB8nGQytYUrJ7oY1zzPw8A
+         7P2GTuaBGMrFzx4eQBtt9Sk0wdrI7M1h0TRhrmbmA/eVbY0Gmqhfh8rYmbDlk/MJ5+mI
+         rAUGHJR8X74GLjmfVU93TbDvaljy5e9Z/vuMpTzJ2isF+zjw4+iryhZz2EGp69aFr8RT
+         szut74eVT2z10wMuujPnFycQDIVI4rTqKEw32L1uVB8+OPXLgzd1IbNQnFFAygMt0DyE
+         9QvtM1PdkRRj1hRdOgr+uQFKw8B/8f0sYajAeOywoFLqE+DOoM7BJSerm0IH2xRcBenG
+         CrQQ==
+X-Gm-Message-State: ANoB5pmXP1hb9z88aB80jHDC7F+DDMdzay1wJ6JDTWNKmxUH4QcYp+j2
+	sG6fwFDzALWcfaemTDK5Tg==
+X-Google-Smtp-Source: AA0mqf6kj1GoiLDfY3xtoeuyCtevhKeHsvjbFdh4JVs9EO/VSyl7R6SPPnX8FN/JLUwlfcWHCl3skQ==
+X-Received: by 2002:a9d:7751:0:b0:637:1464:cebf with SMTP id t17-20020a9d7751000000b006371464cebfmr41256218otl.100.1670276531645;
+        Mon, 05 Dec 2022 13:42:11 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id b24-20020a9d5d18000000b0066da36d2c45sm8233897oti.22.2022.12.05.13.42.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Dec 2022 13:42:11 -0800 (PST)
+Received: (nullmailer pid 2674599 invoked by uid 1000);
+	Mon, 05 Dec 2022 21:42:10 -0000
+Date: Mon, 5 Dec 2022 15:42:10 -0600
+From: Rob Herring <robh@kernel.org>
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Marek Vasut <marex@denx.de>, 
+	UNGLinuxDriver@microchip.com, John Crispin <john@phrozen.org>, 
+	linux-kernel@vger.kernel.org, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
+	Landen Chao <Landen.Chao@mediatek.com>, Paolo Abeni <pabeni@redhat.com>, 
+	linux-mediatek@lists.infradead.org, Woojung Huh <woojung.huh@microchip.com>, 
+	"David S. Miller" <davem@davemloft.net>, =?UTF-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>, 
+	Rob Herring <robh+dt@kernel.org>, linux-renesas-soc@vger.kernel.org, 
+	Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Claudiu Manoil <claudiu.manoil@nxp.com>, Eric Dumazet <edumazet@google.com>, devicetree@vger.kernel.org, 
+	Kurt Kanzenbach <kurt@linutronix.de>, linux-arm-kernel@lists.infradead.org, 
+	Florian Fainelli <f.fainelli@gmail.com>, ", DENG Qingfang" <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	George McCollister <george.mccollister@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Vivien Didelot <vivien.didelot@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	netdev@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, 
+	=?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH v4 net-next 3/9] dt-bindings: net: dsa: utilize base
+ definitions for standard dsa switches
+Message-ID: <167027652411.2674430.15313904791062984653.robh@kernel.org>
+References: <20221202204559.162619-1-colin.foster@in-advantage.com>
+ <20221202204559.162619-4-colin.foster@in-advantage.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221128143832.25584-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20221202204559.162619-4-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_133215_384437_D59E25A9 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20221205_134214_258195_7124E08A 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,104 +95,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 28, 2022 at 10:38:30PM +0800, Allen-KH Cheng wrote:
-> In order to make the names of the child nodes more generic, we rename
-> "vcodec-lat" and "vcodec-core" to "video-codec" for decoder in
-> patternProperties and example.
+
+On Fri, 02 Dec 2022 12:45:53 -0800, Colin Foster wrote:
+> DSA switches can fall into one of two categories: switches where all ports
+> follow standard '(ethernet-)?port' properties, and switches that have
+> additional properties for the ports.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> The scenario where DSA ports are all standardized can be handled by
+> swtiches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
+> 
+> The scenario where DSA ports require additional properties can reference
+> '$dsa.yaml#' directly. This will allow switches to reference these standard
+> defitions of the DSA switch, but add additional properties under the port
+> nodes.
+> 
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Acked-by: Alvin Å ipraga <alsi@bang-olufsen.dk> # realtek
 > ---
->  .../media/mediatek,vcodec-subdev-decoder.yaml | 60 ++-----------------
->  1 file changed, 4 insertions(+), 56 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> index c4f20acdc1f8..695402041e04 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> @@ -91,12 +91,13 @@ properties:
->  
->  # Required child node:
->  patternProperties:
-> -  '^vcodec-lat@[0-9a-f]+$':
-> +  '^video-codec@[0-9a-f]+$':
->      type: object
->  
->      properties:
->        compatible:
->          enum:
-> +          - mediatek,mtk-vcodec-core
->            - mediatek,mtk-vcodec-lat
->            - mediatek,mtk-vcodec-lat-soc
->  
-> @@ -145,59 +146,6 @@ patternProperties:
->  
->      additionalProperties: false
->  
-> -  '^vcodec-core@[0-9a-f]+$':
-> -    type: object
-> -
-> -    properties:
-> -      compatible:
-> -        const: mediatek,mtk-vcodec-core
-> -
-> -      reg:
-> -        maxItems: 1
-> -
-> -      interrupts:
-> -        maxItems: 1
-> -
-> -      iommus:
-> -        minItems: 1
-> -        maxItems: 32
-> -        description: |
-> -          List of the hardware port in respective IOMMU block for current Socs.
-> -          Refer to bindings/iommu/mediatek,iommu.yaml.
-> -
-> -      clocks:
-> -        maxItems: 5
-> -
-> -      clock-names:
-> -        items:
-> -          - const: sel
-> -          - const: soc-vdec
-> -          - const: soc-lat
-> -          - const: vdec
-> -          - const: top
-> -
-> -      assigned-clocks:
-> -        maxItems: 1
-> -
-> -      assigned-clock-parents:
-> -        maxItems: 1
-> -
-> -      power-domains:
-> -        maxItems: 1
-> -
-> -    required:
-> -      - compatible
-> -      - reg
-> -      - interrupts
+> v3 -> v4
+>   * Rename "$defs/base" to "$defs/ethernet-ports" to avoid implication of a
+>     "base class" and fix commit message accordingly
+>   * Add the following to the common etherent-ports node:
+>       "additionalProperties: false"
+>       "#address-cells" property
+>       "#size-cells" property
+>   * Fix "etherenet-ports@[0-9]+" to correctly be "ethernet-port@[0-9]+"
+>   * Remove unnecessary newline
+>   * Apply changes to mediatek,mt7530.yaml that were previously in a separate patch
+>   * Add Reviewed and Acked tags
+> 
+> v3
+>   * New patch
+> 
+> ---
+>  .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
+>  .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
+>  .../devicetree/bindings/net/dsa/dsa.yaml      | 25 ++++++++++++++++---
+>  .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
+>  .../bindings/net/dsa/mediatek,mt7530.yaml     | 16 +++---------
+>  .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
+>  .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
+>  .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
+>  .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
+>  .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
+>  .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
+>  11 files changed, 35 insertions(+), 24 deletions(-)
+> 
 
-Looks like interrupts was required for vcodec-core, but it isn't for the generic
-video-codec node. Which seems correct, given that the vcodec-lat-soc doesn't
-have an interrupt [1]. So I guess this is just the generic video-codec node in
-the binding being too generic for some cases. Ideally we would override
-interrupts to be required based on which subnode we're dealing with (for lat and
-core, but not lat-soc), but given these are subnodes matched through
-patternProperties, I'm not sure that would be possible.
-
-[1] https://lore.kernel.org/all/20221202034450.3808-3-yunfei.dong@mediatek.com/
-
-Thanks,
-Nícolas
-
-> -      - iommus
-> -      - clocks
-> -      - clock-names
-> -      - assigned-clocks
-> -      - assigned-clock-parents
-> -      - power-domains
-> -
-> -    additionalProperties: false
-> -
+Reviewed-by: Rob Herring <robh@kernel.org>
 
