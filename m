@@ -4,74 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD63C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 18:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38FDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 19:40:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PyzTPV6X9xNiTCbyGstKIWGMGMo8e5LT5ChhPCYnMlc=; b=5EPGw59id8my3Qt8oRtt7BYHCx
-	07VMC7L2Bdxi+B/frhCzXhF0vhrZc+FWfhA6n7KCtGAYqNWi8D7Oa+a7C46DdY9LU/NxrEgo8duvo
-	mY/fspexAt1X3AgPWjfY3XNOqk2MX5+/bMGdGpoHjMIlQXnKebUG0WMwBHGMaGnVZOXiJ8P5ZTDLb
-	GT40qq7NVLvfqB0MLPjR+84C4WNb5J7BVnATtqEWY2DY9SzCtVFLIe6PdHXV6MbKcejMLPRQVJleD
-	Q+iYppzRekSf+b/Q2DEa/GPpnYKUr7FdbMrgeiRrqWSIdYEiMUpv3i7LtvPtadokNyB08x3sofJ/q
-	9hUQoNLg==;
+	bh=7pzik94DCRnikniychtCYn/if7UtyQkTWFCyd0BXZAs=; b=DvFtVKDylNW5mqeIGzqKabtSzg
+	VYG9vsBimkZnUsgEyXkC4puaqHky8dUAtQUEPec63m0sI2B3lejd63VYl35C0e64y/f5NhDhduQQU
+	Rk+TDX1Kfa0htaT11s1M6Qhw8CdMkvDUDTyJ1CvOjsWQD8FtRRwaUPe4Lj7gLWjLFcbUksGiiR8yG
+	DDor3E60ApKhEL1jUqoQ56IEckSeDHUauF9tgju2J+wNMBIU/MMLrzYzAE1CYG31puHTGQ0e6W9s5
+	syHP9JtI0z6GF0gtt3plvyZEmCRozgxS8zi/Npy82B+Iy3uE5ISSm5Vqzm9QB++sT0W4p0RaygDXl
+	mWvxRm4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2GPp-008Z2U-3S; Mon, 05 Dec 2022 18:42:09 +0000
-Received: from mail-pj1-f50.google.com ([209.85.216.50])
+	id 1p2HJm-009Tcn-1f; Mon, 05 Dec 2022 19:39:58 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2GPm-008Yu7-MV
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 18:42:08 +0000
-Received: by mail-pj1-f50.google.com with SMTP id q15so11059302pja.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 10:42:04 -0800 (PST)
+	id 1p2HJP-009T8E-1h
+	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 19:39:36 +0000
+Received: by mail-wm1-x336.google.com with SMTP id m19so9583708wms.5
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 11:39:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7pzik94DCRnikniychtCYn/if7UtyQkTWFCyd0BXZAs=;
+        b=mPhxALAdZmhXA3LNUW3pO/6N9g17MLwyztZmXWZVb6a+DOYDAztdnk9+7GRr2lj+ON
+         g3Y0gaqlIYyK/dkcOudswwzJYkV4QDFemDAKFOZfsxvEDrRuEjyHENJguwDr9rneRstQ
+         Ys/AJ4BPPEWzUWUgGjyHCjTxK4WjajfsVRjLXweIKCPHc4b78j6VizaBs97dSVp/C2Wr
+         DutF4W6xrJ9/AQ15NTZHpvCKMvVTx0MJokJnFrUyyrCJn29dWhmWmnTYaJIQAYF8vkik
+         kVbQT0V0Gi2ZLbKIsBVfaoZJYRpYr41h4whRPg/iNg0swzNE/nmLIdcYYFZ9ixr3heC+
+         uHGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PyzTPV6X9xNiTCbyGstKIWGMGMo8e5LT5ChhPCYnMlc=;
-        b=QiB1vO+LE9Qca4lFjVNLaYYnBZ4P3/Nvte16AUvxichWojDubLwtZx0TAxNiOT7CK4
-         3V+99wPYxSd+iR+9wcE1QhU8OSXATDJ8T+jUvHBKKHecIaBWGIAwhH+EVeodry0JNzCD
-         Ir8zlufQRDOYbqSVLg4Gh08mYnw9zgtDaK52U4078jkSj8WtfvjrWwoJ/YcDKM4HsH2W
-         K+D3ICytzyDPwJDMA8dLmqgMVi2DG74ddN4grjVti0vYj5ZHiI0pk1WK8LI/V23QoJPI
-         xvC7CDCxrxFadNCOb3mzzeQOhca2bdyrjOXhjVtEPuMvAY+t09xdbpRsX5M30jtu/TLq
-         mflw==
-X-Gm-Message-State: ANoB5pnj07KWWNMLAVhqLDeeS4dWEJfk5P2JbgFg8gCBfF/7uZI/NpqI
-	P3YozpKCpfwWHMWXJKwDJ6g=
-X-Google-Smtp-Source: AA0mqf7YcuHB/+S/cPgfuJ0vxZsTspMf7KptxrrWaSD1oWJBYRYRq9ExUjSUrPOI7HRt0+It34rSpQ==
-X-Received: by 2002:a17:902:b608:b0:189:7a8b:537d with SMTP id b8-20020a170902b60800b001897a8b537dmr44459287pls.95.1670265723486;
-        Mon, 05 Dec 2022 10:42:03 -0800 (PST)
-Received: from ?IPV6:2620:15c:211:201:c22a:d200:1ba3:dcca? ([2620:15c:211:201:c22a:d200:1ba3:dcca])
-        by smtp.gmail.com with ESMTPSA id h15-20020a056a00000f00b00574d38f4d37sm10244237pfk.45.2022.12.05.10.42.01
+        bh=7pzik94DCRnikniychtCYn/if7UtyQkTWFCyd0BXZAs=;
+        b=2LiXmkgVUq0AJa9rL2oG0MS5qcyR9xuwiD/y8me6ddRptdRzTqYDHhgyiCJN4le1Du
+         DPJC2WORBPUpxaaUk7vSJQFeev/ynXZZsaxZu6mQW8XMbyWnus3t+SKq5NiJqYXUXq/Z
+         t6yU5aPkwPO/t8MaFRc6ykAzLWVY7srjbzexzjYHYlOkXc6Tu6/6mDvAFn4iT7828aac
+         MuIfepdTk2oEUcQw6rs6DlCksx4oHUFAs7x0Ri3aeJWLaS53dRpe6H4AwUCM9D4saG+p
+         BNaC6pdNcUHIAJZOvGXadcorU4jXJTbnkhq1gtckS9lW/kTKRjeyqUC0On7Ae+9/nGxy
+         Iy8w==
+X-Gm-Message-State: ANoB5pmUKogVJxURkJNWgiteSegku1HhCVqs+8RYAKvdF41PTX6vSwTs
+	eH9hF3QqV/gqa5lcf5p3YA/9vQ==
+X-Google-Smtp-Source: AA0mqf7D6o5HZCbdZtrrkeiqgEkjfSmeglDG8CxGKl4IAXFIfOgqAXoQLydm+9jhl4i4m7nwJHIssA==
+X-Received: by 2002:a05:600c:1da2:b0:3cf:147d:ad9a with SMTP id p34-20020a05600c1da200b003cf147dad9amr48581382wms.33.1670269171966;
+        Mon, 05 Dec 2022 11:39:31 -0800 (PST)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id v14-20020a05600c444e00b003a1980d55c4sm23867622wmn.47.2022.12.05.11.39.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Dec 2022 10:42:02 -0800 (PST)
-Message-ID: <6785696a-cb52-5934-dbd6-28472b4cd7c6@acm.org>
-Date: Mon, 5 Dec 2022 10:41:59 -0800
+        Mon, 05 Dec 2022 11:39:31 -0800 (PST)
+Message-ID: <adfe41f7-00e5-876b-7803-3127919fba13@linaro.org>
+Date: Mon, 5 Dec 2022 20:39:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Subject: Re: [PATCH v3] ufs: core: wlun suspend SSU/enter hibern8 fail
- recovery
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v7 4/4] thermal: mediatek: add another get_temp ops for
+ thermal sensors
 Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com
-References: <20221202073532.7884-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20221202073532.7884-1-peter.wang@mediatek.com>
+To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, Michael Kao <michael.kao@mediatek.com>,
+ linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20221018-up-i350-thermal-bringup-v7-0-ebf08ff2eddb@baylibre.com>
+ <20221018-up-i350-thermal-bringup-v7-4-ebf08ff2eddb@baylibre.com>
+ <4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org>
+ <COTTJX635TNF.1WL2TEZN7VW9O@amjad-ThinkPad-T490>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <COTTJX635TNF.1WL2TEZN7VW9O@amjad-ThinkPad-T490>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_104206_762389_01ECD115 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20221205_113935_226867_F8106168 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,73 +106,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/1/22 23:35, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
+
+Hi Amjad,
+
+
+On 05/12/2022 11:41, Amjad Ouled-Ameur wrote:
+
+[ ... ]
+
+>>> @@ -1161,11 +1197,24 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>>>    
+>>>    	platform_set_drvdata(pdev, mt);
+>>>    
+>>> -	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+>>> -					      &mtk_thermal_ops);
+>>> -	if (IS_ERR(tzdev)) {
+>>> -		ret = PTR_ERR(tzdev);
+>>> -		goto err_disable_clk_peri_therm;
+>>> +	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
+>>> +		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+>>> +		if (!tz)
+>>> +			return -ENOMEM;
+>>> +
+>>> +		tz->mt = mt;
+>>> +		tz->id = i;
+>>> +
+>>> +		tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
+>>> +							     &mtk_thermal_ops :
+>>> +							     &mtk_thermal_sensor_ops);
+>>
+>> Here you use again the aggregation
+> I addressed this concern in V6, could you please take a look and let me
+> know what you think [0].
 > 
-> When SSU/enter hibern8 fail in wlun suspend flow, trigger error
-> handler and return busy to break the suspend.
-> If not, wlun runtime pm status become error and the consumer will
-> stuck in runtime suspend status.
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> ---
->   drivers/ufs/core/ufshcd.c | 26 ++++++++++++++++++++++++++
->   1 file changed, 26 insertions(+)
-> 
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index b1f59a5fe632..a0dbf2c410b1 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -9049,6 +9049,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   
->   		if (!hba->dev_info.b_rpm_dev_flush_capable) {
->   			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> +			if (ret && (pm_op != UFS_SHUTDOWN_PM)) {
-> +				/*
-> +				 * If return err in suspend flow, IO will hang.
-> +				 * Trigger error handler and break suspend for
-> +				 * error recovery.
-> +				 */
-> +				spin_lock_irq(hba->host->host_lock);
-> +				hba->force_reset = true;
-> +				ufshcd_schedule_eh_work(hba);
-> +				spin_unlock_irq(hba->host->host_lock);
-> +
-> +				ret = -EBUSY;
-> +			}
->   			if (ret)
->   				goto enable_scaling;
->   		}
-> @@ -9060,6 +9073,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   	 */
->   	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
->   	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
-> +	if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {
-> +		/*
-> +		 * If return err in suspend flow, IO will hang.
-> +		 * Trigger error handler and break suspend for
-> +		 * error recovery.
-> +		 */
-> +		spin_lock_irq(hba->host->host_lock);
-> +		hba->force_reset = true;
-> +		ufshcd_schedule_eh_work(hba);
-> +		spin_unlock_irq(hba->host->host_lock);
-> +
-> +		ret = -EBUSY;
-> +	}
->   	if (ret)
->   		goto set_dev_active;
->   
+> [0]: https://lore.kernel.org/all/5eb0cdc2-e9f9-dd42-bf80-b7dcd8bcc196@baylibre.com/
 
-Please follow the coding style that is used elsewhere in the kernel and
-remove the superfluous parentheses from this patch. "if (ret && (pm_op !=
-UFS_SHUTDOWN_PM)) {" can be changed into "if (ret && pm_op !=
-UFS_SHUTDOWN_PM) {" and "if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {" can be
-changed into "if ((ret) && (pm_op != UFS_SHUTDOWN_PM)) {".
+May I misunderstanding but AFAICS, this patch is setting the 
+mtk_thermal_ops if the sensor id is zero. The get_temp is computing the 
+max temperature in this ops which is what we don't want to do.
 
-Otherwise this patch looks good to me.
 
-Thanks,
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-Bart.
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
