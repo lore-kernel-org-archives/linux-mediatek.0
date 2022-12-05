@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952E8C4321E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 21:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1610AC4321E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 21:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZfiHxataRYELBQlwPB1e5cfCg9ERdtvECohrh9QC/vQ=; b=wvpg/ndzU7EXql1/+U6iYfDIX0
-	nRbyP6jb+ixpFSUUtm+vQKxfvRobhiydr50kUVZuz4ATgrvo6Z1jjLhyacVXimjw/U+2A1KGjqSBr
-	oMdwrxcHXmoaJC8evKW09yu1QNYl19Tu2Gw0fxSKky5A27VvJmc0xs0NLZJFLHXLylV953ifyTP72
-	xjhEAw8PChyKr3uvEkgb8TQuIfSCt59O7ez9SAE+07KMiAw1NnuOORj9tC6WPmHOcPjizglX77hlK
-	IJPRw//hmjFMl+Brgalo/GQXGWhVkhZE0esY68HD+TCbtY1yyTfxtz14/IDGLif9+zrA3Pa+y1Wk2
-	3qyGUWzg==;
+	bh=Po/Vnp740e9T+tDgfbAWj+RPcPol9ZJzo1R1BoQoilk=; b=iJ9sSMCaK7eRi/cGA3HfhmCz9D
+	7E6Sg/J/R1ZmzPkm6OwKVQHif7DV2SBYJhs73OIPQCkUtSH8MjvJC3mxtG6zd1/+YbORTFf8nTxVY
+	HfAgXJlNAtdgmfEuqNU9GLUkZ6QrXPQw7Ut6sMyJ24djNA8ynDn2N6AxnLC5pqDyn2cv7PHOnTpcp
+	jDBwxK0MHj0rcFVgkhp/1MobxAlx6MVo7mJw5NHpyRsocWtzT9+vmMch1u2YmcvtX5i0LIFhrVjRW
+	wWVEgat6hH/87tSbHEos3GiDYy1/U8PgC6Mf/jMwlNpbXTcwKiGaOKCBFpRSfqLZwGcmj7j0rksKc
+	mYY3Jr3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Ie5-00AZyF-IP; Mon, 05 Dec 2022 21:05:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p2J4c-00AlHx-PN; Mon, 05 Dec 2022 21:32:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Idp-00AZo7-MJ; Mon, 05 Dec 2022 21:04:47 +0000
+	id 1p2J4R-00AlDh-6N; Mon, 05 Dec 2022 21:32:16 +0000
 Received: from notapiano (unknown [IPv6:2804:14c:1a9:3b3c::1000])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79DE966015B4;
-	Mon,  5 Dec 2022 21:04:38 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7E9CA66015B4;
+	Mon,  5 Dec 2022 21:32:09 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670274282;
-	bh=VCvV+LMWWL4oBnWh4lUZLZS7cPQfDQuW5q3xLG4rh/0=;
+	s=mail; t=1670275933;
+	bh=50/6QIo85oB6JxRj95P+uB219lfikFqskeQx/8eOvno=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LQxJ4Aef20sUdkPWsixd3p2LtvnReiXvBv3FA36F7VAOh8X94UCzLl4ld1LhNd1EI
-	 7eBqvzGcNSENej3qUCEeB4yWb/7Xk5pIZxuD3v6gcp9Pr0BK2D5LcP3ze4Ii/P4EH+
-	 pdT1uhTa533bfrxjQ3D6P0u6eug+tJAYzH6thBpJBRYt1LdnsykscXM1m28K95hnt8
-	 T5LLyKyQjBETdRUOxNDKn0CK77k0Oq9V4jRslRUmb4gZqtuCIw3n3gFRjyctAUmC1I
-	 aZPK2CCvJZt1QY8YNsiDO5mTRKesVCGhSFkEXCrSyPp61aT0Ofsvbuv+zUPsaPw/AH
-	 uZDzm5HVDGwTA==
-Date: Mon, 5 Dec 2022 18:04:33 -0300
+	b=lRQUJmwna1Fd3WRydn/u93hKBrfttIOdTcafin+jSSCYjr8s1GC7M6p2HGiatKbtM
+	 dw3/omlPJCPUvvIgvS1mZkuutCWS18K758oZj6pZrK96KiwBrh6PwsBhwsS6x8WRCZ
+	 D/ZviTmlAkrpSKOigl4ACIML7N9J6ZGh3CkfXhuMDK2mQa37es2OIctUDX5itDZT+m
+	 neu34try3QNXbu4wn3s9rqq7sE/HkJagVPpvFShgr97iqqxw4NfM0evX5yysOwVWFU
+	 /tHa61VDvgghxpot4Q/5Q1TbgR4WHQZPJBtA1C1RFFEjnjCVpsTxLiyOiQ0t99oyby
+	 //suG3cbYJkKw==
+Date: Mon, 5 Dec 2022 18:32:04 -0300
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -52,19 +52,19 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
-Subject: Re: [PATCH v5 3/3] arm64: dts: mt8192: Add video-codec nodes
-Message-ID: <20221205210433.w3nbwmegcnvsyesc@notapiano>
+Subject: Re: [PATCH v5 1/3] media: dt-bindings: media: mediatek: Rename child
+ node names for decoder
+Message-ID: <20221205213204.ftnarhtsk33pprq3@notapiano>
 References: <20221128143832.25584-1-allen-kh.cheng@mediatek.com>
- <20221128143832.25584-4-allen-kh.cheng@mediatek.com>
+ <20221128143832.25584-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221128143832.25584-4-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20221128143832.25584-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_130445_880072_348FB681 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221205_133215_384437_D59E25A9 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +79,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 28, 2022 at 10:38:32PM +0800, Allen-KH Cheng wrote:
-> Add video-codec lat and core nodes for mt8192 SoC.
-
-Even though the rule is to use generic names in the DT, here in the commit
-message and title I would have called them "video decoder nodes", to be more
-specific and differentiate from the encoder nodes. But the way you wrote is not
-wrong, so feel free to ignore this comment and leave it as it is.
-
+On Mon, Nov 28, 2022 at 10:38:30PM +0800, Allen-KH Cheng wrote:
+> In order to make the names of the child nodes more generic, we rename
+> "vcodec-lat" and "vcodec-core" to "video-codec" for decoder in
+> patternProperties and example.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>  .../media/mediatek,vcodec-subdev-decoder.yaml | 60 ++-----------------
+>  1 file changed, 4 insertions(+), 56 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> index c4f20acdc1f8..695402041e04 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+> @@ -91,12 +91,13 @@ properties:
+>  
+>  # Required child node:
+>  patternProperties:
+> -  '^vcodec-lat@[0-9a-f]+$':
+> +  '^video-codec@[0-9a-f]+$':
+>      type: object
+>  
+>      properties:
+>        compatible:
+>          enum:
+> +          - mediatek,mtk-vcodec-core
+>            - mediatek,mtk-vcodec-lat
+>            - mediatek,mtk-vcodec-lat-soc
+>  
+> @@ -145,59 +146,6 @@ patternProperties:
+>  
+>      additionalProperties: false
+>  
+> -  '^vcodec-core@[0-9a-f]+$':
+> -    type: object
+> -
+> -    properties:
+> -      compatible:
+> -        const: mediatek,mtk-vcodec-core
+> -
+> -      reg:
+> -        maxItems: 1
+> -
+> -      interrupts:
+> -        maxItems: 1
+> -
+> -      iommus:
+> -        minItems: 1
+> -        maxItems: 32
+> -        description: |
+> -          List of the hardware port in respective IOMMU block for current Socs.
+> -          Refer to bindings/iommu/mediatek,iommu.yaml.
+> -
+> -      clocks:
+> -        maxItems: 5
+> -
+> -      clock-names:
+> -        items:
+> -          - const: sel
+> -          - const: soc-vdec
+> -          - const: soc-lat
+> -          - const: vdec
+> -          - const: top
+> -
+> -      assigned-clocks:
+> -        maxItems: 1
+> -
+> -      assigned-clock-parents:
+> -        maxItems: 1
+> -
+> -      power-domains:
+> -        maxItems: 1
+> -
+> -    required:
+> -      - compatible
+> -      - reg
+> -      - interrupts
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Looks like interrupts was required for vcodec-core, but it isn't for the generic
+video-codec node. Which seems correct, given that the vcodec-lat-soc doesn't
+have an interrupt [1]. So I guess this is just the generic video-codec node in
+the binding being too generic for some cases. Ideally we would override
+interrupts to be required based on which subnode we're dealing with (for lat and
+core, but not lat-soc), but given these are subnodes matched through
+patternProperties, I'm not sure that would be possible.
+
+[1] https://lore.kernel.org/all/20221202034450.3808-3-yunfei.dong@mediatek.com/
 
 Thanks,
 Nícolas
+
+> -      - iommus
+> -      - clocks
+> -      - clock-names
+> -      - assigned-clocks
+> -      - assigned-clock-parents
+> -      - power-domains
+> -
+> -    additionalProperties: false
+> -
 
