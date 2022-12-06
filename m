@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE895C47089
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Dec 2022 23:31:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AE2C4708C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 01:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=; b=tBvquO94Gg2UEfpJSXKqw8OjB/
-	Ek7OOaOt+UsLQpprkatxJsT1/iN3b2aY9xYVrDIq/zYupTChlz6wN0UO6ZIT4HxaMM+hLXrD+tfZp
-	elAfrbkwd3E8lj5HS+q75sfxbX1GMRq6L9P4MCy/CKcDkf9Wdy3A/6Ql5JN1jxKMeg3FAyor8UCyD
-	+X8x+oCQtz9mIkH1wf7Ba8mMaiU0CPH4DI6skE7acHoLVcsvOlDxh5Uq34tY0ENDgSgCUUQJMf7p+
-	MR43Ui3a6Rhi27DNjuJGe/Ikw6QzhIUMj3xONubqO/DV0dLpu3TibreW/IF4o+881TSC8Iy3xwbNj
-	TtLEvXsQ==;
+	bh=2q+cYyA+eU3efar4YrIT4KglvWnkd7xCksdSU/9600Y=; b=JuMRsphnVxvS8PfHtJwIoto+wu
+	gvZIoC4rJu60eAEPcvnVTP3oZobe2m+Eqeaxn71Ch6gvM+KAxIHHRI05z03scuILYuNaUYZtWKEP0
+	EWF1j2uJQzhKvo0b2EZ5ZGATrFkSlAE+AylKb8IkMuiNRvSiH5Y9JH9oQFAPBpG8zu9EGyxZQEhQp
+	nvDlLzDZPbsc9QFAwHgxGQexJSUaguUEBl7HHyJh+xhAy2CEcIWoRFbwqJ6r+cia4UsGmHSAQBmke
+	XhjlcKcgbbsLG2yEkJSWi4M6QDAiI7YVdny9t2mWlpQWKLXcocqauJSWqS9nwMkDHmXz8/GywZo3P
+	9FenC13w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2KvW-00CU87-C4; Mon, 05 Dec 2022 23:31:10 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1p2MoS-00Eo0L-UN; Tue, 06 Dec 2022 01:32:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2KvR-00CTqo-3n
-	for linux-mediatek@lists.infradead.org; Mon, 05 Dec 2022 23:31:09 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id v13-20020a17090a6b0d00b00219c3be9830so5140086pjj.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Dec 2022 15:31:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=;
-        b=OdoCO3aIPMdfROqUjmXL7OEIA9CYBS2QJpBEQA/J/lXle82NRW52w+zlIhfg8ms1LH
-         /TaN9ef8SYhihXbLecW289xcKfk+r8jWkj++QJwpEkQ1fXVsZ/FXGTthxTDx3eTv2LqU
-         aF9+9jCAsL/TJziFYfMd+KTj2pD0QOxM5LCYt8tjyk5XsS1+uOrVx9Njw5OmkcBBVEYX
-         KSGIvwzQcHLKi0zMkznu7zvWfx7VwIEZnBvI3Jh70JzLhhauK0TvqwYPjpm562G4twQ5
-         bH2/dgjDSmgv5Ucv41xkKot6rQ9Ok5rWk8g0NNt3g0bAOZFq60lEilO/MyCxX0rMGr7l
-         LCBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B64nahlnQTvizzFWN/MKOqXMuPOFiJayfJ71EF7WbGA=;
-        b=h0kIQmzVwDxq1LDFeQIhnUVoL8oUz1TvD3eO80FcSBQ6RRd6bUDdCgK1VuqbNYY7Z7
-         f5gfnFDrgcL4SW1aH893Hv3JPsENpnGWpG2wpIj99y0D5N/e2OW8ZODCDLi64F3VP+es
-         /nXwBLTbJn6HWPXnSJdMEPtAhDHcpPN5C3LkxCFmMuiFccJq+lkb7RhQijZqyem3IDTI
-         Zue1JyVcRoKzul7Bs+EEZCWIoJgeITBcxJJfoZEqFlSZfyzikq+cds7SAdjtt8ZzjjoH
-         KoSbtVE3VhAbjEWGS0kOOvyRNzhYpOlZzecY59XxHAe6Dl2+8N0ChVrJqBEvLA7LBJd+
-         W0KA==
-X-Gm-Message-State: ANoB5pmjb90YWJYR7W6TDGIgtgpu72CaqpURLrISmpRsWrNGu04OPfqj
-	Bv4v0QPMAwHStGzNhRJ9Q0sxiQ==
-X-Google-Smtp-Source: AA0mqf5QjTlWvI5ubzCjEUZ2XSBplUYzhwiX2VZlK2wbZvvlG5QcSd1Z2Q5+Y5Ulo+DwDdjITx4zAA==
-X-Received: by 2002:a17:902:b685:b0:186:5e2f:44b4 with SMTP id c5-20020a170902b68500b001865e2f44b4mr59374pls.29.1670283064040;
-        Mon, 05 Dec 2022 15:31:04 -0800 (PST)
-Received: from localhost ([122.172.87.149])
-        by smtp.gmail.com with ESMTPSA id e8-20020a17090301c800b00189b2b8dbedsm9188203plh.228.2022.12.05.15.31.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Dec 2022 15:31:03 -0800 (PST)
-Date: Tue, 6 Dec 2022 05:00:59 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	regressions@leemhuis.info, daniel@makrotopia.org,
-	thomas.huehn@hs-nordhausen.de, "v5 . 19+" <stable@vger.kernel.org>,
-	Nick <vincent@systemli.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Revert "cpufreq: mediatek: Refine
- mtk_cpufreq_voltage_tracking()"
-Message-ID: <20221205233059.izdqcilbhjmkh6ew@vireshk-i7>
-References: <930778a1-5e8b-6df6-3276-42dcdadaf682@systemli.org>
- <18947e09733a17935af9a123ccf9b6e92faeaf9b.1669958641.git.viresh.kumar@linaro.org>
- <CAJZ5v0ixHocQbu6-zs3dMDsiw8vdPyv=8Re7N4kUckeGkLhUzg@mail.gmail.com>
- <CAJZ5v0hc8CsvqLKxi5iRq7iR0bkt25dRnLBd23mx-zdi2Sjgsw@mail.gmail.com>
- <20221205043044.bgecubnw7d3xlyi5@vireshk-i7>
- <CAJZ5v0gTV5LM_qRKncPq5Z2TRENMgVer6oZiGAKJn6ndrNSKxg@mail.gmail.com>
+	id 1p2MoP-00Enyc-QP
+	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 01:31:59 +0000
+X-UUID: 4f498a222a094d8e83c19473da2cf5a6-20221205
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2q+cYyA+eU3efar4YrIT4KglvWnkd7xCksdSU/9600Y=;
+	b=bUAxt1mZeEq+b1kq14gsAjTcoALWQUw0OCs/hPscIWZGMq1TM7DSPAfiTyc7VrXdlfqztXvzL3bQvmryRw3hE3GsFde7wgFGQq3HZsLaZ5mHYbls8HPxWk+sCnneRdyh1W5/juyzAUAxYsAqitQ7loJH31BKMgTmzTb4jjbvzYg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:24cd9b25-69e8-4f6c-b1f5-0511ede1f4e8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:5e46bad1-652d-43fd-a13a-a5dd3c69a43d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4f498a222a094d8e83c19473da2cf5a6-20221205
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 693649718; Mon, 05 Dec 2022 18:31:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 6 Dec 2022 09:31:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 6 Dec 2022 09:31:18 +0800
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Howard Hsu
+	<howard-yh.hsu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/3] wifi: mt76: mt7915: rework mt7915_thermal_set_cur_throttle_state()
+Date: Tue, 6 Dec 2022 09:29:49 +0800
+Message-ID: <20221206012951.10719-2-howard-yh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221206012951.10719-1-howard-yh.hsu@mediatek.com>
+References: <20221206012951.10719-1-howard-yh.hsu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAJZ5v0gTV5LM_qRKncPq5Z2TRENMgVer6oZiGAKJn6ndrNSKxg@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_153105_418438_D7DEBEAB 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221205_173158_044440_EAFAB1C3 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,21 +81,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05-12-22, 13:08, Rafael J. Wysocki wrote:
-> Well, this was a bit unclear.
+This patch includes 3 changes:
+1. The maximum throttle state can be set to 100 to fix the problem that maximum tx
+cyle can only be set to 99.
+2. Throttle state do not need to be different from the previous state.
+This will make it is impossible for users to just change the
+trigger/restore temp but not the throttle state.
+3. Add dev_err so that it is easier to see invalid setting while looking at dmesg.
 
-Hmm, yeah. I assumed that the arm stuff will go via my tree and you
-will be in sync with this. But yeah, a comment in the patch won't have
-hurt.
+Fixes: 9fee8f3736eb ("mt76: mt7915e: Fix degraded performance after temporary overheat")
+Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/init.c   | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-> Alright then, I'll assume that the proper fix will come in through
-> your pull request for 6.2 (but please send that one before the merge
-> window opens), thanks!
-
-I was ready with pull request since several days, was just waiting for
-this to get sorted out. And I think this may get delayed a bit too, so
-I better send the first pull request now and worry about this later.
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index c810c31fbd6e..abeecf15f1c8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -131,14 +131,17 @@ mt7915_thermal_set_cur_throttle_state(struct thermal_cooling_device *cdev,
+ 	u8 throttling = MT7915_THERMAL_THROTTLE_MAX - state;
+ 	int ret;
+ 
+-	if (state > MT7915_CDEV_THROTTLE_MAX)
++	if (state > MT7915_THERMAL_THROTTLE_MAX) {
++		dev_err(phy->dev->mt76.dev,
++			"please specify a valid throttling state\n");
+ 		return -EINVAL;
++	}
+ 
+-	if (phy->throttle_temp[0] > phy->throttle_temp[1])
+-		return 0;
+-
+-	if (state == phy->cdev_state)
+-		return 0;
++	if (phy->throttle_temp[0] > phy->throttle_temp[1]) {
++		dev_err(phy->dev->mt76.dev,
++			"temp1_crit shall not be greater than temp1_max\n");
++		return -EINVAL;
++	}
+ 
+ 	/*
+ 	 * cooling_device convention: 0 = no cooling, more = more cooling
+@@ -164,7 +167,7 @@ static void mt7915_unregister_thermal(struct mt7915_phy *phy)
+ 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
+ 
+ 	if (!phy->cdev)
+-	    return;
++		return;
+ 
+ 	sysfs_remove_link(&wiphy->dev.kobj, "cooling_device");
+ 	thermal_cooling_device_unregister(phy->cdev);
+@@ -1101,7 +1104,6 @@ static void mt7915_stop_hardware(struct mt7915_dev *dev)
+ 		mt7986_wmac_disable(dev);
+ }
+ 
+-
+ int mt7915_register_device(struct mt7915_dev *dev)
+ {
+ 	struct ieee80211_hw *hw = mt76_hw(dev);
 -- 
-viresh
+2.18.0
+
 
