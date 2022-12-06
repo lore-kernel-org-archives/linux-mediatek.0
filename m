@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 366E8C47089
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 02:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA6BC4708C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 02:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rf2xlHbnDoi+Wpwgi2HpILhMqC3GA1rq9G2fhy9H4X4=; b=bhEUoNmWokMXuyuBLvO74msHLO
-	kRvso3np9iMKipbT7GB7adQ7qmWZeMSr0J4gbPmS/WVhEIHUEM8pMqsjJDGU3oPCXvfrEt/RDPc7C
-	FUX+zmDB8CseRIhJE77/0X+ZiUb2HOHg6bzBvVASO/S9Xywy9IZEtEvaz0zqNv5v+31OHgpove7x9
-	cS8hRz+jKjxC7/tencpvVnmPImtXNOHGVEdARlJvWLmDTV7fZLlNAqCFSb1GzpfnnWUbDKEaTR/cW
-	3t/1UrI1QGgD8YA0RjRA/UXpusF/Yd7u1YQdVD1Q6eMACckd/AFmboIbDY0CY//BMODQnM6mFPp47
-	ncmWSRvQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=h9vpf00nkT1FqhFNddOs6fidJI6QIuGaTmh82e2scfo=; b=nt9j81CJEaS9+r0H6UDZWG28fq
+	Rq/fpZ+ZpHduWTpX8NOV7ooc+90Nx9GM5s65aW5Jn0RyGwF6A4Kd5rZ3iPGS3b2N1jJxm5kEur2fN
+	N7w0m8otuBrAzdHQjdiek+blqB0bQeInjQoDCVUFanBB/Ey+GiJ0sEbzyWk0ePpCdxR1F+CGfaTxx
+	Ns2rzR2zDQ9RfB9nS/dDOe5RroM9nU/w4Z3VcgDov5+6Rbbf6Ly+QmzDO3stoYjPlefvx5H2JybOY
+	d9a8d0repLDuI555fPffHT040SjLcmNm/iFCJkdsOGxHqQeDBydssovzkXzkcJRo40seCKqhwpGKC
+	xZO2MIrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Nay-00FRs5-HM; Tue, 06 Dec 2022 02:22:08 +0000
+	id 1p2NkA-00FWra-MO; Tue, 06 Dec 2022 02:31:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2Naw-00FRqf-4N
-	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 02:22:07 +0000
-X-UUID: ac259e5120db4d149dc1ee4ba81d0144-20221205
+	id 1p2Nk6-00FWkl-TT; Tue, 06 Dec 2022 02:31:36 +0000
+X-UUID: a2e8ba4662f046adbbd0da8863dcfb6d-20221205
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rf2xlHbnDoi+Wpwgi2HpILhMqC3GA1rq9G2fhy9H4X4=;
-	b=tkQ8Jtd662x3QmtmTYhDzSZ6cK6SHT92ApiHeYOlCfr+UT0kQa/ZDgoF4jYEgYERRi+QDKVPaT2UhAjfl+OpgRUbU6lm6PaiX9f9jADuQtZYjCjbh3qJx8mDnjX3cMzD3L+B2D2eXnOWU6fp3wIC2ANQe0lGNMpDVGPtKJL5AcY=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=h9vpf00nkT1FqhFNddOs6fidJI6QIuGaTmh82e2scfo=;
+	b=eKCXcfCYpnwZnLsgUpdaTJK+/GSxsUCFfoKZaPX2SB9qxW+sxD7y2EpbXTr3v1ulYeHYucMXaEFNjNuvvEYG9OIDVh1f78q5P4KGOAf8CpeKVVwjdYVPyYgHCEGDbXvZOiK9I4drl3h+5sAQi3OZas5nfYhhVEdTiX6sOa0m+1Q=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:5b0b009a-4eea-4ad9-9e7a-0917b796db9b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:a30dbcd1-652d-43fd-a13a-a5dd3c69a43d,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:2482c5eb-ef24-4c0c-80e5-3b210e548faa,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:b48ea216-b863-49f8-8228-cbdfeedd1fa4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ac259e5120db4d149dc1ee4ba81d0144-20221205
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a2e8ba4662f046adbbd0da8863dcfb6d-20221205
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(envelope-from <nathan.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1267624612; Mon, 05 Dec 2022 19:22:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 6 Dec 2022 09:31:22 +0800
+	with ESMTP id 223980950; Mon, 05 Dec 2022 19:31:29 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 6 Dec 2022 10:00:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 6 Dec 2022 09:31:22 +0800
-From: Howard Hsu <howard-yh.hsu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
-Subject: [PATCH 3/3] wifi: mt76: mt7915: rework mt7915_mcu_set_thermal_throttling()
-Date: Tue, 6 Dec 2022 09:29:51 +0800
-Message-ID: <20221206012951.10719-4-howard-yh.hsu@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 6 Dec 2022 10:00:55 +0800
+From: nathan.lu <nathan.lu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rex-BC
+ Chen <rex-bc.chen@mediatek.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <lancelot.wu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 0/6] Add first version mt8188 vdosys0 driver
+Date: Tue, 6 Dec 2022 10:00:40 +0800
+Message-ID: <20221206020046.11333-1-nathan.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221206012951.10719-1-howard-yh.hsu@mediatek.com>
-References: <20221206012951.10719-1-howard-yh.hsu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_182206_217269_078C0B7D 
-X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-CacheID: sfid-20221205_183134_970977_0BFA562E 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,55 +88,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firmware expects to disable thermal protect first before reconfiguring.
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-Fixes: afab0e8202ff ("mt76: mt7915: add thermal cooling device support")
-Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+This patch is to add first version mt8188 vdosys0 driver
+Modify and add new files include:
+1. bindings documents
+2. mtk mmsys
+3. mtk mutex
+4. mtk drm driver
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index b2652de082ba..e1b6d644cc14 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3070,18 +3070,22 @@ int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state)
- 	} __packed req = {
- 		.ctrl = {
- 			.band_idx = phy->mt76->band_idx,
-+			.type.protect_type = 1,
-+			.type.trigger_type = 1,
- 		},
- 	};
--	int level;
-+	int level, ret;
- 
--	if (!state) {
--		req.ctrl.ctrl_id = THERMAL_PROTECT_DISABLE;
--		goto out;
--	}
-+	req.ctrl.ctrl_id = THERMAL_PROTECT_DISABLE;
-+
-+	ret = mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_PROT),
-+				&req, sizeof(req.ctrl), false);
-+
-+	if (ret || !state)
-+		return ret;
- 
- 	/* set duty cycle and level */
- 	for (level = 0; level < 4; level++) {
--		int ret;
- 
- 		req.ctrl.ctrl_id = THERMAL_PROTECT_DUTY_CONFIG;
- 		req.ctrl.duty.duty_level = level;
-@@ -3101,7 +3105,6 @@ int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state)
- 	req.trigger_temp = cpu_to_le32(phy->throttle_temp[1]);
- 	req.sustain_time = cpu_to_le16(10);
- 
--out:
- 	req.ctrl.type.protect_type = 1;
- 	req.ctrl.type.trigger_type = 1;
- 
+Change in V4:
+- based on [1]
+[1] Change mmsys compatible for mt8195 mediatek-drm
+    - https://patchwork.kernel.org/project/linux-mediatek/list/?series=699386
+- Modify mediatek,mmsys.yaml, move mt8188-vdosys0 to ****mmsys
+- Modify mt8188_mmsysy.h DSI mux setting
+
+Change in V3:
+- based on [1]
+[1] Change mmsys compatible for mt8195 mediatek-drm
+    - https://patchwork.kernel.org/project/linux-mediatek/list/?series=699386
+- Modify mediatek,mmsys.yaml mt8188-mmsys name to mt8188-vdosys0
+- Modify mtk-mmsys.c compatible name to mt8188-vdosys0
+- Add DSI mutex in mtk-mutex.c
+- Modify mtk_drm_drv.c mt8188-mmsysy name to mt8188-vdosys0
+
+
+Change in V2:
+- based on [2] and [3]
+[2] Add MediaTek SoC(vdosys1) support for mt8195
+    - https://patchwork.kernel.org/project/linux-mediatek/list/?series=658416
+[3] Add MediaTek SoC DRM (vdosys1) support for mt8195
+    - https://patchwork.kernel.org/project/linux-mediatek/list/?series=665269
+- Seperate bindings doucment into mmsys/mutex/display 3 parts
+- Remove redundent char in mediatek,gamma.yaml
+- Add another mediatek,mt8188-disp-rdma in mediatek,rdma.yaml
+- Remove io_start variable setting in mtk_drm_drv.c and mtk_mmsys.c
+
+Nathan Lu (6):
+  dt-bindings: mediatek: modify VDOSYS0 display device tree
+    Documentations for MT8188
+  dt-bindings: mediatek: modify VDOSYS0 mmsys device tree Documentations
+    for MT8188
+  dt-bindings: mediatek: modify VDOSYS0 mutex device tree Documentations
+    for MT8188
+  soc: mediatek: add mtk-mmsys support for mt8188 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8188 vdosys0
+  drm/mediatek: add mediatek-drm of vdosys0 support for mt8188
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
+ .../display/mediatek/mediatek,aal.yaml        |   1 +
+ .../display/mediatek/mediatek,ccorr.yaml      |   1 +
+ .../display/mediatek/mediatek,color.yaml      |   1 +
+ .../display/mediatek/mediatek,dither.yaml     |   1 +
+ .../display/mediatek/mediatek,gamma.yaml      |   1 +
+ .../display/mediatek/mediatek,ovl.yaml        |   1 +
+ .../display/mediatek/mediatek,postmask.yaml   |   1 +
+ .../display/mediatek/mediatek,rdma.yaml       |   4 +
+ .../bindings/soc/mediatek/mediatek,mutex.yaml |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  21 +++
+ drivers/soc/mediatek/mt8188-mmsys.h           | 149 ++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c              |  11 ++
+ drivers/soc/mediatek/mtk-mutex.c              |  53 +++++++
+ 14 files changed, 247 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mt8188-mmsys.h
+
 -- 
 2.18.0
 
