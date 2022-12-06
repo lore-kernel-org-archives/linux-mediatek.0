@@ -4,100 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6079C4708D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 16:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2DBC352A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 16:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t8cA4ACelgyjXGYdUQh+jD+jJuegWDTJ6AcOocRBXlg=; b=CrXK6yOsk9CQkqC/R4wVRfCb2a
-	U1t4Tf+S7vMDbe6MRglIT6YD6idVMvEQb8BhI6cv2FKMiVZehBvasWenRs6O5wwOOc//ND/8g3P23
-	ybKZEtxTCZ/9yOmnz7OC8zh7tY+fLNAHlX7pLCR99JPAnslLGYSlX/ffmC8dwAhOwEn8a/4qIEMpz
-	xxNxVmMpeRqgT7PZIFZtMcNR4zgEBsiiWx3nC3pJlYQ2Wfu9GOMaEkql7rfpDBU9dpniaQVcr3ezS
-	Q0+nD96wCt/el1bapjG1HcuSfXm85OWBV8413xIByvZZ3ZS+eZh7SyXEp8jAAAhLkp4m4VR4XDrUS
-	r69DA1MQ==;
+	bh=/ais45k9vzwCVRwJ6whVGyw5sNpBkvpT+u93PldECuY=; b=rZBsNNRz+LQQkcakUtknuXl3w9
+	C34xkl7LxahIROAJBZx9CN0iknjYzOwxkEOWYAbwnwFIw/BwPfubRqzOFRKpPrkgm2P61hFZp91J/
+	9qKjE/+qS6EnwXXC37CsytmKwvyaZtDsQspA/09mZDWVtBLMmZj6a1AeokTW1IT69SQUH5pOySWjf
+	0gMokJQ4SIT77eMH4EYUzeeNMcOuo7e8TZ/YOXppMPS+G6dkr9j0nWWaUHi1Ol0QidCym9ucOQW19
+	594s7J+ZLbqBXvKl7VNFBjHQ4lDlvmLHHlfBd1RyHxymNCk830+7aDBDAEU/xcgcFbck/kHigeT8E
+	Y6YrDHKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2aR3-00E2ls-Do; Tue, 06 Dec 2022 16:04:45 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1p2alO-00EkMP-HT; Tue, 06 Dec 2022 16:25:46 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2aQv-00E2Og-92; Tue, 06 Dec 2022 16:04:38 +0000
-Received: by mail-ed1-x530.google.com with SMTP id c17so12376603edj.13;
-        Tue, 06 Dec 2022 08:04:34 -0800 (PST)
+	id 1p2alC-00Ek2g-Ed
+	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 16:25:36 +0000
+Received: by mail-oi1-x236.google.com with SMTP id v82so17498710oib.4
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Dec 2022 08:25:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=t8cA4ACelgyjXGYdUQh+jD+jJuegWDTJ6AcOocRBXlg=;
-        b=UDbZ7YkU9hRMLDz1egSCEnbQlgdWZjEVy636iYNE+34e/fSxF62gaDd6CTMdppFtCK
-         gg/tmHGxjv6MmTRtOIK6cx2Jjb3mrtGU3frQXEfew2/+LTUEgbnyISdsKs3uGml2JOtZ
-         JvYal2m3xNBsJGKirr1ul8T5Nqd523nKJZ5j/6tsiWtmmwa5Lq9hS9GDQVfeeHi8DuNO
-         9AH2mDVYfYFz3XMKsNqvPsJgk2ntQaoPQjCS/0XXQ47EzhHk/ZzAcZeGVyZBpXi0/BKY
-         ja42TGmlgxjL8R53NfB3B/0xZOOKq7jWt3JyWFWCklmO4Nc0rmdZcq3WlTtSguff+bFS
-         +xvA==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=/ais45k9vzwCVRwJ6whVGyw5sNpBkvpT+u93PldECuY=;
+        b=SJXK9Njs3/WtQdYO1n5tuMWFnm8eLIT/BZjadd4iLnQyhAXZ8ONXFwPHzYKYFKmvRY
+         RUbmsPRvmSN+4oRKBXgX6i4ctkwgVYGNtMm2wdZFidfCSaQ/DQ5AEL6FMxUl0f7Vqi/N
+         T0dFcibaJyb7eo5g6dZzXHexJ1NL2vz4ACpEiBj9q+fnBYHC2WM/yLNoY640QEfGORVL
+         q3dXAZiHthjklcd02ga4DtsYdCLhAJK+YRTSkfjhD91SGLZT+gmG1wBYXQfyNTybrdWy
+         1ej3vsNkXbAOc2pSxX2XFUQEI92czeXwYRrMKtznQZsR9SW0y3QbuZ+2/3P50aDtpYBQ
+         0zvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t8cA4ACelgyjXGYdUQh+jD+jJuegWDTJ6AcOocRBXlg=;
-        b=s6aFUsf6C0AWnEJ0N/tAtfjYGJ8jw6v8tFebbTaK4DNUSbugqHu/O06CkjLRdlXCct
-         BXoeXG6eF3e52gLYCVGHHU+SHsoepHx4zvsk8DF7DzEvnYM1cd125J9+b2lpN2lIvIfS
-         WcUsOfRxwrJ/2j1DIQ8i2OqIh/4XoXPe/9eJBEE1RAS4oXjcPD77dJ6nidLm780zksJE
-         9se4+oGfFd7etmw9jTZlYnH9b+KI+yeUZ1dfPzKEt7vGN3D875VmnhL7fSjwQsXkfT3j
-         6yqJbggvWeDw65fsuON1gwk6HUTzub7C208n0UzDtVJ3Gpes8P1nDWTXnKuc7spb2z/S
-         EE3Q==
-X-Gm-Message-State: ANoB5pm147kCns3E0iuCncXByPf4HwRnEZ3YAm5odOkLo5BMHRGt0O7o
-	31b6/eyRC0Xy/fKCwSU/ppU=
-X-Google-Smtp-Source: AA0mqf6eCz9WrlnsQ6nH/cJ10vu3pmDPK2/Tun57q7E62E++v7Ogms9pw0K/xifG+5+Clvkvi4W2KQ==
-X-Received: by 2002:aa7:d1c5:0:b0:46b:a536:e8d0 with SMTP id g5-20020aa7d1c5000000b0046ba536e8d0mr26487265edp.261.1670342673471;
-        Tue, 06 Dec 2022 08:04:33 -0800 (PST)
-Received: from skbuf ([188.26.184.215])
-        by smtp.gmail.com with ESMTPSA id gi20-20020a1709070c9400b0077d6f628e14sm7565992ejc.83.2022.12.06.08.04.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Dec 2022 08:04:33 -0800 (PST)
-Date: Tue, 6 Dec 2022 18:04:30 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>
-Subject: Re: [PATCH v4 net-next 0/9] dt-binding preparation for ocelot
- switches
-Message-ID: <20221206160430.4kiyrzrumcc6dp2g@skbuf>
-References: <20221202204559.162619-1-colin.foster@in-advantage.com>
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/ais45k9vzwCVRwJ6whVGyw5sNpBkvpT+u93PldECuY=;
+        b=suJXiGrofRE6mWtOQJ/izBQnwR+NF/1hV01M2HqFUTVDHeXQoE9L/r4ppPJ9soM8qc
+         MDVj7vLNx+l6fVyRRfLfRYCR3ZAMedvPPHxhpNWHHUibbJdFZxbE7wkfCIqMFK3PfoHz
+         /nuc+cGSd0uCis0gBa/YQXpU2iEBTqvMlpIv5qO4SX1E32xZqLg7803lOcZ6b0F6/lsQ
+         DgAF8Xxg0U91Y9dRLkITdbnnhA83kjCk0IDg+ib8vjAhKF8g96tkpNpTF5CgGucgTC54
+         NuR1g3EFmvLVUZFWssGG69g5FAjRNFjZjHPbTV3Z9JA8qZM9+R7BWQZ4vWCnrrswoopV
+         07+w==
+X-Gm-Message-State: ANoB5plkYvZUnGJ/qp4w04A/mb5BMay8C/1GECSO7e5Q8E5OCsrcEsB2
+	lOfp6WEgHYf1YZDdV+EUkDX29mSwMbI2Oh+g/h9ljQ==
+X-Google-Smtp-Source: AA0mqf7slrigjIb2YU0eOuwcUhtuWW55HhFXBRbOprBZ/PpE0rScnzOSK1B/21a3d6JGXEaZoNeytI+ZqJu+h+XBOmM=
+X-Received: by 2002:aca:de45:0:b0:354:58db:8639 with SMTP id
+ v66-20020acade45000000b0035458db8639mr32339713oig.152.1670343932030; Tue, 06
+ Dec 2022 08:25:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221202204559.162619-1-colin.foster@in-advantage.com>
+References: <20221129023401.278780-1-bero@baylibre.com> <CACRpkda75U=b50rK=WecNvaEoTdN2UzGyEwfPRaO6jG9FGyWhw@mail.gmail.com>
+In-Reply-To: <CACRpkda75U=b50rK=WecNvaEoTdN2UzGyEwfPRaO6jG9FGyWhw@mail.gmail.com>
+From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Date: Tue, 6 Dec 2022 17:25:21 +0100
+Message-ID: <CAP2ifjN-czBPKsm6o9U0Zx3dgau6bydFSrZmtwNJecSQu9VMzg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/7] Remove the pins-are-numbered DT property
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, mcoquelin.stm32@gmail.com, 
+	alexandre.torgue@foss.st.com, krzysztof.kozlowski@linaro.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	khilman@baylibre.com, linux-gpio@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_080437_345281_04084EDB 
-X-CRM114-Status: GOOD (  21.39  )
+X-CRM114-CacheID: sfid-20221206_082534_696986_889314CB 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,37 +88,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Colin,
+On Sat, Dec 3, 2022 at 10:22 AM Linus Walleij <linus.walleij@linaro.org> wrote:
+>
+> Hi Bero,
+>
+> long time no see!
 
-On Fri, Dec 02, 2022 at 12:45:50PM -0800, Colin Foster wrote:
-> Ocelot switches have the abilitiy to be used internally via
-> memory-mapped IO or externally via SPI or PCIe. This brings up issues
-> for documentation, where the same chip might be accessed internally in a
-> switchdev manner, or externally in a DSA configuration. This patch set
-> is perparation to bring DSA functionality to the VSC7512, utilizing as
-> much as possible with an almost identical VSC7514 chip.
-> 
-> This patch set changed quite a bit from v2, so I'll omit the background
-> of how those sets came to be. Rob offered a lot of very useful guidance.
-> My thanks.
-> 
-> At the end of the day, with this patch set, there should be a framework
-> to document Ocelot switches (and any switch) in scenarios where they can
-> be controlled internally (ethernet-switch) or externally (dsa-switch).
-> 
-> ---
+Hi Linus,
+indeed, I've been doing mostly userland stuff lately, and my latest
+kernel patch was x86 (got to keep all of my hardware working ;) ). Now
+that I've changed jobs, I'm expecting to be more active on the kernel
+side (though still doing a lot of userland).
 
-This looks like a very clean implementation of what I had in mind
-(better than I could have done it). Sorry for not being able to help
-with the json-schema bits and thanks to Rob for doing so.
+> > This patchset removes all uses of pins-are-numbered and marks the
+> > property as deprecated.
+>
+> I don't remember any more why this property was introduced, but
+> I am happy to see it go.
 
-Would you mind adding one more patch at the beginning of the series
-which syncs the maintainers from the DSA (and now also ethernet-switch)
-dt-bindings with the MAINTAINERS file? That would mean removing Vivien
-(see commit 6ce3df596be2 ("MAINTAINERS: Move Vivien to CREDITS")) and
-adding myself. This is in principle such that you don't carry around a
-not-up-to-date list of maintainers when adding new schemas.
+I couldn't find why it was introduced either (and git blame wasn't
+much help). I'm assuming there was some other mode in vendor trees
+that never made it into mainline (but the flag for switching between
+the modes did).
 
-I don't know if we could do something about maintainer entries in
-schemas not becoming out of date w.r.t. the MAINTAINERS file.
+> I applied patches 1-4 to the pin control tree for v6.2,
+> please funnel the rest through mediatek/stm32 and
+> SoC trees!
+
+Thanks! Remaining patches reposted and currently waiting.
+
+ttyl
+bero
 
