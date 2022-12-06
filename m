@@ -4,63 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6358C352A1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 21:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEB7C352A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 23:37:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1fZ+Nm1ZVezN1RXPdT9/whBqlUpozCto6FF44KKkJ4U=; b=Ol2U717JQKoZG2z/VtEn6YsWuI
-	YdCXlTkMEuMn0j04sZoPtwMO7xZt7zOPZ5/hLvvtWw1qZJZbnOZo/OS8lQssMd+0yLaoILENx0P4V
-	v4LCRnnUjggg7xq2Mear08ZGHwEO78ovXQSTQtfx+GhmbdAb1nDCPXvrPZCKwlX/oa4mn/53CNrsn
-	hlJ2f+VTmMUAa4rkZULw9VhuJtyyQt9T5zWEAGnAVUR5f7t+zBoU3VxGn7EWqVeKOcAbEHs+Ww6ya
-	CGpuulbb5LQbKGoHhtar81ggtqMLWDZNO0+bkc9VInVpvwPhTWvtdmOlRQMsHKvB0kR08Zg6QNa0A
-	PEvBp7vg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=; b=RkgEsOdqlZtWjW0ZT50zuccDHD
+	dsCtRqmINu1/uRZSVHhHaMiisKPf5IqQY2QVpj7/KApqW2OkyHZKlE0FeoIsaa+4pOYUv559EP0kA
+	XJ6UfCatoTn3b0n837RcyYqOXJNvRDb+GfLsaJmggKpVrwmxSX6F5nuKfXX36kgzKZqkFPJ/G29xH
+	HfdFDt43ho8OrEmWICAgPtDu5XVaKaQptqzr7vFFqP8EzkB60aMBzSLbAoJ5ZQLk+/unmRRN4SHVK
+	kURshywybh2HMIAp/8H0wSkRsTS+2vatJnIhl00hOSI2NDWOlCJRQxv31DbLujC6/6RUcuSxyd6av
+	kgYLdsNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2fKb-002lZI-B5; Tue, 06 Dec 2022 21:18:25 +0000
-Received: from mail-oi1-f180.google.com ([209.85.167.180])
+	id 1p2hUt-005Krv-Gc; Tue, 06 Dec 2022 23:37:11 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2fKP-002lPh-Hn; Tue, 06 Dec 2022 21:18:15 +0000
-Received: by mail-oi1-f180.google.com with SMTP id h132so18444260oif.2;
-        Tue, 06 Dec 2022 13:18:09 -0800 (PST)
+	id 1p2hUq-005Kgs-KW
+	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 23:37:10 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id z8-20020a17090abd8800b00219ed30ce47so5278553pjr.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Dec 2022 15:37:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=;
+        b=haGQ+FidVA17wTfx2NQ/Pqq/OpXe0/1Dzr59IUgqxAZNDk/WVBWDpcWJ3Z0fulUStb
+         c9584Lh0t96uOzS0fNsUaG3BeUFW/tFfU14Y5naNZYWEGRdecx0Ipv+sGXFNxH6hWuys
+         qqWvECLFxx4lkR87n0Itr+zaBfL1HXV8FGs7A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1fZ+Nm1ZVezN1RXPdT9/whBqlUpozCto6FF44KKkJ4U=;
-        b=mXvvS2gjLImUhfqd1NLcu4zXlO/YbgDuHIgfOPdq32sd57lDArLPkE+wMF1L/AfZ9s
-         BfyTtq5qoDtfN/DFWy6mLbsqGnPa8BK3Snf2Doq+qJ3RKlMjF75MVvqHNgXSYR5MM+g8
-         r/gK6t0svvYvlZjkS1MVsHK6wC0IYAVhqhN30CNGuU1aIm5bdWkW0SN446bcaBwHY1Po
-         DpcFtMrhje82WCwd3MdToqkKixdcLuhsUgo24EEttQGga0dhqWyRhvwwr5QUYRq2DGHw
-         gGPnIWUiLZ9nYskED4aFlERRpAEYCjY5v9NR9vUlYSrqEz5fJxRD2UhUGWH/Lv/mefBK
-         pZiw==
-X-Gm-Message-State: ANoB5pntcSwZs4SwRS2jY+uHIdmS26RQvvKwH/6bfj0WjVrM0DpBfbcv
-	YYdVkSkpn7WUnW3x7b30Lw==
-X-Google-Smtp-Source: AA0mqf7atIqgmcAEyNTqMz4+XRNR7PAGa4eH0oaBHkRZ2wsg8a4J/Infh7O0CnVxXkpR9sAsST1BwA==
-X-Received: by 2002:a05:6808:655:b0:35a:2e4b:4c44 with SMTP id z21-20020a056808065500b0035a2e4b4c44mr36172114oih.263.1670361488907;
-        Tue, 06 Dec 2022 13:18:08 -0800 (PST)
-Received: from robh_at_kernel.org ([4.31.143.193])
-        by smtp.gmail.com with ESMTPSA id ay19-20020a056808301300b00354b0850fb6sm8874803oib.33.2022.12.06.13.18.08
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=;
+        b=2miD4Yg3iK1TDrx9BXWZE3ud0wMOuho4c2jP2ME8bZT5Mu0M1ZWgiauBnHYPhNyb0o
+         KJiP0kQlkkgGXZD+QHApZiOUPt1cbidydUT89HamNR9q9e+nXJiCcuJ/9RKa0hqQ3ZpU
+         f3Sa4owWSl9ZYlAzDncUp672QAJA2mXtWbIlJn+Nh9iyl3vzPbdXN5rrHxx7OrD1KGLf
+         AYvzEVSz1++xfbMylLpubPV05x1WEdGHRZZepn9vP/0iUW14PGWRYftIMlBgcaJSpZKu
+         dV5RAtdH0ndVKMvobxKRqJbzu1hCgOf4tuwXbzSi4yut3CSEPVL0e+Kc1zqtfEsNHEc6
+         TbAQ==
+X-Gm-Message-State: ANoB5pnUhHwtDvv6C9H0QgZYTWUOI5mK2s4BeLj+3tG8OyajCfhLhBVl
+	xR8Nf5IGIi4FmWJZDPCyQlPCCw==
+X-Google-Smtp-Source: AA0mqf4q1OYKyKIO9N36w2rvWCO+pr3fDJLBXlCWFivm02RH39BnlErnrXEIOx2DhnvBhvDcTwOt7w==
+X-Received: by 2002:a17:90a:d383:b0:219:c8d3:c503 with SMTP id q3-20020a17090ad38300b00219c8d3c503mr14436340pju.65.1670369827082;
+        Tue, 06 Dec 2022 15:37:07 -0800 (PST)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+        by smtp.gmail.com with ESMTPSA id w10-20020a62820a000000b00574cf11aaf3sm12178022pfd.208.2022.12.06.15.37.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Dec 2022 13:18:08 -0800 (PST)
-Received: (nullmailer pid 94882 invoked by uid 1000);
-	Tue, 06 Dec 2022 21:18:07 -0000
-From: Rob Herring <robh@kernel.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>, Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Gene Chen <gene_chen@richtek.com>, Daniel Mack <zonque@gmail.com>
-Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: [PATCH] dt-bindings: Add missing 'unevaluatedProperties' to regulator nodes
-Date: Tue,  6 Dec 2022 15:15:55 -0600
-Message-Id: <20221206211554.92005-1-robh@kernel.org>
-X-Mailer: git-send-email 2.35.1
+        Tue, 06 Dec 2022 15:37:06 -0800 (PST)
+Date: Tue, 6 Dec 2022 15:37:05 -0800
+From: Kees Cook <keescook@chromium.org>
+To: Ryder Lee <Ryder.Lee@mediatek.com>
+Cc: Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	StanleyYP Wang =?utf-8?B?KOeOi+S+kemCpik=?= <StanleyYP.Wang@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	Howard-YH Hsu =?utf-8?B?KOioseiCsuixqik=?= <Howard-YH.Hsu@mediatek.com>,
+	"gustavo@embeddedor.com" <gustavo@embeddedor.com>,
+	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	Money Wang =?utf-8?B?KOeOi+S/oeWuiSk=?= <Money.Wang@mediatek.com>,
+	"linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>,
+	"nbd@nbd.name" <nbd@nbd.name>,
+	MeiChia Chiu =?utf-8?B?KOmCsee+juWYiSk=?= <MeiChia.Chiu@mediatek.com>,
+	"lorenzo@kernel.org" <lorenzo@kernel.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	Sean Wang <Sean.Wang@mediatek.com>,
+	"kvalo@kernel.org" <kvalo@kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>,
+	Chui-hao Chiu =?utf-8?B?KOmCseWegua1qSk=?= <Chui-hao.Chiu@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"linux-next@vger.kernel.org" <linux-next@vger.kernel.org>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>
+Subject: Re: Coverity: mt7996_hw_queue_read(): Integer handling issues
+Message-ID: <202212061535.5D3DA489FB@keescook>
+References: <202212021411.A5E618D3@keescook>
+ <786eff1a1751a5bc0dc68d6567be585b635bddb1.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <786eff1a1751a5bc0dc68d6567be585b635bddb1.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_131813_620679_8619904A 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20221206_153708_771463_3ACB8CB1 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,278 +112,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several regulator schemas are missing 'unevaluatedProperties' constraint
-which means any extra properties are allowed. Upon adding the
-constraint, there's numerous warnings from using the deprecated
-'regulator-compatible' property. Remove the usage as examples shouldn't
-be using long since deprecated properties.
+On Sat, Dec 03, 2022 at 04:40:09AM +0000, Ryder Lee wrote:
+> On Fri, 2022-12-02 at 14:11 -0800, coverity-bot wrote:
+> > Hello!
+> > 
+> > This is an experimental semi-automated report about issues detected
+> > by
+> > Coverity from a scan of next-20221202 as part of the linux-next scan
+> > project:
+> > 
+> https://urldefense.com/v3/__https://scan.coverity.com/projects/linux-next-weekly-scan__;!!CTRNKA9wMg0ARbw!jBOoj6LMqqA8E0AyjKQTa-0rVzcFiZ3BbpciEIn7so974kcMBeG4zZm-QU4AudLXY7-jNUSt0unzAt2zirSF$ 
+> >  
+> > 
+> > You're getting this email because you were associated with the
+> > identified
+> > lines of code (noted below) that were touched by commits:
+> > 
+> >   Thu Dec 1 17:29:14 2022 +0100
+> >     98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi
+> > 7 (802.11be) devices")
+> > 
+> > Coverity reported the following:
+> > 
+> > *** CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
+> > drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:460 in
+> > mt7996_hw_queue_read()
+> > 454     	for (i = 0; i < size; i++) {
+> > 455     		u32 ctrl, head, tail, queued;
+> > 456
+> > 457     		if (val & BIT(map[i].index))
+> > 458     			continue;
+> > 459
+> > vvv     CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
+> > vvv     Suspicious implicit sign extension: "map[i].qid" with type
+> > "u8" (8 bits, unsigned) is promoted in "map[i].qid << 24" to type
+> > "int" (32 bits, signed), then sign-extended to type "unsigned long"
+> > (64 bits, unsigned).  If "map[i].qid << 24" is greater than
+> > 0x7FFFFFFF, the upper bits of the result will all be 1.
+> > 460     		ctrl = BIT(31) | (map[i].pid << 10) |
+> > (map[i].qid << 24);
+> 
+> u32 ctrl = BIT(31) | (map[i].pid << 10) | (map[i].qid << 24);
+> 
+> Hmm ...where's type "int" (32 bits, signed) from?
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
-I'd suggest that Mark take this if that's okay with Lee. Or I can take 
-it.
+	map[i].qid is promoted to int before the "<< 24".
 
- Documentation/devicetree/bindings/mfd/max77650.yaml  |  2 --
- .../devicetree/bindings/mfd/mediatek,mt6360.yaml     |  9 ---------
- .../bindings/power/supply/mt6360_charger.yaml        |  2 +-
- .../bindings/regulator/max77650-regulator.yaml       |  1 +
- .../devicetree/bindings/regulator/max8660.yaml       |  6 +-----
- .../bindings/regulator/mt6360-regulator.yaml         | 12 +++---------
- 6 files changed, 6 insertions(+), 26 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/max77650.yaml b/Documentation/devicetree/bindings/mfd/max77650.yaml
-index b0a0f0d3d9d4..4181174fcf58 100644
---- a/Documentation/devicetree/bindings/mfd/max77650.yaml
-+++ b/Documentation/devicetree/bindings/mfd/max77650.yaml
-@@ -100,14 +100,12 @@ examples:
-                 compatible = "maxim,max77650-regulator";
- 
-                 max77650_ldo: regulator-ldo {
--                    regulator-compatible = "ldo";
-                     regulator-name = "max77650-ldo";
-                     regulator-min-microvolt = <1350000>;
-                     regulator-max-microvolt = <2937500>;
-                 };
- 
-                 max77650_sbb0: regulator-sbb0 {
--                    regulator-compatible = "sbb0";
-                     regulator-name = "max77650-sbb0";
-                     regulator-min-microvolt = <800000>;
-                     regulator-max-microvolt = <1587500>;
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-index 28eee02441ee..fb65abf30d57 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-@@ -83,7 +83,6 @@ examples:
-                 richtek,vinovp-microvolt = <14500000>;
- 
-                 otg_vbus_regulator: usb-otg-vbus-regulator {
--                    regulator-compatible = "usb-otg-vbus";
-                     regulator-name = "usb-otg-vbus";
-                     regulator-min-microvolt = <4425000>;
-                     regulator-max-microvolt = <5825000>;
-@@ -145,7 +144,6 @@ examples:
-                 compatible = "mediatek,mt6360-regulator";
-                 LDO_VIN3-supply = <&BUCK2>;
-                 buck1 {
--                    regulator-compatible = "BUCK1";
-                     regulator-name = "mt6360,buck1";
-                     regulator-min-microvolt = <300000>;
-                     regulator-max-microvolt = <1300000>;
-@@ -154,7 +152,6 @@ examples:
-                          MT6360_OPMODE_ULP>;
-                 };
-                 BUCK2: buck2 {
--                    regulator-compatible = "BUCK2";
-                     regulator-name = "mt6360,buck2";
-                     regulator-min-microvolt = <300000>;
-                     regulator-max-microvolt = <1300000>;
-@@ -163,7 +160,6 @@ examples:
-                          MT6360_OPMODE_ULP>;
-                 };
-                 ldo6 {
--                    regulator-compatible = "LDO6";
-                     regulator-name = "mt6360,ldo6";
-                     regulator-min-microvolt = <500000>;
-                     regulator-max-microvolt = <2100000>;
-@@ -171,7 +167,6 @@ examples:
-                          MT6360_OPMODE_LP>;
-                 };
-                 ldo7 {
--                    regulator-compatible = "LDO7";
-                     regulator-name = "mt6360,ldo7";
-                     regulator-min-microvolt = <500000>;
-                     regulator-max-microvolt = <2100000>;
-@@ -179,7 +174,6 @@ examples:
-                          MT6360_OPMODE_LP>;
-                 };
-                 ldo1 {
--                    regulator-compatible = "LDO1";
-                     regulator-name = "mt6360,ldo1";
-                     regulator-min-microvolt = <1200000>;
-                     regulator-max-microvolt = <3600000>;
-@@ -187,7 +181,6 @@ examples:
-                          MT6360_OPMODE_LP>;
-                 };
-                 ldo2 {
--                    regulator-compatible = "LDO2";
-                     regulator-name = "mt6360,ldo2";
-                     regulator-min-microvolt = <1200000>;
-                     regulator-max-microvolt = <3600000>;
-@@ -195,7 +188,6 @@ examples:
-                          MT6360_OPMODE_LP>;
-                 };
-                 ldo3 {
--                    regulator-compatible = "LDO3";
-                     regulator-name = "mt6360,ldo3";
-                     regulator-min-microvolt = <1200000>;
-                     regulator-max-microvolt = <3600000>;
-@@ -203,7 +195,6 @@ examples:
-                          MT6360_OPMODE_LP>;
-                 };
-                 ldo5 {
--                    regulator-compatible = "LDO5";
-                     regulator-name = "mt6360,ldo5";
-                     regulator-min-microvolt = <2700000>;
-                     regulator-max-microvolt = <3600000>;
-diff --git a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-index b89b15a5bfa4..4c74cc78729e 100644
---- a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-+++ b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-@@ -26,6 +26,7 @@ properties:
-     type: object
-     description: OTG boost regulator.
-     $ref: /schemas/regulator/regulator.yaml#
-+    unevaluatedProperties: false
- 
- required:
-   - compatible
-@@ -39,7 +40,6 @@ examples:
-       richtek,vinovp-microvolt = <14500000>;
- 
-       otg_vbus_regulator: usb-otg-vbus-regulator {
--        regulator-compatible = "usb-otg-vbus";
-         regulator-name = "usb-otg-vbus";
-         regulator-min-microvolt = <4425000>;
-         regulator-max-microvolt = <5825000>;
-diff --git a/Documentation/devicetree/bindings/regulator/max77650-regulator.yaml b/Documentation/devicetree/bindings/regulator/max77650-regulator.yaml
-index ce0a4021ae7f..01b9775a92d1 100644
---- a/Documentation/devicetree/bindings/regulator/max77650-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/max77650-regulator.yaml
-@@ -26,6 +26,7 @@ properties:
- patternProperties:
-   "^regulator-(ldo|sbb[0-2])$":
-     $ref: "regulator.yaml#"
-+    unevaluatedProperties: false
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/regulator/max8660.yaml b/Documentation/devicetree/bindings/regulator/max8660.yaml
-index 4d550ca396eb..35792a927b03 100644
---- a/Documentation/devicetree/bindings/regulator/max8660.yaml
-+++ b/Documentation/devicetree/bindings/regulator/max8660.yaml
-@@ -26,6 +26,7 @@ properties:
-     patternProperties:
-       "^regulator-.+$":
-         $ref: "regulator.yaml#"
-+        unevaluatedProperties: false
- 
-     additionalProperties: false
- 
-@@ -43,31 +44,26 @@ examples:
- 
-         regulators {
-           regulator-V3 {
--            regulator-compatible= "V3(DCDC)";
-             regulator-min-microvolt = <725000>;
-             regulator-max-microvolt = <1800000>;
-           };
- 
-           regulator-V4 {
--            regulator-compatible= "V4(DCDC)";
-             regulator-min-microvolt = <725000>;
-             regulator-max-microvolt = <1800000>;
-           };
- 
-           regulator-V5 {
--            regulator-compatible= "V5(LDO)";
-             regulator-min-microvolt = <1700000>;
-             regulator-max-microvolt = <2000000>;
-           };
- 
-           regulator-V6 {
--            regulator-compatible= "V6(LDO)";
-             regulator-min-microvolt = <1800000>;
-             regulator-max-microvolt = <3300000>;
-           };
- 
-           regulator-V7 {
--            regulator-compatible= "V7(LDO)";
-             regulator-min-microvolt = <1800000>;
-             regulator-max-microvolt = <3300000>;
-           };
-diff --git a/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
-index a462d99a25cc..8a0931dc2f30 100644
---- a/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
-@@ -27,9 +27,11 @@ properties:
- patternProperties:
-   "^buck[12]$":
-     $ref: "regulator.yaml#"
-+    unevaluatedProperties: false
- 
-   "^ldo[123567]$":
-     $ref: "regulator.yaml#"
-+    unevaluatedProperties: false
- 
- required:
-   - compatible
-@@ -44,7 +46,6 @@ examples:
-       compatible = "mediatek,mt6360-regulator";
-       LDO_VIN3-supply = <&BUCK2>;
-       buck1 {
--        regulator-compatible = "BUCK1";
-         regulator-name = "mt6360,buck1";
-         regulator-min-microvolt = <300000>;
-         regulator-max-microvolt = <1300000>;
-@@ -53,7 +54,6 @@ examples:
-              MT6360_OPMODE_ULP>;
-       };
-       BUCK2: buck2 {
--        regulator-compatible = "BUCK2";
-         regulator-name = "mt6360,buck2";
-         regulator-min-microvolt = <300000>;
-         regulator-max-microvolt = <1300000>;
-@@ -62,7 +62,6 @@ examples:
-              MT6360_OPMODE_ULP>;
-       };
-       ldo6 {
--        regulator-compatible = "LDO6";
-         regulator-name = "mt6360,ldo6";
-         regulator-min-microvolt = <500000>;
-         regulator-max-microvolt = <2100000>;
-@@ -70,7 +69,6 @@ examples:
-              MT6360_OPMODE_LP>;
-       };
-       ldo7 {
--        regulator-compatible = "LDO7";
-         regulator-name = "mt6360,ldo7";
-         regulator-min-microvolt = <500000>;
-         regulator-max-microvolt = <2100000>;
-@@ -78,15 +76,13 @@ examples:
-              MT6360_OPMODE_LP>;
-       };
-       ldo1 {
--        regulator-compatible = "LDO1";
-         regulator-name = "mt6360,ldo1";
-         regulator-min-microvolt = <1200000>;
-         regulator-max-microvolt = <3600000>;
-         regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-              MT6360_OPMODE_LP>;
-       };
--        ldo2 {
--        regulator-compatible = "LDO2";
-+      ldo2 {
-         regulator-name = "mt6360,ldo2";
-         regulator-min-microvolt = <1200000>;
-         regulator-max-microvolt = <3600000>;
-@@ -94,7 +90,6 @@ examples:
-              MT6360_OPMODE_LP>;
-       };
-       ldo3 {
--        regulator-compatible = "LDO3";
-         regulator-name = "mt6360,ldo3";
-         regulator-min-microvolt = <1200000>;
-         regulator-max-microvolt = <3600000>;
-@@ -102,7 +97,6 @@ examples:
-              MT6360_OPMODE_LP>;
-       };
-       ldo5 {
--        regulator-compatible = "LDO5";
-         regulator-name = "mt6360,ldo5";
-         regulator-min-microvolt = <2700000>;
-         regulator-max-microvolt = <3600000>;
 -- 
-2.35.1
-
+Kees Cook
 
