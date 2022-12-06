@@ -4,66 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB09C4708C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 11:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89FC9C352A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 11:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A+cs7EVShYZRFsgchwQW+s7LcvPR5pBLmkfaRdjbVBU=; b=sWTadgmkAuhgS7WakyX8WuVMXB
-	DFSbgahn4gxRiX/yNJBevKTRWENlMi25BOK2X++CmNBEG5urDFMfg7k4Y4ZkDD35L5hpOot9V7nGy
-	GGfwS3+Gbpej6P62tM81XLFopZQP70AgjpUFxSIxEbq35tpC+n/vHxKLoRLv8+1Ljskyr0R86slB6
-	J6p6pbIlS+SYyhNDuE6sXdfmepZ+PFOv2DW24yZkwU6+u5KtKDm+U2J1N9ByjrFiaJOFI/L4NbBFG
-	I8pXvj31hzisWU4rQKcSyM2LPta8QWbIhuI0P8L1Gfy2a8texax3BblDx1HJSNmIrydtuxXL5a8/x
-	ALtp3RHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+5A2iDXpWsc67vjuarly3xDRwF0seo40NASYg/VktNA=; b=GlFpcRpKn1bPlWeMXGxkGF4mu/
+	DxyFbbtRWwdfvEOWBc/w/g8yFvoRYHSs51/6SzmVbs+yELRknS2ePWvuYWOU+1GC9ni2rjcFZ0unY
+	su8cbMpb46MYOadC3lscmivEUrZAnxl1zIvhEaeqYVEB0uCQTXyCbvVBUb4d7rax5blg2oRTlRCiG
+	ug8sPcsGRg1jfkwXGaifSJl7xS+mIIFkWQ6cpPPXQgEmv61Y2o7hbBJGCd+t7XKpt6SaOkddIrW8p
+	2TtCBrlOKjm8z9kAztreHNVF/rQktcyrEKSdeLbT8E8pDel8gBjE82GqHfqnaRJEi9B0/2X7MZI3g
+	3LRMCX/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2W4z-008Pny-UY; Tue, 06 Dec 2022 11:25:41 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p2WD1-008Uuy-8o; Tue, 06 Dec 2022 11:33:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2W37-008O4E-Mz; Tue, 06 Dec 2022 11:23:47 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1p2WBh-008UNh-S4; Tue, 06 Dec 2022 11:32:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 542056602B80;
-	Tue,  6 Dec 2022 11:23:39 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670325819;
-	bh=h6nkSvmYgmO1NUiTtUIOSdVJ5+xRcYgOqZpZRIpVBIY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QsJHfqCoL4aa4oNImrCnUmK/JLhYSrigl9mN+TT4L5JgUPQHpzlP2EgvbQYxsqzbJ
-	 TOC+zgn4HqCJqttQYbJ11zYuh7KsmmPy7R/Mu3pQDuyDPo21XWyKIDZ13MntoIRR19
-	 R/Ex9pmZiOFE2hvmAuepWR4p95uCLbiIRuY6tjGc1mTL/0QtvZUXtrzy0Yvd1mdIK4
-	 gqJOsZabX5lOj5LeWfrc/+dqNN3N/kJnUBXIlzCkUEEOTijQZCKJjgA/PRbW3n/Lm0
-	 I/LXCul8tlaR1WObeBXbgonK0iS8Zl+YJUEIHyOjmeQA9Hz4ilVUhu0PekNfp45mu1
-	 vgNnjLd7cA4bQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	nfraprado@collabora.com,
-	kernel@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 5/5] arm64: dts: mt6795: Add complete CPU caches information
-Date: Tue,  6 Dec 2022 12:23:30 +0100
-Message-Id: <20221206112330.78431-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221206112330.78431-1-angelogioacchino.delregno@collabora.com>
-References: <20221206112330.78431-1-angelogioacchino.delregno@collabora.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3B6D561684;
+	Tue,  6 Dec 2022 11:32:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA8C0C433D7;
+	Tue,  6 Dec 2022 11:32:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670326356;
+	bh=hdx5lL3XQncm1TjSRW1x2q5YNuSGyRAzdS5G1zXDWa0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MlCsv/t8V2vpnGrUHCIF/11Qv8bxig4oDGbEjHnsMH+44I0TtBb7GXRE91SfRA5a3
+	 ou7qtIgP/6raAElyZw4FT5VG76+5E3yqvLTxbuhRTEGytjD9J8EFOBCsGPe3c05lQ3
+	 jS9wbc69MK1Ac9b2MjuPwbiERseowl5KynRV2kQW2wEzzXRyztK3+dRD2nJtMLZYBr
+	 005k27K09Tep8oPe2QP5kXlIOa46LvK7OMvxXiPw1vLVAyg0AhEXNtmFVRLDtABJtj
+	 eFiZQ+DEWnlWHwVXrA5q4EpRPWxGDNK3vetzu5XWoFS6ivnWl/Uyo++KBlHWmko5E0
+	 KNrpV6X3WTMuA==
+Date: Tue, 6 Dec 2022 12:32:27 +0100
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [next v7 0/8] Add BananaPi R3
+Message-ID: <Y48oS3+vR4Pv6izh@lpieralisi>
+References: <20221127114142.156573-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221127114142.156573-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_032345_939181_1ACADCDD 
-X-CRM114-Status: UNSURE (   6.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221206_033238_034931_F2AAF76F 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,143 +65,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This SoC's AP subsystem has 8x Cortex-A53 CPUs, specifically,
-four CPUs per cluster, with two CPU clusters.
+On Sun, Nov 27, 2022 at 12:41:34PM +0100, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> This Series adds some Nodes to mt7986 devicetree and the BananaPi R3
+> 
+> This version is rebased on linux next from 2022/11/27.
+> 
+> i included sams series for mt7986 DTS with small changes
+> https://patchwork.kernel.org/project/linux-mediatek/cover/20220427124741.18245->
+> 
+> i had run full dtbs-check but i end up with some strange warnings in
+> ethernet-node that should not come up as phy-handle and sfp/managed
+> properties are already defined. These errors also came up for mt7986a-rfb.
+> 
+> phy-handle made optional
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n265
+> 
+> property sfp/managed (which is included for mac subnode in yaml above):
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml#n137
+> 
+> changes:
+> v7:
+> - rebase on next so dropped already applied patches
+> - squashed overlay-patch into the bpi-r3 base support
+> - moved regulators from mmc-dts to common dtsi
+> - changed dtsi to dts (as board base dtb) and mmc-dts to overlays
+> - renamed overlays to dtso
+> - removed angelos RB because of changes in bpi-r3 patch
+> 
+> v6:
+> - dropped regulators from usb-patch as suggested by chunfeng yun
+> - moved 3v3 regulator to mmc-patch as it is needed for emmc to work
+>   rfbs were tested by sam shih, r3 by me
+> - dropped RB from AngeloGioacchino from mmc-patch due to this change
+> - fixed links in coverletter which were broken in v5
+> - i hope this series is sent without errors now (my mailprovider limited
+>   mails last 2 times while sending part 10)
+> 
+> v5:
+> - changed usb ranges/reg/unit-adress
+> - added reviewd-by's except usb-part due to changes
+> 
+> v4:
+> - dropped RFC prefix
+> - rebase on matthias' mtk dts-next (for 6.2) branch
+> - added author information to overlays
+> - fixed sfp binding error
+> - added fix for moving wed_pcie node
+> - readded missing compatible patches
+> 
+> v3:
+> - changed mmc pull-ups
+> - added patch for board binding (sent separately before)
+> - added pcie node in mt7986 (not yet again in r3)
+> - added dt overlays
+> 
+> Frank Wunderlich (5):
+>   dt-bindings: phy: mediatek,tphy: add support for mt7986
+>   dt-bindings: usb: mtk-xhci: add support for mt7986
+>   dt-bindings: PCI: mediatek-gen3: add SoC based clock config
+>   dt-bindings: PCI: mediatek-gen3: add support for mt7986
+>   arm64: dts: mt7986: add Bananapi R3
+> 
+> Sam Shih (3):
+>   arm64: dts: mt7986: add usb related device nodes
+>   arm64: dts: mt7986: add mmc related device nodes
+>   arm64: dts: mt7986: add pcie related device nodes
+> 
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      |  64 ++-
+>  .../bindings/phy/mediatek,tphy.yaml           |   1 +
+>  .../bindings/usb/mediatek,mtk-xhci.yaml       |   1 +
+>  arch/arm64/boot/dts/mediatek/Makefile         |   5 +
+>  .../mt7986a-bananapi-bpi-r3-emmc.dtso         |  30 ++
+>  .../mt7986a-bananapi-bpi-r3-nand.dtso         |  55 +++
+>  .../mediatek/mt7986a-bananapi-bpi-r3-nor.dtso |  68 +++
+>  .../mediatek/mt7986a-bananapi-bpi-r3-sd.dtso  |  24 +
+>  .../dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 448 ++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  | 120 +++++
+>  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 122 +++++
+>  arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |   8 +
+>  12 files changed, 934 insertions(+), 12 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
 
-Each CPU has:
- - A 32KB I-cache, 2-way set associative;
- - A 32KB D-cache, 4-way set associative.
+Should I pick up patches [3,4] into the PCI tree ?
 
-Each cluster has a unified 1MB L2 cache, 16-way set associative.
-
-With that in mind, add the appropriate properties needed to specify the
-caches information for this SoC, which will now be correctly exported
-to sysfs.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 50 ++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index bb575837e4ce..b3fc76d837a9 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -40,6 +40,12 @@ cpu1: cpu@1 {
- 			enable-method = "psci";
- 			reg = <0x001>;
- 			cci-control-port = <&cci_control2>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -49,6 +55,12 @@ cpu2: cpu@2 {
- 			enable-method = "psci";
- 			reg = <0x002>;
- 			cci-control-port = <&cci_control2>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -58,6 +70,12 @@ cpu3: cpu@3 {
- 			enable-method = "psci";
- 			reg = <0x003>;
- 			cci-control-port = <&cci_control2>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -67,6 +85,12 @@ cpu4: cpu@100 {
- 			enable-method = "psci";
- 			reg = <0x100>;
- 			cci-control-port = <&cci_control1>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -76,6 +100,12 @@ cpu5: cpu@101 {
- 			enable-method = "psci";
- 			reg = <0x101>;
- 			cci-control-port = <&cci_control1>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -85,6 +115,12 @@ cpu6: cpu@102 {
- 			enable-method = "psci";
- 			reg = <0x102>;
- 			cci-control-port = <&cci_control1>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -94,6 +130,12 @@ cpu7: cpu@103 {
- 			enable-method = "psci";
- 			reg = <0x103>;
- 			cci-control-port = <&cci_control1>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -138,11 +180,19 @@ core3 {
- 		l2_0: l2-cache0 {
- 			compatible = "cache";
- 			cache-level = <2>;
-+			cache-size = <1048576>;
-+			cache-line-size = <64>;
-+			cache-sets = <1024>;
-+			cache-unified;
- 		};
- 
- 		l2_1: l2-cache1 {
- 			compatible = "cache";
- 			cache-level = <2>;
-+			cache-size = <1048576>;
-+			cache-line-size = <64>;
-+			cache-sets = <1024>;
-+			cache-unified;
- 		};
- 	};
- 
--- 
-2.38.1
-
+Thanks,
+Lorenzo
 
