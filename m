@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF5EC3A5A7
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 08:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9532EC3A5A7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 08:56:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pMBKAZsNyID8AVZqGBc6LwP8oIiu6gYlH7ZEosFp90U=; b=wZj290eHYvtR/C2WYEE1qUMepE
-	GHNNRxy9YydwnioHTlEpLPffsZrBLG++pnJsU599czpJ6oVsDOHp3xJkKxA70q3A74t9Ltu8OcWMp
-	q2X5kAWQ250SuCfVyBhlHI8G7QBNITqPeXAlL2JjnXiuu5k+e7bEPg48PyG8V6/ZN5gVnBXmJ53ge
-	sPuoHQtx3pNYUwVgyxluo/TBzZavVQKtw9NQQpo/qlUc/gylGj9TS/eWTuNSkfEU/dFfB90vAdUg2
-	kxCK/R3q9g++2Bc/OQoKAAzWcq9aXAwQGiP+FaNnDIjHooOpXen4fuHV1fcjQwLgJbfb9iAOyediF
-	hsfh8B2g==;
+	bh=O1SeatHRNVCbxvLGNbY5gaOqfvsIu1kqmZgroe1ns1k=; b=XmBy/o5YIPDthtuVBnyxCi+M9Y
+	st06+Bur2ZsRGVVU+ZEf2bCDLIt0Sj4+3jX75/CN2wdc3lKzn3kxE2/L+TBSpCwOHGO+Avg9kduOy
+	g0SikZAPFherjR8/dlBHem+LmWOWHPopxpeWl10TITHhsxlEQ5OOIS+bv0ohRM2At++JH71n/d+ny
+	begeV0oAlaBbiTve6rGlCIpG4vmN4TqWRRzZsHdNfYPCWhIjbXzpjRNV9lnLpyT8tZQFNMTTVgm3r
+	Ap6sjQkb0DoxpaUNj8aDJkzp1yARJnaWvEm24sSePAsXBWPCFSTvZTqAIpOMkhTJmtlbX94SjZ8TX
+	DXDtNh3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2TJs-004ptM-49; Tue, 06 Dec 2022 08:28:52 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p2Tkv-005Kd5-VD; Tue, 06 Dec 2022 08:56:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2TJQ-004pZc-Go; Tue, 06 Dec 2022 08:28:26 +0000
+	id 1p2Tkj-005KL7-CZ; Tue, 06 Dec 2022 08:56:38 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ABB606602A07;
-	Tue,  6 Dec 2022 08:28:19 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0A7C16602395;
+	Tue,  6 Dec 2022 08:56:33 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670315300;
-	bh=CJWvdWCG3UFO2zCYQg9f+JXTw5Zuom1JWkEBupeaBNg=;
+	s=mail; t=1670316993;
+	bh=nmh+741Te48C4jhFLsKlSBYv13YZbBa8FduTkcMHUUs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jW/2pSOn+W99aXXAsBjsNQg7P0eX9KfqAybhFWZAYfIRV8DJIR9qy+6+7wUhjsakD
-	 gyq60uUYayeTcJCj+a10ztt2yMiHRehATYkW8ntYzYf8iHDal5HmDfBtxKI2nr1h8Z
-	 Iu+8wUaaaR6/M61k2nNhio55fQmvFeGNW3AtQaCABnlCMOLXusuIyUzWC6cRlr3M2A
-	 ESJ0fLMcCyqCkhaFGf/PvV2EuuoJ3pnNfNhiwTXFiGoMgcgO/U57Rt77oIEKpJPoUX
-	 VhyZTmRmdfL6dUdDIK7FmZs1eqwOXojZQ4B0q1E77/jW/QZyLIrRq/wgQ7NrQ43x50
-	 UTj6qENA3OQmA==
-Message-ID: <adc67800-beae-2f42-9cc7-5f041e390b61@collabora.com>
-Date: Tue, 6 Dec 2022 09:28:16 +0100
+	b=LkZDZWMdrTXhKeVBieD/5JS27LGYOtQfzc76kfdntdPkNfe48vn7artKC8e8lijIe
+	 7IjVFuREBZU+/VgbLMqQSOMyljYh/kPULjwFQaATrYOOJ0EJ7eOVyeO6/aZtKNn9bT
+	 l1QJ05UGU9bFRD5lEL3UnKOVPcO0qImoVtaDSxu8fXyqL8GsA7kVZdPJAut+F4O5iY
+	 OwoUhlXTsuaIuFGmy5qexUMJQ3f6ncXRgYYAtcC5jtek/j7Egx0pvCkEodXg0emKN5
+	 M85hbXe8m3sONkeeFcpNPOPJcFXfGPZKoANq5uPfcRFYbLe8ftqPxyMqgKcrYeE8L+
+	 7oLW5PEjK+lPQ==
+Message-ID: <b41bd5ed-bd95-90f0-1907-cd99a63b402b@collabora.com>
+Date: Tue, 6 Dec 2022 09:56:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH v2 1/2] thermal: mediatek: add support for MT7986 and
- MT7981
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Steven Liu <steven.liu@mediatek.com>, Henry Yen <Henry.Yen@mediatek.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>
-References: <Y4dYazyXF02eRGC5@makrotopia.org>
- <0b72a12c-286f-79d0-09e9-b1761530850a@collabora.com>
- <Y44tdASIQ2DpL9re@makrotopia.org>
+Subject: Re: [PATCH v5,1/3] media: dt-bindings: media: mediatek: vcodec: adapt
+ to the 'clock-names' of different platforms
 Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Y44tdASIQ2DpL9re@makrotopia.org>
+In-Reply-To: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_002824_839899_72D7DFD4 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20221206_005637_587265_3D7DFE7D 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,58 +82,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/12/22 18:42, Daniel Golle ha scritto:
-> Hi Angelo,
+Il 06/12/22 07:45, Yunfei Dong ha scritto:
+> mt8195 and mt8192 have different clock numbers, separate 'clock-names'
+> according to compatible name.
 > 
-> On Thu, Dec 01, 2022 at 02:24:17PM +0100, AngeloGioacchino Del Regno wrote:
->> Il 30/11/22 14:19, Daniel Golle ha scritto:
->>> Add support for V3 generation thermal found in MT7986 and MT7981 SoCs.
->>> Brings code to assign values from efuse as well as new function to
->>> convert raw temperature to millidegree celsius, as found in MediaTek's
->>> SDK sources (but cleaned up and de-duplicated)
->>>
->>> [1]: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/baf36c7eef477aae1f8f2653b6c29e2caf48475b
->>> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
->>> Reviewed-by: Henry Yen <henry.yen@mediatek.com>
->>> ---
->>> Changes since v1: Drop use of adc_oe field in efuse, Henry Yen confirmed
->>> its use has been dropped intentionally in MTK SDK as well.
->>>
->>>    drivers/thermal/mtk_thermal.c | 122 +++++++++++++++++++++++++++++++++-
->>>    1 file changed, 119 insertions(+), 3 deletions(-)
->>>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-...
-
->>
->> What about optimizing this with assigning a function pointer?
->> Like that, we wouldn't check any version in there... as in that case we'd
->> simply do something like
->>
->> temp = conf->raw_to_mcelsius(mt, conf->bank...blahblah...);
->>
->> ...and this would also mean that the snippet saying "the first read of a sensor
->> often contains very high bogus temperature value [...]" would get merged in the v2
->> of raw_to_mcelsius (as that function is used only in mtk_thermal_bank_temperature).
-> 
-> I found that Amjad Ouled-Ameur is taking care of converting that series
-> of if-else options into a function pointer allowing to easily call the
-> right raw_to_mcelsius function.
-> 
-> [PATCH v7 0/4] thermal: mediatek: Add support for MT8365 SoC
-> https://lore.kernel.org/linux-arm-kernel/4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org/T/
-> 
-> Should I wait until this series is merged and then submit support
-> for MT7986 thermal on top of that?
-> 
-
-Right - that may be sensible. Please coordinate with him, so that one of the two
-series actually depends on the other (and they don't conflict with each other).
-
-I've added him to the loop.
-
-Regards,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
