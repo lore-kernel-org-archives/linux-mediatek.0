@@ -4,100 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEB7C352A1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 23:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B475C3A5A7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 23:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=; b=RkgEsOdqlZtWjW0ZT50zuccDHD
-	dsCtRqmINu1/uRZSVHhHaMiisKPf5IqQY2QVpj7/KApqW2OkyHZKlE0FeoIsaa+4pOYUv559EP0kA
-	XJ6UfCatoTn3b0n837RcyYqOXJNvRDb+GfLsaJmggKpVrwmxSX6F5nuKfXX36kgzKZqkFPJ/G29xH
-	HfdFDt43ho8OrEmWICAgPtDu5XVaKaQptqzr7vFFqP8EzkB60aMBzSLbAoJ5ZQLk+/unmRRN4SHVK
-	kURshywybh2HMIAp/8H0wSkRsTS+2vatJnIhl00hOSI2NDWOlCJRQxv31DbLujC6/6RUcuSxyd6av
-	kgYLdsNA==;
+	bh=d5WCXO7KvCDAoh6UWurs+Lm5+kuicyHZGBvti2oBz7Y=; b=kZyaa+emRU52aZ8xF6Qy+t98lF
+	0gzM+fmpAreF3/4MNZAmM3RDzqk7QtFXvxcuUEMQm+IJcy93Q4tTyHQEh3BNdMPEETpBqc6afG4t5
+	QlUax8gldGXPe9YVzovRVwu05+joMAJCLRQxGzJtZgdLYU/njUo3jz2VYMC/hJ87Ws+1ysEOG3GIs
+	m7NLYrEq+gm/oP24QSWmMfc/gMqeyOrrS8zsGVV3hTpc2gUL7M2t8oyIeEVVkkGHHUn+GMmsB48nW
+	jz+bRSgJk6IeTXj0UvCTGhxsv66W+ch/P7LSnCINSd6wSwsYQkUEfTuM90SyBAKUspAswjrI9JcvW
+	QpK0g3zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2hUt-005Krv-Gc; Tue, 06 Dec 2022 23:37:11 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1p2hjq-005joJ-CR; Tue, 06 Dec 2022 23:52:38 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2hUq-005Kgs-KW
-	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 23:37:10 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id z8-20020a17090abd8800b00219ed30ce47so5278553pjr.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Dec 2022 15:37:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=;
-        b=haGQ+FidVA17wTfx2NQ/Pqq/OpXe0/1Dzr59IUgqxAZNDk/WVBWDpcWJ3Z0fulUStb
-         c9584Lh0t96uOzS0fNsUaG3BeUFW/tFfU14Y5naNZYWEGRdecx0Ipv+sGXFNxH6hWuys
-         qqWvECLFxx4lkR87n0Itr+zaBfL1HXV8FGs7A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=otCW253l7ot84a9vVRmiVoG+lIxgrQNkYbdDhCOtC9c=;
-        b=2miD4Yg3iK1TDrx9BXWZE3ud0wMOuho4c2jP2ME8bZT5Mu0M1ZWgiauBnHYPhNyb0o
-         KJiP0kQlkkgGXZD+QHApZiOUPt1cbidydUT89HamNR9q9e+nXJiCcuJ/9RKa0hqQ3ZpU
-         f3Sa4owWSl9ZYlAzDncUp672QAJA2mXtWbIlJn+Nh9iyl3vzPbdXN5rrHxx7OrD1KGLf
-         AYvzEVSz1++xfbMylLpubPV05x1WEdGHRZZepn9vP/0iUW14PGWRYftIMlBgcaJSpZKu
-         dV5RAtdH0ndVKMvobxKRqJbzu1hCgOf4tuwXbzSi4yut3CSEPVL0e+Kc1zqtfEsNHEc6
-         TbAQ==
-X-Gm-Message-State: ANoB5pnUhHwtDvv6C9H0QgZYTWUOI5mK2s4BeLj+3tG8OyajCfhLhBVl
-	xR8Nf5IGIi4FmWJZDPCyQlPCCw==
-X-Google-Smtp-Source: AA0mqf4q1OYKyKIO9N36w2rvWCO+pr3fDJLBXlCWFivm02RH39BnlErnrXEIOx2DhnvBhvDcTwOt7w==
-X-Received: by 2002:a17:90a:d383:b0:219:c8d3:c503 with SMTP id q3-20020a17090ad38300b00219c8d3c503mr14436340pju.65.1670369827082;
-        Tue, 06 Dec 2022 15:37:07 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
-        by smtp.gmail.com with ESMTPSA id w10-20020a62820a000000b00574cf11aaf3sm12178022pfd.208.2022.12.06.15.37.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Dec 2022 15:37:06 -0800 (PST)
-Date: Tue, 6 Dec 2022 15:37:05 -0800
-From: Kees Cook <keescook@chromium.org>
-To: Ryder Lee <Ryder.Lee@mediatek.com>
-Cc: Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	StanleyYP Wang =?utf-8?B?KOeOi+S+kemCpik=?= <StanleyYP.Wang@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Howard-YH Hsu =?utf-8?B?KOioseiCsuixqik=?= <Howard-YH.Hsu@mediatek.com>,
-	"gustavo@embeddedor.com" <gustavo@embeddedor.com>,
-	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-	Money Wang =?utf-8?B?KOeOi+S/oeWuiSk=?= <Money.Wang@mediatek.com>,
-	"linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>,
-	"nbd@nbd.name" <nbd@nbd.name>,
-	MeiChia Chiu =?utf-8?B?KOmCsee+juWYiSk=?= <MeiChia.Chiu@mediatek.com>,
-	"lorenzo@kernel.org" <lorenzo@kernel.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	Sean Wang <Sean.Wang@mediatek.com>,
-	"kvalo@kernel.org" <kvalo@kernel.org>,
-	"edumazet@google.com" <edumazet@google.com>,
-	Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>,
-	Chui-hao Chiu =?utf-8?B?KOmCseWegua1qSk=?= <Chui-hao.Chiu@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"linux-next@vger.kernel.org" <linux-next@vger.kernel.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>
-Subject: Re: Coverity: mt7996_hw_queue_read(): Integer handling issues
-Message-ID: <202212061535.5D3DA489FB@keescook>
-References: <202212021411.A5E618D3@keescook>
- <786eff1a1751a5bc0dc68d6567be585b635bddb1.camel@mediatek.com>
+	id 1p2hjn-005jhG-Fm
+	for linux-mediatek@lists.infradead.org; Tue, 06 Dec 2022 23:52:36 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1B0EDB81BA4;
+	Tue,  6 Dec 2022 23:52:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62C76C4347C;
+	Tue,  6 Dec 2022 23:52:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670370751;
+	bh=+7iMz5Ov6HdWwupKL/7aGdoMC453p3MLaqq2MFbXMj0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b7WXZg9pzzpUsN/MDiCdexUPTZPokYl+CfyEW3iZBEzC/FkwfEPzxwgdJsV637+U9
+	 oAxLkDwGZCLmEJXXXHxRTpr4niYmzT9cTaMieHg++m7tPS3IaXW++zaoldg9aDG1Pq
+	 HNdZtKLiraobVdgzT5cGj1qc6Z211lx863Yy/TKwk3kE/uJNO7jugVcRUPe0qv6IkI
+	 klWyEE/E+sg/bfeW/qNKus3x1H0qG873pwacTvNBfqYUcQIQbZqzxRux3226BRfydI
+	 sOQfT2V99Ip4LEs0qH6RGr7Vn2TWXn0KzcI4YILUetnXPbiAUOeMjx+N1qLbSFSemq
+	 A7AGRhw6/tdvA==
+Date: Wed, 7 Dec 2022 00:52:28 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Leon Romanovsky <leon@kernel.org>, netdev@vger.kernel.org, nbd@nbd.name,
+	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com
+Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: fix possible deadlock
+ if mtk_wed_wo_init fails
+Message-ID: <Y4/VvGi2d0/0RrRW@lore-desk>
+References: <a87f05e60ea1a94b571c9c87b69cc5b0e94943f2.1669999089.git.lorenzo@kernel.org>
+ <Y4ybbkn+nXkGsqWe@unreal>
+ <Y4y4If8XXu+wErIj@lore-desk>
+ <Y42d2us5Pv1UqhEj@unreal>
+ <Y420B4/IpwFHJAck@lore-desk>
+ <20221205174441.30741550@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="J2sYSVOsyacBCi4m"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <786eff1a1751a5bc0dc68d6567be585b635bddb1.camel@mediatek.com>
+In-Reply-To: <20221205174441.30741550@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_153708_771463_3ACB8CB1 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20221206_155235_719926_D8279C9E 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,52 +81,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 03, 2022 at 04:40:09AM +0000, Ryder Lee wrote:
-> On Fri, 2022-12-02 at 14:11 -0800, coverity-bot wrote:
-> > Hello!
-> > 
-> > This is an experimental semi-automated report about issues detected
-> > by
-> > Coverity from a scan of next-20221202 as part of the linux-next scan
-> > project:
-> > 
-> https://urldefense.com/v3/__https://scan.coverity.com/projects/linux-next-weekly-scan__;!!CTRNKA9wMg0ARbw!jBOoj6LMqqA8E0AyjKQTa-0rVzcFiZ3BbpciEIn7so974kcMBeG4zZm-QU4AudLXY7-jNUSt0unzAt2zirSF$ 
-> >  
-> > 
-> > You're getting this email because you were associated with the
-> > identified
-> > lines of code (noted below) that were touched by commits:
-> > 
-> >   Thu Dec 1 17:29:14 2022 +0100
-> >     98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi
-> > 7 (802.11be) devices")
-> > 
-> > Coverity reported the following:
-> > 
-> > *** CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
-> > drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c:460 in
-> > mt7996_hw_queue_read()
-> > 454     	for (i = 0; i < size; i++) {
-> > 455     		u32 ctrl, head, tail, queued;
-> > 456
-> > 457     		if (val & BIT(map[i].index))
-> > 458     			continue;
-> > 459
-> > vvv     CID 1527813:  Integer handling issues  (SIGN_EXTENSION)
-> > vvv     Suspicious implicit sign extension: "map[i].qid" with type
-> > "u8" (8 bits, unsigned) is promoted in "map[i].qid << 24" to type
-> > "int" (32 bits, signed), then sign-extended to type "unsigned long"
-> > (64 bits, unsigned).  If "map[i].qid << 24" is greater than
-> > 0x7FFFFFFF, the upper bits of the result will all be 1.
-> > 460     		ctrl = BIT(31) | (map[i].pid << 10) |
-> > (map[i].qid << 24);
-> 
-> u32 ctrl = BIT(31) | (map[i].pid << 10) | (map[i].qid << 24);
-> 
-> Hmm ...where's type "int" (32 bits, signed) from?
 
-	map[i].qid is promoted to int before the "<< 24".
+--J2sYSVOsyacBCi4m
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- 
-Kees Cook
+> > > IMHO, it is a culprit, proper error unwind means that you won't call =
+to
+> > > uninit functions for something that is not initialized yet. It is bet=
+ter
+> > > to fix it instead of adding "if (!wo) ..." checks. =20
+> >=20
+> > So, iiuc, you would prefer to do something like:
+> >=20
+> > __mtk_wed_detach()
+> > {
+> > 	...
+> > 	if (mtk_wed_get_rx_capa(dev) && wo) {
+> > 		mtk_wed_wo_reset(dev);
+> > 		mtk_wed_free_rx_rings(dev);
+> > 		mtk_wed_wo_deinit(hw);
+> > 	}
+> > 	...
+> > =09
+> > Right? I am fine both ways :)
+>=20
+> FWIW, that does seem slightly better to me as well.
+> Also - aren't you really fixing multiple issues here=20
+> (even if on the same error path)? The locking,=20
+> the null-checking and the change in mtk_wed_wo_reset()?
+
+wo NULL pointer issue was not hit before for the deadlock one (so I fixed t=
+hem
+in the same patch).
+Do you prefer to split them in two patches? (wo null pointer fix first).
+
+I have posted v2 addressing Leon's comments but I need to post a v3 to add
+missing WARN_ON.
+
+Regards,
+Lorenzo
+
+--J2sYSVOsyacBCi4m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY4/VvAAKCRA6cBh0uS2t
+rB8qAQDGVtf8g6SfAZiVQyyevkk8CtXG67JxqFxrzOOVD09TgwD/aoq4Xf1f56Au
+miGn63kIKOn4R4YaEKTgk/ZT0dMGtgA=
+=g4Hl
+-----END PGP SIGNATURE-----
+
+--J2sYSVOsyacBCi4m--
 
