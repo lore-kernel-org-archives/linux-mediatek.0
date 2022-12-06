@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0211C352A1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 07:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB120C352A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 07:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cr5Zs5cBIaAVrlM9snlYaXPA25Y+7yTCHfuXSnNyyIU=; b=NIFJvf5QX7dBDIF7Blv6ua4u7h
-	ifDmWaul61bYHYqrWM/zveexTt8OpbtoqfgB0iukNjDcJqoBVIyIQLjQMceyzbyWes6IxAZzAIkPv
-	jO8gs6n/kmTLH5v/f+2/pVOP8DMPPgUJZXu36P4uyp4rZuXG99iLtl86TDBaQ1kDpm9AZDQW2FWaw
-	ihUwMqdOLVsvUGmQaMpmJdDm6NSpCkl/ApnHh5aDicNGmicX1Eabo6/hy8zNnr1rNt37YvmjTeSYL
-	Y6WIyZ7vHjaxjBwacbPAELGV4430s9TQ449Bm8tujEJiMzdomi1JkCnZqR6d/RXUEdY2TVX9NtyWL
-	CTkBKTyg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Lj5CWXIGuLtBuhK0tZMR3SP8BZ3ZoFXyfgCI59Jl6HI=; b=dFV9PlsdcdZPHVemmOC8ZcWcMQ
+	hepdWM5R9JFkuAAEfRaLBA7PDlk3dHSjIy87fW+G325mmEbdzsqT0uuvW6oNuwTZRt83eHeh3EkbE
+	iDg1wKjP6B7YvTCesl17tkAYhj6/myegsxovrVvtlocg4yL6CKQ4C02FwETNGCrzYoshOks3ooaRi
+	dMJ4qZblFSBqVaQZeaqUp8ziZsCUKRM3ZmsXTK81L6XkNNrrf1D5V0hO7qluB0881q77FF+ludsVY
+	TgE36c/QUdg7CF5kgNzOoWd4km5xVAtqpySZLvLP+2Eb7qcoQSw3kT10Zoit98zvfl5642PD/b47n
+	LIvGEVaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2S23-003FEr-9N; Tue, 06 Dec 2022 07:06:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p2SBl-003RNA-TP; Tue, 06 Dec 2022 07:16:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2S1z-003F77-VO; Tue, 06 Dec 2022 07:06:21 +0000
-X-UUID: a97dfdf3d5e84d03b23d89d8fba0e0c2-20221206
+	id 1p2SBj-003RHo-89; Tue, 06 Dec 2022 07:16:24 +0000
+X-UUID: d26deebc8f9845708e4d1ba30dfcffdf-20221206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cr5Zs5cBIaAVrlM9snlYaXPA25Y+7yTCHfuXSnNyyIU=;
-	b=KvJLwr76ezhThRQNGF3awas9BbZSh6Mdp4R5xlPsiKoDOeTjtV0VXWETvc3M7Ggjsb15xtOmy4D4MyDDgDsm4LO05mI500fAXJxhhU1kvCrNHutnaOa/qvkPsVe4pQAxK7L2tpnsgYVYqkcPsgulHjfFnmtxsW/Mk/ty2Q77vco=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Lj5CWXIGuLtBuhK0tZMR3SP8BZ3ZoFXyfgCI59Jl6HI=;
+	b=PM/5qZLRt8SroTSQD6VzBBaC6NPWtuIZJzk1293H3v5sfkWwTI/uDLgL034X2SJIY2wazguHINeCwgrRuMbHVh1cqKxzqSbbzWA6JNxUl4kxDz5v0zUCKlUcyY2FfU30pKeU3Z3NKD9FExhoQfk1qmXHPhfL9hHfwVLblKT/7vY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:a9b9d17a-974b-47fd-9621-2bfd7d03dc6a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:16657024-4387-4253-a41d-4f6f2296b154,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:0dedfac5-5cfc-43fc-ad36-e099c5cfec6b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:f0baab16-b863-49f8-8228-cbdfeedd1fa4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a97dfdf3d5e84d03b23d89d8fba0e0c2-20221206
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: d26deebc8f9845708e4d1ba30dfcffdf-20221206
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1813309605; Tue, 06 Dec 2022 00:06:15 -0700
+	with ESMTP id 688749772; Tue, 06 Dec 2022 00:16:14 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 6 Dec 2022 14:45:40 +0800
+ 15.2.792.15; Tue, 6 Dec 2022 14:45:38 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 6 Dec 2022 14:45:38 +0800
+ Transport; Tue, 6 Dec 2022 14:45:37 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Rob Herring <robh@kernel.org>,
 	Chen-Yu Tsai <wenst@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -59,19 +59,17 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,2/3] media: dt-bindings: media: mediatek: vcodec: Change the max reg value to 2
-Date: Tue, 6 Dec 2022 14:45:35 +0800
-Message-ID: <20221206064536.16592-2-yunfei.dong@mediatek.com>
+Subject: [PATCH v5,1/3] media: dt-bindings: media: mediatek: vcodec: adapt to the 'clock-names' of different platforms
+Date: Tue, 6 Dec 2022 14:45:34 +0800
+Message-ID: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221206064536.16592-1-yunfei.dong@mediatek.com>
-References: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221205_230620_072228_12F782B4 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20221205_231623_309747_561BB97C 
+X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,42 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to add racing control register base in device node for mt8195 support
-inner racing mode. Changing the max reg value from 1 to 2.
-
-Adding the description for VDEC_SYS and VDEC_MISC.
+mt8195 and mt8192 have different clock numbers, separate 'clock-names'
+according to compatible name.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/media/mediatek,vcodec-subdev-decoder.yaml      | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+compared with v4:
+- change min clocks and clock-names from 1 to 4
+compared with v3:
+- rewrite clock-names according to different platforms.
+
+Reference series:
+[1]: v5 of this series is presend by Allen-KH Cheng.
+     message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
+---
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 41 ++++++++++++++++---
+ 1 file changed, 35 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index c56af1c1d9db..30917b66d62d 100644
+index 7c5b4a91c59b..c56af1c1d9db 100644
 --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
 +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -61,7 +61,10 @@ properties:
-       - mediatek,mt8195-vcodec-dec
+@@ -110,15 +110,12 @@ patternProperties:
+           Refer to bindings/iommu/mediatek,iommu.yaml.
  
-   reg:
--    maxItems: 1
-+    minItems: 1
-+    items:
-+      - description: VDEC_SYS register space
-+      - description: VDEC_RACING_CTRL register space
+       clocks:
++        minItems: 4
+         maxItems: 5
  
-   iommus:
-     minItems: 1
-@@ -98,6 +101,7 @@ patternProperties:
+       clock-names:
+-        items:
+-          - const: sel
+-          - const: soc-vdec
+-          - const: soc-lat
+-          - const: vdec
+-          - const: top
++        minItems: 4
++        maxItems: 5
  
-       reg:
+       assigned-clocks:
          maxItems: 1
-+        description: VDEC_MISC register space
+@@ -159,6 +156,38 @@ then:
+   required:
+     - interrupts
  
-       interrupts:
-         maxItems: 1
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8192-vcodec-dec
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: sel
++            - const: soc-vdec
++            - const: soc-lat
++            - const: vdec
++            - const: top
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8195-vcodec-dec
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: sel
++            - const: vdec
++            - const: lat
++            - const: top
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.18.0
 
