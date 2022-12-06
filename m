@@ -4,56 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89FC9C352A1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 11:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0DF0C4708E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Dec 2022 12:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+5A2iDXpWsc67vjuarly3xDRwF0seo40NASYg/VktNA=; b=GlFpcRpKn1bPlWeMXGxkGF4mu/
-	DxyFbbtRWwdfvEOWBc/w/g8yFvoRYHSs51/6SzmVbs+yELRknS2ePWvuYWOU+1GC9ni2rjcFZ0unY
-	su8cbMpb46MYOadC3lscmivEUrZAnxl1zIvhEaeqYVEB0uCQTXyCbvVBUb4d7rax5blg2oRTlRCiG
-	ug8sPcsGRg1jfkwXGaifSJl7xS+mIIFkWQ6cpPPXQgEmv61Y2o7hbBJGCd+t7XKpt6SaOkddIrW8p
-	2TtCBrlOKjm8z9kAztreHNVF/rQktcyrEKSdeLbT8E8pDel8gBjE82GqHfqnaRJEi9B0/2X7MZI3g
-	3LRMCX/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CMme1AvazOP/i2nnbk3Uh+9ByR3nyfXtTblTJYljqTk=; b=nRHkyTH+AeZ5ue7yAbHD5Yg8oL
+	cUYS+UtfmU+bxsff9cOsp7WHKQzb5ylM8laqmk7lZOKQ7Gac7OHH7zX2+fZgHPiSvFSOmFaYFWT+A
+	3DDhB98kI9uC7J36J7ksG5sLWHd5pQobBYJKTpmwj+YYHM5OXHJjzPTSynGYTIxDmgc35E1lC3D9S
+	hLbgEPN24FUnrR6UR5PQbctTBDIqr8iPEvTVo24VGGmpKjJ+jbgldtUoqtHe1EaLVbdtyqjJ3wG8l
+	8b10Z6L+DCr9XkYWiLTQACNx7c5CdT5CAWp+8zdEecA1C5/HdYtyz1dUOygrXVucFivWZXgiRHPqt
+	zWJPAvXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2WD1-008Uuy-8o; Tue, 06 Dec 2022 11:33:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p2Wvg-0091vf-O9; Tue, 06 Dec 2022 12:20:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2WBh-008UNh-S4; Tue, 06 Dec 2022 11:32:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1p2WvU-0091px-FX; Tue, 06 Dec 2022 12:19:58 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3B6D561684;
-	Tue,  6 Dec 2022 11:32:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA8C0C433D7;
-	Tue,  6 Dec 2022 11:32:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670326356;
-	bh=hdx5lL3XQncm1TjSRW1x2q5YNuSGyRAzdS5G1zXDWa0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MlCsv/t8V2vpnGrUHCIF/11Qv8bxig4oDGbEjHnsMH+44I0TtBb7GXRE91SfRA5a3
-	 ou7qtIgP/6raAElyZw4FT5VG76+5E3yqvLTxbuhRTEGytjD9J8EFOBCsGPe3c05lQ3
-	 jS9wbc69MK1Ac9b2MjuPwbiERseowl5KynRV2kQW2wEzzXRyztK3+dRD2nJtMLZYBr
-	 005k27K09Tep8oPe2QP5kXlIOa46LvK7OMvxXiPw1vLVAyg0AhEXNtmFVRLDtABJtj
-	 eFiZQ+DEWnlWHwVXrA5q4EpRPWxGDNK3vetzu5XWoFS6ivnWl/Uyo++KBlHWmko5E0
-	 KNrpV6X3WTMuA==
-Date: Tue, 6 Dec 2022 12:32:27 +0100
-From: Lorenzo Pieralisi <lpieralisi@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [next v7 0/8] Add BananaPi R3
-Message-ID: <Y48oS3+vR4Pv6izh@lpieralisi>
-References: <20221127114142.156573-1-linux@fw-web.de>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91C4A660035D;
+	Tue,  6 Dec 2022 12:19:53 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1670329194;
+	bh=l310F9lHcGhGvP4PuGtAy05tWbjB4PQoJ3xaWw36ABM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gttCpPDYm0hfTw/9o5b8PCwS0lR+0JzCaoDBMHOUWsCpuY1DQIz6ReUTPcpHKJnCk
+	 Etv1bSL67CKIoWAbqV8tdl520zDnCNEHZ5MfLI7LPHa2T0TQaVYH3Il3UmKg6PU1Yt
+	 +SZh2bw1HX+hvWvGjZ8zK6yi1EdGtpYBQI7WTZKzIzh1Q7TrvtZhxBwEFGZbijunJW
+	 JEfWxF7VXO1BOocXgHM8IjdVpHOdlfy0VdG6s4JcvVwDHs8AmCL2RENS3siV937e8f
+	 I8xkIxGm/+gcRYMox0bVcOz0FFD02COEr2s6tjgk9HidF8K2iH31MbnisDs5eLVohj
+	 Mc97lj4nNI3UA==
+Message-ID: <9992c9a5-059a-9396-32ce-7ed63cd12a96@collabora.com>
+Date: Tue, 6 Dec 2022 13:19:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221127114142.156573-1-linux@fw-web.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v2 7/9] dt-bindings: spi: mtk-snfi: Add read latch latency
+ property
+Content-Language: en-US
+To: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?=
+ <Xiangsheng.Hou@mediatek.com>,
+ "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "gch981213@gmail.com" <gch981213@gmail.com>,
+ "vigneshr@ti.com" <vigneshr@ti.com>, "richard@nod.at" <richard@nod.at>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?=
+ <Benliang.Zhao@mediatek.com>,
+ "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
+References: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
+ <20221205065756.26875-8-xiangsheng.hou@mediatek.com>
+ <ce449a0c-efcc-0ac1-fb8e-c2b4148a5bc1@collabora.com>
+ <a8f706b37f5decf91bfa9a9ac8cf04be4346dd85.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <a8f706b37f5decf91bfa9a9ac8cf04be4346dd85.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_033238_034931_F2AAF76F 
-X-CRM114-Status: GOOD (  23.03  )
+X-CRM114-CacheID: sfid-20221206_041956_673500_0A29F970 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,99 +90,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Jianjun Wang <jianjun.wang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 27, 2022 at 12:41:34PM +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Il 06/12/22 10:04, Xiangsheng Hou (侯祥胜) ha scritto:
+> Hi Angelo,
 > 
-> This Series adds some Nodes to mt7986 devicetree and the BananaPi R3
+> On Mon, 2022-12-05 at 15:21 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 05/12/22 07:57, Xiangsheng Hou ha scritto:
+>>> Add mediatek,rx-latch-latency property which adjust read delay in
+>>> the
+>>> unit of clock cycle.
+>>>
+>>> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+>>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>> ---
+>>>    .../devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml     | 7
+>>> +++++++
+>>>    1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
+>>> mtk-snfi.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
+>>> mtk-snfi.yaml
+>>> index bab23f1b11fd..6e6ff8d73fcd 100644
+>>> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-
+>>> snfi.yaml
+>>> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-
+>>> snfi.yaml
+>>> @@ -45,6 +45,13 @@ properties:
+>>>        description: device-tree node of the accompanying ECC engine.
+>>>        $ref: /schemas/types.yaml#/definitions/phandle
+>>>    
+>>> +  mediatek,rx-latch-latency:
+>>> +    description: Rx delay to sample data with this value, the
+>>> value
+>>> +                 unit is clock cycle.
+>>
+>> Can't we use nanoseconds or microseconds as a unit here, instead of
+>> clock cycles?
 > 
-> This version is rebased on linux next from 2022/11/27.
+> The clock cycle will be various with MediaTek SPI NAND controller which
+> clock frequency can support 26/52/68/81/104MHz...
+> It`s may be easy to configure and understand with clock cycle in unit.
 > 
-> i included sams series for mt7986 DTS with small changes
-> https://patchwork.kernel.org/project/linux-mediatek/cover/20220427124741.18245->
-> 
-> i had run full dtbs-check but i end up with some strange warnings in
-> ethernet-node that should not come up as phy-handle and sfp/managed
-> properties are already defined. These errors also came up for mt7986a-rfb.
-> 
-> phy-handle made optional
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n265
-> 
-> property sfp/managed (which is included for mac subnode in yaml above):
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml#n137
-> 
-> changes:
-> v7:
-> - rebase on next so dropped already applied patches
-> - squashed overlay-patch into the bpi-r3 base support
-> - moved regulators from mmc-dts to common dtsi
-> - changed dtsi to dts (as board base dtb) and mmc-dts to overlays
-> - renamed overlays to dtso
-> - removed angelos RB because of changes in bpi-r3 patch
-> 
-> v6:
-> - dropped regulators from usb-patch as suggested by chunfeng yun
-> - moved 3v3 regulator to mmc-patch as it is needed for emmc to work
->   rfbs were tested by sam shih, r3 by me
-> - dropped RB from AngeloGioacchino from mmc-patch due to this change
-> - fixed links in coverletter which were broken in v5
-> - i hope this series is sent without errors now (my mailprovider limited
->   mails last 2 times while sending part 10)
-> 
-> v5:
-> - changed usb ranges/reg/unit-adress
-> - added reviewd-by's except usb-part due to changes
-> 
-> v4:
-> - dropped RFC prefix
-> - rebase on matthias' mtk dts-next (for 6.2) branch
-> - added author information to overlays
-> - fixed sfp binding error
-> - added fix for moving wed_pcie node
-> - readded missing compatible patches
-> 
-> v3:
-> - changed mmc pull-ups
-> - added patch for board binding (sent separately before)
-> - added pcie node in mt7986 (not yet again in r3)
-> - added dt overlays
-> 
-> Frank Wunderlich (5):
->   dt-bindings: phy: mediatek,tphy: add support for mt7986
->   dt-bindings: usb: mtk-xhci: add support for mt7986
->   dt-bindings: PCI: mediatek-gen3: add SoC based clock config
->   dt-bindings: PCI: mediatek-gen3: add support for mt7986
->   arm64: dts: mt7986: add Bananapi R3
-> 
-> Sam Shih (3):
->   arm64: dts: mt7986: add usb related device nodes
->   arm64: dts: mt7986: add mmc related device nodes
->   arm64: dts: mt7986: add pcie related device nodes
-> 
->  .../bindings/pci/mediatek-pcie-gen3.yaml      |  64 ++-
->  .../bindings/phy/mediatek,tphy.yaml           |   1 +
->  .../bindings/usb/mediatek,mtk-xhci.yaml       |   1 +
->  arch/arm64/boot/dts/mediatek/Makefile         |   5 +
->  .../mt7986a-bananapi-bpi-r3-emmc.dtso         |  30 ++
->  .../mt7986a-bananapi-bpi-r3-nand.dtso         |  55 +++
->  .../mediatek/mt7986a-bananapi-bpi-r3-nor.dtso |  68 +++
->  .../mediatek/mt7986a-bananapi-bpi-r3-sd.dtso  |  24 +
->  .../dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 448 ++++++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  | 120 +++++
->  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 122 +++++
->  arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |   8 +
->  12 files changed, 934 insertions(+), 12 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
 
-Should I pick up patches [3,4] into the PCI tree ?
+Yes, but whatever clock frequency we use, the target is to always wait for
+X nanoseconds, right?
 
-Thanks,
-Lorenzo
+Waiting for 5 clock cycles at 104MHz is obviously not the same as waiting
+for the same 5 clock cycles at 26MHz: in that case, expressing the value
+in nanoseconds or microseconds would make that independent from the
+controller's clock frequency as the calculation from `time` to `cycles`
+would be performed inside of the driver.
+
+Regards,
+Angelo
+
 
