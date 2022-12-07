@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BE6C63705
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 12:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABBECC352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 13:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=; b=MfWI8eDHfUohFiey+YJ5Lah361
-	L6LT+sLknQGfonw6o6+nSZceH+dOD17ZKttd+6bEtrUn/4k1mbEdUfpLsjVtyq5lNtBTxbmFDtmNv
-	DZnyJ6Xvw4Y8jgGWGCtFGtZA+Dq9mLS/vkn2MSw4xZipuuNQzjna2BMW4lWQYgeeE8hvVUH6rbRfl
-	PIItG9wPIhO8S5PWxGSBcVL2EP9I7js0Jx8KtOR3x0zA86PFNPZUXoHpsPZIKQ07m9C+ouNqRPOzw
-	s9vNVZabP8gfu0wMvfuhPYOvytf0W32IEKuz4uaTd5DVgNvDcYyez76OqKSt0a6yFzxsqpkUaufCK
-	k5Yy1CxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NmO7lnNzHgyg/cXMrgR3KZFIHHZxhWuLKqfW27jJVco=; b=bdEJp1TmIbDUD2Dq49ojan8YPT
+	ai5Gsrwm6rH6haeCCN43zsISOVY1XJ0Al5RZP+OIEynWAazsV+k5H7ylezCmhZVLH/GduUBAbzPch
+	J+A5Kv2ZJL5LqwZg4zWEKjoMohAH/Pc5fx7UEkf3lm/iRN/fEme5/A5Ag6iExsGgL3NYX0j223qOT
+	LB6TMNwl7QJl7gRdIP7gcA1F8FidDVuS6Vp03hsgI0pI8ZdipHZ70gmdXVsr0iKOfekTTfpKwb3vE
+	fFavhEsQPEQnhyZhFNSWQ4NGgPaxq6iGUDd8yI14913N2pAsGTdJCa/5EWtRcCeqG/4zLt4S8Zmma
+	JVdkl8fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2tgw-002cHj-U0; Wed, 07 Dec 2022 12:38:26 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1p2uGH-003Cx2-B4; Wed, 07 Dec 2022 13:14:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2tgq-002c8R-F2
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 12:38:21 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id b13-20020a17090a5a0d00b0021906102d05so1477365pjd.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 04:38:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=;
-        b=xuBqyfYrIxMPliMMxj9qLT1fhkr0UNssZ2JAkE4gPRsJ1c4rGN7HxWSvW986Atd/sJ
-         V++hfviQym9GCbEkuz1lIYdDku4HB2BagxiLYSLJNK1M9P0vCilOQddqR2Kq/JH3iUs6
-         UsQIJgRf0bIRR4a6QsIBBVPPR81LKJiisgSpSCAOzcBXkw04YgoZAQcFGK5zpO6/sM29
-         tBhPFOWS1gJNRb9O2MX8SDZ69/ShdugXBRmiE1JZJeAXPQ7Pc/2Lsr3l21GNDqaAlp/y
-         +H2ltfbtGp9YRMIB612MAcqAdqay5VXUps3fBF+MIMccG4cGqFz0TqxssUffutrDSgid
-         cdtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=;
-        b=FzU3Eu5Cvs6HtHkZ3k053a9mRvCp/LRWIm6EkNmC6XyBrE5HekK2xNaYKlkSdJAm3W
-         VpWLs4y0Jda6O0nY6+VgxsdLeMiZZN01jISMIMGrd+MPyVqqsliJaXp3qV0nptMQ6t3o
-         rK1SRnPWdtzrIxswT0leUNCbcdklPrPIS6h9BDid7lamzG4gAQ4qwDhsJDyn+RFEjUpV
-         59bbaUcCjtaQVcbpqBVg8MGzPC+qDVDKKKerpEHzQUUmAO3Emx6Y5PpGH3frtb2R82H+
-         Ptl9FKApb9dYR4mb0RZCZr2hH3rzLoEfBFc7JXq9tCQnp9Mt3rrg9gwhHfk++pPAE8+i
-         0YQg==
-X-Gm-Message-State: ANoB5pl1J56hwRSro28p7x3H0quupLHh2tPJXp3WLv+Llag4rSWTaQSP
-	Xv1vzk5WxyhIvik3I6ZsJA/LdjTu1ggKRHXNVZH46ShHDFj9zA==
-X-Google-Smtp-Source: AA0mqf44UgY9jAl2a1r9HulFGS5OcYUHT0t6QPKBXloif6qmrZJgXEqWD8xyYbXw61aM0/2wMAArsQBA+kpWZCDbRJQ=
-X-Received: by 2002:a17:902:ee01:b0:189:e089:5d51 with SMTP id
- z1-20020a170902ee0100b00189e0895d51mr10894703plb.165.1670416696083; Wed, 07
- Dec 2022 04:38:16 -0800 (PST)
+	id 1p2uG5-003CS6-B7; Wed, 07 Dec 2022 13:14:47 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 506866602BB7;
+	Wed,  7 Dec 2022 13:14:37 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1670418877;
+	bh=2iUfgOK9j8JufH6QlNBq2XRKpukh2AkY3nVEXgGhlWE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TqKlv2bzUiItBhcMPlYg9Y/MiW73qhm60Mz8M6aGnOoUdpt3YJwRrFMh7ysvary1f
+	 ryypqtp53Zo1Tq/p6NqPGyIqp50S3K0M+pylKbSR2XmdlbAAt59VfEMJu/m+IwHynO
+	 f8xzGfooisrc/g8fS4sKS0steGxabUu7T+NueW2L4IdirRDMqFYqESIBvfzshDd3Ap
+	 ZxSDAOY7hr6cVsmwiW3fuA1XsDybPGhX2mHnA4JawqhhPT9Y2UZSAiv4ccXOkAsuck
+	 eNPzTDoBkwUXcvmPSwe1wQk8ZHttYPKtMnBVGDjQQc00ybJLfoEgZJBXJbBk8JVnVI
+	 uEOHa+XFzyg7w==
+Message-ID: <1829bd00-4d6c-d49e-9251-e5f42bc40525@collabora.com>
+Date: Wed, 7 Dec 2022 14:14:34 +0100
 MIME-Version: 1.0
-References: <87dc45b122d26d63c80532976813c9365d7160b3.1670140888.git.deren.wu@mediatek.com>
-In-Reply-To: <87dc45b122d26d63c80532976813c9365d7160b3.1670140888.git.deren.wu@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 7 Dec 2022 13:37:40 +0100
-Message-ID: <CAPDyKFo-cU1RD1kBR+EsuAdFyJ8HmhdqZukMWJVjrHF_91qZwA@mail.gmail.com>
-Subject: Re: [PATCH] mmc: vub300: fix warning - do not call blocking ops when !TASK_RUNNING
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: linux-mmc <linux-mmc@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v6 1/3] media: dt-bindings: media: mediatek: Rename child
+ node names for decoder
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, yunfei.dong@mediatek.com
+References: <20221207055107.11333-1-allen-kh.cheng@mediatek.com>
+ <20221207055107.11333-2-allen-kh.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221207055107.11333-2-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_043820_523471_2F4701FB 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20221207_051445_556330_FA820485 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +81,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 4 Dec 2022 at 09:27, Deren Wu <deren.wu@mediatek.com> wrote:
->
-> vub300_enable_sdio_irq() works with mutex and need TASK_RUNNING here.
-> Ensure that we mark current as TASK_RUNNING for sleepable context.
->
-> [   77.554641] do not call blocking ops when !TASK_RUNNING; state=1 set at [<ffffffff92a72c1d>] sdio_irq_thread+0x17d/0x5b0
-> [   77.554652] WARNING: CPU: 2 PID: 1983 at kernel/sched/core.c:9813 __might_sleep+0x116/0x160
-> [   77.554905] CPU: 2 PID: 1983 Comm: ksdioirqd/mmc1 Tainted: G           OE      6.1.0-rc5 #1
-> [   77.554910] Hardware name: Intel(R) Client Systems NUC8i7BEH/NUC8BEB, BIOS BECFL357.86A.0081.2020.0504.1834 05/04/2020
-> [   77.554912] RIP: 0010:__might_sleep+0x116/0x160
-> [   77.554920] RSP: 0018:ffff888107b7fdb8 EFLAGS: 00010282
-> [   77.554923] RAX: 0000000000000000 RBX: ffff888118c1b740 RCX: 0000000000000000
-> [   77.554926] RDX: 0000000000000001 RSI: 0000000000000004 RDI: ffffed1020f6ffa9
-> [   77.554928] RBP: ffff888107b7fde0 R08: 0000000000000001 R09: ffffed1043ea60ba
-> [   77.554930] R10: ffff88821f5305cb R11: ffffed1043ea60b9 R12: ffffffff93aa3a60
-> [   77.554932] R13: 000000000000011b R14: 7fffffffffffffff R15: ffffffffc0558660
-> [   77.554934] FS:  0000000000000000(0000) GS:ffff88821f500000(0000) knlGS:0000000000000000
-> [   77.554937] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [   77.554939] CR2: 00007f8a44010d68 CR3: 000000024421a003 CR4: 00000000003706e0
-> [   77.554942] Call Trace:
-> [   77.554944]  <TASK>
-> [   77.554952]  mutex_lock+0x78/0xf0
-> [   77.554973]  vub300_enable_sdio_irq+0x103/0x3c0 [vub300]
-> [   77.554981]  sdio_irq_thread+0x25c/0x5b0
-> [   77.555006]  kthread+0x2b8/0x370
-> [   77.555017]  ret_from_fork+0x1f/0x30
-> [   77.555023]  </TASK>
-> [   77.555025] ---[ end trace 0000000000000000 ]---
->
-> Fixes: 88095e7b473a ("mmc: Add new VUB300 USB-to-SD/SDIO/MMC driver")
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Il 07/12/22 06:51, Allen-KH Cheng ha scritto:
+> In order to make the names of the child nodes more generic, we rename
+> "vcodec-lat" and "vcodec-core" to "video-codec" for decoder in
+> patternProperties and example.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Ideally this driver should be converted to use the sdio_signal_irq()
-interface and thus move away from the legacy mmc_signal_sdio_irq()
-interface. However, as a fix for stable kernels, this looks good to
-me!
-
-So, applied for next and by adding a stable tag, thanks!
-
-Kind regards
-Uffe
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-> ---
->  drivers/mmc/host/vub300.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/mmc/host/vub300.c b/drivers/mmc/host/vub300.c
-> index 97beece62fec..b58a1a869ed8 100644
-> --- a/drivers/mmc/host/vub300.c
-> +++ b/drivers/mmc/host/vub300.c
-> @@ -2049,6 +2049,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
->                 return;
->         kref_get(&vub300->kref);
->         if (enable) {
-> +               set_current_state(TASK_RUNNING);
->                 mutex_lock(&vub300->irq_mutex);
->                 if (vub300->irqs_queued) {
->                         vub300->irqs_queued -= 1;
-> @@ -2064,6 +2065,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
->                         vub300_queue_poll_work(vub300, 0);
->                 }
->                 mutex_unlock(&vub300->irq_mutex);
-> +               set_current_state(TASK_INTERRUPTIBLE);
->         } else {
->                 vub300->irq_enabled = 0;
->         }
-> --
-> 2.18.0
->
 
