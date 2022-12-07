@@ -4,173 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11694C352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 09:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E51DC4708E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 09:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2p61UMh/SbjMcq1OEp4FgMt7FSlXQQDCdbRB66yksWc=; b=KqxUkxypxeSZ+cC5hlzFNXjTnH
-	wbV8TQnPVzGJ1brJIhzCINViKrm/flmCm3/w77CQgw+9qWlNA0F2W+QE662gEM5m2zH3nD4YgsA8k
-	rhsBjb6ax56YbbpI2axhLCpgZbwoYceG6McXpaeDWTOOLogazjuv5+SKwQa6OoVWNWLInsrAffFMs
-	KEwVhNhkO9nAuz23mRFAxxeeu7nB4CIB8cq2y+6KQ+CLRwGpPboqp7McH0WhanjqvgABaHMS3HXOT
-	gaMT/lFooPRv0O4lpqVyOFBnS+gm8oe2rpf/K168fvffpA6X3jC9nkWOBTRs7YmMHbzMAW4sW/tZz
-	/w9VBWZQ==;
+	bh=ZSOWUXOh2fSugvH+FPWxgchBdXY+8Pwr+80JI6eSrkM=; b=wJMLmQMEyLwN7KL2ZTBynaqEoK
+	5OqxRpLrV1iRwQtqAxxZJwm9dqMjaYAK4UYDatzG7PMTskft+UdxO/5hPvnS8EwQh5U3tpTL1+wMW
+	gm1xApZHE21MkWLoaj8oHdW5RzUysBx/OuYXLGoJdHSfMDIr/5VjRXIdxEN8z6m9JKN+iKpcL6wpw
+	hnkr4xz9tNdOfjKEV8JYxxr8sbneVjrES7RBpPEgAfD6P9QW1naztFtNVdMXLjVDZxY6nbSBRqJX+
+	ma5CVFLrTCfrqV7i6xvk7qchcxugjmaLK1EJ93iaNubU1T16jR/X4vD1gDHNOwF0TP1u3Tk/cFQt6
+	nSj7gbAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2qg7-00G575-DK; Wed, 07 Dec 2022 09:25:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p2qpt-00GFz2-5A; Wed, 07 Dec 2022 09:35:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2qft-00G4ot-Ep; Wed, 07 Dec 2022 09:25:12 +0000
-X-UUID: 83d79252294b4487b7e55b17cf590f17-20221207
+	id 1p2qpo-00GFjV-17; Wed, 07 Dec 2022 09:35:27 +0000
+X-UUID: 8e780e7cfc544cf68a3ee52b614ebee2-20221207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=2p61UMh/SbjMcq1OEp4FgMt7FSlXQQDCdbRB66yksWc=;
-	b=eV/502OCXNsVjYk2jUC+uMJOOCDsjSuh1/1FD529ICQ+eGAQ25J0b/UoLAYtkZq/xRzvuXv3wDAREXV3DMVeCsmZ9LHfMiRyYSR2V8yhE1aSPbDu+mn3MMfuf/JybC1TyKDTz++w5tmLs1coRDH7PL2aiwcXSj/wG+UuOw5oy/I=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZSOWUXOh2fSugvH+FPWxgchBdXY+8Pwr+80JI6eSrkM=;
+	b=k55x6qOwDpgsEMAVelTrQ6RZNfjaNNDjRI2js0npEL1GQcQEbu8BEadIR3o0ROs8oNiEHnXQf3tMvjH3oq3jr2wkOPXYq3mr4XmsHI1kTFSCUmwOAHOGVWPrHdRujcW+TMQxGfVZcwl6F1JYiGvzQPRos/rXK3xeJC9oiBI+Tkc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:73bc09d9-2893-46d3-a442-97dc2ad75350,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-INFO: VERSION:1.1.14,REQID:73bc09d9-2893-46d3-a442-97dc2ad75350,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:4753cd16-b863-49f8-8228-cbdfeedd1fa4,B
-	ulkID:221207172427WS0P2UHG,BulkQuantity:3,Recheck:0,SF:17|19|102,TC:nil,Co
-	ntent:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: 83d79252294b4487b7e55b17cf590f17-20221207
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <mason.zhang@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.14,REQID:ee4be8ce-aa91-42a2-aedb-5d2ab756a9e0,IP:0,U
+	RL:0,TC:0,Content:28,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:28
+X-CID-META: VersionHash:dcaaed0,CLOUDID:516ae7d1-652d-43fd-a13a-a5dd3c69a43d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 8e780e7cfc544cf68a3ee52b614ebee2-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 781479788; Wed, 07 Dec 2022 02:25:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 759210470; Wed, 07 Dec 2022 02:35:19 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 7 Dec 2022 17:24:25 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 7 Dec 2022 17:24:25 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DKeGELITH4VLhborFZbnIauWbpA8g6Ur3+1X774ssAPRukPablrze1FwJZ4HCPIbgQTRJ21ga3CMD0Zkl7uzs8Xyyr04VCjUxN8RFTNNcy4ErQ2jT28fibMzxWwQ1DCH5uQvRBw956CdZkJm5aJMCCjlEeGNjoU7mMSRPywEnOok1z4EaDl018PMVrJIasSTsuuLHLh9g/KBSquVU9Fu5C9IrV5wnXLNOYjzWQumUPC1lBw7Cj/x+IN2i8zAUShPXUbjX6hlLsh8O71AdkMWhVQlejupn//DrBKGcHzTwx8soktkR1tGi3yGZYStKX4nFixcQSELUzLZt4omLZ29Yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2p61UMh/SbjMcq1OEp4FgMt7FSlXQQDCdbRB66yksWc=;
- b=TCqsD406MZTm3wL5PT8RjNkTn15Qwz7SLBVbSNwN4hlZLdyVdQYS9Vb89zoKos1qTTJyYwTh3iK4qKyk3MHCaxXZ2KFEJnei9iQ2IrQ8d0gBGO+Jd520x0/++j+jOe6dge60eB4F4ZrkNEb8L6+wdnaQ4P+w1RpQ7L/ADGUh9X4npGMXYI8hg+e03p5llLidQOECxvd9kBWt2zU017DYWJxO3qkq1GfeqLSJ8c0YYvlPXcUbuVfy8T0QOXOO7x2FLuCHYDnm2qFTHw/GmBexsU/GeQP8qgujkCLpYpXrHttLxwyCgXgCNkzPLm/jUOyKLND+v+Jx8XEWqKgVVcq8dg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2p61UMh/SbjMcq1OEp4FgMt7FSlXQQDCdbRB66yksWc=;
- b=nBBapxRGEWw/a4/HKnahBBpjRGScDaP338VATyHO90g57rhdSqx8PGR/VrQx3JPZ/91rBnyMoo2thNgYy/n7Hl0wn5728tTJUlOiRLylXQm+55gaTe9qceQu1pp9P06hGqmLwUw7N6R0yKhcvgs2+rLSbehFACyxkXGCplM3Kww=
-Received: from PSAPR03MB5494.apcprd03.prod.outlook.com (2603:1096:301:77::13)
- by SI2PR03MB6784.apcprd03.prod.outlook.com (2603:1096:4:1ed::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.14; Wed, 7 Dec
- 2022 09:24:20 +0000
-Received: from PSAPR03MB5494.apcprd03.prod.outlook.com
- ([fe80::f5bf:e3ab:e51c:c276]) by PSAPR03MB5494.apcprd03.prod.outlook.com
- ([fe80::f5bf:e3ab:e51c:c276%5]) with mapi id 15.20.5880.013; Wed, 7 Dec 2022
- 09:24:20 +0000
-From: =?utf-8?B?TWFzb24gWmhhbmcgKOeroOi+iSk=?= <Mason.Zhang@mediatek.com>
-To: "quic_asutoshd@quicinc.com" <quic_asutoshd@quicinc.com>
-CC: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, wsd_upstream
-	<wsd_upstream@mediatek.com>, "beanhuo@micron.com" <beanhuo@micron.com>,
-	"avri.altman@wdc.com" <avri.altman@wdc.com>, "bvanassche@acm.org"
-	<bvanassche@acm.org>, "j-young.choi@samsung.com" <j-young.choi@samsung.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	=?utf-8?B?UGVuZyBaaG91ICjlkajpuY8p?= <Peng.Zhou@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/1] scsi: ufs: core: fix device management cmd timeout
- flow
-Thread-Topic: [PATCH v2 1/1] scsi: ufs: core: fix device management cmd
- timeout flow
-Thread-Index: AQHZCExEKkLI5oxz602f0jL0nxwQEK5ftScAgAJysgA=
-Date: Wed, 7 Dec 2022 09:24:19 +0000
-Message-ID: <5be85d35baab205d236652b4edae6cacf658a669.camel@mediatek.com>
-References: <20221205014202.2672-1-mason.zhang@mediatek.com>
-	 <20221205195050.GA15334@asutoshd-linux1.qualcomm.com>
-In-Reply-To: <20221205195050.GA15334@asutoshd-linux1.qualcomm.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5494:EE_|SI2PR03MB6784:EE_
-x-ms-office365-filtering-correlation-id: 4082e078-66f7-4578-c59f-08dad834d219
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FvmBRtltRxyNDcJ0Zhf5EctQ+28Vvc6g6tZUYUIqb+KCLdUG1JgG1CghuVBI0vdYPcYOuo9S5LXAI2GgrX9kqJ0MKbJ4CzomD/7mCdPUWZbB/I9GJOO5sLBD+9gpc5gI/F47zEiSa2SgwO94NtuhQuYnX5btm6XXZVP71MFNoX6qGAaKCZYm8e5jt38QJThZU3oXiXktDHuiPDFLlEslWHGUTYxHZleBA7SJN3Ecj4lcSYEgU68fkZ5g1d8N/52OcTaJEKuEQkO/yBvGyKQYjoBgou9kxojoeyp42YPEMisfXdigxgElkPK1MfO6GAaW2HXusmeAqJwoGOoQF1y52E0M3dGhENMMfuhP1VHF+pnuv2clR7xRpwnrWL96JBzVmYvfTLCk6i5NlqxDzC5YOMpNSAbHwqFcq8K+iL+L/qQJMG+jJKHyqO0sIC7t2dYU5VCBFNWb6hfaw4YuJJ+snShYVWTxcMkoPqY1xLIKIo6nBnzoTDyJ8PKiVgQHt7a0iwsX4y9wuI8ITbW+kCCXGz2M3wFY3hGa16rg9in+3dqG35INC2SJWP3pdJDM07/h9/kh6XnIPysBimdp75mVPPZta5TTDqjeYbJXTVXjFXsTj4IyS9RYcjSqYhgoPakKCR6w4B7ghw2ixY1tCGlMB+vnG5Qz73VS9M3H2SwKs1SE5OgyCS0tIZcQL/CDIrr14eYYeWzc3pP8ul78GW9mzERP2Gu1wQqx+mYZ9zKunZA09nbN3kUA6D8NiRr+YpBF
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5494.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(136003)(366004)(396003)(376002)(346002)(39860400002)(451199015)(85182001)(38070700005)(6486002)(36756003)(86362001)(38100700002)(54906003)(6916009)(316002)(478600001)(5660300002)(71200400001)(7416002)(2906002)(91956017)(66446008)(64756008)(66476007)(4326008)(8676002)(66556008)(41300700001)(76116006)(8936002)(66946007)(83380400001)(122000001)(186003)(6506007)(6512007)(26005)(2616005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QkNVTDE2NmlJZjdaelRUNHptNklhUFpCYVpoRHFrVzFtN1pkY1pEWGVIKzY2?=
- =?utf-8?B?WHFQcnBBYVRydWlqeWlCemxvNWNCc0hVSkptS1RaaW5Ga1lGR1c0dGhzZ3Vq?=
- =?utf-8?B?bDg0dXNiM01TME5TY3dBUDFIYlEzODhwWnl0c3NDN25kTEpCYmg1bHZFemFr?=
- =?utf-8?B?c1pYOHltWkZrakVYdkRBVm9oeFV0YmxWRCtBYkZKRWdUVGpDc1Fhd3hELzlW?=
- =?utf-8?B?cFhCOXp3VjF5QXl4akNNelpsbFJsU0Y1TWZ4aEMxdmJYYmxzdDlMOXlHVlBQ?=
- =?utf-8?B?aEZIb2w4RUNNMEdoQndUOUJpV2x4dnErSG4yZVJoZGEvWnNOd3VMR0Rub09y?=
- =?utf-8?B?eWpzc3hPMWxZMHlVc3BYYVNwZ2JvbEl1V281VE5SMG9mVTRCcC9xeVI0RUtH?=
- =?utf-8?B?d3NHMzVVZXhxS0Fab0UrODVRS0U4Yk9NaUh4RG5sdTY4NlBiQkdYSU1wRVFp?=
- =?utf-8?B?WFp2cFpJNk92YzNieHNsRWswN3NkYjkyVThocHRnQnZObGFMeEhzWVV6Mnpj?=
- =?utf-8?B?MWxURERMQ0tZMTF3MjVNNi96dmdFQUtMY3R0dFJQcjExdDBqbi9DOW1KamFn?=
- =?utf-8?B?VitMekY4OHhSSWh3bE9WcWYycHJ5d25OSFcyUnFPZnRDQVFuOUU4RnY4STFQ?=
- =?utf-8?B?MHR5L3Mxdyt4Z1ZwUVY1Tml5N2dUSTNrNU1DUkFjNmF0ZS9oamIrU0ZQRDQx?=
- =?utf-8?B?NXUrQUJNMTFpQWU2SE5vR29KeEhlV0plWGpCc2xhaElvdWhueW5EckU0cGhK?=
- =?utf-8?B?c00rS29CRWVRcFpxUWpBRWhqVWRFMGw1M256UFVxUjBUQU82VnRKSDdRdWtM?=
- =?utf-8?B?N3Fwbzl2VjlSZk03MG4vclB5ODRaSUY5OVFxMy9uVkZ2eVg5NFRuU3p5cUpv?=
- =?utf-8?B?Qml6Tk0yVngyVkU5em5LNm80clhoR1dZQ0dUSE15QmI5R2tZM2x4WEJCMzAx?=
- =?utf-8?B?UUJQOTlBWHRTU2wxV25LTzZibE9vaU9xU2ltR09Qd0N0a3ZHdnlIenNCV0JH?=
- =?utf-8?B?aHpOSWxRcTVxRVBLREJaTnhhOEQzTmNub255WktYc1phUUtOZ0Z4QW5HbVVN?=
- =?utf-8?B?MXlUTWxwdzZlOUhRNSt1MVlsOTQ0VTdIaVNkUkk5S3VQNmRuMnFyYnBQNnVn?=
- =?utf-8?B?bjdRK2pUVDAzVmVjT1ByZlBBYmRVZkV4KzljVWVGaDQ3N0xmOTI0RlplR284?=
- =?utf-8?B?eStjSG1XODB1OEp4OVNmQ2JGamVCWWgzcDRqV0ZoMDFCeWdKTjlaVms1cnJw?=
- =?utf-8?B?U1dCOEc1d1MvRFd1aU5KSGhyRnd3enZPc2NHZmpxZ2JucmRPYW1tMk4xNEhV?=
- =?utf-8?B?bkczZ0wwNStHcVZLTStsSC90b29IUmpqc3NEVzcxdzhqQ1doeGpHYUg3Q2tN?=
- =?utf-8?B?ZzQvRUZKWDFOTmcwbHRhNFE2YWQ1YncwaVNrN2ppT21VM01qbkVMandSd1N2?=
- =?utf-8?B?WGZqNWh5SlU4QklFZlpLclhycEJwcUxyOFBEaURGMld6Mi9QdXNkVTZXQnd6?=
- =?utf-8?B?RVZhMVpJT3JKL242bmZ0eU80RzZUR2Y0K0xTSjZYanFzelhBcWYydHcyVlFq?=
- =?utf-8?B?Nnc1MXRJaEQrSWpiUTBSbnVSTkloZzY4bXJMYklVNU5VaWJzYnA0UlA2SkJ1?=
- =?utf-8?B?K0FNYjlybkg0R1ZSTXhuRVRZSy8yZmhrb1JTS2dweUFIemNBa292V0gzVGZw?=
- =?utf-8?B?dVdIaHY4RHBNR0o3UUs5NUl6dC9xeFROZUd1MXM0N3llR2lVU1l0Yk1zRCt5?=
- =?utf-8?B?RGo2czVuaHBldTB1dXhaYnM4ZDRVQSs1UU1wR2Ywa1d4MkQ4b1hVMkErd29B?=
- =?utf-8?B?OVF1akFlZW5raXlzNU1ZdlVKZFp4dXJIUnVBV05JL2NJRThTVEFmRnZ2Q3Rw?=
- =?utf-8?B?NFJXZ2JNdVd1WGZrNVljYXJqS1JJazJLNk1ldGJiUHVKUm9XenNOOW9GVElV?=
- =?utf-8?B?SW9uUDZJVUV4UUlKWGhVS3RjSVJYRHIraTRnc0d5YnNubGo1ZTYzcTBwTVd2?=
- =?utf-8?B?MWxEaEt6ZSs2dDRpWmxHUm4xZkFOMC92TXVjV3RlQll2eEFyS0g4VEFSbXZZ?=
- =?utf-8?B?SHEvaWhiTzVvZmJXTVFWSDF1ZUwvQndCMUNLZ3AydDcwZDF3S2Z3eFZidXk0?=
- =?utf-8?B?VFEwYWg0bEJ3MGQ5RVJ4Vm1tV2QrVW13YXpnOEtwWW5FR0tKdURnRFZhMkxx?=
- =?utf-8?B?SHc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <F92DCA18A865384DA86D0D380757FC40@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.792.15; Wed, 7 Dec 2022 16:44:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 16:44:14 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v2 10/12] media: platform: mtk-mdp3: add 8195 platform configuration
+Date: Wed, 7 Dec 2022 16:44:10 +0800
+Message-ID: <20221207084412.14075-11-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221207084412.14075-1-moudy.ho@mediatek.com>
+References: <20221207084412.14075-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5494.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4082e078-66f7-4578-c59f-08dad834d219
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Dec 2022 09:24:20.0981
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MWLspxPdajWvqVFKTO3oPefB27R/qvFggRSuBzNoZXSX0kvS6o6CVVd7apLWoUBdi/qHXCXxzM2aw1nH0c/RKJeL0Q4s0kdEOvXEveouxL8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6784
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_012509_532946_DF3A153C 
-X-CRM114-Status: GOOD (  27.81  )
+X-CRM114-CacheID: sfid-20221207_013524_124349_CF045D27 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -185,86 +83,799 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIyLTEyLTA1IGF0IDExOjUwIC0wODAwLCBBc3V0b3NoIERhcyB3cm90ZToNCj4g
-T24gTW9uLCBEZWMgMDUgMjAyMiBhdCAxNzo1MyAtMDgwMCwgTWFzb24gWmhhbmcgd3JvdGU6DQo+
-ID4gRnJvbTogTWFzb24gWmhhbmcgPE1hc29uLlpoYW5nQG1lZGlhdGVrLmNvbT4NCj4gPiANCj4g
-PiBJbiB1ZnMgZXJyb3IgaGFuZGxlciBmbG93LCBob3N0IHdpbGwgc2VuZCBkZXZpY2UgbWFuYWdl
-bWVudCBjbWQoTk9QDQo+ID4gT1VUKQ0KPiA+IHRvIGRldmljZSBmb3IgcmVjb3ZlcnkgbGluay4g
-SWYgY21kIHJlc3BvbnNlIHRpbWVvdXQsIGFuZCBjbGVhcg0KPiA+IGRvb3JiZWxsDQo+ID4gZmFp
-bCwgdWZzaGNkX3dhaXRfZm9yX2Rldl9jbWQgd2lsbCBkbyBub3RoaW5nIGFuZCByZXR1cm4sDQo+
-ID4gaGJhLT5kZXZfY21kLmNvbXBsZXRlIHN0cnVjdCBub3Qgc2V0IHRvIG51bGwuDQo+ID4gDQo+
-ID4gSW4gdGhpcyB0aW1lLCBpZiBjbWQgaGFzIGJlZW4gcmVzcG9uc2VkIGJ5IGRldmljZSwgdGhl
-biBpdCB3aWxsDQo+ID4gY2FsbCBjb21wbGV0ZSgpIGluIF9fdWZzaGNkX3RyYW5zZmVyX3JlcV9j
-b21wbCwgYmVjYXVzZSBvZiBjb21wbGV0ZQ0KPiA+IHN0cnVjdCBpcyBhbGxvY2VkIGluIHN0YWNr
-LCB0aGVuIHRoZSBLRSB3aWxsIG9jY3VyLg0KPiA+IA0KPiANCj4gV2hhdCBpcyBLRT8NCj4gDQo+
-ID4gRml4IHRoZSBmb2xsb3dpbmcgY3Jhc2g6DQo+ID4gIGlwYW5pY19kaWUrMHgyNC8weDM4IFtt
-cmR1bXBdDQo+ID4gIGRpZSsweDM0NC8weDc0OA0KPiA+ICBhcm02NF9ub3RpZnlfZGllKzB4NDQv
-MHgxMDQNCj4gPiAgZG9fZGVidWdfZXhjZXB0aW9uKzB4MTA0LzB4MWUwDQo+ID4gIGVsMV9kYmcr
-MHgzOC8weDU0DQo+ID4gIGVsMV9zeW5jX2hhbmRsZXIrMHg0MC8weDg4DQo+ID4gIGVsMV9zeW5j
-KzB4OGMvMHgxNDANCj4gPiAgcXVldWVkX3NwaW5fbG9ja19zbG93cGF0aCsweDJlNC8weDNjMA0K
-PiA+ICBfX3Vmc2hjZF90cmFuc2Zlcl9yZXFfY29tcGwrMHgzYjAvMHgxMTY0DQo+ID4gIHVmc2hj
-ZF90cmNfaGFuZGxlcisweDE1Yy8weDMwOA0KPiA+ICB1ZnNoY2RfaG9zdF9yZXNldF9hbmRfcmVz
-dG9yZSsweDU0LzB4MjYwDQo+ID4gIHVmc2hjZF9yZXNldF9hbmRfcmVzdG9yZSsweDI4Yy8weDU3
-Yw0KPiA+ICB1ZnNoY2RfZXJyX2hhbmRsZXIrMHhlYjgvMHgxYjZjDQo+ID4gIHByb2Nlc3Nfb25l
-X3dvcmsrMHgyODgvMHg5NjQNCj4gPiAgd29ya2VyX3RocmVhZCsweDRiYy8weGM3Yw0KPiA+ICBr
-dGhyZWFkKzB4MTVjLzB4MjY0DQo+ID4gIHJldF9mcm9tX2ZvcmsrMHgxMC8weDMwDQo+ID4gDQo+
-ID4gU2lnbmVkLW9mZi1ieTogTWFzb24gWmhhbmcgPE1hc29uLlpoYW5nQG1lZGlhdGVrLmNvbT4N
-Cj4gPiAtLS0NCj4gPiBkcml2ZXJzL3Vmcy9jb3JlL3Vmc2hjZC5jIHwgNDYgKysrKysrKysrKysr
-KysrKysrLS0tLS0tLS0tLS0tLS0tLQ0KPiA+IC0tLS0tDQo+ID4gMSBmaWxlIGNoYW5nZWQsIDIx
-IGluc2VydGlvbnMoKyksIDI1IGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL3Vmcy9jb3JlL3Vmc2hjZC5jIGIvZHJpdmVycy91ZnMvY29yZS91ZnNoY2QuYw0KPiA+
-IGluZGV4IGIxZjU5YTVmZTYzMi4uMmI0OTM0YTU2MmE2IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZl
-cnMvdWZzL2NvcmUvdWZzaGNkLmMNCj4gPiArKysgYi9kcml2ZXJzL3Vmcy9jb3JlL3Vmc2hjZC5j
-DQo+ID4gQEAgLTI5NzksMzUgKzI5NzksMzEgQEAgc3RhdGljIGludCB1ZnNoY2Rfd2FpdF9mb3Jf
-ZGV2X2NtZChzdHJ1Y3QNCj4gPiB1ZnNfaGJhICpoYmEsDQo+ID4gCQllcnIgPSAtRVRJTUVET1VU
-Ow0KPiA+IAkJZGV2X2RiZyhoYmEtPmRldiwgIiVzOiBkZXZfY21kIHJlcXVlc3QgdGltZWRvdXQs
-IHRhZw0KPiA+ICVkXG4iLA0KPiA+IAkJCV9fZnVuY19fLCBscmJwLT50YXNrX3RhZyk7DQo+ID4g
-LQkJaWYgKHVmc2hjZF9jbGVhcl9jbWRzKGhiYSwgMVUgPDwgbHJicC0+dGFza190YWcpID09IDAp
-DQo+ID4gew0KPiA+ICsJCWlmICh1ZnNoY2RfY2xlYXJfY21kcyhoYmEsIDFVIDw8IGxyYnAtPnRh
-c2tfdGFnKSA9PSAwKQ0KPiA+IAkJCS8qIHN1Y2Nlc3NmdWxseSBjbGVhcmVkIHRoZSBjb21tYW5k
-LCByZXRyeSBpZg0KPiA+IG5lZWRlZCAqLw0KPiA+IAkJCWVyciA9IC1FQUdBSU47DQo+ID4gKwkJ
-LyoNCj4gPiArCQkgKiBTaW5jZSBjbGVhcmluZyB0aGUgY29tbWFuZCBzdWNjZWVkZWQgd2UgYWxz
-byBuZWVkIHRvDQo+ID4gKwkJICogY2xlYXIgdGhlIHRhc2sgdGFnIGJpdCBmcm9tIHRoZSBvdXRz
-dGFuZGluZ19yZXFzDQo+ID4gKwkJICogdmFyaWFibGUuDQo+ID4gKwkJICovDQo+IA0KPiBEb2Vz
-IHRoaXMgY29tbWVudCBzdGlsbCBob2xkIHRydWU/IFBlcmhhcHMgdGhpcyBuZWVkcyB0byBiZSB1
-cGRhdGVkPw0KPiBBbHNvLCBwZXJoYXBzIHlvdSBtaXNzZWQgQmFydCdzIGNvbW1lbnRzIGluIHYx
-Lg0KPiBBbHNvLCBwbGVhc2UgY2FuIHlvdSBhZGQgYSBzZWN0aW9uIGZvciBjaGFuZ2VzIGZyb20g
-djEgLT4gdjI/DQo+IA0KPiAtYXNkDQo+IA0KPiA+ICsJCXNwaW5fbG9ja19pcnFzYXZlKCZoYmEt
-Pm91dHN0YW5kaW5nX2xvY2ssIGZsYWdzKTsNCj4gPiArCQlwZW5kaW5nID0gdGVzdF9iaXQobHJi
-cC0+dGFza190YWcsDQo+ID4gKwkJCQkgICAmaGJhLT5vdXRzdGFuZGluZ19yZXFzKTsNCj4gPiAr
-CQlpZiAocGVuZGluZykgew0KPiA+ICsJCQloYmEtPmRldl9jbWQuY29tcGxldGUgPSBOVUxMOw0K
-PiA+ICsJCQlfX2NsZWFyX2JpdChscmJwLT50YXNrX3RhZywNCj4gPiArCQkJCSAgICAmaGJhLT5v
-dXRzdGFuZGluZ19yZXFzKTsNCj4gPiArCQl9DQo+ID4gKwkJc3Bpbl91bmxvY2tfaXJxcmVzdG9y
-ZSgmaGJhLT5vdXRzdGFuZGluZ19sb2NrLCBmbGFncyk7DQo+ID4gKw0KPiA+ICsJCWlmICghcGVu
-ZGluZykgew0KPiA+IAkJCS8qDQo+ID4gLQkJCSAqIFNpbmNlIGNsZWFyaW5nIHRoZSBjb21tYW5k
-IHN1Y2NlZWRlZCB3ZSBhbHNvDQo+ID4gbmVlZCB0bw0KPiA+IC0JCQkgKiBjbGVhciB0aGUgdGFz
-ayB0YWcgYml0IGZyb20gdGhlDQo+ID4gb3V0c3RhbmRpbmdfcmVxcw0KPiA+IC0JCQkgKiB2YXJp
-YWJsZS4NCj4gPiArCQkJICogVGhlIGNvbXBsZXRpb24gaGFuZGxlciByYW4gd2hpbGUgd2UgdHJp
-ZWQgdG8NCj4gPiArCQkJICogY2xlYXIgdGhlIGNvbW1hbmQuDQo+ID4gCQkJICovDQo+ID4gLQkJ
-CXNwaW5fbG9ja19pcnFzYXZlKCZoYmEtPm91dHN0YW5kaW5nX2xvY2ssDQo+ID4gZmxhZ3MpOw0K
-PiA+IC0JCQlwZW5kaW5nID0gdGVzdF9iaXQobHJicC0+dGFza190YWcsDQo+ID4gLQkJCQkJICAg
-JmhiYS0+b3V0c3RhbmRpbmdfcmVxcyk7DQo+ID4gLQkJCWlmIChwZW5kaW5nKSB7DQo+ID4gLQkJ
-CQloYmEtPmRldl9jbWQuY29tcGxldGUgPSBOVUxMOw0KPiA+IC0JCQkJX19jbGVhcl9iaXQobHJi
-cC0+dGFza190YWcsDQo+ID4gLQkJCQkJICAgICZoYmEtPm91dHN0YW5kaW5nX3JlcXMpOw0KPiA+
-IC0JCQl9DQo+ID4gLQkJCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmhiYS0+b3V0c3RhbmRpbmdf
-bG9jaywNCj4gPiBmbGFncyk7DQo+ID4gLQ0KPiA+IC0JCQlpZiAoIXBlbmRpbmcpIHsNCj4gPiAt
-CQkJCS8qDQo+ID4gLQkJCQkgKiBUaGUgY29tcGxldGlvbiBoYW5kbGVyIHJhbiB3aGlsZSB3ZQ0K
-PiA+IHRyaWVkIHRvDQo+ID4gLQkJCQkgKiBjbGVhciB0aGUgY29tbWFuZC4NCj4gPiAtCQkJCSAq
-Lw0KPiA+IC0JCQkJdGltZV9sZWZ0ID0gMTsNCj4gPiAtCQkJCWdvdG8gcmV0cnk7DQo+ID4gLQkJ
-CX0NCj4gPiAtCQl9IGVsc2Ugew0KPiA+IC0JCQlkZXZfZXJyKGhiYS0+ZGV2LCAiJXM6IGZhaWxl
-ZCB0byBjbGVhciB0YWcNCj4gPiAlZFxuIiwNCj4gPiAtCQkJCV9fZnVuY19fLCBscmJwLT50YXNr
-X3RhZyk7DQo+ID4gKwkJCXRpbWVfbGVmdCA9IDE7DQo+ID4gKwkJCWdvdG8gcmV0cnk7DQo+ID4g
-CQl9DQo+ID4gCX0NCj4gPiANCj4gPiAtLSANCj4gPiAyLjE4LjANCj4gPiANCkRlYXIgQXN1dG9z
-aCBhbmQgQmFydDoNCgkNCglUaGFua3MgZm9yIHlvdXJzIGNvbW1lbnRzfg0KDQoJSSB0aGluayBp
-ZiBjbGVhciBkYiBmYWlsIGFuZCB0aGVuIGNsZWFyIG91dHN0YW5kaW5nX3JlcXMgaXMgbm90DQph
-IHByb2JsZW0sIGJlY2F1c2UgaXQgbWVhbnMgY21kIGlzIHNlbmQgdG8gZGV2aWNlIGJ1dCBkZXZp
-Y2Ugbm90DQpyZXNwb25lZCwgc28gaG9zdCBzaG91bGQgZG8gZGV2aWNlIHJlc2V0IGFuZCBjbGVh
-ciBhbGwgb3V0c3RhbmRpbmdfcmVxcw0Kb3IgcmV0dXJuIGVycm9yIGFuZCByZXRyeSwgaXQgYWxz
-byB3aWxsIGNsZWFyIHRoaXMgb3V0c3RhbmRpbmdfcmVxcy4NCglBbmQgYmVjYXVzZSBvZiB3ZSBo
-YXZlIGRvIHRlc3RfYml0IG91dHN0YW5kaW5nX3JlcXMgZmlyc3QgaW4NCnNwaW5fbG9jaywgc28g
-aXQgYWxzbyB3aWxsIG5vdCBoYXZlIHJhY2UgY29uZGl0aW9uIGJldHdlZW4gY21kIGNvbXBsZXRl
-DQpmbG93Lg0KDQoJQW5kIGFib3V0IEtFLCBLRSBtZWFucyAna2VybmVsIGV4Y2VwdGlvbicsIGJl
-Y2F1c2Ugb2YgY29tcGxldGUNCnN0dWN0IGhhcyBiZWVuIHJlbGVhc2VkIGluIHN0YWNrLiANCglB
-bmQgSSB3aWwgcmVtb3ZlIHRoaXMgY29tbWVudCBpbiBwYXRjaHYzLg0KDQoJVGhhbmsgeW91IGFn
-YWlufg0KDQpUaGFua3MNCk1hc29uDQoNCg==
+Add MT8195 basic configuration in header file "mdp3-plat-mt8195.h"
+and corresponding driver data.
+
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ .../mediatek/mdp3/mt8195/mdp3-plat-mt8195.h   | 652 ++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      |   1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    |  36 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  19 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   6 +
+ 5 files changed, 714 insertions(+)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
+
+diff --git a/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h b/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
+new file mode 100644
+index 000000000000..d90a67e1af8b
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
+@@ -0,0 +1,652 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP3_PLAT_MT8195_H__
++#define __MDP3_PLAT_MT8195_H__
++
++static const struct mdp_platform_config mt8195_plat_cfg = {
++	.rdma_support_10bit             = true,
++	.rdma_rsz1_sram_sharing         = false,
++	.rdma_upsample_repeat_only      = false,
++	.rdma_esl_setting		= true,
++	.rdma_event_num			= 4,
++	.rsz_disable_dcm_small_sample   = false,
++	.rsz_etc_control		= true,
++	.wrot_filter_constraint		= false,
++	.wrot_event_num			= 4,
++	.tdshp_hist_num			= 17,
++	.tdshp_constrain		= true,
++	.tdshp_contour			= true,
++};
++
++static const struct of_device_id mt8195_mdp_probe_infra[MDP_INFRA_MAX] = {
++	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8195-vppsys0" },
++	[MDP_INFRA_MMSYS2] = { .compatible = "mediatek,mt8195-vppsys1" },
++	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8195-vpp-mutex" },
++	[MDP_INFRA_MUTEX2] = { .compatible = "mediatek,mt8195-vpp-mutex" },
++	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8195-scp" }
++};
++
++static const struct mdp_pipe_info mt8195_pipe_info[] = {
++	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, 0, 2},
++	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, 0, 0},
++	[MDP_PIPE_WPEI2] = {MDP_PIPE_WPEI2, 0, 1},
++	[MDP_PIPE_RDMA1] = {MDP_PIPE_RDMA1, 1, 1},
++	[MDP_PIPE_RDMA2] = {MDP_PIPE_RDMA2, 1, 2},
++	[MDP_PIPE_RDMA3] = {MDP_PIPE_RDMA3, 1, 3},
++	[MDP_PIPE_SPLIT] = {MDP_PIPE_SPLIT, 1, 2},
++	[MDP_PIPE_SPLIT2] = {MDP_PIPE_SPLIT2, 1, 3},
++	[MDP_PIPE_VPP1_SOUT] = {MDP_PIPE_VPP1_SOUT, 0, 3},
++	[MDP_PIPE_VPP0_SOUT] = {MDP_PIPE_VPP0_SOUT, 1, 4},
++};
++
++static const u32 mt8195_mutex_idx[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
++	[MDP_COMP_RDMA1] = MUTEX_MOD_IDX_MDP_RDMA1,
++	[MDP_COMP_RDMA2] = MUTEX_MOD_IDX_MDP_RDMA2,
++	[MDP_COMP_RDMA3] = MUTEX_MOD_IDX_MDP_RDMA3,
++	[MDP_COMP_STITCH] = MUTEX_MOD_IDX_MDP_STITCH0,
++	[MDP_COMP_FG0] = MUTEX_MOD_IDX_MDP_FG0,
++	[MDP_COMP_FG1] = MUTEX_MOD_IDX_MDP_FG1,
++	[MDP_COMP_FG2] = MUTEX_MOD_IDX_MDP_FG2,
++	[MDP_COMP_FG3] = MUTEX_MOD_IDX_MDP_FG3,
++	[MDP_COMP_HDR0] = MUTEX_MOD_IDX_MDP_HDR0,
++	[MDP_COMP_HDR1] = MUTEX_MOD_IDX_MDP_HDR1,
++	[MDP_COMP_HDR2] = MUTEX_MOD_IDX_MDP_HDR2,
++	[MDP_COMP_HDR3] = MUTEX_MOD_IDX_MDP_HDR3,
++	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
++	[MDP_COMP_AAL1] = MUTEX_MOD_IDX_MDP_AAL1,
++	[MDP_COMP_AAL2] = MUTEX_MOD_IDX_MDP_AAL2,
++	[MDP_COMP_AAL3] = MUTEX_MOD_IDX_MDP_AAL3,
++	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
++	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
++	[MDP_COMP_RSZ2] = MUTEX_MOD_IDX_MDP_RSZ2,
++	[MDP_COMP_RSZ3] = MUTEX_MOD_IDX_MDP_RSZ3,
++	[MDP_COMP_MERGE2] = MUTEX_MOD_IDX_MDP_MERGE2,
++	[MDP_COMP_MERGE3] = MUTEX_MOD_IDX_MDP_MERGE3,
++	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
++	[MDP_COMP_TDSHP1] = MUTEX_MOD_IDX_MDP_TDSHP1,
++	[MDP_COMP_TDSHP2] = MUTEX_MOD_IDX_MDP_TDSHP2,
++	[MDP_COMP_TDSHP3] = MUTEX_MOD_IDX_MDP_TDSHP3,
++	[MDP_COMP_COLOR0] = MUTEX_MOD_IDX_MDP_COLOR0,
++	[MDP_COMP_COLOR1] = MUTEX_MOD_IDX_MDP_COLOR1,
++	[MDP_COMP_COLOR2] = MUTEX_MOD_IDX_MDP_COLOR2,
++	[MDP_COMP_COLOR3] = MUTEX_MOD_IDX_MDP_COLOR3,
++	[MDP_COMP_OVL0] = MUTEX_MOD_IDX_MDP_OVL0,
++	[MDP_COMP_OVL1] = MUTEX_MOD_IDX_MDP_OVL1,
++	[MDP_COMP_PAD0] = MUTEX_MOD_IDX_MDP_PAD0,
++	[MDP_COMP_PAD1] = MUTEX_MOD_IDX_MDP_PAD1,
++	[MDP_COMP_PAD2] = MUTEX_MOD_IDX_MDP_PAD2,
++	[MDP_COMP_PAD3] = MUTEX_MOD_IDX_MDP_PAD3,
++	[MDP_COMP_TCC0] = MUTEX_MOD_IDX_MDP_TCC0,
++	[MDP_COMP_TCC1] = MUTEX_MOD_IDX_MDP_TCC1,
++	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
++	[MDP_COMP_WROT1] = MUTEX_MOD_IDX_MDP_WROT1,
++	[MDP_COMP_WROT2] = MUTEX_MOD_IDX_MDP_WROT2,
++	[MDP_COMP_WROT3] = MUTEX_MOD_IDX_MDP_WROT3,
++};
++
++static const struct of_device_id mt8195_sub_comp_dt_ids[] = {
++	{}
++};
++
++enum mt8195_mdp_comp_id {
++	/* MT8195 Comp id */
++	/* ISP */
++	MT8195_MDP_COMP_WPEI = 0,
++	MT8195_MDP_COMP_WPEO,           /* 1 */
++	MT8195_MDP_COMP_WPEI2,          /* 2 */
++	MT8195_MDP_COMP_WPEO2,          /* 3 */
++
++	/* MDP */
++	MT8195_MDP_COMP_CAMIN,          /* 4 */
++	MT8195_MDP_COMP_CAMIN2,         /* 5 */
++	MT8195_MDP_COMP_SPLIT,          /* 6 */
++	MT8195_MDP_COMP_SPLIT2,         /* 7 */
++	MT8195_MDP_COMP_RDMA0,          /* 8 */
++	MT8195_MDP_COMP_RDMA1,          /* 9 */
++	MT8195_MDP_COMP_RDMA2,          /* 10 */
++	MT8195_MDP_COMP_RDMA3,          /* 11 */
++	MT8195_MDP_COMP_STITCH,         /* 12 */
++	MT8195_MDP_COMP_FG0,            /* 13 */
++	MT8195_MDP_COMP_FG1,            /* 14 */
++	MT8195_MDP_COMP_FG2,            /* 15 */
++	MT8195_MDP_COMP_FG3,            /* 16 */
++	MT8195_MDP_COMP_TO_SVPP2MOUT,   /* 17 */
++	MT8195_MDP_COMP_TO_SVPP3MOUT,   /* 18 */
++	MT8195_MDP_COMP_TO_WARP0MOUT,   /* 19 */
++	MT8195_MDP_COMP_TO_WARP1MOUT,   /* 20 */
++	MT8195_MDP_COMP_VPP0_SOUT,      /* 21 */
++	MT8195_MDP_COMP_VPP1_SOUT,      /* 22 */
++	MT8195_MDP_COMP_PQ0_SOUT,       /* 23 */
++	MT8195_MDP_COMP_PQ1_SOUT,       /* 24 */
++	MT8195_MDP_COMP_HDR0,           /* 25 */
++	MT8195_MDP_COMP_HDR1,           /* 26 */
++	MT8195_MDP_COMP_HDR2,           /* 27 */
++	MT8195_MDP_COMP_HDR3,           /* 28 */
++	MT8195_MDP_COMP_AAL0,           /* 29 */
++	MT8195_MDP_COMP_AAL1,           /* 30 */
++	MT8195_MDP_COMP_AAL2,           /* 31 */
++	MT8195_MDP_COMP_AAL3,           /* 32 */
++	MT8195_MDP_COMP_RSZ0,           /* 33 */
++	MT8195_MDP_COMP_RSZ1,           /* 34 */
++	MT8195_MDP_COMP_RSZ2,           /* 35 */
++	MT8195_MDP_COMP_RSZ3,           /* 36 */
++	MT8195_MDP_COMP_TDSHP0,         /* 37 */
++	MT8195_MDP_COMP_TDSHP1,         /* 38 */
++	MT8195_MDP_COMP_TDSHP2,         /* 39 */
++	MT8195_MDP_COMP_TDSHP3,         /* 40 */
++	MT8195_MDP_COMP_COLOR0,         /* 41 */
++	MT8195_MDP_COMP_COLOR1,         /* 42 */
++	MT8195_MDP_COMP_COLOR2,         /* 43 */
++	MT8195_MDP_COMP_COLOR3,         /* 44 */
++	MT8195_MDP_COMP_OVL0,           /* 45 */
++	MT8195_MDP_COMP_OVL1,           /* 46 */
++	MT8195_MDP_COMP_PAD0,           /* 47 */
++	MT8195_MDP_COMP_PAD1,           /* 48 */
++	MT8195_MDP_COMP_PAD2,           /* 49 */
++	MT8195_MDP_COMP_PAD3,           /* 50 */
++	MT8195_MDP_COMP_TCC0,           /* 51 */
++	MT8195_MDP_COMP_TCC1,           /* 52 */
++	MT8195_MDP_COMP_WROT0,          /* 53 */
++	MT8195_MDP_COMP_WROT1,          /* 54 */
++	MT8195_MDP_COMP_WROT2,          /* 55 */
++	MT8195_MDP_COMP_WROT3,          /* 56 */
++	MT8195_MDP_COMP_MERGE2,         /* 57 */
++	MT8195_MDP_COMP_MERGE3,         /* 58 */
++
++	MT8195_MDP_COMP_VDO0DL0,        /* 59 */
++	MT8195_MDP_COMP_VDO1DL0,        /* 60 */
++	MT8195_MDP_COMP_VDO0DL1,        /* 61 */
++	MT8195_MDP_COMP_VDO1DL1,        /* 62 */
++};
++
++static const struct mdp_comp_data mt8195_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
++	[MDP_COMP_WPEI] = {
++		{MDP_COMP_TYPE_WPEI, 0, MT8195_MDP_COMP_WPEI, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEO] = {
++		{MDP_COMP_TYPE_EXTO, 2, MT8195_MDP_COMP_WPEO, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEI2] = {
++		{MDP_COMP_TYPE_WPEI, 1, MT8195_MDP_COMP_WPEI2, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_WPEO2] = {
++		{MDP_COMP_TYPE_EXTO, 3, MT8195_MDP_COMP_WPEO2, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_CAMIN] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_CAMIN, 0},
++		{3, 3, 0}
++	},
++	[MDP_COMP_CAMIN2] = {
++		{MDP_COMP_TYPE_DL_PATH, 1, MT8195_MDP_COMP_CAMIN2, 0},
++		{3, 6, 0}
++	},
++	[MDP_COMP_SPLIT] = {
++		{MDP_COMP_TYPE_SPLIT, 0, MT8195_MDP_COMP_SPLIT, 1},
++		{7, 0, 0}
++	},
++	[MDP_COMP_SPLIT2] = {
++		{MDP_COMP_TYPE_SPLIT, 1, MT8195_MDP_COMP_SPLIT2, 1},
++		{7, 0, 0}
++	},
++	[MDP_COMP_RDMA0] = {
++		{MDP_COMP_TYPE_RDMA, 0, MT8195_MDP_COMP_RDMA0, 0},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA1] = {
++		{MDP_COMP_TYPE_RDMA, 1, MT8195_MDP_COMP_RDMA1, 1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA2] = {
++		{MDP_COMP_TYPE_RDMA, 2, MT8195_MDP_COMP_RDMA2, 1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_RDMA3] = {
++		{MDP_COMP_TYPE_RDMA, 3, MT8195_MDP_COMP_RDMA3, 1},
++		{3, 0, 0}
++	},
++	[MDP_COMP_STITCH] = {
++		{MDP_COMP_TYPE_STITCH, 0, MT8195_MDP_COMP_STITCH, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG0] = {
++		{MDP_COMP_TYPE_FG, 0, MT8195_MDP_COMP_FG0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG1] = {
++		{MDP_COMP_TYPE_FG, 1, MT8195_MDP_COMP_FG1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG2] = {
++		{MDP_COMP_TYPE_FG, 2, MT8195_MDP_COMP_FG2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_FG3] = {
++		{MDP_COMP_TYPE_FG, 3, MT8195_MDP_COMP_FG3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR0] = {
++		{MDP_COMP_TYPE_HDR, 0, MT8195_MDP_COMP_HDR0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR1] = {
++		{MDP_COMP_TYPE_HDR, 1, MT8195_MDP_COMP_HDR1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR2] = {
++		{MDP_COMP_TYPE_HDR, 2, MT8195_MDP_COMP_HDR2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_HDR3] = {
++		{MDP_COMP_TYPE_HDR, 3, MT8195_MDP_COMP_HDR3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL0] = {
++		{MDP_COMP_TYPE_AAL, 0, MT8195_MDP_COMP_AAL0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL1] = {
++		{MDP_COMP_TYPE_AAL, 1, MT8195_MDP_COMP_AAL1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL2] = {
++		{MDP_COMP_TYPE_AAL, 2, MT8195_MDP_COMP_AAL2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_AAL3] = {
++		{MDP_COMP_TYPE_AAL, 3, MT8195_MDP_COMP_AAL3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ0] = {
++		{MDP_COMP_TYPE_RSZ, 0, MT8195_MDP_COMP_RSZ0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ1] = {
++		{MDP_COMP_TYPE_RSZ, 1, MT8195_MDP_COMP_RSZ1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_RSZ2] = {
++		{MDP_COMP_TYPE_RSZ, 2, MT8195_MDP_COMP_RSZ2, 1},
++		{2, 0, 0}
++	},
++	[MDP_COMP_RSZ3] = {
++		{MDP_COMP_TYPE_RSZ, 3, MT8195_MDP_COMP_RSZ3, 1},
++		{2, 0, 0}
++	},
++	[MDP_COMP_TDSHP0] = {
++		{MDP_COMP_TYPE_TDSHP, 0, MT8195_MDP_COMP_TDSHP0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP1] = {
++		{MDP_COMP_TYPE_TDSHP, 1, MT8195_MDP_COMP_TDSHP1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP2] = {
++		{MDP_COMP_TYPE_TDSHP, 2, MT8195_MDP_COMP_TDSHP2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TDSHP3] = {
++		{MDP_COMP_TYPE_TDSHP, 3, MT8195_MDP_COMP_TDSHP3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR0] = {
++		{MDP_COMP_TYPE_COLOR, 0, MT8195_MDP_COMP_COLOR0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR1] = {
++		{MDP_COMP_TYPE_COLOR, 1, MT8195_MDP_COMP_COLOR1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR2] = {
++		{MDP_COMP_TYPE_COLOR, 2, MT8195_MDP_COMP_COLOR2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_COLOR3] = {
++		{MDP_COMP_TYPE_COLOR, 3, MT8195_MDP_COMP_COLOR3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_OVL0] = {
++		{MDP_COMP_TYPE_OVL, 0, MT8195_MDP_COMP_OVL0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_OVL1] = {
++		{MDP_COMP_TYPE_OVL, 1, MT8195_MDP_COMP_OVL1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD0] = {
++		{MDP_COMP_TYPE_PAD, 0, MT8195_MDP_COMP_PAD0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD1] = {
++		{MDP_COMP_TYPE_PAD, 1, MT8195_MDP_COMP_PAD1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD2] = {
++		{MDP_COMP_TYPE_PAD, 2, MT8195_MDP_COMP_PAD2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PAD3] = {
++		{MDP_COMP_TYPE_PAD, 3, MT8195_MDP_COMP_PAD3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TCC0] = {
++		{MDP_COMP_TYPE_TCC, 0, MT8195_MDP_COMP_TCC0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_TCC1] = {
++		{MDP_COMP_TYPE_TCC, 1, MT8195_MDP_COMP_TCC1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT0] = {
++		{MDP_COMP_TYPE_WROT, 0, MT8195_MDP_COMP_WROT0, 0},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT1] = {
++		{MDP_COMP_TYPE_WROT, 1, MT8195_MDP_COMP_WROT1, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT2] = {
++		{MDP_COMP_TYPE_WROT, 2, MT8195_MDP_COMP_WROT2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_WROT3] = {
++		{MDP_COMP_TYPE_WROT, 3, MT8195_MDP_COMP_WROT3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_MERGE2] = {
++		{MDP_COMP_TYPE_MERGE, 0, MT8195_MDP_COMP_MERGE2, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_MERGE3] = {
++		{MDP_COMP_TYPE_MERGE, 1, MT8195_MDP_COMP_MERGE3, 1},
++		{1, 0, 0}
++	},
++	[MDP_COMP_PQ0_SOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 0, MT8195_MDP_COMP_PQ0_SOUT, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_PQ1_SOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 1, MT8195_MDP_COMP_PQ1_SOUT, 1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_WARP0MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 2, MT8195_MDP_COMP_TO_WARP0MOUT, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_WARP1MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 3, MT8195_MDP_COMP_TO_WARP1MOUT, 0},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_SVPP2MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 4, MT8195_MDP_COMP_TO_SVPP2MOUT, 1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_TO_SVPP3MOUT] = {
++		{MDP_COMP_TYPE_DUMMY, 5, MT8195_MDP_COMP_TO_SVPP3MOUT, 1},
++		{0, 0, 0}
++	},
++	[MDP_COMP_VPP0_SOUT] = {
++		{MDP_COMP_TYPE_PATH, 0, MT8195_MDP_COMP_VPP0_SOUT, 1},
++		{4, 9, 0}
++	},
++	[MDP_COMP_VPP1_SOUT] = {
++		{MDP_COMP_TYPE_PATH, 1, MT8195_MDP_COMP_VPP1_SOUT, 0},
++		{2, 13, 0}
++	},
++	[MDP_COMP_VDO0DL0] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL0, 1},
++		{1, 15, 0}
++	},
++	[MDP_COMP_VDO1DL0] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL0, 1},
++		{1, 17, 0}
++	},
++	[MDP_COMP_VDO0DL1] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL1, 1},
++		{1, 18, 0}
++	},
++	[MDP_COMP_VDO1DL1] = {
++		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL1, 1},
++		{1, 16, 0}
++	},
++};
++
++/*
++ * All 10-bit related formats are not added in the basic format list,
++ * please add the corresponding format settings before use.
++ */
++static const struct mdp_format mt8195_formats[] = {
++	{
++		.pixelformat	= V4L2_PIX_FMT_GREY,
++		.mdp_color	= MDP_COLOR_GREY,
++		.depth		= { 8 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB565X,
++		.mdp_color	= MDP_COLOR_BGR565,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB565,
++		.mdp_color	= MDP_COLOR_RGB565,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_RGB24,
++		.mdp_color	= MDP_COLOR_RGB888,
++		.depth		= { 24 },
++		.row_depth	= { 24 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_BGR24,
++		.mdp_color	= MDP_COLOR_BGR888,
++		.depth		= { 24 },
++		.row_depth	= { 24 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_ABGR32,
++		.mdp_color	= MDP_COLOR_BGRA8888,
++		.depth		= { 32 },
++		.row_depth	= { 32 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_ARGB32,
++		.mdp_color	= MDP_COLOR_ARGB8888,
++		.depth		= { 32 },
++		.row_depth	= { 32 },
++		.num_planes	= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_UYVY,
++		.mdp_color	= MDP_COLOR_UYVY,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_VYUY,
++		.mdp_color	= MDP_COLOR_VYUY,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUYV,
++		.mdp_color	= MDP_COLOR_YUYV,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVYU,
++		.mdp_color	= MDP_COLOR_YVYU,
++		.depth		= { 16 },
++		.row_depth	= { 16 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV420,
++		.mdp_color	= MDP_COLOR_I420,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU420,
++		.mdp_color	= MDP_COLOR_YV12,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV12,
++		.mdp_color	= MDP_COLOR_NV12,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV21,
++		.mdp_color	= MDP_COLOR_NV21,
++		.depth		= { 12 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV16,
++		.mdp_color	= MDP_COLOR_NV16,
++		.depth		= { 16 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV61,
++		.mdp_color	= MDP_COLOR_NV61,
++		.depth		= { 16 },
++		.row_depth	= { 8 },
++		.num_planes	= 1,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV12M,
++		.mdp_color	= MDP_COLOR_NV12,
++		.depth		= { 8, 4 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV21M,
++		.mdp_color	= MDP_COLOR_NV21,
++		.depth		= { 8, 4 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV16M,
++		.mdp_color	= MDP_COLOR_NV16,
++		.depth		= { 8, 8 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_NV61M,
++		.mdp_color	= MDP_COLOR_NV61,
++		.depth		= { 8, 8 },
++		.row_depth	= { 8, 8 },
++		.num_planes	= 2,
++		.walign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV420M,
++		.mdp_color	= MDP_COLOR_I420,
++		.depth		= { 8, 2, 2 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU420M,
++		.mdp_color	= MDP_COLOR_YV12,
++		.depth		= { 8, 2, 2 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YUV422M,
++		.mdp_color	= MDP_COLOR_I422,
++		.depth		= { 8, 4, 4 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}, {
++		.pixelformat	= V4L2_PIX_FMT_YVU422M,
++		.mdp_color	= MDP_COLOR_YV16,
++		.depth		= { 8, 4, 4 },
++		.row_depth	= { 8, 4, 4 },
++		.num_planes	= 3,
++		.walign		= 1,
++		.halign		= 1,
++		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
++	}
++};
++
++static const struct mdp_limit mt8195_mdp_def_limit = {
++	.out_limit = {
++		.wmin	= 64,
++		.hmin	= 64,
++		.wmax	= 4096,
++		.hmax	= 4096,
++	},
++	.cap_limit = {
++		.wmin	= 64,
++		.hmin	= 64,
++		.wmax	= 4096,
++		.hmax	= 4096,
++	},
++	.h_scale_up_max = 64,
++	.v_scale_up_max = 64,
++	.h_scale_down_max = 128,
++	.v_scale_down_max = 128,
++};
++
++#endif  /* __MDP3_PLAT_MT8195_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+index 3bd504d9af13..412b6ab06a82 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+@@ -116,6 +116,7 @@ struct img_frameparam {
+ 
+ /* Platform config indicator */
+ #define MT8183 8183
++#define MT8195 8195
+ 
+ #define CFG_CHECK(plat, id) (plat == id)
+ 
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index 265b712d762f..d54d7319af9a 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -796,6 +796,42 @@ static const struct of_device_id mdp_comp_dt_ids[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt8183-mdp3-wdma",
+ 		.data = (void *)MDP_COMP_TYPE_WDMA,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-rdma",
++		.data = (void *)MDP_COMP_TYPE_RDMA,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-split",
++		.data = (void *)MDP_COMP_TYPE_SPLIT,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-stitch",
++		.data = (void *)MDP_COMP_TYPE_STITCH,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-fg",
++		.data = (void *)MDP_COMP_TYPE_FG,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-hdr",
++		.data = (void *)MDP_COMP_TYPE_HDR,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-aal",
++		.data = (void *)MDP_COMP_TYPE_AAL,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-merge",
++		.data = (void *)MDP_COMP_TYPE_MERGE,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-tdshp",
++		.data = (void *)MDP_COMP_TYPE_TDSHP,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-color",
++		.data = (void *)MDP_COMP_TYPE_COLOR,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-ovl",
++		.data = (void *)MDP_COMP_TYPE_OVL,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-pad",
++		.data = (void *)MDP_COMP_TYPE_PAD,
++	}, {
++		.compatible = "mediatek,mt8195-mdp3-tcc",
++		.data = (void *)MDP_COMP_TYPE_TCC,
+ 	},
+ 	{}
+ };
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 6e3abadef6cd..1699da1c684b 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -16,6 +16,7 @@
+ #include "mtk-mdp3-core.h"
+ #include "mtk-mdp3-m2m.h"
+ #include "mt8183/mdp3-plat-mt8183.h"
++#include "mt8195/mdp3-plat-mt8195.h"
+ 
+ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.mdp_plat_id = MT8183,
+@@ -32,10 +33,28 @@ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
+ 	.def_limit = &mt8183_mdp_def_limit,
+ };
+ 
++static const struct mtk_mdp_driver_data mt8195_mdp_driver_data = {
++	.mdp_plat_id = MT8195,
++	.mdp_probe_infra = mt8195_mdp_probe_infra,
++	.mdp_sub_comp_dt_ids = mt8195_sub_comp_dt_ids,
++	.mdp_cfg = &mt8195_plat_cfg,
++	.mdp_mutex_table_idx = mt8195_mutex_idx,
++	.comp_data = mt8195_mdp_comp_data,
++	.comp_data_len = ARRAY_SIZE(mt8195_mdp_comp_data),
++	.pipe_info = mt8195_pipe_info,
++	.pipe_info_len = ARRAY_SIZE(mt8195_pipe_info),
++	.format = mt8195_formats,
++	.format_len = ARRAY_SIZE(mt8195_formats),
++	.def_limit = &mt8195_mdp_def_limit,
++};
++
+ static const struct of_device_id mdp_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
+ 	  .data = &mt8183_mdp_driver_data,
+ 	},
++	{ .compatible = "mediatek,mt8195-mdp3-rdma",
++	  .data = &mt8195_mdp_driver_data,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mdp_of_ids);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index d0a2ec11e67f..fe5bea7bbeaa 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -40,10 +40,16 @@ struct mdp_platform_config {
+ 	bool	rdma_support_10bit;
+ 	bool	rdma_rsz1_sram_sharing;
+ 	bool	rdma_upsample_repeat_only;
++	bool	rdma_esl_setting;
+ 	u32	rdma_event_num;
+ 	bool	rsz_disable_dcm_small_sample;
++	bool	rsz_etc_control;
+ 	bool	wrot_filter_constraint;
++	bool	wrot_support_10bit;
+ 	u32	wrot_event_num;
++	u32	tdshp_hist_num;
++	bool	tdshp_constrain;
++	bool	tdshp_contour;
+ };
+ 
+ /* indicate which mutex is used by each pipepline */
+-- 
+2.18.0
+
 
