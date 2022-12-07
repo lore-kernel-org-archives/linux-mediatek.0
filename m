@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F54CC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 08:01:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 386A4C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 08:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aqnNrSjyLbOJhKH4QPr/+TJITVaI6eC+HBJYZZfcSwU=; b=PizGrxF1s2KR6xeNz04eUIEQqS
-	gYODdrK0271TBfGmmTEyQGZkvzoerf8cMk4xQGEauUskKj7+zINten5s9gf0646ot8meHeWngPjvb
-	v/UTmTGd32TlSG3Vqr8qW/E+1TgIzFIzy/6VBUjjxSkGYnZ9otpc5DVPlaq6uJMfRU4dfP3DxQjwj
-	Rvl2/vkjJntIHc05pyptI80wVbMC8YaBIVr0ANiW6feuhuO9+fUVPWmvQLgOU8AAequnWJmTB8Gml
-	rAe8FfpemQQbbSLPL+G87gPTJqAh1r0HCfIcI7vjlmECWwzqRNQ6T81ykl5SVYuVx4zqi88+hi6hP
-	13Rnmksw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KgZEp0UD9JIKHXFKlxz0fwiDdGR2QlB1FWEwO6CbLeI=; b=XFzLfMHKBXAtXCVmv5d+vbWWlA
+	5RL71PTWNh9nQrcyc8GSQXo8cNVwU+NMXus89N9YmCb4wyKUaZGL3IBATQ2HYR3ii5v6x6irCdVIY
+	F4f1w3uWkMJ7FVpXmr4rceXDdwd/eLNpXM1BblfCHzSAsWxL3K0CcqwUMp1+cT9dqZ5+Z22xfcXf2
+	802qKqu3Tbf0BzS+B3nCbnTnxRelmwYc0fQgQmgwn5KY82l8bmoxD4UBt93ZBVaKdfeQK+bragEHG
+	ftRD6Ser8x/8b5ck33u6lA/9obSifM22t9O0zlaodU0j3PNG2VNZdq0OiHXzf0rfM5c5PgoBmOdj7
+	CmklRruw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2pMM-00EYXr-58; Wed, 07 Dec 2022 08:00:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p2pav-00EriU-8Z; Wed, 07 Dec 2022 08:15:57 +0000
+Received: from mout.kundenserver.de ([212.227.126.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2pMI-00EYPj-Sf
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 08:00:52 +0000
-X-UUID: c783f4d190824a71a9703c9fe5093c5b-20221207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aqnNrSjyLbOJhKH4QPr/+TJITVaI6eC+HBJYZZfcSwU=;
-	b=AlCXFuiRq2TZjoL8NJwSp40waK6NH9HulFpbocgldo99fX1LLq8CQtMCYHxFTVbGb7BPeZx+lHeX3GWeQgBARHroDV3g++IZLsAoKIRpIFD9JlrXzWrQnESdj5wLdr7uRgfpIMOPg0/lLBMeHV8tPBCZmEso835d/i3b9BcU6E4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:5911cb6a-15a2-4f4e-853b-bf7881478b56,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:ac5ee4d1-652d-43fd-a13a-a5dd3c69a43d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c783f4d190824a71a9703c9fe5093c5b-20221207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2135248490; Wed, 07 Dec 2022 01:00:43 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 7 Dec 2022 15:30:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 15:30:07 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] wifi: mt76: mt7996: fix unintended sign extension of mt7996_hw_queue_read()
-Date: Wed, 7 Dec 2022 15:30:04 +0800
-Message-ID: <a882942479ff8f20189580a69174202b40210682.1670396836.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1p2pas-00Erdg-9g
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 08:15:56 +0000
+Received: from [192.168.0.203] ([151.127.53.97]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MJVU0-1pMYKa1hhw-00JoZC; Wed, 07 Dec 2022 09:15:40 +0100
+Message-ID: <8e8cfe60-c040-bf02-665b-a980852864aa@green-communications.fr>
+Date: Wed, 7 Dec 2022 09:15:32 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v2 1/3] wifi: mt76: mt7915: rework
+ mt7915_thermal_set_cur_throttle_state()
+To: Howard Hsu <howard-yh.hsu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221207052500.10855-1-howard-yh.hsu@mediatek.com>
+ <20221207052500.10855-2-howard-yh.hsu@mediatek.com>
+Content-Language: fr, en-US
+From: Nicolas Cavallari <nicolas.cavallari@green-communications.fr>
+In-Reply-To: <20221207052500.10855-2-howard-yh.hsu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:FpWw88GeqX3jW6EjsKRsQ73rCjXuWJGpYRlKHXjjjCHzaZj9tKl
+ EuBXx162xQHqn3voRUIYTkbZ+6b0nmSXBG+1St3QklfsLLYlNaoDuwPPdY6dexSqAMMj22R
+ uetPcijNsuDN1dZ1iKDxDwofFu/0EpqD3RBN5bDQwDXbJFxTvXtE1t3IsQ/cG+0XLUcg+nl
+ A0xitxqqXFGFrahNdRfTQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:AIrAURp8oE8=:ILMB5225nDfqxkLO62IAZV
+ 6qiwG3ZGy/hKS6pYnW6InsejwiX1RwWUiG3UFpWdza3t5VefnXfC8VF/ffkHfqJceD5yybrIB
+ jhOmSXRuY5w/SQg3CjmNcQ7zfxCJKs7k3lq5TzwIgCYTIl8+KLnS+h77dkIOdu8nI7yRAiCZa
+ pRbyg+C6pKxdwLNnKvIbuHNPbySwIyihxQRvU0UI7Fr3sdg5X1jgLFZpkLcAL4H1E97hr2jGJ
+ D1GuWcImU/Bcy0stSGzqisnz/TaXMYwYeh7Owj6ETjgQErNzATAlWQzzU+IlpH1OwZP/HVTkY
+ Wfg3ZABJ2QRs0q8s+pIrLac5+LTstInQNJoGVLmEd7VWT1u6IvxFO9Mm1qIZwQebANnCRxKMs
+ 0Vi4kdJHLR8y9qiVvN0nqdc69+DSTW7y33aFRZd9RXHfP6tiFPKLkQCPxMFfFzpeqvaRR44wE
+ kqM9rcoRHH0LhaZ3rDXjrAiJuu6IXUbYZy9PIBKVmnLEfMn4zkjSIf68w86uegfeodPRpNrce
+ 4K9HJh+LsJT+c4aMBAC+dKe+xSEkLIsE59aLIj2hLU6nYp9QU7UErNrSfhttylkA6/bxmgS0l
+ 4hwVVyyyI5gsA/pa/WfCCHsjSfC2JtybYWpl4CAgNNbm0EduvWv6LtMZUBxfPSH0PrUpVVqPI
+ IL7iJSdyReNWQKF5m0X59CAVeAZkQ0wVBbF9h2kY1xf0xy+3508VrOouiiGF1FEUP9KqbxiZa
+ qMVQsy1PIAFTTpoWgRkKMCdDpQminrit3mGzogbdFSDVaBT9wE0A40uI0U80DXpXBtjlpsk1K
+ Owg1zttKDcUTEucXTogPfgRrBnt4ReiTxXyFy5H/YNR/NZW65o=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_000050_950667_0F727FCC 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221207_001554_676731_843D6F13 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +81,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the expression "map[i].qid << 24" starts as u8, but is promoted to
-"signed int", then sign-extended to type "unsigned long", which is not
-intended. Cast to u32 to avoid the sign extension.
+On 07/12/2022 06:24, Howard Hsu wrote:
+> This patch includes 3 changes:
+> 1. The maximum throttle state can be set to 100 to fix the problem that
+> thermal_protect_disable can never be triggered.
 
-Reported-by: coverity-bot <keescook+coverity-bot@chromium.org>
-Addresses-Coverity-ID: 1527813 ("Integer handling issues")
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+You are modifying the cooling_device part.  The cooling_device is 
+explicitly configured to have a max state of MT7915_CDEV_THROTTLE_MAX 
+(=99), so the thermal subsystem will probably prevent 
+mt7915_thermal_set_cur_throttle_state from being called with a higher 
+value.  It will also probably complain if get_cur_state starts returning 
+values above MT7915_CDEV_THROTTLE_MAX.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-index 99b23aef53a5..3d4fbbbcc206 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-@@ -457,7 +457,7 @@ mt7996_hw_queue_read(struct seq_file *s, u32 size,
- 		if (val & BIT(map[i].index))
- 			continue;
- 
--		ctrl = BIT(31) | (map[i].pid << 10) | (map[i].qid << 24);
-+		ctrl = BIT(31) | (map[i].pid << 10) | ((u32)map[i].qid << 24);
- 		mt76_wr(dev, MT_FL_Q0_CTRL, ctrl);
- 
- 		head = mt76_get_field(dev, MT_FL_Q2_CTRL,
--- 
-2.18.0
+And, as the comment below indicates, the thermal subsystem expect that a 
+higher state provide more cooling.  So if 99 means "maximum cooling", 
+100 cannot mean "disable cooling".
+
+Also, last time I tried, thermal_protect_disable didn't work; It didn't 
+disable anything, the previous thermal throttle kept being applied. 
+Maybe a new firmware fixed this, but the kernel cannot simply expect the 
+firmware to be up to date.
+
+> 2. Throttle state do not need to be different from the previous state.
+> This will make it is impossible for users to just change the
+> trigger/restore temp but not the throttle state.
+
+The throttle state is mostly set by the kernel's thermal governor and 
+the user has only very little control over it.  The thermal governor 
+runs every X seconds and will change the state if it thinks it is too 
+low or too high.
+
+The default step_wise governor will aggressively set it to zero if the 
+system isn't overheating, for example.
+
+> 3. Add dev_err so that it is easier to see invalid setting while looking at dmesg.
+> 
+> Fixes: 771cd8d4c369 ("mt76: mt7915e: Fix degraded performance after temporary overheat")
+> Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+> ---
+>   .../net/wireless/mediatek/mt76/mt7915/init.c   | 18 ++++++++++--------
+>   1 file changed, 10 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> index c810c31fbd6e..abeecf15f1c8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> @@ -131,14 +131,17 @@ mt7915_thermal_set_cur_throttle_state(struct thermal_cooling_device *cdev,
+>   	u8 throttling = MT7915_THERMAL_THROTTLE_MAX - state;
+>   	int ret;
+>   
+> -	if (state > MT7915_CDEV_THROTTLE_MAX)
+> +	if (state > MT7915_THERMAL_THROTTLE_MAX) {
+> +		dev_err(phy->dev->mt76.dev,
+> +			"please specify a valid throttling state\n");
+>   		return -EINVAL;
+> +	}
+>   
+> -	if (phy->throttle_temp[0] > phy->throttle_temp[1])
+> -		return 0;
+> -
+> -	if (state == phy->cdev_state)
+> -		return 0;
+> +	if (phy->throttle_temp[0] > phy->throttle_temp[1]) {
+> +		dev_err(phy->dev->mt76.dev,
+> +			"temp1_crit shall not be greater than temp1_max\n");
+> +		return -EINVAL;
+> +	}
+>   
+>   	/*
+>   	 * cooling_device convention: 0 = no cooling, more = more cooling
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
