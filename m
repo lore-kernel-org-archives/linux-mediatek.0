@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CEBBC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 15:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F786C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 16:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=; b=DXCfkKFEsB4KTOaD128qDy94L8
-	272/6DmK1UgH/6aBqDH3cs9bs8zryIZ4vaSGuXbKcGocUcl5b3frF+2/D/nODqvxfv1cslvJkre5X
-	fRIRffrORWY0DHZCnl98t+EJo/CyFpXfzp3Tmv/W/QqEMR8u6/qKph2WQLJisP1ky05/YcUBgilIz
-	GdxmofnuOdLDMUXdoHh19cg0eTwcqXyFhCITYVA6cWRyQ/lqWgJ1sqsPIvic1H3zi8mEL110v4RZV
-	Zy2mT7+LA0uinHjSKtt5DhluNqn8URtM4m+0cNBK/rdcpOucWTvOPrbp18l5Qzf3/WAwaxU/6jUNM
-	raklE+wA==;
+	bh=2gZxVDRSgNhczwL0jmLPqk9fVEXg0i7s4V4i2FAUxYc=; b=XSNynHXMXXe2T5yrtx9sc//Thl
+	PjII5AJ0LSFa/r3c6NF3hp7pBJr2wFqxls0S3FatqSZL9mI81HjKCw+hUYLIL//nVTlGmWHNBAA4p
+	FFwPugiRRjbsGrADPQoLMUGZbG7ETee0twuXJGDgqQWfsliljhAftLE/QkIVeTXHUwCyV/TcLjJ7x
+	QaD6h+Ga+Fnzg99g9V8QW8jn33H0tXfzkXJqiccMpzV5phn8kmew8djk4m3uyuhlJZ2e5lvriFKwE
+	1z5s4m0cwn7/rtWxG8s464P7WTz3TwEW1XeQUeVdQuAOvDAXd1tbbZJEhP617xyHFQIw/nGzjgsk6
+	PSLvaijQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2wmY-006FTU-TM; Wed, 07 Dec 2022 15:56:26 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1p2wtv-006LB3-2V; Wed, 07 Dec 2022 16:04:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2wmW-006FHI-Gu
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 15:56:25 +0000
-Received: by mail-ej1-x631.google.com with SMTP id gh17so15038453ejb.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 07:56:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=;
-        b=NIcT+iuluektAZ43nD5zND2pW7Pc6Jne9R/wMULrDfJFGi3VEUvXX1rJXafGRDitnM
-         kAET1yXrKXXyXo40lWfPfDkxnEtfANlOJL5MmHgH0r6E9/38BKXryJbKsifW12TiEs7i
-         98JieEasaAgLxnXWwA7NnJDAiByLxFAMPFq8U0OG4WSnCVLVf5EVzJ1OY67vdNOvYWLA
-         5YKlMoY52hlo7l2oELGnElAn9yRysk2OLsDB6fDMtmZVyPOerYAqnufkgnCJsyjDEdu5
-         RY2JqW33Cl10HzlsabUkgZXKxuqZZqRtz0b62+7Qi2b/BnFwZpD5Q7cIR7QIHPs2fvo2
-         5oSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=;
-        b=HdEe+dhyCCX5Owg9YrSABDTLZX3HWfbqG0NmZ3wNO642laJhygeNXOvb+Ebx9ekcNZ
-         jbOYcRCTrPo3TRqLWDjRCiq/5Pc2N+xx8BCHIfTF1LevjTTP2GoWLAY3W9lpys9XLgI+
-         wHHv1OBbCZ8kT7K/isSLzZEg9M6eZFWrzswZro+rDtRjOs3sFm4TuA8XoL8TAjgqRsH4
-         TQ9q3TJ3UErdEjiFB74Dj4DsTwUVRoDoYkCWeS1BaqlIKtr/FENQkW9Ru/NjKz2e7Tku
-         ygZqm9quPNGKxVsAcqQLruqhV0yZR8YQxJnl8GO8Ubfp4nbkxWd0SY88TrX2+NdWM/u5
-         XV5w==
-X-Gm-Message-State: ANoB5pkaYpNRZd24HIxjZn5ccK55k0qd4uG3FfIVD1TX4FQ/3ogm3SLK
-	M7GjVYeGNSpJ/gGrZIof77A=
-X-Google-Smtp-Source: AA0mqf5WSh1ldUWiKlJTCUx19cpUJYc2SS9QTb71YZMoHc1TB56et+PDXLAokItPHooMeJ9Aa04teA==
-X-Received: by 2002:a17:906:ca0e:b0:78c:1f2f:233e with SMTP id jt14-20020a170906ca0e00b0078c1f2f233emr64572621ejb.307.1670428574062;
-        Wed, 07 Dec 2022 07:56:14 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id q18-20020a1709066b1200b007bf988ce9f7sm8715501ejr.38.2022.12.07.07.56.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Dec 2022 07:56:13 -0800 (PST)
-Date: Wed, 7 Dec 2022 18:56:09 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	kernel-janitors@vger.kernel.org
-Subject: [PATCH] iommu/mediatek: Fix forever loop in error handling
-Message-ID: <Y5C3mTam2nkbaz6o@kili>
+	id 1p2wts-006L7o-Cn
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 16:04:01 +0000
+X-UUID: fcda6509be3742f68469068646785425-20221207
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2gZxVDRSgNhczwL0jmLPqk9fVEXg0i7s4V4i2FAUxYc=;
+	b=s/j/6uUxGm8Kjuo2PKhPSS4oYMJqGqOvEPZ5mwsrRliBKnoykcqlhvXR4Kkbz3a8zh4oNSDtT0FSF3re0Zi3oXCr/8vJ6FlrFgSw3BZoTElAOj+4lrkRS3XN81k06n/9USJu2PBB6rYFKClHzwM0GTh8O5kTKT3nLpujxpfE0yI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:bf905fbb-0bca-4276-8e36-f13328b2bedf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:9c759924-4387-4253-a41d-4f6f2296b154,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fcda6509be3742f68469068646785425-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 761319604; Wed, 07 Dec 2022 09:03:53 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 8 Dec 2022 00:03:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 8 Dec 2022 00:03:17 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
+ Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: fix coverity uninit_use_in_call in mt76_connac2_reverse_frag0_hdr_trans()
+Date: Thu, 8 Dec 2022 00:03:10 +0800
+Message-ID: <bde6335dde0a79d2c2b43323167fd5c2beb45645.1670427543.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_075624_580383_8F319529 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20221207_080400_611406_1DC304FA 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +84,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a typo so this loop does i++ where i-- was intended.  It will
-result in looping until the kernel crashes.
+The default case for frame_contorl is invalid. We should always
+assign addr3 of this frame properly.
 
-Fixes: 26593928564c ("iommu/mediatek: Add error path for loop of mm_dts_parse")
-Signed-off-by: Dan Carpenter <error27@gmail.com>
+Coverity error message:
+if (ieee80211_has_a4(hdr.frame_control))
+(19) Event uninit_use_in_call:	Using uninitialized value "hdr".
+Field "hdr.addr3" is uninitialized when calling "memcpy".
+	memcpy(skb_push(skb, sizeof(hdr)), &hdr, sizeof(hdr));
+else
+	memcpy(skb_push(skb, sizeof(hdr) - 6), &hdr, sizeof(hdr) - 6);
+
+Fixes: 0880d40871d1 ("mt76: connac: move mt76_connac2_reverse_frag0_hdr_trans in mt76-connac module")
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+v2 : add Fixes tag
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 3e46bc8b0714..2badd6acfb23 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1160,8 +1160,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
- 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index fd60123fb284..c8d0c84e688b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -930,7 +930,7 @@ int mt76_connac2_reverse_frag0_hdr_trans(struct ieee80211_vif *vif,
+ 		ether_addr_copy(hdr.addr4, eth_hdr->h_source);
+ 		break;
+ 	default:
+-		break;
++		return -EINVAL;
+ 	}
  
- err_larbdev_put:
--	/* id may be not linear mapping, loop whole the array */
--	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i++) {
-+	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i--) {
- 		if (!data->larb_imu[i].dev)
- 			continue;
- 		put_device(data->larb_imu[i].dev);
+ 	skb_pull(skb, hdr_offset + sizeof(struct ethhdr) - 2);
 -- 
-2.35.1
+2.18.0
 
 
