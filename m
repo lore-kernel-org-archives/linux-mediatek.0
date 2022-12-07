@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B430DC4708E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6919FC352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dfnrJwYBnC1kWUdT7GbK2EkVI9hxaD+y1EqdGvZDudM=; b=rbIJcaZaXq/zjYBgvmjDaYT7Ox
-	TC8Im+5kYEdxYn9WRFwoKXsDpPP8fOaydlDpS/C9HzDoSKr+tpgy3GjRUZymIDmlBWfxtv4JDM1UE
-	PuiJn7m25d0haX+zzVa9Y2tdfv9fk6T/8aKm8OSSIG5GyqrLy/q1zqeRMjiMM5dwlyYx7r/k4NxIW
-	+8nIoRLNLEb6S/MJoG5IjP+US938lalQ0UsI75P2XsL/Mp+aD93ff8paqDupf35BJ9Paz/ADfyKj7
-	6noJ/DB3dfTuufT+ofV6/D1KXdzvKoHtcL71uvqauDSYt2XLeS8e0rrQTNIerIDS/2SKygzGCUj8W
-	S0q5y0Zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9qhhglclNe/Y+Ww2TBaF/Rt3nwv66/xfoqUyqPeiMww=; b=l8A2md9DVgcHySQmyDKPDPV04T
+	C8Ar/XD/BK54HD4KX4pAqEdX3anonL7XjY2c38HUjFYPpwmMoZhzYtpRqvsu+9Ctf934UwV9VyMbu
+	y0ZE3XcNbqJ/X1rX0r18TO2TtDUJO5NJXzyUWuEW4rrKkjKvQ22V/tcchNHonQd+POhI4GuptwfI/
+	M1h5IFpdl798WZaYegy/7AmKlsDGH9Q6GbkZ9UzNlh+qX7EBCTcLDM5qgeWFYjD/8zcMgqSAWoDa6
+	BPKwb2jHGrRAhuxL+AalSJbh+IAKK6vn4VBN6gyFO5jnuGgTenh36qiCUK0dabeetu8Fw8hWEk0Jx
+	SrNHqVpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2y3D-007FYF-PU; Wed, 07 Dec 2022 17:17:43 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1p2y9J-007JOi-OF; Wed, 07 Dec 2022 17:24:01 +0000
+Received: from mail-oo1-f53.google.com ([209.85.161.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2y3B-007FRy-NA
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 17:17:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1670433461; x=1701969461;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=8BTkkSN0FOm3ZX7WIxdDtwV5dm5TXFbbXMxWlJEKRaU=;
-  b=CKHXvs6sFUSceGxo+vBPjF2heSD1vTspIbDfMQ/I4gZD8WTjGQpS1Xb2
-   piy6cpOB/E8aFE84o67oHfAdRawiR4ov3W8AXiWw4a1mDkgoYoOzbw1zS
-   IDPZtInZm4a87st/pcq2ibvBb5XoccUfBk1hbyefW7k1E0aN2KSkfg9hh
-   6y3DGaC9O2XXrhFXwJocc1jP8surVemH/wJAfDBIFNtT9Zd1MYOFxLXv4
-   26GGYumL4ezXgMWc/r8A5J+UniHc8ZImN06+5nloL1qRbnpYW8LLJKCWm
-   lAskW9xzf0D7/BnCD3s1jR/NLt1X4iB4gT6URvIuKado30n+rxiih+fDy
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="315663340"
-X-IronPort-AV: E=Sophos;i="5.96,225,1665471600"; 
-   d="scan'208";a="315663340"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2022 09:17:37 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="788968522"
-X-IronPort-AV: E=Sophos;i="5.96,225,1665471600"; 
-   d="scan'208";a="788968522"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.38.130])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2022 09:17:32 -0800
-Message-ID: <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
-Date: Wed, 7 Dec 2022 19:17:27 +0200
+	id 1p2y98-007JHz-Vt; Wed, 07 Dec 2022 17:23:52 +0000
+Received: by mail-oo1-f53.google.com with SMTP id t15-20020a4a96cf000000b0049f7e18db0dso15080ooi.10;
+        Wed, 07 Dec 2022 09:23:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9qhhglclNe/Y+Ww2TBaF/Rt3nwv66/xfoqUyqPeiMww=;
+        b=Qaec7jxAdBLESKW0x0+bXqyIu1FaMDo9bqB9wyeeEqH/D4nyjAPWg4jmz9YaoieVNj
+         Sd2zVByvOQ6iCdxrqQH6B7WpvBcEGy5yCD/9hUJs2VT6U/ba+VL9iROojW1bEagZmMG+
+         oIdglKF2a+RaTRJdOlXzTanAknjWrZVg/9sCYBKX2OEfox1/9ebvoeyjY+XGTliDg04+
+         b1B5AxXSZXXbFD5eGncdAL2Kjtnre+s6uOUtzcnepceqU1cLvRIDOvoh39tRjpkoq68V
+         PXF3v9VURyvtkV/VLbBvf/0BSNOSbb5Aee0FLRY62WYAjtY0T88kPI2RlMu+VG0/V4p3
+         A26Q==
+X-Gm-Message-State: ANoB5pmrJAV8t6jcQscBu9d5U92TvjsmmPAst8JqSjtmURrJnzAa1Vf2
+	riNNewVf2+k+l6gPVpWMpyz4ppFPZg==
+X-Google-Smtp-Source: AA0mqf6Rie1pRr+wry5Yh3B2mB24YYud/ZXySwS1VnTqqk88pTw8r/yGavdUGW7iQk1zoJz50LknPg==
+X-Received: by 2002:a4a:b145:0:b0:49f:449a:5f6c with SMTP id e5-20020a4ab145000000b0049f449a5f6cmr30324598ooo.93.1670433828843;
+        Wed, 07 Dec 2022 09:23:48 -0800 (PST)
+Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id t4-20020a4adbc4000000b0049f5ce88583sm9112297oou.7.2022.12.07.09.23.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Dec 2022 09:23:48 -0800 (PST)
+Received: (nullmailer pid 2437289 invoked by uid 1000);
+	Wed, 07 Dec 2022 17:23:47 -0000
+Date: Wed, 7 Dec 2022 11:23:47 -0600
+From: Rob Herring <robh@kernel.org>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Steve Cho <stevecho@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v5,1/3] media: dt-bindings: media: mediatek: vcodec:
+ adapt to the 'clock-names' of different platforms
+Message-ID: <167043382716.2437231.1367322252075275050.robh@kernel.org>
+References: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.5.1
-Subject: Re: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
- recovery
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com
-References: <20221206031109.10609-1-peter.wang@mediatek.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20221206031109.10609-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221206064536.16592-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_091741_798917_70FF2CA8 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20221207_092351_047366_50F2052A 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,72 +78,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/12/22 05:11, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
+
+On Tue, 06 Dec 2022 14:45:34 +0800, Yunfei Dong wrote:
+> mt8195 and mt8192 have different clock numbers, separate 'clock-names'
+> according to compatible name.
 > 
-> When SSU/enter hibern8 fail in wlun suspend flow, trigger error
-> handler and return busy to break the suspend.
-> If not, wlun runtime pm status become error and the consumer will
-> stuck in runtime suspend status.
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-
-Should this have a Fixes or stable tag?
-
-Another minor comment below, otherwise:
-
-Reviewed-by: Adrian Hunter <adrian.hunter@intel.com>
-
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
->  drivers/ufs/core/ufshcd.c | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+> compared with v4:
+> - change min clocks and clock-names from 1 to 4
+> compared with v3:
+> - rewrite clock-names according to different platforms.
 > 
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index b1f59a5fe632..98f105f32877 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -9049,6 +9049,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  
->  		if (!hba->dev_info.b_rpm_dev_flush_capable) {
->  			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> +			if (ret && pm_op != UFS_SHUTDOWN_PM) {
-> +				/*
-> +				 * If return err in suspend flow, IO will hang.
-> +				 * Trigger error handler and break suspend for
-> +				 * error recovery.
-> +				 */
-> +				spin_lock_irq(hba->host->host_lock);
-> +				hba->force_reset = true;
-> +				ufshcd_schedule_eh_work(hba);
-> +				spin_unlock_irq(hba->host->host_lock);
-> +
-> +				ret = -EBUSY;
-> +			}
->  			if (ret)
->  				goto enable_scaling;
->  		}
-> @@ -9060,6 +9073,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	 */
->  	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
->  	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
-> +	if (ret && pm_op != UFS_SHUTDOWN_PM) {
-> +		/*
-> +		 * If return err in suspend flow, IO will hang.
-> +		 * Trigger error handler and break suspend for
-> +		 * error recovery.
-> +		 */
-> +		spin_lock_irq(hba->host->host_lock);
-> +		hba->force_reset = true;
-> +		ufshcd_schedule_eh_work(hba);
-> +		spin_unlock_irq(hba->host->host_lock);
+> Reference series:
+> [1]: v5 of this series is presend by Allen-KH Cheng.
+>      message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
+> ---
+>  .../media/mediatek,vcodec-subdev-decoder.yaml | 41 ++++++++++++++++---
+>  1 file changed, 35 insertions(+), 6 deletions(-)
+> 
 
-Same 4 lines of code could be separated into a helper function.
-
-> +
-> +		ret = -EBUSY;
-> +	}
->  	if (ret)
->  		goto set_dev_active;
->  
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
