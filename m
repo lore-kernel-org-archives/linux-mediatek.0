@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E51DC4708E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 09:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9B40C4708E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 09:35:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZSOWUXOh2fSugvH+FPWxgchBdXY+8Pwr+80JI6eSrkM=; b=wJMLmQMEyLwN7KL2ZTBynaqEoK
-	5OqxRpLrV1iRwQtqAxxZJwm9dqMjaYAK4UYDatzG7PMTskft+UdxO/5hPvnS8EwQh5U3tpTL1+wMW
-	gm1xApZHE21MkWLoaj8oHdW5RzUysBx/OuYXLGoJdHSfMDIr/5VjRXIdxEN8z6m9JKN+iKpcL6wpw
-	hnkr4xz9tNdOfjKEV8JYxxr8sbneVjrES7RBpPEgAfD6P9QW1naztFtNVdMXLjVDZxY6nbSBRqJX+
-	ma5CVFLrTCfrqV7i6xvk7qchcxugjmaLK1EJ93iaNubU1T16jR/X4vD1gDHNOwF0TP1u3Tk/cFQt6
-	nSj7gbAg==;
+	bh=K4KyRbv9cRU2Q5uuf1kOVGvmfEK3c5rT8jaFT3bGCaY=; b=nf/0Qb9nTfW1Wilrc9dY7bMDOz
+	AfZeWKznq5BwnpBryEACoBDfaKruIdeT3wxK31gYziGdtzrHZqXr28t64mhbBzJ95/qygq4XSnz0J
+	Rixa8CJaOEBwdQZNGZes+RrM23Xc/fWGeMHq9HTpVatmbZ72dMLmCVarVQ2IgQAZIJwILHIHT/7UR
+	sDjc8Xc2/mMzw9xcmE2ELKuAE5CwbM4sTEq2py1uWvrVFQGVIT2aQRKzvkVFsdDxJjrCXxF3FG+Ye
+	0QqJfTZp14n/VpDUteTdst+OcDrwxP9RR4PgJjIwqrYF/VwY6YmXHkAP6wt/YqCzrFt1D1uSRgAS5
+	m3PlqzMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2qpt-00GFz2-5A; Wed, 07 Dec 2022 09:35:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p2qq4-00GGRp-2O; Wed, 07 Dec 2022 09:35:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2qpo-00GFjV-17; Wed, 07 Dec 2022 09:35:27 +0000
-X-UUID: 8e780e7cfc544cf68a3ee52b614ebee2-20221207
+	id 1p2qpo-00GFkR-Dm; Wed, 07 Dec 2022 09:35:34 +0000
+X-UUID: 9b16d248f3c04ebe95316439ab9ef388-20221207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZSOWUXOh2fSugvH+FPWxgchBdXY+8Pwr+80JI6eSrkM=;
-	b=k55x6qOwDpgsEMAVelTrQ6RZNfjaNNDjRI2js0npEL1GQcQEbu8BEadIR3o0ROs8oNiEHnXQf3tMvjH3oq3jr2wkOPXYq3mr4XmsHI1kTFSCUmwOAHOGVWPrHdRujcW+TMQxGfVZcwl6F1JYiGvzQPRos/rXK3xeJC9oiBI+Tkc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=K4KyRbv9cRU2Q5uuf1kOVGvmfEK3c5rT8jaFT3bGCaY=;
+	b=d9OqdMXhCq3PJsdn6v5cMFvCgwPF8lGvLvfHObnIEyBiYxVtUS344x6+YgV+7JmfEv5mWpQphdp141iwKPLG38xywiV7vBnub3/L14Ud3OXrAQYizwAJpEOK3etI43Qq6JJcdK2vla7eJDOu0IVlPnvESrCmEGIveXwv9knah38=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:ee4be8ce-aa91-42a2-aedb-5d2ab756a9e0,IP:0,U
-	RL:0,TC:0,Content:28,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:28
-X-CID-META: VersionHash:dcaaed0,CLOUDID:516ae7d1-652d-43fd-a13a-a5dd3c69a43d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 8e780e7cfc544cf68a3ee52b614ebee2-20221207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.14,REQID:896a9e8b-c476-4c0a-9295-ea5824069c31,IP:0,U
+	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:dcaaed0,CLOUDID:5ba1cd16-b863-49f8-8228-cbdfeedd1fa4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 9b16d248f3c04ebe95316439ab9ef388-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 759210470; Wed, 07 Dec 2022 02:35:19 -0700
+	with ESMTP id 1997073921; Wed, 07 Dec 2022 02:35:19 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 7 Dec 2022 16:44:14 +0800
+ 15.2.792.15; Wed, 7 Dec 2022 16:44:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 16:44:14 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 16:44:13 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
@@ -57,9 +57,9 @@ CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v2 10/12] media: platform: mtk-mdp3: add 8195 platform configuration
-Date: Wed, 7 Dec 2022 16:44:10 +0800
-Message-ID: <20221207084412.14075-11-moudy.ho@mediatek.com>
+Subject: [PATCH v2 01/12] dt-binding: mediatek: add bindings for MediaTek 8195 MDP3 components
+Date: Wed, 7 Dec 2022 16:44:01 +0800
+Message-ID: <20221207084412.14075-2-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221207084412.14075-1-moudy.ho@mediatek.com>
 References: <20221207084412.14075-1-moudy.ho@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_013524_124349_CF045D27 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20221207_013524_798663_5DF46C64 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,798 +83,832 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 basic configuration in header file "mdp3-plat-mt8195.h"
-and corresponding driver data.
+This patch adds support for MT8195 MDP3 RDMA, and introduce more
+MDP3 components present in MT8195.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../mediatek/mdp3/mt8195/mdp3-plat-mt8195.h   | 652 ++++++++++++++++++
- .../platform/mediatek/mdp3/mtk-img-ipi.h      |   1 +
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    |  36 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  19 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   6 +
- 5 files changed, 714 insertions(+)
- create mode 100644 drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
+ .../bindings/media/mediatek,mdp3-aal.yaml     | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-color.yaml   | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-fg.yaml      | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-hdr.yaml     | 63 +++++++++++++++
+ .../bindings/media/mediatek,mdp3-merge.yaml   | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-ovl.yaml     | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-pad.yaml     | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-rdma.yaml    |  5 +-
+ .../bindings/media/mediatek,mdp3-split.yaml   | 76 +++++++++++++++++++
+ .../bindings/media/mediatek,mdp3-stitch.yaml  | 64 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-tcc.yaml     | 63 +++++++++++++++
+ .../bindings/media/mediatek,mdp3-tdshp.yaml   | 64 ++++++++++++++++
+ 12 files changed, 717 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h b/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
 new file mode 100644
-index 000000000000..d90a67e1af8b
+index 000000000000..5b59e0802357
 --- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp3/mt8195/mdp3-plat-mt8195.h
-@@ -0,0 +1,652 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+ */
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-aal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#ifndef __MDP3_PLAT_MT8195_H__
-+#define __MDP3_PLAT_MT8195_H__
++title: MediaTek Media Data Path 3 AAL Device Tree Bindings
 +
-+static const struct mdp_platform_config mt8195_plat_cfg = {
-+	.rdma_support_10bit             = true,
-+	.rdma_rsz1_sram_sharing         = false,
-+	.rdma_upsample_repeat_only      = false,
-+	.rdma_esl_setting		= true,
-+	.rdma_event_num			= 4,
-+	.rsz_disable_dcm_small_sample   = false,
-+	.rsz_etc_control		= true,
-+	.wrot_filter_constraint		= false,
-+	.wrot_event_num			= 4,
-+	.tdshp_hist_num			= 17,
-+	.tdshp_constrain		= true,
-+	.tdshp_contour			= true,
-+};
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
 +
-+static const struct of_device_id mt8195_mdp_probe_infra[MDP_INFRA_MAX] = {
-+	[MDP_INFRA_MMSYS] = { .compatible = "mediatek,mt8195-vppsys0" },
-+	[MDP_INFRA_MMSYS2] = { .compatible = "mediatek,mt8195-vppsys1" },
-+	[MDP_INFRA_MUTEX] = { .compatible = "mediatek,mt8195-vpp-mutex" },
-+	[MDP_INFRA_MUTEX2] = { .compatible = "mediatek,mt8195-vpp-mutex" },
-+	[MDP_INFRA_SCP] = { .compatible = "mediatek,mt8195-scp" }
-+};
++description: |
++  One of Media Data Path 3 (MDP3) components is responsible for backlight
++  power saving and sunlight visibility improving.
 +
-+static const struct mdp_pipe_info mt8195_pipe_info[] = {
-+	[MDP_PIPE_RDMA0] = {MDP_PIPE_RDMA0, 0, 2},
-+	[MDP_PIPE_WPEI] = {MDP_PIPE_WPEI, 0, 0},
-+	[MDP_PIPE_WPEI2] = {MDP_PIPE_WPEI2, 0, 1},
-+	[MDP_PIPE_RDMA1] = {MDP_PIPE_RDMA1, 1, 1},
-+	[MDP_PIPE_RDMA2] = {MDP_PIPE_RDMA2, 1, 2},
-+	[MDP_PIPE_RDMA3] = {MDP_PIPE_RDMA3, 1, 3},
-+	[MDP_PIPE_SPLIT] = {MDP_PIPE_SPLIT, 1, 2},
-+	[MDP_PIPE_SPLIT2] = {MDP_PIPE_SPLIT2, 1, 3},
-+	[MDP_PIPE_VPP1_SOUT] = {MDP_PIPE_VPP1_SOUT, 0, 3},
-+	[MDP_PIPE_VPP0_SOUT] = {MDP_PIPE_VPP0_SOUT, 1, 4},
-+};
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-aal
 +
-+static const u32 mt8195_mutex_idx[MDP_MAX_COMP_COUNT] = {
-+	[MDP_COMP_RDMA0] = MUTEX_MOD_IDX_MDP_RDMA0,
-+	[MDP_COMP_RDMA1] = MUTEX_MOD_IDX_MDP_RDMA1,
-+	[MDP_COMP_RDMA2] = MUTEX_MOD_IDX_MDP_RDMA2,
-+	[MDP_COMP_RDMA3] = MUTEX_MOD_IDX_MDP_RDMA3,
-+	[MDP_COMP_STITCH] = MUTEX_MOD_IDX_MDP_STITCH0,
-+	[MDP_COMP_FG0] = MUTEX_MOD_IDX_MDP_FG0,
-+	[MDP_COMP_FG1] = MUTEX_MOD_IDX_MDP_FG1,
-+	[MDP_COMP_FG2] = MUTEX_MOD_IDX_MDP_FG2,
-+	[MDP_COMP_FG3] = MUTEX_MOD_IDX_MDP_FG3,
-+	[MDP_COMP_HDR0] = MUTEX_MOD_IDX_MDP_HDR0,
-+	[MDP_COMP_HDR1] = MUTEX_MOD_IDX_MDP_HDR1,
-+	[MDP_COMP_HDR2] = MUTEX_MOD_IDX_MDP_HDR2,
-+	[MDP_COMP_HDR3] = MUTEX_MOD_IDX_MDP_HDR3,
-+	[MDP_COMP_AAL0] = MUTEX_MOD_IDX_MDP_AAL0,
-+	[MDP_COMP_AAL1] = MUTEX_MOD_IDX_MDP_AAL1,
-+	[MDP_COMP_AAL2] = MUTEX_MOD_IDX_MDP_AAL2,
-+	[MDP_COMP_AAL3] = MUTEX_MOD_IDX_MDP_AAL3,
-+	[MDP_COMP_RSZ0] = MUTEX_MOD_IDX_MDP_RSZ0,
-+	[MDP_COMP_RSZ1] = MUTEX_MOD_IDX_MDP_RSZ1,
-+	[MDP_COMP_RSZ2] = MUTEX_MOD_IDX_MDP_RSZ2,
-+	[MDP_COMP_RSZ3] = MUTEX_MOD_IDX_MDP_RSZ3,
-+	[MDP_COMP_MERGE2] = MUTEX_MOD_IDX_MDP_MERGE2,
-+	[MDP_COMP_MERGE3] = MUTEX_MOD_IDX_MDP_MERGE3,
-+	[MDP_COMP_TDSHP0] = MUTEX_MOD_IDX_MDP_TDSHP0,
-+	[MDP_COMP_TDSHP1] = MUTEX_MOD_IDX_MDP_TDSHP1,
-+	[MDP_COMP_TDSHP2] = MUTEX_MOD_IDX_MDP_TDSHP2,
-+	[MDP_COMP_TDSHP3] = MUTEX_MOD_IDX_MDP_TDSHP3,
-+	[MDP_COMP_COLOR0] = MUTEX_MOD_IDX_MDP_COLOR0,
-+	[MDP_COMP_COLOR1] = MUTEX_MOD_IDX_MDP_COLOR1,
-+	[MDP_COMP_COLOR2] = MUTEX_MOD_IDX_MDP_COLOR2,
-+	[MDP_COMP_COLOR3] = MUTEX_MOD_IDX_MDP_COLOR3,
-+	[MDP_COMP_OVL0] = MUTEX_MOD_IDX_MDP_OVL0,
-+	[MDP_COMP_OVL1] = MUTEX_MOD_IDX_MDP_OVL1,
-+	[MDP_COMP_PAD0] = MUTEX_MOD_IDX_MDP_PAD0,
-+	[MDP_COMP_PAD1] = MUTEX_MOD_IDX_MDP_PAD1,
-+	[MDP_COMP_PAD2] = MUTEX_MOD_IDX_MDP_PAD2,
-+	[MDP_COMP_PAD3] = MUTEX_MOD_IDX_MDP_PAD3,
-+	[MDP_COMP_TCC0] = MUTEX_MOD_IDX_MDP_TCC0,
-+	[MDP_COMP_TCC1] = MUTEX_MOD_IDX_MDP_TCC1,
-+	[MDP_COMP_WROT0] = MUTEX_MOD_IDX_MDP_WROT0,
-+	[MDP_COMP_WROT1] = MUTEX_MOD_IDX_MDP_WROT1,
-+	[MDP_COMP_WROT2] = MUTEX_MOD_IDX_MDP_WROT2,
-+	[MDP_COMP_WROT3] = MUTEX_MOD_IDX_MDP_WROT3,
-+};
++  reg:
++    maxItems: 1
 +
-+static const struct of_device_id mt8195_sub_comp_dt_ids[] = {
-+	{}
-+};
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
 +
-+enum mt8195_mdp_comp_id {
-+	/* MT8195 Comp id */
-+	/* ISP */
-+	MT8195_MDP_COMP_WPEI = 0,
-+	MT8195_MDP_COMP_WPEO,           /* 1 */
-+	MT8195_MDP_COMP_WPEI2,          /* 2 */
-+	MT8195_MDP_COMP_WPEO2,          /* 3 */
++  clocks:
++    minItems: 1
 +
-+	/* MDP */
-+	MT8195_MDP_COMP_CAMIN,          /* 4 */
-+	MT8195_MDP_COMP_CAMIN2,         /* 5 */
-+	MT8195_MDP_COMP_SPLIT,          /* 6 */
-+	MT8195_MDP_COMP_SPLIT2,         /* 7 */
-+	MT8195_MDP_COMP_RDMA0,          /* 8 */
-+	MT8195_MDP_COMP_RDMA1,          /* 9 */
-+	MT8195_MDP_COMP_RDMA2,          /* 10 */
-+	MT8195_MDP_COMP_RDMA3,          /* 11 */
-+	MT8195_MDP_COMP_STITCH,         /* 12 */
-+	MT8195_MDP_COMP_FG0,            /* 13 */
-+	MT8195_MDP_COMP_FG1,            /* 14 */
-+	MT8195_MDP_COMP_FG2,            /* 15 */
-+	MT8195_MDP_COMP_FG3,            /* 16 */
-+	MT8195_MDP_COMP_TO_SVPP2MOUT,   /* 17 */
-+	MT8195_MDP_COMP_TO_SVPP3MOUT,   /* 18 */
-+	MT8195_MDP_COMP_TO_WARP0MOUT,   /* 19 */
-+	MT8195_MDP_COMP_TO_WARP1MOUT,   /* 20 */
-+	MT8195_MDP_COMP_VPP0_SOUT,      /* 21 */
-+	MT8195_MDP_COMP_VPP1_SOUT,      /* 22 */
-+	MT8195_MDP_COMP_PQ0_SOUT,       /* 23 */
-+	MT8195_MDP_COMP_PQ1_SOUT,       /* 24 */
-+	MT8195_MDP_COMP_HDR0,           /* 25 */
-+	MT8195_MDP_COMP_HDR1,           /* 26 */
-+	MT8195_MDP_COMP_HDR2,           /* 27 */
-+	MT8195_MDP_COMP_HDR3,           /* 28 */
-+	MT8195_MDP_COMP_AAL0,           /* 29 */
-+	MT8195_MDP_COMP_AAL1,           /* 30 */
-+	MT8195_MDP_COMP_AAL2,           /* 31 */
-+	MT8195_MDP_COMP_AAL3,           /* 32 */
-+	MT8195_MDP_COMP_RSZ0,           /* 33 */
-+	MT8195_MDP_COMP_RSZ1,           /* 34 */
-+	MT8195_MDP_COMP_RSZ2,           /* 35 */
-+	MT8195_MDP_COMP_RSZ3,           /* 36 */
-+	MT8195_MDP_COMP_TDSHP0,         /* 37 */
-+	MT8195_MDP_COMP_TDSHP1,         /* 38 */
-+	MT8195_MDP_COMP_TDSHP2,         /* 39 */
-+	MT8195_MDP_COMP_TDSHP3,         /* 40 */
-+	MT8195_MDP_COMP_COLOR0,         /* 41 */
-+	MT8195_MDP_COMP_COLOR1,         /* 42 */
-+	MT8195_MDP_COMP_COLOR2,         /* 43 */
-+	MT8195_MDP_COMP_COLOR3,         /* 44 */
-+	MT8195_MDP_COMP_OVL0,           /* 45 */
-+	MT8195_MDP_COMP_OVL1,           /* 46 */
-+	MT8195_MDP_COMP_PAD0,           /* 47 */
-+	MT8195_MDP_COMP_PAD1,           /* 48 */
-+	MT8195_MDP_COMP_PAD2,           /* 49 */
-+	MT8195_MDP_COMP_PAD3,           /* 50 */
-+	MT8195_MDP_COMP_TCC0,           /* 51 */
-+	MT8195_MDP_COMP_TCC1,           /* 52 */
-+	MT8195_MDP_COMP_WROT0,          /* 53 */
-+	MT8195_MDP_COMP_WROT1,          /* 54 */
-+	MT8195_MDP_COMP_WROT2,          /* 55 */
-+	MT8195_MDP_COMP_WROT3,          /* 56 */
-+	MT8195_MDP_COMP_MERGE2,         /* 57 */
-+	MT8195_MDP_COMP_MERGE3,         /* 58 */
++  power-domains:
++    maxItems: 1
 +
-+	MT8195_MDP_COMP_VDO0DL0,        /* 59 */
-+	MT8195_MDP_COMP_VDO1DL0,        /* 60 */
-+	MT8195_MDP_COMP_VDO0DL1,        /* 61 */
-+	MT8195_MDP_COMP_VDO1DL1,        /* 62 */
-+};
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
 +
-+static const struct mdp_comp_data mt8195_mdp_comp_data[MDP_MAX_COMP_COUNT] = {
-+	[MDP_COMP_WPEI] = {
-+		{MDP_COMP_TYPE_WPEI, 0, MT8195_MDP_COMP_WPEI, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_WPEO] = {
-+		{MDP_COMP_TYPE_EXTO, 2, MT8195_MDP_COMP_WPEO, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_WPEI2] = {
-+		{MDP_COMP_TYPE_WPEI, 1, MT8195_MDP_COMP_WPEI2, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_WPEO2] = {
-+		{MDP_COMP_TYPE_EXTO, 3, MT8195_MDP_COMP_WPEO2, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_CAMIN] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_CAMIN, 0},
-+		{3, 3, 0}
-+	},
-+	[MDP_COMP_CAMIN2] = {
-+		{MDP_COMP_TYPE_DL_PATH, 1, MT8195_MDP_COMP_CAMIN2, 0},
-+		{3, 6, 0}
-+	},
-+	[MDP_COMP_SPLIT] = {
-+		{MDP_COMP_TYPE_SPLIT, 0, MT8195_MDP_COMP_SPLIT, 1},
-+		{7, 0, 0}
-+	},
-+	[MDP_COMP_SPLIT2] = {
-+		{MDP_COMP_TYPE_SPLIT, 1, MT8195_MDP_COMP_SPLIT2, 1},
-+		{7, 0, 0}
-+	},
-+	[MDP_COMP_RDMA0] = {
-+		{MDP_COMP_TYPE_RDMA, 0, MT8195_MDP_COMP_RDMA0, 0},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_RDMA1] = {
-+		{MDP_COMP_TYPE_RDMA, 1, MT8195_MDP_COMP_RDMA1, 1},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_RDMA2] = {
-+		{MDP_COMP_TYPE_RDMA, 2, MT8195_MDP_COMP_RDMA2, 1},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_RDMA3] = {
-+		{MDP_COMP_TYPE_RDMA, 3, MT8195_MDP_COMP_RDMA3, 1},
-+		{3, 0, 0}
-+	},
-+	[MDP_COMP_STITCH] = {
-+		{MDP_COMP_TYPE_STITCH, 0, MT8195_MDP_COMP_STITCH, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG0] = {
-+		{MDP_COMP_TYPE_FG, 0, MT8195_MDP_COMP_FG0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG1] = {
-+		{MDP_COMP_TYPE_FG, 1, MT8195_MDP_COMP_FG1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG2] = {
-+		{MDP_COMP_TYPE_FG, 2, MT8195_MDP_COMP_FG2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_FG3] = {
-+		{MDP_COMP_TYPE_FG, 3, MT8195_MDP_COMP_FG3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR0] = {
-+		{MDP_COMP_TYPE_HDR, 0, MT8195_MDP_COMP_HDR0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR1] = {
-+		{MDP_COMP_TYPE_HDR, 1, MT8195_MDP_COMP_HDR1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR2] = {
-+		{MDP_COMP_TYPE_HDR, 2, MT8195_MDP_COMP_HDR2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_HDR3] = {
-+		{MDP_COMP_TYPE_HDR, 3, MT8195_MDP_COMP_HDR3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL0] = {
-+		{MDP_COMP_TYPE_AAL, 0, MT8195_MDP_COMP_AAL0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL1] = {
-+		{MDP_COMP_TYPE_AAL, 1, MT8195_MDP_COMP_AAL1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL2] = {
-+		{MDP_COMP_TYPE_AAL, 2, MT8195_MDP_COMP_AAL2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_AAL3] = {
-+		{MDP_COMP_TYPE_AAL, 3, MT8195_MDP_COMP_AAL3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_RSZ0] = {
-+		{MDP_COMP_TYPE_RSZ, 0, MT8195_MDP_COMP_RSZ0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_RSZ1] = {
-+		{MDP_COMP_TYPE_RSZ, 1, MT8195_MDP_COMP_RSZ1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_RSZ2] = {
-+		{MDP_COMP_TYPE_RSZ, 2, MT8195_MDP_COMP_RSZ2, 1},
-+		{2, 0, 0}
-+	},
-+	[MDP_COMP_RSZ3] = {
-+		{MDP_COMP_TYPE_RSZ, 3, MT8195_MDP_COMP_RSZ3, 1},
-+		{2, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP0] = {
-+		{MDP_COMP_TYPE_TDSHP, 0, MT8195_MDP_COMP_TDSHP0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP1] = {
-+		{MDP_COMP_TYPE_TDSHP, 1, MT8195_MDP_COMP_TDSHP1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP2] = {
-+		{MDP_COMP_TYPE_TDSHP, 2, MT8195_MDP_COMP_TDSHP2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TDSHP3] = {
-+		{MDP_COMP_TYPE_TDSHP, 3, MT8195_MDP_COMP_TDSHP3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR0] = {
-+		{MDP_COMP_TYPE_COLOR, 0, MT8195_MDP_COMP_COLOR0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR1] = {
-+		{MDP_COMP_TYPE_COLOR, 1, MT8195_MDP_COMP_COLOR1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR2] = {
-+		{MDP_COMP_TYPE_COLOR, 2, MT8195_MDP_COMP_COLOR2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_COLOR3] = {
-+		{MDP_COMP_TYPE_COLOR, 3, MT8195_MDP_COMP_COLOR3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_OVL0] = {
-+		{MDP_COMP_TYPE_OVL, 0, MT8195_MDP_COMP_OVL0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_OVL1] = {
-+		{MDP_COMP_TYPE_OVL, 1, MT8195_MDP_COMP_OVL1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD0] = {
-+		{MDP_COMP_TYPE_PAD, 0, MT8195_MDP_COMP_PAD0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD1] = {
-+		{MDP_COMP_TYPE_PAD, 1, MT8195_MDP_COMP_PAD1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD2] = {
-+		{MDP_COMP_TYPE_PAD, 2, MT8195_MDP_COMP_PAD2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PAD3] = {
-+		{MDP_COMP_TYPE_PAD, 3, MT8195_MDP_COMP_PAD3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TCC0] = {
-+		{MDP_COMP_TYPE_TCC, 0, MT8195_MDP_COMP_TCC0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_TCC1] = {
-+		{MDP_COMP_TYPE_TCC, 1, MT8195_MDP_COMP_TCC1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT0] = {
-+		{MDP_COMP_TYPE_WROT, 0, MT8195_MDP_COMP_WROT0, 0},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT1] = {
-+		{MDP_COMP_TYPE_WROT, 1, MT8195_MDP_COMP_WROT1, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT2] = {
-+		{MDP_COMP_TYPE_WROT, 2, MT8195_MDP_COMP_WROT2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_WROT3] = {
-+		{MDP_COMP_TYPE_WROT, 3, MT8195_MDP_COMP_WROT3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_MERGE2] = {
-+		{MDP_COMP_TYPE_MERGE, 0, MT8195_MDP_COMP_MERGE2, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_MERGE3] = {
-+		{MDP_COMP_TYPE_MERGE, 1, MT8195_MDP_COMP_MERGE3, 1},
-+		{1, 0, 0}
-+	},
-+	[MDP_COMP_PQ0_SOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 0, MT8195_MDP_COMP_PQ0_SOUT, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_PQ1_SOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 1, MT8195_MDP_COMP_PQ1_SOUT, 1},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_WARP0MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 2, MT8195_MDP_COMP_TO_WARP0MOUT, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_WARP1MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 3, MT8195_MDP_COMP_TO_WARP1MOUT, 0},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_SVPP2MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 4, MT8195_MDP_COMP_TO_SVPP2MOUT, 1},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_TO_SVPP3MOUT] = {
-+		{MDP_COMP_TYPE_DUMMY, 5, MT8195_MDP_COMP_TO_SVPP3MOUT, 1},
-+		{0, 0, 0}
-+	},
-+	[MDP_COMP_VPP0_SOUT] = {
-+		{MDP_COMP_TYPE_PATH, 0, MT8195_MDP_COMP_VPP0_SOUT, 1},
-+		{4, 9, 0}
-+	},
-+	[MDP_COMP_VPP1_SOUT] = {
-+		{MDP_COMP_TYPE_PATH, 1, MT8195_MDP_COMP_VPP1_SOUT, 0},
-+		{2, 13, 0}
-+	},
-+	[MDP_COMP_VDO0DL0] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL0, 1},
-+		{1, 15, 0}
-+	},
-+	[MDP_COMP_VDO1DL0] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL0, 1},
-+		{1, 17, 0}
-+	},
-+	[MDP_COMP_VDO0DL1] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO0DL1, 1},
-+		{1, 18, 0}
-+	},
-+	[MDP_COMP_VDO1DL1] = {
-+		{MDP_COMP_TYPE_DL_PATH, 0, MT8195_MDP_COMP_VDO1DL1, 1},
-+		{1, 16, 0}
-+	},
-+};
++additionalProperties: false
 +
-+/*
-+ * All 10-bit related formats are not added in the basic format list,
-+ * please add the corresponding format settings before use.
-+ */
-+static const struct mdp_format mt8195_formats[] = {
-+	{
-+		.pixelformat	= V4L2_PIX_FMT_GREY,
-+		.mdp_color	= MDP_COLOR_GREY,
-+		.depth		= { 8 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB565X,
-+		.mdp_color	= MDP_COLOR_BGR565,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB565,
-+		.mdp_color	= MDP_COLOR_RGB565,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_RGB24,
-+		.mdp_color	= MDP_COLOR_RGB888,
-+		.depth		= { 24 },
-+		.row_depth	= { 24 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_BGR24,
-+		.mdp_color	= MDP_COLOR_BGR888,
-+		.depth		= { 24 },
-+		.row_depth	= { 24 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_ABGR32,
-+		.mdp_color	= MDP_COLOR_BGRA8888,
-+		.depth		= { 32 },
-+		.row_depth	= { 32 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_ARGB32,
-+		.mdp_color	= MDP_COLOR_ARGB8888,
-+		.depth		= { 32 },
-+		.row_depth	= { 32 },
-+		.num_planes	= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_UYVY,
-+		.mdp_color	= MDP_COLOR_UYVY,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_VYUY,
-+		.mdp_color	= MDP_COLOR_VYUY,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUYV,
-+		.mdp_color	= MDP_COLOR_YUYV,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVYU,
-+		.mdp_color	= MDP_COLOR_YVYU,
-+		.depth		= { 16 },
-+		.row_depth	= { 16 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUV420,
-+		.mdp_color	= MDP_COLOR_I420,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVU420,
-+		.mdp_color	= MDP_COLOR_YV12,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV12,
-+		.mdp_color	= MDP_COLOR_NV12,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV21,
-+		.mdp_color	= MDP_COLOR_NV21,
-+		.depth		= { 12 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV16,
-+		.mdp_color	= MDP_COLOR_NV16,
-+		.depth		= { 16 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV61,
-+		.mdp_color	= MDP_COLOR_NV61,
-+		.depth		= { 16 },
-+		.row_depth	= { 8 },
-+		.num_planes	= 1,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV12M,
-+		.mdp_color	= MDP_COLOR_NV12,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV21M,
-+		.mdp_color	= MDP_COLOR_NV21,
-+		.depth		= { 8, 4 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV16M,
-+		.mdp_color	= MDP_COLOR_NV16,
-+		.depth		= { 8, 8 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_NV61M,
-+		.mdp_color	= MDP_COLOR_NV61,
-+		.depth		= { 8, 8 },
-+		.row_depth	= { 8, 8 },
-+		.num_planes	= 2,
-+		.walign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUV420M,
-+		.mdp_color	= MDP_COLOR_I420,
-+		.depth		= { 8, 2, 2 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVU420M,
-+		.mdp_color	= MDP_COLOR_YV12,
-+		.depth		= { 8, 2, 2 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YUV422M,
-+		.mdp_color	= MDP_COLOR_I422,
-+		.depth		= { 8, 4, 4 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}, {
-+		.pixelformat	= V4L2_PIX_FMT_YVU422M,
-+		.mdp_color	= MDP_COLOR_YV16,
-+		.depth		= { 8, 4, 4 },
-+		.row_depth	= { 8, 4, 4 },
-+		.num_planes	= 3,
-+		.walign		= 1,
-+		.halign		= 1,
-+		.flags		= MDP_FMT_FLAG_OUTPUT | MDP_FMT_FLAG_CAPTURE,
-+	}
-+};
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
 +
-+static const struct mdp_limit mt8195_mdp_def_limit = {
-+	.out_limit = {
-+		.wmin	= 64,
-+		.hmin	= 64,
-+		.wmax	= 4096,
-+		.hmax	= 4096,
-+	},
-+	.cap_limit = {
-+		.wmin	= 64,
-+		.hmin	= 64,
-+		.wmax	= 4096,
-+		.hmax	= 4096,
-+	},
-+	.h_scale_up_max = 64,
-+	.v_scale_up_max = 64,
-+	.h_scale_down_max = 128,
-+	.v_scale_down_max = 128,
-+};
++    mdp3-aal0@14005000 {
++      compatible = "mediatek,mt8195-mdp3-aal";
++      reg = <0x14005000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x5000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+new file mode 100644
+index 000000000000..7a34d8af11a9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-color.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#endif  /* __MDP3_PLAT_MT8195_H__ */
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-index 3bd504d9af13..412b6ab06a82 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
-@@ -116,6 +116,7 @@ struct img_frameparam {
++title: MediaTek Media Data Path 3 COLOR Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to adjust hue, luma and
++  saturation to get better picture quality.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-color
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-color0@14008000 {
++      compatible = "mediatek,mt8195-mdp3-color";
++      reg = <0x14008000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x8000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+new file mode 100644
+index 000000000000..1e17b3908d3d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-fg.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 FG Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to add film grain
++  according to AV1 spec.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-fg
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-fg0@14002000 {
++      compatible = "mediatek,mt8195-mdp3-fg";
++      reg = <0x14002000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x2000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+new file mode 100644
+index 000000000000..ad27f60e5825
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+@@ -0,0 +1,63 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-hdr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 HDR Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to perform HDR to SDR
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-hdr
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-hdr0@14004000 {
++      compatible = "mediatek,mt8195-mdp3-hdr";
++      reg = <0x14004000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x4000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+new file mode 100644
+index 000000000000..4e0ef4a9f77d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-merge.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 MERGE Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to merge
++  two slice-per-line inputs into one side-by-side output.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-merge
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-merge0@14f1a000 {
++      compatible = "mediatek,mt8195-mdp3-merge";
++      reg = <0x14f1a000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xa000 0x1000>;
++      clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+new file mode 100644
+index 000000000000..388e6dbab1e4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-ovl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 OVL Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to perform
++  alpha blending from the memory.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-ovl
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-ovl0@14009000 {
++      compatible = "mediatek,mt8195-mdp3-ovl";
++      reg = <0x14009000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+new file mode 100644
+index 000000000000..a66b1dcb7d43
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-pad.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 PADDING Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to insert
++  pre-defined color or alpha value to arbitrary side of image.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-pad
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-pad0@1400a000 {
++      compatible = "mediatek,mt8195-mdp3-pad";
++      reg = <0x1400a000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xa000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_PADDING>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+index 9cfc0c7d23e0..7fe9ed62aadf 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+@@ -20,8 +20,9 @@ description: |
  
- /* Platform config indicator */
- #define MT8183 8183
-+#define MT8195 8195
+ properties:
+   compatible:
+-    items:
+-      - const: mediatek,mt8183-mdp3-rdma
++    enum:
++      - mediatek,mt8183-mdp3-rdma
++      - mediatek,mt8195-mdp3-rdma
  
- #define CFG_CHECK(plat, id) (plat == id)
- 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 265b712d762f..d54d7319af9a 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -796,6 +796,42 @@ static const struct of_device_id mdp_comp_dt_ids[] = {
- 	}, {
- 		.compatible = "mediatek,mt8183-mdp3-wdma",
- 		.data = (void *)MDP_COMP_TYPE_WDMA,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-rdma",
-+		.data = (void *)MDP_COMP_TYPE_RDMA,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-split",
-+		.data = (void *)MDP_COMP_TYPE_SPLIT,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-stitch",
-+		.data = (void *)MDP_COMP_TYPE_STITCH,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-fg",
-+		.data = (void *)MDP_COMP_TYPE_FG,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-hdr",
-+		.data = (void *)MDP_COMP_TYPE_HDR,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-aal",
-+		.data = (void *)MDP_COMP_TYPE_AAL,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-merge",
-+		.data = (void *)MDP_COMP_TYPE_MERGE,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-tdshp",
-+		.data = (void *)MDP_COMP_TYPE_TDSHP,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-color",
-+		.data = (void *)MDP_COMP_TYPE_COLOR,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-ovl",
-+		.data = (void *)MDP_COMP_TYPE_OVL,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-pad",
-+		.data = (void *)MDP_COMP_TYPE_PAD,
-+	}, {
-+		.compatible = "mediatek,mt8195-mdp3-tcc",
-+		.data = (void *)MDP_COMP_TYPE_TCC,
- 	},
- 	{}
- };
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 6e3abadef6cd..1699da1c684b 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -16,6 +16,7 @@
- #include "mtk-mdp3-core.h"
- #include "mtk-mdp3-m2m.h"
- #include "mt8183/mdp3-plat-mt8183.h"
-+#include "mt8195/mdp3-plat-mt8195.h"
- 
- static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
- 	.mdp_plat_id = MT8183,
-@@ -32,10 +33,28 @@ static const struct mtk_mdp_driver_data mt8183_mdp_driver_data = {
- 	.def_limit = &mt8183_mdp_def_limit,
- };
- 
-+static const struct mtk_mdp_driver_data mt8195_mdp_driver_data = {
-+	.mdp_plat_id = MT8195,
-+	.mdp_probe_infra = mt8195_mdp_probe_infra,
-+	.mdp_sub_comp_dt_ids = mt8195_sub_comp_dt_ids,
-+	.mdp_cfg = &mt8195_plat_cfg,
-+	.mdp_mutex_table_idx = mt8195_mutex_idx,
-+	.comp_data = mt8195_mdp_comp_data,
-+	.comp_data_len = ARRAY_SIZE(mt8195_mdp_comp_data),
-+	.pipe_info = mt8195_pipe_info,
-+	.pipe_info_len = ARRAY_SIZE(mt8195_pipe_info),
-+	.format = mt8195_formats,
-+	.format_len = ARRAY_SIZE(mt8195_formats),
-+	.def_limit = &mt8195_mdp_def_limit,
-+};
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+new file mode 100644
+index 000000000000..25824a0ace75
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+@@ -0,0 +1,76 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-split.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- static const struct of_device_id mdp_of_ids[] = {
- 	{ .compatible = "mediatek,mt8183-mdp3-rdma",
- 	  .data = &mt8183_mdp_driver_data,
- 	},
-+	{ .compatible = "mediatek,mt8195-mdp3-rdma",
-+	  .data = &mt8195_mdp_driver_data,
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mdp_of_ids);
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index d0a2ec11e67f..fe5bea7bbeaa 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -40,10 +40,16 @@ struct mdp_platform_config {
- 	bool	rdma_support_10bit;
- 	bool	rdma_rsz1_sram_sharing;
- 	bool	rdma_upsample_repeat_only;
-+	bool	rdma_esl_setting;
- 	u32	rdma_event_num;
- 	bool	rsz_disable_dcm_small_sample;
-+	bool	rsz_etc_control;
- 	bool	wrot_filter_constraint;
-+	bool	wrot_support_10bit;
- 	u32	wrot_event_num;
-+	u32	tdshp_hist_num;
-+	bool	tdshp_constrain;
-+	bool	tdshp_contour;
- };
- 
- /* indicate which mutex is used by each pipepline */
++title: MediaTek Media Data Path 3 SPLIT Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to split hdmi rx into two stream
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-split
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    items:
++      - description: Engine Clock
++      - description: HDMI Clock
++      - description: MDHI Clock
++      - description: Digital Clock
++      - description: Digital Clock
++      - description: Digital Clock
++      - description: HS Clock
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-split0@14f06000 {
++      compatible = "mediatek,mt8195-mdp3-split";
++      reg = <0x14f06000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x6000 0x1000>;
++      clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
++               <&vppsys1 CLK_VPP1_HDMI_META>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
++               <&vppsys1 CLK_VPP1_DGI_IN>,
++               <&vppsys1 CLK_VPP1_DGI_OUT>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+new file mode 100644
+index 000000000000..6bf15a65047e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-stitch.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 STITCH Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to combine multiple video frame
++  with overlapping fields of view to produce a segmented panorame.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-stitch
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-stich0@14003000 {
++      compatible = "mediatek,mt8195-mdp3-stitch";
++      reg = <0x14003000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x3000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_STITCH>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+new file mode 100644
+index 000000000000..396cdf1e94e1
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+@@ -0,0 +1,63 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 TCC Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to support
++  HDR gamma curve conversion HDR displays.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-tcc
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-tcc0@1400b000 {
++      compatible = "mediatek,mt8195-mdp3-tcc";
++      reg = <0x1400b000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+new file mode 100644
+index 000000000000..90ce0c5ea151
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-tdshp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Media Data Path 3 TDSHP Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Moudy Ho <moudy.ho@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to improve image
++  sharpness and contrast.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-mdp3-tdshp
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    mdp3-tdshp0@14007000 {
++      compatible = "mediatek,mt8195-mdp3-tdshp";
++      reg = <0x14007000 0x1000>;
++      mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
++      power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++    };
 -- 
 2.18.0
 
