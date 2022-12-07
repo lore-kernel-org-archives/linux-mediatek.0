@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6503FC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:00:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B430DC4708E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ee9QNLDgbT6alukxpgY760dSucVfpFX5vaeMFaqp7l8=; b=GRNGliRjmcdQyNi9uSYJHucJWP
-	MGHqtbxd8jarT+sP8Aupe1Tis4m3lfHnYZHIuyRJ95L6shsWDTpri7p6t8fCTY75vEXSwdvRzzMM8
-	qbeahvcw8I/YYLt3HHrZEot81TX/ICl0nKSr56WIxtg96yEfu8DShum51KZDO+I7hbm3YZYHVw8YM
-	wdaLPxY7iKVyNggS+L/1lF7dtBh7WJgnTSNrFYgRpiNVASfXuYFrxA/IwJLvYsF+tVOVXqpzHW5eN
-	66skkGMHNjQRrB4ASqyZS9lYRBwEbur7rn4gY/djWf4OTORY/PNDR8ufpUSESek4Sxlbqa0Mwi5pt
-	94zzd70A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dfnrJwYBnC1kWUdT7GbK2EkVI9hxaD+y1EqdGvZDudM=; b=rbIJcaZaXq/zjYBgvmjDaYT7Ox
+	TC8Im+5kYEdxYn9WRFwoKXsDpPP8fOaydlDpS/C9HzDoSKr+tpgy3GjRUZymIDmlBWfxtv4JDM1UE
+	PuiJn7m25d0haX+zzVa9Y2tdfv9fk6T/8aKm8OSSIG5GyqrLy/q1zqeRMjiMM5dwlyYx7r/k4NxIW
+	+8nIoRLNLEb6S/MJoG5IjP+US938lalQ0UsI75P2XsL/Mp+aD93ff8paqDupf35BJ9Paz/ADfyKj7
+	6noJ/DB3dfTuufT+ofV6/D1KXdzvKoHtcL71uvqauDSYt2XLeS8e0rrQTNIerIDS/2SKygzGCUj8W
+	S0q5y0Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2xlu-0073zU-0d; Wed, 07 Dec 2022 16:59:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p2y3D-007FYF-PU; Wed, 07 Dec 2022 17:17:43 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2xli-0073qc-Im; Wed, 07 Dec 2022 16:59:40 +0000
-Received: from mercury (dyndsl-091-096-059-166.ewe-ip-backbone.de [91.96.59.166])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F4976602BC8;
-	Wed,  7 Dec 2022 16:59:34 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670432374;
-	bh=bEvlL0mnv13cihi3HCIkl9DCfnP1k298XjhbL7LAufA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fVlDFCTzOHXdtF44MPRDBp745dkSoal+m9XlgbrVk0eVveZ4SV+Bv1Rnj0ZBG6Rt3
-	 iZzkYM/8F/qgm/5INpH4ZuEVZdheQuxkmKnjbF4NYwKekrccgWZ80uTQ5fVMnlVnEK
-	 7sz8TmoCZwYK3OEI28mJ6n6F3xGALBFdeq22ossum96yZrYwJqiWDu1PsWPLAsHI7x
-	 hRrGzEFqetXXh+ZUi+bUOEraSs2OtVyf9i/MzyAzh8Cjc9+JImlrgZ8QqwdNdYumLv
-	 0XdveLAuHK+do5iCZu9zBRZS6X/efajXc1hQZdTXVcNAcNiE0Vb1uyxHCLrTy7hmA0
-	 6hG/oUhpNGlZw==
-Received: by mercury (Postfix, from userid 1000)
-	id 119591060F43; Wed,  7 Dec 2022 17:59:32 +0100 (CET)
-Date: Wed, 7 Dec 2022 17:59:32 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Lee Jones <lee@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Gene Chen <gene_chen@richtek.com>,
-	Daniel Mack <zonque@gmail.com>,
-	Bartosz Golaszewski <bgolaszewski@baylibre.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: Add missing 'unevaluatedProperties' to
- regulator nodes
-Message-ID: <20221207165932.hmgj4giz5ivei46i@mercury.elektranox.org>
-References: <20221206211554.92005-1-robh@kernel.org>
+	id 1p2y3B-007FRy-NA
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 17:17:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1670433461; x=1701969461;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=8BTkkSN0FOm3ZX7WIxdDtwV5dm5TXFbbXMxWlJEKRaU=;
+  b=CKHXvs6sFUSceGxo+vBPjF2heSD1vTspIbDfMQ/I4gZD8WTjGQpS1Xb2
+   piy6cpOB/E8aFE84o67oHfAdRawiR4ov3W8AXiWw4a1mDkgoYoOzbw1zS
+   IDPZtInZm4a87st/pcq2ibvBb5XoccUfBk1hbyefW7k1E0aN2KSkfg9hh
+   6y3DGaC9O2XXrhFXwJocc1jP8surVemH/wJAfDBIFNtT9Zd1MYOFxLXv4
+   26GGYumL4ezXgMWc/r8A5J+UniHc8ZImN06+5nloL1qRbnpYW8LLJKCWm
+   lAskW9xzf0D7/BnCD3s1jR/NLt1X4iB4gT6URvIuKado30n+rxiih+fDy
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="315663340"
+X-IronPort-AV: E=Sophos;i="5.96,225,1665471600"; 
+   d="scan'208";a="315663340"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2022 09:17:37 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="788968522"
+X-IronPort-AV: E=Sophos;i="5.96,225,1665471600"; 
+   d="scan'208";a="788968522"
+Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.38.130])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Dec 2022 09:17:32 -0800
+Message-ID: <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
+Date: Wed, 7 Dec 2022 19:17:27 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tn5la4fl5slxzyzl"
-Content-Disposition: inline
-In-Reply-To: <20221206211554.92005-1-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.5.1
+Subject: Re: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
+ recovery
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20221206031109.10609-1-peter.wang@mediatek.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <20221206031109.10609-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_085938_904063_9711A441 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20221207_091741_798917_70FF2CA8 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,83 +88,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 6/12/22 05:11, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
+> 
+> When SSU/enter hibern8 fail in wlun suspend flow, trigger error
+> handler and return busy to break the suspend.
+> If not, wlun runtime pm status become error and the consumer will
+> stuck in runtime suspend status.
+> 
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 
---tn5la4fl5slxzyzl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Should this have a Fixes or stable tag?
 
-Hi,
+Another minor comment below, otherwise:
 
-On Tue, Dec 06, 2022 at 03:15:55PM -0600, Rob Herring wrote:
-> Several regulator schemas are missing 'unevaluatedProperties' constraint
-> which means any extra properties are allowed. Upon adding the
-> constraint, there's numerous warnings from using the deprecated
-> 'regulator-compatible' property. Remove the usage as examples shouldn't
-> be using long since deprecated properties.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Adrian Hunter <adrian.hunter@intel.com>
+
 > ---
-> I'd suggest that Mark take this if that's okay with Lee. Or I can take=20
-> it.
->=20
->  Documentation/devicetree/bindings/mfd/max77650.yaml  |  2 --
->  .../devicetree/bindings/mfd/mediatek,mt6360.yaml     |  9 ---------
->  .../bindings/power/supply/mt6360_charger.yaml        |  2 +-
->  .../bindings/regulator/max77650-regulator.yaml       |  1 +
->  .../devicetree/bindings/regulator/max8660.yaml       |  6 +-----
->  .../bindings/regulator/mt6360-regulator.yaml         | 12 +++---------
->  6 files changed, 6 insertions(+), 26 deletions(-)
->=20
-> [...]
->
-> diff --git a/Documentation/devicetree/bindings/power/supply/mt6360_charge=
-r.yaml b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-> index b89b15a5bfa4..4c74cc78729e 100644
-> --- a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-> +++ b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-> @@ -26,6 +26,7 @@ properties:
->      type: object
->      description: OTG boost regulator.
->      $ref: /schemas/regulator/regulator.yaml#
-> +    unevaluatedProperties: false
-> =20
->  required:
->    - compatible
-> @@ -39,7 +40,6 @@ examples:
->        richtek,vinovp-microvolt =3D <14500000>;
-> =20
->        otg_vbus_regulator: usb-otg-vbus-regulator {
-> -        regulator-compatible =3D "usb-otg-vbus";
->          regulator-name =3D "usb-otg-vbus";
->          regulator-min-microvolt =3D <4425000>;
->          regulator-max-microvolt =3D <5825000>;
+>  drivers/ufs/core/ufshcd.c | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+> 
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index b1f59a5fe632..98f105f32877 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -9049,6 +9049,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  
+>  		if (!hba->dev_info.b_rpm_dev_flush_capable) {
+>  			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+> +			if (ret && pm_op != UFS_SHUTDOWN_PM) {
+> +				/*
+> +				 * If return err in suspend flow, IO will hang.
+> +				 * Trigger error handler and break suspend for
+> +				 * error recovery.
+> +				 */
+> +				spin_lock_irq(hba->host->host_lock);
+> +				hba->force_reset = true;
+> +				ufshcd_schedule_eh_work(hba);
+> +				spin_unlock_irq(hba->host->host_lock);
+> +
+> +				ret = -EBUSY;
+> +			}
+>  			if (ret)
+>  				goto enable_scaling;
+>  		}
+> @@ -9060,6 +9073,19 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  	 */
+>  	check_for_bkops = !ufshcd_is_ufs_dev_deepsleep(hba);
+>  	ret = ufshcd_link_state_transition(hba, req_link_state, check_for_bkops);
+> +	if (ret && pm_op != UFS_SHUTDOWN_PM) {
+> +		/*
+> +		 * If return err in suspend flow, IO will hang.
+> +		 * Trigger error handler and break suspend for
+> +		 * error recovery.
+> +		 */
+> +		spin_lock_irq(hba->host->host_lock);
+> +		hba->force_reset = true;
+> +		ufshcd_schedule_eh_work(hba);
+> +		spin_unlock_irq(hba->host->host_lock);
 
-Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Same 4 lines of code could be separated into a helper function.
 
-> [...]
+> +
+> +		ret = -EBUSY;
+> +	}
+>  	if (ret)
+>  		goto set_dev_active;
+>  
 
--- Sebastian
-
---tn5la4fl5slxzyzl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmOQxmgACgkQ2O7X88g7
-+pqenQ/9Ho8lsTUBjGsxEgwS8RpLC8U1AP8yglgqBuUrbdcwAuL3g0yWJMB4Cm4a
-trhgJgCBr2fd4LLFbJzQH/tVrcUZtFJ957ZmvKr0E1xcVkiDgR8ujhhCCCOgB5vG
-IpjFq+8lXplomNmb3hOlRKkuC+2YWYM1cXvEQyFyPOYZAThebqOpYQcETx5rxegs
-VTdhV4cB6b+jG2fsR+3BVw+rJ9U3oxjbY5XuwUJ2GyA15InCnBOh0945mc6vLDvN
-vNCwgsgvS8D7emYsLt666/gI3LKRLH6H+3p8Vu2yYAU58mu21gg7L6z6jswSlm+V
-MsMVDTiwzLYq/EaYQbGaTazJjigroldPnUf268xI6OgG7tSqowA0PuYaT+GkKfrY
-0dPGbQf1K6NbCQ4V+Fh1BO1h0kOtX6FCjkLJ0d1ZZTC7DwIMe1tLgXZux0mETsQo
-aCli/01Y+oVc6vulRN9HRGvthS01OoByy5vdikomiO6cJH3l8Jwb7gNz07kVrJyF
-aDzTDqorec2e7bMleqRGwncCINLYqw0z/Mh0ZLKPgbs/L2YXOI7nhGVaCj5p4wNb
-44Nky3qwmg0iu12vbmydFMWjRIICBnOU3xCqfe7tDfi4jDCJqKkHcHU15JR2bPPC
-LYL6vJb5f66lQGyI+SWJoXT+q5bps6L/KhDMea6xKmWTjss81gM=
-=VLUI
------END PGP SIGNATURE-----
-
---tn5la4fl5slxzyzl--
 
