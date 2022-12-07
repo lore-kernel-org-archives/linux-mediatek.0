@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232CCC4708E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 15:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CEBBC352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 15:56:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zRMPmx2g25b+oz+4Mu5sled5OxjCCJuBKdM0iCwdVr0=; b=Ujz3uaGyclvhiD
-	FwnbvFE3NlFI4okDbX4hVEoaod36SZd6qeubvsbeCQtvHl1XHyQSXCHkFFOtzJ4xXNRZXCLoJQ9HV
-	fB1IJJYTILvVbBkhzQ7amw/9ASpIMrH+72dAJtCptDVsJOFS3Q56vcsAuflXMUmlcp1gwp0MNLFXh
-	f/NkaHZY0uVSAZoTcYyPFGHSegoK5gxiUsF3Bso0+xrc7hRd8cSYNFJz8keTgbBcg8WbL3Un24rGt
-	izANeUTDgAyGMF4iEVqDodiZgF8mo6OWjnyLIYj8Ql9FfLLn6mJZ32qrTUWAQB6JjU9AayNfjY+j2
-	0TVZnnJfR3F0Wr6IPkuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=; b=DXCfkKFEsB4KTOaD128qDy94L8
+	272/6DmK1UgH/6aBqDH3cs9bs8zryIZ4vaSGuXbKcGocUcl5b3frF+2/D/nODqvxfv1cslvJkre5X
+	fRIRffrORWY0DHZCnl98t+EJo/CyFpXfzp3Tmv/W/QqEMR8u6/qKph2WQLJisP1ky05/YcUBgilIz
+	GdxmofnuOdLDMUXdoHh19cg0eTwcqXyFhCITYVA6cWRyQ/lqWgJ1sqsPIvic1H3zi8mEL110v4RZV
+	Zy2mT7+LA0uinHjSKtt5DhluNqn8URtM4m+0cNBK/rdcpOucWTvOPrbp18l5Qzf3/WAwaxU/6jUNM
+	raklE+wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2wRp-005tXI-Bi; Wed, 07 Dec 2022 15:35:01 +0000
-Received: from mail1.systemli.org ([93.190.126.36])
+	id 1p2wmY-006FTU-TM; Wed, 07 Dec 2022 15:56:26 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2wRZ-005t9R-CP; Wed, 07 Dec 2022 15:34:48 +0000
-Message-ID: <f70d7c09-df0d-4fa9-92c9-63f31cf56483@systemli.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
-	s=default; t=1670427276;
-	bh=zRMPmx2g25b+oz+4Mu5sled5OxjCCJuBKdM0iCwdVr0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bLmXw34wygi9IeMNToIo0OUgRMES3iZz5BKgSQyYWcZMw24MUENAxbOCbdj1/nysB
-	 93SDqY+t0EZAC3Sf4ONqJNaKRhXxakVMJuZp113XkDNgdsjMwtVjwg7Nh+oBzVIaXx
-	 /jAMidL4GPsHJUrpcbaBfr4QqiezlLHtQyJFBbZoRtnfpS9oobEa7B7pildvD/Hf6g
-	 vUDPXSAXmwktv+NJvbEOIn8itSn2MFeEClcv/pHdrTacYx9Uyu6TQcZg7llUqaPLu1
-	 a7kqKRWFT/reUwg24YdLruFOVoapoVgnqDpWHd7SWTOHlE5ImRgplZ8tiJiO0wlF9h
-	 Bi9OviGvQyd9w==
-Date: Wed, 7 Dec 2022 16:34:33 +0100
+	id 1p2wmW-006FHI-Gu
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 15:56:25 +0000
+Received: by mail-ej1-x631.google.com with SMTP id gh17so15038453ejb.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 07:56:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=;
+        b=NIcT+iuluektAZ43nD5zND2pW7Pc6Jne9R/wMULrDfJFGi3VEUvXX1rJXafGRDitnM
+         kAET1yXrKXXyXo40lWfPfDkxnEtfANlOJL5MmHgH0r6E9/38BKXryJbKsifW12TiEs7i
+         98JieEasaAgLxnXWwA7NnJDAiByLxFAMPFq8U0OG4WSnCVLVf5EVzJ1OY67vdNOvYWLA
+         5YKlMoY52hlo7l2oELGnElAn9yRysk2OLsDB6fDMtmZVyPOerYAqnufkgnCJsyjDEdu5
+         RY2JqW33Cl10HzlsabUkgZXKxuqZZqRtz0b62+7Qi2b/BnFwZpD5Q7cIR7QIHPs2fvo2
+         5oSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8UWo2XovqgYHs1QY4JjTgk1+oCej6jXzZZznbbgyuDY=;
+        b=HdEe+dhyCCX5Owg9YrSABDTLZX3HWfbqG0NmZ3wNO642laJhygeNXOvb+Ebx9ekcNZ
+         jbOYcRCTrPo3TRqLWDjRCiq/5Pc2N+xx8BCHIfTF1LevjTTP2GoWLAY3W9lpys9XLgI+
+         wHHv1OBbCZ8kT7K/isSLzZEg9M6eZFWrzswZro+rDtRjOs3sFm4TuA8XoL8TAjgqRsH4
+         TQ9q3TJ3UErdEjiFB74Dj4DsTwUVRoDoYkCWeS1BaqlIKtr/FENQkW9Ru/NjKz2e7Tku
+         ygZqm9quPNGKxVsAcqQLruqhV0yZR8YQxJnl8GO8Ubfp4nbkxWd0SY88TrX2+NdWM/u5
+         XV5w==
+X-Gm-Message-State: ANoB5pkaYpNRZd24HIxjZn5ccK55k0qd4uG3FfIVD1TX4FQ/3ogm3SLK
+	M7GjVYeGNSpJ/gGrZIof77A=
+X-Google-Smtp-Source: AA0mqf5WSh1ldUWiKlJTCUx19cpUJYc2SS9QTb71YZMoHc1TB56et+PDXLAokItPHooMeJ9Aa04teA==
+X-Received: by 2002:a17:906:ca0e:b0:78c:1f2f:233e with SMTP id jt14-20020a170906ca0e00b0078c1f2f233emr64572621ejb.307.1670428574062;
+        Wed, 07 Dec 2022 07:56:14 -0800 (PST)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id q18-20020a1709066b1200b007bf988ce9f7sm8715501ejr.38.2022.12.07.07.56.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Dec 2022 07:56:13 -0800 (PST)
+Date: Wed, 7 Dec 2022 18:56:09 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	kernel-janitors@vger.kernel.org
+Subject: [PATCH] iommu/mediatek: Fix forever loop in error handling
+Message-ID: <Y5C3mTam2nkbaz6o@kili>
 MIME-Version: 1.0
-Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
- mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622)
-To: Viresh Kumar <viresh.kumar@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <02c2c955-940b-b315-0474-85d0eddad7a3@leemhuis.info>
- <Y4jHvomTrU8guBox@makrotopia.org>
- <47a4665e-333d-a6e7-a2da-96cb06c2d87b@leemhuis.info>
- <20221202052716.uj3kzkunazmgazeq@vireshk-i7>
- <0ebef1a2-6b5a-04b9-a79b-79eb3349c32b@collabora.com>
- <c76bd301-0e8d-2d2b-0d3e-a57ece9b496f@collabora.com>
- <b1822bbc3775730c4cedf9652323c7d72e663e4b.camel@mediatek.com>
- <8be3e050-f32a-6761-8ebd-49c38dfcf9eb@collabora.com>
- <c186d104-43e0-ca10-3ce2-c2f922acd8bf@leemhuis.info>
- <37468027-6a27-dcb8-9c14-8f8426ec50d1@collabora.com>
- <20221202110139.vmwcmoudakm2nap4@vireshk-i7>
-Content-Language: en-US
-From: Nick <vincent@systemli.org>
-In-Reply-To: <20221202110139.vmwcmoudakm2nap4@vireshk-i7>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_073445_911547_4AA70418 
-X-CRM114-Status: UNSURE (   6.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221207_075624_580383_8F319529 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +87,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?= <Allen-KH.Cheng@mediatek.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "daniel@makrotopia.org" <daniel@makrotopia.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>, Thorsten Leemhuis <regressions@leemhuis.info>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "thomas.huehn@hs-nordhausen.de" <thomas.huehn@hs-nordhausen.de>, =?UTF-8?B?SmlhLXdlaSBDaGFuZyAo5by15L2z5YGJKQ==?= <Jia-wei.Chang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "regressions@lists.linux.dev" <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Did something changed on master? I compiled now the image I use on the 
-BPI-R64 a bit differently.
-I used the openwrt toolchain "aarch64-openwrt-linux-musl-" to 
-cross-compile the original linux repository on current master. Than I 
-compiled with OpenWrt-Buildsystem a initramfs, put that together with 
-mkimage to a "itb" and booted it. Suddenly it works:
-https://gist.githubusercontent.com/PolynomialDivision/5e49529206ba5d273bf6a416c42c6234/raw/7ecff7be397a6e9a41ef120c3fa61060c488cf5b/mt7622-bpi-vanilla
+There is a typo so this loop does i++ where i-- was intended.  It will
+result in looping until the kernel crashes.
 
-Bests
-Nick
+Fixes: 26593928564c ("iommu/mediatek: Add error path for loop of mm_dts_parse")
+Signed-off-by: Dan Carpenter <error27@gmail.com>
+---
+ drivers/iommu/mtk_iommu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-On 12/2/22 12:01, Viresh Kumar wrote:
-> On 02-12-22, 12:00, AngeloGioacchino Del Regno wrote:
->> If Viresh can add those while applying the patch, that's fine for me - otherwise
->> I can send a v2 adding the two suggested missing tags.
-> Sure, no problem.
->
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 3e46bc8b0714..2badd6acfb23 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1160,8 +1160,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 	return 0;
+ 
+ err_larbdev_put:
+-	/* id may be not linear mapping, loop whole the array */
+-	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i++) {
++	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i--) {
+ 		if (!data->larb_imu[i].dev)
+ 			continue;
+ 		put_device(data->larb_imu[i].dev);
+-- 
+2.35.1
+
 
