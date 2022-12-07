@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39EFAC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 10:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A50C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 10:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=essp93k5d/kMrgG0TmxUrEDjP0tNXrAp2FXmfZnc3WE=; b=vJbXnCwMEcchUMqTbAFD4k78op
-	83iXRUc0nAF5dTQf8HudanxPSDzYBKMIipkvqqCwOYBZyBux5PPbWuHwoif8HXWWDp+/HeM9sa3kU
-	x0rRgpeZt3q3h5lSZottNVC5AAzQu19oDtRCWK0bcHJJqas8Me6bFh41IrnyvCzW9B3Go6t9E1gFZ
-	AuqVGLlQh+ZpC7djcu/htGhsxbfwHs1JWdM8tvjGldq173b/gDqezeZLhDU+nmtq3/UnoXwu+Oldj
-	miVibsQ2GPfulIva4Q/ch/1b/Su5hAorZTOLuel9eZdIk0cJuyQacHssVNoW+z5CF5LUzhpf7eat+
-	x9wfF3Og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z0BwPTiJq45XxbEGYv/PjtFL9GF0yWhObVdRootrVoo=; b=Mq8aB0XQk0OVCmh5ExPcNVpAAF
+	DK3V6WKZbpueeNn1yl/Q6wb/rfIRaDelOZ/FDj135S80b0u4c9G1UK6ioQspIlpOb3rGfFR06O6JI
+	OpmXO5sCLVIn9bDLyDOW8pe2ukVej+NIGFMPDL5jJA0f4i5HciBm1uP5fAx1g3gSDvHJqA7wVpBCw
+	8Kuk3n1ysM2Q88lPcM7GN7bNPEg8G7/9/E17NjK5fhk+yU1ixTWB8ZTRT5iTrkfRPIAKWGXG6b06B
+	A5rPPPEgGeuq5fegIQHvkJKNn85BkVcp+FWjG7c5lIntpvWjhZg4NzfcZU91ZGkHHKJDFuIL9bB6f
+	/JgZ2HAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2rTH-00H2zh-Qv; Wed, 07 Dec 2022 10:16:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p2s0A-0004ik-OL; Wed, 07 Dec 2022 10:50:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2rSt-00H2XJ-3j; Wed, 07 Dec 2022 10:15:51 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 533C46602BCE;
-	Wed,  7 Dec 2022 10:15:45 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670408145;
-	bh=+LjBCBUFrmoCf4jsuAmPTeQcDLe0z20Y7u+s/Cq3KsU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L+LJ3Qe8NYPriv1jiBI1ZG2iMmY4lm7AG9CxVuCGfHG7SWNtTXElbkpi3HrLPQCLO
-	 XJnusTBHqbFPBPUsrkopWZSCVnDnCjJtRIQdbkR2qlB9jz7qSTLeh8n1Joe8f1CKlE
-	 /qHZBmAxVql1FAgsGSySL39rNj155F/czH9Ndad0e07aZdwrmBUUYbLvEaTD4mX4Vy
-	 8Co/F7Ea0OkmkrUVzGwO+aWRl54XXa53Cs3ZqUeXfk/4SQ1G3a+iStuV6VAkcVmxXi
-	 9SJI1M3rlJABj5/5rCxNGIWEd115GqdbDQoVQCF1vM3068rT/rPz0FGSFIgSeGhr+R
-	 tN7/tbad9e4VA==
-Message-ID: <5c1dbeb0-c19f-cf47-a272-3346913a30c8@collabora.com>
-Date: Wed, 7 Dec 2022 11:15:42 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v4 1/8] dt-bindings: arm: mediatek: mmsys: Add support for
- MT8195 VPPSYS
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+	id 1p2s07-0004hI-Uy; Wed, 07 Dec 2022 10:50:09 +0000
+X-UUID: 295aa2274ee54e4896c3c8b138322bc1-20221207
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=z0BwPTiJq45XxbEGYv/PjtFL9GF0yWhObVdRootrVoo=;
+	b=NZISzmMPCWLw+tiyDk2CvqgUXkLuboVppHNtIuf9e3DvOyWPImRq2U14cLm6MWuGjZ/+Js26SOBibJxuGO/zen9MvTQxQMLuvYRNe6oi2XmmC677jw7uIc5BuWpKnquwb5joZLyHBJIqSgTvqn8x1DO5vL3YPJn9ZPREF3/rBEw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:db725709-4f94-4fe4-b641-2b654f2a44af,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:a962e9d1-652d-43fd-a13a-a5dd3c69a43d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 295aa2274ee54e4896c3c8b138322bc1-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 192698499; Wed, 07 Dec 2022 03:50:03 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 7 Dec 2022 17:49:23 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 17:49:23 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [PATCH v4 4/8] arm64: dts: mediatek: mt8195: add MUTEX configuration for VPPSYS
+Date: Wed, 7 Dec 2022 17:49:17 +0800
+Message-ID: <20221207094921.15450-5-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221207094921.15450-1-moudy.ho@mediatek.com>
 References: <20221207094921.15450-1-moudy.ho@mediatek.com>
- <20221207094921.15450-2-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221207094921.15450-2-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_021547_310746_C520796B 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221207_025008_040169_F8080E21 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,15 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/12/22 10:49, Moudy Ho ha scritto:
-> For MT8195, VPPSYS0 and VPPSYS1 are 2 display pipes with
-> hardware differences in power domains, clocks and subsystem counts,
-> which should be determined by compatible names.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In MT8195, the MMSYS has two Video Processor Pipepline Subsystems
+named VPPSYS0 and VPPSYS1, each with specific MUTEX to control
+Start of Frame(SOF) and End of Frame (EOF) signals.
+Before working with them, the addresses, interrupts, clocks and power
+domains need to be set up in dts.
 
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index bd33b414c484..0ece3b46b66a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1639,6 +1639,15 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mutex@1400f000 {
++			compatible = "mediatek,mt8195-vpp-mutex";
++			reg = <0 0x1400f000 0 0x1000>;
++			interrupts = <GIC_SPI 592 IRQ_TYPE_LEVEL_HIGH 0>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xf000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MUTEX>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
+ 		smi_sub_common_vpp0_vpp1_2x1: smi@14010000 {
+ 			compatible = "mediatek,mt8195-smi-sub-common";
+ 			reg = <0 0x14010000 0 0x1000>;
+@@ -1745,6 +1754,15 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mutex@14f01000 {
++			compatible = "mediatek,mt8195-vpp-mutex";
++			reg = <0 0x14f01000 0 0x1000>;
++			interrupts = <GIC_SPI 635 IRQ_TYPE_LEVEL_HIGH 0>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x1000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_DISP_MUTEX>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
+ 		larb5: larb@14f02000 {
+ 			compatible = "mediatek,mt8195-smi-larb";
+ 			reg = <0 0x14f02000 0 0x1000>;
+-- 
+2.18.0
 
 
