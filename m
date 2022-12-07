@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0192C352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 08:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA95C47089
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 08:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1MthmATFQNfNnvP0lOFpmusCFZR/WLYgS8eeinmcLUA=; b=TUyWe8RWxTpkU+rB26axO1dmkC
-	YliFhx50Diev/cUVTAv0VSwkDCR1v0P04REAo5ECLkOWQGhBIdDfeQU7wwb3i+GEnOiRESiYvxfg5
-	VJGZ/JdcJcF5HuewTmfmhxU2KAY/HPEYVmTMgVvBu+RTkvwScAgUNTZDvjNyHNMT3yFEkYMx2aq8K
-	hWyk69MFlr86v2ATOHAENHEl28aUbT0WE/f1nUJmR66NkjRuQysgqnpaKgT3YBHxKPGtk87poqxvY
-	53EA4+94UciXLEDRxyQRLBLCZeyVnzE19vnC3UbostIeAe00iTrjAgBO9fsdld42Ayy4O8z07dpQy
-	s2OURvLQ==;
+	bh=MKF3IcNgWFgYyNMHk+O1vrqlypOAuQ2w+oXiFcFGlws=; b=hTnSe4m+F7eBTxJFDaUiN+IM6K
+	Zizvnq/tnJK2Aq+8HSzgrSTOZ/baNzUwKvE5r9UjNQXPtYjqsgqWlHpgx4v8C7nIiV4fT0r5TU1rA
+	8sGjJazFoAS2vPlaLdnM9aJJ1OQlqavSF16ABWPmLfHhzmFLrXoyqqdxm8V3c9uZ7+1+6yTEzF4Eg
+	Jv4GR5/T1Z0xKLC6iSRLPA+vH4LVyYI7Jo4eoeKyHI8rbdhm1vac+4bQEbTVGuOCNrWFECQ/yAS78
+	8cNTGIDx9pTsVCIXHLr86DCvtqq1PuyelDcTp+AFvz9Z/gmyD63oHSEaxDVSfpHfZtEnXv3UQ6nUF
+	WWUDt/KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2q36-00FR5U-Bl; Wed, 07 Dec 2022 08:45:04 +0000
+	id 1p2q3F-00FRBr-3e; Wed, 07 Dec 2022 08:45:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2q31-00FR0V-GE; Wed, 07 Dec 2022 08:45:01 +0000
-X-UUID: 1b48317acc39407387d0553caea4c500-20221207
+	id 1p2q31-00FR0G-Bh; Wed, 07 Dec 2022 08:45:01 +0000
+X-UUID: 1d753ee9fee9498aad7b2b7c76ce06af-20221207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1MthmATFQNfNnvP0lOFpmusCFZR/WLYgS8eeinmcLUA=;
-	b=pS8fzPGLB1vjxhVapGAwt3E5ve0sLjFYyuqh8RVbFDMdTZZFbXohpJXM4bZ/5q43HOUWwaiMTEqjPJ+GlKkVgA8zF23Inxy+koGAscYGHdYP3my5tF5sNNiDw31qp4/43XPcMn2q2vSFCpXPtuqFCRnDYadHfRFzZ73ACWHeMRc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MKF3IcNgWFgYyNMHk+O1vrqlypOAuQ2w+oXiFcFGlws=;
+	b=FHZPGG+9J2h2UjefNTGD/EeE+SpvamweTsZjIl171/t3FAzX/oeYXeiYl2epJBeZO/j2CarE7wBjFZ8Xy3sU9La35na4hbxYD4PPRlz5yC15iCWYPb+iV13FEYTBu7wXaKuc9i9qqWMMXO4WJULHmKebIV7hzkm2VpzNKZAvGZM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:73633455-4dce-45e2-ba60-bf2eb5097321,IP:0,U
+X-CID-O-INFO: VERSION:1.1.14,REQID:d534d5c8-965a-479e-92ea-21d0dde31605,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:10cbe5d1-652d-43fd-a13a-a5dd3c69a43d,B
+X-CID-META: VersionHash:dcaaed0,CLOUDID:99fa9024-4387-4253-a41d-4f6f2296b154,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1b48317acc39407387d0553caea4c500-20221207
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 1d753ee9fee9498aad7b2b7c76ce06af-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 973672732; Wed, 07 Dec 2022 01:44:49 -0700
+	with ESMTP id 1321072517; Wed, 07 Dec 2022 01:44:41 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 7 Dec 2022 16:44:14 +0800
+ 15.2.792.15; Wed, 7 Dec 2022 16:44:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 16:44:14 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 16:44:13 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
@@ -57,9 +57,9 @@ CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v2 05/12] media: platform: mtk-mdp3: introduce more pipelines from 8195
-Date: Wed, 7 Dec 2022 16:44:05 +0800
-Message-ID: <20221207084412.14075-6-moudy.ho@mediatek.com>
+Subject: [PATCH v2 02/12] arm64: dts: mediatek: mt8195: add MDP3 nodes
+Date: Wed, 7 Dec 2022 16:44:02 +0800
+Message-ID: <20221207084412.14075-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221207084412.14075-1-moudy.ho@mediatek.com>
 References: <20221207084412.14075-1-moudy.ho@mediatek.com>
@@ -67,8 +67,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_004459_563722_3637A2BA 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20221207_004459_438487_96907355 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,184 +84,429 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-By expanding the MMSYS and MUTEX of each two sets in MT8195,
-more pipelines can be arranged.
+Add device nodes for Media Data Path 3 (MDP3) modules.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 80 ++++++++++++-------
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  7 ++
- 2 files changed, 60 insertions(+), 27 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 398 +++++++++++++++++++++++
+ 1 file changed, 398 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 5472d7183a5e..365efe6a6c92 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -56,6 +56,43 @@ static struct mtk_mutex *__get_mutex(const struct mdp_dev *mdp_dev,
- 	return m;
- }
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 0ece3b46b66a..556d2121d290 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1639,6 +1639,133 @@
+ 			#clock-cells = <1>;
+ 		};
  
-+static enum mdp_pipe_id __get_pipe(const struct mdp_dev *mdp_dev,
-+				   enum mtk_mdp_comp_id id)
-+{
-+	enum mdp_pipe_id pipe_id;
++		mdp3-rdma0@14001000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14001000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x1000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>,
++					<&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP0>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP0>,
++				 <&vppsys0 CLK_VPP0_WARP0_ASYNC_TX>,
++				 <&vppsys0 CLK_VPP0_WARP0_RELAY>,
++				 <&vppsys0 CLK_VPP0_WARP0_MDP_DL_ASYNC>,
++				 <&vppsys0 CLK_VPP0_WARP1_ASYNC_TX>,
++				 <&vppsys0 CLK_VPP0_WARP1_RELAY>,
++				 <&vppsys0 CLK_VPP0_WARP1_MDP_DL_ASYNC>,
++				 <&vppsys0 CLK_VPP0_VPP02VPP1_RELAY>,
++				 <&vppsys1 CLK_VPP1_DL_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL_RELAY>,
++				 <&vppsys0 CLK_VPP0_VPP12VPP0_ASYNC>,
++				 <&vppsys1 CLK_VPP1_VPP0_DL1_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VDO0_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VDO1_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VDO1_DL_RELAY>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VDO0_DL_RELAY>;
++			mboxes = <&gce1 12 CMDQ_THR_PRIO_1>,
++				 <&gce1 13 CMDQ_THR_PRIO_1>,
++				 <&gce1 14 CMDQ_THR_PRIO_1>,
++				 <&gce1 21 CMDQ_THR_PRIO_1>,
++				 <&gce1 22 CMDQ_THR_PRIO_1>;
++		};
 +
-+	switch (id) {
-+	case MDP_COMP_RDMA0:
-+		pipe_id = MDP_PIPE_RDMA0;
-+		break;
-+	case MDP_COMP_ISP_IMGI:
-+		pipe_id = MDP_PIPE_IMGI;
-+		break;
-+	case MDP_COMP_WPEI:
-+		pipe_id = MDP_PIPE_WPEI;
-+		break;
-+	case MDP_COMP_WPEI2:
-+		pipe_id = MDP_PIPE_WPEI2;
-+		break;
-+	case MDP_COMP_RDMA1:
-+		pipe_id = MDP_PIPE_RDMA1;
-+		break;
-+	case MDP_COMP_RDMA2:
-+		pipe_id = MDP_PIPE_RDMA2;
-+		break;
-+	case MDP_COMP_RDMA3:
-+		pipe_id = MDP_PIPE_RDMA3;
-+		break;
-+	default:
-+		/* Avoid exceptions when operating MUTEX */
-+		pipe_id = MDP_PIPE_RDMA0;
-+		dev_err(&mdp_dev->pdev->dev, "Unknown pipeline id %d", id);
-+		break;
-+	}
++		mdp3-fg0@14002000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14002000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x2000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
 +
-+	return pipe_id;
-+}
++		mdp3-stich0@14003000 {
++			compatible = "mediatek,mt8195-mdp3-stitch";
++			reg = <0 0x14003000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x3000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_STITCH>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
 +
- static int mdp_path_subfrm_require(const struct mdp_path *path,
- 				   struct mdp_cmdq_cmd *cmd,
- 				   struct mdp_pipe_info *p, u32 count)
-@@ -63,7 +100,6 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
- 	const int plat_id = path->mdp_dev->mdp_data->mdp_plat_id;
- 	const struct mdp_comp_ctx *ctx;
- 	const struct mtk_mdp_driver_data *data = path->mdp_dev->mdp_data;
--	struct device *dev = &path->mdp_dev->pdev->dev;
- 	struct mtk_mutex *mutex;
- 	int id, index;
- 	u32 num_comp = 0;
-@@ -72,23 +108,7 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
- 		num_comp = CFG_GET(MT8183, path->config, num_components);
- 
- 	/* Decide which mutex to use based on the current pipeline */
--	switch (path->comps[0].comp->public_id) {
--	case MDP_COMP_RDMA0:
--		index = MDP_PIPE_RDMA0;
--		break;
--	case MDP_COMP_ISP_IMGI:
--		index = MDP_PIPE_IMGI;
--		break;
--	case MDP_COMP_WPEI:
--		index = MDP_PIPE_WPEI;
--		break;
--	case MDP_COMP_WPEI2:
--		index = MDP_PIPE_WPEI2;
--		break;
--	default:
--		dev_err(dev, "Unknown pipeline and no mutex is assigned");
--		return -EINVAL;
--	}
-+	index = __get_pipe(path->mdp_dev, path->comps[0].comp->public_id);
- 	memcpy(p, &data->pipe_info[index], sizeof(struct mdp_pipe_info));
- 	mutex = __get_mutex(path->mdp_dev, p);
- 
-@@ -342,11 +362,13 @@ static void mdp_auto_release_work(struct work_struct *work)
- 	struct mdp_cmdq_cmd *cmd;
- 	struct mdp_dev *mdp;
- 	struct mtk_mutex *mutex;
-+	enum mdp_pipe_id pipe_id;
- 
- 	cmd = container_of(work, struct mdp_cmdq_cmd, auto_release_work);
- 	mdp = cmd->mdp;
- 
--	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
-+	pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
-+	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
- 	mtk_mutex_unprepare(mutex);
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 			    cmd->num_comps);
-@@ -367,6 +389,7 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
- 	struct cmdq_cb_data *data;
- 	struct mdp_dev *mdp;
- 	struct device *dev;
-+	enum mdp_pipe_id pipe_id;
- 
- 	if (!mssg) {
- 		pr_info("%s:no callback data\n", __func__);
-@@ -394,7 +417,8 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
- 		struct mtk_mutex *mutex;
- 
- 		dev_err(dev, "%s:queue_work fail!\n", __func__);
--		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
-+		pipe_id = __get_pipe(mdp, cmd->comps[0].public_id);
-+		mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
- 		mtk_mutex_unprepare(mutex);
- 		mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 				    cmd->num_comps);
-@@ -417,6 +441,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	struct mdp_comp *comps = NULL;
- 	struct device *dev = &mdp->pdev->dev;
- 	struct mtk_mutex *mutex = NULL;
-+	enum mdp_pipe_id pipe_id;
- 	const int id = mdp->mdp_data->mdp_plat_id;
- 	int i, ret;
- 	u32 num_comp = 0;
-@@ -453,13 +478,6 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_free_comps;
- 	}
- 
--	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[MDP_PIPE_RDMA0]);
--	ret = mtk_mutex_prepare(mutex);
--	if (ret) {
--		dev_err(dev, "Fail to enable mutex clk\n");
--		goto err_free_path;
--	}
--
- 	path->mdp_dev = mdp;
- 	path->config = param->config;
- 	path->param = param->param;
-@@ -479,6 +497,14 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_free_path;
- 	}
- 
-+	pipe_id = __get_pipe(mdp, path->comps[0].comp->public_id);
-+	mutex = __get_mutex(mdp, &mdp->mdp_data->pipe_info[pipe_id]);
-+	ret = mtk_mutex_prepare(mutex);
-+	if (ret) {
-+		dev_err(dev, "Fail to enable mutex clk\n");
-+		goto err_free_path;
-+	}
++		mdp3-hdr0@14004000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14004000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x4000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
 +
- 	ret = mdp_path_config(mdp, cmd, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_config error\n");
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-index 3ffad6be95ad..49b6e9c8e089 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-@@ -49,6 +49,13 @@ enum mdp_pipe_id {
- 	MDP_PIPE_IMGI,
- 	MDP_PIPE_WPEI,
- 	MDP_PIPE_WPEI2,
-+	MDP_PIPE_RDMA1,
-+	MDP_PIPE_RDMA2,
-+	MDP_PIPE_RDMA3,
-+	MDP_PIPE_SPLIT,
-+	MDP_PIPE_SPLIT2,
-+	MDP_PIPE_VPP0_SOUT,
-+	MDP_PIPE_VPP1_SOUT,
- 	MDP_PIPE_MAX
- };
++		mdp3-aal0@14005000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14005000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x5000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-rsz0@14006000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14006000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x6000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RSZ>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-tdshp0@14007000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14007000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x7000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-color0@14008000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14008000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x8000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-ovl0@14009000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			reg = <0 0x14009000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x9000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-pad0@1400a000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x1400a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xa000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_PADDING>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-tcc0@1400b000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			reg = <0 0x1400b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xb000 0x1000>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3-wrot0@1400c000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x1400c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0xc000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_WROT_SOF>,
++					      <CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_WROT>;
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
+ 		mutex@1400f000 {
+ 			compatible = "mediatek,mt8195-vpp-mutex";
+ 			reg = <0 0x1400f000 0 0x1000>;
+@@ -1787,6 +1914,277 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
  
++		mdp3-split0@14f06000 {
++			compatible = "mediatek,mt8195-mdp3-split";
++			reg = <0 0x14f06000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x6000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
++				 <&vppsys1 CLK_VPP1_HDMI_META>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
++				 <&vppsys1 CLK_VPP1_DGI_IN>,
++				 <&vppsys1 CLK_VPP1_DGI_OUT>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tcc1@14f07000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			reg = <0 0x14f07000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x7000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TCC>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma1@14f08000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f08000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x8000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma2@14f09000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f09000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0x9000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rdma3@14f0a000 {
++			compatible = "mediatek,mt8195-mdp3-rdma";
++			reg = <0 0x14f0a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xa000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RDMA>,
++				 <&topckgen CLK_TOP_CFG_VPP1>,
++				 <&topckgen CLK_TOP_CFG_26M_VPP1>;
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg1@14f0b000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xb000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg2@14f0c000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xc000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-fg3@14f0d000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			reg = <0 0x14f0d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xd000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_FG>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr1@14f0e000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f0e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xe000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr2@14f0f000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f0f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f0XXXX 0xf000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-hdr3@14f10000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			reg = <0 0x14f10000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_HDR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal1@14f11000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f11000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x1000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal2@14f12000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f12000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x2000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-aal3@14f13000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			reg = <0 0x14f13000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x3000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_AAL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz1@14f14000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f14000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x4000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RSZ>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz2@14f15000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f15000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x5000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RSZ>,
++				 <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-rsz3@14f16000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14f16000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x6000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RSZ>,
++				 <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp1@14f17000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f17000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x7000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp2@14f18000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f18000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x8000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-tdshp3@14f19000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			reg = <0 0x14f19000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0x9000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_TDSHP>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-merge0@14f1a000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			reg = <0 0x14f1a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xa000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-merge1@14f1b000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			reg = <0 0x14f1b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xb000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color1@14f1c000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xc000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color2@14f1d000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xd000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-color3@14f1e000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			reg = <0 0x14f1e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xe000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_COLOR>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-ovl1@14f1f000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			reg = <0 0x14f1f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f1XXXX 0xf000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_OVL>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad1@14f20000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f20000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad2@14f21000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f21000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x1000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-pad3@14f22000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			reg = <0 0x14f22000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x2000 0x1000>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_PAD>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		mdp3-wrot1@14f23000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14f23000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce1 SUBSYS_14f2XXXX 0x3000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF>,
++					      <CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_WROT>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
+ 		imgsys: clock-controller@15000000 {
+ 			compatible = "mediatek,mt8195-imgsys";
+ 			reg = <0 0x15000000 0 0x1000>;
 -- 
 2.18.0
 
