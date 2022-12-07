@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 699A5C352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 12:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92BE6C63705
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 12:38:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=teTEDU5QtKj0Mfr2EVBu+S1YQD/f2Wbp5vvhIJeVf1U=; b=Kp6JNtIasyfD2EV1IHaUkxmH5A
-	FUOzE9jD6mf1FjlL4phyIGuRjvFknwEZ0ILmebuyKYcGgM/AdLCUZr3uHIyD5cgSRG7uf+BrOWZx0
-	Y280L58rL0IqYhFP3fo690HKiGKMLCb2RLTfa+8vOr05oPPXXnypexGSGxRUD7HPiRRlKAFKm9kHM
-	t/sKkPeqs2Je0yY99vlKPt00PFVPaHqgyh6sU4+nIkDhpPuilD5HLbBT3greOAZXXBFCtRmrwPl9c
-	4oZlEB6YTqvOetW3IZutU1wjDEy6CIo6Vnm32cjwHVcTG7bjTjYFF32d6fCsKyfNb722Usnrot4/Z
-	sbABVJvg==;
+	bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=; b=MfWI8eDHfUohFiey+YJ5Lah361
+	L6LT+sLknQGfonw6o6+nSZceH+dOD17ZKttd+6bEtrUn/4k1mbEdUfpLsjVtyq5lNtBTxbmFDtmNv
+	DZnyJ6Xvw4Y8jgGWGCtFGtZA+Dq9mLS/vkn2MSw4xZipuuNQzjna2BMW4lWQYgeeE8hvVUH6rbRfl
+	PIItG9wPIhO8S5PWxGSBcVL2EP9I7js0Jx8KtOR3x0zA86PFNPZUXoHpsPZIKQ07m9C+ouNqRPOzw
+	s9vNVZabP8gfu0wMvfuhPYOvytf0W32IEKuz4uaTd5DVgNvDcYyez76OqKSt0a6yFzxsqpkUaufCK
+	k5Yy1CxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2tgU-002bhI-6L; Wed, 07 Dec 2022 12:37:58 +0000
-Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
+	id 1p2tgw-002cHj-U0; Wed, 07 Dec 2022 12:38:26 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2tgR-002bXn-2P
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 12:37:56 +0000
-Received: by mail-vk1-xa35.google.com with SMTP id v81so8188393vkv.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 04:37:53 -0800 (PST)
+	id 1p2tgq-002c8R-F2
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 12:38:21 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id b13-20020a17090a5a0d00b0021906102d05so1477365pjd.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 04:38:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+        d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=teTEDU5QtKj0Mfr2EVBu+S1YQD/f2Wbp5vvhIJeVf1U=;
-        b=Jq9l8QUT3RmW8agCe3pj35jp6CDAu9QRV3Me52lzDEq6xGTJdTpJQnUa6FVprMKVYF
-         1j/QPap2PSi+LTcn5LXngQ6BSj1ajRXBF+UEKCrsmmvsf9YOH2uYrxHe9TUCzNRS2dzW
-         mCSjBh4GwFIr1sktccAiZiGMXYyZfhfe+l0hKFebmB9FDylbefeY5lFaJZ0bfJpvk2jq
-         Zug0l6dh6b3UzGzzOwpYbr3AcB5kp9h6/NR5p5563q1ZrasUCIDNBFHk/oME7ut3JG7H
-         LcLCyexwfNvXSNH779CRjecVSukD4SOWlKqEMC5XwaaQiAztoYTB1dkgytorOdX0uTEV
-         A/Kw==
+        bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=;
+        b=xuBqyfYrIxMPliMMxj9qLT1fhkr0UNssZ2JAkE4gPRsJ1c4rGN7HxWSvW986Atd/sJ
+         V++hfviQym9GCbEkuz1lIYdDku4HB2BagxiLYSLJNK1M9P0vCilOQddqR2Kq/JH3iUs6
+         UsQIJgRf0bIRR4a6QsIBBVPPR81LKJiisgSpSCAOzcBXkw04YgoZAQcFGK5zpO6/sM29
+         tBhPFOWS1gJNRb9O2MX8SDZ69/ShdugXBRmiE1JZJeAXPQ7Pc/2Lsr3l21GNDqaAlp/y
+         +H2ltfbtGp9YRMIB612MAcqAdqay5VXUps3fBF+MIMccG4cGqFz0TqxssUffutrDSgid
+         cdtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=teTEDU5QtKj0Mfr2EVBu+S1YQD/f2Wbp5vvhIJeVf1U=;
-        b=oGRIXPk/0D32nN5jtBmS9BPNKyfb+CsV14oL4l76TWsa5nDcLuVSQlHJpH2b1RCX1P
-         4lGGQQjKGEYJkmva8XG7VQvvDVPSiLqA2IiH72x7IYoJ/ELZ2dnqGlXR2fY82mjbzmHE
-         va46bXDRrvF0VCdtLBnGsQpSUq7DBnhf1vwJ6cP+57Jl456DEhZ2Ey7xAY5yt9EeHLCj
-         6Eg59mpQA6XePeqMOy3uEFg3HoCmL/4A6cV8MHLsDJFtUy8FYON+gO2iHXk7GttH0bfm
-         DxZ5gl3E+4Oc+Iwpl2o08aRo3CFH0X46PuO3OyBCcS/P579O85MOQTFN+Y8/eVncGYWX
-         U3xQ==
-X-Gm-Message-State: ANoB5pkzvd7eu+0vFtHK8bUHvqZsrO4kM66t5eSaUEdOx/+QGFYStaam
-	DgWRKpj6DkDwzcLMZ5aLI9vqOyD438vJkz4m/USemw==
-X-Google-Smtp-Source: AA0mqf5EouDbLcaUjLPD1/54NEmZJn57yjwMnxFOZ8DjaPlF3C1lSul0Ie2XnC3QvGA+28fynHBDLbuOjNBUXYE7+1I=
-X-Received: by 2002:a1f:16ca:0:b0:3bd:8e1:26c4 with SMTP id
- 193-20020a1f16ca000000b003bd08e126c4mr19034510vkw.3.1670416670412; Wed, 07
- Dec 2022 04:37:50 -0800 (PST)
+        bh=Uq47N/ZOOwJfcqXzgmggK3bk8KWVsQXVwMJxyc39x0w=;
+        b=FzU3Eu5Cvs6HtHkZ3k053a9mRvCp/LRWIm6EkNmC6XyBrE5HekK2xNaYKlkSdJAm3W
+         VpWLs4y0Jda6O0nY6+VgxsdLeMiZZN01jISMIMGrd+MPyVqqsliJaXp3qV0nptMQ6t3o
+         rK1SRnPWdtzrIxswT0leUNCbcdklPrPIS6h9BDid7lamzG4gAQ4qwDhsJDyn+RFEjUpV
+         59bbaUcCjtaQVcbpqBVg8MGzPC+qDVDKKKerpEHzQUUmAO3Emx6Y5PpGH3frtb2R82H+
+         Ptl9FKApb9dYR4mb0RZCZr2hH3rzLoEfBFc7JXq9tCQnp9Mt3rrg9gwhHfk++pPAE8+i
+         0YQg==
+X-Gm-Message-State: ANoB5pl1J56hwRSro28p7x3H0quupLHh2tPJXp3WLv+Llag4rSWTaQSP
+	Xv1vzk5WxyhIvik3I6ZsJA/LdjTu1ggKRHXNVZH46ShHDFj9zA==
+X-Google-Smtp-Source: AA0mqf44UgY9jAl2a1r9HulFGS5OcYUHT0t6QPKBXloif6qmrZJgXEqWD8xyYbXw61aM0/2wMAArsQBA+kpWZCDbRJQ=
+X-Received: by 2002:a17:902:ee01:b0:189:e089:5d51 with SMTP id
+ z1-20020a170902ee0100b00189e0895d51mr10894703plb.165.1670416696083; Wed, 07
+ Dec 2022 04:38:16 -0800 (PST)
 MIME-Version: 1.0
-References: <20221206211554.92005-1-robh@kernel.org>
-In-Reply-To: <20221206211554.92005-1-robh@kernel.org>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 7 Dec 2022 13:37:39 +0100
-Message-ID: <CAMRc=Mf0HdoH4Ca0o85j-4-beGGPFr+_bF2OGUP=Fc=tmNd5Og@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Add missing 'unevaluatedProperties' to
- regulator nodes
-To: Rob Herring <robh@kernel.org>
-Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Gene Chen <gene_chen@richtek.com>, Daniel Mack <zonque@gmail.com>, 
-	Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <87dc45b122d26d63c80532976813c9365d7160b3.1670140888.git.deren.wu@mediatek.com>
+In-Reply-To: <87dc45b122d26d63c80532976813c9365d7160b3.1670140888.git.deren.wu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 7 Dec 2022 13:37:40 +0100
+Message-ID: <CAPDyKFo-cU1RD1kBR+EsuAdFyJ8HmhdqZukMWJVjrHF_91qZwA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: vub300: fix warning - do not call blocking ops when !TASK_RUNNING
+To: Deren Wu <deren.wu@mediatek.com>
+Cc: linux-mmc <linux-mmc@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_043755_189859_D603A93F 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20221207_043820_523471_2F4701FB 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,46 +84,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 6, 2022 at 10:18 PM Rob Herring <robh@kernel.org> wrote:
+On Sun, 4 Dec 2022 at 09:27, Deren Wu <deren.wu@mediatek.com> wrote:
 >
-> Several regulator schemas are missing 'unevaluatedProperties' constraint
-> which means any extra properties are allowed. Upon adding the
-> constraint, there's numerous warnings from using the deprecated
-> 'regulator-compatible' property. Remove the usage as examples shouldn't
-> be using long since deprecated properties.
+> vub300_enable_sdio_irq() works with mutex and need TASK_RUNNING here.
+> Ensure that we mark current as TASK_RUNNING for sleepable context.
 >
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> I'd suggest that Mark take this if that's okay with Lee. Or I can take
-> it.
+> [   77.554641] do not call blocking ops when !TASK_RUNNING; state=1 set at [<ffffffff92a72c1d>] sdio_irq_thread+0x17d/0x5b0
+> [   77.554652] WARNING: CPU: 2 PID: 1983 at kernel/sched/core.c:9813 __might_sleep+0x116/0x160
+> [   77.554905] CPU: 2 PID: 1983 Comm: ksdioirqd/mmc1 Tainted: G           OE      6.1.0-rc5 #1
+> [   77.554910] Hardware name: Intel(R) Client Systems NUC8i7BEH/NUC8BEB, BIOS BECFL357.86A.0081.2020.0504.1834 05/04/2020
+> [   77.554912] RIP: 0010:__might_sleep+0x116/0x160
+> [   77.554920] RSP: 0018:ffff888107b7fdb8 EFLAGS: 00010282
+> [   77.554923] RAX: 0000000000000000 RBX: ffff888118c1b740 RCX: 0000000000000000
+> [   77.554926] RDX: 0000000000000001 RSI: 0000000000000004 RDI: ffffed1020f6ffa9
+> [   77.554928] RBP: ffff888107b7fde0 R08: 0000000000000001 R09: ffffed1043ea60ba
+> [   77.554930] R10: ffff88821f5305cb R11: ffffed1043ea60b9 R12: ffffffff93aa3a60
+> [   77.554932] R13: 000000000000011b R14: 7fffffffffffffff R15: ffffffffc0558660
+> [   77.554934] FS:  0000000000000000(0000) GS:ffff88821f500000(0000) knlGS:0000000000000000
+> [   77.554937] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [   77.554939] CR2: 00007f8a44010d68 CR3: 000000024421a003 CR4: 00000000003706e0
+> [   77.554942] Call Trace:
+> [   77.554944]  <TASK>
+> [   77.554952]  mutex_lock+0x78/0xf0
+> [   77.554973]  vub300_enable_sdio_irq+0x103/0x3c0 [vub300]
+> [   77.554981]  sdio_irq_thread+0x25c/0x5b0
+> [   77.555006]  kthread+0x2b8/0x370
+> [   77.555017]  ret_from_fork+0x1f/0x30
+> [   77.555023]  </TASK>
+> [   77.555025] ---[ end trace 0000000000000000 ]---
 >
->  Documentation/devicetree/bindings/mfd/max77650.yaml  |  2 --
->  .../devicetree/bindings/mfd/mediatek,mt6360.yaml     |  9 ---------
->  .../bindings/power/supply/mt6360_charger.yaml        |  2 +-
->  .../bindings/regulator/max77650-regulator.yaml       |  1 +
->  .../devicetree/bindings/regulator/max8660.yaml       |  6 +-----
->  .../bindings/regulator/mt6360-regulator.yaml         | 12 +++---------
->  6 files changed, 6 insertions(+), 26 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/mfd/max77650.yaml b/Documentation/devicetree/bindings/mfd/max77650.yaml
-> index b0a0f0d3d9d4..4181174fcf58 100644
-> --- a/Documentation/devicetree/bindings/mfd/max77650.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/max77650.yaml
-> @@ -100,14 +100,12 @@ examples:
->                  compatible = "maxim,max77650-regulator";
->
->                  max77650_ldo: regulator-ldo {
-> -                    regulator-compatible = "ldo";
->                      regulator-name = "max77650-ldo";
->                      regulator-min-microvolt = <1350000>;
->                      regulator-max-microvolt = <2937500>;
->                  };
->
->                  max77650_sbb0: regulator-sbb0 {
-> -                    regulator-compatible = "sbb0";
->                      regulator-name = "max77650-sbb0";
->                      regulator-min-microvolt = <800000>;
->                      regulator-max-microvolt = <1587500>;
+> Fixes: 88095e7b473a ("mmc: Add new VUB300 USB-to-SD/SDIO/MMC driver")
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Ideally this driver should be converted to use the sdio_signal_irq()
+interface and thus move away from the legacy mmc_signal_sdio_irq()
+interface. However, as a fix for stable kernels, this looks good to
+me!
+
+So, applied for next and by adding a stable tag, thanks!
+
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/vub300.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/mmc/host/vub300.c b/drivers/mmc/host/vub300.c
+> index 97beece62fec..b58a1a869ed8 100644
+> --- a/drivers/mmc/host/vub300.c
+> +++ b/drivers/mmc/host/vub300.c
+> @@ -2049,6 +2049,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
+>                 return;
+>         kref_get(&vub300->kref);
+>         if (enable) {
+> +               set_current_state(TASK_RUNNING);
+>                 mutex_lock(&vub300->irq_mutex);
+>                 if (vub300->irqs_queued) {
+>                         vub300->irqs_queued -= 1;
+> @@ -2064,6 +2065,7 @@ static void vub300_enable_sdio_irq(struct mmc_host *mmc, int enable)
+>                         vub300_queue_poll_work(vub300, 0);
+>                 }
+>                 mutex_unlock(&vub300->irq_mutex);
+> +               set_current_state(TASK_INTERRUPTIBLE);
+>         } else {
+>                 vub300->irq_enabled = 0;
+>         }
+> --
+> 2.18.0
+>
 
