@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6919FC352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1B2C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9qhhglclNe/Y+Ww2TBaF/Rt3nwv66/xfoqUyqPeiMww=; b=l8A2md9DVgcHySQmyDKPDPV04T
-	C8Ar/XD/BK54HD4KX4pAqEdX3anonL7XjY2c38HUjFYPpwmMoZhzYtpRqvsu+9Ctf934UwV9VyMbu
-	y0ZE3XcNbqJ/X1rX0r18TO2TtDUJO5NJXzyUWuEW4rrKkjKvQ22V/tcchNHonQd+POhI4GuptwfI/
-	M1h5IFpdl798WZaYegy/7AmKlsDGH9Q6GbkZ9UzNlh+qX7EBCTcLDM5qgeWFYjD/8zcMgqSAWoDa6
-	BPKwb2jHGrRAhuxL+AalSJbh+IAKK6vn4VBN6gyFO5jnuGgTenh36qiCUK0dabeetu8Fw8hWEk0Jx
-	SrNHqVpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GKTyCyTVxIX06cONXAdZM9/ScImSlYf8cwegM325JqY=; b=0QdYIi6yGp+Kssg3mZv5itnE4m
+	bQ6LRCOccJjyXSGLJMIzid4HqyhB6w0Q4LoOyVp0CV8kCO6zsFw5XergdWwGBP2TjX5zQ9aCZIAeb
+	Rjd3KhJY1J3W2WHaOgyDCOVILLsARw741kggKjE9bE++6vbL9Hm3I2jGFcxPJ5dlyATURbcSLjohh
+	fbDZR9i+urJLMU/DKlGbemjnA88cgnJg3BEiYvG8cX3vk7vdSDaT0hhliNb/zHKEPfN31RdlSrFJR
+	nr8ogYgHWkeJCxUHuZkt0mHTys74fvxhV14zcjuQb68d05sbVpr1ir/oUyvWmYlvNt9ot29Lg4EcF
+	DEJU0G8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2y9J-007JOi-OF; Wed, 07 Dec 2022 17:24:01 +0000
-Received: from mail-oo1-f53.google.com ([209.85.161.53])
+	id 1p2yMi-007Ulq-L0; Wed, 07 Dec 2022 17:37:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2y98-007JHz-Vt; Wed, 07 Dec 2022 17:23:52 +0000
-Received: by mail-oo1-f53.google.com with SMTP id t15-20020a4a96cf000000b0049f7e18db0dso15080ooi.10;
-        Wed, 07 Dec 2022 09:23:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9qhhglclNe/Y+Ww2TBaF/Rt3nwv66/xfoqUyqPeiMww=;
-        b=Qaec7jxAdBLESKW0x0+bXqyIu1FaMDo9bqB9wyeeEqH/D4nyjAPWg4jmz9YaoieVNj
-         Sd2zVByvOQ6iCdxrqQH6B7WpvBcEGy5yCD/9hUJs2VT6U/ba+VL9iROojW1bEagZmMG+
-         oIdglKF2a+RaTRJdOlXzTanAknjWrZVg/9sCYBKX2OEfox1/9ebvoeyjY+XGTliDg04+
-         b1B5AxXSZXXbFD5eGncdAL2Kjtnre+s6uOUtzcnepceqU1cLvRIDOvoh39tRjpkoq68V
-         PXF3v9VURyvtkV/VLbBvf/0BSNOSbb5Aee0FLRY62WYAjtY0T88kPI2RlMu+VG0/V4p3
-         A26Q==
-X-Gm-Message-State: ANoB5pmrJAV8t6jcQscBu9d5U92TvjsmmPAst8JqSjtmURrJnzAa1Vf2
-	riNNewVf2+k+l6gPVpWMpyz4ppFPZg==
-X-Google-Smtp-Source: AA0mqf6Rie1pRr+wry5Yh3B2mB24YYud/ZXySwS1VnTqqk88pTw8r/yGavdUGW7iQk1zoJz50LknPg==
-X-Received: by 2002:a4a:b145:0:b0:49f:449a:5f6c with SMTP id e5-20020a4ab145000000b0049f449a5f6cmr30324598ooo.93.1670433828843;
-        Wed, 07 Dec 2022 09:23:48 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id t4-20020a4adbc4000000b0049f5ce88583sm9112297oou.7.2022.12.07.09.23.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Dec 2022 09:23:48 -0800 (PST)
-Received: (nullmailer pid 2437289 invoked by uid 1000);
-	Wed, 07 Dec 2022 17:23:47 -0000
-Date: Wed, 7 Dec 2022 11:23:47 -0600
-From: Rob Herring <robh@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Steve Cho <stevecho@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-mediatek@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH v5,1/3] media: dt-bindings: media: mediatek: vcodec:
- adapt to the 'clock-names' of different platforms
-Message-ID: <167043382716.2437231.1367322252075275050.robh@kernel.org>
-References: <20221206064536.16592-1-yunfei.dong@mediatek.com>
+	id 1p2yMV-007UXp-CV; Wed, 07 Dec 2022 17:37:40 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E13E161B77;
+	Wed,  7 Dec 2022 17:37:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6BC7C433C1;
+	Wed,  7 Dec 2022 17:37:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670434658;
+	bh=l/Hux/68V+al46JNc+uBAW3FAqg3S010/czLJPsKipM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=UhbrPF7bQhhj/AM69qDVz4xBlD0EB0Ibzkb7Z4hNx3T7f95NHB3TqGO5hAH0Ya7N4
+	 OV0Tk+pr2mSdNl8inq7RkCNIs9BsBIz9KizJ7/QczoVogxJ2OgWyL1SmmSARO3V8hI
+	 oLTTL1PuqhU12LAZ/kUNNSvpV52QGEIbDLGeNdKXNDqDTPXTM8Z5lKfnu1i2/Nf6w2
+	 4tWGmlr59/dkIN/3cDhHmO45uCqHY28NwWDLkA5kypyzfrtZ9i/Hl7cdG9/IoqcaDK
+	 JUE8WCyBNyn2vM3w2GEoCPzEgNRICGR+zIQpZEXw6dMAxnIzrkoQVAKOVK1GoGdfxo
+	 qphvY6E43eCgg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+ matthias.bgg@gmail.com, Wang Yufen <wangyufen@huawei.com>
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ shunli.wang@mediatek.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1670234188-23596-1-git-send-email-wangyufen@huawei.com>
+References: <1670234188-23596-1-git-send-email-wangyufen@huawei.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8183: fix refcount leak in
+ mt8183_mt6358_ts3a227_max98357_dev_probe()
+Message-Id: <167043465528.393374.16429232928958937003.b4-ty@kernel.org>
+Date: Wed, 07 Dec 2022 17:37:35 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221206064536.16592-1-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.11.0-dev-b77ec
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_092351_047366_50F2052A 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20221207_093739_500699_5BCCE2D7 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +73,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 06 Dec 2022 14:45:34 +0800, Yunfei Dong wrote:
-> mt8195 and mt8192 have different clock numbers, separate 'clock-names'
-> according to compatible name.
+On Mon, 05 Dec 2022 17:56:28 +0800, Wang Yufen wrote:
+> The node returned by of_parse_phandle() with refcount incremented,
+> of_node_put() needs be called when finish using it. So add it in the
+> error path in mt8183_mt6358_ts3a227_max98357_dev_probe().
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> compared with v4:
-> - change min clocks and clock-names from 1 to 4
-> compared with v3:
-> - rewrite clock-names according to different platforms.
-> 
-> Reference series:
-> [1]: v5 of this series is presend by Allen-KH Cheng.
->      message-id: 20221128143832.25584-4-allen-kh.cheng@mediatek.com
-> ---
->  .../media/mediatek,vcodec-subdev-decoder.yaml | 41 ++++++++++++++++---
->  1 file changed, 35 insertions(+), 6 deletions(-)
 > 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8183: fix refcount leak in mt8183_mt6358_ts3a227_max98357_dev_probe()
+      commit: 38eef3be38ab895959c442702864212cc3beb96c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
