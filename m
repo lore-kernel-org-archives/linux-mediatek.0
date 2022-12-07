@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D129DC47089
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 04:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDA2C352A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 05:26:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RQ0qFTZ+aQj4klAsyz+R8K2SungfjCqIUDIxkr/4Nn0=; b=qdQtxeQUcgYYnXqoX3yg7UdOXE
-	csRsAIocXEnQVhrqd8BEXxi4ltq+lVmwKzN2Rd/HFf44fK2N7sIDwR9Wx5KAoCaGPb1YNka6dF/xb
-	TK8pyJ2PvdspXGFOPfp7RoKKJEBXm2SRIpYm9Qc7arA8r9cWjU4HzMDjJafeqnWX1qTncatz/4lej
-	fjADnodN4Gi1gFIqh68CkQ4IBGfCsTmI84/4/Vgyqt1ebltFR3mliymbtCJAG20m5DDmJFvA08k2c
-	CrXblvhQbVwYrBo8ujmq99tQLJP3vjVC4kjxUpjO+SZ9Y2045ouaxKhu2Evx/aYLbFseh7tfh0YA5
-	v20qw4ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jsfib5T7wSVjC6QbFl/gYrFKUGPmdooacuNRC3W5K6k=; b=hT6UON3LzHRJAVM0Vn6RQwnKW7
+	tdrKZ+fjP7YliIZaUxDWu919ABMbiNHfWDJQR5lLhGTcaKEI9ez8JiAl3jeOrmh+fPBrweL0/92T0
+	sLqGRzuG5SL2l7p9EwnKBMSnf8wZvOfJyYV/zwxOzJU7kDCnH+1+XY08UfdVXbbfzpdf042EFxcse
+	LtQ/sfzlAK1hIcteQLiB+IhWETWg9msoCoagkdWcfnAoWlmQj04Ty4WJ2oH7S9V1McmAjhahmxaWv
+	IcPVt1HDuoV2wkA/AqP6BmrElKduqWLJoUUpNu8yEXwSvVngO7RlXDwvyJG+CSEbpTlh0a53A2GBa
+	9YPXtMHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2mO6-00AtYQ-6z; Wed, 07 Dec 2022 04:50:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p2mwQ-00BdgM-9Y; Wed, 07 Dec 2022 05:25:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2mNv-00AtIw-Tz
-	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 04:50:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 00E1C61A2A;
-	Wed,  7 Dec 2022 04:50:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 344B0C4314B;
-	Wed,  7 Dec 2022 04:50:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670388617;
-	bh=FvwBOBATcd5hKJ/U3CH4vx2SVxGP67PzTE/WQKj0TuE=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=oP+Uo60flmHQ0+7U/WzeXRLGC9eYi2ZPplmKV5uabIxuHpt2WG+fHQz7iiargPFnz
-	 UtUSBjQWsunbkBfMN6OrerMYLsmX8HpxDVSK/uUHMDe3DIKLQs16sGVGQlrokABWGz
-	 kvLRhhpknkn3mmcqoLXu7wzaPeL4FerPzm+PAM/sk+3w2iVtRQKmIM8H3FTZH1bPLD
-	 CI9qCcoLA6uuzKw/BnaVFADt+IeuFA6WuwXkPsAq9Ot3Szf4VARk9OdmBMa/6mL9TX
-	 Nkw4TkIgnETIL06LICRw9E9v4wIkrovXYkublacevxxF2wn5u/EZemLjb2MBFG2EZt
-	 N5MOVRSJKVmpw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 1300EE49BBD;
-	Wed,  7 Dec 2022 04:50:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1p2mwN-00BdMs-ND
+	for linux-mediatek@lists.infradead.org; Wed, 07 Dec 2022 05:25:57 +0000
+X-UUID: c76191d8640547978a5f2dda97679839-20221206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Jsfib5T7wSVjC6QbFl/gYrFKUGPmdooacuNRC3W5K6k=;
+	b=b50//Sthinsa4tAoIu6SgH2itSAhbCtxUVtXdUtEFVJ0seStS5Lm8TCS6/Vtjpv27BI06lzPn88u7l6kn3Vc+hd4DpygxEYGrz2AeyG0alwOTMFU0vxyLLRewzM/tw/CEuDZYpDMALi0z6OUtY1yRHPY7a10WazZnA3yNGUWEiw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:b4dea011-003d-4790-9f5c-c39c42747b68,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:ba7ec516-b863-49f8-8228-cbdfeedd1fa4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c76191d8640547978a5f2dda97679839-20221206
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1324297913; Tue, 06 Dec 2022 22:25:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 7 Dec 2022 13:25:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 7 Dec 2022 13:25:40 +0800
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
+Subject: [PATCH v2 3/3] wifi: mt76: mt7915: rework mt7915_mcu_set_thermal_throttling()
+Date: Wed, 7 Dec 2022 13:25:00 +0800
+Message-ID: <20221207052500.10855-4-howard-yh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221207052500.10855-1-howard-yh.hsu@mediatek.com>
+References: <20221207052500.10855-1-howard-yh.hsu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 net-next] net: ethernet: mtk_wed: add reset to
- rx_ring_setup callback
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <167038861707.25696.6418625611096340423.git-patchwork-notify@kernel.org>
-Date: Wed, 07 Dec 2022 04:50:17 +0000
-References: <29c6e7a5469e784406cf3e2920351d1207713d05.1670239984.git.lorenzo@kernel.org>
-In-Reply-To: <29c6e7a5469e784406cf3e2920351d1207713d05.1670239984.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi@redhat.com, leon@kernel.org, sujuan.chen@mediatek.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221206_205020_031193_30C00CAE 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221206_212555_788288_71A30C54 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +80,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Firmware expects to disable thermal protect first before reconfiguring.
 
-This patch was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
+Fixes: 34b877d972be ("mt76: mt7915: add thermal cooling device support")
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
-On Mon,  5 Dec 2022 12:34:42 +0100 you wrote:
-> This patch adds reset parameter to mtk_wed_rx_ring_setup signature
-> in order to align rx_ring_setup callback to tx_ring_setup one introduced
-> in 'commit 23dca7a90017 ("net: ethernet: mtk_wed: add reset to
-> tx_ring_setup callback")'
-> 
-> Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
-
-Here is the summary with links:
-  - [v2,net-next] net: ethernet: mtk_wed: add reset to rx_ring_setup callback
-    https://git.kernel.org/netdev/net-next/c/ed883bec679b
-
-You are awesome, thank you!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index b2652de082ba..176d293eb32a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3070,19 +3070,22 @@ int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state)
+ 	} __packed req = {
+ 		.ctrl = {
+ 			.band_idx = phy->mt76->band_idx,
++			.type.protect_type = 1,
++			.type.trigger_type = 1,
+ 		},
+ 	};
+-	int level;
++	int level, ret;
+ 
+-	if (!state) {
+-		req.ctrl.ctrl_id = THERMAL_PROTECT_DISABLE;
+-		goto out;
+-	}
++	req.ctrl.ctrl_id = THERMAL_PROTECT_DISABLE;
++
++	ret = mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_PROT),
++				&req, sizeof(req.ctrl), false);
++
++	if (ret || !state)
++		return ret;
+ 
+ 	/* set duty cycle and level */
+ 	for (level = 0; level < 4; level++) {
+-		int ret;
+-
+ 		req.ctrl.ctrl_id = THERMAL_PROTECT_DUTY_CONFIG;
+ 		req.ctrl.duty.duty_level = level;
+ 		req.ctrl.duty.duty_cycle = state;
+@@ -3100,8 +3103,6 @@ int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state)
+ 	req.restore_temp = cpu_to_le32(phy->throttle_temp[0] - 10);
+ 	req.trigger_temp = cpu_to_le32(phy->throttle_temp[1]);
+ 	req.sustain_time = cpu_to_le16(10);
+-
+-out:
+ 	req.ctrl.type.protect_type = 1;
+ 	req.ctrl.type.trigger_type = 1;
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.18.0
 
 
