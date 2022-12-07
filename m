@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1B2C352A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF117C47089
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 17:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GKTyCyTVxIX06cONXAdZM9/ScImSlYf8cwegM325JqY=; b=0QdYIi6yGp+Kssg3mZv5itnE4m
-	bQ6LRCOccJjyXSGLJMIzid4HqyhB6w0Q4LoOyVp0CV8kCO6zsFw5XergdWwGBP2TjX5zQ9aCZIAeb
-	Rjd3KhJY1J3W2WHaOgyDCOVILLsARw741kggKjE9bE++6vbL9Hm3I2jGFcxPJ5dlyATURbcSLjohh
-	fbDZR9i+urJLMU/DKlGbemjnA88cgnJg3BEiYvG8cX3vk7vdSDaT0hhliNb/zHKEPfN31RdlSrFJR
-	nr8ogYgHWkeJCxUHuZkt0mHTys74fvxhV14zcjuQb68d05sbVpr1ir/oUyvWmYlvNt9ot29Lg4EcF
-	DEJU0G8A==;
+	bh=eQ+9wQ+ddiYqZPc9LEAZFirRP3ug//KuYxdlwJLVZNk=; b=KmbJ+6xA1503mzhjsjROkiksEu
+	hszoCDghwB8J5Yh3YXsrg+kqXACSLcrx/GCgmAkBld19unTtTcfUupuy61lvxz/eaz4+WQf3nd/Dj
+	k7FHvE+X2xjG8zLs21Q0Pfp6s1pF4T4o0J++HXnY/tpsPQTbLHVDk1PTevXXih5yhnrQMQcCGdgxa
+	KQSB3UnEdPsKwl3H0yExW0uzfjWn1N3RjAoWteaEIzmlxuR0rRNalDQKdSUInBTcHBQ5rEt+ZRkiI
+	gm4EfLxBQPa1b7mwZwrPkTxiiDn2UVWOQyLacm57RxpBZsUlJ0j00ushsJjsgva1gJd5hiARlGD4a
+	V8TSfXRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2yMi-007Ulq-L0; Wed, 07 Dec 2022 17:37:52 +0000
+	id 1p2yMt-007Uyd-7s; Wed, 07 Dec 2022 17:38:03 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p2yMV-007UXp-CV; Wed, 07 Dec 2022 17:37:40 +0000
+	id 1p2yMZ-007Uaf-Hs; Wed, 07 Dec 2022 17:37:44 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E13E161B77;
-	Wed,  7 Dec 2022 17:37:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6BC7C433C1;
-	Wed,  7 Dec 2022 17:37:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0004D61B45;
+	Wed,  7 Dec 2022 17:37:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59532C433C1;
+	Wed,  7 Dec 2022 17:37:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670434658;
-	bh=l/Hux/68V+al46JNc+uBAW3FAqg3S010/czLJPsKipM=;
+	s=k20201202; t=1670434662;
+	bh=ln8UbPMcYS/65vm5+MnMPgt6R+k41vnkbbKxMxHspAg=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=UhbrPF7bQhhj/AM69qDVz4xBlD0EB0Ibzkb7Z4hNx3T7f95NHB3TqGO5hAH0Ya7N4
-	 OV0Tk+pr2mSdNl8inq7RkCNIs9BsBIz9KizJ7/QczoVogxJ2OgWyL1SmmSARO3V8hI
-	 oLTTL1PuqhU12LAZ/kUNNSvpV52QGEIbDLGeNdKXNDqDTPXTM8Z5lKfnu1i2/Nf6w2
-	 4tWGmlr59/dkIN/3cDhHmO45uCqHY28NwWDLkA5kypyzfrtZ9i/Hl7cdG9/IoqcaDK
-	 JUE8WCyBNyn2vM3w2GEoCPzEgNRICGR+zIQpZEXw6dMAxnIzrkoQVAKOVK1GoGdfxo
-	 qphvY6E43eCgg==
+	b=fVY8eGIz+EmmQCXMu5c/K9Rs+wsOoATgVdZm5jCSCo3mI9s/boRz79OC7TMDQvtfl
+	 yEOrX/8ZXFJwBVoeMhHZPTJ9gDjHlo80J+IJacOqiv+occTtb7vKNSF3db4Ktp9u0q
+	 3LXchymIY4sa/zZK3DYZlOyPjNOO/pBO1ZlCLIZtDxqpiCr7HTPEUCcOX6E55kq1lg
+	 zdtfW6Ao1Kh/Vvq4u8oA4G6S9HwfITVwBUbtBJy0ov7WGVMYhTRyDMSQ7gdJz2LKw8
+	 8c64qtRhVWPZWAJI9yc+HYPtHAJAcZdapEn1pmTzTuAKgLKeVoaULLGg6CYRsVDH3u
+	 Yr04EloZtLGRw==
 From: Mark Brown <broonie@kernel.org>
 To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
  matthias.bgg@gmail.com, Wang Yufen <wangyufen@huawei.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- shunli.wang@mediatek.com, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <1670234188-23596-1-git-send-email-wangyufen@huawei.com>
-References: <1670234188-23596-1-git-send-email-wangyufen@huawei.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8183: fix refcount leak in
- mt8183_mt6358_ts3a227_max98357_dev_probe()
-Message-Id: <167043465528.393374.16429232928958937003.b4-ty@kernel.org>
-Date: Wed, 07 Dec 2022 17:37:35 +0000
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1670234664-24246-1-git-send-email-wangyufen@huawei.com>
+References: <1670234664-24246-1-git-send-email-wangyufen@huawei.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8173-rt5650-rt5514: fix refcount leak
+ in mt8173_rt5650_rt5514_dev_probe()
+Message-Id: <167043465894.393374.8060472153388836896.b4-ty@kernel.org>
+Date: Wed, 07 Dec 2022 17:37:38 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.11.0-dev-b77ec
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_093739_500699_5BCCE2D7 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20221207_093743_666106_40D3CC53 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,10 +73,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 05 Dec 2022 17:56:28 +0800, Wang Yufen wrote:
+On Mon, 05 Dec 2022 18:04:24 +0800, Wang Yufen wrote:
 > The node returned by of_parse_phandle() with refcount incremented,
 > of_node_put() needs be called when finish using it. So add it in the
-> error path in mt8183_mt6358_ts3a227_max98357_dev_probe().
+> error path in mt8173_rt5650_rt5514_dev_probe().
 > 
 > 
 
@@ -86,8 +86,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8183: fix refcount leak in mt8183_mt6358_ts3a227_max98357_dev_probe()
-      commit: 38eef3be38ab895959c442702864212cc3beb96c
+[1/1] ASoC: mediatek: mt8173-rt5650-rt5514: fix refcount leak in mt8173_rt5650_rt5514_dev_probe()
+      commit: 3327d721114c109ba0575f86f8fda3b525404054
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
