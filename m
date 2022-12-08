@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4C1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 06:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC839C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 06:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hVi9EpIqUGu5hM1nwlZ9chU7gT1LcCd3BvW0rXQFN+4=; b=OCECwFw/jd9+KYgx/3qByauXrr
-	JmGYvd07EMNe5mu/9p1lcfcwF9MZq+gsLcLy9yQgu1XbF1YK8ODQify5iABnyVMh2H1fC0koo4Id2
-	DkbYcXqdVXsYMRsc88Sw3e9LnR0eY7yWPl9l56RnkbI/1u36WGn6d7PhZCvnO2HCaAyXbCyC1UgUk
-	ATWeQgN91mIlRbzHPnOcPaomS7+NVd/dthEFo43EMVEQuRbv1nGp129VjCJa6pqQRZNR2iC2DMVwh
-	OKOnpSSWdWuJunE/NufXZcuCLo0vEtwncYVoAb12hCMmNve9GMpOlp+thvECBSCFlb+c/MM1a0VoP
-	FaEp+8uw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kvEzohbThjLf0h3wsatoxrFWAD5WOAdcVplnsmd6fDY=; b=oitkUuO8TQ0slB6R9InUDGBrib
+	CHUW47wnUedDX52S+1u+H1vkKP1Qyy0K4qMBw17qCxVYk5cb3IUlDkfgfjg0SdU5+mTalwQwiKYhF
+	25jqt+fWaGdvO/NQXbDYw1lk6c7mlBO+KHFtUOQIOnHoBOdAbRAJjq33Ojpi9uAGAvVar7sQyffRq
+	ATv5k3lAp7JCpF39Pk8haydJS1WYGM4THlZPYp5K4Hp2teQlaxFeIzFIEUfv3smFxSdyt3Ax+us0x
+	bTs9qg36m3RPM1bLuuDV06coN0FjZ3jL1x9+NuemfMJpXSTBRcWKvnmEL9H2wtzG2XHQVUYJm5u+W
+	rYtkOs6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3AXL-0043jd-Jn; Thu, 08 Dec 2022 06:37:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p3AYT-0045R7-O3; Thu, 08 Dec 2022 06:38:49 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3AR3-003tiW-Li; Thu, 08 Dec 2022 06:31:17 +0000
-X-UUID: f70ed62768cb44b9a9d5e4b03a67fd40-20221207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hVi9EpIqUGu5hM1nwlZ9chU7gT1LcCd3BvW0rXQFN+4=;
-	b=mgNy2yLNPQe/mLNQa8QEUyZLJT4V4lQM80Scc7Tmz4aKD/oGofgjbC5WdRFqO/gfs/YLMWeJZatDHH289ayt7Fz8XVbc/eVFPuCj3+jgwMO5eUD4Dkz1UuzWes6kFWuqiWnuj7s/CE6gsGgjN3dws3HKywlpEM/RVeJEQ7bpExw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:0c65e739-9add-4353-80c8-3daacd735d2b,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:f7d0a924-4387-4253-a41d-4f6f2296b154,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f70ed62768cb44b9a9d5e4b03a67fd40-20221207
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1467093437; Wed, 07 Dec 2022 23:31:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Dec 2022 14:30:04 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 8 Dec 2022 14:30:03 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
-	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
-	<gch981213@gmail.com>
-CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
-	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
-	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
-Subject: [PATCH v3 3/9] mtd: nand: ecc-mtk: Add ECC support fot MT7986 IC
-Date: Thu, 8 Dec 2022 14:29:49 +0800
-Message-ID: <20221208062955.2546-4-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
-References: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
+	id 1p3AU9-003ykb-UC
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 06:34:23 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id n1so535263ljg.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Dec 2022 22:34:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kvEzohbThjLf0h3wsatoxrFWAD5WOAdcVplnsmd6fDY=;
+        b=fFAVrLZXrJJ1GBpBB/tQ1n7kV1X/9Rn46h7U8vz3M4Om+TzOIrlxezxc9JnM2rzDi+
+         wou1Hwh2yqzdkZamzf1utI0RyT/0QbcWSBm9s6T4H+GLlse28qsMpKxI3Y4ATR8xT9Lq
+         nYYhaB0M+g3mTMeE9FYzMMpEh+TQDm11JknZp5TyxnH6LC+nw0pYfZSLELeOMCoG9mLO
+         WuELI6GBZHmYiDwIAYZosinwwxA4LrYa2d0AyXyyUu68qDy/ueuPzpL90RsW3dBoqTNh
+         VF50j+4kWJ8gZEgKxEb/6ts6SxZRIl4aay7hWvm8sy+xeWz9kjNlBjLxa36Iv0u7FBfM
+         V0Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kvEzohbThjLf0h3wsatoxrFWAD5WOAdcVplnsmd6fDY=;
+        b=hXB5zhjfplEUIgXDaynqLr5hAeFsqluyK8dWCw9MsLNgbusRpeuxjBrZottGUnwQKc
+         d/6bwGRwSBozCGW9NUQ8lc4wu6c2vRDGidRENMdlNQ0qHyism9fxdtC8+A3ulWvgiG6+
+         qzP95JGNKcgAOR9gyhYWLfpDiFkbdmHL0cS565IfB5SOs9V/8B9nseGazybpdaRLEtMC
+         qigMLI9CoGs3lCn1gFOamB1Im6ulaqWW3KhouyLeugDTS08nkj7qeDT4jfRNp16XqulQ
+         Ao3v9hxmkTrKaDy+7oA+BF5M32kshD1mFda1zxfhT7g8BmjiII7CTTy5B4yqLi5pFbS9
+         jebg==
+X-Gm-Message-State: ANoB5pkHx/14EdIQfw4hD9EvPmvnORRg8/xCtzKedyUQoLU4U1nrgU1q
+	DwGpKsuoVhXoDxx2p6y/eisUh73qE2likxnWIw==
+X-Google-Smtp-Source: AA0mqf5vx1cSAeMelmy7VQm+f5BVpQcnvI/NYkPrDeRiepDck4qrGlIf2FKqYQvII4OYK7sQ/CAbbqKB43TOLPq9NJg=
+X-Received: by 2002:a2e:bf09:0:b0:279:6c82:3e9a with SMTP id
+ c9-20020a2ebf09000000b002796c823e9amr21501858ljr.97.1670481256983; Wed, 07
+ Dec 2022 22:34:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20221208061037.24313-1-peter.wang@mediatek.com>
+In-Reply-To: <20221208061037.24313-1-peter.wang@mediatek.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Thu, 8 Dec 2022 14:34:05 +0800
+Message-ID: <CAGaU9a_RCpoJggFUmtBmq-xx8EPAaabMK0ptA8y_nm5ahLTMUw@mail.gmail.com>
+Subject: Re: [PATCH v5] ufs: core: wlun suspend SSU/enter hibern8 fail recovery
+To: peter.wang@mediatek.com
+Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org, 
+	martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
+	jejb@linux.ibm.com, wsd_upstream@mediatek.com, 
+	linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com, 
+	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
+	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
+	lin.gui@mediatek.com, tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, 
+	naomi.chu@mediatek.com, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_223115_406354_65007746 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20221207_223422_041284_13F67C28 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,96 +92,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ECC support fot MT7986 IC, and change err_mask value with
-GENMASK macro.
+Hi Peter,
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
----
- drivers/mtd/nand/ecc-mtk.c | 28 +++++++++++++++++++++++++---
- 1 file changed, 25 insertions(+), 3 deletions(-)
+Please update the patch version and bring all tags (review, ack
+...etc.) to your new patch : )
 
-diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
-index 9f9b201fe706..c75bb8b80cc1 100644
---- a/drivers/mtd/nand/ecc-mtk.c
-+++ b/drivers/mtd/nand/ecc-mtk.c
-@@ -40,6 +40,10 @@
- #define ECC_IDLE_REG(op)	((op) == ECC_ENCODE ? ECC_ENCIDLE : ECC_DECIDLE)
- #define ECC_CTL_REG(op)		((op) == ECC_ENCODE ? ECC_ENCCON : ECC_DECCON)
- 
-+#define ECC_ERRMASK_MT7622	GENMASK(4, 0)
-+#define ECC_ERRMASK_MT2701	GENMASK(5, 0)
-+#define ECC_ERRMASK_MT2712	GENMASK(6, 0)
-+
- struct mtk_ecc_caps {
- 	u32 err_mask;
- 	u32 err_shift;
-@@ -79,6 +83,10 @@ static const u8 ecc_strength_mt7622[] = {
- 	4, 6, 8, 10, 12
- };
- 
-+static const u8 ecc_strength_mt7986[] = {
-+	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
-+};
-+
- enum mtk_ecc_regs {
- 	ECC_ENCPAR00,
- 	ECC_ENCIRQ_EN,
-@@ -451,7 +459,7 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
- EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
--	.err_mask = 0x3f,
-+	.err_mask = ECC_ERRMASK_MT2701,
- 	.err_shift = 8,
- 	.ecc_strength = ecc_strength_mt2701,
- 	.ecc_regs = mt2701_ecc_regs,
-@@ -462,7 +470,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
- };
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
--	.err_mask = 0x7f,
-+	.err_mask = ECC_ERRMASK_MT2712,
- 	.err_shift = 8,
- 	.ecc_strength = ecc_strength_mt2712,
- 	.ecc_regs = mt2712_ecc_regs,
-@@ -473,7 +481,7 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt2712 = {
- };
- 
- static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
--	.err_mask = 0x1f,
-+	.err_mask = ECC_ERRMASK_MT7622,
- 	.err_shift = 5,
- 	.ecc_strength = ecc_strength_mt7622,
- 	.ecc_regs = mt7622_ecc_regs,
-@@ -483,6 +491,17 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
- 	.pg_irq_sel = 0,
- };
- 
-+static const struct mtk_ecc_caps mtk_ecc_caps_mt7986 = {
-+	.err_mask = ECC_ERRMASK_MT7622,
-+	.err_shift = 8,
-+	.ecc_strength = ecc_strength_mt7986,
-+	.ecc_regs = mt2712_ecc_regs,
-+	.num_ecc_strength = 11,
-+	.ecc_mode_shift = 5,
-+	.parity_bits = 14,
-+	.pg_irq_sel = 1,
-+};
-+
- static const struct of_device_id mtk_ecc_dt_match[] = {
- 	{
- 		.compatible = "mediatek,mt2701-ecc",
-@@ -493,6 +512,9 @@ static const struct of_device_id mtk_ecc_dt_match[] = {
- 	}, {
- 		.compatible = "mediatek,mt7622-ecc",
- 		.data = &mtk_ecc_caps_mt7622,
-+	}, {
-+		.compatible = "mediatek,mt7986-ecc",
-+		.data = &mtk_ecc_caps_mt7986,
- 	},
- 	{},
- };
--- 
-2.25.1
+On Thu, Dec 8, 2022 at 2:17 PM <peter.wang@mediatek.com> wrote:
+>
+> From: Peter Wang <peter.wang@mediatek.com>
+>
+> When SSU/enter hibern8 fail in wlun suspend flow, trigger error
+> handler and return busy to break the suspend.
+> If not, wlun runtime pm status become error and the consumer will
+> stuck in runtime suspend status.
+>
+> Fixes: b294ff3e3449 ("scsi: ufs: core: Enable power management for wlun")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+> ---
+>  drivers/ufs/core/ufshcd.c | 25 +++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index b1f59a5fe632..c91d58d1486a 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -106,6 +106,13 @@
+>                        16, 4, buf, __len, false);                        =
+\
+>  } while (0)
+>
+> +#define ufshcd_force_error_recovery(hba) do {                           =
+\
+> +       spin_lock_irq(hba->host->host_lock);                            \
+> +       hba->force_reset =3D true;                                       =
+ \
+> +       ufshcd_schedule_eh_work(hba);                                   \
+> +       spin_unlock_irq(hba->host->host_lock);                          \
+> +} while (0)
+> +
+>  int ufshcd_dump_regs(struct ufs_hba *hba, size_t offset, size_t len,
+>                      const char *prefix)
+>  {
+> @@ -9049,6 +9056,15 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba=
+, enum ufs_pm_op pm_op)
+>
+>                 if (!hba->dev_info.b_rpm_dev_flush_capable) {
+>                         ret =3D ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_=
+mode);
+> +                       if (ret && pm_op !=3D UFS_SHUTDOWN_PM) {
+> +                               /*
+> +                                * If return err in suspend flow, IO will=
+ hang.
+> +                                * Trigger error handler and break suspen=
+d for
+> +                                * error recovery.
+> +                                */
+> +                               ufshcd_force_error_recovery(hba);
+> +                               ret =3D -EBUSY;
+> +                       }
+>                         if (ret)
+>                                 goto enable_scaling;
+>                 }
+> @@ -9060,6 +9076,15 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba=
+, enum ufs_pm_op pm_op)
+>          */
+>         check_for_bkops =3D !ufshcd_is_ufs_dev_deepsleep(hba);
+>         ret =3D ufshcd_link_state_transition(hba, req_link_state, check_f=
+or_bkops);
+> +       if (ret && pm_op !=3D UFS_SHUTDOWN_PM) {
+> +               /*
+> +                * If return err in suspend flow, IO will hang.
+> +                * Trigger error handler and break suspend for
+> +                * error recovery.
+> +                */
+> +               ufshcd_force_error_recovery(hba);
+> +               ret =3D -EBUSY;
+> +       }
+>         if (ret)
+>                 goto set_dev_active;
+>
+> --
+> 2.18.0
+>
 
+
+--=20
+Yours truly,
+
+=E6=9C=B1=E5=8E=9F=E9=99=9E (Stanley Chu)
 
