@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05760C10F1B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 23:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B74C001B2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 23:19:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AbgxOMwpjewhzmMSPJ3VcRbgZTT1KK9NxNUKJUyOYKM=; b=W94AMSjZH4N4Tcy1pp7AczS858
-	H5jdzIS9eFFUx2hoaDAgIprrJ5Qel8AZjxO7R2LZ0/4iT9wL3aAFjwK+Ck84UrJJ5SDEekyhG649Y
-	wGQ+yEKkWQsnpvq6X0R4gA9QvMLxxU8IHH3ztoXlDbYLkLYltcBVveQiNtDWXB3P/UuOHwdNHRanM
-	/62r0+rMyKlF+9xxczbTsc9XJYTQ4D1Xu3JTUuhRPfaLM8dZRy7po3Yv8ZTC1yKurP9Z28XCkiOjG
-	1Sn9tZPQ2rpV4oIUgafQ8j8dNrLCu4Qg7QBy+q/Ib6bztSP8Q+OWOxOXObWl10fIMfxojZkULiG3l
-	YaBrdGig==;
+	bh=ySeoHANVoUPzDPpnomiG5X9f91zkrUH1wy9mvylqHe0=; b=BofQEURF0gateO2FA18VyVej/J
+	pMe9ebbl60roJY9GS3ej7yTmXhK30s0mHQj5CsstKsu2GomdnwsK6NtqqbH8rvBONmKw39WT50M3K
+	tYvx7S7Decs74goW9ON3O6acTwe+aBv1V8p3CX5oicuypU72Dy9bOqPQ5l6hnYMm7GQxACjXEna1S
+	LAQPHSma2WBf1dmHYP5ARIx9Ur9xyqBZqgLJU1zzLZgVtmgTvABtPXUZHNfmpCaL1TneIpKJvHHdV
+	lpwuQaUFHFyPuUi9FqmhQ+L1bQX22FfX5taA+tP7wLvL1ql137SorXWDlgaaU04ixQqJNCL5yR3nL
+	YMU09pbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Q6d-00EuIH-4v; Thu, 08 Dec 2022 23:15:07 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1p3QAb-00ExQc-2s; Thu, 08 Dec 2022 23:19:13 +0000
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Q6a-00EuDq-Eu
-	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 23:15:05 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id q10so2017164qvt.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 15:15:02 -0800 (PST)
+	id 1p3QAQ-00Ex7F-BA; Thu, 08 Dec 2022 23:19:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=AbgxOMwpjewhzmMSPJ3VcRbgZTT1KK9NxNUKJUyOYKM=;
-        b=OiP/aROy/idYv+3qg51kzjb4Rq+HT40ZCTJbUOWaFG2W/WrdTxLAZlrVzWkY5gC928
-         qrJB6HMf8GTbqFIMnMGSvI9MM54HCjh1dFTaTB2iTbjFX/CvMBi5//nc8ssOtkAPynMX
-         nIlY9BxFYsuarZRWkOQterBiJ44ZonAg8vE+2H4hEA9j/IIKKScXctfYNPOsnEk899NX
-         OSaXC9C/iLwDppdzxDxFWbjscwz/6ugERxs5Efo4b4vMO0wbYCAHrEKjKa+M5rZvruXc
-         QGUIIQ0HWeh0+nJUOl1bKhyUbdb5gFNH9CXzj+gaObf7Wstu+MOggAE2WdBnOUm9XNQu
-         I6/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=AbgxOMwpjewhzmMSPJ3VcRbgZTT1KK9NxNUKJUyOYKM=;
-        b=Ou6g8Yj+4ZAL+vObKSieUSghJ2XYhuxYbO2i0vtabbrkXB7ABxevlsj1HhkDmbLaxZ
-         kFwE0jlKzjzGIk15+YupCczQJ2+Zbac7rbnjN51AY3Njb76uzMGNLp7pgrO29ejH1HKa
-         gYvHSMWf1e8ViYYCOJdE7VXMzdfUs+GRK3NVUPRUwZUtAC2O85gEvEkxyXLskt8oJ0uY
-         dOy1VLzimtMdkXavazSLi+e1PCmH/HX2atw/TjLrk6WEBd795OQAJMx2DtBnxV3OC3yl
-         8/erYsbyRjXe6CN4YJOXPXNvxptiie2FiTzgD6ea6ZAoZ1j5g8mA04Jlbe6OstvKk5pQ
-         Nk2Q==
-X-Gm-Message-State: ANoB5pnfYbDQ1pkEi7JlHQ3ySD0uTsxqW1o5WoGeYpL7Gw4UNc9rulxg
-	NMQBTTqAhnVcJrjTWRUj4TmeDk7+eyx3CYVwiII=
-X-Google-Smtp-Source: AA0mqf40Ch8Q8KacZrCKsvpVF7J+Jye6OvmlIgvk0BSMsMkN9rtdQpfKE89qMxkpPTwdGh9SVIlTeKWRhpEqXEoAenE=
-X-Received: by 2002:a05:6214:519:b0:4c7:6210:8d8b with SMTP id
- px25-20020a056214051900b004c762108d8bmr16684366qvb.119.1670541301732; Thu, 08
- Dec 2022 15:15:01 -0800 (PST)
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+  t=1670541542; x=1702077542;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version;
+  bh=ySeoHANVoUPzDPpnomiG5X9f91zkrUH1wy9mvylqHe0=;
+  b=VQRURHGOuO8tRvSIl3V2QDT6I16dskMabch3TXHkodEFFSY4DFGBbGqD
+   aXU9BnDdptO/rneFrDkhPm8sE5v1+FBxLOtWPb3VDL7PMiwjszq/92Xqw
+   NMgFaT0MQkpJsYqqkiB2S8m79GzhdXsRJh82wGkaZCrIRHVGGxLLnKYrn
+   0=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+  by alexa-out-sd-01.qualcomm.com with ESMTP; 08 Dec 2022 15:18:54 -0800
+X-QCInternal: smtphost
+Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
+  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Dec 2022 15:18:54 -0800
+Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.36; Thu, 8 Dec 2022 15:18:54 -0800
+From: Asutosh Das <quic_asutoshd@quicinc.com>
+To: <quic_cang@quicinc.com>, <martin.petersen@oracle.com>,
+	<linux-scsi@vger.kernel.org>
+CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
+	<stanley.chu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<daejun7.park@samsung.com>, <bvanassche@acm.org>, <avri.altman@wdc.com>,
+	<mani@kernel.org>, <beanhuo@micron.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>, <linux-arm-msm@vger.kernel.org>, Alim Akhtar
+	<alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Jinyoung Choi
+	<j-young.choi@samsung.com>, open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v11 01/16] ufs: core: Optimize duplicate code to read extended feature
+Date: Thu, 8 Dec 2022 15:18:27 -0800
+Message-ID: <f5bae5e9e3d04c1a0dc0f39e2c6239f8ea450404.1670541363.git.quic_asutoshd@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1670541363.git.quic_asutoshd@quicinc.com>
+References: <cover.1670541363.git.quic_asutoshd@quicinc.com>
 MIME-Version: 1.0
-References: <20221208160137.3855-1-shayne.chen@mediatek.com>
-In-Reply-To: <20221208160137.3855-1-shayne.chen@mediatek.com>
-From: Julian Calaby <julian.calaby@gmail.com>
-Date: Fri, 9 Dec 2022 10:14:50 +1100
-Message-ID: <CAGRGNgWvT7e5DkTO96PaMazDae-wTe3ctBx8-n6EGhYxFPwCHQ@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7915: add chip id condition in mt7915_check_eeprom()
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless <linux-wireless@vger.kernel.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Evelyn Tsai <evelyn.tsai@mediatek.com>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_151504_541242_4307C59A 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20221208_151902_457159_8213BB3F 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,58 +85,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Shayne,
+The code to parse the extended feature is duplicated twice
+in the ufs core. Replace the duplicated code with a
+function.
 
-On Fri, Dec 9, 2022 at 3:06 AM Shayne Chen <shayne.chen@mediatek.com> wrote:
->
-> When flash mode is enabled, and the eeprom data in the flash is not for
-> the current chipset, it'll still be checked valid, and the default
-> eeprom bin won't be loaded.
-> (e.g., mt7915 NIC inserted with mt7916 eeprom data in the flash.)
->
-> Fix this kind of case by adding chip id into consideration in
-> mt7915_check_eeprom().
->
-> Reported-by: Cheng-Ji Li <cheng-ji.li@mediatek.com>
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-> index 59069fb86414..e21aa03c85b1 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-> @@ -33,14 +33,12 @@ static int mt7915_check_eeprom(struct mt7915_dev *dev)
->         u8 *eeprom = dev->mt76.eeprom.data;
->         u16 val = get_unaligned_le16(eeprom);
->
-> -       switch (val) {
-> -       case 0x7915:
-> -       case 0x7916:
-> -       case 0x7986:
-> +       if ((is_mt7915(&dev->mt76) && val == 0x7915) ||
-> +           (is_mt7916(&dev->mt76) && val == 0x7916) ||
-> +           (is_mt7986(&dev->mt76) && val == 0x7986))
->                 return 0;
-> -       default:
-> -               return -EINVAL;
-> -       }
-> +
-> +       return -EINVAL;
+Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
-If this returned a bool, you could write this as:
-
-switch (val) {
-        case 0x7915:
-                return is_mt7915(&dev->mt76);
-}
-
-Thanks,
-
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 2dbe249..6ea22b5 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -215,6 +215,17 @@ ufs_get_desired_pm_lvl_for_dev_link_state(enum ufs_dev_pwr_mode dev_state,
+ 	return UFS_PM_LVL_0;
+ }
+ 
++static unsigned int ufs_get_ext_ufs_feature(struct ufs_hba *hba,
++					    const u8 *desc_buf)
++{
++	if (hba->desc_size[QUERY_DESC_IDN_DEVICE] <
++	    DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP + 4)
++		return 0;
++
++	return get_unaligned_be32(desc_buf +
++				  DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++}
++
+ static const struct ufs_dev_quirk ufs_fixups[] = {
+ 	/* UFS cards deviations table */
+ 	{ .wmanufacturerid = UFS_VENDOR_MICRON,
+@@ -7608,13 +7619,7 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, const u8 *desc_buf)
+ 	     (hba->dev_quirks & UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES)))
+ 		goto wb_disabled;
+ 
+-	if (hba->desc_size[QUERY_DESC_IDN_DEVICE] <
+-	    DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP + 4)
+-		goto wb_disabled;
+-
+-	ext_ufs_feature = get_unaligned_be32(desc_buf +
+-					DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
+-
++	ext_ufs_feature = ufs_get_ext_ufs_feature(hba, desc_buf);
+ 	if (!(ext_ufs_feature & UFS_DEV_WRITE_BOOSTER_SUP))
+ 		goto wb_disabled;
+ 
+@@ -7668,7 +7673,7 @@ static void ufshcd_temp_notif_probe(struct ufs_hba *hba, const u8 *desc_buf)
+ 	if (!(hba->caps & UFSHCD_CAP_TEMP_NOTIF) || dev_info->wspecversion < 0x300)
+ 		return;
+ 
+-	ext_ufs_feature = get_unaligned_be32(desc_buf + DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++	ext_ufs_feature = ufs_get_ext_ufs_feature(hba, desc_buf);
+ 
+ 	if (ext_ufs_feature & UFS_DEV_LOW_TEMP_NOTIF)
+ 		mask |= MASK_EE_TOO_LOW_TEMP;
 -- 
-Julian Calaby
+2.7.4
 
-Email: julian.calaby@gmail.com
-Profile: http://www.google.com/profiles/julian.calaby/
 
