@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3E2BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 16:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5561C3A5A7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 16:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HkETg2C2KUtE17Gk6PJXaomDr0aRkNbTim2CROY7MOs=; b=rlFUXGAqH7+RSBJLI08P2t86dz
-	MPFnyuf+4Agj3YPDKCAZZOT7ChxuhktT65Yk0jgTmKulZ65xEJsmfrm7W2lNuxDpFqg1o4vKHNOZr
-	jtT1ql5uq1cI6bE9lyvBcBiAXFzlLGa6mYJLqK3kidMb/DpIFDVhwLWEc0jzw8P+1TN/Qug4gGPj2
-	O4vwjFTtHFFAdymlMVDoZoZ3oixifSVPwLFrLBPjd8n+BSchBoPaPvn7WW6N37FSnwVy8b38Hwi98
-	OsGPfdQYLZkiHaae97dXqIUYjDr1rQOrc8Y2HtFungNkUHmdq+MRAOkYYyNvJlOwHyNN0k5lIjude
-	Hb/ORLtw==;
+	bh=Kpi/j5z0FbtVkkrb1PZtlydLmmXe24f0gXZLejwp68M=; b=pHbftL995zR7Rwrk/Lu6J7hdGr
+	t8LRvyiy7GLuc/A0jVI5z+2QJ0kLzLyurLTkaADZNjcytHPMvS7ha1mfrrhbna5y2GE7MPAolXLdf
+	rEvKKNdPVz2gbhwaHCDyffd1RQnQlvxdqyi3+2FAKXxUSFe5OlCEIJZ5K22rw1y9y0qXOQ5HFyWoc
+	gHt94i/rScIKYeB8kEKTFu6HAOdG9bcD2u94dR/TyMBRF5SaprlEcnQrWzHnJuwk+p54V3oOiCqWY
+	PmThPDbTNc8t0RnXuDyLLiOltvQ4TswiG2sILuuQ2QvtdGw5HsBkV0Oc/u2KkT8WkMR+NHn89Un6Z
+	brhCFI1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3JnF-005E5x-QO; Thu, 08 Dec 2022 16:30:41 +0000
-Received: from mout.kundenserver.de ([212.227.126.130])
+	id 1p3JoF-005FD6-O0; Thu, 08 Dec 2022 16:31:43 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3JnC-005Dx4-UW
-	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 16:30:40 +0000
-Received: from [192.168.0.66] ([92.154.77.116]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MvKGv-1omCTc0Ixl-00rKna; Thu, 08 Dec 2022 17:30:21 +0100
-Message-ID: <24e23388-8f3f-006e-88b5-a07dfd675e13@green-communications.fr>
-Date: Thu, 8 Dec 2022 17:30:19 +0100
+	id 1p3IrG-003Ud0-01
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 15:30:50 +0000
+Received: by mail-wr1-x435.google.com with SMTP id f18so2036271wrj.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 07:30:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Kpi/j5z0FbtVkkrb1PZtlydLmmXe24f0gXZLejwp68M=;
+        b=Ncgde2xkEEF7N78o+7a6QgHZVmWNhGH7KfQHQ2MNmk0i5oNgbS5hlnHDCzFp4z6bfh
+         fAY6Hyol+fpPuVPmv1yxv/yuGJU1zbqGDqamEnKbMQQInZ/7WdvkYQKzpBrGXSQizNRC
+         xWq+c89MTmmczI/38+BAS74+wr1ixg7np7sIYG4YVrVT1GRuyd+BdwEcDICmzRmjAzCp
+         cOG8JfkCNmSa3o+VlciZlqyY/SBZ+T1DDwf14esb4SIJlu4GnbW7ltb/9PAOk0mYkhQn
+         0Xrbb/H5m7PefDqnK4tluq+h+tPd3LFwJnQjUoRY+z1bIwbPzRu8w7LXCeBMwMqqXxaZ
+         IPrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Kpi/j5z0FbtVkkrb1PZtlydLmmXe24f0gXZLejwp68M=;
+        b=BSjEPGBTBvVYqbMBHOHBIZVOpdwS7UfRKhH3cPC3RiTzexIl6tNZfowLcSuasshdDQ
+         aHq9PS9xbe336eCxj57pqLI+BQuQB4AAtZ/PdVO04V17TYXtAtMvuIVOqw/KXp6T9LZ4
+         DPB9p7O19gFs2TvvIdiIjZ8jgs80Ns0JGOkVvojvDoRIsy33Ltvksb7HZ0WbQpgPAtu3
+         vpUD816VsI4Y1pWDPGzt5ElRQ1x0h22rEOni2pC9JiLYVZZDOA+WEB7+zawNfIl7bGVC
+         6eTbtSKFVfcdi0BTZJKOOEII9LmRblJMpVQyxWZp3M1Fy3QNaebUVgY/7NuALcc9py+m
+         rIPA==
+X-Gm-Message-State: ANoB5pnGetOGAfYcssB3WGNs180Ma1UxDYRLkaesiJbE4Hg83w0aLWBN
+	2rbtw2LcfBb6Py/JDZVgfiIjvXiRTiWGNyTmJQHlcA==
+X-Google-Smtp-Source: AA0mqf7JE15GmAE4aDoqbu1GztReLcb2ZiFPPX8H6zMGZmcao5P4v41JRR4wBSmp4dtXkDKIfxfkyw==
+X-Received: by 2002:a5d:490d:0:b0:242:fa5:ce83 with SMTP id x13-20020a5d490d000000b002420fa5ce83mr1925959wrq.37.1670513443451;
+        Thu, 08 Dec 2022 07:30:43 -0800 (PST)
+Received: from predatorhelios.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id h10-20020a5d504a000000b002366553eca7sm10673239wrt.83.2022.12.08.07.30.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Dec 2022 07:30:43 -0800 (PST)
+From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+To: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	khilman@baylibre.com
+Subject: [PATCH v4 1/7] dt-bindings: arm64: dts: mediatek: Add mt8365-evk board
+Date: Thu,  8 Dec 2022 16:30:34 +0100
+Message-Id: <20221208153041.3965378-2-bero@baylibre.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221208153041.3965378-1-bero@baylibre.com>
+References: <20221208153041.3965378-1-bero@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-To: =?UTF-8?B?SG93YXJkLVlIIEhzdSAo6Kix6IKy6LGqKQ==?=
- <Howard-YH.Hsu@mediatek.com>, "nbd@nbd.name" <nbd@nbd.name>
-Cc: "lorenzo.bianconi@redhat.com" <lorenzo.bianconi@redhat.com>,
- =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
- Ryder Lee <Ryder.Lee@mediatek.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
-References: <20221207052500.10855-1-howard-yh.hsu@mediatek.com>
- <20221207052500.10855-2-howard-yh.hsu@mediatek.com>
- <8e8cfe60-c040-bf02-665b-a980852864aa@green-communications.fr>
- <1813da6bd8bf9448474ee0f61c23ba4d07470c55.camel@mediatek.com>
-Content-Language: en-US
-From: Nicolas Cavallari <Nicolas.Cavallari@green-communications.fr>
-Subject: Re: [PATCH v2 1/3] wifi: mt76: mt7915: rework
- mt7915_thermal_set_cur_throttle_state()
-In-Reply-To: <1813da6bd8bf9448474ee0f61c23ba4d07470c55.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZUF3yGex/RxRRXk0yUJmkaDteCpqzNByoW4QkXzj4M4UGM66FNe
- manhBsPlaXwad0LPRzLojqKiqfWG9sWeRgpLTyB3pOMc4kOalAyUhy5xC8Sf+XGfCnsJCVw
- nG+2ZDKwO9QkRJd2UQmtbygHFCxPMmVhEmK4mrZ33xDdvQ7iuzLwPTQLN2Bg5ag3OthSjLO
- l+E5Y/k0RFehuT2iZFfnQ==
-UI-OutboundReport: notjunk:1;M01:P0:xEwITUnorQg=;ZkMknX5WVX5Hb+uzlG/9AKYy0rF
- xtmPpFf4I2mE/B859oTEQ0rJJyewB9OYrAsEWL7NgdjgmLqwoBqfQEBl4QWEs5nUC4TsYB6RK
- ndyV2PAkus7TOMG5T1G7chpI6uj5+hXJfLVvw58yS5SJvqx8C6I777j6uy7YE5ZP4HpEqqKQk
- A3ofIyqdl6xyM/HniIoX8cLGMxFQ55wUMGLYljh7Dl+hlbFLzFssGqUW121OgJ/VUBaqKWnWb
- c9eFdcxWZrjDcIPPHMB/0sdOM9CnBoWXY6c8t+BM2+2zQg81XvFjHWTbMPNRhYmNzyK/xs4RV
- OwOKKHGjORq4tFkGKN8MCt+3xOXZmnA1y6fqAsDr6oAefbyLsqjBf0FTSu3nZ5ff3udQYWKcP
- PvPq2CiyJmeSF1Kz/NPOXloi3vk1YIV31AdlrbnFGZtYOKIAhtUAz9PH5WerpOkgnz+CrQhTj
- CPfXn/F8g1KT8h+sCYaemZRnCTrazerc9rXaGIs8prMB7NjZ57udbK1zOn9fLWylMk55Ioj9C
- 3ZLnfCobCxLIQatfQTm1vGtf+MIE/aCVQr5VjfPOzS9oboZaC1SHZ1+DMJrhd3bBsri8SZ/Zi
- vNOPK4H7vm4IaF+63V1CwPIfWq7GzwFhQihSAsU6+Yx9t5aV1eSiSm8c0G0ypNsFCdubfdde4
- 1S2qWRYjLSCiBvM6JzQC9TNejsNyMVi9bOqqopTZrg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_083039_317115_17239B1F 
-X-CRM114-Status: GOOD (  35.02  )
+X-CRM114-CacheID: sfid-20221208_073046_420806_BAC2AD58 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,88 +97,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/12/2022 13:44, Howard-YH Hsu (許育豪) wrote:
-> On Wed, 2022-12-07 at 09:15 +0100, Nicolas Cavallari wrote:
->> On 07/12/2022 06:24, Howard Hsu wrote:
->> > This patch includes 3 changes:
->> > 1. The maximum throttle state can be set to 100 to fix the problem
->> > that
->> > thermal_protect_disable can never be triggered.
->> 
->> You are modifying the cooling_device part.  The cooling_device is 
->> explicitly configured to have a max state of
->> MT7915_CDEV_THROTTLE_MAX 
->> (=99), so the thermal subsystem will probably prevent 
->> mt7915_thermal_set_cur_throttle_state from being called with a
->> higher 
->> value.  It will also probably complain if get_cur_state starts
->> returning 
->> values above MT7915_CDEV_THROTTLE_MAX.
->> 
->> And, as the comment below indicates, the thermal subsystem expect
->> that a 
->> higher state provide more cooling.  So if 99 means "maximum
->> cooling", 
->> 100 cannot mean "disable cooling".
->> 
->> Also, last time I tried, thermal_protect_disable didn't work; It
->> didn't 
->> disable anything, the previous thermal throttle kept being applied. 
->> Maybe a new firmware fixed this, but the kernel cannot simply expect
->> the 
->> firmware to be up to date.
->> 
-> 
-> Thanks for your comments. Let me give you an example to confirm with
-> you if I understand your comments correctly.
-> 
-> 1. The current cooling state of the cooling device is 50 (cur_state =
-> 50).
-> 2. The cooling state is set to 100 for "disable cooling".
-> 3. The thermal subsystem decides to decrease state because the rest of
-> system is cooler. And then it will adjust it downward based on
-> cur_state, which is 100. For example, thermal subsytem set cur_state to
-> 90. But obviously this will make the performance worse than at step 1,
-> even though the system is cooler. The design for 100 mean "disable
-> cooling" will mess up the thermal governor.
-> 
-> Let me know if there is any misunderstanding. And I will remove the
-> first change of this patch.
+Add bindings for the Mediatek mt8365-evk board.
 
-This is pretty much my second point.
+Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-The other case is if the system is overheating a lot and the kernel bumps the 
-state from e.g. 80 to 100, then the system should not disable throttling.
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 2275e5d93721b..ae12b1cab9fbd 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -244,6 +244,10 @@ properties:
+           - enum:
+               - mediatek,mt8183-pumpkin
+           - const: mediatek,mt8183
++      - items:
++          - enum:
++              - mediatek,mt8365-evk
++          - const: mediatek,mt8365
+       - items:
+           - enum:
+               - mediatek,mt8516-pumpkin
+-- 
+2.38.1
 
-> 
->> > 2. Throttle state do not need to be different from the previous
->> > state.
->> > This will make it is impossible for users to just change the
->> > trigger/restore temp but not the throttle state.
->> 
->> The throttle state is mostly set by the kernel's thermal governor
->> and 
->> the user has only very little control over it.  The thermal governor 
->> runs every X seconds and will change the state if it thinks it is
->> too 
->> low or too high.
->> 
->> The default step_wise governor will aggressively set it to zero if
->> the 
->> system isn't overheating, for example.
->> 
-> 
-> I don't think there is any conflict between your comment and second
-> change. If we keep the check that previous cooling state shall be
-> different from the new cooling state, this will bother users who only
-> wants to change the temp1_crit but not the cur_state. It is
-> unreasonable for the user, if they wants the new temp1_crit to take
-> effect in the firmware, they must set a differnt cooling state.
-
-The point I wanted to make is that the kernel sets the throttle state a lot, and 
-I assumed that it could also do it even if the state does not change, which 
-would send unnecessary mcu commands. But it's apparently not the case.
-
-Also, if the user changes temp1_crit or temp1_max, the changes should probably 
-be applied immediately instead of expecting the user to change the state afterward.
 
