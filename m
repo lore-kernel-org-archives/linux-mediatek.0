@@ -4,177 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4659AC4708E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 03:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8091CC63703
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 03:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+3R7EjUvKHamhshL8mmRJXgi0j+1zadiNDyA1ahvh5Q=; b=fLsmYTbSo7jAD9rcbev9yiZsxH
-	kVlTC+whJFmSdsLJGZiECnJbWhm4yqNaTnDPRrhxJO/eByZC+B5IlxlRBzafAFasYVoXJ1Y8QU7cs
-	SrYkJwa6KNMiI3pfOnFlUI6r7A3HGMtkagN283RyuTW44BjlcqUw3KSvKa25/SwzcxZtNKVaLQhue
-	82oxhJFF3q7817jeqoJ2E9+PBxxOprjdo25z2pztQUUbGQ9K2UR+VdxakC0csTYzjYW90dNg2b7ly
-	8aVmOM+3aSdTHQahmuodM9v1ywyQcqIIcCaz1bp3y94Z8L4QxYlis3K5iuwtnvYaVf05I7UI748Bg
-	tH1xgc3g==;
+	bh=1VG9jT5xqCzn1Y81lS+7BNjOae3DIvbVuRsqbf3joSs=; b=oRGAKKEqTh58N5bfHbt/BQTHnm
+	l9BU/UOh7DqflKCc4cB9PjS8ehLYNXgYTITuaLyTh+++Dm9QE7LZoodqVelw/VX6mWNEkxPMoHKpw
+	JcYQWBBXIfZ3ufO0+99wWNLyOuDtJEViIkcyQ6lHHDE1Ox9+VouTNMKLuSdHct4ndyEkStWdSEJow
+	WT4sTkBuhBaVI+xX/u4occqVfWjEbL5PhV1LYKOQrWPUm01mCbJAZRz53YZbViKxmmJKwBd3/xQkb
+	AL/HaYhkc5O6HYvewL20NJeXuxRIqnsGGmC9aCJSWccx+72yrD1KOxDcDeo82ex/WURsysZ6vyyNm
+	VVFuAtfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p37Aw-000ey7-1z; Thu, 08 Dec 2022 03:02:18 +0000
+	id 1p37eE-000wLT-E9; Thu, 08 Dec 2022 03:32:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p37Aq-000eqy-Vx
-	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 03:02:16 +0000
-X-UUID: 3c68eaa7b02e4a9e94a7ee80d27ea018-20221207
+	id 1p37e1-000w1B-LL; Thu, 08 Dec 2022 03:32:23 +0000
+X-UUID: e86233602eb54ac18af51e9c2bde8283-20221207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=+3R7EjUvKHamhshL8mmRJXgi0j+1zadiNDyA1ahvh5Q=;
-	b=L1b3cPaW1PFXYF06RsRtKKdtxW+C/0wsP9Nw3wZcUOco9J556bqaUJMTmV16kEsvcyoxNASZV+pnz20kVy8A1TQHUOa1NM9/tRpFbADDqXAWT52Ep8oIlyTaq2bM9FcpEIQDm5VZiXBMw7Kr82/GLqbydYafKkmOxLo1M3iSQH4=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1VG9jT5xqCzn1Y81lS+7BNjOae3DIvbVuRsqbf3joSs=;
+	b=DZDti5N1ou44/FJQLD5HuZjTEauNCjKgtalJGrLgV57rDvavCONYfSB2EeYJ3uEHymPzmgEof7tjCZhjkOVK2SO6srTmONS4cNd6LvIflWvMxeMN1L60jZm48j6EC302VPs4cEbDciDHxwmlcL8xA8B1gHgxcfPm2orgy/Kk5R0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:3a570f06-36b0-4652-af13-f7643259263a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:1e1ea424-4387-4253-a41d-4f6f2296b154,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:f4979487-a3ca-4d8f-bf54-a50f6354b32a,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:e417a524-4387-4253-a41d-4f6f2296b154,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3c68eaa7b02e4a9e94a7ee80d27ea018-20221207
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
+X-UUID: e86233602eb54ac18af51e9c2bde8283-20221207
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1433014653; Wed, 07 Dec 2022 20:02:02 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 470566236; Wed, 07 Dec 2022 20:32:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Dec 2022 11:01:27 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 8 Dec 2022 11:01:27 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SGWo76D8sZHoEl1j3/Cf+Gmu0YI8fsZfaLcEsEjxW0aswrFW4YdyMvKbtto0HGT1LAgACS1l6TbtaYyziro6H1PcggHV9DBd4Kef6qaod3Rc2ebfsCtiHyQ2pyhdpv59Sqq5nuhqTQOXHuWISpqQD+xadw2sBpJluYy471EyrlfHGPzoY5WGqxwfq1mde9Y7kgxO4TtsqlNggbQ94XFNA68J3k8jp1/9c3LLmGy6A4tShgVHZcjbt6bcodI5SHqoMc/MVhBW3QUjVL9yZmmjKoLEGWsA4wOV4PSQqqLXoIdAwT1A8BRRjvZjRdmsGOG/R2JkZwT/Bq221XvAtUEGsg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+3R7EjUvKHamhshL8mmRJXgi0j+1zadiNDyA1ahvh5Q=;
- b=FfS8X5wZC/WDq5NGx/Gyq7c1yEb4NB/2qf3Vu5Oq5iXECoUcC+2K9et6FO2aXdp4V2ix8uEV41wt2NJej+NnxdRj5hJFZEtZide/WTCHQmJ5l0Bye0uQYN/tBr545X5xciZ2CAsqr7ELDTxePIpLiG8F3lRIwRhjKTqkvVocNnbNcfWpuYELDVMMwQiXarbgRx/vczdO7WfgeUs2+rWVbrodmPxTN82Y8oBi1fh0O/Db3/YbiLbBAAMAWuhPtL3bU7S+xD59LkZa3ZpPnbmYsUgbd74OOz/eUdiTd6ivP8WQ5PRNwrKrjTfCfczpNaOqs3fCzD9oTpbuum8biG8O4A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+3R7EjUvKHamhshL8mmRJXgi0j+1zadiNDyA1ahvh5Q=;
- b=iEtVuzyjql5xgu1inEF98D0HGywr4ddC6OHhmKQ80KjmjHi5wMCENG8lX+TPAulEc54/1+G03OBxuVHWkq+M0dU0iVC7A9A1DeDagFEag9eGgzVyNkxwSPluwWD+z9pGaTOaZXeLHM52V0YO9tLtB9xlPNlV0PIRLrf2FEcAI0s=
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
- by SI2PR03MB5563.apcprd03.prod.outlook.com (2603:1096:4:126::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.14; Thu, 8 Dec
- 2022 03:01:24 +0000
-Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::19c4:ae14:8bec:3448]) by PSAPR03MB5605.apcprd03.prod.outlook.com
- ([fe80::19c4:ae14:8bec:3448%9]) with mapi id 15.20.5880.014; Thu, 8 Dec 2022
- 03:01:24 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"avri.altman@wdc.com" <avri.altman@wdc.com>, "alim.akhtar@samsung.com"
-	<alim.akhtar@samsung.com>, =?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
-	<stanley.chu@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	"adrian.hunter@intel.com" <adrian.hunter@intel.com>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>,
-	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
-	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
-	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
-	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
-	<Powen.Kao@mediatek.com>, =?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
-	<Naomi.Chu@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
-	<Qilin.Tan@mediatek.com>
-Subject: Re: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
- recovery
-Thread-Topic: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
- recovery
-Thread-Index: AQHZCSBmwUDmapEV8U2DywnZbmWqca5irU6AgACjJQA=
-Date: Thu, 8 Dec 2022 03:01:23 +0000
-Message-ID: <7f998f91d7bfa263f4dfd29167b02e2ff4b6c5c5.camel@mediatek.com>
-References: <20221206031109.10609-1-peter.wang@mediatek.com>
-	 <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
-In-Reply-To: <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|SI2PR03MB5563:EE_
-x-ms-office365-filtering-correlation-id: 325d37d3-e501-458c-ca75-08dad8c87d76
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: +3TpqMtf0XJpnpElvFdNE4KR4ZhPub0tpZYr7VxaIEpWhDOCW/kdGtmKYC1JxtXw9klzAD9Uh0wjZwIrQJWGLrXbv0kLBBYGuHUw8ZmaVSCgksutYHyCDFRnERw0pUMhUajqpT+RSOvGNaAVvluFIEPqU0QMRL8VnDTCK7NZTMSPRpir9+P43EJ1VDIuoafVafoCBbs+sHGyBnIhgSlxtgKbfk/KUB9agJVQm7sgp0E79/x0lUN8AxTbWkXlhY0ZY4FsQWp1dvFiNIAMXSKaMV1o+bAGbUAvaiDXSCilcirKCqzLkk2CS09pau5Jvi09Emz/kpwT+ogvdz+H9HMlu5/3L7trsuowqrjbUvnQlKnK5CPeNQgk6e/ZWmYYw6oY8BaXo9wuGk1j0Ws3U52pryAYMYHaYjtejYjA4zmy5btRRMTdjt+a/h40D14ggIjWOS4PYV5NSCIP4XaesxjLSEWXCT4lDhP7hpghScCEvV7Ey0YWHsvzQVWT6Uu+hOVMXs2yPfJHdYpkhewO5e1kNW9tEGtgExl9BxFvVd0vdRm8caAd78jdwN9NptaaBo3e1Bk1dejM8lezP78M4n/UESHyL1MV+9K00oDZuHMrID/szQTIpfsn644hEkTo2yBnfdb+WVnYGBnMrToVY4HSXLldY9FmhWUpr52iORLbA+xVxk8KTBupgQxfFGZIuqbwMGAs8mxJADZ0YP3mo3lu0TDTfojPa/LxDhKOYm72vT0=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(396003)(376002)(39860400002)(346002)(136003)(451199015)(2616005)(83380400001)(186003)(6512007)(53546011)(26005)(6506007)(15650500001)(66446008)(122000001)(36756003)(66556008)(66476007)(85182001)(66946007)(8936002)(76116006)(64756008)(91956017)(38100700002)(107886003)(6486002)(478600001)(2906002)(38070700005)(5660300002)(71200400001)(41300700001)(4326008)(316002)(86362001)(54906003)(110136005)(8676002)(99106002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Q28rajErQkNWVGlwZUJHYlcvaEdVaUFib3hyVnhmenhXMURWUVJmdVNrb2NQ?=
- =?utf-8?B?V0lDdGxnVkZDN2NaM2ZRbnlvYUQvSm5lNG1TNWFmSVpaTVRkcGw5TTdnTFVz?=
- =?utf-8?B?c0pVUVlNcW8rYkZDT2J3RlBtUjJsLzFjTUZhU21VQWllbE5RRW5zZUdKME4v?=
- =?utf-8?B?OUZqb2lONE5BOGJNQlp4M0wrZDZmb1IwMlBxTXMxWVo4NkRwVlc5Zm9rMGRK?=
- =?utf-8?B?bmk2MVVKK083ZlY0V3VVNEZwSjBmNXZZK0VwOTZYeTBLR3hLU1BtMncyaElz?=
- =?utf-8?B?UHREUEtMTUZYTGpySEZUQWVpZXFkdXpkeml2c2t1eUtPeVB3RkRjSC8xS2xw?=
- =?utf-8?B?K2pGN1lSd3BXQVVDOFQ0alYySWJmNkhNbkZ6bXlGbCtGR1QxTElhYlVEMjhI?=
- =?utf-8?B?U2lhalRTaUJyS0xnMHg1ZFZYbUp4Mkw4M0JiUXE2NWh4YTRqTGNrN0FBT3pF?=
- =?utf-8?B?TVNCek56ZlBCWHpmTlliZUJISjJQRG0vbkUwTVByZWt6Wmg3b3pReWtOS2Fn?=
- =?utf-8?B?a3hqWXVtd1ZDWk1sck5TRjM3K1h4YTBOYjI1MTFCVjVlSEIwc2VkaFRqWC9G?=
- =?utf-8?B?V05sbFZMRnhHM3lsQkJsdGhSZytucHlsTm90V0VHeWZBejhsZVFFeHpSYVZO?=
- =?utf-8?B?Q0luTTc1ZHZ2cVlBWXFzQVc4YTBDUG03SkhuVmtQRkRob0YyVFNsMGM1TVRq?=
- =?utf-8?B?ZFBnZWd1d1lNZnF6YUdPUXRWMUxicmViclN6RUdFUGsrdG1wQTFjNnk4WVZV?=
- =?utf-8?B?cE9hWXl2NWNOY0NsSmFVRS84NFZadW1ocDAydTRLL0syaFBDWWtVakx3NFVH?=
- =?utf-8?B?Q2RpRjFoK256T0E1Smk4VnNkd2FYYkc0SVBXUjVhajhIbHBRV2RKM01ZT2tY?=
- =?utf-8?B?aDlaU2J3VlhKYTY3L29vNjdoNGRRbldWSGU5QUU3UHZMR1lMeVdrTEFpeFZL?=
- =?utf-8?B?VUJTcDN3aWt1NStLYmk1ZWxlREpYUFpRb3MreEltbW01ZkJkdDV5anBVTjZJ?=
- =?utf-8?B?MHRSUlhKWERuckhaUXFOWGdRUEZDZGtDL1ZDN2dGRUUvNDNSSDhGcDBiM080?=
- =?utf-8?B?bk14RDFDVTVSVlFabVBjeTEyUG5UOElXVmg1RjRYVXdaTTFieExwRklraGpj?=
- =?utf-8?B?T3dWaFBML3dlVzMyNXBKUkdTSUxYR3hlbmRERzVzNmR5em5GUk4xcTdEYnp4?=
- =?utf-8?B?cHc4dUorWUJXck5lSURlVDE1K0tSUUxJNFJtRWJDSzdqZmIzN2xjYllUZkVI?=
- =?utf-8?B?bjVJc09wUk41RllBQkN5U05vejBNTE9BVEJpS3BqSXV1ZDVlMWR2ZFFkUSti?=
- =?utf-8?B?OURSUGlkbjhxdGJGZVZHclJxaGpwUkJYQndZWTNlcHFDWSsvL1RKbm5hUkY3?=
- =?utf-8?B?T3Jzc1c1ZUE2enE4TzVkYVY3aERsd29IWVBRbmk0WWE3OWU0UlRwZjlQdWkw?=
- =?utf-8?B?WmlCOUdhckFYZVA0L0VBZWY0NTBFSGIzeGdTL3l0L3BiRVY4RDVjMVI3ZDJF?=
- =?utf-8?B?MzhWdGZEZE5MbDZDK0RqNDZFWXJxN2h2eVdtdnN5S0N1Q20zdnBXTldqVFNQ?=
- =?utf-8?B?aXBtckVFUWpXcXhVa21YNWdsWjRxaTV1SmpXdmM3cGphTDRTVnpvN2tEMlU3?=
- =?utf-8?B?T241WENVc1RzNi8rcmxDWDVhVlNseC93UzlFMDVmcVpXNjExMUVWSlEwV25E?=
- =?utf-8?B?SWN5YXcrYTdJQkpHcUh4UW16ejJ4dHZabVR3YVZvenVtbGRlckJRSnM4MGZp?=
- =?utf-8?B?d2ZxNGY1cG14Z2JnK2pydDBXOTVEN0JrakN3WU9TT3NxNDNzZnFsRlFlY3oy?=
- =?utf-8?B?QjhNTW1Eb2ViYXNwUXFtUCszQXFtV1hkbUxpMElKOGFNT2x3alEyQnB1Tmph?=
- =?utf-8?B?WGdXMW5UWXBQaUphbzhJYmxldXRCQ3dmbHU2N2s2K0JZM1lZK1QxZmlmTkc0?=
- =?utf-8?B?dkJvQlBNVlc4SW5SSGpWVUtmSVgrVDlDSUtBWGU2NW5kQnJCVjNTVUg1ZzYr?=
- =?utf-8?B?S2NiMmdSKy9Pcysyd1NZSFdOYkRyTmZ5UEk0bGJPQzdyemxGT01qaXlpTkY3?=
- =?utf-8?B?VXBzQmxWdDZjK3I1bEg3aGpvR1h6RmRQSUpTRzNMa0RlSllFTDdyQjVVeEJQ?=
- =?utf-8?B?Z3pDSHhleGhaUWdkSzhyVWkxeFRZSkZnK29PQk5KOGNzaWZPREhNb2lNOXN5?=
- =?utf-8?B?S1E9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <B050F0282FF9E240BCC3C2631822B9B5@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.792.15; Thu, 8 Dec 2022 11:32:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 8 Dec 2022 11:32:14 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
+CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>
+Subject: [PATCH v3 10/12] dt-bindings: mediatek: mt8188: add audio afe document
+Date: Thu, 8 Dec 2022 11:31:46 +0800
+Message-ID: <20221208033148.21866-11-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221208033148.21866-1-trevor.wu@mediatek.com>
+References: <20221208033148.21866-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 325d37d3-e501-458c-ca75-08dad8c87d76
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2022 03:01:23.6186
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rW0fOGea2gdC8ktCeWxXpxDLHQDE32Pi330wOAJbxDuTLtapsvZmDCOOJL2Zcg9iYNTEA6DZ7ZItYd7NN3FKuA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5563
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_190213_082278_451D41C5 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20221207_193221_909262_7E981B6B 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,48 +82,217 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDIyLTEyLTA3IGF0IDE5OjE3ICswMjAwLCBBZHJpYW4gSHVudGVyIHdyb3RlOg0K
-PiBPbiA2LzEyLzIyIDA1OjExLCBwZXRlci53YW5nQG1lZGlhdGVrLmNvbSB3cm90ZToNCj4gPiBG
-cm9tOiBQZXRlciBXYW5nIDxwZXRlci53YW5nQG1lZGlhdGVrLmNvbT4NCj4gPiANCj4gPiBXaGVu
-IFNTVS9lbnRlciBoaWJlcm44IGZhaWwgaW4gd2x1biBzdXNwZW5kIGZsb3csIHRyaWdnZXIgZXJy
-b3INCj4gPiBoYW5kbGVyIGFuZCByZXR1cm4gYnVzeSB0byBicmVhayB0aGUgc3VzcGVuZC4NCj4g
-PiBJZiBub3QsIHdsdW4gcnVudGltZSBwbSBzdGF0dXMgYmVjb21lIGVycm9yIGFuZCB0aGUgY29u
-c3VtZXIgd2lsbA0KPiA+IHN0dWNrIGluIHJ1bnRpbWUgc3VzcGVuZCBzdGF0dXMuDQo+ID4gDQo+
-ID4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgV2FuZyA8cGV0ZXIud2FuZ0BtZWRpYXRlay5jb20+DQo+
-IA0KPiBTaG91bGQgdGhpcyBoYXZlIGEgRml4ZXMgb3Igc3RhYmxlIHRhZz8NCj4gDQo+IEFub3Ro
-ZXIgbWlub3IgY29tbWVudCBiZWxvdywgb3RoZXJ3aXNlOg0KPiANCj4gUmV2aWV3ZWQtYnk6IEFk
-cmlhbiBIdW50ZXIgPGFkcmlhbi5odW50ZXJAaW50ZWwuY29tPg0KPiANCj4gPiAtLS0NCj4gPiAg
-ZHJpdmVycy91ZnMvY29yZS91ZnNoY2QuYyB8IDI2ICsrKysrKysrKysrKysrKysrKysrKysrKysr
-DQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspDQo+ID4gDQo+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvdWZzL2NvcmUvdWZzaGNkLmMgYi9kcml2ZXJzL3Vmcy9jb3JlL3Vmc2hj
-ZC5jDQo+ID4gaW5kZXggYjFmNTlhNWZlNjMyLi45OGYxMDVmMzI4NzcgMTAwNjQ0DQo+ID4gLS0t
-IGEvZHJpdmVycy91ZnMvY29yZS91ZnNoY2QuYw0KPiA+ICsrKyBiL2RyaXZlcnMvdWZzL2NvcmUv
-dWZzaGNkLmMNCj4gPiBAQCAtOTA0OSw2ICs5MDQ5LDE5IEBAIHN0YXRpYyBpbnQgX191ZnNoY2Rf
-d2xfc3VzcGVuZChzdHJ1Y3QNCj4gPiB1ZnNfaGJhICpoYmEsIGVudW0gdWZzX3BtX29wIHBtX29w
-KQ0KPiA+ICANCj4gPiAgCQlpZiAoIWhiYS0+ZGV2X2luZm8uYl9ycG1fZGV2X2ZsdXNoX2NhcGFi
-bGUpIHsNCj4gPiAgCQkJcmV0ID0gdWZzaGNkX3NldF9kZXZfcHdyX21vZGUoaGJhLA0KPiA+IHJl
-cV9kZXZfcHdyX21vZGUpOw0KPiA+ICsJCQlpZiAocmV0ICYmIHBtX29wICE9IFVGU19TSFVURE9X
-Tl9QTSkgew0KPiA+ICsJCQkJLyoNCj4gPiArCQkJCSAqIElmIHJldHVybiBlcnIgaW4gc3VzcGVu
-ZCBmbG93LCBJTw0KPiA+IHdpbGwgaGFuZy4NCj4gPiArCQkJCSAqIFRyaWdnZXIgZXJyb3IgaGFu
-ZGxlciBhbmQgYnJlYWsNCj4gPiBzdXNwZW5kIGZvcg0KPiA+ICsJCQkJICogZXJyb3IgcmVjb3Zl
-cnkuDQo+ID4gKwkJCQkgKi8NCj4gPiArCQkJCXNwaW5fbG9ja19pcnEoaGJhLT5ob3N0LT5ob3N0
-X2xvY2spOw0KPiA+ICsJCQkJaGJhLT5mb3JjZV9yZXNldCA9IHRydWU7DQo+ID4gKwkJCQl1ZnNo
-Y2Rfc2NoZWR1bGVfZWhfd29yayhoYmEpOw0KPiA+ICsJCQkJc3Bpbl91bmxvY2tfaXJxKGhiYS0+
-aG9zdC0+aG9zdF9sb2NrKTsNCj4gPiArDQo+ID4gKwkJCQlyZXQgPSAtRUJVU1k7DQo+ID4gKwkJ
-CX0NCj4gPiAgCQkJaWYgKHJldCkNCj4gPiAgCQkJCWdvdG8gZW5hYmxlX3NjYWxpbmc7DQo+ID4g
-IAkJfQ0KPiA+IEBAIC05MDYwLDYgKzkwNzMsMTkgQEAgc3RhdGljIGludCBfX3Vmc2hjZF93bF9z
-dXNwZW5kKHN0cnVjdA0KPiA+IHVmc19oYmEgKmhiYSwgZW51bSB1ZnNfcG1fb3AgcG1fb3ApDQo+
-ID4gIAkgKi8NCj4gPiAgCWNoZWNrX2Zvcl9ia29wcyA9ICF1ZnNoY2RfaXNfdWZzX2Rldl9kZWVw
-c2xlZXAoaGJhKTsNCj4gPiAgCXJldCA9IHVmc2hjZF9saW5rX3N0YXRlX3RyYW5zaXRpb24oaGJh
-LCByZXFfbGlua19zdGF0ZSwNCj4gPiBjaGVja19mb3JfYmtvcHMpOw0KPiA+ICsJaWYgKHJldCAm
-JiBwbV9vcCAhPSBVRlNfU0hVVERPV05fUE0pIHsNCj4gPiArCQkvKg0KPiA+ICsJCSAqIElmIHJl
-dHVybiBlcnIgaW4gc3VzcGVuZCBmbG93LCBJTyB3aWxsIGhhbmcuDQo+ID4gKwkJICogVHJpZ2dl
-ciBlcnJvciBoYW5kbGVyIGFuZCBicmVhayBzdXNwZW5kIGZvcg0KPiA+ICsJCSAqIGVycm9yIHJl
-Y292ZXJ5Lg0KPiA+ICsJCSAqLw0KPiA+ICsJCXNwaW5fbG9ja19pcnEoaGJhLT5ob3N0LT5ob3N0
-X2xvY2spOw0KPiA+ICsJCWhiYS0+Zm9yY2VfcmVzZXQgPSB0cnVlOw0KPiA+ICsJCXVmc2hjZF9z
-Y2hlZHVsZV9laF93b3JrKGhiYSk7DQo+ID4gKwkJc3Bpbl91bmxvY2tfaXJxKGhiYS0+aG9zdC0+
-aG9zdF9sb2NrKTsNCj4gDQo+IFNhbWUgNCBsaW5lcyBvZiBjb2RlIGNvdWxkIGJlIHNlcGFyYXRl
-ZCBpbnRvIGEgaGVscGVyIGZ1bmN0aW9uLg0KPiANCj4gPiArDQo+ID4gKwkJcmV0ID0gLUVCVVNZ
-Ow0KPiA+ICsJfQ0KPiA+ICAJaWYgKHJldCkNCj4gPiAgCQlnb3RvIHNldF9kZXZfYWN0aXZlOw0K
-PiA+ICANCj4gDQo+IA0K
+Add mt8188 audio afe document.
+
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+ .../devicetree/bindings/sound/mt8188-afe.yaml | 196 ++++++++++++++++++
+ 1 file changed, 196 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8188-afe.yaml
+
+diff --git a/Documentation/devicetree/bindings/sound/mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mt8188-afe.yaml
+new file mode 100644
+index 000000000000..6ab26494d924
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mt8188-afe.yaml
+@@ -0,0 +1,196 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mt8188-afe.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek AFE PCM controller for mt8188
++
++maintainers:
++  - Trevor Wu <trevor.wu@mediatek.com>
++
++properties:
++  compatible:
++    const: mediatek,mt8188-afe
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: audiosys
++
++  mediatek,topckgen:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of the mediatek topckgen controller
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: 26M clock
++      - description: audio pll1 clock
++      - description: audio pll2 clock
++      - description: clock divider for i2si1_mck
++      - description: clock divider for i2si2_mck
++      - description: clock divider for i2so1_mck
++      - description: clock divider for i2so2_mck
++      - description: clock divider for dptx_mck
++      - description: a1sys hoping clock
++      - description: audio intbus clock
++      - description: audio hires clock
++      - description: audio local bus clock
++      - description: mux for dptx_mck
++      - description: mux for i2so1_mck
++      - description: mux for i2so2_mck
++      - description: mux for i2si1_mck
++      - description: mux for i2si2_mck
++      - description: audio 26m clock
++
++  clock-names:
++    items:
++      - const: clk26m
++      - const: apll1_ck
++      - const: apll2_ck
++      - const: apll12_div0
++      - const: apll12_div1
++      - const: apll12_div2
++      - const: apll12_div3
++      - const: apll12_div9
++      - const: a1sys_hp_sel
++      - const: aud_intbus_sel
++      - const: audio_h_sel
++      - const: audio_local_bus_sel
++      - const: dptx_m_sel
++      - const: i2so1_m_sel
++      - const: i2so2_m_sel
++      - const: i2si1_m_sel
++      - const: i2si2_m_sel
++      - const: adsp_audio_26m
++
++patternProperties:
++  "^mediatek,etdm-in[1-2]-chn-disabled$":
++    $ref: /schemas/types.yaml#/definitions/uint8-array
++    minItems: 1
++    maxItems: 16
++    description:
++      By default, all data received from ETDM pins will be outputed to
++      memory. etdm in supports disable_out in direct mode(w/o interconn).
++      User can specify the channel ID which they hope dropping and then
++      the specified channel won't be seen on memory.
++    uniqueItems: true
++    items:
++      minimum: 0
++      maximum: 15
++
++  "^mediatek,etdm-in[1-2]-mclk-always-on-rate-hz$":
++    description: Specify etdm in mclk output rate for always on case.
++
++  "^mediatek,etdm-out[1-3]-mclk-always-on-rate-hz$":
++    description: Specify etdm out mclk output rate for always on case.
++
++  "^mediatek,etdm-in[1-2]-multi-pin-mode$":
++    type: boolean
++    description: if present, the etdm data mode is I2S.
++
++  "^mediatek,etdm-out[1-3]-multi-pin-mode$":
++    type: boolean
++    description: if present, the etdm data mode is I2S.
++
++  "^mediatek,etdm-in[1-2]-cowork-source$":
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      etdm modules can share the same external clock pin. Specify
++      which etdm clock source is required by this etdm in moudule.
++    enum:
++      - 0 # etdm1_in
++      - 1 # etdm2_in
++      - 2 # etdm1_out
++      - 3 # etdm2_out
++
++  "^mediatek,etdm-out[1-2]-cowork-source$":
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: |
++      etdm modules can share the same external clock pin. Specify
++      which etdm clock source is required by this etdm out moudule.
++    enum:
++      - 0 # etdm1_in
++      - 1 # etdm2_in
++      - 2 # etdm1_out
++      - 3 # etdm2_out
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - resets
++  - reset-names
++  - mediatek,topckgen
++  - power-domains
++  - clocks
++  - clock-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    afe: afe@10b10000 {
++        compatible = "mediatek,mt8188-afe";
++        reg = <0x10b10000 0x10000>;
++        interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
++        resets = <&watchdog 14>;
++        reset-names = "audiosys";
++        mediatek,topckgen = <&topckgen>;
++        power-domains = <&spm 13>; //MT8188_POWER_DOMAIN_AUDIO
++        mediatek,etdm-in2-cowork-source = <2>;
++        mediatek,etdm-out2-cowork-source = <0>;
++        mediatek,etdm-in1-multi-pin-mode;
++        mediatek,etdm-in1-chn-disabled = /bits/ 8 <0x0 0x2>;
++        clocks = <&clk26m>,
++                 <&topckgen 72>, //CLK_TOP_APLL1
++                 <&topckgen 73>, //CLK_TOP_APLL2
++                 <&topckgen 186>, //CLK_TOP_APLL12_CK_DIV0
++                 <&topckgen 187>, //CLK_TOP_APLL12_CK_DIV1
++                 <&topckgen 188>, //CLK_TOP_APLL12_CK_DIV2
++                 <&topckgen 189>, //CLK_TOP_APLL12_CK_DIV3
++                 <&topckgen 191>, //CLK_TOP_APLL12_CK_DIV9
++                 <&topckgen 83>, //CLK_TOP_A1SYS_HP
++                 <&topckgen 31>, //CLK_TOP_AUD_INTBUS
++                 <&topckgen 32>, //CLK_TOP_AUDIO_H
++                 <&topckgen 69>, //CLK_TOP_AUDIO_LOCAL_BUS
++                 <&topckgen 81>, //CLK_TOP_DPTX
++                 <&topckgen 77>, //CLK_TOP_I2SO1
++                 <&topckgen 78>, //CLK_TOP_I2SO2
++                 <&topckgen 79>, //CLK_TOP_I2SI1
++                 <&topckgen 80>, //CLK_TOP_I2SI2
++                 <&adsp_audio26m 0>; //CLK_AUDIODSP_AUDIO26M
++        clock-names = "clk26m",
++                      "apll1_ck",
++                      "apll2_ck",
++                      "apll12_div0",
++                      "apll12_div1",
++                      "apll12_div2",
++                      "apll12_div3",
++                      "apll12_div9",
++                      "a1sys_hp_sel",
++                      "aud_intbus_sel",
++                      "audio_h_sel",
++                      "audio_local_bus_sel",
++                      "dptx_m_sel",
++                      "i2so1_m_sel",
++                      "i2so2_m_sel",
++                      "i2si1_m_sel",
++                      "i2si2_m_sel",
++                      "adsp_audio_26m";
++    };
++
++...
+-- 
+2.18.0
+
 
