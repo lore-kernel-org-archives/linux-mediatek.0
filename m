@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB79C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 10:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 418B9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 10:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pQBvnBipF0jBYBuu1EcKJlR/pd4YO5GJfr3JHPYqAq8=; b=O6CQeROsjVfO2fa25+xkLgRegI
-	UtzaLuWSZtatoRO1M4Pl8bpUS2/hyt41VFeJ7Ph141jd71ILRvdI+Y3VqOdpTgqLP0DtSnZdnNaDT
-	EyI7xv4xSZVqknUCYZIRQjh3+El61KfJeRP5hKVNOYDoBEfXAKINr8+XzX4nEFzM4QTQC3+0RM2kL
-	4GXnMupMcjtQV2+WcgRw7MmucrUnHYHWdqFz7d8gBNZ1R4TmNVRKkhEy3kmsEBAZQFk8eUUAoqvm0
-	uf89OcCeyOz24Fni3fdh9PRznfIFSCDKOR0xZjw98GYnrQ+Fn7J/qfH2hwVZ0CyooobSPtog4uAz0
-	gIRDI6nA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ijEI9Ra/s0T9IQTMsabEYyLb2thsuV9aBxhF7S9JwHg=; b=XJh98IFLKn6rWoOmMcKaphthsF
+	3f5LpUQ9X8mlVbXXCWdGYtvyna5ptw744rngpBgBf9TapJvMouDupEb6rKwV5hmWBk74MpKcgxL3A
+	4zSVo/ajRwiIaGuVQDXpZEVrWKmQ4Fg+zmXgKUjJaC4Faiw8gd2IwaMRFskbqtBf2J14z5ROmcw9t
+	uwrftQlk4V2mqwKeyeXngv8HO8tP0n90fk7aeJAM/w30wizOyiJMTjEFAoNJ7tVoVAjsVBgjImRMN
+	1CZLV8nNVJqszLNabfMVk7RkLBfxNSkPis1R6EviS7pQo45BQdzV7UhHZpcxCHeJYdF4tl2ttFhgy
+	OEKp5pBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3DiD-00BUtw-6l; Thu, 08 Dec 2022 10:01:05 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1p3DxN-00C4Nm-Gf; Thu, 08 Dec 2022 10:16:45 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Dhx-00BUdN-Sd; Thu, 08 Dec 2022 10:00:52 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id 0607420003;
-	Thu,  8 Dec 2022 10:00:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1670493641;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pQBvnBipF0jBYBuu1EcKJlR/pd4YO5GJfr3JHPYqAq8=;
-	b=nHcSa8RDjNx8DzhiTHdnU62FP/U3JJFVD/kHc9FRwYndvpGihZr8KVG5P3UdSF/xTo4u2v
-	+5JyQUxoQvDH5LFHTBxynsI7WZm+tjoremxnDBAN29LIip92uhp2yPPoYAFk6naOyHqako
-	vrCPsn27kC0s95MhEALjy8UeHjE9LZzUO19D+K6X3KM7TMIaZAdVR+fQAO2npW0ycNH54L
-	U2VADhsqdaMr3hdyuVrwoqMT3t6MdCwV6Ok2YX0960rhpZXhuViLxqyX2uUnMAHZlRB7IA
-	UjJOAQ+XxF0KOCp1d6WHagxXOghUylxmnaity+qqz1a+81FqR2bNqC825po7DQ==
-Date: Thu, 8 Dec 2022 11:00:35 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Richard Weinberger
- <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
- <gch981213@gmail.com>, linux-mtd@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, benliang.zhao@mediatek.com,
- bin.zhang@mediatek.com
-Subject: Re: [PATCH v3 7/9] dt-bindings: mtd: Split ECC engine with rawnand
- controller
-Message-ID: <20221208110035.5649a051@xps-13>
-In-Reply-To: <fe70d964-229a-8bda-a414-e009dd955e5e@linaro.org>
-References: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
-	<20221208062955.2546-8-xiangsheng.hou@mediatek.com>
-	<fe70d964-229a-8bda-a414-e009dd955e5e@linaro.org>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1p3DxA-00C3wY-Vq; Thu, 08 Dec 2022 10:16:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id AB421B82304;
+	Thu,  8 Dec 2022 10:16:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6855C433C1;
+	Thu,  8 Dec 2022 10:16:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1670494589;
+	bh=KLaSZ5blId5Z7aDCG2Qh6BNgobCKMPPmG8Rf8GJpJAA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fLZTtEwkJBTfxeJJ77Yxq/MviOgCl2D9CY39vBvKkk070riGQ54+RiNIkozhE3rdF
+	 mDPYgF28ilhYWoM0/5oELjHwmU1uWVigLCdXtf7nrPG9hNZdcvDlw0wSiZDi+Kclvo
+	 DIQeP+klD4gnv+VFDjVX/7DP+iL9m82iV4N0RpKrkze6nZr+DYfIT6XmccRSwsrOGk
+	 BhpWj/7672A46pax/edJNyySK1sKXoZilUyLdMt4sKqQRVEcoN8bODfncQS16Hmfqz
+	 mLG2QFbfzq2W1BHuxtQp52GLUJVyaRDNYcTwNZD1Qao4eiUforqzHHo6ilxcfGDHG0
+	 VzEO1KX172WvQ==
+Date: Thu, 8 Dec 2022 10:16:22 +0000
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sebastian Reichel <sre@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Gene Chen <gene_chen@richtek.com>,
+	Daniel Mack <zonque@gmail.com>,
+	Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: Add missing 'unevaluatedProperties' to
+ regulator nodes
+Message-ID: <Y5G5duIqBYuEXqJU@google.com>
+References: <20221206211554.92005-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221206211554.92005-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_020050_246472_9AC0E4EB 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20221208_021633_220032_F2B9E2FA 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,94 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Tue, 06 Dec 2022, Rob Herring wrote:
 
-krzysztof.kozlowski@linaro.org wrote on Thu, 8 Dec 2022 10:44:17 +0100:
+> Several regulator schemas are missing 'unevaluatedProperties' constraint
+> which means any extra properties are allowed. Upon adding the
+> constraint, there's numerous warnings from using the deprecated
+> 'regulator-compatible' property. Remove the usage as examples shouldn't
+> be using long since deprecated properties.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> I'd suggest that Mark take this if that's okay with Lee. Or I can take 
+> it.
 
-> On 08/12/2022 07:29, Xiangsheng Hou wrote:
-> > Split MediaTek ECC engine with rawnand controller and convert to
-> > YAML schema.
-> >=20
-> > Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> > ---
-> >  .../bindings/mtd/mediatek,mtk-nfc.yaml        | 154 +++++++++++++++
-> >  .../mtd/mediatek,nand-ecc-engine.yaml         |  62 ++++++
-> >  .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ------------------
-> >  3 files changed, 216 insertions(+), 176 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mtk-=
-nfc.yaml
-> >  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,nand=
--ecc-engine.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yam=
-l b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
-> > new file mode 100644
-> > index 000000000000..eb1a44c7ae4e
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
-> > @@ -0,0 +1,154 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/mtd/mediatek,mtk-nfc.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek(MTK) SoCs raw NAND FLASH controller (NFC)
-> > +
-> > +maintainers:
-> > +  - Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt2701-nfc
-> > +      - mediatek,mt2712-nfc
-> > +      - mediatek,mt7622-nfc
-> > +
-> > +  reg:
-> > +    items:
-> > +      - description: Base physical address and size of NFI.
-> > +
-> > +  interrupts:
-> > +    items:
-> > +      - description: NFI interrupt
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: clock used for the controller
-> > +      - description: clock used for the pad
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: nfi_clk
-> > +      - const: pad_clk
-> > +
-> > +  ecc-engine:
-> > +    description: device-tree node of the required ECC engine.
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +
-> > +patternProperties:
-> > +  "^nand@[a-f0-9]$":
-> > +    type: object =20
->=20
-> This should be instead:
->     $ref: nand-chip.yaml#
->     unevaluatedProperties: false
->=20
-> and then properties below (due to current dtschema limitations) should
-> list properties from nand-controller.yaml:
->=20
->       nand-on-flash-bbt: true
->=20
-> Optionally, we could create additional schema - nand-controller-chip,
-> which would be referenced directly by nand-controller and itself would
-> ref nand-chip.
+No problem from my side.
 
-Isn't this enough? (in linux-next)
-https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git/tree/Document=
-ation/devicetree/bindings/mtd/nand-controller.yaml?h=3Dmtd/next#n54
+>  Documentation/devicetree/bindings/mfd/max77650.yaml  |  2 --
+>  .../devicetree/bindings/mfd/mediatek,mt6360.yaml     |  9 ---------
+>  .../bindings/power/supply/mt6360_charger.yaml        |  2 +-
+>  .../bindings/regulator/max77650-regulator.yaml       |  1 +
+>  .../devicetree/bindings/regulator/max8660.yaml       |  6 +-----
+>  .../bindings/regulator/mt6360-regulator.yaml         | 12 +++---------
+>  6 files changed, 6 insertions(+), 26 deletions(-)
 
-Thanks,
-Miqu=C3=A8l
+Acked-by: Lee Jones <lee@kernel.org>
+
+-- 
+Lee Jones [李琼斯]
 
