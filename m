@@ -4,52 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C694EC4708D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Dec 2022 20:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC7DC4708E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 01:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pXcGa84njJCYeGSQoc8hiorXWmi3KqFmZhcmGz6apbk=; b=3xNyHwc+x/0svlve4gdBkvfY2d
-	KnxBF+LlVaCt7kvI1EliBArmqzdMR/guJn0lYJwnrBmcWzlPzKj/wZxm8oWquda+x8k3HqQoKKRYr
-	28O+vtCrmMpzmL+KIA9b5OF5wgjM/0MrFP5INr2Uu6fYaPZCwDBYB1XiyvsLJiQ5bLpOShR3WL9ii
-	dX9LtSTVDmjNuM/Duf/9vll8GZP/XXTtNrQt356Woczl/D534lu2iJT0HiXW6b/cUhMTuiQnSfNgz
-	nrnonhcEZR+yRBLf2Ed9sPpAdYfLxGdsTRY17cKXHVABERe2op8T2ygj5+GTRfHov1fzAEwXPpN5t
-	MQMQdIpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KN+Hfmd71TZJLp4ytGjUInbvDaRRDV6RB2uG2KsyuFk=; b=P7bookd10w5GWYcdmx4dyNuuZ2
+	lbU0+R3VBg8469CX0eBFammcH5K8XMre6bdZTCrOCoLj3aW9m6RF/S4EHNgJXCFr90kSWCy7OGxkM
+	Rp/PsFeVm+AGevwfiHf9q+fd3eQiXsTvWtSxH0Tgvoxp26nS8slpckdNHmD1OSkUpUP6aNoqmS2R9
+	hVZc09XI94NNZLpSUhHHGy9SL2xIheg/Zikm/X487uIfeKhmlUqyBt7hhgmbLKcGfEXd4Tqk3kQif
+	DYcztQfxkRji4FgeleI1iyCj4ZbLv/zB4Y6VJE1G33Msu9LRjFmzLS1kExpEX9byO5QZ1xrysqdZs
+	V+hgI0AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p30hZ-00BYfm-4c; Wed, 07 Dec 2022 20:07:33 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1p35NP-00H8E9-KW; Thu, 08 Dec 2022 01:07:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p30hN-00BYY3-EK; Wed, 07 Dec 2022 20:07:23 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.94.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1p30hA-0001li-Ox; Wed, 07 Dec 2022 21:07:08 +0100
-Date: Wed, 7 Dec 2022 20:07:01 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: Steven Liu <steven.liu@mediatek.com>,
-	Henry Yen <Henry.Yen@mediatek.com>, Chad Monroe <chad@monroe.io>,
-	John Crispin <john@phrozen.org>
-Subject: [PATCH v3] thermal: mediatek: add support for MT7986 and MT7981
-Message-ID: <e7122cc9ae519394cba9eeb50b650484686b7bc4.1670442987.git.daniel@makrotopia.org>
+	id 1p35NL-00H8At-VB
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 01:07:02 +0000
+X-UUID: 6411689fb1fb4562bd93f4e30eebeda8-20221207
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=KN+Hfmd71TZJLp4ytGjUInbvDaRRDV6RB2uG2KsyuFk=;
+	b=YEu2Vn64jJ5A4IY7V7ZgebKJiX/5b7Qxr+azJuL+xEcMZLrGJa1Ne6WCsTspE4ewmGKa2k+ufBkFd2Wtrw50ZEMln7EgYKq8jDerE9KR0O9VvucrZyIusdyGNtkgTmAFVN6iQocuMUvW+Zv7u2W9/a62l+9XsZyA8znqrb1jp6s=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:a9e32032-deae-4ceb-8ba2-ae8c7db2bb6e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:f1c1f4d1-652d-43fd-a13a-a5dd3c69a43d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6411689fb1fb4562bd93f4e30eebeda8-20221207
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2031996943; Wed, 07 Dec 2022 18:06:46 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 8 Dec 2022 09:06:10 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 8 Dec 2022 09:06:10 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UsqdT4YA+tigxyTJJDEd/eaf4MWKD+3fJiJCvPkz3rlAQP4sOGpKcRAKtd0AXQadXgzhCbCCL+zEl7QEH6z0gDDzK6rJJ1Z170/CbVoQavPfOMF5pxxB2k4xApp3XlZNBplZnP0NlGegA6jDWgdgxWcLxqb3HgkONtDuT2CZj76TuO8JSQGZzhf3jT/rfuKMBZNkOVlhWTS24b+s7iJp4PpAQ9mEHb1/KnQQirkUWwTf00cWvkVEPYiplOcKghUXuFKMiDlVGLCLZN7d+frrS5uUSROICpaoe1lXVNOjmvwsy6MQjye7QETvv/MGbpHrzMNd3oe7uBSnvoJLm9+97g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KN+Hfmd71TZJLp4ytGjUInbvDaRRDV6RB2uG2KsyuFk=;
+ b=aM/1PaMjqadpgy2LlggQV/1w3Mgz67rzzbOF5ngFOYe7EAuOKjQJbNdAVJiZfQyjlT5P+nmgNdGs9sVWBIHI2v1p7onTk9Yohp4xkcy4QXdJR5rOoBsxheaW4ZpYoaGZqYLRopohrRXBUfSVuZeG+AdYb3A7PIPuJTg4gZqnTHhbB4qbEhxNmAcMO+GnYCogf+XnlUuBe7cTCpPgJeQzHwD/iF3owRb47jTiAEuSzPIUX8TMitOJK+wzxiWpO08O3VEeBMfsI9A81cN/kvXMd/zduxKqmSOuNDPxU6Gd1AsOidSbHz0GMwm3sWHBftkKeDEPTwrR5WlUn09wlh2Cxg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KN+Hfmd71TZJLp4ytGjUInbvDaRRDV6RB2uG2KsyuFk=;
+ b=P4psVKGX+THnLjFSqIcx9jkmQ6VfutzfBg85Ne9Hrw1+NAMzmg/qODAX0cnil1h4iVL7IMvESd1kUkfMl5BGNiS73AkJE7cKwCvaeh4yLpOHNRAHZYQQ463yHcGjMkfjvQz3r9u7NcVYFxn9tS4hk1DCc4rPdbKwuoCaHp4U6yg=
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
+ SEYPR03MB7252.apcprd03.prod.outlook.com (2603:1096:101:c1::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5880.14; Thu, 8 Dec 2022 01:06:08 +0000
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4139:bb22:3bf9:f1e3]) by SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4139:bb22:3bf9:f1e3%6]) with mapi id 15.20.5880.014; Thu, 8 Dec 2022
+ 01:06:08 +0000
+From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+To: "error27@gmail.com" <error27@gmail.com>
+CC: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "will@kernel.org"
+	<will@kernel.org>
+Subject: Re: [PATCH] iommu/mediatek: Fix forever loop in error handling
+Thread-Topic: [PATCH] iommu/mediatek: Fix forever loop in error handling
+Thread-Index: AQHZClR35l3j06HsUku5hjWhbvtgVK5jLdWA
+Date: Thu, 8 Dec 2022 01:06:08 +0000
+Message-ID: <68cb1ee26fc61a290a9e69b15234848ec8a02b8c.camel@mediatek.com>
+References: <Y5C3mTam2nkbaz6o@kili>
+In-Reply-To: <Y5C3mTam2nkbaz6o@kili>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|SEYPR03MB7252:EE_
+x-ms-office365-filtering-correlation-id: 116594a9-50b0-46ad-11ed-08dad8b8639e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qComcego3knmOFLHFCi+m0R8zVRKS93hy91KnCyGkCWNu6+MdmadMZxuCZXLgVhBFyVKYzYnVWKMflkGQGb2m+unOwsygF/ZqMKq+a0D/aiIxep6+kGevkYOgwXWFXhFv+dfxJioej4uwt7BK7aN+kbSgX2qpIwrdHWm9wgLaIKko3/qDQc64QxkiR7cO0xOSq1dDdcME1BrixWw9rIhyg4Dqq98PstIzC6bwdmiBOQ+DDvoJ4KjWWgX/AELXMh3HiINCVRYlAA+kH/TteUgu9CyYTUnmbs0Jm3X/2zRwiAlSUedqyTDzszjIDXRFph68TQhZyCIvClsG8Dy07qN4viFvPJ1T1WFPW+jIuQA6QBZzxUHmPGxpkfln4X2t1J7zXhPmXKb0KfWWVlTFmXaW8NcHuTZSFM/mIAY8xQ0N62a1s60zAToZyKZKphunPjEFegxw0AB1aG3I94VBrWT4VFQHTaj1A+jRsCUoA7r3nFIvqms8WZDRHk6DKANy0wrd/iO7EVSvv1XyP69z9p1bpdHKPvewdJjAF0qGYt5YeJmTLLdFJ6vJFIH4i/shwlsDKoWzk+0bGjIao/yOTQ6zj28Vn6jVK3MiinjcBXOfsKL6YEWHHn7HLz56buwWXNRcd9cSUX53fktxaYTUUHHgr4yXARWsy9PhDXaDL7+J+2Dv0zysOwWYcXYjEvG5HBBfm+emZHAQTEKGF69sGViBIoGWRnkMKLTTshQMQumBPta4xrE/c+dlns8i887U1p7SjwznmbqNCd2gLYvCCZrEA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(376002)(136003)(39860400002)(396003)(366004)(451199015)(8936002)(86362001)(36756003)(5660300002)(316002)(2906002)(85182001)(4744005)(6506007)(6486002)(38070700005)(71200400001)(38100700002)(122000001)(478600001)(54906003)(2616005)(6512007)(6916009)(83380400001)(41300700001)(26005)(64756008)(66556008)(66446008)(66476007)(8676002)(4326008)(66946007)(76116006)(91956017)(186003)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?clBlcHJPNFZPTmJwa2FibFJSZzlFKzdpVTVBRmVvblM2a0VzbzNjWnh2SnFB?=
+ =?utf-8?B?ODhZT1dqdCsrK2syV3JLcHZWckE4Tk00T0poVFptaTZZZjNsK2Y2aXdsQWRC?=
+ =?utf-8?B?dkF6ZG9KVVo1VlhhQnNBV2pwbVAwT09BUXhpeUVPeUUyNWhLT3ZuMVRRSis3?=
+ =?utf-8?B?U0xPT2pYT3pTZWxVZnB5WHY5MTBabEV4bzBtRzN6a25YbW85MEZDUXVycEkv?=
+ =?utf-8?B?U3cxUmUvSmEwekpDL1FOWEx5RGcvQk1CV3hoUGFzZ0k4bDhPWTYyczZrQ294?=
+ =?utf-8?B?M0ZuVUhDbWhYM2liNnMraFl1U3kzbUJ1cFNpd25oNXlZdmRuQWZIMGhHL3c0?=
+ =?utf-8?B?M1BiU0ptK2ZMMTZCcGVyUFB6N2RhUUovNUNKV2oxZ1JwZE9IcWkwRUpYdWFC?=
+ =?utf-8?B?eWpPc28wMmE5N2NlV2hTTG81VmkvUXpiTEYzZ1dMK3o3d2lzQjJUU2c5WVUz?=
+ =?utf-8?B?OHpidHhWZXZWUitObXg5Z21DaTZXTlNRZjJiN0V6c0pwMHdUaVMxdGhuTUIx?=
+ =?utf-8?B?WWxPTW5iTTEwUlgybHBXYmhEU0VHZkdWNnowOFlTMm1VMjZQNmRWRzFNSndO?=
+ =?utf-8?B?TXVybW5FSEJINTVNMmV2VVhjVlFyN3dQaGdQNTJHTzBRNHN1NDFhOUFqOGJZ?=
+ =?utf-8?B?N00wZEtaMVFNejc1NG50SGdGVkQ4ZDU2MkkwOWo2c1EyR1ZqVS9ZQkl2c3lZ?=
+ =?utf-8?B?eEZoUVlHYmd2eDVyTnp6OG9nMk1hUVpTa1ZORDNGblB3S3JtOFpSZmwvNENH?=
+ =?utf-8?B?THNlYkJPaW11N0I0M3JyZmJQM1ZUWUtHNzVkV2ZReUhnSUN0QW5sd01iWVJH?=
+ =?utf-8?B?YmtibnM3NVpUVWNoa2tTa1NmMVBNcnlUTkd6RkE2RnZ6UGFsN0NNZTQ3b3Np?=
+ =?utf-8?B?a3diTXFKczdlaEJ4TVJTcVZUdFczM3V0REdUbmh1aVRia1p4T01RNVplOURO?=
+ =?utf-8?B?OCtwWVdnTjc5a21hMU1Pck1ibWJMalB1dzdBZmd4eXlDcnNZdnpXNGVrOGRm?=
+ =?utf-8?B?YXdBM2psSEtqcXBMSnI3S3J0WU1UUTM3bEpHWWZvdXYrQXc1WVIyZXlSL2Z2?=
+ =?utf-8?B?NFZoTnFCaXUrcVEvejlRZDBuWmM3dk55bWNNU0diWVJ3bjg1RVp3dzk4aCt1?=
+ =?utf-8?B?SzVvYTFJalZMUE5ENkJNekdvR2N6YXc0djFJbC9iVXF2YVJkUVRzSjlPdktq?=
+ =?utf-8?B?dEI1UHZ4VG9LRmM0WU4rMWVBSlUzTlVuV0hJc3RHdlZIUFhickhVYm9DVTJS?=
+ =?utf-8?B?VFU5cG1JMEhhZjBSbEcwTDgwVEM1QzlyaEUyRDg1a2VKMHJUSXpxa1dJZ1B2?=
+ =?utf-8?B?UlZTam4xakowQXVGZHpKQk9GQ0YvRmIxY3EyU3dSaVdjdWNHalkvbnhyd2lq?=
+ =?utf-8?B?WGdOMHljKzNPZVJOa0k1eW5xbGJBL3RiQ0RKYWdBVzBHNzlhZ0hxZlJWemc1?=
+ =?utf-8?B?NXA0L0R3dXNNT1RFSXZOSHhIdDVlRVI3UWw0ZlRCNWMzMzRGWERRUE5rVE4v?=
+ =?utf-8?B?YnV1NlhDMTBxV2NkYjJqbEdCQUYrQ2NLbGx2cEpaclBubzlrdmFtTHcvVjVn?=
+ =?utf-8?B?ckhvNFh1Qi9vREJSOXdxNjJHUjV1T0haaS9QSFp5TjBheUFpZkNmVzA1bHZK?=
+ =?utf-8?B?THU5K0t2TERMeHh0NFIrZzRCbC94ZzlXWW5HUlNyREgvRzhHeTEwQndlWXl0?=
+ =?utf-8?B?MTZVVXE4b2lWbUhSRFByT3BOV1BEbm10WTRJTmFMRlBkc0RvdjNEUWRhT2RM?=
+ =?utf-8?B?TGVGN1lvRExPTWp4N3FiZXgwZG80SEdSd1BkRjdCV05uMTB6Ly9reDg1djQx?=
+ =?utf-8?B?Z2ExZzFxUU50bzc0cXlXRk51Y3ROZVBEVUNBeGNseHJsSmRVRXIvdXNlaVRo?=
+ =?utf-8?B?emZZNEg2d1IzaFBzei9pTHlYZ2ExUUxYeFpFN0t5THhBSlhjaHA5L0Y3enBE?=
+ =?utf-8?B?U0RaVThWVitsWVZubmtWeWIzWVA1Rnk2dmcxR0V6MXhhZ3g0TUpNUlpBNEdX?=
+ =?utf-8?B?Zkl3QmIrT3ppUURzMlBLRnZteGcwbmxlQW1pQ1g4cE9KWVUyaVN0RWFDS25C?=
+ =?utf-8?B?bTBxQ3FaT0FFOTg1dUtqSS8wRGZ1alhuRVZqVDFVNXNvMHI5TGtMano5bmh0?=
+ =?utf-8?B?RkhWM3d2dXIxWTl5dE5qTkEzbGlwZDdWTDgrZklobG9mVEJ3azd0WlZUVjkx?=
+ =?utf-8?B?cUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <986DF3C103195B4AB0EE2C6CE3986681@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 116594a9-50b0-46ad-11ed-08dad8b8639e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2022 01:06:08.2607
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: tf8kXcIOCLmBex3KkKGw0cgotkVLUjyk+eZ+ehNBkGJBciuh+3xFumrT1BPjZuGoyO/z86whvVTKt0Ic2EpSqQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7252
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_120721_680354_4800CB8D 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20221207_170700_029115_05E86214 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,259 +173,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for V3 generation thermal found in MT7986 and MT7981 SoCs.
-Brings code to assign values from efuse as well as new function to
-convert raw temperature to millidegree celsius, as found in MediaTek's
-SDK sources (but cleaned up and de-duplicated).
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-This patch depends on series
-"thermal: mediatek: Add support for MT8365 SoC"[1] being merged first.
-
-Changes since v2: Rebase on top of pending patch introducing
-raw_to_mcelsius function pointer.
-Drop left-over macro extracting the unused adc_oe field.
-Use switch (...) instead of if-else-if-else-... statements.
-For now, return -EINVAL as default in case of unknown version. Imho
-this should be BUG(), as this version is only defined within this
-driver.
-
-Changes since v1: Drop use of adc_oe field in efuse, Henry Yen
-confirmed its use has been dropped intentionally in MTK SDK as well.
-
-[1]: https://lore.kernel.org/linux-arm-kernel/4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org/T/
-
- drivers/thermal/mtk_thermal.c | 149 ++++++++++++++++++++++++++++++++--
- 1 file changed, 142 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index b1f4d19edd4f..4993ed6d3e21 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -151,6 +151,20 @@
- #define CALIB_BUF1_VALID_V2(x)		(((x) >> 4) & 0x1)
- #define CALIB_BUF1_O_SLOPE_SIGN_V2(x)	(((x) >> 3) & 0x1)
- 
-+/*
-+ * Layout of the fuses providing the calibration data
-+ * These macros can be used for MT7981 and MT7986.
-+ */
-+#define CALIB_BUF0_ADC_GE_V3(x)		(((x) >> 0) & 0x3ff)
-+#define CALIB_BUF0_DEGC_CALI_V3(x)	(((x) >> 20) & 0x3f)
-+#define CALIB_BUF0_O_SLOPE_V3(x)	(((x) >> 26) & 0x3f)
-+#define CALIB_BUF1_VTS_TS1_V3(x)	(((x) >> 0) & 0x1ff)
-+#define CALIB_BUF1_VTS_TS2_V3(x)	(((x) >> 21) & 0x1ff)
-+#define CALIB_BUF1_VTS_TSABB_V3(x)	(((x) >> 9) & 0x1ff)
-+#define CALIB_BUF1_VALID_V3(x)		(((x) >> 18) & 0x1)
-+#define CALIB_BUF1_O_SLOPE_SIGN_V3(x)	(((x) >> 19) & 0x1)
-+#define CALIB_BUF1_ID_V3(x)		(((x) >> 20) & 0x1)
-+
- enum {
- 	VTS1,
- 	VTS2,
-@@ -164,6 +178,7 @@ enum {
- enum mtk_thermal_version {
- 	MTK_THERMAL_V1 = 1,
- 	MTK_THERMAL_V2,
-+	MTK_THERMAL_V3,
- };
- 
- /* MT2701 thermal sensors */
-@@ -257,6 +272,27 @@ enum mtk_thermal_version {
- #define MT8365_TS2 1
- #define MT8365_TS3 2
- 
-+/* AUXADC channel 11 is used for the temperature sensors */
-+#define MT7986_TEMP_AUXADC_CHANNEL	11
-+
-+/* The total number of temperature sensors in the MT7986 */
-+#define MT7986_NUM_SENSORS		1
-+
-+/* The number of banks in the MT7986 */
-+#define MT7986_NUM_ZONES		1
-+
-+/* The number of sensing points per bank */
-+#define MT7986_NUM_SENSORS_PER_ZONE	1
-+
-+/* MT7986 thermal sensors */
-+#define MT7986_TS1			0
-+
-+/* The number of controller in the MT7986 */
-+#define MT7986_NUM_CONTROLLER		1
-+
-+/* The calibration coefficient of sensor  */
-+#define MT7986_CALIBRATION		165
-+
- struct mtk_thermal;
- 
- struct mtk_thermal_zone {
-@@ -426,6 +462,14 @@ static const int mt8365_tc_offset[MT8365_NUM_CONTROLLER] = { 0 };
- 
- static const int mt8365_vts_index[MT8365_NUM_SENSORS] = { VTS1, VTS2, VTS3 };
- 
-+/* MT7986 thermal sensor data */
-+static const int mt7986_bank_data[MT7986_NUM_SENSORS] = { MT7986_TS1, };
-+static const int mt7986_msr[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_MSR0, };
-+static const int mt7986_adcpnp[MT7986_NUM_SENSORS_PER_ZONE] = { TEMP_ADCPNP0, };
-+static const int mt7986_mux_values[MT7986_NUM_SENSORS] = { 0, };
-+static const int mt7986_vts_index[MT7986_NUM_SENSORS] = { VTS1 };
-+static const int mt7986_tc_offset[MT7986_NUM_CONTROLLER] = { 0x0, };
-+
- /*
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-  * four temperature sensors simultaneously. The MT8173 has a total of 5
-@@ -626,6 +670,30 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
- 	.version = MTK_THERMAL_V1,
- };
- 
-+/*
-+ * MT7986 uses AUXADC Channel 11 for raw data access.
-+ */
-+static const struct mtk_thermal_data mt7986_thermal_data = {
-+	.auxadc_channel = MT7986_TEMP_AUXADC_CHANNEL,
-+	.num_banks = MT7986_NUM_ZONES,
-+	.num_sensors = MT7986_NUM_SENSORS,
-+	.vts_index = mt7986_vts_index,
-+	.cali_val = MT7986_CALIBRATION,
-+	.num_controller = MT7986_NUM_CONTROLLER,
-+	.controller_offset = mt7986_tc_offset,
-+	.need_switch_bank = true,
-+	.bank_data = {
-+		{
-+			.num_sensors = 1,
-+			.sensors = mt7986_bank_data,
-+		},
-+	},
-+	.msr = mt7986_msr,
-+	.adcpnp = mt7986_adcpnp,
-+	.sensor_mux_values = mt7986_mux_values,
-+	.version = MTK_THERMAL_V3,
-+};
-+
- /**
-  * raw_to_mcelsius - convert a raw ADC value to mcelsius
-  * @mt:	The thermal controller
-@@ -680,6 +748,22 @@ static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw)
- 	return (format_2 - tmp) * 100;
- }
- 
-+static int raw_to_mcelsius_v3(struct mtk_thermal *mt, int sensno, s32 raw)
-+{
-+	s32 tmp;
-+
-+	if (raw == 0)
-+		return 0;
-+
-+	raw &= 0xfff;
-+	tmp = 100000 * 15 / 16 * 10000;
-+	tmp /= 4096 - 512 + mt->adc_ge;
-+	tmp /= 1490;
-+	tmp *= raw - mt->vts[sensno] - 2900;
-+
-+	return mt->degc_cali * 500 - tmp;
-+}
-+
- /**
-  * mtk_thermal_get_bank - get bank
-  * @bank:	The bank
-@@ -989,6 +1072,25 @@ static int mtk_thermal_extract_efuse_v2(struct mtk_thermal *mt, u32 *buf)
- 	return 0;
- }
- 
-+static int mtk_thermal_extract_efuse_v3(struct mtk_thermal *mt, u32 *buf)
-+{
-+	if (!CALIB_BUF1_VALID_V3(buf[1]))
-+		return -EINVAL;
-+
-+	mt->adc_ge = CALIB_BUF0_ADC_GE_V3(buf[0]);
-+	mt->degc_cali = CALIB_BUF0_DEGC_CALI_V3(buf[0]);
-+	mt->o_slope = CALIB_BUF0_O_SLOPE_V3(buf[0]);
-+	mt->vts[VTS1] = CALIB_BUF1_VTS_TS1_V3(buf[1]);
-+	mt->vts[VTS2] = CALIB_BUF1_VTS_TS2_V3(buf[1]);
-+	mt->vts[VTSABB] = CALIB_BUF1_VTS_TSABB_V3(buf[1]);
-+	mt->o_slope_sign = CALIB_BUF1_O_SLOPE_SIGN_V3(buf[1]);
-+
-+	if (CALIB_BUF1_ID_V3(buf[1]) == 0)
-+		mt->o_slope = 0;
-+
-+	return 0;
-+}
-+
- static int mtk_thermal_get_calibration_data(struct device *dev,
- 					    struct mtk_thermal *mt)
- {
-@@ -1024,10 +1126,23 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
- 		goto out;
- 	}
- 
--	if (mt->conf->version == MTK_THERMAL_V1)
-+	switch (mt->conf->version) {
-+	case MTK_THERMAL_V1:
- 		ret = mtk_thermal_extract_efuse_v1(mt, buf);
--	else
-+		break;
-+
-+	case MTK_THERMAL_V2:
- 		ret = mtk_thermal_extract_efuse_v2(mt, buf);
-+		break;
-+
-+	case MTK_THERMAL_V3:
-+		ret = mtk_thermal_extract_efuse_v3(mt, buf);
-+		break;
-+
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
- 
- 	if (ret) {
- 		dev_info(dev, "Device not calibrated, using default calibration values\n");
-@@ -1057,6 +1172,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
- 		.compatible = "mediatek,mt7622-thermal",
- 		.data = (void *)&mt7622_thermal_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt7986-thermal",
-+		.data = (void *)&mt7986_thermal_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8183-thermal",
- 		.data = (void *)&mt8183_thermal_data,
-@@ -1181,12 +1300,28 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		goto err_disable_clk_auxadc;
- 	}
- 
--	mtk_thermal_turn_on_buffer(mt, apmixed_base);
-+	switch (mt->conf->version) {
-+	case MTK_THERMAL_V1:
-+		mt->raw_to_mcelsius = raw_to_mcelsius_v1;
-+		break;
-+
-+	case MTK_THERMAL_V2:
-+		mt->raw_to_mcelsius = raw_to_mcelsius_v2;
-+		break;
- 
--	mt->raw_to_mcelsius = (mt->conf->version == MTK_THERMAL_V1) ?
--				raw_to_mcelsius_v1 : raw_to_mcelsius_v2;
-+	case MTK_THERMAL_V3:
-+		mt->raw_to_mcelsius = raw_to_mcelsius_v3;
-+		break;
-+
-+	default:
-+		ret = -EINVAL;
-+		goto err_disable_clk_peri_therm;
-+	}
-+
-+	mtk_thermal_turn_on_buffer(mt, apmixed_base);
- 
--	if (mt->conf->version == MTK_THERMAL_V2) {
-+	if (mt->conf->version == MTK_THERMAL_V2 ||
-+	    mt->conf->version == MTK_THERMAL_V3) {
- 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
- 	}
- 
--- 
-2.38.1
-
+T24gV2VkLCAyMDIyLTEyLTA3IGF0IDE4OjU2ICswMzAwLCBEYW4gQ2FycGVudGVyIHdyb3RlOg0K
+PiBUaGVyZSBpcyBhIHR5cG8gc28gdGhpcyBsb29wIGRvZXMgaSsrIHdoZXJlIGktLSB3YXMgaW50
+ZW5kZWQuICBJdA0KPiB3aWxsDQo+IHJlc3VsdCBpbiBsb29waW5nIHVudGlsIHRoZSBrZXJuZWwg
+Y3Jhc2hlcy4NCj4gDQo+IEZpeGVzOiAyNjU5MzkyODU2NGMgKCJpb21tdS9tZWRpYXRlazogQWRk
+IGVycm9yIHBhdGggZm9yIGxvb3Agb2YNCj4gbW1fZHRzX3BhcnNlIikNCj4gU2lnbmVkLW9mZi1i
+eTogRGFuIENhcnBlbnRlciA8ZXJyb3IyN0BnbWFpbC5jb20+DQoNClNvcnJ5IGZvciB0aGlzLg0K
+DQpSZXZpZXdlZC1ieTogWW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+DQoNClRoYW5rcyBE
+YW4uDQoNCj4gLS0tDQo+ICBkcml2ZXJzL2lvbW11L210a19pb21tdS5jIHwgMyArLS0NCj4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2lvbW11L210a19pb21tdS5jIGIvZHJpdmVycy9pb21tdS9tdGtfaW9t
+bXUuYw0KPiBpbmRleCAzZTQ2YmM4YjA3MTQuLjJiYWRkNmFjZmIyMyAxMDA2NDQNCj4gLS0tIGEv
+ZHJpdmVycy9pb21tdS9tdGtfaW9tbXUuYw0KPiArKysgYi9kcml2ZXJzL2lvbW11L210a19pb21t
+dS5jDQo+IEBAIC0xMTYwLDggKzExNjAsNyBAQCBzdGF0aWMgaW50IG10a19pb21tdV9tbV9kdHNf
+cGFyc2Uoc3RydWN0IGRldmljZQ0KPiAqZGV2LCBzdHJ1Y3QgY29tcG9uZW50X21hdGNoICoqbQ0K
+PiAgCXJldHVybiAwOw0KPiAgDQo+ICBlcnJfbGFyYmRldl9wdXQ6DQo+IC0JLyogaWQgbWF5IGJl
+IG5vdCBsaW5lYXIgbWFwcGluZywgbG9vcCB3aG9sZSB0aGUgYXJyYXkgKi8NCj4gLQlmb3IgKGkg
+PSBNVEtfTEFSQl9OUl9NQVggLSAxOyBpID49IDA7IGkrKykgew0KPiArCWZvciAoaSA9IE1US19M
+QVJCX05SX01BWCAtIDE7IGkgPj0gMDsgaS0tKSB7DQo+ICAJCWlmICghZGF0YS0+bGFyYl9pbXVb
+aV0uZGV2KQ0KPiAgCQkJY29udGludWU7DQo+ICAJCXB1dF9kZXZpY2UoZGF0YS0+bGFyYl9pbXVb
+aV0uZGV2KTsNCg==
 
