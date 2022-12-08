@@ -4,70 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C430C4708D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 03:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E8BC3A5A7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 03:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=txY5MK4YK0GdkIQqlL8fY68Njpf9qYv6U6ZRAgCAwJ0=; b=EollOwzPbYHyuNyDfTyq9zqKLb
-	2n8u6SswzD+1BUoGfEnEUqdmnkNVD6FTUtcP6mUBaD+mZ2dywcg+Jmm9W6hyn8+99AoXAwOdgalkZ
-	DK0Joyr6dp2GN+RlA3tvGWma7SW3UjX41fw95g8j7lTX6IcFqj5HB4LvK3MLi9J4rbJ52yDNaVQSb
-	hf2Dtkx9xvulmzHdKJwwEnUiHQHf5b/lZ+16wBK9zn7oL4qWb9i7svnEU1RaWAK9Op+75wcEJCxHw
-	to5zepfdAM4las33VLL0oNbuDCNyeFCaCNqkHN8W987fVJk1wnE7EvOXsmoJX5+9JAoXP9J9JOSyP
-	u8RRJ9OA==;
+	bh=wN4JD/GAEqVgMCVgXnqMQX7EyIMZ+Pm5XGYF0idyC9s=; b=PJKJ5LuC+mg2Qr24w3DVuH3V7O
+	Awtw2eWgonY2HbQSAokcEL1JcIxEGbfRGnNaOTEackN46ySZLY29r2RqW1V+WMFj4v7AkTxf2+8+x
+	jCQ061pMj3IdECsRez1bdJyl7RKc1cTkYA+e08JjCV23z7+wo9fWHXUwneUppScIFa6UD2FFEMwJ7
+	K1bKwH+Q4b10jsxAaZ8T1pLYk9f+549aVt/Z+JhqEiJA//7HQHTUNsY047z5nLnqo6He1cKZ5eDda
+	NPpXllpC0DJN7CmzUe7e8a9hGs5Y0IglCRtyGMlmOxyK6KBInmVZ4qKp8d/oZbXRQ3/0CRzkxwln8
+	SmvAegzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p37kr-0012Dl-88; Thu, 08 Dec 2022 03:39:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p37vT-001ACr-Vj; Thu, 08 Dec 2022 03:50:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p37gH-000yPZ-Sa; Thu, 08 Dec 2022 03:34:47 +0000
-X-UUID: 3856c6474ea2417e96a92e9c71e4775b-20221207
+	id 1p37vR-001A9P-9E
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 03:50:22 +0000
+X-UUID: df120ad7df7c433bb77ac389b9d199ef-20221207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=txY5MK4YK0GdkIQqlL8fY68Njpf9qYv6U6ZRAgCAwJ0=;
-	b=As4Es/uwBJps9hPott3ljnrn3Bqg3o+VY+3HO+d5vMlERGBG8kigZsPFtxS2j9LeFtnQMgEIp06dz5456XdSnsS7AQQvMN6oX/EM49mPZQ3ZQAIVgmG7tSvMypQ2qEb1Y86mJwFGlhclEhKmoD+qTa+BLDFaj5XniTuVNkVV+o0=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=wN4JD/GAEqVgMCVgXnqMQX7EyIMZ+Pm5XGYF0idyC9s=;
+	b=dCWr9sz7wsbE29X3TYaV0QVnVIgloBM3k/59YMgfYVv7EN/+vJhUYVlFraQiu2AWC9PutJT1BLQU+6XemgHG9MhNI4nod5VPHdXLBNFLS7X8fF7NX2cg0b94CgiQVGwKyttUH6REPB3WvF+l2LA1mjZk8Prl55BiVKqnuzHWj54=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:6a34a5cf-8702-4f44-846b-1d2f4136705b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.14,REQID:8552c821-99a5-477a-847c-8fecc395f81b,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:162ba524-4387-4253-a41d-4f6f2296b154,B
+X-CID-META: VersionHash:dcaaed0,CLOUDID:c852fad1-652d-43fd-a13a-a5dd3c69a43d,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3856c6474ea2417e96a92e9c71e4775b-20221207
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
+X-UUID: df120ad7df7c433bb77ac389b9d199ef-20221207
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1784159418; Wed, 07 Dec 2022 20:34:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1224522892; Wed, 07 Dec 2022 20:50:18 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Dec 2022 11:32:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 8 Dec 2022 11:32:13 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
-CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>
-Subject: [PATCH v3 04/12] ASoC: mediatek: mt8188: support adda in platform driver
-Date: Thu, 8 Dec 2022 11:31:40 +0800
-Message-ID: <20221208033148.21866-5-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221208033148.21866-1-trevor.wu@mediatek.com>
-References: <20221208033148.21866-1-trevor.wu@mediatek.com>
+ 15.2.792.15; Thu, 8 Dec 2022 10:59:44 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 8 Dec 2022 10:59:43 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=idfTrlFkdAT7RuTai/uWoqc9UZ0pcN0L4h7bZC5+/duHhMfKBEIcuVGJDSRy8yIGXKE0PJoLS7zXiLpkaYwb1LFhjTM5pLxMNzi+GOtL+mCnfLG+jL/nLoKWT78ibyDwob+m0Ehcrkrn6mNq3+sTS0fvHZmuU8u0OAkpFDm/6evDPIhgWK0jn27f2bf+ooukoR/stMYHDuNvs1qXs8UJKiUSey9BGETxst6e/rCA1D1pwhh4km4UOG7fI9S+UYCUxp8r2cpDJvG0yhGEoRspAU06epYBran6uYblP0mntQIZ/T8o67h8200QarPOr+/Tt1OOZbznnun0rBcCQaVSKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wN4JD/GAEqVgMCVgXnqMQX7EyIMZ+Pm5XGYF0idyC9s=;
+ b=KaD8RJzFC2UOvc4/WB2BwM2Zd4N4xnMqJDwn6VJ7NH+J50U02MPYVJ5rhwlBry/15bDW8PiGM9waHRVqLc9zRSexrBIH0v4R9IIVd6rjpv4Q1zX5vZ8Xc5HMEj+vw0WBmpuaVxkHlU3JTgkoX72WhhHEtpTg0mVN2frZo1jHoEcPr2L91E9hiuvIGi/5yzwPuMzvz1lzikRMF4aPj6aRGAnWQEmR47r7owhxJKnIz4eyD/TknOtcSLKujbPJpqftlHHqhd8RpjKshKfj7IvwiEY4fdG8T/c/JadLF90Eyb1kbmYCYxK2+/WzWVikhIPZSIR0GBNBKW2QhxSWyuCFUw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=wN4JD/GAEqVgMCVgXnqMQX7EyIMZ+Pm5XGYF0idyC9s=;
+ b=FfoJK2AZxhecsW4SBOGSJ99KGC7txqE1lUx8rNlyJYcDSGNVkKOpKAoPJqt5iymKW5rSSMRzd/H6UoUh6XNnXrLoYRxf7jwF+u+EM511X4KsvqvEsDArQBMMBvUTg9nt/XRNrkJj+7275HbG25W874wpInsCZXOtmPPM6OsUf1g=
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
+ by SI2PR03MB5563.apcprd03.prod.outlook.com (2603:1096:4:126::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.14; Thu, 8 Dec
+ 2022 02:59:39 +0000
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::19c4:ae14:8bec:3448]) by PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::19c4:ae14:8bec:3448%9]) with mapi id 15.20.5880.014; Thu, 8 Dec 2022
+ 02:59:39 +0000
+From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"avri.altman@wdc.com" <avri.altman@wdc.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, =?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
+	<stanley.chu@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+	"adrian.hunter@intel.com" <adrian.hunter@intel.com>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+	=?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	=?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+	=?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>, =?utf-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+	<Powen.Kao@mediatek.com>, =?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+	<Naomi.Chu@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+	<Qilin.Tan@mediatek.com>
+Subject: Re: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
+ recovery
+Thread-Topic: [PATCH v4] ufs: core: wlun suspend SSU/enter hibern8 fail
+ recovery
+Thread-Index: AQHZCSBmwUDmapEV8U2DywnZbmWqca5irU6AgACiqQA=
+Date: Thu, 8 Dec 2022 02:59:39 +0000
+Message-ID: <440e135732277e1cb12e688036325150e510b2f5.camel@mediatek.com>
+References: <20221206031109.10609-1-peter.wang@mediatek.com>
+	 <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
+In-Reply-To: <4ddd814b-c8ed-8ac8-710d-aa317882fdb1@intel.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|SI2PR03MB5563:EE_
+x-ms-office365-filtering-correlation-id: 2ae9a057-c160-440e-a0f0-08dad8c83f5b
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: C3BUZib0QXckiBERp9f+wdh55Js3P66BPg+JzZ5dEvH+W0mFAIhrDtkEUTFC+LZIuicbK/L+3oOwxgVfV1Xt9W+e1hipDmLtEapmxn448cQOocyTyBWdIjR3FL+VAtFNBIOOaOj5t5GQFuJiLyLVMOOTpfkpF/2s5js+pVeJl8t5DKjX0iApgxqx9O86S3bTqAwA+2/wZusBOZ+B2eUzvKrIyH0e/vQ+GVh1+f7iOq3+FGLlvPOlpPFjzj+m19hJU0qLM6GW66QIU8a/cSdfh/D4nBCjOWXml+unYw66Ga9u4gjLvnXAg+yZ5I5d3I+zvUEHWOGN7j0fRBD1mbHR35prtA0EOxrjuYOroeQuZWSzPUPRLeW9lh+6jEBkRUJ7mX8M0hqUfiL9RcNcZfT5vW73moKvMdJ+lGlMuCz0Y7iaN8O0/W5e/K8JHrn0KJ19ZnAUVz44XNn4Ts4AZNBm2PyHqaszKNnwO8zvGL7XyJGfsY0qpY38ot4Q4g4ePV8AZ/acTBw2s16y8dXBWVNg2clCwrdJjlJ1O799Uq4qRG5UlFA9Rc5sx4NCdRNrGr/72NP8wdzkFm02hAJ1qNVJ64U82JtcXwd0LHQFOKKGka58zfVwJ6rjEGj8FnDGlpF9RuJ/fDrPYFzf/BNns8ei6Q+Nhn7ZkfKTo3JZw8iqU0UEyMMbPX7BZdcfAClVO0jK2WQTxQSCU/jJ3Hai6gvZGrt9TEWjnNwmsW7SJg4njWo=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(396003)(376002)(39860400002)(346002)(136003)(451199015)(2616005)(83380400001)(186003)(6512007)(53546011)(26005)(6506007)(15650500001)(66446008)(122000001)(36756003)(66556008)(66476007)(85182001)(66946007)(8936002)(76116006)(64756008)(91956017)(38100700002)(107886003)(6486002)(478600001)(2906002)(38070700005)(5660300002)(71200400001)(41300700001)(4326008)(316002)(86362001)(54906003)(110136005)(8676002)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SEdNb2xzM1J4bUtHeS9wMEJQc3lBYnZ1TWJ5QkUzZDFlWFlULzVkQmt3TU1W?=
+ =?utf-8?B?QlM0UmpKVzBtVmp3VjBiMjFYSmxyUUVDZFVTMUNCOElEK21ZUUJLY0o0Z3NV?=
+ =?utf-8?B?NWhKZzlVYUFwNWRjTGJLUFRvQnZpSFo1ZzRTVkRKR2taaGFlNDJuUDBXV3g0?=
+ =?utf-8?B?L0ErclFFV3JJUjVTV0thbTBNSmhFNW1FVmZUQ3ZYV0JIRnFVWEJPSm1uQmYy?=
+ =?utf-8?B?Mm9yeXR0VEgrZ1V3YzdJSC9EUEVscjFmdERGRWRwenNMTisxT0h2bkMyQkxq?=
+ =?utf-8?B?dG1Fdlg4WDZZZlRBTHVDZzJhemtMNUwxRlNpcmt4WS8zVUt3bTQ0cWZPdFJu?=
+ =?utf-8?B?RHJoMFJkWlA0di9WTkdTNUJRWjJ6TnJBdENSTGJqdEdwc25qNTB1SHpvVEcr?=
+ =?utf-8?B?dTRTWVc2WUk0dGY1NEZQZ0Vid0lmM2hEVnc5MEN3eDJuSDlrSjhxTFlHWnRx?=
+ =?utf-8?B?cGQvKy9FMGdCN3NhN0g3U3JWZVNnSUZlTjd1eUg1YXdnNVgxWVZWbDNUNUZM?=
+ =?utf-8?B?MU1IMUcyMnFZa3pSYnpaYU5Lc0s0ZVE0SDV4Snl0eEsvTFNzb2laL1hya0Jn?=
+ =?utf-8?B?YXpLSUhneXNsWGtyaHhONStVcUNGcFVNM0JYSTlMM3lkdXpBSGs0QjlvUVdQ?=
+ =?utf-8?B?QmZ2ODY0Sk1yOXJSTTVMc2xVS3M1RXIrRk5Qb29DVFEwckIweUF3TThEcVp0?=
+ =?utf-8?B?WWZyK2xkZkJDbkZvRHNVTDJ3NVpjREo4Y2tweDIzbVVjYmw5bmtoaEtnL3VS?=
+ =?utf-8?B?bk1EUHZVWHR4Z29FMjQzOVFSUkZkRGtkYWhlM3JkYS9UMUdNamt2TjZCb3BB?=
+ =?utf-8?B?UE15TWFVU004djJ3ZENMU3YvNHVzbjRIbVZKd2RzL2hzK3MrdWZ6R1dibmFy?=
+ =?utf-8?B?VVkzcEljd0dlRFUrUmFZQkdjN3lWcXBJRjdMcmhPMGNCZ3R4M2U4S3NGN3hT?=
+ =?utf-8?B?RGFod2lnbXJNWm1lYW1uakJabTFiVldFanhjMlkvRGhXUTBmb0FpZERNRVpv?=
+ =?utf-8?B?emtCdlpUY1JQRHFkcjA1UEFJUkJCSjFZOWJWVFUyeWFJamYxbEQ5b2FSUndX?=
+ =?utf-8?B?cEJKbGEvVGxHMS9LZzhBdklCRk1zc3ZmcUFhVVI2NkNPTWxDcG5vMWNBbU1F?=
+ =?utf-8?B?OWFOMkUrVXVaSXBCS0txSmw1bzI2WnNtR29ML2UwNE1SZVBiZE54UVhQYWg3?=
+ =?utf-8?B?MkNGOTdSaVpkZUFDcXgxako0aFRTazhHblQyemljY0xOUnJPcE1FbUIzNTNy?=
+ =?utf-8?B?aSsvMlZSOUNpekRCU0ZobzA0bk9pY0xsdHBvRlIwR3lmSExab29ndWQ3VDVZ?=
+ =?utf-8?B?eWdZNjV5VXJSNHd0WTVhb3pBRlVpY2Z4K214THZNRWJtK0JWUGgxdVhWbkla?=
+ =?utf-8?B?enpoRm9IU2xld1dYd0NsQm9uSzBidUVkWlZNR1orcGpBYVdSN3ovOWYvdW54?=
+ =?utf-8?B?bU5STzZBeVFISjdwMGJIdXdhZlk0Y1d2ckdXODlJMFZWaUR0dzRrM2paY3Vx?=
+ =?utf-8?B?NUgybXQ4SHNzUUt5T0ZaTFFjTnNGK0F3Tm9BQ2JMQ05zZnZNKzRIRnNIUisy?=
+ =?utf-8?B?eFJDM3BqRTRnTVRGbFREMTJHbmh5ZGhQZERWV1dNTWxHMWhuVGQrcnk4YUxG?=
+ =?utf-8?B?VHZLaGlBNG9xczBYSERrVTB2WXFadkppeDNacDlTcDROVWtVTmRyb2hxR1Nw?=
+ =?utf-8?B?MElWRXc4SENEcjlNSm8wZytudzgyMFhHZXZHamc1K2xQRlJqc2VNcWlLQVF5?=
+ =?utf-8?B?VzU1ZmI0b1VlQU1yNm8yR3NOSGRKL2o4LzFGTmdRUDZBWEZSTzhjdUN1QUpM?=
+ =?utf-8?B?Nm14SUNKOWFNV2xFdmx0MnNpOUl1UXJRS2tlSmlhQUJJUFgvT2hTU0NUSjJo?=
+ =?utf-8?B?aGVLcEVPTXdQampLZzBWeHFFTGVlaVBsZ21jR1dyZGJITVVmQThkL0xYMlhw?=
+ =?utf-8?B?bjJrMWJxd0ZxeForeXJjRGJoWjdWR3A2Rmhla2ozeExuYnZIV0Fodk5CRTQ5?=
+ =?utf-8?B?SFVjSzVuMUFXMGRadHhCMittN0hUUWJsQTE3RTdwaTlIbHYzWSthcElwRVdw?=
+ =?utf-8?B?MU5ETmFLdytpQzNxZDAzc0diaHY2QmYzeEJhUlVYRGhtZGdGQlFNR2xqQ1ov?=
+ =?utf-8?B?SHJCazZUa3A3eHJFSWF6Q25GeGROdll3WVprOTBpRXNMN1o5Vi9EK0hobi9I?=
+ =?utf-8?B?T3c9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <63AE6B94BFE8D14A84A955AC146A0530@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ae9a057-c160-440e-a0f0-08dad8c83f5b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2022 02:59:39.3749
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: vVuHOTU6CIO7ov5BgaPrkDoymaAWS/j6dYpsVZIfBdV6TwztfeK4bgqrXSW1scGF61a6LDSX/4mJIhzqY+e8fw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5563
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221207_193442_258935_F4E54C1B 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20221207_195021_401243_BBB9D509 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,656 +189,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8188 adda dai driver support.
-
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
-I don't add Reviewed-by tag because one new header file is included
-in the patch to resolve compiling issue found by kernel test robot.
----
- sound/soc/mediatek/mt8188/mt8188-dai-adda.c | 632 ++++++++++++++++++++
- 1 file changed, 632 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-
-diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-new file mode 100644
-index 000000000000..2f3080ff9e21
---- /dev/null
-+++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
-@@ -0,0 +1,632 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek ALSA SoC Audio DAI ADDA Control
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
-+ *         Trevor Wu <trevor.wu@mediatek.com>
-+ *         Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/delay.h>
-+#include <linux/regmap.h>
-+#include "mt8188-afe-clk.h"
-+#include "mt8188-afe-common.h"
-+#include "mt8188-reg.h"
-+
-+#define ADDA_HIRES_THRES 48000
-+
-+enum {
-+	SUPPLY_SEQ_CLOCK_SEL,
-+	SUPPLY_SEQ_ADDA_DL_ON,
-+	SUPPLY_SEQ_ADDA_MTKAIF_CFG,
-+	SUPPLY_SEQ_ADDA_UL_ON,
-+	SUPPLY_SEQ_ADDA_AFE_ON,
-+};
-+
-+enum {
-+	MTK_AFE_ADDA_DL_RATE_8K = 0,
-+	MTK_AFE_ADDA_DL_RATE_11K = 1,
-+	MTK_AFE_ADDA_DL_RATE_12K = 2,
-+	MTK_AFE_ADDA_DL_RATE_16K = 3,
-+	MTK_AFE_ADDA_DL_RATE_22K = 4,
-+	MTK_AFE_ADDA_DL_RATE_24K = 5,
-+	MTK_AFE_ADDA_DL_RATE_32K = 6,
-+	MTK_AFE_ADDA_DL_RATE_44K = 7,
-+	MTK_AFE_ADDA_DL_RATE_48K = 8,
-+	MTK_AFE_ADDA_DL_RATE_96K = 9,
-+	MTK_AFE_ADDA_DL_RATE_192K = 10,
-+};
-+
-+enum {
-+	MTK_AFE_ADDA_UL_RATE_8K = 0,
-+	MTK_AFE_ADDA_UL_RATE_16K = 1,
-+	MTK_AFE_ADDA_UL_RATE_32K = 2,
-+	MTK_AFE_ADDA_UL_RATE_48K = 3,
-+	MTK_AFE_ADDA_UL_RATE_96K = 4,
-+	MTK_AFE_ADDA_UL_RATE_192K = 5,
-+};
-+
-+enum {
-+	DELAY_DATA_MISO1 = 0,
-+	DELAY_DATA_MISO0 = 1,
-+};
-+
-+struct mtk_dai_adda_priv {
-+	unsigned int dl_rate;
-+	unsigned int ul_rate;
-+};
-+
-+static unsigned int afe_adda_dl_rate_transform(struct mtk_base_afe *afe,
-+					       unsigned int rate)
-+{
-+	switch (rate) {
-+	case 8000:
-+		return MTK_AFE_ADDA_DL_RATE_8K;
-+	case 11025:
-+		return MTK_AFE_ADDA_DL_RATE_11K;
-+	case 12000:
-+		return MTK_AFE_ADDA_DL_RATE_12K;
-+	case 16000:
-+		return MTK_AFE_ADDA_DL_RATE_16K;
-+	case 22050:
-+		return MTK_AFE_ADDA_DL_RATE_22K;
-+	case 24000:
-+		return MTK_AFE_ADDA_DL_RATE_24K;
-+	case 32000:
-+		return MTK_AFE_ADDA_DL_RATE_32K;
-+	case 44100:
-+		return MTK_AFE_ADDA_DL_RATE_44K;
-+	case 48000:
-+		return MTK_AFE_ADDA_DL_RATE_48K;
-+	case 96000:
-+		return MTK_AFE_ADDA_DL_RATE_96K;
-+	case 192000:
-+		return MTK_AFE_ADDA_DL_RATE_192K;
-+	default:
-+		dev_info(afe->dev, "%s(), rate %d invalid, use 48kHz!!!\n",
-+			 __func__, rate);
-+		return MTK_AFE_ADDA_DL_RATE_48K;
-+	}
-+}
-+
-+static unsigned int afe_adda_ul_rate_transform(struct mtk_base_afe *afe,
-+					       unsigned int rate)
-+{
-+	switch (rate) {
-+	case 8000:
-+		return MTK_AFE_ADDA_UL_RATE_8K;
-+	case 16000:
-+		return MTK_AFE_ADDA_UL_RATE_16K;
-+	case 32000:
-+		return MTK_AFE_ADDA_UL_RATE_32K;
-+	case 48000:
-+		return MTK_AFE_ADDA_UL_RATE_48K;
-+	case 96000:
-+		return MTK_AFE_ADDA_UL_RATE_96K;
-+	case 192000:
-+		return MTK_AFE_ADDA_UL_RATE_192K;
-+	default:
-+		dev_info(afe->dev, "%s(), rate %d invalid, use 48kHz!!!\n",
-+			 __func__, rate);
-+		return MTK_AFE_ADDA_UL_RATE_48K;
-+	}
-+}
-+
-+static int mt8188_adda_mtkaif_init(struct mtk_base_afe *afe)
-+{
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-+	int delay_data;
-+	int delay_cycle;
-+	unsigned int mask = 0;
-+	unsigned int val = 0;
-+
-+	/* set rx protocol 2 & mtkaif_rxif_clkinv_adc inverse */
-+	regmap_set_bits(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
-+			MTKAIF_RXIF_CLKINV_ADC | MTKAIF_RXIF_PROTOCOL2);
-+
-+	regmap_set_bits(afe->regmap, AFE_AUD_PAD_TOP, RG_RX_PROTOCOL2);
-+
-+	if (!param->mtkaif_calibration_ok) {
-+		dev_info(afe->dev, "%s(), calibration fail\n",  __func__);
-+		return 0;
-+	}
-+
-+	/* set delay for ch1, ch2 */
-+	if (param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] >=
-+	    param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1]) {
-+		delay_data = DELAY_DATA_MISO1;
-+		delay_cycle =
-+			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] -
-+			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1];
-+	} else {
-+		delay_data = DELAY_DATA_MISO0;
-+		delay_cycle =
-+			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] -
-+			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0];
-+	}
-+
-+	val = 0;
-+	mask = (MTKAIF_RXIF_DELAY_DATA | MTKAIF_RXIF_DELAY_CYCLE_MASK);
-+	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_CYCLE_MASK, delay_cycle);
-+	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_DATA, delay_data);
-+	regmap_update_bits(afe->regmap, AFE_ADDA_MTKAIF_RX_CFG2, mask, val);
-+
-+	return 0;
-+}
-+
-+static int mtk_adda_mtkaif_cfg_event(struct snd_soc_dapm_widget *w,
-+				     struct snd_kcontrol *kcontrol,
-+				     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-+		__func__, w->name, event);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		mt8188_adda_mtkaif_init(afe);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_adda_dl_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+
-+	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-+		__func__, w->name, event);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_POST_PMD:
-+		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
-+		usleep_range(125, 135);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_adda_ul_mictype(struct mtk_base_afe *afe, bool dmic)
-+{
-+	unsigned int reg = AFE_ADDA_UL_SRC_CON0;
-+	unsigned int val;
-+
-+	val = (UL_SDM3_LEVEL_CTL | UL_MODE_3P25M_CH1_CTL |
-+	       UL_MODE_3P25M_CH2_CTL);
-+
-+	/* turn on dmic, ch1, ch2 */
-+	if (dmic)
-+		regmap_set_bits(afe->regmap, reg, val);
-+	else
-+		regmap_clear_bits(afe->regmap, reg, val);
-+}
-+
-+static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
-+			     struct snd_kcontrol *kcontrol,
-+			     int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-+
-+	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-+		__func__, w->name, event);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		mtk_adda_ul_mictype(afe, param->mtkaif_dmic_on);
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
-+		usleep_range(125, 135);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_audio_hires_event(struct snd_soc_dapm_widget *w,
-+				 struct snd_kcontrol *kcontrol,
-+				 int event)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk = afe_priv->clk[MT8188_CLK_TOP_AUDIO_H_SEL];
-+	struct clk *clk_parent;
-+
-+	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
-+		__func__, w->name, event);
-+
-+	switch (event) {
-+	case SND_SOC_DAPM_PRE_PMU:
-+		clk_parent = afe_priv->clk[MT8188_CLK_TOP_APLL1];
-+		break;
-+	case SND_SOC_DAPM_POST_PMD:
-+		clk_parent = afe_priv->clk[MT8188_CLK_XTAL_26M];
-+		break;
-+	default:
-+		return 0;
-+	}
-+	mt8188_afe_set_clk_parent(afe, clk, clk_parent);
-+
-+	return 0;
-+}
-+
-+static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
-+				     struct snd_soc_dapm_widget *sink)
-+{
-+	struct snd_soc_dapm_widget *w = source;
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_adda_priv *adda_priv;
-+
-+	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
-+
-+	if (!adda_priv) {
-+		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
-+		return 0;
-+	}
-+
-+	return !!(adda_priv->ul_rate > ADDA_HIRES_THRES);
-+}
-+
-+static int mtk_afe_dac_hires_connect(struct snd_soc_dapm_widget *source,
-+				     struct snd_soc_dapm_widget *sink)
-+{
-+	struct snd_soc_dapm_widget *w = source;
-+	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_adda_priv *adda_priv;
-+
-+	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
-+
-+	if (!adda_priv) {
-+		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
-+		return 0;
-+	}
-+
-+	return !!(adda_priv->dl_rate > ADDA_HIRES_THRES);
-+}
-+
-+static const struct snd_kcontrol_new mtk_dai_adda_o176_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I000 Switch", AFE_CONN176, 0, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I002 Switch", AFE_CONN176, 2, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I020 Switch", AFE_CONN176, 20, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I022 Switch", AFE_CONN176, 22, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I070 Switch", AFE_CONN176_2, 6, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new mtk_dai_adda_o177_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I001 Switch", AFE_CONN177, 1, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I003 Switch", AFE_CONN177, 3, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I021 Switch", AFE_CONN177, 21, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I023 Switch", AFE_CONN177, 23, 1, 0),
-+	SOC_DAPM_SINGLE_AUTODISABLE("I071 Switch", AFE_CONN177_2, 7, 1, 0),
-+};
-+
-+static const char * const adda_dlgain_mux_map[] = {
-+	"Bypass", "Connect",
-+};
-+
-+static SOC_ENUM_SINGLE_DECL(adda_dlgain_mux_map_enum,
-+			    SND_SOC_NOPM, 0,
-+			    adda_dlgain_mux_map);
-+
-+static const struct snd_kcontrol_new adda_dlgain_mux_control =
-+	SOC_DAPM_ENUM("DL_GAIN_MUX", adda_dlgain_mux_map_enum);
-+
-+static const struct snd_soc_dapm_widget mtk_dai_adda_widgets[] = {
-+	SND_SOC_DAPM_MIXER("I168", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_MIXER("I169", SND_SOC_NOPM, 0, 0, NULL, 0),
-+
-+	SND_SOC_DAPM_MIXER("O176", SND_SOC_NOPM, 0, 0,
-+			   mtk_dai_adda_o176_mix,
-+			   ARRAY_SIZE(mtk_dai_adda_o176_mix)),
-+	SND_SOC_DAPM_MIXER("O177", SND_SOC_NOPM, 0, 0,
-+			   mtk_dai_adda_o177_mix,
-+			   ARRAY_SIZE(mtk_dai_adda_o177_mix)),
-+
-+	SND_SOC_DAPM_SUPPLY_S("ADDA Enable", SUPPLY_SEQ_ADDA_AFE_ON,
-+			      AFE_ADDA_UL_DL_CON0,
-+			      ADDA_AFE_ON_SHIFT, 0,
-+			      NULL,
-+			      0),
-+
-+	SND_SOC_DAPM_SUPPLY_S("ADDA Playback Enable", SUPPLY_SEQ_ADDA_DL_ON,
-+			      AFE_ADDA_DL_SRC2_CON0,
-+			      DL_2_SRC_ON_TMP_CTRL_PRE_SHIFT, 0,
-+			      mtk_adda_dl_event,
-+			      SND_SOC_DAPM_POST_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY_S("ADDA Capture Enable", SUPPLY_SEQ_ADDA_UL_ON,
-+			      AFE_ADDA_UL_SRC_CON0,
-+			      UL_SRC_ON_TMP_CTL_SHIFT, 0,
-+			      mtk_adda_ul_event,
-+			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY_S("AUDIO_HIRES", SUPPLY_SEQ_CLOCK_SEL,
-+			      SND_SOC_NOPM,
-+			      0, 0,
-+			      mtk_audio_hires_event,
-+			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
-+
-+	SND_SOC_DAPM_SUPPLY_S("ADDA_MTKAIF_CFG", SUPPLY_SEQ_ADDA_MTKAIF_CFG,
-+			      SND_SOC_NOPM,
-+			      0, 0,
-+			      mtk_adda_mtkaif_cfg_event,
-+			      SND_SOC_DAPM_PRE_PMU),
-+
-+	SND_SOC_DAPM_MUX("DL_GAIN_MUX", SND_SOC_NOPM, 0, 0,
-+			 &adda_dlgain_mux_control),
-+
-+	SND_SOC_DAPM_PGA("DL_GAIN", AFE_ADDA_DL_SRC2_CON0,
-+			 DL_2_GAIN_ON_CTL_PRE_SHIFT, 0, NULL, 0),
-+
-+	SND_SOC_DAPM_INPUT("ADDA_INPUT"),
-+	SND_SOC_DAPM_OUTPUT("ADDA_OUTPUT"),
-+
-+	SND_SOC_DAPM_CLOCK_SUPPLY("aud_dac"),
-+	SND_SOC_DAPM_CLOCK_SUPPLY("aud_adc"),
-+	SND_SOC_DAPM_CLOCK_SUPPLY("aud_dac_hires"),
-+	SND_SOC_DAPM_CLOCK_SUPPLY("aud_adc_hires"),
-+};
-+
-+static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
-+	{"ADDA Capture", NULL, "ADDA Enable"},
-+	{"ADDA Capture", NULL, "ADDA Capture Enable"},
-+	{"ADDA Capture", NULL, "ADDA_MTKAIF_CFG"},
-+	{"ADDA Capture", NULL, "aud_adc"},
-+	{"ADDA Capture", NULL, "aud_adc_hires", mtk_afe_adc_hires_connect},
-+	{"aud_adc_hires", NULL, "AUDIO_HIRES"},
-+
-+	{"I168", NULL, "ADDA Capture"},
-+	{"I169", NULL, "ADDA Capture"},
-+
-+	{"ADDA Playback", NULL, "ADDA Enable"},
-+	{"ADDA Playback", NULL, "ADDA Playback Enable"},
-+	{"ADDA Playback", NULL, "aud_dac"},
-+	{"ADDA Playback", NULL, "aud_dac_hires", mtk_afe_dac_hires_connect},
-+	{"aud_dac_hires", NULL, "AUDIO_HIRES"},
-+
-+	{"DL_GAIN", NULL, "O176"},
-+	{"DL_GAIN", NULL, "O177"},
-+
-+	{"DL_GAIN_MUX", "Bypass", "O176"},
-+	{"DL_GAIN_MUX", "Bypass", "O177"},
-+	{"DL_GAIN_MUX", "Connect", "DL_GAIN"},
-+
-+	{"ADDA Playback", NULL, "DL_GAIN_MUX"},
-+
-+	{"O176", "I000 Switch", "I000"},
-+	{"O177", "I001 Switch", "I001"},
-+
-+	{"O176", "I002 Switch", "I002"},
-+	{"O177", "I003 Switch", "I003"},
-+
-+	{"O176", "I020 Switch", "I020"},
-+	{"O177", "I021 Switch", "I021"},
-+
-+	{"O176", "I022 Switch", "I022"},
-+	{"O177", "I023 Switch", "I023"},
-+
-+	{"O176", "I070 Switch", "I070"},
-+	{"O177", "I071 Switch", "I071"},
-+
-+	{"ADDA Capture", NULL, "ADDA_INPUT"},
-+	{"ADDA_OUTPUT", NULL, "ADDA Playback"},
-+};
-+
-+static int mt8188_adda_dmic_get(struct snd_kcontrol *kcontrol,
-+				struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-+
-+	ucontrol->value.integer.value[0] = param->mtkaif_dmic_on;
-+	return 0;
-+}
-+
-+static int mt8188_adda_dmic_set(struct snd_kcontrol *kcontrol,
-+				struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-+	int dmic_on;
-+
-+	dmic_on = !!ucontrol->value.integer.value[0];
-+
-+	dev_dbg(afe->dev, "%s(), kcontrol name %s, dmic_on %d\n",
-+		__func__, kcontrol->id.name, dmic_on);
-+
-+	if (param->mtkaif_dmic_on == dmic_on)
-+		return 0;
-+
-+	param->mtkaif_dmic_on = dmic_on;
-+	return 1;
-+}
-+
-+static const struct snd_kcontrol_new mtk_dai_adda_controls[] = {
-+	SOC_SINGLE("ADDA_DL_GAIN", AFE_ADDA_DL_SRC2_CON1,
-+		   DL_2_GAIN_CTL_PRE_SHIFT, 65535, 0),
-+	SOC_SINGLE_BOOL_EXT("MTKAIF_DMIC Switch", 0,
-+			    mt8188_adda_dmic_get, mt8188_adda_dmic_set),
-+};
-+
-+static int mtk_dai_da_configure(struct mtk_base_afe *afe,
-+				unsigned int rate, int id)
-+{
-+	unsigned int val = 0;
-+	unsigned int mask = 0;
-+
-+	/* set sampling rate */
-+	mask |= DL_2_INPUT_MODE_CTL_MASK;
-+	val |= FIELD_PREP(DL_2_INPUT_MODE_CTL_MASK,
-+			  afe_adda_dl_rate_transform(afe, rate));
-+
-+	/* turn off saturation */
-+	mask |= DL_2_CH1_SATURATION_EN_CTL;
-+	mask |= DL_2_CH2_SATURATION_EN_CTL;
-+
-+	/* turn off mute function */
-+	mask |= DL_2_MUTE_CH1_OFF_CTL_PRE;
-+	mask |= DL_2_MUTE_CH2_OFF_CTL_PRE;
-+	val |= DL_2_MUTE_CH1_OFF_CTL_PRE;
-+	val |= DL_2_MUTE_CH2_OFF_CTL_PRE;
-+
-+	/* set voice input data if input sample rate is 8k or 16k */
-+	mask |= DL_2_VOICE_MODE_CTL_PRE;
-+	if (rate == 8000 || rate == 16000)
-+		val |= DL_2_VOICE_MODE_CTL_PRE;
-+
-+	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, mask, val);
-+
-+	/* new 2nd sdm */
-+	regmap_set_bits(afe->regmap, AFE_ADDA_DL_SDM_DCCOMP_CON,
-+			DL_USE_NEW_2ND_SDM);
-+
-+	return 0;
-+}
-+
-+static int mtk_dai_ad_configure(struct mtk_base_afe *afe,
-+				unsigned int rate, int id)
-+{
-+	unsigned int val;
-+	unsigned int mask;
-+
-+	mask = UL_VOICE_MODE_CTL_MASK;
-+	val = FIELD_PREP(UL_VOICE_MODE_CTL_MASK,
-+			 afe_adda_ul_rate_transform(afe, rate));
-+
-+	regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0,
-+			   mask, val);
-+	return 0;
-+}
-+
-+static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
-+				  struct snd_pcm_hw_params *params,
-+				  struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_adda_priv *adda_priv = afe_priv->dai_priv[dai->id];
-+	unsigned int rate = params_rate(params);
-+	int id = dai->id;
-+	int ret = 0;
-+
-+	dev_dbg(afe->dev, "%s(), id %d, stream %d, rate %d\n",
-+		__func__, id, substream->stream, rate);
-+
-+	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-+		adda_priv->dl_rate = rate;
-+		ret = mtk_dai_da_configure(afe, rate, id);
-+	} else {
-+		adda_priv->ul_rate = rate;
-+		ret = mtk_dai_ad_configure(afe, rate, id);
-+	}
-+
-+	return ret;
-+}
-+
-+static const struct snd_soc_dai_ops mtk_dai_adda_ops = {
-+	.hw_params = mtk_dai_adda_hw_params,
-+};
-+
-+/* dai driver */
-+#define MTK_ADDA_PLAYBACK_RATES (SNDRV_PCM_RATE_8000_48000 |\
-+				 SNDRV_PCM_RATE_96000 |\
-+				 SNDRV_PCM_RATE_192000)
-+
-+#define MTK_ADDA_CAPTURE_RATES (SNDRV_PCM_RATE_8000 |\
-+				SNDRV_PCM_RATE_16000 |\
-+				SNDRV_PCM_RATE_32000 |\
-+				SNDRV_PCM_RATE_48000 |\
-+				SNDRV_PCM_RATE_96000 |\
-+				SNDRV_PCM_RATE_192000)
-+
-+#define MTK_ADDA_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			  SNDRV_PCM_FMTBIT_S24_LE |\
-+			  SNDRV_PCM_FMTBIT_S32_LE)
-+
-+static struct snd_soc_dai_driver mtk_dai_adda_driver[] = {
-+	{
-+		.name = "ADDA",
-+		.id = MT8188_AFE_IO_ADDA,
-+		.playback = {
-+			.stream_name = "ADDA Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_ADDA_PLAYBACK_RATES,
-+			.formats = MTK_ADDA_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "ADDA Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_ADDA_CAPTURE_RATES,
-+			.formats = MTK_ADDA_FORMATS,
-+		},
-+		.ops = &mtk_dai_adda_ops,
-+	},
-+};
-+
-+static int init_adda_priv_data(struct mtk_base_afe *afe)
-+{
-+	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_adda_priv *adda_priv;
-+
-+	adda_priv = devm_kzalloc(afe->dev, sizeof(struct mtk_dai_adda_priv),
-+				 GFP_KERNEL);
-+	if (!adda_priv)
-+		return -ENOMEM;
-+
-+	afe_priv->dai_priv[MT8188_AFE_IO_ADDA] = adda_priv;
-+
-+	return 0;
-+}
-+
-+int mt8188_dai_adda_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+
-+	dai->dai_drivers = mtk_dai_adda_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_adda_driver);
-+
-+	dai->dapm_widgets = mtk_dai_adda_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_adda_widgets);
-+	dai->dapm_routes = mtk_dai_adda_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_adda_routes);
-+	dai->controls = mtk_dai_adda_controls;
-+	dai->num_controls = ARRAY_SIZE(mtk_dai_adda_controls);
-+
-+	return init_adda_priv_data(afe);
-+}
--- 
-2.18.0
-
+T24gV2VkLCAyMDIyLTEyLTA3IGF0IDE5OjE3ICswMjAwLCBBZHJpYW4gSHVudGVyIHdyb3RlOg0K
+PiBPbiA2LzEyLzIyIDA1OjExLCBwZXRlci53YW5nQG1lZGlhdGVrLmNvbSB3cm90ZToNCj4gPiBG
+cm9tOiBQZXRlciBXYW5nIDxwZXRlci53YW5nQG1lZGlhdGVrLmNvbT4NCj4gPiANCj4gPiBXaGVu
+IFNTVS9lbnRlciBoaWJlcm44IGZhaWwgaW4gd2x1biBzdXNwZW5kIGZsb3csIHRyaWdnZXIgZXJy
+b3INCj4gPiBoYW5kbGVyIGFuZCByZXR1cm4gYnVzeSB0byBicmVhayB0aGUgc3VzcGVuZC4NCj4g
+PiBJZiBub3QsIHdsdW4gcnVudGltZSBwbSBzdGF0dXMgYmVjb21lIGVycm9yIGFuZCB0aGUgY29u
+c3VtZXIgd2lsbA0KPiA+IHN0dWNrIGluIHJ1bnRpbWUgc3VzcGVuZCBzdGF0dXMuDQo+ID4gDQo+
+ID4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgV2FuZyA8cGV0ZXIud2FuZ0BtZWRpYXRlay5jb20+DQo+
+IA0KPiBTaG91bGQgdGhpcyBoYXZlIGEgRml4ZXMgb3Igc3RhYmxlIHRhZz8NCj4gDQoNCkhpIEFk
+cmlhbiwNCg0KWWVzLCB3aWxsIGFkZCBGaXhlcyB0YWcuIA0KVGhhbmtzIGZvciByZW1pbmRlci4N
+Cg0KDQo+IEFub3RoZXIgbWlub3IgY29tbWVudCBiZWxvdywgb3RoZXJ3aXNlOg0KPiANCj4gUmV2
+aWV3ZWQtYnk6IEFkcmlhbiBIdW50ZXIgPGFkcmlhbi5odW50ZXJAaW50ZWwuY29tPg0KPiANCj4g
+PiAtLS0NCj4gPiAgZHJpdmVycy91ZnMvY29yZS91ZnNoY2QuYyB8IDI2ICsrKysrKysrKysrKysr
+KysrKysrKysrKysrDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspDQo+ID4g
+DQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdWZzL2NvcmUvdWZzaGNkLmMgYi9kcml2ZXJzL3Vm
+cy9jb3JlL3Vmc2hjZC5jDQo+ID4gaW5kZXggYjFmNTlhNWZlNjMyLi45OGYxMDVmMzI4NzcgMTAw
+NjQ0DQo+ID4gLS0tIGEvZHJpdmVycy91ZnMvY29yZS91ZnNoY2QuYw0KPiA+ICsrKyBiL2RyaXZl
+cnMvdWZzL2NvcmUvdWZzaGNkLmMNCj4gPiBAQCAtOTA0OSw2ICs5MDQ5LDE5IEBAIHN0YXRpYyBp
+bnQgX191ZnNoY2Rfd2xfc3VzcGVuZChzdHJ1Y3QNCj4gPiB1ZnNfaGJhICpoYmEsIGVudW0gdWZz
+X3BtX29wIHBtX29wKQ0KPiA+ICANCj4gPiAgCQlpZiAoIWhiYS0+ZGV2X2luZm8uYl9ycG1fZGV2
+X2ZsdXNoX2NhcGFibGUpIHsNCj4gPiAgCQkJcmV0ID0gdWZzaGNkX3NldF9kZXZfcHdyX21vZGUo
+aGJhLA0KPiA+IHJlcV9kZXZfcHdyX21vZGUpOw0KPiA+ICsJCQlpZiAocmV0ICYmIHBtX29wICE9
+IFVGU19TSFVURE9XTl9QTSkgew0KPiA+ICsJCQkJLyoNCj4gPiArCQkJCSAqIElmIHJldHVybiBl
+cnIgaW4gc3VzcGVuZCBmbG93LCBJTw0KPiA+IHdpbGwgaGFuZy4NCj4gPiArCQkJCSAqIFRyaWdn
+ZXIgZXJyb3IgaGFuZGxlciBhbmQgYnJlYWsNCj4gPiBzdXNwZW5kIGZvcg0KPiA+ICsJCQkJICog
+ZXJyb3IgcmVjb3ZlcnkuDQo+ID4gKwkJCQkgKi8NCj4gPiArCQkJCXNwaW5fbG9ja19pcnEoaGJh
+LT5ob3N0LT5ob3N0X2xvY2spOw0KPiA+ICsJCQkJaGJhLT5mb3JjZV9yZXNldCA9IHRydWU7DQo+
+ID4gKwkJCQl1ZnNoY2Rfc2NoZWR1bGVfZWhfd29yayhoYmEpOw0KPiA+ICsJCQkJc3Bpbl91bmxv
+Y2tfaXJxKGhiYS0+aG9zdC0+aG9zdF9sb2NrKTsNCj4gPiArDQo+ID4gKwkJCQlyZXQgPSAtRUJV
+U1k7DQo+ID4gKwkJCX0NCj4gPiAgCQkJaWYgKHJldCkNCj4gPiAgCQkJCWdvdG8gZW5hYmxlX3Nj
+YWxpbmc7DQo+ID4gIAkJfQ0KPiA+IEBAIC05MDYwLDYgKzkwNzMsMTkgQEAgc3RhdGljIGludCBf
+X3Vmc2hjZF93bF9zdXNwZW5kKHN0cnVjdA0KPiA+IHVmc19oYmEgKmhiYSwgZW51bSB1ZnNfcG1f
+b3AgcG1fb3ApDQo+ID4gIAkgKi8NCj4gPiAgCWNoZWNrX2Zvcl9ia29wcyA9ICF1ZnNoY2RfaXNf
+dWZzX2Rldl9kZWVwc2xlZXAoaGJhKTsNCj4gPiAgCXJldCA9IHVmc2hjZF9saW5rX3N0YXRlX3Ry
+YW5zaXRpb24oaGJhLCByZXFfbGlua19zdGF0ZSwNCj4gPiBjaGVja19mb3JfYmtvcHMpOw0KPiA+
+ICsJaWYgKHJldCAmJiBwbV9vcCAhPSBVRlNfU0hVVERPV05fUE0pIHsNCj4gPiArCQkvKg0KPiA+
+ICsJCSAqIElmIHJldHVybiBlcnIgaW4gc3VzcGVuZCBmbG93LCBJTyB3aWxsIGhhbmcuDQo+ID4g
+KwkJICogVHJpZ2dlciBlcnJvciBoYW5kbGVyIGFuZCBicmVhayBzdXNwZW5kIGZvcg0KPiA+ICsJ
+CSAqIGVycm9yIHJlY292ZXJ5Lg0KPiA+ICsJCSAqLw0KPiA+ICsJCXNwaW5fbG9ja19pcnEoaGJh
+LT5ob3N0LT5ob3N0X2xvY2spOw0KPiA+ICsJCWhiYS0+Zm9yY2VfcmVzZXQgPSB0cnVlOw0KPiA+
+ICsJCXVmc2hjZF9zY2hlZHVsZV9laF93b3JrKGhiYSk7DQo+ID4gKwkJc3Bpbl91bmxvY2tfaXJx
+KGhiYS0+aG9zdC0+aG9zdF9sb2NrKTsNCj4gDQo+IFNhbWUgNCBsaW5lcyBvZiBjb2RlIGNvdWxk
+IGJlIHNlcGFyYXRlZCBpbnRvIGEgaGVscGVyIGZ1bmN0aW9uLg0KDQpPSywgd2lsbCBjaGFuZ2Ug
+bmV4dCB2ZXJzaW9uLg0KVGhhbmtzIGZvciByZXZpZXcuDQoNCj4gDQo+ID4gKw0KPiA+ICsJCXJl
+dCA9IC1FQlVTWTsNCj4gPiArCX0NCj4gPiAgCWlmIChyZXQpDQo+ID4gIAkJZ290byBzZXRfZGV2
+X2FjdGl2ZTsNCj4gPiAgDQo+IA0KPiANCg==
 
