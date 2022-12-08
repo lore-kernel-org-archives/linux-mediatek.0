@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD110C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 16:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AFDDC63708
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 16:31:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h77EcyzmHrKVFjoWMhSpWChgCbULzYbCN7M8zPTR4Iw=; b=rUyBe0TQjVEwsssdOstuXmQoWx
-	2E0cD0FzvqnpPsDrX9bLu2AEXuRpBAWBvubIqq1iN3lF57UG/MrV3SzqlmOAz63GzcYg6OXX/BmVN
-	pL6f0UGD/r75EDGEeGpECz04SkRC9sAydCKynYO+KeyMFzr9HZv0Wj/2vK+kae79j5fcOFhVXIVdL
-	ew4O7jZjbv9QLcZ0RFJWOLCpi1cK6x75ahcmrsAXX8pA4cUktc/3HjDj4OAlrmP/fWZMEWspXZKtJ
-	/QqqZLqdfimaLJ0wWBfw+cZV94B71qk1hyWE9VcOB417qhqvg9XUZyjHfO4FguDq4/2VYSJGo1CB7
-	IM47TiXg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4YM8esfRUJI66AUcHAfU4GRcLBt7unfApTHLgo4eQjI=; b=HNFlmq+HyTqbc9LLB2aYlgemyC
+	htDXvSoMl9KDeY/3Tgw+ydNXaEtoksfsBpwxBppN4Y1Ny47K4Q0rcfztjrlRndDlqG4ubRjKKEzAK
+	RgQZ+ZCH+Fzcz/jUIoP8V2M9+oVyIoZ00NL95jmMTFWaYfVd6jvlgQQIzc1r04+i0AE3VXZjuz5KL
+	Qbbt7dncVDA8rBhcWcVE4b2MkAxd+Ht3khihy8N2yDZsCCl35moPqEd8ku3skex54a4xwYnIFHa7t
+	5abij9ejaWEJlqnx2dKsVXL0FYai55aTtiuy8gEUUm78/ttOseEyzP9XGBT1ncqgvKB0Gl4KAbtbV
+	WKtJ/K8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3JoG-005FEs-VO; Thu, 08 Dec 2022 16:31:44 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1p3JoJ-005FHF-27; Thu, 08 Dec 2022 16:31:47 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3IrG-003Ucy-00
+	id 1p3IrG-003Ud3-03
 	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 15:30:50 +0000
-Received: by mail-wr1-x432.google.com with SMTP id d1so2017226wrs.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 07:30:44 -0800 (PST)
+Received: by mail-wr1-x42c.google.com with SMTP id w15so2023561wrl.9
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 07:30:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=h77EcyzmHrKVFjoWMhSpWChgCbULzYbCN7M8zPTR4Iw=;
-        b=QgAChH6txpKBJOTvAjnQBz3MysBSBiOnM5ttfAOm8LpwpJ97PQJ8EmkR9SCHMcabT5
-         vFh5XmCYpbB+uyotqBwdWN/MV12wGjYu8sIXBvteNu+qwwGqg0RqxMVYrkL5Fmg42D1s
-         Vw+s0On6BlcqG3i2ZEvuWQSAeVxXYNlWqYa/QUL1I4JOu9okydOJVcxTtaAYC/qlTHkz
-         It0ii48J1VnQLMQ2PG5qZ3buHA11R5HeBQvTIk2Ef8EvtW9FwRuae4juJ42ocUPuIBQf
-         xzNMtHlxR9shDDM4GT1gkvEEFCsqKJvfwposyXsLOnwkhrWXSsf2Q2BMgKQqw41O6pJC
-         16gw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4YM8esfRUJI66AUcHAfU4GRcLBt7unfApTHLgo4eQjI=;
+        b=pie0o9goXLxTxFDA4wcDy1QkVwL1bOKcv7mDRQAf3WeuYm3BAAAlDpu+FU0MBZcybk
+         k8avyESThu3slr+rgSsV6dR1RvPy7V06I8Vm49srfp6xJvvo1CeRz8+RqyjgFVkq8fGv
+         Lt8X3emhtDcbXvkbErRRYlG4gW4rF0WUKg992gH677fkHXcsCAiGWjNyd4Sa0N1pSAfb
+         J1K/Ul2U+sU1MLlcXBjkDWdzoYHC6AQitcuixVlM2fhkfLJ1fOC0pl9gM9mZOmeFVW2z
+         KwEk9Wm1bPMZNqLGSK5Uthq9wxcSRzsp4kRWXWUA02ehd0GpA49xJn+TY2jhJ0txBh7N
+         /teQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=h77EcyzmHrKVFjoWMhSpWChgCbULzYbCN7M8zPTR4Iw=;
-        b=xmlep+p9JwcCMEwRjXxVyVcOeCsXcQgKinI9nGiw8CwgbohycWlmz1mmfO/dJy27By
-         tf9NdnOexNKOzxaepjZ4mW2mpwaKeuIxRH0N3XjYhseQj8ZzEWxe0oWbISO9u6fVsoOl
-         wfmaH5vTfXPoegeb7o/BTtKwHKLiOmuO2UhGak4glY2RtUuJp9V6cn/6QtT6r2vl3U/w
-         NHirt9ZP6vV0q0Nqm5v1mdBsxKCZdYosCuMYMB1spi+Gl6cIMlafR47/eFxE/mBJnCFR
-         s1EBz/75ktuEPWm9Z333dgit/BO5L/FsN7fN+CbHtRL1g2vjj4Zolm7vYaYDz6Hh5ngf
-         Qhdg==
-X-Gm-Message-State: ANoB5plF5BNY4dIzxg6pDj0rM2K1zI1eVbiDqoIfb9u+1lM3XYEjVMfo
-	yCvAIZA9r9Eh6A6z48uEnf7YGGLvh2k3+I6uaWWAoA==
-X-Google-Smtp-Source: AA0mqf5K5q5nQ3njTNZN5t/9f0Vch718YFsJMVTBQEXPX4bIWOp+q5Hl1/ug4qvyMu45VA6losj1Tg==
-X-Received: by 2002:adf:dc4b:0:b0:242:149:9f0b with SMTP id m11-20020adfdc4b000000b0024201499f0bmr1682892wrj.55.1670513442704;
-        Thu, 08 Dec 2022 07:30:42 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4YM8esfRUJI66AUcHAfU4GRcLBt7unfApTHLgo4eQjI=;
+        b=wSROg3nBGuwLywYfe7aJm9eoARFvXFB1lUs/rmG3uUDIbRjIf9zVRBi+j3Oikoj94P
+         A4v9oI63QO4zP1mgGNWRb4VlC9wlcdPc3DWZRy6g2FgtN+HeqCp2ir7jP00Rskw24cfM
+         5Es1lNaDTqMAP7fr3jiXNgxHHTzmWj2Hzbdu4lqNTBNZA6k5xkz+9lbQhKPODv8A1oQL
+         XhI359TyCtFCpWLrzDuG9MHQJgUwp76zE9StaTcmP9NE5yz3qmbnY55RhnLmZRwGAaJa
+         JqslWp7E9JoU6Q/kDvlzroZSAgkWzHtQWhNrC35NQfu8mrhlXDTvIzf01wxsLyNIHVbZ
+         qM2A==
+X-Gm-Message-State: ANoB5pnwc4REQdzd8DABCyWYQ3UAa+HfCptL9/shZ3RGYsbT1wemwLpI
+	zRmzVGfX4HaWCsuWMbBvPnjRRPfHiN2elN7JfzGe8A==
+X-Google-Smtp-Source: AA0mqf6GZP9OH5wdGjbihY7E5o2kNENG7XJO2LlCOF0ySSKsJ5o9aJAkw7mGbagi4uWcljWa5J/rOw==
+X-Received: by 2002:a05:6000:1d84:b0:236:3686:797 with SMTP id bk4-20020a0560001d8400b0023636860797mr1652958wrb.65.1670513444313;
+        Thu, 08 Dec 2022 07:30:44 -0800 (PST)
 Received: from predatorhelios.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id h10-20020a5d504a000000b002366553eca7sm10673239wrt.83.2022.12.08.07.30.41
+        by smtp.gmail.com with ESMTPSA id h10-20020a5d504a000000b002366553eca7sm10673239wrt.83.2022.12.08.07.30.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Dec 2022 07:30:42 -0800 (PST)
+        Thu, 08 Dec 2022 07:30:43 -0800 (PST)
 From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
 To: linux-mediatek@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -69,16 +70,19 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
 	khilman@baylibre.com
-Subject: [PATCH v4 0/7] Add minimal MT8365 and MT8365-EVK support
-Date: Thu,  8 Dec 2022 16:30:33 +0100
-Message-Id: <20221208153041.3965378-1-bero@baylibre.com>
+Subject: [PATCH v4 2/7] dt-bindings: irq: mtk, sysirq: add support for mt8365
+Date: Thu,  8 Dec 2022 16:30:35 +0100
+Message-Id: <20221208153041.3965378-3-bero@baylibre.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221208153041.3965378-1-bero@baylibre.com>
+References: <20221208153041.3965378-1-bero@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_073046_405228_8DE58BE5 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20221208_073046_409791_27D4F6A8 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,52 +97,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds minimal support for the MediaTek 8365 SOC and the EVK reference
-board, allowing the board to boot to initramfs with serial port I/O.
+Add binding documentation of mediatek,sysirq for mt8365 SoC.
 
-v4:
-  - Remove pins-are-numbered references that have been holding things up
-    now that the patches removing it from dt-bindings have landed in linux-next
+Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-v3:
-  - Remove a number of components that are not yet supported (they will
-    come back alongside the corresponding drivers)
-  - Address issues found by dt_binding_check (mostly fixing pinctrl
-    bindings)
-  - Address issues pointed out in comments
-  - Reorder patches
-
-v2:
-  - Add missing dt-bindings documentation
-  - Small cleanups addressing issues in v1 pointed out by Krzysztof Kozlowski
-
-
-
-Bernhard Rosenkränzer (4):
-  dt-bindings: arm64: dts: mediatek: Add mt8365-evk board
-  dt-bindings: irq: mtk, sysirq: add support for mt8365
-  dt-bindings: mfd: syscon: Add mt8365-syscfg
-  dt-bindings: pinctrl: add bindings for Mediatek MT8365 SoC
-
-Fabien Parent (3):
-  dt-bindings: usb: mediatek,mtu3: add MT8365 SoC bindings
-  dt-bindings: usb: mediatek,mtk-xhci: add MT8365 SoC bindings
-  arm64: dts: mediatek: Initial mt8365-evk support
-
- .../devicetree/bindings/arm/mediatek.yaml     |   4 +
- .../interrupt-controller/mediatek,sysirq.txt  |   1 +
- .../devicetree/bindings/mfd/syscon.yaml       |   1 +
- .../pinctrl/mediatek,mt8365-pinctrl.yaml      | 197 ++++++++++
- .../bindings/usb/mediatek,mtk-xhci.yaml       |   1 +
- .../bindings/usb/mediatek,mtu3.yaml           |   1 +
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts   | 163 +++++++++
- arch/arm64/boot/dts/mediatek/mt8365.dtsi      | 343 ++++++++++++++++++
- 9 files changed, 712 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
-
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+index 84ced3f4179b9..3ffc60184e445 100644
+--- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
++++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+@@ -25,6 +25,7 @@ Required properties:
+ 	"mediatek,mt6577-sysirq": for MT6577
+ 	"mediatek,mt2712-sysirq", "mediatek,mt6577-sysirq": for MT2712
+ 	"mediatek,mt2701-sysirq", "mediatek,mt6577-sysirq": for MT2701
++	"mediatek,mt8365-sysirq", "mediatek,mt6577-sysirq": for MT8365
+ - interrupt-controller : Identifies the node as an interrupt controller
+ - #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
+ - reg: Physical base address of the intpol registers and length of memory
 -- 
 2.38.1
 
