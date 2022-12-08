@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DD3C3A5A7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 08:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4806FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 08:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hRfgBclvpC2u/WluoxsI9AaZOh5CYYIc1QgqvETO66g=; b=w0Ya5ElEdv4TaTsK9PHlqMZ4uJ
-	ClHVVhzU/IY2qwmCrkb/SjCrWo+Q8ISdZRckWMgYoId0J+QrXtBh6pt+2Th7pC20cGIf2DEyzKrhg
-	1dodqHDXSJRSquqX+NDCBXprOLjSLI4+pDb4B02qWiPIDNn8IQ7azBAl+uelSMwflRy6Mt2p3Inkb
-	xdJ67l/bKWBa8F72cjwAfD0yTHxgptGA8a+qu/gDCO924MgCqUsHZbTjZwvFKIPgIUeM1LmEErrec
-	wqkkqDWyBbSvsx3BPUgQFeWkO47a8zRduX3bc2iFMBPx/UuXn+fJvgsXVqIhq3sewUEaxClp4LPxz
-	i0aBxQRA==;
+	bh=MQH5Uo0nZFf6VyuebjjssC83hb0ljjUFvuvb3HDCZtM=; b=DpLuM7l5KCJIW/nD2o5VlrG9XY
+	0dW5oqQpvMr7t6axPulLfukoBq134IysUXwf2v0Uy2TSHiZ1ZxpK+sjUmlxP0YgGwwdIraih17a9H
+	cQeZ0aWKhMydMqvvppM+SG9dDu5DTPtJhnGAbWjmwazHVhUxX4P6xCnpKpJsNf6Qij0fpIKajGIGK
+	XEJQeR2EjpP/UqPweBOCq6Ivfo0sFm/AquE3HG1ZbhTumWLy0uMb25W0L9OrL0JoodDdnX1/CEInB
+	BmXwI6nZwMLgSou2blOK+acjFMczIOo+tqxERm7VqgB+LW3Zg6uMu0WL2OSLQ06jHjEyosGeG3pa+
+	bgQJHLAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3CW7-00AFNA-Mc; Thu, 08 Dec 2022 08:44:31 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p3CWt-00AG8Y-AC; Thu, 08 Dec 2022 08:45:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3CW4-00AFGm-LV
-	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 08:44:30 +0000
+	id 1p3CWC-00AFRH-Hh
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 08:44:38 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E8954B822E6;
-	Thu,  8 Dec 2022 08:44:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6652C433C1;
-	Thu,  8 Dec 2022 08:44:24 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E26CA61DEB;
+	Thu,  8 Dec 2022 08:44:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE68DC433C1;
+	Thu,  8 Dec 2022 08:44:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670489065;
-	bh=2YEakhHt3jTQkyImWYHVRYLy3q29iNcp/+rDAHl+koQ=;
+	s=k20201202; t=1670489075;
+	bh=4Od5jI8PP500Ivc1x21S6isQvmmiJ54/ylxZPILU1lY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=g2PKy7GBtil9gXKTSA3GRIOWGL6tjJCmD/jKvkqA3x4InT+BWk2P6vqZDnS248Fbt
-	 GamaAN4Bz6UoOAj8qtp7vZRgfpW9Wr5oPmMpr4XzUOE3HxqTTVlpfOe2cWsUZ6MPQq
-	 fvA88IvYnIolTVJZGIW3KykN/JKVwQ15Jm1QU9JwvhTxSth9r0PLlkDFrEQ+f4QNi6
-	 vKHbCBAYYDdEoxiZZiHxo0NY7bOC0Y9WN13FGw5FZZ+kvPqNqhgjpkbR0INg0kA9VM
-	 6oBfw9A1aUaKYkGqkd4mp8Kx59o7sLth+Z0LEWprm0irDaklZ6sVYZl9fj2ekO1MW7
-	 q5MReQeqi5qhg==
-Date: Thu, 8 Dec 2022 10:44:21 +0200
+	b=cmB/sB3DU7qzYDJnJoXLMtdOhnXa8m0HkNwDuQTxzbp97f9LMuKI64O1BFjt/4Y1L
+	 /7+azhbxTWvouwuGFMcEBkv371HModImESN8OTSvPxMi4+woRM9eyvHEAZltBMoN7n
+	 eAaJoHY28gociiIkmWEbOQjpGat6A/eulpaKNYYzQQLEIkvYLXFgwxWIa97p8LBQgj
+	 /XiTZQ4C/pu7db1KCPLxiBRS2oKVMyf/QLbea0kEXKbpJFcxFzO5ik+k/fGummT1Pg
+	 XmYxtSIE52SL6tV7Skfr8elLXJVjp87PUhw+YtFlosiCMsB2WY9cbr4lCpTOpZp2o/
+	 AUc4k+3Mwqlvw==
+Date: Thu, 8 Dec 2022 10:44:31 +0200
 From: Leon Romanovsky <leon@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
@@ -51,18 +51,18 @@ Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
 	pabeni@redhat.com, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
 	sujuan.chen@mediatek.com
-Subject: Re: [PATCH v3 net-next 1/2] net: ethernet: mtk_wed: fix some
- possible NULL pointer dereferences
-Message-ID: <Y5Gj5fgVmQLRdorx@unreal>
+Subject: Re: [PATCH v3 net-next 2/2] net: ethernet: mtk_wed: fix possible
+ deadlock if mtk_wed_wo_init fails
+Message-ID: <Y5Gj7y0412M9zNpD@unreal>
 References: <cover.1670421354.git.lorenzo@kernel.org>
- <44cba2491b6dd1a64d0e8099efbab836e6758490.1670421354.git.lorenzo@kernel.org>
+ <b28b55a639002a56b77c0651a4122ebede041936.1670421354.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <44cba2491b6dd1a64d0e8099efbab836e6758490.1670421354.git.lorenzo@kernel.org>
+In-Reply-To: <b28b55a639002a56b77c0651a4122ebede041936.1670421354.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_004428_893342_E26C50CB 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20221208_004436_682008_190F99C9 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,22 +77,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 07, 2022 at 03:04:54PM +0100, Lorenzo Bianconi wrote:
-> Fix possible NULL pointer dereference in mtk_wed_detach routine checking
-> wo pointer is properly allocated before running mtk_wed_wo_reset() and
-> mtk_wed_wo_deinit().
-> Even if it is just a theoretical issue at the moment check wo pointer is
-> not NULL in mtk_wed_mcu_msg_update.
-> Moreover, honor mtk_wed_mcu_send_msg return value in mtk_wed_wo_reset()
+On Wed, Dec 07, 2022 at 03:04:55PM +0100, Lorenzo Bianconi wrote:
+> Introduce __mtk_wed_detach() in order to avoid a deadlock in
+> mtk_wed_attach routine if mtk_wed_wo_init fails since both
+> mtk_wed_attach and mtk_wed_detach run holding hw_lock mutex.
 > 
-> Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
 > Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  drivers/net/ethernet/mediatek/mtk_wed.c     | 13 ++++++++-----
->  drivers/net/ethernet/mediatek/mtk_wed_mcu.c |  3 +++
->  2 files changed, 11 insertions(+), 5 deletions(-)
+>  drivers/net/ethernet/mediatek/mtk_wed.c | 17 ++++++++++++-----
+>  1 file changed, 12 insertions(+), 5 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> index 4ef23eadd69e..a6271449617f 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -577,12 +577,10 @@ mtk_wed_deinit(struct mtk_wed_device *dev)
+>  }
+>  
 
 Thanks,
 Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
