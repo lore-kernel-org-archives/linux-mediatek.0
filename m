@@ -4,107 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E17C63705
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 08:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9154C3A5A7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Dec 2022 09:48:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oeN4tbC8QYcjeXtnRCV0L0VBx1w71ZeUSLmAb6QYLH4=; b=fhf5a9KyggCbABpcaZl6PCIYSv
-	Q7UU8qEnI0QTK7+3gkGR08RO/44RuUQRqG3xrpvGdhgWADiGuk8vZdOZdXXORKdOKjFRJZZHGIsIv
-	fGTMrSjRlUQ2irDUIvDBvjhin/aYjDapGQF3M0BcvUdegB1cjVd0ETO/o8y6nvuTkD0UFM+cW9DUT
-	hhG779hVawA9Y1y3vcMSqemwQ9YD8MnLDXKKf/Y8RVY/PXBkwkQNphCuaMLvseHBhuO/QZEbLs06o
-	UfeORgqkTXmZKbhKOtGNOTuA+WkOK3cdBAs/P7rWIsbW0Me7M/Vrz+fZjhnp0cOJ+5cV8wBbSa7DK
-	u2SqRPIQ==;
+	bh=tR+f/+3nybjrz985QuJTlkfFuvKyHlsK8G2EHEYD21M=; b=VcSJONYBQ69yGzQ9Qm/RfjnUuV
+	FhCoQDlkc2PV9NXGhk2fCbGiY8yylYwapLrHIrKhkQEiIOQadQXyoEtAtj4PuMtWAESj0xZekM6Bm
+	ems3z2rQuCUNtTIsLaVhJWsqKvKfijGhKsWWeU9m5JJIB6CsjEApIiRUun20Rheb44PxiEFBNgsa1
+	amkLCnU0vuBhQqfqWX3zo6TXeDDacluxfffYkxXdT+oJH7leBVTliV+uelxKAbkVRODTTOutX2eNg
+	//k2hGyUkZnJ+wQULhmHq3k0PytfTLPQzy5uqr1SDIGt3y43hwYQY2+TgjWzqlZwLSis64wZZo8lJ
+	k/CxEwyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Cfc-00APuq-Qf; Thu, 08 Dec 2022 08:54:20 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1p3DVW-00BCP6-6s; Thu, 08 Dec 2022 09:47:58 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3CY4-00AHqj-Sj
-	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 08:46:34 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id bn5so832724ljb.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 00:46:30 -0800 (PST)
+	id 1p3DS3-00B8ZS-9r
+	for linux-mediatek@lists.infradead.org; Thu, 08 Dec 2022 09:44:25 +0000
+Received: by mail-lf1-x129.google.com with SMTP id bp15so1166068lfb.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Dec 2022 01:44:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=oeN4tbC8QYcjeXtnRCV0L0VBx1w71ZeUSLmAb6QYLH4=;
-        b=qH4NqlWKo3zt47ik7YIU7kmdLYYcvVcO6GSKeDJl6/FJDRKqjaKiZ20t70P3vsf5en
-         um9WTdmrMn0KhBo63A72CPiffEesD3chqRklTOKElHTQ4s2trN/3Zm/GF/By4MdxhqXm
-         vTax0XL5x02hgxffuacSJPfnFtYy1DvGMzk6aVd3SLy/vM3Z4lW1GnG1m1FEag5ta2Bt
-         tN2HRl85CSq/83+XNMmD1hS0qu5Fx0fsLwFanA2YLaQTzAro8a+h4HLCDwuHXsVqFNcQ
-         sVBatq/pAHSSUMeH0R140l91GO9ceAMmsmEfvL/YNTrKlK3EX3zbBaPSvJRI4gFdX93x
-         Gtww==
+        bh=tR+f/+3nybjrz985QuJTlkfFuvKyHlsK8G2EHEYD21M=;
+        b=NvP+hneTcrJLq5aKAbWBlzRJJD/2srJe9IAT/Pq2hUX9OAuJ1vz01KfcttkSjfGWq6
+         MkVQq1uw8kaTQSnVB8uX4rSsEPLC1n/PxH/go/ginVJgW0kAhDGkoNoRs1nCQHSk4/ck
+         94ktgccj6TDjOHMk+TlN+wvvuCtzqnhdW7+fA1IExI/sPZyyW9qQ4IwDE45IaqKWgC1L
+         fz0+PgDy6EuN18RY7i+dTcRX5m1e/rFaC7S5djIFlmkXMFDMfb3lBRwtf1W/F9Vre7Gh
+         5Y9A7wMqnRq2lIyDogonPN6I6vu4NSaPH0jxR54Lwuur/QSXC6XPAOQghUC7UTeLNFms
+         ZW0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oeN4tbC8QYcjeXtnRCV0L0VBx1w71ZeUSLmAb6QYLH4=;
-        b=LYAcGDoU9o28UwzIFzymX2pel3NnyMJnO+Y297GJVR5+ZUfawp2G6g5ktiVyitrj8o
-         dDAmIBd48n8HI3Vx7tyPjaHBBknWIKfKX13po5Hmb8hHiJEocaHs6D8fK99ndqVWu/Iw
-         +YQoPRNIYT+K/pvqJIqjEbcilK003eto+SMCw7eIXLseLneqoHTEQbqApld91qnFcbHh
-         7lx99Pl6hJQjN/dbpyZZKUNlbstM63hbAHJMyAT2dwcxClA4XhQWdu34T7bh5FgnLbQX
-         Sp3BvkIHfcEojXZ3rEAQdZaJZjz7bH022h/qSL+T/QPK85HJXwij4LTN0veu06C+lJ28
-         652A==
-X-Gm-Message-State: ANoB5pnPZQ7S5SGHVdymOwrlKB1LB2G+eCu4KeUUpsRv4x2iBlkUx9GW
-	Tg62t4gOsfUVRU4ddqn3ByKP7WZtWyLY42/PfWE=
-X-Google-Smtp-Source: AA0mqf4oyc9MWULxVZ5mmTZx6NmoFsEfusvnFxRcT6pk965wUtiV7p7TVZN0HGcgHbu3gYT4dV3T2A==
-X-Received: by 2002:a05:651c:50f:b0:279:dbb8:4549 with SMTP id o15-20020a05651c050f00b00279dbb84549mr8910987ljp.79.1670489188855;
-        Thu, 08 Dec 2022 00:46:28 -0800 (PST)
+        bh=tR+f/+3nybjrz985QuJTlkfFuvKyHlsK8G2EHEYD21M=;
+        b=0Qnu5U5skZI+Q8XLKQbEx2p+tNlnum0T8UFYN1sa04QOQLh9hJVP45n195YuIqmkpV
+         E66YksF/rR/hH5PuDIDLTEOWPCaZ4K7V4DvI/7ULQcHfiPbxL8PQwjUVppnAhAqhcIMv
+         mb+meexCEJhlFEAKCBl0jajNW+F1SPl/7ut9CqPmsqDqKbh6MN85r3VBOrJmlYjPj6+H
+         Iv7+TQdJ49PXZUc4x/Iecabn6yfTp0r0BiviCsIdB60z8RuC+E80htCCnqAp+1oJthoG
+         fxqA9+G2KCtG9gb6Plu6UBXIJTxKzQy73/N8FGxaiXNGbWSgS2M3/b1T8uXh+LZoG7YU
+         QZFg==
+X-Gm-Message-State: ANoB5pmTa/NLnq++yaD/zuJk0ivuvap0fb1YQqRm1usbMqIZx2J4pIt/
+	Gb6+G5gY5tFH667G2J11HEu9aA==
+X-Google-Smtp-Source: AA0mqf77vkoDAk7e+na4oDIjnlgURFAAvORsW7EKDtnaXGZNkHzBFx7iahF6vIP8MxlwXav31qtCag==
+X-Received: by 2002:a05:6512:31c5:b0:4a2:3ca7:3a44 with SMTP id j5-20020a05651231c500b004a23ca73a44mr26614010lfe.23.1670492659337;
+        Thu, 08 Dec 2022 01:44:19 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id m18-20020a194352000000b004b55ca53543sm2169721lfj.233.2022.12.08.00.46.27
+        by smtp.gmail.com with ESMTPSA id d23-20020a194f17000000b0049482adb3basm3257906lfb.63.2022.12.08.01.44.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Dec 2022 00:46:28 -0800 (PST)
-Message-ID: <d5f58e82-2644-3e16-f27a-de72ed8ab74d@linaro.org>
-Date: Thu, 8 Dec 2022 09:46:26 +0100
+        Thu, 08 Dec 2022 01:44:18 -0800 (PST)
+Message-ID: <fe70d964-229a-8bda-a414-e009dd955e5e@linaro.org>
+Date: Thu, 8 Dec 2022 10:44:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v2 7/9] dt-bindings: spi: mtk-snfi: Add read latch latency
- property
+Subject: Re: [PATCH v3 7/9] dt-bindings: mtd: Split ECC engine with rawnand
+ controller
 Content-Language: en-US
-To: =?UTF-8?B?WGlhbmdzaGVuZyBIb3UgKOS+r+elpeiDnCk=?=
- <Xiangsheng.Hou@mediatek.com>,
- "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "gch981213@gmail.com" <gch981213@gmail.com>,
- "vigneshr@ti.com" <vigneshr@ti.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, "richard@nod.at" <richard@nod.at>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?=
- <Benliang.Zhao@mediatek.com>,
- "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>
-References: <20221205065756.26875-1-xiangsheng.hou@mediatek.com>
- <20221205065756.26875-8-xiangsheng.hou@mediatek.com>
- <ce449a0c-efcc-0ac1-fb8e-c2b4148a5bc1@collabora.com>
- <a8f706b37f5decf91bfa9a9ac8cf04be4346dd85.camel@mediatek.com>
- <9992c9a5-059a-9396-32ce-7ed63cd12a96@collabora.com>
- <e2ccf42f94152ccacad3a2eaec234ae0566474ec.camel@mediatek.com>
- <b877af37-462e-c923-41c0-09c370062700@collabora.com>
- <97408c484927b6520ec79b23220496d628156e5f.camel@mediatek.com>
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+References: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
+ <20221208062955.2546-8-xiangsheng.hou@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <97408c484927b6520ec79b23220496d628156e5f.camel@mediatek.com>
+In-Reply-To: <20221208062955.2546-8-xiangsheng.hou@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221208_004632_963980_48E20B9C 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221208_014423_372342_FBB4F983 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,34 +102,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/12/2022 02:15, Xiangsheng Hou (侯祥胜) wrote:
->>>
->>> There have two rx related timing properties in spi-peripheral-
->>> props.
->>> The rx-sample-delay-ns have been used in Mediatek snfi driver to
->>> adjust
->>> controller sample delay.
->>> However another spi-rx-delay-us is in microseconds. Take 52MHz for
->>> example, the clock cycle will be 19.23ns which lower than 1us. This
->>> may
->>> not easy to by one clock cycle.
->>>
->>
->> I agree, but nothing prevents you from adding your own property for
->> that.
->>
->> I propose "mediatek,rx-latch-latency-ns" or "mediatek,rx-latency-ns", 
->> so that
->> we can specify the delay in nanoseconds: in that case, when we
->> specify 19ns,
->> the driver will safely round that resulting in 52MHz == 19.23ns =>
->> 19ns valid.
+On 08/12/2022 07:29, Xiangsheng Hou wrote:
+> Split MediaTek ECC engine with rawnand controller and convert to
+> YAML schema.
 > 
-> Will be fixed in next series.
+> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> ---
+>  .../bindings/mtd/mediatek,mtk-nfc.yaml        | 154 +++++++++++++++
+>  .../mtd/mediatek,nand-ecc-engine.yaml         |  62 ++++++
+>  .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ------------------
+>  3 files changed, 216 insertions(+), 176 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+> new file mode 100644
+> index 000000000000..eb1a44c7ae4e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+> @@ -0,0 +1,154 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mtd/mediatek,mtk-nfc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek(MTK) SoCs raw NAND FLASH controller (NFC)
+> +
+> +maintainers:
+> +  - Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt2701-nfc
+> +      - mediatek,mt2712-nfc
+> +      - mediatek,mt7622-nfc
+> +
+> +  reg:
+> +    items:
+> +      - description: Base physical address and size of NFI.
+> +
+> +  interrupts:
+> +    items:
+> +      - description: NFI interrupt
+> +
+> +  clocks:
+> +    items:
+> +      - description: clock used for the controller
+> +      - description: clock used for the pad
+> +
+> +  clock-names:
+> +    items:
+> +      - const: nfi_clk
+> +      - const: pad_clk
+> +
+> +  ecc-engine:
+> +    description: device-tree node of the required ECC engine.
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +
+> +patternProperties:
+> +  "^nand@[a-f0-9]$":
+> +    type: object
 
-I am fine with this approach, but after explanations I was also fine
-with clock cycles as unit. It's still quite specific unit and I think
-several timings on buses are clock-cycle dependent, not time dependent.
+This should be instead:
+    $ref: nand-chip.yaml#
+    unevaluatedProperties: false
+
+and then properties below (due to current dtschema limitations) should
+list properties from nand-controller.yaml:
+
+      nand-on-flash-bbt: true
+
+Optionally, we could create additional schema - nand-controller-chip,
+which would be referenced directly by nand-controller and itself would
+ref nand-chip.
+
+> +    properties:
+> +      reg:
+> +        minimum: 0
+
+no need, 0 is the minimum.
+
+> +        maximum: 1
+> +      nand-ecc-mode:
+> +        const: hw
+> +
+> +allOf:
+> +  - $ref: nand-controller.yaml#
+> +
+> +  - if:
 
 Best regards,
 Krzysztof
