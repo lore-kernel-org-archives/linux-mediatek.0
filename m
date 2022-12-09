@@ -4,114 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1DDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 14:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184E9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 18:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zn39Cq6H46SfgCPMDp1Yyg4Hy1ifOLwJBJ6L3zqm8MM=; b=Qb0sK1p7SMrdDRBuy1MgRi3N2n
-	gRWVOCI/pby3sGk51OrtJF+TN3rtwKSiLmN6U1u+mpX/0gblRijdDeixPzulVjpL0ql0Yw0SD6PUZ
-	t5wGK5wZo7/yBVbVD2tr59BsNam92IH5Yg0eziKBZGlriKrWoxSJ6hshSPkIhutTakjIPNcOnN23N
-	LNEoOAICXYvd3BPUEqdEdL3ixS71Jndi6XLcU8KdySH9EPp4q/VCrcwluYKEiRJmP1xREEPq/5zcQ
-	eaB7laOdh4snt4rx1p44rEEYWcy35DEI3PNRHq5UhU70Eg6YrFIQS4M39kE7l7OhLctaR919oALBk
-	M8mdB3rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4w6shm/Wpz6ggc4zMRhzb9FfoJ4MU+lSfUxwokG/Em0=; b=S5xesbbotInclRqhcazjrHzHZ8
+	yYIbMoErsVG5ElRewE/Syi18p9aL+2zdYuwsrA5Qyitp0qsnTwJE34LtLprA5FcK+QsAPDRGQ5fzn
+	A4zjztL73wnwFsVNaQgLSOOa75ILcVhPki/mTqixQyVFljB5xbf7Q7j+YXiynQdKfAXMHWSwfHoG3
+	D8ZX8SjPlxf/UkX+zbnrGcbjyDlJjPyzxs3nIgAjE7E09uQULITEn6mZwo87+DOaSlF1rFhezD7Z6
+	rOEpqh+ZHUbA5rNhyfWv1eDja+ZpQyKz9FM6drzUgR8RqDliO7inA/9S5PSUnLrORSdWLL31gsIfx
+	uBnUFkqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3enn-008fx7-QN; Fri, 09 Dec 2022 14:56:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1p3i63-00AKec-5F; Fri, 09 Dec 2022 18:27:43 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3eng-008fq1-Qq
-	for linux-mediatek@bombadil.infradead.org; Fri, 09 Dec 2022 14:56:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Zn39Cq6H46SfgCPMDp1Yyg4Hy1ifOLwJBJ6L3zqm8MM=; b=PXVpSqIsl5vNEdVUhUw7EtA7Ix
-	pJXsgxZ/yLhQ+8MK5Z2058dJjXexQuosVzwiT2LrVOFEkfOHg6sw9UT2oOsfMI+VR0GSjJal6YjBY
-	/xaGCFLPcBzrsZB9vD7zH/HxrA4bbBxSF/iV4VNVedsZRmbQzsqn0uTBOR6hK5ykNWlV+Ab1KU3ck
-	y44qLvYcOwn78GDaDDsDt9LHpGVDjTn2X37wLb1SNabtRCobCd/IsZc+g9HUdIs10BkGn7wwpqmkQ
-	pV5x3xLzS1MEUJc+iMjHz7v6fuT2BINeIkDmn1P5pO8vPZnFZnUPsGscfBOjoykJ2Dt37qYL4lxsW
-	h220j+Cg==;
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3end-008oTZ-0M
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 14:56:31 +0000
-Received: by mail-lf1-x129.google.com with SMTP id g7so7418502lfv.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 06:56:27 -0800 (PST)
+	id 1p3i5s-00AKap-Qe
+	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 18:27:34 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id js9so4622304pjb.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 10:27:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Zn39Cq6H46SfgCPMDp1Yyg4Hy1ifOLwJBJ6L3zqm8MM=;
-        b=oK6qJslOKT34uL/1v4g3iVT1myebBNEM4jqIgvwqM03/FD9DabncthU7iZSDV0Dw6V
-         XsercsMR7iFL4hosx9kgIZ9YzmeCwbSXsSX4/PK42T64csirCJrUZDGR63AA3gzG1g41
-         zlLghgCExlKP16+a3f94HqnFX/ZzAhWZHtnZtcyd5lQqtnZGVR+xrZz6v60MtrThIAwE
-         XQEk16WFuKtIqjvbXFNEA7UN1gFNRMxtw2StjPUdNgiBZiUp23HOjBaOGribElE0U6rD
-         481bOTOymtR3SVQCOPXoy+Dnb7PRwjW6PGEXoMZeDb2M9MiCGeBIBtnUuFWXLdoTE2dW
-         +kEQ==
+        d=google.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4w6shm/Wpz6ggc4zMRhzb9FfoJ4MU+lSfUxwokG/Em0=;
+        b=DqcJe4694wkG976PjUOU2TsLdZ6AqSNNqB4CDir8muiXDWFziOVnaq4bgef+IpjXW8
+         BYCQq5+CHK3zagU/kQNl2fkY6yAAgIpwkoAVkUIYm/XP0BCpkFNUmrSx6WUMKNIunWS/
+         1ViUlrZGecXnoABDCfXZA+HP7XhWCtki3CYVZNe/URC5mvmJsTg1fmdWfpTdQb+s30jy
+         iky6uaWQ1JeV7UkhbEB9sz0HKcP5gFKiIBEMvDIBl6xuabikBdYiLwVnjo5oCpMoS1lp
+         pHALstRMOaJaOjvi7AyQNg38g3aS4UMkURCioktQVwm0X3dUqcYQyWVi54s1+DtPa0IZ
+         ETeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Zn39Cq6H46SfgCPMDp1Yyg4Hy1ifOLwJBJ6L3zqm8MM=;
-        b=phftndsuE0p0ULHaERciReihQy5XpeVDSbyhB1N15dDlk2t4/uVsMJt6ealhVidiiB
-         sFX2AmqVmhcy4E0U6r1XIsYBKB3XouOGBV6g6qQjpds5cEsQlPgRewGJQdZ3BkF5vLH5
-         YOtVB3kmZ7gFMbzTfmNo5P6MmPnIo32rXiAdqrQvnxUos10gHlTREpXphbHNa33kURtj
-         NGbFbcQYwzU+kx2nq+JHV2fivBUV3MFzQG70BmzMllsS7E70tER/DqWT4hDc/UDFT6Sq
-         XiZBLhTpm/qWQjMUk5/V5+T6xMN9c+f7DDESTDuQjpodRKQeVZT/xj2fg3zpFcuU4ijl
-         NRlw==
-X-Gm-Message-State: ANoB5pmDy2D4siJ7tHLFiRAdksCcxvg2vCIh4jMoib5eDv+H+nuYCGyc
-	HeFboRELlMlPGp7IKJcG6qSxcw==
-X-Google-Smtp-Source: AA0mqf6+eQqJYIlJ4RBGy5DkLM0OPyqhKXbsUkA+Jn4oqxjdS9sXP0vfO1VIWussQDLHIAES8/dMgw==
-X-Received: by 2002:a05:6512:13a2:b0:4a4:68b7:d61d with SMTP id p34-20020a05651213a200b004a468b7d61dmr2041235lfa.4.1670597785748;
-        Fri, 09 Dec 2022 06:56:25 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id h9-20020ac24d29000000b004b50b4f63b7sm287771lfk.170.2022.12.09.06.56.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 06:56:25 -0800 (PST)
-Message-ID: <fb34e446-2904-a357-e54b-3e82a2b0745c@linaro.org>
-Date: Fri, 9 Dec 2022 15:56:24 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4w6shm/Wpz6ggc4zMRhzb9FfoJ4MU+lSfUxwokG/Em0=;
+        b=MQnhY57v005Pn3jytwEOnk1iEQgwWK6N61++monRgMaJmIDVZpKlLFmwKrHKdY6VGB
+         L1o7TfTR56qkqgw6HujNBA7HxPGgHkyYv19q0RWxsiIIN2jWKL7nEVSO+YJwAoYbbfhX
+         /B9VQFwkOPZx0ekB7jNIapW/qZZOmElMftHDnYwSbjOg4pxVKks6hz8zWrXRVraTyts2
+         vywWmH5G1/pRt5mvxyjdC2CoSNaQ9O7WfHly2NpmEzX7b/ZmM80tixC9iPksFOXBuHWL
+         vU7s7RaN5G7a6LmjYCqchNMnRwkUg9LD/sQo8YGzF3pevdHFmz0u0O83T5H9qnpEsiyo
+         8p2Q==
+X-Gm-Message-State: ANoB5pmGj6T/3FOjIsi6yvaS6ijdotigA8Ua/kOtY7jlV7wcqwYgT1Lu
+	l0nW1R1ZxiChNvM6M/s1e1ThQ2zlZpXnJIpA3W4rcQ==
+X-Google-Smtp-Source: AA0mqf52WgiM//CGJflKjihIpmk/MVk3JEVMl+QooKQ81VQl/XzLSTIwuVjhLP1uqMx5c86DO4csqdVJSz8AjkOnz1M=
+X-Received: by 2002:a17:90b:290:b0:219:2b00:8d23 with SMTP id
+ az16-20020a17090b029000b002192b008d23mr57659625pjb.167.1670610446237; Fri, 09
+ Dec 2022 10:27:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v3 10/12] dt-bindings: mediatek: mt8188: add audio afe
- document
-Content-Language: en-US
-To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "tiwai@suse.com" <tiwai@suse.com>, "lgirdwood@gmail.com"
- <lgirdwood@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "perex@perex.cz" <perex@perex.cz>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20221208033148.21866-1-trevor.wu@mediatek.com>
- <20221208033148.21866-11-trevor.wu@mediatek.com>
- <d7d9f3c7-b3e3-1e13-a80f-c7bf7b38a5b1@linaro.org>
- <45b4b287dfd57b99e0ba5675bf99194f6d84d9da.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <45b4b287dfd57b99e0ba5675bf99194f6d84d9da.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20221209031053.8444-1-yc.hung@mediatek.com>
+In-Reply-To: <20221209031053.8444-1-yc.hung@mediatek.com>
+From: Curtis Malainey <cujomalainey@google.com>
+Date: Fri, 9 Dec 2022 10:27:14 -0800
+Message-ID: <CAOReqxh=27P7PogzhFr+37XBfRh5Nxu1x46JpdCH=ZRDVhRbeQ@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8195: add sof be ops to check audio active
+To: YC Hung <yc.hung@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Trevor Wu <trevor.wu@mediatek.com>, 
+	"Nicolas F . R . A . Prado" <nfraprado@collabora.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Curtis Malainey <cujomalainey@chromium.org>, whalechang@google.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_145629_221891_52C1AE94 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20221209_102732_877775_749422B7 
+X-CRM114-Status: GOOD (  20.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,78 +91,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/12/2022 11:56, Trevor Wu (吳文良) wrote:
->>> +
->>> +patternProperties:
->>> +  "^mediatek,etdm-in[1-2]-chn-disabled$":
->>> +    $ref: /schemas/types.yaml#/definitions/uint8-array
->>> +    minItems: 1
->>> +    maxItems: 16
->>> +    description:
->>> +      By default, all data received from ETDM pins will be
->>> outputed to
->>> +      memory. etdm in supports disable_out in direct mode(w/o
->>> interconn).
->>> +      User can specify the channel ID which they hope dropping and
->>> then
->>> +      the specified channel won't be seen on memory.
->>
->> So we know what are the IDs but it's a mystery what are the values.
->> Especially with unique values - how any of these should case that
->> channel "won't be seen in memory"?
->>
-> For example,
-> FE can support 14ch, but BE(etdm) can't support 14ch(it can support
-> 16ch).
-> In the case, we can configure 16ch to etdm and make use of the property
-> to disable the last two channels.
-> 
-> mediatek,etdm-in1-chn-disabled = /bits/ 8 <0xE 0xF>;
+On Thu, Dec 8, 2022 at 7:11 PM YC Hung <yc.hung@mediatek.com> wrote:
+>
+> In MT8195 SOF design, both DSP and audio driver would access audio
+> registers. Before DSP accesses audio registers, audio power and clock
+> should be enabled. DSP will hang up if DSP access audio register but
+> audio power and clock are disabled. Therefore, we add audio pm runtime
+> active checking before accessing audio registers in SOF BE's callback
+> hw_params function to avoid this situation.
+>
+> Signed-off-by: YC Hung <yc.hung@mediatek.com>
 
-Your description should explain that this is a list of channel IDs which
-should be disabled.
+Acked-by: Curtis Malainey <cujomalainey@chromium.org>
 
-> 
-> 
->>> +    uniqueItems: true
->>> +    items:
->>> +      minimum: 0
->>> +      maximum: 15
->>> +
->>> +  "^mediatek,etdm-in[1-2]-mclk-always-on-rate-hz$":
->>> +    description: Specify etdm in mclk output rate for always on
->>> case.
->>
->> How is it different than assigned-clock-rates?
->>
-> This includes clock enabling at init stage.
-
-assigned-clock-rates are also at init stage. I asked what is different.
-
-> 
->>> +
->>> +  "^mediatek,etdm-out[1-3]-mclk-always-on-rate-hz$":
->>> +    description: Specify etdm out mclk output rate for always on
->>> case.
->>> +
->>> +  "^mediatek,etdm-in[1-2]-multi-pin-mode$":
->>> +    type: boolean
->>> +    description: if present, the etdm data mode is I2S.
->>> +
->>> +  "^mediatek,etdm-out[1-3]-multi-pin-mode$":
->>> +    type: boolean
->>> +    description: if present, the etdm data mode is I2S.
->>> +
->>> +  "^mediatek,etdm-in[1-2]-cowork-source$":
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    description:
->>> +      etdm modules can share the same external clock pin. Specify
->>> +      which etdm clock source is required by this etdm in moudule.
->>
->> typo: module
->>
-
-Best regards,
-Krzysztof
-
+> ---
+>  sound/soc/mediatek/mt8195/mt8195-mt6359.c | 30 +++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>
+> diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> index 61be66f47723..4682748d82be 100644
+> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> @@ -633,6 +633,32 @@ static const struct snd_soc_ops mt8195_rt1011_etdm_ops = {
+>         .hw_params = mt8195_rt1011_etdm_hw_params,
+>  };
+>
+> +static int mt8195_sof_be_hw_params(struct snd_pcm_substream *substream,
+> +                                  struct snd_pcm_hw_params *params)
+> +{
+> +       struct snd_soc_pcm_runtime *rtd = asoc_substream_to_rtd(substream);
+> +       struct snd_soc_component *cmpnt_afe = NULL;
+> +       struct snd_soc_pcm_runtime *runtime;
+> +
+> +       /* find afe component */
+> +       for_each_card_rtds(rtd->card, runtime) {
+> +               cmpnt_afe = snd_soc_rtdcom_lookup(runtime, AFE_PCM_NAME);
+> +               if (cmpnt_afe)
+> +                       break;
+> +       }
+> +
+> +       if (cmpnt_afe && !pm_runtime_active(cmpnt_afe->dev)) {
+> +               dev_err(rtd->dev, "afe pm runtime is not active!!\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct snd_soc_ops mt8195_sof_be_ops = {
+> +       .hw_params = mt8195_sof_be_hw_params,
+> +};
+> +
+>  static int mt8195_rt1011_init(struct snd_soc_pcm_runtime *rtd)
+>  {
+>         struct snd_soc_card *card = rtd->card;
+> @@ -1272,24 +1298,28 @@ static struct snd_soc_dai_link mt8195_mt6359_dai_links[] = {
+>                 .name = "AFE_SOF_DL2",
+>                 .no_pcm = 1,
+>                 .dpcm_playback = 1,
+> +               .ops = &mt8195_sof_be_ops,
+>                 SND_SOC_DAILINK_REG(AFE_SOF_DL2),
+>         },
+>         [DAI_LINK_SOF_DL3_BE] = {
+>                 .name = "AFE_SOF_DL3",
+>                 .no_pcm = 1,
+>                 .dpcm_playback = 1,
+> +               .ops = &mt8195_sof_be_ops,
+>                 SND_SOC_DAILINK_REG(AFE_SOF_DL3),
+>         },
+>         [DAI_LINK_SOF_UL4_BE] = {
+>                 .name = "AFE_SOF_UL4",
+>                 .no_pcm = 1,
+>                 .dpcm_capture = 1,
+> +               .ops = &mt8195_sof_be_ops,
+>                 SND_SOC_DAILINK_REG(AFE_SOF_UL4),
+>         },
+>         [DAI_LINK_SOF_UL5_BE] = {
+>                 .name = "AFE_SOF_UL5",
+>                 .no_pcm = 1,
+>                 .dpcm_capture = 1,
+> +               .ops = &mt8195_sof_be_ops,
+>                 SND_SOC_DAILINK_REG(AFE_SOF_UL5),
+>         },
+>  };
+> --
+> 2.18.0
+>
 
