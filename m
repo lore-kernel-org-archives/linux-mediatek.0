@@ -4,85 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C677C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 08:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6C1C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 08:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9b+nzUQkfFI17ZarCDIwZk6LrBaQpiedauRmlOVndtI=; b=10qBbSvhU3aFIMI7iUuSWsx79a
-	umejcCurPRD9jZ/m8U/SDkmOUefyKYoa0DVjkO0f1iRFylNkKsDQ5adNYvgQ1ezJRbtDvbtOI//LY
-	EYSp09Qcsl2ct/CpqLspqbTiaZfcATAji3FDw17y2zW6vfn2JLlu6PBvrueZWxGJyjXnp6uJ00fbm
-	dUJGtLLN2DRL8tmd9taSfcxjro5EYz+x+gN/+zFdQL6oZt9hyzzXoQbT8ZfWfzuVMXmp2Cc8bGFrz
-	BPCxcrdXNb+FeY1jnMUEQeTtMYwa0xH7AyIWoM9Y5zaBLUYn4TvNklhNdQg5bv+1Y0ntvD+RoxpZe
-	V/pSg1fQ==;
+	bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=; b=zp9vMd8gREAx7W3beMQ8ghNeZz
+	oKhySZGI6Ftd23l8GA6EBi+R0t7XQSHaucvaIMY68yzpA1lWI0xgNTYkQWHmvStXSiGHpAc/QxxjU
+	c6rygF1Bqtr2EIPZn5Eyqguv+XR1YtkFG3UUNZ5Wj8f8s3Blxrauv2BF+tOPsPTjQPx3FoB7qQI3h
+	So74PoGIPKeEt8WfhAwrtqUs+Z5/66/K4dZgg/EsjAtQkyeerOuzwdBNEfroA89pZ5HFfUzIN09rw
+	kG0kOHkBtE7YJ4496vBNmv7NTdYAUjJFWmu8uskeyPcCIhiYhvIOUnzhBRwf9l+y8CKJShDUZtk/u
+	frSCggAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3YaK-005Vww-0g; Fri, 09 Dec 2022 08:18:20 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1p3Z7m-0060Xa-Ra; Fri, 09 Dec 2022 08:52:54 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Ya8-005VqX-Ba
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 08:18:10 +0000
-Received: by mail-lj1-x234.google.com with SMTP id q7so4161709ljp.9
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 00:18:07 -0800 (PST)
+	id 1p3Z7h-0060Um-5e
+	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 08:52:50 +0000
+Received: by mail-lf1-x129.google.com with SMTP id d6so5970114lfs.10
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 00:52:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9b+nzUQkfFI17ZarCDIwZk6LrBaQpiedauRmlOVndtI=;
-        b=MP3CwhmhfT+bowc34rbCU80wMR4XjEpjYAwxPJsUEqPeN+i/yGN89NgsklJdd/Pk6o
-         71VoyIrQon/Vrk/acTGP33lzfmd20YH0dcHV70Hg4bTUPWmLeFuskj+7Du9sjGoEhyTg
-         amkLN3CAWB6nFrtKKqIAXrAmYiEJr60PphupoLN3Yrf1S9DLgZU1ruaqQAsfEWj3INUs
-         qIm70cFv3tX52c2VZmkVDXRmD9r3GeB6n8X36jG56eAv6GRYCs6Ap1A/6Ih2B8eW3xGi
-         Ajt6YZoddzJGkliRozpmbes8OjMyw2/fLhbv5DBfuix1hfmsL0w8fe/TyEfHejWDBlX7
-         jmOg==
+        bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=;
+        b=cIiLqmfm+vYdVKmG+GNYNX5be0nbheIFzXVWtAlhWk+RkRzT7DmA5ieXvUPqdLNHJg
+         7qKKpuS8ObSV0MARDlnM5CAo+7MDTX4ak8jXAHFIS0mwxsbjEh6pZXJaa5jxfXT/uZL4
+         MGplh7lO0U5fL0q1KZIf6j9+8p65W1FDt94xvRdrW8kjyd89qAvLVK+gWiIX5yZ3Os2D
+         phjLCO4Rjv9T5HxiLUb7PLxZ1moW0LtDI4OdEbwwKryEji5GMBwNNeSkBKt4Gk9UX5JJ
+         mbMesFVcZTlLQFBYv+zCzyyYw5Wjis1uudk2Z0hR3i+EWE0JSofRkSx+MA8lLXRhvjcf
+         oDZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9b+nzUQkfFI17ZarCDIwZk6LrBaQpiedauRmlOVndtI=;
-        b=sMb2NDCPdEGyei21v2qXfoBszxPE+jyijedGYeIpuWU4Yy11hkOzCcF+jcsQeWl3IP
-         3OfKcumtW5yb67ApFuIZUgXI2p/Y0K8nOOeLlj27bzUP/CLTNzwWtd4pI8/O1zcPCcmM
-         SqJIFBi0i+PZfcmfE8Fk6w2rASOQEKFpr4+DcH9ChpDZzjY4eh/b6xxja9A4cX1KT/kA
-         2cPkLLsClsbu88H9pFcxZhtBa5HhSFc0jUjb1XqmM+Zx27ySUFEnFlcrSoGrSvn4F2fd
-         SZwUIu+0nM2TeDubTOcRilBVnKmBTTjkDTMxB1eaNXqeeMLNjsMdArabzkZ01FbRXY6P
-         ebPw==
-X-Gm-Message-State: ANoB5pmNpr+8tnDVeD84mcnti4RgcX1Fpiy+BfEH/JJPUoMvVnEv8DO4
-	rvyi4bszgSOgpVC0yzwiMJmeXg==
-X-Google-Smtp-Source: AA0mqf7gOOWLgjKHZQK+6oE9u4is1OfW8LjVsmng1iYVVk810DsmCov5IqCqFw56AzowQ+pJj2g4Bg==
-X-Received: by 2002:a05:651c:1697:b0:279:d092:caa2 with SMTP id bd23-20020a05651c169700b00279d092caa2mr1154060ljb.32.1670573886031;
-        Fri, 09 Dec 2022 00:18:06 -0800 (PST)
+        bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=;
+        b=I204HtvNS3ULBA8AsrvHC0Yag57va+tuosOPF6aHEyUmOprFX7DSokbDAKD9QVG0n0
+         s9TNrkoOJrzCABGVrpfwm1WOgW/KPDl/YCi4jw1QiPv45Gea8+xjeLgGv7EzFQ8pQoAI
+         lJC2dCi5despGDwUS1HUFlJiMVfELw2IEOr0LVrCNSeDhXm8StE3KraUzR89SdtVXVla
+         7h0CfDrOQl07UOII1KuGdJudAgiCRM4LV2lnwzPyn7Cx2ev5iGQFUQEoZX3JfyJgRz+K
+         DtGybjeS1xuBpWbwbCuPn3XTrGK1XJ9Dd8dP4o5WgbpKGF8X0L4Gu67DXmm71dWrPC7t
+         m6mw==
+X-Gm-Message-State: ANoB5pnVB+ak7txlTDUt9WMDa+CugvstqEzzVWVDIFAQlyH8rKdXl8Rc
+	4DWmtlCsu2oUtSYVwbI7QYBB1g==
+X-Google-Smtp-Source: AA0mqf4s8dwZrPgP5uaIipu4vmk7CP2r3nM7cQ0pGxmNAWVLRsr7PWOLyYeq0TYAdB7CiUq+wPdd9g==
+X-Received: by 2002:a05:6512:10cd:b0:4b4:b8b9:e304 with SMTP id k13-20020a05651210cd00b004b4b8b9e304mr1712294lfg.22.1670575965824;
+        Fri, 09 Dec 2022 00:52:45 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bg32-20020a05651c0ba000b00279cf45a02asm124286ljb.132.2022.12.09.00.18.04
+        by smtp.gmail.com with ESMTPSA id j7-20020a056512344700b004a100c21eaesm172948lfr.97.2022.12.09.00.52.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 00:18:05 -0800 (PST)
-Message-ID: <22dacd0a-d482-d4e6-fc69-187f9ae79956@linaro.org>
-Date: Fri, 9 Dec 2022 09:18:04 +0100
+        Fri, 09 Dec 2022 00:52:45 -0800 (PST)
+Message-ID: <500f9bdf-0de1-d6b2-1f09-11128699ce3a@linaro.org>
+Date: Fri, 9 Dec 2022 09:52:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v4 4/7] dt-bindings: pinctrl: add bindings for Mediatek
- MT8365 SoC
+Subject: Re: [PATCH v4 7/9] dt-bindings: mtd: Split ECC engine with rawnand
+ controller
 Content-Language: en-US
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, khilman@baylibre.com
-References: <20221208153041.3965378-1-bero@baylibre.com>
- <20221208153041.3965378-5-bero@baylibre.com>
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+References: <20221209064317.2828-1-xiangsheng.hou@mediatek.com>
+ <20221209064317.2828-8-xiangsheng.hou@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221208153041.3965378-5-bero@baylibre.com>
+In-Reply-To: <20221209064317.2828-8-xiangsheng.hou@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_001808_434741_70CB6672 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20221209_005249_219216_989BF3F8 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,121 +103,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/12/2022 16:30, Bernhard Rosenkränzer wrote:
-> Add devicetree bindings for Mediatek MT8365 pinctrl driver.
+On 09/12/2022 07:43, Xiangsheng Hou wrote:
+> Split MediaTek ECC engine with rawnand controller and convert to
+> YAML schema.
 > 
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 > ---
->  .../pinctrl/mediatek,mt8365-pinctrl.yaml      | 197 ++++++++++++++++++
->  1 file changed, 197 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> new file mode 100644
-> index 0000000000000..9560e1d2898d0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
-> @@ -0,0 +1,197 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt8365-pinctrl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek MT8365 Pin Controller
-> +
-> +maintainers:
-> +  - Zhiyong Tao <zhiyong.tao@mediatek.com>
-> +  - Bernhard Rosenkränzer <bero@baylibre.com>
-> +
-> +description: |+
-> +  The MediaTek's MT8365 Pin controller is used to control SoC pins.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8365-pinctrl
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  mediatek,pctl-regmap:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      maxItems: 1
-> +    minItems: 1
-> +    maxItems: 2
-> +    description: |
-> +      Should be phandles of the syscfg node.
-> +
-> +  gpio-controller: true
-> +
-> +  "#gpio-cells":
-> +    const: 2
-> +    description: |
-> +      Number of cells in GPIO specifier. Since the generic GPIO
-> +      binding is used, the amount of cells must be specified as 2. See the below
-> +      mentioned gpio binding representation for description of particular cells.
-> +
-> +  interrupt-controller: true
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  "#interrupt-cells":
 
-Use consistent quotes - ' or "
 
-> +    const: 2
-> +
-> +patternProperties:
-> +  '-pins$':
-> +    type: object
-
-(...)
-
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/pinctrl/mt8365-pinfunc.h>
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        pio: pinctrl@1000b000 {
-> +          compatible = "mediatek,mt8365-pinctrl";
-> +          reg = <0 0x1000b000 0 0x1000>;
-> +          mediatek,pctl-regmap = <&syscfg_pctl>;
-> +          gpio-controller;
-> +          #gpio-cells = <2>;
-> +          interrupt-controller;
-> +          #interrupt-cells = <2>;
-> +          interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +          pio-pins {
-> +            pins {
-> +              pinmux = <MT8365_PIN_59_SDA1__FUNC_SDA1_0>, <MT8365_PIN_60_SCL1__FUNC_SCL1_0>;
-> +              mediatek,pull-up-adv = <3>;
-> +              mediatek,drive-strength-adv = <00>;
-> +              bias-pull-up;
-> +            };
-> +          };
-> +        };
-> +    };
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - gpio-controller
-> +  - "#gpio-cells"
-> +
-> +allOf:
-> +  - $ref: pinctrl.yaml#
-
-The order of your top-level entries is mixed up. required and allOf  are
-never after the example. Please open example-schema and align the order.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
