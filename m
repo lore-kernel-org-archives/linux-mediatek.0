@@ -4,104 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D80C04FDE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 09:11:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66820C04FDE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 09:15:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=; b=K7jHFzfitlYVEh8i2s3s6/lBjc
-	w/38Q5+/kglI7Jb6FY4s57R4R7Ebd1klMaeY7wDZFb7pbnkdHqlDi21N5AQd2pWGqSPZBlpl79oaV
-	Ltrk8jiwE1fFEu2QG6yRAd1glbv2IhI4+SZOuLdKjTfN4d3py9OiBFyzrRo4u+5BZ2cLPPFwqFnHm
-	Ohpq1lE9IQQVOyS7yWw2Ry72nMQpyhCVVcW6LpS4Tk1qey2B+cBlTCv+dbV/5R57DBTTvAvSdiELS
-	AbeR5RtM0T464SMdnF4gY7miiqYFKWTrspR8s4xQlshSVPuxF8jgPv0Xsb7EU6xDhvw2M4ETsYs4/
-	ViO2/L1Q==;
+	bh=V8RnLDoy8tp25SHwTkiovb8GWGbv3/sxicauJU19K4U=; b=mi6m2RBotNkCKa/Cq+iiJ+HWHD
+	SSD8FQHAXicrkHzBjT/X63/xva50AyU+jzO+FlrUS5wtPcuq2tYrJPDZLTnH+OBF7sTBBwe4P8GQ0
+	7F7nftrWe3nRp+xb2uIL4u+zhlh5b8FAtVg02kCEHy9hT7MK45HXyWvJUVFDtawxV/urnSQ341Zop
+	IjuEF8r9Raw0OboRPytm91uucl2QoiwnoAQunJ16OCHgdcBMHvjs0pevpcYcjlz4xX8TUdUV+vZC1
+	DYNXiQPhcvFze/3V5rswFfg2Fxc4CByH/E1UiuveU32i1J0MLcwbSrOLiuJqQwLJGyTdpex+hh48F
+	C3aJyniQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3ZPK-0068Am-Bm; Fri, 09 Dec 2022 09:11:02 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1p3ZTG-00699l-0s; Fri, 09 Dec 2022 09:15:06 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3ZP9-00688V-I2
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 09:10:52 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id b13so6075810lfo.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 01:10:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=;
-        b=KVD+7kE5lL+pTeO+6c4//dBqt1KZPY3HulvHg+MoL6IdGUPCh+ks/OvIUzmXSBeEZw
-         bcZmjv0cv6XT05ZOc/dnJzmDozJjL246ZFrSno03viiWBYVODbdpzpHEIhmdSeDfI16V
-         flZB2ySxV2+7+m77ICY/k1pWlMzq7oD6sXN6d+ielbPXEnbl93/eVV86wfJ5qCjOVoDD
-         lr17Kjufd+bsqRgl9pAc3iYAlKiubrAR7RZ+fTNNA8R+731rLSlX0xBLtpZKgmnf3++J
-         gcv59wEAqSoD9TDOswZUYuIXE+l+SF61eJnC0ojJnkqOoxulqUbiwQwxvavlZyvMLKY8
-         PhMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=;
-        b=fqxjQQPUgnGkneakJPZYmdgKnYeg+BSitiFAA7OG1GUTMW0+HLVpOkz883vkoit7J/
-         fHGw6oebhejWoJ3i1IArgKBk/LTSvU0iKatLRrSXSXNfXt5bX+KRC7b7/ze9JmbmFirv
-         BdqpNd3RrkkyMAzWaE4aitcZPHcB11/lu+6RSa9wQNDZri7B2RiQuKqoS4jEhOiK2SSK
-         Xj2YVNNoArztIRYsnOA3ev5KEK3ZbursBv+Xy5/Oq+oyFel/ca/4Z1wfiCtdTWxeqqtD
-         Xd7FTbLlXjkaDSuwDCbzWE9IT9djAR4LyA20HFBFltMB3AfOF9ZbLzTOyX9pqHLTs6bH
-         dIqA==
-X-Gm-Message-State: ANoB5pkMNHWOmxy7h9OXBAcQ69x5zBFFyB2e5h/S1+Qg8wLuRyDY7f6B
-	CvO867Ifg9KM0CUjw5CuFsgmnA==
-X-Google-Smtp-Source: AA0mqf7xEULdEwSJaPke8khzMoilV4EuukcDjEPYH9CA6fV2c9nDO1TqTdVqHoLoVpg4ATBzhLO7RQ==
-X-Received: by 2002:a05:6512:3d05:b0:4ac:959a:a23 with SMTP id d5-20020a0565123d0500b004ac959a0a23mr1775763lfv.7.1670577049659;
-        Fri, 09 Dec 2022 01:10:49 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id y17-20020ac24211000000b004b01305732bsm175657lfh.216.2022.12.09.01.10.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 01:10:49 -0800 (PST)
-Message-ID: <15d9461c-5b31-dfb5-ec9d-4b79ea120aeb@linaro.org>
-Date: Fri, 9 Dec 2022 10:10:47 +0100
+	id 1p3ZT5-00696U-9t; Fri, 09 Dec 2022 09:14:57 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id A05ECC000A;
+	Fri,  9 Dec 2022 09:14:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1670577288;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=V8RnLDoy8tp25SHwTkiovb8GWGbv3/sxicauJU19K4U=;
+	b=cYgNkYDoYt41DwhflXDt+gjhOooE64yqVPoCzTiMgMvWATWeW5f8DqUfY9O+zg65GnJTg0
+	kiRvk5BIsHBLHDoVaH9iZm1nGSbiyGiCQapvdwb7kQUJpB46yNb6CiOI/6c3eR64OBfGgX
+	HdXZZ5dOg2htbmcdAg5Tsh3oeA8wSdiXe1fk5rb1nWSEi46x8amCxtEUTObXHJn2Sv7yDl
+	sgZRfzeg8/69B4/zGUo31ma2KUaftT0//Ncm9AENpQ8CsMApR8fUOW68Xxa2bJ+b575oM7
+	iP+cLlJh4g+1kMoFuXGhUH4yXngrD+1Vinb5WGM4Y6Xhbtah1gpnmsQxSSROSQ==
+Date: Fri, 9 Dec 2022 10:14:43 +0100
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Richard Weinberger
+ <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
+ <gch981213@gmail.com>, linux-mtd@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org, benliang.zhao@mediatek.com,
+ bin.zhang@mediatek.com
+Subject: Re: [PATCH v3 7/9] dt-bindings: mtd: Split ECC engine with rawnand
+ controller
+Message-ID: <20221209101443.77fbbe49@xps-13>
+In-Reply-To: <f3e3a3d0-6d21-c782-38a2-c8b2c36242c3@linaro.org>
+References: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
+	<20221208062955.2546-8-xiangsheng.hou@mediatek.com>
+	<fe70d964-229a-8bda-a414-e009dd955e5e@linaro.org>
+	<20221208110035.5649a051@xps-13>
+	<f3e3a3d0-6d21-c782-38a2-c8b2c36242c3@linaro.org>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v4 net-next 3/9] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-Content-Language: en-US
-To: Colin Foster <colin.foster@in-advantage.com>,
- linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
- Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?B?bsOnIMOcTkFM?=
- <arinc.unal@arinc9.com>, Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
- Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
- <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>,
- George McCollister <george.mccollister@gmail.com>,
- Rob Herring <robh@kernel.org>
-References: <20221202204559.162619-1-colin.foster@in-advantage.com>
- <20221202204559.162619-4-colin.foster@in-advantage.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221202204559.162619-4-colin.foster@in-advantage.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_011051_634530_9F170A48 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221209_011455_634363_D2C07939 
+X-CRM114-Status: GOOD (  24.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,25 +83,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/12/2022 21:45, Colin Foster wrote:
-> DSA switches can fall into one of two categories: switches where all ports
-> follow standard '(ethernet-)?port' properties, and switches that have
-> additional properties for the ports.
-> 
-> The scenario where DSA ports are all standardized can be handled by
-> swtiches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
+Hi Krzysztof,
 
-typo: switches
+krzysztof.kozlowski@linaro.org wrote on Thu, 8 Dec 2022 11:27:27 +0100:
 
-> 
-> The scenario where DSA ports require additional properties can reference
-> '$dsa.yaml#' directly. This will allow switches to reference these standard
-> defitions of the DSA switch, but add additional properties under the port
+> On 08/12/2022 11:00, Miquel Raynal wrote:
+> > Hi Krzysztof,
+> >=20
+> > krzysztof.kozlowski@linaro.org wrote on Thu, 8 Dec 2022 10:44:17 +0100:
+> >  =20
+> >> On 08/12/2022 07:29, Xiangsheng Hou wrote: =20
+> >>> Split MediaTek ECC engine with rawnand controller and convert to
+> >>> YAML schema.
+> >>>
+> >>> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> >>> ---
+> >>>  .../bindings/mtd/mediatek,mtk-nfc.yaml        | 154 +++++++++++++++
+> >>>  .../mtd/mediatek,nand-ecc-engine.yaml         |  62 ++++++
+> >>>  .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ----------------=
+--
+> >>>  3 files changed, 216 insertions(+), 176 deletions(-)
+> >>>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mt=
+k-nfc.yaml
+> >>>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,na=
+nd-ecc-engine.yaml
+> >>>  delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.y=
+aml b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+> >>> new file mode 100644
+> >>> index 000000000000..eb1a44c7ae4e
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+> >>> @@ -0,0 +1,154 @@
+> >>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> >>> +%YAML 1.2
+> >>> +---
+> >>> +$id: http://devicetree.org/schemas/mtd/mediatek,mtk-nfc.yaml#
+> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>> +
+> >>> +title: MediaTek(MTK) SoCs raw NAND FLASH controller (NFC)
+> >>> +
+> >>> +maintainers:
+> >>> +  - Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> >>> +
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    enum:
+> >>> +      - mediatek,mt2701-nfc
+> >>> +      - mediatek,mt2712-nfc
+> >>> +      - mediatek,mt7622-nfc
+> >>> +
+> >>> +  reg:
+> >>> +    items:
+> >>> +      - description: Base physical address and size of NFI.
+> >>> +
+> >>> +  interrupts:
+> >>> +    items:
+> >>> +      - description: NFI interrupt
+> >>> +
+> >>> +  clocks:
+> >>> +    items:
+> >>> +      - description: clock used for the controller
+> >>> +      - description: clock used for the pad
+> >>> +
+> >>> +  clock-names:
+> >>> +    items:
+> >>> +      - const: nfi_clk
+> >>> +      - const: pad_clk
+> >>> +
+> >>> +  ecc-engine:
+> >>> +    description: device-tree node of the required ECC engine.
+> >>> +    $ref: /schemas/types.yaml#/definitions/phandle
+> >>> +
+> >>> +patternProperties:
+> >>> +  "^nand@[a-f0-9]$":
+> >>> +    type: object   =20
+> >>
+> >> This should be instead:
+> >>     $ref: nand-chip.yaml#
+> >>     unevaluatedProperties: false
+> >>
+> >> and then properties below (due to current dtschema limitations) should
+> >> list properties from nand-controller.yaml:
+> >>
+> >>       nand-on-flash-bbt: true
+> >>
+> >> Optionally, we could create additional schema - nand-controller-chip,
+> >> which would be referenced directly by nand-controller and itself would
+> >> ref nand-chip. =20
+> >=20
+> > Isn't this enough? (in linux-next)
+> > https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git/tree/Docu=
+mentation/devicetree/bindings/mtd/nand-controller.yaml?h=3Dmtd/next#n54 =20
+>=20
+> No, I tested it and it does not work as intended. In this particular
+> case. I think this is a limitation of dtschema, because binding itself
+> looks fine. The problem is that you have:
+> 1. mtk-nfc having nand@ children. mtk-nfc references nand-controller
+> which brings these children.
+> 2. However nand-controller while bringing these children does two things:
+> a. ref: nand-chip
+> b. add more propeties
+>=20
+> 3. The mtk-nfc must further extend the nand@ child.
+> 4. If you add "unevaluatedProperties: false" you notice warnings of
+> unevaluated propertie from nand-controller children.
 
-typo: definitions
+Thanks for the details. Any chances this can eventually be fixed at
+dt-schema level?
 
-
-Best regards,
-Krzysztof
-
+Thanks,
+Miqu=C3=A8l
 
