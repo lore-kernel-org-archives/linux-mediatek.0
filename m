@@ -4,71 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66820C04FDE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 09:15:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3CCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 10:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V8RnLDoy8tp25SHwTkiovb8GWGbv3/sxicauJU19K4U=; b=mi6m2RBotNkCKa/Cq+iiJ+HWHD
-	SSD8FQHAXicrkHzBjT/X63/xva50AyU+jzO+FlrUS5wtPcuq2tYrJPDZLTnH+OBF7sTBBwe4P8GQ0
-	7F7nftrWe3nRp+xb2uIL4u+zhlh5b8FAtVg02kCEHy9hT7MK45HXyWvJUVFDtawxV/urnSQ341Zop
-	IjuEF8r9Raw0OboRPytm91uucl2QoiwnoAQunJ16OCHgdcBMHvjs0pevpcYcjlz4xX8TUdUV+vZC1
-	DYNXiQPhcvFze/3V5rswFfg2Fxc4CByH/E1UiuveU32i1J0MLcwbSrOLiuJqQwLJGyTdpex+hh48F
-	C3aJyniQ==;
+	bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=; b=lKQnt5rTICEIkjAShk7GLZDJhN
+	ciegHWOrMq1GRPvNS9Ef1nnX9xbQMw0gAmGbJJTFAz6w4XRIRfeHrixMvKFscMhmp39sySrt/43G0
+	lTNhotx+YCiWIk2iDIwb8veis2MCcdBE4mHiiTfhm5KyZraVuHf+DRJuerKsXUEdGIAarWyyJlLb6
+	9QoRVR55nXEKqee17OmL1q+aKzPvUSCsqkaCdP4Zr/KQvzYjgfrpih93mWAJTQG1Qhw++xyDOzTFZ
+	UfXRFbxqlF7q+S8GeR0R8Ohx73Nrf7pyPJATAr0wZCIKgn+kS4UnJ5U/uLZySGWoMdQM4HBwWB5Kj
+	Duanu2rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3ZTG-00699l-0s; Fri, 09 Dec 2022 09:15:06 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1p3aT8-006Urb-Kn; Fri, 09 Dec 2022 10:19:02 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3ZT5-00696U-9t; Fri, 09 Dec 2022 09:14:57 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id A05ECC000A;
-	Fri,  9 Dec 2022 09:14:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1670577288;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=V8RnLDoy8tp25SHwTkiovb8GWGbv3/sxicauJU19K4U=;
-	b=cYgNkYDoYt41DwhflXDt+gjhOooE64yqVPoCzTiMgMvWATWeW5f8DqUfY9O+zg65GnJTg0
-	kiRvk5BIsHBLHDoVaH9iZm1nGSbiyGiCQapvdwb7kQUJpB46yNb6CiOI/6c3eR64OBfGgX
-	HdXZZ5dOg2htbmcdAg5Tsh3oeA8wSdiXe1fk5rb1nWSEi46x8amCxtEUTObXHJn2Sv7yDl
-	sgZRfzeg8/69B4/zGUo31ma2KUaftT0//Ncm9AENpQ8CsMApR8fUOW68Xxa2bJ+b575oM7
-	iP+cLlJh4g+1kMoFuXGhUH4yXngrD+1Vinb5WGM4Y6Xhbtah1gpnmsQxSSROSQ==
-Date: Fri, 9 Dec 2022 10:14:43 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, Richard Weinberger
- <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
- <gch981213@gmail.com>, linux-mtd@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, benliang.zhao@mediatek.com,
- bin.zhang@mediatek.com
-Subject: Re: [PATCH v3 7/9] dt-bindings: mtd: Split ECC engine with rawnand
- controller
-Message-ID: <20221209101443.77fbbe49@xps-13>
-In-Reply-To: <f3e3a3d0-6d21-c782-38a2-c8b2c36242c3@linaro.org>
-References: <20221208062955.2546-1-xiangsheng.hou@mediatek.com>
-	<20221208062955.2546-8-xiangsheng.hou@mediatek.com>
-	<fe70d964-229a-8bda-a414-e009dd955e5e@linaro.org>
-	<20221208110035.5649a051@xps-13>
-	<f3e3a3d0-6d21-c782-38a2-c8b2c36242c3@linaro.org>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1p3aSw-006UfZ-08
+	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 10:18:51 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 1so6307043lfz.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 02:18:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=;
+        b=i3pJ5Zl8a1/s05t+pot30xPJdKFR8X7DbUHQqO2fWpR3NS7IV9xMH7yPs/PvXLeXj1
+         YsliKZrWIZ9SHauCdh+2/SMnHGrvhA6Hes4DZesF9nM5hAR3JjyoWQlRX8l8H7Sctiza
+         H1oS0rJMvlteo49XLIaiR+pCt8scMj7srITdJDpVyfITifbrTK/gvqpGZoMa9JOVTJvE
+         MsYhaoNDvxe/O57eIcZV6GorlescZblOMkiDtCa3cyhCOs4UtA8DdGlxSwT2RDuKcO5v
+         0ovORGCdPRLBmwJFViw5nZ6TLWcO5gaoTmR6EfdW22S2Y2UJ0Siww/THZdiuFh72msGx
+         Hl/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=;
+        b=WeGSpjheGVuonn+6VSMib+uly74aBPSwIt+bnouoo9AxMipcfA532ON8xS35pWKcG2
+         L7W0/Quk0eFH2cLqg0rkr4/YDKzg7Klj22UoUvyvlp1SAs2jDPGOtM5d3dpkHdRPFtYg
+         FMpxmRX6KajtftY1Hoh01cCvz2l6MFjX9RN5lc24x9BR105T1Mg4Us1bKEq5v1cXiXBO
+         9FRQTC9+S40Qn3Mwlj3BbzCy+HXJKCT705xgEVTHCNWkQCZI0GZDt5xbnTK008EAQmEg
+         NhWtvw1D0aySlrhQw89ZGY/V8SAcP5FtE9QBo4I8qcqCNyPqm1RyEjVfQdB6I66hDuEa
+         Hc7w==
+X-Gm-Message-State: ANoB5pl8GpSvoDmFMTQ7LdblKdBXuHnl5iqFgcwCy31oons5UpoJVkHk
+	Vlgx/EpuZ5wF6K17LGxUQg7G/Q==
+X-Google-Smtp-Source: AA0mqf57GDeyjbTzizTDvwgHZIWKGjktE97SxwOAvab3vKYoBljLv+Jv7y6GOFoRNsx0ysHmTjUQTA==
+X-Received: by 2002:a05:6512:224e:b0:4a4:68b8:c2de with SMTP id i14-20020a056512224e00b004a468b8c2demr1789569lfu.53.1670581127329;
+        Fri, 09 Dec 2022 02:18:47 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id a26-20020a056512201a00b004b5aa1c4d10sm197829lfb.118.2022.12.09.02.18.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Dec 2022 02:18:46 -0800 (PST)
+Message-ID: <6350def8-bb1f-8aeb-4c98-4d02a4c59aed@linaro.org>
+Date: Fri, 9 Dec 2022 11:18:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v3 12/12] dt-bindings: mediatek: mt8188: add mt8188-mt6359
+ document
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ p.zabel@pengutronix.de
+Cc: angelogioacchino.delregno@collabora.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20221208033148.21866-1-trevor.wu@mediatek.com>
+ <20221208033148.21866-13-trevor.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221208033148.21866-13-trevor.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_011455_634363_D2C07939 
-X-CRM114-Status: GOOD (  24.43  )
+X-CRM114-CacheID: sfid-20221209_021850_106358_DBC53B9D 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,116 +100,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On 08/12/2022 04:31, Trevor Wu wrote:
+> Add document for mt8188 board with mt6359.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../bindings/sound/mt8188-mt6359.yaml         | 60 +++++++++++++++++++
+>  1 file changed, 60 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
+> new file mode 100644
+> index 000000000000..eac1c87b693a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
 
-krzysztof.kozlowski@linaro.org wrote on Thu, 8 Dec 2022 11:27:27 +0100:
+Missing vendor prefix. You got comments for it already.
 
-> On 08/12/2022 11:00, Miquel Raynal wrote:
-> > Hi Krzysztof,
-> >=20
-> > krzysztof.kozlowski@linaro.org wrote on Thu, 8 Dec 2022 10:44:17 +0100:
-> >  =20
-> >> On 08/12/2022 07:29, Xiangsheng Hou wrote: =20
-> >>> Split MediaTek ECC engine with rawnand controller and convert to
-> >>> YAML schema.
-> >>>
-> >>> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> >>> ---
-> >>>  .../bindings/mtd/mediatek,mtk-nfc.yaml        | 154 +++++++++++++++
-> >>>  .../mtd/mediatek,nand-ecc-engine.yaml         |  62 ++++++
-> >>>  .../devicetree/bindings/mtd/mtk-nand.txt      | 176 ----------------=
---
-> >>>  3 files changed, 216 insertions(+), 176 deletions(-)
-> >>>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mt=
-k-nfc.yaml
-> >>>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,na=
-nd-ecc-engine.yaml
-> >>>  delete mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.y=
-aml b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
-> >>> new file mode 100644
-> >>> index 000000000000..eb1a44c7ae4e
-> >>> --- /dev/null
-> >>> +++ b/Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
-> >>> @@ -0,0 +1,154 @@
-> >>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> >>> +%YAML 1.2
-> >>> +---
-> >>> +$id: http://devicetree.org/schemas/mtd/mediatek,mtk-nfc.yaml#
-> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >>> +
-> >>> +title: MediaTek(MTK) SoCs raw NAND FLASH controller (NFC)
-> >>> +
-> >>> +maintainers:
-> >>> +  - Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> >>> +
-> >>> +properties:
-> >>> +  compatible:
-> >>> +    enum:
-> >>> +      - mediatek,mt2701-nfc
-> >>> +      - mediatek,mt2712-nfc
-> >>> +      - mediatek,mt7622-nfc
-> >>> +
-> >>> +  reg:
-> >>> +    items:
-> >>> +      - description: Base physical address and size of NFI.
-> >>> +
-> >>> +  interrupts:
-> >>> +    items:
-> >>> +      - description: NFI interrupt
-> >>> +
-> >>> +  clocks:
-> >>> +    items:
-> >>> +      - description: clock used for the controller
-> >>> +      - description: clock used for the pad
-> >>> +
-> >>> +  clock-names:
-> >>> +    items:
-> >>> +      - const: nfi_clk
-> >>> +      - const: pad_clk
-> >>> +
-> >>> +  ecc-engine:
-> >>> +    description: device-tree node of the required ECC engine.
-> >>> +    $ref: /schemas/types.yaml#/definitions/phandle
-> >>> +
-> >>> +patternProperties:
-> >>> +  "^nand@[a-f0-9]$":
-> >>> +    type: object   =20
-> >>
-> >> This should be instead:
-> >>     $ref: nand-chip.yaml#
-> >>     unevaluatedProperties: false
-> >>
-> >> and then properties below (due to current dtschema limitations) should
-> >> list properties from nand-controller.yaml:
-> >>
-> >>       nand-on-flash-bbt: true
-> >>
-> >> Optionally, we could create additional schema - nand-controller-chip,
-> >> which would be referenced directly by nand-controller and itself would
-> >> ref nand-chip. =20
-> >=20
-> > Isn't this enough? (in linux-next)
-> > https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git/tree/Docu=
-mentation/devicetree/bindings/mtd/nand-controller.yaml?h=3Dmtd/next#n54 =20
->=20
-> No, I tested it and it does not work as intended. In this particular
-> case. I think this is a limitation of dtschema, because binding itself
-> looks fine. The problem is that you have:
-> 1. mtk-nfc having nand@ children. mtk-nfc references nand-controller
-> which brings these children.
-> 2. However nand-controller while bringing these children does two things:
-> a. ref: nand-chip
-> b. add more propeties
->=20
-> 3. The mtk-nfc must further extend the nand@ child.
-> 4. If you add "unevaluatedProperties: false" you notice warnings of
-> unevaluated propertie from nand-controller children.
+> @@ -0,0 +1,60 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mt8188-mt6359.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT8188 ASoC sound card
+> +
+> +maintainers:
+> +  - Trevor Wu <trevor.wu@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8188-mt6359-evb
+> +
+> +  model:
+> +    $ref: /schemas/types.yaml#/definitions/string
+> +    description: User specified audio sound card name
+> +
+> +  audio-routing:
+> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+> +    description:
+> +      A list of the connections between audio components. Each entry is a
+> +      sink/source pair of strings. Valid names could be the input or output
+> +      widgets of audio components, power supplies, MicBias of codec and the
+> +      software switch.
+> +
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8188 ASoC platform.
+> +
+> +  mediatek,dptx-codec:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8188 Display Port Tx codec node.
+> +
+> +  mediatek,hdmi-codec:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8188 HDMI codec node.
 
-Thanks for the details. Any chances this can eventually be fixed at
-dt-schema level?
+Why you do not use DAI links for all these?
 
-Thanks,
-Miqu=C3=A8l
+> +
+> +additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - mediatek,platform
+> +
+> +examples:
+> +  - |
+> +
+
+Drop blank line.
+
+> +    sound: mt8188-sound {
+
+Drop label, not used. Use generic node names, so just "sound".
+
+> +        compatible = "mediatek,mt8188-mt6359-evb";
+
+Best regards,
+Krzysztof
+
 
