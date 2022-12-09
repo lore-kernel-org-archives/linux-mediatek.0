@@ -4,88 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC676C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 11:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5629C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 12:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BlvfkF2ZFYuFQpxBnIpN0aFK4kWr5DwTIlUFg1Sxm10=; b=LZkeoUu4zzzr3zQ/aShpCBUzoG
-	pcJg0pPzZsJ01KpXUTNdD1YBSVxt+MOTPDVU8ghIkcqISl084NiJNujPVTmvmIT8Z9dSxrdt/cueQ
-	M2qps1G7EZUITYoy+viXcarLeMHfv7BPMMzOzLtNT8lGs9z8n2JOqE4S6ReY2QBkkVvTsbZrZeWTB
-	jJTkl7+V4yrgiD2FY3xifn0dEo12EOdRSo4LU/3GsOYkiT/BjmX/fwGjmNmyfm2TBEjCESk0y15qQ
-	noXNgDIrO+WSoSFFMs7+IRmoLET8taZlvZzdcNa/7j6ThpZQMEeHaPfaia4ycAzio5A7nsjN3I5nU
-	2AthRFvA==;
+	bh=zLAYh7J7MCcQ9Zr2D9WTagKED7WM0Gt1qiQUujmF1YA=; b=v9uRRIS71jJv4S0CqifdV+Iqja
+	nSMkKbBv2u/M6QpZXaLU7lqgbW+bZDSvezL1fekLBxZSfaINlXE51Yu+q7Tz1Mk4so+1bO5xn3ir0
+	Xpi5TB1eWmHH3PzcgEjihtQ624kdWpjiC9ycVE633L/1LA6PvkePYyzxe9I/OAG8/mHY2JaYffbvx
+	xiviMuffqVBZca+estEQHv/oTTzJg8DngZ7a0qaotvUSicOZ9Uxy27qEeINdNzfArLurIUx2BiiUd
+	UI6q84qazIvVQmABJvAl/Pr87xJaQrSdEF/xZ7SEP1o8fMnQk+cICqGCy8y6O5bxet7B5jtI+m4qK
+	tcozVhmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3bMb-00751T-6e; Fri, 09 Dec 2022 11:16:21 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1p3cYY-007Xvb-1O; Fri, 09 Dec 2022 12:32:46 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3aPw-006TKR-M8
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 10:15:46 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id y25so6279092lfa.9
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 02:15:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BlvfkF2ZFYuFQpxBnIpN0aFK4kWr5DwTIlUFg1Sxm10=;
-        b=iB4EZnlRNYR9XsnIqBEIPTBPZ2s9ORP0ZU5q5t8qP0qfsE1V1SD5UJIlwcXU5e4BFm
-         hjg7dt4F/HGMUh1zYORVDvLvPrIp/6gj8VRMgbyztp9Az9iX1Ai5mGFp2w0jGh3YGAJO
-         F8Pxd+pYMnHp6HwgbBk50hJtPrL0eMR6xW9Sz3tun7+qq7RXyM5F3z1Py3XYMwUC/s+F
-         cSn2n099UHSkGl9tfbf81M/Kde3wmliN5v1T8ZtIhVfoYl5Zmu0VZmd7tI5vllaz/xPF
-         AcF4lNgNIeUKyfuNLO8SiBLRDSFz0bjaGezpNvxlk0M8xzw2u4pp012hc0iPN/6r5bi3
-         rPbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BlvfkF2ZFYuFQpxBnIpN0aFK4kWr5DwTIlUFg1Sxm10=;
-        b=ldEUkKFQraCiU6r8VOhRk1pAJp4WYBQSKsgTB5I6eZrjpVEPRf15zPx7hNXzWL+d/p
-         1imVPQLv6WuKxJwmjAmqtbrMHk9/cGF8Pn53WP4SnOVDY8eBJVVQN0aU0fHSs2c5BFBE
-         aL+jjODucopMv28xr5eNG8BiMA2BEXXhAI+oElxHPwvK4ZG7bXT6X4ONMPuFA3xpVGIj
-         rvEE8CR0H0VFC6lkvIhDPglUt4r3XNqO1a3izU2PAWQSOoFUg/EnU5Whz08PjTQE5SS5
-         +jlmDtfJn2Q4mob1r3y6XhoiItfqQayrFJCcEWvTWuP+Pvcn9pT7Dq/+UvJv6vc4YdDG
-         RSPA==
-X-Gm-Message-State: ANoB5pmxn8r+KVQ5PK1qyJgBexfJZH8Fu+hlV1Vg7cD3ebPov9IdF3JR
-	JAAKuCjD6K+DiWvzq+5ev5u0mw==
-X-Google-Smtp-Source: AA0mqf4PV54SFqHCdc0zs8HGqB2QDXjAeslsLxGBJT/SW25dK9NlvFl04szs2leJ2cSdPYldgZKSqg==
-X-Received: by 2002:a05:6512:10c3:b0:4b5:34c4:78a4 with SMTP id k3-20020a05651210c300b004b534c478a4mr1695393lfg.30.1670580939515;
-        Fri, 09 Dec 2022 02:15:39 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id a19-20020ac25053000000b004b5789ecdd7sm191371lfm.274.2022.12.09.02.15.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 02:15:39 -0800 (PST)
-Message-ID: <d7d9f3c7-b3e3-1e13-a80f-c7bf7b38a5b1@linaro.org>
-Date: Fri, 9 Dec 2022 11:15:37 +0100
+	id 1p3cYV-007Xsq-7H
+	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 12:32:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=zLAYh7J7MCcQ9Zr2D9WTagKED7WM0Gt1qiQUujmF1YA=; b=TwWqTrXdFcacPSiy24umCeOiF6
+	esL/SyPs6YIdxKb7yFzj91N0p7c60NdAD3U6YwRdBl7pHh5ndUkZN2EtE2ohaQKnyPFHe1vr+ooxi
+	zYvtJylNmnNMMi56AtlcqIfo4BbwJ+cjY2P55ej1d14azZNoNgGNHpok7xMWxbPomnFg=;
+Received: from p200300daa7161301844ecc957173cc8d.dip0.t-ipconnect.de ([2003:da:a716:1301:844e:cc95:7173:cc8d] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1p3cYC-007P8o-OS; Fri, 09 Dec 2022 13:32:24 +0100
+Message-ID: <c4f01e3e-4ae6-3d60-4fd0-b8d8bc5f4573@nbd.name>
+Date: Fri, 9 Dec 2022 13:32:24 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v3 10/12] dt-bindings: mediatek: mt8188: add audio afe
- document
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.5.1
+Subject: Re: [PATCH,v2] wifi: mt76: mt7915: add wds support when wed is
+ enabled
 Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- p.zabel@pengutronix.de
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20221208033148.21866-1-trevor.wu@mediatek.com>
- <20221208033148.21866-11-trevor.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221208033148.21866-11-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Sujuan Chen <sujuan.chen@mediatek.com>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>,
+ Haitao Shang <haitao.shang@mediatek.com>, linux-mediatek@lists.infradead.org
+References: <e603722d58079af98c57a3dc117274d824d1d832.1669798063.git.sujuan.chen@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <e603722d58079af98c57a3dc117274d824d1d832.1669798063.git.sujuan.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_021544_829942_3B71FAE4 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20221209_043243_398041_B6B7F654 
+X-CRM114-Status: GOOD (  19.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,192 +74,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/12/2022 04:31, Trevor Wu wrote:
-> Add mt8188 audio afe document.
-
-Use subject prefixes matching the subsystem (git log --oneline -- ...).
-
+On 30.11.22 10:18, Sujuan Chen wrote:
+> The current WED only supports 256 wcid, whereas mt7986 can support up to 512 entries,
+> so firmware provides a rule to get sta_info by DA when wcid is set to 0x3ff by txd.
+> Also, WED provides a register to overwrite txd wcid, that is, wcid[9:8] can
+> be overwritten by 0x3 and wcid[7:0] is set to 0xff by host driver.
 > 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> However, firmware is unable to get sta_info from DA as DA != RA for 4addr cases,
+> so firmware and wifi host driver both use wcid (256 - 271) and (768 ~ 783)
+> for sync up to get correct sta_info
+> 
+> Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
+> Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
+> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 > ---
->  .../devicetree/bindings/sound/mt8188-afe.yaml | 196 ++++++++++++++++++
->  1 file changed, 196 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mt8188-afe.yaml
+> v2:
+>   - drop duplicate settings
+>   - reduce the patch size by redefining mt76_wcid_alloc
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt76.h     |  6 +++
+>   .../net/wireless/mediatek/mt76/mt7915/main.c  | 24 +++++++++--
+>   .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 13 +++++-
+>   .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
+>   drivers/net/wireless/mediatek/mt76/util.c     | 40 +++++++++++++++++--
+>   drivers/net/wireless/mediatek/mt76/util.h     |  7 +++-
+>   6 files changed, 82 insertions(+), 9 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mt8188-afe.yaml
-> new file mode 100644
-> index 000000000000..6ab26494d924
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mt8188-afe.yaml
 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> index c40b6098f19a..46a9e4f0396e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> @@ -1115,6 +1122,13 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
+>   	else
+>   		clear_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
+>   
+> +	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
+> +	    !is_mt7915(&dev->mt76)) {
+> +		mt7915_sta_remove(hw, vif, sta);
+> +		mt76_sta_pre_rcu_remove(hw, vif, sta);
+> +		mt7915_sta_add(hw, vif, sta);
+> +	}
+> +
+>   	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
+>   }
+>   
+I suspect that this may a bit racy if there is concurrent tx activity 
+(e.g. for EAP auth). Not sure if this could cause problems for the 
+firmware or other kinds of bugs.
 
-This is a friendly reminder during the review process.
+While my idea may need some rework of the existing functions, I think a 
+better flow would be:
 
-It seems my previous comments were not fully addressed. Maybe my
-feedback got lost between the quotes, maybe you just forgot to apply it.
-Please go back to the previous discussion and either implement all
-requested changes or keep discussing them.
+1. mt76_sta_pre_rcu_remove
+2. save old wcid
+3. mt7915_sta_add
+4. synchronize_rcu()
+5. remove firmware state for old wcid entry
 
-Thank you.
-
-Comment was about filename matching compatible, so with vendor prefix.
-
-> @@ -0,0 +1,196 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mt8188-afe.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek AFE PCM controller for mt8188
-> +
-> +maintainers:
-> +  - Trevor Wu <trevor.wu@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8188-afe
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  reset-names:
-> +    const: audiosys
-> +
-> +  mediatek,topckgen:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of the mediatek topckgen controller
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: 26M clock
-> +      - description: audio pll1 clock
-> +      - description: audio pll2 clock
-> +      - description: clock divider for i2si1_mck
-> +      - description: clock divider for i2si2_mck
-> +      - description: clock divider for i2so1_mck
-> +      - description: clock divider for i2so2_mck
-> +      - description: clock divider for dptx_mck
-> +      - description: a1sys hoping clock
-> +      - description: audio intbus clock
-> +      - description: audio hires clock
-> +      - description: audio local bus clock
-> +      - description: mux for dptx_mck
-> +      - description: mux for i2so1_mck
-> +      - description: mux for i2so2_mck
-> +      - description: mux for i2si1_mck
-> +      - description: mux for i2si2_mck
-> +      - description: audio 26m clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: clk26m
-> +      - const: apll1_ck
-> +      - const: apll2_ck
-> +      - const: apll12_div0
-> +      - const: apll12_div1
-> +      - const: apll12_div2
-> +      - const: apll12_div3
-> +      - const: apll12_div9
-> +      - const: a1sys_hp_sel
-> +      - const: aud_intbus_sel
-> +      - const: audio_h_sel
-> +      - const: audio_local_bus_sel
-> +      - const: dptx_m_sel
-> +      - const: i2so1_m_sel
-> +      - const: i2so2_m_sel
-> +      - const: i2si1_m_sel
-> +      - const: i2si2_m_sel
-> +      - const: adsp_audio_26m
-> +
-> +patternProperties:
-> +  "^mediatek,etdm-in[1-2]-chn-disabled$":
-> +    $ref: /schemas/types.yaml#/definitions/uint8-array
-> +    minItems: 1
-> +    maxItems: 16
-> +    description:
-> +      By default, all data received from ETDM pins will be outputed to
-> +      memory. etdm in supports disable_out in direct mode(w/o interconn).
-> +      User can specify the channel ID which they hope dropping and then
-> +      the specified channel won't be seen on memory.
-
-So we know what are the IDs but it's a mystery what are the values.
-Especially with unique values - how any of these should case that
-channel "won't be seen in memory"?
-
-> +    uniqueItems: true
-> +    items:
-> +      minimum: 0
-> +      maximum: 15
-> +
-> +  "^mediatek,etdm-in[1-2]-mclk-always-on-rate-hz$":
-> +    description: Specify etdm in mclk output rate for always on case.
-
-How is it different than assigned-clock-rates?
-
-> +
-> +  "^mediatek,etdm-out[1-3]-mclk-always-on-rate-hz$":
-> +    description: Specify etdm out mclk output rate for always on case.
-> +
-> +  "^mediatek,etdm-in[1-2]-multi-pin-mode$":
-> +    type: boolean
-> +    description: if present, the etdm data mode is I2S.
-> +
-> +  "^mediatek,etdm-out[1-3]-multi-pin-mode$":
-> +    type: boolean
-> +    description: if present, the etdm data mode is I2S.
-> +
-> +  "^mediatek,etdm-in[1-2]-cowork-source$":
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      etdm modules can share the same external clock pin. Specify
-> +      which etdm clock source is required by this etdm in moudule.
-
-typo: module
-
-> +    enum:
-> +      - 0 # etdm1_in
-> +      - 1 # etdm2_in
-> +      - 2 # etdm1_out
-
-I don't get. This suggests that etdm1_out can be clock source of
-etdm-in1. Or etdm1_in can be clock source of etdm-in1... It does not
-make sense...
-
-> +      - 3 # etdm2_out
-> +
-> +  "^mediatek,etdm-out[1-2]-cowork-source$":
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: |
-> +      etdm modules can share the same external clock pin. Specify
-> +      which etdm clock source is required by this etdm out moudule.
-> +    enum:
-> +      - 0 # etdm1_in
-> +      - 1 # etdm2_in
-> +      - 2 # etdm1_out
-> +      - 3 # etdm2_out
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - resets
-> +  - reset-names
-> +  - mediatek,topckgen
-> +  - power-domains
-> +  - clocks
-> +  - clock-names
-> +
-Best regards,
-Krzysztof
-
+- Felix
 
