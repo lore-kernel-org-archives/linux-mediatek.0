@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3CCC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 10:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35F4EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 10:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=; b=lKQnt5rTICEIkjAShk7GLZDJhN
-	ciegHWOrMq1GRPvNS9Ef1nnX9xbQMw0gAmGbJJTFAz6w4XRIRfeHrixMvKFscMhmp39sySrt/43G0
-	lTNhotx+YCiWIk2iDIwb8veis2MCcdBE4mHiiTfhm5KyZraVuHf+DRJuerKsXUEdGIAarWyyJlLb6
-	9QoRVR55nXEKqee17OmL1q+aKzPvUSCsqkaCdP4Zr/KQvzYjgfrpih93mWAJTQG1Qhw++xyDOzTFZ
-	UfXRFbxqlF7q+S8GeR0R8Ohx73Nrf7pyPJATAr0wZCIKgn+kS4UnJ5U/uLZySGWoMdQM4HBwWB5Kj
-	Duanu2rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3vmtq1hOZ3NbQLZ244kSlJ++oJfu1QbFDSzp2jnz5lg=; b=aXhRKGk53hOH86WO+QM9H5iiZI
+	V7wy1Egw7yPJRlONjH/ILSWu+QS8eD2lY80HdYWSC9/usN/jWL8LOIRid0ANvQ6nn7wychZP58vO+
+	YT581H7FwSXrB8RQ+8p6fIf6tjlv/5kgunlFZYbrmhW0y9WEwzNNYhLxZGx9Z+JLXhLTGTUbrVLLW
+	xtN9XyuwhqpOP1osg+vL+Xjl7xOZJTOhizKDxOBuQXT44UyF+PnERC8U0WIjfyA1AZVAD1IvErIHH
+	3UhZ2ppYHkHktjnhsP6xtG+cbsGltD8UWmqyI3lqd+dBtcktNPtlp4NbkpmL8Zrq3sTikC3CWThTm
+	s3/ADRrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3aT8-006Urb-Kn; Fri, 09 Dec 2022 10:19:02 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1p3aZ0-006aMN-5G; Fri, 09 Dec 2022 10:25:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3aSw-006UfZ-08
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 10:18:51 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 1so6307043lfz.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 02:18:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=;
-        b=i3pJ5Zl8a1/s05t+pot30xPJdKFR8X7DbUHQqO2fWpR3NS7IV9xMH7yPs/PvXLeXj1
-         YsliKZrWIZ9SHauCdh+2/SMnHGrvhA6Hes4DZesF9nM5hAR3JjyoWQlRX8l8H7Sctiza
-         H1oS0rJMvlteo49XLIaiR+pCt8scMj7srITdJDpVyfITifbrTK/gvqpGZoMa9JOVTJvE
-         MsYhaoNDvxe/O57eIcZV6GorlescZblOMkiDtCa3cyhCOs4UtA8DdGlxSwT2RDuKcO5v
-         0ovORGCdPRLBmwJFViw5nZ6TLWcO5gaoTmR6EfdW22S2Y2UJ0Siww/THZdiuFh72msGx
-         Hl/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=x00HNX5290w6ocB8BzuOCSV57L/qluq8fXghF2f6Urk=;
-        b=WeGSpjheGVuonn+6VSMib+uly74aBPSwIt+bnouoo9AxMipcfA532ON8xS35pWKcG2
-         L7W0/Quk0eFH2cLqg0rkr4/YDKzg7Klj22UoUvyvlp1SAs2jDPGOtM5d3dpkHdRPFtYg
-         FMpxmRX6KajtftY1Hoh01cCvz2l6MFjX9RN5lc24x9BR105T1Mg4Us1bKEq5v1cXiXBO
-         9FRQTC9+S40Qn3Mwlj3BbzCy+HXJKCT705xgEVTHCNWkQCZI0GZDt5xbnTK008EAQmEg
-         NhWtvw1D0aySlrhQw89ZGY/V8SAcP5FtE9QBo4I8qcqCNyPqm1RyEjVfQdB6I66hDuEa
-         Hc7w==
-X-Gm-Message-State: ANoB5pl8GpSvoDmFMTQ7LdblKdBXuHnl5iqFgcwCy31oons5UpoJVkHk
-	Vlgx/EpuZ5wF6K17LGxUQg7G/Q==
-X-Google-Smtp-Source: AA0mqf57GDeyjbTzizTDvwgHZIWKGjktE97SxwOAvab3vKYoBljLv+Jv7y6GOFoRNsx0ysHmTjUQTA==
-X-Received: by 2002:a05:6512:224e:b0:4a4:68b8:c2de with SMTP id i14-20020a056512224e00b004a468b8c2demr1789569lfu.53.1670581127329;
-        Fri, 09 Dec 2022 02:18:47 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id a26-20020a056512201a00b004b5aa1c4d10sm197829lfb.118.2022.12.09.02.18.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 02:18:46 -0800 (PST)
-Message-ID: <6350def8-bb1f-8aeb-4c98-4d02a4c59aed@linaro.org>
-Date: Fri, 9 Dec 2022 11:18:45 +0100
+	id 1p3aYw-006aFZ-QX; Fri, 09 Dec 2022 10:25:04 +0000
+X-UUID: bebd75a2a6704641a4fa95076401ab98-20221209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3vmtq1hOZ3NbQLZ244kSlJ++oJfu1QbFDSzp2jnz5lg=;
+	b=pQeAKZL++xkmnWz6QI4rhUdZO85/w+oEHf0wygBtuR+wpxi069ZOEOHjrRn1yaFa/Zis0OE2mcLi3JhndusAfHycjZ5oPPZS6jKYs9244RU241bHuA/+Wn3uC8Gj/mQbBGs9aveSQ83ve8CRiG7mSlQQHI97d59RfbPg/kYkkgw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:fe5df7fc-fc47-4c26-82dc-9916ceb82d58,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.14,REQID:fe5df7fc-fc47-4c26-82dc-9916ceb82d58,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:dcaaed0,CLOUDID:986122d2-652d-43fd-a13a-a5dd3c69a43d,B
+	ulkID:221209182448AKWIGKXJ,BulkQuantity:2,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: bebd75a2a6704641a4fa95076401ab98-20221209
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <mason.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 514787823; Fri, 09 Dec 2022 03:24:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 9 Dec 2022 18:24:21 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 9 Dec 2022 18:24:20 +0800
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>, "James E . J . Bottomley"
+	<jejb@linux.ibm.com>, "Martin K . Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
+	Stanley Chu <stanley.chu@mediatek.com>, Jinyoung Choi
+	<j-young.choi@samsung.com>
+CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Peter Wang <peter.wang@mediatek.com>, Peng Zhou <peng.zhou@mediatek.com>,
+	<wsd_upstream@mediatek.com>, Mason Zhang <Mason.Zhang@mediatek.com>
+Subject: [PATCH v3 1/1] scsi: ufs: core: fix device management cmd timeout flow
+Date: Fri, 9 Dec 2022 18:13:22 +0800
+Message-ID: <20221209101321.30671-1-mason.zhang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v3 12/12] dt-bindings: mediatek: mt8188: add mt8188-mt6359
- document
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- p.zabel@pengutronix.de
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20221208033148.21866-1-trevor.wu@mediatek.com>
- <20221208033148.21866-13-trevor.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221208033148.21866-13-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_021850_106358_DBC53B9D 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20221209_022502_892142_6B614122 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,85 +85,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/12/2022 04:31, Trevor Wu wrote:
-> Add document for mt8188 board with mt6359.
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->  .../bindings/sound/mt8188-mt6359.yaml         | 60 +++++++++++++++++++
->  1 file changed, 60 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
-> new file mode 100644
-> index 000000000000..eac1c87b693a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mt8188-mt6359.yaml
+From: Mason Zhang <Mason.Zhang@mediatek.com>
 
-Missing vendor prefix. You got comments for it already.
+In ufs error handler flow, host will send device management cmd(NOP OUT)
+to device for recovery link. If cmd response timeout, and clear doorbell
+fail, ufshcd_wait_for_dev_cmd will do nothing and return,
+hba->dev_cmd.complete struct not set to null.
 
-> @@ -0,0 +1,60 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mt8188-mt6359.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8188 ASoC sound card
-> +
-> +maintainers:
-> +  - Trevor Wu <trevor.wu@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8188-mt6359-evb
-> +
-> +  model:
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +    description: User specified audio sound card name
-> +
-> +  audio-routing:
-> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> +    description:
-> +      A list of the connections between audio components. Each entry is a
-> +      sink/source pair of strings. Valid names could be the input or output
-> +      widgets of audio components, power supplies, MicBias of codec and the
-> +      software switch.
-> +
-> +  mediatek,platform:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of MT8188 ASoC platform.
-> +
-> +  mediatek,dptx-codec:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of MT8188 Display Port Tx codec node.
-> +
-> +  mediatek,hdmi-codec:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of MT8188 HDMI codec node.
+In this time, if cmd has been responsed by device, then it will
+call complete() in __ufshcd_transfer_req_compl, because of complete
+struct is alloced in stack, then the KE will occur.
 
-Why you do not use DAI links for all these?
+Fix the following crash:
+  ipanic_die+0x24/0x38 [mrdump]
+  die+0x344/0x748
+  arm64_notify_die+0x44/0x104
+  do_debug_exception+0x104/0x1e0
+  el1_dbg+0x38/0x54
+  el1_sync_handler+0x40/0x88
+  el1_sync+0x8c/0x140
+  queued_spin_lock_slowpath+0x2e4/0x3c0
+  __ufshcd_transfer_req_compl+0x3b0/0x1164
+  ufshcd_trc_handler+0x15c/0x308
+  ufshcd_host_reset_and_restore+0x54/0x260
+  ufshcd_reset_and_restore+0x28c/0x57c
+  ufshcd_err_handler+0xeb8/0x1b6c
+  process_one_work+0x288/0x964
+  worker_thread+0x4bc/0xc7c
+  kthread+0x15c/0x264
+  ret_from_fork+0x10/0x30
 
-> +
-> +additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - mediatek,platform
-> +
-> +examples:
-> +  - |
-> +
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+---
+changes since v2:
+* Modified comment after clear doorbell.
+  Updated the patch in v3.
+changes since v1:
+* Remove change id.
+---
+ drivers/ufs/core/ufshcd.c | 46 ++++++++++++++++++---------------------
+ 1 file changed, 21 insertions(+), 25 deletions(-)
 
-Drop blank line.
-
-> +    sound: mt8188-sound {
-
-Drop label, not used. Use generic node names, so just "sound".
-
-> +        compatible = "mediatek,mt8188-mt6359-evb";
-
-Best regards,
-Krzysztof
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index b1f59a5fe632..6fe51b8d41f9 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -2979,35 +2979,31 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
+ 		err = -ETIMEDOUT;
+ 		dev_dbg(hba->dev, "%s: dev_cmd request timedout, tag %d\n",
+ 			__func__, lrbp->task_tag);
+-		if (ufshcd_clear_cmds(hba, 1U << lrbp->task_tag) == 0) {
++		if (ufshcd_clear_cmds(hba, 1U << lrbp->task_tag) == 0)
+ 			/* successfully cleared the command, retry if needed */
+ 			err = -EAGAIN;
++		/*
++		 * in case of an error, after clearing the doorbell,
++		 * we also need to clear the task tag bit from the
++		 * outstanding_reqs variable.
++		 */
++		spin_lock_irqsave(&hba->outstanding_lock, flags);
++		pending = test_bit(lrbp->task_tag,
++				   &hba->outstanding_reqs);
++		if (pending) {
++			hba->dev_cmd.complete = NULL;
++			__clear_bit(lrbp->task_tag,
++				    &hba->outstanding_reqs);
++		}
++		spin_unlock_irqrestore(&hba->outstanding_lock, flags);
++
++		if (!pending) {
+ 			/*
+-			 * Since clearing the command succeeded we also need to
+-			 * clear the task tag bit from the outstanding_reqs
+-			 * variable.
++			 * The completion handler ran while we tried to
++			 * clear the command.
+ 			 */
+-			spin_lock_irqsave(&hba->outstanding_lock, flags);
+-			pending = test_bit(lrbp->task_tag,
+-					   &hba->outstanding_reqs);
+-			if (pending) {
+-				hba->dev_cmd.complete = NULL;
+-				__clear_bit(lrbp->task_tag,
+-					    &hba->outstanding_reqs);
+-			}
+-			spin_unlock_irqrestore(&hba->outstanding_lock, flags);
+-
+-			if (!pending) {
+-				/*
+-				 * The completion handler ran while we tried to
+-				 * clear the command.
+-				 */
+-				time_left = 1;
+-				goto retry;
+-			}
+-		} else {
+-			dev_err(hba->dev, "%s: failed to clear tag %d\n",
+-				__func__, lrbp->task_tag);
++			time_left = 1;
++			goto retry;
+ 		}
+ 	}
+ 
+-- 
+2.18.0
 
 
