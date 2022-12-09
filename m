@@ -4,90 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6C1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 08:53:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D80C04FDE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Dec 2022 09:11:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=; b=zp9vMd8gREAx7W3beMQ8ghNeZz
-	oKhySZGI6Ftd23l8GA6EBi+R0t7XQSHaucvaIMY68yzpA1lWI0xgNTYkQWHmvStXSiGHpAc/QxxjU
-	c6rygF1Bqtr2EIPZn5Eyqguv+XR1YtkFG3UUNZ5Wj8f8s3Blxrauv2BF+tOPsPTjQPx3FoB7qQI3h
-	So74PoGIPKeEt8WfhAwrtqUs+Z5/66/K4dZgg/EsjAtQkyeerOuzwdBNEfroA89pZ5HFfUzIN09rw
-	kG0kOHkBtE7YJ4496vBNmv7NTdYAUjJFWmu8uskeyPcCIhiYhvIOUnzhBRwf9l+y8CKJShDUZtk/u
-	frSCggAg==;
+	bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=; b=K7jHFzfitlYVEh8i2s3s6/lBjc
+	w/38Q5+/kglI7Jb6FY4s57R4R7Ebd1klMaeY7wDZFb7pbnkdHqlDi21N5AQd2pWGqSPZBlpl79oaV
+	Ltrk8jiwE1fFEu2QG6yRAd1glbv2IhI4+SZOuLdKjTfN4d3py9OiBFyzrRo4u+5BZ2cLPPFwqFnHm
+	Ohpq1lE9IQQVOyS7yWw2Ry72nMQpyhCVVcW6LpS4Tk1qey2B+cBlTCv+dbV/5R57DBTTvAvSdiELS
+	AbeR5RtM0T464SMdnF4gY7miiqYFKWTrspR8s4xQlshSVPuxF8jgPv0Xsb7EU6xDhvw2M4ETsYs4/
+	ViO2/L1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Z7m-0060Xa-Ra; Fri, 09 Dec 2022 08:52:54 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1p3ZPK-0068Am-Bm; Fri, 09 Dec 2022 09:11:02 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3Z7h-0060Um-5e
-	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 08:52:50 +0000
-Received: by mail-lf1-x129.google.com with SMTP id d6so5970114lfs.10
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 00:52:47 -0800 (PST)
+	id 1p3ZP9-00688V-I2
+	for linux-mediatek@lists.infradead.org; Fri, 09 Dec 2022 09:10:52 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id b13so6075810lfo.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Dec 2022 01:10:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=;
-        b=cIiLqmfm+vYdVKmG+GNYNX5be0nbheIFzXVWtAlhWk+RkRzT7DmA5ieXvUPqdLNHJg
-         7qKKpuS8ObSV0MARDlnM5CAo+7MDTX4ak8jXAHFIS0mwxsbjEh6pZXJaa5jxfXT/uZL4
-         MGplh7lO0U5fL0q1KZIf6j9+8p65W1FDt94xvRdrW8kjyd89qAvLVK+gWiIX5yZ3Os2D
-         phjLCO4Rjv9T5HxiLUb7PLxZ1moW0LtDI4OdEbwwKryEji5GMBwNNeSkBKt4Gk9UX5JJ
-         mbMesFVcZTlLQFBYv+zCzyyYw5Wjis1uudk2Z0hR3i+EWE0JSofRkSx+MA8lLXRhvjcf
-         oDZQ==
+        bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=;
+        b=KVD+7kE5lL+pTeO+6c4//dBqt1KZPY3HulvHg+MoL6IdGUPCh+ks/OvIUzmXSBeEZw
+         bcZmjv0cv6XT05ZOc/dnJzmDozJjL246ZFrSno03viiWBYVODbdpzpHEIhmdSeDfI16V
+         flZB2ySxV2+7+m77ICY/k1pWlMzq7oD6sXN6d+ielbPXEnbl93/eVV86wfJ5qCjOVoDD
+         lr17Kjufd+bsqRgl9pAc3iYAlKiubrAR7RZ+fTNNA8R+731rLSlX0xBLtpZKgmnf3++J
+         gcv59wEAqSoD9TDOswZUYuIXE+l+SF61eJnC0ojJnkqOoxulqUbiwQwxvavlZyvMLKY8
+         PhMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=t8D1QHQCpi29rzUZgRP89fJD5YqRNF7ocoA5T9SiKjU=;
-        b=I204HtvNS3ULBA8AsrvHC0Yag57va+tuosOPF6aHEyUmOprFX7DSokbDAKD9QVG0n0
-         s9TNrkoOJrzCABGVrpfwm1WOgW/KPDl/YCi4jw1QiPv45Gea8+xjeLgGv7EzFQ8pQoAI
-         lJC2dCi5despGDwUS1HUFlJiMVfELw2IEOr0LVrCNSeDhXm8StE3KraUzR89SdtVXVla
-         7h0CfDrOQl07UOII1KuGdJudAgiCRM4LV2lnwzPyn7Cx2ev5iGQFUQEoZX3JfyJgRz+K
-         DtGybjeS1xuBpWbwbCuPn3XTrGK1XJ9Dd8dP4o5WgbpKGF8X0L4Gu67DXmm71dWrPC7t
-         m6mw==
-X-Gm-Message-State: ANoB5pnVB+ak7txlTDUt9WMDa+CugvstqEzzVWVDIFAQlyH8rKdXl8Rc
-	4DWmtlCsu2oUtSYVwbI7QYBB1g==
-X-Google-Smtp-Source: AA0mqf4s8dwZrPgP5uaIipu4vmk7CP2r3nM7cQ0pGxmNAWVLRsr7PWOLyYeq0TYAdB7CiUq+wPdd9g==
-X-Received: by 2002:a05:6512:10cd:b0:4b4:b8b9:e304 with SMTP id k13-20020a05651210cd00b004b4b8b9e304mr1712294lfg.22.1670575965824;
-        Fri, 09 Dec 2022 00:52:45 -0800 (PST)
+        bh=H3FnNOdvI4rWjnHyWgDozXRbaw2AYIAUlqPWPsqxkL4=;
+        b=fqxjQQPUgnGkneakJPZYmdgKnYeg+BSitiFAA7OG1GUTMW0+HLVpOkz883vkoit7J/
+         fHGw6oebhejWoJ3i1IArgKBk/LTSvU0iKatLRrSXSXNfXt5bX+KRC7b7/ze9JmbmFirv
+         BdqpNd3RrkkyMAzWaE4aitcZPHcB11/lu+6RSa9wQNDZri7B2RiQuKqoS4jEhOiK2SSK
+         Xj2YVNNoArztIRYsnOA3ev5KEK3ZbursBv+Xy5/Oq+oyFel/ca/4Z1wfiCtdTWxeqqtD
+         Xd7FTbLlXjkaDSuwDCbzWE9IT9djAR4LyA20HFBFltMB3AfOF9ZbLzTOyX9pqHLTs6bH
+         dIqA==
+X-Gm-Message-State: ANoB5pkMNHWOmxy7h9OXBAcQ69x5zBFFyB2e5h/S1+Qg8wLuRyDY7f6B
+	CvO867Ifg9KM0CUjw5CuFsgmnA==
+X-Google-Smtp-Source: AA0mqf7xEULdEwSJaPke8khzMoilV4EuukcDjEPYH9CA6fV2c9nDO1TqTdVqHoLoVpg4ATBzhLO7RQ==
+X-Received: by 2002:a05:6512:3d05:b0:4ac:959a:a23 with SMTP id d5-20020a0565123d0500b004ac959a0a23mr1775763lfv.7.1670577049659;
+        Fri, 09 Dec 2022 01:10:49 -0800 (PST)
 Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id j7-20020a056512344700b004a100c21eaesm172948lfr.97.2022.12.09.00.52.44
+        by smtp.gmail.com with ESMTPSA id y17-20020ac24211000000b004b01305732bsm175657lfh.216.2022.12.09.01.10.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Dec 2022 00:52:45 -0800 (PST)
-Message-ID: <500f9bdf-0de1-d6b2-1f09-11128699ce3a@linaro.org>
-Date: Fri, 9 Dec 2022 09:52:43 +0100
+        Fri, 09 Dec 2022 01:10:49 -0800 (PST)
+Message-ID: <15d9461c-5b31-dfb5-ec9d-4b79ea120aeb@linaro.org>
+Date: Fri, 9 Dec 2022 10:10:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v4 7/9] dt-bindings: mtd: Split ECC engine with rawnand
- controller
+Subject: Re: [PATCH v4 net-next 3/9] dt-bindings: net: dsa: utilize base
+ definitions for standard dsa switches
 Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Rob Herring <robh+dt@kernel.org>,
+To: Colin Foster <colin.foster@in-advantage.com>,
+ linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, netdev@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
+ Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?B?bsOnIMOcTkFM?=
+ <arinc.unal@arinc9.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
+ Woojung Huh <woojung.huh@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
- Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- benliang.zhao@mediatek.com, bin.zhang@mediatek.com
-References: <20221209064317.2828-1-xiangsheng.hou@mediatek.com>
- <20221209064317.2828-8-xiangsheng.hou@mediatek.com>
+ Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
+ <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>,
+ George McCollister <george.mccollister@gmail.com>,
+ Rob Herring <robh@kernel.org>
+References: <20221202204559.162619-1-colin.foster@in-advantage.com>
+ <20221202204559.162619-4-colin.foster@in-advantage.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221209064317.2828-8-xiangsheng.hou@mediatek.com>
+In-Reply-To: <20221202204559.162619-4-colin.foster@in-advantage.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_005249_219216_989BF3F8 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20221209_011051_634530_9F170A48 
+X-CRM114-Status: UNSURE (   9.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,15 +116,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/12/2022 07:43, Xiangsheng Hou wrote:
-> Split MediaTek ECC engine with rawnand controller and convert to
-> YAML schema.
+On 02/12/2022 21:45, Colin Foster wrote:
+> DSA switches can fall into one of two categories: switches where all ports
+> follow standard '(ethernet-)?port' properties, and switches that have
+> additional properties for the ports.
 > 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> ---
+> The scenario where DSA ports are all standardized can be handled by
+> swtiches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
 
+typo: switches
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> The scenario where DSA ports require additional properties can reference
+> '$dsa.yaml#' directly. This will allow switches to reference these standard
+> defitions of the DSA switch, but add additional properties under the port
+
+typo: definitions
+
 
 Best regards,
 Krzysztof
