@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEBF8C10F1B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 08:32:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A432C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 09:19:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ecg1Ipv3buo16sdVZWJCgG3SlQX6vGOmvjh9A8JgIBs=; b=aMzVeTdKb/jX9mjkFoXSe65fXf
-	PGc38RmG63qr/xLnjnc0iBweQ0NjCQPQmSXVqs0jS+QRUl7OFftQy3xuNVqiQr00ud5rWARf+b8yj
-	l3BrQydW9ub74Whs0iEJh9IaBLD82kuWDUkfYGvdZpePng2cM0OE/lp48mj8ADqJbZCixpG3WaDds
-	6dWMg2LC1+pIQM4kSGD0dFw7He5Ddq7dlVRCIDo+OjaEHq0+XSyxO7W6V6Ff6CtZ6tcQ7Mk5gnAE/
-	8dRPhnBJQ8G3BDkr8zxVUbXqhk668O//hkGkX30I8MTuPmL0+bQImsWnS5FO9nzqZ1KGM2JUSWGbN
-	oV2O9EIw==;
+	bh=R2XiylTQErmNqhnk2H16IbiAtQ1nMQnKy+M2P8PQ1HQ=; b=kcl7IKOMmNUG/rui/maqeX2GaN
+	L9zsKe55r46tkTNVS2oBkvLZqseM/g3K45wSSB5F4GAnscadMFKg3fNCwK+lZRMnTUMLW37Ym8gAM
+	0CI9Lj2UeDjpgDMllPcHg66E8eCvQuJW99KJ2s9iAHdwFmRbCVdUO6jCtBSS06P7O8h/3LfxqhcOD
+	RO4LFawpXsyRcLwejEoY15ltMSr/cjCtpdI6RmQDoSoqOBARb/1SXSDvfkCzLo2QPHtE4tTfLh1XV
+	FEE4Ylygv/GAdmuSdFCrypvqJy9kIhCIOq7yIvyPkODmrn8/ahMmyxD+6Yf7MgM0b0BDLwV979g1U
+	a0laeRwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3vHh-00FUlu-UR; Sat, 10 Dec 2022 08:32:37 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p3w12-00Fj4w-Ku; Sat, 10 Dec 2022 09:19:28 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3vHe-00FUkP-0I; Sat, 10 Dec 2022 08:32:35 +0000
-X-UUID: 0e9abe4aab1f4464841d834531314a6e-20221210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ecg1Ipv3buo16sdVZWJCgG3SlQX6vGOmvjh9A8JgIBs=;
-	b=BYwVbyXB205wzsUBh2eyVzao3L0T6rcrIMidbF8HvDHiswxnvBfKtPh3h3wlk4iqgKllTJEZ2q74N90/KvzEghMl7UAvxe9L+JUIIJcn8N1bKmOTNqhjix2cdQSzBcQd2zBX8eNzAeTirjFwMdwFChQbiXrWqrizy/oGrP6tFPk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:738f36a4-5924-4600-b1d7-349d23a906b7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:707bdd24-4387-4253-a41d-4f6f2296b154,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 0e9abe4aab1f4464841d834531314a6e-20221210
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 200981241; Sat, 10 Dec 2022 01:32:29 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sat, 10 Dec 2022 15:32:24 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 10 Dec 2022 15:32:23 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
-	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 4/5] media: mediatek: vcodec: add core decode done event
-Date: Sat, 10 Dec 2022 15:32:17 +0800
-Message-ID: <20221210073218.17350-5-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221210073218.17350-1-yunfei.dong@mediatek.com>
-References: <20221210073218.17350-1-yunfei.dong@mediatek.com>
+	id 1p3w0c-00Fiz2-NE
+	for linux-mediatek@lists.infradead.org; Sat, 10 Dec 2022 09:19:04 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p3w0K-0003KC-Jh; Sat, 10 Dec 2022 10:18:44 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p3w0G-003YBp-5Q; Sat, 10 Dec 2022 10:18:40 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1p3w0G-003yU4-Bx; Sat, 10 Dec 2022 10:18:40 +0100
+Date: Sat, 10 Dec 2022 10:18:33 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org,
+	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v2 00/11] pwm: Allow .get_state to fail
+Message-ID: <20221210091833.vdfir63nq4kpj5cm@pengutronix.de>
+References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
+ <Y5OtCjQOQjjltGPa@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nuqt3gnghpavk6fz"
+Content-Disposition: inline
+In-Reply-To: <Y5OtCjQOQjjltGPa@smile.fi.intel.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221210_003234_074893_693D25D8 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20221210_011902_779234_B6D6D2EE 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,65 +79,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to make sure core decode done before current instance is free.
 
-Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 4 +++-
- drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h | 2 ++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+--nuqt3gnghpavk6fz
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-index 6275536d5063..9bbbd3fa20eb 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-@@ -201,7 +201,7 @@ bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
- 	spin_unlock(&core_ctx->ready_lock);
- 
- 	timeout_jiff = msecs_to_jiffies(1000 * (NUM_BUFFER_COUNT + 2));
--	ret = wait_event_timeout(msg_queue->lat_ctx.ready_to_use,
-+	ret = wait_event_timeout(msg_queue->ctx->msg_queue.core_dec_done,
- 				 msg_queue->lat_ctx.ready_num == NUM_BUFFER_COUNT,
- 				 timeout_jiff);
- 	if (ret) {
-@@ -262,6 +262,7 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
- 	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
- 	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
- 
-+	wake_up_all(&ctx->msg_queue.core_dec_done);
- 	if (atomic_read(&lat_buf->ctx->msg_queue.core_list_cnt)) {
- 		mtk_v4l2_debug(3, "re-schedule to decode for core: %d",
- 			       dev->msg_queue_core_ctx.ready_num);
-@@ -287,6 +288,7 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
- 	atomic_set(&msg_queue->lat_list_cnt, 0);
- 	atomic_set(&msg_queue->core_list_cnt, 0);
- 	mutex_init(&msg_queue->list_cnt_mutex);
-+	init_waitqueue_head(&msg_queue->core_dec_done);
- 
- 	msg_queue->wdma_addr.size =
- 		vde_msg_queue_get_trans_size(ctx->picinfo.buf_w,
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-index 53ad05396c8c..0944b6436fb6 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-@@ -77,6 +77,7 @@ struct vdec_lat_buf {
-  * @lat_list_cnt: used to record each instance lat list count
-  * @core_list_cnt: used to record each instance core list count
-  * @list_cnt_mutex: used to protect list count
-+ * @core_dec_done: core work queue decode done event
-  */
- struct vdec_msg_queue {
- 	struct vdec_lat_buf lat_buf[NUM_BUFFER_COUNT];
-@@ -93,6 +94,7 @@ struct vdec_msg_queue {
- 	atomic_t core_list_cnt;
- 	/* Protects access to lat and core list cnt */
- 	struct mutex list_cnt_mutex;
-+	wait_queue_head_t core_dec_done;
- };
- 
- /**
--- 
-2.18.0
+Hello Andy,
 
+On Fri, Dec 09, 2022 at 11:47:54PM +0200, Andy Shevchenko wrote:
+> On Wed, Nov 30, 2022 at 04:21:37PM +0100, Uwe Kleine-K=F6nig wrote:
+> > In v1 Thierry had the concern:
+> >=20
+> > | That raises the question about what to do in these cases. If we return
+> > | an error, that could potentially throw off consumers. So perhaps the
+> > | closest would be to return a disabled PWM? Or perhaps it'd be up to t=
+he
+> > | consumer to provide some fallback configuration for invalidly configu=
+red
+> > | or unconfigured PWMs.
+> >=20
+> > .get_state() is only called in pwm_device_request on a pwm_state that a
+> > consumer might see. Before my series a consumer might have seen a
+> > partial modified pwm_state (because .get_state() might have modified
+> > .period, then stumbled and returned silently). The last patch ensures
+> > that this partial modification isn't given out to the consumer. Instead
+> > they now see the same as if .get_state wasn't implemented at all.
+>=20
+> I'm wondering why we didn't see a compiler warning about mistyped function
+> prototypes in some drivers.
+
+I don't understand where you expected a warning. Care to elaborate?
+
+> P.S. The series is good thing to do, thank you.
+
+It's already too late for an ack, the series is already in Thierry's
+tree.
+
+Best regards
+Uwe
+=20
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--nuqt3gnghpavk6fz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmOUTt4ACgkQwfwUeK3K
+7Amt4gf/VCswPgVD5w7pUM72SEpdjhw28hm2YCuu5RxYMTBVbGTdK9rYJjqmB2FI
+ZOQHPgl36sDWhZEM55FY6oZxaGM3XttrjoTnFSk0MuNQmO70aWJtkS+OVmR4UgiR
+vIXRy8KMRWEliVRK4dWubiXzQ3OZl1iEDzgc9c7bccEtcdABRG+Z0zLWDCiT8WMw
+OzDx+FLvT792TNn4oEHONO3lJVeZ64MdM0VPguFtzbArXlpaJlQhlfhxYnvVxR1o
+LkxC6uB5mWT1o1f3+yzw9GD0RJwspghVALqO+g7LoH0oinRso2oaExRDKS5Yt69Z
+bmJURLsdOOyquJFcb6f1NqrKVb8fUw==
+=nBk6
+-----END PGP SIGNATURE-----
+
+--nuqt3gnghpavk6fz--
 
