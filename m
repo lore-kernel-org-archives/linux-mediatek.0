@@ -4,79 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CBB7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 10:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7D3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 16:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ty5wsGimI0tKO4tCsLTXg96lpBlywCG0/ZSuieeSBNw=; b=j/QMQeFZnG4jLa+p7oWodGhucM
-	yPiSJkIFdsQ0mCFuFo/fR8PcnSl6djhW4aJ87mUoWNYh/nRaJRtmR79U3aZseMHDb0QxJgUIblf/3
-	myxSn/tITJkur5EfhDM6OlQ79VzKEV066ouBLzhH0iuvd6Q3oRRqRqvGLZatGoEifR6XbaImTOayL
-	xLA9ptjIYX1QOLp93LtiAlX32vfDfd9+DZvw5wd1g5/Wak7LzHh7euHRPUikkw2+Vswja/Zi9km28
-	yT3IG058j4Gemn+yn0fjCxoJlRvn/qH0hjL702LD325Kl/Pv34rFQz5bdIbFsgxuSH1i/Nx1SkRs+
-	nhM4eKzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AuxrhOcouOodCpiih51edJPpKil1toFz+E57gSw+0VQ=; b=eQWbzLRc09Y486YDvjF2POw1ef
+	Rju8lA7MdVl/+YKlMKejfqBW8KBTkEESSbxuiDiaUE8qzRwgc5hJnfGjiTi6hiG7bHGENS335FoMx
+	gQwNXrqw/7SzHm2zzDaX/nJ4QW21wJcVZIj3/F3102rKH1Ed4lG9aVQSmhkQwVuA3Tu8ehJUiLXM6
+	QgUTJsN5egNp+gvSiyBCTQ225T/Z0bvq+Y42YSiKyWLUgLgKa36GSMxoFWm6njhNyuRMStFLG1Cyb
+	9j5GgMYZmuq8OMmTeFw+xhgOo4eH3XjOOf6MQhCz6nnDeHIbriG0URAewcpOd7nxXZdh+Pihdpiez
+	Yy4DllcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3wwU-00GDmm-UO; Sat, 10 Dec 2022 10:18:51 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1p42fb-002Jfg-3U; Sat, 10 Dec 2022 16:25:47 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3wwI-00GDcb-27; Sat, 10 Dec 2022 10:18:40 +0000
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1670667511;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ty5wsGimI0tKO4tCsLTXg96lpBlywCG0/ZSuieeSBNw=;
-	b=z4YFhF/4tnkRVvjv/OClKIp/5pRw40DctYX83xCGrgIVgpabgHlXlTO5MirwipzH98lhqq
-	TRfavDq5zBiKwzwECYHlNm4VaCLNmUN1b1bW2ANkG5tjxuI1WDNw/3hUbmDLYchO+NWExq
-	/+3sUjxrNzDQfycwHZwbD91gSij7fOeJFvyn7ln/dCNjNhks8vJOYuuWCfFrSY3aOHuDLe
-	F8bgvPKrR6Z7NmjSO/5N6yGn/Lb3AWNxjltqgMp4kDTB9DkRhihJdiQquseUAod/KyHDkx
-	0GjMt/1BCftpv/mLax/KKu+NUOssKiFz61elqq05VLC9u0wmg6ywK2IuijQHAg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1670667511;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ty5wsGimI0tKO4tCsLTXg96lpBlywCG0/ZSuieeSBNw=;
-	b=jUtHSXMT5MAJkecXlOrwudnyd6w97zyYvKRhYfEB1n79hLqdxZKcSt/HHrjSvQ/K6el/g/
-	RKMDdW7Dcwyd1OCA==
+	id 1p42fU-002JYu-Dy; Sat, 10 Dec 2022 16:25:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1670689494; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=M7mVTda5GTqsOXhGbbWYwAh8gSAhWSRqvdJYbo7y1LW5r+qHT0qN4+90mjKuuiYeqXdxIcFt0HXKRSGcv0zsaPXEDtcu29cy/s9Adj87toiHT9zjGZsELLZQ8okDv+M8RMByeoGcRmrJ0mGBohJ6nLg6YOnvVYEHpvvJqiFRnzw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1670689494; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=AuxrhOcouOodCpiih51edJPpKil1toFz+E57gSw+0VQ=; 
+	b=ezJXQLJD12neIlyNa2jEdbjolhPcyRQaeOKdNSjI4R3hHt3N8YfyRnUBOOXL1/Qq+TNlYGZ9RhnwlJRMZBclkuFxjvpBX+Hx2gqPOaMxUp9H7rzMQ+bhIE9WuhPPUgSipt+r2bpved0SSwb8JhfNlCjBXSDhQmos3xFK1R8kIKs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1670689494;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=AuxrhOcouOodCpiih51edJPpKil1toFz+E57gSw+0VQ=;
+	b=WcYaXZWKMSVvUIEUIJteLadKb5lBLZIW8nkLqECqShu0kboZ8ircbyTQz5Ks2xy1
+	mmpNIAjAEp/qtpLDRie0vrPFrVHEjN/oWUOvzAhkePilIdNBGJegTLyNHK8GijEyvX7
+	JKwuUvfGs3UOXLFzOe57iFHs1pgkH1t8EdO9Kt6I=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1670689491712607.4170178546929; Sat, 10 Dec 2022 08:24:51 -0800 (PST)
+Message-ID: <1df417b5-a924-33d4-a302-eb526f7124b4@arinc9.com>
+Date: Sat, 10 Dec 2022 19:24:42 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v5 net-next 04/10] dt-bindings: net: dsa: utilize base
+ definitions for standard dsa switches
 To: Colin Foster <colin.foster@in-advantage.com>,
  linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>,
- =?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>, Vivien Didelot
- <vivien.didelot@gmail.com>,
- =?utf-8?Q?Cl=C3=A9ment_L=C3=A9ger?= <clement.leger@bootlin.com>, Alvin
- =?utf-8?Q?=C5=A0ipraga?=
- <alsi@bang-olufsen.dk>, Linus Walleij <linus.walleij@linaro.org>,
- UNGLinuxDriver@microchip.com, Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>, Eric
- Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>,
- Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, George McCollister
- <george.mccollister@gmail.com>
-Subject: Re: [PATCH v5 net-next 01/10] dt-bindings: dsa: sync with maintainers
-In-Reply-To: <20221210033033.662553-2-colin.foster@in-advantage.com>
+Cc: John Crispin <john@phrozen.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Marek Vasut <marex@denx.de>,
+ Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ Linus Walleij <linus.walleij@linaro.org>, UNGLinuxDriver@microchip.com,
+ Woojung Huh <woojung.huh@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>, Vladimir Oltean
+ <olteanv@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>,
+ George McCollister <george.mccollister@gmail.com>,
+ Rob Herring <robh@kernel.org>
 References: <20221210033033.662553-1-colin.foster@in-advantage.com>
- <20221210033033.662553-2-colin.foster@in-advantage.com>
-Date: Sat, 10 Dec 2022 11:18:29 +0100
-Message-ID: <87o7sbh896.fsf@kurt>
-MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+ <20221210033033.662553-5-colin.foster@in-advantage.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20221210033033.662553-5-colin.foster@in-advantage.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221210_021838_436369_146826C3 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20221210_082543_495888_FEB59B10 
+X-CRM114-Status: GOOD (  20.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,91 +100,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-On Fri Dec 09 2022, Colin Foster wrote:
-> The MAINTAINERS file has Andrew Lunn, Florian Fainelli, and Vladimir Olte=
-an
-> listed as the maintainers for generic dsa bindings. Update dsa.yaml and
-> dsa-port.yaml accordingly.
->
+On 10.12.2022 06:30, Colin Foster wrote:
+> DSA switches can fall into one of two categories: switches where all ports
+> follow standard '(ethernet-)?port' properties, and switches that have
+> additional properties for the ports.
+> 
+> The scenario where DSA ports are all standardized can be handled by
+> switches with a reference to the new 'dsa.yaml#/$defs/ethernet-ports'.
+> 
+> The scenario where DSA ports require additional properties can reference
+> '$dsa.yaml#' directly. This will allow switches to reference these standard
+> definitions of the DSA switch, but add additional properties under the port
+> nodes.
+> 
+> Suggested-by: Rob Herring <robh@kernel.org>
 > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
->
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Acked-by: Alvin Šipraga <alsi@bang-olufsen.dk> # realtek
+> Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > ---
->
-> v5
->   * New patch
->
+> 
+> v4 -> v5
+>    * Add Rob Reviewed, Arınç Acked
+>    * Defer the removal of "^(ethernet-)?switch(@.*)?$" in dsa.yaml until a
+>      later patch
+>    * Undo the move of ethernet switch ports description in mediatek,mt7530.yaml
+>    * Fix typos in commit message
+> 
+> v3 -> v4
+>    * Rename "$defs/base" to "$defs/ethernet-ports" to avoid implication of a
+>      "base class" and fix commit message accordingly
+>    * Add the following to the common etherent-ports node:
+>        "additionalProperties: false"
+>        "#address-cells" property
+>        "#size-cells" property
+>    * Fix "etherenet-ports@[0-9]+" to correctly be "ethernet-port@[0-9]+"
+>    * Remove unnecessary newline
+>    * Apply changes to mediatek,mt7530.yaml that were previously in a separate patch
+>    * Add Reviewed and Acked tags
+> 
+> v3
+>    * New patch
+> 
 > ---
->  Documentation/devicetree/bindings/net/dsa/dsa-port.yaml | 2 +-
->  Documentation/devicetree/bindings/net/dsa/dsa.yaml      | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Do=
-cumentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> index 9abb8eba5fad..2b8317911bef 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> @@ -9,7 +9,7 @@ title: Ethernet Switch port Device Tree Bindings
->  maintainers:
->    - Andrew Lunn <andrew@lunn.ch>
->    - Florian Fainelli <f.fainelli@gmail.com>
-> -  - Vivien Didelot <vivien.didelot@gmail.com>
-> +  - Vladimir Oltean <olteanv@gmail.com>
->=20=20
->  description:
->    Ethernet switch port Description
-> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documen=
-tation/devicetree/bindings/net/dsa/dsa.yaml
-> index b9d48e357e77..5efc0ee8edcb 100644
+>   .../bindings/net/dsa/arrow,xrs700x.yaml       |  2 +-
+>   .../devicetree/bindings/net/dsa/brcm,b53.yaml |  2 +-
+>   .../devicetree/bindings/net/dsa/dsa.yaml      | 22 +++++++++++++++++++
+>   .../net/dsa/hirschmann,hellcreek.yaml         |  2 +-
+>   .../bindings/net/dsa/mediatek,mt7530.yaml     |  5 +----
+>   .../bindings/net/dsa/microchip,ksz.yaml       |  2 +-
+>   .../bindings/net/dsa/microchip,lan937x.yaml   |  2 +-
+>   .../bindings/net/dsa/mscc,ocelot.yaml         |  2 +-
+>   .../bindings/net/dsa/nxp,sja1105.yaml         |  2 +-
+>   .../devicetree/bindings/net/dsa/realtek.yaml  |  2 +-
+>   .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  2 +-
+>   11 files changed, 32 insertions(+), 13 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
+> index 259a0c6547f3..5888e3a0169a 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
+> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+>   title: Arrow SpeedChips XRS7000 Series Switch Device Tree Bindings
+>   
+>   allOf:
+> -  - $ref: dsa.yaml#
+> +  - $ref: dsa.yaml#/$defs/ethernet-ports
+>   
+>   maintainers:
+>     - George McCollister <george.mccollister@gmail.com>
+> diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
+> index 1219b830b1a4..5bef4128d175 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
+> @@ -66,7 +66,7 @@ required:
+>     - reg
+>   
+>   allOf:
+> -  - $ref: dsa.yaml#
+> +  - $ref: dsa.yaml#/$defs/ethernet-ports
+>     - if:
+>         properties:
+>           compatible:
+> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+> index 5efc0ee8edcb..9375cdcfbf96 100644
 > --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
 > +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-> @@ -9,7 +9,7 @@ title: Ethernet Switch Device Tree Bindings
->  maintainers:
->    - Andrew Lunn <andrew@lunn.ch>
->    - Florian Fainelli <f.fainelli@gmail.com>
-> -  - Vivien Didelot <vivien.didelot@gmail.com>
-> +  - Vladimir Oltean <olteanv@gmail.com>
+> @@ -58,4 +58,26 @@ oneOf:
+>   
+>   additionalProperties: true
+>   
+> +$defs:
+> +  ethernet-ports:
+> +    description: A DSA switch without any extra port properties
+> +    $ref: '#/'
+> +
+> +    patternProperties:
+> +      "^(ethernet-)?ports$":
+> +        type: object
+> +        additionalProperties: false
+> +
+> +        properties:
+> +          '#address-cells':
+> +            const: 1
+> +          '#size-cells':
+> +            const: 0
+> +
+> +        patternProperties:
+> +          "^(ethernet-)?port@[0-9]+$":
+> +            description: Ethernet switch ports
+> +            $ref: dsa-port.yaml#
+> +            unevaluatedProperties: false
 
-You can update the hellcreek binding as well. Thanks.
+I've got moderate experience in json-schema but shouldn't you put 'type: 
+object' here like you did for "^(ethernet-)?ports$"?
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek=
-.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-index 73b774eadd0b..1d7dab31457d 100644
-=2D-- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-@@ -12,7 +12,7 @@ allOf:
- maintainers:
-   - Andrew Lunn <andrew@lunn.ch>
-   - Florian Fainelli <f.fainelli@gmail.com>
-=2D  - Vivien Didelot <vivien.didelot@gmail.com>
-+  - Vladimir Oltean <olteanv@gmail.com>
-   - Kurt Kanzenbach <kurt@linutronix.de>
-=20
- description:
+> +
+>   ...
+> diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> index 73b774eadd0b..748ef9983ce2 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+>   title: Hirschmann Hellcreek TSN Switch Device Tree Bindings
+>   
+>   allOf:
+> -  - $ref: dsa.yaml#
+> +  - $ref: dsa.yaml#/$defs/ethernet-ports
+>   
+>   maintainers:
+>     - Andrew Lunn <andrew@lunn.ch>
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> index f2e9ff3f580b..20312f5d1944 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -157,9 +157,6 @@ patternProperties:
+>       patternProperties:
+>         "^(ethernet-)?port@[0-9]+$":
+>           type: object
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+This line was being removed on the previous version. Must be related to 
+above.
 
------BEGIN PGP SIGNATURE-----
+> -        description: Ethernet switch ports
+> -
+> -        unevaluatedProperties: false
+>   
+>           properties:
+>             reg:
 
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmOUXPUTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgrQFD/4qzANLVIDNmAXq6YHaa1ML5D21go2L
-PrwddcGJRfn4INzwchv05dIML2gtqasZ6ug1NTpJ8ypmod396M/i/J62taZ7TEM/
-9DK9rARUgAUdXCeM95tdlV6pmA6M46Sf7iYYH/enczZNkTZI/qCQrRN/4qDq+WAs
-MVRNX4++Qw3ytahvNXrzlDrKoDY4N0NqpJ7kPyWvwqo5dSpAAlLKWhASXvh3qrae
-6ObFLssKhEFIfKNErR6iQdcqOREGRH/LJyKX4u7m/CNGDBz5x6riMDMOh5Rih1LG
-qeEZ7gJoTsISVySHQgJ58EU2LNdPpbr8y+DEFgDpxjnXDCW90vPzCxu9kbi8jwIR
-XrHaRTDagP+IQB4aOpbbxLpNHwa3yuYjSF0A1N7keXWWG9koyXU5MOruMOnveyXh
-O7Eu/47wTx8lY5i5n2Tbd3I/6i6zmTmVogL5RBjml9RgZvDuKi2Gmu/IFCdXVNEw
-6/uBpkTepOHRyhOOZbIcWfZX3hqeC6THGwHAf1pJHSsCTGDwFBWJ/z13wSa9ZBDI
-2OZGCV37dYLLxgLXbz4KOTNzUsTwlIztDZklGfEyHoHtqX7UdFuzlzL1+3Di0yHB
-zjpvFphD8FMokYY8pOfsyz5k5CpqXJISAZ15INvc5FUX6upDS8xGNGi5AJfZ71XR
-OvYRLoO2PCLRuA==
-=ti3Q
------END PGP SIGNATURE-----
---=-=-=--
+Arınç
 
