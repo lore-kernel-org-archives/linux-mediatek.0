@@ -4,150 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBA7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 03:37:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECFAC10F1B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Dec 2022 07:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sO/kjobORaTlv7uA7a6FbeR+ard1OYGe3jZg3deg7XI=; b=KG6akn/x1HAdWXR1FvA2RUMJ8C
-	vIbslm6ytv7lUhDIFqNH7WtOlkfbMYigFq6XpPJXnEEdsxeQmyYyAz+to+Ai+5NcyPPDq28nbsRb7
-	LkmaB09ZEu/pVoGuIyA5+EeNFFV/z1pxduEeWigPK+uYLANR34VIxTSl8BQIqlHdiJAzp0Fht6lMA
-	Smrab5rK3jurcJd1zvVBJDc29jkfCLvwvEYr3NlPiOLMYcfpX8F3wW3Yt52jx1AlAVQr+PrmEn7sZ
-	tRHXvhHIvVh812EpVKPN7FFLdHnQMSE20QtEtU2fGq11kIJqudHgmD+Pc9j7KfZt5xU9uGYoKMoa8
-	P0zPYFQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v587XwApxR6glrcE+8uPlmJ2HRcCy46cr/DumtCsnYY=; b=u9mhKFT5MPY4PxLMHRgQfhCs+l
+	r/yFhCuvKkf7bU4P2EtdfElWOLMWr8PkvUcRZV0KeDL1NtVtCOB85r5XRCaMOksoU8moaWPmPP10K
+	Dg+SvTooOjjt9rsXajz6ewW4PP4A9LHFa23aKyCglETMzlh4844q6vL9ZiWPRlkjZb3ZXQT0fGmu4
+	f1Rhhukms/XohsoZZIwoVPmK5TGm1dNYkUKw8Mf2vVQKK0umrZ9YXThpHNRSVJlyXV2mR2kuKkab9
+	DO6B2lBR0UdScck0vG0l9nvIWCod7T8gBQbvJApNA8Ilc6FBuvi0oxvY+e2QbkqDxhYRjLQSOL39Z
+	elMmtlVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3qg8-00Ds9i-DK; Sat, 10 Dec 2022 03:37:32 +0000
-Received: from mail-dm6nam11on2114.outbound.protection.outlook.com ([40.107.223.114] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1p3uLl-00FFLI-0I; Sat, 10 Dec 2022 07:32:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p3qa3-00DpXH-IM; Sat, 10 Dec 2022 03:31:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=K7Qj1ADOfsMcPw/eDDPkTBAFT2lmgEbqc/SLiublEAJL4yEZzpvK42ejQ/mdc/SFIk9yJVmhn9GKpwA0q9SytNrHZwVRNFeh3mDLNTZskW1++ARxjvUQOsLN3Uk82bR6HTSO1MY7X/DfWuWrPOXzK+qtQU7xrpPdM7PH554rqkOk/rVp1N+UvBv8LnACADtQeJ2GFp51bpvh+B8cxSo4F/AJ8IbG2w76rtKUbD1p8X+ZnW2iLl7JtXSpo5tzxYtPZdKBRu+/sx56gNI1Njo5wtB6mrHAah1zw9KrtuNJzi6qFpY3lUobp2g3OcpPhFwZUZ3uRqW/tzfyqOAaRpaaAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sO/kjobORaTlv7uA7a6FbeR+ard1OYGe3jZg3deg7XI=;
- b=gUsr0xCIKT4TgEE/7dHIUTgPNEDbbWp9Gg2ZvGmjz1DeVZ3yoPlxYg0gZ1BwiziuRuxBwdL6RJzQGtHJthrzhVtbKyZu3V04WRLJCCTH5zNDo/410B+aycKqTL7mdyojwFCdf3Os1uo8odl3osQ7liLnaEhMlGMgYYBIgSxPDU1x3HsCEzIPLhVQrCtzWRrftwqwLZiAoweU/1GSkYO0Ane2v4H4gTofhhwCZx6ynDQ0FoSJYTVqFQIP4wKiTrXgtPjCDHmVp0QHOLmXrnB44l2d3MAkWAKs5X+MHvJk9ff2DltYrnjeENIIueKbl8WNI0QV2rOSbgA26ERobx8VDw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sO/kjobORaTlv7uA7a6FbeR+ard1OYGe3jZg3deg7XI=;
- b=vDxFxZLOye633VfzGbXf9IkWCOMYMEfXeDK2HoCcrPaTvYbTExGoIGN3wF9gTy8+70NaOJnVYjiGD8fj6Lae6AauYpTqBkGc+1mvZU4GpKhN+vzqydIlnE5q4c15QmMQu7kruWE/TeqNjmwHukYxqjcJ25mMoBRcrecUY8xHIqU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by SA2PR10MB4779.namprd10.prod.outlook.com
- (2603:10b6:806:11f::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.19; Sat, 10 Dec
- 2022 03:31:11 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5880.014; Sat, 10 Dec 2022
- 03:31:11 +0000
-From: Colin Foster <colin.foster@in-advantage.com>
-To: linux-renesas-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>,
-	Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?UTF-8?q?n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	=?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v5 net-next 10/10] dt-bindings: net: mscc,vsc7514-switch: utilize generic ethernet-switch.yaml
-Date: Fri,  9 Dec 2022 19:30:33 -0800
-Message-Id: <20221210033033.662553-11-colin.foster@in-advantage.com>
+	id 1p3uLg-00FFC1-7l; Sat, 10 Dec 2022 07:32:43 +0000
+X-UUID: 04e2ace65d5446579c6246c01f4a25ae-20221210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=v587XwApxR6glrcE+8uPlmJ2HRcCy46cr/DumtCsnYY=;
+	b=B4kCdSG6W2bcp5zm4A1XmdnGDPkeYUC+tvAvPHIDdHSMTNef6269+wzdxB+i9p9SCweXdrKiwNm374rHnnms2OYpFcoOEIkOm5qJYOkw87vDgJxhzJQIuOYG1cPCwDQeP/r/saNj1c9f6F+xyWHvLlDj3mets+oONYgfnwYjcLo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:630ed9c5-d08c-425a-a792-51649483c9fc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:d9e4dc24-4387-4253-a41d-4f6f2296b154,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 04e2ace65d5446579c6246c01f4a25ae-20221210
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2024118554; Sat, 10 Dec 2022 00:32:24 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Sat, 10 Dec 2022 15:32:21 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 10 Dec 2022 15:32:20 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 1/5] media: mediatek: vcodec: add params to record lat and core lat_buf count
+Date: Sat, 10 Dec 2022 15:32:14 +0800
+Message-ID: <20221210073218.17350-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221210033033.662553-1-colin.foster@in-advantage.com>
-References: <20221210033033.662553-1-colin.foster@in-advantage.com>
+In-Reply-To: <20221210073218.17350-1-yunfei.dong@mediatek.com>
+References: <20221210073218.17350-1-yunfei.dong@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: BY5PR13CA0002.namprd13.prod.outlook.com
- (2603:10b6:a03:180::15) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|SA2PR10MB4779:EE_
-X-MS-Office365-Filtering-Correlation-Id: f4efedc1-b5c2-41bb-7b96-08dada5efbd1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	n0jcqVItjZwVaDUgtPK4scFfre9XBG0Bz6xMs2THsb4z1DNTfQbDj+kpcUzs+KsnxkV5EkmLloGFgm45unsycqwYg9qSuK/EK2frGfmMIRzAHrJbk2A9jxE7/turfRrcPzHlD6pJ5RBRfDtc+dqYxESgauRNm3qXL4gCGbY0OiC+V1yGH1mpiIjmkRJA96VdIxF5E0KWYY8K6nU4S6okfy2GQiVaSKQ9uBSuQy93toexUW6MEGoJbf+2NCaOxDwaNXIFTJ41d15594R4MGDwTtKezY+mCgBsLlTmPvaWsYzx/mhr/hL+HstKPWy8HxxgDRxTfDrCYpxwKXPAcq6ZUrL0lKpTYfFzvvZHPp7ZttAvI+NdHJCAE3EfsrOLiZT2vZlCW2vm0SQcACTmtOIvdS+LIgOh8bMwUQg+hJ/2mVzeVYyruwBIEZKUq5RTPtQoXPheQyU/4WJgQv6rpGc/K0hV9bA2Sq9NP35jeK1/IKw0LTTYnaEjQxuLWTnS1w8KqF3PWR5dPMU7JD3fCUOfHqsOLFdYMH1L1zSUNUx9gIOxnAXcBxTWFtwjyXzkToOb8bHOpzmSTyRcB4s+OWzLMH5Dbt3ysVTS5MUAg6pO94jEf0AMz80+cL/rMY7SKElxMrKNqyU3+CPNtMRBD+pgJg0/KwVm7m09A6w+iZRpGTAP4QqX6iKVvpP7FFTP06ZoI3oxqtNbIhmlwcS/XZiupA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(39840400004)(136003)(366004)(376002)(346002)(396003)(451199015)(6486002)(478600001)(52116002)(2906002)(6506007)(6666004)(86362001)(36756003)(6512007)(26005)(44832011)(186003)(7406005)(7416002)(8936002)(5660300002)(38100700002)(1076003)(38350700002)(2616005)(4326008)(41300700001)(83380400001)(54906003)(66476007)(66556008)(8676002)(66946007)(316002)(41533002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?GQAztZu1tE9JYxPv3QwjdnOjHZGyVET+2ItAUMHTOd1qD87I9O5/CpfrqBMp?=
- =?us-ascii?Q?L2J0dn3Nk8ahwDRVuNkNugQPEl2YHKB18uumDXEGMjukP8fNm33NlZ6gjn8n?=
- =?us-ascii?Q?tDTiYkVz8B73BamWHvxSFiFI6RFimGYqUnydnWExE9VRTsysIuW+izKm8iiP?=
- =?us-ascii?Q?eNKCTX0WDBLzKP5NKz8vPzY5Aie8KG9EMQH1N5RbqrHs+TATQmWv9rNVhUg4?=
- =?us-ascii?Q?gWHgAw2jz1gnH3rptDZxEUiQ0TOvQtR0UDh3HFCKoINriRcFKuXonXiuEumE?=
- =?us-ascii?Q?gTB1OfwGohX1xi10/B/AlHklR7cZeVyEqDwIaqvvO4RUGbCtyulAQdopp2FS?=
- =?us-ascii?Q?zOWXydR/sXwJ3ZeYiUPONKqRxEN15+QlG8VgkQ0A/6eztEJ3KcjW2zTiVpMW?=
- =?us-ascii?Q?r/U7IaAbgecrDWNVMfE1kqFDFxMRYcyyXwM/qMXeI2EtPXi/dPUuf2Newdva?=
- =?us-ascii?Q?gSFBNb+c0FcBi5JGM+MYaYiSOGsHgyi83Muvl72dCE+UyVwD8qHqH80F7f4Z?=
- =?us-ascii?Q?E9KbfLJXfpLImDji98dEcUSoAJvG9aDneA6nHLDn6HznMX24Uc2htnle5zM3?=
- =?us-ascii?Q?c3me2ivtNMgcv2Xiuk4G7zLf1fvOo7ykkoS76RJ9gIEapvpysolVI7BJYJ5L?=
- =?us-ascii?Q?JrdEeXnY2Id/Uj98R5VLcxQJV2UcyAgr5/WFDHtvJxBUQbQC+NaEFPmyId/Z?=
- =?us-ascii?Q?ifJK/eKxcCoqMu8/d9jOtwYzdTBMgeuPE/tBxJeRUiCddZ2asS28V+7r5nR4?=
- =?us-ascii?Q?RQI1q3g9E7/g20I+79ypp1Niq+I2NmP0DCQGuMUYDC+qvcZiGlvU1mu3vCGg?=
- =?us-ascii?Q?S3arVaxK3svAgPthm3rCwvP6wqKDjXS4An3EgJ9Gqej22mpKkqb6J2uRSBVQ?=
- =?us-ascii?Q?9XL6NVOwW9/bFQ2O88kba8B8DZwaNEgfNWj1ugqjoWgirfGyFEwZBAzTEY73?=
- =?us-ascii?Q?iCGG4cVsC2ETfwbmFrVGkI4gRZqdjLOdHX6j+lDOe0PaJmrw53XgHwWnZSoO?=
- =?us-ascii?Q?SPqctfQrjLIk+gjg352NIf9PxHwkfteT1K8YlVVMlbNuD4xomcK8XDKIRPVA?=
- =?us-ascii?Q?qiFgYO8s7Te0liJhhqW4bCuBRK76LN+86wGKsY529ZmOSWoELUM95JUtToQP?=
- =?us-ascii?Q?Wf5p/PYHzm36C/OcZvQGw68ZqgYqtSnK3dZuuzl1MvlEIUdqPlpOVqJebegN?=
- =?us-ascii?Q?1pyHqvwA6sB+C4Eq7Wc9L9A28ZfUxdxX2PlyBUfcAfvvll3eb2GV5tc2vSlg?=
- =?us-ascii?Q?+v56CkPjcUIrHrVrVR9BXkmCBqqPgMWCPiXacToxu0m2MOOd4YIunQzg9OBc?=
- =?us-ascii?Q?aQwXZPP5XVPAd2RfjZ4XqjwI9vLvCnJw0vtSLJevdBmCgEB4qzj2pl7c1ruA?=
- =?us-ascii?Q?2VSXunsp+cbFQKJmWhgzGTeyjjrh6nLGvzEHjLaV/5VSiiZk5ndVtHYNDeov?=
- =?us-ascii?Q?huWh+nfHvMqIxU/3mV8aLek9ThhEH0jGO+8fszu06uVy/pFMfcFng5xzmBQ/?=
- =?us-ascii?Q?BOzjYRAtlFV3x72vSjw55waiokxwnUtl2RFXUXWIWl6AZvycPbiuP/ieAcpD?=
- =?us-ascii?Q?c1Kd9RDpz3+CjxCpzgV4wq+o/jUDFfL9naYL4oDZEMJmDkKvY+t3bnNtYcUW?=
- =?us-ascii?Q?6SLRaC8Iln5z11XcK9qnNWM=3D?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f4efedc1-b5c2-41bb-7b96-08dada5efbd1
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Dec 2022 03:31:11.4499
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: o0JwQw5kEtAlB3nLVohMtu7etW1hv+Qe/+OEVBTivh9x6HcVwg10nPomBEhyG4r4FZ4toopMgYU5ue3ImKeuZ8jjkfPxhFlfY86Cfddvhk8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR10MB4779
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221209_193115_642164_7483B424 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221209_233240_379436_5EB4F011 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,94 +87,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several bindings for ethernet switches are available for non-dsa switches
-by way of ethernet-switch.yaml. Remove these duplicate entries and utilize
-the common bindings for the VSC7514.
+Using lat_buf to share decoder information between lat and core work
+queue, adding params to record the buf count.
 
-Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
+ .../platform/mediatek/vcodec/vdec_msg_queue.c | 32 ++++++++++++++++++-
+ .../platform/mediatek/vcodec/vdec_msg_queue.h |  9 ++++++
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
-v4 -> v5
-  * Add Rob Reviewed tag
-
-v3 -> v4
-  * Add Florian Reviewed tag
-
-v2 -> v3:
-  * Reference ethernet-switch-port.yaml# instead of ethernet-controller
-  * Undo the addition of "unevaluatedProperties: true" from v2. Those
-    were only added because of my misunderstandings.
-  * Keep #address-cells and #size-cells in the ports node.
-
-v1 -> v2:
-  * Fix "$ref: ethernet-switch.yaml" placement. Oops.
-  * Add "unevaluatedProperties: true" to ethernet-ports layer so it
-    can correctly read into ethernet-switch.yaml
-  * Add "unevaluatedProperties: true" to ethernet-port layer so it can
-    correctly read into ethernet-controller.yaml
-
----
- .../bindings/net/mscc,vsc7514-switch.yaml     | 31 ++-----------------
- 1 file changed, 3 insertions(+), 28 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-index ee0a504bdb24..5ffe831e59e4 100644
---- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-+++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
-@@ -18,10 +18,9 @@ description: |
-   packets using CPU. Additionally, PTP is supported as well as FDMA for faster
-   packet extraction/injection.
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index dc2004790a47..af7ddba1923a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -52,6 +52,30 @@ static struct list_head *vdec_get_buf_list(int hardware_index, struct vdec_lat_b
+ 	}
+ }
  
--properties:
--  $nodename:
--    pattern: "^switch@[0-9a-f]+$"
-+$ref: ethernet-switch.yaml#
++static void vdec_msg_queue_inc(struct vdec_msg_queue *msg_queue, int hardware_index)
++{
++	mutex_lock(&msg_queue->list_cnt_mutex);
++
++	if (hardware_index == MTK_VDEC_CORE)
++		atomic_inc(&msg_queue->core_list_cnt);
++	else
++		atomic_inc(&msg_queue->lat_list_cnt);
++
++	mutex_unlock(&msg_queue->list_cnt_mutex);
++}
++
++static void vdec_msg_queue_dec(struct vdec_msg_queue *msg_queue, int hardware_index)
++{
++	mutex_lock(&msg_queue->list_cnt_mutex);
++
++	if (hardware_index == MTK_VDEC_CORE)
++		atomic_dec(&msg_queue->core_list_cnt);
++	else
++		atomic_dec(&msg_queue->lat_list_cnt);
++
++	mutex_unlock(&msg_queue->list_cnt_mutex);
++}
++
+ int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx *msg_ctx, struct vdec_lat_buf *buf)
+ {
+ 	struct list_head *head;
+@@ -72,6 +96,7 @@ int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx *msg_ctx, struct vdec_lat_buf
+ 		queue_work(buf->ctx->dev->core_workqueue,
+ 			   &buf->ctx->msg_queue.core_work);
  
-+properties:
-   compatible:
-     const: mscc,vsc7514-switch
++	vdec_msg_queue_inc(&buf->ctx->msg_queue, msg_ctx->hardware_index);
+ 	mtk_v4l2_debug(3, "enqueue buf type: %d addr: 0x%p num: %d",
+ 		       msg_ctx->hardware_index, buf, msg_ctx->ready_num);
+ 	spin_unlock(&msg_ctx->ready_lock);
+@@ -127,6 +152,7 @@ struct vdec_lat_buf *vdec_msg_queue_dqbuf(struct vdec_msg_queue_ctx *msg_ctx)
+ 		return NULL;
+ 	}
+ 	list_del(head);
++	vdec_msg_queue_dec(&buf->ctx->msg_queue, msg_ctx->hardware_index);
  
-@@ -100,35 +99,11 @@ properties:
+ 	msg_ctx->ready_num--;
+ 	mtk_v4l2_debug(3, "dqueue buf type:%d addr: 0x%p num: %d",
+@@ -241,10 +267,14 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
  
-     patternProperties:
-       "^port@[0-9a-f]+$":
--        type: object
--        description: Ethernet ports handled by the switch
+ 	vdec_msg_queue_init_ctx(&msg_queue->lat_ctx, MTK_VDEC_LAT0);
+ 	INIT_WORK(&msg_queue->core_work, vdec_msg_queue_core_work);
++
++	atomic_set(&msg_queue->lat_list_cnt, 0);
++	atomic_set(&msg_queue->core_list_cnt, 0);
++	mutex_init(&msg_queue->list_cnt_mutex);
++
+ 	msg_queue->wdma_addr.size =
+ 		vde_msg_queue_get_trans_size(ctx->picinfo.buf_w,
+ 					     ctx->picinfo.buf_h);
+-
+ 	err = mtk_vcodec_mem_alloc(ctx, &msg_queue->wdma_addr);
+ 	if (err) {
+ 		mtk_v4l2_err("failed to allocate wdma_addr buf");
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
+index c43d427f5f54..94e01a618c5a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
+@@ -72,6 +72,10 @@ struct vdec_lat_buf {
+  * @wdma_wptr_addr: ube write point
+  * @core_work: core hardware work
+  * @lat_ctx: used to store lat buffer list
++ *
++ * @lat_list_cnt: used to record each instance lat list count
++ * @core_list_cnt: used to record each instance core list count
++ * @list_cnt_mutex: used to protect list count
+  */
+ struct vdec_msg_queue {
+ 	struct vdec_lat_buf lat_buf[NUM_BUFFER_COUNT];
+@@ -82,6 +86,11 @@ struct vdec_msg_queue {
  
--        $ref: ethernet-controller.yaml#
-+        $ref: ethernet-switch-port.yaml#
+ 	struct work_struct core_work;
+ 	struct vdec_msg_queue_ctx lat_ctx;
++
++	atomic_t lat_list_cnt;
++	atomic_t core_list_cnt;
++	/* Protects access to lat and core list cnt */
++	struct mutex list_cnt_mutex;
+ };
  
-         unevaluatedProperties: false
- 
--        properties:
--          reg:
--            description: Switch port number
--
--          phy-handle: true
--
--          phy-mode: true
--
--          fixed-link: true
--
--          mac-address: true
--
--        required:
--          - reg
--          - phy-mode
--
--        oneOf:
--          - required:
--              - phy-handle
--          - required:
--              - fixed-link
--
- required:
-   - compatible
-   - reg
+ /**
 -- 
-2.25.1
+2.18.0
 
 
