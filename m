@@ -4,82 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC254C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Dec 2022 13:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE2E3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Dec 2022 22:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ke9LoB1FeHeMRPEube2LONSYlHl1ocaQniy5+w/Emwg=; b=G+ZIM/jTUongBgOoLSBtvcI7EI
-	Wdi9bbam0vGusuR/HbR3u1F3mM53ZRYLj+hPTxQ1eaGVe0MF64TOdCEiPvgBrGSa/lhYivtCh9uqX
-	4i8vrpJqm514LKHqLDlAzlVz4QwV1Pno02XbuvOsvzoTskbHYV5usqPmuyubqVZa0I7uqY0i97wgH
-	KrSdf1OodmBWmfVmlCAtsvBBuYs7viruy2X1PknnqFe02UGZ/ReoPwhnP+3ckW2tL5aWWG5xGAI/c
-	sryLw47KItzYGQ1wS1qL2seqPHGQ4R78eIDtmZQ+VXXJRR0OsjrLHOJ7RLh+hE2dBjKk4VZvrLawP
-	eDCzQBcA==;
+	bh=M33qCD7Tm8dDEgZk34tGAUKV2pp9BjLWodh2i56ini8=; b=c5D0qYlrHbxtbYi7sipxrVK302
+	DGyXcKAk1VaEUVRaXc7EaAzZGJtKkr1lPf6K3njh7+Q1gPPhAyOWQvxm8JkpxLbbMucn221I025v8
+	xxc94XX4vAoIFT8Svcwqg1pfduNnKemUNxUJWUl0Qr0AZGkdHgqZwnTntkFs9DmDudZkXEpq9WhbV
+	/hYEP2S1afwT5KpbNXaKxr3lnyzuuTmFtW9L4aI0MuGHWdBOBVYHKkkIvheMYiv2TJ89Zqteg6vVb
+	tkaofptw/ROgLjhxFN89hDhs5mY5ZfwitWLlH7cxd+QLMAhG8v5MaDQ5lxZG6TYsAay9etkchfFUo
+	v5i8y1Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4MQt-000lmV-Hp; Sun, 11 Dec 2022 13:31:55 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1p4VHM-0053Me-SE; Sun, 11 Dec 2022 22:58:40 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4MQZ-000lWC-U2; Sun, 11 Dec 2022 13:31:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1670765495; x=1702301495;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=mzHG/pVGmg236g4ocCottXwf/Vck+AOplcQMPTkzoug=;
-  b=MNc7YmhZ6X9At/PueJnc3JuWtS43xq9KTKOfp1I/qJANVCPXFxux4iSc
-   DaPOfD9Rd+c//t8M5gQPDJsx/0QXvLuCCVAagsPg+CkaFvWQU49kD1zim
-   lJQ7Y5brrDN2vNWQyAV7nEBURwfxmXatCQBYoQs/UTUs76k8d0x/oujsf
-   KY26WZV12DUB7zzC1kMVbYrvlLVn1nwaplo7DbVq+u9Ay0hbnB7Dk65qH
-   uZfFAkQiJBf0zGd4CCOWIoqUczDBKacWjkmVzXAg1KD19cxDr/ykkeF43
-   Y9K0VrFmpoyja/z0yXWYMWdZJPka4V8LxkSXwYJgz6kdZ5BQYBX6er48j
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="318847053"
-X-IronPort-AV: E=Sophos;i="5.96,236,1665471600"; 
-   d="scan'208";a="318847053"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2022 05:31:32 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="678628772"
-X-IronPort-AV: E=Sophos;i="5.96,236,1665471600"; 
-   d="scan'208";a="678628772"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga008.jf.intel.com with ESMTP; 11 Dec 2022 05:31:28 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1p4MQQ-0080Nz-0b;
-	Sun, 11 Dec 2022 15:31:26 +0200
-Date: Sun, 11 Dec 2022 15:31:25 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org,
-	linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	id 1p4VHF-0053Hm-Bm; Sun, 11 Dec 2022 22:58:39 +0000
+Received: by mail-ej1-x635.google.com with SMTP id t17so23832944eju.1;
+        Sun, 11 Dec 2022 14:58:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=M33qCD7Tm8dDEgZk34tGAUKV2pp9BjLWodh2i56ini8=;
+        b=YM/EYtHkM9CzZbVfnNVz3ugqNlk3HA3Qywye8HmZNtAVcbE8mI+jSfGVkYqFn/uidC
+         GmaGFF3VGDlrfL7HwRPrWg2gx8OfTYa7KZJUQq0fNQzLNVIs3k7nkPn79sp8pYm5u5gN
+         uJnxyNLtDSmRjf7Kp6IngeT2ofr0NQPEy3JC76VutmwpVNpmowA5+12MeB6WYVxMWD4n
+         AdO/pAa1/8xPsrWuuzD+Os91s3wQpBwmiEDec3mfzWaNdFQaxgZ7KTUsVyMpIxo4snfp
+         HM7ez7UKZKgsBcF+H5s+8TCro4smINVZnBLSR44U/xI5lmqrEyhvy2FlFmn3XJqCVDtp
+         KY9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M33qCD7Tm8dDEgZk34tGAUKV2pp9BjLWodh2i56ini8=;
+        b=m3qD6ERngRcQMCvtlY4LCZh5082jcIVAaHgtSNGWd0JIC51hTJSuqLp6w4tOWtbEvT
+         VAqK9IQwZsr+ym02PDwT1hMEE0ONqH9tohEJXNWrE0Irq++zNmJedboqnFDyOwkx+T/l
+         O3AZGU9XmUCCOGIiWi0uWo4wOEsatBfBDHqeDNhdescmKiqvrgP0JiWIJi/oA1j0lLNa
+         lvYKUn3hWKio4j1tai5ksS4e7ZV5UhdGoqWVEYFdBUgEjqvYcJPv1WZNiu5Z1ssraeag
+         pX++Abp552HJOg4PjQUmeF6Si+r9CNFDnQnnqqw8+Ay83JGUAam6DB5V/1N1+GiXh8Ev
+         iuZA==
+X-Gm-Message-State: ANoB5pniFFKitBWqej2hrjIh1sqhj2fO+4eCCqDOcUpS+Wdvr9F+YDK3
+	5V+GB+8jaUL2b7NfGK74KxvqGPMYrEA=
+X-Google-Smtp-Source: AA0mqf7p50+L95OeIEuBxlGylcnhYmtBdgeQFosfuZf9XnCV73/tM0sQHCcFFJhDfhxd79fyjh6MQw==
+X-Received: by 2002:a17:906:150d:b0:7c1:65f5:7b92 with SMTP id b13-20020a170906150d00b007c165f57b92mr4674347ejd.48.1670799506624;
+        Sun, 11 Dec 2022 14:58:26 -0800 (PST)
+Received: from skbuf ([188.27.185.175])
+        by smtp.gmail.com with ESMTPSA id f12-20020a170906390c00b007c0aa8eaf47sm2504998eje.116.2022.12.11.14.58.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Dec 2022 14:58:26 -0800 (PST)
+Date: Mon, 12 Dec 2022 00:58:23 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Cc: Colin Foster <colin.foster@in-advantage.com>,
+	linux-renesas-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 00/11] pwm: Allow .get_state to fail
-Message-ID: <Y5XbrWTicuTxPLwN@smile.fi.intel.com>
-References: <20221130152148.2769768-1-u.kleine-koenig@pengutronix.de>
- <Y5OtCjQOQjjltGPa@smile.fi.intel.com>
- <20221210091833.vdfir63nq4kpj5cm@pengutronix.de>
- <Y5TyrO5maz5VYic3@smile.fi.intel.com>
- <20221210224154.733cd5qnrkpexq22@pengutronix.de>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	UNGLinuxDriver@microchip.com,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	George McCollister <george.mccollister@gmail.com>
+Subject: Re: [PATCH v5 net-next 01/10] dt-bindings: dsa: sync with maintainers
+Message-ID: <20221211225823.nde77nlfriok4q6x@skbuf>
+References: <20221210033033.662553-1-colin.foster@in-advantage.com>
+ <20221210033033.662553-2-colin.foster@in-advantage.com>
+ <87o7sbh896.fsf@kurt>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20221210224154.733cd5qnrkpexq22@pengutronix.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <87o7sbh896.fsf@kurt>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221211_053137_217025_A1EA3463 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20221211_145837_631930_503D77C6 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,38 +114,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 10, 2022 at 11:41:54PM +0100, Uwe Kleine-König wrote:
-> On Sat, Dec 10, 2022 at 10:57:16PM +0200, Andy Shevchenko wrote:
-> > On Sat, Dec 10, 2022 at 10:18:33AM +0100, Uwe Kleine-König wrote:
-> > > On Fri, Dec 09, 2022 at 11:47:54PM +0200, Andy Shevchenko wrote:
-> > > > On Wed, Nov 30, 2022 at 04:21:37PM +0100, Uwe Kleine-König wrote:
-
-...
-
-> > > > I'm wondering why we didn't see a compiler warning about mistyped function
-> > > > prototypes in some drivers.
-> > > 
-> > > I don't understand where you expected a warning. Care to elaborate?
-> > 
-> > intel-lpss.c has the prototype that returns an int. IIRC it was like this
+On Sat, Dec 10, 2022 at 11:18:29AM +0100, Kurt Kanzenbach wrote:
+> You can update the hellcreek binding as well. Thanks.
 > 
-> Do you mean drivers/mfd/intel-lpss.c? That one doesn't implement a PWM?!
+> diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> index 73b774eadd0b..1d7dab31457d 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
+> @@ -12,7 +12,7 @@ allOf:
+>  maintainers:
+>    - Andrew Lunn <andrew@lunn.ch>
+>    - Florian Fainelli <f.fainelli@gmail.com>
+> -  - Vivien Didelot <vivien.didelot@gmail.com>
+> +  - Vladimir Oltean <olteanv@gmail.com>
+>    - Kurt Kanzenbach <kurt@linutronix.de>
+>  
+>  description:
 
-Nope, I meant pwm-lpss.c.
-
-> And drivers/pwm/pwm-lpss.c is adapted by this series.
-
-That's what I didn't see how.
-
-> One of us is confused ...
-
-Yes, because when I have checked the branch based on Linux Next I already saw
-that get_state() returns a code and I wasn't aware that the series is already
-there.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Good observation. If there are no other comments on this patch series
+(which otherwise looks reasonable to me), I suppose that could be
+accomplished via a parallel patch as well? The diff you're proposing
+does not seem to conflict with something else that Colin is touching in
+this patch set.
 
