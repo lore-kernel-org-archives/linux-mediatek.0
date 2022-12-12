@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26338C00145
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Dec 2022 18:46:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E10DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Dec 2022 18:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LIqnjaezngtLNEp7isLzPA2shfRnfoXIJoBf7CQ93rI=; b=nOljF594BvzI8+307yzx8tVj6O
-	FvXOAURJbbUnC1dDvd23sfNGhdAhQgAp/v8eyluFLWiDkeB7WhANONxpup+Rfxp7vBP2yYEf5Csfr
-	7+W08zRLBQyTETyd4jMifI/hWlqLeUc/AvGxzDpXUNBZFY6vFzc91d2M81bC+D56iXn2LVNw9UlnX
-	DiT37cOrjwNI8N1K3S+Kbvx5PHNTvPIAk3+aV8biAMaq8IlqqO4O20+1EmZy6p60tPDhEKTTAAlM4
-	dhvr1gD7kJJA9BoZp3zSJIRu8Y22knXAoNSiP/ZJ50/YjfXub7m40LQgTGGSCd7XTfrzjfK5TkLtk
-	FuV/HxUg==;
+	bh=epB6zTfweVmmiNYmsWHbb08P5JmiAsWOLYyFnL5+8DI=; b=ToOoWK1J/vIbvW8Po3rEo0D7UY
+	3GaUDVdkonFOEOlhJfDvhK6aGKsSFyyOX8RV8NfbWXB9pn9rcI0Ua0pVF/M/JVjE0fhOUA9p6cSeQ
+	18Pvr/rIy2WFZ+lWou5OaOmDlcXw7WtgOrUjn1pTKEr2s4E0RuJxaDBWQVKNuC8ZrC774aMawt+uc
+	oANGdx7bBmOcmaOiZLsh/L495x0VtJ/zojRixF6SzOF2qC4nXGchRMR6lZDoG2xsMuh+WRnnFSxiJ
+	UcP81OAkPndrlcs21QMwysbIxQiDOVN/fnQHCEO/Kw4N7B4XE8IGyf/Yp+G4xGTKjI7nfiYgUQ1BH
+	2sLJrIig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4nok-003rRk-Bu; Mon, 12 Dec 2022 18:46:22 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1p4npH-003s1t-OO; Mon, 12 Dec 2022 18:46:55 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4noh-003rJF-Jk; Mon, 12 Dec 2022 18:46:20 +0000
-Received: by mail-ed1-x534.google.com with SMTP id c17so14231411edj.13;
-        Mon, 12 Dec 2022 10:46:17 -0800 (PST)
+	id 1p4npF-003ryH-GO; Mon, 12 Dec 2022 18:46:54 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id r26so14249980edc.10;
+        Mon, 12 Dec 2022 10:46:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=LIqnjaezngtLNEp7isLzPA2shfRnfoXIJoBf7CQ93rI=;
-        b=H8uWIP4eO1YxQwxoLb4ulLb1Xl2vq8gtcgHk7otP2Mh5hIp+8F1jyt4VNVIPnpjKYb
-         ex9nMsCcDfnFTip94C35t/M2MeStVjExWFDjCVzf7evIq8y1Q7xyRu6jN0eVOJR4k21q
-         EZK6dmfOWIYDGTFrQNijxRPmeh/oWF0xphbrVm+j53kccYsMtkGeU9W3h+LfQ4DwAiC3
-         xFam0IPCI8gmSJRuXEyr5FBdZHqxl/vul3a1Ei5Ln98IGzEpiC0p7Rdhxt6hOoBfdzWN
-         w0fPzdPPK9jLva12as1gic8LWTpAGtrlhEBEZV6lSK+ixjMXQNTA7n8d9Sz/gCsrJjou
-         wUpw==
+        bh=epB6zTfweVmmiNYmsWHbb08P5JmiAsWOLYyFnL5+8DI=;
+        b=mGiOG00DH7d1okC6HYRO1b4PT8S/5GYbqOgvUgMj17hjC878FhEfbbxutHxkemnqhX
+         JNkbmcRWAIRH1kE79m8MWAY/ihzftkITk3I3KuJyMy33gNh6bjp1PPVCzKDN76WNplGW
+         rXGWew94o0wZPWDMio4uDYvXVMV0LHg8SEepYk5eSpUvnfZAYGLVzeFWkch0R9gFxGmb
+         +EOgWrHvAnW5g3Tyz6ln0DN7SCW27U65oY5gMwJ68gdpz/pU9fBr6cZr+FD9ECiZhOL2
+         XoKznJx4pSJ0PbhTvEvTWpYkqPfSesi+WfU44as+TurmpKi+8dHr7ikJYOiRCUmTJJv1
+         TbJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LIqnjaezngtLNEp7isLzPA2shfRnfoXIJoBf7CQ93rI=;
-        b=b/GcbXz4A59q3qNbkIn2ROP5W9gMLPKfLZvsISFrm9XWjH1UghO6Dv8ZZ2pK7KALpU
-         xvbqlMVjiwQfzEEKwSIMv76ChaEAl0QnHZY1lwwNdc/ywYv3DaF60CbH2ONP61oasg5B
-         REQpJv8D06b9pRgfOCOoYTy8C9WBBZSVdnYADE1O1I/EId8N28FEzAEHBaTuOKlgLaod
-         VUhxup/avtqBNZORp+lx8XdTGO13HC/s8bwyR0kjRJKEZAMtcvYRk4npZeItCUt+P4Ve
-         yJuCUoIRYdnBD17TIWlYc0zSTIslxFdwsRQ61dDCXejzPj/Ajt5a2gasC16zWXubMOtY
-         ZQtw==
-X-Gm-Message-State: ANoB5pmnSLOun7YnK3rCD2TPlmXj9mvMMINom8yzIs21aIH1ggRJZjlg
-	FSQjhd6VIBMivO2nv/H1yvg=
-X-Google-Smtp-Source: AA0mqf5qcPywMWUxBv1Oz1+GiwzWTko+mCdn6kipC6jyixD652tjVTc3o34OIe6BDffAtWUTbjTCww==
-X-Received: by 2002:a05:6402:7ca:b0:46b:aa:8564 with SMTP id u10-20020a05640207ca00b0046b00aa8564mr12728933edy.30.1670870775491;
-        Mon, 12 Dec 2022 10:46:15 -0800 (PST)
+        bh=epB6zTfweVmmiNYmsWHbb08P5JmiAsWOLYyFnL5+8DI=;
+        b=IhXFkNAeCr673Ji3kISH8eUOwHyihnTjFMkPr0WzHzdPNPPKoGuzLO2JGr/D79pods
+         Pp8tn9PujT8XnC13l6fOdKLshh9DCM7XUDSMqm8qw6XNJbIY6RivQV2VZ66jxTfsJr3z
+         MwSXeqGgntxIFEDTHt1rN02Kr1lpaN0LhwqJUO+0JkmLSmG2lA0uOuOIWA6kO85TnYJX
+         CocgDtp+ClnNYUoaisU+ickOsgo5jlwUh6g1P4MGu04RA8DH5X/92XsumxpS8NWpNYG7
+         aDrskizzQ3Ong2hw/ZA6chGT4pSE3I94RpSjRqLv+cLjQYkJfZ6I/GLY5xq8w/PvxrUo
+         o+gA==
+X-Gm-Message-State: ANoB5pkkWiChrRdWpaUrZ8p7+NLIoli1EHiYgIRdECXbPxjKj0niEi4S
+	U4blw3sVYP+uMb71Js3xINw=
+X-Google-Smtp-Source: AA0mqf4jJTq2z83SlkLf5ctkhS+SAdQuYrAJekO9bKZrsoZHWmAkqlvsQJVIdrtwkcS/sFObZsRuVw==
+X-Received: by 2002:a05:6402:3895:b0:467:7775:ba8 with SMTP id fd21-20020a056402389500b0046777750ba8mr15155363edb.1.1670870809782;
+        Mon, 12 Dec 2022 10:46:49 -0800 (PST)
 Received: from skbuf ([188.27.185.63])
-        by smtp.gmail.com with ESMTPSA id d4-20020a056402516400b0046b00a9eeb5sm4090784ede.49.2022.12.12.10.46.13
+        by smtp.gmail.com with ESMTPSA id l4-20020aa7c304000000b0046b1d63cfc1sm4081207edq.88.2022.12.12.10.46.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Dec 2022 10:46:15 -0800 (PST)
-Date: Mon, 12 Dec 2022 20:46:12 +0200
+        Mon, 12 Dec 2022 10:46:49 -0800 (PST)
+Date: Mon, 12 Dec 2022 20:46:46 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Colin Foster <colin.foster@in-advantage.com>
 Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
@@ -88,18 +88,21 @@ Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Andrew Lunn <andrew@lunn.ch>,
 	George McCollister <george.mccollister@gmail.com>,
 	Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 net-next 02/10] dt-bindings: net: dsa: sf2: fix
- brcm,use-bcm-hdr documentation
-Message-ID: <20221212184612.dyjlhxucybn6jh7m@skbuf>
+Subject: Re: [PATCH v5 net-next 03/10] dt-bindings: net: dsa: qca8k: remove
+ address-cells and size-cells from switch node
+Message-ID: <20221212184646.cb6y7rd7g2nzekh4@skbuf>
 References: <20221210033033.662553-1-colin.foster@in-advantage.com>
- <20221210033033.662553-3-colin.foster@in-advantage.com>
+ <20221210033033.662553-1-colin.foster@in-advantage.com>
+ <20221210033033.662553-4-colin.foster@in-advantage.com>
+ <20221210033033.662553-4-colin.foster@in-advantage.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221210033033.662553-3-colin.foster@in-advantage.com>
+In-Reply-To: <20221210033033.662553-4-colin.foster@in-advantage.com>
+ <20221210033033.662553-4-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221212_104619_664758_1F7B1683 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20221212_104653_568124_462996A4 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,15 +117,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 09, 2022 at 07:30:25PM -0800, Colin Foster wrote:
-> The property use-bcm-hdr was documented as an entry under the ports node
-> for the bcm_sf2 DSA switch. This property is actually evaluated for each
-> port. Correct the documentation to match the actual behavior and properly
-> reference dsa-port.yaml for additional properties of the node.
+On Fri, Dec 09, 2022 at 07:30:26PM -0800, Colin Foster wrote:
+> The children of the switch node don't have a unit address, and therefore
+> should not need the #address-cells or #size-cells entries. Fix the example
+> schemas accordingly.
 > 
-> Suggested-by: Rob Herring <robh@kernel.org>
+> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 > Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
 > Reviewed-by: Rob Herring <robh@kernel.org>
 > ---
 
