@@ -4,100 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF2BAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Dec 2022 10:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CACCEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Dec 2022 11:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0ueHMi2mIOmzpz327lFnzb2ZBYr+ALhB5gftG35Fae8=; b=kdy7ICnccjpzebmq9OHX74fgB4
-	DgW6GkEJnjp1Nz3O2xmaug7h3bazUdHbd1M9hM3Ww6wokeClQZ3zUc26paHB9Oxpyb0HGBp0UOb/1
-	QtFm+Mp+WdGzJ7uOdC4ecIumUSv50gh6LDsUSUZV1Mp7h6mAK62BZrnjrGq3teHy6C4ycVvVtWpAk
-	0P/FTMZQ8E/1awrxMrjvd55NCxwqV1yb+x5EBDCVtj4LkC7lu7iHyM3iuEFSS3yGo9HHPrEX/SAMq
-	SOSCJkKNluxUzmYEttBJRlig4n6FebOZYhwyBRRIrdFs/foucLEpCt1LjgECb1OezS9fzvAnqWr11
-	gZOqEFYQ==;
+	bh=ZBT8EGa4OdoPcaFxZzwBfXD7QAI1zilaTZ78SNfT1rs=; b=fGhSW11Z5ONNPlWCN7Nu/tS/Z1
+	jwRHo/lHOWymNT7gcyf/9YIVIFylWAbbQZof8FVfzO53dSy3tHRvaFkXsYnd8AhGdA3zX2JdHNN4h
+	iKb/FgwyDljRJ5rmTIZ3osusJfh3/HDNrn6uHYSokO7R5r1BC4B/ZwNGHEb/ssm/hotpWFpeoZQTB
+	1CElYc3KQ62rQyo+LwEM/3la3jo5Q2PbGmKkLOOHp482FRgoPWGcx6n/rCfHngkoCeHM+fAQQgvHL
+	NfkQhFcfiYEGpFzuriSt3megx3+zlIkP2EZjlY2YE4OlawFN2wzVOMxitZheSsbXDO9aPm0BOr16P
+	abk2Pt5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4gUC-00Dk13-Sw; Mon, 12 Dec 2022 10:56:40 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p4gTL-00Di4B-2X; Mon, 12 Dec 2022 10:55:48 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id qk9so26962558ejc.3;
-        Mon, 12 Dec 2022 02:55:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0ueHMi2mIOmzpz327lFnzb2ZBYr+ALhB5gftG35Fae8=;
-        b=a0j4vd2PYcbV5vGVf5kujUaxiBQ0GBPWAizLVh3tEou21Qq8DVGG1dvLL6RoMI4io8
-         N5GS1jAeVsS6EXOVKRRMUT6eIyehLYnH77sN9PDfB6dPjswcIM2k0eai/zlvXFyztve3
-         wJ0yAfUe0DhSkBSTlCPba8CCLgaw0M8e4NhBXC9OxHWCWi4GE4Yi6vwkB9jBu+Lh+Uwk
-         dRVhtIBp/1N8UdfX7L8w5XgLdJjX65MWejcnf0YXuo803ATTuhibwgcjEpNtjWOLfqDA
-         FfE4aX21QmTqW8awDBY60YryZa6/kyI3RphpZSV6CcRCkfTM3df8YjnH/CA0RAR9FM/H
-         bQ5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0ueHMi2mIOmzpz327lFnzb2ZBYr+ALhB5gftG35Fae8=;
-        b=YdrDO4lQwp3HhpgbunOPPov2Ke7As16ErADhG9is0mh0E6XTlDHuMbxot/vS679GV4
-         mjdhae7xsA7l+Bl4in45516zeuEsl2SncuIWjfSaDTs42IFs8cyIxf7QKfP1Qjw0UNxi
-         FLgxL+H58oGqS10s6qU0Y8kPl596ks9+Cfmx0dB+KfnkFnrYCDQaOyzMDFQNLx4ziJb1
-         Vkk4WqxlawXuWwveUS8s4SCgAh+az8PG44MqvYOLNMk4GKYzbMCj9ekQB39snIsWTQT6
-         36FL7CbjMA+HpwOw3da4KUuO+VvLIhlbaPhpANyydDAQ3Jb4k2odIUFPk/6+j1soJehv
-         IDRQ==
-X-Gm-Message-State: ANoB5pltcDElAbyfrTZEKhSrIEjqL7pjqJfHOiLhpwCpq8CiF3jgO/by
-	QdkcnJTGFIrSaAtBAcxwza4=
-X-Google-Smtp-Source: AA0mqf4xwN0tcH6tlYgdq8vREyR2Z4T8Do7BCzqe/UwSecrAbQSclnTtoDopcOUTqjX6offYOSW+Xg==
-X-Received: by 2002:a17:906:2a85:b0:7b2:7181:2489 with SMTP id l5-20020a1709062a8500b007b271812489mr16709516eje.13.1670842542364;
-        Mon, 12 Dec 2022 02:55:42 -0800 (PST)
-Received: from skbuf ([188.27.185.63])
-        by smtp.gmail.com with ESMTPSA id u17-20020a170906409100b007c0b6e1c7fdsm3114024ejj.104.2022.12.12.02.55.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Dec 2022 02:55:41 -0800 (PST)
-Date: Mon, 12 Dec 2022 12:55:38 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
+	id 1p4geG-00E0Dh-Rn; Mon, 12 Dec 2022 11:07:04 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1p4gdw-00Dzd3-Gc
+	for linux-mediatek@lists.infradead.org; Mon, 12 Dec 2022 11:07:04 +0000
+Received: from 8bytes.org (p4ff2b8a9.dip0.t-ipconnect.de [79.242.184.169])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 47E902208DD;
+	Mon, 12 Dec 2022 12:06:40 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1670843200;
+	bh=Wx/FQOa0twYM0J5vE2YN6rDdN+so7uRjoO2kTY5Jbi0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dW4pqcZewOZIBby4X/JgUMfAZGaEUzvnd6vMsAkbBHkhFy+Ob6GJzF0jf7dAi/rpk
+	 NFHRYkUI7faJCB7GChDJX3aCOGeNFuDgOyEqsKieXlFO2M0gzpTn5NI+POC0fhZASL
+	 auv0ddRDic9vhY9c4mqkpM1JfvccQUCTCArArvyfsVgAmAK74J3/eQlQRXuIBtaQHd
+	 Y667DXckjktnMd9xO172C3U4nEDHIOl7BoIQcr5eHtceKXgt6FmGj/QfdJPpLP/rUs
+	 28pCd9MX2lyZOOaUlGzDAWw6Wls7GKT5enuhfaJ48OeHc4otRH7bjYgbtHNh2xud6X
+	 DKhQ/4Wxp4jRQ==
+Date: Mon, 12 Dec 2022 12:06:39 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: Dan Carpenter <error27@gmail.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>
-Subject: Re: [PATCH v5 net-next 01/10] dt-bindings: dsa: sync with maintainers
-Message-ID: <20221212105538.ijybw4v26tozjspr@skbuf>
-References: <20221210033033.662553-1-colin.foster@in-advantage.com>
- <20221210033033.662553-2-colin.foster@in-advantage.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH] iommu/mediatek: Fix forever loop in error handling
+Message-ID: <Y5cLPzaQzMadY4Yk@8bytes.org>
+References: <Y5C3mTam2nkbaz6o@kili>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221210033033.662553-2-colin.foster@in-advantage.com>
+In-Reply-To: <Y5C3mTam2nkbaz6o@kili>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221212_025547_197695_250923DB 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20221212_030655_373802_07B8F503 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,15 +74,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 09, 2022 at 07:30:24PM -0800, Colin Foster wrote:
-> The MAINTAINERS file has Andrew Lunn, Florian Fainelli, and Vladimir Oltean
-> listed as the maintainers for generic dsa bindings. Update dsa.yaml and
-> dsa-port.yaml accordingly.
+On Wed, Dec 07, 2022 at 06:56:09PM +0300, Dan Carpenter wrote:
+> There is a typo so this loop does i++ where i-- was intended.  It will
+> result in looping until the kernel crashes.
 > 
-> Signed-off-by: Colin Foster <colin.foster@in-advantage.com>
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
-> 
+> Fixes: 26593928564c ("iommu/mediatek: Add error path for loop of mm_dts_parse")
+> Signed-off-by: Dan Carpenter <error27@gmail.com>
 > ---
+>  drivers/iommu/mtk_iommu.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Applied, thanks.
 
