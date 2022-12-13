@@ -4,73 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF7EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Dec 2022 09:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2084C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Dec 2022 09:20:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UAf/ZqaoTFiGYo2T0OFf0enXFEczKv5MY2AoqpMQdlc=; b=tN/W+FShMoCaI0bTUtv88NGt6F
-	2uftpti5vm6vAboVNoJG3YJ66VLgtoIID1MvoHiLVO5tgsjjAYRs43C8rKwaz5U5orU3hkjVNPzdb
-	VcJLRw2FHKDzkRYgXiEBqOWDob3ZhRCs/8ZtT0WYc/XfLqSBLA+rWCn6AWsTWfj+RUl3Wv5xywVFU
-	7L1PvUrQ8VSVK6fgUgxwTrYC0LsZNNTObpKf5f7+Y0Y6KfBnfZVD9zzn+XVk3pzUIhyBFPxJ5dBQb
-	BkgOp1ToRmRar2IZml+XN1zUj7Uxi8D+KnA8oCrcz1jLjWQWVFtwoixDlj7NVklL2hG7zVpPbCE2c
-	eeA2JDKQ==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=; b=U+e1SfwLDtsFk5HM/8Z9ZVQJXZ
+	2QWJ0YSG8DWAyYPitijhwuhhOSOa+A4RP+7v3dyLpznfzgz6TOlwtCQNrqQQ/FP0/4PPj5/V5Kt98
+	EY4ui7GzD7wOl/YngfO2zbVPHYcqr1IuNLdtjjUIrvgFZRNW3BB2xzd/JHWVuAWeyl2EbYNJSqo0P
+	KQkqJrfsLX7gbrJK8ttjCjOZCZk7FoX7EBkQ/eGerXL//q4V+vZREeDvgEQeq0kaXFejcgrS/E7aX
+	mK2qPiyPq76SihZqOhkmOmQaLiBWIM3VGmGzKGD4lnYiUSVpCMwV0wFv4ox3gPPxzS1qk258Ay8tD
+	EYdmTTZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p51Il-00EHEn-2z; Tue, 13 Dec 2022 09:10:15 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p51Sr-00ELBr-LN; Tue, 13 Dec 2022 09:20:41 +0000
+Received: from mail.lokoho.com ([217.61.105.98])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p51IZ-00EHBW-RP; Tue, 13 Dec 2022 09:10:05 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 72FB36602C2F;
-	Tue, 13 Dec 2022 09:09:56 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1670922597;
-	bh=O7J/BSi0dbHIU33pWdlPZo0iXo43ZFxCG6/Ttxq4/ck=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=i+K4L1Oph/RgbQBE0z/4ckzGYkFAG8RaTNi/LDc8P6hK/etjso8EfpuR/atFD+Rr/
-	 BJFy9PZiYYMQiXvGob/kwdmmqEynZ2r5WexpfOKTqWgbvmsgD+fX29O57qh7y+g13n
-	 wfF+rXmODa/2YpgE0XnRlEE7k7SkFaTqAIcc4gpkT9IR9AiNBZ7oAyv03dQlJcgbAb
-	 sJzelPcYLLqLAezFwq7Bm6qoCdbDdV2Cca5J7599+NpBs/Axk9sWE7XSAtKcaQYqD9
-	 YB0fGL0ZvcYp3zayeCGXcKw+UQuAPg+H0qjEsPTw7kUM9+19NRgIZBbsKyghrpVdiA
-	 xW/7ORMf4netQ==
-Message-ID: <7e668b90-e3e6-5d25-e894-f754662405af@collabora.com>
-Date: Tue, 13 Dec 2022 10:09:54 +0100
+	id 1p51So-00EL9O-Uw
+	for linux-mediatek@lists.infradead.org; Tue, 13 Dec 2022 09:20:40 +0000
+Received: by mail.lokoho.com (Postfix, from userid 1001)
+	id 2B3E9857C5; Tue, 13 Dec 2022 09:18:25 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lokoho.com; s=mail;
+	t=1670923195; bh=Z0N5VlX9/JlryGOL5I747Le9USomZJCRNNGRT3LbbKc=;
+	h=Date:From:To:Subject:From;
+	b=RP8TnzjjezesvdjrYNCt/hjdAWq7n3Gxch1ugJDulSViKFx4wJ9xiltzoKJIpx6bk
+	 I3ha6ysYDFT+CkzzUHxzKWe2nUD5flPoxLrwn40ol1SBAPsO1mb/COm9IOn6xJsRmM
+	 9qoKjOtkIXYb2CBItpyFMx40pXBXlbHgJHZw84apwsZmmkRg7WYXphsbg5GKRMB9F6
+	 4Avxw87YqeLdW7RKssCQPBr9VfLcQ3DRIcBGXrHDsLF5b+UEL9r2fTDeT8xrURrYiH
+	 Uj5+xMR4AhpZY3nRLkg6BakS6TsPEKRVMwvOGlIGnXXXsdcVEk8qCON0TtzhMkW9nm
+	 GwG2SMr5W9cLQ==
+Received: by mail.lokoho.com for <linux-mediatek@lists.infradead.org>; Tue, 13 Dec 2022 09:17:13 GMT
+Message-ID: <20221213074501-0.1.2s.95yf.0.phc5xhmxih@lokoho.com>
+Date: Tue, 13 Dec 2022 09:17:13 GMT
+From: "Adam Charachuta" <adam.charachuta@lokoho.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.lokoho.com
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH 1/5] media: mediatek: vcodec: add params to record lat and
- core lat_buf count
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221210073218.17350-1-yunfei.dong@mediatek.com>
- <20221210073218.17350-2-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221210073218.17350-2-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221213_011004_331986_78796FFB 
-X-CRM114-Status: GOOD (  17.13  )
+X-CRM114-CacheID: sfid-20221213_012039_139992_F774020C 
+X-CRM114-Status: UNSURE (   1.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,64 +64,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/12/22 08:32, Yunfei Dong ha scritto:
-> Using lat_buf to share decoder information between lat and core work
-> queue, adding params to record the buf count.
-> 
-> Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->   .../platform/mediatek/vcodec/vdec_msg_queue.c | 32 ++++++++++++++++++-
->   .../platform/mediatek/vcodec/vdec_msg_queue.h |  9 ++++++
->   2 files changed, 40 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> index dc2004790a47..af7ddba1923a 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> @@ -52,6 +52,30 @@ static struct list_head *vdec_get_buf_list(int hardware_index, struct vdec_lat_b
->   	}
->   }
->   
-> +static void vdec_msg_queue_inc(struct vdec_msg_queue *msg_queue, int hardware_index)
-> +{
-> +	mutex_lock(&msg_queue->list_cnt_mutex);
+Dzie=C5=84 dobry,
 
-I doubt that you need to use this mutex, as you're using atomics...
+zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
+=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
+o dalszych rozm=C3=B3w.=20
 
-> +
-> +	if (hardware_index == MTK_VDEC_CORE)
-> +		atomic_inc(&msg_queue->core_list_cnt);
-> +	else
-> +		atomic_inc(&msg_queue->lat_list_cnt);
-> +
+Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
+=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
+=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
+strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
 
-This branch (with the relevant appropriate changes) can be simplified as
+Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
 
-	atomic_inc(&msg_queue->list_cnt[hardware_index]);
 
-...where list_cnt is an array, and hardware_index is an enumeration.	
-
-> +	mutex_unlock(&msg_queue->list_cnt_mutex);
-> +}
-> +
-> +static void vdec_msg_queue_dec(struct vdec_msg_queue *msg_queue, int hardware_index)
-> +{
-> +	mutex_lock(&msg_queue->list_cnt_mutex);
-> +
-> +	if (hardware_index == MTK_VDEC_CORE)
-> +		atomic_dec(&msg_queue->core_list_cnt);
-> +	else
-> +		atomic_dec(&msg_queue->lat_list_cnt);
-
-Same here.
-
-> +
-> +	mutex_unlock(&msg_queue->list_cnt_mutex);
-> +}
-> +
-
-Regards,
-Angelo
-
+Pozdrawiam
+Adam Charachuta
 
