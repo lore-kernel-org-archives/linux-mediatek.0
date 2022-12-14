@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CF9EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 13:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 872D7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 13:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a+g8bhbYuaQlXpPh9UOtgjVnfBA2QaGFWh99Dxpg4ZE=; b=DeWj7wHUrUsgsx1KHu2i0/tSgG
-	t6+Gpw0+nfWZTIy+quAjaOvo9RLCEM7am7oe6n/b+0jpO0T8x3X3/11emmgAZkCKku4UItW3siHmK
-	aKXTwT5pIielu+SC6rK3j8bz8np7GKhsTvMGx3z8dHf0Q0I/xCnVoUSKzldeZ7ZzixlGRdR025Knk
-	uQ21T1ehE2p2rWQwRybD1f0JJPdjEcGlIhjdS8dzmCNOfbwFiRjSo7x061VzP5XWNs7247PeSFCcb
-	oxaw/hyx9iKWngxnUSvjNlE4tDcBjK/1zfu2Bpg9E4qVngJASjsu3QNUvXOkUna22ERydHMUW8QhP
-	rf8NwyJQ==;
+	bh=WWq8c4X0wTwa9D+MtK9E3e6717+lCzuV67S3Ts9era8=; b=qR/qHlpCxbpdSGB6Rh8BvCvqut
+	5oeRSUw7okYlUBGv4kQdTaoftAQNoSGAXavhdMnWzVmP5IYQbeOzMody91cvB0mmZFuqcbiQiC/U7
+	03chUhun5XppFSzwuaVxIEFyOMpAwdIJPUqH6luP7A0DyANeuyHANybstybK3JsbIEkvU8wqoC8+u
+	U7F+ZtTgwTtYY2nqlS4+xKDrXmf6ZIEK3L1wID83iiKP95CoU8ehXTrN4SCXGwF4g6ZvdmKVUGU9F
+	0EgE2QZFFg4ISthjkxx4trpctCOcxAV559VX54zMSiAAr0ee4GJnkhszgFruP7ja9FTne3qpdZkC+
+	vnNGa6Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5Rmn-00Gk9M-TA; Wed, 14 Dec 2022 13:27:01 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1p5Rwk-00Gqx2-RO; Wed, 14 Dec 2022 13:37:18 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5RZW-00GcBD-P5
-	for linux-mediatek@lists.infradead.org; Wed, 14 Dec 2022 13:13:20 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id v11so6553610ljk.12
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Dec 2022 05:13:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=a+g8bhbYuaQlXpPh9UOtgjVnfBA2QaGFWh99Dxpg4ZE=;
-        b=pH4lW0UzND66hSwgAr90gmNeJlHhMMjKxH++4eW3mWYQyc+QzxOJXFiGhRsFLzgJq3
-         k3+WVeQmb6prwQwLr5tbLcNSDjevfkbBMeexkjwydyfk5wzC2d01uaqZ9KTKR4ZbmmSj
-         P4BbNAO9HG/VNcHskBIak4fVt3eAS+98lwqxCaBfK7/840N6KSl+juF26s9XyI+9zx72
-         v0SctXCPovZc5s4h19qrHjlfhaBFG7899spkzEHoVKHOe5BCc8b80P8G48Su4s+kR1L/
-         flqXg0HjT5iXo4wesLl9SlcpG8/MXK43CZfSuMIKHUY2pU04i7qiRlmDFXAraT+VJGTV
-         D/TQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=a+g8bhbYuaQlXpPh9UOtgjVnfBA2QaGFWh99Dxpg4ZE=;
-        b=aQkQUfAmQLobF4OVQurc6MVJXNuwm1PgnBBsFAqUj4IGVfsC2aT1sPAeOrLcoB05H6
-         utIaAZAieCF1uh6FI5/5PGvOzU3/DuZbXVBRzImMcQwYA9NeI+AzdnQ+MFGE3h266vrc
-         1tyMMZRHqINvj4S9kC58n5o1Mvo8/NCEdur6gx2wdubSB3CtzxinPFCzOvXQFfiaX80C
-         yFmmbXICImwJHYasIu3X8FcjU8NqBUY/eGp6wnSQNJ26EyypH52HDudleLz9lQ23HFjg
-         bdmqiXWN+5PNcmohLoYTrws6MkcWyq8a6qMpAHmnzpOuyUXcSip0dsn/CFy36XS9TJ6/
-         f7dQ==
-X-Gm-Message-State: ANoB5pk2H1BAigKj7cSq8d5GdWgJegc4nKi1LufSQOdxwUJ9IDr8CRkC
-	QiUuAO56g4P2TrlbwQvWxlEm+A==
-X-Google-Smtp-Source: AA0mqf5PHGVRyKqw0AGxvuMvc+S3bUW9QX8UFoENXdCLSqKdTBPI3OD0tyhSW0GEGTa31bX/AAwYJQ==
-X-Received: by 2002:a05:651c:883:b0:26f:db34:a157 with SMTP id d3-20020a05651c088300b0026fdb34a157mr5864463ljq.26.1671023592549;
-        Wed, 14 Dec 2022 05:13:12 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id bd9-20020a05651c168900b00279e93c9c25sm596663ljb.29.2022.12.14.05.13.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Dec 2022 05:13:11 -0800 (PST)
-Message-ID: <9d7bda38-69c9-95c8-e867-8bd5733debe2@linaro.org>
-Date: Wed, 14 Dec 2022 14:13:10 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH 3/6] dt-bindings: pinctrl: mt7621: add proper function
- muxing binding
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1p5Rrp-00Gn79-Jk; Wed, 14 Dec 2022 13:32:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 78AABB818B4;
+	Wed, 14 Dec 2022 13:32:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A0F4C433F0;
+	Wed, 14 Dec 2022 13:32:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671024728;
+	bh=MphwCkdn5QeL6NXAHvFCBDgfGRjYo4fTYVGRBnJWEds=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=cIOEbsqRHqjMOlAPyTV/Ir2Y0AEY8qo8+9DDbN37lq0TrAIjYb0GrhgS//Hn+/2fL
+	 bO8gIZT+JpDLcB1pT9QPRMpWyIrbDMVZEAeI5J2jfbTA9Jdg6oAcBgnGKfFfbc9B5K
+	 tWFDEHn7zA09v/1f4yAVdAuh1bMtNweT9F6ShleOUozzvI1MD4z4uPX0t27NsxvciB
+	 vgK+PyI52BJ2JwCPcBgPSyr65TNsak8L60vEq6+3WzupSVI89es1kVTzP/u0y4mTfB
+	 P2PLIBUfjGaPWBMqCB6F+fUug+q9Kw4wbSU1A7vvjQhEmYO4P3lY3eekb9r8l2MStC
+	 eEYWEou34JQTw==
+From: Mark Brown <broonie@kernel.org>
+To: YC Hung <yc.hung@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Trevor Wu <trevor.wu@mediatek.com>,
+ "Nicolas F . R . A . Prado" <nfraprado@collabora.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, alsa-devel@alsa-project.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
-References: <20221213130430.172876-1-arinc.unal@arinc9.com>
- <20221213130430.172876-4-arinc.unal@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221213130430.172876-4-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+ linux-kernel@vger.kernel.org, Curtis Malainey <cujomalainey@chromium.org>,
+ whalechang@google.com
+In-Reply-To: <20221209031053.8444-1-yc.hung@mediatek.com>
+References: <20221209031053.8444-1-yc.hung@mediatek.com>
+Subject:  Re: [PATCH] ASoC: mediatek: mt8195: add sof be ops to check audio active
+Message-Id: <167102472482.27755.57467344519009874.b4-ty@kernel.org>
+Date: Wed, 14 Dec 2022 13:32:04 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.11.0-dev-7e003
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221214_051318_859557_96E79675 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20221214_053213_852217_37F06150 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,44 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/12/2022 14:04, Arınç ÜNAL wrote:
-> Not every function can be muxed to a group. Add proper binding which
-> documents which function can be muxed to a group or set of groups.
+On Fri, 09 Dec 2022 11:10:53 +0800, YC Hung wrote:
+> In MT8195 SOF design, both DSP and audio driver would access audio
+> registers. Before DSP accesses audio registers, audio power and clock
+> should be enabled. DSP will hang up if DSP access audio register but
+> audio power and clock are disabled. Therefore, we add audio pm runtime
+> active checking before accessing audio registers in SOF BE's callback
+> hw_params function to avoid this situation.
 > 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  .../pinctrl/ralink,mt7621-pinctrl.yaml        | 204 +++++++++++++++++-
->  1 file changed, 197 insertions(+), 7 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-> index 61e5c847e8c8..0efb03f1d88e 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-> @@ -29,21 +29,212 @@ patternProperties:
->          $ref: pinmux-node.yaml#
->  
->          properties:
-> -          groups:
-> -            description: The pin group to select.
-> -            enum: [i2c, jtag, mdio, pcie, rgmii1, rgmii2, sdhci, spi, uart1,
-> -                   uart2, uart3, wdt]
-> -
->            function:
-> -            description: The mux function to select.
-> +            description:
-> +              A string containing the name of the function to mux to the group.
->              enum: [gpio, i2c, i2s, jtag, mdio, nand1, nand2, pcie refclk,
->                     pcie rst, pcm, rgmii1, rgmii2, sdhci, spdif2, spdif3, spi,
->                     uart1, uart2, uart3, wdt refclk, wdt rst]
->  
-> +          groups:
-> +            description:
-> +              An array of strings. Each string contains the name of a group.
+> [...]
 
-Here and in all patches - please add maxItems:1. The definition of field
-should have some constraints (and your if:then: might miss a case).
+Applied to
 
-Best regards,
-Krzysztof
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
+
+[1/1] ASoC: mediatek: mt8195: add sof be ops to check audio active
+      commit: 83f1b7f39af73b01edf098fe3141404670703281
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
