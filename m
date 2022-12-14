@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE1D4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 11:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488BBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 11:55:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=258xJKAj2kmGn20jgmCiz6jUVg46haGAVCZVnmze46E=; b=ymnIzJNRV1eBDVagPg/uQDt9Ng
-	x3tbW2LKSTh4qohyeF+jj7basFybP00Q+8UDoGB5ByOVDMTd1JNaDUqucNKaEMs8k6atkHfJUy4vi
-	ttacHn7ILVYef6At5SJ9tXF/J0+p2virW3JJiK+WA8X1R89/KUwhjBjhakTPvSYA3mZu6SN6qY686
-	LRZLjWUBrJGFP0Qq/nAQOFaQgiIh3XEV7jBHCl0JvBUqQWpoihkbgfV17AnHATPfZ4PwuF+Swotxy
-	G1jHFRxkAl55R2x9/8nXaj32y/+jV2rvALBeuqS5XgxQJSprzf9QKecWxGJ4mgYzfwKL6evuGQ4RM
-	Kkpm5k1g==;
+	bh=cPBqPNWuQqd8iPzh14Et+rK9vcZ1LSXVV8dYdeOHZ6c=; b=vmz2rSCBQa9zS7a7Q7anRnOqTn
+	dutr5ySyzoKUokA+2Vk9D05CdTSbmbVWMFfORQiZJnQeO9BSvlnC4bKYH1ZNHEYJxB8Dik4FuSqhZ
+	GLz+sJHhU21Ti5PO0jmzHoMsu4F+OfUflK6k+iA55tyvDbL4TCVgefYWMk3c3fICxgDpsTRdLTNHS
+	/K78jnlwsqlYQTgZaybGn7gVg9XUgmUxVQqntCZFdfxoEGJawbNOIntPINZpmfOkaT1iByYWzkMjN
+	fmBsqbn9Cchhwjth2kd0428/ieXl7Q3Ulo4TENbjIZ0638vtPS6sbWJgk0UPkH5fJP6rZfzKLa4L+
+	+lPO5wPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5QBf-00G2md-Di; Wed, 14 Dec 2022 11:44:35 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p5QMC-00G6Si-K7; Wed, 14 Dec 2022 11:55:28 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5QBc-00G2l9-Te
-	for linux-mediatek@lists.infradead.org; Wed, 14 Dec 2022 11:44:34 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A70C26602BF9;
-	Wed, 14 Dec 2022 11:44:30 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671018271;
-	bh=vWMG/i0XCLqz8upe0LKns6EShfTqYSiinpfQ04UAviY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lQgN+zFFBb4/2tMPRKZBKCD6SGN3wCryzOdFOD3LAwf5nu72uJFIrb6NH7O8W0BTi
-	 D9k8ervheSNBfsHwIcv7ofaGL0rWxfWPJo1BMNwPROKP1Kvo0D8iCW/9y0XZp2mQJ2
-	 COLwEN41rH3IAPEdwWauwfMnDT1yUQ228W30cXOV45DPbOQyCJTyfgC331FSSJzZZa
-	 jb9z+I2LMlVfZnGkmnB3CPwG7J2LS59iS/KKsB95goA2Y6aDBdSHgPx//ezIwDLI7T
-	 8s4I1wD398Czdd6sTbODsGHcQOdaAjQFzWW8Kzq2I/JVanhFADyXkZ/SuR3RapnY7z
-	 hncZgd/sUB3GA==
-Message-ID: <b4a1c27f-44b1-0368-964c-175bc367c795@collabora.com>
-Date: Wed, 14 Dec 2022 12:44:27 +0100
+	id 1p5QMA-00G6PF-IE
+	for linux-mediatek@lists.infradead.org; Wed, 14 Dec 2022 11:55:28 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id bp15so9975884lfb.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Dec 2022 03:55:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cPBqPNWuQqd8iPzh14Et+rK9vcZ1LSXVV8dYdeOHZ6c=;
+        b=d9Opn6CX+6jaux+E3iVm2NyBgLI8PREjwy5MeY1Lrro99hlHyyMusWfNulvNGBmlT+
+         sWGQZ8OgTIhBrmsKlFqcXkwlkcrtloR7cpiU8rWGJJXCR60EMB+ZWdogtIDrWTIoU08A
+         kvlc23GJjhTezCWJOd8SAR0kl60znuGEnDz+GE2J+2TbHR2xW2/UVpC25uSeLT6QkS9e
+         05VuKn+ani6pbjqRZC4uomXn8MA10l49E8Vsxi8w64EubWJyHX63wzGr3xKLbrtW8pec
+         yWihcri1LwJFp2Ct6weofdnrfX95O39+t5SsoM899CKrAstmzP2KIvFoFEPW1SligMk1
+         110g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cPBqPNWuQqd8iPzh14Et+rK9vcZ1LSXVV8dYdeOHZ6c=;
+        b=CjF48eNbGOVpmvPawomYNJWcSOsGdi6xwJ/EuPAdxwd/iAUux446ahmUTt6LRXo6zo
+         5zHWeR5PsPh6pfqoO4FBfnIQlWPIblmBgZdRRyOx4ZpwEgcHH+Q8sVBtriYOnNQZwQyv
+         Ef7wwJkRDzz70ctsjPataQBb6Ui2BSnuGbKWOQfsnRshePcfD2x9Ezwwe0rGWG91J9HE
+         r9K4A6RaCdGcaLGP6ZDFnqI5cbS5LLvAsJGXphQSXtznmVJXHxu446Dg1KTuxH7PXFds
+         U8lpDcw1RHvfwVpJ8kfuUwVZU8ZVx/TJ6sExKkBSBVD+vqcEEzwHvpJGgh+w2ikzK78Z
+         aZVA==
+X-Gm-Message-State: ANoB5plW5crIS66MuuznNvWm+UAsM71d61E4n+viyF77ib5IKpBFq03M
+	uA6VnfL5nmiMyC+u3kjjM5TD3A==
+X-Google-Smtp-Source: AA0mqf77t8fHCzNIhykIbYiHIQrxYCkQ2IPp64vlW2pWDRXhqprSlUO5qUJL1uv9aHCthTDOMZGKsw==
+X-Received: by 2002:a05:6512:acd:b0:4b6:f0ac:7af8 with SMTP id n13-20020a0565120acd00b004b6f0ac7af8mr3783419lfu.67.1671018922448;
+        Wed, 14 Dec 2022 03:55:22 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id o16-20020ac24e90000000b004b551cdfe13sm771276lfr.279.2022.12.14.03.55.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Dec 2022 03:55:22 -0800 (PST)
+Message-ID: <4ffd94b2-e72c-a081-4326-5bc254603ddf@linaro.org>
+Date: Wed, 14 Dec 2022 12:55:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v3 0/4] rework thermal protection
+Subject: Re: [PATCH 2/6] dt-bindings: pinctrl: mt7620: add proper function
+ muxing binding
 Content-Language: en-US
-To: Howard Hsu <howard-yh.hsu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Ryder Lee <ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20221214022809.32087-1-howard-yh.hsu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221214022809.32087-1-howard-yh.hsu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Luiz Angelo Daros de Luca <luizluca@gmail.com>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
+References: <20221213130430.172876-1-arinc.unal@arinc9.com>
+ <20221213130430.172876-3-arinc.unal@arinc9.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221213130430.172876-3-arinc.unal@arinc9.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221214_034433_116253_19143546 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221214_035526_651904_C34BB787 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +100,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/12/22 03:28, Howard Hsu ha scritto:
-> Rework thermal protection with the following changes:
-> 1. Send thermal fw commands only after mcu init done.
-> 2. Firmware expects to disable thermal protect before reconfiguring thermal protect.
-> 3. Send fw commands through mt7915_thermal_temp_store() to update firmware
-> temperature directly.
-> 4. Add error messages for invalid setting.
+On 13/12/2022 14:04, Arınç ÜNAL wrote:
+> Not every function can be muxed to a group. Add proper binding which
+> documents which function can be muxed to a group or set of groups.
 > 
-> Howard Hsu (4):
->    wifi: mt76: mt7915: call mt7915_mcu_set_thermal_throttling() only
->      after init_work
->    wifi: mt76: mt7915: rework mt7915_mcu_set_thermal_throttling
->    wifi: mt76: mt7915: rework mt7915_thermal_temp_store()
->    wifi: mt76: mt7915: add error message in
->      mt7915_thermal_set_cur_throttle_state()
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+>  .../pinctrl/ralink,mt7620-pinctrl.yaml        | 632 +++++++++++++++++-
+>  1 file changed, 596 insertions(+), 36 deletions(-)
 > 
->   .../net/wireless/mediatek/mt76/mt7915/init.c  | 32 +++++++----
->   .../net/wireless/mediatek/mt76/mt7915/main.c  | 11 ++++
->   .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 54 +++++++++++--------
->   .../wireless/mediatek/mt76/mt7915/mt7915.h    |  6 +++
->   4 files changed, 70 insertions(+), 33 deletions(-)
-> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+> index 6f17f3991640..06880c80ba80 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+> @@ -29,47 +29,608 @@ patternProperties:
+>          $ref: pinmux-node.yaml#
+>  
+>          properties:
+> -          groups:
+> -            description: The pin group to select.
+> -            enum: [
+> -              # common
+> -              i2c, spi, wdt,
+> -
+> -              # For MT7620 SoC
+> -              ephy, mdio, nd_sd, pa, pcie, rgmii1, rgmii2, spi refclk,
+> -              uartf, uartlite, wled,
+> -
+> -              # For MT7628 and MT7688 SoCs
+> -              gpio, i2s, p0led_an, p0led_kn, p1led_an, p1led_kn, p2led_an,
+> -              p2led_kn, p3led_an, p3led_kn, p4led_an, p4led_kn, perst, pwm0,
+> -              pwm1, refclk, sdmode, spi cs1, spis, uart0, uart1, uart2,
+> -              wled_an, wled_kn,
+> -            ]
+> -
+>            function:
+> -            description: The mux function to select.
+> -            enum: [
+> -              # common
+> -              gpio, i2c, refclk, spi,
+> -
+> -              # For MT7620 SoC
+> -              ephy, gpio i2s, gpio uartf, i2s uartf, mdio, nand, pa,
+> -              pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf,
+> -              rgmii1, rgmii2, sd, spi refclk, uartf, uartlite, wdt refclk,
+> -              wdt rst, wled,
+> -
+> -              # For MT7628 and MT7688 SoCs
+> -              antenna, debug, i2s, jtag, p0led_an, p0led_kn,
+> -              p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
+> -              p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1, pwm_uart2,
+> -              rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7, spi cs1,
+> -              spis, sw_r, uart0, uart1, uart2, utif, wdt, wled_an, wled_kn, -,
+> -            ]
+> +            description:
+> +              A string containing the name of the function to mux to the group.
+> +            anyOf:
+> +              - description: For MT7620 SoC
+> +                enum: [ephy, gpio, gpio i2s, gpio uartf, i2c, i2s uartf, mdio, nand, pa,
+> +                       pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf, refclk,
+> +                       rgmii1, rgmii2, sd, spi, spi refclk, uartf, uartlite, wdt refclk,
+> +                       wdt rst, wled]
+> +
+> +              - description: For MT7628 and MT7688 SoCs
+> +                enum: [antenna, debug, gpio, i2c, i2s, jtag, p0led_an, p0led_kn,
+> +                       p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
+> +                       p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1, pwm_uart2,
+> +                       refclk, rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7, spi, spi cs1,
+> +                       spis, sw_r, uart0, uart1, uart2, utif, wdt, wled_an, wled_kn, -]
+> +
+> +          groups:
+> +            description:
+> +              An array of strings. Each string contains the name of a group.
+>  
+>          required:
+>            - groups
+>            - function
+>  
+> +        allOf:
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: antenna
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2s]
+
+I have doubts such setup is maintainable and readable. I would suggest
+to leave just few - maybe for gpio, jtag, refclk, utif.
 
 
-For the entire series:
+Best regards,
+Krzysztof
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
