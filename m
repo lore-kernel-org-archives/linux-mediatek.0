@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A249C001B2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 11:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE1D4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 11:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cUtNkHg3U0j2khRflo4s6V2w9ndixpmCOgfmwtfKeDg=; b=KJcSWjN6dLk8+qJabaKrD7FXI7
-	xkL+RSIjloFYhHoVFqbqRtEMs+Y8tLFpoBpe9qusv1B9eoY+ZT0QGMdpP3MqiO1dru2Ipx6wLZNl7
-	JLxzaZdwSDZzZ2+9vXpfNk34vXPYD9yytCn8qCK14OPpm8Vn/7MBtc6hCgGn0ZS0hcsdfdYuvsV1Z
-	zC8KnqwVHcKZ6nsAgcSmxhHCHglnzecaNzLnQsgZYJCQ9vk08j34oGtE43NJXaWdmIqxY2yV/huV5
-	iicdJmXVI2pxsIXL9fyefDmv44hznDTgO13QpknhlxqJdJV7WuML7nURocBRaQQ95k/17nPFmfTYP
-	dQdwXLjQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=258xJKAj2kmGn20jgmCiz6jUVg46haGAVCZVnmze46E=; b=ymnIzJNRV1eBDVagPg/uQDt9Ng
+	x3tbW2LKSTh4qohyeF+jj7basFybP00Q+8UDoGB5ByOVDMTd1JNaDUqucNKaEMs8k6atkHfJUy4vi
+	ttacHn7ILVYef6At5SJ9tXF/J0+p2virW3JJiK+WA8X1R89/KUwhjBjhakTPvSYA3mZu6SN6qY686
+	LRZLjWUBrJGFP0Qq/nAQOFaQgiIh3XEV7jBHCl0JvBUqQWpoihkbgfV17AnHATPfZ4PwuF+Swotxy
+	G1jHFRxkAl55R2x9/8nXaj32y/+jV2rvALBeuqS5XgxQJSprzf9QKecWxGJ4mgYzfwKL6evuGQ4RM
+	Kkpm5k1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5Psj-00Fv0o-Qd; Wed, 14 Dec 2022 11:25:01 +0000
+	id 1p5QBf-00G2md-Di; Wed, 14 Dec 2022 11:44:35 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5Ps3-00Fuel-M5; Wed, 14 Dec 2022 11:24:21 +0000
+	id 1p5QBc-00G2l9-Te
+	for linux-mediatek@lists.infradead.org; Wed, 14 Dec 2022 11:44:34 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0C1B56602C56;
-	Wed, 14 Dec 2022 11:24:18 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A70C26602BF9;
+	Wed, 14 Dec 2022 11:44:30 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671017058;
-	bh=NEFZcGNbx1H7VeJP6Mv0ncKb7TmxoWPVOEsWCQJSFbU=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=ei0nVUgclMv+T7W4Kx5OHkj2Pc8X1ty/gJXnvcytSHqfFcv3jz+ybKMJkx/A3M+lj
-	 f7w+4jEN9J4KNP3poMCL72mWpuD80wVFTzB4ArGOixNO4cE/JY8rJ7QM9Pf3oqMUC7
-	 MiqoVAU6D6aO/ompBalgH2dpgLvskaSh/v9wrLoAbnoXekXqyEDvcsAddXlDsF/Dky
-	 JXIJn7RU3ye/Lq4iMShJzlH4IHd9nEOhWRIFcfjbZVJjfCikWhEkhrVVe9pKBujyCF
-	 Kf+4af0BbUU3Hn2LvjUEHvPWCEnMR3G0efRRl6qvcxmgLxHW1vI/mvTMW5DkI7/xh5
-	 CRKoKgL9MxDXA==
-Message-ID: <9917f349-51dd-905f-e272-65315bb5b2cc@collabora.com>
-Date: Wed, 14 Dec 2022 12:24:15 +0100
+	s=mail; t=1671018271;
+	bh=vWMG/i0XCLqz8upe0LKns6EShfTqYSiinpfQ04UAviY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lQgN+zFFBb4/2tMPRKZBKCD6SGN3wCryzOdFOD3LAwf5nu72uJFIrb6NH7O8W0BTi
+	 D9k8ervheSNBfsHwIcv7ofaGL0rWxfWPJo1BMNwPROKP1Kvo0D8iCW/9y0XZp2mQJ2
+	 COLwEN41rH3IAPEdwWauwfMnDT1yUQ228W30cXOV45DPbOQyCJTyfgC331FSSJzZZa
+	 jb9z+I2LMlVfZnGkmnB3CPwG7J2LS59iS/KKsB95goA2Y6aDBdSHgPx//ezIwDLI7T
+	 8s4I1wD398Czdd6sTbODsGHcQOdaAjQFzWW8Kzq2I/JVanhFADyXkZ/SuR3RapnY7z
+	 hncZgd/sUB3GA==
+Message-ID: <b4a1c27f-44b1-0368-964c-175bc367c795@collabora.com>
+Date: Wed, 14 Dec 2022 12:44:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v5 7/7] arm64: dts: mediatek: Initial mt8365-evk support
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, khilman@baylibre.com
-References: <20221213234346.2868828-1-bero@baylibre.com>
- <20221213234346.2868828-8-bero@baylibre.com>
+Subject: Re: [PATCH v3 0/4] rework thermal protection
 Content-Language: en-US
+To: Howard Hsu <howard-yh.hsu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.Lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20221214022809.32087-1-howard-yh.hsu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221213234346.2868828-8-bero@baylibre.com>
+In-Reply-To: <20221214022809.32087-1-howard-yh.hsu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221214_032419_999482_45918615 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20221214_034433_116253_19143546 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,168 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/12/22 00:43, Bernhard Rosenkränzer ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
+Il 14/12/22 03:28, Howard Hsu ha scritto:
+> Rework thermal protection with the following changes:
+> 1. Send thermal fw commands only after mcu init done.
+> 2. Firmware expects to disable thermal protect before reconfiguring thermal protect.
+> 3. Send fw commands through mt7915_thermal_temp_store() to update firmware
+> temperature directly.
+> 4. Add error messages for invalid setting.
 > 
-> This adds minimal support for the Mediatek 8365 SOC and the EVK reference
-> board, allowing the board to boot to initramfs with serial port I/O.
+> Howard Hsu (4):
+>    wifi: mt76: mt7915: call mt7915_mcu_set_thermal_throttling() only
+>      after init_work
+>    wifi: mt76: mt7915: rework mt7915_mcu_set_thermal_throttling
+>    wifi: mt76: mt7915: rework mt7915_thermal_temp_store()
+>    wifi: mt76: mt7915: add error message in
+>      mt7915_thermal_set_cur_throttle_state()
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> [bero@baylibre.com: Removed parts depending on drivers that aren't upstream yet, cleanups, add L2 cache]
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-> Tested-by: Kevin Hilman <khilman@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 163 ++++++++++
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi    | 343 ++++++++++++++++++++
->   3 files changed, 507 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-evk.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8365.dtsi
+>   .../net/wireless/mediatek/mt76/mt7915/init.c  | 32 +++++++----
+>   .../net/wireless/mediatek/mt76/mt7915/main.c  | 11 ++++
+>   .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 54 +++++++++++--------
+>   .../wireless/mediatek/mt76/mt7915/mt7915.h    |  6 +++
+>   4 files changed, 70 insertions(+), 33 deletions(-)
 > 
 
-..snip..
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> new file mode 100644
-> index 0000000000000..2c4ef9b92b68b
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> @@ -0,0 +1,343 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * (C) 2018 MediaTek Inc.
-> + * Copyright (C) 2022 BayLibre SAS
-> + * Fabien Parent <fparent@baylibre.com>
-> + * Bernhard Rosenkränzer <bero@baylibre.com>
-> + */
-> +#include <dt-bindings/clock/mediatek,mt8365-clk.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/phy/phy.h>
-> +#include <dt-bindings/thermal/thermal.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt8365";
-> +	interrupt-parent = <&sysirq>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	cpus: cpus {
+For the entire series:
 
-You're not referencing `cpus` anywhere, hence this label is useless:
-please remove.
-
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu-map {
-> +			cluster0: cluster0 {
-
-Same for this one.
-
-> +				core0 {
-> +					cpu = <&cpu0>;
-> +				};
-> +				core1 {
-> +					cpu = <&cpu1>;
-> +				};
-> +				core2 {
-> +					cpu = <&cpu2>;
-> +				};
-> +				core3 {
-> +					cpu = <&cpu3>;
-> +				};
-> +			};
-> +		};
-> +
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x0>;
-> +			#cooling-cells = <2>;
-> +			enable-method = "psci";
-> +			next-level-cache = <&l2>;
-
-It would be nice if you described the I/D caches for all CPUs.
-
-> +		};
-> +
-> +		cpu1: cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x1>;
-> +			#cooling-cells = <2>;
-> +			enable-method = "psci";
-> +			next-level-cache = <&l2>;
-> +		};
-> +
-> +		cpu2: cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x2>;
-> +			#cooling-cells = <2>;
-> +			enable-method = "psci";
-> +			next-level-cache = <&l2>;
-> +		};
-> +
-> +		cpu3: cpu@3 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x3>;
-> +			#cooling-cells = <2>;
-> +			enable-method = "psci";
-> +			next-level-cache = <&l2>;
-> +		};
-> +
-> +		l2: l2-cache {
-> +			compatible = "cache";
-
-....and what's the size of this L2 cache?
-Is it unified, or does each CPU core have its own private L2?
-
-> +		};
-> +	};
-> +
-> +	clk26m: oscillator {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <26000000>;
-> +		clock-output-names = "clk26m";
-> +	};
-> +
-> +	psci {
-> +		compatible = "arm,psci-1.0";
-> +		method = "smc";
-> +	};
-> +
-> +	reserved-memory {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +
-> +		/* 128 KiB reserved for ARM Trusted Firmware (BL31) */
-> +		bl31_secmon_reserved: secmon@43000000 {
-
-This depends on the bootloader that's flashed on your board - it's not a
-global SoC property.
-
-Please move it to your board, or explain why BL31 *must* always be
-128KiB starting at 0x43000000.
-
-> +			no-map;
-> +			reg = <0 0x43000000 0 0x20000>;
-> +		};
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-
-Is there really no systimer in this SoC? Would be pretty odd....
-
-Regards,
-Angelo
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
