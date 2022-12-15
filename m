@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927E2C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 09:54:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7892DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 09:58:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TS4H46NJpKIj1mAjET3pDVRzVrVVAnQzfGePBLuHEEg=; b=v4xTzTVl/0X7dRRUCt+MB9KdBx
-	6kAWDamNIS6byjOg1ueO+GM9LyCnsYNoFZexw1/efrkYlgoAUXoNK33k6Sx7cCrz0baB7YNEY56Uj
-	Jd/H9Dvl86Yp8To2UN3/qvqXP+y8KqueJ0Goi8Ik4LLRxCRC7vGBWUO3qRjlcz5DIqLUo9exaayOm
-	GMC9xPp3eINTO9ETgiDZm0r06TJkeGh3GQUV96GFr60Rz0w+5xOXQ9lYI4Go+y4Xi+cMEZNiWq8GA
-	gRJoey3LzhYCvsUcMSvteTAng+K+DpJMe/7DliHewvgMMntxAhRkPUAHtDoB4muFwM6cFsh3BhvgS
-	bMUqkl2w==;
+	bh=63a5UIGzfu3Wi1UYpCYyrB4fgEwqDRpWf0vQJYcCngE=; b=jypBNz9AQJ97JcOGSaoluPsvYP
+	kOp8v6NuuV9Z1/TGeeP/fSOVdyySLtpGVRvUQd3RQpqGi2m0qXaM1ofIbw93iIHLYcexvuXxFFNNK
+	SBcNoigm/ZwZaEiokqPS0tJ2KQVSaQ9MYX5M70rc/YXEn1JJpWMpdYZ5c0cIorLmbOjHXMfG7XBjU
+	L/bmPRV/Z+DwGhouny2rDNP8CdZYTtjRO5ZdXkZmdGHPmq6o8gw9nxXZsIEGvwrDp7dErkEWoWOCg
+	iywdYUip+7bhI2H88yj4S/FIXHw0VZTwqZcKuu4P9gY/7u5JAI2NMKvDBPDnreVDo6SdvJnKEVaC2
+	YhBj24Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kwK-008Zyr-P3; Thu, 15 Dec 2022 09:54:08 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1p5l0p-008cHl-Uc; Thu, 15 Dec 2022 09:58:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kwA-008ZuN-Og; Thu, 15 Dec 2022 09:53:59 +0000
-Received: by mail-wr1-x435.google.com with SMTP id y16so2476654wrm.2;
-        Thu, 15 Dec 2022 01:53:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TS4H46NJpKIj1mAjET3pDVRzVrVVAnQzfGePBLuHEEg=;
-        b=ZqJFprCq+Pg1srwp6w/JzB1GLa3p2KdoQWKODfSXiJP6YO7pWBVLYhpN8kw6S5kHlo
-         71TGFPTVu+Z8Z4vQSAL/o/huHn1XkBxQwc0QY603hx8ZEnN6BE8pAno8ih2qo9SfyMeX
-         F46caq2Or5gwlGTEUUKmyLDxPlxKtKAN9yksViMYDpeaaWvJpZSiLytCLqAlZiOgEQce
-         R4yq6e8O6m0gBylvcqTwwA8Alb2t5O/+3k3YqIyP65kkrNpvOv75NoukMJ1fWpv/negS
-         4alqGGYmG2EqsusDicr8dlERLVXT5ufMrhnGhid2+SbUOvjtlTV7fiwoOm7sGn1J3xoi
-         t2jQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TS4H46NJpKIj1mAjET3pDVRzVrVVAnQzfGePBLuHEEg=;
-        b=ySg4obTnbDXPuDqdLpHGzna9B59bMukmRT/eCPHxn+U5ghT6SNFJQ2rWDxzVpR6BI5
-         ZF6KLckKerKdBXGTRe0XBRVdN11c23ILEsuaKslnRGBgGkeoCFRBeGnlugWZC+Cbm+QT
-         7UF9bykmwo51AuuknG7pZtx83NWxHK0PKjkPWm6e5TJhxKEb6/jW397sIQOz2GHaT9uL
-         6vpqNaIHz0RgYC0O4++Nw+X49PrDWZDfCV+FOtMrrwWzf0DtBur6h8O1o4p4CRobJZMh
-         ivhdIo4Rwh9isFmvrnGtyzB/zJZW3FzJ81LZ24DagfhAgMUYsC2bjZAT5O5Hni4v8jIz
-         aXEQ==
-X-Gm-Message-State: ANoB5pmPKiYsYfW875yxd1JqEx1HDUWPIrMx9u9vpFuL6h/6NBySROus
-	Cxlvnr3CDA+xwppiPH2U6eNNG0pNgEqcy8HCYRHU9WAU
-X-Google-Smtp-Source: AA0mqf57PEcCvncPREwZ/GRgdbbmcI0IPPgF7N2rlcyfdkFtxDFVyJLs55NGC9hcWER4/t2A5vW83V2+rhPR/banfXw=
-X-Received: by 2002:a5d:6d84:0:b0:242:4ba2:312c with SMTP id
- l4-20020a5d6d84000000b002424ba2312cmr15308125wrs.406.1671098035745; Thu, 15
- Dec 2022 01:53:55 -0800 (PST)
+	id 1p5l0n-008cEr-CG; Thu, 15 Dec 2022 09:58:47 +0000
+X-UUID: 38faf6be02764550a5a8544a14f4e1b3-20221215
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=63a5UIGzfu3Wi1UYpCYyrB4fgEwqDRpWf0vQJYcCngE=;
+	b=h9cxfIjojX5DinOfSiRqDxMF9Ajk1Gh8z5D/RqSpaCqA5EOw9hZd+zdSLLcEiDbbR6GP6LiwT9aMFA+3Ok/i6UAnpILNn5Jx/G/wDpPAY3F7hs9S6lBwsIk9um/KOxAEyBAPKsN8u0maW9/K8+6P+l1Nq7tQ+liBlMvrz8cBHUk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:6c68dfa7-9740-4e05-a787-c554a6de5014,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Release_Ham,ACTIO
+	N:release,TS:73
+X-CID-INFO: VERSION:1.1.14,REQID:6c68dfa7-9740-4e05-a787-c554a6de5014,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:73
+X-CID-META: VersionHash:dcaaed0,CLOUDID:e950aeb4-d2e2-434d-b6d3-aeae88dfcc78,B
+	ulkID:221215174431Y2OQ0W09,BulkQuantity:19,Recheck:0,SF:38|28|17|19|48|102
+	,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40|20,QS:nil,BEC:nil,C
+	OL:0
+X-UUID: 38faf6be02764550a5a8544a14f4e1b3-20221215
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2144461453; Thu, 15 Dec 2022 02:58:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 15 Dec 2022 17:58:34 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 15 Dec 2022 17:58:34 +0800
+Message-ID: <d15babbe-5f69-38c0-28d4-614b6ffd1b8b@mediatek.com>
+Date: Thu, 15 Dec 2022 17:58:32 +0800
 MIME-Version: 1.0
-References: <1671096096-20307-1-git-send-email-u0084500@gmail.com> <Y5rsdo/SGHJM4UKG@kroah.com>
-In-Reply-To: <Y5rsdo/SGHJM4UKG@kroah.com>
-From: ChiYuan Huang <u0084500@gmail.com>
-Date: Thu, 15 Dec 2022 17:53:44 +0800
-Message-ID: <CADiBU3-iVLQf6Q5SzOB_pMCs2PGcFuWryjpDn5Qvz41WQ6C2RA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
 Subject: Re: [PATCH] usb: typec: tcpm: Fix altmode re-registration causes
  sysfs create fail
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: linux@roeck-us.net, heikki.krogerus@linux.intel.com, 
-	matthias.bgg@gmail.com, tommyyl.chen@mediatek.com, macpaul.lin@mediatek.com, 
-	gene_chen@richtek.com, linux-usb@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, ChiYuan Huang <cy_huang@richtek.com>, 
-	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+To: cy_huang <u0084500@gmail.com>, <linux@roeck-us.net>,
+	<heikki.krogerus@linux.intel.com>, <matthias.bgg@gmail.com>
+CC: <gregkh@linuxfoundation.org>, <tommyyl.chen@mediatek.com>,
+	<gene_chen@richtek.com>, <linux-usb@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, ChiYuan Huang <cy_huang@richtek.com>,
+	<stable@vger.kernel.org>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>
+References: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_015358_822665_83948A1D 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221215_015845_463362_6A2042C5 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,26 +89,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Greg KH <gregkh@linuxfoundation.org> =E6=96=BC 2022=E5=B9=B412=E6=9C=8815=
-=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=885:44=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> On Thu, Dec 15, 2022 at 05:21:36PM +0800, cy_huang wrote:
-> > From: ChiYuan Huang <cy_huang@richtek.com>
->
-> Why not send directly from this address so we can validate that this is
-> the correct email address of yours?
->
-It's  the company mailbox policy. To send the external mail, there's
-the security text block at the bottom.
-Except this, some mail address are also blocked. To avoid this, I use
-my personal mail to send the patch
-and leave the SoB for the Richtek mailbox.
-It's lazy to fight for this.
+On 12/15/22 17:21, cy_huang wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+> 
+> There's the altmode re-registeration issue after data role
+> swap (DR_SWAP).
+> 
+> Comparing to USBPD 2.0, in USBPD 3.0, it loose the limit that only DFP
+> can initiate the VDM command to get partner identity information.
+> 
+> For a USBPD 3.0 UFP device, it may already get the identity information
+> from its port partner before DR_SWAP. If DR_SWAP send or receive at the
+> mean time, 'send_discover' flag will be raised again. It causes discover
+> identify action restart while entering ready state. And after all
+> discover actions are done, the 'tcpm_register_altmodes' will be called.
+> If old altmode is not unregistered, this sysfs create fail can be found.
+> 
+> In 'DR_SWAP_CHANGE_DR' state case, only DFP will unregister altmodes.
+> For UFP, the original altmodes keep registered.
+> 
+> This patch fix the logic that after DR_SWAP, 'tcpm_unregister_altmodes'
+> must be called whatever the current data role is.
+> 
+> Fixes: ae8a2ca8a221 ("usb: typec: Group all TCPCI/TCPM code together)
+> Reported-by: TommyYl Chen <tommyyl.chen@mediatek.com>
+> Cc: stable@vger.kernel.org
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+> Hi,
+> 
+> Below's the issue log for the reference.
+> 
+> *TCPM
+> [    3.856679] AMS DISCOVER_MODES start
+> [    3.856687] PD TX, header: 0x188f
+> [    3.858827] PD TX complete, status: 0
+> [    3.865330] PD RX, header: 0x2daf [1]
+> [    3.865340] Rx VDM cmd 0xff01a043 type 1 cmd 3 len 2
+> [    3.865348] AMS DISCOVER_MODES finished
+> [    3.865352]  Alternate mode 0: SVID 0xff01, VDO 1: 0x001c0045
+> [    3.865362] AMS DISCOVER_MODES start
+> [    3.865367] PD TX, header: 0x1a8f
+> [    3.867802] PD TX complete, status: 0
+> [    3.875208] PD RX, header: 0x2faf [1]
+> [    3.875216] Rx VDM cmd 0x413ca043 type 1 cmd 3 len 2
+> [    3.875222] AMS DISCOVER_MODES finished
+> [    3.875225]  Alternate mode 1: SVID 0x413c, VDO 1: 0x00000001
+> [    3.938243] AMS GET_SINK_CAPABILITIES start
+> [    3.938255] state change SNK_READY -> AMS_START [rev3 GET_SINK_CAPABILITIES]
+> [    3.938266] state change AMS_START -> GET_SINK_CAP [rev3 GET_SINK_CAPABILITIES]
+> [    3.938274] PD TX, header: 0xe88
+> [    3.940268] PD TX complete, status: 0
+> [    3.940310] pending state change GET_SINK_CAP -> GET_SINK_CAP_TIMEOUT @ 60 ms
+> [rev3 GET_SINK_CAPABILITIES]
+> [    3.946291] PD RX, header: 0x13a4 [1]
+> [    3.946295] Port partner FRS capable partner_frs_current:0 port_frs_current:0 enable:n
+> [    3.946298] state change GET_SINK_CAP -> SNK_READY [rev3 GET_SINK_CAPABILITIES]
+> [    3.946304] AMS GET_SINK_CAPABILITIES finished
+> [    4.239342] CC1: 5 -> 4, CC2: 0 -> 0 [state SNK_READY, polarity 0, connected]
+> [    4.256594] PD RX, header: 0x5a9 [1]
+> [    4.256603] state change SNK_READY -> DR_SWAP_ACCEPT [rev3 DATA_ROLE_SWAP]
+> [    4.256609] PD TX, header: 0x83
+> [    4.258528] PD TX complete, status: 0
+> [    4.258584] state change DR_SWAP_ACCEPT -> DR_SWAP_CHANGE_DR [rev3 DATA_ROLE_SWAP]
+> [    4.258591] Requesting mux state 1, usb-role 1, orientation 1
+> [    4.259588] AMS DATA_ROLE_SWAP finished
+> [    4.259592] state change DR_SWAP_CHANGE_DR -> SNK_READY [rev3 NONE_AMS]
+> [    4.259605] AMS DISCOVER_IDENTITY start
+> [    4.259609] Sink TX No Go
+> [    4.260874] CC1: 4 -> 5, CC2: 0 -> 0 [state SNK_READY, polarity 0, connected]
+> [    4.359636] AMS DISCOVER_IDENTITY start
+> [    4.359642] PD TX, header: 0x12af
+> [    4.361884] PD TX complete, status: 0
+> [    4.369433] PD RX, header: 0x578f [1]
+> [    4.369439] Rx VDM cmd 0xff00a041 type 1 cmd 1 len 5
+> [    4.369448] AMS DISCOVER_IDENTITY finished
+> [    4.369515] Identity: 413c:c013.0712
+> [    4.369521] AMS DISCOVER_SVIDS start
+> [    4.369524] PD TX, header: 0x14af
+> [    4.371696] PD TX complete, status: 0
+> [    4.378564] PD RX, header: 0x398f [1]
+> [    4.378573] Rx VDM cmd 0xff00a042 type 1 cmd 2 len 3
+> [    4.378579] AMS DISCOVER_SVIDS finished
+> [    4.378582] SVID 1: 0xff01
+> [    4.378584] SVID 2: 0x413c
+> [    4.378594] AMS DISCOVER_MODES start
+> [    4.378597] PD TX, header: 0x16af
+> [    4.380696] PD TX complete, status: 0
+> [    4.387008] PD RX, header: 0x2b8f [1]
+> [    4.387014] Rx VDM cmd 0xff01a043 type 1 cmd 3 len 2
+> [    4.387021] AMS DISCOVER_MODES finished
+> [    4.387023]  Alternate mode 0: SVID 0xff01, VDO 1: 0x001c0045
+> [    4.387029] AMS DISCOVER_MODES start
+> [    4.387031] PD TX, header: 0x18af
+> [    4.389134] PD TX complete, status: 0
+> [    4.395528] PD RX, header: 0x2d8f [1]
+> [    4.395538] Rx VDM cmd 0x413ca043 type 1 cmd 3 len 2
+> [    4.395546] AMS DISCOVER_MODES finished
+> [    4.395548]  Alternate mode 1: SVID 0x413c, VDO 1: 0x00000001
+> 
+> *Kernel TRACE
+> sysfs: cannot create duplicate filename
+> '/devices/platform/soc/11d01000.i2c/i2c-0/0-0034/mt6360-tcpc.6.auto/typec/port0/port0.0/partner'
+> CPU: 2 PID: 299 Comm: mt6360-tcpc.6.a Tainted: GO      5.15.37-mtk+g880abc5122e7 #1
+> Hardware name: MediaTek MT8195 demo board (DT)
+> Call trace:
+>   dump_backtrace+0x0/0x1ac
+>   show_stack+0x24/0x30
+>   dump_stack_lvl+0x68/0x84
+>   dump_stack+0x1c/0x38
+>   sysfs_warn_dup+0x70/0x90
+>   typec_probe+0xa4/0x134 [typec]
+>   really_probe.part.0+0xa4/0x310
+>   __device_attach_driver+0x100/0x16c
+>   bus_for_each_drv+0x84/0xe0
+>   __device_attach+0xe0/0x1ac
+>   device_add+0x39c/0x8b0
+>   device_register+0x2c/0x40
+>   typec_register_altmode+0x1f4/0x360 [typec]
+>   typec_partner_register_altmode+0x1c/0x30 [typec]
+>   tcpm_pd_rx_handler+0x19d4/0x1c0c [tcpm]
+>   kthread_worker_fn+0xb8/0x290
+>   kthread+0x15c/0x170
+>   ret_from_fork+0x10/0x20
+> [    4.395962] typec_displayport port0-partner.2: failed to create symlinks
+> [    4.395967] typec_displayport: probe of port0-partner.2 failed with error -17
+> 
+> It seems it's a common issue if typec port supports the modal operation.
+> 
+> ---
+>   drivers/usb/typec/tcpm/tcpm.c | 7 +++----
+>   1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
+> index 904c7b4..59b366b 100644
+> --- a/drivers/usb/typec/tcpm/tcpm.c
+> +++ b/drivers/usb/typec/tcpm/tcpm.c
+> @@ -4594,14 +4594,13 @@ static void run_state_machine(struct tcpm_port *port)
+>   		tcpm_set_state(port, ready_state(port), 0);
+>   		break;
+>   	case DR_SWAP_CHANGE_DR:
+> -		if (port->data_role == TYPEC_HOST) {
+> -			tcpm_unregister_altmodes(port);
+> +		tcpm_unregister_altmodes(port);
+> +		if (port->data_role == TYPEC_HOST)
+>   			tcpm_set_roles(port, true, port->pwr_role,
+>   				       TYPEC_DEVICE);
+> -		} else {
+> +		else
+>   			tcpm_set_roles(port, true, port->pwr_role,
+>   				       TYPEC_HOST);
+> -		}
+>   		tcpm_ams_finish(port);
+>   		tcpm_set_state(port, ready_state(port), 0);
+>   		break;
 
-Sorry for the inconvinence.
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-> thanks,
->
-> greg k-h
+Thank for your help.
+
+Regards,
+Macpaul Lin
 
