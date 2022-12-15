@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7892DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 09:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16FBCC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 10:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=63a5UIGzfu3Wi1UYpCYyrB4fgEwqDRpWf0vQJYcCngE=; b=jypBNz9AQJ97JcOGSaoluPsvYP
-	kOp8v6NuuV9Z1/TGeeP/fSOVdyySLtpGVRvUQd3RQpqGi2m0qXaM1ofIbw93iIHLYcexvuXxFFNNK
-	SBcNoigm/ZwZaEiokqPS0tJ2KQVSaQ9MYX5M70rc/YXEn1JJpWMpdYZ5c0cIorLmbOjHXMfG7XBjU
-	L/bmPRV/Z+DwGhouny2rDNP8CdZYTtjRO5ZdXkZmdGHPmq6o8gw9nxXZsIEGvwrDp7dErkEWoWOCg
-	iywdYUip+7bhI2H88yj4S/FIXHw0VZTwqZcKuu4P9gY/7u5JAI2NMKvDBPDnreVDo6SdvJnKEVaC2
-	YhBj24Ag==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=48ouQIpnbSuWbwn4iletul7ZbmMkhr3Ykr/KxHK23u4=; b=BkrTlXi3IQvfaOK5LglG4ij//v
+	5lpUm0t+tMNG2re3TnIm3aT+vTz3P+Bc+2Sa6Wdiv+lR8P8jqvseLCuMEDksKnFclzYeqkli+c7yw
+	MwKf+6+e6Am3WpW+iHgG7xXM9+/9W74cEgkyp4TS1fn7WlLj2FceQwDmET7IKpHqK/HnLBXN3b7mq
+	QUioMOGMipWunLmjixBzEdryuZoLsk0z6r/VlJRDGHdGY2Vlgapa9rzjbDgP7s5Z/u5nPbrLmnosI
+	H4cKJItt7z8PNOkJamXPdw7+o695bbdI5Hjev5YRlBfm3xALYTK6koFl1xq+6hluLdwtPyru7WC7o
+	7SjJauEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5l0p-008cHl-Uc; Thu, 15 Dec 2022 09:58:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p5lAa-008gST-7V; Thu, 15 Dec 2022 10:08:52 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5l0n-008cEr-CG; Thu, 15 Dec 2022 09:58:47 +0000
-X-UUID: 38faf6be02764550a5a8544a14f4e1b3-20221215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=63a5UIGzfu3Wi1UYpCYyrB4fgEwqDRpWf0vQJYcCngE=;
-	b=h9cxfIjojX5DinOfSiRqDxMF9Ajk1Gh8z5D/RqSpaCqA5EOw9hZd+zdSLLcEiDbbR6GP6LiwT9aMFA+3Ok/i6UAnpILNn5Jx/G/wDpPAY3F7hs9S6lBwsIk9um/KOxAEyBAPKsN8u0maW9/K8+6P+l1Nq7tQ+liBlMvrz8cBHUk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:6c68dfa7-9740-4e05-a787-c554a6de5014,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Release_Ham,ACTIO
-	N:release,TS:73
-X-CID-INFO: VERSION:1.1.14,REQID:6c68dfa7-9740-4e05-a787-c554a6de5014,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:73
-X-CID-META: VersionHash:dcaaed0,CLOUDID:e950aeb4-d2e2-434d-b6d3-aeae88dfcc78,B
-	ulkID:221215174431Y2OQ0W09,BulkQuantity:19,Recheck:0,SF:38|28|17|19|48|102
-	,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40|20,QS:nil,BEC:nil,C
-	OL:0
-X-UUID: 38faf6be02764550a5a8544a14f4e1b3-20221215
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2144461453; Thu, 15 Dec 2022 02:58:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 15 Dec 2022 17:58:34 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 15 Dec 2022 17:58:34 +0800
-Message-ID: <d15babbe-5f69-38c0-28d4-614b6ffd1b8b@mediatek.com>
-Date: Thu, 15 Dec 2022 17:58:32 +0800
+	id 1p5lAW-008gRK-Py
+	for linux-mediatek@lists.infradead.org; Thu, 15 Dec 2022 10:08:50 +0000
+Received: by mail-lj1-x235.google.com with SMTP id f20so9421879lja.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Dec 2022 02:08:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=48ouQIpnbSuWbwn4iletul7ZbmMkhr3Ykr/KxHK23u4=;
+        b=aAq6NZXVGPXPiZFlEEopg5LXEZkHPvE2GrFZKeBQMkFMOyD3OriN/Q41jXRZyYCrLm
+         CfWelh+vc225vPDWXZYVuNfK80wsKXn9+7f0b/mpGrduzNMh2T5wDLCfcuqZvACRQnhn
+         3GRWSdw2Ynsx0dnJvdTskqNwp8navKpwy1M03muTq1JDdGUpfxAaFhW7NDwxhniGxuqv
+         gf3AAMXp1i1d3EW5LBecXO+EMeu8bpsr+xcJ2f0sDQyTGHqt2/4g+IzXxEUeioj1o6dw
+         0gkB4nMybHQ8z/SmG89oXmKFzpJ467lo7Lof2MUErcKaRAyKRe5mtATt0zKlbxjRjeD/
+         e/TA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=48ouQIpnbSuWbwn4iletul7ZbmMkhr3Ykr/KxHK23u4=;
+        b=5dYHuVdzs1FEf+nhUmMrOVFWlqtTtzEuQbUZEQUq9ZSuCkoLq4mEmBq2j7K8PXOMKP
+         7fnpiVtXUugvoPCr2fteDcgJhlNu0IdZXNNV4bDds0TJ3ZCaVCOlO8Yrk2IIVLBLyTOi
+         OP03rar4EEza5mhN0PmOMeDufUkc/XoY/sO0/CfHhENb4n7LwxTIf5QYLmuj2nVu25Y+
+         O1swcGpflSUfiVGYKg9tRdC3imR+oyaS9G9P3MdFBkiVlfacpeo3dMwOmzfw/J0MGEMt
+         Q2ujLDzCLaD80IvTa3RImOTis7AFrn/d0l5O8Tu1gu/JQOXm2vFe1f4+9w8eZeAamJoC
+         v7pA==
+X-Gm-Message-State: ANoB5pkUneupmxSKwGRJs78en9JsbXus9eAP6CGsgcbnUPeFFNPELjpV
+	9gQ1aXCG1T9aK5ABb/Qmnv7qZw==
+X-Google-Smtp-Source: AA0mqf40keFcvNhtVbwUHzDRJG6utW15O2IlS3q+4f1RXpXNgpUT6UbZsQIQ1K8/2ZwH5jSyMAShkQ==
+X-Received: by 2002:a05:651c:1204:b0:27a:976:749e with SMTP id i4-20020a05651c120400b0027a0976749emr11536270lja.29.1671098925966;
+        Thu, 15 Dec 2022 02:08:45 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id bf28-20020a2eaa1c000000b0027997d00fc2sm812121ljb.21.2022.12.15.02.08.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Dec 2022 02:08:45 -0800 (PST)
+Message-ID: <85d8ca20-69d2-de77-8aa0-e5f2f77b07dc@linaro.org>
+Date: Thu, 15 Dec 2022 11:08:44 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] usb: typec: tcpm: Fix altmode re-registration causes
- sysfs create fail
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v5 4/7] dt-bindings: pinctrl: add bindings for Mediatek
+ MT8365 SoC
 Content-Language: en-US
-To: cy_huang <u0084500@gmail.com>, <linux@roeck-us.net>,
-	<heikki.krogerus@linux.intel.com>, <matthias.bgg@gmail.com>
-CC: <gregkh@linuxfoundation.org>, <tommyyl.chen@mediatek.com>,
-	<gene_chen@richtek.com>, <linux-usb@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, ChiYuan Huang <cy_huang@richtek.com>,
-	<stable@vger.kernel.org>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
-	<pablo.sun@mediatek.com>
-References: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ khilman@baylibre.com
+References: <20221213234346.2868828-1-bero@baylibre.com>
+ <20221213234346.2868828-5-bero@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221213234346.2868828-5-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_015845_463362_6A2042C5 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20221215_020848_881340_71A2C249 
+X-CRM114-Status: GOOD (  26.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,165 +97,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/15/22 17:21, cy_huang wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On 14/12/2022 00:43, Bernhard Rosenkränzer wrote:
+> Add devicetree bindings for Mediatek MT8365 pinctrl driver.
 > 
-> There's the altmode re-registeration issue after data role
-> swap (DR_SWAP).
-> 
-> Comparing to USBPD 2.0, in USBPD 3.0, it loose the limit that only DFP
-> can initiate the VDM command to get partner identity information.
-> 
-> For a USBPD 3.0 UFP device, it may already get the identity information
-> from its port partner before DR_SWAP. If DR_SWAP send or receive at the
-> mean time, 'send_discover' flag will be raised again. It causes discover
-> identify action restart while entering ready state. And after all
-> discover actions are done, the 'tcpm_register_altmodes' will be called.
-> If old altmode is not unregistered, this sysfs create fail can be found.
-> 
-> In 'DR_SWAP_CHANGE_DR' state case, only DFP will unregister altmodes.
-> For UFP, the original altmodes keep registered.
-> 
-> This patch fix the logic that after DR_SWAP, 'tcpm_unregister_altmodes'
-> must be called whatever the current data role is.
-> 
-> Fixes: ae8a2ca8a221 ("usb: typec: Group all TCPCI/TCPM code together)
-> Reported-by: TommyYl Chen <tommyyl.chen@mediatek.com>
-> Cc: stable@vger.kernel.org
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC.  It might happen, that command when run on an older
+kernel, gives you outdated entries.  Therefore please be sure you base
+your patches on recent Linux kernel.
+
+This applies to all patches as others are also not properly sent.
+
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
 > ---
-> Hi,
+>  .../pinctrl/mediatek,mt8365-pinctrl.yaml      | 197 ++++++++++++++++++
+>  1 file changed, 197 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
 > 
-> Below's the issue log for the reference.
-> 
-> *TCPM
-> [    3.856679] AMS DISCOVER_MODES start
-> [    3.856687] PD TX, header: 0x188f
-> [    3.858827] PD TX complete, status: 0
-> [    3.865330] PD RX, header: 0x2daf [1]
-> [    3.865340] Rx VDM cmd 0xff01a043 type 1 cmd 3 len 2
-> [    3.865348] AMS DISCOVER_MODES finished
-> [    3.865352]  Alternate mode 0: SVID 0xff01, VDO 1: 0x001c0045
-> [    3.865362] AMS DISCOVER_MODES start
-> [    3.865367] PD TX, header: 0x1a8f
-> [    3.867802] PD TX complete, status: 0
-> [    3.875208] PD RX, header: 0x2faf [1]
-> [    3.875216] Rx VDM cmd 0x413ca043 type 1 cmd 3 len 2
-> [    3.875222] AMS DISCOVER_MODES finished
-> [    3.875225]  Alternate mode 1: SVID 0x413c, VDO 1: 0x00000001
-> [    3.938243] AMS GET_SINK_CAPABILITIES start
-> [    3.938255] state change SNK_READY -> AMS_START [rev3 GET_SINK_CAPABILITIES]
-> [    3.938266] state change AMS_START -> GET_SINK_CAP [rev3 GET_SINK_CAPABILITIES]
-> [    3.938274] PD TX, header: 0xe88
-> [    3.940268] PD TX complete, status: 0
-> [    3.940310] pending state change GET_SINK_CAP -> GET_SINK_CAP_TIMEOUT @ 60 ms
-> [rev3 GET_SINK_CAPABILITIES]
-> [    3.946291] PD RX, header: 0x13a4 [1]
-> [    3.946295] Port partner FRS capable partner_frs_current:0 port_frs_current:0 enable:n
-> [    3.946298] state change GET_SINK_CAP -> SNK_READY [rev3 GET_SINK_CAPABILITIES]
-> [    3.946304] AMS GET_SINK_CAPABILITIES finished
-> [    4.239342] CC1: 5 -> 4, CC2: 0 -> 0 [state SNK_READY, polarity 0, connected]
-> [    4.256594] PD RX, header: 0x5a9 [1]
-> [    4.256603] state change SNK_READY -> DR_SWAP_ACCEPT [rev3 DATA_ROLE_SWAP]
-> [    4.256609] PD TX, header: 0x83
-> [    4.258528] PD TX complete, status: 0
-> [    4.258584] state change DR_SWAP_ACCEPT -> DR_SWAP_CHANGE_DR [rev3 DATA_ROLE_SWAP]
-> [    4.258591] Requesting mux state 1, usb-role 1, orientation 1
-> [    4.259588] AMS DATA_ROLE_SWAP finished
-> [    4.259592] state change DR_SWAP_CHANGE_DR -> SNK_READY [rev3 NONE_AMS]
-> [    4.259605] AMS DISCOVER_IDENTITY start
-> [    4.259609] Sink TX No Go
-> [    4.260874] CC1: 4 -> 5, CC2: 0 -> 0 [state SNK_READY, polarity 0, connected]
-> [    4.359636] AMS DISCOVER_IDENTITY start
-> [    4.359642] PD TX, header: 0x12af
-> [    4.361884] PD TX complete, status: 0
-> [    4.369433] PD RX, header: 0x578f [1]
-> [    4.369439] Rx VDM cmd 0xff00a041 type 1 cmd 1 len 5
-> [    4.369448] AMS DISCOVER_IDENTITY finished
-> [    4.369515] Identity: 413c:c013.0712
-> [    4.369521] AMS DISCOVER_SVIDS start
-> [    4.369524] PD TX, header: 0x14af
-> [    4.371696] PD TX complete, status: 0
-> [    4.378564] PD RX, header: 0x398f [1]
-> [    4.378573] Rx VDM cmd 0xff00a042 type 1 cmd 2 len 3
-> [    4.378579] AMS DISCOVER_SVIDS finished
-> [    4.378582] SVID 1: 0xff01
-> [    4.378584] SVID 2: 0x413c
-> [    4.378594] AMS DISCOVER_MODES start
-> [    4.378597] PD TX, header: 0x16af
-> [    4.380696] PD TX complete, status: 0
-> [    4.387008] PD RX, header: 0x2b8f [1]
-> [    4.387014] Rx VDM cmd 0xff01a043 type 1 cmd 3 len 2
-> [    4.387021] AMS DISCOVER_MODES finished
-> [    4.387023]  Alternate mode 0: SVID 0xff01, VDO 1: 0x001c0045
-> [    4.387029] AMS DISCOVER_MODES start
-> [    4.387031] PD TX, header: 0x18af
-> [    4.389134] PD TX complete, status: 0
-> [    4.395528] PD RX, header: 0x2d8f [1]
-> [    4.395538] Rx VDM cmd 0x413ca043 type 1 cmd 3 len 2
-> [    4.395546] AMS DISCOVER_MODES finished
-> [    4.395548]  Alternate mode 1: SVID 0x413c, VDO 1: 0x00000001
-> 
-> *Kernel TRACE
-> sysfs: cannot create duplicate filename
-> '/devices/platform/soc/11d01000.i2c/i2c-0/0-0034/mt6360-tcpc.6.auto/typec/port0/port0.0/partner'
-> CPU: 2 PID: 299 Comm: mt6360-tcpc.6.a Tainted: GO      5.15.37-mtk+g880abc5122e7 #1
-> Hardware name: MediaTek MT8195 demo board (DT)
-> Call trace:
->   dump_backtrace+0x0/0x1ac
->   show_stack+0x24/0x30
->   dump_stack_lvl+0x68/0x84
->   dump_stack+0x1c/0x38
->   sysfs_warn_dup+0x70/0x90
->   typec_probe+0xa4/0x134 [typec]
->   really_probe.part.0+0xa4/0x310
->   __device_attach_driver+0x100/0x16c
->   bus_for_each_drv+0x84/0xe0
->   __device_attach+0xe0/0x1ac
->   device_add+0x39c/0x8b0
->   device_register+0x2c/0x40
->   typec_register_altmode+0x1f4/0x360 [typec]
->   typec_partner_register_altmode+0x1c/0x30 [typec]
->   tcpm_pd_rx_handler+0x19d4/0x1c0c [tcpm]
->   kthread_worker_fn+0xb8/0x290
->   kthread+0x15c/0x170
->   ret_from_fork+0x10/0x20
-> [    4.395962] typec_displayport port0-partner.2: failed to create symlinks
-> [    4.395967] typec_displayport: probe of port0-partner.2 failed with error -17
-> 
-> It seems it's a common issue if typec port supports the modal operation.
-> 
-> ---
->   drivers/usb/typec/tcpm/tcpm.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-> index 904c7b4..59b366b 100644
-> --- a/drivers/usb/typec/tcpm/tcpm.c
-> +++ b/drivers/usb/typec/tcpm/tcpm.c
-> @@ -4594,14 +4594,13 @@ static void run_state_machine(struct tcpm_port *port)
->   		tcpm_set_state(port, ready_state(port), 0);
->   		break;
->   	case DR_SWAP_CHANGE_DR:
-> -		if (port->data_role == TYPEC_HOST) {
-> -			tcpm_unregister_altmodes(port);
-> +		tcpm_unregister_altmodes(port);
-> +		if (port->data_role == TYPEC_HOST)
->   			tcpm_set_roles(port, true, port->pwr_role,
->   				       TYPEC_DEVICE);
-> -		} else {
-> +		else
->   			tcpm_set_roles(port, true, port->pwr_role,
->   				       TYPEC_HOST);
-> -		}
->   		tcpm_ams_finish(port);
->   		tcpm_set_state(port, ready_state(port), 0);
->   		break;
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
+> new file mode 100644
+> index 0000000000000..3c0248b48caff
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8365-pinctrl.yaml
+> @@ -0,0 +1,197 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt8365-pinctrl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8365 Pin Controller
+> +
+> +maintainers:
+> +  - Zhiyong Tao <zhiyong.tao@mediatek.com>
+> +  - Bernhard Rosenkränzer <bero@baylibre.com>
+> +
+> +description: |
+> +  The MediaTek's MT8365 Pin controller is used to control SoC pins.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8365-pinctrl
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,pctl-regmap:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    items:
+> +      maxItems: 1
+> +    minItems: 1
+> +    maxItems: 2
+> +    description: |
+> +      Should be phandles of the syscfg node.
+> +
+> +  gpio-controller: true
+> +
+> +  "#gpio-cells":
+> +    const: 2
+> +    description: |
+> +      Number of cells in GPIO specifier. Since the generic GPIO
+> +      binding is used, the amount of cells must be specified as 2. See the below
+> +      mentioned gpio binding representation for description of particular cells.
+> +
+> +  interrupt-controller: true
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  "#interrupt-cells":
+> +    const: 2
+> +
+> +patternProperties:
+> +  "-pins$":
+> +    type: object
+> +    additionalProperties: false
+> +    patternProperties:
+> +      "pins$":
+> +        type: object
+> +        additionalProperties: false
+> +        description: |
+> +          A pinctrl node should contain at least one subnode representing the
+> +          pinctrl groups available on the machine. Each subnode will list the
+> +          pins it needs, and how they should be configured, with regard to muxer
+> +          configuration, pullups, drive strength, input enable/disable and input
+> +          schmitt.
+> +        $ref: /schemas/pinctrl/pincfg-node.yaml
+> +
+> +        properties:
+> +          pinmux:
+> +            description:
+> +              integer array, represents gpio pin number and mux setting.
+> +              Supported pin number and mux varies for different SoCs, and are
+> +              defined as macros in <soc>-pinfunc.h directly.
+> +
+> +          bias-disable: true
+> +
+> +          bias-pull-up:
+> +            description: |
+> +              Besides generic pinconfig options, it can be used as the pull up
+> +              settings for 2 pull resistors, R0 and R1. User can configure those
+> +              special pins.
+> +
+> +          bias-pull-down: true
+> +
+> +          input-enable: true
+> +
+> +          input-disable: true
+> +
+> +          output-low: true
+> +
+> +          output-high: true
+> +
+> +          input-schmitt-enable: true
+> +
+> +          input-schmitt-disable: true
+> +
+> +          mediatek,drive-strength-adv:
+> +            description: |
+> +              Describe the specific driving setup property.
+> +              For I2C pins, the existing generic driving setup can only support
+> +              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
+> +              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
+> +              driving setup, the existing generic setup will be disabled.
+> +              The specific driving setup is controlled by E1E0EN.
+> +              When E1=0/E0=0, the strength is 0.125mA.
+> +              When E1=0/E0=1, the strength is 0.25mA.
+> +              When E1=1/E0=0, the strength is 0.5mA.
+> +              When E1=1/E0=1, the strength is 1mA.
+> +              EN is used to enable or disable the specific driving setup.
+> +              Valid arguments are described as below:
+> +              0: (E1, E0, EN) = (0, 0, 0)
+> +              1: (E1, E0, EN) = (0, 0, 1)
+> +              2: (E1, E0, EN) = (0, 1, 0)
+> +              3: (E1, E0, EN) = (0, 1, 1)
+> +              4: (E1, E0, EN) = (1, 0, 0)
+> +              5: (E1, E0, EN) = (1, 0, 1)
+> +              6: (E1, E0, EN) = (1, 1, 0)
+> +              7: (E1, E0, EN) = (1, 1, 1)
+> +              So the valid arguments are from 0 to 7.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3, 4, 5, 6, 7]
+> +
+> +          mediatek,pull-up-adv:
+> +            description: |
+> +              Pull up setings for 2 pull resistors, R0 and R1. User can
+> +              configure those special pins. Valid arguments are described as below:
+> +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+> +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+> +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+> +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3]
+> +
+> +          mediatek,pull-down-adv:
+> +            description: |
+> +              Pull down settings for 2 pull resistors, R0 and R1. User can
+> +              configure those special pins. Valid arguments are described as below:
+> +              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
+> +              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
+> +              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
+> +              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3]
+> +
+> +          mediatek,tdsel:
+> +            description: |
+> +              An integer describing the steps for output level shifter duty
+> +              cycle when asserted (high pulse width adjustment). Valid arguments
+> +              are from 0 to 15.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +
+> +          mediatek,rdsel:
+> +            description: |
+> +              An integer describing the steps for input level shifter duty cycle
+> +              when asserted (high pulse width adjustment). Valid arguments are
+> +              from 0 to 63.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +
+> +        required:
+> +          - pinmux
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - gpio-controller
+> +  - "#gpio-cells"
+> +
+> +allOf:
+> +  - $ref: pinctrl.yaml#
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/pinctrl/mt8365-pinfunc.h>
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        pio: pinctrl@1000b000 {
+> +          compatible = "mediatek,mt8365-pinctrl";
 
-Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+You use inconsistent indentation in example. Stick to one - either 2 or
+4 spaces.
 
-Thank for your help.
 
-Regards,
-Macpaul Lin
+Best regards,
+Krzysztof
+
 
