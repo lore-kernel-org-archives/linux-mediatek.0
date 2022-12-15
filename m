@@ -4,86 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E06AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Dec 2022 21:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4EDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 02:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uBqMDvRiGGhkCYxYq5PPq3wG/JUaSlNZRcvAZAXSPdM=; b=V41AuSUL/qWZClGiGyyCDrU9vR
-	L3KXMnfzStdeVLiouCmwqw8sldGfN5xq4ofh6AU6935W0Lde6Gt3nzBC0qJmzlqxF1ZzSmo4tdb4r
-	WBvtLe5aJCasHyPn2yGl/mOLnrcflUH4RAB+g+2Im1S2/TG9BPDhiGL0AiL1Byjg6X7Sgv/28YUj8
-	uYtG6A0JSP7uQ28aTXdD4ol/WAxFshTWdY9ccAeAFThgEMmoW5iv7y9bRWR+zmKj8RKuA4YCO1hOe
-	v7OaiOlj+zjuseU+EWkjyX8LqO8PYJn5uq+5soZD/Wo+qdYmGArzxZgDlwMr68MFsqfjsx1qVEaVW
-	8rx/DTvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=smXtqnx7ANeXwx7Dj7BbEXRffcECQxjuWfGEI3zPSpA=; b=brnH1g6y3eikY2sdgk3QICzP+/
+	RB2QjqfIF7X/F0AANBhDwgICmyRkRbYjlNqZlkE5WN4oySWLhgj4k3Y7kzwOZVPp44rPp5kIosFur
+	4Lll7I2/Ky11yTN2Ngl9ykD52NaZtjEPdQska0qmCBvWi8nef2Hg+xnXulEaRB61cGOZyU5fjHCzt
+	HWuzX5YHa1xuHiFF5uS+qVANVTKcJKeLjFjN7yuYGOE++Ecj/i0RxIG2nM60NQFCxLCbFiEUrVDO0
+	KqV9TNLbRSoYc+K3qclYMCGAUicdTXMKtJpukgxfBaEOZkRSmxagdryiPCCL//JDv1sGWq3b/dlNQ
+	cdY2MT3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5ZO7-003DmR-1S; Wed, 14 Dec 2022 21:34:03 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1p5dpy-005ejZ-I7; Thu, 15 Dec 2022 02:19:06 +0000
+Received: from mail-bn8nam12on2046.outbound.protection.outlook.com ([40.107.237.46] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5ZNu-003Dfb-CC; Wed, 14 Dec 2022 21:33:51 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id m18so47702328eji.5;
-        Wed, 14 Dec 2022 13:33:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uBqMDvRiGGhkCYxYq5PPq3wG/JUaSlNZRcvAZAXSPdM=;
-        b=JdhwQAzhZoLnb4FCFEijBaF8YLzOEb50ZdvsLWyejGEJ23QF4UUzRqdIjV1fJTmef6
-         /+y0bg81YCyBVd1kxbaNNdzg7S9GGLHbCvnrmgcNJj8uaXqa9v6P0M68IfcJq+n3Ovm8
-         Dlf1xNHUUn2cVcMoZpc2xGFPnWfD3kGoY7qGRvvkxmY3ILKDat+1P0jYMR1EvUP6+Qb7
-         pgyYPCHgnIfxd6bBJhfXKyBRbDF2iBb4Ikq0yk08WNsY52F1iW/TNjdS/GTI2HO8VD4C
-         LsPidJUNYBY5f8GqxKjQw8rVBz1zly5xW9EG5TjZDodzwGX5wBF1BsfS4mtw8rNj8T/k
-         uH3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uBqMDvRiGGhkCYxYq5PPq3wG/JUaSlNZRcvAZAXSPdM=;
-        b=ffN2sYdvkmvgxTTqyn+9DRkQdZuHLzTxIF/kTBBZgj6VFgyLEx2G6UjrJtYt6j6m2o
-         kL02UZWyePBdrjJNVVwgNMjZGWn4dWOFTzPU1bjc45vRTDvCF2vDEp/9LDZZXC7p2/xn
-         k1dT+u3dIxP/vDXvJ4Bt+M+e/oE9igEAMnH4aS85JbTlhMDaDqSIG2q7EKg9N/p6KavA
-         FHH28H1lBQHDiM3eC0PVrE+M1iZCU/brd15GLrjEAM0cm/DSuqOfFgychvtqoXU4Q1Gj
-         DEuEBbQRPeqyfsuuaRfGYzZvuAyAq6M9CMwS5IXUNWxZzJsadb1XGjSjFlqOp/J6GHql
-         VwhQ==
-X-Gm-Message-State: ANoB5plMOekq4nK2UxBi4gcfxngqQ2Z5kSO0ZZWoAJyjAuH/JW19K96w
-	ErPlfIXq6am6OoGFbnsWtfk=
-X-Google-Smtp-Source: AA0mqf5g7UcKoeKc2suF+JjVGelSelhQNVtMekeURSx6Qp8qcGsa2HYPL+cAsQAsquPDa6hXqGJb6g==
-X-Received: by 2002:a17:906:274b:b0:7c1:7183:2d32 with SMTP id a11-20020a170906274b00b007c171832d32mr13082157ejd.56.1671053626819;
-        Wed, 14 Dec 2022 13:33:46 -0800 (PST)
-Received: from ?IPV6:2a01:c23:b8b1:2700:80c5:d7b3:aee5:57bf? (dynamic-2a01-0c23-b8b1-2700-80c5-d7b3-aee5-57bf.c23.pool.telefonica.de. [2a01:c23:b8b1:2700:80c5:d7b3:aee5:57bf])
-        by smtp.googlemail.com with ESMTPSA id ko12-20020a170907986c00b00781be3e7badsm6308968ejc.53.2022.12.14.13.33.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Dec 2022 13:33:46 -0800 (PST)
-Message-ID: <c6863a3e-8855-50fe-25cb-0b38bc3a05e0@gmail.com>
-Date: Wed, 14 Dec 2022 22:33:38 +0100
+	id 1p5dpl-005eeu-Fr; Thu, 15 Dec 2022 02:18:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PFk2w0T6ZTYEX1NdEWzI19XnhW1NqRn3BmDVjtvF7LQYcan1tcWDCn8uRzeCiQV6AEbJR3wYLoiWfoEvyllPzHN5JeIa86PA20TaVwmCjiNo7ZzCxDBDu8ERJcjHZ5hLlysoC6cvTCQknbp1GC4PUIanaeMYQ/EfBuVyqXwpOZ1EuwYxzvWTuCzXcdu6iRBUUEe+71YiMfOFdlvFilwIn+0F9XZr7GVzci9yX638m3y/0HScKKPAuO2zfI81iyd4TBXU8KWQ2N9EJD++vsu6frEBQjsabrgTx8DNu4fmeYjEWSt1vA5OhCo07RX9I6R4SCkn/koq2b1wafR2I5jG5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=smXtqnx7ANeXwx7Dj7BbEXRffcECQxjuWfGEI3zPSpA=;
+ b=RKhELSb+tKnSvTOISyHGpTwcz7EIkXSjGPlGflRoLS1WQGsaYxpiwtPpLwNUrtSFTcIkDQuNq0LOQ3n5ES6tBuHOCakCasSYRUSdfjldZkBrYbRx4FOTEMtfhqKjyPqysRtQJehYtO1duUuo8v8H6GLPTrsyzcRwD/Lns7ORq4upUbcUAewdKPsidvO+Eajft+u8R/dM5EsAnH2IHEJfrHNglauRs/g3sAavZsRthwzaGaegQFnOIxx9tO43UOJdZr1kBoFO0D3X1ubiz0Ft71KXaAOnTtEqLrtcglY0Unhc3A72/3aEv84Mtxicc8GKop2/T1UuRpbH13fcvIvU9Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=holtmann.org smtp.mailfrom=amd.com;
+ dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
+ header.from=amd.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=smXtqnx7ANeXwx7Dj7BbEXRffcECQxjuWfGEI3zPSpA=;
+ b=UEEfPZZKVTyF3vnQXi3scFJzHnGPq7VLz5kOcLV1rNew8krRDtP41hK1EY/7kOmheVel0kp/zMmi1oEN2mXb8MHs6hrkg4oX8U+61YCU3GllBg4GvaItHu3/IKh8JihsutQgB3dr+lj9Iq8KihOpuIb1MU5xwldVrTS1i8Vp3KU=
+Received: from CY5PR16CA0007.namprd16.prod.outlook.com (2603:10b6:930:10::18)
+ by CH2PR12MB4969.namprd12.prod.outlook.com (2603:10b6:610:68::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.19; Thu, 15 Dec
+ 2022 02:18:47 +0000
+Received: from CY4PEPF0000C97A.namprd02.prod.outlook.com
+ (2603:10b6:930:10:cafe::4b) by CY5PR16CA0007.outlook.office365.com
+ (2603:10b6:930:10::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.11 via Frontend
+ Transport; Thu, 15 Dec 2022 02:18:47 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CY4PEPF0000C97A.mail.protection.outlook.com (10.167.241.138) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.5924.10 via Frontend Transport; Thu, 15 Dec 2022 02:18:45 +0000
+Received: from AUS-LX-MLIMONCI.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.34; Wed, 14 Dec
+ 2022 20:18:44 -0600
+From: Mario Limonciello <mario.limonciello@amd.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: Mario Limonciello <mario.limonciello@amd.com>, Sean Wang
+	<sean.wang@mediatek.com>, Anson Tsao <anson.tsao@amd.com>,
+	<linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
+Date: Wed, 14 Dec 2022 20:18:54 -0600
+Message-ID: <20221215021854.1429-1-mario.limonciello@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-To: Peter Suti <peter.suti@streamunlimited.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <52861a84-0fe2-37f0-d66a-145f2ebe1d79@gmail.com>
- <20221214134620.3028726-1-peter.suti@streamunlimited.com>
-Content-Language: en-US
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH v3] mmc: meson-gx: fix SDIO interrupt handling
-In-Reply-To: <20221214134620.3028726-1-peter.suti@streamunlimited.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000C97A:EE_|CH2PR12MB4969:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4623d70d-cb9f-48d1-ad9a-08dade42b1e5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	M/euQDTDSFJNQ4nh1mdivmc8ulG3P1P2NWTZ0sdpFT7sGrfwndJcdbLDjRKe6NpQg7Yot5bGqVxXaMaOc44S6xI9hI0NESJJiInmtS0+ZAAzkTjB8T+WHe6WILmWA7RkClG59VJenHTp20Cu74H1L94WdoLCaCkH3ha2mmynBW89jo2C8yauXwLAv8k3wDj8CsdvZpYAzd0htExlT7m82l646slp2LKIc0FbJfo37BiZX0+94Wfn0218ZVR+gRZpEs/vFb4XrXjHmZCEFvYVHYnFHv8C4GHPNNvLMk3w5C+iq4JCyJjWUfDD6S2bPoyZaEpVwwZmiD70/3cQUlDZZbZgTsjVHha3HQ9y7WRBzbnATqfdLwIc2ZooruUgiNTWC1S1ejYvdsuVgGFJHWslv0EVYrIb5sV4osrbsD269IFP6TlT+IEIBu5a9+29Uye340FTF3gnbzMjfZMNXODqqPKJy0BjPsCjAbMxSc0/aN1S29fI+mnrgi1Zp8ed/jyvX+5v9yrfuH22asUgesx/+wdPSNAfLlWcqSKcxmSGU/LN14QrRffXwGr2jqnpMjr9VX2Uu93lk/SG3rq7eFLkhfVEhQvOLhbS4nMrOh8C8jQmybIV06FMg8MUhac9u6HlnJGk2vYLH3h6dxIyTRDrsVGHQpsjNqNQOKIbePUGPjHNCksDxvrvK0l8weyWMo2rGS1lMT2oMaMW+cnJAEdNejLMWAEN0bxzgoZcFkxWKKU=
+X-Forefront-Antispam-Report: 	CIP:165.204.84.17;CTRY:CA;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB04.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230022)(4636009)(396003)(346002)(376002)(39860400002)(136003)(451199015)(36840700001)(40470700004)(46966006)(356005)(81166007)(16526019)(2906002)(186003)(40460700003)(82740400003)(336012)(1076003)(2616005)(44832011)(40480700001)(8936002)(5660300002)(47076005)(41300700001)(26005)(36860700001)(82310400005)(86362001)(36756003)(316002)(110136005)(54906003)(426003)(478600001)(8676002)(6666004)(70206006)(4326008)(70586007)(7696005)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Dec 2022 02:18:45.8924
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4623d70d-cb9f-48d1-ad9a-08dade42b1e5
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	CY4PEPF0000C97A.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4969
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221214_133350_469321_BB9FB4BA 
-X-CRM114-Status: GOOD (  28.56  )
+X-CRM114-CacheID: sfid-20221214_181854_436621_7C2F7469 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,86 +117,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14.12.2022 14:46, Peter Suti wrote:
-> With the interrupt support introduced in commit 066ecde sometimes the
-> Marvell-8987 wifi chip got stuck using the marvell-sd-uapsta-8987
-> vendor driver. The cause seems to be that after sending ack to all interrupts
-> the IRQ_SDIO still happens, but it is ignored.
-> 
-> To work around this, recheck the IRQ_SDIO after meson_mmc_request_done().
-> 
-> Inspired by 9e2582e ("mmc: mediatek: fix SDIO irq issue") which used a
-> similar fix to handle lost interrupts.
-> 
-The commit description of the referenced fix isn't clear with regard to
-who's fault it is that an interrupt can be lost. I'd interpret it being
-a silicon bug rather than a kernel/driver bug.
-Not sure whether it's the case, but it's possible that both vendors use
-at least parts of the same IP in the MMC block, and therefore the issue
-pops up here too.
+This bluetooth device is found in a combo WLAN/BT card
+for a MediaTek 7921e.
 
-> Fixes: 066ecde ("mmc: meson-gx: add SDIO interrupt support")
-> 
-> Signed-off-by: Peter Suti <peter.suti@streamunlimited.com>
-> ---
-> Changes in v2:
-> 	- use spin_lock instead of spin_lock_irqsave
-> 	- only reenable interrupts if they were enabled already
-> 
-> Changes in v3:
-> 	- Rework the patch based on feedback from Heiner Kallweit.
-> 		The IRQ does not happen on 2 CPUs and the hard IRQ is not re-entrant.
-> 		But still one SDIO IRQ is lost without this change.
-> 		After the ack, reading the SD_EMMC_STATUS BIT(15) is set, but 
-> 		meson_mmc_irq() is never called again.
-> 
-> 		The fix is similar to Mediatek msdc_recheck_sdio_irq().
-> 		That platform also loses an IRQ in some cases it seems.
-> 
->  drivers/mmc/host/meson-gx-mmc.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
-> 
-> diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
-> index 6e5ea0213b47..7d3ee2f9a7f6 100644
-> --- a/drivers/mmc/host/meson-gx-mmc.c
-> +++ b/drivers/mmc/host/meson-gx-mmc.c
-> @@ -1023,6 +1023,22 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
->  	if (ret == IRQ_HANDLED)
->  		meson_mmc_request_done(host->mmc, cmd->mrq);
->  
-> +	/*
-> +	* Sometimes after we ack all raised interrupts,
-> +	* an IRQ_SDIO can still be pending, which can get lost.
-> +	*
+The device information:
 
-A reader may scratch his head here and wonder how the interrupt can get lost,
-and why adding a workaround instead of eliminating the root cause for losing
-the interrupt. If you can't provide an explanation why the root cause for
-losing the interrupt can't be fixed, presumably you would have to say that
-you're adding a workaround for a suspected silicon bug.
+T:  Bus=01 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0489 ProdID=e0f2 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
-> +	* To prevent this, recheck the IRQ_SDIO here and schedule
-> +	* it to be processed.
-> +	*/
-> +	raw_status = readl(host->regs + SD_EMMC_STATUS);
-> +	status = raw_status & (IRQ_EN_MASK | IRQ_SDIO);
+Cc: Sean Wang <sean.wang@mediatek.com>
+Cc: Anson Tsao <anson.tsao@amd.com>
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/bluetooth/btusb.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-This isn't needed here. Why not simply:
-
-status = readl(host->regs + SD_EMMC_STATUS);
-if (status & IRQ_SDIO)
-  ...
-
-
-> +	if (status & IRQ_SDIO) {
-> +		spin_lock(&host->lock);
-> +		__meson_mmc_enable_sdio_irq(host->mmc, 0);
-> +		sdio_signal_irq(host->mmc);
-> +		spin_unlock(&host->lock);
-> +	}
-> +
->  	return ret;
->  }
->  
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index f05018988a17..c413826787b5 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -473,6 +473,9 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe0e0), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
+ 	{ USB_DEVICE(0x04ca, 0x3802), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
+-- 
+2.34.1
 
 
