@@ -4,70 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0944CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 09:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B0CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Dec 2022 09:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iUpXfVshjq64D/vPuflrKozWJV+i90PR4zI/zWYnb50=; b=2Dms3vGUxwwtcBxE/7rMMZh90u
-	uh/CvKp+SUd0SYY26DfnfNfi3JV+i34/ZhzdAoP/puPH3UrEn+ts9Zh2m2/H3uH1iaZ9E7riR1GIJ
-	A7FargTpOmv1OT5yiBjo1p1nlz+yTtaBPlBuBMpAPTrTcO+NpIhKd1G+u8S3zw+XqWKS+cNsqypDP
-	GxYrcjilLH7ZqPUBWdpRsqP+ERvz/JAvm1z2d9duLEuYZSChFKaJRqJPqKPEC6nigeZp7Y/9IT9Bi
-	YI5IOBCb7GV6mhxkB7DjMhZO/a1iecPqU064LLu07kLgcDiyG+KNrAm2ytogTjGiP5wwghA1G9+pd
-	dG1+waow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MMFP0Qh0UNXei9PjTaXEfX0hjLkcSnnELk7yPU6xj80=; b=i8K8IKIjVX/HzMuDpIVdN+mOCn
+	Pt5+fOIRVSDt5Qs+MWJ4PM7rlDCGp4bCd1W4euMtuS5SLWJJU8Vj8LfCSIEpkL0e8GxaFU39cxSh7
+	+42Vmu/mvv5KT/e3BRNK0JONCipwmdUo1pBWM9KNbPv3M9ZgIxaiIZTzkrn/Gt4uF9GlS5cCz+f0b
+	v1Hkptf7D8L2kZrEwPf0hgXvJwlPgNt4U7WZckif2EmVwqy/Gd9QzMVdbd1mF8uthxA/2GJbN7CXD
+	YuKJyssx/KqUX31dcKcARmXK6Jxd/hmj2rMz/F5dTI3lEoXuHpSVCdsGt9KrS0RKUY1hXEHCo+Kq0
+	ydMkdGww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kjL-008Q3t-Ck; Thu, 15 Dec 2022 09:40:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p5knA-008SNT-DR; Thu, 15 Dec 2022 09:44:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p5kjI-008Q0M-Je; Thu, 15 Dec 2022 09:40:42 +0000
-X-UUID: b0a96a7270224f6f870ba8e13aa7a099-20221215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iUpXfVshjq64D/vPuflrKozWJV+i90PR4zI/zWYnb50=;
-	b=jyqgkHECrFtZvDyXc2sL0d9YgXcv2zMYyDqajCW/7BFuK7HPqvfdlf4MmlP1G29Jpa0QnJch8Aex+4octvRsK9FI0W/UTMBo9p3+FmUJS/IBI9UK0hUrozNGqPDZ2iYKJ/OLcv+8rRNzLqig8ow1dKw4U1jz1RS53F+xIZ75GK8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:798097ca-74c6-43f6-ba3b-4100a3eda32a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:e0cfadb4-d2e2-434d-b6d3-aeae88dfcc78,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b0a96a7270224f6f870ba8e13aa7a099-20221215
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 773214972; Thu, 15 Dec 2022 02:40:33 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 15 Dec 2022 17:30:29 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 15 Dec 2022 17:30:28 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
-	kyrie wu <kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Tomasz Figa <tfiga@chromium.org>, <xia.jiang@mediatek.com>,
-	<maoguang.meng@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-Subject: [PATCH] media: jpeg: refactor multi-hw judgement
-Date: Thu, 15 Dec 2022 17:30:26 +0800
-Message-ID: <20221215093026.12322-1-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1p5kmx-008SE8-WF; Thu, 15 Dec 2022 09:44:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2B09161D2A;
+	Thu, 15 Dec 2022 09:44:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1DB6C433EF;
+	Thu, 15 Dec 2022 09:44:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1671097465;
+	bh=MMFP0Qh0UNXei9PjTaXEfX0hjLkcSnnELk7yPU6xj80=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b2MRkv18dLS+pz4h2ZcqRd7gbL4s3Qq2E/6onXSNqcEvIfbywVQlo1BrI/FyJToqp
+	 /AsYkGFblxSLiYBTmeHrLrGLWozT7UNCPRB2/f+yRqgQm8m+Ke1k0gE8ZKuDCkCEQ2
+	 tSUEoMghBAhRWTPVm60CkcJJDyxGELe+n5o1t9As=
+Date: Thu, 15 Dec 2022 10:44:22 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: cy_huang <u0084500@gmail.com>
+Cc: linux@roeck-us.net, heikki.krogerus@linux.intel.com,
+	matthias.bgg@gmail.com, tommyyl.chen@mediatek.com,
+	macpaul.lin@mediatek.com, gene_chen@richtek.com,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	ChiYuan Huang <cy_huang@richtek.com>, stable@vger.kernel.org
+Subject: Re: [PATCH] usb: typec: tcpm: Fix altmode re-registration causes
+ sysfs create fail
+Message-ID: <Y5rsdo/SGHJM4UKG@kroah.com>
+References: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1671096096-20307-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_014040_669371_237504EF 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20221215_014428_109345_D67397A3 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,86 +74,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+On Thu, Dec 15, 2022 at 05:21:36PM +0800, cy_huang wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
 
-some chips have multi-hw, but others have only one,
-modify the condition of multi-hw judgement
+Why not send directly from this address so we can validate that this is
+the correct email address of yours?
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c |  5 +++--
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h | 12 ++++++++++++
- 2 files changed, 15 insertions(+), 2 deletions(-)
+thanks,
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 4a5c6415ad08..37db8b81a935 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -1695,8 +1695,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 		return -EINVAL;
-  	}
- 
--
--	if (list_empty(&pdev->dev.devres_head)) {
-+	if (!jpeg->variant->hw_arch) {
- 		INIT_DELAYED_WORK(&jpeg->job_timeout_work,
- 				  mtk_jpeg_job_timeout_work);
- 
-@@ -1890,6 +1889,7 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
- 	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.hw_arch = MTK_JPEG_HW_MULTI_CORE,
- };
- 
- static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
-@@ -1901,6 +1901,7 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
- 	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
- 	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.hw_arch = MTK_JPEG_HW_MULTI_CORE,
- };
- 
- #if defined(CONFIG_OF)
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index b9126476be8f..ec04a8ce73cf 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -46,6 +46,16 @@ enum mtk_jpeg_ctx_state {
- 	MTK_JPEG_SOURCE_CHANGE,
- };
- 
-+/**
-+ * enum mtk_jpeg_hw_arch - arch of the jpeg hw
-+ * @MTK_JPEG_HW_SINGLE_CORE:	jpeg hw is single core
-+ * @MTK_JPEG_HW_MULTI_CORE:		jpeg hw is mluti-core
-+ */
-+enum mtk_jpeg_hw_arch {
-+	MTK_JPEG_HW_SINGLE_CORE = 0,
-+	MTK_JPEG_HW_MULTI_CORE = 1,
-+};
-+
- /**
-  * struct mtk_jpeg_variant - mtk jpeg driver variant
-  * @clks:			clock names
-@@ -60,6 +70,7 @@ enum mtk_jpeg_ctx_state {
-  * @ioctl_ops:			the callback of jpeg v4l2_ioctl_ops
-  * @out_q_default_fourcc:	output queue default fourcc
-  * @cap_q_default_fourcc:	capture queue default fourcc
-+ * @hw_arch:            mark jpeg hw arch
-  */
- struct mtk_jpeg_variant {
- 	struct clk_bulk_data *clks;
-@@ -74,6 +85,7 @@ struct mtk_jpeg_variant {
- 	const struct v4l2_ioctl_ops *ioctl_ops;
- 	u32 out_q_default_fourcc;
- 	u32 cap_q_default_fourcc;
-+	enum mtk_jpeg_hw_arch hw_arch;
- };
- 
- struct mtk_jpeg_src_buf {
--- 
-2.18.0
-
+greg k-h
 
