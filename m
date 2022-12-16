@@ -4,96 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88425C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 12:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3964C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 13:13:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BheHA0Tcwm6n8ymyQljk2z1vC+8TH8hh+YD/X0C4MfE=; b=of2gpo45LnwhT0PTH1OlPFMeC2
-	onJTiHpQxoFNV1gP8JJi4j/5kCcM/8kaEQ7r+QjEIcC5uZy4rOmFn398HZ5dWfmXUk1hX5fAbjfEU
-	JZhdZUGbp/CPztWbL31FdbI+8hXUuLhSSRHiWTSx4ZL/EC9emrzUNKiZYpm63scq3GUp3qG5p/qDq
-	PxTW+xMJDqPE/AwetQswMh6+h0fJzMMruXENpPI6f1QeU4JiiecMNO0YMyIp95KdeQq9ZmvWkR2KQ
-	FWB4hvNF4r4kek1BtlDzJzpxkN9ErKmbguJtkIyIL7FzQwQ4xFCsTT91TgXFJbYVV7BRC2FeZT12R
-	N3Iwcg5w==;
+	bh=srPGSkjRgSgmuXTtwPpYk9AtNMtiqHmM6C2t7J2QNjs=; b=P+cmAlWgx4tAdeJ88GCyYj7E2u
+	CvIp3Z8eq47C8Xhlt6E4otbYHRPqrbNFslMSjys8DkKgzAZjCCZ49/XY7Wq2AiGzS4lvTTJ5rcKpp
+	nYTbqlF34gXbVQ5cubzdlKL5mvV36ycxJiKPm2kXxTHSgj9BGgAYRgbGyh/zJ4Ury1yNil/+tkNDb
+	J96ANTEdtYH3KDT1xS6lkOR+86taaFUlcvfMXkKv3c6twcajm8k1dDdS0NTFwN9vdtfCVgmwmNc7k
+	dZzGtsru+MmfdetRYCPTrNvc26JpQQnXn5l7Psyvg8rhyAhft5l8jcMhFWiVItKkMPh+d863iyrS3
+	PBsblaog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6AD7-00F6Sa-5g; Fri, 16 Dec 2022 12:53:09 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1p6AWf-00FDFF-Jh; Fri, 16 Dec 2022 13:13:21 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6AD4-00F6Ox-PK; Fri, 16 Dec 2022 12:53:08 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id m5-20020a7bca45000000b003d2fbab35c6so1673872wml.4;
-        Fri, 16 Dec 2022 04:53:04 -0800 (PST)
+	id 1p6AWU-00FDC6-Dm; Fri, 16 Dec 2022 13:13:11 +0000
+Received: by mail-wm1-x330.google.com with SMTP id h8-20020a1c2108000000b003d1efd60b65so4131816wmh.0;
+        Fri, 16 Dec 2022 05:13:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=BheHA0Tcwm6n8ymyQljk2z1vC+8TH8hh+YD/X0C4MfE=;
-        b=AKseIkBZZBrqaCfkNwNc+eOqwfrvP1xB5qgAOduMfqvnWa/fl4el+6xifzPzoHdoMu
-         dThO83kul7JlQEUalQSJI9PwHrXOloc9BXy1SaNNYS+GTaohbapvDJ2iA7c17ImUR/pL
-         Uk2j6bXGXuATvNUy2eCZTxPY2QaZYRDXNaKGCW3EXp8C7VYgmqmHT3UDXn5ON4P5VoWj
-         tODxHPhQ6dk0TlV8sn3u7JzozL5n+Gxdh7d+nJQj8+lj0M+EKpOCdv5zjTNYG56tqWzs
-         T9KTGXJaolmbqw9gWZlSp+8ctPAfsp7jDTmRNpJnAxZQmafMXgXusal93noxxC/XvI/j
-         nmKg==
+        bh=srPGSkjRgSgmuXTtwPpYk9AtNMtiqHmM6C2t7J2QNjs=;
+        b=hsmZvLSHOY4Gmce5AuAjDP3CdbZyUN4ZcCWXfe6Hu2zgyTtoHXBJ1/4Rp3W7Fb/WhW
+         R9QXsemVceSXujcfo3j5g8hAnuVStoYy2POpEeT3+h+kHPbQ7VP/4EUbz2fTEt4tUSl/
+         YPA+15MEQp3XTD70m0uR595fUFu3RZtNlJWzvSsRTENBb4EdSMJcpUQiuGGBMv+4GdeI
+         c+NaRIKyDu5xmZbLEC/JEFNyAoW66JQYKKNjyGtMg/l1GylqLmBHdYuim/0IzPoG2CuP
+         t2+khJ1TukQ0dPHTUUGkxp1G8hV+KKoLttkOxnKe93y8lFk70e7O9NFYKrXVa3wKgQXg
+         9LVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BheHA0Tcwm6n8ymyQljk2z1vC+8TH8hh+YD/X0C4MfE=;
-        b=KUxPuGZBzoUIRwxjPWhhdQYdBeo4zVEmOI0BtxF58Z4qle8mibjixXbcryhi/hi7Hq
-         yfM4LQF3BBW+SsSAu6zAQpL8tWH7DMrNQCbSYsLPBg1GdvRoyLtQShJGK9tUL9EE+BTY
-         reHiOe5rUpGhTmTg++/z0vkCmXp1ULcmmYCx6GVKRvjgHElWtVHu2oOX5iS3M9eKvO+o
-         rAlhQAbBbziS62Kew+9z09o0q/cFDOnz9PgIM56K8ISg9jfRwNh9fDTqlds+t/RfBgFm
-         UU6WMDfagNIOAquF/dkJiRYf76lujkaYm0tADEiyKNehK5Fqa431B1tI+us/ha6xAyj6
-         wAaA==
-X-Gm-Message-State: ANoB5pn5P+00Fx3Yc0crSXeOH0Ps4X6Fzj7swwS+o6AAg6WO1ec97p0w
-	CrdQykPtWpEcCUs2MbPVqR4=
-X-Google-Smtp-Source: AA0mqf479L304eL8/K8VJH98TvI/FZlxuU1K4BcjUM7FJGorT7BHd3K5GAGOp5+Y4o4yWCg6c9hDig==
-X-Received: by 2002:a7b:cd17:0:b0:3d2:2d2a:d58f with SMTP id f23-20020a7bcd17000000b003d22d2ad58fmr13121323wmj.2.1671195183537;
-        Fri, 16 Dec 2022 04:53:03 -0800 (PST)
+        bh=srPGSkjRgSgmuXTtwPpYk9AtNMtiqHmM6C2t7J2QNjs=;
+        b=Mq/CjVL9DxMOg6cM7mQTTXEPzEQzLtFek36DCcAFbSeylmfvXeXcAG8bVMdXVL4yTI
+         uarwi9wUVm+nm7G0S3vxB6xrLU8Dj2ZMqfbJoNY0yOI7qpVeeGmonrPBpaFanE85F8RC
+         O7k3/hGbsFzchcJtsWyYJDbRXrT2LJHgDpBfCt4NpN3oIZauFWt00p/DzlHQFkSRMC+9
+         TQCmdPIwgEcwBxeg7rHV7d0R6IS+s0Zy3tyemBxW2qbT6D09jhXIjOaAGq3iE6RSucV+
+         B4RrjZQm/pDmXo0QZ+fhC0l4b75pecd8kfpMjS56RchvIIipIHWgznjYZoxv60rf/3co
+         N3QQ==
+X-Gm-Message-State: ANoB5pns1nupY63IUZs9/YKzZ5FFgRe5gkEbSEd1ZvenhRr6cZe2v4va
+	l1VX8uH2Ch0lbXtUF0KrrQpno4xXbJJa8Q==
+X-Google-Smtp-Source: AA0mqf4VYPUaZ8JmceOcI/t0ITzDEnO81loaT+P0eo4prEQVB/kIi7P+5EVL3AGS9kVVZ4ZjwXVKwA==
+X-Received: by 2002:a05:600c:2286:b0:3cf:68f8:790b with SMTP id 6-20020a05600c228600b003cf68f8790bmr25238681wmf.11.1671196386532;
+        Fri, 16 Dec 2022 05:13:06 -0800 (PST)
 Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id k11-20020a05600c0b4b00b003c5571c27a1sm2870571wmr.32.2022.12.16.04.53.01
+        by smtp.gmail.com with ESMTPSA id p16-20020a1c5450000000b003d07de1698asm9567660wmi.46.2022.12.16.05.13.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 04:53:02 -0800 (PST)
-Message-ID: <0fc0217e-f1dd-d64c-d43c-cd47a8acbfd4@gmail.com>
-Date: Fri, 16 Dec 2022 13:53:00 +0100
+        Fri, 16 Dec 2022 05:13:05 -0800 (PST)
+Message-ID: <5412b27a-b5a1-351a-495d-3ba7e022302a@gmail.com>
+Date: Fri, 16 Dec 2022 14:13:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v7 0/8] Add MediaTek MT6357 PMIC support
+Subject: Re: [PATCH v3 0/5] MT8192 Asurada devicetree - Part 2
 Content-Language: en-US
-To: Kevin Hilman <khilman@kernel.org>,
- Alexandre Mergnat <amergnat@baylibre.com>, Mark Brown <broonie@kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Alessandro Zummo <a.zummo@towertech.it>, Rob Herring <robh+dt@kernel.org>,
- Fabien Parent <fabien.parent@linaro.org>,
- Tianping Fang <tianping.fang@mediatek.com>, Flora Fu
- <flora.fu@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>,
- Pavel Machek <pavel@ucw.cz>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Mattijs Korpershoek <mkorpershoek@baylibre.com>, linux-rtc@vger.kernel.org,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Fabien Parent <fparent@baylibre.com>, linux-leds@vger.kernel.org
-References: <20221005-mt6357-support-v7-0-477e60126749@baylibre.com>
- <7hr0xe56uf.fsf@baylibre.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+References: <20221102190611.283546-1-nfraprado@collabora.com>
+ <CAGXv+5GY5f4UWR982cY0vzUuk7aB4BSa_FcKtku1ELatMr4Dwg@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <7hr0xe56uf.fsf@baylibre.com>
+In-Reply-To: <CAGXv+5GY5f4UWR982cY0vzUuk7aB4BSa_FcKtku1ELatMr4Dwg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_045306_897466_C2233375 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20221216_051310_490529_EEE0EC80 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,25 +97,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin,
-Hi Alexandre,
 
-On 05/12/2022 14:16, Kevin Hilman wrote:
-> Matthias,
+
+On 30/11/2022 04:11, Chen-Yu Tsai wrote:
+> On Thu, Nov 3, 2022 at 3:06 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>>
+>> This series improves some more the support for MT8192 Asurada-based
+>> Chromebooks, by enabling some missing functionality, namely the internal
+>> display and audio.
+>>
+>> In addition to that, aliases are also added for the i2c and mmc nodes,
+>> which should've been done while adding the devices in the previous
+>> series.
+>>
+>> Some notable components that are still missing support are:
+>> - external display/HDMI audio (waiting for [1])
+>> - GPU (waiting for [2])
+>>
+>> As part of testing the audio, an UCM file was used, which has already
+>> been submitted upstream [3].
+>>
+>> This series depends on some missing dt-binding properties on rt5682,
+>> which are added by another series [4].
 > 
-> Alexandre Mergnat <amergnat@baylibre.com> writes:
+> Hi Matthias,
 > 
->> This patch series adds MFD, PMIC keys, and regulator support for MT6357.
->> MT6357 is a MediaTek PMIC very similar to MT6358.
+> This series has been floating around for some time now, and has been fully
+> tested by multiple parties. The rt5682 dt-binding changes have also been
+> merged.
 > 
-> The regulator driver (and bindings) were merged by Mark.  Could you take
-> the rest of this series via your mediatek tree?  The input driver (and
-> bindings) are ack'd by Dmitry.
+> Could you queue it up?
 > 
 
-Yes I can do that but 3/8 does not apply cleanly. Could you please rebase on top 
-of v6.2-tmp/soc?
+Applied now. Sorry for the delay!
 
-Thanks
 Matthias
 
