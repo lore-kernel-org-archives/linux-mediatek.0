@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3352C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 12:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97145C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 12:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lao9rYbp3jaFrYZTl4u8VT5iiT2JXYCWdbPZpYAQt0U=; b=ZQFQz0JyWtO15YbJtjCXCTQFsp
-	Xdx7oaoXJmQcn6qZkD5VSmJqo2nCEBnl8jhZU8/IjSmO4oCE8Cize5C197o/+SX7gdGiCC7sUzG4a
-	kli4RSRTDvUq2EJRzzkpOdOeEIcM47ja5vpuQwJNShSBUI9romtbRTCJaQGCRnP7QvVUhlbevWA70
-	lnGVoKwqLygPaVi8ePVSWGqsSbfm9XHH5pdYoOG+NNz33WavHxhwV7uFLiAIF537fmtDNPKwbypFm
-	IWPMIgC4Gqhzer7NRdekg349LJGMYWPkVVbxtp8Kv0t93xqhDvRKgTyvs2mASYPelGfwthwIOCS1g
-	PPROlZ7g==;
+	bh=1C1t7Qhw/4Y/cukYlXL7QXYS7VSdfs0nLzx2PMLsJKc=; b=KadnXbP+6ySoTv2c+7zI9I/B5p
+	vcD92lC4WBf6bimk78RbdnwTqOvh11jrEI5PlYKn5aDxU94J+9QxYOWA5+DmvdysQFFU/mMpcT6lc
+	wwlAa8Cy51FscKPQAHAQGP8Y8sUo0KKeJuyGAKGXsbP4dVzQIjxTHoS5Km87/4t8ybxmLsRDnLGeP
+	GxGqL/jhnDBWujuhauYln/JBI7co5J8j4e7tQfiPyZ7N47+IeBagdzKp6MEXTo+2otR4RRB4UqcT+
+	N8OzLJHaHD0+z5G9GY38hklkN4bUhSttsU+Iq/D7sHoViJRew8rMRlekeyDIypadcKYyzKrcu0GUq
+	ps/P8PNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p69yx-00ExQL-NG; Fri, 16 Dec 2022 12:38:31 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1p69zp-00EyC8-TE; Fri, 16 Dec 2022 12:39:25 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p69yu-00ExMh-VZ; Fri, 16 Dec 2022 12:38:30 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id bi26-20020a05600c3d9a00b003d3404a89faso1338416wmb.1;
-        Fri, 16 Dec 2022 04:38:28 -0800 (PST)
+	id 1p69zm-00Ey2r-Tf; Fri, 16 Dec 2022 12:39:24 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id h12so2331877wrv.10;
+        Fri, 16 Dec 2022 04:39:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Lao9rYbp3jaFrYZTl4u8VT5iiT2JXYCWdbPZpYAQt0U=;
-        b=BMepz24nDZZivPME5G/0rC1h5CJlQGZ54ruWBy6dX64Uk4SGIMuaySv/EHqCMmDFlm
-         Yt9nWGzwjDylHxA/fIa2fvjPi6RXfFyVUAIQolxl5XVaWYg1gM+KXekgc8Neuxg7UImG
-         Q1/TALmidY2sa0We5LCCnwckFy8EU3QcGgZ77y2K4z44V9M8HzAvZ56MfbmVIWN86HOr
-         ZfQGtdlBVm0Mb1IhxMtSuqxX3apL13OZa167PAtE2JL2UdUXPcVrcjtTMTz8z1sHDyrV
-         dsnyRfEDInrgB2XauxVK2QY8R9RSBu26Y3CKnrjUhLrJPqvcU7Yhr6de6bMR0FDNlfrP
-         ezLg==
+        bh=1C1t7Qhw/4Y/cukYlXL7QXYS7VSdfs0nLzx2PMLsJKc=;
+        b=FWlOPhXmYQIcPI01pZmsrS90gM78wa1c7zAhnU7K4ckWoyxWCz/PG2DUXkon6ww3Dk
+         Njwe/v/XAIX18vJuwZxeJT0OOXe4gVS5e8ZcL1HHSBktsBO+AloCjabNe1RE3liQnx9S
+         FTOmIGO5MV8tlwtU9ZnP/u5teQbNvAs9Jk0Q7wvworT+0vLCs6NeG93Uj8UBuZGO+Vg4
+         F6NawSUF2FTrO8DGv7xyjRnMZqnE33rCTzdcX3KCc7Mv7gP1ljwMuHQCC6OyDzJy5WnK
+         RrBs1AI2D9B5uLMdeCEzRvVJ54q9CR53BWEmERsonL4C2kqB/IpSmK1prrWDD0MrGH7D
+         FNCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Lao9rYbp3jaFrYZTl4u8VT5iiT2JXYCWdbPZpYAQt0U=;
-        b=zSCk9c0UR3QobhMt4LbL89VDHDLrEXeIuyKf/ayAwKBKU+jQRr3JfM+ThH4I6EyXDZ
-         9flqCdG6CNuPAB4exE9tUOtzuW+PeoxHbk6yvVMObDy84x9zYphCsc8nBxJGG6DFh67a
-         3bF1Yvoyh9g7XdGKqQ3tc0cvUiIjewSkzzA9FTz55KkLQJL1dUOiXavMaNK/2QxX/jPe
-         dFnbYNPV0EYBAUnmkybNIkxW8u+scFbnVl1b8DDMjMr/iJHGeC+AWjO+7LAMKRSUPMuc
-         PGeotOXvNHM6mF19Lq3K8wSsC5oB9Zx7jJtBBPQPFmsgVln/wWjTIKfQK7iJfWdbI/2+
-         KsSw==
-X-Gm-Message-State: ANoB5pn6o4oAvwqXGLIH9VDNyS1x5JK2eFpoDJj6NMIQT3stWj9JW5fw
-	roLQOlQJmyhoGNp43ZpQMpY=
-X-Google-Smtp-Source: AA0mqf4IPAGnw9/UVoqBz48bhA1Ot5/RTaWfHDozeIuCkpkpk9odgAvJId8q9jxV10vVOZPzlZhGJw==
-X-Received: by 2002:a05:600c:34cb:b0:3d1:f16d:5848 with SMTP id d11-20020a05600c34cb00b003d1f16d5848mr24918840wmq.26.1671194307387;
-        Fri, 16 Dec 2022 04:38:27 -0800 (PST)
+        bh=1C1t7Qhw/4Y/cukYlXL7QXYS7VSdfs0nLzx2PMLsJKc=;
+        b=3LjvJssI9B365H1+D02OblbWixFJv4PvEx7/YJVMPi9V5pP1AjZLEeMc21ZjxDx4ja
+         b/E+w2u1+UQoxhd2KR/F26BSeO6NyaV9C3Ym314mSMvilqetYku/ywalepcl8XCh3E7c
+         dEQ71x2m8f424dhXUA/yxVxGvQfJ3Q988C2ifXuVAEEYuANzzuVDODwX+IJYBPa5hhVd
+         BHThGwyPjzQE4fWBYqq5dMCiVUpKT3xtQwLq0U+nBWXwsm8O0rugT3Gb5LbcVR3z86Sy
+         VtY/cY63W9FnfUzyY8ljHThOe/zYLls+8w0685EjzitTYyj9W2iiAcfSJgaSUbLjL2gA
+         ToUQ==
+X-Gm-Message-State: ANoB5pl66pjwpLKUechfmyQLvNzwkaTSvJqSECK/4zeE3Ic2VSnknjIn
+	ilCT0rpEJMbXEbkS9weXY9g=
+X-Google-Smtp-Source: AA0mqf4pMaLKkzaoevxB+rOSsPa++2dY506eWmzPr35JFyeRLluIAvbS+LVqLNgYdPE8mCAYon0LPg==
+X-Received: by 2002:adf:de06:0:b0:242:1277:925b with SMTP id b6-20020adfde06000000b002421277925bmr20332500wrm.59.1671194358648;
+        Fri, 16 Dec 2022 04:39:18 -0800 (PST)
 Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id cl4-20020a5d5f04000000b00242209dd1ffsm2259107wrb.41.2022.12.16.04.38.25
+        by smtp.gmail.com with ESMTPSA id m2-20020a5d4a02000000b0022ae0965a8asm2193502wrq.24.2022.12.16.04.39.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 04:38:26 -0800 (PST)
-Message-ID: <9a839b69-d798-0957-bb94-7d009fdcceec@gmail.com>
-Date: Fri, 16 Dec 2022 13:38:24 +0100
+        Fri, 16 Dec 2022 04:39:17 -0800 (PST)
+Message-ID: <83aee145-17dc-45fe-dde5-324602dde0f9@gmail.com>
+Date: Fri, 16 Dec 2022 13:39:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v4 6/6] drm/mediatek: add mediatek-drm of vdosys0 support
- for mt8188
+Subject: Re: [PATCH v4 0/6] Add first version mt8188 vdosys0 driver
 Content-Language: en-US
 To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -80,17 +79,15 @@ Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, lancelot.wu@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- amy zhang <Amy.Zhang@mediatek.com>
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20221206020046.11333-1-nathan.lu@mediatek.com>
- <20221206020046.11333-7-nathan.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221206020046.11333-7-nathan.lu@mediatek.com>
+In-Reply-To: <20221206020046.11333-1-nathan.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_043829_052871_5905ABED 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20221216_043923_050282_A837A61C 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,74 +102,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Applied patches 2,3,4,5
+The rest will go through the DRM driver tree.
 
+Thanks!
 
 On 06/12/2022 03:00, nathan.lu wrote:
 > From: Nathan Lu <nathan.lu@mediatek.com>
 > 
-> add driver data of mt8188 vdosys0 to mediatek-drm and the sub driver.
+> This patch is to add first version mt8188 vdosys0 driver
+> Modify and add new files include:
+> 1. bindings documents
+> 2. mtk mmsys
+> 3. mtk mutex
+> 4. mtk drm driver
 > 
-> Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
-> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 21 +++++++++++++++++++++
->   1 file changed, 21 insertions(+)
+> Change in V4:
+> - based on [1]
+> [1] Change mmsys compatible for mt8195 mediatek-drm
+>      - https://patchwork.kernel.org/project/linux-mediatek/list/?series=699386
+> - Modify mediatek,mmsys.yaml, move mt8188-vdosys0 to ****mmsys
+> - Modify mt8188_mmsysy.h DSI mux setting
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index b12e5b977c50..8058a5ec2f1d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -176,6 +176,18 @@ static const enum mtk_ddp_comp_id mt8186_mtk_ddp_ext[] = {
->   	DDP_COMPONENT_DPI0,
->   };
->   
-> +static const enum mtk_ddp_comp_id mt8188_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_COLOR0,
-> +	DDP_COMPONENT_CCORR,
-> +	DDP_COMPONENT_AAL0,
-> +	DDP_COMPONENT_GAMMA,
-> +	DDP_COMPONENT_POSTMASK0,
-> +	DDP_COMPONENT_DITHER0,
-> +	DDP_COMPONENT_DP_INTF0,
-> +};
-> +
->   static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
->   	DDP_COMPONENT_OVL0,
->   	DDP_COMPONENT_OVL_2L0,
-> @@ -259,6 +271,11 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
->   	.ext_len = ARRAY_SIZE(mt8186_mtk_ddp_ext),
->   };
->   
-> +static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
-> +	.main_path = mt8188_mtk_ddp_main,
-> +	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
-> +};
-> +
->   static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
->   	.main_path = mt8192_mtk_ddp_main,
->   	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-> @@ -516,6 +533,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->   	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt8186-disp-mutex",
->   	  .data = (void *)MTK_DISP_MUTEX },
-> +	{ .compatible = "mediatek,mt8188-disp-mutex",
-> +	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt8192-disp-mutex",
->   	  .data = (void *)MTK_DISP_MUTEX },
->   	{ .compatible = "mediatek,mt8195-disp-mutex",
-> @@ -600,6 +619,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
->   	  .data = &mt8183_mmsys_driver_data},
->   	{ .compatible = "mediatek,mt8186-mmsys",
->   	  .data = &mt8186_mmsys_driver_data},
-> +	{ .compatible = "mediatek,mt8188-vdosys0",
-> +	  .data = &mt8188_vdosys0_driver_data},
->   	{ .compatible = "mediatek,mt8192-mmsys",
->   	  .data = &mt8192_mmsys_driver_data},
->   	{ .compatible = "mediatek,mt8195-mmsys",
+> Change in V3:
+> - based on [1]
+> [1] Change mmsys compatible for mt8195 mediatek-drm
+>      - https://patchwork.kernel.org/project/linux-mediatek/list/?series=699386
+> - Modify mediatek,mmsys.yaml mt8188-mmsys name to mt8188-vdosys0
+> - Modify mtk-mmsys.c compatible name to mt8188-vdosys0
+> - Add DSI mutex in mtk-mutex.c
+> - Modify mtk_drm_drv.c mt8188-mmsysy name to mt8188-vdosys0
+> 
+> 
+> Change in V2:
+> - based on [2] and [3]
+> [2] Add MediaTek SoC(vdosys1) support for mt8195
+>      - https://patchwork.kernel.org/project/linux-mediatek/list/?series=658416
+> [3] Add MediaTek SoC DRM (vdosys1) support for mt8195
+>      - https://patchwork.kernel.org/project/linux-mediatek/list/?series=665269
+> - Seperate bindings doucment into mmsys/mutex/display 3 parts
+> - Remove redundent char in mediatek,gamma.yaml
+> - Add another mediatek,mt8188-disp-rdma in mediatek,rdma.yaml
+> - Remove io_start variable setting in mtk_drm_drv.c and mtk_mmsys.c
+> 
+> Nathan Lu (6):
+>    dt-bindings: mediatek: modify VDOSYS0 display device tree
+>      Documentations for MT8188
+>    dt-bindings: mediatek: modify VDOSYS0 mmsys device tree Documentations
+>      for MT8188
+>    dt-bindings: mediatek: modify VDOSYS0 mutex device tree Documentations
+>      for MT8188
+>    soc: mediatek: add mtk-mmsys support for mt8188 vdosys0
+>    soc: mediatek: add mtk-mutex support for mt8188 vdosys0
+>    drm/mediatek: add mediatek-drm of vdosys0 support for mt8188
+> 
+>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
+>   .../display/mediatek/mediatek,aal.yaml        |   1 +
+>   .../display/mediatek/mediatek,ccorr.yaml      |   1 +
+>   .../display/mediatek/mediatek,color.yaml      |   1 +
+>   .../display/mediatek/mediatek,dither.yaml     |   1 +
+>   .../display/mediatek/mediatek,gamma.yaml      |   1 +
+>   .../display/mediatek/mediatek,ovl.yaml        |   1 +
+>   .../display/mediatek/mediatek,postmask.yaml   |   1 +
+>   .../display/mediatek/mediatek,rdma.yaml       |   4 +
+>   .../bindings/soc/mediatek/mediatek,mutex.yaml |   1 +
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  21 +++
+>   drivers/soc/mediatek/mt8188-mmsys.h           | 149 ++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.c              |  11 ++
+>   drivers/soc/mediatek/mtk-mutex.c              |  53 +++++++
+>   14 files changed, 247 insertions(+)
+>   create mode 100644 drivers/soc/mediatek/mt8188-mmsys.h
+> 
 
