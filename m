@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC9DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 06:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61ACC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 10:46:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GtQlmlT1y0KgYEtwMy/vlD0VpGRuWCtEVuBZXK4US04=; b=W6FXjiigoedeMVr4kBBgfTvigI
-	u2yjPB/qncPbHRrOo3xqJTnyrbt3I1jCDKkXw6yvJIDjYIMqvArhhLczQYMaX48fIa7qvC4rLBjsK
-	tqCYZF/oIfcYN9NUg7H+5rLhIqNdc62IMThyaOWCqcmgbV0OqPKxEIz7YJ9VUKGOP6g9+kEiFQNdZ
-	Nrq8pth379n4f0B+XLncs2eBLnKlUrZzsFutBvwKfICPwCG18EBJGqIVSUH0tw2EPJLzJPXAPbfic
-	4Txp2xaWCpTTYD4Y13vSM9Hea7deIO9CfLbwVIZif7W2frNy/UCB5T9Bf/wxxnLdHK/ac3aQf3bS0
-	X2SaLDhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=; b=nFeMFjeft/YyJFlmbHXmiM0gNz
+	oafhwpcuueym1/pUO9199jzY4vqjJ3JeRz5t+NaoR10ALbE1mJlRoZqb75KaAD707mZAKVNy1AGe1
+	zapibqGa9Dqje56LdHck7MHkVkk91OoGgfsBpWw2GdlSRe7n7cvMC5nPswphCHuaXfHAJb8XCYZl1
+	Fc4DdEYXqvXcj8KdHrU7i9DnVGLs30yp9CIln/ez6r+ecfi9tl7qeLSFELTGyOZDjY/5cImBeMtWz
+	95vhYEzqf6AfX/FQOUq3JLDk5iM5SEZvr5PDIm+VDlxg9jRKxpe6l+Jsk9dDkq305h9UI8UALfuHR
+	vvzvBUoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p64Vz-00DFIa-57; Fri, 16 Dec 2022 06:48:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p68Ea-00EC1L-IA; Fri, 16 Dec 2022 10:46:32 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p64Vo-00DFFx-3m; Fri, 16 Dec 2022 06:48:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 25F0861FFE;
-	Fri, 16 Dec 2022 06:48:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 114FEC433F0;
-	Fri, 16 Dec 2022 06:47:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1671173279;
-	bh=kAqsVB3oihvjgTUI7ow48/owy2I4GzQsj5y+MgkdybU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=q4BEd4DRItkkO3hXpMe28ILEhCOysyPAaFsr6+G1xa/BcInJ7dHMKWWuRpIggj8b5
-	 7OR/0E4y7BLGDkSZlyPzqxDJVqFPL9+3VlTmJZoegWWUumBZtx/ti3mq1gkkxp91mz
-	 QviIveUhg5xB+153cx7xPOfK5fKrBmrcJQJKJWLI=
-Date: Fri, 16 Dec 2022 07:47:56 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Alice Chao <alice.chao@mediatek.com>
-Cc: rafael@kernel.org, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stanley.chu@mediatek.com,
-	peter.wang@mediatek.com, chun-hung.wu@mediatek.com,
-	powen.kao@mediatek.com, naomi.chu@mediatek.com,
-	cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-	jiajie.hao@mediatek.com, qilin.tan@mediatek.com,
-	lin.gui@mediatek.com, yanxu.wei@mediatek.com,
-	tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
-	wsd_upstream@mediatek.com
-Subject: Re: [PATCH 1/1] scsi: Add length check to prevent invalid memory
- access
-Message-ID: <Y5wUnF0I+zo6TXcZ@kroah.com>
-References: <20221216031320.2634-1-alice.chao@mediatek.com>
+	id 1p68EN-00EBx4-Sk; Fri, 16 Dec 2022 10:46:21 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id m14so2065983wrh.7;
+        Fri, 16 Dec 2022 02:46:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=;
+        b=U+wbUqs6y5Ha3t9PLfeWlC2Tn5Exdl4K5spuYibUc5x4Tako5sn+lV2bE7eNBDrXHY
+         TphwwB5MfnzepvG/hWZZBVC2+59pd3VSdorV4S1rQRJpujtVaPon1fkyvAv35JO63SpW
+         DMAvbbLO8MAPK05sKTQWD/lsr6eZ1zmwpB0dM0PlrTWBFwMoso37SLjeIlIGak0TFaMq
+         Idfn+zrcnNvR7XcyxkzF1B65JRBzk+MjX6RVkutgYUJ8l1mDq5K6ze7/FVgvuow77c0q
+         7NioshZexPrE9jJ/SWXfGZFbNm65oL75dnovVmi1hDXz/AMqAdPaF3HezRiydofhTUcx
+         nJCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=;
+        b=oci8QJrNwrVqlfGn9rcpTC8cOMt/pRGSpNP7hQrBp2vjv0+sS8r7mqAlLB9QjitYdI
+         BYCrcSEgyukJQEibnKv379yCWAxs9YFVe4mxX/nO8ZaTdC0azyxhhtOPAJ0LZ+36tAEk
+         WDjrSU8Vw3XNJDvm3AZFPgeqMN+5vFICXDkFbp5lHTMB/lC0Q6R4lsMKEUqXFCzt0wL8
+         bNPbW8+zaYwnk92CrUTM9PA7q00ly0EH5/rggaLr951K+6UBnSnyKbxGHH424oJID9b6
+         mB7kb/lFs4KDoYtGUsW1j3e3jk0YA5pOSmdSNvuCy8gOj9PqwZZ/DEvwmI3cRmwXHYee
+         mCuw==
+X-Gm-Message-State: ANoB5pkHwBmiHYcSVKAG89TYY+wbiELSxqlCCuQcldwLai9ihrdFM3OL
+	alZzCTo8L1tOGPkrqibTKOE=
+X-Google-Smtp-Source: AA0mqf4HOHiYTqq0kp7OdkUCzJ8BQs4DBeNan81nRQTiiI1Wk2/CM9cRgA6TnfWggcAf6dckKY2Xsg==
+X-Received: by 2002:adf:a44f:0:b0:242:63e5:2449 with SMTP id e15-20020adfa44f000000b0024263e52449mr22819655wra.69.1671187575593;
+        Fri, 16 Dec 2022 02:46:15 -0800 (PST)
+Received: from [192.168.1.132] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id r4-20020adfa144000000b002367ad808a9sm1974295wrr.30.2022.12.16.02.46.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 16 Dec 2022 02:46:14 -0800 (PST)
+Message-ID: <ebc435fd-0acb-6588-8acd-c8d504ad4289@gmail.com>
+Date: Fri, 16 Dec 2022 11:46:12 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221216031320.2634-1-alice.chao@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v3 01/10] arm64: dts: mt8183: Fix Mali GPU clock
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, wenst@chromium.org,
+ miles.chen@mediatek.com, rex-bc.chen@mediatek.com,
+ chun-jie.chen@mediatek.com, jose.exposito89@gmail.com,
+ drinkcat@chromium.org, weiyi.lu@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com
+References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+ <20220927101128.44758-2-angelogioacchino.delregno@collabora.com>
+ <20221206183037.3jnssar4yxcx5hpb@notapiano>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221206183037.3jnssar4yxcx5hpb@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221215_224804_256742_6D22ABE8 
-X-CRM114-Status: GOOD (  24.90  )
+X-CRM114-CacheID: sfid-20221216_024619_957615_46884007 
+X-CRM114-Status: GOOD (  23.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,90 +98,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 16, 2022 at 11:13:22AM +0800, Alice Chao wrote:
-> Device reset thread uses kobject_uevent_env() to get kobj.parent(kobj.p)
-> , and it races with device init thread which calls device_add() to add
-> kobj.parent before kobject_uevent_env().
 
-Note, "scsi" in the subject line is wrong, this should be "kobject",
-right?
+
+On 06/12/2022 19:30, Nícolas F. R. A. Prado wrote:
+> On Tue, Sep 27, 2022 at 12:11:19PM +0200, AngeloGioacchino Del Regno wrote:
+>> From: Chen-Yu Tsai <wenst@chromium.org>
+>>
+>> The actual clock feeding into the Mali GPU on the MT8183 is from the
+>> clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
+>> block, which itself is simply a pass-through placeholder for the MFGPLL
+>> in the APMIXEDSYS block.
+>>
+>> Fix the hardware description with the correct clock reference.
+>>
+>> Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Hi,
+> 
+> it seems that while all other patches on this series were applied by Chen-Yu
+> through the clk tree, this commit never made it to the mediatek tree.
+> 
+> As a result, MT8183-based machines (or at least mt8183-kukui-jacuzzi, where I
+> tested on) currently hang during boot not only on next, but also on mainline,
+> v6.1-rc8. With this commit applied I've confirmed that the machine boots fine
+> again.
+> 
+> Matthias, could you please apply this commit and make sure it makes its way to
+> v6.1? Given the Fixes tag it should eventually make its way there anyway, but if
+> still possible would be good to have it fixed right from v6.1.
+> 
+> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Applied now.
+
+Sorry for the late reply.
+Matthias
 
 > 
-> Device init call:           Device reset call:
-> scsi_probe_and_add_lun()    scsi_evt_thread()
-
-Shouldn't the scsi layer be protecting these from happening at the same
-time?  Or some other bus lock?
-
->   scsi_add_lun()             scsi_evt_emit()
->    scsi_sysfs_add_sdev()      kobject_uevent_env() //get kobj.parent
->     scsi_target_add()           kobject_get_path()
->                                  len = get_kobj_path_length ()
->                                  //len=1 because parent hasn't created yet
-
-Wait, how can the parent be gone if it has not been added yet?  A parent
-should always be present, a device can not be there if it did not have a
-parent already.
-
->     device_add() // add kobj.parent
->       kobject_uevent_env()
->        kobject_get_path()         path = kzalloc()
->         fill_kobj_path()           fill_kobj_path()
->                             // --length; length -= cur is a negative value
->                          memcpy(path + length, kobject_name(parent), cur);
->                          // slab OOB!
+> Thanks,
+> Nícolas
 > 
-> Above backtrace describes the problem, device reset thread will get wrong
-> kobj.parent when device init thread didn't add kobj/parent yet. When this
-> racing happened, it triggers the a KASAN dump on the final iteration:
-> 
-> BUG: KASAN: slab-out-of-bounds in kobject_get_path+0xf8/0x1b8
-> Write of size 11 at addr ffffff80d6bb94f5 by task kworker/3:1/58
-> <snip>
-> 
-> Call trace:
->  __kasan_report+0x124/0x1c8
->  kasan_report+0x54/0x84
->  kasan_check_range+0x200/0x208
->  memcpy+0xb8/0xf0
->  kobject_get_path+0xf8/0x1b8
->  kobject_uevent_env+0x228/0xa88
->  scsi_evt_thread+0x2d0/0x5b0
->  process_one_work+0x570/0xf94
->  worker_thread+0x7cc/0xf80
->  kthread+0x2c4/0x388
-> 
-> These two jobs are scheduled asynchronously, we can't guaranteed that
-> kobj.parent will be created in device init thread before device reset
-> thread calls kobject_get_path().
-
-Again, a parent should always be there, how is that happening?
-
-> To prevent length -= cur from being a negative value, we add length
-> check in fill_kobj_path() to prevent invalid memory access.
-> 
-> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
-> ---
->  lib/kobject.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/lib/kobject.c b/lib/kobject.c
-> index af1f5f2954d4..3cccb8e88d4e 100644
-> --- a/lib/kobject.c
-> +++ b/lib/kobject.c
-> @@ -121,6 +121,10 @@ static void fill_kobj_path(struct kobject *kobj, char *path, int length)
->  		int cur = strlen(kobject_name(parent));
->  		/* back up enough to print this name with '/' */
->  		length -= cur;
-> +
-> +		if (length <= 0)
-> +			break;
-
-Shouldn't you just check for cur == 0 here instead?
-
-But again, how can we have a parent with no name?
-
-thanks,
-
-greg k-h
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>> index a70b669c49ba..402136bfd535 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>> @@ -1678,7 +1678,7 @@ gpu: gpu@13040000 {
+>>   				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
+>>   			interrupt-names = "job", "mmu", "gpu";
+>>   
+>> -			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
+>> +			clocks = <&mfgcfg CLK_MFG_BG3D>;
+>>   
+>>   			power-domains =
+>>   				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
+>> -- 
+>> 2.37.2
+>>
+>>
+>>
 
