@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61ACC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 10:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4240C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 10:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=; b=nFeMFjeft/YyJFlmbHXmiM0gNz
-	oafhwpcuueym1/pUO9199jzY4vqjJ3JeRz5t+NaoR10ALbE1mJlRoZqb75KaAD707mZAKVNy1AGe1
-	zapibqGa9Dqje56LdHck7MHkVkk91OoGgfsBpWw2GdlSRe7n7cvMC5nPswphCHuaXfHAJb8XCYZl1
-	Fc4DdEYXqvXcj8KdHrU7i9DnVGLs30yp9CIln/ez6r+ecfi9tl7qeLSFELTGyOZDjY/5cImBeMtWz
-	95vhYEzqf6AfX/FQOUq3JLDk5iM5SEZvr5PDIm+VDlxg9jRKxpe6l+Jsk9dDkq305h9UI8UALfuHR
-	vvzvBUoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GrKknhuGa3KVuISNQ+0ldCwT2QjtfcVWcXhLlx6f2eg=; b=mNVMXURa562pMXqLGR8ipRtXOA
+	FvNDZNnnrSpk5jwwdx01OnP0t3L/k17/Jy/WCI5WbjCFiE5/F4AjMZzbEj2xW5OKfmIQmFAPK0Z0F
+	WwWDMjizpL8sF2vtjdmzXp8XhvcG+PB1Yimb7RlkLARzucqt1DnVoYBit/OiQSjF/moy3tw9VAdHB
+	kmuf2bKq3Qbe6//nLddXj8r244MLEwTSh7x0FF44yX++NhJt/IZgQoDP1/y3ek+9bqiZ8bB8wsICj
+	u/7iDJTkAvotjROl1mReFwQJmCQdysosNutzA8K7Rip3tzatewpbyyhoTUC0rvMLbv4hOQrVQrOkD
+	mX0Te34Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68Ea-00EC1L-IA; Fri, 16 Dec 2022 10:46:32 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1p68Mv-00EFW9-IV; Fri, 16 Dec 2022 10:55:09 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68EN-00EBx4-Sk; Fri, 16 Dec 2022 10:46:21 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id m14so2065983wrh.7;
-        Fri, 16 Dec 2022 02:46:17 -0800 (PST)
+	id 1p68Mt-00EFS9-7o
+	for linux-mediatek@lists.infradead.org; Fri, 16 Dec 2022 10:55:08 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id u10so1402818qvp.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Dec 2022 02:55:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=;
-        b=U+wbUqs6y5Ha3t9PLfeWlC2Tn5Exdl4K5spuYibUc5x4Tako5sn+lV2bE7eNBDrXHY
-         TphwwB5MfnzepvG/hWZZBVC2+59pd3VSdorV4S1rQRJpujtVaPon1fkyvAv35JO63SpW
-         DMAvbbLO8MAPK05sKTQWD/lsr6eZ1zmwpB0dM0PlrTWBFwMoso37SLjeIlIGak0TFaMq
-         Idfn+zrcnNvR7XcyxkzF1B65JRBzk+MjX6RVkutgYUJ8l1mDq5K6ze7/FVgvuow77c0q
-         7NioshZexPrE9jJ/SWXfGZFbNm65oL75dnovVmi1hDXz/AMqAdPaF3HezRiydofhTUcx
-         nJCA==
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GrKknhuGa3KVuISNQ+0ldCwT2QjtfcVWcXhLlx6f2eg=;
+        b=d7a8PH68eC6OkPo1s2NDnur3yDuiRN2nKhYrrQ8VkeONotStBBQyQ/FhW5JqTQuVRZ
+         0XuH2oEqemwTZNMa1tPrxQ9HRbZjbE3fr3H7eGNK/O3APxMvbCtXnNHNc9yViasf/DdK
+         GCA2Rn7POemoUp0cqESl3r4eZN2iAVgRTU0mg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sO4cl5xjhBVd3+iJHoMx+vhvACtxqzk7PC5Y+IYSlGo=;
-        b=oci8QJrNwrVqlfGn9rcpTC8cOMt/pRGSpNP7hQrBp2vjv0+sS8r7mqAlLB9QjitYdI
-         BYCrcSEgyukJQEibnKv379yCWAxs9YFVe4mxX/nO8ZaTdC0azyxhhtOPAJ0LZ+36tAEk
-         WDjrSU8Vw3XNJDvm3AZFPgeqMN+5vFICXDkFbp5lHTMB/lC0Q6R4lsMKEUqXFCzt0wL8
-         bNPbW8+zaYwnk92CrUTM9PA7q00ly0EH5/rggaLr951K+6UBnSnyKbxGHH424oJID9b6
-         mB7kb/lFs4KDoYtGUsW1j3e3jk0YA5pOSmdSNvuCy8gOj9PqwZZ/DEvwmI3cRmwXHYee
-         mCuw==
-X-Gm-Message-State: ANoB5pkHwBmiHYcSVKAG89TYY+wbiELSxqlCCuQcldwLai9ihrdFM3OL
-	alZzCTo8L1tOGPkrqibTKOE=
-X-Google-Smtp-Source: AA0mqf4HOHiYTqq0kp7OdkUCzJ8BQs4DBeNan81nRQTiiI1Wk2/CM9cRgA6TnfWggcAf6dckKY2Xsg==
-X-Received: by 2002:adf:a44f:0:b0:242:63e5:2449 with SMTP id e15-20020adfa44f000000b0024263e52449mr22819655wra.69.1671187575593;
-        Fri, 16 Dec 2022 02:46:15 -0800 (PST)
-Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id r4-20020adfa144000000b002367ad808a9sm1974295wrr.30.2022.12.16.02.46.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 02:46:14 -0800 (PST)
-Message-ID: <ebc435fd-0acb-6588-8acd-c8d504ad4289@gmail.com>
-Date: Fri, 16 Dec 2022 11:46:12 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GrKknhuGa3KVuISNQ+0ldCwT2QjtfcVWcXhLlx6f2eg=;
+        b=LYMZJg4K4/CtuFor7sQSqJGXrrDD4A8WTH9gQiVu5/6pQREedwWaGRmQM9IJqdkXkt
+         mu+rIsLa2QTtIZ8TeefoJhHuFUW8gLmog38Dr+xrXOZjFfph5fcemGsYStGDTyMu4xlN
+         +wl3b2NbhX1HcBzly/GT/haLjy6aMzOWSp/dh+4W1BLxOW/eXu2til7DpiJnxnOZicXt
+         ZTbxMFQGdeGVyiav4vGefGsWCd4t7ZNB9WNGd4tKDD9ianEwOeCpxIjRA2ZA4EfwRxFr
+         QcZA8+pGd9hLOMGFSoFrFHx+alKQd2ijJCGKypNTB4YQ3bgqNTHo9/woJZh4+PolspgU
+         xFZg==
+X-Gm-Message-State: AFqh2kr9S6xobPI0+zdzuWHZEjTk60eefHDfe5lSEnrR/DAm/g93FtTU
+	OqDLAEiMVP7VKuUzlBk0fvjgSXpR4Z4KLyvydjgpCZC2MgiSFg==
+X-Google-Smtp-Source: AMrXdXtxD2Dw69BXa3t7U8lA/jGeC3BWlJLYa99HnQcGLG9/wzipb95sBWc/+IdjkbP22LWRyfQhXpR7BrZhhq7VTQo=
+X-Received: by 2002:a05:6214:3283:b0:4ff:d079:307c with SMTP id
+ mu3-20020a056214328300b004ffd079307cmr55075qvb.18.1671188103515; Fri, 16 Dec
+ 2022 02:55:03 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v3 01/10] arm64: dts: mt8183: Fix Mali GPU clock
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, wenst@chromium.org,
- miles.chen@mediatek.com, rex-bc.chen@mediatek.com,
- chun-jie.chen@mediatek.com, jose.exposito89@gmail.com,
- drinkcat@chromium.org, weiyi.lu@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com
-References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
- <20220927101128.44758-2-angelogioacchino.delregno@collabora.com>
- <20221206183037.3jnssar4yxcx5hpb@notapiano>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221206183037.3jnssar4yxcx5hpb@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20220527045353.2483042-1-hsinyi@chromium.org>
+In-Reply-To: <20220527045353.2483042-1-hsinyi@chromium.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 16 Dec 2022 18:54:37 +0800
+Message-ID: <CAJMQK-jWwDm4dy-ELzJ5gzLby37Ztqn9qhGT9zqFhmowdok51g@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: kukui: Split out keyboard node and
+ describe detachables
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_024619_957615_46884007 
-X-CRM114-Status: GOOD (  23.91  )
+X-CRM114-CacheID: sfid-20221216_025507_373438_78F48635 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,69 +84,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, May 27, 2022 at 12:54 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> Kukui devices krane, kodana, and kakadu use detachable keyboards, which
+> only have switches to be registered.
+>
+> Change the keyboard node's compatible of those boards to the newly
+> introduced "google,cros-ec-keyb-switches", which won't include matrix
+> properties.
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+
+hi Matthias,
+
+Kindly ping on this patch. Thanks.
 
 
-On 06/12/2022 19:30, Nícolas F. R. A. Prado wrote:
-> On Tue, Sep 27, 2022 at 12:11:19PM +0200, AngeloGioacchino Del Regno wrote:
->> From: Chen-Yu Tsai <wenst@chromium.org>
->>
->> The actual clock feeding into the Mali GPU on the MT8183 is from the
->> clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
->> block, which itself is simply a pass-through placeholder for the MFGPLL
->> in the APMIXEDSYS block.
->>
->> Fix the hardware description with the correct clock reference.
->>
->> Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
->> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Hi,
-> 
-> it seems that while all other patches on this series were applied by Chen-Yu
-> through the clk tree, this commit never made it to the mediatek tree.
-> 
-> As a result, MT8183-based machines (or at least mt8183-kukui-jacuzzi, where I
-> tested on) currently hang during boot not only on next, but also on mainline,
-> v6.1-rc8. With this commit applied I've confirmed that the machine boots fine
-> again.
-> 
-> Matthias, could you please apply this commit and make sure it makes its way to
-> v6.1? Given the Fixes tag it should eventually make its way there anyway, but if
-> still possible would be good to have it fixed right from v6.1.
-> 
-> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Applied now.
-
-Sorry for the late reply.
-Matthias
-
-> 
-> Thanks,
-> Nícolas
-> 
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> index a70b669c49ba..402136bfd535 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> @@ -1678,7 +1678,7 @@ gpu: gpu@13040000 {
->>   				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
->>   			interrupt-names = "job", "mmu", "gpu";
->>   
->> -			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
->> +			clocks = <&mfgcfg CLK_MFG_BG3D>;
->>   
->>   			power-domains =
->>   				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
->> -- 
->> 2.37.2
->>
->>
->>
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 ++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi  | 6 ++++++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi  | 6 ++++++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi   | 6 ++++++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi         | 1 -
+>  5 files changed, 20 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> index 2d7a193272ae..981c889a22ea 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+> @@ -4,6 +4,8 @@
+>   */
+>
+>  #include "mt8183-kukui.dtsi"
+> +/* Must come after mt8183-kukui.dtsi to modify cros_ec */
+> +#include <arm/cros-ec-keyboard.dtsi>
+>
+>  / {
+>         panel: panel {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> index 28966a65391b..4b419623c8dc 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+> @@ -372,6 +372,12 @@ pen_eject {
+>         };
+>  };
+>
+> +&cros_ec {
+> +       keyboard-controller {
+> +               compatible = "google,cros-ec-keyb-switches";
+> +       };
+> +};
+> +
+>  &qca_wifi {
+>         qcom,ath10k-calibration-variant = "GO_KAKADU";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> index 06f8c80bf553..4864c39e53a4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+> @@ -339,6 +339,12 @@ touch_pin_reset: pin_reset {
+>         };
+>  };
+>
+> +&cros_ec {
+> +       keyboard-controller {
+> +               compatible = "google,cros-ec-keyb-switches";
+> +       };
+> +};
+> +
+>  &qca_wifi {
+>         qcom,ath10k-calibration-variant = "GO_KODAMA";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> index a7b0cb3ff7b0..d5f41c6c9881 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+> @@ -343,6 +343,12 @@ rst_pin {
+>         };
+>  };
+>
+> +&cros_ec {
+> +       keyboard-controller {
+> +               compatible = "google,cros-ec-keyb-switches";
+> +       };
+> +};
+> +
+>  &qca_wifi {
+>         qcom,ath10k-calibration-variant = "LE_Krane";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 8d5bf73a9099..db1388550f98 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -986,5 +986,4 @@ hub@1 {
+>         };
+>  };
+>
+> -#include <arm/cros-ec-keyboard.dtsi>
+>  #include <arm/cros-ec-sbs.dtsi>
+> --
+> 2.36.1.124.g0e6072fb45-goog
+>
 
