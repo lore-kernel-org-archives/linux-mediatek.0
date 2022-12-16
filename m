@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2856C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 11:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E82C7C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 11:24:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DVBkOpfAYZxWE0+rYS13/gFKIJDXEDdtWxxYd6rvanE=; b=VAOwjwRO5P6SLfyDF/4f7gWQY6
-	nJ+R4zfcGuix1mnERUgEN7ElKKx+M42X3T1pBFjHFjUvirAne3wYI3hKQSaZ+1IotjCsc5PeY7rq4
-	3J7QDtC1mpZm/NUsaW0k1IOlSLd/sYUiZLVyvnEb8+Ub1mMMxl9yw7pAiLbegIBwpgha7N6dpUNic
-	N0+1nCpFiPZeW2/rX7/gL5gq0O5TQh7ZQiBOY6cfpW8sEb3SVpHl7kYvXit5miJC0ZHUQxPUmTT7e
-	8hpCQoDX7IqvTVFb+d8+OMeFH31m+ia89CdS49L0ZbsSMXaEzDI0tagnaBY1kPyy75b/KufI5IJAD
-	dK2cLvSQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VAWXZ5dwyU4nYzKu6dG0EcB7QJGqDFnb5rKrT6m3dlQ=; b=O24lKh2ar6th9VEXkStEm/eBpB
+	BKC86ksx7CAuX3OLSlI0rjiLUpHO/WrMClqxLxrls2631PBJazMzoPrvQ1HSiyiJPPug16JSTLBrN
+	IWHA5kGksoh8qFT/UMeVuyiVldiYMvqbtWvlD3F54IJnSKkNGV2CIL/VyaUm9zGedDvQibrDFCO2P
+	24k4NIgfD8Jf+ADXMjD13RBT2WdgdXXDwOLgDENeBeH2mfilKP0eOo3i4HyEN2zCxNd3c4wR0EIvj
+	/qJa4t094P7K0cMXUE+aXhNjAkRmSXPpGkCjxW9WBx3PFvqE0VGKUEKtALNa+YNNWQHS9eP5/Hk4E
+	9W3PdC0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68mb-00ER53-Jr; Fri, 16 Dec 2022 11:21:41 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1p68p7-00ESGc-Q9; Fri, 16 Dec 2022 11:24:17 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68mY-00ER2J-7k; Fri, 16 Dec 2022 11:21:39 +0000
-Received: by mail-wm1-x331.google.com with SMTP id b24-20020a05600c4a9800b003d21efdd61dso1499732wmp.3;
-        Fri, 16 Dec 2022 03:21:37 -0800 (PST)
+	id 1p68om-00ES38-T9; Fri, 16 Dec 2022 11:23:58 +0000
+Received: by mail-wr1-x434.google.com with SMTP id co23so2178490wrb.4;
+        Fri, 16 Dec 2022 03:23:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=DVBkOpfAYZxWE0+rYS13/gFKIJDXEDdtWxxYd6rvanE=;
-        b=Iot8Bh9+xa3SjKPmbkeHmZKvmaOocwiF58oJi+ZrCINaerAm+qXAfowhA+gQfZAcLE
-         EJUdTXEXViVikJzCrBCq4i98uocGEgBbfmrb9q9nBh5Nmblecou6t9oOpW6uRWLK1GBz
-         MEetQ2jCbq3XoLDmWIbbd35EDhsQvOmEY/h9HW4YmzUL3F3PFahNQNc5KS4xn0UUux1Q
-         5SzTp/lPaTaBRVUpxZNEqAYIuQc9CGKIpdGMwoRcr4tRRifWMNk19vKOKzzLHx5k75Vg
-         ymhJgLrxT6Ei1LDPjXDrQNXKzQ2yPhxUrK/B02IWvXoqvYxyoiIOyLiozp/THiJ5nlXf
-         3C5g==
+        bh=VAWXZ5dwyU4nYzKu6dG0EcB7QJGqDFnb5rKrT6m3dlQ=;
+        b=YIIoVlfk6+N9Dbv6UCADP+/Bd66InxDSiBgDL/pp4oE2qCfDcfYSu69isft+voaHrE
+         Ywpy6B2xaM3+ri25Rvxc6rNCqM/je85KxvHRRDR73dNAlcS9UyFF9AQekXDYCn33UpMA
+         G0RHJkKnoZjmsBoUn0h0n/UZNvW8+rXW9kxCknJiLigfPguCoRPvv2inPOGJuSp8EeqH
+         kirpg1188XOrFMgC1+dg9pEY1RkQ3YeCQleVpuJuwZsqyut5k4aKqO0bv789stxc+IHP
+         89CUQ46QffrANtTdFgQ6nbWJ1lKAFiSZjinsKgDF3jjVx54Z/l5o8V/y5ExMl+GN+rSt
+         9wzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DVBkOpfAYZxWE0+rYS13/gFKIJDXEDdtWxxYd6rvanE=;
-        b=WBcvDJzt1nW1ujXmM2CX1cjATLBihloDH1SDYzL8WTwC+U/Esr2HTt2i+dSotpk4pm
-         il19zi62/tx0wxWSRNROe0qhjgd861MLwmwEq/Hb8UGbbEkdh6k/nIaGuTrqVRxeEpMH
-         hbO04H+bstnGTQGqKArIcgkz2mrmlHsBBENbd2QVJHFFNL55sYHmwvdi2JRlhTCb2HTF
-         W/VyVGuQvqt4LJNoFEYr0AmI12HYeFAN7uaFM9VHrn5e7261MGNaBNaqdIz4gO58nZWO
-         txSBW7rYhqNuhC6lVVLN+5zBDdj37xSXo4HXK9c3VZJ86g172gKU0zI9rQppHfkluJX7
-         SUqQ==
-X-Gm-Message-State: ANoB5pmPnV+WTEpWMb47v+LArgRv9m974uEnfBNQOhc5DT5XU3DsXyYO
-	Pl/LaO2wCosghKPQNH/tq5Q=
-X-Google-Smtp-Source: AA0mqf7GB4tSWpDtLhelhZuynKxnu977KSCTCyRT5cUWJqYeo9WRE8n6Wpjo2J18u5oWUE7FtBHcKQ==
-X-Received: by 2002:a05:600c:4fd0:b0:3d1:c0a1:4804 with SMTP id o16-20020a05600c4fd000b003d1c0a14804mr25269065wmq.17.1671189696664;
-        Fri, 16 Dec 2022 03:21:36 -0800 (PST)
+        bh=VAWXZ5dwyU4nYzKu6dG0EcB7QJGqDFnb5rKrT6m3dlQ=;
+        b=RgmwKtTVF69pdPuN6YfjzJKvSPrEJoxGB3hPK6qkIS7wUoApqVQbq6+45enOXC45+i
+         uYz03O5NSUMuwQTqj/CiIwzI3fzdBiPpsNx6s+xGPq8RDShH4UUi2CmJSxukZJVISlmC
+         kknmWKh3Uc1urrRrOZzi6P0dqBl+pm8KN6GtAVIFXTMkHS5lepLMa+TpeVI2h8IQBHsN
+         UzjOLay6RE2FOZUk8i/0stiM6waevgj1rH8HiQDYVKmHbh5Az0i0isofDWeyh1BGkRqn
+         PSvbjZe0k8lKJR+FPmDN7feukRLfDDk7y8D5s3Xyx0aoPWkJeQOv+29HQ7Z0twIjLAMQ
+         wFjg==
+X-Gm-Message-State: ANoB5pkUzPreyPCZPUxadqvZvHO+Y4uMJRrKhR3Bp1T6fTQAJmQrylD/
+	tpT3uiYOfLB5qTBHkhoS24k=
+X-Google-Smtp-Source: AA0mqf48S1sZqP77x7fQ3pVk52VBeYECSdS87vyjHpCEQNGm5ug0+c7NB5eA1qSwlxtF3t3FplvarQ==
+X-Received: by 2002:a5d:4242:0:b0:242:5ed6:a09f with SMTP id s2-20020a5d4242000000b002425ed6a09fmr19661776wrr.44.1671189822253;
+        Fri, 16 Dec 2022 03:23:42 -0800 (PST)
 Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n7-20020a05600c3b8700b003b492753826sm2442120wms.43.2022.12.16.03.21.35
+        by smtp.gmail.com with ESMTPSA id f4-20020a5d58e4000000b002425be3c9e2sm1985229wrd.60.2022.12.16.03.23.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 03:21:35 -0800 (PST)
-Message-ID: <ee793350-f5da-7a63-fe2f-d4d081428021@gmail.com>
-Date: Fri, 16 Dec 2022 12:21:34 +0100
+        Fri, 16 Dec 2022 03:23:41 -0800 (PST)
+Message-ID: <bfdb30b7-8540-15e9-678c-3bf0541425b4@gmail.com>
+Date: Fri, 16 Dec 2022 12:23:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v5 6/7] dt-bindings: usb: mediatek,mtk-xhci: add MT8365
- SoC bindings
+Subject: Re: [PATCH v3 01/10] arm64: dts: mt8183: Fix Mali GPU clock
 Content-Language: en-US
-To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- angelogioacchino.delregno@collabora.com, khilman@baylibre.com
-References: <20221213234346.2868828-1-bero@baylibre.com>
- <20221213234346.2868828-7-bero@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, wenst@chromium.org,
+ miles.chen@mediatek.com, rex-bc.chen@mediatek.com, nfraprado@collabora.com,
+ chun-jie.chen@mediatek.com, jose.exposito89@gmail.com,
+ drinkcat@chromium.org, weiyi.lu@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org
+References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+ <20220927101128.44758-2-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221213234346.2868828-7-bero@baylibre.com>
+In-Reply-To: <20220927101128.44758-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_032138_315431_7A02A4B2 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20221216_032356_984517_86A524E1 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +99,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/12/2022 00:43, Bernhard Rosenkränzer wrote:
-> From: Fabien Parent <fparent@baylibre.com>
+On 27/09/2022 12:11, AngeloGioacchino Del Regno wrote:
+> From: Chen-Yu Tsai <wenst@chromium.org>
 > 
-> Add binding documentation for the MT8365 SoC.
+> The actual clock feeding into the Mali GPU on the MT8183 is from the
+> clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
+> block, which itself is simply a pass-through placeholder for the MFGPLL
+> in the APMIXEDSYS block.
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> Fix the hardware description with the correct clock reference.
+> 
+> Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Both patches applied, thanks!
 
 > ---
->   Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
->   1 file changed, 1 insertion(+)
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index a3c37944c6305..c119caa9ad168 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -35,6 +35,7 @@ properties:
->             - mediatek,mt8188-xhci
->             - mediatek,mt8192-xhci
->             - mediatek,mt8195-xhci
-> +          - mediatek,mt8365-xhci
->         - const: mediatek,mtk-xhci
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index a70b669c49ba..402136bfd535 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -1678,7 +1678,7 @@ gpu: gpu@13040000 {
+>   				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
+>   			interrupt-names = "job", "mmu", "gpu";
 >   
->     reg:
+> -			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
+> +			clocks = <&mfgcfg CLK_MFG_BG3D>;
+>   
+>   			power-domains =
+>   				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
 
