@@ -4,85 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B56C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 10:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADB6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 11:00:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SVJpKmqfc75gvy1Z50KnGNDLe2BU4CCyVDTSkolvh5U=; b=ejMmtw7lAJMB7JKe9s++M0ZAiQ
-	fwK/xrYscV4h6ImDNTQ5rBHy2FDesW/drGNkLIXfI1KhN7rxDVKf8N8vPtztbeS7K6g9hmzFE8Axn
-	HUiu0bBmZn/q6VIK45bQh8wSnQHZr3+jpE+WGwdmbGLqIvMAJ1oB9TidKhtHMNX3kTQgTyNiL0wWe
-	Jpr2H6ljAXuqbd9O9gTiup+zQEPbB5Drpmvm8/s1s+8FhHgAyg1W8HUTtBbR4obeYuPz9mr8ds3jw
-	oxJQU9kGZuxyGBeY+Q7nnk8Monl9rrPZDdGcZDQoTxx+XaAqIQjoUvWWG9W1+JNf58y1eSh2MMJO6
-	1EFUHLGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k1MArKAOM+urebegyWsy4WNkzN1RERPKIZE7UIlq5Ls=; b=rx8ZDle+nLp0TY0xNqK6q9ECAg
+	otTO+g5/Za7S8egmqrGG/74k0SylvkXXAvyYpTBgb0xEknRR7wULdNNQ1bOmJoDgue+xblIxJXZzz
+	s+RrUDjB00/VD4kZaVKRCwfnJ/QrY9PVz617aVMJ2opIOq895mqILXl22mwMiCQGCkd/BI/+2Bml/
+	9i4w9F57YvOqRwQG61xK5kTx4M9ajb9Vl/JdvUsuDIomVTRwshEFvYxHTxnG2i0uk740yx4p+sPCq
+	TnnqPFWQc6868Y52V0QBMKXvgzClS/LDjx40hj+wJ6WB1iGfOKyHSayeXHOcRbPtwSBRp0ItEvUt+
+	4Z5YKNAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68Qd-00EHMF-Gk; Fri, 16 Dec 2022 10:58:59 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1p68S6-00EIDW-8O; Fri, 16 Dec 2022 11:00:30 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68QL-00EHAF-5J
-	for linux-mediatek@lists.infradead.org; Fri, 16 Dec 2022 10:58:42 +0000
-Received: by mail-lf1-x133.google.com with SMTP id z26so2898122lfu.8
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Dec 2022 02:58:39 -0800 (PST)
+	id 1p68S3-00EI9Z-H9
+	for linux-mediatek@lists.infradead.org; Fri, 16 Dec 2022 11:00:28 +0000
+Received: by mail-qt1-x835.google.com with SMTP id bw27so241269qtb.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Dec 2022 03:00:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=SVJpKmqfc75gvy1Z50KnGNDLe2BU4CCyVDTSkolvh5U=;
-        b=GTH5VXht+LUVhVD4aiQbpvosHo19veTLjxLnnhc4l3jyFskwcw+y2XqDD7hrJNuPiJ
-         ZceDWQlYpDbuOG3mJp88TnZ5d8utsea4yDTzW7m+J+oILl/AVK13luoaTyJnPIpk6KXV
-         Qfctmz6JoIL6vaD7lHv9Cr75MvmwHzz9pKqQpPFWYbr5pN9iZ46Gpma+Hk9MJY8/DGn3
-         guLTL+gJNeBvCai9fYeYPPVmJeOfEuI7/r/1kxTTrDSdbPlAwZWWk8qEZptMBkK23o/F
-         eDcnOsXUH5jhaCm7oXoWzvPjI780NnDjo+ZPdJ8tLgO6WwiLw0QFwZIOJtpelnSlkESc
-         yEsQ==
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=k1MArKAOM+urebegyWsy4WNkzN1RERPKIZE7UIlq5Ls=;
+        b=O+egyYiNPXuY7maexntNNrb9vVTa13ZU+tuiL1zrp4rciqHdF9qEXG57HR9eN0DAtC
+         17SNouJipCmzrRYIYjNQwSN7dO68erJwv7Ja0do+EusGrbevsCsvIsojMUG0FgR23gXA
+         013TSs636Xg7VGoEO1IXd2W02ifGk772/OGTI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SVJpKmqfc75gvy1Z50KnGNDLe2BU4CCyVDTSkolvh5U=;
-        b=pFyBFvYWZOTXnnxOoRrMABxbcaIoxYrrWtonqXrXTnkJrRRTG4OMAGuZNv0WwS3UuU
-         Gs5sI394yHYOd93FgqmerGcdiX/D6tom86dcy067N6LYkW7dDnDKgcVVOghzTHh0bFdb
-         vMT/ow6qOfDFvh66fjktohFabVAKSCCGEmUiIn6tODjK7WTStqbTG5p+e71CbQ15oDA9
-         K69oXgNoPxBaqEE+S4m6tBgfDVINH88ctofvoOObYa7RNQCAoM2wqrz3qAoY6WxHt5xI
-         zKbygd13UEEm4Tllicl8eAIjxv1809YTNEEmMSawMeviiWH8V939d1hEbI/BF8RkIam7
-         AmOA==
-X-Gm-Message-State: ANoB5pnJoR9qFABbVhf+hE+ZTblmNcEom8EjnunPoQKHM4ltO+3D8OQq
-	85DUKJjqMn3onjlUUhhS94DGshpKZKPPwCAG
-X-Google-Smtp-Source: AA0mqf7KaaxHndY+Tb6alrKKxdHUig3JmTRuspaG46BrfUxehq2Cv44HHpYc4kJwqPQg9utm8NEgCA==
-X-Received: by 2002:a05:6512:2586:b0:4b5:2eb9:8d3 with SMTP id bf6-20020a056512258600b004b52eb908d3mr8322317lfb.19.1671188318546;
-        Fri, 16 Dec 2022 02:58:38 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id f10-20020a19ae0a000000b004b40f2e25d3sm188358lfc.122.2022.12.16.02.58.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 02:58:38 -0800 (PST)
-Message-ID: <e7f8b106-b71e-eac9-c2a0-83579382f0f4@linaro.org>
-Date: Fri, 16 Dec 2022 11:58:37 +0100
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=k1MArKAOM+urebegyWsy4WNkzN1RERPKIZE7UIlq5Ls=;
+        b=UdPP7rt8qy5SIovtvFeArlmANzj56NlImhZyeU2x1/2At9Nbo73f1nBOgFi3S5OAMM
+         xETRCn2J5itRxOqdPAapJljbWulk/XQpXxUFB14FOF77nskyGJ6vUMVGUezpZH3cOylI
+         zjZ1qGgQ6iFhzyvFc/hVwCJzk2PD5frSu0JM5v4SBPSPpZlh2mKCmQ2dNGxOIKDEr/y5
+         kUlNCgJ3DxxfBaYetAoZb22W0+YzmyY2yKpaCkM0BopphPNy1iDT1UzqoJ4IHG5SYrP4
+         TXxwtA3wpVBZRwuAdZqAHhTOlbkcH4fESZYK5/0mN7XpnYMwGtQSzqqIjpHQLTKSCE/h
+         Ma0Q==
+X-Gm-Message-State: ANoB5plkgnVLDPyI/CZCyjhGmoUGTl8KMsY2J6oaa6fCjWWlM1u526Cb
+	t3mp+TclmozANWuPz0DfBhfJLdeRNC8yuXBIbYyC0A==
+X-Google-Smtp-Source: AA0mqf4xtARx2pPM0l3bTE0DN6T5GabCjvxl7BAtHhBMi/dSJDbNIxBrO80BUq106XsPBtl75V/YCMEHVFJB2bD4f6k=
+X-Received: by 2002:ac8:4a87:0:b0:3a7:f5e4:87dc with SMTP id
+ l7-20020ac84a87000000b003a7f5e487dcmr5617640qtq.562.1671188422166; Fri, 16
+ Dec 2022 03:00:22 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
+References: <20220527045353.2483042-1-hsinyi@chromium.org> <CAJMQK-jWwDm4dy-ELzJ5gzLby37Ztqn9qhGT9zqFhmowdok51g@mail.gmail.com>
+ <e7f8b106-b71e-eac9-c2a0-83579382f0f4@linaro.org>
+In-Reply-To: <e7f8b106-b71e-eac9-c2a0-83579382f0f4@linaro.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 16 Dec 2022 18:59:56 +0800
+Message-ID: <CAJMQK-h=H9c+sEhVs27PH4CGvefjNuXcLbXCuSkiekL-C9eucA@mail.gmail.com>
 Subject: Re: [PATCH] arm64: dts: mt8183: kukui: Split out keyboard node and
  describe detachables
-Content-Language: en-US
-To: Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220527045353.2483042-1-hsinyi@chromium.org>
- <CAJMQK-jWwDm4dy-ELzJ5gzLby37Ztqn9qhGT9zqFhmowdok51g@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAJMQK-jWwDm4dy-ELzJ5gzLby37Ztqn9qhGT9zqFhmowdok51g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_025841_221043_DF9FD53E 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20221216_030027_618904_84722CCE 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,26 +85,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/12/2022 11:54, Hsin-Yi Wang wrote:
-> On Fri, May 27, 2022 at 12:54 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->>
->> Kukui devices krane, kodana, and kakadu use detachable keyboards, which
->> only have switches to be registered.
->>
->> Change the keyboard node's compatible of those boards to the newly
->> introduced "google,cros-ec-keyb-switches", which won't include matrix
->> properties.
->>
->> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->> ---
-> 
-> hi Matthias,
-> 
-> Kindly ping on this patch. Thanks.
+On Fri, Dec 16, 2022 at 6:58 PM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> On 16/12/2022 11:54, Hsin-Yi Wang wrote:
+> > On Fri, May 27, 2022 at 12:54 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+> >>
+> >> Kukui devices krane, kodana, and kakadu use detachable keyboards, which
+> >> only have switches to be registered.
+> >>
+> >> Change the keyboard node's compatible of those boards to the newly
+> >> introduced "google,cros-ec-keyb-switches", which won't include matrix
+> >> properties.
+> >>
+> >> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> >> ---
+> >
+> > hi Matthias,
+> >
+> > Kindly ping on this patch. Thanks.
+>
+> It's a merge window, so for what do you ping now?
+>
+Okay I should ping after the merge window.
 
-It's a merge window, so for what do you ping now?
-
-Best regards,
-Krzysztof
-
+> Best regards,
+> Krzysztof
+>
 
