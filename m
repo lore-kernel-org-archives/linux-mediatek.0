@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 358B3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 11:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34ECAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Dec 2022 11:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9eQToE6HYEXSjmjEz9Jwn20G/19K2LtofqYs+NdFsXk=; b=2pp2dhRGoeJEfE14lM/qd1AyWV
-	MU2A4sbGnBJyVpEX4tAIuE++kShnPSDmK8UFIFmVvjh8AumYLeXwMW1fcOBNRHpgucgwSJBUV0lNx
-	+ZEFIkrZg0iaJkivdR2Dk7EY0igVyLAhaaIgjaWhNTeUAZzRHkhajDATs/KSybdKIOz+t7TQjv65m
-	rg+Ag/alwvArti+wvilvupjHw5AD+AX7CV5vR4UhqOAWDTgMocqCVYVJZ9u7Ch0VSiyb40MSNCb2i
-	POSTa5iGKg0Qv/hQ7kKsjmzbN8FcdwlTYtm4iBKpqIcfStdMI9he0Po6qb/xCRqcccF6AwpVFftZH
-	6Fos9JMQ==;
+	bh=Wh3ZJ8XK9MxWjMRA+xKIbjlnXW2efS5/m6rYpal5NCY=; b=xh2ibXslFiiiHu+WMbSTjYfUEE
+	1+ccnoOvW7Y+r4vv7ozl7ecgtPWDi6tjut0ykCpKaLgcmWL2QfNlHAb99jTQxE46HZ+xuJNjUDthl
+	h81UOam0VyzUPOkpotghGPTm3gUo3gCdoGXPsmsKrfsflTJJpGEZM5M0sMiWdyu+O4x4Pd9tu2wS9
+	L2YhoTxscoAcor5QLY2d4qpkXbodfVMVoPQxaFWZcAdRu9mpCWwYixOhXEI/zZ0Dmc9qKmgYBBS/d
+	EXSOKgNnLI4a2thwALaDPaukOY6N51LOamkEemFlhWpfI2Xt/pyG/2CG6HJSFrBHTkMuiZEIwt1mu
+	G/C3LqgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68wA-00EVdQ-5a; Fri, 16 Dec 2022 11:31:34 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1p696O-00EbVd-G0; Fri, 16 Dec 2022 11:42:08 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p68uR-00EUlr-Km; Fri, 16 Dec 2022 11:29:49 +0000
-Received: by mail-wm1-x331.google.com with SMTP id b24-20020a05600c4a9800b003d21efdd61dso1515090wmp.3;
-        Fri, 16 Dec 2022 03:29:47 -0800 (PST)
+	id 1p696K-00EbSk-7z; Fri, 16 Dec 2022 11:42:06 +0000
+Received: by mail-wm1-x333.google.com with SMTP id i187-20020a1c3bc4000000b003d1e906ca23so1001521wma.3;
+        Fri, 16 Dec 2022 03:42:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9eQToE6HYEXSjmjEz9Jwn20G/19K2LtofqYs+NdFsXk=;
-        b=j8y5udIPLX/hAWg2cytn1YqmlvAGn8vXbrhcMxBw37fgakqfohqex/9DKsXoT1b4R5
-         IGCUiBv8a/klIotJyQrTN0bht7j1md8dsSAl5K8ZP2V1WSLf/btkrUitgo/l7DSoOOpj
-         FDgkSAtJEB1IZUGkDoeqqeQIxdcdx819+CK3pc5eaxuEKSOAs3zgTY7uqeHmKa3ipS7q
-         WpjVCFe51HPqPNsqzvXKBzPHsvRyClPJyHP1XUCIGddpFwPKzC15Rhnwow40oWVprXt6
-         A8ULQJJbeM/9baXI1koH5mpVTs6GpUt5qGnXVbs/+3JzjGqKh5wUxQOha+xfCE1l+vMg
-         5gYg==
+        bh=Wh3ZJ8XK9MxWjMRA+xKIbjlnXW2efS5/m6rYpal5NCY=;
+        b=Q0yShg4mKYA4lYZ0a/lC/whfdo4eZZvQEeJhceUmKUZil8CB6N3JzyHoB5vsXJTDVe
+         43otiuL3xPkKe7joqtvH6zYcX3OlUrjNtAKiDKV5536Q/JdluATbyZxdyPVNM5wWUVNu
+         uuLN/h3p9uCTeqVVvwRwxSiHoV2RfQFek5UM9r+K/2zwUzFnxB2h8wbbAK0grrRTjkU9
+         LOp36MKZ6iUEmqhtEd0jVip8/c/RjgQj0WuIN9EISTEgSlB3E4PKsY7bV/nbF0FsFp+t
+         1f5yaQNj5A94N/6qXNqdb1fXG6HljVu33PfA7b1+y8Gi0GqHXeHofNo1CwMh2mRrOOuB
+         8Lkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9eQToE6HYEXSjmjEz9Jwn20G/19K2LtofqYs+NdFsXk=;
-        b=ig4hY4MeNo2km5ZqgCGasop/vL6Jv+lO2EV2gtuSZYrJh27vht4c1b5WA/XetOkVz0
-         bjjhVjSIIZsx+//oBfy4OROL0cxiBJCL0xSRFvjr3dsLI0TyeZK2CJonboQ78+VYKQfc
-         nQVUgwAqdq+TLw2dCmwUaalRUnjA3bO7vLC7TSQW6XdrTYnkoXqq1kzjQqnyeZxY9fta
-         n5PJfCELftQy6xexTzddx2OtVy8kEAPuLt053p7Bm4DvCgTaEIe422aeQGnyS1aEfKS2
-         MfcPN/gZJ/BE9RfkBGSA7+AMYyX2Bo1NtihcchZZ96zSnOywq0d7bzQLG7QJxsQBJjqF
-         0xRg==
-X-Gm-Message-State: ANoB5pk9iCknpbXHIvW6+mrQhHPNti3G/yRpbUw5QswzuvyiSHhzv3vL
-	H9tKUAyXlACBwshexo9vR68=
-X-Google-Smtp-Source: AA0mqf6DxqrvszFL9kf7adb8ttrB79MhtC5rbhg8MnyNBTwJSO6H1mtyRqK7RwTUw9hvEU2n4rmcKg==
-X-Received: by 2002:a05:600c:5106:b0:3d1:c8e4:48d7 with SMTP id o6-20020a05600c510600b003d1c8e448d7mr34176670wms.40.1671190186151;
-        Fri, 16 Dec 2022 03:29:46 -0800 (PST)
+        bh=Wh3ZJ8XK9MxWjMRA+xKIbjlnXW2efS5/m6rYpal5NCY=;
+        b=sDhX5uv5GOL06shcqaQ4JEBjrC/OMSkkNMMWQwbyDdBWW0v3lkIEyB/wSMd+O4+jP8
+         Ou9irlwmc0YSdFqDGxqyo6CgTjk8gWyRXdTy6V0zkuNzB2Ncky4K7JShVtkyPRshwXjq
+         PF8ggR+NhJQwKX7neeYc7n0aVg37Yjfkt9f9+Cs+ZHgYcGIdxHoQOAhATIToy1ZW2cxG
+         tLgqjtLAIfmvVwOkC/8Ftlxvcn68kJYf+7rZvN53FAo8pg1nTaebatKq59MAEDMFEpbH
+         ITOOV8wqd6yPMVs81Pp7+tMDWqad1vbnzP/C9fNH29EYwFskh2y8e0VOi0wm7AfH3mqo
+         5vXA==
+X-Gm-Message-State: AFqh2koqnRIpvCY7DvMHGYA5wvXaPsofIzo73HCL4HTk1cJlfo5M8i4s
+	KpuHKW1I3+0/gp18W3RtXGg=
+X-Google-Smtp-Source: AMrXdXv4JaXV7pYnaaabKhmBcSFWOfvnPG9wVGUD68lzqpae/HOwm+D1iPrrDw3YPPQd+14HssGjtw==
+X-Received: by 2002:a05:600c:500d:b0:3d3:4367:ba34 with SMTP id n13-20020a05600c500d00b003d34367ba34mr2095936wmr.26.1671190922643;
+        Fri, 16 Dec 2022 03:42:02 -0800 (PST)
 Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g12-20020a05600c4ecc00b003cf9bf5208esm10657902wmq.19.2022.12.16.03.29.44
+        by smtp.gmail.com with ESMTPSA id p12-20020a05600c468c00b003cf483ee8e0sm11350994wmo.24.2022.12.16.03.42.00
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Dec 2022 03:29:45 -0800 (PST)
-Message-ID: <d7432483-7244-1c6e-cff7-ac56a67705a7@gmail.com>
-Date: Fri, 16 Dec 2022 12:29:44 +0100
+        Fri, 16 Dec 2022 03:42:01 -0800 (PST)
+Message-ID: <ff000931-ce9e-f413-1540-ca2edf393362@gmail.com>
+Date: Fri, 16 Dec 2022 12:42:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt8195: Use P1 clocks for PCIe1
- controller
+Subject: Re: next/master bisection: baseline.login on mt8173-elm-hana
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- tinghan.shen@mediatek.com, weiyi.lu@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221214131117.108008-1-angelogioacchino.delregno@collabora.com>
+To: Mark Brown <broonie@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ kernelci-results@groups.io, bot@kernelci.org,
+ angelogioacchino.delregno@collabora.com
+Cc: gtucker@collabora.com, iommu@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ mingyuan.ma@mediatek.com, libo.kang@mediatek.com, chengci.xu@mediatek.com,
+ yf.wang@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>
+References: <6391e1c4.170a0220.b562d.3c9c@mx.google.com>
+ <Y5HrIhEfuEgGKuMB@sirena.org.uk>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221214131117.108008-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <Y5HrIhEfuEgGKuMB@sirena.org.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221216_032947_750929_E5A8F313 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20221216_034204_361401_9A44AF4B 
+X-CRM114-Status: GOOD (  27.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,36 +98,233 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Yong, Angelo, can you have a look?
 
+If not I'd propose to drop the series for now until we understand what is going 
+wrong.
 
-On 14/12/2022 14:11, AngeloGioacchino Del Regno wrote:
-> Despite there being some flexibility regarding the P0/P1 connections,
-> especially for TL and PERI, we must use P1 clocks on pcie1 otherwise
-> we'll be dealing with unclocked access.
+Regards,
+Matthias
+
+On 08/12/2022 14:48, Mark Brown wrote:
+> On Thu, Dec 08, 2022 at 05:08:20AM -0800, KernelCI bot wrote:
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Seems my mail got lost somewhere:
-Both patches applied, thanks!
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> The KernelCI bisection bot found a boot failure in today's -next on
+> mt8173-elm-hana was triggered by 26593928564cf ("iommu/mediatek: Add
+> error path for loop of mm_dts_parse").  We get an oops towards the end
+> of boot:
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 5d31536f4c48..e61944510b8e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1258,9 +1258,9 @@ pcie1: pcie@112f8000 {
->   
->   			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
->   				 <&clk26m>,
-> -				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
-> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>,
->   				 <&clk26m>,
-> -				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
-> +				 <&infracfg_ao CLK_INFRA_AO_PCIE_P1_PERI_26M>,
->   				 /* Designer has connect pcie1 with peri_mem_p0 clock */
->   				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
->   			clock-names = "pl_250m", "tl_26m", "tl_96m",
+> <6>[    0.840037] printk: bootconsole [mtk8250] disabled
+> <6>[    0.840037] printk: bootconsole [mtk8250] disabled
+> <1>[    0.854924] Unable to handle kernel read from unreadable memory at virtual address 000000000000003b
+> 
+> <1>[    0.864288] Mem abort info:
+> <1>[    0.867374]   ESR = 0x0000000096000005
+> <1>[    0.871408]   EC = 0x25: DABT (current EL), IL = 32 bits
+> <1>[    0.877005]   SET = 0, FnV = 0
+> <1>[    0.880350]   EA = 0, S1PTW = 0
+> <1>[    0.883776]   FSC = 0x05: level 1 translation fault
+> <1>[    0.888938] Data abort info:
+> 
+> ...
+> 
+> <4>[    1.027320]  kobject_put+0x18/0xf0
+> <4>[    1.030996]  put_device+0x1c/0x28
+> 
+> <4>[    1.034586]  mtk_iommu_mm_dts_parse+0x2d0/0x31c
+> <4>[    1.039394]  mtk_iommu_probe+0x2dc/0x4c0
+> <4>[    1.043592]  platform_probe+0xb0/0xd0
+> <4>[    1.047530]  really_probe+0xf8/0x280
+> <4>[    1.051377]  __driver_probe_device+0xbc/0xe8
+> 
+> <4>[    1.055923]  driver_probe_device+0x44/0x104
+> <4>[    1.060380]  __driver_attach+0xb4/0x108
+> <4>[    1.064487]  bus_for_each_dev+0x88/0xd4
+> <4>[    1.068598]  driver_attach+0x2c/0x38
+> <4>[    1.072445]  bus_add_driver+0x114/0x1f4
+> <4>[    1.076554]  driver_register+0x6c/0x108
+> <4>[    1.080663]  __platform_driver_register+0x2c/0x38
+> <4>[    1.085640]  mtk_iommu_driver_init+0x24/0x30
+> 
+> I've left the full report from the bot below, including links to more
+> detailed information and a Reported-by tag for the bot below, the log
+> links got mangled and should be:
+> 
+>     https://storage.kernelci.org/next/master/next-20221208/arm64/cros---chromeos-5.10-arm64-chromiumos-mediatek.flavour.config%2Barm64-chromebook/clang-13/lab-collabora/baseline-mt8173-elm-hana.html
+>     https://storage.kernelci.org/next/master/next-20221208/arm64/cros---chromeos-5.10-arm64-chromiumos-mediatek.flavour.config%2Barm64-chromebook/clang-13/lab-collabora/baseline-mt8173-elm-hana.txt
+> 
+>> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+>> * This automated bisection report was sent to you on the basis  *
+>> * that you may be involved with the breaking commit it has      *
+>> * found.  No manual investigation has been done to verify it,   *
+>> * and the root cause of the problem may be somewhere else.      *
+>> *                                                               *
+>> * If you do send a fix, please include this trailer:            *
+>> *   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
+>> *                                                               *
+>> * Hope this helps!                                              *
+>> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+>>
+>> next/master bisection: baseline.login on mt8173-elm-hana
+>>
+>> Summary:
+>>    Start:      f925116b24c0c Add linux-next specific files for 20221208
+>>    Plain log:  https://storage.kernelci.org/next/master/next-20221208/arm64/cros://chromeos-5.10/arm64/chromiumos-arm64.flavour.config+arm64-chromebook/clang-13/lab-collabora/baseline-mt8173-elm-hana.txt
+>>    HTML log:   https://storage.kernelci.org/next/master/next-20221208/arm64/cros://chromeos-5.10/arm64/chromiumos-arm64.flavour.config+arm64-chromebook/clang-13/lab-collabora/baseline-mt8173-elm-hana.html
+>>    Result:     26593928564cf iommu/mediatek: Add error path for loop of mm_dts_parse
+>>
+>> Checks:
+>>    revert:     PASS
+>>    verify:     PASS
+>>
+>> Parameters:
+>>    Tree:       next
+>>    URL:        https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+>>    Branch:     master
+>>    Target:     mt8173-elm-hana
+>>    CPU arch:   arm64
+>>    Lab:        lab-collabora
+>>    Compiler:   clang-13
+>>    Config:     cros://chromeos-5.10/arm64/chromiumos-arm64.flavour.config+arm64-chromebook
+>>    Test case:  baseline.login
+>>
+>> Breaking commit found:
+>>
+>> -------------------------------------------------------------------------------
+>> commit 26593928564cf5b576ff05d3cbd958f57c9534bb
+>> Author: Yong Wu <yong.wu@mediatek.com>
+>> Date:   Tue Oct 18 10:42:55 2022 +0800
+>>
+>>      iommu/mediatek: Add error path for loop of mm_dts_parse
+>>      
+>>      The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
+>>      larb is parsed fail, we should put_device for the i..0 larbs.
+>>      
+>>      There are two places need to comment:
+>>      1) The larbid may be not linear mapping, we should loop whole
+>>         the array in the error path.
+>>      2) I move this line position: "data->larb_imu[id].dev = &plarbdev->dev;"
+>>         before "if (!plarbdev->dev.driver)", That means set
+>>         data->larb_imu[id].dev before the error path. then we don't need
+>>         "platform_device_put(plarbdev)" again in probe_defer case. All depend
+>>         on "put_device" of the error path in error cases.
+>>      
+>>      Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
+>>      Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>      Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>      Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>      Link: https://lore.kernel.org/r/20221018024258.19073-4-yong.wu@mediatek.com
+>>      Signed-off-by: Joerg Roedel <jroedel@suse.de>
+>>
+>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>> index df490236e1fb5..e0c669b75271d 100644
+>> --- a/drivers/iommu/mtk_iommu.c
+>> +++ b/drivers/iommu/mtk_iommu.c
+>> @@ -1067,8 +1067,10 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>>   		u32 id;
+>>   
+>>   		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+>> -		if (!larbnode)
+>> -			return -EINVAL;
+>> +		if (!larbnode) {
+>> +			ret = -EINVAL;
+>> +			goto err_larbdev_put;
+>> +		}
+>>   
+>>   		if (!of_device_is_available(larbnode)) {
+>>   			of_node_put(larbnode);
+>> @@ -1081,14 +1083,16 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>>   
+>>   		plarbdev = of_find_device_by_node(larbnode);
+>>   		of_node_put(larbnode);
+>> -		if (!plarbdev)
+>> -			return -ENODEV;
+>> +		if (!plarbdev) {
+>> +			ret = -ENODEV;
+>> +			goto err_larbdev_put;
+>> +		}
+>> +		data->larb_imu[id].dev = &plarbdev->dev;
+>>   
+>>   		if (!plarbdev->dev.driver) {
+>> -			platform_device_put(plarbdev);
+>> -			return -EPROBE_DEFER;
+>> +			ret = -EPROBE_DEFER;
+>> +			goto err_larbdev_put;
+>>   		}
+>> -		data->larb_imu[id].dev = &plarbdev->dev;
+>>   
+>>   		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
+>>   		platform_device_put(plarbdev);
+>> @@ -1123,6 +1127,15 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>>   		return -EINVAL;
+>>   	}
+>>   	return 0;
+>> +
+>> +err_larbdev_put:
+>> +	/* id may be not linear mapping, loop whole the array */
+>> +	for (i = MTK_LARB_NR_MAX - 1; i >= 0; i++) {
+>> +		if (!data->larb_imu[i].dev)
+>> +			continue;
+>> +		put_device(data->larb_imu[i].dev);
+>> +	}
+>> +	return ret;
+>>   }
+>>   
+>>   static int mtk_iommu_probe(struct platform_device *pdev)
+>> -------------------------------------------------------------------------------
+>>
+>>
+>> Git bisection log:
+>>
+>> -------------------------------------------------------------------------------
+>> git bisect start
+>> # good: [479174d402bcf60789106eedc4def3957c060bad] Merge tag 'platform-drivers-x86-v6.1-5' of git://git.kernel.org/pub/scm/linux/kernel/git/pdx86/platform-drivers-x86
+>> git bisect good 479174d402bcf60789106eedc4def3957c060bad
+>> # bad: [f925116b24c0c42dc6d5ab5111c55fd7f74e8dc7] Add linux-next specific files for 20221208
+>> git bisect bad f925116b24c0c42dc6d5ab5111c55fd7f74e8dc7
+>> # good: [a1c975859da787104f6f2610f0f5507ef794dea4] Merge branch 'master' of git://git.kernel.org/pub/scm/linux/kernel/git/herbert/cryptodev-2.6.git
+>> git bisect good a1c975859da787104f6f2610f0f5507ef794dea4
+>> # bad: [df52ed561d70653b4d82a468026450374161693b] Merge branch 'master' of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git
+>> git bisect bad df52ed561d70653b4d82a468026450374161693b
+>> # good: [ddf1b69a1f2e0704bc0d5f7f71e4f8c4891a3bbb] Merge branch 'for-next' of git://git.kernel.org/pub/scm/linux/kernel/git/tiwai/sound.git
+>> git bisect good ddf1b69a1f2e0704bc0d5f7f71e4f8c4891a3bbb
+>> # good: [b5cb3c9818c0085928c1d795e1e2a78add3dbca5] Merge branch 'for-next' of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git
+>> git bisect good b5cb3c9818c0085928c1d795e1e2a78add3dbca5
+>> # bad: [b07fcd1e4269638ae72abc499543eb72605bd34b] Merge branch 'for-next' of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git
+>> git bisect bad b07fcd1e4269638ae72abc499543eb72605bd34b
+>> # bad: [147cf2079e0afce372e3d14089396736a025ecda] Merge branch 'next' of git://git.kernel.org/pub/scm/linux/kernel/git/pcmoore/audit.git
+>> git bisect bad 147cf2079e0afce372e3d14089396736a025ecda
+>> # good: [14d40e4c74b85c390e076712a6d2831e9464b786] Merge branch 'next' of git://git.kernel.org/pub/scm/linux/kernel/git/jarkko/linux-tpmdd.git
+>> git bisect good 14d40e4c74b85c390e076712a6d2831e9464b786
+>> # good: [b169a180bef26679b44484ad24b7d8ae32623a10] iommu/io-pgtable: Remove map/unmap
+>> git bisect good b169a180bef26679b44484ad24b7d8ae32623a10
+>> # good: [f04ae51dd965bc0b7f2e01c5d85fc214877b4061] Merge tag 'arm-smmu-updates' of git://git.kernel.org/pub/scm/linux/kernel/git/will/linux into arm/smmu
+>> git bisect good f04ae51dd965bc0b7f2e01c5d85fc214877b4061
+>> # bad: [4dd549a66a969ccd3ed344f37fb9b9e9516fc1e6] Merge branches 'iommu/fixes', 'arm/allwinner', 'arm/exynos', 'arm/mediatek', 'arm/rockchip', 'arm/smmu', 'ppc/pamu', 's390', 'x86/vt-d', 'x86/amd' and 'core' into next
+>> git bisect bad 4dd549a66a969ccd3ed344f37fb9b9e9516fc1e6
+>> # good: [21c1f9021f0e7d28c3edfcc70e1ca1926ea3774e] s390/pci: use lock-free I/O translation updates
+>> git bisect good 21c1f9021f0e7d28c3edfcc70e1ca1926ea3774e
+>> # bad: [00ef8885a945c37551547d8ac8361cacd20c4e42] iommu/mediatek: Fix crash on isr after kexec()
+>> git bisect bad 00ef8885a945c37551547d8ac8361cacd20c4e42
+>> # good: [dcb40e9fcce9bd251eaff19f3724131db522846c] iommu/mediatek: Add platform_device_put for recovering the device refcnt
+>> git bisect good dcb40e9fcce9bd251eaff19f3724131db522846c
+>> # bad: [ef693a8440926884bfd9cc3d6d36f65719513350] iommu/mediatek: Validate number of phandles associated with "mediatek,larbs"
+>> git bisect bad ef693a8440926884bfd9cc3d6d36f65719513350
+>> # bad: [26593928564cf5b576ff05d3cbd958f57c9534bb] iommu/mediatek: Add error path for loop of mm_dts_parse
+>> git bisect bad 26593928564cf5b576ff05d3cbd958f57c9534bb
+>> # good: [b5765a1b44bea9dfcae69c53ffeb4c689d0922a7] iommu/mediatek: Use component_match_add
+>> git bisect good b5765a1b44bea9dfcae69c53ffeb4c689d0922a7
+>> # first bad commit: [26593928564cf5b576ff05d3cbd958f57c9534bb] iommu/mediatek: Add error path for loop of mm_dts_parse
+>> -------------------------------------------------------------------------------
+>>
+>>
+>> -=-=-=-=-=-=-=-=-=-=-=-
+>> Groups.io Links: You receive all messages sent to this group.
+>> View/Reply Online (#35262): https://groups.io/g/kernelci-results/message/35262
+>> Mute This Topic: https://groups.io/mt/95537191/1131744
+>> Group Owner: kernelci-results+owner@groups.io
+>> Unsubscribe: https://groups.io/g/kernelci-results/unsub [broonie@kernel.org]
+>> -=-=-=-=-=-=-=-=-=-=-=-
+>>
+>>
 
