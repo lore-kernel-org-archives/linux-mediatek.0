@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267CEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Dec 2022 10:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE8EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Dec 2022 16:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dPJPdW0OjHtfYeHPxJDQbeHGuRhUkb3dvgqzN3cJ06I=; b=CcchwUSaDtL4SwAO//7bM2ukua
-	LUyYBhJhTDI5JuSiNVpmZ3d8hLNN8d7YZJsvngao5w0MdBZHX19NohKgtS005ifCTFmbH2Xuz0CvG
-	5GCLeX3mpKSVaJQlFrhqO4cY3TmCXupgOjh4E1dzQ7X+xOGBcNzqoopeVaJVVrCNuQpQpwigEoP9f
-	mQUWuRuW+fWaXaCaw2q/ot02YXyTxbdnB0U9z6BBoxbVEebmjmYDohOGa6DnU6yV6soZ0ILnx7ocU
-	IVfehKJ8T8fYaq3UEvok8R01zdDeiudNBX56TXUwkQI4qSfIpWODprQukWtzB2GlhyWRGR4YslV32
-	cTQGm38A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f2QgWNW7gLkg2Awucm35G13PlykwLXIHZJIejSX/r+s=; b=sBb4bbQwYLB0tY+AzCvNLgR9Vv
+	Oj1o+3XZc3hW2QGL6gt3Tr0h9FXcY9VOuLsrwK+WK27+Bjx39dTjxSyTdpXZARoacrMx5i0Sx8cVe
+	fMjZVS0HlYa5xv2EWFEj7Ke3x1X9rHtOah40NjS0c6ScyagFWs6FnlN0DCioyCAENjHHkeHfjbcBp
+	VMIKDgHKUVQJnvauqW/d+QvUPRDVHARVFW4eG9YELbDXpuzlwuABULraA9FWNCI2TucYSDc7wegvV
+	rhrBGc1iVxNTM1VwAtvn4X8F2vHic99/T2Oab91PMkrgpPv28hUcmEsadnYrP+N5j0HRfdMwO9keu
+	De8IgOrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6UTa-007v5h-Dj; Sat, 17 Dec 2022 10:31:30 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1p6w9e-002nMX-JV; Sun, 18 Dec 2022 16:04:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6UTW-007v3k-IQ
-	for linux-mediatek@lists.infradead.org; Sat, 17 Dec 2022 10:31:28 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id e13so6809593edj.7
-        for <linux-mediatek@lists.infradead.org>; Sat, 17 Dec 2022 02:31:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=dPJPdW0OjHtfYeHPxJDQbeHGuRhUkb3dvgqzN3cJ06I=;
-        b=cM5xXV6w10qjn9pJy5L2EEeViv9nLP/9NyvIe4WrcU+QGFAqcEnfHNtCUwwMLa6dBN
-         4bCY5+W+OwziY0Zu5h7Bq7OShk/YRKnyzmN4posBQB95q+UY4Dfoe5dR7r8UNxbmdOCr
-         jtTZ7WOaVirvISAz8MjekbJVdGT7Fa4PdX4FgHXGw0nB9+rQ+iE48Li7JzNSKKLx1MWS
-         PJBN1Io69R9ivNu+JWkuC5aZyR/RNyFeECLdleahY+ObAakHV09J1x9mnKGb9yVZI3z+
-         GS40rN56el15ojrqq0motm0ch48BRKhmh4YeANX6RlEikLBoJ20uB+DflCqxJ/lFppcH
-         tClg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dPJPdW0OjHtfYeHPxJDQbeHGuRhUkb3dvgqzN3cJ06I=;
-        b=f1B/fj4UiVuQ4aaxQMDpH1lWxixSm25rHuedCGrkYRqhfkgbaWCNzST4OuUqn17gm5
-         TzKnjqIP757EFoS1skaIKjHc80CqMmseeEBKXNtTG73X2swZayzpMD3N79NBlqidmvLQ
-         T42Hsf1B1phJot7EL2GDCjwdO/Qvw+ysvIO52BrUo+K0nu6SPN1pSMn7rrEh0AgoecjH
-         7nIaDgDpxlyYrH37+0qt6OGprDi6MX8nGQXf26bQPlUSAhvfCZKTZt9i+en0wpuhj69b
-         mtZ0VsyHnKifQE0EYWyM9Wi/cAZR8N5ebb+yRVUowVewG2BVInVVV0JPnpaJhDzIHuaZ
-         Or8g==
-X-Gm-Message-State: ANoB5pntfpG+9qyekTbeTH0UufIGfryHcsoAKXyzVyWZ9JpZK93eulFS
-	g+JI+4c/JSaHEPMoFTaVrMYJvplg/sKDkfVxyMSXQw9pnw==
-X-Google-Smtp-Source: AA0mqf6iN1ExamtqACFEgpdrfZQcbpCGgbMSxwn3PcnMlG49EK+GFyloTZEFrI6rUzdfKAPXnPod5AlTyO353T3aJpk=
-X-Received: by 2002:a05:6402:3810:b0:467:42a9:3568 with SMTP id
- es16-20020a056402381000b0046742a93568mr85468826edb.70.1671273084113; Sat, 17
- Dec 2022 02:31:24 -0800 (PST)
+	id 1p6w9J-002nEW-0e; Sun, 18 Dec 2022 16:04:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 74EBC60DD1;
+	Sun, 18 Dec 2022 16:04:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8E37C433A0;
+	Sun, 18 Dec 2022 16:04:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671379464;
+	bh=TS6A5ZOQGUXz9X3NHgMs6UdXwnt/OuPwzrlDqsHA4LM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=CVpeMlpDNY9VyGyE0H4y9V4zD//kTXUx2h8We+RWsO/HP6mtXXP6gUEHdspZImPJs
+	 FmAyypJAcVRTIHTnJ3NFrn+ESzjfJTwceidso24xgSEN4Ib/wu0nR7IcjSZviHT4lD
+	 uzrBnRMH/R3Pe51CaOXmPtcocNBlNsimeIjHMqOhN5h1HbgsJVfgClAWmpFDGVSaYB
+	 WHWhp4gpumndPRR5qOpxIayxGjLzCBd9amIwxg4APAjwmRl4WUipyJo4RY0aPmWFlE
+	 U4GM5ogQ0g/6OYU8jXKmpJBcj4BGFzzp0+QaohcaWyrlLVkanMT+oMUOaJFR7/Sncb
+	 dbYTTEWvPYImA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Nathan Chancellor <nathan@kernel.org>,
+	Sami Tolvanen <samitolvanen@google.com>,
+	Kees Cook <keescook@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	ndesaulniers@google.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	llvm@lists.linux.dev
+Subject: [PATCH AUTOSEL 6.1 41/85] drm/mediatek: Fix return type of mtk_hdmi_bridge_mode_valid()
+Date: Sun, 18 Dec 2022 11:00:58 -0500
+Message-Id: <20221218160142.925394-41-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221218160142.925394-1-sashal@kernel.org>
+References: <20221218160142.925394-1-sashal@kernel.org>
 MIME-Version: 1.0
-From: Vishal Rao <vishalrao@gmail.com>
-Date: Sat, 17 Dec 2022 16:01:12 +0530
-Message-ID: <CAMWtyy0kKVsEwz3jQZCMhz4An=E9cinN___JO4+cohArgAmxvQ@mail.gmail.com>
-Subject: MediaTek MT7922 (AMD RZ616) Wifi 6E 6ghz not working
-To: linux-mediatek@lists.infradead.org
-Cc: Vishal Rao <vishalrao@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221217_023126_659387_D7D64426 
-X-CRM114-Status: UNSURE (   4.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221218_080425_247837_0E66A32D 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +86,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+From: Nathan Chancellor <nathan@kernel.org>
 
-Please reply-all (to CC me in replies as I am not subscribed to the
-mailing list) for any followups where I can provide further
-information.
+[ Upstream commit 890d637523eec9d730e3885532fa1228ba678880 ]
 
-Using Ubuntu 22.04 LTS based distro elementary OS 7 with the latest
-available Ubuntu mainline kernel 6.1 RC5 build the wifi does not
-connect to the 6GHZ band (Wifi 6E) and it only even shows the 6ghz
-SSID name *after* I have connected to the 5ghz wifi band.
+With clang's kernel control flow integrity (kCFI, CONFIG_CFI_CLANG),
+indirect call targets are validated against the expected function
+pointer prototype to make sure the call target is valid to help mitigate
+ROP attacks. If they are not identical, there is a failure at run time,
+which manifests as either a kernel panic or thread getting killed. A
+proposed warning in clang aims to catch these at compile time, which
+reveals:
 
-This is on a new ASUS ZenBook laptop model UM5302TA with the AMD Ryzen
-6800U CPU platform which includes the AMD-Mediatek co-developed RZ616
-wifi chip I believe.
+  drivers/gpu/drm/mediatek/mtk_hdmi.c:1407:16: error: incompatible function pointer types initializing 'enum drm_mode_status (*)(struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' with an expression of type 'int (struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' [-Werror,-Wincompatible-function-pointer-types-strict]
+          .mode_valid = mtk_hdmi_bridge_mode_valid,
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
 
-Pastebin of lspci -vvnn output: https://pastebin.ubuntu.com/p/QwM58ZkptG
+->mode_valid() in 'struct drm_bridge_funcs' expects a return type of
+'enum drm_mode_status', not 'int'. Adjust the return type of
+mtk_hdmi_bridge_mode_valid() to match the prototype's to resolve the
+warning and CFI failure.
 
-Let me know what further information I should provide - happy to do so!
+Link: https://github.com/ClangBuiltLinux/linux/issues/1750
+Reported-by: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+Reviewed-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Regards,
-Vishal Rao
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 4c80b6896dc3..6e8f99554f54 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1202,9 +1202,10 @@ static enum drm_connector_status mtk_hdmi_detect(struct mtk_hdmi *hdmi)
+ 	return mtk_hdmi_update_plugged_status(hdmi);
+ }
+ 
+-static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+-				      const struct drm_display_info *info,
+-				      const struct drm_display_mode *mode)
++static enum drm_mode_status
++mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
++			   const struct drm_display_info *info,
++			   const struct drm_display_mode *mode)
+ {
+ 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+ 	struct drm_bridge *next_bridge;
+-- 
+2.35.1
+
 
