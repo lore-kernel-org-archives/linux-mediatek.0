@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD23C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Dec 2022 16:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1DBDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Dec 2022 16:11:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=azx3EOP/GJBu1kGWgr2j4sO9KZzLEEfAYjtJIRHCNQw=; b=DuLMyHj1kSOZkf0F1oWMma2DWh
-	wJIMtuDckYL+5Hap6YGmTcLrV0bye8PKQMTSDAo5C47YgTYFZfyQ0LWTBJlL9r3l3OiKwTsthPHdS
-	XgMpCbd6qdifIZO4JhZ3PHOmdib9p2EqK64EKSOSPo1Dff918ZjFdMRJaxV1cik3dT3i/zmKIZZwv
-	8ADG4+ax4XwH/C7K1/BkrfC92Tax54LpC3MtgSOmWrVOL+R4axD+97OhRFcHXqzQakMGQB2QKhKk9
-	1J/C5LLbKxY/KEXS4fbzeFM34H2NSghM7jDIq1r3JPk5cbbJVeKttylmnOxMJni44pP4CPogQEh83
-	GFvJt7BQ==;
+	bh=mTH7HFPa/sjugvIOMxDw4mdeT3bXN+KaA0Ptd1qlGPE=; b=g1CCJBtTY3eh371Z5vATr/l/aN
+	gsA/Q6EBByK5qsDlCZZ7gvIblGRg3xa9VqyjSFvKn8H2P80hujWGUtYhZAJOPoLoVUjswora3pGQl
+	0DMpRlMf3JJrWaD25LxpB2gSvy/ME19L/Zh7tF2v1Tlf7FNQByiQ5Tgd6av5Sr8RR5FDO4LDEl0CS
+	if1T0UH5trAmqq1ojTb3vQmZMX6rJKWx8v/NjT1wnnGADljx65RrszrqtDwiHVkK6LI5EHneSazSM
+	eVJlOFL+1q1Os7AAbHgE6yv2MB5nLr0KiP8VCCJ2pFIr2oF8P30yQPRW+Yzfav0HCMl2yJnf8ebEZ
+	O4ayQYLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6wCC-002pHQ-OV; Sun, 18 Dec 2022 16:07:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1p6wGS-002sAa-Um; Sun, 18 Dec 2022 16:11:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p6wBv-002p4F-7j; Sun, 18 Dec 2022 16:07:08 +0000
+	id 1p6wEa-002rAt-Cm; Sun, 18 Dec 2022 16:09:54 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D04DD60DDC;
-	Sun, 18 Dec 2022 16:07:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EADFC433D2;
-	Sun, 18 Dec 2022 16:07:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AAA9560DCC;
+	Sun, 18 Dec 2022 16:09:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DFD6C433EF;
+	Sun, 18 Dec 2022 16:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671379625;
-	bh=FlM+n9VFNfrw3Gdn05AUOd5H5amrmG05tgYCykYIpA8=;
+	s=k20201202; t=1671379791;
+	bh=WeOOt14tkYeELBrtRWfPT2/q6Bw4lnOCH2VvxZFmpcY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=boG8HsUAORd6pu+KmeJ3uPqa5i2zKNaHYpOBdWyyQSf/7qnbGZWD64XjifNbEPJ3G
-	 h0EOuUa2YIYRqbcTcyFffrnF9tVsSu95sHwEuNyrthRQILI7PoCqtwRXNqmN/6IlxC
-	 wRrB+wu79O1IApPEyzuV3lsY889UZbza0yFWfndUQO5/pJk4MyMvjifcxWfEYfD2aq
-	 6X2P0zudFD6b43Uus9cw5XhheyfExFwSsBouNnulay28favcofurpSTZ0JWYRCdLaz
-	 FAKUnycHbdzdq6VFt/jIXZt0Vuoed0EMjZnHQMk/ihnxAkqEWBOCytf8XcKTyc4HOO
-	 m3Kyej+xoSHlw==
+	b=KNsBKwMiHF7SXQpY6ydtCcRf52PlEq7oJJawGXjBjNa44qvdewSLlw7Vsgnb9P3D+
+	 +0qDhu3ZFrvjvn74PM8GwPDGEVjxwwmw4Q+IcCiGIQ+lgNYJDOkS2crYmJvwQx/RPv
+	 zKundxAGeU6kL58Igj/oain46/cZ9KPyoA0snM/QsT1jUCu+lNfuRfmJDH0nhTx6UO
+	 D/jTkfHwHdLeaQsGjZDI5FEWAdjTBRr7Eb7mDBlG511bX23s3Yqg27XGYqB0ywGkiw
+	 bvWWlijFldqRRBnHCJYZ6y53Mn3bAbE+/smni73Xu1yAP+qsurVfqRFY05+WIAsLBv
+	 vkPZoa3y2Vx0w==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Dokyung Song <dokyungs@yonsei.ac.kr>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Nathan Chancellor <nathan@kernel.org>,
+	Sami Tolvanen <samitolvanen@google.com>,
+	Kees Cook <keescook@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
 	matthias.bgg@gmail.com,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
+	ndesaulniers@google.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 71/85] wifi: mt76: do not run mt76u_status_worker if the device is not running
-Date: Sun, 18 Dec 2022 11:01:28 -0500
-Message-Id: <20221218160142.925394-71-sashal@kernel.org>
+	llvm@lists.linux.dev
+Subject: [PATCH AUTOSEL 6.0 35/73] drm/mediatek: Fix return type of mtk_hdmi_bridge_mode_valid()
+Date: Sun, 18 Dec 2022 11:07:03 -0500
+Message-Id: <20221218160741.927862-35-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221218160142.925394-1-sashal@kernel.org>
-References: <20221218160142.925394-1-sashal@kernel.org>
+In-Reply-To: <20221218160741.927862-1-sashal@kernel.org>
+References: <20221218160741.927862-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221218_080707_396701_3745AC80 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20221218_080952_572430_639D3FF7 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,104 +86,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Nathan Chancellor <nathan@kernel.org>
 
-[ Upstream commit bd5dac7ced5a7c9faa4dc468ac9560c3256df845 ]
+[ Upstream commit 890d637523eec9d730e3885532fa1228ba678880 ]
 
-Fix the following NULL pointer dereference avoiding to run
-mt76u_status_worker thread if the device is not running yet.
+With clang's kernel control flow integrity (kCFI, CONFIG_CFI_CLANG),
+indirect call targets are validated against the expected function
+pointer prototype to make sure the call target is valid to help mitigate
+ROP attacks. If they are not identical, there is a failure at run time,
+which manifests as either a kernel panic or thread getting killed. A
+proposed warning in clang aims to catch these at compile time, which
+reveals:
 
-KASAN: null-ptr-deref in range
-[0x0000000000000000-0x0000000000000007]
-CPU: 0 PID: 98 Comm: kworker/u2:2 Not tainted 5.14.0+ #78 Hardware
-name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS
-rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
-Workqueue: mt76 mt76u_tx_status_data
-RIP: 0010:mt76x02_mac_fill_tx_status.isra.0+0x82c/0x9e0
-Code: c5 48 b8 00 00 00 00 00 fc ff df 80 3c 02 00 0f 85 94 01 00 00
-48 b8 00 00 00 00 00 fc ff df 4d 8b 34 24 4c 89 f2 48 c1 ea 03 <0f>
-b6
-04 02 84 c0 74 08 3c 03 0f 8e 89 01 00 00 41 8b 16 41 0f b7
-RSP: 0018:ffffc900005af988 EFLAGS: 00010246
-RAX: dffffc0000000000 RBX: ffffc900005afae8 RCX: 0000000000000000
-RDX: 0000000000000000 RSI: ffffffff832fc661 RDI: ffffc900005afc2a
-RBP: ffffc900005afae0 R08: 0000000000000001 R09: fffff520000b5f3c
-R10: 0000000000000003 R11: fffff520000b5f3b R12: ffff88810b6132d8
-R13: 000000000000ffff R14: 0000000000000000 R15: ffffc900005afc28
-FS:  0000000000000000(0000) GS:ffff88811aa00000(0000)
-knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007fa0eda6a000 CR3: 0000000118f17000 CR4: 0000000000750ef0
-PKRU: 55555554
-Call Trace:
- mt76x02_send_tx_status+0x1d2/0xeb0
- mt76x02_tx_status_data+0x8e/0xd0
- mt76u_tx_status_data+0xe1/0x240
- process_one_work+0x92b/0x1460
- worker_thread+0x95/0xe00
- kthread+0x3a1/0x480
- ret_from_fork+0x1f/0x30
-Modules linked in:
---[ end trace 8df5d20fc5040f65 ]--
-RIP: 0010:mt76x02_mac_fill_tx_status.isra.0+0x82c/0x9e0
-Code: c5 48 b8 00 00 00 00 00 fc ff df 80 3c 02 00 0f 85 94 01 00 00
-48 b8 00 00 00 00 00 fc ff df 4d 8b 34 24 4c 89 f2 48 c1 ea 03 <0f>
-b6
-04 02 84 c0 74 08 3c 03 0f 8e 89 01 00 00 41 8b 16 41 0f b7
-RSP: 0018:ffffc900005af988 EFLAGS: 00010246
-RAX: dffffc0000000000 RBX: ffffc900005afae8 RCX: 0000000000000000
-RDX: 0000000000000000 RSI: ffffffff832fc661 RDI: ffffc900005afc2a
-RBP: ffffc900005afae0 R08: 0000000000000001 R09: fffff520000b5f3c
-R10: 0000000000000003 R11: fffff520000b5f3b R12: ffff88810b6132d8
-R13: 000000000000ffff R14: 0000000000000000 R15: ffffc900005afc28
-FS:  0000000000000000(0000) GS:ffff88811aa00000(0000)
-knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007fa0eda6a000 CR3: 0000000118f17000 CR4: 0000000000750ef0
-PKRU: 55555554
+  drivers/gpu/drm/mediatek/mtk_hdmi.c:1407:16: error: incompatible function pointer types initializing 'enum drm_mode_status (*)(struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' with an expression of type 'int (struct drm_bridge *, const struct drm_display_info *, const struct drm_display_mode *)' [-Werror,-Wincompatible-function-pointer-types-strict]
+          .mode_valid = mtk_hdmi_bridge_mode_valid,
+                        ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
 
-Moreover move stat_work schedule out of the for loop.
+->mode_valid() in 'struct drm_bridge_funcs' expects a return type of
+'enum drm_mode_status', not 'int'. Adjust the return type of
+mtk_hdmi_bridge_mode_valid() to match the prototype's to resolve the
+warning and CFI failure.
 
-Reported-by: Dokyung Song <dokyungs@yonsei.ac.kr>
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Link: https://github.com/ClangBuiltLinux/linux/issues/1750
+Reported-by: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+Reviewed-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/usb.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 4c4033bb1bb3..0597df2729a6 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -766,6 +766,9 @@ static void mt76u_status_worker(struct mt76_worker *w)
- 	struct mt76_queue *q;
- 	int i;
- 
-+	if (!test_bit(MT76_STATE_RUNNING, &dev->phy.state))
-+		return;
-+
- 	for (i = 0; i < IEEE80211_NUM_ACS; i++) {
- 		q = dev->phy.q_tx[i];
- 		if (!q)
-@@ -785,11 +788,11 @@ static void mt76u_status_worker(struct mt76_worker *w)
- 			wake_up(&dev->tx_wait);
- 
- 		mt76_worker_schedule(&dev->tx_worker);
--
--		if (dev->drv->tx_status_data &&
--		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state))
--			queue_work(dev->wq, &dev->usb.stat_work);
- 	}
-+
-+	if (dev->drv->tx_status_data &&
-+	    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state))
-+		queue_work(dev->wq, &dev->usb.stat_work);
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 3196189429bc..7613b0fa2be6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1203,9 +1203,10 @@ static enum drm_connector_status mtk_hdmi_detect(struct mtk_hdmi *hdmi)
+ 	return mtk_hdmi_update_plugged_status(hdmi);
  }
  
- static void mt76u_tx_status_data(struct work_struct *work)
+-static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+-				      const struct drm_display_info *info,
+-				      const struct drm_display_mode *mode)
++static enum drm_mode_status
++mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
++			   const struct drm_display_info *info,
++			   const struct drm_display_mode *mode)
+ {
+ 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+ 	struct drm_bridge *next_bridge;
 -- 
 2.35.1
 
