@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B692C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 17:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA722C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 17:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=; b=Fr6NBY+AP8djnWBcYmhmmFsExF
-	XQmi6jOatX8K9Q6ha/WmIXw/ypV6vVrFp8vkcyiyoRkQZxZI8Ks/qmBuGzFjZIsyhbG/H6aJAcvGI
-	++ZIzsIG+yQmaWPgT51l84A3jHYA/CXtcnAoVLjUkQZLl/VTPkGKTLs6aQdZm24/i+EAIK2YWILDq
-	cQug2CkFoXV1+YgWG48J/4PLyBMM3snJNflDKFawQfIaWMWwHeLA9nlbed37knQpsp46VRB0snUzG
-	oFsNyxyglf2P9s3EIkkQj/sGaVq/CwxoNsUtBMqQZ5adEnBvHdb7u5G9BTvhveghOgTnZwTktzVU0
-	EFJdq8IA==;
+	bh=S0DqKnIuSvbhL/BeaLxzkheTI1hi556Lt0X0PfWna4w=; b=gv+dnxOJ/9gzTTNC98/ZWDXzBu
+	6f6NGCgU7PmJ3NjqC2oCx4Y2KupgOcHVpRFfbVWqB0pHGsLtL3zwvay2O5DDCD2mIrSs9t8p3DMpL
+	ho+sPiNz7/TI2TlhAdKd2tEXovboP0NemHy0ZYILBxJ7+or2plNXpKMe5IRbmjdnGEyUn+iOde2X5
+	wYmDF+LBYBMx1ZNLJb9XrKFVeY3z553uIotCgDAtTiPhNVeyLXPFsF+1JSXrz3gzcNoTPyY/Pc3MR
+	tUeklEXc4OxBnlIyn1b5uY8yr6mrQ86n5E7BuzMkt47WUrYRO6TGeSnc0kzOuGEBN/HMjfLsRAiz2
+	j8MF7nZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Jc5-00GVVn-Qs; Mon, 19 Dec 2022 17:07:41 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1p7JdM-00GWVA-17; Mon, 19 Dec 2022 17:09:00 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7I69-00FOlp-3o; Mon, 19 Dec 2022 15:30:44 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id m14so9015234wrh.7;
-        Mon, 19 Dec 2022 07:30:35 -0800 (PST)
+	id 1p7I75-00FPOv-Hn
+	for linux-mediatek@lists.infradead.org; Mon, 19 Dec 2022 15:31:37 +0000
+Received: by mail-lj1-x236.google.com with SMTP id s25so9497186lji.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Dec 2022 07:31:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=;
-        b=eUav2kVKU5p8sDthFIbgHzqdA3yxrgylMhYz07uqKZs90eIQYt8H+orFGPL1ygyWXJ
-         WvrOOs18X2Fs3iGoXObwlrJ3/0ZEJLvZ5/NivWy+zmYiuc9vaRVs1rGkDhPOvaqJAZfH
-         tB5Y4GRe/rQv8wYeq67N1lsT1zZ9owWplgT1D9SURqAnQooqvdOY8uZK8XiV1JpN5jMt
-         2gI96QZyPWr34rbjj/KsTCjJg6Dj/t7YhkbJeGWKKUBik7QU78i9euO1ZYWmYt2bPQyC
-         jpmVsJ8gJOXeWnLjvTY/E62zmUqoixBxGS7vwooY6OCSbk+PVBbrWM9M3v0boCz1ms5Y
-         hVsg==
+        bh=S0DqKnIuSvbhL/BeaLxzkheTI1hi556Lt0X0PfWna4w=;
+        b=gNAHP4f8oU+uSmknP1M4YQ+rOhfHavFCiNsIKK4QBSyFBStmpUhhvFHAaE3M/KGf9F
+         3+T6yq/BY82gvlN6fPCqMfxNHcC2MlclJl2FYHbxT2baqfQaQgJirm+xMYWdROvamdgt
+         z2w0lbFLLTQKPcpF4cG7gj288vACuKFP1ICfTEAKZjELgLLh1ciFwQgYGhpGCzn8cvpp
+         iGKLjn2OQaxBtg20cn39EW+Lm8xYmcUzJpaorPYVWbLz8+IofEFi06JmJoEkIh3SfhgI
+         ZEdkpol0s7PUdwHWkpNB3yeN6Xt4IrbUkmMWQiaKZdM+vzblx7QxmAiaKwsui3CmB/ap
+         BYKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=;
-        b=Al5w9gC7hkLzAjyNCix8DyDX95KP/MuoIXPwVbvEHczwPZJH26yV4wnJvfbWykrhHy
-         O3MncQ+DjDuobl3YpPXV1QsLKUniV3jzLXVMvFfH6wMIVJO7xXR2RRQWWB1p2AK2kiFR
-         AHztvjK3EQWcHT5iiFFAeJT54SFgUlUjnhrv5wGrQroOJQA46ULF2QQodR8AaHsyMek3
-         SUFcKH/uy30t7qwlzGhJXuYzrQlfFNOL2ULuM/ps5YR7/d77fxM8XgS+SEbYnP2W9px2
-         zgz/NrJZx7/n5BYxTRC2sh9Uj6JBU2b4PSaDaI6AR8L7qRghjS+MTJPcqprI3UrOKsBZ
-         Og5Q==
-X-Gm-Message-State: ANoB5pnn6J+11am+YyM2FdfK45+0VA9clJIzImdO6Laa5ISPv1uURL50
-	GxIyqJlUH7FmrSaRSV8rxtw=
-X-Google-Smtp-Source: AA0mqf6OHT62PrwhgFgVpJEqsIU0+tVRZO6rLoXmVtaw9hEQeVPbnkWFog31jANr4bCVbjtIihTb3Q==
-X-Received: by 2002:a5d:690f:0:b0:242:2b3c:c7e with SMTP id t15-20020a5d690f000000b002422b3c0c7emr27389352wru.17.1671463834297;
-        Mon, 19 Dec 2022 07:30:34 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id z1-20020a5d6541000000b00241f029e672sm10191022wrv.107.2022.12.19.07.30.32
+        bh=S0DqKnIuSvbhL/BeaLxzkheTI1hi556Lt0X0PfWna4w=;
+        b=ealWdZw7v50IstvEVxfpD0+kl9s3MyPEmjsJVI+h1BRpNmRh5Bju0eJMpemyt3+p6F
+         tFly3S/ze/iz/Nbq/qRDIdS3V3qIpDGkxjm2viT6lO/qGjt/eMXXG6lum0Y7jv86hYO1
+         GB2pHRswmThP4ZdqJ1tHB7YcLfum4egyXOM79ozukGLJIrNEvd7/F2FnMUqNZlRGZ82e
+         3UquazsYdjLEuYmJuuvePbxF/rqbo0HD7kCvvgu9equSfCNYqv/RCwBzLTaCytVHEm9Q
+         kB8+aZLpkMgwlMDvRN+RgiTH1oAC0IktsougwwDjG3DM3Kpcddevvph7UfHWcWA4mIbf
+         /rPg==
+X-Gm-Message-State: ANoB5plSppLWusCRwI4XK7qv4Y+U3FE5/iJ2wrMT+kf9h/CmhUAVGjxi
+	kLA+RPKCnW1BNbyC+vDLOhYtFQ==
+X-Google-Smtp-Source: AA0mqf62K7RiXYrDz+81q5ivGgJyq7Z3xcHpva+5wqa9zeOtJavBk8Qd1E204B2w/riWMJO5tFNuzw==
+X-Received: by 2002:a05:651c:2203:b0:277:81a3:f6e0 with SMTP id y3-20020a05651c220300b0027781a3f6e0mr13923805ljq.19.1671463889352;
+        Mon, 19 Dec 2022 07:31:29 -0800 (PST)
+Received: from [192.168.0.20] (088156141227.dynamic-2-waw-k-3-1-0.vectranet.pl. [88.156.141.227])
+        by smtp.gmail.com with ESMTPSA id bf33-20020a2eaa21000000b002770e6c620bsm764964ljb.106.2022.12.19.07.31.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Dec 2022 07:30:33 -0800 (PST)
-Message-ID: <5ebaf98b-a77e-3c5a-3e08-bbb0119558a2@gmail.com>
-Date: Mon, 19 Dec 2022 16:30:32 +0100
+        Mon, 19 Dec 2022 07:31:28 -0800 (PST)
+Message-ID: <270ba2bf-6141-724c-7406-0e27503b21bd@linaro.org>
+Date: Mon, 19 Dec 2022 16:31:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v5 01/10] spi: mtk-snfi: Change default page format to
- setup default setting
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v4 1/8] dt-bindings: arm: mediatek: mmsys: Add support for
+ MT8195 VPPSYS
 Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mark Brown <broonie@kernel.org>, Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- benliang.zhao@mediatek.com, bin.zhang@mediatek.com
-References: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
- <20221219024019.31974-2-xiangsheng.hou@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221219024019.31974-2-xiangsheng.hou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221207094921.15450-1-moudy.ho@mediatek.com>
+ <20221207094921.15450-2-moudy.ho@mediatek.com>
+ <CAL_JsqKdaVmGKSwR0yiYGKc6Kp6jki632GA6CBOOjGzUmvSRWA@mail.gmail.com>
+ <ba8ce731-2d9c-901f-e208-deafe589b723@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ba8ce731-2d9c-901f-e208-deafe589b723@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_073042_646938_36DE420B 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20221219_073135_617855_BE89C429 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +101,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for your patch! There is something to improve please see below.
-
-On 19/12/2022 03:40, Xiangsheng Hou wrote:
-> Change default page format to setup default setting since the sector
-> size 1024 on MT7986 will lead to probe fail.
+On 19/12/2022 16:17, Matthias Brugger wrote:
 > 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> ---
->   drivers/spi/spi-mtk-snfi.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-> index fa8412ba20e2..719fc6f53ab1 100644
-> --- a/drivers/spi/spi-mtk-snfi.c
-> +++ b/drivers/spi/spi-mtk-snfi.c
-> @@ -1430,8 +1430,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
->   
->   	// setup an initial page format for ops matching page_cache_op template
->   	// before ECC is called.
-> -	ret = mtk_snand_setup_pagefmt(ms, ms->caps->sector_size,
-> -				      ms->caps->spare_sizes[0]);
-> +	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
+> On 19/12/2022 14:44, Rob Herring wrote:
+>> On Wed, Dec 7, 2022 at 3:49 AM Moudy Ho <moudy.ho@mediatek.com> wrote:
+>>>
+>>> For MT8195, VPPSYS0 and VPPSYS1 are 2 display pipes with
+>>> hardware differences in power domains, clocks and subsystem counts,
+>>> which should be determined by compatible names.
+>>>
+>>> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+>>> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>> ---
+>>>   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml     | 5 ++++-
+>>>   1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> This landed in today's linux-next causing the following binding
+>> warnings. Is this a fix? Only fixes for 6.2 should be added during the
+>> merge window.
+>>
+> 
+> No it's not a fix, it's queued for the next -rc phase. I didn't know of the 
+> limitation of linux-next only allowing fixes in the merge window.
 
-Couldn't you just set sector_size in mt7986_snand_caps?
+Stephen asks for it every time. Now it is in separate email:
 
-Regards,
-Matthias
+https://lore.kernel.org/linux-next/20221213120359.47fc3cad@canb.auug.org.au/
 
+Previously it was in each linux-next announcement:
+https://lore.kernel.org/linux-next/20220527164940.6ef5b25e@canb.auug.org.au/
 
->   	if (ret) {
->   		dev_err(ms->dev, "failed to set initial page format\n");
->   		goto disable_clk;
+> 
+> Actually the patch is wrong. It shouldn't include "mediatek,mt8195-mmsys" as 
+> fallback for mediatek,mt8195-vppsys[0,1].
+> 
+> I'll revert the whole series from v6.2-tmp/dts64 and v6.2-tmp/soc
+
+Thanks. Please, drop all material for next cycle from linux-next.
+
+Best regards,
+Krzysztof
+
 
