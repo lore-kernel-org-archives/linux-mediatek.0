@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496ABC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 02:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34241C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 02:54:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mt32S3LwKdem0E64IVk6P3PMnbE8zfDO1YzBQ7//4fc=; b=NNay0Tu1mjG8R9Mi78tculPeh6
-	X+/ZFJlG3pa+ONJXQkIzWmOclO8XllJTxgqLi5eINQErNmjqdzOZDogxLnPnG4dHwYWTw7f+ZQGeA
-	/RmSG2FRbGjqqFQjDLknUj4GuSuLyiRdf3MqhCHQbZjFApgsAgP6F8uodpezZ+KnsdrnoZ9l7OVPJ
-	AydHB3rGOVf74akoJKswz01cC58/kTb1O5paQcRqUA8uSRitawyhi0Arq/uW9ZazrBFF2r3xt4oMj
-	ZH15BYsfQXnP5pyE9ZtvwFvbiQ2Jb1k13BY9s9MTyTUvqjfwdJw+6j4TpuhpZ6AZ+yzt9Z9oCS0yn
-	qA6D3ytQ==;
+	bh=88IrPDewJMdiNmtnllWW1ZT8q7OVxFl9yffQnwnQCD4=; b=L3IX2K5CdPW2iOcY+hon3i574c
+	RYnPBseZje4II0KgvNpOr/FeXTJw6ma1GEK0evxbcKGixl2ncxxwiSUGid9uqeoBi6TMBGym/+Bxk
+	5QKUaof8cYpwS3VcD6fpXSqhobJ9cga9Cxkx/fZCXv5gIO3GI0WNChtAb6fwVsR/cEb5cSj5VQnWj
+	RBV4tuKss7SRhz9RlAsMRH2eynb+L5Cq+cQakIqfTUr/7eptKQQQMzk0MqEzV/LLMKBdarHyoyQ1s
+	c2MdQmpQO9e7XmtzEBlej15KUFuKi3bp81S+ZFhwOPRbRLZE5xhArOm40jKJbWtZkh7DCHh4Ey3If
+	tCdlzXmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p76Fz-0070rI-0v; Mon, 19 Dec 2022 02:51:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p76IU-0072D9-TL; Mon, 19 Dec 2022 02:54:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p76Fu-0070nb-H1; Mon, 19 Dec 2022 02:51:56 +0000
-X-UUID: cf8b493586494d799a87309f7a162aac-20221218
+	id 1p76I1-0071w9-2n; Mon, 19 Dec 2022 02:54:06 +0000
+X-UUID: c72dc2c2a8ce486690473bd8278c223b-20221218
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mt32S3LwKdem0E64IVk6P3PMnbE8zfDO1YzBQ7//4fc=;
-	b=gwWzQikGm1v5N9DWcEI/I1YMzHOom1iKFp3LXIeWk4KP92urZJw3Z3YF88g2pjstH8tJwITFHeq1cWZxJK2xYAiR9nD4AjA+BwhjH/AXeTUwgMX1IjDc94U1gL16O4MKoxbeYMswcD/aCTC3TEV37fFuvlcTCOmC73jUvp0HRbo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=88IrPDewJMdiNmtnllWW1ZT8q7OVxFl9yffQnwnQCD4=;
+	b=P2hSriUm88zywHRZVWwPg8zp7Ma/aY9se1Ivarse4jSsXAbNm/N0WXetcyamuRA2dwHvauEFJ7i0hcSdSQG0+H9l8v3rsZnLRU3L7mep41JWVwCZMQv0QqKBRyX/xATGGGq7W//vq3puWhpgxNnAJ/u2gV9XwnYfH5Cl3QPQno0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:56fa9d48-7883-415f-9fa0-ce9efbd2faa8,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:f5dc43f3-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:e1716a8c-38a6-4e89-b56d-90f4b64271b1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:7ddf43f3-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: cf8b493586494d799a87309f7a162aac-20221218
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: c72dc2c2a8ce486690473bd8278c223b-20221218
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1383529480; Sun, 18 Dec 2022 19:51:33 -0700
+	with ESMTP id 1691586633; Sun, 18 Dec 2022 19:51:48 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 19 Dec 2022 10:40:37 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 19 Dec 2022 10:41:07 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Dec 2022 10:40:36 +0800
+ Transport; Mon, 19 Dec 2022 10:41:06 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
 	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
@@ -58,10 +58,11 @@ CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
 	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
-	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>
-Subject: [PATCH v5 01/10] spi: mtk-snfi: Change default page format to setup default setting
-Date: Mon, 19 Dec 2022 10:40:10 +0800
-Message-ID: <20221219024019.31974-2-xiangsheng.hou@mediatek.com>
+	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v5 10/10] dt-bindings: mtd: mediatek,nand-ecc-engine: Add compatible for MT7986
+Date: Mon, 19 Dec 2022 10:40:19 +0800
+Message-ID: <20221219024019.31974-11-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
 References: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
@@ -70,8 +71,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221218_185154_960305_0298895E 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20221218_185405_177072_7F1D196D 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +88,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change default page format to setup default setting since the sector
-size 1024 on MT7986 will lead to probe fail.
+Add dt-bindings documentation of ECC for MediaTek MT7986 SoC
+platform.
 
 Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/spi/spi-mtk-snfi.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .../devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index fa8412ba20e2..719fc6f53ab1 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -1430,8 +1430,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
+diff --git a/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml b/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
+index b13d801eda76..505baf1e8830 100644
+--- a/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
++++ b/Documentation/devicetree/bindings/mtd/mediatek,nand-ecc-engine.yaml
+@@ -18,6 +18,7 @@ properties:
+       - mediatek,mt2701-ecc
+       - mediatek,mt2712-ecc
+       - mediatek,mt7622-ecc
++      - mediatek,mt7986-ecc
  
- 	// setup an initial page format for ops matching page_cache_op template
- 	// before ECC is called.
--	ret = mtk_snand_setup_pagefmt(ms, ms->caps->sector_size,
--				      ms->caps->spare_sizes[0]);
-+	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
- 	if (ret) {
- 		dev_err(ms->dev, "failed to set initial page format\n");
- 		goto disable_clk;
+   reg:
+     items:
 -- 
 2.25.1
 
