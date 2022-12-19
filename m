@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C1D4C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 07:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FB6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 07:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BROO9oR3Wy6uXyXdf6VAMOjT4WTHQrLO8YJEyXD5pf0=; b=T0ymFgc5h8MQWPg0DHK+5AN8Kg
-	/m947JvtzyVPHptwWxrVhjLrAWOEYJAtvkS954A2haB3YBVg+npqMQBOwsVs4/rFUI3Wh80k1tH95
-	KAYhrYkFslaJ3BK7HQzGi/vFDTIjxe9z2S7qPH1cxIxJ8kMqrxIRUdC8DhtXFzbctJOIc8LNPYjwj
-	yhv5uZNlokVslztKRSqTNlG/JQ4N6tIaDZo1zsOA5uudcDtF8OW1oZvgOabFpcYGGwxISd7BtymZb
-	6CIUaE05FNorpjjTj3ULAXC6OWhoRWUSewHp/x6njWpkM8iCIJHFO34IIPjet+4k0iam0Med5C1O4
-	9WjG6OvQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ep6+w+pjGfry1uGq919wEZUgmqgXy3jy9hg5P1njcnM=; b=oZ3RbZwtllFQiQ59yUWn2mI9eH
+	PjJJT2YrsfQqghrgQ4DdVZfa0r5Y3nfYagptDs7PmWJokYqKNf7rQeS9r4/3K34aekCj6/ujT6iG2
+	A7JK8Wa/ihxhgDPTvrj1oF1KlHSN9HwlHEpkR/pXCCuos/8UsLm4GrpZpy2OMANZgTPmu2O7gizbM
+	3NhUsaGzV3BbcijYiErXCMb09oAnzNIUXItbcuXxoyUV1Jm1UgXK3gX0W4r2j10IMVBqS/E9l2wWC
+	DnfhPeMcV3fuDGW5dI3THkKb3te+BnOdGcmZNSW3SKnLVzuXHegT1NeNsLd7X4hJsopWbh5KgYhBC
+	zCY/LoVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7ARf-009oOg-Ld; Mon, 19 Dec 2022 07:20:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p7AVp-009r3K-3l; Mon, 19 Dec 2022 07:24:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7ART-009oBD-85; Mon, 19 Dec 2022 07:20:08 +0000
-X-UUID: c0f10da64daf4619b24ea6decd6b2930-20221219
+	id 1p7AV3-009qPS-7u; Mon, 19 Dec 2022 07:23:51 +0000
+X-UUID: 9617440e96cc4152bee98f28f1ee29e9-20221219
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BROO9oR3Wy6uXyXdf6VAMOjT4WTHQrLO8YJEyXD5pf0=;
-	b=s8omwKzTGbwrTQIrRO8nvuguexXc2HqgFnpsHWE438TXr0fmU1QFjLcixggC3zWlLQqAgUawG+UwruAmRWj499j64gpDrRkgTZmwsgNMgzpbzaG/t904LoHG7Pamp103Tu4ADYC3T9XWj6VYP8OzuFJmTw49UgnzTVSriij59Bg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Ep6+w+pjGfry1uGq919wEZUgmqgXy3jy9hg5P1njcnM=;
+	b=Bf0BgR3d7+BYjn2VQzkx9C2oawsVfyQ/rYS7NSj3GOXHf2UUarREI5ZkkWV+KtS+cpwcSAz7wNiZhN3YLtHE82RJFva8rLLkCYmzwmn6+hywASiNZrNH4Tvuv5i/UvRR264TS2rzK3e7Unkgmkiry0SpYjt2KUnSlmaGviHsNI8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:e4be6923-0e62-476a-b726-a16ea62893bb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.14,REQID:e4be6923-0e62-476a-b726-a16ea62893bb,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:dcaaed0,CLOUDID:ff91bd89-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:221219150056VY56XV4E,BulkQuantity:2,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: c0f10da64daf4619b24ea6decd6b2930-20221219
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.14,REQID:1bbdd00d-ea4a-44b1-bcb5-1b59bce1a19a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:31a72352-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 9617440e96cc4152bee98f28f1ee29e9-20221219
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 853444715; Mon, 19 Dec 2022 00:01:16 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+	with ESMTP id 909026570; Mon, 19 Dec 2022 00:23:44 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 19 Dec 2022 15:00:42 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ 15.2.792.15; Mon, 19 Dec 2022 14:43:39 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Dec 2022 15:00:41 +0800
+ Transport; Mon, 19 Dec 2022 14:43:38 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
 	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
@@ -63,17 +60,19 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: Using pm_runtime_put instead of pm_runtime_put_sync
-Date: Mon, 19 Dec 2022 15:00:40 +0800
-Message-ID: <20221219070040.2434-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,2/7] media: mediatek: vcodec: using each instance lat_buf count replace core ready list
+Date: Mon, 19 Dec 2022 14:43:27 +0800
+Message-ID: <20221219064332.2124-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221219064332.2124-1-yunfei.dong@mediatek.com>
+References: <20221219064332.2124-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221218_232007_393261_24EED9B5 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20221218_232349_684085_51A66C5C 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +87,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_put will set RPM_ASYNC flag then queue an idle-notification
-request again, won't return error immediately until current request is
-scheduled. But pm_runtime_put_sync run the ->runtime_idle() callback
-directly, will return error immediately.
+Core Hardware decoder depends on each instance lat_buf count,
+calling queue_work decode again when the lat_buf count of each instance
+isn't zero.
 
+Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-index 4305e4eb9900..341b406f5272 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-@@ -72,9 +72,9 @@ static void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
- {
- 	int ret;
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index 3f016c87d722..ad5002ca953e 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -239,7 +239,7 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
+ 	mtk_vcodec_dec_disable_hardware(ctx, MTK_VDEC_CORE);
+ 	vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
  
--	ret = pm_runtime_put_sync(pm->dev);
-+	ret = pm_runtime_put(pm->dev);
- 	if (ret)
--		mtk_v4l2_err("pm_runtime_put_sync fail %d", ret);
-+		mtk_v4l2_err("pm_runtime_put fail %d", ret);
- }
- 
- static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
+-	if (!list_empty(&dev->msg_queue_core_ctx.ready_queue)) {
++	if (atomic_read(&lat_buf->ctx->msg_queue.core_list_cnt)) {
+ 		mtk_v4l2_debug(3, "re-schedule to decode for core: %d",
+ 			       dev->msg_queue_core_ctx.ready_num);
+ 		queue_work(dev->core_workqueue, &msg_queue->core_work);
 -- 
 2.25.1
 
