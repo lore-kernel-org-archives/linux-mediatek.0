@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F21C10F1B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 08:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D94C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 09:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y1ycYMYs8Igi21lZa2tXT46ShjJdIMKV5DUc/YREoqo=; b=OmlvYkM83jmr+N89U7By6Njo3j
-	1TW0ZNu7PgLFH25V8lE+On+HCCHEkauqr6xBHRQBO3SRSs6D5+LWB6+Bv9csBa9PPhNsRC5qTdXxo
-	MqiVC8SvUPaMBRGZJX1dUantnCm+R5J6c92KuoVJLmpiXR5nXNJ1M6o3u3kfWTEiS5H0usA2+eK8j
-	9ZcV4RSc8IlWD6rw4gB7zdsUXSb9eKod8lCC6Lli0L2UuKim3ddwHHi3PI0ZhjD2XS57lcQ4VB4bQ
-	xcnGalRli6fM9HPP8/9lHLpv/nxCGE4XzUYAmX4gNjdvkx4PaZOAmzoX1jnBFYdzxjHQYFD63MVx2
-	9eKehKbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pyIftf407z4LWsaIfkPKNbvdPE2ExWC6apXTJIL5404=; b=0xpPpaVC88VclutsXHUF+/5x7a
+	1xLYK0iviVKyAzqEKNVEkKvpoy4s0q9qh65CgLW7dXo8+5D2viRKD9GyNz2APF+jJc2pEY+YZQqtu
+	IlqlIPOm6/A2xk1P7HzOBRdd43LdIipXQxVegoiz3DdSJFdeT7N+1ZLBqlfOFQaVhmKfj4YiJJAkh
+	GreFFQ6Tx8SNcRIRBfGwEmgZuW/ZTBi7Vsv7qrgBUH18hW7f9BGMjXnp4fQI2/m/hWlh8BEIEHulQ
+	blWVdBb4jTkwTL6M9BSssdCgRe/lovqNFkpcXZkUWLlV1vJO38ijYSZ2XIePnTVuk+dcyAudr/K4Y
+	jn8R4Jag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7BtI-00Aq5Q-Pe; Mon, 19 Dec 2022 08:52:57 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p7Cs3-00BY6f-UG; Mon, 19 Dec 2022 09:55:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Bsq-00AphB-EP; Mon, 19 Dec 2022 08:52:30 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1p7Crw-00BY0o-G1
+	for linux-mediatek@lists.infradead.org; Mon, 19 Dec 2022 09:55:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 636EB6601615;
-	Mon, 19 Dec 2022 08:52:26 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671439946;
-	bh=6vqH3SZnQNjQYcK54MP8+xXDz66wYQbyA0JC8HY+jdo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hxNPgZvIk8ReNvTQgdRoPSRHnHKlcbsmV+tgoouCH6AJv40jhQvSD/qXXzug4CrzA
-	 ZomvTfovbKlmuKXucgnx/hKO53S6hogNn5ay7aRPs8wbpEcON6kq9l3xSuKf1DtmBG
-	 fkrnL/X+hw+gLV2LA+vUzCKiuZ0WmirLY7WCKQ1yDhx3gESZyqEPQpszomncIpoA19
-	 MIM9ZzS/KwvBDqmznjnJu7vLjkTFRn+h0KWgsHMrl1K9lJ4mEtGyVsLM750Jtp+HTL
-	 XH6kNsl07tuUEmslxBfY1IxYCPSWffrQhpKZAAj21oZHbqQiCwPQmdTPMx300OidYz
-	 ap8d2Kh/lfE8g==
-Message-ID: <b8cd87e4-1d5d-af79-f92b-fcd4193e0bf2@collabora.com>
-Date: Mon, 19 Dec 2022 09:52:23 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 17F6A60DF3;
+	Mon, 19 Dec 2022 09:55:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1960C433D2;
+	Mon, 19 Dec 2022 09:55:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671443734;
+	bh=FVHUfLGk+FwVencu3d0d7zbOlfjP8sAC3w4aJrESkqs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LAE/HLqWA47hFGR/Zlli4C+3R6DLNKkZV62sbQLuveqxzMYRhVWlUjKJBGgrlQImM
+	 iv9Lb0oEjuMFlNUzhoHQAqglNNFi84IXTM/l8q35DAXAfLJ222zLgrnN8k6Dc4eMqW
+	 mif+JnyV3RQUYwxPV3f1wttYR2Ha8RoDKUPZQEXG9IT3en6vC7ydUHEm8ubDkeHFoG
+	 OEymUecbkyHxiEsDJsI5DEpOnu+YacCuL6jhvgB8pLIlYKSe5Q6Eqb8985qgQQ/m+z
+	 32mIPr+3Zn1+dSbKr7i3ZnOGjW9mQ6PcRds/pvV4Uz3AfAzP4HSIklTjSj1q1lCg2g
+	 YJAIXHNYaQ1Gg==
+Date: Mon, 19 Dec 2022 10:55:30 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Bo Jiao <bo.jiao@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2] wifi: mt76: fix potential memory leakage
+Message-ID: <Y6A1Et1yzcWnWhpy@lore-desk>
+References: <0a218783098a6b1b90ff120c7182acee93dc8feb.1671423784.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH resend] arm64: dts: mediatek: mt8192: Mark scp_adsp clock
- as broken
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
-References: <20221130031741.3176853-1-wenst@chromium.org>
- <2ec80bd8-dfef-d2e6-eb41-6e6088043e33@collabora.com>
- <CAGXv+5E=X_hwg76=B_jqWrpieo8bR-=r8NLbNz2=JzE=kBwMWQ@mail.gmail.com>
- <8806f4cf-2141-acb8-1f9d-cd6ade64756e@collabora.com>
- <05d6f9e6-a291-35c3-9b02-2235ad92669d@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <05d6f9e6-a291-35c3-9b02-2235ad92669d@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GYX6T5wvBRqxBDpz"
+Content-Disposition: inline
+In-Reply-To: <0a218783098a6b1b90ff120c7182acee93dc8feb.1671423784.git.Bo.Jiao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_005228_683335_390A8583 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20221219_015536_653607_28DBB63F 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +77,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/12/22 14:17, Matthias Brugger ha scritto:
-> 
-> 
-> On 01/12/2022 10:02, AngeloGioacchino Del Regno wrote:
->> Il 01/12/22 09:56, Chen-Yu Tsai ha scritto:
->>> On Wed, Nov 30, 2022 at 7:10 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> Il 30/11/22 04:17, Chen-Yu Tsai ha scritto:
->>>>> The scp_adsp clock controller is under the SCP_ADSP power domain. This
->>>>> power domain is currently not supported nor defined.
->>>>>
->>>>> Mark the clock controller as broken for now, to avoid the system from
->>>>> trying to access it, and causing the CPU or bus to stall.
->>>>>
->>>>> Fixes: 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192 clock controllers")
->>>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>>>
->>>> ....or we can add the ADSP power domain to actually fix this properly, which looks
->>>> like being a generally good idea :-)
->>>
->>> Sure, but that and any driver changes have to be backported, or anything
->>> touching the clocks will still break the system.
->>>
->>
->> I agree.
->>
->>> There's no reason we can't have both. I think having this one merged and
->>> backported to stable first, then adding the SCP_ADSP power domain, and tying
->>> it to the clock controller as a follow up addition works best.
->>>
->>> What do you think?
->>>
->>
->> I think that one reason to not have both is that we'd have to revert this commit
->> after the SCP_ADSP power domain is added (with the appropriate Fixes tags and/or
->> Cc stable)...
->>
->> I'd expect that entire addition to be no more than 3 commits, including the dtsi
->> one... and if it comes out as I expect, we'd be solving that issue on all of the
->> affected older versions of the kernel - the right way.
->>
->> Can we wait for... let's say, a day or two to check how that works, before taking
->> a final decision on this commit?
->>
-> 
-> Do I understand correctly that the correct way for now is to merge this patch until 
-> we have a fixed the power domain controller?
-> 
-> Regards,
-> Matthias
 
-I thought that the proper fix would be going in v6.2, but apparently something
-went wrong with it as it contains things that aren't upstream.
+--GYX6T5wvBRqxBDpz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-At this point, let's go with this one until the proper fix gets factored in,
-which I expect to be ready for v6.3.
+> From: Bo Jiao <Bo.Jiao@mediatek.com>
+>=20
+> fix potential memory leakage, recycle rxwi when mt76_dma_add_buf() call f=
+ail.
+>=20
+> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+> ---
+> v2:
+> - recycle rxwi when page_frag_alloc() and dma_map_single() fail.
+> ---
+>  drivers/net/wireless/mediatek/mt76/dma.c | 27 ++++++++++++++----------
+>  1 file changed, 16 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wirel=
+ess/mediatek/mt76/dma.c
+> index fc24b35..76ad47d 100644
+> --- a/drivers/net/wireless/mediatek/mt76/dma.c
+> +++ b/drivers/net/wireless/mediatek/mt76/dma.c
+> @@ -580,24 +580,29 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_=
+queue *q)
+> =20
+>  		buf =3D page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
+>  		if (!buf)
+> -			break;
+> +			goto out;
+> =20
+>  		addr =3D dma_map_single(dev->dma_dev, buf, len, DMA_FROM_DEVICE);
+> -		if (unlikely(dma_mapping_error(dev->dma_dev, addr))) {
+> -			skb_free_frag(buf);
+> -			break;
+> -		}
+> +		if (unlikely(dma_mapping_error(dev->dma_dev, addr)))
+> +			goto free;
+> =20
+>  		qbuf.addr =3D addr + offset;
+>  		qbuf.len =3D len - offset;
+>  		qbuf.skip_unmap =3D false;
+> -		if (mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t) < 0) {
+> -			dma_unmap_single(dev->dma_dev, addr, len,
+> -					 DMA_FROM_DEVICE);
+> -			skb_free_frag(buf);
+> -			break;
+> -		}
+> +		if (mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t) < 0)
+> +			goto umap;
+> +
+>  		frames++;
+> +		continue;
+> +
+> +umap:
+> +		dma_unmap_single(dev->dma_dev, addr, len,
+> +				 DMA_FROM_DEVICE);
+> +free:
+> +		skb_free_frag(buf);
+> +out:
+> +		mt76_put_rxwi(dev, t);
+> +		break;
+>  	}
+> =20
+>  	if (frames)
 
-Cheers,
-Angelo
+Hi Bo,
+
+I guess in the way below, the code is more readable, what do you think?
+
+Regards,
+Lorenzo
+
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireles=
+s/mediatek/mt76/dma.c
+index fad5fe19fe18..001538f698f1 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -571,13 +571,6 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_que=
+ue *q)
+ 		struct mt76_queue_buf qbuf;
+ 		void *buf =3D NULL;
+=20
+-		if ((q->flags & MT_QFLAG_WED) &&
+-		    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX) {
+-			t =3D mt76_get_rxwi(dev);
+-			if (!t)
+-				break;
+-		}
+-
+ 		buf =3D page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
+ 		if (!buf)
+ 			break;
+@@ -588,16 +581,27 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_qu=
+eue *q)
+ 			break;
+ 		}
+=20
++		if ((q->flags & MT_QFLAG_WED) &&
++		    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX) {
++			t =3D mt76_get_rxwi(dev);
++			if (!t)
++				goto unmap;
++		}
++
+ 		qbuf.addr =3D addr + offset;
+ 		qbuf.len =3D len - offset;
+ 		qbuf.skip_unmap =3D false;
+-		if (mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t) < 0) {
+-			dma_unmap_single(dev->dma_dev, addr, len,
+-					 DMA_FROM_DEVICE);
+-			skb_free_frag(buf);
+-			break;
++
++		if (!mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t)) {
++			frames++;
++			continue;
+ 		}
+-		frames++;
++
++unmap:
++		dma_unmap_single(dev->dma_dev, addr, len, DMA_FROM_DEVICE);
++		skb_free_frag(buf);
++		mt76_put_rxwi(dev, t);
++		break;
+ 	}
+=20
+ 	if (frames)
+
+> --=20
+> 2.18.0
+>=20
+
+--GYX6T5wvBRqxBDpz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6A1EgAKCRA6cBh0uS2t
+rBwPAQD44i+a+7jteXHTxdG433JNJtOhfHYBcIa/JOOLWl61SQD+J+RUiW2LG8BU
+LnZeQn1Ykxqe0g+zW03IxQfjXMv7qw0=
+=27vm
+-----END PGP SIGNATURE-----
+
+--GYX6T5wvBRqxBDpz--
 
