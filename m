@@ -4,67 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE9AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 17:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 156E2C4167B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 19:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vOiCy0WjVxH8DVieLn08mRiczm9EV7y8BSE0KN+iAsY=; b=n8KJMkEfqW74Yuc92YGFfhQeyR
-	IKE1t84h1Yc5xzjkv3jwpd3ctqUeMIJoWsQjy+UpEhk6AFC+sbow6klBK9LR4+hLQgNInMVgYrlpv
-	z9NUMWHFNnkWsYp2/rGaDywkyBq/f5GhF0Z5PodxoK0hGHxorZBFTw5wWbRh/jDOKgEwUbM4rPRqk
-	wfFkfH2EsuiSO3MOy4XzH6ydxgcAA9A11BXYtiF0sgJfBU1rZnU8jw9h2OVYb8Bl3os1cscsM3O/w
-	SdQrIOl0ZMg5HsxvYNeKueg9znPEca59OM4DsbKQRtIE6Z4NHA5WyPm/vlYadsdRnPQBEBFD1L4Yx
-	loXDzAKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A2WAYdUU3varTXOPkMTS3h5NIplRbt3MGEr5rGN+UVs=; b=iKAZjzUsd7KbSK96ep47x9KNHo
+	Fa5b0ysjGBJMDmfQHTqtfxtKOk3SJ5Nm10kzDimpM/QoIH43ESXGrC9OpZGKi34rGyc0/iz8WlCGZ
+	0tp2uK0v3mfBd2asd4uxZdXUmzTRL6H9h7u0yASOXmetQQLG+YBFc/hm8FjtCSmeU41OBNtI2kOqq
+	fqSHqzxIiO/oNCZENQHpM9+MMVBEknrslhMU7C5yq85GRZsUyhulJmM2se15IsxEI3WKVxTHDSxiz
+	etpPb1ZnucDrqpunBpBtYolcqde4J2bEqmO6yhwrm7/sMGYuaRqmNovEn73qsd6CF4x+MdP08L4Hg
+	aX6Phe3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7JiP-00GaTI-Ow; Mon, 19 Dec 2022 17:14:13 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1p7LpI-0010F5-Lj; Mon, 19 Dec 2022 19:29:28 +0000
+Received: from smtp-15.smtpout.orange.fr ([80.12.242.15] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7IE3-00FUuc-Dp; Mon, 19 Dec 2022 15:38:49 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-1447c7aa004so11914022fac.11;
-        Mon, 19 Dec 2022 07:38:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vOiCy0WjVxH8DVieLn08mRiczm9EV7y8BSE0KN+iAsY=;
-        b=lBk2hQU2NtdiOZxSxWh++lUvfeJzRO+YxdwRadsJHPaPvLix/yyNaOeCX15JYYpNLY
-         H4Bmjec8bCAzZjx9IrvdH9d/B98to/6jFKBWfZSBxbx2t6soCz/3Ql+v7a72sSYExzdF
-         +0AfRQP8QHF/tmm6OhwlDB1GolupcFtSXSQKwV4aRFEY3v1lLeYBg6u2UfzBcPHzgaMT
-         Sxz4AKzoqB+Sm1yi0/Hz/vCfwyH2RuAOFNIevEPRnLO5qyfi1nd+fHyxMvxjIR7etylX
-         cgGUb1iTE4pqf51R+m3h40gVDGUvO4FDXnFBnX+EEcKSjlBh6aeH46fupPwCKaYbd5X3
-         Os2w==
-X-Gm-Message-State: ANoB5pk4N+DMb0oFEr5ibwDqN30+cI8jhAWgf8eOCuzHr7O1skbEQpcT
-	GRueops21OwwsdRzGQ6BFQ==
-X-Google-Smtp-Source: AA0mqf4x/VJvpocUXMYkW+FznjpJCn7AIX+ML2f8QWtAFUzzyWkj/yArsDdRcpF8jQ89ySsWI3scNA==
-X-Received: by 2002:a05:6871:784:b0:137:3adb:9149 with SMTP id o4-20020a056871078400b001373adb9149mr20697434oap.16.1671464318860;
-        Mon, 19 Dec 2022 07:38:38 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id z21-20020a056870e31500b00148316f78fesm4870553oad.2.2022.12.19.07.38.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Dec 2022 07:38:38 -0800 (PST)
-Received: (nullmailer pid 1431223 invoked by uid 1000);
-	Mon, 19 Dec 2022 15:38:37 -0000
-Date: Mon, 19 Dec 2022 09:38:37 -0600
-From: Rob Herring <robh@kernel.org>
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo <gch981213@gmail.com>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, benliang.zhao@mediatek.com, bin.zhang@mediatek.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v5 06/10] dt-bindings: spi: mtk-snfi: Add read latch
- latency property
-Message-ID: <20221219153837.GA1426412-robh@kernel.org>
-References: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
- <20221219024019.31974-7-xiangsheng.hou@mediatek.com>
+	id 1p7KX8-00HBdy-W7
+	for linux-mediatek@lists.infradead.org; Mon, 19 Dec 2022 18:06:40 +0000
+Received: from pop-os.home ([86.243.100.34])
+	by smtp.orange.fr with ESMTPA
+	id 7KWtpg0ivBonI7KWtprGLS; Mon, 19 Dec 2022 19:06:28 +0100
+X-ME-Helo: pop-os.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Mon, 19 Dec 2022 19:06:28 +0100
+X-ME-IP: 86.243.100.34
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Honghui Zhang <honghui.zhang@mediatek.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Joerg Roedel <jroedel@suse.de>,
+	iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] iommu/mediatek-v1: Fix an error handling path in mtk_iommu_v1_probe()
+Date: Mon, 19 Dec 2022 19:06:22 +0100
+Message-Id: <593e7b7d97c6e064b29716b091a9d4fd122241fb.1671473163.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221219024019.31974-7-xiangsheng.hou@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_073847_605451_EE12516C 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20221219_100639_235606_FA518B6D 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +69,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 19, 2022 at 10:40:15AM +0800, Xiangsheng Hou wrote:
-> Add mediatek,rx-latch-latency-ns property which adjust data read
-> latch latency in the unit of nanoseconds.
-> 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml         | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-> index bab23f1b11fd..1e5e89a693c3 100644
-> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-snfi.yaml
-> @@ -45,6 +45,9 @@ properties:
->      description: device-tree node of the accompanying ECC engine.
->      $ref: /schemas/types.yaml#/definitions/phandle
->  
-> +  mediatek,rx-latch-latency-ns:
-> +    description: Data read latch latency, unit is nanoseconds.
+A clk, prepared and enabled in mtk_iommu_v1_hw_init(), is not released in
+the error handling path of mtk_iommu_v1_probe().
 
-Doesn't the common 'rx-sample-delay-ns' work for you?
+Add the corresponding clk_disable_unprepare(), as already done in the
+remove function.
 
-Rob
+Fixes: b17336c55d89 ("iommu/mediatek: add support for mtk iommu generation one HW")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Another option would be to use devm_clk_get_enabled(). This would save a
+few LoC in mtk_iommu_v1_hw_init() and in the remove function.
+However, it would change the order of function calls in the remove function
+so I leave it as-is.
+Let me know if it is fine and if you prefer this alternative.
+---
+ drivers/iommu/mtk_iommu_v1.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 69682ee068d2..ca581ff1c769 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -683,7 +683,7 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
+ 	ret = iommu_device_sysfs_add(&data->iommu, &pdev->dev, NULL,
+ 				     dev_name(&pdev->dev));
+ 	if (ret)
+-		return ret;
++		goto out_clk_unprepare;
+ 
+ 	ret = iommu_device_register(&data->iommu, &mtk_iommu_v1_ops, dev);
+ 	if (ret)
+@@ -698,6 +698,8 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
+ 	iommu_device_unregister(&data->iommu);
+ out_sysfs_remove:
+ 	iommu_device_sysfs_remove(&data->iommu);
++out_clk_unprepare:
++	clk_disable_unprepare(data->bclk);
+ 	return ret;
+ }
+ 
+-- 
+2.34.1
+
 
