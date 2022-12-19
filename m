@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D92C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 16:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B692C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 17:07:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9kBVJI7OvqWZE9hdBUgh4+a/Q7ktxLZDNcwhb2und9c=; b=WHDkTi6T/mTBSiVOH2ZwNKEkT9
-	dm1TR56eQQ/k3+Ud77o38zO8380V60EQK4QpvTvC51d2xf2oO4zNF9mo5WYk3SUEQCsLWXJo7Yopg
-	PoK6HcS7H+OJOOTvwg/2xG2HWuXDiibmEXIUnDnYu93gf5Tybw7LM8u1CceLkcy1HcSl7TorlwWoT
-	EminHVJW9E5RNvlBFC5Am6djvfZj5gO++8g8dLvMEVVEqxpLTrdnEFBCqEwhiKvo06rLXDyielrCi
-	l8pu7d4oSHT/eZA7+XQ2v9+HhskVt3CDvODDkDMl7TdLdBJNPzKDYfdXblN3Z+5K9KMm5PGLJ8FK5
-	MYwfHC4g==;
+	bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=; b=Fr6NBY+AP8djnWBcYmhmmFsExF
+	XQmi6jOatX8K9Q6ha/WmIXw/ypV6vVrFp8vkcyiyoRkQZxZI8Ks/qmBuGzFjZIsyhbG/H6aJAcvGI
+	++ZIzsIG+yQmaWPgT51l84A3jHYA/CXtcnAoVLjUkQZLl/VTPkGKTLs6aQdZm24/i+EAIK2YWILDq
+	cQug2CkFoXV1+YgWG48J/4PLyBMM3snJNflDKFawQfIaWMWwHeLA9nlbed37knQpsp46VRB0snUzG
+	oFsNyxyglf2P9s3EIkkQj/sGaVq/CwxoNsUtBMqQZ5adEnBvHdb7u5G9BTvhveghOgTnZwTktzVU0
+	EFJdq8IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7JOo-00GM6L-Nk; Mon, 19 Dec 2022 16:53:58 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1p7Jc5-00GVVn-Qs; Mon, 19 Dec 2022 17:07:41 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Htd-00FFvd-F9; Mon, 19 Dec 2022 15:17:43 +0000
-Received: by mail-wr1-x433.google.com with SMTP id h12so8949566wrv.10;
-        Mon, 19 Dec 2022 07:17:40 -0800 (PST)
+	id 1p7I69-00FOlp-3o; Mon, 19 Dec 2022 15:30:44 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id m14so9015234wrh.7;
+        Mon, 19 Dec 2022 07:30:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9kBVJI7OvqWZE9hdBUgh4+a/Q7ktxLZDNcwhb2und9c=;
-        b=Ha4Z2OcgAoz2LEInTogCsaKCZXddqQ9UB5FOvc9UhBrIGHDQ+2ZkFlrxvRqbLBHoVG
-         NmccLpFL/En5rI+fISPTwcZFN9eMKZ5S2Zo7D9q1K4QlgWyK4vUugMwbsdsDbqGa14Ta
-         iQ8G98pXSVLw8Pf5KK43NVJ9n88bwAy5E78bjA69YrccGiyC4UBY1fghpGHCNUKGmWN1
-         nvyldkhGNW3si3rVVBodXFmPTPmmesJfW0l4L+vdvG5B/BEqHtfHeKabjTIQJeEioZE3
-         YvKidXdeZ5Rp4yp4liSNPLApCteIg/8TS/5m9DhsOIhd3JCvE1j9wZQefnOw/PN0XCYn
-         hm5g==
+        bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=;
+        b=eUav2kVKU5p8sDthFIbgHzqdA3yxrgylMhYz07uqKZs90eIQYt8H+orFGPL1ygyWXJ
+         WvrOOs18X2Fs3iGoXObwlrJ3/0ZEJLvZ5/NivWy+zmYiuc9vaRVs1rGkDhPOvaqJAZfH
+         tB5Y4GRe/rQv8wYeq67N1lsT1zZ9owWplgT1D9SURqAnQooqvdOY8uZK8XiV1JpN5jMt
+         2gI96QZyPWr34rbjj/KsTCjJg6Dj/t7YhkbJeGWKKUBik7QU78i9euO1ZYWmYt2bPQyC
+         jpmVsJ8gJOXeWnLjvTY/E62zmUqoixBxGS7vwooY6OCSbk+PVBbrWM9M3v0boCz1ms5Y
+         hVsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9kBVJI7OvqWZE9hdBUgh4+a/Q7ktxLZDNcwhb2und9c=;
-        b=XlG0MH+/zCIaFtCKktZ6vIuWHs4FiP6dnI4egRuhwfnEavJwcgVIoQIp3Nc3waTojA
-         nCmsQKJC5oNbwS/GHfoZtLegfSIK6F2VhXtNqEGK9HpIT53m7m3b/elPky5qNcXY4W0+
-         qbwv5hknbEM/tyYMU3a7TXxWVf5irbdRCUw8UIdTDmVe/83GZVVLb1HRpVvuaRwDBozp
-         OlKoPNiofGoEm93B8gQaN5DdTqw9dyDMEUbQ/Nc54a6f3SjMDwc844JESASEQUYjaqDZ
-         5q4y1b15UNjSQX8HPsH+tTrCPj79BSYwvXv4qXZRfnPuAqmPzM+qNoHPyOAE8NQlS7DI
-         Eqhw==
-X-Gm-Message-State: ANoB5pnqS0ZPH6qN/d/ctBuh2xCYnr3UPqiaIll34Z2EVV4vdyc3LZiY
-	Hi8EH8U2/mfYHV0/0v+/6us=
-X-Google-Smtp-Source: AA0mqf5un/vop7IAv+jq6P5DcAumqLb5kyLRJQKNVxLI2D6Ulm6t0jX3E3Lx3H9oWGLLXMV/u53jTw==
-X-Received: by 2002:adf:ef42:0:b0:242:647d:9c57 with SMTP id c2-20020adfef42000000b00242647d9c57mr27045971wrp.36.1671463057586;
-        Mon, 19 Dec 2022 07:17:37 -0800 (PST)
+        bh=GTQ6G2szldacTi/s3gJTUQlmGKJMBS6VQ125oYFyBx8=;
+        b=Al5w9gC7hkLzAjyNCix8DyDX95KP/MuoIXPwVbvEHczwPZJH26yV4wnJvfbWykrhHy
+         O3MncQ+DjDuobl3YpPXV1QsLKUniV3jzLXVMvFfH6wMIVJO7xXR2RRQWWB1p2AK2kiFR
+         AHztvjK3EQWcHT5iiFFAeJT54SFgUlUjnhrv5wGrQroOJQA46ULF2QQodR8AaHsyMek3
+         SUFcKH/uy30t7qwlzGhJXuYzrQlfFNOL2ULuM/ps5YR7/d77fxM8XgS+SEbYnP2W9px2
+         zgz/NrJZx7/n5BYxTRC2sh9Uj6JBU2b4PSaDaI6AR8L7qRghjS+MTJPcqprI3UrOKsBZ
+         Og5Q==
+X-Gm-Message-State: ANoB5pnn6J+11am+YyM2FdfK45+0VA9clJIzImdO6Laa5ISPv1uURL50
+	GxIyqJlUH7FmrSaRSV8rxtw=
+X-Google-Smtp-Source: AA0mqf6OHT62PrwhgFgVpJEqsIU0+tVRZO6rLoXmVtaw9hEQeVPbnkWFog31jANr4bCVbjtIihTb3Q==
+X-Received: by 2002:a5d:690f:0:b0:242:2b3c:c7e with SMTP id t15-20020a5d690f000000b002422b3c0c7emr27389352wru.17.1671463834297;
+        Mon, 19 Dec 2022 07:30:34 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g12-20020a5d698c000000b00241c6729c2bsm10231832wru.26.2022.12.19.07.17.36
+        by smtp.gmail.com with ESMTPSA id z1-20020a5d6541000000b00241f029e672sm10191022wrv.107.2022.12.19.07.30.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Dec 2022 07:17:37 -0800 (PST)
-Message-ID: <dba479ea-968f-89eb-fc59-8235cbb2783a@gmail.com>
-Date: Mon, 19 Dec 2022 16:17:35 +0100
+        Mon, 19 Dec 2022 07:30:33 -0800 (PST)
+Message-ID: <5ebaf98b-a77e-3c5a-3e08-bbb0119558a2@gmail.com>
+Date: Mon, 19 Dec 2022 16:30:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v4 0/8] add support MDP3 on MT8195 platform
+Subject: Re: [PATCH v5 01/10] spi: mtk-snfi: Change default page format to
+ setup default setting
 Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221207094921.15450-1-moudy.ho@mediatek.com>
- <5692faa0-6d7e-774f-9d6a-a495b44bdb3e@gmail.com>
-In-Reply-To: <5692faa0-6d7e-774f-9d6a-a495b44bdb3e@gmail.com>
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ benliang.zhao@mediatek.com, bin.zhang@mediatek.com
+References: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
+ <20221219024019.31974-2-xiangsheng.hou@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20221219024019.31974-2-xiangsheng.hou@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221219_071741_750426_8FEACD8B 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20221219_073042_646938_36DE420B 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,67 +100,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Thanks for your patch! There is something to improve please see below.
 
-
-On 16/12/2022 13:33, Matthias Brugger wrote:
+On 19/12/2022 03:40, Xiangsheng Hou wrote:
+> Change default page format to setup default setting since the sector
+> size 1024 on MT7986 will lead to probe fail.
 > 
-> Whole series applied, thanks!
+> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> ---
+>   drivers/spi/spi-mtk-snfi.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
+> diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+> index fa8412ba20e2..719fc6f53ab1 100644
+> --- a/drivers/spi/spi-mtk-snfi.c
+> +++ b/drivers/spi/spi-mtk-snfi.c
+> @@ -1430,8 +1430,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
+>   
+>   	// setup an initial page format for ops matching page_cache_op template
+>   	// before ECC is called.
+> -	ret = mtk_snand_setup_pagefmt(ms, ms->caps->sector_size,
+> -				      ms->caps->spare_sizes[0]);
+> +	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
 
-And now, whole series reverted, please see comment in 1/8.
+Couldn't you just set sector_size in mt7986_snand_caps?
 
 Regards,
 Matthias
 
-> On 07/12/2022 10:49, Moudy Ho wrote:
->> From: mtk18742 <moudy.ho@mediatek.com>
->>
->> Changes since v3:
->> - Rebase on linux-next
->>
->> Changes since v2:
->> - Depend on :
->>    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=681097
->> - Split dts settings into two patches based on belonging to MMSYS or MUTEX.
->>
->> Changes since v1:
->> - Depend on :
->>    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=681097
->> - Add compatible names to VPPSYS0 and VPPSYS1 in MMSYS binding file.
->> - Fix VPPSYS's MMSYS and MUTEX dts to pass the dtsb_check.
->> - Rename mtk_mmsys_merge_config() and mtk_mmsys_rsz_dcm_config() to
->>    mtk_mmsys_vpp_rsz_merge_config() and mtk_mmsys_vpp_rsz_dcm_config().
->> - Clean up mtk_mmsys_vpp_rsz_dcm_config().
->> - Add a comment to mtk_mutex_write_mod() and clean it up for use in more
->>    than 32 mods.
->>
->> Hi,
->>
->> This series add support for MT8195's two VPPSYS(Video Processor Pipe Subsystem),
->> under which there will be corresponding MMSYS and MUTEX settings that
->> need to be configured.
->>
->> Moudy Ho (2):
->>    dt-bindings: arm: mediatek: mmsys: Add support for MT8195 VPPSYS
->>    arm64: dts: mediatek: mt8195: add MUTEX configuration for VPPSYS
->>
->> Roy-CW.Yeh (6):
->>    dt-bindings: soc: mediatek: Add support for MT8195 VPPSYS
->>    arm64: dts: mediatek: mt8195: add MMSYS configuration for VPPSYS
->>    soc: mediatek: mmsys: add support for MT8195 VPPSYS
->>    soc: mediatek: mmsys: add config api for RSZ switching and DCM
->>    soc: mediatek: mutex: Add mtk_mutex_set_mod support to set MOD1
->>    soc: mediatek: mutex: support MT8195 VPPSYS
->>
->>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |   5 +-
->>   .../bindings/soc/mediatek/mediatek,mutex.yaml |   1 +
->>   arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  28 +++-
->>   drivers/soc/mediatek/mt8195-mmsys.h           |  13 ++
->>   drivers/soc/mediatek/mtk-mmsys.c              |  64 +++++++++
->>   drivers/soc/mediatek/mtk-mmsys.h              |   1 +
->>   drivers/soc/mediatek/mtk-mutex.c              | 135 +++++++++++++++++-
->>   include/linux/soc/mediatek/mtk-mmsys.h        |   4 +
->>   include/linux/soc/mediatek/mtk-mutex.h        |  35 +++++
->>   9 files changed, 274 insertions(+), 12 deletions(-)
->>
+
+>   	if (ret) {
+>   		dev_err(ms->dev, "failed to set initial page format\n");
+>   		goto disable_clk;
 
