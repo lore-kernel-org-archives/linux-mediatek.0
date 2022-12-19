@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9268EC10F1B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 03:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78DD9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Dec 2022 04:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v0RLYJNNjOaZwIF3K4Tu0NmZq0XJJx6TB5aHEi73l4Y=; b=qpoQgPmdLbTqbysLA1/SYoTFG7
-	XsKeguSpua9NtdNUIiOcZBEsRtNjJ/v31QryoPgUMarL3l2GrSE+YgqbeoFiShqifGYdHb4ki1YtB
-	lpWiHHn7G462P0t4aycK9/VIliIMRpOt8B1V7dqiDzHId6kD0OocQg1fBwPdacJMsK8eLLgqF2L1W
-	ecAULC4K5ExtwYT/gpEP4zq8Av+IiWPI2HSuF76oUVWRi2fhtWmpyYzLlBKeKW51RZRr3p1uldoDW
-	CA/aIufXgq3A1pJyWKNvxowAnd2M9PPcbLkNNuPCDT/bz7MuU+gQKvwlWppEWQYsQhewk+QZy0If3
-	OulSOD3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xGTZi6VmOFcWr4cuW00ZdwUqVgHtzUi+7zZ9/GhuAWY=; b=Od8M38mIW0GBfI24GuazEiu0vU
+	l+b507QzawISOSAaTPn3x++mH35S8WC6e4feBKkqh3RycHbGcucIpMa+BIdZ6KdgP36bldVcDz6WE
+	WQb7Aj4MlNoqvOfr4e7iADN01f4VRsz4Yjwuv4ogGpksNb4dlVvCQGuPRsYp8k9R+7ajHSnB9kCLw
+	0xosRchWj71wiUZFk1L7LKOyS+0AjrzTmKm4JH08SzzCzJPN7zzHSVSGwTgVxf/cTPtGo0Rscq10w
+	f4bhXmMM6wlrUoUCi3ox44CYPzq6H/HKHqWK8xUHToZ8IBxKv2VQUoZ6PPfZVWtQIqQD/GxH2Yd5H
+	Z0AFR5aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p772X-007VtK-DC; Mon, 19 Dec 2022 03:42:09 +0000
+	id 1p78BJ-008LLq-Cz; Mon, 19 Dec 2022 04:55:17 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p771w-007VQc-NX; Mon, 19 Dec 2022 03:41:34 +0000
-X-UUID: 29d0e50a7ddc4520b0b0bf0c18d2d7b3-20221218
+	id 1p78BF-008LHA-Jw
+	for linux-mediatek@lists.infradead.org; Mon, 19 Dec 2022 04:55:15 +0000
+X-UUID: f3667f1390b9417f8f2eb083e26c80d9-20221218
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=v0RLYJNNjOaZwIF3K4Tu0NmZq0XJJx6TB5aHEi73l4Y=;
-	b=WJoUUjcRY1IJTZnKlOjK6BZX1rK+mDsqhHZIC2OedgUntGsxC41bfPbFIYExk3Br5XDr+rx8y/ojho+aSvGD4ihqxo5eP31HmEckAvPe7M6rySArjF+Y991Mi9r0k5ccSER2m4n3wvP3iQVJ2wgoOuyuX8L4sRccS5f981/Pm7s=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xGTZi6VmOFcWr4cuW00ZdwUqVgHtzUi+7zZ9/GhuAWY=;
+	b=d9NVy6TC417SlhIWWbgd4RA9Kbyhtp1TOCE5PIqjF8yKOd/DCFzb3OUOV9BWBel08ACcbIT3WsUMKqiFPAuw/M07+KFVPRLDvge5FBw0FPCjx0ZxuSOylBQZdtfQyvzycLRH/OKmbgUqD3qPOpP56OpdSMCqJ1MxzhSLCAaNYnM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:f76e047c-59be-4e8a-8e71-020bf791bfd0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:dcaaed0,CLOUDID:4d9745f3-ff42-4fb0-b929-626456a83c14,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:f91f30e0-0942-456d-971b-8387624da99a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:027e47f3-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 29d0e50a7ddc4520b0b0bf0c18d2d7b3-20221218
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
+X-UUID: f3667f1390b9417f8f2eb083e26c80d9-20221218
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <bo.jiao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1514772957; Sun, 18 Dec 2022 20:41:27 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 890429564; Sun, 18 Dec 2022 21:48:42 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 19 Dec 2022 10:40:51 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Dec 2022 10:40:50 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
-	<richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Chuanhong Guo
-	<gch981213@gmail.com>
-CC: Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
-	<linux-mtd@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
-	<benliang.zhao@mediatek.com>, <bin.zhang@mediatek.com>, "AngeloGioacchino Del
- Regno" <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 05/10] spi: mtk-snfi: Add snfi sample delay and read latency adjustment
-Date: Mon, 19 Dec 2022 10:40:14 +0800
-Message-ID: <20221219024019.31974-6-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
-References: <20221219024019.31974-1-xiangsheng.hou@mediatek.com>
+ 15.2.792.15; Mon, 19 Dec 2022 12:48:08 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 19 Dec 2022 12:48:07 +0800
+From: Bo Jiao <bo.jiao@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
+	<ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Bo Jiao
+	<Bo.Jiao@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: fix potential memory leakage
+Date: Mon, 19 Dec 2022 12:48:04 +0800
+Message-ID: <0a218783098a6b1b90ff120c7182acee93dc8feb.1671423784.git.Bo.Jiao@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221218_194133_001579_10C6702F 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20221218_205513_708205_C339EA19 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,68 +80,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add snfi sample delay and read latency adjustment which can get
-from dts property.
+From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+fix potential memory leakage, recycle rxwi when mt76_dma_add_buf() call fail.
+
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 ---
- drivers/spi/spi-mtk-snfi.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+v2:
+- recycle rxwi when page_frag_alloc() and dma_map_single() fail.
+---
+ drivers/net/wireless/mediatek/mt76/dma.c | 27 ++++++++++++++----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index 85644308df23..f3f95eb37365 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -195,6 +195,8 @@
- #define DATA_READ_MODE_X4 2
- #define DATA_READ_MODE_DUAL 5
- #define DATA_READ_MODE_QUAD 6
-+#define DATA_READ_LATCH_LAT GENMASK(9, 8)
-+#define DATA_READ_LATCH_LAT_S 8
- #define PG_LOAD_CUSTOM_EN BIT(7)
- #define DATARD_CUSTOM_EN BIT(6)
- #define CS_DESELECT_CYC_S 0
-@@ -205,6 +207,9 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index fc24b35..76ad47d 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -580,24 +580,29 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
  
- #define SNF_DLY_CTL3 0x548
- #define SFCK_SAM_DLY_S 0
-+#define SFCK_SAM_DLY GENMASK(5, 0)
-+#define SFCK_SAM_DLY_TOTAL 9
-+#define SFCK_SAM_DLY_RANGE 47
+ 		buf = page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
+ 		if (!buf)
+-			break;
++			goto out;
  
- #define SNF_STA_CTL1 0x550
- #define CUS_PG_DONE BIT(28)
-@@ -1368,6 +1373,8 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	const struct of_device_id *dev_id;
- 	struct spi_controller *ctlr;
- 	struct mtk_snand *ms;
-+	unsigned long spi_freq;
-+	u32 val = 0;
- 	int ret;
+ 		addr = dma_map_single(dev->dma_dev, buf, len, DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(dev->dma_dev, addr))) {
+-			skb_free_frag(buf);
+-			break;
+-		}
++		if (unlikely(dma_mapping_error(dev->dma_dev, addr)))
++			goto free;
  
- 	dev_id = of_match_node(mtk_snand_ids, np);
-@@ -1446,6 +1453,19 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	// switch to SNFI mode
- 	nfi_write32(ms, SNF_CFG, SPI_MODE);
- 
-+	ret = of_property_read_u32(np, "rx-sample-delay-ns", &val);
-+	if (!ret)
-+		nfi_rmw32(ms, SNF_DLY_CTL3, SFCK_SAM_DLY,
-+			  val * SFCK_SAM_DLY_RANGE / SFCK_SAM_DLY_TOTAL);
+ 		qbuf.addr = addr + offset;
+ 		qbuf.len = len - offset;
+ 		qbuf.skip_unmap = false;
+-		if (mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t) < 0) {
+-			dma_unmap_single(dev->dma_dev, addr, len,
+-					 DMA_FROM_DEVICE);
+-			skb_free_frag(buf);
+-			break;
+-		}
++		if (mt76_dma_add_buf(dev, q, &qbuf, 1, 0, buf, t) < 0)
++			goto umap;
 +
-+	ret = of_property_read_u32(np, "mediatek,rx-latch-latency-ns", &val);
-+	if (!ret) {
-+		spi_freq = clk_get_rate(ms->pad_clk);
-+		val = DIV_ROUND_CLOSEST(val, NSEC_PER_SEC / spi_freq);
-+		nfi_rmw32(ms, SNF_MISC_CTL, DATA_READ_LATCH_LAT,
-+			  val << DATA_READ_LATCH_LAT_S);
-+	}
+ 		frames++;
++		continue;
 +
- 	// setup an initial page format for ops matching page_cache_op template
- 	// before ECC is called.
- 	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
++umap:
++		dma_unmap_single(dev->dma_dev, addr, len,
++				 DMA_FROM_DEVICE);
++free:
++		skb_free_frag(buf);
++out:
++		mt76_put_rxwi(dev, t);
++		break;
+ 	}
+ 
+ 	if (frames)
 -- 
-2.25.1
+2.18.0
 
 
