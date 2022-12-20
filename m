@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8151FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Dec 2022 10:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2B2C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Dec 2022 10:11:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eSQrlAqgl9ehVU48UzIRmodaal2XCf6blWcE/jOKNIQ=; b=obRrICVrpepSq2yRtZov8jkEax
-	u+ajFKQoiAHDPIlRqyAHYt4V9Tdm12HGNWUxXMMopxD+oxkJnZG2CCuwE0AZNkpa3RiY+trNXDnID
-	1953xNHzHoV5hCiRC82X1ckU6AMkrgYYr7wKyUHIY9Cl78nU8HT2n54IRF6ZgSuEzvGEjW0SfOQh4
-	9nJiIFq/PrDwXp+kzKsKAVPNHJ83v3w92z9XADhiTkLB3Cs2U7UrBLBXyDR34Zate2Td0xuSlLhX5
-	i1SYgwd+zY09XC6i3Fn+K+w5iNl9QkYQPgP+0ihkLZItR1Ye0jb4I3MCDYF9CKKTq1ao9CvQUoW2D
-	JWtcPa6w==;
+	bh=WuW2hqnb0a8CBcwNOcOFhUaWNdojMmGntpas0oOENBo=; b=ZiDXR+WxGbo2frhaLDRShFWhFa
+	IvJlihTvUraPY6nJggD6/mrvUOo3Aojlx807a+vYxXbqD+kiDv/Lhdr9/ySPsHe7QFEnBAHl9E3yi
+	C1ccImhKrbALGhHMqaBls/aTikKi06Yh118246RvaWevw6rw4GFJjCmIUJ+13Csx9voMbyeS/P3o6
+	fvZI3miK/t47KZl/EfOoRDIe5QVf7Ek5PX7rH4XCZX/dJY7vhN2dUTFR4NziRA075nwsmSdCjpeul
+	5yw4TQuwmDSKovba4iPDZeROdRUfB4fW9gDnYKySINi3fBEEoUcuacdJ7jbnVplZ9DYDv0PEFGpo/
+	+u2JpeJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7ZQ8-00D7ik-TQ; Tue, 20 Dec 2022 10:00:29 +0000
+	id 1p7ZaT-00DBw8-TQ; Tue, 20 Dec 2022 10:11:06 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7Z95-00Cz2i-IY; Tue, 20 Dec 2022 09:42:49 +0000
+	id 1p7ZJN-00D4fz-1D; Tue, 20 Dec 2022 09:53:27 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0BE0F6602CAA;
-	Tue, 20 Dec 2022 09:42:44 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 491B86602CA7;
+	Tue, 20 Dec 2022 09:53:22 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671529365;
-	bh=BWqzEXUidYwX8sbz46KDwZyzdQJjYGcYq+SPymmJ8Fk=;
+	s=mail; t=1671530003;
+	bh=X8hoapwEZc1dILsvgDGhhrYGjmxD0yFjqNZhtHPWXbc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GhcV6fJym8BwiN8M2gDxmkftRbcNNi22Fc4BrS0q4RVTrNOYhZsZPJ2v+E55CmxN5
-	 0jKdeqYJ8/6/kS9qW44Y8r7mXx3VyUMSST2mlWaCc/ujUQizgcV1qB2IObYWfE0/tD
-	 WZHnA1oJLvuipSwi8S6axT0CD5jq/oEuNGvAsm9CFsrC0qdFz5ZS514efumcYeZaKp
-	 i5tl+WJ0SW86AtHjmVrfx0xdxAe34+sW1aJVnSiMbfd1Yz+FZUr4g2WRbWct0fggJj
-	 W30PjCR4M/HJC+5ytewQJf/L8xUdfApY92Z897zkbFTPshktLfgAIunAEowdVcZkhO
-	 RD+SP+k80c1Pw==
-Message-ID: <51e82ede-a6d4-8e7b-88d1-93a1aba1f845@collabora.com>
-Date: Tue, 20 Dec 2022 10:42:42 +0100
+	b=YshjUpDyd0n3ET7nt4g7lY+C2qk+DkgXH4Tofsze0DDRRH8KZHTymjBrrHSPtahvt
+	 l9qbNMqSRjnHe+kEVgmGgJk+C2auUC94u9skCcKQm9H/wVe2Fsp7XDw4VaiVagD6CG
+	 CWB+YgiT5IqFN6aZbkDBJW4K+w5kbLoRxeZeWGLrnwpWWpuwpmv1oqjuWbM9VKeV1/
+	 I1Zrbf0sRT2gzodU9Jg5DLe6BZqUP50bYMLrIYAAaw67Y5OJpx5sgnD5MzBg5RcqZg
+	 GkvNe4KF21BviH+YmZCckqaZh7KuOWcHa46AOKXRwc9xv9dJaVwSnxidba2JcqnFBt
+	 VKPW9TYBNXTuA==
+Message-ID: <4c198fb0-48a7-2e4d-3363-7eac47a0d5a7@collabora.com>
+Date: Tue, 20 Dec 2022 10:53:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH] iommu/mediatek-v1: Fix an error handling path in
- mtk_iommu_v1_probe()
+Subject: Re: [V2] media: jpeg: Fix multi-hw judgement
 Content-Language: en-US
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <593e7b7d97c6e064b29716b091a9d4fd122241fb.1671473163.git.christophe.jaillet@wanadoo.fr>
+To: Irui Wang <irui.wang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, nicolas.dufresne@collabora.com,
+ kyrie wu <kyrie.wu@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Tomasz Figa <tfiga@chromium.org>, xia.jiang@mediatek.com,
+ maoguang.meng@mediatek.com
+References: <20221216035247.18816-1-irui.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <593e7b7d97c6e064b29716b091a9d4fd122241fb.1671473163.git.christophe.jaillet@wanadoo.fr>
+In-Reply-To: <20221216035247.18816-1-irui.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221220_014247_961882_B0BD1EC6 
-X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-CacheID: sfid-20221220_015325_384066_EEE4377F 
+X-CRM114-Status: UNSURE (   7.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,18 +81,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/12/22 19:06, Christophe JAILLET ha scritto:
-> A clk, prepared and enabled in mtk_iommu_v1_hw_init(), is not released in
-> the error handling path of mtk_iommu_v1_probe().
+Il 16/12/22 04:52, Irui Wang ha scritto:
+> From: kyrie wu <kyrie.wu@mediatek.com>
 > 
-> Add the corresponding clk_disable_unprepare(), as already done in the
-> remove function.
+> some chips have multi-hw, but others have only one,
+> modify the condition of multi-hw judgement
 > 
-> Fixes: b17336c55d89 ("iommu/mediatek: add support for mtk iommu generation one HW")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Fixs: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Typo. s/Fixs/Fixes/g
 
+Fix that, please.
+
+Regards,
+Angelo
 
 
