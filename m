@@ -4,79 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85EADC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 08:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2301CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 09:24:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yhEt3FU1GHlM/ELNmA6S6/tYz8B4nV7pC8aweoE4sI4=; b=kmsM2TA9V0BjheV8odgjAZq9P+
-	XpN/vnsjElfMFC+43TFewT5lesAhsbxvpn21usRSwuv7FRhCWB4b5skejlzjp/H+aRJJJEk+xm1Eo
-	h1xQxGOpifyL2ZknWjWbbMjMOww36zoYuwGfvUxPYXVfy8H2ZQP3XN2CESp6feMHBVtFuoUkvGTZn
-	N7ZJbKX6bDOTCa0RSFcytKk/GBhgWw7ws64qTKG2tCEDWCvMidvVci1wP7flVY92cydU+Q+TeGD/8
-	M7Ls1wNHxzM7OFWmIbESzkdO7CqYjihhgAsmwTwuqMMptbmFk/L8UCib9jECVjDfNhkAQ3DCdVnxv
-	pKW882sg==;
+	bh=j+u3qZesTJ4gY5o9X7qfxGdGas0FkmANzA5Ue4tbWbw=; b=apS0XH5islitARDzyOCbVeA0d1
+	XjHjOfS3vh2F/MQSK6DxNELwwJQNlK1M3MYau7U/ZwTsBlYjbJyeX4moO8EXlTBjNQHFytCeTNHBk
+	LNb/kJejx6GgfFJhedRpxxXyFJGijscAvO/SDj7BRdpT4CBnX4by0YCja4qeTMZ3EGt0aywSnRnYn
+	eLVb/QgWNBMo+xFejRPnb7QHw6bVpozQLZLedavnBxsxA2Nmk37H4ZzbHz16AnQxKqew/o+ZATgF1
+	9H+G5Klg3hliEfStlCI2MNNeCKcEIlekURCjw+nH7RpUxEutmbjfmL+wMkLvsc957BjWlBFQVOS2k
+	EWywso4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7uuz-00CUB4-Ev; Wed, 21 Dec 2022 08:57:41 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1p7vL1-00CnNZ-Gi; Wed, 21 Dec 2022 09:24:35 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7uuJ-00CTZX-It; Wed, 21 Dec 2022 08:57:02 +0000
-Received: by mail-wm1-x335.google.com with SMTP id bg10so10684167wmb.1;
-        Wed, 21 Dec 2022 00:56:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yhEt3FU1GHlM/ELNmA6S6/tYz8B4nV7pC8aweoE4sI4=;
-        b=QkBCOuS773Vho4G6Y/h9hFVEgOqCREmIMA77L/XA2hNLOcRayKfFbGD5tu9JFb4Tm9
-         R7ObvenBoHYWwGa2pbrRmEiTDPko49ncKYPlxJ7B3d/u0DJnIaD9OoXCAmcRZeQG+PeJ
-         yTu9fFbGv3SZ8+a+f3G7JXTGUPOo52F1fTy7FdVsjA7iuRENzkPT40MV7C2UsWrfkSCJ
-         5YdZoGY+9eB3FYhvrDay0XtNn1hODmB1NYuvWqVh67eYZw2i+BJ2TGTf8FkrmQIUzAH8
-         fEloK/x+gbLnGzYSsbYqgeD0tgbk96781tTl6sOKsQgPE+6nEWctF0BpD8St0pO18tmY
-         b+Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yhEt3FU1GHlM/ELNmA6S6/tYz8B4nV7pC8aweoE4sI4=;
-        b=ZapJXPShBy5PvgGCo+ulQHatTns87pjtES0rUDyfRkk22c9fMymPG/2iFJAbIqX57E
-         tTSTmf1vVhvNaDrYWl/6wIJiotS0zbLD2DmS5qPMyxUUEYnoSZ+TJig5/XBlBwCEFF8K
-         k7mHR6bzAsxYNEyCbVPKFL6gbifHuyyYBWBHzVeMOrGjQ32wc8jDMNME9DmpC1Yrw9b7
-         QczbB2YZkOKY9DPLjIHjraadU/SXCHkoinbjVE1cca7+348PHFjESt44DL/4DWcsOIDn
-         /VtJmi/tKT6cfs3ZHVsmyoxbj5GGpnSx/EAEQ63LmLMU+Dp4ZhLteq3dlnYTSYevQ9FH
-         9fXw==
-X-Gm-Message-State: AFqh2krWZcbphwJ2G8O+jcu+Nwss2TuCpIwwVsRteXM9VDpucCeFWePS
-	haceCIWAExfWTYX27MFEkp4=
-X-Google-Smtp-Source: AMrXdXuSZux4153Rq5GjklQKx8IiCPyFPaux/RA3OhYcIvAD2Z0//bD+FwmqwDQm9FjlKusFd9Z3kQ==
-X-Received: by 2002:a05:600c:228b:b0:3d2:37a4:222a with SMTP id 11-20020a05600c228b00b003d237a4222amr3813954wmf.38.1671613014888;
-        Wed, 21 Dec 2022 00:56:54 -0800 (PST)
-Received: from [192.168.1.132] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id i83-20020a1c3b56000000b003cf57329221sm1524349wma.14.2022.12.21.00.56.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Dec 2022 00:56:54 -0800 (PST)
-Message-ID: <12f4d25e-fb2e-8f4d-1874-46f7404b05b6@gmail.com>
-Date: Wed, 21 Dec 2022 09:56:53 +0100
+	id 1p7vKZ-00CnCi-KT; Wed, 21 Dec 2022 09:24:09 +0000
+Received: from [2a02:8108:963f:de38:eca4:7d19:f9a2:22c5]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1p7vKT-0005xr-P0; Wed, 21 Dec 2022 10:24:01 +0100
+Message-ID: <7e03d11a-2ba7-6cac-5101-02b9b8f93b77@leemhuis.info>
+Date: Wed, 21 Dec 2022 10:24:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
-Subject: Re: [PATCH v2] soc: mediatek: mtk-svs: Enable the IRQ later
-Content-Language: en-US
-To: Ricardo Ribalda <ribalda@chromium.org>, Roger Lu <Roger.Lu@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221127-mtk-svs-v2-0-145b07663ea8@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20221127-mtk-svs-v2-0-145b07663ea8@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
+ mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622) #forregzbot
+Content-Language: en-US, de-DE
+To: "regressions@lists.linux.dev" <regressions@lists.linux.dev>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <02c2c955-940b-b315-0474-85d0eddad7a3@leemhuis.info>
+ <Y4jHvomTrU8guBox@makrotopia.org>
+ <47a4665e-333d-a6e7-a2da-96cb06c2d87b@leemhuis.info>
+ <20221202052716.uj3kzkunazmgazeq@vireshk-i7>
+ <0ebef1a2-6b5a-04b9-a79b-79eb3349c32b@collabora.com>
+ <c76bd301-0e8d-2d2b-0d3e-a57ece9b496f@collabora.com>
+ <b1822bbc3775730c4cedf9652323c7d72e663e4b.camel@mediatek.com>
+ <8be3e050-f32a-6761-8ebd-49c38dfcf9eb@collabora.com>
+ <c186d104-43e0-ca10-3ce2-c2f922acd8bf@leemhuis.info>
+ <37468027-6a27-dcb8-9c14-8f8426ec50d1@collabora.com>
+ <20221202110139.vmwcmoudakm2nap4@vireshk-i7>
+ <f70d7c09-df0d-4fa9-92c9-63f31cf56483@systemli.org>
+ <5e07eb07de0fea2232c32f58691ffb7cfd2303f8.camel@mediatek.com>
+ <3599ec46-20d2-a233-a7c0-d2e363ebdf93@systemli.org>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+In-Reply-To: <3599ec46-20d2-a233-a7c0-d2e363ebdf93@systemli.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1671614647;eb0737df;
+X-HE-SMSGID: 1p7vKT-0005xr-P0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221221_005659_715158_08F855C1 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20221221_012407_911668_9F00E73C 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,79 +78,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+[Note: this mail contains only information for Linux kernel regression
+tracking. Mails like these contain '#forregzbot' in the subject to make
+then easy to spot and filter out. The author also tried to remove most
+or all individuals from the list of recipients to spare them the hassle.]
 
+On 20.12.22 15:37, Nick wrote:
+> thanks for all your help. I guess it's fine now.
 
-On 20/12/2022 22:35, Ricardo Ribalda wrote:
-> If the system does not come from reset (like when is booted via
-> kexec()), the peripheral might triger an IRQ before the data structures
-> are initialised.
-> 
-> Fixes:
-> 
-> [    0.227710] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000f08
-> [    0.227913] Call trace:
-> [    0.227918]  svs_isr+0x8c/0x538
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+I'm a bit confused here. The revert afaics never made it to mainline,
+but nevertheless the report claimed two times now that the problem is
+gone, hence marking it as resolved
 
-Thanks Ricardo. Roger I'll wait for a Tested-by tag from you to make sure this 
-time everything is fine.
+#regzbot resolved: problem doesn't show up anymore according to the reporter
 
-Regards,
-Matthias
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
 
-> ---
-> To: Matthias Brugger <matthias.bgg@gmail.com>
-> To: Roger Lu <Roger.Lu@mediatek.com>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
-> Changes in v2:
-> - Enable the irq before svs_start, to avoid MT8192 not starting.
-> - Link to v1: https://lore.kernel.org/r/20221127-mtk-svs-v1-0-7a5819595838@chromium.org
-> ---
->   drivers/soc/mediatek/mtk-svs.c | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 0469c9dfeb04..75b2f534aa9d 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -2385,14 +2385,6 @@ static int svs_probe(struct platform_device *pdev)
->   		goto svs_probe_free_resource;
->   	}
->   
-> -	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> -					IRQF_ONESHOT, svsp->name, svsp);
-> -	if (ret) {
-> -		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
-> -			svsp_irq, ret);
-> -		goto svs_probe_free_resource;
-> -	}
-> -
->   	svsp->main_clk = devm_clk_get(svsp->dev, "main");
->   	if (IS_ERR(svsp->main_clk)) {
->   		dev_err(svsp->dev, "failed to get clock: %ld\n",
-> @@ -2414,6 +2406,14 @@ static int svs_probe(struct platform_device *pdev)
->   		goto svs_probe_clk_disable;
->   	}
->   
-> +	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
-> +					IRQF_ONESHOT, svsp->name, svsp);
-> +	if (ret) {
-> +		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
-> +			svsp_irq, ret);
-> +		goto svs_probe_iounmap;
-> +	}
-> +
->   	ret = svs_start(svsp);
->   	if (ret) {
->   		dev_err(svsp->dev, "svs start fail: %d\n", ret);
-> 
-> ---
-> base-commit: 4312098baf37ee17a8350725e6e0d0e8590252d4
-> change-id: 20221127-mtk-svs-add137fbf187
-> 
-> Best regards,
+P.S.: As the Linux kernel's regression tracker I deal with a lot of
+reports and sometimes miss something important when writing mails like
+this. If that's the case here, don't hesitate to tell me in a public
+reply, it's in everyone's interest to set the public record straight.
 
