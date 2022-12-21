@@ -4,52 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3223AC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 10:33:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE45C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 10:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sIVXARwF0b3IfS6I6wrx9Kl+fpIP8oHChbllPVpvnzQ=; b=43Q3xf35Zl2GTupzh0ZHYCjDoM
-	WupblawEOUbhmQqVvI/IMM5jbvm41UJaLxu/ezBU6DoVj9TI2685zRk0xoVe0bEvY1RN9EVV3/DGy
-	QO/RCSC9V+OnYS+iJodllbeDvW23ym6hLRugtW11P8GcFt+o4nZiZWFiNGDtW5vDRIjmRVVZSu+62
-	E/JJoSN8HGjYoGaUrGqI+fSpQxmMXdqfhbcZ20tMAQeEvSTRxbDYiQio45+henivXnKhNJkueMrbs
-	J6RQbych/NODAzgKTuGqcn+LINdxkx23tfhlw8oS8W5Xbaxy6KabSgfXfno7RQbuols2Jb/FzNtEE
-	Mjl8uo3w==;
+	bh=tND8dMZ4UYN1tPgLmPx53SiIZZIqD2HEaBgLp/G2TeM=; b=aR4CAtU47SiSd3uFD7TXc2sSfn
+	uKmwIT+x8zBLncPU9Qnv7C9XpYoVLyvC4xIdcTEKg5MEU+l6j0uHb/8SRAPyI+1TJ3Ua456n/f1FR
+	nohzcQ/vdcv0R9O+EPuGb94ybzcZzY6dMCCHE8FlmXf15exZQjQd2AIjT8PDAb2wVfK7t5eVFIUYG
+	lWoajYUY4s4yHDFhBq5q4MBG07pL9JICBLBjP8W0vT/C3rMdhsySxDfALuVhSGrVDGRxccykl9/GZ
+	/m27eZBWZRLzgBmMtqVcFndkrAHEsM3rlkKhaxJz2kQg1mR++GDoIxU69k1B+rScZ6wyAHBl6e79p
+	zXCqiT7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7wQ1-00DUJJ-4k; Wed, 21 Dec 2022 10:33:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1p7wSX-00DVqf-Iz; Wed, 21 Dec 2022 10:36:25 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7wFi-00DNQk-DS; Wed, 21 Dec 2022 10:23:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F57D6602CBE;
-	Wed, 21 Dec 2022 10:23:08 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671618189;
-	bh=ifIfjZBJyVbQC95Xu7dvrREMT4wSVW4EPZMKg53HoQ8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oPZsL4jWcm/nVl1fp6+GYfg9sjUWBOdWfeadcJm5PUFKQJpEDq/rqm5lqTSo0NNiM
-	 SdFxVh6zJjO5+nHevQPRig3dXXfeVRpyu1EJWstg1/Oyb2upYYM1L5J4hQMGEDK0XY
-	 L6ueK9qGkPPPk0YI7eewxQ2RTsZKaS2UIHQq+Fdm7XWgh9qDsBJoDh3CglLEDlMjTL
-	 bOOxBqGqtKucCcqhx1AzMzbM/LXMdAsUGRo4sGAvOCF8PQcZJX5YeTSQyWgcGK73sM
-	 C8GyQ8OBGe8nV9QQGb5CYzqkCLAKBMkv7BiWTsSNKaOi1iFcqB4l0kfbdJuwg8ZnCc
-	 VG1WViI/Gu/VA==
-Message-ID: <43f852a3-b82f-cd0c-a5aa-bade855ac8f4@collabora.com>
-Date: Wed, 21 Dec 2022 11:23:06 +0100
+	id 1p7wPP-00DU18-JO
+	for linux-mediatek@lists.infradead.org; Wed, 21 Dec 2022 10:33:13 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id x11so15167773ljh.7
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Dec 2022 02:33:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tND8dMZ4UYN1tPgLmPx53SiIZZIqD2HEaBgLp/G2TeM=;
+        b=UnSlf9Rhd8aRFFkqHiDrBj0ry1RguPMiz9Lv3xMQh2JPGHHvjOoLjolz8OHwK3FJOF
+         KH8/9UiOtHq+1xys5RZGTubjWv1XIxq99OC+KdUKw/FNrkRpeYDWdWa8CC7Lj0i44gcr
+         enmAnd2tr48Z6TD7P13KK7PovTdF45jYLHtqnwaGReb5SE4wN5DiOMXHO2/7/iKmDze+
+         bWLchDN30mwJwnDCwmmTL84x5TPKN+LnOvvlpSsi3rKzTvebFKg4xc+jMFNP5I/ja2K2
+         w+p8/skyt1gTlQAG69dXxeZqC5W5remmcRTrPKIjX2yXfZvmigCj8aX/P2ohE9+rEIJk
+         Ucaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tND8dMZ4UYN1tPgLmPx53SiIZZIqD2HEaBgLp/G2TeM=;
+        b=YUiDZ5vN4lsw9TTruiJaZkcnhE/6xXuar7ul2vAcFp1ViI0EpJub8G/VCyxs5UQ1PA
+         dejUofE6Ism3So7s87Iuz9/8cfdrTvVpeGBuaQBW4T3ivxFDMcPGSwtE6ceKuC5eZU93
+         gqVmn6yCC725Ccdscpf3uc4aJsm9UMzgr7VaGiK2Cc7GrLT4bNwzwVRBuFq3fPhvcBOl
+         aMneOAXLGUBV5meUhtTx+8Hmph7YpML9FMUklzCY+rZCyKSVo4nLFbnhnVOijPKNhtrs
+         09kc4XTWpCGwolJPEtPHgOhramq5qvQVUkIHt9/Qa7pR4BYRGThV2iogTOlAvXK2QS8N
+         ghDA==
+X-Gm-Message-State: AFqh2kpmvuMPYkznfD6EOuyGUQ9SjU/cPwy5epkv5RtWki8YDJBmA0kR
+	WPYOfsz1oH2c4fO2pcLVx37BCQ==
+X-Google-Smtp-Source: AMrXdXsJHVlkkI/BZHuiAvMoxQ5LOirVOUmT+bS3Zi3OPHcp+nkbM/OQR/hoQziwvFLBBAqVlRnbvQ==
+X-Received: by 2002:a2e:8652:0:b0:279:bd34:dcd7 with SMTP id i18-20020a2e8652000000b00279bd34dcd7mr448734ljj.48.1671618788767;
+        Wed, 21 Dec 2022 02:33:08 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id v15-20020a2ea44f000000b0027f792ed10fsm1046801ljn.134.2022.12.21.02.33.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 Dec 2022 02:33:08 -0800 (PST)
+Message-ID: <403b0310-070f-1ecc-2188-95c22859bae1@linaro.org>
+Date: Wed, 21 Dec 2022 11:33:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v2 6/6] arm64: dts: mediatek: Add the missing ADSP power
- domains controller for MT8192
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+Subject: Re: [PATCH v2 5/6] dt-bindings: arm: mediatek: Add missing
+ power-domains property
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -60,15 +79,16 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Chen-Yu Tsai <wenst@chromium.org>
 References: <20221221034407.19605-1-allen-kh.cheng@mediatek.com>
- <20221221034407.19605-7-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221221034407.19605-7-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20221221034407.19605-6-allen-kh.cheng@mediatek.com>
+ <ec927229-cf03-136c-5629-22719110313a@collabora.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ec927229-cf03-136c-5629-22719110313a@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221221_022310_670639_2EA078CC 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221221_023311_743564_9C0BA367 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,14 +103,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/12/22 04:44, Allen-KH Cheng ha scritto:
-> Add the missing ADSP power domains controller for mt8192-scp_adsp clock
-> controllers.
+On 21/12/2022 11:22, AngeloGioacchino Del Regno wrote:
+> Il 21/12/22 04:44, Allen-KH Cheng ha scritto:
+>> The "mediatek,mt8192-scp_adsp" binding requires a power domain to be
+>> specified.
+>>
+>> Fixes: 4a803990aeb1 ("dt-bindings: ARM: Mediatek: Add new document bindings of MT8192 clock")
+>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>> ---
+>>   .../arm/mediatek/mediatek,mt8192-clock.yaml     | 17 +++++++++++++++++
+>>   1 file changed, 17 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> index b57cc2e69efb..ce8dd2bfb533 100644
+>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> @@ -40,6 +40,9 @@ properties:
+>>     reg:
+>>       maxItems: 1
+>>   
+>> +  power-domains:
+>> +    maxItems: 1
+>> +
+>>     '#clock-cells':
+>>       const: 1
+>>   
+>> @@ -47,13 +50,27 @@ required:
+>>     - compatible
+>>     - reg
+>>   
+>> +allOf:
 > 
-> Fixes: 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192 clock controllers")
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> allOf is unnecessary here.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+If you mean that "if:" can be without it, then it is better to have
+allOf. It grows often, so you avoid useless indentation change later.
 
+
+Best regards,
+Krzysztof
 
 
