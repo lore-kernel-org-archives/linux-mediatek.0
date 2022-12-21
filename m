@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2301CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 09:24:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E641EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 10:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j+u3qZesTJ4gY5o9X7qfxGdGas0FkmANzA5Ue4tbWbw=; b=apS0XH5islitARDzyOCbVeA0d1
-	XjHjOfS3vh2F/MQSK6DxNELwwJQNlK1M3MYau7U/ZwTsBlYjbJyeX4moO8EXlTBjNQHFytCeTNHBk
-	LNb/kJejx6GgfFJhedRpxxXyFJGijscAvO/SDj7BRdpT4CBnX4by0YCja4qeTMZ3EGt0aywSnRnYn
-	eLVb/QgWNBMo+xFejRPnb7QHw6bVpozQLZLedavnBxsxA2Nmk37H4ZzbHz16AnQxKqew/o+ZATgF1
-	9H+G5Klg3hliEfStlCI2MNNeCKcEIlekURCjw+nH7RpUxEutmbjfmL+wMkLvsc957BjWlBFQVOS2k
-	EWywso4w==;
+	bh=KsIO6fcgLcj0cnDXBlcqy/fjcRfEhqdy3sfloL/qhGs=; b=CfGYQPcbd7QObCrg2wYdX5Nhh4
+	KXdwKh593mG908vHEnPLHRzCsvc6lNiLN8RpkgnjrSzMLTn0R0fO8aoiiqKr36b3ETztJqhGEa0BL
+	3aoQJgxgq/vXvY4mfGJKQNXuY1JStj1qrKWkRVevkFoTW/KJ9ioVmQTF7lFtsuCG+Z46A9FUSqtlJ
+	FryiXCIbPSxLuBoKPmMX2Ddo/kNZPgUGuPoYyltTR8kq4I8GKu7BUFrKZCYn7sfoA9lv3Qqzxro4D
+	AZRxNlLl4eTtsFqHxga68rENzNhi3bTmGwTlpNRSiVXBvlIO/5Vw7ltAFPhG1soyBn7Mp8SLr1NJb
+	yxWVUjCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7vL1-00CnNZ-Gi; Wed, 21 Dec 2022 09:24:35 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1p7w8o-00DIBo-J8; Wed, 21 Dec 2022 10:16:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7vKZ-00CnCi-KT; Wed, 21 Dec 2022 09:24:09 +0000
-Received: from [2a02:8108:963f:de38:eca4:7d19:f9a2:22c5]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1p7vKT-0005xr-P0; Wed, 21 Dec 2022 10:24:01 +0100
-Message-ID: <7e03d11a-2ba7-6cac-5101-02b9b8f93b77@leemhuis.info>
-Date: Wed, 21 Dec 2022 10:24:01 +0100
+	id 1p7w69-00DFcs-ME; Wed, 21 Dec 2022 10:13:19 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1D1C6602CBE;
+	Wed, 21 Dec 2022 10:13:10 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1671617591;
+	bh=n9OD75LWbhmmE+p5PTtkkUSFONy/coTD+gGYR7GYpbk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=X8Mx8SIZzCnbeE3LdffT171/+o2OjubaXA2Kz0R4rzt2ROYvvHQHK23QwaOOMrxG9
+	 RgXxrksd3kUKYNGamMDpIkTSWpo+nloYUaaksHGqT455U8rYXXEigxWXo+6n9ZFIBo
+	 VfGJd/2m/7nKps9oxigztO2m1xn6lRd92mvvDX1KP721TPDyUrqnJekwD8+WWLiNKt
+	 cyabcbyXsTOmRicICbyjxOCp9SYE3G9/A9pR+Kygn26Kdi5UR4MzVIjeoATQnBTGQj
+	 vYq3/RnlJJJqvptlZxMU5ZC6q7A+n2yKAfnI1hF0mC99Dpo7SduiqUjkiybKUojvxL
+	 Subs/MjIoR0tw==
+Message-ID: <f591f169-acd8-d408-970b-8afc66eda8cf@collabora.com>
+Date: Wed, 21 Dec 2022 11:13:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: Kernel Kernel bug caused by (cpufreq: mediatek: Refine
- mtk_cpufreq_voltage_tracking()) on Banana Pi R64 (MT7622) #forregzbot
-Content-Language: en-US, de-DE
-To: "regressions@lists.linux.dev" <regressions@lists.linux.dev>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <02c2c955-940b-b315-0474-85d0eddad7a3@leemhuis.info>
- <Y4jHvomTrU8guBox@makrotopia.org>
- <47a4665e-333d-a6e7-a2da-96cb06c2d87b@leemhuis.info>
- <20221202052716.uj3kzkunazmgazeq@vireshk-i7>
- <0ebef1a2-6b5a-04b9-a79b-79eb3349c32b@collabora.com>
- <c76bd301-0e8d-2d2b-0d3e-a57ece9b496f@collabora.com>
- <b1822bbc3775730c4cedf9652323c7d72e663e4b.camel@mediatek.com>
- <8be3e050-f32a-6761-8ebd-49c38dfcf9eb@collabora.com>
- <c186d104-43e0-ca10-3ce2-c2f922acd8bf@leemhuis.info>
- <37468027-6a27-dcb8-9c14-8f8426ec50d1@collabora.com>
- <20221202110139.vmwcmoudakm2nap4@vireshk-i7>
- <f70d7c09-df0d-4fa9-92c9-63f31cf56483@systemli.org>
- <5e07eb07de0fea2232c32f58691ffb7cfd2303f8.camel@mediatek.com>
- <3599ec46-20d2-a233-a7c0-d2e363ebdf93@systemli.org>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-In-Reply-To: <3599ec46-20d2-a233-a7c0-d2e363ebdf93@systemli.org>
-Content-Type: text/plain; charset=UTF-8
+ Thunderbird/102.6.0
+Subject: Re: [RESEND PATCH v4] arm64: dts: mt8195: Add Ethernet controller
+Content-Language: en-US
+To: Biao Huang <biao.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ macpaul.lin@mediatek.com
+References: <20221221022523.8458-1-biao.huang@mediatek.com>
+ <20221221022523.8458-2-biao.huang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221221022523.8458-2-biao.huang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1671614647;eb0737df;
-X-HE-SMSGID: 1p7vKT-0005xr-P0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221221_012407_911668_9F00E73C 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221221_021317_899562_518243DA 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +77,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[Note: this mail contains only information for Linux kernel regression
-tracking. Mails like these contain '#forregzbot' in the subject to make
-then easy to spot and filter out. The author also tried to remove most
-or all individuals from the list of recipients to spare them the hassle.]
+Il 21/12/22 03:25, Biao Huang ha scritto:
+> Add Ethernet controller node for mt8195.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88 ++++++++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 86 +++++++++++++++++++
+>   2 files changed, 174 insertions(+)
+> 
 
-On 20.12.22 15:37, Nick wrote:
-> thanks for all your help. I guess it's fine now.
+..snip..
 
-I'm a bit confused here. The revert afaics never made it to mainline,
-but nevertheless the report claimed two times now that the problem is
-gone, hence marking it as resolved
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 5d31536f4c48..02112bbf2bdf 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1046,6 +1046,92 @@ spis1: spi@1101e000 {
+>   			status = "disabled";
+>   		};
+>   
+> +		eth: ethernet@11021000 {
+> +			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
+> +			reg = <0 0x11021000 0 0x4000>;
+> +			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			interrupt-names = "macirq";
+> +			clock-names = "axi",
+> +				      "apb",
+> +				      "mac_cg",
 
-#regzbot resolved: problem doesn't show up anymore according to the reporter
+mac_cg goes as last clock, as specified in the binding.
 
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+Order: axi, apb, mac_main, ptp_ref, rmii_internal, mac_cg.
 
-P.S.: As the Linux kernel's regression tracker I deal with a lot of
-reports and sometimes miss something important when writing mails like
-this. If that's the case here, don't hesitate to tell me in a public
-reply, it's in everyone's interest to set the public record straight.
+Please fix.
+
+Regards,
+Angelo
+
+> +				      "mac_main",
+> +				      "ptp_ref",
+> +				      "rmii_internal";
+> +			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
+> +				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
+> +				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
+
 
