@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6B0C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 03:07:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F0BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Dec 2022 03:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lyl3Mwgot8XhzTZfBNfiuXo5KUPtT062utYfSByK89s=; b=HGWnbr9Eb5BqZ1I2x0N0zu0azz
-	ayVQROkjoh2rpmeXF799VAm35GMiDuOWlFQlvsDFPWJj6OaRLZBEmXBEFhisE7YzRKfmvAeOCvTn0
-	LYoTt7S94Vtdefoiw0du/yw1+lBL6lXJFlUdKlYI9RgwPFXLLEipdjxHF/x2gVlWKnEfaRlT129UA
-	pJVwLdDjvmpIuQc2zQf6h7LqKTa20MvsekRwWjIuAVLZiQ3SF/rr/NfHCBOpZpskDq3KvdBOXCM7w
-	T+TuGBQGq0uOhdAyIN+J4fBvNpy6+WE5kC7jfVqtGWRs512XKKyilySxqYvHCwPL/p+plsv5EcgNF
-	ZQveJH9g==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H7fWgVkJUC6eUeK6p/tHC0VeRCr0fCiCWiRtfMKZ1Ng=; b=AbwB4B1ClU/A07Oj+5kQp887zA
+	q6EO8P5VOxIh3vrFmXIJWA/XYzJBjy1eJBN+s+CxH7Ipoc2TG8Nsi7jcfizZXSLCokHu1hsxEtuLN
+	lP6mAts1d1rX84+Pb2ucoL04BIrSNDK3bVuls94KOu3vXVnCg5bvT1z0umbfU4XTeVBa7IaDRjQ6l
+	lXFi/XWxJyFDO0A1yvmoTtNZd1dn+5YRn72jOTPuXH06YPFaECap8/W0Q+oFlN5cL9/o+BOAulIWM
+	OlWJQTm93v7rBi1tzgwDU9Pb3vGgMEB0n8LJA8fGfj+xwSH1JHSdUlPZFB39FMGpl0SGqzbxtu9gG
+	zzHWtt/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7pRf-008OlY-CL; Wed, 21 Dec 2022 03:07:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p7plV-008edr-6o; Wed, 21 Dec 2022 03:27:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p7pRb-008OcI-Ud; Wed, 21 Dec 2022 03:07:01 +0000
-X-UUID: 6bfa44e04f704012ba103d4dc99f01ea-20221220
+	id 1p7plS-008eWb-1R; Wed, 21 Dec 2022 03:27:31 +0000
+X-UUID: 505e20e2904749b79d13edfa880d949e-20221220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lyl3Mwgot8XhzTZfBNfiuXo5KUPtT062utYfSByK89s=;
-	b=mGYnVyYBxijlxH5p8o5qbj5mrzNn97Zq7uQP/a7eD2nTE0/ana48BrzeyCwmd/SSpvuDihKJrQEVf5OfKWtRaQAV5X7l7TbodQIVqX1oZ78uAVDufDtcMdAi70c/fVcwSObMrToavEPua5fyFErY6O6KVk9J7XMS4YYEEOVu9uw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=H7fWgVkJUC6eUeK6p/tHC0VeRCr0fCiCWiRtfMKZ1Ng=;
+	b=ZsrfX7AyjuzGPpXsocQu6HngN4KyUzSehAe77zwCGPTHhJOU+VjMvUpRqnu9MNMsjBLl8FNqMBvRxF9xySwfbIYpUnZMS+Oq5Aa2uGwNV8IDXlc3ZJQD6OPE45lWd6EwEtxhFZDSZr/3kHZYkb9b5uXNfsQKBeagtja491wRcG0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:fe3d2b21-7917-4b23-b27d-1ab68a468756,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:d76bf389-8530-4eff-9f77-222cf6e2895b,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:c18e2e97-9212-41be-a70a-674279525100,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:22165952-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6bfa44e04f704012ba103d4dc99f01ea-20221220
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 505e20e2904749b79d13edfa880d949e-20221220
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <biao.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 447286875; Tue, 20 Dec 2022 20:06:47 -0700
+	with ESMTP id 876191848; Tue, 20 Dec 2022 20:27:17 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 21 Dec 2022 10:26:08 +0800
+ 15.2.792.15; Wed, 21 Dec 2022 10:26:15 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 21 Dec 2022 10:26:08 +0800
+ Transport; Wed, 21 Dec 2022 10:26:14 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob
  Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -55,18 +55,19 @@ To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob
 CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Biao
  Huang <biao.huang@mediatek.com>, <macpaul.lin@mediatek.com>
-Subject: [RESEND v4 PATCH 0/1] arm64: dts: mt8195: Add Ethernet controller
-Date: Wed, 21 Dec 2022 10:25:23 +0800
-Message-ID: <20221221022523.8458-1-biao.huang@mediatek.com>
+Subject: [RESEND PATCH v4] arm64: dts: mt8195: Add Ethernet controller
+Date: Wed, 21 Dec 2022 10:25:24 +0800
+Message-ID: <20221221022523.8458-2-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20221221022523.8458-1-biao.huang@mediatek.com>
+References: <20221221022523.8458-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221220_190700_193222_EF826F88 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221220_192730_138177_9E7537E0 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +82,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Resend v4, please review it, thanks~
+Add Ethernet controller node for mt8195.
 
-Changes in v4:
-1. remove {address,size}-cells = <0> to avoid warning as Angelo's feedback.
-2. Add reviewd-by as Angelo's comments.
-
-Changes in v3:
-1. move stmmac-axi-config, rx-queues-config, tx-queues-configs inside ethernet node
-as Angelo's comments.
-2. add {address,size}-cells = <0> in ethernet node as Angelo's comments.
-
-Changes in v2:
-1. modify pinctrl node used by ethernet to match rules in pinctrl-mt8195.yaml,
-which is pointed by Krzysztof.
-2. remove "mac-address" property in ethernet node as comments of Krzysztof.
-
-Changes in v1:
-add dts node for MT8195 Ethernet controller
-
-Biao Huang (1):
-  arm64: dts: mt8195: Add Ethernet controller
-
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
  arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 88 ++++++++++++++++++++
  arch/arm64/boot/dts/mediatek/mt8195.dtsi     | 86 +++++++++++++++++++
  2 files changed, 174 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 4fbd99eb496a..0e8496d837ef 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -258,6 +258,72 @@ &mt6359_vsram_others_ldo_reg {
+ };
+ 
+ &pio {
++	eth_default_pins: eth-default-pins {
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
++				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
++				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
++				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
++				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
++				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
++				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
++				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
++				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
++				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
++		};
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
++				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
++			input-enable;
++		};
++		pins-power {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			output-high;
++		};
++	};
++
++	eth_sleep_pins: eth-sleep-pins {
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
++				 <PINMUX_GPIO78__FUNC_GPIO78>,
++				 <PINMUX_GPIO79__FUNC_GPIO79>,
++				 <PINMUX_GPIO80__FUNC_GPIO80>;
++		};
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
++				 <PINMUX_GPIO88__FUNC_GPIO88>,
++				 <PINMUX_GPIO87__FUNC_GPIO87>,
++				 <PINMUX_GPIO86__FUNC_GPIO86>;
++		};
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
++				 <PINMUX_GPIO82__FUNC_GPIO82>,
++				 <PINMUX_GPIO83__FUNC_GPIO83>,
++				 <PINMUX_GPIO84__FUNC_GPIO84>;
++		};
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
++				 <PINMUX_GPIO90__FUNC_GPIO90>;
++			input-disable;
++			bias-disable;
++		};
++		pins-power {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			input-disable;
++			bias-disable;
++		};
++	};
++
+ 	gpio_keys_pins: gpio-keys-pins {
+ 		pins {
+ 			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
+@@ -434,6 +500,28 @@ &xhci0 {
+ 	status = "okay";
+ };
+ 
++&eth {
++	phy-mode ="rgmii-rxid";
++	phy-handle = <&ethernet_phy0>;
++	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
++	snps,reset-delays-us = <0 10000 10000>;
++	mediatek,tx-delay-ps = <2030>;
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&eth_default_pins>;
++	pinctrl-1 = <&eth_sleep_pins>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		ethernet_phy0: ethernet-phy@1 {
++			compatible = "ethernet-phy-id001c.c916";
++			reg = <0x1>;
++		};
++	};
++};
++
+ &xhci1 {
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	status = "okay";
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 5d31536f4c48..02112bbf2bdf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1046,6 +1046,92 @@ spis1: spi@1101e000 {
+ 			status = "disabled";
+ 		};
+ 
++		eth: ethernet@11021000 {
++			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
++			reg = <0 0x11021000 0 0x4000>;
++			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
++			interrupt-names = "macirq";
++			clock-names = "axi",
++				      "apb",
++				      "mac_cg",
++				      "mac_main",
++				      "ptp_ref",
++				      "rmii_internal";
++			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
++				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
++				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>,
++				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
++				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
++				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
++			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
++					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
++					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
++			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
++						 <&topckgen CLK_TOP_ETHPLL_D8>,
++						 <&topckgen CLK_TOP_ETHPLL_D10>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
++			mediatek,pericfg = <&infracfg_ao>;
++			snps,axi-config = <&stmmac_axi_setup>;
++			snps,mtl-rx-config = <&mtl_rx_setup>;
++			snps,mtl-tx-config = <&mtl_tx_setup>;
++			snps,txpbl = <16>;
++			snps,rxpbl = <16>;
++			snps,clk-csr = <0>;
++			status = "disabled";
++
++			stmmac_axi_setup: stmmac-axi-config {
++				snps,wr_osr_lmt = <0x7>;
++				snps,rd_osr_lmt = <0x7>;
++				snps,blen = <0 0 0 0 16 8 4>;
++			};
++
++			mtl_rx_setup: rx-queues-config {
++				snps,rx-queues-to-use = <4>;
++				snps,rx-sched-sp;
++				queue0 {
++					snps,dcb-algorithm;
++					snps,map-to-dma-channel = <0x0>;
++				};
++				queue1 {
++					snps,dcb-algorithm;
++					snps,map-to-dma-channel = <0x0>;
++				};
++				queue2 {
++					snps,dcb-algorithm;
++					snps,map-to-dma-channel = <0x0>;
++				};
++				queue3 {
++					snps,dcb-algorithm;
++					snps,map-to-dma-channel = <0x0>;
++				};
++			};
++
++			mtl_tx_setup: tx-queues-config {
++				snps,tx-queues-to-use = <4>;
++				snps,tx-sched-wrr;
++				queue0 {
++					snps,weight = <0x10>;
++					snps,dcb-algorithm;
++					snps,priority = <0x0>;
++				};
++				queue1 {
++					snps,weight = <0x11>;
++					snps,dcb-algorithm;
++					snps,priority = <0x1>;
++				};
++				queue2 {
++					snps,weight = <0x12>;
++					snps,dcb-algorithm;
++					snps,priority = <0x2>;
++				};
++				queue3 {
++					snps,weight = <0x13>;
++					snps,dcb-algorithm;
++					snps,priority = <0x3>;
++				};
++			};
++		};
++
+ 		xhci0: usb@11200000 {
+ 			compatible = "mediatek,mt8195-xhci",
+ 				     "mediatek,mtk-xhci";
 -- 
-2.18.0
-
+2.25.1
 
 
