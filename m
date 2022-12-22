@@ -4,68 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B439C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 09:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FC3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 10:44:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jiHmDzEpfEYWsfxXnYLAuHkS04VIRRQ4aK9LvMTMus0=; b=cw4pdqy6adpQkjHv8REgnmgPu1
-	5/NSpociIExL10KTSfD4VG8Rf1EjhjS9vVa2qKPpYQz+QbgShD5Nn10GUktPbVuRkQBNYW7nrWGCR
-	e97GGRz0KIU8JhRaZ9Hv0j3zc8h3aR+LQHHLNSEhquV02WAuuZIozGULljNTObPJcUUo/BSLYJbHv
-	OzID01rDAP6ASGY2lc3tJ7orryCl29f0Xh+q2ogMKetV66iB7Gq2k+UOyUVZupm3pY801Go1OaAjl
-	fZNj0J0+uYM+8Bu0UQDE2YOjDdzCncZlau+WFmqWe4Nqhw/M7FTr9qTAqKbuHGb56ChJbO09L6Ica
-	mvqRIzqQ==;
+	bh=vPhfx6UhW8gxZI3+eFGe0W4wGRrKKvTrV6JdigN9Q0k=; b=zRfRRY6j7TKwp6gdhPo/nxc5hx
+	U2RZIieZE3Dr39zIzMT7dSeccCNG8RNR1cGZvNoL2v4+V9df5AzUEGOSXxxwg1MPXBuC8bcmqGcHk
+	Jn2GBNTYhJbnZS3WdpKok+iVtw7D/4CLNwTND0AFNdab4505qbGaElUfmXGz/DZKYFhwHd9lfQA9R
+	aTkP0x+h6t7H5Xw1AdhOjcXqJZZuI593Jdxp3p3vtqkOq8rbTW0CA/pEgE5Hg5s0MZv8AuJ9yJjUs
+	G9j6PolepYARUlUiNZwqyHw9+wkcqKHjMkDzeCbWf5PLMBOxQ4N5SHNxkCI9E2SUp+HEnUPNRTuwK
+	MgfzGs+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8I9N-00A5S5-H4; Thu, 22 Dec 2022 09:46:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1p8J3Z-00ASTb-16; Thu, 22 Dec 2022 10:44:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8I8J-00A547-8z
-	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 09:45:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9FF71619F9;
-	Thu, 22 Dec 2022 09:44:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7316C433D2;
-	Thu, 22 Dec 2022 09:44:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671702298;
-	bh=t8PKeohye6Mj8X2vWIGmyYtS9dr2ihQrUwacA85KSXo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WCvbImZgrRbO6sQsPz4b92QX5mljZTTdiKoqTGyQMHlQmXwpawfbIqllrBx2uO5+/
-	 kHurYuhH+QfUdb3GsW/hTlidP6sqq/Dd/H2iAf7ENVL3rEO3dPk51mMgphxdUvsy6K
-	 1cg9V0n6aJN7FS0QiNXBF62WiF/pxKOcnIiFndQvfJQTa2A3edcTw2O2xBLn+0lT4y
-	 FEptbcYbjIs3/LvId/EweiRDWwmwiiosHZr+ettTfZN/gv8maYoXyjclif/1CoU7AC
-	 dYdSOooTAZjvX0Fr1N0br0M9d5Xjg2+uJ9xSv+OXSpWM3fDHrF3tTIBveEyX+F0UaY
-	 W875MxMtFTHqw==
-Date: Thu, 22 Dec 2022 10:44:54 +0100
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>
-Cc: "nbd@nbd.name" <nbd@nbd.name>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
-	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2] wifi: mt76: fix potential memory leakage
-Message-ID: <Y6QnFkJCWPsRgSQD@lore-desk>
-References: <3940cc5ccb4b17d51b5176e722daef0d1af66d6a.camel@mediatek.com>
- <B2689D6F-E04E-4E9B-9244-4E5069DC464D@nbd.name>
- <Y6NKHY7euhifm0kI@lore-desk>
- <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
+	id 1p8J2g-00ARuu-AK; Thu, 22 Dec 2022 10:43:16 +0000
+X-UUID: c29c6dff6cb34076ad1aa31e693ae504-20221222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=vPhfx6UhW8gxZI3+eFGe0W4wGRrKKvTrV6JdigN9Q0k=;
+	b=hDP+CvLMd1Vb0AOQcemQEZ6iZwOtCwgTXpi7AQioI7YfQjd4J0z6gofCzkL6R+0pXuShYzHHix07AeQG76NjLq6WPtfzDVmPnr0Ri05/1LB/Gh9DkVUwuT4BCosy1B4cMAEEe/TidIYxMaCv3L/DtWQuaaaeCJNkADMOcXhhx9k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:89493a44-9f3d-47ac-b563-fd17d367d8b0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:2cee8152-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c29c6dff6cb34076ad1aa31e693ae504-20221222
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 820980392; Thu, 22 Dec 2022 03:43:06 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 22 Dec 2022 18:02:28 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.com (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 22 Dec 2022 18:02:28 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hiiAMBJjqhM8XiaH35G0E/SQdDBlQ2t76JBeqOuBxndtxRefGBmViWq2ROsaNXE6qlTOiFDuuhzIzdYA2mdgc6XCwHDhRq+Ljoha9n0+nU7a4fAcG5DVGq25UxABMhJaqYtSSV2RWiLIdxFlL3BHIeo7r/SxK590rCvysdIV0ISjjtEfxa9hPLAHSZ3XIUKtyIhV9ThGtPnsYFCUQTrss1BOh+rUE5kaQf4svhCCYEJcBmU4gVGmBIL1k56LHctOdCNVhKK6KRggUpXsCq2cJaPeyP+BPhvmXbQ18ziy+I5qeVUM2CZMuZTlVokRU7ystoedcrE2/e9husw1XE9BcA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vPhfx6UhW8gxZI3+eFGe0W4wGRrKKvTrV6JdigN9Q0k=;
+ b=St4pjIjuHsg92I1uuH/S7i8RU2/0TC/2HTyVYNrlrVVBd+l5qX0yMkBFvvuEF/Ky7oz2YMy6k2cnWIy97Q8A860yZl39mIHIU0vRxxi9r0Nd6cYSwPg6FS9HygfkPkjrCz9Lnu1Un7JmMwPAjREo7y/57Vas6Cwa+E9Bp+3KZWSMZ5EQGVD0Cz617PV+RBuJ/5FGp8F6Z0UdmPSk0Ey0CcAEvcZwyZgllYFI1Kn0LFUlULme/9lvmSYsit+TsX+F4UY8SU5syYmW+DYQwcp/ytt1Bk9bZFrM1GrT9dTjkV4yZtW4XqHzbKfj7l1IIFb0Iy7MB3c1FP+xfLnogp0iyQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vPhfx6UhW8gxZI3+eFGe0W4wGRrKKvTrV6JdigN9Q0k=;
+ b=L+UtB8TMyN/Uc8a1NVYdzTmA/2UB4R8eys/WnD9KVEEgwPOYcBz7lZHtc/uO+bo5UZUZ7SyHpSsJlfJhKRPa7qiXXQOSnaPNHajD0Z9G3UJML0TWSucSZJ4a8Qr0Cy9h0Akd6IRgMzZA4t71sIRcb/8HCMiy/fBMCBqbYMdyJm8=
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
+ SI2PR03MB5564.apcprd03.prod.outlook.com (2603:1096:4:129::10) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5924.16; Thu, 22 Dec 2022 10:02:27 +0000
+Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4139:bb22:3bf9:f1e3]) by SI2PR03MB5885.apcprd03.prod.outlook.com
+ ([fe80::4139:bb22:3bf9:f1e3%6]) with mapi id 15.20.5924.016; Thu, 22 Dec 2022
+ 10:02:27 +0000
+From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+To: "robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
+	=?utf-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?= <Chengci.Xu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "iommu@lists.linux.dev"
+	<iommu@lists.linux.dev>
+Subject: Re: [PATCH v5 2/4] iommu/mediatek: Adjust mtk_iommu_config flow
+Thread-Topic: [PATCH v5 2/4] iommu/mediatek: Adjust mtk_iommu_config flow
+Thread-Index: AQHZCI8fNr2jEiArG0GG7BTfBl1pw655x94A
+Date: Thu, 22 Dec 2022 10:02:27 +0000
+Message-ID: <26c16dcd2f9f02b860ce6f7a56aeef3be5c46856.camel@mediatek.com>
+References: <20221205095001.31918-1-chengci.xu@mediatek.com>
+	 <20221205095001.31918-3-chengci.xu@mediatek.com>
+In-Reply-To: <20221205095001.31918-3-chengci.xu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|SI2PR03MB5564:EE_
+x-ms-office365-filtering-correlation-id: 6326edbb-94c6-40f3-b143-08dae403a171
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fiNnK6FTRNQa6bK6AjqnBaM7A2J14oGB6ADDRbFYOzvuW78UjihsUNndw+yoCsBZQg3wJjevw76kTNDw2ounjjBkaYCucykDglE/XQWCYCWD/OFgKULS0nIB9USv4q2YLTk56BwvdZ2/M3t+JCZwiGr/MdWjXYEiEBhrRkVslaTLRmpOeeVHjucURZtsPL1ysFyi3L0Ndz+MY+8w5kTy2wE88ysvGe40JAUS7Ld4v30ItSA1hsC2ScXRTDF7KfAeAqbAgvnHUWx69602MuB1MUWKRXHCMphAS2CErYJSa2Oum4nW5FXdot5LH+fV6Zpo1nMhhpOT/JHgu82ZJSDoya7t2lIG5mJpCGWO7+P6el9LTtG3toTms2I9uJUjHbHMGHehU7eaZa5PfoEFeN0qB7M151Pg0dbHAg6gBdBvXmp3HeUg6nlo5dMuNFc3aDIT7N02HpQlBwmIPZREs8FAZOj1FqOVxbLAsL9PZOyAewevUa1iO+hDw+zH86EvefKTXHi19ya62DjySGbyeL5lQSHO5v3+E83mvdiEAQDT5obZ0eK2n/x+xo73ldcGuZ4EuPETRCls/VgPQ17uKnqxTFLO+FVu2HJzgzjYDfGlq4Yn3bBqoGl5gLlIFy/bOkP6bu4Tvi0/3bDCI0T6y1sN7Q1hS7IoNShpCQ0ZopXf0mdJ/n5+KJdaPevoSzGYfzAyTbjUIRrK8W4RAvZZZuiKKMgXt09PDNCGb17LSzddDWnDOlTIPHp+nYeC5znAS/mvjR3afYpowlip93MwDUf2Ow==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(366004)(376002)(39860400002)(136003)(346002)(451199015)(110136005)(26005)(54906003)(316002)(83380400001)(85182001)(66556008)(6512007)(186003)(71200400001)(8936002)(36756003)(66946007)(7416002)(4744005)(38070700005)(2906002)(5660300002)(66446008)(38100700002)(64756008)(66476007)(4326008)(122000001)(76116006)(2616005)(8676002)(91956017)(478600001)(86362001)(41300700001)(6486002)(6506007)(99106002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MmlEcjk3K0hxRFlkMVAwWjg3VmpldG11anVpaFh0aGpsNk05MVZyT1JRN3pB?=
+ =?utf-8?B?enlpNEY1MzkvcTN0dDlBMWVNamI4dGZKUFpqUUZIbTJqcUh0aW55RlZ0THRj?=
+ =?utf-8?B?R01Tanc2SE5vY3FUdmJwSUFsVy9sWHZxZDBVNU9saTl1MVR5ZjRSam5yTGc1?=
+ =?utf-8?B?NTNVMXE1YUpWNytMbjhITE5HRHA4SktqTzBIUVFGS1VmcG4wL2xOWm9pUjV0?=
+ =?utf-8?B?SDM3Q3ljMHFPTDk4ZHZxeVE0cTdmeGZ3eFpwQjRRbHJQZTU1TmFpa1VWRklu?=
+ =?utf-8?B?ODl1UjNteE11K3dIV25iT0xYN2xxZEdiazljWFVuRElEYVZPVjBCWW1BTjMz?=
+ =?utf-8?B?Skx0dVppR1l4Z0hqb2dUS0xQNG1HQklVT3NYbW5GZU5kTG95SGNMUGhmditM?=
+ =?utf-8?B?SVVoa1U3ZE1sTVpweVphNjE4QTIzV3o4MU4vb2dVdmNRTEYrazA0a0VSbUh2?=
+ =?utf-8?B?bmd2NTZoRUZPVDVOOWtXb1ZOdk5vaGlMSHova25tZExzdkZYaEdTSlgyQzNT?=
+ =?utf-8?B?RC9yOUxWeVdEMDMyZmJEUUpwWEtrSkJRWlhSMXluaWhnTEdFZ3dtdTB3NHpE?=
+ =?utf-8?B?ZnRhMDFkaVVJdk9rMHpDeWYxV09ndjFhZElnWjhEWkwxVGtEYmZYdEIvUm9y?=
+ =?utf-8?B?UFM3WEVuaDdHRFEvK21NZllVMm5lUURjSnFYZEJoUytDSnlYNkkwd1RQRzND?=
+ =?utf-8?B?SXY2R0VleDh0TlZFRDRkdVNhZVk5b1lmN3QzcktQdHVnRk9hV3JZV0lEU29L?=
+ =?utf-8?B?NSs0cUV2MVRveTZOZjBnTWVTYXdUUkRhenhYZGwyU2xpNGt6dEpzT28ybVNw?=
+ =?utf-8?B?MG5XRXE0dDlTVXg2WEI1eFhrbVRBaDVrbHdnUjlrVzJOS2pPWmNydXhYQXpv?=
+ =?utf-8?B?K0NBM29GSXBGN0tQeWhsQkMrOWN3c2pYT1ZTNlg3bFVjMW43UkFBQld3TGM2?=
+ =?utf-8?B?MFVpa1ZwcnFtc0YwSWtSdU8zOEloZWJFSXFnK2FRc2lmaXlYbVNOT3kvc0cr?=
+ =?utf-8?B?NWpiTElnV09aZ1IrbW9MT2VvVGRuSXZUdi9XcEx4ZVV3WUFDamZVMmdLaFJr?=
+ =?utf-8?B?RURIa1E2TzZoN1k3SUJqZ1hEYmN5OSttbVdzeGFBQXhRMjZVU1RPTlh6azdR?=
+ =?utf-8?B?Sm03eEpvdk5aNHoyS0dNcXZXeWVpaTVCd1ZRaDRTb0oxS2ZST0h3YXVQQ1V6?=
+ =?utf-8?B?bDcvUnh1NEtJOXRtM3ZtR3NBYmxFNWIwZDVwWVFaTDY0bUovQTN2b0doUEJq?=
+ =?utf-8?B?bmw3dkJPN0s0SFZVa3kza1lScVRObUxQZlRES2lPbERDRTlzOWI5TWduNzlV?=
+ =?utf-8?B?SHkveEFIaGw2UDhkeWViQkFHRENFQjl2RWI3dk9PUE4vSjJpWmRkYzBoRHpQ?=
+ =?utf-8?B?cUdwcCt0VVpVWTdRK25mYWJvTDBzUlRpVDZBM0ExNjd4ZEJiZ3VNL0xGcjdG?=
+ =?utf-8?B?WGIyVmRlcVVNeWczaXdMN1NMNTVHUEEzZUszRlJycXVzblZIaDlsaWZnQzZ0?=
+ =?utf-8?B?L2N2UkpRM3k2N2FYemtERVZmZHBucVI4RStTOTNTY3Q0alZwdHJaeDhOZVFh?=
+ =?utf-8?B?Qi9vcWNjT2lXRHVZVStidHRiVksyMjRvWGRFZ08xUXVIbGJ2Q3FxNEJYOHQ5?=
+ =?utf-8?B?b3Z0WWZYdytSM25QWHNlVW5tODM3S0NxWWRqS05PS09hSDNBaVNOOVpGYUFy?=
+ =?utf-8?B?NjVRdzVJOXZzYVlYZEpFVGM3WHVMV2RGZktLZVQvQjkwaDBrd0hpQys1c1Fp?=
+ =?utf-8?B?YW85TWc2TnpjVjYzRytKTVU1WFpYZVZCNitacU5aSmFYYkpPN1J4amF2eGFk?=
+ =?utf-8?B?SDRhWURKMW9YMFhkaVpzaGFUZUtzc3VJWDJjY1BvY0dQTzJ2VDg0aHErNkdt?=
+ =?utf-8?B?anl6RjZONEgvc2NpSGVsQ3RiZTNtZDBsQ2RlbVFYbVZuNnBiczd4dEJjbThV?=
+ =?utf-8?B?ZGY1cnh2TGN2d2dMOFBlK1NENmxGVmV6QS9PcUNIbkhuZVhlQXNGQmNjS1VM?=
+ =?utf-8?B?UVVUVTNuVjZpZXYzRzNkWkhpSkgxaHlKYms5VEVCNUpGZGdDNDNpV29PNmJV?=
+ =?utf-8?B?OW56UzFaYUlYYW1rbks4UThXenZhSk9nTXdHMDZwZWJ4N1NjTlZsaTZJZ3ZS?=
+ =?utf-8?B?Q1VvNXFYMDNWK1BpZEwxVFNVNmVZc3dOU3NlWVd4eTJHZ0oxVHNWaHpIRHNr?=
+ =?utf-8?B?L3c9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <22F85B1FE7B0844E91B200460733C63B@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yp/OIqW6Rm/kf2RE"
-Content-Disposition: inline
-In-Reply-To: <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6326edbb-94c6-40f3-b143-08dae403a171
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Dec 2022 10:02:27.0807
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: z4q+KGhsANZV3DMxYSiUtBNwl58eUm2yrh+srImjwMksiVF36eVzeWGUL2n8mrVJhnAtykkfXinYtQQwMXG8Hw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5564
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_014459_441527_114D7D52 
-X-CRM114-Status: GOOD (  42.38  )
+X-CRM114-CacheID: sfid-20221222_024314_483129_9CDE4162 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,222 +178,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---yp/OIqW6Rm/kf2RE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Wed, 2022-12-21 at 19:02 +0100, Lorenzo Bianconi wrote:
-> > On Dec 21, Felix Fietkau wrote:
-> > > Hi Sujuan,
-> > >=20
-> > > > Yes, it is so expensive, but if no memcopy, it will casue memory
-> > > > fragmentation (we hit this issue in internal SQC).
-> > > >=20
-> > > > as we know, wed needs to exchange rx pkt(belongs to wed rx buffer
-> > > > manager) with wifi driver(dma rx data queue) by exchanging wfdma
-> > > > dmad
-> > > > to ensure the free wed rx buffer.
-> > > >=20
-> > > > it is possiable that a large number of buffer has been exchanged
-> > > > to wed
-> > > > and can not come back to wlan driver. So, the memory from the
-> > > > same 32K
-> > > > page cache is unable to be released, and it will be failed at
-> > > > page_frag_alloc in mt76_dma_rx_fill.
-> > > >=20
-> > > > Any ideas but memcopy?
-> > >=20
-> > > A simple solution would be to simply allocate single pages, or
-> > > half-page fragments.
-> > >=20
-> > > - Felix
-> > >=20
-> >=20
-> > A simple approach would be allocating a single page for each rx
-> > buffer.
-> >=20
-> > @Sujuan: can you please double check if it is ok from performance and
-> > memory
-> > 	 fragmentation point of view? If not I guess we can try to
-> > optimize it
-> > 	 and allocate multiple buffers in the same page tweeking page
-> > refcount.
-> >=20
-> > (this patch must be applied on top of Felix's dma fix).
-> >=20
->=20
-> Allocating single page for each rx buffer avoids memory fragmentation,
-> but it always uses 4K for one rx pkt which only needs 2K, right?
-
-correct, we can optimize it allocating multiple buffers (in this case 2,
-assuming 4K pages) in a single page and recycling the page.
-
->=20
-> I guess performance would be worse without page cache.
-
-I think it is a trade-off
-
-> We have tested on the mtk private driver, 7% drop in throughput when
-> setting the 4K page cache compared to the 32K page cache.
-> and 10% drop when use slab to allocate buffer.
-
-IIUC you tested with PAGE_FRAG_CACHE_MAX_SIZE set to 4K (or with a private
-page_frag_alloc() implementation) and you avoided memory allocation
-failures due to fragmentation but you got ~ 7% drop in throughput, correct?
-I think this is quite expected since we need to refill ~ 8 times more the
-page cache.
-
-Not considering memory fragmentation, have you measured the impact of the
-memcpy of a full buffer?
-
->=20
-> A single page per rx buffer may cause a throughput drop of over 7% and
-> waste memory, what do you think?
-
-Implementing the page recycles as it is done in page_frag_alloc() we should=
- get
-the same results you got with PAGE_FRAG_CACHE_MAX_SIZE set to 4K.
-
-Regards,
-Lorenzo
-
->=20
-> Regards,
-> Sujuan
->=20
-> > Regards,
-> > Lorenzo
-> >=20
-> > diff --git a/drivers/net/wireless/mediatek/mt76/dma.c
-> > b/drivers/net/wireless/mediatek/mt76/dma.c
-> > index 28a7fe064313..1d9e580977fc 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/dma.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-> > @@ -580,6 +580,20 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev,
-> > struct mt76_queue *q,
-> >  	return ret;
-> >  }
-> > =20
-> > +static void *
-> > +mt76_dma_get_rx_buf(struct mt76_queue *q)
-> > +{
-> > +	if ((q->flags & MT_QFLAG_WED) &&
-> > +	    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX) {
-> > +		/* WED RX queue */
-> > +		struct page *page =3D dev_alloc_page();
-> > +
-> > +		return page ? page_address(page) : NULL;
-> > +	}
-> > +
-> > +	return page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
-> > +}
-> > +
-> >  static int
-> >  mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
-> >  {
-> > @@ -596,7 +610,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct
-> > mt76_queue *q)
-> >  		struct mt76_queue_buf qbuf;
-> >  		void *buf =3D NULL;
-> > =20
-> > -		buf =3D page_frag_alloc(&q->rx_page, q->buf_size,
-> > GFP_ATOMIC);
-> > +		buf =3D mt76_dma_get_rx_buf(q);
-> >  		if (!buf)
-> >  			break;
-> > =20
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > index 1a2e4df8d1b5..2924e71e4fbe 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > @@ -594,13 +594,9 @@ static void
-> > mt7915_mmio_wed_offload_disable(struct mtk_wed_device *wed)
-> >  static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device
-> > *wed)
-> >  {
-> >  	struct mt7915_dev *dev;
-> > -	u32 length;
-> >  	int i;
-> > =20
-> >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
-> > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
-> > -				sizeof(struct skb_shared_info));
-> > -
-> >  	for (i =3D 0; i < dev->mt76.rx_token_size; i++) {
-> >  		struct mt76_txwi_cache *t;
-> > =20
-> > @@ -610,7 +606,7 @@ static void mt7915_mmio_wed_release_rx_buf(struct
-> > mtk_wed_device *wed)
-> > =20
-> >  		dma_unmap_single(dev->mt76.dma_dev, t->dma_addr,
-> >  				 wed->wlan.rx_size, DMA_FROM_DEVICE);
-> > -		__free_pages(virt_to_page(t->ptr), get_order(length));
-> > +		free_page(virt_to_page(t->ptr));
-> >  		t->ptr =3D NULL;
-> > =20
-> >  		mt76_put_rxwi(&dev->mt76, t);
-> > @@ -621,13 +617,9 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > mtk_wed_device *wed, int size)
-> >  {
-> >  	struct mtk_rxbm_desc *desc =3D wed->rx_buf_ring.desc;
-> >  	struct mt7915_dev *dev;
-> > -	u32 length;
-> >  	int i;
-> > =20
-> >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
-> > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
-> > -				sizeof(struct skb_shared_info));
-> > -
-> >  	for (i =3D 0; i < size; i++) {
-> >  		struct mt76_txwi_cache *t =3D mt76_get_rxwi(&dev->mt76);
-> >  		dma_addr_t phy_addr;
-> > @@ -635,7 +627,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > mtk_wed_device *wed, int size)
-> >  		int token;
-> >  		void *ptr;
-> > =20
-> > -		page =3D __dev_alloc_pages(GFP_KERNEL,
-> > get_order(length));
-> > +		page =3D __dev_alloc_page(GFP_KERNEL);
-> >  		if (!page)
-> >  			goto unmap;
-> > =20
-> > @@ -644,7 +636,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > mtk_wed_device *wed, int size)
-> >  					  wed->wlan.rx_size,
-> >  					  DMA_TO_DEVICE);
-> >  		if (unlikely(dma_mapping_error(dev->mt76.dev,
-> > phy_addr))) {
-> > -			__free_pages(page, get_order(length));
-> > +			free_page(page);
-> >  			goto unmap;
-> >  		}
-> > =20
-> > @@ -653,7 +645,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > mtk_wed_device *wed, int size)
-> >  		if (token < 0) {
-> >  			dma_unmap_single(dev->mt76.dma_dev, phy_addr,
-> >  					 wed->wlan.rx_size,
-> > DMA_TO_DEVICE);
-> > -			__free_pages(page, get_order(length));
-> > +			free_page(page);
-> >  			goto unmap;
-> >  		}
-> > =20
-
---yp/OIqW6Rm/kf2RE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6QnFgAKCRA6cBh0uS2t
-rHRrAQDJPjaPyllzp4dPJGldsFr+3C5ZLV+AV7MqBONj0KbYBgD/R/U7w89+AUrs
-WL/94vnUM08bqA/QFVmuu5k7lAOzgQc=
-=NF1o
------END PGP SIGNATURE-----
-
---yp/OIqW6Rm/kf2RE--
+T24gTW9uLCAyMDIyLTEyLTA1IGF0IDE3OjQ5ICswODAwLCBDaGVuZ2NpLlh1IHdyb3RlOg0KPiBG
+b3IgcmVkdWNlIGluZGVudGlvbiB3aXRob3V0IGZ1bmN0aW9uYWwgY2hhbmdlLCBwcmVwYXJlIGZv
+ciBNVDgxODguDQo+IElmIHRoZXJlIGFyZSBtYW55IHBvcnQgaW4gYSBzYW1lIGxhcmIsIGN1cnJl
+bnQgZmxvdyB3aWxsIHVwZGF0ZQ0KPiBsYXJiX21tdS0+bW11IG9yIHVwZGF0ZSBJTkZSQSByZWdp
+c3RlciBmb3IgdG9vIG1hbnkgdGltZXMuDQo+IFNvIHdlIHNhdmUgYWxsIHBvcnQgdG8gcG9ydGlk
+X21zayBpbiB0aGUgZnJvbnQgb2YgbXRrX2lvbW11X2NvbmZpZygpLA0KDQpzL3BvcnQvcG9ydHMv
+Zw0KDQo+IGFuZCB0aGVuIHVwZGF0ZSBvbmx5IG9uY2UgZm9yIElPTU1VIGNvbmZpZ3VyZS4gQnkg
+dGhpcyBtb2RpZmljYXRpb24sDQo+IHdlIGNhbiBwcmV2ZW50IE1UODE4OCBmcm9tIHNlbmRpbmcg
+dG8gbWFueSBTTUMgY2FsbHMsIGF2b2lkaW5nIGVudGVyDQo+IEFURiBmb3IgZWFjaCBwb3J0Lg0K
+PiANCj4gU2lnbmVkLW9mZi1ieTogQ2hlbmdjaS5YdSA8Y2hlbmdjaS54dUBtZWRpYXRlay5jb20+
+DQoNClJldmlld2VkLWJ5OiBZb25nIFd1IDx5b25nLnd1QG1lZGlhdGVrLmNvbT4NCg0KDQoNCg==
 
