@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52088C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 09:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B439C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 09:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SfWHc6C6T9H/rOjQwAOvsuuY+05MGIFO3rrF7uufH10=; b=sA9pCsRSb8HzGH+1CTicIYMCrt
-	0W4kDqia199h4LUQRe4DpAxd2JTeAvAFQoq2Lz5hZtSmP/5z5C2QeY8KLle/THUMw0BrlKO3ZAXsA
-	SbAH7/Vwutmxkt6kK+WOVvO1K5fr7PM6kWDlR7vSqQIFu7JcxFeWWLSfZKTX2i93ikaftUcD8y25M
-	HgE88atA6YXkTH4UX6pt/jxpEHlqbe23Ki52ri8njAESuepy5OKEzT6HEnAsuyaVldAYC6xpbZQYc
-	Mv6Pn+Jb4AjFfvxNGq3IQ5+C//K8TBZMW320okyjlodTX5NxD2nfwU1lD8vQ/UWnmcGTo1XQx/s1r
-	bO8IKR6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jiHmDzEpfEYWsfxXnYLAuHkS04VIRRQ4aK9LvMTMus0=; b=cw4pdqy6adpQkjHv8REgnmgPu1
+	5/NSpociIExL10KTSfD4VG8Rf1EjhjS9vVa2qKPpYQz+QbgShD5Nn10GUktPbVuRkQBNYW7nrWGCR
+	e97GGRz0KIU8JhRaZ9Hv0j3zc8h3aR+LQHHLNSEhquV02WAuuZIozGULljNTObPJcUUo/BSLYJbHv
+	OzID01rDAP6ASGY2lc3tJ7orryCl29f0Xh+q2ogMKetV66iB7Gq2k+UOyUVZupm3pY801Go1OaAjl
+	fZNj0J0+uYM+8Bu0UQDE2YOjDdzCncZlau+WFmqWe4Nqhw/M7FTr9qTAqKbuHGb56ChJbO09L6Ica
+	mvqRIzqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8I81-00A4xZ-Sd; Thu, 22 Dec 2022 09:44:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1p8I9N-00A5S5-H4; Thu, 22 Dec 2022 09:46:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8I7y-00A4vs-58
-	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 09:44:39 +0000
-X-UUID: 36215801c31f4faf9d30953f9eb6015f-20221222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SfWHc6C6T9H/rOjQwAOvsuuY+05MGIFO3rrF7uufH10=;
-	b=m6mqnmH/ZBHBje4RCmGx/Jz9s9d6gYeX4u0EQIg87TkIsGY3dUPG2lOWOd7NHv0Jn0i0ZMImb+SJiRYICKOnDgUEwNsA4H4OnRlc7AYoBFk0MTt9n+E3m4XS+5RA6pU3kD8/wQYlw0f2rjUzApnCE2s1ws5svwXMjdThAHkoM+U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:2a3b3e8f-9785-4209-b5be-bfcaafec6b56,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:53be1b8a-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 36215801c31f4faf9d30953f9eb6015f-20221222
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <michael-cy.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1871374882; Thu, 22 Dec 2022 02:44:32 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 22 Dec 2022 17:13:57 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 22 Dec 2022 17:13:57 +0800
-From: Michael Lee <michael-cy.lee@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael Lee
-	<michael-cy.lee@mediatek.com>
-Subject: [PATCH] wifi: mac80211: check the control channel before downgrading the bandwidth
-Date: Thu, 22 Dec 2022 17:13:54 +0800
-Message-ID: <20221222091354.14050-1-michael-cy.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1p8I8J-00A547-8z
+	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 09:45:01 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9FF71619F9;
+	Thu, 22 Dec 2022 09:44:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7316C433D2;
+	Thu, 22 Dec 2022 09:44:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671702298;
+	bh=t8PKeohye6Mj8X2vWIGmyYtS9dr2ihQrUwacA85KSXo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WCvbImZgrRbO6sQsPz4b92QX5mljZTTdiKoqTGyQMHlQmXwpawfbIqllrBx2uO5+/
+	 kHurYuhH+QfUdb3GsW/hTlidP6sqq/Dd/H2iAf7ENVL3rEO3dPk51mMgphxdUvsy6K
+	 1cg9V0n6aJN7FS0QiNXBF62WiF/pxKOcnIiFndQvfJQTa2A3edcTw2O2xBLn+0lT4y
+	 FEptbcYbjIs3/LvId/EweiRDWwmwiiosHZr+ettTfZN/gv8maYoXyjclif/1CoU7AC
+	 dYdSOooTAZjvX0Fr1N0br0M9d5Xjg2+uJ9xSv+OXSpWM3fDHrF3tTIBveEyX+F0UaY
+	 W875MxMtFTHqw==
+Date: Thu, 22 Dec 2022 10:44:54 +0100
+From: "lorenzo@kernel.org" <lorenzo@kernel.org>
+To: Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>
+Cc: "nbd@nbd.name" <nbd@nbd.name>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
+	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	Ryder Lee <Ryder.Lee@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2] wifi: mt76: fix potential memory leakage
+Message-ID: <Y6QnFkJCWPsRgSQD@lore-desk>
+References: <3940cc5ccb4b17d51b5176e722daef0d1af66d6a.camel@mediatek.com>
+ <B2689D6F-E04E-4E9B-9244-4E5069DC464D@nbd.name>
+ <Y6NKHY7euhifm0kI@lore-desk>
+ <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yp/OIqW6Rm/kf2RE"
+Content-Disposition: inline
+In-Reply-To: <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_014438_282053_93D2EEC6 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20221222_014459_441527_114D7D52 
+X-CRM114-Status: GOOD (  42.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,77 +80,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the link fails to use the channel, chandef's bandwidth will be 
-downgraded without checking the control channel.
-The issue happens when the STA of an extender with limited channel 
-context associates with a root AP operating on a different channel.
 
-Below is an example:
+--yp/OIqW6Rm/kf2RE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-    ______________           ________________
-   | RootAP(ch36) |         | Extender(ch44) |
-   |              | (ASSOC) |       AP       |
-   |      AP <-------------------- STA       |
-   |______________|         |________________|
+> On Wed, 2022-12-21 at 19:02 +0100, Lorenzo Bianconi wrote:
+> > On Dec 21, Felix Fietkau wrote:
+> > > Hi Sujuan,
+> > >=20
+> > > > Yes, it is so expensive, but if no memcopy, it will casue memory
+> > > > fragmentation (we hit this issue in internal SQC).
+> > > >=20
+> > > > as we know, wed needs to exchange rx pkt(belongs to wed rx buffer
+> > > > manager) with wifi driver(dma rx data queue) by exchanging wfdma
+> > > > dmad
+> > > > to ensure the free wed rx buffer.
+> > > >=20
+> > > > it is possiable that a large number of buffer has been exchanged
+> > > > to wed
+> > > > and can not come back to wlan driver. So, the memory from the
+> > > > same 32K
+> > > > page cache is unable to be released, and it will be failed at
+> > > > page_frag_alloc in mt76_dma_rx_fill.
+> > > >=20
+> > > > Any ideas but memcopy?
+> > >=20
+> > > A simple solution would be to simply allocate single pages, or
+> > > half-page fragments.
+> > >=20
+> > > - Felix
+> > >=20
+> >=20
+> > A simple approach would be allocating a single page for each rx
+> > buffer.
+> >=20
+> > @Sujuan: can you please double check if it is ok from performance and
+> > memory
+> > 	 fragmentation point of view? If not I guess we can try to
+> > optimize it
+> > 	 and allocate multiple buffers in the same page tweeking page
+> > refcount.
+> >=20
+> > (this patch must be applied on top of Felix's dma fix).
+> >=20
+>=20
+> Allocating single page for each rx buffer avoids memory fragmentation,
+> but it always uses 4K for one rx pkt which only needs 2K, right?
 
-- RootAP is operating on channel 36, while Extender is operating
-  on channel 44
-- When associating with RootAP, Extender-STA downgrades the
-  chandef's bandwidth to be compatible with any channels on the phy
-- Finally, chandef's bandwidth is downgraded to 20MHz and 
-  the association fails
+correct, we can optimize it allocating multiple buffers (in this case 2,
+assuming 4K pages) in a single page and recycling the page.
 
-In this patch, a control channel checking is added to avoid unnecessary
-bandwidth downgrading
+>=20
+> I guess performance would be worse without page cache.
 
-Signed-off-by: Michael Lee <michael-cy.lee@mediatek.com>
----
- net/mac80211/mlme.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+I think it is a trade-off
 
-diff --git a/net/mac80211/mlme.c b/net/mac80211/mlme.c
-index 0aee2392dd29..bc435e8508e2 100644
---- a/net/mac80211/mlme.c
-+++ b/net/mac80211/mlme.c
-@@ -4616,6 +4616,27 @@ ieee80211_verify_sta_he_mcs_support(struct ieee80211_sub_if_data *sdata,
- 	return false;
- }
- 
-+static bool
-+ieee80211_check_same_ctrl_channel(struct ieee80211_sub_if_data *sdata,
-+				  const struct cfg80211_chan_def *chandef)
-+{
-+	struct ieee80211_local *local = sdata->local;
-+	struct ieee80211_chanctx *ctx;
-+
-+	mutex_lock(&local->chanctx_mtx);
-+	list_for_each_entry(ctx, &local->chanctx_list, list) {
-+		if (ctx->replace_state == IEEE80211_CHANCTX_WILL_BE_REPLACED)
-+			continue;
-+		if (ctx->mode == IEEE80211_CHANCTX_EXCLUSIVE)
-+			continue;
-+		if (chandef->chan == ctx->conf.def.chan)
-+			return true;
-+	}
-+
-+	mutex_unlock(&local->chanctx_mtx);
-+	return false;
-+}
-+
- static int ieee80211_prep_channel(struct ieee80211_sub_if_data *sdata,
- 				  struct ieee80211_link_data *link,
- 				  struct cfg80211_bss *cbss,
-@@ -4842,6 +4863,9 @@ static int ieee80211_prep_channel(struct ieee80211_sub_if_data *sdata,
- 	    chandef.width == NL80211_CHAN_WIDTH_10)
- 		goto out;
- 
-+	if (!ret || !ieee80211_check_same_ctrl_channel(sdata, &chandef))
-+		goto out;
-+
- 	while (ret && chandef.width != NL80211_CHAN_WIDTH_20_NOHT) {
- 		*conn_flags |=
- 			ieee80211_chandef_downgrade(&chandef);
--- 
-2.25.1
+> We have tested on the mtk private driver, 7% drop in throughput when
+> setting the 4K page cache compared to the 32K page cache.
+> and 10% drop when use slab to allocate buffer.
 
+IIUC you tested with PAGE_FRAG_CACHE_MAX_SIZE set to 4K (or with a private
+page_frag_alloc() implementation) and you avoided memory allocation
+failures due to fragmentation but you got ~ 7% drop in throughput, correct?
+I think this is quite expected since we need to refill ~ 8 times more the
+page cache.
+
+Not considering memory fragmentation, have you measured the impact of the
+memcpy of a full buffer?
+
+>=20
+> A single page per rx buffer may cause a throughput drop of over 7% and
+> waste memory, what do you think?
+
+Implementing the page recycles as it is done in page_frag_alloc() we should=
+ get
+the same results you got with PAGE_FRAG_CACHE_MAX_SIZE set to 4K.
+
+Regards,
+Lorenzo
+
+>=20
+> Regards,
+> Sujuan
+>=20
+> > Regards,
+> > Lorenzo
+> >=20
+> > diff --git a/drivers/net/wireless/mediatek/mt76/dma.c
+> > b/drivers/net/wireless/mediatek/mt76/dma.c
+> > index 28a7fe064313..1d9e580977fc 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/dma.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/dma.c
+> > @@ -580,6 +580,20 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev,
+> > struct mt76_queue *q,
+> >  	return ret;
+> >  }
+> > =20
+> > +static void *
+> > +mt76_dma_get_rx_buf(struct mt76_queue *q)
+> > +{
+> > +	if ((q->flags & MT_QFLAG_WED) &&
+> > +	    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX) {
+> > +		/* WED RX queue */
+> > +		struct page *page =3D dev_alloc_page();
+> > +
+> > +		return page ? page_address(page) : NULL;
+> > +	}
+> > +
+> > +	return page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
+> > +}
+> > +
+> >  static int
+> >  mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
+> >  {
+> > @@ -596,7 +610,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct
+> > mt76_queue *q)
+> >  		struct mt76_queue_buf qbuf;
+> >  		void *buf =3D NULL;
+> > =20
+> > -		buf =3D page_frag_alloc(&q->rx_page, q->buf_size,
+> > GFP_ATOMIC);
+> > +		buf =3D mt76_dma_get_rx_buf(q);
+> >  		if (!buf)
+> >  			break;
+> > =20
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > index 1a2e4df8d1b5..2924e71e4fbe 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > @@ -594,13 +594,9 @@ static void
+> > mt7915_mmio_wed_offload_disable(struct mtk_wed_device *wed)
+> >  static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device
+> > *wed)
+> >  {
+> >  	struct mt7915_dev *dev;
+> > -	u32 length;
+> >  	int i;
+> > =20
+> >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+> > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
+> > -				sizeof(struct skb_shared_info));
+> > -
+> >  	for (i =3D 0; i < dev->mt76.rx_token_size; i++) {
+> >  		struct mt76_txwi_cache *t;
+> > =20
+> > @@ -610,7 +606,7 @@ static void mt7915_mmio_wed_release_rx_buf(struct
+> > mtk_wed_device *wed)
+> > =20
+> >  		dma_unmap_single(dev->mt76.dma_dev, t->dma_addr,
+> >  				 wed->wlan.rx_size, DMA_FROM_DEVICE);
+> > -		__free_pages(virt_to_page(t->ptr), get_order(length));
+> > +		free_page(virt_to_page(t->ptr));
+> >  		t->ptr =3D NULL;
+> > =20
+> >  		mt76_put_rxwi(&dev->mt76, t);
+> > @@ -621,13 +617,9 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > mtk_wed_device *wed, int size)
+> >  {
+> >  	struct mtk_rxbm_desc *desc =3D wed->rx_buf_ring.desc;
+> >  	struct mt7915_dev *dev;
+> > -	u32 length;
+> >  	int i;
+> > =20
+> >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+> > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
+> > -				sizeof(struct skb_shared_info));
+> > -
+> >  	for (i =3D 0; i < size; i++) {
+> >  		struct mt76_txwi_cache *t =3D mt76_get_rxwi(&dev->mt76);
+> >  		dma_addr_t phy_addr;
+> > @@ -635,7 +627,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > mtk_wed_device *wed, int size)
+> >  		int token;
+> >  		void *ptr;
+> > =20
+> > -		page =3D __dev_alloc_pages(GFP_KERNEL,
+> > get_order(length));
+> > +		page =3D __dev_alloc_page(GFP_KERNEL);
+> >  		if (!page)
+> >  			goto unmap;
+> > =20
+> > @@ -644,7 +636,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > mtk_wed_device *wed, int size)
+> >  					  wed->wlan.rx_size,
+> >  					  DMA_TO_DEVICE);
+> >  		if (unlikely(dma_mapping_error(dev->mt76.dev,
+> > phy_addr))) {
+> > -			__free_pages(page, get_order(length));
+> > +			free_page(page);
+> >  			goto unmap;
+> >  		}
+> > =20
+> > @@ -653,7 +645,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > mtk_wed_device *wed, int size)
+> >  		if (token < 0) {
+> >  			dma_unmap_single(dev->mt76.dma_dev, phy_addr,
+> >  					 wed->wlan.rx_size,
+> > DMA_TO_DEVICE);
+> > -			__free_pages(page, get_order(length));
+> > +			free_page(page);
+> >  			goto unmap;
+> >  		}
+> > =20
+
+--yp/OIqW6Rm/kf2RE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6QnFgAKCRA6cBh0uS2t
+rHRrAQDJPjaPyllzp4dPJGldsFr+3C5ZLV+AV7MqBONj0KbYBgD/R/U7w89+AUrs
+WL/94vnUM08bqA/QFVmuu5k7lAOzgQc=
+=NF1o
+-----END PGP SIGNATURE-----
+
+--yp/OIqW6Rm/kf2RE--
 
