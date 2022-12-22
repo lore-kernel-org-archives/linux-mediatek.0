@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DF2BC4167B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 12:45:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D30AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 12:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Vk3LKSa20ghlaWsXaP2Lewh4VmGLgzGFoTB0UBXmoQ=; b=NN5CL2mlQ5gEHA5sGXXgkqsgoI
-	HsRfm+BxXetZ3ur3//EZMnZ1WJQvY66POQxZEg/TaT3RMr4zJt4NE1KXu3h2IAvz6aLGCW2vbl4wt
-	qvFGMZi16ulpb0FOz8yEWl7Std5JYn7QZFC/7lhluB5dzNl4ZXrdpL1bnRTPsGztkmScerxMXvq/B
-	MPwY19UtBNvEqDHr6O+Uzw9hTOdlaOfI4Uyru0AbmeTDZ1Decbekd/p96YmBkXEXpCUINkDWnBNNF
-	GL97FqO1tYyD+bgN/xJX6gB2vGihTjw8Dd3YRJQjLZ+56+Xs5BI94UbM97Hci4wNrZ2j+2p24F3mo
-	SNBY5+Pg==;
+	bh=+mOM3eOqQbFXxr7fcsVni7MMVQ3UQIVlmfSozh5TBRA=; b=JUHiYg2nBaNp3IP8Ov32478cLe
+	EslRKJSKZtL0atO4Cc39THH6nDPVEA6zW5RWzEBN3AWFRhxjQeYuUceCs8oR41Dh+SrYFTPtaWxNl
+	+03jCSnWYFjeFEYKzpJh0AUeYgLypqs1Necs3HrZOs4pGuhq5et2igDBcA5alEdYrSA6gQg7NbEAG
+	OK4BlrrgVAyLRLZLvbMmY1B5D4RRK5KWinYoP/TKhqqVRnzAW2hmR5gPF7PGqAZRABpnQolDHaVtq
+	xlT/iWmQYtxBYQ/2Ye02WrgeNgYfkextR6l3BD2VkVmJPcv5K57Uix4vF+QnDysRZpK3N+D4yDABW
+	GcpuGAVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Kwv-00C0pQ-5m; Thu, 22 Dec 2022 12:45:25 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p8Kyl-00C1vQ-VL; Thu, 22 Dec 2022 12:47:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8K4u-00BXSS-Lb; Thu, 22 Dec 2022 11:49:42 +0000
+	id 1p8K4r-00BXOc-JM; Thu, 22 Dec 2022 11:49:43 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EF2CE6602CDA;
-	Thu, 22 Dec 2022 11:49:33 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99F926602CF5;
+	Thu, 22 Dec 2022 11:49:30 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671709775;
-	bh=Tr/46hNNOpqiOPa/o4lwiU65I35XnBdfwH4jCPa5+O8=;
+	s=mail; t=1671709772;
+	bh=QXf/TTxdVVZOWmiCAJM2h74LJbKT6ebqnjt5TKAXqqU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XkvZjgkK5shQMRzCcdGGltXudtsDvdURUWGjYcJTBAXYZPzM7FfHwOfzn3Wrx5UtU
-	 bioxR2SRpIqJ6SmRehVzitgBgg/+RFltcUtMqpaBXy6Ct4YnpLVakKNoF9tC1m4nXG
-	 dIA20SB/YDTwdbU3zYfcMcxyiKXFGErxLiBUGYAkQ6AXeJy+JHoKdDr1YAyrDOEjE/
-	 QZgX/7PV/SzOT7C2vae5zGZQwaZNFTJJBJuAn7xJgBGyLhGA794rpKjl5ropAJ9aon
-	 HuGag79PsKpMLd6qdcf+Y3LC+y87JX6zKrhb70p7qnSg75NdWr8/4AdJDmWuSIPjQ9
-	 eWEeyp7OPIGEA==
+	b=OokJetrnyTreYJUy1r6H3kk4X73//IZcY33L5v/AgqvV/cPxrmbTEAw4kx5y6aFmH
+	 Pddt1n/bj8kOZRJiyL7jiC8oK4KIl5xW6pIPLN4f4B/GuGOLaTNVw6MW5GeEaZIEae
+	 C50Ih9RejCpuQ1izvrWpdCqGxA99ee2PMJQmyMGyQW5em9zeJinz6DwaB0ieq6Uzhb
+	 drvVD2GJKtuKjEN6E+Oc7eFXaYxGCJgkYpT5K68j8/0+GKQ+yxwD4Do3wWo/uKOvIu
+	 0Cap0pbfGA53tK3kqcW75V2Wpgd6rQgi/qR0mecm2boiytoJV/ZQsQb4FVniR5tJ3O
+	 LY6ZHI5cA/5AA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com
 Cc: sboyd@kernel.org,
@@ -71,18 +71,17 @@ Cc: sboyd@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v1 12/25] dt-bindings: clock: mt2701/mt6779: Add dummy clock with ID 0
-Date: Thu, 22 Dec 2022 12:48:44 +0100
-Message-Id: <20221222114857.120060-13-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 10/25] clk: mediatek: mt8173: Remove mtk_clk_enable_critical()
+Date: Thu, 22 Dec 2022 12:48:42 +0100
+Message-Id: <20221222114857.120060-11-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20221222114857.120060-1-angelogioacchino.delregno@collabora.com>
 References: <20221222114857.120060-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_034936_891047_05C719B5 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221222_034934_241559_44FF47EC 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,44 +96,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As done for MT8173 and as a preparation for clock controller drivers
-cleanups, add a dummy clock with ID 0, allowing us to simplify
-driver probe.
+The entire point of mtk_clk_enable_critical() is to raise the refcount
+of some clocks so that they won't be turned off during runtime, but
+this is the same as what the CLK_IS_CRITICAL flag does.
+
+Set CLK_IS_CRITICAL on all of the critical clocks and remove the
+aforementioned function as a cleanup.
+
+No functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- include/dt-bindings/clock/mt2701-clk.h | 3 +++
- include/dt-bindings/clock/mt6779-clk.h | 3 +++
- 2 files changed, 6 insertions(+)
+ drivers/clk/mediatek/clk-mt8173.c | 41 ++++++++++++-------------------
+ 1 file changed, 16 insertions(+), 25 deletions(-)
 
-diff --git a/include/dt-bindings/clock/mt2701-clk.h b/include/dt-bindings/clock/mt2701-clk.h
-index 6d531d5ae065..0ec2c81453b0 100644
---- a/include/dt-bindings/clock/mt2701-clk.h
-+++ b/include/dt-bindings/clock/mt2701-clk.h
-@@ -7,6 +7,9 @@
- #ifndef _DT_BINDINGS_CLK_MT2701_H
- #define _DT_BINDINGS_CLK_MT2701_H
+diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+index 70cdc0719658..02231f8ba6d9 100644
+--- a/drivers/clk/mediatek/clk-mt8173.c
++++ b/drivers/clk/mediatek/clk-mt8173.c
+@@ -546,8 +546,11 @@ static const struct mtk_composite cpu_muxes[] = {
+ static const struct mtk_composite top_muxes[] = {
+ 	/* CLK_CFG_0 */
+ 	MUX(CLK_TOP_AXI_SEL, "axi_sel", axi_parents, 0x0040, 0, 3),
+-	MUX(CLK_TOP_MEM_SEL, "mem_sel", mem_parents, 0x0040, 8, 1),
+-	MUX_GATE(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents, 0x0040, 16, 1, 23),
++	MUX_FLAGS(CLK_TOP_MEM_SEL, "mem_sel", mem_parents, 0x0040, 8, 1,
++		  CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
++	MUX_GATE_FLAGS(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel",
++		       ddrphycfg_parents, 0x0040, 16, 1, 23,
++		       CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX_GATE(CLK_TOP_MM_SEL, "mm_sel", mm_parents, 0x0040, 24, 4, 31),
+ 	/* CLK_CFG_1 */
+ 	MUX_GATE(CLK_TOP_PWM_SEL, "pwm_sel", pwm_parents, 0x0050, 0, 2, 7),
+@@ -581,7 +584,9 @@ static const struct mtk_composite top_muxes[] = {
+ 	 */
+ 	MUX_GATE_FLAGS(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents, 0x00a0, 0, 3, 7, 0),
+ 	MUX_GATE(CLK_TOP_IRDA_SEL, "irda_sel", irda_parents, 0x00a0, 8, 2, 15),
+-	MUX_GATE(CLK_TOP_CCI400_SEL, "cci400_sel", cci400_parents, 0x00a0, 16, 3, 23),
++	MUX_GATE_FLAGS(CLK_TOP_CCI400_SEL, "cci400_sel",
++		       cci400_parents, 0x00a0, 16, 3, 23,
++		       CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX_GATE(CLK_TOP_AUD_1_SEL, "aud_1_sel", aud_1_parents, 0x00a0, 24, 2, 31),
+ 	/* CLK_CFG_7 */
+ 	MUX_GATE(CLK_TOP_AUD_2_SEL, "aud_2_sel", aud_2_parents, 0x00b0, 0, 2, 7),
+@@ -596,7 +601,8 @@ static const struct mtk_composite top_muxes[] = {
+ 	MUX_GATE(CLK_TOP_MSDC50_2_H_SEL, "msdc50_2_h_sel", msdc50_2_h_parents, 0x00d0, 0, 3, 7),
+ 	MUX_GATE(CLK_TOP_HDCP_SEL, "hdcp_sel", hdcp_parents, 0x00d0, 8, 2, 15),
+ 	MUX_GATE(CLK_TOP_HDCP_24M_SEL, "hdcp_24m_sel", hdcp_24m_parents, 0x00d0, 16, 2, 23),
+-	MUX(CLK_TOP_RTC_SEL, "rtc_sel", rtc_parents, 0x00d0, 24, 2),
++	MUX_FLAGS(CLK_TOP_RTC_SEL, "rtc_sel", rtc_parents, 0x00d0, 24, 2,
++		  CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
  
-+/* Dummy clock for backwards compatibility */
-+#define CLK_DUMMY			0
-+
- /* TOPCKGEN */
- #define CLK_TOP_SYSPLL				1
- #define CLK_TOP_SYSPLL_D2			2
-diff --git a/include/dt-bindings/clock/mt6779-clk.h b/include/dt-bindings/clock/mt6779-clk.h
-index b083139afbd2..478d4af33b2a 100644
---- a/include/dt-bindings/clock/mt6779-clk.h
-+++ b/include/dt-bindings/clock/mt6779-clk.h
-@@ -7,6 +7,9 @@
- #ifndef _DT_BINDINGS_CLK_MT6779_H
- #define _DT_BINDINGS_CLK_MT6779_H
+ 	DIV_GATE(CLK_TOP_APLL1_DIV0, "apll1_div0", "aud_1_sel", 0x12c, 8, 0x120, 4, 24),
+ 	DIV_GATE(CLK_TOP_APLL1_DIV1, "apll1_div1", "aud_1_sel", 0x12c, 9, 0x124, 8, 0),
+@@ -846,23 +852,8 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	}
+ };
  
-+/* Dummy clock for backwards compatibility */
-+#define CLK_DUMMY			0
-+
- /* TOPCKGEN */
- #define CLK_TOP_AXI			1
- #define CLK_TOP_MM			2
+-static struct clk_hw_onecell_data *mt8173_top_clk_data;
+-static struct clk_hw_onecell_data *mt8173_pll_clk_data;
+ static struct clk_hw_onecell_data *infra_clk_data;
+ 
+-static void mtk_clk_enable_critical(void)
+-{
+-	if (!mt8173_top_clk_data || !mt8173_pll_clk_data)
+-		return;
+-
+-	clk_prepare_enable(mt8173_pll_clk_data->hws[CLK_APMIXED_ARMCA15PLL]->clk);
+-	clk_prepare_enable(mt8173_pll_clk_data->hws[CLK_APMIXED_ARMCA7PLL]->clk);
+-	clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_MEM_SEL]->clk);
+-	clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_DDRPHYCFG_SEL]->clk);
+-	clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_CCI400_SEL]->clk);
+-	clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_RTC_SEL]->clk);
+-}
+-
+ static int clk_mt8173_topck_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
+@@ -874,7 +865,7 @@ static int clk_mt8173_topck_probe(struct platform_device *pdev)
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	mt8173_top_clk_data = clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
++	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+ 	if (IS_ERR_OR_NULL(clk_data))
+ 		return -ENOMEM;
+ 
+@@ -895,7 +886,6 @@ static int clk_mt8173_topck_probe(struct platform_device *pdev)
+ 	if (r)
+ 		goto unregister_composites;
+ 
+-	mtk_clk_enable_critical();
+ 	return 0;
+ 
+ unregister_composites:
+@@ -1048,8 +1038,10 @@ static const struct mtk_pll_div_table mmpll_div_table[] = {
+ };
+ 
+ static const struct mtk_pll_data plls[] = {
+-	PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0, 0, 21, 0x204, 24, 0x0, 0x204, 0),
+-	PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0, 0, 21, 0x214, 24, 0x0, 0x214, 0),
++	PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0, PLL_AO,
++	    21, 0x204, 24, 0x0, 0x204, 0),
++	PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0, PLL_AO,
++	    21, 0x214, 24, 0x0, 0x214, 0),
+ 	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x220, 0x22c, 0xf0000100, HAVE_RST_BAR, 21, 0x220, 4, 0x0, 0x224, 0),
+ 	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x230, 0x23c, 0xfe000000, HAVE_RST_BAR, 7, 0x230, 4, 0x0, 0x234, 14),
+ 	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c, 0, 0, 21, 0x244, 24, 0x0, 0x244, 0, mmpll_div_table),
+@@ -1076,7 +1068,7 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+ 	if (!base)
+ 		return PTR_ERR(base);
+ 
+-	mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
++	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+ 	if (IS_ERR_OR_NULL(clk_data))
+ 		return -ENOMEM;
+ 
+@@ -1101,7 +1093,6 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+ 	if (r)
+ 		goto unregister_ref2usb;
+ 
+-	mtk_clk_enable_critical();
+ 	return 0;
+ 
+ unregister_ref2usb:
 -- 
 2.39.0
 
