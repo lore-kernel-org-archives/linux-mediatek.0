@@ -4,165 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ECBEC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 23:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78973C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 23:58:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BJBQsgZqHySR5ZJFvpzCoSAiWyJRIXKFYrS/yNJi4yQ=; b=nwwFrfraybfrpbxaSn2AUR7u9e
-	8YtnH4wspt4DwjDr5YMu/jU/1dlbPLUoE6oiBAYJSjo5gsCp/vjatHH1gJrkh1438p4KyepLet6CX
-	UIVJqmI4E5VvH5OB2C3O7K0ZRrHFF0IBW+4BC1iziWGiFqDnk6cjigWo0v91923kE5PZ19yG5uczz
-	22KRZdGUz5ectpVq3d/lKEAeJ9ePKljBX//wxc2J6Nw1HDw8rjjah3/SQyoZqJ6Bw7UMWWNNMXMtr
-	QpqnobP46WvpM4fLcZJQQBl/8P9JVq1UZYcjPYvLLRPrIBfA0tuIHh39hjvNHwLh+3p0moiVTFW/d
-	ppj8o2Nw==;
+	bh=45m92RXeL9bCJ8ie9z8XlJsQK6ICd4u1IZvoOCj1qDM=; b=Fcqk0tYoc5r8+D0QBATABY+kXV
+	YOS4xdJScpaNatl/LxbVqDJzPg6CX1mogS7NxEf2+i0h8dvaYSE4zRsgzTI6ciWq+wZDYrD5f3AQg
+	b/Vt2tIxYAPMLJEhcodOzq7jjEBRg+Ry9RJrjPoRBiF7j1K77lhpc007a+DmUwi88V5zsHMI7UC9l
+	diaC4EJrgEIMg5cRrdGAZiGIo213AHXzE2AujNk4Yjd473j2peIGv4B3B/Ae+JQF8dQgef9VATvNN
+	pz5rHMn/4BUF7qWs1RrOWr/TyMUXnBAUuHqU+V7+UHiYlY6GeR+CGnmE2pclrthPjPxHKlhboxlE3
+	uusZfgGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8VAG-000xLY-BK; Thu, 22 Dec 2022 23:39:52 +0000
-Received: from mail-db3eur04on2059.outbound.protection.outlook.com ([40.107.6.59] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
+	id 1p8VRt-0016qy-9Y; Thu, 22 Dec 2022 23:58:05 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8V8z-000vjs-QW; Thu, 22 Dec 2022 23:38:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iOB+cp/2ZenWVC56AXYvi0QMqLdjEQZZBxI/yX4ymCSj0bZwUAYrI9TmW/sylFQ++fBBgu9DDupqlTpeBX8rtK6RfVczLDn3rstdWudO4xBsPKc5Ccvzvqt1mWzxTb1HGftWgc/clG2T2XitntV3Ba8YOaV7eCBps4ZNbGPwFjI5cx5b7DiN4nMDmWudptRWXYIjpDRBZ520WDyKbpvXxCpx4c66xaVN9+Jo7C3TwcNjcKQdgyyBWodhzIPgM9wgWFyc+ZewahzNeCU0YXFDObDg1SWgUzeOoaC925nM2hyLZnr3sqmIWpBfAF32O4LZP8Osrrfdp9UECksKGLwj0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BJBQsgZqHySR5ZJFvpzCoSAiWyJRIXKFYrS/yNJi4yQ=;
- b=ApyPzopBuElCPf0QfJjnVclcgzjB2uF0LMQsxisQJlcqxUmJQEGB+z3+W8jxc+jSKbRYV6GsgFv7mg3ETzkvFE8c1o3U7gEouq/dJRi9/Zs9zworvZ+5uJWqFb+K/wBvZr7NLqcxNcGxYIsgG8cwt1i5basU7x0OlN/QBOZArT8AXiU/X4ANjAbUCOmdKvAvNw6jVAFj12ugPV7hhUTTgz891KwsK2VCA65GjCSnSrwcLzOoLXhGve1hXFfCRoijx2R2W6jctmLOqgPhDExS7x/1ofAIcqoDCDUx8xtyjmIsnMC6fy+rU62bfodVKxB9PtFuBnbJzp+W9HHUHjU5RA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=seco.com; dmarc=pass action=none header.from=seco.com;
- dkim=pass header.d=seco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seco.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BJBQsgZqHySR5ZJFvpzCoSAiWyJRIXKFYrS/yNJi4yQ=;
- b=Kxx5V0tmSntBCR5hSadufXiJxVSI14CMpcTNTBsut77IFRn6JW35ARk4uwSINfjoAnDZ/iC2MIZ2x7W3brA6W+zIqg+5bucsCkArQnh2rVwrAhPqnW/mseH2lstFFQZVbTRvLL9r6byBMuBuVTCDNWV1ba440xGnlVrs6CWTQmjs2UghhluVykWEzIw1hYP0MISQAksrd5iiF8pod7M7zBSMr15370avBpk619nzmWJNz+r//lzLf9moexF+YnpjdhvrHQfUK23qB4hi+gBEKzxc5sxUc8oFoQcnKIwbfcC42OgQUEbZhUrQqRe5PfY9CPi3LkOZW6+JvHXhzRByDg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=seco.com;
-Received: from DB9PR03MB8847.eurprd03.prod.outlook.com (2603:10a6:10:3dd::13)
- by AS2PR03MB9100.eurprd03.prod.outlook.com (2603:10a6:20b:5fb::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.16; Thu, 22 Dec
- 2022 23:38:27 +0000
-Received: from DB9PR03MB8847.eurprd03.prod.outlook.com
- ([fe80::2b95:1fe4:5d8f:22fb]) by DB9PR03MB8847.eurprd03.prod.outlook.com
- ([fe80::2b95:1fe4:5d8f:22fb%7]) with mapi id 15.20.5944.013; Thu, 22 Dec 2022
- 23:38:27 +0000
-From: Sean Anderson <sean.anderson@seco.com>
-To: David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org,
-	Sean Anderson <sean.anderson@seco.com>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Brian Starkey <brian.starkey@arm.com>,
-	Chen Feng <puck.chen@hisilicon.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Christian Gmeiner <christian.gmeiner@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	John Stultz <jstultz@google.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Mali DP Maintainers <malidp@foss.arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mihail Atanassov <mihail.atanassov@arm.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Clark <robdclark@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Samuel Holland <samuel@sholland.org>,
-	Sean Paul <sean@poorly.run>,
-	Tian Tao <tiantao6@hisilicon.com>,
-	Tomi Valkeinen <tomba@kernel.org>,
-	Xinliang Liu <xinliang.liu@linaro.org>,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	etnaviv@lists.freedesktop.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-sunxi@lists.linux.dev
-Subject: [PATCH v2 3/3] drm: Convert users of drm_of_component_match_add to component_match_add_of
-Date: Thu, 22 Dec 2022 18:37:59 -0500
-Message-Id: <20221222233759.1934852-4-sean.anderson@seco.com>
-X-Mailer: git-send-email 2.35.1.1320.gc452695387.dirty
-In-Reply-To: <20221222233759.1934852-1-sean.anderson@seco.com>
-References: <20221222233759.1934852-1-sean.anderson@seco.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: BL1PR13CA0205.namprd13.prod.outlook.com
- (2603:10b6:208:2be::30) To DB9PR03MB8847.eurprd03.prod.outlook.com
- (2603:10a6:10:3dd::13)
+	id 1p8VRp-0016pY-Ve
+	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 23:58:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 03073B81FAA;
+	Thu, 22 Dec 2022 23:57:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FD1CC433D2;
+	Thu, 22 Dec 2022 23:57:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1671753477;
+	bh=FUrmjne2QGGfSzbO3o4XtXpYRgkMH8d3N/annO1Hv9k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QZd3XTzgzhClTEufvB4vUyEVfNs3o5rm31dHdteA1NPwkS9DVKEPJja/zbYqo5pUR
+	 LKPZA8UcqImAOJtrF5wIjJ0OGvmH/vFrWGhT4LQ7kZ44aQtUYy36UDuZsAQWPdceT/
+	 QDmuvTqZG3uufmc/AT5YBdxabEHw5mrEiiZwnaaGmhQqkq6x214wx9fDiXbnaVV6g4
+	 llU66X6qDPSndQj+DffR7U6/FWI5oeFA6fYJQuQKUOePnf0/7qK3e5hqs4OqM1lk1X
+	 jK5D0P2uxizTDrIpa/NnEd+JV+HDJKr13T9qeNbGfQrvCYgVPcVd94HrPG9igTxA8o
+	 ga8J8o2fS5TMA==
+Date: Fri, 23 Dec 2022 00:57:53 +0100
+From: "lorenzo@kernel.org" <lorenzo@kernel.org>
+To: Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
+	"nbd@nbd.name" <nbd@nbd.name>,
+	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
+	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	Ryder Lee <Ryder.Lee@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2] wifi: mt76: fix potential memory leakage
+Message-ID: <Y6TvAWICff7kmWnO@lore-desk>
+References: <3940cc5ccb4b17d51b5176e722daef0d1af66d6a.camel@mediatek.com>
+ <B2689D6F-E04E-4E9B-9244-4E5069DC464D@nbd.name>
+ <Y6NKHY7euhifm0kI@lore-desk>
+ <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
+ <Y6QnFkJCWPsRgSQD@lore-desk>
+ <5162a6ab00c3d90e4401e8753f4a79d9232640eb.camel@mediatek.com>
+ <Y6RpDbebkzXltTZj@lore-desk>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR03MB8847:EE_|AS2PR03MB9100:EE_
-X-MS-Office365-Filtering-Correlation-Id: d0773e21-0506-45e2-4bab-08dae4759fd8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	OrRzdtGzlbVhGjlo5VQbmcOe9GYWaj6poLsMUMKqln6CpLCtfojVnZEzlt0EYmhFJE/4bgQSL4Yb3LzedtCSpkEfD8E8yJgYsfW/dkkAoipxnSUUYJS42swEBpOYnZobMbg3Kw5m9ibz/WRuGH5zXbE+8An+gWn5W4n+d+tgcr6yX4ehIB10q/IxtR9fHIGGqYtIr+sH3MUPkcxC/B8X26BcrD0olI5fGTfLv8FFSDRKHpPaPZjOg2AVvsIDi5tBpgi2WnJRgvBLHYiOZB1iqginMqRE8O2xrpR5RRQMt7BMH5YX4CHateWIBGnR8KEec6NVEjH28a9g4uiEidK9XdthCKfhBFSXMkrmQPfLlxXVW9e6TmyDGGb7j2/G4fd8Z7CFoqCfWWZBn0ShHJSnaAwKKZffWivEyBJZqjIOqTy8w9VQJMDdnuS5ESA3QRCMvguNfH8g7aDV2W2IjxBd8KoZ7SfQ9M0aVIE0kbBngEfslCXHNfnIVTypjgtBTdLIzV53EmanjnCphaW57huFo57HCZIRsaisq/Y0xUNYN5SeumHKss/zw0URrz55KH6gcV5gt4eoukOORHjP3mzseOJVTWLXkCx+UaeAHq3PrSWNaOuOuI5ZFmFyF05nSyEeCT91wDN+Z761YRViHPvD2rWBAFcuApnt/5674UylUNUXOB2eZOj29WcUSZGl17OUqErlB22qHUt3i6lOimYufw==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR03MB8847.eurprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(346002)(366004)(376002)(136003)(39850400004)(451199015)(86362001)(36756003)(110136005)(316002)(7406005)(54906003)(478600001)(38350700002)(52116002)(8936002)(44832011)(41300700001)(30864003)(2906002)(4326008)(6486002)(66946007)(66556008)(7416002)(6666004)(5660300002)(66476007)(38100700002)(26005)(8676002)(6512007)(83380400001)(6506007)(186003)(1076003)(2616005);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?UjNLUGZVdW1NWmh3dEpyaDNSSDFyWW1oUGhmUUZIL1EwUDg0d2IvZjhOK2g3?=
- =?utf-8?B?djQyTGM2OVVBTWNRNFA2eXpKUTRQNng0QnRHY2h1cE5NK09FbnFwcGJMY2s5?=
- =?utf-8?B?cko4R1lEYkQwMGVZNCtIbGlWU3BWZ3hyOGU5N2JqNjgzdlVGb0V4TVp4WEZY?=
- =?utf-8?B?a0pjMFlQejNtOHNRdXRmQmdZd050NFcxdWg3emhHMFZDWnNFY05OWEwvRXM3?=
- =?utf-8?B?WnVHRjlrMldWYUxFWWlhSk9SNFhwZUdibmZwUFBPaElmSEkraWRYQkVkVEJO?=
- =?utf-8?B?SXJlY3ZxNG12ODV3SFpMV3oySDFHWWN0Qzh3NEs0ak9BZkNzZUZVL1ovQ3NN?=
- =?utf-8?B?K1FrNkkyWjR5QXBTUnN3b1FLN0hHMnRSZ3FOSks5aHU3V2FLOCtadlZsOTRz?=
- =?utf-8?B?WUUvYzYrSmd4NEROWlVjcFJ0dVorUjB6TTdTODEvTk13Y1FzTjBUMS9nRmE0?=
- =?utf-8?B?WDUrdEZLYTNzQmFWVU9XRGQ2M3lVZ0xZS1lndnFlZ0FiZU5zckNsM0tSR25W?=
- =?utf-8?B?M3QzNmRxcDFGZDlEK2U4VG1HRXo3dDFVblNRYVU3cHY0UUE2OHpUbURKUVE1?=
- =?utf-8?B?NER1dmpRMTZ0MXc2TDN5cVBxWS9yeEM4RURwRkdZUGpxUGtEdGp5ZFBJdW9F?=
- =?utf-8?B?WDVlektqeWdvRW1wdUh1TXV2SnMxa0xFNEQvSjZIMHRSZS82OWphcnlodGN5?=
- =?utf-8?B?TGpBeHp6RWRxUmM3d0YzRjRzK1pPeUJLZVRvYnpnSjVtTjFIMGl3Wm5OZmth?=
- =?utf-8?B?cW1rTEYyZEhHdnhIV2tsMWZJcE42Um5wMnpVYU1wc2lMV21VRDFZSFJ2RGR3?=
- =?utf-8?B?UGFzd2hCWStWZTBDVldjZVd3eGMvUTdic3VFQUk1Q2tFV3NLbnowMkVOLzlR?=
- =?utf-8?B?MEZLTHc5eGhiNnIzTEFBUitORmROQ3dGb0RXbnhSOSs0ZUxEb3BTS2l4ZFBq?=
- =?utf-8?B?OEpIeDVxd3l3TU5FSTltWVVMNW9heWVYWEtkWEsvblloZDhSMHhHcU02ZHAv?=
- =?utf-8?B?R1oyYnNFSko2aXpUaXNVcVFCVFNKRjhsaW55UUdYd2RpWFBsbjZqUlFidndH?=
- =?utf-8?B?Sk5kVUNtZXdUZkI4TDQrZjc2bkFsK2V1ZHcwQkJaZ0RVTjUxbnJheUY4bVBi?=
- =?utf-8?B?TCtjbHdQQm5ubHcvNkdmMGN0djlCWlBWNUhJSFdsN1pQS1VwdXpMdEVPUWdi?=
- =?utf-8?B?dUo1VHNoNmN3RkQvVmpaTU1scytoUnR1bVZGZW0vaWxnYWNPWHpOSnB4Misr?=
- =?utf-8?B?MmdSOWJOQS9LV3B5bnNRSFBla3N2SVdzdzNJTkdZajNyanhPNUtDVnVkTmpH?=
- =?utf-8?B?VStoeVRLZmtXUHp6UVN2QTU2dE8wVmZPSkJremlOc2VlUVhnYm95Ni9zdnVl?=
- =?utf-8?B?SkZ4WHVscWJmdDkweW94SWE1QlAvZVVKbFF1TVJrYVhQd251cTBIaUI3aDhY?=
- =?utf-8?B?UTVaYllBTENJYnFOY3JlM1FlR0ZqN0pzZWk0ODBNcEN0MjNoUFVITXZYS2tY?=
- =?utf-8?B?TndoekJQUGVCd0hBY1RmOHZaYlJzVFJZT0pxN2dqbVRZMkxLdFpkU2g3a1NG?=
- =?utf-8?B?akdmenhJRkpsbjFGWjdHdkpoYTNZczFHTG1XQjl6K093ZnlscHNSbXR5MmZz?=
- =?utf-8?B?RjM0cHB3ZFljdFlGNkJjSTZnc0tPeTRVSjdSbVpVekJFMEFBajU2bk10Y2VQ?=
- =?utf-8?B?am5leGI4ZWUrWGxoRTM5WExzeWVNYisxWFBjcCtDNDhnU3pzNk5IVWxpMkV6?=
- =?utf-8?B?dENRWVdvZDVaeXFVOVJYUDR4M21FVFJoWklUMldwWXlQRmhQNGcvZmRaYUlm?=
- =?utf-8?B?MjNBS212MGxibVJic2RrZ1czb1kvam4vcTJFZExxS1Y3ZjBrRmpvd3RnTmNj?=
- =?utf-8?B?QU51RysxWXNMMDBYR3ZDbDgzMmFMNFBZVnVkeU5kVXlRNjNjdEcvZnB3MS83?=
- =?utf-8?B?L0xSR21WWngydzJFVEQ3WXJYRi9xUjd5UWlEQXhXL0VTRDJZNTJ6cnhwLzF4?=
- =?utf-8?B?QXFvaUdoUDVuWCt3OGJQMExYVEFLWFNkaHdWbW53TDlsbzdvMmdqUHdXK0ZO?=
- =?utf-8?B?ci9TOUgvS3Y4Nk9JSmxEQ2xSeUZvRXNMVnlOeUt3bFNGTlRwWjd0eFRkS1Nu?=
- =?utf-8?B?M0gxa0dvdEhKZTh3RVZremYrdDFXM2tNb3lMRWQ1NmcwUXBiVGc1Ly9JdS9Q?=
- =?utf-8?B?MlE9PQ==?=
-X-OriginatorOrg: seco.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d0773e21-0506-45e2-4bab-08dae4759fd8
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR03MB8847.eurprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Dec 2022 23:38:27.2123
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: bebe97c3-6438-442e-ade3-ff17aa50e733
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: OoB/31SbI/ndNhK5KWP5CvXNmRWBgy3BSwSe+BIP+B121xOTVy1mGVC7xOz5CUd5661o8h8BpAZpH2o846h00A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR03MB9100
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EednCXMIu9DDBNf/"
+Content-Disposition: inline
+In-Reply-To: <Y6RpDbebkzXltTZj@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_153834_070770_8D1ACA46 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20221222_155802_367571_AE4144FA 
+X-CRM114-Status: GOOD (  53.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,365 +83,283 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Every user of this function either uses component_compare_of or
-something equivalent. Most of them immediately put the device node as
-well. Convert these users to component_match_add_of and remove
-drm_of_component_match_add.
 
-Signed-off-by: Sean Anderson <sean.anderson@seco.com>
-Acked-by: Jyri Sarha <jyri.sarhaı@iki.fi>
-Tested-by: Jyri Sarha <jyri.sarha@iki.fi>
----
+--EednCXMIu9DDBNf/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-(no changes since v1)
+> > On Thu, 2022-12-22 at 10:44 +0100, lorenzo@kernel.org wrote:
+> > > > On Wed, 2022-12-21 at 19:02 +0100, Lorenzo Bianconi wrote:
+> > > > > On Dec 21, Felix Fietkau wrote:
+> > > > > > Hi Sujuan,
+> > > > > >=20
+> > > > > > > Yes, it is so expensive, but if no memcopy, it will casue
+> > > > > > > memory
+> > > > > > > fragmentation (we hit this issue in internal SQC).
+> > > > > > >=20
+> > > > > > > as we know, wed needs to exchange rx pkt(belongs to wed rx
+> > > > > > > buffer
+> > > > > > > manager) with wifi driver(dma rx data queue) by exchanging
+> > > > > > > wfdma
+> > > > > > > dmad
+> > > > > > > to ensure the free wed rx buffer.
+> > > > > > >=20
+> > > > > > > it is possiable that a large number of buffer has been
+> > > > > > > exchanged
+> > > > > > > to wed
+> > > > > > > and can not come back to wlan driver. So, the memory from the
+> > > > > > > same 32K
+> > > > > > > page cache is unable to be released, and it will be failed at
+> > > > > > > page_frag_alloc in mt76_dma_rx_fill.
+> > > > > > >=20
+> > > > > > > Any ideas but memcopy?
+> > > > > >=20
+> > > > > > A simple solution would be to simply allocate single pages, or
+> > > > > > half-page fragments.
+> > > > > >=20
+> > > > > > - Felix
+> > > > > >=20
+> > > > >=20
+> > > > > A simple approach would be allocating a single page for each rx
+> > > > > buffer.
+> > > > >=20
+> > > > > @Sujuan: can you please double check if it is ok from performance
+> > > > > and
+> > > > > memory
+> > > > > 	 fragmentation point of view? If not I guess we can try to
+> > > > > optimize it
+> > > > > 	 and allocate multiple buffers in the same page tweeking page
+> > > > > refcount.
+> > > > >=20
+> > > > > (this patch must be applied on top of Felix's dma fix).
+> > > > >=20
+> > > >=20
+> > > > Allocating single page for each rx buffer avoids memory
+> > > > fragmentation,
+> > > > but it always uses 4K for one rx pkt which only needs 2K, right?
+> > >=20
+> > > correct, we can optimize it allocating multiple buffers (in this case
+> > > 2,
+> > > assuming 4K pages) in a single page and recycling the page.
+> > >=20
+> > > >=20
+> > > > I guess performance would be worse without page cache.
+> > >=20
+> > > I think it is a trade-off
+> > >=20
+> > > > We have tested on the mtk private driver, 7% drop in throughput
+> > > > when
+> > > > setting the 4K page cache compared to the 32K page cache.
+> > > > and 10% drop when use slab to allocate buffer.
+> > >=20
+> > > IIUC you tested with PAGE_FRAG_CACHE_MAX_SIZE set to 4K (or with a
+> > > private
+> > > page_frag_alloc() implementation) and you avoided memory allocation
+> > > failures due to fragmentation but you got ~ 7% drop in throughput,
+> > > correct?
+> > > I think this is quite expected since we need to refill ~ 8 times more
+> > > the
+> > > page cache.
+> > >=20
+> > > Not considering memory fragmentation, have you measured the impact of
+> > > the
+> > > memcpy of a full buffer?
+> > >=20
+> >=20
+> > well, for pure sw path, it maybe ~300M drop (not sure) when using
+> > memcpy(5G/HE80/4*4).
+> > but we do memcpy only when wed on, atfer a few unbinding pkts, then all
+> > flows are offloaded by hw. it is also a trade-off~
+>=20
+> I guess we have quite a big impact if we enable wed and we do not actually
+> offload any flow (or we do not enable hw flowtable in netfilter), dont' w=
+e?
 
- .../gpu/drm/arm/display/komeda/komeda_drv.c   |  6 ++--
- drivers/gpu/drm/arm/hdlcd_drv.c               |  9 +-----
- drivers/gpu/drm/arm/malidp_drv.c              | 11 +------
- drivers/gpu/drm/armada/armada_drv.c           | 10 ++++---
- drivers/gpu/drm/drm_of.c                      | 29 +++----------------
- drivers/gpu/drm/etnaviv/etnaviv_drv.c         |  4 +--
- .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |  3 +-
- drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |  3 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  4 +--
- drivers/gpu/drm/msm/msm_drv.c                 | 14 ++++-----
- drivers/gpu/drm/sti/sti_drv.c                 |  3 +-
- drivers/gpu/drm/sun4i/sun4i_drv.c             |  3 +-
- drivers/gpu/drm/tilcdc/tilcdc_external.c      | 10 ++-----
- include/drm/drm_of.h                          | 12 --------
- 14 files changed, 33 insertions(+), 88 deletions(-)
+Hi Sujuan,
 
-diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-index 3f4e719eebd8..e3bfc72c378f 100644
---- a/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-+++ b/drivers/gpu/drm/arm/display/komeda/komeda_drv.c
-@@ -103,10 +103,8 @@ static void komeda_add_slave(struct device *master,
- 	struct device_node *remote;
- 
- 	remote = of_graph_get_remote_node(np, port, endpoint);
--	if (remote) {
--		drm_of_component_match_add(master, match, component_compare_of, remote);
--		of_node_put(remote);
--	}
-+	if (remote)
-+		component_match_add_of(master, match, remote);
- }
- 
- static int komeda_platform_probe(struct platform_device *pdev)
-diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-index 7043d1c9ed8f..fa37ca10c80b 100644
---- a/drivers/gpu/drm/arm/hdlcd_drv.c
-+++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-@@ -353,11 +353,6 @@ static const struct component_master_ops hdlcd_master_ops = {
- 	.unbind		= hdlcd_drm_unbind,
- };
- 
--static int compare_dev(struct device *dev, void *data)
--{
--	return dev->of_node == data;
--}
--
- static int hdlcd_probe(struct platform_device *pdev)
- {
- 	struct device_node *port;
-@@ -368,9 +363,7 @@ static int hdlcd_probe(struct platform_device *pdev)
- 	if (!port)
- 		return -ENODEV;
- 
--	drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
--	of_node_put(port);
--
-+	component_match_add_of(&pdev->dev, &match, port);
- 	return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
- 					       match);
- }
-diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-index 589c1c66a6dc..3a49c29ba5b8 100644
---- a/drivers/gpu/drm/arm/malidp_drv.c
-+++ b/drivers/gpu/drm/arm/malidp_drv.c
-@@ -909,13 +909,6 @@ static const struct component_master_ops malidp_master_ops = {
- 	.unbind = malidp_unbind,
- };
- 
--static int malidp_compare_dev(struct device *dev, void *data)
--{
--	struct device_node *np = data;
--
--	return dev->of_node == np;
--}
--
- static int malidp_platform_probe(struct platform_device *pdev)
- {
- 	struct device_node *port;
-@@ -929,9 +922,7 @@ static int malidp_platform_probe(struct platform_device *pdev)
- 	if (!port)
- 		return -ENODEV;
- 
--	drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
--				   port);
--	of_node_put(port);
-+	component_match_add_of(&pdev->dev, &match, port);
- 	return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
- 					       match);
- }
-diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-index 0643887800b4..c0211ad7a45d 100644
---- a/drivers/gpu/drm/armada/armada_drv.c
-+++ b/drivers/gpu/drm/armada/armada_drv.c
-@@ -184,10 +184,12 @@ static void armada_add_endpoints(struct device *dev,
- 
- 	for_each_endpoint_of_node(dev_node, ep) {
- 		remote = of_graph_get_remote_port_parent(ep);
--		if (remote && of_device_is_available(remote))
--			drm_of_component_match_add(dev, match, component_compare_of,
--						   remote);
--		of_node_put(remote);
-+		if (remote) {
-+			if (of_device_is_available(remote))
-+				component_match_add_of(dev, match, remote);
-+			else
-+				of_node_put(remote);
-+		}
- 	}
- }
- 
-diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-index 7bbcb999bb75..0a474729ddf6 100644
---- a/drivers/gpu/drm/drm_of.c
-+++ b/drivers/gpu/drm/drm_of.c
-@@ -78,24 +78,6 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
- }
- EXPORT_SYMBOL(drm_of_find_possible_crtcs);
- 
--/**
-- * drm_of_component_match_add - Add a component helper OF node match rule
-- * @master: master device
-- * @matchptr: component match pointer
-- * @compare: compare function used for matching component
-- * @node: of_node
-- */
--void drm_of_component_match_add(struct device *master,
--				struct component_match **matchptr,
--				int (*compare)(struct device *, void *),
--				struct device_node *node)
--{
--	of_node_get(node);
--	component_match_add_release(master, matchptr, component_release_of,
--				    compare, node);
--}
--EXPORT_SYMBOL_GPL(drm_of_component_match_add);
--
- /**
-  * drm_of_component_probe - Generic probe function for a component based master
-  * @dev: master device containing the OF node
-@@ -130,10 +112,9 @@ int drm_of_component_probe(struct device *dev,
- 			break;
- 
- 		if (of_device_is_available(port->parent))
--			drm_of_component_match_add(dev, &match, compare_of,
--						   port);
--
--		of_node_put(port);
-+			component_match_add_of(dev, &match, port);
-+		else
-+			of_node_put(port);
- 	}
- 
- 	if (i == 0) {
-@@ -171,9 +152,7 @@ int drm_of_component_probe(struct device *dev,
- 				continue;
- 			}
- 
--			drm_of_component_match_add(dev, &match, compare_of,
--						   remote);
--			of_node_put(remote);
-+			component_match_add_of(dev, &match, remote);
- 		}
- 		of_node_put(port);
- 	}
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-index 1d2b4fb4bcf8..4a0dba34a6e7 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-@@ -590,8 +590,8 @@ static int etnaviv_pdev_probe(struct platform_device *pdev)
- 			if (!first_node)
- 				first_node = core_node;
- 
--			drm_of_component_match_add(&pdev->dev, &match,
--						   component_compare_of, core_node);
-+			of_node_get(core_node);
-+			component_match_add_of(&pdev->dev, &match, core_node);
- 		}
- 	} else {
- 		char **names = dev->platform_data;
-diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-index 9c5d49bf40c9..3ee277615c39 100644
---- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-+++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-@@ -273,8 +273,7 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
- 	if (!remote)
- 		return -ENODEV;
- 
--	drm_of_component_match_add(dev, &match, component_compare_of, remote);
--	of_node_put(remote);
-+	component_match_add_of(dev, &match, remote);
- 
- 	return component_master_add_with_match(dev, &kirin_drm_ops, match);
- }
-diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-index 3d5af44bf92d..d0c87175dec4 100644
---- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-+++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-@@ -1444,8 +1444,7 @@ static int ingenic_drm_probe(struct platform_device *pdev)
- 	if (!np)
- 		return ingenic_drm_bind(dev, false);
- 
--	drm_of_component_match_add(dev, &match, component_compare_of, np);
--	of_node_put(np);
-+	component_match_add_of(dev, &match, np);
- 
- 	return component_master_add_with_match(dev, &ingenic_master_ops, match);
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index cd5b18ef7951..abead814bfdc 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -787,8 +787,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DSI) {
- 			dev_info(dev, "Adding component match for %pOF\n",
- 				 node);
--			drm_of_component_match_add(dev, &match, component_compare_of,
--						   node);
-+			of_node_get(node);
-+			component_match_add_of(dev, &match, node);
- 		}
- 
- 		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
-diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-index 8b0b0ac74a6f..8ccf57def955 100644
---- a/drivers/gpu/drm/msm/msm_drv.c
-+++ b/drivers/gpu/drm/msm/msm_drv.c
-@@ -5,6 +5,7 @@
-  * Author: Rob Clark <robdclark@gmail.com>
-  */
- 
-+#include <linux/component.h>
- #include <linux/dma-mapping.h>
- #include <linux/fault-inject.h>
- #include <linux/kthread.h>
-@@ -1156,10 +1157,9 @@ static int add_components_mdp(struct device *master_dev,
- 			continue;
- 
- 		if (of_device_is_available(intf))
--			drm_of_component_match_add(master_dev, matchptr,
--						   component_compare_of, intf);
--
--		of_node_put(intf);
-+			component_match_add_of(master_dev, matchptr, intf);
-+		else
-+			of_node_put(intf);
- 	}
- 
- 	return 0;
-@@ -1188,9 +1188,9 @@ static int add_gpu_components(struct device *dev,
- 		return 0;
- 
- 	if (of_device_is_available(np))
--		drm_of_component_match_add(dev, matchptr, component_compare_of, np);
--
--	of_node_put(np);
-+		component_match_add_of(dev, matchptr, np);
-+	else
-+		of_node_put(np);
- 
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/sti/sti_drv.c b/drivers/gpu/drm/sti/sti_drv.c
-index ef6a4e63198f..e3aae4574c75 100644
---- a/drivers/gpu/drm/sti/sti_drv.c
-+++ b/drivers/gpu/drm/sti/sti_drv.c
-@@ -238,8 +238,7 @@ static int sti_platform_probe(struct platform_device *pdev)
- 	child_np = of_get_next_available_child(node, NULL);
- 
- 	while (child_np) {
--		drm_of_component_match_add(dev, &match, component_compare_of,
--					   child_np);
-+		component_match_add_of(dev, &match, child_np);
- 		child_np = of_get_next_available_child(node, child_np);
- 	}
- 
-diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
-index cc94efbbf2d4..9b3ddd82f1be 100644
---- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-@@ -323,7 +323,8 @@ static int sun4i_drv_add_endpoints(struct device *dev,
- 	     of_device_is_available(node))) {
- 		/* Add current component */
- 		DRM_DEBUG_DRIVER("Adding component %pOF\n", node);
--		drm_of_component_match_add(dev, match, component_compare_of, node);
-+		of_node_get(node);
-+		component_match_add_of(dev, match, node);
- 		count++;
- 	}
- 
-diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-index 3b86d002ef62..0138ce02a64f 100644
---- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-+++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-@@ -155,11 +155,6 @@ int tilcdc_attach_external_device(struct drm_device *ddev)
- 	return ret;
- }
- 
--static int dev_match_of(struct device *dev, void *data)
--{
--	return dev->of_node == data;
--}
--
- int tilcdc_get_external_components(struct device *dev,
- 				   struct component_match **match)
- {
-@@ -173,7 +168,8 @@ int tilcdc_get_external_components(struct device *dev,
- 	}
- 
- 	if (match)
--		drm_of_component_match_add(dev, match, dev_match_of, node);
--	of_node_put(node);
-+		component_match_add_of(dev, match, node);
-+	else
-+		of_node_put(node);
- 	return 1;
- }
-diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-index 10ab58c40746..685c44dc1dae 100644
---- a/include/drm/drm_of.h
-+++ b/include/drm/drm_of.h
-@@ -33,10 +33,6 @@ uint32_t drm_of_crtc_port_mask(struct drm_device *dev,
- 			    struct device_node *port);
- uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
- 				    struct device_node *port);
--void drm_of_component_match_add(struct device *master,
--				struct component_match **matchptr,
--				int (*compare)(struct device *, void *),
--				struct device_node *node);
- int drm_of_component_probe(struct device *dev,
- 			   int (*compare_of)(struct device *, void *),
- 			   const struct component_master_ops *m_ops);
-@@ -69,14 +65,6 @@ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
- 	return 0;
- }
- 
--static inline void
--drm_of_component_match_add(struct device *master,
--			   struct component_match **matchptr,
--			   int (*compare)(struct device *, void *),
--			   struct device_node *node)
--{
--}
--
- static inline int
- drm_of_component_probe(struct device *dev,
- 		       int (*compare_of)(struct device *, void *),
--- 
-2.35.1.1320.gc452695387.dirty
+here ([0],[1]) I switched mt76 to page_pool allocator [2]. page_pool allows=
+ us to
+allocate pages of a requested order (order 0 for mt76) and split them betwe=
+en
+multiple buffers (2 buffers per page for mt7915). Moreover pp allocator rec=
+ycles
+the pages in order to avoid the page allocator overhead and keep the pages =
+DMA mapped
+if requested (I implemented the support for mt7915).
+The code is stable (with and without WED) but I have not run any performance
+tests. Can you please help with them to see if this code helps solving the
+discussed issue?
 
+Regards,
+Lorenzo
+
+[0] https://github.com/LorenzoBianconi/wireless-drivers-next/commit/61ce8e9=
+be04b40fa8a1c0f2778d266982be32d7a
+[1] https://github.com/LorenzoBianconi/wireless-drivers-next/commit/f54eefc=
+e06d389b155574092d246b21631e42d47
+[2] https://docs.kernel.org/networking/page_pool.html
+
+>=20
+> Regards,
+> Lorenzo
+>=20
+> >=20
+> > Regards,
+> > Sujuan
+> >=20
+> > > >=20
+> > > > A single page per rx buffer may cause a throughput drop of over 7%
+> > > > and
+> > > > waste memory, what do you think?
+> > >=20
+> > > Implementing the page recycles as it is done in page_frag_alloc() we
+> > > should get
+> > > the same results you got with PAGE_FRAG_CACHE_MAX_SIZE set to 4K.
+> > >=20
+> > > Regards,
+> > > Lorenzo
+> > >=20
+> > > >=20
+> > > > Regards,
+> > > > Sujuan
+> > > >=20
+> > > > > Regards,
+> > > > > Lorenzo
+> > > > >=20
+> > > > > diff --git a/drivers/net/wireless/mediatek/mt76/dma.c
+> > > > > b/drivers/net/wireless/mediatek/mt76/dma.c
+> > > > > index 28a7fe064313..1d9e580977fc 100644
+> > > > > --- a/drivers/net/wireless/mediatek/mt76/dma.c
+> > > > > +++ b/drivers/net/wireless/mediatek/mt76/dma.c
+> > > > > @@ -580,6 +580,20 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev,
+> > > > > struct mt76_queue *q,
+> > > > >  	return ret;
+> > > > >  }
+> > > > > =20
+> > > > > +static void *
+> > > > > +mt76_dma_get_rx_buf(struct mt76_queue *q)
+> > > > > +{
+> > > > > +	if ((q->flags & MT_QFLAG_WED) &&
+> > > > > +	    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX=
+) {
+> > > > > +		/* WED RX queue */
+> > > > > +		struct page *page =3D dev_alloc_page();
+> > > > > +
+> > > > > +		return page ? page_address(page) : NULL;
+> > > > > +	}
+> > > > > +
+> > > > > +	return page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
+> > > > > +}
+> > > > > +
+> > > > >  static int
+> > > > >  mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
+> > > > >  {
+> > > > > @@ -596,7 +610,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct
+> > > > > mt76_queue *q)
+> > > > >  		struct mt76_queue_buf qbuf;
+> > > > >  		void *buf =3D NULL;
+> > > > > =20
+> > > > > -		buf =3D page_frag_alloc(&q->rx_page, q->buf_size,
+> > > > > GFP_ATOMIC);
+> > > > > +		buf =3D mt76_dma_get_rx_buf(q);
+> > > > >  		if (!buf)
+> > > > >  			break;
+> > > > > =20
+> > > > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > > > > b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > > > > index 1a2e4df8d1b5..2924e71e4fbe 100644
+> > > > > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > > > > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> > > > > @@ -594,13 +594,9 @@ static void
+> > > > > mt7915_mmio_wed_offload_disable(struct mtk_wed_device *wed)
+> > > > >  static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device
+> > > > > *wed)
+> > > > >  {
+> > > > >  	struct mt7915_dev *dev;
+> > > > > -	u32 length;
+> > > > >  	int i;
+> > > > > =20
+> > > > >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+> > > > > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
+> > > > > -				sizeof(struct skb_shared_info));
+> > > > > -
+> > > > >  	for (i =3D 0; i < dev->mt76.rx_token_size; i++) {
+> > > > >  		struct mt76_txwi_cache *t;
+> > > > > =20
+> > > > > @@ -610,7 +606,7 @@ static void
+> > > > > mt7915_mmio_wed_release_rx_buf(struct
+> > > > > mtk_wed_device *wed)
+> > > > > =20
+> > > > >  		dma_unmap_single(dev->mt76.dma_dev, t->dma_addr,
+> > > > >  				 wed->wlan.rx_size, DMA_FROM_DEVICE);
+> > > > > -		__free_pages(virt_to_page(t->ptr), get_order(length));
+> > > > > +		free_page(virt_to_page(t->ptr));
+> > > > >  		t->ptr =3D NULL;
+> > > > > =20
+> > > > >  		mt76_put_rxwi(&dev->mt76, t);
+> > > > > @@ -621,13 +617,9 @@ static u32
+> > > > > mt7915_mmio_wed_init_rx_buf(struct
+> > > > > mtk_wed_device *wed, int size)
+> > > > >  {
+> > > > >  	struct mtk_rxbm_desc *desc =3D wed->rx_buf_ring.desc;
+> > > > >  	struct mt7915_dev *dev;
+> > > > > -	u32 length;
+> > > > >  	int i;
+> > > > > =20
+> > > > >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+> > > > > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
+> > > > > -				sizeof(struct skb_shared_info));
+> > > > > -
+> > > > >  	for (i =3D 0; i < size; i++) {
+> > > > >  		struct mt76_txwi_cache *t =3D mt76_get_rxwi(&dev->mt76);
+> > > > >  		dma_addr_t phy_addr;
+> > > > > @@ -635,7 +627,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > > > > mtk_wed_device *wed, int size)
+> > > > >  		int token;
+> > > > >  		void *ptr;
+> > > > > =20
+> > > > > -		page =3D __dev_alloc_pages(GFP_KERNEL,
+> > > > > get_order(length));
+> > > > > +		page =3D __dev_alloc_page(GFP_KERNEL);
+> > > > >  		if (!page)
+> > > > >  			goto unmap;
+> > > > > =20
+> > > > > @@ -644,7 +636,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > > > > mtk_wed_device *wed, int size)
+> > > > >  					  wed->wlan.rx_size,
+> > > > >  					  DMA_TO_DEVICE);
+> > > > >  		if (unlikely(dma_mapping_error(dev->mt76.dev,
+> > > > > phy_addr))) {
+> > > > > -			__free_pages(page, get_order(length));
+> > > > > +			free_page(page);
+> > > > >  			goto unmap;
+> > > > >  		}
+> > > > > =20
+> > > > > @@ -653,7 +645,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
+> > > > > mtk_wed_device *wed, int size)
+> > > > >  		if (token < 0) {
+> > > > >  			dma_unmap_single(dev->mt76.dma_dev, phy_addr,
+> > > > >  					 wed->wlan.rx_size,
+> > > > > DMA_TO_DEVICE);
+> > > > > -			__free_pages(page, get_order(length));
+> > > > > +			free_page(page);
+> > > > >  			goto unmap;
+> > > > >  		}
+> > > > > =20
+
+
+
+--EednCXMIu9DDBNf/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6TvAQAKCRA6cBh0uS2t
+rPFNAQDdPWt4RZ1BpKjqak53l2LZBvN08U8F7n1sYp5CLLakMAD7BKZoaZlwFco/
+Q68FkM7c539/+p+JsdHkccUdJ1GipwU=
+=qTa6
+-----END PGP SIGNATURE-----
+
+--EednCXMIu9DDBNf/--
 
