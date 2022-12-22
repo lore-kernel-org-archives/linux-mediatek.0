@@ -4,84 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 143D5C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 13:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFA6C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 13:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fpn5AWlPGChog//uqkDOTK8QT0OpyfDoW2uTCXxTeUk=; b=2+cw0jcLx9OxyXEePIURM0FHS2
-	UekAJGAGa3N7ZYDvOxSdtiAZdkpwF2IsucETuJEy4J/eHcirwoBnT2tmW+stg/RTYCuGPev8HEKwV
-	EUkjOh2htT9UfFqoKl9xXqo70cYxHTKnU/lAd55HElwEgiAP2d09AUkiHueYk0PGumPkjQg6JBpkk
-	Ahe/E+2rO3RswZRoF6R5nw44iax56VpJ17YH/i2HRXIlCvPuUfXpMnJWUyUdCAihxnp+ECGSUmegZ
-	ZjeSwUZnTdFbE5L2ZiAe8Ky38SZwuNkVSa5i1x5MESgC614wIkeu2afwbV393RQuIeAacVJTKjkpD
-	8ghpE4CQ==;
+	bh=NZKYMOZIKxtwI9C5Y2DsLl9mvShg/E7HjBCtUKagoFs=; b=sQumBFOr+uTKiaJDJWSD9qPECz
+	fx0ttCkR9XD5YsRj7A6gf3WX3hV/OAjprz/7/EACkvY5kFfvLN6CRglda6LrVXt0E/828+hLD0FEV
+	RDqOMiUpSCyonUAXaH+PBig+YKNHS30TAT9tdxEn3fV2oQAmKz01rPmXX2DKLjJd5I0YBjic9SgNe
+	AeLsdkVpo1dnif3jKGl8WdWmo+QMxwN3U89p4aZ6kcyDY1brUFyv5Ia1raoQJ9SY4DahpuRrbYlWH
+	0tdoAVFhgBeW7uEcuDE3SdJdwnkJ1r77gaGFik4Eiox2yeIycE1/drdPhXQl1gQVbV8JgfrlAFCZ0
+	yuUGenVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8LPm-00CHKT-PK; Thu, 22 Dec 2022 13:15:14 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1p8La6-00CNQ3-1z; Thu, 22 Dec 2022 13:25:54 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8K5G-00BXi8-Ja; Thu, 22 Dec 2022 11:50:00 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E4D816602D1D;
-	Thu, 22 Dec 2022 11:49:55 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671709797;
-	bh=PXg/FppXIPAwQaA1oQS+Wf5hDsh7ZOHb0BNVjLOTW5Y=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=f9W6n2Y+3XLDFPStXfD7nv1eW8u2Cq6hou75Mr0KBNGbXgRhbFUvBDL0gRaXjmkg7
-	 UMOAtHy9RpleUcKMqypwUm+7FAP+7WV94SPPDS+iflSM0R/3B0aYQ+zVzsCrD1kbCN
-	 GLQRSRhrcBvuMao4KMZkkxqhvQDXv5uRUpuNxj/JtHPg+K9qzLfeMANU/PKqlwK/IW
-	 jWq29M4zs7VdJhfxxuCcltCFciWJYoREentf1WHh1zoMt7+ZBmdnEzDUFeSiN8AEmd
-	 crxVtp/VRrYmXTljITVZtiquORGQRHUQmrruNQeeitOGEvtUI2kb2G0cp9sMJ1mkVR
-	 u8wQ8i1Fqflcw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	johnson.wang@mediatek.com,
-	miles.chen@mediatek.com,
-	fparent@baylibre.com,
-	chun-jie.chen@mediatek.com,
-	sam.shih@mediatek.com,
-	y.oudjana@protonmail.com,
-	nfraprado@collabora.com,
-	rex-bc.chen@mediatek.com,
-	ryder.lee@kernel.org,
-	daniel@makrotopia.org,
-	jose.exposito89@gmail.com,
-	yangyingliang@huawei.com,
-	pablo.sun@mediatek.com,
-	msp@baylibre.com,
-	weiyi.lu@mediatek.com,
-	ikjn@chromium.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v1 25/25] clk: mediatek: clk-mt7986-topckgen: Migrate to mtk_clk_simple_probe()
-Date: Thu, 22 Dec 2022 12:48:57 +0100
-Message-Id: <20221222114857.120060-26-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221222114857.120060-1-angelogioacchino.delregno@collabora.com>
-References: <20221222114857.120060-1-angelogioacchino.delregno@collabora.com>
+	id 1p8KJM-00BfQD-Pk
+	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 12:04:34 +0000
+Received: by mail-lj1-x230.google.com with SMTP id g14so1658006ljh.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Dec 2022 04:04:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NZKYMOZIKxtwI9C5Y2DsLl9mvShg/E7HjBCtUKagoFs=;
+        b=NU/xJ/gqpRxcFPSTXASvHZNTQPQImqNO0nE1XWDSUjaRHX0J8bJai/8tQDYnflTr3h
+         mDwlz1YH/Y9rUvFdqn5KvvivcDz/eE+tVUL2U086HVKo0+8Bty90EtnrbwBHA1ZP7Psi
+         uIu+pMXg4XzR1XZpARdpCm8XkQi56jlu6uC4M0XJei7G0I5P9ucBVWHyIh2TtcUHFKkw
+         i8TPm2VD40sEt+8b9lCYkavuHDU/x/gHGWDdypkP65F+NkP29O7e6OGJnO/2RKBeMQP9
+         IFdJPzXo0BhEvBYkZudzNFXi4HBQVk6tj3OFWLPUItUfM1vrtWMLZ0+agIf6FB7nG27X
+         vfjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NZKYMOZIKxtwI9C5Y2DsLl9mvShg/E7HjBCtUKagoFs=;
+        b=5lICPlXX4xphpEoJM39efuxprgGfzb2u4Hv/WRO7wOnauOmBIYwvhFRpVOKn3V5QlO
+         lBEDHWCTXmHf3b8pn4Pkah2vEkQ79B7rQfrJYaq9QC1gOH/xLKXntynAftdoZUMVdpym
+         Z+NWThtLfWpAbAr2CdPxJ/GCtpdampyDNhyLrRphnxu2KgBXAU+HEB5QPNcpOj1ukWcT
+         B4TCUiEKqhYMPA94Y30k2GLXAK+PRGFpLhsaxso24K1DAczvLNx8G4z5X/6I4yl4C2ia
+         jYhujkcWZrYCr4TIubUIQ4IwV26+B2DgdSp3HfwtZoxQim9U2jAAnVEJkJ0Pa/KN4RdG
+         BCFA==
+X-Gm-Message-State: AFqh2kobW+x2pOtDiMkd8o6AKeI4RTZ5uCfT4sB7vsV29O4OQxrVlanj
+	f398iel0qLTpgKqO7cmTnusfBA==
+X-Google-Smtp-Source: AMrXdXsdaEtj4y1LKgPUfPuRDzm6FjbtRSzDQGmYrSdV99fosJd2YkpIi0ZnhHBqHX/WJacriLb3ew==
+X-Received: by 2002:a2e:8652:0:b0:279:bd34:dcd7 with SMTP id i18-20020a2e8652000000b00279bd34dcd7mr1628383ljj.48.1671710669874;
+        Thu, 22 Dec 2022 04:04:29 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id s2-20020a2eb622000000b00279e93c9c25sm30608ljn.29.2022.12.22.04.04.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Dec 2022 04:04:29 -0800 (PST)
+Message-ID: <c675a104-7ae6-59e0-f73a-aae4ef0eb05c@linaro.org>
+Date: Thu, 22 Dec 2022 13:04:27 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v1 1/3] dt-bindings: dsp: mediatek: Add mt8188 dsp
+ compatible
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Chunxu Li <chunxu.li@mediatek.com>, Dan Carpenter <error27@gmail.com>,
+ YC Hung <yc.hung@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20221222072150.10627-1-tinghan.shen@mediatek.com>
+ <20221222072150.10627-2-tinghan.shen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221222072150.10627-2-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_034958_821014_A1F6594E 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20221222_040432_865136_E2A5639E 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,84 +112,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are no more non-common calls in clk_mt7986_topckgen_probe():
-migrate this driver to mtk_clk_simple_probe().
+On 22/12/2022 08:21, Tinghan Shen wrote:
+> Add support of the single-core HiFi5 audio DSP on MediaTek MT8188 SoC
+> for pre- and post- audio processing.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt7986-topckgen.c | 52 +++++-----------------
- 1 file changed, 12 insertions(+), 40 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt7986-topckgen.c b/drivers/clk/mediatek/clk-mt7986-topckgen.c
-index bf3088e6d9e3..286418aa00a0 100644
---- a/drivers/clk/mediatek/clk-mt7986-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt7986-topckgen.c
-@@ -290,52 +290,24 @@ static const struct mtk_mux top_muxes[] = {
- 			     0x1C4, 5),
- };
- 
--static int clk_mt7986_topckgen_probe(struct platform_device *pdev)
--{
--	struct clk_hw_onecell_data *clk_data;
--	struct device_node *node = pdev->dev.of_node;
--	int r;
--	void __iomem *base;
--	int nr = ARRAY_SIZE(top_fixed_clks) + ARRAY_SIZE(top_divs) +
--		 ARRAY_SIZE(top_muxes);
--
--	base = of_iomap(node, 0);
--	if (!base) {
--		pr_err("%s(): ioremap failed\n", __func__);
--		return -ENOMEM;
--	}
--
--	clk_data = mtk_alloc_clk_data(nr);
--	if (!clk_data)
--		return -ENOMEM;
--
--	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
--				    clk_data);
--	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
--	mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes), node,
--			       &mt7986_clk_lock, clk_data, &pdev->dev);
--
--	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
--
--	if (r) {
--		pr_err("%s(): could not register clock provider: %d\n",
--		       __func__, r);
--		goto free_topckgen_data;
--	}
--	return r;
--
--free_topckgen_data:
--	mtk_free_clk_data(clk_data);
--	return r;
--}
-+static const struct mtk_clk_desc topck_desc = {
-+	.fixed_clks = top_fixed_clks,
-+	.num_fixed_clks = ARRAY_SIZE(top_fixed_clks),
-+	.factor_clks = top_divs,
-+	.num_factor_clks = ARRAY_SIZE(top_divs),
-+	.mux_clks = top_muxes,
-+	.num_mux_clks = ARRAY_SIZE(top_muxes),
-+	.clk_lock = &mt7986_clk_lock,
-+};
- 
- static const struct of_device_id of_match_clk_mt7986_topckgen[] = {
--	{ .compatible = "mediatek,mt7986-topckgen", },
-+	{ .compatible = "mediatek,mt7986-topckgen", .data = &topck_desc },
- 	{}
- };
- 
- static struct platform_driver clk_mt7986_topckgen_drv = {
--	.probe = clk_mt7986_topckgen_probe,
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
- 	.driver = {
- 		.name = "clk-mt7986-topckgen",
- 		.of_match_table = of_match_clk_mt7986_topckgen,
--- 
-2.39.0
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
