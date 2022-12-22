@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37D84C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 14:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E246CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 15:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rYIIgcz8//q7JX2xhuLD3uaIooY+KU2MMOmrac+ivpY=; b=hpLziDnrG8OAAbnaRIq/XIGu4J
-	9EUYjbylKsr37HLieizwCDXXWItfmrbmRG2cYDnyMNjcj54SUPMnakkr0H2RgQ5Foh9AmCudLLTS+
-	KLECBjAKaLJ3lu54zkJg2GWiuA7lk0byiAYWytPKeJiVJ2xgc14V/jnjmdgPowLU4RnAZGK09MIuC
-	aNBPHsUr0t7kMJPChLmbVy0RQnZLiezIA+XxA56/q+prWRCrxt+3k7Ku1hJatF69KfpFlQ/+cfE//
-	dKje/+lTJlWSEVqcILpwz3pfqacaOwKFltao3fdynsCPAJEdU+/6p7Ajz2WHTFQw9CCnWA088KANU
-	CtpXUcBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J6ggDv0KgYu3zd+EWPH3ET1e1kqKAJcz8ceG5BXphBI=; b=eu1RYI2mHY34wX1O8dk8SV6LGR
+	8kbcM+6qU/pkWdcmclI53jwvzTxw5jKHI4aXJo9A0D3oMRSM8Qmn/6oSyCd3pXSY3P8rtTSOse+co
+	5+0su047QkSTmBGSUqkkIC2V9x+MOWTNEPpepOnW6Uy0kLpOLDfmO7dyyB+nsqonoq1j3rwZbOb9j
+	SYIDvif4lTIp8JPMRLgzI1hyFlR6MMTogkR7VWvInMhreeorNtIBwkZBjW4vLrqToT1BtytLazT1E
+	RydKqa1l7/HzlUMqKcNDkwuS/BOKkFXAHTVq8KJPw9LNOD9lvB5iX6TxhdnLGUVwYZFKd1dwflMzB
+	Iq9lM6rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Mt7-00DAH4-FC; Thu, 22 Dec 2022 14:49:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p8NsQ-00DjUx-Im; Thu, 22 Dec 2022 15:52:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8MWi-00CwX9-Qx
-	for linux-mediatek@lists.infradead.org; Thu, 22 Dec 2022 14:26:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1p8NrP-00Divf-Ji; Thu, 22 Dec 2022 15:51:57 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 8CDAAB81D9F;
-	Thu, 22 Dec 2022 14:26:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1103C433D2;
-	Thu, 22 Dec 2022 14:26:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671719185;
-	bh=6Rx5qtPbPsw64zlpiFnEQiqYr3mhLpmASHHL4uB97Y8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mhp2KtbMmvkhSndtg96PC010gJOyGegwAoIm5RdvFEDjvuxFDu+zYSxpwUgClwx04
-	 mHiSmtG5sCU48UML8e8Dpl+47aex6Fa3IOL710o7KNOLBc+rvq9H2I5RsF3J9w9pWy
-	 T/Mb5Iaa5s1QgZkI3O8E74qXxzyB5jm3Ri5yIo0J29lwkV28eCQ5UsmQo3nHGU8hpZ
-	 cVErbTfZtE9HJIzZQGxMsBPOH/HtOblgs0Anf160VhTTgEuWVzd2LGkb6lCzD/+WCC
-	 damidIk6R24eduxZOGQotHFDBVqij9m1AQouzapMUJmbdx96UlnrUvZUy/Cly3yBp7
-	 c+iHF38UGSVHQ==
-Date: Thu, 22 Dec 2022 15:26:21 +0100
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Sujuan Chen =?utf-8?B?KOmZiOe0oOWonyk=?= <Sujuan.Chen@mediatek.com>
-Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	Shayne Chen =?utf-8?B?KOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	"nbd@nbd.name" <nbd@nbd.name>,
-	Bo Jiao =?utf-8?B?KOeEpuazoik=?= <Bo.Jiao@mediatek.com>,
-	Evelyn Tsai =?utf-8?B?KOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2] wifi: mt76: fix potential memory leakage
-Message-ID: <Y6RpDbebkzXltTZj@lore-desk>
-References: <3940cc5ccb4b17d51b5176e722daef0d1af66d6a.camel@mediatek.com>
- <B2689D6F-E04E-4E9B-9244-4E5069DC464D@nbd.name>
- <Y6NKHY7euhifm0kI@lore-desk>
- <6de89564e1deb0b641b2a5039b23909f4647425e.camel@mediatek.com>
- <Y6QnFkJCWPsRgSQD@lore-desk>
- <5162a6ab00c3d90e4401e8753f4a79d9232640eb.camel@mediatek.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6B9E36602CD6;
+	Thu, 22 Dec 2022 15:51:51 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1671724312;
+	bh=O2dXAgLPaUw3PkOtSt7LNqIQn4RCHuSEGA3KmIfxgy8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=j94yEu/+BnkCUzCaAbk1OacUqkQnfPDedpq8hhng1JViiT+dKInf3x8bN3WYn6POf
+	 ZKIAro0r2KrzZeO6IjpNzX4nP2Z1grBopDy+Ga2R/CY93I7xdYpY4Fd7WjI4x1d46j
+	 FBEMzVMnopo9HFxIxcbRnM2gHPFti4ISwkcx3iwmobG5wvFXaJu0tAWFbhqr6Yx838
+	 9A7SVcVPjNtYjJ4VO2c1J+313kIfn1ntMxWVCbMnojZ3DFdPKW9ir1xkZ7/otGJRmv
+	 8wupUQXGE1cSk+bRaFBo66T+o7peG1mPppu78seNjpoiXXuWuf0Kx/O1+ySv2XY3cd
+	 HRmzgefp9xp6Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: mturquette@baylibre.com
+Cc: sboyd@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	edward-jw.yang@mediatek.com,
+	johnson.wang@mediatek.com,
+	wenst@chromium.org,
+	miles.chen@mediatek.com,
+	chun-jie.chen@mediatek.com,
+	rex-bc.chen@mediatek.com,
+	jose.exposito89@gmail.com,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH v1 1/6] clk: mediatek: fhctl: Add support for older fhctl register layout
+Date: Thu, 22 Dec 2022 16:51:42 +0100
+Message-Id: <20221222155147.158837-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20221222155147.158837-1-angelogioacchino.delregno@collabora.com>
+References: <20221222155147.158837-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Ku8RCL0uEh38JqAd"
-Content-Disposition: inline
-In-Reply-To: <5162a6ab00c3d90e4401e8753f4a79d9232640eb.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_062629_287336_7293D0D9 
-X-CRM114-Status: GOOD (  49.88  )
+X-CRM114-CacheID: sfid-20221222_075155_943211_98D010CA 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,254 +86,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The Frequency Hopping Controller (FHCTL) seems to have different
+versions, as it has a slightly different register layout on some
+older SoCs like MT6795, MT8173, MT8183 (and others).
 
---Ku8RCL0uEh38JqAd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This driver is indeed compatible with at least some of those older
+IP revisions, so all we need to do is to add a way to select the
+right register layout at registration time.
 
-> On Thu, 2022-12-22 at 10:44 +0100, lorenzo@kernel.org wrote:
-> > > On Wed, 2022-12-21 at 19:02 +0100, Lorenzo Bianconi wrote:
-> > > > On Dec 21, Felix Fietkau wrote:
-> > > > > Hi Sujuan,
-> > > > >=20
-> > > > > > Yes, it is so expensive, but if no memcopy, it will casue
-> > > > > > memory
-> > > > > > fragmentation (we hit this issue in internal SQC).
-> > > > > >=20
-> > > > > > as we know, wed needs to exchange rx pkt(belongs to wed rx
-> > > > > > buffer
-> > > > > > manager) with wifi driver(dma rx data queue) by exchanging
-> > > > > > wfdma
-> > > > > > dmad
-> > > > > > to ensure the free wed rx buffer.
-> > > > > >=20
-> > > > > > it is possiable that a large number of buffer has been
-> > > > > > exchanged
-> > > > > > to wed
-> > > > > > and can not come back to wlan driver. So, the memory from the
-> > > > > > same 32K
-> > > > > > page cache is unable to be released, and it will be failed at
-> > > > > > page_frag_alloc in mt76_dma_rx_fill.
-> > > > > >=20
-> > > > > > Any ideas but memcopy?
-> > > > >=20
-> > > > > A simple solution would be to simply allocate single pages, or
-> > > > > half-page fragments.
-> > > > >=20
-> > > > > - Felix
-> > > > >=20
-> > > >=20
-> > > > A simple approach would be allocating a single page for each rx
-> > > > buffer.
-> > > >=20
-> > > > @Sujuan: can you please double check if it is ok from performance
-> > > > and
-> > > > memory
-> > > > 	 fragmentation point of view? If not I guess we can try to
-> > > > optimize it
-> > > > 	 and allocate multiple buffers in the same page tweeking page
-> > > > refcount.
-> > > >=20
-> > > > (this patch must be applied on top of Felix's dma fix).
-> > > >=20
-> > >=20
-> > > Allocating single page for each rx buffer avoids memory
-> > > fragmentation,
-> > > but it always uses 4K for one rx pkt which only needs 2K, right?
-> >=20
-> > correct, we can optimize it allocating multiple buffers (in this case
-> > 2,
-> > assuming 4K pages) in a single page and recycling the page.
-> >=20
-> > >=20
-> > > I guess performance would be worse without page cache.
-> >=20
-> > I think it is a trade-off
-> >=20
-> > > We have tested on the mtk private driver, 7% drop in throughput
-> > > when
-> > > setting the 4K page cache compared to the 32K page cache.
-> > > and 10% drop when use slab to allocate buffer.
-> >=20
-> > IIUC you tested with PAGE_FRAG_CACHE_MAX_SIZE set to 4K (or with a
-> > private
-> > page_frag_alloc() implementation) and you avoided memory allocation
-> > failures due to fragmentation but you got ~ 7% drop in throughput,
-> > correct?
-> > I think this is quite expected since we need to refill ~ 8 times more
-> > the
-> > page cache.
-> >=20
-> > Not considering memory fragmentation, have you measured the impact of
-> > the
-> > memcpy of a full buffer?
-> >=20
->=20
-> well, for pure sw path, it maybe ~300M drop (not sure) when using
-> memcpy(5G/HE80/4*4).
-> but we do memcpy only when wed on, atfer a few unbinding pkts, then all
-> flows are offloaded by hw. it is also a trade-off~
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/clk-fhctl.c             | 26 +++++++++++++++++---
+ drivers/clk/mediatek/clk-fhctl.h             |  9 ++++++-
+ drivers/clk/mediatek/clk-mt8186-apmixedsys.c |  2 ++
+ drivers/clk/mediatek/clk-pllfh.c             | 23 +++++++++++++----
+ drivers/clk/mediatek/clk-pllfh.h             |  1 +
+ 5 files changed, 52 insertions(+), 9 deletions(-)
 
-I guess we have quite a big impact if we enable wed and we do not actually
-offload any flow (or we do not enable hw flowtable in netfilter), dont' we?
+diff --git a/drivers/clk/mediatek/clk-fhctl.c b/drivers/clk/mediatek/clk-fhctl.c
+index 4f271acef5fe..45e4842cbf04 100644
+--- a/drivers/clk/mediatek/clk-fhctl.c
++++ b/drivers/clk/mediatek/clk-fhctl.c
+@@ -14,7 +14,20 @@
+ #define PERCENT_TO_DDSLMT(dds, percent_m10) \
+ 	((((dds) * (percent_m10)) >> 5) / 100)
+ 
+-static const struct fhctl_offset fhctl_offset = {
++const struct fhctl_offset fhctl_offset_v1 = {
++	.offset_hp_en = 0x0,
++	.offset_clk_con = 0x4,
++	.offset_rst_con = 0x8,
++	.offset_slope0 = 0xc,
++	.offset_slope1 = 0x10,
++	.offset_cfg = 0x0,
++	.offset_updnlmt = 0x4,
++	.offset_dds = 0x8,
++	.offset_dvfs = 0xc,
++	.offset_mon = 0x10,
++};
++
++const struct fhctl_offset fhctl_offset_v2 = {
+ 	.offset_hp_en = 0x0,
+ 	.offset_clk_con = 0x8,
+ 	.offset_rst_con = 0xc,
+@@ -27,9 +40,16 @@ static const struct fhctl_offset fhctl_offset = {
+ 	.offset_mon = 0x10,
+ };
+ 
+-const struct fhctl_offset *fhctl_get_offset_table(void)
++const struct fhctl_offset *fhctl_get_offset_table(enum fhctl_variant v)
+ {
+-	return &fhctl_offset;
++	switch (v) {
++	case FHCTL_PLLFH_V1:
++		return &fhctl_offset_v1;
++	case FHCTL_PLLFH_V2:
++		return &fhctl_offset_v2;
++	default:
++		return ERR_PTR(-EINVAL);
++	};
+ }
+ 
+ static void dump_hw(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
+diff --git a/drivers/clk/mediatek/clk-fhctl.h b/drivers/clk/mediatek/clk-fhctl.h
+index 51275febf086..bfa6d281a3ee 100644
+--- a/drivers/clk/mediatek/clk-fhctl.h
++++ b/drivers/clk/mediatek/clk-fhctl.h
+@@ -7,6 +7,13 @@
+ #ifndef __CLK_FHCTL_H
+ #define __CLK_FHCTL_H
+ 
++#include "clk-pllfh.h"
++
++enum fhctl_variant {
++	FHCTL_PLLFH_V1,
++	FHCTL_PLLFH_V2,
++};
++
+ struct fhctl_offset {
+ 	u32 offset_hp_en;
+ 	u32 offset_clk_con;
+@@ -19,7 +26,7 @@ struct fhctl_offset {
+ 	u32 offset_dvfs;
+ 	u32 offset_mon;
+ };
+-const struct fhctl_offset *fhctl_get_offset_table(void);
++const struct fhctl_offset *fhctl_get_offset_table(enum fhctl_variant v);
+ const struct fh_operation *fhctl_get_ops(void);
+ void fhctl_hw_init(struct mtk_fh *fh);
+ 
+diff --git a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
+index 1d673c6278a9..9fded5020ca4 100644
+--- a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
+@@ -7,6 +7,7 @@
+ #include <linux/platform_device.h>
+ #include <dt-bindings/clock/mt8186-clk.h>
+ 
++#include "clk-fhctl.h"
+ #include "clk-mtk.h"
+ #include "clk-pll.h"
+ #include "clk-pllfh.h"
+@@ -98,6 +99,7 @@ enum fh_pll_id {
+ 		.data = {						\
+ 			.pll_id = _pllid,				\
+ 			.fh_id = _fhid,					\
++			.fh_ver = FHCTL_PLLFH_V2,			\
+ 			.fhx_offset = _offset,				\
+ 			.dds_mask = GENMASK(21, 0),			\
+ 			.slope0_value = 0x6003c97,			\
+diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
+index f48780bec507..b9297726f5a0 100644
+--- a/drivers/clk/mediatek/clk-pllfh.c
++++ b/drivers/clk/mediatek/clk-pllfh.c
+@@ -104,14 +104,16 @@ void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
+ 	}
+ }
+ 
+-static void pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
++static int pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
+ {
+ 	struct fh_pll_regs *regs = &fh->regs;
+ 	const struct fhctl_offset *offset;
+ 	void __iomem *base = pllfh_data->state.base;
+ 	void __iomem *fhx_base = base + pllfh_data->data.fhx_offset;
+ 
+-	offset = fhctl_get_offset_table();
++	offset = fhctl_get_offset_table(pllfh_data->data.fh_ver);
++	if (IS_ERR(offset))
++		return PTR_ERR(offset);
+ 
+ 	regs->reg_hp_en = base + offset->offset_hp_en;
+ 	regs->reg_clk_con = base + offset->offset_clk_con;
+@@ -129,6 +131,8 @@ static void pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
+ 	fh->lock = &pllfh_lock;
+ 
+ 	fh->ops = fhctl_get_ops();
++
++	return 0;
+ }
+ 
+ static bool fhctl_is_supported_and_enabled(const struct mtk_pllfh_data *pllfh)
+@@ -142,20 +146,29 @@ mtk_clk_register_pllfh(const struct mtk_pll_data *pll_data,
+ {
+ 	struct clk_hw *hw;
+ 	struct mtk_fh *fh;
++	int ret;
+ 
+ 	fh = kzalloc(sizeof(*fh), GFP_KERNEL);
+ 	if (!fh)
+ 		return ERR_PTR(-ENOMEM);
+ 
+-	pllfh_init(fh, pllfh_data);
++	ret = pllfh_init(fh, pllfh_data);
++	if (ret) {
++		hw = ERR_PTR(ret);
++		goto out;
++	}
+ 
+ 	hw = mtk_clk_register_pll_ops(&fh->clk_pll, pll_data, base,
+ 				      &mtk_pllfh_ops);
+ 
++	if (IS_ERR(hw))
++		goto out;
++
++	fhctl_hw_init(fh);
++
++out:
+ 	if (IS_ERR(hw))
+ 		kfree(fh);
+-	else
+-		fhctl_hw_init(fh);
+ 
+ 	return hw;
+ }
+diff --git a/drivers/clk/mediatek/clk-pllfh.h b/drivers/clk/mediatek/clk-pllfh.h
+index c0a6e1537034..5f419c2ec01f 100644
+--- a/drivers/clk/mediatek/clk-pllfh.h
++++ b/drivers/clk/mediatek/clk-pllfh.h
+@@ -18,6 +18,7 @@ struct fh_pll_state {
+ struct fh_pll_data {
+ 	int pll_id;
+ 	int fh_id;
++	int fh_ver;
+ 	u32 fhx_offset;
+ 	u32 dds_mask;
+ 	u32 slope0_value;
+-- 
+2.39.0
 
-Regards,
-Lorenzo
-
->=20
-> Regards,
-> Sujuan
->=20
-> > >=20
-> > > A single page per rx buffer may cause a throughput drop of over 7%
-> > > and
-> > > waste memory, what do you think?
-> >=20
-> > Implementing the page recycles as it is done in page_frag_alloc() we
-> > should get
-> > the same results you got with PAGE_FRAG_CACHE_MAX_SIZE set to 4K.
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
-> > >=20
-> > > Regards,
-> > > Sujuan
-> > >=20
-> > > > Regards,
-> > > > Lorenzo
-> > > >=20
-> > > > diff --git a/drivers/net/wireless/mediatek/mt76/dma.c
-> > > > b/drivers/net/wireless/mediatek/mt76/dma.c
-> > > > index 28a7fe064313..1d9e580977fc 100644
-> > > > --- a/drivers/net/wireless/mediatek/mt76/dma.c
-> > > > +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-> > > > @@ -580,6 +580,20 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev,
-> > > > struct mt76_queue *q,
-> > > >  	return ret;
-> > > >  }
-> > > > =20
-> > > > +static void *
-> > > > +mt76_dma_get_rx_buf(struct mt76_queue *q)
-> > > > +{
-> > > > +	if ((q->flags & MT_QFLAG_WED) &&
-> > > > +	    FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) =3D=3D MT76_WED_Q_RX) {
-> > > > +		/* WED RX queue */
-> > > > +		struct page *page =3D dev_alloc_page();
-> > > > +
-> > > > +		return page ? page_address(page) : NULL;
-> > > > +	}
-> > > > +
-> > > > +	return page_frag_alloc(&q->rx_page, q->buf_size, GFP_ATOMIC);
-> > > > +}
-> > > > +
-> > > >  static int
-> > > >  mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
-> > > >  {
-> > > > @@ -596,7 +610,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct
-> > > > mt76_queue *q)
-> > > >  		struct mt76_queue_buf qbuf;
-> > > >  		void *buf =3D NULL;
-> > > > =20
-> > > > -		buf =3D page_frag_alloc(&q->rx_page, q->buf_size,
-> > > > GFP_ATOMIC);
-> > > > +		buf =3D mt76_dma_get_rx_buf(q);
-> > > >  		if (!buf)
-> > > >  			break;
-> > > > =20
-> > > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > > > b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > > > index 1a2e4df8d1b5..2924e71e4fbe 100644
-> > > > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > > > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-> > > > @@ -594,13 +594,9 @@ static void
-> > > > mt7915_mmio_wed_offload_disable(struct mtk_wed_device *wed)
-> > > >  static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device
-> > > > *wed)
-> > > >  {
-> > > >  	struct mt7915_dev *dev;
-> > > > -	u32 length;
-> > > >  	int i;
-> > > > =20
-> > > >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
-> > > > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
-> > > > -				sizeof(struct skb_shared_info));
-> > > > -
-> > > >  	for (i =3D 0; i < dev->mt76.rx_token_size; i++) {
-> > > >  		struct mt76_txwi_cache *t;
-> > > > =20
-> > > > @@ -610,7 +606,7 @@ static void
-> > > > mt7915_mmio_wed_release_rx_buf(struct
-> > > > mtk_wed_device *wed)
-> > > > =20
-> > > >  		dma_unmap_single(dev->mt76.dma_dev, t->dma_addr,
-> > > >  				 wed->wlan.rx_size, DMA_FROM_DEVICE);
-> > > > -		__free_pages(virt_to_page(t->ptr), get_order(length));
-> > > > +		free_page(virt_to_page(t->ptr));
-> > > >  		t->ptr =3D NULL;
-> > > > =20
-> > > >  		mt76_put_rxwi(&dev->mt76, t);
-> > > > @@ -621,13 +617,9 @@ static u32
-> > > > mt7915_mmio_wed_init_rx_buf(struct
-> > > > mtk_wed_device *wed, int size)
-> > > >  {
-> > > >  	struct mtk_rxbm_desc *desc =3D wed->rx_buf_ring.desc;
-> > > >  	struct mt7915_dev *dev;
-> > > > -	u32 length;
-> > > >  	int i;
-> > > > =20
-> > > >  	dev =3D container_of(wed, struct mt7915_dev, mt76.mmio.wed);
-> > > > -	length =3D SKB_DATA_ALIGN(NET_SKB_PAD + wed->wlan.rx_size +
-> > > > -				sizeof(struct skb_shared_info));
-> > > > -
-> > > >  	for (i =3D 0; i < size; i++) {
-> > > >  		struct mt76_txwi_cache *t =3D mt76_get_rxwi(&dev->mt76);
-> > > >  		dma_addr_t phy_addr;
-> > > > @@ -635,7 +627,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > > > mtk_wed_device *wed, int size)
-> > > >  		int token;
-> > > >  		void *ptr;
-> > > > =20
-> > > > -		page =3D __dev_alloc_pages(GFP_KERNEL,
-> > > > get_order(length));
-> > > > +		page =3D __dev_alloc_page(GFP_KERNEL);
-> > > >  		if (!page)
-> > > >  			goto unmap;
-> > > > =20
-> > > > @@ -644,7 +636,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > > > mtk_wed_device *wed, int size)
-> > > >  					  wed->wlan.rx_size,
-> > > >  					  DMA_TO_DEVICE);
-> > > >  		if (unlikely(dma_mapping_error(dev->mt76.dev,
-> > > > phy_addr))) {
-> > > > -			__free_pages(page, get_order(length));
-> > > > +			free_page(page);
-> > > >  			goto unmap;
-> > > >  		}
-> > > > =20
-> > > > @@ -653,7 +645,7 @@ static u32 mt7915_mmio_wed_init_rx_buf(struct
-> > > > mtk_wed_device *wed, int size)
-> > > >  		if (token < 0) {
-> > > >  			dma_unmap_single(dev->mt76.dma_dev, phy_addr,
-> > > >  					 wed->wlan.rx_size,
-> > > > DMA_TO_DEVICE);
-> > > > -			__free_pages(page, get_order(length));
-> > > > +			free_page(page);
-> > > >  			goto unmap;
-> > > >  		}
-> > > > =20
-
---Ku8RCL0uEh38JqAd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6RpDQAKCRA6cBh0uS2t
-rD7xAQDxo4rjmWXP+aL4SzZP6eL9ODe1xySGqeuArFMx2rnfGAD+LJ2506lPvWBH
-K6IYSPjH9l0XJnDxVBjPnzbKfFwFmgU=
-=kHxV
------END PGP SIGNATURE-----
-
---Ku8RCL0uEh38JqAd--
 
