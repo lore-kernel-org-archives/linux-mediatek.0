@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1E6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 11:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C28C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 11:12:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pd1MuAAYksrkyvQirzLLBlWy0mBl1uWakhPRyYP0kug=; b=qXuDOaQvzavty+w+bsJAjarKqH
-	SEA+PJJ+4/Trhl78P3LEW3cRKnTKc1gd2uSlpfswf//2wjY4foPBoRI0warGu0wxnIzm5AQSum6PN
-	s0Y+xbVfJCEDeOW4b6vwRmKHg6zGZnrSDbThJZeAgJuzr7veE3oo1LSQFNlu8QQXFTxIcGWs+1lM0
-	0ojVvID5gZzkW0gFKmU39/n8Fvm4DxJb5x48JkTrMYe+cV/Rdg3g2F1ILYcB6M28g3KmrDwEfE2Yn
-	iybFbRuxOkaqodvDf7iVTQbCd7nkXAmjpbJOuiOJKUlJI/g91z0aIoTCtBzc1XHaRVLp4xsbb6wvM
-	pbHg3wNg==;
+	bh=cYPiH0H8hVoO8KCVfLxKBPm6L9FNsu/UgQULQecMrXE=; b=owj8xolZZ5Szsuzaa7XWMz+tY8
+	/YTa44iyQWAyiu5v3S9x2ntxw+KO2QjMsQjehbSyAxFqb2UE4IhsfoKeyDS3TjpeRo8YYgguRrEG7
+	qRWGHnZq8sdBdVlFsm6fFyiRQVnrMVs3gN1PwY2dgE0sGIIHESs7Yau/3Bp0at//Y5VCeItScu2gl
+	fRGtSy4hWc2SA00ht3rL76qtCDNAQ17TXkrFVhCY3HDqpZ92w/hFbAEScPf+5tS7EGrs5ochfLM/A
+	YXq249eJ1Hf4I1gCZUNqnD74B85SYQHgrcjtOcHmMuxk6X6rJLfIkBQ+0Poa7MWiWRrmqOzOlEaAX
+	iajtfVyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8JUR-00AmqG-QA; Thu, 22 Dec 2022 11:11:55 +0000
+	id 1p8JUU-00Amsg-Fe; Thu, 22 Dec 2022 11:11:58 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8JSk-00AlH4-CG; Thu, 22 Dec 2022 11:10:11 +0000
+	id 1p8JT1-00AlYD-LF; Thu, 22 Dec 2022 11:10:29 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8B2276602C5F;
-	Thu, 22 Dec 2022 11:10:05 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BFED46602C6F;
+	Thu, 22 Dec 2022 11:10:24 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1671707406;
-	bh=ZxlK9ZTzRuaI+IcB1DKLbYNT0sm+mq5gGTXC+Q0nj3s=;
+	s=mail; t=1671707426;
+	bh=1VV3PV4DFwuRhrgwzA5i8j7Y/8qd1/nPfWjZ1UySweY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WdjzxeLNQEpbE5AIFqpHLH0Vg0UbayJ73KKohKjgSRPhSkJXWcbnICh4MIB+fJArW
-	 eSFXzVyr8LfscfwPhdClUSs7WJkDd8rf9lWl7S2cwnYuN+6Y6r/EupXJfI9YvbkaW9
-	 e9AkdoAmG4uuo8v2ExKlY8RBAqEZH9QpUqmY+uo552T4DzHTC6IigKNmTyuHRZJnVI
-	 oPduyqUjuGvB6eIsj8F0mB6Qx8Ea+T5lKtwNxJHXu8ejKW1GHBW4tGVZawUJkwKXgS
-	 hFpky/4CmHSZ4JKDbyyDV5epSljPZqXsZAAMvFA8VghfZoA9k1RQrYleWwMjNlBOZQ
-	 VSuYTXe1bRxmA==
-Message-ID: <2dc5b86a-0bc6-db0d-5a1d-1fa7415f8ec7@collabora.com>
-Date: Thu, 22 Dec 2022 12:10:02 +0100
+	b=brtAnpPUwF6zMXLIly6NpwDVeLaqpY1nUMspH9wpP2b5aH/DRpc/xpmqOERRURK1e
+	 k8SXkVbxWB8SfmEplU1ZYJM5CHJTcfCHu2OQ7aTO++IdmYUxMl0Xjwkwb1NAOQLx/7
+	 dd6GpCjVv2/8sY1+BnVgeNGj4yZea4kg0r36qKPzl41/70cVdvhw+okDps11XnYHsu
+	 XFqJY9Qilzo1/fDE+2wmoMAtQUDOb1iPOVlFTDj6DX4Hk53ypZ0i3Qu+xWfqQfwU3c
+	 1nHpS9hnfnsG+XcY7eDwbdV17UgB3NUp2NqsTlw+XQ0j74L5rDfP4r7BgtlH17ewlz
+	 2Txu37BAw2yOw==
+Message-ID: <e42767f6-7374-3d68-b267-2683970055ee@collabora.com>
+Date: Thu, 22 Dec 2022 12:10:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v1 3/3] ASoC: SOF: mediatek: Provide
- debugfs_add_region_item ops for core
+Subject: Re: [PATCH v1 1/3] dt-bindings: dsp: mediatek: Add mt8188 dsp
+ compatible
 Content-Language: en-US
 To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
  <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -68,14 +68,14 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20221222072150.10627-1-tinghan.shen@mediatek.com>
- <20221222072150.10627-4-tinghan.shen@mediatek.com>
+ <20221222072150.10627-2-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221222072150.10627-4-tinghan.shen@mediatek.com>
+In-Reply-To: <20221222072150.10627-2-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_031010_637230_25FE246E 
-X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-CacheID: sfid-20221222_031027_926867_A183B34B 
+X-CRM114-Status: UNSURE (   7.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,13 +92,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 22/12/22 08:21, Tinghan Shen ha scritto:
-> Set the generic iomem callback for debugfs_add_region_item to support
-> sof-logger.
+> Add support of the single-core HiFi5 audio DSP on MediaTek MT8188 SoC
+> for pre- and post- audio processing.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
-> Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-> Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
