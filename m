@@ -4,47 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34392C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 07:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B88C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Dec 2022 07:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5wbPKHKnzWyiSg3WCvRk7OUYhVp4BGRWfdopNLnhGk=; b=x3Bmtw/n4L6aBG1udRNIo/X2Lr
-	htmtfUUjYxH88JHO9wUuI68b54dmr6QJ+qij4qjUxAblQk9vIdAcS0jnyOWH3BrmkeODk7JLvXICN
-	wot4hW7Fma7XVE6yk1ZJNAA8jlrCatJFrpGO0a8TZRy5F8ec35Q88KZzX0bfqkhtCxTphPeoerDW7
-	BGpGbN0n/lpUFSdW0WofRjqBeZo6RZM0Jue9HtXlyHA0RNRQrB7iyDkBypEP8foQboDeGHlrGnIiv
-	KNesurg3WoMS0MFZiagXcY+nHuGKoJkRwGPnvfOt96SzI4t2i3jZLvJLirIQ1KNLWNo4ua2cGEi16
-	Dr8WIkfQ==;
+	bh=lFz2Y/xxwkpdqewHbikoBaP7PZtSmri9F7IdaOcr4HM=; b=z9YYUAt/CKdXjShiavXZncQFKg
+	mexaXoY+kXvGJpjMx4xUZWbqMrzW2ujwFg37y30AW9psaXRERqv1laMl4+MSu7fa6baEhIhO6EZKE
+	HTt9Dy7VsXCvMfK55j6X1XC6oadVKE0S2hY/hnGPwk/8REHDRBi7nAGhtvGqRMUXRT4gfeqVREsfn
+	a9EN/HDC5Xdggs530YsVt23eMkB3TMEFkamHNgT6JUUtZkatnuPUmCZ72NpVYmpDB7P4cwcXoi6ge
+	NVqWGM2GmRbBIH7LkBnP2fJjfy9jKfpOGBjOdgyLAqd/WKUSpcFNwrnT778vWjjN646Gg/oAEW9OC
+	6ogClnIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Fvs-008Ugj-9q; Thu, 22 Dec 2022 07:24:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1p8FwC-008UmM-Sd; Thu, 22 Dec 2022 07:24:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8Fve-008UYl-5O; Thu, 22 Dec 2022 07:23:47 +0000
-X-UUID: 5c7246f461d14115b60187996389e239-20221222
+	id 1p8Fvi-008UbF-TZ; Thu, 22 Dec 2022 07:23:52 +0000
+X-UUID: 6282a0ccd1b14e5284f5008e086af15f-20221222
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=I5wbPKHKnzWyiSg3WCvRk7OUYhVp4BGRWfdopNLnhGk=;
-	b=d2sTv/8jF5bPfHj7Xv7Z9ehY+L1BdOBXYeZrNeogBsn0jg7gOYjQ7OrhNydv0mh/WxTipxs06JZQe5GQ0ogZ7qkyWDD3VGTL6FpTZG+U7pKZ/3v8wFsOMkv8UOPRv6+rQLxbl7IBo2AVUJ767asB4jpvEyOD2Dxjg9KpIOGjhFg=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lFz2Y/xxwkpdqewHbikoBaP7PZtSmri9F7IdaOcr4HM=;
+	b=XTWknGrGY6bbMOG3xa8TyJCsNStFEkPAdWbeXxIIpBQS0kIrGyubqL90yTWjt5LEvBH0HP35zWXb/311rXHMTIE3RqmhDnqqP8DK5bHchfEQ8j9rHWqMOtgY5d/DA/YfHJrMZklL/HoZaOLifRtYlKtzRAg0cKY248/4MiVvU5w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:e98fc2af-7ee9-47d2-863e-682b5be46f5a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.14,REQID:e98fc2af-7ee9-47d2-863e-682b5be46f5a,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:dcaaed0,CLOUDID:63727c52-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:221222152307TWEQSHSI,BulkQuantity:3,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: 5c7246f461d14115b60187996389e239-20221222
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.14,REQID:a6ec2d30-b908-433c-b6fb-8fd722debe3a,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:dcaaed0,CLOUDID:377a178a-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6282a0ccd1b14e5284f5008e086af15f-20221222
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 674138153; Thu, 22 Dec 2022 00:23:39 -0700
+	with ESMTP id 1558367448; Thu, 22 Dec 2022 00:23:40 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Thu, 22 Dec 2022 15:23:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -69,9 +66,9 @@ CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v1 3/3] ASoC: SOF: mediatek: Provide debugfs_add_region_item ops for core
-Date: Thu, 22 Dec 2022 15:21:50 +0800
-Message-ID: <20221222072150.10627-4-tinghan.shen@mediatek.com>
+Subject: [PATCH v1 2/3] ASoC: SOF: mediatek: Support mt8188 platform
+Date: Thu, 22 Dec 2022 15:21:49 +0800
+Message-ID: <20221222072150.10627-3-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221222072150.10627-1-tinghan.shen@mediatek.com>
 References: <20221222072150.10627-1-tinghan.shen@mediatek.com>
@@ -80,8 +77,8 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221221_232346_262525_DE468692 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20221221_232351_088086_FB05D52E 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +93,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the generic iomem callback for debugfs_add_region_item to support
-sof-logger.
+Add support of SOF on MediaTek MT8188 SoC.
+MT8188 ADSP integrates with a single core Cadence HiFi-5 DSP.
+The IPC communication between AP and DSP is based on shared DRAM and
+mailbox interrupt.
+
+The change in the mt8186.h is compatible on both mt8186 and
+mt8188. The register controls booting the DSP core with the
+default address or the user specified address. Both mt8186
+and mt8188 should boot with the user specified boot in the driver.
+The usage of the register is the same on both SoC, but the
+control bit is different on mt8186 and mt8188, which is bit 1 on mt8186
+and bit 0 on mt8188. Configure the redundant bit has noside effect
+on both SoCs.
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Reviewed-by: Péter Ujfalusi <peter.ujfalusi@linux.intel.com>
 Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 ---
- sound/soc/sof/mediatek/mt8186/mt8186.c | 3 +++
- sound/soc/sof/mediatek/mt8195/mt8195.c | 1 +
- 2 files changed, 4 insertions(+)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 17 +++++++++++++++++
+ sound/soc/sof/mediatek/mt8186/mt8186.h |  3 ++-
+ 2 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index af0dfc2fc4cc..dbea604ebc04 100644
+index 79da25725987..af0dfc2fc4cc 100644
 --- a/sound/soc/sof/mediatek/mt8186/mt8186.c
 +++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -588,6 +588,9 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
- 	.drv		= mt8186_dai,
- 	.num_drv	= ARRAY_SIZE(mt8186_dai),
+@@ -625,8 +625,25 @@ static const struct sof_dev_desc sof_of_mt8186_desc = {
+ 	.ops = &sof_mt8186_ops,
+ };
  
-+	/* Debug information */
-+	.debugfs_add_region_item = snd_sof_debugfs_add_region_item_iomem,
++static const struct sof_dev_desc sof_of_mt8188_desc = {
++	.ipc_supported_mask	= BIT(SOF_IPC),
++	.ipc_default		= SOF_IPC,
++	.default_fw_path = {
++		[SOF_IPC] = "mediatek/sof",
++	},
++	.default_tplg_path = {
++		[SOF_IPC] = "mediatek/sof-tplg",
++	},
++	.default_fw_filename = {
++		[SOF_IPC] = "sof-mt8188.ri",
++	},
++	.nocodec_tplg_filename = "sof-mt8188-nocodec.tplg",
++	.ops = &sof_mt8186_ops,
++};
 +
- 	/* PM */
- 	.suspend	= mt8186_dsp_suspend,
- 	.resume		= mt8186_dsp_resume,
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 3c81e84fcecf..11ceff3acc54 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -642,6 +642,7 @@ static struct snd_sof_dsp_ops sof_mt8195_ops = {
+ static const struct of_device_id sof_of_mt8186_ids[] = {
+ 	{ .compatible = "mediatek,mt8186-dsp", .data = &sof_of_mt8186_desc},
++	{ .compatible = "mediatek,mt8188-dsp", .data = &sof_of_mt8188_desc},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, sof_of_mt8186_ids);
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.h b/sound/soc/sof/mediatek/mt8186/mt8186.h
+index 98b2965e5ba6..886d687449e3 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.h
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.h
+@@ -52,7 +52,8 @@ struct snd_sof_dev;
+ #define ADSP_PRID			0x0
+ #define ADSP_ALTVEC_C0			0x04
+ #define ADSP_ALTVECSEL			0x0C
+-#define ADSP_ALTVECSEL_C0		BIT(1)
++/* BIT(1) for mt8186. BIT(0) for mt8188 */
++#define ADSP_ALTVECSEL_C0		(BIT(0) | BIT(1))
  
- 	/* Debug information */
- 	.dbg_dump = mt8195_adsp_dump,
-+	.debugfs_add_region_item = snd_sof_debugfs_add_region_item_iomem,
- 
- 	/* DAI drivers */
- 	.drv = mt8195_dai,
+ /* dsp bus */
+ #define ADSP_SRAM_POOL_CON		0x190
 -- 
 2.18.0
 
