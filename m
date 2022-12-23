@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EF0FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 01:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B39AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 02:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ojNCFZMfwHgV4Zifc3iXtDUJt3Q1OA+X19/cUTABYk=; b=0I5AQxu9MoupNQo+pfAIoPE2jM
-	4enJmm1SPsjhcFeyCFzKBHktzyzjrA0iTrcDZWDjiIRhiBoCHTgRUgkHgKsbDdwviYRt4Ln/qw8iz
-	2r4o/g1b7zrAqANmK/95SbnwLEDCGzUvoKQKCJn8yIARX6EhFwMo0yazifyf2x3Htb1aq4BUgAbH+
-	Q1aNFufkYiqPJevS1bBsxmbFYJEHuJSG3M4Y5c7xqTflX0kHWXVf7RLh6xsXfnW4hzgbsZO5P9kyo
-	Gr/cq1jbjiKuQH36+dcPid6gNTe7Qr4vMC4OspFvmrV5bjeGp+WMHHpB2uEfneKUUEx0paeXHgT55
-	zdgTATKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e1O1KT0IELVuvQ4jwoar6k/o9u/peKrbv63m8NebjRo=; b=i1v3FWWK5JFyT+05rZo0tJN7Pt
+	8oZK+ujKOW9sc4q1FCZWSeYxPdQWEHZp9JnRxCtCdpONwCa968l2ayNh6cBecUfu59te+T5jgEkyv
+	QMlmHDyCLAQDcb5Ujxj9yt1U9sQoe7HyZDivDsJ4TOGPoXlStK/oLZWIbGFkH9ubUTMzMRCq2C6RM
+	RetFrTqoMBhU36tN5L1zqslS1OOqOryI1uM9W1QtyhFu5C5So9hD78BtU8/C5KomQnN/p+f3lvErp
+	xM3MZ+ZvxWrhasVYWHXHWH1b8we14/1qPlOvKMIRKM0JJ2znaFH+F50JFnK1VCZLkZmMyA94p0f7V
+	hFuu6pvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8XHe-001nnP-9D; Fri, 23 Dec 2022 01:55:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1p8XMu-001q68-Fs; Fri, 23 Dec 2022 02:01:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8XHI-001nf9-08; Fri, 23 Dec 2022 01:55:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 18A1F61D01;
-	Fri, 23 Dec 2022 01:55:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20E47C433D2;
-	Fri, 23 Dec 2022 01:55:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1671760512;
-	bh=7+FMQzhkdUuBY613R/cYs3AH1Nhez93yWDo3mNZV11k=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=UEUyNKx2i1LZAVFYds1BlBgyPm/Ik7cpS8U7LfeCdyg6rN34F2MxFbpWcB99oJhWY
-	 z3PCM+xeXJc8le1cBwEWvQgHqE+zizdVCc4EUggVJTBdAm0up55elIPXsA9sD3udvn
-	 egfjkJqY68Ty9hr//Cwd/0R2imFrjdY7DYeYlQVxFgF9Q0OUNI4ahLOXrdlwppZIB6
-	 IGhXVuGjgxPiqZ+dXPaQBHuwYPZJmwzRe0TKQx92R0ZBjDHgjG9XG1UG2kB1/5SaK9
-	 lLwTXBmiVtso4HCVs5oQGkXY15JlAV0Smt/mRzag40XxsQXH3LS8gDdBUvVpwnDEtY
-	 scu31Ntzcd6dQ==
-Date: Thu, 22 Dec 2022 17:55:10 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: Rob Herring <robh@kernel.org>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
- <arinc.unal@arinc9.com>, linux-renesas-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, John Crispin <john@phrozen.org>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>, Vivien
- Didelot <vivien.didelot@gmail.com>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?=
- <clement.leger@bootlin.com>, Alvin =?UTF-8?B?xaBpcHJhZ2E=?=
- <alsi@bang-olufsen.dk>, Linus Walleij <linus.walleij@linaro.org>,
- UNGLinuxDriver@microchip.com, Woojung Huh <woojung.huh@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Kurt Kanzenbach
- <kurt@linutronix.de>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Paolo Abeni <pabeni@redhat.com>, Eric
- Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>,
- Vladimir Oltean <olteanv@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, George McCollister
- <george.mccollister@gmail.com>
-Subject: Re: [PATCH v5 net-next 04/10] dt-bindings: net: dsa: utilize base
- definitions for standard dsa switches
-Message-ID: <20221222175510.7ca0b563@kernel.org>
-In-Reply-To: <Y6S5Ple5SURq0QSU@colin-ia-desktop>
-References: <20221210033033.662553-1-colin.foster@in-advantage.com>
-	<20221210033033.662553-5-colin.foster@in-advantage.com>
-	<1df417b5-a924-33d4-a302-eb526f7124b4@arinc9.com>
-	<Y5TJw+zcEDf2ItZ5@euler>
-	<c1e40b58-4459-2929-64f3-3e20f36f6947@arinc9.com>
-	<20221212165147.GA1092706-robh@kernel.org>
-	<Y5d5F9IODF4xhcps@COLIN-DESKTOP1.localdomain>
-	<Y6S5Ple5SURq0QSU@colin-ia-desktop>
+	id 1p8XMf-001pui-S3; Fri, 23 Dec 2022 02:00:51 +0000
+X-UUID: aa46716e467f4d15b2d175834fcb55f1-20221222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=e1O1KT0IELVuvQ4jwoar6k/o9u/peKrbv63m8NebjRo=;
+	b=luwIoBvairtyDWyr9g8RQhCnl+m8V1GaRC8AE8SIjE0CFbke+ujVGoRNKEsQQ/RdSjmSEXhhRGjjhUOfW7CpIk50Y+5G/RGlQ6YzCPnnnbpO/S3uA4azRyydUNn/MwHsE19gMJBO6Xb9EMkjNl55liC/cUXqaJ3SUxLIVkXhSps=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:654e36db-44d6-45e8-88fe-69830b6ff507,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:1e64298a-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: aa46716e467f4d15b2d175834fcb55f1-20221222
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 829436380; Thu, 22 Dec 2022 19:00:42 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 23 Dec 2022 09:50:40 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 23 Dec 2022 09:50:38 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "David S .
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Richard Cochran <richardcochran@gmail.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Biao
+ Huang <biao.huang@mediatek.com>, <macpaul.lin@mediatek.com>
+Subject: [PATCH v5 0/2] arm64: dts: mt8195: Add Ethernet controller
+Date: Fri, 23 Dec 2022 09:50:27 +0800
+Message-ID: <20221223015029.24978-1-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221222_175516_155699_C758B725 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20221222_180049_957243_0BCB60B0 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,13 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Dec 2022 12:08:30 -0800 Colin Foster wrote:
-> Heads up on my plan for this. I plan to re-submit this on Monday after
-> the merge window with the change where I move the $ref: dsa-port.yaml#
-> to outside the allOf: section, and remove the object type as the above
-> code suggests. Hopefully that's the right step to take.
+Changes in v5:
+1. reorder the clocks as Angelo's comments
+2. add a driver patch to fix rgmii-id issue, then we can
+use a ususal way rgmii/rgmii-id as Andrew's comments.
 
-FWIW in case you mean Mon, Dec 26th and net-next -- we extended 
-the period of net-next being closed until Jan:
-https://lore.kernel.org/all/20221215092531.133ce653@kernel.org/
+Changes in v4:
+1. remove {address,size}-cells = <0> to avoid warning as Angelo's feedback.
+2. Add reviewd-by as Angelo's comments.
+
+Changes in v3:
+1. move stmmac-axi-config, rx-queues-config, tx-queues-configs inside ethernet node
+as Angelo's comments.
+2. add {address,size}-cells = <0> in ethernet node as Angelo's comments.
+
+Changes in v2:
+1. modify pinctrl node used by ethernet to match rules in pinctrl-mt8195.yaml,
+which is pointed by Krzysztof.
+2. remove "mac-address" property in ethernet node as comments of Krzysztof.
+
+Changes in v1:
+add dts node for MT8195 Ethernet controller
+
+Biao Huang (2):
+  stmmac: dwmac-mediatek: enable 2ns delay only for special cases
+  arm64: dts: mt8195: Add Ethernet controller
+
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts  | 81 +++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 86 +++++++++++++++++++
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  7 +-
+ 3 files changed, 173 insertions(+), 1 deletion(-)
+
+-- 
+2.18.0
+
+
 
