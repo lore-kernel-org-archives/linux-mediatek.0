@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C894C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 10:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8798C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 10:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OWp2xnx5R/0ElsNe5KrDhebcysznOvenlLTZkh157mc=; b=KfyO8RqtqvLAToyOG/P72vnp49
-	r/p/4l29ITTDFsiUeSBLEVXoKUJLUAg46Fk43Y4sSSsj+mht/LaEaqgaOCOiLvGCNFK0pQPW++oQm
-	Dm5AJg5g96wY7ui5hj/lJttq8W65vg0Fy7MA+Zs7DDw4RxTNy96273aRe/AZfR1lE9CxnH0rVCwz6
-	IsbY+q3P2oS/wx7wy3YNJyrya6P/JVBVwDQg0/Psv/ehXSJy0Gg9PR7dViPUi7qQBjO8NREK9e+wr
-	elbgc+7OunqTS6mv0eyIK1s9Fk0ZIe7aaZMSPAgpVEYgQ+zeYgjLdN4dDkCNAf2XDx+5A4ADOLZ6C
-	78tgOusQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Q7vP9AmIc7exdMlaPxDaWmhgtLnhX7HZ3tBM0yG+NGk=; b=1/k1A1/h/p6ChcJ5cSUtjcxPFQ
+	zdFoKTXDQHUpp+RadU5AJuE58V99nqbJ62IEGIfEzFgQHEU7B77RzZAWXO3YwgqX8Nt6Iy/sHjckQ
+	4unWRHLnYo1cdsSNbgf7LjOUCTZpCD+YgzajXnjDxBu8I9x0aoPVS3hoZeddP6PTXf6i8tnSHZgm1
+	pTwr5CAp2cUkIjLaD8mZDFupUtRi75c/CnROOcWyKPACOfO5kfsHoOhHxhg3ZTDxeMaBmGlqgzoI8
+	NkWBBiMoYepC0yo7wZPd6F7R2VwgbisMztyqG7oilDqqV1sjYOURXOsfOM23RDi8xjwnKEeJYk6bA
+	terVbpNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8fM2-006Rlc-8g; Fri, 23 Dec 2022 10:32:42 +0000
+	id 1p8fMA-006Rqs-9M; Fri, 23 Dec 2022 10:32:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8f6O-006H1U-AM; Fri, 23 Dec 2022 10:16:34 +0000
-X-UUID: 8a794022aab44bcaadd0c4a4febd76db-20221223
+	id 1p8f72-006HVm-OA
+	for linux-mediatek@lists.infradead.org; Fri, 23 Dec 2022 10:17:15 +0000
+X-UUID: 7ff89acc9e2645c6be8ff272ab314c2b-20221223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OWp2xnx5R/0ElsNe5KrDhebcysznOvenlLTZkh157mc=;
-	b=c7CX9BWq69hyINbZIcKRjk/xx6zkCDLG17nCMPo/dX4AxAOheVrvT771CKqGDPCAgIqg0Cn2MVO3D20p7OeK8iSPVlxBc9ih16W1UQDbvDuS4aAbOlCt8ogU2+uIcF9gl+m8Sf2cfAGwunYPYHM3ZKcO20YUTv4MnBHlu/pnvfA=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Q7vP9AmIc7exdMlaPxDaWmhgtLnhX7HZ3tBM0yG+NGk=;
+	b=X9NGpQ//oOxgsDHeTSDVcIDCKU1JQ4jCtNBPZEUZ/iM83dDhKRf3Roo1kSV81xdSxR5/FGy5B5e+AShpokqdBBvzGxhK1M0uAXvTC3SZ/mh2LD0tPAT3sm0EWYVjgPY5aU6/JcRyTkHJXaR8tWEsNH8V6qB4mufc73k0XpNZVKU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:09c8645f-d005-471b-92a7-272cbb9c3df8,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:0cf4388a-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 8a794022aab44bcaadd0c4a4febd76db-20221223
+X-CID-O-INFO: VERSION:1.1.14,REQID:90777e15-7b53-4ad9-96b6-a86caeaac3d2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:36f9388a-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 7ff89acc9e2645c6be8ff272ab314c2b-20221223
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
+	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2099737627; Fri, 23 Dec 2022 03:16:21 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1852162070; Fri, 23 Dec 2022 03:17:06 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 23 Dec 2022 18:15:52 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 23 Dec 2022 18:15:51 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v6 3/4] iommu/mediatek: Add enable IOMMU SMC command for INFRA master
-Date: Fri, 23 Dec 2022 18:14:38 +0800
-Message-ID: <20221223101439.494-4-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221223101439.494-1-chengci.xu@mediatek.com>
-References: <20221223101439.494-1-chengci.xu@mediatek.com>
+ 15.2.792.15; Fri, 23 Dec 2022 18:16:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 23 Dec 2022 18:16:30 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 1/4] wifi: mt76: mt7996: fix chainmask calculation in mt7996_set_antenna()
+Date: Fri, 23 Dec 2022 18:13:45 +0800
+Message-ID: <20221223101348.11504-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_021632_416334_21BE3257 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20221223_021713_053561_0A6CCAEC 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,110 +78,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The register which can enable IOMMU for INFRA master should be setted
-in secure world for security concerns. Therefore, we add a SMC command
-for INFRA master to enable/disable INFRA IOMMU in ATF. This function is
-prepared for MT8188.
+Fix per-band chainmask when restoring from the dev chainmask.
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c  | 32 ++++++++++++++++++++++----------
- include/soc/mediatek/smi.h |  1 +
- 2 files changed, 23 insertions(+), 10 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index d43981c31b5d..ec81d21e33ce 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
-+#include <linux/arm-smccc.h>
- #include <linux/bitfield.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
-@@ -28,6 +29,7 @@
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/soc/mediatek/infracfg.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 4421cd54311b..c423b052e4f4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -880,7 +880,10 @@ mt7996_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+ 	phy->mt76->antenna_mask = tx_ant;
  
-@@ -144,6 +146,7 @@
- #define PGTABLE_PA_35_EN		BIT(17)
- #define TF_PORT_TO_ADDR_MT8173		BIT(18)
- #define INT_ID_PORT_WIDTH_6		BIT(19)
-+#define CFG_IFA_MASTER_IN_ATF		BIT(20)
- 
- #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
- 				((((pdata)->flags) & (mask)) == (_x))
-@@ -543,6 +546,7 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	const struct mtk_iommu_iova_region *region;
- 	unsigned long portid_msk = 0;
-+	struct arm_smccc_res res;
- 	int i, ret = 0;
- 
- 	for (i = 0; i < fwspec->num_ids; ++i) {
-@@ -568,17 +572,24 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
- 		else
- 			larb_mmu->mmu &= ~portid_msk;
- 	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
--		/* PCI dev has only one output id, enable the next writing bit for PCIe */
--		if (dev_is_pci(dev)) {
--			if (fwspec->num_ids != 1) {
--				dev_err(dev, "PCI dev can only have one port.\n");
--				return -ENODEV;
-+		if (MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
-+			arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
-+				      IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,
-+				      portid_msk, enable, 0, 0, 0, 0, &res);
-+			ret = res.a0;
-+		} else {
-+			/* PCI dev has only one output id, enable the next writing bit for PCIe */
-+			if (dev_is_pci(dev)) {
-+				if (fwspec->num_ids != 1) {
-+					dev_err(dev, "PCI dev can only have one port.\n");
-+					return -ENODEV;
-+				}
-+				portid_msk |= BIT(portid + 1);
- 			}
--			portid_msk |= BIT(portid + 1);
--		}
- 
--		ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
--					 (u32)portid_msk, enable ? (u32)portid_msk : 0);
-+			ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
-+						 (u32)portid_msk, enable ? (u32)portid_msk : 0);
-+		}
- 		if (ret)
- 			dev_err(dev, "%s iommu(%s) inframaster 0x%lx fail(%d).\n",
- 				enable ? "enable" : "disable",
-@@ -1281,7 +1292,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			dev_err_probe(dev, ret, "mm dts parse fail\n");
- 			goto out_runtime_disable;
- 		}
--	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
-+	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
-+		   !MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
- 		p = data->plat_data->pericfg_comp_str;
- 		data->pericfg = syscon_regmap_lookup_by_compatible(p);
- 		if (IS_ERR(data->pericfg)) {
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index dfd8efca5e60..000eb1cf68b7 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -13,6 +13,7 @@
- 
- enum iommu_atf_cmd {
- 	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to en/disable iommu */
-+	IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,	/* For infra master to enable iommu */
- 	IOMMU_ATF_CMD_MAX,
- };
- 
+ 	/* restore to the origin chainmask which might have auxiliary path */
+-	if (hweight8(tx_ant) == max_nss)
++	if (hweight8(tx_ant) == max_nss && band_idx < MT_BAND2)
++		phy->mt76->chainmask = ((dev->chainmask >> shift) &
++					(BIT(dev->chainshift[band_idx + 1] - shift) - 1)) << shift;
++	else if (hweight8(tx_ant) == max_nss)
+ 		phy->mt76->chainmask = (dev->chainmask >> shift) << shift;
+ 	else
+ 		phy->mt76->chainmask = tx_ant << shift;
 -- 
 2.25.1
 
