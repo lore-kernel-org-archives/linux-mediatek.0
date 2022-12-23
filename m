@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6751C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 14:19:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EE2C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Dec 2022 21:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yOe6ftm83MjcbSsPzfhXQYYG0KG1pAc9ELl18Zq14Gs=; b=Pe39b2B+j9/4k2Lll541Mm94vC
-	9E8dw10ShgBlnuDwSOXdrz/C1mrGLURgfjxkRiFk6rp+gqNIe6zOD8xfwWkU+FYv8vSnW7d3GZ1PC
-	MK1RLpSLDCbt/BQ1PReI+i3lg4+ioku69admKuGdFHbQy9QbEu69qmaVqodk496T0GEYa1cSRDpXj
-	yp6hAsuwZf4alCjM2JRWDuI2p2dCRTfCsMmYY+sqjThqrhwVxr5bj6bWqxPOd9l4QvoMgR80AsK/I
-	QVA2tsJH59lQ29moPnbyrVT11H+jjDjXKDYA7oORTAkcYwBk683IgKxt1zXqAO4VtRN9RZjjMqwQ1
-	qOx4mndw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FQl/76Qbqte4fVJmlL7WAYT8S3tkJD7vqlBp3Ta3BXU=; b=UZgulQPW2r0Ae4VmbectW1GNFK
+	bPhmolGX+dBCDctBW3PVSabnpmU1lDDimeOTxlSdd2WdYiDCQexLFrLuit499HWZ7yPKi+E0IddDO
+	OO8zJc3/KSLUsry3imFH0LQXSRNeYvW7a5bF5EbzQpopZx9u2iF8GK5MdN05vkWTqO3vS6Chg6T1B
+	30e66bhcqpKdhHqtxgYvzivBTWbjH3RSuKKF1ujH9PFcG0HaChepzbDwZYLaKboYj7rV65XrcO+G3
+	hh9TMZata7SRle3A+62kN92Gc6PIS/H//YQHCUayRut8RR8v1zlaM0Z0dgmvaZRSEF1kJNCSnqTVB
+	sdYcr7CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8itP-008n7x-HD; Fri, 23 Dec 2022 14:19:23 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1p8pj9-00CQRu-Ru; Fri, 23 Dec 2022 21:37:15 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p8it4-008mrw-5o; Fri, 23 Dec 2022 14:19:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=yOe6ftm83MjcbSsPzfhXQYYG0KG1pAc9ELl18Zq14Gs=; b=M2rXfeoOXsELTA+n9t49bHnxKd
-	/wuaZLFU+jz64uDHhv+ghw745Z3XrazuJOTRWkpzlOBC0e51iNCGGcb2N2OsIve322+kf9B8NNdAd
-	MgP4OMuifOp1S+jNaZxbtOGlrLO2D1WYbDiWEi9FP9JNPOUohxdVdgQYtOPQN94VVw5c=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1p8ish-000LAe-KP; Fri, 23 Dec 2022 15:18:39 +0100
-Date: Fri, 23 Dec 2022 15:18:39 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Richard Cochran <richardcochran@gmail.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	macpaul.lin@mediatek.com
-Subject: Re: [PATCH v5 1/2] stmmac: dwmac-mediatek: enable 2ns delay only for
- special cases
-Message-ID: <Y6W4vwJHG+6PI8fd@lunn.ch>
-References: <20221223015029.24978-1-biao.huang@mediatek.com>
- <20221223015029.24978-2-biao.huang@mediatek.com>
+	id 1p8pio-00CQ85-Dt
+	for linux-mediatek@lists.infradead.org; Fri, 23 Dec 2022 21:36:56 +0000
+Received: by mail-qk1-x731.google.com with SMTP id a25so2881140qkl.12
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Dec 2022 13:36:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=FQl/76Qbqte4fVJmlL7WAYT8S3tkJD7vqlBp3Ta3BXU=;
+        b=YhoeCmS8E59bILv70dkyyIduqvYX83mAGInMibHDhgo0tk6DykF+jsGPZB5bxHUqjy
+         8YrWXirta9o7i/o1wNfcsOQxxvljnvWweae/N+5qQf1VmmbfxAcSsI+wzxECrI8Z4Git
+         PzsEHhr1HzS1yZvNYuuPphTBjSZsl2IS5bFrmR/PKJIj12BMdu+MLV4IvSA124iogMa2
+         t1FmRUHZa3r2SnEm/FpwYEqW9Ox9CwCDTa9in87XR96UK0MWsZXbpkBQgHGn6kkHW/er
+         ajiVz4/717vbWBd4vgGR2Z6qXguEL3J6IjkWUkP9tRkb7IHLRrSGXdZQ4076DmxPU8Rk
+         laTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=FQl/76Qbqte4fVJmlL7WAYT8S3tkJD7vqlBp3Ta3BXU=;
+        b=4SzrT9nd3RDNNLPxt5+sPILjcCVeE/iiczbBkcLoegF+UoSjwRd5TmtfzHo6J316E6
+         bhTaAV+jFc6DssjGIGuAcPWEsl+d7Jk5s3xGdQ/SLiEHRBA4zKtNri5Xnpczm0JJcBmE
+         nTY2s2Pt3UQxaLUJi1YcpJvP55Iv/VTm+5QHs/2bBkhko9k4ynXzqa/QxXg2uiA6SGq3
+         bSZmYi/wr25JT9DPayKhmJ7uByogYMp1lchDOFk2rXMRPycG1U4nFLaOjuGVKx65lbwy
+         7H95NcShsoTNaZIG6+rvCb2m5RvM1BpfWv/96sxY0G02Ri/C/UD1PnsT1GZguui1Hrjv
+         d3AQ==
+X-Gm-Message-State: AFqh2koHNxODmUbNeHy+kCRcFSau4PgzJkfZJb0kBBbEx/yQC9/WBpx6
+	PMBgDTziHkR57hD/PPS1gyLNfh44RV1q8zL4YA==
+X-Google-Smtp-Source: AMrXdXuSvTz92FM6LoV9OmCmeotEKkb6BPDV+TCWa5PCfnK1/aAkhdBFom5bvfkmTAe991Pq8JTL+axZtgcVM5SaF0s=
+X-Received: by 2002:ae9:eb4d:0:b0:6fe:ffbf:1b51 with SMTP id
+ b74-20020ae9eb4d000000b006feffbf1b51mr585289qkg.361.1671831410196; Fri, 23
+ Dec 2022 13:36:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221223015029.24978-2-biao.huang@mediatek.com>
+From: Nick Morrow <morrownr@gmail.com>
+Date: Fri, 23 Dec 2022 15:36:24 -0600
+Message-ID: <CAFktD2fRnSbNgWRRoGbQzG5_Mw7=zFJKTVBHS_3D+mNUYcv9hQ@mail.gmail.com>
+Subject: [bug report} wifi: mt76: mt7612u/mt7610u - 6.1.x hard locking systems
+To: nbd@nbd.name, Lorenzo Bianconi <lorenzo@kernel.org>, ryder.lee@mediatek.com, 
+	shayne.chen@mediatek.com, Sean Wang <sean.wang@mediatek.com>, deren.wu@mediatek.com
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221223_061902_287767_4060C1E4 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20221223_133654_567269_1B6C6FF8 
+X-CRM114-Status: UNSURE (   6.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,49 +82,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 23, 2022 at 09:50:28AM +0800, Biao Huang wrote:
-> In current driver, MAC will always enable 2ns delay in RGMII mode,
-> but that will lead to transmission failures for "rgmii-id"/"rgmii-txid"
-> cases.
-> 
-> Modify the implementation of fix_mac_speed() to ensure the 2ns delay
-> will only take effect for "rgmii-rxid"/"rgmii" cases, then user can
-> choose phy-mode freely.
+Starting with kernel 6.1 rc1, mt7612u and mt7610u are hard locking
+systems when connection is established. From a report this morning:
 
-This does not seem correct. There are three ways the delays can be added:
+"So I'm using a MT7610U based adapter and updated to 6.1.1 in Arch
+Linux and it's a complete lockup a few seconds after connecting as
+other people have said, I'll use the LTS kernel (5.15) in the
+meanwhile but this is probably going to get a lot of people that use
+distros with newer kernels."
 
-1) The MAC
-2) The PHY
-3) Extra long lines on the board.
+Background: Problem first discovered with kernel 6.1 rc1. Bug report
+was seen on linux-wireless around the rc5 timeframe. This is an
+additional bug report.
 
-What the four RGMII modes tell you is what is needed in addition to
-whatever the board provides. So it describes the combination of 1) and
-2). Your board does not appear to be applying any delays, so you
-should be using rgmii-id.
+I don't think additional info is needed as I have tested on several
+distros with various RC's of 6.1 and the problem is 100% reproducible
+and unavoidable. This is a show stopper bug and will result in
+widespread reports as distros upgrade to kernel 6.1.
 
-The MAC and PHY driver then need to decide how to add these delays,
-and in most cases, the MAC does nothing, and passes phy-mode to the
-PHY and the PHY adds the delay.
+Regards,
 
-The MAC can add delays, but if it does, it need to mask out the delays
-it added to the value passed to the PHY. Otherwise the PHY will add
-the delay as well.
-
->  
-> -	if ((phy_interface_mode_is_rgmii(priv_plat->phy_mode))) {
-> +	switch (priv_plat->phy_mode) {
-> +	case PHY_INTERFACE_MODE_RGMII:
-> +	case PHY_INTERFACE_MODE_RGMII_RXID:
->  		/* prefer 2ns fixed delay which is controlled by TXC_PHASE_CTRL,
->  		 * when link speed is 1Gbps with RGMII interface,
->  		 * Fall back to delay macro circuit for 10/100Mbps link speed.
-
-So this is wrong. PHY_INTERFACE_MODE_RGMII means the board is adding
-the delay via long lines. You should not be added any delay at all.
-
-For PHY_INTERFACE_MODE_RGMII_RXID, you need to mask the RXID bit from
-phy_mode when connecting the MAC to the PHY. Otherwise the PHY is
-going to add this delay as well.
-
-	 Andrew
+Nick
+https://github.com/morrownr/USB-WiFi
 
