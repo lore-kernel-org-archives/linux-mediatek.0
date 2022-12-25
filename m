@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C02C3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 15:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A8FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 16:37:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CJ0s4RC8ixikC2btIIdHDJkIJhgIxIMo2x6A5xpALMk=; b=25N5fJVJHROizSakvi7mo6Nj46
-	mvsa8KDpvzVkSAKbbm7FerlodppEpZr3aEUGnbk7nYj1Et2Pc/84E2Y0ZnSsuUJcYPLCvkw9uREIo
-	OJ16a6kszfWG0w1dcuYkrbaBpkrcjI+jUxiHoBwGxphwpFLxexZYX9e89qKVtQbn/iUlbW99n7ppn
-	KQunGcVkiubkoZkv9JAD7jlCrxWoYVtLP09PfFd1GOZz0oZ7ZDNPp7/OCjJD9LyP8O6s1dYKv6vD+
-	3ZZFyu+rQI8D7IrlhQTLOdtPgq4UpK217lvpbtTsbTCWgGdO4V9FtMLfmHHE6F15fYBDDRY1cKihD
-	VVC1lsdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G2/SmOJW+fkk74tqypiaCsSzjv667+pDRrZxpdHI4jg=; b=cUwRfQi4dLqmra52TBJIDB+jnn
+	n5JSty/zvmn/OW0hbo7CeSiMCU5xq9oC7dPb00lC6vyDUvewKDEDdDmEPQq/nQrGPxXEVcMyTnQZc
+	ja/46PYM8PBV1Tw3cwmvACD6Gz1edecWUedSx5/lJiTCK8Uf+yJ2jcgSN/qmulntSpZL/mPx5rTa9
+	e645JtiQKX3sIB9HCFzXdAFCYIWnaxs4U1wqGiDkAeUWJMYbzp0xSnEdnOM1dI253JxlF/WJmQna6
+	HDdYXeYu8Le6SBOy5llIPA8N6natv/Gx/wkF3VIl8ttb6wBy/NCIn4W2/GF+JOw7AOfYiGPG5hA3n
+	a294SR6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9pGb-0053qb-FD; Mon, 26 Dec 2022 15:19:53 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1p9qTg-005f3f-UK; Mon, 26 Dec 2022 16:37:29 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9pGX-0053k0-Ns; Mon, 26 Dec 2022 15:19:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=CJ0s4RC8ixikC2btIIdHDJkIJhgIxIMo2x6A5xpALMk=; b=5Y2X3l4ayBSYhKB92xci3QHhza
-	3+rZitQO+VAVq7GdeQsfaKzvkXLi3YAd5W/LiKV+lsp1KUfeDV6auyENA1c0Dn9bJ3HvJHZsNevHg
-	Gedc5W2EBEAPzoAp15tYOHjSOeFhzkiTzreplDFmPnrLOA8oLtfIpitn+TeH3i8UnUCM=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1p9pG4-000VyF-Uc; Mon, 26 Dec 2022 16:19:20 +0100
-Date: Mon, 26 Dec 2022 16:19:20 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Biao Huang =?utf-8?B?KOm7hOW9qik=?= <Biao.Huang@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"peppe.cavallaro@st.com" <peppe.cavallaro@st.com>,
-	"joabreu@synopsys.com" <joabreu@synopsys.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"alexandre.torgue@foss.st.com" <alexandre.torgue@foss.st.com>,
-	"mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"richardcochran@gmail.com" <richardcochran@gmail.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v5 1/2] stmmac: dwmac-mediatek: enable 2ns delay only for
- special cases
-Message-ID: <Y6m7eNdWVL3IKFj2@lunn.ch>
-References: <20221223015029.24978-1-biao.huang@mediatek.com>
- <20221223015029.24978-2-biao.huang@mediatek.com>
- <Y6W4vwJHG+6PI8fd@lunn.ch>
- <4a82aa5437e496e2b65b77ef08d7897a4b23f7e5.camel@mediatek.com>
+	id 1p9PTj-00AdCk-EW; Sun, 25 Dec 2022 11:49:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1671968822;
+	bh=cigTGUVAg3Yj9PBuOXrP7a8GktisvMkb4W/saccjwJQ=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Ma/xkta6H/Vvu8O4rhc4uZyrSkGoLzcj0u3e+4+TsD4ecPjO4RdiTm8nzUIpHBg8t
+	 yODU1TLBIFTfdJLVBlQPzfNkaUw4INHVjuJ4gklf1gC+4NS7bQxFhZdLTJComCawxT
+	 FoNsX+YKxX2QusrfdnIZzotnf9ovGBKNZvqERLVsG8XKa+QpTP+3jnz5cduXBc6ZJb
+	 XDpzyAP8rRElSmXpRYqE6Flyu5JYhkA9jbHoa88IAt8F0oKr/i8WXIlnG/A1H+x37k
+	 jIamcERWlvttUqlamw9zawJZdLhlNurOM2MxVzlYyQE7NYgmOINTAzmtKMDzqbr6AT
+	 fINsT6KW8DG/g==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [157.180.225.172] ([157.180.225.172]) by web-mail.gmx.net
+ (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Sun, 25 Dec 2022
+ 12:47:02 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4a82aa5437e496e2b65b77ef08d7897a4b23f7e5.camel@mediatek.com>
+Message-ID: <trinity-b51cbf64-8df3-4a0b-883a-dbb7443eb954-1671968822286@3c-app-gmx-bap38>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lorenzo
+ Pieralisi <lpieralisi@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn
+ Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org
+Subject: Aw: Re: [next v7 8/8] arm64: dts: mt7986: add Bananapi R3
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 25 Dec 2022 12:47:02 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <Y6dMWFy7gChG88j0@makrotopia.org>
+References: <20221127114142.156573-1-linux@fw-web.de>
+ <20221127114142.156573-9-linux@fw-web.de> <Y6dMWFy7gChG88j0@makrotopia.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:10CT/kHfUVpSwqOqwS7PiCBR0/UkRQWIuyHUPEIPBF4ZQybqHeav5erxkfhPt6CkPU6ev
+ P2jwPeR/U1/CsU0cypsmIs4UKNmh6TMGRmE9N8BKS0TbhXVNMX4nifJlVBx0/sT+mC1DTHpe7Lm0
+ ZWTvo5zBoXH7rzgei9CR+fXrJGdfl+LYJmaNbBJV9dJV3cfgTHqW/IWi9dXZWuu9PEWsGOdppoeX
+ JFIMemszjkAeplliNJluXNK5PmagMPT+eXXsMkTHO3XWdQck6hJrq/ckQvChW3JNDndJB1bzqU4q
+ GY=
+UI-OutboundReport: notjunk:1;M01:P0:pwFcvI8EngI=;Xzb4kTlhYwuChZI1qpgA1uiBqPU
+ 0VRdCykSt9KTXu8yY9kmRrx7TUx5EFBj/CWBFLhFCAuUvqO+4VGvbUWKt0/ui4Stz591phL4x
+ V6D2S/PlSOoK+x7PH/19JEuZKEr5cZZhv/LAaLdmWxmbQ6Ch8dMf/wUp1jZ/eXMG6DQ5sj46p
+ EXO5bAt6xkRITCny9gY4QR1XL7ITdV97qUPfmQRubcACLurNRiTr1QjoIHgepkenO2tKABFEZ
+ aJlUCiDQm5KNF8h4qRZgm+UrvL87097zlMkEmBYS0EhImEM4apgdFixunpgiN9VC0tE6hKIN0
+ RulXsPDMfJyIbonqk8r0HLhEzVeqs6enS34vIqnFEbe8J51x8eU6Jg6NdGPFevExob8aDMeA5
+ r4qRPKfr7LrlcIZgNnTPkmGZlLHG8op2cuELClFACNBxSYklDi61bGdcrGZ7zgWk3QN5sMjFd
+ KlKgPUWpw5/2Ky/5xfMK3GT7p3vDoQsfCHWpotsshwNqzEVX7wneqQHwqgxD//E/bDFOw5OMa
+ ok4obFcCNMkLzPS+ofYi4/P0dL4DeC2uH2WDbe3VoYjcV/6sH3jn/5XmyqldDIs+E5Djrt7LP
+ QLVtrJzCxdBJwNbpDlCK6jlqsRSUyIk7Auv2qYiSoTNGfBqQuwpHW2LI5G2C0x3uOnx2kkzUP
+ sFzbOVN9r/dTxS9JeWVf4mH3r5urzdXFrMvBaujgNVJ3jt6wvufj84Ejbe88doESaimya4+QF
+ +jTNS8V4hj1DozC05FKDuBggiU2hqUxx5Q6lGPoMFa94cU4cBp5hYxx4dU5WsG6eYssc0MUJe
+ v7pKBoXRZTACH/SOAAOVa4uzu3j406KqJjqu430gP7Hiw=
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221226_071949_818249_140B74DA 
-X-CRM114-Status: UNSURE (   9.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221225_034906_907866_3750B9C6 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +99,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> We don't want to restrict phy-mode to rgmii-id only, so I don't think
-> we need mask RXID bit, then, User can use rgmii-rxid/-txid/-id as their
-> will.
+Hi
 
-The phy-mode is a property of the board. It describes what delays are
-required, in addition to what the board itself provides via extra long
-lines. As such, there is no choice, it is set by physics.
+> Gesendet: Samstag, 24. Dezember 2022 um 20:00 Uhr
+> Von: "Daniel Golle" <daniel@makrotopia.org>
 
-How you implement those delays is then up to the MAC and PHY. 95% of
-all MAC drivers simply pass phy-mode to the PHY and let the PHY add
-the delays. The Renesas MAC driver is one of the exceptions, it often
-adds the delays, and then passes a different phy-mode to the PHY in
-order that there are not double delays.
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+> > @@ -0,0 +1,30 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright (C) 2021 MediaTek Inc.
+> > + * Author: Sam.Shih <sam.shih@mediatek.com>
+> > + */
+> > +
+> > +/dts-v1/;
+> > +/plugin/;
+> > +
+> > +/ {
+> > +	compatible =3D "bananapi,bpi-r3", "mediatek,mt7986a";
+> > +	model =3D "Bananapi BPI-R3 (emmc)";
+>
+> Why do you set the model string here?
 
-So you can be different to everybody else, have MAC do one delay, and
-the PHY do the other. Just be aware that nobody else does this, no DT
-developers will expect it, etc.
+seems to be a left over from testing where i wanted to see which base-dtb =
+was
+loaded without comparing mmc-node settings. Was easier to see with model-s=
+tring :)
 
-Or you can just do what everybody else does and let the PHY add the
-delays.
+> > +
+> > +	fragment@0 {
+> > +		target-path =3D "/soc/mmc@11230000";
+> > +		__overlay__ {
+> > +			bus-width =3D <8>;
+> > +			max-frequency =3D <200000000>;
+> > +			cap-mmc-highspeed;
+> > +			mmc-hs200-1_8v;
+> > +			mmc-hs400-1_8v;
+> > +			hs400-ds-delay =3D <0x14014>;
+> > +			non-removable;
+> > +			no-sd;
+> > +			no-sdio;
+> > +			status =3D "okay";
+> > +		};
+> > +	};
+> > +};
 
-What some MACs do is implement rx-internal-delay-ps and
-tx-internal-delay-ps These allow fine tuning of the delays. These are
-expected to be small values, adding 10s or 100s of pico seconds. They
-are not expected to be 2000ps.
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts =
+b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+> > new file mode 100644
+> > index 000000000000..618d3bb2f32f
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
 
-    Andrew
+> > +&mdio {
+> > +	switch: switch@31 {
+> > +		compatible =3D "mediatek,mt7531";
+> > +		reg =3D <31>;
+> > +		reset-gpios =3D <&pio 5 GPIO_ACTIVE_HIGH>;
+>
+> Please add:
+>
+>                 interrupt-controller;
+>                 #interrupt-cells =3D <1>;
+>                 interrupt-parent =3D <&pio>;
+>                 interrupts =3D <66 IRQ_TYPE_LEVEL_HIGH>;
+>
+> to have IRQ driven phy status instead of having to poll the link status
+> of the 5x rj-45 ports.
+> The value comes from schematics (pin AD24, GPIO66, 7531_INT) and I've
+> tested this on my board.
+
+ok, if you have it tested i add these properties in next version (and test=
+ it too).
+I wait for tphy-binding to be applied to next (pcie and xhci already in to=
+rvalds/master).
+
+> > +	};
+> > +};
+> > +
+
+> > +&spi0 {
+> > +	pinctrl-names =3D "default";
+> > +	pinctrl-0 =3D <&spi_flash_pins>;
+> > +	cs-gpios =3D <0>, <0>;
+>
+> I don't think those bogus cs-gpios here and for spi1 below are needed.
+
+can drop them in next version
+
+> > +	status =3D "okay";
+> > +};
+> > +
+> > +&spi1 {
+> > +	pinctrl-names =3D "default";
+> > +	pinctrl-0 =3D <&spic_pins>;
+> > +	cs-gpios =3D <0>, <0>;
+> > +	status =3D "okay";
+> > +};
+> > +
+
+regards Frank
 
