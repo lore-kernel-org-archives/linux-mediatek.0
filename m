@@ -4,51 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C8CC3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Dec 2022 15:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B2CC3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Dec 2022 16:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5vGtw2h+bowuvSjh8g4+ZRsAkXMwjWUJCok9p6khI3E=; b=A3LmeUcsk/mxUedWOTfyC5zkWk
-	LMHJc9UoJOJRjc3jXkkqheb05xFzLcvSK2cI6P87FH0kg8V3tjFLUQjWmwhs1+o6GKvejXMuSqZ3s
-	uhk2wNQegmMCmpXs0PyrMc2Hpnw8QU9B2v51UVsRpdFnq+DhCeo5ZTAXyYXnOISYFAa+bFerQQAdW
-	EpPtD+CgrCus4IocSa/7JwIvCbx3GG9nucL6udNCFeYWP6JOrer4vVBRmTYAwK3wTWI3SoZSy6fWC
-	5skqiuAzWZzcEeaxKyEufZy7VOy/cEO4CRxPjwI2ljcyR8lV8fpUY6fe8WORCsQqkiELQteC6UPuC
-	ckSh8i4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=shsigjtb9dRU+8AvOmwCeo99R9QRCTxMNMi5Xyf1dGI=; b=KnIjz8ElOyzOdfF8LQCLfOjfJI
+	+HRInFhbX5uLMY4y70gBzEPmvNVlqLBzMMHyo4tnrboI0Fe0xUHd+qCuaBdU2mrljtZULudSqWekv
+	BJwqL6UstCJ6bQZ8qDPGJawZf1mgMhQqZtXIcM2a10YBizcEEBe44YdU3ALt+rbLwjnIOY/+BUQYX
+	m8lyDg8agANBiNX/p3iffn+00Or19ddFsXO09fN9pehOjqwX0lpyTQ5gBUpwhOFtDK2y2tW71C0I8
+	Zw1hkwFALbxreamRO5F6UaYuL7PXKNT5d8ccs02XyQk/8O2EVpo6cRswdq1/4ytqXp/qU7AaLgSxA
+	AUisZhNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9T83-00CeYm-1K; Sun, 25 Dec 2022 15:41:35 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1p9UIO-00DLmW-17; Sun, 25 Dec 2022 16:56:21 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9Ref-00Bk4w-VS; Sun, 25 Dec 2022 14:07:11 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1p9ReY-0002Hy-1h;
-	Sun, 25 Dec 2022 15:07:02 +0100
-Date: Sun, 25 Dec 2022 14:06:59 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] spi: mediatek: Enable irq before the spi registration
-Message-ID: <Y6hZA19rWuDkGJa2@makrotopia.org>
-References: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+	id 1p9SJb-00C9gZ-ND
+	for linux-mediatek@lists.infradead.org; Sun, 25 Dec 2022 14:49:29 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id s5so13020580edc.12
+        for <linux-mediatek@lists.infradead.org>; Sun, 25 Dec 2022 06:49:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=shsigjtb9dRU+8AvOmwCeo99R9QRCTxMNMi5Xyf1dGI=;
+        b=BQIfP9O8QJPdtjScs25CDP1bsKG2Z4vTt4xlGJd59JwbtiYZTQmROrF0kbm2pJYRyx
+         nNDFFjGJzgZ2NaMYo2sNobjdLVPujWNLPDiKgtGOOFoKuVVY7E9RvtRy2QR4j0mNbXxg
+         j/vgAfJB7YM4WLS01pUfd/gfQkEN+2jNLqRg8EdAuJqa4zIIy04fyqrwMLEYYSSdUqg8
+         TZrEfbK8vTwcAcHB5TvqOLP/fiG41q6+eXfB1xU/lmos+Sb632WYYiisoeHsAQoAmD/+
+         s2ApjIFi1+gTwWEZ+ttsPLojWmafVfWo+nLEApssvl1V925Y9TXaLR4UutKLoJZW46K3
+         LgFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=shsigjtb9dRU+8AvOmwCeo99R9QRCTxMNMi5Xyf1dGI=;
+        b=GAs7r44UOv5Sci/hVuCjb9AKLoqyOP5h5gaYhIWthpVpnmq/VFb3cQ7BWOhfGrys3f
+         HdXsJVlXw6lf4xOI0X4vhPU2AsJruawVWzbRo+Ibybd4D7PoXHBT/CpQDlpnxGqmeoEI
+         p55W+SUgUGJwZzlXqp83x/ukmlIyky7v9MbiIahqUePiq+ChfBbERccKQpqF/hkWyHml
+         5HqArPtZjkBa1NZFdi6Nr9ZXM16ickBCmteAEcpuLV6lWEnjGVDJ6xp1NA29OqAZ/ZfX
+         oWAOINdzasdcfvHQsI5Tv+WcBTLv7YuF8tD4fIC043EhE4fTVe7k26xj0GkKdmZZ2aY0
+         o46A==
+X-Gm-Message-State: AFqh2kqMUtuckOMH2CvfpEv02p13XstReeZRcCqecQBjkxXokX7RKhk/
+	rXttkDaq5Odl/apyxdkWrSCa3akBXaHiryVHn2rAAuwmyHVA
+X-Google-Smtp-Source: AMrXdXsb/gHe4oKI3J1ldSRJjySGB7VgG5uMJQX4VUPNnEGRqyR1RmK4RExuya4uvRZpDmALz9HJ6CXIuqXbK4wtQOg=
+X-Received: by 2002:aa7:c6c7:0:b0:46d:8e85:170e with SMTP id
+ b7-20020aa7c6c7000000b0046d8e85170emr1780952eds.422.1671979765308; Sun, 25
+ Dec 2022 06:49:25 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+From: Vishal Rao <vishalrao@gmail.com>
+Date: Sun, 25 Dec 2022 20:19:15 +0530
+Message-ID: <CAMWtyy1sSHc_DYQ3kq+FWMJKK5Wo3QEgO1yd6wQXx3x0Lp4Uog@mail.gmail.com>
+Subject: Wifi 6E 6ghz not working on MediaTek MT7922 (AMD RZ616)
+To: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221225_060710_157476_37997BF6 
-X-CRM114-Status: GOOD (  26.17  )
+X-CRM114-CacheID: sfid-20221225_064927_813226_5A497C0E 
+X-CRM114-Status: UNSURE (   4.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,86 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 25, 2022 at 09:37:12AM +0100, Ricardo Ribalda wrote:
-> If the irq is enabled after the spi si registered, there can be a race
-> with the initialization of the devices on the spi bus.
-> 
-> Eg:
-> mtk-spi 1100a000.spi: spi-mem transfer timeout
-> spi-nor: probe of spi0.0 failed with error -110
-> Unable to handle kernel NULL pointer dereference at virtual address
-> 0000000000000010
-> ...
-> Call trace:
->  mtk_spi_can_dma+0x0/0x2c
-> 
-> Fixes: c6f7874687f7 ("spi: mediatek: Enable irq when pdata is ready")
-> Reported-by: Daniel Golle <daniel@makrotopia.org>
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
-> spi: mediatek: Fix init order (again)
-> 
-> Hi Mark
-> 
-> Here is a fixup of the previous patch. Daniel, can you confirm that it
-> works on your hardware? 
+Hello!
 
-Yes, this fixes the issue and SPI now works fine on MT7986 with the
-patch applied.
+Using Ubuntu 22.04 LTS based distro elementary OS 7 with the latest
+available Ubuntu mainline kernel 6.1 RC5 build the wifi does not
+connect to the 6GHZ band (Wifi 6E) and it only even shows the 6ghz
+SSID name *after* I have connected to the 5ghz wifi band.
 
-Tested-by: Daniel Golle <daniel@makrotopia.org>
+This is on a new ASUS ZenBook laptop model UM5302TA with the AMD Ryzen
+6800U CPU platform which includes the AMD-Mediatek co-developed RZ616
+wifi chip I believe.
 
-> 
-> Thanks and sorry for annoyance. 
-> 
-> To: Mark Brown <broonie@kernel.org>
-> To: Matthias Brugger <matthias.bgg@gmail.com>
-> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: linux-spi@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/spi/spi-mt65xx.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-> index 6de8360e5c2a..9eab6c20dbc5 100644
-> --- a/drivers/spi/spi-mt65xx.c
-> +++ b/drivers/spi/spi-mt65xx.c
-> @@ -1253,6 +1253,11 @@ static int mtk_spi_probe(struct platform_device *pdev)
->  		dev_notice(dev, "SPI dma_set_mask(%d) failed, ret:%d\n",
->  			   addr_bits, ret);
->  
-> +	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
-> +			       IRQF_TRIGGER_NONE, dev_name(dev), master);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "failed to register irq\n");
-> +
->  	pm_runtime_enable(dev);
->  
->  	ret = devm_spi_register_master(dev, master);
-> @@ -1261,13 +1266,6 @@ static int mtk_spi_probe(struct platform_device *pdev)
->  		return dev_err_probe(dev, ret, "failed to register master\n");
->  	}
->  
-> -	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
-> -			       IRQF_TRIGGER_NONE, dev_name(dev), master);
-> -	if (ret) {
-> -		pm_runtime_disable(dev);
-> -		return dev_err_probe(dev, ret, "failed to register irq\n");
-> -	}
-> -
->  	return 0;
->  }
->  
-> 
-> ---
-> base-commit: 45b3cd900bf8d1a3cd7cf48361df8c09ae5b4009
-> change-id: 20221225-mtk-spi-fixes-99c863a6fdf1
-> 
-> Best regards,
-> -- 
-> Ricardo Ribalda <ribalda@chromium.org>
+Pastebin of lspci -vvnn output: https://pastebin.ubuntu.com/p/QwM58ZkptG
+
+Let me know what further information I should provide - happy to do so!
+
+Regards,
+Vishal Rao
 
