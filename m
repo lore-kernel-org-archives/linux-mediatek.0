@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A8FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 16:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F276FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 23:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G2/SmOJW+fkk74tqypiaCsSzjv667+pDRrZxpdHI4jg=; b=cUwRfQi4dLqmra52TBJIDB+jnn
-	n5JSty/zvmn/OW0hbo7CeSiMCU5xq9oC7dPb00lC6vyDUvewKDEDdDmEPQq/nQrGPxXEVcMyTnQZc
-	ja/46PYM8PBV1Tw3cwmvACD6Gz1edecWUedSx5/lJiTCK8Uf+yJ2jcgSN/qmulntSpZL/mPx5rTa9
-	e645JtiQKX3sIB9HCFzXdAFCYIWnaxs4U1wqGiDkAeUWJMYbzp0xSnEdnOM1dI253JxlF/WJmQna6
-	HDdYXeYu8Le6SBOy5llIPA8N6natv/Gx/wkF3VIl8ttb6wBy/NCIn4W2/GF+JOw7AOfYiGPG5hA3n
-	a294SR6w==;
+	bh=CWWw3wa9IYlY8NyS5FLBYUcWNLUZHl2PQFLi0aobrOk=; b=v3whX1fsdy7g/N32JUz3oKu8fj
+	MCd7XLzkgx1sX+bOWFRdvqb84vAdQKmwCEuswmsE6oveHlWsCFBNVe/XQR83x/1A5oHpmrCy58D9b
+	tQOWPxFM/iJYnYDVrQOZ1UjFWR2NiIJrm8rEv+RkoUJUtT5TvTqvcFTyy3K/bCRuEw+bCyT4VO411
+	of1A8W0sfY6tbPiLH0nmiKZHRTA35uy7yNnX1BkNTH8oJutT5YIzlFgY/XoX3qiMeGJYyvWj9TF11
+	Ci4OmSAsABNCqvoETpNUve50InxJkmCyph3F5n0S6VsdH8FfNXidgFIgTkSoeuo3akfy+HEj80YvL
+	KjOMI8zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9qTg-005f3f-UK; Mon, 26 Dec 2022 16:37:29 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1p9weQ-008AYs-M3; Mon, 26 Dec 2022 23:12:58 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9PTj-00AdCk-EW; Sun, 25 Dec 2022 11:49:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1671968822;
-	bh=cigTGUVAg3Yj9PBuOXrP7a8GktisvMkb4W/saccjwJQ=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Ma/xkta6H/Vvu8O4rhc4uZyrSkGoLzcj0u3e+4+TsD4ecPjO4RdiTm8nzUIpHBg8t
-	 yODU1TLBIFTfdJLVBlQPzfNkaUw4INHVjuJ4gklf1gC+4NS7bQxFhZdLTJComCawxT
-	 FoNsX+YKxX2QusrfdnIZzotnf9ovGBKNZvqERLVsG8XKa+QpTP+3jnz5cduXBc6ZJb
-	 XDpzyAP8rRElSmXpRYqE6Flyu5JYhkA9jbHoa88IAt8F0oKr/i8WXIlnG/A1H+x37k
-	 jIamcERWlvttUqlamw9zawJZdLhlNurOM2MxVzlYyQE7NYgmOINTAzmtKMDzqbr6AT
-	 fINsT6KW8DG/g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [157.180.225.172] ([157.180.225.172]) by web-mail.gmx.net
- (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Sun, 25 Dec 2022
- 12:47:02 +0100
+	id 1p9weE-008ATL-CG; Mon, 26 Dec 2022 23:12:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 01F86B80DC0;
+	Mon, 26 Dec 2022 23:12:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB4E6C433F1;
+	Mon, 26 Dec 2022 23:12:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672096362;
+	bh=3YDD7i5vigtk0jYnq/iRyL3tJUBwVFtguhEmbqMMi+I=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=aqlrtXHsiIDxJbcrsrfD/N6vtMEGNb9C6rrIZwHaatwMF7YyNjPqcv6quLX5Nc+Xi
+	 WKfy3zcvyM+w7Zs6jO6Vu1Ro1XXIwLgejG/lY/oXtEw7Nt6HcbNvp74xecShx/R4SS
+	 diiYgOv61ZvKZbOG6p1iPB1ujxTEzFJfZPEuuvgqnv1BBrSXKQ8wbh71Rb35mEkVuZ
+	 wtYhUhJPOzCI4KmHqktBTFTKjO5fuZoIqP+/+Mw8Ayas/ojCxDiG6SHIqnRGkZsoDv
+	 rTrl7zGSE49p0EUuUX3H3w/AFj7WvS1nJHLycNbDZLRHkcjxZfYABpi13AutwSKLtK
+	 1thQ1nby1QkLg==
+Received: by mail-oi1-f181.google.com with SMTP id e205so11187268oif.11;
+        Mon, 26 Dec 2022 15:12:42 -0800 (PST)
+X-Gm-Message-State: AFqh2kpO7nRmOofruEvAgZNvTQwjZtcgxQpSioJ3ar+Qzmt2Vzc7VFpI
+	g+iW5H8g8AoYdzRu11Kpv/ZvLQorSAKtsAV3vQ==
+X-Google-Smtp-Source: AMrXdXs+Xfs/7HZYsg6FqBL8RmGYK5b/oHgHaSwNLs4dZbF/Ssur4+vpSKVOTKJ3ZfbSeo62kyw3cPpuRwAjfFx/YTc=
+X-Received: by 2002:a05:6808:130f:b0:35a:eee1:6710 with SMTP id
+ y15-20020a056808130f00b0035aeee16710mr865013oiv.69.1672096361913; Mon, 26 Dec
+ 2022 15:12:41 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <trinity-b51cbf64-8df3-4a0b-883a-dbb7443eb954-1671968822286@3c-app-gmx-bap38>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lorenzo
- Pieralisi <lpieralisi@kernel.org>, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, Jianjun Wang <jianjun.wang@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn
- Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org
-Subject: Aw: Re: [next v7 8/8] arm64: dts: mt7986: add Bananapi R3
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 25 Dec 2022 12:47:02 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <Y6dMWFy7gChG88j0@makrotopia.org>
-References: <20221127114142.156573-1-linux@fw-web.de>
- <20221127114142.156573-9-linux@fw-web.de> <Y6dMWFy7gChG88j0@makrotopia.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:10CT/kHfUVpSwqOqwS7PiCBR0/UkRQWIuyHUPEIPBF4ZQybqHeav5erxkfhPt6CkPU6ev
- P2jwPeR/U1/CsU0cypsmIs4UKNmh6TMGRmE9N8BKS0TbhXVNMX4nifJlVBx0/sT+mC1DTHpe7Lm0
- ZWTvo5zBoXH7rzgei9CR+fXrJGdfl+LYJmaNbBJV9dJV3cfgTHqW/IWi9dXZWuu9PEWsGOdppoeX
- JFIMemszjkAeplliNJluXNK5PmagMPT+eXXsMkTHO3XWdQck6hJrq/ckQvChW3JNDndJB1bzqU4q
- GY=
-UI-OutboundReport: notjunk:1;M01:P0:pwFcvI8EngI=;Xzb4kTlhYwuChZI1qpgA1uiBqPU
- 0VRdCykSt9KTXu8yY9kmRrx7TUx5EFBj/CWBFLhFCAuUvqO+4VGvbUWKt0/ui4Stz591phL4x
- V6D2S/PlSOoK+x7PH/19JEuZKEr5cZZhv/LAaLdmWxmbQ6Ch8dMf/wUp1jZ/eXMG6DQ5sj46p
- EXO5bAt6xkRITCny9gY4QR1XL7ITdV97qUPfmQRubcACLurNRiTr1QjoIHgepkenO2tKABFEZ
- aJlUCiDQm5KNF8h4qRZgm+UrvL87097zlMkEmBYS0EhImEM4apgdFixunpgiN9VC0tE6hKIN0
- RulXsPDMfJyIbonqk8r0HLhEzVeqs6enS34vIqnFEbe8J51x8eU6Jg6NdGPFevExob8aDMeA5
- r4qRPKfr7LrlcIZgNnTPkmGZlLHG8op2cuELClFACNBxSYklDi61bGdcrGZ7zgWk3QN5sMjFd
- KlKgPUWpw5/2Ky/5xfMK3GT7p3vDoQsfCHWpotsshwNqzEVX7wneqQHwqgxD//E/bDFOw5OMa
- ok4obFcCNMkLzPS+ofYi4/P0dL4DeC2uH2WDbe3VoYjcV/6sH3jn/5XmyqldDIs+E5Djrt7LP
- QLVtrJzCxdBJwNbpDlCK6jlqsRSUyIk7Auv2qYiSoTNGfBqQuwpHW2LI5G2C0x3uOnx2kkzUP
- sFzbOVN9r/dTxS9JeWVf4mH3r5urzdXFrMvBaujgNVJ3jt6wvufj84Ejbe88doESaimya4+QF
- +jTNS8V4hj1DozC05FKDuBggiU2hqUxx5Q6lGPoMFa94cU4cBp5hYxx4dU5WsG6eYssc0MUJe
- v7pKBoXRZTACH/SOAAOVa4uzu3j406KqJjqu430gP7Hiw=
+References: <1666577099-3859-1-git-send-email-xinlei.lee@mediatek.com> <1666577099-3859-3-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1666577099-3859-3-git-send-email-xinlei.lee@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 27 Dec 2022 07:12:31 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9QEZfQC=i_ZLMrQGs80BHbpv93H6bnsw6RkS4z7zXoGQ@mail.gmail.com>
+Message-ID: <CAAOTY_9QEZfQC=i_ZLMrQGs80BHbpv93H6bnsw6RkS4z7zXoGQ@mail.gmail.com>
+Subject: Re: [PATCH v13,2/3] drm: mediatek: Set dpi format in mmsys
+To: xinlei.lee@mediatek.com
+Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com, 
+	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
+	nfraprado@collabora.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	Jitao Shi <jitao.shi@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221225_034906_907866_3750B9C6 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20221226_151246_744480_328BDB87 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,105 +85,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi, Xinlei:
 
-> Gesendet: Samstag, 24. Dezember 2022 um 20:00 Uhr
-> Von: "Daniel Golle" <daniel@makrotopia.org>
-
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
-> > @@ -0,0 +1,30 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright (C) 2021 MediaTek Inc.
-> > + * Author: Sam.Shih <sam.shih@mediatek.com>
-> > + */
-> > +
-> > +/dts-v1/;
-> > +/plugin/;
-> > +
-> > +/ {
-> > +	compatible =3D "bananapi,bpi-r3", "mediatek,mt7986a";
-> > +	model =3D "Bananapi BPI-R3 (emmc)";
+<xinlei.lee@mediatek.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=8824=E6=97=A5 =E9=
+=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8810:05=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Why do you set the model string here?
-
-seems to be a left over from testing where i wanted to see which base-dtb =
-was
-loaded without comparing mmc-node settings. Was easier to see with model-s=
-tring :)
-
-> > +
-> > +	fragment@0 {
-> > +		target-path =3D "/soc/mmc@11230000";
-> > +		__overlay__ {
-> > +			bus-width =3D <8>;
-> > +			max-frequency =3D <200000000>;
-> > +			cap-mmc-highspeed;
-> > +			mmc-hs200-1_8v;
-> > +			mmc-hs400-1_8v;
-> > +			hs400-ds-delay =3D <0x14014>;
-> > +			non-removable;
-> > +			no-sd;
-> > +			no-sdio;
-> > +			status =3D "okay";
-> > +		};
-> > +	};
-> > +};
-
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts =
-b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> > new file mode 100644
-> > index 000000000000..618d3bb2f32f
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-
-> > +&mdio {
-> > +	switch: switch@31 {
-> > +		compatible =3D "mediatek,mt7531";
-> > +		reg =3D <31>;
-> > +		reset-gpios =3D <&pio 5 GPIO_ACTIVE_HIGH>;
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 >
-> Please add:
+> Dpi output needs to adjust the output format to dual edge for MT8186.
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
 >
->                 interrupt-controller;
->                 #interrupt-cells =3D <1>;
->                 interrupt-parent =3D <&pio>;
->                 interrupts =3D <66 IRQ_TYPE_LEVEL_HIGH>;
+> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 >
-> to have IRQ driven phy status instead of having to poll the link status
-> of the 5x rj-45 ports.
-> The value comes from schematics (pin AD24, GPIO66, 7531_INT) and I've
-> tested this on my board.
-
-ok, if you have it tested i add these properties in next version (and test=
- it too).
-I wait for tphy-binding to be applied to next (pcie and xhci already in to=
-rvalds/master).
-
-> > +	};
-> > +};
-> > +
-
-> > +&spi0 {
-> > +	pinctrl-names =3D "default";
-> > +	pinctrl-0 =3D <&spi_flash_pins>;
-> > +	cs-gpios =3D <0>, <0>;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
+k/mtk_dpi.c
+> index 630a4e301ef6..ad87ecddf58d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/of_graph.h>
+>  #include <linux/pinctrl/consumer.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/soc/mediatek/mtk-mmsys.h>
+>  #include <linux/types.h>
 >
-> I don't think those bogus cs-gpios here and for spi1 below are needed.
-
-can drop them in next version
-
-> > +	status =3D "okay";
-> > +};
-> > +
-> > +&spi1 {
-> > +	pinctrl-names =3D "default";
-> > +	pinctrl-0 =3D <&spic_pins>;
-> > +	cs-gpios =3D <0>, <0>;
-> > +	status =3D "okay";
-> > +};
-> > +
-
-regards Frank
+>  #include <video/videomode.h>
+> @@ -30,6 +31,7 @@
+>  #include "mtk_disp_drv.h"
+>  #include "mtk_dpi_regs.h"
+>  #include "mtk_drm_ddp_comp.h"
+> +#include "mtk_drm_drv.h"
+>
+>  enum mtk_dpi_out_bit_num {
+>         MTK_DPI_OUT_BIT_NUM_8BITS,
+> @@ -67,6 +69,7 @@ struct mtk_dpi {
+>         struct drm_connector *connector;
+>         void __iomem *regs;
+>         struct device *dev;
+> +       struct device *mmsys_dev;
+>         struct clk *engine_clk;
+>         struct clk *pixel_clk;
+>         struct clk *tvd_clk;
+> @@ -135,6 +138,7 @@ struct mtk_dpi_yc_limit {
+>   * @yuv422_en_bit: Enable bit of yuv422.
+>   * @csc_enable_bit: Enable bit of CSC.
+>   * @pixels_per_iter: Quantity of transferred pixels per iteration.
+> + * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs =
+to be set in MMSYS.
+>   */
+>  struct mtk_dpi_conf {
+>         unsigned int (*cal_factor)(int clock);
+> @@ -153,6 +157,7 @@ struct mtk_dpi_conf {
+>         u32 yuv422_en_bit;
+>         u32 csc_enable_bit;
+>         u32 pixels_per_iter;
+> +       bool edge_cfg_in_mmsys;
+>  };
+>
+>  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 m=
+ask)
+> @@ -449,8 +454,12 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
+>                 mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
+>                              dpi->output_fmt =3D=3D MEDIA_BUS_FMT_RGB888_=
+2X12_LE ?
+>                              EDGE_SEL : 0, EDGE_SEL);
+> +               if (dpi->conf->edge_cfg_in_mmsys)
+> +                       mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_=
+DPI_RGB888_DDR_CON);
+>         } else {
+>                 mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0=
+);
+> +               if (dpi->conf->edge_cfg_in_mmsys)
+> +                       mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_=
+DPI_RGB888_SDR_CON);
+>         }
+>  }
+>
+> @@ -778,8 +787,10 @@ static int mtk_dpi_bind(struct device *dev, struct d=
+evice *master, void *data)
+>  {
+>         struct mtk_dpi *dpi =3D dev_get_drvdata(dev);
+>         struct drm_device *drm_dev =3D data;
+> +       struct mtk_drm_private *priv =3D drm_dev->dev_private;
+>         int ret;
+>
+> +       dpi->mmsys_dev =3D priv->mmsys_dev;
+>         ret =3D drm_simple_encoder_init(drm_dev, &dpi->encoder,
+>                                       DRM_MODE_ENCODER_TMDS);
+>         if (ret) {
+> --
+> 2.18.0
+>
 
