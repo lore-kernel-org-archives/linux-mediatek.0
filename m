@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE239C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 23:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDC2DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 23:26:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cEYS3+SeMpcBY4O/Wjc+N2LOG79qPTE7AugfR9b27QU=; b=RrPfWhHnGDoI8GNEZgxmTPb29j
-	jYRvsqxAB6KZ41d8HgNB+N71//PnNLpj3Ga7GPkfkIEs8Opx/BS4ADSL2WZONVPKoUg4L2OsemLFx
-	UHpMsu0zAuFcFJ+nEXuGr2t7F4z87oCXnxZ8SoMN91cAbCU+fLDr9teKTUx4SanpYhuvQFvFhay5P
-	hHMn0SxdwMrTCnrvQlVFXCpQ7juPShzs+lghSBhn/D5fRCDy5mu/B73ds1xta+zf6DsjSv8GFOGhm
-	zavafUYv2EaJS2OC3AtoPOVEdNfNdtsBz9zDaM7GqrWipqTEkszx8ivvZ2v3bwkCWCopAjnHrp5Oz
-	MahU7O+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P3iFAM+GnyX6r4cvrGUC8lHicqwkHTYezPzVa39Vp7Y=; b=C72kJS6Y2dbkj9AuWbaA28YfOd
+	E/Yu5bkaHywsLm55M8vAriskX2waExPJ9jtYzfoakbC8t875ASW+binX3r39eIhBE4AS2STosFXB6
+	FORZ62aMJU0MTfuwKHQjEPpZN/rw2vKbDKQwb6MfsCIcl/f3ZjYSQKaVCdAdrgF2bJAE9Fp1BFBy0
+	HKcB7iWl/pX/atuBiu5rGSRPM64yA2754hg7rG7luXbW3GmBa5CibTUez8d9syhZPPBMme+0a9sS1
+	5xFLWcgXEgTEBWSo8e2Y4nj9fVAO7L09bzVHvlPdAuGzWYeEDd8fNoySYbo6d3mCIWx2xIzzLgew4
+	HKPM6u6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9wpe-008Epw-N1; Mon, 26 Dec 2022 23:24:34 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1p9wrs-008Fte-1P; Mon, 26 Dec 2022 23:26:52 +0000
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9wpM-008ElP-Rc; Mon, 26 Dec 2022 23:24:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 28057B80DDA;
-	Mon, 26 Dec 2022 23:24:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D06C433F0;
-	Mon, 26 Dec 2022 23:24:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672097053;
-	bh=v6viXWqJLtgdVCsT8WioCv141t0R7HSm3K+PSsKwpaw=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=GK0epgS1Ers4zbwL57238/q9L+oyQtrMSw/KZJ4fA4lQKommEoZqUDp1Rpbbh75JM
-	 PU2TLmkJD8UYwSkE4L8zRqdS5a6wHj8LVu/0C8WFEwX8lJxqltylq6mUUGr1sisbii
-	 L2cEJVpHfeO6a9G2U4S80eUU5LJMld3+pk4oq2VFEi8YALgn2AJo+Cnv+gSbqHzhRB
-	 TrROC6oGiaBRBAL0pvzLHBJjo2LAS1BxDizT6JaCc7b64/4mC7mI2Xive3jQfhtjcb
-	 uJUpjJJ+Sd47SaXvE4fmc/ZB840wc4AITArd39mjFwfb7Ui8YDdxE4dTH1Q0V2A2rG
-	 0SspRME1BPi3w==
-Received: by mail-oa1-f47.google.com with SMTP id 586e51a60fabf-14fe0e9ed11so4051217fac.2;
-        Mon, 26 Dec 2022 15:24:13 -0800 (PST)
-X-Gm-Message-State: AFqh2kodP25h/c0QfzDhpO4LdXXr0t3ZlcCUuj9urYUbu7zScvPBR/wt
-	Kbfm84P9U6qvj5ZmVtsRiamM+riI7HJF9w52lg==
-X-Google-Smtp-Source: AMrXdXsHnWvDat7uvkQgV/C1gjXoyop6LVYr8CKo/bj64WxskbyZPKTkitNcv+cfe0/msG1fTgxhY+2Epr2yzkSFGlI=
-X-Received: by 2002:a05:6870:5312:b0:14f:97f2:1717 with SMTP id
- j18-20020a056870531200b0014f97f21717mr666516oan.69.1672097052981; Mon, 26 Dec
- 2022 15:24:12 -0800 (PST)
+	id 1p9wrp-008Fr8-94
+	for linux-mediatek@lists.infradead.org; Mon, 26 Dec 2022 23:26:51 +0000
+Received: by mail-qv1-xf34.google.com with SMTP id m12so1734746qvq.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Dec 2022 15:26:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=P3iFAM+GnyX6r4cvrGUC8lHicqwkHTYezPzVa39Vp7Y=;
+        b=d3Ld0ygPlxxUti1hCMp2GmpWH8tyzD8WCkabG/sCamJ+Ts18002WhAomvaLG+k6BKn
+         comiM1gVWfJN8SqTtUtMPj8p2ZfW/nl5vT8p2bJCWFrw/MBJmlNjSG4egl9Vlxho2Xc5
+         bOk/iwLlruUl3ftXNa9ot6wNeiOIrLvPSYWZgGrA6UHi4yhg3BVWwzSrAoqeps1ZPInF
+         dxEGmjb0qOS5cXQI+35l08C1QledwnQ22LruAaq68gd7DX8L2dVSwGesn8AQXeQjBai7
+         IOCeWFi7TWVlV3tmLSZDYnGK629l3FZygtpF2isMCQJ4lmJR6cEZJM4RQ9opoiLWZSw9
+         7YXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P3iFAM+GnyX6r4cvrGUC8lHicqwkHTYezPzVa39Vp7Y=;
+        b=IG3C9nIbOovQB+3Z+BRKiGm6OawKRTSdmyaFlf4JRrDYPW4qVkL3BJuJLvrXWhy0yg
+         p6W6LDaL63adICTH1uHd4se++89G2RMJaiG0Xbl/ZPLatkDHtwG12CDhNaXowU0cyRot
+         WMxQ5P3T0OIcqWOMqt6PKPKZJYqfCCoxFYGj2GmonuSk9jCr1fgd/xBjmzRaGWtzRkKU
+         0wM1j93HASwvXpZzqu+xyyZ1MmIqiP3vVyo7xC/HDdp5/xlIJI44tmCovq13HiAOQ18J
+         7ScSHYQFi915VDzWigMNg/KKEiTXxFzWJKnxxMQ7qtL5At5ZNREgvLuh1gQz2fvGz3oy
+         NkCQ==
+X-Gm-Message-State: AFqh2kpBa3uNoI5M+CQPjnVceJTLfmON6WNm/XWixiS62g0kXyXGstiw
+	4Y7kQINDGWCeHHmQONrWS5brOL8QuFVzj5b0nQ==
+X-Google-Smtp-Source: AMrXdXsbqkPHOy+T6frU2y8Jnt5iC/XfCam6oRV+wa/TwXlhAE8BKPPB3Qc3blNMaP9U8bhcAtWdz34BQ4WxEBNmCus=
+X-Received: by 2002:a0c:eecf:0:b0:4c7:6648:a2c4 with SMTP id
+ h15-20020a0ceecf000000b004c76648a2c4mr1119448qvs.12.1672097206548; Mon, 26
+ Dec 2022 15:26:46 -0800 (PST)
 MIME-Version: 1.0
-References: <1666577099-3859-1-git-send-email-xinlei.lee@mediatek.com> <1666577099-3859-4-git-send-email-xinlei.lee@mediatek.com>
-In-Reply-To: <1666577099-3859-4-git-send-email-xinlei.lee@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 27 Dec 2022 07:24:02 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-zjX7ZJrwm_BsoFZcqfGW5+P7G_bgn1VrK0i3VLptvvg@mail.gmail.com>
-Message-ID: <CAAOTY_-zjX7ZJrwm_BsoFZcqfGW5+P7G_bgn1VrK0i3VLptvvg@mail.gmail.com>
-Subject: Re: [PATCH v13,3/3] drm: mediatek: Add mt8186 dpi compatibles and
- platform data
-To: xinlei.lee@mediatek.com
-Cc: matthias.bgg@gmail.com, rex-bc.chen@mediatek.com, 
-	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com, 
-	nfraprado@collabora.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
-	airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <CAFktD2fRnSbNgWRRoGbQzG5_Mw7=zFJKTVBHS_3D+mNUYcv9hQ@mail.gmail.com>
+ <Y6Y3wzSxbTG2aLAo@localhost.localdomain>
+In-Reply-To: <Y6Y3wzSxbTG2aLAo@localhost.localdomain>
+From: Nick Morrow <morrownr@gmail.com>
+Date: Mon, 26 Dec 2022 17:26:20 -0600
+Message-ID: <CAFktD2fbpUv9X5MY1jozyXoxvNXW=4OfaJ3B1KcZtdrBfiG4NA@mail.gmail.com>
+Subject: Re: [bug report} wifi: mt76: mt7612u/mt7610u - 6.1.x hard locking systems
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com, 
+	Sean Wang <sean.wang@mediatek.com>, deren.wu@mediatek.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221226_152417_242161_62549610 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20221226_152649_464642_20F7023A 
+X-CRM114-Status: GOOD (  24.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,91 +86,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
+> > Starting with kernel 6.1 rc1, mt7612u and mt7610u are hard locking
+> > systems when connection is established. From a report this morning:
+> >
+> > "So I'm using a MT7610U based adapter and updated to 6.1.1 in Arch
+> > Linux and it's a complete lockup a few seconds after connecting as
+> > other people have said, I'll use the LTS kernel (5.15) in the
+> > meanwhile but this is probably going to get a lot of people that use
+> > distros with newer kernels."
+> >
+> > Background: Problem first discovered with kernel 6.1 rc1. Bug report
+> > was seen on linux-wireless around the rc5 timeframe. This is an
+> > additional bug report.
+> >
+> > I don't think additional info is needed as I have tested on several
+> > distros with various RC's of 6.1 and the problem is 100% reproducible
+> > and unavoidable. This is a show stopper bug and will result in
+> > widespread reports as distros upgrade to kernel 6.1.
+> >
+> > Regards,
+>
+> Hi Nick,
+>
+> Can you please try the patch below?
+> https://patchwork.kernel.org/project/linux-wireless/patch/20221217085624.52077-1-nbd@nbd.name/
+>
+> Regards,
+> Lorenzo
 
-<xinlei.lee@mediatek.com> =E6=96=BC 2022=E5=B9=B410=E6=9C=8824=E6=97=A5 =E9=
-=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8810:05=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
->
-> Add the compatible because use edge_cfg_in_mmsys in mt8186.
+Lorenzo,
 
-Applied to mediatek-drm-next [1], thanks.
+Today, I downloaded kernel 6.1.1, applied the above patch and
+compiled. Once installed, I tested with an Alfa ACM mt7612u based
+adapter. I no longer see the problem. No system lockups at all. iperf3
+is showing a consistent performance of around 387 Mb/s. dmesg is
+clean. The patch appears to have fixed the issue. I can also test with
+a mt7610u based adapter if you think it is necessary but since that
+patch was not to mt76, I decided testing only with the mt7612u adapter
+was probably good enough. Let me know if there is anything else I can
+do.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
-
-Regards,
-Chun-Kuang.
-
->
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
->  2 files changed, 23 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
-k/mtk_dpi.c
-> index ad87ecddf58d..325032fd5343 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -941,6 +941,24 @@ static const struct mtk_dpi_conf mt8183_conf =3D {
->         .csc_enable_bit =3D CSC_ENABLE,
->  };
->
-> +static const struct mtk_dpi_conf mt8186_conf =3D {
-> +       .cal_factor =3D mt8183_calculate_factor,
-> +       .reg_h_fre_con =3D 0xe0,
-> +       .max_clock_khz =3D 150000,
-> +       .output_fmts =3D mt8183_output_fmts,
-> +       .num_output_fmts =3D ARRAY_SIZE(mt8183_output_fmts),
-> +       .edge_cfg_in_mmsys =3D true,
-> +       .pixels_per_iter =3D 1,
-> +       .is_ck_de_pol =3D true,
-> +       .swap_input_support =3D true,
-> +       .support_direct_pin =3D true,
-> +       .dimension_mask =3D HPW_MASK,
-> +       .hvsize_mask =3D HSIZE_MASK,
-> +       .channel_swap_shift =3D CH_SWAP,
-> +       .yuv422_en_bit =3D YUV422_EN,
-> +       .csc_enable_bit =3D CSC_ENABLE,
-> +};
-> +
->  static const struct mtk_dpi_conf mt8192_conf =3D {
->         .cal_factor =3D mt8183_calculate_factor,
->         .reg_h_fre_con =3D 0xe0,
-> @@ -1091,6 +1109,9 @@ static const struct of_device_id mtk_dpi_of_ids[] =
-=3D {
->         { .compatible =3D "mediatek,mt8183-dpi",
->           .data =3D &mt8183_conf,
->         },
-> +       { .compatible =3D "mediatek,mt8186-dpi",
-> +         .data =3D &mt8186_conf,
-> +       },
->         { .compatible =3D "mediatek,mt8192-dpi",
->           .data =3D &mt8192_conf,
->         },
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
-iatek/mtk_drm_drv.c
-> index 546b79412815..3d32fbc66ac1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -646,6 +646,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[=
-] =3D {
->           .data =3D (void *)MTK_DPI },
->         { .compatible =3D "mediatek,mt8183-dpi",
->           .data =3D (void *)MTK_DPI },
-> +       { .compatible =3D "mediatek,mt8186-dpi",
-> +         .data =3D (void *)MTK_DPI },
->         { .compatible =3D "mediatek,mt8192-dpi",
->           .data =3D (void *)MTK_DPI },
->         { .compatible =3D "mediatek,mt8195-dp-intf",
-> --
-> 2.18.0
->
+Nick
+https://github.com/morrownr/USB-WiFi
 
