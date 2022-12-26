@@ -4,51 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EFCBC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 13:19:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C02C3DA79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Dec 2022 15:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sbmmCsTSdg67BQWRU4NVfV27akWwbl+q9FTNw5D2JCM=; b=yRbdXWmNCoki2yBuZEq5eIOzaT
-	nQFdZ/BQqit3SRQCWhiYNHcJyCHLvGXXc0w67ig5YU5pTBIe44zZtLvs9mllg4fNr+1uIUFAEabI3
-	uOg1xvo6TDxbEW0Zzy9JYlA31qVCF6+9QAyYvAIYtzysT7jClwxsjq5KZIRnanZpt+kq+BwZ5Se5F
-	sH1W1hF+HvvcLVyVCAoolkRPVW1E4TQ4puOCQrTxoKMqiKX27PI7i2jYFv9+DiSVDc9RYuxea6TPu
-	uhRVX00rBzt9p70tGJT5uqSUTDiVWg1etpncqpOsf8sTd83+VBdNx1WZFupuwFww5IG9dGwJypzX1
-	x23Xoegg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CJ0s4RC8ixikC2btIIdHDJkIJhgIxIMo2x6A5xpALMk=; b=25N5fJVJHROizSakvi7mo6Nj46
+	mvsa8KDpvzVkSAKbbm7FerlodppEpZr3aEUGnbk7nYj1Et2Pc/84E2Y0ZnSsuUJcYPLCvkw9uREIo
+	OJ16a6kszfWG0w1dcuYkrbaBpkrcjI+jUxiHoBwGxphwpFLxexZYX9e89qKVtQbn/iUlbW99n7ppn
+	KQunGcVkiubkoZkv9JAD7jlCrxWoYVtLP09PfFd1GOZz0oZ7ZDNPp7/OCjJD9LyP8O6s1dYKv6vD+
+	3ZZFyu+rQI8D7IrlhQTLOdtPgq4UpK217lvpbtTsbTCWgGdO4V9FtMLfmHHE6F15fYBDDRY1cKihD
+	VVC1lsdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9nOQ-0048a7-Gv; Mon, 26 Dec 2022 13:19:50 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1p9pGb-0053qb-FD; Mon, 26 Dec 2022 15:19:53 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1p9nOD-0048PP-6K; Mon, 26 Dec 2022 13:19:40 +0000
-Received: from [2a02:8108:963f:de38:eca4:7d19:f9a2:22c5]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1p9nNz-00041d-7W; Mon, 26 Dec 2022 14:19:23 +0100
-Message-ID: <fdc65b23-df50-cce0-35ad-4b6ec6527321@leemhuis.info>
-Date: Mon, 26 Dec 2022 14:19:22 +0100
+	id 1p9pGX-0053k0-Ns; Mon, 26 Dec 2022 15:19:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=CJ0s4RC8ixikC2btIIdHDJkIJhgIxIMo2x6A5xpALMk=; b=5Y2X3l4ayBSYhKB92xci3QHhza
+	3+rZitQO+VAVq7GdeQsfaKzvkXLi3YAd5W/LiKV+lsp1KUfeDV6auyENA1c0Dn9bJ3HvJHZsNevHg
+	Gedc5W2EBEAPzoAp15tYOHjSOeFhzkiTzreplDFmPnrLOA8oLtfIpitn+TeH3i8UnUCM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1p9pG4-000VyF-Uc; Mon, 26 Dec 2022 16:19:20 +0100
+Date: Mon, 26 Dec 2022 16:19:20 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Biao Huang =?utf-8?B?KOm7hOW9qik=?= <Biao.Huang@mediatek.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"peppe.cavallaro@st.com" <peppe.cavallaro@st.com>,
+	"joabreu@synopsys.com" <joabreu@synopsys.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"alexandre.torgue@foss.st.com" <alexandre.torgue@foss.st.com>,
+	"mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"richardcochran@gmail.com" <richardcochran@gmail.com>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v5 1/2] stmmac: dwmac-mediatek: enable 2ns delay only for
+ special cases
+Message-ID: <Y6m7eNdWVL3IKFj2@lunn.ch>
+References: <20221223015029.24978-1-biao.huang@mediatek.com>
+ <20221223015029.24978-2-biao.huang@mediatek.com>
+ <Y6W4vwJHG+6PI8fd@lunn.ch>
+ <4a82aa5437e496e2b65b77ef08d7897a4b23f7e5.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH] spi: mediatek: Enable irq when pdata is ready #forregzbot
-Content-Language: en-US, de-DE
-To: "regressions@lists.linux.dev" <regressions@lists.linux.dev>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20221128-spi-mt65xx-v1-0-509266830665@chromium.org>
- <166965653185.677424.5326738316899525692.b4-ty@kernel.org>
- <Y6dL2ZWgd1BD6kew@makrotopia.org>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-In-Reply-To: <Y6dL2ZWgd1BD6kew@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1672060777;33ab6be2;
-X-HE-SMSGID: 1p9nNz-00041d-7W
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4a82aa5437e496e2b65b77ef08d7897a4b23f7e5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221226_051939_042271_52D6E44B 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20221226_071949_818249_140B74DA 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,39 +85,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[Note: this mail contains only information for Linux kernel regression
-tracking. Mails like these contain '#forregzbot' in the subject to make
-then easy to spot and filter out. The author also tried to remove most
-or all individuals from the list of recipients to spare them the hassle.]
+> We don't want to restrict phy-mode to rgmii-id only, so I don't think
+> we need mask RXID bit, then, User can use rgmii-rxid/-txid/-id as their
+> will.
 
-Hi, this is your Linux kernel regression tracker.
+The phy-mode is a property of the board. It describes what delays are
+required, in addition to what the board itself provides via extra long
+lines. As such, there is no choice, it is set by physics.
 
-On 24.12.22 20:02, Daniel Golle wrote:
+How you implement those delays is then up to the MAC and PHY. 95% of
+all MAC drivers simply pass phy-mode to the PHY and let the PHY add
+the delays. The Renesas MAC driver is one of the exceptions, it often
+adds the delays, and then passes a different phy-mode to the PHY in
+order that there are not double delays.
 
->> [1/1] spi: mediatek: Enable irq when pdata is ready
->>       commit: c6f7874687f7027d7c4b2f53ff6e4d22850f915d
->>
-> 
-> Testing next-20221220 on the BananaPi BPi-R3 MT7986 board it turns
-> out that this commit is *causing* a kernel oops and strack trace output
-> actually quite similar to what is described in the commit message:
+So you can be different to everybody else, have MAC do one delay, and
+the PHY do the other. Just be aware that nobody else does this, no DT
+developers will expect it, etc.
 
-Thanks for the report. To be sure below issue doesn't fall through the
-cracks unnoticed, I'm adding it to regzbot, my Linux kernel regression
-tracking bot:
+Or you can just do what everybody else does and let the PHY add the
+delays.
 
-#regzbot ^introduced c6f7874687f7027d7c4b2f53ff6e4d228
-#regzbot title spi: mediatek: oops due to race
-#regzbot monitor:
-https://lore.kernel.org/all/Y6hZA19rWuDkGJa2@makrotopia.org/
-#regzbot fix: spi: mediatek: Enable irq before the spi registration
-#regzbot ignore-activity
+What some MACs do is implement rx-internal-delay-ps and
+tx-internal-delay-ps These allow fine tuning of the delays. These are
+expected to be small values, adding 10s or 100s of pico seconds. They
+are not expected to be 2000ps.
 
-
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
-
-P.S.: As the Linux kernel's regression tracker I deal with a lot of
-reports and sometimes miss something important when writing mails like
-this. If that's the case here, don't hesitate to tell me in a public
-reply, it's in everyone's interest to set the public record straight.
+    Andrew
 
