@@ -4,84 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDF1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 12:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B0EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 13:43:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=; b=eLrdH8WVshTstREDbtzOFJTxpS
-	D76dURBf5oJHF8OwRV1yWoh6bzJY8DyhSRAso9OPai/YPY2V4DKaIJXdmW37luV5EY00aaF0kmaII
-	n86o0aup8pcPIgQaMtKXNgVBK0/EszbkP9GCg3U2adWDntV9YHUneeeLlbdAbO1QyvzFGJZFTmtCl
-	FOs2M/BqNE7TWvOnGwSR8vRrLyqVWR+hrg1K4JRkUlFwoHUtxh0qjrzozAnmXIXLdfJmNDRdspcqk
-	H0dRKpDWDzK8MCbGRf52blMJVEn0Us3rqKbA39Q5YSht0S/+abCVfYhHJ5DqKZlDa48UReN7wF38D
-	aiiYshqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p0yNIP6MpjaHVWcIxbkqNM0AdAjCHiKnAY/z3tGomfQ=; b=Aqd0fraGVG82vLAP081CYqf5Ml
+	V4iIwY5Hj3Dif6XiZM4hzZUrjwzAZT4X3IPG1K9cA1YcLx7H7QVMRaYCzWotTO1AokCgJIVokmXni
+	s8DnQmP6mEXuRtdADaoDoQdco4x51+/NoGFdQaH95KxUGgqk/3e7ISJXZD7F+RzR3Y0OEvTtFlvKM
+	DxCPgByyrYDMXs70QjsBeL8YAPreaBzWLZSQ7w1uvBleFhNolJ510dp44et1OSO5j/zRdjTyXjTa5
+	Ahxj/jLwr8hDzdZsWVI9GDz1+bnLc9XFJ/sXNfpLcdSKLJ08O5C2nCZ95f2Bq/eGwyhqNwWXVcXSs
+	gSYeKwdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA9PH-00D0z2-Ar; Tue, 27 Dec 2022 12:50:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pAAF5-00DNnv-EZ; Tue, 27 Dec 2022 13:43:43 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA9PG-00D0y0-Bo; Tue, 27 Dec 2022 12:50:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=; b=dlDUlQ39IYdoJZPnEegUNPsLkn
-	vmPeUGpz1JtQEBDlDWCp7/12u64zVh2+f+aG8Ylccwtz6/iRp4cGe03o8qUBhqNZbKc65761Qf9h9
-	jtPyKEBfiwDqr9PGKldHwyoZScyskmwBxZaoRdQA+Zk2lNEd0cBxZXgwS6AB1GCtJNjqVW/1OLA9B
-	k1yN4FEwGsnIohb0iVYFXA/5kBtsi4AuSfa6VjzoEvdOW9blQ8+aCwTwc7oN/8zLlyqnNr6fNz4Yf
-	ulgO1aS3rO+p4wytEbkiISg+HR+CE5Xe6NQT4Da6lcca26Tw8hX20mBPgi5xsy0jwPivgpa4CbIQ7
-	PHZ/7ezA==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pA9P7-00Fe8Y-0r;
-	Tue, 27 Dec 2022 12:50:05 +0000
-X-UUID: a38866a6c1fe4eed89703c3d5d6ee845-20221227
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=;
-	b=qFeccW6lFSAIiGJu4jLLOIVZyxnZjEOCsjNVNIqmco8S7RltwXA01qMRQnwTc3PB3UT7SVsu+NmzfUumM2Mq35gJNcgwJcHJ8fYDIp7tkQrs1BM+cflMQjdqG5Ko/fDqAK6xHaYiQ+c3QUyjj4cks6QNq1wFZXx1TiRU84GSoH0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:f57cb8b7-38e8-4db1-815c-40d5cc355c78,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:3cb618f4-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a38866a6c1fe4eed89703c3d5d6ee845-20221227
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <roger.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1356506506; Tue, 27 Dec 2022 05:49:53 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 27 Dec 2022 20:09:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 27 Dec 2022 20:09:17 +0800
-From: Roger Lu <roger.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
-	<eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Nicolas Boichat
-	<drinkcat@google.com>
-CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
-	Jia-wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 03/13] soc: mediatek: mtk-svs: clean up platform probing
-Date: Tue, 27 Dec 2022 20:09:04 +0800
-Message-ID: <20221227120914.11346-4-roger.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221227120914.11346-1-roger.lu@mediatek.com>
-References: <20221227120914.11346-1-roger.lu@mediatek.com>
+	id 1pAAEq-00DNgr-Au; Tue, 27 Dec 2022 13:43:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id B4B58B81038;
+	Tue, 27 Dec 2022 13:43:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4B2BC433D2;
+	Tue, 27 Dec 2022 13:43:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672148605;
+	bh=MWHvjZhXqCXibASs7/ji0PRKFTI00JPAvF8xc89D7D8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=tIF6qIL8Y0pR593s3NX3Tr29bkjIHPsh+00HkRkm1ZOFp7ltkYgwiE7MKrXRKkA0r
+	 r+m8y3/xHBHqRegi7W+eHENxQxGcJbhhWqHxTTPm3nvICgCmym6e+xO9FqvE+PD8CP
+	 Jo0dMbESDEOTQoRaB2qanG8VqL1L36wHESRk8ph7DmPinNpIumLvZQrj1C6S8tQirA
+	 Q29+aq8d7SouvpPfFKQ8h85ztI66+zLhaAwbMgri3sKw7uoqPJZJvKSnCAwROdqlZn
+	 q5zAEtCQ8jfjmZeD/xGyowLqaBNycOi2v7voNPpM3M3Ytj8mDV6F/PYr+ygPMA3VIH
+	 F53An4qIZ4WQQ==
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ricardo Ribalda <ribalda@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Daniel Golle <daniel@makrotopia.org>, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+References: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+Subject: Re: [PATCH] spi: mediatek: Enable irq before the spi registration
+Message-Id: <167214860344.446872.17166503994226712534.b4-ty@kernel.org>
+Date: Tue, 27 Dec 2022 13:43:23 +0000
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12-dev-7ab1d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_125002_427154_E85BB924 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20221227_054328_562650_B4545485 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +74,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
+On Sun, 25 Dec 2022 09:37:12 +0100, Ricardo Ribalda wrote:
+> If the irq is enabled after the spi si registered, there can be a race
+> with the initialization of the devices on the spi bus.
+> 
+> Eg:
+> mtk-spi 1100a000.spi: spi-mem transfer timeout
+> spi-nor: probe of spi0.0 failed with error -110
+> Unable to handle kernel NULL pointer dereference at virtual address
+> 0000000000000010
+> ...
+> Call trace:
+>  mtk_spi_can_dma+0x0/0x2c
+> 
+> [...]
 
-We only ever call the SoC specific probe function from
-svs_platform_probe. No need to carry that function in a global
-datastructure around.
+Applied to
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
----
- drivers/soc/mediatek/mtk-svs.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 465b60a5cedc..5abf94aafbac 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -319,7 +319,6 @@ static const u32 svs_regs_v2[] = {
-  * @banks: svs banks that svs platform supports
-  * @rst: svs platform reset control
-  * @efuse_parsing: svs platform efuse parsing function pointer
-- * @probe: svs platform probe function pointer
-  * @efuse_max: total number of svs efuse
-  * @tefuse_max: total number of thermal efuse
-  * @regs: svs platform registers map
-@@ -336,7 +335,6 @@ struct svs_platform {
- 	struct svs_bank *banks;
- 	struct reset_control *rst;
- 	bool (*efuse_parsing)(struct svs_platform *svsp);
--	int (*probe)(struct svs_platform *svsp);
- 	size_t efuse_max;
- 	size_t tefuse_max;
- 	const u32 *regs;
-@@ -2347,11 +2345,10 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
- 	svsp->name = svsp_data->name;
- 	svsp->banks = svsp_data->banks;
- 	svsp->efuse_parsing = svsp_data->efuse_parsing;
--	svsp->probe = svsp_data->probe;
- 	svsp->regs = svsp_data->regs;
- 	svsp->bank_max = svsp_data->bank_max;
- 
--	ret = svsp->probe(svsp);
-+	ret = svsp_data->probe(svsp);
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--- 
-2.18.0
+Thanks!
 
+[1/1] spi: mediatek: Enable irq before the spi registration
+      commit: b24cded8c065d7cef8690b2c7b82b828cce57708
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
