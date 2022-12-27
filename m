@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 626ECC4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD179C4167B
 	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 14:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J/+msWmD/g1lZcf4oy0r+1hkk+U3OA6AiiaExjYdBco=; b=us0lY4+9XrI+p+
-	bkLTxRlTciPjDcThp9pC2sgp3UbJ3IzcRqwpuhDs45fVEaiiLl+DjggNOWiOeuqvTsiV5Pazyoeng
-	qtcNGFMjuiU2vsI0e6PLjmve7Zn+RZlL0RaTVbPkkFdXDZmGKRCIy1hbbxhH5zgn6rbNSypX6fGy3
-	A3WFiKZ5xxUdP9mRCe2H78P9/LTtjRAh+aqb8NKyT3aKSyCtikBzLr7gpAP3da2lO3ZEE3QCAp8ID
-	4sPZv3CT1LovPpx8m9rACs8KdqtSlWS7OQaT2NcDJD0U6M4rf9L2DR2PJ6G5Mp9I4waxyILrYYD2a
-	3x8nWfixt44QYKc63Q2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wu4+/ysy1Pzt6jWFfy9ST450nk1QbkSGcPcWerr8QPI=; b=MeGyxVJBOGWIlK0sOYvs3B7xRI
+	ebZT+iO6Xip0gsXag5Jhs7pOhx6j+fIs/rYWeqRQyc6DJsojSAJjj81VuSurJoZX9O2IyApqP9Dau
+	ijNHe939zI6pjNRE2SrvSJJof7BLOeeKMIZZt9LCkH/xirwSrTkZcQ/VEL5AEDMCnY8U54YFf+uLP
+	Yo9DBZxbFIHiB6od6gWmgzkVX7PjDjTVTDgttbgtz186/QvQi/TR2G5NEA73zalxU2h0MtRh4hyuW
+	3txnl5F5n8ty1NXPXAXTQnaX20D6+wkjLtkPUaCtv+ow7Wo7g20zHJ60lx9kwyWINoYVGDpVts5KA
+	chz7W+VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAeG-00DWwK-RG; Tue, 27 Dec 2022 14:09:44 +0000
+	id 1pAAeI-00DWxF-Fm; Tue, 27 Dec 2022 14:09:46 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAd1-00DWKz-59; Tue, 27 Dec 2022 14:08:31 +0000
+	id 1pAAd1-00DWJR-5A; Tue, 27 Dec 2022 14:08:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=J/+msWmD/g1lZcf4oy0r+1hkk+U3OA6AiiaExjYdBco=; b=Blpp9FiTGYTzanipAn93Zg+sDs
-	iDF1SJ2G63MwJDdveDLBtM9yH76cLEazwltPpQuMYsoQyIcyhBmB/ODi1+6J2PNPRjJL4zLq0XV0P
-	Fhfr8wx5ThXosUNj74s9m+Q+OFPsUnGoVkvUZzDkBlA3/7gKv01kbXxRi7QjcrEwuteI=;
+	bh=Wu4+/ysy1Pzt6jWFfy9ST450nk1QbkSGcPcWerr8QPI=; b=SHQ43VMNc5LoDG+o6N4TLX9TOD
+	zkYv9dxNbhCN/i/VFStXwETNNXhNR2tTAtUsF/GrXzvU70r7QBMdSUqlcLxdhKSaXDLWthXgBIIwG
+	sd75zTFVu4Jj5SPzDXFXsVLfyEvXxmfIaqs5Y9yalQrZsCFoHw1muOanIEIQO24PT0uI=;
 Received: from p200300daa720fc040c81ba64b0a9b1e5.dip0.t-ipconnect.de ([2003:da:a720:fc04:c81:ba64:b0a9:b1e5] helo=Maecks.lan)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 	(Exim 4.94.2)
 	(envelope-from <nbd@nbd.name>)
-	id 1pAAck-00C3RB-Hn; Tue, 27 Dec 2022 15:08:10 +0100
+	id 1pAAcj-00C3RB-1x; Tue, 27 Dec 2022 15:08:09 +0100
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org,
 	John Crispin <john@phrozen.org>,
@@ -48,19 +48,21 @@ To: netdev@vger.kernel.org,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net v2 4/5] net: ethernet: mtk_eth_soc: drop generic vlan rx offload, only use DSA untagging
-Date: Tue, 27 Dec 2022 15:08:06 +0100
-Message-Id: <20221227140807.48413-4-nbd@nbd.name>
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net v2 2/5] net: ethernet: mtk_eth_soc: work around issue with sending small fragments
+Date: Tue, 27 Dec 2022 15:08:04 +0100
+Message-Id: <20221227140807.48413-2-nbd@nbd.name>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20221227140807.48413-1-nbd@nbd.name>
 References: <20221227140807.48413-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_060827_458900_F32A7054 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20221227_060827_420832_5CB1691C 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,198 +74,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Through testing I found out that hardware vlan rx offload support seems to
-have some hardware issues. At least when using multiple MACs and when receiving
-tagged packets on the secondary MAC, the hardware can sometimes start to emit
-wrong tags on the first MAC as well.
+When lots of frames are sent with a number of very small fragments, an
+internal FIFO can overflow, causing the DMA engine to lock up lock up and
+transmit attempts time out.
 
-In order to avoid such issues, drop the feature configuration and use the
-offload feature only for DSA hardware untagging on MT7621/MT7622 devices which
-only use one MAC.
+Fix this on MT7986 by increasing the reserved FIFO space.
+Fix this on older chips by detecting the presence of small fragments and use
+skb_gso_segment + skb_linearize to deal with them.
 
-Tested-By: Frank Wunderlich <frank-w@public-files.de>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 101 ++++++++------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |   1 -
- 2 files changed, 39 insertions(+), 63 deletions(-)
+v2: add proper fix for MT7986, limit workaround to NETSYS v1
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 38 +++++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  2 +-
+ 2 files changed, 37 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8245cddccb5a..214cd80a19a0 100644
+index e3de9a53b2d9..8245cddccb5a 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2042,29 +2042,16 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
- 			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
+@@ -1441,12 +1441,28 @@ static void mtk_wake_queue(struct mtk_eth *eth)
+ 	}
+ }
  
--		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
--			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
--				if (trxd.rxd3 & RX_DMA_VTAG_V2)
--					__vlan_hwaccel_put_tag(skb,
--						htons(RX_DMA_VPID(trxd.rxd4)),
--						RX_DMA_VID(trxd.rxd4));
--			} else if (trxd.rxd2 & RX_DMA_VTAG) {
--				__vlan_hwaccel_put_tag(skb, htons(RX_DMA_VPID(trxd.rxd3)),
--						       RX_DMA_VID(trxd.rxd3));
--			}
--		}
--
- 		/* When using VLAN untagging in combination with DSA, the
- 		 * hardware treats the MTK special tag as a VLAN and untags it.
- 		 */
--		if (skb_vlan_tag_present(skb) && netdev_uses_dsa(netdev)) {
--			unsigned int port = ntohs(skb->vlan_proto) & GENMASK(2, 0);
-+		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2) &&
-+		    (trxd.rxd2 & RX_DMA_VTAG) && netdev_uses_dsa(netdev)) {
-+			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
- 
- 			if (port < ARRAY_SIZE(eth->dsa_meta) &&
- 			    eth->dsa_meta[port])
- 				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
--
--			__vlan_hwaccel_clear_tag(skb);
- 		}
- 
- 		skb_record_rx_queue(skb, 0);
-@@ -2889,29 +2876,11 @@ static netdev_features_t mtk_fix_features(struct net_device *dev,
- 
- static int mtk_set_features(struct net_device *dev, netdev_features_t features)
++static bool mtk_skb_has_small_frag(struct sk_buff *skb)
++{
++	int min_size = 16;
++	int i;
++
++	if (skb_headlen(skb) < min_size)
++		return true;
++
++	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++)
++		if (skb_frag_size(&skb_shinfo(skb)->frags[i]) < min_size)
++			return true;
++
++	return false;
++}
++
+ static netdev_tx_t mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
  {
--	struct mtk_mac *mac = netdev_priv(dev);
--	struct mtk_eth *eth = mac->hw;
- 	netdev_features_t diff = dev->features ^ features;
--	int i;
- 
- 	if ((diff & NETIF_F_LRO) && !(features & NETIF_F_LRO))
- 		mtk_hwlro_netdev_disable(dev);
- 
--	/* Set RX VLAN offloading */
--	if (!(diff & NETIF_F_HW_VLAN_CTAG_RX))
--		return 0;
--
--	mtk_w32(eth, !!(features & NETIF_F_HW_VLAN_CTAG_RX),
--		MTK_CDMP_EG_CTRL);
--
--	/* sync features with other MAC */
--	for (i = 0; i < MTK_MAC_COUNT; i++) {
--		if (!eth->netdev[i] || eth->netdev[i] == dev)
--			continue;
--		eth->netdev[i]->features &= ~NETIF_F_HW_VLAN_CTAG_RX;
--		eth->netdev[i]->features |= features & NETIF_F_HW_VLAN_CTAG_RX;
--	}
--
- 	return 0;
- }
- 
-@@ -3211,30 +3180,6 @@ static int mtk_open(struct net_device *dev)
+ 	struct mtk_mac *mac = netdev_priv(dev);
  	struct mtk_eth *eth = mac->hw;
- 	int i, err;
+ 	struct mtk_tx_ring *ring = &eth->tx_ring;
+ 	struct net_device_stats *stats = &dev->stats;
++	struct sk_buff *segs, *next;
+ 	bool gso = false;
+ 	int tx_num;
  
--	if (mtk_uses_dsa(dev) && !eth->prog) {
--		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
--			struct metadata_dst *md_dst = eth->dsa_meta[i];
--
--			if (md_dst)
--				continue;
--
--			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
--						    GFP_KERNEL);
--			if (!md_dst)
--				return -ENOMEM;
--
--			md_dst->u.port_info.port_id = i;
--			eth->dsa_meta[i] = md_dst;
--		}
--	} else {
--		/* Hardware special tag parsing needs to be disabled if at least
--		 * one MAC does not use DSA.
--		 */
--		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
--		val &= ~MTK_CDMP_STAG_EN;
--		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
--	}
--
- 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
- 	if (err) {
- 		netdev_err(dev, "%s: could not attach PHY: %d\n", __func__,
-@@ -3273,6 +3218,39 @@ static int mtk_open(struct net_device *dev)
- 	phylink_start(mac->phylink);
- 	netif_tx_start_all_queues(dev);
+@@ -1468,6 +1484,18 @@ static netdev_tx_t mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 		return NETDEV_TX_BUSY;
+ 	}
  
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return 0;
++	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2) &&
++	    skb_is_gso(skb) && mtk_skb_has_small_frag(skb)) {
++		segs = skb_gso_segment(skb, dev->features & ~NETIF_F_ALL_TSO);
++		if (IS_ERR(segs))
++			goto drop;
 +
-+	if (mtk_uses_dsa(dev) && !eth->prog) {
-+		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
-+			struct metadata_dst *md_dst = eth->dsa_meta[i];
-+
-+			if (md_dst)
-+				continue;
-+
-+			md_dst = metadata_dst_alloc(0, METADATA_HW_PORT_MUX,
-+						    GFP_KERNEL);
-+			if (!md_dst)
-+				return -ENOMEM;
-+
-+			md_dst->u.port_info.port_id = i;
-+			eth->dsa_meta[i] = md_dst;
++		if (segs) {
++			consume_skb(skb);
++			skb = segs;
 +		}
-+	} else {
-+		/* Hardware special tag parsing needs to be disabled if at least
-+		 * one MAC does not use DSA.
-+		 */
-+		u32 val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
-+		val &= ~MTK_CDMP_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
-+
-+		val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
-+		val &= ~MTK_CDMQ_STAG_EN;
-+		mtk_w32(eth, val, MTK_CDMQ_IG_CTRL);
-+
-+		mtk_w32(eth, 0, MTK_CDMP_EG_CTRL);
 +	}
 +
- 	return 0;
- }
+ 	/* TSO: fill MSS info in tcp checksum field */
+ 	if (skb_is_gso(skb)) {
+ 		if (skb_cow_head(skb, 0)) {
+@@ -1483,8 +1511,14 @@ static netdev_tx_t mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 		}
+ 	}
  
-@@ -3599,10 +3577,9 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
- 		val = mtk_r32(eth, MTK_CDMP_IG_CTRL);
- 		mtk_w32(eth, val | MTK_CDMP_STAG_EN, MTK_CDMP_IG_CTRL);
--	}
+-	if (mtk_tx_map(skb, dev, tx_num, ring, gso) < 0)
+-		goto drop;
++	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
++		skb_list_walk_safe(skb, skb, next) {
++			if ((mtk_skb_has_small_frag(skb) && skb_linearize(skb)) ||
++			    mtk_tx_map(skb, dev, tx_num, ring, gso) < 0) {
++				stats->tx_dropped++;
++				dev_kfree_skb_any(skb);
++			}
++		}
  
--	/* Enable RX VLan Offloading */
--	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-+		mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
-+	}
- 
- 	/* set interrupt delays based on current Net DIM sample */
- 	mtk_dim_rx(&eth->rx_dim.work);
-@@ -4203,7 +4180,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 		eth->netdev[id]->hw_features |= NETIF_F_LRO;
- 
- 	eth->netdev[id]->vlan_features = eth->soc->hw_features &
--		~(NETIF_F_HW_VLAN_CTAG_TX | NETIF_F_HW_VLAN_CTAG_RX);
-+		~NETIF_F_HW_VLAN_CTAG_TX;
- 	eth->netdev[id]->features |= eth->soc->hw_features;
- 	eth->netdev[id]->ethtool_ops = &mtk_ethtool_ops;
- 
+ 	if (unlikely(atomic_read(&ring->free_count) <= ring->thresh))
+ 		netif_tx_stop_all_queues(dev);
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index ce8044e8b3f7..00d9a3badf9a 100644
+index 628ed72911bd..ce8044e8b3f7 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -48,7 +48,6 @@
- #define MTK_HW_FEATURES		(NETIF_F_IP_CSUM | \
- 				 NETIF_F_RXCSUM | \
- 				 NETIF_F_HW_VLAN_CTAG_TX | \
--				 NETIF_F_HW_VLAN_CTAG_RX | \
- 				 NETIF_F_SG | NETIF_F_ALL_TSO | \
- 				 NETIF_F_IPV6_CSUM |\
- 				 NETIF_F_HW_TC)
+@@ -246,7 +246,7 @@
+ #define MTK_CHK_DDONE_EN	BIT(28)
+ #define MTK_DMAD_WR_WDONE	BIT(26)
+ #define MTK_WCOMP_EN		BIT(24)
+-#define MTK_RESV_BUF		(0x40 << 16)
++#define MTK_RESV_BUF		(0x80 << 16)
+ #define MTK_MUTLI_CNT		(0x4 << 12)
+ #define MTK_LEAKY_BUCKET_EN	BIT(11)
+ 
 -- 
 2.38.1
 
