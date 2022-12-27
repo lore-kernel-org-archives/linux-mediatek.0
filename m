@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C19C10F1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 14:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 940FFC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 14:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uVR2uPfM2wpTa8jMNvsapEg7hJdOqwYrYDayzI7tjh8=; b=t1IuoDf+XRNWBBKPlN8oY3lzaW
-	fKjFrGzF5vUeykva/aEtHXB7BnTqMc4xTV3D4hmFJfeosnUEWR1pJEcagfuK7tlw3jCwQPqP9TpYf
-	w6lIHD60gCXoUDk5TziOSaJZn+1AT6D8xyj9szuIk0zIa7/F07pW+Kpz1vUxrqWmuTy9Sb++GMW4L
-	bxzAksKl7p/jwcXAL6YdUzsSuNmPAKTNSroLQZ7HeTrl4MQ9w0thX/cHgrw60R3Ad5WbdmvJzMMQw
-	4ZUHcvDyG1NJhlkfE4Cqj3/fQAUspNRwpu+Yoq2HVaF78EWkEEt/1exyShU1tOcDoZWxjTLQ+5qCa
-	1Z7RDYYg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/eX4/CTCtjyiWC4V7OvOX6dzNZbFQNR2QZZFW5KPupw=; b=0vpRBDC/vu/41cvBXS8L13Ct70
+	jp31CVxbWypMsi+6GC0pUzaACFvkZd4R6NKor9/m7OMN83GeDDtphjHAOZFXVgck0fWjItqZviLMh
+	G9nuGrYPendcfFNkhgw+VNnOq5k0Beq6pWYlWCYuGjaWRsQoIyoulOl5g+kQQpr8Z0DpLKWAaZTxp
+	ShfV/5Jq9FPIZg5lWYCvdGY0zadWvPTah+88zVjLjisoXavwIo4GYzcuACAwCpxHvM35hxuaw/qys
+	H5DXhkoE66J58D/v+z7Hp2IcRR4Qu8nH7MyKSvw14NYgbrg9kqLVGA34r68xEuIzkg9DGd2lt9mZi
+	I0pP2k3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAdQ-00DWVv-8t; Tue, 27 Dec 2022 14:08:52 +0000
+	id 1pAAde-00DWb9-57; Tue, 27 Dec 2022 14:09:06 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAd1-00DWIw-5B; Tue, 27 Dec 2022 14:08:28 +0000
+	id 1pAAd1-00DWIx-59; Tue, 27 Dec 2022 14:08:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:
-	Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=uVR2uPfM2wpTa8jMNvsapEg7hJdOqwYrYDayzI7tjh8=; b=P8VuvCqwvpww21pEHzsjSlOyCc
-	nDjtBtNnBCVJwgYUjnHNbRVJXNxPy7Ct3vgJkDPi99SkqAK0/B07Rzyxki/gU5Dfa7DwOO+niz5pL
-	yU0SLnceA4BeHQ3tRQoXdIdYgU7W8JF8hodHTAFiRC8TZVFOVRKOY+bnA3pxgC3RJAjo=;
+	bh=/eX4/CTCtjyiWC4V7OvOX6dzNZbFQNR2QZZFW5KPupw=; b=BtblUvXNpMM+uRjnZub7/HH0ZN
+	JyGVd7GXvimWLXPGJllc61VE4q54FXGlsGT0icVkju52lu0ok2Nz4GQDCOOtfdgHw+gtAfoWeULLB
+	fKzA0KJU2n8q+4sBtKu1O/IOl6xEz1sZ807p6kIyRv22vF82L6j+hYiNWXA+KCd4zCXY=;
 Received: from p200300daa720fc040c81ba64b0a9b1e5.dip0.t-ipconnect.de ([2003:da:a720:fc04:c81:ba64:b0a9:b1e5] helo=Maecks.lan)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 	(Exim 4.94.2)
 	(envelope-from <nbd@nbd.name>)
-	id 1pAAci-00C3RB-BH; Tue, 27 Dec 2022 15:08:08 +0100
+	id 1pAAcj-00C3RB-P2; Tue, 27 Dec 2022 15:08:09 +0100
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org,
 	John Crispin <john@phrozen.org>,
@@ -48,21 +48,22 @@ To: netdev@vger.kernel.org,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH net v2 1/5] net: ethernet: mtk_eth_soc: account for vlan in rx header length
-Date: Tue, 27 Dec 2022 15:08:03 +0100
-Message-Id: <20221227140807.48413-1-nbd@nbd.name>
+Subject: [PATCH net v2 3/5] net: ethernet: mtk_eth_soc: fix flow_offload related refcount bug
+Date: Tue, 27 Dec 2022 15:08:05 +0100
+Message-Id: <20221227140807.48413-3-nbd@nbd.name>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221227140807.48413-1-nbd@nbd.name>
+References: <20221227140807.48413-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_060827_256551_06A98A14 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221227_060827_255796_6F4E6B41 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,28 +78,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The network stack assumes that devices can handle an extra VLAN tag without
-increasing the MTU
+Since we call flow_block_cb_decref on FLOW_BLOCK_UNBIND, we need to call
+flow_block_cb_incref unconditionally, even for a newly allocated cb.
+Fixes a use-after-free bug
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Fixes: 502e84e2382d ("net: ethernet: mtk_eth_soc: add flow offloading support")
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   | 21 ++++++++++++-------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index ee06406e9ff6..628ed72911bd 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -34,7 +34,7 @@
- #define MTK_QDMA_RING_SIZE	2048
- #define MTK_DMA_SIZE		512
- #define MTK_MAC_COUNT		2
--#define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
-+#define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + ETH_FCS_LEN)
- #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
- #define MTK_DMA_DUMMY_DESC	0xffffffff
- #define MTK_DEFAULT_MSG_ENABLE	(NETIF_MSG_DRV | \
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index 81afd5ee3fbf..412d215b9571 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -554,6 +554,7 @@ mtk_eth_setup_tc_block(struct net_device *dev, struct flow_block_offload *f)
+ 	struct mtk_eth *eth = mac->hw;
+ 	static LIST_HEAD(block_cb_list);
+ 	struct flow_block_cb *block_cb;
++	bool register_block = false;
+ 	flow_setup_cb_t *cb;
+ 
+ 	if (!eth->soc->offload_version)
+@@ -568,16 +569,20 @@ mtk_eth_setup_tc_block(struct net_device *dev, struct flow_block_offload *f)
+ 	switch (f->command) {
+ 	case FLOW_BLOCK_BIND:
+ 		block_cb = flow_block_cb_lookup(f->block, cb, dev);
+-		if (block_cb) {
+-			flow_block_cb_incref(block_cb);
+-			return 0;
++		if (!block_cb) {
++			block_cb = flow_block_cb_alloc(cb, dev, dev, NULL);
++			if (IS_ERR(block_cb))
++				return PTR_ERR(block_cb);
++
++			register_block = true;
+ 		}
+-		block_cb = flow_block_cb_alloc(cb, dev, dev, NULL);
+-		if (IS_ERR(block_cb))
+-			return PTR_ERR(block_cb);
+ 
+-		flow_block_cb_add(block_cb, f);
+-		list_add_tail(&block_cb->driver_list, &block_cb_list);
++		flow_block_cb_incref(block_cb);
++
++		if (register_block) {
++			flow_block_cb_add(block_cb, f);
++			list_add_tail(&block_cb->driver_list, &block_cb_list);
++		}
+ 		return 0;
+ 	case FLOW_BLOCK_UNBIND:
+ 		block_cb = flow_block_cb_lookup(f->block, cb, dev);
 -- 
 2.38.1
 
