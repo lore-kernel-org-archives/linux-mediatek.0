@@ -4,44 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8429EC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 21:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 306A9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 23:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Jmp8NDmF70Ond7FA1WBESOc2bUOBaGwvXYCpWDNLU18=; b=GPmJfE2OsyhENx
-	On/6XCxxc+WVVLR2eAAY0D5fcwMwPLPUyrT4JOwqo0THRxsQs8Q9WrJ7YsKCWlhNLlfiX2rEjfKOv
-	PatjPjUxcrXEk9S0PMZDuv/t+3JfA909WFwCozTtmWaTWipZXxCNxowSTznpn+pvxHzVarXTe/E50
-	WDN3ii34AxLwkUBSPJWu7UmkSod46Q9q2hNywMbw+FY7Dvo5nw2bZOWcJYffyiBOi5j73x1j0qwL8
-	SH9QI1yNZa1wPBnWI1byDVoe2qedwQptI0yYYk2OlBda7PuV4JwCPlSG9oP1IGBFevTP0lxS8MZGS
-	JdL4Oy4oDy9zPZF6vo4A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PEAs1cY2KUGfDWF8DZJhmKi3UDdwVzcJA87E/SYrVOE=; b=y4KqdXdqeNyPyzGS+4x/LWojcP
+	C0x0m89Xl9ZVFeTAmQRjaFHEFDWjitHS8opkrINoawjCzwI41Q3HHC95q7gYp9RclDOjWf7loh3jt
+	kUxDBF+veMvP716kcD1pnzMxiU4Ot/1uN80e+IKRpZTZMH0M1hjkvB/nCsi9g5MZBYglVux5Xph/3
+	XBlRMjQLyrkkf4iOZrHeAwJfe8zr39saaGoP0lTO2bDCm3XSBiWv/lMMOgdIdr+Jg8zFpcCrn81d3
+	dKqF8phJD0jhbSr2IJFheQDFA0lDx7/eOCZrGdlQlVxvt8BahxN3ytvXrXjBbkflC+Imr1Wom3phT
+	NvgIj/bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAHxK-00Gf51-TX; Tue, 27 Dec 2022 21:57:54 +0000
-Received: from [59.16.217.6] (helo=savemail.savezone.co.kr)
+	id 1pAJ6Z-00H8Qq-9L; Tue, 27 Dec 2022 23:11:31 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAHx6-00Gf2P-SJ
-	for linux-mediatek@lists.infradead.org; Tue, 27 Dec 2022 21:57:52 +0000
-Received: from savezone.co.kr (156.0.212.38) by savemail.savezone.co.kr
- (2002:3b10:d906::3b10:d906) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 28 Dec 2022 06:57:30 +0900
-From: Jacques BOUCHEX <sqladmin@savezone.co.kr>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Re : Bonjour,
-Date: Tue, 27 Dec 2022 22:56:15 +0100
-Message-ID: <20221227225615.417F609781D0B5CD@savezone.co.kr>
+	id 1pAJ2f-00H6Qc-OJ; Tue, 27 Dec 2022 23:07:31 +0000
+Received: from mwalle01.sab.local (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 696AF169D;
+	Wed, 28 Dec 2022 00:07:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1672182446;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PEAs1cY2KUGfDWF8DZJhmKi3UDdwVzcJA87E/SYrVOE=;
+	b=mtu1oTBaxSngOLJAMfQndS7QsiKJFcYMtxVy/Vf3h9ET6EQmvAN9NTeV9uvL5debjMGv8c
+	LcP9XcxB/6EcWrvVwEhOs9ijS22CCQyFKGLbEKSgik0owwnYgfVXqpgTUA4HZdtpVBb7H7
+	v5nMCDpoHXlCUPKZMpempFS4ykEFxhFYFjmWHHfx+B9dRgwXBFJ+P0LejAaVmG2heL4liv
+	fr8HpYAfgXekauNSI26OaansaGepJ1NLKTntcG+CMYfhX/NO6+O1wJSB3YAStScb1omZul
+	AroLnuQwESfFBDCwasVEMZ1ti4zIFGEkGXYR6zxfC5emKzgU47zvhRYYyJJ+mQ==
+From: Michael Walle <michael@walle.cc>
+Date: Wed, 28 Dec 2022 00:07:19 +0100
+Subject: [PATCH RFC net-next v2 03/12] net: mdio: mdiobus_register: update
+ validation test
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-ClientProxiedBy: savemail.savezone.co.kr (2002:3b10:d906::3b10:d906) To
- savemail.savezone.co.kr (2002:3b10:d906::3b10:d906)
+Content-Transfer-Encoding: 7bit
+Message-Id: <20221227-v6-2-rc1-c45-seperation-v2-3-ddb37710e5a7@walle.cc>
+References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
+In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
+To: Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>,
+ Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Michael Walle <michael@walle.cc>
+X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_135751_691014_D50CE829 
-X-CRM114-Status: UNSURE (  -1.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221227_150730_053169_425638B3 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -53,26 +82,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: jacques_bouchex@yahoo.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bonjour,
-D=C3=A9sol=C3=A9 pour cette fa=C3=A7on de vous contacter, je viens de voir =
-votre=20
-profil et j'ai pens=C3=A9 que vous =C3=A9tiez la personne dont j'avais=20
-besoin. En bref, je m'appelle Jacques BOUCHEX, d'origine=20
-fran=C3=A7aise. Je suis atteint d'une maladie grave qui me condamne =C3=A0=
-=20
-une mort certaine, un cancer du cerveau, et je dispose d'une=20
-somme de vingt-cinq millions cinq cent mille euros (25.500.000=20
-euros) que je souhaite remettre =C3=A0 un tiers fiable et honn=C3=AAte pour=
-=20
-son bon usage. J'ai une entreprise qui importe de l'huile rouge=20
-en France et dans d'autres pays. J'ai perdu ma femme et deux=20
-adorables enfants il y a 10 ans dans un malheureux accident de la=20
-route. J'aimerais faire don de cette somme avant de mourir car=20
-mes jours sont compt=C3=A9s. Veuillez m'envoyer un courriel =C3=A0=20
-l'adresse suivante : jacques_bouchex@yahoo.com Que le Seigneur=20
-vous b=C3=A9nisse.
+From: Andrew Lunn <andrew@lunn.ch>
+
+Now that C45 uses its own read/write methods, the validation performed
+when a bus is registers needs updating. All combinations of C22 and
+C45 are supported, but both read and write methods must be provided,
+read only busses are not supported etc.
+
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+v2:
+ - [al] be consistent with other checks
+ - [mw] make the test a bit easier to read
+---
+ drivers/net/phy/mdio_bus.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+index bde195864c17..d14d7704e895 100644
+--- a/drivers/net/phy/mdio_bus.c
++++ b/drivers/net/phy/mdio_bus.c
+@@ -526,8 +526,18 @@ int __mdiobus_register(struct mii_bus *bus, struct module *owner)
+ 	int i, err;
+ 	struct gpio_desc *gpiod;
+ 
+-	if (NULL == bus || NULL == bus->name ||
+-	    NULL == bus->read || NULL == bus->write)
++	if (!bus || !bus->name)
++		return -EINVAL;
++
++	/* An access method always needs both read and write operations */
++	if ((bus->read && !bus->write) ||
++	    (!bus->read && bus->write) ||
++	    (bus->read_c45 && !bus->write_c45) ||
++	    (!bus->read_c45 && bus->write_c45))
++		return -EINVAL;
++
++	/* At least one method is mandatory */
++	if (!bus->read && !bus->read_c45)
+ 		return -EINVAL;
+ 
+ 	if (bus->parent && bus->parent->of_node)
+
+-- 
+2.30.2
 
