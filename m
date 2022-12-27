@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52D2EC4167B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 20:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3EB0C4167B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 20:37:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gBA1csH2zpTCPXc/mOCJje46UG2/G02CQjnuR61mbD4=; b=GXWMt4ujgx3t4/ppQhxLbBB+I2
-	gmqZNSru0HGFoKzglWbHsTDHdb0F1qv3furpouRU65lK7G03pd+UkE2D+hfFLcByo8mecREX3yg2p
-	kNwMsd4HGhPrji6NIjN2/nG1IrDP3qqoUahz1Zh7Gv2dbtgobs20Oz7YotBCQCN9lVoFW5Sbe/0oi
-	tT8VuggEln9o1zSQZ0WCRJw9WMyqy2Z7oJichdhdwi/gZVHu7MX+0TkXBI6pVCzJloilrzH+uJCeW
-	05ASIyofILWxO/Ulel9xJ8AZ6EH1oIKAJJ9PU1Y2ofOyP5OiSedF/24ihQK+WNhxooxWtpDIZYkVU
-	K4Hu1UqA==;
+	bh=6vfMk4MAKNCsmOCnfH/VZL3ItO3i4nKUMKVw++nyM1s=; b=v2aGEe/1Mse4TPqL5Zv+XwMitB
+	znQbUGdWTeHLAorZxRmwHHqOBop/rqIo6bVk8c93sosyJV+4k/QeYmZJzYiaEKGQZ5C9fcCEC9iVy
+	LYqgcnjPYN9Kh6KqQkMWsknobVK/HGugv+JZ7KBzmIrTVMrivhuxfZ64e/+oSbmcEy3HQfdEmHON5
+	CAfzQekskMKZWah5mJpiqXxCEnEwFatBltsHysqhleHhe7v2d0Er4HPPq0ICateCPQOeaBW7L/HuU
+	RILPTdI7QBboVfOxMC6mAszeNfyGSDhrgk27CjFEefQRkZcYB7wFT4Iwhz/nfcU0MRPtwBlLet8DK
+	dj9DrbNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAGdx-00G5el-Ga; Tue, 27 Dec 2022 20:33:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pAGhC-00G7Hv-IA; Tue, 27 Dec 2022 20:37:10 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAGdV-00G5V3-MH; Tue, 27 Dec 2022 20:33:26 +0000
+	id 1pAGeN-00G5w1-0A; Tue, 27 Dec 2022 20:34:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3BF6D6122C;
-	Tue, 27 Dec 2022 20:33:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B521C43398;
-	Tue, 27 Dec 2022 20:33:19 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id AA5E5B811F8;
+	Tue, 27 Dec 2022 20:34:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BED6C433D2;
+	Tue, 27 Dec 2022 20:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672173200;
-	bh=I8m2fSy540HdqyYEIxo83HseOdiuUlSL2etr2oXtefo=;
+	s=k20201202; t=1672173252;
+	bh=lXpXGDVABBxF0Wo9jihuxkhviG7fucblA67dNbJIpLo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RQJcuKAkaxcmqI1LLcaVXy6ZX1bV5z6Q3S9QNZfpHlFTUe7pplheo3J8XPUlXsHkJ
-	 8RcPs1iEeH+wFWH7dkXBCxThhZ/yumdQ4r/es3F6y37WzSf5+3Y1waB/1Dkbn8D3FX
-	 qFEB6exyvYoSbbcKjOjqlukDUZ63br6Nje8kgieWtr2U0AhdmUmjIyusZ5HRCIdWox
-	 MYTyspCstLE7ihZhRLrgsnHQOf/ikvjni0TeF+TvmiQW5HKWgzFvp3ep2whF2alNGv
-	 Htzv9qqhS1hxxqcSaLir7RsepgZZ42t/XxXOs0Xj0auKDpwr+0Ovq8tPOHrSUFE2Zl
-	 vVaKB1t8Wmadw==
+	b=ZJwuXYtbT6jPX/2d5hzcZc+nxRdGS4UmqO+Pv5j0CDvyQFc6BWaOH3y8B3EFTFhEx
+	 vZWaJIm1JPG5h+g7portQxLmhPzGxBrm0dXKiZSGsiPKy4DmeDZJ8s4lkv6JwzC8O8
+	 Eh+jwWRgMf8bwGVMPV5Ay6Got9bzNkkX9UzWw7hKJ9RDUgQ6Bw5+xNf4P2f64+G8uv
+	 uqsg52883STiQxBk1pkuLhF2s92FSjQkNU9x4LyGvtFRjG4c6jh4vfKBMQNFUIhmDk
+	 n45QpQbMXQD6Hkb9E+9FAw/YPT2ReWh72of7JX2GztXG+S25z6CmWLFALGKJLH/5fA
+	 AbJ8lAq60zDNQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -56,18 +56,18 @@ Cc: Ricardo Ribalda <ribalda@chromium.org>,
 	iommu@lists.linux.dev,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 20/28] iommu/mediatek: Fix crash on isr after kexec()
-Date: Tue, 27 Dec 2022 15:32:41 -0500
-Message-Id: <20221227203249.1213526-20-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.0 20/27] iommu/mediatek: Fix crash on isr after kexec()
+Date: Tue, 27 Dec 2022 15:33:35 -0500
+Message-Id: <20221227203342.1213918-20-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221227203249.1213526-1-sashal@kernel.org>
-References: <20221227203249.1213526-1-sashal@kernel.org>
+In-Reply-To: <20221227203342.1213918-1-sashal@kernel.org>
+References: <20221227203342.1213918-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_123324_885697_AFF8C355 
+X-CRM114-CacheID: sfid-20221227_123430_166793_12917BA8 
 X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,10 +109,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 2ab2ecfe01f8..3d913ab5029c 100644
+index 7e363b1f24df..b5ccdc134e84 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -454,7 +454,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+@@ -452,7 +452,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
  		fault_larb = data->plat_data->larbid_remap[fault_larb][sub_comm];
  	}
  
