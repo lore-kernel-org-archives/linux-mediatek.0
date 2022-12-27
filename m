@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F930C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 10:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6799C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 10:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Date:Content-Type:Subject:To:From:Message-ID:MIME-Version:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bHOkwMF9BYGhkMtp/8kbzXG4DbyBdCjjFJsU5MNHFRY=; b=VbmlDTVlFkFpwts+L2MfxyyCr1
-	ZTS4vGEgBamP/gXqpvfKtF31wpmaC08LHKEOqHxXkSXzF/GxqDk++8pNWwP3KEz6SwAl0ODJCUZjH
-	/9FsP5blhJ7G6RZZp7SDRoW4/qzeWEsh1PxrU4giCA/grjjqMh6vXt9+hcEk39iftRiA52ypPdMCP
-	iQ99mL5P6cNAztXOoXe95Ftq4wGJ+WgtI2P1ukpYEGK6yiuCeilrHlsBhvTV7zbdIu61HV3kyCEMn
-	iAwlLjkD0PS2V7z5B9OWXWmYcdkmDyYdrbWcBN0xcMwIjqEMLUT/9GjelJxbyYCNCAvXj7uYqKc9u
-	rDaAvOMw==;
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tTj5I1i68LO8RobWCTZZuorDb6BIl3n9iRLEfHco9f4=; b=0dqAI2r3JlVjQQ5jqycljeItiK
+	t5Jk0Al/rtrXDdcbcdlo/57eNhyPxGHLKBprkePu8lEzER5BCDzEtLHO8gk8Fcz739vxnNefy17Kf
+	Nc7i7qrJ/EyhE1GbQER59VlPOcqDzjXTp3uKKkyrl+7Jz0CpDoH/eYIfH8en9c2f+O70/IY9WOVEG
+	8NXARKG7rxC8hcBLJ5XjatMlLpYIe/t22lhHZrAWc6RFIljKe9VfdqElg6WVRTag3+Hh2DGq/yKD6
+	fd0nr5BCZXlX0VqIWBxTDC3AVzdZ9lzc1jIFycNluhnQ8TEqv/YO34kN0pXDege50Q8/m7/m3Ix0r
+	x2EGEXiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA7CZ-00C5PO-Vu; Tue, 27 Dec 2022 10:28:55 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1pA7E6-00C5zB-EU; Tue, 27 Dec 2022 10:30:30 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA7CK-00C5G6-77
-	for linux-mediatek@lists.infradead.org; Tue, 27 Dec 2022 10:28:50 +0000
+	id 1pA7Db-00C5o8-4d; Tue, 27 Dec 2022 10:30:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1672136902;
-	bh=HHhEOTVbu87OD90CVd5kNLsPiJ+kXgqHJC7zg+mL7/g=;
-	h=X-UI-Sender-Class:From:To:Subject:Date;
-	b=QWfFY1iRdT7dFpENs4Rtpp/BuUzIcUzu3GgblzBIani1YWL3KO1fHnnMoAfTavAi7
-	 FiMGLuZfOOfMAtqPxl6M2+/U3XPBCfAl9A9Pb2S6Ygj2YotItIY0MK8pi3KrX7fZVL
-	 6hrFkchnp76nxjvixufjsGj3DiDqGkg5OyvPGbU/U8UFY2e8uTCymb/CJuH9c3fOyj
-	 C08Hy/mAdYLdXEqpAVCqf20bux6QD0/oM8V9dg34hVFxSk9dLnberDE08yaD+NV0MI
-	 Hqs508mMFb8vNfEw55PykA7aaAGBX7Y6A+tWdestECF4PQbK0x14g2l7ci0aMiuwMC
-	 cfEtDoRK3lnFA==
+	s=s31663417; t=1672136978;
+	bh=6rUL/0fqLXUc3EXcoTbmuRQCiIi6QAilAchLciXsdAw=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=r+YiZvZlnUxMyhBIQFkg9VK1CsEsBPCu6gPQmPLEQAbDGpbAgmHGBNxB9+1Wb6M8d
+	 bup5FzjJkrbh1fMYLiyeFtuDwJa6ZkHx0E+STBoBmQLLSf4a7EBZmaXYTnyqq15MK6
+	 bih6f6Upn/2wdI00+suCEySy+JEh086fjGTuOr71z2z7vLwlI0gNKqv9/QQRrajwr2
+	 cXjHb/p4UJPo/MrkCPMTfwfNWb0jtaiEVQfgMStgHTrt/o4A+ZUNKX6xZMRIGbLwWI
+	 w5r8HysTrW/d6YI606cN0756PxNSy1S7CL4J9npulX21/9iXbrjfPpZEFkmcmPijUz
+	 xVlGB6lU/wpfA==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [217.61.153.252] ([217.61.153.252]) by web-mail.gmx.net
  (3c-app-gmx-bap27.server.lan [172.19.172.97]) (via HTTP); Tue, 27 Dec 2022
- 11:28:22 +0100
+ 11:29:38 +0100
 MIME-Version: 1.0
-Message-ID: <trinity-bd6bf7f8-5dbc-42fc-891b-8bfc802a1a2c-1672136902605@3c-app-gmx-bap27>
+Message-ID: <trinity-6777c8ee-36ac-4564-8542-f74d3a942a91-1672136978587@3c-app-gmx-bap27>
 From: Frank Wunderlich <frank-w@public-files.de>
-To: linux-mediatek@lists.infradead.org, Ricardo Ribalda
- <ribalda@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Mark Brown <broonie@kernel.org>
-Subject: [BUG] 6.2-rc1 spi-mt65xx broken on mt7986
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich
+ <linux@fw-web.de>, linux-mediatek@lists.infradead.org, Kishon Vijay Abraham
+ I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lorenzo
+ Pieralisi <lpieralisi@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, Jianjun Wang <jianjun.wang@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, linux-pci@vger.kernel.org, Bjorn
+ Helgaas <bhelgaas@google.com>, devicetree@vger.kernel.org
+Subject: Aw: Re: [next v7 8/8] arm64: dts: mt7986: add Bananapi R3
 Content-Type: text/plain; charset=UTF-8
-Date: Tue, 27 Dec 2022 11:28:22 +0100
+Date: Tue, 27 Dec 2022 11:29:38 +0100
 Importance: normal
 Sensitivity: Normal
+In-Reply-To: <trinity-256904b6-bbb5-4424-9686-50ec7fa14f26-1672134220733@3c-app-gmx-bap27>
+References: <20221127114142.156573-1-linux@fw-web.de>
+ <20221127114142.156573-9-linux@fw-web.de> <Y6dMWFy7gChG88j0@makrotopia.org>
+ <trinity-256904b6-bbb5-4424-9686-50ec7fa14f26-1672134220733@3c-app-gmx-bap27>
+X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:uzM8P9RDVqa0VKW0KGbYlEFsTLLikWlIc3kZeCZI3WMTCZsR6Ll1M6/pv9JbNFpd93LL8
- Y1fJdgr4bfA3JZb4ay9OuFrZBPBo8/L63GrgRpfjyACjCwaIjuRFVHWsueGgWhr/InTId14/zDd0
- R76gzydBrvQakxwjvEgXi86gA66y54IdjpjPs7JjB1npPpVwCt5jengCHFZVV8oCRvMnIYmhzgKF
- G4Bh7xA/tI47ZueYjUnMRRVTBYJ5D0J3HAB9SyM/ilig8C7VswPtCKWmfC1yw3VrRhTBfj9IFz4p
- Ug=
-UI-OutboundReport: notjunk:1;M01:P0:JRUfuHp++es=;uiIf5yFDVyymTb+YuUTD6awl1r7
- IldEICND1zJ51gmYe6RPyDphLXvhPX6qJeDBeNGUCG+a1/QgsX1QVW0Pt1dbAkrBUv9yUTM2F
- d+RftSloOFsROCkSYaLLQ3P8I3vNs1ygXbSPgY8YoSnDwvsf5StlT7XhQ26hi34g+Adg2oUG4
- IDL/aATKQjnt3aFyeyZavTo3AeMJ6b9AWwtTORFANZ34uoNlirqIoso8n2aWEt5Ie41m8jLrs
- L7TEUuuJnKA4osWp7wG0UB0Vew8/ClkoWZHqgi3YvlZVskX9WBhd1NjkirlePMRCHfyLtgWvH
- hbfnC42/W8mlaH2BQuH2s6Sd+kmIw6N4xupbYonAejyzfGsT+6pgN4apfdTLZAY6Xp6kk0Ida
- qa30vXotOiw3alEtAGqwwQGXxO5VrrcTLYf9zESpKOSpczuuSWofZRTMSntCUzN5++VpHbHob
- 8au3eqa/qcE0zlsyK6IB3mSUE4m0KAPdc1R+ZPuHk1ZMGsOUl2EmxjpCKjcGjS7BJg3vMdH4j
- OZ6EhEGqWN3ZJSIKTgjrVUTCmc8vSzsk5tspXC8ZRVwSXj9m2+y1dkb40FetGaBeYLlR05KLi
- 6cjuI9Xg7pBAoyaHWCG+u5LTm5YHmkJ7CmvTg3zkwnPeEFslws3iBYFdh00gwNitIDh2sb1MQ
- mPK8nG+Pls3AT6tDRg1lVDtUeQ4XDUyeD0A73UDmQ/sLVbM5VcZQ7Y1JFg2X2SuoQ6TOt7oxE
- h70DMb+IxNT84em0VQ5ZFuUmrtHrm95coAEIgEfHjAsg+z1Pj9ibyYmPY7tJdhR+dxxoX6XSw
- crvnu8EYZH+mzo0k4wUYVBgQ==
+X-Provags-ID: V03:K1:uoMc7nMOIJIrLTMKyLHi5Zf+w/mb4Fzoluw4dxHqiG7Oh3NCdu3bQPysJDKjXeSdF3pWn
+ jaWkxXdLvNm01Hn/aewnT06IsBqEfmbeCdLtU+ilvh7Nvs5l2AOup2GSF8gppkuGSLyU1iSxGiv+
+ ptXmk1z2u14AHo0epOf9V04OMa20adKrX+D38DcBs6YA/e2rffYiPf6hNVrblfNU6Q8qlHy1svFl
+ FcSO5I8fpT3Bm/fGPcLdiGgk4WFUT8NQRt3q3Fb+zatO03cpqNqj3lWpRWG9hHwQNVG2DrXuL1YE
+ Tw=
+UI-OutboundReport: notjunk:1;M01:P0:zRngNs/wW1c=;wpD4ghfb7HZxstpqtJ4IJmHdX7N
+ Nh97dEZkWW/RqQx7esRtmZ/sUkd5Z7pn7kzVkfTKFrprUoZ8RYp8I8kjw9SfGMq17fGTL6teZ
+ xNEE5R5GD9wo9ZYbcwsY8iCr/nkj6AV8L5j2Zt8xwJDFoezR7BDmknG4R3j4milCUSgJOdyi/
+ cIzq+a9DCoQLMcR1Z0wjpmY/ZiMQy5JVt1e8J3340hf5RTTs2gujA5Kf4T0/wLTYEOeWc/1Lh
+ GnxQZuRatOn35fBKz7I10efG2DJUqmCah6Ab/ohbSEZqlNM7ZmbxVj4lulKoMrTIG0UuwjUmu
+ QJZ6tbNcIXDKsJCrqNX9PW1CvD3tySRFkXbS4V5ifIsoL0fAHXy1USexOWPXRDva1TAi8OIWi
+ a8KkRFoU+3N5QXEghfPevzMmkf+f7WeSLEG+ySQYFC3fyJ6iFp1t9oxEv9cZXxYUGZeCURbUe
+ L42ylPAQg3xqLQgR82+aXdFWKEYTVfGPBqgekqye/ZhedDaIu+hkMivudxlY6pOB+Y/vy0h94
+ x1fS3kz+qVRejgFh6fKMxDq+NTUgRMBpNxaKqBAHXQyDf/8Fdvzq/ug8EGuKyDR6PAPQ8gDhr
+ EvaTpEPQPX6pt4qBGEWYO8SxLgjDQL5zr2VqYDoCkXKGufX6YxVPG4nG0xm2iw15fHHb1FeSf
+ FSi4gbxb5+5ZQ19xfx2v4QEpeeOtNHBWrmy1asxToSqD3FcI+HUX8MXJEJxhUkd+1nnvcugAD
+ K8G749+8bBgWSqokMRKk4onu7yBdK09ngsSuA2d/e0d1Zk3F+bOrgWAQXBJIEeWOdAVxtHCwy
+ 4jJA7C8+M/YaDnXtB/4ZYFug==
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_022840_754708_B1E2176C 
-X-CRM114-Status: UNSURE (   4.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221227_023002_221231_42CB5D70 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,12 +101,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+looks like i've found it:
 
-the following commit breaks SPIM-NOR on mt7986:
+when reverting these 2 (latter alone was not enough and seems not fixing t=
+he timeout as shown in my trace)
+
+Revert "spi: mediatek: Enable irq when pdata is ready"  (HEAD -> 6.2-rc)
+Revert "spi: spi-mtk-nor: Add recovery mechanism for dma read timeout"
+
+so this breaks spi on mt7986:
 
 c6f7874687f7 2022-11-28 spi: mediatek: Enable irq when pdata is ready
 
+have sent bug-report to mailinglist and author/reviewer/maintainer...
+
+regards Frank
+
+
+> Gesendet: Dienstag, 27. Dezember 2022 um 10:43 Uhr
+> Von: "Frank Wunderlich" <frank-w@public-files.de>
+>
+> at first look it seems it is needed...as i get this trace with 6.2:
+>
 > [    2.145931] pc : mtk_spi_can_dma+0x0/0x34
 > [    2.155212] lr : mtk_spi_interrupt+0x74/0x360
 >
@@ -101,10 +130,16 @@ c6f7874687f7 2022-11-28 spi: mediatek: Enable irq when pdata is ready
 > [    2.097310] spi-nor: probe of spi0.0 failed with error -110
 > [    2.102930] Unable to handle kernel read from unreadable memory at vi=
 rtual address 0000000000000010
-
-after reverting the commit, no trace happens and nor is recognized on my b=
-oard
-
-regards Frank
+>
+> but i get the same trace when reverting the cs-gpios change....seems som=
+ething is broken in 6.2-rc1
+>
+> 6.1 works without the bogus cs-gpios (and the mt7531 interrupt-change)..=
+.
+>
+> have tried reverting this commit, but it does not fix the issue:
+>
+> 8330e9e8269b 2022-12-07 spi: spi-mtk-nor: Add recovery mechanism for dma=
+ read timeout
 
 
