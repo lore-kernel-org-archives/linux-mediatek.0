@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B0EC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 13:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C575FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 14:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p0yNIP6MpjaHVWcIxbkqNM0AdAjCHiKnAY/z3tGomfQ=; b=Aqd0fraGVG82vLAP081CYqf5Ml
-	V4iIwY5Hj3Dif6XiZM4hzZUrjwzAZT4X3IPG1K9cA1YcLx7H7QVMRaYCzWotTO1AokCgJIVokmXni
-	s8DnQmP6mEXuRtdADaoDoQdco4x51+/NoGFdQaH95KxUGgqk/3e7ISJXZD7F+RzR3Y0OEvTtFlvKM
-	DxCPgByyrYDMXs70QjsBeL8YAPreaBzWLZSQ7w1uvBleFhNolJ510dp44et1OSO5j/zRdjTyXjTa5
-	Ahxj/jLwr8hDzdZsWVI9GDz1+bnLc9XFJ/sXNfpLcdSKLJ08O5C2nCZ95f2Bq/eGwyhqNwWXVcXSs
-	gSYeKwdA==;
+	bh=NhkhKuz1T8rY3m+BTG+T8ROPfsy5F+fsbAj5AjslqQI=; b=xbqXyT7c2dR22szVj8o+bkzdFQ
+	l2zThij7qLGacySVIDiI6oNvZxCflcnyR5MPm7fFz3EuVmChJnl28zvlBqqmcYb6fwe4q5+/wq4g4
+	IMSALHBXiz17mYjBSSwBQprOBDQ9txes96G/FZl8XQ/RYupkqe0JvUnPuPAhQLvvK/nzXIeDCiTxl
+	Qf+TTIjHrFqG5juMhUAxO87cF1fi6Vjo3PQIO4cpgozYGyU1MQt5lxxg49J2N4KIUp8N26aJfVhay
+	F8F9hamWsT9YQnh8P3xLxuBrfaRAzZRGCzJOkTctx3xiTrzJSsr4vIh2kypkGqMK0hf7kAOg9IBwt
+	gT6e82CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAF5-00DNnv-EZ; Tue, 27 Dec 2022 13:43:43 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1pAAdP-00DWVT-8e; Tue, 27 Dec 2022 14:08:51 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAAEq-00DNgr-Au; Tue, 27 Dec 2022 13:43:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B4B58B81038;
-	Tue, 27 Dec 2022 13:43:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4B2BC433D2;
-	Tue, 27 Dec 2022 13:43:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672148605;
-	bh=MWHvjZhXqCXibASs7/ji0PRKFTI00JPAvF8xc89D7D8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=tIF6qIL8Y0pR593s3NX3Tr29bkjIHPsh+00HkRkm1ZOFp7ltkYgwiE7MKrXRKkA0r
-	 r+m8y3/xHBHqRegi7W+eHENxQxGcJbhhWqHxTTPm3nvICgCmym6e+xO9FqvE+PD8CP
-	 Jo0dMbESDEOTQoRaB2qanG8VqL1L36wHESRk8ph7DmPinNpIumLvZQrj1C6S8tQirA
-	 Q29+aq8d7SouvpPfFKQ8h85ztI66+zLhaAwbMgri3sKw7uoqPJZJvKSnCAwROdqlZn
-	 q5zAEtCQ8jfjmZeD/xGyowLqaBNycOi2v7voNPpM3M3Ytj8mDV6F/PYr+ygPMA3VIH
-	 F53An4qIZ4WQQ==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ricardo Ribalda <ribalda@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Daniel Golle <daniel@makrotopia.org>, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org
-In-Reply-To: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
-References: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
-Subject: Re: [PATCH] spi: mediatek: Enable irq before the spi registration
-Message-Id: <167214860344.446872.17166503994226712534.b4-ty@kernel.org>
-Date: Tue, 27 Dec 2022 13:43:23 +0000
+	id 1pAAd1-00DWJU-53; Tue, 27 Dec 2022 14:08:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=NhkhKuz1T8rY3m+BTG+T8ROPfsy5F+fsbAj5AjslqQI=; b=bHRRVkl6OIg31PWjSg1UuCP0XI
+	uFWEUyviKbGEiVg7WZg8K+xAq7B7Vqs0z067i3HUfUzQ8woB7ZoMh7v2xxf/k7LB5iMpGGEkomW+4
+	1ELdEvlxY2VYilCRYjKkxAB7w4AXf2SyLOTxdhyAwIW6Zfta4NRremPVSZ6a84a87BAc=;
+Received: from p200300daa720fc040c81ba64b0a9b1e5.dip0.t-ipconnect.de ([2003:da:a720:fc04:c81:ba64:b0a9:b1e5] helo=Maecks.lan)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1pAAcl-00C3RB-A3; Tue, 27 Dec 2022 15:08:11 +0100
+From: Felix Fietkau <nbd@nbd.name>
+To: netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net v2 5/5] net: ethernet: mtk_eth_soc: ppe: fix L2 offloading with DSA untagging offload enabled
+Date: Tue, 27 Dec 2022 15:08:07 +0100
+Message-Id: <20221227140807.48413-5-nbd@nbd.name>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221227140807.48413-1-nbd@nbd.name>
+References: <20221227140807.48413-1-nbd@nbd.name>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12-dev-7ab1d
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_054328_562650_B4545485 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20221227_060827_252889_53BA9ED5 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +77,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 25 Dec 2022 09:37:12 +0100, Ricardo Ribalda wrote:
-> If the irq is enabled after the spi si registered, there can be a race
-> with the initialization of the devices on the spi bus.
-> 
-> Eg:
-> mtk-spi 1100a000.spi: spi-mem transfer timeout
-> spi-nor: probe of spi0.0 failed with error -110
-> Unable to handle kernel NULL pointer dereference at virtual address
-> 0000000000000010
-> ...
-> Call trace:
->  mtk_spi_can_dma+0x0/0x2c
-> 
-> [...]
+Check for skb metadata in order to detect the case where the DSA header is not
+present.
 
-Applied to
+Fixes: 2d7605a72906 ("net: ethernet: mtk_eth_soc: enable hardware DSA untagging")
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 +++---
+ drivers/net/ethernet/mediatek/mtk_ppe.c     | 5 ++++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 214cd80a19a0..b54248bce501 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2039,9 +2039,6 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			skb_checksum_none_assert(skb);
+ 		skb->protocol = eth_type_trans(skb, netdev);
+ 
+-		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
+-			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
+-
+ 		/* When using VLAN untagging in combination with DSA, the
+ 		 * hardware treats the MTK special tag as a VLAN and untags it.
+ 		 */
+@@ -2054,6 +2051,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 				skb_dst_set_noref(skb, &eth->dsa_meta[port]->dst);
+ 		}
+ 
++		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
++			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
++
+ 		skb_record_rx_queue(skb, 0);
+ 		napi_gro_receive(napi, skb);
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 269208a841c7..e366a83cf516 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -8,6 +8,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/if_ether.h>
+ #include <linux/if_vlan.h>
++#include <net/dst_metadata.h>
+ #include <net/dsa.h>
+ #include "mtk_eth_soc.h"
+ #include "mtk_ppe.h"
+@@ -700,7 +701,9 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+ 		    skb->dev->dsa_ptr->tag_ops->proto != DSA_TAG_PROTO_MTK)
+ 			goto out;
+ 
+-		tag += 4;
++		if (!skb_metadata_dst(skb))
++			tag += 4;
++
+ 		if (get_unaligned_be16(tag) != ETH_P_8021Q)
+ 			break;
+ 
+-- 
+2.38.1
 
-Thanks!
-
-[1/1] spi: mediatek: Enable irq before the spi registration
-      commit: b24cded8c065d7cef8690b2c7b82b828cce57708
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
