@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3348C4167B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDF1C4332F
 	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 12:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,52 +12,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZYhjIXpUxLFLAxdNKrtJBR6ZBD1h3ZRO4PIhBpFBTnM=; b=NxU+qXKmc3AKfHtNmiQcLOHR1L
-	pRMaTVarEbS/Kbbp685zQT0s5T8UQc2alU8Q9smMB3Q5Ns8sNfrulTIipx37p+7FLu4kfTisKgJmL
-	IzkRcfufHxB8GiA8FzAkbvjWw1Xmn80L2dqnbdtx1jSEWvy2395caLxBBXrQhGl3xzDImuOhgIEak
-	fyt8VZmpKSp77Jrh42rLGJsAgKvaLwp+ZY4yO7cD8lD3kMnstcOryhDU9YlILBzPjFPAnd5hyWIcp
-	XGhGM5lg2MgZ9SUf42Hh7I6cqsZk2U/r3/2DjkH8x9fFcz8CGZUk+rCknTHRC5ReW6ZWyHZtZphrt
-	gUXP3y4w==;
+	bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=; b=eLrdH8WVshTstREDbtzOFJTxpS
+	D76dURBf5oJHF8OwRV1yWoh6bzJY8DyhSRAso9OPai/YPY2V4DKaIJXdmW37luV5EY00aaF0kmaII
+	n86o0aup8pcPIgQaMtKXNgVBK0/EszbkP9GCg3U2adWDntV9YHUneeeLlbdAbO1QyvzFGJZFTmtCl
+	FOs2M/BqNE7TWvOnGwSR8vRrLyqVWR+hrg1K4JRkUlFwoHUtxh0qjrzozAnmXIXLdfJmNDRdspcqk
+	H0dRKpDWDzK8MCbGRf52blMJVEn0Us3rqKbA39Q5YSht0S/+abCVfYhHJ5DqKZlDa48UReN7wF38D
+	aiiYshqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA9PK-00D10L-CL; Tue, 27 Dec 2022 12:50:14 +0000
+	id 1pA9PH-00D0z2-Ar; Tue, 27 Dec 2022 12:50:11 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA9PG-00D0y1-Bo; Tue, 27 Dec 2022 12:50:10 +0000
+	id 1pA9PG-00D0y0-Bo; Tue, 27 Dec 2022 12:50:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=ZYhjIXpUxLFLAxdNKrtJBR6ZBD1h3ZRO4PIhBpFBTnM=; b=g5Js6k/iu0bELPwjxVR08a/1o2
-	b/CdL4oWfy9AqFvCHjFVEB0FSXnhiJcsl2UvfxWzB+wiG26p+AftRxi7pIychG0DeE9MjulRaHwIs
-	tCr/zTJGQHAZvensnb2vZj3/6kgJXG0L8ShXEnMO3iFTHBXkL0XI+JyZMoraeH22IZBNQlh0lfy3a
-	R4A57Usj4yHHHVNAA3FUPxlThNuYJPZtKRer24hwHcLne0F1stA1/3xCsRvdvsoNhzcniNreuElWs
-	XPRS/w294ks1k8we8LswcPPTwA92EzkrjqC/uhsq+lHOPvq9Dhu9nLDhv7auvdeoW9xRp3mhK/8Mw
-	psLh9W2g==;
+	bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=; b=dlDUlQ39IYdoJZPnEegUNPsLkn
+	vmPeUGpz1JtQEBDlDWCp7/12u64zVh2+f+aG8Ylccwtz6/iRp4cGe03o8qUBhqNZbKc65761Qf9h9
+	jtPyKEBfiwDqr9PGKldHwyoZScyskmwBxZaoRdQA+Zk2lNEd0cBxZXgwS6AB1GCtJNjqVW/1OLA9B
+	k1yN4FEwGsnIohb0iVYFXA/5kBtsi4AuSfa6VjzoEvdOW9blQ8+aCwTwc7oN/8zLlyqnNr6fNz4Yf
+	ulgO1aS3rO+p4wytEbkiISg+HR+CE5Xe6NQT4Da6lcca26Tw8hX20mBPgi5xsy0jwPivgpa4CbIQ7
+	PHZ/7ezA==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pA9P7-00Fe8Z-0r;
+	id 1pA9P7-00Fe8Y-0r;
 	Tue, 27 Dec 2022 12:50:05 +0000
-X-UUID: 81b8b75296b149aeada93fd68caf6888-20221227
+X-UUID: a38866a6c1fe4eed89703c3d5d6ee845-20221227
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZYhjIXpUxLFLAxdNKrtJBR6ZBD1h3ZRO4PIhBpFBTnM=;
-	b=f8Sfn4ap8N+FevHT8+MLt9yNpqdpMda9VOe0HIXr2gmhVgX7EpUoasCg8OG+DQdp/iAITpCFqqXbSzcmfiyCnyIzYWred7Hfo87tvG9Old/oaR6nJ6NecHQ1saEy1uqFuN/3UBJ5pr7IBQ1Iqnj/tsXeFpKJELSzDDRJpuVoC3Y=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vf6IcfalnyFtEwcYPBgscSxhCUGC67GQz9ghXYhk16o=;
+	b=qFeccW6lFSAIiGJu4jLLOIVZyxnZjEOCsjNVNIqmco8S7RltwXA01qMRQnwTc3PB3UT7SVsu+NmzfUumM2Mq35gJNcgwJcHJ8fYDIp7tkQrs1BM+cflMQjdqG5Ko/fDqAK6xHaYiQ+c3QUyjj4cks6QNq1wFZXx1TiRU84GSoH0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:62256967-9af5-4c8a-b1c8-8cd610caa2d7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:dcaaed0,CLOUDID:680e8a8a-8530-4eff-9f77-222cf6e2895b,B
+X-CID-O-INFO: VERSION:1.1.14,REQID:f57cb8b7-38e8-4db1-815c-40d5cc355c78,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:3cb618f4-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 81b8b75296b149aeada93fd68caf6888-20221227
+X-UUID: a38866a6c1fe4eed89703c3d5d6ee845-20221227
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <roger.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1838748789; Tue, 27 Dec 2022 05:49:53 -0700
+	with ESMTP id 1356506506; Tue, 27 Dec 2022 05:49:53 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 27 Dec 2022 20:09:17 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 27 Dec 2022 20:09:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.15 via Frontend Transport; Tue, 27 Dec 2022 20:09:17 +0800
@@ -70,9 +70,9 @@ CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 06/13] soc: mediatek: mtk-svs: delete superfluous platform data entries
-Date: Tue, 27 Dec 2022 20:09:07 +0800
-Message-ID: <20221227120914.11346-7-roger.lu@mediatek.com>
+Subject: [PATCH v2 03/13] soc: mediatek: mtk-svs: clean up platform probing
+Date: Tue, 27 Dec 2022 20:09:04 +0800
+Message-ID: <20221227120914.11346-4-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221227120914.11346-1-roger.lu@mediatek.com>
 References: <20221227120914.11346-1-roger.lu@mediatek.com>
@@ -80,8 +80,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_125002_427120_11593D8A 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20221227_125002_427154_E85BB924 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,106 +98,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <matthias.bgg@gmail.com>
 
-The platform name and efuse parsing function pointer are only used while
-probing the device. Use them from the svs_platform_data struct instead.
+We only ever call the SoC specific probe function from
+svs_platform_probe. No need to carry that function in a global
+datastructure around.
 
 Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 22 ++++++++++++----------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+ drivers/soc/mediatek/mtk-svs.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index bbec96696c55..308cd36a23fc 100644
+index 465b60a5cedc..5abf94aafbac 100644
 --- a/drivers/soc/mediatek/mtk-svs.c
 +++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -311,14 +311,12 @@ static const u32 svs_regs_v2[] = {
- 
- /**
-  * struct svs_platform - svs platform control
-- * @name: svs platform name
-  * @base: svs platform register base
-  * @dev: svs platform device
-  * @main_clk: main clock for svs bank
-  * @pbank: svs bank pointer needing to be protected by spin_lock section
+@@ -319,7 +319,6 @@ static const u32 svs_regs_v2[] = {
   * @banks: svs banks that svs platform supports
   * @rst: svs platform reset control
-- * @efuse_parsing: svs platform efuse parsing function pointer
+  * @efuse_parsing: svs platform efuse parsing function pointer
+- * @probe: svs platform probe function pointer
   * @efuse_max: total number of svs efuse
   * @tefuse_max: total number of thermal efuse
   * @regs: svs platform registers map
-@@ -327,14 +325,12 @@ static const u32 svs_regs_v2[] = {
-  * @tefuse: thermal efuse data received from NVMEM framework
-  */
- struct svs_platform {
--	char *name;
- 	void __iomem *base;
- 	struct device *dev;
- 	struct clk *main_clk;
- 	struct svs_bank *pbank;
+@@ -336,7 +335,6 @@ struct svs_platform {
  	struct svs_bank *banks;
  	struct reset_control *rst;
--	bool (*efuse_parsing)(struct svs_platform *svsp);
+ 	bool (*efuse_parsing)(struct svs_platform *svsp);
+-	int (*probe)(struct svs_platform *svsp);
  	size_t efuse_max;
  	size_t tefuse_max;
  	const u32 *regs;
-@@ -2009,7 +2005,7 @@ static bool svs_is_efuse_data_correct(struct svs_platform *svsp)
- 	svsp->efuse_max /= sizeof(u32);
- 	nvmem_cell_put(cell);
- 
--	return svsp->efuse_parsing(svsp);
-+	return true;
- }
- 
- static struct device *svs_get_subsys_device(struct svs_platform *svsp,
-@@ -2338,9 +2334,7 @@ static int svs_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	svsp->dev = &pdev->dev;
--	svsp->name = svsp_data->name;
+@@ -2347,11 +2345,10 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
+ 	svsp->name = svsp_data->name;
  	svsp->banks = svsp_data->banks;
--	svsp->efuse_parsing = svsp_data->efuse_parsing;
+ 	svsp->efuse_parsing = svsp_data->efuse_parsing;
+-	svsp->probe = svsp_data->probe;
  	svsp->regs = svsp_data->regs;
  	svsp->bank_max = svsp_data->bank_max;
  
-@@ -2351,6 +2345,12 @@ static int svs_probe(struct platform_device *pdev)
- 	if (!svs_is_efuse_data_correct(svsp)) {
- 		dev_notice(svsp->dev, "efuse data isn't correct\n");
- 		ret = -EPERM;
-+		goto svs_probe_free_efuse;
-+	}
-+
-+	if (!svsp_data->efuse_parsing(svsp)) {
-+		dev_err(svsp->dev, "efuse data parsing failed\n");
-+		ret = -EPERM;
- 		goto svs_probe_free_resource;
- 	}
- 
-@@ -2388,7 +2388,7 @@ static int svs_probe(struct platform_device *pdev)
- 	}
- 
- 	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
--					IRQF_ONESHOT, svsp->name, svsp);
-+					IRQF_ONESHOT, svsp_data->name, svsp);
- 	if (ret) {
- 		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
- 			svsp_irq, ret);
-@@ -2416,11 +2416,13 @@ static int svs_probe(struct platform_device *pdev)
- 	clk_disable_unprepare(svsp->main_clk);
- 
- svs_probe_free_resource:
--	if (!IS_ERR_OR_NULL(svsp->efuse))
--		kfree(svsp->efuse);
- 	if (!IS_ERR_OR_NULL(svsp->tefuse))
- 		kfree(svsp->tefuse);
- 
-+svs_probe_free_efuse:
-+	if (!IS_ERR_OR_NULL(svsp->efuse))
-+		kfree(svsp->efuse);
-+
- 	return ret;
- }
+-	ret = svsp->probe(svsp);
++	ret = svsp_data->probe(svsp);
+ 	if (ret)
+ 		return ERR_PTR(ret);
  
 -- 
 2.18.0
