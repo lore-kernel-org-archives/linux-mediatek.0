@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86152C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 23:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 493F5C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 23:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lgn0fUyj9IFSMk8AaMRWHgs4+wjSuyxk0Wk78bhVnA0=; b=C6K+Sj4G1AUDtbroyin5CF7KHe
-	rSfCy2lm97EUZw65FbvszMk8ItVC8QqTlk59eV+T/tsaQiUWrjybY1l/cz5qM9GJPgT4q8GEPsl+C
-	L6smheZGkJ8O47rsG+Pl62YgkxOlXLHMaqUd6ne6QBHC3jmpReSp3i7bC7kRWtV1LFYSlCxOGdUoR
-	VHsR8VRIId4FEQvQS36wYk0Ux9Li0Y8+xFJW4a/WJXSB8VsbMyugS5SM6UjRmk72DuRcUL57Zi6nF
-	zlN/bB2P28FqpO9iUorRwiaYNEoYoT1XBg/hm607nCLpifG29HmLMpJ3xQddJi876KtbVTvIXdVRW
-	buBOA1vA==;
+	bh=RO0MXmSJzEk+1zx4vJ29wns0CosdyJgZJOJENWjajGc=; b=fv/BkXglJoIKeQmswRfr5lFyoF
+	heDHqYcGgopKX/LqPfJkjWQh7pmNVTHyMOYVsHmEcCLezpWL0Nonl1rNouG78UhaZaugGaJQC8HqP
+	4NFLKMxqJviKvCbPfmvmz2P3XlRZj81uSjgkixIOInpD666N/deFItYErLGBua7Kdg9DIUlSWAtSt
+	lCkwsMTPyj2vQ2KsNv1PT96jzRHSpVZHeZJIdabnJXV+/BCQmxbGliJhZ4Pm8JgFAn5Sln2W9axuA
+	3G0KfzCYOIBs8ycG1CFiNyJq3g3awpYnmWqLHmV/JjobgNJ7RS8z4RfCuRdLMtYoQk3t6kl70MikI
+	3mhobfiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAJJX-00HEBD-8q; Tue, 27 Dec 2022 23:24:55 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pAJJk-00HEIp-NN; Tue, 27 Dec 2022 23:25:08 +0000
+Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAJ2j-00H6UY-MD; Tue, 27 Dec 2022 23:07:36 +0000
+	id 1pAJ2i-00H6U5-Ud; Tue, 27 Dec 2022 23:07:35 +0000
 Received: from mwalle01.sab.local (unknown [213.135.10.150])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id A15E416E4;
-	Wed, 28 Dec 2022 00:07:28 +0100 (CET)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 6A0FF16DE;
+	Wed, 28 Dec 2022 00:07:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1672182448;
+	t=1672182447;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Lgn0fUyj9IFSMk8AaMRWHgs4+wjSuyxk0Wk78bhVnA0=;
-	b=IG0HA2I8gt7HTMttS+b2tDKuI+ZaK9lzIPDjQBgMcPDv+Sb+AQ04m0EIUHjw0vVjK3qAfP
-	Jjc1a6hxYB7nXWgWzd4Mp/YFFEZj4pdgYbpDeRlP4y4pCCOkaHptZjaR5GoQfgoBvkPhen
-	uKC7DNiXTYMiJAJcMqpyIR2wpNjzJUvp6j7XXnTcleUDN+1nE6gepIOPcco06qgQU102HZ
-	3HyGptcDoFFK6PgavhIw+fZma1kC85QGmPShdRozl5NtLesMgWQCUwM/pMZ5NZiKwu1OHy
-	Hz2taTVz9lmvUkfLkI3tCAViCdGPkzBqusQnp0EOv8Y6i/BbkVIboWqtISCwMw==
+	bh=RO0MXmSJzEk+1zx4vJ29wns0CosdyJgZJOJENWjajGc=;
+	b=cYkMqjBQ7dPYmAfVqvYhpwUUd8PAVCQxNAv44EyS5NneWMCaFP2/jQxflBX576GAeO4jN3
+	oJ8kQsj589dVFjReDTPEFUy3sTTiOw1rfwUtVWMCX2+Qvk7jVh+iO9WIAW/51LTE08QL7s
+	hww9jRl3aRrSVrylqfVG0jYZsZNcNaEV/udoM3iGXcnZJ6NdAP1/RzvmOybXEl4Se6MlVG
+	pugns2OvZhW2L2IpeYqDRMuNEU8iw4LqTDn8c3eqA7Pk38UsuUPFb9+M/UJq97k4lGnpT2
+	KzwEYzMbJkQI8KW0EtoaLqHKJJKJSE2hhIf/SOjnC33OFAr98y5ofps8kuav5Q==
 From: Michael Walle <michael@walle.cc>
-Date: Wed, 28 Dec 2022 00:07:23 +0100
-Subject:  [PATCH RFC net-next v2 07/12] net: mdio: mvmdio: Convert XSMI bus to new API
+Date: Wed, 28 Dec 2022 00:07:21 +0100
+Subject: [PATCH RFC net-next v2 05/12] net: mdio: Move mdiobus_c45_addr() next
+ to users
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20221227-v6-2-rc1-c45-seperation-v2-7-ddb37710e5a7@walle.cc>
+Message-Id: <20221227-v6-2-rc1-c45-seperation-v2-5-ddb37710e5a7@walle.cc>
 References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
 In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
 To: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -68,8 +69,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Michael Walle <michael@walle.cc>
 X-Mailer: b4 0.11.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_150733_973157_42C19AA5 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20221227_150733_292383_6B2B3244 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,81 +87,51 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andrew Lunn <andrew@lunn.ch>
 
-The marvell MDIO driver supports two different hardware blocks. The
-XSMI block is C45 only. Convert this block to the new API, and only
-populate the c45 calls in the bus structure.
+Now that mdiobus_c45_addr() is only used within the MDIO code during
+fallback, move the function next to its only users. This function
+should not be used any more in drivers, the c45 helpers should be used
+in its place, so hiding it away will prevent any new users from being
+added.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/marvell/mvmdio.c | 24 ++++++++----------------
- 1 file changed, 8 insertions(+), 16 deletions(-)
+ drivers/net/phy/mdio_bus.c | 5 +++++
+ include/linux/mdio.h       | 5 -----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/marvell/mvmdio.c b/drivers/net/ethernet/marvell/mvmdio.c
-index ef878973b859..2d654a40af13 100644
---- a/drivers/net/ethernet/marvell/mvmdio.c
-+++ b/drivers/net/ethernet/marvell/mvmdio.c
-@@ -204,21 +204,17 @@ static const struct orion_mdio_ops orion_mdio_xsmi_ops = {
- 	.poll_interval_max = MVMDIO_XSMI_POLL_INTERVAL_MAX,
- };
+diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+index 20ba38a346fe..0b04ce3766c8 100644
+--- a/drivers/net/phy/mdio_bus.c
++++ b/drivers/net/phy/mdio_bus.c
+@@ -842,6 +842,11 @@ int __mdiobus_modify_changed(struct mii_bus *bus, int addr, u32 regnum,
+ }
+ EXPORT_SYMBOL_GPL(__mdiobus_modify_changed);
  
--static int orion_mdio_xsmi_read(struct mii_bus *bus, int mii_id,
--				int regnum)
-+static int orion_mdio_xsmi_read_c45(struct mii_bus *bus, int mii_id,
-+				    int dev_addr, int regnum)
- {
- 	struct orion_mdio_dev *dev = bus->priv;
--	u16 dev_addr = (regnum >> 16) & GENMASK(4, 0);
- 	int ret;
- 
--	if (!(regnum & MII_ADDR_C45))
--		return -EOPNOTSUPP;
--
- 	ret = orion_mdio_wait_ready(&orion_mdio_xsmi_ops, bus);
- 	if (ret < 0)
- 		return ret;
- 
--	writel(regnum & GENMASK(15, 0), dev->regs + MVMDIO_XSMI_ADDR_REG);
-+	writel(regnum, dev->regs + MVMDIO_XSMI_ADDR_REG);
- 	writel((mii_id << MVMDIO_XSMI_PHYADDR_SHIFT) |
- 	       (dev_addr << MVMDIO_XSMI_DEVADDR_SHIFT) |
- 	       MVMDIO_XSMI_READ_OPERATION,
-@@ -237,21 +233,17 @@ static int orion_mdio_xsmi_read(struct mii_bus *bus, int mii_id,
- 	return readl(dev->regs + MVMDIO_XSMI_MGNT_REG) & GENMASK(15, 0);
++static u32 mdiobus_c45_addr(int devad, u16 regnum)
++{
++	return MII_ADDR_C45 | devad << MII_DEVADDR_C45_SHIFT | regnum;
++}
++
+ /**
+  * __mdiobus_c45_read - Unlocked version of the mdiobus_c45_read function
+  * @bus: the mii_bus struct
+diff --git a/include/linux/mdio.h b/include/linux/mdio.h
+index 1e78c8410b21..97b49765e8b5 100644
+--- a/include/linux/mdio.h
++++ b/include/linux/mdio.h
+@@ -459,11 +459,6 @@ static inline int mdiodev_modify_changed(struct mdio_device *mdiodev,
+ 				      mask, set);
  }
  
--static int orion_mdio_xsmi_write(struct mii_bus *bus, int mii_id,
--				int regnum, u16 value)
-+static int orion_mdio_xsmi_write_c45(struct mii_bus *bus, int mii_id,
-+				     int dev_addr, int regnum, u16 value)
- {
- 	struct orion_mdio_dev *dev = bus->priv;
--	u16 dev_addr = (regnum >> 16) & GENMASK(4, 0);
- 	int ret;
- 
--	if (!(regnum & MII_ADDR_C45))
--		return -EOPNOTSUPP;
+-static inline u32 mdiobus_c45_addr(int devad, u16 regnum)
+-{
+-	return MII_ADDR_C45 | devad << MII_DEVADDR_C45_SHIFT | regnum;
+-}
 -
- 	ret = orion_mdio_wait_ready(&orion_mdio_xsmi_ops, bus);
- 	if (ret < 0)
- 		return ret;
- 
--	writel(regnum & GENMASK(15, 0), dev->regs + MVMDIO_XSMI_ADDR_REG);
-+	writel(regnum, dev->regs + MVMDIO_XSMI_ADDR_REG);
- 	writel((mii_id << MVMDIO_XSMI_PHYADDR_SHIFT) |
- 	       (dev_addr << MVMDIO_XSMI_DEVADDR_SHIFT) |
- 	       MVMDIO_XSMI_WRITE_OPERATION | value,
-@@ -302,8 +294,8 @@ static int orion_mdio_probe(struct platform_device *pdev)
- 		bus->write = orion_mdio_smi_write;
- 		break;
- 	case BUS_TYPE_XSMI:
--		bus->read = orion_mdio_xsmi_read;
--		bus->write = orion_mdio_xsmi_write;
-+		bus->read_c45 = orion_mdio_xsmi_read_c45;
-+		bus->write_c45 = orion_mdio_xsmi_write_c45;
- 		break;
- 	}
- 
+ static inline u16 mdiobus_c45_regad(u32 regnum)
+ {
+ 	return FIELD_GET(MII_REGADDR_C45_MASK, regnum);
 
 -- 
 2.30.2
