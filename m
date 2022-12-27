@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF2DCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 12:02:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C718C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Dec 2022 12:03:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WQJEN7FWc/2k6nF/wGz9/+FrC5L1b+8/SOmBbCgEa4o=; b=p494YneXUFJ5zYCMZgC2pJwM62
-	ygQLHzFvV0waCdajMWQX6EiQgJ3a8/PwA6RVNxLuaLOU0KkHMEKPTzVzmGulGvgiAJ7zpdOOVSB/E
-	rZpOHQGzVlU4Je2OhfDrq4EUWzDFfXN5wrdJ/Z/+nXHlL+2PZ1VqaZmUs02kJks9mXxPa7UoSLUdG
-	3/RX3ANTGQ9fIkspuYDglQ2nssGQZ3f2gmSFKFAMPkqlf4POKQuKc20t5GVcTgOdSb93n0JRAh6mL
-	uqnKnT6AWnxgiJ+FoJPuUs1yS/AAkF0hDykW/0RgPkDusbqUBPSjyC2DOZWydE3DR7/YHJFra15tJ
-	SyhnvWKg==;
+	bh=p0yNIP6MpjaHVWcIxbkqNM0AdAjCHiKnAY/z3tGomfQ=; b=orkV4kN3NnkddZGPKfwHElOafA
+	bYtD0SgdUujnwioE3Ok3OpgT/gD5OsPzEXvAlZTfovE6SyAlkmVocOlroL9muQmCrKEUAXtPNVlYJ
+	k26vM93yxa4FkWgZ+JoKfEcrtwAmCNQyUjixFb3ThdM5iTCONpbOZ1paT/iHqAo7//ONTaOIS9QMd
+	Zed3XBkUY9aU/vFql39xUCwRftQ1BmjN44ZuNCagoBePAoQbrVQdOVa5IUHof/WWwMwlU7q0urNWG
+	DQRWDbyIcp3DjbrqrmXlJYWNyWTAqLVM4/qVkDMnviTEWOEEXnwwVFhLP48u3ovpOuWZEzehx1irT
+	59hIjEHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA8bd-00CeCd-D1; Tue, 27 Dec 2022 11:58:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pA8ci-00CeeP-6E; Tue, 27 Dec 2022 12:00:00 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pA8a9-00CdgQ-Fd; Tue, 27 Dec 2022 11:57:43 +0000
+	id 1pA8ai-00Cdsd-UW; Tue, 27 Dec 2022 11:58:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BC85061013;
-	Tue, 27 Dec 2022 11:57:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33125C433EF;
-	Tue, 27 Dec 2022 11:57:15 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 24237B80F93;
+	Tue, 27 Dec 2022 11:57:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48F15C433EF;
+	Tue, 27 Dec 2022 11:57:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672142240;
-	bh=Tp797qKymqBv9WjfLeXEP16pI60mkQzwoax0c7aWd4w=;
+	s=k20201202; t=1672142273;
+	bh=MWHvjZhXqCXibASs7/ji0PRKFTI00JPAvF8xc89D7D8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=h5PqXQt+1dOSdfqT0sUbOR6JLvDmP4bByJjBGkaFm75wKOFpxrJzF7nc4Dr7JAWFI
-	 fKusaXiCtsWq9WS3gWWr7EmLaiCyxKc7Vc5DfdIc6qpaA8go4rtlaDLFU5CuCuin9h
-	 QjqH0PWpSB+zbTNrLS/Nwz0fs+0A6cu1+qWfm1fvc1vnWl/VYchGh5/NIxVC50Euyp
-	 elnh+wER6z/eexITr9fGXBat1jYnR9XPc51xhHRdXD9JjmVjMIsBMl8oxAk9PtRiHV
-	 FjQO9BNm7Iu1jygJKsKUBbHI9IpqmfjEfQojTW7Yo9qHCprSxZ7dWlkjDEBZ9PuMny
-	 YYWell7aWyiTA==
+	b=XM/8z0a45B6yUWd7xT3hiXC4zWIB54DuzDwZIcSpMYLn6a76XZGm86Ge8jBR8XwMF
+	 7YXiMtcbVx5r6RV8N3YAs4JJEfndGdWWrt3A6VOiBwCMNUB9jOcJWbx0xIY/6bIjQZ
+	 TbkRao9okje45BY8i/2tfuALwz/JAP+rOtJ2+N4CpRj53/4jO9QiMfFVYB9QadmXMh
+	 WfzCMUvXiWSUSvOyk99lryaZnSMMdt4ZuCSKqRuBcclTcp4thyAmZz/P3Y63iDt646
+	 V++MOhThhrdFlyMqsncqkCz0VQEq/EXECfFv0Vm9gT8ZY+vSLByzGaCnaeArE0QAbs
+	 z4xRQYIwJMJEA==
 From: Mark Brown <broonie@kernel.org>
-To: YC Hung <yc.hung@mediatek.com>
-Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+To: Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chunxu Li <chunxu.li@mediatek.com>,
- Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
- sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Curtis Malainey <cujomalainey@chromium.org>
-In-Reply-To: <20221215061046.16934-1-yc.hung@mediatek.com>
-References: <20221215061046.16934-1-yc.hung@mediatek.com>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: mt8195: remove a redundant
- comparison of sram
-Message-Id: <167214223584.82924.11453521857555977092.b4-ty@kernel.org>
-Date: Tue, 27 Dec 2022 11:57:15 +0000
+ Ricardo Ribalda <ribalda@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Daniel Golle <daniel@makrotopia.org>, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+References: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
+Subject: Re: [PATCH] spi: mediatek: Enable irq before the spi registration
+Message-Id: <167214227202.88639.2335851712877417463.b4-ty@kernel.org>
+Date: Tue, 27 Dec 2022 11:57:52 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.12-dev-7ab1d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221227_035736_199043_F88E4231 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20221227_035758_272537_72804E81 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +74,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Dec 2022 14:10:46 +0800, YC Hung wrote:
-> DSP SRAM is not used for audio shared buffer between host and DSP so
-> TOTAL_SIZE_SHARED_SRAM_FROM_TAIL is zero. Remove the definition and
-> redundant comparison to fix coverity "unsigned compared against 0".
+On Sun, 25 Dec 2022 09:37:12 +0100, Ricardo Ribalda wrote:
+> If the irq is enabled after the spi si registered, there can be a race
+> with the initialization of the devices on the spi bus.
 > 
+> Eg:
+> mtk-spi 1100a000.spi: spi-mem transfer timeout
+> spi-nor: probe of spi0.0 failed with error -110
+> Unable to handle kernel NULL pointer dereference at virtual address
+> 0000000000000010
+> ...
+> Call trace:
+>  mtk_spi_can_dma+0x0/0x2c
 > 
+> [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
 Thanks!
 
-[1/1] ASoC: SOF: mediatek: mt8195: remove a redundant comparison of sram
-      commit: 3f58ff6b53c11773b1bd564082fae37d48e0cc40
+[1/1] spi: mediatek: Enable irq before the spi registration
+      commit: b24cded8c065d7cef8690b2c7b82b828cce57708
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
