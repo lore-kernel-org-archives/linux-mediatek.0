@@ -4,63 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D15AAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 08:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF7EC46467
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 08:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hTIBEWfUEwvi8Ni7b5PaoSl4qonL92kVD6YGJarC3dk=; b=BIGgeRBLd+3ZbvxvwQw++a/tXc
-	FeZHoCV765ukJ7YBzh8vlwk5dg40Ep0q3JCsnKVeM4saPXKo3gOTLsIuMic1JXqI7eoEs3UqzWv0z
-	NQMN3J4LOVevqvLbqGO2Yyx0ExRMK9cjJbAb5zYKS9IAWQjC++GkRIluSLvuYF1ivbFPWV5s/4dpL
-	pl1hglQfFn+GY8kaMH9120IaoYUsT/j3IZwQjc92aiPs/D54z1kvirvnXioA7qp7R+DmpaNHoCE3V
-	zkDw47ASGnl79EieLVzJFZtMzWs9s1XAcTlN8dnACPykIQKzaTxpqFUDVt6UeLDXH5KslwwUrclcR
-	zYx910Lw==;
+	bh=Xf1g6m2wSSYkxja2mmT0kfCPsNwG64PKQczUalAJj+U=; b=LfMRtJxPuRrmCbFwtt92DRdKV1
+	hhugnyIUozduCizxKLlvTBxkAfb9hjEVPObGoBN1DGI9mzfApZGa4mvHIL7/S/mQmM/9YJz912LIE
+	AXpF3HSAL0+EaO5Y8VKwKC3kBO1kFHRNJCKKm/hxtWRWhue/dRDxDcToHE5Jjr7QIOt2qj5Ryuw/p
+	7aNggSU4mPPTop7Z1WEmerijgHnAiW/QCWs/aQOYrDwwx18GrFv8V/lB4K7aVlQD++GIG/qboeRtG
+	lEYuwIpPHv0B9tQUmubqirdcFx6lAzVPAlQLu4gXYTyOBaXS009NM/NyAgUudrLQgumau82p8z3f0
+	pmtd6AZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pARWK-0036ve-DY; Wed, 28 Dec 2022 08:10:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pARqC-003GQu-Ba; Wed, 28 Dec 2022 08:31:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pARWF-0036pv-2k; Wed, 28 Dec 2022 08:10:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=hTIBEWfUEwvi8Ni7b5PaoSl4qonL92kVD6YGJarC3dk=; b=BwSTdsHG29N5PET9dbha+gTVct
-	YsWP95oYs8/nen5tIWKBN/LeVOtsUUBym87GV5w/AmcVUrLnYXrePa/PeWtdEsJlWmqVHHj6opuQl
-	7kwdiTJsyxnVxyxJryj0LQ/OwSadjPHrzc5a0SeDsqip7k/oEuJwOvBurlO5Gx4Keju3dZGI9QbpS
-	NJZ9yPdApTh/1cxwfxqb+c2pGqhaVMPoXTkNd1OxiCng1x4N+pCfNVighra6kw4POQalqWy0tbHgC
-	OJZcrRe+vgTD1RJ7CMsLmh98s70EZoay3bFUTC+gLQk7eDf0znRGyleJVAZeLS0LX1UGn84BzC3IB
-	VmU2ukWg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pARW4-00Fvek-2H;
-	Wed, 28 Dec 2022 08:10:29 +0000
-X-UUID: ffea90daf6df450cbd8006c0dbb49e17-20221228
+	id 1pARq4-003GKa-KB; Wed, 28 Dec 2022 08:31:10 +0000
+X-UUID: 199ed6c7019248dda5286abce54a7101-20221228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hTIBEWfUEwvi8Ni7b5PaoSl4qonL92kVD6YGJarC3dk=;
-	b=miy4yJYTcHPN9rXRQALUVx1LE6cdWOyTXpC3PeeBsFzCBLKYyYwM0Ewxvfz727bu/XH8mMqFYusfBt9acAZAv98GxHlqypoKl1/3jV6N8DEchSGl9Qkoh/YGl2IZvIFLXJAFMENkgl+vkH3vUiKlH9WAy/l2HSbavh6keN2SMxM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Xf1g6m2wSSYkxja2mmT0kfCPsNwG64PKQczUalAJj+U=;
+	b=BMWnw7puXNbVtysTKSzugPZF8FIWAhuA43jjk8Xruvl+uKqo3mCXBhkQvff/0BXNQW/8nlboLtpbJtH8kqNumYMTLVy5Soy+preeGArG6YjHOJ2tmRTn0O4b9U2Ult71Dzo0lleugOxA+PYfp/NuDooXikWUivxeAKeee4wcTnw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:e1714a4b-c44b-4474-98ab-b9b5643f1d49,IP:0,U
+X-CID-O-INFO: VERSION:1.1.14,REQID:267cfbce-03c7-4478-963d-0e274816c82c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:2a312df4-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:dcaaed0,CLOUDID:95db2df4-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ffea90daf6df450cbd8006c0dbb49e17-20221228
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 199ed6c7019248dda5286abce54a7101-20221228
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <miles.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1542112036; Wed, 28 Dec 2022 01:09:33 -0700
+	with ESMTP id 176828933; Wed, 28 Dec 2022 01:30:53 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 28 Dec 2022 15:58:26 +0800
+ 15.2.792.15; Wed, 28 Dec 2022 15:50:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 28 Dec 2022 15:58:26 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 28 Dec 2022 15:50:17 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: <angelogioacchino.delregno@collabora.com>
 CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
@@ -75,18 +61,18 @@ CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
 	<ryder.lee@kernel.org>, <sam.shih@mediatek.com>, <sboyd@kernel.org>,
 	<weiyi.lu@mediatek.com>, <wenst@chromium.org>, <y.oudjana@protonmail.com>,
 	<yangyingliang@huawei.com>
-Subject: Re: [PATCH v2 14/23] clk: mediatek: clk-mt8192: Move CLK_TOP_CSW_F26M_D2 in top_divs
-Date: Wed, 28 Dec 2022 15:58:26 +0800
-Message-ID: <20221228075826.27396-1-miles.chen@mediatek.com>
+Subject: Re: [PATCH v2 11/23] clk: mediatek: Switch to mtk_clk_simple_probe() where possible
+Date: Wed, 28 Dec 2022 15:50:16 +0800
+Message-ID: <20221228075016.12309-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221223094259.87373-15-angelogioacchino.delregno@collabora.com>
-References: <20221223094259.87373-15-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221223094259.87373-12-angelogioacchino.delregno@collabora.com>
+References: <20221223094259.87373-12-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221228_081025_606331_C616BE58 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20221228_003104_981913_55A0FCD6 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,23 +87,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> This driver is registered early in clk_mt8192_top_init_early() and
-> then again in clk_mt8192_top_probe(): the difference between the
-> two is that the early one is probed with CLK_OF_DECLARE_DRIVER and
-> the latter is regularly probed as a platform_driver.
+> mtk_clk_simple_probe() is a function that registers mtk gate clocks
+> and, if reset data is present, a reset controller and across all of
+> the MTK clock drivers, such a function is duplicated many times:
+> switch to the common mtk_clk_simple_probe() function for all of the
+> clock drivers that are registering as platform drivers.
 > 
-> Knowing that it is not necessary for this platform to register the
-> TOP_CSW_F26M_D2 clock that early, move it to top_divs and register
-> it with the others during platform_driver probe for topckgen;
-> 
-> While at it, since the only reason why the early probe existed was
-> to register that clock, remove that entirely - leaving this driver
-> to use only platform_driver.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+...snip...
+
+> +
+> +static const struct of_device_id of_match_clk_mt8183_simple[] = {
+> +	{ .compatible = "mediatek,mt8183-infracfg", .data = &infra_desc },
+> +	{ .compatible = "mediatek,mt8183-pericfg", .data = &peri_desc, },
+> +	{ /* sentinel */ }
+> +};
+> +
+> +static struct platform_driver clk_mt8183_simple_drv = {
+> +	.probe = mtk_clk_simple_probe,
+> +	.remove = mtk_clk_simple_remove,
+> +	.driver = {
+> +		.name = "clk-mt8183-simple",
+> +		.of_match_table = of_match_clk_mt8183_simple,
+> +	},
 >
 
-Thanks and this patch makes it easier to convert clk-mt8192 driver to a kernel module.
+cool, replace clk_mt8183_infra_probe and clk_mt8183_peri_probe with
+mtk_clk_simple_probe
 
 Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
 
