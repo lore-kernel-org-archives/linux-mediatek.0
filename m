@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5688C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 12:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0D4C3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 16:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ulQdzi20zd2U46RZKsWGGdfViyIJCsOcS9mGLZlm5yU=; b=1uFJEVAT03y24UGro7R0e8CVCi
-	QOkmSBJELkCU4rBd2ghCu0bd5bTB3rTOcV0kNMK8qqrjGq9tsXEM8BlF5mqLfJDgyuxXgFQDIUw6z
-	ywyUQOs8+TGBxsF9aKHH91hVN2S/xupzdIE/C9su8BnHKS70Z91RS+SArlWAfu1USxSfhHBpZ2YFi
-	T8+Ilo9ctnBbiJLsbItiJR0pjbVQTewihvL88ZRyq4kapJJrkAVChq16oCFfHPkohNq4HZIGzOVsB
-	J094xN0MwXryjx7h3/bDO+RKBIgUHjusRGkZnjjH517RdKlDiDNA61RRMGcyYQNSygYZwLHY3Iyxa
-	HpGQIulQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e0qQmy/gCOzVgrAIXj5lLmb04lCKfUXufmvRoQe4l68=; b=ckwl2IS+iRdduzxDFWHruJG09x
+	1HcantF/E+DcQlZeB6/vDXyMqW71l7ZK2/ETYhzIE2VZHFfCqxy3FTopOIJ/gCiK/lr5A4iyLKg01
+	h8CuUtoLKAqVVOpaYg4yxzoZKFlYv0lqm766syLtu80ucRLTDwz5UXzbTVNm8Xg4Va2DM+fqzMl9O
+	0SQIse8FgzF7mRSbH49hkxWcPVIIK9uMr8LIA9/WPWysAsk7VV8j0D3B2Ow9pqiFfkeKmudF3Rodh
+	RazFkU2BBTYGohN2I+breBx/yhUj3KK7ROY2xTckGhuzt15i25rrbbZeYwoMseFfiQtvFvLoOUxpG
+	LWJUNQmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAVhO-004s68-KE; Wed, 28 Dec 2022 12:38:22 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1pAYrU-0069nO-MI; Wed, 28 Dec 2022 16:01:00 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAVhB-004s1F-NN
-	for linux-mediatek@lists.infradead.org; Wed, 28 Dec 2022 12:38:17 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id s22so16419428ljp.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Dec 2022 04:38:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ulQdzi20zd2U46RZKsWGGdfViyIJCsOcS9mGLZlm5yU=;
-        b=ROZy35wsYl1/tNFkRh0mrMmTpcQIU+41TeXZI6z23pccDhF71JS3vFW0I6QBK5tqCG
-         +yx3MG8YeeqfNyuyH7Kpxj6/ehUia8GTAq20UcCyksilXnkN3b8iIR4FvbHUTj6HoRlc
-         UX9USikFDumDonaVnDgl137WIqjLQbBc/fPog42FT0vQ7d309epTunt9B50/0C05XE9I
-         uGlEyErjaGvgamWLdzaMz9sooxtCug8QlctG6G9wRYUc1ppb1wJe7FcszmlUPfo18oTy
-         yl6MWffhxj5pH9E4EuI4w+m0DRGYnOHcZwrAo34GHU9EjqrJ7I/out4nSyeUwEsT7wvg
-         FUWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ulQdzi20zd2U46RZKsWGGdfViyIJCsOcS9mGLZlm5yU=;
-        b=4vmab9t4eB0lbF1aoUZNXmC5xPzrYLJQ76GZIQ3LTI+x8/TYkKQYuVhg2e99ldDIY3
-         OtkiJDsNDT1yQgXQ19/857d41eAOJ6PklgPyUX6i5F73AjXsBL/5CvhyJRkFuRifwOKb
-         PFj/0KdJSxsP9Arz7r4rogthrhmszoOQPi9LmtVrZHIE3HdiKODNd5ciooMt8fKbm3Mo
-         iv3uarj1j/VtQitjoW0qeMR81IUnIHRFzdkPTwMStXEZY8dkma0MalbeuOs93w+a3wk7
-         nVjNaTi3gCAN23ewy13erB0qwWzGuxyaEGwnY7n2ocxb4VVgLm2Ex7oUrDQugJj+mOGy
-         Uktg==
-X-Gm-Message-State: AFqh2kpsHG7mRKiUk71yY5Kr8UHWecoFx5AUzjwuSq1qfVW/2z6YEkZw
-	+c1qOfFi9NB/T6IkK130fy0PtA==
-X-Google-Smtp-Source: AMrXdXsoIJZhKKDkqEp/ZqcNn9QOtQzkUwBxJWwRPesEC5Q4Kb3HlmbuhYhJDQ+aKdj8EeXGi7O2/w==
-X-Received: by 2002:a05:651c:90:b0:27f:b833:c50a with SMTP id 16-20020a05651c009000b0027fb833c50amr3893384ljq.14.1672231087829;
-        Wed, 28 Dec 2022 04:38:07 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id f1-20020a05651c03c100b0027d75b38fd6sm1940734ljp.43.2022.12.28.04.38.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Dec 2022 04:38:06 -0800 (PST)
-Message-ID: <76a34e02-ec76-10c8-5cea-681a7477a026@linaro.org>
-Date: Wed, 28 Dec 2022 13:38:05 +0100
+	id 1pAYrK-0069iE-Eu; Wed, 28 Dec 2022 16:00:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=e0qQmy/gCOzVgrAIXj5lLmb04lCKfUXufmvRoQe4l68=; b=JO++3ij9GFOyL2IZLVabE8UyCp
+	biNevp+OBzIOtbu8YZHmJMZnT6FE/DjevIOCOMAgQRRdu4eh/N/M3hv2duY119JSNfNuWi0n82bjc
+	NJWjkGRjt6HS6NcvmjztRPboKLFCGTBgNaMxKX+qtOA/3mNwNmhLzMuG4h+A78hIMKuw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1pAYqy-000dv4-PF; Wed, 28 Dec 2022 17:00:28 +0100
+Date: Wed, 28 Dec 2022 17:00:28 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Biao Huang =?utf-8?B?KOm7hOW9qik=?= <Biao.Huang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"peppe.cavallaro@st.com" <peppe.cavallaro@st.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"joabreu@synopsys.com" <joabreu@synopsys.com>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"alexandre.torgue@foss.st.com" <alexandre.torgue@foss.st.com>,
+	"mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"richardcochran@gmail.com" <richardcochran@gmail.com>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v5 1/2] stmmac: dwmac-mediatek: enable 2ns delay only for
+ special cases
+Message-ID: <Y6xoHH6ETfbufX/a@lunn.ch>
+References: <20221223015029.24978-1-biao.huang@mediatek.com>
+ <20221223015029.24978-2-biao.huang@mediatek.com>
+ <Y6W4vwJHG+6PI8fd@lunn.ch>
+ <4a82aa5437e496e2b65b77ef08d7897a4b23f7e5.camel@mediatek.com>
+ <Y6m7eNdWVL3IKFj2@lunn.ch>
+ <5baa7c88716042421b0dd1d579c6aa70d253a546.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 2/2] ASoC: dt-bindings: mt8186-mt6366: add new compatible
- for max98360a
-Content-Language: en-US
-To: tongjian <tongjian@huaqin.corp-partner.google.com>, lgirdwood@gmail.com,
- broonie@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com,
- angelogioacchino.delregno@collabora.com, nfraprado@collabora.com,
- jiaxin.yu@mediatek.com, chunxu.li@mediatek.com,
- ajye_huang@compal.corp-partner.google.com
-Cc: alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20221228122230.3818533-1-tongjian@huaqin.corp-partner.google.com>
- <20221228122230.3818533-3-tongjian@huaqin.corp-partner.google.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221228122230.3818533-3-tongjian@huaqin.corp-partner.google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5baa7c88716042421b0dd1d579c6aa70d253a546.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221228_043816_237463_8C6E1B8C 
-X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-CacheID: sfid-20221228_080054_697311_DE244CE4 
+X-CRM114-Status: UNSURE (   9.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,17 +87,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/12/2022 13:22, tongjian wrote:
-> Adds new compatible string "mt8186-mt6366-rt5682s-max98360-sound" for machines
-> with max98360a and rt5682s.
-> 
-> Signed-off-by: tongjian <tongjian@huaqin.corp-partner.google.com>
-> ---
+> ************* MEDIATEK Confidentiality Notice ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including its
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or believe
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
+Please remove this. You are knowingly posting to a public mailing
+list, which is publicly archived, etc.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+      Andrew
 
-Best regards,
-Krzysztof
 
 
