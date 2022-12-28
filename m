@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBFA1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 09:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDBDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 11:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GcaUuOgVIhiyz19WJXVeJeBFNH9yp3Z0VXXuo9zLxwE=; b=Y2+3WdWm7OM7ppSDhf3d4JygzL
-	cU5XFyMu6SBh+DmRM036maCCao51azxHoc5vVUS0hiqSaCG4EL2NU2Kd4pE9k+uk+Wt+XeQDhoWdq
-	7y958Mra2jHJVmJVbROHhKcQg7jDcoH1T02d600JHNkWKwKqfqfwWPbnFSUYulGcqv6LjXud7flGB
-	7A1UjhqRxjtlSqFCef+wJXCPAasqQO7cB0J+QRQ9skSdm/bSjzlOwDrSe6nXfXswPsVQe80bOXnm0
-	YlGee1R8R0of6z6s4gGxa0zgtgDAl0aFBrZqoodhTJaT43AvHWsAPwe0AW/sZc9FadWwPbptCDnDJ
-	nhuBAvfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=; b=JS7KYjPBZzNW1nExzielH4CuHc
+	w78P2MQ7RTS5RtnkDXvhwW+FI5C2s4vDudpiG3hC2E8cDsmLI/oqFcc7gPDDWA/uCCOBhkR73lZBa
+	CjDikn9lkTgOeQj4iFD8vcRURIeTDB6NuL4vcb0LaoE6cTi9DjetpzNXFBdaDlME+rfoADorZsVXo
+	fEbZQX7nPw2feETK50MwXfBNVkoFSrx5oF5bKlyqLi3UBplQTcQ518WYErSlyhofjG2tGyKF/Ho5K
+	QamZ5MgLAUyd46m6WjTgJx/db5rBnh2dDVlqlQM5j6vLCW2KHd/mg7/Lr7A5OhwWN5xJAoxl6swX9
+	1Yyo+vtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pASQE-003X3w-Lz; Wed, 28 Dec 2022 09:08:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pAUfS-004STy-CP; Wed, 28 Dec 2022 11:32:18 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pASQC-003X1b-Hi; Wed, 28 Dec 2022 09:08:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=GcaUuOgVIhiyz19WJXVeJeBFNH9yp3Z0VXXuo9zLxwE=; b=NNJs3TPEiVJ924sh0dvq8fPCNY
-	xFWU47XELF+HCnN/roEu+UkJAoZ6gNw1QRmw0wQKdMMLP2GkQh3GDWd8nHwR/pWrtQ5Gb8jnUhFmf
-	DLasHaEimk2LW4+ilXWxUcqxay4p/fM4A8An4F504C5m1m2Nw3AQUVjq/lh8BluSGClXEZUo0Mr/d
-	Jawoft2Q2f8vtwjo4Ykqxn5o0unbKcfQIJ3GXr7TeqJ+HdOZNOvB0brTp+f0At/D4h87OY+bNwzUU
-	y5y78kzirLQ0inoat/KKZYny5fF70xF9y3V9fCTk9DUkuPCBJ4R+spWcLox7btd9gwMKhttLrJFfe
-	ensbZyww==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pASQ3-00FwGW-0N;
-	Wed, 28 Dec 2022 09:08:19 +0000
-X-UUID: 6f6ee06b4952414cb85da41ad248d801-20221228
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GcaUuOgVIhiyz19WJXVeJeBFNH9yp3Z0VXXuo9zLxwE=;
-	b=R2xxp2UmDyyobUZ8BvIrb3wAqgq6lA2PzJcjaKucTsEmAqjUhs47HQbUPjJ2o63v6CXMKRYvhMdbL9nPN+eFmC15d5kCAzvq00Edm2dEMXhQAr9O0M2AXty9KdQrKWf5UMfs+kBZn2mpn1psB2Yg9uWPC9NLTFKbQ2klZxE6phQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.14,REQID:9904dfb9-7487-41a6-aa8d-654e357491d3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:dcaaed0,CLOUDID:fcb69f8a-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6f6ee06b4952414cb85da41ad248d801-20221228
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <miles.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2023118130; Wed, 28 Dec 2022 01:52:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 28 Dec 2022 16:31:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 28 Dec 2022 16:31:23 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <angelogioacchino.delregno@collabora.com>
-CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
-	<devicetree@vger.kernel.org>, <fparent@baylibre.com>, <ikjn@chromium.org>,
-	<johnson.wang@mediatek.com>, <jose.exposito89@gmail.com>,
-	<kernel@collabora.com>, <krzysztof.kozlowski+dt@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <msp@baylibre.com>,
-	<mturquette@baylibre.com>, <nfraprado@collabora.com>,
-	<pablo.sun@mediatek.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
-	<ryder.lee@kernel.org>, <sam.shih@mediatek.com>, <sboyd@kernel.org>,
-	<weiyi.lu@mediatek.com>, <wenst@chromium.org>, <y.oudjana@protonmail.com>,
-	<yangyingliang@huawei.com>
-Subject: Re: [PATCH v2 15/23] clk: mediatek: mt8192: Join top_adj_divs and top_muxes
-Date: Wed, 28 Dec 2022 16:31:23 +0800
-Message-ID: <20221228083123.15298-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221223094259.87373-16-angelogioacchino.delregno@collabora.com>
-References: <20221223094259.87373-16-angelogioacchino.delregno@collabora.com>
+	id 1pAUfO-004SSY-EQ
+	for linux-mediatek@lists.infradead.org; Wed, 28 Dec 2022 11:32:15 +0000
+Received: by mail-pf1-x434.google.com with SMTP id 6so7803476pfz.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Dec 2022 03:32:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=;
+        b=nvJ56kdO6TYBqlvfyBBy44mrPbj6j0sswfmD+BfW6JUnz947+VBa0I4+vIvGnGxL2C
+         xsOILcAE8JSmL+VcfWGh+DcPuST3RRIwqbyi/SEUy/pYwNbKJkCU429Z+w9m3YyJfkj+
+         osoiuk3YMs4zhIh181anhkeSpwMm/FhgqeYWI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=;
+        b=1IOdrsDYplDiJfoKv7iOy3WFabVF3PWxj06DNw8gPyuRuQF8P06NWd7xv1KnI7V9+H
+         O+sswMMCyJxovV/BHzKTay3lBjzp8fo9d1R+kt0gv48pPc0KiktQWfCzl+9uW88n2b/u
+         MwR++TV3FAbZWd0FGPBDV896x51v5DR0G9ObK1+kZWZryzzo0I+sB7wINAZqBVyOe/Uo
+         b/PiAjNCyuoOZ4tlrCzIc+8F+jkjfzinaAremFGuyPAbhflKWRl6FUzTfPfDw93Xfdsd
+         PXQTC+2M2J+a5+g7MpN2hWQUBk+YsOlqZ22u/OeOTjNMqTPkk+C1l/oLTeAX9tO001u+
+         d5yw==
+X-Gm-Message-State: AFqh2kpsGmbggPxXuHqMScIQMWyVVa59fqx4Wf343J0cpBBKZgTwTHBO
+	pxK2M04rWOCbcxiojs5hL6N0Yw==
+X-Google-Smtp-Source: AMrXdXsMYQjyC6xgL+G4AOqkuUQJXWG3LyE0123LXzv3W/PwJe5cSz4GYQWNfvPJ8/GMg0yggFHymw==
+X-Received: by 2002:a05:6a00:26d8:b0:56b:9b71:ca2f with SMTP id p24-20020a056a0026d800b0056b9b71ca2fmr23155416pfw.11.1672227132377;
+        Wed, 28 Dec 2022 03:32:12 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:882f:1d5e:9d7e:ebbd])
+        by smtp.gmail.com with ESMTPSA id w18-20020aa79a12000000b00581816425f3sm1987756pfj.112.2022.12.28.03.32.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Dec 2022 03:32:12 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] arm64: dts: mt8183: jacuzzi: Move panel under aux-bus
+Date: Wed, 28 Dec 2022 19:32:04 +0800
+Message-Id: <20221228113204.1551180-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221228_090815_984045_03F8E63F 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20221228_033214_618821_FB862783 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,41 +89,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Read edp panel edid through aux bus, which is a more preferred way. Also
+use a more generic compatible since each jacuzzi models use different
+panels.
 
-> These two are both mtk_composite arrays, one dependent on another, but
-> that's something that the clock framework is supposed to sort out and
-> anyway registering them separately isn't going to ease the framework's
-> job in checking dependencies.
-> 
-> Put the contents of top_adj_divs in top_muxes to join them together
-> and register them in one shot.
-> 
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 26 ++++++++++---------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
 
-In mt8192, we can join top_adj_divs and top_muxes:
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+index 3ac83be53627..543286ce9cea 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+@@ -6,18 +6,6 @@
+ #include "mt8183-kukui.dtsi"
+ 
+ / {
+-	panel: panel {
+-		compatible = "auo,b116xw03";
+-		power-supply = <&pp3300_panel>;
+-		backlight = <&backlight_lcd0>;
+-
+-		port {
+-			panel_in: endpoint {
+-				remote-endpoint = <&anx7625_out>;
+-			};
+-		};
+-	};
+-
+ 	pp1200_mipibrdg: pp1200-mipibrdg {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "pp1200_mipibrdg";
+@@ -181,6 +169,20 @@ anx7625_out: endpoint {
+ 				remote-endpoint = <&panel_in>;
+ 			};
+ 		};
++
++		aux-bus {
++			panel: panel {
++				compatible = "edp-panel";
++				power-supply = <&pp3300_panel>;
++				backlight = <&backlight_lcd0>;
++
++				port {
++					panel_in: endpoint {
++						remote-endpoint = <&anx7625_out>;
++					};
++				};
++			};
++		};
+ 	};
+ };
+ 
+-- 
+2.39.0.314.g84b9a713c41-goog
 
-mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base, &mt8192_clk_lock,
-		top_clk_data);
-mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base, &mt8192_clk_lock,
-		top_clk_data);
-
-However, there are other top_adj_divs[] and top_muxes[] in different types so 
-we cannot join them.
-
-For example:
-in drivers/clk/mediatek/clk-mt8167.c:mtk_topckgen_init():
-
-mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
-		&mt8167_clk_lock, clk_data);
-mtk_clk_register_dividers(top_adj_divs, ARRAY_SIZE(top_adj_divs),
-		base, &mt8167_clk_lock, clk_data);
-
-So we can join top_adj_divs and top_muxes in some platforms, but we
-cannot join top_adj_divs and top_muxes in some other platforms.
-
-I'm afraid that this will confuses people.
-
-
-thanks,
-Miles
 
