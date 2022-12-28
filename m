@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDBDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 11:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B927C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Dec 2022 11:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=; b=JS7KYjPBZzNW1nExzielH4CuHc
-	w78P2MQ7RTS5RtnkDXvhwW+FI5C2s4vDudpiG3hC2E8cDsmLI/oqFcc7gPDDWA/uCCOBhkR73lZBa
-	CjDikn9lkTgOeQj4iFD8vcRURIeTDB6NuL4vcb0LaoE6cTi9DjetpzNXFBdaDlME+rfoADorZsVXo
-	fEbZQX7nPw2feETK50MwXfBNVkoFSrx5oF5bKlyqLi3UBplQTcQ518WYErSlyhofjG2tGyKF/Ho5K
-	QamZ5MgLAUyd46m6WjTgJx/db5rBnh2dDVlqlQM5j6vLCW2KHd/mg7/Lr7A5OhwWN5xJAoxl6swX9
-	1Yyo+vtA==;
+	bh=uLwMw4epyrb3bzZyb5+8pjUhv+yHD++6G25hkeYYrj0=; b=Gn6rPpTL4Kk8Fwfj90IPqmuD1j
+	NJZ3d5ODlFJSB5ZjHB83qBVPWPTCW/wrmUUJvnhm/aYfqYhRkujX31OvLImwgVfPCMoLzrq7OQmL8
+	/VhGcfVg0EkSKtERIczbNnODB8V+mP+OldPkMMMv+5O0ny3lkK+HeivzewNFoTxPvOaDFUxAsufWY
+	jy+jul7oJsN4hG/yIUaCWB/AzNRpk5oeLMs0qZ9TnFgJSTDsp00VwPSd5QPdRngy7nVrN9Uu8Jj7M
+	AD8YuCaU129HxgL6O/ZNe4syUpVCPgxEnrEpJdWolE13m0xEvGtVd1yrFutSBLiTIXOCf47tGxUsW
+	9/v3k4JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAUfS-004STy-CP; Wed, 28 Dec 2022 11:32:18 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1pAV5U-004bUC-6p; Wed, 28 Dec 2022 11:59:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAUfO-004SSY-EQ
-	for linux-mediatek@lists.infradead.org; Wed, 28 Dec 2022 11:32:15 +0000
-Received: by mail-pf1-x434.google.com with SMTP id 6so7803476pfz.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Dec 2022 03:32:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=;
-        b=nvJ56kdO6TYBqlvfyBBy44mrPbj6j0sswfmD+BfW6JUnz947+VBa0I4+vIvGnGxL2C
-         xsOILcAE8JSmL+VcfWGh+DcPuST3RRIwqbyi/SEUy/pYwNbKJkCU429Z+w9m3YyJfkj+
-         osoiuk3YMs4zhIh181anhkeSpwMm/FhgqeYWI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=KTmLp3WPbuZV+b+hTAD9egOWKyUGIagroxlWC31ebpo=;
-        b=1IOdrsDYplDiJfoKv7iOy3WFabVF3PWxj06DNw8gPyuRuQF8P06NWd7xv1KnI7V9+H
-         O+sswMMCyJxovV/BHzKTay3lBjzp8fo9d1R+kt0gv48pPc0KiktQWfCzl+9uW88n2b/u
-         MwR++TV3FAbZWd0FGPBDV896x51v5DR0G9ObK1+kZWZryzzo0I+sB7wINAZqBVyOe/Uo
-         b/PiAjNCyuoOZ4tlrCzIc+8F+jkjfzinaAremFGuyPAbhflKWRl6FUzTfPfDw93Xfdsd
-         PXQTC+2M2J+a5+g7MpN2hWQUBk+YsOlqZ22u/OeOTjNMqTPkk+C1l/oLTeAX9tO001u+
-         d5yw==
-X-Gm-Message-State: AFqh2kpsGmbggPxXuHqMScIQMWyVVa59fqx4Wf343J0cpBBKZgTwTHBO
-	pxK2M04rWOCbcxiojs5hL6N0Yw==
-X-Google-Smtp-Source: AMrXdXsMYQjyC6xgL+G4AOqkuUQJXWG3LyE0123LXzv3W/PwJe5cSz4GYQWNfvPJ8/GMg0yggFHymw==
-X-Received: by 2002:a05:6a00:26d8:b0:56b:9b71:ca2f with SMTP id p24-20020a056a0026d800b0056b9b71ca2fmr23155416pfw.11.1672227132377;
-        Wed, 28 Dec 2022 03:32:12 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:882f:1d5e:9d7e:ebbd])
-        by smtp.gmail.com with ESMTPSA id w18-20020aa79a12000000b00581816425f3sm1987756pfj.112.2022.12.28.03.32.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Dec 2022 03:32:12 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] arm64: dts: mt8183: jacuzzi: Move panel under aux-bus
-Date: Wed, 28 Dec 2022 19:32:04 +0800
-Message-Id: <20221228113204.1551180-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
+	id 1pAV5O-004bLR-KH; Wed, 28 Dec 2022 11:59:08 +0000
+X-UUID: 77b19706064a4e1689a73b25577ee7a6-20221228
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uLwMw4epyrb3bzZyb5+8pjUhv+yHD++6G25hkeYYrj0=;
+	b=NCZt4ihup3c3Jw9yWV8K8KB4/xVGG+H2g1bFZukiyLX68sUD6qq/jqOgzhhltrVVq2oRniLgsQ6w3bIGY23qT5ClDeYSBL3Ri8AEo/jf6WbTPYIyd1ZVsy7bR5Sce4VCaw9vs0V1K+nCdD6oUSzicvhvmZPbnYtxg+297L9hn90=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:b083b992-1238-42ab-9795-0728639f68ad,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:dcaaed0,CLOUDID:27d0a38a-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 77b19706064a4e1689a73b25577ee7a6-20221228
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1867501258; Wed, 28 Dec 2022 04:58:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 28 Dec 2022 19:58:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 28 Dec 2022 19:58:01 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	"Takashi Iwai" <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Jiaxin Yu
+	<jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@kernel.org>
+CC: <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: mt8186: Add machine support for max98357a
+Date: Wed, 28 Dec 2022 19:57:56 +0800
+Message-ID: <20221228115756.28014-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221228_033214_618821_FB862783 
-X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-CacheID: sfid-20221228_035906_810502_7FD4EB04 
+X-CRM114-Status: UNSURE (   9.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,60 +82,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Read edp panel edid through aux bus, which is a more preferred way. Also
-use a more generic compatible since each jacuzzi models use different
-panels.
+Add support for mt8186 with mt6366 and max98357a.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 ---
- .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 26 ++++++++++---------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+ sound/soc/mediatek/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-index 3ac83be53627..543286ce9cea 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-@@ -6,18 +6,6 @@
- #include "mt8183-kukui.dtsi"
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 363fa4d47680..7bdb0ded831c 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -182,9 +182,10 @@ config SND_SOC_MT8186_MT6366_DA7219_MAX98357
+ 	  If unsure select "N".
  
- / {
--	panel: panel {
--		compatible = "auo,b116xw03";
--		power-supply = <&pp3300_panel>;
--		backlight = <&backlight_lcd0>;
--
--		port {
--			panel_in: endpoint {
--				remote-endpoint = <&anx7625_out>;
--			};
--		};
--	};
--
- 	pp1200_mipibrdg: pp1200-mipibrdg {
- 		compatible = "regulator-fixed";
- 		regulator-name = "pp1200_mipibrdg";
-@@ -181,6 +169,20 @@ anx7625_out: endpoint {
- 				remote-endpoint = <&panel_in>;
- 			};
- 		};
-+
-+		aux-bus {
-+			panel: panel {
-+				compatible = "edp-panel";
-+				power-supply = <&pp3300_panel>;
-+				backlight = <&backlight_lcd0>;
-+
-+				port {
-+					panel_in: endpoint {
-+						remote-endpoint = <&anx7625_out>;
-+					};
-+				};
-+			};
-+		};
- 	};
- };
- 
+ config SND_SOC_MT8186_MT6366_RT1019_RT5682S
+-	tristate "ASoC Audio driver for MT8186 with RT1019 RT5682S codec"
++	tristate "ASoC Audio driver for MT8186 with RT1019 RT5682S MAX98357A/MAX98360 codec"
+ 	depends on I2C && GPIOLIB
+ 	depends on SND_SOC_MT8186 && MTK_PMIC_WRAP
++	select SND_SOC_MAX98357A
+ 	select SND_SOC_MT6358
+ 	select SND_SOC_RT1015P
+ 	select SND_SOC_RT5682S
 -- 
-2.39.0.314.g84b9a713c41-goog
+2.18.0
 
 
