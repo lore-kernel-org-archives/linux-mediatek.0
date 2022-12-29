@@ -4,96 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D59C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 15:49:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8267BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 17:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OcHD+68JKivFTNKn8cO/CBcZZAARu6aqYEBF3jaYXXY=; b=FWwX4MvMplvRXPNrxv4rq7F91H
-	vW4EVpPxqdxqSJ0aJBgU7RY3jtYsd3Jg36opvVgCpSSuHIbj5E2KPJhr5iNMaqJUJ7+8KgYlbJFOS
-	jkpsbYIxaoKv3n0IU/xXo7T18/wRjDzGpKWJNX28IihgP7FNfSawL0JgFDVtSq6EnJIhiiooU4qq/
-	WOYIEq6XDcYLJk0eLLnrv32K16HOufq6Z5z4J277MF9CTYV3YfSjxeqWYO957zP1pXF5r6wJ6VrPu
-	cuGU4uwTyff0Q2EUX4cZOE9nr42DbUPk4AbzMhYvHbkGFEzUwlMurItoSHKwuOHoNdb+3xru9MFVf
-	yW+ViVOQ==;
+	bh=S1UAqcUu7o6oEpma0eAg/XpascSM9CF4mPZAbW48BLs=; b=Yt7doG8cPbls0V4TguVEEv08Cd
+	DHomzXQKGGRlFDDoYP0j65hbmP5Y9p+HK/8EYAdmt1uZNtAbvQDs5L8YD+XeuNFQylC/r98sCuu7Q
+	QIc7iV34t6ENuAg5XN0S2MqFqS0fTGNNwAb3sjXzvR7jGGnYYt0KGZYvEM5m2Cv0gtWPp2kAmmfZR
+	Z217fODGpgyxsv0+z349rKpvI8n4adw91lfKqkBCHBWqO8kobzZZ7UL4TRvXtkTJ1xnFq238RzAej
+	Xjng4YMpI1Qyyn9SvIT92zswL0fH5xkXOYXjN7mkVMwJK0AiC1vQGz/xQrCtQeYcfiQNAD1G1SGOU
+	r6ngtf2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAv9x-00HA4f-3B; Thu, 29 Dec 2022 15:49:33 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1pAwe6-000J5P-NK; Thu, 29 Dec 2022 17:24:46 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAv9j-00HA0U-OI
-	for linux-mediatek@lists.infradead.org; Thu, 29 Dec 2022 15:49:21 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id bi26-20020a05600c3d9a00b003d3404a89faso11533205wmb.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 07:49:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OcHD+68JKivFTNKn8cO/CBcZZAARu6aqYEBF3jaYXXY=;
-        b=wov4t/Dp6UbuGwqLvgc4vMkRfInBScyFz5VfMRxkFh9qxszC85YMpmSHny1gXPrVsS
-         g32f4reKOVtWQMJ8tXOoxbkRbjZCZ1m5SUTFsEeNVyo3qe4fzbUv7mzyONTfBVWN/ygF
-         VCv0lEJwgaS8OQpQtH1AmoCHEbO8WSsmtXkJwQMKbTVyQhOUnzPNh5aURydy23AIStHq
-         7IW6dSqOnW/cLTthbtNHuMUuvGcSnsN4MUGA1Z6MgEXnnWMIIXtkOr33tpHLHB4icRu/
-         EKo8oFJTgXBFfNfzRgvO95/Kqn05D0Qao4eQAzZ4kyo7nkuPJ1BIRmhp7+wC87dbet08
-         SVKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OcHD+68JKivFTNKn8cO/CBcZZAARu6aqYEBF3jaYXXY=;
-        b=o1ujnmpyt9xhVAgw+HNYoSVf4wwOuOlUrVKueLr+/HuYwj634i8vPkt1t1crbwrS3v
-         x7nORDZQrgmO7L6D5NMGzruc4O6rqF3SG6FJE80A4nHFurtjft6wvH0HAXzhLAeypWfg
-         TWOjbvV6qQ2Ian6DUieurom8kHwfZm0CGu0vn9thhJFGSZ8g3ypSqCrK+bBpvAvGywPq
-         mnuWZSalZH8PjKzCPPqiYHN+KUTMNfmQeu505D7QrqXwYZEXgoMjNIYcS8m+fcMYzOrQ
-         zK7CClbtjMqpzxLKcAbzM6mtoLynMSa5arMk/H3Xbdu9g8V13O4vtyuiTfM8wurN1qtI
-         M+bg==
-X-Gm-Message-State: AFqh2kpon8WBPSFICCOV9FAhvI8yDUkjilM4maSJ0HZiw/iFTdbN4TdP
-	c1PIVqnRMzWHOvjSaRkQp6/Pjw==
-X-Google-Smtp-Source: AMrXdXtGRRh5vsIthQvg5P5kw1KkeD+SE+4wsU583Cr1cJtcHYeGo9tuCyPGsdjApkph9RNzbdVSaQ==
-X-Received: by 2002:a05:600c:3b02:b0:3c7:18:b339 with SMTP id m2-20020a05600c3b0200b003c70018b339mr25804533wms.37.1672328955770;
-        Thu, 29 Dec 2022 07:49:15 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id d10-20020a05600c3aca00b003d34faca949sm24381530wms.39.2022.12.29.07.49.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Dec 2022 07:49:15 -0800 (PST)
-Message-ID: <0644aede-c281-3919-50e0-4466f6587d81@linaro.org>
-Date: Thu, 29 Dec 2022 16:49:13 +0100
+	id 1pAwdc-000IkB-6k; Thu, 29 Dec 2022 17:24:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id A432FB81A1D;
+	Thu, 29 Dec 2022 17:24:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D196C433EF;
+	Thu, 29 Dec 2022 17:24:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672334654;
+	bh=m9HPREp2BBaXTvbpQHx2WQprM9b37LXlFfRjZD2pPbc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=qt7/hxQDBIvlE+UOhExIE+gpA1yr2Ytl6cD8uXTtl6jgmBiTsoa9S2hzoepP7nwKs
+	 hhpc3+xHFhXVHpJMCUop4bill7ozLgMzwQO9LA8YMAFtxiODZoV/t6jq0Emw7Vrcpc
+	 e3wDGuhBEwoBzI4P7WQzE+OVPLDTQ1V36xIiwX6Tdlhhavqpe87KM/WVAf3FA/niGn
+	 Ujoi3sHXiSMn5Y2NVbd6ytWoXoohJM3TaDA3JajgPrNoErUXxWekYOsYNjAIXlTMEQ
+	 vMYOqfDifnyfUtz3zYMqXx6dcSELIGyAql3swkh8gUSPi1+mCzcYJTnQt6naxTJBRV
+	 xmQpIqRdURmSg==
+From: Bjorn Andersson <andersson@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	pierre.gondois@arm.com
+Cc: linux-realtek-soc@lists.infradead.org,
+	alim.akhtar@samsung.com,
+	clin@suse.com,
+	krzysztof.kozlowski+dt@linaro.org,
+	tmaimon77@gmail.com,
+	chris.obbard@collabora.com,
+	ming.qian@nxp.com,
+	william.zhang@broadcom.com,
+	linux-arm-kernel@lists.infradead.org,
+	Markus.Niebel@ew.tq-group.com,
+	m.felsch@pengutronix.de,
+	jszhang@kernel.org,
+	viorel.suman@nxp.com,
+	liviu.dudau@arm.com,
+	openbmc@lists.ozlabs.org,
+	agross@kernel.org,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	xiaoning.wang@nxp.com,
+	mbrugger@suse.com,
+	hayashi.kunihiko@socionext.com,
+	aswani.reddy@samsung.com,
+	linux-arm-msm@vger.kernel.org,
+	s32@nxp.com,
+	mhiramat@kernel.org,
+	marex@denx.de,
+	Steen.Hegelund@microchip.com,
+	anand.gore@broadcom.com,
+	thomas.lendacky@amd.com,
+	pshete@nvidia.com,
+	benjaminfair@google.com,
+	diogo.ivo@tecnico.ulisboa.pt,
+	jbx6244@gmail.com,
+	heiko@sntech.de,
+	tharvey@gateworks.com,
+	vigneshr@ti.com,
+	linux-rpi-kernel@lists.infradead.org,
+	afaerber@suse.de,
+	jun.li@nxp.com,
+	victor.liu@nxp.com,
+	linux-mediatek@lists.infradead.org,
+	mperttunen@nvidia.com,
+	peng.fan@nxp.com,
+	abelvesa@kernel.org,
+	chris.packham@alliedtelesis.co.nz,
+	lpieralisi@kernel.org,
+	laurent.pinchart@ideasonboard.com,
+	ezequiel@vanguardiasur.com.ar,
+	rafal@milecki.pl,
+	jonathanh@nvidia.com,
+	konrad.dybcio@somainline.org,
+	UNGLinuxDriver@microchip.com,
+	martin.blumenstingl@googlemail.com,
+	linux-rockchip@lists.infradead.org,
+	kernel@pengutronix.de,
+	qiangqing.zhang@nxp.com,
+	amhetre@nvidia.com,
+	linux-tegra@vger.kernel.org,
+	andrew@lunn.ch,
+	kristo@kernel.org,
+	nm@ti.com,
+	spujar@nvidia.com,
+	leoyang.li@nxp.com,
+	vadym.kochan@plvision.eu,
+	daniel.machon@microchip.com,
+	paul.elder@ideasonboard.com,
+	khilman@baylibre.com,
+	avifishman70@gmail.com,
+	tali.perry1@gmail.com,
+	linux-samsung-soc@vger.kernel.org,
+	robh+dt@kernel.org,
+	alexander.stein@ew.tq-group.com,
+	festevam@gmail.com,
+	brijeshkumar.singh@amd.com,
+	oliver.graute@kococonnector.com,
+	martink@posteo.de,
+	shenwei.wang@nxp.com,
+	f.fainelli@gmail.com,
+	sumitg@nvidia.com,
+	devicetree@vger.kernel.org,
+	eagle.zhou@nxp.com,
+	sebastian.hesselbarth@gmail.com,
+	atenart@kernel.org,
+	l.stach@pengutronix.de,
+	xuwei5@hisilicon.com,
+	tsahee@annapurnalabs.com,
+	ping.bai@nxp.com,
+	shawnguo@kernel.org,
+	linux-amlogic@lists.infradead.org,
+	jbrunet@baylibre.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	neil.armstrong@linaro.org,
+	suravee.suthikulpanit@amd.com,
+	thierry.reding@gmail.com,
+	rjui@broadcom.com,
+	lars.povlsen@microchip.com,
+	magnus.damm@gmail.com,
+	geert+renesas@glider.be,
+	wei.fang@nxp.com,
+	linux-imx@nxp.com,
+	gregory.clement@bootlin.com,
+	yuenn@google.com,
+	vidyas@nvidia.com,
+	chanho.min@lge.com,
+	david@ixit.cz,
+	aford173@gmail.com,
+	s.prashar@samsung.com,
+	khuong@os.amperecomputing.com,
+	sudeep.holla@arm.com,
+	sbranden@broadcom.com,
+	shijie.qin@nxp.com,
+	venture@google.com,
+	kursad.oney@broadcom.com,
+	linux-renesas-soc@vger.kernel.org,
+	hongxing.zhu@nxp.com,
+	akhilrajeev@nvidia.com
+Subject: Re: (subset) [PATCH v2 16/23] arm64: dts: Update cache properties for qcom
+Date: Thu, 29 Dec 2022 11:23:41 -0600
+Message-Id: <167233461757.1099840.14261373049741719746.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.37.1
+In-Reply-To: <20221107155825.1644604-17-pierre.gondois@arm.com>
+References: <20221107155825.1644604-1-pierre.gondois@arm.com> <20221107155825.1644604-17-pierre.gondois@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v7 4/4] thermal: mediatek: add another get_temp ops for
- thermal sensors
-Content-Language: en-US
-To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Michael Kao <michael.kao@mediatek.com>,
- linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20221018-up-i350-thermal-bringup-v7-0-ebf08ff2eddb@baylibre.com>
- <20221018-up-i350-thermal-bringup-v7-4-ebf08ff2eddb@baylibre.com>
- <4121bb6b-30db-7a23-f4c8-40afdda7a0b5@linaro.org>
- <COTTJX635TNF.1WL2TEZN7VW9O@amjad-ThinkPad-T490>
- <adfe41f7-00e5-876b-7803-3127919fba13@linaro.org>
- <COUMF3IZ9Y63.LA3KFHJSUZIC@amjad-ThinkPad-T490>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <COUMF3IZ9Y63.LA3KFHJSUZIC@amjad-ThinkPad-T490>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_074919_809436_30BB2F2F 
-X-CRM114-Status: GOOD (  22.34  )
+X-CRM114-CacheID: sfid-20221229_092419_190335_5B88A323 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,79 +186,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/12/2022 10:18, Amjad Ouled-Ameur wrote:
-> Hi Daniel,
-> On Mon Dec 5, 2022 at 8:39 PM CET, Daniel Lezcano wrote:
->>
->> Hi Amjad,
->>
->>
->> On 05/12/2022 11:41, Amjad Ouled-Ameur wrote:
->>
->> [ ... ]
->>
->>>>> @@ -1161,11 +1197,24 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->>>>>     
->>>>>     	platform_set_drvdata(pdev, mt);
->>>>>     
->>>>> -	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
->>>>> -					      &mtk_thermal_ops);
->>>>> -	if (IS_ERR(tzdev)) {
->>>>> -		ret = PTR_ERR(tzdev);
->>>>> -		goto err_disable_clk_peri_therm;
->>>>> +	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
->>>>> +		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
->>>>> +		if (!tz)
->>>>> +			return -ENOMEM;
->>>>> +
->>>>> +		tz->mt = mt;
->>>>> +		tz->id = i;
->>>>> +
->>>>> +		tzdev = devm_thermal_of_zone_register(&pdev->dev, i, tz, (i == 0) ?
->>>>> +							     &mtk_thermal_ops :
->>>>> +							     &mtk_thermal_sensor_ops);
->>>>
->>>> Here you use again the aggregation
->>> I addressed this concern in V6, could you please take a look and let me
->>> know what you think [0].
->>>
->>> [0]: https://lore.kernel.org/all/5eb0cdc2-e9f9-dd42-bf80-b7dcd8bcc196@baylibre.com/
->>
->> May I misunderstanding but AFAICS, this patch is setting the
->> mtk_thermal_ops if the sensor id is zero. The get_temp is computing the
->> max temperature in this ops which is what we don't want to do.
+On Mon, 7 Nov 2022 16:57:09 +0100, Pierre Gondois wrote:
+> The DeviceTree Specification v0.3 specifies that the cache node
+> 'compatible' and 'cache-level' properties are 'required'. Cf.
+> s3.8 Multi-level and Shared Cache Nodes
+> The 'cache-unified' property should be present if one of the
+> properties for unified cache is present ('cache-size', ...).
 > 
-> Correct, but I think that is out of scope of this patchset, as the current
-> driver already uses mtk_thermal_ops for sensor 0. The focus of this patchset
-> is to add support for the other sensors.
+> Update the Device Trees accordingly.
 > 
-> Besides, what do you suggest as a clean implementation if the current one
-> no longer meets thermal core requirements ?
+> [...]
 
-IIUC, there is a sensor per couple of cores. 1 x 2Bigs, 1 x 2Bigs, 1 x 4 
-Little, right ?
+Applied, thanks!
 
-If it is the case, then a thermal zone per sensor with the trip points 
-and a cooling device for each of them.
+[16/23] arm64: dts: Update cache properties for qcom
+        commit: 9435294c6517dc70bb608505b79097a58ea7c6a3
 
-The two thermal zones for the big will share the same cooling device. 
-The little thermal zone will have its own cooling device.
-
-If there is the GPU, then its own cooling device also with devfreq.
-
-
->> <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
->>
->> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
->> <http://twitter.com/#!/linaroorg> Twitter |
->> <http://www.linaro.org/linaro-blog/> Blog
-> 
-
+Best regards,
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+Bjorn Andersson <andersson@kernel.org>
 
