@@ -4,174 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8267BC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 17:24:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528DDC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 17:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S1UAqcUu7o6oEpma0eAg/XpascSM9CF4mPZAbW48BLs=; b=Yt7doG8cPbls0V4TguVEEv08Cd
-	DHomzXQKGGRlFDDoYP0j65hbmP5Y9p+HK/8EYAdmt1uZNtAbvQDs5L8YD+XeuNFQylC/r98sCuu7Q
-	QIc7iV34t6ENuAg5XN0S2MqFqS0fTGNNwAb3sjXzvR7jGGnYYt0KGZYvEM5m2Cv0gtWPp2kAmmfZR
-	Z217fODGpgyxsv0+z349rKpvI8n4adw91lfKqkBCHBWqO8kobzZZ7UL4TRvXtkTJ1xnFq238RzAej
-	Xjng4YMpI1Qyyn9SvIT92zswL0fH5xkXOYXjN7mkVMwJK0AiC1vQGz/xQrCtQeYcfiQNAD1G1SGOU
-	r6ngtf2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=; b=cHhCLZGW4ul+Zskgdq6fiKUhST
+	N9gpVBWfR10k1s6pdTx0D0za/9g0zFt9Sas5X8ZCTMHPojY6kHV7E1Es7Vxox4b2lFk/XFQeBKVLb
+	cGWGfUP+VG+8+kc8BntxVm6EOuC3iYVKoZnOFHUEG/HcvBaMojjMvKox6nVzyyWBLMg6xFl64dTcu
+	Vdm2OFha5jz+W7IuBgyVnsNgFt1BLOaaL07Z/BMJlB/PSvWFXe/ujB2itE+fjHq9xOOMBNrGsX1OW
+	Ix7JhViobA3YxR/GMjfq+EFvZqeFPZ+LLTCqcM5F2h7xQMIex7HLQ8ob/8Ou3UyGzkXG9YaayIy3Y
+	EZZlnUtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAwe6-000J5P-NK; Thu, 29 Dec 2022 17:24:46 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1pAx82-000X10-4I; Thu, 29 Dec 2022 17:55:42 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAwdc-000IkB-6k; Thu, 29 Dec 2022 17:24:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A432FB81A1D;
-	Thu, 29 Dec 2022 17:24:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D196C433EF;
-	Thu, 29 Dec 2022 17:24:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672334654;
-	bh=m9HPREp2BBaXTvbpQHx2WQprM9b37LXlFfRjZD2pPbc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qt7/hxQDBIvlE+UOhExIE+gpA1yr2Ytl6cD8uXTtl6jgmBiTsoa9S2hzoepP7nwKs
-	 hhpc3+xHFhXVHpJMCUop4bill7ozLgMzwQO9LA8YMAFtxiODZoV/t6jq0Emw7Vrcpc
-	 e3wDGuhBEwoBzI4P7WQzE+OVPLDTQ1V36xIiwX6Tdlhhavqpe87KM/WVAf3FA/niGn
-	 Ujoi3sHXiSMn5Y2NVbd6ytWoXoohJM3TaDA3JajgPrNoErUXxWekYOsYNjAIXlTMEQ
-	 vMYOqfDifnyfUtz3zYMqXx6dcSELIGyAql3swkh8gUSPi1+mCzcYJTnQt6naxTJBRV
-	 xmQpIqRdURmSg==
-From: Bjorn Andersson <andersson@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	pierre.gondois@arm.com
-Cc: linux-realtek-soc@lists.infradead.org,
-	alim.akhtar@samsung.com,
-	clin@suse.com,
-	krzysztof.kozlowski+dt@linaro.org,
-	tmaimon77@gmail.com,
-	chris.obbard@collabora.com,
-	ming.qian@nxp.com,
-	william.zhang@broadcom.com,
-	linux-arm-kernel@lists.infradead.org,
-	Markus.Niebel@ew.tq-group.com,
-	m.felsch@pengutronix.de,
-	jszhang@kernel.org,
-	viorel.suman@nxp.com,
-	liviu.dudau@arm.com,
-	openbmc@lists.ozlabs.org,
-	agross@kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	xiaoning.wang@nxp.com,
-	mbrugger@suse.com,
-	hayashi.kunihiko@socionext.com,
-	aswani.reddy@samsung.com,
-	linux-arm-msm@vger.kernel.org,
-	s32@nxp.com,
-	mhiramat@kernel.org,
-	marex@denx.de,
-	Steen.Hegelund@microchip.com,
-	anand.gore@broadcom.com,
-	thomas.lendacky@amd.com,
-	pshete@nvidia.com,
-	benjaminfair@google.com,
-	diogo.ivo@tecnico.ulisboa.pt,
-	jbx6244@gmail.com,
-	heiko@sntech.de,
-	tharvey@gateworks.com,
-	vigneshr@ti.com,
-	linux-rpi-kernel@lists.infradead.org,
-	afaerber@suse.de,
-	jun.li@nxp.com,
-	victor.liu@nxp.com,
-	linux-mediatek@lists.infradead.org,
-	mperttunen@nvidia.com,
-	peng.fan@nxp.com,
-	abelvesa@kernel.org,
-	chris.packham@alliedtelesis.co.nz,
-	lpieralisi@kernel.org,
-	laurent.pinchart@ideasonboard.com,
-	ezequiel@vanguardiasur.com.ar,
-	rafal@milecki.pl,
-	jonathanh@nvidia.com,
-	konrad.dybcio@somainline.org,
-	UNGLinuxDriver@microchip.com,
-	martin.blumenstingl@googlemail.com,
-	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de,
-	qiangqing.zhang@nxp.com,
-	amhetre@nvidia.com,
-	linux-tegra@vger.kernel.org,
-	andrew@lunn.ch,
-	kristo@kernel.org,
-	nm@ti.com,
-	spujar@nvidia.com,
-	leoyang.li@nxp.com,
-	vadym.kochan@plvision.eu,
-	daniel.machon@microchip.com,
-	paul.elder@ideasonboard.com,
-	khilman@baylibre.com,
-	avifishman70@gmail.com,
-	tali.perry1@gmail.com,
-	linux-samsung-soc@vger.kernel.org,
-	robh+dt@kernel.org,
-	alexander.stein@ew.tq-group.com,
-	festevam@gmail.com,
-	brijeshkumar.singh@amd.com,
-	oliver.graute@kococonnector.com,
-	martink@posteo.de,
-	shenwei.wang@nxp.com,
-	f.fainelli@gmail.com,
-	sumitg@nvidia.com,
-	devicetree@vger.kernel.org,
-	eagle.zhou@nxp.com,
-	sebastian.hesselbarth@gmail.com,
-	atenart@kernel.org,
-	l.stach@pengutronix.de,
-	xuwei5@hisilicon.com,
-	tsahee@annapurnalabs.com,
-	ping.bai@nxp.com,
-	shawnguo@kernel.org,
-	linux-amlogic@lists.infradead.org,
-	jbrunet@baylibre.com,
-	bcm-kernel-feedback-list@broadcom.com,
-	neil.armstrong@linaro.org,
-	suravee.suthikulpanit@amd.com,
-	thierry.reding@gmail.com,
-	rjui@broadcom.com,
-	lars.povlsen@microchip.com,
-	magnus.damm@gmail.com,
-	geert+renesas@glider.be,
-	wei.fang@nxp.com,
-	linux-imx@nxp.com,
-	gregory.clement@bootlin.com,
-	yuenn@google.com,
-	vidyas@nvidia.com,
-	chanho.min@lge.com,
-	david@ixit.cz,
-	aford173@gmail.com,
-	s.prashar@samsung.com,
-	khuong@os.amperecomputing.com,
-	sudeep.holla@arm.com,
-	sbranden@broadcom.com,
-	shijie.qin@nxp.com,
-	venture@google.com,
-	kursad.oney@broadcom.com,
-	linux-renesas-soc@vger.kernel.org,
-	hongxing.zhu@nxp.com,
-	akhilrajeev@nvidia.com
-Subject: Re: (subset) [PATCH v2 16/23] arm64: dts: Update cache properties for qcom
-Date: Thu, 29 Dec 2022 11:23:41 -0600
-Message-Id: <167233461757.1099840.14261373049741719746.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20221107155825.1644604-17-pierre.gondois@arm.com>
-References: <20221107155825.1644604-1-pierre.gondois@arm.com> <20221107155825.1644604-17-pierre.gondois@arm.com>
+	id 1pAx7y-000Wvp-QP
+	for linux-mediatek@lists.infradead.org; Thu, 29 Dec 2022 17:55:40 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id fc4so46592301ejc.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 09:55:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=;
+        b=MBHGJH1/ixTYpAHbR/CCk9je2PaztiCDJ20MA1CDaO0YOZ/yEa+DJ7h0bhMKPr89wY
+         NNsHFBRGLBsSB5C7zczmcFLe/0rVsEzzF0rT2PvG6cGQn94DWec0q9xDWaLNUaobVNXh
+         rdOFNEin9pS2Wr8WNVM78+ke7W5GDJLr45hz92Oru0QrGq+JeuTAd+jM8vA79Gw2Xqqs
+         8mTGrpEih0VVy5pNdPQYoHQxKCLtMBZSw3sjHXMQTp1H87kO+X8IJFvcC7eI45oYfFfk
+         ttrwBGKUCE+7OUHB19q39XlmvHENkH2oLK6D8NFJkTYuR5fQR8UTNLcw1nTLFVbmUgNe
+         CP7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=;
+        b=5ElR4JOwLHDX6eaOkYGc76eoNFtUYSn9FW/r4/QaiPXYnpZVYnW3DTQ10Y1Rx4GrCB
+         h3FSVN+6QzhW6LPkKgDTlo2z2FuRbbjW7D5df2u+u+TWDIBE8GI6uUaTGH4Gjh9y+GW4
+         hztaiq7wrGZFxEHX8469SiUjOWC4N1ydIhUHyFLkAspCskeKRH/RFw5ctUGvhCVNShv8
+         54f7+CZ1SszFlb10TtLwJy8yF/izZ+BGs2F9/EYQP//7bhN09fBvrXvvX4l+z8BiGpHh
+         wPZIHV8IhDHl7SuhkajyzXGFPmy/k99DJYuyzKvQ677ltg8uwk5O8HIx9yssT3jmMPnH
+         rb+Q==
+X-Gm-Message-State: AFqh2kp6vy3kiQFLN+jG3/DsMXIEiz4EqHLhRhR69pLQZlve8OrvxM7X
+	wBEEt/oKSng2xiD2/eBXlXptAI5dfPyOQ7zd9g==
+X-Google-Smtp-Source: AMrXdXu6dRS3u/srGDYhPBnVsq7v/UC7iXVwcN+ZqAsRxsBxkwewgFIXTHo9cBn1W4PhAdmycaMh+6lzKzADQSQrzXU=
+X-Received: by 2002:a17:906:4894:b0:7a6:fc0f:6fe6 with SMTP id
+ v20-20020a170906489400b007a6fc0f6fe6mr1734540ejq.694.1672336534454; Thu, 29
+ Dec 2022 09:55:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+References: <CAMWtyy1sSHc_DYQ3kq+FWMJKK5Wo3QEgO1yd6wQXx3x0Lp4Uog@mail.gmail.com>
+ <Y6isrKS7zgMrNe3S@makrotopia.org>
+In-Reply-To: <Y6isrKS7zgMrNe3S@makrotopia.org>
+From: Vishal Rao <vishalrao@gmail.com>
+Date: Thu, 29 Dec 2022 23:25:23 +0530
+Message-ID: <CAMWtyy2EhZMd7Yf6CWXpM7f6EbzbYDu+ifpAnwpDiAP8zPoP0g@mail.gmail.com>
+Subject: Re: Wifi 6E 6ghz not working on MediaTek MT7922 (AMD RZ616)
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+	Vishal Rao <vishalrao@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_092419_190335_5B88A323 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221229_095539_014907_869A8037 
+X-CRM114-Status: GOOD (  21.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,23 +85,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 7 Nov 2022 16:57:09 +0100, Pierre Gondois wrote:
-> The DeviceTree Specification v0.3 specifies that the cache node
-> 'compatible' and 'cache-level' properties are 'required'. Cf.
-> s3.8 Multi-level and Shared Cache Nodes
-> The 'cache-unified' property should be present if one of the
-> properties for unified cache is present ('cache-size', ...).
-> 
-> Update the Device Trees accordingly.
-> 
-> [...]
+Hello Daniel !
 
-Applied, thanks!
+Thank you for your response - apologies for being slow to follow up -
+I will post the info you asked for soon [tm] but I note there appears
+to be some new firmware for the mt7922 (a few hours ago) which I will
+also try when gathering the info.
 
-[16/23] arm64: dts: Update cache properties for qcom
-        commit: 9435294c6517dc70bb608505b79097a58ea7c6a3
+Off the top of my head the regulatory info/region is set to US while I
+am located in India and I have tried the latest firmware off git
+master as well as another (?) location suggested by Nick Morrow with
+no luck (same results) but allow me some time (likely this weekend) to
+re-check and get back to you.
 
-Best regards,
+Regards,
+Vishal
+
+On Mon, 26 Dec 2022 at 01:34, Daniel Golle <daniel@makrotopia.org> wrote:
+>
+> Hi!
+>
+> On Sun, Dec 25, 2022 at 08:19:15PM +0530, Vishal Rao wrote:
+> > Hello!
+> >
+> > Using Ubuntu 22.04 LTS based distro elementary OS 7 with the latest
+> > available Ubuntu mainline kernel 6.1 RC5 build the wifi does not
+> > connect to the 6GHZ band (Wifi 6E) and it only even shows the 6ghz
+> > SSID name *after* I have connected to the 5ghz wifi band.
+> >
+> > This is on a new ASUS ZenBook laptop model UM5302TA with the AMD Ryzen
+> > 6800U CPU platform which includes the AMD-Mediatek co-developed RZ616
+> > wifi chip I believe.
+> >
+> > Pastebin of lspci -vvnn output: https://pastebin.ubuntu.com/p/QwM58ZkptG
+> >
+> > Let me know what further information I should provide - happy to do so!
+>
+>
+> Please also share the output of `iw list` which will tell if we are
+> dealing with a driver problem or a regulatory/configuration problem.
+> Did you configure the wireless regulatory domain the device is located
+> in?
+>
+> To have access to 6 GHz bands the regulatory region needs to be known,
+> I read that on Ubuntu it works like this:
+>
+> https://askubuntu.com/questions/701709/how-can-i-change-my-wireless-cards-regulatory-domain-dbm-higher-than-30
+
+
+
 -- 
-Bjorn Andersson <andersson@kernel.org>
+"The World is a book, and those who do not travel read only a page." -
+St. Augustine.
 
