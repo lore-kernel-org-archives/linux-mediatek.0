@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528DDC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 17:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBED7C3DA79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 20:25:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=; b=cHhCLZGW4ul+Zskgdq6fiKUhST
-	N9gpVBWfR10k1s6pdTx0D0za/9g0zFt9Sas5X8ZCTMHPojY6kHV7E1Es7Vxox4b2lFk/XFQeBKVLb
-	cGWGfUP+VG+8+kc8BntxVm6EOuC3iYVKoZnOFHUEG/HcvBaMojjMvKox6nVzyyWBLMg6xFl64dTcu
-	Vdm2OFha5jz+W7IuBgyVnsNgFt1BLOaaL07Z/BMJlB/PSvWFXe/ujB2itE+fjHq9xOOMBNrGsX1OW
-	Ix7JhViobA3YxR/GMjfq+EFvZqeFPZ+LLTCqcM5F2h7xQMIex7HLQ8ob/8Ou3UyGzkXG9YaayIy3Y
-	EZZlnUtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wa6SjqwqigYFjQFg4yvpSnYsIPPCeb4XidrvPSv3jSk=; b=T55vLVSEisqeNN0xD8KGFayQRb
+	/8p3eS1Mp/ABRnxqe7DNf01NrBy6IIIUonkL2+6qh0LLydWHAxxhF3gH9PiBnHgMJyGMldoZ4AcEV
+	dE9qjNNJEQre0L7cDzX+KHGJqVK5NEjUkYUBLdWFJQaz9giMwl3xxMY5AVJAN8/VYnLfwehk3sIEe
+	dRq2ddXrfvojq7aXwFeQwVJMv7CrN9CNnZhU8dBZg9mTdUYInsDoTTPCYuY2jzqVix2e4l7PcSEgx
+	DqjD/vJUJtRC6+AL5kCkyMAa/zIv1xZ8syJXEhqbbdZ2h81soPfJURmfbbcxRdnNRIvE4E1lVfy+1
+	KPAYqJrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAx82-000X10-4I; Thu, 29 Dec 2022 17:55:42 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1pAzSg-001lcc-P7; Thu, 29 Dec 2022 20:25:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAx7y-000Wvp-QP
-	for linux-mediatek@lists.infradead.org; Thu, 29 Dec 2022 17:55:40 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id fc4so46592301ejc.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 09:55:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=;
-        b=MBHGJH1/ixTYpAHbR/CCk9je2PaztiCDJ20MA1CDaO0YOZ/yEa+DJ7h0bhMKPr89wY
-         NNsHFBRGLBsSB5C7zczmcFLe/0rVsEzzF0rT2PvG6cGQn94DWec0q9xDWaLNUaobVNXh
-         rdOFNEin9pS2Wr8WNVM78+ke7W5GDJLr45hz92Oru0QrGq+JeuTAd+jM8vA79Gw2Xqqs
-         8mTGrpEih0VVy5pNdPQYoHQxKCLtMBZSw3sjHXMQTp1H87kO+X8IJFvcC7eI45oYfFfk
-         ttrwBGKUCE+7OUHB19q39XlmvHENkH2oLK6D8NFJkTYuR5fQR8UTNLcw1nTLFVbmUgNe
-         CP7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LYh2NJvWZas8YI4a4QyIuQl5Ayz1JsLDPfcZD8+PXLs=;
-        b=5ElR4JOwLHDX6eaOkYGc76eoNFtUYSn9FW/r4/QaiPXYnpZVYnW3DTQ10Y1Rx4GrCB
-         h3FSVN+6QzhW6LPkKgDTlo2z2FuRbbjW7D5df2u+u+TWDIBE8GI6uUaTGH4Gjh9y+GW4
-         hztaiq7wrGZFxEHX8469SiUjOWC4N1ydIhUHyFLkAspCskeKRH/RFw5ctUGvhCVNShv8
-         54f7+CZ1SszFlb10TtLwJy8yF/izZ+BGs2F9/EYQP//7bhN09fBvrXvvX4l+z8BiGpHh
-         wPZIHV8IhDHl7SuhkajyzXGFPmy/k99DJYuyzKvQ677ltg8uwk5O8HIx9yssT3jmMPnH
-         rb+Q==
-X-Gm-Message-State: AFqh2kp6vy3kiQFLN+jG3/DsMXIEiz4EqHLhRhR69pLQZlve8OrvxM7X
-	wBEEt/oKSng2xiD2/eBXlXptAI5dfPyOQ7zd9g==
-X-Google-Smtp-Source: AMrXdXu6dRS3u/srGDYhPBnVsq7v/UC7iXVwcN+ZqAsRxsBxkwewgFIXTHo9cBn1W4PhAdmycaMh+6lzKzADQSQrzXU=
-X-Received: by 2002:a17:906:4894:b0:7a6:fc0f:6fe6 with SMTP id
- v20-20020a170906489400b007a6fc0f6fe6mr1734540ejq.694.1672336534454; Thu, 29
- Dec 2022 09:55:34 -0800 (PST)
+	id 1pAzSU-001lWb-7Z; Thu, 29 Dec 2022 20:24:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 16D51617E3;
+	Thu, 29 Dec 2022 20:24:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9475FC433D2;
+	Thu, 29 Dec 2022 20:24:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672345492;
+	bh=ETuogk7ACYxYQV9uzj4PmKQpxDQ3mxpqHb49NYgVa5U=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=jDjpE5mIfycRAMFRF5PXuWGu+Wm+D4yjbQRpRtMnYPV5iP75n6NeyrDgtwgXs4Xvj
+	 KwKuW5/TL6hk0hYJDPzkWnbkYb5A4oFEUmmjGpsyL/Ay4jVEnJUHieya8e9cF6D0F7
+	 BgSlvWjR0uEeisdRgvsWSjjqfgHf8qC/Ds2AoHjPEXSLMgmFtdrNHEhyT6NLUSZd8l
+	 QjoFB6b6UnyDSOJnDYbmUCv7ueQp4nDx+rNqr3Y9megkYbZp+Nqa4i127kPnUhOxl/
+	 pdgtLuW9/jygdy71PSh2O9Xczuz3z0YVo1A53D/KLob5sRVMUYvsHhxYbKW5HIaknm
+	 ABHqiXd2rOZzQ==
+From: Mark Brown <broonie@kernel.org>
+To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20221228115756.28014-1-allen-kh.cheng@mediatek.com>
+References: <20221228115756.28014-1-allen-kh.cheng@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: Add machine support for max98357a
+Message-Id: <167234548928.88546.3169179138497536747.b4-ty@kernel.org>
+Date: Thu, 29 Dec 2022 20:24:49 +0000
 MIME-Version: 1.0
-References: <CAMWtyy1sSHc_DYQ3kq+FWMJKK5Wo3QEgO1yd6wQXx3x0Lp4Uog@mail.gmail.com>
- <Y6isrKS7zgMrNe3S@makrotopia.org>
-In-Reply-To: <Y6isrKS7zgMrNe3S@makrotopia.org>
-From: Vishal Rao <vishalrao@gmail.com>
-Date: Thu, 29 Dec 2022 23:25:23 +0530
-Message-ID: <CAMWtyy2EhZMd7Yf6CWXpM7f6EbzbYDu+ifpAnwpDiAP8zPoP0g@mail.gmail.com>
-Subject: Re: Wifi 6E 6ghz not working on MediaTek MT7922 (AMD RZ616)
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
-	Vishal Rao <vishalrao@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12-dev-69c4d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_095539_014907_869A8037 
-X-CRM114-Status: GOOD (  21.62  )
+X-CRM114-CacheID: sfid-20221229_122458_381530_E2F2F61A 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +77,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Daniel !
+On Wed, 28 Dec 2022 19:57:56 +0800, Allen-KH Cheng wrote:
+> Add support for mt8186 with mt6366 and max98357a.
+> 
+> 
 
-Thank you for your response - apologies for being slow to follow up -
-I will post the info you asked for soon [tm] but I note there appears
-to be some new firmware for the mt7922 (a few hours ago) which I will
-also try when gathering the info.
+Applied to
 
-Off the top of my head the regulatory info/region is set to US while I
-am located in India and I have tried the latest firmware off git
-master as well as another (?) location suggested by Nick Morrow with
-no luck (same results) but allow me some time (likely this weekend) to
-re-check and get back to you.
+   broonie/sound.git for-next
 
-Regards,
-Vishal
+Thanks!
 
-On Mon, 26 Dec 2022 at 01:34, Daniel Golle <daniel@makrotopia.org> wrote:
->
-> Hi!
->
-> On Sun, Dec 25, 2022 at 08:19:15PM +0530, Vishal Rao wrote:
-> > Hello!
-> >
-> > Using Ubuntu 22.04 LTS based distro elementary OS 7 with the latest
-> > available Ubuntu mainline kernel 6.1 RC5 build the wifi does not
-> > connect to the 6GHZ band (Wifi 6E) and it only even shows the 6ghz
-> > SSID name *after* I have connected to the 5ghz wifi band.
-> >
-> > This is on a new ASUS ZenBook laptop model UM5302TA with the AMD Ryzen
-> > 6800U CPU platform which includes the AMD-Mediatek co-developed RZ616
-> > wifi chip I believe.
-> >
-> > Pastebin of lspci -vvnn output: https://pastebin.ubuntu.com/p/QwM58ZkptG
-> >
-> > Let me know what further information I should provide - happy to do so!
->
->
-> Please also share the output of `iw list` which will tell if we are
-> dealing with a driver problem or a regulatory/configuration problem.
-> Did you configure the wireless regulatory domain the device is located
-> in?
->
-> To have access to 6 GHz bands the regulatory region needs to be known,
-> I read that on Ubuntu it works like this:
->
-> https://askubuntu.com/questions/701709/how-can-i-change-my-wireless-cards-regulatory-domain-dbm-higher-than-30
+[1/1] ASoC: mediatek: mt8186: Add machine support for max98357a
+      commit: 8a54f666db581bbf07494cca44a0124acbced581
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
--- 
-"The World is a book, and those who do not travel read only a page." -
-St. Augustine.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
