@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B4DC3DA79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 10:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267DEC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 10:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rCm7hH5uXZuEM5snO1A0LAgtMHllZa9phPVhoVRh7Lw=; b=zK1V+mYmvNZS2LXil1Kg/3FTU8
-	93QuE1TqjznthXhzWu2aDUVdGCcPcLFe7Xm9hMqF+WEVxJe7H8r+b8Ep1QwbL51e93fxXH6QwN8h3
-	ldSaYOSCIkGvYegqs9AVqMXYdemHCRGnOyBZfMbHLXdjCES7BxSEroLkVBaCo+RvzRyyU6GU1UV85
-	lRws1BUaHuT733JMiFkSVFeMUBdxrqhoFjGLgUbbBRJ04KU4B7VWDTooCAqL6bORGlIqFXzQuxGD6
-	KymAkUqOxOtJj8fWXnbx4vPS108c9Qb40c5zVnKc3fQTma7rWWjhxy/uPjQKktyP43dAKvJ2EwtAp
-	F8SPHWWA==;
+	bh=B4PWewLwFvhPgA/g5BiED2BT3HTWS9F6JCR/JU66we8=; b=dDO9ZJTqi6vGuTiRAHXSBVeVsE
+	pdg/JVxNJEmfXXW25CBri9WxqjsPoIOS41rh0C+RIkcz+Yq4fD6R7DNOrK/s5s7w2yPzPwXq5r9CN
+	EcX+aLX4Y1l1axlGMCh2T0XsxpyNk7y3JvD3Af9lBNeAkzSSHFyY0GTf4PkFII066vfOvH8CQM7bx
+	k+fAyoFOUE9nZh9MKP77X71L/Z5DPak8/oVMRvw5xU9BgRZk/7nMqQpuF06iWH0n6k2umYQjd5dYU
+	w4vAhTi5cn1INA87CsMNl3n1PgqYfEgRzd0wL4tQpGNrfWzgHKm7YPhmi8uYzY9/ne8oZJeJzoG2l
+	KR4AhaEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pApsd-00EXyG-Cr; Thu, 29 Dec 2022 10:11:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pApta-00EYaF-Ue; Thu, 29 Dec 2022 10:12:18 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pApsa-00EXwR-DV; Thu, 29 Dec 2022 10:11:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=rCm7hH5uXZuEM5snO1A0LAgtMHllZa9phPVhoVRh7Lw=; b=Y0wlYpGIUFCQkRdN2evvBbJfuk
-	ZRHfrCZBtSO1jV7NceW3pN0sImdiNUcwx5sziVF0RFMTgvXOYngQlT0vxd0Ez9dQTNQo3Yq2bJFWs
-	z9sWk4HBS3VGMceV2M8yFWlDLxQk+Bd0t0qBwHFkRdD+RJG1pK1ipkOaXMJVNKCilnB4K7XcKnAGn
-	tlMfcl+95gc+0ORE1FKQqxYE4ZvD9bY4nlZzrDaPMlsuzJoz444o2CEj5aIhzBVuCoGTofR93Crap
-	vfwof1Oh7lmWXrtjArgzeAuU6imc8bjWeKpyfYIS8x7c9LpKyAbbb3jNhVxMSWkoyDKurDNVboKPk
-	ALXRiTTA==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pApsQ-00GNBM-1M;
-	Thu, 29 Dec 2022 10:11:10 +0000
-X-UUID: 8c6ddde6461445ab80d35a414e4ff39f-20221229
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rCm7hH5uXZuEM5snO1A0LAgtMHllZa9phPVhoVRh7Lw=;
-	b=bQSdPxzqVlZaNdZe2FPJ71AsB9S06uQ/bEy8ewCbiYceY41hH9Ow7g5wAAh3u4Dk47bu59Rays9thCf+XeEZjuArSdH8IKiuuhNY56gaDU7DkfqTIit5gmaXw6giMSnVjW0tfDbTS0cEfr1xf4KsmLEZrQ7cZJZ9JQxr3aVidH0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:756a57d4-2fc3-4169-a2d4-f6781f409616,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:-32768,SF:-32768,FILE:0,BULK:-32768,RULE:Rele
-	ase_Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:09771b1,CLOUDID:97172253-dd49-462e-a4be-2143a3ddc739,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 8c6ddde6461445ab80d35a414e4ff39f-20221229
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 710377983; Thu, 29 Dec 2022 03:10:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 29 Dec 2022 17:30:14 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 29 Dec 2022 17:30:14 +0800
-From: <chris.lu@mediatek.com>
-To: <jwboyer@kernel.org>, <dwmw2@infradead.org>, <ben@decadent.org.uk>,
-	<marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <sean.wang@mediatek.com>, <soul.huang@mediatek.com>,
-	<yn.chen@mediatek.com>, <robin.chiu@mediatek.com>, <Deren.Wu@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jing.cai@mediatek.com>,
-	<linux-firmware@kernel.org>, <linux-bluetooth@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Chris.Lu <chris.lu@mediatek.com>
-Subject: [PATCH] linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
-Date: Thu, 29 Dec 2022 17:29:59 +0800
-Message-ID: <20221229093000.25369-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pAptU-00EYQ1-Pp
+	for linux-mediatek@lists.infradead.org; Thu, 29 Dec 2022 10:12:16 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id n12so5857171pjp.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 02:12:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=B4PWewLwFvhPgA/g5BiED2BT3HTWS9F6JCR/JU66we8=;
+        b=B2DleHZVuSPcPWUD6oNq/HUS5bmKzL6BhQnqqL7ca9taihBXoh0DILjADWG3L2BlpK
+         BTqGS/gjbNVA2mYiiPs7IhFKkmdBDJeMZILTB2K7RYRZKVPX3lNoYpbTHK/5Bzyonqtq
+         TcPVME6rlp60Evj+hS6NC23sn7m0bBwC3LCss=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B4PWewLwFvhPgA/g5BiED2BT3HTWS9F6JCR/JU66we8=;
+        b=Xj5+YghlksWMv66HIpdo9rzyjadySnvKu8d0k46+BrYId1LQoQmOk/cKoS5YDRmYDC
+         g2F1jRatlOUTruOA0X2WAHjBdnWWgTiAs1O84OlQLB1XlMZku8mmi0XZR7sWB4Ci9o0a
+         +OCjxbNVIDi1zeBRRi8oHDw4N3vXd4DC7bI6WW7RO9yXMH4weBYj/pRZU4r/cZmZcgUg
+         eYqHSmy0DMNFRvVTkdC6z0T7TrMvrQeaF26cI3xrmZWWslsnopXtth7wNNad0Egm5hah
+         K77qthVqGpFN7cTvf7iXAI0/yvaao/J9LIbUeyBr0xrEdNA7SNBx8aE7I3K6sSxlFi4+
+         U/KQ==
+X-Gm-Message-State: AFqh2krSfvSS0b+RREzqw216uNLEYfsY7ZqLrSLJ4NgRqou99Y8k8Z/L
+	1HZMjFHSC8WhrQuivsCp5+5YpA==
+X-Google-Smtp-Source: AMrXdXulMdiJqi+NjL53qAm03R3ExKKI+u/w+sYEV2B+ek9/J9EZBWk6aaRKiZ+Bn8BrTgjyt6X8/w==
+X-Received: by 2002:a17:90a:bd11:b0:225:b29f:42 with SMTP id y17-20020a17090abd1100b00225b29f0042mr31599271pjr.14.1672308726759;
+        Thu, 29 Dec 2022 02:12:06 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:4f78:5286:f0f2:c795])
+        by smtp.gmail.com with ESMTPSA id 30-20020a17090a09a100b00225f49bd4b6sm6072516pjo.36.2022.12.29.02.12.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Dec 2022 02:12:06 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2] arm64: dts: mediatek: mt8192: Mark scp_adsp clock as broken
+Date: Thu, 29 Dec 2022 18:12:02 +0800
+Message-Id: <20221229101202.1655924-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_101107_535174_2C1220C3 
-X-CRM114-Status: UNSURE (   6.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221229_021213_140593_D493B300 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,18 +90,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Chris.Lu" <chris.lu@mediatek.com>
+The scp_adsp clock controller is under the SCP_ADSP power domain. This
+power domain is currently not supported nor defined.
 
-*** BLURB HERE ***
+Mark the clock controller as broken for now, to avoid the system from
+trying to access it, and causing the CPU or bus to stall.
 
-Chris.Lu (1):
-  linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+Fixes: 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192 clock controllers")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+Changes since v1:
+- Changed "broken" to "fail"
+- Rebased onto v6.2-rc1 plus v6.2-tmp/* from mediatek repo
 
- WHENCE                                  |   2 +-
- mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin | Bin 527150 -> 527662 bytes
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index dd618c563e8a..ef4fcefa2bfc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -644,6 +644,8 @@ scp_adsp: clock-controller@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp";
+ 			reg = <0 0x10720000 0 0x1000>;
+ 			#clock-cells = <1>;
++			/* power domain dependency not upstreamed */
++			status = "fail";
+ 		};
+ 
+ 		uart0: serial@11002000 {
 -- 
-2.18.0
+2.39.0.314.g84b9a713c41-goog
 
 
