@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D4CCC4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 08:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B8AC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Dec 2022 08:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0DYLiElYQgv4EGpAL4uv9JD+TX+jA5euJMoTh7FRrC8=; b=tsHCYDRTq3/9oliKI6+8kdUx79
-	pceJFupNchPoKSXQrCtnGhn1+qQeG5AdZfAljri84FX3x6ZvrzGe/QC2A7wdZ//Vkyx0dCwtgbxBN
-	+KJU01BFlopYWF1KMaBC3okoeuG13o5WhwyuwpDi+7uNsFdgwCIA+okR65+2rQHzZMikYNEXe60AD
-	QdnUikWtGQl5cV19U/+SAn5TAlFRYcCxWxmex3eVD2gTRjzmAXKyqW9N6Zw1bbRqFrAHVwby2kAcU
-	HUkntFEmIXR+z5Jgdm5UN4Zy9E7vxzxmxYK4q1j5WlxLoC/xnHTLV4R8n1f7UuFUhCcqlgy2SVpZr
-	61Z07Wfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HORV9bMIP2LGFNhuhm7UuJjpXIYYSO+nEqUSjtucA64=; b=GQEp9OTBvIh12/Jr7kKtHoS5En
+	4qR3odpnDfNmxWFOJbEEOrgRZgXS8Pka7brELu8j8pAp/ZvKtmd8xCpRnUnnteh4iXvVRYS087JOF
+	uNQiKw5ELBjYx2sPbaYszh4FawTS5ji5eynAKmx3wtr3eTCSwnyJUdu9usd+NdxMsUy6vXn6E97nj
+	M7buFLRzfGnYtQVzdcWUekxlel2z4kicBfnqAxTK1fE58B/0ekmWJ0iiWqDMyQvk11lpn4x0GwLe8
+	umw62e3Ii4K1xE7FzwRCIzYr7At9xHeanv7dLJjcsEiKtao7pJrQK0A719Xc7DtLs99kuStSi75rc
+	GOU321JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAntu-00DWZZ-6Y; Thu, 29 Dec 2022 08:04:30 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1pAoBA-00DfxM-VM; Thu, 29 Dec 2022 08:22:21 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pAntp-00DWUc-UV
-	for linux-mediatek@lists.infradead.org; Thu, 29 Dec 2022 08:04:27 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id f34so26530506lfv.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 00:04:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0DYLiElYQgv4EGpAL4uv9JD+TX+jA5euJMoTh7FRrC8=;
-        b=PBZ+vnE4/SqRWBbQf/R6Bu3YpqzM3EBlm1qj8DgHKEx1Zpc1IzWcqcLMmR1jU22Ypa
-         BXfRxNdWJHUeUN3+wQ3XMj1iP0VK6uNXCWlNAxoN2PnXUH2jMd0PmarK2gDF09rgRDOd
-         bBwVCQ2XKkRawy+coeJb6rZdiXeEqtgwAAo4wygIeo+RzO6z+hW5HTlr/APoWtyQDNJi
-         fCvuIXATG5i+PBDDsL5juXSe2L9OR1qvVWimKMo7IgFhjj3Ay6Sloos9fC8D6F8kG15n
-         Jk8Iy/daslBdQ2/xDhqFeLW6JMINvvZKBl4EFmCU/K6vy/N0Xge6+gUmridkWSHgCi/e
-         f01w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0DYLiElYQgv4EGpAL4uv9JD+TX+jA5euJMoTh7FRrC8=;
-        b=TkfoHxPFYvoOE/LwxDnBkgmHQzxsWqou3Hz6T1GBHKNA3LD6iAkstIp11WNrk7DK2L
-         0lOkZ+s4qVAHcP22J2iIOwvUoCU6aYZvzsHzvilQTEyhGQ9ISdwYyKkKrIB5SxIF4Kt9
-         5LOl/onbOFnLHaIdjG82etuo0RvfTqHDmhdZHxRm2FjzID13445i6Fyh1LLdi6ibSFUR
-         nWD4cXvQZ/X8UVdXboWu874Wg0gdHP57t/UW/Pa6tFoHNOXItuxdjMacwRnaRZcih5ys
-         dsKYAWdSIctZOy7qLc8c9EGENH78B0Qsw+ifaLA35icYeCMJzuJVGvfV9Llu0DrNC84t
-         I3oQ==
-X-Gm-Message-State: AFqh2kpZx3FeeY4Hm52v5UR2ex2BVWnwZtRQQrppgYquNBeMlBIB/pBo
-	0ifNjOR15xQyUJiHDN7vLvaLeQ==
-X-Google-Smtp-Source: AMrXdXsBM/+5SkTv2g2UOivb3O+hOArlgmPvXOxeIWL0XdAQwTEvZjoR3USSVK3GX7IJ5Jgc1VuWqA==
-X-Received: by 2002:a05:6512:31c5:b0:4a4:68b9:66f1 with SMTP id j5-20020a05651231c500b004a468b966f1mr8800288lfe.60.1672301061752;
-        Thu, 29 Dec 2022 00:04:21 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id t12-20020a056512208c00b004b551505c29sm2980736lfr.218.2022.12.29.00.04.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Dec 2022 00:04:21 -0800 (PST)
-Message-ID: <ba935a94-ccd6-e062-a9f4-2431cc69f097@linaro.org>
-Date: Thu, 29 Dec 2022 09:04:19 +0100
+	id 1pAoAz-00DfsY-5N; Thu, 29 Dec 2022 08:22:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=HORV9bMIP2LGFNhuhm7UuJjpXIYYSO+nEqUSjtucA64=; b=GcQ7DB2f2ARU0cWkWAsa+1anm+
+	jhcSC3FNX7BLREjbXMtBX/bNhGhnLRvQypsLEQ91perQEC/5CdtUHlik9+tn0vRQKB70oz1v8Duds
+	ARaYvUPjtekxihNRIPmfghCT4jVK36Qelbx5Ifiws4Ag+fybIOJSk4n+c/WPHSXunIQ5k7S6CdBTl
+	YN+bfldwCi9jzWa3Rhrb5lNmW5tE9wDTjtrNRkKWa2HVEeYHPcfAJNM6jjcqc+CmZgMD4yB/bRsXF
+	vhc8H/x//2R6yR0wNOaDZho9JGFBqCpRJbv5tLCRKGQs/q7nnYD0iYKvNyaU/oxjVlj/Cc5hgBT97
+	eh3SH8aw==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pAoAq-00GL43-2n;
+	Thu, 29 Dec 2022 08:22:04 +0000
+X-UUID: cb3ae1033dad445a81f21e44eef1d8b6-20221229
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HORV9bMIP2LGFNhuhm7UuJjpXIYYSO+nEqUSjtucA64=;
+	b=ZqQORkXKc0FXCVkrXWlcGmciE2mqA3pl3o8oVeVjFL79KQvZtLwheEdRXYCvqB019ANXgSU+d+iNNrzEVvG9dB/JK16L1Qi5KzDJCdGTxd8mhI3+kzHke7OX6a5Qg0Rx2c2t/i7G7ZshW/fJIGPQhDdwJFBvB5lXEyh8mloPOo4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.14,REQID:4130a297-36a4-4fa0-bc41-47e032e9beaf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:dcaaed0,CLOUDID:4df6b98a-8530-4eff-9f77-222cf6e2895b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: cb3ae1033dad445a81f21e44eef1d8b6-20221229
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1865370965; Thu, 29 Dec 2022 01:21:40 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 29 Dec 2022 16:21:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 29 Dec 2022 16:21:03 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
+	<devicetree@vger.kernel.org>, <fparent@baylibre.com>, <ikjn@chromium.org>,
+	<johnson.wang@mediatek.com>, <jose.exposito89@gmail.com>,
+	<kernel@collabora.com>, <krzysztof.kozlowski+dt@linaro.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <msp@baylibre.com>,
+	<mturquette@baylibre.com>, <nfraprado@collabora.com>,
+	<pablo.sun@mediatek.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
+	<ryder.lee@kernel.org>, <sam.shih@mediatek.com>, <sboyd@kernel.org>,
+	<weiyi.lu@mediatek.com>, <wenst@chromium.org>, <y.oudjana@protonmail.com>,
+	<yangyingliang@huawei.com>
+Subject: Re: [PATCH v2 18/23] clk: mediatek: clk-mtk: Register MFG notifier in mtk_clk_simple_probe()
+Date: Thu, 29 Dec 2022 16:21:03 +0800
+Message-ID: <20221229082103.21064-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221223094259.87373-19-angelogioacchino.delregno@collabora.com>
+References: <20221223094259.87373-19-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8186: support rt5682s_max98360
-To: Jian Tong <tongjian@huaqin.corp-partner.google.com>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, perex@perex.cz,
- tiwai@suse.com, angelogioacchino.delregno@collabora.com,
- nfraprado@collabora.com, jiaxin.yu@mediatek.com, chunxu.li@mediatek.com,
- ajye_huang@compal.corp-partner.google.com, alsa-devel@alsa-project.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221228122230.3818533-1-tongjian@huaqin.corp-partner.google.com>
- <20221228122230.3818533-2-tongjian@huaqin.corp-partner.google.com>
- <cae5273e-aac5-0c4c-6686-fb2cbc5379e3@linaro.org>
- <CAKKM_AVxcSW+ZaTbMuR-+=Fbkr64Arm2-3-MPWmoYV9Dpxkqdw@mail.gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAKKM_AVxcSW+ZaTbMuR-+=Fbkr64Arm2-3-MPWmoYV9Dpxkqdw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_000426_150950_B429B6AB 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20221229_082201_609371_F0E4B300 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,37 +102,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/12/2022 02:57, Jian Tong wrote:
-> Hi,
-> Yes, this is my full name.
+>In preparation for commonizing topckgen probe on various MediaTek SoCs
+>clock drivers, add the ability to register the MFG MUX notifier in
+>mtk_clk_simple_probe() by passing a custom notifier register function
+>pointer, as this function will be slightly different across different
+>SoCs.
+>
+>Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>---
+> drivers/clk/mediatek/clk-mtk.c | 8 ++++++++
+> drivers/clk/mediatek/clk-mtk.h | 3 +++
+> 2 files changed, 11 insertions(+)
+>
+>diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+>index b0a6225cd7b2..df6281492fb6 100644
+>--- a/drivers/clk/mediatek/clk-mtk.c
+>+++ b/drivers/clk/mediatek/clk-mtk.c
+>@@ -533,6 +533,14 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+> 			goto unregister_composites;
+> 	}
+> 
+>+	if (mcd->clk_notifier_func) {
+>+		struct clk *mfg_mux = clk_data->hws[mcd->mfg_clk_idx]->clk;
+>+
+>+		r = mcd->clk_notifier_func(&pdev->dev, mfg_mux);
+>+		if (r)
+>+			goto unregister_clks;
+>+	}
 
-Here you use different, so that's confusing...
+Should we have a IS_ERR_OR_NULL() check for clk_data->hws[mcd->mfg_clk_idx]?
 
-> 
-> Best regards,
-> tongjian
-> 
-> 
-> On Wed, Dec 28, 2022 at 8:37 PM Krzysztof Kozlowski <
-> krzysztof.kozlowski@linaro.org> wrote:
-> 
->> On 28/12/2022 13:22, tongjian wrote:
->>> Add support for using the rt5682s codec together with max98360a on
->>> MT8186-MT6366-RT1019-RT5682S machines.
->>>
->>> Signed-off-by: tongjian <tongjian@huaqin.corp-partner.google.com>
->>
->> The author and SoB should be full name. Is this correct (full)
->> transliteration of your name?
->>
->>
->> Best regards,
->> Krzysztof
->>
->>
-> 
-
-Best regards,
-Krzysztof
-
+thanks,
+Miles
+>+
+> 	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> 	if (r)
 
