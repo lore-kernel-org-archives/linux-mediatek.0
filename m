@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E5CDC4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 08:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 908A4C4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 08:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+YBMfWIMzyX1PelknOhx+crfHQWUu3mcf9k29hPr6Gc=; b=MgSOgfnW6YlUz9/RzPZSg7DOUI
-	Mw7MrFuj5wJl/hvV0yplpH0QiymHX1Hy7xnuXcU/PDV8Gr/jrZP4/dPvgt2pXZNFTQ0T8tGQhv7n4
-	IG/OENdnrV1lED0IPAOW1p6EgKf8wuOMvV15SXn+UghGt9jnYDabGUl8BCILRn46iNQbPrrjkLXo1
-	SDvmtR8v/A3e4QKBRDxl6XxlqTOkJ124stkG9dthrw9eBJw79teXCKTWQ/yuj1ZZfxAFwrXITcbWB
-	r3uURsjdq7pk2N+9stxBqvNGL2segNycYMXG+udFpuMLezFZ8agJhY1Vy4vWEfYiubdMjagDv5WJU
-	p5WRm6ww==;
+	bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=; b=B5Vqh3km4M4WXUVGV6Eq0BScDP
+	5ijGQ0s+XDW8WdlaPWLg+4TwPyC67vi8s7ExULfdHwZrSqeuNomM5s5YyYVwBpFmjrZeQN+3JUVXX
+	Dtxhii/hrA4T9c+3VokaHBUopSvidAVMNKxsT27t5xcjNICwhq8TQK2Phn8HP+2lIYrqwfSvGN5tF
+	qL36vkkq66LkuNNJ7n42Ou+S67nvapxuw++UPC9QMM4TYDJDmOLz9qLCC5NKrRPVO187+Pt4hwaMG
+	xPw97QQo1MSCpgtIs/lOiJHvrssCmI5t+s8JhZPKhn1vYEz5VJc+d41DLB45BpGIVSm+z1CGz2wjf
+	SnmvmTpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBAOu-0078k5-Va; Fri, 30 Dec 2022 08:06:01 +0000
+	id 1pBAP3-0078n3-D4; Fri, 30 Dec 2022 08:06:09 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBAOQ-0078Yc-Rb; Fri, 30 Dec 2022 08:05:31 +0000
+	id 1pBAOQ-0078YX-Kv; Fri, 30 Dec 2022 08:05:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=+YBMfWIMzyX1PelknOhx+crfHQWUu3mcf9k29hPr6Gc=; b=Yuoe4/aFB/UXlesqUwmLIv4WWI
-	sSd/HHHMyLXvFoHPTjGD3x7aiKT7CNuhxTRgP+T0MSspqsTBoh8X2Qh6zgJKkMTN9BLRPywwosBK3
-	2CxEHbdLQUrdXW5RxM/uRgS9+EkcKs9leQZz1HecyxlQUxOxVya4FqceBZ+d9ryYnU7FQarzgXs5X
-	0OW6yWI/zc5gClwN54xcHGzneIRh32GMjmL17vFeKOsrUTGc3BzMFPtgBjMhK2pXfA/+ndEYvZZPk
-	97b0D6cq6iBLPDoetvxa5WdxR28Nspwx18CHlp2iMIycYOSreQ+HsHmOi+ARfbdRA355BHJuOnGQ6
-	FQ1GwELg==;
+	bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=; b=Be2B6b5EPcac6V9pBMuekD03lW
+	75VNojfOiJ9Q/PHNTtq6uFHJSlQ4cg2/Z++u27SHJsyOJpshDuKM4xYiSMI0nWgyOOtHqOUiIk3Ox
+	YyHiY0RL32Y8vLoTi4T+PKoHItbdcHp1tem0FzjDEhZAqUrPY1aAH7bMBjaEXzmtjRbgB8whimX9V
+	YkBxjuy36q7ovBrTZTdNvSeJzlujCC34xCD7hRwTU+X5P8o+tpvJonFTkoEUNP32tPK7IlGGU7lip
+	VQmI5rBQwCvn0ilZpU4dMEpB1mzzTzeYrRnG0l6FNYD93nXgOhkbm/wRNWdUQHf1PE+5qMOtXu/ZD
+	N12rCTVQ==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pBAOD-00GlJR-2e;
+	id 1pBAOD-00GlJO-2A;
 	Fri, 30 Dec 2022 08:05:22 +0000
-X-UUID: 04ee6795fa634673b319b6aba9eda1f9-20221230
+X-UUID: 0f7778bdb5e94554a1aac46e16f67fce-20221230
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+YBMfWIMzyX1PelknOhx+crfHQWUu3mcf9k29hPr6Gc=;
-	b=XNtM07ekPz5Fwp2XmOh32SZlvV2AlR+YhVjn7CJrMYPsPLKt3F9kWTvSck4qo3IRqJaagaV/8hMeldVOjgHl5JQEkTFmCGoR4LHfkT2BHXx25TscNmepBL5yJBfXMPer+zS9fWztNu8xtW7VwnzLScW0xhv9sxSCVsDida3EFOQ=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3UpF9BQLr8Dku9e/r6Hix5mBMx2zn/DvvEm9dU3vTWI=;
+	b=kwYerGItNqYscXOBflmr8UzJPouWW4yDhUSQfC6ceG+OSyrA2c9g0svF9j3DDBlnf5THQoBDGiyzQwPUqSyB5ok10J7O+Oo9eFbK36Yo8v5aPTlhTWLoVG08zw68hwhfmxmPyKp9YpvV7Hh8QiCpAQ8Tk8ul5zDMpw+63UC4gjc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:e6bf11ec-7d17-46d0-b1a5-5d422b5eceda,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:09771b1,CLOUDID:f61d3a53-dd49-462e-a4be-2143a3ddc739,B
+X-CID-O-INFO: VERSION:1.1.16,REQID:821ca227-a615-48e9-b900-dec845f2159a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:09771b1,CLOUDID:8fcf63f4-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: 04ee6795fa634673b319b6aba9eda1f9-20221230
+X-UUID: 0f7778bdb5e94554a1aac46e16f67fce-20221230
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 517239347; Fri, 30 Dec 2022 01:05:08 -0700
+	with ESMTP id 669802566; Fri, 30 Dec 2022 01:05:06 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Fri, 30 Dec 2022 15:34:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -73,9 +73,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
 	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v3 05/19] clk: mediatek: Add MT8188 infrastructure clock support
-Date: Fri, 30 Dec 2022 15:33:43 +0800
-Message-ID: <20221230073357.18503-6-Garmin.Chang@mediatek.com>
+Subject: [PATCH v3 06/19] clk: mediatek: Add MT8188 camsys clock support
+Date: Fri, 30 Dec 2022 15:33:44 +0800
+Message-ID: <20221230073357.18503-7-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221230073357.18503-1-Garmin.Chang@mediatek.com>
 References: <20221230073357.18503-1-Garmin.Chang@mediatek.com>
@@ -83,8 +83,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221230_080519_497293_55C81F9B 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20221230_080519_497292_E4FB9DE0 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,35 +99,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 infrastructure clock controller which provides
-clock gate control for basic IP like pwm, uart, spi and so on.
+Add MT8188 camsys clock controllers which provide clock gate
+control for camera IP blocks.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile              |   2 +-
- drivers/clk/mediatek/clk-mt8188-infra_ao.c | 190 +++++++++++++++++++++
- 2 files changed, 191 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-infra_ao.c
+ drivers/clk/mediatek/Makefile         |   3 +-
+ drivers/clk/mediatek/clk-mt8188-cam.c | 118 ++++++++++++++++++++++++++
+ 2 files changed, 120 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-cam.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index b8a3042f4809..a3393782f7e1 100644
+index a3393782f7e1..dc247bf67e8b 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -84,7 +84,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
+@@ -84,7 +84,8 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
  				   clk-mt8186-img.o clk-mt8186-vdec.o clk-mt8186-venc.o \
  				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
  obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
--				   clk-mt8188-peri_ao.o
-+				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
+-				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o
++				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
++				   clk-mt8188-cam.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-infra_ao.c b/drivers/clk/mediatek/clk-mt8188-infra_ao.c
+diff --git a/drivers/clk/mediatek/clk-mt8188-cam.c b/drivers/clk/mediatek/clk-mt8188-cam.c
 new file mode 100644
-index 000000000000..cdea09883320
+index 000000000000..5f7cf9db12f2
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-infra_ao.c
-@@ -0,0 +1,190 @@
++++ b/drivers/clk/mediatek/clk-mt8188-cam.c
+@@ -0,0 +1,118 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -140,184 +141,112 @@ index 000000000000..cdea09883320
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs infra_ao0_cg_regs = {
-+	.set_ofs = 0x80,
-+	.clr_ofs = 0x84,
-+	.sta_ofs = 0x90,
++static const struct mtk_gate_regs cam_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
 +};
 +
-+static const struct mtk_gate_regs infra_ao1_cg_regs = {
-+	.set_ofs = 0x88,
-+	.clr_ofs = 0x8c,
-+	.sta_ofs = 0x94,
++#define GATE_CAM(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate cam_main_clks[] = {
++	GATE_CAM(CLK_CAM_MAIN_LARB13, "cam_main_larb13", "top_cam", 0),
++	GATE_CAM(CLK_CAM_MAIN_LARB14, "cam_main_larb14", "top_cam", 1),
++	GATE_CAM(CLK_CAM_MAIN_CAM, "cam_main_cam", "top_cam", 2),
++	GATE_CAM(CLK_CAM_MAIN_CAM_SUBA, "cam_main_cam_suba", "top_cam", 3),
++	GATE_CAM(CLK_CAM_MAIN_CAM_SUBB, "cam_main_cam_subb", "top_cam", 4),
++	GATE_CAM(CLK_CAM_MAIN_CAMTG, "cam_main_camtg", "top_cam", 7),
++	GATE_CAM(CLK_CAM_MAIN_SENINF, "cam_main_seninf", "top_cam", 8),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVA, "cam_main_gcamsva", "top_cam", 9),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVB, "cam_main_gcamsvb", "top_cam", 10),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVC, "cam_main_gcamsvc", "top_cam", 11),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVD, "cam_main_gcamsvd", "top_cam", 12),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVE, "cam_main_gcamsve", "top_cam", 13),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVF, "cam_main_gcamsvf", "top_cam", 14),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVG, "cam_main_gcamsvg", "top_cam", 15),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVH, "cam_main_gcamsvh", "top_cam", 16),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVI, "cam_main_gcamsvi", "top_cam", 17),
++	GATE_CAM(CLK_CAM_MAIN_GCAMSVJ, "cam_main_gcamsvj", "top_cam", 18),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_TOP, "cam_main_camsv", "top_cam", 19),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_A, "cam_main_camsv_cq_a", "top_cam", 20),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_B, "cam_main_camsv_cq_b", "top_cam", 21),
++	GATE_CAM(CLK_CAM_MAIN_CAMSV_CQ_C, "cam_main_camsv_cq_c", "top_cam", 22),
++	GATE_CAM(CLK_CAM_MAIN_FAKE_ENG, "cam_main_fake_eng", "top_cam", 28),
++	GATE_CAM(CLK_CAM_MAIN_CAM2MM0_GALS, "cam_main_cam2mm0_gals", "top_cam", 29),
++	GATE_CAM(CLK_CAM_MAIN_CAM2MM1_GALS, "cam_main_cam2mm1_gals", "top_cam", 30),
++	GATE_CAM(CLK_CAM_MAIN_CAM2SYS_GALS, "cam_main_cam2sys_gals", "top_cam", 31),
 +};
 +
-+static const struct mtk_gate_regs infra_ao2_cg_regs = {
-+	.set_ofs = 0xa4,
-+	.clr_ofs = 0xa8,
-+	.sta_ofs = 0xac,
++static const struct mtk_gate cam_rawa_clks[] = {
++	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "top_cam", 2),
 +};
 +
-+static const struct mtk_gate_regs infra_ao3_cg_regs = {
-+	.set_ofs = 0xc0,
-+	.clr_ofs = 0xc4,
-+	.sta_ofs = 0xc8,
++static const struct mtk_gate cam_rawb_clks[] = {
++	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "top_cam", 2),
 +};
 +
-+static const struct mtk_gate_regs infra_ao4_cg_regs = {
-+	.set_ofs = 0xe0,
-+	.clr_ofs = 0xe4,
-+	.sta_ofs = 0xe8,
++static const struct mtk_gate cam_yuva_clks[] = {
++	GATE_CAM(CLK_CAM_YUVA_LARBX, "cam_yuva_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_YUVA_CAM, "cam_yuva_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_YUVA_CAMTG, "cam_yuva_camtg", "top_cam", 2),
 +};
 +
-+#define GATE_INFRA_AO0_FLAGS(_id, _name, _parent, _shift, _flag)                \
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao0_cg_regs, _shift, \
-+		&mtk_clk_gate_ops_setclr, _flag)
-+
-+#define GATE_INFRA_AO0(_id, _name, _parent, _shift)	\
-+	GATE_INFRA_AO0_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+#define GATE_INFRA_AO1_FLAGS(_id, _name, _parent, _shift, _flag)		\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao1_cg_regs, _shift,	\
-+		&mtk_clk_gate_ops_setclr, _flag)
-+
-+#define GATE_INFRA_AO1(_id, _name, _parent, _shift)	\
-+	GATE_INFRA_AO1_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+#define GATE_INFRA_AO2(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &infra_ao2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+#define GATE_INFRA_AO3_FLAGS(_id, _name, _parent, _shift, _flag)		\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao3_cg_regs, _shift,	\
-+		&mtk_clk_gate_ops_setclr, _flag)
-+
-+#define GATE_INFRA_AO3(_id, _name, _parent, _shift)	\
-+	GATE_INFRA_AO3_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+#define GATE_INFRA_AO4_FLAGS(_id, _name, _parent, _shift, _flag)		\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra_ao4_cg_regs, _shift,	\
-+		&mtk_clk_gate_ops_setclr, _flag)
-+
-+#define GATE_INFRA_AO4(_id, _name, _parent, _shift)	\
-+	GATE_INFRA_AO4_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+static const struct mtk_gate infra_ao_clks[] = {
-+	/* INFRA_AO0 */
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_TMR, "infra_ao_pmic_tmr", "top_pwrap_ulposc", 0),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_AP, "infra_ao_pmic_ap", "top_pwrap_ulposc", 1),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_MD, "infra_ao_pmic_md", "top_pwrap_ulposc", 2),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PMIC_CONN, "infra_ao_pmic_conn", "top_pwrap_ulposc", 3),
-+	/* infra_ao_sej is main clock is for secure engine with JTAG support */
-+	GATE_INFRA_AO0_FLAGS(CLK_INFRA_AO_SEJ, "infra_ao_sej", "top_axi", 5, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_APXGPT, "infra_ao_apxgpt", "top_axi", 6),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_GCE, "infra_ao_gce", "top_axi", 8),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_GCE2, "infra_ao_gce2", "top_axi", 9),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_THERM, "infra_ao_therm", "top_axi", 10),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM_HCLK, "infra_ao_pwm_h", "top_axi", 15),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM1, "infra_ao_pwm1", "top_pwm", 16),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM2, "infra_ao_pwm2", "top_pwm", 17),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM3, "infra_ao_pwm3", "top_pwm", 18),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM4, "infra_ao_pwm4", "top_pwm", 19),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_PWM, "infra_ao_pwm", "top_pwm", 21),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART0, "infra_ao_uart0", "top_uart", 22),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART1, "infra_ao_uart1", "top_uart", 23),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART2, "infra_ao_uart2", "top_uart", 24),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART3, "infra_ao_uart3", "top_uart", 25),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART4, "infra_ao_uart4", "top_uart", 26),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_GCE_26M, "infra_ao_gce_26m", "clk26m", 27),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_CQ_DMA_FPC, "infra_ao_dma", "pad_fpc_ck", 28),
-+	GATE_INFRA_AO0(CLK_INFRA_AO_UART5, "infra_ao_uart5", "top_uart", 29),
-+	/* INFRA_AO1 */
-+	GATE_INFRA_AO1(CLK_INFRA_AO_HDMI_26M, "infra_ao_hdmi_26m", "clk26m", 0),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_SPI0, "infra_ao_spi0", "top_spi", 1),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC0, "infra_ao_msdc0", "top_msdc5hclk", 2),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC1, "infra_ao_msdc1", "top_axi", 4),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC2, "infra_ao_msdc2", "top_axi", 5),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC0_SRC, "infra_ao_msdc0_clk", "top_msdc50_0", 6),
-+	/* infra_ao_dvfsrc is for internal DVFS usage, should not be handled by Linux. */
-+	GATE_INFRA_AO1_FLAGS(CLK_INFRA_AO_DVFSRC, "infra_ao_dvfsrc",
-+			     "clk26m", 7, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_TRNG, "infra_ao_trng", "top_axi", 9),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_AUXADC, "infra_ao_auxadc", "clk26m", 10),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_CPUM, "infra_ao_cpum", "top_axi", 11),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_HDMI_32K, "infra_ao_hdmi_32k", "clk32k", 12),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_CEC_66M_HCLK, "infra_ao_cec_66m_hclk", "top_axi", 13),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_26M, "infra_ao_pcie_tl_26m", "clk26m", 15),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_MSDC1_SRC, "infra_ao_msdc1_clk", "top_msdc30_1", 16),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_CEC_66M_BCLK, "infra_ao_cec_66m_bclk", "top_axi", 17),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_96M, "infra_ao_pcie_tl_96m", "top_tl", 18),
-+	/* infra_ao_dapc is for device access permission control module */
-+	GATE_INFRA_AO1_FLAGS(CLK_INFRA_AO_DEVICE_APC, "infra_ao_dapc",
-+			     "top_axi", 20, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_ECC_66M_HCLK, "infra_ao_ecc_66m_hclk", "top_axi", 23),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_DEBUGSYS, "infra_ao_debugsys", "top_axi", 24),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_AUDIO, "infra_ao_audio", "top_axi", 25),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_PCIE_TL_32K, "infra_ao_pcie_tl_32k", "clk32k", 26),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_DBG_TRACE, "infra_ao_dbg_trace", "top_axi", 29),
-+	GATE_INFRA_AO1(CLK_INFRA_AO_DRAMC_F26M, "infra_ao_dramc26", "clk26m", 31),
-+	/* INFRA_AO2 */
-+	GATE_INFRA_AO2(CLK_INFRA_AO_IRTX, "infra_ao_irtx", "top_axi", 0),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_DISP_PWM, "infra_ao_disp_pwm", "top_disp_pwm0", 2),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_CLDMA_BCLK, "infra_ao_cldmabclk", "top_axi", 3),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_AUDIO_26M_BCLK, "infra_ao_audio26m", "clk26m", 4),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SPI1, "infra_ao_spi1", "top_spi", 6),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SPI2, "infra_ao_spi2", "top_spi", 9),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SPI3, "infra_ao_spi3", "top_spi", 10),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_FSSPM, "infra_ao_fsspm", "top_sspm", 15),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SSPM_BUS_HCLK, "infra_ao_sspm_hclk", "top_axi", 17),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_APDMA_BCLK, "infra_ao_apdma_bclk", "top_axi", 18),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SPI4, "infra_ao_spi4", "top_spi", 25),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_SPI5, "infra_ao_spi5", "top_spi", 26),
-+	GATE_INFRA_AO2(CLK_INFRA_AO_CQ_DMA, "infra_ao_cq_dma", "top_axi", 27),
-+	/* INFRA_AO3 */
-+	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC0_SELF, "infra_ao_msdc0sf", "top_msdc50_0", 0),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC1_SELF, "infra_ao_msdc1sf", "top_msdc50_0", 1),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC2_SELF, "infra_ao_msdc2sf", "top_msdc50_0", 2),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_I2S_DMA, "infra_ao_i2s_dma", "top_axi", 5),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_AP_MSDC0, "infra_ao_ap_msdc0", "top_msdc50_0", 7),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_MD_MSDC0, "infra_ao_md_msdc0", "top_msdc50_0", 8),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_MSDC30_2, "infra_ao_msdc30_2", "top_msdc30_2", 9),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU, "infra_ao_gcpu", "top_gcpu", 10),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_PCIE_PERI_26M, "infra_ao_pcie_peri_26m", "clk26m", 15),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU_66M_BCLK, "infra_ao_gcpu_66m_bclk", "top_axi", 16),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_GCPU_133M_BCLK, "infra_ao_gcpu_133m_bclk", "top_axi", 17),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_DISP_PWM1, "infra_ao_disp_pwm1", "top_disp_pwm1", 20),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_FBIST2FPC, "infra_ao_fbist2fpc", "top_msdc50_0", 24),
-+	/* infra_ao_dapc_sync is for device access permission control module */
-+	GATE_INFRA_AO3_FLAGS(CLK_INFRA_AO_DEVICE_APC_SYNC, "infra_ao_dapc_sync",
-+			     "top_axi", 25, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO3(CLK_INFRA_AO_PCIE_P1_PERI_26M, "infra_ao_pcie_p1_peri_26m", "clk26m", 26),
-+	/* INFRA_AO4 */
-+	/* infra_ao_133m_mclk_set/infra_ao_66m_mclk_set are main clocks of peripheral */
-+	GATE_INFRA_AO4_FLAGS(CLK_INFRA_AO_133M_MCLK_CK, "infra_ao_133m_mclk_set",
-+			     "top_axi", 0, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO4_FLAGS(CLK_INFRA_AO_66M_MCLK_CK, "infra_ao_66m_mclk_set",
-+			     "top_axi", 1, CLK_IS_CRITICAL),
-+	GATE_INFRA_AO4(CLK_INFRA_AO_PCIE_PL_P_250M_P0, "infra_ao_pcie_pl_p_250m_p0",
-+		       "pextp_pipe", 7),
-+	GATE_INFRA_AO4(CLK_INFRA_AO_RG_AES_MSDCFDE_CK_0P,
-+		       "infra_ao_aes_msdcfde_0p", "top_aes_msdcfde", 18),
++static const struct mtk_gate cam_yuvb_clks[] = {
++	GATE_CAM(CLK_CAM_YUVB_LARBX, "cam_yuvb_larbx", "top_cam", 0),
++	GATE_CAM(CLK_CAM_YUVB_CAM, "cam_yuvb_cam", "top_cam", 1),
++	GATE_CAM(CLK_CAM_YUVB_CAMTG, "cam_yuvb_camtg", "top_cam", 2),
 +};
 +
-+static const struct mtk_clk_desc infra_ao_desc = {
-+	.clks = infra_ao_clks,
-+	.num_clks = ARRAY_SIZE(infra_ao_clks),
++static const struct mtk_clk_desc cam_main_desc = {
++	.clks = cam_main_clks,
++	.num_clks = ARRAY_SIZE(cam_main_clks),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8188_infra_ao[] = {
-+	{ .compatible = "mediatek,mt8188-infracfg-ao", .data = &infra_ao_desc },
-+	{ /* sentinel */ }
++static const struct mtk_clk_desc cam_rawa_desc = {
++	.clks = cam_rawa_clks,
++	.num_clks = ARRAY_SIZE(cam_rawa_clks),
 +};
 +
-+static struct platform_driver clk_mt8188_infra_ao_drv = {
++static const struct mtk_clk_desc cam_rawb_desc = {
++	.clks = cam_rawb_clks,
++	.num_clks = ARRAY_SIZE(cam_rawb_clks),
++};
++
++static const struct mtk_clk_desc cam_yuva_desc = {
++	.clks = cam_yuva_clks,
++	.num_clks = ARRAY_SIZE(cam_yuva_clks),
++};
++
++static const struct mtk_clk_desc cam_yuvb_desc = {
++	.clks = cam_yuvb_clks,
++	.num_clks = ARRAY_SIZE(cam_yuvb_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8188_cam[] = {
++	{ .compatible = "mediatek,mt8188-camsys", .data = &cam_main_desc },
++	{ .compatible = "mediatek,mt8188-camsys-rawa", .data = &cam_rawa_desc },
++	{ .compatible = "mediatek,mt8188-camsys-rawb", .data = &cam_rawb_desc },
++	{ .compatible = "mediatek,mt8188-camsys-yuva", .data = &cam_yuva_desc },
++	{ .compatible = "mediatek,mt8188-camsys-yuvb", .data = &cam_yuvb_desc },
++	{ /* sentinel */}
++};
++
++static struct platform_driver clk_mt8188_cam_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8188-infra_ao",
-+		.of_match_table = of_match_clk_mt8188_infra_ao,
++		.name = "clk-mt8188-cam",
++		.of_match_table = of_match_clk_mt8188_cam,
 +	},
 +};
-+builtin_platform_driver(clk_mt8188_infra_ao_drv);
++
++builtin_platform_driver(clk_mt8188_cam_drv);
++MODULE_LICENSE("GPL");
 -- 
 2.18.0
 
