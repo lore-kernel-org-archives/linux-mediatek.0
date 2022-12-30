@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D67C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 04:44:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C08C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 04:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hzc2DHU2nXa3yiV9mMwKUPwKVgPRmW21x4yoJc20iDQ=; b=qZ+cZiR0yd9LhFFxRh23K/ptQs
-	/cGaYgmm5O1XWCWM+2lLznLjaKzdZDHayFlAFSQSE0dIUYs0GC14BnLZb5VmxbvnpCK+xeejdRS/V
-	4KO61wXK+7WoxQmxKvJCpWVlBdYPKJqqNwzCHWJz11OSNyYIzvLEVsS+c5SdjMLUVd/wnUnaZN0iF
-	qtCvCpuisyXvTkbPzAcdTOYQBg1TcTg2QfwLAyAa1luz+zsXAbUSPYHcwUImdA0wZ172GCQk3Zzwg
-	KC07wSf9ky1Fuxq2+XzC5t6Ipv6SPrMUuMZj667GTvpvW09btoq85G7X0UyknGmNZbyrPs4dSZi2Y
-	vgMDFJ7g==;
+	bh=/x+MdNC8Jc4+eNTwOHLucI15Q9uq7s3xxOLCxyhs/b0=; b=QxEZReKifrjKSTuazcBQGM87Rt
+	kBkjD9WJkv9GopLzlkaqarlGXxh/4x43/y3MBITg6ij/WLho+ngLtjex13a3UgvKp+8oU+xzwtaE2
+	B69CTizKz7oAqWtftXqgxQkUZ+x6DKzl44ffi8UolP1FBj3wwcB/jAcjSLynSQOasgfqh3uyUtGPF
+	2Q8lOhfnbMuv2YH4UsdmlUXNukK8hoj/iDy0OhmhrBEwxA9IwrINjKRVyE71BCMOCX9D1b+QpKWxK
+	rIvL4K1UlyeTLgFxaA6q0HwuEwJw9CYrVnbVEIchPxYFcqGtdeEYApr3b6VIi43czCnf9Qo3ut/Pf
+	kvV6VMTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB7Fi-005bBJ-I4; Fri, 30 Dec 2022 04:44:18 +0000
-Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931])
+	id 1pB7Tt-005is9-4x; Fri, 30 Dec 2022 04:58:57 +0000
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB7FP-005b1Y-9v
-	for linux-mediatek@lists.infradead.org; Fri, 30 Dec 2022 04:44:00 +0000
-Received: by mail-ua1-x931.google.com with SMTP id z3so4582640uao.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 20:43:57 -0800 (PST)
+	id 1pB7Tp-005ioX-JP
+	for linux-mediatek@lists.infradead.org; Fri, 30 Dec 2022 04:58:56 +0000
+Received: by mail-vk1-xa31.google.com with SMTP id bi24so2439143vkb.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 20:58:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Hzc2DHU2nXa3yiV9mMwKUPwKVgPRmW21x4yoJc20iDQ=;
-        b=O+5j9m2EbbdN1CTgzG9n6p7QaEu/2bzOyhgVdgBnfNFK3U7HDhsFqkDYWE4gR0f0bF
-         hW+O7JWn6lS6NF4XGdWV+bp450v7+1oB7HtLLlJr1EgBX79cN+aov/EQWlyE+fSdDHQP
-         62aGlzXzflNwo2OGQ77bdaJSsJ7a+AI48H8A8=
+        bh=/x+MdNC8Jc4+eNTwOHLucI15Q9uq7s3xxOLCxyhs/b0=;
+        b=LjPsiGFrTgmSn4tIRHOhLrMg3fJcnmKcZxCtS62E6agc8ePEclrniZjtyIpl9bMEPo
+         CAquYg4SGDRznluMIlx/ck4F4BpeQqTzVqkPxni3Z4uWPzeKOYB4v+DDXGE2W26NSWE9
+         qLj5wz1sPhZ/u0XEkn6NQRO3RxrpLKHDNKWFU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Hzc2DHU2nXa3yiV9mMwKUPwKVgPRmW21x4yoJc20iDQ=;
-        b=ipkcOXNJRda/Es7ONPC320hMQL9dHCzEo0rPGjvyJn6/kyH8O/f9C65IcOgAd2j0RU
-         6uHlJxaGNjigNKUF6xidTgvqVBshEOj4HpxHnEGIxkBLVBorF3Q0t+061jgGPXDuhSzV
-         wkvWonV5yfpgAcBl5y7PpuMwtUtE6ClVPwQmAAoZ50E2fYd78ZMr3cSLqf1yliyDqTpL
-         vKhUVuWc2g4wx2EsAGsLIxpgeSZEBoF+PQeoQqduzVfwVQRKVAe8Y8Uw3PNtPFPnOSk/
-         Qz98Dz9/Lf7A7JhGDeXDQVwAmjB9NAutwP1Na6Sk+xS6tPfjCUkoHWYGOSEj1mMnLZ9O
-         U/DQ==
-X-Gm-Message-State: AFqh2koF+QrKoFlK7aSFWejnuvoIEPXiRoBtaJTkFr5/g7BXJHLFeAGL
-	WOHBKLIt80mG32fafCdD37m+H4y9TJW7QMpyfDeazQ==
-X-Google-Smtp-Source: AMrXdXtiQs6PVwO0EZw+110kG9yVpobNEk4D1l2z90lqtFZxqIG86YeOf7CwLTDHKuMvSgSq/MqegjK/bf+r4H56iww=
-X-Received: by 2002:a9f:386b:0:b0:419:1620:be75 with SMTP id
- q40-20020a9f386b000000b004191620be75mr2785460uad.78.1672375436164; Thu, 29
- Dec 2022 20:43:56 -0800 (PST)
+        bh=/x+MdNC8Jc4+eNTwOHLucI15Q9uq7s3xxOLCxyhs/b0=;
+        b=oArNVlW7cdNpBARs6Fyje+5apfxa8AvyEnWkhUhcdIMNod81Z2lfoytWGjATs7nnGj
+         MBDdRyk8JPxEvbBTH8wAm9PW/5IkN5GHoWPdhN71ycsG6TxSNe/U8grdhZm5dGT+5r6u
+         Q4usc2eP9pFxmgiQODNXHkOrFOEFruB5v2yPE2UmPK4L3SK/1Y+uHpIVLcz5DuoVuWod
+         fd4XvEDNjSzcatDo+az5PBQXeUSFr31EF/aixTnXxf3sT6QCT89g1zogO631S+Ie/bUn
+         SUWNFnHiPeD3nWkgwI5i/KR4ERTW2HPNy/ItezDk/jwQS/8Ad63TyGGK4+Z8COXhZRkG
+         sqsg==
+X-Gm-Message-State: AFqh2kp1ozAcVMGxKOQ07ERzrvCpIcmouHIaOMbLcyrnyoB2LSeICSRo
+	YNnyolh/fdgjmXaaT/rq3utYu68en6bQ2sAOS3623Q==
+X-Google-Smtp-Source: AMrXdXvImd9LDPOcdvEHEB6jsiBaWZryQY0LDesdq8EZzB05sW28Of+Fy4fp0tIMM/zFQR+D/ChPctvniobNpYm2QWg=
+X-Received: by 2002:ac5:c382:0:b0:380:5dbd:1076 with SMTP id
+ s2-20020ac5c382000000b003805dbd1076mr3384482vkk.22.1672376331473; Thu, 29 Dec
+ 2022 20:58:51 -0800 (PST)
 MIME-Version: 1.0
-References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com> <20221223094259.87373-7-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221223094259.87373-7-angelogioacchino.delregno@collabora.com>
+References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com> <20221223094259.87373-10-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221223094259.87373-10-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 30 Dec 2022 12:43:45 +0800
-Message-ID: <CAGXv+5FPDxxSd54478+6t0r9P7ytFYn7u6H3ezi4jYU=0R2CpA@mail.gmail.com>
-Subject: Re: [PATCH v2 06/23] clk: mediatek: clk-mux: Propagate struct device
- for mtk-mux
+Date: Fri, 30 Dec 2022 12:58:39 +0800
+Message-ID: <CAGXv+5Hk8kguJ=joLXF3OrRXxGvuFAJFKYoK+y7q+wqDBS-wtQ@mail.gmail.com>
+Subject: Re: [PATCH v2 09/23] clk: mediatek: mt8173: Remove mtk_clk_enable_critical()
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
@@ -74,9 +73,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	devicetree@vger.kernel.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_204359_434987_9D24168F 
-X-CRM114-Status: UNSURE (   7.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221229_205853_687574_82646698 
+X-CRM114-Status: GOOD (  21.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,15 +92,144 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Fri, Dec 23, 2022 at 5:43 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Like done for other clocks, propagate struct device for mtk mux clocks
-> registered through clk-mux helpers to enable runtime pm support.
+> The entire point of mtk_clk_enable_critical() is to raise the refcount
+> of some clocks so that they won't be turned off during runtime, but
+> this is the same as what the CLK_IS_CRITICAL flag does.
+>
+> Set CLK_IS_CRITICAL on all of the critical clocks and remove the
+> aforementioned function as a cleanup.
+>
+> No functional changes.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Same comment as the previous patches, could we move struct device
-to the first parameter?
 
-Otherwise this looks good to me.
+Looks good to me,
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+However, if you move this patch before the previous one ...
+
+> ---
+>  drivers/clk/mediatek/clk-mt8173.c | 41 ++++++++++++-------------------
+>  1 file changed, 16 insertions(+), 25 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> index 70cdc0719658..02231f8ba6d9 100644
+> --- a/drivers/clk/mediatek/clk-mt8173.c
+> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> @@ -546,8 +546,11 @@ static const struct mtk_composite cpu_muxes[] = {
+>  static const struct mtk_composite top_muxes[] = {
+>         /* CLK_CFG_0 */
+>         MUX(CLK_TOP_AXI_SEL, "axi_sel", axi_parents, 0x0040, 0, 3),
+> -       MUX(CLK_TOP_MEM_SEL, "mem_sel", mem_parents, 0x0040, 8, 1),
+> -       MUX_GATE(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents, 0x0040, 16, 1, 23),
+> +       MUX_FLAGS(CLK_TOP_MEM_SEL, "mem_sel", mem_parents, 0x0040, 8, 1,
+> +                 CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+> +       MUX_GATE_FLAGS(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel",
+> +                      ddrphycfg_parents, 0x0040, 16, 1, 23,
+> +                      CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+>         MUX_GATE(CLK_TOP_MM_SEL, "mm_sel", mm_parents, 0x0040, 24, 4, 31),
+>         /* CLK_CFG_1 */
+>         MUX_GATE(CLK_TOP_PWM_SEL, "pwm_sel", pwm_parents, 0x0050, 0, 2, 7),
+> @@ -581,7 +584,9 @@ static const struct mtk_composite top_muxes[] = {
+>          */
+>         MUX_GATE_FLAGS(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents, 0x00a0, 0, 3, 7, 0),
+>         MUX_GATE(CLK_TOP_IRDA_SEL, "irda_sel", irda_parents, 0x00a0, 8, 2, 15),
+> -       MUX_GATE(CLK_TOP_CCI400_SEL, "cci400_sel", cci400_parents, 0x00a0, 16, 3, 23),
+> +       MUX_GATE_FLAGS(CLK_TOP_CCI400_SEL, "cci400_sel",
+> +                      cci400_parents, 0x00a0, 16, 3, 23,
+> +                      CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+>         MUX_GATE(CLK_TOP_AUD_1_SEL, "aud_1_sel", aud_1_parents, 0x00a0, 24, 2, 31),
+>         /* CLK_CFG_7 */
+>         MUX_GATE(CLK_TOP_AUD_2_SEL, "aud_2_sel", aud_2_parents, 0x00b0, 0, 2, 7),
+> @@ -596,7 +601,8 @@ static const struct mtk_composite top_muxes[] = {
+>         MUX_GATE(CLK_TOP_MSDC50_2_H_SEL, "msdc50_2_h_sel", msdc50_2_h_parents, 0x00d0, 0, 3, 7),
+>         MUX_GATE(CLK_TOP_HDCP_SEL, "hdcp_sel", hdcp_parents, 0x00d0, 8, 2, 15),
+>         MUX_GATE(CLK_TOP_HDCP_24M_SEL, "hdcp_24m_sel", hdcp_24m_parents, 0x00d0, 16, 2, 23),
+> -       MUX(CLK_TOP_RTC_SEL, "rtc_sel", rtc_parents, 0x00d0, 24, 2),
+> +       MUX_FLAGS(CLK_TOP_RTC_SEL, "rtc_sel", rtc_parents, 0x00d0, 24, 2,
+> +                 CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+>
+>         DIV_GATE(CLK_TOP_APLL1_DIV0, "apll1_div0", "aud_1_sel", 0x12c, 8, 0x120, 4, 24),
+>         DIV_GATE(CLK_TOP_APLL1_DIV1, "apll1_div1", "aud_1_sel", 0x12c, 9, 0x124, 8, 0),
+> @@ -846,23 +852,8 @@ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+>         }
+>  };
+>
+> -static struct clk_hw_onecell_data *mt8173_top_clk_data;
+> -static struct clk_hw_onecell_data *mt8173_pll_clk_data;
+
+You wouldn't have to touch these lines twice?
 
 ChenYu
+
+>  static struct clk_hw_onecell_data *infra_clk_data;
+>
+> -static void mtk_clk_enable_critical(void)
+> -{
+> -       if (!mt8173_top_clk_data || !mt8173_pll_clk_data)
+> -               return;
+> -
+> -       clk_prepare_enable(mt8173_pll_clk_data->hws[CLK_APMIXED_ARMCA15PLL]->clk);
+> -       clk_prepare_enable(mt8173_pll_clk_data->hws[CLK_APMIXED_ARMCA7PLL]->clk);
+> -       clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_MEM_SEL]->clk);
+> -       clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_DDRPHYCFG_SEL]->clk);
+> -       clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_CCI400_SEL]->clk);
+> -       clk_prepare_enable(mt8173_top_clk_data->hws[CLK_TOP_RTC_SEL]->clk);
+> -}
+> -
+>  static int clk_mt8173_topck_probe(struct platform_device *pdev)
+>  {
+>         struct device_node *node = pdev->dev.of_node;
+> @@ -874,7 +865,7 @@ static int clk_mt8173_topck_probe(struct platform_device *pdev)
+>         if (IS_ERR(base))
+>                 return PTR_ERR(base);
+>
+> -       mt8173_top_clk_data = clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+> +       clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+>         if (IS_ERR_OR_NULL(clk_data))
+>                 return -ENOMEM;
+>
+> @@ -895,7 +886,6 @@ static int clk_mt8173_topck_probe(struct platform_device *pdev)
+>         if (r)
+>                 goto unregister_composites;
+>
+> -       mtk_clk_enable_critical();
+>         return 0;
+>
+>  unregister_composites:
+> @@ -1048,8 +1038,10 @@ static const struct mtk_pll_div_table mmpll_div_table[] = {
+>  };
+>
+>  static const struct mtk_pll_data plls[] = {
+> -       PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0, 0, 21, 0x204, 24, 0x0, 0x204, 0),
+> -       PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0, 0, 21, 0x214, 24, 0x0, 0x214, 0),
+> +       PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0, PLL_AO,
+> +           21, 0x204, 24, 0x0, 0x204, 0),
+> +       PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210, 0x21c, 0, PLL_AO,
+> +           21, 0x214, 24, 0x0, 0x214, 0),
+>         PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x220, 0x22c, 0xf0000100, HAVE_RST_BAR, 21, 0x220, 4, 0x0, 0x224, 0),
+>         PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x230, 0x23c, 0xfe000000, HAVE_RST_BAR, 7, 0x230, 4, 0x0, 0x234, 14),
+>         PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c, 0, 0, 21, 0x244, 24, 0x0, 0x244, 0, mmpll_div_table),
+> @@ -1076,7 +1068,7 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+>         if (!base)
+>                 return PTR_ERR(base);
+>
+> -       mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+> +       clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+>         if (IS_ERR_OR_NULL(clk_data))
+>                 return -ENOMEM;
+>
+> @@ -1101,7 +1093,6 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+>         if (r)
+>                 goto unregister_ref2usb;
+>
+> -       mtk_clk_enable_critical();
+>         return 0;
+>
+>  unregister_ref2usb:
+> --
+> 2.39.0
+>
 
