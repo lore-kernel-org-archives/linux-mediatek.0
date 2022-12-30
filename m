@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD36CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 06:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C308C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 06:15:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bLUmYVMEkr7GkCeQonlOFTdxd8xgj9pInHaBtZ4xGv8=; b=HmXEiOHjdBti3eoqmuJ3V3k6w1
-	skNSh41D78gAv0YjpCi+IW9+fJh3QHbcdiJqf5b8vMLPW7P4pzMPsgcGGHeNwXWboEiqVbWAY2VL0
-	x5IE2dwXF0RfGMyAFTQwqm6J+Gx86zvoKpJA9zv0FtYWTPgamlgWPXUUA+y4XICdJR0vCLdWYq2q2
-	OzvSYe45XCvFtgCjM/gcCfFdaDjxRt5kxnmXjAGt6lNjj5Xze/71PAdWG2TGoRDh7KxzSTmsUpm2E
-	Kx8ZRfRRdOFCRHF5BKJwJQTBvytQRZOrxTwnaTSUE8s6fsQqOBUFNMK3ZuUnipKgdn1fTgfpvQdb2
-	E5Hep0PQ==;
+	bh=XI3sHI+e0zJBqej24ldsq7LTdbpGMDuLUs5yYIs+dQE=; b=eUcFAfJFKVdiIiQQaADbGkHDCn
+	qF7o9OBcbzBjC+kIXWEbSFoYX5EBmprJG4XdggIjzeCMtnMn7aygg4b7sfe2iWK8JEx0+9pAQ7l4G
+	e0Phl3V9+xi60aTwdxArCaJuVaNUpSkwrh7aofdlhXsYbH9yGjzSbCMp4XXfrJTWPecfM5fZ6FWt+
+	bOsbGMKZEzhSBw2WyxneNYU/AUUrh4T15P4a6kQOtxIBRzEfXX7C2kSBJpGUw++hs1K3MDjZNBXqN
+	nFKG3Y8HWohzh8hg5Ob4JV0mfIkiYQ8sHrF0evNuJWbCLFSqJsjQUvJIJY/2gY8SfMRe2Fx/TKQJv
+	lRycmlvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB8fM-006Kee-AK; Fri, 30 Dec 2022 06:14:52 +0000
+	id 1pB8g6-006KzM-W6; Fri, 30 Dec 2022 06:15:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB8ey-006KUY-1P; Fri, 30 Dec 2022 06:14:30 +0000
-X-UUID: 6e4721f7ee5a43959b2adefac55f3534-20221229
+	id 1pB8fS-006Kh7-Gm; Fri, 30 Dec 2022 06:15:01 +0000
+X-UUID: 1f87cf2d437c45e28698997d408134ea-20221229
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bLUmYVMEkr7GkCeQonlOFTdxd8xgj9pInHaBtZ4xGv8=;
-	b=LcC6plm3opigBM4d+yMaxOQzXvW+dml69aYP1+UpQIKcneNk5MZWIQLqzefZ0Udfyitqbk2h6Zvg8Trp9yWA1QTNzTuuRdW9tIzznYfTR0hv5VhkpXNDRQwPssrTVf98Y+F9cPq8jSwvKYUCiIsjCc4IzAXeQOiNXIJQhqG3Tjo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XI3sHI+e0zJBqej24ldsq7LTdbpGMDuLUs5yYIs+dQE=;
+	b=O45/WpBYgFKiOFvA6TU/LZp49Sskhyu03B8vGlUf5i0dLoxrnnFsEMygI7dNCS1sDmOZag5VKLbxnNXyvqAJaibLodJsCocFsQ4PNR53Z/8Czxf+9e28dMHRI2my5VtQMerKhWbeXvJhdBNfU1K15d1/vG/YO8/AI2HYTYOh7aU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:4ce2ea9b-7ce5-446d-8c07-bca88d598645,IP:0,U
+X-CID-O-INFO: VERSION:1.1.16,REQID:680163ef-9ab3-4a56-95ec-3900953b4ffb,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:09771b1,CLOUDID:28e23653-dd49-462e-a4be-2143a3ddc739,B
+X-CID-META: VersionHash:09771b1,CLOUDID:18e63653-dd49-462e-a4be-2143a3ddc739,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 1,FCT|NGT
-X-UUID: 6e4721f7ee5a43959b2adefac55f3534-20221229
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <miles.chen@mediatek.com>)
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: 1f87cf2d437c45e28698997d408134ea-20221229
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2145810906; Thu, 29 Dec 2022 23:14:23 -0700
+	with ESMTP id 296050627; Thu, 29 Dec 2022 23:14:53 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 30 Dec 2022 14:13:09 +0800
+ 15.2.792.15; Fri, 30 Dec 2022 13:54:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 30 Dec 2022 14:13:09 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <angelogioacchino.delregno@collabora.com>
-CC: <chun-jie.chen@mediatek.com>, <daniel@makrotopia.org>,
-	<devicetree@vger.kernel.org>, <fparent@baylibre.com>, <ikjn@chromium.org>,
-	<johnson.wang@mediatek.com>, <jose.exposito89@gmail.com>,
-	<kernel@collabora.com>, <krzysztof.kozlowski+dt@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <msp@baylibre.com>,
-	<mturquette@baylibre.com>, <nfraprado@collabora.com>,
-	<pablo.sun@mediatek.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
-	<ryder.lee@kernel.org>, <sam.shih@mediatek.com>, <sboyd@kernel.org>,
-	<weiyi.lu@mediatek.com>, <wenst@chromium.org>, <y.oudjana@protonmail.com>,
-	<yangyingliang@huawei.com>
-Subject: Re: [PATCH v2 00/23] MediaTek clocks cleanups and improvements
-Date: Fri, 30 Dec 2022 14:13:09 +0800
-Message-ID: <20221230061309.16643-1-miles.chen@mediatek.com>
+ 15.2.792.15 via Frontend Transport; Fri, 30 Dec 2022 13:54:49 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
+CC: <trevor.wu@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>
+Subject: [PATCH v4 04/13] ASoC: mediatek: mt8188: support adda in platform driver
+Date: Fri, 30 Dec 2022 13:54:34 +0800
+Message-ID: <20221230055443.16024-5-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
-References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221230055443.16024-1-trevor.wu@mediatek.com>
+References: <20221230055443.16024-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_221428_129595_9AC7D32D 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20221229_221458_629720_9D9BAF36 
+X-CRM114-Status: GOOD (  18.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,54 +83,656 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add mt8188 adda dai driver support.
 
-> Changes in v2:
->  - Moved dt-bindings CLK_DUMMY to clk-mtk.h instead
-> 
-> 
-> This series performs cleanups and improvements on MediaTek clock
-> drivers, greatly reducing code duplication (hence also reducing
-> kernel size).
-> 
-> There would be a lot to say about it, but summarizing:
-> 
-> * Propagates struct device where possible in order to introduce the
->   possibility of using Runtime PM on clock drivers as needed,
->   possibly enhancing reliability of some platforms (obviously, this
->   will do nothing unless power-domains are added to devicetree);
-> 
-> * Cleans up some duplicated clock(s) registration attempt(s): on
->   some platforms the 26M fixed factor clock is registered early,
->   but then upon platform_driver probe, an attempt to re-register
->   that clock was performed;
-> 
-> * Removes some early clock registration where possible, moving
->   everything to platform_driver clock probe;
-> 
-> * Breaks down the big MT8173 clock driver in multiple ones, as it's
->   already done with the others, cleans it up and adds possibility
->   possibility to compile non-boot-critical clock drivers (for 8173)
->   as modules;
-> 
-> * Extends the common mtk_clk_simple_probe() function to be able to
->   register multiple MediaTek clock types;
-> 
-> * Removes duplicated [...]_probe functions from multiple MediaTek SoC
->   clock drivers, migrating almost everything to the common functions
->   mtk_clk_simple_probe();
-> 
-> * Adds a .remove() callback, pointing to the common mtk_clk_simple_remove()
->   function to all clock drivers that were migrated to the common probe;
-> 
-> * Some more spare cleanups here and there.
-> 
-> All of this was manually tested on various Chromebooks (with different MTK
-> SoCs) and no regression was detected.
-> 
-> Cheers!
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+I don't add Reviewed-by tag because a clock parent name was updated
+in accordance with the latest relationship in CCF.
+---
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c | 632 ++++++++++++++++++++
+ 1 file changed, 632 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-adda.c
 
-I tested this v2 series on mt6779 and mt8192 without any problem.
+diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+new file mode 100644
+index 000000000000..d71696901553
+--- /dev/null
++++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+@@ -0,0 +1,632 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * MediaTek ALSA SoC Audio DAI ADDA Control
++ *
++ * Copyright (c) 2022 MediaTek Inc.
++ * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
++ *         Trevor Wu <trevor.wu@mediatek.com>
++ *         Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
++ */
++
++#include <linux/bitfield.h>
++#include <linux/delay.h>
++#include <linux/regmap.h>
++#include "mt8188-afe-clk.h"
++#include "mt8188-afe-common.h"
++#include "mt8188-reg.h"
++
++#define ADDA_HIRES_THRES 48000
++
++enum {
++	SUPPLY_SEQ_CLOCK_SEL,
++	SUPPLY_SEQ_ADDA_DL_ON,
++	SUPPLY_SEQ_ADDA_MTKAIF_CFG,
++	SUPPLY_SEQ_ADDA_UL_ON,
++	SUPPLY_SEQ_ADDA_AFE_ON,
++};
++
++enum {
++	MTK_AFE_ADDA_DL_RATE_8K = 0,
++	MTK_AFE_ADDA_DL_RATE_11K = 1,
++	MTK_AFE_ADDA_DL_RATE_12K = 2,
++	MTK_AFE_ADDA_DL_RATE_16K = 3,
++	MTK_AFE_ADDA_DL_RATE_22K = 4,
++	MTK_AFE_ADDA_DL_RATE_24K = 5,
++	MTK_AFE_ADDA_DL_RATE_32K = 6,
++	MTK_AFE_ADDA_DL_RATE_44K = 7,
++	MTK_AFE_ADDA_DL_RATE_48K = 8,
++	MTK_AFE_ADDA_DL_RATE_96K = 9,
++	MTK_AFE_ADDA_DL_RATE_192K = 10,
++};
++
++enum {
++	MTK_AFE_ADDA_UL_RATE_8K = 0,
++	MTK_AFE_ADDA_UL_RATE_16K = 1,
++	MTK_AFE_ADDA_UL_RATE_32K = 2,
++	MTK_AFE_ADDA_UL_RATE_48K = 3,
++	MTK_AFE_ADDA_UL_RATE_96K = 4,
++	MTK_AFE_ADDA_UL_RATE_192K = 5,
++};
++
++enum {
++	DELAY_DATA_MISO1 = 0,
++	DELAY_DATA_MISO0 = 1,
++};
++
++struct mtk_dai_adda_priv {
++	unsigned int dl_rate;
++	unsigned int ul_rate;
++};
++
++static unsigned int afe_adda_dl_rate_transform(struct mtk_base_afe *afe,
++					       unsigned int rate)
++{
++	switch (rate) {
++	case 8000:
++		return MTK_AFE_ADDA_DL_RATE_8K;
++	case 11025:
++		return MTK_AFE_ADDA_DL_RATE_11K;
++	case 12000:
++		return MTK_AFE_ADDA_DL_RATE_12K;
++	case 16000:
++		return MTK_AFE_ADDA_DL_RATE_16K;
++	case 22050:
++		return MTK_AFE_ADDA_DL_RATE_22K;
++	case 24000:
++		return MTK_AFE_ADDA_DL_RATE_24K;
++	case 32000:
++		return MTK_AFE_ADDA_DL_RATE_32K;
++	case 44100:
++		return MTK_AFE_ADDA_DL_RATE_44K;
++	case 48000:
++		return MTK_AFE_ADDA_DL_RATE_48K;
++	case 96000:
++		return MTK_AFE_ADDA_DL_RATE_96K;
++	case 192000:
++		return MTK_AFE_ADDA_DL_RATE_192K;
++	default:
++		dev_info(afe->dev, "%s(), rate %u invalid, use 48kHz!!!\n",
++			 __func__, rate);
++		return MTK_AFE_ADDA_DL_RATE_48K;
++	}
++}
++
++static unsigned int afe_adda_ul_rate_transform(struct mtk_base_afe *afe,
++					       unsigned int rate)
++{
++	switch (rate) {
++	case 8000:
++		return MTK_AFE_ADDA_UL_RATE_8K;
++	case 16000:
++		return MTK_AFE_ADDA_UL_RATE_16K;
++	case 32000:
++		return MTK_AFE_ADDA_UL_RATE_32K;
++	case 48000:
++		return MTK_AFE_ADDA_UL_RATE_48K;
++	case 96000:
++		return MTK_AFE_ADDA_UL_RATE_96K;
++	case 192000:
++		return MTK_AFE_ADDA_UL_RATE_192K;
++	default:
++		dev_info(afe->dev, "%s(), rate %u invalid, use 48kHz!!!\n",
++			 __func__, rate);
++		return MTK_AFE_ADDA_UL_RATE_48K;
++	}
++}
++
++static int mt8188_adda_mtkaif_init(struct mtk_base_afe *afe)
++{
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtkaif_param *param = &afe_priv->mtkaif_params;
++	int delay_data;
++	int delay_cycle;
++	unsigned int mask = 0;
++	unsigned int val = 0;
++
++	/* set rx protocol 2 & mtkaif_rxif_clkinv_adc inverse */
++	regmap_set_bits(afe->regmap, AFE_ADDA_MTKAIF_CFG0,
++			MTKAIF_RXIF_CLKINV_ADC | MTKAIF_RXIF_PROTOCOL2);
++
++	regmap_set_bits(afe->regmap, AFE_AUD_PAD_TOP, RG_RX_PROTOCOL2);
++
++	if (!param->mtkaif_calibration_ok) {
++		dev_info(afe->dev, "%s(), calibration fail\n",  __func__);
++		return 0;
++	}
++
++	/* set delay for ch1, ch2 */
++	if (param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] >=
++	    param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1]) {
++		delay_data = DELAY_DATA_MISO1;
++		delay_cycle =
++			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0] -
++			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1];
++	} else {
++		delay_data = DELAY_DATA_MISO0;
++		delay_cycle =
++			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] -
++			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0];
++	}
++
++	val = 0;
++	mask = (MTKAIF_RXIF_DELAY_DATA | MTKAIF_RXIF_DELAY_CYCLE_MASK);
++	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_CYCLE_MASK, delay_cycle);
++	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_DATA, delay_data);
++	regmap_update_bits(afe->regmap, AFE_ADDA_MTKAIF_RX_CFG2, mask, val);
++
++	return 0;
++}
++
++static int mtk_adda_mtkaif_cfg_event(struct snd_soc_dapm_widget *w,
++				     struct snd_kcontrol *kcontrol,
++				     int event)
++{
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++
++	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
++		__func__, w->name, event);
++
++	switch (event) {
++	case SND_SOC_DAPM_PRE_PMU:
++		mt8188_adda_mtkaif_init(afe);
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++static int mtk_adda_dl_event(struct snd_soc_dapm_widget *w,
++			     struct snd_kcontrol *kcontrol,
++			     int event)
++{
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++
++	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
++		__func__, w->name, event);
++
++	switch (event) {
++	case SND_SOC_DAPM_POST_PMD:
++		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
++		usleep_range(125, 135);
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++static void mtk_adda_ul_mictype(struct mtk_base_afe *afe, bool dmic)
++{
++	unsigned int reg = AFE_ADDA_UL_SRC_CON0;
++	unsigned int val;
++
++	val = (UL_SDM3_LEVEL_CTL | UL_MODE_3P25M_CH1_CTL |
++	       UL_MODE_3P25M_CH2_CTL);
++
++	/* turn on dmic, ch1, ch2 */
++	if (dmic)
++		regmap_set_bits(afe->regmap, reg, val);
++	else
++		regmap_clear_bits(afe->regmap, reg, val);
++}
++
++static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
++			     struct snd_kcontrol *kcontrol,
++			     int event)
++{
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtkaif_param *param = &afe_priv->mtkaif_params;
++
++	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
++		__func__, w->name, event);
++
++	switch (event) {
++	case SND_SOC_DAPM_PRE_PMU:
++		mtk_adda_ul_mictype(afe, param->mtkaif_dmic_on);
++		break;
++	case SND_SOC_DAPM_POST_PMD:
++		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
++		usleep_range(125, 135);
++		break;
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++static int mtk_audio_hires_event(struct snd_soc_dapm_widget *w,
++				 struct snd_kcontrol *kcontrol,
++				 int event)
++{
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct clk *clk = afe_priv->clk[MT8188_CLK_TOP_AUDIO_H_SEL];
++	struct clk *clk_parent;
++
++	dev_dbg(afe->dev, "%s(), name %s, event 0x%x\n",
++		__func__, w->name, event);
++
++	switch (event) {
++	case SND_SOC_DAPM_PRE_PMU:
++		clk_parent = afe_priv->clk[MT8188_CLK_APMIXED_APLL1];
++		break;
++	case SND_SOC_DAPM_POST_PMD:
++		clk_parent = afe_priv->clk[MT8188_CLK_XTAL_26M];
++		break;
++	default:
++		return 0;
++	}
++	mt8188_afe_set_clk_parent(afe, clk, clk_parent);
++
++	return 0;
++}
++
++static int mtk_afe_adc_hires_connect(struct snd_soc_dapm_widget *source,
++				     struct snd_soc_dapm_widget *sink)
++{
++	struct snd_soc_dapm_widget *w = source;
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_adda_priv *adda_priv;
++
++	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
++
++	if (!adda_priv) {
++		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
++		return 0;
++	}
++
++	return !!(adda_priv->ul_rate > ADDA_HIRES_THRES);
++}
++
++static int mtk_afe_dac_hires_connect(struct snd_soc_dapm_widget *source,
++				     struct snd_soc_dapm_widget *sink)
++{
++	struct snd_soc_dapm_widget *w = source;
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_adda_priv *adda_priv;
++
++	adda_priv = afe_priv->dai_priv[MT8188_AFE_IO_ADDA];
++
++	if (!adda_priv) {
++		dev_err(afe->dev, "%s adda_priv == NULL", __func__);
++		return 0;
++	}
++
++	return !!(adda_priv->dl_rate > ADDA_HIRES_THRES);
++}
++
++static const struct snd_kcontrol_new mtk_dai_adda_o176_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("I000 Switch", AFE_CONN176, 0, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I002 Switch", AFE_CONN176, 2, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I020 Switch", AFE_CONN176, 20, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I022 Switch", AFE_CONN176, 22, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I070 Switch", AFE_CONN176_2, 6, 1, 0),
++};
++
++static const struct snd_kcontrol_new mtk_dai_adda_o177_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("I001 Switch", AFE_CONN177, 1, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I003 Switch", AFE_CONN177, 3, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I021 Switch", AFE_CONN177, 21, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I023 Switch", AFE_CONN177, 23, 1, 0),
++	SOC_DAPM_SINGLE_AUTODISABLE("I071 Switch", AFE_CONN177_2, 7, 1, 0),
++};
++
++static const char * const adda_dlgain_mux_map[] = {
++	"Bypass", "Connect",
++};
++
++static SOC_ENUM_SINGLE_DECL(adda_dlgain_mux_map_enum,
++			    SND_SOC_NOPM, 0,
++			    adda_dlgain_mux_map);
++
++static const struct snd_kcontrol_new adda_dlgain_mux_control =
++	SOC_DAPM_ENUM("DL_GAIN_MUX", adda_dlgain_mux_map_enum);
++
++static const struct snd_soc_dapm_widget mtk_dai_adda_widgets[] = {
++	SND_SOC_DAPM_MIXER("I168", SND_SOC_NOPM, 0, 0, NULL, 0),
++	SND_SOC_DAPM_MIXER("I169", SND_SOC_NOPM, 0, 0, NULL, 0),
++
++	SND_SOC_DAPM_MIXER("O176", SND_SOC_NOPM, 0, 0,
++			   mtk_dai_adda_o176_mix,
++			   ARRAY_SIZE(mtk_dai_adda_o176_mix)),
++	SND_SOC_DAPM_MIXER("O177", SND_SOC_NOPM, 0, 0,
++			   mtk_dai_adda_o177_mix,
++			   ARRAY_SIZE(mtk_dai_adda_o177_mix)),
++
++	SND_SOC_DAPM_SUPPLY_S("ADDA Enable", SUPPLY_SEQ_ADDA_AFE_ON,
++			      AFE_ADDA_UL_DL_CON0,
++			      ADDA_AFE_ON_SHIFT, 0,
++			      NULL,
++			      0),
++
++	SND_SOC_DAPM_SUPPLY_S("ADDA Playback Enable", SUPPLY_SEQ_ADDA_DL_ON,
++			      AFE_ADDA_DL_SRC2_CON0,
++			      DL_2_SRC_ON_TMP_CTRL_PRE_SHIFT, 0,
++			      mtk_adda_dl_event,
++			      SND_SOC_DAPM_POST_PMD),
++
++	SND_SOC_DAPM_SUPPLY_S("ADDA Capture Enable", SUPPLY_SEQ_ADDA_UL_ON,
++			      AFE_ADDA_UL_SRC_CON0,
++			      UL_SRC_ON_TMP_CTL_SHIFT, 0,
++			      mtk_adda_ul_event,
++			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
++
++	SND_SOC_DAPM_SUPPLY_S("AUDIO_HIRES", SUPPLY_SEQ_CLOCK_SEL,
++			      SND_SOC_NOPM,
++			      0, 0,
++			      mtk_audio_hires_event,
++			      SND_SOC_DAPM_PRE_PMU | SND_SOC_DAPM_POST_PMD),
++
++	SND_SOC_DAPM_SUPPLY_S("ADDA_MTKAIF_CFG", SUPPLY_SEQ_ADDA_MTKAIF_CFG,
++			      SND_SOC_NOPM,
++			      0, 0,
++			      mtk_adda_mtkaif_cfg_event,
++			      SND_SOC_DAPM_PRE_PMU),
++
++	SND_SOC_DAPM_MUX("DL_GAIN_MUX", SND_SOC_NOPM, 0, 0,
++			 &adda_dlgain_mux_control),
++
++	SND_SOC_DAPM_PGA("DL_GAIN", AFE_ADDA_DL_SRC2_CON0,
++			 DL_2_GAIN_ON_CTL_PRE_SHIFT, 0, NULL, 0),
++
++	SND_SOC_DAPM_INPUT("ADDA_INPUT"),
++	SND_SOC_DAPM_OUTPUT("ADDA_OUTPUT"),
++
++	SND_SOC_DAPM_CLOCK_SUPPLY("aud_dac"),
++	SND_SOC_DAPM_CLOCK_SUPPLY("aud_adc"),
++	SND_SOC_DAPM_CLOCK_SUPPLY("aud_dac_hires"),
++	SND_SOC_DAPM_CLOCK_SUPPLY("aud_adc_hires"),
++};
++
++static const struct snd_soc_dapm_route mtk_dai_adda_routes[] = {
++	{"ADDA Capture", NULL, "ADDA Enable"},
++	{"ADDA Capture", NULL, "ADDA Capture Enable"},
++	{"ADDA Capture", NULL, "ADDA_MTKAIF_CFG"},
++	{"ADDA Capture", NULL, "aud_adc"},
++	{"ADDA Capture", NULL, "aud_adc_hires", mtk_afe_adc_hires_connect},
++	{"aud_adc_hires", NULL, "AUDIO_HIRES"},
++
++	{"I168", NULL, "ADDA Capture"},
++	{"I169", NULL, "ADDA Capture"},
++
++	{"ADDA Playback", NULL, "ADDA Enable"},
++	{"ADDA Playback", NULL, "ADDA Playback Enable"},
++	{"ADDA Playback", NULL, "aud_dac"},
++	{"ADDA Playback", NULL, "aud_dac_hires", mtk_afe_dac_hires_connect},
++	{"aud_dac_hires", NULL, "AUDIO_HIRES"},
++
++	{"DL_GAIN", NULL, "O176"},
++	{"DL_GAIN", NULL, "O177"},
++
++	{"DL_GAIN_MUX", "Bypass", "O176"},
++	{"DL_GAIN_MUX", "Bypass", "O177"},
++	{"DL_GAIN_MUX", "Connect", "DL_GAIN"},
++
++	{"ADDA Playback", NULL, "DL_GAIN_MUX"},
++
++	{"O176", "I000 Switch", "I000"},
++	{"O177", "I001 Switch", "I001"},
++
++	{"O176", "I002 Switch", "I002"},
++	{"O177", "I003 Switch", "I003"},
++
++	{"O176", "I020 Switch", "I020"},
++	{"O177", "I021 Switch", "I021"},
++
++	{"O176", "I022 Switch", "I022"},
++	{"O177", "I023 Switch", "I023"},
++
++	{"O176", "I070 Switch", "I070"},
++	{"O177", "I071 Switch", "I071"},
++
++	{"ADDA Capture", NULL, "ADDA_INPUT"},
++	{"ADDA_OUTPUT", NULL, "ADDA Playback"},
++};
++
++static int mt8188_adda_dmic_get(struct snd_kcontrol *kcontrol,
++				struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtkaif_param *param = &afe_priv->mtkaif_params;
++
++	ucontrol->value.integer.value[0] = param->mtkaif_dmic_on;
++	return 0;
++}
++
++static int mt8188_adda_dmic_set(struct snd_kcontrol *kcontrol,
++				struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtkaif_param *param = &afe_priv->mtkaif_params;
++	int dmic_on;
++
++	dmic_on = !!ucontrol->value.integer.value[0];
++
++	dev_dbg(afe->dev, "%s(), kcontrol name %s, dmic_on %d\n",
++		__func__, kcontrol->id.name, dmic_on);
++
++	if (param->mtkaif_dmic_on == dmic_on)
++		return 0;
++
++	param->mtkaif_dmic_on = dmic_on;
++	return 1;
++}
++
++static const struct snd_kcontrol_new mtk_dai_adda_controls[] = {
++	SOC_SINGLE("ADDA_DL_GAIN", AFE_ADDA_DL_SRC2_CON1,
++		   DL_2_GAIN_CTL_PRE_SHIFT, 65535, 0),
++	SOC_SINGLE_BOOL_EXT("MTKAIF_DMIC Switch", 0,
++			    mt8188_adda_dmic_get, mt8188_adda_dmic_set),
++};
++
++static int mtk_dai_da_configure(struct mtk_base_afe *afe,
++				unsigned int rate, int id)
++{
++	unsigned int val = 0;
++	unsigned int mask = 0;
++
++	/* set sampling rate */
++	mask |= DL_2_INPUT_MODE_CTL_MASK;
++	val |= FIELD_PREP(DL_2_INPUT_MODE_CTL_MASK,
++			  afe_adda_dl_rate_transform(afe, rate));
++
++	/* turn off saturation */
++	mask |= DL_2_CH1_SATURATION_EN_CTL;
++	mask |= DL_2_CH2_SATURATION_EN_CTL;
++
++	/* turn off mute function */
++	mask |= DL_2_MUTE_CH1_OFF_CTL_PRE;
++	mask |= DL_2_MUTE_CH2_OFF_CTL_PRE;
++	val |= DL_2_MUTE_CH1_OFF_CTL_PRE;
++	val |= DL_2_MUTE_CH2_OFF_CTL_PRE;
++
++	/* set voice input data if input sample rate is 8k or 16k */
++	mask |= DL_2_VOICE_MODE_CTL_PRE;
++	if (rate == 8000 || rate == 16000)
++		val |= DL_2_VOICE_MODE_CTL_PRE;
++
++	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, mask, val);
++
++	/* new 2nd sdm */
++	regmap_set_bits(afe->regmap, AFE_ADDA_DL_SDM_DCCOMP_CON,
++			DL_USE_NEW_2ND_SDM);
++
++	return 0;
++}
++
++static int mtk_dai_ad_configure(struct mtk_base_afe *afe,
++				unsigned int rate, int id)
++{
++	unsigned int val;
++	unsigned int mask;
++
++	mask = UL_VOICE_MODE_CTL_MASK;
++	val = FIELD_PREP(UL_VOICE_MODE_CTL_MASK,
++			 afe_adda_ul_rate_transform(afe, rate));
++
++	regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0,
++			   mask, val);
++	return 0;
++}
++
++static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params,
++				  struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_adda_priv *adda_priv = afe_priv->dai_priv[dai->id];
++	unsigned int rate = params_rate(params);
++	int id = dai->id;
++	int ret = 0;
++
++	dev_dbg(afe->dev, "%s(), id %d, stream %d, rate %u\n",
++		__func__, id, substream->stream, rate);
++
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
++		adda_priv->dl_rate = rate;
++		ret = mtk_dai_da_configure(afe, rate, id);
++	} else {
++		adda_priv->ul_rate = rate;
++		ret = mtk_dai_ad_configure(afe, rate, id);
++	}
++
++	return ret;
++}
++
++static const struct snd_soc_dai_ops mtk_dai_adda_ops = {
++	.hw_params = mtk_dai_adda_hw_params,
++};
++
++/* dai driver */
++#define MTK_ADDA_PLAYBACK_RATES (SNDRV_PCM_RATE_8000_48000 |\
++				 SNDRV_PCM_RATE_96000 |\
++				 SNDRV_PCM_RATE_192000)
++
++#define MTK_ADDA_CAPTURE_RATES (SNDRV_PCM_RATE_8000 |\
++				SNDRV_PCM_RATE_16000 |\
++				SNDRV_PCM_RATE_32000 |\
++				SNDRV_PCM_RATE_48000 |\
++				SNDRV_PCM_RATE_96000 |\
++				SNDRV_PCM_RATE_192000)
++
++#define MTK_ADDA_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
++			  SNDRV_PCM_FMTBIT_S24_LE |\
++			  SNDRV_PCM_FMTBIT_S32_LE)
++
++static struct snd_soc_dai_driver mtk_dai_adda_driver[] = {
++	{
++		.name = "ADDA",
++		.id = MT8188_AFE_IO_ADDA,
++		.playback = {
++			.stream_name = "ADDA Playback",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_ADDA_PLAYBACK_RATES,
++			.formats = MTK_ADDA_FORMATS,
++		},
++		.capture = {
++			.stream_name = "ADDA Capture",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_ADDA_CAPTURE_RATES,
++			.formats = MTK_ADDA_FORMATS,
++		},
++		.ops = &mtk_dai_adda_ops,
++	},
++};
++
++static int init_adda_priv_data(struct mtk_base_afe *afe)
++{
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_adda_priv *adda_priv;
++
++	adda_priv = devm_kzalloc(afe->dev, sizeof(struct mtk_dai_adda_priv),
++				 GFP_KERNEL);
++	if (!adda_priv)
++		return -ENOMEM;
++
++	afe_priv->dai_priv[MT8188_AFE_IO_ADDA] = adda_priv;
++
++	return 0;
++}
++
++int mt8188_dai_adda_register(struct mtk_base_afe *afe)
++{
++	struct mtk_base_afe_dai *dai;
++
++	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
++	if (!dai)
++		return -ENOMEM;
++
++	list_add(&dai->list, &afe->sub_dais);
++
++	dai->dai_drivers = mtk_dai_adda_driver;
++	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_adda_driver);
++
++	dai->dapm_widgets = mtk_dai_adda_widgets;
++	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_adda_widgets);
++	dai->dapm_routes = mtk_dai_adda_routes;
++	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_adda_routes);
++	dai->controls = mtk_dai_adda_controls;
++	dai->num_controls = ARRAY_SIZE(mtk_dai_adda_controls);
++
++	return init_adda_priv_data(afe);
++}
+-- 
+2.18.0
 
-thanks,
-Miles
 
