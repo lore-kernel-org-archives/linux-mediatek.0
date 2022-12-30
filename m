@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BCB8C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 05:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DFDBC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 05:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j4sxQBZTeARJaOtpQ26mu6MKSoj0k8stp/j0GJKpAsI=; b=KlSVWV6fU1NULYNIRFAxWxDOKs
-	d4IsxUrk/XBDPDoza4kkjHC4XF7UEeaR1j9cdyuCDq+S99zHAsrlBxSUTQJAwTwOEYbIamfZ69VhK
-	cQGuuo1bu4AMl4kWR1yxrIOCjU719noHF/ciKaTky2HnAHfmAvuV9S7MajA7gu5nvjx2D5/rYArGN
-	gSa/uE/GFk765qOd6qjrW7ln2RDRY8dMygHY9tsZZcUd0RiB0d06QckQvP7JGMFbqhIPKDLWLAZb1
-	Mov66OAtLEyqFgCuXFU5WHcyV1Fv6z4fxFfSP60idvpjrYAKzc1A+tvBhUowcfkgF51C0fAPTuOl/
-	13ViEurg==;
+	bh=dEYbMSY9mT2OK2c114me8utvLFZz2JqIKXFmopSmQiw=; b=P/ZLFKZX354Bz1UXh1xu5T33mE
+	qs6/ttC8bVdZw6GBxqT1RVMYM41JTWcC1xwZlfCihEioda2vJS7JGvIclqeQvHRQgXIQjSlN3NSuK
+	c+OVfXOge5ezn/sAXQrHefYGUdOj2lvdOpdZU/sLMFYO7VHD7/rNbkqkcld1WBxwgaThz/ptSrJ9e
+	g5Hi2abO9CEQjzro56+/CCGJDoUmV5CdFtF902Bn/bF6LA9kdBes0FibsreAJ/2EA6MqKAt/1pCAJ
+	tFuyfUWjVqJ8WdqXMVZm5NOXJaoMb/I68Nk4mZec4ku17gjdwvY/g1VPU9M0Prgx/zhxb8o+s1oWV
+	T6vvl7uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB7hL-005qBZ-Px; Fri, 30 Dec 2022 05:12:51 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1pB7ll-005sly-Hg; Fri, 30 Dec 2022 05:17:25 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB7hI-005q8N-4v
-	for linux-mediatek@lists.infradead.org; Fri, 30 Dec 2022 05:12:50 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id p30so14751560vsr.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 21:12:47 -0800 (PST)
+	id 1pB7lj-005skA-AH
+	for linux-mediatek@lists.infradead.org; Fri, 30 Dec 2022 05:17:24 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id d185so20438884vsd.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Dec 2022 21:17:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=j4sxQBZTeARJaOtpQ26mu6MKSoj0k8stp/j0GJKpAsI=;
-        b=S2uvp+3QvQHmc53dc1Zb1zRkgnvTrqDFph6z1iQJ1dkE2S6Lmyw3pPi+ReQ+TZaYlj
-         +bKXUOQpdkzuNh3oeBy/xi3M8XP7xyHXoZqCEIFP8mjmmnjMsQAnKKXwimC5lwdvax/e
-         7Thkl1MUfROcmT+3COFvA0FOA1TwikZ6me+j4=
+        bh=dEYbMSY9mT2OK2c114me8utvLFZz2JqIKXFmopSmQiw=;
+        b=RKih9fLMpxINT80ky9qXSQ53n2p/gq4DqtkictxoVB6aWfa9UX7D6geobbaZRNdi9V
+         cD0zg7UKY1wl5gpbFTbIxiJlMqwsZOqM7dtq2O2aTqKYFqeoSA4YkrNJktTS7P3yDmJW
+         NVl1tmtgJy8t3YgObj5WvVVF6dgavhZvjCHDA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=j4sxQBZTeARJaOtpQ26mu6MKSoj0k8stp/j0GJKpAsI=;
-        b=btg24E84Ua4Ii+gO0qtL+8Dk6TP+AJaRGYFR9y9bNxzvEiU4bY1nksDCobavfdzpe5
-         JuM/3h7bp5crFYIwWc4LX0UHws5d9bHY0sisUQI6C8DfqzDjiqvCmowPc6v51yY/7jFr
-         gbT0W12yaJvjQj1Mb5fn0n1kWvVdLAgHh3XITno8ZI+ijutpGj8HeMVfDNB2T8NQ5E/m
-         IX8Tgi1MdDifXuy8ogEAkRhPJlWwzG6z/L7NZ2qb866FtiVsDMI1uTV0FFmyQrafMl9B
-         wQKf1njFMYT02p+Qg9Zu61VCiZplugfcfleIUvRsU0momX59GwT+H9Rui3wXaHkOZPFb
-         e5Vw==
-X-Gm-Message-State: AFqh2kok/DEDT6w+6Hw+6lS+MyofVHQOQKzvcMdIh50/Awg/FvBiZdos
-	pw3ACkUB0EO+C+o5Dk+zWv6XQJhNZ5AGmD3vXl8f9A==
-X-Google-Smtp-Source: AMrXdXvBIpfvv7eYq0qOFA9b8lukSrK2ZsYP9FnFRdTNpKcBJc7aHUFbMHI+JTfSPUyiqECr7ENUw3wXDtbCuyv/VHU=
-X-Received: by 2002:a05:6102:3d9f:b0:3c4:4918:80c with SMTP id
- h31-20020a0561023d9f00b003c44918080cmr2639318vsv.9.1672377166648; Thu, 29 Dec
- 2022 21:12:46 -0800 (PST)
+        bh=dEYbMSY9mT2OK2c114me8utvLFZz2JqIKXFmopSmQiw=;
+        b=Vr9+m031ywF6+0N+2rBKei+cGQqiThozk0QhjgL45ZX/iu/LXUtSoayWoGLx8gDeIO
+         q66gtPg8WdeeuHGV3jKoz3fpXatjKl/jPmO74eAWOakCCxkMPGZVs45vOVWuzQZIju3g
+         Sse/Kdd+fiOpXNkmXddJgeysbGZL9u1vqTvyNwA4t4h3Nh9w18LkiDI7BxljLwgYlKCO
+         rE0AWjvNnQ3n2pHmmAv+hFeubg5PjoiVjbkuhwgaf4+eTcZHX+jiHcf+9Kpk5NtN9oDX
+         SlU29QM2erxjc10LLyFzRVjnLf7pV1PB5qKmLNq5xP0+N4K7SVp9NFoNkRnzICc5q4eL
+         mH4g==
+X-Gm-Message-State: AFqh2kq554Ofu0eQRhe9zq0kwEgLXSF4MxflyYILe1EoxvOVFYTclnaE
+	0d6w1UBLhEw24h3M+GunKy6jLBk837NzosHml5zfpQ==
+X-Google-Smtp-Source: AMrXdXtbyCSpMJ4eNW7yhoCCnZ4ewGuLOy71q3P5g49tLuLwFTAwiq8BtlKIVACuyhU5eRY9Mp/AdemXnMQUi2cYMbk=
+X-Received: by 2002:a67:f985:0:b0:3b3:7477:5aa2 with SMTP id
+ b5-20020a67f985000000b003b374775aa2mr3636972vsq.65.1672377442038; Thu, 29 Dec
+ 2022 21:17:22 -0800 (PST)
 MIME-Version: 1.0
-References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com> <20221223094259.87373-12-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221223094259.87373-12-angelogioacchino.delregno@collabora.com>
+References: <20221223094259.87373-1-angelogioacchino.delregno@collabora.com> <20221223094259.87373-15-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221223094259.87373-15-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 30 Dec 2022 13:12:35 +0800
-Message-ID: <CAGXv+5GYk2wr-UnnshT3R2uDUSn7-i5KifyJ4qDDZbptSQ9G7A@mail.gmail.com>
-Subject: Re: [PATCH v2 11/23] clk: mediatek: Switch to mtk_clk_simple_probe()
- where possible
+Date: Fri, 30 Dec 2022 13:17:11 +0800
+Message-ID: <CAGXv+5H26DA6McV_6XJiquM44MkrhYh1HmGQr+sB-82EOGvinQ@mail.gmail.com>
+Subject: Re: [PATCH v2 14/23] clk: mediatek: clk-mt8192: Move
+ CLK_TOP_CSW_F26M_D2 in top_divs
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
 	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
@@ -74,8 +74,8 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
 	devicetree@vger.kernel.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_211248_258565_6763C0EA 
-X-CRM114-Status: GOOD (  27.18  )
+X-CRM114-CacheID: sfid-20221229_211723_384050_2FF96D5A 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,131 +93,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Fri, Dec 23, 2022 at 5:43 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> mtk_clk_simple_probe() is a function that registers mtk gate clocks
-> and, if reset data is present, a reset controller and across all of
-> the MTK clock drivers, such a function is duplicated many times:
-> switch to the common mtk_clk_simple_probe() function for all of the
-> clock drivers that are registering as platform drivers.
+> This driver is registered early in clk_mt8192_top_init_early() and
+> then again in clk_mt8192_top_probe(): the difference between the
+> two is that the early one is probed with CLK_OF_DECLARE_DRIVER and
+> the latter is regularly probed as a platform_driver.
+>
+> Knowing that it is not necessary for this platform to register the
+> TOP_CSW_F26M_D2 clock that early, move it to top_divs and register
+> it with the others during platform_driver probe for topckgen;
+>
+> While at it, since the only reason why the early probe existed was
+> to register that clock, remove that entirely - leaving this driver
+> to use only platform_driver.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clk/mediatek/clk-mt2701-aud.c   | 26 +++----
->  drivers/clk/mediatek/clk-mt2701-eth.c   | 34 +++------
->  drivers/clk/mediatek/clk-mt2701-g3d.c   | 56 +++-----------
->  drivers/clk/mediatek/clk-mt2701-hif.c   | 36 +++------
->  drivers/clk/mediatek/clk-mt2712.c       | 83 ++++++++-------------
->  drivers/clk/mediatek/clk-mt6779.c       | 42 ++++++-----
->  drivers/clk/mediatek/clk-mt7622-aud.c   | 49 +++----------
->  drivers/clk/mediatek/clk-mt7622-eth.c   | 82 ++++-----------------
->  drivers/clk/mediatek/clk-mt7622-hif.c   | 85 ++++-----------------
->  drivers/clk/mediatek/clk-mt7629-hif.c   | 85 ++++-----------------
->  drivers/clk/mediatek/clk-mt8183-audio.c | 19 +++--
->  drivers/clk/mediatek/clk-mt8183.c       | 75 ++++++++-----------
->  drivers/clk/mediatek/clk-mt8192-aud.c   | 25 +++----
->  drivers/clk/mediatek/clk-mt8192.c       | 98 ++++++++-----------------
->  14 files changed, 236 insertions(+), 559 deletions(-)
 
-This looks mostly good, however ...
+I had some other changes dealing with this, but since the systimer DT
+fixes have been merged, and this is cleaner,
 
-> diff --git a/drivers/clk/mediatek/clk-mt2701-aud.c b/drivers/clk/mediatek/clk-mt2701-aud.c
-> index ab13ab618fb5..1fd6d96b34dc 100644
-> --- a/drivers/clk/mediatek/clk-mt2701-aud.c
-> +++ b/drivers/clk/mediatek/clk-mt2701-aud.c
-> @@ -76,6 +76,7 @@ static const struct mtk_gate_regs audio3_cg_regs = {
->  };
->
->  static const struct mtk_gate audio_clks[] = {
-> +       GATE_DUMMY(CLK_DUMMY, "aud_dummy"),
->         /* AUDIO0 */
->         GATE_AUDIO0(CLK_AUD_AFE, "audio_afe", "aud_intbus_sel", 2),
->         GATE_AUDIO0(CLK_AUD_HDMI, "audio_hdmi", "audpll_sel", 20),
-> @@ -138,29 +139,26 @@ static const struct mtk_gate audio_clks[] = {
->         GATE_AUDIO3(CLK_AUD_MEM_ASRC5, "audio_mem_asrc5", "asm_h_sel", 14),
->  };
->
-> +static const struct mtk_clk_desc audio_desc = {
-> +       .clks = audio_clks,
-> +       .num_clks = ARRAY_SIZE(audio_clks),
-> +};
-> +
->  static const struct of_device_id of_match_clk_mt2701_aud[] = {
-> -       { .compatible = "mediatek,mt2701-audsys", },
-> -       {}
-> +       { .compatible = "mediatek,mt2701-audsys", .data = &audio_desc },
-> +       { /* sentinel */ }
->  };
->
->  static int clk_mt2701_aud_probe(struct platform_device *pdev)
->  {
-> -       struct clk_hw_onecell_data *clk_data;
-> -       struct device_node *node = pdev->dev.of_node;
->         int r;
->
-> -       clk_data = mtk_alloc_clk_data(CLK_AUD_NR);
-> -
-> -       mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-> -                              clk_data, &pdev->dev);
-> -
-> -       r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-> +       r = mtk_clk_simple_probe(pdev);
->         if (r) {
->                 dev_err(&pdev->dev,
->                         "could not register clock provider: %s: %d\n",
->                         pdev->name, r);
-> -
-> -               goto err_clk_provider;
-> +               return r;
->         }
->
->         r = devm_of_platform_populate(&pdev->dev);
-> @@ -170,13 +168,13 @@ static int clk_mt2701_aud_probe(struct platform_device *pdev)
->         return 0;
->
->  err_plat_populate:
-> -       of_clk_del_provider(node);
-> -err_clk_provider:
-> +       mtk_clk_simple_remove(pdev);
->         return r;
->  }
->
->  static struct platform_driver clk_mt2701_aud_drv = {
->         .probe = clk_mt2701_aud_probe,
-> +       .remove = mtk_clk_simple_remove,
-
-I'm not a big fan of mixing devres and non-devres teardown code. Automatic
-devres teardown happens after the remove callback returns, so in this
-case you could have child devices being unregistered that touch clocks
-or resets that have already been unregistered and freed in the remove
-callback.
-
->         .driver = {
->                 .name = "clk-mt2701-aud",
->                 .of_match_table = of_match_clk_mt2701_aud,
-
-[...]
-
-> --- a/drivers/clk/mediatek/clk-mt2712.c
-> +++ b/drivers/clk/mediatek/clk-mt2712.c
-
-[...]
-
-> @@ -1482,7 +1459,11 @@ static struct platform_driver clk_mt2712_drv = {
->
->  static int __init clk_mt2712_init(void)
->  {
-> -       return platform_driver_register(&clk_mt2712_drv);
-> +       int ret = platform_driver_register(&clk_mt2712_drv);
-> +
-> +       if (ret)
-> +               return ret;
-> +       return platform_driver_register(&clk_mt2712_simple_drv);
->  }
->
->  arch_initcall(clk_mt2712_init);
-
-Would this get cleaned up even more? I.e. have just one driver left and
-we could have the nice *_platform_driver() macros.
-
-Thanks
-ChenYu
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
