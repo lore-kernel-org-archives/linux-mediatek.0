@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBE3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 07:36:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47D3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 07:36:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4faT+i10T2zf/BKG23lUe8KApVTLmzTXyYgHEizBCEA=; b=ojLQ0r3CvSHzOlROnJ5Zkyz4yx
-	+5p6G9UvKcJ24N0IyrgMnM6AkRI4L1Tey17TJotXINyOCOXcpuI8N7sSckc7CpeD0jDeMdNikFbCL
-	DgQrGM5COGAJ+INlcUMQW7egmbnAR6yLAfdQsI+SDA/4LqMnhRVDsTx9c2r1O/sNYBvyhbdOo2em+
-	gWkZL+Jy5OeWz2LKb7lGv58/bqxd3X97q/svT3UenJtvjTrLw21MSe4IF19SDhDOQ7JVAqIqjgYVs
-	zn8QNFtY1se/8U0kFLjHE6mE3R7NacdBCAXmCNqtUn0ozQ5xBasxjBmA2BBdLBhh+PToB8z/lAM5h
-	lIh/68og==;
+	bh=JfjTCYptep645E9PdhlrPFGtLuj5zqNpylFDPv50Pxc=; b=EDmMr/DgkD2impj4JZRXWh9xNM
+	GVsXWwZIYKoflWS5RLSFU6fvERajxIeoIHhcT704S95YGrUzuBSNQS6Tq7RA97L8OvEpr0LY9J/G7
+	8Uv+wscuEB7h7DMwx9kEHv3pjET6fxqn7ouKL6FcGCft7e644Kj0idS/bamMrdSGtxL6Pb/Pei0L/
+	GeiAVCwmO/kaTTxY4M9wsjOj6ABxudm9hAo8XjyLUOBAROZSX3rUHV+RlHYIidvUGKx9Y60+/HjBN
+	wziN6vH1ZDVUwoWDKoKrVJCVAYXPnHijzE45n+g54E1xtRK8RkyXzoLdoJh5E64AfmtPhZ0neFeXt
+	UK1fDrlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB9w3-006wOw-5Q; Fri, 30 Dec 2022 07:36:11 +0000
+	id 1pB9w7-006wQv-0Y; Fri, 30 Dec 2022 07:36:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pB9ug-006vev-Au; Fri, 30 Dec 2022 07:34:51 +0000
-X-UUID: d4beab1f1a8544a59fc5f4348d0d9f51-20221230
+	id 1pB9uf-006veS-Iu; Fri, 30 Dec 2022 07:34:51 +0000
+X-UUID: 6a6c24436003433e9df6e3d814c88ee4-20221230
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4faT+i10T2zf/BKG23lUe8KApVTLmzTXyYgHEizBCEA=;
-	b=HNdJ5FxJSb1cR7M/9dEEqQ2vpUsYIqgQRT3LIucvKBz1G2Q3QdCRrVqn34J9ThN+OePVuRil3jbrRjMiwkYUG2kFjaU4bvVucm6mTBnpGYG/5B9L3pAAiAdI94dq0mnJ7CsdCX1BtQ268rV6hI1zbObkOw6E/yKnHF7gypXNZlk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JfjTCYptep645E9PdhlrPFGtLuj5zqNpylFDPv50Pxc=;
+	b=oO6OCuooH067e/HLWgRYaHu1uqkpuU85F0xS0fIdNrY6tn3i7pSPzTL7C8ODaSgvBpQDC57xaCBG1vlhbiZ87/NIh4h+2QThw1XGz1T4TNF3sbAPSWE7OIF0pgJMeEzkXbYiUZPPTuTdi4aI7Ac6+J3XJEmuQdHYgURayLAlgek=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:3738ec56-9455-466f-aefa-a30f93f62db8,IP:0,U
+X-CID-O-INFO: VERSION:1.1.16,REQID:fa027374-5426-49bb-ba48-183635db9385,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:09771b1,CLOUDID:1dc762f4-ff42-4fb0-b929-626456a83c14,B
+X-CID-META: VersionHash:09771b1,CLOUDID:1ec762f4-ff42-4fb0-b929-626456a83c14,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 X-CID-BVR: 0
-X-UUID: d4beab1f1a8544a59fc5f4348d0d9f51-20221230
+X-UUID: 6a6c24436003433e9df6e3d814c88ee4-20221230
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <garmin.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1144644462; Fri, 30 Dec 2022 00:34:34 -0700
+	with ESMTP id 1237785039; Fri, 30 Dec 2022 00:34:34 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
@@ -59,9 +59,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-clk@vger.kernel.org>, <netdev@vger.kernel.org>, Garmin.Chang
 	<Garmin.Chang@mediatek.com>
-Subject: [PATCH v3 08/19] clk: mediatek: Add MT8188 imgsys clock support
-Date: Fri, 30 Dec 2022 15:33:46 +0800
-Message-ID: <20221230073357.18503-9-Garmin.Chang@mediatek.com>
+Subject: [PATCH v3 07/19] clk: mediatek: Add MT8188 ccusys clock support
+Date: Fri, 30 Dec 2022 15:33:45 +0800
+Message-ID: <20221230073357.18503-8-Garmin.Chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20221230073357.18503-1-Garmin.Chang@mediatek.com>
 References: <20221230073357.18503-1-Garmin.Chang@mediatek.com>
@@ -69,8 +69,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221229_233447_805106_E2174227 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20221229_233445_735096_6FC7FD20 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +85,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 imgsys clock controllers which provide clock gate
-control for image IP blocks.
+Add MT8188 ccusys clock controller which provides clock gate
+control in Camera Computing Unit.
 
 Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile         |   2 +-
- drivers/clk/mediatek/clk-mt8188-img.c | 110 ++++++++++++++++++++++++++
- 2 files changed, 111 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-img.c
+ drivers/clk/mediatek/Makefile         |  2 +-
+ drivers/clk/mediatek/clk-mt8188-ccu.c | 48 +++++++++++++++++++++++++++
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-ccu.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index dbd140b81763..be835d5e179d 100644
+index dc247bf67e8b..dbd140b81763 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
 @@ -85,7 +85,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
  				   clk-mt8186-cam.o clk-mt8186-mdp.o clk-mt8186-ipe.o
  obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
  				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
--				   clk-mt8188-cam.o clk-mt8188-ccu.o
-+				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o
+-				   clk-mt8188-cam.o
++				   clk-mt8188-cam.o clk-mt8188-ccu.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-img.c b/drivers/clk/mediatek/clk-mt8188-img.c
+diff --git a/drivers/clk/mediatek/clk-mt8188-ccu.c b/drivers/clk/mediatek/clk-mt8188-ccu.c
 new file mode 100644
-index 000000000000..b6ac0a9a2446
+index 000000000000..b7380060f906
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-img.c
-@@ -0,0 +1,110 @@
++++ b/drivers/clk/mediatek/clk-mt8188-ccu.c
+@@ -0,0 +1,48 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2022 MediaTek Inc.
@@ -126,103 +126,41 @@ index 000000000000..b6ac0a9a2446
 +#include "clk-gate.h"
 +#include "clk-mtk.h"
 +
-+static const struct mtk_gate_regs imgsys_cg_regs = {
++static const struct mtk_gate_regs ccu_cg_regs = {
 +	.set_ofs = 0x4,
 +	.clr_ofs = 0x8,
 +	.sta_ofs = 0x0,
 +};
 +
-+#define GATE_IMGSYS(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &imgsys_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_CCU(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &ccu_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
 +
-+static const struct mtk_gate imgsys_main_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_LARB9, "imgsys_main_larb9", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_TRAW0, "imgsys_main_traw0", "top_img", 1),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_TRAW1, "imgsys_main_traw1", "top_img", 2),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_VCORE_GALS, "imgsys_main_vcore_gals", "top_img", 3),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_DIP0, "imgsys_main_dip0", "top_img", 8),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_WPE0, "imgsys_main_wpe0", "top_img", 9),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_IPE, "imgsys_main_ipe", "top_img", 10),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_WPE1, "imgsys_main_wpe1", "top_img", 12),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_WPE2, "imgsys_main_wpe2", "top_img", 13),
-+	GATE_IMGSYS(CLK_IMGSYS_MAIN_GALS, "imgsys_main_gals", "top_img", 31),
++static const struct mtk_gate ccu_clks[] = {
++	GATE_CCU(CLK_CCU_LARB27, "ccu_larb27", "top_ccu", 0),
++	GATE_CCU(CLK_CCU_AHB, "ccu_ahb", "top_ccu", 1),
++	GATE_CCU(CLK_CCU_CCU0, "ccu_ccu0", "top_ccu", 2),
 +};
 +
-+static const struct mtk_gate imgsys_wpe1_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS_WPE1_LARB11, "imgsys_wpe1_larb11", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS_WPE1, "imgsys_wpe1", "top_img", 1),
++static const struct mtk_clk_desc ccu_desc = {
++	.clks = ccu_clks,
++	.num_clks = ARRAY_SIZE(ccu_clks),
 +};
 +
-+static const struct mtk_gate imgsys_wpe2_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS_WPE2_LARB11, "imgsys_wpe2_larb11", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS_WPE2, "imgsys_wpe2", "top_img", 1),
-+};
-+
-+static const struct mtk_gate imgsys_wpe3_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS_WPE3_LARB11, "imgsys_wpe3_larb11", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS_WPE3, "imgsys_wpe3", "top_img", 1),
-+};
-+
-+static const struct mtk_gate imgsys1_dip_top_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS1_DIP_TOP_LARB10, "imgsys1_dip_larb10", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS1_DIP_TOP_DIP_TOP, "imgsys1_dip_dip_top", "top_img", 1),
-+};
-+
-+static const struct mtk_gate imgsys1_dip_nr_clks[] = {
-+	GATE_IMGSYS(CLK_IMGSYS1_DIP_NR_LARB15, "imgsys1_dip_nr_larb15", "top_img", 0),
-+	GATE_IMGSYS(CLK_IMGSYS1_DIP_NR_DIP_NR, "imgsys1_dip_nr_dip_nr", "top_img", 1),
-+};
-+
-+static const struct mtk_clk_desc imgsys_main_desc = {
-+	.clks = imgsys_main_clks,
-+	.num_clks = ARRAY_SIZE(imgsys_main_clks),
-+};
-+
-+static const struct mtk_clk_desc imgsys_wpe1_desc = {
-+	.clks = imgsys_wpe1_clks,
-+	.num_clks = ARRAY_SIZE(imgsys_wpe1_clks),
-+};
-+
-+static const struct mtk_clk_desc imgsys_wpe2_desc = {
-+	.clks = imgsys_wpe2_clks,
-+	.num_clks = ARRAY_SIZE(imgsys_wpe2_clks),
-+};
-+
-+static const struct mtk_clk_desc imgsys_wpe3_desc = {
-+	.clks = imgsys_wpe3_clks,
-+	.num_clks = ARRAY_SIZE(imgsys_wpe3_clks),
-+};
-+
-+static const struct mtk_clk_desc imgsys1_dip_top_desc = {
-+	.clks = imgsys1_dip_top_clks,
-+	.num_clks = ARRAY_SIZE(imgsys1_dip_top_clks),
-+};
-+
-+static const struct mtk_clk_desc imgsys1_dip_nr_desc = {
-+	.clks = imgsys1_dip_nr_clks,
-+	.num_clks = ARRAY_SIZE(imgsys1_dip_nr_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8188_imgsys_main[] = {
-+	{ .compatible = "mediatek,mt8188-imgsys", .data = &imgsys_main_desc,},
-+	{ .compatible = "mediatek,mt8188-imgsys-wpe1", .data = &imgsys_wpe1_desc },
-+	{ .compatible = "mediatek,mt8188-imgsys-wpe2", .data = &imgsys_wpe2_desc },
-+	{ .compatible = "mediatek,mt8188-imgsys-wpe3", .data = &imgsys_wpe3_desc },
-+	{ .compatible = "mediatek,mt8188-imgsys1-dip-top", .data = &imgsys1_dip_top_desc},
-+	{ .compatible = "mediatek,mt8188-imgsys1-dip-nr", .data = &imgsys1_dip_nr_desc},
++static const struct of_device_id of_match_clk_mt8188_ccu[] = {
++	{ .compatible = "mediatek,mt8188-ccusys", .data = &ccu_desc},
 +	{ /* sentinel */ }
 +};
 +
-+static struct platform_driver clk_mt8188_imgsys_main_drv = {
++static struct platform_driver clk_mt8188_ccu_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.remove = mtk_clk_simple_remove,
 +	.driver = {
-+		.name = "clk-mt8188-imgsys_main",
-+		.of_match_table = of_match_clk_mt8188_imgsys_main,
++		.name = "clk-mt8188-ccu",
++		.of_match_table = of_match_clk_mt8188_ccu,
 +	},
 +};
 +
-+builtin_platform_driver(clk_mt8188_imgsys_main_drv);
++builtin_platform_driver(clk_mt8188_ccu_drv);
 +MODULE_LICENSE("GPL");
 -- 
 2.18.0
