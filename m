@@ -4,69 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACA8C4167B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 15:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23FBCC4167B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 15:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vy+HbPipHKDxHKUqBoKOmKIN/UPwbu8pN8QMqI6wdfA=; b=xn2qpdvfqJO3QciHzEWyD734KT
-	s/HBjZbAhOKqwIixvJ0okP8XBw5m2ZPSY3TfOzr5LbyZ1aS3bCSJAUOEmyk338VVOGcObFDSSjbbY
-	PKfFdoMcqEF9m8EjmlNac5rU0TkmPdW8SsF9RgkjalfNDqm21FIeR06emgKe0a21duRYFxRKQcUnI
-	J86gsnUnv8GzRaUjcS9dqyPG+a7IEbnt991++shjUYy1ABVicsKw9KQvzE14fYJ3pvBn5mG8RgvTZ
-	uOpUhxLka+JPGyJI8oj4uCQnbOG614DCRQX5FRyvSgHt3JBW7Lry2VyIlsQ7vA6gAJ4ft7iIriUCu
-	VOT7s/BQ==;
+	bh=t2cy/1OrKEt2n+KbnpUgc04/7RMy8+Ja+8GEsOnGjYA=; b=qz8E1pS19TIyE9MGYpEe/qlW9w
+	zxs8szyC5KP5nZa6PPUgKM31Qn/sMCB600g+g6lEA5aMTeMyjI3xJHA4Q293FQ6AQGmgcx/8fiyR7
+	osig9WkItO49ci/dkYuApQ8VPJF82lDPZeLACpxmp49cldi2Fb+POd0Qxjd/YhMBe+/ZHsYpUNHGA
+	/59yd5KRtjujgcT5dOv4CxyJmAcJdDC6li2cxSJYkkvR5cTrUExDflReAGgp/xmJ7hNTrb9PnC96z
+	xwYlOoBa6tLd8TM7FXFGYVmYgvyUd+jqT8OmVEXuK0hOH9+4PLF+Lihw5MaTjyvN/kNEeoEs0p8gp
+	qy7bQ+Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBGsY-00ALVW-Ci; Fri, 30 Dec 2022 15:01:05 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1pBHSN-00AcZ0-HH; Fri, 30 Dec 2022 15:38:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBGqP-00AKnZ-FE; Fri, 30 Dec 2022 14:58:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Vy+HbPipHKDxHKUqBoKOmKIN/UPwbu8pN8QMqI6wdfA=; b=jDJcs4FB6l1HBQ5AGcKbqu1ujZ
-	q3VpfTDC7XsXTrAyfIlMRykDrFcAcLgANZdnwxFUFdx6xASEqPho6OlPqBnpP7kM+uYph+7gdcCwZ
-	QO6WOdO+Ppq4U9N2qfywMrYywFjhZgmdc+6OWi4wmR3IHyMIoXZHB1lDSRjFtUgCsE90=;
-Received: from p200300daa720fc00fd7bb9014adaf597.dip0.t-ipconnect.de ([2003:da:a720:fc00:fd7b:b901:4ada:f597] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1pBGq6-00CjfD-Ed; Fri, 30 Dec 2022 15:58:30 +0100
-Message-ID: <fc09b981-282e-26cd-661e-86fdc72bedf9@nbd.name>
-Date: Fri, 30 Dec 2022 15:58:29 +0100
+	id 1pBHO7-00AZAk-Im; Fri, 30 Dec 2022 15:33:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
+	In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=t2cy/1OrKEt2n+KbnpUgc04/7RMy8+Ja+8GEsOnGjYA=; b=mXnYlNen/EWgZDaKiaQ2YVqBQ2
+	vFkGE0LBcqYF/js+wguXZdAxhZuTJ0EtvuH05a0NPb2AFrxhzBFrSeKSqTPgeukcB0SqUj/OUMEfQ
+	RekJa0LQLn5Pyp90n1ofIvqiOZIaiolh9f8JupRBIN4a7jHz45j2aCrnzyvhYAdjKHI8tscZqNTDa
+	4modHR6ah097xXHf9mp9uKPQitAbFuMb7yCF2mHGJu8AQvEyo+ZpSrXddzYubN1px/VccX9TPKvav
+	xKCBcRA1tMpE4mk0oDYXXdQZXnWTmzmnmhf0cpXRqSuhyXXBIe97N7LKvvcu4GLdWWl2x/VdeYoLV
+	eorYTvBg==;
+Received: from mout.gmx.net ([212.227.17.22])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pBHNy-00GssH-1U;
+	Fri, 30 Dec 2022 15:33:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+	s=s31663417; t=1672414384;
+	bh=QZE1xIk/afkLkABE1owXrClFFZNx+podxLmjY101Hfk=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=eNpLyuzVNMFXZMewJo8kzGCwOGNZvNglAloAWOco3CBBzSPZZztz+c61Ds8igR8cu
+	 MMwsZFQ0NBvivkqTzJcBr2pSZEK5HSVsRETf7n8NSYI7BZLCeSdowIwagcNgfINKLO
+	 mXcChc8mWMO1j+mSlZ54VWq9DUKi6KqeGndN6YkYNyUwpaaZxHT/NijkCCiCy4A5mQ
+	 KGb6+CeGycQWk6pCBVJl8ta3jycju7+MURcevDqjX8J7BsD1bvvCZ+wuNQ9bqFfyIt
+	 vyj1hyhlm4N/ChyDxFRj5jfYDoca8aTpgn/TcCAh5aJEipQo7S6ttUfQY+BH1A385p
+	 HkbLUYMZ50zSQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.149.221] ([217.61.149.221]) by web-mail.gmx.net
+ (3c-app-gmx-bap18.server.lan [172.19.172.88]) (via HTTP); Fri, 30 Dec 2022
+ 16:33:04 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.6.1
-Subject: Re: Aw: Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc: drop
- generic vlan rx offload, only use DSA untagging
-Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Message-ID: <trinity-b52833dd-883d-4f5e-b221-29bb4d942873-1672414384681@3c-app-gmx-bap18>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: netdev@vger.kernel.org, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re:  Re: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc: drop
+ generic vlan rx offload, only use DSA untagging
+Content-Type: text/plain; charset=UTF-8
+Date: Fri, 30 Dec 2022 16:33:04 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <fc09b981-282e-26cd-661e-86fdc72bedf9@nbd.name>
 References: <20221230073145.53386-1-nbd@nbd.name>
  <20221230073145.53386-4-nbd@nbd.name>
  <trinity-a07d48f4-11cf-4a24-a797-03ad4b1150d9-1672400818371@3c-app-gmx-bap18>
  <82821d48-9259-9508-cc80-fc07f4d3ba14@nbd.name>
  <trinity-ace28b50-2929-4af3-9dd2-765f848c4d99-1672408565903@3c-app-gmx-bap18>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <trinity-ace28b50-2929-4af3-9dd2-765f848c4d99-1672408565903@3c-app-gmx-bap18>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <fc09b981-282e-26cd-661e-86fdc72bedf9@nbd.name>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:XFhZcwksdIibuOGNbKGPYa7y7vlWTRF7XmjcL9Tj/sqTwG5Lp8E2VOOkpLaaUEdHEDrlW
+ 96f0LKzWfYZHUzhiX2p+ht+6iwzS1wPAvY5q7b3IspA5FlcqIh6MkJSWJgPkx98HMt91juGfgTz9
+ hIWXfNRn7gBPG8uUHPsUDtFkDq9vjsY+moqxqGhAjXFbjfXljxcYeS+Lfp+QjnTaIvtVrXjxwAdL
+ 3ReynmuimXUYYCr6+t84RL1imkWLFp6XU5v0FkNQ+TLknfy5/r0L1f40Fw7/DmEjieG170YICoCg
+ pM=
+UI-OutboundReport: notjunk:1;M01:P0:QnKiiIhgdmI=;c5RDmf75ZJavF8y4QKelpEKszc7
+ 3LFhndG3xZFde00fvl53n28ablLgi4kaEd0AAfY7ELLpRyDRoNqxX/629P6gSyMd/XsuCvW/N
+ um+JQnGvcVQou6de2sKSlXQTQbgFkhZzlkN0ow9RY+pcZBapPDIpVUz2Zni95l5TaV82ezgZV
+ UYYrRi625N6uvvL6G7Mv/ISkHw+iEYEeE/hDwVsJt7Dg7Hg0adtpjmfSatpwdvXeMuyBhm7t6
+ ayKeCsIWTLO8a8rbFCeppH4obCiAlLHrbQArCPOcpps/SVLcqyZ1MtDez4U/BX3f4MCRE67ww
+ kCsUXuBf1bd+OoqEhZSrS1BOt7t0vFBm8wB/pmN4+7nJS39DPfvPWF2c6fQaeC6ICwCwWK4NZ
+ 3y3uXDwpO7moqSpz7gZzzAvEL1WRwAX0u16bILvL3yYFRfN5hq9M4ApEl0tiQhgKq6hZrzBMF
+ B2Ugz3Se6YCPZNONPBlbap9EkTXQcyVqJeH4Y2GkTA9YPohK7vwsMBbPPedNIgLhQ8rVhU/tb
+ V7+EmY+KXaQnpXuUc3I8i6tk6AKV4IXm9j2hgEJJmgZf3294le+avFhpgEQ6EXJkHNiYkMW0X
+ Rj352jskxQjiGRKCU3rW1xWs8x9Z43H11uItCx78BvXg16aSoYmN06iTcElifWN+tkFmXkgMC
+ 6KcoU5J0lsFtECYG6280H/ghK4oJItOL2CE4mK+Q0CYn+Vp+FXUSdoEHxYwtNgFAuJBFRboXj
+ Y0ZoDswXQCdvtyQHwhomg11Btnd/06unUBiKTK+VoP2+wAPoxk+lv4L1dhEkjrvKTPQ/2LRtN
+ P8cBKXXl+qo5XwaTyYVCHVwg==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221230_065849_851300_400A2C6A 
-X-CRM114-Status: GOOD (  27.42  )
+X-CRM114-CacheID: sfid-20221230_153330_731255_121DAE33 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,137 +114,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30.12.22 14:56, Frank Wunderlich wrote:
-> Hi
-> 
-> thanks for fast response
-> 
->> Gesendet: Freitag, 30. Dezember 2022 um 13:56 Uhr
->> Von: "Felix Fietkau" <nbd@nbd.name>
->> An: "Frank Wunderlich" <frank-w@public-files.de>
->> Cc: netdev@vger.kernel.org, "John Crispin" <john@phrozen.org>, "Sean Wang" <sean.wang@mediatek.com>, "Mark Lee" <Mark-MC.Lee@mediatek.com>, "Lorenzo Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Russell King" <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
->> Betreff: Re: Aw: [PATCH net v3 4/5] net: ethernet: mtk_eth_soc: drop generic vlan rx offload, only use DSA untagging
->>
->> On 30.12.22 12:46, Frank Wunderlich wrote:
->> > Hi,
->> >
->> > v2 or v3 seems to break vlan on mt7986 over eth0 (mt7531 switch). v1 was working on next from end of November. But my rebased tree with v1 on 6.2-rc1 has same issue, so something after next 2711 was added which break vlan over mt7531.
->> >
->> > Directly over eth1 it works (was not working before).
->> >
->> > if i made no mistake there is still something wrong.
->> >
->> > btw. mt7622/r64 can also use second gmac (over vlan aware bridge with aux-port of switch to wan-port) it is only not default in mainline. But maybe this should not be used as decision for dropping "dsa-tag" (wrongly vlan-tag).
->> >
->> > regards Frank
->> Thanks for reporting.
->> Please try this patch on top of the series:
->> ---
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->> @@ -3218,10 +3218,8 @@ static int mtk_open(struct net_device *dev)
->>   	phylink_start(mac->phylink);
->>   	netif_tx_start_all_queues(dev);
->>
->> -	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
->> -		return 0;
->> -
->> -	if (mtk_uses_dsa(dev) && !eth->prog) {
->> +	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2) &&
->> +	    mtk_uses_dsa(dev) && !eth->prog) {
->>   		for (i = 0; i < ARRAY_SIZE(eth->dsa_meta); i++) {
->>   			struct metadata_dst *md_dst = eth->dsa_meta[i];
->>
->> @@ -3244,10 +3242,6 @@ static int mtk_open(struct net_device *dev)
->>   		val &= ~MTK_CDMP_STAG_EN;
->>   		mtk_w32(eth, val, MTK_CDMP_IG_CTRL);
->>
->> -		val = mtk_r32(eth, MTK_CDMQ_IG_CTRL);
->> -		val &= ~MTK_CDMQ_STAG_EN;
->> -		mtk_w32(eth, val, MTK_CDMQ_IG_CTRL);
->> -
->>   		mtk_w32(eth, 0, MTK_CDMP_EG_CTRL);
->>   	}
->>
->>
->>
-> 
-> seems not helping...this is how i test it:
-> 
-> ip link set eth1 up
-> ip link add link eth1 name vlan500 type vlan id 500
-> ip link add link wan name vlan600 type vlan id 600
-> ip addr add 192.168.50.1/24 dev vlan500
-> ip addr add 192.168.60.1/24 dev vlan600
-> ip link set vlan500 up
-> ip link set wan up
-> ip link set vlan600 up
-> 
-> #do this on the other side:
-> #netif=enp3s0
-> #sudo ip link add link $netif name vlan500 type vlan id 500
-> #sudo ip link add link $netif name vlan600 type vlan id 600
-> #sudo ip link set vlan500 up
-> #sudo ip link set vlan600 up
-> #sudo ip addr add 192.168.50.2/24 dev vlan500
-> #sudo ip addr add 192.168.60.2/24 dev vlan600
-> 
-> verified all used ports on my switch are in trunk-mode with vlan-membership of these 2 vlan.
-> 
-> 
-> 
-> booted 6.1 and there is vlan on dsa-port broken too, so either my test-setup is broken or code...but wonder why 6.1 is broken too...
-> 
-> with tcp-dump on my laptop i see that some packets came in for both vlan, but they seem not valid, arp only for vlan 500 (eth1 on r3).
-> 
-> $ sudo tcpdump -i enp3s0 -nn -e  vlan
-> tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
-> listening on enp3s0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-> 14:49:09.548909 e4:b9:7a:f7:c4:8b > 33:33:00:00:83:84, ethertype 802.1Q (0x8100), length 524: vlan 500, p 0, ethertype IPv6 (0x86dd), fe80::e6b9:7aff:fef7:c48b.34177 > ff12::8384.21027: UDP, length 458
-> 14:49:09.548929 e4:b9:7a:f7:c4:8b > 33:33:00:00:83:84, ethertype 802.1Q (0x8100), length 524: vlan 600, p 0, ethertype IPv6 (0x86dd), fe80::e6b9:7aff:fef7:c48b.34177 > ff12::8384.21027: UDP, length 458
-> 14:49:09.549470 e4:b9:7a:f7:c4:8b > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 504: vlan 500, p 0, ethertype IPv4 (0x0800), 192.168.50.2.33050 > 192.168.50.255.21027: UDP, length 458
-> 14:49:09.549522 e4:b9:7a:f7:c4:8b > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 504: vlan 600, p 0, ethertype IPv4 (0x0800), 192.168.60.2.33050 > 192.168.60.255.21027: UDP, length 458
-> 14:49:26.324503 92:65:f3:ec:b0:19 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 60: vlan 500, p 0, ethertype ARP (0x0806), Request who-has 192.168.50.2 tell 192.168.50.1, length 42
-> 14:49:26.324525 e4:b9:7a:f7:c4:8b > 92:65:f3:ec:b0:19, ethertype 802.1Q (0x8100), length 46: vlan 500, p 0, ethertype ARP (0x0806), Reply 192.168.50.2 is-at e4:b9:7a:f7:c4:8b, length 28
-> 14:49:26.325091 92:65:f3:ec:b0:19 > e4:b9:7a:f7:c4:8b, ethertype 802.1Q (0x8100), length 102: vlan 500, p 0, ethertype IPv4 (0x0800), 192.168.50.1 > 192.168.50.2: ICMP echo request, id 44246, seq 1, length 64
-> 14:49:26.325158 e4:b9:7a:f7:c4:8b > 92:65:f3:ec:b0:19, ethertype 802.1Q (0x8100), length 102: vlan 500, p 0, ethertype IPv4 (0x0800), 192.168.50.2 > 192.168.50.1: ICMP echo reply, id 44246, seq 1, length 64
-> 
-> on r3 i see these packets going out (so far it looks good):
-> 
-> root@bpi-r3:~# ping 192.168.60.2
-> PING 192.168.60.2 (192.168.60.2) 56(84) bytes of data.
-> 13:30:29.782003 08:22:33:44:55:77 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 46: vlan 600, p 0, ethertype ARP (0x0806),
->   Request who-has 192.168.60.2 tell 192.168.60.1, length 28
-> 13:30:30.788175 08:22:33:44:55:77 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 46: vlan 600, p 0, ethertype ARP (0x0806),
->   Request who-has 192.168.60.2 tell 192.168.60.1, length 28
-> 13:30:31.828181 08:22:33:44:55:77 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 46: vlan 600, p 0, ethertype ARP (0x0806),
->   Request who-has 192.168.60.2 tell 192.168.60.1, length 28
->  From 192.168.60.1 icmp_seq=1 Destination Host Unreachable
-> 13:30:32.868205 08:22:33:44:55:77 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 46: vlan 600, p 0, ethertype ARP (0x0806),
->   Request who-has 192.168.60.2 tell 192.168.60.1, length 28
-> 13:30:33.908171 08:22:33:44:55:77 > ff:ff:ff:ff:ff:ff, ethertype 802.1Q (0x8100), length 46: vlan 600, p 0, ethertype ARP (0x0806),
->   Request who-has 192.168.60.2 tell 192.168.60.1, length 28
-> 
-> HTH, maybe daniel or anyone other can confirm this
-Does this help?
----
---- a/net/dsa/tag_mtk.c
-+++ b/net/dsa/tag_mtk.c
-@@ -25,6 +25,14 @@ static struct sk_buff *mtk_tag_xmit(stru
-  	u8 xmit_tpid;
-  	u8 *mtk_tag;
-  
-+	/* The Ethernet switch we are interfaced with needs packets to be at
-+	 * least 64 bytes (including FCS) otherwise their padding might be
-+	 * corrupted. With tags enabled, we need to make sure that packets are
-+	 * at least 68 bytes (including FCS and tag).
-+	 */
-+	if (__skb_put_padto(skb, ETH_ZLEN + MTK_HDR_LEN, false))
-+		return NULL;
-+
-  	/* Build the special tag after the MAC Source Address. If VLAN header
-  	 * is present, it's required that VLAN header and special tag is
-  	 * being combined. Only in this way we can allow the switch can parse
+Hi
 
+> Gesendet: Freitag, 30. Dezember 2022 um 15:58 Uhr
+> Von: "Felix Fietkau" <nbd@nbd.name>
 
+> Does this help?
+> ---
+> --- a/net/dsa/tag_mtk.c
+> +++ b/net/dsa/tag_mtk.c
+> @@ -25,6 +25,14 @@ static struct sk_buff *mtk_tag_xmit(stru
+>   	u8 xmit_tpid;
+>   	u8 *mtk_tag;
+>
+> +	/* The Ethernet switch we are interfaced with needs packets to be at
+> +	 * least 64 bytes (including FCS) otherwise their padding might be
+> +	 * corrupted. With tags enabled, we need to make sure that packets are
+> +	 * at least 68 bytes (including FCS and tag).
+> +	 */
+> +	if (__skb_put_padto(skb, ETH_ZLEN + MTK_HDR_LEN, false))
+> +		return NULL;
+> +
+>   	/* Build the special tag after the MAC Source Address. If VLAN header
+>   	 * is present, it's required that VLAN header and special tag is
+>   	 * being combined. Only in this way we can allow the switch can parse
+
+no, i verified my vlan-setup ist right by adding additional device (my r2)=
+ into the same 2 vlans. My Laptop can ping both vlans of R2, but on r3/mt7=
+986 only vlan500 (on eth1) works, not 600 on wan-port of mt7986.
+
+see arp going out on r3, but not received in the other side (laptop/r2)...=
+.
+
+any debug i can add for this? ethtool does not show stats for vlans, for w=
+an i see no CRC/drops
+
+regards Frank
 
