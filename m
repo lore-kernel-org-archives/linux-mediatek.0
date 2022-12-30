@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09BB6C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 21:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D2BC3DA7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Dec 2022 22:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yM7tLQukK3ee+o3GHKaxNTtqE120eC/46qEVclUSCs4=; b=NeOdbZv7zzJ2mmZIwOWSWe2eEP
-	mkA/onN4t3YQ3sfjKXU25EXO2iAh0qFU3iiMlMXBCHYw7p1bCHu67YK5uDJluEsOm7THfXKkFPDoY
-	iJzNloBxzg2XmT0TtuB7WeCsUmLawuOzSNYxBl34duDtreOSY1MjnFJW/mc9NtgTKmxWWTFxFm+ia
-	OlGr/6h3ikpjlptzZ6wurlV5HyUun6LFX2XbIrX3b98IC24Ex+89CI/8sqA+gx0OkG8mwhs5PYbVI
-	Qpe612gZDO//2ep0+wcYaWsf51/W67+MXvReZafvDc+V5OJqJrhEarabFOJLA4pf+jIA+QGOpMKJt
-	bn7DLwZw==;
+	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j+/tfzBOyZlyM2aCwLqPhsV7PbzqKJv0eDbJLIH7/sY=; b=w4Zf3KpfftuhUezMrhmFdTK4Is
+	9EKz91mvKyBjzNd8jmnXmV6K0urPfT+n5QY1mpJyM9VfLjV+5rPt5i9sfdUg9YdXQHAyQmL01dWzS
+	SYmin0eOLaDLfe6v2ZNb8cQcrZ4P0HIDzyRZFYtprJUdIaZjilUTFoH/WihH9oedLAD23Jzb5VAUS
+	y97UG3XHElXd1ElkmYlZ5TURJlPre/Hmb2gOXy3YoWY4safi3mJOT7b0920T7j9OMJRxQNh0CI2PL
+	JRqWq66YXNfCVGZaWO/UGjRdQ/r3DmUaqqt0g+ZKoOvpns6/S3KmUJpf+ziXBfidkbEyNj9ga99th
+	YjpMslow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBN95-00DpX5-3w; Fri, 30 Dec 2022 21:42:31 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1pBO42-00EMsY-BL; Fri, 30 Dec 2022 22:41:22 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBM6Z-00DLhd-Ut
-	for linux-mediatek@lists.infradead.org; Fri, 30 Dec 2022 20:35:54 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id m21so31706055edc.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 30 Dec 2022 12:35:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yM7tLQukK3ee+o3GHKaxNTtqE120eC/46qEVclUSCs4=;
-        b=t5pna3QqL+sBeE8/5zDfQsBdLVknUMNTLIqs2q1dls2xGpMch615A286HxjBsN2dOm
-         npqoPD74TllHB/3F7MJPp2C7iB8/LLLB6r/CcAIayufmkzp4ccVFNmi42q6Y/jMPRMQt
-         5BivKCW0Yi9VAwGfZSYOjBgA5oGcSPThctCYL0XvPK33ZynHjO+0wrMzO9E+E3joBzah
-         VLZgbq5+2lUzkhx18uDh4C8Rkln7skEcQupqD1W6sxrGJMioZqCDgK20oYdL1KbfeN6E
-         Tir5cHDpFErIg9U7eJu7WEcqKwnMZIBiRqVJ0lQ8qxDP8ysnqcr1gunHlGfo5y8nnBzz
-         hjdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yM7tLQukK3ee+o3GHKaxNTtqE120eC/46qEVclUSCs4=;
-        b=mBqohzuRUvMy0GQVvoacfSX9wc0020fqvrdUrblC1Sljtt8ZK9ymuBiM3ykhVKGc0N
-         RWDvrROJuhFN+ZLSwoonCsCsQGpPUsTMll3UmPGiG3zBc6bxARwFX0d4G7Gt5IgPQjZM
-         DDDl4i6AffQqrvlPibagoga0huNQGI6LZ95eJRIcTAQPu6V4VpvAad/FCGuFUqstRQTZ
-         Z9pHFnju/2YPvdSXN7Obnp9Gy5rL7q1EuEXSCRG7yLEbG8xx5hqCaXdVs/F37n5ytztj
-         BuD+NLkfO5CjxzFt3GWChLLzHNLqIn9WmH8z28eiZlsG3ocH0tyT1qEAJJYZ4VvzWv4g
-         tTyQ==
-X-Gm-Message-State: AFqh2koUd04u3npPVcS1G2+dWC1QRI+QJoJh1qxpTbv4OGGyc3Gmg3yO
-	DRVzkE6a29xXkcb/k3Nxe3ry9ZTcdflZV2r0qzI=
-X-Google-Smtp-Source: AMrXdXsga6iFLx1oZJHSwuX/gfAy91cdL0LJIGCBRo/xm9zrj7Kxo+hWBVGKehvpRGIKQq6GCv4wLw==
-X-Received: by 2002:a05:6402:3224:b0:47d:810a:f410 with SMTP id g36-20020a056402322400b0047d810af410mr39930114eda.24.1672432549228;
-        Fri, 30 Dec 2022 12:35:49 -0800 (PST)
-Received: from predatorhelios.fritz.box (dynamic-2a01-0c22-cd9d-4b00-ef17-3c78-1696-7315.c22.pool.telefonica.de. [2a01:c22:cd9d:4b00:ef17:3c78:1696:7315])
-        by smtp.gmail.com with ESMTPSA id c10-20020a056402158a00b00482c1f1a039sm8350500edv.30.2022.12.30.12.35.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Dec 2022 12:35:48 -0800 (PST)
-From: =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>
-To: linux-mediatek@lists.infradead.org,
+	id 1pBO3k-00EMmt-0R; Fri, 30 Dec 2022 22:41:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 89B59B81D98;
+	Fri, 30 Dec 2022 22:41:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32887C433EF;
+	Fri, 30 Dec 2022 22:41:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1672440060;
+	bh=modTSy1vCT2gxH29EjhljDH3rQB/B9z2JuOf7c3W/Vs=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=P9PsFTGCH8xdqF06N8P2gxEMkzdfo/EXRCu7Yg6ul/QolpSWDtq0nxMgLzDEDR1E5
+	 D6rIzfd31blvFPlHkMdN+aXVbqpAg+e9ZQLqSbb/AxLEpK7JMOAuleJ22B6RzgM/At
+	 nEItP74/XPAUXP887dP8FsW/fD/5/h50Ux/QjSutfOq+gS8utrEWVIHs1mNY/YI2tH
+	 e7XhH1MX9xLKdGwXlDHmm1WcWTo5XMQw/0yJASZQ2K69WYAy68TwtB92NbcMDJ5PFZ
+	 ux+uwNR+k8wNyFsgO4PR5HrVkO2HljdO1TvnAe5i++JtGOc2XqxnqGK69plZ0p/4kH
+	 0Q2Nlwl1ARJ5Q==
+Received: from ip-185-104-136-29.ptr.icomera.net ([185.104.136.29] helo=wait-a-minute.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1pBO3d-00FxL1-Ot;
+	Fri, 30 Dec 2022 22:40:57 +0000
+Date: Fri, 30 Dec 2022 22:39:36 +0000
+Message-ID: <87v8lsect3.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Bernhard =?UTF-8?B?Um9zZW5rcsOkbnplcg==?= <bero@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-usb@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
@@ -73,22 +63,25 @@ To: linux-mediatek@lists.infradead.org,
 	chunfeng.yun@mediatek.com,
 	linus.walleij@linaro.org,
 	lee@kernel.org,
-	maz@kernel.org,
 	tglx@linutronix.de,
 	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v6 6/7] dt-bindings: usb: mediatek,mtk-xhci: add MT8365 SoC bindings
-Date: Fri, 30 Dec 2022 21:35:40 +0100
-Message-Id: <20221230203541.146807-7-bero@baylibre.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221230203541.146807-1-bero@baylibre.com>
+Subject: Re: [PATCH v6 7/7] arm64: dts: mediatek: Initial mt8365-evk support
+In-Reply-To: <20221230203541.146807-8-bero@baylibre.com>
 References: <20221230203541.146807-1-bero@baylibre.com>
-MIME-Version: 1.0
+	<20221230203541.146807-8-bero@baylibre.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+X-SA-Exim-Connect-IP: 185.104.136.29
+X-SA-Exim-Rcpt-To: bero@baylibre.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, gregkh@linuxfoundation.org, chunfeng.yun@mediatek.com, linus.walleij@linaro.org, lee@kernel.org, tglx@linutronix.de, angelogioacchino.delregno@collabora.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221230_123552_123174_63A07F7E 
-X-CRM114-Status: UNSURE (   7.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221230_144104_375938_C18B61D8 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +96,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+On Fri, 30 Dec 2022 20:35:41 +0000,
+Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com> wrote:
+>=20
+> From: Fabien Parent <fparent@baylibre.com>
+>=20
+> This adds minimal support for the Mediatek 8365 SOC and the EVK reference
+> board, allowing the board to boot to initramfs with serial port I/O.
+>=20
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> [bero@baylibre.com: Removed parts depending on drivers that aren't upstre=
+am yet, cleanups, add CPU cache layout, add systimer]
+> Signed-off-by: Bernhard Rosenkr=C3=A4nzer <bero@baylibre.com>
+> Tested-by: Kevin Hilman <khilman@baylibre.com>
 
-Add binding documentation for the MT8365 SoC.
+[...]
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-[bero@baylibre.com: Cleanups suggested by reviewers]
-Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
- 1 file changed, 1 insertion(+)
+> +	soc {
+> +		#address-cells =3D <2>;
+> +		#size-cells =3D <2>;
+> +		compatible =3D "simple-bus";
+> +		ranges;
+> +
+> +		gic: interrupt-controller@c000000 {
+> +			compatible =3D "arm,gic-v3";
+> +			#interrupt-cells =3D <4>;
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-index a3c37944c6305..c119caa9ad168 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -35,6 +35,7 @@ properties:
-           - mediatek,mt8188-xhci
-           - mediatek,mt8192-xhci
-           - mediatek,mt8195-xhci
-+          - mediatek,mt8365-xhci
-       - const: mediatek,mtk-xhci
- 
-   reg:
--- 
-2.39.0
+Why 4 cells? All the SPIs routed via sysirq are perfectly happy with 3
+cells, and all the PPIs have 0 for the 4th cell (none of them use any
+form of partitioning that'd require 4 cells). So where is this coming
+from?
 
+> +			interrupt-parent =3D <&gic>;
+> +			interrupt-controller;
+> +			reg =3D <0 0x0c000000 0 0x80000>, <0 0x0c080000 0 0x80000>;
+> +
+
+The first region is obviously wrong (512kB for the distributor?
+that's... most generous, but the architecture states that it is 64kB,
+and that's wasteful enough).
+
+This is also missing the GICC/GICH/GICV regions that Cortex-A53
+implements, and that must be provided as per the binding.
+
+> +			interrupts =3D <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		};
+
+Thanks,
+
+	M.
+
+--=20
+Without deviation from the norm, progress is not possible.
 
