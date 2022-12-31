@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7055CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 20:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0964C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 20:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WN9zTYIRYdOMpYuWboYKtjNs/fAWvOvRi12vlwn095E=; b=ONuFRGwFI9GjXyNwixKGc7nCG0
-	71yxsY8emspyjdSDMNvqnMvDFQKwlvBxwB5tPDzdWyMUix1WW+77rnT5LSItwv86UZALgoiXA6l8/
-	hIadIyitcSPQMik6UrWOGgjU0YSigtuFAxheCUk8ePlmfRMpjaSTpa84FwFPP5xwT3QHxvAtQKSVl
-	1yGHR/LnuW2Mt0Xyr0af0x82qJ1imJk6q5AX5MKdAMn/PryIWnw3abnEpWHKgCpOMvEWEi0YNqhr/
-	ciK7Pzny16m50Z99RqFTz602OgXQF/lCuRnZ8sSKX3f6bQgCBEHolScZKrvqT3x7rEYBOjJaKLCaN
-	GHCrWHRw==;
+	bh=WN9zTYIRYdOMpYuWboYKtjNs/fAWvOvRi12vlwn095E=; b=xOcyNhyGmSP2Z1GrjG6/SMhKd0
+	3K6xgERqJqwJ1y6b7J1VwfRdCpgjyAKAb85+fUyz2Txwq4+R4NHaLx8Bo9c5vrgPiCiyR3ii/WEmx
+	ADhlFnHX84QGcH+nvdfZgABayKObgI2j/UYaysvyfGxNqjf5tdqmQvoV+73oxJ2F5xAK7zP/+LTlE
+	uZlPH3742qGQR1sVzkfVPLZllEsPP/D/BYXTMsC3cfOJX+KgWG8wme8u4iSDktF/flyG2hqkohNhB
+	9ksZX+ybUYD113SiAxt6HVBJ9KTLAxpFGgcAhxEC0lDGaA4f1DarHZLzmnR9D1u1yt25ELmLE0P7H
+	IXinPA8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBi6Y-009h3w-NL; Sat, 31 Dec 2022 20:05:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pBi7H-009hSB-8Y; Sat, 31 Dec 2022 20:06:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBi6H-009gvF-TA; Sat, 31 Dec 2022 20:05:03 +0000
+	id 1pBi6r-009hDq-Nz; Sat, 31 Dec 2022 20:05:39 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 85C2B60C2B;
-	Sat, 31 Dec 2022 20:04:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A18FCC433F0;
-	Sat, 31 Dec 2022 20:04:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2126260A6F;
+	Sat, 31 Dec 2022 20:05:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9EE6C433D2;
+	Sat, 31 Dec 2022 20:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672517094;
+	s=k20201202; t=1672517136;
 	bh=nbEQCC/a/+NsXj6d7pAHo1OtVx4lNUjq9z845PL8KLE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kgn1awa6j4koxcAFSCZxbWYbksP1qEevFxgKHa5AFVc35JwP8So4ENt1mQdHUYlfa
-	 sUn6Qz9chc3hFaOXRUtWkbZ6Vwnm0lFx87KfvROae8qmnGC+03b56qH5lv7CaWq7NO
-	 Twh6jvjWXMojBPUkJTKrsWd17AaQOF9XkBQfjJ/pHmPuQ2puZ4+m4RnSG0aOflJs3j
-	 3JUWef/odCCxrcYpfI6c8RBrePIAsT98llHeI9w9qvl3nWN4ePc2B39ePs/U7Ag77E
-	 DJhCmA9Aq+8EecAywFEaMbC4GMgtbgYiDEjMULYut1kiKg3fJopnfJonn9438YnK8a
-	 s1X77QfGSQzdA==
+	b=XIYJ1XhnrhflgRMfxmD/e/9im96567mbddgFDNBYEE2ohnUE43ga2bCoUDMTnG9fP
+	 0CIMGcaEjapfoBItehBwFupyGx6ZlAMCLpzdOl9UnhttWdQjQ7Nt85DqGBd/F6onea
+	 tx4K4nYKm9sLBUdL0SV58uokT0PFxa9zLYnqpAgLATXCP3LQ+haIzqgj1DchsS3tBe
+	 C/+M2l9/GfRGubAtpeVM4XWTyimGrQn3Z+lTOyxc+zg7Ti1xQwwZWQdhaP8xEjc6Ku
+	 wdykZpnNm9c9kIAYQ7BFrkpzQZw66LCOxM+3xTLio+0vSM6vE470FfH59AbnULXjZH
+	 gpEobjdGQXndw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -61,18 +61,18 @@ Cc: YC Hung <yc.hung@mediatek.com>,
 	alsa-devel@alsa-project.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 4/7] ASoC: SOF: mediatek: initialize panic_info to zero
-Date: Sat, 31 Dec 2022 15:04:36 -0500
-Message-Id: <20221231200439.1748686-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.0 4/7] ASoC: SOF: mediatek: initialize panic_info to zero
+Date: Sat, 31 Dec 2022 15:04:59 -0500
+Message-Id: <20221231200502.1748784-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221231200439.1748686-1-sashal@kernel.org>
-References: <20221231200439.1748686-1-sashal@kernel.org>
+In-Reply-To: <20221231200502.1748784-1-sashal@kernel.org>
+References: <20221231200502.1748784-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221231_120502_293263_11D9BD24 
+X-CRM114-CacheID: sfid-20221231_120537_861539_8B3978F8 
 X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
