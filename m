@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F8FC3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 09:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F98C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 09:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gu/6BNrbZp9njCa8iLIpe9m+ZmHNz+PxLqalouL2mRo=; b=WvYVbqGIP9hYxhntMJXkXqzwbH
-	GU5wjVX4zl+ACmyP3RLMd5nbnDO2zUd6a8QPM6CA0Lm73nsqcu7twg6zTMWkDwcSQ5jyJOJEghS6t
-	i4iihptA/UytyCts3X6t7LcXBLRqF9rWjz+WNLBSfdtSHaQQZLWuwpJ5sTPQQAowF3idwNR1o6DWp
-	cbqZkedmxI5GjnUD3zHKZRSQbDR8kuLIsb5h8dlZaAsDU+CEr8vw9min+HrrbfnWs55BVh9VS7pCp
-	nyrYKu+TSSB+xQ56PQpffTkvRPCd2OWI/hmaM8760vVWRM6r2nX+WA/feujXYKgoGlnGxlARCaQkd
-	nfJ3ia1g==;
+	bh=1XS8de5WGClxnlsQXckriVJ9xTtd7GStdGuk7V9f4i0=; b=B8jHkN0cAB4LoQOeMjs8ZsTEh5
+	M9J7/h1EUYqM7z1wQ8eo8HLCJSTJU0aua3KxnNAVQE5hNvS7kNfWyCEeFuvtoQiP9DmXyiGSmmVRs
+	Sk1I2/WuVF14JBtOLihE0D3Hnac3CNIcvFBCrM/T8wn+C9G5QgkYfs6Um093112cvSVZe5V7zvq0j
+	l9T0yxW1LwP9S2DUM6/M/rVCHclXQNon+WMoLAF/Qw1vBAkQQV6ZQrWDDnmUBVYWjHZ2wyRFsD3Ul
+	s+MQDXr+/mx4TAUKonDTw+pvxlGGSjDkt5obyee+qXK51EdULByXxl1pNsEIyUPWcefYGFZYFMGPX
+	dNyVtwYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBYIA-003AmV-VW; Sat, 31 Dec 2022 09:36:39 +0000
+	id 1pBYID-003Anz-D5; Sat, 31 Dec 2022 09:36:41 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBYHk-003ATf-JK; Sat, 31 Dec 2022 09:36:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1672479369; cv=none; 
+	id 1pBYHi-003AQz-6t; Sat, 31 Dec 2022 09:36:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1672479361; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=PbKjBM7U9cf0mBvjsZz4hmFwJvxxep/wyFQ9gmYpU5hlO0SmHT4D94NWdId7HeORaQZLKvubj3EIBB+CteBY3Zp2/zeK2Rld0MGCfv5QU8Kd2LfPSVtcwpqW47m9vtKRBCkYX92Glk4e+t82tJkv6lirYli75kIFot6pIrg3MJg=
+	b=luiHZC0bVfVG5LwWK7gPv7bSrYlWjeRaK/ueKAWXBb74inqec+Yy+gdUjLnBKPWmyVI+tEeRvfpWt3irMAoQl14ChV7qEcjWzmFtW6Jfagynivg12WKF5oY75RVDpnsJ76YZHzEYqkM6HDmVnTuPOnd1buR89wgW9zLMIBwEsco=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1672479369; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=gu/6BNrbZp9njCa8iLIpe9m+ZmHNz+PxLqalouL2mRo=; 
-	b=eq2gebFYh7xJp777NDE7zeAV0+g3PLPT3JrCdvbvItNd5i4ODXAQi0SxhKB77PPaen98bNg4+c6ULhy2artHRXiL1iOKym/WMfU4L/sV16Xpqg0wDoTsB6eFbIRF9SmuaRA28mXCf/brDXTika7jHBdVvZA+LUFyafFUUz8ScmY=
+	t=1672479361; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=1XS8de5WGClxnlsQXckriVJ9xTtd7GStdGuk7V9f4i0=; 
+	b=edEIJlWP4f/zDlAnMxP71tjwldQOVw7p325ckgc2KtOHBLoTWC1nTVSjwYVtWtt8J6uCmbypxp3VR7QJhr9DK+zmpPvJiX8ZpHqIHiANGNJ/CFM732s4Osy8AWb8VLxhtTk3ceFNg3ihW1IS0vyxEd3CuAbv4I2XDoAXl82mO7k=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1672479369;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1672479361;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=gu/6BNrbZp9njCa8iLIpe9m+ZmHNz+PxLqalouL2mRo=;
-	b=HgkO70oCucnAY0+ax/X2+9hHMQgld07NV3hnaQMrETjrL8yjrfeuKbUBl7E/Ag9l
-	OaL3GntrvYIha9knCXJIkwnSV3D8tGK9WphkwhoqPrghHUEHhM16hyNsxGJENsSZbAr
-	QVvTyhO7X7F2t81vbtOixMfpvFmRiE7V2nRBteQU=
+	bh=1XS8de5WGClxnlsQXckriVJ9xTtd7GStdGuk7V9f4i0=;
+	b=kC7GWCek2tZeY3IsU9lv2vkfCnNMoXRSFp/PYbH1MCZ97LIEoRhc26h5KtywE5z2
+	qA5Ips0nbzZRl6uJNah86jqAxK4SOODibyQstANHP1jP4iql126pdcjeBOCUeSoPmrH
+	QKVT6yIGTAll2NOVZhXWogtbvmoPqWUOGxLmjDB8=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1672479368837253.98031426006992; Sat, 31 Dec 2022 01:36:08 -0800 (PST)
+	with SMTPS id 1672479359911545.80827564642; Sat, 31 Dec 2022 01:35:59 -0800 (PST)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -51,6 +51,7 @@ To: Linus Walleij <linus.walleij@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	Sergio Paracuellos <sergio.paracuellos@gmail.com>
 Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	linux-gpio@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -58,9 +59,9 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
 	erkin.bozoglu@xeront.com
-Subject: [PATCH v2 5/6] dt-bindings: pinctrl: rt305x: add proper function muxing binding
-Date: Sat, 31 Dec 2022 12:35:45 +0300
-Message-Id: <20221231093546.8881-6-arinc.unal@arinc9.com>
+Subject: [PATCH v2 2/6] dt-bindings: pinctrl: mt7620: add proper function muxing binding
+Date: Sat, 31 Dec 2022 12:35:42 +0300
+Message-Id: <20221231093546.8881-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20221231093546.8881-1-arinc.unal@arinc9.com>
 References: <20221231093546.8881-1-arinc.unal@arinc9.com>
@@ -69,8 +70,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221231_013612_778030_27EFBBB1 
-X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-CacheID: sfid-20221231_013610_999953_5F89B1AD 
+X-CRM114-Status: UNSURE (   8.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,15 +91,16 @@ Not every function can be muxed to a group. Add proper binding which
 documents which function can be muxed to a group or set of groups.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../pinctrl/ralink,rt305x-pinctrl.yaml        | 235 ++++++++++++++++--
- 1 file changed, 210 insertions(+), 25 deletions(-)
+ .../pinctrl/ralink,mt7620-pinctrl.yaml        | 632 +++++++++++++++++-
+ 1 file changed, 596 insertions(+), 36 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-index f602a5d6e13a..30779a1a90b0 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-@@ -30,38 +30,224 @@ patternProperties:
+diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+index 6f17f3991640..06880c80ba80 100644
+--- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
+@@ -29,47 +29,608 @@ patternProperties:
          $ref: pinmux-node.yaml#
  
          properties:
@@ -106,44 +108,53 @@ index f602a5d6e13a..30779a1a90b0 100644
 -            description: The pin group to select.
 -            enum: [
 -              # common
--              i2c, jtag, led, mdio, rgmii, spi, spi_cs1, uartf, uartlite,
+-              i2c, spi, wdt,
 -
--              # For RT3050, RT3052 and RT3350 SoCs
--              sdram,
+-              # For MT7620 SoC
+-              ephy, mdio, nd_sd, pa, pcie, rgmii1, rgmii2, spi refclk,
+-              uartf, uartlite, wled,
 -
--              # For RT3352 SoC
--              lna, pa
+-              # For MT7628 and MT7688 SoCs
+-              gpio, i2s, p0led_an, p0led_kn, p1led_an, p1led_kn, p2led_an,
+-              p2led_kn, p3led_an, p3led_kn, p4led_an, p4led_kn, perst, pwm0,
+-              pwm1, refclk, sdmode, spi cs1, spis, uart0, uart1, uart2,
+-              wled_an, wled_kn,
 -            ]
 -
            function:
 -            description: The mux function to select.
 -            enum: [
 -              # common
--              gpio, gpio i2s, gpio uartf, i2c, i2s uartf, jtag, led, mdio,
--              pcm gpio, pcm i2s, pcm uartf, rgmii, spi, spi_cs1, uartf,
--              uartlite, wdg_cs1,
+-              gpio, i2c, refclk, spi,
+-
+-              # For MT7620 SoC
+-              ephy, gpio i2s, gpio uartf, i2s uartf, mdio, nand, pa,
+-              pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf,
+-              rgmii1, rgmii2, sd, spi refclk, uartf, uartlite, wdt refclk,
+-              wdt rst, wled,
+-
+-              # For MT7628 and MT7688 SoCs
+-              antenna, debug, i2s, jtag, p0led_an, p0led_kn,
+-              p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
+-              p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1, pwm_uart2,
+-              rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7, spi cs1,
+-              spis, sw_r, uart0, uart1, uart2, utif, wdt, wled_an, wled_kn, -,
+-            ]
 +            description:
 +              A string containing the name of the function to mux to the group.
 +            anyOf:
-+              - description: For RT3050, RT3052 and RT3350 SoCs
-+                enum: [gpio, gpio i2s, gpio uartf, i2c, i2s uartf, jtag, mdio,
-+                       pcm gpio, pcm i2s, pcm uartf, rgmii, sdram, spi, uartf,
-+                       uartlite]
- 
--              # For RT3050, RT3052 and RT3350 SoCs
--              sdram,
-+              - description: For RT3352 SoC
-+                enum: [gpio, gpio i2s, gpio uartf, i2c, i2s uartf, jtag, led,
-+                       lna, mdio, pa, pcm gpio, pcm i2s, pcm uartf, rgmii, spi,
-+                       spi_cs1, uartf, uartlite, wdg_cs1]
- 
--              # For RT3352 SoC
--              lna, pa
--            ]
-+              - description: For RT5350 SoC
-+                enum: [gpio, gpio i2s, gpio uartf, i2c, i2s uartf, jtag, led,
-+                       pcm gpio, pcm i2s, pcm uartf, spi, spi_cs1, uartf,
-+                       uartlite, wdg_cs1]
++              - description: For MT7620 SoC
++                enum: [ephy, gpio, gpio i2s, gpio uartf, i2c, i2s uartf, mdio, nand, pa,
++                       pcie refclk, pcie rst, pcm gpio, pcm i2s, pcm uartf, refclk,
++                       rgmii1, rgmii2, sd, spi, spi refclk, uartf, uartlite, wdt refclk,
++                       wdt rst, wled]
++
++              - description: For MT7628 and MT7688 SoCs
++                enum: [antenna, debug, gpio, i2c, i2s, jtag, p0led_an, p0led_kn,
++                       p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
++                       p4led_an, p4led_kn, pcie, pcm, perst, pwm, pwm0, pwm1, pwm_uart2,
++                       refclk, rsvd, sdxc, sdxc d5 d4, sdxc d6, sdxc d7, spi, spi cs1,
++                       spis, sw_r, uart0, uart1, uart2, utif, wdt, wled_an, wled_kn, -]
 +
 +          groups:
 +            description:
@@ -157,21 +168,48 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
++                  const: antenna
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++
++          - if:
++              properties:
++                function:
++                  const: debug
++            then:
++              properties:
++                groups:
++                  enum: [i2c]
++
++          - if:
++              properties:
++                function:
++                  const: ephy
++            then:
++              properties:
++                groups:
++                  enum: [ephy]
++
++          - if:
++              properties:
++                function:
 +                  const: gpio
 +            then:
 +              properties:
 +                groups:
 +                  oneOf:
-+                    - description: For RT3050, RT3052 and RT3350 SoCs
-+                      enum: [i2c, jtag, mdio, rgmii, sdram, spi, uartf,
-+                             uartlite]
++                    - description: For MT7620 SoC
++                      enum: [ephy, i2c, mdio, nd_sd, pa, pcie, rgmii1, rgmii2,
++                             spi, spi refclk, uartf, uartlite, wdt, wled]
 +
-+                    - description: For RT3352 SoC
-+                      enum: [i2c, jtag, led, lna, mdio, pa, rgmii, spi, spi_cs1,
-+                             uartf, uartlite]
-+
-+                    - description: For RT5350 SoC
-+                      enum: [i2c, jtag, led, spi, spi_cs1, uartf, uartlite]
++                    - description: For MT7628 and MT7688 SoCs
++                      enum: [gpio, i2c, i2s, p0led_an, p0led_kn, p1led_an,
++                             p1led_kn, p2led_an, p2led_kn, p3led_an, p3led_kn,
++                             p4led_an, p4led_kn, perst, pwm0, pwm1, refclk,
++                             sdmode, spi, spi cs1, spis, uart0, uart1, uart2,
++                             wdt, wled_an, wled_kn]
 +
 +          - if:
 +              properties:
@@ -203,6 +241,15 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
++                  const: i2s
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++
++          - if:
++              properties:
++                function:
 +                  const: i2s uartf
 +            then:
 +              properties:
@@ -216,25 +263,9 @@ index f602a5d6e13a..30779a1a90b0 100644
 +            then:
 +              properties:
 +                groups:
-+                  enum: [jtag]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: led
-+            then:
-+              properties:
-+                groups:
-+                  enum: [led]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: lna
-+            then:
-+              properties:
-+                groups:
-+                  enum: [lna]
++                  enum: [p0led_an, p0led_kn, p1led_an, p1led_kn, p2led_an,
++                         p2led_kn, p3led_an, p3led_kn, p4led_an, p4led_kn,
++                         sdmode]
 +
 +          - if:
 +              properties:
@@ -248,11 +279,146 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
++                  const: nand
++            then:
++              properties:
++                groups:
++                  enum: [nd_sd]
++
++          - if:
++              properties:
++                function:
++                  const: p0led_an
++            then:
++              properties:
++                groups:
++                  enum: [p0led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p0led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p0led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p1led_an
++            then:
++              properties:
++                groups:
++                  enum: [p1led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p1led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p1led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p2led_an
++            then:
++              properties:
++                groups:
++                  enum: [p2led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p2led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p2led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p3led_an
++            then:
++              properties:
++                groups:
++                  enum: [p3led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p3led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p3led_kn]
++
++          - if:
++              properties:
++                function:
++                  const: p4led_an
++            then:
++              properties:
++                groups:
++                  enum: [p4led_an]
++
++          - if:
++              properties:
++                function:
++                  const: p4led_kn
++            then:
++              properties:
++                groups:
++                  enum: [p4led_kn]
++
++          - if:
++              properties:
++                function:
 +                  const: pa
 +            then:
 +              properties:
 +                groups:
 +                  enum: [pa]
++
++          - if:
++              properties:
++                function:
++                  const: pcie
++            then:
++              properties:
++                groups:
++                  enum: [gpio]
++
++          - if:
++              properties:
++                function:
++                  const: pcie refclk
++            then:
++              properties:
++                groups:
++                  enum: [pcie]
++
++          - if:
++              properties:
++                function:
++                  const: pcie rst
++            then:
++              properties:
++                groups:
++                  enum: [pcie]
++
++          - if:
++              properties:
++                function:
++                  const: pcm
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
 +
 +          - if:
 +              properties:
@@ -284,20 +450,133 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
-+                  const: rgmii
++                  const: perst
 +            then:
 +              properties:
 +                groups:
-+                  enum: [rgmii]
++                  enum: [perst]
 +
 +          - if:
 +              properties:
 +                function:
-+                  const: sdram
++                  const: pwm
 +            then:
 +              properties:
 +                groups:
-+                  enum: [sdram]
++                  enum: [uart1, uart2]
++
++          - if:
++              properties:
++                function:
++                  const: pwm0
++            then:
++              properties:
++                groups:
++                  enum: [pwm0]
++
++          - if:
++              properties:
++                function:
++                  const: pwm1
++            then:
++              properties:
++                groups:
++                  enum: [pwm1]
++
++          - if:
++              properties:
++                function:
++                  const: pwm_uart2
++            then:
++              properties:
++                groups:
++                  enum: [spis]
++
++          - if:
++              properties:
++                function:
++                  const: refclk
++            then:
++              properties:
++                groups:
++                  oneOf:
++                    - description: For MT7620 SoC
++                      enum: [mdio]
++
++                    - description: For MT7628 and MT7688 SoCs
++                      enum: [gpio, refclk, spi cs1]
++
++          - if:
++              properties:
++                function:
++                  const: rgmii1
++            then:
++              properties:
++                groups:
++                  enum: [rgmii1]
++
++          - if:
++              properties:
++                function:
++                  const: rgmii2
++            then:
++              properties:
++                groups:
++                  enum: [rgmii2]
++
++          - if:
++              properties:
++                function:
++                  const: rsvd
++            then:
++              properties:
++                groups:
++                  enum: [p0led_an, p0led_kn, wled_an, wled_kn]
++
++          - if:
++              properties:
++                function:
++                  const: sd
++            then:
++              properties:
++                groups:
++                  enum: [nd_sd]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc
++            then:
++              properties:
++                groups:
++                  enum: [sdmode]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d5 d4
++            then:
++              properties:
++                groups:
++                  enum: [uart2]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d6
++            then:
++              properties:
++                groups:
++                  enum: [pwm1]
++
++          - if:
++              properties:
++                function:
++                  const: sdxc d7
++            then:
++              properties:
++                groups:
++                  enum: [pwm0]
 +
 +          - if:
 +              properties:
@@ -311,11 +590,65 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
-+                  const: spi_cs1
++                  const: spi cs1
 +            then:
 +              properties:
 +                groups:
-+                  enum: [spi_cs1]
++                  enum: [spi cs1]
++
++          - if:
++              properties:
++                function:
++                  const: spi refclk
++            then:
++              properties:
++                groups:
++                  enum: [spi refclk]
++
++          - if:
++              properties:
++                function:
++                  const: spis
++            then:
++              properties:
++                groups:
++                  enum: [spis]
++
++          - if:
++              properties:
++                function:
++                  const: sw_r
++            then:
++              properties:
++                groups:
++                  enum: [uart1]
++
++          - if:
++              properties:
++                function:
++                  const: uart0
++            then:
++              properties:
++                groups:
++                  enum: [uart0]
++
++          - if:
++              properties:
++                function:
++                  const: uart1
++            then:
++              properties:
++                groups:
++                  enum: [uart1]
++
++          - if:
++              properties:
++                function:
++                  const: uart2
++            then:
++              properties:
++                groups:
++                  enum: [uart2]
 +
 +          - if:
 +              properties:
@@ -338,23 +671,87 @@ index f602a5d6e13a..30779a1a90b0 100644
 +          - if:
 +              properties:
 +                function:
-+                  const: wdg_cs1
++                  const: utif
 +            then:
 +              properties:
 +                groups:
-+                  enum: [spi_cs1]
++                  enum: [p1led_an, p1led_kn, p2led_an, p2led_kn, p3led_an,
++                         p3led_kn, p4led_an, p4led_kn, pwm0, pwm1, sdmode, spis]
++
++          - if:
++              properties:
++                function:
++                  const: wdt
++            then:
++              properties:
++                groups:
++                  enum: [wdt]
++
++          - if:
++              properties:
++                function:
++                  const: wdt refclk
++            then:
++              properties:
++                groups:
++                  enum: [wdt]
++
++          - if:
++              properties:
++                function:
++                  const: wdt rst
++            then:
++              properties:
++                groups:
++                  enum: [wdt]
++
++          - if:
++              properties:
++                function:
++                  const: wled
++            then:
++              properties:
++                groups:
++                  enum: [wled]
++
++          - if:
++              properties:
++                function:
++                  const: wled_an
++            then:
++              properties:
++                groups:
++                  enum: [wled_an]
++
++          - if:
++              properties:
++                function:
++                  const: wled_kn
++            then:
++              properties:
++                groups:
++                  enum: [wled_kn]
++
++          - if:
++              properties:
++                function:
++                  const: "-"
++            then:
++              properties:
++                groups:
++                  enum: [i2c, spi cs1, uart0]
 +
          additionalProperties: false
  
      additionalProperties: false
-@@ -75,7 +261,6 @@ required:
+@@ -83,7 +644,6 @@ required:
  additionalProperties: false
  
  examples:
 -  # Pinmux controller node
    - |
      pinctrl {
-       compatible = "ralink,rt305x-pinctrl";
+       compatible = "ralink,mt7620-pinctrl";
 -- 
 2.37.2
 
