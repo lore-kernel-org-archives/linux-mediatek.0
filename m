@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F18FC3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 09:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5565DC46467
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 09:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rPGa65klFhbGvVsaA+/Hqur3ELebHTV8ot6lSg5xIow=; b=ZqoR4ZRwjj5cPWHS5YgUZSrxEN
-	AquwAnlHuM5CTht1dJ/2CH810NoysLsongnPebDLQG8N9qhGZKPJKh+AZGf19vS//rNtfmyMVQjzK
-	7k6ZXwhHC5nv2FzfcvwhS2LM+mDPIYeaFUzpFrID8OCvsELaiMgaXEn6uFbdnoKbMXfQWUp4O3Ae4
-	1XL+dhSvw9/Lkc9h2SvCoq389sRr3QcV7fXXXpprdEs6W4vBzvmKJet18j+hXg9/ocZdXz5RHNvQb
-	T02cKeX8bLVUdAISGNeb9+JHP1mCB5+O+wKfvEE12XdDuhGZiqoWYuHtNqMDdqOuRioUTSLCo6zPS
-	T7j8SBWg==;
+	bh=lronyd5K/k4UGxR/pC4FxF/UARy4HFBUaYEINfPH6Q4=; b=Bf1ObZKk2haUEzOL9TzaYU2z89
+	EYh6BPc4YbkbPX+dSHdZHmybN97CcG5PQc2WvviQ7gLRqAW6bvmDW66Xv43nundch1GBw/Pn0Nszn
+	OQd5eD9xI+OTnXHzjK/Cr9UQJ+s+dgGfu2nZJIb9S7kDTqAM3HLveYsXHAN2o67l3TyrSrUl3QZ3R
+	/2BBmgyL0wPRFKJPKg49OTZfEEdACPyaKCTln9KUqjq2uirP9K3qi93QMU215fN8KWvNGVl2LIX25
+	W2gHZyWXVFPooY7Ha00CUhzGlCG82fJ3jeea0SlxCFf1Li5GncdgdDkiS4bGs+c4MXCs5UihPBV1U
+	h83PPZeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBYIM-003Avm-JN; Sat, 31 Dec 2022 09:36:50 +0000
+	id 1pBYIP-003Axz-8S; Sat, 31 Dec 2022 09:36:53 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBYHo-003AWR-Ic; Sat, 31 Dec 2022 09:36:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1672479373; cv=none; 
+	id 1pBYHi-003AQh-7p; Sat, 31 Dec 2022 09:36:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1672479357; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YzJPoVKz5I2K694cUzjUT3eatOayh96GagWOtDQfRFAyQm/a5XxLE4bFA3Pr2Cz148FdK/Q+Mi26+sexkcRRktULxvqHt79oEaisybMn8y2pa5jr2TYWLJUS3nEtl9SfVoqfGECU+Uk6hlRL3CMj5Og54siSCmcICZTs8Fe3r9k=
+	b=OWHFvuj+LlZWCd2fmUsQBiog+mYzGK6AANCBN7d9+ImtoLLWFhfE6pNo9kyVw0GdgLIIWwhv0wopWaWSMzHzq7lBNzttYIPCJm49EJjWJg5qLHw53G0TyqY9g7CtQxct/w28hGX0JGlFzVwFQwidO2NqQtvvCEny4ZhyXZwnZns=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1672479373; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=rPGa65klFhbGvVsaA+/Hqur3ELebHTV8ot6lSg5xIow=; 
-	b=BxaeWIyyJY/rzakIeT5G0MolqIa0VKNh0WskaApZojU8csM9DX8CRj/NfkZ0MzObXE5JeeuWxea10bG4qWiDNsUFd9Z7i5kOby7rifesWxoh/AEYvkMNNe0le2BCEtg/dGWHRCfNMJWkb++cnUV0YIIziNooxtDnWGDnXd5n4bQ=
+	t=1672479357; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=lronyd5K/k4UGxR/pC4FxF/UARy4HFBUaYEINfPH6Q4=; 
+	b=cmerBhFr6uHhnFF6o9+0kqt9sL1P2SEWK+44KRzDg4wiGIEGnYCkgh6zqDoTxbvjnagQTufDneQDpQu/dKVEhvMB4MrS1W5nQbJVoyYZJkMeDiVML5yS6th1zOBJ4fJU5WtfWutybsHalyPclhzsLKZCDKdOezu4h5QobtgEZyE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1672479373;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1672479357;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=rPGa65klFhbGvVsaA+/Hqur3ELebHTV8ot6lSg5xIow=;
-	b=QZgUxEvWzjtL7baXvt1MUElmLR81BP4uNwa9OZGFtISXqA1sodrpIRDxXFTcAxIa
-	TRjx04IppwPRL7WmObDE8i2TkY68K8bnPbrKCY3wqDksaCudP6aEgl+1lHvh0tZGs5C
-	rWfXmzeCYj0+rl36hTNsHvwoCIkakOAOnF3DpBBc=
+	bh=lronyd5K/k4UGxR/pC4FxF/UARy4HFBUaYEINfPH6Q4=;
+	b=T+pkeJOBRak1kqFUwK/2sfRnlBJP8bw79xZci0mzW5njCkjOjD/MdjjoRVzHYEE1
+	P9oQYYT1Mhn14A2K2ODp8Xel1gnogMut0ibglh4+6rei0YTmJt5wOec/+XNKtowbpD4
+	c7wG9FJ+L93CkSxuR1kgQVjgGCD9MkvBHGtyPr00=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1672479371809156.1518157034668; Sat, 31 Dec 2022 01:36:11 -0800 (PST)
+	with SMTPS id 1672479356597239.15949663520735; Sat, 31 Dec 2022 01:35:56 -0800 (PST)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -58,9 +58,9 @@ Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
 	erkin.bozoglu@xeront.com
-Subject: [PATCH v2 6/6] dt-bindings: pinctrl: rt3883: add proper function muxing binding
-Date: Sat, 31 Dec 2022 12:35:46 +0300
-Message-Id: <20221231093546.8881-7-arinc.unal@arinc9.com>
+Subject: [PATCH v2 1/6] pinctrl: ralink: rename variables which point out the pin group
+Date: Sat, 31 Dec 2022 12:35:41 +0300
+Message-Id: <20221231093546.8881-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20221231093546.8881-1-arinc.unal@arinc9.com>
 References: <20221231093546.8881-1-arinc.unal@arinc9.com>
@@ -69,8 +69,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221231_013616_760423_FE83E1F8 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20221231_013611_011099_981DFBD2 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,325 +85,709 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Not every function can be muxed to a group. Add proper binding which
-documents which function can be muxed to a group or set of groups.
+These variables define a list of functions which can be muxed to the pin
+group which the name of the pin group was originally intended to be pointed
+out on the name of the said variables.
 
+Therefore, rename "func" to "grp" across all subdrivers where this applies.
+
+Fixes: 18653d4bd8ab ("pinctrl: ralink: rename variable names for functions on MT7620 and MT7621")
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../pinctrl/ralink,mt7620-pinctrl.yaml        |   5 +-
- .../pinctrl/ralink,mt7621-pinctrl.yaml        |   1 +
- .../pinctrl/ralink,rt2880-pinctrl.yaml        |   1 +
- .../pinctrl/ralink,rt305x-pinctrl.yaml        |   3 +-
- .../pinctrl/ralink,rt3883-pinctrl.yaml        | 205 +++++++++++++++++-
- 5 files changed, 205 insertions(+), 10 deletions(-)
+ drivers/pinctrl/ralink/pinctrl-mt7620.c | 164 ++++++++++++------------
+ drivers/pinctrl/ralink/pinctrl-mt7621.c |  48 +++----
+ drivers/pinctrl/ralink/pinctrl-rt2880.c |  28 ++--
+ drivers/pinctrl/ralink/pinctrl-rt305x.c |  82 ++++++------
+ drivers/pinctrl/ralink/pinctrl-rt3883.c |  44 +++----
+ 5 files changed, 183 insertions(+), 183 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-index 06880c80ba80..1e63ea34146a 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7620-pinctrl.yaml
-@@ -49,6 +49,7 @@ patternProperties:
-           groups:
-             description:
-               An array of strings. Each string contains the name of a group.
-+            maxItems: 1
+diff --git a/drivers/pinctrl/ralink/pinctrl-mt7620.c b/drivers/pinctrl/ralink/pinctrl-mt7620.c
+index 22ff16eff02f..4e8d26bb3430 100644
+--- a/drivers/pinctrl/ralink/pinctrl-mt7620.c
++++ b/drivers/pinctrl/ralink/pinctrl-mt7620.c
+@@ -54,20 +54,20 @@
+ #define MT7620_GPIO_MODE_EPHY		15
+ #define MT7620_GPIO_MODE_PA		20
  
-         required:
-           - groups
-@@ -89,7 +90,7 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  oneOf:
-+                  anyOf:
-                     - description: For MT7620 SoC
-                       enum: [ephy, i2c, mdio, nd_sd, pa, pcie, rgmii1, rgmii2,
-                              spi, spi refclk, uartf, uartlite, wdt, wled]
-@@ -389,7 +390,7 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  oneOf:
-+                  anyOf:
-                     - description: For MT7620 SoC
-                       enum: [mdio]
+-static struct ralink_pmx_func i2c_func[] =  { FUNC("i2c", 0, 1, 2) };
+-static struct ralink_pmx_func spi_func[] = { FUNC("spi", 0, 3, 4) };
+-static struct ralink_pmx_func uartlite_func[] = { FUNC("uartlite", 0, 15, 2) };
+-static struct ralink_pmx_func mdio_func[] = {
++static struct ralink_pmx_func i2c_grp[] =  { FUNC("i2c", 0, 1, 2) };
++static struct ralink_pmx_func spi_grp[] = { FUNC("spi", 0, 3, 4) };
++static struct ralink_pmx_func uartlite_grp[] = { FUNC("uartlite", 0, 15, 2) };
++static struct ralink_pmx_func mdio_grp[] = {
+ 	FUNC("mdio", MT7620_GPIO_MODE_MDIO, 22, 2),
+ 	FUNC("refclk", MT7620_GPIO_MODE_MDIO_REFCLK, 22, 2),
+ };
+-static struct ralink_pmx_func rgmii1_func[] = { FUNC("rgmii1", 0, 24, 12) };
+-static struct ralink_pmx_func refclk_func[] = { FUNC("spi refclk", 0, 37, 3) };
+-static struct ralink_pmx_func ephy_func[] = { FUNC("ephy", 0, 40, 5) };
+-static struct ralink_pmx_func rgmii2_func[] = { FUNC("rgmii2", 0, 60, 12) };
+-static struct ralink_pmx_func wled_func[] = { FUNC("wled", 0, 72, 1) };
+-static struct ralink_pmx_func pa_func[] = { FUNC("pa", 0, 18, 4) };
+-static struct ralink_pmx_func uartf_func[] = {
++static struct ralink_pmx_func rgmii1_grp[] = { FUNC("rgmii1", 0, 24, 12) };
++static struct ralink_pmx_func refclk_grp[] = { FUNC("spi refclk", 0, 37, 3) };
++static struct ralink_pmx_func ephy_grp[] = { FUNC("ephy", 0, 40, 5) };
++static struct ralink_pmx_func rgmii2_grp[] = { FUNC("rgmii2", 0, 60, 12) };
++static struct ralink_pmx_func wled_grp[] = { FUNC("wled", 0, 72, 1) };
++static struct ralink_pmx_func pa_grp[] = { FUNC("pa", 0, 18, 4) };
++static struct ralink_pmx_func uartf_grp[] = {
+ 	FUNC("uartf", MT7620_GPIO_MODE_UARTF, 7, 8),
+ 	FUNC("pcm uartf", MT7620_GPIO_MODE_PCM_UARTF, 7, 8),
+ 	FUNC("pcm i2s", MT7620_GPIO_MODE_PCM_I2S, 7, 8),
+@@ -76,202 +76,202 @@ static struct ralink_pmx_func uartf_func[] = {
+ 	FUNC("gpio uartf", MT7620_GPIO_MODE_GPIO_UARTF, 7, 4),
+ 	FUNC("gpio i2s", MT7620_GPIO_MODE_GPIO_I2S, 7, 4),
+ };
+-static struct ralink_pmx_func wdt_func[] = {
++static struct ralink_pmx_func wdt_grp[] = {
+ 	FUNC("wdt rst", 0, 17, 1),
+ 	FUNC("wdt refclk", 0, 17, 1),
+ 	};
+-static struct ralink_pmx_func pcie_rst_func[] = {
++static struct ralink_pmx_func pcie_rst_grp[] = {
+ 	FUNC("pcie rst", MT7620_GPIO_MODE_PCIE_RST, 36, 1),
+ 	FUNC("pcie refclk", MT7620_GPIO_MODE_PCIE_REF, 36, 1)
+ };
+-static struct ralink_pmx_func nd_sd_func[] = {
++static struct ralink_pmx_func nd_sd_grp[] = {
+ 	FUNC("nand", MT7620_GPIO_MODE_NAND, 45, 15),
+ 	FUNC("sd", MT7620_GPIO_MODE_SD, 47, 13)
+ };
  
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-index 0efb03f1d88e..1b1d37b981d9 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,mt7621-pinctrl.yaml
-@@ -39,6 +39,7 @@ patternProperties:
-           groups:
-             description:
-               An array of strings. Each string contains the name of a group.
-+            maxItems: 1
+ static struct ralink_pmx_group mt7620a_pinmux_data[] = {
+-	GRP("i2c", i2c_func, 1, MT7620_GPIO_MODE_I2C),
+-	GRP("uartf", uartf_func, MT7620_GPIO_MODE_UART0_MASK,
++	GRP("i2c", i2c_grp, 1, MT7620_GPIO_MODE_I2C),
++	GRP("uartf", uartf_grp, MT7620_GPIO_MODE_UART0_MASK,
+ 		MT7620_GPIO_MODE_UART0_SHIFT),
+-	GRP("spi", spi_func, 1, MT7620_GPIO_MODE_SPI),
+-	GRP("uartlite", uartlite_func, 1, MT7620_GPIO_MODE_UART1),
+-	GRP_G("wdt", wdt_func, MT7620_GPIO_MODE_WDT_MASK,
++	GRP("spi", spi_grp, 1, MT7620_GPIO_MODE_SPI),
++	GRP("uartlite", uartlite_grp, 1, MT7620_GPIO_MODE_UART1),
++	GRP_G("wdt", wdt_grp, MT7620_GPIO_MODE_WDT_MASK,
+ 		MT7620_GPIO_MODE_WDT_GPIO, MT7620_GPIO_MODE_WDT_SHIFT),
+-	GRP_G("mdio", mdio_func, MT7620_GPIO_MODE_MDIO_MASK,
++	GRP_G("mdio", mdio_grp, MT7620_GPIO_MODE_MDIO_MASK,
+ 		MT7620_GPIO_MODE_MDIO_GPIO, MT7620_GPIO_MODE_MDIO_SHIFT),
+-	GRP("rgmii1", rgmii1_func, 1, MT7620_GPIO_MODE_RGMII1),
+-	GRP("spi refclk", refclk_func, 1, MT7620_GPIO_MODE_SPI_REF_CLK),
+-	GRP_G("pcie", pcie_rst_func, MT7620_GPIO_MODE_PCIE_MASK,
++	GRP("rgmii1", rgmii1_grp, 1, MT7620_GPIO_MODE_RGMII1),
++	GRP("spi refclk", refclk_grp, 1, MT7620_GPIO_MODE_SPI_REF_CLK),
++	GRP_G("pcie", pcie_rst_grp, MT7620_GPIO_MODE_PCIE_MASK,
+ 		MT7620_GPIO_MODE_PCIE_GPIO, MT7620_GPIO_MODE_PCIE_SHIFT),
+-	GRP_G("nd_sd", nd_sd_func, MT7620_GPIO_MODE_ND_SD_MASK,
++	GRP_G("nd_sd", nd_sd_grp, MT7620_GPIO_MODE_ND_SD_MASK,
+ 		MT7620_GPIO_MODE_ND_SD_GPIO, MT7620_GPIO_MODE_ND_SD_SHIFT),
+-	GRP("rgmii2", rgmii2_func, 1, MT7620_GPIO_MODE_RGMII2),
+-	GRP("wled", wled_func, 1, MT7620_GPIO_MODE_WLED),
+-	GRP("ephy", ephy_func, 1, MT7620_GPIO_MODE_EPHY),
+-	GRP("pa", pa_func, 1, MT7620_GPIO_MODE_PA),
++	GRP("rgmii2", rgmii2_grp, 1, MT7620_GPIO_MODE_RGMII2),
++	GRP("wled", wled_grp, 1, MT7620_GPIO_MODE_WLED),
++	GRP("ephy", ephy_grp, 1, MT7620_GPIO_MODE_EPHY),
++	GRP("pa", pa_grp, 1, MT7620_GPIO_MODE_PA),
+ 	{ 0 }
+ };
  
-         required:
-           - groups
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-index f59ddd5e6c2b..7fd0df880a76 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-@@ -37,6 +37,7 @@ patternProperties:
-           groups:
-             description:
-               An array of strings. Each string contains the name of a group.
-+            maxItems: 1
+-static struct ralink_pmx_func pwm1_func_mt76x8[] = {
++static struct ralink_pmx_func pwm1_grp_mt76x8[] = {
+ 	FUNC("sdxc d6", 3, 19, 1),
+ 	FUNC("utif", 2, 19, 1),
+ 	FUNC("gpio", 1, 19, 1),
+ 	FUNC("pwm1", 0, 19, 1),
+ };
  
-         required:
-           - groups
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-index 30779a1a90b0..4d66ca752a30 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-@@ -52,6 +52,7 @@ patternProperties:
-           groups:
-             description:
-               An array of strings. Each string contains the name of a group.
-+            maxItems: 1
+-static struct ralink_pmx_func pwm0_func_mt76x8[] = {
++static struct ralink_pmx_func pwm0_grp_mt76x8[] = {
+ 	FUNC("sdxc d7", 3, 18, 1),
+ 	FUNC("utif", 2, 18, 1),
+ 	FUNC("gpio", 1, 18, 1),
+ 	FUNC("pwm0", 0, 18, 1),
+ };
  
-         required:
-           - groups
-@@ -65,7 +66,7 @@ patternProperties:
-             then:
-               properties:
-                 groups:
--                  oneOf:
-+                  anyOf:
-                     - description: For RT3050, RT3052 and RT3350 SoCs
-                       enum: [i2c, jtag, mdio, rgmii, sdram, spi, uartf,
-                              uartlite]
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-index feb6e66dcb61..008d93181aea 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-@@ -29,21 +29,213 @@ patternProperties:
-         $ref: pinmux-node.yaml#
+-static struct ralink_pmx_func uart2_func_mt76x8[] = {
++static struct ralink_pmx_func uart2_grp_mt76x8[] = {
+ 	FUNC("sdxc d5 d4", 3, 20, 2),
+ 	FUNC("pwm", 2, 20, 2),
+ 	FUNC("gpio", 1, 20, 2),
+ 	FUNC("uart2", 0, 20, 2),
+ };
  
-         properties:
--          groups:
--            description: The pin group to select.
--            enum: [ge1, ge2, i2c, jtag, lna a, lna g, mdio, pci, spi, uartf,
--                   uartlite]
--
-           function:
--            description: The mux function to select.
-+            description:
-+              A string containing the name of the function to mux to the group.
-             enum: [ge1, ge2, gpio, gpio i2s, gpio uartf, i2c, i2s uartf, jtag,
-                    lna a, lna g, mdio, pci-dev, pci-fnc, pci-host1, pci-host2,
-                    pcm gpio, pcm i2s, pcm uartf, spi, uartf, uartlite]
+-static struct ralink_pmx_func uart1_func_mt76x8[] = {
++static struct ralink_pmx_func uart1_grp_mt76x8[] = {
+ 	FUNC("sw_r", 3, 45, 2),
+ 	FUNC("pwm", 2, 45, 2),
+ 	FUNC("gpio", 1, 45, 2),
+ 	FUNC("uart1", 0, 45, 2),
+ };
  
-+          groups:
-+            description:
-+              An array of strings. Each string contains the name of a group.
-+            maxItems: 1
-+
-         required:
-           - groups
-           - function
+-static struct ralink_pmx_func i2c_func_mt76x8[] = {
++static struct ralink_pmx_func i2c_grp_mt76x8[] = {
+ 	FUNC("-", 3, 4, 2),
+ 	FUNC("debug", 2, 4, 2),
+ 	FUNC("gpio", 1, 4, 2),
+ 	FUNC("i2c", 0, 4, 2),
+ };
  
-+        allOf:
-+          - if:
-+              properties:
-+                function:
-+                  const: ge1
-+            then:
-+              properties:
-+                groups:
-+                  enum: [ge1]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: ge2
-+            then:
-+              properties:
-+                groups:
-+                  enum: [ge2]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: gpio
-+            then:
-+              properties:
-+                groups:
-+                  enum: [ge1, ge2, i2c, jtag, lna a, lna g, mdio, pci, spi,
-+                         uartf, uartlite]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: gpio i2s
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: gpio uartf
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: i2c
-+            then:
-+              properties:
-+                groups:
-+                  enum: [i2c]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: i2s uartf
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: jtag
-+            then:
-+              properties:
-+                groups:
-+                  enum: [jtag]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: lna a
-+            then:
-+              properties:
-+                groups:
-+                  enum: [lna a]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: lna g
-+            then:
-+              properties:
-+                groups:
-+                  enum: [lna g]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: mdio
-+            then:
-+              properties:
-+                groups:
-+                  enum: [mdio]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pci-dev
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pci]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pci-fnc
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pci]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pci-host1
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pci]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pci-host2
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pci]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pcm gpio
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pcm i2s
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: pcm uartf
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: spi
-+            then:
-+              properties:
-+                groups:
-+                  enum: [spi]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: uartf
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartf]
-+
-+          - if:
-+              properties:
-+                function:
-+                  const: uartlite
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uartlite]
-+
-         additionalProperties: false
+-static struct ralink_pmx_func refclk_func_mt76x8[] = { FUNC("refclk", 0, 37, 1) };
+-static struct ralink_pmx_func perst_func_mt76x8[] = { FUNC("perst", 0, 36, 1) };
+-static struct ralink_pmx_func wdt_func_mt76x8[] = { FUNC("wdt", 0, 38, 1) };
+-static struct ralink_pmx_func spi_func_mt76x8[] = { FUNC("spi", 0, 7, 4) };
++static struct ralink_pmx_func refclk_grp_mt76x8[] = { FUNC("refclk", 0, 37, 1) };
++static struct ralink_pmx_func perst_grp_mt76x8[] = { FUNC("perst", 0, 36, 1) };
++static struct ralink_pmx_func wdt_grp_mt76x8[] = { FUNC("wdt", 0, 38, 1) };
++static struct ralink_pmx_func spi_grp_mt76x8[] = { FUNC("spi", 0, 7, 4) };
  
-     additionalProperties: false
-@@ -57,7 +249,6 @@ required:
- additionalProperties: false
+-static struct ralink_pmx_func sd_mode_func_mt76x8[] = {
++static struct ralink_pmx_func sd_mode_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 22, 8),
+ 	FUNC("utif", 2, 22, 8),
+ 	FUNC("gpio", 1, 22, 8),
+ 	FUNC("sdxc", 0, 22, 8),
+ };
  
- examples:
--  # Pinmux controller node
-   - |
-     pinctrl {
-       compatible = "ralink,rt3883-pinctrl";
+-static struct ralink_pmx_func uart0_func_mt76x8[] = {
++static struct ralink_pmx_func uart0_grp_mt76x8[] = {
+ 	FUNC("-", 3, 12, 2),
+ 	FUNC("-", 2, 12, 2),
+ 	FUNC("gpio", 1, 12, 2),
+ 	FUNC("uart0", 0, 12, 2),
+ };
+ 
+-static struct ralink_pmx_func i2s_func_mt76x8[] = {
++static struct ralink_pmx_func i2s_grp_mt76x8[] = {
+ 	FUNC("antenna", 3, 0, 4),
+ 	FUNC("pcm", 2, 0, 4),
+ 	FUNC("gpio", 1, 0, 4),
+ 	FUNC("i2s", 0, 0, 4),
+ };
+ 
+-static struct ralink_pmx_func spi_cs1_func_mt76x8[] = {
++static struct ralink_pmx_func spi_cs1_grp_mt76x8[] = {
+ 	FUNC("-", 3, 6, 1),
+ 	FUNC("refclk", 2, 6, 1),
+ 	FUNC("gpio", 1, 6, 1),
+ 	FUNC("spi cs1", 0, 6, 1),
+ };
+ 
+-static struct ralink_pmx_func spis_func_mt76x8[] = {
++static struct ralink_pmx_func spis_grp_mt76x8[] = {
+ 	FUNC("pwm_uart2", 3, 14, 4),
+ 	FUNC("utif", 2, 14, 4),
+ 	FUNC("gpio", 1, 14, 4),
+ 	FUNC("spis", 0, 14, 4),
+ };
+ 
+-static struct ralink_pmx_func gpio_func_mt76x8[] = {
++static struct ralink_pmx_func gpio_grp_mt76x8[] = {
+ 	FUNC("pcie", 3, 11, 1),
+ 	FUNC("refclk", 2, 11, 1),
+ 	FUNC("gpio", 1, 11, 1),
+ 	FUNC("gpio", 0, 11, 1),
+ };
+ 
+-static struct ralink_pmx_func p4led_kn_func_mt76x8[] = {
++static struct ralink_pmx_func p4led_kn_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 30, 1),
+ 	FUNC("utif", 2, 30, 1),
+ 	FUNC("gpio", 1, 30, 1),
+ 	FUNC("p4led_kn", 0, 30, 1),
+ };
+ 
+-static struct ralink_pmx_func p3led_kn_func_mt76x8[] = {
++static struct ralink_pmx_func p3led_kn_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 31, 1),
+ 	FUNC("utif", 2, 31, 1),
+ 	FUNC("gpio", 1, 31, 1),
+ 	FUNC("p3led_kn", 0, 31, 1),
+ };
+ 
+-static struct ralink_pmx_func p2led_kn_func_mt76x8[] = {
++static struct ralink_pmx_func p2led_kn_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 32, 1),
+ 	FUNC("utif", 2, 32, 1),
+ 	FUNC("gpio", 1, 32, 1),
+ 	FUNC("p2led_kn", 0, 32, 1),
+ };
+ 
+-static struct ralink_pmx_func p1led_kn_func_mt76x8[] = {
++static struct ralink_pmx_func p1led_kn_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 33, 1),
+ 	FUNC("utif", 2, 33, 1),
+ 	FUNC("gpio", 1, 33, 1),
+ 	FUNC("p1led_kn", 0, 33, 1),
+ };
+ 
+-static struct ralink_pmx_func p0led_kn_func_mt76x8[] = {
++static struct ralink_pmx_func p0led_kn_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 34, 1),
+ 	FUNC("rsvd", 2, 34, 1),
+ 	FUNC("gpio", 1, 34, 1),
+ 	FUNC("p0led_kn", 0, 34, 1),
+ };
+ 
+-static struct ralink_pmx_func wled_kn_func_mt76x8[] = {
++static struct ralink_pmx_func wled_kn_grp_mt76x8[] = {
+ 	FUNC("rsvd", 3, 35, 1),
+ 	FUNC("rsvd", 2, 35, 1),
+ 	FUNC("gpio", 1, 35, 1),
+ 	FUNC("wled_kn", 0, 35, 1),
+ };
+ 
+-static struct ralink_pmx_func p4led_an_func_mt76x8[] = {
++static struct ralink_pmx_func p4led_an_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 39, 1),
+ 	FUNC("utif", 2, 39, 1),
+ 	FUNC("gpio", 1, 39, 1),
+ 	FUNC("p4led_an", 0, 39, 1),
+ };
+ 
+-static struct ralink_pmx_func p3led_an_func_mt76x8[] = {
++static struct ralink_pmx_func p3led_an_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 40, 1),
+ 	FUNC("utif", 2, 40, 1),
+ 	FUNC("gpio", 1, 40, 1),
+ 	FUNC("p3led_an", 0, 40, 1),
+ };
+ 
+-static struct ralink_pmx_func p2led_an_func_mt76x8[] = {
++static struct ralink_pmx_func p2led_an_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 41, 1),
+ 	FUNC("utif", 2, 41, 1),
+ 	FUNC("gpio", 1, 41, 1),
+ 	FUNC("p2led_an", 0, 41, 1),
+ };
+ 
+-static struct ralink_pmx_func p1led_an_func_mt76x8[] = {
++static struct ralink_pmx_func p1led_an_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 42, 1),
+ 	FUNC("utif", 2, 42, 1),
+ 	FUNC("gpio", 1, 42, 1),
+ 	FUNC("p1led_an", 0, 42, 1),
+ };
+ 
+-static struct ralink_pmx_func p0led_an_func_mt76x8[] = {
++static struct ralink_pmx_func p0led_an_grp_mt76x8[] = {
+ 	FUNC("jtag", 3, 43, 1),
+ 	FUNC("rsvd", 2, 43, 1),
+ 	FUNC("gpio", 1, 43, 1),
+ 	FUNC("p0led_an", 0, 43, 1),
+ };
+ 
+-static struct ralink_pmx_func wled_an_func_mt76x8[] = {
++static struct ralink_pmx_func wled_an_grp_mt76x8[] = {
+ 	FUNC("rsvd", 3, 44, 1),
+ 	FUNC("rsvd", 2, 44, 1),
+ 	FUNC("gpio", 1, 44, 1),
+@@ -309,55 +309,55 @@ static struct ralink_pmx_func wled_an_func_mt76x8[] = {
+ #define MT76X8_GPIO_MODE_GPIO		0
+ 
+ static struct ralink_pmx_group mt76x8_pinmux_data[] = {
+-	GRP_G("pwm1", pwm1_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("pwm1", pwm1_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_PWM1),
+-	GRP_G("pwm0", pwm0_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("pwm0", pwm0_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_PWM0),
+-	GRP_G("uart2", uart2_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("uart2", uart2_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_UART2),
+-	GRP_G("uart1", uart1_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("uart1", uart1_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_UART1),
+-	GRP_G("i2c", i2c_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("i2c", i2c_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_I2C),
+-	GRP("refclk", refclk_func_mt76x8, 1, MT76X8_GPIO_MODE_REFCLK),
+-	GRP("perst", perst_func_mt76x8, 1, MT76X8_GPIO_MODE_PERST),
+-	GRP("wdt", wdt_func_mt76x8, 1, MT76X8_GPIO_MODE_WDT),
+-	GRP("spi", spi_func_mt76x8, 1, MT76X8_GPIO_MODE_SPI),
+-	GRP_G("sdmode", sd_mode_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP("refclk", refclk_grp_mt76x8, 1, MT76X8_GPIO_MODE_REFCLK),
++	GRP("perst", perst_grp_mt76x8, 1, MT76X8_GPIO_MODE_PERST),
++	GRP("wdt", wdt_grp_mt76x8, 1, MT76X8_GPIO_MODE_WDT),
++	GRP("spi", spi_grp_mt76x8, 1, MT76X8_GPIO_MODE_SPI),
++	GRP_G("sdmode", sd_mode_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_SDMODE),
+-	GRP_G("uart0", uart0_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("uart0", uart0_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_UART0),
+-	GRP_G("i2s", i2s_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("i2s", i2s_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_I2S),
+-	GRP_G("spi cs1", spi_cs1_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("spi cs1", spi_cs1_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_CS1),
+-	GRP_G("spis", spis_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("spis", spis_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_SPIS),
+-	GRP_G("gpio", gpio_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("gpio", gpio_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_GPIO),
+-	GRP_G("wled_an", wled_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("wled_an", wled_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_WLED_AN),
+-	GRP_G("p0led_an", p0led_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p0led_an", p0led_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P0LED_AN),
+-	GRP_G("p1led_an", p1led_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p1led_an", p1led_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P1LED_AN),
+-	GRP_G("p2led_an", p2led_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p2led_an", p2led_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P2LED_AN),
+-	GRP_G("p3led_an", p3led_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p3led_an", p3led_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P3LED_AN),
+-	GRP_G("p4led_an", p4led_an_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p4led_an", p4led_an_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P4LED_AN),
+-	GRP_G("wled_kn", wled_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("wled_kn", wled_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_WLED_KN),
+-	GRP_G("p0led_kn", p0led_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p0led_kn", p0led_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P0LED_KN),
+-	GRP_G("p1led_kn", p1led_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p1led_kn", p1led_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P1LED_KN),
+-	GRP_G("p2led_kn", p2led_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p2led_kn", p2led_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P2LED_KN),
+-	GRP_G("p3led_kn", p3led_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p3led_kn", p3led_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P3LED_KN),
+-	GRP_G("p4led_kn", p4led_kn_func_mt76x8, MT76X8_GPIO_MODE_MASK,
++	GRP_G("p4led_kn", p4led_kn_grp_mt76x8, MT76X8_GPIO_MODE_MASK,
+ 				1, MT76X8_GPIO_MODE_P4LED_KN),
+ 	{ 0 }
+ };
+diff --git a/drivers/pinctrl/ralink/pinctrl-mt7621.c b/drivers/pinctrl/ralink/pinctrl-mt7621.c
+index b47968f40e0c..eddc0ba6d468 100644
+--- a/drivers/pinctrl/ralink/pinctrl-mt7621.c
++++ b/drivers/pinctrl/ralink/pinctrl-mt7621.c
+@@ -34,59 +34,59 @@
+ #define MT7621_GPIO_MODE_SDHCI_SHIFT	18
+ #define MT7621_GPIO_MODE_SDHCI_GPIO	1
+ 
+-static struct ralink_pmx_func uart1_func[] =  { FUNC("uart1", 0, 1, 2) };
+-static struct ralink_pmx_func i2c_func[] =  { FUNC("i2c", 0, 3, 2) };
+-static struct ralink_pmx_func uart3_func[] = {
++static struct ralink_pmx_func uart1_grp[] =  { FUNC("uart1", 0, 1, 2) };
++static struct ralink_pmx_func i2c_grp[] =  { FUNC("i2c", 0, 3, 2) };
++static struct ralink_pmx_func uart3_grp[] = {
+ 	FUNC("uart3", 0, 5, 4),
+ 	FUNC("i2s", 2, 5, 4),
+ 	FUNC("spdif3", 3, 5, 4),
+ };
+-static struct ralink_pmx_func uart2_func[] = {
++static struct ralink_pmx_func uart2_grp[] = {
+ 	FUNC("uart2", 0, 9, 4),
+ 	FUNC("pcm", 2, 9, 4),
+ 	FUNC("spdif2", 3, 9, 4),
+ };
+-static struct ralink_pmx_func jtag_func[] = { FUNC("jtag", 0, 13, 5) };
+-static struct ralink_pmx_func wdt_func[] = {
++static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 13, 5) };
++static struct ralink_pmx_func wdt_grp[] = {
+ 	FUNC("wdt rst", 0, 18, 1),
+ 	FUNC("wdt refclk", 2, 18, 1),
+ };
+-static struct ralink_pmx_func pcie_rst_func[] = {
++static struct ralink_pmx_func pcie_rst_grp[] = {
+ 	FUNC("pcie rst", MT7621_GPIO_MODE_PCIE_RST, 19, 1),
+ 	FUNC("pcie refclk", MT7621_GPIO_MODE_PCIE_REF, 19, 1)
+ };
+-static struct ralink_pmx_func mdio_func[] = { FUNC("mdio", 0, 20, 2) };
+-static struct ralink_pmx_func rgmii2_func[] = { FUNC("rgmii2", 0, 22, 12) };
+-static struct ralink_pmx_func spi_func[] = {
++static struct ralink_pmx_func mdio_grp[] = { FUNC("mdio", 0, 20, 2) };
++static struct ralink_pmx_func rgmii2_grp[] = { FUNC("rgmii2", 0, 22, 12) };
++static struct ralink_pmx_func spi_grp[] = {
+ 	FUNC("spi", 0, 34, 7),
+ 	FUNC("nand1", 2, 34, 7),
+ };
+-static struct ralink_pmx_func sdhci_func[] = {
++static struct ralink_pmx_func sdhci_grp[] = {
+ 	FUNC("sdhci", 0, 41, 8),
+ 	FUNC("nand2", 2, 41, 8),
+ };
+-static struct ralink_pmx_func rgmii1_func[] = { FUNC("rgmii1", 0, 49, 12) };
++static struct ralink_pmx_func rgmii1_grp[] = { FUNC("rgmii1", 0, 49, 12) };
+ 
+ static struct ralink_pmx_group mt7621_pinmux_data[] = {
+-	GRP("uart1", uart1_func, 1, MT7621_GPIO_MODE_UART1),
+-	GRP("i2c", i2c_func, 1, MT7621_GPIO_MODE_I2C),
+-	GRP_G("uart3", uart3_func, MT7621_GPIO_MODE_UART3_MASK,
++	GRP("uart1", uart1_grp, 1, MT7621_GPIO_MODE_UART1),
++	GRP("i2c", i2c_grp, 1, MT7621_GPIO_MODE_I2C),
++	GRP_G("uart3", uart3_grp, MT7621_GPIO_MODE_UART3_MASK,
+ 		MT7621_GPIO_MODE_UART3_GPIO, MT7621_GPIO_MODE_UART3_SHIFT),
+-	GRP_G("uart2", uart2_func, MT7621_GPIO_MODE_UART2_MASK,
++	GRP_G("uart2", uart2_grp, MT7621_GPIO_MODE_UART2_MASK,
+ 		MT7621_GPIO_MODE_UART2_GPIO, MT7621_GPIO_MODE_UART2_SHIFT),
+-	GRP("jtag", jtag_func, 1, MT7621_GPIO_MODE_JTAG),
+-	GRP_G("wdt", wdt_func, MT7621_GPIO_MODE_WDT_MASK,
++	GRP("jtag", jtag_grp, 1, MT7621_GPIO_MODE_JTAG),
++	GRP_G("wdt", wdt_grp, MT7621_GPIO_MODE_WDT_MASK,
+ 		MT7621_GPIO_MODE_WDT_GPIO, MT7621_GPIO_MODE_WDT_SHIFT),
+-	GRP_G("pcie", pcie_rst_func, MT7621_GPIO_MODE_PCIE_MASK,
++	GRP_G("pcie", pcie_rst_grp, MT7621_GPIO_MODE_PCIE_MASK,
+ 		MT7621_GPIO_MODE_PCIE_GPIO, MT7621_GPIO_MODE_PCIE_SHIFT),
+-	GRP_G("mdio", mdio_func, MT7621_GPIO_MODE_MDIO_MASK,
++	GRP_G("mdio", mdio_grp, MT7621_GPIO_MODE_MDIO_MASK,
+ 		MT7621_GPIO_MODE_MDIO_GPIO, MT7621_GPIO_MODE_MDIO_SHIFT),
+-	GRP("rgmii2", rgmii2_func, 1, MT7621_GPIO_MODE_RGMII2),
+-	GRP_G("spi", spi_func, MT7621_GPIO_MODE_SPI_MASK,
++	GRP("rgmii2", rgmii2_grp, 1, MT7621_GPIO_MODE_RGMII2),
++	GRP_G("spi", spi_grp, MT7621_GPIO_MODE_SPI_MASK,
+ 		MT7621_GPIO_MODE_SPI_GPIO, MT7621_GPIO_MODE_SPI_SHIFT),
+-	GRP_G("sdhci", sdhci_func, MT7621_GPIO_MODE_SDHCI_MASK,
++	GRP_G("sdhci", sdhci_grp, MT7621_GPIO_MODE_SDHCI_MASK,
+ 		MT7621_GPIO_MODE_SDHCI_GPIO, MT7621_GPIO_MODE_SDHCI_SHIFT),
+-	GRP("rgmii1", rgmii1_func, 1, MT7621_GPIO_MODE_RGMII1),
++	GRP("rgmii1", rgmii1_grp, 1, MT7621_GPIO_MODE_RGMII1),
+ 	{ 0 }
+ };
+ 
+diff --git a/drivers/pinctrl/ralink/pinctrl-rt2880.c b/drivers/pinctrl/ralink/pinctrl-rt2880.c
+index 811e12df1133..3e2f1aaaf095 100644
+--- a/drivers/pinctrl/ralink/pinctrl-rt2880.c
++++ b/drivers/pinctrl/ralink/pinctrl-rt2880.c
+@@ -15,22 +15,22 @@
+ #define RT2880_GPIO_MODE_SDRAM		BIT(6)
+ #define RT2880_GPIO_MODE_PCI		BIT(7)
+ 
+-static struct ralink_pmx_func i2c_func[] = { FUNC("i2c", 0, 1, 2) };
+-static struct ralink_pmx_func spi_func[] = { FUNC("spi", 0, 3, 4) };
+-static struct ralink_pmx_func uartlite_func[] = { FUNC("uartlite", 0, 7, 8) };
+-static struct ralink_pmx_func jtag_func[] = { FUNC("jtag", 0, 17, 5) };
+-static struct ralink_pmx_func mdio_func[] = { FUNC("mdio", 0, 22, 2) };
+-static struct ralink_pmx_func sdram_func[] = { FUNC("sdram", 0, 24, 16) };
+-static struct ralink_pmx_func pci_func[] = { FUNC("pci", 0, 40, 32) };
++static struct ralink_pmx_func i2c_grp[] = { FUNC("i2c", 0, 1, 2) };
++static struct ralink_pmx_func spi_grp[] = { FUNC("spi", 0, 3, 4) };
++static struct ralink_pmx_func uartlite_grp[] = { FUNC("uartlite", 0, 7, 8) };
++static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 17, 5) };
++static struct ralink_pmx_func mdio_grp[] = { FUNC("mdio", 0, 22, 2) };
++static struct ralink_pmx_func sdram_grp[] = { FUNC("sdram", 0, 24, 16) };
++static struct ralink_pmx_func pci_grp[] = { FUNC("pci", 0, 40, 32) };
+ 
+ static struct ralink_pmx_group rt2880_pinmux_data_act[] = {
+-	GRP("i2c", i2c_func, 1, RT2880_GPIO_MODE_I2C),
+-	GRP("spi", spi_func, 1, RT2880_GPIO_MODE_SPI),
+-	GRP("uartlite", uartlite_func, 1, RT2880_GPIO_MODE_UART0),
+-	GRP("jtag", jtag_func, 1, RT2880_GPIO_MODE_JTAG),
+-	GRP("mdio", mdio_func, 1, RT2880_GPIO_MODE_MDIO),
+-	GRP("sdram", sdram_func, 1, RT2880_GPIO_MODE_SDRAM),
+-	GRP("pci", pci_func, 1, RT2880_GPIO_MODE_PCI),
++	GRP("i2c", i2c_grp, 1, RT2880_GPIO_MODE_I2C),
++	GRP("spi", spi_grp, 1, RT2880_GPIO_MODE_SPI),
++	GRP("uartlite", uartlite_grp, 1, RT2880_GPIO_MODE_UART0),
++	GRP("jtag", jtag_grp, 1, RT2880_GPIO_MODE_JTAG),
++	GRP("mdio", mdio_grp, 1, RT2880_GPIO_MODE_MDIO),
++	GRP("sdram", sdram_grp, 1, RT2880_GPIO_MODE_SDRAM),
++	GRP("pci", pci_grp, 1, RT2880_GPIO_MODE_PCI),
+ 	{ 0 }
+ };
+ 
+diff --git a/drivers/pinctrl/ralink/pinctrl-rt305x.c b/drivers/pinctrl/ralink/pinctrl-rt305x.c
+index 5b204b7ca1f3..bdaee5ce1ee0 100644
+--- a/drivers/pinctrl/ralink/pinctrl-rt305x.c
++++ b/drivers/pinctrl/ralink/pinctrl-rt305x.c
+@@ -31,9 +31,9 @@
+ #define RT3352_GPIO_MODE_LNA		18
+ #define RT3352_GPIO_MODE_PA		20
+ 
+-static struct ralink_pmx_func i2c_func[] =  { FUNC("i2c", 0, 1, 2) };
+-static struct ralink_pmx_func spi_func[] = { FUNC("spi", 0, 3, 4) };
+-static struct ralink_pmx_func uartf_func[] = {
++static struct ralink_pmx_func i2c_grp[] =  { FUNC("i2c", 0, 1, 2) };
++static struct ralink_pmx_func spi_grp[] = { FUNC("spi", 0, 3, 4) };
++static struct ralink_pmx_func uartf_grp[] = {
+ 	FUNC("uartf", RT305X_GPIO_MODE_UARTF, 7, 8),
+ 	FUNC("pcm uartf", RT305X_GPIO_MODE_PCM_UARTF, 7, 8),
+ 	FUNC("pcm i2s", RT305X_GPIO_MODE_PCM_I2S, 7, 8),
+@@ -42,65 +42,65 @@ static struct ralink_pmx_func uartf_func[] = {
+ 	FUNC("gpio uartf", RT305X_GPIO_MODE_GPIO_UARTF, 7, 4),
+ 	FUNC("gpio i2s", RT305X_GPIO_MODE_GPIO_I2S, 7, 4),
+ };
+-static struct ralink_pmx_func uartlite_func[] = { FUNC("uartlite", 0, 15, 2) };
+-static struct ralink_pmx_func jtag_func[] = { FUNC("jtag", 0, 17, 5) };
+-static struct ralink_pmx_func mdio_func[] = { FUNC("mdio", 0, 22, 2) };
+-static struct ralink_pmx_func rt5350_led_func[] = { FUNC("led", 0, 22, 5) };
+-static struct ralink_pmx_func rt5350_cs1_func[] = {
++static struct ralink_pmx_func uartlite_grp[] = { FUNC("uartlite", 0, 15, 2) };
++static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 17, 5) };
++static struct ralink_pmx_func mdio_grp[] = { FUNC("mdio", 0, 22, 2) };
++static struct ralink_pmx_func rt5350_led_grp[] = { FUNC("led", 0, 22, 5) };
++static struct ralink_pmx_func rt5350_cs1_grp[] = {
+ 	FUNC("spi_cs1", 0, 27, 1),
+ 	FUNC("wdg_cs1", 1, 27, 1),
+ };
+-static struct ralink_pmx_func sdram_func[] = { FUNC("sdram", 0, 24, 16) };
+-static struct ralink_pmx_func rt3352_rgmii_func[] = {
++static struct ralink_pmx_func sdram_grp[] = { FUNC("sdram", 0, 24, 16) };
++static struct ralink_pmx_func rt3352_rgmii_grp[] = {
+ 	FUNC("rgmii", 0, 24, 12)
+ };
+-static struct ralink_pmx_func rgmii_func[] = { FUNC("rgmii", 0, 40, 12) };
+-static struct ralink_pmx_func rt3352_lna_func[] = { FUNC("lna", 0, 36, 2) };
+-static struct ralink_pmx_func rt3352_pa_func[] = { FUNC("pa", 0, 38, 2) };
+-static struct ralink_pmx_func rt3352_led_func[] = { FUNC("led", 0, 40, 5) };
+-static struct ralink_pmx_func rt3352_cs1_func[] = {
++static struct ralink_pmx_func rgmii_grp[] = { FUNC("rgmii", 0, 40, 12) };
++static struct ralink_pmx_func rt3352_lna_grp[] = { FUNC("lna", 0, 36, 2) };
++static struct ralink_pmx_func rt3352_pa_grp[] = { FUNC("pa", 0, 38, 2) };
++static struct ralink_pmx_func rt3352_led_grp[] = { FUNC("led", 0, 40, 5) };
++static struct ralink_pmx_func rt3352_cs1_grp[] = {
+ 	FUNC("spi_cs1", 0, 45, 1),
+ 	FUNC("wdg_cs1", 1, 45, 1),
+ };
+ 
+ static struct ralink_pmx_group rt3050_pinmux_data[] = {
+-	GRP("i2c", i2c_func, 1, RT305X_GPIO_MODE_I2C),
+-	GRP("spi", spi_func, 1, RT305X_GPIO_MODE_SPI),
+-	GRP("uartf", uartf_func, RT305X_GPIO_MODE_UART0_MASK,
++	GRP("i2c", i2c_grp, 1, RT305X_GPIO_MODE_I2C),
++	GRP("spi", spi_grp, 1, RT305X_GPIO_MODE_SPI),
++	GRP("uartf", uartf_grp, RT305X_GPIO_MODE_UART0_MASK,
+ 		RT305X_GPIO_MODE_UART0_SHIFT),
+-	GRP("uartlite", uartlite_func, 1, RT305X_GPIO_MODE_UART1),
+-	GRP("jtag", jtag_func, 1, RT305X_GPIO_MODE_JTAG),
+-	GRP("mdio", mdio_func, 1, RT305X_GPIO_MODE_MDIO),
+-	GRP("rgmii", rgmii_func, 1, RT305X_GPIO_MODE_RGMII),
+-	GRP("sdram", sdram_func, 1, RT305X_GPIO_MODE_SDRAM),
++	GRP("uartlite", uartlite_grp, 1, RT305X_GPIO_MODE_UART1),
++	GRP("jtag", jtag_grp, 1, RT305X_GPIO_MODE_JTAG),
++	GRP("mdio", mdio_grp, 1, RT305X_GPIO_MODE_MDIO),
++	GRP("rgmii", rgmii_grp, 1, RT305X_GPIO_MODE_RGMII),
++	GRP("sdram", sdram_grp, 1, RT305X_GPIO_MODE_SDRAM),
+ 	{ 0 }
+ };
+ 
+ static struct ralink_pmx_group rt3352_pinmux_data[] = {
+-	GRP("i2c", i2c_func, 1, RT305X_GPIO_MODE_I2C),
+-	GRP("spi", spi_func, 1, RT305X_GPIO_MODE_SPI),
+-	GRP("uartf", uartf_func, RT305X_GPIO_MODE_UART0_MASK,
++	GRP("i2c", i2c_grp, 1, RT305X_GPIO_MODE_I2C),
++	GRP("spi", spi_grp, 1, RT305X_GPIO_MODE_SPI),
++	GRP("uartf", uartf_grp, RT305X_GPIO_MODE_UART0_MASK,
+ 		RT305X_GPIO_MODE_UART0_SHIFT),
+-	GRP("uartlite", uartlite_func, 1, RT305X_GPIO_MODE_UART1),
+-	GRP("jtag", jtag_func, 1, RT305X_GPIO_MODE_JTAG),
+-	GRP("mdio", mdio_func, 1, RT305X_GPIO_MODE_MDIO),
+-	GRP("rgmii", rt3352_rgmii_func, 1, RT305X_GPIO_MODE_RGMII),
+-	GRP("lna", rt3352_lna_func, 1, RT3352_GPIO_MODE_LNA),
+-	GRP("pa", rt3352_pa_func, 1, RT3352_GPIO_MODE_PA),
+-	GRP("led", rt3352_led_func, 1, RT5350_GPIO_MODE_PHY_LED),
+-	GRP("spi_cs1", rt3352_cs1_func, 2, RT5350_GPIO_MODE_SPI_CS1),
++	GRP("uartlite", uartlite_grp, 1, RT305X_GPIO_MODE_UART1),
++	GRP("jtag", jtag_grp, 1, RT305X_GPIO_MODE_JTAG),
++	GRP("mdio", mdio_grp, 1, RT305X_GPIO_MODE_MDIO),
++	GRP("rgmii", rt3352_rgmii_grp, 1, RT305X_GPIO_MODE_RGMII),
++	GRP("lna", rt3352_lna_grp, 1, RT3352_GPIO_MODE_LNA),
++	GRP("pa", rt3352_pa_grp, 1, RT3352_GPIO_MODE_PA),
++	GRP("led", rt3352_led_grp, 1, RT5350_GPIO_MODE_PHY_LED),
++	GRP("spi_cs1", rt3352_cs1_grp, 2, RT5350_GPIO_MODE_SPI_CS1),
+ 	{ 0 }
+ };
+ 
+ static struct ralink_pmx_group rt5350_pinmux_data[] = {
+-	GRP("i2c", i2c_func, 1, RT305X_GPIO_MODE_I2C),
+-	GRP("spi", spi_func, 1, RT305X_GPIO_MODE_SPI),
+-	GRP("uartf", uartf_func, RT305X_GPIO_MODE_UART0_MASK,
++	GRP("i2c", i2c_grp, 1, RT305X_GPIO_MODE_I2C),
++	GRP("spi", spi_grp, 1, RT305X_GPIO_MODE_SPI),
++	GRP("uartf", uartf_grp, RT305X_GPIO_MODE_UART0_MASK,
+ 		RT305X_GPIO_MODE_UART0_SHIFT),
+-	GRP("uartlite", uartlite_func, 1, RT305X_GPIO_MODE_UART1),
+-	GRP("jtag", jtag_func, 1, RT305X_GPIO_MODE_JTAG),
+-	GRP("led", rt5350_led_func, 1, RT5350_GPIO_MODE_PHY_LED),
+-	GRP("spi_cs1", rt5350_cs1_func, 2, RT5350_GPIO_MODE_SPI_CS1),
++	GRP("uartlite", uartlite_grp, 1, RT305X_GPIO_MODE_UART1),
++	GRP("jtag", jtag_grp, 1, RT305X_GPIO_MODE_JTAG),
++	GRP("led", rt5350_led_grp, 1, RT5350_GPIO_MODE_PHY_LED),
++	GRP("spi_cs1", rt5350_cs1_grp, 2, RT5350_GPIO_MODE_SPI_CS1),
+ 	{ 0 }
+ };
+ 
+diff --git a/drivers/pinctrl/ralink/pinctrl-rt3883.c b/drivers/pinctrl/ralink/pinctrl-rt3883.c
+index 44a66c3d2d2a..392208662355 100644
+--- a/drivers/pinctrl/ralink/pinctrl-rt3883.c
++++ b/drivers/pinctrl/ralink/pinctrl-rt3883.c
+@@ -39,9 +39,9 @@
+ #define RT3883_GPIO_MODE_LNA_G_GPIO	0x3
+ #define RT3883_GPIO_MODE_LNA_G		_RT3883_GPIO_MODE_LNA_G(RT3883_GPIO_MODE_LNA_G_MASK)
+ 
+-static struct ralink_pmx_func i2c_func[] =  { FUNC("i2c", 0, 1, 2) };
+-static struct ralink_pmx_func spi_func[] = { FUNC("spi", 0, 3, 4) };
+-static struct ralink_pmx_func uartf_func[] = {
++static struct ralink_pmx_func i2c_grp[] =  { FUNC("i2c", 0, 1, 2) };
++static struct ralink_pmx_func spi_grp[] = { FUNC("spi", 0, 3, 4) };
++static struct ralink_pmx_func uartf_grp[] = {
+ 	FUNC("uartf", RT3883_GPIO_MODE_UARTF, 7, 8),
+ 	FUNC("pcm uartf", RT3883_GPIO_MODE_PCM_UARTF, 7, 8),
+ 	FUNC("pcm i2s", RT3883_GPIO_MODE_PCM_I2S, 7, 8),
+@@ -50,34 +50,34 @@ static struct ralink_pmx_func uartf_func[] = {
+ 	FUNC("gpio uartf", RT3883_GPIO_MODE_GPIO_UARTF, 7, 4),
+ 	FUNC("gpio i2s", RT3883_GPIO_MODE_GPIO_I2S, 7, 4),
+ };
+-static struct ralink_pmx_func uartlite_func[] = { FUNC("uartlite", 0, 15, 2) };
+-static struct ralink_pmx_func jtag_func[] = { FUNC("jtag", 0, 17, 5) };
+-static struct ralink_pmx_func mdio_func[] = { FUNC("mdio", 0, 22, 2) };
+-static struct ralink_pmx_func lna_a_func[] = { FUNC("lna a", 0, 32, 3) };
+-static struct ralink_pmx_func lna_g_func[] = { FUNC("lna g", 0, 35, 3) };
+-static struct ralink_pmx_func pci_func[] = {
++static struct ralink_pmx_func uartlite_grp[] = { FUNC("uartlite", 0, 15, 2) };
++static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 17, 5) };
++static struct ralink_pmx_func mdio_grp[] = { FUNC("mdio", 0, 22, 2) };
++static struct ralink_pmx_func lna_a_grp[] = { FUNC("lna a", 0, 32, 3) };
++static struct ralink_pmx_func lna_g_grp[] = { FUNC("lna g", 0, 35, 3) };
++static struct ralink_pmx_func pci_grp[] = {
+ 	FUNC("pci-dev", 0, 40, 32),
+ 	FUNC("pci-host2", 1, 40, 32),
+ 	FUNC("pci-host1", 2, 40, 32),
+ 	FUNC("pci-fnc", 3, 40, 32)
+ };
+-static struct ralink_pmx_func ge1_func[] = { FUNC("ge1", 0, 72, 12) };
+-static struct ralink_pmx_func ge2_func[] = { FUNC("ge2", 0, 84, 12) };
++static struct ralink_pmx_func ge1_grp[] = { FUNC("ge1", 0, 72, 12) };
++static struct ralink_pmx_func ge2_grp[] = { FUNC("ge2", 0, 84, 12) };
+ 
+ static struct ralink_pmx_group rt3883_pinmux_data[] = {
+-	GRP("i2c", i2c_func, 1, RT3883_GPIO_MODE_I2C),
+-	GRP("spi", spi_func, 1, RT3883_GPIO_MODE_SPI),
+-	GRP("uartf", uartf_func, RT3883_GPIO_MODE_UART0_MASK,
++	GRP("i2c", i2c_grp, 1, RT3883_GPIO_MODE_I2C),
++	GRP("spi", spi_grp, 1, RT3883_GPIO_MODE_SPI),
++	GRP("uartf", uartf_grp, RT3883_GPIO_MODE_UART0_MASK,
+ 		RT3883_GPIO_MODE_UART0_SHIFT),
+-	GRP("uartlite", uartlite_func, 1, RT3883_GPIO_MODE_UART1),
+-	GRP("jtag", jtag_func, 1, RT3883_GPIO_MODE_JTAG),
+-	GRP("mdio", mdio_func, 1, RT3883_GPIO_MODE_MDIO),
+-	GRP("lna a", lna_a_func, 1, RT3883_GPIO_MODE_LNA_A),
+-	GRP("lna g", lna_g_func, 1, RT3883_GPIO_MODE_LNA_G),
+-	GRP("pci", pci_func, RT3883_GPIO_MODE_PCI_MASK,
++	GRP("uartlite", uartlite_grp, 1, RT3883_GPIO_MODE_UART1),
++	GRP("jtag", jtag_grp, 1, RT3883_GPIO_MODE_JTAG),
++	GRP("mdio", mdio_grp, 1, RT3883_GPIO_MODE_MDIO),
++	GRP("lna a", lna_a_grp, 1, RT3883_GPIO_MODE_LNA_A),
++	GRP("lna g", lna_g_grp, 1, RT3883_GPIO_MODE_LNA_G),
++	GRP("pci", pci_grp, RT3883_GPIO_MODE_PCI_MASK,
+ 		RT3883_GPIO_MODE_PCI_SHIFT),
+-	GRP("ge1", ge1_func, 1, RT3883_GPIO_MODE_GE1),
+-	GRP("ge2", ge2_func, 1, RT3883_GPIO_MODE_GE2),
++	GRP("ge1", ge1_grp, 1, RT3883_GPIO_MODE_GE1),
++	GRP("ge2", ge2_grp, 1, RT3883_GPIO_MODE_GE2),
+ 	{ 0 }
+ };
+ 
 -- 
 2.37.2
 
