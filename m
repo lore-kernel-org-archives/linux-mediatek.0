@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0964C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Dec 2022 20:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBC1C4167B
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Jan 2023 21:59:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WN9zTYIRYdOMpYuWboYKtjNs/fAWvOvRi12vlwn095E=; b=xOcyNhyGmSP2Z1GrjG6/SMhKd0
-	3K6xgERqJqwJ1y6b7J1VwfRdCpgjyAKAb85+fUyz2Txwq4+R4NHaLx8Bo9c5vrgPiCiyR3ii/WEmx
-	ADhlFnHX84QGcH+nvdfZgABayKObgI2j/UYaysvyfGxNqjf5tdqmQvoV+73oxJ2F5xAK7zP/+LTlE
-	uZlPH3742qGQR1sVzkfVPLZllEsPP/D/BYXTMsC3cfOJX+KgWG8wme8u4iSDktF/flyG2hqkohNhB
-	9ksZX+ybUYD113SiAxt6HVBJ9KTLAxpFGgcAhxEC0lDGaA4f1DarHZLzmnR9D1u1yt25ELmLE0P7H
-	IXinPA8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=itENd4bv7sUz5J3kCLw+9gAbPG9mWjjKo0129xbt1AQ=; b=y2l2LtbOXrdeFoGr9wZb5TQpfk
+	E+l0DVfe/AZGwk3s4Q/jn6I6O9Jjzphm7ypd9iBxifLaN+iyxKfugXhsPpNQaGn27K4q0Aov42kNo
+	g/+tOReq6zW0nqLS+jHe44TLz8wXNOJ0o+w+ax3t2sxTsT7cxyiWdGITcMNcF5Uo/10Xo+2oZj6Cf
+	GDKPCINlxO+pH2wErQio3+RF20F97EbEPkWs0STa+l2FeO6KIgaSKR2Bc6ZclwOEcnI7TS5BCE5QS
+	gefBl7orhGeUAFp5YhjmBiktWG3tdH8QKJNLKiim49BgWVvq74lbXxnZQ8FXXHj+Lcq9QmTHJ4gj9
+	+bN89t4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBi7H-009hSB-8Y; Sat, 31 Dec 2022 20:06:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pC6Mb-005dsI-Ks; Sun, 01 Jan 2023 21:59:29 +0000
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pBi6r-009hDq-Nz; Sat, 31 Dec 2022 20:05:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2126260A6F;
-	Sat, 31 Dec 2022 20:05:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9EE6C433D2;
-	Sat, 31 Dec 2022 20:05:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672517136;
-	bh=nbEQCC/a/+NsXj6d7pAHo1OtVx4lNUjq9z845PL8KLE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XIYJ1XhnrhflgRMfxmD/e/9im96567mbddgFDNBYEE2ohnUE43ga2bCoUDMTnG9fP
-	 0CIMGcaEjapfoBItehBwFupyGx6ZlAMCLpzdOl9UnhttWdQjQ7Nt85DqGBd/F6onea
-	 tx4K4nYKm9sLBUdL0SV58uokT0PFxa9zLYnqpAgLATXCP3LQ+haIzqgj1DchsS3tBe
-	 C/+M2l9/GfRGubAtpeVM4XWTyimGrQn3Z+lTOyxc+zg7Ti1xQwwZWQdhaP8xEjc6Ku
-	 wdykZpnNm9c9kIAYQ7BFrkpzQZw66LCOxM+3xTLio+0vSM6vE470FfH59AbnULXjZH
-	 gpEobjdGQXndw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: YC Hung <yc.hung@mediatek.com>,
-	Curtis Malainey <cujomalainey@chromium.org>,
-	Mark Brown <broonie@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	pierre-louis.bossart@linux.intel.com,
-	lgirdwood@gmail.com,
-	peter.ujfalusi@linux.intel.com,
-	yung-chuan.liao@linux.intel.com,
-	ranjani.sridharan@linux.intel.com,
-	daniel.baluta@nxp.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	sound-open-firmware@alsa-project.org,
-	alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.0 4/7] ASoC: SOF: mediatek: initialize panic_info to zero
-Date: Sat, 31 Dec 2022 15:04:59 -0500
-Message-Id: <20221231200502.1748784-4-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221231200502.1748784-1-sashal@kernel.org>
-References: <20221231200502.1748784-1-sashal@kernel.org>
+	id 1pC6LL-005cpc-LO
+	for linux-mediatek@lists.infradead.org; Sun, 01 Jan 2023 21:58:14 +0000
+Received: by mail-ot1-x333.google.com with SMTP id j16-20020a056830271000b0067202045ee9so16414568otu.7
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Jan 2023 13:58:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=itENd4bv7sUz5J3kCLw+9gAbPG9mWjjKo0129xbt1AQ=;
+        b=fb3LXnCyZ/kIWmb8tqNRWca8LIYBDCd5S3QU9qS017ZBuOHwJAjp+7E2RHKrwghQXA
+         F89bQEWQvafxF0QTsYtfvmnT9B9ObbMuXSZLZ0Z4iu25Wi4QZ9pm31JRiQb1DGxqM8kg
+         bKaa/o1DTP9MJKqpZI3nwwYjJLm3JLVzu1pgpf+AkBkWfuGJ2W6iKguyxa1s7VtCEuuX
+         xrVeEaiCOnUiewnJ/MAySvKL/TNapMzc1RnofDNBVdu+OSqhQf5wHlzjOyNX+S1tMnnR
+         GwHW7xQnDN6N6yg8yH6mUKhHkQDQyTf9KgtT9ISuGGkQ2ysnrKYx6sSPM2Ba/RG4ipgc
+         l57A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=itENd4bv7sUz5J3kCLw+9gAbPG9mWjjKo0129xbt1AQ=;
+        b=PwgAgEiSftiaElaxjk3IWdXv6slMEME2OtA52dkD/D7hLZNfLHLgRTpO7ZLcac/ch5
+         tlfXzeIuoA+J2Qx2OwSBrbioMVAiPnu8UGbCh0W/rpLmMw8VP7Rhe7olo4TYifcCOr75
+         7myXVbyXfKZv/1vC6UiQM98iN1BpUAFveMID8qtmeCuAdNYLcaNLUfMuIJdibGft8EY0
+         GC1NkxPzMv2tNBlkuGRD0SVtFp5PveebhD75yXKmIr7GUKblqcP03VJJy46I2G3ztDB7
+         Aiuo8jNx87xqlrS3Lpx0znkshyCF5i6RypBT2ZHcNi5n8/+/lFdrjrlEh1CaYbrA2ah+
+         4PRw==
+X-Gm-Message-State: AFqh2krNNd/AaIoX/cfOmUeWoLoDCKBuUIZDQkCCAhS9b+wUiZeovgY/
+	bRm2y4qGTTL0t7pM+XPWvpsTzlhED3j7bwk6sXiG+Q==
+X-Google-Smtp-Source: AMrXdXvYUSzWN57SlzCh3DW6LHX/uMQkh78bq7FU+RCyZ2XJRZPNKpSvrWCsru+LAl/TArGUqJFdjZTYm0mHsKAx6SI=
+X-Received: by 2002:a05:6830:1dac:b0:670:99fe:2dc5 with SMTP id
+ z12-20020a0568301dac00b0067099fe2dc5mr1566669oti.137.1672610289731; Sun, 01
+ Jan 2023 13:58:09 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+References: <20221230203541.146807-1-bero@baylibre.com> <20221230203541.146807-8-bero@baylibre.com>
+ <87v8lsect3.wl-maz@kernel.org>
+In-Reply-To: <87v8lsect3.wl-maz@kernel.org>
+From: =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Date: Sun, 1 Jan 2023 22:57:58 +0100
+Message-ID: <CAP2ifjMkKJbE_+B=XaxzXoALrc5+FUb7TKpPJQBLV3-3xqVh=g@mail.gmail.com>
+Subject: Re: [PATCH v6 7/7] arm64: dts: mediatek: Initial mt8365-evk support
+To: Marc Zyngier <maz@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, matthias.bgg@gmail.com, 
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, 
+	gregkh@linuxfoundation.org, chunfeng.yun@mediatek.com, 
+	linus.walleij@linaro.org, lee@kernel.org, tglx@linutronix.de, 
+	angelogioacchino.delregno@collabora.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221231_120537_861539_8B3978F8 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20230101_135811_946044_A1883039 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +90,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YC Hung <yc.hung@mediatek.com>
+On Fri, Dec 30, 2022 at 11:41 PM Marc Zyngier <maz@kernel.org> wrote:
+> > +             gic: interrupt-controller@c000000 {
+> > +                     compatible = "arm,gic-v3";
+> > +                     #interrupt-cells = <4>;
+>
+> Why 4 cells? All the SPIs routed via sysirq are perfectly happy with 3
+> cells, and all the PPIs have 0 for the 4th cell (none of them use any
+> form of partitioning that'd require 4 cells). So where is this coming
+> from?
 
-[ Upstream commit 7bd220f2ba9014b78f0304178103393554b8c4fe ]
+It's coming from the SoC vendor kernel (and went unnoticed because it
+happens to work).
+Will send an updated version that does the right thing instead. I've
+been running it most of the day, so far looking good.
 
-Coverity spotted that panic_info is not initialized to zero in
-mtk_adsp_dump. Using uninitialized value panic_info.linenum when
-calling snd_sof_get_status. Fix this coverity by initializing
-panic_info struct as zero.
+> > +                     interrupt-parent = <&gic>;
+> > +                     interrupt-controller;
+> > +                     reg = <0 0x0c000000 0 0x80000>, <0 0x0c080000 0 0x80000>;
+> > +
+>
+> The first region is obviously wrong (512kB for the distributor?
+> that's... most generous, but the architecture states that it is 64kB,
+> and that's wasteful enough).
+>
+> This is also missing the GICC/GICH/GICV regions that Cortex-A53
+> implements, and that must be provided as per the binding.
 
-Signed-off-by: YC Hung <yc.hung@mediatek.com>
-Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
-Link: https://lore.kernel.org/r/20221213115617.25086-1-yc.hung@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- sound/soc/sof/mediatek/mtk-adsp-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This was also taken from the vendor kernel; unfortunately neiter the
+datasheet for the SoC not the vendor kernel specifies the addresses
+for GICC/GICH/GICV.
+I've "guessed" based on what's in similar SoCs (MT8183, MT7986a) in
+v7; this seems to work (boots, kvm initializes hyp mode properly).
 
-diff --git a/sound/soc/sof/mediatek/mtk-adsp-common.c b/sound/soc/sof/mediatek/mtk-adsp-common.c
-index 1e0769c668a7..de8dbe27cd0d 100644
---- a/sound/soc/sof/mediatek/mtk-adsp-common.c
-+++ b/sound/soc/sof/mediatek/mtk-adsp-common.c
-@@ -60,7 +60,7 @@ void mtk_adsp_dump(struct snd_sof_dev *sdev, u32 flags)
- {
- 	char *level = (flags & SOF_DBG_DUMP_OPTIONAL) ? KERN_DEBUG : KERN_ERR;
- 	struct sof_ipc_dsp_oops_xtensa xoops;
--	struct sof_ipc_panic_info panic_info;
-+	struct sof_ipc_panic_info panic_info = {};
- 	u32 stack[MTK_ADSP_STACK_DUMP_SIZE];
- 	u32 status;
- 
--- 
-2.35.1
-
+ttyl
+bero
 
