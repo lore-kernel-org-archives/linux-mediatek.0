@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD18C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 09:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852A1C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 12:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=798mLQgjXe76IQIl0wr8ZA1qTc0lXDNEYGL1jdAHpGk=; b=yXWjyL9txn3t7P+qepxfclBsBO
-	qPzI63n7MmLy4nLR5ADjKSw8UxiCaRW2Vj+1+OjkmHAqeTRSPTRqHZ+l7xOxDHoKeloL3b/rg7X7L
-	J8QQWR+0zQCOYnQ0vgagUQmBcMAO+Uny6oY99k9QK0ojDugPk0Kd3k/XHSHJthCtwdKZghI3D6wq2
-	84I66AuJRrUZE7Wa3bTLd779NmSwC1m4eOFkYv+N7t3IoSrJskxdCZqeimJBWTSLuWWxgAww02AQq
-	ZUPB2gVl/p9X4OIwj3+5MLxXJS/3E600W5jTVC5kOJ+9/Swxk2/EzEoeH1ptgiZfRjGyaPx86qJPW
-	+xMlAxdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ji0UdkrqyzP2dxIb/3QWDvEBhxVcr/mmF2hegzW6A+I=; b=jUhMRZJvwBaIIoe4CpMPK1EAw5
+	89knh0zNLbTrUgnWH9ou5qqlYN1zjxY7ug14Ay7tGoqDvDOzedi7WTbpihd50bCKzM0Inz0ZjEXpO
+	JcXWtSqZBwIeeca2L1B3gHnhNVAI25NmWKbPTgBQl2Q3m5zV4qfii8VVnQqK/G+zXJ46TYzjJzAs7
+	AGQ/UnbFHfByrNz6F2kh1wEAIMaJLyftAQAOjWx3GFeq56HA21LIOFUy6VyyXRJfEm77e5J2bDbSe
+	mR3Xe1tTsCQssGdosCvAy54J3lDeRhb6vtyFZq7kipSRYE76zq+XzVjmi75V+BLsLlOL8lh5OIRwy
+	FRLVO1Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCHSk-00A4wW-6U; Mon, 02 Jan 2023 09:50:34 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1pCJfv-00B9NQ-Kf; Mon, 02 Jan 2023 12:12:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCHQA-00A3UM-7a
-	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 09:48:06 +0000
-Received: by mail-ej1-x629.google.com with SMTP id u19so65507883ejm.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jan 2023 01:47:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=798mLQgjXe76IQIl0wr8ZA1qTc0lXDNEYGL1jdAHpGk=;
-        b=NJYpMwRPyko6aCe368eAIO7/g+4UO4uk5POV4brMKD4XZrzurcTUCbhngGOJ2WwhYU
-         7/6R7WMWMmgaQEv+arP/A4wcXTV+q5VSH8h3CIWShHzND4sWQcwl0aaBhzMS8TYcuiEU
-         YeBv792gROYLskzFGF65ti3whrRNQaLc7lJn3xhzo/VkjpmX/T4oHTBsP6SoiAofo5lZ
-         cqFHdW8FJXPol0achK/uxp2oHohFM4bKniyLW1wr6WR3ilEdzDPEWJ7/OapW4SzRKK5c
-         0pdhdkTimsguFKH+8zkhccLhzG2GUI/ONYRjYLYSH/4APdzYK2O1FqgSOaoGoGrcDXjZ
-         X1jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=798mLQgjXe76IQIl0wr8ZA1qTc0lXDNEYGL1jdAHpGk=;
-        b=MI0UNnQb2kQbQphAfb93L+sWk4w+5OMMLq7F5jyrtZ2OrImhRrD003Dk0viHkMcCKj
-         aLf+IhgKn6ZUOJSnE7+C3zcA3knmoSUiMpuwIhXQxQictNg0joHdinoVYPV9rH55dAen
-         oucKRhLh1yejn6LJjJRI+1s+LrENEP8+AA61MH6UPMlkKo3sOvgwlmuudM2C0dPWgsB4
-         7OsHardhNT3A2+uGn0oOrT62+tGm46q+2Ap7vT9g2I/si/dXMwlfnNvbqc7ZWeJlzTCR
-         L4QYN8dhsiVklHtKUvJWdP8G7D0I+8JOE6g686GtINu9czv4fy6Af3vd7EBL/cBZ58EA
-         oF/A==
-X-Gm-Message-State: AFqh2kos93U3apIdY5Y3xCpLk7/uH2+JFfryWNqRZqqIlcBocOY6I3bI
-	jGiC33NRmM0IAZy3TIszMsnuPiZ6Eo4KKTg+0Q==
-X-Google-Smtp-Source: AMrXdXsEqTDWE84pn5CWDM7F1VXEJwEbwLqkyP06zh2dhnPk+dBCWaB4caIGgpEh7HZmSdy7ldvk0RuzKgrGbr4DZ0k=
-X-Received: by 2002:a17:906:4894:b0:7a6:fc0f:6fe6 with SMTP id
- v20-20020a170906489400b007a6fc0f6fe6mr2296433ejq.694.1672652870858; Mon, 02
- Jan 2023 01:47:50 -0800 (PST)
+	id 1pCJdm-00B8OB-WB; Mon, 02 Jan 2023 12:10:10 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 02BAA6602CBE;
+	Mon,  2 Jan 2023 12:10:01 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1672661403;
+	bh=Szu3pezz+cwLvsORip1aCRA+/v5edhrAwToqmNZGsgc=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=eEgnHTwCQciC72vlpuRAY6qXfFhkMJTcxrzpvjD6OsKqfHrh5z/JiqPrFrJzZpueL
+	 y+yarL4xa9sS2EDTAmiPuMLrLyZ+2n52PEe05pFJAtZnv2BA323hAnCItXB4XgNXfo
+	 hxvK0SMHxRipPBsUUVsu8lqDrhbhd7HQsAkuGp1HsqYCOqmQZA2A2wKuVobpfASmR+
+	 nQ5x4nhEbvNu1gUrhypexB6gnNf3X8WAbEymWYPiONgMk5IfiXhk/ZMtAOuOyWhOTP
+	 Y2Hbs/X6zcSwurmSOWeGczgdRzlZcUn8zIGiqPz8+Yx8bI8ET2pJw42Xkux/Fiji6W
+	 7CW6jnF8z/lsQ==
+Message-ID: <0cb19a13-452b-2a4d-9f35-e4179d9ce220@collabora.com>
+Date: Mon, 2 Jan 2023 13:09:58 +0100
 MIME-Version: 1.0
-References: <CAMWtyy1sSHc_DYQ3kq+FWMJKK5Wo3QEgO1yd6wQXx3x0Lp4Uog@mail.gmail.com>
- <Y6isrKS7zgMrNe3S@makrotopia.org> <CAMWtyy2EhZMd7Yf6CWXpM7f6EbzbYDu+ifpAnwpDiAP8zPoP0g@mail.gmail.com>
-In-Reply-To: <CAMWtyy2EhZMd7Yf6CWXpM7f6EbzbYDu+ifpAnwpDiAP8zPoP0g@mail.gmail.com>
-From: Vishal Rao <vishalrao@gmail.com>
-Date: Mon, 2 Jan 2023 15:17:39 +0530
-Message-ID: <CAMWtyy21YoW=okaw=rL2OAn49NCT2KzvFGCJLM+1vJg+NpcaMA@mail.gmail.com>
-Subject: Re: Wifi 6E 6ghz not working on MediaTek MT7922 (AMD RZ616)
-To: Daniel Golle <daniel@makrotopia.org>, Nick Morrow <morrownr@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v7 5/7] dt-bindings: usb: mediatek,mtu3: add MT8365 SoC
+ bindings
+Content-Language: en-US
+To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, tglx@linutronix.de,
+ maz@kernel.org, lee@kernel.org, linus.walleij@linaro.org,
+ matthias.bgg@gmail.com, chunfeng.yun@mediatek.com,
+ gregkh@linuxfoundation.org, allen-kh.cheng@mediatek.com,
+ nfraprado@collabora.com, sean.wang@mediatek.com, zhiyong.tao@mediatek.com
+References: <20230101220149.3035048-1-bero@baylibre.com>
+ <20230101220149.3035048-6-bero@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230101220149.3035048-6-bero@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_014754_363265_180CBB6F 
-X-CRM114-Status: GOOD (  31.28  )
+X-CRM114-CacheID: sfid-20230102_041007_309972_350BF483 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,81 +82,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Daniel/Nick,
+Il 01/01/23 23:01, Bernhard Rosenkränzer ha scritto:
+> From: Fabien Parent <fparent@baylibre.com>
+> 
+> Add binding documentation for the MT8365 SoC.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Here's the output you asked for: https://pastebin.ubuntu.com/p/kZGS227rdr
-
-From my rudimentary/casual reading of the mediatek mt76/mt7921e driver
-code it appears it's loading the 7921 variant (filename 7961) of
-firmware and not 7922 so I tried to patch those few lines to no luck.
-
-Also just tried copying over the 7922 files to the 7961 names and
-tried with unmodified kernel (both 6.2rc2 and 6.1.2-xanmod).
-
-I'm sure I don't know what I'm doing here, so if you have further
-suggestions/info you need let me know?
-
-Regards!
-Vishal
-
-On Thu, 29 Dec 2022 at 23:25, Vishal Rao <vishalrao@gmail.com> wrote:
->
-> Hello Daniel !
->
-> Thank you for your response - apologies for being slow to follow up -
-> I will post the info you asked for soon [tm] but I note there appears
-> to be some new firmware for the mt7922 (a few hours ago) which I will
-> also try when gathering the info.
->
-> Off the top of my head the regulatory info/region is set to US while I
-> am located in India and I have tried the latest firmware off git
-> master as well as another (?) location suggested by Nick Morrow with
-> no luck (same results) but allow me some time (likely this weekend) to
-> re-check and get back to you.
->
-> Regards,
-> Vishal
->
-> On Mon, 26 Dec 2022 at 01:34, Daniel Golle <daniel@makrotopia.org> wrote:
-> >
-> > Hi!
-> >
-> > On Sun, Dec 25, 2022 at 08:19:15PM +0530, Vishal Rao wrote:
-> > > Hello!
-> > >
-> > > Using Ubuntu 22.04 LTS based distro elementary OS 7 with the latest
-> > > available Ubuntu mainline kernel 6.1 RC5 build the wifi does not
-> > > connect to the 6GHZ band (Wifi 6E) and it only even shows the 6ghz
-> > > SSID name *after* I have connected to the 5ghz wifi band.
-> > >
-> > > This is on a new ASUS ZenBook laptop model UM5302TA with the AMD Ryzen
-> > > 6800U CPU platform which includes the AMD-Mediatek co-developed RZ616
-> > > wifi chip I believe.
-> > >
-> > > Pastebin of lspci -vvnn output: https://pastebin.ubuntu.com/p/QwM58ZkptG
-> > >
-> > > Let me know what further information I should provide - happy to do so!
-> >
-> >
-> > Please also share the output of `iw list` which will tell if we are
-> > dealing with a driver problem or a regulatory/configuration problem.
-> > Did you configure the wireless regulatory domain the device is located
-> > in?
-> >
-> > To have access to 6 GHz bands the regulatory region needs to be known,
-> > I read that on Ubuntu it works like this:
-> >
-> > https://askubuntu.com/questions/701709/how-can-i-change-my-wireless-cards-regulatory-domain-dbm-higher-than-30
->
->
->
-> --
-> "The World is a book, and those who do not travel read only a page." -
-> St. Augustine.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-
--- 
-"The World is a book, and those who do not travel read only a page." -
-St. Augustine.
 
