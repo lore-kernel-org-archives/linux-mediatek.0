@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D42C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 16:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72041C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 20:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OPOWYK4xS+6xhzOdhfTnsSnUcVxUYMBnV8hiXVR43SI=; b=vxOc6WcTPrVkhs4zht9yP9nDnA
-	BtcejcIvslFWUuSmMC99vdUqj56Hwvh+qJ4s359LuJs+E4CD4W0Alj5EPjKLbnkW2MMrJH1pIR4p5
-	EoNLiWPebhpEZdQBml3kCHLFlr/BjRABWCykkWba3TFNtFqHgiOMOdK6b/khAvRxIDsIU9FY7cEGg
-	ZGKT7S2b7Hb6awOlMwbSBUEBMdkuAVYAjVPFdglBH4A09nczPltANQ/2v9CwgnXS9BCz4FpTG6TtP
-	sDNqRIs1ZENhC1XiQebeTQHptQul22l8Qw7rnrFxPQYENyMIbEJUyQX5cyTQg0Jx6FV3Ohn4bhd5Z
-	M7xobLhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LP3o0mVUAZOwHMUbAgWNDRh2YEiswqrsJnXdoEv8+OE=; b=paG1mLGB7OwTrh9L9SdbE0Rj2e
+	fTVSDI03wwSall9pc/LdmR5Qk7ht7HG5q+hOM1smxW8NwICCNtICPTaHT/QNO9nM2BPpv8o3gLUdc
+	NsWYAXhSK5veKdkOaZqWOzr5yvfgc7MXGZwNKDma1mB2Miau7atheGiqV6azraaWh0Ep8uRgu1VSB
+	PQvnoxK6TcajhLK5het+IxTt4Vh9JruJDmvfQayXU2qhnZdFairycKYgMYcVfLM2Fj9lQpJ+zFDmf
+	DXKu9655GapixmprVaPFvVDVj1fcEQ1BVUVXy0ChSlGAEjR5DFa2zz1pIvLTIf7hKkSLI1a72GdbZ
+	C5NQfEsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCNrD-00CnfJ-Ps; Mon, 02 Jan 2023 16:40:16 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1pCR0P-00Dz9g-1E; Mon, 02 Jan 2023 20:01:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCNjd-00ClW3-NC
-	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 16:32:28 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id g13so42183745lfv.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jan 2023 08:32:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OPOWYK4xS+6xhzOdhfTnsSnUcVxUYMBnV8hiXVR43SI=;
-        b=WuNHynlhNUkJUcD6KxjstzrRlxBGV8jbuBJ/hrag17I5q4FZ19LDt1kUasU+Mf/ow1
-         JBdFdf/Q0EPoES9VCm0vib2w7JjQ6b0vOTXDcL9B89agvmmRsdc/EE+vKc/H2Lep6lT7
-         kvujpwUNElUfG8MRBS8uQJjwjOD3nhMAo9M0FcLNOllZ8+YQVMk5PaCE3nKmji6OVgcG
-         IIz+6L5GswHwQziHEeMp6UDveSxrLnfs0llc1Zs1AvixoQrFZYbEhPSGKbxY3n135fNu
-         jgyNdng/nhQCdHUrDtQKR65iViyWju50338n/pJMMU4qhyrO6wxw1rk0Q8wo/7AJuJQa
-         yEkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OPOWYK4xS+6xhzOdhfTnsSnUcVxUYMBnV8hiXVR43SI=;
-        b=R+231HQrGgMnHBN3ay+Nz5ABILz30dgcqbVpFaDBYbahnK8ZwWWRLdI0J5jcCJDTBC
-         IBDhToD1mGmjHWhlJh0Ec7rKDjtQurxEs7XC1y50KeDPfdIXuLqFkSdok1pjssTibBMB
-         3bBU+1haHuyhDhbEffrkKeRNll7DhCU6K/6+2ZiGD+ui7Y6o7JJT49rLh+/5LxsMT4lX
-         CUQLYXCjCtzwZZIECI/W95GUpIpQBIfr0fe0YeEp0DnMbWPBZ0VoZwLcNH7FU3UHZyIU
-         rDOwVSex5k1eplZR990/+GuOsu4EetEDKHJzUUYGpB4vfrL39U/FFdo08kMxxZoYLZmS
-         S7Ug==
-X-Gm-Message-State: AFqh2kojZOz6BfYJ9Mkab3rUFqSgZCvsZxB5REiE78WGuwCzfPKvNlCx
-	LIRgZeiaHb4N+xGkxse1//ExkA==
-X-Google-Smtp-Source: AMrXdXtWnVOJrl54acwW1/P+lvWqyeGREQQIrliL5JrxuI2mDuRvgOBvBPJG9vCCGvebf+wH1RlFEw==
-X-Received: by 2002:ac2:5fcf:0:b0:4b5:5f97:6a16 with SMTP id q15-20020ac25fcf000000b004b55f976a16mr11197018lfg.43.1672677144056;
-        Mon, 02 Jan 2023 08:32:24 -0800 (PST)
-Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
-        by smtp.gmail.com with ESMTPSA id w12-20020a05651234cc00b0047f7722b73csm4481991lfr.142.2023.01.02.08.32.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Jan 2023 08:32:23 -0800 (PST)
-Message-ID: <a885bf4b-253d-75fe-0224-02f8dfb44006@linaro.org>
-Date: Mon, 2 Jan 2023 17:32:22 +0100
+	id 1pCQxv-00DwDL-1x
+	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 19:59:26 +0000
+X-UUID: 5605570b58eb4c6db0952d81d25e885c-20230102
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LP3o0mVUAZOwHMUbAgWNDRh2YEiswqrsJnXdoEv8+OE=;
+	b=g16/pF0O9yknPg/RX4BmvnpMBOrqFiLvAzeIEyWCo/1HXm2Pu9xsp5KHySQYGANlfwYmImaisuwE2N4CA4VqivMySW/We9ewL0peTeHiYF5XbfVaGcXhSxy+y+OhvMYXpYIIkTJ8W6m+oxslX7AOjvX/U8X2Emh3Rl70/nAg6fI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.16,REQID:e83ae3ce-8ca2-4fb1-8f6b-311f96c63523,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:09771b1,CLOUDID:fcff92f4-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: 5605570b58eb4c6db0952d81d25e885c-20230102
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1632438423; Mon, 02 Jan 2023 12:59:13 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 3 Jan 2023 03:29:10 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 3 Jan 2023 03:29:10 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<kuabhs@google.com>, <druth@google.com>, <abhishekpandit@google.com>,
+	<shawnku@google.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH] wifi: mt76: mt7921: enable p2p support
+Date: Tue, 3 Jan 2023 03:29:08 +0800
+Message-ID: <50e02e7d0c0bfe083596ad5b71bfa6297a8b4110.1672687461.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 13/13] dt-bindings: mediatek: mt8188: add mt8188-mt6359
- document
-Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- p.zabel@pengutronix.de
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20221230055443.16024-1-trevor.wu@mediatek.com>
- <20221230055443.16024-14-trevor.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20221230055443.16024-14-trevor.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_083225_952890_B60C1A65 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20230102_115923_338777_86532467 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,114 +85,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/12/2022 06:54, Trevor Wu wrote:
-> Add document for mt8188 board with mt6359.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Use subject prefixes matching the subsystem (which you can get for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching).
+Introduce p2p-go/p2p-client support to mt7921 driver
 
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->  .../sound/mediatek,mt8188-mt6359.yaml         | 93 +++++++++++++++++++
->  1 file changed, 93 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> new file mode 100644
-> index 000000000000..5754c1d460db
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-> @@ -0,0 +1,93 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8188-mt6359.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8188 ASoC sound card
-> +
-> +maintainers:
-> +  - Trevor Wu <trevor.wu@mediatek.com>
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8188-mt6359-evb
-> +
-> +  model:
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +    description: User specified audio sound card name
-> +
-> +  audio-routing:
-> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> +    description:
-> +      A list of the connections between audio components. Each entry is a
-> +      sink/source pair of strings. Valid names could be the input or output
-> +      widgets of audio components, power supplies, MicBias of codec and the
-> +      software switch.
-> +
-> +  mediatek,platform:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of MT8188 ASoC platform.
-> +
-> +patternProperties:
-> +  "^dai-link-[0-9]+$":
-> +    type: object
+CONNECTION_P2P_GC/GO is not supported with the current firmware
+so we added mt76_dev to mt76_connac_mcu_sta_basic_tlv signature to
+use CONNECTION_INFRA_STA/AP instead for p2p-client and p2p-go
+respectively to make it work.
 
-On this level:
-additionalProperties: false
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c      |  3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c      |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c     | 10 +++++++---
+ 5 files changed, 16 insertions(+), 11 deletions(-)
 
-> +    description: |
-> +      Container for dai-link level properties and CODEC sub-nodes.
-> +
-> +    properties:
-> +      dai-link-name:
-
-Instead:
-link-name
-> +        description: |
-> +          This property corresponds to the name of the BE dai-link to which
-> +          we are going to update parameters in this node.
-> +        items:
-> +          enum:
-> +            - ADDA_BE
-> +            - DPTX_BE
-> +            - ETDM1_IN_BE
-> +            - ETDM2_IN_BE
-> +            - ETDM1_OUT_BE
-> +            - ETDM2_OUT_BE
-> +            - ETDM3_OUT_BE
-> +            - PCM1_BE
-> +
-> +      codec:
-> +        description: Holds subnode which indicates codec dai.
-> +        type: object
-> +        additionalProperties: false
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 2
-
-required sound-dai
-
-> +
-> +    required:
-> +      - dai-link-name
-> +      - codec
-> +
-> +additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - mediatek,platform
-> +
-
-Your example looks pretty straightforward. Maybe you can use
-simple-card.yaml?	
-
-
-Best regards,
-Krzysztof
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index 83f30305414d..98a60df11702 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -861,7 +861,8 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
+ 		else
+ 			mvif->sta_added = true;
+ 	}
+-	mt76_connac_mcu_sta_basic_tlv(sskb, vif, sta, enable, new_entry);
++	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, sskb, vif, sta, enable,
++				      new_entry);
+ 	if (enable && sta)
+ 		mt76_connac_mcu_sta_tlv(phy->mt76, sskb, sta, vif, 0,
+ 					MT76_STA_INFO_STATE_ASSOC);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 5a047e630860..d28ff322a6db 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -363,7 +363,7 @@ void mt76_connac_mcu_bss_omac_tlv(struct sk_buff *skb,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_bss_omac_tlv);
+ 
+-void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
++void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_sta *sta,
+ 				   bool enable, bool newly)
+@@ -394,7 +394,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
+ 	switch (vif->type) {
+ 	case NL80211_IFTYPE_MESH_POINT:
+ 	case NL80211_IFTYPE_AP:
+-		if (vif->p2p)
++		if (vif->p2p && !is_mt7921(dev))
+ 			conn_type = CONNECTION_P2P_GC;
+ 		else
+ 			conn_type = CONNECTION_INFRA_STA;
+@@ -402,7 +402,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
+ 		basic->aid = cpu_to_le16(sta->aid);
+ 		break;
+ 	case NL80211_IFTYPE_STATION:
+-		if (vif->p2p)
++		if (vif->p2p && !is_mt7921(dev))
+ 			conn_type = CONNECTION_P2P_GO;
+ 		else
+ 			conn_type = CONNECTION_INFRA_AP;
+@@ -1029,7 +1029,7 @@ int mt76_connac_mcu_sta_cmd(struct mt76_phy *phy,
+ 		return PTR_ERR(skb);
+ 
+ 	if (info->sta || !info->offload_fw)
+-		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
++		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->vif, info->sta,
+ 					      info->enable, info->newly);
+ 	if (info->sta && info->enable)
+ 		mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index f1e942b9a887..8bf8a1a8f5e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1771,7 +1771,7 @@ mt76_connac_mcu_add_tlv(struct sk_buff *skb, int tag, int len)
+ 
+ int mt76_connac_mcu_set_channel_domain(struct mt76_phy *phy);
+ int mt76_connac_mcu_set_vif_ps(struct mt76_dev *dev, struct ieee80211_vif *vif);
+-void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
++void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_sta *sta, bool enable,
+ 				   bool newly);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 37a3c1f082d9..051ffb38342c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1657,8 +1657,8 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 		return PTR_ERR(skb);
+ 
+ 	/* starec basic */
+-	mt76_connac_mcu_sta_basic_tlv(skb, vif, sta, enable,
+-			!rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
++	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, skb, vif, sta, enable,
++				      !rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
+ 	if (!enable)
+ 		goto out;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index d4b681d7e1d2..25eca0d40f2d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -32,11 +32,13 @@ static const struct ieee80211_iface_combination if_comb[] = {
+ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
+ 	{
+ 		.max = 2,
+-		.types = BIT(NL80211_IFTYPE_STATION),
++		.types = BIT(NL80211_IFTYPE_STATION) |
++			 BIT(NL80211_IFTYPE_P2P_CLIENT)
+ 	},
+ 	{
+ 		.max = 1,
+-		.types = BIT(NL80211_IFTYPE_AP),
++		.types = BIT(NL80211_IFTYPE_AP) |
++			 BIT(NL80211_IFTYPE_P2P_GO)
+ 	}
+ };
+ 
+@@ -100,7 +102,9 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
+ 			  WIPHY_FLAG_4ADDR_STATION);
+ 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+-				 BIT(NL80211_IFTYPE_AP);
++				 BIT(NL80211_IFTYPE_AP) |
++				 BIT(NL80211_IFTYPE_P2P_CLIENT) |
++				 BIT(NL80211_IFTYPE_P2P_GO);
+ 	wiphy->max_remain_on_channel_duration = 5000;
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_scan_ssids = 4;
+-- 
+2.25.1
 
 
