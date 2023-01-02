@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72041C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 20:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13565C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 22:07:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LP3o0mVUAZOwHMUbAgWNDRh2YEiswqrsJnXdoEv8+OE=; b=paG1mLGB7OwTrh9L9SdbE0Rj2e
-	fTVSDI03wwSall9pc/LdmR5Qk7ht7HG5q+hOM1smxW8NwICCNtICPTaHT/QNO9nM2BPpv8o3gLUdc
-	NsWYAXhSK5veKdkOaZqWOzr5yvfgc7MXGZwNKDma1mB2Miau7atheGiqV6azraaWh0Ep8uRgu1VSB
-	PQvnoxK6TcajhLK5het+IxTt4Vh9JruJDmvfQayXU2qhnZdFairycKYgMYcVfLM2Fj9lQpJ+zFDmf
-	DXKu9655GapixmprVaPFvVDVj1fcEQ1BVUVXy0ChSlGAEjR5DFa2zz1pIvLTIf7hKkSLI1a72GdbZ
-	C5NQfEsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JpbWVZRvg9AIaDGOnq/ekC2NRAjd/w9USYSz4UospIY=; b=cV3wyoK5WpxhE3ySnCkSjEUmHa
+	4GQrYojQvSZ1Af6hBEKtV0lmYo0CWhoFdGEy2P5y4dB6KhvPe+spw3+PMeTPHsGuA6Tc4hkQsLAK2
+	SDwXwBt3hXqRnYoE+KCGgDodcLgnLyryUlgx4PNmF7KSumM5f20Ss7vZm8a9vA2VzxHl43e0cd+2s
+	LRzbygftjAZVLZC8WLXyU1mEkq/bVLlBjugTjRBFNLCsOwNcaVImL3W1uLibq5Wi5FqLWDU4nh950
+	SvuNrU4m4QjvmGipnvg57XFAQyGHKNTy8S8Y871rJVHENPWgFHuSpvDBL9seAjo0dZ/lBTv/wUVvs
+	C2uII6yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCR0P-00Dz9g-1E; Mon, 02 Jan 2023 20:01:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pCSxz-00EWkR-5m; Mon, 02 Jan 2023 22:07:35 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCQxv-00DwDL-1x
-	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 19:59:26 +0000
-X-UUID: 5605570b58eb4c6db0952d81d25e885c-20230102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LP3o0mVUAZOwHMUbAgWNDRh2YEiswqrsJnXdoEv8+OE=;
-	b=g16/pF0O9yknPg/RX4BmvnpMBOrqFiLvAzeIEyWCo/1HXm2Pu9xsp5KHySQYGANlfwYmImaisuwE2N4CA4VqivMySW/We9ewL0peTeHiYF5XbfVaGcXhSxy+y+OhvMYXpYIIkTJ8W6m+oxslX7AOjvX/U8X2Emh3Rl70/nAg6fI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:e83ae3ce-8ca2-4fb1-8f6b-311f96c63523,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:09771b1,CLOUDID:fcff92f4-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 5605570b58eb4c6db0952d81d25e885c-20230102
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1632438423; Mon, 02 Jan 2023 12:59:13 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 3 Jan 2023 03:29:10 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 3 Jan 2023 03:29:10 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
-	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
-	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
-	<kuabhs@google.com>, <druth@google.com>, <abhishekpandit@google.com>,
-	<shawnku@google.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] wifi: mt76: mt7921: enable p2p support
-Date: Tue, 3 Jan 2023 03:29:08 +0800
-Message-ID: <50e02e7d0c0bfe083596ad5b71bfa6297a8b4110.1672687461.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1pCSwS-00EWIb-F0
+	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 22:06:10 +0000
+Received: by mail-ej1-x632.google.com with SMTP id ud5so69398974ejc.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jan 2023 14:05:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JpbWVZRvg9AIaDGOnq/ekC2NRAjd/w9USYSz4UospIY=;
+        b=k0Gmyge4hyss3aSEfDDLRNsqrAQWde5Xg5/pFFIVKkqDzEciPYZLwk0hQ2BxMIhkqG
+         Ascjm2X3ua2QpN8PGSjpxo89BdR7pkCglq1djyHt4BmXV++UmIurvQNsh10//IdRWJ6U
+         /QUuSR7PgMdIACOgMRh2jL4fI2UHMXX6t1K+4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=JpbWVZRvg9AIaDGOnq/ekC2NRAjd/w9USYSz4UospIY=;
+        b=tdSzc4k6V3cPoH+TutkwzpnLDn+Y19YRoKrnCfUguIW20NRUzTApteDlhJzHuwOyJs
+         x2aa48UlrDQcAW8TmcD5VuVDN1pixQXCG+j8/h3fx31idHb8On5v5y/xRpvyk2itIjQ3
+         g+jWCn0WqDLi69NP9MKH3oUzSuZzJfWq3TXro63PX2KIiK7u8FALNjf86kX9Q4kXcnRR
+         1ZXeRs1atFRfHzdtEgcxG1PUGwDrcX9hiwh65E+AOQt2UoSI47TsQjk6SWd0U2A9ePVL
+         Ff/l5IYahOnd9oFpvkdvzLbjPj7JwoXgl8HrYxmURaiHjOJSgisnJs5V3PeBnWw2CYaI
+         wAiQ==
+X-Gm-Message-State: AFqh2krhjLRMByqjwpsaQxlvKJkT/2PM+u2XnV6vYyaam7f64EYzS+h8
+	yWlP06vABe2bC+u39KU/C2POIYPP/a5wL9Y+tI5rJg==
+X-Google-Smtp-Source: AMrXdXtyf9qByEQ1daXTlW+37rKOM447IPDhQSC085lEdRfvDdD0vPXi1FyRL6R+s4y0WRMydaDPVRc7nHyFllOp2sc=
+X-Received: by 2002:a17:906:1153:b0:7ff:796b:93ee with SMTP id
+ i19-20020a170906115300b007ff796b93eemr4918125eja.582.1672697157182; Mon, 02
+ Jan 2023 14:05:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20221208072520.26210-1-peter.wang@mediatek.com>
+ <yq14jtyekv2.fsf@ca-mkp.ca.oracle.com> <CAONX=-d-LZSV9-R=oLDFKsBG8Zd90wXOcGR44kPaorDH-Y7MnQ@mail.gmail.com>
+ <35850d1c8f042d59f14f268502aa30ac497b2d5e.camel@mediatek.com>
+In-Reply-To: <35850d1c8f042d59f14f268502aa30ac497b2d5e.camel@mediatek.com>
+From: Daniil Lunev <dlunev@chromium.org>
+Date: Tue, 3 Jan 2023 09:05:46 +1100
+Message-ID: <CAONX=-frZnh054ORgp=NB-CM1ZkBM7+ea51rsSjeZS3SBLKdGg@mail.gmail.com>
+Subject: Re: [PATCH v6] ufs: core: wlun suspend SSU/enter hibern8 fail recovery
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+Cc: "martin.petersen@oracle.com" <martin.petersen@oracle.com>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>, 
+	=?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>, 
+	=?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, 
+	=?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>, 
+	"jejb@linux.ibm.com" <jejb@linux.ibm.com>, wsd_upstream <wsd_upstream@mediatek.com>, 
+	"avri.altman@wdc.com" <avri.altman@wdc.com>, "stable@vger.kernel.org" <stable@vger.kernel.org>, 
+	=?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>, 
+	=?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>, 
+	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, 
+	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>, 
+	=?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>, 
+	=?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?= <Powen.Kao@mediatek.com>, 
+	=?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>, 
+	=?UTF-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?= <stanley.chu@mediatek.com>, 
+	=?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?= <Qilin.Tan@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_115923_338777_86532467 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20230102_140600_863313_8BC23FA0 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,138 +100,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, Dec 21, 2022 at 4:59 PM Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B)
+<peter.wang@mediatek.com> wrote:
+> But if without this patch when purge is onging, system IO will hang,
+> this is no better.
+Yes, that is why I am just pointing this out as a matter of fact, not as a =
+bug.
+It is arguable if resetting the controller in the deadlock situation is a p=
+roper
+thing to do, but it might be the next best thing, so I don't argue that nei=
+ther.
 
-Introduce p2p-go/p2p-client support to mt7921 driver
+> So, with current design, if purge initiator do not want to see rpm
+> EBUSY, then he should polling bPurgeStatus.
+> What do you think?
 
-CONNECTION_P2P_GC/GO is not supported with the current firmware
-so we added mt76_dev to mt76_connac_mcu_sta_basic_tlv signature to
-use CONNECTION_INFRA_STA/AP instead for p2p-client and p2p-go
-respectively to make it work.
+I am actually not sure if management operations extend the timeout - they a=
+re
+going through bsg interface, and I am not sure it properly re-sets the time=
+outs
+on all possible nexus interfaces, need to check that.
+But even if it does, there are two problems:
+* If you make kernel be polling that parameter - it will actually make the
+  application level to miss the completion code (since after querying
+  completion once it will return Not Started afterwards).
+* And application polling is race prone. We set runtime suspend to 100ms - =
+so
+  depending on the scheduling quirks it may miss the event.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c      |  3 ++-
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  8 ++++----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c      |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7921/init.c     | 10 +++++++---
- 5 files changed, 16 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 83f30305414d..98a60df11702 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -861,7 +861,8 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 		else
- 			mvif->sta_added = true;
- 	}
--	mt76_connac_mcu_sta_basic_tlv(sskb, vif, sta, enable, new_entry);
-+	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, sskb, vif, sta, enable,
-+				      new_entry);
- 	if (enable && sta)
- 		mt76_connac_mcu_sta_tlv(phy->mt76, sskb, sta, vif, 0,
- 					MT76_STA_INFO_STATE_ASSOC);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 5a047e630860..d28ff322a6db 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -363,7 +363,7 @@ void mt76_connac_mcu_bss_omac_tlv(struct sk_buff *skb,
- }
- EXPORT_SYMBOL_GPL(mt76_connac_mcu_bss_omac_tlv);
- 
--void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
-+void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_sta *sta,
- 				   bool enable, bool newly)
-@@ -394,7 +394,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
- 	switch (vif->type) {
- 	case NL80211_IFTYPE_MESH_POINT:
- 	case NL80211_IFTYPE_AP:
--		if (vif->p2p)
-+		if (vif->p2p && !is_mt7921(dev))
- 			conn_type = CONNECTION_P2P_GC;
- 		else
- 			conn_type = CONNECTION_INFRA_STA;
-@@ -402,7 +402,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
- 		basic->aid = cpu_to_le16(sta->aid);
- 		break;
- 	case NL80211_IFTYPE_STATION:
--		if (vif->p2p)
-+		if (vif->p2p && !is_mt7921(dev))
- 			conn_type = CONNECTION_P2P_GO;
- 		else
- 			conn_type = CONNECTION_INFRA_AP;
-@@ -1029,7 +1029,7 @@ int mt76_connac_mcu_sta_cmd(struct mt76_phy *phy,
- 		return PTR_ERR(skb);
- 
- 	if (info->sta || !info->offload_fw)
--		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
-+		mt76_connac_mcu_sta_basic_tlv(dev, skb, info->vif, info->sta,
- 					      info->enable, info->newly);
- 	if (info->sta && info->enable)
- 		mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index f1e942b9a887..8bf8a1a8f5e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1771,7 +1771,7 @@ mt76_connac_mcu_add_tlv(struct sk_buff *skb, int tag, int len)
- 
- int mt76_connac_mcu_set_channel_domain(struct mt76_phy *phy);
- int mt76_connac_mcu_set_vif_ps(struct mt76_dev *dev, struct ieee80211_vif *vif);
--void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
-+void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_sta *sta, bool enable,
- 				   bool newly);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 37a3c1f082d9..051ffb38342c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1657,8 +1657,8 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 		return PTR_ERR(skb);
- 
- 	/* starec basic */
--	mt76_connac_mcu_sta_basic_tlv(skb, vif, sta, enable,
--			!rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
-+	mt76_connac_mcu_sta_basic_tlv(&dev->mt76, skb, vif, sta, enable,
-+				      !rcu_access_pointer(dev->mt76.wcid[msta->wcid.idx]));
- 	if (!enable)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index d4b681d7e1d2..25eca0d40f2d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -32,11 +32,13 @@ static const struct ieee80211_iface_combination if_comb[] = {
- static const struct ieee80211_iface_limit if_limits_chanctx[] = {
- 	{
- 		.max = 2,
--		.types = BIT(NL80211_IFTYPE_STATION),
-+		.types = BIT(NL80211_IFTYPE_STATION) |
-+			 BIT(NL80211_IFTYPE_P2P_CLIENT)
- 	},
- 	{
- 		.max = 1,
--		.types = BIT(NL80211_IFTYPE_AP),
-+		.types = BIT(NL80211_IFTYPE_AP) |
-+			 BIT(NL80211_IFTYPE_P2P_GO)
- 	}
- };
- 
-@@ -100,7 +102,9 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
- 			  WIPHY_FLAG_4ADDR_STATION);
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
--				 BIT(NL80211_IFTYPE_AP);
-+				 BIT(NL80211_IFTYPE_AP) |
-+				 BIT(NL80211_IFTYPE_P2P_CLIENT) |
-+				 BIT(NL80211_IFTYPE_P2P_GO);
- 	wiphy->max_remain_on_channel_duration = 5000;
- 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
- 	wiphy->max_scan_ssids = 4;
--- 
-2.25.1
-
+--Daniil
 
