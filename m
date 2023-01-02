@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852A1C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 12:12:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C587EC3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 12:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ji0UdkrqyzP2dxIb/3QWDvEBhxVcr/mmF2hegzW6A+I=; b=jUhMRZJvwBaIIoe4CpMPK1EAw5
-	89knh0zNLbTrUgnWH9ou5qqlYN1zjxY7ug14Ay7tGoqDvDOzedi7WTbpihd50bCKzM0Inz0ZjEXpO
-	JcXWtSqZBwIeeca2L1B3gHnhNVAI25NmWKbPTgBQl2Q3m5zV4qfii8VVnQqK/G+zXJ46TYzjJzAs7
-	AGQ/UnbFHfByrNz6F2kh1wEAIMaJLyftAQAOjWx3GFeq56HA21LIOFUy6VyyXRJfEm77e5J2bDbSe
-	mR3Xe1tTsCQssGdosCvAy54J3lDeRhb6vtyFZq7kipSRYE76zq+XzVjmi75V+BLsLlOL8lh5OIRwy
-	FRLVO1Sg==;
+	bh=QmLy+e7MSm6Iq1fvJ3PDv4oBnYUDFJD59K9g1C0GhNc=; b=LulV22OS2MnMfG1K9SuKb01d2j
+	vVaYJnNhUJYYZ40/TA+M2ATVrelmAeJgBZfXKWwDdwMHcaRMcZCXqo7fy8uyoTwunsYnJqS/8qYwr
+	fHURE0ZGU6hZ0v7us6r7CkDOvq9vouHMr2L6FOzmEwTtLqMmfSL07af4cEATIg6M5WyRV8vCFfsg3
+	i1OHt/AipnDIUsHzpxDSYDNJN8d1DBcVFOYD+vQO1fvnPvHjmmwTWr6sJFUlkK9Uf5mqpG4WbUUSH
+	HWIfATndewRnodmcVz8sOi5ckLbFEdeDAgeb1Dpvj+Wia4Igi6wvcmUKG2ZqUG4IDLKILRXby5zze
+	1fpjlQFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCJfv-00B9NQ-Kf; Mon, 02 Jan 2023 12:12:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pCJjC-00BAuW-Bp; Mon, 02 Jan 2023 12:15:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCJdm-00B8OB-WB; Mon, 02 Jan 2023 12:10:10 +0000
+	id 1pCJdl-00B8Mr-Q8; Mon, 02 Jan 2023 12:10:10 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 02BAA6602CBE;
-	Mon,  2 Jan 2023 12:10:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CA1466600366;
+	Mon,  2 Jan 2023 12:09:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672661403;
-	bh=Szu3pezz+cwLvsORip1aCRA+/v5edhrAwToqmNZGsgc=;
+	s=mail; t=1672661401;
+	bh=lkCFrmVPcGTYnst/KLtb52ilxI3n8W6fyPATphFVFjE=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=eEgnHTwCQciC72vlpuRAY6qXfFhkMJTcxrzpvjD6OsKqfHrh5z/JiqPrFrJzZpueL
-	 y+yarL4xa9sS2EDTAmiPuMLrLyZ+2n52PEe05pFJAtZnv2BA323hAnCItXB4XgNXfo
-	 hxvK0SMHxRipPBsUUVsu8lqDrhbhd7HQsAkuGp1HsqYCOqmQZA2A2wKuVobpfASmR+
-	 nQ5x4nhEbvNu1gUrhypexB6gnNf3X8WAbEymWYPiONgMk5IfiXhk/ZMtAOuOyWhOTP
-	 Y2Hbs/X6zcSwurmSOWeGczgdRzlZcUn8zIGiqPz8+Yx8bI8ET2pJw42Xkux/Fiji6W
-	 7CW6jnF8z/lsQ==
-Message-ID: <0cb19a13-452b-2a4d-9f35-e4179d9ce220@collabora.com>
-Date: Mon, 2 Jan 2023 13:09:58 +0100
+	b=iQ3dezdKStkSTY+iDw+xekNjCw3j3xjK3tqs70Oo5qVwqy2dSdMI6oi2ZIrMr+lt6
+	 YdX4RLq+QvpLyoZLnDLmPl7eWWdRrEoH6fIK1dw+pUFSN9t8XO9QatAV4MctnpBSJv
+	 2NG9bt26Ny0miIfMAKsRdmUIZarphEuG8URGcMp7tE0E/IPd/1fcxWnixOvPFLLKdu
+	 vf10Ij/rMjxoXgG2qNCai3WBjrSmMlkgI7Gb2aN9sWrV9qG23xBvgPtZQLR5c9wp1r
+	 Kcfj/ejgzmIvgnyFaMdKnjkwZSfioly4z44CxQXtJ72olnVXBDr/vdoQl76n2Vai7O
+	 1RTBaQ3vX3UNg==
+Message-ID: <54e09399-6ad9-42ca-fc4a-0ff4723f0ab2@collabora.com>
+Date: Mon, 2 Jan 2023 13:09:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v7 5/7] dt-bindings: usb: mediatek,mtu3: add MT8365 SoC
- bindings
+Subject: Re: [PATCH v7 3/7] dt-bindings: mfd: syscon: Add mt8365-syscfg
 Content-Language: en-US
 To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
@@ -59,14 +58,14 @@ To: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
  gregkh@linuxfoundation.org, allen-kh.cheng@mediatek.com,
  nfraprado@collabora.com, sean.wang@mediatek.com, zhiyong.tao@mediatek.com
 References: <20230101220149.3035048-1-bero@baylibre.com>
- <20230101220149.3035048-6-bero@baylibre.com>
+ <20230101220149.3035048-4-bero@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230101220149.3035048-6-bero@baylibre.com>
+In-Reply-To: <20230101220149.3035048-4-bero@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_041007_309972_350BF483 
-X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-CacheID: sfid-20230102_041006_129166_4A3ABE9A 
+X-CRM114-Status: UNSURE (   6.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,13 +82,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 01/01/23 23:01, Bernhard Rosenkränzer ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
+> Document Mediatek mt8365-syscfg
 > 
-> Add binding documentation for the MT8365 SoC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
