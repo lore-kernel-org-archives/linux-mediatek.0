@@ -4,88 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBED9C4708E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 13:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEC2C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jan 2023 14:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:MIME-Version:In-Reply-To:
-	References:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yUeJe0drBbTMgiYkIr+hpKI3FSwnBgCuZWCVk8bkpiQ=; b=5DBl/qoTVq76q6jjXtGJ3k60+/
-	kBEg9G8D7D1jsb3S8yUNSgp/2GB7f1NjYoUZCko3Pb/AoZKuFwtreWRr0c92amZxl49eQwqv/+eQ5
-	txFWquqZ4rOF2FwUD6usstHJlhclmSjDuZIGE4hreVwv/fHYM+ohLlKLQ9DBV/1UazuSHEf76301h
-	ORpbDY4bmQW33yLRhl225QMt8cLTXt0m+Wkz9YJtIiXRU4Y1RPgJIoydu45TdSC43zvUXsuDhkAix
-	e7pg/U95R+1C14/Ui9AL//WzAAH7E+tEHCs2DTQ8uMcTxnWoblgCB500XnQ6X3DE3LZjs16Spseja
-	gJF92dYg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+ilVwVa6D9abfnylbw4BNcKizjUUVuDMhiUk9BEDHqU=; b=DYxZJXad8R09ov5FplKy1o7fo+
+	DwyS19ibzqrm1B4R7vPnn7Tf9atdiYnzPFeh6rvYQPqIFhEDz+g6DLJ4RaI1/nau2BXAahL8yz9v4
+	MCg58fekFOj70xxe18dB5AxnOfYxA4ddko7CMRXMZ0ON4N8CQp1kYCqDdSIgEhwgUJGJ/7s2nHmUT
+	BCNuDA4n9F5uggk2HGLktBEUJeCV8dPsBYerzjsXZivlrUf1MxH63gnsg0XXV8vF1TBRjEWKjWCeR
+	vtsceYAMM5zKEBLIr0sMNQxgXfh0nIX7vX/gKdDOeWB/4vLyn8wywzXOLcNolP6sp0UhZt+vGbGj+
+	zMU4gn3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCL1X-00BaOj-2S; Mon, 02 Jan 2023 13:38:43 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1pCLR2-00BfVK-7J; Mon, 02 Jan 2023 14:05:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCL1R-00BaLB-9U
-	for linux-mediatek@lists.infradead.org; Mon, 02 Jan 2023 13:38:40 +0000
-Received: by mail-qt1-x831.google.com with SMTP id z12so22454492qtv.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jan 2023 05:38:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date
-         :mime-version:in-reply-to:references:user-agent:from:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yUeJe0drBbTMgiYkIr+hpKI3FSwnBgCuZWCVk8bkpiQ=;
-        b=sJKeU3WCdOQHKogctAuHoH1Lb5awwjpVpHefGzuQH49JgYhK41rW3ae5mHbdmBGjsY
-         UnNOamQKAW85+d3DJvYxWEY0sQwr8sxKKtQaJB5/ZBhMt7NlGdpExaGUTvd1Ym8DFBJN
-         z/E2hVpZRbW12fzg0X2Kj7ZDsGIcLif6Q2AhzKLokR+qFZiuaAbfbrrFr+unYfzjUdTo
-         IBWE8DrMPJ7CwXxGloffvAvF0SeiBqq0lV8Vq6+n+EzQHdffJcGYNIxvZMkpsWb/VBo6
-         wuXMNTIGHn3SZ4HlhcRTVEyDdo/VUZ2atZFin0VDm7biJW7nnru9XUW+S1aJ2RCzJq8Z
-         kYbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date
-         :mime-version:in-reply-to:references:user-agent:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yUeJe0drBbTMgiYkIr+hpKI3FSwnBgCuZWCVk8bkpiQ=;
-        b=ZdtIdvhSp4B17McMlwTUs1FAZbOqYyuY0cH+/+4qIbFwhQpgYFdOlA937PI/ffEObK
-         hHAfBwkZR7irOWAKbBjSCRZ8D6S5hG5nKztUPcBYMq/IpvnnIhFNkAjxLHYLE0XlR7Aq
-         1h6D3YJ7MZSZWfdbGfcoqUsE91T1BpViwLGLIt08LTwtQMAee9Ccu+jAZWXaDF5qa0p1
-         tL/TJGwKAwKYyc57y9WgKAYOCDzIkSQYCdyuhg+dl65oEZPMD6bhrdZss3imMptboKP+
-         6XgKTgLzFCtto+TOpdAquCfQn3ZMhK5ehWG5+yjLvth89GeMqDHVk/pYIPQ6UrMvGkbG
-         Dk3w==
-X-Gm-Message-State: AFqh2kqc5HjlyfszcftjluyyuUAKn4dI7e8UI8GaJ1ezhl5lRcKa8qkp
-	sKpNIqBXbCtPmFZqPnfg1IRK4cyB27bVNEqg5Co0Lg==
-X-Google-Smtp-Source: AMrXdXsRzYNVZ3d4bkKeYiAZTwzM9YRTxsFtaA7lSB3wLl6IBFcwrL0JOddsqmMqIzrw5hKkoMpSWmO5PrVO7+oREAw=
-X-Received: by 2002:ac8:4d50:0:b0:3a8:a6e:1b4 with SMTP id x16-20020ac84d50000000b003a80a6e01b4mr1646554qtv.313.1672666714390;
- Mon, 02 Jan 2023 05:38:34 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 2 Jan 2023 13:38:33 +0000
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20220919-v3-0-a803f2660127@baylibre.com> <20220919-v3-2-a803f2660127@baylibre.com>
- <7da1e73a0cca6867a060d5b69d45e8d4dfc89748.camel@mediatek.com>
-In-Reply-To: <7da1e73a0cca6867a060d5b69d45e8d4dfc89748.camel@mediatek.com>
+	id 1pCLQU-00BfJs-BK; Mon, 02 Jan 2023 14:04:33 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A3E116602CD9;
+	Mon,  2 Jan 2023 14:04:24 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1672668265;
+	bh=9SfAvpp+xUocwdOTAlc0yJwXpK/UtaHt4dqqho+pHyE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FuE68w9Iq0c5UKIwMSNQu25pCOt41tk2jo3M3UMRi/qXlIitOxMZ1BtXXW1fV2Q+g
+	 t0AruPk9jTmiNN5iaZQBC2fVELbtOzovIZHunj0BlTjUQtZqscrYrteCPgp67g6bPQ
+	 Sk81cMnUVnvxMqEQTjonzp19OmA20OwwNYZBObWpaZtUF9zH61RnYn8G1y9RY22P0n
+	 cmVo9bd7TMdPA6w6l6s80Kq08I7j7pcqR+BxAFJqazBtp6z/puX/4hUyPNkj1IxZPW
+	 g/8ppxSMVeQuC1Y5PQ9hDWnsC3AjrfVjimW2imhtsEOjueiu0Nuxs3kPUSfX+oZ8pI
+	 soch/rq5PAhjA==
+Message-ID: <6309e7c5-f740-fa22-bdf0-937187b19285@collabora.com>
+Date: Mon, 2 Jan 2023 15:04:21 +0100
 MIME-Version: 1.0
-Date: Mon, 2 Jan 2023 13:38:33 +0000
-Message-ID: <CABnWg9tf8Sx8S0d8mGowZ80YmZLz6cX2iyxZyKYCGbH_RKMKyA@mail.gmail.com>
-Subject: Re: [PATCH v3 02/12] dt-bindings: display: mediatek: add MT8195 hdmi bindings
-To: CK Hu <ck.hu@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
-	"kishon@ti.com" <kishon@ti.com>, Chunfeng Yun <Chunfeng.Yun@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>, 
-	"rzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, "koul@kernel.org" <vkoul@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"inux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Mac Shen <Mac.Shen@mediatek.com>, 
-	"evicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"rzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>, Stuart Lee <Stuart.Lee@mediatek.com>, 
-	"ri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"inux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v4 05/13] ASoC: mediatek: mt8188: support etdm in platform
+ driver
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ p.zabel@pengutronix.de
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20221230055443.16024-1-trevor.wu@mediatek.com>
+ <20221230055443.16024-6-trevor.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221230055443.16024-6-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_053837_667166_A4FC1F5F 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20230102_060430_713590_66B676CE 
+X-CRM114-Status: GOOD (  24.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,122 +80,298 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 26 Dec 2022 06:18, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck.hu@media=
-tek.com> wrote:
->Hi, Guillaume:
->
->On Fri, 2022-11-04 at 15:09 +0100, Guillaume Ranquet wrote:
->> Add mt8195 SoC bindings for hdmi and hdmi-ddc
->>
->> On mt8195 the ddc i2c controller is part of the hdmi IP block and
->> thus has no
->> specific register range, power domain or interrupt, making it simpler
->> than its the legacy "mediatek,hdmi-ddc" binding.
->>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->> ---
->>
->
->[snip]
->
->> a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-
->> hdmi-ddc.yaml
->> b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-
->> hdmi-ddc.yaml
->> new file mode 100644
->> index 000000000000..2dc273689584
->> --- /dev/null
->> +++
->> b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-
->> hdmi-ddc.yaml
->> @@ -0,0 +1,51 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id:
->> https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediat=
-ek/mediatek,mt8195-hdmi-ddc.yaml*__;Iw!!CTRNKA9wMg0ARbw!wwVQuq5lzW0lvUFUkVX=
-PWT8cIu96xdkn4tMams1E55qyxEZmgV1i0WfpOlq57w$
->>
->> +$schema:
->> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml=
-*__;Iw!!CTRNKA9wMg0ARbw!wwVQuq5lzW0lvUFUkVXPWT8cIu96xdkn4tMams1E55qyxEZmgV1=
-i0WdSGOSxzw$
->>
->> +
->> +title: Mediatek HDMI DDC for mt8195
->> +
->> +maintainers:
->> +  - CK Hu <ck.hu@mediatek.com>
->> +  - Jitao shi <jitao.shi@mediatek.com>
->> +
->> +description: |
->> +  The HDMI DDC i2c controller is used to interface with the HDMI DDC
->> pins.
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt8195-hdmi-ddc
->> +
->> +  clocks:
->> +    maxItems: 1
->> +
->> +  clock-names:
->> +    items:
->> +      - const: ddc
->> +
->> +  mediatek,hdmi:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      A phandle to the mt8195 hdmi controller
->> +
->> +required:
->> +  - compatible
->> +  - clocks
->> +  - clock-names
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +    #include <dt-bindings/interrupt-controller/irq.h>
->> +    hdmiddc0: i2c {
->> +      compatible =3D "mediatek,mt8195-hdmi-ddc";
->> +      mediatek,hdmi =3D <&hdmi0>;
->> +      clocks =3D <&clk26m>;
->> +      clock-names =3D "ddc";
->> +    };
->
->I think we should not have a virtual device. This ddc is part of
->mt8195-hdmi device, so just keep mt8195-hdmi, and let mt8195-hdmi
->driver to probe the sub driver of ddc driver.
->
->Regards,
->CK
+Il 30/12/22 06:54, Trevor Wu ha scritto:
+> Add mt8188 etdm dai driver support.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>   sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 2591 +++++++++++++++++++
+>   1 file changed, 2591 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+> 
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+> new file mode 100644
+> index 000000000000..f8e69d655706
+> --- /dev/null
+> +++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
+> @@ -0,0 +1,2591 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * MediaTek ALSA SoC Audio DAI eTDM Control
+> + *
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
+> + *         Trevor Wu <trevor.wu@mediatek.com>
+> + *         Chun-Chia Chiu <chun-chia.chiu@mediatek.com>
+> + */
+> +
 
-Hi CK,
+..snip..
 
-Thx for your input.
-Though I would strongly prefer to keep the ddc as a separate "virtual devic=
-e".
+> +
+> +static int mtk_dai_etdm_get_clkdiv_id_by_dai_id(int dai_id)
+> +{
+> +	int clk_id = -1;
+> +
+> +	switch (dai_id) {
+> +	case MT8188_AFE_IO_DPTX:
+> +		clk_id = MT8188_CLK_TOP_APLL12_DIV9;
 
-It aligns better with the goal of reusing as much code as possible
-from the HDMI V1 IP,
-which is something you have been advocating since V1 of this patch
-quite some time ago
-and has shaped this patch.
+		return MT8188_CLK_TOP_APLL12_DIV_9;
 
-To me we are in a state that is clean and avoids branching in the hdmi
-common code.
-Would you reconsider and allow the use of that virtual device?
+> +		break;
+> +	case MT8188_AFE_IO_ETDM1_IN:
+> +		clk_id = MT8188_CLK_TOP_APLL12_DIV0;
 
-Thx,
-Guillaume.
+		return MT8188_CLK_TOP_APLL12_DIV0;
 
->
->> +
->> +...
->>
+> +		break;
+> +	case MT8188_AFE_IO_ETDM2_IN:
+> +		clk_id = MT8188_CLK_TOP_APLL12_DIV1;
+
+return .....
+
+> +		break;
+> +	case MT8188_AFE_IO_ETDM1_OUT:
+> +		clk_id = MT8188_CLK_TOP_APLL12_DIV2;
+> +		break;
+> +	case MT8188_AFE_IO_ETDM2_OUT:
+> +		clk_id = MT8188_CLK_TOP_APLL12_DIV3;
+> +		break;
+> +	case MT8188_AFE_IO_ETDM3_OUT:
+> +	default:
+> +		break;
+> +	}
+> +
+> +	return clk_id;
+
+	return -EINVAL;
+
+...so you don't need clk_id at all :-)
+
+> +}
+> +
+
+..snip..
+
+> +
+> +static int mtk_dai_etdm_mclk_configure(struct mtk_base_afe *afe, int dai_id)
+> +{
+> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+> +	struct mtk_dai_etdm_priv *etdm_data;
+> +	int clk_id = mtk_dai_etdm_get_clk_id_by_dai_id(dai_id);
+> +	int clkdiv_id = mtk_dai_etdm_get_clkdiv_id_by_dai_id(dai_id);
+> +	int apll;
+> +	int apll_clk_id;
+> +	struct etdm_con_reg etdm_reg;
+> +	int ret = 0;
+> +
+> +	if (clk_id < 0 || clkdiv_id < 0)
+> +		return 0;
+> +
+> +	if (!is_valid_etdm_dai(dai_id))
+> +		return -EINVAL;
+> +	etdm_data = afe_priv->dai_priv[dai_id];
+> +
+> +	ret = get_etdm_reg(dai_id, &etdm_reg);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (etdm_data->mclk_dir == SND_SOC_CLOCK_OUT)
+> +		regmap_set_bits(afe->regmap, etdm_reg.con1,
+> +				ETDM_CON1_MCLK_OUTPUT);
+> +	else
+> +		regmap_clear_bits(afe->regmap, etdm_reg.con1,
+> +				  ETDM_CON1_MCLK_OUTPUT);
+> +
+> +	if (etdm_data->mclk_freq) {
+> +		apll = etdm_data->mclk_apll;
+> +		apll_clk_id = mt8188_afe_get_mclk_source_clk_id(apll);
+> +		if (apll_clk_id < 0)
+> +			return apll_clk_id;
+> +
+> +		/* select apll */
+> +		ret = mt8188_afe_set_clk_parent(afe, afe_priv->clk[clk_id],
+> +						afe_priv->clk[apll_clk_id]);
+> +		if (ret)
+> +			return ret;
+> +
+> +		/* set rate */
+> +		ret = mt8188_afe_set_clk_rate(afe, afe_priv->clk[clkdiv_id],
+> +					      etdm_data->mclk_freq);
+
+Check ret here...
+
+> +	} else {
+> +		if (etdm_data->mclk_dir == SND_SOC_CLOCK_OUT)
+> +			dev_dbg(afe->dev, "%s mclk freq = 0\n", __func__);
+> +	}
+> +
+
+...and return 0 here.
+
+> +	return ret;
+> +}
+> +
+
+..snip..
+
+> +
+> +static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
+> +				  struct snd_pcm_hw_params *params,
+> +				  struct snd_soc_dai *dai)
+> +{
+> +	int ret = 0;
+> +	unsigned int rate = params_rate(params);
+> +	unsigned int bit_width = params_width(params);
+> +	unsigned int channels = params_channels(params);
+> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+> +	struct mtk_dai_etdm_priv *mst_etdm_data;
+> +	int mst_dai_id;
+> +	int slv_dai_id;
+> +	int i;
+> +
+> +	dev_dbg(afe->dev, "%s '%s' period %u-%u\n",
+> +		__func__, snd_pcm_stream_str(substream),
+> +		params_period_size(params), params_periods(params));
+> +
+> +	if (is_cowork_mode(dai)) {
+> +		mst_dai_id = get_etdm_cowork_master_id(dai);
+> +		if (!is_valid_etdm_dai(mst_dai_id))
+> +			return -EINVAL;
+> +
+> +		ret = mtk_dai_etdm_mclk_configure(afe, mst_dai_id);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = mtk_dai_etdm_configure(afe, rate, channels,
+> +					     bit_width, mst_dai_id);
+> +		if (ret)
+> +			return ret;
+> +
+> +		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
+> +		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
+> +			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
+> +			ret = mtk_dai_etdm_configure(afe, rate, channels,
+> +						     bit_width, slv_dai_id);
+> +			if (ret)
+> +				return ret;
+> +
+> +			ret = mt8188_etdm_sync_mode_configure(afe, slv_dai_id);
+> +			if (ret)
+> +				return ret;
+> +		}
+> +	} else {
+> +		ret = mtk_dai_etdm_mclk_configure(afe, dai->id);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = mtk_dai_etdm_configure(afe, rate, channels,
+> +					     bit_width, dai->id);
+
+Check return value here...
+
+> +	}
+> +
+
+...and return 0 here.
+
+> +	return ret;
+> +}
+> +
+> +static int mtk_dai_etdm_prepare(struct snd_pcm_substream *substream,
+> +				struct snd_soc_dai *dai)
+> +{
+> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+> +	struct mtk_dai_etdm_priv *mst_etdm_data;
+> +	int mst_dai_id;
+> +	int slv_dai_id;
+> +	int i;
+> +	int ret = 0;
+> +
+> +	if (!is_valid_etdm_dai(dai->id))
+> +		return -EINVAL;
+> +	mst_etdm_data = afe_priv->dai_priv[dai->id];
+> +
+> +	dev_dbg(afe->dev, "%s(), dai id %d, prepared %d\n", __func__, dai->id,
+> +		mst_etdm_data->is_prepared);
+> +
+> +	if (mst_etdm_data->is_prepared)
+> +		return 0;
+> +
+> +	mst_etdm_data->is_prepared = true;
+> +
+> +	if (is_cowork_mode(dai)) {
+> +		mst_dai_id = get_etdm_cowork_master_id(dai);
+> +		if (!is_valid_etdm_dai(mst_dai_id))
+> +			return -EINVAL;
+> +		mst_etdm_data = afe_priv->dai_priv[mst_dai_id];
+> +
+> +		for (i = 0; i < mst_etdm_data->cowork_slv_count; i++) {
+> +			slv_dai_id = mst_etdm_data->cowork_slv_id[i];
+> +			ret |= mt8188_afe_enable_etdm(afe, slv_dai_id);
+> +		}
+> +
+> +		ret |= mt8188_afe_enable_etdm(afe, mst_dai_id);
+
+OR'ing return values is not an acceptable practice: you should check for error
+right after the call and immediately take action if anything wrong happened.
+
+> +	} else {
+> +		ret = mt8188_afe_enable_etdm(afe, dai->id);
+
+Same comment as the previous function: check ret here.
+
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+
+..snip..
+
+> +
+> +static int mtk_dai_hdmitx_dptx_prepare(struct snd_pcm_substream *substream,
+> +				       struct snd_soc_dai *dai)
+> +{
+> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> +	struct mt8188_afe_private *afe_priv = afe->platform_priv;
+> +	struct mtk_dai_etdm_priv *etdm_data;
+> +	int ret;
+> +
+> +	if (!is_valid_etdm_dai(dai->id))
+> +		return -EINVAL;
+> +	etdm_data = afe_priv->dai_priv[dai->id];
+> +
+> +	dev_dbg(afe->dev, "%s(), dai id %d, prepared %d\n", __func__, dai->id,
+> +		etdm_data->is_prepared);
+> +
+> +	if (etdm_data->is_prepared)
+> +		return 0;
+> +
+> +	etdm_data->is_prepared = true;
+> +
+> +	/* enable dptx interface */
+> +	if (dai->id == MT8188_AFE_IO_DPTX)
+> +		regmap_set_bits(afe->regmap, AFE_DPTX_CON, AFE_DPTX_CON_ON);
+> +
+> +	/* enable etdm_out3 */
+> +	ret = mt8188_afe_enable_etdm(afe, dai->id);
+
+You don't need the `ret` variable here...
+
+	return mt8188_afe_enable_etdm(afe, dai->id);
+
+> +
+> +	return ret;
+> +}
+> +
+
+Apart from this, looks good.
+
+Regards,
+Angelo
+
 
