@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE46EC3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 14:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E84C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 14:31:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HnmQHVavlJ01o/uDIc/ZPZA5TT2gu+XlYB48BuLOut8=; b=c0cJtJtufoJ9mjTJpfzWV2fPiz
-	RhXDzyFfl+6TN+YBWw1wcS2Hlvb28GR2bQIAqmKfbzyX5vJCeQvzUJ0KCdJXPIriPGWRruo3NEetX
-	c5Y/acBDRuFKOl7cNlvgb6sp8ANNi1F7xHsQSXEn+qPFv7iHwH73YOJEMVUL326IxHH/NVdXVjAkA
-	8ImakSMW1OCBhe9Flh4WOYvGgWIuGbJlL9Plu2ax+PnRBHVvvarNc4kVNWbAui4li+V/U+xlmf2WZ
-	3XSU6DHQ77amVErzQxhgkE65XguqtcNBQnEspwUQF+AAaEPKhe1ZN7AmnURhkpmygyry3wYc9lkAS
-	tmO9P0fg==;
+	bh=3u7sQu+Ok03my25ixFOCb3k6m8c93/+skn9KYgTQI8A=; b=EPynf5jUqdqrelugm2wB3C/RfB
+	wD1QKi85rPjJTJ6Xlxht/a9zj5CtWKm7DR/DAmTZ2C53ByNh5rUNGy6pvkoyPJ3AVqTfxy5ezvgZY
+	oFq35ASUOMo6cyOdt0c0lWdcJnilkrtCa1+RDDOHHsFptzBX6psOWCn+XjabDWDFb5paeC6aS0Nxr
+	/KhUDTO94XXuac+NjHWnCL+7vdFKgXbEDSiBcej8FhUELQ2CGzr1bDhWvdsDUyahNOo5wl4SdkD8W
+	U5ULq+25klVX5K1PUeEl9kK5evSG0wNj93WTqQUAm7Em+0hlX/yNx+dhAcrZ9qn4WQSx4/kdTDB6y
+	9YPZZd4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCiJ8-001yr7-3m; Tue, 03 Jan 2023 14:30:26 +0000
+	id 1pCiKK-001zRn-Fg; Tue, 03 Jan 2023 14:31:41 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCgjf-001LRe-5v; Tue, 03 Jan 2023 12:49:44 +0000
+	id 1pCgjh-001LSe-EA; Tue, 03 Jan 2023 12:49:46 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A2BB56602CF4;
-	Tue,  3 Jan 2023 12:49:38 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 818F46602CF2;
+	Tue,  3 Jan 2023 12:49:43 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672750179;
-	bh=8ji9uM0rPrYHIz3P734RsmkYAcXteBVac3pmsXFW90Q=;
+	s=mail; t=1672750184;
+	bh=cKufuK/SQXHZY7UgYbfqx1IwLxjbfTYMLGfuy2CKsPk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n6G0SNZjtaBdV/0/2Fd7PbL6pO+oO5JW0vDldxzUZnOI8gHX8lJ/Wx/uX0mxAjmJp
-	 OZrxOV6gtRankj1cdmrQ+kKsUDtV2DiWe626RinwkegpPV7iaTicYmbYaUtwd0on3w
-	 bXEAzTRbbxZaybjJg0o5JsmAT/He8PPj1HLIM4Pyi/2OV3UeMcQjGsMtN9a62cYSVw
-	 Rgi4RkDum2H+Xxrk1TFz+zvBw05dWj/+w7f+sktffPBao72r69/l1GDV72/+ALTyXE
-	 6slxPKIpLjNW70nc8hxFwgaIfh7P9IXeqVLkmCQZCjVFQS4gR3sBPuH/rZdc46nuX/
-	 OkAls005mxgMg==
-Message-ID: <2f4a78f8-9cdd-9e44-20a2-b3bd6abd5cc7@collabora.com>
-Date: Tue, 3 Jan 2023 13:49:36 +0100
+	b=g1wjpLxsUYLZKEK5ecAlCc3elaIDzpmV+nLcVd07pHpAYAfnZlhe8SUo2D2UaR83d
+	 NtmsO5j7vNMmKkIjCSkZh+TezHoCcnLWhHfOvznadmV/z48Rij2qZJMBF9vPDiIxVD
+	 qEcjDFIY2cADv+nB87VCZPmr6uxjnJOasVOH+eb8sW8u8zZUI6+JSGm8fjl4RPIEc5
+	 BMvG4P8FbSZ6SygIYensx1boE4t8hN1oMHZGiTCeg5UBYhSorkH5DhqQlIxCsxIcsD
+	 VHzXkmJ0udW1GvVW0k1wHMa7b6BHs9HfpbM1lpuTew+1BR7waj2XF+AQSc6YGAvqVR
+	 JtbNj6S9EgJgw==
+Message-ID: <3ebb927b-d662-506f-2531-62abd851c0b3@collabora.com>
+Date: Tue, 3 Jan 2023 13:49:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v1 13/13] soc: mediatek: mtk-svs: keep svs alive even
- though debug cmd create fail
+Subject: Re: [PATCH v1 12/13] soc: mediatek: mtk-svs: Use
+ pm_runtime_resume_and_get() in svs_init01()
 Content-Language: en-US
 To: Roger Lu <roger.lu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -57,16 +57,18 @@ Cc: Fan Chen <fan.chen@mediatek.com>,
  Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Shang XiaoJing <shangxiaojing@huawei.com>
 References: <20221226094248.4506-1-roger.lu@mediatek.com>
- <20221226094248.4506-14-roger.lu@mediatek.com>
+ <20221226094248.4506-13-roger.lu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221226094248.4506-14-roger.lu@mediatek.com>
+In-Reply-To: <20221226094248.4506-13-roger.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_044943_503138_82599CE2 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20230103_044945_682420_9217E48D 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,43 +84,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 26/12/22 10:42, Roger Lu ha scritto:
-> Some projects might not support DEBUG_FS but still needs svs to be
-> supported. Therefore, keep svs alive even though debug cmd create fail.
+> From: Shang XiaoJing <shangxiaojing@huawei.com>
 > 
+> svs_init01() calls pm_runtime_get_sync() and added fail path as
+> svs_init01_finish to put usage_counter. However, pm_runtime_get_sync()
+> will increment usage_counter even it failed. Fix it by replacing it with
+> pm_runtime_resume_and_get() to keep usage counter balanced.
+> 
+> Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+> Signed-off-by: Shang XiaoJing <shangxiaojing@huawei.com>
 > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-svs.c | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index af3a12e29e78..c780a115543e 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -2390,10 +2390,8 @@ static int svs_probe(struct platform_device *pdev)
->   	}
->   
 
-Instead of ignoring a planned failure, it's sensible to not fail at all:
-enclose this call and the svs_create_debug_cmds() function in an ifdef.
-
-#ifdef CONFIG_DEBUG_FS
-
->   	ret = svs_create_debug_cmds(svsp);
-> -	if (ret) {
-> +	if (ret)
->   		dev_err(svsp->dev, "svs create debug cmds fail: %d\n", ret);
-> -		goto svs_probe_iounmap;
-> -	}
-
-#endif
-
->   
->   	return 0;
->   
-> 
-
-Regards,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
