@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8FBC3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 10:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB7CC3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 11:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0NIrlOvbk7vZkei/UjaLevKnqZdjT8W2kPPgWX5gcEM=; b=HZQWE+1dEM9iW39Ay+29P7d0Zt
-	Uru/JLDLHwD5TFy8JgiOp4jf1o2zi4BgnclcJvHGQ3survjSbNhO+elk+iJlixJqhqQcQuMl9ZoFx
-	RRMiOljQvpv5g+JCoE4xxsgKuAgKhAnL75rFR0SGjDORhabnBNhKqNOe78VJzJVFXmVW39uvPT0lU
-	u/kByac6hXk9AfU8pf0NwowuTujrH9NBHLzw85peelsy/VZYBIreYRSVX66yLPL6zintgdQT6soJg
-	0vFmZKIrDjVjdp43++9+y0rXunVM931um53XAeOGPpFGxVwmCZDYNkoS7x6WJhAeoLklgSOnXJW7F
-	HwMbD6pg==;
+	bh=3M8wGSq25ravGzc2gimk5GOnJPpyon3AjF+oCGuWVto=; b=i17q3E0DryL188h96C/plCxU6k
+	C8iULUHzH0MP6zjGmKJhwag79a8stepqJHiSQuA9fNBUZ2zmK7dcVXCGO5ZElT9Qti9cncam/qc9+
+	DKMCmTlq42POtONkhth1WcKxAnhr/eWZKaKWW2RyUuh8VEMwxmsHBDibX5Q4qPXOUjtkLllLSx9xA
+	OSuXeUGKxFlpbBabsh5xmjtUOCxLKUMFlJwaO/3R4juz/jmz/YZMQ2zdiG8u+/PRXxVpWg9LlHTHp
+	xNbRxZK2rKNxFVq7UOgVyKMR0QftEsiTfjCLqSzbTFNhWbC9D0/NJYMvF4f2fA2Xy7JSLsqSuNaHm
+	kIZky1ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCev7-000psE-Ew; Tue, 03 Jan 2023 10:53:25 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pCfCu-000vAL-Aw; Tue, 03 Jan 2023 11:11:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCePy-000gpm-UE; Tue, 03 Jan 2023 10:21:17 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1pCeIB-000eUe-Lo; Tue, 03 Jan 2023 10:13:14 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 7021D126D;
-	Tue,  3 Jan 2023 11:21:08 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1672741268;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0NIrlOvbk7vZkei/UjaLevKnqZdjT8W2kPPgWX5gcEM=;
-	b=RIvoOPSAjkHkWRfLX6Q0K/aek6FQU3XreYN5YNfAte2T/48X3VC8QQcEpd8jPJCFiyZzWo
-	YiNwIusJEscDbzhm+hLbf6HNICx53SmA+YBP6AkQJq43zwVjNQZv+E9+UWk/k+GVe5vHsB
-	PpYh33/dKsFzSAcgjfwdUsLd5q72TbERdzSx/SCAm4zwGljRFXGGLdVqfy4IcIf2W5lAZO
-	XjMLUaTiUPYAyq3PtzHwPIZ0R9tR/KsXvd4mja00tvj0OPMSluRJXfI+WgaY/465OcIWYl
-	25I7JQyqJw8aSZmYLqPK7a2CXyNMEgcEPOPRNCX0T6YnECO/Wo1QlrI2Qv3cuQ==
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 53C5B6602CE1;
+	Tue,  3 Jan 2023 10:13:08 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1672740789;
+	bh=N+C1P34GJr1WiBndymJ5TbUjQDNvai7DpHDmwfXqxF4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OtQWQSPT1qxLRtAQtfJ4DxUz5LUdv5bzLkrr2c1ep8uJXhRQ1urAAkktNz6zVD9NK
+	 FKD38gqvLC2OcZwONklTYugE0zDeNWEhT+PeClwKV2sJUqGE3IDn3euD5M3JYTWSYt
+	 3rW6sKVLe4eMjFplS/Y+ufbVUeQrThPfwWiuoxlm1x642SNd18iQN/rSlTa92oceYB
+	 3yfj/82kE6TVoMub55TU/7XUYd016c0Thdjc7lXWprlfycZenvhH/lGmjnZSeflUyv
+	 I/rNR0uEdjCNlBdlG5zWr5f4pmXOGcnr/hJms1IdABwm6QzbkAp+2r0QJeO/+3eeVP
+	 aFVr94n+cPttg==
+Message-ID: <4cb6029c-bbea-65a8-3923-8ede46125cae@collabora.com>
+Date: Tue, 3 Jan 2023 11:13:06 +0100
 MIME-Version: 1.0
-Date: Tue, 03 Jan 2023 11:21:08 +0100
-From: Michael Walle <michael@walle.cc>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Jose Abreu
- <Jose.Abreu@synopsys.com>, Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang
- <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
- <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Andrew Lunn <andrew@lunn.ch>, Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH RFC net-next v2 03/12] net: mdio: mdiobus_register: update
- validation test
-In-Reply-To: <Y7P/45Owf2IezIpO@shell.armlinux.org.uk>
-References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-3-ddb37710e5a7@walle.cc>
- <Y7P/45Owf2IezIpO@shell.armlinux.org.uk>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <37247c17e5e555dddbc37c3c63a2cadb@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v8 4/6] arm64: dts: mt6358: change node names
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>, Mark Brown
+ <broonie@kernel.org>, Tianping Fang <tianping.fang@mediatek.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Fabien Parent <fabien.parent@linaro.org>, Lee Jones <lee@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chen Zhong <chen.zhong@mediatek.com>, Pavel Machek <pavel@ucw.cz>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Flora Fu <flora.fu@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-rtc@vger.kernel.org, linux-leds@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20221005-mt6357-support-v8-0-560caaafee53@baylibre.com>
+ <20221005-mt6357-support-v8-4-560caaafee53@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20221005-mt6357-support-v8-4-560caaafee53@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_022115_401758_7907393D 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20230103_021311_957791_A7266EE4 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,37 +90,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Russell,
-
-Am 2023-01-03 11:13, schrieb Russell King (Oracle):
-> On Wed, Dec 28, 2022 at 12:07:19AM +0100, Michael Walle wrote:
->> +	if (!bus || !bus->name)
->> +		return -EINVAL;
->> +
->> +	/* An access method always needs both read and write operations */
->> +	if ((bus->read && !bus->write) ||
->> +	    (!bus->read && bus->write) ||
->> +	    (bus->read_c45 && !bus->write_c45) ||
->> +	    (!bus->read_c45 && bus->write_c45))
+Il 02/01/23 17:06, Alexandre Mergnat ha scritto:
+> - Change the node name from "mt6358" to "pmic", "mt6358rtc" to "rtc" and
+> "mt6358keys" to "keys" to be consistent with the generic names recommendation.
 > 
-> I wonder whether the following would be even more readable:
-> 
-> 	if (!bus->read != !bus->write || !bus->read_c45 != !bus->write_c45)
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-That's what Andrew had originally. But there was a comment from Sergey 
-[1]
-which I agree with. I had a hard time wrapping my head around that, so I
-just listed all the possible bad cases.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I don't have a strong opinion, though.
-
-> which essentially asserts that the boolean of !method for the read and
-> write methods must match.
-
-Maybe with that as a comment?
-
--michael
-
-[1] 
-https://lore.kernel.org/netdev/ae79823f-3697-feee-32e6-645c6f4b4e93@omp.ru/
 
