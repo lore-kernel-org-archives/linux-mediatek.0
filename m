@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A57C53210
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 07:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF12C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 08:04:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NZ9NhCNssNEj8jHwgbBdhsDJ/+YeWKw4bYC90Z9LVjk=; b=N2RbiXlws+p41d/z9Py7E6158R
-	j7JrS3qby43F8OLeU3ZBkWtPlTE7ctQoWMomPr9SIcQwO8bokyBtA0PVuKfWrSZCcj4yz5F/XJLWQ
-	xWSa/tPZi5Sth6iwX81loRdR6AUFRaRsK4fPcNmp2OoJ4EI8p9DtQGz7zubSnG3gfrsano+EcZUCc
-	z+P3PLFtsoI6DInHcE+xZj8BWIgCm/ESMZNQjPWRxJxNMZubz438aSFTLqIpyWpde2vE1uREtEH6r
-	rYVTdi+hs8QI4DGU+g1ZU9XqGyfubvEz+wW9M4eH5jkzgOd1XcFrDm30CnsVQ58uYvs98gjJUdVzW
-	Q3a71ZpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PNcgxNLrMP0ObiUeiUV2qBm0Q2P10GbILBPXF0O27jY=; b=WdbOYK4+PUF5Hj4CVBAcSIf2HH
+	ZeBSOund5LbIHuPv2JkEES1QO3wAgilPHN3UGoCeJPIYtWio8caz5OIkcZ5JByQz955UIzJSDfPfr
+	CY8jnP7JKw7qW9F7LNFyt4fADimSji23UZT9QJvOo0Czh5IRFOK5tBTnVzlYVgkkHDqroru8IkbT4
+	1LsXw0LeYT78Ka+WJ0cBPxSWYbcOEqjsYRJ07Akox82oWjbONJ03zG2xKn+0Hqfr61GYFj45SDlr5
+	rip93PILc07l0HqaSye1oYS0X+sPdzBxCBDvISoTUcDcgqOy+G2trvoSkGRgFkaVergLNqQMZZohc
+	pIEl2e9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCcAw-0000dq-8A; Tue, 03 Jan 2023 07:57:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pCcHO-0003de-2N; Tue, 03 Jan 2023 08:04:14 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCcAa-0000Ua-W8; Tue, 03 Jan 2023 07:57:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=NZ9NhCNssNEj8jHwgbBdhsDJ/+YeWKw4bYC90Z9LVjk=; b=LDBpjSjEz4hozGTBhx4VYlNhpM
-	hWyYMIfBDnwbyGLKH/hZDkc9MfkRDPbX8fF3x2MJtnXSCIniwI587EoqBq50XkE2I29WbyAjYF+hX
-	aSsoj5EYD0+8+sivTv8amJtfJ+LReYHwTD1I50HLS2pGC9sthJXvIixjUAd4gOjceqeZSwCGxX3og
-	qhdEyoWSI76iwvcxV4+0uHizZPWXR4ibjCFOWO8x5rjpJgRbThdkM3YM8rj2oCG4sXduvieLpXPta
-	vE6ZOLse5dWdQvoSVRU0nFusTyDCfx9THxGSTTN+PFEi6MLOZIbGiz1KRmJrE02mvCNgtAjh07ha5
-	ystoOqPw==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pCcAN-000X8N-2h;
-	Tue, 03 Jan 2023 07:57:06 +0000
-X-UUID: d6b2201e69d447cda0eca82cc9643180-20230103
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NZ9NhCNssNEj8jHwgbBdhsDJ/+YeWKw4bYC90Z9LVjk=;
-	b=nR+3dsVKmbCAehJGYivb98X9J3AJZcILW7qt46EDi1sdadR8Lz1yW3Ud+EMun+f4MSMpb6siI89X6f3VLiLZ2INahYO18CfCTVZla7dWIqc/c5VJmClEsltdKAPFFt/mJUdig4q4beRKbolNSB/dotPG5yxbACkhltTu216nJtU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:949d3e2a-e1ea-486b-9078-8df6da0d89d0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:09771b1,CLOUDID:d1b9a3f4-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: d6b2201e69d447cda0eca82cc9643180-20230103
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1420441518; Tue, 03 Jan 2023 00:56:51 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 3 Jan 2023 15:56:18 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 3 Jan 2023 15:56:18 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
-	<glider@google.com>, Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov
-	<dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, "Andrew
- Morton" <akpm@linux-foundation.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>, Kuan-Ying Lee
-	<Kuan-Ying.Lee@mediatek.com>, <kasan-dev@googlegroups.com>,
-	<linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] kasan: infer the requested size by scanning shadow memory
-Date: Tue, 3 Jan 2023 15:55:58 +0800
-Message-ID: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pCcDS-0001k8-Qk; Tue, 03 Jan 2023 08:00:13 +0000
+Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3033rgmb028440;
+	Tue, 3 Jan 2023 08:59:56 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=selector1;
+ bh=PNcgxNLrMP0ObiUeiUV2qBm0Q2P10GbILBPXF0O27jY=;
+ b=xxa2ch6McfHSRjGdCal5Jq9fg60bsM9BzY+X1vRnUQGjXLLvI+WgOC5xcSAh68cICj0W
+ D72QMnHvDxMOrdfP9kSQDeMtd07yUSJTXnEuDQ+pJnelFZKWyEWRX2mI0LolVEuLsYgJ
+ kfOg+YTSokgXYbPXkq73wdDFha4RljTplvQ/GBcDQshNzgumh6+oHFblLSSQU501YWwr
+ lmL2NPFr0zYsYzwPw/RQgmNGqVdcbhaCz4wkpvg/vD7wY29LhXJJ7X+DWHjtpYc4NDg5
+ +XygFdf93FzpVNJ8I6eGGbcgV4N0R2NGwpPqDa1kKYf2d7hWgNoJkWGpgsomjMFM25nM OQ== 
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3mtb3e3mf6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 03 Jan 2023 08:59:56 +0100
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id CFF4410002A;
+	Tue,  3 Jan 2023 08:59:54 +0100 (CET)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id BB08A2132D2;
+	Tue,  3 Jan 2023 08:59:54 +0100 (CET)
+Received: from [10.201.21.93] (10.201.21.93) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.13; Tue, 3 Jan
+ 2023 08:59:53 +0100
+Message-ID: <e16e9030-931a-61be-d034-9a1206f0f906@foss.st.com>
+Date: Tue, 3 Jan 2023 08:59:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v3 7/7] ARM: dts: stm32: Remove the pins-are-numbered
+ property
+Content-Language: en-US
+To: Kevin Hilman <khilman@baylibre.com>,
+        =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+        <devicetree@vger.kernel.org>
+CC: <linux-mediatek@lists.infradead.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <mcoquelin.stm32@gmail.com>, <krzysztof.kozlowski@linaro.org>,
+        <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+        <linux-gpio@vger.kernel.org>, <linus.walleij@linaro.org>
+References: <20221129023401.278780-1-bero@baylibre.com>
+ <20221129023401.278780-8-bero@baylibre.com> <7hlenm56lb.fsf@baylibre.com>
+From: Alexandre TORGUE <alexandre.torgue@foss.st.com>
+In-Reply-To: <7hlenm56lb.fsf@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.201.21.93]
+X-ClientProxiedBy: EQNCAS1NODE4.st.com (10.75.129.82) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2023-01-02_14,2022-12-30_01,2022-06-22_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_075701_883920_68841FCA 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20230103_000011_807317_B2FF25AC 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,109 +96,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We scan the shadow memory to infer the requested size instead of
-printing cache->object_size directly.
+Hi Kevin
 
-This patch will fix the confusing generic kasan report like below. [1]
-Report shows "cache kmalloc-192 of size 192", but user
-actually kmalloc(184).
+On 12/5/22 14:21, Kevin Hilman wrote:
+> Alexandre,
+> 
+> Bernhard Rosenkränzer <bero@baylibre.com> writes:
+> 
+>> Remove the pins-are-numbered property from STM32 DeviceTrees
+>>
+>> Signed-off-by: Bernhard Rosenkränzer <bero@baylibre.com>
+>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> 
+> Now that the driver & binding qre queued, I'm assuming you'll queue this
+> one via the stm32 tree?
+> 
 
-==================================================================
-BUG: KASAN: slab-out-of-bounds in _find_next_bit+0x143/0x160 lib/find_bit.c:109
-Read of size 8 at addr ffff8880175766b8 by task kworker/1:1/26
-...
-The buggy address belongs to the object at ffff888017576600
- which belongs to the cache kmalloc-192 of size 192
-The buggy address is located 184 bytes inside of
- 192-byte region [ffff888017576600, ffff8880175766c0)
-...
-Memory state around the buggy address:
- ffff888017576580: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
- ffff888017576600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->ffff888017576680: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
-                                        ^
- ffff888017576700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
- ffff888017576780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-==================================================================
+Yes I'll take it.
 
-After this patch, report will show "cache kmalloc-192 of size 184".
+cheers
+Alex
 
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=216457 [1]
 
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
----
- mm/kasan/kasan.h          |  5 +++++
- mm/kasan/report.c         |  3 ++-
- mm/kasan/report_generic.c | 18 ++++++++++++++++++
- 3 files changed, 25 insertions(+), 1 deletion(-)
-
-diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index 32413f22aa82..7bb627d21580 100644
---- a/mm/kasan/kasan.h
-+++ b/mm/kasan/kasan.h
-@@ -340,8 +340,13 @@ static inline void kasan_print_address_stack_frame(const void *addr) { }
- 
- #ifdef CONFIG_KASAN_GENERIC
- void kasan_print_aux_stacks(struct kmem_cache *cache, const void *object);
-+int kasan_get_alloc_size(void *object_addr, struct kmem_cache *cache);
- #else
- static inline void kasan_print_aux_stacks(struct kmem_cache *cache, const void *object) { }
-+static inline int kasan_get_alloc_size(void *object_addr, struct kmem_cache *cache)
-+{
-+	return cache->object_size;
-+}
- #endif
- 
- bool kasan_report(unsigned long addr, size_t size,
-diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-index 1d02757e90a3..6de454bb2cad 100644
---- a/mm/kasan/report.c
-+++ b/mm/kasan/report.c
-@@ -236,12 +236,13 @@ static void describe_object_addr(const void *addr, struct kmem_cache *cache,
- {
- 	unsigned long access_addr = (unsigned long)addr;
- 	unsigned long object_addr = (unsigned long)object;
-+	int real_size = kasan_get_alloc_size((void *)object_addr, cache);
- 	const char *rel_type;
- 	int rel_bytes;
- 
- 	pr_err("The buggy address belongs to the object at %px\n"
- 	       " which belongs to the cache %s of size %d\n",
--		object, cache->name, cache->object_size);
-+		object, cache->name, real_size);
- 
- 	if (access_addr < object_addr) {
- 		rel_type = "to the left";
-diff --git a/mm/kasan/report_generic.c b/mm/kasan/report_generic.c
-index 043c94b04605..01b38e459352 100644
---- a/mm/kasan/report_generic.c
-+++ b/mm/kasan/report_generic.c
-@@ -43,6 +43,24 @@ void *kasan_find_first_bad_addr(void *addr, size_t size)
- 	return p;
- }
- 
-+int kasan_get_alloc_size(void *addr, struct kmem_cache *cache)
-+{
-+	int size = 0;
-+	u8 *shadow = (u8 *)kasan_mem_to_shadow(addr);
-+
-+	while (size < cache->object_size) {
-+		if (*shadow == 0)
-+			size += KASAN_GRANULE_SIZE;
-+		else if (*shadow >= 1 && *shadow <= KASAN_GRANULE_SIZE - 1)
-+			size += *shadow;
-+		else
-+			return size;
-+		shadow++;
-+	}
-+
-+	return cache->object_size;
-+}
-+
- static const char *get_shadow_bug_type(struct kasan_report_info *info)
- {
- 	const char *bug_type = "unknown-crash";
--- 
-2.18.0
+> Thanks,
+> 
+> Kevin
 
 
