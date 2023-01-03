@@ -4,62 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2350EC3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 18:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3DF3C54EBF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 19:09:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WU0dokbZJR7hGpUs28LPuEyaZMppFxtbY3wOwZuSs+U=; b=r85zuaErryfgY8g7NFGfFtJHQ1
-	a6AzNDqvW3oWgOYe7N7pmpnGVlhoLMQKj3VBjVP9KMCRgsYM7zlRrwdB5aNHx5RKiDpYdF4+EogTG
-	F0GxV84uGo3bxjSHVmsAhfgdvt00z2nSa+fLR4d1KTFZuZKM/R0PeqQH4XcekjenAOI9IYhEGdqOx
-	ZSRlECq4gM3R7aGk2PIs14DIG9NYBV4veBuHy9whCfT+LEnDFkHm4vt0cG66tzNHRZR0P3KEgQ6fs
-	s7FMz0AFhEcnbNJAotInhVrIcZqu+T0gpgFLuW0qzEpKcEWmjPqLgVsUVhFxclsX5KQgn2FgZuTea
-	psiMDsrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=; b=Hkb44aZpZ3Q70waOT6PzFhPq/2
+	NmijG2gR+FjJOE48iIDQ81e0DcT8TBogZwDhvtnEBo35e55+MMNWAAX+M4HeeZXKq1CHo5Q0inJLW
+	yyV67zF6daI2VY6STthNCXwbMg9tcljrnLLaPrdkZURhXG5Fwp6Nv+xvg+m2WuNM+/WEtPqKjtC9a
+	hlg2ym9i5OKpHEfl2GWpMp0L+gw3E2yzp5b/hSK+uh9AJRJV1n4XwfLBfXhXCBXgq/yvip8e2i0BG
+	misrrYnLaJmlUI+u07dgaZjxnKm4cEJjpBaKx3ZiikzN2vKKB1TYVOBooXt7HXcqGZrDSFS9OPFEE
+	dXFrJtfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pClrt-003o9d-Qx; Tue, 03 Jan 2023 18:18:33 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkKi-0030zV-6s; Tue, 03 Jan 2023 16:40:14 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 819861516;
-	Tue,  3 Jan 2023 08:40:51 -0800 (PST)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 804AE3F71A;
-	Tue,  3 Jan 2023 08:40:07 -0800 (PST)
-Message-ID: <832f3200-77ac-1ee0-e1b5-5f56353cba36@arm.com>
-Date: Tue, 3 Jan 2023 16:39:59 +0000
+	id 1pCmek-004Egw-Iv; Tue, 03 Jan 2023 19:09:02 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pClWr-003dRV-5S; Tue, 03 Jan 2023 17:56:51 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id i15so45028683edf.2;
+        Tue, 03 Jan 2023 09:56:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=;
+        b=aKwytJh4KX20LXxOryZJE0HuJG5HcaCeIxX3tFX5yZz0gEhN3vG/Ugzp3jfNHHAfFZ
+         zpCCt+btieU/rdBGPWbe3sejqYvYS8FTg2R49yHZy6jaIbMe+hPE/DtWRavxYZwoIN0T
+         QVzbnO8+eVVo9l/ID7dtlfG3fmFswrJrboaiZ3nNEzQHN+QM9WO5pCpA1f5g1joQhIXW
+         l72WenGT/6K3hPFCxw3kIKLiLCVK3azdhhESTO51lnjK++sWuiMrmBZf4WNy7jNIp7fY
+         YzJXiRkbxN0lvgynjSnG5SWR5+Uu2VYbKX6KvdPUI1pO/IiTONJIZdImNLn22/Eq/9AP
+         aWWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=;
+        b=UMT+350emZEqHyb1bHN5OkgYHe0SizMFrcCz9sg6rqhAaXakiaTpuzXJkljXFNwMp6
+         /lmZS2rR3GuXHxPfZVENmncQfzJc+9UUgodG6wGyzFL3ZkHxPc93cNdzL6zuqTv/UmXQ
+         gT4P3AiKvNgdh+1c4TDQnYtRwkC0rKb/d6MX3EhJ0mN0mIe+AK8MsT/3WLa8AteHUaoC
+         cjXop1GhJX+CeHs+O5JrIkJ0skQK+OEha6tU5YVA7kTV9udrT8DQSoPbFSOtIbdp0o2e
+         T0TmohS5urYZ5i6WfvrxsNnE68V3FsPRpPXllYtEeB1SpDPYchCiG1pfH0qrtgK4LO48
+         BAYw==
+X-Gm-Message-State: AFqh2kqghg52Io8p1ZSzdzxVbHKuTFSd0TzgJBYHSeNpGnq4iagmOKm8
+	GvvtRGTyOUbm5FI+mSgspkA=
+X-Google-Smtp-Source: AMrXdXtEtXWdICTqd1aomJDuH7ZCpdFY3T3zFdVGv7z0OI1uDhXO0zYB+HaMBkbXi0VNrPwD5wFXmA==
+X-Received: by 2002:a05:6402:390b:b0:465:f6a9:cb7b with SMTP id fe11-20020a056402390b00b00465f6a9cb7bmr39249116edb.12.1672768605161;
+        Tue, 03 Jan 2023 09:56:45 -0800 (PST)
+Received: from skbuf ([188.26.185.118])
+        by smtp.gmail.com with ESMTPSA id h14-20020aa7c94e000000b0046f77031d40sm13864230edt.10.2023.01.03.09.56.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jan 2023 09:56:44 -0800 (PST)
+Date: Tue, 3 Jan 2023 19:56:41 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Colin Foster <colin.foster@in-advantage.com>
+Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	UNGLinuxDriver@microchip.com,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	George McCollister <george.mccollister@gmail.com>,
+	Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6 net-next 09/10] dt-bindings: net: add generic
+ ethernet-switch-port binding
+Message-ID: <20230103175641.nqvo2gk43s3nanwg@skbuf>
+References: <20230103051401.2265961-1-colin.foster@in-advantage.com>
+ <20230103051401.2265961-10-colin.foster@in-advantage.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v2 2/3] iommu/sound: Use component_match_add_of helper
-Content-Language: en-GB
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Sean Anderson <sean.anderson@seco.com>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Joerg Roedel <joro@8bytes.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- alsa-devel@alsa-project.org, iommu@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20221222233759.1934852-1-sean.anderson@seco.com>
- <20221222233759.1934852-3-sean.anderson@seco.com>
- <7897d4a6-bf43-becd-3437-7a254f38f6be@arm.com>
- <20230103161550.4tui3ihl65olvkd7@houat>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20230103161550.4tui3ihl65olvkd7@houat>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230103051401.2265961-10-colin.foster@in-advantage.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_084012_402233_1BD8A1E5 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20230103_095649_330743_FFA720B6 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,64 +113,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/01/2023 4:15 pm, Maxime Ripard wrote:
-> Hi Robin,
-> 
-> On Tue, Jan 03, 2023 at 01:01:07PM +0000, Robin Murphy wrote:
->> Hi Sean,
->>
->> On 22/12/2022 11:37 pm, Sean Anderson wrote:
->>> Convert users of component_match_add_release with component_release_of
->>> and component_compare_of to component_match_add_of.
->>>
->>> Signed-off-by: Sean Anderson <sean.anderson@seco.com>
->>> Acked-by: Mark Brown <broonie@kernel.org>
->>> ---
->>>
->>> Changes in v2:
->>> - Split off from helper addition
->>>
->>>    drivers/iommu/mtk_iommu.c    | 3 +--
->>>    drivers/iommu/mtk_iommu_v1.c | 3 +--
->>>    sound/soc/codecs/wcd938x.c   | 6 ++----
->>>    3 files changed, 4 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index 2ab2ecfe01f8..483b7a9e4410 100644
->>> --- a/drivers/iommu/mtk_iommu.c
->>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -1079,8 +1079,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->>>    		}
->>>    		data->larb_imu[id].dev = &plarbdev->dev;
->>> -		component_match_add_release(dev, match, component_release_of,
->>> -					    component_compare_of, larbnode);
->>> +		component_match_add_of(dev, match, larbnode);
->>
->> I've long since given up trying to make sense of how the DRM tree works, but
->> the conflicting change is definitely already in mainline:
->>
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=b5765a1b44bea9dfcae69c53ffeb4c689d0922a7
-> 
-> As far as I can see, that patch doesn't affect DRM at all, and the
-> commit you pointed to doesn't either, nor has it been merged through the
-> DRM tree.
+On Mon, Jan 02, 2023 at 09:14:00PM -0800, Colin Foster wrote:
+> diff --git a/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> new file mode 100644
+> index 000000000000..126bc0c12cb8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> @@ -0,0 +1,25 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/ethernet-switch-port.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Generic Ethernet Switch Port
+> +
+> +maintainers:
+> +  - Andrew Lunn <andrew@lunn.ch>
+> +  - Florian Fainelli <f.fainelli@gmail.com>
+> +  - Vladimir Oltean <olteanv@gmail.com>
+> +
+> +description:
+> +  Ethernet switch port Description
 
-Right it doesn't affect DRM, and was merged via the IOMMU tree, but it 
-does affect *this* patch, which Sean has based on a drm-next branch that 
-seemingly still wasn't up to date with 6.2-rc1 at the time.
+Still doesn't look too great that the ethernet-switch-port description
+is this thing devoid of meaning. What is said about the dsa-port is what
+the description should be here, and the description of the dsa-port is
+that it's a generic Ethernet switch port plus DSA specific properties.
 
-Since v2 had already been posted, it seemed like a bright idea to 
-comment here to clarify that it was still relevant, rather than bumping 
-the old thread to reply directly. Apologies for any confusion.
+> +
+> +$ref: ethernet-controller.yaml#
+> +
+> +properties:
+> +  reg:
+> +    description: Port number
+> +
+> +additionalProperties: true
 
-In practical terms I think it's merely a case of dropping this hunk; the 
-other one in mtk_iommu_v1.c looks fine to me.
-
-Cheers,
-Robin.
-
-> Can you expand a bit on how we're involved in this, what we should
-> clarify or help with?
-> 
-> Maxime
+Also, I see your patches are deferred in patchwork, and while this isn't
+really for me to say, presumably it's because there was no announcement
+so far that net-next reopened.
 
