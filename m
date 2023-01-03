@@ -4,113 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6497C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 11:38:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 294A9C3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 11:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYxboYbzJR4OvXvxpcEQ87njqCWGC/PDqKTVrCSJiAs=; b=ZXa2cyqxIWlnkEaWPUEh7N4TJ5
-	rwjsX40aMYKhllDlnFSFFTQEeN5JEU3hDuOQ4JlyTlv5iGiPRBPZbXiCdp+14viMebly1kU0rypQy
-	OO6Dr1BvQ6J0UVnqKMMT2lcsZFkj6+UIZ3e9bwFuleaSOP0qFrFMZnc5e8ZZhTpLOKDtWssMMct/O
-	4+ddCsJbdN0VwvqZ//WID27mdUQPEA6tooFg8DuDdL/jeKjmVFbERihqoQhbLEbo3amriUC8e7WCL
-	C7aQHHdmvoNiXyWtQNbzWLtu/e2OJQA7F0s6Jq0RlOxnBfec0zpJqHNDr7f6Z9iHMVTW8O2ixaJ1X
-	UwnziS7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QANQRcbabz/e5AjGyrQQSnGD8OTyugIT5m3Sn9VmQA0=; b=hUkn1csLhBzyTy8B8zt2C5JT3d
+	Mj8BgGXHdyiLZFT2jA8yeyaWJTSkfA5lbuN580CkCv7mtIR05XGl514eyN2CCZlHllPvpjv+alKDF
+	LWdpouaWwKcDB5BSja0u2m8LjRiV+4A1U8g0dIzt6oQ4ntxyfIwi0tQdrsuxe3Zs5gq5aWHFI6EZ7
+	cgXYU5fRVA5XtUxdEvBH0s+yGPBZuQ+parpqBk5fNouy/3kOGKUxliYLzpuh5JjJEz+1cgPNNTmJ/
+	QY2h6Gv2FRAg0ftm1OH+Hrn8yvkumgeo7btMFc+hB8DXHt/jqwgFitrzCBBYuJN0VSY1sb32Nmpx1
+	oROKVbGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCfcC-000zp3-H8; Tue, 03 Jan 2023 11:37:56 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1pCfr5-0014lS-KG; Tue, 03 Jan 2023 11:53:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCf4Y-000slG-JG; Tue, 03 Jan 2023 11:03:15 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 303B2hbV053461;
-	Tue, 3 Jan 2023 05:02:43 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1672743763;
-	bh=MYxboYbzJR4OvXvxpcEQ87njqCWGC/PDqKTVrCSJiAs=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=HywghCs+8v2SpbkpRvg0oUkcmi5mXNkXDrmJOorl0xHf39M19DgRxj3KWVV8vwuJD
-	 dpQwDVLmUUs6mEbekQpmOHi5FU809nVcNoGCBaF/JGw6g+Cy/EEy30U1SXtB5J6f/U
-	 dgzmH5JzqKi+CT2mgjCQlNx3AtfsNwsX9PoU17vw=
-Received: from DLEE107.ent.ti.com (dlee107.ent.ti.com [157.170.170.37])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 303B2huJ059716
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 3 Jan 2023 05:02:43 -0600
-Received: from DLEE113.ent.ti.com (157.170.170.24) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Tue, 3
- Jan 2023 05:02:42 -0600
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE113.ent.ti.com
- (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
- Frontend Transport; Tue, 3 Jan 2023 05:02:42 -0600
-Received: from [172.24.217.116] (ileaxei01-snat.itg.ti.com [10.180.69.5])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 303B2UDr029452;
-	Tue, 3 Jan 2023 05:02:31 -0600
-Message-ID: <32d66fb7-6c63-0985-222f-0bd3c36c165d@ti.com>
-Date: Tue, 3 Jan 2023 16:32:30 +0530
+	id 1pCfVW-000yIE-J8; Tue, 03 Jan 2023 11:31:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=QANQRcbabz/e5AjGyrQQSnGD8OTyugIT5m3Sn9VmQA0=; b=J66kyAjDMtp0+OrRm8dbv6JsIp
+	HN/8STY0LNkv1uMY6WoQ2Ybu70G47fHqhWPPRO1ljt+/UvQi0jUpk2WmSucYwxEomCjvpAHLh/FHQ
+	59ZEa/t1XMDKevFb/T65yfL7gRobkCjtjU3Ckm0YBoMJXzIfT34AbiUZ4YQdvS3h0IcFhFU2dIgpw
+	uCTSassvVRMXNVz68XB2bWzmWdaURUvvlgcNXk8pmuiReTZHislpGwywC0C4TN6km3MMzDHy9+uf/
+	shR9o2duBSPv99SgiVQZK3mSU/w0Je0GEpSImMofhnefU5NGmqp/bdv6Jkfx1iWq8nZaT0RZxNJeC
+	SGptR0Iw==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1pCfUp-000aBy-3B;
+	Tue, 03 Jan 2023 11:30:55 +0000
+X-UUID: f1eecc800b8e46d5b093e2901a6ef0ec-20230103
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QANQRcbabz/e5AjGyrQQSnGD8OTyugIT5m3Sn9VmQA0=;
+	b=jm3Af5jRZXxLBJkPUb3avxeNITJekXai7qCZSdvvHdPAn4rLasVzeiyQhP0bh6KPdPSyHQLH7jMPjg1CHGo0un2icSjCbjZoKBMSNONvshkV9y8wzCSYNoN19xLaSCw4/boHYUJ4bt1GgtInD6QC7Zm2B7xv/OaNxXebgGLRBgM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.16,REQID:a752f76c-e00c-4f6a-9caf-a355488ed2cc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:09771b1,CLOUDID:15a78053-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0,NGT
+X-UUID: f1eecc800b8e46d5b093e2901a6ef0ec-20230103
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <roger.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1126359415; Tue, 03 Jan 2023 04:30:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 3 Jan 2023 19:29:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 3 Jan 2023 19:29:27 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+	<eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Nicolas Boichat
+	<drinkcat@google.com>
+CC: Fan Chen <fan.chen@mediatek.com>, Roger Lu <roger.lu@mediatek.com>,
+	Jia-wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 10/14] soc: mediatek: mtk-svs: reset svs when svs_resume() fail
+Date: Tue, 3 Jan 2023 19:29:21 +0800
+Message-ID: <20230103112925.16554-11-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230103112925.16554-1-roger.lu@mediatek.com>
+References: <20230103112925.16554-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
- panel
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-        Rob Herring
-	<robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Tomi Valkeinen <tomba@kernel.org>, Jyri
- Sarha <jyri.sarha@iki.fi>,
-        David Airlie <airlied@gmail.com>, Daniel Vetter
-	<daniel@ffwll.ch>,
-        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime@cerno.tech>,
-        Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>,
-        Lad Prabhakar
-	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
-        Paul Walmsley
-	<paul.walmsley@sifive.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Albert Ou
-	<aou@eecs.berkeley.edu>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Guo Ren
-	<guoren@kernel.org>
-CC: DRI Development List <dri-devel@lists.freedesktop.org>,
-        Devicetree List
-	<devicetree@vger.kernel.org>,
-        Linux Kernel List
-	<linux-kernel@vger.kernel.org>,
-        Linux RISC-V List
-	<linux-riscv@lists.infradead.org>,
-        Linux ARM Kernel List
-	<linux-arm-kernel@lists.infradead.org>,
-        Linux Mediatek List
-	<linux-mediatek@lists.infradead.org>,
-        Linux C-SKY Arch List
-	<linux-csky@vger.kernel.org>,
-        Nishanth Menon <nm@ti.com>, Vignesh Raghavendra
-	<vigneshr@ti.com>,
-        Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar
-	<devarsht@ti.com>,
-        Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary
-	<j-choudhary@ti.com>
-References: <20230103064615.5311-1-a-bhatia1@ti.com>
- <20230103064615.5311-4-a-bhatia1@ti.com>
- <85837957-f6d2-4722-7693-98c6cf932096@linaro.org>
-From: Aradhya Bhatia <a-bhatia1@ti.com>
-In-Reply-To: <85837957-f6d2-4722-7693-98c6cf932096@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_030310_779651_68AA2025 
-X-CRM114-Status: GOOD (  25.34  )
+X-CRM114-CacheID: sfid-20230103_113054_061316_C24B302B 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,220 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Reset svs when svs_resume() fail.
 
-Thank you for reviewing the patches!
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-svs.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-On 03-Jan-23 14:02, Krzysztof Kozlowski wrote:
-> On 03/01/2023 07:46, Aradhya Bhatia wrote:
->> Dual-link LVDS interfaces have 2 links, with even pixels traveling on
->> one link, and odd pixels on the other. These panels are also generic in
->> nature, with no documented constraints, much like their single-link
->> counterparts, "panel-lvds".
->>
->> Add a new compatible, "panel-dual-lvds", and a dt-binding document for
->> these panels.
->>
->> Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
->> ---
->>   .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
->>   MAINTAINERS                                   |   1 +
->>   2 files changed, 158 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->> new file mode 100644
->> index 000000000000..88a7aa2410be
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
->> @@ -0,0 +1,157 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: Generic Dual-Link LVDS Display Panel
->> +
->> +maintainers:
->> +  - Aradhya Bhatia <a-bhatia1@ti.com>
->> +  - Thierry Reding <thierry.reding@gmail.com>
->> +
->> +description: |
->> +  A dual-LVDS interface is a dual-link connection with the even pixels
->> +  traveling on one link, and the odd pixels traveling on the other.
->> +
->> +allOf:
->> +  - $ref: panel-common.yaml#
->> +  - $ref: /schemas/display/lvds.yaml/#
-> 
-> Drop trailing /
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index d8b759897fec..567536e32a46 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -1621,12 +1621,16 @@ static int svs_resume(struct device *dev)
+ 
+ 	ret = svs_init02(svsp);
+ 	if (ret)
+-		goto svs_resume_clk_disable;
++		goto svs_resume_reset_assert;
+ 
+ 	svs_mon_mode(svsp);
+ 
+ 	return 0;
+ 
++svs_resume_reset_assert:
++	dev_info(svsp->dev, "assert reset %d\n",
++		 reset_control_assert(svsp->rst));
++
+ svs_resume_clk_disable:
+ 	svs_clk_disable(svsp);
+ 
+-- 
+2.18.0
 
-Okay, will do!
-
-> 
->> +
->> +properties:
->> +  compatible:
->> +    oneOf:
->> +      - items:
->> +          - enum:
->> +              - lincolntech,lcd185-101ct
->> +              - microtips,13-101hieb0hf0-s
->> +          - const: panel-dual-lvds
->> +      - const: panel-dual-lvds
-> 
-> You cannot have this compatible alone
-Okay, will make the change!
-
-> 
->> +
->> +  ports:
->> +    $ref: /schemas/graph.yaml#/properties/ports
->> +
->> +    properties:
->> +      port@0:
->> +        $ref: /schemas/graph.yaml#/$defs/port-base
->> +        unevaluatedProperties: false
->> +        description: The sink for first set of LVDS pixels.
->> +
->> +        properties:
->> +          dual-lvds-odd-pixels:
->> +            type: boolean
->> +
->> +          dual-lvds-even-pixels:
->> +            type: boolean
->> +
->> +        oneOf:
->> +          - required: [dual-lvds-odd-pixels]
->> +          - required: [dual-lvds-even-pixels]
->> +
->> +      port@1:
->> +        $ref: /schemas/graph.yaml#/$defs/port-base
->> +        unevaluatedProperties: false
->> +        description: The sink for second set of LVDS pixels.
->> +
->> +        properties:
->> +          dual-lvds-even-pixels:
->> +            type: boolean
->> +
->> +          dual-lvds-odd-pixels:
->> +            type: boolean
->> +
->> +        oneOf:
->> +          - required: [dual-lvds-even-pixels]
->> +          - required: [dual-lvds-odd-pixels]
->> +
->> +    allOf:
->> +      - if:
->> +          properties:
->> +            port@0:
->> +              properties:
->> +                dual-lvds-odd-pixels: true
-> 
-> That's not correct clause. It has no effect.
-
-The idea behind this is to check the presence of the boolean property.
-
-if (dual-lvds-odd-pixels is present)
-then
-[..]
-
-
-I tried implementing this:
-
-	[..]
-	  dual-lvds-odd-pixels:
-	    - const: true
-	[..]
-
-But this is throwing an error. I am confused what else could be done.
-Can you please suggest what might be a more accurate check here?
-
-> 
->> +              required:
->> +                - dual-lvds-odd-pixels
->> +        then:
->> +          properties:
->> +            port@1:
->> +              properties:
->> +                dual-lvds-even-pixels: true
->> +                dual-lvds-odd-pixels: false
-> 
-> Why do you need this? Your oneOf before already solves it.
-
-I agree with your comment here. It makes sense to only have
-
-	dual-lvds-even-pixels: true
-
-and have the oneOf condition take care of the other. But, I just tested
-this and it was unable to pick-up this intentionally-added error.
-
-I added 'dual-lvds-odd-pixels' property to both the nodes, and
-dt_binding_check passes successfully (which it should have not.)
-
-Instead, if I only keep this,
-
-	dual-lvds-odd-pixels: false
-
-then the dt_binding_check detects the error as it should.
-
-Regardless, I am curious why the first method doesn't work. Will try to
-explore more on that.
-
-> 
->> +
->> +      - if:
->> +          properties:
->> +            port@0:
->> +              properties:
->> +                dual-lvds-even-pixels: true
->> +              required:
->> +                - dual-lvds-even-pixels
->> +        then:
->> +          properties:
->> +            port@1:
->> +              properties:
->> +                dual-lvds-odd-pixels: true
->> +                dual-lvds-even-pixels: false
->> +
->> +    required:
->> +      - port@0
->> +      - port@1
->> +
->> +  port: false
->> +
->> +unevaluatedProperties: false
->> +
->> +required:
->> +  - compatible
->> +  - width-mm
->> +  - height-mm
->> +  - data-mapping
->> +  - panel-timing
->> +  - ports
->> +
->> +examples:
->> +  - |+
-> 
-> Drop +
-
-Okay!
-
-> 
->> +    panel-dual-lvds {
-> 
-> Just "panel". Node names should be generic.
-
-Alright. Will make the change!
-
-> 
->> +      compatible = "microtips,13-101hieb0hf0-s", "panel-dual-lvds";
->> +
->> +      width-mm = <217>;
->> +      height-mm = <136>;
->> +
-> 
-Regards
-Aradhya
 
