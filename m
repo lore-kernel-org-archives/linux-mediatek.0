@@ -4,77 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4C1C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19D0C54EBD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B8eiPjXkkQb03Ja6E46VqXgqls7y1zhoNzwuQWkHhwE=; b=AXOKiDm1ScRGqqUGBFI+yv5LIX
-	1JccDqudlZU6nMhsWEin8jSG9kclwzZyKUO3m0RzRLjnz5LrmEmPfYlCFUsobmqDlqHTU6ed9Myhj
-	pUQ/nSc01OomC18HKz4jpwhuehJpm1rKYU+4y9vATynP/WwpudTf/odCEgWs8fPBFuLzh8bjQFFEk
-	YRGk2CXdrSDZ4SO/NgHWim9ep45YaUaY5Jrt2PnS0F+LKo0Dpn+ZIHvpLeMhRqZOA5rx2ScNJOI++
-	GZHwg9gxFJC0b4QqwIDz282Vbr20Vr1zGo2SSSG9QXRb8IbMcY5+Tth0yopayizj3LcZfiDnwrdRF
-	me5mEiSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NvW7Rlvr7n2II19SylU4ZVjaf+KtEyuYCB4t7BQcy9w=; b=lvnbYas/RsAS+XLU5YHPMC5Zp3
+	k6fybGy26bZDhK+lTgyI2LkQtuG9aBm1upvPwDSZzNTQldtJ252I9qN5JT5AoOJPhTv7uggzJJOVE
+	8xIM4tgcNwtXiN6w6Naotzfh+RdtFwU5PdMdIdxnsLZ/IV2lY0//eBDiVeY9tuoxZJ7hy5F1DASQb
+	+hYbYnKLLrk7hb16N5Ewko3lIXQnmyqpRjlNDljdzAUCYQgujUzekXn1V7KWoqVx/Dxoy+eW6Yocp
+	bNMeAjHISQqhX1o3OBkXVxd+GL6P9FUp4Iq5g8oQLO8QAIJRyT8KpMQZu9sUZ3Q4TKXzjbJ02Ic5l
+	oyy9cBZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCjm0-002kF8-F1; Tue, 03 Jan 2023 16:04:20 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCgfi-001KeN-BG; Tue, 03 Jan 2023 12:45:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1672749937; x=1704285937;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=lwU98dyaymbW2/sk3kp9r5ZvEL697tsRK3f7uEUqPpM=;
-  b=Q+Uj5hpDqctvhZd2kmtuusAnlQbqzAf4jLxj327ZxCWxgBa9uONGPHQY
-   7KHQ8MuQsGdgGi/OwdmBsikVNeh3qZj9TkSYRUNTtOa2hjShAheUR0KtR
-   MsxP/Yw5xE11f+r6dcuRIgsboex1joAlv/ha/yyeYVseuFY/tOAlkK+bK
-   B0Q9lDXu4pcZsZ8cPrawuVD5+PVuCZv0+fn/rqEgGKsm9MhJQDw1FGh0A
-   9ePZ1tT1iFXjYj4qt5Os+0HM8/YSmw7e1iKGkmg2QMRrAB+PIdnJhKAGT
-   Hf33aOFOxqUN6zbA57UbBjzttD3s97D7DAFelGaeNsWAhCNj0Tp7nFAwb
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10578"; a="383948135"
-X-IronPort-AV: E=Sophos;i="5.96,297,1665471600"; 
-   d="scan'208";a="383948135"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jan 2023 04:45:24 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10578"; a="685386050"
-X-IronPort-AV: E=Sophos;i="5.96,297,1665471600"; 
-   d="scan'208";a="685386050"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga008.jf.intel.com with ESMTP; 03 Jan 2023 04:45:20 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1pCgfO-003t61-15;
-	Tue, 03 Jan 2023 14:45:18 +0200
-Date: Tue, 3 Jan 2023 14:45:17 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: pavel@ucw.cz, lee@kernel.org, matthias.bgg@gmail.com,
-	chiaen_wu@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	szunichen@gmail.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alice Chen <alice_chen@richtek.com>
-Subject: Re: [PATCH v15 RESEND 1/2] leds: rgb: mt6370: Add MediaTek MT6370
- current sink type LED Indicator support
-Message-ID: <Y7QjXbTvI0N0i2WX@smile.fi.intel.com>
-References: <cover.1672728620.git.chiaen_wu@richtek.com>
- <edc096c82d4aa7336e03315a22d2a59d467daf8f.1672728620.git.chiaen_wu@richtek.com>
+	id 1pCjod-002lcO-U8; Tue, 03 Jan 2023 16:07:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1pCgv0-001NE4-30; Tue, 03 Jan 2023 13:01:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6C8471516;
+	Tue,  3 Jan 2023 05:01:55 -0800 (PST)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6E6EC3F587;
+	Tue,  3 Jan 2023 05:01:11 -0800 (PST)
+Message-ID: <7897d4a6-bf43-becd-3437-7a254f38f6be@arm.com>
+Date: Tue, 3 Jan 2023 13:01:07 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <edc096c82d4aa7336e03315a22d2a59d467daf8f.1672728620.git.chiaen_wu@richtek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.2
+Subject: Re: [PATCH v2 2/3] iommu/sound: Use component_match_add_of helper
+To: Sean Anderson <sean.anderson@seco.com>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Joerg Roedel <joro@8bytes.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ alsa-devel@alsa-project.org, iommu@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20221222233759.1934852-1-sean.anderson@seco.com>
+ <20221222233759.1934852-3-sean.anderson@seco.com>
+Content-Language: en-GB
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20221222233759.1934852-3-sean.anderson@seco.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_044538_477271_F104881C 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20230103_050126_296453_21A201A0 
+X-CRM114-Status: GOOD (  18.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,243 +72,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 03, 2023 at 03:00:07PM +0800, ChiaEn Wu wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+Hi Sean,
+
+On 22/12/2022 11:37 pm, Sean Anderson wrote:
+> Convert users of component_match_add_release with component_release_of
+> and component_compare_of to component_match_add_of.
 > 
-> The MediaTek MT6370 is a highly-integrated smart power management IC,
-> which includes a single cell Li-Ion/Li-Polymer switching battery
-> charger, a USB Type-C & Power Delivery (PD) controller, dual
-> Flash LED current sources, a RGB LED driver, a backlight WLED driver,
-> a display bias driver and a general LDO for portable devices.
+> Signed-off-by: Sean Anderson <sean.anderson@seco.com>
+> Acked-by: Mark Brown <broonie@kernel.org>
+> ---
 > 
-> Add support for the MediaTek MT6370 Current Sink Type LED Indicator
-> driver. It can control four channels current-sink RGB LEDs with 3 modes:
-> constant current, PWM, and breath mode.
+> Changes in v2:
+> - Split off from helper addition
+> 
+>   drivers/iommu/mtk_iommu.c    | 3 +--
+>   drivers/iommu/mtk_iommu_v1.c | 3 +--
+>   sound/soc/codecs/wcd938x.c   | 6 ++----
+>   3 files changed, 4 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 2ab2ecfe01f8..483b7a9e4410 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1079,8 +1079,7 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   		}
+>   		data->larb_imu[id].dev = &plarbdev->dev;
+>   
+> -		component_match_add_release(dev, match, component_release_of,
+> -					    component_compare_of, larbnode);
+> +		component_match_add_of(dev, match, larbnode);
 
-...
+I've long since given up trying to make sense of how the DRM tree works, 
+but the conflicting change is definitely already in mainline:
 
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2022 Richtek Technology Corp.
-> + *
-> + * Authors:
-> + *   ChiYuan Huang <cy_huang@richtek.com>
-> + *   Alice Chen <alice_chen@richtek.com>
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=b5765a1b44bea9dfcae69c53ffeb4c689d0922a7
 
-> + *
+Thanks,
+Robin.
 
-Redundant blank line.
-
-> + */
-
-...
-
-> +#include <asm-generic/unaligned.h>
-
-asm/unaligned should work, no?
-
-...
-
-> +struct mt6370_pdata {
-> +	const unsigned int *tfreq;
-> +	unsigned int tfreq_len;
-
-> +	u8 pwm_duty;
-
-You may save a few bytes by moving this to the end of the structure.
-
-> +	u16 reg_rgb1_tr;
-> +	s16 reg_rgb_chrind_tr;
-> +};
-
-...
-
-> +struct mt6370_priv {
-> +	/* Per LED access lock */
-> +	struct mutex lock;
-
-> +	struct device *dev;
-> +	struct regmap *regmap;
-
-Isn't one can be derived from the other?
-
-> +	struct regmap_field *fields[F_MAX_FIELDS];
-> +	const struct reg_field *reg_fields;
-> +	const struct linear_range *ranges;
-> +	struct reg_cfg *reg_cfgs;
-> +	const struct mt6370_pdata *pdata;
-> +	unsigned int leds_count;
-> +	unsigned int leds_active;
-> +	struct mt6370_led leds[];
-> +};
-
-...
-
-> +static int mt6370_isnk_brightness_set(struct led_classdev *lcdev,
-> +				      enum led_brightness level)
-> +{
-> +	struct mt6370_led *led = container_of(lcdev, struct mt6370_led, isink);
-> +	struct mt6370_priv *priv = led->priv;
-> +	unsigned int enable;
-> +	int ret;
-> +
-> +	mutex_lock(&priv->lock);
-> +
-> +	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-> +	if (ret)
-> +		goto out_unlock;
-
-> +	if (level == 0) {
-> +		enable &= ~MT6370_CHEN_BIT(led->index);
-> +
-> +		ret = mt6370_set_led_mode(priv, led->index,
-> +					  MT6370_LED_REG_MODE);
-> +		if (ret)
-> +			goto out_unlock;
-> +
-> +		ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-> +	} else {
-> +		enable |= MT6370_CHEN_BIT(led->index);
-> +
-> +		ret = mt6370_set_led_brightness(priv, led->index, level);
-> +		if (ret)
-> +			goto out_unlock;
-> +
-> +		ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-> +	}
-
-Hmm... Wouldn't be below the equivalent?
-
-	if (level == 0) {
-		enable &= ~MT6370_CHEN_BIT(led->index);
-
-		ret = mt6370_set_led_mode(priv, led->index,
-					  MT6370_LED_REG_MODE);
-		if (ret)
-			goto out_unlock;
-	} else {
-		enable |= MT6370_CHEN_BIT(led->index);
-
-		ret = mt6370_set_led_brightness(priv, led->index, level);
-		if (ret)
-			goto out_unlock;
-
-	}
-
-	ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-
-(Of course even if (ret) goto... is duplicated, but probably better to leave it
- as is now)
-
-> +out_unlock:
-> +	mutex_unlock(&priv->lock);
-> +
-> +	return ret;
-> +}
-
-...
-
-> +		fwnode_for_each_child_node(init_data->fwnode, child) {
-> +			u32 reg, color;
-> +
-> +			ret = fwnode_property_read_u32(child, "reg", &reg);
-> +			if (ret || reg > MT6370_LED_ISNK3 ||
-> +			    priv->leds_active & BIT(reg))
-
-I don't see where you drop a reference count.
-
-> +				return -EINVAL;
-> +
-> +			ret = fwnode_property_read_u32(child, "color", &color);
-> +			if (ret)
-
-Ditto.
-
-> +				return dev_err_probe(dev, ret,
-> +						     "LED %d, no color specified\n",
-> +						     led->index);
-> +
-> +			priv->leds_active |= BIT(reg);
-> +			sub_led[num_color].color_index = color;
-> +			sub_led[num_color].channel = reg;
-> +			sub_led[num_color].intensity = 0;
-> +			num_color++;
-> +		}
-
-...
-
-> +	count = device_get_child_node_count(dev);
-> +	if (!count || count > MT6370_MAX_LEDS)
-
-Is the second really critical? Can it be just a warning and clamping of the
-counter to the upper limit?
-
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "No child node or node count over max LED number %zu\n",
-> +				      count);
-
-...
-
-> +	device_for_each_child_node(dev, child) {
-> +		struct mt6370_led *led = priv->leds + i++;
-> +		struct led_init_data init_data = { .fwnode = child };
-> +		u32 reg, color;
-> +
-> +		ret = fwnode_property_read_u32(child, "reg", &reg);
-> +		if (ret)
-
-What about reference count?
-
-> +			return dev_err_probe(dev, ret, "Failed to parse reg property\n");
-> +
-> +		if (reg >= MT6370_MAX_LEDS)
-
-Ditto.
-
-> +			return dev_err_probe(dev, -EINVAL, "Error reg property number\n");
-> +
-> +		ret = fwnode_property_read_u32(child, "color", &color);
-> +		if (ret)
-
-Ditto.
-
-> +			return dev_err_probe(dev, ret, "Failed to parse color property\n");
-> +
-> +		if (color == LED_COLOR_ID_RGB || color == LED_COLOR_ID_MULTI)
-> +			reg = MT6370_VIRTUAL_MULTICOLOR;
-> +
-> +		if (priv->leds_active & BIT(reg))
-
-Ditto.
-
-> +			return dev_err_probe(dev, -EINVAL, "Duplicate reg property\n");
-> +
-> +		priv->leds_active |= BIT(reg);
-> +
-> +		led->index = reg;
-> +		led->priv = priv;
-> +
-> +		ret = mt6370_init_led_properties(led, &init_data);
-> +		if (ret)
-
-Ditto.
-
-> +			return ret;
-> +
-> +		ret = mt6370_led_register(&pdev->dev, led, &init_data);
-> +		if (ret)
-
-Ditto.
-
-> +			return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+>   	}
+>   
+>   	/* Get smi-(sub)-common dev from the last larb. */
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 6e0e65831eb7..fb09ed6bf550 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -672,8 +672,7 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
+>   		}
+>   		data->larb_imu[i].dev = &plarbdev->dev;
+>   
+> -		component_match_add_release(dev, &match, component_release_of,
+> -					    component_compare_of, larbnode);
+> +		component_match_add_of(dev, &match, larbnode);
+>   	}
+>   
+>   	platform_set_drvdata(pdev, data);
+> diff --git a/sound/soc/codecs/wcd938x.c b/sound/soc/codecs/wcd938x.c
+> index aca06a4026f3..2f8444e54083 100644
+> --- a/sound/soc/codecs/wcd938x.c
+> +++ b/sound/soc/codecs/wcd938x.c
+> @@ -4474,8 +4474,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
+>   	}
+>   
+>   	of_node_get(wcd938x->rxnode);
+> -	component_match_add_release(dev, matchptr, component_release_of,
+> -				    component_compare_of, wcd938x->rxnode);
+> +	component_match_add_of(dev, matchptr, wcd938x->rxnode);
+>   
+>   	wcd938x->txnode = of_parse_phandle(np, "qcom,tx-device", 0);
+>   	if (!wcd938x->txnode) {
+> @@ -4483,8 +4482,7 @@ static int wcd938x_add_slave_components(struct wcd938x_priv *wcd938x,
+>   		return -ENODEV;
+>   	}
+>   	of_node_get(wcd938x->txnode);
+> -	component_match_add_release(dev, matchptr, component_release_of,
+> -				    component_compare_of, wcd938x->txnode);
+> +	component_match_add_of(dev, matchptr, wcd938x->txnode);
+>   	return 0;
+>   }
+>   
 
