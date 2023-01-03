@@ -4,144 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C7CC3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 22:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CF7C4708E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 23:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=; b=dh1MNgmpjzAHj67aIVBqAgrnMx
-	ecDNc4ldl7Rntse3RCiaLe1nUGjMkH0Mb9G9SdUFvzlrdK75dk9GOOrTeDxc8nLJB8f6Rab0oNgPP
-	/mxUbsVPyVmE0jFdek4IcIy06qodImsdUaTMJFr3Srje43HaWcM6G/H/o8ypgCVSwybnpnXmxPTDh
-	eZrlDNSMLmfKCo1r76D79FHRzbz9w33Dba7GmKj5+9k8A2vNmgSxr057Y4eWJd4qKt70t9/FnfcCZ
-	bBQWZXjuP59ZDxonSP7U5vVApg9zhdo8edNKS0h8BC4RMaozJ4RzP4yoTlCOPyu7oBVXNPuDCuiTd
-	claT8iSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qD+xaPyvStRiGtqYzDHlS5NvOrhcaiQT2C38//KHq8g=; b=srxwqzldUhdl5gvUXKFj9u7i6X
+	ToQZsXc/XFAmteB2D+aaHrJUVdvF1Xf5T4CK5MsSvelp/td+c5UJ9AZ3Qs1Q9A9U8VpqdmruisM1e
+	G5jO/gM9329QjERi8MKeM2TetG39VNZ1ABO4D0HRHmFASLr6DHkjjGymFs0yJpMD5CTiFPLx20uEh
+	Wet0Ih9YPRqUN/G3rZ1rj7wOYYjXuMRZpCXZ5MaqcKb5tRpgiInkxsbWAbI5ure9YdC2UohqhSi3I
+	cBu1/5Vv34geF9pVPWQ49LZJv7F8d2Ap2CXPEcUIaI808RjBdT7vW8FqJn2b75c7WysNdZn4/431E
+	P4jIRc2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCqC0-005YRF-Mv; Tue, 03 Jan 2023 22:55:36 +0000
-Received: from mail-dm6nam10on2113.outbound.protection.outlook.com ([40.107.93.113] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1pCqUA-005bR0-Vo; Tue, 03 Jan 2023 23:14:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCqAt-005YHp-I8; Tue, 03 Jan 2023 22:54:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eMqHhF/bYn2b5iwjaHuBY+OMT3evbmsrTN/qIBNx2aVYDM0GyXUFcsiLO9LRmpefiDlMfc619dNC92amJ/NY800yy3gjElrD2sPzynq+WYaJRZ7pBO4Yv5Epb2/Ah3J6Q6YxB5RPeodE/U4VJVa6fCDuORv9xF0+YnwVcKTCsjFo7mawBpat2RfcxivBZmm6agXFBPLLlNWhVuwbGGGRJx3PQmQVH58wWJ2A4y29AhvJJMEk7zf9khVjaZM7e+E48kZw0sw58owd+Ls173YLFUUKqWbM5LWVVzVr1uJN6QgSsQZz8Yrqn946/la+6QCuZMU/hFBqQzgs3ly82+uGcg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=;
- b=atD0APrxVVur4ln4WrHYmOUrR0YB4QHGJ2jJ+l8gBFWjv1cvGRbGtdTJ2MG/fAsNLYRHcENOtTscUbAe0t7V4WoIa8iL9Va17IG00wh/Io3fME2hceOZEXphRe9twegui4XUawipM8D+0BsQrX2tCBTMcXc1grWJQAdQwdnqcQgqHb2wiJYmvMpKx/4oV2Z9ev7TB6oiWyD0/QxOXPnVUV/gT79IvCjW7KN034cE2pjVNihlk0fAdHqdLDdXENKpfKVtBkxYQtPMrOAcCs544hZY6W2e9RPy2WuZdTYzg1mHYh+pr3BbF6OgulePdqj5IDPlWvassFrJcrK68DxTFQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=in-advantage.com; dmarc=pass action=none
- header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=;
- b=XEpnwIh1XM7E8aAouJ0hSaSC8UZ3Lpcp8j+kRhbW/p9ryhciNYtUXl+lfxW3t6UXo4o2S4q65h9f4bduPy2o/qdImf3iGh0C4h1TzSVU8xhKMIz5NKnFN2hs7nxhcakeiQx9bTLlIublM+0hKIdEdnsEi9m1TDnrBcOVz+vqIfA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=in-advantage.com;
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37) by BY5PR10MB4356.namprd10.prod.outlook.com
- (2603:10b6:a03:210::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.18; Tue, 3 Jan
- 2023 22:54:21 +0000
-Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
- ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5944.019; Tue, 3 Jan 2023
- 22:54:21 +0000
-Date: Tue, 3 Jan 2023 14:54:04 -0800
-From: Colin Foster <colin.foster@in-advantage.com>
-To: Rob Herring <robh@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	John Crispin <john@phrozen.org>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	linux-renesas-soc@vger.kernel.org,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jakub Kicinski <kuba@kernel.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org,
-	George McCollister <george.mccollister@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, Kurt Kanzenbach <kurt@linutronix.de>
-Subject: Re: [PATCH v6 net-next 01/10] dt-bindings: dsa: sync with maintainers
-Message-ID: <Y7SyDO5wS058dyZp@colin-ia-desktop>
-References: <20230103051401.2265961-1-colin.foster@in-advantage.com>
- <20230103051401.2265961-2-colin.foster@in-advantage.com>
- <167278470815.4157827.15557237476346780909.robh@kernel.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <167278470815.4157827.15557237476346780909.robh@kernel.org>
-X-ClientProxiedBy: MW4PR03CA0246.namprd03.prod.outlook.com
- (2603:10b6:303:b4::11) To MWHPR1001MB2351.namprd10.prod.outlook.com
- (2603:10b6:301:35::37)
+	id 1pCqTo-005bNc-D4
+	for linux-mediatek@lists.infradead.org; Tue, 03 Jan 2023 23:14:03 +0000
+X-UUID: 0bc120d5b5694371ae25e0938d6f1143-20230103
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qD+xaPyvStRiGtqYzDHlS5NvOrhcaiQT2C38//KHq8g=;
+	b=Aruc/ml/Ri59BOJNBdOYzuJIQSdLqv/HxtunKOiThA+eAMYg1ZHTtXu6drgE0zzIyegH0/+YDBX14MBZc6U3IpM0UQwc4Z35Tl5y8liaxo/8ytgvllAPLTBoTbdfVurEhOHXy57zEdFtTksLOHbHLNcYI/bbUj3PB1Ouksjom6M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.16,REQID:333f1fd0-9101-4dc4-b7aa-f52a3c496216,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.16,REQID:333f1fd0-9101-4dc4-b7aa-f52a3c496216,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:09771b1,CLOUDID:d9fb8853-dd49-462e-a4be-2143a3ddc739,B
+	ulkID:230104071347CMYQRJVN,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0
+X-CID-BVR: 0
+X-UUID: 0bc120d5b5694371ae25e0938d6f1143-20230103
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1335301036; Tue, 03 Jan 2023 16:13:46 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 4 Jan 2023 07:13:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 4 Jan 2023 07:13:44 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7915: fix WED TxS reporting
+Date: Wed, 4 Jan 2023 07:13:42 +0800
+Message-ID: <a610c4988bb82797f3aedf1df7b70c0dddd8594b.1672787370.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|BY5PR10MB4356:EE_
-X-MS-Office365-Filtering-Correlation-Id: 148d8f9b-91c0-4947-b30d-08daeddd7388
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	UOf78SkyLcDEpEeOB6aR3phFmGuzAFdQX1Afc0wqPlunJcxe9jZZdg9MuvC6kIEk447GXdy47OHf79tzO96qQ2Pk3j1R4JgvIcXAM0FIvA+iI0CRgk9EPZS/Dsc4T6RydVJi0f0V5U6go3XMc9Pw9nwmVWIMx6fLjRrpFC43w/0EIhTC6fyJFpQIMrndxfeBlZa/OT0X/6e99FH/Fip5l4rcAiiLwpiKBdpBEKTXQkC1xEMzvoMgjRXbOtcP2/T9WTB1uAuVWxqaWyRCE0xkZs+y9IuDZGwrypyzXvXT2cyFV0ug6BaQth86G+Gzza/95ug9cDFPeo4gKMSIrOvvAqvGOdfvicJTMEJxVaYKpx11MI66mgJDp6X2gnid3Ibf3zmDnD1RTSzomkoG2BhTxCnNEiQkXyUdYhtr5cO2X1lLDDz8t4jp0mg5ZHtGYzSMDv/nR2csuX5XFRWdwnECAUJvmr9RwgMtlyC9gNlD55ryD1+7vuyhEIpJfc7XKpv+3YVKi9XUXXlVXfJpef7XO31OJEmvO7DuCyFcrJUzXzzVVjs1SasjQh70kY/JH8tFVmVkooh041Llf1jG8lefA4O1DI93jjh6fb80zjSo7einhPvaKpeq9fJF/RCeiDWoetP+BdQEQoZWcHRnwirYPJo2rR+TGN1emCNjyBLo4Vm1ZQbvm29Bw4lMg0pb/zmc
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(39830400003)(366004)(396003)(376002)(136003)(346002)(451199015)(6666004)(66946007)(2906002)(8676002)(4326008)(41300700001)(33716001)(66556008)(66476007)(6506007)(44832011)(316002)(86362001)(8936002)(6486002)(38100700002)(478600001)(186003)(9686003)(6512007)(6916009)(4744005)(5660300002)(26005)(54906003)(7416002)(7406005)(22166009);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7xqNw/bPrvuK2uYkpmoGOfJrwGY1DAZrqTuTUmR+oWyYj1UdKKCrYXYn2O/x?=
- =?us-ascii?Q?IBfaFLaRn9PvHoj/fXUX+89ULt3zWorukrqpETBEX2TMikwgXqGo8QOl2ooU?=
- =?us-ascii?Q?gGGjF0+XwMI2f13WBsI2jPH17KYYWwfhrpba1FLBueJNOVJnifINVFBJ9rxF?=
- =?us-ascii?Q?PVZcw2CgxoER+XRi3zE0Ujjz+7Pe5xmYCtVgkimjQ7cYfyBGOp1MSBh7C2WX?=
- =?us-ascii?Q?TvCz/Y8OUqoGOHobJaFw6MbYOvLCZJ46uJI4Von7BqESW2yQmA0wSR+2qP2H?=
- =?us-ascii?Q?x8WwY52udxdl/95KG7Kgx6Vmlk240CJe+UL/5NUp1a7ovIglOoMgCojwhLEH?=
- =?us-ascii?Q?+tL5bLnNyB+I+UCs1MT9SGVTTn+3C5A/x/QNdjTF/IMY3ZopBC3InyqFUI9U?=
- =?us-ascii?Q?G60hx7KzGUrZGTET6FM7OGpI7IVcL1J/5p8uc1BepBwmZde0LYuCkQqW9EGg?=
- =?us-ascii?Q?BSvjAVCwjHLoVmbjVRylVPwZ1A9tFo3JWkRo9VzGyvdZ9mFEzIoi+ec9IVXx?=
- =?us-ascii?Q?HkY12gYBYa+4mya3nBvRJc1ukmIYho01FkbzxGMtYocseTWJ5SVMpJ6InPwb?=
- =?us-ascii?Q?I/xGcHerIJMkTX6yUSda+dIdxIjtjnfJm1gn8VZVYfJmIIa6VhIDPcNFtZfO?=
- =?us-ascii?Q?FdtTERQWAKe6vC6C/plJTJvVege5M/5MGPCkTFHLYip5RWE2LfI/ULE3p64w?=
- =?us-ascii?Q?wXnIdhQ6yR7D6M6WW8+cl2jbuZBZKXVH5bSQeSbhLl8c/8D/8rkk/Qhgjwsg?=
- =?us-ascii?Q?4umOWcAhB1dX37V9Npg8SXSqtjnVIhW3cyhMfYAh3Ucq+oN6jRyRG2qeDkFq?=
- =?us-ascii?Q?OwFbJjDrolJgPqgU21AB9labP/3iAFg9jj0vIhLp+nFWiWkpKKE53GLaOkl7?=
- =?us-ascii?Q?JfvvTOwBJHG/mYr107H06iOjeIfgux0gvdtLwx08Rltiaegx9tC6W/FhqQ1r?=
- =?us-ascii?Q?kGorov4liUREe6RwHXH5UH10RUz1TctPqAdMcy4mY4pZ/Q+ZBpzVdxslBpYK?=
- =?us-ascii?Q?zK9/KBGXiwyhUDAITa+Bdk4wI04TERRJIBGDAbSkAXVDAeLsI9qibRDwVqAB?=
- =?us-ascii?Q?zzqAHVFvMHcr3q5qy6GDYvmdapRPZPdf20wkNdLcTXpJHHTajTD1skAy/Ntx?=
- =?us-ascii?Q?sKuenxDwtoyUIi/nHqUpDyOMpGpmgzxTVpIBdBexvRZrrXXjF/TlgUy60eNK?=
- =?us-ascii?Q?kVuOwYyTRJjTPNpv31YVd56sjxPA/HTXA6CyLFXzOIDFo+bVQundg/s0FgJP?=
- =?us-ascii?Q?2z4IFAJwAxLKEMCpZKrFKCRMbVkWaD8q5JMqBDgTQfpslW3HuIVQN/la34Gk?=
- =?us-ascii?Q?/MnWI+FMfbNjjb6rv7Ik4piRv1MP77V4R/u6jKgUqiDek+eETgEiLWkKYtmy?=
- =?us-ascii?Q?A3+JfCURIxrwe3Ssp6AKzpZoRGv02xlwQTZ4NDo1CYdC8BXKjmBZvmqtBNMn?=
- =?us-ascii?Q?h4WkDNilvLbGsTykIxaalmQLmVXuOR5k1ZtY99RdSgvTCUBiQ0eU8wNlZgIp?=
- =?us-ascii?Q?6D09gB2lGwgrlqaeCt5Yu8kAh/jUOFZu0DKx0k5mKT8YyePtb2bSh+NKReiy?=
- =?us-ascii?Q?1y/71WmM6YHVyeeoSpuu1r7polC1JuVhzjE5jMmxFEHkv0U/fZBtb2q4WaJo?=
- =?us-ascii?Q?Og=3D=3D?=
-X-OriginatorOrg: in-advantage.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 148d8f9b-91c0-4947-b30d-08daeddd7388
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2023 22:54:20.9959
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: E9fChPc4SDfJhXGyYqvmF8F6hACVxb1hnZMP8Oa2d4e/L3zT/Yrgb7otEQmxwwUptwe4+HkkjMWvVhqlVOiuRNUoDSrfNZm9QJSTM3gQyU8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB4356
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_145427_680184_C744730E 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20230103_151400_518276_94493577 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,24 +83,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 03, 2023 at 04:25:31PM -0600, Rob Herring wrote:
-> 
-> On Mon, 02 Jan 2023 21:13:52 -0800, Colin Foster wrote:
-> 
-> Please add Acked-by/Reviewed-by tags when posting new versions. However,
-> there's no need to repost patches *only* to add the tags. The upstream
-> maintainer will do that for acks received on the version they apply.
-> 
-> If a tag was not added on purpose, please state why and what changed.
+The previous commit forgot to remove a leftover check,
+which drops PPDU TxS reporting.
 
-Genuine mistake - my apologies. I see that I missed both yours and
-Vladimir's on this patch. I'll be sure to add all of them should there
-be another round.
+Fixes: 43eaa3689507 ("wifi: mt76: add PPDU based TxS support for WED device")
+Reported-By: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Change-Id: Ic40febe166e68833a09dcc96f6bc2316bef43f16
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-> 
-> Missing tags:
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> 
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index f0d5a3603902..1a6def77db57 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1061,9 +1061,6 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
+ 	u16 wcidx;
+ 	u8 pid;
+ 
+-	if (le32_get_bits(txs_data[0], MT_TXS0_TXS_FORMAT) > 1)
+-		return;
+-
+ 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
+ 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
+ 
+-- 
+2.18.0
+
 
