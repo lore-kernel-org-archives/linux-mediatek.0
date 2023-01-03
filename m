@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2CD6C53210
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 19:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C13C4708D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 19:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eLItfpFljuTP6sveo1yXrw16GBLQhE+FNMBkZyubsjI=; b=UJO0QHuPq1r7tocZ5z3d9KODNi
-	rGgn4MyQpTUzjPXTxOYJuR+KxdNgBne1GfStAV3ZotqABh7LRJy6NcA7MZBCUhe/PQbJtFwfm7fUo
-	kscLm6EChDJwvP6MGRg93rEVOoAuAai1/RCAxCxlq08jDeUnDUxIqtQFdjpxeRUog2Fwv+a9hhfpu
-	5tGw+rdJuNbpx2IqMEDMrfJhyOEnbnU5pD7bc8hmkjZXzOv/NJwSL1KrXBvzfuv3qjKwbp5lKVPml
-	bFYsD3wTqh/nAtehiXSr8IQo/eKSOVYd86F6f3mEpSs7spF1MK5muO96F/VbKOOMIW3muN+I2DsSW
-	O8/EGgsA==;
+	bh=Mt2zUJ9lkOEQPY+Evj11+rHtrxBt/xvivMC49lfsyZE=; b=SuvjiEnAzV5bVdlxymKIP9xVYz
+	NGPuzL54Ww0bN5f705hMmjLpgFM0mL9mxRAkBQG+xtVRWdOOxgHFsPNQp6Ns1KkgBdJaq7NkkxZov
+	tY0nXWDIIAQlh6H+S5CNH+jrnCfnsWZSbtQ0loZ17X0r/Ep+yAjz4vOdrrPtwWCi0Fq5vKu74yVFs
+	s8cGZwnTofnBuCq8nQ1YYIS/c9fCveYw5EXC8uPqeOjT4CWe8f0L2oblmq6tCh+v5hFB5D2VrUnv5
+	MdVV4xA452amtSZvHV1FwYmR/PaU9Rw2LbKMBExHgd2fMbcSKTz+Qc0MdxIKitSNZdModauIxTTJ8
+	OlPyeN9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmra-004Lo7-Ra; Tue, 03 Jan 2023 19:22:18 +0000
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39])
+	id 1pCmre-004Lqh-6k; Tue, 03 Jan 2023 19:22:22 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmj1-004H3L-S6; Tue, 03 Jan 2023 19:13:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
-  t=1672773207; x=1704309207;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version;
-  bh=eLItfpFljuTP6sveo1yXrw16GBLQhE+FNMBkZyubsjI=;
-  b=rO2RZeVM/RulE1gMOeGYX4y3g6UG61+0ZI+C7Y7TkaIRE/y7/byFR5FW
-   +pDUUHMJKlLBDD9NdTzMBrCfWkzculvSMsmDYmBO2ieZadAU5nl2C5T2t
-   fxUNj8tJT8U9DcVqdsG8H6Gtqmr2YyRKPvL1r2GVMtOlGajfiAox+HA44
-   8=;
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
-  by alexa-out-sd-02.qualcomm.com with ESMTP; 03 Jan 2023 11:13:26 -0800
-X-QCInternal: smtphost
-Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
-  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jan 2023 11:13:26 -0800
+	id 1pCmjT-004HIa-Lx; Tue, 03 Jan 2023 19:14:00 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 303IvPsY025725;
+	Tue, 3 Jan 2023 19:13:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type; s=qcppdkim1;
+ bh=Mt2zUJ9lkOEQPY+Evj11+rHtrxBt/xvivMC49lfsyZE=;
+ b=Mk4aYbXG7w9uTen9AnnYjew4emuekq1tv2lomiV3Yl9zq7wr6XpUwMz5lGylzn5Ov0gp
+ GOC88Nnu2bL2P9X4l8nIRsIcGvl3zNDotnXJFUUqpZTZZnFHu4v7v52DWqwc90nNKOad
+ p07hA5BpkSdmZ6Ky201y57Ei8v+QIOaZhhA1K9tMCqB04kqE+GuSIGCWivezjZOaxSuG
+ wIJukFtpUDN/nMy46PzjvSm4zk6vyhyXK2CPKwyA10hPFTnBaYThW6yewyl9HjG/oA5d
+ wSFKrcwfP3nGFfILJya0Zja6r1m0tqCy+aR/gqt+fHDvOK9cdnd5Eo54lVPYHm5XSxxd 2A== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3mvsvv81pn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 03 Jan 2023 19:13:47 +0000
+Received: from nasanex01a.na.qualcomm.com (corens_vlan604_snip.qualcomm.com [10.53.140.1])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 303JDkZY012718
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 3 Jan 2023 19:13:46 GMT
 Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
  nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.36; Tue, 3 Jan 2023 11:13:25 -0800
+ 15.2.986.36; Tue, 3 Jan 2023 11:13:45 -0800
 From: Asutosh Das <quic_asutoshd@quicinc.com>
 To: <quic_cang@quicinc.com>, <martin.petersen@oracle.com>,
-	<linux-scsi@vger.kernel.org>
+        <linux-scsi@vger.kernel.org>
 CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
-	<stanley.chu@mediatek.com>, <adrian.hunter@intel.com>, <bvanassche@acm.org>,
-	<avri.altman@wdc.com>, <mani@kernel.org>, <beanhuo@micron.com>, Asutosh Das
-	<quic_asutoshd@quicinc.com>, <linux-arm-msm@vger.kernel.org>, Alim Akhtar
-	<alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Arthur Simchaev
-	<Arthur.Simchaev@wdc.com>, Jinyoung Choi <j-young.choi@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Keoseong Park
-	<keosung.park@samsung.com>, open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v12 10/15] ufs: core: Prepare ufshcd_send_command for mcq
-Date: Tue, 3 Jan 2023 11:09:29 -0800
-Message-ID: <9950f76528ae0fdabb1984184d3db18512e8d06d.1672771664.git.quic_asutoshd@quicinc.com>
+        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
+        <bvanassche@acm.org>, <avri.altman@wdc.com>, <mani@kernel.org>,
+        <beanhuo@micron.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>,
+        <linux-arm-msm@vger.kernel.org>,
+        Alim Akhtar
+	<alim.akhtar@samsung.com>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Arthur Simchaev
+	<Arthur.Simchaev@wdc.com>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>,
+        Jinyoung Choi <j-young.choi@samsung.com>,
+        open list <linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v12 12/15] ufs: core: Prepare for completion in mcq
+Date: Tue, 3 Jan 2023 11:09:31 -0800
+Message-ID: <54ae259ac3cb8125e22b2307054285fc97977e94.1672771664.git.quic_asutoshd@quicinc.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1672771664.git.quic_asutoshd@quicinc.com>
 References: <cover.1672771664.git.quic_asutoshd@quicinc.com>
@@ -69,9 +82,21 @@ Content-Type: text/plain
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: g791z1Qpyd1Z1Qd9eW5GadnOZdMeQrer
+X-Proofpoint-GUID: g791z1Qpyd1Z1Qd9eW5GadnOZdMeQrer
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2023-01-03_07,2023-01-03_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 spamscore=0
+ lowpriorityscore=0 mlxscore=0 malwarescore=0 suspectscore=0
+ impostorscore=0 adultscore=0 bulkscore=0 mlxlogscore=999
+ priorityscore=1501 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2212070000 definitions=main-2301030164
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_111328_020978_B063CB2B 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20230103_111356_237964_0F586280 
+X-CRM114-Status: GOOD (  23.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,9 +111,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support to send commands using multiple submission
-queues in MCQ mode.
-Modify the functions that use ufshcd_send_command().
+Modify completion path APIs and add completion queue
+entry.
 
 Co-developed-by: Can Guo <quic_cang@quicinc.com>
 Signed-off-by: Can Guo <quic_cang@quicinc.com>
@@ -97,169 +121,159 @@ Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/ufs/core/ufs-mcq.c     |  1 +
- drivers/ufs/core/ufshcd-priv.h | 10 ++++++++++
- drivers/ufs/core/ufshcd.c      | 38 +++++++++++++++++++++++++++-----------
- include/ufs/ufshcd.h           |  5 +++++
- 4 files changed, 43 insertions(+), 11 deletions(-)
+ drivers/ufs/core/ufshcd-priv.h |  2 ++
+ drivers/ufs/core/ufshcd.c      | 80 ++++++++++++++++++++++++++----------------
+ 2 files changed, 51 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 8bf222f..6815825 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -309,6 +309,7 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
- 	for (i = 0; i < hba->nr_hw_queues; i++) {
- 		hwq = &hba->uhq[i];
- 		hwq->max_entries = hba->nutrs;
-+		spin_lock_init(&hwq->sq_lock);
- 	}
- 
- 	/* The very first HW queue serves device commands */
 diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 00c914c..97f240b 100644
+index 0d408ed..e645981 100644
 --- a/drivers/ufs/core/ufshcd-priv.h
 +++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -329,4 +329,14 @@ static inline bool ufs_is_valid_unit_desc_lun(struct ufs_dev_info *dev_info, u8
- 	return lun == UFS_UPIU_RPMB_WLUN || (lun < dev_info->max_lu_supported);
- }
- 
-+static inline void ufshcd_inc_sq_tail(struct ufs_hw_queue *q)
-+{
-+	u32 mask = q->max_entries - 1;
-+	u32 val;
-+
-+	q->sq_tail_slot = (q->sq_tail_slot + 1) & mask;
-+	val = q->sq_tail_slot * sizeof(struct utp_transfer_req_desc);
-+	writel(val, q->mcq_sq_tail);
-+}
-+
- #endif /* _UFSHCD_PRIV_H_ */
+@@ -61,6 +61,8 @@ int ufshcd_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
+ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+ 	enum flag_idn idn, u8 index, bool *flag_res);
+ void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
++void ufshcd_compl_one_cqe(struct ufs_hba *hba, int task_tag,
++			  struct cq_entry *cqe);
+ int ufshcd_mcq_init(struct ufs_hba *hba);
+ int ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba);
+ int ufshcd_mcq_memory_alloc(struct ufs_hba *hba);
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index d25ec34..e343aba 100644
+index 486c8f7..0bee9cf 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
-@@ -2185,9 +2185,11 @@ static void ufshcd_update_monitor(struct ufs_hba *hba, const struct ufshcd_lrb *
-  * ufshcd_send_command - Send SCSI or device management commands
-  * @hba: per adapter instance
-  * @task_tag: Task tag of the command
-+ * @hwq: pointer to hardware queue instance
+@@ -776,12 +776,17 @@ static inline bool ufshcd_is_device_present(struct ufs_hba *hba)
+ /**
+  * ufshcd_get_tr_ocs - Get the UTRD Overall Command Status
+  * @lrbp: pointer to local command reference block
++ * @cqe: pointer to the completion queue entry
+  *
+  * This function is used to get the OCS field from UTRD
+  * Returns the OCS field in the UTRD
   */
- static inline
--void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
-+void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag,
-+			 struct ufs_hw_queue *hwq)
+-static enum utp_ocs ufshcd_get_tr_ocs(struct ufshcd_lrb *lrbp)
++static enum utp_ocs ufshcd_get_tr_ocs(struct ufshcd_lrb *lrbp,
++				      struct cq_entry *cqe)
  {
- 	struct ufshcd_lrb *lrbp = &hba->lrb[task_tag];
- 	unsigned long flags;
-@@ -2201,12 +2203,24 @@ void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
- 	if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
- 		ufshcd_start_monitor(hba, lrbp);
- 
--	spin_lock_irqsave(&hba->outstanding_lock, flags);
--	if (hba->vops && hba->vops->setup_xfer_req)
--		hba->vops->setup_xfer_req(hba, task_tag, !!lrbp->cmd);
--	__set_bit(task_tag, &hba->outstanding_reqs);
--	ufshcd_writel(hba, 1 << task_tag, REG_UTP_TRANSFER_REQ_DOOR_BELL);
--	spin_unlock_irqrestore(&hba->outstanding_lock, flags);
-+	if (is_mcq_enabled(hba)) {
-+		int utrd_size = sizeof(struct utp_transfer_req_desc);
++	if (cqe)
++		return le32_to_cpu(cqe->status) & MASK_OCS;
 +
-+		spin_lock(&hwq->sq_lock);
-+		memcpy(hwq->sqe_base_addr + (hwq->sq_tail_slot * utrd_size),
-+		       lrbp->utr_descriptor_ptr, utrd_size);
-+		ufshcd_inc_sq_tail(hwq);
-+		spin_unlock(&hwq->sq_lock);
-+	} else {
-+		spin_lock_irqsave(&hba->outstanding_lock, flags);
-+		if (hba->vops && hba->vops->setup_xfer_req)
-+			hba->vops->setup_xfer_req(hba, lrbp->task_tag,
-+						  !!lrbp->cmd);
-+		__set_bit(lrbp->task_tag, &hba->outstanding_reqs);
-+		ufshcd_writel(hba, 1 << lrbp->task_tag,
-+			      REG_UTP_TRANSFER_REQ_DOOR_BELL);
-+		spin_unlock_irqrestore(&hba->outstanding_lock, flags);
-+	}
+ 	return le32_to_cpu(lrbp->utr_descriptor_ptr->header.dword_2) & MASK_OCS;
+ }
+ 
+@@ -3068,7 +3073,7 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
+ 		 * not trigger any race conditions.
+ 		 */
+ 		hba->dev_cmd.complete = NULL;
+-		err = ufshcd_get_tr_ocs(lrbp);
++		err = ufshcd_get_tr_ocs(lrbp, hba->dev_cmd.cqe);
+ 		if (!err)
+ 			err = ufshcd_dev_cmd_completion(hba, lrbp);
+ 	} else {
+@@ -5202,18 +5207,20 @@ ufshcd_scsi_cmd_status(struct ufshcd_lrb *lrbp, int scsi_status)
+  * ufshcd_transfer_rsp_status - Get overall status of the response
+  * @hba: per adapter instance
+  * @lrbp: pointer to local reference block of completed command
++ * @cqe: pointer to the completion queue entry
+  *
+  * Returns result of the command to notify SCSI midlayer
+  */
+ static inline int
+-ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
++ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
++			   struct cq_entry *cqe)
+ {
+ 	int result = 0;
+ 	int scsi_status;
+ 	enum utp_ocs ocs;
+ 
+ 	/* overall command status of utrd */
+-	ocs = ufshcd_get_tr_ocs(lrbp);
++	ocs = ufshcd_get_tr_ocs(lrbp, cqe);
+ 
+ 	if (hba->quirks & UFSHCD_QUIRK_BROKEN_OCS_FATAL_ERROR) {
+ 		if (be32_to_cpu(lrbp->ucd_rsp_ptr->header.dword_1) &
+@@ -5378,42 +5385,53 @@ static void ufshcd_release_scsi_cmd(struct ufs_hba *hba,
  }
  
  /**
-@@ -2836,6 +2850,7 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
- 	int tag = scsi_cmd_to_rq(cmd)->tag;
- 	struct ufshcd_lrb *lrbp;
- 	int err = 0;
-+	struct ufs_hw_queue *hwq = NULL;
- 
- 	WARN_ONCE(tag < 0 || tag >= hba->nutrs, "Invalid tag %d\n", tag);
- 
-@@ -2920,7 +2935,7 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
- 		goto out;
- 	}
- 
--	ufshcd_send_command(hba, tag);
-+	ufshcd_send_command(hba, tag, hwq);
- 
- out:
- 	rcu_read_unlock();
-@@ -3121,10 +3136,11 @@ static int ufshcd_exec_dev_cmd(struct ufs_hba *hba,
- 		goto out;
- 
- 	hba->dev_cmd.complete = &wait;
-+	hba->dev_cmd.cqe = NULL;
- 
- 	ufshcd_add_query_upiu_trace(hba, UFS_QUERY_SEND, lrbp->ucd_req_ptr);
- 
--	ufshcd_send_command(hba, tag);
-+	ufshcd_send_command(hba, tag, hba->dev_cmd_queue);
- 	err = ufshcd_wait_for_dev_cmd(hba, lrbp, timeout);
- 	ufshcd_add_query_upiu_trace(hba, err ? UFS_QUERY_ERR : UFS_QUERY_COMP,
- 				    (struct utp_upiu_req *)lrbp->ucd_rsp_ptr);
-@@ -6938,7 +6954,7 @@ static int ufshcd_issue_devman_upiu_cmd(struct ufs_hba *hba,
- 
- 	ufshcd_add_query_upiu_trace(hba, UFS_QUERY_SEND, lrbp->ucd_req_ptr);
- 
--	ufshcd_send_command(hba, tag);
-+	ufshcd_send_command(hba, tag, hba->dev_cmd_queue);
- 	/*
- 	 * ignore the returning value here - ufshcd_check_query_response is
- 	 * bound to fail since dev_cmd.query and dev_cmd.type were left empty.
-@@ -7104,7 +7120,7 @@ int ufshcd_advanced_rpmb_req_handler(struct ufs_hba *hba, struct utp_upiu_req *r
- 
- 	hba->dev_cmd.complete = &wait;
- 
--	ufshcd_send_command(hba, tag);
-+	ufshcd_send_command(hba, tag, hba->dev_cmd_queue);
- 
- 	err = ufshcd_wait_for_dev_cmd(hba, lrbp, ADVANCED_RPMB_REQ_TIMEOUT);
- 
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 65feb38..935aef4 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -223,6 +223,7 @@ struct ufs_dev_cmd {
- 	struct mutex lock;
- 	struct completion *complete;
- 	struct ufs_query query;
-+	struct cq_entry *cqe;
- };
- 
- /**
-@@ -1068,6 +1069,8 @@ struct ufs_hba {
-  * @cqe_dma_addr: completion queue dma address
-  * @max_entries: max number of slots in this hardware queue
-  * @id: hardware queue ID
-+ * @sq_tp_slot: current slot to which SQ tail pointer is pointing
-+ * @sq_lock: serialize submission queue access
+- * __ufshcd_transfer_req_compl - handle SCSI and query command completion
++ * ufshcd_compl_one_cqe - handle a completion queue entry
+  * @hba: per adapter instance
+- * @completed_reqs: bitmask that indicates which requests to complete
++ * @task_tag: the task tag of the request to be completed
++ * @cqe: pointer to the completion queue entry
   */
- struct ufs_hw_queue {
- 	void __iomem *mcq_sq_head;
-@@ -1081,6 +1084,8 @@ struct ufs_hw_queue {
- 	dma_addr_t cqe_dma_addr;
- 	u32 max_entries;
- 	u32 id;
-+	u32 sq_tail_slot;
-+	spinlock_t sq_lock;
- };
+-static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
+-					unsigned long completed_reqs)
++void ufshcd_compl_one_cqe(struct ufs_hba *hba, int task_tag,
++			  struct cq_entry *cqe)
+ {
+ 	struct ufshcd_lrb *lrbp;
+ 	struct scsi_cmnd *cmd;
+-	int index;
+-
+-	for_each_set_bit(index, &completed_reqs, hba->nutrs) {
+-		lrbp = &hba->lrb[index];
+-		lrbp->compl_time_stamp = ktime_get();
+-		lrbp->compl_time_stamp_local_clock = local_clock();
+-		cmd = lrbp->cmd;
+-		if (cmd) {
+-			if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
+-				ufshcd_update_monitor(hba, lrbp);
+-			ufshcd_add_command_trace(hba, index, UFS_CMD_COMP);
+-			cmd->result = ufshcd_transfer_rsp_status(hba, lrbp);
+-			ufshcd_release_scsi_cmd(hba, lrbp);
+-			/* Do not touch lrbp after scsi done */
+-			scsi_done(cmd);
+-		} else if (lrbp->command_type == UTP_CMD_TYPE_DEV_MANAGE ||
+-			lrbp->command_type == UTP_CMD_TYPE_UFS_STORAGE) {
+-			if (hba->dev_cmd.complete) {
+-				ufshcd_add_command_trace(hba, index,
+-							 UFS_DEV_COMP);
+-				complete(hba->dev_cmd.complete);
+-				ufshcd_clk_scaling_update_busy(hba);
+-			}
++
++	lrbp = &hba->lrb[task_tag];
++	lrbp->compl_time_stamp = ktime_get();
++	cmd = lrbp->cmd;
++	if (cmd) {
++		if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
++			ufshcd_update_monitor(hba, lrbp);
++		ufshcd_add_command_trace(hba, task_tag, UFS_CMD_COMP);
++		cmd->result = ufshcd_transfer_rsp_status(hba, lrbp, cqe);
++		ufshcd_release_scsi_cmd(hba, lrbp);
++		/* Do not touch lrbp after scsi done */
++		scsi_done(cmd);
++	} else if (lrbp->command_type == UTP_CMD_TYPE_DEV_MANAGE ||
++		   lrbp->command_type == UTP_CMD_TYPE_UFS_STORAGE) {
++		if (hba->dev_cmd.complete) {
++			hba->dev_cmd.cqe = cqe;
++			ufshcd_add_command_trace(hba, task_tag, UFS_DEV_COMP);
++			complete(hba->dev_cmd.complete);
++			ufshcd_clk_scaling_update_busy(hba);
+ 		}
+ 	}
+ }
  
- static inline bool is_mcq_enabled(struct ufs_hba *hba)
++/**
++ * __ufshcd_transfer_req_compl - handle SCSI and query command completion
++ * @hba: per adapter instance
++ * @completed_reqs: bitmask that indicates which requests to complete
++ */
++static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
++					unsigned long completed_reqs)
++{
++	int tag;
++
++	for_each_set_bit(tag, &completed_reqs, hba->nutrs)
++		ufshcd_compl_one_cqe(hba, tag, NULL);
++}
++
+ /* Any value that is not an existing queue number is fine for this constant. */
+ enum {
+ 	UFSHCD_POLL_FROM_INTERRUPT_CONTEXT = -1
 -- 
 2.7.4
 
