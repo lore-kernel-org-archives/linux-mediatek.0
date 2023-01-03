@@ -4,76 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96246C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA67C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RHFL2PgwhVhLIbc4WDQ0VxcndRKF+zLEggh6iiwpmQY=; b=m9SzpgitvbJLJTzYWmIEqP5rxM
-	a19eQ3C6n6efKcPIYr0IWJ0UqCxW+6PV+6nbGC9znwqV450z7UzCTyqSokTeDsvzg+TrABfeEMsIb
-	cAYGjlYSEmYQXaiSaqnUK+xpV2cAKsdv5Tv362s9HDHQpq2LukccycVxW1LM2lA3wBKtNim5I77OB
-	4b/wzUXbfXk/+MwngVTw15CBVLUyyoZrAqiSunCTCSd+JTnh/YoO0RPfK0K93E3UFniB0UeQQEfnq
-	0B7FN/PA6Apbo8bhDzR+RGLVCOzXvDWRRRM0VwL7dBnta5SGbYaU+jjX3s9ZChWfLI/fFy+oirfJF
-	BM5oZykg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EreiMBgkUkPDnOXknsG9zCEhykLlgCHgknPkvjocXDg=; b=GuihB1N4LlVI2OYvMczEMsrjxh
+	x7pDeMIOWOYtCtBK9LIma0IZhqeLi164A5M+mj+8O3eQy10ErMRkDDeHUn/emN5N6FCP8GYkjRei9
+	7wCCWbPAP4wudBSzNl61D2nUv4Bqjo/Jquhu/vvGDZ+orHvXgKAeTkIl5FHAVt+JtRRFrGcQO6Pnh
+	uJNC/Opn8UToFWKTdI/jfsEi8UJ8D7MDwR1YWSNTCZ6LPTHwlssUD0S02oEBNFx2Kp4UKik6UGQWW
+	u5EFsckU4jR5aYIhcuxY5ZnE+UHJGC0NaM0Tx5ZQ/6DxOkXjAG8Uncu6okX9U3yWiskAfzKwhnc+C
+	xvVo8W7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkNy-0032dz-71; Tue, 03 Jan 2023 16:43:34 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1pCkPc-0033Vn-2M; Tue, 03 Jan 2023 16:45:17 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pChKS-001XFz-HA; Tue, 03 Jan 2023 13:28:03 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 7D8CC75;
-	Tue,  3 Jan 2023 14:27:37 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1672752457;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RHFL2PgwhVhLIbc4WDQ0VxcndRKF+zLEggh6iiwpmQY=;
-	b=JhiJnwoTDE7pFhG+6yV7Aq3RJmVT4t44k3691eIxRvPtUQuqII3Y4xs+bhozbQ7LmK5Av2
-	XnALDQ/hF232xKSTXjfFhkMjHwMd/c5QRHY59HMdmYmiYrZAhxpuQ+9SD/TG0R+v9srIsp
-	6sFt2FSn0JXtJs+8pd5Ykp5vlR40Ln5+jh28Zd9+qn7D70QWQBIB3bWHOtVxvHSSNM+QO9
-	7Zn/Y7jwx1JKLDaslcRR/167IzifxZuNeCxzrblRR12xpOzbwFhEVaZafELh3c+/0a6vnJ
-	sLt1tEtpRFKLBERSnf4b4UhQ79A3Sryb4YEu40MVBNv3nXhH+7zLGc/1riMTvQ==
-MIME-Version: 1.0
-Date: Tue, 03 Jan 2023 14:27:37 +0100
-From: Michael Walle <michael@walle.cc>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Jose Abreu <Jose.Abreu@synopsys.com>, Sergey Shtylyov
- <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
- <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team
- <linux-imx@nxp.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Geert
- Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH RFC net-next v2 06/12] net: mdio: mdio-bitbang: Separate
- C22 and C45 transactions
-In-Reply-To: <20230103131555.5i4tj7sk72gmed5d@skbuf>
+	id 1pChKs-001XQQ-0M; Tue, 03 Jan 2023 13:28:21 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id g1so29546621edj.8;
+        Tue, 03 Jan 2023 05:28:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=EreiMBgkUkPDnOXknsG9zCEhykLlgCHgknPkvjocXDg=;
+        b=lE5AE1qGEtXjN22b/S3G1AETkhTNukPRCJ4MxTBiQDAZvKUW5Ht/FmtEV1dZHfh5LI
+         SdQGBRnzfQ3SCS4mv+u7ehEnIDFFje/JfTflRycyjJaXu3743zr9CA521YiYV2oReBOO
+         NRUM++tbYpXSPn9KbvB6lyyHTFLLe4UwYorzNmjnlIYdAnrG/5BHw67BdeW7LOKasHge
+         kVXJ7dzv2m86oq50Oj9SszhO/YT6R1s7+1RAGL3kah6YSmlw14nq7IPv4JYCMqJpwtpA
+         aFlILoGaQI/EuWQ1Y7yCIInIf89eivf3CP3hv4ftOVUsifpNEENNHDfs10EnSDtfdmCY
+         rqKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EreiMBgkUkPDnOXknsG9zCEhykLlgCHgknPkvjocXDg=;
+        b=12gDFne+xkQwSovAuq+S+pWlBlccOboAriAVwx2g/HoKTZ6I2JSaGL5rKT8Dhetof1
+         nUokOy6hyQllXIPZ4jbRCxWtf8NAt6QLpc1wHuS2faCg76O9PeaqYraeWmPZb3ZG8Wsd
+         R/WStr5VU12spg92m0huDcTtU2v/mH7WUyL24VD8FVLveLmk6ZMRI7kGwnAWMLSeFZLf
+         N+PikrYb64XcEaatdT4M+6NRMdWp/lN6jaxkifw6YYXKJSIeTO7K1xzavQiHn4OsaixQ
+         GOTya3MRsnsFpymjsDbCHBhfHVCASYjg4NYqyscao9zY3hfeMvAP80pgH5cW3ZBLrO3H
+         S55w==
+X-Gm-Message-State: AFqh2koU3NafeX7jYOusS3Vf+y65sY3XNUXOIz9/IKYN+R+pCOAI4lvV
+	pLMK8Ure4d9zX/LangLx0sk=
+X-Google-Smtp-Source: AMrXdXvoJaAQMTLwVv4xcf4a3QFrTZo4b/RaZ87Lu5eNpFpVoktvLuTqAF8pDwLTyNSShD7Z/QBTWQ==
+X-Received: by 2002:aa7:c911:0:b0:48d:4504:32ed with SMTP id b17-20020aa7c911000000b0048d450432edmr7659170edt.37.1672752487476;
+        Tue, 03 Jan 2023 05:28:07 -0800 (PST)
+Received: from skbuf ([188.26.185.118])
+        by smtp.gmail.com with ESMTPSA id g3-20020a170906538300b0082535e2da13sm14126800ejo.6.2023.01.03.05.28.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jan 2023 05:28:07 -0800 (PST)
+Date: Tue, 3 Jan 2023 15:28:04 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Michael Walle <michael@walle.cc>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jose Abreu <Jose.Abreu@synopsys.com>,
+	Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>,
+	Shenwei Wang <shenwei.wang@nxp.com>,
+	Clark Wang <xiaoning.wang@nxp.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: Re: [PATCH RFC net-next v2 02/12] net: pcs: pcs-xpcs: Use C45 MDIO
+ API
+Message-ID: <20230103132804.pcqksxtiex5rglnj@skbuf>
 References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-6-ddb37710e5a7@walle.cc>
- <20230103131555.5i4tj7sk72gmed5d@skbuf>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <300bdff73f38b4e480d533c04126854d@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+ <20221227-v6-2-rc1-c45-seperation-v2-2-ddb37710e5a7@walle.cc>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-2-ddb37710e5a7@walle.cc>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_052746_221486_F5B6267C 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20230103_052810_138198_4991EEA3 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +107,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2023-01-03 14:15, schrieb Vladimir Oltean:
-> On Wed, Dec 28, 2022 at 12:07:22AM +0100, Michael Walle wrote:
->> From: Andrew Lunn <andrew@lunn.ch>
->> 
->> The bitbbanging bus driver can perform both C22 and C45 transfers.
->> Create separate functions for each and register the C45 versions using
->> the new driver API calls.
->> 
->> The SH Ethernet driver places wrappers around these functions. In
->> order to not break boards which might be using C45, add similar
->> wrappers for C45 operations.
->> 
->> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
->> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
->> Signed-off-by: Michael Walle <michael@walle.cc>
->> ---
+On Wed, Dec 28, 2022 at 12:07:18AM +0100, Michael Walle wrote:
+> From: Andrew Lunn <andrew@lunn.ch>
 > 
-> Incomplete conversion, this breaks the build. Need to update all users
-> of the bitbang driver (also davinci_mdio). Something like the diff 
-> below
-> fixes that, but it leaves the davinci_mdio driver in a partially
-> converted state (if data->manual_mode is true, new API is used,
-> otherwise old API is used). So another patch to convert the other case
-> will likely be needed.
+> Convert the PCS-XPCS driver to make use of the C45 MDIO bus API for
+> modify_change().
+> 
+> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Michael Walle <michael@walle.cc>
+> ---
 
-The intel build bot already notified me about this. Unfortunately, only
-privately as I just noticed.
-
-And yes, these are just the first 12 patches of a larger series.
-
--michael
+Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
