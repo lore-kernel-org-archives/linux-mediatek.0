@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76AA6C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 06:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9724C53210
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 06:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0z+/hBdGdVLdLi21sE8VV0IYVdDrIzO1ouT2JZpjtM=; b=zX6JfvFcF+Ey50LtvUHTjBuxmn
-	A1GRzyAuXvh9nQ3/n+T46UnjWNvBRpuE04K8SVbSHyQ/4Ww2QAV35/4SyqRJE9lsHd/Yg5gtmaqRu
-	tRI4MHpITtLCs0LsYm6a+V7e2GTzGqkbB5PEcB1Flo4MpGhwlEyVb/360Uia2FywZSat2x/sj7ukj
-	iRlSLWmD9F8KekJxHS5NhQdFt8tBYu+MC/fH71a8qNZ8uCsqpaMMzQXKSfMBg1YQuxYO6bd/NNn4S
-	Og8uMYguTLmRMMsIPzrulbaGvnx72q6GFNzouFv3Ldy2wLmODMDKKcBH0GnV9IX8Ww1pELiXMjQVZ
-	qCglFWng==;
+	bh=rM0KgNmnSZO7R3K4bUC8tZO+fNWZ9r7BepvZWMal+zk=; b=ihSd64HP3LhKXz0YPsNMuou+kV
+	Pszjg6YF4o2g8vwS14+Qk/MAglHwi7IaibBPHIgQhjKQd1Em/7Qshf2gd0ME7LTqAq/gCPnrajOS2
+	Pt5HjC3b0PikKaC1Nkl+u/EfV+vg6vNKVaXH/s+dTiCg5yjetdZzlu9g5u7LrGHpFjc7RbgjwjQPN
+	B8M4iP7MAXLLg3cxNtimvkRsHhiftij1msla+GStY2wW/jBPsmPvuikv+ik/VY09zpRNgfvthA69H
+	tzl2qZdfv7dQyB/rQbSJDbNwyTGxVvS46OIftHVCwj4h1EYHudeqaEb870WvyTlBKO18hJz/cDm4d
+	f0ka9MvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCb6l-00HFg2-5v; Tue, 03 Jan 2023 06:49:11 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1pCb8T-00HGEQ-JY; Tue, 03 Jan 2023 06:50:57 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCb4X-00HEzd-Qu; Tue, 03 Jan 2023 06:47:03 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 3036kLwp036782;
-	Tue, 3 Jan 2023 00:46:21 -0600
+	id 1pCb4R-00HEo7-Gx; Tue, 03 Jan 2023 06:46:51 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 3036kIY0020186;
+	Tue, 3 Jan 2023 00:46:18 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1672728381;
-	bh=b0z+/hBdGdVLdLi21sE8VV0IYVdDrIzO1ouT2JZpjtM=;
+	s=ti-com-17Q1; t=1672728378;
+	bh=rM0KgNmnSZO7R3K4bUC8tZO+fNWZ9r7BepvZWMal+zk=;
 	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=BCFc5nTBx+vUGLfqxyuBUAEwmYbBXBfffMPEV2nyqZF5VYthxYtOkcB/9gZIooWq4
-	 CSAiwIeqhZudz9LbENd71VEOQI6zbF4J7ia3cKTGjNelcqL1IFV9x988A+j/z0SGUA
-	 IiWqhEAgrTW6PIq0nBxTWwCMbJahAMcChHGH5dXM=
-Received: from DFLE110.ent.ti.com (dfle110.ent.ti.com [10.64.6.31])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 3036kLZ0077095
+	b=VSfNdYV+AmmYXTCI5JFlqecezz8CPZwF7EaIO0QjBB15/IkgtQJ+5LXNhTIsFbPRb
+	 3O8JsYIQEzlPd7bsbGy84guLFeXS5QZqlphmysZBcpdcCXXd5xAG1bhYb2YaMd08Ax
+	 7bpAklcAh3uVWVxTXZ9gCM9kIXl978b+Fv1gAcDg=
+Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 3036kINl005625
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 3 Jan 2023 00:46:21 -0600
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE110.ent.ti.com
- (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
+	Tue, 3 Jan 2023 00:46:18 -0600
+Received: from DLEE110.ent.ti.com (157.170.170.21) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16; Tue, 3
- Jan 2023 00:46:21 -0600
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ Jan 2023 00:46:18 -0600
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE110.ent.ti.com
+ (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.16 via
- Frontend Transport; Tue, 3 Jan 2023 00:46:21 -0600
-Received: from localhost (ileaxei01-snat.itg.ti.com [10.180.69.5])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 3036kKAR085946;
-	Tue, 3 Jan 2023 00:46:20 -0600
+ Frontend Transport; Tue, 3 Jan 2023 00:46:18 -0600
+Received: from localhost (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 3036kH4Q075225;
+	Tue, 3 Jan 2023 00:46:17 -0600
 From: Aradhya Bhatia <a-bhatia1@ti.com>
 To: Rob Herring <robh+dt@kernel.org>,
         Krzysztof Kozlowski
@@ -92,9 +92,9 @@ CC: DRI Development List <dri-devel@lists.freedesktop.org>,
         Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary
 	<j-choudhary@ti.com>,
         Aradhya Bhatia <a-bhatia1@ti.com>
-Subject: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS panel
-Date: Tue, 3 Jan 2023 12:16:14 +0530
-Message-ID: <20230103064615.5311-4-a-bhatia1@ti.com>
+Subject: [RFC PATCH 1/4] dt-bindings: vendor-prefixes: Add microtips
+Date: Tue, 3 Jan 2023 12:16:12 +0530
+Message-ID: <20230103064615.5311-2-a-bhatia1@ti.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230103064615.5311-1-a-bhatia1@ti.com>
 References: <20230103064615.5311-1-a-bhatia1@ti.com>
@@ -103,8 +103,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230102_224658_736065_F70AF8C1 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20230102_224648_221381_0657113B 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,196 +119,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dual-link LVDS interfaces have 2 links, with even pixels traveling on
-one link, and odd pixels on the other. These panels are also generic in
-nature, with no documented constraints, much like their single-link
-counterparts, "panel-lvds".
-
-Add a new compatible, "panel-dual-lvds", and a dt-binding document for
-these panels.
+Add document vendor prefix for Microtips Technology USA (microtips).
 
 Signed-off-by: Aradhya Bhatia <a-bhatia1@ti.com>
 ---
- .../display/panel/panel-dual-lvds.yaml        | 157 ++++++++++++++++++
- MAINTAINERS                                   |   1 +
- 2 files changed, 158 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
-new file mode 100644
-index 000000000000..88a7aa2410be
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
-@@ -0,0 +1,157 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/panel/panel-dual-lvds.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Generic Dual-Link LVDS Display Panel
-+
-+maintainers:
-+  - Aradhya Bhatia <a-bhatia1@ti.com>
-+  - Thierry Reding <thierry.reding@gmail.com>
-+
-+description: |
-+  A dual-LVDS interface is a dual-link connection with the even pixels
-+  traveling on one link, and the odd pixels traveling on the other.
-+
-+allOf:
-+  - $ref: panel-common.yaml#
-+  - $ref: /schemas/display/lvds.yaml/#
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - lincolntech,lcd185-101ct
-+              - microtips,13-101hieb0hf0-s
-+          - const: panel-dual-lvds
-+      - const: panel-dual-lvds
-+
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/$defs/port-base
-+        unevaluatedProperties: false
-+        description: The sink for first set of LVDS pixels.
-+
-+        properties:
-+          dual-lvds-odd-pixels:
-+            type: boolean
-+
-+          dual-lvds-even-pixels:
-+            type: boolean
-+
-+        oneOf:
-+          - required: [dual-lvds-odd-pixels]
-+          - required: [dual-lvds-even-pixels]
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/$defs/port-base
-+        unevaluatedProperties: false
-+        description: The sink for second set of LVDS pixels.
-+
-+        properties:
-+          dual-lvds-even-pixels:
-+            type: boolean
-+
-+          dual-lvds-odd-pixels:
-+            type: boolean
-+
-+        oneOf:
-+          - required: [dual-lvds-even-pixels]
-+          - required: [dual-lvds-odd-pixels]
-+
-+    allOf:
-+      - if:
-+          properties:
-+            port@0:
-+              properties:
-+                dual-lvds-odd-pixels: true
-+              required:
-+                - dual-lvds-odd-pixels
-+        then:
-+          properties:
-+            port@1:
-+              properties:
-+                dual-lvds-even-pixels: true
-+                dual-lvds-odd-pixels: false
-+
-+      - if:
-+          properties:
-+            port@0:
-+              properties:
-+                dual-lvds-even-pixels: true
-+              required:
-+                - dual-lvds-even-pixels
-+        then:
-+          properties:
-+            port@1:
-+              properties:
-+                dual-lvds-odd-pixels: true
-+                dual-lvds-even-pixels: false
-+
-+    required:
-+      - port@0
-+      - port@1
-+
-+  port: false
-+
-+unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - width-mm
-+  - height-mm
-+  - data-mapping
-+  - panel-timing
-+  - ports
-+
-+examples:
-+  - |+
-+    panel-dual-lvds {
-+      compatible = "microtips,13-101hieb0hf0-s", "panel-dual-lvds";
-+
-+      width-mm = <217>;
-+      height-mm = <136>;
-+
-+      data-mapping = "vesa-24";
-+
-+      panel-timing {
-+        clock-frequency = <150275000>;
-+        hactive = <1920>;
-+        vactive = <1200>;
-+        hfront-porch = <32>;
-+        hsync-len = <52>;
-+        hback-porch = <24>;
-+        vfront-porch = <24>;
-+        vsync-len = <8>;
-+        vback-porch = <3>;
-+        de-active = <1>;
-+      };
-+
-+      ports {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        port@0 {
-+          reg = <0>;
-+          dual-lvds-odd-pixels;
-+          lcd_in0: endpoint {
-+            remote-endpoint = <&oldi_out0>;
-+          };
-+        };
-+
-+        port@1 {
-+          reg = <1>;
-+          dual-lvds-even-pixels;
-+          lcd_in1: endpoint {
-+            remote-endpoint = <&oldi_out1>;
-+          };
-+        };
-+      };
-+    };
-+
-+...
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7f86d02cb427..c13f24293ab1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -6595,6 +6595,7 @@ T:	git git://anongit.freedesktop.org/drm/drm-misc
- S:	Maintained
- F:	drivers/gpu/drm/panel/panel-lvds.c
- F:	Documentation/devicetree/bindings/display/lvds.yaml
-+F:	Documentation/devicetree/bindings/display/panel/panel-dual-lvds.yaml
- F:	Documentation/devicetree/bindings/display/panel/panel-lvds.yaml
- 
- DRM DRIVER FOR MANTIX MLAF057WE51 PANELS
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 70ffb3780621..516134cbcb3c 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -821,6 +821,8 @@ patternProperties:
+     description: Microsoft Corporation
+   "^microsys,.*":
+     description: MicroSys Electronics GmbH
++  "^microtips,.*":
++    description: Microtips Technology USA
+   "^mikroe,.*":
+     description: MikroElektronika d.o.o.
+   "^mikrotik,.*":
 -- 
 2.39.0
 
