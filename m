@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C97AC3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:31:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A944C3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:31:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=whtg+X8APOE7axzskbilEU6qOgpVAHq4XkJqOAxAWVA=; b=Lq5uhlczBcHWHXG6+u7HeDx1bs
-	3A8jaM8RbMNEt6+7PiiGwWu3fnsrXhfXfDigZc4rUwoTZcUxBFUfndMH5THqUGIDkHhDC2+buYh+S
-	cPVWl5Lis3IIBagGTt1L2wdIOHt7ttp3ce8tNwq0XlZIpHwIMYHi6aYdME8Ds4BuEtyWH7npJGVHy
-	h9mTSYMKz3PWWIgZ13Si1m6EXCJ2L1EP4swHuRp0fnx3rMCmX2bakgTlP9ZuAUvSSgDVKRXlw+6zh
-	VvldXi6qsNodEODpVhNej2xepBLuT2kiUo1LOumBjxywrT40D0grcF+VRCgRdgZPzIrfiUWMdnPY4
-	Yn1aZgDA==;
+	bh=Amyx37cUS1Ga7+iBkem0FbcV4SxxuA5yDQCSKvbgEUY=; b=Ps0IvUf/Xao/RerQPLbJ6in3++
+	zHZNaQkX2/QfycCR0VSxdXuC6Ak/cQRw28T0QyIWIahLPimVxHVXEtMtb2btodNw8GEJ9v33u6E47
+	BeM0VRE5E6mnqCoIlK+mwD9YrE5Jpt9vcpPrujIQesy3u/x5w4EsXUjsjLCy3p1IN3Oj2uMchU/Qv
+	ueSyGkJZ1UwxyEwr+bckyYUdJgiEDu0uSE7YI/4qB0oftvdO7bH9VCF5GrzXrl/c1Jv0F1cT23tbv
+	aVEpUYnm3BFkyEviQKA6ZAV+x4PfS+UrbBCt9ujg+phT7Inhorm8WTxuNbfVtQBaRcWU0NVSBrYru
+	pUSVauSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkBv-002wfg-Ua; Tue, 03 Jan 2023 16:31:08 +0000
+	id 1pCkC9-002wlC-Cy; Tue, 03 Jan 2023 16:31:21 +0000
 Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCh66-001R2D-Jm; Tue, 03 Jan 2023 13:12:56 +0000
+	id 1pCh69-001QzV-BF; Tue, 03 Jan 2023 13:13:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1672751574; x=1704287574;
+  t=1672751577; x=1704287577;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=2vu7l/6K0nvkzNmUjyptRlngyguT+RoN4sYZnyNxAgU=;
-  b=AqTzcltId0q+m5ZIH5uUY33Dfn0fGzKoLTlT+wvg+gio9KbvLHPzSoLf
-   pdWuzEjrFHktEvgxy9bq2CMRYRauNclf/e6E+JOuUad50vCy2J7v3Renz
-   4WB4Qj1rKb/Psef5H/E/y/0JSpFWiQLWkoBMT/AU6joW9+BEARI1U0yLu
-   AFRrYGY21kDSZtRc29F4thPP89m5pkgoAmjUInpdxM0IFEknuYhUOBT67
-   vPade1thZrXA/ITiApQ0CqnVi/PucVAG6wlpvORYW4sTwf0pg+0ZaGKuF
-   vfS3tEAGtNBegwIDqlGKbLWU3MpM1kmxC7yJrcuyFzzusgybWcmIuSPBb
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10579"; a="320367245"
+  bh=aeuQDv8IZ9zZxqvE4KXWp0tWzJlo3lpo6FSE4G48zc0=;
+  b=N3Meh+JcKfBBuaIxaptmm1MABd9FiPukXRYFwEdlfUx/D6ngBE5SEexE
+   TwpkBQTkTKGtuSg8zsY3uxOf0YXN7LS80Toea7xqm7NBg81jvVWIcV/zl
+   bh0S+R9DR92CHnmZgysylIuaAVE2pG7X1TAivLQLn0ZWuMpj0TTRiBexl
+   5bMF0Sm6r2ys0fpYTJKGLRO3XF/0MXGIAMfmuEXdm7Ah8aN45lucs6uP7
+   JMcC43kYAwhK/Q8CL4TkI0diSN4xLCNuNygzF03QxAyneIIqAe9zTXzQ8
+   DD8neSMapPf1VXRK4vsa+OBFmU4DLhcRD1JA7hrHruSAhe+qhXHw1jSE2
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10579"; a="320367286"
 X-IronPort-AV: E=Sophos;i="5.96,297,1665471600"; 
-   d="scan'208";a="320367245"
+   d="scan'208";a="320367286"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jan 2023 05:12:33 -0800
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jan 2023 05:12:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10579"; a="654781131"
+X-IronPort-AV: E=McAfee;i="6500,9779,10579"; a="654781149"
 X-IronPort-AV: E=Sophos;i="5.96,297,1665471600"; 
-   d="scan'208";a="654781131"
+   d="scan'208";a="654781149"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga002.jf.intel.com with ESMTP; 03 Jan 2023 05:12:28 -0800
+  by orsmga002.jf.intel.com with ESMTP; 03 Jan 2023 05:12:34 -0800
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 91CA1220; Tue,  3 Jan 2023 15:13:00 +0200 (EET)
+	id C7B4719E; Tue,  3 Jan 2023 15:13:00 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Gene Chen <gene_chen@richtek.com>,
@@ -70,17 +70,17 @@ Cc: Pavel Machek <pavel@ucw.cz>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH v4 03/11] leds: an30259a: Get rid of custom led_init_default_state_get()
-Date: Tue,  3 Jan 2023 15:12:48 +0200
-Message-Id: <20230103131256.33894-4-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v4 08/11] leds: pca955x: Get rid of custom led_init_default_state_get()
+Date: Tue,  3 Jan 2023 15:12:53 +0200
+Message-Id: <20230103131256.33894-9-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
 References: <20230103131256.33894-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_051254_861861_59CECB18 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20230103_051257_716132_6CA7465C 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,71 +100,78 @@ Use it instead of custom implementation.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/leds/leds-an30259a.c | 21 ++++-----------------
- 1 file changed, 4 insertions(+), 17 deletions(-)
+ drivers/leds/leds-pca955x.c | 26 ++++++--------------------
+ 1 file changed, 6 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/leds/leds-an30259a.c b/drivers/leds/leds-an30259a.c
-index e072ee5409f7..89df267853a9 100644
---- a/drivers/leds/leds-an30259a.c
-+++ b/drivers/leds/leds-an30259a.c
-@@ -55,10 +55,6 @@
- 
- #define AN30259A_NAME "an30259a"
- 
--#define STATE_OFF 0
--#define STATE_KEEP 1
--#define STATE_ON 2
--
- struct an30259a;
- 
- struct an30259a_led {
-@@ -66,7 +62,7 @@ struct an30259a_led {
- 	struct fwnode_handle *fwnode;
- 	struct led_classdev cdev;
- 	u32 num;
--	u32 default_state;
-+	enum led_default_state default_state;
- 	bool sloping;
+diff --git a/drivers/leds/leds-pca955x.c b/drivers/leds/leds-pca955x.c
+index 33ec4543fb4f..1edd092e7894 100644
+--- a/drivers/leds/leds-pca955x.c
++++ b/drivers/leds/leds-pca955x.c
+@@ -130,7 +130,7 @@ struct pca955x_led {
+ 	struct led_classdev	led_cdev;
+ 	int			led_num;	/* 0 .. 15 potentially */
+ 	u32			type;
+-	int			default_state;
++	enum led_default_state	default_state;
+ 	struct fwnode_handle	*fwnode;
  };
  
-@@ -205,7 +201,6 @@ static int an30259a_dt_init(struct i2c_client *client,
- 	struct device_node *np = dev_of_node(&client->dev), *child;
- 	int count, ret;
- 	int i = 0;
--	const char *str;
- 	struct an30259a_led *led;
+@@ -437,7 +437,6 @@ pca955x_get_pdata(struct i2c_client *client, struct pca955x_chipdef *chip)
+ 		return ERR_PTR(-ENOMEM);
  
- 	count = of_get_available_child_count(np);
-@@ -228,15 +223,7 @@ static int an30259a_dt_init(struct i2c_client *client,
- 		led->num = source;
- 		led->chip = chip;
- 		led->fwnode = of_fwnode_handle(child);
--
--		if (!of_property_read_string(child, "default-state", &str)) {
--			if (!strcmp(str, "on"))
--				led->default_state = STATE_ON;
--			else if (!strcmp(str, "keep"))
--				led->default_state = STATE_KEEP;
+ 	device_for_each_child_node(&client->dev, child) {
+-		const char *state;
+ 		u32 reg;
+ 		int res;
+ 
+@@ -448,19 +447,9 @@ pca955x_get_pdata(struct i2c_client *client, struct pca955x_chipdef *chip)
+ 		led = &pdata->leds[reg];
+ 		led->type = PCA955X_TYPE_LED;
+ 		led->fwnode = child;
+-		fwnode_property_read_u32(child, "type", &led->type);
++		led->default_state = led_init_default_state_get(child);
+ 
+-		if (!fwnode_property_read_string(child, "default-state",
+-						 &state)) {
+-			if (!strcmp(state, "keep"))
+-				led->default_state = LEDS_GPIO_DEFSTATE_KEEP;
+-			else if (!strcmp(state, "on"))
+-				led->default_state = LEDS_GPIO_DEFSTATE_ON;
 -			else
--				led->default_state = STATE_OFF;
+-				led->default_state = LEDS_GPIO_DEFSTATE_OFF;
+-		} else {
+-			led->default_state = LEDS_GPIO_DEFSTATE_OFF;
 -		}
-+		led->default_state = led_init_default_state_get(led->fwnode);
- 
- 		i++;
++		fwnode_property_read_u32(child, "type", &led->type);
  	}
-@@ -261,10 +248,10 @@ static void an30259a_init_default_state(struct an30259a_led *led)
- 	int led_on, err;
  
- 	switch (led->default_state) {
--	case STATE_ON:
-+	case LEDS_DEFSTATE_ON:
- 		led->cdev.brightness = LED_FULL;
- 		break;
--	case STATE_KEEP:
-+	case LEDS_DEFSTATE_KEEP:
- 		err = regmap_read(chip->regmap, AN30259A_REG_LED_ON, &led_on);
- 		if (err)
- 			break;
+ 	pdata->num_leds = chip->bits;
+@@ -572,13 +561,11 @@ static int pca955x_probe(struct i2c_client *client)
+ 			led->brightness_set_blocking = pca955x_led_set;
+ 			led->brightness_get = pca955x_led_get;
+ 
+-			if (pdata->leds[i].default_state ==
+-			    LEDS_GPIO_DEFSTATE_OFF) {
++			if (pdata->leds[i].default_state == LEDS_DEFSTATE_OFF) {
+ 				err = pca955x_led_set(led, LED_OFF);
+ 				if (err)
+ 					return err;
+-			} else if (pdata->leds[i].default_state ==
+-				   LEDS_GPIO_DEFSTATE_ON) {
++			} else if (pdata->leds[i].default_state == LEDS_DEFSTATE_ON) {
+ 				err = pca955x_led_set(led, LED_FULL);
+ 				if (err)
+ 					return err;
+@@ -617,8 +604,7 @@ static int pca955x_probe(struct i2c_client *client)
+ 			 * brightness to see if it's using PWM1. If so, PWM1
+ 			 * should not be written below.
+ 			 */
+-			if (pdata->leds[i].default_state ==
+-			    LEDS_GPIO_DEFSTATE_KEEP) {
++			if (pdata->leds[i].default_state == LEDS_DEFSTATE_KEEP) {
+ 				if (led->brightness != LED_FULL &&
+ 				    led->brightness != LED_OFF &&
+ 				    led->brightness != LED_HALF)
 -- 
 2.35.1
 
