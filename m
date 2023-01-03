@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89C49C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 15:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB99C46467
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 15:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QX4RZqScroexHKKSRRyElEJloJjb5ThnsZkq5RWiftY=; b=rpSJiu3YGMgy6ivGwey0YRb7Q/
-	TQyUyKwGPn7jrzPhOkjZkDnSLjlLtkjqalkJjA9Nr7fQni6KDnPlbin3n1S5pE9jqRAgbR37bgrcB
-	2A/Nmx707QRWNhJlnMSL9rLU3tql+YgjFT2QsBM5Sz/OD6NOWBFMhfhj0/S3G+m/zH7f2134oRXsx
-	8TdjVGmvv8ZoGTTWDBAGyZBNddVbjAIAS9RK/+CAaRHeCiS66tzYh2IOXJGXGcCDhKmgHYeQyVBgT
-	wKyx8nk4RSFrzLO0FV0xSNGHsycIKzlT6/bPMDIvD/htc+Wg7PRITMXp8JzkjZmsz1xWRF9BUMBbO
-	PoF4E0Hg==;
+	bh=DpOsHKGhU7tvxbpHfT02UmgSMRtEW1XC80zRDsCqkA0=; b=f6QlnAYVRHZBuSmTKJ5NjxHoXO
+	KrsbMAt8EsvS7XpMZ90x/dKmqM55q8XUOT6TFKwwB+G7qrHOTZcK8VlTPcdvUt+9qsaDEmJ+mfYht
+	q1VknQN9i9T4u2pmybyJ+Dw87KIg8eLwnXqxV+4C8JKnu4TcZrZsSJG50f8oOk1los3F4e2S+H1HB
+	QUVkhiBpRLUAE9FMpLlOn9sWBa6pgaHHwrF4l03g8KHSH2igK0mvYtEd3W4Qr/q5CzCmE7YTXLofB
+	i40u1IYJCCT91lrr+5cA6I0wM9V2CfE48iLKaQQSy3z+56g/n3rCeZlGzzmQloApU3O0QbzPrpoWw
+	JFANKOWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCjcU-002fGB-FS; Tue, 03 Jan 2023 15:54:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1pCjf6-002gj9-Fm; Tue, 03 Jan 2023 15:57:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCfqw-0014de-7O; Tue, 03 Jan 2023 11:53:13 +0000
+	id 1pCfso-0015PF-Mg
+	for linux-mediatek@lists.infradead.org; Tue, 03 Jan 2023 11:55:09 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9A7D86602CF2;
-	Tue,  3 Jan 2023 11:53:06 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 873636602CE7;
+	Tue,  3 Jan 2023 11:55:04 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672746787;
-	bh=Z0T/Uxfv2PUmyYHU5vEIFVIY7agrm3NioSoW9V9Fw0g=;
+	s=mail; t=1672746905;
+	bh=e4EUjat9pToRSEm96KTsiek0XL1DaIo9ai/m2Kcwwt4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ATChoxL+c6VgV5SfbeR45O+w+BinEb/7fl+vigcjsoKvbii7L0S3VDj9PtRwSvHBC
-	 dI0OIt4UkMxMUHiTFExvMtXX/Q0ud0lKgg+i8SRFVEUADe92Gjy+LFd00wJRiLr+rQ
-	 9tcJ8+ORjH/EveEYr0ZFYfHqLwh4Zc1rIdCPD8QxMSwsUocUHe49VGgVrzVKU1MTzj
-	 vW4kh0ErmLnOUoFKXgBiOQkUPDxARFV46/QHxgj8t10cqxpbEIF7/S928FY1+zPJG3
-	 uNDb7CIwrNEFCV38YB/RzQRP7lXAnXekq89G5UEkEC6YMJckjvuIU13Cc9TfzHYrlK
-	 p6fB5bIT90s/g==
-Message-ID: <d2a3e440-9755-b603-9c19-a47f68f3c780@collabora.com>
-Date: Tue, 3 Jan 2023 12:53:04 +0100
+	b=JcSj0ZpNVZN8gtIpt5l10oqndfZ82eBXiUEZPbQx9GpWlNitQyFeNXAQQVE3Coxed
+	 Z79ZR5joVBxeVDM6ykgwVWx8+0hnrFLdZQm0z/G/0nbFCcNW24t0S8IN/WmJilClhF
+	 PsJpGi1WV/yOO0/KdO6PvopIRjGGMmk2Qh8rfUgPbON+0FbQYZB5UiuP9n70pbxpsL
+	 Q5qVVjJfa/RDP1R3t5HIha9vxp1LzcQanKiaT8yU1ij3rXLLJybwmB82NPohmRPMUW
+	 R0pQkbALyLZvS09tZR6IjGz8R0hQeo/37c+EdlyMSPq92oR6faxaz5SaDu9UyP1xep
+	 ADSwqwr5FrZqA==
+Message-ID: <838a4824-872f-0013-ecdd-acf7168708b6@collabora.com>
+Date: Tue, 3 Jan 2023 12:55:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
-Subject: Re: [PATCH v3] clk: core: Honor CLK_OPS_PARENT_ENABLE in
- clk_core_is_enabled
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
- <nfraprado@collabora.com>, Alexander Stein
- <alexander.stein@ew.tq-group.com>,
- Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230103092330.494102-1-wenst@chromium.org>
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix invalid remain_on_channel
+ duration
 Content-Language: en-US
+To: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <09a2d41d349593e1cf4a542d076c1a49bd135d3e.1672476252.git.deren.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230103092330.494102-1-wenst@chromium.org>
+In-Reply-To: <09a2d41d349593e1cf4a542d076c1a49bd135d3e.1672476252.git.deren.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_035310_779355_A43D9DD5 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20230103_035507_328229_346CBD8A 
+X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +84,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/01/23 10:23, Chen-Yu Tsai ha scritto:
-> In the previous commits that added CLK_OPS_PARENT_ENABLE, support for
-> this flag was only added to rate change operations (rate setting and
-> reparent) and disabling unused subtree. It was not added to the
-> clock gate related operations. Any hardware driver that needs it for
-> these operations will either see bogus results, or worse, hang.
+Il 31/12/22 10:01, Deren Wu ha scritto:
+> round_jiffies_up() may change the duration reported from chip. We should
+> take the real timeout for current channel privilege.
 > 
-> This has been seen on MT8192 and MT8195, where the imp_ii2_* clk
-> drivers set this, but dumping debugfs clk_summary would cause it
-> to hang.
-> 
-> Prepare parent on prepare and enable parent on enable dependencies are
-> already handled automatically by the core as part of its sequencing.
-> Whether the case for "enable parent on prepare" should be supported by
-> this flag or not is not clear, and thus ignored for now.
-> 
-> This change solely fixes the handling of clk_core_is_enabled, i.e.
-> enabling the parent clock when reading the hardware state. Unfortunately
-> clk_core_is_enabled is called in a variety of places, sometimes with
-> the enable clock already held. To avoid deadlocking, the core will
-> ignore readouts and just return false if CLK_OPS_PARENT_ENABLE is set
-> but the parent isn't currently enabled.
-> 
-> Fixes: fc8726a2c021 ("clk: core: support clocks which requires parents enable (part 2)")
-> Fixes: a4b3518d146f ("clk: core: support clocks which requires parents enable (part 1)")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: 034ae28b56f1 ("wifi: mt76: mt7921: introduce remain_on_channel support")
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Moreover, for MT6795 Xperia M5, MT8173 Elm, MT8192 Asurada, MT8195 Tomato:
-
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
