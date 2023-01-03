@@ -4,100 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93EB2C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 17:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26009C3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 17:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cUgk7t5CLogpADp6v+03F2a0C4ndvH9yI7BzPUoVTz8=; b=oDSroDq0ql5G6Uu7SV2g6XOkDt
-	uV8zlnYGnmL2dLfseXr0i7f87CEVJaFrwFgIaD+DWF+pMQWt3JKMd7MPKmwxBMeizVf+p6tBCSdhq
-	1FiHFeq/ACMFkIaflxHWbtHR/9MM6rCWfKTwu5L/R26CqDx3+aMGIHEhF1fd7AXuA6qdWkMMYrSjS
-	XYuqTywAlupC4TY/zl2ZTs5VDraj4exRIOCJkNekwB/6KJwvWkbYJIKHcI39xQOjnTxO4cFpMUG7F
-	ivZsEzc7jCdipwQdBJmJi98w2423wzTsRcTkCanbiAeE8K4jK9KywwuajwRk37t94cRHYZi8Q+WD5
-	stpWAn5w==;
+	bh=wNHGYeVYFIzxBf24jgwJU2T/wl2hD0aiCUszvE1r6qc=; b=W7KEPCD7UY0YAavz/tmJlpWtuu
+	yICbvmWowa3eZpRUogL1q2fgZiTzudxjheS6cRe8XJPWvwKC5XrrRCH845KA2nQz9t2/T4NS1V83X
+	KB55UnCvGv6B49oavAsh0o3g4hd16te96K9jMc3BzPqLxi0oztjnccqjVX8B5tW7XkR97QI5vH+mJ
+	KbYCX5W/PrcNy3/Cm8UrzboyjQJ4Cz0KFFFBK5ddRA0QEBityKn821CprLKoX7MAyvfA7SlXdBGFL
+	xe7msBT2rtdEKmyyWfIPWsRCTZU9Q51tMK7AjM0MEB8B4IFBtLn4Sv2lw1fokQVUkwskaj6Lxtwm2
+	m/II7a3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pClMK-003YGZ-9G; Tue, 03 Jan 2023 17:45:56 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1pClRv-003akz-MV; Tue, 03 Jan 2023 17:51:43 +0000
+Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCjea-002gPO-QM; Tue, 03 Jan 2023 15:56:43 +0000
-Received: by mail-ed1-x535.google.com with SMTP id i9so44372589edj.4;
-        Tue, 03 Jan 2023 07:56:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cUgk7t5CLogpADp6v+03F2a0C4ndvH9yI7BzPUoVTz8=;
-        b=Nlop0vV2rhk/Y14mg/LYKMI/LgbnDu0LklT8ZlGkVGT6ndSrTIzsmfL+UKV+rctl7C
-         LTgsO6ABsOsdupP0jMFKDPkeJOR/AjFdfRo1Kg92jTO3bYdUXQy0W2AOAvF67poVg1Ax
-         M1E36j+goZnA9IKiW00QGwlwffPb/29IZCIUJRj5YM3kGL/tOGPHmNWLJ32If2ZsqA6V
-         P1G2DWN8BnASIEwuGtlrA933d7Yn9FSU/Z3x+ITFmaWt+G4dhW7kYHic9RylMsTtx5f2
-         h0dZVKaxxZc4PhVmuSZ6Qtq4+903piGIKgA58TaiWTJ4GgrOy0O/gWNWrVTaOitxuPgL
-         bavA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cUgk7t5CLogpADp6v+03F2a0C4ndvH9yI7BzPUoVTz8=;
-        b=Z/MnlHYzLl+SQxhdt9TLCZxc52mj0lgkhRsWE16aFys73EuRnhF43lhNHQJc4BGwkP
-         //8qIvKZKqIFcK4qH4MMWE3pon8KUpWQwGGLJ30pKiYR826knEEcF9GbImz7PlBsEJno
-         gtlzz8yFjVqysQZI+iDGE8eekfCzsn3zIDiC56cdscmaygC0UlcRR7tIcVTwPp3byOKp
-         C3Dj0yOsigJ8EYEghvt1OZc7FWC1RrK7qdpuTW3kuX8GEJDiA6u7YxGCail5DQqPSFq0
-         SpaRoO9gHkEk1hSoywQZxgF6TxXBo1quGaMG2HG0dnvRPo54bz8uaF7bD1iPqdJDENDy
-         zC2w==
-X-Gm-Message-State: AFqh2krCQj/di4G80+rwDK3VH0tCAtqB/l4x16Q6OI+EDmDbtZIhth0v
-	Mt71ZU2b/Z4PhUP8FStpfqE=
-X-Google-Smtp-Source: AMrXdXtoAYN/JnDVDN1YkdRe3Sjl9+sUDPRbeIocCAM+QeCzmE90ykdzaDAgpT+gUrrkq+LbtncKDA==
-X-Received: by 2002:aa7:d04d:0:b0:46c:d905:b9e8 with SMTP id n13-20020aa7d04d000000b0046cd905b9e8mr37622928edo.23.1672761396798;
-        Tue, 03 Jan 2023 07:56:36 -0800 (PST)
-Received: from skbuf ([188.26.185.118])
-        by smtp.gmail.com with ESMTPSA id g3-20020a170906538300b0082535e2da13sm14252877ejo.6.2023.01.03.07.56.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jan 2023 07:56:36 -0800 (PST)
-Date: Tue, 3 Jan 2023 17:56:33 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Michael Walle <michael@walle.cc>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>
-Subject: Re: [PATCH RFC net-next v2 11/12] net: dsa: Separate C22 and C45
- MDIO bus transaction methods
-Message-ID: <20230103155633.tfdxncl75s4tb2ln@skbuf>
-References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-11-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-11-ddb37710e5a7@walle.cc>
- <20230103153134.utalc6kw3l34dp4s@skbuf>
- <Y7ROa8ql9R5SHPsK@lunn.ch>
+	id 1pCjxN-002pl8-8l; Tue, 03 Jan 2023 16:16:11 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id 2C3583200902;
+	Tue,  3 Jan 2023 11:15:55 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Tue, 03 Jan 2023 11:15:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm3; t=1672762554; x=1672848954; bh=wNHGYeVYFI
+	zxBf24jgwJU2T/wl2hD0aiCUszvE1r6qc=; b=pjCYKo7gkCK5f2pIymt6QPnLBC
+	1DAk7msGDlygQAQNqEVyCIpFaOyMgaHSi40KVwP+w+L6RrW2p5XYYI1VqB3rG7dx
+	KEjGnr8HJwsjwZoQRvabZE5YxL8qXbJz8wRykSz3ERcPZx7n7E/OG+hl11/vLkbg
+	a06mvms0SGOqlyX0iMJ83oydOETkNwpTTu7grzSiLToon31tLFhkz4o7eh5iBou4
+	MxVnC/ZDnvM9P94hvHrcDURJq58ZYxwA3SlT3lGqJlK0eSF0GPHMddpVHO2ldnjB
+	uhG30YyVqwEtr/cCfgAAU1RUwWaiMmfwyBP76iCkiVBIeOBs/K8Nobgq0IpQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1672762554; x=1672848954; bh=wNHGYeVYFIzxBf24jgwJU2T/wl2h
+	D0aiCUszvE1r6qc=; b=j531BDLWxm/ohYQJ7nDDhf9HZ38aqVzvC/s9TGxSWFOF
+	iiYyCfot5ViuJBPsApS5/UR9lIF4taTuAL4+nbDvqMjQkZGhHU9h03T8aaJaQjHJ
+	KTOMF2W1onoAb/5nUCjwe3LJeMQJeuG9q89F1Y0ozgV/zdROkYA9crYI+U05Jvmt
+	nCvLmp92lk26OKxFnXrgHeSFA3iVvwxkR69pcDKumWR3J0EWWdDUkd0mLpuBi97M
+	l/88gmqhLrZQCuPWRLEuc553zwBBHOTY2e+B+OrNT8lgoICwo/vmtj+9+DkWcXSd
+	NotMN9hkOPXxvXxGe/ixjYNbxBvbmJ+YFvUJxxpuLg==
+X-ME-Sender: <xms:uVS0YzB0JXSRVIAi_tGC1otQM2RzPjHpcflhIgdzCVRZrzgRfROJDQ>
+    <xme:uVS0Y5i0ix6UjpUCqv-WU3J8FLgiHnuLKXZKjl9oCftIjeoxe8ZhAZLuUMwa_4PBv
+    ytZfM0HWcvHe6enzsA>
+X-ME-Received: <xmr:uVS0Y-nMPMm_4ZZv6rRdHATK2kWWJIZJ8TVVp4gOFFT1RGkmP6Q_UDvLqCmbfQ35RACyLiq4fB9tjz0QGBKP9nEVd7kPF1FHT_4s6tSM4oeIJA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrjeeggdekiecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
+    htvghrnheptdelkeejiedufedvhfeiffetlefhiedvleeigfeiuefghfdvleeiffejieeg
+    teejnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
+    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:uVS0Y1wBrIhxHWXikal4guApjH66SvtY4OcZSpj9b1-KrvPGX-uI8g>
+    <xmx:uVS0Y4QAif-qqBka94NRhYpDVTtWsMhf5sxJwNSqoyhZC3swXYhcog>
+    <xmx:uVS0Y4ZsYlbpnrqbDSwACwmC-fzNNOsr_D788yWirfW-kANxEbry5g>
+    <xmx:ulS0Y7YS89FzmTs6M_WxvTPd4EyTSa5Y4NKV3wydY-ZSTc8dmhi46g>
+Feedback-ID: i8771445c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 3 Jan 2023 11:15:53 -0500 (EST)
+Date: Tue, 3 Jan 2023 17:15:50 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Sean Anderson <sean.anderson@seco.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Joerg Roedel <joro@8bytes.org>, Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Takashi Iwai <tiwai@suse.com>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, alsa-devel@alsa-project.org,
+	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 2/3] iommu/sound: Use component_match_add_of helper
+Message-ID: <20230103161550.4tui3ihl65olvkd7@houat>
+References: <20221222233759.1934852-1-sean.anderson@seco.com>
+ <20221222233759.1934852-3-sean.anderson@seco.com>
+ <7897d4a6-bf43-becd-3437-7a254f38f6be@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7v4zidzdfmuud6o5"
 Content-Disposition: inline
-In-Reply-To: <Y7ROa8ql9R5SHPsK@lunn.ch>
+In-Reply-To: <7897d4a6-bf43-becd-3437-7a254f38f6be@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_075640_951355_A2961815 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20230103_081605_380738_3DE8DCA4 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,62 +112,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 03, 2023 at 04:48:59PM +0100, Andrew Lunn wrote:
-> > Since clause 45 PHYs are identified by the "ethernet-phy-ieee802.3-c45"
-> > compatible string (otherwise they are C22), then a PHY which is not
-> > described in the device tree can only be C22. So this is why
-> > ds->slave_mii_bus only deals with clause 22 methods, and the true reason
-> > behind the comment above.
-> > 
-> > But actually this premise is no longer true since Luiz' commit
-> > fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), which introduced the
-> > strange concept of an "OF-aware helper for internal PHYs which are not
-> > described in the device tree". After his patch, it is possible to have
-> > something like this:
-> > 
-> > 	ethernet-switch {
-> > 		ethernet-ports {
-> > 			port@1 {
-> > 				reg = <1>;
-> > 			};
-> > 		};
-> > 
-> > 		mdio {
-> > 			ethernet-phy@1 {
-> > 				compatible = "ethernet-phy-ieee802.3-c45"
-> > 				reg = <1>;
-> > 			};
-> > 		};
-> > 	};
-> > 
-> > As you can see, this is a clause 45 internal PHY which lacks a
-> > phy-handle, so its bus must be put in ds->slave_mii_bus in order for
-> > dsa_slave_phy_connect() to see it without that phy-handle (based on the
-> > port number matching with the PHY number). After Luiz' patch, this kind
-> > of device tree is possible, and it invalidates the assumption about
-> > ds->slave_mii_bus only driving C22 PHYs.
-> 
-> My memory is hazy, but i think at the time i wrote these patches,
-> there was no DSA driver which made use of ds->slave_mii_bus with
-> C45. So i took the short cut of only supporting C22.
 
-Actually I believe that in v1 you did extend ds->ops with C45 methods,
-but it's me who told you to remove them:
-https://patchwork.kernel.org/project/netdevbpf/patch/20220508153049.427227-10-andrew@lunn.ch/#24852813
+--7v4zidzdfmuud6o5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> Those DSA drivers which do support C45 all register their bus directly
-> with the MDIO core.
+Hi Robin,
 
-And rightfully so. IMHO, letting DSA allocate ds->slave_mii_bus out of
-driver writer sheer convenience (a secondary purpose) should be deprecated,
-unless the reason for using ds->slave_mii_bus is the lack of a phy-handle
-(the primary purpose). It becomes that more confusing to have to extend
-dsa_switch_ops with 2 more methods which serve the secondary purpose but
-not the primary one.
+On Tue, Jan 03, 2023 at 01:01:07PM +0000, Robin Murphy wrote:
+> Hi Sean,
+>=20
+> On 22/12/2022 11:37 pm, Sean Anderson wrote:
+> > Convert users of component_match_add_release with component_release_of
+> > and component_compare_of to component_match_add_of.
+> >=20
+> > Signed-off-by: Sean Anderson <sean.anderson@seco.com>
+> > Acked-by: Mark Brown <broonie@kernel.org>
+> > ---
+> >=20
+> > Changes in v2:
+> > - Split off from helper addition
+> >=20
+> >   drivers/iommu/mtk_iommu.c    | 3 +--
+> >   drivers/iommu/mtk_iommu_v1.c | 3 +--
+> >   sound/soc/codecs/wcd938x.c   | 6 ++----
+> >   3 files changed, 4 insertions(+), 8 deletions(-)
+> >=20
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index 2ab2ecfe01f8..483b7a9e4410 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -1079,8 +1079,7 @@ static int mtk_iommu_mm_dts_parse(struct device *=
+dev, struct component_match **m
+> >   		}
+> >   		data->larb_imu[id].dev =3D &plarbdev->dev;
+> > -		component_match_add_release(dev, match, component_release_of,
+> > -					    component_compare_of, larbnode);
+> > +		component_match_add_of(dev, match, larbnode);
+>=20
+> I've long since given up trying to make sense of how the DRM tree works, =
+but
+> the conflicting change is definitely already in mainline:
+>=20
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
+?id=3Db5765a1b44bea9dfcae69c53ffeb4c689d0922a7
 
-> So Luiz patches may allow a C45 bus, but are there any drivers today
-> actually using it?
+As far as I can see, that patch doesn't affect DRM at all, and the
+commit you pointed to doesn't either, nor has it been merged through the
+DRM tree.
 
-I sent a private email to Luiz a few minutes ago asking him to confirm.
+Can you expand a bit on how we're involved in this, what we should
+clarify or help with?
+
+Maxime
+
+--7v4zidzdfmuud6o5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCY7RUtgAKCRDj7w1vZxhR
+xdWgAQCl2SxPgHcEj92AdlH7Y2VvK6G5Bczcu2wrB4ZrHXVpawEAsJlD4MKrpINP
+IZalK2KlJTqUilPQudOtqmCeQzWQqAo=
+=cdeC
+-----END PGP SIGNATURE-----
+
+--7v4zidzdfmuud6o5--
 
