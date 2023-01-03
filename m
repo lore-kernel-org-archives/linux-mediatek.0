@@ -4,98 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73418C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4789EC3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 17:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=; b=xxgLD/5ZY1a8jXBkdW7A+E2NoY
-	5DCnuMcL77fdjlWAPAIy86m71EwO7Yhx6acWu+cjhih4PH//9n85Y0ymj4LUV99sxIvoEYnRzGu96
-	SJEOnwbpwPstEvdZBNwYwZkrTwZm3oCFSQgplwr0UFLEy4URk2Y8u8RliqVuo2LIdmV03QGvJKy5H
-	Q/KnxVSsbKfuUE2F/yner0liwqVdzBjQg+St6lMidMpSdFBTx6j+5Ey7XTn0PRnDSTtSbnAeAPNqh
-	h6IXhwMXuuOEEJF/yt249oXW+sRsGVN0WajkG1M7RPtc5gHzbDSt8LbBnsb4TH/wEozjk7I2x6twN
-	cr0DIyjA==;
+	bh=nYTNsE8vAumkPJakzklZJiM+0xT2yG3YPZQzOoKcOGg=; b=zWtgBkfSwfEGIpF+C8AH1cFlmY
+	uSF1TmUK/vytp630feFxRIfFK5eaL8ngMIG7R7waF5GAnhU78tuoYCosvwIn/YS+KM7j1T3Uq73Hh
+	ZoiKKqbBi8x6PAD+DJMp1lYiZ2qkQngzU/zUEk6IKQbFFaoBzLFtDU3l48hXg4AHCPMEGm5MaC9rI
+	kdk+1D0NFFHYfpYBOAicy5j8FLw7JqO1tFoGaWiqakNRsmkwCDeH3dMx3U6aNh8NZ6/vUO/BJ7UEZ
+	qouRlov/GYOoHO+oMNSW0+KjDchjjEVjjA/meANdDEoP/WQvo8rV1LHlIsyR+xLSCbt2ntDts/seU
+	scvjju2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkXO-0037kc-2u; Tue, 03 Jan 2023 16:53:18 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1pCl7P-003QVZ-Qw; Tue, 03 Jan 2023 17:30:32 +0000
+Received: from mail-bn1nam02on2081.outbound.protection.outlook.com ([40.107.212.81] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pChnP-001jRG-C4; Tue, 03 Jan 2023 13:57:40 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id ud5so73824266ejc.4;
-        Tue, 03 Jan 2023 05:57:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=;
-        b=f/XvfUxi6Y0rsfgiOoq/mD7Rx41wdk8aKmk/uWT++mY+WIDwkDdOK6GnzV6Ai6643i
-         uhSwNjlL3L3Nt4mjJc1iZFlYPVw9WD5YTI/C2o6JCc9xFbHnlpp+4JU9nIhxQ+hiWXBd
-         B5sNy/sPbatnJT9qWxxrteRXbaw+nlmoS8zXKR9wMaI9ZsXHlLo+5xLPOpQIYKrlzQpE
-         5+O9mrtWCwpvo03dielomObAafVznn40dbmQT0Gvbtaulxf/VoiOreOskgBPq82gf6q+
-         GdbtCO1E8JIw6IAO5wfaUdH5WhvO6zS70Ss6C6UePL6TNcu9g3j1I0mEq9uZrFYP0rIH
-         qzAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=;
-        b=16BCxJZroc6qwivWBaBMlxpQ0WAbCMb0oV35GXasM+b2GZ30r/bxFwuqH6iYQ9l1Wu
-         1Cc/4IazmTMjtbYbsjwUXWjbelovi6qLdBEn+llNT5wwmvo08cKw72W9+P/mQ0oBqlPO
-         ohHyv9TirGeyzOle2CUlOURLxDN44alXKzaPa2RCWBlEve0O1vBGrWT1gZL8/PYh8qc5
-         eXTKyXhi9TXTdIE+T9l1vVeeBfsHkFcv8m8ETaHzDRyt8qa/a+O0611OU7tMS5xD8keA
-         d1YabPm7m/ojyNzQ00W5zg2qc8B9PQEFq6D/vFEWKrtheGHw2tm8mf2tc8z/E9FK2M9J
-         ZJKA==
-X-Gm-Message-State: AFqh2kouxXvpl0bzugCnSSGf2earcfsQmtM8m1qdIvIp3I+PtylPKO9B
-	lNhI3h2mKA7aSmFjFHe7jA0=
-X-Google-Smtp-Source: AMrXdXvHEPEUBS/O7zaaU5DAH5vatKPRD27MbUHcClggxuFQNb+o/DXxJXkEQA3LieO19gw+yFwtrg==
-X-Received: by 2002:a17:906:8447:b0:7c8:9f04:ae7e with SMTP id e7-20020a170906844700b007c89f04ae7emr38712372ejy.22.1672754255330;
-        Tue, 03 Jan 2023 05:57:35 -0800 (PST)
-Received: from skbuf ([188.26.185.118])
-        by smtp.gmail.com with ESMTPSA id k10-20020a170906158a00b007ba9c181202sm14095026ejd.56.2023.01.03.05.57.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jan 2023 05:57:34 -0800 (PST)
-Date: Tue, 3 Jan 2023 15:57:32 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Michael Walle <michael@walle.cc>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jose Abreu <Jose.Abreu@synopsys.com>,
-	Sergey Shtylyov <s.shtylyov@omp.ru>, Wei Fang <wei.fang@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH RFC net-next v2 09/12] net: ethernet: freescale: fec:
- Separate C22 and C45 transactions for xgmac
-Message-ID: <20230103135732.saku5om5hgyw3ygk@skbuf>
-References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
+	id 1pCik7-002Ci0-Ig; Tue, 03 Jan 2023 14:58:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nCJYLHCBqqpyeaRwHYWWr8AsLS7FuxmZ62E236c0riJSua7LBT+Ru/Is7qUoJViAMOAajDmqD8U6iwCUE9wIr8JarrEq270PU2pfpK6MsZGAJHgL5xDqGXsS9Nc0RJyAykKkF2AlIdUwQoW1EIH5QxV6i0QVsnZWa0LXQe+fpDLasbvL5eW284fFa/OlGJr1ZeN/KPiMVfyyiPULzf0dBh/p0GvCA7KlwbU52vbdaiqwsZCrDAQahTQc3RJbqpD2OqY+K1caxjMgxLk2yN0QXVghSErjVhBUJE/EUJoTD/olvv0pVsTh/cIOk/9xeX4Q+4rQw9+rR0jOgjrGdgybaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nYTNsE8vAumkPJakzklZJiM+0xT2yG3YPZQzOoKcOGg=;
+ b=GbFzcRhPtz40P6/N3/rmN2FbeOhjTja4JeDcsSCRx0JGjncZCH7PFmLBx6o6pHLz7lI6qhOXN+PqB/3UfuvrV4kjEXllwseeY0M/1dXjbedb7XZwpEtihQY6vkMSdguO8jUbIrTb0l0Gu0QBVta0GxrcWWbQ+cRZ9pg075qY0TdW2FgMboJy5LhkYwZP7GoJ5GlC1donhT3ThOg82JiR6OO8ECZY6LaWEbmwGt4Wy9uKJvE9H0bour95sABJDcNg+6m6nbSwuhY7wEwggM3JvNyRKMyTe4zvYNh4/Pqp3EilyZiMrcTEBFY5muyJm4ItWXAmRwuB0yGNNIQYrcng4g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nYTNsE8vAumkPJakzklZJiM+0xT2yG3YPZQzOoKcOGg=;
+ b=uJbhXJ4qI7cTxdZZonZZMmsRK+xMViCl4keNYTcC9mTPzWHB75AFquzhISE9yAwL5uh4J2g7GuLqs5WojzQ6dZuInYHjDa5T35FfAIGcO4wKuQqbTjxjhp/OsQRcLo3GnWqdrR0OCJUwIeWVqs25k6N5qzOpyLuMjeyEgrbpdg4=
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
+ by BN9PR12MB5052.namprd12.prod.outlook.com (2603:10b6:408:135::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.19; Tue, 3 Jan
+ 2023 14:58:12 +0000
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::ff3c:2d37:75f3:442a]) by MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::ff3c:2d37:75f3:442a%6]) with mapi id 15.20.5944.019; Tue, 3 Jan 2023
+ 14:58:12 +0000
+From: "Limonciello, Mario" <Mario.Limonciello@amd.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, "Tsao, Anson" <anson.tsao@amd.com>,
+	"linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>
+Subject: RE: [PATCH] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
+Thread-Topic: [PATCH] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
+Thread-Index: AQHZECuTThDXIjyI9keEjT+ohlcL2K6M5uNg
+Date: Tue, 3 Jan 2023 14:58:12 +0000
+Message-ID:  <MN0PR12MB61013012BAA4423ECB4B58C6E2F49@MN0PR12MB6101.namprd12.prod.outlook.com>
+References: <20221215021854.1429-1-mario.limonciello@amd.com>
+In-Reply-To: <20221215021854.1429-1-mario.limonciello@amd.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Enabled=true;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_SetDate=2023-01-03T14:56:59Z;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Method=Privileged;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_Name=Public-AIP 2.0;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_ActionId=f635e0c6-49d2-49bd-a827-f0f5d43d50dd;
+ MSIP_Label_d4243a53-6221-4f75-8154-e4b33a5707a1_ContentBits=1
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_enabled: true
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_setdate: 2023-01-03T14:58:12Z
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_method: Privileged
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_name: Public-AIP 2.0
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_siteid:  3dd8961f-e488-4e60-8e11-a82d994e183d
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_actionid:  68b6f9d5-1ab5-4b7a-986f-17d619c7a7a5
+msip_label_d4243a53-6221-4f75-8154-e4b33a5707a1_contentbits: 0
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN0PR12MB6101:EE_|BN9PR12MB5052:EE_
+x-ms-office365-filtering-correlation-id: dbcf43cb-6118-4f6c-dada-08daed9aef78
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  /Ou/cPzkGHDiDhwCXLu8T8MN/+jdHTcSk+gLj8CfYCJU2prM4o0vf+wRzzxnIGP9fWluXHsXL7KhfHcavYZSySHLeixqnJn0cCBUZ8yCPiDBW7dtiOHMAJmNz1OFASnBMCs7uo4Tm3wXx7B2drmtCgXjpSidWjAwIV45qv7Td660PdNWRDedLf2/24835eDokj9srcCCn5j3Wum1PjVqLOAoqVQ5vpM08RfhV2PpkxB8vxljFT/3csZ64GC94KAaXf42qhZ6vM95CCJ9zWX380z3KR0JpnSoCQb/tD06mCNsyh/zjpNmGKVpTk7vulUvx486nioyXMjP2sqj7K1YdVUXtRqbNvqhlLGCIiUXML9B1RDdIbcyGPzPG0ZXsWa7rm5WsM4/WL2v+xypasP4FiIHYxNogmvtwX5g2sro5Lgskme8TN3PneEIJK+ZPiKB3NZeh53099CYTNfz5Kis9uzsuBU98ILSvcOSh1jX28sVGbRwi2X7zQ7RITj4W5Y4MAjjFPY1ogYZBh8bWVhFr8BWPLBDJVL6TOs+d6LhPwAB898gWXLReJvNakD6Ebfl0yBhfUC/cSKCfQcyn5DhCa0wW7x53tS9QKllrlUkBS1HRAtBJc3DZ2lDKUMjIrURs96Qnzuk4qdCw9yOn/juPSyBlYETnX1m3loi3OHdQljdmhrR7wQ4cVMMMHQEbAIfpC4acN6EfvjKt6U5lOCAd4Ac9cWpz51PctRY5nFlqDk=
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(136003)(346002)(39860400002)(376002)(396003)(451199015)(5660300002)(2906002)(52536014)(8936002)(8676002)(4326008)(41300700001)(66476007)(54906003)(66946007)(64756008)(110136005)(66446008)(76116006)(71200400001)(316002)(478600001)(66556008)(53546011)(9686003)(186003)(55016003)(33656002)(7696005)(6506007)(83380400001)(122000001)(38100700002)(38070700005)(86362001)(22166006);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?us-ascii?Q?k01iMMtMp5AWKIWPHD6PUzdwZveGFtqMkn3qx53C+w63EieGBTSpAKZinu/G?=
+ =?us-ascii?Q?dfAdOIhdjQI0b3shkDlzmNQkuEdTHfMOwVgb0iYrnI/IWDQMq0k4m/hNMujc?=
+ =?us-ascii?Q?Z+QE7b2XCqNhjutdlKdds4k/p/p5i0Ll297HeUhbQde+XESmbwfXrc5FWQoP?=
+ =?us-ascii?Q?+uEXcCafvnt55nwhT7px/7EBZc1far6Bb1DQctUlhP9tVsvkFMVDaoSKZJFj?=
+ =?us-ascii?Q?VJRQfYqS7pjvwZxe9IbtL8BTmD+78SJxdE1dr4oBetVCtloGOI7trK1zD24i?=
+ =?us-ascii?Q?GYe4vi4YFATcNqfcu11za28VXX8F6Inz6m+to2Y4Q6pFxLDKyc8vhGVKckcA?=
+ =?us-ascii?Q?stnHc14Hcfkj5x6PDvjYib3wRVukFFoWKLEmEVkQrkbCqR5uDwYWVmzNdjys?=
+ =?us-ascii?Q?HadqOcDnaX917Cxp+uZ5JBY8rMnfjl0MzUYfPG9r8gHrIjfB39mQ26652kop?=
+ =?us-ascii?Q?ZnNNBMndP0/MF0E8LMFkrox0jumj61ur7cBMG9St0Kb5WcRn1ZhZ0H4ViZtv?=
+ =?us-ascii?Q?Gce4FgatknYR5QN6nEHPChuEAIq2xj7N71dfkLlUIawebWr7pMhTepc8HHOP?=
+ =?us-ascii?Q?gVws6KFiNJ/WJhdmtBZcIhNDHCBMBs2ikncsZiRfTBBfAhEuBvVeNhlBSWt+?=
+ =?us-ascii?Q?RZrmxPfqKGoc5CSNIbdhT5xYTUz0f2feISZ63GzeP6hpmxMyhts9iSX0CGmY?=
+ =?us-ascii?Q?XOMQkZiJxjcTRqeSelTpcOiDjjE4juwP08MovWmxJYpxk7qhV0Tl7JYxYQ3x?=
+ =?us-ascii?Q?miTSwaItOcrDzx/WbaAbIHSGH15VBy6FfE31mS+V/9enBNvcVFHbi39dGrNh?=
+ =?us-ascii?Q?GIaEHhB5UXqW9lqCQGHvUauPSwhmur0BHwm5R2P8FnhBZL83KGIFfikFqyPO?=
+ =?us-ascii?Q?rrFqoUxy1xdVqc4FD4IedTLBgDR3ZwNhnFj5avre2oJS6HQTK30LMOLHj4Bf?=
+ =?us-ascii?Q?mUl/RaU3y5dcPMYEFtpt6SbpYCtM6TK+itTWINDoMOfYn79Ck34dCctCuqto?=
+ =?us-ascii?Q?Pa5GiSJYqYssxxvDFyMQFZ4G1wZo4JqBtSO7c4duq1Rdh2wCphw0eOXhAUAv?=
+ =?us-ascii?Q?24NDTHZhq+jh2MVlN2X8pl7NVBUT/JGObDx9AyjV74m6uAijDqDuSOb0NEIb?=
+ =?us-ascii?Q?iM8N+lxELvbv+e9BuWCtFiMnqwPK/awpy4GHJIex7fMl+YvZGlhZyEaViA+f?=
+ =?us-ascii?Q?kpOR0myRi8eTHkfvlow8e/OTZm0rq7YhLjELyucLr2dESxlRyVKzUsgSNKbj?=
+ =?us-ascii?Q?8GoFj7dxmf4/UQkJhjoFEBtclyxgpffL1SmepLjWm6JUtBA0hNEt5yraEV9e?=
+ =?us-ascii?Q?FuOuNFpize1WmUO50KqVP3Q9M49JbGuMseTTM0b8e4542JCby1FjZDjpVY5k?=
+ =?us-ascii?Q?0cw4u5AQ6dSFK13WmpIZjF16hpZV9pdsEak17clK3zJ8MAvO579s+yB5coZZ?=
+ =?us-ascii?Q?bCXMvvXBSOPIsMsJ1rNIJvqhmGlZuSsj2l0DMM5trqhHLnvbropOE5ZMzKYT?=
+ =?us-ascii?Q?nlqfCXdUGKys6jHxb0TJCQOv4OV154GHEYWfZSdaXIY203gsYwnUQrxRSCBo?=
+ =?us-ascii?Q?5COKbGIm9hGAU9KS850UYNxup+6ELC59Kl7bs64UTvrj8tzGVL7OjtYnZIKf?=
+ =?us-ascii?Q?RKT/5zl8nCyPE1tJfZBr+i0=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: dbcf43cb-6118-4f6c-dada-08daed9aef78
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jan 2023 14:58:12.4455
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: weA63HyLoUi27OJ7FVLTTD1hkEivCKX5+arE8iKXiC6gSgOQ0bUnZEjIKEqIx6HCylrT9709RmOYIl+TYdJfNw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5052
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_055739_498574_A82DF1EE 
-X-CRM114-Status: UNSURE (   6.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230103_065819_817081_3AA6D0ED 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,7 +152,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Regarding the commit title, there's no xgmac block in the FEC. "XG"
-means 10 Gbps, surely there's no such thing on imx/Vybrid. Can just say:
-"net: fec: Separate C22 and C45 MDIO transactions".
+[Public]
+
+> -----Original Message-----
+> From: Limonciello, Mario <Mario.Limonciello@amd.com>
+> Sent: Wednesday, December 14, 2022 20:19
+> To: Marcel Holtmann <marcel@holtmann.org>; Johan Hedberg
+> <johan.hedberg@gmail.com>; Luiz Augusto von Dentz
+> <luiz.dentz@gmail.com>; Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Limonciello, Mario <Mario.Limonciello@amd.com>; Sean Wang
+> <sean.wang@mediatek.com>; Tsao, Anson <anson.tsao@amd.com>; linux-
+> bluetooth@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-
+> kernel@lists.infradead.org; linux-mediatek@lists.infradead.org
+> Subject: [PATCH] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
+>=20
+> This bluetooth device is found in a combo WLAN/BT card
+> for a MediaTek 7921e.
+>=20
+> The device information:
+>=20
+> T:  Bus=3D01 Lev=3D01 Prnt=3D01 Port=3D02 Cnt=3D01 Dev#=3D  2 Spd=3D480  =
+MxCh=3D 0
+> D:  Ver=3D 2.10 Cls=3Def(misc ) Sub=3D02 Prot=3D01 MxPS=3D64 #Cfgs=3D  1
+> P:  Vendor=3D0489 ProdID=3De0f2 Rev=3D 1.00
+> S:  Manufacturer=3DMediaTek Inc.
+> S:  Product=3DWireless_Device
+> S:  SerialNumber=3D000000000
+> C:* #Ifs=3D 3 Cfg#=3D 1 Atr=3De0 MxPwr=3D100mA
+> A:  FirstIf#=3D 0 IfCount=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01
+> I:* If#=3D 0 Alt=3D 0 #EPs=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D81(I) Atr=3D03(Int.) MxPS=3D  16 Ivl=3D125us
+> E:  Ad=3D82(I) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
+> E:  Ad=3D02(O) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
+> I:* If#=3D 1 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 2 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 3 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 4 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 5 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
+> I:  If#=3D 1 Alt=3D 6 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3Dbtusb
+> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
+> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
+> I:* If#=3D 2 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3D(none)
+> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
+> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
+> I:  If#=3D 2 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
+=3D(none)
+> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
+> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
+>=20
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Cc: Anson Tsao <anson.tsao@amd.com>
+> Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+Hi,
+
+I didn't hear back about this.  Did this get lost in the holidays?
+
+Thanks,
+
+> ---
+>  drivers/bluetooth/btusb.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index f05018988a17..c413826787b5 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -473,6 +473,9 @@ static const struct usb_device_id blacklist_table[] =
+=3D {
+>  	{ USB_DEVICE(0x0489, 0xe0e0), .driver_info =3D BTUSB_MEDIATEK |
+>=20
+> BTUSB_WIDEBAND_SPEECH |
+>  						     BTUSB_VALID_LE_STATES
+> },
+> +	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info =3D BTUSB_MEDIATEK |
+> +
+> BTUSB_WIDEBAND_SPEECH |
+> +						     BTUSB_VALID_LE_STATES
+> },
+>  	{ USB_DEVICE(0x04ca, 0x3802), .driver_info =3D BTUSB_MEDIATEK |
+>=20
+> BTUSB_WIDEBAND_SPEECH |
+>  						     BTUSB_VALID_LE_STATES
+> },
+> --
+> 2.34.1
 
