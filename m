@@ -4,101 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3DF3C54EBF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 19:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9479AC4708D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 19:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=; b=Hkb44aZpZ3Q70waOT6PzFhPq/2
-	NmijG2gR+FjJOE48iIDQ81e0DcT8TBogZwDhvtnEBo35e55+MMNWAAX+M4HeeZXKq1CHo5Q0inJLW
-	yyV67zF6daI2VY6STthNCXwbMg9tcljrnLLaPrdkZURhXG5Fwp6Nv+xvg+m2WuNM+/WEtPqKjtC9a
-	hlg2ym9i5OKpHEfl2GWpMp0L+gw3E2yzp5b/hSK+uh9AJRJV1n4XwfLBfXhXCBXgq/yvip8e2i0BG
-	misrrYnLaJmlUI+u07dgaZjxnKm4cEJjpBaKx3ZiikzN2vKKB1TYVOBooXt7HXcqGZrDSFS9OPFEE
-	dXFrJtfw==;
+	bh=7Xm0VSVgweG9m9XLAVLMPG/lhjko9IbQj5SjAoXva0c=; b=MEJMiQTpIYW48Q0BZg9Yp3LZAw
+	kCawWYOw4YsSG6y3hDtJeYrWC97s7qtuqHVZgohte0lksogzP9GbvbBeuUUD8mL3D+l3szbNo/WuG
+	4NmaTi4+Z6ZKwm7A/oadSbew+YLNcLrHh8zbHf48FJQrgXLQjuF4B/KF4lp7vTIv73O+QzvcyWw3T
+	h9kz/h2HtK4sf+cs/mKka9x1Gb06IYTwjwfGBsLNRkVcFhUrSrtk/D3WBamzAgRLhobdn/HsWCWMO
+	hrT1SO77IUKM/8QSdv/9QeFOGILT4Os9KlDS9cmFBQSYZul1dhABfRjxLF84PGCbSQNqD7/m49LPw
+	EtLtSWPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCmek-004Egw-Iv; Tue, 03 Jan 2023 19:09:02 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1pCmqK-004L1R-WC; Tue, 03 Jan 2023 19:21:01 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pClWr-003dRV-5S; Tue, 03 Jan 2023 17:56:51 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id i15so45028683edf.2;
-        Tue, 03 Jan 2023 09:56:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=;
-        b=aKwytJh4KX20LXxOryZJE0HuJG5HcaCeIxX3tFX5yZz0gEhN3vG/Ugzp3jfNHHAfFZ
-         zpCCt+btieU/rdBGPWbe3sejqYvYS8FTg2R49yHZy6jaIbMe+hPE/DtWRavxYZwoIN0T
-         QVzbnO8+eVVo9l/ID7dtlfG3fmFswrJrboaiZ3nNEzQHN+QM9WO5pCpA1f5g1joQhIXW
-         l72WenGT/6K3hPFCxw3kIKLiLCVK3azdhhESTO51lnjK++sWuiMrmBZf4WNy7jNIp7fY
-         YzJXiRkbxN0lvgynjSnG5SWR5+Uu2VYbKX6KvdPUI1pO/IiTONJIZdImNLn22/Eq/9AP
-         aWWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p7a1U2/c7WJv3NEBfJYAOixnmGcKLo0CuycVU47++aQ=;
-        b=UMT+350emZEqHyb1bHN5OkgYHe0SizMFrcCz9sg6rqhAaXakiaTpuzXJkljXFNwMp6
-         /lmZS2rR3GuXHxPfZVENmncQfzJc+9UUgodG6wGyzFL3ZkHxPc93cNdzL6zuqTv/UmXQ
-         gT4P3AiKvNgdh+1c4TDQnYtRwkC0rKb/d6MX3EhJ0mN0mIe+AK8MsT/3WLa8AteHUaoC
-         cjXop1GhJX+CeHs+O5JrIkJ0skQK+OEha6tU5YVA7kTV9udrT8DQSoPbFSOtIbdp0o2e
-         T0TmohS5urYZ5i6WfvrxsNnE68V3FsPRpPXllYtEeB1SpDPYchCiG1pfH0qrtgK4LO48
-         BAYw==
-X-Gm-Message-State: AFqh2kqghg52Io8p1ZSzdzxVbHKuTFSd0TzgJBYHSeNpGnq4iagmOKm8
-	GvvtRGTyOUbm5FI+mSgspkA=
-X-Google-Smtp-Source: AMrXdXtEtXWdICTqd1aomJDuH7ZCpdFY3T3zFdVGv7z0OI1uDhXO0zYB+HaMBkbXi0VNrPwD5wFXmA==
-X-Received: by 2002:a05:6402:390b:b0:465:f6a9:cb7b with SMTP id fe11-20020a056402390b00b00465f6a9cb7bmr39249116edb.12.1672768605161;
-        Tue, 03 Jan 2023 09:56:45 -0800 (PST)
-Received: from skbuf ([188.26.185.118])
-        by smtp.gmail.com with ESMTPSA id h14-20020aa7c94e000000b0046f77031d40sm13864230edt.10.2023.01.03.09.56.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jan 2023 09:56:44 -0800 (PST)
-Date: Tue, 3 Jan 2023 19:56:41 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Colin Foster <colin.foster@in-advantage.com>
-Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	John Crispin <john@phrozen.org>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
-	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	UNGLinuxDriver@microchip.com,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	George McCollister <george.mccollister@gmail.com>,
-	Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 net-next 09/10] dt-bindings: net: add generic
- ethernet-switch-port binding
-Message-ID: <20230103175641.nqvo2gk43s3nanwg@skbuf>
-References: <20230103051401.2265961-1-colin.foster@in-advantage.com>
- <20230103051401.2265961-10-colin.foster@in-advantage.com>
+	id 1pCmhL-004G84-8y; Tue, 03 Jan 2023 19:11:49 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 303IhnJm027706;
+	Tue, 3 Jan 2023 19:11:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type; s=qcppdkim1;
+ bh=7Xm0VSVgweG9m9XLAVLMPG/lhjko9IbQj5SjAoXva0c=;
+ b=AZCBltFd937D92yNwHAFgbM4VGvxujUyhhaoQHcXv6g8VGDZtAFM6ceZC8PUsYU35n3n
+ chfTQHZIxdcjlzMhTgiKUTv24PUJkDvhtsapTI44ZAOPWFQYxNGnzm6G3v/PSTGOfiKw
+ iphtqqspQd8wj3ByBraHdWOcHseldwlxfWshmV22v3J90dY5NARsC5NuQbiaRdLNmbmA
+ 2ClQYLztAKdAmyPc35PWppsK95+LpWXPiVQjg8Ykypu8XjxSdLxhMqZnbxl7FsFENAYA
+ IPdSYvbFSZUC5oLbK6olNMXUOR5VjALQDClUOJhRlWSWs1DRwGtEr6rcJjmzZa7QP2/p 0A== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3mvsvv81j4-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 03 Jan 2023 19:11:29 +0000
+Received: from nasanex01a.na.qualcomm.com (corens_vlan604_snip.qualcomm.com [10.53.140.1])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 303JBRTX010026
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 3 Jan 2023 19:11:28 GMT
+Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.36; Tue, 3 Jan 2023 11:11:27 -0800
+From: Asutosh Das <quic_asutoshd@quicinc.com>
+To: <quic_cang@quicinc.com>, <martin.petersen@oracle.com>,
+        <linux-scsi@vger.kernel.org>
+CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
+        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
+        <bvanassche@acm.org>, <avri.altman@wdc.com>, <mani@kernel.org>,
+        <beanhuo@micron.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>,
+        <linux-arm-msm@vger.kernel.org>,
+        Alim Akhtar
+	<alim.akhtar@samsung.com>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        Jinyoung Choi
+	<j-young.choi@samsung.com>,
+        Arthur Simchaev <Arthur.Simchaev@wdc.com>,
+        Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+        Kiwoong Kim
+	<kwmad.kim@samsung.com>,
+        Eric Biggers <ebiggers@google.com>,
+        open list
+	<linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v12 01/15] ufs: core: Probe for ext_iid support
+Date: Tue, 3 Jan 2023 11:09:20 -0800
+Message-ID: <44708307fffa728fc912d4a93a47bb4578b83761.1672771664.git.quic_asutoshd@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1672771664.git.quic_asutoshd@quicinc.com>
+References: <cover.1672771664.git.quic_asutoshd@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230103051401.2265961-10-colin.foster@in-advantage.com>
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: kuapKaZHdTlyjSQCqcoudn91HfeMOcWz
+X-Proofpoint-GUID: kuapKaZHdTlyjSQCqcoudn91HfeMOcWz
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2023-01-03_07,2023-01-03_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 spamscore=0
+ lowpriorityscore=0 mlxscore=0 malwarescore=0 suspectscore=0
+ impostorscore=0 adultscore=0 bulkscore=0 mlxlogscore=999
+ priorityscore=1501 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2212070000 definitions=main-2301030164
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_095649_330743_FFA720B6 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20230103_111143_596568_59EF29B7 
+X-CRM114-Status: GOOD (  24.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,44 +114,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 02, 2023 at 09:14:00PM -0800, Colin Foster wrote:
-> diff --git a/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
-> new file mode 100644
-> index 000000000000..126bc0c12cb8
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
-> @@ -0,0 +1,25 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/ethernet-switch-port.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Generic Ethernet Switch Port
-> +
-> +maintainers:
-> +  - Andrew Lunn <andrew@lunn.ch>
-> +  - Florian Fainelli <f.fainelli@gmail.com>
-> +  - Vladimir Oltean <olteanv@gmail.com>
-> +
-> +description:
-> +  Ethernet switch port Description
+Task Tag is limited to 8 bits and this restricts the number
+of active IOs to 255.
+In Multi-circular queue mode, this may not be enough.
+The specification provides EXT_IID which can be used to increase
+the number of IOs if the UFS device and UFSHC support it.
+This patch adds support to probe for ext_iid support in
+ufs device and UFSHC.
 
-Still doesn't look too great that the ethernet-switch-port description
-is this thing devoid of meaning. What is said about the dsa-port is what
-the description should be here, and the description of the dsa-port is
-that it's a generic Ethernet switch port plus DSA specific properties.
+Co-developed-by: Can Guo <quic_cang@quicinc.com>
+Signed-off-by: Can Guo <quic_cang@quicinc.com>
+Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 32 ++++++++++++++++++++++++++++++++
+ include/ufs/ufs.h         |  5 +++++
+ include/ufs/ufshcd.h      |  4 ++++
+ include/ufs/ufshci.h      |  7 +++++++
+ 4 files changed, 48 insertions(+)
 
-> +
-> +$ref: ethernet-controller.yaml#
-> +
-> +properties:
-> +  reg:
-> +    description: Port number
-> +
-> +additionalProperties: true
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 99ca5b0..025386c 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -2261,6 +2261,10 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
+ 	if (err)
+ 		dev_err(hba->dev, "crypto setup failed\n");
+ 
++	hba->mcq_capabilities = ufshcd_readl(hba, REG_MCQCAP);
++	hba->ext_iid_sup = FIELD_GET(MASK_EXT_IID_SUPPORT,
++				     hba->mcq_capabilities);
++
+ 	return err;
+ }
+ 
+@@ -7766,6 +7770,31 @@ static void ufshcd_temp_notif_probe(struct ufs_hba *hba, const u8 *desc_buf)
+ 	}
+ }
+ 
++static void ufshcd_ext_iid_probe(struct ufs_hba *hba, u8 *desc_buf)
++{
++	struct ufs_dev_info *dev_info = &hba->dev_info;
++	u32 ext_ufs_feature;
++	u32 ext_iid_en = 0;
++	int err;
++
++	/* Only UFS-4.0 and above may support EXT_IID */
++	if (dev_info->wspecversion < 0x400)
++		goto out;
++
++	ext_ufs_feature = get_unaligned_be32(desc_buf +
++				     DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++	if (!(ext_ufs_feature & UFS_DEV_EXT_IID_SUP))
++		goto out;
++
++	err = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++				      QUERY_ATTR_IDN_EXT_IID_EN, 0, 0, &ext_iid_en);
++	if (err)
++		dev_err(hba->dev, "failed reading bEXTIIDEn. err = %d\n", err);
++
++out:
++	dev_info->b_ext_iid_en = ext_iid_en;
++}
++
+ void ufshcd_fixup_dev_quirks(struct ufs_hba *hba,
+ 			     const struct ufs_dev_quirk *fixups)
+ {
+@@ -7864,6 +7893,9 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+ 
+ 	ufshcd_temp_notif_probe(hba, desc_buf);
+ 
++	if (hba->ext_iid_sup)
++		ufshcd_ext_iid_probe(hba, desc_buf);
++
+ 	/*
+ 	 * ufshcd_read_string_desc returns size of the string
+ 	 * reset the error value
+diff --git a/include/ufs/ufs.h b/include/ufs/ufs.h
+index c146de5..bea7b20 100644
+--- a/include/ufs/ufs.h
++++ b/include/ufs/ufs.h
+@@ -169,6 +169,7 @@ enum attr_idn {
+ 	QUERY_ATTR_IDN_AVAIL_WB_BUFF_SIZE       = 0x1D,
+ 	QUERY_ATTR_IDN_WB_BUFF_LIFE_TIME_EST    = 0x1E,
+ 	QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE        = 0x1F,
++	QUERY_ATTR_IDN_EXT_IID_EN		= 0x2A,
+ };
+ 
+ /* Descriptor idn for Query requests */
+@@ -378,6 +379,7 @@ enum {
+ 	UFS_DEV_EXT_TEMP_NOTIF		= BIT(6),
+ 	UFS_DEV_HPB_SUPPORT		= BIT(7),
+ 	UFS_DEV_WRITE_BOOSTER_SUP	= BIT(8),
++	UFS_DEV_EXT_IID_SUP		= BIT(16),
+ };
+ #define UFS_DEV_HPB_SUPPORT_VERSION		0x310
+ 
+@@ -629,6 +631,9 @@ struct ufs_dev_info {
+ 	u8	b_presrv_uspc_en;
+ 
+ 	bool    b_advanced_rpmb_en;
++
++	/* UFS EXT_IID Enable */
++	bool	b_ext_iid_en;
+ };
+ 
+ /*
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index dd5912b..13d339c 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -748,6 +748,7 @@ struct ufs_hba_monitor {
+  * @outstanding_lock: Protects @outstanding_reqs.
+  * @outstanding_reqs: Bits representing outstanding transfer requests
+  * @capabilities: UFS Controller Capabilities
++ * @mcq_capabilities: UFS Multi Circular Queue capabilities
+  * @nutrs: Transfer Request Queue depth supported by controller
+  * @nutmrs: Task Management Queue depth supported by controller
+  * @reserved_slot: Used to submit device commands. Protected by @dev_cmd.lock.
+@@ -832,6 +833,7 @@ struct ufs_hba_monitor {
+  *	device
+  * @complete_put: whether or not to call ufshcd_rpm_put() from inside
+  *	ufshcd_resume_complete()
++ * @ext_iid_sup: is EXT_IID is supported by UFSHC
+  */
+ struct ufs_hba {
+ 	void __iomem *mmio_base;
+@@ -873,6 +875,7 @@ struct ufs_hba {
+ 
+ 	u32 capabilities;
+ 	int nutrs;
++	u32 mcq_capabilities;
+ 	int nutmrs;
+ 	u32 reserved_slot;
+ 	u32 ufs_version;
+@@ -982,6 +985,7 @@ struct ufs_hba {
+ #endif
+ 	u32 luns_avail;
+ 	bool complete_put;
++	bool ext_iid_sup;
+ };
+ 
+ #ifdef CONFIG_SCSI_UFS_VARIABLE_SG_ENTRY_SIZE
+diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
+index 9346efe..f41bc7b 100644
+--- a/include/ufs/ufshci.h
++++ b/include/ufs/ufshci.h
+@@ -22,6 +22,7 @@ enum {
+ /* UFSHCI Registers */
+ enum {
+ 	REG_CONTROLLER_CAPABILITIES		= 0x00,
++	REG_MCQCAP				= 0x04,
+ 	REG_UFS_VERSION				= 0x08,
+ 	REG_CONTROLLER_DEV_ID			= 0x10,
+ 	REG_CONTROLLER_PROD_ID			= 0x14,
+@@ -69,6 +70,12 @@ enum {
+ 	MASK_OUT_OF_ORDER_DATA_DELIVERY_SUPPORT	= 0x02000000,
+ 	MASK_UIC_DME_TEST_MODE_SUPPORT		= 0x04000000,
+ 	MASK_CRYPTO_SUPPORT			= 0x10000000,
++	MASK_MCQ_SUPPORT			= 0x40000000,
++};
++
++/* MCQ capability mask */
++enum {
++	MASK_EXT_IID_SUPPORT = 0x00000400,
+ };
+ 
+ #define UFS_MASK(mask, offset)		((mask) << (offset))
+-- 
+2.7.4
 
-Also, I see your patches are deferred in patchwork, and while this isn't
-really for me to say, presumably it's because there was no announcement
-so far that net-next reopened.
 
