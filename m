@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1133C46467
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73418C3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 16:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZtSxpSjX58ynpD01H51Yz32AIwKbxvwZO/htBdjgQhU=; b=UXvejQ7ULXzoU/0sg//PoKx57Z
-	4mCFOiqeo9KosL2m3PN5c8SFUEAVBvCyMXAZiKD1UpAyqwilSRR3i86eoTqCJuUZnjsPQmZh7e2oo
-	AP1zPXwvfm/oU8IDJ61LbOeurPMTFLdvYJSjzeilo4ncjI3f1iMAlNpO2zcH06VmbRR9ZiLxfWDfz
-	+2yUzsByTKTYVRCR2/WdzOalzkfmcRnHv74UWCpWSu/LBROLg7ZxREo+mMFnMREWvLA6mweqYqHJ5
-	V+sVgUI6aPvxP0sExGQyXBCw+MkfXcMrZr6RSI/beHAEi+ZaPrsn3AhmHMCftTZj+bwW7QCA7lBQS
-	IQKXVcgA==;
+	bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=; b=xxgLD/5ZY1a8jXBkdW7A+E2NoY
+	5DCnuMcL77fdjlWAPAIy86m71EwO7Yhx6acWu+cjhih4PH//9n85Y0ymj4LUV99sxIvoEYnRzGu96
+	SJEOnwbpwPstEvdZBNwYwZkrTwZm3oCFSQgplwr0UFLEy4URk2Y8u8RliqVuo2LIdmV03QGvJKy5H
+	Q/KnxVSsbKfuUE2F/yner0liwqVdzBjQg+St6lMidMpSdFBTx6j+5Ey7XTn0PRnDSTtSbnAeAPNqh
+	h6IXhwMXuuOEEJF/yt249oXW+sRsGVN0WajkG1M7RPtc5gHzbDSt8LbBnsb4TH/wEozjk7I2x6twN
+	cr0DIyjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCkUv-0036Op-HI; Tue, 03 Jan 2023 16:50:45 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1pCkXO-0037kc-2u; Tue, 03 Jan 2023 16:53:18 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pChlF-001iMR-Nn; Tue, 03 Jan 2023 13:55:28 +0000
-Received: by mail-ej1-x635.google.com with SMTP id ud5so73805048ejc.4;
-        Tue, 03 Jan 2023 05:55:23 -0800 (PST)
+	id 1pChnP-001jRG-C4; Tue, 03 Jan 2023 13:57:40 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id ud5so73824266ejc.4;
+        Tue, 03 Jan 2023 05:57:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZtSxpSjX58ynpD01H51Yz32AIwKbxvwZO/htBdjgQhU=;
-        b=NWvGHpwyDNWGPavMB83+2pIXyyjvNcMRZF7kNLcgZILW4LhyNZhueL9uCOFlYStAxX
-         a5yChIeoLzAIk75K/SD7/Q6RmenE2Ie3nRtEN1YwUjEWUgzoUm2e/lc/WYLuV5BWrpnp
-         cukx7TMS1vciDJqH1yho4Vd4gsunpPcGLS7+7LMwEGfoGhxODaGxVm0lEzbfSDbY+6dF
-         jnVgQSrvead51nVPKMBVSmc70iMkIiVExjJBBARX1qoID8wQuJ9q+LgJBdmfU3gbAR/s
-         hJ/j3B9j3VMqYr3OZ9z7yLXQAbMamIg0fWWnu4h56ZEfkZesTprxp3knCWqYs5GHsFAx
-         d18A==
+        bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=;
+        b=f/XvfUxi6Y0rsfgiOoq/mD7Rx41wdk8aKmk/uWT++mY+WIDwkDdOK6GnzV6Ai6643i
+         uhSwNjlL3L3Nt4mjJc1iZFlYPVw9WD5YTI/C2o6JCc9xFbHnlpp+4JU9nIhxQ+hiWXBd
+         B5sNy/sPbatnJT9qWxxrteRXbaw+nlmoS8zXKR9wMaI9ZsXHlLo+5xLPOpQIYKrlzQpE
+         5+O9mrtWCwpvo03dielomObAafVznn40dbmQT0Gvbtaulxf/VoiOreOskgBPq82gf6q+
+         GdbtCO1E8JIw6IAO5wfaUdH5WhvO6zS70Ss6C6UePL6TNcu9g3j1I0mEq9uZrFYP0rIH
+         qzAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZtSxpSjX58ynpD01H51Yz32AIwKbxvwZO/htBdjgQhU=;
-        b=a7lrpc7VzBdFwJe4CcCjT2cTQ4sdtlMRRZ2KlHybQhGrFgcM0byZu3p5FuUF3fc1e/
-         ihFl9W+8vWh8tD1AYudiUB7M/I3lDbIqip6McJ+bP87vv3GHgorhk+80xaGkClY/6AWc
-         3zC7ocUEOg7BIlUqzgHz74MxWn2dY1M6S8sRgKnmlsCCxiVM7IwhrtlijW//WxWpN49e
-         SuF784wK2WWWAH37tZXe+3YzJXDmCt3dmRXNXCCMf7Y+FyxHQ/0+NvTzfFSlg+SQpzGF
-         EQb2z8ZCfR4fv3YODKeTs/DBdzPD/xcAtJNquyP/heSDeA/8JVYEwUIC7ip7DO2OSy0g
-         mrAA==
-X-Gm-Message-State: AFqh2kop964i6dqIQgM6L5AUz36gp/dccAef5d/k3gF9kybtgdbio/fg
-	5UCk6iHAyHb6Fb8GW7L0cTE=
-X-Google-Smtp-Source: AMrXdXul+Qhor0TFBD82nysJpNI3VhxWK05SAKn9RHHdHtJl9+gmsiDFWAngpR8gHsFYoJeQk44dqA==
-X-Received: by 2002:a17:907:7d8f:b0:7b5:911c:9b12 with SMTP id oz15-20020a1709077d8f00b007b5911c9b12mr46938748ejc.1.1672754122626;
-        Tue, 03 Jan 2023 05:55:22 -0800 (PST)
+        bh=wiBka+STdfWqXEYEF1M8oLHBS2PSmzps9GRArvQ0wNQ=;
+        b=16BCxJZroc6qwivWBaBMlxpQ0WAbCMb0oV35GXasM+b2GZ30r/bxFwuqH6iYQ9l1Wu
+         1Cc/4IazmTMjtbYbsjwUXWjbelovi6qLdBEn+llNT5wwmvo08cKw72W9+P/mQ0oBqlPO
+         ohHyv9TirGeyzOle2CUlOURLxDN44alXKzaPa2RCWBlEve0O1vBGrWT1gZL8/PYh8qc5
+         eXTKyXhi9TXTdIE+T9l1vVeeBfsHkFcv8m8ETaHzDRyt8qa/a+O0611OU7tMS5xD8keA
+         d1YabPm7m/ojyNzQ00W5zg2qc8B9PQEFq6D/vFEWKrtheGHw2tm8mf2tc8z/E9FK2M9J
+         ZJKA==
+X-Gm-Message-State: AFqh2kouxXvpl0bzugCnSSGf2earcfsQmtM8m1qdIvIp3I+PtylPKO9B
+	lNhI3h2mKA7aSmFjFHe7jA0=
+X-Google-Smtp-Source: AMrXdXvHEPEUBS/O7zaaU5DAH5vatKPRD27MbUHcClggxuFQNb+o/DXxJXkEQA3LieO19gw+yFwtrg==
+X-Received: by 2002:a17:906:8447:b0:7c8:9f04:ae7e with SMTP id e7-20020a170906844700b007c89f04ae7emr38712372ejy.22.1672754255330;
+        Tue, 03 Jan 2023 05:57:35 -0800 (PST)
 Received: from skbuf ([188.26.185.118])
-        by smtp.gmail.com with ESMTPSA id j18-20020a1709066dd200b0080345493023sm13998125ejt.167.2023.01.03.05.55.21
+        by smtp.gmail.com with ESMTPSA id k10-20020a170906158a00b007ba9c181202sm14095026ejd.56.2023.01.03.05.57.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jan 2023 05:55:22 -0800 (PST)
-Date: Tue, 3 Jan 2023 15:55:19 +0200
+        Tue, 03 Jan 2023 05:57:34 -0800 (PST)
+Date: Tue, 3 Jan 2023 15:57:32 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Michael Walle <michael@walle.cc>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -80,18 +80,22 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH RFC net-next v2 08/12] net: ethernet: freescale: xgmac:
+Subject: Re: [PATCH RFC net-next v2 09/12] net: ethernet: freescale: fec:
  Separate C22 and C45 transactions for xgmac
-Message-ID: <20230103135519.oai43rj3waigqi54@skbuf>
+Message-ID: <20230103135732.saku5om5hgyw3ygk@skbuf>
 References: <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
- <20221227-v6-2-rc1-c45-seperation-v2-8-ddb37710e5a7@walle.cc>
+ <20221227-v6-2-rc1-c45-seperation-v2-0-ddb37710e5a7@walle.cc>
+ <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
+ <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-8-ddb37710e5a7@walle.cc>
+In-Reply-To: <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
+ <20221227-v6-2-rc1-c45-seperation-v2-9-ddb37710e5a7@walle.cc>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_055526_124538_BD0A807C 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20230103_055739_498574_A82DF1EE 
+X-CRM114-Status: UNSURE (   6.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,45 +110,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit message can be: "net/fsl: xgmac_mdio: Separate C22 and C45 transactions".
-
-On Wed, Dec 28, 2022 at 12:07:24AM +0100, Michael Walle wrote:
-> From: Andrew Lunn <andrew@lunn.ch>
-> 
-> The xgmac MDIO bus driver can perform both C22 and C45 transfers.
-> Create separate functions for each and register the C45 versions using
-> the new API calls where appropriate.
-> 
-> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Michael Walle <michael@walle.cc>
-> ---
-> v2:
->  - [al] Move the masking of regnum into the variable declarations
->  - [al] Remove a couple of blank lines
-
-Tested-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-
->  
-> -/*
-> - * Reads from register regnum in the PHY for device dev, returning the value.
-> +/* Reads from register regnum in the PHY for device dev, returning the value.
->   * Clears miimcom first.  All PHY configuration has to be done through the
->   * TSEC1 MIIM regs.
->   */
-
-I have some reservations regarding the utility of the comments in this
-driver. It's surely not worth duplicating them between C22 and C45.
-It might also be more productive to just delete them, because:
-
- - miimcom is a register accessed by fsl_pq_mdio.c, not by xgmac_mdio.c
- - "device dev" doesn't really refer to anything (maybe "dev_addr").
- - I don't understand what is meant by the comment "All PHY configuration
-   has to be done through the TSEC1 MIIM regs". Or rather said, I think I
-   understand, but it is irrelevant to the driver for 2 reasons:
-    * TSEC devices use the fsl_pq_mdio.c driver, not this one
-    * It doesn't matter to this driver whose TSEC registers are used for
-      MDIO access. The driver just works with the registers it's given,
-      which is a concern for the device tree.
- - barring the above, the rest just describes the MDIO bus API, which is
-   superfluous
+Regarding the commit title, there's no xgmac block in the FEC. "XG"
+means 10 Gbps, surely there's no such thing on imx/Vybrid. Can just say:
+"net: fec: Separate C22 and C45 MDIO transactions".
 
