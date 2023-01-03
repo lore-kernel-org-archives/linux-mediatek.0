@@ -4,70 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D95C3DA7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 14:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0958EC46467
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 15:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oUz+cSg9qmQjsB/pkUHHWeMCJFOPfkWaa0plxQ2oILA=; b=mVObAKNL1gIkdDVwizFIr8+Hyn
-	TOAehcwNRa/LoWr8ou5ZRnGiGFXhwrIniVitUuxrzNxR254tYzC+5FKMrEOP5SJWFJLA+3xJLu1MM
-	ewSyIXEEr/FK1B77lpT0JFEXR3fhnHQ4jz5rx4P6CkfP9WVDypb6nyRSQ1a3bEuy8t8NQ420F68H4
-	aFF0EIu3jp6VL1lEFyHwTzf1D0nnu43mTAfWdtY302xrsQAozX5WWwXCVbhxzuOniqKT+VPG2Qr1h
-	wFgiCnhzSca+zb+5BqEziY2Z9DmO6KpDgCd2Nj7IeocK/04NdoBr5nnoKdwxt9p9gGqt3MCGZheHb
-	5CULKPTQ==;
+	bh=kE4qqRxLpxxCedBuUJYA+jounttnp3G/CGQUAy2owUc=; b=cgdsI6pF204USUH/LzF38AnlxQ
+	vPU4OV5L71BlrkpNvJrurqX/fybclgRtzMozynt7wgMHBRvUxrR9wjQxYeWWCVHRjY5V8e5xywwnE
+	4XpdMpAdIiKKkpOkJVsAt6/qfy/PT/cXoXizL/JX6JQ7AYEP6JUW+fnwCKGzOixfgwdE7woAsbOcx
+	T+Bp92X8Ue+WB5x8Nce4B/FaElzNWYwvycYPcIYe0npE5G9RHtbZcyrUDs0JVDr/eCDfXF6einuoZ
+	Eg71BWUr7Stl3Oc4U5r0MWhBt+44Mlp4WJetuD50mfVqfUo+F+nrBYvTgeE+SDSV+BNcR39QpKKwJ
+	cw36eOfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCiQj-0022gk-LN; Tue, 03 Jan 2023 14:38:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pCjJz-002UYL-O8; Tue, 03 Jan 2023 15:35:24 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCgjn-001LUy-Uw; Tue, 03 Jan 2023 12:49:53 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 305F76602CFA;
-	Tue,  3 Jan 2023 12:49:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672750190;
-	bh=kLb7ZxO/t10qRzNfWMcuhgJ9EXOlFXY8vbB18QInejQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dqiCSMgQvi/04qrMXM6nENACo5DfvsyNuLBxHdjm3iaDh+jiqP2f+pEGbpB5tKNMm
-	 CeNrXN8Miys+y2TnDxifNRqNSS5y91iRZxqE/syBbreZbXoH+PNCJ8rMkgUmIEF57y
-	 L2g5z5fVE3XQl6xV0WABHmbUM7H5HbXwnGQcRSe6y7klzW0CUmQxXbxC08ZJUR+Ozy
-	 hC8xuurNE4CWoffNSwqdp7SjhyDWmH4F4sgvrDdYbeWTvZ93GXvbuU5n9nFWnz4ice
-	 BbfrWupgmsJBDWGmNYV5bNxTXJ3pSbHGi/Y5/tXeW+CjoTCS5qbS7rrVLQUtT1WZlX
-	 G97ur71uMRGmg==
-Message-ID: <ce7698f3-8b40-1394-342e-e6b099f9f77e@collabora.com>
-Date: Tue, 3 Jan 2023 13:49:48 +0100
+	id 1pCfSr-000xnp-KE
+	for linux-mediatek@lists.infradead.org; Tue, 03 Jan 2023 11:28:21 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id b3so45258577lfv.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Jan 2023 03:28:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kE4qqRxLpxxCedBuUJYA+jounttnp3G/CGQUAy2owUc=;
+        b=Ill95URu0ok8mTKcTGS2lBtZw4eZqXOgHuXYKVuUbo61K1thYXNo+Ruh9Glym7puZ0
+         zX+XPzU9HkF5NtDV9G9rXGtsfzmAOJikoXWin/OvNxtIq8uqfGhYmtrAPSEAsiU7V1Y5
+         oLVnULMbddELmoYJH5P78lCIHYZt6Xd4d5rGEnQ+jRQhTspmocjmECdaqb2f976PdL2z
+         TzHa+su9MOIZrwYWj4CqUurmPyIyctOCVXkevmsCzEw1W+ZEN/+9kvMz0UXZ0GelNyM3
+         ylERXrH6lkJrnMQzYqxWIvb8GHGOvWjgDwWntvVljGUDLd3hptx9gakn71TA3mAo2Yrd
+         L9gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kE4qqRxLpxxCedBuUJYA+jounttnp3G/CGQUAy2owUc=;
+        b=GOyixlJA/wW2YCf5jsDrb6tboJU32GnhdOLYt5hMUZvpUy5n868uue9IIjLQHX1ilq
+         lHX49rsGkfa5lIe4dH/3sU0ZS7S6Yj0HIS9RnB1UK5flYNAPlobQtEiZjZgArQqpeFLR
+         Z0Q1JG4RmA2fJ6cKF+TyfJ55Q48H2ci9AEHXiDjYdsFAJJ6gWGZDPkHnsgw3yevZ7VFi
+         uh72Dy0UN6pj5/BkB7ZsqNKwH87IgNgXs5Vku9TSCE40tgzcEWZBPyzs9XDKBude9uud
+         KNkcATxb5t+6/kkTI9rhNoubTcLRk3K+XwrNng9AUzJvi71Qmsr6RM5Ityk4v6bkd0Ta
+         LJDw==
+X-Gm-Message-State: AFqh2ko7QNF1kIlypSdkvS79YZHYYirJ5oOOIk6h4GNfnxJ8OsMMkejl
+	Gtbm+w9YkSTjxjmrle2kDSqIpsRyMS4f5/RH
+X-Google-Smtp-Source: AMrXdXvivJCiSvdg7M62GVqjA581ZqA/tb1WZnOzpgmcCBvtTZ9QkS3notudi/QiV+FIM4Pn1tKE8Q==
+X-Received: by 2002:a05:6512:3601:b0:4b7:13b:259d with SMTP id f1-20020a056512360100b004b7013b259dmr10839992lfs.48.1672745293524;
+        Tue, 03 Jan 2023 03:28:13 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id o10-20020ac24e8a000000b004b4fefacd89sm4798236lfr.139.2023.01.03.03.28.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Jan 2023 03:28:13 -0800 (PST)
+Message-ID: <30423568-df03-1d72-81fe-3a4b33214e5c@linaro.org>
+Date: Tue, 3 Jan 2023 12:28:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v1 10/13] soc: mediatek: mtk-svs: restore default voltages
- when svs init02 fail
+ Thunderbird/102.6.1
+Subject: Re: [RFC PATCH 3/4] dt-bindings: panel: Introduce dual-link LVDS
+ panel
 Content-Language: en-US
-To: Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>
-Cc: Fan Chen <fan.chen@mediatek.com>,
- Jia-wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221226094248.4506-1-roger.lu@mediatek.com>
- <20221226094248.4506-11-roger.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221226094248.4506-11-roger.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Aradhya Bhatia <a-bhatia1@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Maxime Ripard <maxime@cerno.tech>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>
+Cc: DRI Development List <dri-devel@lists.freedesktop.org>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Linux Kernel List <linux-kernel@vger.kernel.org>,
+ Linux RISC-V List <linux-riscv@lists.infradead.org>,
+ Linux ARM Kernel List <linux-arm-kernel@lists.infradead.org>,
+ Linux Mediatek List <linux-mediatek@lists.infradead.org>,
+ Linux C-SKY Arch List <linux-csky@vger.kernel.org>,
+ Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rahul T R <r-ravikumar@ti.com>, Devarsh Thakkar <devarsht@ti.com>,
+ Jai Luthra <j-luthra@ti.com>, Jayesh Choudhary <j-choudhary@ti.com>
+References: <20230103064615.5311-1-a-bhatia1@ti.com>
+ <20230103064615.5311-4-a-bhatia1@ti.com>
+ <85837957-f6d2-4722-7693-98c6cf932096@linaro.org>
+ <32d66fb7-6c63-0985-222f-0bd3c36c165d@ti.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <32d66fb7-6c63-0985-222f-0bd3c36c165d@ti.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_044952_207898_2D30C5B8 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230103_032817_784165_C0305400 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,23 +115,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/12/22 10:42, Roger Lu ha scritto:
-> If svs init02 fail, it means we cannot rely on svs bank voltages anymore.
-> We need to disable svs function and restore DVFS opp voltages back to the
-> default voltages for making sure we have enough DVFS voltages.
+On 03/01/2023 12:02, Aradhya Bhatia wrote:
+> But this is throwing an error. I am confused what else could be done.
+> Can you please suggest what might be a more accurate check here?
 > 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+>>
+>>> +              required:
+>>> +                - dual-lvds-odd-pixels
+>>> +        then:
+>>> +          properties:
+>>> +            port@1:
+>>> +              properties:
+>>> +                dual-lvds-even-pixels: true
+>>> +                dual-lvds-odd-pixels: false
+>>
+>> Why do you need this? Your oneOf before already solves it.
+> 
+> I agree with your comment here. It makes sense to only have
+> 
+> 	dual-lvds-even-pixels: true
+> 
+> and have the oneOf condition take care of the other. But, I just tested
+> this and it was unable to pick-up this intentionally-added error.
+> 
+> I added 'dual-lvds-odd-pixels' property to both the nodes, and
+> dt_binding_check passes successfully (which it should have not.)
+> 
+> Instead, if I only keep this,
+> 
+> 	dual-lvds-odd-pixels: false
+> 
+> then the dt_binding_check detects the error as it should.
+> 
+> Regardless, I am curious why the first method doesn't work. Will try to
+> explore more on that.
 
-This needs a Fixes tag... and it also needs to apply to older kernels, as
-MT8183 does use SVS in previous versions.
+The check for presence of properties is only against required:, but you
+added there properties. Like this:
 
-Perhaps you can send a different patch, without the cleanups, only for the
-backport?
-Otherwise you'll have to duplicate svs_bank_disable_and_restore_default_volts()
-again before cleaning up...
+https://elixir.bootlin.com/linux/v5.17-rc2/source/Documentation/devicetree/bindings/mfd/samsung,s5m8767.yaml#L155
 
-I'll leave the choice to you.
 
-Regards,
-Angelo
+Other way is to drop your both oneOf and entire allOf from ports and use:
+
+oneOf:
+  - properties:
+      ports:
+        $ref: /schemas/graph.yaml#/properties/ports
+        properties:
+          port@0:
+            required:
+              - dual-lvds-odd-pixels
+          port@1:
+            required:
+              - dual-lvds-even-pixels
+  - properties:
+      ports:
+        $ref: /schemas/graph.yaml#/properties/ports
+        properties:
+          port@1:
+            required:
+              - dual-lvds-odd-pixels
+          port@0:
+            required:
+              - dual-lvds-even-pixels
+
+
+Best regards,
+Krzysztof
+
 
