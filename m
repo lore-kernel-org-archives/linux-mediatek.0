@@ -4,65 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3356FC4708E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 22:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C7CC3DA7D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jan 2023 22:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o2vYyMfyM6jX6/g1W/VcDRX5gPILrkiFyfgJSUm6rgE=; b=tEBoSwKYbIxBex5rQ6ICgk275X
-	4xYY4mz1R8d76mqnxgG0bT5Gsgy3EI9WWJu8OVrQeRVugDGjU4qEI2TmYwtH3FVFd6Aahs5zJewKl
-	of61ncmGXXKpO3eiLxNaOxQOEGzxTX3DLCNvsWZA8pPSVkai0NTym11Wdh1LGxK0qQi7QgpZ6LRJb
-	LJRpkvbwdp+iaP/1fuZkxHC8MUgEk7KBNF4h94yzjzWZkXROpE4qoV7mmxnmwroFXR9mk/CHuQoWr
-	07aBg3lJGWFhgLZk4QcC7gF1qj18LdOpyBQMiZ/Ku5yjf0DQ4xVrCXOrZDba3O8lKAbNt85QMVdYA
-	Gj55JUKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=; b=dh1MNgmpjzAHj67aIVBqAgrnMx
+	ecDNc4ldl7Rntse3RCiaLe1nUGjMkH0Mb9G9SdUFvzlrdK75dk9GOOrTeDxc8nLJB8f6Rab0oNgPP
+	/mxUbsVPyVmE0jFdek4IcIy06qodImsdUaTMJFr3Srje43HaWcM6G/H/o8ypgCVSwybnpnXmxPTDh
+	eZrlDNSMLmfKCo1r76D79FHRzbz9w33Dba7GmKj5+9k8A2vNmgSxr057Y4eWJd4qKt70t9/FnfcCZ
+	bBQWZXjuP59ZDxonSP7U5vVApg9zhdo8edNKS0h8BC4RMaozJ4RzP4yoTlCOPyu7oBVXNPuDCuiTd
+	claT8iSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCpyQ-005UJK-Ev; Tue, 03 Jan 2023 22:41:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1pCqC0-005YRF-Mv; Tue, 03 Jan 2023 22:55:36 +0000
+Received: from mail-dm6nam10on2113.outbound.protection.outlook.com ([40.107.93.113] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCpxD-005Tvz-8d; Tue, 03 Jan 2023 22:40:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D75C061538;
-	Tue,  3 Jan 2023 22:40:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 45E97C43392;
-	Tue,  3 Jan 2023 22:40:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672785617;
-	bh=Hy2eaSHJ7J2zC7XsHloSbhX5fiCeUzgDRNH8GWrVzBo=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=kdv6zoK8FKOpimfXXG54bXrGQzHkT0L6A9zWIXGLktQOSRGfznbDfkfxMNOm5HZPT
-	 qD0lTNsq0C1bXVLKY+UD7i/5OcxHp6ajIsHGlsx/gFe/WZJhrh6z3jHrHV3nlOxf8k
-	 dhFUkKnBlFFpPWz9pr1UfeSOgovKCTAKfL+gJoC3jSxJJlplYermJoIrjxXA6npVVR
-	 vL7Ed0aYiwdLzfExjNx26xQLE8VKmgcvE3peBJwVfL+n+2ucM1lu4ukKQnR2TEVtJ4
-	 vN4RFQTj1wmPGzgNbiy/+pfkLxlQFLM83zljIlhzvxwJiUAt7QSHCZeNGnskGUqxcm
-	 glFmgtebiVSEQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 30F1CE5724F;
-	Tue,  3 Jan 2023 22:40:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1pCqAt-005YHp-I8; Tue, 03 Jan 2023 22:54:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eMqHhF/bYn2b5iwjaHuBY+OMT3evbmsrTN/qIBNx2aVYDM0GyXUFcsiLO9LRmpefiDlMfc619dNC92amJ/NY800yy3gjElrD2sPzynq+WYaJRZ7pBO4Yv5Epb2/Ah3J6Q6YxB5RPeodE/U4VJVa6fCDuORv9xF0+YnwVcKTCsjFo7mawBpat2RfcxivBZmm6agXFBPLLlNWhVuwbGGGRJx3PQmQVH58wWJ2A4y29AhvJJMEk7zf9khVjaZM7e+E48kZw0sw58owd+Ls173YLFUUKqWbM5LWVVzVr1uJN6QgSsQZz8Yrqn946/la+6QCuZMU/hFBqQzgs3ly82+uGcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=;
+ b=atD0APrxVVur4ln4WrHYmOUrR0YB4QHGJ2jJ+l8gBFWjv1cvGRbGtdTJ2MG/fAsNLYRHcENOtTscUbAe0t7V4WoIa8iL9Va17IG00wh/Io3fME2hceOZEXphRe9twegui4XUawipM8D+0BsQrX2tCBTMcXc1grWJQAdQwdnqcQgqHb2wiJYmvMpKx/4oV2Z9ev7TB6oiWyD0/QxOXPnVUV/gT79IvCjW7KN034cE2pjVNihlk0fAdHqdLDdXENKpfKVtBkxYQtPMrOAcCs544hZY6W2e9RPy2WuZdTYzg1mHYh+pr3BbF6OgulePdqj5IDPlWvassFrJcrK68DxTFQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Mz/XvbLesxshNUePRiwF2vnkFWQG3PyUHR7fQAjgjxg=;
+ b=XEpnwIh1XM7E8aAouJ0hSaSC8UZ3Lpcp8j+kRhbW/p9ryhciNYtUXl+lfxW3t6UXo4o2S4q65h9f4bduPy2o/qdImf3iGh0C4h1TzSVU8xhKMIz5NKnFN2hs7nxhcakeiQx9bTLlIublM+0hKIdEdnsEi9m1TDnrBcOVz+vqIfA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by BY5PR10MB4356.namprd10.prod.outlook.com
+ (2603:10b6:a03:210::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.18; Tue, 3 Jan
+ 2023 22:54:21 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5944.019; Tue, 3 Jan 2023
+ 22:54:21 +0000
+Date: Tue, 3 Jan 2023 14:54:04 -0800
+From: Colin Foster <colin.foster@in-advantage.com>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Marek Vasut <marex@denx.de>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	John Crispin <john@phrozen.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	linux-renesas-soc@vger.kernel.org,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jakub Kicinski <kuba@kernel.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org,
+	George McCollister <george.mccollister@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>, Kurt Kanzenbach <kurt@linutronix.de>
+Subject: Re: [PATCH v6 net-next 01/10] dt-bindings: dsa: sync with maintainers
+Message-ID: <Y7SyDO5wS058dyZp@colin-ia-desktop>
+References: <20230103051401.2265961-1-colin.foster@in-advantage.com>
+ <20230103051401.2265961-2-colin.foster@in-advantage.com>
+ <167278470815.4157827.15557237476346780909.robh@kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <167278470815.4157827.15557237476346780909.robh@kernel.org>
+X-ClientProxiedBy: MW4PR03CA0246.namprd03.prod.outlook.com
+ (2603:10b6:303:b4::11) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id:  <167278561719.24920.2698221237471540145.git-patchwork-notify@kernel.org>
-Date: Tue, 03 Jan 2023 22:40:17 +0000
-References: <20221215021854.1429-1-mario.limonciello@amd.com>
-In-Reply-To: <20221215021854.1429-1-mario.limonciello@amd.com>
-To: Mario Limonciello <Mario.Limonciello@amd.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- matthias.bgg@gmail.com, mario.limonciello@amd.com, sean.wang@mediatek.com,
- anson.tsao@amd.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|BY5PR10MB4356:EE_
+X-MS-Office365-Filtering-Correlation-Id: 148d8f9b-91c0-4947-b30d-08daeddd7388
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	UOf78SkyLcDEpEeOB6aR3phFmGuzAFdQX1Afc0wqPlunJcxe9jZZdg9MuvC6kIEk447GXdy47OHf79tzO96qQ2Pk3j1R4JgvIcXAM0FIvA+iI0CRgk9EPZS/Dsc4T6RydVJi0f0V5U6go3XMc9Pw9nwmVWIMx6fLjRrpFC43w/0EIhTC6fyJFpQIMrndxfeBlZa/OT0X/6e99FH/Fip5l4rcAiiLwpiKBdpBEKTXQkC1xEMzvoMgjRXbOtcP2/T9WTB1uAuVWxqaWyRCE0xkZs+y9IuDZGwrypyzXvXT2cyFV0ug6BaQth86G+Gzza/95ug9cDFPeo4gKMSIrOvvAqvGOdfvicJTMEJxVaYKpx11MI66mgJDp6X2gnid3Ibf3zmDnD1RTSzomkoG2BhTxCnNEiQkXyUdYhtr5cO2X1lLDDz8t4jp0mg5ZHtGYzSMDv/nR2csuX5XFRWdwnECAUJvmr9RwgMtlyC9gNlD55ryD1+7vuyhEIpJfc7XKpv+3YVKi9XUXXlVXfJpef7XO31OJEmvO7DuCyFcrJUzXzzVVjs1SasjQh70kY/JH8tFVmVkooh041Llf1jG8lefA4O1DI93jjh6fb80zjSo7einhPvaKpeq9fJF/RCeiDWoetP+BdQEQoZWcHRnwirYPJo2rR+TGN1emCNjyBLo4Vm1ZQbvm29Bw4lMg0pb/zmc
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(39830400003)(366004)(396003)(376002)(136003)(346002)(451199015)(6666004)(66946007)(2906002)(8676002)(4326008)(41300700001)(33716001)(66556008)(66476007)(6506007)(44832011)(316002)(86362001)(8936002)(6486002)(38100700002)(478600001)(186003)(9686003)(6512007)(6916009)(4744005)(5660300002)(26005)(54906003)(7416002)(7406005)(22166009);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7xqNw/bPrvuK2uYkpmoGOfJrwGY1DAZrqTuTUmR+oWyYj1UdKKCrYXYn2O/x?=
+ =?us-ascii?Q?IBfaFLaRn9PvHoj/fXUX+89ULt3zWorukrqpETBEX2TMikwgXqGo8QOl2ooU?=
+ =?us-ascii?Q?gGGjF0+XwMI2f13WBsI2jPH17KYYWwfhrpba1FLBueJNOVJnifINVFBJ9rxF?=
+ =?us-ascii?Q?PVZcw2CgxoER+XRi3zE0Ujjz+7Pe5xmYCtVgkimjQ7cYfyBGOp1MSBh7C2WX?=
+ =?us-ascii?Q?TvCz/Y8OUqoGOHobJaFw6MbYOvLCZJ46uJI4Von7BqESW2yQmA0wSR+2qP2H?=
+ =?us-ascii?Q?x8WwY52udxdl/95KG7Kgx6Vmlk240CJe+UL/5NUp1a7ovIglOoMgCojwhLEH?=
+ =?us-ascii?Q?+tL5bLnNyB+I+UCs1MT9SGVTTn+3C5A/x/QNdjTF/IMY3ZopBC3InyqFUI9U?=
+ =?us-ascii?Q?G60hx7KzGUrZGTET6FM7OGpI7IVcL1J/5p8uc1BepBwmZde0LYuCkQqW9EGg?=
+ =?us-ascii?Q?BSvjAVCwjHLoVmbjVRylVPwZ1A9tFo3JWkRo9VzGyvdZ9mFEzIoi+ec9IVXx?=
+ =?us-ascii?Q?HkY12gYBYa+4mya3nBvRJc1ukmIYho01FkbzxGMtYocseTWJ5SVMpJ6InPwb?=
+ =?us-ascii?Q?I/xGcHerIJMkTX6yUSda+dIdxIjtjnfJm1gn8VZVYfJmIIa6VhIDPcNFtZfO?=
+ =?us-ascii?Q?FdtTERQWAKe6vC6C/plJTJvVege5M/5MGPCkTFHLYip5RWE2LfI/ULE3p64w?=
+ =?us-ascii?Q?wXnIdhQ6yR7D6M6WW8+cl2jbuZBZKXVH5bSQeSbhLl8c/8D/8rkk/Qhgjwsg?=
+ =?us-ascii?Q?4umOWcAhB1dX37V9Npg8SXSqtjnVIhW3cyhMfYAh3Ucq+oN6jRyRG2qeDkFq?=
+ =?us-ascii?Q?OwFbJjDrolJgPqgU21AB9labP/3iAFg9jj0vIhLp+nFWiWkpKKE53GLaOkl7?=
+ =?us-ascii?Q?JfvvTOwBJHG/mYr107H06iOjeIfgux0gvdtLwx08Rltiaegx9tC6W/FhqQ1r?=
+ =?us-ascii?Q?kGorov4liUREe6RwHXH5UH10RUz1TctPqAdMcy4mY4pZ/Q+ZBpzVdxslBpYK?=
+ =?us-ascii?Q?zK9/KBGXiwyhUDAITa+Bdk4wI04TERRJIBGDAbSkAXVDAeLsI9qibRDwVqAB?=
+ =?us-ascii?Q?zzqAHVFvMHcr3q5qy6GDYvmdapRPZPdf20wkNdLcTXpJHHTajTD1skAy/Ntx?=
+ =?us-ascii?Q?sKuenxDwtoyUIi/nHqUpDyOMpGpmgzxTVpIBdBexvRZrrXXjF/TlgUy60eNK?=
+ =?us-ascii?Q?kVuOwYyTRJjTPNpv31YVd56sjxPA/HTXA6CyLFXzOIDFo+bVQundg/s0FgJP?=
+ =?us-ascii?Q?2z4IFAJwAxLKEMCpZKrFKCRMbVkWaD8q5JMqBDgTQfpslW3HuIVQN/la34Gk?=
+ =?us-ascii?Q?/MnWI+FMfbNjjb6rv7Ik4piRv1MP77V4R/u6jKgUqiDek+eETgEiLWkKYtmy?=
+ =?us-ascii?Q?A3+JfCURIxrwe3Ssp6AKzpZoRGv02xlwQTZ4NDo1CYdC8BXKjmBZvmqtBNMn?=
+ =?us-ascii?Q?h4WkDNilvLbGsTykIxaalmQLmVXuOR5k1ZtY99RdSgvTCUBiQ0eU8wNlZgIp?=
+ =?us-ascii?Q?6D09gB2lGwgrlqaeCt5Yu8kAh/jUOFZu0DKx0k5mKT8YyePtb2bSh+NKReiy?=
+ =?us-ascii?Q?1y/71WmM6YHVyeeoSpuu1r7polC1JuVhzjE5jMmxFEHkv0U/fZBtb2q4WaJo?=
+ =?us-ascii?Q?Og=3D=3D?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 148d8f9b-91c0-4947-b30d-08daeddd7388
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2023 22:54:20.9959
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: E9fChPc4SDfJhXGyYqvmF8F6hACVxb1hnZMP8Oa2d4e/L3zT/Yrgb7otEQmxwwUptwe4+HkkjMWvVhqlVOiuRNUoDSrfNZm9QJSTM3gQyU8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB4356
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_144019_434142_D23515D9 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230103_145427_680184_C744730E 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,67 +156,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
-
-On Wed, 14 Dec 2022 20:18:54 -0600 you wrote:
-> This bluetooth device is found in a combo WLAN/BT card
-> for a MediaTek 7921e.
+On Tue, Jan 03, 2023 at 04:25:31PM -0600, Rob Herring wrote:
 > 
-> The device information:
+> On Mon, 02 Jan 2023 21:13:52 -0800, Colin Foster wrote:
 > 
-> T:  Bus=01 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0489 ProdID=e0f2 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> Please add Acked-by/Reviewed-by tags when posting new versions. However,
+> there's no need to repost patches *only* to add the tags. The upstream
+> maintainer will do that for acks received on the version they apply.
 > 
-> [...]
+> If a tag was not added on purpose, please state why and what changed.
 
-Here is the summary with links:
-  - Bluetooth: btusb: Add new PID/VID 0489:e0f2 for MT7921
-    https://git.kernel.org/bluetooth/bluetooth-next/c/ad230933bec9
+Genuine mistake - my apologies. I see that I missed both yours and
+Vladimir's on this patch. I'll be sure to add all of them should there
+be another round.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> 
+> Missing tags:
+> 
+> Acked-by: Rob Herring <robh@kernel.org>
+> 
+> 
 
