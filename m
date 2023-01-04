@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ED55C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 13:49:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB0AFC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 13:49:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VkE+9Be2IZo1wTEmkjQlAica3O0qe2SLkKytbv3x8GQ=; b=EAPeoxO4BYJQIDyNklMpW9b/BP
-	L0a8pUNMTYdoZ+TyrvaD+aIanLNM1RoihII6dggyOBohz0wVtaTmEreY7kESDWmdiJ9cD3NwgWNsE
-	7456TgYzFvTYbOhuv8Uf7DfTsXThyoCfR7KLLs4GmhD5VQCCEmiCXXwCO/xphYetZlG7jySbMeMQ3
-	oqyDNaedXBajQIQlvTjPjlOILig4fgtdK2iDktDgYM9c0pCEijPCpQJzlBaVfXeWytmHWJDQKk3q2
-	AQgAwdDp2vbDlJGpCwErS/bBPFz1khFiRf9SilFF0CQOR6csUQMkL8g1fTf4BMQkPJAHA9te8crXf
-	Y67nBOIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gvdXFeSqP8Cp9xHxchVJOG2Iypjd6Db8MB18k4L6tIo=; b=brVrHeAX9DwfpA3YhME98OoNDB
+	MIQVGDIDvtMLUoYw8nL1qfpjsqwBEq4Nw2U62AelqwZbjJNT12Mqdi2a+c2Z2pNoo+jcbL3N0JvQb
+	JJYXUvZyQngf8vKFvTCFLh1j/EG2f22pPLyLvVz0NbPgy0R+jMwj3hUz5Aa6Mu+CPJB8ELgUv3JbP
+	NHksJuuLKC96HCTRKtO1SR1LCVYadQjgPDIV4vluPGhoiGBTp0qvDJHrameY0m2leftSnIVi2W8Eg
+	M3HQHFU7tseCjnoyAzHBMmrJS+et0bODEhtYNPo/pqL0sPPkDi23h0mUi3CrC+oFSLEq93FzXYX6y
+	3nB2kp2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pD48T-009T1d-DA; Wed, 04 Jan 2023 13:48:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1pD48Y-009T3n-LF; Wed, 04 Jan 2023 13:48:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCzw3-007zLl-8e; Wed, 04 Jan 2023 09:19:48 +0000
-X-UUID: 5f3a2bdc95ef44a7ba9457efee64c669-20230104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VkE+9Be2IZo1wTEmkjQlAica3O0qe2SLkKytbv3x8GQ=;
-	b=Ae830jSL6ytkRP7GkDoR/7DK7kT51c1AsQ4kSARGMoIu0lBlWXDJHTXgVgykchLkqy11wBhmOsBsAr/8b/C1hzpIOEh4EIZA+bA2ZRKvSEvRt3XEZbd2VWOWsdk8sC7oEkrL+A4zirEojKV7kaZiTP3DQrtQajMOt6+oDY1q4PQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.16,REQID:b21c583d-fc6a-4def-a8b9-4b5eb6222eb0,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:09771b1,CLOUDID:40bb368b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: 5f3a2bdc95ef44a7ba9457efee64c669-20230104
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 552212840; Wed, 04 Jan 2023 02:19:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 4 Jan 2023 16:59:02 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 4 Jan 2023 16:59:00 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "David S .
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
-	<mcoquelin.stm32@gmail.com>, Richard Cochran <richardcochran@gmail.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Biao
- Huang" <biao.huang@mediatek.com>, <macpaul.lin@mediatek.com>,
-	<netdev@vger.kernel.org>
-Subject: [PATCH v7 0/2] arm64: dts: mt8195: Add Ethernet controller
-Date: Wed, 4 Jan 2023 16:58:55 +0800
-Message-ID: <20230104085857.2410-1-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1pCzzw-0080tk-2R; Wed, 04 Jan 2023 09:23:49 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99F646602D08;
+	Wed,  4 Jan 2023 09:23:42 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1672824223;
+	bh=KhOX2w723U9MDxXjgpSqxzBYpJpo6f2ZaBSs3BkVG0A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=k2QGO6wH6NDcH0KYP2ItX+v1+vvNEfC7ywZlnWkRFHC9nKNt6io3pHA+pcBkrrg1d
+	 J6siWl7SqVO5m7gCO5iWCTZDfyJi52OP0R0GKYNp4Kc8aFqddl7cizD6EAyeyaP7vq
+	 jWFsnABHt7ejCo3DE+55FHcIgqV7Q1mTFGy9owS6Wwffd1K/d/l80JGK2vwmkpjZVz
+	 YR1W/zxqwLR0xQJW8Xs08DILsvT9wUW5p845el0HvwSc7Dxn5JpaklT2TKaz+YLhc7
+	 HYEt398f8a7z1shQzg4r9/NOgX2EVsFqRq3N8h2hGjEkILBE+dj7+SeYel+/7vj+N8
+	 oaCPoHYXooDvA==
+Message-ID: <fd660017-b502-f72d-c1d7-f94170057fc6@collabora.com>
+Date: Wed, 4 Jan 2023 10:23:39 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH] remoteproc/mtk_scp: Move clk ops outside send_lock
+To: Chen-Yu Tsai <wenst@chromium.org>, Bjorn Andersson
+ <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Tinghan Shen <tinghan.shen@mediatek.com>, Tzung-Bi Shih
+ <tzungbi@kernel.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+References: <20230104083110.736377-1-wenst@chromium.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230104083110.736377-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230104_011947_372450_9087356E 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20230104_012348_441102_90D3C99E 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,48 +77,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v7:
-1. move mdio node to .dtsi, and remove the compatible
-property in ethernet-phy node as Andrew's comments.
-2. add netdev@ to cc list as Jakub's reminder.
+Il 04/01/23 09:31, Chen-Yu Tsai ha scritto:
+> Clocks are properly reference counted and do not need to be inside the
+> lock range.
+> 
+> Right now this triggers a false-positive lockdep warning on MT8192 based
+> Chromebooks, through a combination of mtk-scp that has a cros-ec-rpmsg
+> sub-device, the (actual) cros-ec I2C adapter registration, I2C client
+> (not on cros-ec) probe doing i2c transfers and enabling clocks.
+> 
+> This is a false positive because the cros-ec-rpmsg under mtk-scp does
+> not have an I2C adapter, and also each I2C adapter and cros-ec instance
+> have their own mutex.
+> 
+> Move the clk operations outside of the send_lock range.
+> 
+> Fixes: ("63c13d61eafe remoteproc/mediatek: add SCP support for mt8183")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Changes in v6:
-1. add reviewed-by as Angelo's comments
-2. remove fix_mac_speed in driver as Andrew's comments.
+Nice catch.
 
-Changes in v5:
-1. reorder the clocks as Angelo's comments
-2. add a driver patch to fix rgmii-id issue, then we can
-use a ususal way rgmii/rgmii-id as Andrew's comments.
-
-Changes in v4:
-1. remove {address,size}-cells = <0> to avoid warning as Angelo's feedback.
-2. Add reviewd-by as Angelo's comments.
-
-Changes in v3:
-1. move stmmac-axi-config, rx-queues-config, tx-queues-configs inside ethernet
-node as Angelo's comments.
-2. add {address,size}-cells = <0> in ethernet node as Angelo's comments.
-
-Changes in v2:
-1. modify pinctrl node used by ethernet to match rules in pinctrl-mt8195.yaml,
-which is pointed by Krzysztof.
-2. remove "mac-address" property in ethernet node as comments of Krzysztof.
-
-Changes in v1:
-add dts node for MT8195 Ethernet controller
-
-Biao Huang (2):
-  stmmac: dwmac-mediatek: remove the dwmac_fix_mac_speed
-  arm64: dts: mt8195: Add Ethernet controller
-
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts  | 77 ++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 92 +++++++++++++++++++
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 26 ------
- 3 files changed, 169 insertions(+), 26 deletions(-)
-
--- 
-2.18.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
