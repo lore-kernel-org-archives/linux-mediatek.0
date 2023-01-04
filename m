@@ -4,63 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7905FC46467
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 14:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F9EFC46467
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 14:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=E2FV843RJS0UCRD2yIJqRWOIrHN8+WfvNGrfuZ0Mk2g=; b=LTpoqxhyJJdveazR828zHbV5XM
-	5DDAPpqm+azRrSI28DV2WaDmFzGHPaQPCHTulKsosRXmELQtzuaMWalaNQVubpyhcHdAktGAx/Zrm
-	lAJ8gHIIh9kC255RCatSIBE1XqCN/EFbMdMOad1RsQ87qBNFQyq96bCNVuJJMGHk6ZXb7yLPaW88s
-	OsZlVaRVYx/Nf0dLseo2lVKjbKy5eB0oveEZ7Jdfes/2d12ZbKpjbhNSSwXWTo03RjAjqVjwgOBc7
-	twWPv+Npo43HE3EmITcPpnDBcO6PfB8jJuHTLPlrpFrMLEdc6NVhAl+jNdI+nFY5bbihw2vWMsiCz
-	caj6TnCg==;
+	bh=4+dLuHlcC9jnNQMQw94DnzReVIGUmjOcxr5KvYMev8U=; b=aVJO8RaQz6I+aMXk2y2FnX3Xfm
+	zqr/HWoYis0fZhTn1cPU2hCNNU6u2GDaVlWCoYhI9qd/AfAL2SlBVdSeB/5J265dniShvajDNX7t1
+	bo4MSFACxRIDpXGKsMB6SSf5q1lNADG9XssX3xNyNi4NQzdFxUbHWyYBUSrV2FUt9dZPRGZNTSNqs
+	YEYV4Y24XckZk2cQJek4uUIFlRAe3AeD7iBb4ckGwf2wkxduzFbYlCnyoR9gixfyEOojDtuKCW/pz
+	ab0wD4PxIwXchrJynH27rorNGQA3z7fItNFqMhZT6AWgvv/Ud/Dr5M/PltgLXnhieuH35iy29/ea3
+	co0M8mGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pD4R7-009aGE-0O; Wed, 04 Jan 2023 14:08:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1pD4Xc-009cfv-Cq; Wed, 04 Jan 2023 14:14:52 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pD2LB-008uZ4-VO; Wed, 04 Jan 2023 11:53:55 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3EFF26602D0C;
-	Wed,  4 Jan 2023 11:53:50 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1672833230;
-	bh=vGIrNPLCcr65JC/O+0PWf40qVae7K+5q7WHDW1Hum3I=;
-	h=From:To:Cc:Subject:Date:From;
-	b=b2FCOK98a4NnyLgDjVuYNeWlwidB/dngUfZHKU7IG4U96Pw11t475t5qr7V7bY7Vh
-	 74ELdP0Oo82eudalTqnb6E8nzEZ/Pxcd5uoxqwvZOEIsthD6P67YKML3LJ59KdueK6
-	 eSLumbEPXBBNKeZvmxLsgYQZO3BiCfXA3wju5y8i9///nDvpKJ//lCkPXqMpPgTgaS
-	 xX5gR06MUqxDQLpTE2Alxb1QA2+uTr4OXljkn5CdrPWIzcBaY7ndfVrXTStu5H2JGZ
-	 eNWPxiEGWjkQGlA9vQr6aB25YOOUypkxEW60C+5dMC/y8zQGIB4K7/ved00ypkSN4Z
-	 4aqK7g0hPQg6g==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: andersson@kernel.org
-Cc: mathieu.poirier@linaro.org,
-	matthias.bgg@gmail.com,
+	id 1pCzBM-007eqx-95
+	for linux-mediatek@lists.infradead.org; Wed, 04 Jan 2023 08:31:35 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id z9-20020a17090a468900b00226b6e7aeeaso764847pjf.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Jan 2023 00:31:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4+dLuHlcC9jnNQMQw94DnzReVIGUmjOcxr5KvYMev8U=;
+        b=Y6p8ZQAFtVMjaWUXOOmJW3dVg7sTCZDpqgmsww1yv78ELTsTvUOzzh1vI4HKCoA/I/
+         YDKeO3dbrEB3Uxq4ikf+PWOZI49nPxuRhtLY//2wK2Jj4JLmZE8cxt4ADlPRaqFJRfJd
+         LTxf/SNUMnvBAqj9hsojG7XuTAN2ANr3weauE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4+dLuHlcC9jnNQMQw94DnzReVIGUmjOcxr5KvYMev8U=;
+        b=oEHAK2yprvvBCWR+w2j05xkxJaWoLMLP0wk5P3sq80bIJ+CxFx99TRC2DdTrBDr/7O
+         cwLT6Aed5r2nq0lq/FrcvrpZ0JA7OST85DWKJshSgP1ylnpEcS50EhkBF88JFOdrE2Jr
+         +gS808vf4//UcXKJYfHMoVRdWu9GkWdapv7ACGhHwHA1TXZlpp/WYV47+pmBQX11uUwU
+         iNKIaLi7gW2sTLFJfF9Dc2BTRRJom1WKdgRp/OnKh3LjmlX6dcBrLg5reVDI1HcM4i4c
+         1taN1MyiydubQNVAzOGzIUAtwEoJWlvvI3/suZuf8XLn4V5AGW00beDm72hGRz4oh05e
+         eLBw==
+X-Gm-Message-State: AFqh2kpk3B0DMcvZv6Q/CTWoOWLyZCUgTUzz83MLpayc52ltwNIMlkxQ
+	7Z1c6ICW2UjPjXguBAarH2VN6A==
+X-Google-Smtp-Source: AMrXdXujFnG7dDV9MJtsjkA59x1G95RzXq9CimM7pdZKe0Di/GVPavoCYPnyhRWzT/EOvKLsFiYF/g==
+X-Received: by 2002:a05:6a20:1e55:b0:a2:a636:70c2 with SMTP id cy21-20020a056a201e5500b000a2a63670c2mr66048817pzb.24.1672821085870;
+        Wed, 04 Jan 2023 00:31:25 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:9ef5:c3c1:77a5:2cd])
+        by smtp.gmail.com with ESMTPSA id g16-20020a63fa50000000b0046b1dabf9a8sm19781604pgk.70.2023.01.04.00.31.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Jan 2023 00:31:25 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-remoteproc@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	wenst@chromium.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 0/2] MediaTek SCP IPI cleanups
-Date: Wed,  4 Jan 2023 12:53:39 +0100
-Message-Id: <20230104115341.320951-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.39.0
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH] remoteproc/mtk_scp: Move clk ops outside send_lock
+Date: Wed,  4 Jan 2023 16:31:10 +0800
+Message-Id: <20230104083110.736377-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230104_035354_263409_13BDD91C 
-X-CRM114-Status: UNSURE (   6.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230104_003132_430428_C0B691E6 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,21 +92,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cleanups bringing no functional changes.
-Tested on MT8173 Elm, MT8192 Asurada, MT8195 Tomato.
+Clocks are properly reference counted and do not need to be inside the
+lock range.
 
-This series applies only on top of [1].
+Right now this triggers a false-positive lockdep warning on MT8192 based
+Chromebooks, through a combination of mtk-scp that has a cros-ec-rpmsg
+sub-device, the (actual) cros-ec I2C adapter registration, I2C client
+(not on cros-ec) probe doing i2c transfers and enabling clocks.
 
-[1]: https://lore.kernel.org/lkml/20230104083110.736377-1-wenst@chromium.org/
+This is a false positive because the cros-ec-rpmsg under mtk-scp does
+not have an I2C adapter, and also each I2C adapter and cros-ec instance
+have their own mutex.
 
-AngeloGioacchino Del Regno (2):
-  remoteproc/mtk_scp: Use readl_poll_timeout_atomic() for polling
-  remoteproc/mtk_scp: Remove timeout variable from scp_ipi_send()
+Move the clk operations outside of the send_lock range.
 
- drivers/remoteproc/mtk_scp_ipi.c | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
+Fixes: ("63c13d61eafe remoteproc/mediatek: add SCP support for mt8183")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/remoteproc/mtk_scp_ipi.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+index 00f041ebcde6..4c0d121c2f54 100644
+--- a/drivers/remoteproc/mtk_scp_ipi.c
++++ b/drivers/remoteproc/mtk_scp_ipi.c
+@@ -164,21 +164,21 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 	    WARN_ON(len > sizeof(send_obj->share_buf)) || WARN_ON(!buf))
+ 		return -EINVAL;
+ 
+-	mutex_lock(&scp->send_lock);
+-
+ 	ret = clk_prepare_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clock\n");
+-		goto unlock_mutex;
++		return ret;
+ 	}
+ 
++	mutex_lock(&scp->send_lock);
++
+ 	 /* Wait until SCP receives the last command */
+ 	timeout = jiffies + msecs_to_jiffies(2000);
+ 	do {
+ 		if (time_after(jiffies, timeout)) {
+ 			dev_err(scp->dev, "%s: IPI timeout!\n", __func__);
+ 			ret = -ETIMEDOUT;
+-			goto clock_disable;
++			goto unlock_mutex;
+ 		}
+ 	} while (readl(scp->reg_base + scp->data->host_to_scp_reg));
+ 
+@@ -205,10 +205,9 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 			ret = 0;
+ 	}
+ 
+-clock_disable:
+-	clk_disable_unprepare(scp->clk);
+ unlock_mutex:
+ 	mutex_unlock(&scp->send_lock);
++	clk_disable_unprepare(scp->clk);
+ 
+ 	return ret;
+ }
 -- 
-2.39.0
+2.39.0.314.g84b9a713c41-goog
 
 
