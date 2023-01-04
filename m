@@ -4,67 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2576C4708D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 15:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A36FC46467
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 15:19:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xESMQ9GhiTPL5t/wbCxbMUGOGHQ61B4clZ40pfoAgwQ=; b=uPxi4B6vbRmk3zYiaw0Aa3Z27O
-	EO+X6X24z/WUZFerWhmI42S/R+o9/Pt162j0/O40H1B0Xg/gMIAIzekkhSp4v8haftk2DZr3Ndxz8
-	vwo0LWm5aLMGn8uzloMhuFfmmIXt0rF27c1qREY7nw8iTd9ijlVOHGuDs8pAwJs1OX1j9+4bGJAuw
-	o/0jmUR1w/wntUpBNq80rDqovSyzbOXyh78U6hgMQkQw5tqIQuubkfbb8YKK+KnmD3tJ4gXeel49O
-	io4QLCOczKSJoDdiAYaYkkD9LFWa49Px4YykH34fybv1NwcdCuzliOuJRwcZyCZGgjGHPkhOuCCWD
-	j9auULKw==;
+	bh=n+IaTL20KqXT9CdgvhuiuizJz+6iVQB37z47atNM354=; b=FoADVvVkPnkDDYgs92/lkXsuqo
+	rMnkzjcjJgCRsn9J7OF0wnT1lxdHy4rjhqI62oBQlSHSgd5gIoLsf8aHIp6AMK7QERTWMWZY0Bn1a
+	N2tpSft9SSMTfmYb2VdVS9fd93mTf12O6BQ2EpmJBDZ6TmJY5D9TKxzSsgnoNsAHQArWBXIWqjA/T
+	2WBq19TT1KFT7nR5oCa2RdnBem0EbNM364vOXTAczO99MGZC25GbXJxA0Iv9WBR8/O9SHZHj0Srk2
+	Ij/o962zJNWwz78q2Ke2DS5z3ozuO73LHqQerHLZyfFyaWjz8TyeVBhdyvuj5AtpnJ2nTn+bQrWid
+	IQBZMasw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pD5YE-00A3Gt-2t; Wed, 04 Jan 2023 15:19:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1pD5YN-00A3Lc-Uw; Wed, 04 Jan 2023 15:19:44 +0000
+Received: from mail-bn1nam02on2121.outbound.protection.outlook.com ([40.107.212.121] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pD4rF-009jfF-FO; Wed, 04 Jan 2023 14:35:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9311C61766;
-	Wed,  4 Jan 2023 14:35:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09EA2C433D2;
-	Wed,  4 Jan 2023 14:35:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1672842908;
-	bh=xESMQ9GhiTPL5t/wbCxbMUGOGHQ61B4clZ40pfoAgwQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AcpZl91uJbz/8Ncdf4E5AD/9Qz9BpX2xrHSIBNU4amxvju0v4+uFTiGxNiQPTINKI
-	 9CnouSr3FiMo//vC2oekT6FjZsHbCe8/tZKBA3Vc8YmdY/DcBy/jaeNHJctpnYyrwB
-	 oL6nSDOhdArqh59omZGhChTP122ZuFRKUVmeVM1QZwz76IAodCmpQ4kK6T2DGkII6+
-	 c9R0SunbIPWUOXVP964dPp6Z+Q5v5puNTAbWHyHc3hBh4Ek0IE7CP9yz81/784E1me
-	 kUB0oUqvzXeJPtX8E8gtAbDu8lw0kzyWIWABvSzoC4GwNM/aw6vuq8PKHG5CCHHTA5
-	 3K1pxfHuIQN1w==
-Date: Wed, 4 Jan 2023 14:35:02 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>, linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] spi: mediatek: Enable irq before the spi registration
-Message-ID: <Y7WOlkuLaLt1DdY+@sirena.org.uk>
-References: <20221225-mtk-spi-fixes-v1-0-bb6c14c232f8@chromium.org>
- <167214860344.446872.17166503994226712534.b4-ty@kernel.org>
- <5db65fd1-575f-df19-0de3-b3e32e4bf1d1@leemhuis.info>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="rYR1PrBg/o4bENGj"
+	id 1pD5VH-00A1ch-Lf; Wed, 04 Jan 2023 15:16:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ePv/c5gFQCRX5EuqnJ/IlnC7/h6j9o+ZAtgAHMnvhJzPaw70Z6R9RbXq8f0Q42lnWI2pcS5SjZdHIfM9LK+ZYz5M5ADUbB5NoF2/I0OJS8/s943MTCBlPl2H6bBaQWqzSFGWkk2wf38Z7MgWUOSe5evfVdzDibm35QLRjP6CM+S9ByeSVSLLjK/vUmK2JVbTWk0soufNUdcLXRIuuRN3pnbYA01iSWHRbUnG/LqKiakP23dRaG6dHBAvxeDPALrgTrTbAEOe8JEtV4vfGfsCnSrB+f3dC3GKjDTGqRTToPvffNWyeMs2xPpb5YMhjE5qbfgXVJKt+MF49T6GyaNb3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=n+IaTL20KqXT9CdgvhuiuizJz+6iVQB37z47atNM354=;
+ b=T9T8T5j8r2qxuXQR7Rz41G938AaGWObgrjXH6zUDbyCKcd30ZpJTzm8Ecd1Audw/rjf6TxDqTrvMR0saD2OHBYJ078qlA/HJOoZB0YECuXRpDHoMnkLSJGCwSpglInS7VZb0yBpXI0doFvPP8tIW5BWhXKk2zEYn00CyLH1prz4Jy4Sz4LFVlEVLN/LubjLAKPetd7RxUHDeBLEwbT1NO26FCdDTZjlm4fxrEz48CrZTVlvjUCXo+nmihVOgmB2XKh4LrYNHJ0eFThLL3swzqQyT0cB1LlOQcfH4A7811BtHsJyFqlZ4jdd/WOKkT5ctKRAburgHV3mmjZXLhSfjjQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=in-advantage.com; dmarc=pass action=none
+ header.from=in-advantage.com; dkim=pass header.d=in-advantage.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=inadvantage.onmicrosoft.com; s=selector2-inadvantage-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=n+IaTL20KqXT9CdgvhuiuizJz+6iVQB37z47atNM354=;
+ b=VBKj5DVlw81C2ktMtW/EwhDzDEJ09G/1IpwhR+HfHK3S2LzXlSJoyZNIsKuUk+8rDWYRP3GxQdlpFivgyglgXb2CMJBEWWBl198AShg4L0zDpvwOMvwj7vyWTGInWFH3D6Ger4kUI3Td1NGjrEL57IxDRR6rY+mbg7qKZ6eSmtw=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=in-advantage.com;
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37) by MW5PR10MB5807.namprd10.prod.outlook.com
+ (2603:10b6:303:19a::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.19; Wed, 4 Jan
+ 2023 15:16:25 +0000
+Received: from MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c]) by MWHPR1001MB2351.namprd10.prod.outlook.com
+ ([fe80::45b5:a860:9cea:a74c%4]) with mapi id 15.20.5944.019; Wed, 4 Jan 2023
+ 15:16:25 +0000
+Date: Wed, 4 Jan 2023 07:16:17 -0800
+From: Colin Foster <colin.foster@in-advantage.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, netdev@vger.kernel.org,
+	John Crispin <john@phrozen.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Marek Vasut <marex@denx.de>, Sean Wang <sean.wang@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	=?utf-8?B?bsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	UNGLinuxDriver@microchip.com,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	George McCollister <george.mccollister@gmail.com>,
+	Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6 net-next 09/10] dt-bindings: net: add generic
+ ethernet-switch-port binding
+Message-ID: <Y7WYQfFnUjy8ygyR@colin-ia-desktop>
+References: <20230103051401.2265961-1-colin.foster@in-advantage.com>
+ <20230103051401.2265961-10-colin.foster@in-advantage.com>
+ <20230103175641.nqvo2gk43s3nanwg@skbuf>
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5db65fd1-575f-df19-0de3-b3e32e4bf1d1@leemhuis.info>
-X-Cookie: Stay away from hurricanes for a while.
+In-Reply-To: <20230103175641.nqvo2gk43s3nanwg@skbuf>
+X-ClientProxiedBy: BYAPR04CA0035.namprd04.prod.outlook.com
+ (2603:10b6:a03:40::48) To MWHPR1001MB2351.namprd10.prod.outlook.com
+ (2603:10b6:301:35::37)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2351:EE_|MW5PR10MB5807:EE_
+X-MS-Office365-Filtering-Correlation-Id: 637fb156-52a4-4f95-2c18-08daee66a4d6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	QJPhjUtovYuE9eENfTBUYbf16BCuzCB5qOgr41i6uZst9OVRJ2d3QAFo8z+83Rx1Fh1u3fKVqnTbJxxvssPFwe0YSC5gVNvkj5+lT3EQU+kFvxNkyPU8zzXCE6+H2WhGG2xazpK152Hpw2ZN+qy7M9FnW1KWIwqn8eDEV9kFJmO312SiuK0v3E4qNcRz5tCWQuT35r7JQ0ZdCWhxRQ3yvy5X7+5ub/1439p373NX9zU1qCfQWl+3O+TVwpY8f3FmEsTloqyaEOH3w2dAq0oyg4FtZUU5l6YmTY+tvp8FOkoD02og71r2h3rG8jbyshyBt1ncuxdkCUtLQDzR2B2xymlTFPMUh7dy8v7PJ/IDNCc0vkRqK7ndDzMy51IMdvpQaiAFNrhM1Smc/TcXDluIXGQSiqMDSE+i6u6uoVn3Kfe48blWn0FMDhsxTKxSeE5/RbUg5svn3ZCIB7owiAMXey/uOxm9/lBV3X4mgLISB/4FFFB4IlStcEKd1ux7F1OHiRtevDlK4yQLB5KJbxIsDHoLmW5um6FilEqpiXP8+NzYzd9WbR4RMY9VPbbrHVj9ndFDYYQNRk4auXu8davrgHO3kWg3ND6uTy5ZbouluuF/VyyGrutvjRX+59532fCQwMFXSbZti827zSTCIXuK35aIWEpyYR+YLk4Mbgrvo7VZGEcqifmPUeWuucmFyGo8EvGQia6+EUsMHo+0jP7Biw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2351.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(39830400003)(376002)(396003)(346002)(366004)(136003)(451199015)(83380400001)(6512007)(9686003)(26005)(33716001)(6506007)(6666004)(86362001)(38100700002)(186003)(316002)(4326008)(478600001)(41300700001)(8676002)(2906002)(7406005)(7416002)(5660300002)(8936002)(44832011)(66556008)(966005)(6486002)(66476007)(66946007)(54906003)(6916009)(41533002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?mIYEmQTpFrn4tZeYiDrNVtG/F1n7BroSSzj4XWH35FXfhfMzzi78mKbXyY+r?=
+ =?us-ascii?Q?ro4RnpIM3eP3mrX8bE7S56oK1ujPMeAR50q7lm6rsh8FN3owRGUe6/2TDdPs?=
+ =?us-ascii?Q?Q3iw/8JBWxo5knTuL1VL2sGB6sJ3djbWj1V2a85b5mezshT3rwLtIQhBaU5C?=
+ =?us-ascii?Q?sWt4GEyzHveoMQMQ2TlX39QB0Ka97JOR98edWFZou19rn+Ur1yyv2qJRBw04?=
+ =?us-ascii?Q?k1h4M/7atkjU4BmgfxyGafN1Q0PPT2/jExpVrdhIRwewp8cmLw3IGVmZFDtO?=
+ =?us-ascii?Q?qOGJyHhGbyiALBFY6kex4Z9h9eltepBKZ1BrnyHf8dwXXrlW7bwk32e92dy3?=
+ =?us-ascii?Q?kdoxId385oBQ5Cjudwu9MA6ycI0D5XjGkH6zQ8WKmHkvNfBhgtfxy9uGqBHU?=
+ =?us-ascii?Q?eYmg4RZmaKpJklQ6VACZVBljWJpUUqTSomFanTxKaRT1YCVS+0hASuoMj7uA?=
+ =?us-ascii?Q?j8Dwsm9cokNXpHe505EWuJ3F6+ymYHitgd/gKY9XbYih8TyiYuBAbXlz0Xdk?=
+ =?us-ascii?Q?zN1FoYYZaP7eGQTzfIgj6W/FbFgLK2j4leAm14miNwivcioL3alvHHxoVLTo?=
+ =?us-ascii?Q?r35eEkXLmBu8Il0As1yBOi75/IhZJPffcucaGD+Xot3qgsZgBlApzNjBMRXa?=
+ =?us-ascii?Q?aLSqYp++FouSUeVOXgE3xnyaSVoQZUdJNBanLGQl80uee86RaZ22cCjAY/Bd?=
+ =?us-ascii?Q?21tH7gODzcINgpqZ1R35cL1y3RLv3NIUVgHk2sVjWng1noN440DlQgC1Crph?=
+ =?us-ascii?Q?EgYdrjz5ea1RT034kbmjJ2l2Nj5IUQ0CmLGR5asfPULq+g8Dc0Ebh1bKalan?=
+ =?us-ascii?Q?2WhnfMd/UKz4/jVJEHhcRusOCfnb2GmxYDMlPRpVmFtrM1Bs8qRDdRgNOqlf?=
+ =?us-ascii?Q?MGalPynGNjsYnMI/Dvtx0zgRHnbUiC0HmgqiOE+arPDlR31q7e1ORUHfijQl?=
+ =?us-ascii?Q?BDiwpcHvqQZeN4nTGqBs03GdU10pESKOehLIQOP1HhbC9uwjFBXd47DLxK24?=
+ =?us-ascii?Q?HKvT41kQd36bmQbQCN60DDKCRDT3+T34NmY243Mo4YDFEWvF9d5FwwbAXYLO?=
+ =?us-ascii?Q?mKsMaAxfiF79v26zyE8PddGkPZaTNn8rcy9xPJVjfjiQ4qEKyTP6AG9vi43b?=
+ =?us-ascii?Q?gEprW099IXOwppPxiCptILMxcQ9wYhRk1D6UACr3Aq48oOA5V4ZGHLvTrU9v?=
+ =?us-ascii?Q?D9fcep3/ZVTFTOn4fsFJtnAAmlJG6a2gUKII8kSrBIxIyPJUGqQrWTNUTh5K?=
+ =?us-ascii?Q?r6DcLkpcX0n2YYI68/lN8x/5B0PhpJJowCd+OrxunJBtnnS3L2fNjnCeDGgV?=
+ =?us-ascii?Q?C6lQZu50chlITIctkxQeTXVKQOJKKjYRISMYBN4lTbMZy4CuCHWAlnqI+7fY?=
+ =?us-ascii?Q?d+Hd+OIoJrq3iLk0OaQ0qv06jQQ7yPQPkwzbDmse6GdqO1oe2ie6qtGbTWOT?=
+ =?us-ascii?Q?D1FBpSFX4520H9LxulfOdDh/XFY8cFfGLyqStW9py2L2/VM3j921sqD5kQXQ?=
+ =?us-ascii?Q?5S6yxXa4meqTsSimJ2IBfGkojTB23E3OmgDjoec4FXJw0GTIHkeC2qyhhRn3?=
+ =?us-ascii?Q?oGS3DNtZrVdpi/Euxgl5MtFe9CmROTXYaHRAjOxoGYSzk6rGF+DfI9eXRs6+?=
+ =?us-ascii?Q?3A=3D=3D?=
+X-OriginatorOrg: in-advantage.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 637fb156-52a4-4f95-2c18-08daee66a4d6
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2351.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jan 2023 15:16:25.0764
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 48e842ca-fbd8-4633-a79d-0c955a7d3aae
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Q+0S9hr+UL2LwAAhLg94tclt4bJG2GL6XdJJ4ekiyGVIfdSVkX1xLs+1o1yt6YugGECB6Q4lLYIpD922No+zPw6zqW2nlWoc1oew7edEoY4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR10MB5807
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230104_063509_619953_226E15E3 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20230104_071631_997058_AB4D486C 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,40 +157,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 03, 2023 at 07:56:41PM +0200, Vladimir Oltean wrote:
+> On Mon, Jan 02, 2023 at 09:14:00PM -0800, Colin Foster wrote:
+> > diff --git a/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> > new file mode 100644
+> > index 000000000000..126bc0c12cb8
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/ethernet-switch-port.yaml
+> > @@ -0,0 +1,25 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/net/ethernet-switch-port.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Generic Ethernet Switch Port
+> > +
+> > +maintainers:
+> > +  - Andrew Lunn <andrew@lunn.ch>
+> > +  - Florian Fainelli <f.fainelli@gmail.com>
+> > +  - Vladimir Oltean <olteanv@gmail.com>
+> > +
+> > +description:
+> > +  Ethernet switch port Description
+> 
+> Still doesn't look too great that the ethernet-switch-port description
+> is this thing devoid of meaning. What is said about the dsa-port is what
+> the description should be here, and the description of the dsa-port is
+> that it's a generic Ethernet switch port plus DSA specific properties.
 
---rYR1PrBg/o4bENGj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Apologies - you mentioned this earlier as well. I'm not sure how I
+missed it in v5 (and therefore v6)
 
-On Wed, Jan 04, 2023 at 03:08:51PM +0100, Thorsten Leemhuis wrote:
-> On 27.12.22 14:43, Mark Brown wrote:
+> 
+> > +
+> > +$ref: ethernet-controller.yaml#
+> > +
+> > +properties:
+> > +  reg:
+> > +    description: Port number
+> > +
+> > +additionalProperties: true
+> 
+> Also, I see your patches are deferred in patchwork, and while this isn't
+> really for me to say, presumably it's because there was no announcement
+> so far that net-next reopened.
 
-> > the next merge window (or sooner if it is a bug fix), however if
-> > problems are discovered then the patch may be dropped or reverted.
-
-> Quick question: why did you queue this for the next merge window? This
-> change *afaics* is fixing a reported regression (a kernel oops)
-> introduced this cycle:
-> https://lore.kernel.org/lkml/Y6dL2ZWgd1BD6kew@makrotopia.org/
-
-> Or have I missed or confused something?
-
-You've missed something, it's queued for 6.2.
-
---rYR1PrBg/o4bENGj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmO1jpUACgkQJNaLcl1U
-h9BVCAf+PnTmIJYMJ2GGcFDU67z4Mx4B/0ZOVIcbndNnQq1ZdtePeZ3c3ClWbt31
-NEF8G7bieK2Y+cKbFiwQ6siK503B2aTDblSsFO44YlS6BWNSknYlzWjfuMtq7alw
-hGub9wuwTQ8yABK1gf99t5ajJ4/l8CVcSwlVMVEdI9rqUZc3/xiv/691VMnsX3oI
-xnzDHTxPcpRnZZjSUkaEejBgPRE6zGFdbQyxQMp11CTPNW95gHGl75exUMuJgfyF
-MMr2QfQNEAr46OaK/zhbOsGEyQrCSZzwuH0f2dq2CbeAvIxfSf66H3fU1pfnZHzd
-REZwHMaFfx5G5yeJm6yAu/62c600oQ==
-=pEW3
------END PGP SIGNATURE-----
-
---rYR1PrBg/o4bENGj--
+Based on above, it might be for the better.
 
