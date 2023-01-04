@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5486DC4708E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 02:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2ECC46467
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jan 2023 06:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hHeFWn8psj8u8cGp1SABE4QnAQdoZWb4E9tsvr9oCvk=; b=GgI7m3cuchlDWoXtqQMBuWl1Wq
-	y31/cr9Ut1OKXuBcAeay6TLAySBeursi2ukUp5CmxMtRvwc6TVYrDznn9EzbRJwmmf+g3dY+2aSvt
-	BYAj52yVnZ7gGN38lzzAGzKliKsAhr59T9RQJeRzleW2fcSA3yh3UQ1yPtn6EwMGm0s72WwjXddZ1
-	bpRPCTFBUlPVh4h0o75tpqFGDQIcIIPl5JL+AhqNMS5YZEvzwcApW5u3xQjdDvMXHiN6ZXI8G93lV
-	2aiPS7N0BDYhO/Ve2xC/pMpkvVdjHw54XxbbGrg1Te9x71YbgLTIEw+/QmkG6fP0Y0H0NmZ7sE2ds
-	r73SefQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5i2PAsadZxre+fZA40ApSOO4k6rDBMhHG9OHUSd1jK0=; b=vh6oKoDxSXHAYp/5Fq8p1qc6k0
+	wdE5WjCXP4BN5d5AqoKVuQ+nA68Ki0A6hDm57h4y3SWgfjsmKgrotw1MViRCR5/HNvEdlZM1qFt1k
+	3pqO+jBI1mzdSOC1gaMcVpnPE8DgnzdDUSD7K+OHyzdiQlP/HPXDQoubyzm9CZIny7YfK+N4ttUNf
+	HeSokfygQf/zlK3Ixgz/315/u6RZvJMUOfjBFKuN5tlYWBJlGH6qcIGJbqb+Bjvj0usuHRwoG2SjN
+	PG2wKabztsuel1E06L4g3OKTDPmprcAATPaLCkZgliU6o3tLjZuoAl3OJkadKmczx3xxJhj1pKnrG
+	i052YZ5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCt6z-006IHX-RL; Wed, 04 Jan 2023 02:02:38 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1pCxNQ-007BgP-Ue; Wed, 04 Jan 2023 06:35:52 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pCt5X-006Hzv-8w; Wed, 04 Jan 2023 02:01:09 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id a11-20020a17090a740b00b00223f7eba2c4so5192426pjg.5;
-        Tue, 03 Jan 2023 18:01:01 -0800 (PST)
+	id 1pCxMp-007BHm-BO; Wed, 04 Jan 2023 06:35:16 +0000
+Received: by mail-pg1-x533.google.com with SMTP id v3so21603025pgh.4;
+        Tue, 03 Jan 2023 22:35:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=hHeFWn8psj8u8cGp1SABE4QnAQdoZWb4E9tsvr9oCvk=;
-        b=dIntYs8Vf4z/54w86VjYfR8QSrf959Il8mXbiEes8eVzuXfpOrY99hD9Ws5Diw5VwO
-         V0SzFWJI9wBDkn2eynnJ2czga+dwdBwdgkhdNlE73DqxIBjzn/Mtl2JnRp4hxcV5eQdE
-         MdbOPFV+pg2nfORgvucmgCQ3xFIS8SRdbzHhc3O687/EHdUrEyIA4z2W/mfNK/KcUhUt
-         bmDhqo0DefNVGKtkJVd09K3bhjLN2dV31/SibDgzkFZohPuRBEl0WQ06frEwB+XuQPqw
-         r9THHuktVvRdSaB3+gyJLh8hIHoUbpbJn4aHdar/Aov1ZwcW6vNg+XIihS3ps4F+umpZ
-         1zUg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=5i2PAsadZxre+fZA40ApSOO4k6rDBMhHG9OHUSd1jK0=;
+        b=gAU5b++TyEBAGOOaOjV+IHnXy9gGfUTiYm9Ah5+13Veoa4PyVgvxtlUrJbzk1V5sa8
+         AcmbmoM63BK7EcMazLZ+5+ksoUUBV4oKeYdzfMi/cjQJlqjA+Ozr1k/UUT0bugDyccfv
+         Ws5ridHBCE+02PZxSg8qgC+RdpMVR7YW8LaNn4UAUqkUlTRVO426XC2NlSmJ0QoDZWbG
+         UbtWr4etQF+jokXd1g4um6O/bTDPKAK2WoE1WcQ7lxR2KB1+gyC3PkD5y7vkWifaubjb
+         jtvlU7Uq0JfA4iU1+NqoukvI0jAXDKOszVV7xPRs4BDXNHp6N9caWLIzFyo86ylzz7dn
+         P9JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hHeFWn8psj8u8cGp1SABE4QnAQdoZWb4E9tsvr9oCvk=;
-        b=U7NKthPkfaPT1eneuZ/sKnm6SZXZIb/O4X5VvI1loHl4uQFOHUEpdSKJiD4NRvdC1o
-         i/BjJwUlJEKR/ejDOMDKIeSUA+sbndzErT57VMpSK7RS+7+tZAUR63ScW4/7kZAvI0IT
-         BK5wo3EDSpf2RR9298948RaPgFtD+UrMOJgWODBR9u0II/68+S52dtYXtx2z94hA+aBt
-         v5J2LPqJ/FbAgMpEcRjbHH8ZIi2aSpq5tan4HnQ6ZisuOgSAboCKoPp0WUpxzwqd6HxS
-         9JYo/ItFnTawHOkUZHA74hXKXdl7KQgMwpjsGGBqeMbkn2QYxe/eeWcMUZ6vCks4/CDK
-         0zkw==
-X-Gm-Message-State: AFqh2kpJAitCPS7TRpHodedvM+ujGnkKLsqDhIi0ZW5hT7/z6X01mKPB
-	nYgyt55Ej8QeXA0kb8ifE7FAhEGdN7w32WSxMHI=
-X-Google-Smtp-Source: AMrXdXvPnPHlt5A1dFrqgtpDhVrKF7vmu2xsFbu9mcs9JiohmPnLDZXYOyZJdIqGkvnD1Xw31jEejLRYjG3pjpTLPjw=
-X-Received: by 2002:a17:903:3287:b0:189:8d8b:9db7 with SMTP id
- jh7-20020a170903328700b001898d8b9db7mr3112912plb.150.1672797660693; Tue, 03
- Jan 2023 18:01:00 -0800 (PST)
+        bh=5i2PAsadZxre+fZA40ApSOO4k6rDBMhHG9OHUSd1jK0=;
+        b=jcnFsVME4dKS29r6uEub70tamjXUZS9V1Aky58QEwnnE6bsfiANh3dJsj3rjkJrgDQ
+         wq6J0lSDwK2UYj1llTWExVXvsuJGKw20ADrDzODlVvMhFRmb4GrVkhWqGaq2mKkwSdPJ
+         0LkAmYYFh14rwKGgvRx7bcI0BGxG1E6/pmwkXHFsKdwry6RDWu1HyKsMBlkdqiZjvwsM
+         D1zhM8wH02GXd9VnBntn0FoaaaiULzQbdin1t9oRAsokScDu1ZO8n7hnDdNHaQVAp8X6
+         HIx5DhRqFVqREVyy8d9zkoGLBj8lkufHczVArYdDGQQE+/Ehn3sykxLZPI7RsUW+Cpdo
+         cQJQ==
+X-Gm-Message-State: AFqh2kqRQaqi3upT6wg8GxlUoSZECZChfAVCHSx4rlUFMhtXnh7X3pNM
+	b90bCqkTS1qvuczgVnwqNd4=
+X-Google-Smtp-Source: AMrXdXvi6Dj8Q8jPRtltXyZIDqYzpi3IkyqsCHG995ldQ2iwyBQ2irb4AHPBwcV/AwV9CgE0Jc2w3A==
+X-Received: by 2002:a05:6a00:21ce:b0:581:26c2:aa0a with SMTP id t14-20020a056a0021ce00b0058126c2aa0amr43392435pfj.30.1672814112856;
+        Tue, 03 Jan 2023 22:35:12 -0800 (PST)
+Received: from guoguo-thinkbook.lan ([240e:379:964:5365:9621:efdc:4c9e:b465])
+        by smtp.gmail.com with ESMTPSA id 67-20020a621446000000b0056d98e359a5sm20378439pfu.165.2023.01.03.22.35.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jan 2023 22:35:11 -0800 (PST)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Chuanhong Guo <gch981213@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>,
+	Ben Greear <greearb@candelatech.com>,
+	netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH] wifi: mt76: mt7921u: add support for Comfast CF-952AX
+Date: Wed,  4 Jan 2023 14:33:38 +0800
+Message-Id: <20230104063341.18863-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-References: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
-In-Reply-To: <20230103075603.12294-1-Kuan-Ying.Lee@mediatek.com>
-From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Wed, 4 Jan 2023 03:00:49 +0100
-Message-ID: <CA+fCnZdk0HoWx6XCbTsiNhyR2Z_7zv5JUdgNs8Q_tV4GRkkmCg@mail.gmail.com>
-Subject: Re: [PATCH] kasan: infer the requested size by scanning shadow memory
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, 
-	Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	chinwen.chang@mediatek.com, qun-wei.lin@mediatek.com, 
-	kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230103_180107_475451_F4BAE385 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20230103_223515_524718_069BB7EC 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,79 +102,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 3, 2023 at 8:56 AM Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
->
-> We scan the shadow memory to infer the requested size instead of
-> printing cache->object_size directly.
->
-> This patch will fix the confusing generic kasan report like below. [1]
-> Report shows "cache kmalloc-192 of size 192", but user
-> actually kmalloc(184).
->
-> ==================================================================
-> BUG: KASAN: slab-out-of-bounds in _find_next_bit+0x143/0x160 lib/find_bit.c:109
-> Read of size 8 at addr ffff8880175766b8 by task kworker/1:1/26
-> ...
-> The buggy address belongs to the object at ffff888017576600
->  which belongs to the cache kmalloc-192 of size 192
-> The buggy address is located 184 bytes inside of
->  192-byte region [ffff888017576600, ffff8880175766c0)
-> ...
-> Memory state around the buggy address:
->  ffff888017576580: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
->  ffff888017576600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-> >ffff888017576680: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
->                                         ^
->  ffff888017576700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->  ffff888017576780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-> ==================================================================
->
-> After this patch, report will show "cache kmalloc-192 of size 184".
+Comfast CF-952AX is a MT7921 based USB WiFi dongle with custom
+VID/PID. Add an entry for it.
 
-I think this introduces more confusion. kmalloc-192 cache doesn't have
-the size of 184.
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Let's leave the first two lines as is, and instead change the second
-two lines to:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index 5321d20dcdcb..a0778ecdb995 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -15,6 +15,9 @@
+ static const struct usb_device_id mt7921u_device_table[] = {
+ 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7961, 0xff, 0xff, 0xff),
+ 		.driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
++	/* Comfast CF-952AX */
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x3574, 0x6211, 0xff, 0xff, 0xff),
++		.driver_info = (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ },
+ };
+ 
+-- 
+2.39.0
 
-The buggy address is located 0 bytes to the right of
- requested 184-byte region [ffff888017576600, ffff8880175766c0)
-
-This specifically points out an out-of-bounds access.
-
-Note the added "requested". Alternatively, we could say "allocated".
-
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -340,8 +340,13 @@ static inline void kasan_print_address_stack_frame(const void *addr) { }
->
->  #ifdef CONFIG_KASAN_GENERIC
->  void kasan_print_aux_stacks(struct kmem_cache *cache, const void *object);
-> +int kasan_get_alloc_size(void *object_addr, struct kmem_cache *cache);
->  #else
->  static inline void kasan_print_aux_stacks(struct kmem_cache *cache, const void *object) { }
-> +static inline int kasan_get_alloc_size(void *object_addr, struct kmem_cache *cache)
-> +{
-> +       return cache->object_size;
-
-Please implement similar shadow/tag walking for the tag-based modes.
-Even though we can only deduce the requested size with the granularity
-of 16 bytes, it still makes sense.
-
-It makes sense to also use the word "allocated" instead of "requested"
-for these modes, as the size is not deduced precisely.
-
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -236,12 +236,13 @@ static void describe_object_addr(const void *addr, struct kmem_cache *cache,
->  {
->         unsigned long access_addr = (unsigned long)addr;
->         unsigned long object_addr = (unsigned long)object;
-> +       int real_size = kasan_get_alloc_size((void *)object_addr, cache);
-
-Please add another field to the mode-specific section of the
-kasan_report_info structure, fill it in complete_report_info, and use
-it here. See kasan_find_first_bad_addr as a reference.
-
-Thanks for working on this!
 
