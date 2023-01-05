@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD52C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 19:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F006C4708E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 20:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZjHRlIJfTirwwzT2i8X7HQP34Mb9Rek8gHIaOk7TNeI=; b=HYIdRp+CGQu7k1Ec6zQy4VcEKs
-	PYNnPuVJmqJ3mXuh6kkZg/SCDM8LwjJtQ63mBmXIqQ4FQ6buFqbfYOwdFqh92jjw5gp2/F+HZsVAO
-	KAsS8TBFDnkZ+94GMs8W2ROTIYngGDXoqJntQdEm5uACigmTJzh0Z/EBFARfDzfwjQXrFhl0znVSs
-	CsPUPPg9ZbvtcSe9vTiWFQmpD5M6JY/WILlZRRbqsqAzixw8wfPiY//8c2eUlpZ7dKd1p2zvaV8OM
-	Iw6DQF6k8BAQv4G6vDw3TDpDckQUqBJYBM67ynmgQr1nXUcR6y5vhGYXEZbl6/gmmpTlYQaV04iI6
-	LvmhZ13A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TOfkL7MyOeQeSrJ2F21ekedGlSVWVhq+E3DdO0nm1r4=; b=taCeJAKwtACCKxxUNhfrfbmVqM
+	2ptaR3xhcS6mrVqtTcb4ybGZYQkfwk5ccrhA4aTd7F/xw68ggKNfQTCrL3VeWPbau/deioqmXiyI3
+	Dn6UAoJXB7Ti6eMDXOn4zZLxRuV34vRilDazzu8pEgmC5Og8ojmojedCOjiR1VfSdfd9uXGXQ56TT
+	QZXH3VnCosSua7UN01maMHIvuytjVdO1v+RQVEQ9FfK0Wj0pREicKjPFFTbLltzxGWjV0lp+dIrC3
+	MjTo6A/b9aBxnQm2AVnD1wwjQ+STy2r45abVcYOqsMepusyxgWPoGT9nRWWxxMAjHGtEodjXdGx7Q
+	uFyBKMkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDWMs-00EItu-2b; Thu, 05 Jan 2023 19:57:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1pDWgx-00ESsY-VH; Thu, 05 Jan 2023 20:18:24 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDMZb-009d99-JJ; Thu, 05 Jan 2023 09:30:12 +0000
-X-UUID: e12845aed3c94c82b9b7a419ef8a696a-20230105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZjHRlIJfTirwwzT2i8X7HQP34Mb9Rek8gHIaOk7TNeI=;
-	b=isID7ba6a69YXl22VcxluctvnJE1Iec22+Wbn7DLHP8FpIR200pPhPOsvaAshPf1UeYRGG7/MmEGriytkmC0WGULFAowRG3VPWa81Q7aDMUhYibNU96PCTaLNXMXfvRORaIh5myKB+LaRaM8YNWpGt/aMR2/LmFiK2b7t6BKJas=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:dd15127d-2a1f-4561-8580-81a096b8743a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:543e81c,CLOUDID:779ce5f4-ff42-4fb0-b929-626456a83c14,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0,NGT
-X-UUID: e12845aed3c94c82b9b7a419ef8a696a-20230105
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 422797819; Thu, 05 Jan 2023 02:29:38 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 5 Jan 2023 17:29:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 5 Jan 2023 17:29:34 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Miles Chen <miles.chen@mediatek.com>, <linux-usb@vger.kernel.org>, Chunfeng
- Yun <chunfeng.yun@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH 1/3] arm64: dts: mediatek: Introduce MT8195 LAPTOP and IOT's USB configurations
-Date: Thu, 5 Jan 2023 17:28:07 +0800
-Message-ID: <20230105092809.14214-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1pDNRM-00AbhU-3S; Thu, 05 Jan 2023 10:25:41 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id g10so2432896qvo.12;
+        Thu, 05 Jan 2023 02:25:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=TOfkL7MyOeQeSrJ2F21ekedGlSVWVhq+E3DdO0nm1r4=;
+        b=c3GVsPT+wysvPStVKkYnBNMJlfpAT8IQ29T6m2mBmXZfX1sVJts/3K/QOPnib88xoe
+         DbBI1krlALLHuqtaDPBh9iKcRDT5sbvXKDixd3n4JLKplH7ln1Vqn/4GsnqlGNheXgDc
+         yuUt6UhqoMS3ynCFK0mbjy31O0Wyl+abWSim81r3HI/tYzijPDH7HjrNkEVb745g1C/7
+         irJToeSxFZ7wRNrfARCNuYpF5IgliaPOT+wPgG4qBctVMsjpU1PhTPbSlzJWqsRvnsAJ
+         wkhThC2XyIN2joFBPZQOgeX1+hLd8HUdKg5CnR+gcPxDb3jH7vtxFDhWitKan8ZKbRAS
+         +FyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TOfkL7MyOeQeSrJ2F21ekedGlSVWVhq+E3DdO0nm1r4=;
+        b=yHOZU7BXJato8x1RUsxPLEqO/RVLe5rtByFO+NkoIbp1ZUtiCPdlNBYFTLbtxteeRl
+         EfhAF+ShiGssbf8omPx5zmN9KhJ+ge9ik45ZugnS+8JDD0ZTEXdFkGsl2G4fzAwG+JQz
+         KLedv4TfbvLSLx7vIZ6gXGPym4bDdagcyAmuH57FZhUXAVRKUU84acO05/YiZamSiD1i
+         Ig9cl6m24IP7dmpaqW6z5MnnXY42lPQjjm8AK06K4sPHwh31318P6gW12Afr8F/T13Up
+         65Ccj10cUu4MtlbCBxPyScTqPpanMGxLmn/46waZ0Gr6j8cORWV2KoVD214c9zRQqUJI
+         zSIA==
+X-Gm-Message-State: AFqh2koopNEOYg2diIcnN1Eh1PdUPn5gkIBAqe3hg9c/+uDv7LMdKtCX
+	SdYoViCbJNdur+khyi+qwNy4NrJaM/+jHe9GsrY=
+X-Google-Smtp-Source: AMrXdXtvC0Bt/DBCsyOcP0u0xHxoN3Qc+QonoeKkfiWauqM5Fa1hRedoh3ln8itCPshJjSL8zDCzwwy9cTcze4ueQ6A=
+X-Received: by 2002:a05:6214:3313:b0:531:c954:a557 with SMTP id
+ mo19-20020a056214331300b00531c954a557mr522380qvb.13.1672914337262; Thu, 05
+ Jan 2023 02:25:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <cover.1672728620.git.chiaen_wu@richtek.com> <c1c6d3e51c93c15620ded0e2a53dcbe5de066ec9.1672728620.git.chiaen_wu@richtek.com>
+ <Y7QoNpbFRsK3bW6V@smile.fi.intel.com>
+In-Reply-To: <Y7QoNpbFRsK3bW6V@smile.fi.intel.com>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Thu, 5 Jan 2023 18:25:01 +0800
+Message-ID: <CABtFH5KjksZ6GSOMafU8aS5mJzGkd8SDGEzH5irFUEFceQTWtQ@mail.gmail.com>
+Subject: Re: [PATCH v15 RESEND 2/2] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: pavel@ucw.cz, lee@kernel.org, matthias.bgg@gmail.com, 
+	chiaen_wu@richtek.com, cy_huang@richtek.com, linux-leds@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, szunichen@gmail.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_013007_968577_AFB0E2CE 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20230105_022540_198113_472CE75D 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,274 +89,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the split MT8195 laptop and iot USB configurations.
-The hardware specifications for LAPTOP devices is different from IOT
-devices. The major differences include some hardware constrains for
-dual-role switch for USB controllers in different configurations,
-especially for power management and other control flows as well.
+On Tue, Jan 3, 2023 at 9:06 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> ...
+>
+> >  obj-$(CONFIG_LEDS_RT8515)    += leds-rt8515.o
+> >  obj-$(CONFIG_LEDS_SGM3140)   += leds-sgm3140.o
+> > +obj-$(CONFIG_LEDS_MT6370_FLASH)      += leds-mt6370-flash.o
+>
+> Can it be kept ordered?
 
-Here are some hardware specifiction differences listed:
-  1. LAPTOP (Cherry Tomato boards) don't support USB gadget (device mode).
-  2. IOT devices must support multiple gadget devices and host mode.
-  3. Dual-role switch is not fully supported. Only USB PORT0 support
-     dual-role switch.
-  4. Power management is designed in primary and secondary dominator.
-     For a dual-role port, the device controller is the primary controller
-     for power management; while the host controller is the secondary.
-     LAPTOP devices should remove device nodes for avoiding abnormal
-     behavior.
+hmm... I found "mt6360" actually did not keep the order either...
+Do you want me to put it after "max77693" or after "mt6360"??
+Thanks for your review.
 
-This modifcation is to add USB configurations "mt8195-laptop-usb.dtsi"
-for LAPTOP devices, and add "mt8195-iot-usb.dtsi" for IOT devices.
-
-To remove common USB configurations for mt8195.dtsi and switch includes
-dtsi these new files for the boards will come in next patch.
-
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- .../boot/dts/mediatek/mt8195-iot-usb.dtsi     | 122 ++++++++++++++++++
- .../boot/dts/mediatek/mt8195-laptop-usb.dtsi  | 102 +++++++++++++++
- 2 files changed, 224 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-iot-usb.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-laptop-usb.dtsi
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-iot-usb.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-iot-usb.dtsi
-new file mode 100644
-index 000000000000..f9bd79542044
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-iot-usb.dtsi
-@@ -0,0 +1,122 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2022 MediaTek Inc.
-+ */
-+
-+#include "mt8195.dtsi"
-+
-+/ {
-+	soc {
-+		ssusb: ssusb@11200000 {
-+			compatible ="mediatek,mt8183-mtu3", "mediatek,mtu3";
-+			reg = <0 0x11201000 0 0x2dff>,
-+			      <0 0x11203e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port0 PHY_TYPE_USB2>,
-+			       <&u3port0 PHY_TYPE_USB3>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
-+				 <&topckgen CLK_TOP_SSUSB_REF>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck";
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			xhci0: xhci@11200000 {
-+				compatible = "mediatek,mt8195-xhci",
-+					     "mediatek,mtk-xhci";
-+				reg = <0 0x11200000 0 0x1000>;
-+				reg-names = "mac";
-+				interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
-+				assigned-clocks = <&topckgen CLK_TOP_USB_TOP>,
-+						  <&topckgen CLK_TOP_SSUSB_XHCI>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+							 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+				clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
-+					 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>,
-+					 <&topckgen CLK_TOP_SSUSB_REF>,
-+					 <&apmixedsys CLK_APMIXED_USB1PLL>;
-+				clock-names = "sys_ck", "xhci_ck", "ref_ck", "mcu_ck";
-+				status = "disabled";
-+			};
-+		};
-+
-+		xhci1: xhci1@11290000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x11290000 0 0x1000>,
-+			      <0 0x11293e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 530 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port1 PHY_TYPE_USB2>,
-+			       <&u3port1 PHY_TYPE_USB3>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_1P>,
-+					  <&topckgen CLK_TOP_SSUSB_XHCI_1P>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_1P_BUS>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
-+				 <&topckgen CLK_TOP_SSUSB_P1_REF>,
-+				 <&apmixedsys CLK_APMIXED_USB1PLL>;
-+			clock-names = "sys_ck", "xhci_ck", "ref_ck", "mcu_ck";
-+			status = "disabled";
-+		};
-+
-+		ssusb1: usb1@112a1000 {
-+			compatible = "mediatek,mt8183-mtu3", "mediatek,mtu3";
-+			reg = <0 0x112a1000 0 0x2dff>,
-+				  <0 0x112a3e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 532 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port2 PHY_TYPE_USB2>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_2P>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_BUS>,
-+				 <&topckgen CLK_TOP_SSUSB_P2_REF>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 4>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			xhci2: xhci2@112a0000 {
-+				compatible = "mediatek,mt8195-xhci","mediatek,mtk-xhci";
-+				reg = <0 0x112a0000 0 0x1000>;
-+				reg-names = "mac";
-+				interrupts-extended = <&gic GIC_SPI 533 IRQ_TYPE_LEVEL_HIGH 0>,
-+					      <&pio 220 IRQ_TYPE_EDGE_FALLING>;
-+				assigned-clocks = <&topckgen CLK_TOP_SSUSB_XHCI_2P>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+				clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
-+				clock-names = "sys_ck";
-+				status = "disabled";
-+			};
-+		};
-+
-+		xhci3: xhci3@112b0000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x112b0000 0 0x1000>,
-+			      <0 0x112b3e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 536 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port3 PHY_TYPE_USB2>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_3P>,
-+					  <&topckgen CLK_TOP_SSUSB_XHCI_3P>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>,
-+				 <&topckgen CLK_TOP_SSUSB_P3_REF>;
-+			clock-names = "sys_ck", "xhci_ck", "ref_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
-+			wakeup-source;
-+			usb2-lpm-disable;
-+			status = "disabled";
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-laptop-usb.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-laptop-usb.dtsi
-new file mode 100644
-index 000000000000..5e6999bfd83c
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-laptop-usb.dtsi
-@@ -0,0 +1,102 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2022 MediaTek Inc.
-+ */
-+
-+#include "mt8195.dtsi"
-+
-+/ {
-+	soc {
-+		xhci0: usb@11200000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x11200000 0 0x1000>,
-+			      <0 0x11203e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port0 PHY_TYPE_USB2>,
-+			       <&u3port0 PHY_TYPE_USB3>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP>,
-+					  <&topckgen CLK_TOP_SSUSB_XHCI>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
-+				 <&topckgen CLK_TOP_SSUSB_REF>,
-+				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
-+				 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 103>;
-+			wakeup-source;
-+			status = "disabled";
-+		};
-+
-+		xhci1: usb@11290000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x11290000 0 0x1000>,
-+			      <0 0x11293e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 530 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port1 PHY_TYPE_USB2>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_1P>,
-+					  <&topckgen CLK_TOP_SSUSB_XHCI_1P>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_1P_BUS>,
-+				 <&topckgen CLK_TOP_SSUSB_P1_REF>,
-+				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 104>;
-+			wakeup-source;
-+			status = "disabled";
-+		};
-+
-+		xhci2: usb@112a0000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x112a0000 0 0x1000>,
-+			      <0 0x112a3e00 0 0x0100>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_BUS>,
-+				 <&topckgen CLK_TOP_SSUSB_P2_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 105>;
-+			wakeup-source;
-+			status = "disabled";
-+		};
-+
-+		xhci3: usb@112b0000 {
-+			compatible = "mediatek,mt8195-xhci",
-+				     "mediatek,mtk-xhci";
-+			reg = <0 0x112b0000 0 0x1000>,
-+			      <0 0x112b3e00 0 0x0100>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 536 IRQ_TYPE_LEVEL_HIGH 0>;
-+			phys = <&u2port3 PHY_TYPE_USB2>;
-+			assigned-clocks = <&topckgen CLK_TOP_USB_TOP_3P>,
-+					  <&topckgen CLK_TOP_SSUSB_XHCI_3P>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
-+			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
-+				 <&topckgen CLK_TOP_SSUSB_P3_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
-+			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
-+			wakeup-source;
-+			status = "disabled";
-+		};
-+	};
-+};
 -- 
-2.18.0
-
+Best Regards,
+ChiaEn Wu
 
