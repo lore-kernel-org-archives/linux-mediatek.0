@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D93C4708E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 21:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B4DC3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 22:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BGyNZMSELVhIYsmh8IQ0cClyJQ3/Pu1dOTSavukgh6c=; b=oOYxF0EgaKjAtjX/CxhW0lVJ4m
-	y0jvA+V0mzVF4yW56QcJMiuDyQAuF6nDdTGLh6bww81uiwxOIA9oOAEiKIthgtf0T3mMAaaU9KMf0
-	z2HRm22nkrfGyGCWs4oUFnzr6zXaoaD6nbJBoiNbUaXnTp7LePHIY8GaFjg8E3NRlrYB3dr3YNKi1
-	CDj2wE4XZVQWGmf7SpikKthe4+vDq8AmQzMQhEA933ywQvDMd3Sm+eOUHBmi6jtnJ/Ws7/NlrkySA
-	Cd/uvsz+wzyYgiPzoaBxz9WOWXyPeSTsGfQ2HdCUCMpy4RY7u6vIj4sNXnqfrtKiHjA1YRhuLGiMf
-	iW9w6LkQ==;
+	bh=qHSeF2epzfegJ6dyqinGOhs8+O9cuqph/+zCKOX0s7I=; b=RTAPFmim7sy7hNPMqL4W1udlUi
+	VyqVFTjYKekHMuhRK+0W9WCGXNzzzAetZSZOmLp4XzA17uk+HXZmeiVSMpLwfCZantSphoWjogPEo
+	t/eokrYk+5ZGnLk/MAtHSLP+nA8z1QrvnXJ7U4otF7UhyuQ4bcWoNz8KKE98sV1aVf0joexyRZQeI
+	vZDntOuV/ICHmTFfyIQwFH4pUlyBmD3gPATPgaNxFsmW/kr7sbTDHA3wAZr+4i+QxoqeGhVi1gUUY
+	ovbqs2xvzvISD8mfk8SKF0fRzASZAxQDQ+/45EqK2D/OoY5RKpJhqIrVEZbRDm+EPSBLEJpbgXx+W
+	1R01qLzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDY7F-00FHNN-66; Thu, 05 Jan 2023 21:49:37 +0000
+	id 1pDYHz-00FN1N-DD; Thu, 05 Jan 2023 22:00:43 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDV3y-00Df5r-BF
-	for linux-mediatek@bombadil.infradead.org; Thu, 05 Jan 2023 18:34:02 +0000
+	id 1pDV7j-00Di2q-9d
+	for linux-mediatek@bombadil.infradead.org; Thu, 05 Jan 2023 18:37:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=BGyNZMSELVhIYsmh8IQ0cClyJQ3/Pu1dOTSavukgh6c=; b=litQP3pFMIPihZR5G6DTQzK47r
-	Ov0zYtl0+gnDk2NvmTPbX1DE9dIQtT4WHISLDFT+k9TcJKP8wZMv8Onfir+1cPMeYJAdQeqGgbWXF
-	0DnT8uiDcuwRmIYYajgpbEsTseMqgU77oN7KQWqKlgruEp/jjPiGnMPlZIEjIenCzCvdMy/ZubVPU
-	lYDPaAN3riWbTRL0D0T+YS+mCH6iJhQgVymUOE1S3az6kcoo9S52j0rELioBgmGWT7PQ7yGtv0kfw
-	E/u9tbT92OZh0jNjrIqU/RoTn00BulVkWiQJObrUjytQevIUJmfYvXHGoLTkXjpHuSkGwmYP3xjtD
-	TuezSmrA==;
+	bh=qHSeF2epzfegJ6dyqinGOhs8+O9cuqph/+zCKOX0s7I=; b=jTVwWtMM5UDmgI954tJk9Lp3fJ
+	ZGHf/zHDAystlJkRKfrBG6X+j5zyPG2QYrs2maw9OvH4CDVMG4k9SNPYIKVLdlvV9jFeGJDmKaRb+
+	WMLK1be6o+4tySxcb7Qg5NVAtUKGABkO1AUsA+W5luLV2DraCLlilDHHi7rHnx4qM0qREYWjUyDtB
+	6JZLUTlBLU3ZeTpN9N2nj+Yn/NOJXJQDI2GiERw5Lnp5yZCJ2hHJap9wR/j9keqM2dFTuRynJWTZh
+	SlDhLeb5oV0dTFmaWLEshp6v9Jl5mhE8eUBE2rvtbUQedsD0NWnRBWuMMGFlqlLyaAlvr9G2htRdv
+	A7Kebzrg==;
 Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pDTiR-001Ve1-2r
+	id 1pDTiS-001Vec-1d
 	for linux-mediatek@lists.infradead.org;
 	Thu, 05 Jan 2023 17:07:46 +0000
-Received: by mail-wr1-x434.google.com with SMTP id d17so17025603wrs.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Jan 2023 09:07:48 -0800 (PST)
+Received: by mail-wr1-x434.google.com with SMTP id m7so2325973wrn.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Jan 2023 09:07:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BGyNZMSELVhIYsmh8IQ0cClyJQ3/Pu1dOTSavukgh6c=;
-        b=DFV2Bk7pE1z4nPsGE5YQsNh5/MwQhELQBIwLpGoUt5Kr9gGjWSCWaFcpmx/AiWgzTM
-         CeJmBndmStn53lw/APB9JGUuZ75hK168BLWCI/aimccr/+KgtnF2uyggiH/FpeScDRZ9
-         +Yl4VULKayXF9MQk0OaIC5ksglOZuaQtzTLCqmwMD/1z4GQbtzQL3k7lIkYbHCrOMtow
-         OtLWWmEESfhoGWyamVruOyv2ut8FI+UEPxH2mD3AOfjNKwJHDRXDin5IrcMvaC0GLALj
-         YbliiPCOSz8pGhwtNyXH32N8CUQXHE6sJcSAizkGHLBmITscU38JNk17TMPNYeNMrW1I
-         pQ+w==
+        bh=qHSeF2epzfegJ6dyqinGOhs8+O9cuqph/+zCKOX0s7I=;
+        b=T9j5Z6Z77lWG3Lcdp+nVPM40kdXJmbdnZ0Ac4zTt8hMNtusoqDFw62aFNPEuz55H/U
+         WImqKxepwo6EUI0Xbkt1jCxk4Flmu6Ye1l8pG1r26F4sGNR/2N2JaGSHa3HeHNKL/TPY
+         KEEOajm91lmqyutXBKH9DN5ZlKWWuG14PbgOwDLl19aSK3sfZze9c5z0wWUGH6Lt2q5s
+         UIkJ4RgB+DPR6oBEk09ocHcYb0CwDcEHRSqJkKMnsx/3GyxPh3zuL0qVhkyNgJ3eGaze
+         1uP3WbkMTlbXAoKJme+in2vRJRwlNGLdmy9nooKLqZsJ9lNbN/Trpe4/W73uYOffX/vf
+         8JyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BGyNZMSELVhIYsmh8IQ0cClyJQ3/Pu1dOTSavukgh6c=;
-        b=n8FvvGc/KR0H+Z2kUCNL1P8uYhcW+H8XHge2bbnBZOSQn/37towSqOHNnrEfi8c2CY
-         vRgVoIZ15YEz5L5CtZmHaOygpXvUUjE+hrVD6ebeA4JyZzU+H8fC+s36MQrTDZUYHwk5
-         7CjyM/SbT4PzimZxP+C1PBVk5ZimwkBYgvcTj1cV/amHeOYXyi5OczdhMHe8FNS5wp1h
-         GaUE14Z/dhl4Cbn2O8Hyz++NFEkDCJ9YveExbutMG6F1zUAKZ0Gs5sDc7rqLve+GDCxJ
-         CCj6S5zxZiF4kgoEXnN5rvMRqvPyZarXyExgPI8cV9gcI/VUvxeeKUKhG4ynuGYITUEm
-         f33g==
-X-Gm-Message-State: AFqh2koU8cfenP7U0UdG7AdtHFoNTD+lQBxvtziE3s5HBi+HEtaR6Uw4
-	ocXZiwI7qkyzv2CD98exSTInzQ==
-X-Google-Smtp-Source: AMrXdXuowYI8YNiqe+s1dAJFjpbJUx2V8Zot+mmm14+rnSw+zcIM7fBJvdIhDwBvmez939s1n5rILw==
-X-Received: by 2002:a5d:4e4c:0:b0:2b8:bcd8:1808 with SMTP id r12-20020a5d4e4c000000b002b8bcd81808mr215071wrt.44.1672938467798;
-        Thu, 05 Jan 2023 09:07:47 -0800 (PST)
+        bh=qHSeF2epzfegJ6dyqinGOhs8+O9cuqph/+zCKOX0s7I=;
+        b=Yh5YWkA+RASm71QdYfsSSWVwA8W5BBhwu700ESzxO0oGyI9woTOjyRo9nkiTIpe4X/
+         Vwdel2zs2WmL5o9EBUWkJMImwCW+kU4QzLx2i8ADX1sbgwXiIpool1XmKnqTK5nZmv36
+         MYqrIpGVhQzsbm+DVdN/WDlJVayAgr6FwCeLwyRzZNGQk9B4i4OAX569BBGdNigGENpK
+         IbAPv0EpbA3+dH3bSZuGmSMziRQA+O6m1GE9PsA2bE9Vspj8iQHrZHD1x7nHuKlm8gpH
+         tgHoIjrU4NoHUjHW2rhB6zYv51HqI90DAP7esuUuJZ7dF1PodA/4IaHbG/bfH4ML2zTV
+         nhWQ==
+X-Gm-Message-State: AFqh2koNxjMFg9QmXGaaDIlIxOXgR6pG7bU5dP7oMDF/On2virOwMqJ6
+	ZGxvdNuR8IE9dAhW1pXUumj/AQ==
+X-Google-Smtp-Source: AMrXdXsPKg+NGFgNV4C04Y1XgAhoYS0yvh7sfB1ozmk0QG2qKNE3ZLFRHj1PCnQ4jZIVzo+0C0/PJw==
+X-Received: by 2002:a5d:4f05:0:b0:28c:6430:c1bc with SMTP id c5-20020a5d4f05000000b0028c6430c1bcmr15570468wru.3.1672938469840;
+        Thu, 05 Jan 2023 09:07:49 -0800 (PST)
 Received: from blmsp.fritz.box ([2001:4091:a245:805c:9cf4:fdb8:bb61:5f4e])
-        by smtp.gmail.com with ESMTPSA id f14-20020adfe90e000000b002365730eae8sm37164853wrm.55.2023.01.05.09.07.46
+        by smtp.gmail.com with ESMTPSA id f14-20020adfe90e000000b002365730eae8sm37164853wrm.55.2023.01.05.09.07.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 09:07:47 -0800 (PST)
+        Thu, 05 Jan 2023 09:07:49 -0800 (PST)
 From: Markus Schneider-Pargmann <msp@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -86,19 +86,18 @@ Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Fabien Parent <fparent@baylibre.com>,
 	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: [PATCH 1/8] dt-bindings: power: Add MT8365 power domains
-Date: Thu,  5 Jan 2023 18:07:28 +0100
-Message-Id: <20230105170735.1637416-2-msp@baylibre.com>
+Subject: [PATCH 3/8] soc: mediatek: pm-domains: Create bus protection operation functions
+Date: Thu,  5 Jan 2023 18:07:30 +0100
+Message-Id: <20230105170735.1637416-4-msp@baylibre.com>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <20230105170735.1637416-1-msp@baylibre.com>
 References: <20230105170735.1637416-1-msp@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_170744_083752_53809680 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20230105_170744_596699_9FFFB5CF 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,85 +112,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Separate the register access used for bus protection enable/disable into
+their own functions. These will be used later for WAY_EN bits.
 
-Add power domains dt-bindings for MT8365.
-
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 ---
+ drivers/soc/mediatek/mtk-pm-domains.c | 68 +++++++++++++++------------
+ 1 file changed, 39 insertions(+), 29 deletions(-)
 
-Notes:
-    Changes in v4:
-    - Add infracfg_nao as it is used by mt8365
-    
-    Changes in v3:
-    - Renamed mt8365-power.h to mediatek,mt8365-power.h
-    
-    Changes in v2:
-    - Made include/dt-bindings/power/mt8365-power.h dual-license.
-
- .../power/mediatek,power-controller.yaml      |  6 ++++++
- .../dt-bindings/power/mediatek,mt8365-power.h | 19 +++++++++++++++++++
- 2 files changed, 25 insertions(+)
- create mode 100644 include/dt-bindings/power/mediatek,mt8365-power.h
-
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index 605ec7ab5f63..a496c43cfa16 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -30,6 +30,7 @@ properties:
-       - mediatek,mt8186-power-controller
-       - mediatek,mt8192-power-controller
-       - mediatek,mt8195-power-controller
-+      - mediatek,mt8365-power-controller
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index 4333cd297405..999e1f6c86b0 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -117,26 +117,50 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+ 					MTK_POLL_TIMEOUT);
+ }
  
-   '#power-domain-cells':
-     const: 1
-@@ -86,6 +87,7 @@ $defs:
-               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
-               "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
-               "include/dt-bindings/power/mt8195-power.h" - for MT8195 type power domain.
-+              "include/dt-bindings/power/mediatek,mt8365-power.h" - for MT8365 type power domain.
-         maxItems: 1
++static int scpsys_bus_protect_clear(const struct scpsys_bus_prot_data *bpd,
++				    struct regmap *regmap)
++{
++	u32 val;
++	u32 sta_mask = bpd->bus_prot_sta_mask;
++
++	if (bpd->bus_prot_reg_update)
++		regmap_clear_bits(regmap, bpd->bus_prot_clr, bpd->bus_prot_set_clr_mask);
++	else
++		regmap_write(regmap, bpd->bus_prot_clr, bpd->bus_prot_set_clr_mask);
++
++	if (bpd->ignore_clr_ack)
++		return 0;
++
++	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta,
++					val, !(val & sta_mask),
++					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++}
++
++static int scpsys_bus_protect_set(const struct scpsys_bus_prot_data *bpd,
++				  struct regmap *regmap)
++{
++	u32 val;
++	u32 sta_mask = bpd->bus_prot_sta_mask;
++
++	if (bpd->bus_prot_reg_update)
++		regmap_set_bits(regmap, bpd->bus_prot_set, bpd->bus_prot_set_clr_mask);
++	else
++		regmap_write(regmap, bpd->bus_prot_set, bpd->bus_prot_set_clr_mask);
++
++	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta,
++					val, (val & sta_mask) == sta_mask,
++					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++}
++
+ static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+ {
+ 	int i, ret;
  
-       clocks:
-@@ -113,6 +115,10 @@ $defs:
-         $ref: /schemas/types.yaml#/definitions/phandle
-         description: phandle to the device containing the INFRACFG register range.
+ 	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+-		u32 val;
+-		u32 set_clr_mask = bpd[i].bus_prot_set_clr_mask;
+-		u32 sta_mask = bpd[i].bus_prot_sta_mask;
+-
+-		if (!set_clr_mask)
++		if (!bpd[i].bus_prot_set_clr_mask)
+ 			break;
  
-+      mediatek,infracfg-nao:
-+        $ref: /schemas/types.yaml#/definitions/phandle
-+        description: phandle to the device containing the INFRACFG-NAO register range.
-+
-       mediatek,smi:
-         $ref: /schemas/types.yaml#/definitions/phandle
-         description: phandle to the device containing the SMI register range.
-diff --git a/include/dt-bindings/power/mediatek,mt8365-power.h b/include/dt-bindings/power/mediatek,mt8365-power.h
-new file mode 100644
-index 000000000000..e6cfd0ec7871
---- /dev/null
-+++ b/include/dt-bindings/power/mediatek,mt8365-power.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT8365_POWER_H
-+#define _DT_BINDINGS_POWER_MT8365_POWER_H
-+
-+#define MT8365_POWER_DOMAIN_MM		0
-+#define MT8365_POWER_DOMAIN_CONN	1
-+#define MT8365_POWER_DOMAIN_MFG		2
-+#define MT8365_POWER_DOMAIN_AUDIO	3
-+#define MT8365_POWER_DOMAIN_CAM		4
-+#define MT8365_POWER_DOMAIN_DSP		5
-+#define MT8365_POWER_DOMAIN_VDEC	6
-+#define MT8365_POWER_DOMAIN_VENC	7
-+#define MT8365_POWER_DOMAIN_APU		8
-+
-+#endif /* _DT_BINDINGS_POWER_MT8365_POWER_H */
+-		if (bpd[i].bus_prot_reg_update)
+-			regmap_set_bits(regmap, bpd[i].bus_prot_set, set_clr_mask);
+-		else
+-			regmap_write(regmap, bpd[i].bus_prot_set, set_clr_mask);
+-
+-		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+-					       val, (val & sta_mask) == sta_mask,
+-					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++		ret = scpsys_bus_protect_set(&bpd[i], regmap);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -161,24 +185,10 @@ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+ 	int i, ret;
+ 
+ 	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+-		u32 val;
+-		u32 set_clr_mask = bpd[i].bus_prot_set_clr_mask;
+-		u32 sta_mask = bpd[i].bus_prot_sta_mask;
+-
+-		if (!set_clr_mask)
+-			continue;
+-
+-		if (bpd[i].bus_prot_reg_update)
+-			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, set_clr_mask);
+-		else
+-			regmap_write(regmap, bpd[i].bus_prot_clr, set_clr_mask);
+-
+-		if (bpd[i].ignore_clr_ack)
++		if (!bpd[i].bus_prot_set_clr_mask)
+ 			continue;
+ 
+-		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+-					       val, !(val & sta_mask),
+-					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++		ret = scpsys_bus_protect_clear(&bpd[i], regmap);
+ 		if (ret)
+ 			return ret;
+ 	}
 -- 
 2.39.0
 
