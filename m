@@ -4,100 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E3FC3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 22:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D84C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jan 2023 22:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+AVf+pfLkaJ1Gl2NWqezqv2bXezRKHHSaj8ghEqd14w=; b=ahuh9GD7Zl32iz29jkEXcpevJj
-	WyDBDeKY3lE/7erxdQvElh+e+6hOV4LcOfHpGvzHoFLgW1+gansIEzK8legLqG+upHVCdiV3ZpdNp
-	qEWcYQVSTP6xqlaTOZ6Z7YIWubZCtqwVWgHfVzLl7AmdwWCyZ4fvYjxXOg7a/HnGBjBcuAc2B4b3r
-	Qu/tB0bVUdmIcyS0xbaiJUwY9dZkiEfvRBf1h6qxPYgiPAryITw+NfuckK95THHBq4jRxbzNq/GiK
-	UzEkO1bSgh/voNZkB50//YtJvlQq/Az/FGl1Zc6v2p7pztT8kM3SaKrMcv11ChL9JPHKH7qaxbKbo
-	jI/+ZaqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Dkt3HR/PhYl/HcfNR96k5NZTqAIpZGIMAMABCP3i6Es=; b=ttjeCns8EJmkqUYoy/+pf1Hfk3
+	qPKXmRLTx+qSrzN6rH9Gursq7GPmahwLOJ2DNi7RTrrcZ59TSl12pPFolInvtm7rlxX35piNDs8WG
+	uFfTUQionTYIl328a91BGYncxfaZBoLhWljfWLUiJbaUgDJpO1qEUY/ecE0SypPykcrl8r6mYC5Pe
+	E2FOTSVutdnLSgq9Kf6TGKMFkE8rNOb19aalFa34w/Qc0h/or7VF6+fwiRnRdUSj1ekYzq6kpH3Rl
+	NF1ZcfvgiiGSWEVKOyyAiayUWh6aEN/a7k0W+WbGfqkN1gq/1tsKmXsykRb2Z9bsqTD4PntcN9cm6
+	bTFE91pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDYNe-00FPwt-6s; Thu, 05 Jan 2023 22:06:34 +0000
+	id 1pDYWL-00FUST-Nb; Thu, 05 Jan 2023 22:15:33 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDV9c-00DjZC-4X
-	for linux-mediatek@bombadil.infradead.org; Thu, 05 Jan 2023 18:39:52 +0000
+	id 1pDVD1-00Dm3q-MH
+	for linux-mediatek@bombadil.infradead.org; Thu, 05 Jan 2023 18:43:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=+AVf+pfLkaJ1Gl2NWqezqv2bXezRKHHSaj8ghEqd14w=; b=d59qFnw2cpU/BJMqKDC/gsKPAd
-	i3dzTtwpBuAZ7afQg/gs4NFJer0VUVxlfKuDlBLdxIepIhUpMfGPnu1WMgdPy/UI0DhvkaSgpJict
-	EnZffkHh4vNBXIsXOeH5OMWS/x0j5VW9et+wlgdGO7w6t4lWtCDm3zks8KjfC8WhHBShLDx62hUqA
-	/p9lIafLUNcky3BFPISjQhURj4ZutXWCXSqM2kRi9Snfe0WPyGfgi9UAPTUMsBnaFfpFZOj0jEmaa
-	SnFnqnlzzoQUCJO2ue1Hc5xsCSaMsR/gEPY5rKmns3nLWlUfhsFFvPaOPb+gsicAbF6AagjeRFzQH
-	fg+GMhrw==;
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Dkt3HR/PhYl/HcfNR96k5NZTqAIpZGIMAMABCP3i6Es=; b=KtRd8/3UvBCGFu8+hz2IMnBeyz
+	PUQ0z7cOM6bOPBSAcl3i8CH4Zi77suI+0MsBlaQc5oiwkJ1zs2EmUAoYhDIqLPmckfJBbcWduXwEn
+	0noAzPGY1tRmQIoc96mHud2MjPfQAigfaHrYUl1f2L1SLD5HMQ9AVlC2wY4ymDep3WwGCsYScxKiw
+	HfhP/AR3RJxR4XJQU8C2BH9oCuMCZEWWDpEjdgr6g2BDJJWcv6hYUGlDiOSs3USyuQ1Ltkuoj1d5X
+	Xhe8LJ/oDXTvel6XFKSskiVoWfWzb684XWjrBLdvNRl4sTJIJnSDawADd8JVCmKxhUW1ZmRjBgrTT
+	tQIolvow==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pDTiV-001Vf2-17
+	id 1pDOxu-001Idi-32
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Jan 2023 17:07:49 +0000
-Received: by mail-wr1-x431.google.com with SMTP id bk16so23556272wrb.11
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Jan 2023 09:07:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+AVf+pfLkaJ1Gl2NWqezqv2bXezRKHHSaj8ghEqd14w=;
-        b=y7jLrTG7p7QjcN2Cna7QAn3CMLp/iGX9hFgyWOvIeyQoOsHM3qakRasdP5KMfs+NZ2
-         FPGzPh9C37o2fDUts5urh+UMB69Vw/ZtDYJo91usNWWpzFe27e91iTXgrN37D02UUx9t
-         A9JvGt7PQ8GoRaaxdmXkthGFdlZyGOajaTqKTinkqnl+uv1XKe3UHCKFEvvr+4LtZsLL
-         AjXOiLXb2Mb1Xe0l7+XuzUtB3Imrpgn0hRHnNjrVUHZ6R94g8p2yLgyyT+xyPCEPI3RN
-         DYPF1DpAztnyht4GNPZeB9OWUWZVtmH+Mr01s3DiR0khgIxwjyEXhz5WtNBVPTTz3INm
-         YZKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+AVf+pfLkaJ1Gl2NWqezqv2bXezRKHHSaj8ghEqd14w=;
-        b=P/wts1VsGUBapuwG1SEBroZp+R2tcrt2pG6MM+0MEcAS1Xi3VnFsusJ+OHr31a9jcg
-         MF5ne1WIZYqZWzlVYG25D0km1wkA8UxCwh+2NT805wEwN0Gad30WPQfL31F+asIBeqzG
-         jAR1SLAfE2IvHfW5qMUhFg760MaTmHP2dpdbgeB6QCWLdvOjsN70cBGwiQtLXHEcIW+6
-         uuxsa8NIPxXwEvbmrTn1yE8Y2hR9+hqIbgU7VsrqnHBeAmRIKAUecm+xKULISl7Giql/
-         TEZxxHop2E1dl5cav7oT0dkp9z3RAAUt4luKPsglpC5mrSFcYK51BIOo6Sf7uzJ/7FaJ
-         BaSA==
-X-Gm-Message-State: AFqh2koZQNY/WeWzunNvt196dv9CdGjNn9LIXYUjRUMqu/pjZcRXV7sz
-	Ky/Z9ZlHUbPR+7S5yAg7Y4ysng==
-X-Google-Smtp-Source: AMrXdXvaEZbEf1VJvkJQZUZ0wp7+NbVXpfFjW83Omw2E04q6K1OndbNKvbHNrGOYQSYHZx9OqH/3Tw==
-X-Received: by 2002:adf:ea4a:0:b0:27e:8d9b:bc20 with SMTP id j10-20020adfea4a000000b0027e8d9bbc20mr26665705wrn.27.1672938471790;
-        Thu, 05 Jan 2023 09:07:51 -0800 (PST)
-Received: from blmsp.fritz.box ([2001:4091:a245:805c:9cf4:fdb8:bb61:5f4e])
-        by smtp.gmail.com with ESMTPSA id f14-20020adfe90e000000b002365730eae8sm37164853wrm.55.2023.01.05.09.07.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jan 2023 09:07:51 -0800 (PST)
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: [PATCH 5/8] soc: mediatek: pm-domains: Fix caps field documentation
-Date: Thu,  5 Jan 2023 18:07:32 +0100
-Message-Id: <20230105170735.1637416-6-msp@baylibre.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230105170735.1637416-1-msp@baylibre.com>
-References: <20230105170735.1637416-1-msp@baylibre.com>
+	Thu, 05 Jan 2023 12:03:25 +0000
+X-UUID: c2a8086f3f9640c0bfd42d33de08e719-20230105
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Dkt3HR/PhYl/HcfNR96k5NZTqAIpZGIMAMABCP3i6Es=;
+	b=bSc2oxu9XDaysb7bN7jL+EY0Tr6N8sZdGJ8nztjhoemu/4n31sZ7hhk5zUcnHzHmQDzIzkwtftFc/OYpyb0YucNYrlqwkXkPzuCX71zqoF/SuzjzNpMepz2r+4y5cAdl2tHmy/A9tENImrpRxqIZAnOiUlwA2zswZE82Pq+jODk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.17,REQID:1b5b7e4d-6dec-4e3f-9e5b-0463a4fdc587,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:543e81c,CLOUDID:39f4e8f4-ff42-4fb0-b929-626456a83c14,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+X-CID-BVR: 0
+X-UUID: c2a8086f3f9640c0bfd42d33de08e719-20230105
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chui-hao.chiu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1885029220; Thu, 05 Jan 2023 04:47:47 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 5 Jan 2023 19:47:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 5 Jan 2023 19:47:13 +0800
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+	<ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH 1/2] wifi: mt76: mt7915: set sku initial value to zero
+Date: Thu, 5 Jan 2023 19:47:10 +0800
+Message-ID: <20230105114711.31430-1-chui-hao.chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230105_170747_476357_9010FA23 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20230105_120323_363346_EC0A3023 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,29 +95,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This field is not for ACTIVE_WAKEUP exclusively. There are a lot of
-other flags defined as well.
+Set sku initial value before mcu starts to prevent mcu from getting an
+invalid value.
 
-Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pm-domains.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/soc.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-index da827e91d462..34642a279213 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.h
-+++ b/drivers/soc/mediatek/mtk-pm-domains.h
-@@ -95,7 +95,7 @@ struct scpsys_bus_prot_data {
-  * @ctl_offs: The offset for main power control register.
-  * @sram_pdn_bits: The mask for sram power control bits.
-  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-- * @caps: The flag for active wake-up action.
-+ * @caps: MTK_SCPD_* capability flags.
-  * @bp_infracfg: bus protection for infracfg subsystem
-  * @bp_smi: bus protection for smi subsystem
-  */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+index 686c9bbd5929..2ac0a0f2859c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+@@ -883,6 +883,8 @@ static int mt7986_wmac_wm_enable(struct mt7915_dev *dev, bool enable)
+ {
+ 	u32 cur;
+ 
++	mt76_wr(dev, MT_CONNINFRA_SKU_DEC_ADDR, 0);
++
+ 	mt76_rmw_field(dev, MT7986_TOP_WM_RESET,
+ 		       MT7986_TOP_WM_RESET_MASK, enable);
+ 	if (!enable)
 -- 
-2.39.0
+2.18.0
 
 
