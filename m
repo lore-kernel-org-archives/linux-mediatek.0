@@ -4,88 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3943FC53210
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 02:46:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492C6C4708E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 03:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yCgAEXW6eSFcKj+Z6Ey5MKhr/05jx4NkjqDNfQM7PgQ=; b=2um1Bl2zlxcWK93E0/+nGRJ7fp
-	xxcsc12sxB4pVCsea1wRCunGU7BAhRB1CAmd1JvXBiQQWW1EflEA0dWsTUJLRAJEon20GGGMH6hak
-	+coo2leqNM2m3LZuBul0zm8nhVS8/il49s4V6VFZDK465DH0ZFlFIj0NfgwcooOm8ruYsrS9T2Qw+
-	zcgIoYKEO9tz0rj4U0u8XYi4CS4oGtM6aUe7PACFDj04kE8bh7iIea6zTyBt6CYN6as3B35BTFiZT
-	EkHSInBqvM+wxgM/ePPpeZSniiDCuxcmuxcxkjhU2Hw4dfgaT/ZmBKU43uaJl/XT29uDVrZXKEPTf
-	hu6UdoSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FLEA2wQkQBIO15nu3HyGaLDd58pUqyHA63e/BahflBg=; b=ddiVAkFbW4GpeCDtzo5kSBmxCS
+	zsUC7iS0N1OiIpDC3m77pHlQ4XQv2co7LKHr4kje6gq8eDbYbQsvj1GKGTzaoPvIXt4jEwQmzDulm
+	1/M3LJjNnFIlWRlbNAsq9jn+AqnfZticbcIGlF4p7OQu9lzd2tufQTeTTKxM3m/KVC37FmShCW2Ms
+	xQmS0ZwZQS2hj+zW5I/KnC628wLINewPFlddxmn+DF4JALPlkQSAft0QrvbDrFSknVa+PiwkYoXSk
+	YlbTKFvRTTl0/S5CTlleUunD00T8SiG7zpjcPR/CMRC1O9aoxomqmr0F+nwHQK5OIDhC8eBydqOXj
+	JQ2aqkjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDckP-00HHbM-VM; Fri, 06 Jan 2023 02:46:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pDcyr-00HN11-KL; Fri, 06 Jan 2023 03:01:17 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDckL-00HHZJ-Bl
-	for linux-mediatek@bombadil.infradead.org; Fri, 06 Jan 2023 02:46:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=yCgAEXW6eSFcKj+Z6Ey5MKhr/05jx4NkjqDNfQM7PgQ=; b=Q02NvDiuOvj9upuezpfoSCgSIl
-	S5Di7jw4pacJvsUaADKVgb3iK0VakZJqEgAkyvv3bKNinXvqZhU/0ty9kfzfa7bYTdrr/FvKbxzxK
-	d8ulR4pfDmT/XZQ9Zth92h9yhWuqys8zLnvW4habLL/DjCWWOyAxecOyNa3Ty38vyLIaxD7DjC4LS
-	MiOiqhS9NeK0PUULNkJtnYbr9em48UuSap6EcnCrIk1BlvVeziA4+oQkUm49iPZJgR/849fW+vdCa
-	Nflb/3onZjOaegwfVFcT08l/T2qwCCBeb/xt1/hGvkrz30cKKCdi4desuQUE4ICULmJ70b5TkSWKk
-	Iqck8w9w==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pDck4-001g2M-1R
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Jan 2023 02:46:06 +0000
-X-UUID: a981045e90934423bfd03732e84ecf8c-20230105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yCgAEXW6eSFcKj+Z6Ey5MKhr/05jx4NkjqDNfQM7PgQ=;
-	b=gVjpN6qKcPSL8sFzLgie2dNSyqbrV9x4/m2/AcWsQluZ8Yn4C+a74oTExrGyaGJVWwMkTBKsZ8VYJHuH9jbEpX/AzNzolTiv5B5ZiKCoakr29VnA6pj89Pvayx0h3n2ZDUVDPqozvRvgBnk1a9L1AwLewkRwycvZsI691JGacA0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:7929182b-bfa9-4a12-a5ce-0cf54a27b6be,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.17,REQID:7929182b-bfa9-4a12-a5ce-0cf54a27b6be,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:543e81c,CLOUDID:c7b2688b-8530-4eff-9f77-222cf6e2895b,B
-	ulkID:230106104415RDNRVZBT,BulkQuantity:3,Recheck:0,SF:28|17|19|48,TC:nil,
-	Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,OSI
-	:0,OSA:0
-X-CID-BVR: 0
-X-UUID: a981045e90934423bfd03732e84ecf8c-20230105
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <chui-hao.chiu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 294281745; Thu, 05 Jan 2023 19:44:51 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 6 Jan 2023 10:44:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 6 Jan 2023 10:44:13 +0800
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v2 2/2] wifi: mt76: mt7915: wed: enable red per-band token drop
-Date: Fri, 6 Jan 2023 10:44:12 +0800
-Message-ID: <20230106024412.10064-2-chui-hao.chiu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230106024412.10064-1-chui-hao.chiu@mediatek.com>
-References: <20230106024412.10064-1-chui-hao.chiu@mediatek.com>
+	id 1pDcyn-00HMtC-TJ
+	for linux-mediatek@lists.infradead.org; Fri, 06 Jan 2023 03:01:15 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d15so367934pls.6
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Jan 2023 19:01:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FLEA2wQkQBIO15nu3HyGaLDd58pUqyHA63e/BahflBg=;
+        b=gr1lwpg+ZbMVA7VcYOW5YvvzRvyk56qGEw34yRLVGhuBq+su/XvHWcwtgeYG5Q5API
+         kQWl20V6HCSzhC+y3lpli6F+e5NnCI736lNGtNY3CR7LWYw9K1WOVN8CmTdTLHH/VHT1
+         /UbBKNWAAha3z8idSR8hR8tlBNBJY87nnTfCo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FLEA2wQkQBIO15nu3HyGaLDd58pUqyHA63e/BahflBg=;
+        b=n/EA6QTu1RDBi2m4f36RaglkVlQvKwilRrwxED86MNrHo5ra/OdhxlM59aRoGz7603
+         6QPF9DWKxhcJyMdE5DQ7iYLJxhpraTxdW5/k4fzRvIbT6/9i4HBdTvlPmGDjwUBZqgad
+         K0v5oU/Xk5L8lQXeaeScD+Tq5NOHwvp/qUnaF4NbBX9jhb/+qPa6BRQPe1fOE3wKHvxx
+         dLrI2clXPwY49bZeIdBRMja3ASHxzs2pJQD4lBa3t7lIsvLGBB6s6h1JmYlNdEyEqiTF
+         qlINwamisu6zpiNL49OVy+bwhSyOrK7KVx+dRZ5UkGwgLpMC/5HeZkI+OzSBt8edtXDm
+         A56w==
+X-Gm-Message-State: AFqh2kpOZlwOOId4Igt1UttkP7sAEu8zGIDvNhw5xmLkR+IvAoUphfAz
+	45c1mmf2+coVbXZjlDZV1aMNtw==
+X-Google-Smtp-Source: AMrXdXsomxVgbccv1usflDMgeLmsRP7BhyBVOMFDU6WowU+xXCKfXlkP0R8LnNIfb1r5yNksWji+AQ==
+X-Received: by 2002:a05:6a20:cb44:b0:af:e129:cc4 with SMTP id hd4-20020a056a20cb4400b000afe1290cc4mr51387940pzb.41.1672974071148;
+        Thu, 05 Jan 2023 19:01:11 -0800 (PST)
+Received: from smtp.gmail.com ([2620:15c:11a:201:d024:f69:ad7c:2653])
+        by smtp.gmail.com with ESMTPSA id g38-20020a635666000000b004768b74f208sm21320pgm.4.2023.01.05.19.01.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Jan 2023 19:01:10 -0800 (PST)
+From: Stephen Boyd <swboyd@chromium.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-kernel@vger.kernel.org,
+	patches@lists.linux.dev,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	yangcong <yangcong5@huaqin.corp-partner.google.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Rob Clark <robdclark@chromium.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Subject: [PATCH] drm/panel: boe-tv101wum-nl6: Ensure DSI writes succeed during disable
+Date: Thu,  5 Jan 2023 19:01:08 -0800
+Message-Id: <20230106030108.2542081-1-swboyd@chromium.org>
+X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_024602_528133_8A249EC6 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20230105_190113_992835_BC313FD2 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,143 +92,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable RED to limit the number of token used by each band. If single band
-uses too many tokens, it would hurt the throughput of the other bands.The
-software path can solve this problem by AQL so enable RED for HW path only.
+The unprepare sequence has started to fail after moving to panel bridge
+code in the msm drm driver (commit 007ac0262b0d ("drm/msm/dsi: switch to
+DRM_PANEL_BRIDGE")). You'll see messages like this in the kernel logs:
 
-Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
----
-v2:
-  - Fix endianness and remove blank lines.
-  - Add macro to prevent compile error without CONFIG_NET_MEDIATEK_SOC_SED.
-  - Add static for mt7915_mcu_set_red.
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 50 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  2 +-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- 5 files changed, 52 insertions(+), 3 deletions(-)
+   panel-boe-tv101wum-nl6 ae94000.dsi.0: failed to set panel off: -22
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index f1e942b9a887..855a434ecf54 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1171,6 +1171,7 @@ enum {
- 	MCU_EXT_CMD_GET_MIB_INFO = 0x5a,
- 	MCU_EXT_CMD_TXDPD_CAL = 0x60,
- 	MCU_EXT_CMD_CAL_CACHE = 0x67,
-+	MCU_EXT_CMD_RED_ENABLE = 0x68,
- 	MCU_EXT_CMD_SET_RADAR_TH = 0x7c,
- 	MCU_EXT_CMD_SET_RDD_PATTERN = 0x7d,
- 	MCU_EXT_CMD_MWDS_SUPPORT = 0x80,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 37a3c1f082d9..b4fbd19e285a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2291,6 +2291,53 @@ mt7915_mcu_init_rx_airtime(struct mt7915_dev *dev)
- 				 sizeof(req), true);
+This is because boe_panel_enter_sleep_mode() needs an operating DSI link
+to set the panel into sleep mode. Performing those writes in the
+unprepare phase of bridge ops is too late, because the link has already
+been torn down by the DSI controller in post_disable, i.e. the PHY has
+been disabled, etc. See dsi_mgr_bridge_post_disable() for more details
+on the DSI .
+
+Split the unprepare function into a disable part and an unprepare part.
+For now, just the DSI writes to enter sleep mode are put in the disable
+function. This fixes the panel off routine and keeps the panel happy.
+
+My Wormdingler has an integrated touchscreen that stops responding to
+touch if the panel is only half disabled too. This patch fixes it. And
+finally, this saves power when the screen is off because without this
+fix the regulators for the panel are left enabled when nothing is being
+displayed on the screen.
+
+Fixes: 007ac0262b0d ("drm/msm/dsi: switch to DRM_PANEL_BRIDGE")
+Fixes: a869b9db7adf ("drm/panel: support for boe tv101wum-nl6 wuxga dsi video mode panel")
+Cc: yangcong <yangcong5@huaqin.corp-partner.google.com>
+Cc: Douglas Anderson <dianders@chromium.org>
+Cc: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>
+Cc: Rob Clark <robdclark@chromium.org>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Signed-off-by: Stephen Boyd <swboyd@chromium.org>
+---
+ drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+index 857a2f0420d7..c924f1124ebc 100644
+--- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
++++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+@@ -1193,14 +1193,11 @@ static int boe_panel_enter_sleep_mode(struct boe_panel *boe)
+ 	return 0;
  }
  
-+static int mt7915_red_set_watermark(struct mt7915_dev *dev)
-+{
-+#define RED_GLOBAL_TOKEN_WATERMARK 2
-+	struct {
-+		__le32 args[3];
-+		u8 cmd;
-+		u8 version;
-+		u8 __rsv1[4];
-+		__le16 len;
-+		__le16 high_mark;
-+		__le16 low_mark;
-+		u8 __rsv2[12];
-+	} __packed req = {
-+		.args[0] = cpu_to_le32(MCU_WA_PARAM_RED_SETTING),
-+		.cmd = RED_GLOBAL_TOKEN_WATERMARK,
-+		.len = cpu_to_le16(sizeof(req) - sizeof(req.args)),
-+		.high_mark = cpu_to_le16(MT7915_HW_TOKEN_SIZE - 256),
-+		.low_mark = cpu_to_le16(MT7915_HW_TOKEN_SIZE - 256 - 1536),
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_WA_PARAM_CMD(SET), &req,
-+				 sizeof(req), false);
-+}
-+
-+static int mt7915_mcu_set_red(struct mt7915_dev *dev, bool enabled)
-+{
-+#define RED_DISABLE		0
-+#define RED_BY_WA_ENABLE	2
-+	int ret;
-+	u32 red_type = enabled ? RED_BY_WA_ENABLE : RED_DISABLE;
-+	__le32 req = cpu_to_le32(red_type);
-+
-+	if (enabled) {
-+		ret = mt7915_red_set_watermark(dev);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
-+	ret = mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(RED_ENABLE), &req,
-+				sizeof(req), false);
-+	if (ret < 0)
-+		return ret;
-+
-+	return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
-+				 MCU_WA_PARAM_RED, enabled, 0);
-+}
-+
- int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+-static int boe_panel_unprepare(struct drm_panel *panel)
++static int boe_panel_disable(struct drm_panel *panel)
  {
+ 	struct boe_panel *boe = to_boe_panel(panel);
  	int ret;
-@@ -2339,8 +2386,7 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
- 	if (ret)
- 		return ret;
  
--	return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
--				 MCU_WA_PARAM_RED, 0, 0);
-+	return mt7915_mcu_set_red(dev, mtk_wed_device_active(&dev->mt76.mmio.wed));
+-	if (!boe->prepared)
+-		return 0;
+-
+ 	ret = boe_panel_enter_sleep_mode(boe);
+ 	if (ret < 0) {
+ 		dev_err(panel->dev, "failed to set panel off: %d\n", ret);
+@@ -1209,6 +1206,16 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+ 
+ 	msleep(150);
+ 
++	return 0;
++}
++
++static int boe_panel_unprepare(struct drm_panel *panel)
++{
++	struct boe_panel *boe = to_boe_panel(panel);
++
++	if (!boe->prepared)
++		return 0;
++
+ 	if (boe->desc->discharge_on_disable) {
+ 		regulator_disable(boe->avee);
+ 		regulator_disable(boe->avdd);
+@@ -1528,6 +1535,7 @@ static enum drm_panel_orientation boe_panel_get_orientation(struct drm_panel *pa
  }
  
- int mt7915_mcu_init(struct mt7915_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 29b5434bfdb8..b9ea297f382c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -278,6 +278,7 @@ enum {
- 	MCU_WA_PARAM_PDMA_RX = 0x04,
- 	MCU_WA_PARAM_CPU_UTIL = 0x0b,
- 	MCU_WA_PARAM_RED = 0x0e,
-+	MCU_WA_PARAM_RED_SETTING = 0x40,
- };
- 
- enum mcu_mmps_mode {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 1a2e4df8d1b5..b9e8cfd926c9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -748,7 +748,7 @@ int mt7915_mmio_wed_init(struct mt7915_dev *dev, void *pdev_ptr,
- 		wed->wlan.wpdma_rx_glo = res->start + MT_WPDMA_GLO_CFG;
- 		wed->wlan.wpdma_rx = res->start + MT_RXQ_WED_DATA_RING_BASE;
- 	}
--	wed->wlan.nbuf = 4096;
-+	wed->wlan.nbuf = MT7915_HW_TOKEN_SIZE;
- 	wed->wlan.tx_tbit[0] = is_mt7915(&dev->mt76) ? 4 : 30;
- 	wed->wlan.tx_tbit[1] = is_mt7915(&dev->mt76) ? 5 : 31;
- 	wed->wlan.txfree_tbit = is_mt7986(&dev->mt76) ? 2 : 1;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 6351feba6bdf..45881e88efe0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -53,6 +53,7 @@
- #define MT7916_EEPROM_SIZE		4096
- 
- #define MT7915_EEPROM_BLOCK_SIZE	16
-+#define MT7915_HW_TOKEN_SIZE		4096
- #define MT7915_TOKEN_SIZE		8192
- 
- #define MT7915_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
+ static const struct drm_panel_funcs boe_panel_funcs = {
++	.disable = boe_panel_disable,
+ 	.unprepare = boe_panel_unprepare,
+ 	.prepare = boe_panel_prepare,
+ 	.enable = boe_panel_enable,
+
+base-commit: 1b929c02afd37871d5afb9d498426f83432e71c2
 -- 
-2.18.0
+https://chromeos.dev
 
 
