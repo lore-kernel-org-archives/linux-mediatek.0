@@ -4,64 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6B9C3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 03:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F187C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 03:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vjjQa6tfGqAYgeZlc/YDNnK2piaGCELP74Iq2RoJg9U=; b=SQTN7AHNte5fyIAgZfcJLiBa75
-	Osr9Dqb5OFLThJIce2oYloPkAoOcocgiF+o+6nXGwDPFwa9wspEnf4WK9vHuhTbanc9WSumyOuERL
-	GC4aRbg6RwbXuVXi3rC/EvHzRDJC2iwrwusIHfSJ3IE3aqZy9FcDQNoVPj3WDlT66HqobX7z5Dq9a
-	PAEbsnpusgGY0gGzaqNIT7SaT8u1wJZBJsbCfBfEP7STrNNEBigzVBvGkSH1xG/ydxrA92sLPpKgc
-	NqdGbA+8YEgnLxlqNdSxfV+cdvxn5htuuqYHm33+YWgen7zMN0O9luz3ZZrUc/vilOqfuq7g4+G4R
-	3hnnlCcw==;
+	bh=nWLgk4eMZAsD/bVVJsuHq4USM6+AlpxQ1BjwEy3BOtI=; b=GfrX+mHw2pMYG+XudWbBsxHjfO
+	uxR0DV4AA22RRxdwv0J1zm7PDcssVcDLVIrRPvGWvckwI9mfWlPRg9ovpyL5dPxkxSetSWm0IQ27E
+	CDWJ283aGClYsNBMUGSIgoDGZ1+jaK49tIzq27vV9wOk1DSMZgnz9YgpjxxOwOINhx2AnnbxjuT2w
+	5C7EQOginXvFOlW9rVInllabyNMq3v4zaYAmE3NEq+Rf+cDulbxyzGDa3Jo+mMlYN3gwc++66kNk3
+	m+wNfAtjDmcxjlpUs92+1Iewg5/8gSqgQa4ie207qhXRhUdtmZ53fiXCsiQB6sRn6cx489oPsyXgu
+	Sx0Lnuqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDd3l-00HPkD-RV; Fri, 06 Jan 2023 03:06:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1pDdN1-00HY5t-FP; Fri, 06 Jan 2023 03:26:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDd3k-00HPji-Fg; Fri, 06 Jan 2023 03:06:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=vjjQa6tfGqAYgeZlc/YDNnK2piaGCELP74Iq2RoJg9U=; b=Z0M3DI37LKOYgXCLWo0Larioxp
-	TU6G7syAg9G3VyJ2EVEobpUL/S1KRcY5RSb4JwGUmRAAVsta0Vf8win4tc/r2uk2fz1Us/pCZMVm3
-	NKAMKUfwN/W1Z40DOF/y5753j/wued5ZUlY/VvOeFmbRNyYjBE3OZ7ocfOm0644yJr2ow0v8R/+Ko
-	npUvOu8jBLx8n/FhD+uRMRE0wv955l/oyUrxCg/cWWRE5IzxFOjxWVbk7jhf/befXahusXDWoyctJ
-	dUiCAGdnyLrULClrJxZf8H1ERQROvbJK4DhrOL54v/aQxSz94X7w/X8czXbJxQ3x2qOwUA15lpmK0
-	p5sIzDEQ==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1pDd3Y-001gEp-1L;
-	Fri, 06 Jan 2023 03:06:12 +0000
-X-UUID: 1beb322e14454832b3dabd3f2e6c9380-20230105
+	id 1pDdMx-00HY3O-UE; Fri, 06 Jan 2023 03:26:13 +0000
+X-UUID: 08b98f1557c74e42abee02d5c1576374-20230105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vjjQa6tfGqAYgeZlc/YDNnK2piaGCELP74Iq2RoJg9U=;
-	b=eLa6Q+GeXAaIjv3urHuHTkZjc0fqxuAmBaJRT9bdsCPpeOzT6mLmrk6c7U7SWIRBVQCRmuQwAAZc0T4KhryNE/ItFF/+A6SL/lzICLrpIyWaz2K9a+9geCbYDuDp/+PBfBqBziAp7Ya8l2MZ668Vvxp+xXd+8o4QR2ol1aXEg98=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nWLgk4eMZAsD/bVVJsuHq4USM6+AlpxQ1BjwEy3BOtI=;
+	b=fNnlHbqSczztC60UDrePtdDpQnm2cndARKlIghZy4BCP2D4oAmEgTULvQqf5Ux++eCSJXZryIB3/bX7jtn+M7/NybKKLUVsaVfND72ql4kgUunY2pH18fb6IR2Y+fdLb7VXYra9f+29shuhtqzPdYM7NgFf38xg+dXJLXq65XUM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.17,REQID:4b479b1e-d97b-4bc0-adb3-35146a02df0a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:543e81c,CLOUDID:a16a698b-8530-4eff-9f77-222cf6e2895b,B
+X-CID-O-INFO: VERSION:1.1.17,REQID:0fa421d0-6cb6-46f9-a66c-33dc8c930f3c,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:543e81c,CLOUDID:122b6a8b-8530-4eff-9f77-222cf6e2895b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-X-CID-BVR: 0
-X-UUID: 1beb322e14454832b3dabd3f2e6c9380-20230105
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-BVR: 0,NGT
+X-UUID: 08b98f1557c74e42abee02d5c1576374-20230105
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <xinlei.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1444437710; Thu, 05 Jan 2023 20:06:01 -0700
+	with ESMTP id 2000316911; Thu, 05 Jan 2023 20:26:06 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 6 Jan 2023 11:05:27 +0800
+ 15.2.792.15; Fri, 6 Jan 2023 11:05:30 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 6 Jan 2023 11:05:26 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 6 Jan 2023 11:05:30 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
 	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
@@ -71,9 +57,9 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xinlei Lee
 	<xinlei.lee@mediatek.com>
-Subject: [PATCH 1/2] drm/mediatek: dsi: Reduce the time of dsi from LP11 to sending cmd
-Date: Fri, 6 Jan 2023 11:05:20 +0800
-Message-ID: <1672974321-18947-2-git-send-email-xinlei.lee@mediatek.com>
+Subject: [PATCH 2/2] drm/panel: boe-tv101wum-nl6: Reduce lcm_reset to send initial code time
+Date: Fri, 6 Jan 2023 11:05:21 +0800
+Message-ID: <1672974321-18947-3-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1672974321-18947-1-git-send-email-xinlei.lee@mediatek.com>
 References: <1672974321-18947-1-git-send-email-xinlei.lee@mediatek.com>
@@ -81,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_030609_518754_5E72F61B 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20230105_192612_019340_6C9E594D 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,40 +85,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-According to Figure 16 Turnaround Procedure on page 36 in [1], you
-can see the status of LP-00 -> LP10 -> LP11. This state can correspond
-to the state of DSI from LP00 -> LP11 in mtk_dsi_lane_ready function
-in mtk_dsi.c.
+Since the panel spec stipulates that the time from lcm_reset to DSI to
+send the initial code should be greater than 6ms and less than 40ms,
+so reduce the delay before sending the initial code and avoid panel
+exceptions.
 
-LP-00 -> LP10 -> LP11 takes about 2*TLPX time (refer to [1] page 51
-to see that TLPX is 50ns).
-
-The delay at the end of the mtk_dsi_lane_ready function should be
-greater than the 2*TLPX specified by the DSI spec, and less than
-the time specified by the DSI_RX (generally 6ms to 40ms), to avoid
-problems caused by the RX specification.
-
-[1]:mipi_D-PHY_specification_v1-1
-
-Fixes: 39e8d062b03c ("drm/mediatek: Keep dsi as LP00 before dcs cmds transfer")
+Fixes: a869b9db7adf ("drm/panel: support for boe tv101wum-nl6 wuxga dsi video mode panel")
 Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 3b7d13028fb6..9e1363c9fcdb 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -721,7 +721,7 @@ static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
- 		mtk_dsi_clk_ulp_mode_leave(dsi);
- 		mtk_dsi_lane0_ulp_mode_leave(dsi);
- 		mtk_dsi_clk_hs_mode(dsi, 0);
--		msleep(20);
-+		usleep_range(1000, 3000);
- 		/* The reaction time after pulling up the mipi signal for dsi_rx */
- 	}
- }
+diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+index 857a2f0420d7..f0093035f1ff 100644
+--- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
++++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+@@ -780,7 +780,6 @@ static const struct panel_init_cmd inx_hj110iz_init_cmd[] = {
+ };
+ 
+ static const struct panel_init_cmd boe_init_cmd[] = {
+-	_INIT_DELAY_CMD(24),
+ 	_INIT_DCS_CMD(0xB0, 0x05),
+ 	_INIT_DCS_CMD(0xB1, 0xE5),
+ 	_INIT_DCS_CMD(0xB3, 0x52),
 -- 
 2.18.0
 
