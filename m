@@ -4,55 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A7F0C4708D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 15:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE10DC3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 16:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7w7+yEBl4vGwjIjE10iuV0TWKv2sdao0DcaahtfY9sY=; b=Ry4EKU0rUZUhBr
-	lOxKpYngj2blpqLVSoxPb6UI5trL9LkSRgXvleuls5jJqUUhyOm4/RwO2vyMI/AYH8frhi8UEuqtX
-	3LxnI6/H6c+0bIIP2ECjJi55SwUxp0KTlUSLzGMvnjBwq7AlnYOHm/8SiyDRqfSYt4uus7fKxEGvz
-	YTcPWjT7DVWlgeOb/4Jf33kbXKQDqOPrWPu0bBg5eId0nXvW0U/se5EzeF4WmR6pTl08xBhS3CbNY
-	gtWlRrptISj8mcRc8tt8rCg98n2nhmiLaVIV4lHkkRQWRDJGyQIFfQocLWmraBcriI/pVMlOvRIqX
-	d2AGzQL2kgSgLE/AnZqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qZsu7mj1Fn2ASNqlKZSwGNM0qw48Fnq0jA605T3SWuc=; b=lcXtDMOsK2/dSvFo7s/9vvjBTF
+	ytqoHbTnrJfMNYoLUbnc8gcojkAuRGn1gtBpb/17uDXDMUHt4i/gFEdRmTdnBXChq8Is/mcu+M1ED
+	Asj1y5jbThAXngF3KXiQ/lP1n2ZeEfK462sP4fGiUX3YXTA8c5E7fT4+PnCVpjN243tYDa7JeErdx
+	35z3mZrXsRZvzJT504zv0gNasj1jhefGe9o1odqx1TAZtE3EKqEydsMosJQaZ3F4dd/SfpySXBTSf
+	yEFRMODAXseCY2F0JnX/c86/9ACdgUxcd1TuejMihadQkvf1EXfM3N4egPtco75UyiETiG7Ii/bQl
+	yyIbDt3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDogO-009ITw-E3; Fri, 06 Jan 2023 15:31:00 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1pDpYM-00A1XX-CI; Fri, 06 Jan 2023 16:26:46 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDoea-009GTH-D3; Fri, 06 Jan 2023 15:29:10 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id 511A8604B0;
-	Fri,  6 Jan 2023 15:29:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1673018942;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7w7+yEBl4vGwjIjE10iuV0TWKv2sdao0DcaahtfY9sY=;
-	b=qZpHonfbzlzAQl4c8fqWybB39WUbxdDEx0PL+y5noqL1dZXCDwx1QCrPAE1gcVQZMsY4Xc
-	zMyK+8jzsNKLJffwRqMWZ8HSYu/CsNcF5ZgUprphyga9GftZ/r5sBtm9RY2OtQaEH1Le+d
-	zaKKiTRCUMEhUgHHTqTmoHxt+CYNmHE=
-Received: from frank-G5.. (fttx-pool-217.61.159.6.bambit.de [217.61.159.6])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 1B26412272E;
-	Fri,  6 Jan 2023 15:29:02 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v9 4/5] arm64: dts: mt7986: add pcie related device nodes
-Date: Fri,  6 Jan 2023 16:28:44 +0100
-Message-Id: <20230106152845.88717-5-linux@fw-web.de>
+	id 1pDpYB-00A1Qi-Bw; Fri, 06 Jan 2023 16:26:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1673022395; x=1704558395;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=ctzDQnYxxyCDps2wP23DPf/rRuEaD1btA2BvbQjol7M=;
+  b=XQHDujg/ndEr/yLcQQlgUi73zz+Qm77pURy8Xb8ljN8SAb6MlXM+w3fw
+   JksDvS8w5XLZgkneyL3b2wpeHdddGecrhu7JtrZCGT8yn4aBcINjRC4OD
+   Hwhuc+JYKJlN+2kzzyIKxV6ifJ3OxZGElNHFjIpc3jhbk9mn8TpnGjsJd
+   9X7UIu7bqJs8LPvBAK3HmgJIr1fdEBIz2cJwi9nExbidKT0UGN4kLkIEX
+   8Zepj1h1vTqcOh9GP7S17MYjmhB86RNJe932ZaNEF3oLu+hhGOdxUZciO
+   W5qYPQpHLLHqkCnibWXhgD5HQP8SMBIsg9DJ9EXTbu+k2EZ4PCN/uAOOT
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="321210296"
+X-IronPort-AV: E=Sophos;i="5.96,305,1665471600"; 
+   d="scan'208";a="321210296"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jan 2023 08:26:33 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="798319063"
+X-IronPort-AV: E=Sophos;i="5.96,305,1665471600"; 
+   d="scan'208";a="798319063"
+Received: from bswcg005.iind.intel.com ([10.224.174.136])
+  by fmsmga001.fm.intel.com with ESMTP; 06 Jan 2023 08:26:28 -0800
+From: m.chetan.kumar@linux.intel.com
+To: netdev@vger.kernel.org
+Cc: kuba@kernel.org,
+	davem@davemloft.net,
+	johannes@sipsolutions.net,
+	ryazanov.s.a@gmail.com,
+	loic.poulain@linaro.org,
+	ilpo.jarvinen@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	edumazet@google.com,
+	pabeni@redhat.com,
+	linuxwwan@intel.com,
+	linuxwwan_5g@intel.com,
+	chandrashekar.devegowda@intel.com,
+	m.chetan.kumar@linux.intel.com,
+	matthias.bgg@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 net-next 0/5] net: wwan: t7xx: fw flashing & coredump support
+Date: Fri,  6 Jan 2023 21:56:16 +0530
+Message-Id: <cover.1673016069.git.m.chetan.kumar@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230106152845.88717-1-linux@fw-web.de>
-References: <20230106152845.88717-1-linux@fw-web.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_072908_661804_EF68A857 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20230106_082635_466042_52399826 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,136 +89,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, Jieyy Yang <jieyy.yang@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sam Shih <sam.shih@mediatek.com>
+From: M Chetan Kumar <m.chetan.kumar@linux.intel.com>
 
-This patch adds PCIe support for MT7986.
+This patch series brings-in the support for FM350 wwan device firmware
+flashing & coredump collection using devlink interface.
 
-Signed-off-by: Jieyy Yang <jieyy.yang@mediatek.com>
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-changes compared to sams original version:
+Below is the high level description of individual patches.
+Refer to individual patch commit message for details.
 
-- add clock-names to pcie node
-- update clocks to new binding
----
-bindings-patches:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=690172
----
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 16 ++++++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 52 ++++++++++++++++++++
- 2 files changed, 68 insertions(+)
+PATCH1:  Enables AP CLDMA communication for firmware flashing &
+coredump collection.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index c7a2ac764a30..4f18b4a9a8c8 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -93,6 +93,15 @@ &mmc0 {
- 	non-removable;
- 	no-sd;
- 	no-sdio;
-+};
-+
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_pins>;
-+	status = "okay";
-+};
-+
-+&pcie_phy {
- 	status = "okay";
- };
- 
-@@ -155,6 +164,13 @@ conf-rst {
- 		};
- 	};
- 
-+	pcie_pins: pcie-pins {
-+		mux {
-+			function = "pcie";
-+			groups = "pcie_clk", "pcie_wake", "pcie_pereset";
-+		};
-+	};
-+
- 	spi_flash_pins: spi-flash-pins {
- 		mux {
- 			function = "spi";
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 9c552442c02d..f6e980771b69 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/clock/mt7986-clk.h>
- #include <dt-bindings/reset/mt7986-resets.h>
-+#include <dt-bindings/phy/phy.h>
- 
- / {
- 	compatible = "mediatek,mt7986a";
-@@ -361,6 +362,57 @@ mmc0: mmc@11230000 {
- 			status = "disabled";
- 		};
- 
-+		pcie: pcie@11280000 {
-+			compatible = "mediatek,mt7986-pcie",
-+				     "mediatek,mt8192-pcie";
-+			device_type = "pci";
-+			#address-cells = <3>;
-+			#size-cells = <2>;
-+			reg = <0x00 0x11280000 0x00 0x4000>;
-+			reg-names = "pcie-mac";
-+			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
-+			bus-range = <0x00 0xff>;
-+			ranges = <0x82000000 0x00 0x20000000 0x00
-+				  0x20000000 0x00 0x10000000>;
-+			clocks = <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-+				 <&infracfg CLK_INFRA_IPCIE_CK>,
-+				 <&infracfg CLK_INFRA_IPCIER_CK>,
-+				 <&infracfg CLK_INFRA_IPCIEB_CK>;
-+			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
-+			status = "disabled";
-+
-+			phys = <&pcie_port PHY_TYPE_PCIE>;
-+			phy-names = "pcie-phy";
-+
-+			#interrupt-cells = <1>;
-+			interrupt-map-mask = <0 0 0 0x7>;
-+			interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+					<0 0 0 2 &pcie_intc 1>,
-+					<0 0 0 3 &pcie_intc 2>,
-+					<0 0 0 4 &pcie_intc 3>;
-+			pcie_intc: interrupt-controller {
-+				#address-cells = <0>;
-+				#interrupt-cells = <1>;
-+				interrupt-controller;
-+			};
-+		};
-+
-+		pcie_phy: t-phy@11c00000 {
-+			compatible = "mediatek,mt7986-tphy",
-+				     "mediatek,generic-tphy-v2";
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			pcie_port: pcie-phy@11c00000 {
-+				reg = <0 0x11c00000 0 0x20000>;
-+				clocks = <&clk40m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
- 		usb_phy: t-phy@11e10000 {
- 			compatible = "mediatek,mt7986-tphy",
- 				     "mediatek,generic-tphy-v2";
--- 
+PATCH2: Enables the infrastructure & queue configuration required
+for early ports enumeration.
+
+PATCH3: Implements device reset and rescan logic required to enter
+or exit fastboot mode.
+
+PATCH4: Implements devlink interface & uses the fastboot protocol for
+fw flashing and coredump collection.
+
+PATCH5: t7xx devlink commands documentation.
+
+Version History:
+================
+v3: Repost the series by setting format.thread git-config option to
+    shallow as suggested by Brandeburg, Jesse.
+v2: Address review comments given by Jarvinen, Ilpo Johannes and
+    Sergey Ryazanov. Refer to Individual patches on v2 changes.
+v1: Initial Version.
+
+Haijun Liu (1):
+  net: wwan: t7xx: Add AP CLDMA
+
+M Chetan Kumar (4):
+  net: wwan: t7xx: Infrastructure for early port configuration
+  net: wwan: t7xx: PCIe reset rescan
+  net: wwan: t7xx: Enable devlink based fw flashing and coredump
+    collection
+  net: wwan: t7xx: Devlink documentation
+
+ Documentation/networking/devlink/index.rst |   1 +
+ Documentation/networking/devlink/t7xx.rst  | 161 +++++
+ drivers/net/wwan/Kconfig                   |   1 +
+ drivers/net/wwan/t7xx/Makefile             |   5 +-
+ drivers/net/wwan/t7xx/t7xx_hif_cldma.c     |  64 +-
+ drivers/net/wwan/t7xx/t7xx_hif_cldma.h     |  20 +-
+ drivers/net/wwan/t7xx/t7xx_mhccif.h        |   1 +
+ drivers/net/wwan/t7xx/t7xx_modem_ops.c     |  81 ++-
+ drivers/net/wwan/t7xx/t7xx_modem_ops.h     |   2 +
+ drivers/net/wwan/t7xx/t7xx_pci.c           |  72 ++-
+ drivers/net/wwan/t7xx/t7xx_pci.h           |   2 +
+ drivers/net/wwan/t7xx/t7xx_pci_rescan.c    |  96 +++
+ drivers/net/wwan/t7xx/t7xx_pci_rescan.h    |  28 +
+ drivers/net/wwan/t7xx/t7xx_port.h          |  12 +-
+ drivers/net/wwan/t7xx/t7xx_port_ap_msg.c   |  78 +++
+ drivers/net/wwan/t7xx/t7xx_port_ap_msg.h   |  11 +
+ drivers/net/wwan/t7xx/t7xx_port_ctrl_msg.c |   8 +-
+ drivers/net/wwan/t7xx/t7xx_port_devlink.c  | 665 +++++++++++++++++++++
+ drivers/net/wwan/t7xx/t7xx_port_devlink.h  |  86 +++
+ drivers/net/wwan/t7xx/t7xx_port_proxy.c    | 135 ++++-
+ drivers/net/wwan/t7xx/t7xx_port_proxy.h    |  16 +-
+ drivers/net/wwan/t7xx/t7xx_port_wwan.c     |  25 +-
+ drivers/net/wwan/t7xx/t7xx_reg.h           |  32 +-
+ drivers/net/wwan/t7xx/t7xx_state_monitor.c | 134 ++++-
+ drivers/net/wwan/t7xx/t7xx_state_monitor.h |   3 +
+ 25 files changed, 1634 insertions(+), 105 deletions(-)
+ create mode 100644 Documentation/networking/devlink/t7xx.rst
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_pci_rescan.c
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_pci_rescan.h
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_port_ap_msg.c
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_port_ap_msg.h
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_port_devlink.c
+ create mode 100644 drivers/net/wwan/t7xx/t7xx_port_devlink.h
+
+--
 2.34.1
 
 
