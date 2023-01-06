@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB7BC3DA7A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 17:56:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C95C3DA7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jan 2023 18:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lPoVcwtRbGSiLeVXAGH9tTE5yFfHt4VtDzD+IwSxJVU=; b=nsxj/T2okcLD9hv4vTOIWBGppv
-	g9g/3vc+A1ILgASwguN3w2zqynshNGRHRkB3ofH6x+pCkywGOmZSdUQXFHFnSW3qGfHKnQbAC/oo6
-	imQgLzEThU8Ng9U+V14ebqbKw+dz+3+nQFiKERvSOm5v9uKnGIoOgVUFcJMAseWBjBWi3K93PhrDL
-	nu1C4RYWrk/G/ifsIZ9OVaAJEyFPgFWwMd1xRJnpvrokr0gnmSby7/ScsVb/2Eryo8qLDAdTpNhhd
-	6IACJLteZFocfYblH05+pyLF13FhBW9xo1bLFDGmNCkdsMvj8Xejt/QTKeeKn3VtxVYBXRFEJoeem
-	EfE5tMjQ==;
+	bh=hqkSpW/3Ie2I3kB8jWrFUiJ8QgacQrL8wUJ+1SXkNS0=; b=Bg2njM20VB5zt05R4fNoPOwzqB
+	3AwYVbYiVp96+nZTTWtjvcCWglKwEo1YAX13Dow0VKkZy83j2Jlgter/E5fJDb4brKhoebv5fEgoQ
+	PTZqpwsJbIna53iwNqDc7ccHEeVhTTcnwLaOdShJkR6ESi/wrItuNj9hvmSMuFZ+9iyYmUBuy+jhU
+	3HXULhMMbKLMIqMqCDa1WpfNH05ZTHoW+/gGDOyDLPNTyqVA0GrYkKJJugHvZBAAlUvf4IhhAror0
+	Z1C3WrjWtUOAc2a41UDCcwS+ytjKX9o9iWzD09XYxAP4MYN8qBerQkj2hOnbofCztMx9S8z4ezhKB
+	kpjkN0dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDqxB-00EJek-4m; Fri, 06 Jan 2023 17:56:29 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1pDrW9-00ENXz-W6; Fri, 06 Jan 2023 18:32:38 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1pDqwz-00EJbR-HA; Fri, 06 Jan 2023 17:56:18 +0000
+	id 1pDrVx-00ENTI-Ql; Fri, 06 Jan 2023 18:32:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1673027777; x=1704563777;
+  t=1673029945; x=1704565945;
   h=message-id:date:subject:to:cc:references:from:
    in-reply-to:content-transfer-encoding:mime-version;
-  bh=7d7yQGe1Ahz4ag93wVj+FsNMkDt7GGN7PT9IH3Cdz4w=;
-  b=dcxoWfpo0L3pmFvF5bSvf5WUdNmEWe+XOjqFYLsROWABWsEWPSU8kQ8F
-   iXiSDUulf1IFWEEbazubvdcYTIHxZy/0XT12hW2lrDR452LXQuPV8+46C
-   z3ooE9CEh4fT7hAxUDNKDyHt+l1Kq8qZe96JfyZ38XOuV4TnU4Rc1Ffix
-   I/q8gr2D0Ipl3vKY1L/K2Wp7J7eaIAc/kQpotSnVBMA0wYAOpHdhvl+En
-   6C6kDlEex3gw7CBR4Vdksrs5jjaCSrDVChDXLTYqPi880cwyUdBvQzbDL
-   EMnS8FZfVjGtwrgjUrQG5Ee2fX2nVZWdZwPgOAfDVdOD0wZB+f1tC7Ph7
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="408776044"
+  bh=E/xIzhgb1JvThrlLHadyKBM3UxVO/V9srKb4ikim04g=;
+  b=RT30SqsWsGDBmBdlkaU4SEnHlzN/RjgfacDoi1TsBL2LAC6FTHIJqDZ6
+   z8CSGclbhQqD0XNu3dlmVTGhIlnGQQTxAV2CxTJvMm24fTIE2rRMHklxm
+   2omXxcmfFHVtG4zSHhFEHkFaDzN1/jC71XVYsDcrKTNnhcBw7j7cNkhMG
+   +O802HdpMSARGoHX6wxK8bEYFgtk1Ro3i5Y6QUIw5tHAJdhwkC0vzwkOV
+   SWMsHG6T6MEQUfJ3EOxmXUwu8F0YUi8kWKzluMgWVwW/cD93i3viq1kqZ
+   pkmc/70MI9Ljzg5mVYtmyj2mQXNInG+553p02I0BpgxgClNkER/5XQALV
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="324547081"
 X-IronPort-AV: E=Sophos;i="5.96,306,1665471600"; 
-   d="scan'208";a="408776044"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jan 2023 09:56:15 -0800
+   d="scan'208";a="324547081"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jan 2023 10:32:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="605963991"
+X-IronPort-AV: E=McAfee;i="6500,9779,10582"; a="649385737"
 X-IronPort-AV: E=Sophos;i="5.96,306,1665471600"; 
-   d="scan'208";a="605963991"
+   d="scan'208";a="649385737"
 Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
-  by orsmga003.jf.intel.com with ESMTP; 06 Jan 2023 09:56:15 -0800
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+  by orsmga007.jf.intel.com with ESMTP; 06 Jan 2023 10:32:20 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
  fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 6 Jan 2023 09:56:14 -0800
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2507.16; Fri, 6 Jan 2023 10:32:20 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 6 Jan 2023 09:56:14 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Fri, 6 Jan 2023 09:56:14 -0800
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.43) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ 15.1.2507.16 via Frontend Transport; Fri, 6 Jan 2023 10:32:20 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Fri, 6 Jan 2023 09:56:12 -0800
+ 15.1.2507.16; Fri, 6 Jan 2023 10:32:00 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iwlV2JEQzxr4T8Lm0TGoHuWJHK7sWWPjOBbZNxYJ2dt66oMtkN/4ez2w3w8X1i9NBz4btfuCKqVY/kA/HKlk+rqTIFI7mGkCrcFNRySbWlTS6DbuM2hZu6CzBnHjhIrBl715A5cnjz0fOXRlUWjKF6xCS557a4qgs0/uKLcf+4BoWGwO9WrPBHTJqMqnrCS82kTQA0RgjLVJa8oW8KHgZ1gXvayVyIeczgaTWJjre3EK4n9Ku59QUich7OiEcV6KOULt4jWmzzEIIAAkOgW2Vt7I0EbFuSZAhQA9R7XeLM4HlQVwQ1aEUBoBIjAdYWff51bfmvpoflGE/Nhme6j48Q==
+ b=Ll1RWDVRSg/ZmdgYdj4e7RiaVWUug+TtSqpnVXOERNY4dT0zBkHR5gGdKClEhzUSZjt+iwSfopsav3t+sHGTqJEpswxAyHbHDbJ6bVRRoeRIjbQ5QEUPSAGj+6iz/qdtYg8S64s/BogPyWScJDC0ODfZFQmrVJjgrM5imTgtq+/N6EPBm6QTav8M6hWTbBk5cWf1C4I7e4Z/62mCUmFDZoOBoey9YImCUndX9PVhx4NoIYg64epdVFZ0HnnOiR92vE6CNf8Qcvj8X+2BoqkcvFSF18XbOH8FEkNBk4omip6Mm+buYfEYGoy+Y6ZNhXYIfnxJj7WJs3hYabqSlT4cIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lPoVcwtRbGSiLeVXAGH9tTE5yFfHt4VtDzD+IwSxJVU=;
- b=a2FUnmrOpM6drGnWpoGyuSRiD7hmiPdGysT/SZn9bGf8uM6Qixh1hAx498OlqpXyqwL8JgIp2TFKXuwtQCn70F++m63mW8G37G0IpOLORV/lu6riEcoqD2vdPevWa5Fvs63A1MyE3IjTWLKJcGuz0VIg8o8i0fGh9/piaZkuqNd0rx0tNzzchBiNWNjTvvEylHu7oNmTdtYkimGQQmvBquAVANWPLTm9J1jZdpFKXv29jFPR2Mi4RI2LZhTBgIP3yr3ZKFSP2umAxc1hxA/sepwiwvSF+JhNT9rwoooqccIt/VzQxi4kZDHhfQhnoANpxnt+xKX74dwT4laBkA4NXg==
+ bh=hqkSpW/3Ie2I3kB8jWrFUiJ8QgacQrL8wUJ+1SXkNS0=;
+ b=W5+tM7zSwc9jrfkv9wk4gQuvU40m31+3S785YsYP8VUsFDX837TQkduXidjngTJAq4PJDXRhXme4/9JjKPUqrGoKv1h4MVhHiJvqjX69Rr5DDGaBrHAPymSKqfc5WsVgM4UvTCmoVlLUpn/HsCndiU2WSJzoCt5iXlugzEpnrrdoRApLpWUR47uIAjb+0IkYgrCccBnUh5HA+bf1PXAvqaaGodn3gSckVZR++7C3wraDQn+LQnvoDAFFKclfRWMQT3gq5C/pT76bPd6XXIRcyoEzlfdcemv64aCU5oPH1GcfR7zOhaNnHiNZNvFDQ0K/J5HKntXBoQxYb+J8U0l4zg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
- by BL3PR11MB6364.namprd11.prod.outlook.com (2603:10b6:208:3b7::12) with
+ by DM4PR11MB6429.namprd11.prod.outlook.com (2603:10b6:8:b5::10) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5944.19; Fri, 6 Jan
- 2023 17:56:08 +0000
+ 2023 18:31:27 +0000
 Received: from CO1PR11MB4914.namprd11.prod.outlook.com
  ([fe80::6ce9:35:a5db:f6dc]) by CO1PR11MB4914.namprd11.prod.outlook.com
  ([fe80::6ce9:35:a5db:f6dc%6]) with mapi id 15.20.5944.019; Fri, 6 Jan 2023
- 17:56:08 +0000
-Message-ID: <33cd1459-336b-8cd2-55b5-50151375f471@intel.com>
-Date: Fri, 6 Jan 2023 09:56:05 -0800
+ 18:31:27 +0000
+Message-ID: <8b1bd24c-f14c-0244-d2fb-69d4f02b46d5@intel.com>
+Date: Fri, 6 Jan 2023 10:31:24 -0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
-Subject: Re: [PATCH v3 net-next 1/5] net: wwan: t7xx: Add AP CLDMA
+Subject: Re: [PATCH v3 net-next 2/5] net: wwan: t7xx: Infrastructure for early
+ port configuration
+Content-Language: en-US
 To: <m.chetan.kumar@linux.intel.com>, <netdev@vger.kernel.org>
 CC: <kuba@kernel.org>, <davem@davemloft.net>, <johannes@sipsolutions.net>,
 	<ryazanov.s.a@gmail.com>, <loic.poulain@linaro.org>,
@@ -99,80 +97,78 @@ CC: <kuba@kernel.org>, <davem@davemloft.net>, <johannes@sipsolutions.net>,
 	<linuxwwan_5g@intel.com>, <chandrashekar.devegowda@intel.com>,
 	<matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Madhusmita Sahu
-	<madhusmita.sahu@intel.com>, Moises Veleta <moises.veleta@linux.intel.com>
+	<madhusmita.sahu@intel.com>
 References: <cover.1673016069.git.m.chetan.kumar@linux.intel.com>
- <fd62d56541165222fe2153093bcd705bd8b54e65.1673016069.git.m.chetan.kumar@linux.intel.com>
-Content-Language: en-US
+ <cad74cd61423dbf01375a96432b3d1dbfcce0f1a.1673016069.git.m.chetan.kumar@linux.intel.com>
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-In-Reply-To: <fd62d56541165222fe2153093bcd705bd8b54e65.1673016069.git.m.chetan.kumar@linux.intel.com>
+In-Reply-To: <cad74cd61423dbf01375a96432b3d1dbfcce0f1a.1673016069.git.m.chetan.kumar@linux.intel.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SJ0PR03CA0219.namprd03.prod.outlook.com
- (2603:10b6:a03:39f::14) To CO1PR11MB4914.namprd11.prod.outlook.com
+X-ClientProxiedBy: BYAPR05CA0065.namprd05.prod.outlook.com
+ (2603:10b6:a03:74::42) To CO1PR11MB4914.namprd11.prod.outlook.com
  (2603:10b6:303:90::24)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB4914:EE_|BL3PR11MB6364:EE_
-X-MS-Office365-Filtering-Correlation-Id: e8eb20ae-142a-4c3a-c164-08daf00f49df
+X-MS-TrafficTypeDiagnostic: CO1PR11MB4914:EE_|DM4PR11MB6429:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3d33b25f-979e-473f-0ee6-08daf01438cf
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: F2tPy+P2LGO49MxVAFRsqxTNhbOEhjcM7is8ba2+lcD38ujggRsnYzw5rcDy2vcnhn+usOcjE8OWaNyXeqJOKFBLL9cOKc0BjldIUewkkGQ+CYbZNv2IBRinWmZYBi16Gd9kwOPmFn7u1hnHlYGaXtLgCqq1etoNzZTT+OlaN0UMm+OlUaHBNKC2yuh5aigu5ojyx7sYBl+OtbyNUW2G3nPWzGhO2Px85pJhIAT0nXR94mJ2pBmKYHCh2vShp11ksnaLYuNFhUIUbzClU3SYHvENP991h1YJzKoajA0rBgB7/kvOz7B9V0qRDsDrgsry5+llKri8/HKdGFX5piQn2RFw2B6kBi8j7oV0H6DCDrTsH11YIkexiUP1Wcih0qhD1+V+ihSRNWtzmOHj03Icj5v+wYDks2fmjuQqWxmxANpOE5nnEfVL1Zv2ttPhCpMSpjM2uzsjUXWuI2N0cdP2lHuVjgKTUCPM+Vd10Pun8P9cbmc87tLXNtr71PKn7GFwROPi/7y4oLqNY3wl/4582O3sd5kh9BQlYTY3ICOGvDSnjaEeJ+9XOmEsUoEXMbyD4V8Gf/6xWC7O9D+FpttOxNm2qyK/oQNCY8xGnZy66XcLzkG9DAfiBVayyg5MepIrvjUV0u7X2LEmZ6/MloTDOxmIEgarBSXzNO2rVNYMpUGnBasVjzDOB/s/51Ej+WJiXwOhpnkY17JJQeYp2K/bq+ss2J7XU7JbojPCfMtLgPc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4914.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(376002)(346002)(39850400004)(136003)(396003)(366004)(451199015)(2616005)(186003)(44832011)(26005)(6512007)(31696002)(86362001)(36756003)(38100700002)(82960400001)(54906003)(478600001)(2906002)(316002)(66946007)(8676002)(4326008)(41300700001)(7416002)(5660300002)(8936002)(6486002)(66556008)(66476007)(6666004)(31686004)(6506007)(53546011)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam-Message-Info: lT8xY5Mjf45prCw+3ejxYN1ZI7O6CJs6I/NWmCujOCk7j9IFdHSiuGJAWl3WtgaFt50YkjtaIkHBuAVTTab7s5eUPnATwp2TWkGtfF5N1NlkwXUlSunHCKK3QPbZsOx5t6NPcMc/q2K+M1xXNZ8IB6Rf4ifeKTzbwrnbc+/Tv7/uWQTh1r6db01QMP8pyl1RNVf3rcCtZ+rwh7538lTpLPk7bdVtGSe2bFz5VL3/WAObddLIFvaMWTyrNJ/uBPuYTcz4ZSZyxH8sykNfxgDYGb369fvHk2BFklrLcIXKxcWkumyJFsb8Rq898ImJtSdz6UT0QRLhxHEuMnQ3sHLdA8KFiCzLBH7fyRpLgUKgbu6wPxchx4bK4VTyajQQqC75JoJbvveNnA08oHSytDsRanCQcjVLu7tLuok1y8urWJPYlv78uWzpx85gycT1jW+qZuUjNpB7WjuB6Y95zhF+D2y37BJAlP5FiEnyFkEcaxUOiruSQ2N6IYpU3foWGsKl+MrE+sQf9t/pNdfoH/jru+fUSIouaxHdL3DX4G3KxFkmMGx6ikw2dMczmW2KFKeLwWEa2cwP9e+pptReBny3ENdK+d4+IiGh7hOaNeHF63CAQ8wq9bn+V4R26p+rohCCPwRmdWXYV3EmBM/tqHqP2iUK7mt+3ORs2+Rqum38BWDzVsUiPMiG9UpHFFPdd/J/65Fd1JWqZePkH9a92ug1v9klrljGEkZnmY05cx/Cb+I=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB4914.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(39860400002)(396003)(366004)(346002)(376002)(136003)(451199015)(41300700001)(8936002)(316002)(66946007)(5660300002)(8676002)(7416002)(31686004)(2906002)(4326008)(53546011)(6506007)(6666004)(66476007)(6486002)(66556008)(478600001)(86362001)(31696002)(186003)(6512007)(26005)(44832011)(83380400001)(2616005)(38100700002)(36756003)(82960400001)(43740500002)(45980500001);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UzJVZmZUZ1VOc2ZRVDdldmI2eEM2VU5HbDFHMkJLNEozWGJpc0hZSHV1MW1G?=
- =?utf-8?B?VWtLQTdGS09TUkxQQ01Gb1VZS0FUMVU3TFNWWEhHMUVRRVVYcnYvdlpYaDla?=
- =?utf-8?B?R1MzR0VmK3Rxdk9rV2VCUXBhOEZ4WkVHL0IyQ3RlZ25lZENEVHIvOWFwK29R?=
- =?utf-8?B?RitkRk5wcHpScWZuSGRBRnZiZjd5TGV6RkRMU1lKUnkvSG9QWVBycUlENkhw?=
- =?utf-8?B?V2JnZEZISFA4YUo2TEluZE8xUWY3TEUzUlpVTVdGanJ1bHNtL3h3VGZKTFZK?=
- =?utf-8?B?YjB6NzdNckNzTSt0dkVuRll3NU9hY3dKZkFleU1rNnZibXpnYWlRK2RUQ1BK?=
- =?utf-8?B?b2tVbHdsWXlMSlVhbXZiY0ppSWR2YTVXVytSZHJRbEZKS1JHUmI2emkzQ05q?=
- =?utf-8?B?NzZsbEZZREhRQUN6M3hmUVVvdWdKQVZxcGdVeVlWS09SYTlPbUxFOVdzSzB6?=
- =?utf-8?B?Rk5oYzQwSWtQNEJBS2lLOHZyaGlXeW0xZXlkUzNRSDhWUGVZSzU0VU8wYjlZ?=
- =?utf-8?B?bGQvRzhYQm1xVUFoa0VkTGNFNW9GblhHbFlKZlRvVGU3ZnRXeUQvWUxKaW5y?=
- =?utf-8?B?MmhybXBTRzlPVHdZUHorR3M2VSswTWNha2Q3MUZ3OWhKd1NlYitXNUg5aHpU?=
- =?utf-8?B?cnJxYXBZNTY1azhGc0hLYTdlN3puVnJueTg3MFk0NklHVFZjL1lnbDUzQmtw?=
- =?utf-8?B?VDRsaVFnWTN5VytiVEtYTjdOc0dUdmZadWRRY2FLdy90YmRDU1NUTzR2OWsy?=
- =?utf-8?B?SEZ1Z0FIVnVPV2gwVzBrR2VhMUZVb0dIaDVrVUJsOHRBNm5KU0tzQXdCR1Yz?=
- =?utf-8?B?b3AwNzFDS253MyttRUt0MGtIRWl4c0xac2JUeXM2ZG5tMTV4M0dUV0pNamRO?=
- =?utf-8?B?ZzVpbWJyRXpmek5NMzVjT0xoZmZpMSs5V2xYYzF2SlhJS215QVlGNW51RDhn?=
- =?utf-8?B?c2l1SkdzcGN0WE91YTc4S1AzSkNmSUw0a3NRb3ZyT29ud2JVOFd0d0FwLyto?=
- =?utf-8?B?b0taenhuL011aCt4SlJ6M3hQMW5TaHI4NGh6by9KWmFRbE5FWnc1VTZGRTBJ?=
- =?utf-8?B?S3hjaEM2ajRsTTc2SVNibEF6QmxrcTJEcjd0UTQybzRBQmlucEg5UDdxUXE1?=
- =?utf-8?B?akxuSmxUT1drWnNzMTU0MmZQWEZJRjhzTXBERWZEM3hJRE8xNzRYVTZIWDFP?=
- =?utf-8?B?VHF5L0JJWHByNzJDVjk1MkxjR253bmNIdDdSbmtnMWZHYlZWekliRW8xL1Za?=
- =?utf-8?B?ZHd4SFNST01VOHpZMUx5cVdGUHorRnNXUUR1Y0tiYWhuTkF1WU95MXpZQnVk?=
- =?utf-8?B?L1NnL1RBR1M2Q2pBdjNYOWNiVXBUbEdEWllER1BjMDJjTlVVWGFwdCtJYjBs?=
- =?utf-8?B?L3h5ajhhdXhmd0dCZmJFdFMybEluY1lLRmNreGZvOUJjblMxelpFdFNNRXhG?=
- =?utf-8?B?b1M3cDlXY0UreEc3eXVnL3c3RmlHZDNzQkMrMHdHSUhwbHM4ekkrZmQyRUxz?=
- =?utf-8?B?a1o2djhRaldpbG1VM3pMYUpRaWNuMGpNNUpsTVd3bElVM1VsWFdKMFc0cWNj?=
- =?utf-8?B?c0tuUkFuME84U0QwREp2RE4vVUhMazRPcEtyRXRDbWh0cTB4NTFxc3ZvalVT?=
- =?utf-8?B?by9WNVkrL3JIUmxJUGRyT0M0MG5YY0RsZnVpQjJNUGJEc1NCTUs0VFRhNVFM?=
- =?utf-8?B?TUlhUHBPdlIwQVRJa3dYR3pPcmtzTzUzRjFia1hqdGk1ZlllMjJOYUtxa2xE?=
- =?utf-8?B?aHhFWFkraUFYZTZ2WUFkcXNHZmhWRXUyNlJWOUgvMi9SbjNpbUQycTUvUytX?=
- =?utf-8?B?N3VJeEE1Nit3SFJPekZVU3hYQm5yV3RNWW1iWWRxS202T05ub0RWZDBzcStS?=
- =?utf-8?B?ZGJRRlR0N2ZEVG1zNkh2QTBSSUwxa1hQZU5ZRHl1bzBheTdUUEt2SWc1SUIx?=
- =?utf-8?B?bDRvSm5MMDJab3AyWlJyVGRMcmNObUl2UWJ3TGEzMjl3MjZRUGNRditpVlph?=
- =?utf-8?B?WFc0WU95ckpPcnJtZklCTE1BbFJMUFlWdjZEc053amFJcDdBWW5rNVREQ2ty?=
- =?utf-8?B?Rit3TEZHbHBhc1dEdm51enI4aTIrblViZWNTQzRJN1k1ZDlIeW9RZyt0Z2ZD?=
- =?utf-8?B?SVJkdS9QbW1Gc1VGQlhFRldQYmlZZ1pWcnBIb3pUZ2x5U0Y5VzR0MjI1QXRW?=
- =?utf-8?B?Snc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8eb20ae-142a-4c3a-c164-08daf00f49df
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bG5Eb2tWdG5GZWRMQk9yNUt0VkFiSytQMHA4UGMwaXQ1Ulk3NW53OTQ2bVhy?=
+ =?utf-8?B?c1B0SVhHRmErNEtIN2toUldyeWxlTnp0L2s5K2l2UW5TNG84bDB6TCtLMFM4?=
+ =?utf-8?B?TkRocFM1WVZBMGV3dFNlNFFXdHVZYXFJaENCcGltR3k4Z1pHVHJ5OEt4V0pu?=
+ =?utf-8?B?aUd5Q2hoNGIxcTI1YTlxZWEvK213cUhxdGRqTjVDWDhpZTVOcFJVbXNqTWkv?=
+ =?utf-8?B?c1hrbW5OcTF1bUx2WTNMejB2eWlCa0wrOUo2MytVQno5aTJNckE4SjdzaFgx?=
+ =?utf-8?B?MUpPTVJLQVk1UHU1djgzbGdLaFFHOHhRSUc4Qlo1c25lY0d2djdZWHl0S2lZ?=
+ =?utf-8?B?YWZZVnZsU1gwYWNDaitVdFlBcytsQ3ZkLzRDSHNHUk40a0o0S0J1eXh0cDE1?=
+ =?utf-8?B?cHRjNmFyZTNGcG1hUktuaDJtTXMxUk12VHZmSFd6NjdQOC9iU2x5QWQ1Tjhn?=
+ =?utf-8?B?UDl3V3N1VjdpbmpSMVlhZDRzNmVGYVh1dnBYdW9rVW56bkQ5b0REOG5VeVlX?=
+ =?utf-8?B?Q1lNNGIwekEzZCtTc3VyM3I5RmNLWW1MVWZkWkJUKzdFNkRhUmtLR1VZdW1n?=
+ =?utf-8?B?NUhVa01aczk0bGx0SzdpL01NdGNCK0pROGs5VS9hNExNeXI1QW4wWjVzME1o?=
+ =?utf-8?B?eVF1SG9JWk5uczM0NXM4MmI2Y2YwTXJpd0pBazl5TVFwc3J4TXh1aW9tRkdo?=
+ =?utf-8?B?b0VpT2VNRWJmUjlFbzNCL2hadmRTWG1RQVN5SDlEK2xlbENTaEF1aEFUa3Iw?=
+ =?utf-8?B?akZldnRxVFdxSzk2OFlVUWQxTTNXcmk3ODV1V3YraUx3L2RuMytMOFVtVlRU?=
+ =?utf-8?B?c0tWWWdMamJTa0U0a1o4N2YzZkcrWlRzWDIwMGtrdEZSUk9IR3V1a0loRTk2?=
+ =?utf-8?B?THR2NFVRYXE2MjFFNTlXQlBtdlF6UXBlZWI5ZzZmVHZPZ3hja2g4YmVlYmN6?=
+ =?utf-8?B?UTZwZFBYdkN6cHNhRXE3cTl3dExPMDdpWktJS1FIQk5MbEQvTVVRWVowT0FL?=
+ =?utf-8?B?SE1GMG9qSlNLVXlQbHllQjk0T2tRWEY3VndQT1pHNFZBWjcxN0c1YlZBWEp2?=
+ =?utf-8?B?SXgxV0RPTXh6d2YxVjZlZ0tRVkVKRy9MbFRXNDZFUC9YU2lGVzV1bURyWGhG?=
+ =?utf-8?B?WFh0K3M0Lzg2WVl3M25ueit3Vk0rYlpOYkpqNEh0UTRKUERCbHVEWkdqQnNY?=
+ =?utf-8?B?MnFwa1UzdnNDeFp0YXc1aUExdEJHQWFZdUcyOFo5Sm83ZWl6TlErV2p4SVdr?=
+ =?utf-8?B?b0ltT2dQYWZGVWtFTUNQa1FuT1ZaOERFRThCYTJMd01XR1N3V2xlK0dhWnFz?=
+ =?utf-8?B?djZFVWVPdEduSFZuenFZWU1BOXRtTWs5MzAyWUE2WTB5REFiMG9SYk8waFp0?=
+ =?utf-8?B?K01iQUxGY0U1dXc3dVV6Tkt4NFFrc2Y5bi9qemNtNFdXdW9CL0FxbVJLVVNK?=
+ =?utf-8?B?RjdDM293Sy9pQ2tPazVMNWZiZnRoT25MZnBFMHFZMDBNdWcyUTVCS2lCSEoz?=
+ =?utf-8?B?M3Z5M0Y1SGZ1TGc2dFBlSUI2TmpsN1pEa2FGcjNWSkZlSzU2Zm9meVNBbkpJ?=
+ =?utf-8?B?U2FyYXZLOUlDQ01LSXNIeWxmUWNTMVVZUHhLaXVUTU5zZVF6UU8yalhlY21T?=
+ =?utf-8?B?S2h2WGJYeTQ3S3pBUFdFNG05NWMrTnl3emgwUUJJVzZWVWZKc29GTTNFeTZX?=
+ =?utf-8?B?dWorQjFvZEZZR0x2OE9wZ2RpWHlVQVdVLzhMNjcyeGs0KzE3RjcwN0hEYkR6?=
+ =?utf-8?B?Z3haQkp2eXY1c3FoeHZ0YXRnUWRCNDhXV2tkQ01PRlBhZCs2TVRuY1c4Yk9z?=
+ =?utf-8?B?L2ZpbnV5eDhyVmtZelhGUjk0OXdmdzd0MWp5dG1OcjhORGloVXFsdzBESmdo?=
+ =?utf-8?B?R2VZaCtyY1drVldIL3V2M1ZXb1NiTTJFVGFjeFlaN3FXMlpQNXlqTWtMVzFL?=
+ =?utf-8?B?TkNDa2NkeFR6NjFPT2pEWG1KS1pldmQ3TGo2YXhjRDdadXhkc05pckhBRzZz?=
+ =?utf-8?B?cUFFVXdsZHc0bGRQTEFTMS9jY2pLaWpEN1hKTWJxTXBPVzhNYUV2OGROS0RZ?=
+ =?utf-8?B?REFDYlZYMksrZ0YwVHl1Z01acU40dHYrYWVaakVQVDFMLzk1QlRMbDRjZFNw?=
+ =?utf-8?B?enVFRUdVWWhaUHJLdDcrK3dlYlhqVEFVeGJHb0hHT1A1ZVZkV2hGME1JMEt2?=
+ =?utf-8?B?R0E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3d33b25f-979e-473f-0ee6-08daf01438cf
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jan 2023 17:56:08.2642
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jan 2023 18:31:27.2420
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2vBA0n//FJMgA6npJFYpMYHi5WpI5OwrsEamVXgK1kJfHSpDgqrgZ+eQYYQ8ujLWGWjqprqFi6ux34S8wLsWHF1Fleag/FPwhjKL6NItjMc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6364
+X-MS-Exchange-CrossTenant-UserPrincipalName: ItRzpiRrzpqpzp87KRyIqJM++Yz9sQ4UrGIfryzESQJx1I3CPHzcP4SsxwC8ZTddMB9F/aTcnE8LpjIkSu13TOwMv0ztZ7I9uBYJ6JsjVt4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6429
 X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230106_095617_603000_9E1C37F8 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230106_103225_968283_E5AD1397 
+X-CRM114-Status: GOOD (  23.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,31 +184,239 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 1/6/2023 8:26 AM, m.chetan.kumar@linux.intel.com wrote:
-> From: Haijun Liu <haijun.liu@mediatek.com>
+> From: M Chetan Kumar <m.chetan.kumar@linux.intel.com>
 > 
-> The t7xx device contains two Cross Layer DMA (CLDMA) interfaces to
-> communicate with AP and Modem processors respectively. So far only
-> MD-CLDMA was being used, this patch enables AP-CLDMA.
+> To support cases such as FW update or Core dump, the t7xx
+> device is capable of signaling the host that a special port
+> needs to be created before the handshake phase.
 > 
-> Rename small Application Processor (sAP) to AP.
+> This patch adds the infrastructure required to create the
+> early ports which also requires a different configuration of
+> CLDMA queues.
+
+nit: use imperative voice in your commit messages: no "this patch".
+instead:
+"Add the infrastructure..."
+
 > 
 > Signed-off-by: Haijun Liu <haijun.liu@mediatek.com>
 > Co-developed-by: Madhusmita Sahu <madhusmita.sahu@intel.com>
 > Signed-off-by: Madhusmita Sahu <madhusmita.sahu@intel.com>
-> Signed-off-by: Moises Veleta <moises.veleta@linux.intel.com>
+> Signed-off-by: Ricardo Martinez <ricardo.martinez@linux.intel.com>
 > Signed-off-by: Devegowda Chandrashekar <chandrashekar.devegowda@intel.com>
 > Signed-off-by: M Chetan Kumar <m.chetan.kumar@linux.intel.com>
-> Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
-> Reviewed-by: Sergey Ryazanov <ryazanov.s.a@gmail.com>
 > --
 > v3:
 >   * No Change.
 > v2:
->   * Reuse handshake_wq for AP work.
->   * Remove AP trace port tx/rx channel id.
->   * Rename t7xx_md_port_conf to t7xx_port_conf.
+>   * Move recv_skb handler to cldma_queue.
+>   * Drop cldma_queue_type.
+>   * Restore prototype of t7xx_port_send_raw_skb().
+>   * Remove PORT_CFG_ID_INVALID check in t7xx_port_proxy_set_cfg().
+>   * Add space before */.
+>   * Drop unnecessary logs.
+>   * Use WARN_ON on early port.
+>   * Use new MISC_DEV_STATUS_INVALID instead of MISC_DEV_STATUS.
+>   * Use macros instead of const identifiers.
+>   * Change ports member type from pointer to array type.
+>   * Prefix LK_EVENT_XX with MISC prefix.
+>   * Use t7xx prefix for device_stage enums.
+>   * Correct log messages.
+>   * Don’t override pkt_size for non-download port under dedicated Queue.
+>   * Drop cldma_txq_rxq_ids.
+>   * Use macro for txq/rxq index.
+>   * Use warn_on for rxq_idx comparison.
+>   * Drop t7xx_port_proxy_get_port_by_name().
+>   * Replace fsm poll with read_poll_timeout().
+>   * Use "\n" consistently across log message.
+>   * Remove local var _dev prefixes in fsm_routine_start().
+>   * Use max_t.
 
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+...
 
+
+> diff --git a/drivers/net/wwan/t7xx/t7xx_reg.h b/drivers/net/wwan/t7xx/t7xx_reg.h
+> index c41d7d094c08..44352cd02460 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_reg.h
+> +++ b/drivers/net/wwan/t7xx/t7xx_reg.h
+> @@ -102,10 +102,28 @@ enum t7xx_pm_resume_state {
+>   };
+>   
+>   #define T7XX_PCIE_MISC_DEV_STATUS		0x0d1c
+> -#define MISC_STAGE_MASK				GENMASK(2, 0)
+> -#define MISC_RESET_TYPE_PLDR			BIT(26)
+>   #define MISC_RESET_TYPE_FLDR			BIT(27)
+> -#define LINUX_STAGE				4
+> +#define MISC_RESET_TYPE_PLDR			BIT(26)
+> +#define MISC_DEV_STATUS_MASK			GENMASK(15, 0)
+> +#define MISC_DEV_STATUS_INVALID			GENMASK(15, 0)
+
+I don't see any uses of this, even though it's mentioned in the commit 
+message. The only reason I looked was because it was weird to have 
+DEV_STATUS_MASK and STATUS_INVALID be the same values, is that correct?
+
+
+> +#define MISC_LK_EVENT_MASK			GENMASK(11, 8)
+> +
+> +enum lk_event_id {
+> +	LK_EVENT_NORMAL = 0,
+> +	LK_EVENT_CREATE_PD_PORT = 1,
+> +	LK_EVENT_CREATE_POST_DL_PORT = 2,
+> +	LK_EVENT_RESET = 7,
+> +};
+> +
+> +#define MISC_STAGE_MASK				GENMASK(2, 0)
+> +
+> +enum t7xx_device_stage {
+> +	T7XX_DEV_STAGE_INIT = 0,
+> +	T7XX_DEV_STAGE_BROM_PRE = 1,
+> +	T7XX_DEV_STAGE_BROM_POST = 2,
+> +	T7XX_DEV_STAGE_LK = 3,
+> +	T7XX_DEV_STAGE_LINUX = 4,
+> +};
+>   
+>   #define T7XX_PCIE_RESOURCE_STATUS		0x0d28
+>   #define T7XX_PCIE_RESOURCE_STS_MSK		GENMASK(4, 0)
+> diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.c b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+> index 80edb8e75a6a..76fb5d57d4d7 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+> +++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.c
+> @@ -206,6 +206,34 @@ static void fsm_routine_exception(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_comm
+>   		fsm_finish_command(ctl, cmd, 0);
+>   }
+>   
+> +static void t7xx_lk_stage_event_handling(struct t7xx_fsm_ctl *ctl, unsigned int status)
+> +{
+> +	struct t7xx_modem *md = ctl->md;
+> +	struct cldma_ctrl *md_ctrl;
+> +	enum lk_event_id lk_event;
+> +	struct device *dev;
+> +
+> +	dev = &md->t7xx_dev->pdev->dev;
+> +	lk_event = FIELD_GET(MISC_LK_EVENT_MASK, status);
+> +	switch (lk_event) {
+> +	case LK_EVENT_NORMAL:
+> +	case LK_EVENT_RESET:
+> +		break;
+> +
+> +	case LK_EVENT_CREATE_PD_PORT:
+> +		md_ctrl = md->md_ctrl[CLDMA_ID_AP];
+> +		t7xx_cldma_hif_hw_init(md_ctrl);
+> +		t7xx_cldma_stop(md_ctrl);
+> +		t7xx_cldma_switch_cfg(md_ctrl, CLDMA_DEDICATED_Q_CFG);
+> +		t7xx_cldma_start(md_ctrl);
+> +		break;
+> +
+> +	default:
+> +		dev_err(dev, "Invalid LK event %d\n", lk_event);
+> +		break;
+> +	}
+> +}
+> +
+>   static int fsm_stopped_handler(struct t7xx_fsm_ctl *ctl)
+>   {
+>   	ctl->curr_state = FSM_STATE_STOPPED;
+> @@ -317,8 +345,9 @@ static int fsm_routine_starting(struct t7xx_fsm_ctl *ctl)
+>   static void fsm_routine_start(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_command *cmd)
+>   {
+>   	struct t7xx_modem *md = ctl->md;
+> -	u32 dev_status;
+> -	int ret;
+> +	struct device *dev;
+> +	u32 status, stage;
+> +	int ret = 0;
+>   
+>   	if (!md)
+>   		return;
+> @@ -329,23 +358,55 @@ static void fsm_routine_start(struct t7xx_fsm_ctl *ctl, struct t7xx_fsm_command
+>   		return;
+>   	}
+>   
+> +	dev = &md->t7xx_dev->pdev->dev;
+>   	ctl->curr_state = FSM_STATE_PRE_START;
+>   	t7xx_md_event_notify(md, FSM_PRE_START);
+>   
+> -	ret = read_poll_timeout(ioread32, dev_status,
+> -				(dev_status & MISC_STAGE_MASK) == LINUX_STAGE, 20000, 2000000,
+> -				false, IREG_BASE(md->t7xx_dev) + T7XX_PCIE_MISC_DEV_STATUS);
+> +	ret = read_poll_timeout(ioread32, status,
+> +				((status & MISC_STAGE_MASK) == T7XX_DEV_STAGE_LINUX) ||
+> +				((status & MISC_STAGE_MASK) == T7XX_DEV_STAGE_LK), 100000,
+> +				20000000, false, IREG_BASE(md->t7xx_dev) +
+> +				T7XX_PCIE_MISC_DEV_STATUS);
+> +
+>   	if (ret) {
+> -		struct device *dev = &md->t7xx_dev->pdev->dev;
+> +		ret = -ETIMEDOUT;
+> +		dev_err(dev, "read poll %d\n", ret);
+> +		goto finish_command;
+> +	}
+>   
+> -		fsm_finish_command(ctl, cmd, -ETIMEDOUT);
+> -		dev_err(dev, "Invalid device status 0x%lx\n", dev_status & MISC_STAGE_MASK);
+> -		return;
+> +	if (status != ctl->prev_status) {
+> +		stage = FIELD_GET(MISC_STAGE_MASK, status);
+
+if stage is only used down here you can declare it locally. cppcheck has 
+a check that will find these for you.
+
+> +		switch (stage) {
+> +		case T7XX_DEV_STAGE_INIT:
+> +		case T7XX_DEV_STAGE_BROM_PRE:
+> +		case T7XX_DEV_STAGE_BROM_POST:
+> +			dev_info(dev, "BROM_STAGE Entered\n");
+> +			ret = t7xx_fsm_append_cmd(ctl, FSM_CMD_START, 0);
+> +			break;
+> +
+> +		case T7XX_DEV_STAGE_LK:
+> +			dev_info(dev, "LK_STAGE Entered\n");
+> +			t7xx_lk_stage_event_handling(ctl, status);
+> +			break;
+> +
+> +		case T7XX_DEV_STAGE_LINUX:
+> +			dev_info(dev, "LINUX_STAGE Entered\n");
+> +			t7xx_cldma_hif_hw_init(md->md_ctrl[CLDMA_ID_AP]);
+> +			t7xx_cldma_hif_hw_init(md->md_ctrl[CLDMA_ID_MD]);
+> +			t7xx_mhccif_mask_clr(md->t7xx_dev, D2H_INT_PORT_ENUM |
+> +					     D2H_INT_ASYNC_MD_HK | D2H_INT_ASYNC_AP_HK);
+> +			t7xx_port_proxy_set_cfg(md, PORT_CFG_ID_NORMAL);
+> +			ret = fsm_routine_starting(ctl);
+> +			break;
+> +
+> +		default:
+> +			break;
+> +		}
+> +		ctl->prev_status = status;
+>   	}
+>   
+> -	t7xx_cldma_hif_hw_init(md->md_ctrl[CLDMA_ID_AP]);
+> -	t7xx_cldma_hif_hw_init(md->md_ctrl[CLDMA_ID_MD]);
+> -	fsm_finish_command(ctl, cmd, fsm_routine_starting(ctl));
+> +finish_command:
+> +	fsm_finish_command(ctl, cmd, ret);
+>   }
+>   
+>   static int fsm_main_thread(void *data)
+> @@ -516,6 +577,7 @@ void t7xx_fsm_reset(struct t7xx_modem *md)
+>   	fsm_flush_event_cmd_qs(ctl);
+>   	ctl->curr_state = FSM_STATE_STOPPED;
+>   	ctl->exp_flg = false;
+> +	ctl->prev_status = 0;
+>   }
+>   
+>   int t7xx_fsm_init(struct t7xx_modem *md)
+> diff --git a/drivers/net/wwan/t7xx/t7xx_state_monitor.h b/drivers/net/wwan/t7xx/t7xx_state_monitor.h
+> index b6e76f3903c8..5e8012567ba1 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_state_monitor.h
+> +++ b/drivers/net/wwan/t7xx/t7xx_state_monitor.h
+> @@ -96,6 +96,7 @@ struct t7xx_fsm_ctl {
+>   	bool			exp_flg;
+>   	spinlock_t		notifier_lock;		/* Protects notifier list */
+>   	struct list_head	notifier_list;
+> +	u32                     prev_status;
+>   };
+>   
+>   struct t7xx_fsm_event {
 
 
